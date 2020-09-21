@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 285FDC43463
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:25:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 95248C43464
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:25:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7D7520708
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:25:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4352220735
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:25:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yCmCd9/s";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="txyqOSAk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7D7520708
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yvv7yKro";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hAsT6uFS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4352220735
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TDDtMPjKkyhwa71wVSeU/40o91WiULbMovA4Y69ldN8=; b=yCmCd9/sGKiJkQg0k7HqGQHCD
-	dv1GkPaePCYVLL3GO3opdWPoOE6hrGSgn6YrZJeFtV10LH+uRzRO0U1VTuws0/iSOX5lty0Y/deA0
-	eHambF8JNtyUkkRTJoM7/w0WKbjx4drg33Fiay8ZA/tPVR0XP2J5gmVQhGC3/rS2RR6VdbY+0ll4/
-	BQFKJpzJtjEoEqtD4RAXLnFV/jVvHntrFxFxM1jEOcKQHApTQf3q6ZI26LuK1MsZPNkX2qyLnW6wO
-	vyZ1a+DaIMRol+3YeZHWrqFcju8jNJBETzWcDT2WSFIR85+6yg4gqG1TvA9Pv1HCXx0gWxU54oAvT
-	6rDdIp8EQ==;
+	 bh=3Ge8cXWg17UlfFxp7r2vtibzCtC8bRvXDcR32jExMwQ=; b=yvv7yKro0K3G9mN3vze0a3OBu
+	71UTQLtncyDlgJcQonfjR/FriddVJDYMYiDhiujX0bR5lZ2JkSB0rNwTYZGfUk6gNCTEWtHxmm3cM
+	i/1oIAIKO2WUkRXHBlza9h/68YWNLP6xfG19ixHFrDvw14E0fy0otp/bNwSc50lji7BZsC1lw13ht
+	VszMCUlR1EOcvsW961sD7b/dc3SxE3uBahEA1492J5hE/8twp3jOmeX830G1f+EsBQIJY6gDEPeUE
+	EflnG1YImDDf3tUvo7AK4rb0cXs7o/9vQslyx1oAJIeUnL25DB/s3Fdb3M6r+fjwzk0vCHzwlNlvW
+	Uxt3g5XjA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKFGR-0005lD-Eo; Mon, 21 Sep 2020 06:25:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kKFGY-0005or-Qr; Mon, 21 Sep 2020 06:25:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKFFh-0005Sd-Me; Mon, 21 Sep 2020 06:24:44 +0000
-X-UUID: dc9defc220e545658d985ef79d55e87e-20200920
+ id 1kKFFi-0005Tk-F2; Mon, 21 Sep 2020 06:24:46 +0000
+X-UUID: 2b1b23fa444c44f7bebeb518c292825c-20200920
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Xo5rf9xp9Q898V4NrJeKvL/NbIN1YvfdZlom51aDk10=; 
- b=txyqOSAk8KwtI+KVRkHe9mCLKCDRIvHad4cZtkE9zAvDip3lusVd+Z9ORVI6OtBkUvLULmljoWrrZCj4b3x0QY5DhHR0YMgxx2XhxlLa7FIfpdCxMhRYDLBZmVy7LDEnt9SdzT5P/o36ac8lXimKdtUHWq+yAaMvtZdx/LqQfV0=;
-X-UUID: dc9defc220e545658d985ef79d55e87e-20200920
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=fhoC7nd4R36M3issGh+SxVPkb1Qjg4iuhqpKgwaNaKE=; 
+ b=hAsT6uFScZzYn1TFbtx1oo5dO16HTZegY8tY2EKHoSPWy6NcBFKqrI3rH5V9f8zbzwwi7bWfO29BeMf3wyCK+JIxAuRdJKSc1gzKNz5JEgIq1JvQDuKPM2eDFDbW3wgKwZgHYv46dED1jYXtePEErZHfhKdlCxukIgN/1O2tbFI=;
+X-UUID: 2b1b23fa444c44f7bebeb518c292825c-20200920
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1864512577; Sun, 20 Sep 2020 22:24:38 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Sep 2020 23:17:00 -0700
+ with ESMTP id 410405657; Sun, 20 Sep 2020 22:24:39 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Sep 2020 23:17:12 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Sep 2020 14:16:57 +0800
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Sep 2020 14:17:10 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 21 Sep 2020 14:16:56 +0800
+ Transport; Mon, 21 Sep 2020 14:17:08 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
  <balbi@kernel.org>
-Subject: [PATCH v4 02/11] usb: early: ehci-dbgp: convert to
+Subject: [PATCH v4 09/11] usb: phy: phy-mv-usb: convert to
  readl_poll_timeout_atomic()
-Date: Mon, 21 Sep 2020 14:13:26 +0800
-Message-ID: <1600668815-12135-2-git-send-email-chunfeng.yun@mediatek.com>
+Date: Mon, 21 Sep 2020 14:13:33 +0800
+Message-ID: <1600668815-12135-9-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1600668815-12135-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1600668815-12135-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 08E2723B77F099582DC762E959887646B7F9FDFF59FD8B41E444D08844B116772000:8
+X-TM-SNTS-SMTP: 2F9FBD9981B001EA895A14F6E8D251A0B594F6BC5073CA2F55F375A17B5E66502000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_022441_956496_00796194 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20200921_022442_684561_95131AEE 
+X-CRM114-Status: GOOD (  15.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,7 +96,7 @@ Cc: Sumit Garg <sumit.garg@linaro.org>,
  Dooks \(Codethink\)" <ben.dooks@codethink.co.uk>,
  linux-mediatek@lists.infradead.org, "Eric W.
  Biederman" <ebiederm@xmission.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Petr Mladek <pmladek@suse.com>, Lee Jones <lee.jones@linaro.org>,
+ Lee Jones <lee.jones@linaro.org>,
  Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -106,49 +106,61 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Use readl_poll_timeout_atomic() to simplify code
 
-Cc: "Eric W. Biederman" <ebiederm@xmission.com>
-Cc: Petr Mladek <pmladek@suse.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2~v4: no changes
----
- drivers/usb/early/ehci-dbgp.c | 15 +++++----------
- 1 file changed, 5 insertions(+), 10 deletions(-)
+v4: no changes
 
-diff --git a/drivers/usb/early/ehci-dbgp.c b/drivers/usb/early/ehci-dbgp.c
-index b075dbf..45b42d8 100644
---- a/drivers/usb/early/ehci-dbgp.c
-+++ b/drivers/usb/early/ehci-dbgp.c
-@@ -15,6 +15,7 @@
- #include <linux/console.h>
- #include <linux/errno.h>
- #include <linux/init.h>
+v3: re-align argument of log suggested by Sergei
+
+v2: udelay 10us instead of 20us according to kerneldoc
+---
+ drivers/usb/phy/phy-mv-usb.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/usb/phy/phy-mv-usb.c b/drivers/usb/phy/phy-mv-usb.c
+index ce767ec..576d925 100644
+--- a/drivers/usb/phy/phy-mv-usb.c
++++ b/drivers/usb/phy/phy-mv-usb.c
+@@ -8,6 +8,7 @@
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+ #include <linux/io.h>
 +#include <linux/iopoll.h>
- #include <linux/pci_regs.h>
- #include <linux/pci_ids.h>
- #include <linux/usb/ch9.h>
-@@ -161,17 +162,11 @@ static inline u32 dbgp_pid_read_update(u32 x, u32 tok)
- static int dbgp_wait_until_complete(void)
+ #include <linux/uaccess.h>
+ #include <linux/device.h>
+ #include <linux/proc_fs.h>
+@@ -135,8 +136,8 @@ static int mv_otg_set_timer(struct mv_otg *mvotg, unsigned int id,
+ 
+ static int mv_otg_reset(struct mv_otg *mvotg)
  {
- 	u32 ctrl;
--	int loop = DBGP_TIMEOUT;
--
--	do {
--		ctrl = readl(&ehci_debug->control);
--		/* Stop when the transaction is finished */
--		if (ctrl & DBGP_DONE)
--			break;
--		udelay(1);
--	} while (--loop > 0);
+-	unsigned int loops;
+ 	u32 tmp;
 +	int ret;
  
--	if (!loop)
-+	ret = readl_poll_timeout_atomic(&ehci_debug->control, ctrl,
-+				(ctrl & DBGP_DONE), 1, DBGP_TIMEOUT);
-+	if (ret)
- 		return -DBGP_TIMEOUT;
+ 	/* Stop the controller */
+ 	tmp = readl(&mvotg->op_regs->usbcmd);
+@@ -146,15 +147,12 @@ static int mv_otg_reset(struct mv_otg *mvotg)
+ 	/* Reset the controller to get default values */
+ 	writel(USBCMD_CTRL_RESET, &mvotg->op_regs->usbcmd);
  
- 	/*
+-	loops = 500;
+-	while (readl(&mvotg->op_regs->usbcmd) & USBCMD_CTRL_RESET) {
+-		if (loops == 0) {
+-			dev_err(&mvotg->pdev->dev,
+-				"Wait for RESET completed TIMEOUT\n");
+-			return -ETIMEDOUT;
+-		}
+-		loops--;
+-		udelay(20);
++	ret = readl_poll_timeout_atomic(&mvotg->op_regs->usbcmd, tmp,
++				(tmp & USBCMD_CTRL_RESET), 10, 10000);
++	if (ret < 0) {
++		dev_err(&mvotg->pdev->dev,
++			"Wait for RESET completed TIMEOUT\n");
++		return ret;
+ 	}
+ 
+ 	writel(0x0, &mvotg->op_regs->usbintr);
 -- 
 1.9.1
 _______________________________________________
