@@ -2,78 +2,81 @@ Return-Path: <SRS0=GXkz=C6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23B94C43463
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:27:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1ECDC43464
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:52:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFAEF20739
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:27:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 68629207BC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 06:52:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MYdvcAas";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kFugfE6/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFAEF20739
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UXF2p4lX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="dDsnw+80"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68629207BC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bvQZBBvI7D1kch1lC98iPFlytUOEGwpwIz/xnRKw0EA=; b=MYdvcAastVV1lzZRFVChrh9pC
-	Wkj43dRLKx7Wx6oW4Z6fvFLNynv7d22ZrmD+wVX7GwbUnw6yiBYl68InQJLe4OfvsaVX2J93ciDB4
-	GhR/2Mm2lLSw+980zYF6oIWmiekoHQ43VJtRPfmnpxgtYzWjWYUh0689gmihNOrZXw1mhh/miHEYz
-	9HpNx0H87sKI16EZD5o52c0Nktl/uQx1k+Tu45w0qyLM19TdZsJqesCj6LWywAn2fxkMn3eDvUilp
-	dBxpLQZKEWC+776Ogq1/73dpIaNelEJAJaeL3E/J1Tv4fKON4HxAm2f7NT6kxgk5GpzQWVVY0J7vL
-	UwX+vV76A==;
+	 bh=krOmeG6juSdouZq5+f1UIm/xKZCf0NhrHF/6c7eSejI=; b=UXF2p4lX8t4Xtd9EwUdz2B++N
+	kVD/sIgRaJaqRHhqQddzTlmLaTZ2NN2j67OYHMIlZAoLIk5ejrRSM7k5/RaBMDmJHYQnMJ7vLvmdU
+	/CBEbMdfY0DTI2IsJRUIEA8XOoySSgBnniNWS639JtqSq+/MQPAx2lud7D/97magwjQmPIiT7v4Oc
+	h7RSAXeCdl5qd1LcWgN0ugGktG9cBeANUkQq1ESUh9VFJ4RB6RIdyqUZ9f+t5x7sX/iLzxCs7BXsz
+	xrDbwv3lK6BAFYEIcOXudyM4602YUrJ46jUIN4jIMo35FyPe0eF+kIaTvzIXdNGqAtQwMOIQCmoA/
+	3QK2v4uDw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKFIf-0006v0-DQ; Mon, 21 Sep 2020 06:27:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kKFgg-0002gY-RL; Mon, 21 Sep 2020 06:52:34 +0000
+Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKFII-0006k5-6q; Mon, 21 Sep 2020 06:27:25 +0000
-X-UUID: 8b414f7add824781a483b3a184751eb7-20200920
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6qZ3MFCp67LQIehQWoxsg/JhWq3n6ohpU0YiOM2IRh4=; 
- b=kFugfE6/qY/8hN5o7jUXFGnZvghMKfSnBZQxTcebq66WqU0/2W/NR0EBz23/RY3TfDgjhjGPW7LE5eWOSgXDzNFWMJeLUzboCYfjwWDpYTyxoOaPuDbj9TPTDGfoe6bP3VFjm7B9hXEUOLtT+rGXzMWw/NSY7kl0pNKhvfZl5E8=;
-X-UUID: 8b414f7add824781a483b3a184751eb7-20200920
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1612736876; Sun, 20 Sep 2020 22:27:18 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Sep 2020 23:17:15 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Sep 2020 14:17:14 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 21 Sep 2020 14:17:12 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
- <balbi@kernel.org>
-Subject: [PATCH v4 11/11] iopoll: update kerneldoc of
- read_poll_timeout_atomic()
-Date: Mon, 21 Sep 2020 14:13:35 +0800
-Message-ID: <1600668815-12135-11-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1600668815-12135-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1600668815-12135-1-git-send-email-chunfeng.yun@mediatek.com>
+ id 1kKFga-0002ef-V1
+ for linux-mediatek@lists.infradead.org; Mon, 21 Sep 2020 06:52:30 +0000
+Received: by mail-vs1-xe43.google.com with SMTP id y190so7494556vsy.1
+ for <linux-mediatek@lists.infradead.org>; Sun, 20 Sep 2020 23:52:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AeLRUtPe9HVlfuGxkbMZRtBXYqd2i71LyWN09E0jksA=;
+ b=dDsnw+8075HinxoW83Bd0AAOX1rlDwkTptMNLXl2BgJeKaCtne8RTPqBpTGbxCY7V2
+ pVsIfL3bg6W0301JBde9EatxJQMTyjuTFg6J9VAMX4qdwGM+/7OxbIDENt5YrdHjj6vs
+ AlGBB0xjmRzr3DjcTGUyvIjHaWPG26kbF9F9A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AeLRUtPe9HVlfuGxkbMZRtBXYqd2i71LyWN09E0jksA=;
+ b=l7XipzdCGEINVSQEJtMpHcpUQhOc6Xdxm+OfUEWk+9fVRjLNyAzFrCkrBIO17wsDO0
+ msf3DPyazRHv+QuLmU7qNIKriPJp77hg6Uq8HVMthq4KAc7+rkduwEsNmnroc9aLWVA2
+ c7Qq/IFH3kqS/hjE2h5BPTD942bXf+wQyKrTb4B3MkFrGoemhT5AgaYludj8cfVxK9sn
+ 2nQZ+SDfgntrfX4Xn2UZtG6AFPR/Er8SqKjgkEtXfhAc5mFFKfk5d9EBPzpPxsjw3Vcv
+ ArLWiRWY3Lpv2LfFhFj4KkhUlRup9VLpDU7NVSuhDbD45jZd224SmRcIArhFMHrV3Tnl
+ 4GyA==
+X-Gm-Message-State: AOAM531PzxmRLsDiM6LmwCe6Fykji3KZQvsYvnYQxB0jUvHLSczEtBFn
+ mWuxk4pwM0kGsAzb5mq5WExVmauODmppZnK+heVbpQ==
+X-Google-Smtp-Source: ABdhPJwxJRS724WS0GpV4n1bZY+O9oUk+Jiyi+xUNpksXVtmiBEB3r94MIx7bx5rCSZDanbF+xKAxTL5tgYZDvhDtJs=
+X-Received: by 2002:a67:8097:: with SMTP id b145mr16948393vsd.40.1600671146934; 
+ Sun, 20 Sep 2020 23:52:26 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 12B795415FC0ED3118BA475BA2E81ADE4E49B603F95922E5AACB3B2F03B46E0A2000:8
-X-MTK: N
+References: <20200918083124.3921207-1-ikjn@chromium.org>
+ <20200918162834.v2.3.I06cb65401ab5ad63ea30c4788d26633928d80f38@changeid>
+ <CAJsYDVLy_ef25Jb+7QFTUZx0-dcif1RKBGJ8TzQx5t7e2dDLMQ@mail.gmail.com>
+In-Reply-To: <CAJsYDVLy_ef25Jb+7QFTUZx0-dcif1RKBGJ8TzQx5t7e2dDLMQ@mail.gmail.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Mon, 21 Sep 2020 14:52:16 +0800
+Message-ID: <CAATdQgBk=-Xa0mUg_vdj1s5ei+VUtQYAnc3xrhT9EJiOZzfqEA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/5] spi: spi-mtk-nor: use dma_alloc_coherent() for
+ bounce buffer
+To: Chuanhong Guo <gch981213@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_022722_453741_7906B625 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20200921_025229_074993_34CFD943 
+X-CRM114-Status: GOOD (  34.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,64 +88,256 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sumit Garg <sumit.garg@linaro.org>,
- Daniel Thompson <daniel.thompson@linaro.org>, linux-usb@vger.kernel.org,
- Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>,
- Jann Horn <jannh@google.com>, Jason Yan <yanaijie@huawei.com>,
- Chuhong Yuan <hslester96@gmail.com>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, linux-kernel@vger.kernel.org,
- Saurav Girepunje <saurav.girepunje@gmail.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, "Ben
- Dooks \(Codethink\)" <ben.dooks@codethink.co.uk>,
- linux-mediatek@lists.infradead.org, "Eric W.
- Biederman" <ebiederm@xmission.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Alan Stern <stern@rowland.harvard.edu>, Lee Jones <lee.jones@linaro.org>,
- Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-spi@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Arguments description of read_poll_timeout_atomic() is out of date,
-update it.
+On Fri, Sep 18, 2020 at 9:25 PM Chuanhong Guo <gch981213@gmail.com> wrote:
+>
+> Hi!
+>
+> On Fri, Sep 18, 2020 at 4:35 PM Ikjoon Jang <ikjn@chromium.org> wrote:
+> >
+> > Use dma_alloc_coherent() for bounce buffer instead of kmalloc.
+>
+> The commit message should explain why such a change is
+> needed. (i.e. why using dma_alloc_coherent here is better
+> than kmalloc.) And if there's no benefit for this change I'd prefer
+> leaving it untouched.
+> I remembered reading somewhere that stream DMA api is
+> prefered over dma_alloc_coherent for this kind of single-direction
+> DMA operation.
+>
 
-Cc: Alan Stern <stern@rowland.harvard.edu>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v4: no changes
+I will add more description on why I changed it to dma_alloc_coherent():
+- to explictly support devices like mt8173-nor which only supports
+32bit addressing for dma.
 
-v3: fix typo in commit message suggested by Sergei
+And it also reminded me an another problem, (I won't address this
+issue for now in v3):
+as this device is using dma range as [start, end) format
+where 'end' can be zero in that corner case of {start = 0xffff_f000; end = 0; }
 
-v2: new patch, suggested by Alan
----
- include/linux/iopoll.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> >
+> > ---
+> >
+> > (no changes since v1)
+> >
+> >  drivers/spi/spi-mtk-nor.c | 60 +++++++++++++++++++++++----------------
+> >  1 file changed, 35 insertions(+), 25 deletions(-)
+> >
+> > diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+> > index 54b2c0fde95b..e14798a6e7d0 100644
+> > --- a/drivers/spi/spi-mtk-nor.c
+> > +++ b/drivers/spi/spi-mtk-nor.c
+> > @@ -96,6 +96,7 @@ struct mtk_nor {
+> >         struct device *dev;
+> >         void __iomem *base;
+> >         u8 *buffer;
+> > +       dma_addr_t buffer_dma;
+> >         struct clk *spi_clk;
+> >         struct clk *ctlr_clk;
+> >         unsigned int spi_freq;
+> > @@ -275,19 +276,16 @@ static void mtk_nor_setup_bus(struct mtk_nor *sp, const struct spi_mem_op *op)
+> >         mtk_nor_rmw(sp, MTK_NOR_REG_BUSCFG, reg, MTK_NOR_BUS_MODE_MASK);
+> >  }
+> >
+> > -static int mtk_nor_read_dma(struct mtk_nor *sp, u32 from, unsigned int length,
+> > -                           u8 *buffer)
+> > +static int read_dma(struct mtk_nor *sp, u32 from, unsigned int length,
+>
+> This name is a bit confusing considering there's a mtk_nor_read_dma
+> below.
+> As this function now only executes dma readings and wait it to finish,
+> what about mtk_nor_dma_exec instead?
 
-diff --git a/include/linux/iopoll.h b/include/linux/iopoll.h
-index bc89ac6..2c8860e 100644
---- a/include/linux/iopoll.h
-+++ b/include/linux/iopoll.h
-@@ -60,8 +60,7 @@
- /**
-  * read_poll_timeout_atomic - Periodically poll an address until a condition is
-  * 				met or a timeout occurs
-- * @op: accessor function (takes @addr as its only argument)
-- * @addr: Address to poll
-+ * @op: accessor function (takes @args as its arguments)
-  * @val: Variable to read the value into
-  * @cond: Break condition (usually involving @val)
-  * @delay_us: Time to udelay between reads in us (0 tight-loops).  Should
-@@ -69,6 +68,7 @@
-  *            Documentation/timers/timers-howto.rst).
-  * @timeout_us: Timeout in us, 0 means never timeout
-  * @delay_before_read: if it is true, delay @delay_us before read.
-+ * @args: arguments for @op poll
-  *
-  * Returns 0 on success and -ETIMEDOUT upon a timeout. In either
-  * case, the last read value at @args is stored in @val.
--- 
-1.9.1
+yeah, good idea.
+
+>
+> > +                   dma_addr_t dma_addr)
+> >  {
+> >         int ret = 0;
+> >         ulong delay;
+> >         u32 reg;
+> > -       dma_addr_t dma_addr;
+> >
+> > -       dma_addr = dma_map_single(sp->dev, buffer, length, DMA_FROM_DEVICE);
+> > -       if (dma_mapping_error(sp->dev, dma_addr)) {
+> > -               dev_err(sp->dev, "failed to map dma buffer.\n");
+> > +       if (WARN_ON((length & MTK_NOR_DMA_ALIGN_MASK) ||
+> > +                   (dma_addr & MTK_NOR_DMA_ALIGN_MASK)))
+>
+> These alignment is guaranteed by callers of this function if all
+> my comments below are addressed. This check isn't needed.
+
+ACK.
+
+>
+> >                 return -EINVAL;
+> > -       }
+> >
+> >         writel(from, sp->base + MTK_NOR_REG_DMA_FADR);
+> >         writel(dma_addr, sp->base + MTK_NOR_REG_DMA_DADR);
+> > @@ -312,30 +310,39 @@ static int mtk_nor_read_dma(struct mtk_nor *sp, u32 from, unsigned int length,
+> >                                          (delay + 1) * 100);
+> >         }
+> >
+> > -       dma_unmap_single(sp->dev, dma_addr, length, DMA_FROM_DEVICE);
+> >         if (ret < 0)
+> >                 dev_err(sp->dev, "dma read timeout.\n");
+> >
+> >         return ret;
+> >  }
+> >
+> > -static int mtk_nor_read_bounce(struct mtk_nor *sp, u32 from,
+> > -                              unsigned int length, u8 *buffer)
+> > +static int mtk_nor_read_dma(struct mtk_nor *sp, u32 from,
+> > +                           unsigned int length, u8 *buffer)
+> >  {
+> > -       unsigned int rdlen;
+> >         int ret;
+> > +       dma_addr_t dma_addr;
+> > +       bool bounce = need_bounce(buffer, length);
+> >
+> > -       if (length & MTK_NOR_DMA_ALIGN_MASK)
+> > -               rdlen = (length + MTK_NOR_DMA_ALIGN) & ~MTK_NOR_DMA_ALIGN_MASK;
+>
+> The intention of this rdlen alignment is explained in 2/5.
+> Please make sure this rdlen alignment logic is present
+> only for PIO reading.
+
+okay, I'll use padding again in v3.
+
+>
+> > -       else
+> > -               rdlen = length;
+> > +       if (!bounce) {
+> > +               dma_addr = dma_map_single(sp->dev, buffer, length,
+> > +                                         DMA_FROM_DEVICE);
+> > +               if (dma_mapping_error(sp->dev, dma_addr)) {
+> > +                       dev_err(sp->dev, "failed to map dma buffer.\n");
+> > +                       return -EINVAL;
+> > +               }
+> > +       } else {
+> > +               dma_addr = sp->buffer_dma;
+> > +       }
+> >
+> > -       ret = mtk_nor_read_dma(sp, from, rdlen, sp->buffer);
+> > -       if (ret)
+> > -               return ret;
+> > +       ret = read_dma(sp, from, length, dma_addr);
+> >
+> > -       memcpy(buffer, sp->buffer, length);
+> > -       return 0;
+> > +       if (!bounce)
+> > +               dma_unmap_single(sp->dev, dma_addr, length,
+> > +                                DMA_FROM_DEVICE);
+> > +       else
+> > +               memcpy(buffer, sp->buffer, length);
+> > +
+> > +       return ret;
+> >  }
+>
+> I think a separated read_dma and read_bounce function will be
+> cleaner than this if-else implementation:
+> read_dma:
+> 1. call dma_map_single to get physical address
+> 2. call read_dma to execute operation
+> 3. call dma_unmap_single
+>
+> read_bounce:
+> 1. align reading length
+> 2. call read_dma
+> 3. call memcpy
+
+ACK
+
+>
+> >
+> >  static int mtk_nor_read_pio(struct mtk_nor *sp, const struct spi_mem_op *op)
+> > @@ -439,11 +446,6 @@ static int mtk_nor_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
+> >                 if (op->data.nbytes == 1) {
+> >                         mtk_nor_set_addr(sp, op);
+> >                         return mtk_nor_read_pio(sp, op);
+> > -               } else if (((ulong)(op->data.buf.in) &
+> > -                           MTK_NOR_DMA_ALIGN_MASK)) {
+> > -                       return mtk_nor_read_bounce(sp, op->addr.val,
+> > -                                                  op->data.nbytes,
+> > -                                                  op->data.buf.in);
+> >                 } else {
+> >                         return mtk_nor_read_dma(sp, op->addr.val,
+> >                                                 op->data.nbytes,
+> > @@ -654,6 +656,10 @@ static int mtk_nor_probe(struct platform_device *pdev)
+> >         sp->dev = &pdev->dev;
+> >         sp->spi_clk = spi_clk;
+> >         sp->ctlr_clk = ctlr_clk;
+>
+> There is extra memory allocation code for sp->buffer in mtk_nor_probe.
+> If you intend to replace this with dma_alloc_coherent you should
+> drop those devm_kmalloc code as well.
+>
+> > +       sp->buffer = dma_alloc_coherent(&pdev->dev, MTK_NOR_BOUNCE_BUF_SIZE,
+> > +                                       &sp->buffer_dma, GFP_KERNEL);
+>
+> There's a devm variant: dmam_alloc_coherent(dev, size, dma_handle, gfp)
+
+ACK
+
+>
+> > +       if (!sp->buffer)
+> > +               return -ENOMEM;
+>
+> This spi-nor controller requires all addresses to be 16-byte aligned.
+> Although it should be guaranteed by a usually way larger page
+> alignment address from dma_alloc_coherent I'd prefer an explicit
+> check for address alignment here rather than letting it probe
+> successfully and fail for every dma_read with bounce buffer.
+>
+
+Yep, I'll restore the padding.
+
+>
+> >
+> >         irq = platform_get_irq_optional(pdev, 0);
+> >         if (irq < 0) {
+> > @@ -674,6 +680,8 @@ static int mtk_nor_probe(struct platform_device *pdev)
+> >         ret = mtk_nor_init(sp);
+> >         if (ret < 0) {
+> >                 kfree(ctlr);
+> > +               dma_free_coherent(&pdev->dev, MTK_NOR_BOUNCE_BUF_SIZE,
+> > +                                 sp->buffer, sp->buffer_dma);
+> >                 return ret;
+> >         }
+> >
+> > @@ -692,6 +700,8 @@ static int mtk_nor_remove(struct platform_device *pdev)
+> >
+> >         mtk_nor_disable_clk(sp);
+> >
+> > +       dma_free_coherent(&pdev->dev, MTK_NOR_BOUNCE_BUF_SIZE,
+> > +                         sp->buffer, sp->buffer_dma);
+> >         return 0;
+> >  }
+> >
+> > --
+> > 2.28.0.681.g6f77f65b4e-goog
+> >
+>
+>
+> --
+> Regards,
+> Chuanhong Guo
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
