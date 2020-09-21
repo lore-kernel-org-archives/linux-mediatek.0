@@ -2,79 +2,93 @@ Return-Path: <SRS0=GXkz=C6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D4275C43465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06049C43468
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:37:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6B3B6239D1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:33:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B31B42399C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:37:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XG5RXh05";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QKd/jSJr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B3B6239D1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JtPoJkl4";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fnaYptNQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B31B42399C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fn1AGTNyAcxXTZvy259WQpONOwnZ3hruZMcDZZegiqk=; b=XG5RXh05UtsP5oVDlinHMA+GG
-	oaZ62ZjI6E9xgNCZnfYPOG0gysSU/UtSVrl5zuHnyA1UbGbOWZEBq1GsHt3eckGRYqO2ZEVxafg5B
-	/HyGWkccw4mVrJgl0UjeqEsTmkBb4J++DP59HiZKZxQB3vBIJ2/R4Q9C9wcKtTym+MfdCsa+uPlxj
-	quUSZ9IStTWNEZhCZh3amuDQIJ5Q3iWalDayCGo1SuKbFjlWL7lmBvAiGtWnqW0u9fFvrBgaGX7bi
-	3LYOwoFFxvKP6hOAIVW0PToQIRE+1GpAQ9XkGF0yDr8BRmGSNVhYj1zWdGL/RrNNcyH1OH557fjLH
-	FbUdOlNGw==;
+	 bh=+9AbCjmblkGPpcmDgGiKZfekKTJR6W59S1BCJ9Vg1dw=; b=JtPoJkl4Fczx+4c2kfddUrYuF
+	XZjq/n/eZM8mUN0TMqrb6Zb6xA+Oga9T3JPv9FyULhmrBeOPRwhwouXSlfDqPmgADitgkeKp5Bj8a
+	lSfIhT7aNfZDk4hjBpnjcbbOjWl1EBBDzQZjaM3UJYyvv3U+Dx1gVOGcp6Uy6sJxocTAxeog6F679
+	r2gefHyUOZmFqNKZ2TeoPHloPE9XDdrx3eDg222/cXHGmTndga3Jl+w0N1K/xzdEus5NW9aPKVDyr
+	MIJtU7ZuhDGEwwLwxIJbKgKI7a/8HkG4vwN8OgBJ5G5AzNqEZfO7PE/td09P8zDm0FKYpVKhcMtiC
+	iDd/Z4sTw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKOkk-0000RE-Pp; Mon, 21 Sep 2020 16:33:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kKOo7-0001QB-Gh; Mon, 21 Sep 2020 16:36:51 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKOkh-0000ON-L9; Mon, 21 Sep 2020 16:33:20 +0000
-X-UUID: 336fccce98144764b77ad60030edafdf-20200921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Wqur0A/O4zCVq+R1isOtEyenroFb1CxOmxqgph5t7K8=; 
- b=QKd/jSJrHQBWbNJbHDv/cRTkTgSNh2JEb4G1Hu0mGc4J+To8yClG33Thd1Pp/TielJ5SNhNKT4MgQ/Y/p8yiCbU6wkSUZ+TlPI3ydIJ3eXwywfEkmKXvebgW22XitMSobzHWcFM9osPE9WgPhChiuLEVcLAEmFbQEEELxysu+Lo=;
-X-UUID: 336fccce98144764b77ad60030edafdf-20200921
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dennis-yc.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1748694286; Mon, 21 Sep 2020 08:25:48 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Sep 2020 09:25:45 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Sep 2020 00:25:42 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Sep 2020 00:25:43 +0800
-Message-ID: <1600705544.26565.0.camel@mtkswgap22>
-Subject: Re: [PATCH v3 8/9] soc: mediatek: cmdq: add clear option in
- cmdq_pkt_wfe api
-From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Tue, 22 Sep 2020 00:25:44 +0800
-In-Reply-To: <728ace99-e5e6-f8bf-1687-e9b51dfae8d7@gmail.com>
+ id 1kKOo4-0001PS-Q3; Mon, 21 Sep 2020 16:36:49 +0000
+Received: by mail-wr1-x442.google.com with SMTP id s12so13480032wrw.11;
+ Mon, 21 Sep 2020 09:36:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=i047OCSlx026/Yej+lLApd9wks4kMyKz8RfAY/wU+IY=;
+ b=fnaYptNQLJYqN12KIQYAO8/g/W6HQUgEF41DUo46RaMSJaY36li9p7HpTRpmi9U7rb
+ Sq/1WAR85VQcUe+WA4dnt3WA6SbIz+HKT6LVg+iUaFbuZqwFpSp9Ox7GYa9NLFjCYXDC
+ 26u7SC9YVkT4804uJ2HL4vDZ3zZfM83cq/fpoVrTIOv3X4KtDf7MXt0a4W189zvn42dw
+ Ekp6oNtMVf98ZVKQ6wbJowG9+XRxPu15rSDCwSGtK0pLh1cevPCWXbmOjzEzvj1AwXCO
+ y4iEBigx+MybfZ8YKfnIUgpwlhsctTdYu1i2qO/m34CTtPRdM8xbsE3IMm8Hon/fZkOR
+ ANjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=i047OCSlx026/Yej+lLApd9wks4kMyKz8RfAY/wU+IY=;
+ b=c7A3N5onHdUTSkQRIx81FQmXcTCCTVskAvMfJ43U/viGkyzKg61UO3ahlHHFuAhP0a
+ bFpZGNNb2Y7gBSpGHIeZGgA1wrLk7xxr2rioJ/BhbFtIq34B0WlH+IKj1xex8tZpzIq+
+ kWuuLNRpfTakUFurqfTngU2RcL71Y+6wkWYg2Z881Ak+ANLTWrr7/lqcINYYvN1IyD4e
+ jUOQZf1hyzrT3qAJ6Dnjwi6gVyKNuYNfcgwl9eB7bA8qxUp67lCGib0GzxT987LRwG8+
+ kmaljpB778tNUWyWyE1SXyGE/1iBLbK6l6zwzHi/UdL4Rrb/m8XnWb30gSL408iqm73B
+ DwVg==
+X-Gm-Message-State: AOAM531qMkfZYyPduZ4VEcefrfcNrq29OFgJuc3eL+Whhl1bm6EjWMBt
+ peAI1eUQYI+F9fHTZsXyE/E=
+X-Google-Smtp-Source: ABdhPJyE6UTU+NOoQbGA0PsvLxZuHcEl/orKyvrLnH2D9aPBBwzeT9orNU7S0BsGCCw3FJwRz3Lzlw==
+X-Received: by 2002:a5d:444e:: with SMTP id x14mr578878wrr.235.1600706207846; 
+ Mon, 21 Sep 2020 09:36:47 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.113.201])
+ by smtp.gmail.com with ESMTPSA id s12sm201994wmd.20.2020.09.21.09.36.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Sep 2020 09:36:47 -0700 (PDT)
+Subject: Re: [PATCH v3 9/9] drm/mediatek: reduce clear event
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 References: <1594136714-11650-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1594136714-11650-9-git-send-email-dennis-yc.hsieh@mediatek.com>
- <728ace99-e5e6-f8bf-1687-e9b51dfae8d7@gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ <1594136714-11650-10-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1594262378.21095.3.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <826a79e6-7d4d-90e5-d9a7-4724753dc2d7@gmail.com>
+Date: Mon, 21 Sep 2020 18:36:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CF75B351C78BB23BFE95C06D5BB530850A195FB215A3BAA5AF935BDF06F4FA5B2000:8
-X-MTK: N
+In-Reply-To: <1594262378.21095.3.camel@mtksdaap41>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_123319_881734_689C0040 
-X-CRM114-Status: GOOD (  25.25  )
+X-CRM114-CacheID: sfid-20200921_123648_860696_203A9223 
+X-CRM114-Status: GOOD (  23.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,125 +100,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>, wsd_upstream@mediatek.com,
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, wsd_upstream@mediatek.com,
  David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- Houlong Wei <houlong.wei@mediatek.com>, HS Liao <hs.liao@mediatek.com>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+ dri-devel@lists.freedesktop.org, HS Liao <hs.liao@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
 
 
-On Mon, 2020-09-21 at 18:19 +0200, Matthias Brugger wrote:
+On 09/07/2020 04:39, Bibby Hsieh wrote:
+> Hi, Dennis,
 > 
-> On 07/07/2020 17:45, Dennis YC Hsieh wrote:
-> > Add clear parameter to let client decide if
-> > event should be clear to 0 after GCE receive it.
-> > 
-> > Change since v2:
-> > - Keep behavior in drm crtc driver and
-> >    separate bug fix code into another patch.
+> Thanks for this patch.
 > 
-> This, should go...
+> It's better to send another tree for this patch.
+> Because this tree is only for soc/mediatek.
 > 
-> > 
-> > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-> > ---
-> 
-> ...here :)
-> 
-> I fixed to commit message and pushed the patch to v5.9-next/soc
+> Please do not forget to add the dependency information.
 
-got it, thanks a lot
-
+Normally you are right. This time I took this patch as well into my tree. I 
+verified with the merge tag from CKs DRM tree that we don't have any conflicts, 
+so we should be Ok.
 
 Regards,
-Dennis
+Matthias
 
 > 
-> Thanks!
+> Bibby
 > 
-> >   drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |    2 +-
-> >   drivers/soc/mediatek/mtk-cmdq-helper.c   |    5 +++--
-> >   include/linux/mailbox/mtk-cmdq-mailbox.h |    3 +--
-> >   include/linux/soc/mediatek/mtk-cmdq.h    |    5 +++--
-> >   4 files changed, 8 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > index ec6c9ffbf35e..c84e7a14d4a8 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > @@ -490,7 +490,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
-> >   		mbox_flush(mtk_crtc->cmdq_client->chan, 2000);
-> >   		cmdq_handle = cmdq_pkt_create(mtk_crtc->cmdq_client, PAGE_SIZE);
-> >   		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
-> > -		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event);
-> > +		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, true);
-> >   		mtk_crtc_ddp_config(crtc, cmdq_handle);
-> >   		cmdq_pkt_finalize(cmdq_handle);
-> >   		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
-> > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > index d55dc3296105..505651b0d715 100644
-> > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > @@ -316,15 +316,16 @@ int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
-> >   }
-> >   EXPORT_SYMBOL(cmdq_pkt_write_s_mask_value);
-> >   
-> > -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
-> > +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
-> >   {
-> >   	struct cmdq_instruction inst = { {0} };
-> > +	u32 clear_option = clear ? CMDQ_WFE_UPDATE : 0;
-> >   
-> >   	if (event >= CMDQ_MAX_EVENT)
-> >   		return -EINVAL;
-> >   
-> >   	inst.op = CMDQ_CODE_WFE;
-> > -	inst.value = CMDQ_WFE_OPTION;
-> > +	inst.value = CMDQ_WFE_OPTION | clear_option;
-> >   	inst.event = event;
-> >   
-> >   	return cmdq_pkt_append_command(pkt, inst);
-> > diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> > index efbd8a9eb2d1..d5a983d65f05 100644
-> > --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> > +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> > @@ -28,8 +28,7 @@
-> >    * bit 16-27: update value
-> >    * bit 31: 1 - update, 0 - no update
-> >    */
-> > -#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
-> > -					CMDQ_WFE_WAIT_VALUE)
-> > +#define CMDQ_WFE_OPTION			(CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE)
-> >   
-> >   /** cmdq event maximum */
-> >   #define CMDQ_MAX_EVENT			0x3ff
-> > diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> > index 34354e952f60..960704d75994 100644
-> > --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> > +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> > @@ -182,11 +182,12 @@ int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
-> >   /**
-> >    * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
-> >    * @pkt:	the CMDQ packet
-> > - * @event:	the desired event type to "wait and CLEAR"
-> > + * @event:	the desired event type to wait
-> > + * @clear:	clear event or not after event arrive
-> >    *
-> >    * Return: 0 for success; else the error code is returned
-> >    */
-> > -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event);
-> > +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
-> >   
-> >   /**
-> >    * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
-> > 
+> On Tue, 2020-07-07 at 23:45 +0800, Dennis YC Hsieh wrote:
+>> No need to clear event again since event always clear before wait.
+>> This fix depend on patch:
+>>    "soc: mediatek: cmdq: add clear option in cmdq_pkt_wfe api"
+>>
+>> Fixes: 2f965be7f9008 ("drm/mediatek: apply CMDQ control flow")
+>> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+> 
+> Reviewed-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> 
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_drm_crtc.c |    2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+>> index c84e7a14d4a8..ba6cf956b239 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+>> @@ -490,7 +490,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+>>   		mbox_flush(mtk_crtc->cmdq_client->chan, 2000);
+>>   		cmdq_handle = cmdq_pkt_create(mtk_crtc->cmdq_client, PAGE_SIZE);
+>>   		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
+>> -		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, true);
+>> +		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
+>>   		mtk_crtc_ddp_config(crtc, cmdq_handle);
+>>   		cmdq_pkt_finalize(cmdq_handle);
+>>   		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
