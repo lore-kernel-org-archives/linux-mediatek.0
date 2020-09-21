@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
 	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6897C43465
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 93D9AC43469
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:17:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFA1720708
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:16:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 440C120739
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2020 16:17:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y5aNH7gt";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="adyOI1QZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFA1720708
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IblEeBn4";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="K8BLN9iV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 440C120739
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,70 +27,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BN2y4j40LLLCf0zjpXbCk0TCojq3eGSl1JWhuhnhtBo=; b=Y5aNH7gt1ajgo55eFwFnHfFKH
-	9d1+E8B3XWn1FgU3puy5szD6ZqMBpsQHYtYYPvCFXvI+2+0ZCLqE6r3TdDX/Zqeq2dGffi/f92NHK
-	HKUtoc/dhephJ7qW9S8PdwovTe+6Job3O5Fi1qpmCAXahuf42juKcSiFzn9/ysw6HWPpeO5o91qpa
-	xuOJ9JYo8Be+wUVOHBxRrxM2zcbwHc8bRqXOH61iJwjC6USPLP2CwlVJ3vHvATN/uOnue76PWF2o/
-	mRWBGv9BB0iYmFYBY6DtjZS9dyBCHE4ATeFdKeN/nTW92DUsQlsuWU5a3PxrbpVnSV7CHnREdIeCk
-	1E+euExsw==;
+	 bh=CAa+C88qqrYdymXBMZThZTOkfEET5eY0Dl7A9TjjS7c=; b=IblEeBn4/1Y+6o7dynY/G4ZHs
+	9OyMxBPNFHBuK3HfONxrj7exNWm6Ee0RyGBw3UPZ1ruaqEdAFbcBjZm1j7Rq4HMcLlStLrcVYiFlR
+	6G1peu8WFGt3SIRIgvjMRAcdYVmGHVxQ2aWrKpIOoY6l/hSZ3pqpiPJn5TFj9phulxBBSfo+MsEDA
+	BVi8JPsVv1Ke2llKqkHDbn9buN6qk/aQMIoJvW5cQr0uhFEXLeLkYPOHRWni2f39XbxN+LuaKmF5V
+	SjesgKAmxNKQk59volsaf7V5lzPCzDySMCvO95daGAs4xsVtPmqhkTOhyjlUSOkEGvjN22IIBGCvr
+	MkDmoOhAg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKOTx-0001fA-Fc; Mon, 21 Sep 2020 16:16:01 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1kKOUp-00024G-5h; Mon, 21 Sep 2020 16:16:55 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKOTW-0001Ki-5A; Mon, 21 Sep 2020 16:15:40 +0000
-Received: by mail-wr1-x443.google.com with SMTP id e16so13440329wrm.2;
- Mon, 21 Sep 2020 09:15:32 -0700 (PDT)
+ id 1kKOTm-0001ZM-VO; Mon, 21 Sep 2020 16:15:58 +0000
+Received: by mail-wr1-x441.google.com with SMTP id s12so13406191wrw.11;
+ Mon, 21 Sep 2020 09:15:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=/AzBFVjyB9M35TCkoVfiCJG5gVr+4aRpJymg5fjIeRo=;
- b=adyOI1QZVXu5/sDgfgrREwI18axbJUHVHZf+au8Ry+GgFshgEUioSEsGC71GCW9dLu
- sWNaG1NpaQrUsWUB4sGHhwVmKL3P60CCEkoVjK/l2A7jy710+V3t/Laq6l8VfbzwIda8
- TgroX58KWlScsvkuEsrT5Au63ICALvxtgLZaMMEUdHN2JAn6DY+dqA5zYLjnL8+/GaYS
- MNPWa7t6XUo6ss8lFgjElJQHC0N4GIeYkg12BKamF3SSN9RyltBM1+k6fRWWB05YQYMa
- Q0xJXMPuFBgKqSBNcVs2VSc/LvvXFSvtInzTh/3uRwxGaHgJnsQgedNh1QwfGomN7znL
- g9Pg==
+ bh=zZPtr60mHTjlNfqCvJeoZ3ko5+1eq2V7IMw/TOsfPRQ=;
+ b=K8BLN9iVlIHxqwxjYXAkd6As9BW0RggJe7sjNn+mBBgCUQ2HLR8MRkhj9cpa3Q3tiF
+ hbfpW3sJSZtSeOAY2P3zwddPEAglOL96HMb75BTU+j6CoRDcIXOr1wPPFjLTUgBQWxHi
+ RNXt95VTVj0oc+r0ARYHsSTmW49ybfwgmD4Nk6Dw/VOoOFAZpCNCj6ABgsVds0llyZpt
+ TJ61HLbVYxz7mggew/BVq62CyDMj4jM/iiTOIPMDVRvcNRNpGKmx7Kb4kpnz8Fi9H1M0
+ IeVO8T8oqC91sRnAhj3mEoHuDypw1xWylKoblf+W1lCQlDcmlIgSK+Rs0TDqPtkt1VSf
+ eAMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=/AzBFVjyB9M35TCkoVfiCJG5gVr+4aRpJymg5fjIeRo=;
- b=sxDH2juDV7SaBPKrufJfutiqAG1bhVhKnwfUhfpzOw51vng84qIBOw9VoECLp1ttUW
- +Oz0XfOT/nOQMlDb5k9T1qDtD9GOjAQZEPo1eGJxeny0lhFb5BtodBhTlKuGYofADdsO
- c25lXCytYolw6KbK10ryLdyhsKB1/dnpLb9Eruqb8p5fn0/RH3yPHYiYMouTSvt8Ovbl
- g1TMZ0qiaczKjKaKmO1IMZm/PA5U3U0tOAVSRRTMXLB6jBQ7H85SK65rverExQJS5G9F
- pY9w/10QUIFTXmVHHTzTNlmHt3KeJAtm99a/HPyUtA6MKZXBHcbrzDmsIi1eX63b8JfB
- PRwg==
-X-Gm-Message-State: AOAM533BjweWuYfyHUsUgSHJMPlW3sUMpD8QWE/OnhMw+MjeImeziLmE
- SrGymb+6OH+2XxUhD8sR/8ErJj8MZK7Rdw==
-X-Google-Smtp-Source: ABdhPJzVnGb+f+wfWSeWuA70pTjkhGJd856/BU9GbrNasUolNL1dWGqI0h48k/ZLL1ZWGjM/efha4g==
-X-Received: by 2002:adf:eecb:: with SMTP id a11mr547226wrp.356.1600704931276; 
- Mon, 21 Sep 2020 09:15:31 -0700 (PDT)
+ bh=zZPtr60mHTjlNfqCvJeoZ3ko5+1eq2V7IMw/TOsfPRQ=;
+ b=GGSxSsI802V4bwcAZ4xybyxh1C+t4qgrSWUMYflCRx5ycpqmIOvqKMMb+VP9qymX4d
+ R+Q/PgzAlmPUfXqSduEQkITlcWv5i78VUOTvV/0NhYvhSlW9nG0kdo3nl1OfE9abdd0M
+ IlUwPiOUOBN6f9r3G2FeYlDbhPc2xmnv/mI02RpdMgaXtjaRt7+VY8kfOfiJYMuUOLW1
+ z6LezMsQQ+SbZAn1NFf1Q2XHfkr3NGfK7BpMb+BCMPwSU2kwJRvGRhWgMw7TG4PeIwzq
+ 2R0o6qhSsezb+xRYI4sm5eJJ+25cQ2hpbr2h4r2UJhFSmi6dlAyk/Tpio4WleAVrn4KL
+ bR5w==
+X-Gm-Message-State: AOAM532LM5YN+am7LgUtsyzL8+LH/OeDUPZYVtdheRC1VYS0Gj2QErT+
+ UZPy5po03O7c8OXwKhiAXXQ=
+X-Google-Smtp-Source: ABdhPJyaI/j2BOiQ7LXv2eZPHmz6CaxDkz9OPzl3YJYlKBDrLEo6lJVeoR/a50CUcy2rfo0sAUN0KA==
+X-Received: by 2002:a5d:6784:: with SMTP id v4mr598735wru.132.1600704949233;
+ Mon, 21 Sep 2020 09:15:49 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.201])
- by smtp.gmail.com with ESMTPSA id o4sm20760014wru.55.2020.09.21.09.15.30
+ by smtp.gmail.com with ESMTPSA id f12sm91029wmf.26.2020.09.21.09.15.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Sep 2020 09:15:30 -0700 (PDT)
-Subject: Re: [PATCH v3 2/9] soc: mediatek: cmdq: add write_s function
+ Mon, 21 Sep 2020 09:15:48 -0700 (PDT)
+Subject: Re: [PATCH v3 3/9] soc: mediatek: cmdq: add write_s_mask function
 To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
  Bibby Hsieh <bibby.hsieh@mediatek.com>,
  Houlong Wei <houlong.wei@mediatek.com>
 References: <1594136714-11650-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1594136714-11650-3-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1594136714-11650-4-git-send-email-dennis-yc.hsieh@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <1fa46c55-2bc9-ad73-bb65-91825fcd4b9e@gmail.com>
-Date: Mon, 21 Sep 2020 18:15:29 +0200
+Message-ID: <d37643f0-bf2e-264a-6dc1-cdd485b18576@gmail.com>
+Date: Mon, 21 Sep 2020 18:15:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <1594136714-11650-3-git-send-email-dennis-yc.hsieh@mediatek.com>
+In-Reply-To: <1594136714-11650-4-git-send-email-dennis-yc.hsieh@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_121534_410405_A28A6819 
-X-CRM114-Status: GOOD (  24.14  )
+X-CRM114-CacheID: sfid-20200921_121551_230344_4FAC9AF1 
+X-CRM114-Status: GOOD (  25.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,46 +113,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 07/07/2020 17:45, Dennis YC Hsieh wrote:
-> add write_s function in cmdq helper functions which
+> add write_s_mask function in cmdq helper functions which
 > writes value contains in internal register to address
-> with large dma access support.
+> with mask and large dma access support.
 > 
 > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 
 Now pushed to v5.9-next/soc
 
 Thanks!
+
 > ---
->   drivers/soc/mediatek/mtk-cmdq-helper.c   |   19 +++++++++++++++++++
+>   drivers/soc/mediatek/mtk-cmdq-helper.c   |   23 +++++++++++++++++++++++
 >   include/linux/mailbox/mtk-cmdq-mailbox.h |    1 +
->   include/linux/soc/mediatek/mtk-cmdq.h    |   19 +++++++++++++++++++
->   3 files changed, 39 insertions(+)
+>   include/linux/soc/mediatek/mtk-cmdq.h    |   18 ++++++++++++++++++
+>   3 files changed, 42 insertions(+)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 9faf78fbed3a..880349b3f16c 100644
+> index 880349b3f16c..550e9e7e3ff2 100644
 > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -18,6 +18,10 @@ struct cmdq_instruction {
->   	union {
->   		u32 value;
->   		u32 mask;
-> +		struct {
-> +			u16 arg_c;
-> +			u16 src_reg;
-> +		};
->   	};
->   	union {
->   		u16 offset;
-> @@ -223,6 +227,21 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+> @@ -242,6 +242,29 @@ int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
 >   }
->   EXPORT_SYMBOL(cmdq_pkt_write_mask);
+>   EXPORT_SYMBOL(cmdq_pkt_write_s);
 >   
-> +int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
-> +		     u16 addr_low, u16 src_reg_idx)
+> +int cmdq_pkt_write_s_mask(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+> +			  u16 addr_low, u16 src_reg_idx, u32 mask)
 > +{
 > +	struct cmdq_instruction inst = {};
+> +	int err;
 > +
-> +	inst.op = CMDQ_CODE_WRITE_S;
+> +	inst.op = CMDQ_CODE_MASK;
+> +	inst.mask = ~mask;
+> +	err = cmdq_pkt_append_command(pkt, inst);
+> +	if (err < 0)
+> +		return err;
+> +
+> +	inst.mask = 0;
+> +	inst.op = CMDQ_CODE_WRITE_S_MASK;
 > +	inst.src_t = CMDQ_REG_TYPE;
 > +	inst.sop = high_addr_reg_idx;
 > +	inst.offset = addr_low;
@@ -160,45 +158,37 @@ Thanks!
 > +
 > +	return cmdq_pkt_append_command(pkt, inst);
 > +}
-> +EXPORT_SYMBOL(cmdq_pkt_write_s);
+> +EXPORT_SYMBOL(cmdq_pkt_write_s_mask);
 > +
 >   int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
 >   {
 >   	struct cmdq_instruction inst = { {0} };
 > diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index 05eea1aef5aa..1f76cfedb16d 100644
+> index 1f76cfedb16d..90d1d8e64412 100644
 > --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
 > +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -60,6 +60,7 @@ enum cmdq_code {
->   	CMDQ_CODE_JUMP = 0x10,
+> @@ -61,6 +61,7 @@ enum cmdq_code {
 >   	CMDQ_CODE_WFE = 0x20,
 >   	CMDQ_CODE_EOC = 0x40,
-> +	CMDQ_CODE_WRITE_S = 0x90,
+>   	CMDQ_CODE_WRITE_S = 0x90,
+> +	CMDQ_CODE_WRITE_S_MASK = 0x91,
 >   	CMDQ_CODE_LOGIC = 0xa0,
 >   };
 >   
 > diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index 2249ecaf77e4..9b0c57a0063d 100644
+> index 9b0c57a0063d..53230341bf94 100644
 > --- a/include/linux/soc/mediatek/mtk-cmdq.h
 > +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -12,6 +12,8 @@
->   #include <linux/timer.h>
->   
->   #define CMDQ_NO_TIMEOUT		0xffffffffu
-> +#define CMDQ_ADDR_HIGH(addr)	((u32)(((addr) >> 16) & GENMASK(31, 0)))
-> +#define CMDQ_ADDR_LOW(addr)	((u16)(addr) | BIT(1))
->   
->   struct cmdq_pkt;
->   
-> @@ -103,6 +105,23 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
->   			u16 offset, u32 value, u32 mask);
+> @@ -122,6 +122,24 @@ int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+>   		     u16 addr_low, u16 src_reg_idx);
 >   
 >   /**
-> + * cmdq_pkt_write_s() - append write_s command to the CMDQ packet
+> + * cmdq_pkt_write_s_mask() - append write_s with mask command to the CMDQ packet
 > + * @pkt:	the CMDQ packet
 > + * @high_addr_reg_idx:	internal register ID which contains high address of pa
 > + * @addr_low:	low address of pa
 > + * @src_reg_idx:	the CMDQ internal register ID which cache source value
+> + * @mask:	the specified target address mask, use U32_MAX if no need
 > + *
 > + * Return: 0 for success; else the error code is returned
 > + *
@@ -207,8 +197,8 @@ Thanks!
 > + * reg. Also use CMDQ_ADDR_LOW() to get low address for addr_low parameter when
 > + * call to this function.
 > + */
-> +int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
-> +		     u16 addr_low, u16 src_reg_idx);
+> +int cmdq_pkt_write_s_mask(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+> +			  u16 addr_low, u16 src_reg_idx, u32 mask);
 > +
 > +/**
 >    * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
