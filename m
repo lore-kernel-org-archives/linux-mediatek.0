@@ -2,20 +2,21 @@ Return-Path: <SRS0=fRkw=C7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7412DC4363D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 15:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00492C4363D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 16:05:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BB83212CC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 15:40:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 98C7F208A9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 16:05:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D6I4tkya"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BB83212CC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S0Druhn8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 98C7F208A9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,58 +25,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1Sp4ZRfOpSX/Xk8H5sDLftVF6hKF+MfAF7zYWqHIfng=; b=D6I4tkyaRGprmPWZmzbxPOqXr
-	49DPxBT3I03/647078FujhT1PysLlOoMZCVdOr/vKvzC0dm57BjY7LQ83VknooSNoCn+pmoyYd4/U
-	r7Bt4G5YZrdMyw6dn2N4rndGcc2Q0N+9YTO0OZ+/jZBfXJWAzrwJWsB5gAPfT13zvOHvkV2/4jK5W
-	44j2xYb9PbZYlxEKjGGqrDT14qT8M+sYjHfnWciY6UJoSY7DcGZu2mGWR67rHf8bS+NwO0dCWMW/d
-	tRXoqB7WO6p3TRNgYUK/q78XwAXupITpuBN9gFbKCRAVDYEkbYQQ4r4UYR+Mxhh+6KtbLYOOVUEIz
-	v8DZb/i7A==;
+	 bh=b3ItY1ZhDqjuS9D+wLnpE7DU6luelMlACFOMF5GSR0A=; b=S0Druhn89bWkxBuGN/x/nO+Vu
+	9PixFUgupzNIqc+zy4ZttoyApx2HVxMNA024vJXqVMDwWvaUkzLqx542gtBnhCQVj0eIDJaA8JhV7
+	N/YMkwWRLiBL06g3hzYfj9VO5aG8o5Mc/YA+4E4pfdyYUvOsfADBEXHEKaREIgPLrdxoBRI/yiaO9
+	GDana32Ep0rRl2AXqwv/tsQUXUKUZ14Yq2wqkmkrUlpDac3C+PQ3bCbSsRtem2rGhkdS3ftoVYWtQ
+	SBf7F82dOtohKP0QtoYqLwpJ4AQ1QqMEXo1Ac6nF4D+bxV1Pee2e+Ypneua7pG67eLkGOp+EMcY3y
+	+bmO1uBow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKkP7-000507-9U; Tue, 22 Sep 2020 15:40:29 +0000
-Received: from mail-il1-f194.google.com ([209.85.166.194])
+	id 1kKkmx-0000O4-Do; Tue, 22 Sep 2020 16:05:07 +0000
+Received: from mail-il1-f195.google.com ([209.85.166.195])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKkP1-0004yO-7Q; Tue, 22 Sep 2020 15:40:24 +0000
-Received: by mail-il1-f194.google.com with SMTP id t13so17705078ile.9;
- Tue, 22 Sep 2020 08:40:21 -0700 (PDT)
+ id 1kKkml-0000L3-GG; Tue, 22 Sep 2020 16:04:56 +0000
+Received: by mail-il1-f195.google.com with SMTP id a19so17812376ilq.10;
+ Tue, 22 Sep 2020 09:04:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=8GdJRN6siN1K/3VUt/RzQ7dwFh0PUHODAfHPAkJXVec=;
- b=DACpAJtOY1SiSTOueG57TOyuLpqtUYsR56bwyJDUwBo/Jrllc1mQeQB4oufe/0lOtg
- En0iqsZobJiAhiviNhCUz3yzu1boaj3VP/SCSfqc4VpdDa3j+DX7zBk3s7WISu8pPuBo
- oWuPtflSKI9IWhBWPtuEWR9bn94l5bzn8RAD3JREQhTL1UbwUehg7m8bZcBRTgQr+aqm
- oaqHQe8RDYc9cJfkgZEPU+5ZolL+J2m1XPo6VkIsmkU5mppaarWuHGggSS80XOvHNRdM
- 0oG1SCOFP8l0pSmmzopnh8vE6232jmfCVbKei1abfT3Cd599G/i3lRhFg1ev7G+yUJHp
- 1WYA==
-X-Gm-Message-State: AOAM533j6tifVhQUkDoiAok5DfccBj9J7tSmyvEpolEouqhGnBReamIK
- IjXEJyAk2f8hO/vCPwakgg==
-X-Google-Smtp-Source: ABdhPJyREJxSIdBKii6r07HwAtgscFY+xZM0Hzr/ADdWxpwvmnoH8SQzW6oBqLEpp2gzISGF/n+Kjw==
-X-Received: by 2002:a92:b503:: with SMTP id f3mr4935318ile.23.1600789220548;
- Tue, 22 Sep 2020 08:40:20 -0700 (PDT)
+ bh=CKfLdUexUfPdpjwTDlKQ3XKMxqzDUbFupt+mG72mDMc=;
+ b=dfGmUYTUCGDHj4MOosRnZutlbzTZawH3fwKkGT1n151tAkmXtyM3oFzxSH7ivnB+Qe
+ ha/nUK9swFMfQbdwz98dak16J3c60NITMCO46M0pm5T5xInjNg5fNVir0uQskbxIGIz6
+ ln3rimj0WYodjEAAmXfiRf7OqPFybc9Kmw0KSM5ul8gmU+d//KXHXC+4fiGJeBJ/CUoi
+ EXQwxPIohXzCaY1sZ10cM75HHlBoM29oypNAwtJi4I/FcKMid5eT4oY/un7s1iQ/fS6e
+ lKDAOeO7RfUBUcLiAmGTlP4N6WXx2Zo+xaA4ST8ZPDcoJOaZj3P3kDSVh4n71BD3ZQ7X
+ NiJw==
+X-Gm-Message-State: AOAM532LNR3W/uWIo/lE7qvIev8bZQFga4chH15Sm8WXoM3J4o1pPIy3
+ fAld2xXoTdEwrgHDB/1CuQ==
+X-Google-Smtp-Source: ABdhPJyGE4qpjft/53rjEnM1nes6ybplFwv2lRkqN4ajfiISqxLZHyh9XWi1DNlUUSO+vOKKTAg4Fw==
+X-Received: by 2002:a92:730b:: with SMTP id o11mr4773209ilc.91.1600790694176; 
+ Tue, 22 Sep 2020 09:04:54 -0700 (PDT)
 Received: from xps15 ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id e4sm7533543iom.14.2020.09.22.08.40.18
+ by smtp.gmail.com with ESMTPSA id k2sm7557712ioj.2.2020.09.22.09.04.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Sep 2020 08:40:19 -0700 (PDT)
-Received: (nullmailer pid 2730094 invoked by uid 1000);
- Tue, 22 Sep 2020 15:40:18 -0000
-Date: Tue, 22 Sep 2020 09:40:18 -0600
+ Tue, 22 Sep 2020 09:04:53 -0700 (PDT)
+Received: (nullmailer pid 2769164 invoked by uid 1000);
+ Tue, 22 Sep 2020 16:04:52 -0000
+Date: Tue, 22 Sep 2020 10:04:52 -0600
 From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH v2 01/13] dt-bindings: gpio: add common schema for GPIO
- controllers
-Message-ID: <20200922154018.GA2657058@bogus>
-References: <20200917165301.23100-1-krzk@kernel.org>
- <20200917165301.23100-2-krzk@kernel.org>
- <CAL_JsqJCLgf6syqV=jNPHPyu02ygwWCDDV+U9VCm0qRpLkirSQ@mail.gmail.com>
- <20200920193915.GA31074@kozik-lap>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 2/4] dt-bindings: phy: convert phy-mtk-tphy.txt to YAML
+ schema
+Message-ID: <20200922160452.GA2768616@bogus>
+References: <5af7c097d1c71a180d8ed1f1a44055859b42f1a0.1600760719.git.chunfeng.yun@mediatek.com>
+ <33b4c569db10d983c7a9485a8bd6ec4efc0a1242.1600760719.git.chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200920193915.GA31074@kozik-lap>
+In-Reply-To: <33b4c569db10d983c7a9485a8bd6ec4efc0a1242.1600760719.git.chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_114023_284571_5B1977F2 
-X-CRM114-Status: GOOD (  21.46  )
+X-CRM114-CacheID: sfid-20200922_120455_611191_22E0A4B3 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,76 +86,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Linux-ALSA <alsa-devel@alsa-project.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Fabio Estevam <festevam@gmail.com>, "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>, NXP Linux Team <linux-imx@nxp.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Scott Branden <sbranden@broadcom.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:MEDIA DRIVERS FOR RENESAS - FCP"
- <linux-renesas-soc@vger.kernel.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, CK Hu <ck.hu@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 20, 2020 at 09:39:15PM +0200, Krzysztof Kozlowski wrote:
-> On Fri, Sep 18, 2020 at 08:30:02AM -0600, Rob Herring wrote:
-> > On Thu, Sep 17, 2020 at 10:53 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> > >
-> > > Convert parts of gpio.txt bindings into common dtschema file for GPIO
-> > > controllers.  The schema enforces proper naming of GPIO controller nodes
-> > > and GPIO hogs.
-> > 
-> > Did you not see my previous reply about a common schema? We already
-> > have a common GPIO and hog schema in dtschema. Please add to it
-> > whatever is missing.
+On Tue, 22 Sep 2020 15:55:06 +0800, Chunfeng Yun wrote:
+> Convert phy-mtk-tphy.txt to YAML schema mediatek,tphy.yaml
 > 
-> Indeed, I'll enhance the dt-schema.
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  .../bindings/phy/mediatek,tphy.yaml           | 260 ++++++++++++++++++
+>  .../devicetree/bindings/phy/phy-mtk-tphy.txt  | 162 -----------
+>  2 files changed, 260 insertions(+), 162 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
 > 
-> The trouble is that each in-kernel YAML file still has to mention
-> possible gpio-hogs nodes. Is the proper solution to put them in common
-> YAML inside kernel sources?
-
-Currently, the gpio.yaml schema is applied to all nodes. That has the 
-advantage that GPIO related properties are always checked whether we 
-have a device specific schema or not. It has the disadvantage that you 
-can't do some constraints like required properties or what's in child 
-nodes.
-
-We could (and probably should) change it to be referenced by specific 
-gpio controller schemas like we do for i2c, spi, etc. Then you can 
-define required properties there and do something like:
-
-"-hogs$":
-  type: object
-  $ref: gpio-hogs.yaml#
 
 
-> > My goal is all common schema end up in dtschema, but I haven't pushed
-> > folks to do that yet. Ones I've done are there though. One issue is
-> > what's in dtschema should be GPL/BSD and the existing text bindings
-> > are default GPL, so there's a relicensing exercise. In some cases, the
-> > schema is there but I haven't copied over the descriptions.
-> 
-> Right, I'll skip the descriptions when posting to dt-schema.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-I was hoping someone would add the descriptions. :)
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: t-phy@11290000: usb-phy@11290800:clocks: [[4294967295, 15]] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: t-phy@11290000: usb-phy@11290800:clock-names: ['ref'] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: t-phy@11290000: usb-phy@11290900:clocks: [[4294967295]] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: t-phy@11290000: usb-phy@11290900:clock-names: ['ref'] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: t-phy@11290000: usb-phy@11291000:clocks: [[4294967295, 15]] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: t-phy@11290000: usb-phy@11291000:clock-names: ['ref'] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
 
-Rob
+
+See https://patchwork.ozlabs.org/patch/1368817
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure dt-schema is up to date:
+
+pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
