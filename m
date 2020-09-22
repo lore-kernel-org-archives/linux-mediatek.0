@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9573C2D0E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 19:56:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFAB1C2D0E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 19:57:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 76AEC2388B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 19:56:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 631DA2388B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 19:57:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="amfqJx16";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="XCziGGe6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76AEC2388B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KA2CHHNR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="X6JHUiS4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 631DA2388B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,44 +25,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
 	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=s9AbMPIqNb58alXJnP2Kk4zfn4qZVAyacO+7jqAeai0=; b=amfqJx16jJZsPOQHSc5Xie5Wx
-	k7l6I8wS6zc0R7Q8e4FUZWmZvmFNPe/YjDJ68pnWhBjHHZYa1+XmrwBGhdoQSqVSyDYzAHVe8tarF
-	s8UYKcjB/IMjfUtWYUOggdBUf+7UrT1nlH/EXwz7mxqlhA0tzz6EuAB/+sP/i7dtXyzf3F4GfcV3g
-	rzaGlQTnXsNtuMLtR9HSZR/TVRDQwNCjTBE2Ys/y+03e2W8KkVtzVvmAB0Is2n+i+c0TmwKsQNLyG
-	j4PAURUaLC1NrJud4dVryGRLljE80KYt0R0gQNTO6u7ncxjxiVMz56umijL3u7tbhj2+CjCZ8Y09R
-	nJyFvKb4Q==;
+	 bh=bsqP5FkTDeXSjh3hUqYHAEOjPNTQCXc9lQePS3OJPbQ=; b=KA2CHHNRnNve1zMLtO6aEUj8g
+	OBziB4/YK2tCwhCMn0MX8tzh0KfublrB0MxAcV4tnyZf7nSrBcx2PVMxG2mAnGEAcL94wyv+Wr7CD
+	Q+OcNpkusleCjZaNuDMg5LjSMONSDhJWUBI/jkNe34e603KvXwK7jvlYsZ0V9omtm7/oeOVKl2yEh
+	wYwW792YuZcE+hZvWTR1jeSToKO3CD4rhRn9Uze4T3nXzc/yN4KFHafPNFQz0j+nlyKhTdzfyWK1E
+	5vYws4qXdef9Clr3i9TNMCaa2qRn6mzkvCQRM5rfA33MGIajA6Yci6D3nNYvJMYk4eOCChtHrM+Eh
+	ohl+D8q4w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKoOz-0007zO-7H; Tue, 22 Sep 2020 19:56:37 +0000
+	id 1kKoPF-00084A-BA; Tue, 22 Sep 2020 19:56:53 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKoOt-0007xZ-VD; Tue, 22 Sep 2020 19:56:32 +0000
+ id 1kKoP7-00081n-S2; Tue, 22 Sep 2020 19:56:48 +0000
 Received: from kernel.org (unknown [104.132.0.74])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6BCA820888;
- Tue, 22 Sep 2020 19:56:30 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C33DE221E8;
+ Tue, 22 Sep 2020 19:56:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600804590;
- bh=q6tNcCWJ6KKNtBVHb8CAdaDosWLH+l1iuGIjDMwYFVE=;
+ s=default; t=1600804604;
+ bh=W+iHN5ru8hU8FsEqA6+NPs3FQxVIkYRCyEQVqaxXkJ8=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=XCziGGe6IR46B5iBOPzpfBpKr2zPiO3npHm+nFSj1NmkJAlk4uHmscRr9HSOcngl2
- LiktYFuxgLseqjlDOo1uI3lJnJKnvF5I0SmzgcLKkB2hDBzIArjb2KFMndJPG6sFfL
- yUGV6wyD/f0h4UNH0o4jsERI6UhchQvXzMquSe3o=
+ b=X6JHUiS40tzdoFtmb2sTu1lvkBxyi+p4e6imhSrziuGXslhjEC7vYyyHXnN1hrBY2
+ E27/saitvO3/e971ry5IX821KSajl/jC/BLmet2ex+rpY9pFpYM2rDuAi25PPg2bGN
+ rBZz5hTDrqG/2iuoT6k6ala2DRlNIu2EkYrEmti8=
 MIME-Version: 1.0
-In-Reply-To: <20200921082425.2590990-1-liushixin2@huawei.com>
-References: <20200921082425.2590990-1-liushixin2@huawei.com>
-Subject: Re: [PATCH -next] clk: mediatek: mt6797: simplify the return
+In-Reply-To: <20200921082426.2591042-1-liushixin2@huawei.com>
+References: <20200921082426.2591042-1-liushixin2@huawei.com>
+Subject: Re: [PATCH -next] clk: mediatek: mt7629: simplify the return
  expression of mtk_infrasys_init
 From: Stephen Boyd <sboyd@kernel.org>
 To: Liu Shixin <liushixin2@huawei.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Michael Turquette <mturquette@baylibre.com>
-Date: Tue, 22 Sep 2020 12:56:29 -0700
-Message-ID: <160080458901.310579.5223613357760220356@swboyd.mtv.corp.google.com>
+Date: Tue, 22 Sep 2020 12:56:43 -0700
+Message-ID: <160080460341.310579.1203602714296917820@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_155632_114694_685925CE 
+X-CRM114-CacheID: sfid-20200922_155646_053612_3BB9583A 
 X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -84,7 +84,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Liu Shixin (2020-09-21 01:24:25)
+Quoting Liu Shixin (2020-09-21 01:24:26)
 > Simplify the return expression.
 > 
 > Signed-off-by: Liu Shixin <liushixin2@huawei.com>
