@@ -2,80 +2,83 @@ Return-Path: <SRS0=fRkw=C7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2BC2C4346E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 02:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9CA3C4727C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 06:24:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 51C572399A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 02:55:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 48A0323A9D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 06:24:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2qw62F3A";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="P1DRcYb/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51C572399A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WbPesDuv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="oCjjbwre"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48A0323A9D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3w6b0JUcOGYEek7I5uPADpP7phnpnf4I2XbCFKX09rQ=; b=2qw62F3ATl/xuDQX4CVMXzm9y
-	GSbUbdDPoluTIwbIY9vnd9BOzkPnexJD07FPp3j+Q9pIOFPpT0tpuKW29FDw7JA3yAH/Zyx8lhtDn
-	5snnJVREeWmqG68UsLuN+Mm+1iG9xj3iyj6AO0UX48SPUBXBaHJWPPcM1vY+1CwO9H6yfKg1Fy0oC
-	beDg5i+K1CYNwJgG0TuDvpvJ0/uQ7bDyvuqSgUf2AhNrT+q7tPs+UKNgr6yrFQcZaFJuERO1saV9q
-	pJR5AM0w9rr4lfsQDG2VKMTbqV102wSokHnV+eGBOCMgWFOVbXAJYwWdKTTAPemhcrQOrkj3YsRvN
-	ExxxNIZeQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CmUknDqAWNwXSVNLtUOjLox8d41dLH47v6ThG3dOJ08=; b=WbPesDuvra88i+FnUpzsyTuKVh
+	7xYAECIDEsSj1oETCaYGA9w0bawdVO6VqRawgqwyg/8aVtN1IL0I4yFEFOYKp0zblZ1XTX6B0OUp7
+	tAvFKvUGYZzzkQEFBfueSsJpE89NzUbOoJOOP0DC4c4DKpBaDbbnQv+3122eryG4JSVdGWcVRb0g+
+	H8BA21nHbCnkt3/KvCF7pAR3FiC4465YVeKB6rPHS8WRy97O6OIHmKqrr3rl1jKP+fmUMNFHKvr64
+	uycPRJsfSoStOMNJSX3IwzQhVrAwc3+cC4NIDl3G5M4KtJCkfjNZ8dMub9RD0PTGxiTO8R2Q8sQA8
+	i3a9gTEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKYSk-0004rs-HE; Tue, 22 Sep 2020 02:55:26 +0000
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941])
+	id 1kKbiP-0003IR-TH; Tue, 22 Sep 2020 06:23:50 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKYSi-0004qu-Ek
- for linux-mediatek@lists.infradead.org; Tue, 22 Sep 2020 02:55:25 +0000
-Received: by mail-ua1-x941.google.com with SMTP id u48so5025205uau.0
- for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2020 19:55:23 -0700 (PDT)
+ id 1kKbi7-0003CF-F4
+ for linux-mediatek@lists.infradead.org; Tue, 22 Sep 2020 06:23:36 +0000
+Received: by mail-pf1-x443.google.com with SMTP id b124so11472093pfg.13
+ for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2020 23:23:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ru94yawi1J4H6mzGaA+bu3tz0jur5splNtJNFK2pEjw=;
- b=P1DRcYb/nUX2CdcgXprpBI9tvTvLET6HBPS6TSWEM8LPAWKOXRSbp3g8NfjjWEPrg2
- z5OY/gpUVCFFh7gg8fztZ3165X3/9SLbiq2vlES4FPHsU/276ohv2drtY9Fg47FRIM9r
- k049Oz7Qt1TFWAkDt6LUx2VPTcBBs/0Z0aPRk=
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2U8+uBAYm3xj+5UzC2gJ8PeZlHEk58iibAg0Az8yXNI=;
+ b=oCjjbwremslpduJT8W9PMBw1GwYpxoMp04JvZ3FyS2E6bVHQjUUdoZUE6PdtKrs6cm
+ HGtil+gYgdW+QzO2X9aJcF1DYjoH0jn0NjO/d9H2ZcJ1UpwAHGReVpP0OwIf/zWj5pjw
+ TnJ58MxE0tDyu9HavW0lz1EIEcB4MvQl0a1o8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ru94yawi1J4H6mzGaA+bu3tz0jur5splNtJNFK2pEjw=;
- b=IG5DcebknYqqx2Pebr6PCoyftiajVz0NyLk0YthwSY5EbApOL3ZB3YSx4jb9y3TdJf
- TTbyz8L/EXCEONqjrG/nHw2/dT/ydxYpn8wK7GFu6MZybhw7yaFbse/vA3NkPF2ZKakI
- q1VNmQDB2XXq3xPhXIQX/pYKn2EM//oWskQFti1psorJH1DaBNSyLT0HFTdr1tRskkYX
- yX/Cn/UMnR+9rZVC/gudxZpR5y86OEu+XEE8OjmhF9fiWdkIGL8pjIZiMse+ywm+KEvi
- 1d4NK5xcX5UKKCo9RVo836b8JuPmnv8+N2QIevUKrvgf/vzaoLQJ1mw8I69BzYOKl3UV
- kUKQ==
-X-Gm-Message-State: AOAM5300aTy5RDHMb0WSAeYAje+0QZMos5BD8ULVlZsjhsamhlVcfQam
- 3yPvP8TmjnbXtzcyI1xgeefnhfeEEeKc6ktcGpKr/g==
-X-Google-Smtp-Source: ABdhPJzXVsQocQsixjn2gyYjkmtSokc8QsHvNccpRbxRW75Lla1V27EuRsAXbx5XGoSul1cExZQl1l+CB2eUrRu9cls=
-X-Received: by 2002:ab0:6d8d:: with SMTP id m13mr1970572uah.82.1600743322399; 
- Mon, 21 Sep 2020 19:55:22 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2U8+uBAYm3xj+5UzC2gJ8PeZlHEk58iibAg0Az8yXNI=;
+ b=ZfXhCGP3bMBrxZZ6ybi85Tf4wNctiBULqaLP92Gb62diZrCKZCO5ZKxckc0vREgvdn
+ VoCAnlCbsbtT4SbrYUDnfItM7r34KQ9hqiBCh42xmp81CPcTddfzaBRkLsq/U1P6pF+e
+ /x/ohn1yY1gKgnb72nMZkYxFYbn8+XMJhN8fFJ+pC5gPCxwVpixLDpDf3bex3O20IORf
+ eMzXuR5BqD9NLDrIF4koZzwtd2R/jXR8xcJSICoHQ1VMm7Ka0Ae5afD1HgW2X+UiqO8g
+ phbS0dHF6lATo+RrvJIF/f1O8jSlZVHKSYrg33nlDS3LQbRa3QvnZy47Q+rhAPOpd32p
+ mThg==
+X-Gm-Message-State: AOAM532IFR1V+dtIMilpP4r3jT7C2uWeG/GlbDXnvzDDHem8feElaNJl
+ JB2cqIr2RIRmyOnw2d4XmeWGpA==
+X-Google-Smtp-Source: ABdhPJyf30S7UNCP9BWMNYqg/VsZI7r0E+1gWIlGbyLIQoAMBt0KOSt/44+rOjQxodPmOd4mE+DHPA==
+X-Received: by 2002:a17:902:7445:b029:d1:dea3:a3ca with SMTP id
+ e5-20020a1709027445b02900d1dea3a3camr3238491plt.19.1600755807417; 
+ Mon, 21 Sep 2020 23:23:27 -0700 (PDT)
+Received: from localhost ([2401:fa00:1:10:de4a:3eff:fe7d:d39c])
+ by smtp.gmail.com with ESMTPSA id 134sm14173234pfa.93.2020.09.21.23.23.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Sep 2020 23:23:26 -0700 (PDT)
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH] ASoC: hdmi-codec: Use set_jack ops to set jack
+Date: Tue, 22 Sep 2020 14:23:16 +0800
+Message-Id: <20200922062316.1172935-1-cychiang@chromium.org>
+X-Mailer: git-send-email 2.28.0.681.g6f77f65b4e-goog
 MIME-Version: 1.0
-References: <20200730120054.1.I5e6f8c262031d0451fe7241b744f4f3111c1ce71@changeid>
- <6549429e-bd3c-5249-2fbd-cd1c45b5b2c1@gmail.com>
-In-Reply-To: <6549429e-bd3c-5249-2fbd-cd1c45b5b2c1@gmail.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Tue, 22 Sep 2020 10:55:11 +0800
-Message-ID: <CANMq1KANt+3=qJ56QR_A2jnujohvPqJxTR=xkAwYzX_gxQ7L+g@mail.gmail.com>
-Subject: Re: [PATCH] soc: mediatek: Check if power domains can be powered on
- at boot time
-To: Matthias Brugger <matthias.bgg@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_225524_570518_96626632 
-X-CRM114-Status: GOOD (  25.95  )
+X-CRM114-CacheID: sfid-20200922_022331_612332_2D15E208 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,108 +90,183 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- lkml <linux-kernel@vger.kernel.org>
+Cc: alsa-devel@alsa-project.org, dianders@chromium.org,
+ Srinivasa Rao <srivasam@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
+ Tzung-Bi Shih <tzungbi@google.com>, Takashi Iwai <tiwai@suse.com>,
+ Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>,
+ Rohit kumar <rohitkr@codeaurora.org>, tzungbi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ dgreid@chromium.org, Jaroslav Kysela <perex@perex.cz>,
+ linux-arm-kernel@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Use set_jack ops to set jack so machine drivers do not need to include
+hdmi-codec.h explicitly.
 
-On Tue, Sep 22, 2020 at 1:07 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
-> Hi Nicolas,
->
-> Thanks for the patch.
->
-> On 30/07/2020 06:01, Nicolas Boichat wrote:
-> > In the error case, where a power domain cannot be powered on
-> > successfully at boot time (in mtk_register_power_domains),
-> > pm_genpd_init would still be called with is_off=false, and the
-> > system would later try to disable the power domain again, triggering
-> > warnings as disabled clocks are disabled again (and other potential
-> > issues).
-> >
-> > Fixes: c84e358718a66f7 ("soc: Mediatek: Add SCPSYS power domain driver")
-> > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> >
-> > ---
-> >
-> >   drivers/soc/mediatek/mtk-scpsys.c | 5 +++--
-> >   1 file changed, 3 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> > index f669d3754627dad..0055a52a49733d5 100644
-> > --- a/drivers/soc/mediatek/mtk-scpsys.c
-> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> > @@ -524,6 +524,7 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >       for (i = 0; i < num; i++) {
-> >               struct scp_domain *scpd = &scp->domains[i];
-> >               struct generic_pm_domain *genpd = &scpd->genpd;
-> > +             bool on;
-> >
-> >               /*
-> >                * Initially turn on all domains to make the domains usable
-> > @@ -531,9 +532,9 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >                * software.  The unused domains will be switched off during
-> >                * late_init time.
-> >                */
-> > -             genpd->power_on(genpd);
-> > +             on = genpd->power_on(genpd) >= 0;
->
-> Is this something we expect? On probing we realize that some domains can't be
-> turned on?
->
-> I understand that this would be a bug in the driver. Therefore we should at most
-> provide a warning instead of working around the bug, hiding it. Or do I got this
-> wrong?
+Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+---
+Separate this patch from the machine driver patch series at
+https://patchwork.kernel.org/cover/11773209/
+in the hope that this can be merged first to ease other
+machine drivers' usage.
 
-No, you get this right. That's a bug (we see this on unreleased HW),
-and we will fix it.
+ include/sound/hdmi-codec.h                           |  3 ---
+ sound/soc/codecs/hdmi-codec.c                        | 12 ++++--------
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c            |  5 ++---
+ sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c   |  5 ++---
+ .../mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c |  5 ++---
+ sound/soc/rockchip/rockchip_max98090.c               |  3 +--
+ 6 files changed, 11 insertions(+), 22 deletions(-)
 
-Now, we already get this (somewhat subtle) error message on boot:
-mtk-scpsys 10006000.power-controller: Failed to power on domain adsp
+diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
+index 7754631a3102..b55970859a13 100644
+--- a/include/sound/hdmi-codec.h
++++ b/include/sound/hdmi-codec.h
+@@ -117,9 +117,6 @@ struct hdmi_codec_pdata {
+ struct snd_soc_component;
+ struct snd_soc_jack;
+ 
+-int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
+-			       struct snd_soc_jack *jack);
+-
+ #define HDMI_CODEC_DRV_NAME "hdmi-audio-codec"
+ 
+ #endif /* __HDMI_CODEC_H__ */
+diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
+index 8c6f540533ba..403d4c6a49a8 100644
+--- a/sound/soc/codecs/hdmi-codec.c
++++ b/sound/soc/codecs/hdmi-codec.c
+@@ -698,13 +698,9 @@ static void plugged_cb(struct device *dev, bool plugged)
+ 		hdmi_codec_jack_report(hcp, 0);
+ }
+ 
+-/**
+- * hdmi_codec_set_jack_detect - register HDMI plugged callback
+- * @component: the hdmi-codec instance
+- * @jack: ASoC jack to report (dis)connection events on
+- */
+-int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
+-			       struct snd_soc_jack *jack)
++static int hdmi_codec_set_jack(struct snd_soc_component *component,
++			       struct snd_soc_jack *jack,
++			       void *data)
+ {
+ 	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
+ 	int ret = -EOPNOTSUPP;
+@@ -720,7 +716,6 @@ int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
+ 	}
+ 	return ret;
+ }
+-EXPORT_SYMBOL_GPL(hdmi_codec_set_jack_detect);
+ 
+ static int hdmi_dai_spdif_probe(struct snd_soc_dai *dai)
+ {
+@@ -806,6 +801,7 @@ static const struct snd_soc_component_driver hdmi_driver = {
+ 	.use_pmdown_time	= 1,
+ 	.endianness		= 1,
+ 	.non_legacy_dai_naming	= 1,
++	.set_jack		= hdmi_codec_set_jack,
+ };
+ 
+ static int hdmi_codec_probe(struct platform_device *pdev)
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index 347b095d478d..c28ebf891cb0 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -11,7 +11,6 @@
+ #include <linux/of_gpio.h>
+ #include <sound/soc.h>
+ #include <sound/jack.h>
+-#include <sound/hdmi-codec.h>
+ #include "../../codecs/rt5645.h"
+ 
+ #define MCLK_FOR_CODECS		12288000
+@@ -154,8 +153,8 @@ static int mt8173_rt5650_hdmi_init(struct snd_soc_pcm_runtime *rtd)
+ 	if (ret)
+ 		return ret;
+ 
+-	return hdmi_codec_set_jack_detect(asoc_rtd_to_codec(rtd, 0)->component,
+-					  &mt8173_rt5650_hdmi_jack);
++	return snd_soc_component_set_jack(asoc_rtd_to_codec(rtd, 0)->component,
++					  &mt8173_rt5650_hdmi_jack, NULL);
+ }
+ 
+ enum {
+diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+index 68fe23b96b14..15e48cde4921 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+@@ -10,7 +10,6 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/pinctrl/consumer.h>
+-#include <sound/hdmi-codec.h>
+ #include <sound/jack.h>
+ #include <sound/pcm_params.h>
+ #include <sound/soc.h>
+@@ -375,8 +374,8 @@ static int mt8183_da7219_max98357_hdmi_init(struct snd_soc_pcm_runtime *rtd)
+ 	if (ret)
+ 		return ret;
+ 
+-	return hdmi_codec_set_jack_detect(asoc_rtd_to_codec(rtd, 0)->component,
+-					  &priv->hdmi_jack);
++	return snd_soc_component_set_jack(asoc_rtd_to_codec(rtd, 0)->component,
++					  &priv->hdmi_jack, NULL);
+ }
+ 
+ static struct snd_soc_dai_link mt8183_da7219_dai_links[] = {
+diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
+index 07410d7afaa9..327dfad41e31 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
+@@ -9,7 +9,6 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/pinctrl/consumer.h>
+-#include <sound/hdmi-codec.h>
+ #include <sound/jack.h>
+ #include <sound/pcm_params.h>
+ #include <sound/soc.h>
+@@ -350,8 +349,8 @@ mt8183_mt6358_ts3a227_max98357_hdmi_init(struct snd_soc_pcm_runtime *rtd)
+ 	if (ret)
+ 		return ret;
+ 
+-	return hdmi_codec_set_jack_detect(asoc_rtd_to_codec(rtd, 0)->component,
+-					  &priv->hdmi_jack);
++	return snd_soc_component_set_jack(asoc_rtd_to_codec(rtd, 0)->component,
++					  &priv->hdmi_jack, NULL);
+ }
+ 
+ static struct snd_soc_dai_link mt8183_mt6358_ts3a227_dai_links[] = {
+diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
+index 9acfd024aa5d..c8f1a28a92b7 100644
+--- a/sound/soc/rockchip/rockchip_max98090.c
++++ b/sound/soc/rockchip/rockchip_max98090.c
+@@ -12,7 +12,6 @@
+ #include <linux/gpio.h>
+ #include <linux/of_gpio.h>
+ #include <sound/core.h>
+-#include <sound/hdmi-codec.h>
+ #include <sound/jack.h>
+ #include <sound/pcm.h>
+ #include <sound/pcm_params.h>
+@@ -238,7 +237,7 @@ static int rk_hdmi_init(struct snd_soc_pcm_runtime *runtime)
+ 		return ret;
+ 	}
+ 
+-	return hdmi_codec_set_jack_detect(component, &rk_hdmi_jack);
++	return snd_soc_component_set_jack(component, &rk_hdmi_jack, NULL);
+ }
+ 
+ /* max98090 dai_link */
+-- 
+2.28.0.681.g6f77f65b4e-goog
 
-But without this patch, there is an unbalance later on (that is
-possibly a bit confusing):
-[    6.510811] ------------[ cut here ]------------
-[    6.515417] adsp_sel already disabled
-[    6.519089] WARNING: CPU: 5 PID: 180 at drivers/clk/clk.c:958
-clk_core_disable+0x1ec/0x22c
-...
-[    6.658393]  clk_core_disable+0x1ec/0x22c
-[    6.662395]  clk_disable+0x34/0x48
-[    6.665791]  scpsys_clk_disable+0x34/0x58
-[    6.669791]  scpsys_power_off+0x374/0x3ec
-[    6.673790]  _genpd_power_off+0x40/0x98
-[    6.677616]  genpd_power_off+0x168/0x208
-[    6.681530]  genpd_power_off_work_fn+0x38/0x54
-[    6.685964]  process_one_work+0x208/0x3c8
-[    6.689964]  worker_thread+0x23c/0x3e8
-[    6.693703]  kthread+0x11c/0x12c
-[    6.696923]  ret_from_fork+0x10/0x18
-[    6.700487] ---[ end trace 91ddada49c4d717c ]---
-
-But I get your point, we should probably add something like
-WARN_ON(!on) to make it clearer, at the time when the issue occurs,
-that something is not right...
-
-Thanks,
-
-> Regards,
-> Matthias
->
-> >
-> > -             pm_genpd_init(genpd, NULL, false);
-> > +             pm_genpd_init(genpd, NULL, !on);
-> >       }
-> >
-> >       /*
-> >
 
 _______________________________________________
 Linux-mediatek mailing list
