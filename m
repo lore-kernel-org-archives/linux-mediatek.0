@@ -7,73 +7,73 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2235C2D0E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 22:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E94E9C2D0E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 23:15:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 20C4120715
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 22:36:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 99F10221EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2020 23:15:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lkHIVXzb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="G985UI6D"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20C4120715
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IVXEtTcP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99F10221EF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=G7sOIuZ2dAAfTPUiN0tpiYHIr1ndnBk1yl5wIMlwXow=; b=lkHIVXzbqbQjwhFEjBjOYo31B
-	BAJF/Af26LWkGZs40U39OO5mpOxqovflqugE2cdpqErHWTtuYZillEmO0Xy0+dMxkRfnZl+V1NaDd
-	YTqendXjvQyhlVGLhb+WcvQOthgS6gIGDjcui+6wpGYgLDMxsgisyK6XJ25L0GNEef/dZvUoIJOQs
-	l7T5HxlJxLENkrhepjI3vLeHpcYBuWWkOpywQc8ff/O/AkRgEuk16shD85YU+MebMQsJ1kSIXjcB4
-	dhHgfilo5fG7xHOwCTqJ0cGiTad20Vb0XaMkQ+YB7evRlsivL+/RPEpHguBplbItOpfRxUlDqcQGm
-	1dp6yFQgA==;
+	 bh=/dkpsvakD2F1M4S7l1yOq7otDVcYXtGZtYVKNyBgwo8=; b=IVXEtTcPo0W5QVfpopHhDfikK
+	t1Oce25cOSelWABfo4Yo0DhobSk6p08c/fCBYHu/QPhms2iWQJ2HrkiDfiAk6vlNQPNi1Ty/BUMSi
+	S+xszA+6LrjzLwbZM6jV9SupGyGt4toxWJJbio/r/hWKuk5o+czaxt8q7QuTPzvcToKbW95W8NOTN
+	zs7WGbZrRYUr2Ezaj1hexkEZxyxs7FYwK4D0tkB5UGnvf7HTBkgWYsZU8xwN9SouyqMeEE9HUI841
+	+R7ZUKWp7ns6DBXlg7Hpb20YErm+y013ryYO1FEzfONk3WPhyyqbOyO0diN55w5wJ+pIJ1geIh8Ub
+	zM+RmOb6w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKqtp-0001jQ-Jx; Tue, 22 Sep 2020 22:36:37 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kKrUz-00035D-02; Tue, 22 Sep 2020 23:15:01 +0000
+Received: from mail-il1-f194.google.com ([209.85.166.194])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKqtl-0001iV-GO; Tue, 22 Sep 2020 22:36:34 +0000
-Received: from mail-oi1-f175.google.com (mail-oi1-f175.google.com
- [209.85.167.175])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5671D238A1;
- Tue, 22 Sep 2020 22:36:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600814192;
- bh=42JEbkwJ0QcZASq1Xu6y67Bf8D/3KmeHjzJ9YCx8dHE=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=G985UI6DInk3QstKOjZeMHQVb2yBKJKcr6wo7bgw8wgSz4csAVdeiEuGxORsC3F23
- q4qGJSGjNjjnFmVVei6AUkvzfizaJgozFleRVSrIihdOax5W8Xy2AK63PMc9rMW4Yf
- QowxKuDNnZJxXEIrPiSYDGQsyoGCKkAl1tZzvttY=
-Received: by mail-oi1-f175.google.com with SMTP id m7so22868746oie.0;
- Tue, 22 Sep 2020 15:36:32 -0700 (PDT)
-X-Gm-Message-State: AOAM533FrqIbe1AsEHY4nfylIuM+xsrr/CPsJ6ctOcOWfAJDjxPoSDiJ
- KDcq0fi9aD/m1IuFzVsKLSOKDaKZDt1zRfIxAA==
-X-Google-Smtp-Source: ABdhPJzZN0UgDaU6VdXUbXGFsCMsyMLMdcBZ6UFDqWV5LRcZ8PQQtjB9wUHpc6lYoWnyT/qiwTJuMWEE8IMBZfMrad8=
-X-Received: by 2002:aca:fc07:: with SMTP id a7mr4015483oii.106.1600814191611; 
- Tue, 22 Sep 2020 15:36:31 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
- <20200910172826.3074357-2-enric.balletbo@collabora.com>
- <20200911230255.GA2972120@bogus>
- <7a1c89b6-f483-5d57-f154-b80b72964077@gmail.com>
-In-Reply-To: <7a1c89b6-f483-5d57-f154-b80b72964077@gmail.com>
+ id 1kKrUs-000330-Qu; Tue, 22 Sep 2020 23:14:56 +0000
+Received: by mail-il1-f194.google.com with SMTP id x18so16557652ila.7;
+ Tue, 22 Sep 2020 16:14:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=AOMIrv105VAQ5jLvYFtagW/T9+P98LUmqEIXqmLJvlI=;
+ b=gUE46yCpItDdb350yNqSOAXuitCCxHVob/rAdarbwsSiTw8+FtQSO+QgK34TfDJ/r1
+ ri1wJ0J+ko1GNXIpcZ9K8CwYf3ArBmVaLz89p4pU6N0p8x5cUCxXp52GeDhqsw0zfrPd
+ bijoxVz6p5jDB2C/tu4UX8GX+tnyaFExOrh8Svta7uQU4JQMO9p+Z3q0ZLmHlwg46R53
+ +RDA25lQz5O1X74Nt5LQFhqZrd66233zDDyQxWSQdmlFjB0lhKUo6hvXyzUrMXoXFKUp
+ 9CBO2UDc8uPsEdmxm+ML2x9hNBLqNhKsmpRknGy9o9UotoJf+fjMp9a5ZaHDe0IcGGlJ
+ uYTw==
+X-Gm-Message-State: AOAM530aECD9d5dP0+h2hAPiw05RGUdCz6CxMrDxbVJS4ans0ZsceU96
+ V0w1uivZ6Ajd3c/70sFU5w==
+X-Google-Smtp-Source: ABdhPJwfHoRB8beetX5qcoNEpJvmy4qrDYFw16WBeEUrgkDGw6+w4fvp+4aNkkYoNJBxhUGlAGxZnQ==
+X-Received: by 2002:a92:cbcd:: with SMTP id s13mr5969567ilq.306.1600816492469; 
+ Tue, 22 Sep 2020 16:14:52 -0700 (PDT)
+Received: from xps15 ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id s1sm9776540iln.22.2020.09.22.16.14.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Sep 2020 16:14:51 -0700 (PDT)
+Received: (nullmailer pid 3446962 invoked by uid 1000);
+ Tue, 22 Sep 2020 23:14:50 -0000
+Date: Tue, 22 Sep 2020 17:14:50 -0600
 From: Rob Herring <robh@kernel.org>
-Date: Tue, 22 Sep 2020 16:36:20 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLCOXKCTbjw=8MMhnq0YdhrOb7tY6QpT7d3XTAgUrbg=w@mail.gmail.com>
-Message-ID: <CAL_JsqLCOXKCTbjw=8MMhnq0YdhrOb7tY6QpT7d3XTAgUrbg=w@mail.gmail.com>
-Subject: Re: [PATCH 01/12] dt-bindings: power: Add bindings for the Mediatek
- SCPSYS power domains controller
-To: Matthias Brugger <matthias.bgg@gmail.com>
+To: Henry Chen <henryc.chen@mediatek.com>
+Subject: Re: [PATCH V5 01/17] dt-bindings: soc: Add dvfsrc driver bindings
+Message-ID: <20200922231450.GA3433939@bogus>
+References: <1600052684-21198-1-git-send-email-henryc.chen@mediatek.com>
+ <1600052684-21198-2-git-send-email-henryc.chen@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1600052684-21198-2-git-send-email-henryc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_183633_666714_72B8EBC5 
-X-CRM114-Status: GOOD (  34.23  )
+X-CRM114-CacheID: sfid-20200922_191454_897567_27C18082 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,148 +85,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
- Weiyi Lu <weiyi.lu@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Fabien Parent <fparent@baylibre.com>, Matthias Brugger <mbrugger@suse.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
+ Mike Turquette <mturquette@linaro.org>, James Liao <jamesjj.liao@mediatek.com>,
+ Viresh Kumar <vireshk@kernel.org>, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Stephen Boyd <swboyd@chromium.org>,
+ Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, Ryan Case <ryandcase@chromium.org>,
+ Arvin Wang <arvin.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Georgi Djakov <georgi.djakov@linaro.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 14, 2020 at 2:59 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
->
->
-> On 12/09/2020 01:02, Rob Herring wrote:
-> > On Thu, Sep 10, 2020 at 07:28:15PM +0200, Enric Balletbo i Serra wrote:
-> >> The System Control Processor System (SCPSYS) has several power management
-> >> related tasks in the system. Add the bindings to define the power
-> >> domains for the SCPSYS power controller.
-> >>
-> >> Co-developed-by: Matthias Brugger <mbrugger@suse.com>
-> >> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> >> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> >> ---
-> >> Dear Rob,
-> >>
-> >> I am awasre that this binding is not ready, but I prefered to send because I'm
-> >> kind of blocked. Compiling this binding triggers the following error:
-> >>
-> >>      mediatek,power-controller.example.dt.yaml: syscon@10006000: mfg_async@7:
-> >>      '#address-cells', '#size-cells', 'mfg_2d@8'
-> >>      do not match any of the regexes: 'pinctrl-[0-9]+'
-> >>
-> >> This happens when a definition of a power-domain (parent) contains
-> >> another power-domain (child), like the example. I am not sure how to
-> >> specify this in the yaml and deal with this, so any clue is welcome.
-> >
-> > You just have to keep nesting schemas all the way down. Define a
-> > grandchild node under the child node and then all of its properties.
-> >
-> >>
-> >> Thanks,
-> >>    Enric
-> >>
-> >>   .../power/mediatek,power-controller.yaml      | 171 ++++++++++++++++++
-> >>   1 file changed, 171 insertions(+)
-> >>   create mode 100644 Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> >> new file mode 100644
-> >> index 000000000000..8be9244ad160
-> >> --- /dev/null
-> >> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> >> @@ -0,0 +1,171 @@
-> >> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> >> +%YAML 1.2
-> >> +---
-> >> +$id: http://devicetree.org/schemas/power/mediatek,power-controller.yaml#
-> >> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> >> +
-> >> +title: Mediatek Power Domains Controller
-> >> +
-> >> +maintainers:
-> >> +  - Weiyi Lu <weiyi.lu@mediatek.com>
-> >> +  - Matthias Brugger <mbrugger@suse.com>
-> >> +
-> >> +description: |
-> >> +  Mediatek processors include support for multiple power domains which can be
-> >> +  powered up/down by software based on different application scenes to save power.
-> >> +
-> >> +  IP cores belonging to a power domain should contain a 'power-domains'
-> >> +  property that is a phandle for SCPSYS node representing the domain.
-> >> +
-> >> +properties:
-> >> +  $nodename:
-> >> +    pattern: "^syscon@[0-9a-f]+$"
-> >> +
-> >> +  compatible:
-> >> +    items:
-> >> +      - enum:
-> >> +        - mediatek,mt8173-power-controller
-> >> +      - const: syscon
-> >> +
-> >> +  reg:
-> >> +    maxItems: 1
-> >> +
-> >> +patternProperties:
-> >> +  "^.*@[0-9]$":
-> >
-> > Node names should be generic:
-> >
-> > power-domain@
-> >
->
-> Enric correct me if I'm wrong, if we want to see the power domains in debugfs,
-> they are listed by their name. If all are called power-domain then the listing
-> is pretty much useless.
+On Mon, Sep 14, 2020 at 11:04:28AM +0800, Henry Chen wrote:
+> Document the binding for enabling dvfsrc on MediaTek SoC.
+> 
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-Sorry, but not a binding problem.
-
-Maybe if debugfs shows what devices are contained within a power
-domain then it doesn't matter so much.
-
-> >> +    type: object
-> >> +    description: |
-> >> +      Represents the power domains within the power controller node as documented
-> >> +      in Documentation/devicetree/bindings/power/power-domain.yaml.
-> >> +
-> >> +    properties:
-> >> +      reg:
-> >> +        description: |
-> >> +          Power domain index. Valid values are defined in:
-> >> +              "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
-> >> +        maxItems: 1
-> >> +
-> >> +      '#power-domain-cells':
-> >> +        description:
-> >> +          Documented by the generic PM Domain bindings in
-> >> +          Documentation/devicetree/bindings/power/power-domain.yaml.
-> >
-> > No need to redefine a common property. This should define valid values
-> > for it.
-> >
-> >> +
-> >> +      clocks:
-> >> +        description: |
-> >> +          A number of phandles to clocks that need to be enabled during domain
-> >> +          power-up sequencing.
-> >
-> > No need to redefine 'clocks'. You need to define how many, what each one
-> > is, and the order.
-> >
->
-> Do you mean we have to define each clock for each power domain of each SoC?
-
-Yes.
+I did, but bindings are in DT schema format now. We had a grace 
+period for some time, but please convert this to DT schema.
 
 Rob
+
+> ---
+>  .../devicetree/bindings/soc/mediatek/dvfsrc.txt    | 25 ++++++++++++++++++++++
+>  include/dt-bindings/soc/mtk,dvfsrc.h               | 14 ++++++++++++
+>  2 files changed, 39 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+>  create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+> new file mode 100644
+> index 0000000..d5a47d8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+> @@ -0,0 +1,25 @@
+> +MediaTek DVFSRC
+> +
+> +The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
+> +HW module which is used to collect all the requests from both software and
+> +hardware and turn into the decision of minimum operating voltage and minimum
+> +DRAM frequency to fulfill those requests.
+> +
+> +Required Properties:
+> +- compatible: Should be one of the following
+> +	- "mediatek,mt6873-dvfsrc": For MT6873 SoC
+> +	- "mediatek,mt8183-dvfsrc": For MT8183 SoC
+> +	- "mediatek,mt8192-dvfsrc": For MT8192 SoC
+> +- reg: Address range of the DVFSRC unit
+> +- clock-names: Must include the following entries:
+> +	"dvfsrc": DVFSRC module clock
+> +- clocks: Must contain an entry for each entry in clock-names.
+> +
+> +Example:
+> +
+> +	dvfsrc@10012000 {
+> +		compatible = "mediatek,mt8183-dvfsrc";
+> +		reg = <0 0x10012000 0 0x1000>;
+> +		clocks = <&infracfg CLK_INFRA_DVFSRC>;
+> +		clock-names = "dvfsrc";
+> +	};
+> diff --git a/include/dt-bindings/soc/mtk,dvfsrc.h b/include/dt-bindings/soc/mtk,dvfsrc.h
+> new file mode 100644
+> index 0000000..a522488
+> --- /dev/null
+> +++ b/include/dt-bindings/soc/mtk,dvfsrc.h
+> @@ -0,0 +1,14 @@
+> +/* SPDX-License-Identifier: GPL-2.0
+> + *
+> + * Copyright (c) 2018 MediaTek Inc.
+> + */
+> +
+> +#ifndef _DT_BINDINGS_POWER_MTK_DVFSRC_H
+> +#define _DT_BINDINGS_POWER_MTK_DVFSRC_H
+> +
+> +#define MT8183_DVFSRC_LEVEL_1	1
+> +#define MT8183_DVFSRC_LEVEL_2	2
+> +#define MT8183_DVFSRC_LEVEL_3	3
+> +#define MT8183_DVFSRC_LEVEL_4	4
+> +
+> +#endif /* _DT_BINDINGS_POWER_MTK_DVFSRC_H */
+> -- 
+> 1.9.1
 
 _______________________________________________
 Linux-mediatek mailing list
