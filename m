@@ -7,16 +7,17 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D729C4742A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E56EC47430
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 52DC721BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 09F5623119
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zqNoztnb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 52DC721BE5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0m3x4Bap";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="uxoF8bYL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09F5623119
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +26,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IsCfat56dVkEobGkAH/n3uShBFb6ASlQ1lcfzFt5gEY=; b=zqNoztnb8xezdrKgwREIF25yo
-	+mYouqrRPO8PrVRrFalSN1xXaHQe1K/01bu++C/pgn/wc5VRKD7vUDkOgvpOme0peZeujgNW0leRc
-	9KGhz/+36xY7TaIPlXxYhdWIBOb6k1oGc0n7n0hxN+t/x10MtAvVtGfBRjzuo/JLLIHPLTM/b/5IY
-	7CcrqmdrDczml3urG4tXgK+5nYJnbX1YeI5Er2cEQVp4zz/Em7pXapxBXGdSCIsmR45J1SY43lSwa
-	sBuFrPaYpylOtg0DvIZ2yFmkxzM7hakUHvFAdFUoZVPwmAA2EN42leSWriOZIG7249jBQOoiQ2nJ0
-	KuAtjc0IQ==;
+	 bh=DK6nw5iNhdyoqS8nJIrbl8omkJLxKZU5/dW3xPVEIIA=; b=0m3x4BapNEQUQ5I9xqhK5+Xfa
+	uTGy9nxl2WKVwAymJsicgYxwxmxL93XwjSwRZCs0M3glVc952LnslUYb5X4edcgZO3z+b+XoMg+WD
+	Jb7N2sZPXqIu0XL7fEpPpTyP7hnWs4uuSERHvVbOrirtZ93gJbtpE9i2obqSyEhBLpD/4fhKtu7u1
+	NJbCa2z2jA19qp72VsNRxcjsmja7uanmTFIngXWq7EVNibdOz6AnhuqgLZC/zBKoZDqqqb5j/zVlv
+	1xb8OCLZZJk+T2HOcw6giHR3thwSAJhPOqyjQg263de+Y6BjS3n4tbqUWLQDtaXnth7o5679wU9rl
+	BX4KLUqYw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL1w1-0005mF-2l; Wed, 23 Sep 2020 10:23:37 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kL1w7-0005tB-Mk; Wed, 23 Sep 2020 10:23:43 +0000
+Received: from casper.infradead.org ([90.155.50.34])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL1ue-0004uB-8D; Wed, 23 Sep 2020 10:22:20 +0000
+ id 1kL1uo-00050o-Qp; Wed, 23 Sep 2020 10:22:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=7OL9FReisTLRRoLL8yYFDD/cC7BUgNMD6QZd54paOtg=; b=uxoF8bYLwWTgHUZhd498poLxCG
+ 5Njz6ReZDYUumSqs587IxslQHxovG53R5LArjN67tfT+16zx+bMLbLcjMGDPxaRth0Ir/1sytEsb3
+ 6X1WKA0apkaVQXZEDyyIn2L7r+oO0Fkuj4uwFdpGGXFHKlanO5+5uo7eOhTfNTyuJobYAONjLhmD3
+ vyAZI6lf5KRdSiFPPFDoSTTjxHCR13qkwQOzOU/7DidhZv0ZQa4duWQj/oxOC+2eb1XBTXxerQc4O
+ PWDgGTgx8/rCm6Bfl+aFLlyeRJNy5Z9+D23kYTenuu7gpUnVocLnJ7HLUe5eGcC19mCqOXZVK0u/v
+ Ysm3hUdg==;
+Received: from mx2.suse.de ([195.135.220.15])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kL1uj-0003GL-SJ; Wed, 23 Sep 2020 10:22:21 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 5C097B28B;
- Wed, 23 Sep 2020 10:22:46 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 3B96AB295;
+ Wed, 23 Sep 2020 10:22:54 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -65,16 +79,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  emil.velikov@collabora.com, laurentiu.palcu@oss.nxp.com,
  shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  festevam@gmail.com, linux-imx@nxp.com
-Subject: [PATCH v3 08/22] drm/mediatek: Introduce GEM object functions
-Date: Wed, 23 Sep 2020 12:21:45 +0200
-Message-Id: <20200923102159.24084-9-tzimmermann@suse.de>
+Subject: [PATCH v3 16/22] drm/vc4: Introduce GEM object functions
+Date: Wed, 23 Sep 2020 12:21:53 +0200
+Message-Id: <20200923102159.24084-17-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200923102159.24084-1-tzimmermann@suse.de>
 References: <20200923102159.24084-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_062212_595900_4E4E69FF 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20200923_112218_165257_A0D71E31 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,12 +102,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
  intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>,
- linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
- nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
- xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ Thomas Zimmermann <tzimmermann@suse.de>, nouveau@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org,
+ freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -101,73 +114,116 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in mediatek. The only exception is gem_prime_mmap,
+per-instance callbacks in vc4. The only exception is gem_prime_mmap,
 which is non-trivial to convert.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+Reviewed-by: Eric Anholt <eric@anholt.net>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c |  5 -----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 11 +++++++++++
- 2 files changed, 11 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/vc4/vc4_bo.c  | 21 ++++++++++++++++++++-
+ drivers/gpu/drm/vc4/vc4_drv.c | 12 ------------
+ drivers/gpu/drm/vc4/vc4_drv.h |  1 -
+ 3 files changed, 20 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 2d982740b1a4..5899859438e0 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -303,18 +303,13 @@ struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
- static struct drm_driver mtk_drm_driver = {
- 	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
+diff --git a/drivers/gpu/drm/vc4/vc4_bo.c b/drivers/gpu/drm/vc4/vc4_bo.c
+index 74ceebd62fbc..f432278173cd 100644
+--- a/drivers/gpu/drm/vc4/vc4_bo.c
++++ b/drivers/gpu/drm/vc4/vc4_bo.c
+@@ -21,6 +21,8 @@
+ #include "vc4_drv.h"
+ #include "uapi/drm/vc4_drm.h"
  
--	.gem_free_object_unlocked = mtk_drm_gem_free_object,
--	.gem_vm_ops = &drm_gem_cma_vm_ops,
- 	.dumb_create = mtk_drm_gem_dumb_create,
++static vm_fault_t vc4_fault(struct vm_fault *vmf);
++
+ static const char * const bo_type_names[] = {
+ 	"kernel",
+ 	"V3D",
+@@ -374,6 +376,21 @@ static struct vc4_bo *vc4_bo_get_from_cache(struct drm_device *dev,
+ 	return bo;
+ }
+ 
++static const struct vm_operations_struct vc4_vm_ops = {
++	.fault = vc4_fault,
++	.open = drm_gem_vm_open,
++	.close = drm_gem_vm_close,
++};
++
++static const struct drm_gem_object_funcs vc4_gem_object_funcs = {
++	.free = vc4_free_object,
++	.export = vc4_prime_export,
++	.get_sg_table = drm_gem_cma_prime_get_sg_table,
++	.vmap = vc4_prime_vmap,
++	.vunmap = drm_gem_cma_prime_vunmap,
++	.vm_ops = &vc4_vm_ops,
++};
++
+ /**
+  * vc4_gem_create_object - Implementation of driver->gem_create_object.
+  * @dev: DRM device
+@@ -400,6 +417,8 @@ struct drm_gem_object *vc4_create_object(struct drm_device *dev, size_t size)
+ 	vc4->bo_labels[VC4_BO_TYPE_KERNEL].size_allocated += size;
+ 	mutex_unlock(&vc4->bo_lock);
+ 
++	bo->base.base.funcs = &vc4_gem_object_funcs;
++
+ 	return &bo->base.base;
+ }
+ 
+@@ -684,7 +703,7 @@ struct dma_buf * vc4_prime_export(struct drm_gem_object *obj, int flags)
+ 	return dmabuf;
+ }
+ 
+-vm_fault_t vc4_fault(struct vm_fault *vmf)
++static vm_fault_t vc4_fault(struct vm_fault *vmf)
+ {
+ 	struct vm_area_struct *vma = vmf->vma;
+ 	struct drm_gem_object *obj = vma->vm_private_data;
+diff --git a/drivers/gpu/drm/vc4/vc4_drv.c b/drivers/gpu/drm/vc4/vc4_drv.c
+index f1a5fd5dab6f..d27eaa2d0cfe 100644
+--- a/drivers/gpu/drm/vc4/vc4_drv.c
++++ b/drivers/gpu/drm/vc4/vc4_drv.c
+@@ -140,12 +140,6 @@ static void vc4_close(struct drm_device *dev, struct drm_file *file)
+ 	kfree(vc4file);
+ }
+ 
+-static const struct vm_operations_struct vc4_vm_ops = {
+-	.fault = vc4_fault,
+-	.open = drm_gem_vm_open,
+-	.close = drm_gem_vm_close,
+-};
+-
+ static const struct file_operations vc4_drm_fops = {
+ 	.owner = THIS_MODULE,
+ 	.open = drm_open,
+@@ -195,16 +189,10 @@ static struct drm_driver vc4_drm_driver = {
+ #endif
+ 
+ 	.gem_create_object = vc4_create_object,
+-	.gem_free_object_unlocked = vc4_free_object,
+-	.gem_vm_ops = &vc4_vm_ops,
  
  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_import = mtk_drm_gem_prime_import,
--	.gem_prime_get_sg_table = mtk_gem_prime_get_sg_table,
- 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
- 	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
--	.gem_prime_vmap = mtk_drm_gem_prime_vmap,
--	.gem_prime_vunmap = mtk_drm_gem_prime_vunmap,
- 	.fops = &mtk_drm_fops,
+-	.gem_prime_export = vc4_prime_export,
+-	.gem_prime_get_sg_table	= drm_gem_cma_prime_get_sg_table,
+ 	.gem_prime_import_sg_table = vc4_prime_import_sg_table,
+-	.gem_prime_vmap = vc4_prime_vmap,
+-	.gem_prime_vunmap = drm_gem_cma_prime_vunmap,
+ 	.gem_prime_mmap = vc4_prime_mmap,
  
- 	.name = DRIVER_NAME,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 0583e557ad37..cdd1a6e61564 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -8,11 +8,20 @@
- #include <drm/drm.h>
- #include <drm/drm_device.h>
- #include <drm/drm_gem.h>
-+#include <drm/drm_gem_cma_helper.h>
- #include <drm/drm_prime.h>
- 
- #include "mtk_drm_drv.h"
- #include "mtk_drm_gem.h"
- 
-+static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
-+	.free = mtk_drm_gem_free_object,
-+	.get_sg_table = mtk_gem_prime_get_sg_table,
-+	.vmap = mtk_drm_gem_prime_vmap,
-+	.vunmap = mtk_drm_gem_prime_vunmap,
-+	.vm_ops = &drm_gem_cma_vm_ops,
-+};
-+
- static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
- 						unsigned long size)
- {
-@@ -25,6 +34,8 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
- 	if (!mtk_gem_obj)
- 		return ERR_PTR(-ENOMEM);
- 
-+	mtk_gem_obj->base.funcs = &mtk_drm_gem_object_funcs;
-+
- 	ret = drm_gem_object_init(dev, &mtk_gem_obj->base, size);
- 	if (ret < 0) {
- 		DRM_ERROR("failed to initialize gem object\n");
+ 	.dumb_create = vc4_dumb_create,
+diff --git a/drivers/gpu/drm/vc4/vc4_drv.h b/drivers/gpu/drm/vc4/vc4_drv.h
+index 8c8d96b6289f..a22478a35199 100644
+--- a/drivers/gpu/drm/vc4/vc4_drv.h
++++ b/drivers/gpu/drm/vc4/vc4_drv.h
+@@ -799,7 +799,6 @@ int vc4_get_hang_state_ioctl(struct drm_device *dev, void *data,
+ 			     struct drm_file *file_priv);
+ int vc4_label_bo_ioctl(struct drm_device *dev, void *data,
+ 		       struct drm_file *file_priv);
+-vm_fault_t vc4_fault(struct vm_fault *vmf);
+ int vc4_mmap(struct file *filp, struct vm_area_struct *vma);
+ int vc4_prime_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
+ struct drm_gem_object *vc4_prime_import_sg_table(struct drm_device *dev,
 -- 
 2.28.0
 
