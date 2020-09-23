@@ -5,19 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D432AC47428
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D729C4742A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 804A821BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 52DC721BE5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dS1Z7Icm";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="EEMRszAt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 804A821BE5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zqNoztnb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 52DC721BE5
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,35 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Wz2dAs6YdWZPK/UEzKwFFiLbjBxxApqvxa+uExsMGAU=; b=dS1Z7IcmvXqLvz3ybSyV8lNBz
-	sFPbFu3xFztKIYIJRqEhsGmX3PcowZOPmmMYCR+c6kLobLzzdbe/gRz69XfuMfkAgp1bopyMs/GD4
-	C93zsthmQ5pGsLr428uA0Q1QnrKcmwvf6D40JG+GVTxvk3T9l+prcOZOEPnq/9GYIcSk1hoaQ+chd
-	uR5e2Gg2kM6WCEJqKamokNexp8c9CS7ee3Ean6um8FszSV1P+Ku2/0upLrqEggkPsc3hoIUMHFjmu
-	UL4FUBaNv0mRgZTxaGhSeLs5Y8ivFYmFSEGkVbC/7mjTSN9a0VXzaCUUMASvta867gCKOEY+IJpdU
-	7A8wRyHuw==;
+	 bh=IsCfat56dVkEobGkAH/n3uShBFb6ASlQ1lcfzFt5gEY=; b=zqNoztnb8xezdrKgwREIF25yo
+	+mYouqrRPO8PrVRrFalSN1xXaHQe1K/01bu++C/pgn/wc5VRKD7vUDkOgvpOme0peZeujgNW0leRc
+	9KGhz/+36xY7TaIPlXxYhdWIBOb6k1oGc0n7n0hxN+t/x10MtAvVtGfBRjzuo/JLLIHPLTM/b/5IY
+	7CcrqmdrDczml3urG4tXgK+5nYJnbX1YeI5Er2cEQVp4zz/Em7pXapxBXGdSCIsmR45J1SY43lSwa
+	sBuFrPaYpylOtg0DvIZ2yFmkxzM7hakUHvFAdFUoZVPwmAA2EN42leSWriOZIG7249jBQOoiQ2nJ0
+	KuAtjc0IQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL1w2-0005ne-Hl; Wed, 23 Sep 2020 10:23:38 +0000
-Received: from casper.infradead.org ([90.155.50.34])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL1um-0004zd-Hs; Wed, 23 Sep 2020 10:22:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=WkoZAIhf4gWDx0NTEJfxDB8ZUFdMWzZw5wx9C2uPZwE=; b=EEMRszAtjC8m2oxoDx9FPft/Cp
- aqxDzKwX/6Lt5a5/nnhOMsIyDxzHihi0kikBp2lNHqQWy2eybJQPpuv+VD7BLSs4sp7bpOv/MvanT
- U8W/fzLDkE8K+Y0TsrPZvZf2rsI+HxuPIWaNLozSx2d3tEJYQnLIOszIp1HchWDpzklDbOZRhPIho
- SwtI2PPPzxFxoONwyeKT7BDfxichJe3T4Gv4O2Q5bq3CXiPsWpap2tQrIFDYTqoqvCsG5BrzG0uWE
- b3+Z/T5eXFFw4pIulMz74lKKX2xuGL5BM731iq6aHAGQtq1toIoWmdTfhytv//weaEdhQELKxBJ8h
- R5mdFaRQ==;
+	id 1kL1w1-0005mF-2l; Wed, 23 Sep 2020 10:23:37 +0000
 Received: from mx2.suse.de ([195.135.220.15])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL1uh-0003Fq-Oi; Wed, 23 Sep 2020 10:22:18 +0000
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kL1ue-0004uB-8D; Wed, 23 Sep 2020 10:22:20 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 2382EB28D;
- Wed, 23 Sep 2020 10:22:50 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 5C097B28B;
+ Wed, 23 Sep 2020 10:22:46 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -79,16 +65,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  emil.velikov@collabora.com, laurentiu.palcu@oss.nxp.com,
  shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  festevam@gmail.com, linux-imx@nxp.com
-Subject: [PATCH v3 12/22] drm/pl111: Introduce GEM object functions
-Date: Wed, 23 Sep 2020 12:21:49 +0200
-Message-Id: <20200923102159.24084-13-tzimmermann@suse.de>
+Subject: [PATCH v3 08/22] drm/mediatek: Introduce GEM object functions
+Date: Wed, 23 Sep 2020 12:21:45 +0200
+Message-Id: <20200923102159.24084-9-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200923102159.24084-1-tzimmermann@suse.de>
 References: <20200923102159.24084-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_112216_051848_502FCEB8 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20200923_062212_595900_4E4E69FF 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,11 +88,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
  intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- Thomas Zimmermann <tzimmermann@suse.de>, nouveau@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org,
- freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -114,39 +101,73 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in pl111. The only exception is gem_prime_mmap,
+per-instance callbacks in mediatek. The only exception is gem_prime_mmap,
 which is non-trivial to convert.
 
-v2:
-	* use drm_gem_cma_create_object_default_funcs() (Eric)
-
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Eric Anholt <eric@anholt.net>
+Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
 ---
- drivers/gpu/drm/pl111/pl111_drv.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c |  5 -----
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 11 +++++++++++
+ 2 files changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/pl111/pl111_drv.c b/drivers/gpu/drm/pl111/pl111_drv.c
-index 46b0d1c4a16c..ecef8a2383d2 100644
---- a/drivers/gpu/drm/pl111/pl111_drv.c
-+++ b/drivers/gpu/drm/pl111/pl111_drv.c
-@@ -224,15 +224,12 @@ static struct drm_driver pl111_drm_driver = {
- 	.major = 1,
- 	.minor = 0,
- 	.patchlevel = 0,
-+	.gem_create_object = drm_gem_cma_create_object_default_funcs,
- 	.dumb_create = drm_gem_cma_dumb_create,
--	.gem_free_object_unlocked = drm_gem_cma_free_object,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 2d982740b1a4..5899859438e0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -303,18 +303,13 @@ struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
+ static struct drm_driver mtk_drm_driver = {
+ 	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
+ 
+-	.gem_free_object_unlocked = mtk_drm_gem_free_object,
 -	.gem_vm_ops = &drm_gem_cma_vm_ops,
+ 	.dumb_create = mtk_drm_gem_dumb_create,
+ 
  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_import_sg_table = pl111_gem_import_sg_table,
--	.gem_prime_get_sg_table	= drm_gem_cma_prime_get_sg_table,
- 	.gem_prime_mmap = drm_gem_cma_prime_mmap,
--	.gem_prime_vmap = drm_gem_cma_prime_vmap,
+ 	.gem_prime_import = mtk_drm_gem_prime_import,
+-	.gem_prime_get_sg_table = mtk_gem_prime_get_sg_table,
+ 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
+ 	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
+-	.gem_prime_vmap = mtk_drm_gem_prime_vmap,
+-	.gem_prime_vunmap = mtk_drm_gem_prime_vunmap,
+ 	.fops = &mtk_drm_fops,
  
- #if defined(CONFIG_DEBUG_FS)
- 	.debugfs_init = pl111_debugfs_init,
+ 	.name = DRIVER_NAME,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 0583e557ad37..cdd1a6e61564 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -8,11 +8,20 @@
+ #include <drm/drm.h>
+ #include <drm/drm_device.h>
+ #include <drm/drm_gem.h>
++#include <drm/drm_gem_cma_helper.h>
+ #include <drm/drm_prime.h>
+ 
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_gem.h"
+ 
++static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
++	.free = mtk_drm_gem_free_object,
++	.get_sg_table = mtk_gem_prime_get_sg_table,
++	.vmap = mtk_drm_gem_prime_vmap,
++	.vunmap = mtk_drm_gem_prime_vunmap,
++	.vm_ops = &drm_gem_cma_vm_ops,
++};
++
+ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
+ 						unsigned long size)
+ {
+@@ -25,6 +34,8 @@ static struct mtk_drm_gem_obj *mtk_drm_gem_init(struct drm_device *dev,
+ 	if (!mtk_gem_obj)
+ 		return ERR_PTR(-ENOMEM);
+ 
++	mtk_gem_obj->base.funcs = &mtk_drm_gem_object_funcs;
++
+ 	ret = drm_gem_object_init(dev, &mtk_gem_obj->base, size);
+ 	if (ret < 0) {
+ 		DRM_ERROR("failed to initialize gem object\n");
 -- 
 2.28.0
 
