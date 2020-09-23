@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7F2AC4363D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 14:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BFDDCC2D0A8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 14:39:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 65596206FB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 14:39:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 73A2D21D92
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 14:39:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MpCKYO0k"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65596206FB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gz5IcO7g"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73A2D21D92
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,23 +25,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3u0nZKpTHtjKjdfFaXKUyddfF9f1H7oLOl9zGj2qCWA=; b=MpCKYO0kWUfGeWozcZfPN8DOY
-	Ln9+Kw2HjAaU3vJ+pHiF3viFuldXBWsU1GqMtb5fHpZKTK/Jn5RbyreFJjbbWUt7qGcn69v6LUXwg
-	ftNlc6Ve2VmGx0tmshK4CZKvWZnfADnCfk50+O7/iNKJ2pywthYIGOKwaRe/19g1UxXM+kXitCQt6
-	kl2k7egoCy3lRAhP7TuzdzQJ35fxMacW6+KtzTdNJUpULAH1Y3otgQT3roKH0PtMKDVUS525gwriU
-	neEkzHQFdF01J8DDqtEMrqx2MoQ5rCHDFh8Smi6m1hBbBLCyIhI0DA4GVf9+OomMHhe15CI15M66b
-	YIcABmjnQ==;
+	 bh=+Cu85jf0wu14zUF9VwCdEX9jFffjdcD/5winqzr5DCM=; b=Gz5IcO7gkTv+BGIy3Hw3/bNSv
+	5Z86Xzz5z9a+JJrXFK+vWw6U1ZF5scOnvjyCKBRtdVw83PK6G4EvrWlqzUbhK//bNfypXVEzubUr2
+	/XPRNJFvmKfcdpBToOTGE0afH9nhFLUkpfT1KY5NGR4l8cKTHhCl8T6KJoW/lyK3sxaS63LvjPiqj
+	MIij6sUt7TQuDF56Ov4ff0oqgzhVwhpWT0aNsk6A9AsYGfBfztDo58Up6ooOSTrO1YQWQuZdDrgIj
+	2tN9DGk4NCYAqJIzCyFgfgberdmdKRsOCZvwZY0Cn10RlZ6jyKAWLgiqYhRfjAA9g34twO4kOIO63
+	JFpg5NF+g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL5vb-0002x4-4g; Wed, 23 Sep 2020 14:39:27 +0000
+	id 1kL5vo-00033a-5r; Wed, 23 Sep 2020 14:39:40 +0000
 Received: from relay9-d.mail.gandi.net ([217.70.183.199])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL5v8-0002mb-T0; Wed, 23 Sep 2020 14:38:59 +0000
+ id 1kL5vH-0002pb-Fo; Wed, 23 Sep 2020 14:39:12 +0000
 X-Originating-IP: 90.65.92.90
 Received: from localhost (lfbn-lyo-1-1913-90.w90-65.abo.wanadoo.fr
  [90.65.92.90]) (Authenticated sender: gregory.clement@bootlin.com)
- by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 024DBFF80C;
- Wed, 23 Sep 2020 14:38:52 +0000 (UTC)
+ by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id DB6D0FF80F;
+ Wed, 23 Sep 2020 14:39:02 +0000 (UTC)
 From: Gregory CLEMENT <gregory.clement@bootlin.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>, Linus Walleij
  <linus.walleij@linaro.org>, Bartosz Golaszewski
@@ -62,17 +62,17 @@ To: Krzysztof Kozlowski <krzk@kernel.org>, Linus Walleij
  linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-aspeed@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
  linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH v3 13/15] ARM: dts: dove: fix PCA95xx GPIO expander
- properties on A510
-In-Reply-To: <20200916155715.21009-14-krzk@kernel.org>
+Subject: Re: [PATCH v3 14/15] ARM: dts: armada: align GPIO hog names with
+ dtschema
+In-Reply-To: <20200916155715.21009-15-krzk@kernel.org>
 References: <20200916155715.21009-1-krzk@kernel.org>
- <20200916155715.21009-14-krzk@kernel.org>
-Date: Wed, 23 Sep 2020 16:38:52 +0200
-Message-ID: <87blhwimmb.fsf@BL-laptop>
+ <20200916155715.21009-15-krzk@kernel.org>
+Date: Wed, 23 Sep 2020 16:39:02 +0200
+Message-ID: <87a6xgimm1.fsf@BL-laptop>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_103859_069335_76F8F0FC 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20200923_103907_742693_D7615A29 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,33 +92,112 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Krzysztof,
 
-> The PCA95xx GPIO expander requires GPIO controller properties to operate
-> properly.
+> The convention for node names is to use hyphens, not underscores.
+> dtschema for pca95xx expects GPIO hogs to end with 'hog' prefix.
+
 
 Applied on mvebu/dt
 
 Thanks,
 
 Gregory
+
 >
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 > ---
->  arch/arm/boot/dts/dove-sbc-a510.dts | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm/boot/dts/armada-388-clearfog.dts  |  4 ++--
+>  arch/arm/boot/dts/armada-388-clearfog.dtsi | 10 +++++-----
+>  arch/arm/boot/dts/armada-388-helios4.dts   |  6 +++---
+>  3 files changed, 10 insertions(+), 10 deletions(-)
 >
-> diff --git a/arch/arm/boot/dts/dove-sbc-a510.dts b/arch/arm/boot/dts/dove-sbc-a510.dts
-> index 2bb85a9b7614..df021f9b0117 100644
-> --- a/arch/arm/boot/dts/dove-sbc-a510.dts
-> +++ b/arch/arm/boot/dts/dove-sbc-a510.dts
-> @@ -143,6 +143,7 @@
->  	gpio_ext: gpio@20 {
->  		compatible = "nxp,pca9555";
->  		reg = <0x20>;
-> +		gpio-controller;
->  		#gpio-cells = <2>;
+> diff --git a/arch/arm/boot/dts/armada-388-clearfog.dts b/arch/arm/boot/dts/armada-388-clearfog.dts
+> index 20f8d4667753..4140a5303b48 100644
+> --- a/arch/arm/boot/dts/armada-388-clearfog.dts
+> +++ b/arch/arm/boot/dts/armada-388-clearfog.dts
+> @@ -73,13 +73,13 @@
+>  	 * 14-SFP_TX_DISABLE
+>  	 * 15-SFP_MOD_DEF0
+>  	 */
+> -	pcie2_0_clkreq {
+> +	pcie2-0-clkreq-hog {
+>  		gpio-hog;
+>  		gpios = <4 GPIO_ACTIVE_LOW>;
+>  		input;
+>  		line-name = "pcie2.0-clkreq";
 >  	};
->  };
+> -	pcie2_0_w_disable {
+> +	pcie2-0-w-disable-hog {
+>  		gpio-hog;
+>  		gpios = <7 GPIO_ACTIVE_LOW>;
+>  		output-low;
+> diff --git a/arch/arm/boot/dts/armada-388-clearfog.dtsi b/arch/arm/boot/dts/armada-388-clearfog.dtsi
+> index a0aa1d188f0c..f8a06ae4a3c9 100644
+> --- a/arch/arm/boot/dts/armada-388-clearfog.dtsi
+> +++ b/arch/arm/boot/dts/armada-388-clearfog.dtsi
+> @@ -141,31 +141,31 @@
+>  		#gpio-cells = <2>;
+>  		reg = <0x20>;
+>  
+> -		pcie1_0_clkreq {
+> +		pcie1-0-clkreq-hog {
+>  			gpio-hog;
+>  			gpios = <0 GPIO_ACTIVE_LOW>;
+>  			input;
+>  			line-name = "pcie1.0-clkreq";
+>  		};
+> -		pcie1_0_w_disable {
+> +		pcie1-0-w-disable-hog {
+>  			gpio-hog;
+>  			gpios = <3 GPIO_ACTIVE_LOW>;
+>  			output-low;
+>  			line-name = "pcie1.0-w-disable";
+>  		};
+> -		usb3_ilimit {
+> +		usb3-ilimit-hog {
+>  			gpio-hog;
+>  			gpios = <5 GPIO_ACTIVE_LOW>;
+>  			input;
+>  			line-name = "usb3-current-limit";
+>  		};
+> -		usb3_power {
+> +		usb3-power-hog {
+>  			gpio-hog;
+>  			gpios = <6 GPIO_ACTIVE_HIGH>;
+>  			output-high;
+>  			line-name = "usb3-power";
+>  		};
+> -		m2_devslp {
+> +		m2-devslp-hog {
+>  			gpio-hog;
+>  			gpios = <11 GPIO_ACTIVE_HIGH>;
+>  			output-low;
+> diff --git a/arch/arm/boot/dts/armada-388-helios4.dts b/arch/arm/boot/dts/armada-388-helios4.dts
+> index fb49df2a3bce..b3728de3bd3f 100644
+> --- a/arch/arm/boot/dts/armada-388-helios4.dts
+> +++ b/arch/arm/boot/dts/armada-388-helios4.dts
+> @@ -166,19 +166,19 @@
+>  					interrupt-controller;
+>  					#interrupt-cells = <2>;
+>  
+> -					board_rev_bit_0 {
+> +					board-rev-bit-0-hog {
+>  						gpio-hog;
+>  						gpios = <0 GPIO_ACTIVE_LOW>;
+>  						input;
+>  						line-name = "board-rev-0";
+>  					};
+> -					board_rev_bit_1 {
+> +					board-rev-bit-1-hog {
+>  						gpio-hog;
+>  						gpios = <1 GPIO_ACTIVE_LOW>;
+>  						input;
+>  						line-name = "board-rev-1";
+>  					};
+> -					usb3_ilimit {
+> +					usb3-ilimit-hog {
+>  						gpio-hog;
+>  						gpios = <5 GPIO_ACTIVE_HIGH>;
+>  						input;
 > -- 
 > 2.17.1
 >
