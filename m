@@ -2,68 +2,77 @@ Return-Path: <SRS0=E7TL=DA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A5CB7C2D0A8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 16:26:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A064AC4727D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 20:15:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3F05F20708
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 16:26:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C125C206D9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 20:15:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SYepKT9U";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="EZNSI23e"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F05F20708
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Hb0PBXgV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C125C206D9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7ok3dnOgFXxV004MkCn5PdWfLRexIuz1cd8jT+C1Hgw=; b=SYepKT9UNS7kiqYE7jq2Tjrex
-	vNYJqiGAms5jff66Vfy2ke/ZMQ9FXcZ+4gXgNeNL6PEpBYVSMLSWzRTILgqxm0/MI1D3S1EsXmkJn
-	ks6ZLFARvYYX1Y6NwFwjxOmp83XP7Rt4VymEovKX4kBaiFNXVxgChzu1eJyEgHoic6x8C+BrfFt8N
-	ijOmwGoAalmQsljozf/bUaLoMdi15f1ygdJkI+925BwRDmhnK8zTFIKd2iNFuFCzwVdUVW92rlu47
-	kqVScOi9SPnTJs6ZTpaA2JudYsh1TkxW2PjZvMh8+wntYHULnvvk8I8OLJKH8eL07oAXozVB/XHgG
-	zTeNH3C1g==;
+	 bh=m0frwYi6D8KLeUiuv7rYoK/yJOqrS1Dxl+tIlDVOUtU=; b=Hb0PBXgV0nhd2N301rNEUSIi1
+	IE3mMZIRzS50+KP3RsiuCvn5u5+OpeN7U/yY3H3UOUyE0hKrdUgHys1PrZ2an0IzyG7d40AuGuGAx
+	Tc5AnbLce0nzYDfESmFi1gocLlNTBU3rX2Shbg92JIG0OY7wuB2TX/6OqOxH0REaMbAx8b4FjJBRJ
+	DP0vwf7XA5sae3Wn7otOuwgR2NZ7mteDKmXtywyoxOR/O3d6if2GwL9xP6fqIhwWs6i5m3NtPKecl
+	2q1hpaSrBPLN85/e4bRqtmtTnhgWnBFj6kfDvtE7+MUV9NnxIRCfN3hxiturbKpgHFwuU9VtEi/3o
+	GYc2bDSQw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL7aj-0004eo-0h; Wed, 23 Sep 2020 16:26:01 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kLBAi-0002y3-AN; Wed, 23 Sep 2020 20:15:24 +0000
+Received: from mail-il1-f193.google.com ([209.85.166.193])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL7ac-0004ce-4R; Wed, 23 Sep 2020 16:25:54 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5F816206D9;
- Wed, 23 Sep 2020 16:25:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600878352;
- bh=PQYW/Ldo+sSZu9IaAFbupZBqQiivjpdGo9B0LIr5t9Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=EZNSI23epCglEhUvEjBMb/94LIn60XKVxEbfxT8eNVWXtsZwRfw4gqnKhkdLH3Utd
- XFXL6/OATz0UZ+F75lQql/cQhwFHr/jt99cRRN0mT+UHIyVB/EWrlN4bk+DSnjd3Rs
- 9S/tN0/u3gZ+M1JGYW513NoUv92jPLx4LYDC/V3E=
-Date: Wed, 23 Sep 2020 17:24:58 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v2 3/8] dt-bindings: regulator: Add document for MT6359
- regulator
-Message-ID: <20200923162458.GE5707@sirena.org.uk>
-References: <1600688895-9238-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1600688895-9238-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+ id 1kLBAe-0002x3-G6; Wed, 23 Sep 2020 20:15:21 +0000
+Received: by mail-il1-f193.google.com with SMTP id t13so839559ile.9;
+ Wed, 23 Sep 2020 13:15:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=deoXjiCPJcgqhdsTvaj4st28nR1WxDgki8dvwLYWvok=;
+ b=UHbndRn6pCJWLKFlANRF7WCydAYtuxpd7zX1Yq66KhpMwCl9/uKWb/ytQgToMjUPzv
+ RbzfpyXILgBvEiXfIyZ/1nCHLQiZcDyyQAQ/QE3bk5Gyv4gftq0UiE/5/aYe9vDvvyEr
+ pKFY0iK1LxFYN+P75Vvx880BIrQD7cdi8iQ2VAPlPr8fOOk0hj8FzpFKmY7fV2DNEKyn
+ X5zws88xHda0fmeRk8fafHI5Qs+vjxBNuTP+irm0rTa/gWJSXnFW4r+xwYt61O5wvSTK
+ nbw6HVlzjke3d4tc8m1Kia13Hwy76f5DeIt7i8MfpM1c9W4/6NlGz0futI6dPa5kOaEG
+ zs7g==
+X-Gm-Message-State: AOAM533Hcjs+EN9OMo2pXO0sBbkN7lTFtS7YvYQWo+l4mH0TfyyggRms
+ VGyc4u5ONhIsPtS+yYyn0A==
+X-Google-Smtp-Source: ABdhPJwaDK+zaodGN8kVQe2lXZuX+7m1JOY8bAoUaOFpvDMwzBbr0i3tjfuCtDUP871BlwHOy+AaKQ==
+X-Received: by 2002:a92:bb0c:: with SMTP id w12mr1270941ili.199.1600892119215; 
+ Wed, 23 Sep 2020 13:15:19 -0700 (PDT)
+Received: from xps15 ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id t14sm361989ilj.45.2020.09.23.13.15.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Sep 2020 13:15:18 -0700 (PDT)
+Received: (nullmailer pid 1227032 invoked by uid 1000);
+ Wed, 23 Sep 2020 20:15:17 -0000
+Date: Wed, 23 Sep 2020 14:15:17 -0600
+From: Rob Herring <robh@kernel.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [v2 PATCH] dt-bindings: display: mediatek: convert the dpi
+ bindings to yaml
+Message-ID: <20200923201517.GA1226945@bogus>
+References: <20200917073305.25738-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1600688895-9238-4-git-send-email-hsin-hsiung.wang@mediatek.com>
-X-Cookie: This report is filled with omissions.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Disposition: inline
+In-Reply-To: <20200917073305.25738-1-jitao.shi@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_122554_269415_40C61336 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20200923_161520_546702_E66F70D8 
+X-CRM114-Status: GOOD (  11.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,62 +84,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Wen Su <wen.su@mediatek.com>,
- srv_heupstream@mediatek.com, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============6821534999962036365=="
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, cawa.cheng@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 17 Sep 2020 15:33:05 +0800, Jitao Shi wrote:
+> Convert display/mediatek/mediatek,dpi.txt to display/mediatek/mediatek,dpi.yaml
+> and remove the old text bindings.
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  .../bindings/display/mediatek/mediatek,dpi.txt     | 42 ----------
+>  .../bindings/display/mediatek/mediatek,dpi.yaml    | 97 ++++++++++++++++++++++
+>  2 files changed, 97 insertions(+), 42 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> 
 
---===============6821534999962036365==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bi5JUZtvcfApsciF"
-Content-Disposition: inline
-
-
---bi5JUZtvcfApsciF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Sep 21, 2020 at 07:48:10PM +0800, Hsin-Hsiung Wang wrote:
-
-> +Required properties:
-> +- compatible: "mediatek,mt6359-regulator"
-
-The compatible isn't used by the driver (which is good!) so should be
-dropped from the binding document.
-
---bi5JUZtvcfApsciF
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl9rdtkACgkQJNaLcl1U
-h9AxPwf8CAx/q4PAO9Rp6eYMDBKZmthTsSTtBUgfSC6WahEzOPQypNZI524yMERv
-Ds+F2wmVAhQj5GLOi2zLn0TM0oVqF5u9uXewMUjlRR8l56/GBa0ZDNL4LXQlGIKZ
-27QHt2czssMevBM3gdGslcDtAGTR7u3PgW8tvUjV3wSab4foD7M1zrgli0P87yEN
-QVi0vDcKSybmpC4kCElZo+x5jwF+PXq+rvklMjCNE/o47c1kOSPFsrZAVWBfg09P
-1f/0bFbV8XWzrmMSnYiTXn32R5xWQkdD9qdGS+UotFPgtTqpsczXtNB/L0IviDTm
-Qr36BUnHbcUoxSc+rLq7PUM7Q7CUYg==
-=9PNJ
------END PGP SIGNATURE-----
-
---bi5JUZtvcfApsciF--
-
-
---===============6821534999962036365==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6821534999962036365==--
-
