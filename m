@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 178B4C47436
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BF8CC4CC6C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:22:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 927D321BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:22:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1EB8E21BE5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:22:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xRPhxjlx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 927D321BE5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3YpP+V8d"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EB8E21BE5
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=83XAiw3VWUzDbneeSXm8FcplSoBTk9f1pjk6bUM3/d8=; b=xRPhxjlx1/IbpDlziAWU/iYqW
-	CIHqJdoUAzTUAI3PSqwkD5Pvj0FLEzRZG864T16a61J+GGUOr+1jrc/Gsb33Py/atoVwwMmNPbeZ+
-	FXqZoSAWlCvD6Jq2qRZjSCuFJnODWnLdcnSZqPsVp4z5FRgltqeEO4aJO/RkKWj3LVKMq1xLApDHG
-	w8FyUCx+VqRi2WHrthl/DD6Fs7nzi/7SrhpdfRsBUl3BhZ4PxGT/tua4n9mgvIZgLNQj9HAHKIr3Q
-	VJThU+SFe9zZpS77FSJ6TgaaZEdYiLs5dv9HHsHAWKy4iERILTY20djdkmkBiGNwFF4tQ4UnvzgIl
-	TC5zClNdw==;
+	 bh=Bk4AM/MKF8lNPJn3XvEutDzVNV2ITKPdAIxZdbzEcRA=; b=3YpP+V8dNVWOU6Ae+gtdt+Mii
+	6yZU7zo5FXHWDWQTkXhOwEgkDvSZBuiadSjH03q3o8ucF6jDKbHe1VrCEYcY9wC62fo7qL0eL26R2
+	sWQqB+RONnuh4D+DZswouTm++LOqFqt1MAykCokg9zegFK4qukN/58HNFz7SRZd+0XlbZVyrNyo50
+	1hsxM6xeGsIIGcgWJiPu05p3BLVG/mvAJoM5CTiT1GfMK7E/86UUPw81Lc4T5W+e9dNzo4G/E/IHm
+	AlVzugcDpqvMgRUXH2v/Eot2jiRtseXo/92rm5ML0gKoxwOdh/wCv3DMyRuEnINUSH0IYclVrPSP3
+	42J1ubtxw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL1ui-0004wu-8r; Wed, 23 Sep 2020 10:22:16 +0000
+	id 1kL1v6-00058C-4J; Wed, 23 Sep 2020 10:22:40 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL1uX-0004ns-0Z; Wed, 23 Sep 2020 10:22:06 +0000
+ id 1kL1uX-0004o2-Js; Wed, 23 Sep 2020 10:22:08 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id AECA9B279;
- Wed, 23 Sep 2020 10:22:39 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 9C6DBB27C;
+ Wed, 23 Sep 2020 10:22:40 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -65,16 +65,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  emil.velikov@collabora.com, laurentiu.palcu@oss.nxp.com,
  shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
  festevam@gmail.com, linux-imx@nxp.com
-Subject: [PATCH v3 01/22] drm/amdgpu: Introduce GEM object functions
-Date: Wed, 23 Sep 2020 12:21:38 +0200
-Message-Id: <20200923102159.24084-2-tzimmermann@suse.de>
+Subject: [PATCH v3 02/22] drm/armada: Introduce GEM object functions
+Date: Wed, 23 Sep 2020 12:21:39 +0200
+Message-Id: <20200923102159.24084-3-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200923102159.24084-1-tzimmermann@suse.de>
 References: <20200923102159.24084-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_062205_293175_4414053D 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20200923_062205_876663_30296959 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,96 +89,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
  intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- Thomas Zimmermann <tzimmermann@suse.de>, nouveau@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org,
- freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-R0VNIG9iamVjdCBmdW5jdGlvbnMgZGVwcmVjYXRlIHNldmVyYWwgc2ltaWxhciBjYWxsYmFjayBp
-bnRlcmZhY2VzIGluCnN0cnVjdCBkcm1fZHJpdmVyLiBUaGlzIHBhdGNoIHJlcGxhY2VzIHRoZSBw
-ZXItZHJpdmVyIGNhbGxiYWNrcyB3aXRoCnBlci1pbnN0YW5jZSBjYWxsYmFja3MgaW4gYW1kZ3B1
-LiBUaGUgb25seSBleGNlcHRpb24gaXMgZ2VtX3ByaW1lX21tYXAsCndoaWNoIGlzIG5vbi10cml2
-aWFsIHRvIGNvbnZlcnQuCgp2MzoKCSogcmVtb3ZlIGFtZGdwdV9vYmplY3QuYyBmcm9tIHBhdGNo
-IChDaHJpc3RpYW4pCnYyOgoJKiBtb3ZlIG9iamVjdC1mdW5jdGlvbiBpbnN0YW5jZSB0byBhbWRn
-cHVfZ2VtLmMgKENocmlzdGlhbikKCSogc2V0IGNhbGxiYWNrcyBpbiBhbWRncHVfZ2VtX29iamVj
-dF9jcmVhdGUoKSAoQ2hyaXN0aWFuKQoKU2lnbmVkLW9mZi1ieTogVGhvbWFzIFppbW1lcm1hbm4g
-PHR6aW1tZXJtYW5uQHN1c2UuZGU+ClJldmlld2VkLWJ5OiBDaHJpc3RpYW4gS8O2bmlnIDxjaHJp
-c3RpYW4ua29lbmlnQGFtZC5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1k
-Z3B1X2Rydi5jIHwgIDYgLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVf
-Z2VtLmMgfCAyMyArKysrKysrKysrKysrKysrKystLS0tLQogZHJpdmVycy9ncHUvZHJtL2FtZC9h
-bWRncHUvYW1kZ3B1X2dlbS5oIHwgIDUgLS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgMTggaW5zZXJ0
-aW9ucygrKSwgMTYgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Ft
-ZC9hbWRncHUvYW1kZ3B1X2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1
-X2Rydi5jCmluZGV4IDZlZGRlMmI5ZTQwMi4uODQwY2E4ZjljMWUxIDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJt
-L2FtZC9hbWRncHUvYW1kZ3B1X2Rydi5jCkBAIC0xNTA1LDE5ICsxNTA1LDEzIEBAIHN0YXRpYyBz
-dHJ1Y3QgZHJtX2RyaXZlciBrbXNfZHJpdmVyID0gewogCS5sYXN0Y2xvc2UgPSBhbWRncHVfZHJp
-dmVyX2xhc3RjbG9zZV9rbXMsCiAJLmlycV9oYW5kbGVyID0gYW1kZ3B1X2lycV9oYW5kbGVyLAog
-CS5pb2N0bHMgPSBhbWRncHVfaW9jdGxzX2ttcywKLQkuZ2VtX2ZyZWVfb2JqZWN0X3VubG9ja2Vk
-ID0gYW1kZ3B1X2dlbV9vYmplY3RfZnJlZSwKLQkuZ2VtX29wZW5fb2JqZWN0ID0gYW1kZ3B1X2dl
-bV9vYmplY3Rfb3BlbiwKLQkuZ2VtX2Nsb3NlX29iamVjdCA9IGFtZGdwdV9nZW1fb2JqZWN0X2Ns
-b3NlLAogCS5kdW1iX2NyZWF0ZSA9IGFtZGdwdV9tb2RlX2R1bWJfY3JlYXRlLAogCS5kdW1iX21h
-cF9vZmZzZXQgPSBhbWRncHVfbW9kZV9kdW1iX21tYXAsCiAJLmZvcHMgPSAmYW1kZ3B1X2RyaXZl
-cl9rbXNfZm9wcywKIAogCS5wcmltZV9oYW5kbGVfdG9fZmQgPSBkcm1fZ2VtX3ByaW1lX2hhbmRs
-ZV90b19mZCwKIAkucHJpbWVfZmRfdG9faGFuZGxlID0gZHJtX2dlbV9wcmltZV9mZF90b19oYW5k
-bGUsCi0JLmdlbV9wcmltZV9leHBvcnQgPSBhbWRncHVfZ2VtX3ByaW1lX2V4cG9ydCwKIAkuZ2Vt
-X3ByaW1lX2ltcG9ydCA9IGFtZGdwdV9nZW1fcHJpbWVfaW1wb3J0LAotCS5nZW1fcHJpbWVfdm1h
-cCA9IGFtZGdwdV9nZW1fcHJpbWVfdm1hcCwKLQkuZ2VtX3ByaW1lX3Z1bm1hcCA9IGFtZGdwdV9n
-ZW1fcHJpbWVfdnVubWFwLAogCS5nZW1fcHJpbWVfbW1hcCA9IGFtZGdwdV9nZW1fcHJpbWVfbW1h
-cCwKIAogCS5uYW1lID0gRFJJVkVSX05BTUUsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-YW1kL2FtZGdwdS9hbWRncHVfZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRn
-cHVfZ2VtLmMKaW5kZXggYWE3ZjIzMGM3MWJmLi5hZWVjZDVkYzNjZTQgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9nZW0uYworKysgYi9kcml2ZXJzL2dwdS9k
-cm0vYW1kL2FtZGdwdS9hbWRncHVfZ2VtLmMKQEAgLTM2LDkgKzM2LDEyIEBACiAKICNpbmNsdWRl
-ICJhbWRncHUuaCIKICNpbmNsdWRlICJhbWRncHVfZGlzcGxheS5oIgorI2luY2x1ZGUgImFtZGdw
-dV9kbWFfYnVmLmgiCiAjaW5jbHVkZSAiYW1kZ3B1X3hnbWkuaCIKIAotdm9pZCBhbWRncHVfZ2Vt
-X29iamVjdF9mcmVlKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqZ29iaikKK3N0YXRpYyBjb25zdCBz
-dHJ1Y3QgZHJtX2dlbV9vYmplY3RfZnVuY3MgYW1kZ3B1X2dlbV9vYmplY3RfZnVuY3M7CisKK3N0
-YXRpYyB2b2lkIGFtZGdwdV9nZW1fb2JqZWN0X2ZyZWUoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpn
-b2JqKQogewogCXN0cnVjdCBhbWRncHVfYm8gKnJvYmogPSBnZW1fdG9fYW1kZ3B1X2JvKGdvYmop
-OwogCkBAIC04Nyw2ICs5MCw3IEBAIGludCBhbWRncHVfZ2VtX29iamVjdF9jcmVhdGUoc3RydWN0
-IGFtZGdwdV9kZXZpY2UgKmFkZXYsIHVuc2lnbmVkIGxvbmcgc2l6ZSwKIAkJcmV0dXJuIHI7CiAJ
-fQogCSpvYmogPSAmYm8tPnRiby5iYXNlOworCSgqb2JqKS0+ZnVuY3MgPSAmYW1kZ3B1X2dlbV9v
-YmplY3RfZnVuY3M7CiAKIAlyZXR1cm4gMDsKIH0KQEAgLTExOSw4ICsxMjMsOCBAQCB2b2lkIGFt
-ZGdwdV9nZW1fZm9yY2VfcmVsZWFzZShzdHJ1Y3QgYW1kZ3B1X2RldmljZSAqYWRldikKICAqIENh
-bGwgZnJvbSBkcm1fZ2VtX2hhbmRsZV9jcmVhdGUgd2hpY2ggYXBwZWFyIGluIGJvdGggbmV3IGFu
-ZCBvcGVuIGlvY3RsCiAgKiBjYXNlLgogICovCi1pbnQgYW1kZ3B1X2dlbV9vYmplY3Rfb3Blbihz
-dHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwKLQkJCSAgIHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9w
-cml2KQorc3RhdGljIGludCBhbWRncHVfZ2VtX29iamVjdF9vcGVuKHN0cnVjdCBkcm1fZ2VtX29i
-amVjdCAqb2JqLAorCQkJCSAgc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpCiB7CiAJc3RydWN0
-IGFtZGdwdV9ibyAqYWJvID0gZ2VtX3RvX2FtZGdwdV9ibyhvYmopOwogCXN0cnVjdCBhbWRncHVf
-ZGV2aWNlICphZGV2ID0gYW1kZ3B1X3R0bV9hZGV2KGFiby0+dGJvLmJkZXYpOwpAQCAtMTUyLDgg
-KzE1Niw4IEBAIGludCBhbWRncHVfZ2VtX29iamVjdF9vcGVuKHN0cnVjdCBkcm1fZ2VtX29iamVj
-dCAqb2JqLAogCXJldHVybiAwOwogfQogCi12b2lkIGFtZGdwdV9nZW1fb2JqZWN0X2Nsb3NlKHN0
-cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLAotCQkJICAgICBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVf
-cHJpdikKK3N0YXRpYyB2b2lkIGFtZGdwdV9nZW1fb2JqZWN0X2Nsb3NlKHN0cnVjdCBkcm1fZ2Vt
-X29iamVjdCAqb2JqLAorCQkJCSAgICBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdikKIHsKIAlz
-dHJ1Y3QgYW1kZ3B1X2JvICpibyA9IGdlbV90b19hbWRncHVfYm8ob2JqKTsKIAlzdHJ1Y3QgYW1k
-Z3B1X2RldmljZSAqYWRldiA9IGFtZGdwdV90dG1fYWRldihiby0+dGJvLmJkZXYpOwpAQCAtMjEx
-LDYgKzIxNSwxNSBAQCB2b2lkIGFtZGdwdV9nZW1fb2JqZWN0X2Nsb3NlKHN0cnVjdCBkcm1fZ2Vt
-X29iamVjdCAqb2JqLAogCXR0bV9ldV9iYWNrb2ZmX3Jlc2VydmF0aW9uKCZ0aWNrZXQsICZsaXN0
-KTsKIH0KIAorc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZ2VtX29iamVjdF9mdW5jcyBhbWRncHVf
-Z2VtX29iamVjdF9mdW5jcyA9IHsKKwkuZnJlZSA9IGFtZGdwdV9nZW1fb2JqZWN0X2ZyZWUsCisJ
-Lm9wZW4gPSBhbWRncHVfZ2VtX29iamVjdF9vcGVuLAorCS5jbG9zZSA9IGFtZGdwdV9nZW1fb2Jq
-ZWN0X2Nsb3NlLAorCS5leHBvcnQgPSBhbWRncHVfZ2VtX3ByaW1lX2V4cG9ydCwKKwkudm1hcCA9
-IGFtZGdwdV9nZW1fcHJpbWVfdm1hcCwKKwkudnVubWFwID0gYW1kZ3B1X2dlbV9wcmltZV92dW5t
-YXAsCit9OworCiAvKgogICogR0VNIGlvY3Rscy4KICAqLwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2dlbS5oIGIvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRn
-cHUvYW1kZ3B1X2dlbS5oCmluZGV4IGUwZjAyNWRkMWIxNC4uNjM3YmY1MWRiZjA2IDEwMDY0NAot
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZ2VtLmgKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2dlbS5oCkBAIC0zMywxMSArMzMsNiBAQAogI2Rl
-ZmluZSBBTURHUFVfR0VNX0RPTUFJTl9NQVgJCTB4MwogI2RlZmluZSBnZW1fdG9fYW1kZ3B1X2Jv
-KGdvYmopIGNvbnRhaW5lcl9vZigoZ29iaiksIHN0cnVjdCBhbWRncHVfYm8sIHRiby5iYXNlKQog
-Ci12b2lkIGFtZGdwdV9nZW1fb2JqZWN0X2ZyZWUoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmop
-OwotaW50IGFtZGdwdV9nZW1fb2JqZWN0X29wZW4oc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmos
-Ci0JCQkJc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpOwotdm9pZCBhbWRncHVfZ2VtX29iamVj
-dF9jbG9zZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwKLQkJCQlzdHJ1Y3QgZHJtX2ZpbGUg
-KmZpbGVfcHJpdik7CiB1bnNpZ25lZCBsb25nIGFtZGdwdV9nZW1fdGltZW91dCh1aW50NjRfdCB0
-aW1lb3V0X25zKTsKIAogLyoKLS0gCjIuMjguMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+GEM object functions deprecate several similar callback interfaces in
+struct drm_driver. This patch replaces the per-driver callbacks with
+per-instance callbacks in armada.
+
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Acked-by: Russell King <rmk+kernel@armlinux.org.uk>
+---
+ drivers/gpu/drm/armada/armada_drv.c |  3 ---
+ drivers/gpu/drm/armada/armada_gem.c | 12 +++++++++++-
+ drivers/gpu/drm/armada/armada_gem.h |  2 --
+ 3 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
+index 980d3f1f8f16..22247cfce80b 100644
+--- a/drivers/gpu/drm/armada/armada_drv.c
++++ b/drivers/gpu/drm/armada/armada_drv.c
+@@ -37,13 +37,10 @@ DEFINE_DRM_GEM_FOPS(armada_drm_fops);
+ 
+ static struct drm_driver armada_drm_driver = {
+ 	.lastclose		= drm_fb_helper_lastclose,
+-	.gem_free_object_unlocked = armada_gem_free_object,
+ 	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
+-	.gem_prime_export	= armada_gem_prime_export,
+ 	.gem_prime_import	= armada_gem_prime_import,
+ 	.dumb_create		= armada_gem_dumb_create,
+-	.gem_vm_ops		= &armada_gem_vm_ops,
+ 	.major			= 1,
+ 	.minor			= 0,
+ 	.name			= "armada-drm",
+diff --git a/drivers/gpu/drm/armada/armada_gem.c b/drivers/gpu/drm/armada/armada_gem.c
+index 6654bccd9466..21909642ee4c 100644
+--- a/drivers/gpu/drm/armada/armada_gem.c
++++ b/drivers/gpu/drm/armada/armada_gem.c
+@@ -25,7 +25,7 @@ static vm_fault_t armada_gem_vm_fault(struct vm_fault *vmf)
+ 	return vmf_insert_pfn(vmf->vma, vmf->address, pfn);
+ }
+ 
+-const struct vm_operations_struct armada_gem_vm_ops = {
++static const struct vm_operations_struct armada_gem_vm_ops = {
+ 	.fault	= armada_gem_vm_fault,
+ 	.open	= drm_gem_vm_open,
+ 	.close	= drm_gem_vm_close,
+@@ -184,6 +184,12 @@ armada_gem_map_object(struct drm_device *dev, struct armada_gem_object *dobj)
+ 	return dobj->addr;
+ }
+ 
++static const struct drm_gem_object_funcs armada_gem_object_funcs = {
++	.free = armada_gem_free_object,
++	.export = armada_gem_prime_export,
++	.vm_ops = &armada_gem_vm_ops,
++};
++
+ struct armada_gem_object *
+ armada_gem_alloc_private_object(struct drm_device *dev, size_t size)
+ {
+@@ -195,6 +201,8 @@ armada_gem_alloc_private_object(struct drm_device *dev, size_t size)
+ 	if (!obj)
+ 		return NULL;
+ 
++	obj->obj.funcs = &armada_gem_object_funcs;
++
+ 	drm_gem_private_object_init(dev, &obj->obj, size);
+ 
+ 	DRM_DEBUG_DRIVER("alloc private obj %p size %zu\n", obj, size);
+@@ -214,6 +222,8 @@ static struct armada_gem_object *armada_gem_alloc_object(struct drm_device *dev,
+ 	if (!obj)
+ 		return NULL;
+ 
++	obj->obj.funcs = &armada_gem_object_funcs;
++
+ 	if (drm_gem_object_init(dev, &obj->obj, size)) {
+ 		kfree(obj);
+ 		return NULL;
+diff --git a/drivers/gpu/drm/armada/armada_gem.h b/drivers/gpu/drm/armada/armada_gem.h
+index de04cc2c8f0e..ffcc7e8dd351 100644
+--- a/drivers/gpu/drm/armada/armada_gem.h
++++ b/drivers/gpu/drm/armada/armada_gem.h
+@@ -21,8 +21,6 @@ struct armada_gem_object {
+ 	void			*update_data;
+ };
+ 
+-extern const struct vm_operations_struct armada_gem_vm_ops;
+-
+ #define drm_to_armada_gem(o) container_of(o, struct armada_gem_object, obj)
+ 
+ void armada_gem_free_object(struct drm_gem_object *);
+-- 
+2.28.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
