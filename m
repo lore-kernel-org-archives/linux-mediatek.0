@@ -2,85 +2,120 @@ Return-Path: <SRS0=E7TL=DA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 39720C2D0A8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 11:19:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8E24C4741F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 11:19:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D73B6205F4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 11:19:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 80AE5235FD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 11:19:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EZK9/+eC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fLswLrk+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D73B6205F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ottw2EzT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.b="IhaOeAiL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80AE5235FD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oss.nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pIIRGdjq0K3KjpRlRvInuVH/YrJLF9Ti78Joxt9Hfp4=; b=EZK9/+eCDVtuVUKGwQZ3whWkuM
-	Q+AfHPBFAWI51xX2wG2+y2QW7S1o2SMdZR8lFIqBeNn/dOS+utOdpnRhfZXgdgBvyjYMdWp0f/daq
-	dSmjOyu/t8TA7kJRcNOGAqidhNwhYZOLlmr7Nz81RGIqb7A0caMMglk5EXDP//6mL5TLLDMlnYsjk
-	lznAYTtrF1Zkzkrdy+aP0tm3ohJ7jpbuQxfYnr3TscdjCCSRGkFZ5Ds/B1CGdf0ZDpK9rMeEjrFpI
-	VCgiZD0MpGSHyY3ixtwWp5JZT4kIma+N6QMafafvts/BnB7I2PbiTggnSaDzfwIShSqDP2V/8GlT/
-	yftX+/hA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=QnGIONTPjN1qGkTiypblHnTWq4j8KPr3kxt7nx4Qxt0=; b=ottw2EzTpsNTuaQmp7E3WAOdE
+	2KcLgaegMH8qhPMpm8gXA78U+i0i7JfJHt6UefBEig6kgX2XhytDXErKoNap/UXn7NtHkhy/Zea5X
+	Bk/6xkoYykmgceTWy1RoHlJK+ls3s9zE9WSAZml1Bu64ze0bzntY4KPp0OKgOxaHgP5D9ny8vqVrr
+	XKAzoLSMNqWjNGpu//UcLwkk2zADWe7ggW3xShnP7NeNphBvb2umF6JBmCB46OUUKv14zFBB1ICG8
+	Smp54v3ZFy+eQFXiY8QSWNDipn0mIDOToc2BV22kigwGUvO0jmw2Iv5sterkdYd1iBfwm1VDtkOt6
+	wua9Hyn9A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL2nR-0004iu-TD; Wed, 23 Sep 2020 11:18:49 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1kL2nT-0004jh-VJ; Wed, 23 Sep 2020 11:18:52 +0000
+Received: from mail-am6eur05on2065.outbound.protection.outlook.com
+ ([40.107.22.65] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL2nK-0004fe-Lv; Wed, 23 Sep 2020 11:18:43 +0000
-Received: by mail-pf1-x443.google.com with SMTP id z18so14854478pfg.0;
- Wed, 23 Sep 2020 04:18:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=7WNGKPx7P80fSH8HCUI8e1FELBKekz/aYKgxcKHN5ds=;
- b=fLswLrk+e7QN82DV+NF1kTEJSNPNUN/srUAt5gMWtLZMkHrb4UbLKgx4r3IkHbPpN/
- 1iMmRXtqrj7Xefvf6Pjk14wawK4M9if8nUOG8IRRS2C0eLm4nE2b2EmegCRq/1MsZClp
- p/KmYzVy0a+ZIgo7dY4U7vS5ezZsutdJybqqamuB+AXbYyvo9+1CjtOJ2BDKM8kTdAJf
- MtTH6FzgEBz2bFoqrDCeDSixXloPviCZlgTug14Fq88EeQA5QW3BfMdtnD7NBPUKhjDA
- iklYpeP23Dbz37yYpHefzBIMzDhOnwd8tAmdb5Ez4b9kNuEtvkL3Lwuy+4iMKiQsIQnA
- ySgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=7WNGKPx7P80fSH8HCUI8e1FELBKekz/aYKgxcKHN5ds=;
- b=Vw0VGKYvfUnV37af8in8a2GU2T6LfE/p1NrWA6fnNhTZgtH2wxNBuSNxzG+609zvZm
- Z8N75/YdxtgWtM3Eo2t2RWBCQI0sn0q4WsG0hpQWfMgG4g17sgj2Qhxo0/sSCjYyTPVh
- b+i8dLYRWiF5J65LBycZAPxjIctja3EPppDqjpqtRbz/kab7yXernoN1uyPNsn5d0Jqh
- myvXoAzySKlEc3R3rhjp+rmxHLY2TiSelmw2RL3RsOgXYKg3B5lzye8mUGkcOQULZWIN
- pjN80P9Tae1aDhcXGtYGKGxKeFCllDk3J1rEgf7QGzQy/uvUQjD5mdD8R5Wb9rkDkX/H
- MUIA==
-X-Gm-Message-State: AOAM530Hp8KWC7YYcx8cZiGToUfgsOM6LwxPDCsGAH8PqBPsYmCiHEpE
- GDbfNlXoVcDEqrIYR7fT+Du1ZsGWRtQ=
-X-Google-Smtp-Source: ABdhPJwJ3sGbKfNfOeDqNYze2sgU8ZtcXt+CyLHpXNk8j1WSvxzSE/U9SkUgM3Bo2HbUrGN6JQ7EsQ==
-X-Received: by 2002:a63:547:: with SMTP id 68mr4498525pgf.177.1600859917914;
- Wed, 23 Sep 2020 04:18:37 -0700 (PDT)
-Received: from localhost.localdomain ([117.19.194.39])
- by smtp.gmail.com with ESMTPSA id 25sm17549693pfj.35.2020.09.23.04.18.34
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 23 Sep 2020 04:18:37 -0700 (PDT)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: sre@kernel.org,
-	matthias.bgg@gmail.com,
-	robh+dt@kernel.org
-Subject: [PATCH 1/2] dt-bindings: power: Add bindings document for Charger
- support on MT6360 PMIC
-Date: Wed, 23 Sep 2020 19:18:29 +0800
-Message-Id: <1600859910-15855-1-git-send-email-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ id 1kL2nM-0004gA-O5; Wed, 23 Sep 2020 11:18:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WCaP/uGNXw6HZ2ZCO69SxY5dXzWEo50Zx1xnmgdDLLd/DjdG1Pham7z/dRotdz4TA8Mn0MmGWhfq/3ZbgnpxFHBVXlNfHk8Kh68q12XCV92Tq4Xbsz574n1I6WhRBw9LEkQSNl+OnCca+ncycRet8j+cc+jnY9kDilLW6Y91/uTgkQ+9KPoZeTsqTbf776tDQW3NXjI/bMi6+jIkcEFuraO+eMXCTZMNDRvtHC63bVqCSRXbavhdAs/s6Su7GsukyqMy/3dZqbrSGOfbZxhshX+RQihuUIyvpAvfPnAk1yHydBv+WtamiR6Iqzr7x+uIvOA7m1D2EZa/PeKm+Hi0/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iAkLMJGw7Vv/vvyJ1mi700q4G3h4xSaJtX4PCcR/n8Q=;
+ b=SF4lHP3dTItZIoxSOnx/sUplrrIw9qEgg+WqEOfvO7jnpCB4MB3ag95aRbsMOWq/e0JCVWtemQSpTHGutCpg8pBCTVv+5NaA+XnVuFFTN73DcCaRCJbpYtj0BWtYYkPjFsi1Hswv8EQnGPOR/7UKXiaNNFiy9iZtpZJZxTplqPgSkx1zQvsmJsQh9dXVMc1p3SdnQzDGNVbjec3/5TQ1d0PPJz+LQ0Wv7MrJ+TaJSDqsTt8jr4HEHb12m8TzZlUorvHlVKALwLlSDd0NsoSb45zHp0skT/xQEV3aVqOwTfCTPY4Tq+3sTEfeTniy+PybaCf8tqDTZoz0UqqpIMLJlw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
+ s=selector2-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iAkLMJGw7Vv/vvyJ1mi700q4G3h4xSaJtX4PCcR/n8Q=;
+ b=IhaOeAiLhydbVcliIEHIxwHK8uy+OFYk24U03M6rPJ3678PrAOUVPaRY1ZuprY4ya7UN5z6Wq5hrgRHr9x6apoNer+HEktwoAznNrjHep2kx4Npy2+kc0awqfbNc//sb+1Tw6PjGG66mBfjAZLGSFqhaBZtNVSVfy7Xoe358A9w=
+Authentication-Results: suse.de; dkim=none (message not signed)
+ header.d=none;suse.de; dmarc=none action=none header.from=oss.nxp.com;
+Received: from VI1PR0402MB3902.eurprd04.prod.outlook.com
+ (2603:10a6:803:22::27) by VI1PR04MB5789.eurprd04.prod.outlook.com
+ (2603:10a6:803:e2::30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3412.20; Wed, 23 Sep
+ 2020 11:18:37 +0000
+Received: from VI1PR0402MB3902.eurprd04.prod.outlook.com
+ ([fe80::5d66:84a7:26de:67c3]) by VI1PR0402MB3902.eurprd04.prod.outlook.com
+ ([fe80::5d66:84a7:26de:67c3%6]) with mapi id 15.20.3412.021; Wed, 23 Sep 2020
+ 11:18:36 +0000
+Date: Wed, 23 Sep 2020 14:18:27 +0300
+From: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v3 07/22] drm/imx/dcss: Initialize DRM driver instance
+ with CMA helper macro
+Message-ID: <20200923111827.dtpgxpa7ydd4kxio@fsr-ub1864-141>
+References: <20200923102159.24084-1-tzimmermann@suse.de>
+ <20200923102159.24084-8-tzimmermann@suse.de>
+Content-Disposition: inline
+In-Reply-To: <20200923102159.24084-8-tzimmermann@suse.de>
+User-Agent: NeoMutt/20171215
+X-ClientProxiedBy: AM4PR05CA0036.eurprd05.prod.outlook.com (2603:10a6:205::49)
+ To VI1PR0402MB3902.eurprd04.prod.outlook.com
+ (2603:10a6:803:22::27)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from fsr-ub1864-141 (83.217.231.2) by
+ AM4PR05CA0036.eurprd05.prod.outlook.com (2603:10a6:205::49) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3391.14 via Frontend Transport; Wed, 23 Sep 2020 11:18:31 +0000
+X-Originating-IP: [83.217.231.2]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: d8600018-cf47-486d-b728-08d85fb269f7
+X-MS-TrafficTypeDiagnostic: VI1PR04MB5789:
+X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <VI1PR04MB5789EE9EDF94E109850D8E27BE380@VI1PR04MB5789.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:198;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Cmbn5QGDKVdeukmXn+cSl5AnvEvL0ckzdWVYbUbIiFKDufVmovnsHe9+cBwKmqrhGAG48LjAdqYsNoRhOEb8u9iyvPYM0ZS6zY56r6wNCrzz8xYAd8cTMnCpD9nBU8fXCCd6WoyUShskT4fo1a+IxvsJe/kG4XvCooOWlcINdPn8JeKfPw6JwN7e3dkIREdzpkPWplfEFUUCO7CV1zJRiDfS4vfBYCKYoKXYi2vz+1T659axyOmJJzPzkLvzd4tN0P12rR2TZ/GO7jzB8wV6ciy9akEwGjTLGpBlmXJXFl4h/s5Q8mv/EEkORN7auCVwZMC12OryeiWc3X4P2c+I9g==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR0402MB3902.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(39850400004)(346002)(376002)(136003)(396003)(86362001)(7366002)(7416002)(7406005)(83380400001)(5660300002)(2906002)(6666004)(8936002)(66946007)(33716001)(1076003)(55016002)(66556008)(66476007)(9686003)(6496006)(6916009)(4326008)(8676002)(52116002)(16526019)(44832011)(316002)(956004)(26005)(478600001)(186003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: YH6/GixFZP1cMd5wQlgyMojaOxfMwE5sHkpGKdNK74B/W7U0HBFvECepHtetZN8rzrviI1iMfCLKDW6lNqlv4ioK0DKlIsG2ebDfGpMMW96aopjhu1hB1B9+gXrgtenHXJVj5REKsiC/svUeV6FUMjb/v7dyoVtvzJoX6gfpMUwaX3tCfMJO6VeNyz6vnQB7FkXduiUjyInDToTOH+xRSPwfIlgP8TLl5/RsRSZi4bmbDm25Ia/ssmlIODu0sI8hlggBQf4+mGRb3V5tHuAx3ry6L6vjkR73gjnxwPDPLukIUoE+HKx33w82c5FZa9zDuyxvpMByPJ+O4HNbZo42DUV4/bc7x5Ze8t+eXxA8D9djSiHDOHiCezBcCj38npuRNUEfqlXS6237vyUofgkZkQZfM7XeJdM4BhdApgB8j/lXXiHuT7+3dlSKCirJpEOhqJu3HYhh9yCrJjm4Dpt36Wik0MqNkX8cO9LdOQkoB+GRgia88YzrBIHWrUZvogM7UF6hOBCG43Jf1vTLZ3rSZzJvDgvgA1G/T6Gy5HRQetklf5l1AMEsAKH0qsXPXiqMfNWKHfHvIQ+Lt8Mlvj2TaDH9r5pDH3Rf/3H3rO3q40NorExRF5I7cPzo1fto2cqq8KE8tGIDDo0c5fz1qFMM2w==
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d8600018-cf47-486d-b728-08d85fb269f7
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR0402MB3902.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Sep 2020 11:18:36.6980 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 5lZLGbhnJQjJpuaMRljf8APd1c9V2G5Oo5JlPEh+eK3QI/loeb5TW6ThgWbwHNTOGTy7vQTpDlxVPdBJxYiV8w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB5789
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_071842_731330_FF2CB2D4 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20200923_071844_903246_5FE490AF 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,78 +127,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Gene Chen <gene_chen@richtek.com>, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: hamohammed.sa@gmail.com, heiko@sntech.de, andrey.grodzovsky@amd.com,
+ airlied@linux.ie, nouveau@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
+ michal.simek@xilinx.com, eric@anholt.net, thierry.reding@gmail.com,
+ robdclark@gmail.com, krzk@kernel.org, kernel test robot <lkp@intel.com>,
+ sam@ravnborg.org, sumit.semwal@linaro.org, emil.velikov@collabora.com,
+ linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
+ oleksandr_andrushchenko@epam.com, tomi.valkeinen@ti.com,
+ linux-tegra@vger.kernel.org, linux@armlinux.org.uk,
+ patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com,
+ freedreno@lists.freedesktop.org, kgene@kernel.org, bskeggs@redhat.com,
+ intel-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ miaoqinglang@huawei.com, s.hauer@pengutronix.de, matthew.auld@intel.com,
+ chunkuang.hu@kernel.org, andi.shyti@intel.com, daniel@ffwll.ch,
+ linux-arm-msm@vger.kernel.org, marek.olsak@amd.com, tianci.yin@amd.com,
+ maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
+ jani.nikula@linux.intel.com, inki.dae@samsung.com, hdegoede@redhat.com,
+ christian.gmeiner@gmail.com, linux-mediatek@lists.infradead.org,
+ mripard@kernel.org, festevam@gmail.com, rodrigo.vivi@intel.com,
+ matthias.bgg@gmail.com, linux-imx@nxp.com, evan.quan@amd.com, sean@poorly.run,
+ kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
+ xen-devel@lists.xenproject.org, tvrtko.ursulin@linux.intel.com,
+ amd-gfx@lists.freedesktop.org, laurent.pinchart@ideasonboard.com,
+ hyun.kwon@xilinx.com, rodrigosiqueiramelo@gmail.com, aaron.liu@amd.com,
+ Felix.Kuehling@amd.com, xinhui.pan@amd.com, sw0312.kim@samsung.com,
+ hjc@rock-chips.com, chris@chris-wilson.co.uk, kyungmin.park@samsung.com,
+ nirmoy.das@amd.com, p.zabel@pengutronix.de, alexander.deucher@amd.com,
+ Hawking.Zhang@amd.com, shawnguo@kernel.org, christian.koenig@amd.com,
+ l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
+Hi Thomas,
 
-Add bindings document for Charger support on MT6360 PMIC
+On Wed, Sep 23, 2020 at 12:21:44PM +0200, Thomas Zimmermann wrote:
+> The i.MX DCSS driver uses CMA helpers with default callback functions.
+> Initialize the driver structure with the rsp CMA helper macro. The
+> driver is being converted to use GEM object functions as part of
+> this change.
+> 
+> Two callbacks, .gem_prime_export and .gem_prime_import, were initialized
+> to their default implementations, so they are just kept empty now.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Reported-by: kernel test robot <lkp@intel.com>
+> ---
 
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
----
- .../bindings/power/supply/mt6360_charger.yaml      | 44 ++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
+Reviewed-by: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
 
-diff --git a/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-new file mode 100644
-index 0000000..711fc19
---- /dev/null
-+++ b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
-@@ -0,0 +1,44 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/power/supply/mt6360_charger.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Battery charger driver for MT6360 PMIC from MediaTek Integrated.
-+
-+maintainers:
-+  - Gene Chen <gene_chen@richtek.com>
-+
-+description: |
-+  This module is part of the MT6360 MFD device.
-+  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6360-chg
-+
-+  vinovp:
-+    description:
-+      Maximum CHGIN regulation voltage.
-+
-+  usb-otg-vbus:
-+      $ref: /schemas/regulator/regulator.yaml#
-+
-+required:
-+  - compatible
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    mt6360_chg: chg {
-+      compatible = "mediatek,mt6360-chg";
-+      vinovp = <14500000>;
-+      otg_vbus: usb-otg-vbus {
-+        regulator-compatible = "usb-otg-vbus";
-+        regulator-name = "usb-otg-vbus";
-+        regulator-min-microvolt = <4425000>;
-+        regulator-max-microvolt = <5825000>;
-+      };
-+    };
-+...
--- 
-2.7.4
+Thanks,
+laurentiu
 
+>  drivers/gpu/drm/imx/dcss/dcss-kms.c | 14 +-------------
+>  1 file changed, 1 insertion(+), 13 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/imx/dcss/dcss-kms.c b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+> index 135a62366ab8..b72e5cef7e40 100644
+> --- a/drivers/gpu/drm/imx/dcss/dcss-kms.c
+> +++ b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+> @@ -28,19 +28,7 @@ static const struct drm_mode_config_funcs dcss_drm_mode_config_funcs = {
+>  
+>  static struct drm_driver dcss_kms_driver = {
+>  	.driver_features	= DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
+> -	.gem_free_object_unlocked = drm_gem_cma_free_object,
+> -	.gem_vm_ops		= &drm_gem_cma_vm_ops,
+> -	.dumb_create		= drm_gem_cma_dumb_create,
+> -
+> -	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
+> -	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
+> -	.gem_prime_import	= drm_gem_prime_import,
+> -	.gem_prime_export	= drm_gem_prime_export,
+> -	.gem_prime_get_sg_table	= drm_gem_cma_prime_get_sg_table,
+> -	.gem_prime_import_sg_table = drm_gem_cma_prime_import_sg_table,
+> -	.gem_prime_vmap		= drm_gem_cma_prime_vmap,
+> -	.gem_prime_vunmap	= drm_gem_cma_prime_vunmap,
+> -	.gem_prime_mmap		= drm_gem_cma_prime_mmap,
+> +	DRM_GEM_CMA_DRIVER_OPS,
+>  	.fops			= &dcss_cma_fops,
+>  	.name			= "imx-dcss",
+>  	.desc			= "i.MX8MQ Display Subsystem",
+> -- 
+> 2.28.0
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
