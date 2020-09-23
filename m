@@ -2,79 +2,85 @@ Return-Path: <SRS0=E7TL=DA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B041CC4743A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39720C2D0A8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 11:19:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E73A23119
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 10:23:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D73B6205F4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2020 11:19:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UGos/jTV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E73A23119
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EZK9/+eC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fLswLrk+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D73B6205F4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Fughcm2fEPBvzKsX+6Fjvdr7O+x1yJU6ukBClQ9sG2A=; b=UGos/jTVmJj+Rc309IEVuhifl
-	BZiJQNuLmcLqTCmqdgFlzFxM6inqoRsG5MioWM66lkwp8cVskCa9fmBmrIwVYJaN2DvxI8RU85OGo
-	AEDzT/0CQwgp+50prexLfY6H7dhaotvNWG9usZc5KQhHQVVqu2XiskQbRVSGiuh77A/FwbdBEWjo9
-	bLm8GJMukm6cS+kBoqkBUqx/NjPdkA7VOXsIl6Uzk+nMKdq/eoXuE+rmoRbLdrbqzP0RoKiJWAl6q
-	F1Glx61FsnuseHOyoClUidm6Nr9kb8xGGCJIE7EVrNYb/ZxvLf9V+zA5PLutnkMVeO5hf3aHB73V0
-	SUq5fqxGw==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pIIRGdjq0K3KjpRlRvInuVH/YrJLF9Ti78Joxt9Hfp4=; b=EZK9/+eCDVtuVUKGwQZ3whWkuM
+	Q+AfHPBFAWI51xX2wG2+y2QW7S1o2SMdZR8lFIqBeNn/dOS+utOdpnRhfZXgdgBvyjYMdWp0f/daq
+	dSmjOyu/t8TA7kJRcNOGAqidhNwhYZOLlmr7Nz81RGIqb7A0caMMglk5EXDP//6mL5TLLDMlnYsjk
+	lznAYTtrF1Zkzkrdy+aP0tm3ohJ7jpbuQxfYnr3TscdjCCSRGkFZ5Ds/B1CGdf0ZDpK9rMeEjrFpI
+	VCgiZD0MpGSHyY3ixtwWp5JZT4kIma+N6QMafafvts/BnB7I2PbiTggnSaDzfwIShSqDP2V/8GlT/
+	yftX+/hA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL1wA-0005wN-3M; Wed, 23 Sep 2020 10:23:46 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kL2nR-0004iu-TD; Wed, 23 Sep 2020 11:18:49 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL1uh-0004wM-Ag; Wed, 23 Sep 2020 10:22:24 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 54B69B282;
- Wed, 23 Sep 2020 10:22:51 +0000 (UTC)
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
- daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
- tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com,
- heiko@sntech.de, thierry.reding@gmail.com, jonathanh@nvidia.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
- laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
- sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
- tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
- andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
- aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
- matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
- andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
- emil.velikov@collabora.com, laurentiu.palcu@oss.nxp.com,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com
-Subject: [PATCH v3 13/22] drm/radeon: Introduce GEM object functions
-Date: Wed, 23 Sep 2020 12:21:50 +0200
-Message-Id: <20200923102159.24084-14-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200923102159.24084-1-tzimmermann@suse.de>
-References: <20200923102159.24084-1-tzimmermann@suse.de>
-MIME-Version: 1.0
+ id 1kL2nK-0004fe-Lv; Wed, 23 Sep 2020 11:18:43 +0000
+Received: by mail-pf1-x443.google.com with SMTP id z18so14854478pfg.0;
+ Wed, 23 Sep 2020 04:18:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=7WNGKPx7P80fSH8HCUI8e1FELBKekz/aYKgxcKHN5ds=;
+ b=fLswLrk+e7QN82DV+NF1kTEJSNPNUN/srUAt5gMWtLZMkHrb4UbLKgx4r3IkHbPpN/
+ 1iMmRXtqrj7Xefvf6Pjk14wawK4M9if8nUOG8IRRS2C0eLm4nE2b2EmegCRq/1MsZClp
+ p/KmYzVy0a+ZIgo7dY4U7vS5ezZsutdJybqqamuB+AXbYyvo9+1CjtOJ2BDKM8kTdAJf
+ MtTH6FzgEBz2bFoqrDCeDSixXloPviCZlgTug14Fq88EeQA5QW3BfMdtnD7NBPUKhjDA
+ iklYpeP23Dbz37yYpHefzBIMzDhOnwd8tAmdb5Ez4b9kNuEtvkL3Lwuy+4iMKiQsIQnA
+ ySgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=7WNGKPx7P80fSH8HCUI8e1FELBKekz/aYKgxcKHN5ds=;
+ b=Vw0VGKYvfUnV37af8in8a2GU2T6LfE/p1NrWA6fnNhTZgtH2wxNBuSNxzG+609zvZm
+ Z8N75/YdxtgWtM3Eo2t2RWBCQI0sn0q4WsG0hpQWfMgG4g17sgj2Qhxo0/sSCjYyTPVh
+ b+i8dLYRWiF5J65LBycZAPxjIctja3EPppDqjpqtRbz/kab7yXernoN1uyPNsn5d0Jqh
+ myvXoAzySKlEc3R3rhjp+rmxHLY2TiSelmw2RL3RsOgXYKg3B5lzye8mUGkcOQULZWIN
+ pjN80P9Tae1aDhcXGtYGKGxKeFCllDk3J1rEgf7QGzQy/uvUQjD5mdD8R5Wb9rkDkX/H
+ MUIA==
+X-Gm-Message-State: AOAM530Hp8KWC7YYcx8cZiGToUfgsOM6LwxPDCsGAH8PqBPsYmCiHEpE
+ GDbfNlXoVcDEqrIYR7fT+Du1ZsGWRtQ=
+X-Google-Smtp-Source: ABdhPJwJ3sGbKfNfOeDqNYze2sgU8ZtcXt+CyLHpXNk8j1WSvxzSE/U9SkUgM3Bo2HbUrGN6JQ7EsQ==
+X-Received: by 2002:a63:547:: with SMTP id 68mr4498525pgf.177.1600859917914;
+ Wed, 23 Sep 2020 04:18:37 -0700 (PDT)
+Received: from localhost.localdomain ([117.19.194.39])
+ by smtp.gmail.com with ESMTPSA id 25sm17549693pfj.35.2020.09.23.04.18.34
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 23 Sep 2020 04:18:37 -0700 (PDT)
+From: Gene Chen <gene.chen.richtek@gmail.com>
+To: sre@kernel.org,
+	matthias.bgg@gmail.com,
+	robh+dt@kernel.org
+Subject: [PATCH 1/2] dt-bindings: power: Add bindings document for Charger
+ support on MT6360 PMIC
+Date: Wed, 23 Sep 2020 19:18:29 +0800
+Message-Id: <1600859910-15855-1-git-send-email-gene.chen.richtek@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_062215_631519_340E2C8A 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20200923_071842_731330_FF2CB2D4 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,124 +92,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- Thomas Zimmermann <tzimmermann@suse.de>, nouveau@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, xen-devel@lists.xenproject.org,
- freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Gene Chen <gene_chen@richtek.com>, devicetree@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-R0VNIG9iamVjdCBmdW5jdGlvbnMgZGVwcmVjYXRlIHNldmVyYWwgc2ltaWxhciBjYWxsYmFjayBp
-bnRlcmZhY2VzIGluCnN0cnVjdCBkcm1fZHJpdmVyLiBUaGlzIHBhdGNoIHJlcGxhY2VzIHRoZSBw
-ZXItZHJpdmVyIGNhbGxiYWNrcyB3aXRoCnBlci1pbnN0YW5jZSBjYWxsYmFja3MgaW4gcmFkZW9u
-LgoKdjI6CgkqIG1vdmUgb2JqZWN0LWZ1bmN0aW9uIGluc3RhbmNlIHRvIHJhZGVvbl9nZW0uYyAo
-Q2hyaXN0aWFuKQoJKiBzZXQgY2FsbGJhY2tzIGluIHJhZGVvbl9nZW1fb2JqZWN0X2NyZWF0ZSgp
-IChDaHJpc3RpYW4pCgpTaWduZWQtb2ZmLWJ5OiBUaG9tYXMgWmltbWVybWFubiA8dHppbW1lcm1h
-bm5Ac3VzZS5kZT4KUmV2aWV3ZWQtYnk6IENocmlzdGlhbiBLw7ZuaWcgPGNocmlzdGlhbi5rb2Vu
-aWdAYW1kLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9kcnYuYyB8IDIz
-ICstLS0tLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZ2Vt
-LmMgfCAzMSArKysrKysrKysrKysrKysrKysrKysrKysrLS0tLQogMiBmaWxlcyBjaGFuZ2VkLCAy
-OCBpbnNlcnRpb25zKCspLCAyNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vcmFkZW9uL3JhZGVvbl9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9u
-X2Rydi5jCmluZGV4IDRjZDMwNjEzZmExZC4uNjUwNjFjOTQ5YWVlIDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcmFk
-ZW9uL3JhZGVvbl9kcnYuYwpAQCAtMTI0LDEzICsxMjQsNiBAQCB2b2lkIHJhZGVvbl9kcml2ZXJf
-aXJxX3ByZWluc3RhbGxfa21zKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpOwogaW50IHJhZGVvbl9k
-cml2ZXJfaXJxX3Bvc3RpbnN0YWxsX2ttcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2KTsKIHZvaWQg
-cmFkZW9uX2RyaXZlcl9pcnFfdW5pbnN0YWxsX2ttcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2KTsK
-IGlycXJldHVybl90IHJhZGVvbl9kcml2ZXJfaXJxX2hhbmRsZXJfa21zKGludCBpcnEsIHZvaWQg
-KmFyZyk7Ci12b2lkIHJhZGVvbl9nZW1fb2JqZWN0X2ZyZWUoc3RydWN0IGRybV9nZW1fb2JqZWN0
-ICpvYmopOwotaW50IHJhZGVvbl9nZW1fb2JqZWN0X29wZW4oc3RydWN0IGRybV9nZW1fb2JqZWN0
-ICpvYmosCi0JCQkJc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpOwotdm9pZCByYWRlb25fZ2Vt
-X29iamVjdF9jbG9zZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwKLQkJCQlzdHJ1Y3QgZHJt
-X2ZpbGUgKmZpbGVfcHJpdik7Ci1zdHJ1Y3QgZG1hX2J1ZiAqcmFkZW9uX2dlbV9wcmltZV9leHBv
-cnQoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpnb2JqLAotCQkJCQlpbnQgZmxhZ3MpOwogZXh0ZXJu
-IGludCByYWRlb25fZ2V0X2NydGNfc2Nhbm91dHBvcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCB1
-bnNpZ25lZCBpbnQgY3J0YywKIAkJCQkgICAgICB1bnNpZ25lZCBpbnQgZmxhZ3MsIGludCAqdnBv
-cywgaW50ICpocG9zLAogCQkJCSAgICAgIGt0aW1lX3QgKnN0aW1lLCBrdGltZV90ICpldGltZSwK
-QEAgLTE0NSwxNCArMTM4LDkgQEAgaW50IHJhZGVvbl9tb2RlX2R1bWJfbW1hcChzdHJ1Y3QgZHJt
-X2ZpbGUgKmZpbHAsCiBpbnQgcmFkZW9uX21vZGVfZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxl
-ICpmaWxlX3ByaXYsCiAJCQkgICAgc3RydWN0IGRybV9kZXZpY2UgKmRldiwKIAkJCSAgICBzdHJ1
-Y3QgZHJtX21vZGVfY3JlYXRlX2R1bWIgKmFyZ3MpOwotc3RydWN0IHNnX3RhYmxlICpyYWRlb25f
-Z2VtX3ByaW1lX2dldF9zZ190YWJsZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7CiBzdHJ1
-Y3QgZHJtX2dlbV9vYmplY3QgKnJhZGVvbl9nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlKHN0cnVj
-dCBkcm1fZGV2aWNlICpkZXYsCiAJCQkJCQkJc3RydWN0IGRtYV9idWZfYXR0YWNobWVudCAqLAog
-CQkJCQkJCXN0cnVjdCBzZ190YWJsZSAqc2cpOwotaW50IHJhZGVvbl9nZW1fcHJpbWVfcGluKHN0
-cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKLXZvaWQgcmFkZW9uX2dlbV9wcmltZV91bnBpbihz
-dHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7Ci12b2lkICpyYWRlb25fZ2VtX3ByaW1lX3ZtYXAo
-c3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmopOwotdm9pZCByYWRlb25fZ2VtX3ByaW1lX3Z1bm1h
-cChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgdm9pZCAqdmFkZHIpOwogCiAvKiBhdHB4IGhh
-bmRsZXIgKi8KICNpZiBkZWZpbmVkKENPTkZJR19WR0FfU1dJVENIRVJPTykKQEAgLTU1MCw3ICs1
-MzgsNyBAQCBsb25nIHJhZGVvbl9kcm1faW9jdGwoc3RydWN0IGZpbGUgKmZpbHAsCiAJfQogCiAJ
-cmV0ID0gZHJtX2lvY3RsKGZpbHAsIGNtZCwgYXJnKTsKLQkKKwogCXBtX3J1bnRpbWVfbWFya19s
-YXN0X2J1c3koZGV2LT5kZXYpOwogCXBtX3J1bnRpbWVfcHV0X2F1dG9zdXNwZW5kKGRldi0+ZGV2
-KTsKIAlyZXR1cm4gcmV0OwpAQCAtNjA5LDIyICs1OTcsMTMgQEAgc3RhdGljIHN0cnVjdCBkcm1f
-ZHJpdmVyIGttc19kcml2ZXIgPSB7CiAJLmlycV91bmluc3RhbGwgPSByYWRlb25fZHJpdmVyX2ly
-cV91bmluc3RhbGxfa21zLAogCS5pcnFfaGFuZGxlciA9IHJhZGVvbl9kcml2ZXJfaXJxX2hhbmRs
-ZXJfa21zLAogCS5pb2N0bHMgPSByYWRlb25faW9jdGxzX2ttcywKLQkuZ2VtX2ZyZWVfb2JqZWN0
-X3VubG9ja2VkID0gcmFkZW9uX2dlbV9vYmplY3RfZnJlZSwKLQkuZ2VtX29wZW5fb2JqZWN0ID0g
-cmFkZW9uX2dlbV9vYmplY3Rfb3BlbiwKLQkuZ2VtX2Nsb3NlX29iamVjdCA9IHJhZGVvbl9nZW1f
-b2JqZWN0X2Nsb3NlLAogCS5kdW1iX2NyZWF0ZSA9IHJhZGVvbl9tb2RlX2R1bWJfY3JlYXRlLAog
-CS5kdW1iX21hcF9vZmZzZXQgPSByYWRlb25fbW9kZV9kdW1iX21tYXAsCiAJLmZvcHMgPSAmcmFk
-ZW9uX2RyaXZlcl9rbXNfZm9wcywKIAogCS5wcmltZV9oYW5kbGVfdG9fZmQgPSBkcm1fZ2VtX3By
-aW1lX2hhbmRsZV90b19mZCwKIAkucHJpbWVfZmRfdG9faGFuZGxlID0gZHJtX2dlbV9wcmltZV9m
-ZF90b19oYW5kbGUsCi0JLmdlbV9wcmltZV9leHBvcnQgPSByYWRlb25fZ2VtX3ByaW1lX2V4cG9y
-dCwKLQkuZ2VtX3ByaW1lX3BpbiA9IHJhZGVvbl9nZW1fcHJpbWVfcGluLAotCS5nZW1fcHJpbWVf
-dW5waW4gPSByYWRlb25fZ2VtX3ByaW1lX3VucGluLAotCS5nZW1fcHJpbWVfZ2V0X3NnX3RhYmxl
-ID0gcmFkZW9uX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCiAJLmdlbV9wcmltZV9pbXBvcnRfc2df
-dGFibGUgPSByYWRlb25fZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZSwKLQkuZ2VtX3ByaW1lX3Zt
-YXAgPSByYWRlb25fZ2VtX3ByaW1lX3ZtYXAsCi0JLmdlbV9wcmltZV92dW5tYXAgPSByYWRlb25f
-Z2VtX3ByaW1lX3Z1bm1hcCwKIAogCS5uYW1lID0gRFJJVkVSX05BTUUsCiAJLmRlc2MgPSBEUklW
-RVJfREVTQywKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2dlbS5j
-IGIvZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZ2VtLmMKaW5kZXggZTVjNDI3MWU2NGVk
-Li4wY2NkNzIxM2U0MWYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9u
-X2dlbS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2dlbS5jCkBAIC0zNSw3
-ICszNSwxNyBAQAogCiAjaW5jbHVkZSAicmFkZW9uLmgiCiAKLXZvaWQgcmFkZW9uX2dlbV9vYmpl
-Y3RfZnJlZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKmdvYmopCitzdHJ1Y3QgZG1hX2J1ZiAqcmFk
-ZW9uX2dlbV9wcmltZV9leHBvcnQoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpnb2JqLAorCQkJCQlp
-bnQgZmxhZ3MpOworc3RydWN0IHNnX3RhYmxlICpyYWRlb25fZ2VtX3ByaW1lX2dldF9zZ190YWJs
-ZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7CitpbnQgcmFkZW9uX2dlbV9wcmltZV9waW4o
-c3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmopOwordm9pZCByYWRlb25fZ2VtX3ByaW1lX3VucGlu
-KHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKK3ZvaWQgKnJhZGVvbl9nZW1fcHJpbWVfdm1h
-cChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7Cit2b2lkIHJhZGVvbl9nZW1fcHJpbWVfdnVu
-bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCB2b2lkICp2YWRkcik7CisKK3N0YXRpYyBj
-b25zdCBzdHJ1Y3QgZHJtX2dlbV9vYmplY3RfZnVuY3MgcmFkZW9uX2dlbV9vYmplY3RfZnVuY3M7
-CisKK3N0YXRpYyB2b2lkIHJhZGVvbl9nZW1fb2JqZWN0X2ZyZWUoc3RydWN0IGRybV9nZW1fb2Jq
-ZWN0ICpnb2JqKQogewogCXN0cnVjdCByYWRlb25fYm8gKnJvYmogPSBnZW1fdG9fcmFkZW9uX2Jv
-KGdvYmopOwogCkBAIC04NSw2ICs5NSw3IEBAIGludCByYWRlb25fZ2VtX29iamVjdF9jcmVhdGUo
-c3RydWN0IHJhZGVvbl9kZXZpY2UgKnJkZXYsIHVuc2lnbmVkIGxvbmcgc2l6ZSwKIAkJcmV0dXJu
-IHI7CiAJfQogCSpvYmogPSAmcm9iai0+dGJvLmJhc2U7CisJKCpvYmopLT5mdW5jcyA9ICZyYWRl
-b25fZ2VtX29iamVjdF9mdW5jczsKIAlyb2JqLT5waWQgPSB0YXNrX3BpZF9ucihjdXJyZW50KTsK
-IAogCW11dGV4X2xvY2soJnJkZXYtPmdlbS5tdXRleCk7CkBAIC0xNDYsNyArMTU3LDcgQEAgdm9p
-ZCByYWRlb25fZ2VtX2Zpbmkoc3RydWN0IHJhZGVvbl9kZXZpY2UgKnJkZXYpCiAgKiBDYWxsIGZy
-b20gZHJtX2dlbV9oYW5kbGVfY3JlYXRlIHdoaWNoIGFwcGVhciBpbiBib3RoIG5ldyBhbmQgb3Bl
-biBpb2N0bAogICogY2FzZS4KICAqLwotaW50IHJhZGVvbl9nZW1fb2JqZWN0X29wZW4oc3RydWN0
-IGRybV9nZW1fb2JqZWN0ICpvYmosIHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2KQorc3RhdGlj
-IGludCByYWRlb25fZ2VtX29iamVjdF9vcGVuKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCBz
-dHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdikKIHsKIAlzdHJ1Y3QgcmFkZW9uX2JvICpyYm8gPSBn
-ZW1fdG9fcmFkZW9uX2JvKG9iaik7CiAJc3RydWN0IHJhZGVvbl9kZXZpY2UgKnJkZXYgPSByYm8t
-PnJkZXY7CkBAIC0xNzYsOCArMTg3LDggQEAgaW50IHJhZGVvbl9nZW1fb2JqZWN0X29wZW4oc3Ry
-dWN0IGRybV9nZW1fb2JqZWN0ICpvYmosIHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcmkKIAlyZXR1
-cm4gMDsKIH0KIAotdm9pZCByYWRlb25fZ2VtX29iamVjdF9jbG9zZShzdHJ1Y3QgZHJtX2dlbV9v
-YmplY3QgKm9iaiwKLQkJCSAgICAgc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpCitzdGF0aWMg
-dm9pZCByYWRlb25fZ2VtX29iamVjdF9jbG9zZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwK
-KwkJCQkgICAgc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpCiB7CiAJc3RydWN0IHJhZGVvbl9i
-byAqcmJvID0gZ2VtX3RvX3JhZGVvbl9ibyhvYmopOwogCXN0cnVjdCByYWRlb25fZGV2aWNlICpy
-ZGV2ID0gcmJvLT5yZGV2OwpAQCAtMjE2LDYgKzIyNywxOCBAQCBzdGF0aWMgaW50IHJhZGVvbl9n
-ZW1faGFuZGxlX2xvY2t1cChzdHJ1Y3QgcmFkZW9uX2RldmljZSAqcmRldiwgaW50IHIpCiAJcmV0
-dXJuIHI7CiB9CiAKK3N0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2dlbV9vYmplY3RfZnVuY3MgcmFk
-ZW9uX2dlbV9vYmplY3RfZnVuY3MgPSB7CisJLmZyZWUgPSByYWRlb25fZ2VtX29iamVjdF9mcmVl
-LAorCS5vcGVuID0gcmFkZW9uX2dlbV9vYmplY3Rfb3BlbiwKKwkuY2xvc2UgPSByYWRlb25fZ2Vt
-X29iamVjdF9jbG9zZSwKKwkuZXhwb3J0ID0gcmFkZW9uX2dlbV9wcmltZV9leHBvcnQsCisJLnBp
-biA9IHJhZGVvbl9nZW1fcHJpbWVfcGluLAorCS51bnBpbiA9IHJhZGVvbl9nZW1fcHJpbWVfdW5w
-aW4sCisJLmdldF9zZ190YWJsZSA9IHJhZGVvbl9nZW1fcHJpbWVfZ2V0X3NnX3RhYmxlLAorCS52
-bWFwID0gcmFkZW9uX2dlbV9wcmltZV92bWFwLAorCS52dW5tYXAgPSByYWRlb25fZ2VtX3ByaW1l
-X3Z1bm1hcCwKK307CisKIC8qCiAgKiBHRU0gaW9jdGxzLgogICovCi0tIAoyLjI4LjAKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
-ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+From: Gene Chen <gene_chen@richtek.com>
+
+Add bindings document for Charger support on MT6360 PMIC
+
+Signed-off-by: Gene Chen <gene_chen@richtek.com>
+---
+ .../bindings/power/supply/mt6360_charger.yaml      | 44 ++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
+
+diff --git a/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
+new file mode 100644
+index 0000000..711fc19
+--- /dev/null
++++ b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
+@@ -0,0 +1,44 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/power/supply/mt6360_charger.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Battery charger driver for MT6360 PMIC from MediaTek Integrated.
++
++maintainers:
++  - Gene Chen <gene_chen@richtek.com>
++
++description: |
++  This module is part of the MT6360 MFD device.
++  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
++
++properties:
++  compatible:
++    const: mediatek,mt6360-chg
++
++  vinovp:
++    description:
++      Maximum CHGIN regulation voltage.
++
++  usb-otg-vbus:
++      $ref: /schemas/regulator/regulator.yaml#
++
++required:
++  - compatible
++
++additionalProperties: false
++
++examples:
++  - |
++    mt6360_chg: chg {
++      compatible = "mediatek,mt6360-chg";
++      vinovp = <14500000>;
++      otg_vbus: usb-otg-vbus {
++        regulator-compatible = "usb-otg-vbus";
++        regulator-name = "usb-otg-vbus";
++        regulator-min-microvolt = <4425000>;
++        regulator-max-microvolt = <5825000>;
++      };
++    };
++...
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
