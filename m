@@ -2,77 +2,86 @@ Return-Path: <SRS0=tl/R=DB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41D7CC4363D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 15:24:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59BCCC4363D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 15:28:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C136121D24
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 15:24:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BF9942311A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 15:28:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QvB56Phg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QCasCKcx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C136121D24
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JF7LTzyT";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="AVPMJ1vP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF9942311A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rgaWlu03L5vwVg4T3JJ9nROEsIswO30x3I9+2hUYkaY=; b=QvB56PhgtC5a/eDJl4y2V6B8e4
-	JudXTBb/k8uL0JBNX+AA/4m3yGyl5lskEI7/HoE5zzBgXa9LhBUwkp8qr9ICYW+pAO610XbENm0RR
-	SQDL7i+MB71AvAGYv/OMyybgOfzIw9XLtk6xBd6wITOjTesPOM2HWzQiBooeqOKSDh3FxGzN1u0dq
-	w3bMiLvASHsltkbUH5n9J3o3WXHQAi4HI5nf23G4BVjmvlYIE34tf3kiWQeMvKXEzBZG/HmiDGTyB
-	dxvqYVCMxD9hgDMROjVOEwsuz1oVC2fv220NXcWJxCrh+TXrnO/cMhrkinguJnWMzI83HBCIspen8
-	EWH05CZQ==;
+	bh=1SPFr4g4RC4r6ZModMhWylxN41HmQEYeZaOOjhhr6DI=; b=JF7LTzyTIX0Mf0GDyE1P9kJv7J
+	azGicZnThyA+877SiljopFv3a1ZlFTq1BCx0vtAPZk0wPpeEPjj+3Rk2/+Hz50doYEO208IiB0uB6
+	HRV2JqbJgx9c56yrWurG85MC7wHYblt+0ye0U8hQ1oaZq9k4w9guC5chXIUTrsHu6fDLJeV558k6F
+	547GQuV7IEUWQiO7EPcQR/4JDhiKl9ukU6p5AFPosHoiYI9HsSCwrY89dRtowYy27/jT0pv5OPTr6
+	gHk2ay2DhrlBA4x6eAqKal+LfCa6FkUa0+XhFRWt01Q5Tm6MYoBikLbwT0R+LsAVtewtjo/BwL40u
+	KQqedFyA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLT6M-0002dM-VS; Thu, 24 Sep 2020 15:24:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kLTAX-00039Y-UL; Thu, 24 Sep 2020 15:28:26 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLT6I-0002bb-Ol
- for linux-mediatek@lists.infradead.org; Thu, 24 Sep 2020 15:24:04 +0000
-X-UUID: 4ca1a46bef2f4a8795fcf41c257f32a1-20200924
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=OTCsfNo99ojtjb1h0R1ye7ZsuTV+XjaLXSyLcJ3cg0E=; 
- b=QCasCKcx9+Q0MxhQuaujX8t7kahuG83drD+kHDEORaNJEGY/Uh9h0AXjX/FEK8AcDBqvHgCrci9kmOJaep+72eaaL6NqZ6QC/S9dmxHZWQlBapyKYGJ1Dj6RlwPKMAL85pMAwPxyp3KzsaD3TIh5eF+N0Zkuwejkl1pT2qxzApM=;
-X-UUID: 4ca1a46bef2f4a8795fcf41c257f32a1-20200924
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1169451962; Thu, 24 Sep 2020 07:23:31 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Sep 2020 08:23:29 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Sep 2020 23:23:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 24 Sep 2020 23:23:13 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 1/2] mt76: mt7915: measure channel noise and report it via
- survey
-Date: Thu, 24 Sep 2020 23:23:13 +0800
-Message-ID: <670fe8dcb9e1308041047718af241225ff5614bb.1600960534.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kLTAT-000382-U6; Thu, 24 Sep 2020 15:28:22 +0000
+Received: by mail-pl1-x644.google.com with SMTP id bb1so1869720plb.2;
+ Thu, 24 Sep 2020 08:28:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gXVI8blrh+U0tOoKV0mzGc0cowRQ+kIzhBwCV8XERhU=;
+ b=AVPMJ1vPOCO3zjmw8Z7m6/mYNu1KEe1IgzVGG93jFNEPlOOjvSfwl0AxUFHapGBpOF
+ s4FMD7faMFWHKWoC5jxD3E7HVVjNCsAU0D/aIJ0B5bPkaltCoLnI/9Y4biHsMPNKRs1H
+ VSjswkMr+P9b7bq4azdNAPTqv17a9ZeKKDaPH4QS0zp5fcJkCPAX+g9WPc3T55Fovqz6
+ o74EVuFmwTUdmzpt9EeFMYl0g6jXMDtSmqByozYqgYI/SUOKLJpCYqxs33c2nS7OJpB6
+ YSq8hGuO4e0c415/rz/pHb8bl2++PhugN3Nq2KHszvHIguiUPsjk99+Zr98MM/C4caqy
+ YDjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gXVI8blrh+U0tOoKV0mzGc0cowRQ+kIzhBwCV8XERhU=;
+ b=d5t5pfEUbMHF6ovg5pHF5rQ2LKWY6UZnI4KKFw7qt62/cfam0+yaxmtzdVXOwUea5M
+ fKlDnA5BI2XJZGUywrFSfQk2IMax7Kg9AgmcOJL1T8NHpwPrxNnIQcI/qvQqq1NHXjv5
+ 4eZ5JS4Ppku5SF579IdCt3BMz1+yDLeAkLCQsijBGW3fKSFL9rbFovVrEbncBBJ4+f7C
+ UrAFb8kk4ZQvQ9yzCD92JxM8szL8OsrM+6usE1E/prA9Tu1otCBDYfLhX4pij3WUyApz
+ X+PMcBbihAZFTHqlQobffNLCqCBdtrvxjvAQDvBvKP1C53hg5DPeaOMWB1oiA+NcerDO
+ wPjQ==
+X-Gm-Message-State: AOAM531NJMM79CA02k0k2PNN5sqpyaacKXtmSCA9bU/uCCi3DMaXFlJj
+ Wx1GlFE7L5UA1DsPaq2F4Ew=
+X-Google-Smtp-Source: ABdhPJxsPVRDdPOTyqtqbRcrA2IdHghcS1WT940rlN4wuDV2SJzU2u+ErsOmLk528OoV5ouzqGN8uw==
+X-Received: by 2002:a17:902:ba90:b029:d1:e5e7:be6e with SMTP id
+ k16-20020a170902ba90b02900d1e5e7be6emr4990145pls.72.1600961299775; 
+ Thu, 24 Sep 2020 08:28:19 -0700 (PDT)
+Received: from guoguo-omen.lan ([156.96.148.94])
+ by smtp.gmail.com with ESMTPSA id e62sm3233212pfh.76.2020.09.24.08.28.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Sep 2020 08:28:19 -0700 (PDT)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: linux-spi@vger.kernel.org
+Subject: [PATCH 0/3] spi: spi-mtk-nor: make use of full capability of program
+ mode
+Date: Thu, 24 Sep 2020 23:27:27 +0800
+Message-Id: <20200924152730.733243-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 7E353855B9F60CF3FD2186DF9C4F0CBE4BA96433650EDF6132C8388890D68BEE2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200924_112402_988012_7735995D 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20200924_112822_013426_EC1058B7 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,161 +93,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-wireless@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, bayi.cheng@mediatek.com,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chuanhong Guo <gch981213@gmail.com>,
+ Ikjoon Jang <ikjn@chromium.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Read per-stream measurements every 100 ms and build a simple moving average.
+"program" mode on this controller can trigger up to 56 bits of data
+shifting. During the operation, data in PRGDATA[0-5] will be
+shifted out from MOSI, and data from MISO will be continuously filling
+SHREG[0-9].
+Currently this mode is used to implement transfer_one_message for 6-byte
+full-duplex transfer, but it can execute a transfer for up-to 7 bytes
+as long as the last byte is read only.
+transfer_one_message is expected to perform full-duplex transfer,
+instead of transfer with specific format. mtk_nor_spi_mem_prg is
+added here to use this extra byte.
 
-Tested-by: Shayne Chen <shayne.chen@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 50 ++++++++++++++++---
- .../net/wireless/mediatek/mt76/mt7915/main.c  |  2 +
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  8 +++
- 4 files changed, 55 insertions(+), 6 deletions(-)
+Newer version of this controller can trigger longer data shifting with
+shift bytes more than PRGDATA_MAX + SHREG_MAX. This patch is implemented
+with that in mind and it checks against both SHREG_MAX and PRG_CNT_MAX
+for future support of new controllers.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index b35222c0e271..90849a00c550 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1085,17 +1085,49 @@ void mt7915_mac_set_timing(struct mt7915_phy *phy)
- 		   MT_ARB_SCR_TX_DISABLE | MT_ARB_SCR_RX_DISABLE);
- }
- 
--/*
-- * TODO: mib counters are read-clear and there're many HE functionalities need
-- * such info, hence firmware prepares a task to read the fields out to a shared
-- * structure. User should switch to use event format to avoid race condition.
-- */
-+void mt7915_mac_enable_nf(struct mt7915_dev *dev, bool ext_phy)
-+{
-+	mt7915_l2_set(dev, MT_WF_PHY_RXTD12(ext_phy),
-+		      MT_WF_PHY_RXTD12_IRPI_SW_CLR_ONLY |
-+		      MT_WF_PHY_RXTD12_IRPI_SW_CLR);
-+
-+	mt7915_l2_set(dev, MT_WF_PHY_RX_CTRL1(ext_phy),
-+		      FIELD_PREP(MT_WF_PHY_RX_CTRL1_IPI_EN, 0x5));
-+}
-+
-+static u8
-+mt7915_phy_get_nf(struct mt7915_phy *phy, int idx)
-+{
-+	static const u8 nf_power[] = { 92, 89, 86, 83, 80, 75, 70, 65, 60, 55, 52 };
-+	struct mt7915_dev *dev = phy->dev;
-+	u32 val, sum = 0, n = 0;
-+	int nss, i;
-+
-+	/* TODO: DBDC: 0,1 for 2.4G, 2,3 for 5G */
-+	for (nss = 0; nss < hweight8(phy->chainmask); nss++) {
-+		u32 reg = MT_WF_IRPI(nss);
-+
-+		for (i = 0; i < ARRAY_SIZE(nf_power); i++, reg += 4) {
-+			val = mt7915_l2_rr(dev, reg);
-+			sum += val * nf_power[i];
-+			n += val;
-+		}
-+	}
-+
-+	if (!n)
-+		return 0;
-+
-+	return sum / n;
-+}
-+
- static void
- mt7915_phy_update_channel(struct mt76_phy *mphy, int idx)
- {
- 	struct mt7915_dev *dev = container_of(mphy->dev, struct mt7915_dev, mt76);
-+	struct mt7915_phy *phy = (struct mt7915_phy *)mphy->priv;
- 	struct mt76_channel_state *state;
- 	u64 busy_time, tx_time, rx_time, obss_time;
-+	int nf;
- 
- 	busy_time = mt76_get_field(dev, MT_MIB_SDR9(idx),
- 				   MT_MIB_SDR9_BUSY_MASK);
-@@ -1106,12 +1138,18 @@ mt7915_phy_update_channel(struct mt76_phy *mphy, int idx)
- 	obss_time = mt76_get_field(dev, MT_WF_RMAC_MIB_AIRTIME14(idx),
- 				   MT_MIB_OBSSTIME_MASK);
- 
--	/* TODO: state->noise */
-+	nf = mt7915_phy_get_nf(phy, idx);
-+	if (!phy->noise)
-+		phy->noise = nf << 4;
-+	else if (nf)
-+		phy->noise += nf - (phy->noise >> 4);
-+
- 	state = mphy->chan_state;
- 	state->cc_busy += busy_time;
- 	state->cc_tx += tx_time;
- 	state->cc_rx += rx_time + obss_time;
- 	state->cc_bss_rx += rx_time;
-+	state->noise = -(phy->noise >> 4);
- }
- 
- void mt7915_update_channel(struct mt76_dev *mdev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index c48158392057..4cbeffeabbe1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -34,12 +34,14 @@ static int mt7915_start(struct ieee80211_hw *hw)
- 		mt7915_mcu_set_pm(dev, 0, 0);
- 		mt7915_mcu_set_mac(dev, 0, true, false);
- 		mt7915_mcu_set_scs(dev, 0, true);
-+		mt7915_mac_enable_nf(dev, 0);
- 	}
- 
- 	if (phy != &dev->phy) {
- 		mt7915_mcu_set_pm(dev, 1, 0);
- 		mt7915_mcu_set_mac(dev, 1, true, false);
- 		mt7915_mcu_set_scs(dev, 1, true);
-+		mt7915_mac_enable_nf(dev, 1);
- 	}
- 
- 	mt7915_mcu_set_sku_en(phy, true);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index ba7998724716..c01c278eb27e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -429,6 +429,7 @@ mt7915_l2_rmw(struct mt7915_dev *dev, u32 addr, u32 mask, u32 val)
- bool mt7915_mac_wtbl_update(struct mt7915_dev *dev, int idx, u32 mask);
- void mt7915_mac_reset_counters(struct mt7915_phy *phy);
- void mt7915_mac_cca_stats_reset(struct mt7915_phy *phy);
-+void mt7915_mac_enable_nf(struct mt7915_dev *dev, bool ext_phy);
- void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
- 			   struct sk_buff *skb, struct mt76_wcid *wcid,
- 			   struct ieee80211_key_conf *key, bool beacon);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index 70e98a275122..6837596cb25f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -396,11 +396,19 @@ static inline u32 mt7915_int_rx_mask(enum mt76_rxq_id q)
- #define MT_PCIE_MAC(ofs)		(MT_PCIE_MAC_BASE + (ofs))
- #define MT_PCIE_MAC_INT_ENABLE		MT_PCIE_MAC(0x188)
- 
-+#define MT_WF_IRPI_BASE			0x83006000
-+#define MT_WF_IRPI(ofs)			(MT_WF_IRPI_BASE + ((ofs) << 16))
-+
- /* PHY: band 0(0x83080000), band 1(0x83090000) */
- #define MT_WF_PHY_BASE			0x83080000
- #define MT_WF_PHY(ofs)			(MT_WF_PHY_BASE + (ofs))
- 
- #define MT_WF_PHY_RX_CTRL1(_phy)	MT_WF_PHY(0x2004 + ((_phy) << 16))
-+#define MT_WF_PHY_RX_CTRL1_IPI_EN	GENMASK(2, 0)
- #define MT_WF_PHY_RX_CTRL1_STSCNT_EN	GENMASK(11, 9)
- 
-+#define MT_WF_PHY_RXTD12(_phy)		MT_WF_PHY(0x8230 + ((_phy) << 16))
-+#define MT_WF_PHY_RXTD12_IRPI_SW_CLR_ONLY	BIT(18)
-+#define MT_WF_PHY_RXTD12_IRPI_SW_CLR	BIT(29)
-+
- #endif
+Patch 3/3 is a fix for:
+commit a59b2c7c56bf7 ("spi: spi-mtk-nor: support standard spi properties")
+which breaks supports_op logic. But it can't be separated as it depends
+on patch 2/3. Fortuantely the broken commit isn't in stable yet.
+
+Chuanhong Guo (3):
+  spi: spi-mtk-nor: make use of full capability of prg mode
+  spi: spi-mtk-nor: add helper for checking prg mode ops
+  spi: spi-mtk-nor: fix op checks in supports_op
+
+ drivers/spi/spi-mtk-nor.c | 179 +++++++++++++++++++++++++++++++++-----
+ 1 file changed, 158 insertions(+), 21 deletions(-)
+
 -- 
-2.18.0
+2.26.2
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
