@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-6.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
 	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75805C4363D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA75EC4727D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:34:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F527206A5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:27:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 734A1221EB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:34:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YT4NGVQS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RsjZ75sv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F527206A5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r+pI16SY";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="YgF878XP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 734A1221EB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,49 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FBF3GyU9HAWtXTilY2yW3vaREXrl2fmiurFeWfTh76g=; b=YT4NGVQSujXSH9q3lCA3IsYqG
-	ZNUoKgYp6p5ZEmqj66Uh/l06Hyidsog1ll7cajRLcbyqv4Mh13tlRstLgL4qFPGQRJrHTT/5Lv6j/
-	x79HPpFrFWdiL/Ffy1X/QrDXTR06BfaFYNg+a13ghoduFa/c2Nevgd/XrZVvzDs1D9cCUaZO5X7N6
-	BkqS76xDWgmkuULcq22YSYf5Cr+1gYsF86OAVDlUIg3DF4K5RI8kXP+AT+0+4ed3D1GbAPS1Ng5J/
-	m/FjWDydeU2Fd9B16ge8ZBfHpnZ/AOqbNBWXLkedew91YQUT6Ggn8JhjHnqRXTJ7vDFg9CmpaqmqT
-	cjFAhMjsg==;
+	 bh=bupHznpNcRwGv4lz4rk0+EPD7JJu8UhARCMsShSMLtE=; b=r+pI16SYpY+MXua6XiLLwVYuD
+	nx4kvzZhbD1Q4CXZ7E7PlOpRNZIPZ6EUBPbeVmO8hAffFf40d0GYqkboy/YRTm/Ey5d8DqjcpbCmO
+	95/H8nOSTtNqxz2Mvzvbo2sUvh5tbn54PD+EMLL8+Kj2fKeBaJWw2ArkUUhSUGuO7qWqsl78s0FQx
+	rZS4RR26TgnAilc+q4a39TmK6hX9eOPQu1LDB3gsqhpFyvETB2p4uE2Gks0t30Lep/UVAHiS3O8YM
+	I7Opf0rbODuBUfIaCBsurA3+Nli21LICVNx043SGib8WnI+8ZiR1FE/xU68To7B7BPcv/e7XtI45L
+	LJf8S35Sg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLQLO-0007rH-5h; Thu, 24 Sep 2020 12:27:26 +0000
+	id 1kLQRv-0002Jw-D8; Thu, 24 Sep 2020 12:34:11 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLQLG-0007nL-Fw; Thu, 24 Sep 2020 12:27:20 +0000
-X-UUID: 95dec31be3a64716b85b0f8381bc6575-20200924
+ id 1kLQRn-0002HX-Q1; Thu, 24 Sep 2020 12:34:06 +0000
+X-UUID: a780ce2bf59141c4ad3d9594beba7239-20200924
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=oEQqIT87UU1+x8zERr/VFYRlzuHTWeays79SiUEYuMQ=; 
- b=RsjZ75svAwDKdF3bN2RFz2hobMgKpNPaKJ6TJ1LX+qyEObEQM1bUBWVN0y8i/TUhD1fkB/ox4IujBpaANw9dek+Z0I5rM6nGs0cGcl8Yu2aVPZJgjIXaBXWLxsvr0ulzGNe091ytqTti+N9fRyCKn3JW1/JjqOBbEjY2eikdV4k=;
-X-UUID: 95dec31be3a64716b85b0f8381bc6575-20200924
+ bh=3xhvL/jxHoFM4lCpaJFVgA5szl9rK3NZUTpqOY0oS0A=; 
+ b=YgF878XPHogI4aTUl5UXQky6mdiiEW+RWb6ulCfUOWiPS5hWL6B3fqUN5C0ngx5Nlx2pbx55PDn1qNdeFUCuublJ5JySfEtLL3ftvy2zXc/0j/oI4H5haOX1q70dbsv9rbe6xcB6I2GLmW6hC8qVP6sB5tms4ariWW/MlE6q86A=;
+X-UUID: a780ce2bf59141c4ad3d9594beba7239-20200924
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <landen.chao@mediatek.com>)
+ (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 836819781; Thu, 24 Sep 2020 04:13:39 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Sep 2020 05:13:36 -0700
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
+ with ESMTP id 485968116; Thu, 24 Sep 2020 04:34:00 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Sep 2020 05:33:59 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Sep 2020 20:33:42 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 24 Sep 2020 20:13:23 +0800
-Message-ID: <1600949604.11746.27.camel@mtksdccf07>
-Subject: Re: [PATCH v2] net: dsa: mt7530: Add some return-value checks
-From: Landen Chao <landen.chao@mediatek.com>
-To: Alex Dewar <alex.dewar90@gmail.com>
-Date: Thu, 24 Sep 2020 20:13:24 +0800
-In-Reply-To: <20200919192809.29120-1-alex.dewar90@gmail.com>
-References: <1600327978.11746.22.camel@mtksdccf07>
- <20200919192809.29120-1-alex.dewar90@gmail.com>
+ Transport; Thu, 24 Sep 2020 20:33:43 +0800
+Message-ID: <1600950825.19591.2.camel@mtksdccf07>
+Subject: Re: [PATCH v4 0/6] kasan: add workqueue and timer stack for generic
+ KASAN
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Alexander Potapenko <glider@google.com>
+Date: Thu, 24 Sep 2020 20:33:45 +0800
+In-Reply-To: <CAG_fn=U_dshqBB8HBhGyYnn_vScTOcLJX=mfU+8Wi5wjZL2oYA@mail.gmail.com>
+References: <20200924040152.30851-1-walter-zh.wu@mediatek.com>
+ <CAG_fn=U_dshqBB8HBhGyYnn_vScTOcLJX=mfU+8Wi5wjZL2oYA@mail.gmail.com>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 06AAE36FCA1A35D7BBA6DD440E2BA708F1295AAE573EAC13CD5AE6AAD26BA90B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200924_082718_762640_ED2B24CB 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20200924_083404_069380_BF991B23 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,61 +85,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Sean Wang <Sean.Wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
- "David S. Miller" <davem@davemloft.net>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Marco Elver <elver@google.com>, wsd_upstream <wsd_upstream@mediatek.com>,
+ Linux
+ Memory Management List <linux-mm@kvack.org>, Stephen Boyd <sboyd@kernel.org>,
+ Andrey
+ Konovalov <andreyknvl@google.com>, Lai Jiangshan <jiangshanlai@gmail.com>,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ John Stultz <john.stultz@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, Tejun Heo <tj@kernel.org>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
+On Thu, 2020-09-24 at 13:51 +0200, 'Alexander Potapenko' via kasan-dev
+wrote:
+> > ---
+> > Documentation/dev-tools/kasan.rst |  5 +++--
+> > kernel/time/timer.c               |  3 +++
+> > kernel/workqueue.c                |  3 +++
+> > lib/test_kasan_module.c           | 55 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> > mm/kasan/report.c                 |  4 ++--
+> > 5 files changed, 66 insertions(+), 4 deletions(-)
+> 
+> While at it, can you remove a mention of call_rcu() from the
+> kasan_record_aux_stack() implementation, as it is no more
+> RCU-specific?
+> 
 
-Thanks for your patch. By linux/scripts/checkpatch.pl
+Thank you for your reminder. v5 will do it. 
 
-On Sun, 2020-09-20 at 03:28 +0800, Alex Dewar wrote:
-[..]
-> @@ -1631,9 +1635,11 @@ mt7530_setup(struct dsa_switch *ds)
->  		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
->  			   PCR_MATRIX_CLR);
->  
-> -		if (dsa_is_cpu_port(ds, i))
-> -			mt753x_cpu_port_enable(ds, i);
-> -		else
-> +		if (dsa_is_cpu_port(ds, i)) {
-> +			ret = mt753x_cpu_port_enable(ds, i);
-> +			if (ret)
-> +				return ret;
-> +		} else
->  			mt7530_port_disable(ds, i);
-CHECK: braces {} should be used on all arms of this statement
-CHECK: Unbalanced braces around else statement
->  
->  		/* Enable consistent egress tag */
-> @@ -1785,9 +1791,11 @@ mt7531_setup(struct dsa_switch *ds)
->  
->  		mt7530_set(priv, MT7531_DBG_CNT(i), MT7531_DIS_CLR);
->  
-> -		if (dsa_is_cpu_port(ds, i))
-> -			mt753x_cpu_port_enable(ds, i);
-> -		else
-> +		if (dsa_is_cpu_port(ds, i)) {
-> +			ret = mt753x_cpu_port_enable(ds, i);
-> +			if (ret)
-> +				return ret;
-> +		} else
->  			mt7530_port_disable(ds, i);
-CHECK: braces {} should be used on all arms of this statement
-CHECK: Unbalanced braces around else statement
-
-[..]
-regards landen
+Walter
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
