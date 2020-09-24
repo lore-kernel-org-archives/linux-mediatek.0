@@ -2,61 +2,78 @@ Return-Path: <SRS0=tl/R=DB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CEA0CC4346E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 08:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 46814C4346E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 08:31:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 756862068D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 08:17:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D5547206FC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 08:31:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DPtPzPdu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 756862068D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="C0yahtpq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZagBkT8L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5547206FC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MjSCzEPqgqo7ho0AmcWSQj77vajbvtfRsmON3pDI6os=; b=DPtPzPdux+JSJ5y2lLEEMbPxuX
-	E4xiSeMmoVuLPAvERQeWcElKyR7sG6MWJ6OkonqPuMfiZ5s8TBAcBWbiX1samow26zd0qhvtyhw4x
-	ts9fsRxb4lbhOOJUd0VLvkx+q4awoTQ3TL2I+iTMOWhwyqwRr59KSuwD+o/GW+b/CeIfe7QGnTVh8
-	GoH3kc6LIdk3o7sxmFnIfzIAKZpMbkZEW2gdlKtkmSH+lOersK3vIuaICC/pS8dFK2C9K2mnIbfgb
-	zKG8J0xrKoqz8UQOf++eQ+3tA1bdcr68X1Kvj/iAmaWFrsEMmQgOGsuEgun1RlvJPfRTAkRi4FnkK
-	Urwl/kPA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=yI3R+BQFD+4YJ+1fdamxQeKo0pm2bDJnicQDOQbZAOA=; b=C0yahtpqLnC9rAFuuYOV45h2d
+	IVPKTbeQ76FOmKxjs92bay5GkKIc6roNe+EgIyG2sHk6B4hHwofq/acVdk9Jhu0iPJRFUdUybNWHj
+	3uRnHCl/nhWmfa/MmZJBQXMa64kDaCdZ+CmlR0KuZc6NhAjJ8Sv8JXzrU5sux6narKgqe3cLZLgY7
+	I7QkgGSJj+30uIZgALBjPAnbweHr4lRsgHdefv5lUD/DPOJVtYlnytmRVsNiydfHebuxO6CcIG0Mq
+	WHmr6ZWhltwo1Knm/r/DgtKK3zP4GOx1Yzu8lPrZKthjQO/q2lDbPi8Btva/TFcED3Y1d8ZzjkGDf
+	fjlITY0mA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLMRb-0002Fx-UB; Thu, 24 Sep 2020 08:17:36 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190] helo=huawei.com)
+	id 1kLMeu-0004ZH-BL; Thu, 24 Sep 2020 08:31:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLMRM-00028H-T6; Thu, 24 Sep 2020 08:17:22 +0000
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 2F6D5D462937A09BCF5F;
- Thu, 24 Sep 2020 16:17:16 +0800 (CST)
-Received: from huawei.com (10.175.127.227) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Thu, 24 Sep 2020
- 16:17:07 +0800
-From: Yu Kuai <yukuai3@huawei.com>
-To: <tiffany.lin@mediatek.com>, <andrew-ct.chen@mediatek.com>,
- <mchehab@kernel.org>, <matthias.bgg@gmail.com>, <hans.verkuil@cisco.com>
-Subject: [PATCH 3/3] media: mtk-vcodec: add missing put_device() call in
- mtk_vcodec_init_enc_pm()
-Date: Thu, 24 Sep 2020 16:18:11 +0800
-Message-ID: <20200924081811.1061145-1-yukuai3@huawei.com>
-X-Mailer: git-send-email 2.25.4
+ id 1kLMeo-0004Wl-Np; Thu, 24 Sep 2020 08:31:16 +0000
+X-UUID: 5c434188eba1448aac28c14f5af9d886-20200924
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=DVsde8Sxk23MLuOP2061BcZ00WNs3yYnS+BwpO2OdC0=; 
+ b=ZagBkT8LsKGA5lk7INzrhXmHg4ALNaUbomCfytyc14roUgl0Art4krlD0eoquvJi8es/V96qqoyoDaeMNNDcnwks2XndgtxPiQSsd2octfXd1SRuWp/Qev5ZpuI5yvqpz5d1Rex/Vwav1po9LccT35Kb8Uzoho5xpStfnnWBw3g=;
+X-UUID: 5c434188eba1448aac28c14f5af9d886-20200924
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2073838874; Thu, 24 Sep 2020 00:31:07 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Sep 2020 01:31:05 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 24 Sep 2020 16:31:02 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Sep 2020 16:31:01 +0800
+Message-ID: <1600936119.21970.4.camel@mhfsdcap03>
+Subject: Re: [PATCH] usb: gadget: bcm63xx_udc: fix up the error of
+ undeclared usb_debug_root
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Felipe Balbi <balbi@kernel.org>
+Date: Thu, 24 Sep 2020 16:28:39 +0800
+In-Reply-To: <871rirehqq.fsf@kernel.org>
+References: <1600061930-778-1-git-send-email-chunfeng.yun@mediatek.com>
+ <871rirehqq.fsf@kernel.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-Originating-IP: [10.175.127.227]
-X-CFilter-Loop: Reflected
+X-TM-SNTS-SMTP: B7859B15AFDE944996573D812135A52BDB5B7466C5FA3F1467BE71D06B2672CE2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200924_041721_194449_45D17AB4 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20200924_043115_039762_840A228D 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,94 +85,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: yi.zhang@huawei.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, yukuai3@huawei.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Florian Fainelli <f.fainelli@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Kevin Cernekee <cernekee@gmail.com>, linux-kernel@vger.kernel.org,
+ stable <stable@vger.kernel.org>, linux-usb@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-if of_find_device_by_node() succeed, mtk_vcodec_init_enc_pm() doesn't have
-a corresponding put_device(). Thus add jump target to fix the exception
-handling for this function implementation.
-
-Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
-Signed-off-by: Yu Kuai <yukuai3@huawei.com>
----
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 26 ++++++++++++++-----
- 1 file changed, 19 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index 3e2bfded79a6..e682bdb1ed45 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -49,14 +49,16 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 	node = of_parse_phandle(dev->of_node, "mediatek,larb", 1);
- 	if (!node) {
- 		mtk_v4l2_err("no mediatek,larb found");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto put_larbvenc;
- 	}
- 
- 	pdev = of_find_device_by_node(node);
- 	of_node_put(node);
- 	if (!pdev) {
- 		mtk_v4l2_err("no mediatek,larb device found");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto put_larbvenc;
- 	}
- 
- 	pm->larbvenclt = &pdev->dev;
-@@ -69,11 +71,14 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 		enc_clk->clk_info = devm_kcalloc(&pdev->dev,
- 			enc_clk->clk_num, sizeof(*clk_info),
- 			GFP_KERNEL);
--		if (!enc_clk->clk_info)
--			return -ENOMEM;
-+		if (!enc_clk->clk_info) {
-+			ret = -ENOMEM;
-+			goto put_larbvenclt;
-+		}
- 	} else {
- 		mtk_v4l2_err("Failed to get venc clock count");
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto put_larbvenclt;
- 	}
- 
- 	for (i = 0; i < enc_clk->clk_num; i++) {
-@@ -82,17 +87,24 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 			"clock-names", i, &clk_info->clk_name);
- 		if (ret) {
- 			mtk_v4l2_err("venc failed to get clk name %d", i);
--			return ret;
-+			goto put_larbvenclt;
- 		}
- 		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
- 			clk_info->clk_name);
- 		if (IS_ERR(clk_info->vcodec_clk)) {
- 			mtk_v4l2_err("venc devm_clk_get (%d)%s fail", i,
- 				clk_info->clk_name);
--			return PTR_ERR(clk_info->vcodec_clk);
-+			ret = PTR_ERR(clk_info->vcodec_clk);
-+			goto put_larbvenclt;
- 		}
- 	}
- 
-+	return 0;
-+
-+put_larbvenclt:
-+	put_device(pm->larbvenclt);
-+put_larbvenc:
-+	put_device(pm->larbvenc);
- 	return ret;
- }
- 
--- 
-2.25.4
+On Thu, 2020-09-24 at 10:50 +0300, Felipe Balbi wrote:
+> Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
+> 
+> > Fix up the build error caused by undeclared usb_debug_root
+> >
+> > Cc: stable <stable@vger.kernel.org>
+> > Fixes: a66ada4f241c("usb: gadget: bcm63xx_udc: create debugfs directory under usb root")
+> > Reported-by: kernel test robot <lkp@intel.com>
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> 
+> $ patch -p1 --dry-run p.patch
+> /usr/bin/patch: **** Only garbage was found in the patch input.
+> 
+Please try to apply v2, https://patchwork.kernel.org/patch/11772911/
+I indeed add a line code
 
 
 _______________________________________________
