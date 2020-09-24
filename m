@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B21B1C4363D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:11:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 437F5C2D0E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:21:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B95223772
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:11:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CA0AC21D7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 12:21:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zivk7dPs";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="amEBg3Sa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B95223772
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aVSNSIy2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="Wh7FyLoZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA0AC21D7F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,60 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JYm4YnIu01KYSQiwX/j55WUEyhzWL/5aeSQarAqeDAk=; b=Zivk7dPs2J41yjbvYnWQwPAe5
-	y7yeyhkJQ3FALI5CnQz6LIrCfADew60gHIQuqQ632bahwdS46yQsBP3DirCTuBZLlwL3O2TZSgGDQ
-	Cc9LSH0UUzRFgR/kLaAH/qJopKON0tTAGI213Jqj/V+qlHng6KJ6XxKCLNTSNgEf/WfEdS8uYxt+L
-	xsqRRlXNQ5oBou++Fb5fZaz+fnABT2zA/5d8tHo7b6UqGC/87kXbmDULZyblNiZOdd0vsKkNn+StA
-	LB6ItJPC4hDHn/Zf9DfaMIfIqyYVtz8ZOh898r4eLfYJTOsn4dOC1oQx5uKiA4BRkTk6NEhENTbPE
-	NVDC2jLOQ==;
+	 bh=mFL5I+UglhZvBKKmJzTQvFytY1duA4wfwi4wh8vOaRU=; b=aVSNSIy2Ran2Q5OZOdmVy7eyJ
+	JWeIOzUkAVD8ATXVm22d1/ZJF5CxX9+irNu3+zJNDFPvHVKJsyLAC7a453om4EnrVfhHH/c2PgK+k
+	hI9fWa3uB2rpU/qkdt3YcgUPQ14jKstWIdWrTceX2EbYcnXDiAjZYORG1SU63t3Jm2wgkXeoZQEXe
+	/Du6OR4Fzr6mJEH/xTQUtMTGsryny9t5PMrUxpoa19d3eta43Il+PLVjg0S6i+p8A8NdI/1HOlXKh
+	8+Riz+no5bxdQqkF4e9JhEpj8EUebh9VLzXwvu8nU5ra+ywXtilsdAQOtZi5AonKGnb8UcL1MoXbo
+	ANIw8mGQw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLQ5o-0005ZI-Od; Thu, 24 Sep 2020 12:11:20 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1kLQFk-0006tg-Cr; Thu, 24 Sep 2020 12:21:36 +0000
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLQ5j-0005XX-KB
- for linux-mediatek@lists.infradead.org; Thu, 24 Sep 2020 12:11:16 +0000
-Received: by mail-wm1-x344.google.com with SMTP id e11so6670346wme.0
- for <linux-mediatek@lists.infradead.org>; Thu, 24 Sep 2020 05:11:15 -0700 (PDT)
+ id 1kLQFi-0006sS-5S
+ for linux-mediatek@lists.infradead.org; Thu, 24 Sep 2020 12:21:35 +0000
+Received: by mail-oi1-x244.google.com with SMTP id m7so3469525oie.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 24 Sep 2020 05:21:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=TiwIu7mMni6DjsCfBHchRdA5CVaKLnFCdFVAp2ZYt6o=;
- b=amEBg3SanzowDpC8L92uFg1ii7jV8LSSaNhWsKDtzwGtMovPxnbrJScIct8Zbyhr2j
- kVBzfZ1zinNcK2dFmMHRf/ZxGy8tk+l35+9s3Uee/2IBwq4maZ23K/xb0ucg2z+iF60D
- VghPJMbTFUiJD+BIm7Nv3yVp2i7LNIpCLXwubebZovuHDOf2Acf+yDInfa4mWBU33TE5
- 7fC3orT+PJq01qgwR5RkcyWUqfyOYcRFBM/qaGrU+CbDHlXhbBPIRFnaT/k5g/pkYtxF
- eXrzgC4Id9nqF9Ru+y4M0nZkR/y2/OVG2b0BDLmj6kIxX1AUlejcBHQ2SQjR0CT1z60c
- KInQ==
+ :cc; bh=SMi05EnEOfVdGhWpH6feACxpwD+9PbH32BgxYxZVzjg=;
+ b=Wh7FyLoZl05ePrScyIDLbNcW93hNy+bh0MlhKgZYBOD4Asb3pfcIWi1Qpm7l3BqHeX
+ aq07/YxMJCgggcHSlXRtbFTT+8k7eueARAT3utPtwb4GZW4AENnLmytJkt8R0GevA56h
+ lS8l36/AWFDMX7UM7y0Fu9rrUir7atUDweXTHLhJujpZM6B+ApPh26tQfFHOhtgOin6G
+ +sfgjdXPNGwWX59Da2Kxi4uheKAY3xHsOVuAvvKGwoOiYj6ct+q2HQoYIA+oxQMnVvxJ
+ pzJuS3UvRV+oA4msapQoTTiiQiUb8URNxOrJQ/zHTUdOK5EFIZzhhIVAWDye1y587M2d
+ weXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=TiwIu7mMni6DjsCfBHchRdA5CVaKLnFCdFVAp2ZYt6o=;
- b=PiwsiQvF7ZvuKKmh2aYEau1fRHNAaG/oT7mEsChjhwQ/gUkYDzy9cW6I4VrzdtdI7r
- JZUILZdtAuenRNG5yDWI8qp6H3NogZTt1jSZrVkQwgA/fa1J0DSLXrJkrnhNHM4ijWxa
- gKYluMiAtqtZqxPPGk1UtX1QdC8yXQsYXY6NODO9+DZVO1ckD4WkX/Xcfh+OhjEMJs/y
- KXd6xSJPi/svAqrYAGAmdcare3+LejeHQ1ysSN3n0+7fEbgeDq5oG9upZ1uiqIwBs3QQ
- UEwI7hJEdliHVDWIt5Ir/G2OL3nSERh22XiN9moEp7bq3Bg4wZvDDfUiEqEyipxDXl0I
- 7TcQ==
-X-Gm-Message-State: AOAM530ByZje6x4KMgLcwBUF7rABUpnL2rJlYRCNuE97nvqdAs+ZtgEh
- B3qYiiF7YQUAp2hhorjU4fSN+1rU/+CC0kRoxlRG0w==
-X-Google-Smtp-Source: ABdhPJzqXJqvh9i9Yw6uLQNsbhwEBrflRLruFC3gZHk6n9wh9Uk8sJJvov5IlWMP+9EB36a75P1Ve+qHwO/igHHpvVw=
-X-Received: by 2002:a7b:c182:: with SMTP id y2mr4671696wmi.21.1600949474250;
- Thu, 24 Sep 2020 05:11:14 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=SMi05EnEOfVdGhWpH6feACxpwD+9PbH32BgxYxZVzjg=;
+ b=oAIW85+w/6ef9/xJE/feyZyR5rXWMslgznfaSrZyDZpMoekNdg4GAtTlvHbxayOW/f
+ HwrDJ6Y/AoUBgDmsqNhl9wZOdYwfoabZeYorx3Tf6GiG4Ut+t5piIkiYPstn6OoHqZPc
+ OrSgIrijzdl9ch+ruq5zevX2Aa6Y4wt8fd4dPQ5hwuQrUC9fkZjgRcLnDE6WMJnP9jon
+ ZvAnL90EaMv3k0VMr0Nz3wqc6SX0cN13QXmVh0CAQHM6TA1KcgVfm3kGMA9v1yRhDfFx
+ lJzFbmUzw44bFCtLrUr19UyOd4ifNfEbDsbVzYGSXzmV/aZWPzEPJAPWiiDVaVNq+4BI
+ hSFA==
+X-Gm-Message-State: AOAM532rIx8EroDeEgTWJg+AX2t5qHQMPTe/0IZ6vHZvkqcyaFlkXMz1
+ CWl5w3/7DEZ76JVGVUfEFFB/MJZ0yM7SoqGogCGCYQ==
+X-Google-Smtp-Source: ABdhPJyUQSlF1yD+fBHh7KRRnvI1RKY1nulFZ3b80Oct6GlWUeHTquzqD3/u7BnXcXHItepe9G+Pxs7iu3ZAEntp++0=
+X-Received: by 2002:aca:5158:: with SMTP id f85mr2388516oib.121.1600950091824; 
+ Thu, 24 Sep 2020 05:21:31 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200924040513.31051-1-walter-zh.wu@mediatek.com>
  <CAG_fn=W2dcGKFKHpDXzNvbPUp3USYyWi2DEpEewboqYBodnSsQ@mail.gmail.com>
  <CANpmjNNmeqfMLZ0aFC49fHTYS5k7BqTZHP4FmDc=sfZe+j6bOg@mail.gmail.com>
-In-Reply-To: <CANpmjNNmeqfMLZ0aFC49fHTYS5k7BqTZHP4FmDc=sfZe+j6bOg@mail.gmail.com>
-From: Alexander Potapenko <glider@google.com>
-Date: Thu, 24 Sep 2020 14:11:03 +0200
-Message-ID: <CAG_fn=UFnju7qBw2FC8nGxTKQ5VB2QeG-DKik_t=eWzu6p+H6A@mail.gmail.com>
+ <CAG_fn=UFnju7qBw2FC8nGxTKQ5VB2QeG-DKik_t=eWzu6p+H6A@mail.gmail.com>
+In-Reply-To: <CAG_fn=UFnju7qBw2FC8nGxTKQ5VB2QeG-DKik_t=eWzu6p+H6A@mail.gmail.com>
+From: Marco Elver <elver@google.com>
+Date: Thu, 24 Sep 2020 14:21:20 +0200
+Message-ID: <CANpmjNP6gKToqT-EZM88ZoedWfyHr86EB2s9sKEtzTxBVQe_Lg@mail.gmail.com>
 Subject: Re: [PATCH v4 3/6] kasan: print timer and workqueue stack
-To: Marco Elver <elver@google.com>
+To: Alexander Potapenko <glider@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200924_081115_708236_3C66B47B 
-X-CRM114-Status: GOOD (  25.29  )
+X-CRM114-CacheID: sfid-20200924_082134_320954_51423397 
+X-CRM114-Status: GOOD (  30.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,54 +101,80 @@ Cc: Walter Wu <walter-zh.wu@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Andrey Ryabinin <aryabinin@virtuozzo.com>,
  Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBTZXAgMjQsIDIwMjAgYXQgMTo1NSBQTSBNYXJjbyBFbHZlciA8ZWx2ZXJAZ29vZ2xl
-LmNvbT4gd3JvdGU6Cj4KPiBPbiBUaHUsIDI0IFNlcCAyMDIwIGF0IDEzOjQ3LCBBbGV4YW5kZXIg
-UG90YXBlbmtvIDxnbGlkZXJAZ29vZ2xlLmNvbT4gd3JvdGU6Cj4gPgo+ID4gT24gVGh1LCBTZXAg
-MjQsIDIwMjAgYXQgNjowNSBBTSBXYWx0ZXIgV3UgPHdhbHRlci16aC53dUBtZWRpYXRlay5jb20+
-IHdyb3RlOgo+ID4gPgo+ID4gPiBUaGUgYXV4X3N0YWNrWzJdIGlzIHJldXNlZCB0byByZWNvcmQg
-dGhlIGNhbGxfcmN1KCkgY2FsbCBzdGFjaywKPiA+ID4gdGltZXIgaW5pdCBjYWxsIHN0YWNrLCBh
-bmQgZW5xdWV1aW5nIHdvcmsgY2FsbCBzdGFja3MuIFNvIHRoYXQKPiA+ID4gd2UgbmVlZCB0byBj
-aGFuZ2UgdGhlIGF1eGlsaWFyeSBzdGFjayB0aXRsZSBmb3IgY29tbW9uIHRpdGxlLAo+ID4gPiBw
-cmludCB0aGVtIGluIEtBU0FOIHJlcG9ydC4KPiA+ID4KPiA+ID4gU2lnbmVkLW9mZi1ieTogV2Fs
-dGVyIFd1IDx3YWx0ZXItemgud3VAbWVkaWF0ZWsuY29tPgo+ID4gPiBTdWdnZXN0ZWQtYnk6IE1h
-cmNvIEVsdmVyIDxlbHZlckBnb29nbGUuY29tPgo+ID4gPiBBY2tlZC1ieTogTWFyY28gRWx2ZXIg
-PGVsdmVyQGdvb2dsZS5jb20+Cj4gPiA+IFJldmlld2VkLWJ5OiBEbWl0cnkgVnl1a292IDxkdnl1
-a292QGdvb2dsZS5jb20+Cj4gPiA+IFJldmlld2VkLWJ5OiBBbmRyZXkgS29ub3ZhbG92IDxhbmRy
-ZXlrbnZsQGdvb2dsZS5jb20+Cj4gPiA+IENjOiBBbmRyZXkgUnlhYmluaW4gPGFyeWFiaW5pbkB2
-aXJ0dW96em8uY29tPgo+ID4gPiBDYzogQWxleGFuZGVyIFBvdGFwZW5rbyA8Z2xpZGVyQGdvb2ds
-ZS5jb20+Cj4gPiA+IC0tLQo+ID4gPgo+ID4gPiB2MjoKPiA+ID4gLSBUaGFua3MgZm9yIE1hcmNv
-IHN1Z2dlc3Rpb24uCj4gPiA+IC0gV2UgbW9kaWZ5IGF1eCBzdGFjayB0aXRsZSBuYW1lIGluIEtB
-U0FOIHJlcG9ydAo+ID4gPiAgIGluIG9yZGVyIHRvIHByaW50IGNhbGxfcmN1KCkvdGltZXIvd29y
-a3F1ZXVlIHN0YWNrLgo+ID4gPgo+ID4gPiAtLS0KPiA+ID4gIG1tL2thc2FuL3JlcG9ydC5jIHwg
-NCArKy0tCj4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9u
-cygtKQo+ID4gPgo+ID4gPiBkaWZmIC0tZ2l0IGEvbW0va2FzYW4vcmVwb3J0LmMgYi9tbS9rYXNh
-bi9yZXBvcnQuYwo+ID4gPiBpbmRleCA0ZjQ5ZmE2Y2QxYWEuLjg4NjgwOWQwYThkZCAxMDA2NDQK
-PiA+ID4gLS0tIGEvbW0va2FzYW4vcmVwb3J0LmMKPiA+ID4gKysrIGIvbW0va2FzYW4vcmVwb3J0
-LmMKPiA+ID4gQEAgLTE4MywxMiArMTgzLDEyIEBAIHN0YXRpYyB2b2lkIGRlc2NyaWJlX29iamVj
-dChzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUsIHZvaWQgKm9iamVjdCwKPiA+ID4KPiA+ID4gICNp
-ZmRlZiBDT05GSUdfS0FTQU5fR0VORVJJQwo+ID4gPiAgICAgICAgICAgICAgICAgaWYgKGFsbG9j
-X2luZm8tPmF1eF9zdGFja1swXSkgewo+ID4gPiAtICAgICAgICAgICAgICAgICAgICAgICBwcl9l
-cnIoIkxhc3QgY2FsbF9yY3UoKTpcbiIpOwo+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICBw
-cl9lcnIoIkxhc3QgcG90ZW50aWFsbHkgcmVsYXRlZCB3b3JrIGNyZWF0aW9uOlxuIik7Cj4gPgo+
-ID4gVGhpcyBkb2Vzbid0IGhhdmUgdG8gYmUgYSB3b3JrIGNyZWF0aW9uIChleHBlY3QgbW9yZSBj
-YWxsZXJzIG9mCj4gPiBrYXNhbl9yZWNvcmRfYXV4X3N0YWNrKCkgaW4gdGhlIGZ1dHVyZSksIHNv
-IG1heWJlIGNoYW5nZSB0aGUgd29yZGluZwo+ID4gaGVyZSB0byAiTGFzdCBwb3RlbnRpYWxseSBy
-ZWxhdGVkIGF1eGlsaWFyeSBzdGFjayI/Cj4KPiBJIHN1Z2dlc3RlZCAid29yayBjcmVhdGlvbiIg
-YXMgaXQncyB0aGUgbW9zdCBwcmVjaXNlIGZvciB3aGF0IGl0IGlzCj4gdXNlZCBmb3Igbm93LgoK
-SSBzZWUsIHRoZW4gbWF5YmUgbXkgc3VnZ2VzdGlvbiBpcyBwcmVtYXR1cmUuCgo+IFdoYXQgb3Ro
-ZXIgdXNlcnMgZG8geW91IGhhdmUgaW4gbWluZCBpbiBmdXR1cmUgdGhhdCBhcmUgbm90IHdvcmsg
-Y3JlYXRpb24/CgpJIHRoaW5rIHNhdmluZyBzdGFja3MgbWF5IGhlbHAgaW4gYW55IGNhc2Ugd2hl
-cmUgYW4gb2JqZWN0IGlzIHJldXNlZApmb3IgYSBkaWZmZXJlbnQgcHVycG9zZSB3aXRob3V0IHJl
-YWxsb2NhdGlvbi4KU0tCcywgbWF5YmU/CgoKLS0KQWxleGFuZGVyIFBvdGFwZW5rbwpTb2Z0d2Fy
-ZSBFbmdpbmVlcgoKR29vZ2xlIEdlcm1hbnkgR21iSApFcmlrYS1NYW5uLVN0cmHDn2UsIDMzCjgw
-NjM2IE3DvG5jaGVuCgpHZXNjaMOkZnRzZsO8aHJlcjogUGF1bCBNYW5pY2xlLCBIYWxpbWFoIERl
-TGFpbmUgUHJhZG8KUmVnaXN0ZXJnZXJpY2h0IHVuZCAtbnVtbWVyOiBIYW1idXJnLCBIUkIgODY4
-OTEKU2l0eiBkZXIgR2VzZWxsc2NoYWZ0OiBIYW1idXJnCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
-dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Thu, 24 Sep 2020 at 14:11, Alexander Potapenko <glider@google.com> wrote:
+>
+> On Thu, Sep 24, 2020 at 1:55 PM Marco Elver <elver@google.com> wrote:
+> >
+> > On Thu, 24 Sep 2020 at 13:47, Alexander Potapenko <glider@google.com> wrote:
+> > >
+> > > On Thu, Sep 24, 2020 at 6:05 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > > >
+> > > > The aux_stack[2] is reused to record the call_rcu() call stack,
+> > > > timer init call stack, and enqueuing work call stacks. So that
+> > > > we need to change the auxiliary stack title for common title,
+> > > > print them in KASAN report.
+> > > >
+> > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > > Suggested-by: Marco Elver <elver@google.com>
+> > > > Acked-by: Marco Elver <elver@google.com>
+> > > > Reviewed-by: Dmitry Vyukov <dvyukov@google.com>
+> > > > Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
+> > > > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> > > > Cc: Alexander Potapenko <glider@google.com>
+> > > > ---
+> > > >
+> > > > v2:
+> > > > - Thanks for Marco suggestion.
+> > > > - We modify aux stack title name in KASAN report
+> > > >   in order to print call_rcu()/timer/workqueue stack.
+> > > >
+> > > > ---
+> > > >  mm/kasan/report.c | 4 ++--
+> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > >
+> > > > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> > > > index 4f49fa6cd1aa..886809d0a8dd 100644
+> > > > --- a/mm/kasan/report.c
+> > > > +++ b/mm/kasan/report.c
+> > > > @@ -183,12 +183,12 @@ static void describe_object(struct kmem_cache *cache, void *object,
+> > > >
+> > > >  #ifdef CONFIG_KASAN_GENERIC
+> > > >                 if (alloc_info->aux_stack[0]) {
+> > > > -                       pr_err("Last call_rcu():\n");
+> > > > +                       pr_err("Last potentially related work creation:\n");
+> > >
+> > > This doesn't have to be a work creation (expect more callers of
+> > > kasan_record_aux_stack() in the future), so maybe change the wording
+> > > here to "Last potentially related auxiliary stack"?
+> >
+> > I suggested "work creation" as it's the most precise for what it is
+> > used for now.
+>
+> I see, then maybe my suggestion is premature.
+>
+> > What other users do you have in mind in future that are not work creation?
+>
+> I think saving stacks may help in any case where an object is reused
+> for a different purpose without reallocation.
+> SKBs, maybe?
+
+I currently don't know, it's hard to say without having a report that
+we can't debug without it.
+
+The litmus test for if it's useful would probably be "do we need this
+stacktrace to debug a use-after-free/double-free?". If the answer is
+maybe (and not yes!), I'd err on the side of not going overboard with
+these, because we only have limited storage anyway. "Work creation" is
+a clear case of "we loose information to the original caller" and need
+it to debug. But of course, if there are similar issues elsewhere, we
+need to identify them and then decide if we need it.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
