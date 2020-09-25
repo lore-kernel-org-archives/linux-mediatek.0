@@ -1,96 +1,79 @@
-Return-Path: <SRS0=tl/R=DB=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29D57C4363D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 21:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 112E0C4346E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 02:32:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1CE721D20
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2020 21:49:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 95B3E20BED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 02:32:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mwhNG+7t";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="d12x+teJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1CE721D20
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sesaPz7U";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Vwh2o1A4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95B3E20BED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Vf+vOk8StoCskfPajU9kGY78k5Wj3C26lSYb0HWVooE=; b=mwhNG+7t2WmJCPBbDnX6tlto3
-	HLDGrljLV/mWtx+cJb9Ny6QESv7CWPDqUjL4nWAKQjCOKnizDhsIXLahUGN1tLs91gimxPABBNEvJ
-	oxxD74zh+zc+cP0v/mtd+W4PibfsmKM1CurrGp2dLEcAeudGUbrzauU+X9wAL9zI4AjtjyinjbVh5
-	kojSTy2m7+4u5S/eojrTVBHVMjabCJloLy8vkkHQKIkAEvC2QA5vY2xziOywSXRnR4IF2XepvQUKW
-	DoPpePgSuUIb6FUe/f8NcmdPyS2D2WXOigK/U/RRbg/fD3uYvdSbTkXp/W7QyepWQz4XeAwyzC4Xg
-	qARFdmIqg==;
+	 bh=0ysgKVaBaWkZLONsegjF2GFeJtUvvyBKuGTYM3RPM2A=; b=sesaPz7Uh61N0hzjamxBJyIXL
+	HERAU4+Vj2Y1HA/aC5JvLCgwbi9ZZoxjdLcyoO53DMdhh+F8tItsAftoYLm6HJAjxXxd1xBs0chbM
+	WHHcBrURigLzDwNm/g5dIChdAbp0UQVk9zvgEb6mdQ0fnkKe+tY9nkQ7+1cYqHCKoE2xJo2cr/4FJ
+	mXW27RH8NGcNd3zXmAJ3XvDHMgkKguBukVEqJbW5YEy0JkC8e3XdL3xJvomEK04FYdwUe9xjAl69p
+	64btbpW4+v4zBqYGnJmXrll5x40DkA1o1q3TWnycuWb8GB71vNn6K/JOOWGOdtWIwet3ZJ7MJyOtM
+	a0JAHrc8A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLZ7S-00075I-HZ; Thu, 24 Sep 2020 21:49:38 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1kLdWY-00050l-VZ; Fri, 25 Sep 2020 02:31:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLZ7Q-00074f-6D; Thu, 24 Sep 2020 21:49:37 +0000
-Received: by mail-ed1-x541.google.com with SMTP id n22so443717edt.4;
- Thu, 24 Sep 2020 14:49:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zIlU+zToQaAHqNEqYrQAGg0nqDkaUEztkKgkJGCqUco=;
- b=d12x+teJeyi0XVXstH/DEx5oV2emff1Oy2ZIr8CqaFOiFg+j+A7zkSR8BIy5nypzZ9
- WwfPzUUyKLMwfyDqN68CPC0kbQFRQB9WF4LE47A4dq7myeEEYTpukuMWxRHR6JO0YwT9
- znVkv+0TaVdV1M0y4KcXWm5TfN1hm2FMzgOKgD3vDRmxoXNG5C61UZRzHGp6Gr6xoiM3
- B5b3/oCfhJTwuBJHBhCiP1fukxo1g1covphWInSoHzQ9D+dbqOYjPEW9+vQ8z1ULJTSu
- Lf6QTqoPzzJGfe+PENfE/LvJlKuLx/TBaB0gpCv37Va5IHwQe9CrtOwjztuGTn42Epeg
- wf2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zIlU+zToQaAHqNEqYrQAGg0nqDkaUEztkKgkJGCqUco=;
- b=jaOdS6iVxjiVNWmjXWyv1OWKmCsbP8VgPaDyAj6fgGVZHL+VCY9ZQ7P2O+Pp6ospA3
- 76+mR2l+t+hCcxC+ZIYe+Aorzwf41bLazsKoK4zY0GQjVDLOYkFHs+s909eXHJpzbl4f
- dIv2ZBSTWeRCSeS2JccqKUz3SNIWMXyrKFKpAw/MDNrK0PRP6WF/PioNfAlfdOtK7v/D
- SsYFJr9vHe9d1V5+EdtN7Cn6suMN7r3lwIFhkrtgbJtVV7GgHPeNIQBlz0pjUypTuQDq
- EcmsXOlgJu37FP3EB2IcRDuk6oihgy9kDkkKu5ov/VRchj4iGlyubCkBTL+m26OROQzz
- zQKg==
-X-Gm-Message-State: AOAM5300Q0R1OTPbks4MBGU2SWGsCk/1pqbqlADqbHm7ziL4mBVR3AoH
- 0GLMhcRhWit6M1YaaSx8Mcg=
-X-Google-Smtp-Source: ABdhPJxVW8jdAPuRbEprN28aAWCKRwi1/0OWvpvwnX1Rlub7Co7a3kMpuv5eRcFM0Tjszg2Rivgypg==
-X-Received: by 2002:a05:6402:1d03:: with SMTP id
- dg3mr802579edb.249.1600984171457; 
- Thu, 24 Sep 2020 14:49:31 -0700 (PDT)
-Received: from ?IPv6:2a01:110f:b59:fd00:d922:8747:4a19:cf92?
- ([2a01:110f:b59:fd00:d922:8747:4a19:cf92])
- by smtp.gmail.com with ESMTPSA id u26sm475777ejj.11.2020.09.24.14.49.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Sep 2020 14:49:30 -0700 (PDT)
-Subject: Re: [PATCH v4 2/2] leds: mt6360: Add LED driver for MT6360
-To: Gene Chen <gene.chen.richtek@gmail.com>
-References: <1600865452-19649-1-git-send-email-gene.chen.richtek@gmail.com>
- <1600865452-19649-3-git-send-email-gene.chen.richtek@gmail.com>
- <e82fd413-8343-5115-150e-02d96eecf6e8@gmail.com>
- <CAE+NS35BwgGD3GjKv5E08ECqKCortJxB-yHP9-kteqPiKm9edQ@mail.gmail.com>
-From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Message-ID: <a24c797d-c8be-3cf6-d825-6ff368c570ec@gmail.com>
-Date: Thu, 24 Sep 2020 23:49:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kLdWS-0004zw-OD; Fri, 25 Sep 2020 02:31:48 +0000
+X-UUID: e2e5e16492e740d5bb6dee31948b6d4e-20200924
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Iv1tvfi+u04B6gU1PFtOoygfgDqK3g06fdXBF4E1i9Q=; 
+ b=Vwh2o1A44IRaZ8N2FxaFxVl4RwoAjCZXAnH0zbase8B4RLPrv5gWVQIIYk7fHmbNjAGZbxtiLGIVmT6G9udAh6j/RGVhhSb3jP3JPa2QgJq14K3C20PoAKYUjO36XJUVRJ364UwLJRclU++Yh81fT4hE/Wa6NKwgza5gbjTPWVU=;
+X-UUID: e2e5e16492e740d5bb6dee31948b6d4e-20200924
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <hector.yuan@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1329062640; Thu, 24 Sep 2020 18:31:36 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Sep 2020 19:27:41 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Sep 2020 10:27:23 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 25 Sep 2020 10:27:27 +0800
+Message-ID: <1601000847.21446.34.camel@mtkswgap22>
+Subject: Re: [PATCH v7 2/2] dt-bindings: cpufreq: add bindings for MediaTek
+ cpufreq HW
+From: Hector Yuan <hector.yuan@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>
+Date: Fri, 25 Sep 2020 10:27:27 +0800
+In-Reply-To: <1600866614.21446.18.camel@mtkswgap22>
+References: <1599712262-8819-1-git-send-email-hector.yuan@mediatek.com>
+ <1599712262-8819-3-git-send-email-hector.yuan@mediatek.com>
+ <20200922202852.GA3134161@bogus> <1600866614.21446.18.camel@mtkswgap22>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-In-Reply-To: <CAE+NS35BwgGD3GjKv5E08ECqKCortJxB-yHP9-kteqPiKm9edQ@mail.gmail.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200924_174936_232340_CC6C7A03 
-X-CRM114-Status: GOOD (  29.97  )
+X-CRM114-CacheID: sfid-20200924_223145_035723_B9D4565F 
+X-CRM114-Status: GOOD (  35.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,116 +85,244 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- devicetree <devicetree@vger.kernel.org>, cy_huang@richtek.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Dan Murphy <dmurphy@ti.com>, Pavel Machek <pavel@ucw.cz>,
- Matthias Brugger <matthias.bgg@gmail.com>, Wilma.Wu@mediatek.com,
- Linux LED Subsystem <linux-leds@vger.kernel.org>, shufan_lee@richtek.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ linux-pm@vger.kernel.org, Viresh Kumar <viresh.kumar@linaro.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gOS8yNC8yMCA4OjIxIEFNLCBHZW5lIENoZW4gd3JvdGU6Cj4gSmFjZWsgQW5hc3pld3NraSA8
-amFjZWsuYW5hc3pld3NraUBnbWFpbC5jb20+IOaWvCAyMDIw5bm0OeaciDI05pelIOmAseWbmyDk
-uIrljYg1OjQ55a+r6YGT77yaCj4gCj4+Cj4+IEhpIEdlbmUsCj4+Cj4+IFRoYW5rIHlvdSBmb3Ig
-dGhlIHVwZGF0ZS4gSSBoYXZlIHNvbWUgbW9yZSBjb21tZW50cyBiZWxvdy4KPj4KPj4gT24gOS8y
-My8yMCAyOjUwIFBNLCBHZW5lIENoZW4gd3JvdGU6Cj4+PiBGcm9tOiBHZW5lIENoZW4gPGdlbmVf
-Y2hlbkByaWNodGVrLmNvbT4KPj4+Cj4+PiBBZGQgTVQ2MzYwIExFRCBkcml2ZXIgaW5jbHVkZSAy
-LWNoYW5uZWwgRmxhc2ggTEVEIHdpdGggdG9yY2gvc3Ryb2JlIG1vZGUsCj4+PiBhbmQgNC1jaGFu
-bmVsIFJHQiBMRUQgc3VwcG9ydCBSZWdpc3Rlci9GbGFzaC9CcmVhdGggTW9kZQo+Pj4KPj4+IFNp
-Z25lZC1vZmYtYnk6IEdlbmUgQ2hlbiA8Z2VuZV9jaGVuQHJpY2h0ZWsuY29tPgo+Pj4gLS0tCj4+
-PiAgICBkcml2ZXJzL2xlZHMvS2NvbmZpZyAgICAgICB8ICAxMSArCj4+PiAgICBkcml2ZXJzL2xl
-ZHMvTWFrZWZpbGUgICAgICB8ICAgMSArCj4+PiAgICBkcml2ZXJzL2xlZHMvbGVkcy1tdDYzNjAu
-YyB8IDcwNSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4+
-ICAgIDMgZmlsZXMgY2hhbmdlZCwgNzE3IGluc2VydGlvbnMoKykKPj4+ICAgIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBkcml2ZXJzL2xlZHMvbGVkcy1tdDYzNjAuYwo+Pj4KPj4+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2xlZHMvS2NvbmZpZyBiL2RyaXZlcnMvbGVkcy9LY29uZmlnCj4+PiBpbmRleCAxYzE4
-MWRmLi41NTYxYjA4IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9sZWRzL0tjb25maWcKPj4+ICsr
-KyBiL2RyaXZlcnMvbGVkcy9LY29uZmlnCj4+PiBAQCAtMjcxLDYgKzI3MSwxNyBAQCBjb25maWcg
-TEVEU19NVDYzMjMKPj4+ICAgICAgICAgIFRoaXMgb3B0aW9uIGVuYWJsZXMgc3VwcG9ydCBmb3Ig
-b24tY2hpcCBMRUQgZHJpdmVycyBmb3VuZCBvbgo+Pj4gICAgICAgICAgTWVkaWF0ZWsgTVQ2MzIz
-IFBNSUMuCj4+Pgo+Pj4gK2NvbmZpZyBMRURTX01UNjM2MAo+Pj4gKyAgICAgdHJpc3RhdGUgIkxF
-RCBTdXBwb3J0IGZvciBNZWRpYXRlayBNVDYzNjAgUE1JQyIKPj4+ICsgICAgIGRlcGVuZHMgb24g
-TEVEU19DTEFTU19GTEFTSCAmJiBPRgo+Pj4gKyAgICAgZGVwZW5kcyBvbiBWNEwyX0ZMQVNIX0xF
-RF9DTEFTUyB8fCAhVjRMMl9GTEFTSF9MRURfQ0xBU1MKPj4+ICsgICAgIGRlcGVuZHMgb24gTUZE
-X01UNjM2MAo+Pj4gKyAgICAgaGVscAo+Pj4gKyAgICAgICBUaGlzIG9wdGlvbiBlbmFibGVzIHN1
-cHBvcnQgZm9yIGR1YWwgRmxhc2ggTEVEIGRyaXZlcnMgZm91bmQgb24KPj4+ICsgICAgICAgTWVk
-aWF0ZWsgTVQ2MzYwIFBNSUMuCj4+PiArICAgICAgIEluZGVwZW5kZW50IGN1cnJlbnQgc291cmNl
-cyBzdXBwbHkgZm9yIGVhY2ggZmxhc2ggTEVEIHN1cHBvcnQgdG9yY2gKPj4+ICsgICAgICAgYW5k
-IHN0cm9iZSBtb2RlLgo+Pj4gKwo+Pj4gICAgY29uZmlnIExFRFNfUzNDMjRYWAo+Pj4gICAgICAg
-IHRyaXN0YXRlICJMRUQgU3VwcG9ydCBmb3IgU2Ftc3VuZyBTM0MyNFhYIEdQSU8gTEVEcyIKPj4+
-ICAgICAgICBkZXBlbmRzIG9uIExFRFNfQ0xBU1MKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2xl
-ZHMvTWFrZWZpbGUgYi9kcml2ZXJzL2xlZHMvTWFrZWZpbGUKPj4+IGluZGV4IGMyYzdkN2EuLjU1
-OTY0MjcgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2xlZHMvTWFrZWZpbGUKPj4+ICsrKyBiL2Ry
-aXZlcnMvbGVkcy9NYWtlZmlsZQo+Pj4gQEAgLTY2LDYgKzY2LDcgQEAgb2JqLSQoQ09ORklHX0xF
-RFNfTUlLUk9USUtfUkI1MzIpICAgKz0gbGVkcy1yYjUzMi5vCj4+PiAgICBvYmotJChDT05GSUdf
-TEVEU19NTFhDUExEKSAgICAgICAgICArPSBsZWRzLW1seGNwbGQubwo+Pj4gICAgb2JqLSQoQ09O
-RklHX0xFRFNfTUxYUkVHKSAgICAgICAgICAgKz0gbGVkcy1tbHhyZWcubwo+Pj4gICAgb2JqLSQo
-Q09ORklHX0xFRFNfTVQ2MzIzKSAgICAgICAgICAgKz0gbGVkcy1tdDYzMjMubwo+Pj4gK29iai0k
-KENPTkZJR19MRURTX01UNjM2MCkgICAgICAgICAgICArPSBsZWRzLW10NjM2MC5vCj4+PiAgICBv
-YmotJChDT05GSUdfTEVEU19ORVQ0OFhYKSAgICAgICAgICArPSBsZWRzLW5ldDQ4eHgubwo+Pj4g
-ICAgb2JqLSQoQ09ORklHX0xFRFNfTkVUWEJJRykgICAgICAgICAgKz0gbGVkcy1uZXR4YmlnLm8K
-Pj4+ICAgIG9iai0kKENPTkZJR19MRURTX05JQzc4QlgpICAgICAgICAgICs9IGxlZHMtbmljNzhi
-eC5vCj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9sZWRzL2xlZHMtbXQ2MzYwLmMgYi9kcml2ZXJz
-L2xlZHMvbGVkcy1tdDYzNjAuYwo+Pj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4+IGluZGV4IDAw
-MDAwMDAuLjFjMzQ4NmUKPj4+IC0tLSAvZGV2L251bGwKPj4+ICsrKyBiL2RyaXZlcnMvbGVkcy9s
-ZWRzLW10NjM2MC5jCj4+PiBAQCAtMCwwICsxLDcwNSBAQAo+Pj4gKy8vIFNQRFgtTGljZW5zZS1J
-ZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkKPj4+ICsKPj4+ICsjaW5jbHVkZSA8bGludXgvZGVsYXku
-aD4KPj4+ICsjaW5jbHVkZSA8bGludXgvaW5pdC5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9pbnRl
-cnJ1cHQuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4+PiArI2luY2x1ZGUgPGxp
-bnV4L2xlZC1jbGFzcy1mbGFzaC5oPgo+Pj4gKyNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPj4+
-ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4+PiArI2luY2x1ZGUgPGxpbnV4
-L3Byb3BlcnR5Lmg+Cj4+PiArI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+Pj4gKyNpbmNsdWRl
-IDxtZWRpYS92NGwyLWZsYXNoLWxlZC1jbGFzcy5oPgo+Pj4gKwo+Pj4gK2VudW0gewo+Pj4gKyAg
-ICAgTVQ2MzYwX0xFRF9JU05LMSA9IDAsCj4+PiArICAgICBNVDYzNjBfTEVEX0lTTksyLAo+Pj4g
-KyAgICAgTVQ2MzYwX0xFRF9JU05LMywKPj4+ICsgICAgIE1UNjM2MF9MRURfSVNOSzQsCj4+Cj4+
-IE9uZSBxdWVzdGlvbiBhYm91dCB0aGVzZSBJU0lOS3MgLSBob3cgYXJlIHRoZXkgZXhwbG9pdGVk
-IGluIHlvdXIgZGV2aWNlPwo+PiBBcmUgdGhlc2UgTEVEcyB1c2VkIHRvIGluZGljYXRlIGNhbWVy
-YSBhY3Rpdml0eSBvciBpdCBpcyBvbmUgUkdCIExFRAo+PiBmb3Igc3RhdHVzPyBBbmQgd2hhdCBm
-dW5jdGlvbmFsaXR5IGhhcyB0aGUgcmVtYWluaW5nIGFtYmVyIG9uZSAoc3RpY2tpbmcKPj4gdG8g
-dGhlIG5hbWluZyBmcm9tIHlvdXIgRFQgYmluZGluZ3MpPwo+Pgo+PiBDYW4geW91IHNoYXJlIGhv
-dyB0aGUgZG9jdW1lbmF0aW9uIGZvciB0aGlzIGRldmljZSBkZXNjcmliZXMgdGhlIHB1cnBvc2UK
-Pj4gb2YgdGhlc2Ugc2lua3MsIGlmIGl0IGRvZXMgaXQgYXQgYWxsPwo+Pgo+PiBJIGdvdCBwcm9i
-YWJseSBtaXNsZWFkIGJ5IHlvdXIgbmFtaW5nIGluIHRoZSBkcml2ZXIgYW5kIGdvdCBmaXhlZCBv
-bgo+PiB0aGVpciBmdW5jdGlvbiBhcyBjYW1lcmEgYWN0aXZpdHkgaW5kaWNhdG9ycywgZm9yIHdo
-aWNoIFY0TDIgaGFzCj4+IHN1cHBvcnQuIElmIHRoYXQgaXMgbm90IHRoZSBjYXNlLCB0aGVuIHlv
-dSdkIGJldHRlciBzd2l0Y2ggdG8gdXNpbmcKPj4gbXVsdGljb2xvciBmcmFtZXdvcmsgZm9yIGFs
-bCBmb3VyICJpbmRpY2F0b3IiIExFRHMuCj4+Cj4gCj4gSXQncyBvbmUgUkdCIExFRCBmb3Igc3Rh
-dHVzLCBub3QgZm9yIGNhbWVyYS4KPiAKPiBUaGUgTVQ2MzYwIGludGVncmF0ZXMgYSB0aHJlZS1j
-aGFubmVsIFJHQiBMRUQgZHJpdmVyLCBkZXNpZ25lZCB0bwo+IHByb3ZpZGUgYSB2YXJpZXR5IG9m
-IGxpZ2h0aW5nIGVmZmVjdHMgZm9yIG1vYmlsZSBkZXZpY2UgYXBwbGljYXRpb25zLgo+IFRoZSBS
-R0IgTEVEIGRyaXZlciBpbmNsdWRlcyBhIHNtYXJ0IExFRCBzdHJpbmcgY29udHJvbGxlciwgYW5k
-IGl0IGNhbgo+IGRyaXZlIDMgY2hhbm5lbHMgb2YgTEVEcyB3aXRoIGEgc2luayBjdXJyZW50IG9m
-IHVwIHRvIDI0bUEuIFRoZQo+IGRlZmF1bHQgc2V0dGluZyBvZiBSR0JfSVNJTksxIGlzIGF1dG8g
-bW9kZSBmb3IgVEEgY2hhcmdpbmcgaW5kaWNhdG9yLAo+IGFuZCBSR0JfSVNJTksxIGFsc28gc3Vw
-cG9ydHMgc29mdHdhcmUgbW9kZS4gSXQgcHJvdmlkZXMgdGhyZWUKPiBvcGVyYXRpb24gbW9kZXMg
-Zm9yIHRoZSBSR0IgTEVEczogZmxhc2ggbW9kZSwgYnJlYXRoIG1vZGUsIGFuZAo+IHJlZ2lzdGVy
-IG1vZGUuIFRoZSBkZXZpY2UgY2FuIGluY3JlYXNlIG9yIGRlY3JlYXNlIHRoZSBicmlnaHRuZXNz
-IG9mCj4gdGhlIFJHQiBMRURzIHVwb24gY29tbWFuZCB2aWEgdGhlIEkyQyBpbnRlcmZhY2UuIFRo
-ZSBSR0JfSVNJTks0Cj4gcHJvdmlkZSBtb3JlIHNpbmsgY3VycmVudCB1cCB0byAxNTBtQSwgd2hp
-Y2ggd2UgY2FuIG1vb25saWdodCBtb2RlLgo+IAo+IERvIHlvdSBtZWFuIHdlIHNob3VsZCByZW1v
-dmUgImlzaW5rIHJlZ2lzdGVyIHY0bDIgZGV2aWNlLCBvbmx5IG5lZWQKPiByZWdpc3RlciBsZWRj
-bGFzcyBkZXZpY2UiPwoKSSdkIHNheSB0aGF0IGluIGFkZGl0aW9uIHRvIHRoZSBMRUQgZmxhc2gg
-Y2xhc3MgZGV2aWNlLCB5b3Ugc2hvdWxkCmFsbG93IGZvciByZWdpc3RlcmluZyBMRUQgbXVsdGlj
-b2xvciBkZXZpY2UgY29tcHJpc2luZyBSR0IgTEVEcywKYW5kIG9uZSBMRUQgY2xhc3MgZGV2aWNl
-IGZvciBJU0lOSzQgKHlvdSBjb3VsZCBldmVuIGFkZApMRURfRlVOQ1RJT05fTU9PTkxJR0hUIGZv
-ciBpdCkuCgpJIHdvbmRlciB3aGF0IG90aGVycyB0aGluay4KClsuLi5dCj4+PiArc3RhdGljIGlu
-dCBtdDYzNjBfbGVkX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+PiArewo+
-Pj4gKyAgICAgc3RydWN0IG10NjM2MF9wcml2ICpwcml2Owo+Pj4gKyAgICAgc3RydWN0IGZ3bm9k
-ZV9oYW5kbGUgKmNoaWxkOwo+Pj4gKyAgICAgc2l6ZV90IGNvdW50Owo+Pj4gKyAgICAgaW50IGkg
-PSAwLCByZXQ7Cj4+PiArCj4+PiArICAgICBjb3VudCA9IGRldmljZV9nZXRfY2hpbGRfbm9kZV9j
-b3VudCgmcGRldi0+ZGV2KTsKPj4+ICsgICAgIGlmICghY291bnQgfHwgY291bnQgPiBNVDYzNjBf
-TUFYX0xFRFMpCj4+Cj4+IFBsZWFzZSBhZGQgZGV2X2VycigpIGhlcmUuCj4+Cj4gCj4gZGV2X2Vy
-cigmcGRldi0+ZGV2LCAiTm8gY2hpbGQgbm9kZSBvciBub2RlIGNvdW50IG92ZXIgbWF4IGxlZCBu
-dW1iZXIKPiAlZFxuIiwgY291bnQpOwoKSWYgd2Ugd2lsbCBleHBsb2l0IGFsc28gTEVEIG11bHRp
-Y29sb3IgY2xhc3MgdGhlbiBEVCBiaW5kaW5ncyB3aWxsCmxvb2sgZGlmZmVyZW50LCBzbyBsZXQn
-cyBkaXNjdXNzIHRoaXMgZGV0YWlsIGxhdGVyLgoKLS0gCkJlc3QgcmVnYXJkcywKSmFjZWsgQW5h
-c3pld3NraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+Hi, Viresh & Rob Sir:
+
+I will change frequency domain to below and define it in cpufreq_hw
+schema rather than cpu node.
+
+mediatek,freq-domain-0 = <&cpu0>, <&cpu1>;
+
+Is it OK to you?
+Or you think OPP define is a better solution?
+
+opp-table-0 {
+    compatible = "mediatek,hw-operating-points", "operating-points-v2";
+};
+
+Thank you for the opinions.
+
+
+
+On Wed, 2020-09-23 at 21:10 +0800, Hector Yuan wrote:
+> On Tue, 2020-09-22 at 14:28 -0600, Rob Herring wrote:
+> > On Thu, Sep 10, 2020 at 12:31:02PM +0800, Hector Yuan wrote:
+> > > From: "Hector.Yuan" <hector.yuan@mediatek.com>
+> > > 
+> > > Add devicetree bindings for MediaTek HW driver.
+> > > 
+> > > Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> > > ---
+> > >  .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |  141 ++++++++++++++++++++
+> > >  1 file changed, 141 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+> > > new file mode 100644
+> > > index 0000000..118a163
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+> > > @@ -0,0 +1,141 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/cpufreq/cpufreq-mediatek-hw.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: MediaTek's CPUFREQ Bindings
+> > > +
+> > > +maintainers:
+> > > +  - Hector Yuan <hector.yuan@mediatek.com>
+> > > +
+> > > +description:
+> > > +  CPUFREQ HW is a hardware engine used by MediaTek
+> > > +  SoCs to manage frequency in hardware. It is capable of controlling frequency
+> > > +  for multiple clusters.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    const: "mediatek,cpufreq-hw"
+> > 
+> > Needs to be SoC specific. This stuff is never constant from one SoC to 
+> > the next. 'cpufreq' is a Linuxism. What's the block called in the 
+> > datasheet? Use that.
+> > 
+> OK, will use mediatek,sspm-dvfs-mt6779 instead.
+> > Don't need quotes either.
+> > 
+> OK, will remove it.
+> > > +
+> > > +  reg:
+> > > +    minItems: 1
+> > > +    maxItems: 2
+> > > +    description: |
+> > > +      Addresses and sizes for the memory of the HW bases in each frequency domain.
+> > > +
+> > > +  reg-names:
+> > > +    items:
+> > > +      - const: "freq-domain0"
+> > > +      - const: "freq-domain1"
+> > 
+> > Kind of pointless to have names based on the index. Drop 'reg-names'.
+> > 
+> OK, will drop it.
+> > > +    description: |
+> > > +      Frequency domain name. i.e.
+> > > +      "freq-domain0", "freq-domain1".
+> > > +
+> > > +  "#freq-domain-cells":
+> > > +    const: 1
+> > > +    description: |
+> > > +      Number of cells in a freqency domain specifier.
+> > 
+> > You don't need this. It's not a common binding that's going to vary.
+> > 
+> OK, will remove it.
+> > > +
+> > > +  mtk-freq-domain:
+> > > +    maxItems: 1
+> > > +    description: |
+> > > +      Define this cpu belongs to which frequency domain. i.e.
+> > > +      cpu0-3 belong to frequency domain0,
+> > > +      cpu4-6 belong to frequency domain1.
+> > 
+> > This property doesn't go in the 'mediatek,cpufreq-hw' node. You would 
+> > need a separate schema. However, I think the easiest thing to do here is 
+> > something like this:
+> > 
+> > mediatek,freq-domain-0 = <&cpu0>, <&cpu1>;
+> > 
+> Sorry, may I know the reason and the details about how to separate
+> schema? Thank you very much.
+> 
+> The numbers of frequency domain may be vary from different projects. If
+> I do the easier way, I may need to implement extra loop to check how
+> many frequency domain.
+> > Or you could just re-use the OPP binding with just 0 entries:
+> > 
+> > opp-table-0 {
+> >   compatible = "mediatek,hw-operating-points", "operating-points-v2";
+> > };
+> > opp-table-1 {
+> >   compatible = "mediatek,hw-operating-points", "operating-points-v2";
+> > };
+> > 
+> In previous review stage, already abandon OPP framework in driver code.
+> Will check with Viresh to see if its OK to add OPP back.
+> > > +
+> > > +required:
+> > > +  - compatible
+> > > +  - reg
+> > > +  - reg-names
+> > > +  - "#freq-domain-cells"
+> > > +
+> > > +examples:
+> > > +  - |
+> > > +    cpus {
+> > > +            #address-cells = <1>;
+> > > +            #size-cells = <0>;
+> > > +
+> > > +            cpu0: cpu@0 {
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a55";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 0>;
+> > > +                reg = <0x000>;
+> > > +            };
+> > > +
+> > > +            cpu1: cpu@1 {
+> > 
+> > Unit address is wrong.
+> > 
+> OK, will modify to "cpu1 : cpu@100" if we still decide to put
+> freq_domain in CPU node.
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a55";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 0>;
+> > > +                reg = <0x100>;
+> > > +            };
+> > > +
+> > > +            cpu2: cpu@2 {
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a55";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 0>;
+> > > +                reg = <0x200>;
+> > > +            };
+> > > +
+> > > +            cpu3: cpu@3 {
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a55";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 0>;
+> > > +                reg = <0x300>;
+> > > +            };
+> > > +
+> > > +            cpu4: cpu@4 {
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a55";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 1>;
+> > > +                reg = <0x400>;
+> > > +            };
+> > > +
+> > > +            cpu5: cpu@5 {
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a55";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 1>;
+> > > +                reg = <0x500>;
+> > > +            };
+> > > +
+> > > +            cpu6: cpu@6 {
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a75";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 1>;
+> > > +                reg = <0x600>;
+> > > +            };
+> > > +
+> > > +            cpu7: cpu@7 {
+> > > +                device_type = "cpu";
+> > > +                compatible = "arm,cortex-a75";
+> > > +                enable-method = "psci";
+> > > +                mtk-freq-domain = <&cpufreq_hw 1>;
+> > > +                reg = <0x700>;
+> > > +            };
+> > > +    };
+> > > +
+> > > +    /* ... */
+> > > +
+> > > +    soc {
+> > > +        #address-cells = <2>;
+> > > +        #size-cells = <2>;
+> > > +
+> > > +        cpufreq_hw: cpufreq@11bc00 {
+> > > +            compatible = "mediatek,cpufreq-hw";
+> > > +            reg = <0 0x11bc10 0 0x8c>,
+> > > +               <0 0x11bca0 0 0x8c>;
+> > > +            reg-names = "freq-domain0", "freq-domain1";
+> > > +            #freq-domain-cells = <1>;
+> > > +        };
+> > > +    };
+> > > +
+> > > +
+> > > +
+> > > +
+> > > -- 
+> > > 1.7.9.5
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
