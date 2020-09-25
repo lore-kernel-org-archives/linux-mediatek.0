@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC2FCC4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 11:37:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34EFBC4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 11:38:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A636A2075E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 11:37:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DCC2321775
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 11:38:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aQiXGfhw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A636A2075E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wEM/n1ul"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DCC2321775
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=atomide.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,35 +25,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BiKE99svWboprRh1WDfCFSKfwOLo1QAgqTXlJukWSnw=; b=aQiXGfhwkwAFdnVlpvUZTzT4Z
-	XwKfnQSIjUOADUhG5B0fKa3Y3hidQgGm/EsqjQK7XgmIz+5ZnQPouFSVqe7rXeQPmOLiIfhYYLQKh
-	/nJOiwzVShmjFVlhqm+IcAx4Z7PXJvte9Vz4ZmcJlEDvG3Y0Ga2RZVdbusvbvNYB+Vw0XAZhfIzC/
-	riENZzJL0b5PxjFWv+cj4BdVx34ZajV/YoMlFz1r75ftkOmqoaUqum8WZb2wKcaxIJFWYdAU/MV2q
-	rhUYzz/S4fyS2IfoTzlOy+vCH+MJ6lW99AgngpuBQOw8n3oOPSefnp0w63UPbTCajBz3FSr/6AjES
-	D0xlHUdcA==;
+	 bh=PJ0Hr1wtbmaL3B0DY/W31PoFTYPDGb/couTstg9ByUM=; b=wEM/n1ul6ErX4fABMDm/sYDUH
+	CZF/yfsiCVzqkF9n2D8IxC3lZrqtoDGLmDMMkHIB0NkGh+SgccIa97xIroMX9sfiEZVmW4UBHoO15
+	bKpdDao8NbtYua/+wsj6fcHkLn10QP7uPYLFp3CRXuNx0CXhufSjXruOyRuqrBe+Jem5Sd0l94ZPi
+	5PiN5ljc6EsDl/KtQzH30BwpdM1fqtaIQPQ6YTW+NqVkDs6WP45F8K7a6+geZsqziLEz5rzFT6rTV
+	gqPZ2bewirWyJziLCPYJuE8UIytx/qKvfjffEmPbxqVrKLy47leyXZN4oCIoFjDR4AVFY8QEebvF6
+	APGE0xXkA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLm28-00065n-Uy; Fri, 25 Sep 2020 11:37:01 +0000
+	id 1kLm3H-0006RE-JV; Fri, 25 Sep 2020 11:38:11 +0000
 Received: from muru.com ([72.249.23.125])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLm23-00063m-50; Fri, 25 Sep 2020 11:36:55 +0000
+ id 1kLm3A-0006Od-Qt; Fri, 25 Sep 2020 11:38:05 +0000
 Received: from atomide.com (localhost [127.0.0.1])
- by muru.com (Postfix) with ESMTPS id DBB9C80B0;
- Fri, 25 Sep 2020 11:36:52 +0000 (UTC)
-Date: Fri, 25 Sep 2020 14:36:46 +0300
+ by muru.com (Postfix) with ESMTPS id CDB9180EE;
+ Fri, 25 Sep 2020 11:38:02 +0000 (UTC)
+Date: Fri, 25 Sep 2020 14:37:56 +0300
 From: Tony Lindgren <tony@atomide.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH v3 08/15] ARM: dts: am335x: lxm: fix PCA9539 GPIO
- expander properties
-Message-ID: <20200925113646.GJ9471@atomide.com>
+Subject: Re: [PATCH v3 09/15] ARM: dts: am335x: t335: align GPIO hog names
+ with dtschema
+Message-ID: <20200925113756.GK9471@atomide.com>
 References: <20200916155715.21009-1-krzk@kernel.org>
- <20200916155715.21009-9-krzk@kernel.org>
+ <20200916155715.21009-10-krzk@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200916155715.21009-9-krzk@kernel.org>
+In-Reply-To: <20200916155715.21009-10-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_073655_264152_1B0A4B19 
-X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-CacheID: sfid-20200925_073804_915965_D5533B6C 
+X-CRM114-Status: UNSURE (   9.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -90,10 +90,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 * Krzysztof Kozlowski <krzk@kernel.org> [200916 18:58]:
-> The PCA9539 GPIO expander requires GPIO controller properties to operate
-> properly.
+> The convention for node names is to use hyphens, not underscores.
+> dtschema for pca95xx expects GPIO hogs to end with 'hog' prefix.
 
-I'm picking this patch into omap-for-v5.10/dt thanks.
+I'm picking up this too into omap-for-v5.10/dt thanks.
 
 Tony
 
