@@ -2,77 +2,77 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 33C28C4727F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E204EC4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D984521D7F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 888BA21D7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qd0h+6Wv";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jgeYgyNN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D984521D7F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HBpx1Vqe";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="afwxzIUV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 888BA21D7F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TA6ulUGyKfQG74+QOXXCd3tHz9J7h8UXBWeL5z9Kl1E=; b=qd0h+6WvnA584uhwbLzCWuhAv
-	3uQgPzDPNvPvQ7gNSAIPrED66EzOzO5DXmev8pL98iO9eCzzpBzx7Z1i30icmLYPn73E9dXnnawq1
-	MY3RWgkCaqHO3mfECM4S+n9obQxrDbUHfC2h3fpPFkLQndmeQmvTuDM6N62Sz3ApMjdRQOVLQFar4
-	TvB/pt4F7kJTK3TqujUaP+WFEmLrT6L2AIJWZTlk+SvO2ekXDcuICLyETulmcLO89MFES1+byNTKP
-	l8NJCkvkwbZiMB3SsoCxjR0tI5+iAhL0OaPnAkIKq7Fw96J8VQgPMiXLLTzmY6e7tIOJVkS8XpbKs
-	1tSatyrDg==;
+	 bh=RluBSRy7m9ZDQ9fkKHQdtt/kI85DhwtE+MrAMsrqyAk=; b=HBpx1VqeLAINIZZLjFbrOPMd9
+	kPiUMXvI9cCWRvUmL6BrLk6V0CHk1BtfATokzFadjS/Q7dEZPVmZQH7PbD8ppwh7TvZp5WH9O84NK
+	3fRqus9M6uTaZeaN04ZP9cDyf8WXfcppdkQQ39Vtbns00GRk01p9rrb23xL/D9UwdK76OyayKRxMj
+	IzedZQRBRWwf0CfVH0uJTjAvoai2Gr+CfDO76UB9CYhVIOzxME7015KnOZaTSJNFoBoxH+YgyK/vu
+	AX06GbLkzbLhx3Y+N65DNeHSTEUuMketFYXwLVe8b1uqfsXixFzQ9bVERiuoH1c6/r3UeLo45lQuk
+	Ae5xaUENw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLh98-0004v0-Bm; Fri, 25 Sep 2020 06:23:54 +0000
+	id 1kLh9S-00055l-Uh; Fri, 25 Sep 2020 06:24:15 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLh8p-0004mm-Og; Fri, 25 Sep 2020 06:23:36 +0000
-X-UUID: 6bf1e30ec45340ae97d97a0b93bd206a-20200924
+ id 1kLh8q-0004mp-MO; Fri, 25 Sep 2020 06:23:38 +0000
+X-UUID: da554b49beee4a45ba31c95f869af7d0-20200924
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=5m2HSwffSuI932K1En8gKb5kFERaGLGtuyzTCslXPfc=; 
- b=jgeYgyNNiBcGA7vxuVF7jRR06cqBSuf5mHsIn+UBvA0iiQ7/sKblmfJ2cl72TNKMeyPAwtsm1/Pl+b7dJ9x0uEWz8Gl3Uja4S8Ek3kewahVqzIEoRLvLVNq9WmhaglYnMrtRS6mLcZ7Q22xIvN4PSOQXRQrTfTvf4DmA+qb5D5k=;
-X-UUID: 6bf1e30ec45340ae97d97a0b93bd206a-20200924
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=L++qiABiAzjVbnpi2fjLv+qiJlqqsDdE0Ctsz0YdEqI=; 
+ b=afwxzIUV1kZ/u7NLemFjMHMdOzJWmVqJR8sZtAKii8zKMEyd9wCuK/oL1dTi52WW3pWWvShs3utIIDUKhVaPWF8tP8aco6wyPLD9KiZ56UXdFXPYZxzsXZVp+M8Axonuuel9KX/nrZD6BBq/xp3lYxjBculO5YwyffDW+Z5S38w=;
+X-UUID: da554b49beee4a45ba31c95f869af7d0-20200924
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1975715978; Thu, 24 Sep 2020 22:23:31 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ with ESMTP id 1385979615; Thu, 24 Sep 2020 22:23:31 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Sep 2020 23:14:57 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33DR.mediatek.inc
- (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 25 Sep 2020 14:14:55 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Sep 2020 14:14:55 +0800
-Message-ID: <1601014350.29336.3.camel@mhfsdcap03>
-Subject: Re: [PATCH RESEND v3 02/11] usb: gadget: bdc: remove
- bdc_ep_set_halt() declaration
+ 15.0.1497.2; Thu, 24 Sep 2020 23:23:23 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Sep 2020 14:23:21 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 25 Sep 2020 14:23:21 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>
-Date: Fri, 25 Sep 2020 14:12:30 +0800
-In-Reply-To: <1601013702-29079-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1601013702-29079-1-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+Subject: [PATCH V3 RESEND 05/11] usb: gadget: bdc: fix check warning of block
+ comments alignment
+Date: Fri, 25 Sep 2020 14:20:26 +0800
+Message-ID: <1601014832-29726-5-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1601014832-29726-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1601014832-29726-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0ED28E65ED35707369240D5F2A3D4650E2E08390086064CF86FD6E10BFE9FAFF2000:8
+X-TM-SNTS-SMTP: 0D6ADDFBD2EDD57D0FE79EE2B100B82431459905CE42507AF0FACDA5C3638E202000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_022335_986601_FBD420A5 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20200925_022336_883421_5D009B78 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,49 +85,96 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Florian Fainelli <f.fainelli@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Al
- Cooper <alcooperx@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Al Cooper <alcooperx@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Chunfeng
+ Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org,
  Sasi Kumar <sasi.kumar@broadcom.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Colin Ian King <colin.king@canonical.com>, Nathan
- Chancellor <natechancellor@gmail.com>, linux-arm-kernel@lists.infradead.org
+ Colin Ian King <colin.king@canonical.com>,
+ Nathan Chancellor <natechancellor@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Felipe,
+fix the warning:
+  WARNING:BLOCK_COMMENT_STYLE:
+  Block comments should align the * on each line
 
-   Sorry again, please ignore these ones, 01/11 is lost, will resend
-  
-On Fri, 2020-09-25 at 14:01 +0800, Chunfeng Yun wrote:
-> No definition for bdc_ep_set_halt(), so remove it.
-> 
-> Cc: Florian Fainelli <f.fainelli@gmail.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Acked-by: Florian Fainelli <f.fainelli@gmail.com>
-> ---
-> v3: add acked-by Florian
-> 
-> v2: add Cc Florian
-> ---
->  drivers/usb/gadget/udc/bdc/bdc_cmd.h | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/usb/gadget/udc/bdc/bdc_cmd.h b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
-> index 373e674..a3a6dbd 100644
-> --- a/drivers/usb/gadget/udc/bdc/bdc_cmd.h
-> +++ b/drivers/usb/gadget/udc/bdc/bdc_cmd.h
-> @@ -16,7 +16,6 @@
->  int bdc_stop_ep(struct bdc *, int);
->  int bdc_ep_set_stall(struct bdc *, int);
->  int bdc_ep_clear_stall(struct bdc *, int);
-> -int bdc_ep_set_halt(struct bdc_ep *, u32 , int);
->  int bdc_ep_bla(struct bdc *, struct bdc_ep *, dma_addr_t);
->  int bdc_function_wake(struct bdc*, u8);
->  int bdc_function_wake_fh(struct bdc*, u8);
+Cc: Florian Fainelli <f.fainelli@gmail.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+---
+v3: add acked-by Florian
 
+v2: add Cc Florian
+---
+ drivers/usb/gadget/udc/bdc/bdc.h     | 2 +-
+ drivers/usb/gadget/udc/bdc/bdc_ep.c  | 2 +-
+ drivers/usb/gadget/udc/bdc/bdc_udc.c | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
+index fcba77e..c0ee735 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc.h
++++ b/drivers/usb/gadget/udc/bdc/bdc.h
+@@ -35,7 +35,7 @@
+ /*
+  * Maximum size of ep0 response buffer for ch9 requests,
+  * the set_sel request uses 6 so far, the max.
+-*/
++ */
+ #define EP0_RESPONSE_BUFF  6
+ /* Start with SS as default */
+ #define EP0_MAX_PKT_SIZE 512
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_ep.c b/drivers/usb/gadget/udc/bdc/bdc_ep.c
+index 44f3a12..3fb36c8 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_ep.c
++++ b/drivers/usb/gadget/udc/bdc/bdc_ep.c
+@@ -68,7 +68,7 @@ static void ep_bd_list_free(struct bdc_ep *ep, u32 num_tabs)
+ 		 * check if the bd_table struct is allocated ?
+ 		 * if yes, then check if bd memory has been allocated, then
+ 		 * free the dma_pool and also the bd_table struct memory
+-		*/
++		 */
+ 		bd_table = bd_list->bd_table_array[index];
+ 		dev_dbg(bdc->dev, "bd_table:%p index:%d\n", bd_table, index);
+ 		if (!bd_table) {
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_udc.c b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+index 248426a..0c1ab95 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_udc.c
++++ b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+@@ -164,7 +164,7 @@ static void bdc_func_wake_timer(struct work_struct *work)
+ 	/*
+ 	 * Check if host has started transferring on endpoints
+ 	 * FUNC_WAKE_ISSUED is cleared when transfer has started after resume
+-	*/
++	 */
+ 	if (bdc->devstatus & FUNC_WAKE_ISSUED) {
+ 		dev_dbg(bdc->dev, "FUNC_WAKE_ISSUED FLAG IS STILL SET\n");
+ 		/* flag is still set, so again send func wake */
+@@ -205,7 +205,7 @@ static void handle_link_state_change(struct bdc *bdc, u32 uspc)
+ 				 * if not then send function wake again every
+ 				 * TNotification secs until host initiates
+ 				 * transfer to BDC, USB3 spec Table 8.13
+-				*/
++				 */
+ 				schedule_delayed_work(
+ 						&bdc->func_wake_notify,
+ 						msecs_to_jiffies(BDC_TNOTIFY));
+@@ -379,7 +379,7 @@ static int bdc_udc_start(struct usb_gadget *gadget,
+ 	 * Run the controller from here and when BDC is connected to
+ 	 * Host then driver will receive a USPC SR with VBUS present
+ 	 * and then driver will do a softconnect.
+-	*/
++	 */
+ 	ret = bdc_run(bdc);
+ 	if (ret) {
+ 		dev_err(bdc->dev, "%s bdc run fail\n", __func__);
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
