@@ -2,75 +2,77 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A9165C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 08:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8EE38C4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 09:07:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2797120878
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 08:56:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2916F2073A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 09:07:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zkd64Hyl";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="Byg4yL3t";
-	dkim=permerror (0-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="UBbd3YTV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2797120878
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CXcHOba8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=suse.com header.i=@suse.com header.b="fzNzs77m"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2916F2073A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=suse.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Tn2CmdbSMlMhTWJzHF5Oon24kX51U9S46LeXZ34Wcm4=; b=Zkd64HylaGvtkDRunTvj6usIO
-	0HE3BTl/e8KyMgbJ0gVSpy6tpUUq6MMHzHRI8T7UNZ7N9F2Z3aZVXDevdp2RSGYBejk9UJtp4QQUs
-	DvbWueaSY8+f7hLuL89Aw1fPqpVPzjUg4O4RYINO88GbGuaqKtHRuFmp6yBniDhDt+vPFdDKodqS3
-	Mu7xDDIXt6j/CLG5sHDnFl7itTWJBQeInK5mJPT7uFXjC/RhB58fyFM6vpH3mBcfvZ2ftIz4qwquC
-	M14taWtCo11I/1ost2gFDi5HZAXZAWgJxEK1sBUmqTWm7oMkrqapw+X0vrz30WDRGotqTOM4+ifwV
-	5enNmBAjg==;
+	 bh=/XhF3vef7ov9eLiTe7z4upoAdCWE9txbXpKb0RqDIEk=; b=CXcHOba8um5oJIdsKZCQ7T0h7
+	mVu1N4MSMpnT8BubU+T5eUDaPzWoO64fWc7CmclNniFEGwxUc4sdkyb50ZAbat+8KVc7bMMhd032Q
+	gUVt5yqg6UX8E0ttRKEYC2ximYzGCEWMolpVie4Lir7Lf9/xAECWF4LH9sn6xdoY8eMFz74eQyFMu
+	Z9TJbvmpfrjqX44ytVAUAGsslJK9rNj/B+5eYOM3az+OdlbVMuLnOuMZXi4mxM8rNKJPeTwKB/V53
+	VtN33Dg50odyIuWcfDlQNYV0J7rZz/VgXiB0FRkpeRbRdU7EgBFkJF14TvtCzeoja3SI798BqXDzi
+	Le/2sO+VQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLjW8-0007M4-A9; Fri, 25 Sep 2020 08:55:48 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1kLjhg-0000T1-HV; Fri, 25 Sep 2020 09:07:44 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLjW2-0007JX-Jk; Fri, 25 Sep 2020 08:55:44 +0000
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601024139;
+ id 1kLjhc-0000S7-7j; Fri, 25 Sep 2020 09:07:41 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1601024857;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=27rpXJWZJemqCR5/J+kJk/Ytwunk5JlcbUzkum+S4N4=;
- b=Byg4yL3te8ivcMS4F2H8gOSQgqsZFJMj7/3QGL1zpD+Uh7rAUCaut5ynvf9S5fDMomckOp
- U5NB52hUfA2U6b3+cKPcx4a4SV0DKzu47kDUHuaXyQB3h6c/zTi8HkZRbpHchKrjOmVKvR
- WzM0VPP/baGMhhiSoGWCH7oiH6uphutlfMaExg5R4H/NBJYE84qYc+05sJbCMCS2sXrWk6
- NXtbO2rgbxrUFvRLlnR3+pdP0qO+xTGpIX12bTcavQl+D3AQI1oN0JuV/sUI9EqoYPq6eT
- ZniwmFxZjcNhCpZY1YxANngzOLk9EIUxSeG+WYk4sDTAGTYDDj4qVSROVGOvWw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601024139;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=27rpXJWZJemqCR5/J+kJk/Ytwunk5JlcbUzkum+S4N4=;
- b=UBbd3YTV3lBvSjOcMTIlxl7PlmxXWJcM7BthmUp44vKv9Dy511FWWrHXVYtIyr0/6UCITS
- jzGULCttqvgHCcDQ==
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v4 1/6] timer: kasan: record timer stack
-In-Reply-To: <1601018323.28162.4.camel@mtksdccf07>
-References: <20200924040335.30934-1-walter-zh.wu@mediatek.com>
- <87h7rm97js.fsf@nanos.tec.linutronix.de>
- <1601018323.28162.4.camel@mtksdccf07>
-Date: Fri, 25 Sep 2020 10:55:39 +0200
-Message-ID: <87lfgyutf8.fsf@nanos.tec.linutronix.de>
+ bh=vEET4i5ndN9Qo2VdO+IEK6AEPymnv69TyumxEU3g6CY=;
+ b=fzNzs77muEuQq3vGTbPVJUhTnRg8AWAH+C7kFD/DLnpf5UMFx7euzsOUxOz56JWOOFtiAp
+ eFxX+Kw/8K1XNrq1gJQ/rqDjclV32hMRq2uLWQ36rsoiXgVn5ru7RUCK9zjWiwpmkKmv/W
+ IvIlvdyiKciVU0RgJ3vWZVv6Ymtn8+k=
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 3AD4EADC5;
+ Fri, 25 Sep 2020 09:07:37 +0000 (UTC)
+Subject: Re: [PATCH 11/12] soc: mediatek: pm-domains: Add support for mt8183
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
+References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
+ <20200910172826.3074357-12-enric.balletbo@collabora.com>
+ <730273b4-914a-8a7a-1583-351e6f20df5b@gmail.com>
+ <5e1510f4-b0c4-2cff-b3f8-b6715d228149@gmail.com>
+ <CAJMQK-jFwToRxBdVgtHT3wJ970M0NYGu3kLtkGRBDKMMNOHkJw@mail.gmail.com>
+ <2a52c8e7-59db-9ed9-dd35-fc74738c152d@collabora.com>
+From: Matthias Brugger <mbrugger@suse.com>
+Message-ID: <dc90ec9a-ec19-39af-a170-85147d1d96c9@suse.com>
+Date: Fri, 25 Sep 2020 11:07:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <2a52c8e7-59db-9ed9-dd35-fc74738c152d@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_045543_216445_BE23E2B7 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20200925_050740_494055_8C3BA453 
+X-CRM114-Status: GOOD (  22.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,84 +84,131 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Marco Elver <elver@google.com>, wsd_upstream <wsd_upstream@mediatek.com>,
- Stephen Boyd <sboyd@kernel.org>, Alexander Potapenko <glider@google.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-mm@kvack.org,
- John Stultz <john.stultz@linaro.org>, linux-arm-kernel@lists.infradead.org,
- Andrey Konovalov <andreyknvl@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Nicolas Boichat <drinkcat@chromium.org>, weiyi.lu@mediatek.com,
+ lkml <linux-kernel@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Walter,
 
-On Fri, Sep 25 2020 at 15:18, Walter Wu wrote:
-> On Thu, 2020-09-24 at 23:41 +0200, Thomas Gleixner wrote:
->> > For timers it has turned out to be useful to record the stack trace
->> > of the timer init call.
->> 
->> In which way? And what kind of bug does it catch which cannot be catched
->> by existing debug mechanisms already?
->> 
-> We only provide another debug mechanisms to debug use-after-free or
-> double-free, it can be displayed together in KASAN report and have a
-> chance to debug, and it doesn't need to enable existing debug mechanisms
-> at the same time. then it has a chance to resolve issue.
 
-Again. KASAN can only cover UAF, but there are a dozen other ways to
-wreck the system with wrong usage of timers which can't be caught by
-KASAN.
+On 25/09/2020 10:21, Enric Balletbo i Serra wrote:
+> Hi Hsin-Yi and Matthias,
+> 
+> Hsin-Yi, many thanks to provide the register names.
+> 
+> On 25/9/20 9:37, Hsin-Yi Wang wrote:
+>> On Wed, Sep 16, 2020 at 8:19 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>>>
+>>>
+>>>
+>>> On 16/09/2020 11:46, Matthias Brugger wrote:
+>>>>
+>>>>
+>>>> On 10/09/2020 19:28, Enric Balletbo i Serra wrote:
+>>>>> From: Matthias Brugger <mbrugger@suse.com>
+>>>>>
+>>>>> Add the needed board data to support mt8183 SoC.
+>>>>>
+>>>>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>>>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>>>>> ---
+>>>>>
+>>>>>    drivers/soc/mediatek/mtk-pm-domains.c | 162 ++++++++++++++++++++++++++
+>>>>>    include/linux/soc/mediatek/infracfg.h |  28 +++++
+>>>>>    2 files changed, 190 insertions(+)
+>>>>>
+>>>>> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c
+>>>>> b/drivers/soc/mediatek/mtk-pm-domains.c
+>>>>> index 29e88adc8ea6..aa434f616fee 100644
+>>>>> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+>>>>> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+>>>> [...]
+>>>>> +/*
+>>>>> + * MT8183 power domain support
+>>>>> + */
+>>>>> +static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>>>>> +    [MT8183_POWER_DOMAIN_AUDIO] = {
+>>>>> +        .sta_mask = PWR_STATUS_AUDIO,
+>>>>> +        .ctl_offs = 0x0314,
+>>>>> +        .sram_pdn_bits = GENMASK(11, 8),
+>>>>> +        .sram_pdn_ack_bits = GENMASK(15, 12),
+>>>>> +    },
+>>>>> +    [MT8183_POWER_DOMAIN_CONN] = {
+>>>>> +        .sta_mask = PWR_STATUS_CONN,
+>>>>> +        .ctl_offs = 0x032c,
+>>>>> +        .sram_pdn_bits = 0,
+>>>>> +        .sram_pdn_ack_bits = 0,
+>>>>> +        .bp_infracfg = {
+>>>>> +            BUS_PROT_WR(MT8183_TOP_AXI_PROT_EN_CONN, 0x2a0, 0x2a4, 0x228),
+>>>>
+>>>> We have repeating values triplets for set, clear and status register in infracfg
+>>>> and SMI.
+>>>>
+>>>> Weiyi can you help to get names to this registers? I wasn't able to find
+>>>> anything in the datasheet.
+>>>
+>>> I think for the infracfg part I figured it out:
+>>>
+>>> #define INFRA_TOPAXI_PROTECTEN_SET      0x2a0
+>>> #define INFRA_TOPAXI_PROTECTEN_CLR      0x2a4
+>>> #define INFRA_TOPAXI_PROTECTEN_STA1     0x228
+>>>
+>>> #define INFRA_TOPAXI_PROTECTEN_1_SET    0x2a8
+>>> #define INFRA_TOPAXI_PROTECTEN_1_CLR    0x2ac
+>>> #define INFRA_TOPAXI_PROTECTEN_STA1_1   0x258
+>>>
+>>> #define INFRA_TOPAXI_PROTECTEN_MCU_SET  0x2d4
+>>> #define INFRA_TOPAXI_PROTECTEN_MCU_CLR  0x2d8
+>>> #define INFRA_TOPAXI_PROTECTEN_MM_STA1  0x2ec
 
->> > Because if the UAF root cause is in timer init, then user can see
->> > KASAN report to get where it is registered and find out the root
->> > cause.
->> 
->> What? If the UAF root cause is in timer init, then registering it after
->> using it in that very same function is pretty pointless.
->> 
-> See [1], the call stack shows UAF happen at dummy_timer(), it is the
-> callback function and set by timer_setup(), if KASAN report shows the
-> timer call stack, it should be useful for programmer.
+These three should be:
+INFRA_TOPAXI_PROTECTEN_MM_SET 0x2d4
+INFRA_TOPAXI_PROTECTEN_MM_CLR 0x2d8
+INFRA_TOPAXI_PROTECTEN_MM_STA1 0x2ec
 
-The report you linked to has absolutely nothing to do with a timer
-related UAF. The timer callback calls kfree_skb() on something which is
-already freed. So the root cause of this is NOT in timer init as you
-claimed above. The timer callback is just exposing a problem in the URB
-management of this driver. IOW the recording of the timer init stack is
-completely useless for decoding this problem.
+>>>
+> 
+> I think this is SoC specific, right? So, I should add the MT8183_ prefix.
+> 
 
->> There is a lot of handwaving how useful this is, but TBH I don't see the
->> value at all.
->> 
->> DEBUG_OBJECTS_TIMERS does a lot more than crashing on UAF. If KASAN
->> provides additional value over DEBUG_OBJECTS_TIMERS then spell it out,
->> but just saying that you don't need to enable DEBUG_OBJECTS_TIMERS is
->> not making an argument for that change.
->> 
-> We don't want to replace DEBUG_OBJECTS_TIMERS with this patches, only
-> hope to use low overhead(compare with DEBUG_OBJECTS_TIMERS) to debug
+It seems like in newer SoCs infracfg register map has changed the layout for 
+INFRA_TOPAXI_PROTECTEN_SET and INFRA_TOPAXI_PROTECTEN_CLR registers. Apart from 
+that it got expanded to be able to use bus protection on more HW blocks.
 
-KASAN has lower overhead than DEBUG_OBJECTS_TIMERS? Maybe in a different
-universe.
+So not sure if MT8183_ is the right prefix. Maybe we should just rename 
+INFRA_TOPAXI_PROTECTEN_SET to something like INFRA_TOPAXI_PROTECTEN_SET_V2 and 
+do the same for INFRA_TOPAXI_PROTECTEN_CLR
 
-That said, I'm not opposed to the change per se, but without a sensible
-justification this is just pointless.
+Regards,
+Matthias
 
-Sprinkling kasan_foo() all over the place and claiming it's useful
-without a valid example does not provide any value.
-
-Quite the contrary it gives the completely wrong sense what KASAN can do
-and what not.
-
-Thanks,
-
-        tglx
-
+>>> Weiyi, can you still provide the register names for the SMI?
+>>>
+>>> Thanks in advance!
+>>> Matthias
+>>>
+>> Hi Matthias,
+>>
+>> SMI names are
+>> #define SMI_COMMON_CLAMP_EN 0x3c0
+>> #define SMI_COMMON_CLAMP_EN_SET 0x3c4
+>> #define SMI_COMMON_CLAMP_EN_CLR 0x3c8
+>>
+> 
+> The same here, this is specific for MT8183, right?
+> 
+> Thanks,
+>    Enric
+> 
+>> Thanks
+>>
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
