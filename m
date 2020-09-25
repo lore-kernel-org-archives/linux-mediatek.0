@@ -2,79 +2,83 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08A9CC4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 09:26:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07C36C4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 09:36:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 81AE220738
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 09:26:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7B4AF20838
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 09:36:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="md1T0p1Z";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MHPfO+56"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81AE220738
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ux5wKIVp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="gQDqhM1E"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B4AF20838
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GqqkzahAHrZjwMJejhOhDzda47QLtII2ZOIDtrPNbRk=; b=md1T0p1ZbPNj1V6XG0T7AWota
-	hyGEJ7YcPvEOIraY9sGwyKNSVbwBggCnTOBDEk1nRzRBtYt8nJw10kGuCW/yhfAktOmGjcc8fdhzz
-	iAJft7gDYAKoB2jyLKJeey1lSampbgQrnztoIunnFVIAyFuSsY6DotoHIAfZe6HEwnHNH9HcWPYhA
-	pWeJwsDWr9JG1cZjZjnr+FpHljVhUy1imQQD8BHOUiWWrXWM7Tx45z6oC8fWLdNGCLlYWQqE/tUKK
-	boEjx2SOoxcwGrjMndqX7TMkx4YTqW3vnGeu88wa8aMiSdHL9EzNCH6BqHiVT84v4FhcAb3lsgIW5
-	dWzW0ny4A==;
+	 bh=6h1zkLvZ1WSezukw7g2SzStkGL9D1Cj+ilYc+aJchsg=; b=ux5wKIVp960HNjdBjnBVTlUKJ
+	Z7BBuO+IMj3tzbCLOUI3VDDJfMJW4AvKbr1OiOHuqZNDRws52F5pXkcxo6Qe6QBftOEIQsLtXHFya
+	9ipzSqv7WYPlli1zHRutiPf9H/Z/BhDAxFKu93zVbyZl3AbTrS1dVIKA1Cxgpv7woQdSUFlZArd7U
+	9J9QPCil4Z9ARIRNrpK3zeo4lpaGQib2obZjmPJIcLBu8sDP7TSDB2byHxzRYZW4jKB5Q8+DGIGx8
+	4VBgM1b7Zc8bhbQfL55g8z5rqLDTBGHYDLGr94j0BD3C6Mlz9+VTF1M+Ef5Is4tz6uEWr2kV/7j+5
+	I3TJLegWg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLjzS-0003RG-1X; Fri, 25 Sep 2020 09:26:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kLk9i-0006Qt-JH; Fri, 25 Sep 2020 09:36:42 +0000
+Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLjzN-0003Pm-24; Fri, 25 Sep 2020 09:26:02 +0000
-X-UUID: de2735e2efd04ab59b4642c31da2a7a8-20200925
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=wYZQKOZQHIfcecchTzNpFHCWhysG2MkETQF4DKJWtpw=; 
- b=MHPfO+56Lvs0cVAsoafWeEXIVmcaD79P+HUVuF3Q0ob6Z/vMVS8TmJuszuiDLav5BTNcmgUpaRODTSuSx1/igM89HmaYzTnpfvfyxvKvId94eUL2bHcpjEZ9J7vyiQO41RboXPnAtjkExn8LDHBxqBJhaQUoQmKh0C/PhDVtrp8=;
-X-UUID: de2735e2efd04ab59b4642c31da2a7a8-20200925
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 390051840; Fri, 25 Sep 2020 01:25:57 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Sep 2020 02:15:54 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Sep 2020 17:15:45 +0800
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Sep 2020 17:15:45 +0800
-Message-ID: <1601025346.2255.2.camel@mtksdccf07>
-Subject: Re: [PATCH v4 1/6] timer: kasan: record timer stack
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Date: Fri, 25 Sep 2020 17:15:46 +0800
-In-Reply-To: <87lfgyutf8.fsf@nanos.tec.linutronix.de>
-References: <20200924040335.30934-1-walter-zh.wu@mediatek.com>
- <87h7rm97js.fsf@nanos.tec.linutronix.de>
- <1601018323.28162.4.camel@mtksdccf07>
- <87lfgyutf8.fsf@nanos.tec.linutronix.de>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kLk9P-0006Im-GN
+ for linux-mediatek@lists.infradead.org; Fri, 25 Sep 2020 09:36:24 +0000
+Received: by mail-vs1-xe42.google.com with SMTP id z193so1007425vsz.10
+ for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2020 02:36:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CopwlfwvxR6TDA4NEpPReJrXwzQ2YdaVXCfZyj+KeI8=;
+ b=gQDqhM1EBxhhdAdupXGC+mi8HP42zIBAb+/5WouwU0pwYgc43PjnSIDyqhNXoJBgwE
+ nA9S7PMscej5cgQCrvf55Dp29QyMHvwUDUtmdsjDRjaEHcRFBhd7dmLwMWl9mvoH7sp/
+ 4lRasNIvYZAFCtIP9ZaogcqOJXzEYU/4iYpzI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CopwlfwvxR6TDA4NEpPReJrXwzQ2YdaVXCfZyj+KeI8=;
+ b=B4+iSbEhDpfMp3bm/IdI9awPMR2C9Mqf9C6l6xloIWi8FOv4EJNIBc+wwD51iYWA9f
+ pGIUrkkWf6Qlfrp4Jo6493K1iz61SDkBbShTVrdS8kwExmCZ2glLwNM0Bg+6tD0VA3yx
+ QxUWCs4t69pbAhRAJf+IOYkO/aEH0oe6NzDH7LqiO/SRf2oyp6FvWbhnp3NVEbGBP11X
+ BMmtgbbCaQvtu7w1mVWP6rPtT6Ah4cic/O/Xv66MCD5UPrmEaV50EFTFfm0kA+NoFsQ1
+ hZOitj9x7dngD0nv9Kv5Qw6NTQHuX5qpM3l+ryo6f/J24cCRrHMhtiTA8yabX7c5XIga
+ cpOg==
+X-Gm-Message-State: AOAM532VA/XopuJXLmr6ogYJIonyF+RH1sU3WoRLp7itlcdFpYSk+kQq
+ ZmTtyPLUQB+Ymp/V7jWRsdcu+GY8R3BsVT5MQ6PKGw==
+X-Google-Smtp-Source: ABdhPJxdJedhGCUBzFfJjDuMt5UWKrHFjl71MnBQbIp5LNRnu+DHrChmvGin2RNOLR4c+TakRNBVwDRVvnRZRQt2lqc=
+X-Received: by 2002:a67:b917:: with SMTP id q23mr2061999vsn.37.1601026578879; 
+ Fri, 25 Sep 2020 02:36:18 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 226A7A570B87CE4811210E74AF646C2772ABB9F1C3FA85FE059A86BBF585F5742000:8
-X-MTK: N
+References: <20200925065418.1077472-1-ikjn@chromium.org>
+ <20200925145255.v3.2.I48d59ef5398f3633c6ebbab093da6b4b06495780@changeid>
+In-Reply-To: <20200925145255.v3.2.I48d59ef5398f3633c6ebbab093da6b4b06495780@changeid>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Fri, 25 Sep 2020 17:36:08 +0800
+Message-ID: <CAATdQgB4Z2msO_RuOuVMLaXYrR7WnGsSQbjOWMTFWT7PCjH+PA@mail.gmail.com>
+Subject: Re: [PATCH v3 2/6] spi: spi-mtk-nor: fix mishandled logics in
+ checking SPI memory operation
+To: Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, linux-spi@vger.kernel.org, 
+ linux-mtd@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_052601_300871_F3B46519 
-X-CRM114-Status: GOOD (  30.44  )
+X-CRM114-CacheID: sfid-20200925_053623_566333_1621C6B6 
+X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,98 +90,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Marco Elver <elver@google.com>, wsd_upstream <wsd_upstream@mediatek.com>,
- Stephen Boyd <sboyd@kernel.org>, Alexander
- Potapenko <glider@google.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org,
- John Stultz <john.stultz@linaro.org>, linux-arm-kernel@lists.infradead.org,
- Andrey
- Konovalov <andreyknvl@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-09-25 at 10:55 +0200, Thomas Gleixner wrote:
-> Walter,
-> 
-> On Fri, Sep 25 2020 at 15:18, Walter Wu wrote:
-> > On Thu, 2020-09-24 at 23:41 +0200, Thomas Gleixner wrote:
-> >> > For timers it has turned out to be useful to record the stack trace
-> >> > of the timer init call.
-> >> 
-> >> In which way? And what kind of bug does it catch which cannot be catched
-> >> by existing debug mechanisms already?
-> >> 
-> > We only provide another debug mechanisms to debug use-after-free or
-> > double-free, it can be displayed together in KASAN report and have a
-> > chance to debug, and it doesn't need to enable existing debug mechanisms
-> > at the same time. then it has a chance to resolve issue.
-> 
-> Again. KASAN can only cover UAF, but there are a dozen other ways to
-> wreck the system with wrong usage of timers which can't be caught by
-> KASAN.
-> 
-> >> > Because if the UAF root cause is in timer init, then user can see
-> >> > KASAN report to get where it is registered and find out the root
-> >> > cause.
-> >> 
-> >> What? If the UAF root cause is in timer init, then registering it after
-> >> using it in that very same function is pretty pointless.
-> >> 
-> > See [1], the call stack shows UAF happen at dummy_timer(), it is the
-> > callback function and set by timer_setup(), if KASAN report shows the
-> > timer call stack, it should be useful for programmer.
-> 
-> The report you linked to has absolutely nothing to do with a timer
-> related UAF. The timer callback calls kfree_skb() on something which is
-> already freed. So the root cause of this is NOT in timer init as you
-> claimed above. The timer callback is just exposing a problem in the URB
-> management of this driver. IOW the recording of the timer init stack is
-> completely useless for decoding this problem.
-> 
-> >> There is a lot of handwaving how useful this is, but TBH I don't see the
-> >> value at all.
-> >> 
-> >> DEBUG_OBJECTS_TIMERS does a lot more than crashing on UAF. If KASAN
-> >> provides additional value over DEBUG_OBJECTS_TIMERS then spell it out,
-> >> but just saying that you don't need to enable DEBUG_OBJECTS_TIMERS is
-> >> not making an argument for that change.
-> >> 
-> > We don't want to replace DEBUG_OBJECTS_TIMERS with this patches, only
-> > hope to use low overhead(compare with DEBUG_OBJECTS_TIMERS) to debug
-> 
-> KASAN has lower overhead than DEBUG_OBJECTS_TIMERS? Maybe in a different
-> universe.
-> 
+On Fri, Sep 25, 2020 at 2:54 PM Ikjoon Jang <ikjn@chromium.org> wrote:
+>
+> Fix a bug which limits its protocol availability in supports_op().
+>
+> Fixes: a59b2c7c56bf ("spi: spi-mtk-nor: support standard spi properties")
+> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> ---
 
-I mean KASAN + our patch vs KASAN + DEBUG_OBJECTS_TIMERS. The front one
-have the information to the original caller and help to debug. It is
-smaller overhead than the one behind.
+This is also duplicated work of https://patchwork.kernel.org/patch/11797723/,
+I'm going to drop this patch in v4.
 
-> That said, I'm not opposed to the change per se, but without a sensible
-> justification this is just pointless.
-> 
-> Sprinkling kasan_foo() all over the place and claiming it's useful
-> without a valid example does not provide any value.
-> 
-> Quite the contrary it gives the completely wrong sense what KASAN can do
-> and what not.
-> 
-
-I agree your saying, so that I need to find out a use case to explain to
-you.
-
-Thanks
-
-Walter
-
-> Thanks,
-> 
->         tglx
-> 
+>
+> (no changes since v1)
+>
+>  drivers/spi/spi-mtk-nor.c | 26 +++++++++++---------------
+>  1 file changed, 11 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+> index 6e6ca2b8e6c8..0f7d4ec68730 100644
+> --- a/drivers/spi/spi-mtk-nor.c
+> +++ b/drivers/spi/spi-mtk-nor.c
+> @@ -211,28 +211,24 @@ static bool mtk_nor_supports_op(struct spi_mem *mem,
+>         if (op->cmd.buswidth != 1)
+>                 return false;
+>
+> +       if (!spi_mem_default_supports_op(mem, op))
+> +               return false;
+> +
+>         if ((op->addr.nbytes == 3) || (op->addr.nbytes == 4)) {
+> -               switch(op->data.dir) {
+> -               case SPI_MEM_DATA_IN:
+> -                       if (!mtk_nor_match_read(op))
+> -                               return false;
+> -                       break;
+> -               case SPI_MEM_DATA_OUT:
+> -                       if ((op->addr.buswidth != 1) ||
+> -                           (op->dummy.nbytes != 0) ||
+> -                           (op->data.buswidth != 1))
+> -                               return false;
+> -                       break;
+> -               default:
+> -                       break;
+> -               }
+> +               if ((op->data.dir == SPI_MEM_DATA_IN) && mtk_nor_match_read(op))
+> +                       return true;
+> +               else if (op->data.dir == SPI_MEM_DATA_OUT)
+> +                       return (op->addr.buswidth == 1) &&
+> +                              (op->dummy.nbytes == 0) &&
+> +                              (op->data.buswidth == 1);
+>         }
+> +
+>         len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+>         if ((len > MTK_NOR_PRG_MAX_SIZE) ||
+>             ((op->data.nbytes) && (len == MTK_NOR_PRG_MAX_SIZE)))
+>                 return false;
+>
+> -       return spi_mem_default_supports_op(mem, op);
+> +       return true;
+>  }
+>
+>  static void mtk_nor_setup_bus(struct mtk_nor *sp, const struct spi_mem_op *op)
+> --
+> 2.28.0.681.g6f77f65b4e-goog
+>
 
 _______________________________________________
 Linux-mediatek mailing list
