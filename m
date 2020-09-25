@@ -2,76 +2,86 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4034CC4727E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:31:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 19E32C4727E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:54:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE522208B6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:31:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8BE7123447
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:54:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="z64pL8co";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uup1l7x1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE522208B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H2FKuELb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="buj5lWW/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8BE7123447
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PvQ97r/y/OnXROhKUive5eOoLyj32oOo3UqLYyXKLt8=; b=z64pL8coksb0+hGQyZfXP350x
-	ak6EGNaCMxC5wV41M0URVvl2dQCg2hk+zb+oxbKDFjAijC6vkupOnoAN9/3TkYdlLCAk9PdbP6sRd
-	qeu5D+szB+LSFeHR7ZpYeC7AzF0m7qiI3IHAiTTH3DeMg4OUekqxk0Z6xywPf6YY4BfuIUs/hRbdA
-	WcrRhqjtp/Wsnnj9mP1ZjPtw/HqVb0xua97cqUq5hH+jdwWSj5EmpDvAdux4Qo9p+P3aNwSiQFeui
-	j6OrTLdlLfe3EMhSKEdkiUEDPXyI6mBdgzwmXujtwOYAuUih/bP8t+RtYOFNoetHHUSkPgCe+FYFQ
-	aW22mpK5Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sbSCBpSmnK49CKfgyivSkygymqRnz4E3ayQDXtbBn8c=; b=H2FKuELbCB4aVRKsKzFR1dOUN3
+	T8C00RFvNJ9vNQu3opjmlO7DjsGD/lGHgluVh0ovtRckE+vWrgex0ar37JDId+3TXVw0ODYvcKVPi
+	oN04DQvoSLwv8CfmHYf0Q7kN7fmZ3t2+E3FB5aGz5H/dpUCKyILa4XsTMbhYy4yQU8MMZYZobl77M
+	DkYh7upuAHreBSu77GnL2PmoqdSlLWmqgOGb5VKDuqZeOHCkZN62foJlMCPFTaUeGWFsnhxNIxWue
+	lZF+tq/+4IJX7v+y/OBC2A8db/MCp3Q9boUTh+T1AoEW0g9GlmRTJ2Xc0SwiuVnQR/vgtHF/ZIQiq
+	GH+uaQfA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLhGc-0007bf-Pp; Fri, 25 Sep 2020 06:31:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kLhck-0003OI-8Z; Fri, 25 Sep 2020 06:54:30 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLhGN-0007PN-Hj; Fri, 25 Sep 2020 06:31:25 +0000
-X-UUID: 9a7303eb21ba43a684480e0f54e8b66a-20200924
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=M9B+st9EHiLWNz6oa11lg4+mh5nozfsj2SPClhQffMk=; 
- b=uup1l7x1BVKpDXACegkY6QIUrdKmf4clAbaNp5ifTCholp5Vn48EAWDsJbMZwqimCasX+IM1AzcsQ9poOkj8TJ1qwFfax3EV8sdrWvZO8a2GBW/qwnJAFVd9r0DTxyqyT1FDgku3F3BHM4B1oP4HFKD+z6RdmnI6SqF5L7POYME=;
-X-UUID: 9a7303eb21ba43a684480e0f54e8b66a-20200924
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1408902485; Thu, 24 Sep 2020 22:31:10 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Sep 2020 23:23:27 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Sep 2020 14:23:24 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Sep 2020 14:23:24 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Felipe Balbi <balbi@kernel.org>
-Subject: [PATCH V3 RESEND 07/11] usb: gadget: bdc: avoid precedence issues
-Date: Fri, 25 Sep 2020 14:20:28 +0800
-Message-ID: <1601014832-29726-7-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1601014832-29726-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1601014832-29726-1-git-send-email-chunfeng.yun@mediatek.com>
+ id 1kLhcg-0003Mo-RM
+ for linux-mediatek@lists.infradead.org; Fri, 25 Sep 2020 06:54:27 +0000
+Received: by mail-pf1-x441.google.com with SMTP id z18so2268369pfg.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 24 Sep 2020 23:54:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vw1KoQ4s8DeBpjj9MyCO9ispMM5JjMGFm+aZoaWCoVI=;
+ b=buj5lWW/a+hMjzNtcF/uMLSF78MUB7xqm+T2nNX04mS+0nYwnCiB3E3vUa5Dd5jiNj
+ i36ji4XPTi6D0JoZkkMNBs31NHdmTWkPUc8AwirL2lf/k3cOryvCDvXcYn9xjj5CV4EY
+ lOdRjxs4FSfryaOXZ3QyOkaIa7Nbgrcw044Nk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vw1KoQ4s8DeBpjj9MyCO9ispMM5JjMGFm+aZoaWCoVI=;
+ b=NptimDZEcnvld0xh4vOuLcSwolo9/ixpG+BnX3grd7dXVRsRbZrdRnv+RfgSNiPeyh
+ 4ug9TFeMzi1N4GZL2xtLLtocAE2Pmp3Xpeh08I3BFzjVZMQNZxBR2pdw6tPJEEl7DyhZ
+ 5/6yAx752ZPVo2VZfv06dU93IsPsE0NH2wGUrPywZPc+NSXDgggOjDMA7mTCoNZopUK4
+ zgLggxtKkVLaCkGD7NPXBw+qzXQfAns17nWtSb96ywwg1eqw2PWF8GrJXmxmQlLn5AM4
+ QoIE442uCmIcbZJ9hkfmkYxAYaD5SwaJy3r8CfBMRVgCtjY1umhW59yD6nUKjUPs5gEg
+ +x4Q==
+X-Gm-Message-State: AOAM532qctGWrAdmFNstbVdtPYW095bd5KxAdqP91xqQOJjzlQ9sgM8O
+ vt2XhhN1+/+D/+XlgzY9WnFKjQ==
+X-Google-Smtp-Source: ABdhPJxgajGnraK24ZhbVuK9fVP7hcc5f5AZ8YpbNmdibOe6j74I/hhduxVUpobEzgb6A2dXHC7BZA==
+X-Received: by 2002:aa7:85d4:0:b029:142:440b:fcd7 with SMTP id
+ z20-20020aa785d40000b0290142440bfcd7mr2754055pfn.36.1601016863314; 
+ Thu, 24 Sep 2020 23:54:23 -0700 (PDT)
+Received: from ikjn-p920.tpe.corp.google.com
+ ([2401:fa00:1:10:f693:9fff:fef4:a8fc])
+ by smtp.gmail.com with ESMTPSA id x27sm1549612pfp.128.2020.09.24.23.54.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Sep 2020 23:54:22 -0700 (PDT)
+From: Ikjoon Jang <ikjn@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
+ devicetree@vger.kernel.org, linux-spi@vger.kernel.org,
+ linux-mtd@lists.infradead.org
+Subject: [PATCH v3 0/6] spi: spi-mtk-nor: Add mt8192 support
+Date: Fri, 25 Sep 2020 14:54:11 +0800
+Message-Id: <20200925065418.1077472-1-ikjn@chromium.org>
+X-Mailer: git-send-email 2.28.0.681.g6f77f65b4e-goog
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DBA42CFD313BE9F3C341867BCE3F1BEB4D06B6C3B352AA49DEBF0F0E6201FE382000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_023123_747219_5214DC20 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20200925_025426_916397_9238C468 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,94 +93,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Florian Fainelli <f.fainelli@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Al Cooper <alcooperx@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Chunfeng
- Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org,
- Sasi Kumar <sasi.kumar@broadcom.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- Nathan Chancellor <natechancellor@gmail.com>,
+Cc: linux-kernel@vger.kernel.org, Bayi Cheng <bayi.cheng@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chuanhong Guo <gch981213@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add () around macro argument to avoid precedence issues
+This patchset adds 36bit dma address and power management
+supports for mt8192-nor.
 
-Cc: Florian Fainelli <f.fainelli@gmail.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Acked-by: Florian Fainelli <f.fainelli@gmail.com>
----
-v3: add acked-by Florian
+Changes in v3:
+- Fix a bugfix of v2 in checking spi memory operation.
+- split read_dma function into two (normal/bounce)
+- Support 7bytes generic spi xfer
 
-v2: add Cc Florian
----
- drivers/usb/gadget/udc/bdc/bdc.h | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+Changes in v2:
+- Add power management support
+- Fix bugs in checking spi memory operation.
+- use dma_alloc_coherent for allocating bounce buffer
+- code cleanups
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
-index 658abef..f8d5958 100644
---- a/drivers/usb/gadget/udc/bdc/bdc.h
-+++ b/drivers/usb/gadget/udc/bdc/bdc.h
-@@ -86,20 +86,20 @@
- #define BDC_EPSTS5	0x74
- #define BDC_EPSTS6	0x78
- #define BDC_EPSTS7	0x7c
--#define BDC_SRRBAL(n)	(0x200 + (n * 0x10))
--#define BDC_SRRBAH(n)	(0x204 + (n * 0x10))
--#define BDC_SRRINT(n)	(0x208 + (n * 0x10))
--#define BDC_INTCTLS(n)	(0x20c + (n * 0x10))
-+#define BDC_SRRBAL(n)	(0x200 + ((n) * 0x10))
-+#define BDC_SRRBAH(n)	(0x204 + ((n) * 0x10))
-+#define BDC_SRRINT(n)	(0x208 + ((n) * 0x10))
-+#define BDC_INTCTLS(n)	(0x20c + ((n) * 0x10))
- 
- /* Extended capability regs */
- #define BDC_FSCNOC	0xcd4
- #define BDC_FSCNIC	0xce4
--#define NUM_NCS(p)	(p >> 28)
-+#define NUM_NCS(p)	((p) >> 28)
- 
- /* Register bit fields and Masks */
- /* BDC Configuration 0 */
- #define BDC_PGS(p)	(((p) & (0x7 << 8)) >> 8)
--#define BDC_SPB(p)	(p & 0x7)
-+#define BDC_SPB(p)	((p) & 0x7)
- 
- /* BDC Capability1 */
- #define BDC_P64		(1 << 0)
-@@ -113,7 +113,7 @@
- #define BDC_CMD_DVC	0x1
- #define BDC_CMD_CWS		(0x1 << 5)
- #define BDC_CMD_CST(p)		(((p) & (0xf << 6))>>6)
--#define BDC_CMD_EPN(p)		((p & 0x1f) << 10)
-+#define BDC_CMD_EPN(p)		(((p) & 0x1f) << 10)
- #define BDC_SUB_CMD_ADD		(0x1 << 17)
- #define BDC_SUB_CMD_FWK		(0x4 << 17)
- /* Reset sequence number */
-@@ -163,7 +163,7 @@
- #define BDC_SPEED_HS	0x3
- #define BDC_SPEED_SS	0x4
- 
--#define BDC_PST(p)	(p & 0xf)
-+#define BDC_PST(p)	((p) & 0xf)
- #define BDC_PST_MASK	0xf
- 
- /* USPPMS */
-@@ -228,7 +228,7 @@
- /* status report defines */
- #define SR_XSF		0
- #define SR_USPC		4
--#define SR_BD_LEN(p)    (p & 0xffffff)
-+#define SR_BD_LEN(p)    ((p) & 0xffffff)
- 
- #define XSF_SUCC	0x1
- #define XSF_SHORT	0x3
+Ikjoon Jang (6):
+  dt-bindings: spi: add mt8192-nor compatible string
+  spi: spi-mtk-nor: fix mishandled logics in checking SPI memory
+    operation
+  spi: spi-mtk-nor: support 7 bytes transfer of generic spi
+  spi: spi-mtk-nor: use dma_alloc_coherent() for bounce buffer
+  spi: spi-mtk-nor: support 36bit dma addressing
+  spi: spi-mtk-nor: Add power management support
+
+ .../bindings/spi/mediatek,spi-mtk-nor.yaml    |   1 +
+ drivers/spi/spi-mtk-nor.c                     | 333 ++++++++++++------
+ 2 files changed, 230 insertions(+), 104 deletions(-)
+
 -- 
-1.9.1
+2.28.0.681.g6f77f65b4e-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
