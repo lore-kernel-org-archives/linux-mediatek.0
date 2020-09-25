@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,
 	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45F14C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 15:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C577BC4727D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 15:37:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9C13207C4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 15:35:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6BA0C20809
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 15:37:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DFQTVUSQ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="EMwOyfPZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9C13207C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EU2wc7OJ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RAcWeLzu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6BA0C20809
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,63 +27,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:From:To:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=madUI5b91DsCQ0PszIsHvMi+gm/HuBG66vddIude268=; b=DFQTVUSQXq9IiV+gFaKVYqg3QB
-	cDHEnhzcnu0x0bzkV7BrNHllaUaLoObgUPGtraIc+RfW5kx6tBgxlbXn9/fYyw5W4HTY0aYyK3Ct3
-	8vbZvEf+5VVzYGTW4iwyqmQ0Td3qyku6lSxsUe69kmN9GALkpag6aKAG8NbEz91+mPiTzySPy0IUl
-	d21HvJ2MBIEI4XTWdMnyI077/d8LXOduAx/92BsL5M2L2VqAXd0bwagSL/pNYKcmdwQj+KZK7dGyw
-	W7asqfAOQkOCJjpHouAxjUrmAx+56s4Hm3ZLrQc05dP/TPoQm6BcpOWzxCsUQ49+sBOuw14yawbLQ
-	HBw78W1g==;
+	bh=juz86B9/1wFW6KSQGaVp//YO2+l0MqxHSRlhs0T5Y1I=; b=EU2wc7OJeyIHmD6IH0yH3rDz+d
+	lOPTtxWe89VodJdyTz9UOAfo67Od5SZz9jTaxAFDKVvSSzztIYPgse2hV2f0I7QQwLOSpCjtNGU8a
+	RapAnqExA6E0KmKdSYzna9P/pYsFj2JOSNoqBvRryNB3X+Isy7Y0u/WIfIAZiWEsVu+34g+F0tNa9
+	bfQNorC0nfqF4wb3PsePQMXiXdyWuhU6hWxzqv7F5OS4FaaULsOxh2ad1dKXipFA/7IkamCd70S6M
+	fnP+ZdyusnbIE/9ruqN+vNyqAtlaGVcFb9woSeEKETDUhcsVpMhgiAnrPhnIQ6Dfjo4Uh1Cxo2BbG
+	tXlDvk3A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLpl3-0000HC-L7; Fri, 25 Sep 2020 15:35:37 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1kLpms-0000Zb-VF; Fri, 25 Sep 2020 15:37:31 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLpl1-0000Gh-KX; Fri, 25 Sep 2020 15:35:36 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id w5so4045471wrp.8;
- Fri, 25 Sep 2020 08:35:35 -0700 (PDT)
+ id 1kLpmq-0000Yq-TI; Fri, 25 Sep 2020 15:37:29 +0000
+Received: by mail-wr1-x442.google.com with SMTP id t10so4112022wrv.1;
+ Fri, 25 Sep 2020 08:37:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=to:cc:from:subject:message-id:date:user-agent:mime-version
  :content-language:content-transfer-encoding;
- bh=fR4OUzcp/AbSIqM40lfYJhRkwaH8Odg0wUiH4CipqEc=;
- b=EMwOyfPZeKmGcC9rciOSZe/IFK3jbViP/SUrZvbXmGjyVbvL+S4rJ4HlMjpFi2zFwt
- 2PfaT5kDpHZQXAaIYj89WbthkRF1ujlkf6rd1OFEv3SZUHr+4aYWNrolylKAlatpPE5F
- Abntk9KQ9XX8fcqIY4qfRRMLU+cjefw/mlz+5nz/XctkDJhLvEQt9MKlOPJgVSNR8fnP
- 1fCniSRZs/O4ewSmmdy+D8oO101WWir/S4dcnuenJ3IR7UjiEpgUPMdj3xw2xE6CqYhw
- EgrYUa9skuVE2bMKZwDsgAmziwylvI8MXxP6+r0Xs9XDIaV5x29qURtu8XPxsEbHGiAx
- ejpA==
+ bh=Sk80hMWOWitD5chg4s3k0usNJ5TIluhuy8Zau0uX8+Y=;
+ b=RAcWeLzuTFAnoEcfLDkpwAUjKY0xN5Fk4HCsY97o4eRbMQ2VpxsGL+N+q9uFkl+4F4
+ Ps5ZOfwE7f64AHTKHIeVhyon8R1MF/Q+K7JQCOlnAhfwNEnYEsdv9lVpFuYLxmGRYs+I
+ zGdMd/5CHG4EQ9AZ3zoMiHFv9XN9n3b7jF3iSu8NTYu5jer+TSGa64SrjCOHLZMkL4cG
+ 7pFmDZijsMUjLOsniv+OuOef+RVdUXKtNIbmbMEGNqmsCfCRqPuIU9qvLvNa9ViNutIy
+ jUuZDSJw4cceBCYPMuisyl0QCAmlRGtpYkNNzLAFzUEICR6jariZSRLXcaOiVSfD2+LG
+ Mqjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=fR4OUzcp/AbSIqM40lfYJhRkwaH8Odg0wUiH4CipqEc=;
- b=VdWdtFCPyZzUfc2c7hBR04/GS4qkLh1bRqCCus/QT2cS6XjHBmD2l2Fdo5wG31LHAQ
- Mh/01QIm8Nj7B/qmoJtKuPTrD6IXV1KLwlJPgwBlQsBGQdjG5XyXg1Mh+WCUeWr6Gd7u
- acmlMRCDU1G496+7A5s0Tho/RS/VpfDyJ3kNqZ5W45PQOTb2rbidYfELPkXBWgyVoxz+
- T4viMXalWsGBislokpEvD6DytliaY9rHQNN1r0JcAQeryoDPOjSFEwx6rWpJ55pDlF+R
- 7DDUtKi8Ko9H78UAM/NMnidQUq4c/gT8JXZtRXcOylGDDJYdghPG8fKZ2/3XLKkR5Fi5
- OVnQ==
-X-Gm-Message-State: AOAM532KcXFa9SyJtvqhe8rSRhe3py0NBPL1eVv1G2E73DaWpVCnTlC8
- 7IzXr5mZSnX3o42H/7RRYRw=
-X-Google-Smtp-Source: ABdhPJxVwdI2pPwKcNS4o4af8NAJ4udNcGDtwVh4x2HvlkUX/MSRLZ3pr1RgvLoyAMsb7MmGNxNCKw==
-X-Received: by 2002:adf:ec47:: with SMTP id w7mr5495559wrn.175.1601048134381; 
- Fri, 25 Sep 2020 08:35:34 -0700 (PDT)
+ bh=Sk80hMWOWitD5chg4s3k0usNJ5TIluhuy8Zau0uX8+Y=;
+ b=BMjA9ZWF6lAsHBOSrZckXPOTLKwjzp/eZGsJ/fwCMxurREU2jKpkBCF3C8Ia+TQWX4
+ ZFd0H651ndhNQHyzklYaCYzSVYW7U8AsQu6tfHftzWGIGveD85uTeXm94itlGFX33lcw
+ lIT2uuHjoKie7VoVuisGTUE2s8CcDE50fkj2OjtU60E9TTwIZLmP8mq0RqDz8L3VFKTA
+ ASby58MRmKvaKaorruS32jQrb+CGO54nR8nEquKgnxniN8a++Ar8VmovlBlJqEmJPnE9
+ GnIWPiM4y+5HeYzyHSThesE7F/cmlGpS+1WgwJnPRPfhUYKRXdhn2pSjKCIOgzYOf5Rf
+ sUqA==
+X-Gm-Message-State: AOAM531DH08RgSU+XNZUXvoJFML1bqgn/KO4F1MmIskhAg5p8R6ur7be
+ jSJxLX7qT69g8ShBVusDq2U=
+X-Google-Smtp-Source: ABdhPJz59P/daVaj08q7Dy535LW3mj12Kplf4SPkE2EeuwgLg1pxEV+UwlAtEetlIlYlm5vMH/rQXw==
+X-Received: by 2002:a05:6000:124d:: with SMTP id
+ j13mr5434946wrx.182.1601048247685; 
+ Fri, 25 Sep 2020 08:37:27 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.201])
- by smtp.gmail.com with ESMTPSA id w7sm3248430wrm.92.2020.09.25.08.35.33
+ by smtp.gmail.com with ESMTPSA id t4sm3451929wrr.26.2020.09.25.08.37.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Sep 2020 08:35:33 -0700 (PDT)
+ Fri, 25 Sep 2020 08:37:26 -0700 (PDT)
 List-Id: <soc.lore.kernel.org>
 To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: mediatek: dts64 updates for v5.10
-Message-ID: <1580bc76-b05a-ad29-1854-d2aca657c775@gmail.com>
-Date: Fri, 25 Sep 2020 17:35:32 +0200
+Subject: [GIT PULL] ARM: mediatek: dts32 updates for v5.10
+Message-ID: <641d4d47-b7ad-42dd-f7a8-e028a1f64d70@gmail.com>
+Date: Fri, 25 Sep 2020 17:37:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_113535_674392_B0B1C60D 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20200925_113728_951310_7C58820E 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,22 +96,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Crystal Guo <crystal.guo@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
+Cc: Xia Jiang <xia.jiang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Alex Ryabchenko <d3adme4t@gmail.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Eddie Huang <eddie.huang@mediatek.com>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Olof,
+Hi Arnd,
 
-Please have a look at the following updates for the arm64 device tree files.
+Please have a look at belows DTS updates for 32-bit Arm board from Mediatek.
 
-Thanks,
+Regards,
 Matthias
 
 ---
@@ -122,46 +123,39 @@ The following changes since commit 9123e3a74ec7b934a4a099e98af6a61c2f80bbf5:
 are available in the Git repository at:
 
    https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v5.9-next-dts64
+tags/v5.9-next-dts32
 
-for you to fetch changes up to f866c471542e6dddca2ab971a85ebc54fd3713a4:
+for you to fetch changes up to 36f0a5fc5284838c544218666c63ee8cfa46a9c3:
 
-   arm64: dts: mt8183: update watchdog device node (2020-09-21 18:57:33 +0200)
-
-----------------------------------------------------------------
-mt8173:
-- make nor flash work
-- fix da9211 regulator modes
-
-mt8183:
-- add support for system companion processor
-
-mt8516:
-- set reset gpio for gpio expander in pumpkin board
+   arm: dts: mt7623: add missing pause for switchport (2020-09-21 12:03:52 +0200)
 
 ----------------------------------------------------------------
-Crystal Guo (1):
-       arm64: dts: mt8183: update watchdog device node
+mt2701:
+- add jpeg enconder node
+mt7623:
+- refactor dts and add hdmi support
 
-Dafna Hirschfeld (1):
-       arm64: dts: mt8173-elm: fix supported values for regulator-allowed-modes 
-of da9211
+----------------------------------------------------------------
+Alex Ryabchenko (1):
+       arm: dts: mt7623: add lima related regulator
 
-Eddie Huang (1):
-       arm64: dts: mt8183: add scp node
+Frank Wunderlich (2):
+       arm: dts: mt7623: move display nodes to separate mt7623n.dtsi
+       arm: dts: mt7623: add missing pause for switchport
 
-Hsin-Yi Wang (1):
-       arm64: dts: mt8173: elm: Fix nor_flash node property
+Ryder Lee (1):
+       arm: dts: mt7623: add display subsystem related device nodes
 
-Krzysztof Kozlowski (1):
-       arm64: dts: mediatek: fix tca6416 reset GPIOs in pumpkin
+Xia Jiang (1):
+       arm: dts: mt2701: Add jpeg enc device tree node
 
-  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi     |  9 +++----
-  arch/arm64/boot/dts/mediatek/mt8183-evb.dts      | 11 +++++++++
-  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi   | 30 ++++++++++++++++++++++++
-  arch/arm64/boot/dts/mediatek/mt8183.dtsi         | 15 ++++++++++--
-  arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi |  2 +-
-  5 files changed, 60 insertions(+), 7 deletions(-)
+  arch/arm/boot/dts/mt2701.dtsi                 |  13 ++
+  arch/arm/boot/dts/mt7623.dtsi                 | 123 -----------
+  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  88 +++++++-
+  arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  74 ++++++-
+  arch/arm/boot/dts/mt7623n.dtsi                | 306 ++++++++++++++++++++++++++
+  5 files changed, 478 insertions(+), 126 deletions(-)
+  create mode 100644 arch/arm/boot/dts/mt7623n.dtsi
 
 _______________________________________________
 Linux-mediatek mailing list
