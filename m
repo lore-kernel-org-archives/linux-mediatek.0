@@ -2,23 +2,22 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D4456C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 10:46:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02847C4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 10:56:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C42D21D91
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 10:46:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7146F21D91
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 10:56:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H2flk52z";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cnGHQm7O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C42D21D91
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zgnlyEpR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TWoLkNjQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7146F21D91
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fGO4VoPp3z5tsOu6tcRoHxJ4jXKlajZaof3yG106+jA=; b=H2flk52z8tw9Hyo7eZ17YeSuN
-	1QLcld1Bt1h+ddH1PIpfRv7Plbry6AUnrFJaj4JetzixGs83hObYknrxaExeBMkO8yOXHAbCzsHP6
-	T/x4CEXWtXhtLpYyrGFNkkC71HNc7Ppg4j3j3kJ/zxqfHA+8mqnAh4hK2Ng6zWnfCTJhbyRSzTriT
-	aw0A5LWdssVLvIV7F9tOLh434OkKls9ALkV7VeL7Cl8HealF20trKTbfvx54rwTqzEt8Xr96WeFo6
-	7HYasWp1RUucgHSoM0NrS0XCoS/DYqioVegKL505JK4lTE7DERkhqsvxGzdih78r7gRLnlxynqgkW
-	Unqwh+wDQ==;
+	 bh=2Ett2tQvOZ2iinr93NimQchEXsPAEIcNs6lJ0MZAxG0=; b=zgnlyEpRaBA0psAXMA6dd2sWS
+	iOZhTD+MGxiIeVbBaE760ewAIaDvjfpC3YNvOBIjB9u7auGD905njV3SnVQ0GKh1YLnycai74z/x+
+	5QdERkjejjzTr/ipExVJUfQZ+pOedSYE+2XUdFgoiJgoPNfQYrRYPwbkMbQKyuwjv/oBiH2IBPB+D
+	k4KIiF92U/JZznqFWE3W1cfZpUx2XqDobJgOegqjOiSGFY2mMlWonzJB25JzVnsnmaQSG1VVkkhTF
+	KWqWHoYhHCAEWBuz1YekvhjupOsm4e5sn7/P4aNqE85jd0yCWt6Ic1u6+OU2tISd/4kK9XjBioOq8
+	4RIbfMSBQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLlEx-00006e-SC; Fri, 25 Sep 2020 10:46:11 +0000
+	id 1kLlOa-0000yd-AR; Fri, 25 Sep 2020 10:56:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLlEu-00005l-4U; Fri, 25 Sep 2020 10:46:10 +0000
-X-UUID: 3f808053465742488c2e2b74913b385b-20200925
+ id 1kLlOY-0000xe-10; Fri, 25 Sep 2020 10:56:07 +0000
+X-UUID: 4861cb09f90a410cbc25d24202bfbb8c-20200925
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=UZsNh4QD10TLz1Iiqvz7dEKn/aEbEslEBrTwdubFhe8=; 
- b=cnGHQm7O9Zz684tcwQoBDZcWxrls50g3KKH1jxeBc4s+KK9pmRsQ2TAV2rcfnNwDb9ixFDetGkXt2x8W5PfSe99YPapoFSUevIZc18ZWlUvF8HJnv6tW9c5LV3zqnXQ/OcAXTL3TZIRVsjm8eFxyIUl/vV7YNJ4DqbFZswvd2PY=;
-X-UUID: 3f808053465742488c2e2b74913b385b-20200925
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=QSsY9bGW8QogtB8BuZJoi6P8Bw0CZxSbHu+WA8g8Uzo=; 
+ b=TWoLkNjQMHlV/2mvM+1ozpjNM0gv4MJw+MHWCreeILUfB5/wRevpCOiqLU9A8fkOXarDpLqWq+5g2uGq1WvHejxNpVrCzDXo13PckiUB92xvlmEXnuHUA6mEKF7g73ZUfy3c9wlXAA2at2BIvzsHcvtAcHxZVhEG1MhgkPp5H/k=;
+X-UUID: 4861cb09f90a410cbc25d24202bfbb8c-20200925
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1943429974; Fri, 25 Sep 2020 02:46:03 -0800
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Sep 2020 03:46:01 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkexhb02.mediatek.inc (172.21.101.103) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Sep 2020 18:45:47 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ with ESMTP id 1824756973; Fri, 25 Sep 2020 02:56:02 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Sep 2020 03:56:00 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Sep 2020 18:55:53 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Sep 2020 18:45:46 +0800
-Message-ID: <1601030747.1346.63.camel@mtksdaap41>
-Subject: Re: [PATCH 06/12] soc: mediatek: pm-domains: Add SMI block as bus
- protection block
+ Transport; Fri, 25 Sep 2020 18:55:52 +0800
+Message-ID: <1601031353.1346.71.camel@mtksdaap41>
+Subject: Re: [PATCH 08/12] soc: mediatek: pm-domains: Add subsystem clocks
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Date: Fri, 25 Sep 2020 18:45:47 +0800
-In-Reply-To: <20200910172826.3074357-7-enric.balletbo@collabora.com>
+Date: Fri, 25 Sep 2020 18:55:53 +0800
+In-Reply-To: <20200910172826.3074357-9-enric.balletbo@collabora.com>
 References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
- <20200910172826.3074357-7-enric.balletbo@collabora.com>
+ <20200910172826.3074357-9-enric.balletbo@collabora.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_064608_313591_66CA621B 
-X-CRM114-Status: GOOD (  22.76  )
+X-CRM114-CacheID: sfid-20200925_065606_206389_92771700 
+X-CRM114-Status: GOOD (  26.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,199 +96,199 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, 2020-09-10 at 19:28 +0200, Enric Balletbo i Serra wrote:
 > From: Matthias Brugger <mbrugger@suse.com>
 > 
-> Apart from the infracfg block, the SMI block is used to enable the bus
-> protection for some power domains. Add support for this block.
+> For the bus protection operations, some subsystem clocks need to be enabled
+> before releasing the protection. This patch identifies the subsystem clocks
+> by it's name.
 > 
+> Suggested-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> [Adapted the patch to the mtk-pm-domains driver]
 > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > ---
 > 
->  drivers/soc/mediatek/mtk-pm-domains.c | 64 ++++++++++++++++++++-------
->  include/linux/soc/mediatek/infracfg.h |  6 +++
->  2 files changed, 53 insertions(+), 17 deletions(-)
+>  drivers/soc/mediatek/mtk-pm-domains.c | 82 +++++++++++++++++++++++----
+>  1 file changed, 70 insertions(+), 12 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index f609c2d454fa..3aa430a60602 100644
+> index 0802eccc3a0b..52a93a87e313 100644
 > --- a/drivers/soc/mediatek/mtk-pm-domains.c
 > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -56,8 +56,25 @@
->  
->  #define SPM_MAX_BUS_PROT_DATA		3
->  
-> +#define _BUS_PROT(_mask, _set, _clr, _sta, _update) {	\
-> +		.bus_prot_mask = (_mask),		\
-> +		.bus_prot_set = _set,			\
-> +		.bus_prot_clr = _clr,			\
-> +		.bus_prot_sta = _sta,			\
-> +		.bus_prot_reg_update = _update,		\
-> +	}
-> +
-> +#define BUS_PROT_WR(_mask, _set, _clr, _sta)		\
-> +		_BUS_PROT(_mask, _set, _clr, _sta, false)
-> +
-> +#define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
-> +		_BUS_PROT(_mask, _set, _clr, _sta, true)
-> +
->  struct scpsys_bus_prot_data {
->  	u32 bus_prot_mask;
-> +	u32 bus_prot_set;
-> +	u32 bus_prot_clr;
-> +	u32 bus_prot_sta;
+> @@ -3,6 +3,7 @@
+>   * Copyright (c) 2020 Collabora Ltd.
+>   */
+>  #include <linux/clk.h>
+> +#include <linux/clk-provider.h>
+>  #include <linux/init.h>
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+> @@ -81,6 +82,8 @@ struct scpsys_bus_prot_data {
 >  	bool bus_prot_reg_update;
 >  };
 >  
-> @@ -69,6 +86,7 @@ struct scpsys_bus_prot_data {
->   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
->   * @caps: The flag for active wake-up action.
->   * @bp_infracfg: bus protection for infracfg subsystem
-> + * @bp_smi: bus protection for smi subsystem
->   */
->  struct scpsys_domain_data {
->  	u32 sta_mask;
-> @@ -77,6 +95,7 @@ struct scpsys_domain_data {
->  	u32 sram_pdn_ack_bits;
->  	u8 caps;
->  	const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
-> +	const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
->  };
->  
->  struct scpsys_domain {
-> @@ -86,6 +105,7 @@ struct scpsys_domain {
+> +#define MAX_SUBSYS_CLKS 10
+> +
+>  /**
+>   * struct scpsys_domain_data - scp domain data for power on/off flow
+>   * @sta_mask: The mask for power on/off status bit.
+> @@ -107,6 +110,8 @@ struct scpsys_domain {
+>  	struct scpsys *scpsys;
 >  	int num_clks;
 >  	struct clk_bulk_data *clks;
+> +	int num_subsys_clks;
+> +	struct clk_bulk_data *subsys_clks;
 >  	struct regmap *infracfg;
-> +	struct regmap *smi;
+>  	struct regmap *smi;
 >  };
+> @@ -309,16 +314,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  	val |= PWR_RST_B_BIT;
+>  	writel(val, ctl_addr);
 >  
->  struct scpsys_soc_data {
-> @@ -173,9 +193,9 @@ static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, st
->  		if (bpd[i].bus_prot_reg_update)
->  			regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, mask);
->  		else
-> -			regmap_write(regmap, INFRA_TOPAXI_PROTECTEN_SET, mask);
-> +			regmap_write(regmap, bpd[i].bus_prot_set, mask);
->  
-
-Could it be?
-
-if (bpd[i].bus_prot_set)
-	regmap_write(regmap, bpd[i].bus_prot_set, mask);
-else
-	regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, mask);
-
-> -		ret = regmap_read_poll_timeout(regmap, INFRA_TOPAXI_PROTECTSTA1,
-> +		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
->  					       val, (val & mask) == mask,
->  					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->  		if (ret)
-> @@ -191,7 +211,11 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
->  	int ret;
->  
->  	ret = _scpsys_bus_protect_enable(bpd, pd->infracfg);
-> -	return ret;
+> +	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
 > +	if (ret)
-> +		return ret;
+> +		goto err_pwr_ack;
 > +
-> +	bpd = pd->data->bp_smi;
-> +	return _scpsys_bus_protect_enable(bpd, pd->smi);
->  }
+>  	ret = scpsys_sram_enable(pd, ctl_addr);
+>  	if (ret < 0)
+> -		goto err_pwr_ack;
+> +		goto err_sram;
 >  
->  static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
-> @@ -206,11 +230,11 @@ static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
->  			return 0;
+>  	ret = scpsys_bus_protect_disable(pd);
+>  	if (ret < 0)
+> -		goto err_pwr_ack;
+> +		goto err_sram;
 >  
->  		if (bpd[i].bus_prot_reg_update)
-
-ditto.
-
-> -			regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, 0);
-> +			regmap_update_bits(regmap, bpd[i].bus_prot_set, mask, 0);
->  		else
-> -			regmap_write(regmap, INFRA_TOPAXI_PROTECTEN_CLR, mask);
-> +			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+>  	return 0;
 >  
-> -		ret = regmap_read_poll_timeout(regmap, INFRA_TOPAXI_PROTECTSTA1,
-> +		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
->  					       val, !(val & mask),
->  					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->  		if (ret)
-> @@ -226,7 +250,11 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
->  	int ret;
+> +err_sram:
+> +	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
+>  err_pwr_ack:
+>  	clk_bulk_disable(pd->num_clks, pd->clks);
+>  	dev_err(scpsys->dev, "Failed to power on domain %s\n", genpd->name);
+> @@ -342,6 +353,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>  	if (ret < 0)
+>  		return ret;
 >  
->  	ret = _scpsys_bus_protect_disable(bpd, pd->infracfg);
-> -	return ret;
-> +	if (ret)
-> +		return ret;
+> +	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
 > +
-> +	bpd = pd->data->bp_smi;
-> +	return _scpsys_bus_protect_disable(bpd, pd->smi);
-
-It should have a reverse order compared to the enable control. But I'd
-like to make it more flexible to any sequence, like INFRA->SMI->INFRA
-
->  }
+>  	/* subsys power off */
+>  	val = readl(ctl_addr);
+>  	val |= PWR_ISO_BIT;
+> @@ -374,8 +387,11 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
+>  {
+>  	const struct scpsys_domain_data *domain_data;
+>  	struct scpsys_domain *pd;
+> -	int i, ret;
+> +	int i, ret, num_clks;
+>  	u32 id;
+> +	int clk_ind = 0;
+> +	struct property *prop;
+> +	const char *clk_name;
 >  
->  static int scpsys_power_on(struct generic_pm_domain *genpd)
-> @@ -360,6 +388,10 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
->  	if (IS_ERR(pd->infracfg))
->  		pd->infracfg = NULL;
+>  	ret = of_property_read_u32(node, "reg", &id);
+>  	if (ret) {
+> @@ -410,28 +426,60 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
+>  	if (IS_ERR(pd->smi))
+>  		pd->smi = NULL;
 >  
-> +	pd->smi = syscon_regmap_lookup_by_phandle(node, "mediatek,smi");
-> +	if (IS_ERR(pd->smi))
-> +		pd->smi = NULL;
+> -	pd->num_clks = of_clk_get_parent_count(node);
+> -	if (pd->num_clks > 0) {
+> +	num_clks = of_clk_get_parent_count(node);
+> +	if (num_clks > 0) {
+> +		/* Calculate number of subsys_clks */
+> +		of_property_for_each_string(node, "clock-names", prop, clk_name) {
+> +			char *subsys;
 > +
->  	pd->num_clks = of_clk_get_parent_count(node);
->  	if (pd->num_clks > 0) {
+> +			subsys = strchr(clk_name, '-');
+> +			if (subsys)
+> +				pd->num_subsys_clks++;
+> +			else
+> +				pd->num_clks++;
+> +		}
+> +
+
+In fact, I don't like the clock naming rules, as Matthias mentioned
+before. So in my work v17[1]
+I put subsystem clocks under each power domain sub-node without giving
+the clock name but put the basic clocks under the power controller node.
+
+[1] https://patchwork.kernel.org/patch/11703191/
+
+
 >  		pd->clks = devm_kcalloc(scpsys->dev, pd->num_clks, sizeof(*pd->clks), GFP_KERNEL);
-> @@ -532,10 +564,9 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
->  		.ctl_offs = SPM_DIS_PWR_CON,
->  		.sram_pdn_bits = GENMASK(11, 8),
->  		.sram_pdn_ack_bits = GENMASK(12, 12),
-> -		.bp_infracfg[0] = {
-> -			.bus_prot_reg_update = true,
-> -			.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
-> -				MT8173_TOP_AXI_PROT_EN_MM_M1,
-> +		.bp_infracfg = {
-> +			BUS_PROT_UPDATE_MT8173(MT8173_TOP_AXI_PROT_EN_MM_M0 |
-> +					       MT8173_TOP_AXI_PROT_EN_MM_M1),
->  		},
->  	},
->  	[MT8173_POWER_DOMAIN_VENC_LT] = {
-> @@ -574,12 +605,11 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
->  		.ctl_offs = SPM_MFG_PWR_CON,
->  		.sram_pdn_bits = GENMASK(13, 8),
->  		.sram_pdn_ack_bits = GENMASK(21, 16),
-> -		.bp_infracfg[0] = {
-> -			.bus_prot_reg_update = true,
-> -			.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
-> -				MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-> -				MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> -				MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
-> +		.bp_infracfg = {
-> +			BUS_PROT_UPDATE_MT8173(MT8173_TOP_AXI_PROT_EN_MFG_S |
-> +					       MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-> +					       MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> +					       MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT),
->  		},
->  	},
->  };
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index f967d02cc2ff..3f18cddffb44 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -37,6 +37,12 @@
->  #define INFRA_TOPAXI_PROTECTEN_SET	0x0260
->  #define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
->  
-> +#define BUS_PROT_UPDATE_MT8173(_mask)			\
-> +	BUS_PROT_UPDATE(_mask,				\
-> +			INFRA_TOPAXI_PROTECTEN,		\
-> +			INFRA_TOPAXI_PROTECTEN_CLR,	\
-> +			INFRA_TOPAXI_PROTECTSTA1)
+>  		if (!pd->clks)
+>  			return -ENOMEM;
+> -	} else {
+> -		pd->num_clks = 0;
 > +
->  int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
->  		bool reg_update);
->  int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+> +		pd->subsys_clks = devm_kcalloc(scpsys->dev, pd->num_subsys_clks,
+> +					       sizeof(*pd->subsys_clks), GFP_KERNEL);
+> +		if (!pd->subsys_clks)
+> +			return -ENOMEM;
+>  	}
+>  
+>  	for (i = 0; i < pd->num_clks; i++) {
+> -		pd->clks[i].clk = of_clk_get(node, i);
+> -		if (IS_ERR(pd->clks[i].clk)) {
+> -			ret = PTR_ERR(pd->clks[i].clk);
+> +		struct clk *clk = of_clk_get(node, i);
+> +		if (IS_ERR(clk)) {
+> +			ret = PTR_ERR(clk);
+>  			dev_err(scpsys->dev, "%pOFn: failed to get clk at index %d: %d\n", node, i,
+>  				ret);
+> -			return ret;
+> +			goto err_put_clocks;
+> +		}
+> +
+> +		pd->clks[clk_ind++].clk = clk;
+> +	}
+> +
+> +	for (i = 0; i < pd->num_subsys_clks; i++) {
+> +		struct clk *clk = of_clk_get(node, i + clk_ind);
+> +		if (IS_ERR(clk)) {
+> +			ret = PTR_ERR(clk);
+> +			dev_err(scpsys->dev, "%pOFn: failed to get clk at index %d: %d\n", node,
+> +				i + clk_ind, ret);
+> +			goto err_put_subsys_clocks;
+>  		}
+> +
+> +		pd->subsys_clks[i].clk = clk;
+>  	}
+>  
+> +	ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
+> +	if (ret)
+> +		goto err_put_subsys_clocks;
+> +
+>  	ret = clk_bulk_prepare(pd->num_clks, pd->clks);
+>  	if (ret)
+> -		goto err_put_clocks;
+> +		goto err_unprepare_subsys_clocks;
+>  
+>  	/*
+>  	 * Initially turn on all domains to make the domains usable
+> @@ -456,6 +504,12 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
+>  
+>  err_unprepare_clocks:
+>  	clk_bulk_unprepare(pd->num_clks, pd->clks);
+> +err_unprepare_subsys_clocks:
+> +	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+> +err_put_subsys_clocks:
+> +	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+> +	devm_kfree(scpsys->dev, pd->subsys_clks);
+> +	pd->num_subsys_clks = 0;
+>  err_put_clocks:
+>  	clk_bulk_put(pd->num_clks, pd->clks);
+>  	devm_kfree(scpsys->dev, pd->clks);
+> @@ -537,6 +591,10 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+>  	clk_bulk_unprepare(pd->num_clks, pd->clks);
+>  	clk_bulk_put(pd->num_clks, pd->clks);
+>  	pd->num_clks = 0;
+> +
+> +	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+> +	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+> +	pd->num_subsys_clks = 0;
+>  }
+>  
+>  static void scpsys_domain_cleanup(struct scpsys *scpsys)
 
 _______________________________________________
 Linux-mediatek mailing list
