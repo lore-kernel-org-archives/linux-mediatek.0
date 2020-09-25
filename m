@@ -2,23 +2,24 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9F68C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 07:38:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 476C6C4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 07:48:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F56A23600
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 07:38:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AC7FD206C3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 07:48:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2jCMZUqS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="atpqJKWo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F56A23600
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qY+D3xnh";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MMYmBOUO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC7FD206C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,57 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4ICY4TqStmH+8lRKyKCUDbbjJ00zCEfVRhec7/BT9OE=; b=2jCMZUqSE0DQXoGZ9WiVkaSHx
-	8/CwqZSCnLsamTyT3d4V58KszQrQ7DgwrraNvYGRTE8B73tsvUn5i/XaMVMpf33GB24xf38o4zwCU
-	OzlZ6EWUli+ntqXereyskfzazsSoWrs4TydrCJzti+i9mXxBmJijvAHANCi36kQvZLQtbW7mEXWzP
-	Q6ZF+4dldzcFZYWlWYIvnNxbM2yXQs5MycrkZoyEQ3x0MpFOT2YReEuY5o3v6DUvM53sc+RnE9PCb
-	ez5jhSps8T9Ww003AMDWckUn+ysko/LQjypNo/B8Ga+4wsONx5utuOz6mW1+tvkVMo9amOQPTL+m8
-	BquadE93g==;
+	 bh=ugkYCNfKVOgzlpInOL8xDUM0iQsmNbXR0vfcqKt4XsM=; b=qY+D3xnhPOLdOOkYd54oYuWZS
+	TCX7CeHIV/9sjwazrO37IZIuZNBV+MKqFNELiF4zsMMRv9OT4dU2lrq/j3EIZSQWCxJe7YdxCcCgD
+	I5qtVelWD7tDGpCwEPbCogCLKJy0imSzm6yX97isrvDWM7387+UpsBLNOEa73/DNZAskkdw3/zTjR
+	lJaLP7tGj4//vgOo89up+xXqbEBG6BoLPuuaYT5xL4xkXuTsJgZo5HqfNr3wTbaeQkOG1uR9jgkAS
+	Zz1F05bX0a85j2DREZcnYvvltBNMsLGHXO3X/G6pHQ+fjZwi0bXJQCWUyQZHCC0jY8WCALbQA7W0C
+	lrWnCIDmA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLiJB-0002Uc-ML; Fri, 25 Sep 2020 07:38:21 +0000
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
+	id 1kLiST-0005jL-Pf; Fri, 25 Sep 2020 07:47:57 +0000
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLiIu-0002MN-RY
- for linux-mediatek@lists.infradead.org; Fri, 25 Sep 2020 07:38:07 +0000
-Received: by mail-io1-xd44.google.com with SMTP id z25so1698509iol.10
- for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2020 00:38:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1kLiSJ-0005eo-17; Fri, 25 Sep 2020 07:47:48 +0000
+Received: by mail-il1-x141.google.com with SMTP id h2so1447072ilo.12;
+ Fri, 25 Sep 2020 00:47:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WSlR7yshzs0vfD4qPWNZEu/SYrxh7Zbl3JNQb6YVoEo=;
- b=atpqJKWoZXGRivEFWDBvGz9MrPw2nALn9XkmQ1aWt6UPrX3SDtd+E97cX8Ctn1fkCX
- Ql/+h8Zc7F7Rh65N4MWlxyD9RAFselx5Ek5XVOG0Vrr9KXAygVLpDX2FO+6orc/CONfx
- Brl/TvfshMxqQBtKSiENR81iGijnMtQrgJEK8=
+ :cc; bh=Pw6656Z22S9nYHWwkiLg4SRLNcb2nFCcbc2U+u2zenM=;
+ b=MMYmBOUOFsGO+PUbWtxwr/dFGe4EfE2obPvTc2+It29nDUnNZzPiDvVJk/xeXxxKPu
+ Rz+7lo9dQL6yldsZ9EurIcWDVOipxtEoURayZxD8XL2/zCzuoYcEjLOhzHlFwDJyUDJU
+ V6veUAY3pk+9lQaJ0xBQ/lcXynD+IRlJlcuZmzymiROnGQcZKN5db0uRH2io8iGMFopG
+ nWXp1uvIQif/PzIz+qRP/La9NtUhv6L+yvo7H5q9dN+C1w/8+fEwFyO70y6tWoGvpIrz
+ wTfryd9QeTJmRgMGW7dffwHysPbSo+5E9xGhTgSFRr23XPxXG6kQJz9CG4DWzj5wYT9t
+ UVGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=WSlR7yshzs0vfD4qPWNZEu/SYrxh7Zbl3JNQb6YVoEo=;
- b=OkOiLJN4SxtTMxFItaSTSJikrTf1GtYrakn/OYfGjNUqQdnhGtFWKqTSQ1rkldT3xN
- JoRROOkgE8Gx8gbJIU3IdTJHt0dqdqWg3k8FDhg6v/5WvWVtyLQoccrUcww1ni0j4pPW
- /dw8zbwxNw/Md55FlcKGqitkOSFQk/ekzsdZpdM6FNjJGqqWQZe4n1NUjimrkFJaOPFj
- 1sCz7Lv24lZX4D+cfj5FO8Ku2yWiDlruUEl2NwyVXkzcUFltW9za2ZwTUEwvrkT6fdAr
- /2JhEoog0KFwdSVgTkAujKNi8b/SuTZny9tOZjnlcnn3LFLzIIjxEjG4EaMQAsIi2TbV
- Bg/A==
-X-Gm-Message-State: AOAM531iPwtlAGSYDsFMHUNuYfPCeCj2I5ulJwf6nkmaQEgn3Fx62b9S
- ip0ejG6Dzi7HwWTglG7cENMWFmHvpgRxFjVdQd5uyA==
-X-Google-Smtp-Source: ABdhPJzUHA+P0LdctUDvSxo8BvBlN6E75g98pitS7hCUaG5V1uFkbP3sHz6ED9DkJYz6tkq+TZIbHgnrWSAdYUfHeDo=
-X-Received: by 2002:a6b:6c0c:: with SMTP id a12mr2307062ioh.40.1601019480794; 
- Fri, 25 Sep 2020 00:38:00 -0700 (PDT)
+ bh=Pw6656Z22S9nYHWwkiLg4SRLNcb2nFCcbc2U+u2zenM=;
+ b=snpaCQzdlitUwtl0i2WrGHUi17GrmA44z6l6vqfLoBPJtGf0obFVMmiXGZm3jxxozT
+ snFM4eSlKAPlXf6b9EnLSYSiSdwwAihH65NhuyXTv64RQNt/jDQNX9wyQ7gz37DQCXCf
+ G2ITiaPX460U0nnowFAbqs5HFMdf8jKZg9IRH+a3HZsFwRU57wuQR030Mv2ZGUTGZUm+
+ O2xBQnSgs26YV7WcX0v84f60E654jtmn5g74QPSFIw+XcL5X3sOUJZCcBx1PEgwko5LR
+ g0UBbp2IQatEe/Fi3GI7y3jOyN0mqLZWOZP9TwzUVj1Jyi62ZENk1M999OcAjG+vUu1U
+ s7Ag==
+X-Gm-Message-State: AOAM5323apyR3Np0beIkEnvZAtTrcC+oUneGvxhgDwxp8edyJbZpf897
+ SI+Oxof4pImdT6P8epRiBl9zSH7Ri4gZ5KBoVoc=
+X-Google-Smtp-Source: ABdhPJwVot1rzBOoqbUEKv4CYI45KAcUd02DV308BynBqILl6dHmpS6B7qX5IljDjk9UHtVMMCt/cNWJfDwZBDLFrH4=
+X-Received: by 2002:a92:d07:: with SMTP id 7mr2152934iln.243.1601020063295;
+ Fri, 25 Sep 2020 00:47:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
- <20200910172826.3074357-12-enric.balletbo@collabora.com>
- <730273b4-914a-8a7a-1583-351e6f20df5b@gmail.com>
- <5e1510f4-b0c4-2cff-b3f8-b6715d228149@gmail.com>
-In-Reply-To: <5e1510f4-b0c4-2cff-b3f8-b6715d228149@gmail.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Fri, 25 Sep 2020 15:37:34 +0800
-Message-ID: <CAJMQK-jFwToRxBdVgtHT3wJ970M0NYGu3kLtkGRBDKMMNOHkJw@mail.gmail.com>
-Subject: Re: [PATCH 11/12] soc: mediatek: pm-domains: Add support for mt8183
-To: Matthias Brugger <matthias.bgg@gmail.com>
+References: <20200925065418.1077472-1-ikjn@chromium.org>
+ <20200925145255.v3.3.I7a3fc5678a81654574e8852d920db94bcc4d3eb8@changeid>
+In-Reply-To: <20200925145255.v3.3.I7a3fc5678a81654574e8852d920db94bcc4d3eb8@changeid>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Fri, 25 Sep 2020 15:47:32 +0800
+Message-ID: <CAJsYDV+CEQ2PEOcdP1vadOBOHgW39XNNjPET04uWQktnPHZcFA@mail.gmail.com>
+Subject: Re: [PATCH v3 3/6] spi: spi-mtk-nor: support 7 bytes transfer of
+ generic spi
+To: Ikjoon Jang <ikjn@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_033804_948946_D8D91594 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20200925_034747_082004_8F053C81 
+X-CRM114-Status: GOOD (  29.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,96 +90,244 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, weiyi.lu@mediatek.com,
- lkml <linux-kernel@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <mbrugger@suse.com>,
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-spi@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ "moderated list:ARM/Mediatek SoC support"
  <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 16, 2020 at 8:19 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
->
->
-> On 16/09/2020 11:46, Matthias Brugger wrote:
-> >
-> >
-> > On 10/09/2020 19:28, Enric Balletbo i Serra wrote:
-> >> From: Matthias Brugger <mbrugger@suse.com>
-> >>
-> >> Add the needed board data to support mt8183 SoC.
-> >>
-> >> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> >> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> >> ---
-> >>
-> >>   drivers/soc/mediatek/mtk-pm-domains.c | 162 ++++++++++++++++++++++++++
-> >>   include/linux/soc/mediatek/infracfg.h |  28 +++++
-> >>   2 files changed, 190 insertions(+)
-> >>
-> >> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c
-> >> b/drivers/soc/mediatek/mtk-pm-domains.c
-> >> index 29e88adc8ea6..aa434f616fee 100644
-> >> --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> >> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> > [...]
-> >> +/*
-> >> + * MT8183 power domain support
-> >> + */
-> >> +static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
-> >> +    [MT8183_POWER_DOMAIN_AUDIO] = {
-> >> +        .sta_mask = PWR_STATUS_AUDIO,
-> >> +        .ctl_offs = 0x0314,
-> >> +        .sram_pdn_bits = GENMASK(11, 8),
-> >> +        .sram_pdn_ack_bits = GENMASK(15, 12),
-> >> +    },
-> >> +    [MT8183_POWER_DOMAIN_CONN] = {
-> >> +        .sta_mask = PWR_STATUS_CONN,
-> >> +        .ctl_offs = 0x032c,
-> >> +        .sram_pdn_bits = 0,
-> >> +        .sram_pdn_ack_bits = 0,
-> >> +        .bp_infracfg = {
-> >> +            BUS_PROT_WR(MT8183_TOP_AXI_PROT_EN_CONN, 0x2a0, 0x2a4, 0x228),
-> >
-> > We have repeating values triplets for set, clear and status register in infracfg
-> > and SMI.
-> >
-> > Weiyi can you help to get names to this registers? I wasn't able to find
-> > anything in the datasheet.
->
-> I think for the infracfg part I figured it out:
->
-> #define INFRA_TOPAXI_PROTECTEN_SET      0x2a0
-> #define INFRA_TOPAXI_PROTECTEN_CLR      0x2a4
-> #define INFRA_TOPAXI_PROTECTEN_STA1     0x228
->
-> #define INFRA_TOPAXI_PROTECTEN_1_SET    0x2a8
-> #define INFRA_TOPAXI_PROTECTEN_1_CLR    0x2ac
-> #define INFRA_TOPAXI_PROTECTEN_STA1_1   0x258
->
-> #define INFRA_TOPAXI_PROTECTEN_MCU_SET  0x2d4
-> #define INFRA_TOPAXI_PROTECTEN_MCU_CLR  0x2d8
-> #define INFRA_TOPAXI_PROTECTEN_MM_STA1  0x2ec
->
-> Weiyi, can you still provide the register names for the SMI?
->
-> Thanks in advance!
-> Matthias
->
-Hi Matthias,
+Hi!
 
-SMI names are
-#define SMI_COMMON_CLAMP_EN 0x3c0
-#define SMI_COMMON_CLAMP_EN_SET 0x3c4
-#define SMI_COMMON_CLAMP_EN_CLR 0x3c8
+On Fri, Sep 25, 2020 at 2:55 PM Ikjoon Jang <ikjn@chromium.org> wrote:
+>
+> When mtk-nor fallbacks to generic spi transfers, it can actually
+> transfer up to 7 bytes.
 
-Thanks
+generic transfer_one_message should support full-duplex transfers,
+not transfers with special format requirements. (e.g. here the last
+byte is rx only.) These transfers with format requirements should
+be implemented with spi-mem interface instead.
+
+>
+> This patch fixes adjust_op_size() and supports_op() to explicitly
+> check 7 bytes range and also fixes possible under/overflow conditions
+> in register offsets calculation.
+>
+> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+
+I was notified by Bayi about your discussion and sent some
+patches yesterday for the same purpose. Whoops...
+As transfer_one_message isn't the proper place to implement
+this, maybe we could work on my version instead?
+
+> ---
+>
+> (no changes since v1)
+
+This should be "new patch" not "no changes" :P
+
+
+>
+>  drivers/spi/spi-mtk-nor.c | 102 ++++++++++++++++++++++++++++----------
+>  1 file changed, 76 insertions(+), 26 deletions(-)
+>
+> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+> index 0f7d4ec68730..e7719d249095 100644
+> --- a/drivers/spi/spi-mtk-nor.c
+> +++ b/drivers/spi/spi-mtk-nor.c
+> @@ -79,7 +79,11 @@
+>  #define MTK_NOR_REG_DMA_DADR           0x720
+>  #define MTK_NOR_REG_DMA_END_DADR       0x724
+>
+> +/* maximum bytes of TX in PRG mode */
+>  #define MTK_NOR_PRG_MAX_SIZE           6
+> +/* maximum bytes of TX + RX is 7, last 1 byte is always being sent as zero */
+> +#define MTK_NOR_PRG_MAX_CYCLES         7
+> +
+>  // Reading DMA src/dst addresses have to be 16-byte aligned
+>  #define MTK_NOR_DMA_ALIGN              16
+>  #define MTK_NOR_DMA_ALIGN_MASK         (MTK_NOR_DMA_ALIGN - 1)
+> @@ -167,6 +171,24 @@ static bool mtk_nor_match_read(const struct spi_mem_op *op)
+>         return false;
+>  }
+>
+> +static bool mtk_nor_check_prg(const struct spi_mem_op *op)
+> +{
+> +       size_t len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> +
+> +       if (len > MTK_NOR_PRG_MAX_SIZE)
+> +               return false;
+> +
+> +       if (!op->data.nbytes)
+> +               return true;
+> +
+> +       if (op->data.dir == SPI_MEM_DATA_OUT)
+> +               return ((len + op->data.nbytes) <= MTK_NOR_PRG_MAX_SIZE);
+> +       else if (op->data.dir == SPI_MEM_DATA_IN)
+> +               return ((len + op->data.nbytes) <= MTK_NOR_PRG_MAX_CYCLES);
+> +       else
+> +               return true;
+> +}
+> +
+>  static int mtk_nor_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
+>  {
+>         size_t len;
+> @@ -195,10 +217,22 @@ static int mtk_nor_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
+>                 }
+>         }
+>
+> -       len = MTK_NOR_PRG_MAX_SIZE - op->cmd.nbytes - op->addr.nbytes -
+> -             op->dummy.nbytes;
+> -       if (op->data.nbytes > len)
+> -               op->data.nbytes = len;
+> +       if (mtk_nor_check_prg(op))
+> +               return 0;
+> +
+> +       len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> +
+> +       if (op->data.dir == SPI_MEM_DATA_OUT) {
+> +               if (len == MTK_NOR_PRG_MAX_SIZE)
+> +                       return -EINVAL;
+> +               op->data.nbytes = min_t(unsigned int, op->data.nbytes,
+> +                                       MTK_NOR_PRG_MAX_SIZE - len);
+> +       } else  {
+> +               if (len == MTK_NOR_PRG_MAX_CYCLES)
+> +                       return -EINVAL;
+> +               op->data.nbytes = min_t(unsigned int, op->data.nbytes,
+> +                                       MTK_NOR_PRG_MAX_CYCLES - len);
+> +       }
+>
+>         return 0;
+>  }
+> @@ -206,8 +240,6 @@ static int mtk_nor_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
+>  static bool mtk_nor_supports_op(struct spi_mem *mem,
+>                                 const struct spi_mem_op *op)
+>  {
+> -       size_t len;
+> -
+>         if (op->cmd.buswidth != 1)
+>                 return false;
+>
+> @@ -223,12 +255,11 @@ static bool mtk_nor_supports_op(struct spi_mem *mem,
+>                                (op->data.buswidth == 1);
+>         }
+>
+> -       len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> -       if ((len > MTK_NOR_PRG_MAX_SIZE) ||
+> -           ((op->data.nbytes) && (len == MTK_NOR_PRG_MAX_SIZE)))
+> +       /* fallback to generic spi xfer */
+> +       if (op->cmd.buswidth > 1 || op->addr.buswidth > 1 || op->data.buswidth > 1)
+>                 return false;
+
+Rejecting an op in supports_op doesn't tell it to fall back to generic
+spi transfer.
+It instead tells caller to abort this transfer completely.
+A fallback only happens when exec_op returns -ENOTSUPP.
+This comment is incorrect. I'd put this buswidth checking in mtk_nor_check_prg
+instead because mtk_nor_check_prg is checking whether an op is supported
+by prg mode, thus it should reject ops with buswidth > 1.
+
+>
+> -       return true;
+> +       return mtk_nor_check_prg(op);
+>  }
+>
+>  static void mtk_nor_setup_bus(struct mtk_nor *sp, const struct spi_mem_op *op)
+> @@ -459,22 +490,36 @@ static int mtk_nor_transfer_one_message(struct spi_controller *master,
+>         int stat = 0;
+>         int reg_offset = MTK_NOR_REG_PRGDATA_MAX;
+>         void __iomem *reg;
+> -       const u8 *txbuf;
+> -       u8 *rxbuf;
+> -       int i;
+> +       int i, tx_len = 0, rx_len = 0;
+>
+>         list_for_each_entry(t, &m->transfers, transfer_list) {
+> -               txbuf = t->tx_buf;
+> -               for (i = 0; i < t->len; i++, reg_offset--) {
+> +               const u8 *txbuf = t->tx_buf;
+> +
+> +               if (!txbuf) {
+> +                       rx_len += t->len;
+> +                       continue;
+> +               }
+> +
+> +               if (rx_len) {
+> +                       stat = -EPROTO;
+> +                       goto msg_done;
+> +               }
+
+NACK. you are unnecessarily rejecting possible transfers.
+
+> +
+> +               for (i = 0; i < t->len && reg_offset >= 0; i++, reg_offset--) {
+>                         reg = sp->base + MTK_NOR_REG_PRGDATA(reg_offset);
+> -                       if (txbuf)
+> -                               writeb(txbuf[i], reg);
+> -                       else
+> -                               writeb(0, reg);
+> +                       writeb(txbuf[i], reg);
+> +                       tx_len++;
+
+According to SPI standard, during a rx transfer, tx should be kept low.
+These PROGDATA registers doesn't clear itself so it'll keep sending
+data from last transfer, which violates this rule. That's
+why the original code writes 0 to PRGDATA for rx bytes.
+
+>                 }
+> -               trx_len += t->len;
+>         }
+>
+> +       while (reg_offset >= 0) {
+> +               writeb(0, sp->base + MTK_NOR_REG_PRGDATA(reg_offset));
+> +               reg_offset--;
+> +       }
+> +
+> +       rx_len = min_t(unsigned long, MTK_NOR_PRG_MAX_CYCLES - tx_len, rx_len);
+> +       trx_len = tx_len + rx_len;
+> +
+>         writel(trx_len * BITS_PER_BYTE, sp->base + MTK_NOR_REG_PRG_CNT);
+>
+>         stat = mtk_nor_cmd_exec(sp, MTK_NOR_CMD_PROGRAM,
+> @@ -482,13 +527,18 @@ static int mtk_nor_transfer_one_message(struct spi_controller *master,
+>         if (stat < 0)
+>                 goto msg_done;
+>
+> -       reg_offset = trx_len - 1;
+> -       list_for_each_entry(t, &m->transfers, transfer_list) {
+> -               rxbuf = t->rx_buf;
+> -               for (i = 0; i < t->len; i++, reg_offset--) {
+> -                       reg = sp->base + MTK_NOR_REG_SHIFT(reg_offset);
+> -                       if (rxbuf)
+> +       if (rx_len > 0) {
+> +               reg_offset = rx_len - 1;
+> +               list_for_each_entry(t, &m->transfers, transfer_list) {
+> +                       u8 *rxbuf = t->rx_buf;
+> +
+> +                       if (!rxbuf)
+> +                               continue;
+> +
+> +                       for (i = 0; i < t->len && reg_offset >= 0; i++, reg_offset--) {
+> +                               reg = sp->base + MTK_NOR_REG_SHIFT(reg_offset);
+>                                 rxbuf[i] = readb(reg);
+> +                       }
+
+I think this is replacing original code with some equivalent ones, which
+seems unnecessary.
+
+>                 }
+>         }
+>
+-- 
+Regards,
+Chuanhong Guo
 
 _______________________________________________
 Linux-mediatek mailing list
