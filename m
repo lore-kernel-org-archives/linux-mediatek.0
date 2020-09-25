@@ -2,23 +2,22 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 557AEC4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 936F5C4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D4E1E21D7F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1A6B721D7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 06:24:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BPi8w0Bl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="E6Nk/TBR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4E1E21D7F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YWIPyQjy";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="YhVJzYQY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A6B721D7F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yWlxz/RJQXdWj1V2FmRoGEEwD5SQqPcIABLzqLyTDWk=; b=BPi8w0Bla51Thb1Q4JbHHbl3b
-	k3y17bNC3LkeC2QkJn5VHoWq7xCR31Y1MRWfrF0n0oBduigxcPiOy4wfBNOgdA0eEfSRV3RbneRoU
-	XG5/D5W39QEvtHIiW0cRLL1CbdKfZElY+i7NiYyIGiM3xF4BbRI3RZdqtdQh6iwhqNsGfJJvRxzBj
-	kKeKhpHWDX5cH7vQVNfq+wEp9vyCYGdy+EHbQWWhVJ6nUte98E3/UCed7mYcdyUifqVR1k602gVIE
-	J35GwXVanxNaiyE9ENJMVpBWLgegfXEJgx5xNi4KSZagZ7ySglVCh0ysVUQvhLRJq99Bn0AjSU7dc
-	6SW8inDIw==;
+	 bh=ZW25dEXXIX21oIxEVFpn4naLp8ebmWkgfKFOULgwBsI=; b=YWIPyQjy5iodAvgAUjlDbZ/kM
+	1O4dXQDtWb4ga6ECG5dv+ZVpRXRX9CMA35OUDxy7k7x6k1so6Mf3DvRIYlkybiqOqIEdQArxfGnvX
+	4MLos27kNQXJ75pfON1XBJn2oBlSqtr+9OpMwZIl/ax/5kwmxFHUoNKawuqcOk6msZFN9FdrsLnkK
+	8g+FRR3i+Zy/UCJfWMYrfYHKlnhkNrVtVSdPukCo/uDs8WfvvXbShIA6pNShkM2nNXLPOQnZkeeKw
+	d+T7iFVYQ6rsGQOwN3k0FqUZ39B7GL119K6u4knJQksqIXQ1z7SwWk6+uCiQCaXsl3YbFEyF4doaS
+	MMt4nEt+g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLh9U-00056n-WA; Fri, 25 Sep 2020 06:24:17 +0000
+	id 1kLh9l-0005GX-2s; Fri, 25 Sep 2020 06:24:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLh8r-0004mm-04; Fri, 25 Sep 2020 06:23:39 +0000
-X-UUID: 65412b72aa5248f6ae80baaac8270937-20200924
+ id 1kLh8s-0004mp-Q5; Fri, 25 Sep 2020 06:23:40 +0000
+X-UUID: 1e054c094fce44e19816201f290ce37c-20200924
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=J09/ppv3Mp9lk0ZGls1DAJ41huUFxCX+8alok/RSIXM=; 
- b=E6Nk/TBRU5WKsFq1O+NzVUoq3bLBO+ZtN89hTtwRctuZe2DmRcW/3DhinwLY/dKSp+4/YYP+bn53q2kGxSjRiOK8Su4ajxspMfQPOQkwwRMcSnYw+UDaL29sYMSpTUiWsEaRzhscC2ztBZjq8PeUVuq7vl1ak8ppQXTANQBusoM=;
-X-UUID: 65412b72aa5248f6ae80baaac8270937-20200924
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=kYSGke9KlqBn4Imn3VxXZ1Ao1jgfddQziSV2EmrSBz4=; 
+ b=YhVJzYQYxX7sBncotHnO/bhj1HsRJqQWXfyHTmVhKT66SptytDjXDEfI2hgfzxTVjy3JWNy9rWdHf9P1Hw+VtE/8yWuHsFC5SnppTy//rQSwj0gxFAk28C6KQWRJ9Ix2Pj/aijMfl8Kke0xkoiIN23DBMvhJOM+WAYQwA0/xGiQ=;
+X-UUID: 1e054c094fce44e19816201f290ce37c-20200924
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1193118147; Thu, 24 Sep 2020 22:23:31 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Sep 2020 23:23:29 -0700
+ with ESMTP id 249429050; Thu, 24 Sep 2020 22:23:33 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Sep 2020 23:23:31 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Sep 2020 14:23:25 +0800
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Sep 2020 14:23:28 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Sep 2020 14:23:26 +0800
+ Transport; Fri, 25 Sep 2020 14:23:29 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>
-Subject: [PATCH V3 RESEND 08/11] usb: gadget: bdc: use the BIT macro to define
- bit filed
-Date: Fri, 25 Sep 2020 14:20:29 +0800
-Message-ID: <1601014832-29726-8-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH V3 RESEND 10/11] usb: gadget: bdc: fix checkpatch.pl spacing
+ error
+Date: Fri, 25 Sep 2020 14:20:31 +0800
+Message-ID: <1601014832-29726-10-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1601014832-29726-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1601014832-29726-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 27F5FFF35415CF315599E06DDA469709E3B50A894CAE949AC197D660064EABDA2000:8
+X-TM-SNTS-SMTP: 59C8D56F5436A71F21A67790EE0C55FB6701AEB7CD6F36843212C265EE2E39D22000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_022337_235680_9E9F1EEE 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20200925_022338_994599_3459E2F1 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,7 +99,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prefer using the BIT macro to define bit fileds
+fix checkpatch.pl error:
+ERROR:SPACING: space prohibited before that ','
 
 Cc: Florian Fainelli <f.fainelli@gmail.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
@@ -110,181 +110,22 @@ v3: add acked-by Florian
 
 v2: add Cc Florian
 ---
- drivers/usb/gadget/udc/bdc/bdc.h | 84 ++++++++++++++++++++--------------------
- 1 file changed, 42 insertions(+), 42 deletions(-)
+ drivers/usb/gadget/udc/bdc/bdc_udc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
-index f8d5958..8d00b12 100644
---- a/drivers/usb/gadget/udc/bdc/bdc.h
-+++ b/drivers/usb/gadget/udc/bdc/bdc.h
-@@ -102,7 +102,7 @@
- #define BDC_SPB(p)	((p) & 0x7)
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_udc.c b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+index 0c1ab95..5ac0ef8 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_udc.c
++++ b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+@@ -530,7 +530,7 @@ int bdc_udc_init(struct bdc *bdc)
  
- /* BDC Capability1 */
--#define BDC_P64		(1 << 0)
-+#define BDC_P64		BIT(0)
- 
- /* BDC Command register */
- #define BDC_CMD_FH	0xe
-@@ -111,7 +111,7 @@
- #define BDC_CMD_BLA	0x3
- #define BDC_CMD_EPC	0x2
- #define BDC_CMD_DVC	0x1
--#define BDC_CMD_CWS		(0x1 << 5)
-+#define BDC_CMD_CWS		BIT(5)
- #define BDC_CMD_CST(p)		(((p) & (0xf << 6))>>6)
- #define BDC_CMD_EPN(p)		(((p) & 0x1f) << 10)
- #define BDC_SUB_CMD_ADD		(0x1 << 17)
-@@ -124,7 +124,7 @@
- #define BDC_SUB_CMD_EP_STP	(0x2 << 17)
- #define BDC_SUB_CMD_EP_STL	(0x4 << 17)
- #define BDC_SUB_CMD_EP_RST	(0x1 << 17)
--#define BDC_CMD_SRD		(1 << 27)
-+#define BDC_CMD_SRD		BIT(27)
- 
- /* CMD completion status */
- #define BDC_CMDS_SUCC	0x1
-@@ -141,19 +141,19 @@
- #define EPM_SHIFT	4
- 
- /* BDC USPSC */
--#define BDC_VBC		(1 << 31)
--#define BDC_PRC		(1 << 30)
--#define BDC_PCE		(1 << 29)
--#define BDC_CFC		(1 << 28)
--#define BDC_PCC		(1 << 27)
--#define BDC_PSC		(1 << 26)
--#define BDC_VBS		(1 << 25)
--#define BDC_PRS		(1 << 24)
--#define BDC_PCS		(1 << 23)
-+#define BDC_VBC		BIT(31)
-+#define BDC_PRC		BIT(30)
-+#define BDC_PCE		BIT(29)
-+#define BDC_CFC		BIT(28)
-+#define BDC_PCC		BIT(27)
-+#define BDC_PSC		BIT(26)
-+#define BDC_VBS		BIT(25)
-+#define BDC_PRS		BIT(24)
-+#define BDC_PCS		BIT(23)
- #define BDC_PSP(p)	(((p) & (0x7 << 20))>>20)
--#define BDC_SCN		(1 << 8)
--#define BDC_SDC		(1 << 7)
--#define BDC_SWS		(1 << 4)
-+#define BDC_SCN		BIT(8)
-+#define BDC_SDC		BIT(7)
-+#define BDC_SWS		BIT(4)
- 
- #define BDC_USPSC_RW	(BDC_SCN|BDC_SDC|BDC_SWS|0xf)
- #define BDC_PSP(p)	(((p) & (0x7 << 20))>>20)
-@@ -167,17 +167,17 @@
- #define BDC_PST_MASK	0xf
- 
- /* USPPMS */
--#define BDC_U2E		(0x1 << 31)
--#define BDC_U1E		(0x1 << 30)
--#define BDC_U2A		(0x1 << 29)
--#define BDC_PORT_W1S	(0x1 << 17)
-+#define BDC_U2E		BIT(31)
-+#define BDC_U1E		BIT(30)
-+#define BDC_U2A		BIT(29)
-+#define BDC_PORT_W1S	BIT(17)
- #define BDC_U1T(p)	((p) & 0xff)
- #define BDC_U2T(p)	(((p) & 0xff) << 8)
- #define BDC_U1T_MASK	0xff
- 
- /* USBPM2 */
- /* Hardware LPM Enable */
--#define BDC_HLE		(1 << 16)
-+#define BDC_HLE		BIT(16)
- 
- /* BDC Status and Control */
- #define BDC_COP_RST	(1 << 29)
-@@ -186,11 +186,11 @@
- 
- #define BDC_COP_MASK (BDC_COP_RST|BDC_COP_RUN|BDC_COP_STP)
- 
--#define BDC_COS		(1 << 28)
-+#define BDC_COS		BIT(28)
- #define BDC_CSTS(p)	(((p) & (0x7 << 20)) >> 20)
--#define BDC_MASK_MCW	(1 << 7)
--#define BDC_GIE		(1 << 1)
--#define BDC_GIP		(1 << 0)
-+#define BDC_MASK_MCW	BIT(7)
-+#define BDC_GIE		BIT(1)
-+#define BDC_GIP		BIT(0)
- 
- #define BDC_HLT	1
- #define BDC_NOR	2
-@@ -201,19 +201,19 @@
- #define BD_CHAIN	0xf
- 
- #define BD_TFS_SHIFT	4
--#define BD_SOT		(1 << 26)
--#define BD_EOT		(1 << 27)
--#define BD_ISP		(1 << 29)
--#define BD_IOC		(1 << 30)
--#define BD_SBF		(1 << 31)
-+#define BD_SOT		BIT(26)
-+#define BD_EOT		BIT(27)
-+#define BD_ISP		BIT(29)
-+#define BD_IOC		BIT(30)
-+#define BD_SBF		BIT(31)
- 
- #define BD_INTR_TARGET(p)	(((p) & 0x1f) << 27)
- 
--#define BDC_SRR_RWS		(1 << 4)
--#define BDC_SRR_RST		(1 << 3)
--#define BDC_SRR_ISR		(1 << 2)
--#define BDC_SRR_IE		(1 << 1)
--#define BDC_SRR_IP		(1 << 0)
-+#define BDC_SRR_RWS		BIT(4)
-+#define BDC_SRR_RST		BIT(3)
-+#define BDC_SRR_ISR		BIT(2)
-+#define BDC_SRR_IE		BIT(1)
-+#define BDC_SRR_IP		BIT(0)
- #define BDC_SRR_EPI(p)	(((p) & (0xff << 24)) >> 24)
- #define BDC_SRR_DPI(p) (((p) & (0xff << 16)) >> 16)
- #define BDC_SRR_DPI_MASK	0x00ff0000
-@@ -221,7 +221,7 @@
- #define MARK_CHAIN_BD	(BD_CHAIN|BD_EOT|BD_SOT)
- 
- /* Control transfer BD specific fields */
--#define BD_DIR_IN		(1 << 25)
-+#define BD_DIR_IN		BIT(25)
- 
- #define BDC_PTC_MASK	0xf0000000
- 
-@@ -241,13 +241,13 @@
- 
- /* Transfer BD fields */
- #define BD_LEN(p) ((p) & 0x1ffff)
--#define BD_LTF		(1 << 25)
-+#define BD_LTF		BIT(25)
- #define BD_TYPE_DS	0x1
- #define BD_TYPE_SS	0x2
- 
--#define BDC_EP_ENABLED     (1 << 0)
--#define BDC_EP_STALL       (1 << 1)
--#define BDC_EP_STOP        (1 << 2)
-+#define BDC_EP_ENABLED     BIT(0)
-+#define BDC_EP_STALL       BIT(1)
-+#define BDC_EP_STOP        BIT(2)
- 
- /* One BD can transfer max 65536 bytes */
- #define BD_MAX_BUFF_SIZE	(1 << 16)
-@@ -266,9 +266,9 @@
- /* FUNCTION WAKE DEV NOTIFICATION interval, USB3 spec table 8.13 */
- #define BDC_TNOTIFY 2500 /*in ms*/
- /* Devstatus bitfields */
--#define REMOTE_WAKEUP_ISSUED	(1 << 16)
--#define DEVICE_SUSPENDED	(1 << 17)
--#define FUNC_WAKE_ISSUED	(1 << 18)
-+#define REMOTE_WAKEUP_ISSUED	BIT(16)
-+#define DEVICE_SUSPENDED	BIT(17)
-+#define FUNC_WAKE_ISSUED	BIT(18)
- #define REMOTE_WAKE_ENABLE	(1 << USB_DEVICE_REMOTE_WAKEUP)
- 
- /* On disconnect, preserve these bits and clear rest */
+ 	bdc->gadget.name = BRCM_BDC_NAME;
+ 	ret = devm_request_irq(bdc->dev, bdc->irq, bdc_udc_interrupt,
+-				IRQF_SHARED , BRCM_BDC_NAME, bdc);
++				IRQF_SHARED, BRCM_BDC_NAME, bdc);
+ 	if (ret) {
+ 		dev_err(bdc->dev,
+ 			"failed to request irq #%d %d\n",
 -- 
 1.9.1
 _______________________________________________
