@@ -2,63 +2,83 @@ Return-Path: <SRS0=ZCae=DC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8E7EC4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 08:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63204C4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 08:22:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5B240207C4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 08:21:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DB4B7207C4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2020 08:22:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NjBbQg7+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B240207C4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q/+VK/Ic";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="c6UN+CI1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB4B7207C4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Gy4jfRWaHNqtkL2uBlJPD5WIzL6Lx5edozFByJVWe34=; b=NjBbQg7+ioicJ/TsZVsaHwq11
-	jlac9W+vDpu6sR9uxF4dxF4RAqMu2JZHiALTJSw6LEY7vF73Ak2ELGLLmVwnerEE0mGHRt4bYvgLs
-	pBYJf5r25Cy3OJe8NQLzfrvPL/PtsZ9JumjoH1tU8dlSafIA6Y4aqjRNZ3yR00rV13WSwBRKI/32d
-	pspxnRVh8asmGixAQAkVy04TN2ggp3KDrdHcXSSdzltHd4AYt77syicmZsJc1VztS4VD5JTb3tezS
-	x6Q/PTDckpsIVYlvEiJJuPdFvoZro8Qcg9Hvdd9ljTL3DGlelFW3Kp4SYP/e/5ldXMlFXwzFLE95/
-	fSiAs8+rQ==;
+	 bh=yrkbZfFtcixKAmtPpunOE8vVb5E3nRHsr/+PnA5/yb0=; b=q/+VK/IcDZNvwSLsnFRMKnCn9
+	wsM/Rs7UpdAP/r9PSmByYo5xGnRr4Dw7hPLodc8I76rDM3wPJnB4uaCKUGrXL91V+eMtwS2OVa73f
+	uShDnIblmPFDUI2f5ExeqVdeyz8dJH3i4TIvfYydhPr3wOQva5Azm3UneSoGEdNL+ko6B8CLXVsJS
+	oIk/DJSuyf+ki9ftxzcjNBEEnzKeij7waWKc8mW2nkD0NOTL8iGYn19LsAYyMl93/FbOJw48dmL/Z
+	3u+wg+ss75QihKBp8Y2aK+AK/xjv3yVPhsNhoJUFobYpr95lTRWc4gdU58QwUo7/ef0vzCdhdietk
+	vi+MT16Rg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLiz1-0002Gk-E0; Fri, 25 Sep 2020 08:21:35 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kLizX-0002Pp-QL; Fri, 25 Sep 2020 08:22:07 +0000
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLiyv-0002F8-C3; Fri, 25 Sep 2020 08:21:30 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 9FD0E29D0E8
-Subject: Re: [PATCH 11/12] soc: mediatek: pm-domains: Add support for mt8183
-To: Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
- <20200910172826.3074357-12-enric.balletbo@collabora.com>
- <730273b4-914a-8a7a-1583-351e6f20df5b@gmail.com>
- <5e1510f4-b0c4-2cff-b3f8-b6715d228149@gmail.com>
- <CAJMQK-jFwToRxBdVgtHT3wJ970M0NYGu3kLtkGRBDKMMNOHkJw@mail.gmail.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <2a52c8e7-59db-9ed9-dd35-fc74738c152d@collabora.com>
-Date: Fri, 25 Sep 2020 10:21:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kLizM-0002Lt-Kc; Fri, 25 Sep 2020 08:21:57 +0000
+Received: by mail-il1-x142.google.com with SMTP id x18so1554163ila.7;
+ Fri, 25 Sep 2020 01:21:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LJvK1S1wM77CEwiTWGHH4blwT2BpBAlEo89Zgh09KOA=;
+ b=c6UN+CI1Fp4uk5RW2Kl5hegia7PgWhtLlM7r1U47nBCKQW72a7A4XRQcXs33oeaDor
+ +Pekks1fUk4lcSdjBfDpJNj8Lb+IWNmLhQGoYiWisLkv3D41VUsroEnfczSCvn93iMA0
+ PdgoNS1YbL/b4ZMuMJFX/1ZXSLFAggeEoX2ktDD9FO+0pwsANqptIRMKFiFYN4KX7qqC
+ WDDJstdvvqNx8NXIKmPnfS63q2GhbEEE1YnuLTkynqPYmELrM+FlCF2ozTVc/6yewcjv
+ uyqAXpyf+XMSyM3oKmVb8hOYgFUVTQTL4LQrVbqn3Y8e3BtJGlXTQ5GVgKq2oCwFpg+W
+ 1DAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LJvK1S1wM77CEwiTWGHH4blwT2BpBAlEo89Zgh09KOA=;
+ b=oBHZdUYOn7jyHGp96kUWnFb8LRKPvZTSMkI6bjoNMV25B50jAPiWv+jcbCW4aaOKrS
+ pfBHR6i045WJhJ7fgv90Rt8jz+RjooUzcmOy7eyGAg912iW5hDH+MV9ClCAHDj6WlN6x
+ WFB6cKDok2tRDKXGB9Q/dkjHN3WrtgG6coF5RsX94KLSMQ4c6wjYLx2tB7U0LptMylt8
+ 0vKrVVatbkfEEng7GEUz9VSAPl5PuXHgjHyXLiYeb9ib3wkw3ZpqtT4BMx2uklLhda0s
+ Qi49u+6vSyotUxP97rmCKw4Bk6U9vWbMZrz4hYWoLFQ0Q0fISlo1vnWYicNItxa4CDwU
+ WDbw==
+X-Gm-Message-State: AOAM5311bSNrsFwCpFaZcCialPtgKXlUlL9C8Hrg7HTC3lD01qpupke1
+ VTIUIY0LgTcw9FG/20vYXlcpKonN+/TqMxR7YDiiWbIqHI0iIQ==
+X-Google-Smtp-Source: ABdhPJxbkPFY03hpX61qBi/nCU+CsJEoNVRZmepsG6KM0Jr4eQ/tgOQDlyETWRPRhaB53PSTYIq/19x3diRibukeHKw=
+X-Received: by 2002:a92:cbcf:: with SMTP id s15mr2378625ilq.39.1601022114691; 
+ Fri, 25 Sep 2020 01:21:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAJMQK-jFwToRxBdVgtHT3wJ970M0NYGu3kLtkGRBDKMMNOHkJw@mail.gmail.com>
-Content-Language: en-US
+References: <20200925065418.1077472-1-ikjn@chromium.org>
+ <20200925145255.v3.4.I06cb65401ab5ad63ea30c4788d26633928d80f38@changeid>
+In-Reply-To: <20200925145255.v3.4.I06cb65401ab5ad63ea30c4788d26633928d80f38@changeid>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Fri, 25 Sep 2020 16:21:43 +0800
+Message-ID: <CAJsYDVLaw_ViJECoX8VxtrhCDg7m-fOZ0XmF1+n9Y13oVgd4oQ@mail.gmail.com>
+Subject: Re: [PATCH v3 4/6] spi: spi-mtk-nor: use dma_alloc_coherent() for
+ bounce buffer
+To: Ikjoon Jang <ikjn@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_042129_504416_70845B22 
-X-CRM114-Status: GOOD (  18.22  )
+X-CRM114-CacheID: sfid-20200925_042156_752455_6EA06508 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,110 +90,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, weiyi.lu@mediatek.com,
- lkml <linux-kernel@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <mbrugger@suse.com>,
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-spi@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Collabora Kernel ML <kernel@collabora.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ "moderated list:ARM/Mediatek SoC support"
  <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hsin-Yi and Matthias,
+Hi!
 
-Hsin-Yi, many thanks to provide the register names.
+On Fri, Sep 25, 2020 at 2:56 PM Ikjoon Jang <ikjn@chromium.org> wrote:
+>
+> Use dma_alloc_coherent() for bounce buffer instead of kmalloc() to
+> make sure the bounce buffer to be allocated within its DMAable range.
 
-On 25/9/20 9:37, Hsin-Yi Wang wrote:
-> On Wed, Sep 16, 2020 at 8:19 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->>
->>
->>
->> On 16/09/2020 11:46, Matthias Brugger wrote:
->>>
->>>
->>> On 10/09/2020 19:28, Enric Balletbo i Serra wrote:
->>>> From: Matthias Brugger <mbrugger@suse.com>
->>>>
->>>> Add the needed board data to support mt8183 SoC.
->>>>
->>>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->>>> ---
->>>>
->>>>   drivers/soc/mediatek/mtk-pm-domains.c | 162 ++++++++++++++++++++++++++
->>>>   include/linux/soc/mediatek/infracfg.h |  28 +++++
->>>>   2 files changed, 190 insertions(+)
->>>>
->>>> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c
->>>> b/drivers/soc/mediatek/mtk-pm-domains.c
->>>> index 29e88adc8ea6..aa434f616fee 100644
->>>> --- a/drivers/soc/mediatek/mtk-pm-domains.c
->>>> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
->>> [...]
->>>> +/*
->>>> + * MT8183 power domain support
->>>> + */
->>>> +static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->>>> +    [MT8183_POWER_DOMAIN_AUDIO] = {
->>>> +        .sta_mask = PWR_STATUS_AUDIO,
->>>> +        .ctl_offs = 0x0314,
->>>> +        .sram_pdn_bits = GENMASK(11, 8),
->>>> +        .sram_pdn_ack_bits = GENMASK(15, 12),
->>>> +    },
->>>> +    [MT8183_POWER_DOMAIN_CONN] = {
->>>> +        .sta_mask = PWR_STATUS_CONN,
->>>> +        .ctl_offs = 0x032c,
->>>> +        .sram_pdn_bits = 0,
->>>> +        .sram_pdn_ack_bits = 0,
->>>> +        .bp_infracfg = {
->>>> +            BUS_PROT_WR(MT8183_TOP_AXI_PROT_EN_CONN, 0x2a0, 0x2a4, 0x228),
->>>
->>> We have repeating values triplets for set, clear and status register in infracfg
->>> and SMI.
->>>
->>> Weiyi can you help to get names to this registers? I wasn't able to find
->>> anything in the datasheet.
->>
->> I think for the infracfg part I figured it out:
->>
->> #define INFRA_TOPAXI_PROTECTEN_SET      0x2a0
->> #define INFRA_TOPAXI_PROTECTEN_CLR      0x2a4
->> #define INFRA_TOPAXI_PROTECTEN_STA1     0x228
->>
->> #define INFRA_TOPAXI_PROTECTEN_1_SET    0x2a8
->> #define INFRA_TOPAXI_PROTECTEN_1_CLR    0x2ac
->> #define INFRA_TOPAXI_PROTECTEN_STA1_1   0x258
->>
->> #define INFRA_TOPAXI_PROTECTEN_MCU_SET  0x2d4
->> #define INFRA_TOPAXI_PROTECTEN_MCU_CLR  0x2d8
->> #define INFRA_TOPAXI_PROTECTEN_MM_STA1  0x2ec
->>
+I think the introduction of need_bounce can be in its own commit or
+at least mentioned here.
 
-I think this is SoC specific, right? So, I should add the MT8183_ prefix.
+>
+> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+>
+> ---
+>
+> (no changes since v1)
 
->> Weiyi, can you still provide the register names for the SMI?
->>
->> Thanks in advance!
->> Matthias
->>
-> Hi Matthias,
-> 
-> SMI names are
-> #define SMI_COMMON_CLAMP_EN 0x3c0
-> #define SMI_COMMON_CLAMP_EN_SET 0x3c4
-> #define SMI_COMMON_CLAMP_EN_CLR 0x3c8
-> 
+ There have been a lot of changes since v2 :)
 
-The same here, this is specific for MT8183, right?
-
-Thanks,
-  Enric
-
-> Thanks
-> 
+Reviewed-by: Chuanhong Guo <gch981213@gmail.com>
+-- 
+Regards,
+Chuanhong Guo
 
 _______________________________________________
 Linux-mediatek mailing list
