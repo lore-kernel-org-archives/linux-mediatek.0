@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FE06C4346E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2020 07:49:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D162CC4346E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2020 07:49:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 828702399C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2020 07:49:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6ECF523977
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2020 07:49:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CO54rfcF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pLnJ4P3c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 828702399C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vIBiuH4f";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eBf3190W"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6ECF523977
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VxUm7S3Oag9DXQObSOZRJTYFFJOQLtEEyFxYRoNA35M=; b=CO54rfcFuxskrI549UW86Iv7S
-	PxXwJGoDPH8zX5xRyL/vstvrxliwCPs+eEqnfxw65T/Gb+J3O1AFtM4noyeGaCAXp4KLJpr9iZ18i
-	GNw1hhXK8OSJ4wmwGKyJpt+EOAt1RqEdOERgyxdCn5id2Q6AevL33ACIDfK7V58pPo9SI+RLJWhc4
-	8n04e/RfRSUSI0VkcW7HWN9zq2W5GD1VHLRnvrDWqHOiUjK6OTrSMaYB2BfSCQgbBIibDXqTFn1KI
-	3Z7lP7M1UC5UXGSdwDZfiZ7Qpxf1rbEqdTzca6jc78Z7RKA0eBhNAYW6giCPliF1AnxFC46bKLUAo
-	+O5Vv8qnA==;
+	 bh=tvDjBJg2uOFm7gG1Z60JUnseS6AHRgoW3qcDLpJcyCM=; b=vIBiuH4faP4xUnKYJFVW8VTGY
+	tocbwrhzUQvy1X9zsCzOLqKGHiSzKUV+tp5j7istc9qmf6+qdUT6SbieZyV0T9QC+evHfmukzW9KP
+	GHDNfub8/gjHc/mK+s2X18lyEVeOWBci2CuRZ954SOcGVz1VaRuD0ItTcc3BoVrFffKweAgEfPQC0
+	+KAtwDFGwK9LGBPYtz+Dn1bRMLDcVe0sI7b4mz0VOxctCkGNk4cyH1U3On3gHiKB9y7j6HqhULJov
+	K3td0ZW1FG8FasZ84iIMOxScjTPJHr8qKUne4DLQW8ni1oWR4Wz0s+cEUy8ymS/NEFuIfMCss9RSG
+	pHL4/DAsQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kMRQV-00044f-Tv; Sun, 27 Sep 2020 07:48:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kMRQf-00047K-PZ; Sun, 27 Sep 2020 07:49:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kMRQP-00041J-Hs; Sun, 27 Sep 2020 07:48:51 +0000
-X-UUID: 4b595df23e3d4876b490316098e79752-20200926
+ id 1kMRQR-000429-4C; Sun, 27 Sep 2020 07:48:52 +0000
+X-UUID: 39a35512aacc4732b53db840d0d8df4f-20200926
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=8P68Afz/ttPvRDRRLqb82ic0H6eAnH0ZNO25vf3BPBg=; 
- b=pLnJ4P3c+GTDaMPLkUfLoo3tR8wjyPWYyE2IMsRqxMopPXPuerBkgB4zNGGfEEQQB+KkH4ylh/0I3VQUvYWAVl5cUZzKbIpreFMtoT5mYAemFFSU4wEe4A/0nsiqNL5LHsFHwcRuCd/qOByhZrUiWanD9YGBEbCOPYpUapRpKNs=;
-X-UUID: 4b595df23e3d4876b490316098e79752-20200926
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=psXz+brn7C+t4owfhvfEvuvTHp/hL3WQtlakmjYKIX4=; 
+ b=eBf3190W5EdltZuEAynaTZWknog+sv9w822OTlup7H07ZTNBRdVvT4FChuik+Zz3L2xYl2MM/yY+2422/lLfqKdvYAcrvdUZd42kcKjCz2RScz7Brurwzd/ndyHscPXRmTA0+Y0hA2U5kzvkZcXzg8xUZr0SVOYAfrkygVUvpj8=;
+X-UUID: 39a35512aacc4732b53db840d0d8df4f-20200926
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 695693604; Sat, 26 Sep 2020 23:48:42 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 2094415658; Sat, 26 Sep 2020 23:48:44 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sun, 27 Sep 2020 00:48:41 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 27 Sep 2020 15:48:28 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 27 Sep 2020 15:48:26 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 27 Sep 2020 15:48:27 +0800
+ Transport; Sun, 27 Sep 2020 15:48:26 +0800
 From: Jianjun Wang <jianjun.wang@mediatek.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
  <ryder.lee@mediatek.com>
-Subject: [v3,2/3] PCI: mediatek: Add new generation controller support
-Date: Sun, 27 Sep 2020 15:45:54 +0800
-Message-ID: <20200927074555.4155-3-jianjun.wang@mediatek.com>
+Subject: [v3,1/3] dt-bindings: PCI: mediatek: Add YAML schema
+Date: Sun, 27 Sep 2020 15:45:53 +0800
+Message-ID: <20200927074555.4155-2-jianjun.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200927074555.4155-1-jianjun.wang@mediatek.com>
 References: <20200927074555.4155-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CC715FDA7CA61A0D39C583CB7A33E73384677ABBE66BC3B01B721855B82A588D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200927_034849_866014_5EC399EF 
-X-CRM114-Status: GOOD (  19.99  )
+X-CRM114-CacheID: sfid-20200927_034851_376035_F1C531BC 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,1088 +98,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek's PCIe host controller has three generation HWs, the new
-generation HW is an individual bridge, it supoorts Gen3 speed and
-up to 256 MSI interrupt numbers for multi-function devices.
-
-Add support for new Gen3 controller which can be found on MT8192.
+Add YAML schemas documentation for Gen3 PCIe controller on
+MediaTek SoCs.
 
 Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 Acked-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/pci/controller/Kconfig              |   14 +
- drivers/pci/controller/Makefile             |    1 +
- drivers/pci/controller/pcie-mediatek-gen3.c | 1024 +++++++++++++++++++
- 3 files changed, 1039 insertions(+)
- create mode 100644 drivers/pci/controller/pcie-mediatek-gen3.c
+ .../bindings/pci/mediatek-pcie-gen3.yaml      | 126 ++++++++++++++++++
+ 1 file changed, 126 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index f18c3725ef80..83daa772595b 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -239,6 +239,20 @@ config PCIE_MEDIATEK
- 	  Say Y here if you want to enable PCIe controller support on
- 	  MediaTek SoCs.
- 
-+config PCIE_MEDIATEK_GEN3
-+	tristate "MediaTek GEN3 PCIe controller"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on OF
-+	depends on PCI_MSI_IRQ_DOMAIN
-+	help
-+	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
-+	  This PCIe controller provides the capable of Gen3, Gen2 and
-+	  Gen1 speed, and support up to 256 MSI interrupt numbers for
-+	  multi-function devices.
-+
-+	  Say Y here if you want to enable Gen3 PCIe controller support on
-+	  MediaTek SoCs.
-+
- config PCIE_TANGO_SMP8759
- 	bool "Tango SMP8759 PCIe controller (DANGEROUS)"
- 	depends on ARCH_TANGO && PCI_MSI && OF
-diff --git a/drivers/pci/controller/Makefile b/drivers/pci/controller/Makefile
-index bcdbf49ab1e4..9c1b96777597 100644
---- a/drivers/pci/controller/Makefile
-+++ b/drivers/pci/controller/Makefile
-@@ -27,6 +27,7 @@ obj-$(CONFIG_PCIE_ROCKCHIP) += pcie-rockchip.o
- obj-$(CONFIG_PCIE_ROCKCHIP_EP) += pcie-rockchip-ep.o
- obj-$(CONFIG_PCIE_ROCKCHIP_HOST) += pcie-rockchip-host.o
- obj-$(CONFIG_PCIE_MEDIATEK) += pcie-mediatek.o
-+obj-$(CONFIG_PCIE_MEDIATEK_GEN3) += pcie-mediatek-gen3.o
- obj-$(CONFIG_PCIE_TANGO_SMP8759) += pcie-tango.o
- obj-$(CONFIG_VMD) += vmd.o
- obj-$(CONFIG_PCIE_BRCMSTB) += pcie-brcmstb.o
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
 new file mode 100644
-index 000000000000..ad69c789b24d
+index 000000000000..c7b5dd132ebd
 --- /dev/null
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -0,0 +1,1024 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * MediaTek PCIe host controller driver.
-+ *
-+ * Copyright (c) 2020 MediaTek Inc.
-+ * Author: Jianjun Wang <jianjun.wang@mediatek.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/iopoll.h>
-+#include <linux/irq.h>
-+#include <linux/irqchip/chained_irq.h>
-+#include <linux/irqdomain.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/msi.h>
-+#include <linux/of_address.h>
-+#include <linux/of_clk.h>
-+#include <linux/of_pci.h>
-+#include <linux/of_platform.h>
-+#include <linux/pci.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_domain.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/reset.h>
-+
-+#include "../pci.h"
-+
-+#define PCIE_SETTING_REG		0x80
-+#define PCIE_PCI_IDS_1			0x9c
-+#define PCI_CLASS(class)		(class << 8)
-+#define PCIE_RC_MODE			BIT(0)
-+
-+#define PCIE_CFGNUM_REG			0x140
-+#define PCIE_CFG_DEVFN(devfn)		((devfn) & GENMASK(7, 0))
-+#define PCIE_CFG_BUS(bus)		(((bus) << 8) & GENMASK(15, 8))
-+#define PCIE_CFG_BYTE_EN(bytes)		(((bytes) << 16) & GENMASK(19, 16))
-+#define PCIE_CFG_FORCE_BYTE_EN		BIT(20)
-+#define PCIE_CFG_OFFSET_ADDR		0x1000
-+#define PCIE_CFG_HEADER(devfn, bus) \
-+	(PCIE_CFG_DEVFN(devfn) | PCIE_CFG_BUS(bus))
-+
-+#define PCIE_CFG_HEADER_FORCE_BE(devfn, bus, bytes) \
-+	(PCIE_CFG_HEADER(devfn, bus) | PCIE_CFG_BYTE_EN(bytes) \
-+	 | PCIE_CFG_FORCE_BYTE_EN)
-+
-+#define PCIE_RST_CTRL_REG		0x148
-+#define PCIE_MAC_RSTB			BIT(0)
-+#define PCIE_PHY_RSTB			BIT(1)
-+#define PCIE_BRG_RSTB			BIT(2)
-+#define PCIE_PE_RSTB			BIT(3)
-+
-+#define PCIE_MISC_STATUS_REG		0x14C
-+#define PCIE_LTR_MSG_RECEIVED		BIT(0)
-+#define PCIE_PCIE_MSG_RECEIVED		BIT(1)
-+
-+#define PCIE_LTSSM_STATUS_REG		0x150
-+#define PCIE_LTSSM_STATE_MASK		GENMASK(28, 24)
-+#define PCIE_LTSSM_STATE(val)		((val & PCIE_LTSSM_STATE_MASK) >> 24)
-+#define PCIE_LTSSM_STATE_L0		0x10
-+#define PCIE_LTSSM_STATE_L1_IDLE	0x13
-+#define PCIE_LTSSM_STATE_L2_IDLE	0x14
-+
-+#define PCIE_LINK_STATUS_REG		0x154
-+#define PCIE_PORT_LINKUP		BIT(8)
-+
-+#define PCIE_MSI_SET_NUM		8
-+#define PCIE_MSI_IRQS_PER_SET		32
-+#define PCIE_MSI_IRQS_NUM \
-+	(PCIE_MSI_IRQS_PER_SET * (PCIE_MSI_SET_NUM))
-+
-+#define PCIE_INT_ENABLE_REG		0x180
-+#define PCIE_MSI_MASK			GENMASK(PCIE_MSI_SET_NUM + 8 - 1, 8)
-+#define PCIE_MSI_SHIFT			8
-+#define PCIE_INTX_SHIFT			24
-+#define PCIE_INTX_MASK			GENMASK(27, 24)
-+#define PCIE_MSG_MASK			BIT(28)
-+#define PCIE_AER_MASK			BIT(29)
-+#define PCIE_PM_MASK			BIT(30)
-+
-+#define PCIE_INT_STATUS_REG		0x184
-+#define PCIE_MSI_SET_ENABLE_REG		0x190
-+
-+#define PCIE_LOW_POWER_CTRL_REG		0x194
-+#define PCIE_DIS_LOWPWR_MASK		GENMASK(3, 0)
-+#define PCIE_DIS_L0S_MASK		BIT(0)
-+#define PCIE_DIS_L1_MASK		BIT(1)
-+#define PCIE_DIS_L11_MASK		BIT(2)
-+#define PCIE_DIS_L12_MASK		BIT(3)
-+#define PCIE_FORCE_DIS_LOWPWR		GENMASK(11, 8)
-+#define PCIE_FORCE_DIS_L0S		BIT(8)
-+#define PCIE_FORCE_DIS_L1		BIT(9)
-+#define PCIE_FORCE_DIS_L11		BIT(10)
-+#define PCIE_FORCE_DIS_L12		BIT(11)
-+
-+#define PCIE_ICMD_PM_REG		0x198
-+#define PCIE_TURN_OFF_LINK		BIT(4)
-+
-+#define PCIE_MSI_ADDR_BASE_REG		0xc00
-+#define PCIE_MSI_SET_OFFSET		0x10
-+#define PCIE_MSI_STATUS_OFFSET		0x04
-+#define PCIE_MSI_ENABLE_OFFSET		0x08
-+
-+#define PCIE_TRANS_TABLE_BASE_REG	0x800
-+#define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
-+#define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
-+#define PCIE_ATR_TRSL_ADDR_MSB_OFFSET	0xc
-+#define PCIE_ATR_TRSL_PARAM_OFFSET	0x10
-+#define PCIE_ATR_TLB_SET_OFFSET		0x20
-+
-+#define PCIE_MAX_TRANS_TABLES		8
-+#define ATR_EN				BIT(0)
-+#define ATR_SIZE(size)			((((size) - 1) << 1) & GENMASK(6, 1))
-+#define ATR_ID(id)			(id & GENMASK(3, 0))
-+#define ATR_PARAM(param)		(((param) << 16) & GENMASK(27, 16))
-+
-+/**
-+ * struct mtk_pcie_msi - MSI information for each set
-+ * @base: IO mapped register base
-+ * @hwirq: Hardware interrupt number
-+ * @irq: MSI set Interrupt number
-+ * @index: MSI set number
-+ * @msg_addr: MSI message address
-+ * @domain: IRQ domain
-+ */
-+struct mtk_pcie_msi {
-+	void __iomem *base;
-+	int hwirq;
-+	int irq;
-+	int index;
-+	phys_addr_t msg_addr;
-+	struct irq_domain *domain;
-+};
-+
-+/**
-+ * struct mtk_pcie_port - PCIe port information
-+ * @dev: PCIe device
-+ * @base: IO mapped register base
-+ * @reg_base: Physical register base
-+ * @mac_reset: mac reset control
-+ * @phy_reset: phy reset control
-+ * @phy: PHY controller block
-+ * @clks: PCIe clocks
-+ * @num_clks: PCIe clocks count for this port
-+ * @is_suspended: device suspend state
-+ * @irq: PCIe controller interrupt number
-+ * @intx_domain: legacy INTx IRQ domain
-+ * @msi_domain: MSI IRQ domain
-+ * @msi_top_domain: MSI IRQ top domain
-+ * @msi_info: MSI sets information
-+ * @lock: lock protecting IRQ bit map
-+ * @msi_irq_in_use: bit map for assigned MSI IRQ
-+ */
-+struct mtk_pcie_port {
-+	struct device *dev;
-+	void __iomem *base;
-+	phys_addr_t reg_base;
-+	struct reset_control *mac_reset;
-+	struct reset_control *phy_reset;
-+	struct phy *phy;
-+	struct clk_bulk_data *clks;
-+	int num_clks;
-+	bool is_suspended;
-+
-+	int irq;
-+	struct irq_domain *intx_domain;
-+	struct irq_domain *msi_domain;
-+	struct irq_domain *msi_top_domain;
-+	struct mtk_pcie_msi **msi_info;
-+	struct mutex lock;
-+	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
-+};
-+
-+static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
-+				    int where, int size, u32 *val)
-+{
-+	struct mtk_pcie_port *port = bus->sysdata;
-+	int bytes;
-+
-+	bytes = ((1 << size) - 1) << (where & 0x3);
-+	writel(PCIE_CFG_HEADER_FORCE_BE(devfn, bus->number, bytes),
-+	       port->base + PCIE_CFGNUM_REG);
-+
-+	*val = readl(port->base + PCIE_CFG_OFFSET_ADDR + (where & ~0x3));
-+
-+	if (size <= 2)
-+		*val = (*val >> (8 * (where & 0x3))) & ((1 << (size * 8)) - 1);
-+
-+	return PCIBIOS_SUCCESSFUL;
-+}
-+
-+static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
-+				     int where, int size, u32 val)
-+{
-+	struct mtk_pcie_port *port = bus->sysdata;
-+	int bytes;
-+
-+	bytes = ((1 << size) - 1) << (where & 0x3);
-+	writel(PCIE_CFG_HEADER_FORCE_BE(devfn, bus->number, bytes),
-+	       port->base + PCIE_CFGNUM_REG);
-+
-+	if (size <= 2)
-+		val = (val & ((1 << (size * 8)) - 1)) << ((where & 0x3) * 8);
-+
-+	writel(val, port->base + PCIE_CFG_OFFSET_ADDR + (where & ~0x3));
-+
-+	return PCIBIOS_SUCCESSFUL;
-+}
-+
-+static struct pci_ops mtk_pcie_ops = {
-+	.read  = mtk_pcie_config_read,
-+	.write = mtk_pcie_config_write,
-+};
-+
-+static void mtk_pcie_set_trans_window(void __iomem *reg,
-+				      resource_size_t cpu_addr,
-+				      resource_size_t pci_addr, size_t size)
-+{
-+	writel(lower_32_bits(cpu_addr) | ATR_SIZE(fls(size) - 1) | ATR_EN, reg);
-+	writel(upper_32_bits(cpu_addr), reg + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
-+	writel(lower_32_bits(pci_addr), reg + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
-+	writel(upper_32_bits(pci_addr), reg + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
-+	writel(ATR_ID(0) | ATR_PARAM(0), reg + PCIE_ATR_TRSL_PARAM_OFFSET);
-+}
-+
-+static int mtk_pcie_set_trans_table(void __iomem *reg,
-+				    resource_size_t cpu_addr,
-+				    resource_size_t pci_addr, size_t size,
-+				    int num)
-+{
-+	void __iomem *table_base;
-+
-+	if (num > PCIE_MAX_TRANS_TABLES)
-+		return -ENODEV;
-+
-+	table_base = reg + num * PCIE_ATR_TLB_SET_OFFSET;
-+	mtk_pcie_set_trans_window(table_base, cpu_addr, pci_addr, size);
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
-+{
-+	struct resource_entry *entry;
-+	struct pci_host_bridge *host = pci_host_bridge_from_priv(port);
-+	u32 val;
-+	int err = 0, table_index = 0;
-+
-+	/* Set as RC mode */
-+	val = readl(port->base + PCIE_SETTING_REG);
-+	val |= PCIE_RC_MODE;
-+	writel(val, port->base + PCIE_SETTING_REG);
-+
-+	/* Set class code */
-+	val = readl(port->base + PCIE_PCI_IDS_1);
-+	val &= ~GENMASK(31, 8);
-+	val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
-+	writel(val, port->base + PCIE_PCI_IDS_1);
-+
-+	/* Assert all reset signals */
-+	val = readl(port->base + PCIE_RST_CTRL_REG);
-+	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-+	writel(val, port->base + PCIE_RST_CTRL_REG);
-+
-+	/* De-assert reset signals*/
-+	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
-+	writel(val, port->base + PCIE_RST_CTRL_REG);
-+
-+	/* Delay 100ms to wait the reference clocks become stable */
-+	usleep_range(100 * 1000, 120 * 1000);
-+
-+	/* De-assert pe reset*/
-+	val &= ~PCIE_PE_RSTB;
-+	writel(val, port->base + PCIE_RST_CTRL_REG);
-+
-+	/* Check if the link is up or not */
-+	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_REG, val,
-+			!!(val & PCIE_PORT_LINKUP), 20,
-+			50 * USEC_PER_MSEC);
-+	if (err)
-+		return err;
-+
-+	/* Set PCIe translation windows */
-+	resource_list_for_each_entry(entry, &host->windows) {
-+		unsigned long type = resource_type(entry->res);
-+		struct resource *res = NULL;
-+		resource_size_t cpu_addr;
-+		resource_size_t pci_addr;
-+
-+		if (!(type & (IORESOURCE_MEM | IORESOURCE_IO)))
-+			continue;
-+
-+		res = entry->res;
-+		cpu_addr = res->start;
-+		pci_addr = res->start - entry->offset;
-+		mtk_pcie_set_trans_table(port->base + PCIE_TRANS_TABLE_BASE_REG,
-+					 cpu_addr, pci_addr, resource_size(res),
-+					 table_index);
-+
-+		dev_dbg(port->dev, "Set %s trans window[%d]: cpu_addr = %#llx, pci_addr = %#llx, size = %#llx\n",
-+			(!!(type & IORESOURCE_MEM) ? "MEM" : "IO"), table_index,
-+			cpu_addr, pci_addr, resource_size(res));
-+
-+		table_index++;
-+	}
-+
-+	return 0;
-+}
-+
-+static inline struct mtk_pcie_msi *mtk_get_msi_info(struct mtk_pcie_port *port,
-+					     unsigned int hwirq)
-+{
-+	return port->msi_info[hwirq / PCIE_MSI_IRQS_PER_SET];
-+}
-+
-+static int mtk_pcie_set_affinity(struct irq_data *data,
-+				 const struct cpumask *mask, bool force)
-+{
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int ret;
-+
-+	ret = irq_set_affinity_hint(port->irq, mask);
-+	if (ret)
-+		return ret;
-+
-+	irq_data_update_effective_affinity(data, mask);
-+
-+	return 0;
-+}
-+
-+static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
-+{
-+	struct mtk_pcie_msi *msi_info;
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+
-+	msi_info = mtk_get_msi_info(port, data->hwirq);
-+
-+	msg->address_hi = 0;
-+	msg->address_lo = lower_32_bits(msi_info->msg_addr);
-+
-+	msg->data = data->hwirq;
-+	dev_dbg(port->dev, "msi#%#lx address_hi %#x address_lo %#x data %d\n",
-+		data->hwirq, msg->address_hi, msg->address_lo, msg->data);
-+}
-+
-+static void mtk_msi_irq_ack(struct irq_data *data)
-+{
-+	struct mtk_pcie_msi *msi_info;
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int hwirq;
-+
-+	msi_info = mtk_get_msi_info(port, data->hwirq);
-+
-+	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
-+
-+	writel(1 << hwirq, msi_info->base + PCIE_MSI_STATUS_OFFSET);
-+}
-+
-+static void mtk_msi_irq_mask(struct irq_data *data)
-+{
-+	struct mtk_pcie_msi *msi_info;
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int val;
-+
-+	msi_info = mtk_get_msi_info(port, data->hwirq);
-+	val = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
-+	val &= ~(1 << data->hwirq);
-+	writel(val, msi_info->base + PCIE_MSI_ENABLE_OFFSET);
-+
-+	pci_msi_mask_irq(data);
-+}
-+
-+static void mtk_msi_irq_unmask(struct irq_data *data)
-+{
-+	struct mtk_pcie_msi *msi_info;
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int val;
-+
-+	msi_info = mtk_get_msi_info(port, data->hwirq);
-+	val = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
-+	val |= (1 << data->hwirq);
-+	writel(val, msi_info->base + PCIE_MSI_ENABLE_OFFSET);
-+
-+	pci_msi_unmask_irq(data);
-+}
-+
-+static struct irq_chip mtk_msi_irq_chip = {
-+	.irq_ack		= mtk_msi_irq_ack,
-+	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-+	.irq_mask		= mtk_msi_irq_mask,
-+	.irq_unmask		= mtk_msi_irq_unmask,
-+	.irq_set_affinity	= mtk_pcie_set_affinity,
-+	.name			= "PCIe",
-+};
-+
-+static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
-+					      msi_alloc_info_t *arg)
-+{
-+	struct msi_desc *entry = arg->desc;
-+	struct mtk_pcie_port *port = info->chip_data;
-+	int hwirq;
-+
-+	mutex_lock(&port->lock);
-+
-+	hwirq = bitmap_find_free_region(port->msi_irq_in_use, PCIE_MSI_IRQS_NUM,
-+			order_base_2(entry->nvec_used));
-+	if (hwirq < 0) {
-+		mutex_unlock(&port->lock);
-+		return -ENOSPC;
-+	}
-+
-+	mutex_unlock(&port->lock);
-+
-+	return hwirq;
-+}
-+
-+static void mtk_pcie_msi_free(struct irq_domain *domain,
-+			      struct msi_domain_info *info, unsigned int virq)
-+{
-+	struct irq_data *data = irq_domain_get_irq_data(domain, virq);
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+
-+	mutex_lock(&port->lock);
-+
-+	bitmap_clear(port->msi_irq_in_use, data->hwirq, 1);
-+
-+	mutex_unlock(&port->lock);
-+}
-+
-+static struct msi_domain_ops mtk_msi_domain_ops = {
-+	.get_hwirq	= mtk_pcie_msi_get_hwirq,
-+	.msi_free	= mtk_pcie_msi_free,
-+};
-+
-+static struct msi_domain_info mtk_msi_domain_info = {
-+	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_PCI_MSIX |
-+			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_MULTI_PCI_MSI),
-+	.chip		= &mtk_msi_irq_chip,
-+	.ops		= &mtk_msi_domain_ops,
-+	.handler	= handle_edge_irq,
-+	.handler_name	= "MSI",
-+};
-+
-+static void mtk_msi_top_irq_eoi(struct irq_data *data)
-+{
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int msi_irq = data->hwirq + PCIE_MSI_SHIFT;
-+
-+	writel(1 << msi_irq, port->base + PCIE_INT_STATUS_REG);
-+}
-+
-+static struct irq_chip mtk_msi_top_irq_chip = {
-+	.irq_eoi	= mtk_msi_top_irq_eoi,
-+	.name		= "PCIe",
-+};
-+
-+static void mtk_pcie_msi_handler(struct irq_desc *desc)
-+{
-+	struct mtk_pcie_msi *msi_info = irq_desc_get_handler_data(desc);
-+	struct irq_chip *irqchip = irq_desc_get_chip(desc);
-+	unsigned long msi_enable, msi_status;
-+	u32 virq, bit, hwirq;
-+
-+	chained_irq_enter(irqchip, desc);
-+
-+	msi_enable = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
-+	while ((msi_status = readl(msi_info->base + PCIE_MSI_STATUS_OFFSET))) {
-+		msi_status &= msi_enable;
-+		for_each_set_bit(bit, &msi_status, PCIE_MSI_IRQS_PER_SET) {
-+			hwirq = bit + msi_info->index * PCIE_MSI_IRQS_PER_SET;
-+			virq = irq_find_mapping(msi_info->domain, hwirq);
-+			generic_handle_irq(virq);
-+		}
-+	}
-+
-+	chained_irq_exit(irqchip, desc);
-+}
-+
-+static int mtk_msi_top_domain_map(struct irq_domain *domain,
-+				    unsigned int virq, irq_hw_number_t hwirq)
-+{
-+	struct mtk_pcie_port *port = domain->host_data;
-+	struct mtk_pcie_msi *msi_info = port->msi_info[hwirq];
-+
-+	irq_domain_set_info(domain, virq, hwirq,
-+			    &mtk_msi_top_irq_chip, domain->host_data,
-+			    mtk_pcie_msi_handler, msi_info, NULL);
-+
-+	return 0;
-+}
-+
-+static const struct irq_domain_ops mtk_msi_top_domain_ops = {
-+	.map = mtk_msi_top_domain_map,
-+};
-+
-+static void mtk_intx_mask(struct irq_data *data)
-+{
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int val;
-+
-+	val = readl(port->base + PCIE_INT_ENABLE_REG);
-+	val &= ~(1 << (data->hwirq + PCIE_INTX_SHIFT));
-+	writel(val, port->base + PCIE_INT_ENABLE_REG);
-+}
-+
-+static void mtk_intx_unmask(struct irq_data *data)
-+{
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int val;
-+
-+	val = readl(port->base + PCIE_INT_ENABLE_REG);
-+	val |= 1 << (data->hwirq + PCIE_INTX_SHIFT);
-+	writel(val, port->base + PCIE_INT_ENABLE_REG);
-+}
-+
-+static void mtk_intx_eoi(struct irq_data *data)
-+{
-+	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-+	int hwirq;
-+
-+	/**
-+	 * As an emulated level irq, its interrupt status will be remained
-+	 * until receive the corresponding message of de-assert, hence that
-+	 * the status can only be cleared when the interrupt has been serviced.
-+	 */
-+	hwirq = data->hwirq + PCIE_INTX_SHIFT;
-+	writel(1 << hwirq, port->base + PCIE_INT_STATUS_REG);
-+}
-+
-+static struct irq_chip mtk_intx_irq_chip = {
-+	.irq_mask		= mtk_intx_mask,
-+	.irq_unmask		= mtk_intx_unmask,
-+	.irq_eoi		= mtk_intx_eoi,
-+	.irq_set_affinity	= mtk_pcie_set_affinity,
-+	.name			= "PCIe",
-+};
-+
-+static int mtk_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
-+			     irq_hw_number_t hwirq)
-+{
-+	irq_set_chip_and_handler_name(irq, &mtk_intx_irq_chip,
-+				      handle_fasteoi_irq, "INTx");
-+	irq_set_chip_data(irq, domain->host_data);
-+
-+	return 0;
-+}
-+
-+static const struct irq_domain_ops intx_domain_ops = {
-+	.map = mtk_pcie_intx_map,
-+};
-+
-+static int mtk_pcie_init_irq_domains(struct mtk_pcie_port *port,
-+				     struct device_node *node)
-+{
-+	struct device *dev = port->dev;
-+	struct device_node *intc_node;
-+	struct fwnode_handle *fwnode = of_node_to_fwnode(node);
-+	struct mtk_pcie_msi *msi_info;
-+	struct msi_domain_info *info;
-+	int i, val, ret;
-+
-+	/* Setup INTx */
-+	intc_node = of_get_child_by_name(node, "interrupt-controller");
-+	if (!intc_node) {
-+		dev_notice(dev, "Missing PCIe Intc node\n");
-+		return -ENODEV;
-+	}
-+
-+	port->intx_domain = irq_domain_add_linear(intc_node, PCI_NUM_INTX,
-+						  &intx_domain_ops, port);
-+	if (!port->intx_domain) {
-+		dev_notice(dev, "failed to get INTx IRQ domain\n");
-+		return -ENODEV;
-+	}
-+
-+	/* Setup MSI */
-+	mutex_init(&port->lock);
-+
-+	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
-+	if (!info)
-+		return -ENOMEM;
-+
-+	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
-+	info->chip_data = port;
-+
-+	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
-+	if (!port->msi_domain) {
-+		dev_info(dev, "failed to create msi domain\n");
-+		ret = -ENODEV;
-+		goto err_msi_domain;
-+	}
-+
-+	/* Enable MSI and setup pcie domains */
-+	port->msi_top_domain = irq_domain_add_hierarchy(NULL, 0, 0, node,
-+							&mtk_msi_top_domain_ops,
-+							port);
-+	if (!port->msi_top_domain) {
-+		dev_info(dev, "failed to create msi top domain\n");
-+		ret = -ENODEV;
-+		goto err_msi_top_domain;
-+	}
-+
-+	port->msi_info = devm_kzalloc(dev, PCIE_MSI_SET_NUM, GFP_KERNEL);
-+	if (!port->msi_info) {
-+		ret = -ENOMEM;
-+		goto err_msi_info;
-+	}
-+
-+	for (i = 0; i < PCIE_MSI_SET_NUM; i++) {
-+		int offset = i * PCIE_MSI_SET_OFFSET;
-+
-+		msi_info = devm_kzalloc(dev, sizeof(*msi_info), GFP_KERNEL);
-+		if (!msi_info) {
-+			ret = -ENOMEM;
-+			goto err_msi_set;
-+		}
-+
-+		msi_info->base = port->base + PCIE_MSI_ADDR_BASE_REG + offset;
-+		msi_info->msg_addr = port->reg_base + PCIE_MSI_ADDR_BASE_REG +
-+				     offset;
-+
-+		writel(lower_32_bits(msi_info->msg_addr), msi_info->base);
-+
-+		msi_info->hwirq = i;
-+		msi_info->index = i;
-+		msi_info->domain = port->msi_domain;
-+
-+		port->msi_info[i] = msi_info;
-+
-+		/* Alloc irq for each msi set */
-+		msi_info->irq = irq_create_mapping(port->msi_top_domain, i);
-+		if (msi_info->irq < 0) {
-+			dev_info(dev, "allocate msi top irq failed\n");
-+			ret = -ENOSPC;
-+			goto err_msi_set;
-+		}
-+
-+		val = readl(port->base + PCIE_INT_ENABLE_REG);
-+		val |= (1 << (i + PCIE_MSI_SHIFT));
-+		writel(val, port->base + PCIE_INT_ENABLE_REG);
-+
-+		val = readl(port->base + PCIE_MSI_SET_ENABLE_REG);
-+		val |= (1 << i);
-+		writel(val, port->base + PCIE_MSI_SET_ENABLE_REG);
-+	}
-+
-+	return 0;
-+
-+err_msi_set:
-+	while (--i >= 0) {
-+		msi_info = port->msi_info[i];
-+		irq_dispose_mapping(msi_info->irq);
-+	}
-+err_msi_info:
-+	irq_domain_remove(port->msi_top_domain);
-+err_msi_top_domain:
-+	irq_domain_remove(port->msi_domain);
-+err_msi_domain:
-+	irq_domain_remove(port->intx_domain);
-+
-+	return ret;
-+}
-+
-+static void mtk_pcie_irq_teardown(struct mtk_pcie_port *port)
-+{
-+	struct mtk_pcie_msi *msi_info;
-+	int i;
-+
-+	irq_set_chained_handler_and_data(port->irq, NULL, NULL);
-+
-+	if (port->intx_domain)
-+		irq_domain_remove(port->intx_domain);
-+
-+	if (port->msi_domain)
-+		irq_domain_remove(port->msi_domain);
-+
-+	if (port->msi_top_domain) {
-+		for (i = 0; i < PCIE_MSI_SET_NUM; i++) {
-+			msi_info = port->msi_info[i];
-+			irq_dispose_mapping(msi_info->irq);
-+		}
-+
-+		irq_domain_remove(port->msi_top_domain);
-+	}
-+
-+	irq_dispose_mapping(port->irq);
-+}
-+
-+static void mtk_pcie_irq_handler(struct irq_desc *desc)
-+{
-+	struct mtk_pcie_port *port = irq_desc_get_handler_data(desc);
-+	struct irq_chip *irqchip = irq_desc_get_chip(desc);
-+	unsigned long status;
-+	u32 virq;
-+	u32 irq_bit = PCIE_INTX_SHIFT;
-+
-+	chained_irq_enter(irqchip, desc);
-+
-+	status = readl(port->base + PCIE_INT_STATUS_REG);
-+	if (status & PCIE_INTX_MASK) {
-+		for_each_set_bit_from(irq_bit, &status, PCI_NUM_INTX +
-+				      PCIE_INTX_SHIFT) {
-+			virq = irq_find_mapping(port->intx_domain,
-+						irq_bit - PCIE_INTX_SHIFT);
-+			generic_handle_irq(virq);
-+		}
-+	}
-+
-+	if (status & PCIE_MSI_MASK) {
-+		irq_bit = PCIE_MSI_SHIFT;
-+		for_each_set_bit_from(irq_bit, &status, PCIE_MSI_SET_NUM +
-+				      PCIE_MSI_SHIFT) {
-+			virq = irq_find_mapping(port->msi_top_domain,
-+						irq_bit - PCIE_MSI_SHIFT);
-+			generic_handle_irq(virq);
-+		}
-+	}
-+
-+	chained_irq_exit(irqchip, desc);
-+}
-+
-+static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
-+			      struct device_node *node)
-+{
-+	struct device *dev = port->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
-+	int err;
-+
-+	err = mtk_pcie_init_irq_domains(port, node);
-+	if (err) {
-+		dev_notice(dev, "failed to init PCIe IRQ domain\n");
-+		return err;
-+	}
-+
-+	port->irq = platform_get_irq(pdev, 0);
-+	if (port->irq < 0)
-+		return port->irq;
-+
-+	irq_set_chained_handler_and_data(port->irq, mtk_pcie_irq_handler, port);
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_clk_init(struct mtk_pcie_port *port)
-+{
-+	int ret;
-+
-+	port->num_clks = devm_clk_bulk_get_all(port->dev, &port->clks);
-+	if (port->num_clks < 0) {
-+		dev_notice(port->dev, "failed to get pcie clock\n");
-+		return port->num_clks;
-+	}
-+
-+	ret = clk_bulk_prepare_enable(port->num_clks, port->clks);
-+	if (ret) {
-+		dev_notice(port->dev, "failed to enable pcie clocks\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_power_up(struct mtk_pcie_port *port)
-+{
-+	struct device *dev = port->dev;
-+	int err;
-+
-+	port->phy_reset = devm_reset_control_get_optional_exclusive(dev,
-+								    "phy-rst");
-+	if (IS_ERR(port->phy_reset))
-+		return PTR_ERR(port->phy_reset);
-+
-+	reset_control_deassert(port->phy_reset);
-+
-+	/* PHY power on and enable pipe clock */
-+	port->phy = devm_phy_optional_get(dev, "pcie-phy");
-+	if (IS_ERR(port->phy))
-+		return PTR_ERR(port->phy);
-+
-+	err = phy_init(port->phy);
-+	if (err) {
-+		dev_notice(dev, "failed to initialize pcie phy\n");
-+		return err;
-+	}
-+
-+	err = phy_power_on(port->phy);
-+	if (err) {
-+		dev_notice(dev, "failed to power on pcie phy\n");
-+		goto err_phy_on;
-+	}
-+
-+	port->mac_reset = devm_reset_control_get_optional_exclusive(dev,
-+								    "mac-rst");
-+	if (IS_ERR(port->mac_reset))
-+		return PTR_ERR(port->mac_reset);
-+
-+	reset_control_deassert(port->mac_reset);
-+
-+	/* MAC power on and enable transaction layer clocks */
-+	pm_runtime_enable(dev);
-+	pm_runtime_get_sync(dev);
-+
-+	err = mtk_pcie_clk_init(port);
-+	if (err) {
-+		dev_notice(dev, "clock init failed\n");
-+		goto err_clk_init;
-+	}
-+
-+	return 0;
-+
-+err_clk_init:
-+	pm_runtime_put_sync(dev);
-+	pm_runtime_disable(dev);
-+	reset_control_assert(port->mac_reset);
-+	phy_power_off(port->phy);
-+err_phy_on:
-+	phy_exit(port->phy);
-+	reset_control_assert(port->phy_reset);
-+
-+	return -EBUSY;
-+}
-+
-+static void mtk_pcie_power_down(struct mtk_pcie_port *port)
-+{
-+	phy_power_off(port->phy);
-+	phy_exit(port->phy);
-+
-+	clk_bulk_disable_unprepare(port->num_clks, port->clks);
-+
-+	pm_runtime_put_sync(port->dev);
-+	pm_runtime_disable(port->dev);
-+}
-+
-+static int mtk_pcie_setup(struct mtk_pcie_port *port)
-+{
-+	struct device *dev = port->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
-+	struct resource *regs;
-+	int err;
-+
-+	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
-+	port->base = devm_ioremap_resource(dev, regs);
-+	if (IS_ERR(port->base)) {
-+		dev_notice(dev, "failed to map register base\n");
-+		return PTR_ERR(port->base);
-+	}
-+
-+	port->reg_base = regs->start;
-+
-+	/* Don't touch the hardware registers before power up */
-+	err = mtk_pcie_power_up(port);
-+	if (err)
-+		return err;
-+
-+	/* Try link up */
-+	err = mtk_pcie_startup_port(port);
-+	if (err) {
-+		dev_notice(dev, "PCIe link down\n");
-+		goto err_setup;
-+	}
-+
-+	err = mtk_pcie_setup_irq(port, dev->of_node);
-+	if (err)
-+		goto err_setup;
-+
-+	dev_info(dev, "PCIe link up success!\n");
-+
-+	return 0;
-+
-+err_setup:
-+	mtk_pcie_power_down(port);
-+
-+	return err;
-+}
-+
-+static int mtk_pcie_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_pcie_port *port;
-+	struct pci_host_bridge *host;
-+	int err;
-+
-+	host = devm_pci_alloc_host_bridge(dev, sizeof(*port));
-+	if (!host)
-+		return -ENOMEM;
-+
-+	port = pci_host_bridge_priv(host);
-+
-+	port->dev = dev;
-+	platform_set_drvdata(pdev, port);
-+
-+	err = mtk_pcie_setup(port);
-+	if (err)
-+		return err;
-+
-+	host->ops = &mtk_pcie_ops;
-+	host->sysdata = port;
-+
-+	err = pci_host_probe(host);
-+	if (err) {
-+		mtk_pcie_power_down(port);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_remove(struct platform_device *pdev)
-+{
-+	struct mtk_pcie_port *port = platform_get_drvdata(pdev);
-+	struct pci_host_bridge *host = pci_host_bridge_from_priv(port);
-+
-+	pci_lock_rescan_remove();
-+	pci_stop_root_bus(host->bus);
-+	pci_remove_root_bus(host->bus);
-+	pci_unlock_rescan_remove();
-+
-+	mtk_pcie_irq_teardown(port);
-+	mtk_pcie_power_down(port);
-+
-+	return 0;
-+}
-+
-+static int __maybe_unused mtk_pcie_turn_off_link(struct mtk_pcie_port *port)
-+{
-+	int val;
-+
-+	val = readl(port->base + PCIE_ICMD_PM_REG);
-+	val |= PCIE_TURN_OFF_LINK;
-+	writel(val, port->base + PCIE_ICMD_PM_REG);
-+
-+	/* Check the link is L2 */
-+	return readl_poll_timeout(port->base + PCIE_LTSSM_STATUS_REG, val,
-+				  (PCIE_LTSSM_STATE(val) ==
-+				   PCIE_LTSSM_STATE_L2_IDLE), 20,
-+				   50 * USEC_PER_MSEC);
-+}
-+
-+static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
-+{
-+	struct mtk_pcie_port *port = dev_get_drvdata(dev);
-+	int err, val;
-+
-+	if (port->is_suspended)
-+		return 0;
-+
-+	/* Trigger link to L2 state */
-+	err = mtk_pcie_turn_off_link(port);
-+	if (err) {
-+		dev_notice(port->dev, "can not enter L2 state\n");
-+		goto power_off;
-+	}
-+
-+	/* Pull down the PERST# pin */
-+	val = readl(port->base + PCIE_RST_CTRL_REG);
-+	val |= PCIE_PE_RSTB;
-+	writel(val, port->base + PCIE_RST_CTRL_REG);
-+
-+	dev_info(port->dev, "enter L2 state success");
-+
-+power_off:
-+	phy_power_off(port->phy);
-+
-+	clk_bulk_disable_unprepare(port->num_clks, port->clks);
-+
-+	port->is_suspended = true;
-+
-+	return 0;
-+}
-+
-+static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
-+{
-+	struct mtk_pcie_port *port = dev_get_drvdata(dev);
-+	int err;
-+
-+	if (!port->is_suspended)
-+		return 0;
-+
-+	phy_power_on(port->phy);
-+
-+	err = clk_bulk_prepare_enable(port->num_clks, port->clks);
-+	if (err) {
-+		dev_dbg(dev, "failed to enable pcie clocks\n");
-+		return err;
-+	}
-+
-+	err = mtk_pcie_startup_port(port);
-+	if (err) {
-+		dev_notice(port->dev, "resume failed\n");
-+		return err;
-+	}
-+
-+	port->is_suspended = false;
-+
-+	dev_info(port->dev, "resume done\n");
-+
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops mtk_pcie_pm_ops = {
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_pcie_suspend_noirq,
-+				      mtk_pcie_resume_noirq)
-+};
-+
-+static const struct of_device_id mtk_pcie_of_match[] = {
-+	{ .compatible = "mediatek,gen3-pcie" },
-+	{ .compatible = "mediatek,mt8192-pcie" },
-+	{},
-+};
-+
-+static struct platform_driver mtk_pcie_driver = {
-+	.probe = mtk_pcie_probe,
-+	.remove = mtk_pcie_remove,
-+	.driver = {
-+		.name = "mtk-pcie",
-+		.of_match_table = mtk_pcie_of_match,
-+		.pm = &mtk_pcie_pm_ops,
-+	},
-+};
-+
-+module_platform_driver(mtk_pcie_driver);
-+MODULE_LICENSE("GPL v2");
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+@@ -0,0 +1,126 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pci/mediatek-pcie-gen3.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Gen3 PCIe controller on MediaTek SoCs
++
++maintainers:
++  - Jianjun Wang <jianjun.wang@mediatek.com>
++
++allOf:
++  - $ref: /schemas/pci/pci-bus.yaml#
++
++properties:
++  compatible:
++    oneOf:
++      - const: mediatek,mt8192-pcie
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  ranges:
++    minItems: 1
++    maxItems: 8
++
++  resets:
++    minItems: 1
++    maxItems: 2
++
++  reset-names:
++    anyOf:
++      - const: mac-rst
++      - const: phy-rst
++
++  clocks:
++    maxItems: 5
++
++  assigned-clocks:
++    maxItems: 1
++
++  assigned-clock-parents:
++    maxItems: 1
++
++  phys:
++    maxItems: 1
++
++  '#interrupt-cells':
++    const: 1
++
++  interrupt-controller:
++    description: Interrupt controller node for handling legacy PCI interrupts.
++    type: object
++    properties:
++      '#address-cells':
++        const: 0
++      '#interrupt-cells':
++        const: 1
++      interrupt-controller: true
++
++    required:
++      - '#address-cells'
++      - '#interrupt-cells'
++      - interrupt-controller
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - ranges
++  - clocks
++  - '#interrupt-cells'
++  - interrupt-controller
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    bus {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        pcie: pcie@11230000 {
++            compatible = "mediatek,mt8192-pcie";
++            device_type = "pci";
++            #address-cells = <3>;
++            #size-cells = <2>;
++            reg = <0x00 0x11230000 0x00 0x4000>;
++            reg-names = "pcie-mac";
++            interrupts = <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>;
++            bus-range = <0x00 0xff>;
++            ranges = <0x82000000 0x00 0x12000000 0x00 0x12000000 0x00 0x1000000>;
++            clocks = <&infracfg 40>,
++                     <&infracfg 43>,
++                     <&infracfg 97>,
++                     <&infracfg 99>,
++                     <&infracfg 111>;
++            assigned-clocks = <&topckgen 50>;
++            assigned-clock-parents = <&topckgen 91>;
++
++            phys = <&pciephy>;
++            phy-names = "pcie-phy";
++            resets = <&infracfg_rst 0>;
++            reset-names = "phy-rst";
++
++            #interrupt-cells = <1>;
++            interrupt-map-mask = <0 0 0 0x7>;
++            interrupt-map = <0 0 0 1 &pcie_intc 0>,
++                            <0 0 0 2 &pcie_intc 1>,
++                            <0 0 0 3 &pcie_intc 2>,
++                            <0 0 0 4 &pcie_intc 3>;
++            pcie_intc: interrupt-controller {
++                      #address-cells = <0>;
++                      #interrupt-cells = <1>;
++                      interrupt-controller;
++            };
++        };
++    };
 -- 
 2.25.1
 _______________________________________________
