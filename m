@@ -2,23 +2,23 @@ Return-Path: <SRS0=uRRy=DF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95D84C2D0A8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 13:38:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5AC5C2D0A8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 15:55:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D403021D7F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 13:38:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2C7A3206B6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 15:55:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zXPtoNv7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="HbWOxEIf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D403021D7F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q6208x+u";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UC+Urg/4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C7A3206B6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,58 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=y4MNE+QYSFT3YBCwbgXsKLrssRW/NoaYykjS9XTPdqA=; b=zXPtoNv7msMjxH19oP6uGPly5
-	XVaWiN1+r7zCFzMnjW5yJXN+YU3jCj5YOrc56QL1edsYH6EfwOzU14yKyqpcL3TGR/Bw1qyOMMm3+
-	1J1Ydsz4NHQi75d3SBCmg4QMmRfCHrVrykGSNu4vlUFRGcJt4+KEWbwK4aXY+sMYevYVRQBMuH2v0
-	c11311l2Y+LfV/x9HxH68g8JIJpbW1EbYUjwYyHUJvcV7f3IPhYUYoXBLHcBpju0AGZeTwWa7hfXH
-	sY8/QiuhKG5Cr3loMWOmen0+uFV5gWEaasSTKeYdAFim0wOTPIBPNgvtb6Z+m46VrObHYcNxSP8zi
-	Yjw1MbWrw==;
+	 bh=P4AfzjkMNJm95w43jY6rsRnxn3nmyKJE5xD3Uu2joy0=; b=Q6208x+uoTBV2cfZoPFb3siR+
+	nxONcgBQSHHYc+wiTJW+V7h4ZX66N/E4h3XgRA7NAOKdzFF7ozlOwEXcIQa8WKKozwdzVd+TdAvmg
+	UKzOpgDw/mIVagn1kQ0iDXiP5y1mmkkr353Hivw4d+tEU7j0FN8fClvt8GrEu6bpvx7OXOOoBLIEX
+	uVeiqVUVroNGIAM1tO6BAgeR2F0dcru3L/uELahkkXfuYukoBD1c7w7WZZvN6vfFKpgBSGy5/jL3r
+	5rUUPXajk8WAZarhzwJTg9qTFIakLnBLYewo5mAAdtLCXtaAsOwjkawjibYhKRVxxh9da+sxUu5Bw
+	hlfGr5LTQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kMtLo-00063e-ET; Mon, 28 Sep 2020 13:37:56 +0000
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941])
+	id 1kMvUo-0001mf-Kl; Mon, 28 Sep 2020 15:55:22 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kMtLk-00062R-Iv
- for linux-mediatek@lists.infradead.org; Mon, 28 Sep 2020 13:37:54 +0000
-Received: by mail-ua1-x941.google.com with SMTP id q26so2188198uaa.12
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2020 06:37:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nZHygFNG12BXzia+cdFp3TUOwboq01N6tmGz7GV0mjc=;
- b=HbWOxEIfM8ntAMXUYW1Quv7Si1k1ydd3FSuy3Y/TPuIS7RMc29OkwEJR0tNpYB2sSx
- xI4p05QJbWtfGREN10T+ITpc4sIOjiXUF2aO1WIEZA6LglCal5RWKkHR88xVID0VrApu
- aC0PQoVratp4+6Z9EiF69NgWNjWLX11/OgS5XBU/p3RBuOB33feB0rZq3hrUrcGSmUxt
- ixizvUGDUOZqsfmyrvLitoJ3kYqNS5PM2VddrRI79AUN1tUWGJrNjTlJ4Qs2iKNpDoVe
- SUg4O209PASlkCgw+EkPKnecVhHYgIowYJJiPAfTpDNjdggNqotwKUpcA8saIOEhvM9i
- sX5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nZHygFNG12BXzia+cdFp3TUOwboq01N6tmGz7GV0mjc=;
- b=MzC8A+QlPGt0+H3shB3qnvtW5C/OKW0v6Gun3SYM69qyDmDocSJko3orjcGJz+EyTJ
- lkDgUAtaZP8RX5ZvOH0bdnIIVnG6Sg+JYyvQjNaT4c9Fd3NHY3eSLQbiN1fqIxLXx40C
- Y7AEHDJUIyOsXZBHtgq/Jq1IXf6mlfQ2baR/CnE4azlm1RTWhEZ6afmjrI+lEzFWprPB
- O9GLS4X7KeCYdF8nK+xa0LlWDp27jtHuvcTUvEGOvP2463oGKqZCatYAp6thEXkpjrSK
- 5Uoyh7da4sM/j9ugZ0Axv/LfULllpsTITSStHYpasFbWcTnGrKAhRkA+JYH9Pp3Uq0Df
- 1Jtw==
-X-Gm-Message-State: AOAM531A0FZpUKPGHr6fU7Kxkc0nnYzvvuyLzZmulz0GUHvE/zE0uw4G
- r1oRDdlNQlkDKvt4dC2sWsWrFDu8UMJ8cTOc/VIpBw==
-X-Google-Smtp-Source: ABdhPJw2Q4TTIOv2yPatvgHsLzUCYEIV+MWUndyjTwyGBf4wZLgws1Jetpn+GlCZT+z7/nWYZDuxjGXj0aGn+N+nNG4=
-X-Received: by 2002:ab0:2ea1:: with SMTP id y1mr740229uay.104.1601300270460;
- Mon, 28 Sep 2020 06:37:50 -0700 (PDT)
+ id 1kMvUm-0001mD-7i
+ for linux-mediatek@lists.infradead.org; Mon, 28 Sep 2020 15:55:21 +0000
+Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com
+ [209.85.208.54])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3507A21924
+ for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2020 15:55:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601308519;
+ bh=aSV7ZH6xNk5TES2uXpq9qodN2hGgszJyb+Qy8dtrr9Q=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=UC+Urg/4tXj0ESHccTXdy6Mn9iOb0dzqNdBA82i9sv+QgGUw/nzBtpd5sGCqnsAQd
+ 4GpISw3LiYghb0X9MMpVWP5jkFTPFgBxd2Rbzkn7OjRJpTzIFeXl82aJHVtpAfryaL
+ +35qwXG6LAtgIARn1B2Ay7j2YOAmr2xy00rb/bqY=
+Received: by mail-ed1-f54.google.com with SMTP id n13so1894743edo.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2020 08:55:19 -0700 (PDT)
+X-Gm-Message-State: AOAM530WCLvf6HmNzq0e+nT9C18q4TgAf2otwzHaVt+rS9QcVxn/ia5f
+ +Q2Wex0BchLx1OuZ31vh0N6Uu5O6tx8O/kOm5w==
+X-Google-Smtp-Source: ABdhPJx4YanUWfNwGENzNdM53m6d3jHq61s+O+2C0Gkq0tQ8HJb7RSlQaQey6NWxQ/TyXJJ2f/dg/3N5SilLFir7BdQ=
+X-Received: by 2002:a05:6402:d09:: with SMTP id
+ eb9mr2465473edb.219.1601308517772; 
+ Mon, 28 Sep 2020 08:55:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200928130918.32326-1-wenbin.mei@mediatek.com>
- <20200928130918.32326-2-wenbin.mei@mediatek.com>
-In-Reply-To: <20200928130918.32326-2-wenbin.mei@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 28 Sep 2020 15:37:14 +0200
-Message-ID: <CAPDyKFoQs4Bmd=5vgB6NUr81FnVYPk1k4Z_8pn6KayS5aNQtUA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: mmc: Convert mtk-sd to json-schema
-To: Wenbin Mei <wenbin.mei@mediatek.com>
+References: <20200914231227.30500-1-chunkuang.hu@kernel.org>
+In-Reply-To: <20200914231227.30500-1-chunkuang.hu@kernel.org>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 28 Sep 2020 23:55:07 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__u7AgKuLc6mVoVZrt1sQnu4vYyn8EwhK7B4dh7FoNAug@mail.gmail.com>
+Message-ID: <CAAOTY__u7AgKuLc6mVoVZrt1sQnu4vYyn8EwhK7B4dh7FoNAug@mail.gmail.com>
+Subject: Re: [GIT PULL] mediatek drm next for 5.10
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200928_093752_704469_E915F153 
-X-CRM114-Status: GOOD (  28.36  )
+X-CRM114-CacheID: sfid-20200928_115520_414159_FA6E848D 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,300 +83,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
+Cc: Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 28 Sep 2020 at 15:12, Wenbin Mei <wenbin.mei@mediatek.com> wrote:
->
-> Convert the mtk-sd binding to DT schema format using json-schema.
->
-> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-> Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
-
-Please, don't add reviewed-by tags during an ongoing review, unless
-the reviewer explicitly states that the change looks good. The same
-applies to patch 2 in this series.
-
-No need to resend this time because of this, but please keep this in
-mind when going forward.
-
-Kind regards
-Uffe
-
-> ---
->  .../devicetree/bindings/mmc/mtk-sd.txt        |  75 --------
->  .../devicetree/bindings/mmc/mtk-sd.yaml       | 165 ++++++++++++++++++
->  2 files changed, 165 insertions(+), 75 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.txt
->  create mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.yaml
->
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> deleted file mode 100644
-> index 26a8f320a156..000000000000
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> +++ /dev/null
-> @@ -1,75 +0,0 @@
-> -* MTK MMC controller
-> -
-> -The MTK  MSDC can act as a MMC controller
-> -to support MMC, SD, and SDIO types of memory cards.
-> -
-> -This file documents differences between the core properties in mmc.txt
-> -and the properties used by the msdc driver.
-> -
-> -Required properties:
-> -- compatible: value should be either of the following.
-> -       "mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
-> -       "mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
-> -       "mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
-> -       "mediatek,mt8516-mmc": for mmc host ip compatible with mt8516
-> -       "mediatek,mt6779-mmc": for mmc host ip compatible with mt6779
-> -       "mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
-> -       "mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
-> -       "mediatek,mt7622-mmc": for MT7622 SoC
-> -       "mediatek,mt7623-mmc", "mediatek,mt2701-mmc": for MT7623 SoC
-> -       "mediatek,mt7620-mmc", for MT7621 SoC (and others)
-> -
-> -- reg: physical base address of the controller and length
-> -- interrupts: Should contain MSDC interrupt number
-> -- clocks: Should contain phandle for the clock feeding the MMC controller
-> -- clock-names: Should contain the following:
-> -       "source" - source clock (required)
-> -       "hclk" - HCLK which used for host (required)
-> -       "source_cg" - independent source clock gate (required for MT2712)
-> -       "bus_clk" - bus clock used for internal register access (required for MT2712 MSDC0/3)
-> -- pinctrl-names: should be "default", "state_uhs"
-> -- pinctrl-0: should contain default/high speed pin ctrl
-> -- pinctrl-1: should contain uhs mode pin ctrl
-> -- vmmc-supply: power to the Core
-> -- vqmmc-supply: power to the IO
-> -
-> -Optional properties:
-> -- assigned-clocks: PLL of the source clock
-> -- assigned-clock-parents: parent of source clock, used for HS400 mode to get 400Mhz source clock
-> -- hs400-ds-delay: HS400 DS delay setting
-> -- mediatek,hs200-cmd-int-delay: HS200 command internal delay setting.
-> -                               This field has total 32 stages.
-> -                               The value is an integer from 0 to 31.
-> -- mediatek,hs400-cmd-int-delay: HS400 command internal delay setting
-> -                               This field has total 32 stages.
-> -                               The value is an integer from 0 to 31.
-> -- mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
-> -                                      If present,HS400 command responses are sampled on rising edges.
-> -                                      If not present,HS400 command responses are sampled on falling edges.
-> -- mediatek,latch-ck: Some SoCs do not support enhance_rx, need set correct latch-ck to avoid data crc
-> -                    error caused by stop clock(fifo full)
-> -                    Valid range = [0:0x7]. if not present, default value is 0.
-> -                    applied to compatible "mediatek,mt2701-mmc".
-> -- resets: Phandle and reset specifier pair to softreset line of MSDC IP.
-> -- reset-names: Should be "hrst".
-> -
-> -Examples:
-> -mmc0: mmc@11230000 {
-> -       compatible = "mediatek,mt8173-mmc", "mediatek,mt8135-mmc";
-> -       reg = <0 0x11230000 0 0x108>;
-> -       interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
-> -       vmmc-supply = <&mt6397_vemc_3v3_reg>;
-> -       vqmmc-supply = <&mt6397_vio18_reg>;
-> -       clocks = <&pericfg CLK_PERI_MSDC30_0>,
-> -                <&topckgen CLK_TOP_MSDC50_0_H_SEL>;
-> -       clock-names = "source", "hclk";
-> -       pinctrl-names = "default", "state_uhs";
-> -       pinctrl-0 = <&mmc0_pins_default>;
-> -       pinctrl-1 = <&mmc0_pins_uhs>;
-> -       assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-> -       assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
-> -       hs400-ds-delay = <0x14015>;
-> -       mediatek,hs200-cmd-int-delay = <26>;
-> -       mediatek,hs400-cmd-int-delay = <14>;
-> -       mediatek,hs400-cmd-resp-sel-rising;
-> -};
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> new file mode 100644
-> index 000000000000..2d5ab1411cd5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> @@ -0,0 +1,165 @@
-> +# MTK-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mmc/mtk-sd.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MTK MSDC Storage Host Controller Binding
-> +
-> +maintainers:
-> +  - Ulf Hansson <ulf.hansson@linaro.org>
-> +
-> +allOf:
-> +  - $ref: mmc-controller.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - const: mediatek,mt8135-mmc
-> +      - const: mediatek,mt8173-mmc
-> +      - const: mediatek,mt8183-mmc
-> +      - const: mediatek,mt8516-mmc
-> +      - const: mediatek,mt6779-mmc
-> +      - const: mediatek,mt2701-mmc
-> +      - const: mediatek,mt2712-mmc
-> +      - const: mediatek,mt7622-mmc
-> +      - items:
-> +        - const: mediatek,mt7623-mmc
-> +        - const: mediatek,mt2701-mmc
-> +      - const: mediatek,mt7620-mmc
-> +
-> +  reg:
-> +    description:
-> +      physical base address of the controller and length.
-> +    minItems: 1
-> +    maxItems: 2
-> +
-> +  interrupts:
-> +    description:
-> +      Should contain MSDC interrupt number.
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    description:
-> +      Should contain phandle for the clock feeding the MMC controller.
-> +    minItems: 2
-> +    maxItems: 4
-> +    items:
-> +      - description: source clock (required).
-> +      - description: HCLK which used for host (required).
-> +      - description: independent source clock gate (required for MT2712).
-> +      - description: bus clock used for internal register access (required for MT2712 MSDC0/3).
-> +
-> +  clock-names:
-> +    minItems: 2
-> +    maxItems: 4
-> +    items:
-> +      - const: source
-> +      - const: hclk
-> +      - const: source_cg
-> +      - const: bus_clk
-> +
-> +  pinctrl-names:
-> +    items:
-> +      - const: default
-> +      - const: state_uhs
-> +
-> +  pinctrl-0:
-> +    description:
-> +      should contain default/high speed pin ctrl.
-> +    maxItems: 1
-> +
-> +  pinctrl-1:
-> +    description:
-> +      should contain uhs mode pin ctrl.
-> +    maxItems: 1
-> +
-> +  vmmc-supply:
-> +    description:
-> +      power to the Core.
-> +
-> +  vqmmc-supply:
-> +    description:
-> +      power to the IO.
-> +
-> +  assigned-clocks:
-> +    description:
-> +      PLL of the source clock.
-> +
-> +  assigned-clock-parents:
-> +    description:
-> +      parent of source clock, used for HS400 mode to get 400Mhz source clock.
-> +
-> +  hs400-ds-delay:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      HS400 DS delay setting.
-> +
-> +  mediatek,hs200-cmd-int-delay:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      HS200 command internal delay setting.
-> +      This field has total 32 stages.
-> +      The value is an integer from 0 to 31.
-> +
-> +  mediatek,hs400-cmd-int-delay:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      HS400 command internal delay setting.
-> +      This field has total 32 stages.
-> +      The value is an integer from 0 to 31.
-> +
-> +  mediatek,hs400-cmd-resp-sel-rising:
-> +    $ref: /schemas/types.yaml#/definitions/flag
-> +    description:
-> +      HS400 command response sample selection.
-> +      If present, HS400 command responses are sampled on rising edges.
-> +      If not present, HS400 command responses are sampled on falling edges.
-> +
-> +  mediatek,latch-ck:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Some SoCs do not support enhance_rx, need set correct latch-ck to avoid
-> +      data crc error caused by stop clock(fifo full) Valid range = [0:0x7].
-> +      if not present, default value is 0.
-> +      applied to compatible "mediatek,mt2701-mmc".
-> +
-> +  resets:
-> +    maxItems: 1
-> +
-> +  reset-names:
-> +    const: hrst
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt8173-clk.h>
-> +    mmc0: mmc@11230000 {
-> +        compatible = "mediatek,mt8173-mmc";
-> +        reg = <0x11230000 0x1000>;
-> +        interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
-> +        vmmc-supply = <&mt6397_vemc_3v3_reg>;
-> +        vqmmc-supply = <&mt6397_vio18_reg>;
-> +        clocks = <&pericfg CLK_PERI_MSDC30_0>,
-> +                 <&topckgen CLK_TOP_MSDC50_0_H_SEL>;
-> +        clock-names = "source", "hclk";
-> +        pinctrl-names = "default", "state_uhs";
-> +        pinctrl-0 = <&mmc0_pins_default>;
-> +        pinctrl-1 = <&mmc0_pins_uhs>;
-> +        assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-> +        assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
-> +        hs400-ds-delay = <0x14015>;
-> +        mediatek,hs200-cmd-int-delay = <26>;
-> +        mediatek,hs400-cmd-int-delay = <14>;
-> +        mediatek,hs400-cmd-resp-sel-rising;
-> +    };
-> +
-> +...
-> --
-> 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIERhdmUgJiBEYW5pZWw6CgpJIGRvZXMgbm90IHNlZSB0aGVzZSBwYXRjaGVzIGluIGRybS1u
+ZXh0IGJyYW5jaC4gRG9lcyB0aGVzZSBwYXRjaGVzCmhhdmUgYW55IHByb2JsZW0/CgpSZWdhcmRz
+LApDaHVuLUt1YW5nLgoKQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+IOaW
+vCAyMDIw5bm0OeaciDE15pelIOmAseS6jCDkuIrljYg3OjEy5a+r6YGT77yaCj4KPiBIaSwgRGF2
+ZSAmIERhbmllbDoKPgo+IFRoaXMgaW5jbHVkZXM6Cj4KPiAxLiBNb3ZlIE1lZGlhdGVrIEhETUkg
+UEhZIGRyaXZlciBmcm9tIERSTSBmb2xkZXIgdG8gUEhZIGZvbGRlcgo+IDIuIENvbnZlcnQgbXRr
+LWRwaSB0byBkcm1fYnJpZGdlIEFQSQo+IDMuIERpc2FibGUgdG1kcyBvbiBtdDI3MDEKPgo+IFJl
+Z2FyZHMsCj4gQ2h1bi1LdWFuZy4KPgo+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21t
+aXQgOTEyM2UzYTc0ZWM3YjkzNGE0YTA5OWU5OGFmNmE2MWMyZjgwYmJmNToKPgo+ICAgTGludXgg
+NS45LXJjMSAoMjAyMC0wOC0xNiAxMzowNDo1NyAtMDcwMCkKPgo+IGFyZSBhdmFpbGFibGUgaW4g
+dGhlIEdpdCByZXBvc2l0b3J5IGF0Ogo+Cj4gICBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9z
+Y20vbGludXgva2VybmVsL2dpdC9jaHVua3VhbmcuaHUvbGludXguZ2l0IHRhZ3MvbWVkaWF0ZWst
+ZHJtLW5leHQtNS4xMAo+Cj4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDA5ZTg3MmQ1
+NThiYTZhN2Y0NDY4YzRlOGNkZjBjZDVhOTliZmMxNzU6Cj4KPiAgIGRybS9tZWRpYXRlazogRGlz
+YWJsZSB0bWRzIG9uIG10MjcwMSAoMjAyMC0wOS0xNCAyMzowNToyMyArMDgwMCkKPgo+IC0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0KPiBNZWRpYXRlayBEUk0gTmV4dCBmb3IgTGludXggNS4xMAo+Cj4gMS4gTW92ZSBNZWRpYXRl
+ayBIRE1JIFBIWSBkcml2ZXIgZnJvbSBEUk0gZm9sZGVyIHRvIFBIWSBmb2xkZXIKPiAyLiBDb252
+ZXJ0IG10ay1kcGkgdG8gZHJtX2JyaWRnZSBBUEkKPiAzLiBEaXNhYmxlIHRtZHMgb24gbXQyNzAx
+Cj4KPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tCj4gQ0sgSHUgKDMpOgo+ICAgICAgIGRybS9tZWRpYXRlazogTW92ZSB0el9k
+aXNhYmxlZCBmcm9tIG10a19oZG1pX3BoeSB0byBtdGtfaGRtaSBkcml2ZXIKPiAgICAgICBkcm0v
+bWVkaWF0ZWs6IFNlcGFyYXRlIG10a19oZG1pX3BoeSB0byBhbiBpbmRlcGVuZGVudCBtb2R1bGUK
+PiAgICAgICBwaHk6IG1lZGlhdGVrOiBNb3ZlIG10a19oZG1pX3BoeSBkcml2ZXIgaW50byBkcml2
+ZXJzL3BoeS9tZWRpYXRlayBmb2xkZXIKPgo+IENodW4tS3VhbmcgSHUgKDEpOgo+ICAgICAgIE1B
+SU5UQUlORVJTOiBhZGQgZmlsZXMgZm9yIE1lZGlhdGVrIERSTSBkcml2ZXJzCj4KPiBFbnJpYyBC
+YWxsZXRibyBpIFNlcnJhICgyKToKPiAgICAgICBkcm0vbWVkaWF0ZWs6IG10a19kcGk6IFJlbmFt
+ZSBicmlkZ2UgdG8gbmV4dF9icmlkZ2UKPiAgICAgICBkcm0vbWVkaWF0ZWs6IG10a19kcGk6IENv
+bnZlcnQgdG8gYnJpZGdlIGRyaXZlcgo+Cj4gRnJhbmsgV3VuZGVybGljaCAoMik6Cj4gICAgICAg
+ZHQtYmluZGluZ3M6IG1lZGlhdGVrOiBhZGQgbXQ3NjIzIGRpc3BsYXktbm9kZXMKPiAgICAgICBk
+cm0vbWVkaWF0ZWs6IEFkZCBkZHAgcm91dGluZyBmb3IgbXQ3NjIzCj4KPiBTdHUgSHNpZWggKDEp
+Ogo+ICAgICAgIGRybS9tZWRpYXRlazogZHBpL2RzaTogQ2hhbmdlIHRoZSBnZXR0aW5nIHBvc3Np
+YmxlX2NydGMgd2F5Cj4KPiBjaHVuaHVpIGRhaSAoMSk6Cj4gICAgICAgZHJtL21lZGlhdGVrOiBE
+aXNhYmxlIHRtZHMgb24gbXQyNzAxCj4KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAgICAgICAgICAgICAgICAg
+fCAgMiArLQo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRp
+YXRlay9tZWRpYXRlayxkcGkudHh0ICAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gIERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRz
+aS50eHQgICAgICAgICAgICAgICAgICAgIHwgIDQgKystLQo+ICBEb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dCAgICAgICAg
+ICAgICAgICAgICB8ICA0ICsrKysKPiAgTUFJTlRBSU5FUlMgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAg
+MSArCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgfCAgNSArLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RwaS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICB8IDgwICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgMzggKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysK
+PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMiArKwo+ICBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICB8IDIzICsrKysrKysrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIHwgIDYgKy0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfaGRtaS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIHwgMjEgKysrKysrKysrKysrKysrKystLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfaGRtaS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL3BoeS9tZWRpYXRlay9LY29uZmlnICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA3
+ICsrKysrKysKPiAgZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgNSArKysrKwo+ICBk
+cml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYyA9PiBwaHkvbWVk
+aWF0ZWsvcGh5LW10ay1oZG1pLW10MjcwMS5jfSB8ICA0ICsrLS0KPiAgZHJpdmVycy97Z3B1L2Ry
+bS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgPT4gcGh5L21lZGlhdGVrL3BoeS1tdGst
+aGRtaS1tdDgxNzMuY30gfCAgMiArLQo+ICBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19o
+ZG1pX3BoeS5jID0+IHBoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuY30gICAgICAgICAgICAgICB8
+ICA2ICsrKysrLQo+ICBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5oID0+
+IHBoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuaH0gICAgICAgICAgICAgICB8ICAzICstLQo+ICAy
+MCBmaWxlcyBjaGFuZ2VkLCAxNTkgaW5zZXJ0aW9ucygrKSwgNTkgZGVsZXRpb25zKC0pCj4gIHJl
+bmFtZSBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYyA9PiBw
+aHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLW10MjcwMS5jfSAoOTklKQo+ICByZW5hbWUgZHJpdmVy
+cy97Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgPT4gcGh5L21lZGlhdGVr
+L3BoeS1tdGstaGRtaS1tdDgxNzMuY30gKDk5JSkKPiAgcmVuYW1lIGRyaXZlcnMve2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMgPT4gcGh5L21lZGlhdGVrL3BoeS1tdGstaGRtaS5jfSAo
+OTYlKQo+ICByZW5hbWUgZHJpdmVycy97Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCA9
+PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLmh9ICg5NSUpCj4gX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4g
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
+dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
