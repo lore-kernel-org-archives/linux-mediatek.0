@@ -2,76 +2,88 @@ Return-Path: <SRS0=uRRy=DF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5AC5C2D0A8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 15:55:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2782AC2D0A8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 17:14:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C7A3206B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 15:55:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D472820773
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2020 17:14:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q6208x+u";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UC+Urg/4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C7A3206B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="13jmeQHU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nkFN+z9v"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D472820773
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=P4AfzjkMNJm95w43jY6rsRnxn3nmyKJE5xD3Uu2joy0=; b=Q6208x+uoTBV2cfZoPFb3siR+
-	nxONcgBQSHHYc+wiTJW+V7h4ZX66N/E4h3XgRA7NAOKdzFF7ozlOwEXcIQa8WKKozwdzVd+TdAvmg
-	UKzOpgDw/mIVagn1kQ0iDXiP5y1mmkkr353Hivw4d+tEU7j0FN8fClvt8GrEu6bpvx7OXOOoBLIEX
-	uVeiqVUVroNGIAM1tO6BAgeR2F0dcru3L/uELahkkXfuYukoBD1c7w7WZZvN6vfFKpgBSGy5/jL3r
-	5rUUPXajk8WAZarhzwJTg9qTFIakLnBLYewo5mAAdtLCXtaAsOwjkawjibYhKRVxxh9da+sxUu5Bw
-	hlfGr5LTQ==;
+	 bh=AnWz23f/AxX+HS1lCjpD6U4fCNXB7alT1Hi7dy/xEBM=; b=13jmeQHU0mA2QhH0q6ns5aD3s
+	NyYfyXfafpw2SaJa/5INvc5Nr63KLy8XCCzI0Pp2XVpxqv+a08wl7vRel+LAaB8q1+1CenaHUYVFI
+	VDFBnrOJ2UqeAb8NsG72A8n2mGd2M+/rdS8zZe/fkJiGGJEh97heJhuHP/bRuOjsPIEaFQjkawCSK
+	cl5vDXpoeEeeyRf1nnwFbRAKx4TZWmI9ibbz+ZjH4uIkl2oQ2Hx01w8n5tyhUo0o+9NDeuc7Z0bhI
+	kStLVuuVyz4smmyfjCMGsdjyEyXgDf53O2uCf9gr9FyCJg9iY5z4KjkW0dYz8avMYKVcTpYmHdtAG
+	Wsbv+sTOw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kMvUo-0001mf-Kl; Mon, 28 Sep 2020 15:55:22 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kMwjM-0004mF-Vi; Mon, 28 Sep 2020 17:14:29 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kMvUm-0001mD-7i
- for linux-mediatek@lists.infradead.org; Mon, 28 Sep 2020 15:55:21 +0000
-Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com
- [209.85.208.54])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3507A21924
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2020 15:55:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1601308519;
- bh=aSV7ZH6xNk5TES2uXpq9qodN2hGgszJyb+Qy8dtrr9Q=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=UC+Urg/4tXj0ESHccTXdy6Mn9iOb0dzqNdBA82i9sv+QgGUw/nzBtpd5sGCqnsAQd
- 4GpISw3LiYghb0X9MMpVWP5jkFTPFgBxd2Rbzkn7OjRJpTzIFeXl82aJHVtpAfryaL
- +35qwXG6LAtgIARn1B2Ay7j2YOAmr2xy00rb/bqY=
-Received: by mail-ed1-f54.google.com with SMTP id n13so1894743edo.10
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2020 08:55:19 -0700 (PDT)
-X-Gm-Message-State: AOAM530WCLvf6HmNzq0e+nT9C18q4TgAf2otwzHaVt+rS9QcVxn/ia5f
- +Q2Wex0BchLx1OuZ31vh0N6Uu5O6tx8O/kOm5w==
-X-Google-Smtp-Source: ABdhPJx4YanUWfNwGENzNdM53m6d3jHq61s+O+2C0Gkq0tQ8HJb7RSlQaQey6NWxQ/TyXJJ2f/dg/3N5SilLFir7BdQ=
-X-Received: by 2002:a05:6402:d09:: with SMTP id
- eb9mr2465473edb.219.1601308517772; 
- Mon, 28 Sep 2020 08:55:17 -0700 (PDT)
+ id 1kMwjI-0004jl-Fa; Mon, 28 Sep 2020 17:14:26 +0000
+Received: by mail-wr1-x442.google.com with SMTP id w5so2189143wrp.8;
+ Mon, 28 Sep 2020 10:14:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ZAW6dcCoUbddPaYdr5/lbjgYoSVn9vUyYWWh66IQR2M=;
+ b=nkFN+z9v1kUNrol7AqK7Z6xx6MoDko4TE7Cw30iHBx68So86SMFHvxbK9rNAYyLh8O
+ kJomHCfJB+poR3gVVUrh7734yNNn0CCyVz2lwjDs7LVEoYYFIpH0xHXz0moihZ2JcOQ1
+ uacch0SprOmJexYeiwRvnwkhF2iEnvEWLeUdzbGpTH8wbfBzCT75o9+WyEP07HT5bXsA
+ Y5M5XGLcKMIOcnWaX+0e5Mfx00oZZpVMok6cBnqY/UPWM1Gh6Xtz65EGxMygG/Sbg7MI
+ hGd8wOBw5MEXXEojX9/J/IiOQYUiisVOwVtlc/nUmfEdqNG0OWcw5pUQHx3vEc7GbAhp
+ m6xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ZAW6dcCoUbddPaYdr5/lbjgYoSVn9vUyYWWh66IQR2M=;
+ b=rRffujktbVKY4sUufvhMXwxUMTH/ng3kMwvuLXP1yNA1bkmUrgCjmNg6sN5FNCs7Wv
+ FUXGE/Dj6cHY258bmiItUoI4mYQQjeE2mB18CKAUN8SH1LP9xuAWFWlcdQcRgGsf1gvS
+ evgCQcP96SkJ9So8rgN2+E9d6jP58acbVVMHPc/21tBU7Cug9sP56IfQU0wqU0iOEwQB
+ t0AzQ5nb3rG2JGIgn58xMUloEMcvwSph+nqaJqeGKYgkU23ZFkSAx7TcVGT2BOFArCBL
+ px3SJbUd979puxnEPxSHOjuStse+7BqMgfKYV3FuA1QsFtjCHvx8z9ESRDkcxjYQll+8
+ CCLg==
+X-Gm-Message-State: AOAM531c4HnSAwaUG56RSwR66EHKlhr6HzX/OnTbWwVWuVIHtmA8qW5L
+ /H2+YiY0OT3ki4DmxUUYI/U=
+X-Google-Smtp-Source: ABdhPJxzDWkSo4Db8lLVYiLe3RVkBDu7Qbr3OCQEll/PrffgJ7nvwrBvb7FsZx00rdn33neO2ikp2g==
+X-Received: by 2002:adf:ef48:: with SMTP id c8mr2818976wrp.370.1601313261840; 
+ Mon, 28 Sep 2020 10:14:21 -0700 (PDT)
+Received: from a-VirtualBox ([103.120.71.253])
+ by smtp.gmail.com with ESMTPSA id q20sm2010984wmj.5.2020.09.28.10.14.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Sep 2020 10:14:21 -0700 (PDT)
+Date: Mon, 28 Sep 2020 22:14:14 +0500
+From: Bilal Wasim <bilalwasim676@gmail.com>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [v3 PATCH] drm/mediatek: dsi: fix scrolling of panel with small
+ hfp or hbp
+Message-ID: <20200928221414.5cb079a9@a-VirtualBox>
+In-Reply-To: <20200917033009.24799-1-jitao.shi@mediatek.com>
+References: <20200917033009.24799-1-jitao.shi@mediatek.com>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-References: <20200914231227.30500-1-chunkuang.hu@kernel.org>
-In-Reply-To: <20200914231227.30500-1-chunkuang.hu@kernel.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 28 Sep 2020 23:55:07 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__u7AgKuLc6mVoVZrt1sQnu4vYyn8EwhK7B4dh7FoNAug@mail.gmail.com>
-Message-ID: <CAAOTY__u7AgKuLc6mVoVZrt1sQnu4vYyn8EwhK7B4dh7FoNAug@mail.gmail.com>
-Subject: Re: [GIT PULL] mediatek drm next for 5.10
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200928_115520_414159_FA6E848D 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20200928_131424_774212_E349184E 
+X-CRM114-Status: GOOD (  20.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,98 +95,136 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ bibby.hsieh@mediatek.com, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ cawa.cheng@mediatek.com, ck.hu@mediatek.com, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIERhdmUgJiBEYW5pZWw6CgpJIGRvZXMgbm90IHNlZSB0aGVzZSBwYXRjaGVzIGluIGRybS1u
-ZXh0IGJyYW5jaC4gRG9lcyB0aGVzZSBwYXRjaGVzCmhhdmUgYW55IHByb2JsZW0/CgpSZWdhcmRz
-LApDaHVuLUt1YW5nLgoKQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+IOaW
-vCAyMDIw5bm0OeaciDE15pelIOmAseS6jCDkuIrljYg3OjEy5a+r6YGT77yaCj4KPiBIaSwgRGF2
-ZSAmIERhbmllbDoKPgo+IFRoaXMgaW5jbHVkZXM6Cj4KPiAxLiBNb3ZlIE1lZGlhdGVrIEhETUkg
-UEhZIGRyaXZlciBmcm9tIERSTSBmb2xkZXIgdG8gUEhZIGZvbGRlcgo+IDIuIENvbnZlcnQgbXRr
-LWRwaSB0byBkcm1fYnJpZGdlIEFQSQo+IDMuIERpc2FibGUgdG1kcyBvbiBtdDI3MDEKPgo+IFJl
-Z2FyZHMsCj4gQ2h1bi1LdWFuZy4KPgo+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21t
-aXQgOTEyM2UzYTc0ZWM3YjkzNGE0YTA5OWU5OGFmNmE2MWMyZjgwYmJmNToKPgo+ICAgTGludXgg
-NS45LXJjMSAoMjAyMC0wOC0xNiAxMzowNDo1NyAtMDcwMCkKPgo+IGFyZSBhdmFpbGFibGUgaW4g
-dGhlIEdpdCByZXBvc2l0b3J5IGF0Ogo+Cj4gICBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9z
-Y20vbGludXgva2VybmVsL2dpdC9jaHVua3VhbmcuaHUvbGludXguZ2l0IHRhZ3MvbWVkaWF0ZWst
-ZHJtLW5leHQtNS4xMAo+Cj4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDA5ZTg3MmQ1
-NThiYTZhN2Y0NDY4YzRlOGNkZjBjZDVhOTliZmMxNzU6Cj4KPiAgIGRybS9tZWRpYXRlazogRGlz
-YWJsZSB0bWRzIG9uIG10MjcwMSAoMjAyMC0wOS0xNCAyMzowNToyMyArMDgwMCkKPgo+IC0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0KPiBNZWRpYXRlayBEUk0gTmV4dCBmb3IgTGludXggNS4xMAo+Cj4gMS4gTW92ZSBNZWRpYXRl
-ayBIRE1JIFBIWSBkcml2ZXIgZnJvbSBEUk0gZm9sZGVyIHRvIFBIWSBmb2xkZXIKPiAyLiBDb252
-ZXJ0IG10ay1kcGkgdG8gZHJtX2JyaWRnZSBBUEkKPiAzLiBEaXNhYmxlIHRtZHMgb24gbXQyNzAx
-Cj4KPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tCj4gQ0sgSHUgKDMpOgo+ICAgICAgIGRybS9tZWRpYXRlazogTW92ZSB0el9k
-aXNhYmxlZCBmcm9tIG10a19oZG1pX3BoeSB0byBtdGtfaGRtaSBkcml2ZXIKPiAgICAgICBkcm0v
-bWVkaWF0ZWs6IFNlcGFyYXRlIG10a19oZG1pX3BoeSB0byBhbiBpbmRlcGVuZGVudCBtb2R1bGUK
-PiAgICAgICBwaHk6IG1lZGlhdGVrOiBNb3ZlIG10a19oZG1pX3BoeSBkcml2ZXIgaW50byBkcml2
-ZXJzL3BoeS9tZWRpYXRlayBmb2xkZXIKPgo+IENodW4tS3VhbmcgSHUgKDEpOgo+ICAgICAgIE1B
-SU5UQUlORVJTOiBhZGQgZmlsZXMgZm9yIE1lZGlhdGVrIERSTSBkcml2ZXJzCj4KPiBFbnJpYyBC
-YWxsZXRibyBpIFNlcnJhICgyKToKPiAgICAgICBkcm0vbWVkaWF0ZWs6IG10a19kcGk6IFJlbmFt
-ZSBicmlkZ2UgdG8gbmV4dF9icmlkZ2UKPiAgICAgICBkcm0vbWVkaWF0ZWs6IG10a19kcGk6IENv
-bnZlcnQgdG8gYnJpZGdlIGRyaXZlcgo+Cj4gRnJhbmsgV3VuZGVybGljaCAoMik6Cj4gICAgICAg
-ZHQtYmluZGluZ3M6IG1lZGlhdGVrOiBhZGQgbXQ3NjIzIGRpc3BsYXktbm9kZXMKPiAgICAgICBk
-cm0vbWVkaWF0ZWs6IEFkZCBkZHAgcm91dGluZyBmb3IgbXQ3NjIzCj4KPiBTdHUgSHNpZWggKDEp
-Ogo+ICAgICAgIGRybS9tZWRpYXRlazogZHBpL2RzaTogQ2hhbmdlIHRoZSBnZXR0aW5nIHBvc3Np
-YmxlX2NydGMgd2F5Cj4KPiBjaHVuaHVpIGRhaSAoMSk6Cj4gICAgICAgZHJtL21lZGlhdGVrOiBE
-aXNhYmxlIHRtZHMgb24gbXQyNzAxCj4KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAgICAgICAgICAgICAgICAg
-fCAgMiArLQo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRp
-YXRlay9tZWRpYXRlayxkcGkudHh0ICAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gIERvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRz
-aS50eHQgICAgICAgICAgICAgICAgICAgIHwgIDQgKystLQo+ICBEb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dCAgICAgICAg
-ICAgICAgICAgICB8ICA0ICsrKysKPiAgTUFJTlRBSU5FUlMgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAg
-MSArCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfCAgNSArLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RwaS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICB8IDgwICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHwgMzggKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysK
-PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMiArKwo+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB8IDIzICsrKysrKysrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHwgIDYgKy0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfaGRtaS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHwgMjEgKysrKysrKysrKysrKysrKystLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfaGRtaS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHwgIDEgLQo+ICBkcml2ZXJzL3BoeS9tZWRpYXRlay9LY29uZmlnICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA3
-ICsrKysrKysKPiAgZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgNSArKysrKwo+ICBk
-cml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYyA9PiBwaHkvbWVk
-aWF0ZWsvcGh5LW10ay1oZG1pLW10MjcwMS5jfSB8ICA0ICsrLS0KPiAgZHJpdmVycy97Z3B1L2Ry
-bS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgPT4gcGh5L21lZGlhdGVrL3BoeS1tdGst
-aGRtaS1tdDgxNzMuY30gfCAgMiArLQo+ICBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19o
-ZG1pX3BoeS5jID0+IHBoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuY30gICAgICAgICAgICAgICB8
-ICA2ICsrKysrLQo+ICBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5oID0+
-IHBoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuaH0gICAgICAgICAgICAgICB8ICAzICstLQo+ICAy
-MCBmaWxlcyBjaGFuZ2VkLCAxNTkgaW5zZXJ0aW9ucygrKSwgNTkgZGVsZXRpb25zKC0pCj4gIHJl
-bmFtZSBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYyA9PiBw
-aHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLW10MjcwMS5jfSAoOTklKQo+ICByZW5hbWUgZHJpdmVy
-cy97Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgPT4gcGh5L21lZGlhdGVr
-L3BoeS1tdGstaGRtaS1tdDgxNzMuY30gKDk5JSkKPiAgcmVuYW1lIGRyaXZlcnMve2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMgPT4gcGh5L21lZGlhdGVrL3BoeS1tdGstaGRtaS5jfSAo
-OTYlKQo+ICByZW5hbWUgZHJpdmVycy97Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCA9
-PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLmh9ICg5NSUpCj4gX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4g
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
-dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi Jitao, 
+
+On Thu, 17 Sep 2020 11:30:09 +0800
+Jitao Shi <jitao.shi@mediatek.com> wrote:
+
+> Replace horizontal_backporch_byte with vm->hback_porch * bpp to aovid
+> flowing judgement negative number.
+> 
+> if ((vm->hfront_porch * dsi_tmp_buf_bpp + horizontal_backporch_byte) >
+> 	data_phy_cycles * dsi->lanes + delta)
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 54
+> ++++++++++++++------------------------ 1 file changed, 19
+> insertions(+), 35 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> b/drivers/gpu/drm/mediatek/mtk_dsi.c index 16fd99dcdacf..ddddf69ebeaf
+> 100644 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -445,6 +445,7 @@ static void mtk_dsi_config_vdo_timing(struct
+> mtk_dsi *dsi) u32 horizontal_backporch_byte;
+>  	u32 horizontal_frontporch_byte;
+>  	u32 dsi_tmp_buf_bpp, data_phy_cycles;
+> +	u32 delta;
+>  	struct mtk_phy_timing *timing = &dsi->phy_timing;
+>  
+>  	struct videomode *vm = &dsi->vm;
+> @@ -475,42 +476,25 @@ static void mtk_dsi_config_vdo_timing(struct
+> mtk_dsi *dsi) data_phy_cycles = timing->lpx + timing->da_hs_prepare +
+>  			  timing->da_hs_zero + timing->da_hs_exit +
+> 3; 
+> -	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
+> -		if ((vm->hfront_porch + vm->hback_porch) *
+> dsi_tmp_buf_bpp >
+> -		    data_phy_cycles * dsi->lanes + 18) {
+> -			horizontal_frontporch_byte =
+> -				vm->hfront_porch * dsi_tmp_buf_bpp -
+> -				(data_phy_cycles * dsi->lanes + 18) *
+> -				vm->hfront_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -
+> -			horizontal_backporch_byte =
+> -				horizontal_backporch_byte -
+> -				(data_phy_cycles * dsi->lanes + 18) *
+> -				vm->hback_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -		} else {
+> -			DRM_WARN("HFP less than d-phy, FPS will
+> under 60Hz\n");
+> -			horizontal_frontporch_byte =
+> vm->hfront_porch *
+> -						     dsi_tmp_buf_bpp;
+> -		}
+> +	delta = (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) ? 18 :
+> 12; +
+> +	if ((vm->hfront_porch * dsi_tmp_buf_bpp +
+> horizontal_backporch_byte) >
+> +	    data_phy_cycles * dsi->lanes + delta) {
+> +		horizontal_frontporch_byte =
+> +			vm->hfront_porch * dsi_tmp_buf_bpp -
+> +			(data_phy_cycles * dsi->lanes + delta) *
+> +			vm->hfront_porch /
+> +			(vm->hfront_porch + vm->hback_porch);
+> +
+> +		horizontal_backporch_byte =
+> +			horizontal_backporch_byte -
+> +			(data_phy_cycles * dsi->lanes + delta) *
+> +			vm->hback_porch /
+> +			(vm->hfront_porch + vm->hback_porch);
+>  	} else {
+> -		if ((vm->hfront_porch + vm->hback_porch) *
+> dsi_tmp_buf_bpp >
+> -		    data_phy_cycles * dsi->lanes + 12) {
+> -			horizontal_frontporch_byte =
+> -				vm->hfront_porch * dsi_tmp_buf_bpp -
+> -				(data_phy_cycles * dsi->lanes + 12) *
+> -				vm->hfront_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -			horizontal_backporch_byte =
+> horizontal_backporch_byte -
+> -				(data_phy_cycles * dsi->lanes + 12) *
+> -				vm->hback_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -		} else {
+> -			DRM_WARN("HFP less than d-phy, FPS will
+> under 60Hz\n");
+> -			horizontal_frontporch_byte =
+> vm->hfront_porch *
+> -						     dsi_tmp_buf_bpp;
+> -		}
+> +		DRM_WARN("HFP + HBP less than d-phy, FPS will under
+> 60Hz\n");
+> +		horizontal_frontporch_byte = vm->hfront_porch *
+> +					     dsi_tmp_buf_bpp;
+>  	}
+>  
+>  	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+
+Can you explain how this patch is relevant to
+https://patchwork.kernel.org/patch/11718191/? It was sent out on
+17/Sept while the v2 was merged before that. 
+
+As the v2 patch (https://patchwork.kernel.org/patch/11718191/) breaks
+HDMI (eDP) on my Chromebook Elm (starting from 5.9-rc6), I'm guessing
+that that was a bad patch, and should be reverted? Instead, this v3
+should be applied? Is this correct? 
+
+If so, can you kindly send a new patch which reverts v2 and applies
+this one, as application of this patch on rc7 fails.
+
+Thanks,
+Bilal
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
