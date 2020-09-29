@@ -2,77 +2,77 @@ Return-Path: <SRS0=Ekst=DG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1ECD6C2D0A8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 03:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DB84C4346E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 06:09:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BFB1F216C4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 03:24:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D1A9E20C09
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 06:09:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UaPmTC5I";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="faeEEExf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFB1F216C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a9nyEnZw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="h1SlIvBr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1A9E20C09
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bnvaZZ29ydbAlYXmEDPEBmA0MN5032XRmqawFu33dEM=; b=UaPmTC5I+toVcx8m+Wz1nhA8W
-	Bt8+WKL1WDdBIzggBcD+baF6TW2Bd2cvc0/tyMFVht7TzCWv8SXVU1xX8nBbACLhU+lMhnE/mcOtl
-	hNK4jOyba8G1imDU44Wz+Curq1Ru3IS1nUt4BCSP38UGUZ2++24z1Eud9ZLJoGyC6XDEq+xCj2Ezs
-	rRL4tuLCTCNDW9cWFnPVJgNzQlA80CL6W8ERO/i2VhDUtKi3sOaa/pKL9/vwfIJM1jFOaRyy4MSEs
-	WyFc/OiI+aVRihx7kACY6lk2PB9AEotofK+6mFFq6B690sI0FzB/qrh64X2UPukiCq4WwUCVk1xom
-	yJQ5w11NA==;
+	 bh=cLmLz0NTJJ/2yZcaWkl6tVNHvz0L+rmkHVOkYXRPBEI=; b=a9nyEnZwIMry0vVycJsLJZcDm
+	oIQce/nrEH8RxblBi1/RtIkb7FoigHGsR7iwTbVetR4bWPjYy+d6K1sj/Gx3dFXTsKeNOvqK4Zc0O
+	V/VcGYaGAoCx/yH8Q8Lv1S3Ok2nYH09T3bZloxvBBQ9af15eP0e+zbYuAJA5AQ1XqiGGT5fpYYrrr
+	0Bv+pmvu+S9I+9qhwJtuDk1R5e43ykkbakJbwYdF2OwR1g3LYJRyJ+teufoNZKhDU5PbUZTY3R9iJ
+	40HKTqLogfUoX1SjE5ySAkTOfSQzClO/mOCYNCc8v3tmOZmTdYEOltmGgrUlAG22ys5FyxdN3Omp5
+	bbtRJl+fg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kN6FB-0002dV-BC; Tue, 29 Sep 2020 03:23:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kN8pK-0004JJ-I7; Tue, 29 Sep 2020 06:09:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kN6Et-0002Wq-RP; Tue, 29 Sep 2020 03:23:41 +0000
-X-UUID: 28ee55b7a7c646419d46290f352b033b-20200928
+ id 1kN8pG-0004IU-NZ; Tue, 29 Sep 2020 06:09:24 +0000
+X-UUID: 99b49dc938d743d4ab7a4a3ceed7c1cb-20200928
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=UUXMeFr2hHlJSZLi34HcTDGs0TPXgBJAsi0hvj0UIoM=; 
- b=faeEEExfi/HkXMsHEV7WcCwAEEqxOgY2fn3LnRwlxPkG43SK1ZfofsSX3Yh18YZdy8op+CqGJnG4jGkv+HAwEK0Z5GxKwJ1sH1XiY5+an2BI6DT5xcnzlTWDUtzENbv2PdyHjAK04CdWNZoIPw04h3vbVhmmNmL4Fa73OP+ieds=;
-X-UUID: 28ee55b7a7c646419d46290f352b033b-20200928
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <crystal.guo@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Xw4yksfYd5fXr4ldEJmpjXvMZXzn7kJ9Yq/JIUXEB8A=; 
+ b=h1SlIvBrn9lBXhxKTcgPYwhHJZxQLtaLCov5kTs4Yczouf5oxuVdn56TKHwj8gU4DjZWTV2GOoeTt2pu/nuKD3jrnUefXTlk+zQn/9f+Aiu7rJmQWIcyzeincgwO/lNcVpEagEf5dubDANHY7+ldZ2O1XVEaZosC12Ys4hU5GTo=;
+X-UUID: 99b49dc938d743d4ab7a4a3ceed7c1cb-20200928
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1962135372; Mon, 28 Sep 2020 19:23:34 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 645469094; Mon, 28 Sep 2020 22:09:16 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Sep 2020 20:22:46 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Sep 2020 11:22:41 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 29 Sep 2020 11:22:40 +0800
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: <linux@roeck-us.net>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-Subject: [v5, 1/4] dt-binding: mediatek: watchdog: fix the description of
- compatible
-Date: Tue, 29 Sep 2020 11:20:02 +0800
-Message-ID: <20200929032005.15169-2-crystal.guo@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200929032005.15169-1-crystal.guo@mediatek.com>
-References: <20200929032005.15169-1-crystal.guo@mediatek.com>
+ 15.0.1497.2; Mon, 28 Sep 2020 23:09:14 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 29 Sep 2020 14:09:12 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 29 Sep 2020 14:09:12 +0800
+Message-ID: <1601359599.29336.49.camel@mhfsdcap03>
+Subject: Re: [PATCH] dt-bindings: usb: add properties for hard wired devices
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Tue, 29 Sep 2020 14:06:39 +0800
+In-Reply-To: <20200928181247.GA3008733@bogus>
+References: <20200928063950.64722-1-chunfeng.yun@mediatek.com>
+ <20200928181247.GA3008733@bogus>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AEDFD2495232231D73CA3DB330A350D1A49A6FA4DAF699D989BEA3844F8671392000:8
+X-TM-SNTS-SMTP: F8EFEE97F27DC64FB443E5232A9A52AC9BC551E88AE8507045FC3C02669586062000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200928_232340_044898_F308744C 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20200929_020922_927326_4B2F7824 
+X-CRM114-Status: GOOD (  19.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,47 +84,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-watchdog@vger.kernel.org, srv_heupstream@mediatek.com,
- seiya.wang@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Crystal Guo <crystal.guo@mediatek.com>,
+Cc: devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The watchdog driver for MT2712 and MT8183 relies on DT data, so
-the fallback compatible MT6589 won't work.
+On Mon, 2020-09-28 at 13:12 -0500, Rob Herring wrote:
+> On Mon, Sep 28, 2020 at 02:39:50PM +0800, Chunfeng Yun wrote:
+> > Add some optional properties which are needed for hard wired devices
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  Documentation/devicetree/bindings/usb/usb-hcd.yaml | 11 +++++++++++
+> >  1 file changed, 11 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/usb/usb-hcd.yaml b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+> > index 7263b7f2b510..1194a82887e7 100644
+> > --- a/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+> > +++ b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+> > @@ -22,6 +22,17 @@ properties:
+> >      description:
+> >        Name specifier for the USB PHY
+> >  
+> > +  "#address-cells":
+> > +    const: 1
+> > +
+> > +  "#size-cells":
+> > +    const: 0
+> > +
+> > +patternProperties:
+> > +  "^hub|device@[0-9a-f]+$":
+> 
+> Could be any class of device, so '@[0-9a-f]+$'
+You mean we will use different standard node name for each usb class?
+e.g.
+Use 'ethernet@*' for a usb ethernet adapter, and use 'camera@*' for a
+usb camera sensor?
 
-Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
----
- Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> > +    type: object
+> > +    description: The hard wired USB devices. See usb/usb-device.txt
+> 
+> Ideally, we'd convert usb-device.txt to schema and reference it here.
+Ok, I'll try to do it.
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-index 4dd36bd3f1ad..45eedc2c3141 100644
---- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-+++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-@@ -4,13 +4,13 @@ Required properties:
- 
- - compatible should contain:
- 	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
--	"mediatek,mt2712-wdt", "mediatek,mt6589-wdt": for MT2712
-+	"mediatek,mt2712-wdt": for MT2712
- 	"mediatek,mt6589-wdt": for MT6589
- 	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
- 	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
- 	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
- 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
--	"mediatek,mt8183-wdt", "mediatek,mt6589-wdt": for MT8183
-+	"mediatek,mt8183-wdt": for MT8183
- 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
- 
- - reg : Specifies base physical address and size of the registers.
--- 
-2.18.0
+BTW: Does the compatible support pattern? Is there any example I can
+refer to?
+
+Thanks
+
+> 
+> > +
+> >  examples:
+> >    - |
+> >      usb {
+> > -- 
+> > 2.18.0
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
