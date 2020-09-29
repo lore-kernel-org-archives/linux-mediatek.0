@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B201EC4727C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 16:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B3B5C4727C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 16:58:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3FC520936
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 16:30:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A5AD9208B8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 16:58:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="esdSga/n";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="e+F6S2/l"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3FC520936
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wb8cAaY0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="Xh8+aOwV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5AD9208B8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mFZitfDwBbDpZhJC7/wM9jUnSFFvo3sTh71uHO6V0EU=; b=esdSga/nS3rXGtDTrH8hMp3ya
-	ocHAJQAUoiVj6UQPigbIQaxcv6TrJTvqlLnbrtbLS0be65m1uhqnpUYTSEsztbSA+AoN5AgDH6Gwr
-	aHuY0d8clDBHMlsSbv8SA6jzEsGiWKi2FIDU7YFFj8NDnIyHYO9kFysaipaqp43/GwHg2xtzI9CXF
-	Ksfj4b3HAwqB+rwl1YLw++q+Tt61KIznhyl/h9dxQxQn06t19GzEM1KdjRdjXbZUKj8DCNhukbbmI
-	DuLwUs6uiEKO2rsHWmu2s5wMo6L2pB/fyePveAgEl+popfNt5ghPg8XrYmaQqmRCyX9l91YAZx62H
-	ANEfPfREA==;
+	 bh=PmwsX/z6O+ZezmDDj7y7xq82MCisVw0zoEpYJweVp24=; b=wb8cAaY0psuMUSbDbDYDgKSfo
+	M8dhpMenbdEongV8va8o9TSbLZvx3+kJ3hpTh3f+bbPz1xUJQhpg18J0DXvR0fi6ffyen3Ys1enhy
+	IWPnq45OM8zDc4bQmGpfWsRGQpbCQ8TP2EdnbJ/rumgfJUK6WKyjty44zobAxqnsTdHxE7/ctn6TG
+	rVBhcfIdZaAZtwqZBJ2FhDoe+4BGZS/KBnfJWhtxXVwEkFuCqC162d0RlucyY7hDxTqwLDK+RR49s
+	XbktZVyQ+/gPS/KapoECbh5n0tk4K+NH91442Y5SQDVbcSxFP7lhKAlWopoHTl0fvV+vPDuPTCK/1
+	oML0q/9lg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNIVv-0002Iv-0n; Tue, 29 Sep 2020 16:30:03 +0000
+	id 1kNIwq-0006xC-3N; Tue, 29 Sep 2020 16:57:52 +0000
 Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNIVo-0002Gk-1n; Tue, 29 Sep 2020 16:29:57 +0000
+ id 1kNIwn-0006wT-QT; Tue, 29 Sep 2020 16:57:50 +0000
 Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08TGTluH062802;
- Tue, 29 Sep 2020 11:29:47 -0500
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08TGvgCN072729;
+ Tue, 29 Sep 2020 11:57:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1601396987;
- bh=0l1Tyc97rGOgxjmQ7OreIDdDxEEBoiTnGd8r31UAwrY=;
- h=Date:From:To:CC:Subject:References:In-Reply-To;
- b=e+F6S2/liT+0aqnl0QJscD6rhJ+1QkEhZTjDSY1ayovmflU0lOnXI9F5zWQW8u5VH
- 3sa8Ztyq7CFmZ0gT49LhjY8acrAzXKUVlmoYkKgC2OyIHOH9xcnqcoiLVqW4EpIWSj
- ASSyxNefPohrbsweiv8QigoWCqy9ZvrH/Z7Qog/I=
-Received: from DFLE110.ent.ti.com (dfle110.ent.ti.com [10.64.6.31])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 08TGTldM025187
+ s=ti-com-17Q1; t=1601398663;
+ bh=ZjsMCRxqgZfNl/B8Bnf/B0HPPXkHxOxgRdvcoJ1EHs4=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=Xh8+aOwVV9+lh0mvVMUcKcfgTIYokgwRlJLO/XnsYWOrTo1QISttpld+a9HZMFyYN
+ zKChsbfnpxLLmI4u//ArR1Igyqvrj9UvLjii0/GwpUdzRpMljWwf2OcSqTdrOsTucW
+ G6OfERD2O1pTSKTO730J+dwDfVUOJf0N5srSj2Ac=
+Received: from DLEE105.ent.ti.com (dlee105.ent.ti.com [157.170.170.35])
+ by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 08TGvgtu067181
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 29 Sep 2020 11:29:47 -0500
-Received: from DFLE106.ent.ti.com (10.64.6.27) by DFLE110.ent.ti.com
- (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
+ Tue, 29 Sep 2020 11:57:42 -0500
+Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE105.ent.ti.com
+ (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Tue, 29
- Sep 2020 11:29:47 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE106.ent.ti.com
- (10.64.6.27) with Microsoft SMTP Server (version=TLS1_2,
+ Sep 2020 11:57:42 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE101.ent.ti.com
+ (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Tue, 29 Sep 2020 11:29:46 -0500
-Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08TGTjja040249;
- Tue, 29 Sep 2020 11:29:46 -0500
-Date: Tue, 29 Sep 2020 21:59:45 +0530
-From: Pratyush Yadav <p.yadav@ti.com>
-To: <Tudor.Ambarus@microchip.com>
+ Frontend Transport; Tue, 29 Sep 2020 11:57:42 -0500
+Received: from [10.250.235.166] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08TGvabf047655;
+ Tue, 29 Sep 2020 11:57:36 -0500
 Subject: Re: [PATCH v10 05/17] mtd: spi-nor: add support for DTR protocol
-Message-ID: <20200929162943.qbnzmzgxb75wdpyo@ti.com>
+To: <Tudor.Ambarus@microchip.com>, <me@yadavpratyush.com>
 References: <20200623183030.26591-1-p.yadav@ti.com>
  <20200623183030.26591-6-p.yadav@ti.com>
  <fbb3d7e7-75ed-dbf6-a975-2ae871bc9fbf@microchip.com>
  <20200721112951.rngfk7njubcsahzp@yadavpratyush.com>
  <f9a22bc5-35f6-9507-b0e7-dcbad51caea7@microchip.com>
+From: Vignesh Raghavendra <vigneshr@ti.com>
+Message-ID: <df262497-028e-83a7-eb4e-25c20fc7e216@ti.com>
+Date: Tue, 29 Sep 2020 22:27:35 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
 In-Reply-To: <f9a22bc5-35f6-9507-b0e7-dcbad51caea7@microchip.com>
-User-Agent: NeoMutt/20171215
+Content-Language: en-US
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200929_122956_197700_3BC1AD68 
-X-CRM114-Status: GOOD (  56.50  )
+X-CRM114-CacheID: sfid-20200929_125749_979582_2DC1175D 
+X-CRM114-Status: GOOD (  27.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,255 +93,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, vigneshr@ti.com, richard@nod.at,
- me@yadavpratyush.com, nsekhar@ti.com, Nicolas.Ferre@microchip.com,
- boris.brezillon@collabora.com, michal.simek@xilinx.com,
- Ludovic.Desroches@microchip.com, broonie@kernel.org,
+Cc: alexandre.belloni@bootlin.com, richard@nod.at, nsekhar@ti.com,
+ Nicolas.Ferre@microchip.com, boris.brezillon@collabora.com,
+ michal.simek@xilinx.com, Ludovic.Desroches@microchip.com, broonie@kernel.org,
  linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  miquel.raynal@bootlin.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, p.yadav@ti.com,
  linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/09/20 03:42PM, Tudor.Ambarus@microchip.com wrote:
+
+
+On 9/29/20 9:12 PM, Tudor.Ambarus@microchip.com wrote:
 > Hi, Pratyush,
 > 
 > I'm replying to v10 so that we continue the discussion, but this applies to v13 as well.
 > 
 > On 7/21/20 2:29 PM, Pratyush Yadav wrote:
 > 
-> >>> @@ -2368,12 +2517,16 @@ spi_nor_spimem_adjust_hwcaps(struct spi_nor *nor, u32 *hwcaps)
-> >>>         struct spi_nor_flash_parameter *params = nor->params;
-> >>>         unsigned int cap;
-> >>>
-> >>> -       /* DTR modes are not supported yet, mask them all. */
-> >>> -       *hwcaps &= ~SNOR_HWCAPS_DTR;
-> >>> -
-> >>>         /* X-X-X modes are not supported yet, mask them all. */
-> >>>         *hwcaps &= ~SNOR_HWCAPS_X_X_X;
-> >>>
-> >>> +       /*
-> >>> +        * If the reset line is broken, we do not want to enter a stateful
-> >>> +        * mode.
-> >>> +        */
-> >>> +       if (nor->flags & SNOR_F_BROKEN_RESET)
-> >>> +               *hwcaps &= ~(SNOR_HWCAPS_X_X_X | SNOR_HWCAPS_X_X_X_DTR);
-> >>
-> >> A dedicated reset line is not enough for flashes that keep their state
-> >> in non-volatile bits. Since we can't protect from unexpected crashes in
-> >> the non volatile state case, we should enter these modes only with an
-> >> explicit request, i.e. an optional DT property: "update-nonvolatile-state",
-> >> or something similar.
-> > 
-> > I wrote this patch with the assumption that we won't be supporting> non-volatile configuration as of now. In the previous discussions we
+>>>> @@ -2368,12 +2517,16 @@ spi_nor_spimem_adjust_hwcaps(struct spi_nor *nor, u32 *hwcaps)
+>>>>         struct spi_nor_flash_parameter *params = nor->params;
+>>>>         unsigned int cap;
+>>>>
+>>>> -       /* DTR modes are not supported yet, mask them all. */
+>>>> -       *hwcaps &= ~SNOR_HWCAPS_DTR;
+>>>> -
+>>>>         /* X-X-X modes are not supported yet, mask them all. */
+>>>>         *hwcaps &= ~SNOR_HWCAPS_X_X_X;
+>>>>
+>>>> +       /*
+>>>> +        * If the reset line is broken, we do not want to enter a stateful
+>>>> +        * mode.
+>>>> +        */
+>>>> +       if (nor->flags & SNOR_F_BROKEN_RESET)
+>>>> +               *hwcaps &= ~(SNOR_HWCAPS_X_X_X | SNOR_HWCAPS_X_X_X_DTR);
+>>>
+>>> A dedicated reset line is not enough for flashes that keep their state
+>>> in non-volatile bits. Since we can't protect from unexpected crashes in
+>>> the non volatile state case, we should enter these modes only with an
+>>> explicit request, i.e. an optional DT property: "update-nonvolatile-state",
+>>> or something similar.
+>>
+>> I wrote this patch with the assumption that we won't be supporting> non-volatile configuration as of now. In the previous discussions we
 > 
 > I think we have to take care of the stateful flashes now, otherwise we'll risk
 > to end up with users that let their flashes in a mode from which they can't recover.
 > I made some small RFC patches in reply to your v13, let me know what you think.
-
-I haven't gone through them yet. Will check tomorrow.
- 
-> > came to the conclusion that it is not easy to detect the flash if it
-> > boots in any mode other than 1S-1S-1S [0]. So if we update non-volatile
-> > state, the flash would be useless after a reboot because we won't be
-> > able to detect it in 8D mode. It doesn't matter if the reset line is
-> > connected or not because it will reset the flash to the non-volatile
-> > state, and we can't detect it from the non-volatile state.
+> 
+>> came to the conclusion that it is not easy to detect the flash if it
+>> boots in any mode other than 1S-1S-1S [0]. So if we update non-volatile
+>> state, the flash would be useless after a reboot because we won't be
+>> able to detect it in 8D mode. It doesn't matter if the reset line is
+>> connected or not because it will reset the flash to the non-volatile
+>> state, and we can't detect it from the non-volatile state.
 > 
 > correct, so a reset line for stateful modes doesn't help and the comment from the
 > code should be updated. s/stateful/stateless
 
-We are talking about two different kinds of "state" here. The state you 
-are talking about is the persistent state of the flash configured via 
-non-volatile registers. Yes, a reset line doesn't help in that case at 
-all.
+Entering an IO mode even using volatile bits (which gets cleared on SW
+or HW reset) creates a "state" that SW needs to keep track of which is
+why "stateful" term is used. I think that's what is implied here
 
-The other state is the non-persistent state we set on the flash. Using 
-1S-1S-8D mode is stateless in the sense that we didn't change any state 
-on the flash to be able to use this mode, and only had to use the 
-correct opcode. If we execute a 1S-1S-1S command next it will also work 
-because the flash is still interpreting opcodes in 1S mode. Using 
-8D-8D-8D or 4S-4S-4S mode is stateful because we did have to configure 
-some state on the flash (which can very well be volatile). Once 8D-8D-8D 
-or 4S-4S-4S mode is entered, we cannot execute 1S-1S-1S commands until 
-we reset the flash because now the flash is interpreting commands in 4S 
-or 8D mode. This means we introduced some state on the flash.
+AFAIU, Boris's original RFC[1] introducing X-X-X mode also used
+"stateful mode" term in the same context .
 
-Having a reset line will not help against the former but will help 
-against the latter. If the flash is in a stateful mode like 8D-8D-8D 
-without a reset line, an unexpected reset could leave bootloader unable 
-to boot because it issues the commands in 1S-1S-1S mode that the flash 
-cannot interpret. So even if the state we set is volatile, we still want 
-to avoid doing it if there is no reset line.
 
-So I think the code and comment should stay as they are.
-
-> > 
-> >> For the volatile state case, we can parse the SFDP SCCR map, save if we
-> >> can enter stateful modes in a volatile way, and if yes allow the entering.
-> > 
-> > If we are not support volatile configurations, the reset line is enough
-> > to take care of unexpected resets, no? I don't see any need to parse
+>>
+>>> For the volatile state case, we can parse the SFDP SCCR map, save if we
+>>> can enter stateful modes in a volatile way, and if yes allow the entering.
+>>
+>> If we are not support volatile configurations, the reset line is enough
+>> to take care of unexpected resets, no? I don't see any need to parse
 > 
 > the reset line is excellent for the stateless flashes, it guarantees that the
 > volatile bits will return to their default state. Disabling the clock, waiting
 > for a period and re-enabling it again should do the trick too, but probably
 > a dedicated reset line is safer.
 > 
-> > SCCR map just for this.
-> 
-> This fits the RFC that I sent to your v13. We need to parse as much as we can
-> from the SFDP tables so that we don't abuse the flash info flags.
-> 
-> > 
-> >> Do the flashes that you played with define the SFDP SCCR map?
-> > 
-> > FWIW, the Cypress S28HS512T flash does but the Micron MT35XU512ABA does
-> > not.
-> > 
-> >>> +
-> >>>         for (cap = 0; cap < sizeof(*hwcaps) * BITS_PER_BYTE; cap++) {
-> >>>                 int rdidx, ppidx;
-> >>>
-> >>> @@ -2628,7 +2781,7 @@ static int spi_nor_default_setup(struct spi_nor *nor,
-> >>>                  * controller directly implements the spi_nor interface.
-> >>>                  * Yet another reason to switch to spi-mem.
-> >>>                  */
-> >>> -               ignored_mask = SNOR_HWCAPS_X_X_X;
-> >>> +               ignored_mask = SNOR_HWCAPS_X_X_X | SNOR_HWCAPS_X_X_X_DTR;
-> >>>                 if (shared_mask & ignored_mask) {
-> >>>                         dev_dbg(nor->dev,
-> >>>                                 "SPI n-n-n protocols are not supported.\n");
-> >>> @@ -2774,11 +2927,25 @@ static void spi_nor_info_init_params(struct spi_nor *nor)
-> >>>                                           SNOR_PROTO_1_1_8);
-> >>>         }
-> >>>
-> >>> +       if (info->flags & SPI_NOR_OCTAL_DTR_READ) {
-> >>
-> >> Why do we need this flag? Can't we determine if the flash supports
-> >> octal DTR by parsing SFDP?
-> > 
-> > For Cypress S28HS512T, we can since it is xSPI compliant. We can't do
-> > that for Micron MT35XU512ABA since it is not xSPI compliant.
-> 
-> Ok
-> 
-> > 
-> >>> +               params->hwcaps.mask |= SNOR_HWCAPS_READ_8_8_8_DTR;
-> >>> +               spi_nor_set_read_settings(&params->reads[SNOR_CMD_READ_8_8_8_DTR],
-> >>> +                                         0, 20, SPINOR_OP_READ_FAST,
-> >>> +                                         SNOR_PROTO_8_8_8_DTR);
-> >>> +       }
-> >>> +
-> >>>         /* Page Program settings. */
-> >>>         params->hwcaps.mask |= SNOR_HWCAPS_PP;
-> >>>         spi_nor_set_pp_settings(&params->page_programs[SNOR_CMD_PP],
-> >>>                                 SPINOR_OP_PP, SNOR_PROTO_1_1_1);
-> >>>
-> >>> +       /*
-> >>> +        * Since xSPI Page Program opcode is backward compatible with
-> >>> +        * Legacy SPI, use Legacy SPI opcode there as well.
-> >>> +        */
-> >>> +       spi_nor_set_pp_settings(&params->page_programs[SNOR_CMD_PP_8_8_8_DTR],
-> >>> +                               SPINOR_OP_PP, SNOR_PROTO_8_8_8_DTR);
-> >>> +
-> >>
-> >> This looks fishy. You haven't updated the hwcaps.mask, these pp settings never
-> >> get selected?
-> > 
-> > The problem here is that I don't see any field/table in SFDP that can
-> > tell us {if,which} 8D-8D-8D program commands are supported. The xSPI
-> > spec says that "The program commands provide SPI backward compatible
-> > commands for programming data...".
-> > 
-> > So we populate the 8D page program opcodes here (and in 4bait parsing)
-> > using the 1S opcodes. The flashes have to enable the hwcap in fixup
-> > hooks.
-> 
-> I see. Would be good if you write this description as a comment, or in the commit
-> message.
-> 
-> > 
-> > As an alternative, maybe we can introduce the SPI_NOR_OCTAL_DTR_PP flag
-> > that can enable the hwcap here? Thoughts?
-> 
-> Should be fine the way that you did. We can change this later on if needed.
 
-I have already added it in v11 and later. Since it is already there I 
-suppose it can stay.
- 
-> > 
-> >>>         /*
-> >>>          * Sector Erase settings. Sort Erase Types in ascending order, with the
-> >>>          * smallest erase size starting at BIT(0).
-> >>> @@ -2886,7 +3053,8 @@ static int spi_nor_init_params(struct spi_nor *nor)
-> >>>
-> >>>         spi_nor_manufacturer_init_params(nor);
-> >>>
-> >>> -       if ((nor->info->flags & (SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ)) &&
-> >>> +       if ((nor->info->flags & (SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-> >>> +                                SPI_NOR_OCTAL_READ | SPI_NOR_OCTAL_DTR_READ)) &&
-> >>>             !(nor->info->flags & SPI_NOR_SKIP_SFDP))
-> >>>                 spi_nor_sfdp_init_params(nor);
-> >>>
-> >>> @@ -2948,7 +3116,9 @@ static int spi_nor_init(struct spi_nor *nor)
-> >>>                 return err;
-> >>>         }
-> >>>
-> >>> -       if (nor->addr_width == 4 && !(nor->flags & SNOR_F_4B_OPCODES)) {
-> >>> +       if (nor->addr_width == 4 &&
-> >>> +           !(nor->info->flags & SPI_NOR_OCTAL_DTR_READ) &&
-> >>
-> >> Why is the Octal DTR read exempted?
-> > 
-> > It is based on the assumption explained below that 8D mode will always
-> > use 4-byte addresses so we don't need to explicitly enable 8D mode.
-> > Although I think maybe we should exempt all flashes that support DTR
-> > mode?
-> 
-> 4-4-4-dtr can work with 3-byte addresses, check MX25L25673G. 2-2-2-dtr should work too.
+I don't think disable-wait-enable sequence of clock input to flash will
+trigger a reset... You have to take down the power and thus force flash
+to go through power-down/power-up sequence or use HW or SW reset sequences
 
-Yes, I didn't catch this before.
- 
-> 
-> > 
-> >>> +           !(nor->flags & SNOR_F_4B_OPCODES)) {
-> >>>                 /*
-> >>>                  * If the RESET# pin isn't hooked up properly, or the system
-> >>>                  * otherwise doesn't perform a reset command in the boot
-> >>> @@ -3007,6 +3177,9 @@ static int spi_nor_set_addr_width(struct spi_nor *nor)
-> >>>  {
-> >>>         if (nor->addr_width) {
-> >>>                 /* already configured from SFDP */
-> >>> +       } else if (spi_nor_protocol_is_dtr(nor->read_proto)) {
-> >>> +                /* Always use 4-byte addresses in DTR mode. */
-> >>> +               nor->addr_width = 4;
-> >>
-> >> Why? DTR with 3 byte addr width should be possible too.
-> > 
-> > Should it be? What would happen to the half cycle left over? Do we then
-> > start the dummy phase in the middle of the cycle? We would also have to
-> > start the data phase in the middle of a cycle as well and end the
-> > transaction with half a cycle left over.
-> > 
-> > AFAIK, the controller I tested with (Cadence QSPI) does not support
-> > this. Similarly, the two flashes this series adds support for, Cypress
-> > S28HS512T and Micron MT35XU512ABA, don't support 3-byte address in 8D
-> > mode. I'm not sure if there are any flashes or controllers that do.
-> 
-> how about conditioning this only for 8-8-8-dtr?
+[1]
+https://patchwork.ozlabs.org/project/linux-mtd/cover/20181012084825.23697-1-boris.brezillon@bootlin.com/
 
-Yes, it should only apply for 8D-8D-8D. Will fix.
- 
-> I'll now jump to v13 and continue the review there.
-
--- 
-Regards,
-Pratyush Yadav
-Texas Instruments India
+Regards
+Vignesh
 
 _______________________________________________
 Linux-mediatek mailing list
