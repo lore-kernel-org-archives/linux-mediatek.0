@@ -2,176 +2,138 @@ Return-Path: <SRS0=Ekst=DG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B030C4346E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 10:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30E78C4727C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 11:54:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDBED207C4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 10:54:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C8CCC2065C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2020 11:54:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nxyjUB/Q";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=monstr-eu.20150623.gappssmtp.com header.i=@monstr-eu.20150623.gappssmtp.com header.b="odCWACGY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDBED207C4
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=monstr.eu
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HicQ4vNX";
+	dkim=permerror (0-bit key) header.d=wdc.com header.i=@wdc.com header.b="mq+YJWqQ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="wWwzdCc0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8CCC2065C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
-	:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:
-	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vquhe2NhrfqjtVFybr1ht7HozT84ukoRoXyy08kIrfg=; b=nxyjUB/QW3eeBlpAoF/JUMUkVh
-	J5SB4w0zPfds32unzZL2Dsx0ccFSF6xI3qiJrKd+93Y4H+Wi7PQ7pRkPh8Zpwiihruuh+aJqhTwpq
-	zQ82u3SGrdNpg84laZnvfA2Q4XruguGq06/nIovpcg6umu7pO7L0/Dn4n3LWwQ2sHWsbNiz5vjLA+
-	GILmR/jl8iS81LIxVC5ncZjSMJ6BTOmhPxkT+kmkmJKbhL/VYO5A0BY0glfj2AAGcG10NNAvONosp
-	SSO8lOr+CUj0aNtlUSg+HSz3kq4Z670Vr5lWq5/8pa1yKJTSUN1rfZ5//3H7BPZYy4ESCmV+hO0JP
-	sEZ+Ch8w==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=QrfapVIByv3q45xKTVwE0AdXK2aI2hIsS1O6t9q0UI4=; b=HicQ4vNXDV5rQn+/JCsSuDZdr
+	4QycfwcL286tr37ewHhK5DZD9kKOSfF38nTEzp/mAfd26ljPtnZzUpxTCYvEOG99jwwABDX/wU7xx
+	dUqKV4sYq2i0drmE+nLBlphgNeyCk/ME1b2NAInL00HwFRtmkaos4907nPl4tNlHFQjRVP7oixsra
+	PvaWN6tOv/+hImWEFD50LoEnBeH2MAV1Gjy04+4UVr7x+Vc+lw0ei6Nx4rePmJ2kww/SaVe2iauqH
+	MJp55yc/pYgbJLB8FIo/t+TkLbsk2wkPDHoFi1AQQjSBphWfIMmSdwllK+vUqXeq4aKctIuBGc01x
+	0FPbCFvXw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNDH6-0003bB-P1; Tue, 29 Sep 2020 10:54:24 +0000
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
+	id 1kNEDR-0007HI-7l; Tue, 29 Sep 2020 11:54:41 +0000
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNDH1-0003ZJ-OW
- for linux-mediatek@lists.infradead.org; Tue, 29 Sep 2020 10:54:20 +0000
-Received: by mail-ej1-x641.google.com with SMTP id gr14so14389710ejb.1
- for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2020 03:54:17 -0700 (PDT)
+ id 1kNEDP-0007FW-9f; Tue, 29 Sep 2020 11:54:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1601381261; x=1632917261;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=VpYaatWRBTgIADFT4VpUUpHV0hbtu2L7RhXCauNw2dU=;
+ b=mq+YJWqQiLIHyZjR6X4hv5YxoFiMk7n+63W5PafqhDTBHPAwr5/btkIl
+ KiiK28vPA86TB/Gd6bBbHosW5WKjFienoHlbXwutVwlIbJ7W1BdijiuXN
+ XC4iygaKnGe2vYLfleDMYYH+ZiQz75a6N+KOHsx2N3HBdbQTM+G2t6Po7
+ TcTVpUZA2T9aNYBVOTIxqOz8ri+IRBuGQjLZQZrm5L3UDzjR762/LRmVJ
+ ozvq0kS2Xt7dFH6TvfFdJogCuxyVmhGg8buRtdhtRnxXu8mfGd7th+SQ2
+ DEqKZP5FInDAHogjFRjbTr2PW/CQC8NZLVMH7t2sPqcoZKPn9zCONAv0U Q==;
+IronPort-SDR: FMQuFLFbWihNy1nQ/QdOcfTo4ijt4T28LHj9OGaS7cWVDoQrvfmOoI5bmjVT5fQX1C9cYFx+VC
+ mMh/Rtp9/8pB8iQishQuzut9v1gYGl0abuT4bftTcrvOV7MyyDmYZkc5RoBR7SkI1XWm4o1o26
+ +d1DlTm/eygSTLg92O+uH61VWTmY/Pn6q2ZiVHYCXhCBAuQKT+5K0UrC9yB2cp9D5H1VIhySYC
+ 2kC+LAk3Lha2lXN066IHRznbJKiL46EmVCgBF4Q0YJ3WVj24+ISu4Rrej5T9ZcrqE2eVFMP9l8
+ IvA=
+X-IronPort-AV: E=Sophos;i="5.77,318,1596470400"; d="scan'208";a="251949948"
+Received: from mail-bn7nam10lp2105.outbound.protection.outlook.com (HELO
+ NAM10-BN7-obe.outbound.protection.outlook.com) ([104.47.70.105])
+ by ob1.hgst.iphmx.com with ESMTP; 29 Sep 2020 20:07:33 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TJQgvpGqJbd+uOvHyhEBv5lG3zJ5qASTNn+1EVgqcOKq9nmx0YbNJKDz+j/nyGiiZ4YhA1qjcvew0i4AXUTviBM5g40R+DQjOzdxLJQq+Y98C7CiRJ7h8xmrPN8PR+Fkl/MgifEM/si7kqG5/P3KWMllheTeanDDrAeJ3MHvnj2jr1c4nMF0rEZNTdyQxD3e9PLTT429ajnvR7Fe6pmp0SRvlGEhoLVQrW4gCfcA51Lp+ioMYJSQhhQbsIOoexUqgjt19VwZsZeKCbAmOv7V69/msPr6UcwXuhv9TbvqA6VSypvN3tP18zfJwoJ87wCrmnqXU7Qb4VCaJ3oD/XUbWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jXKAJeCwzBd2FMLiHxP+hr4uDpxxNEop/tOnmKg6MVs=;
+ b=eVnBgNjMkF5SHtc43qEQ5Vwb2yh2r33J+uza8WMtjlLxG2Q9BuOQ5OvlQU7jsyLDGuF56B03mAtc463r2MLZm+nGsGKYmxpvNoDy+4RI0oWQjL9Nrlq1Eth1JPVLOHFIreB9mjtQ3vk2NaV8UtZ5wKosjG4nrNPLczS285dGAhhoyJyHxdbodFy3XeFwS2SVq3kHTtA79zgF1pvTvbOmZRIuoCp9831a6op7q2m7ZQCCMgK0xzcCCjCWUJPJ0I7Z34hratR7PbyA+a1j4aWq7qHIdqoMd3EOzNyVGqsxjwQI1UkbfPWOp7VPHZpoPeK//ZOP0v3860LlozIyrKXdHA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=monstr-eu.20150623.gappssmtp.com; s=20150623;
- h=subject:to:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4EUGVvbiJZ/eTQye8vzBGl8f8CRwKo+T0VBOcaS2s3w=;
- b=odCWACGYwj8bOn0WGZwZMnrjOfQyJP4iOwo9q8crRCukYZrLJhZbr6jJackamShJaE
- Sx1LM+mbDVeTf8PpoHUTA1LHWMBdStqyPUrnmMkVZrUG1X84VtIAD8pv2l7PesQFLZMk
- nK8KwzyS/Ilw4MDypLBqElNb8QTF4RdcrUlaUvDkxiJQrNxcr8pDB7EpM47s7jXfFkO3
- p8FGFvz68KGxpa3pyVi09KN28AZ5hosZgGiABdwNnRFiGQ7xT9qY0wnMaF/DytUg3Scr
- Q7+XuHk3H0kkWxEr8jVvJTvqRePFWko1GJ+hwUtEwwf9ghzhka877Me75sdoSevX+G88
- 2fVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=4EUGVvbiJZ/eTQye8vzBGl8f8CRwKo+T0VBOcaS2s3w=;
- b=C+dd7KhOMuSETbAi3tvf1ldjkVOOsm+NISDKCAw4eyK4VRSa+n6ySGg2xePWiPF+/m
- 8Mpfk7ujYEAH318w1UUPUezRYh5gT73JaJ7AVfc8icvth6aa9aPkpQ1jDErz3LkctHGW
- SsRXvEN2YntxHUsjTWxIGxKIGZjBcGPLW6gNJ2JE/pNBI/5QwnxGlVU90tw+cz5Rfi35
- 5v4RXXI/54iiz1O7sZi2yE2P34rAlhwWYVyxw41QmQnUKFAGceq3LU92JZHLqtfAW/Ak
- w1gXdDpqq+ARO7XXgVTb8HUhGBEgm6rVJpLN+uehHO/fIUQucdGIjdKit6aja79KdJJW
- 0gOA==
-X-Gm-Message-State: AOAM5306ND/rnGv8HezmI4XYN/iGhJJxBCRUzpTB5eElm+cDTriNWFh2
- igTmh8dH2gvNm10K3Ylq8PydhZnzIfnUpg==
-X-Google-Smtp-Source: ABdhPJy0cqRGqqqkNYvwZsUjtpKHmk4qMNkjElnnAFuuhtx3aBqtg4lwRvex8V+15urHYeTCgH/whQ==
-X-Received: by 2002:a17:906:fccb:: with SMTP id
- qx11mr3238175ejb.429.1601376856978; 
- Tue, 29 Sep 2020 03:54:16 -0700 (PDT)
-Received: from [192.168.0.105] (nat-35.starnet.cz. [178.255.168.35])
- by smtp.gmail.com with ESMTPSA id x25sm5557640edv.42.2020.09.29.03.54.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Sep 2020 03:54:16 -0700 (PDT)
-Subject: Re: [PATCH v3 07/15] arm64: dts: xilinx: align GPIO hog names with
- dtschema
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Tero Kristo <t-kristo@ti.com>,
- Nishanth Menon <nm@ti.com>, Michal Simek <michal.simek@xilinx.com>,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-References: <20200916155715.21009-1-krzk@kernel.org>
- <20200916155715.21009-8-krzk@kernel.org>
-From: Michal Simek <monstr@monstr.eu>
-Autocrypt: addr=monstr@monstr.eu; keydata=
- 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
- 0Z1MQlmNcq2bhOMzTxuXX2NDzUZs4aqEyZQ=
-Message-ID: <2c479869-f082-c991-4fdd-833601698828@monstr.eu>
-Date: Tue, 29 Sep 2020 12:54:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
-MIME-Version: 1.0
-In-Reply-To: <20200916155715.21009-8-krzk@kernel.org>
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jXKAJeCwzBd2FMLiHxP+hr4uDpxxNEop/tOnmKg6MVs=;
+ b=wWwzdCc03nxWvjKhcq7zVS9ITLuRu3Qkj9aYO3ENRuZ2j9x531b9OVeh1zULu8t/dGhce9THOJSTYlZMKEUrHcQ2l8DdOmAjsFwMm8BH9F8HAIhMpunTb8QAzZvWRhvyWTO5GVCUJcAa0F8hZKBFAcXRhRfGmK20jF5i68ttN7w=
+Received: from BY5PR04MB6705.namprd04.prod.outlook.com (2603:10b6:a03:220::8)
+ by BY5PR04MB6312.namprd04.prod.outlook.com (2603:10b6:a03:1e3::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3412.22; Tue, 29 Sep
+ 2020 11:54:32 +0000
+Received: from BY5PR04MB6705.namprd04.prod.outlook.com
+ ([fe80::2c49:48e2:e9fb:d5a0]) by BY5PR04MB6705.namprd04.prod.outlook.com
+ ([fe80::2c49:48e2:e9fb:d5a0%9]) with mapi id 15.20.3412.029; Tue, 29 Sep 2020
+ 11:54:31 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+Subject: RE: [PATCH 4/4] scsi: ufs-mediatek: Add host reset mechanism
+Thread-Topic: [PATCH 4/4] scsi: ufs-mediatek: Add host reset mechanism
+Thread-Index: AQHWhauhM77uE6w2t0y0fOl12ucOUql/osKg
+Date: Tue, 29 Sep 2020 11:54:31 +0000
+Message-ID: <BY5PR04MB6705873E1F5DBCE7C97D12AEFC320@BY5PR04MB6705.namprd04.prod.outlook.com>
+References: <20200908064507.30774-1-stanley.chu@mediatek.com>
+ <20200908064507.30774-5-stanley.chu@mediatek.com>
+In-Reply-To: <20200908064507.30774-5-stanley.chu@mediatek.com>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [212.25.79.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: f27844c8-661f-4fc9-30ae-08d8646e6d8c
+x-ms-traffictypediagnostic: BY5PR04MB6312:
+x-microsoft-antispam-prvs: <BY5PR04MB6312D9EB78AC4DBF3BF22333FC320@BY5PR04MB6312.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: qR2bEb2cxUGPS8T+zT4J4G/mkBDaoqpYJwQARlBm39lYANuOEjPjxJswl50wwekC1DAqr9bFR26o4Z3lf9Hdw7fE8I64avuvKydcrzRRJ1wh+8ZA3Hhg1/fqiaeIvg08MmwRUaZNnzibAv8sK112RrxjDbUAq2PQolJSiXW/ebC62ebUffk0x0kDMRgsxHb6ae7qTzGeFr0Dj+D36q+UjNssfXtBlxPPJuxSk2iwmTbcI/UB+uCqGuy9PsiTlskNeZY1a3Of/uSxXmhq0R6KdhhcxyxOPz3bYfuNbzvOzW3HgZz5Y5Lvkkt/fl6w2qTF9vlGIPkfLaS9npJ3mnwP8N/nU6wgHYMg3A7ov4Ni/EMKz9YUUcB5MBtMSjdRP3ON
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6705.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(6506007)(498600001)(5660300002)(71200400001)(4326008)(7416002)(66946007)(66476007)(66556008)(54906003)(7696005)(76116006)(52536014)(2906002)(33656002)(4744005)(8936002)(66446008)(86362001)(8676002)(186003)(110136005)(9686003)(26005)(55016002)(83380400001)(64756008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: /2NhCWPA0++LDwuEHPdjnrvhCdz19AD05AjQ/6w7TnGuqSmEQPRgqqof6tGahPwwivNexOyNn862kedX5Neaz9bnUmu8JZ0pl7hZyV+EqdCO1B5A1MPgxsI+cLPzMffwywTHo+FJXZg8/KYDj2tYCGXFAiJt9iVe2paZGlyP76CFdJ7wnOEKhNwB2uomL2hszjamJo9JU6whOtbtCeq+mRevvWlfIqvcBzUbWeK/PVGcgIuT8kqxMz+ZGWbS1JdR9WAxewytcTfkn7qI5e0AwIGCOnF1BLkOGvF2e50xnZKYqEpeK8gdLQKPK8DUy9r8nnq3XVIAOawyLD7kAJDF4v27kajhuxDjUX7YiXFnMZPTF9yBqPyWfOvoszE9XQ3J20j64ZiBfF856TkFQ1zqQwj7clVpj31kH3ppxGlB7rYZxGmSqPQIR871ZGfQ3bwj9ZfSy6eGJYITsQOP0wFoltvYuk1cKKTxv2Lrr8760iY4WcHEI6poLWdFR99i9NRA1KwQfsyrLpAZAH/evi2sk4JVML//b/ao28ipchWP87eHbm+iOG1caWNOGGDdryZPdbEksfX1PoKgGBDPMUoIpg1IAZWaXtOrITbqyLx+o6mP49R/kEmhR42T8pRw5/Hy6H9LJjOEs7TQe0kOTxaFEw==
+x-ms-exchange-transport-forked: True
+MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6705.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f27844c8-661f-4fc9-30ae-08d8646e6d8c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Sep 2020 11:54:31.8406 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: yIW+v/RUrIXMbQ/jSAQSwlU5JmvZzDjNtGi18DSrRCF7Cw8Ebs1+QACTUPySMAiEQutjJPy22tRZ1koS+VIC3Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6312
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200929_065419_802103_58777775 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20200929_075439_664226_0C606220 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -183,71 +145,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 16. 09. 20 17:57, Krzysztof Kozlowski wrote:
-> The convention for node names is to use hyphens, not underscores.
-> dtschema for pca95xx expects GPIO hogs to end with 'hog' prefix.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> ---
->  arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts b/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts
-> index 4f801721564f..f1255f635dfd 100644
-> --- a/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts
-> +++ b/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revA.dts
-> @@ -203,25 +203,25 @@
->  		gpio-line-names = "PS_GTR_LAN_SEL0", "PS_GTR_LAN_SEL1", "PS_GTR_LAN_SEL2", "PS_GTR_LAN_SEL3",
->  				"PCI_CLK_DIR_SEL", "IIC_MUX_RESET_B", "GEM3_EXP_RESET_B",
->  				"", "", "", "", "", "", "", "", "";
-> -		gtr-sel0 {
-> +		gtr-sel0-hog {
->  			gpio-hog;
->  			gpios = <0 0>;
->  			output-low; /* PCIE = 0, DP = 1 */
->  			line-name = "sel0";
->  		};
-> -		gtr-sel1 {
-> +		gtr-sel1-hog {
->  			gpio-hog;
->  			gpios = <1 0>;
->  			output-high; /* PCIE = 0, DP = 1 */
->  			line-name = "sel1";
->  		};
-> -		gtr-sel2 {
-> +		gtr-sel2-hog {
->  			gpio-hog;
->  			gpios = <2 0>;
->  			output-high; /* PCIE = 0, USB0 = 1 */
->  			line-name = "sel2";
->  		};
-> -		gtr-sel3 {
-> +		gtr-sel3-hog {
->  			gpio-hog;
->  			gpios = <3 0>;
->  			output-high; /* PCIE = 0, SATA = 1 */
+> Add host reset mechanism to try to recover host-side errors
+> during recovery flow.
 > 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by Avri Altman <avri.altman@wdc.com>
 
-Tony picked up some patches from this series that's why applied this one
-to my tree.
-
+See some nit below as well.
 Thanks,
-Michal
+Avri
 
--- 
-Michal Simek, Ing. (M.Eng), OpenPGP -> KeyID: FE3D1F91
-w: www.monstr.eu p: +42-0-721842854
-Maintainer of Linux kernel - Xilinx Microblaze
-Maintainer of Linux kernel - Xilinx Zynq ARM and ZynqMP ARM64 SoCs
-U-Boot custodian - Xilinx Microblaze/Zynq/ZynqMP/Versal SoCs
+> +static void ufs_mtk_init_reset_control(struct ufs_hba *hba,
+> +                                      struct reset_control **rc,
+> +                                      char *str)
+> +{
+> +       *rc = devm_reset_control_get(hba->dev, str);
+> +       if (IS_ERR(*rc)) {
+How about verifying that the line is not shared as well?
+Although this might not be an issue on your current platforms,
+it might save you aggravation in the future..
 
+> +               dev_info(hba->dev, "Failed to get reset control %s: %d\n",
+> +                        str, PTR_ERR(*rc));
+> +               *rc = NULL;
+> +       }
+> +}
 
 _______________________________________________
 Linux-mediatek mailing list
