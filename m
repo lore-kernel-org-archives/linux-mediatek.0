@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6ABCC2D0A8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:12:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6371AC2D0A8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:12:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 40B892076E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:12:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 81EC72075F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:12:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gd3Z78wv";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EZAW6Jat"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40B892076E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1dhIx1sp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oYVnmnPa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81EC72075F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ob08m9BwZtM32PdIb7Pe3uY5hACVxxVK7JLUDlOkdi0=; b=Gd3Z78wvqY1IQnS64MwCttqnv
-	n/zzg07YPSiBne5eP5RT94qOYKYj3FHU6b7z5Nzvj1wE5/Wa1yFkB7ADPDnICMWSow6qduRyU/VfN
-	4kJJRBGDHG/k7UBCeofdUIHg7kB7PTfqWTQgKrXSl/LBqodHno2uSSGcEH44uvPCBc4jTMIg5GgKf
-	t8Pt0BRwM4Ej95bkVlzazWwIkpPpkbvgmiprDanSZtK8l9NGOrtdMZCwVjiL4J8u0S7Brq2Bx6BSJ
-	Jb/NAkoz5xyJpZpyLtJBsofdMLVwKNzfal/aigLRCzQBNnOJXCQdD1RXSxzQNzBtDt6YYWUq28v1H
-	HEs61UCGw==;
+	 bh=+RGsl17Tpipc8edQta/mabaGDJbKBPSE7bPYsF6JYZ8=; b=1dhIx1spC784WjmXw71KDAZ6v
+	2d1c4gXHQqqKtGTdPaeBzfjAQ0kXjke5w6hsgNmnZPyxKDNOQK+Td7U6zWF/2kF0qxCNcYUpW3S7w
+	b8on1lIIYFg+43fZRfAK1V9ANJcoo+J8QUAJVtLI/mQPG3Bel9IzxHNQwSGJZghIskjervkrum3Xe
+	kJC6EvPN/iIKefCRQlW1aqXC00fRKEEE1+0fLRKQLlLoFKXGa6rogEjcDPo7FIxiSSkqUkvJsrkK0
+	p7V9ihfjVGQRpkuZHky2KiZS/7UZOVb7ziuD6Cdtx/c4lWkT+wN+0fBSFDz1/PtzXM/4+sT4BODDJ
+	LryIpi5IQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNWI7-0008H1-3C; Wed, 30 Sep 2020 07:12:43 +0000
+	id 1kNWI8-0008HP-ST; Wed, 30 Sep 2020 07:12:44 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNWI2-0008E3-TQ; Wed, 30 Sep 2020 07:12:41 +0000
-X-UUID: d185f72f25b9403db0f991fea32d68c6-20200929
+ id 1kNWI2-0008EG-TP; Wed, 30 Sep 2020 07:12:41 +0000
+X-UUID: fd494a1820994b67bc1dda2f05226af2-20200929
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=u2nLowWb9320Nhqe4Te3XyjuUyh2p45gZPSNv8O11x4=; 
- b=EZAW6Jatb+I+lVXOYq613sFllezZhg7GYFOmkfyYl/MR/DT8554+l7A/3Z5hxSuJqTJjYMeYjGMavPgOjShqG+K7knwFAXG3JrlCmAdqEcEH7YBZw7qzydoFCaH6gMVYxT512HH3WtgYg1DnitEpxmCThiTCCj6ZHn8d5YBOBWQ=;
-X-UUID: d185f72f25b9403db0f991fea32d68c6-20200929
+ bh=JcmdGf1tbwWxv9BVjsAg+AHjaleWPK/+Qqe58lDd1XI=; 
+ b=oYVnmnPaCrIgu9+zcuVNPUi3Jl470Fw0IiRZqMAi2rbmVPB4xIl62ZIAUbRnKKKTuK0EDJavhozqV2qvlgFaehWPoKsff/P8lZgbCBr96hk2OdZzBpDXExQ8Siy6qEu1ba+CG9G8mnR7hYzedb8dBReeMCQYyrMicTGj8LgJXqw=;
+X-UUID: fd494a1820994b67bc1dda2f05226af2-20200929
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 623627371; Tue, 29 Sep 2020 23:12:34 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 331260764; Tue, 29 Sep 2020 23:12:34 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 00:08:54 -0700
+ 15.0.1497.2; Wed, 30 Sep 2020 00:09:41 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 15:08:52 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Sep 2020 15:09:39 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Sep 2020 15:08:53 +0800
+ Transport; Wed, 30 Sep 2020 15:09:39 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  Krzysztof Kozlowski <krzk@kernel.org>, Will Deacon <will@kernel.org>
-Subject: [PATCH v3 09/24] iommu/io-pgtable-arm-v7s: Extend PA34 for MediaTek
-Date: Wed, 30 Sep 2020 15:06:32 +0800
-Message-ID: <20200930070647.10188-10-yong.wu@mediatek.com>
+Subject: [PATCH v3 13/24] iommu/mediatek: Add device link for smi-common and
+ m4u
+Date: Wed, 30 Sep 2020 15:06:36 +0800
+Message-ID: <20200930070647.10188-14-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200930070647.10188-1-yong.wu@mediatek.com>
 References: <20200930070647.10188-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: CDE450FF0684FFB6D676A5EEF365F04D0BFE5E2C3181397D656404828B20D2812000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200930_031239_453699_3E316487 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20200930_031239_452746_3FDBD218 
+X-CRM114-Status: GOOD (  19.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,86 +99,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek extend the bit5 in lvl1 and lvl2 descriptor as PA34.
+In the lastest SoC, M4U has its special power domain. thus, If the engine
+begin to work, it should help enable the power for M4U firstly.
+Currently if the engine work, it always enable the power/clocks for
+smi-larbs/smi-common. This patch adds device_link for smi-common and M4U.
+then, if smi-common power is enabled, the M4U power also is powered on
+automatically.
+
+Normally M4U connect with several smi-larbs and their smi-common always
+are the same, In this patch it get smi-common dev from the first smi-larb
+device(i==0), then add the device_link only while m4u has power-domain.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/io-pgtable-arm-v7s.c | 9 +++++++--
- drivers/iommu/mtk_iommu.c          | 2 +-
- include/linux/io-pgtable.h         | 4 ++--
- 3 files changed, 10 insertions(+), 5 deletions(-)
+ drivers/iommu/mtk_iommu.c | 24 +++++++++++++++++++++++-
+ drivers/iommu/mtk_iommu.h |  1 +
+ 2 files changed, 24 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index 4c9d8dccfc5a..a3b3e9147b8d 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -112,9 +112,10 @@
- #define ARM_V7S_TEX_MASK		0x7
- #define ARM_V7S_ATTR_TEX(val)		(((val) & ARM_V7S_TEX_MASK) << ARM_V7S_TEX_SHIFT)
- 
--/* MediaTek extend the two bits for PA 32bit/33bit */
-+/* MediaTek extend the bits below for PA 32bit/33bit/34bit */
- #define ARM_V7S_ATTR_MTK_PA_BIT32	BIT(9)
- #define ARM_V7S_ATTR_MTK_PA_BIT33	BIT(4)
-+#define ARM_V7S_ATTR_MTK_PA_BIT34	BIT(5)
- 
- /* *well, except for TEX on level 2 large pages, of course :( */
- #define ARM_V7S_CONT_PAGE_TEX_SHIFT	6
-@@ -194,6 +195,8 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
- 		pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
- 	if (paddr & BIT_ULL(33))
- 		pte |= ARM_V7S_ATTR_MTK_PA_BIT33;
-+	if (paddr & BIT_ULL(34))
-+		pte |= ARM_V7S_ATTR_MTK_PA_BIT34;
- 	return pte;
- }
- 
-@@ -218,6 +221,8 @@ static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
- 		paddr |= BIT_ULL(32);
- 	if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
- 		paddr |= BIT_ULL(33);
-+	if (pte & ARM_V7S_ATTR_MTK_PA_BIT34)
-+		paddr |= BIT_ULL(34);
- 	return paddr;
- }
- 
-@@ -753,7 +758,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 	if (cfg->ias > ARM_V7S_ADDR_BITS)
- 		return NULL;
- 
--	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
-+	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
- 		return NULL;
- 
- 	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index fd8322ee4980..f6a2e3eb59d2 100644
+index 940b7a9191b2..5625458b21ba 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -317,7 +317,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
- 			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
- 		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
- 		.ias = 32,
--		.oas = 34,
-+		.oas = 35,
- 		.tlb = &mtk_iommu_flush_ops,
- 		.iommu_dev = data->dev,
- 	};
-diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
-index 23285ba645db..8c9a889d8df9 100644
---- a/include/linux/io-pgtable.h
-+++ b/include/linux/io-pgtable.h
-@@ -77,8 +77,8 @@ struct io_pgtable_cfg {
- 	 *	TLB maintenance when mapping as well as when unmapping.
- 	 *
- 	 * IO_PGTABLE_QUIRK_ARM_MTK_EXT: (ARM v7s format) MediaTek IOMMUs extend
--	 *	to support up to 34 bits PA where the bit32 and bit33 are
--	 *	encoded in the bit9 and bit4 of the PTE respectively.
-+	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
-+	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
- 	 *
- 	 * IO_PGTABLE_QUIRK_NON_STRICT: Skip issuing synchronous leaf TLBIs
- 	 *	on unmap, for DMA domains using the flush queue mechanism for
+@@ -20,6 +20,7 @@
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ #include <asm/barrier.h>
+@@ -681,7 +682,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 		return larb_nr;
+ 
+ 	for (i = 0; i < larb_nr; i++) {
+-		struct device_node *larbnode;
++		struct device_node *larbnode, *smicomm_node;
+ 		struct platform_device *plarbdev;
+ 		u32 id;
+ 
+@@ -707,6 +708,15 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 
+ 		component_match_add_release(dev, &match, release_of,
+ 					    compare_of, larbnode);
++		if (!i) {
++			smicomm_node = of_parse_phandle(larbnode, "mediatek,smi", 0);
++			if (!smicomm_node)
++				return -EINVAL;
++
++			plarbdev = of_find_device_by_node(smicomm_node);
++			of_node_put(smicomm_node);
++			data->smicomm_dev = &plarbdev->dev;
++		}
+ 	}
+ 
+ 	platform_set_drvdata(pdev, data);
+@@ -729,6 +739,16 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 	if (!iommu_present(&platform_bus_type))
+ 		bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
+ 
++	if (dev->pm_domain) {
++		struct device_link *link;
++
++		link = device_link_add(data->smicomm_dev, dev,
++				       DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
++		if (!link) {
++			dev_err(dev, "Unable link %s.\n", dev_name(data->smicomm_dev));
++			return -EINVAL;
++		}
++	}
+ 	return component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
+ }
+ 
+@@ -743,6 +763,8 @@ static int mtk_iommu_remove(struct platform_device *pdev)
+ 		bus_set_iommu(&platform_bus_type, NULL);
+ 
+ 	clk_disable_unprepare(data->bclk);
++	if (pdev->dev.pm_domain)
++		device_link_remove(data->smicomm_dev, &pdev->dev);
+ 	devm_free_irq(&pdev->dev, data->irq, data);
+ 	component_master_del(&pdev->dev, &mtk_iommu_com_ops);
+ 	return 0;
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index a2e2c844b96e..ae7909815cdb 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -67,6 +67,7 @@ struct mtk_iommu_data {
+ 
+ 	struct iommu_device		iommu;
+ 	const struct mtk_iommu_plat_data *plat_data;
++	struct device			*smicomm_dev;
+ 
+ 	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
+ 
 -- 
 2.18.0
 _______________________________________________
