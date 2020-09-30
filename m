@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 659A4C2D0A8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:24:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8991CC2D0A8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:24:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E3EB12076E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:24:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 25A2E2075F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:24:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yScDWk5Z";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="U1YoZS0O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3EB12076E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LRZci0Ii";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dUD+TmmF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25A2E2075F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oP28vPC6b2jtFWJpH/Ay1p+oKWVuo9Ygi7vQowwvE18=; b=yScDWk5ZXEpBJFW0iEfmhnfF4
-	7xUrz+JT+eK0RE5NlIkdA0BpsIhKOIRTnn+JVBk3t3M/3o+KNTZDG06qclLhv/S0swsT3Lb8kGeqy
-	7joWox9KWNk+ZhehAOjAqJU7ZP/LwUbE62kqYqWQ5F+oZSCidvhmvCq0Kq6/20lP0OGGJd7XxAChu
-	ZmlzEWnVlfarKSVkhIq7/uDQBeXHRPA9tkNRg2o2t8SiSu7QNeXFtSjHO0SUkGB4qe/CTZylSbVpz
-	2qUozxSSBN5+JifH6HHUsAY9SmsBC2LMP0AdMWruYHxCmqi3E78r+PHcKgaLQsPiT9PxkmDlDAgPU
-	I1uj3gN5w==;
+	 bh=dDazU0T2UbcmMTM1AIShYjTOtSS8sfMyJyleBiJ9xlY=; b=LRZci0IiprOaK8CQ/vKAV1h3W
+	m0hVbRsAX3CqzVfwF+j5blAdO5BMk/K8AaiuX3aVyW9/iLFxk7H71RmKL7PQyMSrpKF5OZcmoEb80
+	fQ9SghU9nYkupYFlIi9HQF+OpEDVgwksHXbiM4a0/ztkhY6JsbQSsSeR2E8E4/Dfl7Kk3Ncth+7dS
+	O0halczknTgc+N4uX17D8qz78c4MKzv8/6BR3kg0X0OtFguCcyK2BRgTktAwgxggTy5eC/ooegAUB
+	A3F0J/LYKfEpcUiEhRuqF0sQNQFKjHxtmEgCYfkPEWQqtyTPNMU9cPegYCiB3Pg5gEj5PmX6F3OMx
+	4KR6IwhOw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNWTN-0004eR-5U; Wed, 30 Sep 2020 07:24:21 +0000
+	id 1kNWTY-0004i6-Rt; Wed, 30 Sep 2020 07:24:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNWO5-0002FY-0z; Wed, 30 Sep 2020 07:19:10 +0000
-X-UUID: b4842269370d418f89806f60519b677d-20200929
+ id 1kNWO7-0002Fn-7a; Wed, 30 Sep 2020 07:19:11 +0000
+X-UUID: bcfa4af0cc5d4548822ec5fb38ea5b41-20200929
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=32ll1ba3Marssu44z6TcC3QfRjSBtE6bugNhwwgxSZ4=; 
- b=U1YoZS0OUoVSTdGCLCm+zEeE73+s+T+YqI9ox6zxaEykO1IMieENfIOimRn0OZyA/SPGkvwfg/HVjPEL/VOwi79CWqni+JRbFBkIF5oME3FaVOmt3F0wBOiQmTC3Mu66btRbQI9YOAwtdSCzMQNZpY8xXPFBIPw8eNszR49o8bE=;
-X-UUID: b4842269370d418f89806f60519b677d-20200929
+ bh=IcHcY2GTxRqXGr2c5Od/IbtILzjIIei29lysc2o5kuY=; 
+ b=dUD+TmmFGxb2ZO8RuYX4nK8I28jgLxvLQLJxllOQ8+mCIbx1/qCcySMg98eapFj8Nt8sJnBvFleeJZ+9GC2qPyBSHT912IqEm5JJ1/1vQFsBqCtXt0bXCz0g6ugfRWe22dAMO1mco5M+RqW1xw2PHoPfIf62dLfn2GL3s3gXjQA=;
+X-UUID: bcfa4af0cc5d4548822ec5fb38ea5b41-20200929
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1602882217; Tue, 29 Sep 2020 23:18:34 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1146701443; Tue, 29 Sep 2020 23:18:34 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 00:10:38 -0700
+ 15.0.1497.2; Wed, 30 Sep 2020 00:09:16 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 15:10:36 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Sep 2020 15:09:14 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Sep 2020 15:10:36 +0800
+ Transport; Wed, 30 Sep 2020 15:09:15 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  Krzysztof Kozlowski <krzk@kernel.org>, Will Deacon <will@kernel.org>
-Subject: [PATCH v3 18/24] iommu/mediatek: Support master use iova over 32bit
-Date: Wed, 30 Sep 2020 15:06:41 +0800
-Message-ID: <20200930070647.10188-19-yong.wu@mediatek.com>
+Subject: [PATCH v3 11/24] iommu/io-pgtable-arm-v7s: Quad lvl1 pgtable for
+ MediaTek
+Date: Wed, 30 Sep 2020 15:06:34 +0800
+Message-ID: <20200930070647.10188-12-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200930070647.10188-1-yong.wu@mediatek.com>
 References: <20200930070647.10188-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 6C0FEB249B953302BA0C92E8A7C9EF6EEC673D8C975A6A7EEE073A7124B463A52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200930_031853_548822_454E381D 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20200930_031855_556897_4195B6E0 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,110 +98,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After extending v7s, our pagetable already support iova reach
-16GB(34bit). the master got the iova via dma_alloc_attrs may reach
-34bits, but its HW register still is 32bit. then how to set the
-bit32/bit33 iova? this depend on a SMI larb setting(bank_sel).
-
-we separate whole 16GB iova to four banks:
-bank: 0: 0~4G; 1: 4~8G; 2: 8-12G; 3: 12-16G;
-The bank number is (iova >> 32).
-
-We will preassign which bank the larbs belong to. currently we don't
-have a interface for master to adjust its bank number.
-
-Each a bank is a iova_region which is a independent iommu-domain.
-the iova range for each iommu-domain can't cross 4G.
+The standard input iova bits is 32. MediaTek quad the lvl1 pagetable
+(4 * lvl1). No change for lvl2 pagetable. Then the iova bits can reach
+34bit.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c  | 12 +++++++++---
- drivers/memory/mtk-smi.c   |  7 +++++++
- include/soc/mediatek/smi.h |  1 +
- 3 files changed, 17 insertions(+), 3 deletions(-)
+ drivers/iommu/io-pgtable-arm-v7s.c | 13 ++++++++++---
+ drivers/iommu/mtk_iommu.c          |  2 +-
+ 2 files changed, 11 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 87ca4f47e494..2f26a8242428 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -303,17 +303,23 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
- 			     struct device *dev, bool enable)
- {
- 	struct mtk_smi_larb_iommu    *larb_mmu;
--	unsigned int                 larbid, portid;
-+	unsigned int                 larbid, portid, domid;
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	const struct mtk_iommu_iova_region *region;
- 	int i;
+diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+index 8362fdf76657..306bae2755ed 100644
+--- a/drivers/iommu/io-pgtable-arm-v7s.c
++++ b/drivers/iommu/io-pgtable-arm-v7s.c
+@@ -50,10 +50,17 @@
+  */
+ #define ARM_V7S_ADDR_BITS		32
+ #define _ARM_V7S_LVL_BITS(lvl)		(16 - (lvl) * 4)
++/* MediaTek: totally 34bits, 14bits at lvl1 and 8bits at lvl2. */
++#define _ARM_V7S_LVL_BITS_MTK(lvl)	(20 - (lvl) * 6)
+ #define ARM_V7S_LVL_SHIFT(lvl)		(ARM_V7S_ADDR_BITS - (4 + 8 * (lvl)))
+ #define ARM_V7S_TABLE_SHIFT		10
  
- 	for (i = 0; i < fwspec->num_ids; ++i) {
- 		larbid = MTK_M4U_TO_LARB(fwspec->ids[i]);
- 		portid = MTK_M4U_TO_PORT(fwspec->ids[i]);
-+		domid = MTK_M4U_TO_DOM(fwspec->ids[i]);
-+
- 		larb_mmu = &data->larb_imu[larbid];
-+		region = data->plat_data->iova_region + domid;
-+		larb_mmu->bank[portid] = upper_32_bits(region->iova_base);
- 
--		dev_dbg(dev, "%s iommu port: %d\n",
--			enable ? "enable" : "disable", portid);
-+		dev_dbg(dev, "%s iommu for larb(%s) port %d dom %d bank %d.\n",
-+			enable ? "enable" : "disable", dev_name(larb_mmu->dev),
-+			portid, domid, larb_mmu->bank[portid]);
- 
- 		if (enable)
- 			larb_mmu->mmu |= MTK_SMI_MMU_EN(portid);
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index ec83f1ac48b1..e94c99ca2883 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -41,6 +41,10 @@
- /* mt2712 */
- #define SMI_LARB_NONSEC_CON(id)	(0x380 + ((id) * 4))
- #define F_MMU_EN		BIT(0)
-+#define BANK_SEL(id)		({			\
-+	u32 _id = (id) & 0x3;				\
-+	(_id << 8 | _id << 10 | _id << 12 | _id << 14);	\
+-#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	(1 << _ARM_V7S_LVL_BITS(lvl))
++#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	({				\
++	int _lvl = lvl;							\
++	!arm_v7s_is_mtk_enabled(cfg) ?					\
++	 (1 << _ARM_V7S_LVL_BITS(_lvl)) : (1 << _ARM_V7S_LVL_BITS_MTK(_lvl));\
 +})
++
+ #define ARM_V7S_TABLE_SIZE(lvl, cfg)					\
+ 	(ARM_V7S_PTES_PER_LVL(lvl, cfg) * sizeof(arm_v7s_iopte))
  
- /* SMI COMMON */
- #define SMI_BUS_SEL			0x220
-@@ -85,6 +89,7 @@ struct mtk_smi_larb { /* larb: local arbiter */
- 	const struct mtk_smi_larb_gen	*larb_gen;
- 	int				larbid;
- 	u32				*mmu;
-+	unsigned char			*bank;
- };
- 
- static int mtk_smi_clk_enable(const struct mtk_smi *smi)
-@@ -151,6 +156,7 @@ mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
- 		if (dev == larb_mmu[i].dev) {
- 			larb->larbid = i;
- 			larb->mmu = &larb_mmu[i].mmu;
-+			larb->bank = larb_mmu[i].bank;
- 			return 0;
- 		}
- 	}
-@@ -169,6 +175,7 @@ static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
- 	for_each_set_bit(i, (unsigned long *)larb->mmu, 32) {
- 		reg = readl_relaxed(larb->base + SMI_LARB_NONSEC_CON(i));
- 		reg |= F_MMU_EN;
-+		reg |= BANK_SEL(larb->bank[i]);
- 		writel(reg, larb->base + SMI_LARB_NONSEC_CON(i));
- 	}
- }
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index 9371bf572ab8..4cf445dbbdaa 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -16,6 +16,7 @@
- struct mtk_smi_larb_iommu {
- 	struct device *dev;
- 	unsigned int   mmu;
-+	unsigned char  bank[32];
- };
+@@ -63,7 +70,7 @@
+ #define _ARM_V7S_IDX_MASK(lvl, cfg)	(ARM_V7S_PTES_PER_LVL(lvl, cfg) - 1)
+ #define ARM_V7S_LVL_IDX(addr, lvl, cfg)	({			\
+ 	int _l = lvl;							\
+-	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
++	((addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
+ })
  
  /*
+@@ -755,7 +762,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ {
+ 	struct arm_v7s_io_pgtable *data;
+ 
+-	if (cfg->ias > ARM_V7S_ADDR_BITS)
++	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
+ 		return NULL;
+ 
+ 	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index f6a2e3eb59d2..6e85c9976a33 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -316,7 +316,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+ 			IO_PGTABLE_QUIRK_TLBI_ON_MAP |
+ 			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
+ 		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
+-		.ias = 32,
++		.ias = 34,
+ 		.oas = 35,
+ 		.tlb = &mtk_iommu_flush_ops,
+ 		.iommu_dev = data->dev,
 -- 
 2.18.0
 _______________________________________________
