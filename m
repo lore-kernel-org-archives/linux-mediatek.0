@@ -2,78 +2,78 @@ Return-Path: <SRS0=Kazo=DH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ACDF7C4727F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:25:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F08BC2D0A8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:30:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3BFC42076E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:25:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 84399206A4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:30:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NHOmpRSJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TJnaMpUJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BFC42076E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JOpWCYBf";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IJjmJYa5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84399206A4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ztavlP50KVJynQieC/7I1u4PpzRuy0wE93+Ca3mRi6c=; b=NHOmpRSJV661u7lPevTfQX7Db
-	XQbLcEYqexsvglhtjCZZ6JV1rAi5WhE+uHbLLsc+BvfSkh7j6cc2pQIArxqGsJVLjLrS3boWznuGQ
-	kerA+hMXrxsODbd8s3BI0x8lep0Znf5u1qCF57WNFdrg6G6e29SCqCyxP2sPaT6Ff+LBvF1k4DN/J
-	ivsqiha4YbZd6ePpEUwL62aCNZJ5LhD0Chzjo/SM+nh5N6rIM0t89zZo7AG46KG8xguROq3A09wz9
-	3EU5VTIgIoSlaLM9gvehaoFTokj5yHb78VEcUdld8icmhvMrjM06Igjy4YEtJbCRFKJYaL4ACUE8P
-	mbYzuclZw==;
+	 bh=YJF7AMaXz3p6Rb3A19tyMF5nBUagAVnNCnar8zHRJ8Q=; b=JOpWCYBfgQbiMeskg0s0S0lyh
+	G4ly6AUu2ZtV2km11zBvYEHoVdMMEe03uwMi7/SmoMcE3nIU6AEXSYwKM58H1SSySCYkQKtL35JFc
+	9oF5YaBGIZcZi7OSK5ThkkF5OTZJt7PoMUe+5EJGn6gtdLpsKpQefy0bT3IYIvk0K/mxhQKCymtFW
+	2FC1nGdRFS8yI3l2xnURiWXQw5tS0AhIbkWHBipxc36RFljkNogMq99TaghwJAJ9K7QhllOcyCuHV
+	oD6+L2Fpqw1/A+zoup5XKArEmSm0zpidXjVpDf2L6em8mC2qL4bbzZddSAXL+5b2qiXJJSkQdYkhB
+	DvOC7uJ0g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNWU6-0004xz-6h; Wed, 30 Sep 2020 07:25:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kNWZ2-0007u0-Tp; Wed, 30 Sep 2020 07:30:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNWOO-0002Fn-9L; Wed, 30 Sep 2020 07:19:34 +0000
-X-UUID: c9466eb9ce5946bebec3edf4b7fa70e1-20200929
+ id 1kNWSt-0004S3-7E; Wed, 30 Sep 2020 07:23:54 +0000
+X-UUID: a2e6cd64826b436f8163706195582ab7-20200929
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=RXxpydUhOiDH5psuccLuJjNdd894eEQ6qDkPc6eppHU=; 
- b=TJnaMpUJpyHVQ4mN5eQMRtdTgoPRJBhmjgEFSTBGlJ3My9Ll9myz0GuvIi1EFbLwcSRRmKcloX2mSIfb3fnyzkoqwUcmd2rN5ozWwYwO8yvNTGsr48iI72b6CZmWXLCP+bf13coGhoKipmPfBPW2i+CpgKsiTuGZAopRU9b3qcY=;
-X-UUID: c9466eb9ce5946bebec3edf4b7fa70e1-20200929
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=sNcH4x4lnYgToeUd+jBjU/sTj/7ms1xPJ3DnTKAMxb0=; 
+ b=IJjmJYa54QMzOQ4aIJE1Kqqymid1LeFZFuHde+2ZBHWOv1E/mV9T+ht3ZbasLuB3NYvPpcLoJzYJdezEcVOAtdrZU644oyIOg0K6tJSG9uugzXX01oy8PRPU2WntM2GIexVhU5rCznx9Kvmq/Kk25KHzzAVk20xaje5ICmzqvGQ=;
+X-UUID: a2e6cd64826b436f8163706195582ab7-20200929
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 982871360; Tue, 29 Sep 2020 23:18:34 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 00:08:32 -0700
+ with ESMTP id 632652911; Tue, 29 Sep 2020 23:17:23 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Sep 2020 00:10:09 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 15:08:30 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Sep 2020 15:10:08 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Sep 2020 15:08:31 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Will Deacon <will@kernel.org>
-Subject: [PATCH v3 07/24] iommu/mediatek: Use the common mtk-smi-larb-port.h
-Date: Wed, 30 Sep 2020 15:06:30 +0800
-Message-ID: <20200930070647.10188-8-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200930070647.10188-1-yong.wu@mediatek.com>
-References: <20200930070647.10188-1-yong.wu@mediatek.com>
+ Transport; Wed, 30 Sep 2020 15:10:09 +0800
+Message-ID: <1601449808.7564.2.camel@mtkswgap22>
+Subject: Re: [PATCH v7] Add MediaTek MT6779 devapc driver
+From: Neal Liu <neal.liu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Wed, 30 Sep 2020 15:10:08 +0800
+In-Reply-To: <1600758789.19001.4.camel@mtkswgap22>
+References: <1598497593-15781-1-git-send-email-neal.liu@mediatek.com>
+ <1599028813.32069.1.camel@mtkswgap22> <1599640627.6370.3.camel@mtkswgap22>
+ <1600246737.14155.3.camel@mtkswgap22> <1600758789.19001.4.camel@mtkswgap22>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E6C5B16061FD81EDFCF10D81456BBBA9DCB241534B9CF99787AEE3C8644984D12000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200930_031912_527238_CDBD7FF0 
-X-CRM114-Status: GOOD (  16.62  )
+X-CRM114-CacheID: sfid-20200930_032351_758390_CDDE3A26 
+X-CRM114-Status: GOOD (  27.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,85 +85,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, kernel-team@android.com, linux-kernel@vger.kernel.org,
- Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- yong.wu@mediatek.com, ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
- Greg Kroah-Hartman <gregkh@google.com>, linux-arm-kernel@lists.infradead.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Neal Liu <neal.liu@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the common larb-port header in the source code.
+Hi Matt,
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c  | 7 -------
- drivers/iommu/mtk_iommu.h  | 1 +
- drivers/memory/mtk-smi.c   | 1 +
- include/soc/mediatek/smi.h | 2 --
- 4 files changed, 2 insertions(+), 9 deletions(-)
+Hope this mail could find you well.
+Is everything okay?
+It would be glad if you could reply me no matter the review status.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 785b228d39a6..fd8322ee4980 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -101,13 +101,6 @@
- 
- #define MTK_PROTECT_PA_ALIGN			256
- 
--/*
-- * Get the local arbiter ID and the portid within the larb arbiter
-- * from mtk_m4u_id which is defined by MTK_M4U_ID.
-- */
--#define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
--#define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
--
- #define HAS_4GB_MODE			BIT(0)
- /* HW will use the EMI clock if there isn't the "bclk". */
- #define HAS_BCLK			BIT(1)
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index 122925dbe547..a2e2c844b96e 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -17,6 +17,7 @@
- #include <linux/spinlock.h>
- #include <linux/dma-mapping.h>
- #include <soc/mediatek/smi.h>
-+#include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
- #define MTK_LARB_COM_MAX	8
- #define MTK_LARB_SUBCOM_MAX	4
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index c21262502581..ec83f1ac48b1 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -14,6 +14,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <soc/mediatek/smi.h>
-+#include <dt-bindings/memory/mtk-smi-larb-port.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
- 
- /* mt8173 */
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index 5a34b87d89e3..9371bf572ab8 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -11,8 +11,6 @@
- 
- #ifdef CONFIG_MTK_SMI
- 
--#define MTK_LARB_NR_MAX		16
--
- #define MTK_SMI_MMU_EN(port)	BIT(port)
- 
- struct mtk_smi_larb_iommu {
--- 
-2.18.0
+Thanks
+
+-Neal
+
+On Tue, 2020-09-22 at 15:13 +0800, Neal Liu wrote:
+> Hi Matthias,
+> 
+> We need this driver supported on main-line.
+> Could you save your time for us to review it?
+> Thanks
+> 
+> -Neal
+> 
+> On Wed, 2020-09-16 at 16:58 +0800, Neal Liu wrote:
+> > Hi Rob, Matthias, Chun-Kuang,
+> > 
+> > Sorry for pushing you so hard.
+> > May I know is this patch set is comfortable to apply on latest kernel?
+> > Thanks
+> > 
+> > -Neal
+> > 
+> > On Wed, 2020-09-09 at 16:37 +0800, Neal Liu wrote:
+> > > Hi Rob, Matthias, Chun-Kuang,
+> > > 
+> > > Please kindly let me know your comments about this patch set.
+> > > Thanks
+> > > 
+> > > -Neal
+> > > 
+> > > On Wed, 2020-09-02 at 14:40 +0800, Neal Liu wrote:
+> > > > Hi Rob, Matthias, Chun-Kuang,
+> > > > 
+> > > > Gentle ping for this patch set.
+> > > > Thanks
+> > > > 
+> > > > -Neal
+> > > > 
+> > > > On Thu, 2020-08-27 at 11:06 +0800, Neal Liu wrote:
+> > > > > These patch series introduce a MediaTek MT6779 devapc driver.
+> > > > > 
+> > > > > MediaTek bus fabric provides TrustZone security support and data protection to prevent slaves from being accessed by unexpected masters.
+> > > > > The security violation is logged and sent to the processor for further analysis or countermeasures.
+> > > > > 
+> > > > > Any occurrence of security violation would raise an interrupt, and it will be handled by mtk-devapc driver.
+> > > > > The violation information is printed in order to find the murderer.
+> > > > > 
+> > > > > changes since v6:
+> > > > > - remove unnecessary mask/unmask module irq during ISR.
+> > > > > 
+> > > > > changes since v5:
+> > > > > - remove redundant write reg operation.
+> > > > > - use static variable of vio_dbgs instead.
+> > > > > - add stop_devapc() if driver is removed.
+> > > > > 
+> > > > > changes since v4:
+> > > > > - refactor data structure.
+> > > > > - merge two simple functions into one.
+> > > > > - refactor register setting to prevent too many function call overhead.
+> > > > > 
+> > > > > changes since v3:
+> > > > > - revise violation handling flow to make it more easily to understand
+> > > > >   hardware behavior.
+> > > > > - add more comments to understand how hardware works.
+> > > > > 
+> > > > > changes since v2:
+> > > > > - pass platform info through DT data.
+> > > > > - remove unnecessary function.
+> > > > > - remove slave_type because it always equals to 1 in current support SoC.
+> > > > > - use vio_idx_num instread of list all devices' index.
+> > > > > - add more comments to describe hardware behavior.
+> > > > > 
+> > > > > changes since v1:
+> > > > > - move SoC specific part to DT data.
+> > > > > - remove unnecessary boundary check.
+> > > > > - remove unnecessary data type declaration.
+> > > > > - use read_poll_timeout() instread of for loop polling.
+> > > > > - revise coding style elegantly.
+> > > > > 
+> > > > > 
+> > > > > *** BLURB HERE ***
+> > > > > 
+> > > > > Neal Liu (2):
+> > > > >   dt-bindings: devapc: add bindings for mtk-devapc
+> > > > >   soc: mediatek: add mt6779 devapc driver
+> > > > > 
+> > > > >  .../bindings/soc/mediatek/devapc.yaml         |  58 ++++
+> > > > >  drivers/soc/mediatek/Kconfig                  |   9 +
+> > > > >  drivers/soc/mediatek/Makefile                 |   1 +
+> > > > >  drivers/soc/mediatek/mtk-devapc.c             | 305 ++++++++++++++++++
+> > > > >  4 files changed, 373 insertions(+)
+> > > > >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+> > > > >  create mode 100644 drivers/soc/mediatek/mtk-devapc.c
+> > > > > 
+> > > > 
+> > > > 
+> > > 
+> > > 
+> > 
+> > 
+> 
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
