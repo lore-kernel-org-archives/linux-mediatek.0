@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC115C4727F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:17:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80675C4727C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:18:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 60E842076E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:17:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2882D20848
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2020 07:18:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W3CrWO2g";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MU8xJXcQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60E842076E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zvByUQHT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IBcrfrSk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2882D20848
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MRkKPH42kccyAmeo0hnkBJLf3tzG7i8QdeicMEmg2M0=; b=W3CrWO2gK7ycKrJaLDN8eqKMO
-	uANkbCncTM6KHq/bXQovpaHqyszP24oXO4FzPQ4f3xpq8fyEWhOHbUgygzADTvCqchDsU2UXaW4D/
-	J/llrAR7kyzxKKUHoihL9jF1C8pQF7uUTjEUftyGWsB1oGm550+BvB2F1np2QVfuzIhUd4jlP3RJo
-	864J28GtVVFncQxorML0rJ8J+tU1KJHm2ZOzThBKCd+eQqt1rP8A1YqxRNW1ikLZ33Gb303TQheEX
-	UnoiThgBi47AYaCc+T3Lic2F6ezeMM/dA+Waqk5dciLDLCJERCEg70XGiFluC3MO+bTcI486JWlt4
-	DfvmvqpkQ==;
+	 bh=Ah/49IeLmVr7onjmTZPgWgL8zD623hJsftFR+BBmH3Q=; b=zvByUQHToUYQ08AIVHziQbicw
+	lm4fEHnqVQd4tM8HcDLhN9oQJFVoFpjn+B4qmWoO2DqVoGVfHutddQsN/OiZGpEB4vi8xynGSynoX
+	E+uHcsh5LNG5m+VCYsIVrYfSVl1+BN1ieqUp3TsCcspZW1ULTwi7ld29pOGKrNMO71vqPeKm6ShSD
+	DpnBMo3b2qnN5Kk5dnqwCJ1bj7BQvHN0hRuZqstVkcA7bVp/5w0fQ3ssagRi2oMWWnYEvURZsvnWa
+	W9aaDZM1RNwTGajftvsQ7c+CFnv5qaScwLysKsR/F50OQ37bcgPlWOZTQXooTvXNKW9Aih08IgpCY
+	pZ6tbFzow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNWMj-0001nX-8k; Wed, 30 Sep 2020 07:17:29 +0000
+	id 1kNWN8-0001xt-BW; Wed, 30 Sep 2020 07:17:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNWMg-0001li-OS; Wed, 30 Sep 2020 07:17:28 +0000
-X-UUID: 0f802dbbb966498ca3c37c44bcb1697a-20200929
+ id 1kNWMi-0001li-Bf; Wed, 30 Sep 2020 07:17:29 +0000
+X-UUID: 163c17c39d4e438e9578c71b58d57c46-20200929
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Ui4GWpIpEZeEo5yFuSRb2UvikryR+dwUjLl+SOuaZaI=; 
- b=MU8xJXcQDmw6SBf2HliXfHXco5FDrdUA6A65X1N1qV3ZNUmuNXwh25qepKf294MhaPIZMDSgy+hsPXz8N/XqXtvYY+lG6HcUGnfXJEYda4/omcxiuTnf3ZWwyIAW9UwhYb1TEELYfMvBCJZAaRS2lSbbxKebWlqUUd8N++v4Xis=;
-X-UUID: 0f802dbbb966498ca3c37c44bcb1697a-20200929
+ bh=xbdpvvhbw7U+oQhzcXIeyhQL340+/VTYp2FTyRYou84=; 
+ b=IBcrfrSkPmWG+M+4SDiJU+j65dZQeL42uuI7RWpij4jF8maGG1bN4I9IMs4NaP2JyMC3LCKSZtBWJdhdkJ05SwRNx/+cyYsnBspxNnpMc4a4iq1OZ+/DqCbGu+3BETVfSrPI/sSMyhlUW2YeBN2ghWoda7zgM9S2d4/Vg1KZz2E=;
+X-UUID: 163c17c39d4e438e9578c71b58d57c46-20200929
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 504252981; Tue, 29 Sep 2020 23:17:23 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1696744055; Tue, 29 Sep 2020 23:17:23 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 00:10:51 -0700
+ 15.0.1497.2; Wed, 30 Sep 2020 00:07:56 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Sep 2020 15:10:52 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Sep 2020 15:07:54 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Sep 2020 15:10:50 +0800
+ Transport; Wed, 30 Sep 2020 15:07:55 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  Krzysztof Kozlowski <krzk@kernel.org>, Will Deacon <will@kernel.org>
-Subject: [PATCH v3 19/24] iommu/mediatek: Support up to 34bit iova in tlb flush
-Date: Wed, 30 Sep 2020 15:06:42 +0800
-Message-ID: <20200930070647.10188-20-yong.wu@mediatek.com>
+Subject: [PATCH v3 04/24] dt-bindings: memory: mediatek: Extend LARB_NR_MAX to
+ 32
+Date: Wed, 30 Sep 2020 15:06:27 +0800
+Message-ID: <20200930070647.10188-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200930070647.10188-1-yong.wu@mediatek.com>
 References: <20200930070647.10188-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200930_031726_942758_35104083 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20200930_031728_575075_524E48F3 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,53 +97,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the iova is 34bit, the iova[32][33] is the bit0/1 in the tlb flush
-register. Add a new macro for this.
-
-there is a minor change unrelated with this patch. it also use the new
-macro.
+Extend the max larb number definition as mt8192 has larb_nr over 16.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/iommu/mtk_iommu.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ .../bindings/memory-controllers/mediatek,smi-larb.yaml        | 2 +-
+ include/dt-bindings/memory/mtk-smi-larb-port.h                | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 2f26a8242428..a2e519c86ce9 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -125,6 +125,9 @@ static const struct iommu_ops mtk_iommu_ops;
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index 50793a0e6759..ea418113bf27 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -62,7 +62,7 @@ properties:
+   mediatek,larb-id:
+     $ref: /schemas/types.yaml#/definitions/uint32
+     minimum: 0
+-    maximum: 15
++    maximum: 31
+     description: the hardware id of this larb.
+       Required property for mt2701, mt2712, mt6779 and mt7623.
  
- static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
+diff --git a/include/dt-bindings/memory/mtk-smi-larb-port.h b/include/dt-bindings/memory/mtk-smi-larb-port.h
+index 2ec7fe5ce4e9..f4d8e3aed0bc 100644
+--- a/include/dt-bindings/memory/mtk-smi-larb-port.h
++++ b/include/dt-bindings/memory/mtk-smi-larb-port.h
+@@ -6,10 +6,10 @@
+ #ifndef __DTS_MTK_IOMMU_PORT_H_
+ #define __DTS_MTK_IOMMU_PORT_H_
  
-+#define MTK_IOMMU_ADDR(addr) ({unsigned long _addr = addr; \
-+			      (lower_32_bits(_addr) | upper_32_bits(_addr)); })
-+
- /*
-  * In M4U 4GB mode, the physical address is remapped as below:
-  *
-@@ -213,8 +216,9 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
- 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
- 			       data->base + data->plat_data->inv_sel_reg);
+-#define MTK_LARB_NR_MAX			16
++#define MTK_LARB_NR_MAX			32
  
--		writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
--		writel_relaxed(iova + size - 1,
-+		writel_relaxed(MTK_IOMMU_ADDR(iova),
-+			       data->base + REG_MMU_INVLD_START_A);
-+		writel_relaxed(MTK_IOMMU_ADDR(iova + size - 1),
- 			       data->base + REG_MMU_INVLD_END_A);
- 		writel_relaxed(F_MMU_INV_RANGE,
- 			       data->base + REG_MMU_INVALIDATE);
-@@ -634,8 +638,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	if (data->plat_data->m4u_plat == M4U_MT8173)
- 		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
- 	else
--		regval = lower_32_bits(data->protect_base) |
--			 upper_32_bits(data->protect_base);
-+		regval = MTK_IOMMU_ADDR(data->protect_base);
- 	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
+ #define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
+-#define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
++#define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
+ #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
  
- 	if (data->enable_4GB &&
+ #endif
 -- 
 2.18.0
 _______________________________________________
