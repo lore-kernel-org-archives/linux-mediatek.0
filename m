@@ -2,54 +2,94 @@ Return-Path: <SRS0=Oval=DI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 253A2C4727F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 14:25:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9B70C4727C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 14:34:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CF7DB207FB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 14:25:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3270D207FB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 14:34:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RuJitPOQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF7DB207FB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qjXO+RZc";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="sjH0URHH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3270D207FB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eOhfMbPTsAMzKqHMBV1oDP0d9OLlTuBbWW9R1PAuKJM=; b=RuJitPOQgwpjcnIHruhdL2Zsgu
-	j1AEthefnMULp6sBBOhXYIrXYZMgXzRI9OIr6NW2eTW6CwaWAM5Zp5ZfTiH5uk8ZMWia6noWg791m
-	BmSJ0Fj8Ivck4DcKduhY//bn8oe+8iWQtqiDDdVDrQLLChT4vVnUFjMEHBSet5uyW0mc/6rJGI1Vk
-	w/z3JKnv+Bc1ScIkZ6u1yoh9T+AjyhlACzIUKHDK7rMhrtH+ujd8VshwaEGGXZ0BwJq0ByMhpSsk7
-	HrodUmG1MfxsA4J4GocmHrg/4hlP+P3MdaOjam4ayGjY9rLQ60i8kPXRxAenGKkXXcdzSqiDnxGZo
-	UmdXmyGQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=t3z9/iDU2dn2LY24LSoiO3kEfme1Fhoje2kgS2XOsdQ=; b=qjXO+RZca/2hWY2uYwyMsJmRb
+	hyS3eQPy1Ike14FqrxujfNNxG3Wxr9XPUElRrBh0Ppq2J4Q1VqLOmU0Xk4QtPULpxsykgjgDJ5YSG
+	BnAF34OanPcXp7jTa7ArSjv1lQByKLAmuDbrf84vUBaTaLXRhnP2g9MugfqLzpnArBqfzzoW972lZ
+	xIVo4bR3O9ZQlgHA7Aw6nDpW9cxf9Xlqn78SLPom8tzxe3+XTL1UNJssBIbtOtfj4LyxdTSwehMrm
+	A42iZyNkfjbeafqrUhHOqaRxUv1dzqHwz6gzmOfU7IVSoOsjLTdLTQib4zi9hG0xTP/NTi0g3xVy/
+	Z6cb7SU0w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNzWU-00066H-H3; Thu, 01 Oct 2020 14:25:30 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kNzeg-0008W8-Uj; Thu, 01 Oct 2020 14:33:58 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNzWJ-00060C-7C; Thu, 01 Oct 2020 14:25:23 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 2F6D429CDB8
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v3] pinctrl: mediatek: Free eint data on failure
-Date: Thu,  1 Oct 2020 16:25:11 +0200
-Message-Id: <20201001142511.3560143-1-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.28.0
+ id 1kNzee-0008VV-9d; Thu, 01 Oct 2020 14:33:57 +0000
+Received: by mail-wr1-x443.google.com with SMTP id m6so6065602wrn.0;
+ Thu, 01 Oct 2020 07:33:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=b3P3LV9RhutiTsTO5Suv2CILZHpCdIFEhL9gMG13gMw=;
+ b=sjH0URHHv1v932gE4pVV6KEJUXeW1bwdd/NKsLAqRnL953En3UJHLfhivZd1U4USGg
+ oZdHqZX4Vo3MFvg7lGHG4NVwI0UWCLBv7km08T3rTR3cbP/9g4tSSaOHfJAgjgyMdOFX
+ jlUjUpwTmzoaCzuwHtHHg2bVFpzSbgzo/oKY82QEpNt/6VP+2yxNzJsSJ6FnK6pZgnyu
+ 2tcN7DVOBDKK/KUB8F8kb4EIDbTHppMg2K5N4C+AZA4DJn1b3uwLdHFLLwkmJBw1PP4e
+ My7EwZwjrEKBL9mih3YXF32qj6dPSwutX8OqXOkSW0Ew7pGDE0EH0xfxKFQ9+m9wkqt8
+ 6maw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=b3P3LV9RhutiTsTO5Suv2CILZHpCdIFEhL9gMG13gMw=;
+ b=ANc/0agf4f0CWKwmDVKqGZOaFdIDPX245cih79h+GJmHxYG7W3kC7jFhycxdGwIiGQ
+ 8a0f9jyycQLfJ8SdmYaZtLSiNbhPckGxT9841Qzf7XawO4M1PVBA596J9LY0z0O9Xjpj
+ sl2YZID4ZjL7aB0QRhr08oQ4osEIdQh1Ptf2PMy+ELQxowwM+8/exlLuHEodrY7w4MDT
+ wsHhO31lc3af76bvLBaPiDtUHjJ1m+4FuGjPS5fNCO4M0NXppwRZHijFfBgerveCCLu4
+ /BKKNj8KBik/Zma5l4xgeg9lW62effhk7kPPW+lLgPnUVmktkb5WNSskeSFUBy0Ty3Gs
+ WgzQ==
+X-Gm-Message-State: AOAM530Cb8E2gb7Q/lW1zF1zWJbXFXEtIIsioCxJ32hvyR69iFNLxHwL
+ KMTo9jMUe9h49CurxEnFn9o=
+X-Google-Smtp-Source: ABdhPJylhiCucri9sPMCLR8/g4mcnNpPddQeyxJ58v14bLXNYPfCCAqVmUSj2SiOW/SyoMqa8Wa1xg==
+X-Received: by 2002:adf:eacf:: with SMTP id o15mr9953527wrn.12.1601562835011; 
+ Thu, 01 Oct 2020 07:33:55 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.119.110])
+ by smtp.gmail.com with ESMTPSA id 70sm219279wmb.41.2020.10.01.07.33.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Oct 2020 07:33:53 -0700 (PDT)
+Subject: Re: [PATCH v17 06/12] soc: mediatek: Add support for hierarchical
+ scpsys device node
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
+References: <1596705715-15320-1-git-send-email-weiyi.lu@mediatek.com>
+ <1596705715-15320-7-git-send-email-weiyi.lu@mediatek.com>
+ <CANMq1KByYjeD0D81sPzDxx5SzrPvpGxPgm+xvLWcFsmfUJDWBQ@mail.gmail.com>
+ <1601437039.28469.3.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <0f750b5c-86b6-f78f-f03f-d63bb599922e@gmail.com>
+Date: Thu, 1 Oct 2020 16:33:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <1601437039.28469.3.camel@mtksdaap41>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201001_102519_476934_2DE30191 
-X-CRM114-Status: GOOD (  18.65  )
+X-CRM114-CacheID: sfid-20201001_103356_353497_F2425D7B 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,168 +101,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, Linus Walleij <linus.walleij@linaro.org>,
- Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ James Liao <jamesjj.liao@mediatek.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ lkml <linux-kernel@vger.kernel.org>, Fan Chen <fan.chen@mediatek.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sascha Hauer <kernel@pengutronix.de>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pinctrl driver can work without the EINT resource, but, if it is
-expected to have this resource but the mtk_build_eint() function fails
-after allocating their data (because can't get the resource or can't map
-the irq), the data is not freed and you end with a NULL pointer
-dereference. Fix this by freeing the data if mtk_build_eint() fails, so
-pinctrl still works and doesn't hang.
 
-This is noticeable after commit f97dbf48ca43 ("irqchip/mtk-sysirq: Convert
-to a platform driver") on MT8183 because, due this commit, the pinctrl driver
-fails to map the irq and spots the following bug:
 
-[    1.947597] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000004
-[    1.956404] Mem abort info:
-[    1.959203]   ESR = 0x96000004
-[    1.962259]   EC = 0x25: DABT (current EL), IL = 32 bits
-[    1.967565]   SET = 0, FnV = 0
-[    1.970613]   EA = 0, S1PTW = 0
-[    1.973747] Data abort info:
-[    1.976619]   ISV = 0, ISS = 0x00000004
-[    1.980447]   CM = 0, WnR = 0
-[    1.983410] [0000000000000004] user address but active_mm is swapper
-[    1.989759] Internal error: Oops: 96000004 [#1] PREEMPT SMP
-[    1.995322] Modules linked in:
-[    1.998371] CPU: 7 PID: 1 Comm: swapper/0 Not tainted 5.9.0-rc1+ #44
-[    2.004715] Hardware name: MediaTek krane sku176 board (DT)
-[    2.010280] pstate: 60000005 (nZCv daif -PAN -UAO BTYPE=--)
-[    2.015850] pc : mtk_eint_set_debounce+0x48/0x1b8
-[    2.020546] lr : mtk_eint_set_debounce+0x34/0x1b8
-[    2.025239] sp : ffff80001008baa0
-[    2.028544] x29: ffff80001008baa0 x28: ffff0000ff7ff790
-[    2.033847] x27: ffff0000f9ec34b0 x26: ffff0000f9ec3480
-[    2.039150] x25: ffff0000fa576410 x24: ffff0000fa502800
-[    2.044453] x23: 0000000000001388 x22: ffff0000fa635f80
-[    2.049755] x21: 0000000000000008 x20: 0000000000000000
-[    2.055058] x19: 0000000000000071 x18: 0000000000000001
-[    2.060360] x17: 0000000000000000 x16: 0000000000000000
-[    2.065662] x15: ffff0000facc8470 x14: ffffffffffffffff
-[    2.070965] x13: 0000000000000001 x12: 00000000000000c0
-[    2.076267] x11: 0000000000000040 x10: 0000000000000070
-[    2.081569] x9 : ffffaec0063d24d8 x8 : ffff0000fa800270
-[    2.086872] x7 : 0000000000000000 x6 : 0000000000000011
-[    2.092174] x5 : ffff0000fa800248 x4 : ffff0000fa800270
-[    2.097476] x3 : ffff8000100c5000 x2 : 0000000000000000
-[    2.102778] x1 : 0000000000000000 x0 : 0000000000000000
-[    2.108081] Call trace:
-[    2.110520]  mtk_eint_set_debounce+0x48/0x1b8
-[    2.114870]  mtk_gpio_set_config+0x5c/0x78
-[    2.118958]  gpiod_set_config+0x5c/0x78
-[    2.122786]  gpiod_set_debounce+0x18/0x28
-[    2.126789]  gpio_keys_probe+0x50c/0x910
-[    2.130705]  platform_drv_probe+0x54/0xa8
-[    2.134705]  really_probe+0xe4/0x3b0
-[    2.138271]  driver_probe_device+0x58/0xb8
-[    2.142358]  device_driver_attach+0x74/0x80
-[    2.146532]  __driver_attach+0x58/0xe0
-[    2.150274]  bus_for_each_dev+0x70/0xc0
-[    2.154100]  driver_attach+0x24/0x30
-[    2.157666]  bus_add_driver+0x14c/0x1f0
-[    2.161493]  driver_register+0x64/0x120
-[    2.165319]  __platform_driver_register+0x48/0x58
-[    2.170017]  gpio_keys_init+0x1c/0x28
-[    2.173672]  do_one_initcall+0x54/0x1b4
-[    2.177499]  kernel_init_freeable+0x1d0/0x238
-[    2.181848]  kernel_init+0x14/0x118
-[    2.185328]  ret_from_fork+0x10/0x34
-[    2.188899] Code: a9438ac1 12001266 f94006c3 121e766a (b9400421)
-[    2.194991] ---[ end trace 168cf7b3324b6570 ]---
-[    2.199611] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
-[    2.207260] SMP: stopping secondary CPUs
-[    2.211294] Kernel Offset: 0x2ebff4800000 from 0xffff800010000000
-[    2.217377] PHYS_OFFSET: 0xffffb50500000000
-[    2.221551] CPU features: 0x0240002,2188200c
-[    2.225811] Memory Limit: none
-[    2.228860] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---
+On 30/09/2020 05:37, Weiyi Lu wrote:
+> On Mon, 2020-09-28 at 15:14 +0800, Nicolas Boichat wrote:
+>> On Thu, Aug 6, 2020 at 5:22 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+>>>
+>>> Try to list all the power domains of under power controller
+>>> node to show the dependency between each power domain directly
+>>> instead of filling the dependency in scp_soc_data.
+>>> And could be more clearly to group subsys clocks into power domain
+>>> sub node to introduce subsys clocks of bus protection in next patch.
+>>>
+>>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+>>> ---
+>> [snip]
+>>> +static int traverse_scp(struct platform_device *pdev, struct scp *scp,
+>>> +                       const struct scp_domain_data *scp_domain_data)
+>>> +{
+>>> +       struct device *dev = &pdev->dev;
+>>> +       struct device_node *np = dev->of_node;
+>>> +       struct device_node *sub;
+>>> +       int ret;
+>>> +
+>>> +       INIT_LIST_HEAD(&scp->dep_links);
+>>> +
+>>> +       for_each_available_child_of_node(np, sub) {
+>>> +               ret = scpsys_get_domain(pdev, scp, sub, scp_domain_data);
+>>> +               if (ret) {
+>>> +                       dev_err(&pdev->dev, "failed to handle node %pOFn: %d\n", sub, ret);
+>>
+>> minor comment: this error should not be printed if ret ==
+>> -EPROBE_DEFER (use the new dev_err_probe?)
+>>
+> 
+> You're right! I'll use dev_err_probe() instead if anyone is interested
+> in this series. Thank you!
+> 
 
-Fixes: 89132dd8ffd2 ("pinctrl: mediatek: extend eint build to pinctrl-mtk-common-v2.c")
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+I'd propose that we put all our effort of reviewing and testing into the series 
+Enric send:
+https://lore.kernel.org/linux-mediatek/20200910172826.3074357-1-enric.balletbo@collabora.com/
 
-Changes in v3:
-- Really release the resource when needed. For some reason the change
-  was not reflected in patch v2.
+Regards,
+Matthias
 
-Changes in v2:
-- Free the resource when needed (Sean Wang)
-
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 29 ++++++++++++++-----
- 1 file changed, 22 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 2f3dfb56c3fa..31724b80f133 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -355,6 +355,7 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
- {
- 	struct device_node *np = pdev->dev.of_node;
- 	struct resource *res;
-+	int ret;
- 
- 	if (!IS_ENABLED(CONFIG_EINT_MTK))
- 		return 0;
-@@ -369,19 +370,26 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "eint");
- 	if (!res) {
- 		dev_err(&pdev->dev, "Unable to get eint resource\n");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto err_free_eint;
- 	}
- 
- 	hw->eint->base = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(hw->eint->base))
--		return PTR_ERR(hw->eint->base);
-+	if (IS_ERR(hw->eint->base)) {
-+		ret = PTR_ERR(hw->eint->base);
-+		goto err_free_eint;
-+	}
- 
- 	hw->eint->irq = irq_of_parse_and_map(np, 0);
--	if (!hw->eint->irq)
--		return -EINVAL;
-+	if (!hw->eint->irq) {
-+		ret = -EINVAL;
-+		goto err_release_resource;
-+	}
- 
--	if (!hw->soc->eint_hw)
--		return -ENODEV;
-+	if (!hw->soc->eint_hw) {
-+		ret = -ENODEV;
-+		goto err_release_resource;
-+	}
- 
- 	hw->eint->dev = &pdev->dev;
- 	hw->eint->hw = hw->soc->eint_hw;
-@@ -389,6 +397,13 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
- 	hw->eint->gpio_xlate = &mtk_eint_xt;
- 
- 	return mtk_eint_do_init(hw->eint);
-+
-+err_release_resource:
-+	devm_ioremap_release(&pdev->dev, res);
-+err_free_eint:
-+	devm_kfree(hw->dev, hw->eint);
-+	hw->eint = NULL;
-+	return ret;
- }
- EXPORT_SYMBOL_GPL(mtk_build_eint);
- 
--- 
-2.28.0
-
+>>> +                       goto err;
+>>> +               }
+>>> +       }
+>>> +
+>>> +       return 0;
+>>> +
+>>> +err:
+>>> +       of_node_put(sub);
+>>> +       return ret;
+>>> +}
+>> [snip]
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
