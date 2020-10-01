@@ -2,88 +2,54 @@ Return-Path: <SRS0=Oval=DI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25493C4727E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 15:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 066D9C47420
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 16:02:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 870A1207F7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 15:16:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 96DC5208C7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 16:02:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GsoPH0zW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="DUkMQOvw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 870A1207F7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ma1A5CuR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96DC5208C7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mU0sNsQmFo/VYKNldv5CqFVSwu05O6s9p8Hzo3e42pI=; b=GsoPH0zWqbXjOgE0IwdVIt5CM
-	JHfNrAZ+Zb7tZa5reHC5auzQmqdd09FETQvh1Wq6TKubFxoeB7xZFPVdohWU0f8DZKl36xlqHOlga
-	3GcZLfkso9bEFFmM5IquOYJuwrDpGncQVaH7OzXF2MRsyi8u/PhGTfaQE8jxcoDnJT3fBmZN6QXHA
-	KBcMnv1q++Ywv05G0oBGBkn/odpMbJ1Ah9fQXC0RoyOvOYe88mjmposXu1Sk9srw57fFCCqoeIaKh
-	jRgolJgEerqz23Uv7fIMk0Z7dV8TCbNbb71VxbVjuHpAF5FWPccVtjE8/Q7ZCTf9b5VrFub05d0Yh
-	TujDJNGzA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j9OyN8TpnzZvwzrBj/IFYBu8OJtP/JNYYZwNP8+sijc=; b=ma1A5CuRK1O986NR8xjZVBLF4O
+	MhHMGdN25aLAZhwzI7nvuG0Dl5ZIyTL/LdWtgHO/573Tol4fHN1oeEhtksUxgCl/GFKm1eZvrG15Q
+	tByLZFVyA4p20Vs1nqvcMKAVWO4Qqa1oJ3ju0EmuNRx/ANxGTCdXyIqRIznDxuvsxO9GhDNOZscnO
+	eaodloP8K+SPsusNqmViZGHSN9N4dM0WOMOeTYXNaep9WBAZUg+G+cw1FkaOiJMfnTi05zOHYiJb9
+	3exGSH08Orq6RgsQvu3D9AIgrx6Kr5fus3SFX+D3WICgBnCcMXJJVCeABCyNAGoZVJu+PDd4EinsI
+	S09hkE7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kO0K7-0006yE-Bn; Thu, 01 Oct 2020 15:16:47 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1kO122-0008QV-FT; Thu, 01 Oct 2020 16:02:10 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kO0K4-0006xB-JZ; Thu, 01 Oct 2020 15:16:45 +0000
-Received: by mail-oi1-x243.google.com with SMTP id t76so5917504oif.7;
- Thu, 01 Oct 2020 08:16:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Xfo+wi8t+ry7BWDgiqCTQIEDykykW+Wdj6olsxhBuHM=;
- b=DUkMQOvwX9tEFpayXGRxRPn++TYJ9jiz9fwz/633eCw9tR3sQKE4FKsR/jzjr+s/YX
- g0o1fbnY3WutEp3eHUWQo3YPoGazs1ktGnBmH2R4qIgqJEKQbgESECy7F88ZPX/4+DL1
- HAIa9j9AL0e6zNXnGhymwc5s4KQ+OfvYt5S8pDmX4yzTNd24aFHBi3ny3Gq/o9rQ2Xcw
- 0d6/ITBVFV8pcaKkFqbH8KOZK1oXOTn7A/nevTUZKb5RpvHnVOlWK0rFUCq5kIb/Sa8P
- IJQkDT1fRXEwv1M1FPnuBWqGh6bLKfPDwM5tLUvFALeJLdYy6yDhuf251DtZ0lWrptXL
- qC+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=Xfo+wi8t+ry7BWDgiqCTQIEDykykW+Wdj6olsxhBuHM=;
- b=uAO4m2OaJNG/WeDciM2HNVILH4BHr590Wiut7zSm7EkTslWbDA2J6ZJcenI+BDEJ9Q
- 4FGn9PZELM6gCkcJic8FtnicjE55DmIQgVscykOLcXEYA/HFWR3GKEicqsvkcXv5eh2e
- gm/5dq4chCM7l47KSgZ6C+Ie7VU/ZGhzMZ12JDBMFouhCIMV6GCpo9t1EdAccc9NKpfI
- AzL5kFb5kVt4VAqociOHLXVI5sCI+VLwfnfwVgn5J9WTKVe1EtFlGX9d5kTE/p13tFgO
- pFfSEbfXW3gXjkpWLF/6mbMtQGvGLkY40nC+bhux5klQlaFZTUwhwd+JU1MfsEYFGGtP
- a2Sg==
-X-Gm-Message-State: AOAM531SpH3W2/ry/7XfnPXTQ9m9qYDr69HT2y/cALMcHPe5G6pAcgWE
- uFMgTzDQG4GQMvtSci/uJNY=
-X-Google-Smtp-Source: ABdhPJzNY7ZqiaCZjpk22anICOz/42ohUgqmMs/7vgXX1GSTHq9VQpTOE4Uio9zydoJgs6seiTebtw==
-X-Received: by 2002:aca:4142:: with SMTP id o63mr257451oia.167.1601565401239; 
- Thu, 01 Oct 2020 08:16:41 -0700 (PDT)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id 34sm1250405otg.23.2020.10.01.08.16.40
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 01 Oct 2020 08:16:40 -0700 (PDT)
-Date: Thu, 1 Oct 2020 08:16:39 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [v5,0/4] watchdog: mt8192: add wdt support
-Message-ID: <20201001151639.GC64648@roeck-us.net>
-References: <20200929032005.15169-1-crystal.guo@mediatek.com>
- <71e21cfd-fd44-2cf9-cf8a-f83dc1b0cc89@gmail.com>
+ id 1kO11v-0008Mn-BQ; Thu, 01 Oct 2020 16:02:04 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 910D529D755
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v2 00/12] soc: mediatek: pm-domains: Add new driver for SCPSYS
+ power domains controller
+Date: Thu,  1 Oct 2020 18:01:42 +0200
+Message-Id: <20201001160154.3587848-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <71e21cfd-fd44-2cf9-cf8a-f83dc1b0cc89@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201001_111644_649316_14BD3A24 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20201001_120203_475668_57D35C7D 
+X-CRM114-Status: GOOD (  17.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,64 +61,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-watchdog@vger.kernel.org, srv_heupstream@mediatek.com,
- seiya.wang@mediatek.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, Crystal Guo <crystal.guo@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
+ fparent@baylibre.com, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 01, 2020 at 04:23:02PM +0200, Matthias Brugger wrote:
-> Hi Crystal,
-> 
-> It seems you forgot to send the email to one of the maintainers, Wim.
-> Please make sure you add all the maintainers from get_maintainers.pl when
-> you send a series.
-> 
-> Regards,
-> Matthias
-> 
-> On 29/09/2020 05:20, Crystal Guo wrote:
-> > v5 changes:
-> > fix typos on:
-> > https://patchwork.kernel.org/patch/11697493/
-> > 
-> > v4 changes:
-> > revise commit messages.
-> > 
-> > v3 changes:
-> > https://patchwork.kernel.org/patch/11692731/
-> > https://patchwork.kernel.org/patch/11692767/
-> > https://patchwork.kernel.org/patch/11692729/
-> > https://patchwork.kernel.org/patch/11692771/
-> > https://patchwork.kernel.org/patch/11692733/
+Dear all,
 
-This is less than helpful. It doesn't tell me anything. It expects me to 
-go back to the earlier versions, download them, and run a diff, to figure
-out what changed. That means the patch or patch series ends at the bottom
-of my pile of patches to review. Which, as it happens, is quite deep.
+This is a new driver with the aim to deprecate the mtk-scpsys driver.
+The problem with that driver is that, in order to support more Mediatek
+SoCs you need to add some logic to handle properly the power-up
+sequence of newer Mediatek SoCs, doesn't handle parent-child power
+domains and need to hardcode all the clocks in the driver itself. The
+result is that the driver is getting bigger and bigger every time a
+new SoC needs to be supported.
 
-I will review this and similar patches without change log after (and only
-after) I have reviewed all other patches in my queue.
+All this information can be getted from a properly defined binding, so
+can be cleaner and smaller, hence, we implemented a new driver. For
+now, only MT8173 and MT8183 is supported but should be fairly easy to
+add support for new SoCs.
 
-Guenter
+Note that the MT8183 support is not ready to land yet because has some
+dependencies, i.e. mmsys support is still missing. So, only patches from
+1 to 9 are ready, the others are provided for reference and test.
 
-> > 
-> > Crystal Guo (4):
-> >    dt-binding: mediatek: watchdog: fix the description of compatible
-> >    dt-binding: mediatek: mt8192: update mtk-wdt document
-> >    dt-binding: mt8192: add toprgu reset-controller head file
-> >    watchdog: mt8192: add wdt support
-> > 
-> >   .../devicetree/bindings/watchdog/mtk-wdt.txt       |  5 ++--
-> >   drivers/watchdog/mtk_wdt.c                         |  6 +++++
-> >   .../dt-bindings/reset-controller/mt8192-resets.h   | 30 ++++++++++++++++++++++
-> >   3 files changed, 39 insertions(+), 2 deletions(-)
-> >   create mode 100644 include/dt-bindings/reset-controller/mt8192-resets.h
-> > 
+Best regards,
+  Enric
+
+Enric Balletbo i Serra (4):
+  dt-bindings: power: Add bindings for the Mediatek SCPSYS power domains
+    controller
+  soc: mediatek: Add MediaTek SCPSYS power domains
+  arm64: dts: mediatek: Add mt8173 power domain controller
+  dt-bindings: power: Add MT8183 power domains
+
+Matthias Brugger (8):
+  soc: mediatek: pm-domains: Add bus protection protocol
+  soc: mediatek: pm_domains: Make bus protection generic
+  soc: mediatek: pm-domains: Add SMI block as bus protection block
+  soc: mediatek: pm-domains: Add extra sram control
+  soc: mediatek: pm-domains: Add subsystem clocks
+  soc: mediatek: pm-domains: Allow bus protection to ignore clear ack
+  soc: mediatek: pm-domains: Add support for mt8183
+  arm64: dts: mediatek: Add mt8183 power domains controller
+
+ .../power/mediatek,power-controller.yaml      |  184 +++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  164 ++-
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  162 +++
+ drivers/soc/mediatek/Kconfig                  |   13 +
+ drivers/soc/mediatek/Makefile                 |    1 +
+ drivers/soc/mediatek/mtk-infracfg.c           |    5 -
+ drivers/soc/mediatek/mtk-mmsys.c              |    4 -
+ drivers/soc/mediatek/mtk-pm-domains.c         | 1019 +++++++++++++++++
+ include/dt-bindings/power/mt8183-power.h      |   26 +
+ include/linux/soc/mediatek/infracfg.h         |   57 +
+ 10 files changed, 1577 insertions(+), 58 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+ create mode 100644 drivers/soc/mediatek/mtk-pm-domains.c
+ create mode 100644 include/dt-bindings/power/mt8183-power.h
+
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
