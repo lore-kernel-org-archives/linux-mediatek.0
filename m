@@ -2,90 +2,93 @@ Return-Path: <SRS0=Oval=DI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61303C4727F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 09:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BF54C4727C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 14:16:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA29E2087D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 09:21:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AE67320796
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2020 14:16:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kSXrYYOb";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="o7qGrzbm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA29E2087D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="20TgEATv";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="oMhrCQWA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE67320796
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AOvtWZkIBcbC+4yrGE58Lgw6z5V1wDAMFksfdmoBtIw=; b=kSXrYYOblPf6PRLuiGUtzbpUe
-	oaTeGK57zTZhPrXvV4lA0hw11WYAIHBnrD6VkOA96FTiIabNSmx+TuQKeyBRgR0lHiR0ZCyDeJSBh
-	7vxdQ8Phfaf5KSOU10BNfx6dBA4MhWEeo9pKg4xnH/W2xtbBHEoChtQN412LxwmfiN4TSKn/PuX6U
-	ZmBcekPq3cQ4hTG73mML7dBES5YmKBV3V4E5Y0/AUMzlfSRnuI8jbAFtcD6heBmTjCPWIFChdbUTk
-	hkDAdqLG/wu7whpcO3X7wPNLEYh1tcroE5yXJRkNO9Abl5MUWZuL7DqZS8WpqcEeC6I1l/Ww3ON6O
-	tls/9MpCw==;
+	 bh=lQs3qFrxjtZB8ME9W/kmQb27AoaxfP8KGZNF0y9W+Gg=; b=20TgEATvVpC8/XV/AfHXnY5M1
+	wB8b8Bb+VKlaIXijhi5JVvX13cLwi2+Pk8z+ACyNnwOMadA6V+7ubaPXVZK3Ccg+28bCtI/hkjD4P
+	+kk0Nu8wrGgjymCxg1sawR3xIq3zLgXfeheFRz1XkhGPq4BSbEBCVx1/LwIEjYPtbwAzVNamny4A2
+	+yi8UAcO2DQVsaqHpBAPqLqN2Qk4FPX8zsXYE7abMO2VwlZ973SS0pxbHW9CgEtUXpEinTYsmLLe+
+	l1JGgcHmmujhxHp90TWFFxIF3vU+JdS+lyL15VZeT7Cqqu9QdYzN83rXtXSOVHBtRs4aS+JBIdasM
+	P6t5S5bmg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNumN-00021h-2G; Thu, 01 Oct 2020 09:21:35 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1kNzNK-0002zD-P7; Thu, 01 Oct 2020 14:16:02 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNucC-0003d1-Pd
- for linux-mediatek@lists.infradead.org; Thu, 01 Oct 2020 09:11:06 +0000
-Received: by mail-wm1-x344.google.com with SMTP id l15so1778133wmh.1
- for <linux-mediatek@lists.infradead.org>; Thu, 01 Oct 2020 02:11:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=qVG1crGosGe6WteagSyVUP1/8VNDfCfQGhNS/WTV3K0=;
- b=o7qGrzbmYA7WsOVk5tsMhOn/ogjO7Rwy+3E+DJwzfKTeT4Se1KdQ2tzqeV/arHZtMj
- XQW+iTpC5qgeHDfcC+DQUhGrmXhSnWebuKi4ZRXIagt3VpJbjDvx3De0hxhthF0Z41W4
- 3JUPmNWofiKFdchJkQ1l251ycv7ugqqwNi8eIauBj2SBBtXOhCwtGFjmCGB531qliNS+
- 2rv6LBCbDd//R4dePNyM2d3/XsugRfa/X76mDyU4Bmmw9pJJGlrwXaYyLNn8Ws6xseWq
- X1yeqC5yrEnvKeVXbRZTU0Pdp/8mJmPmk6AhArAfRy+tKwiz0Wk1cbY7Ivo/R4aMlbL3
- HqHw==
+ id 1kNzN8-0002qG-P3; Thu, 01 Oct 2020 14:15:55 +0000
+Received: by mail-wr1-x441.google.com with SMTP id s12so5963165wrw.11;
+ Thu, 01 Oct 2020 07:15:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=BEVeioAblvOjShBbM1jBg6agZyVGfRoTs/GtPxjBCbI=;
+ b=oMhrCQWAOHqG6HxVMBmqVZPYxMru6FIXm3mJvAbc8rbL7tactK29OZk+GvNiM5PZk8
+ rF6p5qi0AyXKRjNx+f23OJ8VJ+FleD7gQP9lLRLq2Y4dXvx012uxiiO1b7fpiRntPsoI
+ PI0IvzVtjor7xv0a/TguOEJumonWGlfE65S4PwSOaNJs2XyLk4l1P2ZKGnjoloQnXwyz
+ 6CDkgfu187Eq4Lf2dvoi1cHfzHjCKVZhmf5NrBoC9ZlJVUhX8aK9BA+/KWZFgHuk8Wxl
+ 7frfWbzrA5r6wEJBfZ+pXNAGHzjb8U3WB0CfY06Dbqb+2MmXIltXnqleTmlcDnjvc9Mi
+ EFtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=qVG1crGosGe6WteagSyVUP1/8VNDfCfQGhNS/WTV3K0=;
- b=oqg0AIZboHK2lVTp7TXqmdhAIhOBFkCVztjIjZdPIoaG1ljQfGXNxHdcQTwza2DBEG
- BJCHxxys5VKTaJILoLOfEksLnBCXnRTKo6VNuAgBi/XsXSvaGAFtkAuP5D7xgQecR6JP
- lV0iSULxrukeD4Szowr7LxxzmToRK1Mfrg9BdufTRblx4/BJoUlLb1X9pfHOyx2MA+lb
- 0t165VO2lAYPpk9L5jac0dYNDnd21J9+lEXLU2BaiXVdnkzy8dC6C2d6UvxR78f2q8vU
- FJFA3ZzqzGYvzfG0hkt6jd6g1hIJ7KK8+MRc9xsxudW5pUevoX7r2Yh6I3AoOTW2SK1y
- OA/A==
-X-Gm-Message-State: AOAM531yqYX8bV5F+L8nKZDPYQMrbAKnJ7+jvgY2rAEBtr3YeE/hUUQE
- SplmmN5rYkgXhRs5FEVS7zLr4w==
-X-Google-Smtp-Source: ABdhPJzBPRGBtX689t52KEw8E7IfKXkFOKlUu++drz3PRbwvKtDPB6HUzhAnulJ8OK270nOmXIqozw==
-X-Received: by 2002:a1c:5988:: with SMTP id n130mr7691297wmb.95.1601543463453; 
- Thu, 01 Oct 2020 02:11:03 -0700 (PDT)
-Received: from dell ([91.110.221.236])
- by smtp.gmail.com with ESMTPSA id k22sm8326949wrd.29.2020.10.01.02.11.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Oct 2020 02:11:02 -0700 (PDT)
-Date: Thu, 1 Oct 2020 10:11:01 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: Re: [PATCH v5 09/10] mfd: mt6360: Merge header file into driver and
- remove unuse register define
-Message-ID: <20201001091101.GO6148@dell>
-References: <1600770019-11585-1-git-send-email-gene.chen.richtek@gmail.com>
- <1600770019-11585-10-git-send-email-gene.chen.richtek@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BEVeioAblvOjShBbM1jBg6agZyVGfRoTs/GtPxjBCbI=;
+ b=CLlMTIjZvZAhEFWiJiPY478eyEmqNz+3SzjoeLXHJJz+oEgIezL4rghMSgRTOya+l3
+ 8WDZ2exXQ3i7DMjN2wI98aJOy/exM1c92FMCTATICrtSkxB9TtLz9/t172XCp3UPmgJG
+ xKlzlF3ZxvtYHGd6jLI9xgjMuy2jKyr8kD9nGgYU9icO6m7IW8VzlOuOqZPYBmZx+Ski
+ KMvHWGffejZMpl2MsLqyliKziA51F67ajkiKzJAHB3e+eSG2RvzP0Gwhg52jSCT5mjRy
+ khMOLYvJXfzmrCwYClF3Ka2nFOjXvXN7TvBXEKy01kfew0c50XSHtjTxA1I+gQOoP8J1
+ /fog==
+X-Gm-Message-State: AOAM530sUBqcP/lAxW92Z4XoOYh+5aXp3HYOa04AN0UyN+SGxGFaxjLi
+ Yu5pt5ns1U4ecoOW5Hg+W48=
+X-Google-Smtp-Source: ABdhPJwUjBFOW1XPUuWU4ekSqDncW2iPM/Z45iswZFbsIeOrE+yuHZU3Vu24DSJPTVO2+ih9PwthHw==
+X-Received: by 2002:adf:e4cf:: with SMTP id v15mr9174610wrm.174.1601561747382; 
+ Thu, 01 Oct 2020 07:15:47 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.119.110])
+ by smtp.gmail.com with ESMTPSA id v4sm96564wml.46.2020.10.01.07.15.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Oct 2020 07:15:45 -0700 (PDT)
+Subject: Re: [PATCH v3 7/9] clk: mediatek: Fix asymmetrical PLL enable and
+ disable control
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+References: <1599103380-4155-1-git-send-email-weiyi.lu@mediatek.com>
+ <1599103380-4155-8-git-send-email-weiyi.lu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <516a5f5b-f5af-0362-a73e-97b3db7300aa@gmail.com>
+Date: Thu, 1 Oct 2020 16:15:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1600770019-11585-10-git-send-email-gene.chen.richtek@gmail.com>
+In-Reply-To: <1599103380-4155-8-git-send-email-weiyi.lu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201001_051104_882711_32D6D64C 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20201001_101551_033759_7EB0DA10 
+X-CRM114-Status: GOOD (  22.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,28 +100,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- benjamin.chao@mediatek.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, Wilma.Wu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Wendell Lin <wendell.lin@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMiBTZXAgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBGcm9tOiBHZW5lIENoZW4g
-PGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiAKPiBNZXJnZSBoZWFkZXIgZmlsZSBpbnRvIGRyaXZl
-ciBhbmQgcmVtb3ZlIHVudXNlIHJlZ2lzdGVyIGRlZmluZQo+IAo+IFNpZ25lZC1vZmYtYnk6IEdl
-bmUgQ2hlbiA8Z2VuZV9jaGVuQHJpY2h0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL21mZC9tdDYz
-NjAtY29yZS5jICB8ICA0OCArKysrKysrKy0KPiAgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzYwLmgg
-fCAyNDAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIDIg
-ZmlsZXMgY2hhbmdlZCwgNDcgaW5zZXJ0aW9ucygrKSwgMjQxIGRlbGV0aW9ucygtKQo+ICBkZWxl
-dGUgbW9kZSAxMDA2NDQgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzYwLmgKCkZvciBteSBvd24gcmVm
-ZXJlbmNlIChhcHBseSB0aGlzIGFzLWlzIHRvIHlvdXIgc2lnbi1vZmYgYmxvY2spOgoKICBBY2tl
-ZC1mb3ItTUZELWJ5OiBMZWUgSm9uZXMgPGxlZS5qb25lc0BsaW5hcm8ub3JnPgoKLS0gCkxlZSBK
-b25lcyBb5p2O55C85pavXQpTZW5pb3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2Vydmlj
-ZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxv
-dyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+
+
+On 03/09/2020 05:22, Weiyi Lu wrote:
+> The en_mask actually is a combination of divider enable mask
+> and pll enable bit(bit0).
+> Before this patch, we enabled both divider mask and bit0 in prepare(),
+> but only cleared the bit0 in unprepare().
+> Now, setting the enable register(CON0) in 2 steps: first divider mask,
+> then bit0 during prepare(), vice versa.
+> Hence, en_mask will only be used as divider enable mask.
+> Meanwhile, all the SoC PLL data are updated.
+> 
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>   drivers/clk/mediatek/clk-mt2701.c | 26 +++++++++++++-------------
+>   drivers/clk/mediatek/clk-mt2712.c | 30 +++++++++++++++---------------
+>   drivers/clk/mediatek/clk-mt6765.c | 20 ++++++++++----------
+>   drivers/clk/mediatek/clk-mt6779.c | 24 ++++++++++++------------
+>   drivers/clk/mediatek/clk-mt6797.c | 20 ++++++++++----------
+>   drivers/clk/mediatek/clk-mt7622.c | 18 +++++++++---------
+>   drivers/clk/mediatek/clk-mt7629.c | 12 ++++++------
+>   drivers/clk/mediatek/clk-mt8173.c | 28 ++++++++++++++--------------
+>   drivers/clk/mediatek/clk-mt8183.c | 22 +++++++++++-----------
+>   drivers/clk/mediatek/clk-pll.c    | 16 ++++++++++++----
+>   10 files changed, 112 insertions(+), 104 deletions(-)
+> 
+[...]
+>   
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index f440f2cd..e0b00bc 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -247,10 +247,14 @@ static int mtk_pll_prepare(struct clk_hw *hw)
+>   	writel(r, pll->pwr_addr);
+>   	udelay(1);
+>   
+> -	r = readl(pll->base_addr + REG_CON0);
+> -	r |= pll->data->en_mask;
+> +	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
+>   	writel(r, pll->base_addr + REG_CON0);
+>   
+> +	if (pll->data->en_mask) {
+> +		r = readl(pll->base_addr + REG_CON0) | pll->data->en_mask;
+> +		writel(r, pll->base_addr + REG_CON0);
+> +	}
+> +
+
+I think a better approach here would be to add a flag to mtk_pll_data instead of 
+changing all drivers in one big patch. This will allow you to add the driver 
+that needs to write the en_mask after writing CON0_BASE_EN more easily. And it 
+will later allow you to change the remaining driver one by one until all are 
+using the new flag.
+
+Regards,
+Matthias
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
