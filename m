@@ -2,137 +2,77 @@ Return-Path: <SRS0=DbAw=DJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 597A0C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 14:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AFFCEC4363C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 16:18:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1D3C206FA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 14:42:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4A7EA206FA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 16:18:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2+efSQlN";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="iXGOY00S"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1D3C206FA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZoUXNEjp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="KTqcRmGI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A7EA206FA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mc7c4K33ynRcll3J9cNukYH32WMTsaV+sAzSMSqhHEw=; b=2+efSQlNyD93X6JqpzS1UarIK
-	EWv7sLHnNbTVPCOH8vAOODQXSG+Jyt/oWGTZaSJ+h0eCbm+fpTWX1+13WXZkUcMh3ZfePsdF3Od24
-	qZUj5Yji0Yf74ErhJD/abzpgLhwBkcab7SCeJrqFefFwWLycHIpn2Pm4CG+W0WpJLF/V3XOnKz4MW
-	GWnFzCossk7R1s07d6tqhSJ41hdeWlHESfXhXwZQ3NLMKcqg/eILl4l7BotjVvc5GTjeRCTp2y5h1
-	8M/wxtcYot92jhjY1nxEQSr89SAha5tF2Y77OqZA7va1s/pK7e/jdvILu/N+qQq+kF1P/vNcRTEkU
-	3MjKzTNWg==;
+	 bh=gX8QUzCg5uciG28ShPtkkDLHEb86pWCn/rVXH9Ik+QQ=; b=ZoUXNEjpqJNQXgnd1a7IvcfOV
+	mNV58NLOiSrNDOiuNfzBMlxLciAsP79+Qr4styGkx90EvOslwaCh8838f7Wn0Vw6LmNWrarBvw0Ks
+	EfW38s2vKbYCbAVfDq+2Kil2aGWquuNhro9PiTdrhnMCKlv3jQ4pnnpHah2qF2RcvkHfm9GFiZys1
+	Y+BdyAO5rokBXMkWb4f4W62aQW51Zzd0kirTMr9CUqfTFwpbAo/MaJ7orI9miV3wuCJ1VcADg2qhl
+	A4gM6nHcc1G1olgtkV8ccayfuN1YcFEGExZ+3ywayIRv8cQ5GZtuqWUD/6JcAjgMwMI/HBIx8vcdx
+	1sOOL/H0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kOMFx-0005GT-7F; Fri, 02 Oct 2020 14:41:57 +0000
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
+	id 1kONl8-0001wr-13; Fri, 02 Oct 2020 16:18:14 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kOMFs-0005F6-9F; Fri, 02 Oct 2020 14:41:53 +0000
-Received: by mail-oi1-x242.google.com with SMTP id j16so17561oij.4;
- Fri, 02 Oct 2020 07:41:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Q5Xu/2yv7/iX4ymnGamD8ek76ylOSfuzCR4QLR4+cNc=;
- b=iXGOY00SBqrdoxhii7JTr31z4g+wZ8rimyNN4lC6KwI4kbcAw6EgqUuRcDMYYIZ78t
- NdyPjfKAElv+pEtwItdP/SWFpJ454Do9tggUNCDoqOCaM7eQWv4RseobylCfRkkCCj89
- NFjlPCBrnQ6F8ZYIGsRB/xQjyLDgK6xVEofbPEKZO62dPG2dutZ0xxfvv736hlPFKP0C
- dufJsKwzfDgaXvEjKEzaeZWLIaqHpWuUFSRJaZ/kp6vJ0qRIzbReenPBNwgdruMLOJsz
- KdYc+n3+QBnZvdeSCC4e1qhjZx5OsG3IGS/ebaIRv+NO3yU7JQSfqjU2Ix40oXDWG/+l
- TbEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=Q5Xu/2yv7/iX4ymnGamD8ek76ylOSfuzCR4QLR4+cNc=;
- b=k+6Ql/+wkJzF18Pm+ZL1Mt/FTsnRzwR5gfqxvo+JfN2vYsyufEOiXrdT442gBgsRx5
- LUmz9LSbFyNMltVdXGZx45zTTq5VPlkUye6gd/H3fRCbLsBJ4dXXN574/+9+VkTLplif
- FNhw03RUoVKIBVZnj8qdJfIe9rnRJIgloBcY1pyD6hVZI/w/h/PG511Urx0OZPY820ao
- 7sUbhnUWsRJxhryUfqqsOjSXSrj9zorcpj+9RMjm7EO2Pw459efRksWPjKcAIMg8ihxl
- OJb491Gn8ePlx/846c+qtVN2wsWFEIK9vx28smZaNXAYiZc+nuSHghK/Ctl+OkxAmCpQ
- Xjnw==
-X-Gm-Message-State: AOAM531s8oga9sfqO7i/b/IOSy7P8dDD62CkYUFF2jqSgwJajP1yr7nn
- ACmbgxPWZA0qTh/cwcbSUdg=
-X-Google-Smtp-Source: ABdhPJwCqCSODdpOcbch5aXOEoArpeYzpH5h/aJGBb52sge1z/HVoqxCtj+1n5LHuWTxM6bhKgO2Rg==
-X-Received: by 2002:aca:7215:: with SMTP id p21mr1414435oic.61.1601649709106; 
- Fri, 02 Oct 2020 07:41:49 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- w20sm385452otk.24.2020.10.02.07.41.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Oct 2020 07:41:48 -0700 (PDT)
-Subject: Re: [v5,0/4] watchdog: mt8192: add wdt support
-To: Matthias Brugger <matthias.bgg@gmail.com>
-References: <20200929032005.15169-1-crystal.guo@mediatek.com>
- <71e21cfd-fd44-2cf9-cf8a-f83dc1b0cc89@gmail.com>
- <20201001151639.GC64648@roeck-us.net>
- <89835d94-7f26-bdc3-4760-af00978aba44@gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <9d493ec4-6b3e-12a1-01f3-34c09a826290@roeck-us.net>
-Date: Fri, 2 Oct 2020 07:41:46 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kONl3-0001vk-Eb; Fri, 02 Oct 2020 16:18:10 +0000
+Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com
+ [209.85.208.47])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 234A9208B6;
+ Fri,  2 Oct 2020 16:18:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601655487;
+ bh=qKotbjg9kcKQ9kFUjGcF4Wc0HsTaB353+5mrYaSDDCQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=KTqcRmGIxuBsugsYc3QNXyB43KgLKQ9zy7a0ZL2VLKTac+57x7+Da+cQjG5EWi9W5
+ 5RjT/V3wWUwLHhRblDOh0yp1QEVbVh2jNWWOyaFL3bJ+FgSncjBolK/2wF6P9ZP8Al
+ Ga22xMjFzSc5fNnLr2MM9JAT+b9yEgFgZf1nBvwM=
+Received: by mail-ed1-f47.google.com with SMTP id l24so2229566edj.8;
+ Fri, 02 Oct 2020 09:18:07 -0700 (PDT)
+X-Gm-Message-State: AOAM530U0pgHNu2H2mdV1qMejwQBMOUcqr2OOtuWvinkke/z4MBmnU9u
+ ygjhLBhSkpD1AqPv5uMQZZSGdO9ZlCPcpQNOhw==
+X-Google-Smtp-Source: ABdhPJyafmj/u0SG8QNpaP1VvSH+STsRaizRRbacdoCZ2+w+W/LvGvkYpsx/bWsJ+8QEICEnsr4GD7tdYTR68Pb/FQk=
+X-Received: by 2002:a05:6402:d09:: with SMTP id
+ eb9mr3131896edb.219.1601655485577; 
+ Fri, 02 Oct 2020 09:18:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <89835d94-7f26-bdc3-4760-af00978aba44@gmail.com>
-Content-Language: en-US
+References: <1598497593-15781-1-git-send-email-neal.liu@mediatek.com>
+ <1599028813.32069.1.camel@mtkswgap22> <1599640627.6370.3.camel@mtkswgap22>
+ <1600246737.14155.3.camel@mtkswgap22> <1600758789.19001.4.camel@mtkswgap22>
+ <1601449808.7564.2.camel@mtkswgap22>
+In-Reply-To: <1601449808.7564.2.camel@mtkswgap22>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 3 Oct 2020 00:17:54 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__HA9W9jXSFTmZPxPeO_f1580ARDLcZO1hpX1p0a3+oUA@mail.gmail.com>
+Message-ID: <CAAOTY__HA9W9jXSFTmZPxPeO_f1580ARDLcZO1hpX1p0a3+oUA@mail.gmail.com>
+Subject: Re: [PATCH v7] Add MediaTek MT6779 devapc driver
+To: Neal Liu <neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201002_104152_325087_1CA917AD 
-X-CRM114-Status: GOOD (  30.58  )
+X-CRM114-CacheID: sfid-20201002_121809_644506_B194B9E4 
+X-CRM114-Status: GOOD (  29.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,85 +84,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-watchdog@vger.kernel.org, srv_heupstream@mediatek.com,
- seiya.wang@mediatek.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, Crystal Guo <crystal.guo@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/2/20 2:51 AM, Matthias Brugger wrote:
-> 
-> 
-> On 01/10/2020 17:16, Guenter Roeck wrote:
->> On Thu, Oct 01, 2020 at 04:23:02PM +0200, Matthias Brugger wrote:
->>> Hi Crystal,
->>>
->>> It seems you forgot to send the email to one of the maintainers, Wim.
->>> Please make sure you add all the maintainers from get_maintainers.pl when
->>> you send a series.
->>>
->>> Regards,
->>> Matthias
->>>
->>> On 29/09/2020 05:20, Crystal Guo wrote:
->>>> v5 changes:
->>>> fix typos on:
->>>> https://patchwork.kernel.org/patch/11697493/
->>>>
->>>> v4 changes:
->>>> revise commit messages.
->>>>
->>>> v3 changes:
->>>> https://patchwork.kernel.org/patch/11692731/
->>>> https://patchwork.kernel.org/patch/11692767/
->>>> https://patchwork.kernel.org/patch/11692729/
->>>> https://patchwork.kernel.org/patch/11692771/
->>>> https://patchwork.kernel.org/patch/11692733/
->>
->> This is less than helpful. It doesn't tell me anything. It expects me to
->> go back to the earlier versions, download them, and run a diff, to figure
->> out what changed. That means the patch or patch series ends at the bottom
->> of my pile of patches to review. Which, as it happens, is quite deep.
->>
->> I will review this and similar patches without change log after (and only
->> after) I have reviewed all other patches in my queue.
->>
-> 
-> I understand your comments on hard to understand change log. But I think you acted to quick to put this series to the end of your queue. I'll try to explain:
-> 
-> In v4 you gave your Acked-by and Reviewed-by for the patches that in this series are 3/4 [1] and 4/4 [2] respectively. You also gave your Reviewed-by for 1/4 [3].
-> 
-> In v4 you stated that you wanted to wait for a review from Rob for the binding changes. Obviously it's up to you to handle that the way you want. From my point of view these are rather trivial changes.
-> 
-
-That may be correct, but I am not a DT expert, and it happened often enough
-that I approved a DT change and Rob later raised concerns that I don't do it
-anymore.
-
-> In 1/4 are deleting compatible fallbacks in the bindings, as the driver provides SoC specific platform data, which you reviewed.
-> 
-> One can argue that this will break older devicetree bindings because the driver using the fallback would work except for the topgru reset controller. But I think this is the job of the maintainer of the driver as Rob won't be able to look into all the driver code to decide if any change to the bindings is backward compatible. With your Reviewed-by I understand that you are OK with this change. As SoC maintainer I'm fine with the change. MT2701 is a SoC that's not available to the general public. MT8183 is available, but only on chromebooks and I don't expect anybody to use an older kernel without watchdog driver support for mt8183 (enablement is still ongoing). Actually I took the DTS counter part already through my tree, which was an error, as we now have a DTS which does not hold to the binding description (until and if you accept 1/4).
-> 
-> The only patch missing patch is now 2/4, where Crystal added your Reviewed-by which you never gave. But it just adds the compatible to the binding for a driver you already gave your Reviewed-by. So I think this the series actually just fall through the cracks.
-> 
-> Sorry for the long mail, but if you got until here, I hope I was able to convince you to just merge the series :)
-> 
-
-If my Reviewed-by is indeed in all patches, as you state, even if I didn't give it
-to some of those and the submitter just added it (is that acceptable nowadays ?),
-there should be no problem and Wim should pick up the series. And if the submitter
-had bothered to write a proper change log instead of expecting me to do the work
-I would have noticed right away.
-
-No, this was very appropriately put to the end of my review queue.
-
-Guenter
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIE5lYWw6CgpZb3UgbWF5IGZpbmQgTWF0dGhpYXMgaW4gSVJDIFsxXSwgdGhlIGNoYW5uZWwg
+bmFtZSBpcyAjbGludXgtbWVkaWF0ZWsKClsxXSBodHRwczovL3dlYmNoYXQuZnJlZW5vZGUubmV0
+LwoKTmVhbCBMaXUgPG5lYWwubGl1QG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDlubQ55pyIMzDml6Ug
+6YCx5LiJIOS4i+WNiDM6MTDlr6vpgZPvvJoKPgo+IEhpIE1hdHQsCj4KPiBIb3BlIHRoaXMgbWFp
+bCBjb3VsZCBmaW5kIHlvdSB3ZWxsLgo+IElzIGV2ZXJ5dGhpbmcgb2theT8KPiBJdCB3b3VsZCBi
+ZSBnbGFkIGlmIHlvdSBjb3VsZCByZXBseSBtZSBubyBtYXR0ZXIgdGhlIHJldmlldyBzdGF0dXMu
+Cj4KPiBUaGFua3MKPgo+IC1OZWFsCj4KPiBPbiBUdWUsIDIwMjAtMDktMjIgYXQgMTU6MTMgKzA4
+MDAsIE5lYWwgTGl1IHdyb3RlOgo+ID4gSGkgTWF0dGhpYXMsCj4gPgo+ID4gV2UgbmVlZCB0aGlz
+IGRyaXZlciBzdXBwb3J0ZWQgb24gbWFpbi1saW5lLgo+ID4gQ291bGQgeW91IHNhdmUgeW91ciB0
+aW1lIGZvciB1cyB0byByZXZpZXcgaXQ/Cj4gPiBUaGFua3MKPiA+Cj4gPiAtTmVhbAo+ID4KPiA+
+IE9uIFdlZCwgMjAyMC0wOS0xNiBhdCAxNjo1OCArMDgwMCwgTmVhbCBMaXUgd3JvdGU6Cj4gPiA+
+IEhpIFJvYiwgTWF0dGhpYXMsIENodW4tS3VhbmcsCj4gPiA+Cj4gPiA+IFNvcnJ5IGZvciBwdXNo
+aW5nIHlvdSBzbyBoYXJkLgo+ID4gPiBNYXkgSSBrbm93IGlzIHRoaXMgcGF0Y2ggc2V0IGlzIGNv
+bWZvcnRhYmxlIHRvIGFwcGx5IG9uIGxhdGVzdCBrZXJuZWw/Cj4gPiA+IFRoYW5rcwo+ID4gPgo+
+ID4gPiAtTmVhbAo+ID4gPgo+ID4gPiBPbiBXZWQsIDIwMjAtMDktMDkgYXQgMTY6MzcgKzA4MDAs
+IE5lYWwgTGl1IHdyb3RlOgo+ID4gPiA+IEhpIFJvYiwgTWF0dGhpYXMsIENodW4tS3VhbmcsCj4g
+PiA+ID4KPiA+ID4gPiBQbGVhc2Uga2luZGx5IGxldCBtZSBrbm93IHlvdXIgY29tbWVudHMgYWJv
+dXQgdGhpcyBwYXRjaCBzZXQuCj4gPiA+ID4gVGhhbmtzCj4gPiA+ID4KPiA+ID4gPiAtTmVhbAo+
+ID4gPiA+Cj4gPiA+ID4gT24gV2VkLCAyMDIwLTA5LTAyIGF0IDE0OjQwICswODAwLCBOZWFsIExp
+dSB3cm90ZToKPiA+ID4gPiA+IEhpIFJvYiwgTWF0dGhpYXMsIENodW4tS3VhbmcsCj4gPiA+ID4g
+Pgo+ID4gPiA+ID4gR2VudGxlIHBpbmcgZm9yIHRoaXMgcGF0Y2ggc2V0Lgo+ID4gPiA+ID4gVGhh
+bmtzCj4gPiA+ID4gPgo+ID4gPiA+ID4gLU5lYWwKPiA+ID4gPiA+Cj4gPiA+ID4gPiBPbiBUaHUs
+IDIwMjAtMDgtMjcgYXQgMTE6MDYgKzA4MDAsIE5lYWwgTGl1IHdyb3RlOgo+ID4gPiA+ID4gPiBU
+aGVzZSBwYXRjaCBzZXJpZXMgaW50cm9kdWNlIGEgTWVkaWFUZWsgTVQ2Nzc5IGRldmFwYyBkcml2
+ZXIuCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IE1lZGlhVGVrIGJ1cyBmYWJyaWMgcHJvdmlkZXMg
+VHJ1c3Rab25lIHNlY3VyaXR5IHN1cHBvcnQgYW5kIGRhdGEgcHJvdGVjdGlvbiB0byBwcmV2ZW50
+IHNsYXZlcyBmcm9tIGJlaW5nIGFjY2Vzc2VkIGJ5IHVuZXhwZWN0ZWQgbWFzdGVycy4KPiA+ID4g
+PiA+ID4gVGhlIHNlY3VyaXR5IHZpb2xhdGlvbiBpcyBsb2dnZWQgYW5kIHNlbnQgdG8gdGhlIHBy
+b2Nlc3NvciBmb3IgZnVydGhlciBhbmFseXNpcyBvciBjb3VudGVybWVhc3VyZXMuCj4gPiA+ID4g
+PiA+Cj4gPiA+ID4gPiA+IEFueSBvY2N1cnJlbmNlIG9mIHNlY3VyaXR5IHZpb2xhdGlvbiB3b3Vs
+ZCByYWlzZSBhbiBpbnRlcnJ1cHQsIGFuZCBpdCB3aWxsIGJlIGhhbmRsZWQgYnkgbXRrLWRldmFw
+YyBkcml2ZXIuCj4gPiA+ID4gPiA+IFRoZSB2aW9sYXRpb24gaW5mb3JtYXRpb24gaXMgcHJpbnRl
+ZCBpbiBvcmRlciB0byBmaW5kIHRoZSBtdXJkZXJlci4KPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4g
+Y2hhbmdlcyBzaW5jZSB2NjoKPiA+ID4gPiA+ID4gLSByZW1vdmUgdW5uZWNlc3NhcnkgbWFzay91
+bm1hc2sgbW9kdWxlIGlycSBkdXJpbmcgSVNSLgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBjaGFu
+Z2VzIHNpbmNlIHY1Ogo+ID4gPiA+ID4gPiAtIHJlbW92ZSByZWR1bmRhbnQgd3JpdGUgcmVnIG9w
+ZXJhdGlvbi4KPiA+ID4gPiA+ID4gLSB1c2Ugc3RhdGljIHZhcmlhYmxlIG9mIHZpb19kYmdzIGlu
+c3RlYWQuCj4gPiA+ID4gPiA+IC0gYWRkIHN0b3BfZGV2YXBjKCkgaWYgZHJpdmVyIGlzIHJlbW92
+ZWQuCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IGNoYW5nZXMgc2luY2UgdjQ6Cj4gPiA+ID4gPiA+
+IC0gcmVmYWN0b3IgZGF0YSBzdHJ1Y3R1cmUuCj4gPiA+ID4gPiA+IC0gbWVyZ2UgdHdvIHNpbXBs
+ZSBmdW5jdGlvbnMgaW50byBvbmUuCj4gPiA+ID4gPiA+IC0gcmVmYWN0b3IgcmVnaXN0ZXIgc2V0
+dGluZyB0byBwcmV2ZW50IHRvbyBtYW55IGZ1bmN0aW9uIGNhbGwgb3ZlcmhlYWQuCj4gPiA+ID4g
+PiA+Cj4gPiA+ID4gPiA+IGNoYW5nZXMgc2luY2UgdjM6Cj4gPiA+ID4gPiA+IC0gcmV2aXNlIHZp
+b2xhdGlvbiBoYW5kbGluZyBmbG93IHRvIG1ha2UgaXQgbW9yZSBlYXNpbHkgdG8gdW5kZXJzdGFu
+ZAo+ID4gPiA+ID4gPiAgIGhhcmR3YXJlIGJlaGF2aW9yLgo+ID4gPiA+ID4gPiAtIGFkZCBtb3Jl
+IGNvbW1lbnRzIHRvIHVuZGVyc3RhbmQgaG93IGhhcmR3YXJlIHdvcmtzLgo+ID4gPiA+ID4gPgo+
+ID4gPiA+ID4gPiBjaGFuZ2VzIHNpbmNlIHYyOgo+ID4gPiA+ID4gPiAtIHBhc3MgcGxhdGZvcm0g
+aW5mbyB0aHJvdWdoIERUIGRhdGEuCj4gPiA+ID4gPiA+IC0gcmVtb3ZlIHVubmVjZXNzYXJ5IGZ1
+bmN0aW9uLgo+ID4gPiA+ID4gPiAtIHJlbW92ZSBzbGF2ZV90eXBlIGJlY2F1c2UgaXQgYWx3YXlz
+IGVxdWFscyB0byAxIGluIGN1cnJlbnQgc3VwcG9ydCBTb0MuCj4gPiA+ID4gPiA+IC0gdXNlIHZp
+b19pZHhfbnVtIGluc3RyZWFkIG9mIGxpc3QgYWxsIGRldmljZXMnIGluZGV4Lgo+ID4gPiA+ID4g
+PiAtIGFkZCBtb3JlIGNvbW1lbnRzIHRvIGRlc2NyaWJlIGhhcmR3YXJlIGJlaGF2aW9yLgo+ID4g
+PiA+ID4gPgo+ID4gPiA+ID4gPiBjaGFuZ2VzIHNpbmNlIHYxOgo+ID4gPiA+ID4gPiAtIG1vdmUg
+U29DIHNwZWNpZmljIHBhcnQgdG8gRFQgZGF0YS4KPiA+ID4gPiA+ID4gLSByZW1vdmUgdW5uZWNl
+c3NhcnkgYm91bmRhcnkgY2hlY2suCj4gPiA+ID4gPiA+IC0gcmVtb3ZlIHVubmVjZXNzYXJ5IGRh
+dGEgdHlwZSBkZWNsYXJhdGlvbi4KPiA+ID4gPiA+ID4gLSB1c2UgcmVhZF9wb2xsX3RpbWVvdXQo
+KSBpbnN0cmVhZCBvZiBmb3IgbG9vcCBwb2xsaW5nLgo+ID4gPiA+ID4gPiAtIHJldmlzZSBjb2Rp
+bmcgc3R5bGUgZWxlZ2FudGx5Lgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiAq
+KiogQkxVUkIgSEVSRSAqKioKPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gTmVhbCBMaXUgKDIpOgo+
+ID4gPiA+ID4gPiAgIGR0LWJpbmRpbmdzOiBkZXZhcGM6IGFkZCBiaW5kaW5ncyBmb3IgbXRrLWRl
+dmFwYwo+ID4gPiA+ID4gPiAgIHNvYzogbWVkaWF0ZWs6IGFkZCBtdDY3NzkgZGV2YXBjIGRyaXZl
+cgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiAgLi4uL2JpbmRpbmdzL3NvYy9tZWRpYXRlay9kZXZh
+cGMueWFtbCAgICAgICAgIHwgIDU4ICsrKysKPiA+ID4gPiA+ID4gIGRyaXZlcnMvc29jL21lZGlh
+dGVrL0tjb25maWcgICAgICAgICAgICAgICAgICB8ICAgOSArCj4gPiA+ID4gPiA+ICBkcml2ZXJz
+L3NvYy9tZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgICAgICAgfCAgIDEgKwo+ID4gPiA+ID4g
+PiAgZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLWRldmFwYy5jICAgICAgICAgICAgIHwgMzA1ICsr
+KysrKysrKysrKysrKysrKwo+ID4gPiA+ID4gPiAgNCBmaWxlcyBjaGFuZ2VkLCAzNzMgaW5zZXJ0
+aW9ucygrKQo+ID4gPiA+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9zb2MvbWVkaWF0ZWsvZGV2YXBjLnlhbWwKPiA+ID4gPiA+ID4gIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstZGV2YXBjLmMKPiA+ID4g
+PiA+ID4KPiA+ID4gPiA+Cj4gPiA+ID4gPgo+ID4gPiA+Cj4gPiA+ID4KPiA+ID4KPiA+ID4KPiA+
+Cj4gPgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
+ZGlhdGVrCg==
