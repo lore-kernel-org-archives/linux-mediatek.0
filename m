@@ -2,23 +2,23 @@ Return-Path: <SRS0=DbAw=DJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8B25C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 08:56:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6B7BC4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 09:05:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2546E206DC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 08:56:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5CC18205F4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 09:05:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fWiQlhwg";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="p91v9RDz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2546E206DC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F/GKIBWe";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eoDYuhXS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5CC18205F4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,68 +27,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VcaTVDLQfBZ7kXnnTKgylEFsmcskSqWP94CqPng9oNo=; b=fWiQlhwgy2C1lGDsGej6BPER4
-	acR2i77KzcDrlihC8SsXPArFHSmtZlx+X2AJHcJ4SqjFqD7bOn5Ru8N4FXZkPbtpzbZiNgcvzVqmu
-	WAl15gZX/qeT9tdBTJ16La/+DSrfKdhqApKuLQTlvi993hZW+U0IDqEusDhmbDQ3W7QgGZagKDeVH
-	vZAttp6wNrNiU0emfN+elD8/O4Eb5ZQm55tlKWTSWX/qxEPnRwIR3iyy1ITkHHSRRG8yKS0SXEkCW
-	XCP5rk+xGW1zocBF9sQwPFR/TmJH8GcdVUt3bo+ZrRt+EXLNWRp8J9acBtHXFnt7ilIMQCCfiWbsS
-	bWYLoW8IQ==;
+	 bh=Z6sBsi0Dx9y15IGRtQd6CYkrASsB4UYoqDQ5G2N9zVI=; b=F/GKIBWeV/9s9YjbYqkPN9KKX
+	kqb9s7YZbIL/lp5BfZiHw8B2jATiTJinXGIzkSJHGDgfuXjxiAuTQMnR0T2xfWPZKyLPAJxSrtl6x
+	CJ6Q+O/ZByQZE5ZEcL4Cv6xSpxKzn07bzmI+aTy9FgVqiGylaGD6Ic7E5TljMr1Q8rduAwESvNV6x
+	fAsN201EWztQ3I0M7bQpN9kCZSSCxVZgGnZmcPmarp8NcKZA9LC0/O9cW/wbYbMDy09HZ3d2sdq9A
+	yj8uPu4Qr78DzYlbSREERn0UER/po5gTR1BKEDDSvJe0j6CNmTvHfoV8fnpSIcLF+Jmnb7V4OycbZ
+	eiYwN2glg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kOGrJ-0002UI-3u; Fri, 02 Oct 2020 08:56:09 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1kOGzo-0003Ir-ED; Fri, 02 Oct 2020 09:04:56 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kOGrH-0002Tv-DT; Fri, 02 Oct 2020 08:56:08 +0000
-Received: by mail-wr1-x443.google.com with SMTP id o5so871136wrn.13;
- Fri, 02 Oct 2020 01:56:07 -0700 (PDT)
+ id 1kOGzm-0003Hv-5a; Fri, 02 Oct 2020 09:04:54 +0000
+Received: by mail-wm1-x342.google.com with SMTP id e2so909274wme.1;
+ Fri, 02 Oct 2020 02:04:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Rm0gp7zsjs/Pb6mKuHm8E7eDeyA4zTnaJea3hkfs65s=;
- b=p91v9RDz6QmSx7lfwIeTrIp82Fj8mDfnoybf2gboFAwtXrjKg7c3dzWMQT7iAJQWlo
- Q8kv+cW0jsv4d0VTt7cJjtxo0edU5OrWevnCR6zx9AxtGcBfVMhHA9PTP0d+HNHes2x9
- 51/h3AGMRE1SMh2Ed3GVvHGbJCiu6MFZa/G+R0gpGZ9Q0YSYt/mIGUKlrsDcLR0s9k4m
- RuRrU205Cq60vu4xwwZhiYk0Tq8Z3q7FcE9Nbz3JUcBQGMgNyYXZa4I1X8hvfvq2m7lI
- mlluifpsH48ScqI1gxl2gVf0BqunE5J5qUBxARLdYngp27JpdLwi/DxjJjKKWRnlUWaI
- Xb7A==
+ bh=qFbZVEFOo9elK0nsgeUP///LqF9DZa97QUZx/Et/nCQ=;
+ b=eoDYuhXS4JXmAa8VaGf28tPEEvCrCfFFL5oNJ8c2sq3ZxLvCo/wJko+AQjUTxctibx
+ d/4Ze8SUgEz1x5F/tKz1bAZ0G9Y9KZ/IGBdeUTtNeWabgBJFkGhOd4ksLZTczM/BkR7y
+ kZVmS04orPgCzeRl1BB2igsDgz0+sTAcEwHv/qc1Y+XjWjJVnR9wDRyN4mKwgzPlcapy
+ uFGgOFBGiPGzs7qfrLk96sWC4ml1Sk7+hPBqqCjdBdoebUQ4uxOOCIGIo9XRyKP5xw0r
+ C5VEbni8QUd3ZglNfISRyiG2ejQnIFPajEWRv5O7tLKg0Qt5xqfwajmSq90VS1TgqJ0x
+ cfTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Rm0gp7zsjs/Pb6mKuHm8E7eDeyA4zTnaJea3hkfs65s=;
- b=WK0vTZa/+58XZZ0WjlQem53c7qI5lDFl3dD9jsKKS9EfMLcKvI9MMT1+LlS3Yq0Jap
- AkESihkgX4cLFQC2TI4nmlxxDpHH/dDgvkCGxXT09+51z6NCs9mkLonjNX+HO3lI2RG9
- XQ1PkPKdYIX0tEpnud/rwMB4GFyx+WRqiQXcNc0fTZr9/yFGs90jGQV8CcB/DL1TANzc
- oJR5NHYooEViC/5MS1aEao4bLzMlGZ1+o7At0fYGTasV1xR7zD0ZV/uonnGJbemKwkcK
- Q/NOr6r6njTrevpbwvBC5AVqmmU9aHXo88ncerkW0aI1JJODKpMEediXb0u1ijbLRxyw
- lEQA==
-X-Gm-Message-State: AOAM5318llKaNT4zVA65bp+b1wScC5dIs6Fkv36lXIzQGnG+HsBKovmm
- 9ERWP+TEANloAFrVsaW0GQcfan/DUirmAA==
-X-Google-Smtp-Source: ABdhPJz9ko43LO8DPoVhNKFsXPp6ZkJpbJQcjHpNeEz+tOZqHCyj7T7NzjTf4FKj+0bDmIjzHHdrhw==
-X-Received: by 2002:a5d:69c2:: with SMTP id s2mr1774239wrw.389.1601628965912; 
- Fri, 02 Oct 2020 01:56:05 -0700 (PDT)
+ bh=qFbZVEFOo9elK0nsgeUP///LqF9DZa97QUZx/Et/nCQ=;
+ b=pHSaYPl7DxqYK+Y3DEzgUKU07yGc2429PX63aUrHOJFLueROxxvZgUIL7/sFkWWJy+
+ OnPqRTRqNvordvp8YO/MfpCOVU5yuMgpRprzF5l5FDQ0/fR55m+OOdtSDXRQUlBB9+QW
+ zRN13AqjOfV0QaO9abhHob9nxsuV/XwQMl1hPqHX2vUjoD/zrL0vnkqr5lG5SZiVdklb
+ qcC8eA993k+ZcWFMlWZeIB7YrOok201DAt6rX/qxuE7YKmg/Uz/knRLauCKeQUxaANVU
+ 7yxfIhxITRZeiK2n2M1Ojf15l5jKZpz2RrIBvLhkdizThfNdBIDbhJO3wr0PX2W9y6FR
+ 5LIA==
+X-Gm-Message-State: AOAM530nV6Xa7Y6BUzn1sBwO3l6wgtZn9Rm9Iyb4k8kBon4xRLkxjKvr
+ y94S15ObFPJwwi+iRpRkOoV2beu13Rfusw==
+X-Google-Smtp-Source: ABdhPJxdJUJFUkdUk83/VZEqiiRbaw+nZR16/sLO/3+w3JdtUO61nqVxdUrwv69Anzp3QXIIOHhOSA==
+X-Received: by 2002:a05:600c:2215:: with SMTP id
+ z21mr1673883wml.176.1601629492205; 
+ Fri, 02 Oct 2020 02:04:52 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.119.110])
- by smtp.gmail.com with ESMTPSA id v9sm1089396wrv.35.2020.10.02.01.56.04
+ by smtp.gmail.com with ESMTPSA id g12sm991740wro.89.2020.10.02.02.04.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Oct 2020 01:56:05 -0700 (PDT)
-Subject: Re: [PATCH v2 06/12] soc: mediatek: pm-domains: Add SMI block as bus
- protection block
+ Fri, 02 Oct 2020 02:04:51 -0700 (PDT)
+Subject: Re: [PATCH v2 08/12] soc: mediatek: pm-domains: Add subsystem clocks
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  linux-kernel@vger.kernel.org
 References: <20201001160154.3587848-1-enric.balletbo@collabora.com>
- <20201001160154.3587848-7-enric.balletbo@collabora.com>
+ <20201001160154.3587848-9-enric.balletbo@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <ee2b40c3-b565-22ed-34f4-4259d546a623@gmail.com>
-Date: Fri, 2 Oct 2020 10:56:03 +0200
+Message-ID: <d6d132ba-1ce1-f537-57ba-4b6bed784b48@gmail.com>
+Date: Fri, 2 Oct 2020 11:04:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201001160154.3587848-7-enric.balletbo@collabora.com>
+In-Reply-To: <20201001160154.3587848-9-enric.balletbo@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201002_045607_520410_2594229E 
-X-CRM114-Status: GOOD (  27.71  )
+X-CRM114-CacheID: sfid-20201002_050454_309716_41CF03AA 
+X-CRM114-Status: GOOD (  25.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,198 +114,85 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 01/10/2020 18:01, Enric Balletbo i Serra wrote:
 > From: Matthias Brugger <mbrugger@suse.com>
 > 
-> Apart from the infracfg block, the SMI block is used to enable the bus
-> protection for some power domains. Add support for this block.
+> For the bus protection operations, some subsystem clocks need to be enabled
+> before releasing the protection. This patch identifies the subsystem clocks
+> by it's name.
 > 
+> Suggested-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> [Adapted the patch to the mtk-pm-domains driver]
 > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > ---
 > 
-> Changes in v2: None
+> Changes in v2:
+> - Use dev_err_probe if getting clocks fails, so an error is not printed
+>    if is deferred.
 > 
->   drivers/soc/mediatek/mtk-pm-domains.c | 64 ++++++++++++++++++++-------
->   include/linux/soc/mediatek/infracfg.h |  6 +++
->   2 files changed, 53 insertions(+), 17 deletions(-)
+>   drivers/soc/mediatek/mtk-pm-domains.c | 89 ++++++++++++++++++++++-----
+>   1 file changed, 75 insertions(+), 14 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index b5e7c9846c34..38f2630bdd0a 100644
+> index e0a52d489fea..2075072f16da 100644
 > --- a/drivers/soc/mediatek/mtk-pm-domains.c
 > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -56,8 +56,25 @@
+[...]
 >   
->   #define SPM_MAX_BUS_PROT_DATA		3
->   
-> +#define _BUS_PROT(_mask, _set, _clr, _sta, _update) {	\
-> +		.bus_prot_mask = (_mask),		\
-> +		.bus_prot_set = _set,			\
-> +		.bus_prot_clr = _clr,			\
-> +		.bus_prot_sta = _sta,			\
-> +		.bus_prot_reg_update = _update,		\
+> +	for (i = 0; i < pd->num_subsys_clks; i++) {
+> +		struct clk *clk = of_clk_get(node, i + clk_ind);
+> +
+> +		if (IS_ERR(clk)) {
+> +			ret = PTR_ERR(clk);
+> +			dev_err_probe(scpsys->dev, PTR_ERR(clk),
+> +				      "%pOFn: failed to get clk at index %d: %d\n",
+> +				      node, i + clk_ind, ret);
+> +			goto err_put_subsys_clocks;
+> +		}
+> +
+> +		pd->subsys_clks[i].clk = clk;
 > +	}
 > +
-> +#define BUS_PROT_WR(_mask, _set, _clr, _sta)		\
-> +		_BUS_PROT(_mask, _set, _clr, _sta, false)
-> +
-> +#define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
-> +		_BUS_PROT(_mask, _set, _clr, _sta, true)
-> +
->   struct scpsys_bus_prot_data {
->   	u32 bus_prot_mask;
-> +	u32 bus_prot_set;
-> +	u32 bus_prot_clr;
-> +	u32 bus_prot_sta;
->   	bool bus_prot_reg_update;
->   };
->   
-> @@ -69,6 +86,7 @@ struct scpsys_bus_prot_data {
->    * @sram_pdn_ack_bits: The mask for sram power control acked bits.
->    * @caps: The flag for active wake-up action.
->    * @bp_infracfg: bus protection for infracfg subsystem
-> + * @bp_smi: bus protection for smi subsystem
->    */
->   struct scpsys_domain_data {
->   	u32 sta_mask;
-> @@ -77,6 +95,7 @@ struct scpsys_domain_data {
->   	u32 sram_pdn_ack_bits;
->   	u8 caps;
->   	const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
-> +	const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
->   };
->   
->   struct scpsys_domain {
-> @@ -86,6 +105,7 @@ struct scpsys_domain {
->   	int num_clks;
->   	struct clk_bulk_data *clks;
->   	struct regmap *infracfg;
-> +	struct regmap *smi;
->   };
->   
->   struct scpsys_soc_data {
-> @@ -175,9 +195,9 @@ static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, st
->   		if (bpd[i].bus_prot_reg_update)
->   			regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, mask);
->   		else
-> -			regmap_write(regmap, INFRA_TOPAXI_PROTECTEN_SET, mask);
-> +			regmap_write(regmap, bpd[i].bus_prot_set, mask);
->   
-> -		ret = regmap_read_poll_timeout(regmap, INFRA_TOPAXI_PROTECTSTA1,
-> +		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
->   					       val, (val & mask) == mask,
->   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->   		if (ret)
-> @@ -193,7 +213,11 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
->   	int ret;
->   
->   	ret = _scpsys_bus_protect_enable(bpd, pd->infracfg);
-> -	return ret;
+> +	ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
 > +	if (ret)
-> +		return ret;
+> +		goto err_put_subsys_clocks;
 > +
-> +	bpd = pd->data->bp_smi;
-> +	return _scpsys_bus_protect_enable(bpd, pd->smi);
->   }
->   
->   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
-> @@ -208,11 +232,11 @@ static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
->   			return 0;
->   
->   		if (bpd[i].bus_prot_reg_update)
-> -			regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, 0);
-> +			regmap_update_bits(regmap, bpd[i].bus_prot_set, mask, 0);
->   		else
-> -			regmap_write(regmap, INFRA_TOPAXI_PROTECTEN_CLR, mask);
-> +			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
->   
-> -		ret = regmap_read_poll_timeout(regmap, INFRA_TOPAXI_PROTECTSTA1,
-> +		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
->   					       val, !(val & mask),
->   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->   		if (ret)
-> @@ -228,7 +252,11 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
->   	int ret;
->   
->   	ret = _scpsys_bus_protect_disable(bpd, pd->infracfg);
-> -	return ret;
-> +	if (ret)
-> +		return ret;
-> +
-> +	bpd = pd->data->bp_smi;
-> +	return _scpsys_bus_protect_disable(bpd, pd->smi);
 
-Also it seems not to break the system we should disable pd->smi first and after 
-that pd->infracfg (just the other way round as we did in enable).
+Not sure if it really matters, but logically we should prepare the basic clocks 
+before we prepare the subsystem clocks. And fix the error handling accordingly.
 
->   }
->   
->   static int scpsys_power_on(struct generic_pm_domain *genpd)
-> @@ -358,6 +386,10 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
->   	if (IS_ERR(pd->infracfg))
->   		pd->infracfg = NULL;
->   
-> +	pd->smi = syscon_regmap_lookup_by_phandle(node, "mediatek,smi");
-> +	if (IS_ERR(pd->smi))
-> +		pd->smi = NULL;
-> +
->   	pd->num_clks = of_clk_get_parent_count(node);
->   	if (pd->num_clks > 0) {
->   		pd->clks = devm_kcalloc(scpsys->dev, pd->num_clks, sizeof(*pd->clks), GFP_KERNEL);
-> @@ -528,10 +560,9 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
->   		.ctl_offs = SPM_DIS_PWR_CON,
->   		.sram_pdn_bits = GENMASK(11, 8),
->   		.sram_pdn_ack_bits = GENMASK(12, 12),
-> -		.bp_infracfg[0] = {
-> -			.bus_prot_reg_update = true,
-> -			.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
-> -				MT8173_TOP_AXI_PROT_EN_MM_M1,
-> +		.bp_infracfg = {
-> +			BUS_PROT_UPDATE_MT8173(MT8173_TOP_AXI_PROT_EN_MM_M0 |
-> +					       MT8173_TOP_AXI_PROT_EN_MM_M1),
->   		},
->   	},
->   	[MT8173_POWER_DOMAIN_VENC_LT] = {
-> @@ -570,12 +601,11 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
->   		.ctl_offs = SPM_MFG_PWR_CON,
->   		.sram_pdn_bits = GENMASK(13, 8),
->   		.sram_pdn_ack_bits = GENMASK(21, 16),
-> -		.bp_infracfg[0] = {
-> -			.bus_prot_reg_update = true,
-> -			.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
-> -				MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-> -				MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> -				MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
-> +		.bp_infracfg = {
-> +			BUS_PROT_UPDATE_MT8173(MT8173_TOP_AXI_PROT_EN_MFG_S |
-> +					       MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-> +					       MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> +					       MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT),
->   		},
->   	},
->   };
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index f967d02cc2ff..3f18cddffb44 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -37,6 +37,12 @@
->   #define INFRA_TOPAXI_PROTECTEN_SET	0x0260
->   #define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
->   
-> +#define BUS_PROT_UPDATE_MT8173(_mask)			\
-
-While at it, could you update this to call it:
-BUS_PROT_UPDATE_TOPAXI as in all the other SoCs TOPAXI is mapped to the same 
-address.
-
-Thanks!
+Regards,
 Matthias
 
-> +	BUS_PROT_UPDATE(_mask,				\
-> +			INFRA_TOPAXI_PROTECTEN,		\
-> +			INFRA_TOPAXI_PROTECTEN_CLR,	\
-> +			INFRA_TOPAXI_PROTECTSTA1)
+>   	ret = clk_bulk_prepare(pd->num_clks, pd->clks);
+>   	if (ret)
+> -		goto err_put_clocks;
+> +		goto err_unprepare_subsys_clocks;
+>   
+>   	/*
+>   	 * Initially turn on all domains to make the domains usable
+> @@ -462,6 +513,12 @@ static int scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node
+>   
+>   err_unprepare_clocks:
+>   	clk_bulk_unprepare(pd->num_clks, pd->clks);
+> +err_unprepare_subsys_clocks:
+> +	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+> +err_put_subsys_clocks:
+> +	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+> +	devm_kfree(scpsys->dev, pd->subsys_clks);
+> +	pd->num_subsys_clks = 0;
+>   err_put_clocks:
+>   	clk_bulk_put(pd->num_clks, pd->clks);
+>   	devm_kfree(scpsys->dev, pd->clks);
+> @@ -541,6 +598,10 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+>   	clk_bulk_unprepare(pd->num_clks, pd->clks);
+>   	clk_bulk_put(pd->num_clks, pd->clks);
+>   	pd->num_clks = 0;
 > +
->   int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask,
->   		bool reg_update);
->   int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask,
+> +	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+> +	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+> +	pd->num_subsys_clks = 0;
+>   }
+>   
+>   static void scpsys_domain_cleanup(struct scpsys *scpsys)
 > 
 
 _______________________________________________
