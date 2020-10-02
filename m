@@ -2,92 +2,77 @@ Return-Path: <SRS0=DbAw=DJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CD810C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 09:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C04BC4363D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 10:58:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37A9E20665
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 09:51:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A5F2720708
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 10:58:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OaLerSc1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="A0qTRfWz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37A9E20665
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ME1WnyHS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5F2720708
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ld3u3ClmuReIjRcBduqwN259lJKiHUBcOC4y3evUBJ8=; b=OaLerSc15rh/dz6hWAer9aiyO
-	cLiSehBHuL7bui/sl8F8agBG7gFBGLv4+21s9JAzw4rrhR/b5DhX6Uc/DtNevojbUMETxQZPde1Hk
-	pJl8v1i/6p+laRGVv2yrsIPGq9LpnM0XDi7qRHL4KOS20X389/2w51j+6XKrQNx3YT4MHEGpThiI0
-	Er4fdYOtd7JDorrBq1JvFiDfA7L08heHd/CpVKRHhk9L8pVrwiEOwO19d1k5YUU5Ww+6V2ThAOCuy
-	DcpUyC/DXyP4jIc3qFvYGskv2iEepodQSMvv5TJ8RTvlj29d8Xo5sP+NIZ9zVhPYVZhDQpqut8F4N
-	8Rj/+eNEQ==;
+	 bh=Wk+rsIYG4DDSZQIHLonxbcKNtzDXqjChbJj26jtVk9Y=; b=ME1WnyHSRqvualvPtHloynKud
+	uSeqZXNmL/Z2h5uaz5XIY7p+JTVAKaTsQAQ/JBQwEi+trQkoQS16GF7+a64PI8uxDnRJUyeqauB5I
+	QAIcWpWg9kNszoHXL/+BkqNicrScEAL3AyVuf1tTSHUOoJl8/NpBtLGpHIPYTBseHqQTKDCTPNHDh
+	u9MSxPSoWmS4163cLYY0xj782nk7HiVmXY0fLer17YQXSC2fJyGPHCeIUXg161YsMFFexjhVG3FqI
+	0LKbPcf7tYeNV6km1WGjXqvPZ1+5E+KjFypOTHTylUwcjXHYTb6dxkYLb+6gZKapvaLvALLNY6ZgB
+	82FdKeHsQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kOHiz-0008Py-Af; Fri, 02 Oct 2020 09:51:37 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kOIlm-0006tN-Ur; Fri, 02 Oct 2020 10:58:35 +0000
+Received: from mail-ed1-f66.google.com ([209.85.208.66])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kOHiv-0008Ox-2E; Fri, 02 Oct 2020 09:51:34 +0000
-Received: by mail-wm1-x341.google.com with SMTP id e2so1064927wme.1;
- Fri, 02 Oct 2020 02:51:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=JsKpxIiLUITlisbV8j9skikAqGMR95uSktowmIHgutA=;
- b=A0qTRfWz7cq1fco4qQLSV+miarttvfkt3vP+GSiw70hT9BCOt+wSdPs899qcCx2xKN
- cDuAUC8HQLYYH2w3wdCpmhbizZ15YFzyl294yfbq47OA3qXwB6ol/UCrlwsQXEddBDgm
- RADxIyK/CoWlcf5XfFKgLfmKqkFiSVA2BIq1+7j4uQpJQQFXFx2VF87JB7VlwnOwdI12
- MypAY7IfvebVTJhqfTvCVCGPBK7E/nKNNR4oEdS+uSHZmu9CcsopgdCYgmdI1HrZnFIH
- P+f5oD0xwWv9GXoqlTV7uVp3abzcQig12WqxZG1G/cPQH97YOOgD1ZxzxFC5JUsRsRM+
- 8pxQ==
+ id 1kOIlk-0006sD-4e; Fri, 02 Oct 2020 10:58:33 +0000
+Received: by mail-ed1-f66.google.com with SMTP id c8so1204086edv.5;
+ Fri, 02 Oct 2020 03:58:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=JsKpxIiLUITlisbV8j9skikAqGMR95uSktowmIHgutA=;
- b=TAGjq+Fox/Bu1S2fuwl5Ku4gk7A/o9nF71NBoIxOITwS1JG0NPhkVYGCJU/gK1Znt5
- JKKX0lggtGLRRfQh0HGmJD6fgQ5vSEfxuGhnN8xrfXtmd1qz7MH0psW8yajXOfgTGrUV
- OgzjI6cWoRmSaKYFXyz8w4l2GiR2bttQxCQElrl1BuYz/oxcILIOVHvNlgfjPCc/2YIg
- oodsjlTMHZuOprfGjUjzsGpyVOa9Vh0qXAYdON8KaSVoIZB13QZYC2qUYM4P/8B77iXN
- KgX+4UgirsxAblqrA2Kl/OBgfYoCwjeL+nAs8n6plM8COHowtqQ5qyu2vY47uSWlSFtq
- J/bw==
-X-Gm-Message-State: AOAM532z87PFaURx4JJKnR2VItz5gY6v8XlFGEnaTCZLEQsP50XqSVvt
- jYAEKeStezY1B1eQYgx4jZg=
-X-Google-Smtp-Source: ABdhPJwNDnpt/0BeWbOMzXzen90CR12CPrbzs6M71xmRuxcdAaZr3YP6i5A4dN7kg7kt5841P7JjYQ==
-X-Received: by 2002:a7b:cc17:: with SMTP id f23mr1821738wmh.166.1601632291761; 
- Fri, 02 Oct 2020 02:51:31 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.119.110])
- by smtp.gmail.com with ESMTPSA id c4sm1129964wrp.85.2020.10.02.02.51.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Oct 2020 02:51:31 -0700 (PDT)
-Subject: Re: [v5,0/4] watchdog: mt8192: add wdt support
-To: Guenter Roeck <linux@roeck-us.net>
-References: <20200929032005.15169-1-crystal.guo@mediatek.com>
- <71e21cfd-fd44-2cf9-cf8a-f83dc1b0cc89@gmail.com>
- <20201001151639.GC64648@roeck-us.net>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <89835d94-7f26-bdc3-4760-af00978aba44@gmail.com>
-Date: Fri, 2 Oct 2020 11:51:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=GbwwV5mx6Qyape/PTenfWxlgTVYVcpJ7pEQzda/GkxQ=;
+ b=Yw2dbnZX82HJLX+88MNIXnqrpF/aPS2Lpc8aG3PyKba6O3zcFejRLYU3OwWIRTfEQw
+ 2eqyqxdqtpfgU9bmac352EUFTL39oYndDRuxApNUWx1VwEX4e11yI01H01a0PB/4cM9s
+ 4CgAm34FtDAE/SPcAEvCnN/Es8NdlElH3H7shqiA8Coc/ICJ2UeaTsN6qwM6t+hZcrwT
+ aaYL9IkEbZm3aEhmxx0Qh21tPHj9BjkmnkkboGPN8VnR0zGkQDkiSe/efNl6ZnfsWihO
+ mTw9ZrpvRYI5BKqWdl3GA25vkXWFbw8EoKW7s9KX2n4oOSaliQxF7yycKH7lZsTgdmM4
+ fS5Q==
+X-Gm-Message-State: AOAM530XNCj54Acr0wdMndTPwYMIbxu6lMw3X8DbsTsIMIiZaXqvrt3J
+ emboTGXOm5AQm/mHXCfWaek=
+X-Google-Smtp-Source: ABdhPJzok6AhvSeskIf7IlYRKBY2HurcM6GviTcNXQ/Ns1hoGc7QHK5khJZ9LpFGjEIDDWwJvVE2JA==
+X-Received: by 2002:a50:ec12:: with SMTP id g18mr1598574edr.309.1601636310465; 
+ Fri, 02 Oct 2020 03:58:30 -0700 (PDT)
+Received: from pi3 ([194.230.155.194])
+ by smtp.googlemail.com with ESMTPSA id t10sm892785edw.86.2020.10.02.03.58.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 02 Oct 2020 03:58:29 -0700 (PDT)
+Date: Fri, 2 Oct 2020 12:58:26 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v3 01/24] dt-bindings: iommu: mediatek: Convert IOMMU to
+ DT schema
+Message-ID: <20201002105826.GA6888@pi3>
+References: <20200930070647.10188-1-yong.wu@mediatek.com>
+ <20200930070647.10188-2-yong.wu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20201001151639.GC64648@roeck-us.net>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200930070647.10188-2-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201002_055133_231276_58D4CA9E 
-X-CRM114-Status: GOOD (  29.79  )
+X-CRM114-CacheID: sfid-20201002_065832_189335_22F60527 
+X-CRM114-Status: GOOD (  33.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,108 +84,273 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-watchdog@vger.kernel.org, srv_heupstream@mediatek.com,
- seiya.wang@mediatek.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, Crystal Guo <crystal.guo@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- linux-arm-kernel@lists.infradead.org
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ kernel-team@android.com, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream@mediatek.com, chao.hao@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ Greg Kroah-Hartman <gregkh@google.com>, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
+ Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 01/10/2020 17:16, Guenter Roeck wrote:
-> On Thu, Oct 01, 2020 at 04:23:02PM +0200, Matthias Brugger wrote:
->> Hi Crystal,
->>
->> It seems you forgot to send the email to one of the maintainers, Wim.
->> Please make sure you add all the maintainers from get_maintainers.pl when
->> you send a series.
->>
->> Regards,
->> Matthias
->>
->> On 29/09/2020 05:20, Crystal Guo wrote:
->>> v5 changes:
->>> fix typos on:
->>> https://patchwork.kernel.org/patch/11697493/
->>>
->>> v4 changes:
->>> revise commit messages.
->>>
->>> v3 changes:
->>> https://patchwork.kernel.org/patch/11692731/
->>> https://patchwork.kernel.org/patch/11692767/
->>> https://patchwork.kernel.org/patch/11692729/
->>> https://patchwork.kernel.org/patch/11692771/
->>> https://patchwork.kernel.org/patch/11692733/
+On Wed, Sep 30, 2020 at 03:06:24PM +0800, Yong Wu wrote:
+> Convert MediaTek IOMMU to DT schema.
 > 
-> This is less than helpful. It doesn't tell me anything. It expects me to
-> go back to the earlier versions, download them, and run a diff, to figure
-> out what changed. That means the patch or patch series ends at the bottom
-> of my pile of patches to review. Which, as it happens, is quite deep.
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  .../bindings/iommu/mediatek,iommu.txt         | 103 ------------
+>  .../bindings/iommu/mediatek,iommu.yaml        | 154 ++++++++++++++++++
+>  2 files changed, 154 insertions(+), 103 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+>  create mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
 > 
-> I will review this and similar patches without change log after (and only
-> after) I have reviewed all other patches in my queue.
-> 
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> deleted file mode 100644
+> index c1ccd8582eb2..000000000000
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> +++ /dev/null
+> @@ -1,103 +0,0 @@
+> -* Mediatek IOMMU Architecture Implementation
+> -
+> -  Some Mediatek SOCs contain a Multimedia Memory Management Unit (M4U), and
+> -this M4U have two generations of HW architecture. Generation one uses flat
+> -pagetable, and only supports 4K size page mapping. Generation two uses the
+> -ARM Short-Descriptor translation table format for address translation.
+> -
+> -  About the M4U Hardware Block Diagram, please check below:
+> -
+> -              EMI (External Memory Interface)
+> -               |
+> -              m4u (Multimedia Memory Management Unit)
+> -               |
+> -          +--------+
+> -          |        |
+> -      gals0-rx   gals1-rx    (Global Async Local Sync rx)
+> -          |        |
+> -          |        |
+> -      gals0-tx   gals1-tx    (Global Async Local Sync tx)
+> -          |        |          Some SoCs may have GALS.
+> -          +--------+
+> -               |
+> -           SMI Common(Smart Multimedia Interface Common)
+> -               |
+> -       +----------------+-------
+> -       |                |
+> -       |             gals-rx        There may be GALS in some larbs.
+> -       |                |
+> -       |                |
+> -       |             gals-tx
+> -       |                |
+> -   SMI larb0        SMI larb1   ... SoCs have several SMI local arbiter(larb).
+> -   (display)         (vdec)
+> -       |                |
+> -       |                |
+> - +-----+-----+     +----+----+
+> - |     |     |     |    |    |
+> - |     |     |...  |    |    |  ... There are different ports in each larb.
+> - |     |     |     |    |    |
+> -OVL0 RDMA0 WDMA0  MC   PP   VLD
+> -
+> -  As above, The Multimedia HW will go through SMI and M4U while it
+> -access EMI. SMI is a bridge between m4u and the Multimedia HW. It contain
+> -smi local arbiter and smi common. It will control whether the Multimedia
+> -HW should go though the m4u for translation or bypass it and talk
+> -directly with EMI. And also SMI help control the power domain and clocks for
+> -each local arbiter.
+> -  Normally we specify a local arbiter(larb) for each multimedia HW
+> -like display, video decode, and camera. And there are different ports
+> -in each larb. Take a example, There are many ports like MC, PP, VLD in the
+> -video decode local arbiter, all these ports are according to the video HW.
+> -  In some SoCs, there may be a GALS(Global Async Local Sync) module between
+> -smi-common and m4u, and additional GALS module between smi-larb and
+> -smi-common. GALS can been seen as a "asynchronous fifo" which could help
+> -synchronize for the modules in different clock frequency.
+> -
+> -Required properties:
+> -- compatible : must be one of the following string:
+> -	"mediatek,mt2701-m4u" for mt2701 which uses generation one m4u HW.
+> -	"mediatek,mt2712-m4u" for mt2712 which uses generation two m4u HW.
+> -	"mediatek,mt6779-m4u" for mt6779 which uses generation two m4u HW.
+> -	"mediatek,mt7623-m4u", "mediatek,mt2701-m4u" for mt7623 which uses
+> -						     generation one m4u HW.
+> -	"mediatek,mt8173-m4u" for mt8173 which uses generation two m4u HW.
+> -	"mediatek,mt8183-m4u" for mt8183 which uses generation two m4u HW.
+> -- reg : m4u register base and size.
+> -- interrupts : the interrupt of m4u.
+> -- clocks : must contain one entry for each clock-names.
+> -- clock-names : Only 1 optional clock:
+> -  - "bclk": the block clock of m4u.
+> -  Here is the list which require this "bclk":
+> -  - mt2701, mt2712, mt7623 and mt8173.
+> -  Note that m4u use the EMI clock which always has been enabled before kernel
+> -  if there is no this "bclk".
+> -- mediatek,larbs : List of phandle to the local arbiters in the current Socs.
+> -	Refer to bindings/memory-controllers/mediatek,smi-larb.txt. It must sort
+> -	according to the local arbiter index, like larb0, larb1, larb2...
+> -- iommu-cells : must be 1. This is the mtk_m4u_id according to the HW.
+> -	Specifies the mtk_m4u_id as defined in
+> -	dt-binding/memory/mt2701-larb-port.h for mt2701, mt7623
+> -	dt-binding/memory/mt2712-larb-port.h for mt2712,
+> -	dt-binding/memory/mt6779-larb-port.h for mt6779,
+> -	dt-binding/memory/mt8173-larb-port.h for mt8173, and
+> -	dt-binding/memory/mt8183-larb-port.h for mt8183.
+> -
+> -Example:
+> -	iommu: iommu@10205000 {
+> -		compatible = "mediatek,mt8173-m4u";
+> -		reg = <0 0x10205000 0 0x1000>;
+> -		interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&infracfg CLK_INFRA_M4U>;
+> -		clock-names = "bclk";
+> -		mediatek,larbs = <&larb0 &larb1 &larb2 &larb3 &larb4 &larb5>;
+> -		#iommu-cells = <1>;
+> -	};
+> -
+> -Example for a client device:
+> -	display {
+> -		compatible = "mediatek,mt8173-disp";
+> -		iommus = <&iommu M4U_PORT_DISP_OVL0>,
+> -			 <&iommu M4U_PORT_DISP_RDMA0>;
+> -		...
+> -	};
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> new file mode 100644
+> index 000000000000..eae773ad53a3
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -0,0 +1,154 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 
-I understand your comments on hard to understand change log. But I think you 
-acted to quick to put this series to the end of your queue. I'll try to explain:
+You relicense GPLv2 content so you need acks/signed-offs from every
+author:
 
-In v4 you gave your Acked-by and Reviewed-by for the patches that in this series 
-are 3/4 [1] and 4/4 [2] respectively. You also gave your Reviewed-by for 1/4 [3].
+ - Fabien Parent <fparent@baylibre.com>
+ - Chao Hao <chao.hao@mediatek.com>
+ - Matthias Brugger <matthias.bgg@gmail.com>
+ - Honghui Zhang <honghui.zhang@mediatek.com>
+(assuming yours is implicit).
 
-In v4 you stated that you wanted to wait for a review from Rob for the binding 
-changes. Obviously it's up to you to handle that the way you want. From my point 
-of view these are rather trivial changes.
+Please resend CC-ing all the people.
 
-In 1/4 are deleting compatible fallbacks in the bindings, as the driver provides 
-SoC specific platform data, which you reviewed.
 
-One can argue that this will break older devicetree bindings because the driver 
-using the fallback would work except for the topgru reset controller. But I 
-think this is the job of the maintainer of the driver as Rob won't be able to 
-look into all the driver code to decide if any change to the bindings is 
-backward compatible. With your Reviewed-by I understand that you are OK with 
-this change. As SoC maintainer I'm fine with the change. MT2701 is a SoC that's 
-not available to the general public. MT8183 is available, but only on 
-chromebooks and I don't expect anybody to use an older kernel without watchdog 
-driver support for mt8183 (enablement is still ongoing). Actually I took the DTS 
-counter part already through my tree, which was an error, as we now have a DTS 
-which does not hold to the binding description (until and if you accept 1/4).
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iommu/mediatek,iommu.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek IOMMU Architecture Implementation
+> +
+> +maintainers:
+> +  - Yong Wu <yong.wu@mediatek.com>
+> +
+> +description: |+
+> +  Some MediaTek SOCs contain a Multimedia Memory Management Unit (M4U), and
+> +  this M4U have two generations of HW architecture. Generation one uses flat
+> +  pagetable, and only supports 4K size page mapping. Generation two uses the
+> +  ARM Short-Descriptor translation table format for address translation.
+> +
+> +  About the M4U Hardware Block Diagram, please check below:
+> +
+> +                EMI (External Memory Interface)
+> +                 |
+> +                m4u (Multimedia Memory Management Unit)
+> +                 |
+> +            +--------+
+> +            |        |
+> +        gals0-rx   gals1-rx    (Global Async Local Sync rx)
+> +            |        |
+> +            |        |
+> +        gals0-tx   gals1-tx    (Global Async Local Sync tx)
+> +            |        |          Some SoCs may have GALS.
+> +            +--------+
+> +                 |
+> +             SMI Common(Smart Multimedia Interface Common)
+> +                 |
+> +         +----------------+-------
+> +         |                |
+> +         |             gals-rx        There may be GALS in some larbs.
+> +         |                |
+> +         |                |
+> +         |             gals-tx
+> +         |                |
+> +     SMI larb0        SMI larb1   ... SoCs have several SMI local arbiter(larb).
+> +     (display)         (vdec)
+> +         |                |
+> +         |                |
+> +   +-----+-----+     +----+----+
+> +   |     |     |     |    |    |
+> +   |     |     |...  |    |    |  ... There are different ports in each larb.
+> +   |     |     |     |    |    |
+> +  OVL0 RDMA0 WDMA0  MC   PP   VLD
+> +
+> +  As above, The Multimedia HW will go through SMI and M4U while it
+> +  access EMI. SMI is a bridge between m4u and the Multimedia HW. It contain
+> +  smi local arbiter and smi common. It will control whether the Multimedia
+> +  HW should go though the m4u for translation or bypass it and talk
+> +  directly with EMI. And also SMI help control the power domain and clocks for
+> +  each local arbiter.
+> +
+> +  Normally we specify a local arbiter(larb) for each multimedia HW
+> +  like display, video decode, and camera. And there are different ports
+> +  in each larb. Take a example, There are many ports like MC, PP, VLD in the
+> +  video decode local arbiter, all these ports are according to the video HW.
+> +
+> +  In some SoCs, there may be a GALS(Global Async Local Sync) module between
+> +  smi-common and m4u, and additional GALS module between smi-larb and
+> +  smi-common. GALS can been seen as a "asynchronous fifo" which could help
+> +  synchronize for the modules in different clock frequency.
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt2701-m4u # mt2701 generation one HW
+> +          - mediatek,mt2712-m4u # mt2712 generation two HW
+> +          - mediatek,mt6779-m4u # mt6779 generation two HW
+> +          - mediatek,mt8173-m4u # mt8173 generation two HW
+> +          - mediatek,mt8183-m4u # mt8183 generation two HW
+> +
+> +      - description: mt7623 generation one HW
+> +        items:
+> +          - const: mediatek,mt7623-m4u
+> +          - const: mediatek,mt2701-m4u
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    description: |
+> +      bclk is optional. here is the list which require this bclk:
+> +      mt2701, mt2712, mt7623 and mt8173.
+> +      M4U will use the EMI clock which always has been enabled before
+> +      kernel if there is no this bclk.
+> +    items:
+> +      - description: bclk is the block clock.
+> +
+> +  clock-names:
+> +    items:
+> +      - const: bclk
+> +
+> +  mediatek,larbs:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    description: |
+> +      List of phandle to the local arbiters in the current Socs.
+> +      Refer to bindings/memory-controllers/mediatek,smi-larb.yaml. It must sort
+> +      according to the local arbiter index, like larb0, larb1, larb2...
 
-The only patch missing patch is now 2/4, where Crystal added your Reviewed-by 
-which you never gave. But it just adds the compatible to the binding for a 
-driver you already gave your Reviewed-by. So I think this the series actually 
-just fall through the cracks.
-
-Sorry for the long mail, but if you got until here, I hope I was able to 
-convince you to just merge the series :)
+How many items?
 
 Best regards,
-Matthias
-
-[1] https://patchwork.kernel.org/patch/11697493/
-[2] https://patchwork.kernel.org/patch/11697483/
-[3] https://patchwork.kernel.org/patch/11697477/
-
-> Guenter
-> 
->>>
->>> Crystal Guo (4):
->>>     dt-binding: mediatek: watchdog: fix the description of compatible
->>>     dt-binding: mediatek: mt8192: update mtk-wdt document
->>>     dt-binding: mt8192: add toprgu reset-controller head file
->>>     watchdog: mt8192: add wdt support
->>>
->>>    .../devicetree/bindings/watchdog/mtk-wdt.txt       |  5 ++--
->>>    drivers/watchdog/mtk_wdt.c                         |  6 +++++
->>>    .../dt-bindings/reset-controller/mt8192-resets.h   | 30 ++++++++++++++++++++++
->>>    3 files changed, 39 insertions(+), 2 deletions(-)
->>>    create mode 100644 include/dt-bindings/reset-controller/mt8192-resets.h
->>>
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
