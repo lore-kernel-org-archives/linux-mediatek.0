@@ -1,24 +1,23 @@
-Return-Path: <SRS0=DbAw=DJ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=+yJE=DK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97846C4363D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 20:30:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD59BC4363C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2020 03:23:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43810206FA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2020 20:30:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F32B8206E3
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2020 03:23:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CQJ7kkJa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="X78OeGMY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43810206FA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PO3W8yOR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hFlAjzq6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F32B8206E3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,58 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AKgOxuaFAinHVLEYLiamu6iBZfgoYaRonrf56Fakx6A=; b=CQJ7kkJajWhhx/3WBPHpWXY95
-	xYM/F/prLdMt1hlgr8oPqO9CJdPeVj1zxIJ3h9dzvicm2egScv6aaMuIDfnKWK8sPqdff+rARsE1d
-	jPgO30DxfhcBXfhRTgzlV1z4qS6BvPxWLzBVAoKF8vJjZ7ITSMgesc5KTiC5E5DKSBs0eKthVyBkU
-	eQ26GzbZbLAEGMVxWhdc4F3YkXDyGXRYkemvFWTW92AxYivO47g5XFGUmbOLiU7GurbwL3IxY4rsh
-	PdeygM2/qf/cE5V0Pu+90YdFptIidldsDZ9mzhOrvkvtWXezlFiPuYfuTCxFsSO6Bh3m9eNm1UV8L
-	vKXxMxo6A==;
+	 bh=atXmMZtalU+IPXT5Xe+NDw7jtulCxI38Zmacn/hoNgE=; b=PO3W8yORbll2EkSGVry/r6H/K
+	/GVUgprf+dYTzdXnl31IFK6ECGBBMqAbvweyWCJHyODcnZUkVeAm5dfXyramL1Q+xLNlzXykGdMz/
+	ZCFCxzerVh6tFReWdglpCLp92JQhrMkHxKXeLapr/Sxw9ImukpvOUqzz531+ybF0l7qIUyXoKhkUZ
+	NYk/Y2QXY1c1SnkzkvzJ5EivZJWslNj1YlgWTBGeNqJKVPFxwRQdRkN3ZcJtdFcvOoz6FQn846Cf5
+	IMQ1cTHab7CfZHWE4MAPrS68KbKqqDeP0rZLXAK72FD848Glw5F0KLUSMugf9G6x/lOa93gf/WQMi
+	vAaIZHXUw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kORgp-000760-B2; Fri, 02 Oct 2020 20:30:03 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1kOY8H-0000dE-0r; Sat, 03 Oct 2020 03:22:49 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kORgm-00074z-P7; Fri, 02 Oct 2020 20:30:02 +0000
-Received: by mail-il1-x144.google.com with SMTP id o18so2437737ilg.0;
- Fri, 02 Oct 2020 13:30:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FhLp+gt/aFZ8a4cP9x5681ANW42efWsw5G3/zOdmKDI=;
- b=X78OeGMYE53vGxb6k7lJIAAX5siDmGTwGVBI6xwQZvoBjcxdsD1qiH0bw/CtXso8db
- sytPoZj/jAHfB/8NE2BxOWXSc1ng3oP2txcd2XZwNKGihs45h/Q9uyaCjkA+ccm6c6tW
- fCvNUS0esgkVhmbkvg9SsQM7Uz/a9QFmfLHjGTIe72ahexXK800zFFqN5SjRUk+GOaMw
- O40BUylaKSQELxQAWGDYbon4oJmYAG3lpVYHBAnyQxznaZqSXXqnuaEJSyj4mM0eiUXz
- U7T1pD8DbP1ex5ZsE2ach1NoMp0bdHz+A0tcfW14Su3sVI5lBy2+Lnku86PDQuNqD/Ik
- CBCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=FhLp+gt/aFZ8a4cP9x5681ANW42efWsw5G3/zOdmKDI=;
- b=lQIDV6ibQQoN1ACbwywM75GPrOELXvPVUcCAuAq09bKF0kjxCQGmtWVkwW0FTMLjS6
- XyqAygZJ9vd3UGakC0OHm2vAvCBOjwDnSYOED8w711liiojuIiuaDaXh2tC2I4f0ePyH
- iCB32dIoXxpaF9WKfQoiB6xsB3TEkOd7woD8CSjdwLOpF1M/IIxKfMSyDWMb4Xj5CwsQ
- Wp02UsEBvb+nYQmbJinfZRTf8DfhD0GlePRdC6i8uXI6A69fxe4Ku3+FZ+xAVaNh8CZQ
- fxdCHLUXj25ym0s64HomWBXpOOeO0C7KjVnfHwCrdUbdOng44nKX1oY++9JXOxejFAtO
- WtqQ==
-X-Gm-Message-State: AOAM5300Z27f2bch3LfpPFBNqXiVIfmn5UDfT+2ZEwXDN1hWBE96NAr4
- in6DvyjqyQ/vHPon1vQEggqXEYgz5C4h6X1S5tE=
-X-Google-Smtp-Source: ABdhPJyvzpaKKuH7o6oSQQFWKdaUonXVTmblHyAmich7fPwzQ1o1+ONhbgPkZQ2NRNj/1dCDzVqV+XIA1KkybHm6acQ=
-X-Received: by 2002:a05:6e02:10ce:: with SMTP id
- s14mr3275546ilj.239.1601670598656; 
- Fri, 02 Oct 2020 13:29:58 -0700 (PDT)
+ id 1kOY8D-0000cW-61; Sat, 03 Oct 2020 03:22:46 +0000
+Received: from mail-ej1-f43.google.com (mail-ej1-f43.google.com
+ [209.85.218.43])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 23DFC206E3;
+ Sat,  3 Oct 2020 03:22:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601695363;
+ bh=vshNU8D+9cfgnyb4qi/vgpJ80rl6DobvFOc+lNmiq4A=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=hFlAjzq6mVuQfPmTTpOyDSjt2poAiniCQC7B4VG6VvKy/a9HVw1KOanp3JnlMwGcz
+ OsYAzWC62+LsskUIxEsw5P2ZhQLt09I23uMxY35DuZEk8tPOtZ0iY7dUwa69pddMV+
+ SVeJ1Gt2OgHRnTkYSAr6RLFodXInMeh/iwBwen+A=
+Received: by mail-ej1-f43.google.com with SMTP id u21so4442024eja.2;
+ Fri, 02 Oct 2020 20:22:43 -0700 (PDT)
+X-Gm-Message-State: AOAM531YP4vL4U/ze4jhRFGYWo27pMLBvCBZhKoUD9pPnzPZdWOPGri4
+ 3T3eEWIfz6wmMmtUFw/WgBalkGW1lvGbZrDtzA==
+X-Google-Smtp-Source: ABdhPJwfK6hFOAL1k6cStLol7QwYclHeuIdUmnRprFtlrITDDNE5+T91NUK9YTbudQEGp0c8nEIdFwMRV6jYoHi1EXo=
+X-Received: by 2002:a17:906:158f:: with SMTP id
+ k15mr180684ejd.310.1601695361687; 
+ Fri, 02 Oct 2020 20:22:41 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200927230422.11610-1-chunkuang.hu@kernel.org>
-In-Reply-To: <20200927230422.11610-1-chunkuang.hu@kernel.org>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Fri, 2 Oct 2020 15:29:47 -0500
-Message-ID: <CABb+yY1zq0+sqXuSzkkX9+dTaTZgg5HJyQLC3N-yZx35QLLvDQ@mail.gmail.com>
+ <CABb+yY1zq0+sqXuSzkkX9+dTaTZgg5HJyQLC3N-yZx35QLLvDQ@mail.gmail.com>
+In-Reply-To: <CABb+yY1zq0+sqXuSzkkX9+dTaTZgg5HJyQLC3N-yZx35QLLvDQ@mail.gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 3 Oct 2020 11:22:30 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9bgYK2MDySstc4F2jN0M+Zpmcq2R3G_PdWz2sgt9wp7A@mail.gmail.com>
+Message-ID: <CAAOTY_9bgYK2MDySstc4F2jN0M+Zpmcq2R3G_PdWz2sgt9wp7A@mail.gmail.com>
 Subject: Re: [PATCH 0/4] Mediatek DRM driver detect CMDQ execution timeout by
  vblank IRQ
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Jassi Brar <jassisinghbrar@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201002_163000_999679_DEBB9D66 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20201002_232245_432110_5BF3B93D 
+X-CRM114-Status: GOOD (  20.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,52 +83,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- dri-devel@lists.freedesktop.org,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 27, 2020 at 6:04 PM Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
->
-> CMDQ helper provide timer to detect execution timeout, but DRM driver
-> could have a better way to detect execution timeout by vblank IRQ.
-> For DRM, CMDQ command should execute in vblank, so if it fail to
-> execute in next 2 vblank, timeout happen. Even though we could
-> calculate time between 2 vblank and use timer to delect, this would
-> make things more complicated.
->
-> This introduce a series refinement for CMDQ mailbox controller and CMDQ
-> helper. Remove timer handler in helper function because different
-> client have different way to detect timeout. Use standard mailbox
-> callback instead of proprietary one to get the necessary data
-> in callback function. Remove struct cmdq_client to access client
-> instance data by struct mbox_client.
->
-> Chun-Kuang Hu (4):
->   soc / drm: mediatek: cmdq: Remove timeout handler in helper function
->   mailbox / soc / drm: mediatek: Use mailbox rx_callback instead of
->     cmdq_task_cb
->   mailbox / soc / drm: mediatek: Remove struct cmdq_client
->   drm/mediatek: Detect CMDQ execution timeout
->
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |  54 ++++++---
->  drivers/mailbox/mtk-cmdq-mailbox.c       |  24 ++--
->  drivers/soc/mediatek/mtk-cmdq-helper.c   | 146 ++---------------------
->  include/linux/mailbox/mtk-cmdq-mailbox.h |  25 +---
->  include/linux/soc/mediatek/mtk-cmdq.h    |  54 +--------
->  5 files changed, 66 insertions(+), 237 deletions(-)
->
-Please break this into two patchsets - one for mailbox and one for its users.
-Also, CC original author and recent major contributors to mtk-cmdq-mailbox.c
-
-Thanks.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEphc3NpOgoKSmFzc2kgQnJhciA8amFzc2lzaW5naGJyYXJAZ21haWwuY29tPiDmlrwgMjAy
+MOW5tDEw5pyIM+aXpSDpgLHlha0g5LiK5Y2INDozMOWvq+mBk++8mgo+Cj4gT24gU3VuLCBTZXAg
+MjcsIDIwMjAgYXQgNjowNCBQTSBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9y
+Zz4gd3JvdGU6Cj4gPgo+ID4gQ01EUSBoZWxwZXIgcHJvdmlkZSB0aW1lciB0byBkZXRlY3QgZXhl
+Y3V0aW9uIHRpbWVvdXQsIGJ1dCBEUk0gZHJpdmVyCj4gPiBjb3VsZCBoYXZlIGEgYmV0dGVyIHdh
+eSB0byBkZXRlY3QgZXhlY3V0aW9uIHRpbWVvdXQgYnkgdmJsYW5rIElSUS4KPiA+IEZvciBEUk0s
+IENNRFEgY29tbWFuZCBzaG91bGQgZXhlY3V0ZSBpbiB2YmxhbmssIHNvIGlmIGl0IGZhaWwgdG8K
+PiA+IGV4ZWN1dGUgaW4gbmV4dCAyIHZibGFuaywgdGltZW91dCBoYXBwZW4uIEV2ZW4gdGhvdWdo
+IHdlIGNvdWxkCj4gPiBjYWxjdWxhdGUgdGltZSBiZXR3ZWVuIDIgdmJsYW5rIGFuZCB1c2UgdGlt
+ZXIgdG8gZGVsZWN0LCB0aGlzIHdvdWxkCj4gPiBtYWtlIHRoaW5ncyBtb3JlIGNvbXBsaWNhdGVk
+Lgo+ID4KPiA+IFRoaXMgaW50cm9kdWNlIGEgc2VyaWVzIHJlZmluZW1lbnQgZm9yIENNRFEgbWFp
+bGJveCBjb250cm9sbGVyIGFuZCBDTURRCj4gPiBoZWxwZXIuIFJlbW92ZSB0aW1lciBoYW5kbGVy
+IGluIGhlbHBlciBmdW5jdGlvbiBiZWNhdXNlIGRpZmZlcmVudAo+ID4gY2xpZW50IGhhdmUgZGlm
+ZmVyZW50IHdheSB0byBkZXRlY3QgdGltZW91dC4gVXNlIHN0YW5kYXJkIG1haWxib3gKPiA+IGNh
+bGxiYWNrIGluc3RlYWQgb2YgcHJvcHJpZXRhcnkgb25lIHRvIGdldCB0aGUgbmVjZXNzYXJ5IGRh
+dGEKPiA+IGluIGNhbGxiYWNrIGZ1bmN0aW9uLiBSZW1vdmUgc3RydWN0IGNtZHFfY2xpZW50IHRv
+IGFjY2VzcyBjbGllbnQKPiA+IGluc3RhbmNlIGRhdGEgYnkgc3RydWN0IG1ib3hfY2xpZW50Lgo+
+ID4KPiA+IENodW4tS3VhbmcgSHUgKDQpOgo+ID4gICBzb2MgLyBkcm06IG1lZGlhdGVrOiBjbWRx
+OiBSZW1vdmUgdGltZW91dCBoYW5kbGVyIGluIGhlbHBlciBmdW5jdGlvbgo+ID4gICBtYWlsYm94
+IC8gc29jIC8gZHJtOiBtZWRpYXRlazogVXNlIG1haWxib3ggcnhfY2FsbGJhY2sgaW5zdGVhZCBv
+Zgo+ID4gICAgIGNtZHFfdGFza19jYgo+ID4gICBtYWlsYm94IC8gc29jIC8gZHJtOiBtZWRpYXRl
+azogUmVtb3ZlIHN0cnVjdCBjbWRxX2NsaWVudAo+ID4gICBkcm0vbWVkaWF0ZWs6IERldGVjdCBD
+TURRIGV4ZWN1dGlvbiB0aW1lb3V0Cj4gPgo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2NydGMuYyAgfCAgNTQgKysrKysrLS0tCj4gPiAgZHJpdmVycy9tYWlsYm94L210ay1j
+bWRxLW1haWxib3guYyAgICAgICB8ICAyNCArKy0tCj4gPiAgZHJpdmVycy9zb2MvbWVkaWF0ZWsv
+bXRrLWNtZHEtaGVscGVyLmMgICB8IDE0NiArKy0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gIGlu
+Y2x1ZGUvbGludXgvbWFpbGJveC9tdGstY21kcS1tYWlsYm94LmggfCAgMjUgKy0tLQo+ID4gIGlu
+Y2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1jbWRxLmggICAgfCAgNTQgKy0tLS0tLS0tCj4g
+PiAgNSBmaWxlcyBjaGFuZ2VkLCA2NiBpbnNlcnRpb25zKCspLCAyMzcgZGVsZXRpb25zKC0pCj4g
+Pgo+IFBsZWFzZSBicmVhayB0aGlzIGludG8gdHdvIHBhdGNoc2V0cyAtIG9uZSBmb3IgbWFpbGJv
+eCBhbmQgb25lIGZvciBpdHMgdXNlcnMuCj4gQWxzbywgQ0Mgb3JpZ2luYWwgYXV0aG9yIGFuZCBy
+ZWNlbnQgbWFqb3IgY29udHJpYnV0b3JzIHRvIG10ay1jbWRxLW1haWxib3guYwo+CgpBZ3JlZSB3
+aXRoIHlvdS4gQnV0IGZvciBwYXRjaCBbMi80XSAoIlVzZSBtYWlsYm94IHJ4X2NhbGxiYWNrIGlu
+c3RlYWQKb2YgY21kcV90YXNrX2NiIiksIEkgdGhpbmsgaXQgd291bGQgYmUgYSBsb25nIHRlcm0g
+cHJvY2Vzcy4KSSB3b3VsZCBicmVhayBpdCBpbnRvOgoKMS4gbXRrLWNtZHEtbWFpbGJveC5jOiBh
+ZGQgcnhfY2FsbGJhY2sgYW5kIGtlZXAgIGNtZHFfdGFza19jYiBiZWNhdXNlCmNsaWVudCBpcyB1
+c2luZyBjbWRxX3Rhc2tfY2IuCjIuIGNsaWVudDogY2hhbmdlIGZyb20gY21kcV90YXNrX2NiIHRv
+IHJ4X2NhbGxiYWNrLgozLiBtdGstY21kcS1tYWlsYm94LmM6IHJlbW92ZSBjbWRxX3Rhc2tfY2Iu
+CgpUaGUgdGhyZWUgc3RlcCBoYXMgZGVwZW5kZW5jeSwgYnV0IHRoZSAybmQgc2hvdWxkIG1vdmUg
+dG8gYW5vdGhlcgpzZXJpZXMsIHNvIEkgd291bGQgZ28gMXN0IHN0ZXAgZmlyc3QuCgpSZWdhcmRz
+LApDaHVuLUt1YW5nLgoKPiBUaGFua3MuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
