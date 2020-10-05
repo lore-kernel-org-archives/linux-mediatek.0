@@ -2,68 +2,77 @@ Return-Path: <SRS0=fB7w=DM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09141C4363A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 15:25:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED37CC4363A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 15:58:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 713B720774
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 15:25:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8DF4C2068E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 15:58:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RSN2HeQF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Qy98+eb/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 713B720774
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zA5jVhtF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IYI7sKCY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DF4C2068E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SfvQY8PFgxfYUwV3QRgy2ON0myH3icfWxKENj/GWnyI=; b=RSN2HeQFvBYAyfDgZZmNTG4al
-	NNzlq2AGVcOQykl7Z3GStXQuR6Pq4zqqdYy/A3V01MoqhzfY0SHadQVrY3yJnG7YmFIDkO0pQn80X
-	wIhUl/HpEd0Cdu9wUXCgBEYdYLlj2/iYvDMYfVsFvMISjTnnQOxbFve3He/GB/7TdfHNrs00+Puk+
-	654U0ccITp9ALIxic6rLKWHbvZl0V9J6hGVYOlcxshKkBEsJxX7RL6IOIcCi16CmHNlCHgc8SRJKO
-	sGps7AAfYzGh6QgKzpj6A57nzYaoVY7sdSpBPTDD2fPruZ6poAWSM02AjgGg9JxoWPDRJ1STzcrVq
-	funfa6LVQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2g1/Egoi4fVK8EnVq9sQinhmEm+qfinRks6teJgv8AM=; b=zA5jVhtFm3ksd89hwfaUwV6hin
+	x2zjO+3J2X1l/aSaEjjjprikBsFJ61iioznI9hdzteEynb7GS4vygsu/IWWPrMQR7+V1gnh/cWzcL
+	V+mdtY4bo7BFmdtO1v+aOwaakbMlWRmrb+SUMLbxUxfm60GXZ+qM40teFhvTqW1QlaCF00lX9/HEe
+	AkgHN+Ha44HVF/JhvcDeeAg6e8x7OiwpPA1vI1bzWPMFf3U07D1Ia3TM3P1PZ+0sBhEYctHmcB6Ch
+	tZfxKL/j/zO6cMaqn7iekP11EqhR14y8dGcobU7fnif4Dahe4ISHuMxnFp9bnPcg4Pvcm99sCPw/e
+	pLyzWd3A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPSMx-0003gR-Kc; Mon, 05 Oct 2020 15:25:43 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kPSsO-0003sp-9z; Mon, 05 Oct 2020 15:58:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPSMs-0003fO-5x; Mon, 05 Oct 2020 15:25:38 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8C7AE207BC;
- Mon,  5 Oct 2020 15:25:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1601911537;
- bh=/0vJ0HMwCSkrTpW5w34rc3yXEgUT3MBnMmLGptxX8uM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Qy98+eb/pll06WRY9c4Hdk9tjpntJ5pyAruG18eik5s0/fQE1SlJMSZvfQsdpUPpk
- 0BZSMPkAh3tXs21TzpDU7l8N6VqBiCGPOo17y4Q1JRvtEUq2RgVZhCJjYiJpuPq5+O
- q6tCRQnpcbbxDs3TVukuSm+tWILbREc8hd2aZPWE=
-Date: Mon, 5 Oct 2020 16:24:33 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Ikjoon Jang <ikjn@chromium.org>
-Subject: Re: [PATCH v4 2/4] spi: spi-mtk-nor: use dma_alloc_coherent() for
- bounce buffer
-Message-ID: <20201005152433.GA48857@sirena.org.uk>
-References: <20200929073755.3741416-1-ikjn@chromium.org>
- <20200929153320.v4.2.I06cb65401ab5ad63ea30c4788d26633928d80f38@changeid>
+ id 1kPSsJ-0003rK-Lz
+ for linux-mediatek@lists.infradead.org; Mon, 05 Oct 2020 15:58:09 +0000
+X-UUID: f0426093e0a84431a5bd1144cf8be1ad-20201005
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Ki3wTt7d1tvRrJ2MPiGpeliJV3ST6qE/ddjlBK6ldMA=; 
+ b=IYI7sKCYNmCiWPaOLv063Hrbd6uYxQ4JXI79b/3l8kalxPlLGncBVqEcEf54FZ4JR2ko1YDMNemi3ThtcH6nbo8W9c5cE/Nhdk6C3foOevISJ20HfehmsNgjdYrt5VQBvTg4RgfqAr1eoNTBcbebm+G7Hc8jBJFyqRWFYtn55nc=;
+X-UUID: f0426093e0a84431a5bd1144cf8be1ad-20201005
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 657191306; Mon, 05 Oct 2020 07:57:59 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Oct 2020 08:57:56 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Oct 2020 23:57:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 5 Oct 2020 23:57:54 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH 1/2] mt76: mt7915: update ppe threshold
+Date: Mon, 5 Oct 2020 23:57:52 +0800
+Message-ID: <b381936001c1d62e520283b83d5492bdcdd5cf4f.1601913208.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <20200929153320.v4.2.I06cb65401ab5ad63ea30c4788d26633928d80f38@changeid>
-X-Cookie: Check here if tax deductible.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TM-SNTS-SMTP: AD7E908D8DDEDB847D2F270C7FD6F6B51A40574D610DE60E869CDEE11431880B2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201005_112538_306101_C6F0BE47 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20201005_115807_872969_80197CD6 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,60 +84,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, Chuanhong Guo <gch981213@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============4592987753880474688=="
+Cc: linux-mediatek@lists.infradead.org, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-wireless@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Update ppe_thresh capability to sync SDK setting.
 
---===============4592987753880474688==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mP3DRpeJDSE+ciuQ"
-Content-Disposition: inline
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/init.c  | 43 +++++++------------
+ 1 file changed, 16 insertions(+), 27 deletions(-)
 
-
---mP3DRpeJDSE+ciuQ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Tue, Sep 29, 2020 at 03:37:53PM +0800, Ikjoon Jang wrote:
-> Use dma_alloc_coherent() for bounce buffer instead of kmalloc() to
-> make sure the bounce buffer to be allocated within its DMAable range.
-
-This doesn't apply against current code, please check and resend.
-
---mP3DRpeJDSE+ciuQ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl97OrAACgkQJNaLcl1U
-h9AT1wf9ESrZU04ckhFQ4aOa5o4YIQYd+068sqPdWJvoXIuVHFya+smMWADlWXXo
-jRD77fQGo8++5zgtAv3JYvJ86yal8Y9vrg3ZCZmn6Jh4pJTMQx7pJkLABTffTU+T
-7FTBAo5l1uZLrxr2BsR4ZKrkmANWBpVAtjscoz5zm5goUYTuDDspW7MzKoHEgjP+
-0BBEzpKvRYA3Ixn0KX9KCtX2U6emSR+nIGOht9TjD3+XFBCSW7OSBlwsLDq7DH5I
-3+xFFzP2qHz+fE2pfYjpiIAFJrDVGD8vSi83HtU6/9NxDTzUfAVT3SIPZUdSKDXg
-X4F4jfG1IUlJnb59tQOD7o/Bwib1Pg==
-=AQQn
------END PGP SIGNATURE-----
-
---mP3DRpeJDSE+ciuQ--
-
-
---===============4592987753880474688==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 5884c0ce45e5..f340cc5f78da 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -357,35 +357,24 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+ }
+ 
+ static void
+-mt7915_gen_ppe_thresh(u8 *he_ppet)
++mt7915_gen_ppe_thresh(u8 *he_ppet, int nss)
+ {
+-	int ru, nss, max_nss = 1, max_ru = 3;
+-	u8 bit = 7, ru_bit_mask = 0x7;
++	u8 i, ppet_bits, ppet_size, ru_bit_mask = 0x7; /* HE80 */
+ 	u8 ppet16_ppet8_ru3_ru0[] = {0x1c, 0xc7, 0x71};
+ 
+-	he_ppet[0] = max_nss & IEEE80211_PPE_THRES_NSS_MASK;
+-	he_ppet[0] |= (ru_bit_mask <<
+-		       IEEE80211_PPE_THRES_RU_INDEX_BITMASK_POS) &
+-			IEEE80211_PPE_THRES_RU_INDEX_BITMASK_MASK;
+-
+-	for (nss = 0; nss <= max_nss; nss++) {
+-		for (ru = 0; ru < max_ru; ru++) {
+-			u8 val;
+-			int i;
+-
+-			if (!(ru_bit_mask & BIT(ru)))
+-				continue;
+-
+-			val = (ppet16_ppet8_ru3_ru0[nss] >> (ru * 6)) &
+-			       0x3f;
+-			val = ((val >> 3) & 0x7) | ((val & 0x7) << 3);
+-			for (i = 5; i >= 0; i--) {
+-				he_ppet[bit / 8] |=
+-					((val >> i) & 0x1) << ((bit % 8));
+-				bit++;
+-			}
+-		}
+-	}
++	he_ppet[0] = FIELD_PREP(IEEE80211_PPE_THRES_NSS_MASK, nss - 1) |
++		     FIELD_PREP(IEEE80211_PPE_THRES_RU_INDEX_BITMASK_MASK,
++				ru_bit_mask);
++
++	ppet_bits = IEEE80211_PPE_THRES_INFO_PPET_SIZE *
++		    nss * hweight8(ru_bit_mask) * 2;
++	ppet_size = DIV_ROUND_UP(ppet_bits, 8);
++
++	for (i = 0; i < ppet_size - 1; i++)
++		he_ppet[i + 1] = ppet16_ppet8_ru3_ru0[i % 3];
++
++	he_ppet[i + 1] = ppet16_ppet8_ru3_ru0[i % 3] &
++			 (0xff >> (8 - (ppet_bits - 1) % 8));
+ }
+ 
+ static int
+@@ -516,7 +505,7 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 		memset(he_cap->ppe_thres, 0, sizeof(he_cap->ppe_thres));
+ 		if (he_cap_elem->phy_cap_info[6] &
+ 		    IEEE80211_HE_PHY_CAP6_PPE_THRESHOLD_PRESENT) {
+-			mt7915_gen_ppe_thresh(he_cap->ppe_thres);
++			mt7915_gen_ppe_thresh(he_cap->ppe_thres, nss);
+ 		} else {
+ 			he_cap_elem->phy_cap_info[9] |=
+ 				IEEE80211_HE_PHY_CAP9_NOMIMAL_PKT_PADDING_16US;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4592987753880474688==--
-
