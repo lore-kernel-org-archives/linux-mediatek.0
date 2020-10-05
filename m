@@ -7,72 +7,73 @@ X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED37CC4363A
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1AD6C4363D
 	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 15:58:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DF4C2068E
+	by mail.kernel.org (Postfix) with ESMTPS id 8090920663
 	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 15:58:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zA5jVhtF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IYI7sKCY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DF4C2068E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RkMmiNjC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qIeYfWWh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8090920663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2g1/Egoi4fVK8EnVq9sQinhmEm+qfinRks6teJgv8AM=; b=zA5jVhtFm3ksd89hwfaUwV6hin
-	x2zjO+3J2X1l/aSaEjjjprikBsFJ61iioznI9hdzteEynb7GS4vygsu/IWWPrMQR7+V1gnh/cWzcL
-	V+mdtY4bo7BFmdtO1v+aOwaakbMlWRmrb+SUMLbxUxfm60GXZ+qM40teFhvTqW1QlaCF00lX9/HEe
-	AkgHN+Ha44HVF/JhvcDeeAg6e8x7OiwpPA1vI1bzWPMFf3U07D1Ia3TM3P1PZ+0sBhEYctHmcB6Ch
-	tZfxKL/j/zO6cMaqn7iekP11EqhR14y8dGcobU7fnif4Dahe4ISHuMxnFp9bnPcg4Pvcm99sCPw/e
-	pLyzWd3A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=iJ82mTq1LFyPyOfdttagjwVnSWlICudioc3ZHNDcU14=; b=RkMmiNjC02oC3OAAzfLFJGVIH
+	0bjKFumghIo9KrN7OvE5BXwKB2sw7tsKpr9XTuECH7SkyMiOdFWTOQEybwaiKetBXhfXqab4Tt57/
+	onYfaOEwonhWwSKl+R0Qv7ggMc857S/LIweqKf1YOP0mb4Go2C3VRme6oYbgx7U3qxZO2Y1mhgExg
+	VE1ycpah15ADtcS6NXcLnP/tIGiMqcE+M8ncxpTzPh1pZLyok4a9BltxkYLSHJNzun9ttFsEf/zcF
+	kem2jCb/uYyr/CxQnlsNLZtx/f2RsVp5GIb1Aul/XCu2mJ/gHFOBw/UbSUpckQnOOnL46JzmC8oFR
+	x638iUXqw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPSsO-0003sp-9z; Mon, 05 Oct 2020 15:58:12 +0000
+	id 1kPSsN-0003sh-Lf; Mon, 05 Oct 2020 15:58:11 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPSsJ-0003rK-Lz
+ id 1kPSsJ-0003rM-Mb
  for linux-mediatek@lists.infradead.org; Mon, 05 Oct 2020 15:58:09 +0000
-X-UUID: f0426093e0a84431a5bd1144cf8be1ad-20201005
+X-UUID: 4749f7a94379468dbd297ce607d906c3-20201005
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=Ki3wTt7d1tvRrJ2MPiGpeliJV3ST6qE/ddjlBK6ldMA=; 
- b=IYI7sKCYNmCiWPaOLv063Hrbd6uYxQ4JXI79b/3l8kalxPlLGncBVqEcEf54FZ4JR2ko1YDMNemi3ThtcH6nbo8W9c5cE/Nhdk6C3foOevISJ20HfehmsNgjdYrt5VQBvTg4RgfqAr1eoNTBcbebm+G7Hc8jBJFyqRWFYtn55nc=;
-X-UUID: f0426093e0a84431a5bd1144cf8be1ad-20201005
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=778ghGkMZz72jTLXw73LJtRp6+PZ+82zSbj3perVHWo=; 
+ b=qIeYfWWhGE+N3tZUMMudrSlYcsu4L11jq0fGVksKJJ8leSpBP0nBDZB2a5CSEWV/GnXPlmd+6Bqtgdleg+pzcW4bG6Bi60yY1Vh5I29vEfivEkj9Kzw0+jhg8eJivmClkr4VJopjAGcbCa4pcCjU2vHP1YhpS3ExhWfd70H9tHU=;
+X-UUID: 4749f7a94379468dbd297ce607d906c3-20201005
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 657191306; Mon, 05 Oct 2020 07:57:59 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Oct 2020 08:57:56 -0700
+ with ESMTP id 1496966682; Mon, 05 Oct 2020 07:57:59 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Oct 2020 08:57:57 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Oct 2020 23:57:55 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Oct 2020 23:57:56 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 5 Oct 2020 23:57:54 +0800
+ Frontend Transport; Mon, 5 Oct 2020 23:57:55 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 1/2] mt76: mt7915: update ppe threshold
-Date: Mon, 5 Oct 2020 23:57:52 +0800
-Message-ID: <b381936001c1d62e520283b83d5492bdcdd5cf4f.1601913208.git.ryder.lee@mediatek.com>
+Subject: [PATCH 2/2] mt76: mt7915: rename mt7915_mcu_get_rate_info to
+ mt7915_mcu_get_tx_rate
+Date: Mon, 5 Oct 2020 23:57:53 +0800
+Message-ID: <01543bd6f88eb9420d327a06b5f066c6721c5c2a.1601913208.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <b381936001c1d62e520283b83d5492bdcdd5cf4f.1601913208.git.ryder.lee@mediatek.com>
+References: <b381936001c1d62e520283b83d5492bdcdd5cf4f.1601913208.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AD7E908D8DDEDB847D2F270C7FD6F6B51A40574D610DE60E869CDEE11431880B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201005_115807_872969_80197CD6 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201005_115807_938245_DCD8A17A 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,78 +93,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update ppe_thresh capability to sync SDK setting.
+Avoid confusion with rx rate query function.
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7915/init.c  | 43 +++++++------------
- 1 file changed, 16 insertions(+), 27 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c    |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c    | 10 +++++-----
+ drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h |  2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 5884c0ce45e5..f340cc5f78da 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -357,35 +357,24 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index a7118df7b93f..521d0c2f6c25 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1422,7 +1422,7 @@ mt7915_mac_sta_stats_work(struct mt7915_phy *phy)
+ 		spin_unlock_bh(&dev->sta_poll_lock);
+ 
+ 		/* use MT_TX_FREE_RATE to report Tx rate for further devices */
+-		mt7915_mcu_get_rate_info(dev, RATE_CTRL_RU_INFO, msta->wcid.idx);
++		mt7915_mcu_get_tx_rate(dev, RATE_CTRL_RU_INFO, msta->wcid.idx);
+ 
+ 		spin_lock_bh(&dev->sta_poll_lock);
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index f42a54cd8d45..016311639c24 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -422,8 +422,8 @@ mt7915_mcu_rx_radar_detected(struct mt7915_dev *dev, struct sk_buff *skb)
  }
  
  static void
--mt7915_gen_ppe_thresh(u8 *he_ppet)
-+mt7915_gen_ppe_thresh(u8 *he_ppet, int nss)
+-mt7915_mcu_tx_rate_cal(struct mt76_phy *mphy, struct mt7915_mcu_ra_info *ra,
+-		       struct rate_info *rate, u16 r)
++mt7915_mcu_tx_rate_parse(struct mt76_phy *mphy, struct mt7915_mcu_ra_info *ra,
++			 struct rate_info *rate, u16 r)
  {
--	int ru, nss, max_nss = 1, max_ru = 3;
--	u8 bit = 7, ru_bit_mask = 0x7;
-+	u8 i, ppet_bits, ppet_size, ru_bit_mask = 0x7; /* HE80 */
- 	u8 ppet16_ppet8_ru3_ru0[] = {0x1c, 0xc7, 0x71};
+ 	struct ieee80211_supported_band *sband;
+ 	u16 ru_idx = le16_to_cpu(ra->ru_idx);
+@@ -535,11 +535,11 @@ mt7915_mcu_tx_rate_report(struct mt7915_dev *dev, struct sk_buff *skb)
+ 		mphy = dev->mt76.phy2;
  
--	he_ppet[0] = max_nss & IEEE80211_PPE_THRES_NSS_MASK;
--	he_ppet[0] |= (ru_bit_mask <<
--		       IEEE80211_PPE_THRES_RU_INDEX_BITMASK_POS) &
--			IEEE80211_PPE_THRES_RU_INDEX_BITMASK_MASK;
--
--	for (nss = 0; nss <= max_nss; nss++) {
--		for (ru = 0; ru < max_ru; ru++) {
--			u8 val;
--			int i;
--
--			if (!(ru_bit_mask & BIT(ru)))
--				continue;
--
--			val = (ppet16_ppet8_ru3_ru0[nss] >> (ru * 6)) &
--			       0x3f;
--			val = ((val >> 3) & 0x7) | ((val & 0x7) << 3);
--			for (i = 5; i >= 0; i--) {
--				he_ppet[bit / 8] |=
--					((val >> i) & 0x1) << ((bit % 8));
--				bit++;
--			}
--		}
--	}
-+	he_ppet[0] = FIELD_PREP(IEEE80211_PPE_THRES_NSS_MASK, nss - 1) |
-+		     FIELD_PREP(IEEE80211_PPE_THRES_RU_INDEX_BITMASK_MASK,
-+				ru_bit_mask);
-+
-+	ppet_bits = IEEE80211_PPE_THRES_INFO_PPET_SIZE *
-+		    nss * hweight8(ru_bit_mask) * 2;
-+	ppet_size = DIV_ROUND_UP(ppet_bits, 8);
-+
-+	for (i = 0; i < ppet_size - 1; i++)
-+		he_ppet[i + 1] = ppet16_ppet8_ru3_ru0[i % 3];
-+
-+	he_ppet[i + 1] = ppet16_ppet8_ru3_ru0[i % 3] &
-+			 (0xff >> (8 - (ppet_bits - 1) % 8));
+ 	/* current rate */
+-	mt7915_mcu_tx_rate_cal(mphy, ra, &rate, curr);
++	mt7915_mcu_tx_rate_parse(mphy, ra, &rate, curr);
+ 	stats->tx_rate = rate;
+ 
+ 	/* probing rate */
+-	mt7915_mcu_tx_rate_cal(mphy, ra, &prob_rate, probe);
++	mt7915_mcu_tx_rate_parse(mphy, ra, &prob_rate, probe);
+ 	stats->prob_rate = prob_rate;
+ 
+ 	if (attempts) {
+@@ -3316,7 +3316,7 @@ int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index)
+ 				   sizeof(req), true);
  }
  
- static int
-@@ -516,7 +505,7 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
- 		memset(he_cap->ppe_thres, 0, sizeof(he_cap->ppe_thres));
- 		if (he_cap_elem->phy_cap_info[6] &
- 		    IEEE80211_HE_PHY_CAP6_PPE_THRESHOLD_PRESENT) {
--			mt7915_gen_ppe_thresh(he_cap->ppe_thres);
-+			mt7915_gen_ppe_thresh(he_cap->ppe_thres, nss);
- 		} else {
- 			he_cap_elem->phy_cap_info[9] |=
- 				IEEE80211_HE_PHY_CAP9_NOMIMAL_PKT_PADDING_16US;
+-int mt7915_mcu_get_rate_info(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx)
++int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx)
+ {
+ 	struct {
+ 		__le32 cmd;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 292075d3f0da..81c0440fd0a5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -319,7 +319,7 @@ int mt7915_mcu_set_pulse_th(struct mt7915_dev *dev,
+ 			    const struct mt7915_dfs_pulse *pulse);
+ int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, int index,
+ 			    const struct mt7915_dfs_pattern *pattern);
+-int mt7915_mcu_get_rate_info(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx);
++int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx);
+ int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index);
+ int mt7915_mcu_rdd_cmd(struct mt7915_dev *dev, enum mt7915_rdd_cmd cmd,
+ 		       u8 index, u8 rx_sel, u8 val);
 -- 
 2.18.0
 _______________________________________________
