@@ -2,76 +2,91 @@ Return-Path: <SRS0=fB7w=DM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EC19C4363A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 10:28:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C2C6C4363A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 11:30:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D37B92078D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 10:28:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 34C872064C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2020 11:30:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="umI7CYXK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=suse.com header.i=@suse.com header.b="Rr9JK0Fa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D37B92078D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=suse.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z2GA6N2J";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="lfmbCeTL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 34C872064C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=b+rFAEjMf+cgvAFkERqVpD0A10+vAsLmp3djAje25ak=; b=umI7CYXKTNv0g4i9U7geLcZMk
-	sTev4f9ZHxfUWTfqtZqOHCt1dGNU/6qBNVi6CskqWQ1VwCFWWMqnhJOH8lhNfNggPOyraozSYk40F
-	w5xo147fs6Aoel/oJ8bZsj5YjOEm+f1Vph/waRnJMKB0JevyRrU1c+0d+jn1TCVTiAQLxlzhxKnur
-	NCuIfQXLT/B7W3dqwMFy8IlOHEI6omfJABKaukMDOFRv5hyqeZpSzurTFJFOe+BkXvqU9hGAfuPQ2
-	o9NbRVNCVwIsP7dDLroxwxZMAKNX6Sv5gROct5/N/Dlcu05IuHkChZS2ZIfsO1m5W402gTK1zNXvW
-	dNdoknqrw==;
+	 bh=sPCdTZq5fzq8xY96Vfs33wOf+JnN2weP8UGa1Vflkxs=; b=Z2GA6N2J+xo67jm3m2+mhqTMd
+	Ql33t1xNFPk5jWok3mVaxj6ELKOxS1ywoKMz7MKX90pt+9lnjDfuJYBklNmP0QdCxJ7yeBLNCkLXE
+	t5/UovPtF4sWLiKzZY82ovVirz7BS2tH8++Fae0kbZRnHdDPjq/wSyOK9NTvaepWAWW+ZdFV0EVxS
+	PBmH1NpBusV+QkBUoN9r5EQOP8HLYbd3cwsilm/tThCYD6U2RT5jGGRGhaRKt9B1yo1eSv6XZQPUY
+	KMI37M49qNMGsn5aK2OOTmJMwrj0bq6E1ncQee/h7UH3Ms9feegfUQGrOnu8RJ0ZAN4uPPiWhnN73
+	FYh3I8KDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPNjA-0002AK-Ci; Mon, 05 Oct 2020 10:28:20 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kPOgu-0008N7-65; Mon, 05 Oct 2020 11:30:04 +0000
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPNj6-00029R-AW; Mon, 05 Oct 2020 10:28:17 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1601893693;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6/JqGd6PalEdATCzl9yAiTh7H5Y1eBidoPeAq7PeqNM=;
- b=Rr9JK0FaMCuS2y4bd4R/YOEGd+voVVRfYx8iRODdcq+ryBjTzQM3+LpUdtSB+dxUCCpV93
- 0H0im4IMg/ZYoh3tqRpLSwXgLaGaDDKEVY6Xgg/aqP1H7vkH2WE4922ouoL3NZt3OgfFEP
- ZJzveXys+olPX8oJo9V7ODLWDh21jJw=
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 997A0AEEF;
- Mon,  5 Oct 2020 10:28:13 +0000 (UTC)
-Subject: Re: [PATCH v2 06/12] soc: mediatek: pm-domains: Add SMI block as bus
- protection block
-To: Nicolas Boichat <drinkcat@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20201001160154.3587848-1-enric.balletbo@collabora.com>
- <20201001160154.3587848-7-enric.balletbo@collabora.com>
- <ee2b40c3-b565-22ed-34f4-4259d546a623@gmail.com>
- <CANMq1KDNKsE5oWxsg-zPS1L07dZySjoQc-fRWsXc5ngdi98Kgg@mail.gmail.com>
-From: Matthias Brugger <mbrugger@suse.com>
-Message-ID: <8b007805-5fd5-aebe-2ac3-014514173263@suse.com>
-Date: Mon, 5 Oct 2020 12:28:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kPOgn-0008JO-Nm
+ for linux-mediatek@lists.infradead.org; Mon, 05 Oct 2020 11:30:01 +0000
+Received: by mail-oi1-x243.google.com with SMTP id m128so8360454oig.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2020 04:29:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ggA5atN6eXRjeLo7yvkHNomWP+hkWtIfIwIhYjP1RoY=;
+ b=lfmbCeTLipcxNCXRSk9JM5iW0S48sRevkAiNTwMwzzjWmxq60GoNTNWIfkAnenaOB5
+ DrvEfTr38jJPy93c3xrCyUT/aZr87z4leJZVuLUje7BWTJkUcXvcjHbsO/AUlcR4SbF/
+ yDgDCBbxYo3HAZjc4V8xzdnZq1f4t5Z1W9PLw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ggA5atN6eXRjeLo7yvkHNomWP+hkWtIfIwIhYjP1RoY=;
+ b=TbYZ/6BiH4EzmDYuupI/l1dre7gyycw9L4cVon/ZPrHkLa0+taaszwzmPD8iqdXT5Z
+ g0XdjCFg5DueL9l9ZpYAB1PZjnaXl45J7FTcc5Pdks/G1QDuFn9CovGcqHWGHKgkJgzh
+ wq7G90fzVlVkCHWMflBUl6etq/RFX6OcwHs3qafIdaRN+c9yGBRKKc6k/+3jK+rhQAFn
+ gJEQeyvC+KmOj8237whVzX9EGkBgeCGSkbMM6zdANz9Im+IyEqJqqpJlolbKtfYYB8Cj
+ 16fF3y/zuKN710NV5iNtxZdEJ5ZDWxAHwTIcWhpKjZ/Db62o1zV965mlP63tW/rlYRrH
+ XOyA==
+X-Gm-Message-State: AOAM533fL2s7rAuqiyFZ4qTIwa6YfLSAVMunXtZ7Q41V+sX6oZNe40GE
+ WfSSaBXthR8bd+S8PXFb4AiVyY+gKCmfUAsF
+X-Google-Smtp-Source: ABdhPJyL5wNypsoYnQ0ndhOkt94bt0bkcy0gvx7+uoP8IVFyKxQR+W5gY+4aBpoCrP6Y2Gvj55xzLA==
+X-Received: by 2002:aca:58c2:: with SMTP id m185mr8684923oib.75.1601897393741; 
+ Mon, 05 Oct 2020 04:29:53 -0700 (PDT)
+Received: from mail-ot1-f54.google.com (mail-ot1-f54.google.com.
+ [209.85.210.54])
+ by smtp.gmail.com with ESMTPSA id k128sm1452997oib.52.2020.10.05.04.29.52
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Oct 2020 04:29:52 -0700 (PDT)
+Received: by mail-ot1-f54.google.com with SMTP id m11so2612003otk.13
+ for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2020 04:29:52 -0700 (PDT)
+X-Received: by 2002:a9d:6445:: with SMTP id m5mr11285660otl.36.1601897392041; 
+ Mon, 05 Oct 2020 04:29:52 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CANMq1KDNKsE5oWxsg-zPS1L07dZySjoQc-fRWsXc5ngdi98Kgg@mail.gmail.com>
-Content-Language: en-US
+References: <20201004122234.802044-1-acourbot@chromium.org>
+ <20201005084852.GD26842@paasikivi.fi.intel.com>
+In-Reply-To: <20201005084852.GD26842@paasikivi.fi.intel.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Mon, 5 Oct 2020 20:29:40 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MXujfdLaMhcW4vj2U_Ev-H74Fu-a6D1HEyhyrQ3huV8vw@mail.gmail.com>
+Message-ID: <CAPBb6MXujfdLaMhcW4vj2U_Ev-H74Fu-a6D1HEyhyrQ3huV8vw@mail.gmail.com>
+Subject: Re: [PATCH v2] media: mtk-vcodec: fix builds when remoteproc is
+ disabled
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201005_062816_582424_8F58EAB8 
-X-CRM114-Status: GOOD (  20.66  )
+X-CRM114-CacheID: sfid-20201005_072957_865229_1B86502F 
+X-CRM114-Status: GOOD (  23.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,128 +98,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Weiyi Lu <weiyi.lu@mediatek.com>, lkml <linux-kernel@vger.kernel.org>,
- Fabien Parent <fparent@baylibre.com>,
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Randy Dunlap <rdunlap@infradead.org>, LKML <linux-kernel@vger.kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Oct 5, 2020 at 5:49 PM Sakari Ailus
+<sakari.ailus@linux.intel.com> wrote:
+>
+> Hi Alexandre,
+>
+> On Sun, Oct 04, 2020 at 09:22:34PM +0900, Alexandre Courbot wrote:
+> > The addition of MT8183 support added a dependency on the SCP remoteproc
+> > module. However the initial patch used the "select" Kconfig directive,
+> > which may result in the SCP module to not be compiled if remoteproc was
+> > disabled. In such a case, mtk-vcodec would try to link against
+> > non-existent SCP symbols. "select" was clearly misused here as explained
+> > in kconfig-language.txt.
+> >
+> > Replace this by a "depends" directive on at least one of the VPU and
+> > SCP modules, to allow the driver to be compiled as long as one of these
+> > is enabled, and adapt the code to support this new scenario.
+> >
+> > Also adapt the Kconfig text to explain the extra requirements for MT8173
+> > and MT8183.
+> >
+> > Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
+>
+> Thanks for the patch!
+>
+> Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
+Thanks!
 
-On 05/10/2020 03:48, Nicolas Boichat wrote:
-> On Fri, Oct 2, 2020 at 4:56 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->>
->>
->>
->> On 01/10/2020 18:01, Enric Balletbo i Serra wrote:
->>> From: Matthias Brugger <mbrugger@suse.com>
->>>
->>> Apart from the infracfg block, the SMI block is used to enable the bus
->>> protection for some power domains. Add support for this block.
->>>
->>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->>> ---
->>>
->>> Changes in v2: None
->>>
->>>    drivers/soc/mediatek/mtk-pm-domains.c | 64 ++++++++++++++++++++-------
->>>    include/linux/soc/mediatek/infracfg.h |  6 +++
->>>    2 files changed, 53 insertions(+), 17 deletions(-)
->>>
->>> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
->>> index b5e7c9846c34..38f2630bdd0a 100644
->>> --- a/drivers/soc/mediatek/mtk-pm-domains.c
->>> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
->>> @@ -56,8 +56,25 @@
->>>
->>>    #define SPM_MAX_BUS_PROT_DATA               3
->>>
->>> +#define _BUS_PROT(_mask, _set, _clr, _sta, _update) {        \
->>> +             .bus_prot_mask = (_mask),               \
->>> +             .bus_prot_set = _set,                   \
->>> +             .bus_prot_clr = _clr,                   \
->>> +             .bus_prot_sta = _sta,                   \
->>> +             .bus_prot_reg_update = _update,         \
->>> +     }
->>> +
->>> +#define BUS_PROT_WR(_mask, _set, _clr, _sta)         \
->>> +             _BUS_PROT(_mask, _set, _clr, _sta, false)
->>> +
->>> +#define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)             \
->>> +             _BUS_PROT(_mask, _set, _clr, _sta, true)
->>> +
->>>    struct scpsys_bus_prot_data {
->>>        u32 bus_prot_mask;
->>> +     u32 bus_prot_set;
->>> +     u32 bus_prot_clr;
->>> +     u32 bus_prot_sta;
->>>        bool bus_prot_reg_update;
->>>    };
->>>
->>> @@ -69,6 +86,7 @@ struct scpsys_bus_prot_data {
->>>     * @sram_pdn_ack_bits: The mask for sram power control acked bits.
->>>     * @caps: The flag for active wake-up action.
->>>     * @bp_infracfg: bus protection for infracfg subsystem
->>> + * @bp_smi: bus protection for smi subsystem
->>>     */
->>>    struct scpsys_domain_data {
->>>        u32 sta_mask;
->>> @@ -77,6 +95,7 @@ struct scpsys_domain_data {
->>>        u32 sram_pdn_ack_bits;
->>>        u8 caps;
->>>        const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
->>> +     const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
->>>    };
->>>
->>>    struct scpsys_domain {
->>> @@ -86,6 +105,7 @@ struct scpsys_domain {
->>>        int num_clks;
->>>        struct clk_bulk_data *clks;
->>>        struct regmap *infracfg;
->>> +     struct regmap *smi;
->>>    };
->>>
->>>    struct scpsys_soc_data {
->>> @@ -175,9 +195,9 @@ static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, st
->>>                if (bpd[i].bus_prot_reg_update)
->>>                        regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, mask);
->>>                else
->>> -                     regmap_write(regmap, INFRA_TOPAXI_PROTECTEN_SET, mask);
->>> +                     regmap_write(regmap, bpd[i].bus_prot_set, mask);
->>>
->>> -             ret = regmap_read_poll_timeout(regmap, INFRA_TOPAXI_PROTECTSTA1,
->>> +             ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
->>>                                               val, (val & mask) == mask,
->>>                                               MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->>>                if (ret)
->>> @@ -193,7 +213,11 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
->>>        int ret;
->>>
->>>        ret = _scpsys_bus_protect_enable(bpd, pd->infracfg);
->>> -     return ret;
->>> +     if (ret)
->>> +             return ret;
->>> +
->>> +     bpd = pd->data->bp_smi;
->>> +     return _scpsys_bus_protect_enable(bpd, pd->smi);
-> 
-> Not a huge fan or reusing bpd for 2 different things.
-> 
-> I think this is easier to follow:
-> 
-> _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
-> ...
-> _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
-> 
+>
+> I wonder if this driver suffers from similar object lifetime management
+> issues than V4L2 and MC do, albeit not related to either. Say, what happens
+> if you unbind the other device while mtk-vcodec is in use?
 
-Sounds reasonable, yes :)
+That's a question that maybe the driver maintainers can answer, but
+from my experience during development I have been able to unload one
+of the two mtk-vcodec-* modules while keeping the other one active.
 
 _______________________________________________
 Linux-mediatek mailing list
