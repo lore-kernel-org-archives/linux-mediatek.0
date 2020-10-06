@@ -2,78 +2,87 @@ Return-Path: <SRS0=UyV0=DN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91DC7C41604
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 07:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 89A57C46466
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 07:19:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26EBD20760
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 07:18:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3694820760
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 07:19:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="quR67TcJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26EBD20760
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oeL7pyXr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="uscmwix/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3694820760
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:Date:References:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y3hFWd8WcCXD7q+Y+sj1sJJ1jB64ryQ1Q39HvZn57mo=; b=quR67TcJ0EzUgeTXDpkq9QRJL
-	QczTpk8dQ86u7vZJOeUO/9Os98Ei1yOLInosuBnf+5cb5MLeZpmHhiznx60oNyKCEdSRA8z35Rv1P
-	VK+b5h23xUjA8Bgc1M/HSOw1tJg/LC3Bvt8gC7qOO+dZ/RdazzeSR0iK11SuC3FNMYNhJ/kK8Qwg4
-	MmmAeI+GfCeUJGXG1vckU+ARqDgP8Lcal5l0COen5zKWKM1fSGDa2bDBKwkvnIMxedtrvQSlmyzzx
-	iW7Ut0gxc8vtDBpiM8Cvk2DRV/Xs6BLuy1HAjZVlJ8kMPA6IF8ScBYydhpAzqbzX0dtSSrL9AgJ4u
-	VPQRhomsA==;
+	 bh=HsRhX3CUi9KPdS4fWiZqSb1JklG1Hn3vs07EHNhCvJA=; b=oeL7pyXrFsk+RWp3HycQzGGo1
+	I5tFouItjDaCZniaSdI+N4m+Wp9nFSNTO6p2qBcg3hpb/pYO/V/uLFdSRKZqw12E1Xk2dPFSlVFdu
+	h3y+82JYnSM+EHbmIRcqtby2t7dQANErjLoWfCiqueIJK59e/vGgu2hvQJRuLe8LF9WY25Zc5yJsn
+	yY59P1qjE1IRrsirhrB2Iiai43RNmAfTB8DxO1Xptzqk/36qOWgsld+DnbyHyogl9Fk8SS08p3UHW
+	rw6OTxnQgFV0SHbk4kjG2IMtXN60tAscsIn5TiTCJfXa65cmRtbEWvckq21PIMk7mUr5vy1CK1yeP
+	ZDRbbRpuQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPhFG-000690-8O; Tue, 06 Oct 2020 07:18:46 +0000
-Received: from mail-wm1-f65.google.com ([209.85.128.65])
+	id 1kPhFb-0006EF-2S; Tue, 06 Oct 2020 07:19:07 +0000
+Received: from m42-4.mailgun.net ([69.72.42.4])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPhFD-00068Q-OA; Tue, 06 Oct 2020 07:18:44 +0000
-Received: by mail-wm1-f65.google.com with SMTP id v12so1899744wmh.3;
- Tue, 06 Oct 2020 00:18:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ITHR5xjZR9qU+0rYpKhMHSvOMECUC8YhvuIaZkbc094=;
- b=oegSY1uiefnnmYyABj4T5OyMPo0Aqqujskm46hOPB/SHuZpR6qDFE8waF0Ff021l17
- X9WbIUtlugZVzXBYhrR3hQvh7+QaPtpyEfy2W6sUyYUjBPB3x5xn/cG/DDZSUiJj8+zU
- PrCarNbDwQslRkET/DEXitpCv/re3QHQJWPjGJ952M1O6sF+QJOneQ9sde1WCzRUyCNr
- SbfsH6KtQHTJ/YCvKboTnOZBmbptuT3slhirc5aqVJb4ssibc4XA+ZNrD0bEIORrtomM
- ihLprCkoMX5ymqb11cUGid3fBhN/Y3lNBKo1OMRoGxab/8N9AuUgwpwa8GL7tw5a3S2Z
- T26g==
-X-Gm-Message-State: AOAM5323WK1gaqBz26YfkhaxE23uoevk3z2J4Zv5rmzFAM0eMmSMHKHq
- 9sTMeKwh5MNdw69A8HoFwIs=
-X-Google-Smtp-Source: ABdhPJx0yNrHEU7UDvNE8lhlFuoDDRp9Cl+ESLoSIMyNzIen0lPioASqSAe2IV+9r6VqPllxNH0sgA==
-X-Received: by 2002:a1c:4604:: with SMTP id t4mr3284322wma.48.1601968722386;
- Tue, 06 Oct 2020 00:18:42 -0700 (PDT)
-Received: from kozik-lap ([194.230.155.194])
- by smtp.googlemail.com with ESMTPSA id p9sm2617wmm.4.2020.10.06.00.18.40
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 06 Oct 2020 00:18:41 -0700 (PDT)
-Date: Tue, 6 Oct 2020 09:18:38 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v3 18/24] iommu/mediatek: Support master use iova over
- 32bit
-Message-ID: <20201006071838.GA5703@kozik-lap>
-References: <20200930070647.10188-1-yong.wu@mediatek.com>
- <20200930070647.10188-19-yong.wu@mediatek.com>
+ id 1kPhFV-0006C0-1M
+ for linux-mediatek@lists.infradead.org; Tue, 06 Oct 2020 07:19:05 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1601968744; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=9Bgnf5yb7Qe23xkz/B3GUG4YvFw6rRqLrKIvEHwuJW4=;
+ b=uscmwix/dLl+TZKqPWBM22wSiSI+ja38SjE+5875IhTAauBK3BbVkbNfXpLNdI/W2hwIphnI
+ UInEklyqv041JIbBG+3Dqz2Nz0/tTiyuJoRGz6VYK3oggemW8cQjkvH/YXG3mEHRkUpT1HV8
+ S/bYXBWt+7UDMAT7x3Tm6xNu0So=
+X-Mailgun-Sending-Ip: 69.72.42.4
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n07.prod.us-west-2.postgun.com with SMTP id
+ 5f7c1a5957b88ccb56cfbb5a (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 06 Oct 2020 07:18:49
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 89319C43387; Tue,  6 Oct 2020 07:18:49 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id A263BC433CB;
+ Tue,  6 Oct 2020 07:18:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org A263BC433CB
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: Allen Pais <allen.lkml@gmail.com>
+Subject: Re: [PATCH 2/2] wireless: mt76: convert tasklets to use new
+ tasklet_setup() API
+References: <20201006055135.291411-1-allen.lkml@gmail.com>
+ <20201006055135.291411-3-allen.lkml@gmail.com>
+Date: Tue, 06 Oct 2020 10:18:43 +0300
+In-Reply-To: <20201006055135.291411-3-allen.lkml@gmail.com> (Allen Pais's
+ message of "Tue, 6 Oct 2020 11:21:35 +0530")
+Message-ID: <87h7r7bz58.fsf@codeaurora.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200930070647.10188-19-yong.wu@mediatek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201006_031843_820177_5F328B40 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20201006_031904_727742_744A603F 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,50 +94,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- kernel-team@android.com, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream@mediatek.com, chao.hao@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
- Greg Kroah-Hartman <gregkh@google.com>, linux-kernel@vger.kernel.org,
- Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
- Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: ryder.lee@mediatek.com, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, davem@davemloft.net,
+ lorenzo.bianconi83@gmail.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, kuba@kernel.org,
+ Romain Perier <romain.perier@gmail.com>,
+ Allen Pais <apais@linux.microsoft.com>, ath11k@lists.infradead.org,
+ nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 30, 2020 at 03:06:41PM +0800, Yong Wu wrote:
-> After extending v7s, our pagetable already support iova reach
-> 16GB(34bit). the master got the iova via dma_alloc_attrs may reach
-> 34bits, but its HW register still is 32bit. then how to set the
-> bit32/bit33 iova? this depend on a SMI larb setting(bank_sel).
-> 
-> we separate whole 16GB iova to four banks:
-> bank: 0: 0~4G; 1: 4~8G; 2: 8-12G; 3: 12-16G;
-> The bank number is (iova >> 32).
-> 
-> We will preassign which bank the larbs belong to. currently we don't
-> have a interface for master to adjust its bank number.
-> 
-> Each a bank is a iova_region which is a independent iommu-domain.
-> the iova range for each iommu-domain can't cross 4G.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Allen Pais <allen.lkml@gmail.com> writes:
+
+> From: Allen Pais <apais@linux.microsoft.com>
+>
+> In preparation for unconditionally passing the
+> struct tasklet_struct pointer to all tasklet
+> callbacks, switch to using the new tasklet_setup()
+> and from_tasklet() to pass the tasklet pointer explicitly.
+>
+> Signed-off-by: Romain Perier <romain.perier@gmail.com>
+> Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 > ---
->  drivers/iommu/mtk_iommu.c  | 12 +++++++++---
->  drivers/memory/mtk-smi.c   |  7 +++++++
->  include/soc/mediatek/smi.h |  1 +
->  3 files changed, 17 insertions(+), 3 deletions(-)
+>  drivers/net/wireless/mediatek/mt76/mt7603/beacon.c |  4 ++--
+>  drivers/net/wireless/mediatek/mt76/mt7603/init.c   |  3 +--
+>  drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h |  2 +-
+>  drivers/net/wireless/mediatek/mt76/mt7615/mmio.c   |  6 +++---
+>  drivers/net/wireless/mediatek/mt76/mt76x02_dfs.c   | 10 +++++-----
+>  drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c  |  7 +++----
+>  drivers/net/wireless/mediatek/mt76/usb.c           |  6 +++---
+>  drivers/net/wireless/mediatek/mt7601u/dma.c        | 12 ++++++------
 
+mt76 and mt7601u patches go into separate trees, so please split the
+patch into two.
 
-For the memory part:
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-Best regards,
-Krzysztof
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
