@@ -2,89 +2,78 @@ Return-Path: <SRS0=UyV0=DN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23226C41604
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 05:52:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 300E9C46466
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 06:54:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B2BFE2078A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 05:52:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C0A0E20757
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 06:54:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DAwkCzLL";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="iu2qxx7n"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2BFE2078A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q1sN+Zc+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZloxSqHc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0A0E20757
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=S7HCp/vGzoBD3MxweDJIQPgsshQD1ScwcYwQ6+moHR8=; b=DAwkCzLLtcEaDk7WnCBFEBBet
-	UbzRi35B3BbhI8jXAHalNGyuZ8rkeQnF5aLaBKOZZV91EBC2u320RgNsFDULQxPIifmyNLQSHUexr
-	VLa8OD23sBtt7EKIrAfUQfiy94jp4Hjokj1YEUJD+MLtpa7BzQQYt74JRMLC4ZXQPgWpbBtG0O+Sj
-	zToKnDTLVz9bBzxcFwCzy8YULe2jVHxabNW9zrbDjqYLtNhHzZNdZbcR4vv+of48XBxfQhU1yqKAI
-	fVQKxsXu3cNlf3O0NMm8fkym6WkrtL6JXUMu1dETi33d6+yBynVcQYvaqOE1vaDVM+qfdbvTSSWHI
-	H7tTdjMNw==;
+	 bh=0hy6dCsFXChH8nuq5ofHRjRs0KCONTY5L8qSneB/OVc=; b=q1sN+Zc+ybm/I3v8HCpuj8Nnq
+	2pxgj+SD4CpsYGaNeXuI5KrZJhcxcvAwcIQkZkFLOPV59ih2v6pWxT3XFdLMJF1h6lyihjfKiDxMK
+	eE6yInFMw+1UdvcwdFXn/yBcJ/5O9LD+ZnIxQK33E/iMPbwTSsXKFhzSXdaOoUqccYIP3KzPW3imK
+	Yc1EPyYb+eYS1SwVjgspN2eTaYQIDG3eW+hn1wlLTQozYUIos9Rvuzhr1qemaJMq7f5JuqE3GQaMq
+	OwYRMRlLSxHkX7FBlS1MXsMv8oKCzhgHthdN1RQIptd4H14EodI8bWAstE7J+SQTg4Jz36m83NmgN
+	zSomQX7aA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPftL-0005Hz-KB; Tue, 06 Oct 2020 05:52:03 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1kPgrC-0002NG-Vm; Tue, 06 Oct 2020 06:53:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPftJ-0005Gh-0s; Tue, 06 Oct 2020 05:52:01 +0000
-Received: by mail-pl1-x642.google.com with SMTP id c6so677727plr.9;
- Mon, 05 Oct 2020 22:52:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=L9S6dNgcY2hOWdZzm9r/z3rxfbvgfnUp4lHemfjXmvs=;
- b=iu2qxx7nqszWCRF/0Wc5RWPNPoD6uWpkxddKEUAPCelJuijptrzlh78J0XtBpJ/Y+E
- 9fengwvC+qDHKnHhBKasCJ3OMsiw731lPe/bOQqcRpawALLukCuO5+8nqFCFaqtZroyX
- oyfKJdpmkeoJsbr4EcGF9eyUAEuI1yr6jZwcK4w0vrEBMUqcHPTWh3NIapGQ4ApGE2u3
- uPGDl8OypCkyQZ3HvuRapMd4N4lMqr3Ywnz4qkVDgQaMMoCWGymKnxUe92GVsT6e6ePu
- RJwj86ebQ8n4lQkiXLdxz7sLUDHr84T8g25iHcansB0SjgDlQPkBwo4HDrH82not8IM4
- D1yA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=L9S6dNgcY2hOWdZzm9r/z3rxfbvgfnUp4lHemfjXmvs=;
- b=sekxB4+BJjDXJPAFbqelMxKCwethEvUOhSmiGs8ecGsEQZa4JgnkXJ3jM7usGOIX3F
- 3/vxtPAxDfzf5KaWBkzB+7+7eWgCDEvNm/P/wvsk5KbEOYyosxlrmekjwe8x0Fecekb6
- cZ42vo8jePj+kpPPftcmuNOwYUKhO3JMML6+9+0tnuN6Q0SiPhNfazzT8FiobR16FtLm
- hhedm0DFvah7+EQJNzG31LWp4Hx41P/XOi92kmsO4CcPRSbKSEZhq4HzjZUf3FArELqL
- XGII2J9SJr/cyWcQLZD/Ts3iHr+ucskHOy99jxWvP5di3J+6znp9ftDwKmMZyc48oL9i
- I9Xw==
-X-Gm-Message-State: AOAM532cpXnA07L29lG28EPe3YDfX2+A5U6ofP50RcyXRmFET6Nyyoaf
- FWbYJikBXTGazq8IXUT3xDE=
-X-Google-Smtp-Source: ABdhPJwLArF02FLz+1MhlLzLJSH3pT/uoCnd7tqx1KSkSIlECAJ4Kk6LiGFN98LVaU5APUTdOr8LGQ==
-X-Received: by 2002:a17:902:c394:b029:d2:4ca:2e22 with SMTP id
- g20-20020a170902c394b02900d204ca2e22mr1817746plg.77.1601963519051; 
- Mon, 05 Oct 2020 22:51:59 -0700 (PDT)
-Received: from localhost.localdomain ([49.207.203.202])
- by smtp.gmail.com with ESMTPSA id x6sm1413685pjp.25.2020.10.05.22.51.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Oct 2020 22:51:58 -0700 (PDT)
-From: Allen Pais <allen.lkml@gmail.com>
-To: kvalo@codeaurora.org
-Subject: [PATCH 2/2] wireless: mt76: convert tasklets to use new
- tasklet_setup() API
-Date: Tue,  6 Oct 2020 11:21:35 +0530
-Message-Id: <20201006055135.291411-3-allen.lkml@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201006055135.291411-1-allen.lkml@gmail.com>
-References: <20201006055135.291411-1-allen.lkml@gmail.com>
+ id 1kPgr8-0002Kw-MZ; Tue, 06 Oct 2020 06:53:54 +0000
+X-UUID: 85a3d4d5d2ee4b77abfb6e42d1bfaf10-20201005
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=0mBtm/fCfqfZesQrhxR5PAO+6fo5yZk/+rrmxHbf6SI=; 
+ b=ZloxSqHc45HuaK+nctBUhapu1q54qPxSma5UZYtJhHUvf8HuKfYyEYGtfNoOXl5qeg20yXjSjIA01KOOTRQL0rjJXhs16N0Ggf5ADFBgm4mdj2v6LCYtBa0QbtJkak2lCBzLvmnnmDH2h8AAsqrJvmq88lNcfDJPqevWuEQvnYU=;
+X-UUID: 85a3d4d5d2ee4b77abfb6e42d1bfaf10-20201005
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 78218353; Mon, 05 Oct 2020 22:53:30 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Oct 2020 23:53:28 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 6 Oct 2020 14:53:26 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 6 Oct 2020 14:53:26 +0800
+Message-ID: <1601967207.8638.4.camel@mtksdaap41>
+Subject: Re: [PATCH 00/12] soc: mediatek: pm-domains: Add new driver for
+ SCPSYS power domains controller
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Tue, 6 Oct 2020 14:53:27 +0800
+In-Reply-To: <19678952-e354-2067-e619-ffac28b347be@gmail.com>
+References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
+ <1601028361.1346.38.camel@mtksdaap41>
+ <19678952-e354-2067-e619-ffac28b347be@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201006_015201_098573_36E13EB5 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20201006_025350_864662_81A466AC 
+X-CRM114-Status: GOOD (  40.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,227 +85,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ryder.lee@mediatek.com, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, ath11k@lists.infradead.org,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- lorenzo.bianconi83@gmail.com, kuba@kernel.org,
- Romain Perier <romain.perier@gmail.com>,
- Allen Pais <apais@linux.microsoft.com>, davem@davemloft.net, nbd@nbd.name
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org,
+ linux-kernel@vger.kernel.org, fparent@baylibre.com,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen Pais <apais@linux.microsoft.com>
+On Fri, 2020-09-25 at 16:04 +0200, Matthias Brugger wrote:
+> 
+> On 25/09/2020 12:06, Weiyi Lu wrote:
+> > On Thu, 2020-09-10 at 19:28 +0200, Enric Balletbo i Serra wrote:
+> >> Dear all,
+> >>
+> >> This is a new driver with the aim to deprecate the mtk-scpsys driver.
+> >> The problem with that driver is that, in order to support more Mediatek
+> >> SoCs you need to add some logic to handle properly the power-up
+> >> sequence of newer Mediatek SoCs, doesn't handle parent-child power
+> >> domains and need to hardcode all the clocks in the driver itself. The
+> >> result is that the driver is getting bigger and bigger every time a
+> >> new SoC needs to be supported.
+> >>
+> > 
+> > Hi Enric and Matthias,
+> > 
+> > First of all, thank you for the patch. But I'm worried the problem you
+> > mentioned won't be solved even if we work on this new driver in the
+> > future. My work on the MT8183 scpsys(now v17) is to implement the new
+> > hardware logic. Here, I also see related patches, which means that these
+> > new logics are necessary. Why can't we work on the original driver?
+> 
+> Well the decision was to change the driver in a not compatible way to make 
+> device tree entries better. If we work on the old driver, we would need to find 
+> some creative ways to handle old bindings vs new bindings.
+> 
+> So I thought it would be better doing a fresh start implementing mt1873 support 
+> for reference and add mt8183 as new SoC. From what I have seen mt8192 and others 
+> fit the driver structure too.
+> 
+> > Meanwhile, I thought maybe we should separate the driver into general
+> > control and platform data for each SoC, otherwise it'll keep getting
+> > bigger and bigger if it need to be support new SoC.
+> > 
+> 
+> We could in a later series split the SoC depended data structures and put them 
+> in drivers/soc/mediatek/pm-domains-mt8183.h or something like this. Is that what 
+> you mean?
+> 
 
-In preparation for unconditionally passing the
-struct tasklet_struct pointer to all tasklet
-callbacks, switch to using the new tasklet_setup()
-and from_tasklet() to pass the tasklet pointer explicitly.
+Yes, that is what I want. And I guess it could avoid the collisions in
+the different defines to the control registers and power status bits you
+mentioned. Hope this will happen in this series.
 
-Signed-off-by: Romain Perier <romain.perier@gmail.com>
-Signed-off-by: Allen Pais <apais@linux.microsoft.com>
----
- drivers/net/wireless/mediatek/mt76/mt7603/beacon.c |  4 ++--
- drivers/net/wireless/mediatek/mt76/mt7603/init.c   |  3 +--
- drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7615/mmio.c   |  6 +++---
- drivers/net/wireless/mediatek/mt76/mt76x02_dfs.c   | 10 +++++-----
- drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c  |  7 +++----
- drivers/net/wireless/mediatek/mt76/usb.c           |  6 +++---
- drivers/net/wireless/mediatek/mt7601u/dma.c        | 12 ++++++------
- 8 files changed, 24 insertions(+), 26 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-index d728c5e43..53c229cad 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-@@ -64,9 +64,9 @@ mt7603_add_buffered_bc(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 	data->count[mvif->idx]++;
- }
- 
--void mt7603_pre_tbtt_tasklet(unsigned long arg)
-+void mt7603_pre_tbtt_tasklet(struct tasklet_struct *t)
- {
--	struct mt7603_dev *dev = (struct mt7603_dev *)arg;
-+	struct mt7603_dev *dev = from_tasklet(dev, t, mt76.pre_tbtt_tasklet);
- 	struct mt76_queue *q;
- 	struct beacon_bc_data data = {};
- 	struct sk_buff *skb;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/init.c b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-index c4848fafd..126f7c95f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-@@ -533,8 +533,7 @@ int mt7603_register_device(struct mt7603_dev *dev)
- 	spin_lock_init(&dev->ps_lock);
- 
- 	INIT_DELAYED_WORK(&dev->mt76.mac_work, mt7603_mac_work);
--	tasklet_init(&dev->mt76.pre_tbtt_tasklet, mt7603_pre_tbtt_tasklet,
--		     (unsigned long)dev);
-+	tasklet_setup(&dev->mt76.pre_tbtt_tasklet, mt7603_pre_tbtt_tasklet);
- 
- 	dev->slottime = 9;
- 	dev->sensitivity_limit = 28;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
-index 2a6e4332a..6e0a92a28 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
-@@ -256,7 +256,7 @@ void mt7603_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- void mt7603_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		       struct ieee80211_sta *sta);
- 
--void mt7603_pre_tbtt_tasklet(unsigned long arg);
-+void mt7603_pre_tbtt_tasklet(struct tasklet_struct *t);
- 
- void mt7603_update_channel(struct mt76_dev *mdev);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-index 6de492a4c..b108324aa 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-@@ -98,9 +98,9 @@ static irqreturn_t mt7615_irq_handler(int irq, void *dev_instance)
- 	return IRQ_HANDLED;
- }
- 
--static void mt7615_irq_tasklet(unsigned long data)
-+static void mt7615_irq_tasklet(struct tasklet_struct *t)
- {
--	struct mt7615_dev *dev = (struct mt7615_dev *)data;
-+	struct mt7615_dev *dev = from_tasklet(dev, t, irq_tasklet);
- 	u32 intr, mask = 0, tx_mcu_mask = mt7615_tx_mcu_int_mask(dev);
- 
- 	mt76_wr(dev, MT_INT_MASK_CSR, 0);
-@@ -203,7 +203,7 @@ int mt7615_mmio_probe(struct device *pdev, void __iomem *mem_base,
- 
- 	dev = container_of(mdev, struct mt7615_dev, mt76);
- 	mt76_mmio_init(&dev->mt76, mem_base);
--	tasklet_init(&dev->irq_tasklet, mt7615_irq_tasklet, (unsigned long)dev);
-+	tasklet_setup(&dev->irq_tasklet, mt7615_irq_tasklet);
- 
- 	dev->reg_map = map;
- 	dev->ops = ops;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_dfs.c b/drivers/net/wireless/mediatek/mt76/mt76x02_dfs.c
-index b29cd39dc..a60135053 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_dfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_dfs.c
-@@ -609,10 +609,11 @@ static void mt76x02_dfs_check_event_window(struct mt76x02_dev *dev)
- 	}
- }
- 
--static void mt76x02_dfs_tasklet(unsigned long arg)
-+static void mt76x02_dfs_tasklet(struct tasklet_struct *t)
- {
--	struct mt76x02_dev *dev = (struct mt76x02_dev *)arg;
--	struct mt76x02_dfs_pattern_detector *dfs_pd = &dev->dfs_pd;
-+	struct mt76x02_dfs_pattern_detector *dfs_pd = from_tasklet(dfs_pd, t,
-+								   dfs_tasklet);
-+	struct mt76x02_dev *dev = container_of(dfs_pd, typeof(*dev), dfs_pd);
- 	u32 engine_mask;
- 	int i;
- 
-@@ -860,8 +861,7 @@ void mt76x02_dfs_init_detector(struct mt76x02_dev *dev)
- 	INIT_LIST_HEAD(&dfs_pd->seq_pool);
- 	dev->mt76.region = NL80211_DFS_UNSET;
- 	dfs_pd->last_sw_check = jiffies;
--	tasklet_init(&dfs_pd->dfs_tasklet, mt76x02_dfs_tasklet,
--		     (unsigned long)dev);
-+	tasklet_setup(&dfs_pd->dfs_tasklet, mt76x02_dfs_tasklet);
- }
- 
- static void
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-index cf68731bd..67911c021 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-@@ -11,9 +11,9 @@
- #include "mt76x02_mcu.h"
- #include "trace.h"
- 
--static void mt76x02_pre_tbtt_tasklet(unsigned long arg)
-+static void mt76x02_pre_tbtt_tasklet(struct tasklet_struct *t)
- {
--	struct mt76x02_dev *dev = (struct mt76x02_dev *)arg;
-+	struct mt76x02_dev *dev = from_tasklet(dev, t, mt76.pre_tbtt_tasklet);
- 	struct mt76_queue *q = dev->mt76.q_tx[MT_TXQ_PSD];
- 	struct beacon_bc_data data = {};
- 	struct sk_buff *skb;
-@@ -198,8 +198,7 @@ int mt76x02_dma_init(struct mt76x02_dev *dev)
- 		return -ENOMEM;
- 
- 	dev->mt76.tx_worker.fn = mt76x02_tx_worker;
--	tasklet_init(&dev->mt76.pre_tbtt_tasklet, mt76x02_pre_tbtt_tasklet,
--		     (unsigned long)dev);
-+	tasklet_setup(&dev->mt76.pre_tbtt_tasklet, mt76x02_pre_tbtt_tasklet);
- 
- 	spin_lock_init(&dev->txstatus_fifo_lock);
- 	kfifo_init(&dev->txstatus_fifo, status_fifo, fifo_size);
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 7d3f0a2e5..911fb61df 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -669,9 +669,9 @@ mt76u_process_rx_queue(struct mt76_dev *dev, struct mt76_queue *q)
- 		mt76_rx_poll_complete(dev, MT_RXQ_MAIN, NULL);
- }
- 
--static void mt76u_rx_tasklet(unsigned long data)
-+static void mt76u_rx_tasklet(struct tasklet_struct *t)
- {
--	struct mt76_dev *dev = (struct mt76_dev *)data;
-+	struct mt76_dev *dev = from_tasklet(dev, t, usb.rx_tasklet);
- 	int i;
- 
- 	rcu_read_lock();
-@@ -1110,7 +1110,7 @@ int mt76u_init(struct mt76_dev *dev,
- 	mt76u_ops.write_copy = ext ? mt76u_copy_ext : mt76u_copy;
- 
- 	dev->tx_worker.fn = mt76u_tx_worker;
--	tasklet_init(&usb->rx_tasklet, mt76u_rx_tasklet, (unsigned long)dev);
-+	tasklet_setup(&usb->rx_tasklet, mt76u_rx_tasklet);
- 	INIT_WORK(&usb->stat_work, mt76u_tx_status_data);
- 
- 	usb->data_len = usb_maxpacket(udev, usb_sndctrlpipe(udev, 0), 1);
-diff --git a/drivers/net/wireless/mediatek/mt7601u/dma.c b/drivers/net/wireless/mediatek/mt7601u/dma.c
-index 09f931d45..5f99054f5 100644
---- a/drivers/net/wireless/mediatek/mt7601u/dma.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/dma.c
-@@ -212,9 +212,9 @@ static void mt7601u_complete_rx(struct urb *urb)
- 	spin_unlock_irqrestore(&dev->rx_lock, flags);
- }
- 
--static void mt7601u_rx_tasklet(unsigned long data)
-+static void mt7601u_rx_tasklet(struct tasklet_struct *t)
- {
--	struct mt7601u_dev *dev = (struct mt7601u_dev *) data;
-+	struct mt7601u_dev *dev = from_tasklet(dev, t, rx_tasklet);
- 	struct mt7601u_dma_buf_rx *e;
- 
- 	while ((e = mt7601u_rx_get_pending_entry(dev))) {
-@@ -266,9 +266,9 @@ static void mt7601u_complete_tx(struct urb *urb)
- 	spin_unlock_irqrestore(&dev->tx_lock, flags);
- }
- 
--static void mt7601u_tx_tasklet(unsigned long data)
-+static void mt7601u_tx_tasklet(struct tasklet_struct *t)
- {
--	struct mt7601u_dev *dev = (struct mt7601u_dev *) data;
-+	struct mt7601u_dev *dev = from_tasklet(dev, t, tx_tasklet);
- 	struct sk_buff_head skbs;
- 	unsigned long flags;
- 
-@@ -507,8 +507,8 @@ int mt7601u_dma_init(struct mt7601u_dev *dev)
- {
- 	int ret = -ENOMEM;
- 
--	tasklet_init(&dev->tx_tasklet, mt7601u_tx_tasklet, (unsigned long) dev);
--	tasklet_init(&dev->rx_tasklet, mt7601u_rx_tasklet, (unsigned long) dev);
-+	tasklet_setup(&dev->tx_tasklet, mt7601u_tx_tasklet);
-+	tasklet_setup(&dev->rx_tasklet, mt7601u_rx_tasklet);
- 
- 	ret = mt7601u_alloc_tx(dev);
- 	if (ret)
--- 
-2.25.1
-
+> > And consider DVFSRC
+> > (dynamic voltage and frequency scaling resource collector), should we
+> > keep the original driver name "scpsys" instead of "pm-domains" because
+> > it may provide more functions than power domains?
+> > 
+> 
+> It's on my list to look deeper into this series. The thing with the new driver 
+> is, that the binding takes into account, that scpsys has several hardware block, 
+> which are represented as child nodes in DTS. The pm-domains is just one of these 
+> functionalities and I think DVFSRC should be a new driver with a child node of 
+> scpsys in DTS. Does this make sense?
+> 
+> Regards,
+> Matthias
+> 
+> >> All this information can be getted from a properly defined binding, so
+> >> can be cleaner and smaller, hence, we implemented a new driver. For
+> >> now, only MT8173 and MT8183 is supported but should be fairly easy to
+> >> add support for new SoCs.
+> >>
+> >> Best regards,
+> >>    Enric
+> >>
+> >> Enric Balletbo i Serra (4):
+> >>    dt-bindings: power: Add bindings for the Mediatek SCPSYS power domains
+> >>      controller
+> >>    soc: mediatek: Add MediaTek SCPSYS power domains
+> >>    arm64: dts: mediatek: Add mt8173 power domain controller
+> >>    dt-bindings: power: Add MT8183 power domains
+> >>
+> >> Matthias Brugger (8):
+> >>    soc: mediatek: pm-domains: Add bus protection protocol
+> >>    soc: mediatek: pm_domains: Make bus protection generic
+> >>    soc: mediatek: pm-domains: Add SMI block as bus protection block
+> >>    soc: mediatek: pm-domains: Add extra sram control
+> >>    soc: mediatek: pm-domains: Add subsystem clocks
+> >>    soc: mediatek: pm-domains: Allow bus protection to ignore clear ack
+> >>    soc: mediatek: pm-domains: Add support for mt8183
+> >>    arm64: dts: mediatek: Add mt8183 power domains controller
+> >>
+> >>   .../power/mediatek,power-controller.yaml      | 173 ++++
+> >>   arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  78 +-
+> >>   arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 160 +++
+> >>   drivers/soc/mediatek/Kconfig                  |  13 +
+> >>   drivers/soc/mediatek/Makefile                 |   1 +
+> >>   drivers/soc/mediatek/mtk-infracfg.c           |   5 -
+> >>   drivers/soc/mediatek/mtk-pm-domains.c         | 952 ++++++++++++++++++
+> >>   include/dt-bindings/power/mt8183-power.h      |  26 +
+> >>   include/linux/soc/mediatek/infracfg.h         |  39 +
+> >>   9 files changed, 1433 insertions(+), 14 deletions(-)
+> >>   create mode 100644 Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> >>   create mode 100644 drivers/soc/mediatek/mtk-pm-domains.c
+> >>   create mode 100644 include/dt-bindings/power/mt8183-power.h
+> >>
+> > 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
