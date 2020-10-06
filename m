@@ -2,78 +2,85 @@ Return-Path: <SRS0=UyV0=DN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77554C4363D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 04:27:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C283AC47095
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 05:52:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E12B420757
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 04:27:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 58EE120796
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2020 05:52:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="voVz+VN3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Z81laQT9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E12B420757
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dIESYadd";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nDgd2YQZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 58EE120796
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=N3oSkjOxcpyP+w6gPbQlV5ylnBfsp8Mfh5cT2quQ8pA=; b=voVz+VN3cSXJ8c1wrLxpvAfjI
-	fw4G3j4ABHWK8cb0fMNauwGtJAfpb4PwMVE3RHhx2giJfs5TItilu1YfLo1w0mVNQUSKBYbBPhKYA
-	7uEGc595f+Axh8YW42otzdaekBTJLA2kTcdVz2Wj97b/vXi2AbemliYZd1iys/bekUkWPAXEThidT
-	QQ+mT09bnqE+zE906VHKYTjw+WjwagrM2+gdpHntf/hICt3zrGrUCXJyWL9JZ0Xp3SsIF/HOkgDRk
-	VZrm6sdycul1VrZig0IxuBTZVzFxQQweQ6kHLZ5wZvbEEnvhhma3CDZP4M8p+PiRjRYAPgiJhBgVI
-	ATSHnxWZw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+hX8jnX1pjQZa20gexu/e4rpFtJuZtCkj5q5Jd0J1SE=; b=dIESYadde1K+aIkoF27R06Ue5F
+	3glnG+iqJONeT8NtXqmq069lC1BNNCFxAWrpwCqUuKB0/ONAFOEj3zwrL6YFFRQEkjr+pzpww+0Kj
+	xmeumQzUGWhokqmnjuvIw1bidwBWHNF/FtjKXnlvUAUBwRduVBPn0sku2F64fuuxo0ZClWQBdciY0
+	QUOjdhrFIYITWjd8IpQhyIE19AjBDg4dv/n6ESJxOqlfAcJRSMhRs+jIbT6nAh9rxoXWt6dNL8W6U
+	eMpAtE4VtKgcqIF823PwVXTHiMATIrwexYX2KLlYkRpWz5BIJQpPr+/rD4v074nieeoGwB6hDbK0e
+	UaOhHL6g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPeZN-0006Eq-Rf; Tue, 06 Oct 2020 04:27:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kPftD-0005F6-NA; Tue, 06 Oct 2020 05:51:55 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPeZH-0006CB-KS; Tue, 06 Oct 2020 04:27:16 +0000
-X-UUID: bc07033dc9774c83bafa263cb6ad1471-20201005
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=WnWWZYGTcT78KXIBsHhsNiz4yOOrVWJfS9BpjfICDfU=; 
- b=Z81laQT9eW8nmZ1Xjguuo8mUrsAWY638G4Sy9RJxis1x2AwEg2UXrbgJReyrCYkDjVdnixaTJeRKcD3nUAE6vpnTv4llFv7l9Wqj2TWqDuNYWX5gVeEF/SDsSbZlcM20pwhq7yGJTq8aNDFN54k+q1kZSarL5KFOxV5yKlv8n4w=;
-X-UUID: bc07033dc9774c83bafa263cb6ad1471-20201005
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1873890169; Mon, 05 Oct 2020 20:27:13 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Oct 2020 21:27:11 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 6 Oct 2020 12:27:08 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 6 Oct 2020 12:27:07 +0800
-Message-ID: <1601958428.26323.26.camel@mhfsdcap03>
-Subject: Re: [PATCH v3 02/24] dt-bindings: memory: mediatek: Convert SMI to
- DT schema
-From: Yong Wu <yong.wu@mediatek.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Tue, 6 Oct 2020 12:27:08 +0800
-In-Reply-To: <20201002110831.GD6888@pi3>
-References: <20200930070647.10188-1-yong.wu@mediatek.com>
- <20200930070647.10188-3-yong.wu@mediatek.com> <20201002110831.GD6888@pi3>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kPftB-0005EE-1Q; Tue, 06 Oct 2020 05:51:53 +0000
+Received: by mail-pf1-x442.google.com with SMTP id 144so8385826pfb.4;
+ Mon, 05 Oct 2020 22:51:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ERNSfxgas2DII8SXjODRY6IOJVbvcgjIrZFOFrxw68Q=;
+ b=nDgd2YQZUqL1nttwrXO/U6M6W5KPXo1VoEtVnvgRmrLNFmjE95JOVRQjsslmvw++Gj
+ HoRjvtDIglVlfpBwITfh7XOZVu3LZIoWKlR5faIe1yR1TgZt7LGCJINGiBoM3+PpF2NQ
+ 2NKyHnZyqTGOkqK956vfN+nXXFsntorWPYR2/bfdsy7aGa/lXr94bq+/bvHII9/JspQH
+ dXWdI2PZ+QeSCDe/Sh0hdisJue0hCS6W6SV6SISSy7sNpbxPkVpCq+CfXzOzXmQ+IOai
+ WgFPgOeAP4MRRBZRIE+sd6qNmQ6rCKdkxrdkfjLDcQnSY6N5b7NLXSLPVw68n8S3lnoW
+ 4nJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ERNSfxgas2DII8SXjODRY6IOJVbvcgjIrZFOFrxw68Q=;
+ b=i4kDhd08MT1EDC/LJDmEMVST3gnZHA9i8lCQ+HVINoOK1gcu8WvXyjeArMm7HMWfpc
+ sBKymR8AwPBdvfAEikihBf0w3btjN7M8YaFl+5OVs7N1y8IHxu0/WfKow8ELKsFuQVND
+ Fo2Sm8p7h9jCO7OshnNUuw39BXv4LY/3mnDa4/g4xRksQWQbVEvoEW0hajHjvT8HSXu+
+ 3k4+wbIB6YLbHLvdVsJ9tU+9Zago+WQWqp8yzYc4ILYpEr28EiRu4edxfKspEXhgXRhQ
+ gYbYHREW9/j+mf5HBfsVXJuepQ+kAUA9jQpE9g+KDHAKfGcbmf/6WJ8tO1+rzOR3u5EW
+ 7IAg==
+X-Gm-Message-State: AOAM531GTjuuslnPKZNyXba3LvTik0MNo7upnHy7YFIFnNe+uWim5DIG
+ K31P5I6i7vkKLPkXyfPXw6g=
+X-Google-Smtp-Source: ABdhPJwAbleMDsb1ZTQ4D/iBDyR3wegYp8LU5qODIJJrXN18xWqRoW+fRBqbmGYZjN4f3cXrm7tS1A==
+X-Received: by 2002:a63:465b:: with SMTP id v27mr2580914pgk.318.1601963509151; 
+ Mon, 05 Oct 2020 22:51:49 -0700 (PDT)
+Received: from localhost.localdomain ([49.207.203.202])
+ by smtp.gmail.com with ESMTPSA id x6sm1413685pjp.25.2020.10.05.22.51.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Oct 2020 22:51:48 -0700 (PDT)
+From: Allen Pais <allen.lkml@gmail.com>
+To: kvalo@codeaurora.org
+Subject: wireless: convert tasklets to use new tasklet_setup() API
+Date: Tue,  6 Oct 2020 11:21:33 +0530
+Message-Id: <20201006055135.291411-1-allen.lkml@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 07CA81F1F3F14B41F4FC092F2B44C4679867F49762ADB54295A5B01FD53386612000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201006_002715_815465_CC5A8AAF 
-X-CRM114-Status: GOOD (  20.12  )
+X-CRM114-CacheID: sfid-20201006_015153_093613_B13E60A6 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,173 +92,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- kernel-team@android.com, Nicolas
- Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
- Joerg Roedel <joro@8bytes.org>, Greg Kroah-Hartman <gregkh@google.com>,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
- anan.sun@mediatek.com, Will
- Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: ryder.lee@mediatek.com, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, ath11k@lists.infradead.org,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ lorenzo.bianconi83@gmail.com, kuba@kernel.org,
+ Allen Pais <apais@linux.microsoft.com>, davem@davemloft.net, nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-10-02 at 13:08 +0200, Krzysztof Kozlowski wrote:
-> On Wed, Sep 30, 2020 at 03:06:25PM +0800, Yong Wu wrote:
-> > Convert MediaTek SMI to DT schema.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >  .../mediatek,smi-common.txt                   |  49 ---------
-> >  .../mediatek,smi-common.yaml                  | 100 ++++++++++++++++++
-> >  .../memory-controllers/mediatek,smi-larb.txt  |  49 ---------
-> >  .../memory-controllers/mediatek,smi-larb.yaml |  91 ++++++++++++++++
-> >  4 files changed, 191 insertions(+), 98 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
-> >  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-> >  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-> >  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-...
-> > +properties:
-> > +  compatible:
-> > +    oneOf:
-> > +      - enum:
-> > +          - mediatek,mt2701-smi-common
-> > +          - mediatek,mt2712-smi-common
-> > +          - mediatek,mt6779-smi-common
-> > +          - mediatek,mt8173-smi-common
-> > +          - mediatek,mt8183-smi-common
-> > +
-> > +      - description: for mt7623
-> > +        items:
-> > +          - const: mediatek,mt7623-smi-common
-> > +          - const: mediatek,mt2701-smi-common
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    description: |
-> > +      apb and smi are mandatory. the async is only for generation 1 smi HW.
-> > +      gals(global async local sync) also is optional, here is the list which
-> > +      require gals: mt6779 and mt8183.
-> > +    minItems: 2
-> > +    maxItems: 4
-> > +    items:
-> > +      - description: apb is Advanced Peripheral Bus clock, It's the clock for
-> > +          setting the register.
-> > +      - description: smi is the clock for transfer data and command.
-> > +      - description: async is asynchronous clock, it help transform the smi clock
-> > +          into the emi clock domain.
-> > +      - description: gals0 is the path0 clock of gals.
-> > +      - description: gals1 is the path1 clock of gals.
-> > +
-> > +  clock-names:
-> > +    oneOf:
-> > +      - items:
-> > +          - const: apb
-> > +          - const: smi
-> > +      - items:
-> > +          - const: apb
-> > +          - const: smi
-> > +          - const: async
-> > +      - items:
-> > +          - const: apb
-> > +          - const: smi
-> > +          - const: gals0
-> > +          - const: gals1
-> 
-> Similarly to my comment to other properties, this requirement per
-> compatible should be part of the schema within 'if-then'.
+From: Allen Pais <apais@linux.microsoft.com>
 
-I'm not so familiar with this format. Do this has "if-then-'else
-if'-then-else"?
+ This series converts the remaining drivers to use new
+tasklet_setup() API.
 
-I tried below instead of the clocks segment above:
+ The patches are based on wireless-drivers-next.git
 
-===================================
-if:
-  properties:
-    compatible:
-      enum:
-        - mediatek,mt6779-smi-common
-        - mediatek,mt8183-smi-common
+Allen Pais (2):
+  ath11k: convert tasklets to use new tasklet_setup() API
+  wireless: mt76: convert tasklets to use new tasklet_setup() API
 
-then:
-  properties:
-    clock:
-      items:
-        - description: apb is the clock for setting the register..
-        - description: smi is the clock for transfer data and command.
-        - description: gals0 is the path0 clock of gals(global async
-local sync).
-        - description: gals1 is the path1 clock of gals.
-    clock-names:
-      items:
-        - const: apb
-        - const: smi
-        - const: gals0
-        - const: gals1
-else:
-  if:
-    properties:
-      compatible:
-        contains:
-          enum:
-            - mediatek,mt2701-smi-common
+ drivers/net/wireless/ath/ath11k/pci.c              |  7 +++----
+ drivers/net/wireless/mediatek/mt76/mt7603/beacon.c |  4 ++--
+ drivers/net/wireless/mediatek/mt76/mt7603/init.c   |  3 +--
+ drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7615/mmio.c   |  6 +++---
+ drivers/net/wireless/mediatek/mt76/mt76x02_dfs.c   | 10 +++++-----
+ drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c  |  7 +++----
+ drivers/net/wireless/mediatek/mt76/usb.c           |  6 +++---
+ drivers/net/wireless/mediatek/mt7601u/dma.c        | 12 ++++++------
+ 9 files changed, 27 insertions(+), 30 deletions(-)
 
-  then:
-    properties:
-      clocks:
-        items:
-          - description: apb is the clock for setting the register.
-          - description: smi is the clock for transfer data and command.
-          - description: async is asynchronous clock, it help transform
-the smi clock
-              into the emi clock domain.
-      clock-names:
-        items:
-          - const: apb
-          - const: smi
-          - const: async
-  else:
-    properties:
-      clocks:
-        items:
-          - description: apb is the clock for setting the register.
-          - description: smi is the clock for transfer data and
-command.    
-      clock-names:
-        items:
-          - const: apb
-          - const: smi
-================================
+-- 
+2.25.1
 
-But I got a warning when dt_binding_check:
-
-CHKDT
-Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-  SCHEMA
-Documentation/devicetree/bindings/processed-schema-examples.yaml
-  DTC
-Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.example.dt.yaml
-  CHECK
-Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.example.dt.yaml
-.../Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.example.dt.yaml: smi@14022000: 'clock-names', 'clocks' do not match any of the regexes: 'pinctrl-[0-9]+'
-    From
-schema: .../Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-
-Any suggestion about this?
-Thanks.
-
-> 
-> Best regards,
-> Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
