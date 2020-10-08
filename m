@@ -8,60 +8,74 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B002AC04EBE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2020 12:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90DE8C4363A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2020 13:08:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41168207DE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2020 12:55:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 390F8206E5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2020 13:08:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3I9WVHnb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41168207DE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZSYdTqiC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="g+WyN7gU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 390F8206E5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4GSEA/R/zaWPnUh0Hoa9dCG7xl50G+aK/X+yPT1u6rM=; b=3I9WVHnbN4V/kjG+UpKLQIxLt
-	u+CXSfbnD5n1dDCnJl9ntdwZXdSngi+LFlSoRC/3Ym2MzHQxVDDC0ZcUBKWBBwW3AEi2JnlOVtTkV
-	XE8lRiaZkfIflQXb555D1ZtGpIcnZlnNJpeGU7L5wZlNBT8gz+P04wsK4NE2asCqXoZ29CqGd0nwV
-	Q9s5XC567/NHjtkIXmbT+ZIRAP3GSgyb7ae9echtQ4I511ZXrRpREqngParG+kQXP0SUcDg8kx/OZ
-	KTYk5oQ9CyoimO8jgzP8zluEaCNgb6nTY5EgUM4D+3w6qia/oK2RgRvLcr+xCCejgoaIgPj6rntLL
-	ibLSmVhkQ==;
+	 bh=Rp2D/3lYxJw7Vv5kr1C72voCgS6T6N9IHrG/e/RxuAw=; b=ZSYdTqiC3X+BcNY0u5sWhUctZ
+	A4+L2WLtwk6UY9rw8SCWuTrWr4QYYV/JhQatCQ5JAkDbd28/w+txFKE0xyOiWMu+9eehVHZVMMN5P
+	S5jWapuoDUp3UH8JNysmr7lt0DO0lMHjklhhtwlpDBKEmVAtz2GgazneYUjUksYzr1LrFQ3wtaPrX
+	oXFXNAXG2jaNtkVWkhB/UWh1TtZlXYsyfE23qOgNT24aVtEtcYpMihDDpo56P8VPUJk4RpocRUDnY
+	t+WddrmgDYpi0xy9Ytc/Qb1alZP82V+VXit7pgsNb7Q/Ew1W3PRheVI5lmZ1Iag2C+Cm2xwghd2lx
+	GNlNiFm2g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kQVSF-0006HP-SO; Thu, 08 Oct 2020 12:55:32 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kQVSB-0006GJ-F1; Thu, 08 Oct 2020 12:55:28 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AD6BD1063;
- Thu,  8 Oct 2020 05:55:22 -0700 (PDT)
-Received: from [10.57.48.204] (unknown [10.57.48.204])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CB7043F71F;
- Thu,  8 Oct 2020 05:55:20 -0700 (PDT)
-Subject: Re: [PATCH v1 1/1] cpufreq: mediatek-hw: Register EM power table
-To: Hector Yuan <hector.yuan@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-pm@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Viresh Kumar <viresh.kumar@linaro.org>
-References: <1602159204-13756-1-git-send-email-hector.yuan@mediatek.com>
- <1602159204-13756-2-git-send-email-hector.yuan@mediatek.com>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <7e58516f-a6bf-eac4-9dfb-9a4d7efa7498@arm.com>
-Date: Thu, 8 Oct 2020 13:55:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1kQVeX-0000bi-5Z; Thu, 08 Oct 2020 13:08:13 +0000
+Received: from lb3-smtp-cloud9.xs4all.net ([194.109.24.30])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kQVeR-0000UT-24
+ for linux-mediatek@lists.infradead.org; Thu, 08 Oct 2020 13:08:08 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id QVe6kWWEw4gEjQVe9k6pF4; Thu, 08 Oct 2020 15:07:54 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1602162474; bh=w4lZo+OIfJJ4C+6hWn+NzS9p5dpa5waywhAGLmyOLFc=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=g+WyN7gUaeJCsIwNev2SAbyX1qWi2qK4C0nO0UBz46csjd73NFeLdgYpSfPrY3qah
+ UnE34ora/7NnS9iysk5juwphN3pmeppVwy74TROf2ZMp539wBADijV2/xkiHjMYbv7
+ CQjM2zd/Y5knomfDCiOx/ve0DTzRjUYCYvPO+wCFj4SKOlB9OS5PBPyV7qnbSkGURE
+ hav77aWK33gpDWrIIAGaeLlnhn9+iYQHpypHNLUPkb1OlmIEvsMl6qsULBp8cXVUkr
+ N2tfeh3W42Olefmdxr2xS4omQtHaOt0SyUysO4lvHz41QwwiHw7CbDMRZF/bfsb8Kb
+ a1zAHXdnRVm/Q==
+Subject: Re: [PATCH v2] media: mtk-vcodec: fix builds when remoteproc is
+ disabled
+To: Alexandre Courbot <acourbot@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Tomasz Figa <tfiga@chromium.org>
+References: <20201004122234.802044-1-acourbot@chromium.org>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <c3e1c20a-7729-9f48-ce66-41e67f195fc7@xs4all.nl>
+Date: Thu, 8 Oct 2020 15:07:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <1602159204-13756-2-git-send-email-hector.yuan@mediatek.com>
+In-Reply-To: <20201004122234.802044-1-acourbot@chromium.org>
 Content-Language: en-US
+X-CMAE-Envelope: MS4wfDUrj7hYwz6VSgr8gCZ9x7tZiAV3CR70X4wNevoMDsWQe2H3XhsQN35W4uudS/v7G2+gBxnntLa5FGbHiLGr5WaJNFb50BQQS28kjhH1KoJ7MZajnXr9
+ n/l30ekCJIdHdOsOxtLRXxkhbVBKuXhpsNfGA0K4+TU79PZdo46xukfn3JmtgScRz8bcx7VOcTig7Nh33FFGMv0OD47WHbBZ7TJ+9DhelogjOGwU6WiKyTz5
+ frgGRHFENTmToml6NCPT7P5CBAheDbJZGLKWAJZbR/skkSaOsGgu9+XvCKXCthx4c2I8tQdknA6ayqzdO2zwO+awt1zX1D4e5FkKv5Dwtmsv4kR+QW0U3ksd
+ oGu+sZ85WDPnxjIEmExrrpyVom7rOcHJpgq7iVV/L5MnXbAfv1K66Pop5GYQdEjnuCrfh4meT8y30pwRv+92YsJQor08vhLnU8YurnxffCfK0g+LEjEXeVIT
+ BknetglM3v6n8quuTSSGO240MQ4178Wn7HXIGA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201008_085527_637342_3B4EE6A7 
-X-CRM114-Status: GOOD (  25.67  )
+X-CRM114-CacheID: sfid-20201008_090807_239578_BD695B97 
+X-CRM114-Status: GOOD (  33.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,132 +87,228 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+Cc: Randy Dunlap <rdunlap@infradead.org>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hector,
+Hi Alexandre,
 
-On 10/8/20 1:13 PM, Hector Yuan wrote:
-> From: "Hector.Yuan" <hector.yuan@mediatek.com>
+On 04/10/2020 14:22, Alexandre Courbot wrote:
+> The addition of MT8183 support added a dependency on the SCP remoteproc
+> module. However the initial patch used the "select" Kconfig directive,
+> which may result in the SCP module to not be compiled if remoteproc was
+> disabled. In such a case, mtk-vcodec would try to link against
+> non-existent SCP symbols. "select" was clearly misused here as explained
+> in kconfig-language.txt.
 > 
-> Register CPU power table to energy model framework
+> Replace this by a "depends" directive on at least one of the VPU and
+> SCP modules, to allow the driver to be compiled as long as one of these
+> is enabled, and adapt the code to support this new scenario.
 > 
-> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> Also adapt the Kconfig text to explain the extra requirements for MT8173
+> and MT8183.
+> 
+> Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
 > ---
->   drivers/cpufreq/mediatek-cpufreq-hw.c |   50 +++++++++++++++++++++++++--------
->   1 file changed, 38 insertions(+), 12 deletions(-)
+>  drivers/media/platform/Kconfig                | 10 +--
+>  .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 72 ++++++++++++-------
+>  2 files changed, 54 insertions(+), 28 deletions(-)
 > 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-> index 8fa12e5..3808ea0 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-> @@ -5,6 +5,7 @@
->   
->   #include <linux/bitfield.h>
->   #include <linux/cpufreq.h>
-> +#include <linux/energy_model.h>
->   #include <linux/init.h>
->   #include <linux/kernel.h>
->   #include <linux/module.h>
-> @@ -17,9 +18,10 @@
->   #define LUT_ROW_SIZE			0x4
->   
->   enum {
-> -	REG_LUT_TABLE,
-> -	REG_ENABLE,
-> -	REG_PERF_STATE,
-> +	REG_FREQ_LUT_TABLE,
-> +	REG_FREQ_ENABLE,
-> +	REG_FREQ_PERF_STATE,
-> +	REG_EM_POWER_TBL,
->   
->   	REG_ARRAY_SIZE,
->   };
-> @@ -27,23 +29,44 @@ enum {
->   struct cpufreq_mtk {
->   	struct cpufreq_frequency_table *table;
->   	void __iomem *reg_bases[REG_ARRAY_SIZE];
-> +	int nr_opp;
->   	cpumask_t related_cpus;
->   };
->   
->   static const u16 cpufreq_mtk_offsets[REG_ARRAY_SIZE] = {
-> -	[REG_LUT_TABLE]		= 0x0,
-> -	[REG_ENABLE]		= 0x84,
-> -	[REG_PERF_STATE]	= 0x88,
-> +	[REG_FREQ_LUT_TABLE]	= 0x0,
-> +	[REG_FREQ_ENABLE]	= 0x84,
-> +	[REG_FREQ_PERF_STATE]	= 0x88,
-> +	[REG_EM_POWER_TBL]	= 0x3D0,
->   };
->   
->   static struct cpufreq_mtk *mtk_freq_domain_map[NR_CPUS];
->   
-> +static int mtk_cpufreq_get_cpu_power(unsigned long *mW,
-> +				     unsigned long *KHz, int cpu)
-> +{
-> +	struct cpufreq_mtk *c = mtk_freq_domain_map[cpu];
-> +	int i;
-> +
-> +	for (i = 0; i < c->nr_opp; i++) {
-> +		if (c->table[i].frequency < *KHz)
-> +			break;
-> +	}
-> +	i--;
-> +
-> +	*KHz = c->table[i].frequency;
-> +	*mW = readl_relaxed(c->reg_bases[REG_EM_POWER_TBL] +
-> +			    i * LUT_ROW_SIZE) / 1000;
-> +
-> +	return 0;
-> +}
-> +
->   static int mtk_cpufreq_hw_target_index(struct cpufreq_policy *policy,
->   				       unsigned int index)
->   {
->   	struct cpufreq_mtk *c = policy->driver_data;
->   
-> -	writel_relaxed(index, c->reg_bases[REG_PERF_STATE]);
-> +	writel_relaxed(index, c->reg_bases[REG_FREQ_PERF_STATE]);
->   
->   	return 0;
->   }
-> @@ -55,7 +78,7 @@ static unsigned int mtk_cpufreq_hw_get(unsigned int cpu)
->   
->   	c = mtk_freq_domain_map[cpu];
->   
-> -	index = readl_relaxed(c->reg_bases[REG_PERF_STATE]);
-> +	index = readl_relaxed(c->reg_bases[REG_FREQ_PERF_STATE]);
->   	index = min(index, LUT_MAX_ENTRIES - 1);
->   
->   	return c->table[index].frequency;
-> @@ -64,6 +87,7 @@ static unsigned int mtk_cpufreq_hw_get(unsigned int cpu)
->   static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
->   {
->   	struct cpufreq_mtk *c;
-> +	struct em_data_callback em_cb = EM_DATA_CB(mtk_cpufreq_get_cpu_power);
->   
->   	c = mtk_freq_domain_map[policy->cpu];
->   	if (!c) {
-> @@ -77,7 +101,8 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
->   	policy->driver_data = c;
->   
->   	/* HW should be in enabled state to proceed now */
-> -	writel_relaxed(0x1, c->reg_bases[REG_ENABLE]);
-> +	writel_relaxed(0x1, c->reg_bases[REG_FREQ_ENABLE]);
-> +	em_register_perf_domain(policy->cpus, c->nr_opp, &em_cb);
+> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> index a3cb104956d5..98eb62e49ec2 100644
+> --- a/drivers/media/platform/Kconfig
+> +++ b/drivers/media/platform/Kconfig
+> @@ -253,14 +253,16 @@ config VIDEO_MEDIATEK_VCODEC
+>  	depends on MTK_IOMMU || COMPILE_TEST
+>  	depends on VIDEO_DEV && VIDEO_V4L2
+>  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on VIDEO_MEDIATEK_VPU || MTK_SCP
 
+Close, but no cigar.
 
-The function name has changed recently (v5.9-rc1) to:
-em_dev_register_perf_domain()
+If VIDEO_MEDIATEK_VPU=y and MTK_SCP=m, then VIDEO_MEDIATEK_VCODEC can be configured
+to y, and then it won't be able to find the scp_ functions.
 
-Please check your base kernel tree and update.
+To be honest, I'm not sure how to solve this.
 
 Regards,
-Lukasz
+
+	Hans
+
+>  	select VIDEOBUF2_DMA_CONTIG
+>  	select V4L2_MEM2MEM_DEV
+> -	select VIDEO_MEDIATEK_VPU
+> -	select MTK_SCP
+>  	help
+>  	    Mediatek video codec driver provides HW capability to
+> -	    encode and decode in a range of video formats
+> -	    This driver rely on VPU driver to communicate with VPU.
+> +	    encode and decode in a range of video formats on MT8173
+> +	    and MT8183.
+> +
+> +	    Note that support for MT8173 requires VIDEO_MEDIATEK_VPU to
+> +	    also be selected. Support for MT8183 depends on MTK_SCP.
+>  
+>  	    To compile this driver as modules, choose M here: the
+>  	    modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> index 6c2a2568d844..23a80027a8fb 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+> @@ -13,6 +13,7 @@ struct mtk_vcodec_fw_ops {
+>  			    mtk_vcodec_ipi_handler handler, const char *name, void *priv);
+>  	int (*ipi_send)(struct mtk_vcodec_fw *fw, int id, void *buf,
+>  			unsigned int len, unsigned int wait);
+> +	void (*release)(struct mtk_vcodec_fw *fw);
+>  };
+>  
+>  struct mtk_vcodec_fw {
+> @@ -22,6 +23,8 @@ struct mtk_vcodec_fw {
+>  	struct mtk_scp *scp;
+>  };
+>  
+> +#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VPU)
+> +
+>  static int mtk_vcodec_vpu_load_firmware(struct mtk_vcodec_fw *fw)
+>  {
+>  	return vpu_load_firmware(fw->pdev);
+> @@ -64,6 +67,27 @@ static int mtk_vcodec_vpu_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
+>  	return vpu_ipi_send(fw->pdev, id, buf, len);
+>  }
+>  
+> +static void mtk_vcodec_vpu_release(struct mtk_vcodec_fw *fw)
+> +{
+> +	put_device(&fw->pdev->dev);
+> +}
+> +
+> +static void mtk_vcodec_vpu_reset_handler(void *priv)
+> +{
+> +	struct mtk_vcodec_dev *dev = priv;
+> +	struct mtk_vcodec_ctx *ctx;
+> +
+> +	mtk_v4l2_err("Watchdog timeout!!");
+> +
+> +	mutex_lock(&dev->dev_mutex);
+> +	list_for_each_entry(ctx, &dev->ctx_list, list) {
+> +		ctx->state = MTK_STATE_ABORT;
+> +		mtk_v4l2_debug(0, "[%d] Change to state MTK_STATE_ABORT",
+> +			       ctx->id);
+> +	}
+> +	mutex_unlock(&dev->dev_mutex);
+> +}
+> +
+>  static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+>  	.load_firmware = mtk_vcodec_vpu_load_firmware,
+>  	.get_vdec_capa = mtk_vcodec_vpu_get_vdec_capa,
+> @@ -71,8 +95,13 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+>  	.map_dm_addr = mtk_vcodec_vpu_map_dm_addr,
+>  	.ipi_register = mtk_vcodec_vpu_set_ipi_register,
+>  	.ipi_send = mtk_vcodec_vpu_ipi_send,
+> +	.release = mtk_vcodec_vpu_release,
+>  };
+>  
+> +#endif  /* IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VPU) */
+> +
+> +#if IS_ENABLED(CONFIG_MTK_SCP)
+> +
+>  static int mtk_vcodec_scp_load_firmware(struct mtk_vcodec_fw *fw)
+>  {
+>  	return rproc_boot(scp_get_rproc(fw->scp));
+> @@ -107,6 +136,11 @@ static int mtk_vcodec_scp_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
+>  	return scp_ipi_send(fw->scp, id, buf, len, wait);
+>  }
+>  
+> +static void mtk_vcodec_scp_release(struct mtk_vcodec_fw *fw)
+> +{
+> +	scp_put(fw->scp);
+> +}
+> +
+>  static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
+>  	.load_firmware = mtk_vcodec_scp_load_firmware,
+>  	.get_vdec_capa = mtk_vcodec_scp_get_vdec_capa,
+> @@ -114,23 +148,10 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
+>  	.map_dm_addr = mtk_vcodec_vpu_scp_dm_addr,
+>  	.ipi_register = mtk_vcodec_scp_set_ipi_register,
+>  	.ipi_send = mtk_vcodec_scp_ipi_send,
+> +	.release = mtk_vcodec_scp_release,
+>  };
+>  
+> -static void mtk_vcodec_reset_handler(void *priv)
+> -{
+> -	struct mtk_vcodec_dev *dev = priv;
+> -	struct mtk_vcodec_ctx *ctx;
+> -
+> -	mtk_v4l2_err("Watchdog timeout!!");
+> -
+> -	mutex_lock(&dev->dev_mutex);
+> -	list_for_each_entry(ctx, &dev->ctx_list, list) {
+> -		ctx->state = MTK_STATE_ABORT;
+> -		mtk_v4l2_debug(0, "[%d] Change to state MTK_STATE_ABORT",
+> -			       ctx->id);
+> -	}
+> -	mutex_unlock(&dev->dev_mutex);
+> -}
+> +#endif  /* IS_ENABLED(CONFIG_MTK_SCP) */
+>  
+>  struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+>  					   enum mtk_vcodec_fw_type type,
+> @@ -143,16 +164,22 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+>  
+>  	switch (type) {
+>  	case VPU:
+> +#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VPU)
+>  		ops = &mtk_vcodec_vpu_msg;
+>  		fw_pdev = vpu_get_plat_device(dev->plat_dev);
+>  		if (!fw_pdev) {
+>  			mtk_v4l2_err("firmware device is not ready");
+>  			return ERR_PTR(-EINVAL);
+>  		}
+> -		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_reset_handler,
+> +		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_handler,
+>  				    dev, rst_id);
+>  		break;
+> +#else
+> +		mtk_v4l2_err("no VPU support in this kernel");
+> +		return ERR_PTR(-ENODEV);
+> +#endif
+>  	case SCP:
+> +#if IS_ENABLED(CONFIG_MTK_SCP)
+>  		ops = &mtk_vcodec_rproc_msg;
+>  		scp = scp_get(dev->plat_dev);
+>  		if (!scp) {
+> @@ -160,6 +187,10 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+>  			return ERR_PTR(-EPROBE_DEFER);
+>  		}
+>  		break;
+> +#else
+> +		mtk_v4l2_err("no SCP support in this kernel");
+> +		return ERR_PTR(-ENODEV);
+> +#endif
+>  	default:
+>  		mtk_v4l2_err("invalid vcodec fw type");
+>  		return ERR_PTR(-EINVAL);
+> @@ -180,14 +211,7 @@ EXPORT_SYMBOL_GPL(mtk_vcodec_fw_select);
+>  
+>  void mtk_vcodec_fw_release(struct mtk_vcodec_fw *fw)
+>  {
+> -	switch (fw->type) {
+> -	case VPU:
+> -		put_device(&fw->pdev->dev);
+> -		break;
+> -	case SCP:
+> -		scp_put(fw->scp);
+> -		break;
+> -	}
+> +	fw->ops->release(fw);
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_vcodec_fw_release);
+>  
+> 
 
 
 _______________________________________________
