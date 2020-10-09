@@ -2,89 +2,94 @@ Return-Path: <SRS0=0dL+=DQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40D41C433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 04:19:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C406C433E7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 04:30:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91F2022227
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 04:19:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AC3EE2223C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 04:30:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LivVWO/H";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="MOnbeaq1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91F2022227
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rtOrNwqz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="hOWJ7xYf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC3EE2223C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VX1xHtcwmlXWV2ZlMZnXZzS6BbiGIwUDhnt4MPTa1+I=; b=LivVWO/HzTbHI4ZI64NNY9bf7
-	6Tm+jS3navWvUNAbSPMpzpZvFyb2pI4ad7niSmwaQawFiM7AQxdSLqFC2ppIbIphSfOQhL/1RZlob
-	B6znLhnA6z4tDBaEb1M0/JbSuzApH8KCc7GaMjyBDlkIobS2GKHDUO6Z+y3uoNDySPNg3wUfgmfzY
-	aD73lNtZ6yJqSZb6YI5x4y3o1HfZOesOOBIeNfOqwXhnjEenxiku8qE+ZXcR0vOclFK1UsdxUmbuk
-	kScIvh61Xo5k+IpHYZXUMv+G46QYooCk5oGXcDD/vCDaLsDi2WJjhtm69IBM1H9cRnnoUgmndEIlL
-	06qKiXITA==;
+	 bh=E8ThwpWWR8jEO5w6Gk31FnQOsz/LF4e5Q1tc/yUMh6E=; b=rtOrNwqzL4VXwruP4nueaDwFS
+	d8worS0k2VsewAiWnRD/Ifjq3LFM8oB7luAdLSyfpPnSWbEVde1CcYa5LDbjjWrAlfuRXWAdbkKXR
+	XDTlqBD6ZvH7th1/B6I5zJJqbelTWKXROGWTd/ueS8XQFjfUCkjn94Xorko198Z3g27LuLCqZmeOn
+	WbsJzBTof83DtbDMjOPKhKFcoFDb1OwQsQmcwAA7qomJKgzBLWnPQaCG3QYvEnyGLynqT6LoMvwaJ
+	5KQxkDUyvvreYLjEISpRInwScLUJYsdrYMT7arkr0MEAE3N+Vq4dogH60e09aB3QXbjAfxTR0OuEi
+	fLJqn+FDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kQjsI-0006Ac-0J; Fri, 09 Oct 2020 04:19:22 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1kQk2y-0007Bl-Dp; Fri, 09 Oct 2020 04:30:24 +0000
+Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kQjsD-00069V-Ad
- for linux-mediatek@lists.infradead.org; Fri, 09 Oct 2020 04:19:18 +0000
-Received: by mail-pg1-x544.google.com with SMTP id x16so6157567pgj.3
- for <linux-mediatek@lists.infradead.org>; Thu, 08 Oct 2020 21:19:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=+2sSjHIG8dOPiZAXe+oXr0N+ieiRQzjEGoSV/P6Yznw=;
- b=MOnbeaq1cy1kAz5S/jKS4LOB5ahZWaJg+qQvOwJnOIb83e8inibG+ODF2HH7uDVP5i
- fplFUgs4IWxPuRzurmPhJcqSqvAq46+3tSQZjV/qrVul3Q00g0k1zYXsPbDvx3wucYrb
- tVNVNBzoEa+h6c1oZuDDrzBX2fZ2tlrbPrhCn/29POB7XdFWOmSe9/Ytiloiq2MpLGKk
- kWx2xTFyGdqoDk6M50to7YNY3GbgkjrdvOwLZ2JS1dBq6/kfwYtGKZSOJRKzuFI1GCVg
- dK5yPDcbmNBpE0xTtocEXCCf3to9O9V6Ba87s9PjMdiylDce6zUCPz1ZJcj2QtT5Aid7
- Mrxw==
+ id 1kQk2v-0007A8-Ki
+ for linux-mediatek@lists.infradead.org; Fri, 09 Oct 2020 04:30:22 +0000
+Received: by mail-oo1-xc41.google.com with SMTP id c4so2070742oou.6
+ for <linux-mediatek@lists.infradead.org>; Thu, 08 Oct 2020 21:30:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=bQCRsRi8kNOo2aPGfc7lMNsOSErczm6II0z2jnbK/64=;
+ b=hOWJ7xYfYM+6d5Y3UGE81JEW30JgDfoQMe1Tn0bTzgehmm0gWfnBdkgQ7HuIXYBQB2
+ /tjbwY4uuJr6AXHAvxJsDIe/hODY461gREIMT00jtu90X+3zfGwdybMA4O/Q4aJNV1ay
+ z+8z3GXqz2BvyOqTty4J6/NVLV5vh7K0jy1gk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=+2sSjHIG8dOPiZAXe+oXr0N+ieiRQzjEGoSV/P6Yznw=;
- b=Xnzs5ZBH++BbGeud38ox4Uzh9uWZpJi8ccIO+Qh5ZXlkd4m7xuSWhY8ft4KiDqlsmd
- mVENuPk3AO3GHwaqgUm07bLcsTeQb8hMb0rP4XvBabvUETpfi5/KcRlt9oTgSpo2Q4/x
- rKGnMFNXF35VT9BEeHTlXF+Tv1KW6Y+/pAnS8VLKC5NXp4KUcy6WKKKz9YDSRsMUfFYK
- 0uRuqvByzc4KwmLqxEH2CnVxs9F6uLeeoCNRp9TJx8ZIKysMFrTYDijxx0H7/Xopvsp/
- 9Mx1tUspSUzY035lz6vSo9ga8n1PJmNHSHnQZ1dKSRcvw4Y6cZ6EzX7duRoe0oh/ejb0
- CfjA==
-X-Gm-Message-State: AOAM531z7Lu6N3NJZLiLC+2TaXhJtjPZaTvEI13YOMorW2UvfAaZWK67
- sGCHC0gT+G0kXhEANHvv3YbIcQ==
-X-Google-Smtp-Source: ABdhPJyEnLl6570MW2KAL+ArDB+3JofV5hbzqNgTbWceck5uYpjyF/d6pt5DalGfwkLIx00gqPMl1w==
-X-Received: by 2002:a63:5914:: with SMTP id n20mr881066pgb.69.1602217155135;
- Thu, 08 Oct 2020 21:19:15 -0700 (PDT)
-Received: from localhost ([122.181.54.133])
- by smtp.gmail.com with ESMTPSA id o2sm9023889pgg.3.2020.10.08.21.19.13
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 08 Oct 2020 21:19:14 -0700 (PDT)
-Date: Fri, 9 Oct 2020 09:49:12 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Hector Yuan <hector.yuan@mediatek.com>
-Subject: Re: [PATCH v1 1/1] cpufreq: mediatek-hw: Register EM power table
-Message-ID: <20201009041912.nzhvubzmfox2twxg@vireshk-i7>
-References: <1602159204-13756-1-git-send-email-hector.yuan@mediatek.com>
- <1602159204-13756-2-git-send-email-hector.yuan@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=bQCRsRi8kNOo2aPGfc7lMNsOSErczm6II0z2jnbK/64=;
+ b=Dy8i+uRj7SYe+RB0ncbrGAnbhgAmEFQsBOQxY6a2lm2vPvtHDIicH7YRIDoT02MoJM
+ UDhLjc7gZg2baS0cNc3zxcPZUJwb2QY98PdK6w5/zgT2aavdqqCLjr+uZV/cLnHtjpMN
+ 1xpdwpgVUvxmjUT/sPimNlc+4EEID8J3PDP0wrXM+ruucKMixrBMiko/9wGRafpWt6vn
+ Z1YrO/PRqyLM9grqGW43Y7qPHIyhOkY+gSvDAidnDwgYzOv4UIij5AsuzI/hozcU7Las
+ LZ363XM6uGsSBxeVmTt0Z2cgcInUBHXY2eY6qqc2HmKLP0vT13+ZWb715fYAavHF/u2j
+ 4ToA==
+X-Gm-Message-State: AOAM531+cc3Ps3bZ7FvKfI2k0eo+wXuOBo2K9/J9nuxKJhsoXL8Y/ekj
+ /u5qiqaLSflZyfrG4BT24Voy+WdQiyX6/63L
+X-Google-Smtp-Source: ABdhPJzADm1qFI3MkOzJDK9k3CWkfMUDTtNw5Qbi0eglgEL7J7QN46izYIhwSKd87bOcJ/ksEG67yQ==
+X-Received: by 2002:a4a:5d84:: with SMTP id w126mr7764556ooa.1.1602217819229; 
+ Thu, 08 Oct 2020 21:30:19 -0700 (PDT)
+Received: from mail-ot1-f44.google.com (mail-ot1-f44.google.com.
+ [209.85.210.44])
+ by smtp.gmail.com with ESMTPSA id w3sm5373425otl.13.2020.10.08.21.30.18
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Oct 2020 21:30:18 -0700 (PDT)
+Received: by mail-ot1-f44.google.com with SMTP id o8so7877160otl.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 08 Oct 2020 21:30:18 -0700 (PDT)
+X-Received: by 2002:a9d:7a2:: with SMTP id 31mr7000765oto.141.1602217817599;
+ Thu, 08 Oct 2020 21:30:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1602159204-13756-2-git-send-email-hector.yuan@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+References: <20201004122234.802044-1-acourbot@chromium.org>
+ <c3e1c20a-7729-9f48-ce66-41e67f195fc7@xs4all.nl>
+ <cda40a8e-4dd2-5fd7-c5ff-8b048475164b@xs4all.nl>
+ <CAPBb6MX8rFZU=9Pd5o0mqQ6pf+1oQYzk=D0WiR93_S3FUG7jJw@mail.gmail.com>
+ <1bb71c21-0f03-5d8f-be2c-fdcb13dadcd6@xs4all.nl>
+In-Reply-To: <1bb71c21-0f03-5d8f-be2c-fdcb13dadcd6@xs4all.nl>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Fri, 9 Oct 2020 13:30:06 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MWf7bWkigMPUwx7g6dXjwMkttGhHwC9X_=e6=cz1K5J0w@mail.gmail.com>
+Message-ID: <CAPBb6MWf7bWkigMPUwx7g6dXjwMkttGhHwC9X_=e6=cz1K5J0w@mail.gmail.com>
+Subject: Re: [PATCH v2] media: mtk-vcodec: fix builds when remoteproc is
+ disabled
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201009_001917_432144_CA7D720E 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20201009_003021_713384_0F25BD52 
+X-CRM114-Status: GOOD (  28.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,28 +101,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, linux-pm@vger.kernel.org,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Randy Dunlap <rdunlap@infradead.org>, LKML <linux-kernel@vger.kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08-10-20, 20:13, Hector Yuan wrote:
-> From: "Hector.Yuan" <hector.yuan@mediatek.com>
-> 
-> Register CPU power table to energy model framework
-> 
-> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq-hw.c |   50 +++++++++++++++++++++++++--------
->  1 file changed, 38 insertions(+), 12 deletions(-)
+On Fri, Oct 9, 2020 at 1:13 AM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+>
+> On 08/10/2020 16:02, Alexandre Courbot wrote:
+> > Hi Hans, thanks for taking the time to look at this!
+> >
+> > On Thu, Oct 8, 2020 at 10:12 PM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+> >>
+> >> On 08/10/2020 15:07, Hans Verkuil wrote:
+> >>> Hi Alexandre,
+> >>>
+> >>> On 04/10/2020 14:22, Alexandre Courbot wrote:
+> >>>> The addition of MT8183 support added a dependency on the SCP remoteproc
+> >>>> module. However the initial patch used the "select" Kconfig directive,
+> >>>> which may result in the SCP module to not be compiled if remoteproc was
+> >>>> disabled. In such a case, mtk-vcodec would try to link against
+> >>>> non-existent SCP symbols. "select" was clearly misused here as explained
+> >>>> in kconfig-language.txt.
+> >>>>
+> >>>> Replace this by a "depends" directive on at least one of the VPU and
+> >>>> SCP modules, to allow the driver to be compiled as long as one of these
+> >>>> is enabled, and adapt the code to support this new scenario.
+> >>>>
+> >>>> Also adapt the Kconfig text to explain the extra requirements for MT8173
+> >>>> and MT8183.
+> >>>>
+> >>>> Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> >>>> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> >>>> Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
+> >>>> ---
+> >>>>  drivers/media/platform/Kconfig                | 10 +--
+> >>>>  .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 72 ++++++++++++-------
+> >>>>  2 files changed, 54 insertions(+), 28 deletions(-)
+> >>>>
+> >>>> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> >>>> index a3cb104956d5..98eb62e49ec2 100644
+> >>>> --- a/drivers/media/platform/Kconfig
+> >>>> +++ b/drivers/media/platform/Kconfig
+> >>>> @@ -253,14 +253,16 @@ config VIDEO_MEDIATEK_VCODEC
+> >>>>      depends on MTK_IOMMU || COMPILE_TEST
+> >>>>      depends on VIDEO_DEV && VIDEO_V4L2
+> >>>>      depends on ARCH_MEDIATEK || COMPILE_TEST
+> >>>> +    depends on VIDEO_MEDIATEK_VPU || MTK_SCP
+> >>>
+> >>> Close, but no cigar.
+> >>>
+> >>> If VIDEO_MEDIATEK_VPU=y and MTK_SCP=m, then VIDEO_MEDIATEK_VCODEC can be configured
+> >>> to y, and then it won't be able to find the scp_ functions.
+> >>>
+> >>> To be honest, I'm not sure how to solve this.
+> >>
+> >> Found it. Add this:
+> >>
+> >>         depends on MTK_SCP || !MTK_SCP
+> >>         depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
+> >>
+> >> Ugly as hell, but it appears to be the correct incantation for this.
+> >
+> > But doesn't it mean that the driver can be compiled if !MTK_SCP and
+> > !VIDEO_MEDIATEK_VPU? That's the one case we want to avoid.
+>
+> No, because you still have:
+>
+>         depends on VIDEO_MEDIATEK_VPU || MTK_SCP
+>
+> So at least one of these must be set.
+>
+> Just try it :-)
 
-I don't see this file in mainline. What am I missing ?
+Aha, I misread your message and thought you suggested replacing the
+dependencies with these two lines. In this case it would certainly
+work! Thanks for the suggestion, I'll send a v3 soon.
 
--- 
-viresh
+>
+> Regards,
+>
+>         Hans
 
 _______________________________________________
 Linux-mediatek mailing list
