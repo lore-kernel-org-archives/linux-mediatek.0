@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9646BC433E7
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:34:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C796FC433E7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:35:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CA9A222B9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:34:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2BC5722284
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:35:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vlTllu9p"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CA9A222B9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SbVd3e+7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BC5722284
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,34 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=azs2v/pMEJ3IhLLfv6FbS6DhebAmz6kMpKfhYdXhLAc=; b=vlTllu9pfk2lZJpKMN7kfmtyp
-	fjP+J89wXk6k8qHVGU/5C0Bcf93e+F5MJ2E7OEE0LF4S5PjXpxtpa/b1HDvk/ARdbZ0o45TkvUlIf
-	3BBWMDU8hsgvlLCueC8p+SW7d0jp7mMk8MPY3pUAv3inL+D7QrGdIR/9lXl3MZ2kPoF05ALdkCvHn
-	6O8weDDAqnjjQy6rk67RP1v8Aumj3dPG/cvKoXkVtlReTBHFLe0BDZ1z0vQBxFNf5s8f8YhRX3tpK
-	twAyifRnewHhhF40Dji4h/sTfklNecAfsHyvUrYJaVPa5BTXcSPEFggEX/sanw7KwWBNEIrwP1WtO
-	V+szccGcQ==;
+	 bh=wBpEmpDLoHv+GD8Sk7yPPxzFtVm/gDp5Rg2Nnsbua2Y=; b=SbVd3e+7+9pH4rDa9dzKhHc6R
+	wPxqLz1XnOdBOV4zxkv4loZua/Mxm0crCbjmifjGk90/8A3odQ76Hqpin7+OiHL1i6gjc6yAPetIe
+	mohyWUhUBpUqYLL+u75ejpTLdAnAJZN+6RjuaNGJnBlReTSZWyN0PraPNytt2sFpnIBoe4LhGPbqP
+	YkNmZD86slsHkwDBfToN0r7xFFPHI7F8wt3Ih6eR/ldPSG3YPc2YIkpkw10EhzMTEwLNpiIObhtDj
+	3FkRaHFn8uQoQJLVsyYPH0PjaiF6x4Y83CZEzUN4h79IbYlBUre2IumyuzBenHVfk7eIkNnlNWaHR
+	SE2xDT5/g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kQrba-0001bH-Dq; Fri, 09 Oct 2020 12:34:38 +0000
-Received: from szxga07-in.huawei.com ([45.249.212.35] helo=huawei.com)
+	id 1kQrbw-0001oD-Tv; Fri, 09 Oct 2020 12:35:00 +0000
+Received: from szxga06-in.huawei.com ([45.249.212.32] helo=huawei.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kQrb2-0001GS-Rz; Fri, 09 Oct 2020 12:34:06 +0000
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 462FA7DF8F74857B5728;
- Fri,  9 Oct 2020 20:33:51 +0800 (CST)
+ id 1kQrb3-0001HK-Mr; Fri, 09 Oct 2020 12:34:07 +0000
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 57E1DFF1D6040988F781;
+ Fri,  9 Oct 2020 20:33:56 +0800 (CST)
 Received: from huawei.com (10.175.127.227) by DGGEMS414-HUB.china.huawei.com
  (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Fri, 9 Oct 2020
- 20:33:42 +0800
+ 20:33:48 +0800
 From: Yu Kuai <yukuai3@huawei.com>
 To: <rick.chang@mediatek.com>, <bin.liu@mediatek.com>, <mchehab@kernel.org>,
  <matthias.bgg@gmail.com>, <tiffany.lin@mediatek.com>,
  <andrew-ct.chen@mediatek.com>, <tfiga@chromium.org>,
  <xia.jiang@mediatek.com>, <hverkuil-cisco@xs4all.nl>, <jcliang@chromium.org>, 
  <minghsiu.tsai@mediatek.com>
-Subject: [PATCH 1/7] media: platform: add missing put_device() call in
- mtk_jpeg_clk_init()
-Date: Fri, 9 Oct 2020 20:37:58 +0800
-Message-ID: <20201009123804.3977562-2-yukuai3@huawei.com>
+Subject: [PATCH 7/7] media: mtk-vcodec: add missing put_device() call in
+ mtk_vcodec_release_enc_pm()
+Date: Fri, 9 Oct 2020 20:38:04 +0800
+Message-ID: <20201009123804.3977562-8-yukuai3@huawei.com>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20201009123804.3977562-1-yukuai3@huawei.com>
 References: <20201009123804.3977562-1-yukuai3@huawei.com>
@@ -60,8 +60,9 @@ MIME-Version: 1.0
 X-Originating-IP: [10.175.127.227]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201009_083405_170576_0FE67B27 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20201009_083406_104783_23884AEF 
+X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,27 +82,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-if of_find_device_by_node() succeed, mtk_jpeg_clk_init() doesn't have
-a corresponding put_device(). Thus add put_device() to fix the exception
-handling for this function implementation.
+mtk_vcodec_release_enc_pm() will be called in two places:
 
-Fixes: 648372a87cee ("media: platform: Change the call functions of getting/enable/disable the jpeg's clock")
+a. mtk_vcodec_init_enc_pm() succeed while mtk_vcodec_probe() return error.
+b. mtk_vcodec_enc_remove().
+
+In both cases put_device() call is needed, since of_find_device_by_node()
+was called in mtk_vcodec_init_enc_pm() previously.
+
+Thus add put_devices() call in mtk_vcodec_release_enc_pm()
+
 Signed-off-by: Yu Kuai <yukuai3@huawei.com>
 ---
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 227245ccaedc..106543391c46 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -1306,6 +1306,7 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
- 				jpeg->variant->clks);
- 	if (ret) {
- 		dev_err(&pdev->dev, "failed to get jpeg clock:%d\n", ret);
-+		put_device(&pdev->dev);
- 		return ret;
- 	}
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+index 1a047c25679f..3b7c54d6aa8f 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+@@ -108,6 +108,8 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 
+ void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ {
++	put_device(mtkdev->pm.larbvenclt);
++	put_device(mtkdev->pm.larbvenc);
+ }
+ 
  
 -- 
 2.25.4
