@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5997AC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3068C43457
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:51:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9F4522284
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:36:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3920B222B8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 12:51:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iWyHFmvh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Tq8ecdMt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9F4522284
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LraACOhQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fvz7+I6m"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3920B222B8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,70 +27,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1cvg5ev3YefGlrq4cHk77VdsWLBlS6r2vkgeSfiELPo=; b=iWyHFmvhGI5Qdg9FcEHK4+ilD
-	YDHkZ3EUtLKxgIZWRSHw1vzSkf7Y9Ufmw4Ar2HpszjU9aE7qaUrUClJ91o7em03kPiVvUsSWNvcy2
-	rJvC9eIu4G2gDqjl1SGODoTtUcOA/g9eHy2w10HrPzGuAErBVetBKrJxfys6jhLcY1LaOWfA6mDHO
-	bghT5avlNdInh7+AVH7pspQIjPtOYOOjYcfz/bSd31s8KVRfPb9G/MwxwX5XZ8dHTZ+TTdLYX5sdj
-	CnZx22Mdg8BMZRJ3cu3DGmfs7js560yeKqPD1bSjHgyi/abYsRMGKqJkqZFiJzvGydEk/BOr+H/eL
-	dnjMgMDfw==;
+	 bh=xgkAj0HSDE5VtggxF6tWd5Toi+l/P6tMyvCWSxdOkvE=; b=LraACOhQUzyNmaIXhCJVaN42/
+	BVuZVcxb6Jo35utrooh7GFZnd/G7PFOA0la2FTYMIi72NS5NxvKjkUHvr4tdQc1yEUZfQfEc70XX8
+	RGY9DGNytO9y0roN9evm84Nc6r4EDu8rMeZRNQxoWOrDioycdTIBhMfoniQRjyNMGjW8C2Em2Bjb1
+	9uAMmeh+F10tcXuE5IxFms5huqsqZ0fEttEfkUa58FvBODy43fTibLsLOBujchql78yKKJAiQ2mir
+	brlXVnCzep80+rQbShgxLjTTtrB3OuY7x8LlW1SAH+snGEZvTIDET7TPKUSwqi5uHfxLyIN0GrAD0
+	EZK32kqIA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kQrcp-0002OO-Bv; Fri, 09 Oct 2020 12:35:55 +0000
+	id 1kQrrQ-00086T-UR; Fri, 09 Oct 2020 12:51:00 +0000
 Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kQrbv-0001mp-JZ; Fri, 09 Oct 2020 12:35:00 +0000
-Received: by mail-wr1-x442.google.com with SMTP id e18so10105759wrw.9;
- Fri, 09 Oct 2020 05:34:59 -0700 (PDT)
+ id 1kQrrK-00084u-Ua; Fri, 09 Oct 2020 12:50:55 +0000
+Received: by mail-wr1-x442.google.com with SMTP id h5so92206wrv.7;
+ Fri, 09 Oct 2020 05:50:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=arXJ0tK64lVD474SrsZL15lNj1CHd4/0uMPQBKlDggM=;
- b=Tq8ecdMt/vmkX053Pg++C4Uk9SVuUFiz/TBkJqmMb1jS7pj76ybDA3YzHnxVeWjXQt
- stdvLakFE4syOiug0U1lzbEhQjmc/Eo2gQ5sSBksTqn4AeJEYsP6KFPYSkimnO2/Ti5J
- 49KTc6+mqXPkvb6bXYZKx3Z2U/ojMr/zizEVuY8nu44sdywnDxytiL6RUd3vXyQrmhnb
- HTrRlCuESnPvJE0sLChuLFS2hUUXM09YxctLadYsgkF/ZYyDbHXTQEWTpjQTe/BlfeQX
- WPIkFjkUJqlEpGP7yKJQnNfMuxqJTBr7RlrVQID5IKWePFF8mwL/+Ag0I6eYZgL8geUe
- Hubw==
+ bh=tM6Kdz3zm/Ta3Gss9N6jrcTtQpKgV/+ZBA6O7+RCUIU=;
+ b=fvz7+I6mR0zZMw32XB6gmmCQotdNgOJrrC+cN0BzmWCvh/XsJp8belJ57zLJY3e/P7
+ 8/sx2jUAlExX14aaehwes7Fk58lq3KOylbb/hUHU5G9uOl7I4EUPltuEcegw1iCd1pee
+ Uj7Yp2bv7x49Vcvdfzmzox/WpPlO+dA0B5YfGraVIPgGXTNFI/y/26pWhx8d/R5SOeJ/
+ VxTTJ3lLVALX+ytUyhoLaTfRt+Uz1e16l6RAXJt8ZY8kJpeFGBw0ExAEQ+TnIYdXXlkv
+ 01dA86W6+YqjD5npZf9PN7anS+9AvTeWbNP8sclnSLN9XjWu6TrrsUW0TW5UzdRmqYV2
+ JRYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=arXJ0tK64lVD474SrsZL15lNj1CHd4/0uMPQBKlDggM=;
- b=pw6xm2jA5DEBT/5Bm3WXbcwDr/vgFALkvWnQ12kPq2j9+owS1HG8JK1S3zAllKX+Z3
- mPerH7GstV4a9a+2+qrR9Q5/Eu3bs92cn6VEo3hzRrxwnjjDcgbncM+6IdbwZAPRTGMj
- f08gEg0B4EeG/iA09LEfdFfTJR8w9Wou0EaMAQeoTdqqQiHr1ujHrnIfCdQuS30KEfsq
- Qbq6PRUugMOLd008Yvits4IfDU5p3RsjP9/Dc/2lSpUVcZypJZnFZVkDWa1Ca22SGevb
- igSF3y5i8rFQVHpI1jtRXPLOscDuTWODirVT4PVSoPLahukZzjZr8GDksvw+Dqmpc8TI
- 1OdA==
-X-Gm-Message-State: AOAM5317Gf2np7fQO/1OGRjysjbDHoP7dSIyz5wBeWkylQX3QUAU3Xk9
- nU/ffahkM6DIa+uKkavMwwQ=
-X-Google-Smtp-Source: ABdhPJzb0l67YtCO8ZRSDEv7cjHsgr+7vKydt2IU/L5UzsOFSlUrERISoXTabfEwY/6OrPCc0n/8eA==
-X-Received: by 2002:adf:a405:: with SMTP id d5mr8547724wra.421.1602246898481; 
- Fri, 09 Oct 2020 05:34:58 -0700 (PDT)
+ bh=tM6Kdz3zm/Ta3Gss9N6jrcTtQpKgV/+ZBA6O7+RCUIU=;
+ b=XeQ3q6IMOLiw78w1kd1H7K2aZbJYW2GQ2eZGzAgNQDK0cHoGmb4UAnFuJyD5GK9HsQ
+ LimZO+sfp2kERmRXCKmxeLVF9/b7dMKo8gc8UFFTi7yS3yHnTwuYfWAmATBacZAXDC7k
+ lET+IvhDwIHkejMKGt4yFYeTARJ2idHfnE0n3F7jHrkEs2e5N4kH5fR2eyL8IZpbGkvo
+ B4kpRkubqpUjTBq2AjuU5lbKZCAWMJz1OhgYMnylWNOznyepLjTBD+XIlUDU72+GNehn
+ cnBwzNqyFsRwq1mAeVBUxfoy068oFtN18QK9PIZkqKSZ3OCgl8LpiKlkuQueCzidkPPI
+ yOLg==
+X-Gm-Message-State: AOAM530tCedUXNfiVaTKFZ7qKa4xQ6yJe4v8eSE/4Yi+TfejRkvj+4G1
+ j2pdJDeldCyHgjcX1r1WDTNb7BLr2RwKpA==
+X-Google-Smtp-Source: ABdhPJwz4y/KndvcADy27gF36kL0k+wfesqMBuQbCCYUAsMR9/vizw/ke6NPsmw8w2hj4OGccaTUSQ==
+X-Received: by 2002:adf:9e87:: with SMTP id a7mr1178442wrf.185.1602247853535; 
+ Fri, 09 Oct 2020 05:50:53 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.119.110])
- by smtp.gmail.com with ESMTPSA id 13sm11086386wmk.20.2020.10.09.05.34.57
+ by smtp.gmail.com with ESMTPSA id k190sm11691295wme.33.2020.10.09.05.50.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Oct 2020 05:34:57 -0700 (PDT)
-Subject: Re: [PATCH v7 2/2] soc: mediatek: add mt6779 devapc driver
-To: Neal Liu <neal.liu@mediatek.com>
-References: <1598497593-15781-1-git-send-email-neal.liu@mediatek.com>
- <1598497593-15781-3-git-send-email-neal.liu@mediatek.com>
- <c41ec664-73a0-3c63-a31c-48c89028dfac@gmail.com>
- <1602124514.28301.17.camel@mtkswgap22>
- <d8aec3a3-10b6-8c9e-6b2d-f9d9c0418b33@gmail.com>
- <1602149965.8784.6.camel@mtkswgap22>
+ Fri, 09 Oct 2020 05:50:52 -0700 (PDT)
+Subject: Re: [PATCH 00/12] soc: mediatek: pm-domains: Add new driver for
+ SCPSYS power domains controller
+To: Weiyi Lu <weiyi.lu@mediatek.com>
+References: <20200910172826.3074357-1-enric.balletbo@collabora.com>
+ <1601028361.1346.38.camel@mtksdaap41>
+ <19678952-e354-2067-e619-ffac28b347be@gmail.com>
+ <1601967207.8638.4.camel@mtksdaap41>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <0ece983b-2e55-cf06-aca8-02a014fce090@gmail.com>
-Date: Fri, 9 Oct 2020 14:34:56 +0200
+Message-ID: <f2185b28-0b1f-8cf9-8717-12e28cf2bbf0@gmail.com>
+Date: Fri, 9 Oct 2020 14:50:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <1602149965.8784.6.camel@mtkswgap22>
+In-Reply-To: <1601967207.8638.4.camel@mtksdaap41>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201009_083459_697329_4DA86631 
-X-CRM114-Status: GOOD (  24.18  )
+X-CRM114-CacheID: sfid-20201009_085055_010328_39964AAD 
+X-CRM114-Status: GOOD (  26.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,9 +101,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, wsd_upstream@mediatek.com,
- devicetree@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>,
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org,
+ linux-kernel@vger.kernel.org, fparent@baylibre.com,
  Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
@@ -113,67 +114,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 08/10/2020 11:39, Neal Liu wrote:
-> On Thu, 2020-10-08 at 10:45 +0200, Matthias Brugger wrote:
+On 06/10/2020 08:53, Weiyi Lu wrote:
+> On Fri, 2020-09-25 at 16:04 +0200, Matthias Brugger wrote:
 >>
->> On 08/10/2020 04:35, Neal Liu wrote:
->>> On Wed, 2020-10-07 at 12:44 +0200, Matthias Brugger wrote:
+>> On 25/09/2020 12:06, Weiyi Lu wrote:
+>>> On Thu, 2020-09-10 at 19:28 +0200, Enric Balletbo i Serra wrote:
+>>>> Dear all,
 >>>>
->>>> On 27/08/2020 05:06, Neal Liu wrote:
-[...]
-
->>>>> +static int mtk_devapc_probe(struct platform_device *pdev)
->>>>> +{
->>>>> +	struct device_node *node = pdev->dev.of_node;
->>>>> +	struct mtk_devapc_context *ctx;
->>>>> +	u32 devapc_irq;
->>>>> +	int ret;
->>>>> +
->>>>> +	if (IS_ERR(node))
->>>>> +		return -ENODEV;
->>>>> +
->>>>> +	ctx = devm_kzalloc(&pdev->dev, sizeof(*ctx), GFP_KERNEL);
->>>>> +	if (!ctx)
->>>>> +		return -ENOMEM;
->>>>> +
->>>>> +	ctx->data = of_device_get_match_data(&pdev->dev);
->>>>> +	ctx->dev = &pdev->dev;
->>>>> +
->>>>> +	ctx->infra_base = of_iomap(node, 0);
+>>>> This is a new driver with the aim to deprecate the mtk-scpsys driver.
+>>>> The problem with that driver is that, in order to support more Mediatek
+>>>> SoCs you need to add some logic to handle properly the power-up
+>>>> sequence of newer Mediatek SoCs, doesn't handle parent-child power
+>>>> domains and need to hardcode all the clocks in the driver itself. The
+>>>> result is that the driver is getting bigger and bigger every time a
+>>>> new SoC needs to be supported.
 >>>>
->>>> Does this mean the device is part of the infracfg block?
->>>> I wasn't able to find any information about it.
 >>>
->>> I'm not sure why you would ask infracfg block. devapc is parts of our
->>> SoC infra, it's different with infracfg.
+>>> Hi Enric and Matthias,
+>>>
+>>> First of all, thank you for the patch. But I'm worried the problem you
+>>> mentioned won't be solved even if we work on this new driver in the
+>>> future. My work on the MT8183 scpsys(now v17) is to implement the new
+>>> hardware logic. Here, I also see related patches, which means that these
+>>> new logics are necessary. Why can't we work on the original driver?
+>>
+>> Well the decision was to change the driver in a not compatible way to make
+>> device tree entries better. If we work on the old driver, we would need to find
+>> some creative ways to handle old bindings vs new bindings.
+>>
+>> So I thought it would be better doing a fresh start implementing mt1873 support
+>> for reference and add mt8183 as new SoC. From what I have seen mt8192 and others
+>> fit the driver structure too.
+>>
+>>> Meanwhile, I thought maybe we should separate the driver into general
+>>> control and platform data for each SoC, otherwise it'll keep getting
+>>> bigger and bigger if it need to be support new SoC.
 >>>
 >>
->> I'm asking because I want to understand the HW better. I'm not able to find any
->> information in the datasheets. I want to avoid a situation as we had with the
->> MMSYS where a clock driver was submitted first and later on we realized that
->> MMSYS is much more then that and we had to work hard to get the driver right.
+>> We could in a later series split the SoC depended data structures and put them
+>> in drivers/soc/mediatek/pm-domains-mt8183.h or something like this. Is that what
+>> you mean?
 >>
->> Now it's happening with SCPSYS, where a driver with the scpsys compatible was
->> send years ago. But SCPSYS is much more then the driver submitted. In this case
->> we opted to write a new driver, but moving from one driver to another one is
->> painfull and full of problems. For that I want to make sure we fully understand
->> Device APC (by the way, what does APC stands for?). Is it a totally independent
->> HW block or is it part of a subsystem, like for example SCP?
->>
->> Regards,
->> Matthias
 > 
-> It's a totally independent HW block instead of a subsystem.
-> I think it's more simple than MMSYS or SCPSYS. But if you would like to
-> understand more about this HW, we could find another way/channel to
-> introduce it.
+> Yes, that is what I want. And I guess it could avoid the collisions in
+> the different defines to the control registers and power status bits you
+> mentioned. Hope this will happen in this series.
 > 
 
-If it's a independent HW block, then we are good. No further information needed 
-by me. I'd just advise to rename the infra_base to something like base, as it 
-made me confuse.
+Sounds good to me. Enric could you move the soc specific data to separate 
+include files?
 
-Thanks!
+Regards,
 Matthias
 
 _______________________________________________
