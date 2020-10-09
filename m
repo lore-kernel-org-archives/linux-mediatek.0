@@ -1,94 +1,80 @@
-Return-Path: <SRS0=jGCy=DP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=0dL+=DQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 320FFC433E7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2020 21:51:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F21CAC433E7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 03:20:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A0AFF22241
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2020 21:51:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A062722248
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 03:20:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uIOtQguZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="n/gPcsXu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0AFF22241
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yqxzMpcv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="U52YSWzk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A062722248
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=stcIr8hoZaehfaeq3Y7wz08zDewuXBDdEbd6a/prZ84=; b=uIOtQguZcQnZi7LiV+1YFgNgM
-	AB3wKHDIFY6sJT8ukEnL8VvUFpKxcllXGUzmucpC0Ku7EC1YvWAmefrXgihSn5/bpablv/k5yqPjr
-	qQ76HqWr3ECIcKt6CkFIpdLVAagacMkN9nVDjqpVysRh0LSSlFADgznnBC99JkVgyLf9Ujmu5+xIE
-	Z7yw9cv4RdTv3kzTBeYup07fTpy9gvPXJMXw/l1l/2VsWOtAjMq8eCMH97oZCMw2z7X9FC4cEUVYr
-	FCq97SS2j90EGmWMtzfcJ5hyyywH+/zOqGlzvE2cO9otuGorIr9zzt4PaXyVxmLcGDWzpvfHmcVPI
-	rP2mCix3A==;
+	 bh=hiYf2Jiv2eIP2fmr+3JsK2h11TpgDG0kb8qOWCfr6n4=; b=yqxzMpcvidBiuNQPk5r6jnf/W
+	APWwPVMagPMzPVPD/UpXP/VfAOxJIer4xmhbCsK/iaYBknUaNIpqihJDXlXd2nqkKOmtR6FUj+scd
+	8gaDYGaOM25DQZ9WyPam/Vu0hBUtbO8vwIUG9yrYhtGVj3eiSFg3AhSYfgvYd0v3Ce1yuEkjOHCJB
+	x/HdJ7eC7lGvHb364J8DaGUxL3fLrOHIuoljyWjTaX8ZxxiFhCqHErJ7LbE8CzFy8418FWEudJJbI
+	/QDKGF2ICaNh+ehY/Z5du8lDhLC5IV7CQgW04CyZgtF9WQBq1HQPcXPFap9Q/NIbVrx3fVDIqtE1+
+	q4apqks8Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kQdow-0000UQ-Dn; Thu, 08 Oct 2020 21:51:30 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1kQixa-0003OL-Ot; Fri, 09 Oct 2020 03:20:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kQdou-0000Th-01; Thu, 08 Oct 2020 21:51:28 +0000
-Received: by mail-ed1-x541.google.com with SMTP id l16so7360479eds.3;
- Thu, 08 Oct 2020 14:51:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=937MMq6nZ+u8EQvLMqKOO+SU66NmCNZt9Udn4Wz7dCc=;
- b=n/gPcsXufTW9uavvXSx1jBullekgIigmYKZUjVebfsHHlMg0MMcqmwOuUAhdXrbhsH
- Q+xA/LFeqFO69CeIG5CsFX7ukwdCauDbX5t/Md7PIEejYLAUCLnxXfE6TKUj6GepjDWX
- rBtTRsO0rB+gpaDIzPkZ3Ms64MIs79E8UdTgqAbynOmXjEPFsKp7tplsj3zCymveJzSf
- vmuoDQV7W6PJFuWFh8Ai6e08CtaEmhKLU/bGpzfJjkY4vkHTLadlwldu4gDUGurq7nLk
- RJBgsubC/SxdqkMZYzxPcLbaMCfO53Er+U9obVTYRbfVYTu64MEq2OTyXyN8/N0Z17sW
- /g2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=937MMq6nZ+u8EQvLMqKOO+SU66NmCNZt9Udn4Wz7dCc=;
- b=mre8JbtPGZ9anfeextD3ckxhKpYpG7klSknJffVsRdO29kSQWK9G+PtkfcDoesGX6O
- /oVzNDOGkLD8vU6cW8wntqIEoOkduieKLL6XETOnlcE40V6MHVlmU3wTpdfxJfmdx03b
- XcAykBZ/Cno1gzHp+4R2xE69Ani090JlVFDplKvMvgz9VUOli6efmQTF0bWc3+rsH2gG
- u6LBMwN8IiYeix8598WYWGdJOd9Sy+gofMVmY3o8j6izcWpIXNfOjVgDHXns+51kYWCx
- YBBVnRxNrzB6jcWWwLKGcCZW1kStM9hM71c5shXIDKum5VDFZ0mJRkK+4+fySKI6no5C
- 7EhA==
-X-Gm-Message-State: AOAM532XmcFa+JH0sNtAHsjzoid32pTn7tv3T82FJv+2E31NUc38LGkz
- /M6lJJiXUD/5aQM+njETm7k=
-X-Google-Smtp-Source: ABdhPJzig8i/zEh6Ruxm9Ga8WfdfIsoFnQi4KGyIp/SyDrK5QDZr3bgIYhDIgw2Eu7O2N9XIDMbGqA==
-X-Received: by 2002:aa7:d689:: with SMTP id d9mr11655949edr.128.1602193886641; 
- Thu, 08 Oct 2020 14:51:26 -0700 (PDT)
-Received: from ?IPv6:2a01:110f:b59:fd00:a188:5df3:7e17:9e85?
- ([2a01:110f:b59:fd00:a188:5df3:7e17:9e85])
- by smtp.gmail.com with ESMTPSA id m2sm5041400ejo.4.2020.10.08.14.51.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Oct 2020 14:51:25 -0700 (PDT)
-Subject: Re: [PATCH v5 2/2] leds: mt6360: Add LED driver for MT6360
-To: Gene Chen <gene.chen.richtek@gmail.com>, pavel@ucw.cz,
- robh+dt@kernel.org, matthias.bgg@gmail.com
-References: <1602034966-3524-1-git-send-email-gene.chen.richtek@gmail.com>
- <1602034966-3524-3-git-send-email-gene.chen.richtek@gmail.com>
-From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Message-ID: <5a9b31c4-739c-06fc-2015-ed474993ad22@gmail.com>
-Date: Thu, 8 Oct 2020 23:51:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kQixU-0003NM-CR; Fri, 09 Oct 2020 03:20:42 +0000
+X-UUID: a80977a1d63042888b50b2bf46e1a63e-20201008
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8x82X3U41FRr0ndtEJggoVTK3rtF9FH609MgK5Y3YKI=; 
+ b=U52YSWzkhyeKs8nPPcLjb1IvMNzUALNqhWRu7cBg1BUlLiK2ZiTFIfMRocTcwuELGJwhLdegvTuSDjVPmjfG2neZ1e5EG80KOEghl5rBOd7k5LB3eeU5CtufDxL1MZ4SPlkSxyBL7v9Dby2CAb5//sW4pQ4DsDGr/4q3zZ6B2/s=;
+X-UUID: a80977a1d63042888b50b2bf46e1a63e-20201008
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <crystal.guo@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1640618643; Thu, 08 Oct 2020 19:20:33 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 8 Oct 2020 20:20:31 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs07n2.mediatek.inc
+ (172.21.101.141) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 9 Oct 2020 11:20:22 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 9 Oct 2020 11:20:22 +0800
+Message-ID: <1602213621.14806.43.camel@mhfsdcap03>
+Subject: Re: [v5,0/4] watchdog: mt8192: add wdt support
+From: Crystal Guo <crystal.guo@mediatek.com>
+To: Guenter Roeck <linux@roeck-us.net>
+Date: Fri, 9 Oct 2020 11:20:21 +0800
+In-Reply-To: <9d493ec4-6b3e-12a1-01f3-34c09a826290@roeck-us.net>
+References: <20200929032005.15169-1-crystal.guo@mediatek.com>
+ <71e21cfd-fd44-2cf9-cf8a-f83dc1b0cc89@gmail.com>
+ <20201001151639.GC64648@roeck-us.net>
+ <89835d94-7f26-bdc3-4760-af00978aba44@gmail.com>
+ <9d493ec4-6b3e-12a1-01f3-34c09a826290@roeck-us.net>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1602034966-3524-3-git-send-email-gene.chen.richtek@gmail.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201008_175128_047539_C23EC64B 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20201008_232040_867831_18376779 
+X-CRM114-Status: GOOD (  36.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,66 +86,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
- linux-mediatek@lists.infradead.org, dmurphy@ti.com, linux-leds@vger.kernel.org,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
+Cc: "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
+ <seiya.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Wim
+ Van Sebroeck <wim@linux-watchdog.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Gene,
-
-On 10/7/20 3:42 AM, Gene Chen wrote:
-> From: Gene Chen <gene_chen@richtek.com>
+On Fri, 2020-10-02 at 22:41 +0800, Guenter Roeck wrote:
+> On 10/2/20 2:51 AM, Matthias Brugger wrote:
+> > 
+> > 
+> > On 01/10/2020 17:16, Guenter Roeck wrote:
+> >> On Thu, Oct 01, 2020 at 04:23:02PM +0200, Matthias Brugger wrote:
+> >>> Hi Crystal,
+> >>>
+> >>> It seems you forgot to send the email to one of the maintainers, Wim.
+> >>> Please make sure you add all the maintainers from get_maintainers.pl when
+> >>> you send a series.
+> >>>
+> >>> Regards,
+> >>> Matthias
+> >>>
+> >>> On 29/09/2020 05:20, Crystal Guo wrote:
+> >>>> v5 changes:
+> >>>> fix typos on:
+> >>>> https://patchwork.kernel.org/patch/11697493/
+> >>>>
+> >>>> v4 changes:
+> >>>> revise commit messages.
+> >>>>
+> >>>> v3 changes:
+> >>>> https://patchwork.kernel.org/patch/11692731/
+> >>>> https://patchwork.kernel.org/patch/11692767/
+> >>>> https://patchwork.kernel.org/patch/11692729/
+> >>>> https://patchwork.kernel.org/patch/11692771/
+> >>>> https://patchwork.kernel.org/patch/11692733/
+> >>
+> >> This is less than helpful. It doesn't tell me anything. It expects me to
+> >> go back to the earlier versions, download them, and run a diff, to figure
+> >> out what changed. That means the patch or patch series ends at the bottom
+> >> of my pile of patches to review. Which, as it happens, is quite deep.
+> >>
+> >> I will review this and similar patches without change log after (and only
+> >> after) I have reviewed all other patches in my queue.
+> >>
+> > 
+> > I understand your comments on hard to understand change log. But I think you acted to quick to put this series to the end of your queue. I'll try to explain:
+> > 
+> > In v4 you gave your Acked-by and Reviewed-by for the patches that in this series are 3/4 [1] and 4/4 [2] respectively. You also gave your Reviewed-by for 1/4 [3].
+> > 
+> > In v4 you stated that you wanted to wait for a review from Rob for the binding changes. Obviously it's up to you to handle that the way you want. From my point of view these are rather trivial changes.
+> > 
 > 
-> Add MT6360 LED driver include 2-channel Flash LED with torch/strobe mode,
-> 3-channel RGB LED support Register/Flash/Breath Mode, and 1-channel for
-> moonlight LED.
+> That may be correct, but I am not a DT expert, and it happened often enough
+> that I approved a DT change and Rob later raised concerns that I don't do it
+> anymore.
 > 
-> Signed-off-by: Gene Chen <gene_chen@richtek.com>
-> ---
->   drivers/leds/Kconfig       |  12 +
->   drivers/leds/Makefile      |   1 +
->   drivers/leds/leds-mt6360.c | 783 +++++++++++++++++++++++++++++++++++++++++++++
->   3 files changed, 796 insertions(+)
->   create mode 100644 drivers/leds/leds-mt6360.c
+> > In 1/4 are deleting compatible fallbacks in the bindings, as the driver provides SoC specific platform data, which you reviewed.
+> > 
+> > One can argue that this will break older devicetree bindings because the driver using the fallback would work except for the topgru reset controller. But I think this is the job of the maintainer of the driver as Rob won't be able to look into all the driver code to decide if any change to the bindings is backward compatible. With your Reviewed-by I understand that you are OK with this change. As SoC maintainer I'm fine with the change. MT2701 is a SoC that's not available to the general public. MT8183 is available, but only on chromebooks and I don't expect anybody to use an older kernel without watchdog driver support for mt8183 (enablement is still ongoing). Actually I took the DTS counter part already through my tree, which was an error, as we now have a DTS which does not hold to the binding description (until and if you accept 1/4).
+> > 
+> > The only patch missing patch is now 2/4, where Crystal added your Reviewed-by which you never gave. But it just adds the compatible to the binding for a driver you already gave your Reviewed-by. So I think this the series actually just fall through the cracks.
+> > 
+> > Sorry for the long mail, but if you got until here, I hope I was able to convince you to just merge the series :)
+> > 
 > 
-> diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-> index 1c181df..c7192dd 100644
-> --- a/drivers/leds/Kconfig
-> +++ b/drivers/leds/Kconfig
-> @@ -271,6 +271,18 @@ config LEDS_MT6323
->   	  This option enables support for on-chip LED drivers found on
->   	  Mediatek MT6323 PMIC.
->   
-> +config LEDS_MT6360
-> +	tristate "LED Support for Mediatek MT6360 PMIC"
-> +	depends on LEDS_CLASS_FLASH && OF
-> +	depends on LEDS_CLASS_MULTICOLOR
+> If my Reviewed-by is indeed in all patches, as you state, even if I didn't give it
+> to some of those and the submitter just added it (is that acceptable nowadays ?),
+> there should be no problem and Wim should pick up the series. And if the submitter
+> had bothered to write a proper change log instead of expecting me to do the work
+> I would have noticed right away.
+> 
+> No, this was very appropriately put to the end of my review queue.
+> 
+> Guenter
 
-Since CONFIG_LED_CLASS_MULTICOLOR can be turned off you need to have
-below instead:
+Sorry to cause you trouble, I will pay attention to these points in the
+future. 
 
-depends on LEDS_CLASS_MULTICOLOR || !!LEDS_CLASS_MULTICOLOR
-
-Unless you want to prevent enabling the driver without RGB LED,
-but that does not seem to be reasonable at first glance.
-
-> +	depends on V4L2_FLASH_LED_CLASS || !V4L2_FLASH_LED_CLASS
-> +	depends on MFD_MT6360
-> +	help
-> +	  This option enables support for dual Flash LED drivers found on
-> +	  Mediatek MT6360 PMIC.
-> +	  Independent current sources supply for each flash LED support torch
-> +	  and strobe mode.
-> +
-
--- 
-Best regards,
-Jacek Anaszewski
+Crystal
 
 _______________________________________________
 Linux-mediatek mailing list
