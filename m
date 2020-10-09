@@ -2,78 +2,89 @@ Return-Path: <SRS0=0dL+=DQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BFE5DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 03:42:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40D41C433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 04:19:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DEA572064C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 03:42:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 91F2022227
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2020 04:19:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1d8+xvFT";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IoCv8G/j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DEA572064C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LivVWO/H";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="MOnbeaq1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91F2022227
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zmhlCTDU0uPiCk7ZojEyQs/9Fj1KHL2tGhYT2rQgFTo=; b=1d8+xvFTBpO00uMr5ZCMfllgb
-	xzSedRX/69NOWJnLSY7rKIbfcRMQ1+TkRQDg3E/mb1TECqmTN24hUsZRxE4AqnkfalpNvvKE5b9mS
-	h/8UwLXZIEtpB4x9JbwNUWa+Znznk2ZfvdbOJ4Ef5Y56cnQDHvq0+NeVaU3Kh87gS12f4xpg9YSi7
-	OqQBKsnbo1TP3+jPiRI6ETLnZJifeuZ3JefeP12EieeK24stFNCDDIjjUqXOJ6EWmCBdG7FNdgsco
-	9gGjhO2FqGnz3uOC5XCg0ZQ0uPjyr8dT6V3VD3QaQjKpPF3wQth3EqY1CXjDU1X48/8MIi66zkmpp
-	UfCk4+6eA==;
+	 bh=VX1xHtcwmlXWV2ZlMZnXZzS6BbiGIwUDhnt4MPTa1+I=; b=LivVWO/HzTbHI4ZI64NNY9bf7
+	6Tm+jS3navWvUNAbSPMpzpZvFyb2pI4ad7niSmwaQawFiM7AQxdSLqFC2ppIbIphSfOQhL/1RZlob
+	B6znLhnA6z4tDBaEb1M0/JbSuzApH8KCc7GaMjyBDlkIobS2GKHDUO6Z+y3uoNDySPNg3wUfgmfzY
+	aD73lNtZ6yJqSZb6YI5x4y3o1HfZOesOOBIeNfOqwXhnjEenxiku8qE+ZXcR0vOclFK1UsdxUmbuk
+	kScIvh61Xo5k+IpHYZXUMv+G46QYooCk5oGXcDD/vCDaLsDi2WJjhtm69IBM1H9cRnnoUgmndEIlL
+	06qKiXITA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kQjIO-0004SX-Be; Fri, 09 Oct 2020 03:42:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kQjsI-0006Ac-0J; Fri, 09 Oct 2020 04:19:22 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kQjIL-0004S4-Fa; Fri, 09 Oct 2020 03:42:15 +0000
-X-UUID: ecf71eaa787a4d0fbdee37ba2edea43c-20201008
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=1HaRwt9KZRuG82gLiMzWVii7cTKcFQ+KMRXeg2N/U/U=; 
- b=IoCv8G/jtIq6OJWcXSdQKwI6gNRtVFKOcU5Q6vwRUpHINNklfH5wPI3VWjGOmFfRFSSM8GQ6TcOkE1YUUACLI3fSxCtCvc+PDm4p15HexmJjldgHMHQHvD2VIrMkHmmdBx1frLG0+uc6vTdwqBchvqFraBf2XmMhiecknJQcGQs=;
-X-UUID: ecf71eaa787a4d0fbdee37ba2edea43c-20201008
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <crystal.guo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1573013780; Thu, 08 Oct 2020 19:42:09 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Oct 2020 20:32:07 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs07n2.mediatek.inc
- (172.21.101.141) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 9 Oct 2020 11:32:04 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 9 Oct 2020 11:32:03 +0800
-Message-ID: <1602214325.14806.49.camel@mhfsdcap03>
-Subject: Re: [v5,2/4] dt-binding: mediatek: mt8192: update mtk-wdt document
-From: Crystal Guo <crystal.guo@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, "linux@roeck-us.net"
- <linux@roeck-us.net>, Wim Van Sebroeck <wim@linux-watchdog.org>
-Date: Fri, 9 Oct 2020 11:32:05 +0800
-In-Reply-To: <2199f623-ebfc-3585-2248-6698aef57d7b@gmail.com>
-References: <20200929032005.15169-1-crystal.guo@mediatek.com>
- <20200929032005.15169-3-crystal.guo@mediatek.com>
- <2199f623-ebfc-3585-2248-6698aef57d7b@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kQjsD-00069V-Ad
+ for linux-mediatek@lists.infradead.org; Fri, 09 Oct 2020 04:19:18 +0000
+Received: by mail-pg1-x544.google.com with SMTP id x16so6157567pgj.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 08 Oct 2020 21:19:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=+2sSjHIG8dOPiZAXe+oXr0N+ieiRQzjEGoSV/P6Yznw=;
+ b=MOnbeaq1cy1kAz5S/jKS4LOB5ahZWaJg+qQvOwJnOIb83e8inibG+ODF2HH7uDVP5i
+ fplFUgs4IWxPuRzurmPhJcqSqvAq46+3tSQZjV/qrVul3Q00g0k1zYXsPbDvx3wucYrb
+ tVNVNBzoEa+h6c1oZuDDrzBX2fZ2tlrbPrhCn/29POB7XdFWOmSe9/Ytiloiq2MpLGKk
+ kWx2xTFyGdqoDk6M50to7YNY3GbgkjrdvOwLZ2JS1dBq6/kfwYtGKZSOJRKzuFI1GCVg
+ dK5yPDcbmNBpE0xTtocEXCCf3to9O9V6Ba87s9PjMdiylDce6zUCPz1ZJcj2QtT5Aid7
+ Mrxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=+2sSjHIG8dOPiZAXe+oXr0N+ieiRQzjEGoSV/P6Yznw=;
+ b=Xnzs5ZBH++BbGeud38ox4Uzh9uWZpJi8ccIO+Qh5ZXlkd4m7xuSWhY8ft4KiDqlsmd
+ mVENuPk3AO3GHwaqgUm07bLcsTeQb8hMb0rP4XvBabvUETpfi5/KcRlt9oTgSpo2Q4/x
+ rKGnMFNXF35VT9BEeHTlXF+Tv1KW6Y+/pAnS8VLKC5NXp4KUcy6WKKKz9YDSRsMUfFYK
+ 0uRuqvByzc4KwmLqxEH2CnVxs9F6uLeeoCNRp9TJx8ZIKysMFrTYDijxx0H7/Xopvsp/
+ 9Mx1tUspSUzY035lz6vSo9ga8n1PJmNHSHnQZ1dKSRcvw4Y6cZ6EzX7duRoe0oh/ejb0
+ CfjA==
+X-Gm-Message-State: AOAM531z7Lu6N3NJZLiLC+2TaXhJtjPZaTvEI13YOMorW2UvfAaZWK67
+ sGCHC0gT+G0kXhEANHvv3YbIcQ==
+X-Google-Smtp-Source: ABdhPJyEnLl6570MW2KAL+ArDB+3JofV5hbzqNgTbWceck5uYpjyF/d6pt5DalGfwkLIx00gqPMl1w==
+X-Received: by 2002:a63:5914:: with SMTP id n20mr881066pgb.69.1602217155135;
+ Thu, 08 Oct 2020 21:19:15 -0700 (PDT)
+Received: from localhost ([122.181.54.133])
+ by smtp.gmail.com with ESMTPSA id o2sm9023889pgg.3.2020.10.08.21.19.13
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 08 Oct 2020 21:19:14 -0700 (PDT)
+Date: Fri, 9 Oct 2020 09:49:12 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Hector Yuan <hector.yuan@mediatek.com>
+Subject: Re: [PATCH v1 1/1] cpufreq: mediatek-hw: Register EM power table
+Message-ID: <20201009041912.nzhvubzmfox2twxg@vireshk-i7>
+References: <1602159204-13756-1-git-send-email-hector.yuan@mediatek.com>
+ <1602159204-13756-2-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1602159204-13756-2-git-send-email-hector.yuan@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201008_234213_955980_CB041266 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20201009_001917_432144_CA7D720E 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,60 +96,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
- <seiya.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: wsd_upstream@mediatek.com, linux-pm@vger.kernel.org,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-10-02 at 17:28 +0800, Matthias Brugger wrote:
+On 08-10-20, 20:13, Hector Yuan wrote:
+> From: "Hector.Yuan" <hector.yuan@mediatek.com>
 > 
-> On 29/09/2020 05:20, Crystal Guo wrote:
-> > update mtk-wdt document for MT8192 platform
-> > 
-> > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> Register CPU power table to energy model framework
 > 
-> You added Guenters Reviewed-by in v4 of this series, but I don't see that on 
-> Guenter provided this tag. In the future please make sure that you don't add 
-> tags to your patches that were not provided. This creates great confusion.
-> 
-> Regards,
-> Matthias
-> 
+> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq-hw.c |   50 +++++++++++++++++++++++++--------
+>  1 file changed, 38 insertions(+), 12 deletions(-)
 
-Hi Guenter,
+I don't see this file in mainline. What am I missing ?
 
-Should I remove the "Reviewed-by:Guenter" tag, and re-submit this patch
-for your review, or keeping the status quo and wait for Wim's comment?
-
-Thanks
-Crystal
-> > ---
-> >   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
-> >   1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > index 45eedc2c3141..e36ba60de829 100644
-> > --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > @@ -12,6 +12,7 @@ Required properties:
-> >   	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
-> >   	"mediatek,mt8183-wdt": for MT8183
-> >   	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
-> > +	"mediatek,mt8192-wdt": for MT8192
-> >   
-> >   - reg : Specifies base physical address and size of the registers.
-> >   
-> > 
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
