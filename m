@@ -7,72 +7,70 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6E47C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 03:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEB40C43467
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 03:36:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4763820708
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 03:36:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 837A32076C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 03:36:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CCyqJDro";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="n0ZdMUef"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4763820708
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Rk+iD9WO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qbfgNb+F"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 837A32076C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Vi1kyXzK3BHmZHJJleZk65RL1qsYJblCKwuWL8PAC+8=; b=CCyqJDro/ohob3u1+schgKNyw
-	851UfcqAlS56RPUwkIBv7Mh3/+PL0rQe7AkRIT17wl6d7W2Qc/apDZtxcBKFDg7GM/tdeLwtpktlg
-	IFlEwjycJWxXIQDck5gJG5V4p4OeYDRfqitCRZoWDOfGOKXrOd+YGiSr4d60dQDvZH/yB6KOMeZ4r
-	//cHQ1zB0dlLcfctFI30ahbZQmONhShqJxn4e/ybFSi5AVGmbatfEKdN2MV3+p5j6qOTRUc6N7Xek
-	wM3ar4wSYp7yBeqRRE0XxIYHtv55HrFiGVvZior4JUlaCMrTAsmA5iGUVDt1tc6q0rdTnMfKe7w3+
-	tvMrS3a0Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IIZD1V8N3yWwriXwh3IGQgdn2hzt3kBBeVwYcaFmhLU=; b=Rk+iD9WOWH1dBaF22TxKQJ9YYg
+	bnrDs4a8JaeXxixboBqGExavDyE43sWo++/jvZhXdkE6af3fx4tVz+o5KGPanm+Bwh6b0nzxQewpP
+	RVl4LqBWyIqDy/iK1AZA6WapSt4lnFcGUzvDaDmAFDZRJ/VTyTmukO5x/5DitH7GzP19WoMKy09mb
+	pv2nOFhEYQFeMJywRVHMFrtwVmXxHrhC5FNM97oAFVWKyU5ablv9Ktma7yFZZaliEGVXGhcpK0qzY
+	IYJV0FRQQnvjGkzXcBx0DYiE/z+qS9z1mc1QIGt29rIPggNt9s2u96mrAdocTzOag/ltHrCx+H75G
+	EXY+eMcg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRodH-0000iE-LZ; Mon, 12 Oct 2020 03:36:19 +0000
+	id 1kRodI-0000iP-AL; Mon, 12 Oct 2020 03:36:20 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRodE-0000gK-Ce
- for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 03:36:17 +0000
-X-UUID: 38bd58dc926a4b9abea06b503c6b8805-20201011
+ id 1kRodE-0000gE-Cd
+ for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 03:36:18 +0000
+X-UUID: eab6d3ea132d49b1986f49d113c7d380-20201011
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IV3VKhX62l8SB/s3LSR95ku9WRinPqcgkb7E4fEt4ck=; 
- b=n0ZdMUef8MIem2OBFeuuMNbBkBdEINelBHq2pivQfQpSuGfd38CP8N5X2q8sYJAMx+1MbgXkZuSw6d26KY+Snp6rYfLItDW9PFjofJrn8MikT0YOkQZ/SiZ8Twn9mqGAyuU1T9OqCPk9K3AR/loTkz/DRVjDt27749NLCPZ4lLU=;
-X-UUID: 38bd58dc926a4b9abea06b503c6b8805-20201011
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=zY34pkVXqvHFrUkI7Cdx5qzwRfOG6aaDums30Ks561c=; 
+ b=qbfgNb+F4/k94awkrW8CIPn9vY9TA3cSIYyng/JqKAEbUrvL0KBRXd9t4dUzAwSDMJSceyGyk87romI4u/E/YCPfgvFmWUsuh1StR/KNJrKhPGjS1k5kkt1UpX1x19fWe2cYdYFOZADeCSmaPvSsH4t968bsLsZyAajlGbe4S08=;
+X-UUID: eab6d3ea132d49b1986f49d113c7d380-20201011
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1288412355; Sun, 11 Oct 2020 19:36:10 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 589601472; Sun, 11 Oct 2020 19:36:10 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 11 Oct 2020 20:26:22 -0700
+ 15.0.1497.2; Sun, 11 Oct 2020 20:26:08 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 11:26:20 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 12 Oct 2020 11:26:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 12 Oct 2020 11:26:20 +0800
+ Frontend Transport; Mon, 12 Oct 2020 11:26:06 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH v2 03/10] mt76: testmode: add tx_rate_stbc parameter
-Date: Mon, 12 Oct 2020 11:25:31 +0800
-Message-ID: <20201012032538.21314-3-shayne.chen@mediatek.com>
+Subject: [PATCH v2 01/10] mt76: testmode: switch ib and wb rssi to array type
+ for per-antenna report
+Date: Mon, 12 Oct 2020 11:25:29 +0800
+Message-ID: <20201012032538.21314-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201012032538.21314-1-shayne.chen@mediatek.com>
-References: <20201012032538.21314-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A568A40FC66CF92780D926199923160EE4D0A1AAAEDDD06F8459290ADD8984442000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201011_233616_651614_68CA3D45 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20201011_233616_653085_DB03CF3A 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,86 +92,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the parameter to control STBC function in testmode.
+Change ib_rssi and wb_rssi into array type, since they could be reported
+by per-antenna.
 
 Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h     | 1 +
- drivers/net/wireless/mediatek/mt76/testmode.c | 6 ++++++
- drivers/net/wireless/mediatek/mt76/testmode.h | 2 ++
- 3 files changed, 9 insertions(+)
+v2: move Reviewed-by before s-o-b
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 009d20a..9ff249e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -527,6 +527,7 @@ struct mt76_testmode_data {
- 	u8 tx_rate_nss;
- 	u8 tx_rate_sgi;
- 	u8 tx_rate_ldpc;
-+	u8 tx_rate_stbc;
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   |  4 ++--
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  4 ++--
+ .../wireless/mediatek/mt76/mt7615/testmode.c  | 24 ++++++++++++++++---
+ drivers/net/wireless/mediatek/mt76/testmode.h |  4 ++--
+ 4 files changed, 27 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 8dc645e..9aad2ee 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -215,8 +215,8 @@ static void mt7615_mac_fill_tm_rx(struct mt7615_dev *dev, __le32 *rxv)
+ 	dev->test.last_rcpi[1] = FIELD_GET(MT_RXV4_RCPI1, rxv4);
+ 	dev->test.last_rcpi[2] = FIELD_GET(MT_RXV4_RCPI2, rxv4);
+ 	dev->test.last_rcpi[3] = FIELD_GET(MT_RXV4_RCPI3, rxv4);
+-	dev->test.last_ib_rssi = FIELD_GET(MT_RXV3_IB_RSSI, rxv3);
+-	dev->test.last_wb_rssi = FIELD_GET(MT_RXV3_WB_RSSI, rxv3);
++	dev->test.last_ib_rssi[0] = FIELD_GET(MT_RXV3_IB_RSSI, rxv3);
++	dev->test.last_wb_rssi[0] = FIELD_GET(MT_RXV3_WB_RSSI, rxv3);
+ #endif
+ }
  
- 	u8 tx_antenna_mask;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index f72506d..50ea9ef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -303,8 +303,8 @@ struct mt7615_dev {
  
-diff --git a/drivers/net/wireless/mediatek/mt76/testmode.c b/drivers/net/wireless/mediatek/mt76/testmode.c
-index 883f59c..6b59e08 100644
---- a/drivers/net/wireless/mediatek/mt76/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/testmode.c
-@@ -11,6 +11,7 @@ static const struct nla_policy mt76_tm_policy[NUM_MT76_TM_ATTRS] = {
- 	[MT76_TM_ATTR_TX_RATE_IDX] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_RATE_SGI] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_RATE_LDPC] = { .type = NLA_U8 },
-+	[MT76_TM_ATTR_TX_RATE_STBC] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_ANTENNA] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_POWER_CONTROL] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_POWER] = { .type = NLA_NESTED },
-@@ -131,6 +132,9 @@ mt76_testmode_tx_init(struct mt76_dev *dev)
- 	if (td->tx_rate_ldpc)
- 		info->flags |= IEEE80211_TX_CTL_LDPC;
+ 		s16 last_freq_offset;
+ 		u8 last_rcpi[4];
+-		s8 last_ib_rssi;
+-		s8 last_wb_rssi;
++		s8 last_ib_rssi[4];
++		s8 last_wb_rssi[4];
+ 	} test;
+ #endif
  
-+	if (td->tx_rate_stbc)
-+		info->flags |= IEEE80211_TX_CTL_STBC;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7615/testmode.c
+index 1f33628..8fc97a5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/testmode.c
+@@ -335,9 +335,7 @@ mt7615_tm_dump_stats(struct mt76_dev *mdev, struct sk_buff *msg)
+ 	if (!rx)
+ 		return -ENOMEM;
+ 
+-	if (nla_put_s32(msg, MT76_TM_RX_ATTR_FREQ_OFFSET, dev->test.last_freq_offset) ||
+-	    nla_put_s32(msg, MT76_TM_RX_ATTR_IB_RSSI, dev->test.last_ib_rssi) ||
+-	    nla_put_s32(msg, MT76_TM_RX_ATTR_WB_RSSI, dev->test.last_wb_rssi))
++	if (nla_put_s32(msg, MT76_TM_RX_ATTR_FREQ_OFFSET, dev->test.last_freq_offset))
+ 		return -ENOMEM;
+ 
+ 	rssi = nla_nest_start(msg, MT76_TM_RX_ATTR_RCPI);
+@@ -350,6 +348,26 @@ mt7615_tm_dump_stats(struct mt76_dev *mdev, struct sk_buff *msg)
+ 
+ 	nla_nest_end(msg, rssi);
+ 
++	rssi = nla_nest_start(msg, MT76_TM_RX_ATTR_IB_RSSI);
++	if (!rssi)
++		return -ENOMEM;
 +
- 	if (td->tx_rate_mode >= MT76_TM_TX_MODE_HT) {
- 		switch (dev->phy.chandef.width) {
- 		case NL80211_CHAN_WIDTH_40:
-@@ -336,6 +340,7 @@ int mt76_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			   1, hweight8(phy->antenna_mask)) ||
- 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_RATE_SGI], &td->tx_rate_sgi, 0, 1) ||
- 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_RATE_LDPC], &td->tx_rate_ldpc, 0, 1) ||
-+	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_RATE_STBC], &td->tx_rate_stbc, 0, 1) ||
- 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_ANTENNA], &td->tx_antenna_mask, 1,
- 			   phy->antenna_mask) ||
- 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_POWER_CONTROL],
-@@ -472,6 +477,7 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *msg,
- 	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_IDX, td->tx_rate_idx) ||
- 	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_SGI, td->tx_rate_sgi) ||
- 	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_LDPC, td->tx_rate_ldpc) ||
-+	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_STBC, td->tx_rate_stbc) ||
- 	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_ANTENNA) &&
- 	     nla_put_u8(msg, MT76_TM_ATTR_TX_ANTENNA, td->tx_antenna_mask)) ||
- 	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_POWER_CONTROL) &&
++	for (i = 0; i < ARRAY_SIZE(dev->test.last_ib_rssi); i++)
++		if (nla_put_s8(msg, i, dev->test.last_ib_rssi[i]))
++			return -ENOMEM;
++
++	nla_nest_end(msg, rssi);
++
++	rssi = nla_nest_start(msg, MT76_TM_RX_ATTR_WB_RSSI);
++	if (!rssi)
++		return -ENOMEM;
++
++	for (i = 0; i < ARRAY_SIZE(dev->test.last_wb_rssi); i++)
++		if (nla_put_s8(msg, i, dev->test.last_wb_rssi[i]))
++			return -ENOMEM;
++
++	nla_nest_end(msg, rssi);
++
+ 	nla_nest_end(msg, rx);
+ 
+ 	return 0;
 diff --git a/drivers/net/wireless/mediatek/mt76/testmode.h b/drivers/net/wireless/mediatek/mt76/testmode.h
-index 4d22627..00c1659 100644
+index 691fe57..02c9495 100644
 --- a/drivers/net/wireless/mediatek/mt76/testmode.h
 +++ b/drivers/net/wireless/mediatek/mt76/testmode.h
-@@ -25,6 +25,7 @@
-  * @MT76_TM_ATTR_TX_RATE_IDX: packet tx rate/MCS index (u8)
-  * @MT76_TM_ATTR_TX_RATE_SGI: packet tx use short guard interval (u8)
-  * @MT76_TM_ATTR_TX_RATE_LDPC: packet tx enable LDPC (u8)
-+ * @MT76_TM_ATTR_TX_RATE_STBC: packet tx enable STBC (u8)
+@@ -99,8 +99,8 @@ enum mt76_testmode_stats_attr {
   *
-  * @MT76_TM_ATTR_TX_ANTENNA: tx antenna mask (u8)
-  * @MT76_TM_ATTR_TX_POWER_CONTROL: enable tx power control (u8)
-@@ -50,6 +51,7 @@ enum mt76_testmode_attr {
- 	MT76_TM_ATTR_TX_RATE_IDX,
- 	MT76_TM_ATTR_TX_RATE_SGI,
- 	MT76_TM_ATTR_TX_RATE_LDPC,
-+	MT76_TM_ATTR_TX_RATE_STBC,
- 
- 	MT76_TM_ATTR_TX_ANTENNA,
- 	MT76_TM_ATTR_TX_POWER_CONTROL,
+  * @MT76_TM_RX_ATTR_FREQ_OFFSET: frequency offset (s32)
+  * @MT76_TM_RX_ATTR_RCPI: received channel power indicator (array, u8)
+- * @MT76_TM_RX_ATTR_IB_RSSI: internal inband RSSI (s8)
+- * @MT76_TM_RX_ATTR_WB_RSSI: internal wideband RSSI (s8)
++ * @MT76_TM_RX_ATTR_IB_RSSI: internal inband RSSI (array, s8)
++ * @MT76_TM_RX_ATTR_WB_RSSI: internal wideband RSSI (array, s8)
+  */
+ enum mt76_testmode_rx_attr {
+ 	MT76_TM_RX_ATTR_UNSPEC,
 -- 
 2.17.1
 _______________________________________________
