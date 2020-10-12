@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 792D7C433E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 12:47:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70E07C433E7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 12:47:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 042EC20665
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 12:47:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D8D2B206FB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 12:47:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gkPIArNQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Tc+JPjkZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 042EC20665
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VanzuWDa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hGXsC0QJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8D2B206FB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FIgKZsEnMCco8y3h1RrX0E0KzGw/kSKQ6eXrGzvE4I0=; b=gkPIArNQ6CUzy/KfQ7CY8d6tb
-	rG0UNX7mHTS/xyOF/I4UnZD2z9XLZSRxuK5wrZqveRI/5XnSTMO/eDuiNVGrsmR6cEbr2a7NsIxxE
-	1V5SS1wMi7Sz7GilMxjPBXTLD9F/YJ6jryDNmk81BOgsg1iNNaGWowGzoIxj1oY7VpG5MYWfuXtXl
-	v8qtgAGfyCB1YG4r/Co4F0zzzDSryRyF0VHkVKNU0+3bIGIOiFHIlqX4uiitswSLIYkvU9MBpnzyG
-	1lkGhN16495D65QB6OASNlaC/9tNioze2DuyfFkTMJeO2syN1d0Zt6H+V7zck/OedaFeMZo8U98q1
-	ikFtjdpqg==;
+	 bh=EE7dNqZqgMTUqXf1Jr67/j+uXYO1B+HWQbGx5ZYCMSc=; b=VanzuWDar2ysC8h3uEBNLJm9M
+	wN7/ocPoPkrY3ki8C9nxamRy6PL26k4m3HugfhcXt1bnDfUuZgTl5wuoIGUOOGE3LXYVbFvUxmRpF
+	DSq5cg2H02H5MmNId2N59ypLVZ4d4vIY45RHVjPC1Ra3RB/nMfT4MHtbOh9AyHlFrdq5Oo6Hi7MDB
+	hQFlCrQdzveHA5NNCM5keVPp+7IZ8tTldUbfWTqdkyrM2iIwW8iTzUYQ+oRla4QmzJKaQlSVK09FC
+	Dvfmqy0lDqnfU/IbMk38OKl0I5pMKJYj+VzECH0Gva58vt2XwHWs97nMWthtSuSOJB2B7YPIbqDeJ
+	xl7U1zhgg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRxET-0005yb-HN; Mon, 12 Oct 2020 12:47:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kRxEd-00062N-AJ; Mon, 12 Oct 2020 12:47:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRxEC-0005sm-W7; Mon, 12 Oct 2020 12:47:01 +0000
-X-UUID: 846e59cf45994a83a0734e999f24efab-20201012
+ id 1kRxED-0005sX-7D; Mon, 12 Oct 2020 12:47:03 +0000
+X-UUID: 78d8ca87f16d4437b5299979c58b15d8-20201012
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=AAnU5PlJeTlT3eOu0s04k2n54q0uEvfmgyB1oE18Bvs=; 
- b=Tc+JPjkZM56FiLKbWe+Mc36G4k0wVmTG1GDkwFcWdDzeX/xwRnEzn9SkBoe0XIUYeUIfbgzDYyOGErWg50EjyzoogRHqcNbuf2vEJ104R2oLSGKHqPLMJetlihQj7dTxr3hmvbk6viPt/bXQUbnpD5m98x3OtKddCq37v/dyxSM=;
-X-UUID: 846e59cf45994a83a0734e999f24efab-20201012
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=ZpPK2wF99Avx6YUTvoZQP1pU3yR5QYlJAerVKQ416KA=; 
+ b=hGXsC0QJ595jDoZ0Q85QN3uj3p+IXCTU0d5/0uh0nwW8DO8VHPVt7rzrMqQWCvbwX/Y1ZiufDsfcqxQwOgsaAJtGtLGHugozYWSwG0e6jm1cUISgOpVjxGhJetkia7HDadNSpmBf8eNJCqi79VQYgK3PxxtPJ1OxK3yf25Iw9Xs=;
+X-UUID: 78d8ca87f16d4437b5299979c58b15d8-20201012
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 402925377; Mon, 12 Oct 2020 04:45:54 -0800
+ with ESMTP id 2049263613; Mon, 12 Oct 2020 04:45:53 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 05:45:52 -0700
+ 15.0.1497.2; Mon, 12 Oct 2020 05:45:51 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 20:45:50 +0800
+ 15.0.1497.2; Mon, 12 Oct 2020 20:45:49 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Mon, 12 Oct 2020 20:45:49 +0800
 From: Wenbin Mei <wenbin.mei@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v6 2/4] mmc: dt-bindings: add support for MT8192 SoC
-Date: Mon, 12 Oct 2020 20:45:45 +0800
-Message-ID: <20201012124547.16649-3-wenbin.mei@mediatek.com>
+Subject: [PATCH v6 1/4] dt-bindings: mmc: Convert mtk-sd to json-schema
+Date: Mon, 12 Oct 2020 20:45:44 +0800
+Message-ID: <20201012124547.16649-2-wenbin.mei@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201012124547.16649-1-wenbin.mei@mediatek.com>
 References: <20201012124547.16649-1-wenbin.mei@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_084701_159737_437374EE 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20201012_084701_445177_6586F957 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,58 +93,266 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8192 mmc host ip is compatible with MT8183.
-Add support for this.
+Convert the mtk-sd binding to DT schema format using json-schema.
 
 Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
 ---
- Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/mmc/mtk-sd.txt        |  75 --------
+ .../devicetree/bindings/mmc/mtk-sd.yaml       | 163 ++++++++++++++++++
+ 2 files changed, 163 insertions(+), 75 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.txt
+ create mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.yaml
 
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+deleted file mode 100644
+index 26a8f320a156..000000000000
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
++++ /dev/null
+@@ -1,75 +0,0 @@
+-* MTK MMC controller
+-
+-The MTK  MSDC can act as a MMC controller
+-to support MMC, SD, and SDIO types of memory cards.
+-
+-This file documents differences between the core properties in mmc.txt
+-and the properties used by the msdc driver.
+-
+-Required properties:
+-- compatible: value should be either of the following.
+-	"mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
+-	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+-	"mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
+-	"mediatek,mt8516-mmc": for mmc host ip compatible with mt8516
+-	"mediatek,mt6779-mmc": for mmc host ip compatible with mt6779
+-	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
+-	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
+-	"mediatek,mt7622-mmc": for MT7622 SoC
+-	"mediatek,mt7623-mmc", "mediatek,mt2701-mmc": for MT7623 SoC
+-	"mediatek,mt7620-mmc", for MT7621 SoC (and others)
+-
+-- reg: physical base address of the controller and length
+-- interrupts: Should contain MSDC interrupt number
+-- clocks: Should contain phandle for the clock feeding the MMC controller
+-- clock-names: Should contain the following:
+-	"source" - source clock (required)
+-	"hclk" - HCLK which used for host (required)
+-	"source_cg" - independent source clock gate (required for MT2712)
+-	"bus_clk" - bus clock used for internal register access (required for MT2712 MSDC0/3)
+-- pinctrl-names: should be "default", "state_uhs"
+-- pinctrl-0: should contain default/high speed pin ctrl
+-- pinctrl-1: should contain uhs mode pin ctrl
+-- vmmc-supply: power to the Core
+-- vqmmc-supply: power to the IO
+-
+-Optional properties:
+-- assigned-clocks: PLL of the source clock
+-- assigned-clock-parents: parent of source clock, used for HS400 mode to get 400Mhz source clock
+-- hs400-ds-delay: HS400 DS delay setting
+-- mediatek,hs200-cmd-int-delay: HS200 command internal delay setting.
+-				This field has total 32 stages.
+-				The value is an integer from 0 to 31.
+-- mediatek,hs400-cmd-int-delay: HS400 command internal delay setting
+-				This field has total 32 stages.
+-				The value is an integer from 0 to 31.
+-- mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
+-				       If present,HS400 command responses are sampled on rising edges.
+-				       If not present,HS400 command responses are sampled on falling edges.
+-- mediatek,latch-ck: Some SoCs do not support enhance_rx, need set correct latch-ck to avoid data crc
+-		     error caused by stop clock(fifo full)
+-		     Valid range = [0:0x7]. if not present, default value is 0.
+-		     applied to compatible "mediatek,mt2701-mmc".
+-- resets: Phandle and reset specifier pair to softreset line of MSDC IP.
+-- reset-names: Should be "hrst".
+-
+-Examples:
+-mmc0: mmc@11230000 {
+-	compatible = "mediatek,mt8173-mmc", "mediatek,mt8135-mmc";
+-	reg = <0 0x11230000 0 0x108>;
+-	interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
+-	vmmc-supply = <&mt6397_vemc_3v3_reg>;
+-	vqmmc-supply = <&mt6397_vio18_reg>;
+-	clocks = <&pericfg CLK_PERI_MSDC30_0>,
+-	         <&topckgen CLK_TOP_MSDC50_0_H_SEL>;
+-	clock-names = "source", "hclk";
+-	pinctrl-names = "default", "state_uhs";
+-	pinctrl-0 = <&mmc0_pins_default>;
+-	pinctrl-1 = <&mmc0_pins_uhs>;
+-	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
+-	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
+-	hs400-ds-delay = <0x14015>;
+-	mediatek,hs200-cmd-int-delay = <26>;
+-	mediatek,hs400-cmd-int-delay = <14>;
+-	mediatek,hs400-cmd-resp-sel-rising;
+-};
 diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index 21a2fce5b7ba..093db1c33653 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+new file mode 100644
+index 000000000000..21a2fce5b7ba
+--- /dev/null
 +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -29,26 +29,37 @@ properties:
-       - items:
-         - const: mediatek,mt7623-mmc
-         - const: mediatek,mt2701-mmc
+@@ -0,0 +1,163 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mmc/mtk-sd.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MTK MSDC Storage Host Controller Binding
++
++maintainers:
++  - Chaotian Jing <chaotian.jing@mediatek.com>
++  - Wenbin Mei <wenbin.mei@mediatek.com>
++
++allOf:
++  - $ref: mmc-controller.yaml#
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++        - mediatek,mt2701-mmc
++        - mediatek,mt2712-mmc
++        - mediatek,mt6779-mmc
++        - mediatek,mt7620-mmc
++        - mediatek,mt7622-mmc
++        - mediatek,mt8135-mmc
++        - mediatek,mt8173-mmc
++        - mediatek,mt8183-mmc
++        - mediatek,mt8516-mmc
 +      - items:
-+        - const: mediatek,mt8192-mmc
-+        - const: mediatek,mt8183-mmc
- 
-   clocks:
-     description:
-       Should contain phandle for the clock feeding the MMC controller.
-     minItems: 2
--    maxItems: 4
-+    maxItems: 8
-     items:
-       - description: source clock (required).
-       - description: HCLK which used for host (required).
-       - description: independent source clock gate (required for MT2712).
-       - description: bus clock used for internal register access (required for MT2712 MSDC0/3).
-+      - description: msdc subsys clock gate (required for MT8192).
-+      - description: peripheral bus clock gate (required for MT8192).
-+      - description: AXI bus clock gate (required for MT8192).
-+      - description: AHB bus clock gate (required for MT8192).
- 
-   clock-names:
-     minItems: 2
--    maxItems: 4
-+    maxItems: 8
-     items:
-       - const: source
-       - const: hclk
-       - const: source_cg
-       - const: bus_clk
-+      - const: sys_cg
-+      - const: pclk_cg
-+      - const: axi_cg
-+      - const: ahb_cg
- 
-   pinctrl-names:
-     items:
++        - const: mediatek,mt7623-mmc
++        - const: mediatek,mt2701-mmc
++
++  clocks:
++    description:
++      Should contain phandle for the clock feeding the MMC controller.
++    minItems: 2
++    maxItems: 4
++    items:
++      - description: source clock (required).
++      - description: HCLK which used for host (required).
++      - description: independent source clock gate (required for MT2712).
++      - description: bus clock used for internal register access (required for MT2712 MSDC0/3).
++
++  clock-names:
++    minItems: 2
++    maxItems: 4
++    items:
++      - const: source
++      - const: hclk
++      - const: source_cg
++      - const: bus_clk
++
++  pinctrl-names:
++    items:
++      - const: default
++      - const: state_uhs
++
++  pinctrl-0:
++    description:
++      should contain default/high speed pin ctrl.
++    maxItems: 1
++
++  pinctrl-1:
++    description:
++      should contain uhs mode pin ctrl.
++    maxItems: 1
++
++  assigned-clocks:
++    description:
++      PLL of the source clock.
++    maxItems: 1
++
++  assigned-clock-parents:
++    description:
++      parent of source clock, used for HS400 mode to get 400Mhz source clock.
++    maxItems: 1
++
++  hs400-ds-delay:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      HS400 DS delay setting.
++    minimum: 0
++    maximum: 0xffffffff
++
++  mediatek,hs200-cmd-int-delay:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      HS200 command internal delay setting.
++      This field has total 32 stages.
++      The value is an integer from 0 to 31.
++    minimum: 0
++    maximum: 31
++
++  mediatek,hs400-cmd-int-delay:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      HS400 command internal delay setting.
++      This field has total 32 stages.
++      The value is an integer from 0 to 31.
++    minimum: 0
++    maximum: 31
++
++  mediatek,hs400-cmd-resp-sel-rising:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      HS400 command response sample selection.
++      If present, HS400 command responses are sampled on rising edges.
++      If not present, HS400 command responses are sampled on falling edges.
++
++  mediatek,latch-ck:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      Some SoCs do not support enhance_rx, need set correct latch-ck to avoid
++      data crc error caused by stop clock(fifo full) Valid range = [0:0x7].
++      if not present, default value is 0.
++      applied to compatible "mediatek,mt2701-mmc".
++    minimum: 0
++    maximum: 7
++
++  resets:
++    maxItems: 1
++
++  reset-names:
++    const: hrst
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - pinctrl-names
++  - pinctrl-0
++  - pinctrl-1
++  - vmmc-supply
++  - vqmmc-supply
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/mt8173-clk.h>
++    mmc0: mmc@11230000 {
++        compatible = "mediatek,mt8173-mmc";
++        reg = <0x11230000 0x1000>;
++        interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
++        vmmc-supply = <&mt6397_vemc_3v3_reg>;
++        vqmmc-supply = <&mt6397_vio18_reg>;
++        clocks = <&pericfg CLK_PERI_MSDC30_0>,
++                 <&topckgen CLK_TOP_MSDC50_0_H_SEL>;
++        clock-names = "source", "hclk";
++        pinctrl-names = "default", "state_uhs";
++        pinctrl-0 = <&mmc0_pins_default>;
++        pinctrl-1 = <&mmc0_pins_uhs>;
++        assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
++        assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
++        hs400-ds-delay = <0x14015>;
++        mediatek,hs200-cmd-int-delay = <26>;
++        mediatek,hs400-cmd-int-delay = <14>;
++        mediatek,hs400-cmd-resp-sel-rising;
++    };
++
++...
 -- 
 2.18.0
 _______________________________________________
