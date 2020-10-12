@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BE00C433DF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5B22C4363A
 	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 12:56:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6E8F221EB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 12:56:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3CB8C21D7F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 12:56:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RaygmSYT";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ggBHmscj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6E8F221EB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KyURBU3N";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XXNvtuzr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CB8C21D7F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=x5J4362kDXwKlj0ZyAYyxbWrGmrrCTeZZnXU9aEpvj8=; b=RaygmSYTDAApCR2sXT7IolA+w
-	5cPfLNkeSVXFkcnHxuQ3lkbxRyKFNMx6aWsyXfA/fLz8Gdc6vHAIQU7JPdk3DHu30Z4oTRh7b7VU9
-	bFx93Io02sx69bWmokURuz6G8RQG5fBLNybvlo6xpNWUFBrl0kJfkYGHkHISFcW8WgmuTo04PTFdj
-	ki3TjTNRq8zqSd2xc8A+o/NYWrNkeoFLxaur3cW5Mi+sr6vHOl8l3p0acPUv3wnVIobz+bhXxrKU2
-	lD142yhvM2AylOBqlljVJRKcLRfjGjDYi8A1ntt49/pkiu4hxuewYubERYzzX4h9IQ5klxZYQExQB
-	10kdzCZ6w==;
+	 bh=Vi1kyXzK3BHmZHJJleZk65RL1qsYJblCKwuWL8PAC+8=; b=KyURBU3NSQFAYANP8WgynuZrD
+	70btkI1jWwWefx8/sViTNwYV9wM211NiIciG7xA2839kIEIlab/n1dX6JXvBxGuHH7lgMH3IAkriQ
+	KZFov3j3/M2HHnGy1XJES0hrKSdTevHs4kBUKOeWtYPtqmFv8EUSfuCcOrkkUkCwzTDNaUqVUN8w3
+	Ukyn0zb3AOeWrWjsX3CR1QOXnE77ytOH6d1hVY1xND1rorsO28zTood6A3h6+IIYnfpZOqTkKXjYn
+	xoAo3g42924gORVwxvlBNjlBWZboMEGXbSPtJuf41JVB1c6ubAzKm2qliB7CPfNFfEYwacDQfPPO5
+	rsCL1O3UA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRxN1-0000HV-3h; Mon, 12 Oct 2020 12:56:07 +0000
+	id 1kRxN1-0000Hh-MF; Mon, 12 Oct 2020 12:56:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRxMv-0000FS-FT; Mon, 12 Oct 2020 12:56:02 +0000
-X-UUID: 80abfcd0d50e441395bb72fa83e272da-20201012
+ id 1kRxMw-0000Fu-TE
+ for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 12:56:04 +0000
+X-UUID: 818d939c254b4a77a9d8a441858794d6-20201012
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=7qnmH6zd2m7IXntKt3yluwEtjEbUCrvblIFqr4JiihY=; 
- b=ggBHmscjCek10b9z8WZmDl4QgYBgbgrHYOX94A5cotJvEGbvnmfu2hql9miPTcGdwnIQ/oWnVqzm/kIQeR931/NKCEIFRkhe96nWDS/W7QOdn3rtSwlfLfr/BTFhHv9wcA40WRJNsgjHk2bC2lyuHzhrFuUcYLLZMZxkSx59GFA=;
-X-UUID: 80abfcd0d50e441395bb72fa83e272da-20201012
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <wenbin.mei@mediatek.com>)
+ bh=IV3VKhX62l8SB/s3LSR95ku9WRinPqcgkb7E4fEt4ck=; 
+ b=XXNvtuzrYEEgnz9c/92dKdKRtRRxiPA9QqvgzDtzrnFQo2OZTKP+zxOTDAcw9YCL3JIKiJZaGPJT0uBbSakA0ZaqsPt8JwOwFy8Tdnt9DgtPUfF3HiQ4PRVVe8jINdgsVBWU7koYaHQm6F4qDMkhxtj1YRR4ARfsYzmxalTpgjA=;
+X-UUID: 818d939c254b4a77a9d8a441858794d6-20201012
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1511677653; Mon, 12 Oct 2020 04:55:56 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 05:45:53 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 20:45:51 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 12 Oct 2020 20:45:50 +0800
-From: Wenbin Mei <wenbin.mei@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v6 3/4] arm64: dts: mt8192: add mmc device node
-Date: Mon, 12 Oct 2020 20:45:46 +0800
-Message-ID: <20201012124547.16649-4-wenbin.mei@mediatek.com>
+ with ESMTP id 1485210326; Mon, 12 Oct 2020 04:56:01 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 12 Oct 2020 05:55:58 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 12 Oct 2020 20:55:57 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 12 Oct 2020 20:55:55 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: [PATCH v3 03/10] mt76: testmode: add tx_rate_stbc parameter
+Date: Mon, 12 Oct 2020 20:53:56 +0800
+Message-ID: <20201012125403.8608-3-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201012124547.16649-1-wenbin.mei@mediatek.com>
-References: <20201012124547.16649-1-wenbin.mei@mediatek.com>
+In-Reply-To: <20201012125403.8608-1-shayne.chen@mediatek.com>
+References: <20201012125403.8608-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 30E3D097D701E11222CE8D14069C19253F09B0D1CD635E20B323782A87D13DE82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_085601_700389_199569DA 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20201012_085603_126604_E6FE8313 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,176 +84,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Wenbin Mei <wenbin.mei@mediatek.com>,
- srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This commit adds mmc device node for mt8192
+Add the parameter to control STBC function in testmode.
 
-Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192-evb.dts | 89 +++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 34 ++++++++
- 2 files changed, 123 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76.h     | 1 +
+ drivers/net/wireless/mediatek/mt76/testmode.c | 6 ++++++
+ drivers/net/wireless/mediatek/mt76/testmode.h | 2 ++
+ 3 files changed, 9 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-index 0205837fa698..a4279fa87c2b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-@@ -5,6 +5,7 @@
-  */
- /dts-v1/;
- #include "mt8192.dtsi"
-+#include "mt6359.dtsi"
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 009d20a..9ff249e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -527,6 +527,7 @@ struct mt76_testmode_data {
+ 	u8 tx_rate_nss;
+ 	u8 tx_rate_sgi;
+ 	u8 tx_rate_ldpc;
++	u8 tx_rate_stbc;
  
- / {
- 	model = "MediaTek MT8192 evaluation board";
-@@ -27,3 +28,91 @@
- &uart0 {
- 	status = "okay";
- };
-+
-+&mmc0 {
-+	status = "okay";
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc0_pins_default>;
-+	pinctrl-1 = <&mmc0_pins_uhs>;
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	mmc-hs400-1_8v;
-+	supports-cqe;
-+	cap-mmc-hw-reset;
-+	no-sdio;
-+	no-sd;
-+	hs400-ds-delay = <0x12814>;
-+	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
-+	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
-+	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
-+	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
-+	non-removable;
-+};
-+
-+&pio {
-+	mmc0_pins_default: mmc0default {
-+		pins_cmd_dat {
-+			pinmux = <PINMUX_GPIO184__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO188__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO185__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO193__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO186__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO189__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO187__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO190__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO183__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strenth = <3>;
-+			mediatek,pull-up-adv = <1>;
-+		};
-+
-+		pins_clk {
-+			pinmux = <PINMUX_GPIO192__FUNC_MSDC0_CLK>;
-+			drive-strenth = <3>;
-+			mediatek,pull-down-adv = <2>;
-+		};
-+
-+		pins_rst {
-+			pinmux = <PINMUX_GPIO194__FUNC_MSDC0_RSTB>;
-+			drive-strenth = <3>;
-+			mediatek,pull-up-adv = <1>;
-+		};
-+	};
-+
-+	mmc0_pins_uhs: mmc0@0{
-+		pins_cmd_dat {
-+			pinmux = <PINMUX_GPIO184__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO188__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO185__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO193__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO186__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO189__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO187__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO190__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO183__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strenth = <4>;
-+			mediatek,pull-up-adv = <1>;
-+		};
-+
-+		pins_clk {
-+			pinmux = <PINMUX_GPIO192__FUNC_MSDC0_CLK>;
-+			drive-strenth = <4>;
-+			mediatek,pull-down-adv = <2>;
-+		};
-+
-+		pins_ds {
-+			pinmux = <PINMUX_GPIO191__FUNC_MSDC0_DSL>;
-+			drive-strenth = <4>;
-+			mediatek,pull-down-adv = <2>;
-+		};
-+
-+		pins_rst {
-+			pinmux = <PINMUX_GPIO194__FUNC_MSDC0_RSTB>;
-+			drive-strenth = <3>;
-+			mediatek,pull-up-adv = <1>;
-+		};
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index faea0d97c2a9..de3d10c0eeef 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -760,6 +760,40 @@
- 			#clock-cells = <1>;
- 		};
+ 	u8 tx_antenna_mask;
  
-+		mmc0: mmc@11f60000 {
-+			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-+			reg = <0 0x11f60000 0 0x1000>,
-+			      <0 0x11f50000 0 0x1000>;
-+			interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
-+				 <&msdc_top CLK_MSDC_TOP_H_MST_0P>,
-+				 <&msdc_top CLK_MSDC_TOP_SRC_0P>,
-+				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-+				 <&msdc_top CLK_MSDC_TOP_P_MSDC0>,
-+				 <&msdc_top CLK_MSDC_TOP_AXI>,
-+				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-+			clock-names = "source", "hclk", "source_cg", "sys_cg",
-+				      "pclk_cg", "axi_cg", "ahb_cg";
-+			status = "disabled";
-+		};
+diff --git a/drivers/net/wireless/mediatek/mt76/testmode.c b/drivers/net/wireless/mediatek/mt76/testmode.c
+index 883f59c..6b59e08 100644
+--- a/drivers/net/wireless/mediatek/mt76/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/testmode.c
+@@ -11,6 +11,7 @@ static const struct nla_policy mt76_tm_policy[NUM_MT76_TM_ATTRS] = {
+ 	[MT76_TM_ATTR_TX_RATE_IDX] = { .type = NLA_U8 },
+ 	[MT76_TM_ATTR_TX_RATE_SGI] = { .type = NLA_U8 },
+ 	[MT76_TM_ATTR_TX_RATE_LDPC] = { .type = NLA_U8 },
++	[MT76_TM_ATTR_TX_RATE_STBC] = { .type = NLA_U8 },
+ 	[MT76_TM_ATTR_TX_ANTENNA] = { .type = NLA_U8 },
+ 	[MT76_TM_ATTR_TX_POWER_CONTROL] = { .type = NLA_U8 },
+ 	[MT76_TM_ATTR_TX_POWER] = { .type = NLA_NESTED },
+@@ -131,6 +132,9 @@ mt76_testmode_tx_init(struct mt76_dev *dev)
+ 	if (td->tx_rate_ldpc)
+ 		info->flags |= IEEE80211_TX_CTL_LDPC;
+ 
++	if (td->tx_rate_stbc)
++		info->flags |= IEEE80211_TX_CTL_STBC;
 +
-+		mmc1: mmc@11f70000 {
-+			compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
-+			reg = <0 0x11f70000 0 0x1000>,
-+			      <0 0x11c70000 0 0x1000>;
-+			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
-+				 <&msdc_top CLK_MSDC_TOP_H_MST_1P>,
-+				 <&msdc_top CLK_MSDC_TOP_SRC_1P>,
-+				 <&msdc_top CLK_MSDC_TOP_P_CFG>,
-+				 <&msdc_top CLK_MSDC_TOP_P_MSDC1>,
-+				 <&msdc_top CLK_MSDC_TOP_AXI>,
-+				 <&msdc_top CLK_MSDC_TOP_AHB2AXI_BRG_AXI>;
-+			clock-names = "source", "hclk", "source_cg", "sys_cg",
-+				      "pclk_cg", "axi_cg", "ahb_cg";
-+			status = "disabled";
-+		};
-+
- 		mfgcfg: syscon@13fbf000 {
- 			compatible = "mediatek,mt8192-mfgcfg", "syscon";
- 			reg = <0 0x13fbf000 0 0x1000>;
+ 	if (td->tx_rate_mode >= MT76_TM_TX_MODE_HT) {
+ 		switch (dev->phy.chandef.width) {
+ 		case NL80211_CHAN_WIDTH_40:
+@@ -336,6 +340,7 @@ int mt76_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			   1, hweight8(phy->antenna_mask)) ||
+ 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_RATE_SGI], &td->tx_rate_sgi, 0, 1) ||
+ 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_RATE_LDPC], &td->tx_rate_ldpc, 0, 1) ||
++	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_RATE_STBC], &td->tx_rate_stbc, 0, 1) ||
+ 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_ANTENNA], &td->tx_antenna_mask, 1,
+ 			   phy->antenna_mask) ||
+ 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_POWER_CONTROL],
+@@ -472,6 +477,7 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *msg,
+ 	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_IDX, td->tx_rate_idx) ||
+ 	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_SGI, td->tx_rate_sgi) ||
+ 	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_LDPC, td->tx_rate_ldpc) ||
++	    nla_put_u8(msg, MT76_TM_ATTR_TX_RATE_STBC, td->tx_rate_stbc) ||
+ 	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_ANTENNA) &&
+ 	     nla_put_u8(msg, MT76_TM_ATTR_TX_ANTENNA, td->tx_antenna_mask)) ||
+ 	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_POWER_CONTROL) &&
+diff --git a/drivers/net/wireless/mediatek/mt76/testmode.h b/drivers/net/wireless/mediatek/mt76/testmode.h
+index 4d22627..00c1659 100644
+--- a/drivers/net/wireless/mediatek/mt76/testmode.h
++++ b/drivers/net/wireless/mediatek/mt76/testmode.h
+@@ -25,6 +25,7 @@
+  * @MT76_TM_ATTR_TX_RATE_IDX: packet tx rate/MCS index (u8)
+  * @MT76_TM_ATTR_TX_RATE_SGI: packet tx use short guard interval (u8)
+  * @MT76_TM_ATTR_TX_RATE_LDPC: packet tx enable LDPC (u8)
++ * @MT76_TM_ATTR_TX_RATE_STBC: packet tx enable STBC (u8)
+  *
+  * @MT76_TM_ATTR_TX_ANTENNA: tx antenna mask (u8)
+  * @MT76_TM_ATTR_TX_POWER_CONTROL: enable tx power control (u8)
+@@ -50,6 +51,7 @@ enum mt76_testmode_attr {
+ 	MT76_TM_ATTR_TX_RATE_IDX,
+ 	MT76_TM_ATTR_TX_RATE_SGI,
+ 	MT76_TM_ATTR_TX_RATE_LDPC,
++	MT76_TM_ATTR_TX_RATE_STBC,
+ 
+ 	MT76_TM_ATTR_TX_ANTENNA,
+ 	MT76_TM_ATTR_TX_POWER_CONTROL,
 -- 
-2.18.0
+2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
