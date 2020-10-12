@@ -5,86 +5,89 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B19DC433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 11:39:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E1CAC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 11:39:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29D67206E5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 11:39:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EFDDD206E5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 11:39:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nJKLcCjn";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="fGv2d15x"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29D67206E5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PTAo1Giv";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="0qmWSBxE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFDDD206E5
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4dYCz14FJ1hHrAF+CrGXYFYVsNixIpfpfF9hF97ObT4=; b=nJKLcCjnOaj255Rt4Ogo/yixal
-	OoA2n9Mb19gQrc77NX4ybrqEt27px6AamOItzCun+OEW09aROShCnLEEwaHLZsvRV9svERSCfh2cc
-	V8EXZQK2nXO8FQ362B9M6ME2FZ25TJ7iRpaE2NKmclSqjb79HIkf3tOe5twhPypkGpti8tGbHgJBv
-	eC5UPSY3+TblE06LGnK3xldMe2MS4zLzdMNo4oTJxUx0m3gIWBl3ss2AtPGWlHtwVc+2go5wWxkb+
-	dNaPMxdQYkyyEQiTpT/0Dx1nowgHdtyNtu/KnqDSGUEZKFvFMnCTEKD9lgrAKZ2aq39FaxbhzZ7uc
-	rXgBB4mQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4zDoM1Y1J9M/DcBJ5EHGwx/8BPUxqvp2XQxj/dom10g=; b=PTAo1GivNuyp0fyJXjnJkFUBC
+	q4LXlJ+VHlpe9uVhnOv2muHzfZpwkP61IArTEv1+RTFeRVgIbun04zV8vRskAwD4AWnx9IWJBsHvG
+	65ibysjVkrXTaL02HvLtjCUO692BarjYh0R3f2hVHYVII96bjp4UQdkXIKinSHRpcg+YhQCauF/AT
+	I+cQchM4POLk7IHEOLAWi9i52+Fzqrv5piQ0fsfaxsR/6sFhc4GgMgbVUomF/o+ZCA5rq8ONWAA57
+	uBhhQID+NkrlDnlHNIVJe7fVD04KDqN527LEiyjrUJZmut3ki8OYN5KczUCpUWPtTQpRx3+5y23Iu
+	0KqAg3Gtw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRwAN-00010e-2P; Mon, 12 Oct 2020 11:38:59 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kRwAP-00011v-O7; Mon, 12 Oct 2020 11:39:01 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRwAG-0000xw-Qv
- for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 11:38:54 +0000
-Received: by mail-wr1-x442.google.com with SMTP id x7so10193285wrl.3
- for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2020 04:38:52 -0700 (PDT)
+ id 1kRwAL-0000zi-KH
+ for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 11:38:59 +0000
+Received: by mail-wm1-x343.google.com with SMTP id a72so6301633wme.5
+ for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2020 04:38:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=er1O3yHYE2dfZAtg9MYR2G3dWLGNVrruH1edHcefbnw=;
- b=fGv2d15x8t8FMuQO7gEdPG/kMbWbRe2GCYErOzN+qYTexuoeqeQ13RVl4Re6jAm4/J
- R/mnTWb0U/1ir7iJE4eP5u0riKeXNPrnIlPiW9uVzgL8zlRNCbx1GC4xqtjjWSHjMZvT
- FvIYfcncwoTVI0IOtaNH62YzTzByGH0FsXiLvWIgOuKidnowQlD03XWFPxJQppPrE4AW
- T85FGuPH5Z0bZnZgABhqdtXBDCZeIglD6Y5W94LxvC7B3mLwHHq4vVGtajSovmxFOYfV
- 9FC1DbUH+aLAU5IIsbtI9OeoIkudCr9gSMicBLbZfmgzX+W4plZn95pIsa/RvzK8qvAF
- BnPw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=AizmEGLJWCh5e+BIl/5tzrCIJ5dIEIgB9BBqx3BLDyw=;
+ b=0qmWSBxEbq35KurZTOsOhck3qTnnnOHUBmvQCN3yCNiwPxRpua2FZOxJKkZtJr8Tdl
+ s+jM0s3YJE8/WServiwBPovX2q/PyHCKWFjRpcNF5DvBBNEEhUkUaxZ2J98D2l+VFjXw
+ wm9iszb90LKGBzEyPGMWA+jOcptEtN8rj2Z0b43VAlif4tmF9bGPNtSBUnQkr17QpU8D
+ WiqKPpohjr1wRnc/KxN105r8k/0GbhTPQvGnqPMv9qgDxDewvykK8UDF/UyPYYA7hrtC
+ ca9JqBx3wIGuxtRxq5bIu3NJ9RI2Xd6awIXk3+5isloa933zApn/57ZrRdqO2wIjyPd0
+ pXVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=er1O3yHYE2dfZAtg9MYR2G3dWLGNVrruH1edHcefbnw=;
- b=pXRjUOPumwZAkyPqZpFXFeuSZRIwUR+Siy7mOoABT+s2j7MHGE0NNbtXNovUc01W3s
- LhohKD0ecYFpHuPf9H8wLtYl8ALyaGrOoxKfB1WBsSQ7CWwysz86Vfd63Pe+3IEn9XbV
- aX7uiWGIt6jdovlJ0xlZ//4nxPWom6fLsvc574I4Ghx6YI1CAm+/Ct0ZGOAkhnU386c1
- w7c4z68VJ88K4FSBOTlJS3aFl3KEF80HzLmh7VuklgRBrS0HbHPcso8vpI9vTm/BIuJr
- SvgJKL2TF2qnNtUcXZGsaDp97scBRlPpXuDf3A7LMzB8eaTF/wMOSrc/dCcAw7a8bCXO
- JgeA==
-X-Gm-Message-State: AOAM532bAsEJpFAiOZrzeMAPhKpnZ4mxhFQPHrsfmIRYUwrkUt/H+EC4
- 39rMZiUwOG5ygBWTeKntUewp/A==
-X-Google-Smtp-Source: ABdhPJziaYfK5ROz2ZhqIXhTGzXACuyMOEE9XE8nlHbMcsWpb1lIfGcTo1l9oqBQueuCIUPQxQaDAg==
-X-Received: by 2002:adf:9e06:: with SMTP id u6mr29835150wre.208.1602502731842; 
- Mon, 12 Oct 2020 04:38:51 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AizmEGLJWCh5e+BIl/5tzrCIJ5dIEIgB9BBqx3BLDyw=;
+ b=AzzlxCror+RmmrSVAdqnUAnkCJwykv5E1WY1TZ2pXUNgvU1fLA6eeujvgqa8P6YxE1
+ vS9IdjB4UMwoTvS0WFiEXel8nFiThc+YAVCo49HnqERY1ecZnVEStkcaU5kM05iGuB+O
+ j18Wqhf16PsGYNVkauglLUsBU7xWrbBNha8x5jOivn6+b7grMNizW6+Sn/ijUoF9NrTw
+ wz3kNcX6v6H9CiPueeqM15r8ql6zHxXsD3waLN+hVM5bslcc/jdS6J/+0lSohSDBlU3f
+ Oso8Bagz2ThBYVQJI+YWpAC4Rdp5iTlRsvfa7yjaaH1ZhSCvntljnpo/yFZTrYQ38K4R
+ FlSA==
+X-Gm-Message-State: AOAM533N8dHm1s95sc/UpL4y1PDHCwARKRHxYpW/h52zQ2YEbHHUJvNV
+ GPi/1EJYm8QCroijUMBsmyXJlw==
+X-Google-Smtp-Source: ABdhPJzylMLeTRhmQpLakNIW7gsPR+5BowgUIi+DkXjP1HpgG9IEx5b2JG9z5tyO9ughYMPkuJqBxQ==
+X-Received: by 2002:a1c:bb06:: with SMTP id l6mr10907219wmf.40.1602502736377; 
+ Mon, 12 Oct 2020 04:38:56 -0700 (PDT)
 Received: from localhost.localdomain (170.175.185.81.rev.sfr.net.
  [81.185.175.170])
- by smtp.gmail.com with ESMTPSA id o194sm22378065wme.24.2020.10.12.04.38.50
+ by smtp.gmail.com with ESMTPSA id o194sm22378065wme.24.2020.10.12.04.38.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 04:38:51 -0700 (PDT)
+ Mon, 12 Oct 2020 04:38:55 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
  linux-input@vger.kernel.org, matthias.bgg@gmail.com
-Subject: [PATCH v6 1/3] dt-bindings: mfd: mt6397: Add bindings for MT6392 PMIC
-Date: Mon, 12 Oct 2020 13:38:38 +0200
-Message-Id: <20201012113840.396358-1-fparent@baylibre.com>
+Subject: [PATCH v6 2/3] dt-bindings: input: mtk-pmic-keys: add MT6392 binding
+ definition
+Date: Mon, 12 Oct 2020 13:38:39 +0200
+Message-Id: <20201012113840.396358-2-fparent@baylibre.com>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20201012113840.396358-1-fparent@baylibre.com>
+References: <20201012113840.396358-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_073852_878433_FCA8D9DC 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20201012_073858_216583_6E82DF27 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,52 +107,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the currently supported bindings for the MT6392 PMIC.
+Add the binding documentation of the mtk-pmic-keys for the MT6392 PMICs.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 Reviewed-by: Rob Herring <robh@kernel.org>
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
 ---
 
-V6:
+v6:
 	* No changes
-V5:
-	* Rebased, removed regulator documentation because it will be send later
-	on in another patch series
-V4:
-	* No change
-V3:
-	* No change
-V2:
-	* New patch
 
- Documentation/devicetree/bindings/mfd/mt6397.txt | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+v5:
+	* rebased
+	* Rename MT6397/MT6392/MT6323 into MT63XX to make it more readable when
+	the list of support PMIC increase
+	* Removed Reviewed-by from Rob Herring because of the new extra changes
+	made to this patch
+	* change the compatible for MT6392 to also contains MT6397 since MT6392 PMIC
+	key driver is compatible with mt6397.
 
-diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-index 2661775a3825..f051a951ba72 100644
---- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-+++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-@@ -21,6 +21,7 @@ Required properties:
- compatible:
- 	"mediatek,mt6323" for PMIC MT6323
- 	"mediatek,mt6358" for PMIC MT6358
-+	"mediatek,mt6392" for PMIC MT6392
- 	"mediatek,mt6397" for PMIC MT6397
+v4:
+	* Patch was previously sent separately but merge to this patch series
+	since there is a hard dependency on the MFD patch.
+
+ .../devicetree/bindings/input/mtk-pmic-keys.txt     | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+index 535d92885372..71c82687ab92 100644
+--- a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
++++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+@@ -1,15 +1,18 @@
+-MediaTek MT6397/MT6323 PMIC Keys Device Driver
++MediaTek MT63xx PMIC Keys Device Driver
  
- Optional subnodes:
-@@ -52,7 +53,10 @@ Optional subnodes:
+-There are two key functions provided by MT6397/MT6323 PMIC, pwrkey
++There are two key functions provided by MT63xx PMIC, pwrkey
+ and homekey. The key functions are defined as the subnode of the function
+-node provided by MT6397/MT6323 PMIC that is being defined as one kind
++node provided by MT63xx PMIC that is being defined as one kind
+ of Muti-Function Device (MFD)
  
- - keys
- 	Required properties:
--		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
-+		- compatible:
-+			- "mediatek,mt6323-keys"
-+			- "mediatek,mt6392-keys", "mediatek,mt6397-keys"
-+			- "mediatek,mt6397-keys"
- 	see ../input/mtk-pmic-keys.txt
+-For MT6397/MT6323 MFD bindings see:
++For MT63xx MFD bindings see:
+ Documentation/devicetree/bindings/mfd/mt6397.txt
  
- - power-controller
+ Required properties:
+-- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
++- compatible: Should be one of:
++	- "mediatek,mt6323-keys" for MT6323 PMIC
++	- "mediatek,mt6392-keys", "mediatek,mt6397-keys" for MT6392 PMIC
++	- "mediatek,mt6397-keys" for MT6397 PMIC
+ - linux,keycodes: See Documentation/devicetree/bindings/input/input.yaml
+ 
+ Optional Properties:
 -- 
 2.28.0
 
