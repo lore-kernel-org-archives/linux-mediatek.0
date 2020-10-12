@@ -2,89 +2,77 @@ Return-Path: <SRS0=Vqxm=DT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59FD1C43467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 05:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77D7CC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 05:47:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F25602078E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 05:36:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1191920665
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 05:47:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bftPdaG7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="QX3Xduyf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F25602078E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s+acxxB+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HSQ6gaQ9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1191920665
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Zy7HxiYsIY1w9/3zhdJsF43yFPybh0H8C3Wg80rS6cA=; b=bftPdaG7SySYfxdDADl2xpGkZ
-	8ls0uTCALC9id06kXZWIN/gCXkFxY6Pd3R7OF3luQK+7oHQBzLHO0L/GMSVjuI/9hm5CU3VPxQbgH
-	E3lMlEhqbOYd3jm03SgRdGHRf0pPkWq+NvekZk5kMU7P2WWjKdQlqm7ypPwOfoagBAsBrFWPgmw9z
-	AO43xGEVSau54M0uc4JzuVUMCGBLHnIACADzGIZC+7dsuGUDmWtKG+X8RCNXnECIFVDfEokEyy+07
-	OEJmo79Q65ybDo+bEUMmC7GdCQpkEKbSSadIP3P69Nc0I+wFlMVWXR7mAdUwTZEgoX8g1DJqBZIYx
-	/e1wMB3mw==;
+	 bh=fI/57kocEIHXdAT/aYEjr9gtBNfisKXCMoPZ7PGtdjg=; b=s+acxxB+UcvtP0ayGL3dU7974
+	yfeDoeNK5EEk5Vu096fC2hn9laziDZChf4ovaODafzosAqtBP5L9ilREcSCzERVzJAsiWVS2neIlQ
+	jz3wVZTWDSatow3PWZ2IeRT6qgzoIrSrVpR7hGAajCrCGKfX79/XeOa8tnbt762dneG2tT2wKtaN0
+	XgfJwYB41Ytjx1ocE2fgj+maR5usSUQNcHgyDWfq/e/1IHNiRId5Ft78jjzRXv1kqVWDL4rbzV+PE
+	Rf+IWeibrIvyOYhK5UuTwTMnLHoh0CppHX5cRDiP9LPtwWCnLKNgkkb5FBdX85cWk8iYyF9l0Ch+B
+	c3TU84w0w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRqVO-0000hp-7b; Mon, 12 Oct 2020 05:36:19 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1kRqgP-00016x-VR; Mon, 12 Oct 2020 05:47:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRqVL-0000fg-JK
- for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 05:36:17 +0000
-Received: by mail-pg1-x542.google.com with SMTP id i2so13193368pgh.7
- for <linux-mediatek@lists.infradead.org>; Sun, 11 Oct 2020 22:36:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=NGXxcVkdEIPxLMPM+DjvJ1L3Bp/KN7ULl6Fng8qdl50=;
- b=QX3XduyfaK5fSjHQCSvj2nkIhaFtCrbsbxGTYvDDsk6USd+sgaRveUMyi3ORztJDDg
- nQF8sp444G4IRgwBQSqpikV8zOMWULZM0B/yH3O72CzmCVkGa6RPJuOO/KPKeP08INkF
- 5YCMNv6AAMqXcbg9+hKW5C67B0EazAs8yYC3Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=NGXxcVkdEIPxLMPM+DjvJ1L3Bp/KN7ULl6Fng8qdl50=;
- b=W2wCLFJUJ8Q4TIhuaHfPTColUHIBtZdQud+Qq+TSJqv63yjTnmAytycnqPb+lseKpN
- BRvhw5vcsMxiACejHeqzzwJeqlu0/NnuHvGKfW26U7g62jHBV1EIKIv3OjBlvzMdxZKe
- LPsjGRJQyFmSvvF3vCk68uQfRhI4AshL1lUPKwO38TZHF8axP3drIWA1ZxFOyBL8dOB1
- EetbxhBCt+XopwYjf211/YwaFbIGhcr27VWCWTOtsIUWMc/rxNWHB/GpV97sjxho5bHP
- o+kP4EJnDsA2/eiWnRg+oTJPHZDpiWlT/rbsRHijVSAOUnGtGixQ08rF9lQXmyqHjaaB
- Zx2Q==
-X-Gm-Message-State: AOAM531vVRQ0lcyxYWm03w6RNGUFvG6xdxOdM3ZalwaPyclnE+i8OSrH
- lH3jih3W/ri2Rx+AUY06B62whw==
-X-Google-Smtp-Source: ABdhPJw2uksfn73q7EcvJsiYTd4dOgxOV3OXK8WpW8AEjEDE/iUxuK+aS4GEQFS8l9CyQlec74xZNg==
-X-Received: by 2002:a17:90a:6d26:: with SMTP id
- z35mr17755363pjj.41.1602480973555; 
- Sun, 11 Oct 2020 22:36:13 -0700 (PDT)
-Received: from acourbot.tok.corp.google.com
- ([2401:fa00:8f:203:eeb1:d7ff:fe57:b7e5])
- by smtp.gmail.com with ESMTPSA id z1sm17646817pgu.80.2020.10.11.22.36.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Oct 2020 22:36:12 -0700 (PDT)
-From: Alexandre Courbot <acourbot@chromium.org>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: [PATCH v3 2/2] media: mtk-vcodec: fix build breakage when one of VPU
- or SCP is enabled
-Date: Mon, 12 Oct 2020 14:35:57 +0900
-Message-Id: <20201012053557.4102148-3-acourbot@chromium.org>
-X-Mailer: git-send-email 2.28.0.1011.ga647a8990f-goog
-In-Reply-To: <20201012053557.4102148-1-acourbot@chromium.org>
-References: <20201012053557.4102148-1-acourbot@chromium.org>
+ id 1kRqgM-00015y-P8; Mon, 12 Oct 2020 05:47:39 +0000
+X-UUID: 6838b513ae7446d5b0ff7957d702825e-20201011
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Qh32CvLCP7TbrAU9q4uRS7WfIF5HB8P3kFRMssgVV8s=; 
+ b=HSQ6gaQ9BT/8awzojpsomr6j0MvxxgkGnmo4bMBO0/udns3AnarywMX9wZUTFmhPjwk423W2hEk1Jls9qEBq0WBjHIwhD1UXHdl/qYS/j7sc6HWD9fmo09CE97oUvdpaeKPvC7lvRnw4RBN2eg8/7u2CvsJmra6sq4or7IFFG0M=;
+X-UUID: 6838b513ae7446d5b0ff7957d702825e-20201011
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1516972711; Sun, 11 Oct 2020 21:47:30 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 11 Oct 2020 22:47:28 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs07n1.mediatek.inc
+ (172.21.101.16) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 12 Oct 2020 13:47:26 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 12 Oct 2020 13:47:25 +0800
+Message-ID: <1602481646.8921.4.camel@mhfsdcap03>
+Subject: Re: [PATCH 3/5] dt-bindings: mediatek: mt8192: add audio afe document
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Mon, 12 Oct 2020 13:47:26 +0800
+In-Reply-To: <20201005135503.GA86716@bogus>
+References: <1601624142-18991-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1601624142-18991-4-git-send-email-jiaxin.yu@mediatek.com>
+ <20201005135503.GA86716@bogus>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_013615_697764_AF6AF5C6 
-X-CRM114-Status: GOOD (  18.92  )
+X-CRM114-CacheID: sfid-20201012_014738_945295_243D6429 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,132 +84,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gnurou@gmail.com, Alexandre Courbot <acourbot@chromium.org>,
- Randy Dunlap <rdunlap@infradead.org>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- linux-media@vger.kernel.org
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ kuninori.morimoto.gx@renesas.com, tzungbi@google.com, broonie@kernel.org,
+ maowenan@huawei.com, tiwai@suse.com, shane.chien@mediatek.com,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The addition of MT8183 support added a dependency on the SCP remoteproc
-module. However the initial patch used the "select" Kconfig directive,
-which may result in the SCP module to not be compiled if remoteproc was
-disabled. In such a case, mtk-vcodec would try to link against
-non-existent SCP symbols. "select" was clearly misused here as explained
-in kconfig-language.txt.
-
-Replace this by a "depends" directive on at least one of the VPU and
-SCP modules, to allow the driver to be compiled as long as one of these
-is enabled, and adapt the code to support this new scenario.
-
-Also adapt the Kconfig text to explain the extra requirements for MT8173
-and MT8183.
-
-Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
-Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
----
- drivers/media/platform/Kconfig                | 22 +++++++++++++++----
- drivers/media/platform/mtk-vcodec/Makefile    | 10 +++++++--
- .../platform/mtk-vcodec/mtk_vcodec_fw_priv.h  | 18 +++++++++++++++
- 3 files changed, 44 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index a3cb104956d5..457b6c39ddc0 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -253,18 +253,32 @@ config VIDEO_MEDIATEK_VCODEC
- 	depends on MTK_IOMMU || COMPILE_TEST
- 	depends on VIDEO_DEV && VIDEO_V4L2
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on VIDEO_MEDIATEK_VPU || MTK_SCP
-+	# The two following lines ensure we have the same state ("m" or "y") as
-+	# our dependencies, to avoid missing symbols during link.
-+	depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
-+	depends on MTK_SCP || !MTK_SCP
- 	select VIDEOBUF2_DMA_CONTIG
- 	select V4L2_MEM2MEM_DEV
--	select VIDEO_MEDIATEK_VPU
--	select MTK_SCP
-+	select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
-+	select VIDEO_MEDIATEK_VCODEC_SCP if MTK_SCP
- 	help
- 	    Mediatek video codec driver provides HW capability to
--	    encode and decode in a range of video formats
--	    This driver rely on VPU driver to communicate with VPU.
-+	    encode and decode in a range of video formats on MT8173
-+	    and MT8183.
-+
-+	    Note that support for MT8173 requires VIDEO_MEDIATEK_VPU to
-+	    also be selected. Support for MT8183 depends on MTK_SCP.
- 
- 	    To compile this driver as modules, choose M here: the
- 	    modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
- 
-+config VIDEO_MEDIATEK_VCODEC_VPU
-+	bool
-+
-+config VIDEO_MEDIATEK_VCODEC_SCP
-+	bool
-+
- config VIDEO_MEM2MEM_DEINTERLACE
- 	tristate "Deinterlace support"
- 	depends on VIDEO_DEV && VIDEO_V4L2
-diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
-index 6e1ea3a9f052..4618d43dbbc8 100644
---- a/drivers/media/platform/mtk-vcodec/Makefile
-+++ b/drivers/media/platform/mtk-vcodec/Makefile
-@@ -25,5 +25,11 @@ mtk-vcodec-enc-y := venc/venc_vp8_if.o \
- mtk-vcodec-common-y := mtk_vcodec_intr.o \
- 		mtk_vcodec_util.o \
- 		mtk_vcodec_fw.o \
--		mtk_vcodec_fw_vpu.o \
--		mtk_vcodec_fw_scp.o
-+
-+ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU),)
-+mtk-vcodec-common-y += mtk_vcodec_fw_vpu.o
-+endif
-+
-+ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP),)
-+mtk-vcodec-common-y += mtk_vcodec_fw_scp.o
-+endif
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-index 51f1694a7c7d..b41e66185cec 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-@@ -27,8 +27,26 @@ struct mtk_vcodec_fw_ops {
- 	void (*release)(struct mtk_vcodec_fw *fw);
- };
- 
-+#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU)
- struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
- 					     enum mtk_vcodec_fw_use fw_use);
-+#else
-+static inline struct mtk_vcodec_fw *
-+mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
-+		       enum mtk_vcodec_fw_use fw_use)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
-+#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_VPU */
-+
-+#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP)
- struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev);
-+#else
-+static inline struct mtk_vcodec_fw *
-+mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
-+#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_SCP */
- 
- #endif /* _MTK_VCODEC_FW_PRIV_H_ */
--- 
-2.28.0.1011.ga647a8990f-goog
-
+On Mon, 2020-10-05 at 08:55 -0500, Rob Herring wrote:
+> On Fri, 02 Oct 2020 15:35:40 +0800, Jiaxin Yu wrote:
+> > This patch adds mt8192 audio afe document.
+> > 
+> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > ---
+> >  .../bindings/sound/mt8192-afe-pcm.yaml        | 98 +++++++++++++++++++
+> >  1 file changed, 98 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+> > 
+> 
+> 
+> My bot found errors running 'make dt_binding_check' on your patch:
+> 
+> Documentation/devicetree/bindings/sound/mt8192-afe-pcm.example.dts:19:18: fatal error: dt-bindings/clock/mt8192-clk.h: No such file or directory
+>    19 |         #include <dt-bindings/clock/mt8192-clk.h>
+>       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> compilation terminated.
+> make[1]: *** [scripts/Makefile.lib:342: Documentation/devicetree/bindings/sound/mt8192-afe-pcm.example.dt.yaml] Error 1
+> make[1]: *** Waiting for unfinished jobs....
+> make: *** [Makefile:1366: dt_binding_check] Error 2
+> 
+> 
+> See https://patchwork.ozlabs.org/patch/1375582
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure dt-schema is up to date:
+> 
+> pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+> 
+> Please check and re-submit.
+> 
+Sorry, I should add a dependency description.
+"dt-bindings/clock/mt8192-clk.h" is included in
+https://patchwork.kernel.org/cover/11752231 series of patches, but they
+has not been accepted.
 
 _______________________________________________
 Linux-mediatek mailing list
