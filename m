@@ -2,73 +2,74 @@ Return-Path: <SRS0=Vqxm=DT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE370C433E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 15:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80C21C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 15:22:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 528C120838
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 15:00:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 037BA20878
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 15:22:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zboryipt";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="fXZNEzjp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 528C120838
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3ZM0pCA4";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="aLX8Vr/+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 037BA20878
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mdK9bm33N2vHYaRr3vjV/VIZj3tFUHAzMS4NyLhGi1A=; b=ZboryiptkBjfjM1uuXK3veU9Q
-	lAxJgaMCwF9an72WHgXGkK0fx0VaUWvp00HBeb3aQffe8pT5vhPZ/vUerpbJMuDAyl+LZmpXsESfp
-	n//P6H0KyI/onLMxR4aiKuP5WpkpJlKH3QQOO4osU+3w+OuoRahwIEglYkHFVvDEN0EqmvzPERrtR
-	zK5LKkSLSf3MTy80TuuotKvMjDsoXNrCus4pQTA4Ts8Q6n80KBn53394l3yWHpDsoaBTbw8XpcPBY
-	6PN5Ou5LnxpUQDOgo5h+IbO+RB1lkBJPjSHOuQDhHXl0oOCZb652eKWgX14g6p9nJ1KV7mpyE+Z7k
-	4+mQZosKA==;
+	 bh=z0f8T+jd9fH6Ajf3T/m/TOGQFNmW4J7kIP1MKRSvcW8=; b=3ZM0pCA42dLVZ38ieOXEvxbNb
+	XZho1lAKFonPybYPSBP/cSlUvL44mxap5a7ZNILeu+lhRjF+S74KQOzoR+Xs9I4mcUI7PcijssLfe
+	xlMijWZeTUvRFuxyuh2FFY8adQuA5fkzxeg1R9TvbuVTLQKn4M2/WyVJl9CO2fxptw4tWDZvcVqEg
+	Vml0NRxlpMDRksqxD9WqkWqDBe13Hz8nyiSVH4kmHdmjdbWVeCM50mABiDx1BF6VuvQFK8BWGmyfd
+	kHmrvyFWk+80c1gqXi/3PYqAYVpOFvggsopyNKyOegZ5I7fdJ9aRPCbiAZlmQAfGFe5B+NtgnGmqH
+	oG3x6M8YQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRzJ3-0005Ya-5j; Mon, 12 Oct 2020 15:00:09 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1kRzer-0006rs-TL; Mon, 12 Oct 2020 15:22:42 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRzJ0-0005YF-Tz
- for linux-mediatek@merlin.infradead.org; Mon, 12 Oct 2020 15:00:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=n9rKwABW1rW8ifuT1wp/xKxs4ZM4lyDE+xlv3wP2wvY=; b=fXZNEzjpAEg8beql8d+moKCW2D
- NhvsyZK3u5DwneXnRsjCCl3uwLthGxJ0G1IQLpcGKLjPtM7E5oJtZe+zIhOJI0JQOKcxHYyUwKpdD
- Fnm3lsZKpi+BDIRPa1xy9q1aXWvJ1N/LyvE3CenOGCTzbpBsQbTPBECKEjnC91eGMtS/+FyZ9Axg4
- 9DphTPPWGx5GnTDAiG539iRndmJ3Lur5fDJRBRLRyrPjkXOVv0NSWwIVsZcGl/O9Jzn7sFZGfACUn
- VRiofm2B4nAZrBSecyfHzOkxD/XBrq+jRFIN3CJb021BIo+CHV7ynYcraRdxVviudqFP+5UgqVenM
- d5e84wIQ==;
-Received: from [2601:1c0:6280:3f0::507c]
- by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRzIu-0006Jv-Eq; Mon, 12 Oct 2020 15:00:01 +0000
-Subject: Re: [PATCH v3 2/2] media: mtk-vcodec: fix build breakage when one of
- VPU or SCP is enabled
-To: Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>
-References: <20201012053557.4102148-1-acourbot@chromium.org>
- <20201012053557.4102148-3-acourbot@chromium.org>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <b9afc70f-9787-6513-29e7-41ffd6972da0@infradead.org>
-Date: Mon, 12 Oct 2020 07:59:55 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kRzen-0006pz-2m; Mon, 12 Oct 2020 15:22:38 +0000
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com
+ [209.85.208.42])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 94B9E20BED;
+ Mon, 12 Oct 2020 15:22:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602516154;
+ bh=5C/jmTpz0PKuGny4/s3SbSc4Irgi9NI62ZqH3ELIX7s=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=aLX8Vr/+ckwRva0GmI4m4s/4wxSqmx0xqfMUrdDEM+fCprnL6NTcrZ+naQvF0e4eY
+ zWkWUxdyTPmg/GLZ1qz0vTlhsD42q25Wl9SQ1DQi3GpB3+NEg6BXYn4jkrbiLaDa5g
+ wOpkbxvdAoMzjsEH/3QEXKZ8zv++QgW2Lt0sPrOg=
+Received: by mail-ed1-f42.google.com with SMTP id cq12so17402932edb.2;
+ Mon, 12 Oct 2020 08:22:34 -0700 (PDT)
+X-Gm-Message-State: AOAM531rqHxf73Qi3l39+P/8mLouZseGC9uzJZm+ilJYrD2fxc9M1CiJ
+ Rm2APQkphZ7Rb2PDa/o6RSaepyxHdZvn0uwl+w==
+X-Google-Smtp-Source: ABdhPJwu3cOwmieaIPSGaFSoyA4Wc/3ksuAi+VNzjSghjBXRfe60ms0JWtONwlY6z7lgezHab9z1uAotOlywDThS1cE=
+X-Received: by 2002:a05:6402:1cbb:: with SMTP id
+ cz27mr14412016edb.38.1602516153075; 
+ Mon, 12 Oct 2020 08:22:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201012053557.4102148-3-acourbot@chromium.org>
-Content-Language: en-US
+References: <20201010070910.11294-1-jitao.shi@mediatek.com>
+In-Reply-To: <20201010070910.11294-1-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 12 Oct 2020 23:22:21 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-qZni-o11HJeymH74PAFSJw-0Awdz0wdjiQ0u7Ga1MGA@mail.gmail.com>
+Message-ID: <CAAOTY_-qZni-o11HJeymH74PAFSJw-0Awdz0wdjiQ0u7Ga1MGA@mail.gmail.com>
+Subject: Re: [v4 PATCH 0/2] fix scrolling of panel with small hfp or hbp
+To: Jitao Shi <jitao.shi@mediatek.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20201012_112237_213347_B63C26FD 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,140 +81,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, gnurou@gmail.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/11/20 10:35 PM, Alexandre Courbot wrote:
-> The addition of MT8183 support added a dependency on the SCP remoteproc
-> module. However the initial patch used the "select" Kconfig directive,
-> which may result in the SCP module to not be compiled if remoteproc was
-> disabled. In such a case, mtk-vcodec would try to link against
-> non-existent SCP symbols. "select" was clearly misused here as explained
-> in kconfig-language.txt.
-> 
-> Replace this by a "depends" directive on at least one of the VPU and
-> SCP modules, to allow the driver to be compiled as long as one of these
-> is enabled, and adapt the code to support this new scenario.
-> 
-> Also adapt the Kconfig text to explain the extra requirements for MT8173
-> and MT8183.
-> 
-> Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
-
-That Ack applied to v2. I have not tested nor acked this version of the patch.
-
-> Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> ---
->  drivers/media/platform/Kconfig                | 22 +++++++++++++++----
->  drivers/media/platform/mtk-vcodec/Makefile    | 10 +++++++--
->  .../platform/mtk-vcodec/mtk_vcodec_fw_priv.h  | 18 +++++++++++++++
->  3 files changed, 44 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-> index a3cb104956d5..457b6c39ddc0 100644
-> --- a/drivers/media/platform/Kconfig
-> +++ b/drivers/media/platform/Kconfig
-> @@ -253,18 +253,32 @@ config VIDEO_MEDIATEK_VCODEC
->  	depends on MTK_IOMMU || COMPILE_TEST
->  	depends on VIDEO_DEV && VIDEO_V4L2
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on VIDEO_MEDIATEK_VPU || MTK_SCP
-> +	# The two following lines ensure we have the same state ("m" or "y") as
-> +	# our dependencies, to avoid missing symbols during link.
-> +	depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
-> +	depends on MTK_SCP || !MTK_SCP
->  	select VIDEOBUF2_DMA_CONTIG
->  	select V4L2_MEM2MEM_DEV
-> -	select VIDEO_MEDIATEK_VPU
-> -	select MTK_SCP
-> +	select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
-> +	select VIDEO_MEDIATEK_VCODEC_SCP if MTK_SCP
->  	help
->  	    Mediatek video codec driver provides HW capability to
-> -	    encode and decode in a range of video formats
-> -	    This driver rely on VPU driver to communicate with VPU.
-> +	    encode and decode in a range of video formats on MT8173
-> +	    and MT8183.
-> +
-> +	    Note that support for MT8173 requires VIDEO_MEDIATEK_VPU to
-> +	    also be selected. Support for MT8183 depends on MTK_SCP.
->  
->  	    To compile this driver as modules, choose M here: the
->  	    modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
->  
-> +config VIDEO_MEDIATEK_VCODEC_VPU
-> +	bool
-> +
-> +config VIDEO_MEDIATEK_VCODEC_SCP
-> +	bool
-> +
->  config VIDEO_MEM2MEM_DEINTERLACE
->  	tristate "Deinterlace support"
->  	depends on VIDEO_DEV && VIDEO_V4L2
-> diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
-> index 6e1ea3a9f052..4618d43dbbc8 100644
-> --- a/drivers/media/platform/mtk-vcodec/Makefile
-> +++ b/drivers/media/platform/mtk-vcodec/Makefile
-> @@ -25,5 +25,11 @@ mtk-vcodec-enc-y := venc/venc_vp8_if.o \
->  mtk-vcodec-common-y := mtk_vcodec_intr.o \
->  		mtk_vcodec_util.o \
->  		mtk_vcodec_fw.o \
-> -		mtk_vcodec_fw_vpu.o \
-> -		mtk_vcodec_fw_scp.o
-> +
-> +ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU),)
-> +mtk-vcodec-common-y += mtk_vcodec_fw_vpu.o
-> +endif
-> +
-> +ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP),)
-> +mtk-vcodec-common-y += mtk_vcodec_fw_scp.o
-> +endif
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-> index 51f1694a7c7d..b41e66185cec 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-> @@ -27,8 +27,26 @@ struct mtk_vcodec_fw_ops {
->  	void (*release)(struct mtk_vcodec_fw *fw);
->  };
->  
-> +#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU)
->  struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
->  					     enum mtk_vcodec_fw_use fw_use);
-> +#else
-> +static inline struct mtk_vcodec_fw *
-> +mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
-> +		       enum mtk_vcodec_fw_use fw_use)
-> +{
-> +	return ERR_PTR(-ENODEV);
-> +}
-> +#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_VPU */
-> +
-> +#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP)
->  struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev);
-> +#else
-> +static inline struct mtk_vcodec_fw *
-> +mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
-> +{
-> +	return ERR_PTR(-ENODEV);
-> +}
-> +#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_SCP */
->  
->  #endif /* _MTK_VCODEC_FW_PRIV_H_ */
-> 
-
-
--- 
-~Randy
-Reported-by: Randy Dunlap <rdunlap@infradead.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5
+tDEw5pyIMTDml6Ug6YCx5YWtIOS4i+WNiDM6MDnlr6vpgZPvvJoKPgo+IENoYW5nZXMgc2luY2Ug
+djM6Cj4gIC0gUmV2ZXJ0IHYyLCBmb3IgdjIgd2lsbCBjYXVzZSBzb21lIGJyaWRnZSBpYyBubyBv
+dXRwdXQuIHRoZSBjYXVzZQo+ICAgIHRoZSB2aWRlbyBsaW5ldGltZSBkb2Vzbid0IG1hdGNoIGRp
+c3BsYXkgbW9kZSBmcm9tIGdldCBtb2RlLgo+ICAtIE1ha2Ugc3VyZSB0aGUgaG9yaXpvbnRhbF9m
+cm9udHBvcmNoX2J5dGUgYW5kIGhvcml6b250YWxfYmFja3BvcmNoX2J5dGUKPiAgICBhcmUgPiAw
+LgoKQmVjYXVzZSB2MiBpcyBtZXJnZWQgaW50byBtYWlubGluZSwgSSB0aGluayB5b3Ugc2hvdWxk
+IG1lcmdlIDEvMiBhbmQKMi8yIHRvIG9uZSBwYXRjaCB3aGljaCBmaXggdGhlIHByb2JsZW0gY2F1
+c2VkIGJ5IHYyLgoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4KPiBKaXRhbyBTaGkgKDIpOgo+ICAg
+UmV2ZXJ0ICJkcm0vbWVkaWF0ZWs6IGRzaTogRml4IHNjcm9sbGluZyBvZiBwYW5lbCB3aXRoIHNt
+YWxsIGhmcCBvcgo+ICAgICBoYnAiCj4gICBkcm0vbWVkaWF0ZWs6IGRzaTogZml4IHNjcm9sbGlu
+ZyBvZiBwYW5lbCB3aXRoIHNtYWxsIGhmcCBvciBoYnAKPgo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RzaS5jIHwgNjUgKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0KPiAgMSBmaWxlIGNoYW5nZWQsIDI1IGluc2VydGlvbnMoKyksIDQwIGRlbGV0aW9ucygtKQo+
+Cj4gLS0KPiAyLjEyLjUKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtbWVkaWF0ZWsK
