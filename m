@@ -1,76 +1,81 @@
-Return-Path: <SRS0=RXhr=DS=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Vqxm=DT=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7BA3C433DF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2020 21:26:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A5711C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 00:59:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97B872076C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2020 21:26:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4CC68206CB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 00:59:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ol2a5ujO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bEcV4WS4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97B872076C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yIskZdbm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ZG/7AljI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CC68206CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=y5ZNGIeWgY9+aeNFzXggTPRSafE70BeKhXjVOByYm5w=; b=Ol2a5ujO2LyieJYmnde4OeqkyE
-	0NamLm9kttwhBExlTL6jLRjKh46XnWQMC9Sbtqw64z5tDBWZuZ3AIxZqv6pyxtZXEQVUYbEuB73QG
-	HEaCBe/EBlCtatpD1JazBqK9HJyQS9WHVpHxRaUfgtvqSFronnFs6ZzAl7wBPYLTO68i9jI+moIdw
-	wzOIeKp4aqQqU4vEAI8ggRUdibXvQgGLPAIwjW9zhGze86MzX/QXS5d+b4hqDaSAs+bB9L+ExRNOp
-	pTImkR8fall1JzFQvUSK0duY9Zz8R2nbE5wAEvmOiMAx+GEb/jykqdY1ZvpJxLbZAh4+qsy7UbyFc
-	2tYGZnOw==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=cxmiJ88oLNQ9jRAgjCUnl9X7GdHsaIgiegaQW8el89w=; b=yIskZdbmEgXahVEvTLy1ERdU6
+	DYVAxV6z3eoVDfKUdROdX8dHMRoibAqYlH1+4xvrIc6TBuC7QY09f4LGQsoPySSaBdRhP+AFZ+I5a
+	7wH511G7n4inRdm34iF8ZuA7TDtMK145uElWC+TsXKibf7SBEaRosX9TH2YszRzyG/tZMdhZOp0a4
+	WkBs0LbTGp7oAh0RR4XhCCx54Ykt+0wEqqU8Tilh+EU0qq0OdwYRMEigXy8HluvYYB3FFvizcjmzu
+	B7Jb+YVm3P+1Z6f+fOKjfSWRG89K6cNLEopBQ5zimO6n404MRPsuEMrYGboyiXYwonq+Igf+2uDLB
+	ZAP6mr+2w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRiqn-0002Zi-GR; Sun, 11 Oct 2020 21:25:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kRmBA-0005hk-T7; Mon, 12 Oct 2020 00:59:08 +0000
+Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRiqi-0002Y5-SW
- for linux-mediatek@lists.infradead.org; Sun, 11 Oct 2020 21:25:50 +0000
-X-UUID: d38de06b921848c6a2345b798d0ffbb9-20201011
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=e7A35TvHolYaa24KD7F+uxR2wRjdhGSprLxGOJCNFEc=; 
- b=bEcV4WS4Faa02+a8mEykhls8ffEq9XHk/cAQhLYqwa2chtu4i0mDfdMri6RDQJAXXKzwiY4n2uaoXFjUH0zgMehhI1QMz0mRyPudToBeqzuIPkmGRYlu8UgU2wppffnUbSVowzs7mMd5iESfGwawknK/3KN08gcyX5M/VnVj1HM=;
-X-UUID: d38de06b921848c6a2345b798d0ffbb9-20201011
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 225579506; Sun, 11 Oct 2020 13:25:37 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 11 Oct 2020 14:25:36 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 05:25:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 12 Oct 2020 05:25:34 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-Subject: [PATCH] mt76: mt7915: initialize firmware DRR settings correctly
-Date: Mon, 12 Oct 2020 05:25:29 +0800
-Message-ID: <be8e85b58140eadc344f63bd4c55f396396eae4a.1602443445.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kRmB7-0005gl-OA
+ for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 00:59:07 +0000
+Received: by mail-vs1-xe41.google.com with SMTP id f8so8244744vsl.3
+ for <linux-mediatek@lists.infradead.org>; Sun, 11 Oct 2020 17:59:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pKuO3QKcuUe/F0t0uUwfDC3OUqDsOLuOv/YQ0PPKJlA=;
+ b=ZG/7AljIIxkb5kzG7HUfhx+PenrEEBEfXe2u+72K/l+ASYNVw1bzTK8HkNYSwNlsXK
+ bwSJVF9pjjshsq0EMj7KGo7mcBMXwlnURFfVNlOtH6C34LV6twpBsGEVtA+Eqk+Z/wLn
+ ENLu//cmWsl73fMUH9ggHyTUOLybFWK8/vrMs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pKuO3QKcuUe/F0t0uUwfDC3OUqDsOLuOv/YQ0PPKJlA=;
+ b=WCe8/rca2GmnXtnnwQdBxsMpG3ynEwIR2rxaAgHf8BcU3Gk4fvrWNputN3I6b4KQRE
+ Mu6lO6LbLBnIKBtlOGl7Ar1fkbZzEn9/82xOvZT2MxnOuwPGwGcPE8Azrtb3sqlb6KLl
+ 6zc2wENxX79paKEQA7aYUNbHZQkWIk4UIfz2rpI0rSIwj9k3YQTyY92AvTQ/kgtW9XeQ
+ FX6VjiUurmfocKBLiRlpV2C7H+7Wwn4F1K4Z8VS/dZIK+PreWqqJZzJFt2y101q08uP+
+ rw6PTK41DZ6VPI4tiPrXRAZ+iCe6isfoAzTVBMx8xFrThd3kSiBtxxLpnKlEiS8EGHl+
+ Ay+A==
+X-Gm-Message-State: AOAM530/vEbZSUZa7byWjS521J3v6D+MTUjxpQu3/uBgNoOc4BBsG+sC
+ Vmppj5q4njoz0TbwlYWyySYnERisEARlskUOnBwPbg==
+X-Google-Smtp-Source: ABdhPJzbMq6z0XxcHIW6V+QcP9xfb/3LB2U9g8w72z9oVPeF9M6hCzMfU7wevdjFzc2rwF7rScRjmqmEOTel5s5bRLY=
+X-Received: by 2002:a67:3344:: with SMTP id z65mr13370348vsz.47.1602464340859; 
+ Sun, 11 Oct 2020 17:59:00 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20201011091030.28547-1-wenbin.mei@mediatek.com>
+ <20201011091030.28547-5-wenbin.mei@mediatek.com>
+In-Reply-To: <20201011091030.28547-5-wenbin.mei@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Mon, 12 Oct 2020 08:58:49 +0800
+Message-ID: <CANMq1KDSw6gTL=5oicK5h_Q5rLhYUcANXw1M7RT=xRyT2PzUrA@mail.gmail.com>
+Subject: Re: [PATCH v4 4/4] mmc: mediatek: Add subsys clock control for MT8192
+ msdc
+To: Wenbin Mei <wenbin.mei@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201011_172549_076454_49490F55 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20201011_205905_842704_C9CDA278 
+X-CRM114-Status: GOOD (  23.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,152 +87,175 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
- linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>
+Cc: Devicetree List <devicetree@vger.kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, linux-mmc@vger.kernel.org,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Driver uses mac80211 airtime fairness instead of hardware solution,
-so initialize corresponding MCU settings to adapt it.
+On Sun, Oct 11, 2020 at 5:10 PM Wenbin Mei <wenbin.mei@mediatek.com> wrote:
+>
+> MT8192 msdc is an independent sub system, we need control more bus
+> clocks for it.
+> Add support for the additional subsys clocks to allow it to be
+> configured appropriately.
+>
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/main.c  |  7 +++
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 44 ++++++++++++++-----
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  5 +++
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 +
- 4 files changed, 47 insertions(+), 11 deletions(-)
+Err, you must not add R-by tag unless I explicitly say so (yes, I
+reviewed v3, but I didn't add my R-by tag).
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 77f7226e655d..650dcad432de 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -47,6 +47,11 @@ static int mt7915_start(struct ieee80211_hw *hw)
- 	mt7915_mcu_set_sku_en(phy, true);
- 	mt7915_mcu_set_chan_info(phy, MCU_EXT_CMD_SET_RX_PATH);
- 
-+	/* use mac80211 airtime fairness instead of hardware solution,
-+	 * hence set max deficit to 256us to force STAs round-robin.
-+	 */
-+	mt7915_mcu_set_drr(dev, NULL, NULL, DRR_CTRL_AIRTIME_DEFICIT_BOUND);
-+
- 	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
- 
- 	ieee80211_queue_delayed_work(hw, &phy->mac_work,
-@@ -201,6 +206,8 @@ static int mt7915_add_interface(struct ieee80211_hw *hw,
- 		vif->offload_flags = 0;
- 	vif->offload_flags |= IEEE80211_OFFLOAD_ENCAP_4ADDR;
- 
-+	ret = mt7915_mcu_set_drr(dev, vif, NULL, DRR_CTRL_STA_BSS_GROUP);
-+
- out:
- 	mutex_unlock(&dev->mt76.mutex);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 94a3ccf63d0e..614d7af7cd1b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2217,13 +2217,11 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 				     MCU_EXT_CMD_STA_REC_UPDATE, true);
- }
- 
--static int
--mt7915_mcu_add_group(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--		     struct ieee80211_sta *sta)
-+int mt7915_mcu_set_drr(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+		       struct ieee80211_sta *sta, int cmd)
- {
--#define MT_STA_BSS_GROUP		1
--	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
--	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	struct mt7915_vif *mvif = NULL;
-+	struct mt7915_sta *msta = NULL;
- 	struct {
- 		__le32 action;
- 		u8 wlan_idx_lo;
-@@ -2233,12 +2231,36 @@ mt7915_mcu_add_group(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 		__le32 val;
- 		u8 rsv1[8];
- 	} __packed req = {
--		.action = cpu_to_le32(MT_STA_BSS_GROUP),
--		.wlan_idx_lo = to_wcid_lo(msta->wcid.idx),
--		.wlan_idx_hi = to_wcid_hi(msta->wcid.idx),
--		.val = cpu_to_le32(mvif->idx % 16),
-+		.action = cpu_to_le32(cmd),
- 	};
- 
-+	if (vif && vif->type != NL80211_IFTYPE_AP)
-+		return 0;
-+
-+	if (vif) {
-+		mvif = (struct mt7915_vif *)vif->drv_priv;
-+		msta = &mvif->sta;
-+	}
-+
-+	if (sta)
-+		msta = (struct mt7915_sta *)sta->drv_priv;
-+
-+	if (msta) {
-+		req.wlan_idx_lo = to_wcid_lo(msta->wcid.idx);
-+		req.wlan_idx_hi = to_wcid_hi(msta->wcid.idx);
-+	}
-+
-+	switch (cmd) {
-+	case DRR_CTRL_STA_BSS_GROUP:
-+		req.val = cpu_to_le32(mvif->idx % 16);
-+		break;
-+	case DRR_CTRL_AIRTIME_DEFICIT_BOUND:
-+		req.val = cpu_to_le32(1); /* 256us */
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_SET_DRR_CTRL, &req,
- 				 sizeof(req), true);
- }
-@@ -2252,7 +2274,7 @@ int mt7915_mcu_add_sta_adv(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 		return 0;
- 
- 	/* must keep the order */
--	ret = mt7915_mcu_add_group(dev, vif, sta);
-+	ret = mt7915_mcu_set_drr(dev, vif, sta, DRR_CTRL_STA_BSS_GROUP);
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 5f23f27f9f6c..6a0765960d7e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -995,6 +995,11 @@ enum {
- 	THERMAL_SENSOR_TASK_CTRL,
- };
- 
-+enum {
-+	DRR_CTRL_STA_BSS_GROUP = 0x01,
-+	DRR_CTRL_AIRTIME_DEFICIT_BOUND = 0x10,
-+};
-+
- enum {
- 	MT_EBF = BIT(0),	/* explicit beamforming */
- 	MT_IBF = BIT(1)		/* implicit beamforming */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index aee45cce35db..8f58424014b7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -301,6 +301,8 @@ int mt7915_mcu_add_smps(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 			struct ieee80211_sta *sta);
- int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd);
- int mt7915_mcu_set_tx(struct mt7915_dev *dev, struct ieee80211_vif *vif);
-+int mt7915_mcu_set_drr(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+		       struct ieee80211_sta *sta, int cmd);
- int mt7915_mcu_set_fixed_rate(struct mt7915_dev *dev,
- 			      struct ieee80211_sta *sta, u32 rate);
- int mt7915_mcu_set_eeprom(struct mt7915_dev *dev);
--- 
-2.18.0
+> ---
+>  drivers/mmc/host/mtk-sd.c | 80 ++++++++++++++++++++++++++++++---------
+>  1 file changed, 62 insertions(+), 18 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index a704745e5882..350e45432e21 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -425,6 +425,8 @@ struct msdc_host {
+>         struct clk *h_clk;      /* msdc h_clk */
+>         struct clk *bus_clk;    /* bus clock which used to access register */
+>         struct clk *src_clk_cg; /* msdc source clock control gate */
+> +       struct clk *sys_clk_cg; /* msdc subsys clock control gate */
+> +       struct clk_bulk_data bulk_clks[3];      /* pclk, axi, ahb clock control gate */
+>         u32 mclk;               /* mmc subsystem clock frequency */
+>         u32 src_clk_freq;       /* source clock frequency */
+>         unsigned char timing;
+> @@ -784,6 +786,8 @@ static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
+>
+>  static void msdc_gate_clock(struct msdc_host *host)
+>  {
+> +       clk_bulk_disable_unprepare(ARRAY_SIZE(host->bulk_clks),
+> +                                  host->bulk_clks);
+>         clk_disable_unprepare(host->src_clk_cg);
+>         clk_disable_unprepare(host->src_clk);
+>         clk_disable_unprepare(host->bus_clk);
+> @@ -792,10 +796,19 @@ static void msdc_gate_clock(struct msdc_host *host)
+>
+>  static void msdc_ungate_clock(struct msdc_host *host)
+>  {
+> +       int ret;
+> +
+>         clk_prepare_enable(host->h_clk);
+>         clk_prepare_enable(host->bus_clk);
+>         clk_prepare_enable(host->src_clk);
+>         clk_prepare_enable(host->src_clk_cg);
+> +       ret = clk_bulk_prepare_enable(ARRAY_SIZE(host->bulk_clks),
+> +                                     host->bulk_clks);
+> +       if (ret) {
+> +               dev_err(host->dev, "enable clks failed!\n");
+> +               return;
+> +       }
+> +
+>         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+>                 cpu_relax();
+>  }
+> @@ -2366,6 +2379,53 @@ static void msdc_of_property_parse(struct platform_device *pdev,
+>                 host->cqhci = false;
+>  }
+>
+> +static int msdc_of_clock_parse(struct platform_device *pdev,
+> +                              struct msdc_host *host)
+> +{
+> +       struct clk *clk;
+> +
+> +       host->src_clk = devm_clk_get_optional(&pdev->dev, "source");
+> +       if (IS_ERR(host->src_clk))
+> +               return PTR_ERR(host->src_clk);
+> +
+> +       host->h_clk = devm_clk_get_optional(&pdev->dev, "hclk");
+> +       if (IS_ERR(host->h_clk))
+> +               return PTR_ERR(host->h_clk);
+> +
+> +       host->bus_clk = devm_clk_get_optional(&pdev->dev, "bus_clk");
+> +       if (IS_ERR(host->bus_clk))
+> +               host->bus_clk = NULL;
+> +
+> +       /*source clock control gate is optional clock*/
+> +       host->src_clk_cg = devm_clk_get_optional(&pdev->dev, "source_cg");
+> +       if (IS_ERR(host->src_clk_cg))
+> +               host->src_clk_cg = NULL;
+> +
+> +       host->sys_clk_cg = devm_clk_get_optional(&pdev->dev, "sys_cg");
+> +       if (IS_ERR(host->sys_clk_cg))
+> +               host->sys_clk_cg = NULL;
+> +
+> +       /* If present, always enable for this clock gate */
+> +       clk_prepare_enable(host->sys_clk_cg);
+
+Understand your reply on v3 (this clock gate cannot be disabled --
+https://patchwork.kernel.org/patch/11808433/#23678227), but I'm still
+unsure if this is the right thing to do to enable it at probe time.
+I'll let others comment.
+
+> +
+> +       clk = devm_clk_get_optional(&pdev->dev, "pclk_cg");
+> +       if (IS_ERR(clk))
+> +               clk = NULL;
+> +       host->bulk_clks[0].clk = clk;
+> +
+> +       clk = devm_clk_get_optional(&pdev->dev, "axi_cg");
+> +       if (IS_ERR(clk))
+> +               clk = NULL;
+> +       host->bulk_clks[1].clk = clk;
+> +
+> +       clk = devm_clk_get_optional(&pdev->dev, "ahb_cg");
+> +       if (IS_ERR(clk))
+> +               clk = NULL;
+> +       host->bulk_clks[2].clk = clk;
+
+Put the clock names in host->bulk_clks[x].id, then call
+devm_clk_bulk_get_optional.
+
+Example here: https://elixir.bootlin.com/linux/latest/source/drivers/gpio/gpio-dwapb.c#L675
+
+> +
+> +       return 0;
+> +}
+> +
+>  static int msdc_drv_probe(struct platform_device *pdev)
+>  {
+>         struct mmc_host *mmc;
+> @@ -2405,25 +2465,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>         if (ret)
+>                 goto host_free;
+>
+> -       host->src_clk = devm_clk_get(&pdev->dev, "source");
+> -       if (IS_ERR(host->src_clk)) {
+> -               ret = PTR_ERR(host->src_clk);
+> -               goto host_free;
+> -       }
+> -
+> -       host->h_clk = devm_clk_get(&pdev->dev, "hclk");
+> -       if (IS_ERR(host->h_clk)) {
+> -               ret = PTR_ERR(host->h_clk);
+> +       ret = msdc_of_clock_parse(pdev, host);
+> +       if (ret)
+>                 goto host_free;
+> -       }
+> -
+> -       host->bus_clk = devm_clk_get(&pdev->dev, "bus_clk");
+> -       if (IS_ERR(host->bus_clk))
+> -               host->bus_clk = NULL;
+> -       /*source clock control gate is optional clock*/
+> -       host->src_clk_cg = devm_clk_get(&pdev->dev, "source_cg");
+> -       if (IS_ERR(host->src_clk_cg))
+> -               host->src_clk_cg = NULL;
+>
+>         host->reset = devm_reset_control_get_optional_exclusive(&pdev->dev,
+>                                                                 "hrst");
+> --
+> 2.18.0
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
