@@ -2,76 +2,79 @@ Return-Path: <SRS0=Vqxm=DT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DF906C43467
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 13:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8096DC433E7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 13:26:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 670DC2073A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 13:06:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 15BB32076E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 13:26:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GMP2WoOz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uQxYnt1z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 670DC2073A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ge0X74ne";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="2D2ESyQO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15BB32076E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bHh6AhXNCZMC8PhKMI6MbuUBFf/8YfgNuTc0wU8aqGY=; b=GMP2WoOzYj/8VKjjHAys5WSVj
-	TaNJYQr8n4hLAfITiGEgx6iiLgdKfjoHUL5oJ3Upj/6Tmf8upzpQ10/nKaXgvKeG8t+6YumU2geR2
-	oKemGe09OAWgTPpkSqoO1Y6uP+2JSc8/u20GANJccbK1VCAfSpBr1AZB0+AzSSaOpaRU/d/N+sQST
-	zkajftNMfV+1vB8BJPTmEDtJJZnHcK20daO9ViJJSy9wOWaLThwZDunWZ0fFMQnWNamJ70ZV3hFEZ
-	5X/rNvQEl3OuLecx5u9x5SrWExbLpPjUaZeVwXOdxTdlHJwhKhpfJiPkMDyWE37r9ijTruLCsQmE5
-	B/2WBrmRA==;
+	 bh=IWmu5Ed8fW2Ob58evZzb5wG7nKYnVPxMDErUOUyhjKA=; b=Ge0X74neGSa1BL35r4sQmvVSs
+	bEZiZLGrrTedLKf0/ztt+yGxN/o6jCxYUlGV7jHq33DNRTqHlBLPixA1tJYUR+mn3WSrCFWNHOruB
+	0iA9p/auzrc6ks8RHrP1d/y8F9vSjzEPbwuQROKRKjIIoApUKr34qzcBrwiJj2Mn3QS/pxKcNu5HM
+	v9XEEZCQW0HiEVFqUk6OhhUMWkf9eL0dfGMr0b/W03gcY2YHgDnup8wnP8VL//6bYv2u6T0BkBHjf
+	tL9v1wqezPpASFhc8YzJi8pHw2g3OlGddwyjMIbi987IwBF/V43Mv7Z/VUnKhL9h8CM/MySv6UA9n
+	2SL2L4t0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRxWq-0001ih-Mv; Mon, 12 Oct 2020 13:06:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kRxqS-00085W-Le; Mon, 12 Oct 2020 13:26:32 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRxWn-0001gr-Vo
- for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 13:06:14 +0000
-X-UUID: 28d49be5f774460e92f9b3924f03971b-20201012
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=rWQagjNnldpHKoZuFAPPcwuR5ruQr0oRfLs0nvXHKZg=; 
- b=uQxYnt1z0JxRctEyHpS+N7BE7SF/Vy4tujh46h/Yq2DG5LFRml3Dvp/HGoo2jzd/MmHQ8OFtnyIZt4tuOCf0z9y1KE3pnfiHwJshyaCcji5V8BFKn0zv8m00phEnHEJkGYLeTmidG7lZ1rBBslzx6i1xPrlzhvDSDXDS+fok8NY=;
-X-UUID: 28d49be5f774460e92f9b3924f03971b-20201012
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1398873508; Mon, 12 Oct 2020 05:06:12 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 05:56:10 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Oct 2020 20:55:56 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 12 Oct 2020 20:55:56 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH v3 09/10] mt76: mt7915: add support to set txpower in testmode
-Date: Mon, 12 Oct 2020 20:54:02 +0800
-Message-ID: <20201012125403.8608-9-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201012125403.8608-1-shayne.chen@mediatek.com>
-References: <20201012125403.8608-1-shayne.chen@mediatek.com>
+ id 1kRxqG-00080M-VQ; Mon, 12 Oct 2020 13:26:23 +0000
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com
+ [209.85.208.46])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 882D5215A4;
+ Mon, 12 Oct 2020 13:26:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602509179;
+ bh=yGzfcblPNkEu1jThQo3Kr1pZhnuRpAynpzlLmU3Eyto=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=2D2ESyQOMTChv7yvxLAiD0dAuxlG0M14eT38MlEDqC6L6xVG1ZHu4M9xJTVMu5neu
+ envgnta/HiKRtEOq8DzGGEU2tSlQMCpbouoj1QusJ1hHAbZKyt9hdK0qWJrfv3/G+f
+ WjCjzSGa8vfOIx5nqxsYLyVIBn2+E5lpoNLRstuk=
+Received: by mail-ed1-f46.google.com with SMTP id cq12so16930866edb.2;
+ Mon, 12 Oct 2020 06:26:19 -0700 (PDT)
+X-Gm-Message-State: AOAM53053nCn7lNvU52GBhVRdAbn+6/jHSrrSJLYyvCfmIT63V9Ag1Gq
+ /Tt8diN9YLIMCgClhizQULwi2o1RFHygHWxUcz4=
+X-Google-Smtp-Source: ABdhPJxZI9QpirJF8bPQYjiJrUckib3iXod98Zoj/Cz28ZEeJBmZJyvnNsh48f+gVrrDxErmHk+CoScI5f/RtUGp454=
+X-Received: by 2002:a50:8b62:: with SMTP id l89mr14553273edl.132.1602509177952; 
+ Mon, 12 Oct 2020 06:26:17 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20200930070647.10188-1-yong.wu@mediatek.com>
+ <20200930070647.10188-3-yong.wu@mediatek.com>
+ <20201002110831.GD6888@pi3> <1601958428.26323.26.camel@mhfsdcap03>
+ <CAJKOXPfOOGnJeNCa58WEZqbzaAFdLHSm-7pyMyGkYgCBEt0+RA@mail.gmail.com>
+ <1602310691.26323.39.camel@mhfsdcap03> <20201012071843.GA1889@pi3>
+ <1602504119.26323.54.camel@mhfsdcap03>
+In-Reply-To: <1602504119.26323.54.camel@mhfsdcap03>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Date: Mon, 12 Oct 2020 15:26:05 +0200
+X-Gmail-Original-Message-ID: <CAJKOXPcn4scqt2C9eE_EikJ76kqro2QYzThdsXXR_5xtBmyH3g@mail.gmail.com>
+Message-ID: <CAJKOXPcn4scqt2C9eE_EikJ76kqro2QYzThdsXXR_5xtBmyH3g@mail.gmail.com>
+Subject: Re: [PATCH v3 02/24] dt-bindings: memory: mediatek: Convert SMI to DT
+ schema
+To: Yong Wu <yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_090614_162366_77031CBE 
-X-CRM114-Status: GOOD (  17.18  )
+X-CRM114-CacheID: sfid-20201012_092621_185662_A83781A0 
+X-CRM114-Status: GOOD (  29.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,165 +86,123 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ kernel-team@android.com, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream@mediatek.com, chao.hao@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ Greg Kroah-Hartman <gregkh@google.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
+ Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support tx_power setting in testmode. Note that the tx power value of
-antenna 1-3 equal to antenna 0.
+On Mon, 12 Oct 2020 at 14:02, Yong Wu <yong.wu@mediatek.com> wrote:
+>
+> On Mon, 2020-10-12 at 09:18 +0200, Krzysztof Kozlowski wrote:
+> > On Sat, Oct 10, 2020 at 02:18:11PM +0800, Yong Wu wrote:
+> > > On Tue, 2020-10-06 at 09:15 +0200, Krzysztof Kozlowski wrote:
+> > > > On Tue, 6 Oct 2020 at 06:27, Yong Wu <yong.wu@mediatek.com> wrote:
+> > > > >
+> > > > > On Fri, 2020-10-02 at 13:08 +0200, Krzysztof Kozlowski wrote:
+> > > > > > On Wed, Sep 30, 2020 at 03:06:25PM +0800, Yong Wu wrote:
+> > > > > > > Convert MediaTek SMI to DT schema.
+> > > > > > >
+> > > > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > > > > > ---
+> > > > > > >  .../mediatek,smi-common.txt                   |  49 ---------
+> > > > > > >  .../mediatek,smi-common.yaml                  | 100 ++++++++++++++++++
+> > > > > > >  .../memory-controllers/mediatek,smi-larb.txt  |  49 ---------
+> > > > > > >  .../memory-controllers/mediatek,smi-larb.yaml |  91 ++++++++++++++++
+> > > > > > >  4 files changed, 191 insertions(+), 98 deletions(-)
+> > > > > > >  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+> > > > > > >  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> > > > > > >  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> > > > > > >  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> > > > > ...
+> > > > > > > +properties:
+> > > > > > > +  compatible:
+> > > > > > > +    oneOf:
+> > > > > > > +      - enum:
+> > > > > > > +          - mediatek,mt2701-smi-common
+> > > > > > > +          - mediatek,mt2712-smi-common
+> > > > > > > +          - mediatek,mt6779-smi-common
+> > > > > > > +          - mediatek,mt8173-smi-common
+> > > > > > > +          - mediatek,mt8183-smi-common
+> > > > > > > +
+> > > > > > > +      - description: for mt7623
+> > > > > > > +        items:
+> > > > > > > +          - const: mediatek,mt7623-smi-common
+> > > > > > > +          - const: mediatek,mt2701-smi-common
+> > > > > > > +
+> > > > > > > +  reg:
+> > > > > > > +    maxItems: 1
+> > > > > > > +
+> > > > > > > +  clocks:
+> > > > > > > +    description: |
+> > > > > > > +      apb and smi are mandatory. the async is only for generation 1 smi HW.
+> > > > > > > +      gals(global async local sync) also is optional, here is the list which
+> > > > > > > +      require gals: mt6779 and mt8183.
+> > > > > > > +    minItems: 2
+> > > > > > > +    maxItems: 4
+> > > > > > > +    items:
+> > > > > > > +      - description: apb is Advanced Peripheral Bus clock, It's the clock for
+> > > > > > > +          setting the register.
+> > > > > > > +      - description: smi is the clock for transfer data and command.
+> > > > > > > +      - description: async is asynchronous clock, it help transform the smi clock
+> > > > > > > +          into the emi clock domain.
+> > > > > > > +      - description: gals0 is the path0 clock of gals.
+> > > > > > > +      - description: gals1 is the path1 clock of gals.
+> > > > > > > +
+> > > > > > > +  clock-names:
+> > > > > > > +    oneOf:
+> > > > > > > +      - items:
+> > > > > > > +          - const: apb
+> > > > > > > +          - const: smi
+> > > > > > > +      - items:
+> > > > > > > +          - const: apb
+> > > > > > > +          - const: smi
+> > > > > > > +          - const: async
+> > > > > > > +      - items:
+> > > > > > > +          - const: apb
+> > > > > > > +          - const: smi
+> > > > > > > +          - const: gals0
+> > > > > > > +          - const: gals1
+> > > > > >
+> > > > > > Similarly to my comment to other properties, this requirement per
+> > > > > > compatible should be part of the schema within 'if-then'.
+> > > > >
+> > > > > I'm not so familiar with this format. Do this has "if-then-'else
+> > > > > if'-then-else"?
+> > > >
+> > > > These are mutually exclusive conditions, so you can skip else:
+> > > >  - if-then
+> > > >  - if-then
+> > > >  - if-then
+> > > > It will be more readable then stacking 'if' under 'else'
+> > >
+> > > Thanks. I will use something like this:
+> > >
+> > >  anyOf:
+> >
+> > Then it should be oneOf as only one condition can be valid.
+>
+> I did do this at the beginning. But I get a warning log when
+> dt_binding_check.
 
-Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
- .../wireless/mediatek/mt76/mt7915/testmode.c  | 100 ++++++++++++++++++
- 1 file changed, 100 insertions(+)
+Mhmm, right, since "if-else" matches in either of arms, then oneOf
+will complain as it expects only one of items to match.  Then just go
+with allOf. anyOf might match zero of items, so it would not catch
+actual errors, I think.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-index acab268..07d5271 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-@@ -6,6 +6,17 @@
- #include "mcu.h"
- #include "testmode.h"
- 
-+enum {
-+	TM_CHANGED_TXPOWER,
-+
-+	/* must be last */
-+	NUM_TM_CHANGED
-+};
-+
-+static const u8 tm_change_map[] = {
-+	[TM_CHANGED_TXPOWER] = MT76_TM_ATTR_TX_POWER,
-+};
-+
- struct reg_band {
- 	u32 band[2];
- };
-@@ -33,6 +44,42 @@ static const struct reg_band reg_backup_list[] = {
- 	REG_BAND_IDX(ARB_DRNGR0, 1),
- };
- 
-+static int
-+mt7915_tm_set_tx_power(struct mt7915_phy *phy)
-+{
-+	struct mt7915_dev *dev = phy->dev;
-+	struct mt76_phy *mphy = phy->mt76;
-+	struct cfg80211_chan_def *chandef = &mphy->chandef;
-+	int freq = chandef->center_freq1;
-+	int ret;
-+	struct {
-+		u8 format_id;
-+		u8 dbdc_idx;
-+		s8 tx_power;
-+		u8 ant_idx;	/* Only 0 is valid */
-+		u8 center_chan;
-+		u8 rsv[3];
-+	} __packed req = {
-+		.format_id = 0xf,
-+		.dbdc_idx = phy != &dev->phy,
-+		.center_chan = ieee80211_frequency_to_channel(freq),
-+	};
-+	u8 *tx_power = NULL;
-+
-+	if (dev->mt76.test.state != MT76_TM_STATE_OFF)
-+		tx_power = dev->mt76.test.tx_power;
-+
-+	/* Tx power of the other antennas are the same as antenna 0 */
-+	if (tx_power && tx_power[0])
-+		req.tx_power = tx_power[0];
-+
-+	ret = mt76_mcu_send_msg(&dev->mt76,
-+				MCU_EXT_CMD_TX_POWER_FEATURE_CTRL,
-+				&req, sizeof(req), false);
-+
-+	return ret;
-+}
-+
- static int
- mt7915_tm_mode_ctrl(struct mt7915_dev *dev, bool enable)
- {
-@@ -196,6 +243,13 @@ mt7915_tm_set_rx_frames(struct mt7915_dev *dev, bool en)
- 	mt7915_tm_set_trx(dev, &dev->phy, TM_MAC_RX_RXV, en);
- }
- 
-+static void
-+mt7915_tm_update_params(struct mt7915_dev *dev, u32 changed)
-+{
-+	if (changed & BIT(TM_CHANGED_TXPOWER))
-+		mt7915_tm_set_tx_power(&dev->phy);
-+}
-+
- static int
- mt7915_tm_set_state(struct mt76_dev *mdev, enum mt76_testmode_state state)
- {
-@@ -216,6 +270,51 @@ mt7915_tm_set_state(struct mt76_dev *mdev, enum mt76_testmode_state state)
- 	else if (prev_state == MT76_TM_STATE_OFF || state == MT76_TM_STATE_OFF)
- 		mt7915_tm_init(dev);
- 
-+	if ((state == MT76_TM_STATE_IDLE &&
-+	     prev_state == MT76_TM_STATE_OFF) ||
-+	    (state == MT76_TM_STATE_OFF &&
-+	     prev_state == MT76_TM_STATE_IDLE)) {
-+		u32 changed = 0;
-+		int i;
-+
-+		for (i = 0; i < ARRAY_SIZE(tm_change_map); i++) {
-+			u16 cur = tm_change_map[i];
-+
-+			if (td->param_set[cur / 32] & BIT(cur % 32))
-+				changed |= BIT(i);
-+		}
-+
-+		mt7915_tm_update_params(dev, changed);
-+	}
-+
-+	return 0;
-+}
-+
-+static int
-+mt7915_tm_set_params(struct mt76_dev *mdev, struct nlattr **tb,
-+		     enum mt76_testmode_state new_state)
-+{
-+	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
-+	struct mt76_testmode_data *td = &dev->mt76.test;
-+	u32 changed = 0;
-+	int i;
-+
-+	BUILD_BUG_ON(NUM_TM_CHANGED >= 32);
-+
-+	if (new_state == MT76_TM_STATE_OFF ||
-+	    td->state == MT76_TM_STATE_OFF)
-+		return 0;
-+
-+	if (td->tx_antenna_mask & ~dev->phy.chainmask)
-+		return -EINVAL;
-+
-+	for (i = 0; i < ARRAY_SIZE(tm_change_map); i++) {
-+		if (tb[tm_change_map[i]])
-+			changed |= BIT(i);
-+	}
-+
-+	mt7915_tm_update_params(dev, changed);
-+
- 	return 0;
- }
- 
-@@ -273,5 +372,6 @@ mt7915_tm_dump_stats(struct mt76_dev *mdev, struct sk_buff *msg)
- 
- const struct mt76_testmode_ops mt7915_testmode_ops = {
- 	.set_state = mt7915_tm_set_state,
-+	.set_params = mt7915_tm_set_params,
- 	.dump_stats = mt7915_tm_dump_stats,
- };
--- 
-2.17.1
+Best regards,
+Krzysztof
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
