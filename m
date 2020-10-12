@@ -2,79 +2,70 @@ Return-Path: <SRS0=Vqxm=DT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 174C9C433DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 07:19:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11CBEC433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 07:43:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A4C3E20790
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 07:19:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A6E3D2080D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 07:43:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2mFWfgEl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A4C3E20790
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ct8Hs5cN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="I4bI/s+y"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6E3D2080D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8Ors41XSWNLRxmS22E2B5wSseyzOQtn+uceJEERTU88=; b=2mFWfgElTWpNFD4z9otXU21n3
-	SXvBqvIX5bpaDCPVBK7BeFi9EhJE2Cy/XkscShwjP23Jv41NOl1iGrcOjT1MnvAXcP4ux5eaZwexa
-	vmL9yTnkeWkYyFQIFhF7TUEed1znbFZRat1vnSxY+EbSNMY3Msmq3QZjqgcyBRQCI1yNJtN8dkLHh
-	xfEI4YzeeIn97WQ5nFtwazN1/WvImge+fdmf8lYiqGh3m5o+o7UjFl6tQIEknPSvZ3MSPLcZM+Yec
-	aKeM/HvvcSXd1o2eKTDqADdOU/jpiZa4JnxKlVHEx1pDBN0caTV1kt4q5u28zlDTRQsQjCk8ZZK7D
-	4cHmaM+bw==;
+	 bh=EgPm1pzG3JnPTFJE7Z4ckQGfooDhGT7tECMgIpDPiG8=; b=ct8Hs5cN7SwzwKXmU5TO/u6FN
+	eRu2TPUijdJSv7GoTD/xWWusWS5iJ9AAw/dkr1zLcqRRGxeJczUXz5XM19BkpvOajrQ5+w2LmE0Uc
+	PnBp5Mvq1eAQdOQuP7PewNJs4dnoagx/gS6NZRvVKksRJupwtasCNLfq2aTDmfjrAtuqFdSY7fDaR
+	08X3ytQDpNXHpIf5i0TQCkZxL+SGKtIApL8aVoQsX2Q4kOrRsWtDLY6isKmdwhousNe0ZUXWO0/i9
+	K/Umn5CHH5DiHs4Ig13YzZtdsFFXM9yPWkuBKU0nvazolJjZcI9p47ZkKGbE95Msn7WcyWc5ylyun
+	5Eme32Z1g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRs6e-0003Y0-SR; Mon, 12 Oct 2020 07:18:52 +0000
-Received: from mail-ed1-f66.google.com ([209.85.208.66])
+	id 1kRsUF-00087V-MZ; Mon, 12 Oct 2020 07:43:15 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRs6b-0003X8-W7; Mon, 12 Oct 2020 07:18:50 +0000
-Received: by mail-ed1-f66.google.com with SMTP id l24so15825750edj.8;
- Mon, 12 Oct 2020 00:18:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=OCtzqcTvgm/lHz6dwVOWYKE+wIp/najcKC43qSAnkQQ=;
- b=qnM+C/IYYpi3rvltl1nf/Oyx8V/gLYj0NNJDqPR4Zl8ersuV0k3OE/rbbhvWyLWXko
- lxFUtzco//em1vXIqSVOY8vvye5nard+cnIunW1bltfmoR7UgC6Umfl4pf3p4cM8fcfE
- 6O7eeRXqCVR2hRDWCEMkmCdncG+vvQ4M9BgVx9/oM9ckxE4jJs71YxLtpB6FMfPdXq+D
- NGU7crsJ2lUFchi4RQrWfy7d2KnLUn5zX3HMyTCP0NVnfMXl997Pp8voAcmD3TrBC+Wc
- upWlSbuqVMcO0s5R2Lhus87mn86+d5NhKxYd7ADls7wH7OAJeJRLwWaSlq1AHsIScWi7
- kIYg==
-X-Gm-Message-State: AOAM5304/FcchRwQrBxTDcxZhZgf3Ch075ZjJkZ1FlB/5VeL/1hrMqVO
- +lrg3Oj2gQ7OAFPhjmKsY4g=
-X-Google-Smtp-Source: ABdhPJzH66RE1w9X2obXO5dNA8hKqBI0KiAd4eRYjVVAQ32i5EUIaFFJfhg/d3NrvvfQG9iIyYP+oQ==
-X-Received: by 2002:aa7:c2c4:: with SMTP id m4mr13091357edp.172.1602487127112; 
- Mon, 12 Oct 2020 00:18:47 -0700 (PDT)
-Received: from pi3 ([194.230.155.215])
- by smtp.googlemail.com with ESMTPSA id a10sm9995107edu.78.2020.10.12.00.18.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 00:18:45 -0700 (PDT)
-Date: Mon, 12 Oct 2020 09:18:43 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v3 02/24] dt-bindings: memory: mediatek: Convert SMI to
- DT schema
-Message-ID: <20201012071843.GA1889@pi3>
-References: <20200930070647.10188-1-yong.wu@mediatek.com>
- <20200930070647.10188-3-yong.wu@mediatek.com>
- <20201002110831.GD6888@pi3> <1601958428.26323.26.camel@mhfsdcap03>
- <CAJKOXPfOOGnJeNCa58WEZqbzaAFdLHSm-7pyMyGkYgCBEt0+RA@mail.gmail.com>
- <1602310691.26323.39.camel@mhfsdcap03>
+ id 1kRsUD-00086c-QZ
+ for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 07:43:14 +0000
+Received: from coco.lan (ip5f5ad5a3.dynamic.kabel-deutschland.de
+ [95.90.213.163])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A79652080D;
+ Mon, 12 Oct 2020 07:43:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602488592;
+ bh=bAc0d6eqVxt5kvlc4/0fQ1Dt0V8pQkYKNF5xQvY2t1c=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=I4bI/s+y9vhd/nExxWZ2y1XlzgBQbfzcWfLW4DA6opqThS+SEVWVra3xcsUSwUYB0
+ 7GWCy1HVs91CGAzCZP450EzLotvskdCmFtt/vKkoa3U+yoSRHrcwYguEsMFOFnqg1U
+ ScjBKMOPw39aL8eSQFn+wWTOTiWmAeXR+nP5bhMI=
+Date: Mon, 12 Oct 2020 09:43:07 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Alexandre Courbot <acourbot@chromium.org>
+Subject: Re: [PATCH v3 2/2] media: mtk-vcodec: fix build breakage when one
+ of VPU or SCP is enabled
+Message-ID: <20201012094307.1f32155b@coco.lan>
+In-Reply-To: <20201012053557.4102148-3-acourbot@chromium.org>
+References: <20201012053557.4102148-1-acourbot@chromium.org>
+ <20201012053557.4102148-3-acourbot@chromium.org>
+X-Mailer: Claws Mail 3.17.6 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1602310691.26323.39.camel@mhfsdcap03>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_031850_043427_73F2AB48 
-X-CRM114-Status: GOOD (  25.59  )
+X-CRM114-CacheID: sfid-20201012_034314_003427_86B08A0F 
+X-CRM114-Status: GOOD (  25.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,121 +77,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- kernel-team@android.com, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream@mediatek.com, chao.hao@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
- Greg Kroah-Hartman <gregkh@google.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
- Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, gnurou@gmail.com,
+ Randy Dunlap <rdunlap@infradead.org>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 10, 2020 at 02:18:11PM +0800, Yong Wu wrote:
-> On Tue, 2020-10-06 at 09:15 +0200, Krzysztof Kozlowski wrote:
-> > On Tue, 6 Oct 2020 at 06:27, Yong Wu <yong.wu@mediatek.com> wrote:
-> > >
-> > > On Fri, 2020-10-02 at 13:08 +0200, Krzysztof Kozlowski wrote:
-> > > > On Wed, Sep 30, 2020 at 03:06:25PM +0800, Yong Wu wrote:
-> > > > > Convert MediaTek SMI to DT schema.
-> > > > >
-> > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > > ---
-> > > > >  .../mediatek,smi-common.txt                   |  49 ---------
-> > > > >  .../mediatek,smi-common.yaml                  | 100 ++++++++++++++++++
-> > > > >  .../memory-controllers/mediatek,smi-larb.txt  |  49 ---------
-> > > > >  .../memory-controllers/mediatek,smi-larb.yaml |  91 ++++++++++++++++
-> > > > >  4 files changed, 191 insertions(+), 98 deletions(-)
-> > > > >  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
-> > > > >  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-> > > > >  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-> > > > >  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-> > > ...
-> > > > > +properties:
-> > > > > +  compatible:
-> > > > > +    oneOf:
-> > > > > +      - enum:
-> > > > > +          - mediatek,mt2701-smi-common
-> > > > > +          - mediatek,mt2712-smi-common
-> > > > > +          - mediatek,mt6779-smi-common
-> > > > > +          - mediatek,mt8173-smi-common
-> > > > > +          - mediatek,mt8183-smi-common
-> > > > > +
-> > > > > +      - description: for mt7623
-> > > > > +        items:
-> > > > > +          - const: mediatek,mt7623-smi-common
-> > > > > +          - const: mediatek,mt2701-smi-common
-> > > > > +
-> > > > > +  reg:
-> > > > > +    maxItems: 1
-> > > > > +
-> > > > > +  clocks:
-> > > > > +    description: |
-> > > > > +      apb and smi are mandatory. the async is only for generation 1 smi HW.
-> > > > > +      gals(global async local sync) also is optional, here is the list which
-> > > > > +      require gals: mt6779 and mt8183.
-> > > > > +    minItems: 2
-> > > > > +    maxItems: 4
-> > > > > +    items:
-> > > > > +      - description: apb is Advanced Peripheral Bus clock, It's the clock for
-> > > > > +          setting the register.
-> > > > > +      - description: smi is the clock for transfer data and command.
-> > > > > +      - description: async is asynchronous clock, it help transform the smi clock
-> > > > > +          into the emi clock domain.
-> > > > > +      - description: gals0 is the path0 clock of gals.
-> > > > > +      - description: gals1 is the path1 clock of gals.
-> > > > > +
-> > > > > +  clock-names:
-> > > > > +    oneOf:
-> > > > > +      - items:
-> > > > > +          - const: apb
-> > > > > +          - const: smi
-> > > > > +      - items:
-> > > > > +          - const: apb
-> > > > > +          - const: smi
-> > > > > +          - const: async
-> > > > > +      - items:
-> > > > > +          - const: apb
-> > > > > +          - const: smi
-> > > > > +          - const: gals0
-> > > > > +          - const: gals1
-> > > >
-> > > > Similarly to my comment to other properties, this requirement per
-> > > > compatible should be part of the schema within 'if-then'.
-> > >
-> > > I'm not so familiar with this format. Do this has "if-then-'else
-> > > if'-then-else"?
-> > 
-> > These are mutually exclusive conditions, so you can skip else:
-> >  - if-then
-> >  - if-then
-> >  - if-then
-> > It will be more readable then stacking 'if' under 'else'
-> 
-> Thanks. I will use something like this:
-> 
->  anyOf:
+Em Mon, 12 Oct 2020 14:35:57 +0900
+Alexandre Courbot <acourbot@chromium.org> escreveu:
 
-Then it should be oneOf as only one condition can be valid.
-
-Best regards,
-Krzysztof
-
->    - if: #gen1 hw
->      then:
->        use apb/smi/async clocks
+> The addition of MT8183 support added a dependency on the SCP remoteproc
+> module. However the initial patch used the "select" Kconfig directive,
+> which may result in the SCP module to not be compiled if remoteproc was
+> disabled. In such a case, mtk-vcodec would try to link against
+> non-existent SCP symbols. "select" was clearly misused here as explained
+> in kconfig-language.txt.
 > 
->    - if: #gen2 hw that has gals.
->      then:
->        use apb/smi/gals0/gals1 clocks
->      else: # gen2 hw that doesn't have gals.
->        use apb/smi clocks.
+> Replace this by a "depends" directive on at least one of the VPU and
+> SCP modules, to allow the driver to be compiled as long as one of these
+> is enabled, and adapt the code to support this new scenario.
+> 
+> Also adapt the Kconfig text to explain the extra requirements for MT8173
+> and MT8183.
+> 
+> Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
+> Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> ---
+>  drivers/media/platform/Kconfig                | 22 +++++++++++++++----
+>  drivers/media/platform/mtk-vcodec/Makefile    | 10 +++++++--
+>  .../platform/mtk-vcodec/mtk_vcodec_fw_priv.h  | 18 +++++++++++++++
+>  3 files changed, 44 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> index a3cb104956d5..457b6c39ddc0 100644
+> --- a/drivers/media/platform/Kconfig
+> +++ b/drivers/media/platform/Kconfig
+> @@ -253,18 +253,32 @@ config VIDEO_MEDIATEK_VCODEC
+>  	depends on MTK_IOMMU || COMPILE_TEST
+>  	depends on VIDEO_DEV && VIDEO_V4L2
+>  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on VIDEO_MEDIATEK_VPU || MTK_SCP
+> +	# The two following lines ensure we have the same state ("m" or "y") as
+> +	# our dependencies, to avoid missing symbols during link.
+> +	depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
+> +	depends on MTK_SCP || !MTK_SCP
+>  	select VIDEOBUF2_DMA_CONTIG
+>  	select V4L2_MEM2MEM_DEV
+> -	select VIDEO_MEDIATEK_VPU
+> -	select MTK_SCP
+> +	select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
+> +	select VIDEO_MEDIATEK_VCODEC_SCP if MTK_SCP
+>  	help
+>  	    Mediatek video codec driver provides HW capability to
+> -	    encode and decode in a range of video formats
+> -	    This driver rely on VPU driver to communicate with VPU.
+> +	    encode and decode in a range of video formats on MT8173
+> +	    and MT8183.
+> +
+> +	    Note that support for MT8173 requires VIDEO_MEDIATEK_VPU to
+> +	    also be selected. Support for MT8183 depends on MTK_SCP.
+>  
+>  	    To compile this driver as modules, choose M here: the
+>  	    modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
+
+Just my 2 cents here, and to complement my last e-mail, the helper message
+here IMO is a lot more confusing than if you do this, instead:
+
+	config VIDEO_MEDIATEK_CODEC
+	         depends on VIDEO_MEDIATEK_VPU_SCP || VIDEO_MEDIATEK_VPU
+		 default y
+
+	config VIDEO_MEDIATEK_VPU
+            depends on VIDEO_DEV && VIDEO_V4L2
+            depends on ARCH_MEDIATEK || COMPILE_TEST
+            tristate "Enable Mediatek Video Processor Unit for MT8173"
+	    help
+		Select this option to enable Mediatek VPU on MT8173.
+
+	config VIDEO_MEDIATEK_VPU_SCP
+            depends on VIDEO_DEV && VIDEO_V4L2
+            depends on ARCH_MEDIATEK || COMPILE_TEST
+            tristate "Enable Mediatek Video Processor Unit for MT8183"
+	    help
+		Select this option to enable Mediatek VPU on MT8183.
+
+To be clear, from my side, I can live with either one of the alternatives,
+but, IMHO, the above is a lot clearer for anyone wanting to use
+VPU, as, if MTK_SCP is disabled, the MT8183 Kconfig prompt will
+disappear.
+
+
+Thanks,
+Mauro
 
 _______________________________________________
 Linux-mediatek mailing list
