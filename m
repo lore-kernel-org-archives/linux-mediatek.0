@@ -2,23 +2,22 @@ Return-Path: <SRS0=564r=DU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18E97C433E7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 16:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 133F9C433E7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 16:55:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3CA92528A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 16:20:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8434F252F8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 16:55:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F5hoJKA7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3CA92528A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RCUPyWua"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8434F252F8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,50 +25,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+0+BvbpySBIEvdwE90gPXDBSvER013dKsPtqIb0OSvI=; b=F5hoJKA7y8e+lWD7fYYTE3okw
-	hFZyqCGh/65Z5zguA/Oa9H0z89UnbWZBn0lYL2PNPthbLW2qmJBVJk4cju5OfL5IcFqP5xpLg/ze0
-	+h0D6JeWyg5tw6gCMRHSEZmXxXrhJJtmce2u6/1U16icUlEfLim2t/saZeUn/cXjcLcMsOkDejlhm
-	EgMbxWxIgfhlb7zsMT582dAMqYVKdQU7xsSy+Smo3CdYQLvqsFIwSWn4YpfsnBNN/UuMvQKQcwZGK
-	MSt47CJIKldAsG9S/3XOcyenbtkfHwk9V9ik2OXFzNBQpyjINhcxjGtKcuNt1wtiyrzqFyv1Ndu1A
-	ArJoZUJhQ==;
+	 bh=9+Q95j6v692QlqnpoV3tcoJjYSd07eXr+OhniNp1LaY=; b=RCUPyWuayvenZkXXTmW0U/i4G
+	K2IlFmSchx+Srs50O1dbjCuMoHSf7gAUyYtXp8S/QIXkDGYHuHzB8hQwnhctJcroa0XxaYaujkJuj
+	w9zzJNbBYulxsfNcgmYXpxDPMnHlfKbVhRk3DtmL1nbgB34rXkaU5ucnlK9zEPCcdfURyML/nwpKQ
+	4rn2407uTKaFVpcMy5uMYVY+wBpbaS/a93Sn4Xgb3aWVl/ckRIkA+jFn/k8exjAVFCnV9+HIohY/x
+	II9i+IhR1aeMg5++IfKV3jT4CKQnbyhZqqqJvV7tGbEFSHPVH2+sL0TjbjoMdOlQfzlpLpuZw80Tg
+	1Fp1WbDrQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSN1u-0002ba-Nv; Tue, 13 Oct 2020 16:20:02 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1kSNaV-00082C-9w; Tue, 13 Oct 2020 16:55:47 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSN1h-0002W1-4n; Tue, 13 Oct 2020 16:19:53 +0000
-IronPort-SDR: W5cVx7Vo6rFaNFKKPyt54acfIfwVLKerGIALM25CDDfF7Nz7SDCX+ZR/N38KtUOQyCAoG+FiNP
- y5y0cESXTkxA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9773"; a="166002514"
-X-IronPort-AV: E=Sophos;i="5.77,371,1596524400"; d="scan'208";a="166002514"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Oct 2020 09:19:45 -0700
-IronPort-SDR: T8CrZoL7o9D/gVxeRdZ1w+UB9VXZEPeyTugyDTUgyUio4vkkogw9VjeNzSt23mVkk3v+HfkVb3
- YLFk4KOX3RHg==
-X-IronPort-AV: E=Sophos;i="5.77,371,1596524400"; d="scan'208";a="318350702"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Oct 2020 09:19:41 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 12D87205E8; Tue, 13 Oct 2020 19:19:39 +0300 (EEST)
-Date: Tue, 13 Oct 2020 19:19:39 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [PATCH v15 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-Message-ID: <20201013161938.GE13341@paasikivi.fi.intel.com>
-References: <20201013130503.2412-1-dongchun.zhu@mediatek.com>
- <20201013130503.2412-2-dongchun.zhu@mediatek.com>
+ id 1kSNaP-00080S-Ai; Tue, 13 Oct 2020 16:55:42 +0000
+Received: by mail-oi1-f194.google.com with SMTP id w204so124911oiw.1;
+ Tue, 13 Oct 2020 09:55:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=1Oz6Xfj76J5UebP7W/wnJQsjdJjBRc1UsbNsPfdE2SU=;
+ b=jfT4ojSFsj6FL5GFLl12+U8BMnjoWxBhADF9Deb33bWHqewWHqlsBn9Rk4lRgH5cDb
+ fZG0IkBQ5Y4bLO9xjpk3BOMlc9Wnct2e7SEnVajDa6Vp0AFXToNVEvn6kMQVAkLmhUpO
+ N7RPArifBZy4DNPGaDAcgNgpXuMj2DUGIw50CPS0gJkrSCDR8yBkFFtP8nEN/g5bApB/
+ N7PsSg4Awd41iUxDO60gVfeeVp6yncUKZ0R1ttynn0ionip8ztgH72nQ1b9xeJorXWvg
+ LNGWEyVGjMAWyQtGSHOX4puS0Vyz/d7d54kkxVZ0kfzmDd1+p2rRbQ7FD+dzN43Bgrwk
+ ZirQ==
+X-Gm-Message-State: AOAM531g8hKupsHx7H4Zh+7mD85W6w8B0aIegwYtaPfng7O65Z9byzoV
+ kg31W/VDRxd+Wk+UaQ58cA==
+X-Google-Smtp-Source: ABdhPJybTuOcoxZ4SOf+C3/3IaOFYEcbMnTh6G+tmhKIT0Nm26q4BedGaMMNk77+QFkru5lJJlOl+A==
+X-Received: by 2002:aca:afcc:: with SMTP id y195mr430066oie.30.1602608140255; 
+ Tue, 13 Oct 2020 09:55:40 -0700 (PDT)
+Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id r80sm164332oor.31.2020.10.13.09.55.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Oct 2020 09:55:39 -0700 (PDT)
+Received: (nullmailer pid 3684302 invoked by uid 1000);
+ Tue, 13 Oct 2020 16:55:38 -0000
+Date: Tue, 13 Oct 2020 11:55:38 -0500
+From: Rob Herring <robh@kernel.org>
+To: Wenbin Mei <wenbin.mei@mediatek.com>
+Subject: Re: [PATCH v6 1/4] dt-bindings: mmc: Convert mtk-sd to json-schema
+Message-ID: <20201013165538.GA3678156@bogus>
+References: <20201012124547.16649-1-wenbin.mei@mediatek.com>
+ <20201012124547.16649-2-wenbin.mei@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201013130503.2412-2-dongchun.zhu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20201012124547.16649-2-wenbin.mei@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_121949_379306_6E2C137A 
-X-CRM114-Status: GOOD (  26.95  )
+X-CRM114-CacheID: sfid-20201013_125541_386573_CC41C5E7 
+X-CRM114-Status: GOOD (  27.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,228 +85,259 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, shengnan.wang@mediatek.com, tfiga@chromium.org,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
-
-On Tue, Oct 13, 2020 at 09:05:02PM +0800, Dongchun Zhu wrote:
-> Add YAML device tree binding for OV02A10 CMOS image sensor, and the
-> relevant MAINTAINERS entries.
+On Mon, Oct 12, 2020 at 08:45:44PM +0800, Wenbin Mei wrote:
+> Convert the mtk-sd binding to DT schema format using json-schema.
 > 
-> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
 > ---
->  .../bindings/media/i2c/ovti,ov02a10.yaml           | 162 +++++++++++++++++++++
->  MAINTAINERS                                        |   7 +
->  2 files changed, 169 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+>  .../devicetree/bindings/mmc/mtk-sd.txt        |  75 --------
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 163 ++++++++++++++++++
+>  2 files changed, 163 insertions(+), 75 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>  create mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> deleted file mode 100644
+> index 26a8f320a156..000000000000
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> +++ /dev/null
+> @@ -1,75 +0,0 @@
+> -* MTK MMC controller
+> -
+> -The MTK  MSDC can act as a MMC controller
+> -to support MMC, SD, and SDIO types of memory cards.
+> -
+> -This file documents differences between the core properties in mmc.txt
+> -and the properties used by the msdc driver.
+> -
+> -Required properties:
+> -- compatible: value should be either of the following.
+> -	"mediatek,mt8135-mmc": for mmc host ip compatible with mt8135
+> -	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+> -	"mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
+> -	"mediatek,mt8516-mmc": for mmc host ip compatible with mt8516
+> -	"mediatek,mt6779-mmc": for mmc host ip compatible with mt6779
+> -	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
+> -	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
+> -	"mediatek,mt7622-mmc": for MT7622 SoC
+> -	"mediatek,mt7623-mmc", "mediatek,mt2701-mmc": for MT7623 SoC
+> -	"mediatek,mt7620-mmc", for MT7621 SoC (and others)
+> -
+> -- reg: physical base address of the controller and length
+> -- interrupts: Should contain MSDC interrupt number
+> -- clocks: Should contain phandle for the clock feeding the MMC controller
+> -- clock-names: Should contain the following:
+> -	"source" - source clock (required)
+> -	"hclk" - HCLK which used for host (required)
+> -	"source_cg" - independent source clock gate (required for MT2712)
+> -	"bus_clk" - bus clock used for internal register access (required for MT2712 MSDC0/3)
+> -- pinctrl-names: should be "default", "state_uhs"
+> -- pinctrl-0: should contain default/high speed pin ctrl
+> -- pinctrl-1: should contain uhs mode pin ctrl
+> -- vmmc-supply: power to the Core
+> -- vqmmc-supply: power to the IO
+> -
+> -Optional properties:
+> -- assigned-clocks: PLL of the source clock
+> -- assigned-clock-parents: parent of source clock, used for HS400 mode to get 400Mhz source clock
+> -- hs400-ds-delay: HS400 DS delay setting
+> -- mediatek,hs200-cmd-int-delay: HS200 command internal delay setting.
+> -				This field has total 32 stages.
+> -				The value is an integer from 0 to 31.
+> -- mediatek,hs400-cmd-int-delay: HS400 command internal delay setting
+> -				This field has total 32 stages.
+> -				The value is an integer from 0 to 31.
+> -- mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
+> -				       If present,HS400 command responses are sampled on rising edges.
+> -				       If not present,HS400 command responses are sampled on falling edges.
+> -- mediatek,latch-ck: Some SoCs do not support enhance_rx, need set correct latch-ck to avoid data crc
+> -		     error caused by stop clock(fifo full)
+> -		     Valid range = [0:0x7]. if not present, default value is 0.
+> -		     applied to compatible "mediatek,mt2701-mmc".
+> -- resets: Phandle and reset specifier pair to softreset line of MSDC IP.
+> -- reset-names: Should be "hrst".
+> -
+> -Examples:
+> -mmc0: mmc@11230000 {
+> -	compatible = "mediatek,mt8173-mmc", "mediatek,mt8135-mmc";
+> -	reg = <0 0x11230000 0 0x108>;
+> -	interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
+> -	vmmc-supply = <&mt6397_vemc_3v3_reg>;
+> -	vqmmc-supply = <&mt6397_vio18_reg>;
+> -	clocks = <&pericfg CLK_PERI_MSDC30_0>,
+> -	         <&topckgen CLK_TOP_MSDC50_0_H_SEL>;
+> -	clock-names = "source", "hclk";
+> -	pinctrl-names = "default", "state_uhs";
+> -	pinctrl-0 = <&mmc0_pins_default>;
+> -	pinctrl-1 = <&mmc0_pins_uhs>;
+> -	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
+> -	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
+> -	hs400-ds-delay = <0x14015>;
+> -	mediatek,hs200-cmd-int-delay = <26>;
+> -	mediatek,hs400-cmd-int-delay = <14>;
+> -	mediatek,hs400-cmd-resp-sel-rising;
+> -};
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
 > new file mode 100644
-> index 0000000..fb98964
+> index 000000000000..21a2fce5b7ba
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> @@ -0,0 +1,162 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +# Copyright (c) 2020 MediaTek Inc.
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -0,0 +1,163 @@
+> +# SPDX-License-Identifier: GPL-2.0
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
+> +$id: http://devicetree.org/schemas/mmc/mtk-sd.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
+> +title: MTK MSDC Storage Host Controller Binding
 > +
 > +maintainers:
-> +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
+> +  - Chaotian Jing <chaotian.jing@mediatek.com>
+> +  - Wenbin Mei <wenbin.mei@mediatek.com>
 > +
-> +description: |-
-> +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> +  image sensor, which is the latest production derived from Omnivision's CMOS
-> +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> +  sensor output is available via CSI-2 serial data output.
+> +allOf:
+> +  - $ref: mmc-controller.yaml#
 > +
 > +properties:
 > +  compatible:
-> +    const: ovti,ov02a10
-> +
-> +  reg:
-> +    maxItems: 1
+> +    oneOf:
+> +      - enum:
+> +        - mediatek,mt2701-mmc
+> +        - mediatek,mt2712-mmc
+> +        - mediatek,mt6779-mmc
+> +        - mediatek,mt7620-mmc
+> +        - mediatek,mt7622-mmc
+> +        - mediatek,mt8135-mmc
+> +        - mediatek,mt8173-mmc
+> +        - mediatek,mt8183-mmc
+> +        - mediatek,mt8516-mmc
+> +      - items:
+> +        - const: mediatek,mt7623-mmc
+> +        - const: mediatek,mt2701-mmc
 > +
 > +  clocks:
-> +    maxItems: 1
+> +    description:
+> +      Should contain phandle for the clock feeding the MMC controller.
+> +    minItems: 2
+> +    maxItems: 4
+> +    items:
+> +      - description: source clock (required).
+> +      - description: HCLK which used for host (required).
+> +      - description: independent source clock gate (required for MT2712).
+> +      - description: bus clock used for internal register access (required for MT2712 MSDC0/3).
 > +
 > +  clock-names:
-> +    description:
-> +      External clock for the sensor.
-> +    items:
-> +      - const: eclk
-> +
-> +  clock-frequency:
-> +    description:
-> +      Frequency of the eclk clock in Hz.
-> +
-> +  dovdd-supply:
-> +    description:
-> +      Definition of the regulator used as Digital I/O voltage supply.
-> +
-> +  avdd-supply:
-> +    description:
-> +      Definition of the regulator used as Analog voltage supply.
-> +
-> +  dvdd-supply:
-> +    description:
-> +      Definition of the regulator used as Digital core voltage supply.
-> +
-> +  powerdown-gpios:
-> +    description:
-> +      Must be the device tree identifier of the GPIO connected to the
-> +      PD_PAD pin. This pin is used to place the OV02A10 into standby mode
-> +      or shutdown mode. As the line needs to be high for the powerdown mode
-> +      to be active, it should be marked GPIO_ACTIVE_HIGH.
-> +    maxItems: 1
-> +
-> +  reset-gpios:
-> +    description:
-> +      Must be the device tree identifier of the GPIO connected to the
-> +      RST_PD pin. If specified, it will be asserted during driver probe.
-> +      As the line needs to be low for the reset to be active, it should be
-> +      marked GPIO_ACTIVE_LOW.
-> +    maxItems: 1
-> +
-> +  rotation:
-> +    description:
-> +      Definition of the sensor's placement.
-> +    allOf:
-> +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> +      - enum:
-> +          - 0    # Sensor Mounted Upright
-> +          - 180  # Sensor Mounted Upside Down
-> +        default: 0
-> +
-> +  ovti,mipi-clock-voltage:
-> +    description:
-> +      An array of 2-tuples items, and each item consists of link frequency and
-> +      MIPI clock voltage unit like <freq-kHz volt-unit>. Clock voltage unit is
-> +      dependent upon link speed, indicating MIPI transmission speed select that
-> +      controls D-PHY timing setting by adjusting MIPI clock voltage to improve
-> +      the clock driver capability.
-> +    $ref: "/schemas/types.yaml#/definitions/uint32-array"
 > +    minItems: 2
-> +    default: [390000, 4]
-
-Why do you have the link frequency here as well?
-
-In principle this does belong to the endpoint as link frequencies are
-specific to that, but I don't mind; there's just a single port anyway.
-
+> +    maxItems: 4
+> +    items:
+> +      - const: source
+> +      - const: hclk
+> +      - const: source_cg
+> +      - const: bus_clk
 > +
-> +  # See ../video-interfaces.txt for details
-> +  port:
-> +    type: object
-> +    additionalProperties: false
+> +  pinctrl-names:
+> +    items:
+> +      - const: default
+> +      - const: state_uhs
+> +
+> +  pinctrl-0:
 > +    description:
-> +      Output port node, single endpoint describing the CSI-2 transmitter.
+> +      should contain default/high speed pin ctrl.
+> +    maxItems: 1
 > +
-> +    properties:
-> +      endpoint:
-> +        type: object
-> +        additionalProperties: false
+> +  pinctrl-1:
+> +    description:
+> +      should contain uhs mode pin ctrl.
+> +    maxItems: 1
 > +
-> +        properties:
-> +          link-frequencies: true
-> +          remote-endpoint: true
+> +  assigned-clocks:
+> +    description:
+> +      PLL of the source clock.
+> +    maxItems: 1
 > +
-> +        required:
-> +          - link-frequencies
-> +          - remote-endpoint
+> +  assigned-clock-parents:
+> +    description:
+> +      parent of source clock, used for HS400 mode to get 400Mhz source clock.
+> +    maxItems: 1
 > +
-> +    required:
-> +      - endpoint
+> +  hs400-ds-delay:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      HS400 DS delay setting.
+> +    minimum: 0
+> +    maximum: 0xffffffff
+> +
+> +  mediatek,hs200-cmd-int-delay:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      HS200 command internal delay setting.
+> +      This field has total 32 stages.
+> +      The value is an integer from 0 to 31.
+> +    minimum: 0
+> +    maximum: 31
+> +
+> +  mediatek,hs400-cmd-int-delay:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      HS400 command internal delay setting.
+> +      This field has total 32 stages.
+> +      The value is an integer from 0 to 31.
+> +    minimum: 0
+> +    maximum: 31
+> +
+> +  mediatek,hs400-cmd-resp-sel-rising:
+> +    $ref: /schemas/types.yaml#/definitions/flag
+> +    description:
+> +      HS400 command response sample selection.
+> +      If present, HS400 command responses are sampled on rising edges.
+> +      If not present, HS400 command responses are sampled on falling edges.
+> +
+> +  mediatek,latch-ck:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Some SoCs do not support enhance_rx, need set correct latch-ck to avoid
+> +      data crc error caused by stop clock(fifo full) Valid range = [0:0x7].
+> +      if not present, default value is 0.
+> +      applied to compatible "mediatek,mt2701-mmc".
+> +    minimum: 0
+> +    maximum: 7
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    const: hrst
 > +
 > +required:
 > +  - compatible
 > +  - reg
+> +  - interrupts
 > +  - clocks
 > +  - clock-names
-> +  - clock-frequency
-> +  - dovdd-supply
-> +  - avdd-supply
-> +  - dvdd-supply
-> +  - powerdown-gpios
-> +  - reset-gpios
-> +  - port
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/gpio/gpio.h>
-> +
-> +    i2c {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        ov02a10: camera-sensor@3d {
-> +            compatible = "ovti,ov02a10";
-> +            reg = <0x3d>;
-> +
-> +            powerdown-gpios = <&pio 107 GPIO_ACTIVE_HIGH>;
-> +            reset-gpios = <&pio 109 GPIO_ACTIVE_LOW>;
-> +
-> +            clocks = <&ov02a10_clk>;
-> +            clock-names = "eclk";
-> +            clock-frequency = <24000000>;
-> +
-> +            rotation = <180>;
-> +            ovti,mipi-clock-voltage = <390000 4>;
-> +
-> +            dovdd-supply = <&ov02a10_dovdd>;
-> +            avdd-supply = <&ov02a10_avdd>;
-> +            dvdd-supply = <&ov02a10_dvdd>;
-> +
-> +            port {
-> +                wcam_out: endpoint {
-> +                    link-frequencies = /bits/ 64 <390000000>;
-> +                    remote-endpoint = <&mipi_in_wcam>;
-> +                };
-> +            };
-> +        };
-> +    };
-> +
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index deaafb6..48aa7a7 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -12718,6 +12718,13 @@ M:	Harald Welte <laforge@gnumonks.org>
->  S:	Maintained
->  F:	drivers/char/pcmcia/cm4040_cs.*
->  
-> +OMNIVISION OV02A10 SENSOR DRIVER
-> +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
-> +L:	linux-media@vger.kernel.org
-> +S:	Maintained
-> +T:	git git://linuxtv.org/media_tree.git
-> +F:	Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> +
->  OMNIVISION OV13858 SENSOR DRIVER
->  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
->  L:	linux-media@vger.kernel.org
-> -- 
-> 2.9.2
+> +  - pinctrl-names
+> +  - pinctrl-0
+> +  - pinctrl-1
+> +  - vmmc-supply
+> +  - vqmmc-supply
 
--- 
-Sakari Ailus
+Add:
+
+unevaluatedProperties: false
+
+With that,
+
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
