@@ -1,92 +1,93 @@
-Return-Path: <SRS0=Vqxm=DT=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=564r=DU=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E54AC433E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 21:06:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC937C433E7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 00:57:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23DD6206DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2020 21:06:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 45531218AC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 00:57:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nJ43l+6r";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="17HX+CBl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23DD6206DC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="unkdEVgH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="YaZxFjgx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45531218AC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tPOGFh/0wePg0tgENyNR3Og79UVzKhz2GmmAfeYCYqo=; b=nJ43l+6r2Fy+rUNFvjVYsy7g5
-	i4tnmqbIcY2I3v1+qZg4/+xPWeZ5m0CT0mY+YXq0Ro1ivd/gHesvfNFgdlsVopDodjjpnQ6kndIlQ
-	jSP40XoziS5dng3sPPGxaHE4dNm6Wx7keBxpGponwhyOgH7EI0mt6KeR3vgWwRBZtDtIavnxUl3tk
-	PPEcbnq3uWaW2J2Olr+2lN1qEV6tzZ6zQn4j61He4jT/uwAMPQ2zUT+PAzBDKqlwd64kEqtrgnECg
-	Jdaasa+Lu1e191V8jz0T8Hbs4WATM62Oycg49rCjNg6AD5LSiebwwJr+6OmO3jpiWI0KsfHTPlTo5
-	dET1eNOMw==;
+	 bh=o9XF5qTGFuoBqDuM/qe5I8eNZRlyeXebRhYlKbifG4s=; b=unkdEVgHlmsHvH/vVnyOMMD54
+	+M111o6aS2bBuHkcA6sWNRV/f44T9Wxrgg/f8nS0z/efafkFue8ojslMEjy21ouPnCSe6yPCNDNO7
+	IwvnZ2ThhCpzpBmZhjxqzT6po2+oHRd+wzmMEMqQu3tTfT5Da2qrhYJli4JN53391PJrO5DFC10ft
+	RRBgbGhXrD6lqvhm+GNpfDcXMcJO97d0TLKXzTLIZR8c/jEbv8TwquN83JiR8Eoq7dcY+7Zbu2R16
+	83vQtQ95asJyPAoGVHNbbJF0CF55dpGuhxrZ0IrMFgPV1UBTexuqR7A0+QTcHfaPjxXcnh3AjWq2u
+	ZFjXyasGA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kS51Q-0004JV-JR; Mon, 12 Oct 2020 21:06:20 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kS8dP-0004qX-Kx; Tue, 13 Oct 2020 00:57:47 +0000
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kS4o7-0006Mk-PL
- for linux-mediatek@lists.infradead.org; Mon, 12 Oct 2020 20:52:38 +0000
-Received: by mail-wr1-x442.google.com with SMTP id s9so8771735wro.8
- for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2020 13:52:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=e+bkzKiAfFdHWo2iBUMur2DQuOMcGF3zo5qvmeIt97g=;
- b=17HX+CBl3cCBM8alB53y26WgGSoL4yOdOTcjv5H317ipfio7nzX8ecLju5ILpEI5EN
- VsxVuJSujCOxvw7fq0mDp/2Dgv52ZJTIIQb19saH7DtAo5qpg3tChqg9LVDrjN2Weyvy
- lAd50rifN+a/W7r/4Or3BhSU4izPchvEdBWItIk5lzLatuRPePwdT1UpdXlSlFQAMnsN
- YXoq5oXhCvHs4VFJocaCRnFiy6SGJzbou78OKfH604JXyekoYmWvAHnuO9yvrdBNKFN9
- rNusTFsKDIRfhZ7KO6P3kiaxVrY5Bo9uaHmuqGTFujq0MzdKrlnAGDU4fENxWa6QHSi1
- ZD4A==
+ id 1kS8dL-0004p7-NG
+ for linux-mediatek@lists.infradead.org; Tue, 13 Oct 2020 00:57:45 +0000
+Received: by mail-ot1-x341.google.com with SMTP id n61so17527204ota.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2020 17:57:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IpSz3HxdqBPCuQgrwDIdFKu49ndcXOrnJ/LSogHFcdo=;
+ b=YaZxFjgx8OxLAvGkEa/K8lOYgoWppNLXoHMQLq/M/T8xc0lOztQHwL6GZPWSJ7p4DZ
+ T1qV5HWZabpqYPjHqCrSTAbj34tLChVDVjzdWlWTSPgwxfcWusNj1+Kdn3SdsR2UOXx5
+ BFhADJ9a2Wv/8twux/lP3MHmwDSZjQSPJB5Do=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=e+bkzKiAfFdHWo2iBUMur2DQuOMcGF3zo5qvmeIt97g=;
- b=k/N/3doe1l5TjLoNYrLcZVX2ECKlmHbP5Qq0mSiJrj/DNCeW5dcUa3/TUhSslvCTUS
- M+sSKCnkR/ssfyf7uWMhPNDB4vpbvafDJlAFVnchBbpErItOE3rGWz3xHQwiTGwAzqmw
- eG9CO4dwbNzViVRkUnoCpWKyLS25J+vg90RjUOVgTLGUycbLSELxXn5jioyf94Akk/zA
- 5BDp5vuEiIoA9Hp2p489zUGfGEwBdupMD4HG6fZwIO3VG0fIMpaZHQczaH/o3e29Mai8
- qE0RLxcnr6cYhuxvDAX0uhCyX/TE1DRJ5LBgI1xtQA4dA5SPbzrNJ8ytQqB2JY0Ymd41
- 4IxQ==
-X-Gm-Message-State: AOAM530y45Ysu+pxZ7CChuonGi9CXYe/JyIMuuvjnHv8DL9r9Ht727Yi
- /1Zy5u8i0bxxA7J798I32CT37w==
-X-Google-Smtp-Source: ABdhPJxM+7DnCHKyvrcJBWveKSAlmwc8SbAavQH79tcH238Z72uusz7nKP34YEXTbOsLpmRNUG4YmQ==
-X-Received: by 2002:adf:df07:: with SMTP id y7mr34659457wrl.347.1602535952752; 
- Mon, 12 Oct 2020 13:52:32 -0700 (PDT)
-Received: from localhost.localdomain (170.175.185.81.rev.sfr.net.
- [81.185.175.170])
- by smtp.gmail.com with ESMTPSA id o184sm3623936wmo.37.2020.10.12.13.52.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 13:52:31 -0700 (PDT)
-From: Fabien Parent <fparent@baylibre.com>
-To: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-iio@vger.kernel.org
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8516: add auxadc node
-Date: Mon, 12 Oct 2020 22:52:18 +0200
-Message-Id: <20201012205218.3010868-2-fparent@baylibre.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201012205218.3010868-1-fparent@baylibre.com>
-References: <20201012205218.3010868-1-fparent@baylibre.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IpSz3HxdqBPCuQgrwDIdFKu49ndcXOrnJ/LSogHFcdo=;
+ b=pBMHWca+3Ebuy4zBc+fPGc0oQlHiHEWGP83wD6gk3mTy/R4QCymq6jTquUXDWnbQED
+ lVBm90FITcFbbdep7ObU9lZDxtpEk2EfwUeamC/M6qxjFCRYAnjBIIbZf9W5XqjVV32H
+ oqiOnXC/pLWW7GaIc65Ity3abl8K19omFD2KkUcy08VRqjiJkwIzD4oGAyJdlcHOr95Y
+ FUt2wTRfOa3gkef0frhW3YwTXIJAX4w8SfWrjQDhe6IszeBqF+EpGYRUC1o3pk2DmNx6
+ lo+9w8YpVu1I29T7CpXBZleFrzQvbLeTXK2nzwxaSucyTISNsScIvcOfotMDGQ1Ak5jV
+ X2IQ==
+X-Gm-Message-State: AOAM530fR8hULNKSQ81ZGX3ZzJFmJUwp8jqVXVcA3MrrN3tV1kHIjj4h
+ DWfRC8SZhrlZRIT3HpwfSdBEAO2rm/l0JGpI
+X-Google-Smtp-Source: ABdhPJwpcGGp9HLsWbVo59lEYPCcTezjJTIktU30lDSA8qKK9IC+jdHGn3Saw6LSGXvf+wY8LQCtlA==
+X-Received: by 2002:a9d:ecc:: with SMTP id 70mr20549273otj.66.1602550661316;
+ Mon, 12 Oct 2020 17:57:41 -0700 (PDT)
+Received: from mail-ot1-f48.google.com (mail-ot1-f48.google.com.
+ [209.85.210.48])
+ by smtp.gmail.com with ESMTPSA id 8sm10558895oii.45.2020.10.12.17.57.40
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Oct 2020 17:57:40 -0700 (PDT)
+Received: by mail-ot1-f48.google.com with SMTP id m13so17517010otl.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2020 17:57:40 -0700 (PDT)
+X-Received: by 2002:a9d:242:: with SMTP id 60mr8187117otb.141.1602550659528;
+ Mon, 12 Oct 2020 17:57:39 -0700 (PDT)
 MIME-Version: 1.0
+References: <20201012053557.4102148-1-acourbot@chromium.org>
+ <20201012053557.4102148-3-acourbot@chromium.org>
+ <b9afc70f-9787-6513-29e7-41ffd6972da0@infradead.org>
+In-Reply-To: <b9afc70f-9787-6513-29e7-41ffd6972da0@infradead.org>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Tue, 13 Oct 2020 09:57:25 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MW8KvoxO8KNXM5azgijMT9aSis8ZZ=mumA0_JyQTbKyVQ@mail.gmail.com>
+Message-ID: <CAPBb6MW8KvoxO8KNXM5azgijMT9aSis8ZZ=mumA0_JyQTbKyVQ@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] media: mtk-vcodec: fix build breakage when one of
+ VPU or SCP is enabled
+To: Randy Dunlap <rdunlap@infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_165236_159506_EC6EC8F8 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20201012_205743_832400_D03F59B9 
+X-CRM114-Status: GOOD (  33.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,44 +99,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: lars@metafoo.de, Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org,
- pmeerw@pmeerw.net, knaack.h@gmx.de, matthias.bgg@gmail.com, jic23@kernel.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Alexandre Courbot <gnurou@gmail.com>, LKML <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add node for the auxadc IP. The IP is compatible with the one found
-in MT8173 SoC.
+On Tue, Oct 13, 2020 at 12:00 AM Randy Dunlap <rdunlap@infradead.org> wrote:
+>
+> On 10/11/20 10:35 PM, Alexandre Courbot wrote:
+> > The addition of MT8183 support added a dependency on the SCP remoteproc
+> > module. However the initial patch used the "select" Kconfig directive,
+> > which may result in the SCP module to not be compiled if remoteproc was
+> > disabled. In such a case, mtk-vcodec would try to link against
+> > non-existent SCP symbols. "select" was clearly misused here as explained
+> > in kconfig-language.txt.
+> >
+> > Replace this by a "depends" directive on at least one of the VPU and
+> > SCP modules, to allow the driver to be compiled as long as one of these
+> > is enabled, and adapt the code to support this new scenario.
+> >
+> > Also adapt the Kconfig text to explain the extra requirements for MT8173
+> > and MT8183.
+> >
+> > Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
+>
+> That Ack applied to v2. I have not tested nor acked this version of the patch.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8516.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Sorry about that - I was careless and left it in the log.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index 89af661e7f63..943c426e9aaf 100644
---- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -470,5 +470,15 @@ usb0_port: usb-phy@11110800 {
- 				#phy-cells = <1>;
- 			};
- 		};
-+
-+		auxadc: adc@11003000 {
-+			compatible = "mediatek,mt8516-auxadc",
-+				     "mediatek,mt8173-auxadc";
-+			reg = <0 0x11003000 0 0x1000>;
-+			clocks = <&topckgen CLK_TOP_AUX_ADC>;
-+			clock-names = "main";
-+			#io-channel-cells = <1>;
-+			status = "disabled";
-+		};
- 	};
- };
--- 
-2.28.0
-
+>
+> > Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> > ---
+> >  drivers/media/platform/Kconfig                | 22 +++++++++++++++----
+> >  drivers/media/platform/mtk-vcodec/Makefile    | 10 +++++++--
+> >  .../platform/mtk-vcodec/mtk_vcodec_fw_priv.h  | 18 +++++++++++++++
+> >  3 files changed, 44 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> > index a3cb104956d5..457b6c39ddc0 100644
+> > --- a/drivers/media/platform/Kconfig
+> > +++ b/drivers/media/platform/Kconfig
+> > @@ -253,18 +253,32 @@ config VIDEO_MEDIATEK_VCODEC
+> >       depends on MTK_IOMMU || COMPILE_TEST
+> >       depends on VIDEO_DEV && VIDEO_V4L2
+> >       depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +     depends on VIDEO_MEDIATEK_VPU || MTK_SCP
+> > +     # The two following lines ensure we have the same state ("m" or "y") as
+> > +     # our dependencies, to avoid missing symbols during link.
+> > +     depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
+> > +     depends on MTK_SCP || !MTK_SCP
+> >       select VIDEOBUF2_DMA_CONTIG
+> >       select V4L2_MEM2MEM_DEV
+> > -     select VIDEO_MEDIATEK_VPU
+> > -     select MTK_SCP
+> > +     select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
+> > +     select VIDEO_MEDIATEK_VCODEC_SCP if MTK_SCP
+> >       help
+> >           Mediatek video codec driver provides HW capability to
+> > -         encode and decode in a range of video formats
+> > -         This driver rely on VPU driver to communicate with VPU.
+> > +         encode and decode in a range of video formats on MT8173
+> > +         and MT8183.
+> > +
+> > +         Note that support for MT8173 requires VIDEO_MEDIATEK_VPU to
+> > +         also be selected. Support for MT8183 depends on MTK_SCP.
+> >
+> >           To compile this driver as modules, choose M here: the
+> >           modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
+> >
+> > +config VIDEO_MEDIATEK_VCODEC_VPU
+> > +     bool
+> > +
+> > +config VIDEO_MEDIATEK_VCODEC_SCP
+> > +     bool
+> > +
+> >  config VIDEO_MEM2MEM_DEINTERLACE
+> >       tristate "Deinterlace support"
+> >       depends on VIDEO_DEV && VIDEO_V4L2
+> > diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
+> > index 6e1ea3a9f052..4618d43dbbc8 100644
+> > --- a/drivers/media/platform/mtk-vcodec/Makefile
+> > +++ b/drivers/media/platform/mtk-vcodec/Makefile
+> > @@ -25,5 +25,11 @@ mtk-vcodec-enc-y := venc/venc_vp8_if.o \
+> >  mtk-vcodec-common-y := mtk_vcodec_intr.o \
+> >               mtk_vcodec_util.o \
+> >               mtk_vcodec_fw.o \
+> > -             mtk_vcodec_fw_vpu.o \
+> > -             mtk_vcodec_fw_scp.o
+> > +
+> > +ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU),)
+> > +mtk-vcodec-common-y += mtk_vcodec_fw_vpu.o
+> > +endif
+> > +
+> > +ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP),)
+> > +mtk-vcodec-common-y += mtk_vcodec_fw_scp.o
+> > +endif
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
+> > index 51f1694a7c7d..b41e66185cec 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
+> > @@ -27,8 +27,26 @@ struct mtk_vcodec_fw_ops {
+> >       void (*release)(struct mtk_vcodec_fw *fw);
+> >  };
+> >
+> > +#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU)
+> >  struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+> >                                            enum mtk_vcodec_fw_use fw_use);
+> > +#else
+> > +static inline struct mtk_vcodec_fw *
+> > +mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+> > +                    enum mtk_vcodec_fw_use fw_use)
+> > +{
+> > +     return ERR_PTR(-ENODEV);
+> > +}
+> > +#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_VPU */
+> > +
+> > +#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP)
+> >  struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev);
+> > +#else
+> > +static inline struct mtk_vcodec_fw *
+> > +mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
+> > +{
+> > +     return ERR_PTR(-ENODEV);
+> > +}
+> > +#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_SCP */
+> >
+> >  #endif /* _MTK_VCODEC_FW_PRIV_H_ */
+> >
+>
+>
+> --
+> ~Randy
+> Reported-by: Randy Dunlap <rdunlap@infradead.org>
 
 _______________________________________________
 Linux-mediatek mailing list
