@@ -2,81 +2,81 @@ Return-Path: <SRS0=564r=DU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83D4DC433E7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 09:59:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23253C433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 10:07:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1409A205CA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 09:59:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B3AED207C3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 10:07:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="idzo6p+5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Oe3z23rb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1409A205CA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lw/O7UVm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="H1r5m/r/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3AED207C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GWbhOxK2TNDt9CaHoZLM2Gsk5vXap0aGHxRhrLjlbCk=; b=idzo6p+5Snu0yfOpVfpQoDNY+
-	6hx0IJpJtMBEeeHh7Kns0pi101kTV/BPpVXJtGCHJSxuXpnGv+FxPkq1rc1nMroofzrpwj0k20wVI
-	Tzc2FFC1SI7SihaNsTjF/wTYmEZu8Ac9XD2+HrBIr4mE+UIK6IOIDdJN1e3B2c4L62/rjmIG08ZrB
-	MlBmihpitC+xOdk5f3zVDS0EENndqQi/m2U1LSWj3j15FnBc+j7fIr2DQk7q6xJ8EtE45lMcs5KbN
-	GkFs1mL/vbf4/dNO4AzLARWmpj53ex80IoMUO0PHgrzSaRl2Yhj9JjZJRvhgGe6WfbbkVZH6zPJaD
-	pj9sRAKdQ==;
+	 bh=+wsNSKFkRCUcwsPakL8kMP1Mq3TPU6n1p2wZWQrGRgM=; b=lw/O7UVm5eyi57fgZM7D+CzI9
+	G8BwX/8+DY2479lEkko/Ad8n3SWyH2JC2LpSizsz9Xj4PlhrqxvEU5Mf61AftpeSY9irQom4sMbb7
+	4BhDs0TynWkjKBTsW0b6t56+xh4DrM94k9+4BIzb9ixzppaeBSdWkqiSjJWAYiUKF3PS3x37tmRgI
+	X3Gim04TLTcEcshrS+6OMhuqnwuysZpgx5tktk/dQnaMaDI8MvzARtVFakzWa4e2lpRt7yqyTfniL
+	/WJllJSo7Alsu1dayrtz54juUPocT2lD+hV+NRfNMG7Q3w9x5jV+zZrI4IJmiz1cwdwBgooTSHu/s
+	twzwCaGVg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSH5j-0007bJ-J1; Tue, 13 Oct 2020 09:59:35 +0000
-Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44])
+	id 1kSHCr-0008NC-QC; Tue, 13 Oct 2020 10:06:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSH5f-0007ZU-71
- for linux-mediatek@lists.infradead.org; Tue, 13 Oct 2020 09:59:32 +0000
-Received: by mail-vs1-xe44.google.com with SMTP id u7so10681375vsq.11
- for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2020 02:59:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=94e1CygScgMia7B1GgYR76qDGeMl52sMlW+hZME3L4E=;
- b=Oe3z23rbXIRkPOg82eMRmptX/YGV1GSl80yu3tMF44SgpnJUFRyH31DYBPIeVvMPbO
- AkwaV7uoeoe8eL6jpyuuD7tl6V9On+NalcDWYZrADnmQE3CVirR1MxF9bnSYWP5zvdt7
- UyHnP7uTg6EDTd42K4QoytRC2rUs9qG0VKTtc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=94e1CygScgMia7B1GgYR76qDGeMl52sMlW+hZME3L4E=;
- b=VlrCSPqgO4EjUa+gdFe3jjRH+iovuUnsW4kUYy9GbbMDza/qZchDN6JpiX5BTMkVZr
- yA5W8QRi04ppijXcg0P5NH9q3PLYZN4ecxGeeRKF+8fHSEIhPzwO298dfm2MbjK4R12n
- WBNLZpZzbi6LriWMddy9iJvtyMIWL6GuW87lCYQ7CmJZyImtbgwb4X1+iYdXm/glic/B
- ksSmh8TizeVDosQBmV1PUp/ZiUP9bnk7EDC+EJ6zmX/1oexiITSU9n01lbsbW59xSAXE
- XxLFcPuCnq5pBWUs4OuA8PjPgd43qhQaKclM4it52Lttu6tA/e91WTQ2/sjD05DdtMAV
- yuVQ==
-X-Gm-Message-State: AOAM533Z6Qo1US55OzQaZwOsJ0ZTFOsW9gPawSFKewqGJdX3d24MSqDt
- g8D8/qpR0H7ZOy0pMzkh5suV5/Qt78Iz89DKccpZ5g==
-X-Google-Smtp-Source: ABdhPJzItTAowLdsnhfumm+mBqc+gsfN23zIOAuSGUeM3jKA7wqcYf+bd8TLqy7xqG0e3C5ExIM5O3X1OXfMhR8c9Fs=
-X-Received: by 2002:a05:6102:237c:: with SMTP id
- o28mr15745607vsa.60.1602583167480; 
- Tue, 13 Oct 2020 02:59:27 -0700 (PDT)
+ id 1kSHCp-0008Mi-4g; Tue, 13 Oct 2020 10:06:56 +0000
+X-UUID: ff329d2404eb4db49cf68da3f800f08c-20201013
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=IdZVCR93POltzpR5uqVn2DxtLqlhGyIYZmIkhZH+wys=; 
+ b=H1r5m/r/lLfBOOOXwYwTKx7JKRArPDoiyn6Qp+urvT08Q/7YoGxMVsbNVg0Mnv3raU6JjWQ0ccOzB94FDnxUd6X8lvSRXhXh8B49xmBPXpcble53CzRwZhUVt5D0ppon2eIPAxkK21TEaO37NrJl6J97iHaV/g7UoEpxo8grxbE=;
+X-UUID: ff329d2404eb4db49cf68da3f800f08c-20201013
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 282038816; Tue, 13 Oct 2020 02:06:34 -0800
+Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Oct 2020 03:06:32 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
+ (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 13 Oct 2020 18:06:29 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 13 Oct 2020 18:06:28 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v5 1/1] drm/mediatek: dsi: fix scrolling of panel with small
+ hfp or hbp
+Date: Tue, 13 Oct 2020 18:06:25 +0800
+Message-ID: <20201013100625.13056-2-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.12.5
+In-Reply-To: <20201013100625.13056-1-jitao.shi@mediatek.com>
+References: <20201013100625.13056-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-References: <20201012124547.16649-1-wenbin.mei@mediatek.com>
- <20201012124547.16649-5-wenbin.mei@mediatek.com>
-In-Reply-To: <20201012124547.16649-5-wenbin.mei@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Tue, 13 Oct 2020 17:59:15 +0800
-Message-ID: <CANMq1KAxY2gU4D6XUvq2SVGGq=8HpQ-uWWhgDBnymP=qSiuUDw@mail.gmail.com>
-Subject: Re: [PATCH v6 4/4] mmc: mediatek: Add subsys clock control for MT8192
- msdc
-To: Wenbin Mei <wenbin.mei@mediatek.com>
+X-TM-SNTS-SMTP: 011E660719FE93D9230AC69411231753C59D8B81CDE7FE0ED9AB557A7C9E98D52000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_055931_274931_888E9625 
-X-CRM114-Status: GOOD (  24.63  )
+X-CRM114-CacheID: sfid-20201013_060655_319175_2CE06859 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,169 +88,116 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Devicetree List <devicetree@vger.kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, linux-mmc@vger.kernel.org,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
+ srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
+ cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
+ bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 12, 2020 at 8:46 PM Wenbin Mei <wenbin.mei@mediatek.com> wrote:
->
-> MT8192 msdc is an independent sub system, we need control more bus
-> clocks for it.
-> Add support for the additional subsys clocks to allow it to be
-> configured appropriately.
->
+Replace horizontal_backporch_byte with vm->hback_porch * bpp to aovid
+flowing judgement negative number.
 
-Looks ok now, but I'd still like to see 1 or 2 follow-up patches that:
- 1. In msdc_ungate_clock: check all clk_prepare_enable return values
-before busy looping (to be consistent with how you now handle
-bulk_clks)
- 2. In msdc_of_clock_parse: All these if(IS_ERR(clk)) clk = NULL;
-should be replaced by if (IS_ERR(clk)) return PTR_ERR(clk);
+if ((vm->hfront_porch * dsi_tmp_buf_bpp + horizontal_backporch_byte) >
+	data_phy_cycles * dsi->lanes + delta)
 
-Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 65 +++++++++++++++-----------------------
+ 1 file changed, 25 insertions(+), 40 deletions(-)
 
-> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-> ---
->  drivers/mmc/host/mtk-sd.c | 74 +++++++++++++++++++++++++++++----------
->  1 file changed, 56 insertions(+), 18 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index a704745e5882..c7df7510f120 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -35,6 +35,7 @@
->  #include "cqhci.h"
->
->  #define MAX_BD_NUM          1024
-> +#define MSDC_NR_CLOCKS      3
->
->  /*--------------------------------------------------------------------------*/
->  /* Common Definition                                                        */
-> @@ -425,6 +426,8 @@ struct msdc_host {
->         struct clk *h_clk;      /* msdc h_clk */
->         struct clk *bus_clk;    /* bus clock which used to access register */
->         struct clk *src_clk_cg; /* msdc source clock control gate */
-> +       struct clk *sys_clk_cg; /* msdc subsys clock control gate */
-> +       struct clk_bulk_data bulk_clks[MSDC_NR_CLOCKS];
->         u32 mclk;               /* mmc subsystem clock frequency */
->         u32 src_clk_freq;       /* source clock frequency */
->         unsigned char timing;
-> @@ -784,6 +787,7 @@ static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
->
->  static void msdc_gate_clock(struct msdc_host *host)
->  {
-> +       clk_bulk_disable_unprepare(MSDC_NR_CLOCKS, host->bulk_clks);
->         clk_disable_unprepare(host->src_clk_cg);
->         clk_disable_unprepare(host->src_clk);
->         clk_disable_unprepare(host->bus_clk);
-> @@ -792,10 +796,18 @@ static void msdc_gate_clock(struct msdc_host *host)
->
->  static void msdc_ungate_clock(struct msdc_host *host)
->  {
-> +       int ret;
-> +
->         clk_prepare_enable(host->h_clk);
->         clk_prepare_enable(host->bus_clk);
->         clk_prepare_enable(host->src_clk);
->         clk_prepare_enable(host->src_clk_cg);
-> +       ret = clk_bulk_prepare_enable(MSDC_NR_CLOCKS, host->bulk_clks);
-> +       if (ret) {
-> +               dev_err(host->dev, "Cannot enable pclk/axi/ahb clock gates\n");
-> +               return;
-> +       }
-> +
->         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
->                 cpu_relax();
->  }
-> @@ -2366,6 +2378,48 @@ static void msdc_of_property_parse(struct platform_device *pdev,
->                 host->cqhci = false;
->  }
->
-> +static int msdc_of_clock_parse(struct platform_device *pdev,
-> +                              struct msdc_host *host)
-> +{
-> +       int ret;
-> +
-> +       host->src_clk = devm_clk_get(&pdev->dev, "source");
-> +       if (IS_ERR(host->src_clk))
-> +               return PTR_ERR(host->src_clk);
-> +
-> +       host->h_clk = devm_clk_get(&pdev->dev, "hclk");
-> +       if (IS_ERR(host->h_clk))
-> +               return PTR_ERR(host->h_clk);
-> +
-> +       host->bus_clk = devm_clk_get_optional(&pdev->dev, "bus_clk");
-> +       if (IS_ERR(host->bus_clk))
-> +               host->bus_clk = NULL;
-> +
-> +       /*source clock control gate is optional clock*/
-> +       host->src_clk_cg = devm_clk_get_optional(&pdev->dev, "source_cg");
-> +       if (IS_ERR(host->src_clk_cg))
-> +               host->src_clk_cg = NULL;
-> +
-> +       host->sys_clk_cg = devm_clk_get_optional(&pdev->dev, "sys_cg");
-> +       if (IS_ERR(host->sys_clk_cg))
-> +               host->sys_clk_cg = NULL;
-> +
-> +       /* If present, always enable for this clock gate */
-> +       clk_prepare_enable(host->sys_clk_cg);
-> +
-> +       host->bulk_clks[0].id = "pclk_cg";
-> +       host->bulk_clks[1].id = "axi_cg";
-> +       host->bulk_clks[2].id = "ahb_cg";
-> +       ret = devm_clk_bulk_get_optional(&pdev->dev, MSDC_NR_CLOCKS,
-> +                                        host->bulk_clks);
-> +       if (ret) {
-> +               dev_err(&pdev->dev, "Cannot get pclk/axi/ahb clock gates\n");
-> +               return ret;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
->  static int msdc_drv_probe(struct platform_device *pdev)
->  {
->         struct mmc_host *mmc;
-> @@ -2405,25 +2459,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
->         if (ret)
->                 goto host_free;
->
-> -       host->src_clk = devm_clk_get(&pdev->dev, "source");
-> -       if (IS_ERR(host->src_clk)) {
-> -               ret = PTR_ERR(host->src_clk);
-> -               goto host_free;
-> -       }
-> -
-> -       host->h_clk = devm_clk_get(&pdev->dev, "hclk");
-> -       if (IS_ERR(host->h_clk)) {
-> -               ret = PTR_ERR(host->h_clk);
-> +       ret = msdc_of_clock_parse(pdev, host);
-> +       if (ret)
->                 goto host_free;
-> -       }
-> -
-> -       host->bus_clk = devm_clk_get(&pdev->dev, "bus_clk");
-> -       if (IS_ERR(host->bus_clk))
-> -               host->bus_clk = NULL;
-> -       /*source clock control gate is optional clock*/
-> -       host->src_clk_cg = devm_clk_get(&pdev->dev, "source_cg");
-> -       if (IS_ERR(host->src_clk_cg))
-> -               host->src_clk_cg = NULL;
->
->         host->reset = devm_reset_control_get_optional_exclusive(&pdev->dev,
->                                                                 "hrst");
-> --
-> 2.18.0
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 80b7a082e874..ddddf69ebeaf 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -445,6 +445,7 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	u32 horizontal_backporch_byte;
+ 	u32 horizontal_frontporch_byte;
+ 	u32 dsi_tmp_buf_bpp, data_phy_cycles;
++	u32 delta;
+ 	struct mtk_phy_timing *timing = &dsi->phy_timing;
+ 
+ 	struct videomode *vm = &dsi->vm;
+@@ -466,50 +467,34 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	horizontal_sync_active_byte = (vm->hsync_len * dsi_tmp_buf_bpp - 10);
+ 
+ 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
+-		horizontal_backporch_byte = vm->hback_porch * dsi_tmp_buf_bpp;
++		horizontal_backporch_byte =
++			(vm->hback_porch * dsi_tmp_buf_bpp - 10);
+ 	else
+-		horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
+-					    dsi_tmp_buf_bpp;
++		horizontal_backporch_byte = ((vm->hback_porch + vm->hsync_len) *
++			dsi_tmp_buf_bpp - 10);
+ 
+ 	data_phy_cycles = timing->lpx + timing->da_hs_prepare +
+-			  timing->da_hs_zero + timing->da_hs_exit;
+-
+-	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
+-		if ((vm->hfront_porch + vm->hback_porch) * dsi_tmp_buf_bpp >
+-		    data_phy_cycles * dsi->lanes + 18) {
+-			horizontal_frontporch_byte =
+-				vm->hfront_porch * dsi_tmp_buf_bpp -
+-				(data_phy_cycles * dsi->lanes + 18) *
+-				vm->hfront_porch /
+-				(vm->hfront_porch + vm->hback_porch);
+-
+-			horizontal_backporch_byte =
+-				horizontal_backporch_byte -
+-				(data_phy_cycles * dsi->lanes + 18) *
+-				vm->hback_porch /
+-				(vm->hfront_porch + vm->hback_porch);
+-		} else {
+-			DRM_WARN("HFP less than d-phy, FPS will under 60Hz\n");
+-			horizontal_frontporch_byte = vm->hfront_porch *
+-						     dsi_tmp_buf_bpp;
+-		}
++			  timing->da_hs_zero + timing->da_hs_exit + 3;
++
++	delta = (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) ? 18 : 12;
++
++	if ((vm->hfront_porch * dsi_tmp_buf_bpp + horizontal_backporch_byte) >
++	    data_phy_cycles * dsi->lanes + delta) {
++		horizontal_frontporch_byte =
++			vm->hfront_porch * dsi_tmp_buf_bpp -
++			(data_phy_cycles * dsi->lanes + delta) *
++			vm->hfront_porch /
++			(vm->hfront_porch + vm->hback_porch);
++
++		horizontal_backporch_byte =
++			horizontal_backporch_byte -
++			(data_phy_cycles * dsi->lanes + delta) *
++			vm->hback_porch /
++			(vm->hfront_porch + vm->hback_porch);
+ 	} else {
+-		if ((vm->hfront_porch + vm->hback_porch) * dsi_tmp_buf_bpp >
+-		    data_phy_cycles * dsi->lanes + 12) {
+-			horizontal_frontporch_byte =
+-				vm->hfront_porch * dsi_tmp_buf_bpp -
+-				(data_phy_cycles * dsi->lanes + 12) *
+-				vm->hfront_porch /
+-				(vm->hfront_porch + vm->hback_porch);
+-			horizontal_backporch_byte = horizontal_backporch_byte -
+-				(data_phy_cycles * dsi->lanes + 12) *
+-				vm->hback_porch /
+-				(vm->hfront_porch + vm->hback_porch);
+-		} else {
+-			DRM_WARN("HFP less than d-phy, FPS will under 60Hz\n");
+-			horizontal_frontporch_byte = vm->hfront_porch *
+-						     dsi_tmp_buf_bpp;
+-		}
++		DRM_WARN("HFP + HBP less than d-phy, FPS will under 60Hz\n");
++		horizontal_frontporch_byte = vm->hfront_porch *
++					     dsi_tmp_buf_bpp;
+ 	}
+ 
+ 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+-- 
+2.12.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
