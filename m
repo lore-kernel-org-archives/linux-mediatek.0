@@ -2,59 +2,58 @@ Return-Path: <SRS0=564r=DU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5E89C433E7
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E541EC433DF
 	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 10:24:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D4502080A
+	by mail.kernel.org (Postfix) with ESMTPS id 82D6620872
 	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 10:24:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KLjjsngm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="V5HvdVYD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D4502080A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UQFqduA1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fCOnt20s"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82D6620872
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HYMD/CGDhpt2NrueofYqMkFPyYZ+wEi8Qgkj52/fzmQ=; b=KLjjsngmYgO93qP3fdnz6JMU0
-	nCtYgZwG7Q93Zs0azp+WRae8cclJbZYTFFNW4x0ieATq5h+pznpz4GxU03wwXgHj1xoh/NsUzsgou
-	Zkqh6a/ROvmcUAp0AwqoyAjxD1TFeWPQ3097rfy8FoQSnIPDTppSaX0+rORgbVSPcs/eRIj+1zYx9
-	m941JHsl1b2ULwCuhOmedsQ9vshlfVwP4GmgZL5HJJOzAvMU22eTYnV/GAy+BzV9KZJZIwq+K9dyn
-	g2ytims9a6esYzyVPZj4iknLkeYpOpHXbml2frLNJQBFPlltbvgYQS8tuFs07uPon8jH2WxFAwDRR
-	MHbZLj8mA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DUvYyK2+FYKRznSc6tdrMZInF3rtdqFRKHhXPchN7AM=; b=UQFqduA1YA8rGvfGodjgWJurXD
+	XLwxVCIZNLI3qpD40pclfHUHPff7upHTS4iwgsGG8O3/FM1EErhruhzsXcoBU/9hV1H5ux4z/sNdd
+	p8qrKfP3qTGSJS0Z3E5LNspPHeVPdOku3f4/8WWczC6XMxiXyrtTd31LESGs3KJlmFMoqgt4/qQSP
+	wplljT/9kd/YgIC5moZLkoB8DEtCYGDmt6JQLEIhpiuRpq0e9iaLjeWKJ+VvK6b0yEu7V7sVECpem
+	Q/JCtgpXezwMZRKml72I7rFzKXr3qeJFxsQkm4FriKRt/u92SKxrQMPuXCnwMHa+fRwTOwLwvX2I9
+	MdrKUhYQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSHTb-0001yR-0v; Tue, 13 Oct 2020 10:24:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kSHTb-0001yZ-GV; Tue, 13 Oct 2020 10:24:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSHTW-0001wU-N2; Tue, 13 Oct 2020 10:24:12 +0000
-X-UUID: a5bcb04602ba4ba6a8e0ffa76723d566-20201013
+ id 1kSHTW-0001wf-ON; Tue, 13 Oct 2020 10:24:12 +0000
+X-UUID: 153af6c40f9c4baebe176583004f5113-20201013
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=qiedL0JxT+BhogXj0HkQMKXH7NoJA144Q5PDLAu55v0=; 
- b=V5HvdVYDIVnMjV1ReyIE25A/9J9z/mxi+7NkB1OuCxOlYph/vMTd8BA2APOe5kX0Ih0y8gWT+YmZQ+1d3evIhFSokidgtfHC5dyaileTKtng/JNX3DUZUcWDjZ0tVNsDhFnuoxrEudYfx9CmJA8i2K2PKavoGNb5uOg1XQJBIcE=;
-X-UUID: a5bcb04602ba4ba6a8e0ffa76723d566-20201013
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=PWbV9UJVNx5Rqkoezdtv//5m6JUAtb7ulTjtaO+ZtI8=; 
+ b=fCOnt20siAhWL/cCwso+jL+Fjm66NNvrTfaPF+p+YAwsMOiLXxVu4xYijifMZ/u3VFwxmb4Xgdm4dsOcc6rPRBKy2eXsbAR/a8Njlx1t+IPxNnrPxbdlM++LB3OE+rSsH3uYLkuCCcRS+h9xEWHfB9c087GSz1kAF2vR1OclvE4=;
+X-UUID: 153af6c40f9c4baebe176583004f5113-20201013
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <michael.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 642378932; Tue, 13 Oct 2020 02:24:04 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1045183000; Tue, 13 Oct 2020 02:24:03 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Oct 2020 03:24:02 -0700
+ 15.0.1497.2; Tue, 13 Oct 2020 03:24:01 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 13 Oct 2020 18:24:00 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -63,17 +62,15 @@ From: Michael Kao <michael.kao@mediatek.com>
 To: Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano
  <daniel.lezcano@linaro.org>, <linux-pm@vger.kernel.org>,
  <srv_heupstream@mediatek.com>
-Subject: [v5 2/3] arm64: dts: mt8183: Configure CPU cooling
-Date: Tue, 13 Oct 2020 18:23:57 +0800
-Message-ID: <20201013102358.22588-3-michael.kao@mediatek.com>
+Subject: [v5 0/3] mt8183: Add Mediatek thermal driver and dtsi 
+Date: Tue, 13 Oct 2020 18:23:55 +0800
+Message-ID: <20201013102358.22588-1-michael.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201013102358.22588-1-michael.kao@mediatek.com>
-References: <20201013102358.22588-1-michael.kao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_062410_895339_41B330F7 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20201013_062410_958326_BA6F5430 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,56 +83,75 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Michael Kao <michael.kao@mediatek.com>,
- Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ linux-kernel@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogTWF0dGhpYXMgS2FlaGxja2UgPG1rYUBjaHJvbWl1bS5vcmc+DQoNCkFkZCB0d28gcGFz
-c2l2ZSB0cmlwIHBvaW50cyBhdCA2OMKwQyBhbmQgODDCsEMgZm9yIHRoZSBDUFUgdGVtcGVyYXR1
-cmUuDQoNClNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEthZWhsY2tlIDxta2FAY2hyb21pdW0ub3Jn
-Pg0KU2lnbmVkLW9mZi1ieTogTWljaGFlbCBLYW8gPG1pY2hhZWwua2FvQG1lZGlhdGVrLmNvbT4N
-Ci0tLQ0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLmR0c2kgfCA1NiArKysr
-KysrKysrKysrKysrKysrKysrKysNCiAxIGZpbGUgY2hhbmdlZCwgNTYgaW5zZXJ0aW9ucygrKQ0K
-DQpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMuZHRzaSBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLmR0c2kNCmluZGV4IDFjZDA5M2Nm
-MzNmMy4uMDYxNGYxOGExZWEyIDEwMDY0NA0KLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9tZWRp
-YXRlay9tdDgxODMuZHRzaQ0KKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgx
-ODMuZHRzaQ0KQEAgLTEwLDYgKzEwLDcgQEANCiAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50ZXJy
-dXB0LWNvbnRyb2xsZXIvaXJxLmg+DQogI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3Jlc2V0LWNvbnRy
-b2xsZXIvbXQ4MTgzLXJlc2V0cy5oPg0KICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9waHkvcGh5Lmg+
-DQorI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3RoZXJtYWwvdGhlcm1hbC5oPg0KICNpbmNsdWRlICJt
-dDgxODMtcGluZnVuYy5oIg0KIA0KIC8gew0KQEAgLTQ1MCw2ICs0NTEsNjEgQEANCiAJCQkJcG9s
-bGluZy1kZWxheSA9IDw1MDA+Ow0KIAkJCQl0aGVybWFsLXNlbnNvcnMgPSA8JnRoZXJtYWwgMD47
-DQogCQkJCXN1c3RhaW5hYmxlLXBvd2VyID0gPDUwMDA+Ow0KKw0KKwkJCQl0cmlwcyB7DQorCQkJ
-CQl0aHJlc2hvbGQ6IHRyaXAtcG9pbnRAMCB7DQorCQkJCQkJdGVtcGVyYXR1cmUgPSA8NjgwMDA+
-Ow0KKwkJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47DQorCQkJCQkJdHlwZSA9ICJwYXNzaXZlIjsN
-CisJCQkJCX07DQorDQorCQkJCQl0YXJnZXQ6IHRyaXAtcG9pbnRAMSB7DQorCQkJCQkJdGVtcGVy
-YXR1cmUgPSA8ODAwMDA+Ow0KKwkJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47DQorCQkJCQkJdHlw
-ZSA9ICJwYXNzaXZlIjsNCisJCQkJCX07DQorDQorCQkJCQljcHVfY3JpdDogY3B1LWNyaXQgew0K
-KwkJCQkJCXRlbXBlcmF0dXJlID0gPDExNTAwMD47DQorCQkJCQkJaHlzdGVyZXNpcyA9IDwyMDAw
-PjsNCisJCQkJCQl0eXBlID0gImNyaXRpY2FsIjsNCisJCQkJCX07DQorCQkJCX07DQorDQorCQkJ
-CWNvb2xpbmctbWFwcyB7DQorCQkJCQltYXAwIHsNCisJCQkJCQl0cmlwID0gPCZ0YXJnZXQ+Ow0K
-KwkJCQkJCWNvb2xpbmctZGV2aWNlID0gPCZjcHUwDQorCQkJCQkJCVRIRVJNQUxfTk9fTElNSVQN
-CisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVD4sDQorCQkJCQkJCQkgPCZjcHUxDQorCQkJCQkJCVRI
-RVJNQUxfTk9fTElNSVQNCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVD4sDQorCQkJCQkJCQkgPCZj
-cHUyDQorCQkJCQkJCVRIRVJNQUxfTk9fTElNSVQNCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVD4s
-DQorCQkJCQkJCQkgPCZjcHUzDQorCQkJCQkJCVRIRVJNQUxfTk9fTElNSVQNCisJCQkJCQkJVEhF
-Uk1BTF9OT19MSU1JVD47DQorCQkJCQkJY29udHJpYnV0aW9uID0gPDMwNzI+Ow0KKwkJCQkJfTsN
-CisJCQkJCW1hcDEgew0KKwkJCQkJCXRyaXAgPSA8JnRhcmdldD47DQorCQkJCQkJY29vbGluZy1k
-ZXZpY2UgPSA8JmNwdTQNCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVA0KKwkJCQkJCQlUSEVSTUFM
-X05PX0xJTUlUPiwNCisJCQkJCQkJCSA8JmNwdTUNCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVA0K
-KwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPiwNCisJCQkJCQkJCSA8JmNwdTYNCisJCQkJCQkJVEhF
-Uk1BTF9OT19MSU1JVA0KKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPiwNCisJCQkJCQkJCSA8JmNw
-dTcNCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVA0KKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPjsN
-CisJCQkJCQljb250cmlidXRpb24gPSA8MTAyND47DQorCQkJCQl9Ow0KKwkJCQl9Ow0KIAkJCX07
-DQogDQogCQkJLyogVGhlIHR6dHMxIH4gdHp0czYgZG9uJ3QgbmVlZCB0byBwb2xsaW5nICovDQot
-LSANCjIuMTguMA0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1tZWRpYXRlawo=
+This patchset supports for MT8183 chip to mtk_thermal.c.
+Add thermal zone of all the thermal sensor in SoC for
+another get temperatrue. They don't need to thermal throttle.
+And we bind coolers for thermal zone nodes of cpu_thermal.
+
+Changes in v5:
+    - Rebase to kernel-5.9-rc1.
+    - Revise the title of cover letter.
+    - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
+    - [2/2]
+        -  Add the judgement to the version of raw_to_mcelsius.
+
+Changes in v4:
+    - Rebase to kernel-5.6-rc1.
+    - [1/7]
+        - Squash thermal zone settings in the dtsi from [v3,5/8]
+          arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
+        - Remove the property of interrupts and mediatek,hw-reset-temp.
+    - [2/7]
+        - Correct commit message.
+    - [4/7]
+        - Change the target temperature to the 80C and change the commit message.
+    - [6/7]
+        - Adjust newline alignment.
+        - Fix the judgement on the return value of registering thermal zone.
+
+Changes in v3:
+    - Rebase to kernel-5.5-rc1.
+    - [1/8]
+        - Update sustainable power of cpu, tzts1~5 and tztsABB.
+    - [7/8]
+        - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
+          in dts, which is normal for mt8173, so prompt a warning here instead of
+          failing.
+
+        Return -EAGAIN instead of -EACCESS on the first read of sensor that
+        often are bogus values. This can avoid following warning on boot:
+
+          thermal thermal_zone6: failed to read out thermal zone (-13)
+
+Changes in v2:
+    - [1/8]
+        - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
+    - [4/8]
+        - Add the min opp of cpu throttle.
+
+
+Matthias Kaehlcke (1):
+  arm64: dts: mt8183: Configure CPU cooling
+
+Michael Kao (2):
+  thermal: mediatek: add another get_temp ops for thermal sensors
+  arm64: dts: mt8183: add thermal zone node
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 140 +++++++++++++++++++++++
+ drivers/thermal/mtk_thermal.c            |  99 ++++++++++++----
+ 2 files changed, 216 insertions(+), 23 deletions(-)
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
