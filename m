@@ -2,77 +2,81 @@ Return-Path: <SRS0=564r=DU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 851DCC433DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 09:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83D4DC433E7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 09:59:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E28DF2078A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 09:55:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1409A205CA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 09:59:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rqS+2ia8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="A4XIiW+z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E28DF2078A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="idzo6p+5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Oe3z23rb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1409A205CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1CT6vA0EUWl5pk9c1JRjE4fMrIcA2No7kG7j+NgZL/A=; b=rqS+2ia8XoU9IlwFTxRsgrba/
-	SlXJf8a26DqFVAiHQ8mE+GsTjWFUjIX8FK9FTSV2DZxlbz0nEH94HN67JXPTLfzZo+WWufPs5qCX/
-	1hb5cAfsCC/+0pkW6CdjTNddb/6R9OjQrhDMnVwSP5pfwoV9oHrk4sOXwUb3J0in57Wn7n2q9THm7
-	hI0qAXbFaVBiXPDoqi+g+qBKJAU30tEVfeGRd3fHpPpLt/H/n6V2CrHXaLLH4W9DMVCJHLuz3abXP
-	hDkZ5rowa2OTnPS8Lu+opgR6R+ItMtFP7HXnid8GDrq+XVLbBLTCNll2BjwH6AaVNKK6SS2KWPFnQ
-	DGFfXVglQ==;
+	 bh=GWbhOxK2TNDt9CaHoZLM2Gsk5vXap0aGHxRhrLjlbCk=; b=idzo6p+5Snu0yfOpVfpQoDNY+
+	6hx0IJpJtMBEeeHh7Kns0pi101kTV/BPpVXJtGCHJSxuXpnGv+FxPkq1rc1nMroofzrpwj0k20wVI
+	Tzc2FFC1SI7SihaNsTjF/wTYmEZu8Ac9XD2+HrBIr4mE+UIK6IOIDdJN1e3B2c4L62/rjmIG08ZrB
+	MlBmihpitC+xOdk5f3zVDS0EENndqQi/m2U1LSWj3j15FnBc+j7fIr2DQk7q6xJ8EtE45lMcs5KbN
+	GkFs1mL/vbf4/dNO4AzLARWmpj53ex80IoMUO0PHgrzSaRl2Yhj9JjZJRvhgGe6WfbbkVZH6zPJaD
+	pj9sRAKdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSH1j-00075I-FV; Tue, 13 Oct 2020 09:55:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kSH5j-0007bJ-J1; Tue, 13 Oct 2020 09:59:35 +0000
+Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSH1d-00073F-M8; Tue, 13 Oct 2020 09:55:22 +0000
-X-UUID: f52505b94f07475caa11b607fd8eaed6-20201013
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ErW8HdEIq/FdudMvL/XJKMQpzparYDyvJJpkVDGt/9I=; 
- b=A4XIiW+zG7s81RxaMdCDqufQdbZ2FjDXvL2CrFVN760zsODjdZ1mBJ2F+RNEwF2fMV0bP2jiwcFz1BWdD7NNKVuWxg14t8IgtOTRbMQqq9rUE/EkW7gudbCMBR+87GmORZOH0JEzQxqOmgoNtMbpJOUFdoTu86RNHF0z8lowHQ0=;
-X-UUID: f52505b94f07475caa11b607fd8eaed6-20201013
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1022487791; Tue, 13 Oct 2020 01:55:10 -0800
-Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Oct 2020 02:55:08 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
- (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 13 Oct 2020 17:55:06 +0800
-Received: from [10.16.6.141] (10.16.6.141) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 13 Oct 2020 17:55:03 +0800
-Message-ID: <1602582900.10262.0.camel@mszsdaap41>
-Subject: Re: [v4 PATCH 0/2] fix scrolling of panel with small hfp or hbp
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 13 Oct 2020 17:55:00 +0800
-In-Reply-To: <CAAOTY_-qZni-o11HJeymH74PAFSJw-0Awdz0wdjiQ0u7Ga1MGA@mail.gmail.com>
-References: <20201010070910.11294-1-jitao.shi@mediatek.com>
- <CAAOTY_-qZni-o11HJeymH74PAFSJw-0Awdz0wdjiQ0u7Ga1MGA@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kSH5f-0007ZU-71
+ for linux-mediatek@lists.infradead.org; Tue, 13 Oct 2020 09:59:32 +0000
+Received: by mail-vs1-xe44.google.com with SMTP id u7so10681375vsq.11
+ for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2020 02:59:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=94e1CygScgMia7B1GgYR76qDGeMl52sMlW+hZME3L4E=;
+ b=Oe3z23rbXIRkPOg82eMRmptX/YGV1GSl80yu3tMF44SgpnJUFRyH31DYBPIeVvMPbO
+ AkwaV7uoeoe8eL6jpyuuD7tl6V9On+NalcDWYZrADnmQE3CVirR1MxF9bnSYWP5zvdt7
+ UyHnP7uTg6EDTd42K4QoytRC2rUs9qG0VKTtc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=94e1CygScgMia7B1GgYR76qDGeMl52sMlW+hZME3L4E=;
+ b=VlrCSPqgO4EjUa+gdFe3jjRH+iovuUnsW4kUYy9GbbMDza/qZchDN6JpiX5BTMkVZr
+ yA5W8QRi04ppijXcg0P5NH9q3PLYZN4ecxGeeRKF+8fHSEIhPzwO298dfm2MbjK4R12n
+ WBNLZpZzbi6LriWMddy9iJvtyMIWL6GuW87lCYQ7CmJZyImtbgwb4X1+iYdXm/glic/B
+ ksSmh8TizeVDosQBmV1PUp/ZiUP9bnk7EDC+EJ6zmX/1oexiITSU9n01lbsbW59xSAXE
+ XxLFcPuCnq5pBWUs4OuA8PjPgd43qhQaKclM4it52Lttu6tA/e91WTQ2/sjD05DdtMAV
+ yuVQ==
+X-Gm-Message-State: AOAM533Z6Qo1US55OzQaZwOsJ0ZTFOsW9gPawSFKewqGJdX3d24MSqDt
+ g8D8/qpR0H7ZOy0pMzkh5suV5/Qt78Iz89DKccpZ5g==
+X-Google-Smtp-Source: ABdhPJzItTAowLdsnhfumm+mBqc+gsfN23zIOAuSGUeM3jKA7wqcYf+bd8TLqy7xqG0e3C5ExIM5O3X1OXfMhR8c9Fs=
+X-Received: by 2002:a05:6102:237c:: with SMTP id
+ o28mr15745607vsa.60.1602583167480; 
+ Tue, 13 Oct 2020 02:59:27 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9058B82AC9E991BE078B9380368DAEE655AD1DF6E08AD11FCBEC7D55ED3BBE992000:8
-X-MTK: N
+References: <20201012124547.16649-1-wenbin.mei@mediatek.com>
+ <20201012124547.16649-5-wenbin.mei@mediatek.com>
+In-Reply-To: <20201012124547.16649-5-wenbin.mei@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Tue, 13 Oct 2020 17:59:15 +0800
+Message-ID: <CANMq1KAxY2gU4D6XUvq2SVGGq=8HpQ-uWWhgDBnymP=qSiuUDw@mail.gmail.com>
+Subject: Re: [PATCH v6 4/4] mmc: mediatek: Add subsys clock control for MT8192
+ msdc
+To: Wenbin Mei <wenbin.mei@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_055521_864260_C4AF7927 
-X-CRM114-Status: GOOD (  17.83  )
+X-CRM114-CacheID: sfid-20201013_055931_274931_888E9625 
+X-CRM114-Status: GOOD (  24.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,43 +88,170 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, David Airlie <airlied@linux.ie>,
- huijuan.xie@mediatek.com, stonea168@163.com,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
- Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek
- SoC support" <linux-mediatek@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Devicetree List <devicetree@vger.kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, linux-mmc@vger.kernel.org,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIwLTEwLTEyIGF0IDIzOjIyICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
-PiBIaSwgSml0YW86DQo+IA0KPiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+IOaW
-vCAyMDIw5bm0MTDmnIgxMOaXpSDpgLHlha0g5LiL5Y2IMzowOeWvq+mBk++8mg0KPiA+DQo+ID4g
-Q2hhbmdlcyBzaW5jZSB2MzoNCj4gPiAgLSBSZXZlcnQgdjIsIGZvciB2MiB3aWxsIGNhdXNlIHNv
-bWUgYnJpZGdlIGljIG5vIG91dHB1dC4gdGhlIGNhdXNlDQo+ID4gICAgdGhlIHZpZGVvIGxpbmV0
-aW1lIGRvZXNuJ3QgbWF0Y2ggZGlzcGxheSBtb2RlIGZyb20gZ2V0IG1vZGUuDQo+ID4gIC0gTWFr
-ZSBzdXJlIHRoZSBob3Jpem9udGFsX2Zyb250cG9yY2hfYnl0ZSBhbmQgaG9yaXpvbnRhbF9iYWNr
-cG9yY2hfYnl0ZQ0KPiA+ICAgIGFyZSA+IDAuDQo+IA0KPiBCZWNhdXNlIHYyIGlzIG1lcmdlZCBp
-bnRvIG1haW5saW5lLCBJIHRoaW5rIHlvdSBzaG91bGQgbWVyZ2UgMS8yIGFuZA0KPiAyLzIgdG8g
-b25lIHBhdGNoIHdoaWNoIGZpeCB0aGUgcHJvYmxlbSBjYXVzZWQgYnkgdjIuDQo+IA0KPiBSZWdh
-cmRzLA0KPiBDaHVuLUt1YW5nLg0KPiANCg0KVGhhbmtzIGZvciB5b3VyIHJldmlld2luZy4NCkkn
-bGwgdXBkYXRlIG5leHQgdmVyc2lvbi4NCg0KQmVzdCBSZWdhcmRzDQpKaXRhbw0KDQo+ID4NCj4g
-PiBKaXRhbyBTaGkgKDIpOg0KPiA+ICAgUmV2ZXJ0ICJkcm0vbWVkaWF0ZWs6IGRzaTogRml4IHNj
-cm9sbGluZyBvZiBwYW5lbCB3aXRoIHNtYWxsIGhmcCBvcg0KPiA+ICAgICBoYnAiDQo+ID4gICBk
-cm0vbWVkaWF0ZWs6IGRzaTogZml4IHNjcm9sbGluZyBvZiBwYW5lbCB3aXRoIHNtYWxsIGhmcCBv
-ciBoYnANCj4gPg0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIHwgNjUg
-KysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gPiAgMSBmaWxlIGNoYW5n
-ZWQsIDI1IGluc2VydGlvbnMoKyksIDQwIGRlbGV0aW9ucygtKQ0KPiA+DQo+ID4gLS0NCj4gPiAy
-LjEyLjUNCj4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Xw0KPiA+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QNCj4gPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnDQo+ID4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwNCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+On Mon, Oct 12, 2020 at 8:46 PM Wenbin Mei <wenbin.mei@mediatek.com> wrote:
+>
+> MT8192 msdc is an independent sub system, we need control more bus
+> clocks for it.
+> Add support for the additional subsys clocks to allow it to be
+> configured appropriately.
+>
+
+Looks ok now, but I'd still like to see 1 or 2 follow-up patches that:
+ 1. In msdc_ungate_clock: check all clk_prepare_enable return values
+before busy looping (to be consistent with how you now handle
+bulk_clks)
+ 2. In msdc_of_clock_parse: All these if(IS_ERR(clk)) clk = NULL;
+should be replaced by if (IS_ERR(clk)) return PTR_ERR(clk);
+
+Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 74 +++++++++++++++++++++++++++++----------
+>  1 file changed, 56 insertions(+), 18 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index a704745e5882..c7df7510f120 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -35,6 +35,7 @@
+>  #include "cqhci.h"
+>
+>  #define MAX_BD_NUM          1024
+> +#define MSDC_NR_CLOCKS      3
+>
+>  /*--------------------------------------------------------------------------*/
+>  /* Common Definition                                                        */
+> @@ -425,6 +426,8 @@ struct msdc_host {
+>         struct clk *h_clk;      /* msdc h_clk */
+>         struct clk *bus_clk;    /* bus clock which used to access register */
+>         struct clk *src_clk_cg; /* msdc source clock control gate */
+> +       struct clk *sys_clk_cg; /* msdc subsys clock control gate */
+> +       struct clk_bulk_data bulk_clks[MSDC_NR_CLOCKS];
+>         u32 mclk;               /* mmc subsystem clock frequency */
+>         u32 src_clk_freq;       /* source clock frequency */
+>         unsigned char timing;
+> @@ -784,6 +787,7 @@ static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
+>
+>  static void msdc_gate_clock(struct msdc_host *host)
+>  {
+> +       clk_bulk_disable_unprepare(MSDC_NR_CLOCKS, host->bulk_clks);
+>         clk_disable_unprepare(host->src_clk_cg);
+>         clk_disable_unprepare(host->src_clk);
+>         clk_disable_unprepare(host->bus_clk);
+> @@ -792,10 +796,18 @@ static void msdc_gate_clock(struct msdc_host *host)
+>
+>  static void msdc_ungate_clock(struct msdc_host *host)
+>  {
+> +       int ret;
+> +
+>         clk_prepare_enable(host->h_clk);
+>         clk_prepare_enable(host->bus_clk);
+>         clk_prepare_enable(host->src_clk);
+>         clk_prepare_enable(host->src_clk_cg);
+> +       ret = clk_bulk_prepare_enable(MSDC_NR_CLOCKS, host->bulk_clks);
+> +       if (ret) {
+> +               dev_err(host->dev, "Cannot enable pclk/axi/ahb clock gates\n");
+> +               return;
+> +       }
+> +
+>         while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+>                 cpu_relax();
+>  }
+> @@ -2366,6 +2378,48 @@ static void msdc_of_property_parse(struct platform_device *pdev,
+>                 host->cqhci = false;
+>  }
+>
+> +static int msdc_of_clock_parse(struct platform_device *pdev,
+> +                              struct msdc_host *host)
+> +{
+> +       int ret;
+> +
+> +       host->src_clk = devm_clk_get(&pdev->dev, "source");
+> +       if (IS_ERR(host->src_clk))
+> +               return PTR_ERR(host->src_clk);
+> +
+> +       host->h_clk = devm_clk_get(&pdev->dev, "hclk");
+> +       if (IS_ERR(host->h_clk))
+> +               return PTR_ERR(host->h_clk);
+> +
+> +       host->bus_clk = devm_clk_get_optional(&pdev->dev, "bus_clk");
+> +       if (IS_ERR(host->bus_clk))
+> +               host->bus_clk = NULL;
+> +
+> +       /*source clock control gate is optional clock*/
+> +       host->src_clk_cg = devm_clk_get_optional(&pdev->dev, "source_cg");
+> +       if (IS_ERR(host->src_clk_cg))
+> +               host->src_clk_cg = NULL;
+> +
+> +       host->sys_clk_cg = devm_clk_get_optional(&pdev->dev, "sys_cg");
+> +       if (IS_ERR(host->sys_clk_cg))
+> +               host->sys_clk_cg = NULL;
+> +
+> +       /* If present, always enable for this clock gate */
+> +       clk_prepare_enable(host->sys_clk_cg);
+> +
+> +       host->bulk_clks[0].id = "pclk_cg";
+> +       host->bulk_clks[1].id = "axi_cg";
+> +       host->bulk_clks[2].id = "ahb_cg";
+> +       ret = devm_clk_bulk_get_optional(&pdev->dev, MSDC_NR_CLOCKS,
+> +                                        host->bulk_clks);
+> +       if (ret) {
+> +               dev_err(&pdev->dev, "Cannot get pclk/axi/ahb clock gates\n");
+> +               return ret;
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+>  static int msdc_drv_probe(struct platform_device *pdev)
+>  {
+>         struct mmc_host *mmc;
+> @@ -2405,25 +2459,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>         if (ret)
+>                 goto host_free;
+>
+> -       host->src_clk = devm_clk_get(&pdev->dev, "source");
+> -       if (IS_ERR(host->src_clk)) {
+> -               ret = PTR_ERR(host->src_clk);
+> -               goto host_free;
+> -       }
+> -
+> -       host->h_clk = devm_clk_get(&pdev->dev, "hclk");
+> -       if (IS_ERR(host->h_clk)) {
+> -               ret = PTR_ERR(host->h_clk);
+> +       ret = msdc_of_clock_parse(pdev, host);
+> +       if (ret)
+>                 goto host_free;
+> -       }
+> -
+> -       host->bus_clk = devm_clk_get(&pdev->dev, "bus_clk");
+> -       if (IS_ERR(host->bus_clk))
+> -               host->bus_clk = NULL;
+> -       /*source clock control gate is optional clock*/
+> -       host->src_clk_cg = devm_clk_get(&pdev->dev, "source_cg");
+> -       if (IS_ERR(host->src_clk_cg))
+> -               host->src_clk_cg = NULL;
+>
+>         host->reset = devm_reset_control_get_optional_exclusive(&pdev->dev,
+>                                                                 "hrst");
+> --
+> 2.18.0
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
