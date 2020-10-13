@@ -2,89 +2,79 @@ Return-Path: <SRS0=564r=DU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EEF18C433E7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 12:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 262ABC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 12:50:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C72F224DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 12:44:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B625722510
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2020 12:50:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qouZ2pjZ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="eDW3vgoS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C72F224DF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="C8sb10so"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B625722510
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uzirHYGMSOevlsrSnXpbO6Rimyc7pJt2jWdaiv4WOCM=; b=qouZ2pjZgFbx//V13qnXeFsst
-	I4x4qH7K01nfaefdxfTmxhMjECp2fyiTM+l0RZEXoubtahVpkE7oInBUOSkZSx9Oa35fUz+QAL2lR
-	1WmeObO19Xe2BpohTB6Nu1NjNA6EFDYoG4+4/nzWt58jJnQjh7wBwBtDlwtR+ctc7JZ7TdA6864Gb
-	4yUT0hDmIE7Zbp7AiA7lIsBhE9zSnNRPXVzg43yJlUp5GsK7C8btp/WWKVlyO6Rlyzhb/Zk02mH5v
-	YPzt0ko8j2dPHrG0D5ra3674ufuOey6Voz6Ptlc96PqCIZIA1G5HZPSNpFnTXUrkju1YGET9qdrVB
-	NTf4Sws8Q==;
+	 bh=DVP76N3ob6CqahGPsd9WCS0nzhVzW+kIVVDtDGEc998=; b=C8sb10soiHFSyGVpcHNHNeX8E
+	mitLMgeLldjXFXgl6VOdu4ATWd1F7TA+TdNXq9JS3eMYpInWmE1QPRWSH7IlGGg1se8gQ92uJ5Io8
+	gwx3OAH9CtuM5goSOWEKI+3YnI0tu7esLbgg3rXxh6wP+OfKzuU9a2R1rMn8Ip3rek76J9+8OdrAY
+	1izMADpGmuB8N8TkP+8KLlzwurr0KQePR7acl5TW00pbf6EPv6Rb+hT7UgAui4g+Xj+qWoXSb5qA/
+	DBBq95hBWVIqF5oM8Hf5HHvitvR8Qa3qI05sorbhHkSdNO8v/izJYO+MWNpJSUW216D7oYi2DWJsw
+	7TkOANJrA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSJfb-0007VL-Vd; Tue, 13 Oct 2020 12:44:48 +0000
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+	id 1kSJkX-0007qb-LL; Tue, 13 Oct 2020 12:49:53 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSJfa-0007TY-4n
- for linux-mediatek@lists.infradead.org; Tue, 13 Oct 2020 12:44:46 +0000
-Received: by mail-pj1-x1041.google.com with SMTP id u3so2126133pjr.3
- for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2020 05:44:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=A1J1FFqE4TaVcT8yK2I3InKcPDjZwlb3XxiGUU1SQgg=;
- b=eDW3vgoS62vHVYJO8n0dz5zs+hzYx5++e5wCZXTPY8p8iKIDgBAfAUEc/l712Uf5Mb
- 2LKE2AG9sG/gSvVtVIjwRrkCssw/Nx7cR7snu1hRvKbzDfmKfIIekfgbU7M8ePkz9+44
- AnOEn5Ut2ZmPSSJXCPTRjmEe8YVk0lmOm+u9A=
+ id 1kSJkT-0007pO-GB; Tue, 13 Oct 2020 12:49:50 +0000
+Received: by mail-oi1-f194.google.com with SMTP id s81so9948839oie.13;
+ Tue, 13 Oct 2020 05:49:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=A1J1FFqE4TaVcT8yK2I3InKcPDjZwlb3XxiGUU1SQgg=;
- b=P5ATzsDc9ti6he+JU35UX6j5Nn2805HNABS9w74el8QTRWZBKAtdEpj3ywklXixUY4
- MYVMU+lpQBwz7DGjS+h6bKzE96Ez2HGDVpxSgmDitGN83a4/KXL5lrzU7TviPhuFHwZK
- RTviXm58Qx9nUSwE40B9RQat8uUuFCGXk2+xBAvv+P1QXdNcRoU+xVtIrEYs9uLBsDr4
- iI97sh/PCSJyqSzwQ3A+2cw7L23GmhiEho1nnhyvDc3zTH1v8fJyrDisQZIjVIeqDbzy
- W7PpBJnu/UWc16gLay/FsQ7gNs9/uApqRWnqDPXpEv3XCtWeUPEAylOLu1hHyMcgu3LJ
- t1XQ==
-X-Gm-Message-State: AOAM532r7odapq6fbFXMlbuz1tbi5y6udZ5mnJzrsaPg6Eq8QVQ8rZrn
- pceLpxw+ZvfEcBfVxZXOFRULiA==
-X-Google-Smtp-Source: ABdhPJx+QHG9+ml+rhwLtC/IlzRba159/wBY8WWuYYP7WtIx1xlGmYeYcCA4j+fGgbnhgD0V/3hAtA==
-X-Received: by 2002:a17:902:9347:b029:d3:7c08:86c6 with SMTP id
- g7-20020a1709029347b02900d37c0886c6mr26862688plp.84.1602593084449; 
- Tue, 13 Oct 2020 05:44:44 -0700 (PDT)
-Received: from acourbot.tok.corp.google.com
- ([2401:fa00:8f:203:eeb1:d7ff:fe57:b7e5])
- by smtp.gmail.com with ESMTPSA id b20sm18914536pjo.37.2020.10.13.05.44.42
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=h+4lx1NmWtXfOrC3rFHXIicegWjQFHB1Qz6MGdDJkro=;
+ b=LYdhVmoHCLy2E4/6Dwe3aTnuSk/v1woAASXY6yOwa2USaj8X5OS/3puQ/En+hRDSmx
+ rl9Lz8cygPIUFyLdzzuJb0aTwf4wj+PpTzCUiGCC8MFrpQi+BndCr3ce2igPyPIgx8lW
+ FWv79bWctnYmJwrBlCmue9qpU0IJrkco6HIwGt8+2x70EL8XsuhL4LFmJFnwQEEJJ+Dh
+ fSeCEXac5O+MWXmrkfQrgD7zwocmskREWtRHw3IQPTIkLINdAvcw1dt+ODekaF3Slk0u
+ 4Ezr9kOt/ex68xNNeLiqa+KebwongcFi2FDeGQ7GG3seXSMUf/Wn1ALFXoAJ3s6bIVcr
+ V6Nw==
+X-Gm-Message-State: AOAM531QX85oRVdpcFAW/3sKQUvzuofm2rhtmErW4buXDY5f3n1xO0Tm
+ G+h66Wf4HFmC2wCQFa5HfA==
+X-Google-Smtp-Source: ABdhPJzzBhpFlOx96qHNV3x8rQzmHhlP80ozoqo1sj8XLzaIjsAHsnPOnKQvXA/PKTfjxDJM1j/OZA==
+X-Received: by 2002:a05:6808:f:: with SMTP id u15mr6766651oic.34.1602593388830; 
+ Tue, 13 Oct 2020 05:49:48 -0700 (PDT)
+Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id a192sm7632544ooc.12.2020.10.13.05.49.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Oct 2020 05:44:43 -0700 (PDT)
-From: Alexandre Courbot <acourbot@chromium.org>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: [PATCH v4 2/2] media: mtk-vcodec: fix build breakage when one of VPU
- or SCP is enabled
-Date: Tue, 13 Oct 2020 21:44:28 +0900
-Message-Id: <20201013124428.783025-3-acourbot@chromium.org>
-X-Mailer: git-send-email 2.29.0.rc1.297.gfa9743e501-goog
-In-Reply-To: <20201013124428.783025-1-acourbot@chromium.org>
-References: <20201013124428.783025-1-acourbot@chromium.org>
+ Tue, 13 Oct 2020 05:49:47 -0700 (PDT)
+Received: (nullmailer pid 3322788 invoked by uid 1000);
+ Tue, 13 Oct 2020 12:49:46 -0000
+Date: Tue, 13 Oct 2020 07:49:46 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v2 7/8] dt-bindings: usb: convert mediatek,mtu3.txt to
+ YAML schema
+Message-ID: <20201013124946.GA3322281@bogus>
+References: <20201013085207.17749-1-chunfeng.yun@mediatek.com>
+ <20201013085207.17749-7-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201013085207.17749-7-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_084446_202313_44E14CDB 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20201013_084949_554809_3811DD25 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,130 +86,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
- linux-media@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Min Guo <min.guo@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@linux.ie>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The addition of MT8183 support added a dependency on the SCP remoteproc
-module. However the initial patch used the "select" Kconfig directive,
-which may result in the SCP module to not be compiled if remoteproc was
-disabled. In such a case, mtk-vcodec would try to link against
-non-existent SCP symbols. "select" was clearly misused here as explained
-in kconfig-language.txt.
+On Tue, 13 Oct 2020 16:52:06 +0800, Chunfeng Yun wrote:
+> Convert mediatek,mtu3.txt to YAML schema mediatek,mtu3.yaml
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2: new patch
+> ---
+>  .../devicetree/bindings/usb/mediatek,mtu3.txt | 108 ---------
+>  .../bindings/usb/mediatek,mtu3.yaml           | 227 ++++++++++++++++++
+>  2 files changed, 227 insertions(+), 108 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+>  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+> 
 
-Replace this by a "depends" directive on at least one of the VPU and
-SCP modules, to allow the driver to be compiled as long as one of these
-is enabled, and adapt the code to support this new scenario.
 
-Also adapt the Kconfig text to explain the extra requirements for MT8173
-and MT8183.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Reported-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
----
- drivers/media/platform/Kconfig                | 28 ++++++++++++++-----
- drivers/media/platform/mtk-vcodec/Makefile    | 10 +++++--
- .../platform/mtk-vcodec/mtk_vcodec_fw_priv.h  | 18 ++++++++++++
- 3 files changed, 47 insertions(+), 9 deletions(-)
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: usb@11271000: compatible: ['mediatek,mt8173-mtu3'] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: usb@11271000: 'clocks' is a required property
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/mediatek,tphy.example.dt.yaml: usb@11271000: 'clock-names' is a required property
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
 
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index a3cb104956d5..7e152bbb4fa6 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -253,17 +253,31 @@ config VIDEO_MEDIATEK_VCODEC
- 	depends on MTK_IOMMU || COMPILE_TEST
- 	depends on VIDEO_DEV && VIDEO_V4L2
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on VIDEO_MEDIATEK_VPU || MTK_SCP
-+	# The two following lines ensure we have the same state ("m" or "y") as
-+	# our dependencies, to avoid missing symbols during link.
-+	depends on VIDEO_MEDIATEK_VPU || !VIDEO_MEDIATEK_VPU
-+	depends on MTK_SCP || !MTK_SCP
- 	select VIDEOBUF2_DMA_CONTIG
- 	select V4L2_MEM2MEM_DEV
--	select VIDEO_MEDIATEK_VPU
--	select MTK_SCP
-+	select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
-+	select VIDEO_MEDIATEK_VCODEC_SCP if MTK_SCP
- 	help
--	    Mediatek video codec driver provides HW capability to
--	    encode and decode in a range of video formats
--	    This driver rely on VPU driver to communicate with VPU.
-+	  Mediatek video codec driver provides HW capability to
-+	  encode and decode in a range of video formats on MT8173
-+	  and MT8183.
-+
-+	  Note that support for MT8173 requires VIDEO_MEDIATEK_VPU to
-+	  also be selected. Support for MT8183 depends on MTK_SCP.
-+
-+	  To compile this driver as modules, choose M here: the
-+	  modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
-+
-+config VIDEO_MEDIATEK_VCODEC_VPU
-+	bool
- 
--	    To compile this driver as modules, choose M here: the
--	    modules will be called mtk-vcodec-dec and mtk-vcodec-enc.
-+config VIDEO_MEDIATEK_VCODEC_SCP
-+	bool
- 
- config VIDEO_MEM2MEM_DEINTERLACE
- 	tristate "Deinterlace support"
-diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
-index 6e1ea3a9f052..4618d43dbbc8 100644
---- a/drivers/media/platform/mtk-vcodec/Makefile
-+++ b/drivers/media/platform/mtk-vcodec/Makefile
-@@ -25,5 +25,11 @@ mtk-vcodec-enc-y := venc/venc_vp8_if.o \
- mtk-vcodec-common-y := mtk_vcodec_intr.o \
- 		mtk_vcodec_util.o \
- 		mtk_vcodec_fw.o \
--		mtk_vcodec_fw_vpu.o \
--		mtk_vcodec_fw_scp.o
-+
-+ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU),)
-+mtk-vcodec-common-y += mtk_vcodec_fw_vpu.o
-+endif
-+
-+ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP),)
-+mtk-vcodec-common-y += mtk_vcodec_fw_scp.o
-+endif
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-index 51f1694a7c7d..b41e66185cec 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_priv.h
-@@ -27,8 +27,26 @@ struct mtk_vcodec_fw_ops {
- 	void (*release)(struct mtk_vcodec_fw *fw);
- };
- 
-+#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU)
- struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
- 					     enum mtk_vcodec_fw_use fw_use);
-+#else
-+static inline struct mtk_vcodec_fw *
-+mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
-+		       enum mtk_vcodec_fw_use fw_use)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
-+#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_VPU */
-+
-+#if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP)
- struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev);
-+#else
-+static inline struct mtk_vcodec_fw *
-+mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
-+#endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_SCP */
- 
- #endif /* _MTK_VCODEC_FW_PRIV_H_ */
--- 
-2.29.0.rc1.297.gfa9743e501-goog
+
+See https://patchwork.ozlabs.org/patch/1381414
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure dt-schema is up to date:
+
+pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
