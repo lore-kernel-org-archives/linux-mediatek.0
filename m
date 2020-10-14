@@ -2,75 +2,77 @@ Return-Path: <SRS0=JxBa=DV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AFA98C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 13:20:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA6C4C433E7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 13:20:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39DB722201
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 13:20:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5608C22203
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 13:20:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vNxBiFx1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KrFUI0fQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39DB722201
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IC2F/YK2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Mai4hb19"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5608C22203
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0Ox9807tuSm6FiNCA/MApjop482yEZ6NZ99eIQkITR8=; b=vNxBiFx1hJy5ALnxsw2qFwUZyK
-	PjTYQ4qHngDm+CX6lZjl0UxYc7BaE8d6OyetFlkhqVodcIpNZ4Ettk11LKy9yH5dZlmSCA/+z9Lfm
-	jGzkAYFraDeg63UyutGeW2q+q/junuk3MLF3FfxgTo6h0IxRfu3f28QCUma4FH7w1qAm9nJn/MEi3
-	orFGEYPZGAtNZP9vi8yvjL8ykyaCzihpDbshdIo5giNd7sPVOfYMPmvc+XiedC5m0NGy59WyWs5+Q
-	bYNhMyhC+5QbfhECg/7frupn8uU6m5kV/itMaC/YhhwnHk7VLAlOtEn3K3wRBs3DrOBQDabKH2wga
-	0+97roMg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=bnvaZZ29ydbAlYXmEDPEBmA0MN5032XRmqawFu33dEM=; b=IC2F/YK2q15h9Z81Cc+de3pl0
+	EuOcTyEsuhA/lvOEhZbHN/6Yfdbmq5kuBNrFkBLW+t7HrBlL8XOVRvoOh3vpv613gCIv6huM5tuGA
+	6hPh31xtUOi3z2l5xKgze6eA8qQ0EXYdc2lHiSWu8NA3Vc6MxvZCseiz+sFjTJ8qDw+IJMIqvS76t
+	g1Oes331veMTqaNzeHwqdXXXrwZbu4UeYAI+gM3IF5MfANEAOj95jyq7ZaySccAf/Q7SV1AkJtxbo
+	+SYx2gHk27yYaks1CIch89T6sXTSWStPIryYQLblaplr74PsVKTTTGBrMk8vnStexE8BAFNPiFUtK
+	5lUCBHTjQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSghP-00028c-Ba; Wed, 14 Oct 2020 13:20:11 +0000
+	id 1kSghV-0002B5-1m; Wed, 14 Oct 2020 13:20:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSgh7-00020f-TC; Wed, 14 Oct 2020 13:19:55 +0000
-X-UUID: 25bc72fb779b47c1acc3d3efff636ffb-20201014
+ id 1kSgh8-00020r-C3; Wed, 14 Oct 2020 13:19:55 +0000
+X-UUID: 29c67de967514ecc88ec55482ab7610d-20201014
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=VKbmk+q6TZp792M8YotOsz2Eix0rdiCGpnXktYfljzs=; 
- b=KrFUI0fQZnYCJsT9rj2/FfJyHQk9IkMhm7ou2yfCkDe0MhvapxojZ0RgDvyIanOxFS9DVw4x/TZYiaq5drMYWNNOHzNgADWaG35JN/fCKOEQJ9CajopXaDkiKnMsKDxIRz5Yp2ty0pD6pEZvu5ckqNHNX8EMOZt6FFLaJLVhm9I=;
-X-UUID: 25bc72fb779b47c1acc3d3efff636ffb-20201014
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=UUXMeFr2hHlJSZLi34HcTDGs0TPXgBJAsi0hvj0UIoM=; 
+ b=Mai4hb19Mo/gQgfTgYRdaX4mwRcuYFRVVzyoL0sNCokDxYp5igdRYAgIkwBeSqn8wG650v9epvmidUk/rJ+ov+ecJNcA0ViEIWGba16NitAyN0gsVD7CSsZWkYCXjeP+F2WGLCCV0JY6t/uSRJ2Fr9cXwUi+SlEVMLgHKs5GoTU=;
+X-UUID: 29c67de967514ecc88ec55482ab7610d-20201014
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <crystal.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1293133198; Wed, 14 Oct 2020 05:19:43 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 200727637; Wed, 14 Oct 2020 05:19:43 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 14 Oct 2020 06:19:41 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 14 Oct 2020 21:19:38 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 14 Oct 2020 21:19:37 +0800
+ Transport; Wed, 14 Oct 2020 21:19:38 +0800
 From: Crystal Guo <crystal.guo@mediatek.com>
 To: <wim@linux-watchdog.org>, <linux@roeck-us.net>, <robh+dt@kernel.org>,
  <matthias.bgg@gmail.com>
-Subject: [v6,0/4] watchdog: mt8192: add wdt support
-Date: Wed, 14 Oct 2020 21:19:32 +0800
-Message-ID: <20201014131936.20584-1-crystal.guo@mediatek.com>
+Subject: [v6, 1/4] dt-binding: mediatek: watchdog: fix the description of
+ compatible
+Date: Wed, 14 Oct 2020 21:19:33 +0800
+Message-ID: <20201014131936.20584-2-crystal.guo@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201014131936.20584-1-crystal.guo@mediatek.com>
+References: <20201014131936.20584-1-crystal.guo@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AACF75C595E88535A25ED18B74F5FCCC1B0D61D4691CD1ADFFED2FA5B29200222000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201014_091954_104632_82229F89 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20201014_091954_570540_FE4AA6B5 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,69 +86,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-watchdog@vger.kernel.org, srv_heupstream@mediatek.com,
  seiya.wang@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+ linux-mediatek@lists.infradead.org, Crystal Guo <crystal.guo@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patches aim to add watchdog support for MT8192.
+The watchdog driver for MT2712 and MT8183 relies on DT data, so
+the fallback compatible MT6589 won't work.
 
-change in v6:
-1. add change log.
-2. remove Reviewed-by tag on[v5,2/4]
+Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+---
+ Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
-change in v5:
-fix typos on mt8192-reset.h (https://patchwork.kernel.org/patch/11697493/)
-
-
-change in v4:
-just revise v3 commit messages.
-[v4,1/5] fix the description of compatible is Reviewed-by: Matthias and Guenter.
-[v4,2/5] update watchdog device node for mt8183 is Acked-by: Guenter, and will
-be applied to v5.9-next/dts64.
-[v4,4/5] add toprgu reset-controller head file for MT8192 platform is Reviewed-by: Matthias,
-and Acked-by: Guenter.
-[v4,5/5] add support for watchdog device found in MT8192 SoC is Reviewed-by: Matthias and Guenter.
-
-
-change in v3:
-1. separate [v2,1/3] to fix the original mt2712 and mt8183 compatibles and add new board as:
-[v3,1/5] fix mt2712 and mt8183 description of compatible, since mt2712
-and mt8183 also provide sub-system software reset features, but mt6589 not
-support this feature. (Reviewed-by: Matthias)
-[v3,2/5] update watchdog device node for mt8183
-[v3,3/5] update mtk-wdt document for MT8192 platform
-2. [v3, 4/5] is same as [v2,2/3] (Reviewed-by: Matthias)
-3. modify the commit message of [v2,3/3]
-[v3,5/5] add support for watchdog device found in MT8192 SoC(Reviewed-by: Matthias and Guenter)
-
-
-v2 changes:
-Abandon V1 changes,and add the following changes:
-[v2,1/3] update mtk-wdt document for mt2712, mt8183 and mt8192.
-[v2,2/3] add toprgu reset-controller head file for MT8192 platform (Reviewed-by: Matthias)
-[v2,3/3] add support for watchdog device found in MT8192 SoC( Reviewed-by: Matthias)
-
-
-v1 changes:
-Instead of submit the mt8192-reset.h, get the number of
-reset bits from dtsi directly.
-
-Crystal Guo (4):
-  dt-binding: mediatek: watchdog: fix the description of compatible
-  dt-binding: mediatek: mt8192: update mtk-wdt document
-  dt-binding: mt8192: add toprgu reset-controller head file
-  watchdog: mt8192: add wdt support
-
- .../devicetree/bindings/watchdog/mtk-wdt.txt  |  5 ++--
- drivers/watchdog/mtk_wdt.c                    |  6 ++++
- .../reset-controller/mt8192-resets.h          | 30 +++++++++++++++++++
- 3 files changed, 39 insertions(+), 2 deletions(-)
- create mode 100644 include/dt-bindings/reset-controller/mt8192-resets.h
-
-
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index 4dd36bd3f1ad..45eedc2c3141 100644
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -4,13 +4,13 @@ Required properties:
+ 
+ - compatible should contain:
+ 	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
+-	"mediatek,mt2712-wdt", "mediatek,mt6589-wdt": for MT2712
++	"mediatek,mt2712-wdt": for MT2712
+ 	"mediatek,mt6589-wdt": for MT6589
+ 	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
+ 	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+ 	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
+ 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+-	"mediatek,mt8183-wdt", "mediatek,mt6589-wdt": for MT8183
++	"mediatek,mt8183-wdt": for MT8183
+ 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+ 
+ - reg : Specifies base physical address and size of the registers.
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
