@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 403E0C433DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 01:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41BFFC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 01:52:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E77C21D81
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 01:47:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D747421D7B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2020 01:51:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BAV2/zIK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="V4PolhgQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E77C21D81
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ABXGS4t4";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b1SpmACr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D747421D7B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BZrlsMzNctcTb9sV2bAxG1fCjtfA5Nnp01cELu/i8UM=; b=BAV2/zIKWB/wIF1YMeU/KztAq
-	ql2ZvYyFFIjdyq7rP6gt5am9u/mRb+b9zOsm3NBaTL3mMeG0K9W/CmnIwOIUtPg5+6Ny+2poY/55G
-	ITYXhlgx1VBERjatRYXmBlvG8aIyusS8zdwiAGy4+SrgUcQ99dUKpeyaCQEUnY78qLMyRGvYo/SIJ
-	IBuYf1xtWAD0eEdOQe50fcB2+cxNP2fm/nK6rZONBt0C+BfWvOSqYl0MkojSL3cNdOG9mgfWdqSQi
-	62zWeJlaEKcJBa5i3ofqJmWIySqy1tM4oD/0HmJfX35J5cXkiO6vxTgxkNCOXTVYfMcobqqBHdZI9
-	6ahOYWIZw==;
+	 bh=MGUB5xNYq1RaYqJY0C0wAsc90pykROXvL6PVD95a7+0=; b=ABXGS4t4WAheesO1cqBDzwEGt
+	Fv6yv/t3qhtg1VpwkeynJsWmhVNMvgFIEdDjeZdrDTLLJF0/Ut3iAJUC/HowwVLAVab/Bc9G/+bpN
+	6GIe0xyLreIQm9LI4mQlIKhQAPiUs2EkRHdAWpFyYbPkwecBACvmxMBkqDMN47YNhtm+V00ZD2v4p
+	kPQfezA2IrGLzWjOHZsqCZ49FZ6g7ntGiaXrvCBWSIfMVxCEo5MV1++41nQ7Iwodnlo86F3tWPqDT
+	aKBJ7NtPrbgazSWeenXeR6LLxkQ8skZGPkwlOS5lvnUzAsk+QbWAyzrPvv5Tq/5wUAma4JaQhjoFf
+	6v1udN3iA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSVsj-0007hG-9h; Wed, 14 Oct 2020 01:47:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kSVxI-0008F3-OR; Wed, 14 Oct 2020 01:51:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSVsf-0007ek-CB
- for linux-mediatek@lists.infradead.org; Wed, 14 Oct 2020 01:47:06 +0000
-X-UUID: d34c2305473e4bc6915dc09378753ee7-20201013
+ id 1kSVxF-0008DP-B0
+ for linux-mediatek@lists.infradead.org; Wed, 14 Oct 2020 01:51:50 +0000
+X-UUID: 49738f52391d4865b0ff01789405e0cb-20201013
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1Dev3EYWtrIYsy1eSRPZuCs3F1H8Mjhi40scFT162aI=; 
- b=V4PolhgQe+aE6m7Tp16Xxk8wf7Q5pF2/yQYtbyYjWUL2lSuor3NuuwdR4rFIeDRjWqOlcJabLzU2dngJIxbeYQhnWOVktfX1Vh0jE9SWGjOxJ5g/G7lXkLrMieBGzYxCctZ4NlIKeB4iZca5fL9mzkG3QeZuZEq4U+392ip0joM=;
-X-UUID: d34c2305473e4bc6915dc09378753ee7-20201013
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=M0jfuzjqV7E455NTJr6fQC3EWDs6oJ4TvyZIG6UrQ+o=; 
+ b=b1SpmACr+6fR6tNXHlgGYxplz3A/Q76UUCvR+5Dtq3S9b1mBe3f6W5BHHsP6IwkARbqL7SV8JbUnYdd+jHhO6bC+tTgJCW5YOTLwjrhAZP2VoLPnjMLJk/2ItQGIQ1q853L48htV+8EV2XZ9pqs9kxyliI1Jdr/WfIBMVFYkZdM=;
+X-UUID: 49738f52391d4865b0ff01789405e0cb-20201013
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 796431676; Tue, 13 Oct 2020 17:46:59 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Oct 2020 18:44:43 -0700
+ with ESMTP id 1492248560; Tue, 13 Oct 2020 17:51:43 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Oct 2020 18:44:51 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Oct 2020 09:44:41 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Oct 2020 09:44:42 +0800
 Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 14 Oct 2020 09:44:41 +0800
+ Frontend Transport; Wed, 14 Oct 2020 09:44:42 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 2/8] dt-bindings: phy: convert phy-mtk-tphy.txt to YAML
- schema
-Date: Wed, 14 Oct 2020 09:44:28 +0800
-Message-ID: <20201014014434.62239-2-chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 8/8] MAINTAINERS: update MediaTek PHY/USB entry
+Date: Wed, 14 Oct 2020 09:44:34 +0800
+Message-ID: <20201014014434.62239-8-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201014014434.62239-1-chunfeng.yun@mediatek.com>
 References: <20201014014434.62239-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_214705_653025_D82C8185 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20201013_215149_776615_2803C5EA 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,455 +90,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert phy-mtk-tphy.txt to YAML schema mediatek,tphy.yaml
+Due to the phy/usb bindings are converted into YAML schema and
+also renamed, update entries.
+Meanwhile add drivers/usb/host/mtk-xhci* files.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2: modify description and compatible
+v2: new patch
 ---
- .../bindings/phy/mediatek,tphy.yaml           | 263 ++++++++++++++++++
- .../devicetree/bindings/phy/phy-mtk-tphy.txt  | 162 -----------
- 2 files changed, 263 insertions(+), 162 deletions(-)
- create mode 100755 Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
- delete mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+ MAINTAINERS | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-new file mode 100755
-index 000000000000..56ad8be69095
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-@@ -0,0 +1,263 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+# Copyright (c) 2020 MediaTek
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/mediatek,tphy.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek T-PHY Controller Device Tree Bindings
-+
-+maintainers:
-+  - Chunfeng Yun <chunfeng.yun@mediatek.com>
-+
-+description: |
-+  The T-PHY controller supports physical layer functionality for a number of
-+  controllers on MediaTek SoCs, includes USB2.0, USB3.0, PCIe and SATA.
-+
-+  Layout differences of banks between T-PHY V1 (mt8173/mt2701) and
-+  T-PHY V2 (mt2712) when works on USB mode:
-+  -----------------------------------
-+  Version 1:
-+  port        offset    bank
-+  shared      0x0000    SPLLC
-+              0x0100    FMREG
-+  u2 port0    0x0800    U2PHY_COM
-+  u3 port0    0x0900    U3PHYD
-+              0x0a00    U3PHYD_BANK2
-+              0x0b00    U3PHYA
-+              0x0c00    U3PHYA_DA
-+  u2 port1    0x1000    U2PHY_COM
-+  u3 port1    0x1100    U3PHYD
-+              0x1200    U3PHYD_BANK2
-+              0x1300    U3PHYA
-+              0x1400    U3PHYA_DA
-+  u2 port2    0x1800    U2PHY_COM
-+              ...
-+
-+  Version 2:
-+  port        offset    bank
-+  u2 port0    0x0000    MISC
-+              0x0100    FMREG
-+              0x0300    U2PHY_COM
-+  u3 port0    0x0700    SPLLC
-+              0x0800    CHIP
-+              0x0900    U3PHYD
-+              0x0a00    U3PHYD_BANK2
-+              0x0b00    U3PHYA
-+              0x0c00    U3PHYA_DA
-+  u2 port1    0x1000    MISC
-+              0x1100    FMREG
-+              0x1300    U2PHY_COM
-+  u3 port1    0x1700    SPLLC
-+              0x1800    CHIP
-+              0x1900    U3PHYD
-+              0x1a00    U3PHYD_BANK2
-+              0x1b00    U3PHYA
-+              0x1c00    U3PHYA_DA
-+  u2 port2    0x2000    MISC
-+              ...
-+
-+  SPLLC shared by u3 ports and FMREG shared by u2 ports on V1 are put back
-+  into each port; a new bank MISC for u2 ports and CHIP for u3 ports are
-+  added on V2.
-+
-+properties:
-+  $nodename:
-+     pattern: "^t-phy@[0-9a-f]+$"
-+
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-tphy
-+              - mediatek,mt7623-tphy
-+              - mediatek,mt7622-tphy
-+              - mediatek,mt8516-tphy
-+          - const: mediatek,generic-tphy-v1
-+      - items:
-+          - enum:
-+              - mediatek,mt2712-tphy
-+              - mediatek,mt7629-tphy
-+              - mediatek,mt8183-tphy
-+          - const: mediatek,generic-tphy-v2
-+      - const: mediatek,mt2701-u3phy
-+        deprecated: true
-+      - const: mediatek,mt2712-u3phy
-+        deprecated: true
-+      - const: mediatek,mt8173-u3phy
-+
-+  reg:
-+    description: |
-+      Register shared by multiple ports, exclude port's private register.
-+      It is needed for T-PHY V1, such as mt2701 and mt8173, but not for
-+      T-PHY V2, such as mt2712.
-+    maxItems: 1
-+
-+  "#address-cells":
-+      enum: [1, 2]
-+
-+  "#size-cells":
-+      enum: [1, 2]
-+
-+  # Used with non-empty value if optional 'reg' is not provided.
-+  # The format of the value is an arbitrary number of triplets of
-+  # (child-bus-address, parent-bus-address, length).
-+  ranges: true
-+
-+  mediatek,src-ref-clk-mhz:
-+    description:
-+      Frequency of reference clock for slew rate calibrate
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    default: 26
-+
-+  mediatek,src-coef:
-+    description:
-+      Coefficient for slew rate calibrate, depends on SoC process
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    default: 28
-+
-+# Required child node:
-+patternProperties:
-+  "^usb-phy@[0-9a-f]+$":
-+    type: object
-+    description: |
-+      A sub-node is required for each port the controller provides.
-+      Address range information including the usual 'reg' property
-+      is used inside these nodes to describe the controller's topology.
-+
-+    properties:
-+      reg:
-+        maxItems: 1
-+
-+      clocks:
-+        minItems: 1
-+        maxItems: 2
-+        items:
-+          - description: Reference clock, (HS is 48Mhz, SS/P is 24~27Mhz)
-+          - description: Reference clock of analog phy
-+        description: |
-+          Uses both clocks if the clock of analog and digital phys are
-+          separated, otherwise uses "ref" clock only if needed.
-+
-+      clock-names:
-+        minItems: 1
-+        maxItems: 2
-+        items:
-+          - const: ref
-+          - const: da_ref
-+
-+      "#phy-cells":
-+        const: 1
-+        description: |
-+          The cells contain the following arguments.
-+
-+          - description: The PHY type
-+              enum:
-+                - PHY_TYPE_USB2
-+                - PHY_TYPE_USB3
-+                - PHY_TYPE_PCIE
-+                - PHY_TYPE_SATA
-+
-+      #The following optional vendor properties are only for debug or HQA test
-+      mediatek,eye-src:
-+        description:
-+          The value of slew rate calibrate (U2 phy)
-+        $ref: /schemas/types.yaml#/definitions/uint32
-+        minimum: 1
-+        maximum: 7
-+
-+      mediatek,eye-vrt:
-+        description:
-+          The selection of VRT reference voltage (U2 phy)
-+        $ref: /schemas/types.yaml#/definitions/uint32
-+        minimum: 1
-+        maximum: 7
-+
-+      mediatek,eye-term:
-+        description:
-+          The selection of HS_TX TERM reference voltage (U2 phy)
-+        $ref: /schemas/types.yaml#/definitions/uint32
-+        minimum: 1
-+        maximum: 7
-+
-+      mediatek,intr:
-+        description:
-+          The selection of internal resistor (U2 phy)
-+        $ref: /schemas/types.yaml#/definitions/uint32
-+        minimum: 1
-+        maximum: 31
-+
-+      mediatek,discth:
-+        description:
-+          The selection of disconnect threshold (U2 phy)
-+        $ref: /schemas/types.yaml#/definitions/uint32
-+        minimum: 1
-+        maximum: 15
-+
-+      mediatek,bc12:
-+        description:
-+          Specify the flag to enable BC1.2 if support it
-+        type: boolean
-+
-+    required:
-+      - reg
-+      - "#phy-cells"
-+
-+    additionalProperties: false
-+
-+required:
-+  - compatible
-+  - "#address-cells"
-+  - "#size-cells"
-+  - ranges
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/phy/phy.h>
-+    susb: usb@11271000 {
-+        compatible = "mediatek,mt8173-mtu3";
-+        reg = <0x11271000 0x3000>, <0x11280700 0x0100>;
-+        reg-names = "mac", "ippc";
-+        phys = <&u2port0 PHY_TYPE_USB2>,
-+               <&u3port0 PHY_TYPE_USB3>,
-+               <&u2port1 PHY_TYPE_USB2>;
-+        interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-+    };
-+
-+    u3phy: t-phy@11290000 {
-+        compatible = "mediatek,mt8173-u3phy";
-+        reg = <0x11290000 0x800>;
-+        #address-cells = <1>;
-+        #size-cells = <1>;
-+        ranges;
-+        status = "okay";
-+
-+        u2port0: usb-phy@11290800 {
-+            reg = <0x11290800 0x100>;
-+            clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>, <&clk48m>;
-+            clock-names = "ref", "da_ref";
-+            #phy-cells = <1>;
-+            status = "okay";
-+        };
-+
-+        u3port0: usb-phy@11290900 {
-+            reg = <0x11290900 0x700>;
-+            clocks = <&clk26m>;
-+            clock-names = "ref";
-+            #phy-cells = <1>;
-+            status = "okay";
-+        };
-+
-+        u2port1: usb-phy@11291000 {
-+            reg = <0x11291000 0x100>;
-+            #phy-cells = <1>;
-+            status = "okay";
-+        };
-+    };
-+
-+...
-diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-deleted file mode 100644
-index dd75b676b71d..000000000000
---- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-+++ /dev/null
-@@ -1,162 +0,0 @@
--MediaTek T-PHY binding
----------------------------
--
--T-phy controller supports physical layer functionality for a number of
--controllers on MediaTek SoCs, such as, USB2.0, USB3.0, PCIe, and SATA.
--
--Required properties (controller (parent) node):
-- - compatible	: should be one of
--		  "mediatek,generic-tphy-v1"
--		  "mediatek,generic-tphy-v2"
--		  "mediatek,mt2701-u3phy" (deprecated)
--		  "mediatek,mt2712-u3phy" (deprecated)
--		  "mediatek,mt8173-u3phy";
--		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
--		  "mediatek,generic-tphy-v2" on mt2712 instead.
--
--- #address-cells:	the number of cells used to represent physical
--		base addresses.
--- #size-cells:	the number of cells used to represent the size of an address.
--- ranges:	the address mapping relationship to the parent, defined with
--		- empty value: if optional 'reg' is used.
--		- non-empty value: if optional 'reg' is not used. should set
--			the child's base address to 0, the physical address
--			within parent's address space, and the length of
--			the address map.
--
--Required nodes	: a sub-node is required for each port the controller
--		  provides. Address range information including the usual
--		  'reg' property is used inside these nodes to describe
--		  the controller's topology.
--
--Optional properties (controller (parent) node):
-- - reg		: offset and length of register shared by multiple ports,
--		  exclude port's private register. It is needed on mt2701
--		  and mt8173, but not on mt2712.
-- - mediatek,src-ref-clk-mhz	: frequency of reference clock for slew rate
--		  calibrate
-- - mediatek,src-coef	: coefficient for slew rate calibrate, depends on
--		  SoC process
--
--Required properties (port (child) node):
--- reg		: address and length of the register set for the port.
--- #phy-cells	: should be 1 (See second example)
--		  cell after port phandle is phy type from:
--			- PHY_TYPE_USB2
--			- PHY_TYPE_USB3
--			- PHY_TYPE_PCIE
--			- PHY_TYPE_SATA
--
--Optional properties (PHY_TYPE_USB2 port (child) node):
--- clocks	: a list of phandle + clock-specifier pairs, one for each
--		  entry in clock-names
--- clock-names	: may contain
--		  "ref": 48M reference clock for HighSpeed (digital) phy; and 26M
--			reference clock for SuperSpeed (digital) phy, sometimes is
--			24M, 25M or 27M, depended on platform.
--		  "da_ref": the reference clock of analog phy, used if the clocks
--			of analog and digital phys are separated, otherwise uses
--			"ref" clock only if needed.
--
--- mediatek,eye-src	: u32, the value of slew rate calibrate
--- mediatek,eye-vrt	: u32, the selection of VRT reference voltage
--- mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage
--- mediatek,bc12	: bool, enable BC12 of u2phy if support it
--- mediatek,discth	: u32, the selection of disconnect threshold
--- mediatek,intr	: u32, the selection of internal R (resistance)
--
--Example:
--
--u3phy: usb-phy@11290000 {
--	compatible = "mediatek,mt8173-u3phy";
--	reg = <0 0x11290000 0 0x800>;
--	#address-cells = <2>;
--	#size-cells = <2>;
--	ranges;
--
--	u2port0: usb-phy@11290800 {
--		reg = <0 0x11290800 0 0x100>;
--		clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
--		clock-names = "ref";
--		#phy-cells = <1>;
--	};
--
--	u3port0: usb-phy@11290900 {
--		reg = <0 0x11290800 0 0x700>;
--		clocks = <&clk26m>;
--		clock-names = "ref";
--		#phy-cells = <1>;
--	};
--
--	u2port1: usb-phy@11291000 {
--		reg = <0 0x11291000 0 0x100>;
--		clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
--		clock-names = "ref";
--		#phy-cells = <1>;
--	};
--};
--
--Specifying phy control of devices
-----------------------------------
--
--Device nodes should specify the configuration required in their "phys"
--property, containing a phandle to the phy port node and a device type;
--phy-names for each port are optional.
--
--Example:
--
--#include <dt-bindings/phy/phy.h>
--
--usb30: usb@11270000 {
--	...
--	phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
--	phy-names = "usb2-0", "usb3-0";
--	...
--};
--
--
--Layout differences of banks between mt8173/mt2701 and mt2712
---------------------------------------------------------------
--mt8173 and mt2701:
--port        offset    bank
--shared      0x0000    SPLLC
--            0x0100    FMREG
--u2 port0    0x0800    U2PHY_COM
--u3 port0    0x0900    U3PHYD
--            0x0a00    U3PHYD_BANK2
--            0x0b00    U3PHYA
--            0x0c00    U3PHYA_DA
--u2 port1    0x1000    U2PHY_COM
--u3 port1    0x1100    U3PHYD
--            0x1200    U3PHYD_BANK2
--            0x1300    U3PHYA
--            0x1400    U3PHYA_DA
--u2 port2    0x1800    U2PHY_COM
--            ...
--
--mt2712:
--port        offset    bank
--u2 port0    0x0000    MISC
--            0x0100    FMREG
--            0x0300    U2PHY_COM
--u3 port0    0x0700    SPLLC
--            0x0800    CHIP
--            0x0900    U3PHYD
--            0x0a00    U3PHYD_BANK2
--            0x0b00    U3PHYA
--            0x0c00    U3PHYA_DA
--u2 port1    0x1000    MISC
--            0x1100    FMREG
--            0x1300    U2PHY_COM
--u3 port1    0x1700    SPLLC
--            0x1800    CHIP
--            0x1900    U3PHYD
--            0x1a00    U3PHYD_BANK2
--            0x1b00    U3PHYA
--            0x1c00    U3PHYA_DA
--u2 port2    0x2000    MISC
--            ...
--
--    SPLLC shared by u3 ports and FMREG shared by u2 ports on
--mt8173/mt2701 are put back into each port; a new bank MISC for
--u2 ports and CHIP for u3 ports are added on mt2712.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index deaafb617361..d68725d87e44 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2105,7 +2105,7 @@ M:	Chunfeng Yun <chunfeng.yun@mediatek.com>
+ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
+-F:	Documentation/devicetree/bindings/phy/phy-mtk-*
++F:	Documentation/devicetree/bindings/phy/mediatek,*
+ F:	drivers/phy/mediatek/
+ 
+ ARM/Microchip (AT91) SoC support
+@@ -11028,6 +11028,8 @@ L:	linux-usb@vger.kernel.org (moderated for non-subscribers)
+ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
++F:	Documentation/devicetree/bindings/usb/mediatek,*
++F:	drivers/usb/host/xhci-mtk*
+ F:	drivers/usb/mtu3/
+ 
+ MEGACHIPS STDPXXXX-GE-B850V3-FW LVDS/DP++ BRIDGES
 -- 
 2.18.0
 _______________________________________________
