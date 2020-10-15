@@ -2,59 +2,70 @@ Return-Path: <SRS0=+2Q0=DW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71225C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:07:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5139C433E7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:13:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EE94822210
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:07:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5EA0222210
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:13:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nx4tEwvt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE94822210
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oloVQg8+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="zv64p4zB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5EA0222210
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8T7+miPDkHkA628QlBdBk3+p/O3r8ctXl9LdqALICZo=; b=nx4tEwvtB2q8C9+dGM1kvteMK
-	kdI+l+Y5cU/ptvx4SnbcEuab5U96vIkR+lMd3l9WV1vMcFUbz4jUE3ko4LN2C2pIRihnEhPVGo4fq
-	4RFFh09XJlp/RFaIVbBOaoKJ9z8u7vCYS+tuKG5B1EVdnhwnVOiMKnVdcw3C8Jzl8D/yKs8PYv79s
-	vhkxLqZlgeQ+rJVoFdNqEjtCslmjfMFPLSb+eDTbv/lp4NHGeuCV0XGLxvMRqGMvv6E++UTXvTC8V
-	Dks/yRn0ltRF3s5d74ibKbmuydHDVy6m6YpCb8/sTzfqE90XGOUFAWTniIBUnc8VMHCVHDTGBDl0X
-	b3li+NyBw==;
+	 bh=gBUuWYuwHUxBpAZCT3LzjfZNNOGkx7GP91TyPttw4Ik=; b=oloVQg8+8XAv9z1SQvUl8u8dp
+	seQCwuwNDpzLusib8iP+L4vTqvoG2u17XQyDmjVFnrU/t6q6ADijBA6qnqbu3/bI+k0WBFE9GmxY5
+	ncXda9nvwV4b2I09NHgGB3NueODCo79LYGIXq0n94Yw8+6l+Jf7aEUKI3aWs5tTQFcJMwhEbS9U0A
+	k0lECFj1OCQkxL6gKuoBLg/dC/zTQaIXvzmrwpOcmhU8y85n9IH/YOL0zsBEM1mfZS+/QxOvYbH2J
+	m5XL+5mt62TbKWR96kgaGkKUMfBrWebuVZ7ymnMWmJVgrD3vmOJVF/XKls3OCEpVcn7jrXBC5/CD9
+	kENwOOe+w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kT5n5-0007Vf-Uo; Thu, 15 Oct 2020 16:07:43 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kT5sJ-00080i-TJ; Thu, 15 Oct 2020 16:13:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kT5n1-0007Ub-ID; Thu, 15 Oct 2020 16:07:40 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 7D5DE1F45C3D
-Subject: Re: [PATCH] arm64: dts: mediatek: Add smi_common node for MT8183
-To: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org
-References: <20201001162823.3592352-1-enric.balletbo@collabora.com>
- <d937daf7-469f-8d74-4267-057b89cf1dd1@gmail.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <dbb00f05-6c1f-e5a2-12ae-aca494ecc6da@collabora.com>
-Date: Thu, 15 Oct 2020 18:07:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kT5sC-0007zP-0L; Thu, 15 Oct 2020 16:13:00 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E68D421D7F;
+ Thu, 15 Oct 2020 16:12:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602778378;
+ bh=wYeGNA65xooghznt1NdP+AJ2P2uDRvjHr3QQlhRQdJE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=zv64p4zBHeZ3PPxAhPoimJW4wUmg5nR1YqruXK6ydTfrKj6gxgDs/npmBfiBUDRPJ
+ nsmJobGaaDVM4rUT1Y/GTiitd3qgAuMtyxsJFK1Q7wbh8egz6TfyLLrxay9FmUCqOf
+ RgqjlfejcNXGsg3/jrusuIfun2/skkP3Alzhz6xA=
+Date: Thu, 15 Oct 2020 17:12:51 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH v11 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
+ bindings
+Message-ID: <20201015161251.GF4390@sirena.org.uk>
+References: <20200914080619.4178587-1-cychiang@chromium.org>
+ <20200914080619.4178587-3-cychiang@chromium.org>
+ <7bdc0d63-27b1-f99e-c5f8-65f880733d16@linaro.org>
+ <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <d937daf7-469f-8d74-4267-057b89cf1dd1@gmail.com>
-Content-Language: en-US
+In-Reply-To: <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
+X-Cookie: Neutrinos have bad breadth.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_120739_724967_C7129BBC 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20201015_121300_238256_9764C0A8 
+X-CRM114-Status: GOOD (  23.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,54 +77,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
- fparent@baylibre.com, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Taniya Das <tdas@codeaurora.org>,
+ "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
+ <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Takashi Iwai <tiwai@suse.com>, Rohit kumar <rohitkr@codeaurora.org>,
+ Patrick Lai <plai@codeaurora.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
+ Jaroslav Kysela <perex@perex.cz>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Srinivasa Rao <srivasam@codeaurora.org>, Stephan Gerhold <stephan@gerhold.net>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Content-Type: multipart/mixed; boundary="===============6315834583647210439=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTWF0dGhpYXMsCgpPbiAyLzEwLzIwIDExOjE3LCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3RlOgo+
-IAo+IAo+IE9uIDAxLzEwLzIwMjAgMTg6MjgsIEVucmljIEJhbGxldGJvIGkgU2VycmEgd3JvdGU6
-Cj4+IFRoZSBTTUkgKFNtYXJ0IE11bHRpbWVkaWEgSW50ZXJmYWNlKSBDb21tb24gaXMgYSBicmlk
-Z2UgYmV0d2VlbiB0aGUgbTR1Cj4+IChNdWx0aW1lZGlhIE1lbW9yeSBNYW5hZ2VtZW50IFVuaXQp
-IGFuZCB0aGUgTXVsdGltZWRpYSBIVy4gVGhpcyBibG9jayBpcwo+PiBuZWVkZWQgdG8gc3VwcG9y
-dCBkaWZmZXJlbnQgbXVsdGltZWRpYSBmZWF0dXJlcywgbGlrZSBkaXNwbGF5LCB2aWRlbwo+PiBk
-ZWNvZGUsIGFuZCBjYW1lcmEuIEFsc28gaXMgbmVlZGVkIHRvIGNvbnRyb2wgdGhlIHBvd2VyIGRv
-bWFpbnMgb2Ygc3VjaAo+PiBIVyBibG9ja3MuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEVucmljIEJh
-bGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9yYS5jb20+Cj4+IC0tLQo+Pgo+
-PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5kdHNpIHwgMTAgKysrKysr
-KysrKwo+PiDCoCAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0t
-Z2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMuZHRzaQo+PiBiL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLmR0c2kKPj4gaW5kZXggYzJmZDE0MWFmY2Y2
-Li45MDgyYmM2NWUxNWUgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0
-ZWsvbXQ4MTgzLmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgx
-ODMuZHRzaQo+PiBAQCAtOTE2LDYgKzkxNiwxNiBAQCBtbXN5czogc3lzY29uQDE0MDAwMDAwIHsK
-Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgI2Nsb2NrLWNlbGxzID0gPDE+Owo+PiDCoMKg
-wqDCoMKgwqDCoMKgwqAgfTsKPj4gwqAgK8KgwqDCoMKgwqDCoMKgIHNtaV9jb21tb246IHNtaUAx
-NDAxOTAwMCB7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbXBhdGlibGUgPSAibWVkaWF0
-ZWssbXQ4MTgzLXNtaS1jb21tb24iLCAic3lzY29uIjsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgcmVnID0gPDAgMHgxNDAxOTAwMCAwIDB4MTAwMD47Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIGNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX1NNSV9DT01NT04+LAo+PiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZtbXN5cyBDTEtfTU1fU01JX0NPTU1PTj4sCj4+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8Jm1tc3lzIENMS19NTV9HQUxTX0NPTU0wPiwK
-Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmbW1zeXMgQ0xLX01NX0dBTFNf
-Q09NTTE+Owo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjbG9jay1uYW1lcyA9ICJhcGIiLCAi
-c21pIiwgImdhbHMwIiwgImdhbHMxIjsKPj4gK8KgwqDCoMKgwqDCoMKgIH07Cj4+ICsKPiAKPiBI
-YXZpbmcgYSBsb29rIGF0IHRoZSBiaW5kaW5ncyBkZXNjcmlwdGlvbiwgaXQgc3RhdGVzIHRoYXQg
-dGhlIHBvd2VyLWRvbWFpbnMKPiBwaGFuZGxlIGlzIGEgcmVxdWlyZWQgcHJvcGVydHkuCgpIbW1t
-LCB0aGlzIG1ha2VzIG1lIHRoaW5rIHRoYXQgdGhlcmUgaXMgYSBraW5kIG9mIGNpcmN1bGFyIGRl
-cGVuZGVuY3kgZm9yCk1UODE4Mywgc28gTVQ4MTgzIHBvd2VyIGRvbWFpbnMgZGVwZW5kcyBvbiBz
-bWlfY29tbW9uIGFuZCBzbWlfY29tbW9uIGRlcGVuZHMgb24KTVQ4MTgzIHBvd2VyIGRvbWFpbnMu
-IFdpbGwgdGFrZSBhIGRlZXBlciBsb29rLgoKVGhhbmtzCiAgRW5yaWMKCgo+IFNvIEkgc3VwcG9z
-ZSB5b3UgaGF2ZSB0byBiYXNlIHRoaXMgb24gdGhlIHBvd2VyIGRvbWFpbnMgc2VyaWVzLgo+IAo+
-IFJlZ2FyZHMsCj4gTWF0dGhpYXMKPiAKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGltZ3N5czogc3lz
-Y29uQDE1MDIwMDAwIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29tcGF0aWJsZSA9
-ICJtZWRpYXRlayxtdDgxODMtaW1nc3lzIiwgInN5c2NvbiI7Cj4+IMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIHJlZyA9IDwwIDB4MTUwMjAwMDAgMCAweDEwMDA+Owo+PgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+
+--===============6315834583647210439==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Pgaa2uWPnPrfixyx"
+Content-Disposition: inline
+
+
+--Pgaa2uWPnPrfixyx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Oct 15, 2020 at 03:59:26PM +0800, Cheng-yi Chiang wrote:
+> On Tue, Oct 13, 2020 at 6:36 PM Srinivas Kandagatla
+
+> > > +properties:
+> > > +  compatible:
+> > > +    const: qcom,sc7180-sndcard-rt5682-m98357-1mic
+
+> > This information can come from the dai link description itself, why
+> > should compatible string have this information?
+
+> I think dailink description is not enough to specify everything
+> machine driver needs to know.
+> E.g. there is a variation where there are front mic and rear mic. We
+> need to tell the machine driver about it so
+> it can create proper widget, route, and controls.
+
+That sounds like something that could be better described with
+properties (including for example the existing bindings used for setting
+up things like analogue outputs and DAPM routes)?
+
+> The codec combination also matters. There will be a variation where
+> rt5682 is replaced with adau7002 for dmic.
+> Although machine driver can derive some information by looking at dailink,
+> I think specifying it explicitly in the compatible string is easier to
+> tell what machine driver should do, e.g.
+> setting PLL related to rt5682 or not.
+
+These feel more like things that fit with compatible, though please take
+a look at Morimoto-san's (CCed) work on generic sound cards for more
+complex devices:
+
+   https://lore.kernel.org/alsa-devel/87imbeybq5.wl-kuninori.morimoto.gx@renesas.com/
+
+This is not yet implemented but it'd be good to make sure that the
+Qualcomm systems can be handled too in future.
+
+> You can see widget, route, controls are used according to the configuration.
+> The alternative approach is to check whether "dmic-gpio" property
+> exists to decide adding these stuff or not.
+> But it makes the intent less easier to understand.
+
+OTOH if you have lots of compatibles then it can get hard to work out
+exactly which one corresponds to a given board.
+
+--Pgaa2uWPnPrfixyx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl+IdQIACgkQJNaLcl1U
+h9Cs0gf/aR5zd1VPFM/nOmIp2Or27oiqOMSopuxWeT8ZLdCC0srj7gRTUI8522lz
+izypzvOW3riGLBh7X3uPWB5LyKHA80pa0yhNrAdJLBzmW0V5OlJ5Wt9VBz4V+qyq
+oIfmqS/jhFQ4pPGdKQDPhV2NPLK7NT40qcSmCuqrCPR49XcqvTUt7PmETCp1LuqC
+p5vUj1AqXOHLBRbmy6yc7svns2YEGkH3bxd5MED59nadECZl8QmCVWW+VHERFMnf
+r5J8EW8FiPMaE6WRwmzf7KdPDHmfFJrRbCGjq9SiwS1qGre7qUdXm0lGagA3YUIq
+KhE0K1VXxuMUGRohRmQ/sE555zuDBw==
+=ZOAb
+-----END PGP SIGNATURE-----
+
+--Pgaa2uWPnPrfixyx--
+
+
+--===============6315834583647210439==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============6315834583647210439==--
+
