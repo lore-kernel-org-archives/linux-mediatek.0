@@ -2,70 +2,74 @@ Return-Path: <SRS0=+2Q0=DW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5139C433E7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:13:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CEDCC4363A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 03:23:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5EA0222210
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:13:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 298342222E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 03:23:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oloVQg8+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="zv64p4zB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5EA0222210
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gv7FoZf5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tJhrLAB6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 298342222E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gBUuWYuwHUxBpAZCT3LzjfZNNOGkx7GP91TyPttw4Ik=; b=oloVQg8+8XAv9z1SQvUl8u8dp
-	seQCwuwNDpzLusib8iP+L4vTqvoG2u17XQyDmjVFnrU/t6q6ADijBA6qnqbu3/bI+k0WBFE9GmxY5
-	ncXda9nvwV4b2I09NHgGB3NueODCo79LYGIXq0n94Yw8+6l+Jf7aEUKI3aWs5tTQFcJMwhEbS9U0A
-	k0lECFj1OCQkxL6gKuoBLg/dC/zTQaIXvzmrwpOcmhU8y85n9IH/YOL0zsBEM1mfZS+/QxOvYbH2J
-	m5XL+5mt62TbKWR96kgaGkKUMfBrWebuVZ7ymnMWmJVgrD3vmOJVF/XKls3OCEpVcn7jrXBC5/CD9
-	kENwOOe+w==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5lJqqHHtpt9ReZLgA731vbhqIRD3T86X+D4Z0eDhccU=; b=gv7FoZf5LiHWXV15lq5hdt8EXU
+	e627y2MslpX7lxHkZJGAgV84hwsoW0NUUBXi0hyk5UDigaZKtLXsd7JhJYDxmW4/gAHRQPOrW0dvR
+	YtiqdmFHYvZXYcBpjEzWT0I+VdWjCcyMHtNB6jopmBK0KKGUQqlUNLIPs/wiUUD4UlsH9WXuWH0NS
+	HtaZjDVBDZPoZaMfp93UVzU/r0aqBRral7GbHKnntyQdcL5OPS2Z9bbhrMZWp7LfxRXsQYeB8kI3r
+	hxCuzNJyb15PjOPLw2mQwjrj08tDX1IbNy3w6nNH5Vv7FSyzGda6h/Zl027626OPyeVs5Kz9MxnrT
+	kWGsQ0lA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kT5sJ-00080i-TJ; Thu, 15 Oct 2020 16:13:07 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kStrY-0004uo-Gn; Thu, 15 Oct 2020 03:23:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kT5sC-0007zP-0L; Thu, 15 Oct 2020 16:13:00 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E68D421D7F;
- Thu, 15 Oct 2020 16:12:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1602778378;
- bh=wYeGNA65xooghznt1NdP+AJ2P2uDRvjHr3QQlhRQdJE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=zv64p4zBHeZ3PPxAhPoimJW4wUmg5nR1YqruXK6ydTfrKj6gxgDs/npmBfiBUDRPJ
- nsmJobGaaDVM4rUT1Y/GTiitd3qgAuMtyxsJFK1Q7wbh8egz6TfyLLrxay9FmUCqOf
- RgqjlfejcNXGsg3/jrusuIfun2/skkP3Alzhz6xA=
-Date: Thu, 15 Oct 2020 17:12:51 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v11 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-Message-ID: <20201015161251.GF4390@sirena.org.uk>
-References: <20200914080619.4178587-1-cychiang@chromium.org>
- <20200914080619.4178587-3-cychiang@chromium.org>
- <7bdc0d63-27b1-f99e-c5f8-65f880733d16@linaro.org>
- <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
+ id 1kStrU-0004ti-NJ; Thu, 15 Oct 2020 03:23:29 +0000
+X-UUID: 5f176c17fd274da3ab7419d3988adb91-20201014
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=vt87zy5BJM1AmjZx6qAP3QE6Ib1rAbIpP0es8xsUK4Y=; 
+ b=tJhrLAB62qidQrVMKhkT6wzdSrfoVV5Fah16+Jkm/OithWi+kzNCI0A/eq1iO23Y1ISmzTpYJ5V8bipbTM5vZcjehknDEWnbM+YVKldpUuZ6hZtyDJ9eB4TAxN5XSS93Iz2VpePp3+owPvLkyafs0sNvsjFYyt56m7uGvA/ahkE=;
+X-UUID: 5f176c17fd274da3ab7419d3988adb91-20201014
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1880908448; Wed, 14 Oct 2020 19:23:24 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Oct 2020 20:20:47 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 15 Oct 2020 11:20:46 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 15 Oct 2020 11:20:40 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: 
+Date: Thu, 15 Oct 2020 11:20:37 +0800
+Message-ID: <1602732039-12179-1-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-In-Reply-To: <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
-X-Cookie: Neutrinos have bad breadth.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_121300_238256_9764C0A8 
-X-CRM114-Status: GOOD (  23.11  )
+X-CRM114-CacheID: sfid-20201014_232328_918383_1C87FFEC 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,115 +81,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Takashi Iwai <tiwai@suse.com>, Rohit kumar <rohitkr@codeaurora.org>,
- Patrick Lai <plai@codeaurora.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
- Jaroslav Kysela <perex@perex.cz>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Srinivasa Rao <srivasam@codeaurora.org>, Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Content-Type: multipart/mixed; boundary="===============6315834583647210439=="
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ Neal Liu <neal.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+These patch series introduce a MediaTek MT6779 devapc driver.
 
---===============6315834583647210439==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Pgaa2uWPnPrfixyx"
-Content-Disposition: inline
+MediaTek bus fabric provides TrustZone security support and data protection to prevent slaves from being accessed by unexpected masters.
+The security violation is logged and sent to the processor for further analysis or countermeasures.
 
+Any occurrence of security violation would raise an interrupt, and it will be handled by mtk-devapc driver.
+The violation information is printed in order to find the murderer.
 
---Pgaa2uWPnPrfixyx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+changes since v7:
+- fix VIO_MOD_TO_REG_IND calculation wrong problem.
+- revise parameter type of ISR.
 
-On Thu, Oct 15, 2020 at 03:59:26PM +0800, Cheng-yi Chiang wrote:
-> On Tue, Oct 13, 2020 at 6:36 PM Srinivas Kandagatla
+changes since v6:
+- remove unnecessary mask/unmask module irq during ISR.
 
-> > > +properties:
-> > > +  compatible:
-> > > +    const: qcom,sc7180-sndcard-rt5682-m98357-1mic
+changes since v5:
+- remove redundant write reg operation.
+- use static variable of vio_dbgs instead.
+- add stop_devapc() if driver is removed.
 
-> > This information can come from the dai link description itself, why
-> > should compatible string have this information?
+changes since v4:
+- refactor data structure.
+- merge two simple functions into one.
+- refactor register setting to prevent too many function call overhead.
 
-> I think dailink description is not enough to specify everything
-> machine driver needs to know.
-> E.g. there is a variation where there are front mic and rear mic. We
-> need to tell the machine driver about it so
-> it can create proper widget, route, and controls.
+changes since v3:
+- revise violation handling flow to make it more easily to understand
+  hardware behavior.
+- add more comments to understand how hardware works.
 
-That sounds like something that could be better described with
-properties (including for example the existing bindings used for setting
-up things like analogue outputs and DAPM routes)?
+changes since v2:
+- pass platform info through DT data.
+- remove unnecessary function.
+- remove slave_type because it always equals to 1 in current support SoC.
+- use vio_idx_num instread of list all devices' index.
+- add more comments to describe hardware behavior.
 
-> The codec combination also matters. There will be a variation where
-> rt5682 is replaced with adau7002 for dmic.
-> Although machine driver can derive some information by looking at dailink,
-> I think specifying it explicitly in the compatible string is easier to
-> tell what machine driver should do, e.g.
-> setting PLL related to rt5682 or not.
-
-These feel more like things that fit with compatible, though please take
-a look at Morimoto-san's (CCed) work on generic sound cards for more
-complex devices:
-
-   https://lore.kernel.org/alsa-devel/87imbeybq5.wl-kuninori.morimoto.gx@renesas.com/
-
-This is not yet implemented but it'd be good to make sure that the
-Qualcomm systems can be handled too in future.
-
-> You can see widget, route, controls are used according to the configuration.
-> The alternative approach is to check whether "dmic-gpio" property
-> exists to decide adding these stuff or not.
-> But it makes the intent less easier to understand.
-
-OTOH if you have lots of compatibles then it can get hard to work out
-exactly which one corresponds to a given board.
-
---Pgaa2uWPnPrfixyx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl+IdQIACgkQJNaLcl1U
-h9Cs0gf/aR5zd1VPFM/nOmIp2Or27oiqOMSopuxWeT8ZLdCC0srj7gRTUI8522lz
-izypzvOW3riGLBh7X3uPWB5LyKHA80pa0yhNrAdJLBzmW0V5OlJ5Wt9VBz4V+qyq
-oIfmqS/jhFQ4pPGdKQDPhV2NPLK7NT40qcSmCuqrCPR49XcqvTUt7PmETCp1LuqC
-p5vUj1AqXOHLBRbmy6yc7svns2YEGkH3bxd5MED59nadECZl8QmCVWW+VHERFMnf
-r5J8EW8FiPMaE6WRwmzf7KdPDHmfFJrRbCGjq9SiwS1qGre7qUdXm0lGagA3YUIq
-KhE0K1VXxuMUGRohRmQ/sE555zuDBw==
-=ZOAb
------END PGP SIGNATURE-----
-
---Pgaa2uWPnPrfixyx--
+changes since v1:
+- move SoC specific part to DT data.
+- remove unnecessary boundary check.
+- remove unnecessary data type declaration.
+- use read_poll_timeout() instread of for loop polling.
+- revise coding style elegantly.
 
 
---===============6315834583647210439==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+*** BLURB HERE ***
 
+Neal Liu (2):
+  dt-bindings: devapc: add bindings for mtk-devapc
+  soc: mediatek: add mt6779 devapc driver
+
+ .../bindings/soc/mediatek/devapc.yaml         |  58 ++++
+ drivers/soc/mediatek/Kconfig                  |   9 +
+ drivers/soc/mediatek/Makefile                 |   1 +
+ drivers/soc/mediatek/mtk-devapc.c             | 308 ++++++++++++++++++
+ 4 files changed, 376 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+ create mode 100644 drivers/soc/mediatek/mtk-devapc.c
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6315834583647210439==--
-
