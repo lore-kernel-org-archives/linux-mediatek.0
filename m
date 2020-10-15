@@ -2,102 +2,80 @@ Return-Path: <SRS0=+2Q0=DW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1072C433E7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 08:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 472ECC433E7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 08:47:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3121B22243
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 08:07:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A79E5218AC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 08:47:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RIbFP9XM";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=st.com header.i=@st.com header.b="0oTWPBOx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3121B22243
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=st.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oKJXxpjH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=0x0f.com header.i=@0x0f.com header.b="JI3OP/nk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A79E5218AC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=0x0f.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=njtyRoqhJitpvE13NAGQubotSqqjB6SQXWVZUbYf6os=; b=RIbFP9XMbS2Y4+NnfqDS7jDRu
-	qx2go0dJ7SNFmNzRDbzulqr/xBvm+bZJAUHrq+qbqFxSeyKZ1kwoJVZBr4lOwDs9cX8ykLCoDrMMe
-	l1F81eCYtEsfxCkG/V9MhpY8f/VRROVwPw2zBN8BqnXG549npPORw6EquhPOgbZpKBtVubL4fiR5a
-	EJqNpKuasxXq8eJaLNq8Og8BIkN1Zj6EFfwmXTcnENhqkhmvjelhgQxekFqUSIyItmckw2SOYBmYT
-	XH1lA2DbCKdzWg8NfUvrCq7hpm6iDQxVhi4Phnx1UrBIkpyL5MtOUmMVyWdyx54UdgUJDhT7oD7VW
-	JCtNUQ9Bw==;
+	 bh=gxu0o8UJKwLdCXNhjv7zBkSgeVStG5o/hcBBzmtd/ck=; b=oKJXxpjH6tSV4JQGh4o7u8pmZ
+	iXybe5z7vOFvqq/stQNTvB07BEMPXw5ZPSforRP4WKpvRlFWdRDWPQtFOEXs70fYoqwt3cdIwYdRj
+	iYH1gCvyUv2cdMZsrM3fPXI+q8BkCxwIkrvhdqOuoqUcwgsMkzEcxpxsIXJ6Y7uRWlQs4ynEOrMdO
+	ds7U/h5YrM2gVQ8Vf8phs3unFtfd+Ygabpr6sPcWAMSw0oVBfRh67uAh+yniWsBMxPIc5kssa6zc/
+	mV7yFODmB2E15yTzgMQwxSwWleKbjR9WkLJMw/mjLqyvndAIFyKoBh9PUK5IuMg41Ut0UfQnpR8Cv
+	h0qPFJPbA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSyHk-0004C8-Q1; Thu, 15 Oct 2020 08:06:52 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1kSyue-0000Mr-MR; Thu, 15 Oct 2020 08:47:04 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSyHh-0004As-Lq; Thu, 15 Oct 2020 08:06:50 +0000
-Received: from pps.filterd (m0046037.ppops.net [127.0.0.1])
- by mx07-00178001.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 09F810KF022265; Thu, 15 Oct 2020 10:05:56 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=st.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=STMicroelectronics;
- bh=glhTCKVcnbc8lpjOZBjcwL/WddjOBnrvQMsvFgpIX9U=;
- b=0oTWPBOxS3dHCpvop3Yn8LtnhruTiBArA0yscaywKM5jRBukrtlORwr/OlTPsO/MuqpZ
- NxiXz4Nvydwfc6H86n+++QoVfKWlkVK6RwSl08U860IelLWDFi6VfYxV1c49lArFXN0l
- AFDe3yXM7+VozPw8LXqj2LRtKWO4kRrD6cgMmP7U9tLEM1gC6uz4J1P7UBVkolbWZPMC
- 0c23ip1jx4I4AYDVB506N+iPL276OKcmTrJwevYifEHpP48qXDA8TdK71per8cKZVT4H
- PfdxOAWlYV0XFPa9ElhEi0cBzBscOmgtycug9z9NV8KOyMMJP+rSe/YeUgH1QAaLqKx4 LA== 
-Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
- by mx07-00178001.pphosted.com with ESMTP id 34356ekf4q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 15 Oct 2020 10:05:56 +0200
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
- by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 0884E100034;
- Thu, 15 Oct 2020 10:05:47 +0200 (CEST)
-Received: from Webmail-eu.st.com (sfhdag3node2.st.com [10.75.127.8])
- by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 8D2CD20602D;
- Thu, 15 Oct 2020 10:05:47 +0200 (CEST)
-Received: from lmecxl0995.lme.st.com (10.75.127.49) by SFHDAG3NODE2.st.com
- (10.75.127.8) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Thu, 15 Oct
- 2020 10:05:44 +0200
-Subject: Re: [PATCH 18/20] arch: dts: Fix EHCI/OHCI DT nodes name
-To: Serge Semin <Sergey.Semin@baikalelectronics.ru>, Mathias Nyman
- <mathias.nyman@intel.com>, Felipe Balbi <balbi@kernel.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>, Alexey Brodkin <abrodkin@synopsys.com>,
- Vineet Gupta <vgupta@synopsys.com>, Hauke Mehrtens <hauke@hauke-m.de>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- <bcm-kernel-feedback-list@broadcom.com>, Wei Xu
- <xuwei5@hisilicon.com>, Vladimir Zapolskiy <vz@mleia.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>,
- Paul Cercueil <paul@crapouillou.net>, Thomas Bogendoerfer
- <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Benjamin Herrenschmidt
- <benh@kernel.crashing.org>, Paul Mackerras <paulus@samba.org>
-References: <20201014101402.18271-1-Sergey.Semin@baikalelectronics.ru>
- <20201014101402.18271-19-Sergey.Semin@baikalelectronics.ru>
-From: Amelie DELAUNAY <amelie.delaunay@st.com>
-Message-ID: <a68552c5-3284-7196-3873-61711aaf5007@st.com>
-Date: Thu, 15 Oct 2020 10:05:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kSyua-0000LW-1W
+ for linux-mediatek@lists.infradead.org; Thu, 15 Oct 2020 08:47:01 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id q5so2630867wmq.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2020 01:46:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0x0f.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WfnRK5cVX6azZMqBqUfHbjQvOcd148r5sIa6MP8wh/A=;
+ b=JI3OP/nkE9bQKpG4ifkR4FVb7nHZOMWL3s8qxbyik9PVQ4XLBy9KO0qkeph94YyP6k
+ XdN0rsvdqpxChgu91LUssRKNl7ip1VnuhMGRkRKrDCF14x7AfGiOPtfexDHjO43qRT1o
+ t3lCdy92X7IKvSLpKBTe/StmAOTBSt+duPBco=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WfnRK5cVX6azZMqBqUfHbjQvOcd148r5sIa6MP8wh/A=;
+ b=QwSIdMgo+XwS+PiLe/hLt40A0Z3OTOp/8skPyPCHPuo5nC2Kfz2vYvfTiVzgtOr5Wi
+ iJrsPLmB6JQ1jQwkJsc6AQ/eUw7VBt3YMqENX97CJEf+bsTji3FFVFzhYv5VXEjdr0HJ
+ qh8mmnc3+69QjLVs4izVTSKoJ/cthg/f9+zMcpmyDYlfslFktkBXHYVaVwANgoyNlr8N
+ EhNflUtRESuuO2ylSXdNuWlu+4VZ8C6OJLlnVbG3L91dY8iW96KaQlsfcXMVVBDNbSuw
+ iAZY8bDfltzx9SL7hIi91o+pb8ZcQuh9fPK6hW0xEPPfwNLGD8XB2zqLmkbB8rXK4BW4
+ v+jA==
+X-Gm-Message-State: AOAM532DbYEPBTA5wjDVHGDvlV3mFVvz0WTiWkZTW9L8WZ2bwf6O+vd1
+ xkYAUvSdT0TTUYzGUx1JHrQOpVgWVeAY5YdfmW7U3g==
+X-Google-Smtp-Source: ABdhPJxNphEIA53NFxSRPBrfZeZ7M9POQUCzTal5jT3zSrlzJ58Sf7TBd3Eh0rkz0/EjjC/ILesmCAQSDCdKDvrKunM=
+X-Received: by 2002:a7b:cc89:: with SMTP id p9mr2998028wma.4.1602751617285;
+ Thu, 15 Oct 2020 01:46:57 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201014101402.18271-19-Sergey.Semin@baikalelectronics.ru>
-Content-Language: en-US
-X-Originating-IP: [10.75.127.49]
-X-ClientProxiedBy: SFHDAG4NODE3.st.com (10.75.127.12) To SFHDAG3NODE2.st.com
- (10.75.127.8)
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
- definitions=2020-10-15_03:2020-10-14,
- 2020-10-15 signatures=0
+References: <20201014131703.18021-1-geert+renesas@glider.be>
+In-Reply-To: <20201014131703.18021-1-geert+renesas@glider.be>
+From: Daniel Palmer <daniel@0x0f.com>
+Date: Thu, 15 Oct 2020 17:46:46 +0900
+Message-ID: <CAFr9PXmv-2h9prVuuWe29ae15LPtk-k0XUA04ywv8P7oiJpbRA@mail.gmail.com>
+Subject: Re: [PATCH] irqchip: MST_IRQ should depend on ARCH_MEDIATEK or
+ ARCH_MSTARV7
+To: Geert Uytterhoeven <geert+renesas@glider.be>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_040650_079929_746AD7F2 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20201015_044700_287671_778AC9F7 
+X-CRM114-Status: UNSURE (   7.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,65 +87,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-mips@vger.kernel.org, Neil Armstrong <narmstrong@baylibre.com>,
- Kevin Hilman <khilman@baylibre.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Serge Semin <fancer.lancer@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Manu Gautam <mgautam@codeaurora.org>, Andy Gross <agross@kernel.org>,
+Cc: Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
+ linux-kernel@vger.kernel.org, Daniel Palmer <daniel@thingy.jp>,
  linux-mediatek@lists.infradead.org,
- Pavel Parkhomenko <Pavel.Parkhomenko@baikalelectronics.ru>,
- Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
- linuxppc-dev@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Serge,
+Hi Geert,
 
-On 10/14/20 12:14 PM, Serge Semin wrote:
-> In accordance with the Generic EHCI/OHCI bindings the corresponding node
-> name is suppose to comply with the Generic USB HCD DT schema, which
-> requires the USB nodes to have the name acceptable by the regexp:
-> "^usb(@.*)?"  . Let's fix the DTS files, which have the nodes defined with
-> incompatible names.
-> 
-> Signed-off-by: Serge Semin<Sergey.Semin@baikalelectronics.ru>
-> 
-> diff --git a/arch/arm/boot/dts/stm32mp151.dtsi b/arch/arm/boot/dts/stm32mp151.dtsi
-> index bfe29023fbd5..576f7da564c5 100644
-> --- a/arch/arm/boot/dts/stm32mp151.dtsi
-> +++ b/arch/arm/boot/dts/stm32mp151.dtsi
-> @@ -1404,7 +1404,7 @@ ethernet0: ethernet@5800a000 {
->   			status = "disabled";
->   		};
->   
-> -		usbh_ohci: usbh-ohci@5800c000 {
-> +		usbh_ohci: usb@5800c000 {
->   			compatible = "generic-ohci";
->   			reg = <0x5800c000 0x1000>;
->   			clocks = <&rcc USBH>;
-> @@ -1413,7 +1413,7 @@ usbh_ohci: usbh-ohci@5800c000 {
->   			status = "disabled";
->   		};
->   
-> -		usbh_ehci: usbh-ehci@5800d000 {
-> +		usbh_ehci: usb@5800d000 {
->   			compatible = "generic-ehci";
->   			reg = <0x5800d000 0x1000>;
->   			clocks = <&rcc USBH>;
+This looks good to me.
 
-For STM32MP151:
-
-Acked-by: Amelie Delaunay <amelie.delaunay@st.com>
+Acked-by: Daniel Palmer <daniel@thingy.jp>
 
 Thanks,
-Amelie
+
+Daniel
 
 _______________________________________________
 Linux-mediatek mailing list
