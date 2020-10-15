@@ -2,161 +2,77 @@ Return-Path: <SRS0=+2Q0=DW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5674C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09A66C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 17:03:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3DA5222210
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 16:37:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 68C2622210
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2020 17:03:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FeLfiD8D";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="hCNXfrGU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DA5222210
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yQQO99ne";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bxiaOgrZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68C2622210
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cdMA5R/pAqkB+zXRjOCMealA0cE1vRr0ZZ6EAGtyDkk=; b=FeLfiD8DxlZ0d5Zc1YS6BKWIh
-	tkv9Pw4rYCphotBlYrWimQ2x5FkFW9UJR1zgiobD2kcRaIlRSI+ZcvNtIBgJosPsW9zDaXJAEtDgJ
-	p8bALxWJTr5V1bQZq7l91BFtxjsStqa3dF7sNXtMo/9aMv6vuMSAC7EULzb5x/vfKTMC+AOKYpBq0
-	sUzx+wkClAwAsDLpzTDnD6baJPJHjYEB6SMaZ1yVQ0IhO7VD664WOcrwehVV7VWo8/DYT4Kp+IP/l
-	4eB/cmQQpPjWJ/j0t9kwPaw2aAlDsrPgY9bAMGBkrnjLIxN1nSHUHqlZFT0ZgE9MfRHnajJOu9kjF
-	//7jnCpaw==;
+	 bh=SQBykdYMZfG2SMtTxnuLQ5SdhWKM/8TIdtxB0oGV4ms=; b=yQQO99neCcPLYQeRn0xjvd2qv
+	MUT5fscrXTfh2NKTVd3MxUM7Vm2n1hlAY14njG5Kt5P2m8LepHQ0FFCIKHSmX4KC5g1A5qSViyrLp
+	jEPO2pX52G3aHDfHoZdsvmMSQXgUOjW+QjUr652IZdjsQMqzbL1XhaZEGe1CTFkEUq363xvAlQ9um
+	fy769xXJV6ZOLYK5u1lSWbmnqKNFq13uA5nORcPDKPfYU+Y1tnCbBn3nE7tc8llh4d8ZChy0G0YAd
+	99UVTW5oE40ZuDNDVJtooOyb1QgKoAizbaqSmrVOHZ+zJ4YEDlRT17x9CHOSPmpQlDhQmqsWDSNMl
+	KogHhaoAQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kT6Fd-00015I-BE; Thu, 15 Oct 2020 16:37:13 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1kT6eq-000448-Tn; Thu, 15 Oct 2020 17:03:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kT6FZ-000141-0c; Thu, 15 Oct 2020 16:37:09 +0000
-Received: by mail-pf1-x443.google.com with SMTP id e7so2328363pfn.12;
- Thu, 15 Oct 2020 09:37:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=YWBB1tNjSVqbpAQ46aLKFVE5AjRjWL3r4Ab3QA5/ays=;
- b=hCNXfrGUsg7H+0N2587CoFp6PRzA1+cUtNOT/VHEx3tdTq4TU0bs3+xBIACNvvhH2L
- w5kAlmgn1HxNTD6EiJF78B4N+5B1vuyi95gDuXvOBWtEiObTsqUqSBnT0aQ+Tfb3+KEi
- SNl4ErMdYcQfhs4Cbk6LCY1ym2RvR1Od3sHAXN7S9sEWoDTxDjuQeKS3VkIemOxztkbd
- w2MKCuwY5tB1vWv9+cIiLrJCNPo2Wn+DNn7xQTWCQ3MUYsHDXCKlqcRE4J9LfiNmHwdP
- CHIMUOz7+4gPj3n1Ooc8wA0s1mnIGvPjTR/bUwk2hh+GKewjjRwJzneiAZHdLw3ZHUPO
- 9syw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=YWBB1tNjSVqbpAQ46aLKFVE5AjRjWL3r4Ab3QA5/ays=;
- b=XZPrni7qA4+0oA/7ZGaWPGm7Dyu+nadpXOttJhUMxTsBv7wOofRxCJaOuf+ElRNKg8
- MSdDKhub9RZ5/7KWxDBfRSL9+FIDJBJfIJ2KNf0IotcSMrEj9WocjGLvaHxI9HXk2c3s
- Ci+BLENg0gUTcndARB0qK8Oj0eGDxmUhDLBPCs+jyc9SOZ61Zo7Qkz7F2jkl9Zu6L4KQ
- zWVvrzh0B2LO9e9+IQlNewVq79BXDr6/b82bVDHAd58pcH+u77KOXyfkDcUtvKpXOZJU
- mXKnOR+ZYYjiFSiOibwjRQBqKgDfPAEz8CX+rJUWWL39YvyQCX5hjXCwUKWa81jTO5h3
- mHxw==
-X-Gm-Message-State: AOAM532NbIBYsDvGpflrVOeUCMDZfdTsJUmsIOp3YiR7A6+L0lpJ6iXd
- 8rhSthvakJhbYoa9Rb263oY=
-X-Google-Smtp-Source: ABdhPJwmDS3Vi5aXAC+G4xDfoACzvAax5MX+Zi2h2BRQvZdLVRnvx2/yyCqMIoUsI4TFC86wRFhuNg==
-X-Received: by 2002:aa7:94a4:0:b029:151:d786:d5c2 with SMTP id
- a4-20020aa794a40000b0290151d786d5c2mr4673216pfl.50.1602779826806; 
- Thu, 15 Oct 2020 09:37:06 -0700 (PDT)
-Received: from [10.67.48.230] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id q21sm3700834pgg.45.2020.10.15.09.37.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Oct 2020 09:37:05 -0700 (PDT)
-Subject: Re: [PATCH 18/20] arch: dts: Fix EHCI/OHCI DT nodes name
-To: Serge Semin <Sergey.Semin@baikalelectronics.ru>,
- Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>, Alexey Brodkin <abrodkin@synopsys.com>,
- Vineet Gupta <vgupta@synopsys.com>, Hauke Mehrtens <hauke@hauke-m.de>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, Wei Xu <xuwei5@hisilicon.com>,
- Vladimir Zapolskiy <vz@mleia.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Paul Cercueil <paul@crapouillou.net>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Paul Mackerras <paulus@samba.org>
-References: <20201014101402.18271-1-Sergey.Semin@baikalelectronics.ru>
- <20201014101402.18271-19-Sergey.Semin@baikalelectronics.ru>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
- 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
- M5kY0ACeNhCZJvZ5g4C2Lc9fcTHu8jxmEkI=
-Message-ID: <8c0f6dee-ee59-e8b4-b7b6-4ca64b342c83@gmail.com>
-Date: Thu, 15 Oct 2020 09:37:02 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kT6en-00041t-HV
+ for linux-mediatek@lists.infradead.org; Thu, 15 Oct 2020 17:03:15 +0000
+X-UUID: de9b95ed9499403b9c459a9cf98be871-20201015
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=G8rs2gCzhxbEma2709cmrK2Za0pKUpdbsxniLmNg3D8=; 
+ b=bxiaOgrZe1S1ZNAETuzinDmJmrNJIcokes+0Gt8pZj40msfYfT6fT2FZVkWh9K1tGkBhNWWUlQkiSJe2QAqDjlE/3xL/FmFJVkBBEuhLpa8thlG8hXxRaaVzDZeWaO1Ns5IIoyBgJkzUQTq3F2qF4u4dMHfl1n2PFxJGV3vJm04=;
+X-UUID: de9b95ed9499403b9c459a9cf98be871-20201015
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <frankie.chang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1158770539; Thu, 15 Oct 2020 09:03:02 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 15 Oct 2020 10:03:01 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 16 Oct 2020 01:02:58 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 16 Oct 2020 01:02:58 +0800
+From: Frankie Chang <Frankie.Chang@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH v10 3/3] binder: add transaction latency tracer
+Date: Fri, 16 Oct 2020 01:02:54 +0800
+Message-ID: <1602781377-4278-1-git-send-email-Frankie.Chang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <20200916173845.GA3072065@kroah.com>
+References: <20200916173845.GA3072065@kroah.com>
 MIME-Version: 1.0
-In-Reply-To: <20201014101402.18271-19-Sergey.Semin@baikalelectronics.ru>
-Content-Language: en-US
+X-TM-SNTS-SMTP: AA346BA9F015F58D217AFA35FC30F4C5FE4712083E76C7D3ECDC1ED6BC4699A92000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_123709_123007_945F8F01 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20201015_130313_714267_4AC1733F 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -168,46 +84,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, Neil Armstrong <narmstrong@baylibre.com>,
- Kevin Hilman <khilman@baylibre.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-usb@vger.kernel.org, linux-mips@vger.kernel.org,
- Serge Semin <fancer.lancer@gmail.com>, linux-kernel@vger.kernel.org,
- Manu Gautam <mgautam@codeaurora.org>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Pavel Parkhomenko <Pavel.Parkhomenko@baikalelectronics.ru>,
- linux-mediatek@lists.infradead.org, linux-snps-arc@lists.infradead.org,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
- Roger Quadros <rogerq@ti.com>
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
+ Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>, Todd Kjos <tkjos@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/14/20 3:14 AM, Serge Semin wrote:
-> In accordance with the Generic EHCI/OHCI bindings the corresponding node
-> name is suppose to comply with the Generic USB HCD DT schema, which
-> requires the USB nodes to have the name acceptable by the regexp:
-> "^usb(@.*)?" . Let's fix the DTS files, which have the nodes defined with
-> incompatible names.
-> 
-> Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
-> 
-> ---
-> 
-> Please, test the patch out to make sure it doesn't brake the dependent DTS
-> files. I did only a manual grepping of the possible nodes dependencies.
-> ---
+Change from v10:
+  - replace timespec64 with ktime_t.
+  - fix build warning.
 
->  arch/arm/boot/dts/bcm5301x.dtsi                | 4 ++--
->  arch/arm/boot/dts/bcm53573.dtsi                | 4 ++--
-Acked-by: Florian Fainelli <f.fainelli@gmail.com>
--- 
-Florian
+Change from v9:
+  - rename timestamp to ts in binder_internal.h for conciseness.
+  - change timeval to timespec64 in binder_internal.h
 
+Change from v8:
+  - change rtc_time_to_tm to rtc_time64_to_tm.
+  - change timeval to __kernel_old_timeval due to 
+    https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c766d1472c70d25ad475cf56042af1652e792b23
+  - export tracepoint symbol for binder_txn_latency_* which binder_transaction_latency_tracer to be ko needed.
+
+Change from v7:
+  - Use the passed-in values instead of accessing via t->from/to_proc/to_thread
+    for trace_binder_txn_latency_free, when trace_binder_txn_latency_free_enable() return true.
+  - make a helper function to do the above.
+
+Change from v6:
+  - change CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING type from bool to tristate
+  - add comments to @timestamp and @tv under struct binder_transaction
+  - make binder_txn_latency threshold configurable
+  - enhance lock protection
+
+Change from v5:
+  - change config name to the proper one, CONFIG_BINDER_TRANSACTION_LATENCY_TRACKING.
+  - change tracepoint name to more descriptive one, trace_binder_txn_latency_(alloc|info|free)
+  - enhance some lock protection.
+
+Change from v4:
+  - split up into patch series.
+
+Change from v3:
+  - use tracepoints for binder_update_info and print_binder_transaction_ext,
+    instead of custom registration functions.
+
+Change from v2:
+  - create transaction latency module to monitor slow transaction.
+
+Change from v1:
+  - first patchset.
+
+
+Frankie.Chang (3):
+  binder: move structs from core file to header file
+  binder: add trace at free transaction.
+  binder: add transaction latency tracer
+
+ drivers/android/Kconfig                 |   8 +
+ drivers/android/Makefile                |   1 +
+ drivers/android/binder.c                | 430 ++----------------------
+ drivers/android/binder_internal.h       | 418 +++++++++++++++++++++++
+ drivers/android/binder_latency_tracer.c | 107 ++++++
+ drivers/android/binder_trace.h          |  49 +++
+ 6 files changed, 607 insertions(+), 406 deletions(-)  create mode 100644 drivers/android/binder_latency_tracer.c
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
