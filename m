@@ -2,82 +2,87 @@ Return-Path: <SRS0=WAzV=DX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F629C433E7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2020 01:04:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BF8BC433DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2020 03:03:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F23820760
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2020 01:04:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 02AA720789
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2020 03:03:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G1lh5Ef3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="d6gs8eEg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F23820760
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pcbLw/sf";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UG+OFdBf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02AA720789
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OoB/EwQ4ifV5BcYUyNymNY3+37mBxthVG5w1IShmJ/Y=; b=G1lh5Ef3fI+BrkOTg23QFBJ+D
-	IeJ8yK3tqyalW2H44zmgzj4cyKHGWIoQJzw9ilAolkOSC4oSTWjoV4/1ufsBlKI/BXgNEiFL3nNAP
-	halMpEa2eGlNY8b1wSZTvXUWmnj1qmB9JcvC0ugQMFG8EITu3kFS4PUa8FV6GjIYZ9MmQMpZENKJq
-	kqTbZXBgRcEiPNsuk+Nt6qtxsvDhylBP1GTDQoqq/mhjK8eIQI7M3v1D1FQobTyIvMc3yc8YfthjK
-	xrA7BFiuufQcwuzznGJTZ6JzcGuYxundwdusC7iNJ5umISwSfQDesp8mZTswLSuTMTNZazOqHW7uo
-	hBNJgjOLg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=k+iz8uS54LKOFBQkA3QpJNZBlAknSG1bAjjiQ7kpKDM=; b=pcbLw/sf9bGf2qB+FjyIDlhGCQ
+	FxFRWv3/j0cOmZVms5xAo9C5KO5BrbwOtgmwvXFgSnTDJxn1r6LwFb9CMfSrQ8jrDI6+oqB8wsRar
+	5wx7Wq3gEn/ZxhxpMHEMMz1S0QqoYX6BO4cWJi2UzLvzKMHouipiXuNNBxd83z8s1j9vl4g+8FgiO
+	TMrQNfW4FuSlECknrFM/+rOZIdlniuYQYMQuA60/2X+GpfbwLuhu7LY+3L5GS7fEFdlAHgQRU9rKx
+	VvxCZAbHGIMcXvJ8xC91ymjpA5uZbHbmshVjaqhEYWDijLDtnAfsKS1KcN+Pxy9zCV17mCxls0Q/T
+	lvpfXO7A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kTEAg-0007IQ-Ob; Fri, 16 Oct 2020 01:04:38 +0000
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
+	id 1kTG1F-00062o-EF; Fri, 16 Oct 2020 03:03:01 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kTEAd-0007I3-3N
- for linux-mediatek@lists.infradead.org; Fri, 16 Oct 2020 01:04:36 +0000
-Received: by mail-lf1-x144.google.com with SMTP id j30so843846lfp.4
- for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2020 18:04:32 -0700 (PDT)
+ id 1kTG1C-00062R-S0
+ for linux-mediatek@lists.infradead.org; Fri, 16 Oct 2020 03:02:59 +0000
+Received: by mail-oi1-x241.google.com with SMTP id s81so810885oie.13
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2020 20:02:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=cWLcvgRHCQdlC5HKIAZhx48ho8BZ0djIP0nz2utcEXI=;
- b=d6gs8eEgXnPgKObab+mhRs0FJniuh/EvHC4kcPD8b51kCsBsPDF0nC+P89o3dFvioO
- iQRmkrwhbm/40lLcsfaQD9Z8Rz+KryRawmwrjekYpYzJdyqpTvpzVd0AtYEzugDSFEGr
- bERNGtkxeXFEx0n4vEBB5gPVkuYAjrbln87StxEAIlAwP6B3VWWUmtsMbjnmg2DwJgcK
- FE5LBkjzsKHM2v/B89JIRTxpc202F22HbNRHMh4DFpSo13sLME06Mp2egtJR3yupLFUe
- Dcd+JZggfMJvdaooE1Vvnd3Um/jPRfUGI4AzZk9Z1hnBBz01P+UN28LeSCnCpf92g8JG
- 64UQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=McYZZik4fIHL0VEeWhKi1o+kiNuK7LpqqmBBnYMHOL4=;
+ b=UG+OFdBfdcOPb4hcq9ram7HV+hj/jj9uvNXAKIZZktB5iqzxxgpv/p0IMCsDbfV7SC
+ KMPz4oQ7hGa8eLYAaKacDgghYC+cI7Zj2kX5BxhM1YMrV0FyzeOqD6TdwLeneqIFXeV7
+ hI14EPeM+JgFoAxWq5fDvbYIhqeY5yW3zsLqLU9/x6Au8v03y2XLjZRX9mz1l3jJgpPw
+ Y7p91KqZtMbxSVULE+lASrhPJNlC88gUvnzQ0I2ji0YMVeimup1RWBBmH9mEhbCqPIVD
+ djme8SgwRz5pItH/9NBTYHS4MdTL77OVDkrhO5DSEBb0wZeGCJMCjIwxgp6a6WKh2o4V
+ 6D3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=cWLcvgRHCQdlC5HKIAZhx48ho8BZ0djIP0nz2utcEXI=;
- b=iWALjDjMMapWCUmKeek77nanMDDdgNzyTbfSC4cC9fzOgz6/pbEAEtVCYzG5IsNUSe
- wKu4XgYZYkxeOWrdbdnk/BrWhD76b59fiQj0HrhBDiQGV1zyj9TjyqutAEapNcdT5eL8
- RkOd8pHqIiWbyLoKLFzC+0vpX8pGm0ykVeDIr/7ctKqR0RKZPC8xL7XwUZH3uA6Mkv1H
- 3g7aQdagJYoeBFaeMaM1DT/BZsn8XM8S7il05R6CpLaTABx/PNJVBviDi+6DzssSH+ZP
- tg2SOfrzoifUCXubUjr2cF7CEb2PGwIC8XY42MFUZOa2cd8s5oMaEu2WbArzxHdxPjyU
- SQgw==
-X-Gm-Message-State: AOAM533JSmDxlQ7WPDPqYCm7Jw6d7bZvqAW5UGvL3sZtw6IAOMB2pfYH
- tPRFug/W90OQN9wIAjj0ISDoPjVUwtDEkRNfKp8YQjOuzNo=
-X-Google-Smtp-Source: ABdhPJwBQsFkTYLlprwQbz6Jw0oLof/P3UXX53ZIdXXx96lqKYOe8dv6TLlKh+jH8237HWNEx2pQk8r8OB+0/3nEE4E=
-X-Received: by 2002:ac2:5325:: with SMTP id f5mr428582lfh.86.1602810271223;
- Thu, 15 Oct 2020 18:04:31 -0700 (PDT)
-MIME-Version: 1.0
-References: <3BFCA289-ADD8-4755-80C5-1889A9AFB41D@libreelec.tv>
-In-Reply-To: <3BFCA289-ADD8-4755-80C5-1889A9AFB41D@libreelec.tv>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=McYZZik4fIHL0VEeWhKi1o+kiNuK7LpqqmBBnYMHOL4=;
+ b=XRN6XetQGTSyx7jTxKADtpahp3ySE4+9aqeVQiNW99G6gHPssJ9CrwGcVHG56Tbisl
+ GZznSUXBeiXUOxjfPMNblscC+DafEoG4u5hSNN/7nY6lBDX+Q5EI3vu078ntAmq+7Un4
+ kAxOtS8NjCjwOX+NmFrMKDK8YY7AgTRHj/pMdnYy7Fg5m7B5LeieDONy1h8tDecIo5wd
+ 0jBS2nhw8J4kWUT1N8akhBrhKNAv+nENnM6H8hnH7PJgJPqH1gqwx6WyTLRnWrcjRJkm
+ FFTdW6LUmoShWpwJPl0GZfhNfXBtIPTo6QWkNvngKtXA/B8HB5dCgYdg/klhKbutVgnT
+ NoVQ==
+X-Gm-Message-State: AOAM532tjouAu8Rq94CJv+/itSej8tIb9X1gDXPojLvGrxUJ2rAOv8iU
+ 5BKXRjFWWwohg8Cb/i7gTlY=
+X-Google-Smtp-Source: ABdhPJzMbKPMOT8ic7315SSWAFHBV1F39iCs0xE1BAB4TIwDF8Th+O8Mmbc0MCwoFjpr6La5yMAeOg==
+X-Received: by 2002:aca:7210:: with SMTP id p16mr1061996oic.77.1602817375546; 
+ Thu, 15 Oct 2020 20:02:55 -0700 (PDT)
+Received: from localhost.localdomain ([170.130.31.90])
+ by smtp.gmail.com with ESMTPSA id x15sm601662oor.33.2020.10.15.20.02.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Oct 2020 20:02:54 -0700 (PDT)
 From: Forest Crossman <cyrozap@gmail.com>
-Date: Thu, 15 Oct 2020 20:04:19 -0500
-Message-ID: <CAO3ALPytXHdb6svA+_EbmV7+g9+FdyQhBKWHUJwOGQxyJgL=kQ@mail.gmail.com>
-Subject: Re: mt76 support for MT7668 SDIO?
-To: Christian Hewitt <chewitt@libreelec.tv>
+To: marcel@holtmann.org,
+	johan.hedberg@gmail.com
+Subject: [PATCH] Bluetooth: btusb: Add support for LG LGSBWAC92/TWCM-K505D
+Date: Thu, 15 Oct 2020 22:02:38 -0500
+Message-Id: <20201016030238.1033559-1-cyrozap@gmail.com>
+X-Mailer: git-send-email 2.28.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_210435_176116_F8193301 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20201015_230258_954087_D599A43F 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,54 +94,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org,
- Linux Wireless <linux-wireless@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Forest Crossman <cyrozap@gmail.com>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Q0M6IGxpbnV4LW1lZGlhdGVrCgpPbiBTdW4sIEp1biA3LCAyMDIwIGF0IDExOjUyIFBNIENocmlz
-dGlhbiBIZXdpdHQgPGNoZXdpdHRAbGlicmVlbGVjLnR2PiB3cm90ZToKPgo+IEnigJltIGEgbWFp
-bnRhaW5lciBmb3IgYSBkaXN0cm8gdGhhdCBydW5zIEtvZGkgbWVkaWFjZW50cmUgb24gbWFueSBw
-b3B1bGFyIEFSTSBTQkNzIGFuZCBBbmRyb2lkIFNUQnMgKHJlcGxhY2luZyBBbmRyb2lkKS4KPgo+
-IFNpbWlsYXIgdG8gbXkgcmVxdWVzdCBvbiBSVEw4ODIyQ1MsIEkgaGF2ZSBhIG51bWJlciBvZiBy
-ZXF1ZXN0cyBmb3IgV2lGaSBzdXBwb3J0IG9uIEFtbG9naWMgU29DIGRldmljZXMgdXNpbmcgTVQ3
-NjY4IGNoaXBzLiBUaGUgQlQgc2lkZSBvZiB0aGUgbW9kdWxlIGlzIHN1cHBvcnRlZCBpbiBtYWlu
-bGluZSBmb3Igc29tZXRpbWUsIGJ1dCB0aGVyZSBpcyBubyBtZW50aW9uIG9mIFdpRmkuCj4KPiBJ
-cyB0aGVyZSBhbnkgcGxhbiBvciB0aW1lbGluZSBmb3IgTVQ3NjY4IFNESU8gc3VwcG9ydCBpbiBt
-dDc2PyAuLiBJ4oCZbSBzdHJ1Z2dsaW5nIHRvIGV2ZW4gZmluZCB2ZW5kb3IgZHJpdmVycyBmb3Ig
-dGhpcyBjaGlwLgoKSSByZWFsaXplIGl0J3MgYmVlbiBhYm91dCBmb3VyIG1vbnRocyBzaW5jZSB5
-b3Ugc2VudCB0aGlzIGVtYWlsLCBidXQKaWYgeW91J3JlIHN0aWxsIGxvb2tpbmcgZm9yIHNvdXJj
-ZXMgZm9yIHRoZSBkb3duc3RyZWFtIGRyaXZlciwgSSBrbm93CnRoZXkncmUgaW5jbHVkZWQgaW4g
-dGhlIHNvdXJjZSBjb2RlIHJlbGVhc2VzIGZvciB0aGUgQW1hem9uIEZpcmUgVFYKU3RpY2sgNEtb
-MV0gKGxhdGVzdCBvbmUgaGVyZVsyXSkuIEluc2lkZSB0aGF0IHRhcmJhbGwsIHRoZXJlJ3MgYQoi
-cGxhdGZvcm0udGFyIiBhcmNoaXZlLiBJbnNpZGUgInBsYXRmb3JtLnRhciIgeW91J2xsIGZpbmQg
-dGhlIGtlcm5lbApzb3VyY2VzIGZvciB0aGUgRmlyZSBUViBTdGljayA0Sywgd2hpY2ggaW5jbHVk
-ZXMgdGhlIFdpRmkgZHJpdmVyIGZvcgp0aGUgTVQ3NjY4IGFuZCBzZXZlcmFsIG90aGVyIGRldmlj
-ZXMuIFNwZWNpZmljYWxseSwgeW91J2xsIGZpbmQgdGhlCk1UNzY2OCBkcml2ZXJzIHVuZGVyCiJr
-ZXJuZWwvbWVkaWF0ZWsvbXQ4Njk1LzQuNC9kcml2ZXJzL21pc2MvbWVkaWF0ZWsvY29ubmVjdGl2
-aXR5L3dsYW4vZ2VuNCIKYW5kICJ2ZW5kb3IvYW1hem9uL3dsYW4vbWVkaWF0ZWsvZHJpdmVyL210
-NzZ4OCIgKG5vdCBzdXJlIHdoYXQgdGhlCmRpZmZlcmVuY2UgaXMpLgoKSSwgdG9vLCBhbSBpbnRl
-cmVzdGVkIGluIHVwc3RyZWFtIHN1cHBvcnQgZm9yIHRoZSBNVDc2Njggc2luY2UgSSBoYXZlCnNl
-dmVyYWwgVVNCIGRvbmdsZXMgKHdlbGwsIHRlY2huaWNhbGx5IHRoZXkgdXNlIGN1c3RvbSBjb25u
-ZWN0b3JzIGFuZAphcmUgY3VzdG9tLW1hZGUgdG8gYmUgdXNlZCBpbnNpZGUgc3BlY2lmaWMgVFZz
-WzNdLCBidXQgdGhleSBlbnVtZXJhdGUKZmluZSBvbiBhIG5vcm1hbCBQQykgd2l0aCB0aGUgVVNC
-IHZhcmlhbnQgb2YgdGhhdCBjaGlwLCBzbyBpZiBhbnlvbmUKaGFzIGFueSBwbGFucyB0byBhZGQg
-dGhhdCBzdXBwb3J0LCBJJ2QgYWxzbyBsaWtlIHRvIGtub3cuIEFuZCBpZgpzb21lb25lIGlzIGlu
-dGVyZXN0ZWQgaW4gZG9pbmcgdGhpcyBhbmQgbmVlZHMgaGFyZHdhcmUsIGRldmljZXMgdGhhdAp1
-c2UgdGhlIFVTQiB2YXJpYW50IG9mIHRoZSBNVDc2NjggYXJlIHByZXR0eSB3aWRlbHkgYXZhaWxh
-YmxlIGFuZCBjYW4KZWFzaWx5IGJlIGZvdW5kIHdpdGggdGhpcyBlQmF5IHNlYXJjaCBVUkxbNF0u
-IFRoZSB1c2VyIG1hbnVhbFszXSBmb3IKdGhlIGRldmljZXMgbGlzdGVkIGluIHRoYXQgc2VhcmNo
-IGhhcyB0aGUgcGlub3V0IGZvciB0aGUgY3VzdG9tCmNvbm5lY3RvciBvbiB0aGUgYm9hcmQsIHNv
-IGl0J3MgcmVsYXRpdmVseSBzdHJhaWdodGZvcndhcmQgdG8gc29sZGVyCnVwIGEgVVNCIGNhYmxl
-IHRvIGl0IHRvIGdldCBpdCB3b3JraW5nIHdpdGggYSBjb21wdXRlci4KClsxXTogaHR0cHM6Ly93
-d3cuYW1hem9uLmNvbS9ncC9oZWxwL2N1c3RvbWVyL2Rpc3BsYXkuaHRtbD9ub2RlSWQ9MjAxNDUy
-NjgwClsyXTogaHR0cHM6Ly9maXJlb3MtdHYtc3JjLnMzLmFtYXpvbmF3cy5jb20vbzVQN2RmQnl4
-YkJoY2ZRcUk4SXFVUkV5VWMvRmlyZVRWU3RpY2s0Sy02LjIuNy4zLTIwMjAwNzI0LnRhci5iejIK
-WzNdOiBodHRwczovL2ZjY2lkLmlvL0JFSkxHU0JXQUM5Mi9Vc2VyLU1hbnVhbC9Vc2VyLU1hbnVh
-bC0zOTQ1MDU5LnBkZgpbNF06IGh0dHBzOi8vd3d3LmViYXkuY29tL3NjaC9pLmh0bWw/X25rdz0l
-MjhlYXQ2NDQ1NDgwMSUyQ2xnc2J3YWM5MiUyQ3R3Y20tazUwNWQlMjkKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
-bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+The LG LGSBWAC92/TWCM-K505D/EAT64454801/EAT64454802 (it goes by many
+names) is a combo WiFi/Bluetooth module that's used in several models of
+LG TVs. It uses the MediaTek MT7668AUN, which is already supported in
+btusb, but this device has a non-MediaTek USB VID so to get it to work
+we just need to add it to the list of devices to probe.
+
+Signed-off-by: Forest Crossman <cyrozap@gmail.com>
+---
+ drivers/bluetooth/btusb.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 5f022e9cf667..58259b6a43c7 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -366,6 +366,7 @@ static const struct usb_device_id blacklist_table[] = {
+ 	/* MediaTek Bluetooth devices */
+ 	{ USB_VENDOR_AND_INTERFACE_INFO(0x0e8d, 0xe0, 0x01, 0x01),
+ 	  .driver_info = BTUSB_MEDIATEK },
++	{ USB_DEVICE(0x043e, 0x3109), .driver_info = BTUSB_MEDIATEK },
+ 
+ 	/* Additional Realtek 8723AE Bluetooth devices */
+ 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
+-- 
+2.20.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
