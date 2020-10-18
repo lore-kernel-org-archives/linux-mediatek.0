@@ -1,67 +1,69 @@
-Return-Path: <SRS0=1jDH=DY=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ckIt=DZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 757F8C43457
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Oct 2020 21:17:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 86CD3C433E7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2020 10:07:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2AA6C207BB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Oct 2020 21:17:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2FAE721582
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2020 10:07:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TusNTEW9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AA6C207BB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1jXQb2SP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="pufOCh9L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FAE721582
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Bdge4qyPFkl/Udo3KM7C6AKqD329ma21FUasZxsjXR0=; b=TusNTEW9sRkMigkbeiAVTtYah
-	jibuXHwvcu5uOciMmTsHXXmTo7zY4HjEjGI/UQ0SGUaFS2pmVjI/2L5mn7jDAPfR4+PTc2/FE35vP
-	+Mk2aL8VvaHemboyeD7Mdrw/8E96K6xjzAf0Bqv1g9AKT2KiW6mSlQlhhWNsVykW5yxinoI1HMF0S
-	42M3WWMzH1St6Nvu7XtHxojUbhUbaCgXu2I2mVy2oZA8AHzcSCv/cHwSkHLVS5mMrrfQ8wX8wowez
-	A+rpzSFdMvI9r0KpwVu/GAehlkk5gZ4lJTJFBwOpiHbBbMoaWbU4IogTh0ei5i8fclI80Xz2pMI70
-	e08jqN7Bw==;
+	 bh=bT+nEHrwK3zkJYxItjk78j0XQku0f+z1NyWAAKGkQQA=; b=1jXQb2SPzVLiRzBDOBsT/v8Rz
+	71Fl+NLBnXb3Lr/Gg5ReUWuCT6r+HOq++0hA3ApUmxxN/Q6R1EZUR4zIn3fNOaRmehUaB8w755NOc
+	MUHdaP3lKORE6cLHZ4MtC05vs4lyUwPgqP18OvdMPV1UsJbgXsjYAxIJDVxwppnoIMDV5YojZvV+h
+	3JQ8JqbQcR+9QfBi+xP+gzzw6M40v2MN3zCo04kO6Qfqmcn6GSWtqh971GDFnx81JAcbT7jEBXAfk
+	xLyzVEZD4SeKHPoy0Ox9N6OkcKR5ApuVkD8bMLSnZgZj4+NRKM21UFP80lL1bmRQaSai6waudfRg/
+	kSfjihUJw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kTtZO-0003JX-Ax; Sat, 17 Oct 2020 21:16:54 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1kU5bM-00082R-GE; Sun, 18 Oct 2020 10:07:44 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kTtZJ-0003IR-3B
- for linux-mediatek@lists.infradead.org; Sat, 17 Oct 2020 21:16:50 +0000
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1kTtZ5-0006Fj-TO; Sat, 17 Oct 2020 23:16:35 +0200
-Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <ukl@pengutronix.de>)
- id 1kTtZ4-0004pP-RR; Sat, 17 Oct 2020 23:16:34 +0200
-Date: Sat, 17 Oct 2020 23:16:32 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Fabien Parent <fparent@baylibre.com>
-Subject: Re: [PATCH] dt-bindings: pwm: mtk-disp: add MT8167 SoC binding
-Message-ID: <20201017211632.ufgcsmjhbdmcj7hr@pengutronix.de>
-References: <20201016185015.3371433-1-fparent@baylibre.com>
+ id 1kU5bI-00080j-3j; Sun, 18 Oct 2020 10:07:41 +0000
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
+ [82.4.196.95])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0993621582;
+ Sun, 18 Oct 2020 10:07:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1603015658;
+ bh=wIiA9KBDcc136KGq4f/BMgcBH20BwV1jX2a9QCEH+uw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=pufOCh9Lhfwp+boIkjf7lnup05nEyglSaMVcpi5nrWVcWPlxyt06Z25c4wqDjPtSw
+ WtwAA6D2IC66P5MMXjRxtebomvVCyPopbAFurz76ZrsTJRy3UGj5EbdX1tMxeW6jlt
+ 3jI75MAxOjA0D9BBP0MsArqiEtXRYK/yDIlNUY+4=
+Date: Sun, 18 Oct 2020 11:07:38 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] iio: adc: mediatek: fix unset field
+Message-ID: <20201018110738.36e3de38@archlinux>
+In-Reply-To: <61fe6278-a628-820c-6bbd-eeac51b1e7c3@gmail.com>
+References: <20201012194618.2170970-1-fparent@baylibre.com>
+ <61fe6278-a628-820c-6bbd-eeac51b1e7c3@gmail.com>
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20201016185015.3371433-1-fparent@baylibre.com>
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201017_171649_203857_48943C99 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20201018_060740_239420_5E279C16 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,90 +75,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- thierry.reding@gmail.com, lee.jones@linaro.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============5732793085922637773=="
+Cc: lars@metafoo.de, linux-iio@vger.kernel.org, chun-hung.wu@mediatek.com,
+ linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
+ linux-mediatek@lists.infradead.org, pmeerw@pmeerw.net, knaack.h@gmx.de,
+ alexandru.ardelean@analog.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 13 Oct 2020 17:37:12 +0200
+Matthias Brugger <matthias.bgg@gmail.com> wrote:
 
---===============5732793085922637773==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dkesq5stxul6y32h"
-Content-Disposition: inline
+> On 12/10/2020 21:46, Fabien Parent wrote:
+> > dev_comp field is used in a couple of places but it is never set. This
+> > results in kernel oops when dereferencing a NULL pointer. Set the
+> > `dev_comp` field correctly in the probe function.
+> > 
+> > Fixes: 6d97024dce23 ("iio: adc: mediatek: mt6577-auxadc, add mt6765 support")
+> > 
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>  
+> 
+> Ouch.
+> 
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> 
+> > ---
+> >   drivers/iio/adc/mt6577_auxadc.c | 2 ++
+> >   1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> > index ac415cb089cd..7bd48377cd79 100644
+> > --- a/drivers/iio/adc/mt6577_auxadc.c
+> > +++ b/drivers/iio/adc/mt6577_auxadc.c
+> > @@ -276,6 +276,8 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
+> >   		goto err_disable_clk;
+> >   	}
+> >   
+> > +	adc_dev->dev_comp = of_device_get_match_data(&pdev->dev);
+> > +
 
+Could we switch this to device_get_match_data(&pdev->dev)?
 
---dkesq5stxul6y32h
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Whilst is unlikely this driver will used in a platform using ACPI, there
+is nothing inside the driver itself preventing this (which is good as no
+reason to do so!)   My main motivation for this is to reduce the chances
+of cut and paste of the of_* functions in future driver.
 
-On Fri, Oct 16, 2020 at 08:50:15PM +0200, Fabien Parent wrote:
-> Add binding for MT8167 SoC. The IP is compatible with MT8173.
->=20
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
->  Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Doc=
-umentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> index 0521957c253f..902b271891ae 100644
-> --- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> @@ -4,6 +4,7 @@ Required properties:
->   - compatible: should be "mediatek,<name>-disp-pwm":
->     - "mediatek,mt2701-disp-pwm": found on mt2701 SoC.
->     - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
-> +   - "mediatek,mt8167-disp-pwm", "mediatek,mt8173-disp-pwm": found on mt=
-8167 SoC.
->     - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
->   - reg: physical base address and length of the controller's registers.
->   - #pwm-cells: must be 2. See pwm.yaml in this directory for a descripti=
-on of
+Also switch the headers to linux/property.h and linux/mod_devicetable.h 
+to more tightly reflect what we are using in the driver.
 
-LGTM:
+Thanks,
 
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+Jonathan
 
-Best regards
-Uwe
+> >   	mutex_init(&adc_dev->lock);
+> >   
+> >   	mt6577_auxadc_mod_reg(adc_dev->reg_base + MT6577_AUXADC_MISC,
+> >   
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---dkesq5stxul6y32h
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAl+LXy0ACgkQwfwUeK3K
-7AkGVQf/W23j54YXyBoJHOo0UT7KjtVUZs7RlAf41JjeatSLPQ2AFfeInknaMEkX
-rGoUteV8Dj36mb5SWUJhGN4tmBUGX7e5u/XRhkHRjuJeA41MThhw16ubjIPBxXks
-GiB0mtz69sFQp5T9w7Nyz4iI6qCEvP2GOuNisELgRJXAECob6gX33RYFhvJZK1Gg
-v/hR0xjoblqnJ15jKKoUiuw75Qbtj7Bj9ei+6ypNRTu/zYRSSUsrXaYX6gcYr0Ar
-ZAPLhiaOKv9utkDGnrvcV97qHRQxkoSBOLljtx3EikgkRkIC4uoT3T7oQuaV9fvG
-kE00SKEPLcxAeOj8mGGn6mSkloQxGQ==
-=DF3E
------END PGP SIGNATURE-----
-
---dkesq5stxul6y32h--
-
-
---===============5732793085922637773==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5732793085922637773==--
-
