@@ -2,23 +2,22 @@ Return-Path: <SRS0=Vpwr=D2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79301C433E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2020 14:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FBC7C433DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2020 14:08:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E69F022263
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2020 14:08:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8E37F22263
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2020 14:08:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k/xUluwv";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="My2XOU4M"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E69F022263
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UzvM6USj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="0lEqMP1O"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E37F22263
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,67 +26,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xCE9UYJq04VQfC3BtKsx9l4iqgWMEPOxA/mxs1sqqyE=; b=k/xUluwv2xrRxJqVTidmpj52a
-	jHUCEsYRVSgM1D5S3O0B3xzYuhD9t4yuwve6uxaWNJnY59uxVyshlNnCUE9Fsg8ObZTXKOwSu3zty
-	u+4E7ddTMjbdjfE1DzacJVyjn64NVtAiZ9XSRRbdPGlN17jyRGqkKtchUdIzdYM/WHnUB3tA7bDqR
-	GHDwu+bbUQkI3Onuqi/w3+V/wMvH4PDbSXWlI9EJSrrHEaiHHZUFfiQq+D1wZaIjMI3m3A181p2js
-	DpqnWY53dlzClcZxNPtc1Demy9yosa1RYuhfcC6FLGWalMm+gR2V/n7F/rKix2eYBc0hjtbFkdi+f
-	NOx1Z6qxA==;
+	 bh=IHWty2Joe/QUInmSod55xQ/pAdpJ/YsrCsnqTXfFrJ4=; b=UzvM6USj+w189vWGn6sv0p2l2
+	obDiDmcSySROB6SYZo0DXBqEm0AWP0LCqyOEY8neAAowypdXF8RHXqWUZ9Lx3S/9vINP020clEFxA
+	bgAg6LM8AKqiGd9yOweOIAXCJK0e1fJivEy4k0YbwQhBpBiyhcpU9dMF3xyyumk3gE0YS77j5htiy
+	Sh+rBUI9ogxo4lL9iwB39EwUGex6cwlPxGashsV99n3NGS0dnUJdG0dXiNVnrk1W9cnswyske7+DP
+	9P9rLN7/yzuNV/dr1lavS/I9GT678ix57UNcDABfsYes/nLXy4/PO4u+obUvMODDJCqT3EVL8yUKV
+	smlAcQnTw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUVpX-0004d8-Is; Mon, 19 Oct 2020 14:08:07 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kUVpf-0004hS-Am; Mon, 19 Oct 2020 14:08:15 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUVoi-0004FY-P7
- for linux-mediatek@lists.infradead.org; Mon, 19 Oct 2020 14:07:20 +0000
-Received: by mail-wm1-x342.google.com with SMTP id k18so13021830wmj.5
- for <linux-mediatek@lists.infradead.org>; Mon, 19 Oct 2020 07:07:16 -0700 (PDT)
+ id 1kUVok-0004G0-Lo
+ for linux-mediatek@lists.infradead.org; Mon, 19 Oct 2020 14:07:23 +0000
+Received: by mail-wm1-x343.google.com with SMTP id d81so10457993wmc.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 19 Oct 2020 07:07:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=D3Li+sQUwDiy01vgvmIIRdUEc3y1uDj2ZfggKxaTpm0=;
- b=My2XOU4Mc8Cjt3OIle3OjrmpttFQr8rNVInWtvQtF+8kSYnHcmu2f2TFy0T7sTUTzJ
- r5Q/sMW0rTXS2e9tnAQbRnMZAFFvAutWsJuGbZcljXuF94Pq6s4NmiLXygDZvVfraUYT
- FXtY8tj/QWjkupNCk1YGt8AzHU6Do+owEM5yC+ywMTb45HOziqqGDd5vDuVJlT2RIqLj
- GvWGx+tWNSz8801aG5t7p6mHKDO6sjrknJzEjg27MCQ6aWlhSUzn9TNNB2NWiiqLjmdf
- y0UjJbLvZYAWGUHdXzzOnaB/CHmOZTbi2XiZ4KwD2ZMpTxVwIV1AaOlKxDm4qF2DT35A
- ZktQ==
+ bh=/BDpR1YjUQuY5B8x3jMFdrl3UVJs1R891gJ2IPtuaQ0=;
+ b=0lEqMP1OyKzxt7fV7571VcjYQLxRQ2VNoXPJESQG7F42ZYRvzihHztjGqNMIQ+eYI/
+ jH7adWvQ9zLvDy+UAT0b9PwZQceZ+VgC/fEDuiKTKKzFj7lhZP7rCJA2eE1yP3ZZEqfk
+ sy2APczlrHlQLe+BovWVdn+dkeC5/RiHaySlG0gvCdDLfnnHYSPuIHd2YETKXxoxvbCH
+ Q93gK4uPgY00NcAW0ByjB2+W+y9mxNf2WpwDTHZyrifDi/chi9vWsvNvr6hLxW8CZdTX
+ f0gVHbsdSn5SoBil1b0Z1/RYlLu0LpwyzMS6KDDfCCTZX8/d4yx24Uj0tDB69iOf+EWu
+ ka+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=D3Li+sQUwDiy01vgvmIIRdUEc3y1uDj2ZfggKxaTpm0=;
- b=OTQLmafK6xOIZ4z8VYXnjJSaDGK3ufxJLwwkEE7dDWIf044SIcToDMu/gDWgkk7wxG
- xwmwYnNk+19lOz9CVAAm2Dz0GDIm7nzMK7ju71pDzKjfJJMxUnsJp/Ie1xLNBfMJzr98
- mw8D0jnozmjdR9QSaob9pDYddI5+K6C4No7R4UDBeS9SxpNpBJbvU3XfNH9Y4zlltJSb
- gEFJLTJfz0Tk0KhMFp3zc8CFfGUsP0udMFSBSkeI4LYwUTI6lHWuB4RZ5kJOm0+WQd5v
- WOIWqqTfd1lACrq5f3FCaPY+Qp7J7bungq7PIWDuyafN899hZTN8ZXpZhGfTLsxyI5d/
- w+Hg==
-X-Gm-Message-State: AOAM533OCFDLrf/xSbzrX09wJ43R9qj4Fu0zJgoG5Nln+TBOH9iHzQVJ
- b2tQhOne5zJ3r9a81MMlfTYXKCA2Xsp3gQ==
-X-Google-Smtp-Source: ABdhPJxTtRwa45FbRqYGWLXbhD/Wmp3nnFk48uFyq7/Acm7NbdVSp0yBk/ZY5MwmW5FwS/KYQkZoBw==
-X-Received: by 2002:a7b:c242:: with SMTP id b2mr3032645wmj.25.1603116434905;
- Mon, 19 Oct 2020 07:07:14 -0700 (PDT)
+ bh=/BDpR1YjUQuY5B8x3jMFdrl3UVJs1R891gJ2IPtuaQ0=;
+ b=kOGm7UdgQM+mUQXmXaXsk/ZQGDrubk4GA5uWeoXoyZlyOekbH9khWcdOLVcnuSev+W
+ NLMGLlcRVEPymztT8mtfXA9rmYCL7B/sBkXUQlN0a7lywnDDHB5Zoqs9EQxkblVRtGKj
+ LEdR5+w1vfD7y9E48K+vynkC5fvzfPDJ2PrMJ+w43Hsk0e2/g964echlvkArIRjMe8PY
+ hp0w7VUFkbpX3Q7TVbfzzs2okjSo6CEcg22pDN2LWqgwIG9gLb4wXTo5W+gPU7psAHKp
+ 5MGaQeGDI7R8dF6y4wHdPXllgqXF9fOJOxsv/NGBsfhwHrcKTB9CI8ILuYqMsMTjbSgw
+ YwVg==
+X-Gm-Message-State: AOAM533z3GCw3aJuc19pI/vd+9W8otrh2ulhJkUWEAemabYdkJ9vuI3C
+ zxyBSIVcPUvy5jACTvVKa4LsGqt9TmF4zg==
+X-Google-Smtp-Source: ABdhPJyOozw+yL0LyWF9Z/iMPXXfzuXa/dhpJm3XAGEMIK3TXLDZAceOfnhXl9WQi/FFmA+HB0P8Mw==
+X-Received: by 2002:a7b:c4c3:: with SMTP id g3mr10922769wmk.127.1603116436493; 
+ Mon, 19 Oct 2020 07:07:16 -0700 (PDT)
 Received: from localhost.localdomain (26.167.185.81.rev.sfr.net.
  [81.185.167.26])
- by smtp.gmail.com with ESMTPSA id a3sm114182wmb.46.2020.10.19.07.07.13
+ by smtp.gmail.com with ESMTPSA id a3sm114182wmb.46.2020.10.19.07.07.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2020 07:07:14 -0700 (PDT)
+ Mon, 19 Oct 2020 07:07:15 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-pwm@vger.kernel.org
-Subject: [PATCH 3/5] pwm: pwm-mediatek: Add MT8183 SoC support
-Date: Mon, 19 Oct 2020 16:07:03 +0200
-Message-Id: <20201019140705.1518822-4-fparent@baylibre.com>
+Subject: [PATCH 4/5] arm64: dts: mediatek: mt8183: add pwm node
+Date: Mon, 19 Oct 2020 16:07:04 +0200
+Message-Id: <20201019140705.1518822-5-fparent@baylibre.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201019140705.1518822-1-fparent@baylibre.com>
 References: <20201019140705.1518822-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201019_100717_760761_1A237E43 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20201019_100719_232774_68377389 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,38 +106,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add PWM support for the MT8183 SoC
+MT8183 SoC has 4 PWMs. Add the pwm node in order to support them.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/pwm/pwm-mediatek.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index 108881619aea..9052b500b8f0 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -314,6 +314,12 @@ static const struct pwm_mediatek_of_data mt7629_pwm_data = {
- 	.has_ck_26m_sel = false,
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 9a3cf95676e1..290d15dd9490 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -709,6 +709,20 @@ mmc1: mmc@11240000 {
+ 			status = "disabled";
+ 		};
  
-+static const struct pwm_mediatek_of_data mt8183_pwm_data = {
-+	.num_pwms = 4,
-+	.pwm45_fixup = false,
-+	.has_ck_26m_sel = true,
-+};
++		pwm0: pwm@11006000 {
++			compatible = "mediatek,mt8183-pwm";
++			reg = <0 0x11006000 0 0x1000>;
++			#pwm-cells = <2>;
++			clocks = <&infracfg CLK_INFRA_PWM>,
++				 <&infracfg CLK_INFRA_PWM_HCLK>,
++				 <&infracfg CLK_INFRA_PWM1>,
++				 <&infracfg CLK_INFRA_PWM2>,
++				 <&infracfg CLK_INFRA_PWM3>,
++				 <&infracfg CLK_INFRA_PWM4>;
++			clock-names = "top", "main", "pwm1", "pwm2", "pwm3",
++				      "pwm4";
++		};
 +
- static const struct pwm_mediatek_of_data mt8516_pwm_data = {
- 	.num_pwms = 5,
- 	.pwm45_fixup = false,
-@@ -326,6 +332,7 @@ static const struct of_device_id pwm_mediatek_of_match[] = {
- 	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
- 	{ .compatible = "mediatek,mt7628-pwm", .data = &mt7628_pwm_data },
- 	{ .compatible = "mediatek,mt7629-pwm", .data = &mt7629_pwm_data },
-+	{ .compatible = "mediatek,mt8183-pwm", .data = &mt8183_pwm_data },
- 	{ .compatible = "mediatek,mt8516-pwm", .data = &mt8516_pwm_data },
- 	{ },
- };
+ 		efuse: efuse@11f10000 {
+ 			compatible = "mediatek,mt8183-efuse",
+ 				     "mediatek,efuse";
 -- 
 2.28.0
 
