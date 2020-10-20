@@ -6,19 +6,19 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E164AC433E7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 08:08:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BBCEC433DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 08:09:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E748222E8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 08:08:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AA5DD222E8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 08:09:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zxrFLojU";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YSZFpB1G"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E748222E8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rBCi1U/3";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="r3q4WYBX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA5DD222E8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,63 +27,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o1ePOpEtoYalVjmtxcA93AEdju+W5MR1asQP6Um3RDQ=; b=zxrFLojUyTvEmZQxdLPGjWlxX9
-	8pgp4YKQKwmdTj/WTOeSSJeLfCleOe+kUtNdfw9N6m7bIOcTHnJT4sWOLNZQp1Ho0SPTv5tT/9H8T
-	1ul4GpmP7T2tG+LQzoi5Gc/MLSlQBysFFxfkb8f/zrhScL/KcqXpZkKQBv9tlSA++CPkjo0fXeCuK
-	mkAeRLvshEe4v6SNPZh1ts3vaRjY4nkcgjRpQCPyJpaPsCEjPKncX5EcYw5DigKf436kWGT+ZOUhb
-	ZF9J1T0UKgS2Qbdl0N1Typ0D8oCwv19GiY36eNqwmK5/I1CbwQBy0skLJVc6IkE3bYppv4sb6lP0p
-	N1cBxi/A==;
+	bh=215Cj1Kt/CdBxT55Xc8DDFahfev8DjiBLTylAWxOmlU=; b=rBCi1U/39ffcfuTzNftcm4qvx5
+	Ojh+m3PTczMqtWxS/IxS5TtlIBycj/H4unmfLpSDptGbl3IdSbUX586agK+x5HIbcKBJAOGkEvMe7
+	0pgc4Atbv20C9o7oo6+tHN4kEylvU+pIXRRcLueMWvvsW7CC08v89EddpQRX8JnJy9VaCNZtrQ/6n
+	rHI8zg4E3RRMLtVQ7UFa535lRZ666+aHZ/nZEjA63FGryhbqyXcp/C8k84w+NBnWcShHC5YrKO9Z/
+	oIUK9XnEaqbFsdcyp60GVb8WMPdP8/Bh0uQceGF79g/C1E9tvHatGx23QJmtJvXWepH6eGp2ZaTX5
+	rn8kiL0g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUmhJ-0005Fb-Cd; Tue, 20 Oct 2020 08:08:45 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1kUmhR-0005I1-BL; Tue, 20 Oct 2020 08:08:53 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUmhE-0005E7-Eu; Tue, 20 Oct 2020 08:08:41 +0000
-Received: by mail-pl1-x644.google.com with SMTP id w11so608944pll.8;
- Tue, 20 Oct 2020 01:08:39 -0700 (PDT)
+ id 1kUmhL-0005Fc-1L; Tue, 20 Oct 2020 08:08:48 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id h6so619090pgk.4;
+ Tue, 20 Oct 2020 01:08:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=R47c8IJlDfJaqH2Rm6EUjlvpHInRK3+ab54pNsvjd9M=;
- b=YSZFpB1GZjW/lvoux4A3VSm4jmqdVsMXV5awGVOpMUXYdF56GRYI1EEeGbzG9G/zc4
- tBG5w3tC/UkzGrtaYzHjr4PqKi7A6po/SjMIhtHMicqg8MowMBiBEhWaDWmGB0s2jE5f
- c3cK5KhATQJwokl26GMJXlDQUkLN/KWaIJm7JRrONnqofCrdyoinI9d1wVNs+hKYc5UL
- 1ppj/NSWCyoM9gfiCmoS7sSeL68eb/7l9DER1NrxumAYCST+6cYe8qTD4lUUsrqVyGea
- YD3CfA+9KRrde01nleyikmRntvh3aBkzFsBzcsjc/JGOZmOKPJ4R8gjW1NTWNsg/21hz
- wT/w==
+ bh=QIq5NQbiNyJNm/We4OObc4q4pfsVdMirm2rHEjG4Osk=;
+ b=r3q4WYBXqjYqIQt7imcslM6KvEym12F1IyuoKZjmDVOl2IKrLOeNDdL+26hswkpVJi
+ QTJ5aIjpkzLjkXBpsmAlhtrOaTxwOrI6pREAhyXTH9+++2EefUDoYW4Zjm5BgssjOlza
+ /fCQSc+ouAW+HTvX5JswVnA5eFeGQZkkXuSEqPDuqly2KvtWmQuH3BV/oWrxjOccdEKH
+ AoZVkiUkPy7p3is3jEgIZSUdBBje7v4XGLHg6D4Q4AK6kYXFrrRN2GFUUIV3a95mSyIC
+ +x3V6HfRpP2w90MYpjTaRgUhcoIUcup6XWVLJ3Du7VHoPAGq9u2dZCUq7OAd+Eo4qL2Q
+ zZMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=R47c8IJlDfJaqH2Rm6EUjlvpHInRK3+ab54pNsvjd9M=;
- b=aL2tRiv/41G7corKyM5TSc2nyjTso88Sg54Iv8zfA8yMVAUwCQ2Td/gHBoVzX75XNt
- 2r4R3o9gdV8CNfud6nNMOrxitpZRTEU1C1UUxBQDYZ/Am/U8MUrSTMdbS0yLTf3ewqqg
- vYhRlqnU5lyaMj4GZuFrrR35CRc1gbdLB9yONs78CvkA/hXpD5YIkFKUDNN82Z8fXfW2
- cZTxJ3qFy3iVNWnLvwPke+YH6hVcdhv5wYnSE+SZQqcAjrNHA6aDJ76K3LBYsaPZrsLS
- RP9f5JhgDvxte8SDspgOr1O+tJA8qLf7BBCG9OLX8hdt6ZqW9dUQmK8SBf6gVH/GrLht
- +5Ug==
-X-Gm-Message-State: AOAM531ax/0nV6JzLFvFzqTYwdxATPCmDWoiUN4Q8Yg+6U+7uZawC3PZ
- 5LieOd3IKtwH1GMy4sjqqwk=
-X-Google-Smtp-Source: ABdhPJz+seHCMqIEtQxTSJpqKz3QaHTqHPCpNbZlw4TDTHXgKsE6nxCuV4e1TDNUCddvocRKYb3FPg==
-X-Received: by 2002:a17:902:d710:b029:d3:7e54:96d8 with SMTP id
- w16-20020a170902d710b02900d37e5496d8mr52751ply.65.1603181318160; 
- Tue, 20 Oct 2020 01:08:38 -0700 (PDT)
+ bh=QIq5NQbiNyJNm/We4OObc4q4pfsVdMirm2rHEjG4Osk=;
+ b=fs5a9d5M3bg2BbTjk1I7CRF+hVEl+21NRDp1Q3lGlUKO39/ya+/urASO5XteKA5gTO
+ K4Cyhk7/x/7TBUPDtTAc9wD8NBmS7tG2dEaab7g0OKQ5Z6w26MB6lrecHguUrXCX5RO5
+ gOg+fad92yN7NK/LzuNRwvmHSj3uu56CrErrWrxCcoBoe2wAkU18VPjQo64H+ixqPQas
+ y556IK/Ot5hZ8bHrN7bzKm/Zr/qcOKgdjeNw5FZx0MjwRTwww9lVwSWKQl6shswlMUgh
+ QC0MQ5T1/3Gtncf8K8x8ndgPzAza/67/G/pdS6rxrT/aNeH12+PpkWNic1F9YJb5nIF6
+ L7Tw==
+X-Gm-Message-State: AOAM533ksTKJQ4JuPR5uAqOYA+q8WW+bisG0kKfaapXCE/1JrAKRyKB0
+ 5mkRwCINO3j3kP08YHL3Evw=
+X-Google-Smtp-Source: ABdhPJxGqymkIvPAHuZa2q3G9rP0P3v1Eq3DXNisPTkZU7yAKX9m/0/stwCYzs7WR6KIpC89TA7g8g==
+X-Received: by 2002:aa7:9299:0:b029:156:5edc:a506 with SMTP id
+ j25-20020aa792990000b02901565edca506mr22385pfa.52.1603181324717; 
+ Tue, 20 Oct 2020 01:08:44 -0700 (PDT)
 Received: from localhost.localdomain ([2402:7500:477:195c:4b74:c749:e0fe:9e69])
- by smtp.gmail.com with ESMTPSA id 17sm1347270pfi.55.2020.10.20.01.08.33
+ by smtp.gmail.com with ESMTPSA id 17sm1347270pfi.55.2020.10.20.01.08.38
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 20 Oct 2020 01:08:37 -0700 (PDT)
+ Tue, 20 Oct 2020 01:08:44 -0700 (PDT)
 From: Gene Chen <gene.chen.richtek@gmail.com>
 To: jic23@kernel.org,
 	robh+dt@kernel.org,
 	matthias.bgg@gmail.com
-Subject: [PATCH v7 1/3] dt-bindings: iio: adc: add bindings doc for MT6360 ADC
-Date: Tue, 20 Oct 2020 16:07:45 +0800
-Message-Id: <1603181267-15610-2-git-send-email-gene.chen.richtek@gmail.com>
+Subject: [PATCH v7 2/3] Documentation: ABI: testing: mt6360: Add ADC sysfs
+ guideline
+Date: Tue, 20 Oct 2020 16:07:46 +0800
+Message-Id: <1603181267-15610-3-git-send-email-gene.chen.richtek@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1603181267-15610-1-git-send-email-gene.chen.richtek@gmail.com>
 References: <1603181267-15610-1-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_040840_565642_52BE5CC0 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20201020_040847_383045_3A2CAF0A 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,54 +109,98 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Gene Chen <gene_chen@richtek.com>
 
-This change adds the binding doc for the MT6360 ADC.
+Add ABI documentation for mt6360 ADC sysfs interfaces.
 
 Signed-off-by: Gene Chen <gene_chen@richtek.com>
 ---
- .../bindings/iio/adc/mediatek,mt6360-adc.yaml      | 34 ++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6360-adc.yaml
+ Documentation/ABI/testing/sysfs-bus-iio-adc-mt6360 | 78 ++++++++++++++++++++++
+ 1 file changed, 78 insertions(+)
+ create mode 100644 Documentation/ABI/testing/sysfs-bus-iio-adc-mt6360
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6360-adc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6360-adc.yaml
+diff --git a/Documentation/ABI/testing/sysfs-bus-iio-adc-mt6360 b/Documentation/ABI/testing/sysfs-bus-iio-adc-mt6360
 new file mode 100644
-index 0000000..a7350ec
+index 0000000..e5a7b1c
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6360-adc.yaml
-@@ -0,0 +1,34 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/iio/adc/mediatek,mt6360-adc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/Documentation/ABI/testing/sysfs-bus-iio-adc-mt6360
+@@ -0,0 +1,78 @@
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage0_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 USBID ADC which connected to connector ID pin.
++		Calculating with scale and offset returns voltage in uV
 +
-+title: Mediatek MT6360 and similar ADCs
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage1_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 VBUS ADC with lower accuracy(+-75mA)
++		higher measure range(1~22mV)
++		Calculating with scale and offset returns voltage in uV
 +
-+maintainers:
-+  - Gene Chen <gene_chen@richtek.com>
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage2_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 VBUS ADC with higher accuracy(+-30mA)
++		lower measure range(1~9.76V)
++		Calculating with scale and offset returns voltage in uV
 +
-+description: |
-+  Family of simple ADCs with i2c interface and internal references.
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage3_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 VSYS ADC
++		Calculating with scale and offset returns voltage in uV
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt6360-adc
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage4_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 VBAT ADC
++		Calculating with scale and offset returns voltage in uV
 +
-+  "#io-channel-cells":
-+    const: 1
++What:		/sys/bus/iio/devices/iio:deviceX/in_current5_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 IBUS ADC
++		Calculating with scale and offset returns voltage in uA
 +
-+required:
-+  - compatible
-+  - "#io-channel-cells"
++What:		/sys/bus/iio/devices/iio:deviceX/in_current6_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 IBAT ADC
++		Calculating with scale and offset returns voltage in uA
 +
-+additionalProperties: false
++What:		/sys/bus/iio/devices/iio:deviceX/in_current7_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 CHG_VDDP ADC
++		Calculating with scale and offset returns voltage in uV
 +
-+examples:
-+  - |
-+    adc {
-+      compatible = "mediatek,mt6360-adc";
-+      #io-channel-cells = <1>;
-+    };
-+...
++What:		/sys/bus/iio/devices/iio:deviceX/in_temp8_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 IC junction temperature
++		Calculating with scale and offset returns temperature in degree
++
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage9_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 VREF_TS ADC
++		Calculating with scale and offset returns voltage in uV
++
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage10_raw
++KernelVersion:	5.8.0
++Contact:	gene_chen@richtek.com
++Description:
++		Indicated MT6360 TS ADC
++		Calculating with scale and offset returns voltage in uV
 -- 
 2.7.4
 
