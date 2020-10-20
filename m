@@ -2,21 +2,21 @@ Return-Path: <SRS0=YCpt=D3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2311FC4363A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2B8AC4363A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:37:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 89DE52222D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:32:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 79EAB2076A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:37:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W982MLm/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89DE52222D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oaOPixUk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79EAB2076A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,57 +25,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/X9C0KljqrPsTxn/AXwbiq/RN80JoSR5R0YoPg0aIU4=; b=W982MLm/7ia/BmlXsKDZ8KM86
-	OYmABpRFJQBbOqr19wNQOYnorWuS2KHw9jM4ovwK98zIAcwUUo6xuWZxTXuEEFLFav8EFM7EsMjC/
-	2C1MkNU/LrR0X+RFV/+mp1GxstXHHuHbZcZo8Ip7nqzm7W+EM01XeZhdrY7hHI1PIN0E12eiOjeS9
-	yErIjKoeX+fYjEX9YpMO9y7gAJzx3HbBuPCRG85BdqarPke2+KVIwrVIEWPmnNBWHYJjDpt/7mwyH
-	i3ppKcbJ7adikKW5Fr8N8xeEAIkgl2OAWFf8M6zyL3rkknvw0BsEr5fxvIBrPE3UiEfqyNhKYvbQV
-	hFgiVbhWA==;
+	 bh=T0NXNZZR5cekwle5VmrxahAG0jPEJaXllAl7+qmPZJM=; b=oaOPixUkD5zLvCkMIDWTWqkJm
+	FOVux7BryGQFKHURUXs0gVmCxBHUEENHBuxdM1hvuyk4DQdY2r3EfY70Wk2xj3nXPPCfJfYjOOv5B
+	qwZqJ+q3/HdKdzCT9QehjJzB1N6C/7Y9kT5snvhNofDd0tGc+FX79lABEgZeH5K1ORiWvYVnCSGyG
+	C7KxCT8fy2QCU7F++YXmj/4L9otibWnVWQ0OtcJ8Ym7GZloC72rYU2V3y4Gc9fsdVkEufK0d/L7qY
+	E54RbWaaF+QP5TtK39pDJtNJAayco5deoEZLvBGTvksKgtHLlfagfDY82ptb+HSLgyfkWqH1syvOO
+	YdB/DkU9A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUtcJ-0007Gt-Rv; Tue, 20 Oct 2020 15:32:03 +0000
-Received: from mail-oo1-f44.google.com ([209.85.161.44])
+	id 1kUthO-0007ro-Jz; Tue, 20 Oct 2020 15:37:18 +0000
+Received: from mail-ot1-f67.google.com ([209.85.210.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUtcF-0007Fk-Ek; Tue, 20 Oct 2020 15:32:00 +0000
-Received: by mail-oo1-f44.google.com with SMTP id c25so534085ooe.13;
- Tue, 20 Oct 2020 08:31:57 -0700 (PDT)
+ id 1kUthK-0007qn-UC; Tue, 20 Oct 2020 15:37:15 +0000
+Received: by mail-ot1-f67.google.com with SMTP id e20so2067330otj.11;
+ Tue, 20 Oct 2020 08:37:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=70xUmNgnj7zARzwfJVSKZm1rg83afZ4Hf/Ak9+tdF6k=;
- b=t+rLyQ8pOenoPW2Z5xeOYcNKADeutTYFgAv9I80p+0y738xMRF1EAyCA9PWzlJkSjV
- vfFzXVdKy/rbAOyoZnhBn5CTKd6zwRkgcAeTdNRDz2+vQLZRhvtg4CmaMFHfJ3v/BMzv
- 5MpKAFf2xQsBQn7Bug15tsnZNeUJBfgYLBh9t3EZTdODKDf7cRhALtn3Qenh2OgoNbrR
- snxlNSzOoWH8lP9sm5A89G5x7FEnDhZzMkVGA8PQoLKk1wCzGiys5gfhR68HyGLAZGo2
- P/AIRsEc4WsL6JfKWIOGL6GDuhhSb8GmF+PqXCiaf6ZUWOir1LkgsEYS808Aa5Cd5xZT
- 4EBQ==
-X-Gm-Message-State: AOAM532H9T25evvJSzW0pc6GYkcAevzJKpW0Pg3v/MR0sdLxppBlJ3aw
- JytDsn66R8GmnLMnNDYfyJrW3QBx2g==
-X-Google-Smtp-Source: ABdhPJyc9UV3cPqUuktaJf8qhvrd1agYOIaqU4lW3UtbAtc+tY62RB/NgE5V6x+NPpSsK6kT1l3OmQ==
-X-Received: by 2002:a4a:3e8a:: with SMTP id t132mr2251250oot.20.1603207916794; 
- Tue, 20 Oct 2020 08:31:56 -0700 (PDT)
+ :mime-version:content-disposition:in-reply-to;
+ bh=g4B3H2YyTXqBLgg1wF4uxkPxqRZVivqfWeJYJsXlNNE=;
+ b=T+E0TNd4v8VW06/ddc6FgbeieaGNvqXgE208uO0uRVFxPRT1pFo6dZdp3uNRzVsur0
+ ZBM2LoKV2dMKISPT2qHbNQJ26DLhSLFGcWE5C9PLKZmYgGWBSfDOjVFwNym8zPrZajSH
+ 8oz8i0KTw63aIdcGHG4TlPzRq/ojVqsnsvhLfWxr0jNg3Xa5067cJwC7YDjqTLxvsH3z
+ SK3YqbswrvuBF/r8t7gzxriZUNzI/XZpDSct4iTRX5zwAyDuwYjJOQzyFjJd6bk5SDw5
+ RSKkYkhG437sympfobHBR4zwfNwgA2GQTITlJKkLxQOxJjAQ1wTR4vV2m/ulZBDDU+LY
+ 9Png==
+X-Gm-Message-State: AOAM5317RYbWxwto97VjEEzjCFKhavQ92ZWezHsUoPIwnf8jXgLaKuqK
+ VzXtxJUdMqg2S9pipzv3dQ==
+X-Google-Smtp-Source: ABdhPJzJLEvPTM2atQsX36mX0hN4YdP/3drHQ23QZjJYMNFXExKWGkmuVNrhKAKbB6OQjr9eitHk0A==
+X-Received: by 2002:a9d:1ee5:: with SMTP id n92mr1552389otn.152.1603208233680; 
+ Tue, 20 Oct 2020 08:37:13 -0700 (PDT)
 Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id l23sm505030otk.68.2020.10.20.08.31.55
+ by smtp.gmail.com with ESMTPSA id n1sm497370otr.16.2020.10.20.08.37.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 08:31:56 -0700 (PDT)
-Received: (nullmailer pid 877351 invoked by uid 1000);
- Tue, 20 Oct 2020 15:31:55 -0000
-Date: Tue, 20 Oct 2020 10:31:55 -0500
+ Tue, 20 Oct 2020 08:37:12 -0700 (PDT)
+Received: (nullmailer pid 884187 invoked by uid 1000);
+ Tue, 20 Oct 2020 15:37:06 -0000
+Date: Tue, 20 Oct 2020 10:37:06 -0500
 From: Rob Herring <robh@kernel.org>
 To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 Subject: Re: [PATCH v2 2/3] dt-bindings: regulator: document binding for
  MT6315 regulator
-Message-ID: <20201020153155.GA876906@bogus>
+Message-ID: <20201020153706.GB876906@bogus>
 References: <1603187810-30481-1-git-send-email-hsin-hsiung.wang@mediatek.com>
  <1603187810-30481-3-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <1603187810-30481-3-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_113159_508920_63C30011 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20201020_113714_973790_08CA80CD 
+X-CRM114-Status: GOOD (  21.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,16 +88,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
  Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
- Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 20 Oct 2020 17:56:49 +0800, Hsin-Hsiung Wang wrote:
+On Tue, Oct 20, 2020 at 05:56:49PM +0800, Hsin-Hsiung Wang wrote:
 > Add device tree binding information for MT6315 regulator driver.
 > Example bindings for MT6315 are added.
 > 
@@ -110,33 +109,147 @@ On Tue, 20 Oct 2020 17:56:49 +0800, Hsin-Hsiung Wang wrote:
 >  create mode 100644 Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml
 >  create mode 100644 include/dt-bindings/regulator/mtk,mt6315.h
 > 
+> diff --git a/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml b/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml
+> new file mode 100644
+> index 000000000000..457606800d5b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml
+> @@ -0,0 +1,88 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mtk,mt6315-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT6315 Regulator
+> +
+> +maintainers:
+> +  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> +
+> +description: |
+> +  The MT6315 is a power management IC (PMIC) configurable with SPMI.
+> +  that contains 4 BUCKs output which can combine with each other
+> +  by different efuse settings.
+> +
+> +allOf:
+> +  - $ref: "regulator.yaml#"
 
+This doesn't go here, but...
 
-My bot found errors running 'make dt_binding_check' on your patch:
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "mt6315@[0-9]"
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6315_3-regulator
+> +      - mediatek,mt6315_6-regulator
+> +      - mediatek,mt6315_7-regulator
 
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.example.dt.yaml: example-0: mt6315@6:reg:0: [6, 0, 11, 1] is too long
-	From schema: /usr/local/lib/python3.8/dist-packages/dtschema/schemas/reg.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.example.dt.yaml: vbuck1: 'mtk,combined-regulator' does not match any of the regexes: '^#.*', '^(at25|devbus|dmacap|dsa|exynos|fsi[ab]|gpio-fan|gpio|gpmc|hdmi|i2c-gpio),.*', '^(keypad|m25p|max8952|max8997|max8998|mpmc),.*', '^(pinctrl-single|#pinctrl-single|PowerPC),.*', '^(pl022|pxa-mmc|rcar_sound|rotary-encoder|s5m8767|sdhci),.*', '^(simple-audio-card|st-plgpio|st-spics|ts),.*', '^70mai,.*', '^GEFanuc,.*', '^ORCL,.*', '^SUNW,.*', '^[a-zA-Z0-9#_][a-zA-Z0-9+\\-._@]{0,63}$', '^[a-zA-Z0-9+\\-._]*@[0-9a-zA-Z,]*$', '^abilis,.*', '^abracon,.*', '^acer,.*', '^acme,.*', '^actions,.*', '^active-semi,.*', '^ad,.*', '^adafruit,.*', '^adapteva,.*', '^adaptrum,.*', '^adh,.*', '^adi,.*', '^advantech,.*', '^aeroflexgaisler,.*', '^al,.*', '^allegro,.*', '^allo,.*', '^allwinner,.*', '^alphascale,.*', '^alps,.*', '^altr,.*', '^amarula,.*', '^amazon,.*', '^amcc,.*', '^amd,.*', '^amediatech,.*', '^amlogic
- ,.*', '^ampire,.*', '^ams,.*', '^amstaos,.*', '^analogix,.*', '^andestech,.*', '^anvo,.*', '^apm,.*', '^aptina,.*', '^arasan,.*', '^archermind,.*', '^arctic,.*', '^arcx,.*', '^aries,.*', '^arm,.*', '^armadeus,.*', '^arrow,.*', '^artesyn,.*', '^asahi-kasei,.*', '^asc,.*', '^aspeed,.*', '^asus,.*', '^atlas,.*', '^atmel,.*', '^auo,.*', '^auvidea,.*', '^avago,.*', '^avia,.*', '^avic,.*', '^avnet,.*', '^awinic,.*', '^axentia,.*', '^axis,.*', '^azoteq,.*', '^azw,.*', '^baikal,.*', '^bananapi,.*', '^beacon,.*', '^beagle,.*', '^bhf,.*', '^bitmain,.*', '^boe,.*', '^bosch,.*', '^boundary,.*', '^brcm,.*', '^broadmobi,.*', '^bticino,.*', '^buffalo,.*', '^bur,.*', '^calaosystems,.*', '^calxeda,.*', '^capella,.*', '^cascoda,.*', '^catalyst,.*', '^cavium,.*', '^cdns,.*', '^cdtech,.*', '^cellwise,.*', '^ceva,.*', '^checkpoint,.*', '^chipidea,.*', '^chipone,.*', '^chipspark,.*', '^chrontel,.*', '^chrp,.*', '^chunghwa,.*', '^chuwi,.*', '^ciaa,.*', '^cirrus,.*', '^cloudengines,.*', '^cnm,.*', '^cnxt,.
- *', '^colorfly,.*', '^compulab,.*', '^coreriver,.*', '^corpro,.*', '^cortina,.*', '^cosmic,.*', '^crane,.*', '^creative,.*', '^crystalfontz,.*', '^csky,.*', '^csq,.*', '^cubietech,.*', '^cypress,.*', '^cznic,.*', '^dallas,.*', '^dataimage,.*', '^davicom,.*', '^dell,.*', '^delta,.*', '^denx,.*', '^devantech,.*', '^dfi,.*', '^dh,.*', '^difrnce,.*', '^digi,.*', '^digilent,.*', '^dioo,.*', '^dlc,.*', '^dlg,.*', '^dlink,.*', '^dmo,.*', '^domintech,.*', '^dongwoon,.*', '^dptechnics,.*', '^dragino,.*', '^dserve,.*', '^dynaimage,.*', '^ea,.*', '^ebs-systart,.*', '^ebv,.*', '^eckelmann,.*', '^edt,.*', '^eeti,.*', '^einfochips,.*', '^elan,.*', '^elgin,.*', '^elida,.*', '^embest,.*', '^emlid,.*', '^emmicro,.*', '^empire-electronix,.*', '^emtrion,.*', '^endless,.*', '^ene,.*', '^energymicro,.*', '^engicam,.*', '^epcos,.*', '^epfl,.*', '^epson,.*', '^esp,.*', '^est,.*', '^ettus,.*', '^eukrea,.*', '^everest,.*', '^everspin,.*', '^evervision,.*', '^exar,.*', '^excito,.*', '^ezchip,.*', '^facebook,
- .*', '^fairphone,.*', '^faraday,.*', '^fastrax,.*', '^fcs,.*', '^feixin,.*', '^feiyang,.*', '^firefly,.*', '^focaltech,.*', '^frida,.*', '^friendlyarm,.*', '^fsl,.*', '^fujitsu,.*', '^gardena,.*', '^gateworks,.*', '^gcw,.*', '^ge,.*', '^geekbuying,.*', '^gef,.*', '^gemei,.*', '^geniatech,.*', '^giantec,.*', '^giantplus,.*', '^globalscale,.*', '^globaltop,.*', '^gmt,.*', '^goodix,.*', '^google,.*', '^grinn,.*', '^grmn,.*', '^gumstix,.*', '^gw,.*', '^hannstar,.*', '^haoyu,.*', '^hardkernel,.*', '^hideep,.*', '^himax,.*', '^hisilicon,.*', '^hit,.*', '^hitex,.*', '^holt,.*', '^holtek,.*', '^honeywell,.*', '^hoperun,.*', '^hp,.*', '^hsg,.*', '^hugsun,.*', '^hwacom,.*', '^hydis,.*', '^hyundai,.*', '^i2se,.*', '^ibm,.*', '^icplus,.*', '^idt,.*', '^ifi,.*', '^ilitek,.*', '^img,.*', '^imi,.*', '^incircuit,.*', '^inet-tek,.*', '^infineon,.*', '^inforce,.*', '^ingenic,.*', '^innolux,.*', '^inside-secure,.*', '^inspur,.*', '^intel,.*', '^intercontrol,.*', '^invensense,.*', '^inversepath,.*', '^
- iom,.*', '^isee,.*', '^isil,.*', '^issi,.*', '^ite,.*', '^itead,.*', '^ivo,.*', '^iwave,.*', '^jdi,.*', '^jedec,.*', '^jesurun,.*', '^jianda,.*', '^kam,.*', '^karo,.*', '^keithkoep,.*', '^keymile,.*', '^khadas,.*', '^kiebackpeter,.*', '^kinetic,.*', '^kingdisplay,.*', '^kingnovel,.*', '^kionix,.*', '^kobo,.*', '^koe,.*', '^kontron,.*', '^kosagi,.*', '^kyo,.*', '^lacie,.*', '^laird,.*', '^lamobo,.*', '^lantiq,.*', '^lattice,.*', '^leadtek,.*', '^leez,.*', '^lego,.*', '^lemaker,.*', '^lenovo,.*', '^lg,.*', '^lgphilips,.*', '^libretech,.*', '^licheepi,.*', '^linaro,.*', '^linksprite,.*', '^linksys,.*', '^linutronix,.*', '^linux,.*', '^linx,.*', '^lltc,.*', '^logicpd,.*', '^logictechno,.*', '^longcheer,.*', '^loongson,.*', '^lsi,.*', '^lwn,.*', '^lxa,.*', '^macnica,.*', '^mapleboard,.*', '^marvell,.*', '^maxbotix,.*', '^maxim,.*', '^mbvl,.*', '^mcube,.*', '^meas,.*', '^mecer,.*', '^mediatek,.*', '^megachips,.*', '^mele,.*', '^melexis,.*', '^melfas,.*', '^mellanox,.*', '^memsic,.*', '^me
- nlo,.*', '^meraki,.*', '^merrii,.*', '^micrel,.*', '^microchip,.*', '^microcrystal,.*', '^micron,.*', '^microsoft,.*', '^mikroe,.*', '^mikrotik,.*', '^miniand,.*', '^minix,.*', '^miramems,.*', '^mitsubishi,.*', '^mosaixtech,.*', '^motorola,.*', '^moxa,.*', '^mpl,.*', '^mps,.*', '^mqmaker,.*', '^mrvl,.*', '^mscc,.*', '^msi,.*', '^mstar,.*', '^mti,.*', '^multi-inno,.*', '^mundoreader,.*', '^murata,.*', '^mxicy,.*', '^myir,.*', '^national,.*', '^nec,.*', '^neonode,.*', '^netgear,.*', '^netlogic,.*', '^netron-dy,.*', '^netxeon,.*', '^neweast,.*', '^newhaven,.*', '^nexbox,.*', '^nextthing,.*', '^ni,.*', '^nintendo,.*', '^nlt,.*', '^nokia,.*', '^nordic,.*', '^novtech,.*', '^nutsboard,.*', '^nuvoton,.*', '^nvd,.*', '^nvidia,.*', '^nxp,.*', '^oceanic,.*', '^okaya,.*', '^oki,.*', '^olimex,.*', '^olpc,.*', '^onion,.*', '^onnn,.*', '^ontat,.*', '^opalkelly,.*', '^opencores,.*', '^openrisc,.*', '^option,.*', '^oranth,.*', '^orisetech,.*', '^ortustech,.*', '^osddisplays,.*', '^overkiz,.*', '^ovt
- i,.*', '^oxsemi,.*', '^ozzmaker,.*', '^panasonic,.*', '^parade,.*', '^parallax,.*', '^pda,.*', '^pericom,.*', '^pervasive,.*', '^phicomm,.*', '^phytec,.*', '^picochip,.*', '^pine64,.*', '^pineriver,.*', '^pixcir,.*', '^plantower,.*', '^plathome,.*', '^plda,.*', '^plx,.*', '^pni,.*', '^pocketbook,.*', '^polaroid,.*', '^portwell,.*', '^poslab,.*', '^pov,.*', '^powervr,.*', '^primux,.*', '^probox2,.*', '^prt,.*', '^pulsedlight,.*', '^purism,.*', '^qca,.*', '^qcom,.*', '^qemu,.*', '^qi,.*', '^qiaodian,.*', '^qihua,.*', '^qnap,.*', '^radxa,.*', '^raidsonic,.*', '^ralink,.*', '^ramtron,.*', '^raspberrypi,.*', '^raydium,.*', '^rda,.*', '^realtek,.*', '^renesas,.*', '^rervision,.*', '^rex,.*', '^richtek,.*', '^ricoh,.*', '^rikomagic,.*', '^riot,.*', '^riscv,.*', '^rockchip,.*', '^rocktech,.*', '^rohm,.*', '^ronbo,.*', '^roofull,.*', '^samsung,.*', '^samtec,.*', '^sancloud,.*', '^sandisk,.*', '^satoz,.*', '^sbs,.*', '^schindler,.*', '^seagate,.*', '^seirobotics,.*', '^semtech,.*', '^sensirio
- n,.*', '^sensortek,.*', '^sff,.*', '^sgd,.*', '^sgmicro,.*', '^sgx,.*', '^sharp,.*', '^shimafuji,.*', '^shiratech,.*', '^si-en,.*', '^si-linux,.*', '^sifive,.*', '^sigma,.*', '^sii,.*', '^sil,.*', '^silabs,.*', '^silead,.*', '^silergy,.*', '^silex-insight,.*', '^siliconmitus,.*', '^simtek,.*', '^sinlinx,.*', '^sinovoip,.*', '^sipeed,.*', '^sirf,.*', '^sis,.*', '^sitronix,.*', '^skyworks,.*', '^smartlabs,.*', '^smsc,.*', '^snps,.*', '^sochip,.*', '^socionext,.*', '^solidrun,.*', '^solomon,.*', '^sony,.*', '^spansion,.*', '^sprd,.*', '^sst,.*', '^sstar,.*', '^st,.*', '^st-ericsson,.*', '^starry,.*', '^startek,.*', '^ste,.*', '^stericsson,.*', '^summit,.*', '^sunchip,.*', '^swir,.*', '^syna,.*', '^synology,.*', '^tbs,.*', '^tbs-biometrics,.*', '^tcg,.*', '^tcl,.*', '^technexion,.*', '^technologic,.*', '^techstar,.*', '^tempo,.*', '^terasic,.*', '^tfc,.*', '^thine,.*', '^thingyjp,.*', '^ti,.*', '^tianma,.*', '^tlm,.*', '^tmt,.*', '^topeet,.*', '^toppoly,.*', '^topwise,.*', '^toradex,.*'
- , '^toshiba,.*', '^toumaz,.*', '^tpk,.*', '^tplink,.*', '^tpo,.*', '^tq,.*', '^tronfy,.*', '^tronsmart,.*', '^truly,.*', '^tsd,.*', '^tyan,.*', '^u-blox,.*', '^u-boot,.*', '^ubnt,.*', '^ucrobotics,.*', '^udoo,.*', '^ugoos,.*', '^uniwest,.*', '^upisemi,.*', '^urt,.*', '^usi,.*', '^utoo,.*', '^v3,.*', '^vaisala,.*', '^vamrs,.*', '^variscite,.*', '^via,.*', '^videostrong,.*', '^virtio,.*', '^vishay,.*', '^visionox,.*', '^vitesse,.*', '^vivante,.*', '^vocore,.*', '^voipac,.*', '^vot,.*', '^vxt,.*', '^wand,.*', '^waveshare,.*', '^wd,.*', '^we,.*', '^wetek,.*', '^wexler,.*', '^whwave,.*', '^wi2wi,.*', '^winbond,.*', '^winstar,.*', '^wits,.*', '^wlf,.*', '^wm,.*', '^wobo,.*', '^x-powers,.*', '^xes,.*', '^xiaomi,.*', '^xillybus,.*', '^xingbangda,.*', '^xinpeng,.*', '^xlnx,.*', '^xnano,.*', '^xunlong,.*', '^xylon,.*', '^ylm,.*', '^yna,.*', '^yones-toptech,.*', '^ysoft,.*', '^zarlink,.*', '^zealz,.*', '^zeitec,.*', '^zidoo,.*', '^zii,.*', '^zte,.*', '^zyxel,.*'
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/vendor-prefixes.yaml
+What's 3, 6, 7 mean?
 
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  regulators:
+> +    type: object
+> +    description: List of regulators and its properties
+> +
+> +    patternProperties:
+> +      "^vbuck[1-4]$":
+> +        type: object
 
-See https://patchwork.ozlabs.org/patch/1384771
+regulator.yaml ref goes here.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure dt-schema is up to date:
+> +
+> +        properties:
+> +          regulator-name:
+> +            pattern: "^vbuck[1-4]$"
+> +            description:
+> +              should be "vbuck1", ..., "vbuck4"
+> +
+> +          mtk,combined-regulator:
+> +            $ref: "/schemas/types.yaml#/definitions/uint32-array"
 
-pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+Wouldn't a phandle make more sense. And we have coupled regulator 
+binding that this may work for.
 
-Please check and re-submit.
+> +            description: |
+> +              defines other bucks combined with this buck, must contain the following
+> +              values MT6315_VBUCK1, MT6315_VBUCK2, MT6315_VBUCK3, MT6315_VBUCK4
+> +
+> +    unevaluatedProperties: false
 
+'additionalProperties: false' would be better here.
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - regulators
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    /* This example shows that buck2 and buck4 are combined into buck1. */
+> +    #include <dt-bindings/regulator/mtk,mt6315.h>
+> +
+> +    mt6315@6 {
+
+pmic@6
+
+> +      compatible = "mediatek,mt6315_6-regulator";
+> +      reg = <0x6 0 0xb 1>;
+> +
+> +      regulators {
+> +        vbuck1 {
+> +          regulator-compatible = "vbuck1";
+> +          regulator-min-microvolt = <300000>;
+> +          regulator-max-microvolt = <1193750>;
+> +          regulator-enable-ramp-delay = <256>;
+> +          regulator-allowed-modes = <0 1 2 4>;
+> +          mtk,combined-regulator = <MT6315_VBUCK2 MT6315_VBUCK4>;
+> +        };
+> +
+> +        vbuck3 {
+> +          regulator-compatible = "vbuck3";
+> +          regulator-min-microvolt = <300000>;
+> +          regulator-max-microvolt = <1193750>;
+> +          regulator-enable-ramp-delay = <256>;
+> +          regulator-allowed-modes = <0 1 2 4>;
+> +        };
+> +      };
+> +    };
+> diff --git a/include/dt-bindings/regulator/mtk,mt6315.h b/include/dt-bindings/regulator/mtk,mt6315.h
+> new file mode 100644
+> index 000000000000..6ed9b2b121db
+> --- /dev/null
+> +++ b/include/dt-bindings/regulator/mtk,mt6315.h
+> @@ -0,0 +1,17 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +/*
+> + * Copyright (c) 2020 MediaTek Inc.
+> + * Author: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> + */
+> +
+> +#ifndef _DT_BINDINGS_REGULATOR_MTK_MT6315_H
+> +#define _DT_BINDINGS_REGULATOR_MTK_MT6315_H
+> +
+> +/* Regulator ID */
+> +#define MT6315_VBUCK1	1
+> +#define MT6315_VBUCK2	2
+> +#define MT6315_VBUCK3	3
+> +#define MT6315_VBUCK4	4
+
+I don't find these defines to be that helpful.
+
+> +#define MT6315_VBUCK_MAX	5
+> +
+> +#endif /* _DT_BINDINGS_REGULATOR_MTK_MT6315_H */
+> -- 
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
