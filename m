@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E1FEC4363A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FD22C4363A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:44:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 941FF21D6C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:43:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 44C8A21D6C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:44:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zz6nDVPZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="WbHD959s"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 941FF21D6C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yEM7KD/H";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="Y0K8WJVB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44C8A21D6C
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,69 +26,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iAHVnSQHbpQUPv+RXxA/w3W1DjPsArErwVkALgJflAg=; b=zz6nDVPZ7D2b5a0pMncGp5J5L
-	glnWT8vtCBVwZF5rIdFBxdrssZID3qL48i+dab5i9VD4XhkAJNHkcbkqg7zZXb4l+P0kRkHkvodDG
-	TcehQLc9fXzKq1zOVliZh8FeKP10BaE7HVgnngEZgKWs6KO4nAkDIVyHXap5GosYd6WOk1lgxu7RJ
-	loOPtwgltYkumVa9RSRj69B7J6s3j9iylgCwKU2gd28gNVaDX4Gxgd4h66tFg8RSBDpi7tZWF1ey5
-	6sjUT7YnFd3hRYNMUd3v82uNu76ZHY0khWJ67pf8VmbWwVaWQ5CdKQXWeshZ7wPH2cd7Zu9KS873W
-	IKHLPhyiw==;
+	 bh=zsak3jDwKjDb087IalyYJHBk87QpECEUefObKB/wZ78=; b=yEM7KD/HR7+Kdp9kXhqiQ3czR
+	l4iYeQyRNxaUHz3ePTD9dIPdI5P4iDBhDYXdKayZkUzZPN1S89G63MVsL0goRLwpGtbqzAV9d34Ig
+	bXZTNkvFXkUhOhMhGjqqzSSGaZcAfiW2lUnqLIWJfvHbcuio6KB/O3S9rQrGovEojajb2egpvxr7T
+	QkyVLQpgvvDUXQR6ywL1ijAytOaHvg3tIhh+ra62TsLk5dUblbV1KEPo0BO6J4QvhFLi4bYDzxdnS
+	cCz1Mq5lV9/guWrtiu4W0AnwjQxVbxrdEx04Y/5gz/xp02OHoTkLgq7S3GPgzXfJGXc8Ew714l97L
+	VEZ6TUl/A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUvfj-0006fc-2P; Tue, 20 Oct 2020 17:43:43 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kUvfz-0006sY-3p; Tue, 20 Oct 2020 17:43:59 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUvf6-0006S8-NZ
- for linux-mediatek@lists.infradead.org; Tue, 20 Oct 2020 17:43:07 +0000
-Received: by mail-wm1-x341.google.com with SMTP id c194so2702374wme.2
- for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2020 10:43:04 -0700 (PDT)
+ id 1kUvf8-0006Sy-6n
+ for linux-mediatek@lists.infradead.org; Tue, 20 Oct 2020 17:43:11 +0000
+Received: by mail-wm1-x344.google.com with SMTP id c77so2706456wmd.4
+ for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2020 10:43:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=tBhINe5+YmVPHfb1/p3z/ZugBR00FYyA2WW1AgRCGAM=;
- b=WbHD959s2sqRdOZIhuLjT2Bq0V9cHBGUM6oT9iAegHQsQ+NASd6sENwppAqbr4Aoju
- nx2mJZJa/SiVwmMqJQAUM6ktcpeVWNJ2NtRR+IjvbJF0dvxDCBbvCYBD3j5lRtQGCnts
- EeC4nyMrnqSwmfzfLQuvSWY8Vo2I6I766NCOwnNT52Aq8ka8jUDgLkG8sr1xEPnNSO9x
- 2QJwoYC4uhbNJFSLbBNr3FR1JY6T/tNfwoY9g5jp08J6Gjxp3bhlsu2xVxDukEL8SVhI
- c8jPjI0t01rU7NJCIYkxPF6B3R6mvCBkIQCc/ex2IUXOxCO9ihFdQrjBOs7JaNAhmFBH
- i4zg==
+ bh=twq11JCTg4YQPPBb170KYVskL+0y3cSGC0QSvk3HH7Y=;
+ b=Y0K8WJVBkIOPg/vWN/gU1vxXt++vSz7StmVppBiSGnmhyGQBKOMQ8hAIb04Afhwj6a
+ 62+XiBskbzrvJhI4iA0oRmM8jG4MwFzf8EzwA9mCx+eRDjY5tuMZVIjPVJ8rJQ2l4mjy
+ apDGCrIAKYw2L5zy+NC2R9nsPefpTGiANnp5FUzPb6gSHYA1D1/yvF9vZW62tnEW5JcL
+ xwFxp2jAZEsl/dwdQzPJ5USMd9KZCSRimXYGtlaWRbKTSqVErYT5qC9uimgEP7SMH445
+ ob07PhCQGEjZ7ZEZ1pg47Ci1z5OU9XyECBPwHRgN1OQ1psyp6Mqkj4qX5B7Dx+Smj61Z
+ eOzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=tBhINe5+YmVPHfb1/p3z/ZugBR00FYyA2WW1AgRCGAM=;
- b=tKZc4kYc4p491XopKpg0REMmyKEsSGrj58CwLBxHBM5ARdOSVdINY0tiaG3SzK9r7k
- qSFzsAlHx1slxwoXP7736tHSzHHEhEJQesNGP6B5VrrauPz38nMsekeAftincQ1NlwLQ
- hkIE3E59jzkc7c6esLjqirRDfMGIDYadQOjxqj/jON05cfC91LGyRbNNx6nEhAPT4Bre
- WnMNriiQUgX+u9tQs5LdM9iBdeDMpXYDONUBPh61Fx56dWifxDKktAdxSyvpzGbfwp/d
- quOjthIdd+FoqLO4WBfG0tGaD9OllpbYhc31/uNLXA46qsz0FXoP87mHleTEamTOYGWk
- qFuA==
-X-Gm-Message-State: AOAM533KL7zmsIN1yKoXzxHK6Of5uweLyy7fPu27iocFilNa3NMAXC9P
- LK85l4TPn66g5gPZ6gEEb4dMr5+d3CZiWg==
-X-Google-Smtp-Source: ABdhPJzYZnrg/xFUR1Exo3D3a8p65ayChvkyZu0pYYwQ4gWPnT+Pl6BY9opLW0tRMMKBzlTaAg9jxw==
-X-Received: by 2002:a05:600c:4107:: with SMTP id
- j7mr3965065wmi.44.1603215783589; 
- Tue, 20 Oct 2020 10:43:03 -0700 (PDT)
+ bh=twq11JCTg4YQPPBb170KYVskL+0y3cSGC0QSvk3HH7Y=;
+ b=G0WsUigybFJXR4QKYqv/gGr/f1k88WuIO6lY/G0adArmmFRqQXAcn+laLBBoKZBn/t
+ vH5A5K8IGIKg746mVcjy/gexuFFpu641JRrlAhBfa1f8LtlqzckMCNJVxR9qiQ921ieb
+ PgxpTf+SvYuTxuYwEqElAyAq9BNIhCXUuolmU33AN/yZfKPTFQjB9tbaQsR4QUdoo13R
+ SrOqMml/m5COCGD5Qpwe4mPH+XW4KYPv7w4AdEoXKKI3Q7I7fYDY+NTPzcWOCzgkEX6n
+ osujEt7asWmlMl7HQBMJVQHxREBFkM3Jt/aw8s8N6pVs95Ue8NTvS+1U9d8GnS9HFssU
+ nR/w==
+X-Gm-Message-State: AOAM5323ytE/U+cvdeCV6dlhSd3E0j7UVYVMRh837WW9wKYzGRhV27sy
+ HTtkq4CCdB0Yyobv6lHIhVRG2V3KUTw+GA==
+X-Google-Smtp-Source: ABdhPJyenmhTxFRDWjoJTAfZ9z3NaV+DCbnu64Fauv9XbNcdJIz9d1gaggKnqTTQxm1DBo/NklsnPQ==
+X-Received: by 2002:a1c:de8a:: with SMTP id v132mr2244614wmg.173.1603215785045; 
+ Tue, 20 Oct 2020 10:43:05 -0700 (PDT)
 Received: from localhost.localdomain (199.170.185.81.rev.sfr.net.
  [81.185.170.199])
- by smtp.gmail.com with ESMTPSA id v123sm3297756wme.7.2020.10.20.10.43.02
+ by smtp.gmail.com with ESMTPSA id v123sm3297756wme.7.2020.10.20.10.43.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 10:43:03 -0700 (PDT)
+ Tue, 20 Oct 2020 10:43:04 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  dri-devel@lists.freedesktop.org
-Subject: [PATCH 4/8] drm/mediatek: dsi: add pdata variable to start clk in HS
- mode
-Date: Tue, 20 Oct 2020 19:42:49 +0200
-Message-Id: <20201020174253.3757771-5-fparent@baylibre.com>
+Subject: [PATCH 5/8] drm/mediatek: dsi: add support for mipi26m clk
+Date: Tue, 20 Oct 2020 19:42:50 +0200
+Message-Id: <20201020174253.3757771-6-fparent@baylibre.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201020174253.3757771-1-fparent@baylibre.com>
 References: <20201020174253.3757771-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_134304_830525_74D6E91E 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20201020_134306_314678_D2E30E6E 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,39 +106,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MT8167, DSI seems to work fine only if we start the clk in HS mode.
-If we don't start the clk in HS but try to switch later to HS, the
-display does not work.
-
-This commit adds a platform data variable to be used to start the
-DSI clk in HS mode at power on.
+MT8167 SoC needs an additional clock to be enabled. Add support for
+the mipi26m clk.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 4a188a942c38..461643c05689 100644
+index 461643c05689..08786734df8e 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -175,6 +175,7 @@ struct mtk_dsi_driver_data {
- 	const u32 reg_cmdq_off;
- 	bool has_shadow_ctl;
- 	bool has_size_ctl;
-+	bool use_hs_on_power_on;
- };
+@@ -193,6 +193,7 @@ struct mtk_dsi {
+ 	struct clk *engine_clk;
+ 	struct clk *digital_clk;
+ 	struct clk *hs_clk;
++	struct clk *mipi26m;
  
- struct mtk_dsi {
-@@ -671,7 +672,7 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	u32 data_rate;
  
- 	mtk_dsi_clk_ulp_mode_leave(dsi);
- 	mtk_dsi_lane0_ulp_mode_leave(dsi);
--	mtk_dsi_clk_hs_mode(dsi, 0);
-+	mtk_dsi_clk_hs_mode(dsi, !!dsi->driver_data->use_hs_on_power_on);
+@@ -653,6 +654,12 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 		goto err_disable_engine_clk;
+ 	}
  
- 	return 0;
- err_disable_engine_clk:
++	ret = clk_prepare_enable(dsi->mipi26m);
++	if (ret < 0) {
++		dev_err(dev, "Failed to enable mipi26m clock: %d\n", ret);
++		goto err_phy_power_off;
++	}
++
+ 	mtk_dsi_enable(dsi);
+ 
+ 	if (dsi->driver_data->has_shadow_ctl)
+@@ -710,6 +717,7 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 
+ 	clk_disable_unprepare(dsi->engine_clk);
+ 	clk_disable_unprepare(dsi->digital_clk);
++	clk_disable_unprepare(dsi->mipi26m);
+ 
+ 	phy_power_off(dsi->phy);
+ }
+@@ -1086,6 +1094,8 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 		goto err_unregister_host;
+ 	}
+ 
++	dsi->mipi26m = devm_clk_get_optional(dev, "mipi26m");
++
+ 	dsi->hs_clk = devm_clk_get(dev, "hs");
+ 	if (IS_ERR(dsi->hs_clk)) {
+ 		ret = PTR_ERR(dsi->hs_clk);
 -- 
 2.28.0
 
