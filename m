@@ -2,21 +2,20 @@ Return-Path: <SRS0=YCpt=D3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2B8AC4363A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A424EC4363A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:53:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 79EAB2076A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:37:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1924E22247
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:53:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oaOPixUk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79EAB2076A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PQWRUhv7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1924E22247
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,56 +24,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=T0NXNZZR5cekwle5VmrxahAG0jPEJaXllAl7+qmPZJM=; b=oaOPixUkD5zLvCkMIDWTWqkJm
-	FOVux7BryGQFKHURUXs0gVmCxBHUEENHBuxdM1hvuyk4DQdY2r3EfY70Wk2xj3nXPPCfJfYjOOv5B
-	qwZqJ+q3/HdKdzCT9QehjJzB1N6C/7Y9kT5snvhNofDd0tGc+FX79lABEgZeH5K1ORiWvYVnCSGyG
-	C7KxCT8fy2QCU7F++YXmj/4L9otibWnVWQ0OtcJ8Ym7GZloC72rYU2V3y4Gc9fsdVkEufK0d/L7qY
-	E54RbWaaF+QP5TtK39pDJtNJAayco5deoEZLvBGTvksKgtHLlfagfDY82ptb+HSLgyfkWqH1syvOO
-	YdB/DkU9A==;
+	 bh=rI89cgC3F7WybbjlqVaFmFMdIQaTid5b/4iNZVdqmH8=; b=PQWRUhv7YLO8e+sANF4Su0CGS
+	16hyX8qbwmM1mndBM7Rho4dHFGWdHuk++kfg5O66JahlOJdYqjsena0nqE3NeuVXdM1j+lR2c3r/9
+	v4D9ohwt6PP3tkZ4EXHatHPzJfoL29W6NDg+mvatzqVzCGXlRpMzwlV4dbpulvOH2rRaOqsHV6lsi
+	ue1/uXID2LPSOeF+Xd2O6/1tGw/wXBGLl1qYborq99lHwXKus+FW+SElVN4b6Kysn8/p+zNwkfdRZ
+	ZwM1/PCopZQQxZlL+aUM0+b5feGHTClLLvgci0ojqv/3JeXhXyf4FCP93/VoJyTP4/ztdS818uuP1
+	0dI4jKPBw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUthO-0007ro-Jz; Tue, 20 Oct 2020 15:37:18 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1kUtwi-0001lm-UF; Tue, 20 Oct 2020 15:53:08 +0000
+Received: from mail-oi1-f196.google.com ([209.85.167.196])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUthK-0007qn-UC; Tue, 20 Oct 2020 15:37:15 +0000
-Received: by mail-ot1-f67.google.com with SMTP id e20so2067330otj.11;
- Tue, 20 Oct 2020 08:37:14 -0700 (PDT)
+ id 1kUtwd-0001ju-3Z; Tue, 20 Oct 2020 15:53:03 +0000
+Received: by mail-oi1-f196.google.com with SMTP id l85so2615621oih.10;
+ Tue, 20 Oct 2020 08:53:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=g4B3H2YyTXqBLgg1wF4uxkPxqRZVivqfWeJYJsXlNNE=;
- b=T+E0TNd4v8VW06/ddc6FgbeieaGNvqXgE208uO0uRVFxPRT1pFo6dZdp3uNRzVsur0
- ZBM2LoKV2dMKISPT2qHbNQJ26DLhSLFGcWE5C9PLKZmYgGWBSfDOjVFwNym8zPrZajSH
- 8oz8i0KTw63aIdcGHG4TlPzRq/ojVqsnsvhLfWxr0jNg3Xa5067cJwC7YDjqTLxvsH3z
- SK3YqbswrvuBF/r8t7gzxriZUNzI/XZpDSct4iTRX5zwAyDuwYjJOQzyFjJd6bk5SDw5
- RSKkYkhG437sympfobHBR4zwfNwgA2GQTITlJKkLxQOxJjAQ1wTR4vV2m/ulZBDDU+LY
- 9Png==
-X-Gm-Message-State: AOAM5317RYbWxwto97VjEEzjCFKhavQ92ZWezHsUoPIwnf8jXgLaKuqK
- VzXtxJUdMqg2S9pipzv3dQ==
-X-Google-Smtp-Source: ABdhPJzJLEvPTM2atQsX36mX0hN4YdP/3drHQ23QZjJYMNFXExKWGkmuVNrhKAKbB6OQjr9eitHk0A==
-X-Received: by 2002:a9d:1ee5:: with SMTP id n92mr1552389otn.152.1603208233680; 
- Tue, 20 Oct 2020 08:37:13 -0700 (PDT)
+ bh=iSUnJ3zC+i96Tee9HE3Ma7rzjDtB6lhpcHKRFjv2ccE=;
+ b=VliwNQ/MW1BzkOwHQptwm1FxQj27/pTWhvYBZTcX5pyUEl8huZWSn0Y8svlW/2vv1A
+ 2ojQsuEdTTzan3zFOjGiySfqnagsJojzUmRXUWDuQE+JfrjPX40GxFc79aqldfhxUlhv
+ ICl80TKgBLxc/f0NvSQrKkW38e92BtX9Rc16QI0MTGC6y6osHMNUBzSDWoecaZefSh1i
+ tlpTd2yFYokh1CQ/8rK6hjkAd2kDD7X6pr7J9zSjXUKfgPSnvFOpqE1kxl2NQ6UA/PNx
+ oDCqkb+5pvtEBFIIeZ0u++XuVpKX2yE+pxWhvQWOvbTXcqDReZOC63lhAHYEursi/1o5
+ xPKA==
+X-Gm-Message-State: AOAM530QmYM3SYxyvT5xagbC/un/WLs1mDdhExjrtYyFL7W5Fmixvn5c
+ 007tH8WaG8FfhWBWP61RGg==
+X-Google-Smtp-Source: ABdhPJw7jKtcBX1HJmvImu3OtQLdkpQmW076DYW/d4yYauIv/uHxi67eNnw6fzLjEkrKebqPLx3YMg==
+X-Received: by 2002:aca:1105:: with SMTP id 5mr2380044oir.46.1603209182630;
+ Tue, 20 Oct 2020 08:53:02 -0700 (PDT)
 Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id n1sm497370otr.16.2020.10.20.08.37.12
+ by smtp.gmail.com with ESMTPSA id j84sm640090oia.25.2020.10.20.08.53.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 08:37:12 -0700 (PDT)
-Received: (nullmailer pid 884187 invoked by uid 1000);
- Tue, 20 Oct 2020 15:37:06 -0000
-Date: Tue, 20 Oct 2020 10:37:06 -0500
+ Tue, 20 Oct 2020 08:53:01 -0700 (PDT)
+Received: (nullmailer pid 907213 invoked by uid 1000);
+ Tue, 20 Oct 2020 15:53:00 -0000
+Date: Tue, 20 Oct 2020 10:53:00 -0500
 From: Rob Herring <robh@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v2 2/3] dt-bindings: regulator: document binding for
- MT6315 regulator
-Message-ID: <20201020153706.GB876906@bogus>
-References: <1603187810-30481-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1603187810-30481-3-git-send-email-hsin-hsiung.wang@mediatek.com>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v7 1/3] dt-bindings: iio: adc: add bindings doc for
+ MT6360 ADC
+Message-ID: <20201020155300.GB906028@bogus>
+References: <1603181267-15610-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1603181267-15610-2-git-send-email-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1603187810-30481-3-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <1603181267-15610-2-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_113714_973790_08CA80CD 
-X-CRM114-Status: GOOD (  21.60  )
+X-CRM114-CacheID: sfid-20201020_115303_211624_D8AEA075 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,170 +85,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org, lars@metafoo.de,
+ linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
+ benjamin.chao@mediatek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ pmeerw@pmeerw.net, knaack.h@gmx.de, matthias.bgg@gmail.com,
+ Wilma.Wu@mediatek.com, jic23@kernel.org, shufan_lee@richtek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 20, 2020 at 05:56:49PM +0800, Hsin-Hsiung Wang wrote:
-> Add device tree binding information for MT6315 regulator driver.
-> Example bindings for MT6315 are added.
+On Tue, 20 Oct 2020 16:07:45 +0800, Gene Chen wrote:
+> From: Gene Chen <gene_chen@richtek.com>
 > 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> This change adds the binding doc for the MT6360 ADC.
+> 
+> Signed-off-by: Gene Chen <gene_chen@richtek.com>
 > ---
->  .../regulator/mtk,mt6315-regulator.yaml       | 88 +++++++++++++++++++
->  include/dt-bindings/regulator/mtk,mt6315.h    | 17 ++++
->  2 files changed, 105 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml
->  create mode 100644 include/dt-bindings/regulator/mtk,mt6315.h
+>  .../bindings/iio/adc/mediatek,mt6360-adc.yaml      | 34 ++++++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6360-adc.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml b/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml
-> new file mode 100644
-> index 000000000000..457606800d5b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mtk,mt6315-regulator.yaml
-> @@ -0,0 +1,88 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mtk,mt6315-regulator.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek MT6315 Regulator
-> +
-> +maintainers:
-> +  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> +
-> +description: |
-> +  The MT6315 is a power management IC (PMIC) configurable with SPMI.
-> +  that contains 4 BUCKs output which can combine with each other
-> +  by different efuse settings.
-> +
-> +allOf:
-> +  - $ref: "regulator.yaml#"
 
-This doesn't go here, but...
 
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: "mt6315@[0-9]"
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt6315_3-regulator
-> +      - mediatek,mt6315_6-regulator
-> +      - mediatek,mt6315_7-regulator
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
 
-What's 3, 6, 7 mean?
+If a tag was not added on purpose, please state why and what changed.
 
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  regulators:
-> +    type: object
-> +    description: List of regulators and its properties
-> +
-> +    patternProperties:
-> +      "^vbuck[1-4]$":
-> +        type: object
-
-regulator.yaml ref goes here.
-
-> +
-> +        properties:
-> +          regulator-name:
-> +            pattern: "^vbuck[1-4]$"
-> +            description:
-> +              should be "vbuck1", ..., "vbuck4"
-> +
-> +          mtk,combined-regulator:
-> +            $ref: "/schemas/types.yaml#/definitions/uint32-array"
-
-Wouldn't a phandle make more sense. And we have coupled regulator 
-binding that this may work for.
-
-> +            description: |
-> +              defines other bucks combined with this buck, must contain the following
-> +              values MT6315_VBUCK1, MT6315_VBUCK2, MT6315_VBUCK3, MT6315_VBUCK4
-> +
-> +    unevaluatedProperties: false
-
-'additionalProperties: false' would be better here.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - regulators
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    /* This example shows that buck2 and buck4 are combined into buck1. */
-> +    #include <dt-bindings/regulator/mtk,mt6315.h>
-> +
-> +    mt6315@6 {
-
-pmic@6
-
-> +      compatible = "mediatek,mt6315_6-regulator";
-> +      reg = <0x6 0 0xb 1>;
-> +
-> +      regulators {
-> +        vbuck1 {
-> +          regulator-compatible = "vbuck1";
-> +          regulator-min-microvolt = <300000>;
-> +          regulator-max-microvolt = <1193750>;
-> +          regulator-enable-ramp-delay = <256>;
-> +          regulator-allowed-modes = <0 1 2 4>;
-> +          mtk,combined-regulator = <MT6315_VBUCK2 MT6315_VBUCK4>;
-> +        };
-> +
-> +        vbuck3 {
-> +          regulator-compatible = "vbuck3";
-> +          regulator-min-microvolt = <300000>;
-> +          regulator-max-microvolt = <1193750>;
-> +          regulator-enable-ramp-delay = <256>;
-> +          regulator-allowed-modes = <0 1 2 4>;
-> +        };
-> +      };
-> +    };
-> diff --git a/include/dt-bindings/regulator/mtk,mt6315.h b/include/dt-bindings/regulator/mtk,mt6315.h
-> new file mode 100644
-> index 000000000000..6ed9b2b121db
-> --- /dev/null
-> +++ b/include/dt-bindings/regulator/mtk,mt6315.h
-> @@ -0,0 +1,17 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2020 MediaTek Inc.
-> + * Author: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> + */
-> +
-> +#ifndef _DT_BINDINGS_REGULATOR_MTK_MT6315_H
-> +#define _DT_BINDINGS_REGULATOR_MTK_MT6315_H
-> +
-> +/* Regulator ID */
-> +#define MT6315_VBUCK1	1
-> +#define MT6315_VBUCK2	2
-> +#define MT6315_VBUCK3	3
-> +#define MT6315_VBUCK4	4
-
-I don't find these defines to be that helpful.
-
-> +#define MT6315_VBUCK_MAX	5
-> +
-> +#endif /* _DT_BINDINGS_REGULATOR_MTK_MT6315_H */
-> -- 
-> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
