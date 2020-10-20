@@ -2,78 +2,90 @@ Return-Path: <SRS0=YCpt=D3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A424EC4363A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:53:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B21BC4363A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:43:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1924E22247
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 15:53:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EF0F32223C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:43:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PQWRUhv7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1924E22247
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RH2rPcFj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="mtc2L/eK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF0F32223C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rI89cgC3F7WybbjlqVaFmFMdIQaTid5b/4iNZVdqmH8=; b=PQWRUhv7YLO8e+sANF4Su0CGS
-	16hyX8qbwmM1mndBM7Rho4dHFGWdHuk++kfg5O66JahlOJdYqjsena0nqE3NeuVXdM1j+lR2c3r/9
-	v4D9ohwt6PP3tkZ4EXHatHPzJfoL29W6NDg+mvatzqVzCGXlRpMzwlV4dbpulvOH2rRaOqsHV6lsi
-	ue1/uXID2LPSOeF+Xd2O6/1tGw/wXBGLl1qYborq99lHwXKus+FW+SElVN4b6Kysn8/p+zNwkfdRZ
-	ZwM1/PCopZQQxZlL+aUM0+b5feGHTClLLvgci0ojqv/3JeXhXyf4FCP93/VoJyTP4/ztdS818uuP1
-	0dI4jKPBw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uDFufSzYaM9uxrSDnVNOJiF7MfBZ8M9car9Y22ex3Sc=; b=RH2rPcFjD+mSre5CUzQ8TbkIJk
+	7kIKStvvYuJPckVFbuDEa8qcr3xrOsgtkYdvup44SQofalZQ0SFkuHfYO4B7gkfJYlhHvTMSTUKty
+	68NLouiuRpuTS1mRgyluyNY2dRZzQGtBOq0xPeIyTKLMgeFA9BfIH9alm/GR/I40uj112oGNuKVV0
+	XWplK5AintpsgxdE2vLHSRrhDMWeJ/KYOtYdlO3ILuNVl9Laj065EgD/1gTxP/LQCUHNeIk/8/wwY
+	gRAMiiISrdN0kgJp54qoQj4VaMqK4sFLpYF0TdFLISNBBPW0V286OFkAEsJClZxtCmaPgee+ldzvt
+	cz4EtRXg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUtwi-0001lm-UF; Tue, 20 Oct 2020 15:53:08 +0000
-Received: from mail-oi1-f196.google.com ([209.85.167.196])
+	id 1kUvfB-0006US-9j; Tue, 20 Oct 2020 17:43:09 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUtwd-0001ju-3Z; Tue, 20 Oct 2020 15:53:03 +0000
-Received: by mail-oi1-f196.google.com with SMTP id l85so2615621oih.10;
- Tue, 20 Oct 2020 08:53:02 -0700 (PDT)
+ id 1kUvf2-0006PM-CQ
+ for linux-mediatek@lists.infradead.org; Tue, 20 Oct 2020 17:43:01 +0000
+Received: by mail-wm1-x343.google.com with SMTP id b127so2929222wmb.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2020 10:42:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KolONEJ0/kBt/8YOlOvYo0QZLfG99esXIK0wMwF8lc4=;
+ b=mtc2L/eKqA8TBWtNj1lh1nggWXnyR45rPOaumTksxHaV/nb4d/T4zAlD2P9bjzpHyn
+ dfu3yTG/We2OKP1fQIc4+Lj1428T5LiozVeaflzq8AolVXTn21CFIl9ulS4Qau5gLq1J
+ IRHbGN2i8IDhOy8UUmMXccWL1xNSJqz4YbnSPOvPH89tfwD+a/yz7rEUFLjBBTPpgesM
+ 3f1X0/IMnDRSGBqiQK5nS0hhXiexW/y6iLionKupQXckqGP06dQHWHoCjeLx0EIIgq6c
+ iwtxhRYwRLZBIK1XSuO9zqjgT7EPREzS1V+iRqvqhw1IW7EkCjA0J2023QN0mRwI4q+u
+ yZ1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=iSUnJ3zC+i96Tee9HE3Ma7rzjDtB6lhpcHKRFjv2ccE=;
- b=VliwNQ/MW1BzkOwHQptwm1FxQj27/pTWhvYBZTcX5pyUEl8huZWSn0Y8svlW/2vv1A
- 2ojQsuEdTTzan3zFOjGiySfqnagsJojzUmRXUWDuQE+JfrjPX40GxFc79aqldfhxUlhv
- ICl80TKgBLxc/f0NvSQrKkW38e92BtX9Rc16QI0MTGC6y6osHMNUBzSDWoecaZefSh1i
- tlpTd2yFYokh1CQ/8rK6hjkAd2kDD7X6pr7J9zSjXUKfgPSnvFOpqE1kxl2NQ6UA/PNx
- oDCqkb+5pvtEBFIIeZ0u++XuVpKX2yE+pxWhvQWOvbTXcqDReZOC63lhAHYEursi/1o5
- xPKA==
-X-Gm-Message-State: AOAM530QmYM3SYxyvT5xagbC/un/WLs1mDdhExjrtYyFL7W5Fmixvn5c
- 007tH8WaG8FfhWBWP61RGg==
-X-Google-Smtp-Source: ABdhPJw7jKtcBX1HJmvImu3OtQLdkpQmW076DYW/d4yYauIv/uHxi67eNnw6fzLjEkrKebqPLx3YMg==
-X-Received: by 2002:aca:1105:: with SMTP id 5mr2380044oir.46.1603209182630;
- Tue, 20 Oct 2020 08:53:02 -0700 (PDT)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id j84sm640090oia.25.2020.10.20.08.53.01
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KolONEJ0/kBt/8YOlOvYo0QZLfG99esXIK0wMwF8lc4=;
+ b=mfK7l6vxZ8YEaQYlAsl7Xvfef2bow7c8rOeW5FqSrM1HBkgS/7aqXmcCQuHrZNmxlQ
+ VQtd1Zk8csQEqL65TmwbzKwsdsxex+YMayFXXSmELJki57JEVeVqzO2Zn+Xi04VN+Mlx
+ XT8fWT8RCq/fSKcP0gdLkkHmX7ao19VNHLdoX9/Ma9vt8adgVnqsVpuPFwrvFr2ZY3O9
+ MqGhxLYhRZf9ZgqhhjNgGGMt0O0vYei4FenF+WI+7Rj62YGoV72AQqvvFsjv6xxBPpm1
+ FCDPsgsEncrcsi1xq1wgSixTyotgikxjnKeTipyUPPE7x9sS6AjpzbKm6aEfDDcLaQir
+ 2Uqw==
+X-Gm-Message-State: AOAM533XS9H+WJWmurL1x1rFDC1Y0cvjhYsaOu/OsZlZ1D9QotwsHpns
+ //SQnDC7aK0uOJfRMmgCdv4X9+Yw9CckuA==
+X-Google-Smtp-Source: ABdhPJxdhFa4U3zvDL3nve6Smzr3olv0OJGGCpFVU2nQZJ2SRN4kwERM99KqsVG5ZE8vhs1527lNKg==
+X-Received: by 2002:a05:600c:cb:: with SMTP id
+ u11mr3925064wmm.112.1603215777481; 
+ Tue, 20 Oct 2020 10:42:57 -0700 (PDT)
+Received: from localhost.localdomain (199.170.185.81.rev.sfr.net.
+ [81.185.170.199])
+ by smtp.gmail.com with ESMTPSA id v123sm3297756wme.7.2020.10.20.10.42.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 08:53:01 -0700 (PDT)
-Received: (nullmailer pid 907213 invoked by uid 1000);
- Tue, 20 Oct 2020 15:53:00 -0000
-Date: Tue, 20 Oct 2020 10:53:00 -0500
-From: Rob Herring <robh@kernel.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: Re: [PATCH v7 1/3] dt-bindings: iio: adc: add bindings doc for
- MT6360 ADC
-Message-ID: <20201020155300.GB906028@bogus>
-References: <1603181267-15610-1-git-send-email-gene.chen.richtek@gmail.com>
- <1603181267-15610-2-git-send-email-gene.chen.richtek@gmail.com>
+ Tue, 20 Oct 2020 10:42:56 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+Subject: [PATCH 0/8] Add DRM/DSI support for MT8167 SoC.
+Date: Tue, 20 Oct 2020 19:42:45 +0200
+Message-Id: <20201020174253.3757771-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1603181267-15610-2-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_115303_211624_D8AEA075 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20201020_134300_477965_D5377EB4 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,35 +97,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org, lars@metafoo.de,
- linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- benjamin.chao@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- pmeerw@pmeerw.net, knaack.h@gmx.de, matthias.bgg@gmail.com,
- Wilma.Wu@mediatek.com, jic23@kernel.org, shufan_lee@richtek.com
+Cc: chunkuang.hu@kernel.org, daniel@ffwll.ch, airlied@linux.ie,
+ Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org,
+ p.zabel@pengutronix.de, matthias.bgg@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 20 Oct 2020 16:07:45 +0800, Gene Chen wrote:
-> From: Gene Chen <gene_chen@richtek.com>
-> 
-> This change adds the binding doc for the MT6360 ADC.
-> 
-> Signed-off-by: Gene Chen <gene_chen@richtek.com>
-> ---
->  .../bindings/iio/adc/mediatek,mt6360-adc.yaml      | 34 ++++++++++++++++++++++
->  1 file changed, 34 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/iio/adc/mediatek,mt6360-adc.yaml
-> 
+This series adds support for DSI on the MT8167 SoC. HDMI is not yet supported
+as secondary display path.
 
+mmsys is not supported by this series and will be sent in a seperate series
+based on [0].
 
-Please add Acked-by/Reviewed-by tags when posting new versions. However,
-there's no need to repost patches *only* to add the tags. The upstream
-maintainer will do that for acks received on the version they apply.
+[0] https://patchwork.kernel.org/project/linux-mediatek/list/?series=360447
 
-If a tag was not added on purpose, please state why and what changed.
+Fabien Parent (8):
+  dt-bindings: display: mediatek: disp: add documentation for MT8167 SoC
+  dt-bindings: display: mediatek: dsi: add documentation for MT8167 SoC
+  drm/mediatek: add disp-color MT8167 support
+  drm/mediatek: dsi: add pdata variable to start clk in HS mode
+  drm/mediatek: dsi: add support for mipi26m clk
+  drm/mediatek: dsi: add support for MT8167 SoC
+  drm/mediatek: add DDP support for MT8167
+  drm/mediatek: Add support for main DDP path on MT8167
+
+ .../display/mediatek/mediatek,disp.txt        |  4 +-
+ .../display/mediatek/mediatek,dsi.txt         |  7 +--
+ drivers/gpu/drm/mediatek/mtk_disp_color.c     |  7 +++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c        | 50 +++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 38 ++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dsi.c            | 20 +++++++-
+ 6 files changed, 120 insertions(+), 6 deletions(-)
+
+-- 
+2.28.0
 
 
 _______________________________________________
