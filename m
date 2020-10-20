@@ -2,72 +2,98 @@ Return-Path: <SRS0=YCpt=D3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DCC1C4363A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 14:37:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 599AEC4363A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 14:56:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E14392177B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 14:37:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C98EE21741
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 14:56:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xsxiCToJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="dsqyybu2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E14392177B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P6Amm/E0";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="cK9G7+OH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C98EE21741
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=i2Ni38VwS1osdw5BCwwiMpydbTgNiigT2OLk/T81gnU=; b=xsxiCToJ33UfLuQwQY7CIcbuE
-	IqP2O16uygnlGj00ZPiKwlrwjhF3EWFXp5jNvH0z7OFVu5hR1gHRsV8PurSfd5CFCGKPL0lQZoAs1
-	KHKD0sQGdHf6ryIShA1uoX2j8I2Y6rB7BI6KWoeOm+gm1WT2Krw16iDHOCOf7k+BJVkzM13TkyNNw
-	tNFj06UZApcu1M1xKt3Z0DtBpz7Ud0Qa/XOxhY8aWtUTdPm6EB4WxF3ed3pR1aU0tPyz9H+7XyJ81
-	mJUVW9rtOaME63Qb1vTRZeG0+z6onBZSaII+BckTjBJ1tAG0VZRvTJ3HgyWa8Ubc9Azh6Z4hzx6g9
-	LcJJImXdg==;
+	 bh=O3vzFZZj+9bqDXCGJG320VVUEwA219r0CT16IU7spqg=; b=P6Amm/E06jYuejNwEjl9MU01p
+	M9WZ0Q8iypDYR1pn4KSgIqTNHV+/3vG/SX1yIxPl7GfUd/07cmwXS5yzQC5pgyocDaOPApgZRenWz
+	hmfvx4p0o3o/L3qIYWOrF42GyqSUUs6iuJfL73K15rVNdNwfNQnwdgAaCph08Gv7p2xVFCIv71kxr
+	+C3n9FM402qbsccmYnKaqfEkkm5vp+a2M69DoV9Kgo1SnD8p4NDL7YR+zYo918MGvzQSfVcF5zGvv
+	qjAa3d5Uz4xcPBRGGLw5Dcs2qk+sXF3LlceTSZtxZtuWv9AJcx81QjBhugS+CKuo3rTg3Emwt5dO2
+	ioFqIWwqA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUslU-0008K5-SP; Tue, 20 Oct 2020 14:37:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kUt3I-0001mD-VP; Tue, 20 Oct 2020 14:55:53 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUslP-0008JF-Gr; Tue, 20 Oct 2020 14:37:24 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9389B21534;
- Tue, 20 Oct 2020 14:37:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603204642;
- bh=f6kugA3U0QakUulP0txsV8BTYj/A5215gpbs4UZBY38=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=dsqyybu2MKInKfeRhYrW8vkb0ymsQrvurWgo03nA1Q5MVwC/kOLvNMmZ9Ed/8aRiL
- ya2rx+LZfiIkoLhgcYVnyIbRP1wd4AudxWlepqbUQDEjreJCGCBeJUqwlTALe6McPJ
- SM5qeM1oDBEh6KMnBudKKbJJ6ENN4MFTbDhuc4iM=
-Date: Tue, 20 Oct 2020 15:37:11 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Cheng-yi Chiang <cychiang@chromium.org>
+ id 1kUt3G-0001kV-4a
+ for linux-mediatek@lists.infradead.org; Tue, 20 Oct 2020 14:55:51 +0000
+Received: by mail-wm1-x343.google.com with SMTP id 13so2117031wmf.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2020 07:55:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=uf/L+N0SXiT5GxWzSMpW76s8MjBMaRe3gnVIlCSIR5M=;
+ b=cK9G7+OH/TUQCyR8rfJv0QoQ3SjEQsnF9XCjVN6xqr/O8yU3IlDfbvmsbTfkhxQ06f
+ q4IpVZ8VlQ3fVXlWWHGSfLpylD2IH5P4NE25315km3BTplz4wROeM/cLeRnrZhnHb/v5
+ PyAaPitLsRWmdVTipbLqX4Out+F21VmQJ/X09y763klLznhk8Wjph5Dm6ltToTwu1GKi
+ 6cF9SRXzSOe+CnDRgo2LkN4n5tkvfZ7EpQsA7EkHbGt3NkoE1mD/PmAfdxkXt8UbFE9X
+ RN1mqjge119zJMoJpTqXMa+rN2apg4iQxVK+dpL4RLHKRIlCnNkTt3EAvl5wmXLl4Uz1
+ eT1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=uf/L+N0SXiT5GxWzSMpW76s8MjBMaRe3gnVIlCSIR5M=;
+ b=cJ5Ax4UK+piyRn6lLdG39gJ5vNfs1xZ7XRm7n0D9uaDPjWz0U5OkuBb++IHYFIPRva
+ Tf6UlqBlfa5HVnDVktyWbwLGAsQx5tLGfpYbZFrgigQZlKAIzj92b8FAUm4PjzgNp2M+
+ kAAK9gz8YvZSMXIkiGKGlFhsI+tKjfyDZtg4f/3Fd4Htfk9hLIGXgSYx3S6/zSWKDuR0
+ aDSv0y6uS7ToiedX7wPkyqDX21k/iudXY360GAcScRvR+YdfldvevByldYINDPha0ir6
+ kFY5p0NuvRtvjL78JN82v0jMyKWUsdHjh8TiE37gVivUeb2pLDCZ/FKXrjQolCzy6sKH
+ Imng==
+X-Gm-Message-State: AOAM5329fTm7skG2/o8hRRlK7zbX9+Qr5g+TMIHdD6gTf446Wfm7i6nX
+ xdsI/CM7e9/ipUE8JTFu18Mn5g==
+X-Google-Smtp-Source: ABdhPJwZTIfXIjPLWWjL97y1NfJTXN0Y2s/to/X10G0kOS41vqvGeaVeSXPhf5OZA0t9DHJLkiPgNg==
+X-Received: by 2002:a7b:ce8f:: with SMTP id q15mr3351776wmj.88.1603205747699; 
+ Tue, 20 Oct 2020 07:55:47 -0700 (PDT)
+Received: from [192.168.86.34]
+ (cpc86377-aztw32-2-0-cust226.18-1.cable.virginm.net. [92.233.226.227])
+ by smtp.googlemail.com with ESMTPSA id 1sm3868599wre.61.2020.10.20.07.55.45
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 20 Oct 2020 07:55:46 -0700 (PDT)
 Subject: Re: [PATCH v11 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
  bindings
-Message-ID: <20201020143711.GC9448@sirena.org.uk>
+To: Mark Brown <broonie@kernel.org>, Cheng-yi Chiang <cychiang@chromium.org>
 References: <20200914080619.4178587-1-cychiang@chromium.org>
  <20200914080619.4178587-3-cychiang@chromium.org>
  <7bdc0d63-27b1-f99e-c5f8-65f880733d16@linaro.org>
  <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
  <20201015161251.GF4390@sirena.org.uk>
  <CAFv8NwL1xX=yPGFqQL_mOzAnPTfH0Z0J6ibG1+D32W46Nx0KYQ@mail.gmail.com>
+ <20201020143711.GC9448@sirena.org.uk>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Message-ID: <63f1a29c-0758-97b8-ce80-fe43d91630fa@linaro.org>
+Date: Tue, 20 Oct 2020 15:55:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFv8NwL1xX=yPGFqQL_mOzAnPTfH0Z0J6ibG1+D32W46Nx0KYQ@mail.gmail.com>
-X-Cookie: The people rule.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20201020143711.GC9448@sirena.org.uk>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_103724_152588_F4B40293 
-X-CRM114-Status: GOOD (  29.49  )
+X-CRM114-CacheID: sfid-20201020_105550_188712_A18F269C 
+X-CRM114-Status: GOOD (  22.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,113 +126,59 @@ Cc: Taniya Das <tdas@codeaurora.org>,
  Bjorn Andersson <bjorn.andersson@linaro.org>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>,
  Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Content-Type: multipart/mixed; boundary="===============4830637102202922354=="
+ linux-kernel <linux-kernel@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============4830637102202922354==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="WfZ7S8PLGjBY9Voh"
-Content-Disposition: inline
+
+On 20/10/2020 15:37, Mark Brown wrote:
+> I don't understand what "logic scattered in various dtsi files" means,
+> sorry.
+> 
+>> Yes, that should work to describe the dailink we are using.
+>> But a more tricky issue is how to do calls like setting PLL in dai startup ops.
+> ...
+> 
+>> I think that asking a generic machine driver to do configuration like
+>> this with only a limited interface of device property
+>> might be too much of an ask for the machine driver.
+> Richard was looking at some basic configuration for PLLs.
+> 
+>> Would you mind if I simplify the compatible string like Srinivas
+>> suggested, and send a v12?
+>> As for other two kinds of variations that I am aware of:
+>> 1. front mic / rear mic
+>> 2. replace alc5682 with adau7002
+> The CODEC change is going to be described in the DT no matter what -
+> you'll have a reference to the CODEC node but it may make sense if
+> there's enough custom code around it.  For front vs rear mic the
+> simplest thing would just be to not mention which if this is a hardware
+> fixed thing, otherwise a control.
+> 
+>> We can set different board names and different compatible strings to
+>> achieve such variation.
+>> So that it would make sense to describe configuration in compatible
+>> strings like you suggested, and also provides UCM a way to distinguish
+>> different boards.
+> I don't recall having suggested distinguishing these things with a
+> compatible string, especially not the microphones.  UCM can already use
+> the display names for the boards to distinguish things.
 
 
---WfZ7S8PLGjBY9Voh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Not with the compatible string!
 
-On Tue, Oct 20, 2020 at 09:37:05PM +0800, Cheng-yi Chiang wrote:
+Currently card name, and long name are exactly same in all Qualcomm 
+soundcards, which makes it very difficult to identify how those boards 
+re wired up at UCM2 level. So the plan is to properly populate card long 
+name with "model" property which can include details on how things are 
+wiredup on that board.
 
-> May I know your suggestion on Ajye's patch "ASoC: qcom: sc7180: Modify
-> machine driver for 2mic" ?
-
-> https://lore.kernel.org/r/20200928063744.525700-3-ajye_huang@compal.corp-partner.google.com
-
-> I think adding code in the machine driver makes the intent straightforward.
-> If we want the machine driver to be fully configurable,
-> we can always add more code to handle properties like gpio, route,
-> widget (mux, text selection) passed in from the device tree.
-
-If the device has both front and rear mics and only one can be active at
-once that seems obvious and sensible.  If the devices only have one of
-these then this seems like a bad idea.
-
-> But I feel that we don't need a machine driver to be that configurable
-> from the device tree.
-> I think having the logic scattered in various dtsi files and relying
-> on manual inspection to understand the usage would be less
-> maintainable than only exposing needed property like gpio.
-> Especially in the complicated case where we need to create a mux
-> widget with callback toggling the gpio like this:
-
-I don't understand what "logic scattered in various dtsi files" means,
-sorry.
-
-> Yes, that should work to describe the dailink we are using.
-> But a more tricky issue is how to do calls like setting PLL in dai startup ops.
-
-...
-
-> I think that asking a generic machine driver to do configuration like
-> this with only a limited interface of device property
-> might be too much of an ask for the machine driver.
-
-Richard was looking at some basic configuration for PLLs.
-
-> Would you mind if I simplify the compatible string like Srinivas
-> suggested, and send a v12?
-
-> As for other two kinds of variations that I am aware of:
-
-> 1. front mic / rear mic
-> 2. replace alc5682 with adau7002
-
-The CODEC change is going to be described in the DT no matter what -
-you'll have a reference to the CODEC node but it may make sense if
-there's enough custom code around it.  For front vs rear mic the
-simplest thing would just be to not mention which if this is a hardware
-fixed thing, otherwise a control.
-
-> We can set different board names and different compatible strings to
-> achieve such variation.
-> So that it would make sense to describe configuration in compatible
-> strings like you suggested, and also provides UCM a way to distinguish
-> different boards.
-
-I don't recall having suggested distinguishing these things with a
-compatible string, especially not the microphones.  UCM can already use
-the display names for the boards to distinguish things.
-
---WfZ7S8PLGjBY9Voh
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl+O9hYACgkQJNaLcl1U
-h9CspAf/b7bFcvyQbodhwCE9GoK96aMXJ54K2Y9rG4bcavB0WJbLggXc4xYp/uUS
-oDymKZzLQr+vEzU9gO/inLAIXfMd2QTgLQWrrY4K/Z/q6+Wo702H2r0kwEXIpj3E
-nB2VjUldnpl0XYCmavYeVaZLep8+qTL6QixnsLQq6zrwirPeyNpfQ2iu/FLzSYX6
-EayieZWxAGuFfZkIoPg38GQqW6bZeuc8Nom0OY4Yqu/uoz29ekHKWOQm03DZyRK9
-bTCBvPjsigi/ABXue224l0WavpRxvvjRNeswkQasH9rM/OIhY4CKktbaNmUW/1mH
-FIkwdq2b8lvHefF3atCnALr5tCyx1Q==
-=1PAU
------END PGP SIGNATURE-----
-
---WfZ7S8PLGjBY9Voh--
-
-
---===============4830637102202922354==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+--srini
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4830637102202922354==--
-
