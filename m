@@ -2,92 +2,58 @@ Return-Path: <SRS0=YCpt=D3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A50E7C4363A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B1EBC4363A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 18:36:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E83021D6C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 17:44:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F2DB21D7B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2020 18:36:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w4SW7iI0";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="tKhGvZjH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E83021D6C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UQz47NX+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F2DB21D7B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cT4HMAOKIUuuMrtcXrQb7EuWGNqI39pDOzznGKwxeM4=; b=w4SW7iI07A8cf9RokWA9uaWsF
-	LHylolvSEqmYdC+m4BgDMiD52rhc00EsS+ViILmBKyQwVuaFjU/x50coI/7AkAebXm6cXqWDQ+B8/
-	cQeHZbefaN3dwNp1PUsmhklQ1a3KeteTymbaCc4sVOw/Ya7/drHaNX9T+mYA2nA9I5OP0N9AOsD/2
-	YZJSOYClQJ9BLTXgdKWCRIpx2r+iuYmWQ78PAUxgEi6RluSYm+UQoHbxqOMiFfDdEY2S/v4SdxFjT
-	8XAoPMdHvU8CfPYnD4JjT/1G/N9+XawnRQcOIzYlrn1n2s1HGfJTugNWkrq7PwWyLS7mRdJnnjiVc
-	qS6azJCfg==;
+	 bh=d5sfH/a8UBH+hce9eIOy+ImLPv8QImQz8z161p5TUUo=; b=UQz47NX++vwr3GwT7r0hGqT2f
+	XSQ2B6MZH5n4jBWHll4lsgTZoTE9UkT9wqzRxMtyuY+K+5GMSJAhZQvRmqwz4gB1j/qRVVORMOwFy
+	4tdCPG+PydLq2AmJ0ekqzvoxCZTHxFel/xHIwgaRH+DA95CMmU/hhMzKec/uc6w5ECeaxYYmZhR9M
+	XaONA4V0ERksrgPI2I02ZO1e54fV9/u1AcbHdanewYK4vpKFOg774xc5FL2D/WttM6EtqLu8ovhVX
+	GLFK9Mao6vx+GcHrSrbx6yYuKozoS1YgigqpX+utQv5crSv6mWK9cPHQpc7AZKVxxEyGFbNaeF3Dd
+	p/48T+xuA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUvgH-000766-4i; Tue, 20 Oct 2020 17:44:17 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUvfD-0006VL-Ed
- for linux-mediatek@lists.infradead.org; Tue, 20 Oct 2020 17:43:15 +0000
-Received: by mail-wr1-x444.google.com with SMTP id j7so3198415wrt.9
- for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2020 10:43:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=1A8pfSek/oH+kI//UrZrfn2qlGAQqPoXd9JAju99Kjw=;
- b=tKhGvZjHxPeNh1BqRsnqoK5mk8FKDP8GpA+8AwZOq42jOphNgYUY5iBbwL2iwYh643
- ilMXNPIoy1ITQRVR9VfbAvrhU4rIEuJJv6yHikwMBo07KK3uX4n5WqR5zSJ6x41578iY
- j3SAnl2D9opqS7C3H4iWZm1EV20bzt1Hh1n5APmPCznBedCN9vNxClJSDWtKygEqlGPk
- mS7ppoerv0bTUSu8loyCAvdl+3czi3yUA/xCIcunIHapYtBDEpQ0SBwR2gWtEcCt/eoK
- xk6W82bzd987JbfkGJrU8qZEb8urxe8+RejC+8Hilg247SVLbAEo5q566TEzSLAGlj1G
- j4tg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=1A8pfSek/oH+kI//UrZrfn2qlGAQqPoXd9JAju99Kjw=;
- b=XM0ijU9om1AoEJo48VrPvGu5KAm942dqylD01cPj/MR6yPsyy/wyPdQpNR/LJeW28X
- uQMur/NyNUzmZD4jSFtpqlE6o2niPJJlHpZvKPu7uqttDw2Uf0iZWdVzNIgv3wTRjOWd
- QLsAsle4Gndwe1E4D1/TNnN0pfwx8u0etyl5Rj0WGbU+YDHrAhwPOSXU17BMVZtJNAKN
- Blgbb6ZVtY38NQ4kDe0uwrKvQ0g3dztiIJmigDa8uArta04v0A1++4Juk+TyncO2YNMs
- ltl39X0FrT4g/e/30E2U7JTVIEOq68FEGQ2FOZgM0kAJH+EpKTOEfMhxRvXKlf0UDA4e
- 5Wig==
-X-Gm-Message-State: AOAM531qX8/6UoD+B08T3XsNyYturNjxvpHzdSmY38Tr1rhdPWRsZpPP
- jHJ1tDT+5sX82mQFYDqd3vpp0jtL1Jjo4A==
-X-Google-Smtp-Source: ABdhPJwqF5VYoBqPaVRJ2EDBqfvlSysBqq92CEHWViBWOriU59xWNrrDpDUp6DyvZcdF2kpfumUOMQ==
-X-Received: by 2002:adf:f104:: with SMTP id r4mr4824741wro.202.1603215790101; 
- Tue, 20 Oct 2020 10:43:10 -0700 (PDT)
-Received: from localhost.localdomain (199.170.185.81.rev.sfr.net.
- [81.185.170.199])
- by smtp.gmail.com with ESMTPSA id v123sm3297756wme.7.2020.10.20.10.43.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Oct 2020 10:43:09 -0700 (PDT)
-From: Fabien Parent <fparent@baylibre.com>
-To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org
-Subject: [PATCH 8/8] drm/mediatek: Add support for main DDP path on MT8167
-Date: Tue, 20 Oct 2020 19:42:53 +0200
-Message-Id: <20201020174253.3757771-9-fparent@baylibre.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201020174253.3757771-1-fparent@baylibre.com>
-References: <20201020174253.3757771-1-fparent@baylibre.com>
-MIME-Version: 1.0
+	id 1kUwUJ-00045p-PD; Tue, 20 Oct 2020 18:35:59 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kUwUH-000459-5F
+ for linux-mediatek@lists.infradead.org; Tue, 20 Oct 2020 18:35:58 +0000
+Received: from marcel-macbook.fritz.box (p5b3d236a.dip0.t-ipconnect.de
+ [91.61.35.106])
+ by mail.holtmann.org (Postfix) with ESMTPSA id BABCCCED0F;
+ Tue, 20 Oct 2020 20:42:56 +0200 (CEST)
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.120.23.2.4\))
+Subject: Re: [PATCH] Bluetooth: btusb: Add support for LG LGSBWAC92/TWCM-K505D
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <20201016030238.1033559-1-cyrozap@gmail.com>
+Date: Tue, 20 Oct 2020 20:35:52 +0200
+Message-Id: <EE190DCC-85ED-4370-81A7-C239EE193083@holtmann.org>
+References: <20201016030238.1033559-1-cyrozap@gmail.com>
+To: Forest Crossman <cyrozap@gmail.com>
+X-Mailer: Apple Mail (2.3608.120.23.2.4)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_134311_681478_51F48947 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20201020_143557_302662_3B5D9FE5 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,124 +65,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, daniel@ffwll.ch, airlied@linux.ie,
- Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org,
- p.zabel@pengutronix.de, matthias.bgg@gmail.com
+Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Johan Hedberg <johan.hedberg@gmail.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the main (DSI) drm display path for MT8167.
+Hi Forest,
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 38 ++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+> The LG LGSBWAC92/TWCM-K505D/EAT64454801/EAT64454802 (it goes by many
+> names) is a combo WiFi/Bluetooth module that's used in several models of
+> LG TVs. It uses the MediaTek MT7668AUN, which is already supported in
+> btusb, but this device has a non-MediaTek USB VID so to get it to work
+> we just need to add it to the list of devices to probe.
+> 
+> Signed-off-by: Forest Crossman <cyrozap@gmail.com>
+> ---
+> drivers/bluetooth/btusb.c | 1 +
+> 1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 5f022e9cf667..58259b6a43c7 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -366,6 +366,7 @@ static const struct usb_device_id blacklist_table[] = {
+> 	/* MediaTek Bluetooth devices */
+> 	{ USB_VENDOR_AND_INTERFACE_INFO(0x0e8d, 0xe0, 0x01, 0x01),
+> 	  .driver_info = BTUSB_MEDIATEK },
+> +	{ USB_DEVICE(0x043e, 0x3109), .driver_info = BTUSB_MEDIATEK },
+> 
+> 	/* Additional Realtek 8723AE Bluetooth devices */
+> 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 59c85c63b7cc..3952435093fe 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -112,6 +112,17 @@ static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
- 	DDP_COMPONENT_PWM2,
- };
- 
-+static enum mtk_ddp_comp_id mt8167_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_DSI0,
-+};
-+
- static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
- 	DDP_COMPONENT_OVL0,
- 	DDP_COMPONENT_COLOR0,
-@@ -163,6 +174,11 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8167_mmsys_driver_data = {
-+	.main_path = mt8167_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8167_mtk_ddp_main),
-+};
-+
- static int mtk_drm_kms_init(struct drm_device *drm)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
-@@ -401,26 +417,42 @@ static const struct component_master_ops mtk_drm_ops = {
- static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
- 	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8167-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt8173-disp-ovl",
- 	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8167-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
- 	  .data = (void *)MTK_DISP_WDMA },
-+	{ .compatible = "mediatek,mt8167-disp-ccorr",
-+	  .data = (void *)MTK_DISP_CCORR },
- 	{ .compatible = "mediatek,mt2701-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
-+	{ .compatible = "mediatek,mt8167-disp-color",
-+	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
-+	{ .compatible = "mediatek,mt8167-disp-aal",
-+	  .data = (void *)MTK_DISP_AAL},
- 	{ .compatible = "mediatek,mt8173-disp-aal",
- 	  .data = (void *)MTK_DISP_AAL},
-+	{ .compatible = "mediatek,mt8167-disp-gamma",
-+	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
-+	{ .compatible = "mediatek,mt8167-disp-dither",
-+	  .data = (void *)MTK_DISP_DITHER },
- 	{ .compatible = "mediatek,mt8173-disp-ufoe",
- 	  .data = (void *)MTK_DISP_UFOE },
- 	{ .compatible = "mediatek,mt2701-dsi",
- 	  .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt8167-dsi",
-+	  .data = (void *)MTK_DSI },
- 	{ .compatible = "mediatek,mt8173-dsi",
- 	  .data = (void *)MTK_DSI },
- 	{ .compatible = "mediatek,mt2701-dpi",
-@@ -431,10 +463,14 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2712-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8167-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2701-disp-pwm",
- 	  .data = (void *)MTK_DISP_BLS },
-+	{ .compatible = "mediatek,mt8167-disp-pwm",
-+	  .data = (void *)MTK_DISP_PWM },
- 	{ .compatible = "mediatek,mt8173-disp-pwm",
- 	  .data = (void *)MTK_DISP_PWM },
- 	{ .compatible = "mediatek,mt8173-disp-od",
-@@ -449,6 +485,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt7623_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt2712-mmsys",
- 	  .data = &mt2712_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8167-mmsys",
-+	  .data = &mt8167_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8173-mmsys",
- 	  .data = &mt8173_mmsys_driver_data},
- 	{ }
--- 
-2.28.0
+please include the content of /sys/kernel/debug/usb/devices in the commit
+message.
+
+Regards
+
+Marcel
 
 
 _______________________________________________
