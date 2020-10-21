@@ -2,77 +2,90 @@ Return-Path: <SRS0=VhZj=D4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50DE2C388F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2020 15:05:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 22CB5C388F9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2020 16:42:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CBBAB20BED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2020 15:05:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8F67521D7B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2020 16:42:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ks+KM9yZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBBAB20BED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dPtPqO/W";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="i0gAa5X6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F67521D7B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XWialYZipw/fFS62/YtfuZEFKz0R6Ekyip1HtVbTp4A=; b=Ks+KM9yZlFB+tO/aL06t1AL9a
-	iFc9prXKL+cU0Z/TUw+O9YbDotCgqs9DpotknTKE0rcH8IVo8nMlkr9B+mhihVbdVG1Xjo28eMWO6
-	zB9awHro7ITvHrom3wj4a0um0DSTJfQASFMcZepRADoCtKjvLLU14CI6Y0zroqWjZxleXhioxw5Yv
-	htGdhyDPefloaNY3ralwqqiLgXXQAq1yxItJUsWpmP70nuW6ehpuj54RH4KKHj+kIf1Wm4e1EXc/A
-	9NSDf33PgSFvzG6oq2UZj79vD7yz/3ATYr4UINB3z+dij1D3FgEiYzQ4CgOU2G00qJU8pcQCacnCS
-	gOdqw9EAA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MAD9w8Jf4rwYtl2RJpIEFreXUHm2/0idVH9vPHS/Bno=; b=dPtPqO/WLun1AIuVZoBOK65aPB
+	R2cL45C7phXCNAAh/wcL+01sDGrBk1zBdOo8lEK4ojYf7rSz1jOjd4pu0KzJDHfXu+9OQoDTCffcW
+	j8gfktRex2O8HWb5cAGGGWuc/zvt1TX5NtoTxp4oHGyp+aZRBaVk6D4Xm0O3KbrPw4BdHD9Z6diY4
+	pN3aQovX1g5i1A8QHhzoIriYMbUjTYFBXLN2T5IANdSoVIkicZhAS7kXkb9qwg+Mem8l1X4gfbOoE
+	Ht17Ydk8021Ncitq4paspg4iiBxlEm1CJ8RuAi24G5Z/7jtLbjNyLk2K+tByYjGHk2U74v/moqpDc
+	NT5TelJw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVFgB-0002pm-6h; Wed, 21 Oct 2020 15:05:31 +0000
-Received: from mail-ot1-f68.google.com ([209.85.210.68])
+	id 1kVHCD-0006Tt-Ih; Wed, 21 Oct 2020 16:42:41 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVFg8-0002nq-RE; Wed, 21 Oct 2020 15:05:29 +0000
-Received: by mail-ot1-f68.google.com with SMTP id n15so2084519otl.8;
- Wed, 21 Oct 2020 08:05:24 -0700 (PDT)
+ id 1kVHC8-0006RI-Ki
+ for linux-mediatek@lists.infradead.org; Wed, 21 Oct 2020 16:42:37 +0000
+Received: by mail-wr1-x444.google.com with SMTP id h5so3820165wrv.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 21 Oct 2020 09:42:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ktOQBsIi43nG8a2/21JQPeKNNuRP5PqTvkBAgWAn5tg=;
+ b=i0gAa5X6lQdX9PQRLe+laWerY6VMaJl4dmiT6eFrLnTc2mxLVLmiMvAWGcvAnHcwx4
+ bRRsAi9yCpLOP6i5M1k46oXGtRSSFG50d2yRDnM3GpTKGjzsmZvi7RnjDvWU2vWQGe88
+ VzaMuPFNaxqlgjy5VXrpkhLGdYnX69HqlTMRgJg5VQF5t+OFCOFypTyytbfPIkrfxBFZ
+ vJaqstRk6Qz7v1TQbN5K9qy2e8WBPScm5gEmXD4E8l1cRPGg0z1g9OLSdD82DY5g2/aG
+ 9OuQm9Oo2M2Ul/rHhjpM3jLh4xOq+/ZhBLk4gBZ+oG6iFNcRpdJzO3+nMhM1u3bR6dhA
+ GdAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=j5vXzbajSvk2jPGnq190MC//0hHF/9k+3Xwub4lFqOk=;
- b=ZW6/YS2dL1ukqk6FpQ+Uh6Bxk2g/dLkNCLBANS9rc9ObC2WAtTzVcAz9znzI4PxRrU
- k+Y4LKnFxT86EfBHtyUA64DT1O76nUXP8F06XB/nEcote38T79pOYnb29oiKGuP0MeG6
- PaFFQS6GRczt4BhgmrbP4ygWViYh0BI4rHuuWVYUqOQc05fozSrHvPwuO0ZbwJf+qv8U
- JCFHmOgHSBFe8+FfOhMpzuQTxNcHaR/+kmPIwhA3FQZ9P9MP5oztjt1tDETkyJZ3bHSi
- NK8BR3g8o4eL6MOa8PEZLsUWBrPobBym1qgwaQWz+/yopNaum0cFfTyitcDDL88vh273
- /c0w==
-X-Gm-Message-State: AOAM5300PohEZL5GC0B+suAZbGY9L0BlPWNmZrbh3YMYtp1SkgWQfRhO
- balZAAK01jb2ecbYVFf8mg==
-X-Google-Smtp-Source: ABdhPJyBdffq8YFayXKBVbcSTDZtsjX1dHiZVOnDChBLmQ2MNXBFO87aO+PpqoH5j4nTyRzv+goqMA==
-X-Received: by 2002:a9d:7993:: with SMTP id h19mr2830613otm.289.1603292723983; 
- Wed, 21 Oct 2020 08:05:23 -0700 (PDT)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id u140sm727527oie.41.2020.10.21.08.05.22
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ktOQBsIi43nG8a2/21JQPeKNNuRP5PqTvkBAgWAn5tg=;
+ b=aBY1HiqtCtNx0hNnqgad67aG9iFj/Efsf93r/uoSQP+Zu7EjKU6ggScRQASC6FtXU5
+ Mlctrl20hzLAj/gN77I4ah2Q+/P3Woj74l9kRvSdEJQsNYEA6rQBDrUseVjbo7kwKd3E
+ Iy4ZOr1Pkav29Zr9+Wl1bnPNt4Lf694HSEwhuVjsmyxXB+YE0YL6OvpEyGZVXbLDk0IW
+ wA9z98e1XRD+7KLfSHb3349xxQ4ESJ7bzrrsWY2HUIAAVg9iQbatf+UNhkQre1EvyLOQ
+ IfR4cQfgJhk11mDoYc4QOAS5WK80l2/qOBfED/od83TUsQSVtgejTbfruiDYynVuCZcW
+ Po3g==
+X-Gm-Message-State: AOAM532UuCpZvs58FoBEGxOTCCcBUAMQFnmAF8BKn+mXx3Uvw8KyXCPJ
+ NnuS7iT7fo3u8y/MrMX9Xl+PxSQOAYOBbQ==
+X-Google-Smtp-Source: ABdhPJwSC4b6Zp3WR/gk387RdiJewfMgrjpTyShE4TGDBNY3p53Pb4FZAnNyTZ++ZiVCeZuokVyJVg==
+X-Received: by 2002:adf:de91:: with SMTP id w17mr5681928wrl.84.1603298555294; 
+ Wed, 21 Oct 2020 09:42:35 -0700 (PDT)
+Received: from localhost.localdomain (58.164.185.81.rev.sfr.net.
+ [81.185.164.58])
+ by smtp.gmail.com with ESMTPSA id a3sm5321724wrh.94.2020.10.21.09.42.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Oct 2020 08:05:23 -0700 (PDT)
-Received: (nullmailer pid 2798579 invoked by uid 1000);
- Wed, 21 Oct 2020 15:05:22 -0000
-Date: Wed, 21 Oct 2020 10:05:22 -0500
-From: Rob Herring <robh@kernel.org>
-To: Neal Liu <neal.liu@mediatek.com>
-Subject: Re: [PATCH v8 1/2] dt-bindings: devapc: add bindings for mtk-devapc
-Message-ID: <20201021150522.GA2798521@bogus>
-References: <1602732039-12179-1-git-send-email-neal.liu@mediatek.com>
- <1602732039-12179-2-git-send-email-neal.liu@mediatek.com>
+ Wed, 21 Oct 2020 09:42:34 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-pm@vger.kernel.org
+Subject: [PATCH 1/3] dt-bindings: thermal: mediatek: make resets property
+ optional
+Date: Wed, 21 Oct 2020 18:42:29 +0200
+Message-Id: <20201021164231.3029956-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1602732039-12179-2-git-send-email-neal.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201021_110528_906505_43265A34 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20201021_124236_706417_7A3370DC 
+X-CRM114-Status: GOOD (  13.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,27 +97,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, wsd_upstream@mediatek.com,
- devicetree@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: amitk@kernel.org, daniel.lezcano@linaro.org,
+ Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org,
+ matthias.bgg@gmail.com, rui.zhang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Oct 2020 11:20:38 +0800, Neal Liu wrote:
-> Add bindings for mtk-devapc.
-> 
-> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
-> ---
->  .../devicetree/bindings/soc/mediatek/devapc.yaml   |   58 ++++++++++++++++++++
->  1 file changed, 58 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
-> 
+MT8516 Thermal IP does not support reset. Make the resets property
+optional in order to be able to support MT8516 SoC.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ Documentation/devicetree/bindings/thermal/mediatek-thermal.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+index 1e249c42fae0..2d20f6b0dca0 100644
+--- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
++++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+@@ -20,12 +20,12 @@ Required properties:
+                        clocks are:
+ 		       "therm":	 Main clock needed for register access
+ 		       "auxadc": The AUXADC clock
+-- resets: Reference to the reset controller controlling the thermal controller.
+ - mediatek,auxadc: A phandle to the AUXADC which the thermal controller uses
+ - mediatek,apmixedsys: A phandle to the APMIXEDSYS controller.
+ - #thermal-sensor-cells : Should be 0. See Documentation/devicetree/bindings/thermal/thermal-sensor.yaml for a description.
+ 
+ Optional properties:
++- resets: Reference to the reset controller controlling the thermal controller.
+ - nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
+                unspecified default values shall be used.
+ - nvmem-cell-names: Should be "calibration-data"
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
