@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 119A9C388F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4480AC388F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:48:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 87D7622267
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:48:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BFB6822267
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:48:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l665c+hZ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="h/su9oVk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87D7622267
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JlPWdku1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dm78hj3o"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFB6822267
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,29 +26,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o/0vWRD9LnzTCloPUcdetKdxsWRRGf+FljNFRCsOGWI=; b=l665c+hZ7VmMtFTZ6idDfYnHo
-	tegfaBxlzAv8cEszo54YC6d5xJ7LnzxRcYeKApW5FXLSREf6o4OFBmqXx8q5I8EystnypzOXFDJYx
-	RU+Now5135TIuBSmhSv0n1KThqn4jp0sKVCL6y8uAa+Qm2MxfnRYsoaEtgZE5mvRhSlqC091sY7H2
-	Cbsepv1b4uCHkAysLZFy1fOZkcSZfYCA1s/8bSTKrhf0nx/0+bqDct1K3gwp/QzeACcSWNrj63zQG
-	Tw0sYobhoyjbHXVxcrBzheO2rKeSecQYOaPP/eCLRHYERK2EJaZHULZeN8g3ArO/aaRfZpHEiQcdP
-	7w1YbG9Bw==;
+	 bh=/nOA05fvP5yIS79gT8FReqfb0D022VheICqDWD4g6rU=; b=JlPWdku1Kt2iDynj+cFhJX2xk
+	XtQoL0qqSYyFWreICv0KYYcapm07h6X1u0G6/ja6v8C5baU/hL0KEsRwC57ohnG2Dc7FlTBvj6XuT
+	gRPYmRENEuzyBKDXkljw47X9shCdP3AMj09GvAOR5XaOjZE6e3sgOkSQk6IGNIh3vgqUY4Es9rxOA
+	uRPkfyfEJglaxZZIzKGLNDvg50w+RqlOiWe6M1Yk7dgJrQ5z54l2BYWEpCnwvd5CjU81M8J4WBHhq
+	s9z/4cWqG3zrPlERPczDEQpUloVLz2gX3avb1BUiAM1/ZHV3CfS9J6SQZmctS/ug7gaj82tKSuRno
+	zHQD8UVMw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVa0d-0007BY-W3; Thu, 22 Oct 2020 12:48:00 +0000
+	id 1kVa0t-0007JK-Ds; Thu, 22 Oct 2020 12:48:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVa0Y-00079L-7R; Thu, 22 Oct 2020 12:47:55 +0000
-X-UUID: 097cf7bfb1a843c0931852d2f1d32374-20201022
+ id 1kVa0Y-00079X-Lg; Thu, 22 Oct 2020 12:47:57 +0000
+X-UUID: 8c3ef78d67a3429685f9bfdb61134226-20201022
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NQbUYxMC/vO5/Luf2lSxEM/kUwLNngIueAFD5TmO+Kc=; 
- b=h/su9oVkAcTy+byFd/oQUmDCWHQwn9blvaagcrE3/W3wfzfxf/nPXxD/DHAJmuBqM028sTiq9in60VgfWFmOeSOZzuedOaiBqU1wY/Xhih4wjEXcbem00JSGxp8pvAoW35FC3MS1cRvlLnWP1JG8VhGE/cc851cd1OBsa0piKKQ=;
-X-UUID: 097cf7bfb1a843c0931852d2f1d32374-20201022
+ bh=h8zPlVqxZhGhHgUXWdmgYzf2iYnusNn7hJWQ5EpylJk=; 
+ b=dm78hj3o5mNKBxy3dljRp/BZkVzQGpHJ6zy/TbH0fCGmAwur2eb3/wiwyMtUHrg5InHJzzyA7/zhPN7OREbcJJdSdIiEMY/HEwU8IkjYdarimJVyhxYdlWEQC7a3wNokDx3GYffmsGFbKYzwlDJIuQpYrqBWJqdJXmnvI2SZfJc=;
+X-UUID: 8c3ef78d67a3429685f9bfdb61134226-20201022
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1034449775; Thu, 22 Oct 2020 04:47:50 -0800
+ with ESMTP id 2112759072; Thu, 22 Oct 2020 04:47:50 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 22 Oct 2020 05:37:48 -0700
@@ -61,18 +61,18 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH v4 04/34] dt-bindings: ARM: Mediatek: Add new document
- bindings of msdc controller
-Date: Thu, 22 Oct 2020 20:36:57 +0800
-Message-ID: <1603370247-30437-5-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v4 02/34] dt-bindings: ARM: Mediatek: Add new document
+ bindings of imp i2c wrapper controller
+Date: Thu, 22 Oct 2020 20:36:55 +0800
+Message-ID: <1603370247-30437-3-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1603370247-30437-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1603370247-30437-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201022_084754_451506_332C7DD6 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20201022_084754_860993_3988EA19 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,41 +92,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the new binding documentation of msdc controller
+This patch adds the new binding documentation of imp i2c wrapper controller
 for Mediatek MT8192.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- .../bindings/arm/mediatek/mediatek,msdc.yaml       | 46 ++++++++++++++++++++++
- 1 file changed, 46 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+ .../arm/mediatek/mediatek,imp_iic_wrap.yaml        | 78 ++++++++++++++++++++++
+ 1 file changed, 78 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
 new file mode 100644
-index 0000000..5aa9536
+index 0000000..5d0cf37
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
-@@ -0,0 +1,46 @@
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+@@ -0,0 +1,78 @@
 +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,msdc.yaml#
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,imp_iic_wrap.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek MSDC Controller
++title: MediaTek IMP I2C Wrapper Controller
 +
 +maintainers:
 +  - Weiyi Lu <weiyi.lu@mediatek.com>
 +
 +description:
-+  The Mediatek msdc controller provides functional configurations and clocks to the system.
++  The Mediatek imp i2c wrapper controller provides functional configurations and clocks to the system.
 +
 +properties:
 +  compatible:
 +    items:
 +      - enum:
-+          - mediatek,mt8192-msdc
-+          - mediatek,mt8192-msdc_top
++          - mediatek,mt8192-imp_iic_wrap_c
++          - mediatek,mt8192-imp_iic_wrap_e
++          - mediatek,mt8192-imp_iic_wrap_s
++          - mediatek,mt8192-imp_iic_wrap_ws
++          - mediatek,mt8192-imp_iic_wrap_w
++          - mediatek,mt8192-imp_iic_wrap_n
 +      - const: syscon
 +
 +  reg:
@@ -141,16 +145,44 @@ index 0000000..5aa9536
 +
 +examples:
 +  - |
-+    msdc: syscon@11f60000 {
-+        compatible = "mediatek,mt8192-msdc", "syscon";
-+        reg = <0 0x11f60000 0 0x1000>;
++    imp_iic_wrap_c: syscon@11007000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_c", "syscon";
++        reg = <0 0x11007000 0 0x1000>;
 +        #clock-cells = <1>;
 +    };
 +
 +  - |
-+    msdc_top: syscon@11f10000 {
-+        compatible = "mediatek,mt8192-msdc_top", "syscon";
-+        reg = <0 0x11f10000 0 0x1000>;
++    imp_iic_wrap_e: syscon@11cb1000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_e", "syscon";
++        reg = <0 0x11cb1000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_s: syscon@11d03000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_s", "syscon";
++        reg = <0 0x11d03000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_ws: syscon@11d23000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_ws", "syscon";
++        reg = <0 0x11d23000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_w: syscon@11e01000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_w", "syscon";
++        reg = <0 0x11e01000 0 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_n: syscon@11f02000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_n", "syscon";
++        reg = <0 0x11f02000 0 0x1000>;
 +        #clock-cells = <1>;
 +    };
 -- 
