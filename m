@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 197E6C388F9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:38:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16E2FC388F2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:38:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7285722267
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:38:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8EAA8223BF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:38:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TGggw8vH";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EptQDCeT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7285722267
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pAn8N+QJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NzO1Sd1U"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EAA8223BF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pAGs/9yPS/YylwFiZ4gWyQQiFCxp+tAZt0YFf91vKV0=; b=TGggw8vH7Sgo5rE4lolDzbAwx
-	23tVas+h8tpqdVNZdxJ1thfjHwvGYJ+SNAZvMgDHbygrbycDsxqEhJcKCRWD7O17DfKEkYCXVsKcg
-	LfUDyhzZ/yX18QhdAVfJXt+JRqe2EJfwqYk2EL1+GbKonGAUMWzW+sL5vY5XYozTZx1YIhJzBZYRR
-	9fIW/zGEB3SJBR4xeFBtzRgoZNOwllRAoycI3hJZkN0hUEoseWIhJBFJUD6bEkk165n8wWX9Vsq21
-	8R43Eis16lCdcUw8DqZiZEb8Ssn/7H5MWVnR9Z8d1aiyXJ/y9tGgnuZuKkfF/K44x9k6G4lLba4oZ
-	NIZtSuK7Q==;
+	 bh=cMSQStaE6ZF1bTLSZNHVEw6WED+8cmXSymoXPv7hTE8=; b=pAn8N+QJiVBfb04T0d8gJ3JPM
+	TxOXRLeGF40GQyJuEd8WkC80/omJmAMnM2j1mWxIr1562i7vugmXAiyDYg01K9TIgvumfSqyzbrB5
+	T5sdhOVJdl8tC4va2ZPxM/3rr0L2QT2sGwqXB4RhH/iSBx5MPkS4DQ6CZJKbB2MkWvUUbIkkx6n1u
+	xUht+yWD1OxohJdLruAMe4t5IAJfYro3i0vcF+gqUOtRW0vmRJ/q2p9f0WsQiPsJRQdKoCC5DAoHZ
+	voZ/V7oIdFH5tF/6mfyeizbJ8vGt6fBK4IrXNTPGM/H1BnCvoG+4+cyYUEp14QBxzIymi4trvUeLi
+	Cho7/f/SQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVZrB-00052V-Ay; Thu, 22 Oct 2020 12:38:13 +0000
+	id 1kVZrH-00054m-RB; Thu, 22 Oct 2020 12:38:19 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVZqy-0004xT-1p; Thu, 22 Oct 2020 12:38:01 +0000
-X-UUID: 5e8c1e46e7ce4fbd82fc96fc05304597-20201022
+ id 1kVZqy-0004xS-P9; Thu, 22 Oct 2020 12:38:02 +0000
+X-UUID: 8f6705409f224091a2954ae91516c4e7-20201022
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=vAXufp8oPq4yL34QGUZja+5laQrxJs+P3x47cbv2unU=; 
- b=EptQDCeT3huBdgfT3MK+vm8UR1J8i5jVED7FPSxDmhEeDQ1GdcQiy2iUsbyvLUFv/7Ivt/iTZE3laGpWIpW29jXwyS/Ph7uJOl6zu83jx+zV69R9sD9Oulwjm5SEMvC3DV9pdGVL04z6KlkAV37IRgavO983S9qQqTzTTb48JzI=;
-X-UUID: 5e8c1e46e7ce4fbd82fc96fc05304597-20201022
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=t6pUhuIbwyo1xzafQ+lL/R3rlSTIMMuqKMCM7TBHf84=; 
+ b=NzO1Sd1UYg+wXqi16v0tgxxlj3cq6LJJfi0/XUknLoYhVynM1I21a29cP1W/Eyp/FuQMmjXBYrq6yZ3hctd0nxxE7Hps9Ziurci/ORMWJChhDQJUNk7r8wDZkA97m5aPE0o5WcVTgkufLpLrwrOcWhsDUZzjbVc5IDnU/2AifSM=;
+X-UUID: 8f6705409f224091a2954ae91516c4e7-20201022
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 913148006; Thu, 22 Oct 2020 04:37:55 -0800
+ with ESMTP id 2022310340; Thu, 22 Oct 2020 04:37:48 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Oct 2020 05:37:53 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Oct 2020 05:37:46 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Oct 2020 20:37:51 +0800
+ 15.0.1497.2; Thu, 22 Oct 2020 20:37:45 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 22 Oct 2020 20:37:51 +0800
+ Frontend Transport; Thu, 22 Oct 2020 20:37:45 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH v4 06/34] dt-bindings: ARM: Mediatek: Add new document
- bindings of vdecsys soc controller
-Date: Thu, 22 Oct 2020 20:36:59 +0800
-Message-ID: <1603370247-30437-7-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v4 03/34] dt-bindings: ARM: Mediatek: Add new document
+ bindings of mdpsys controller
+Date: Thu, 22 Oct 2020 20:36:56 +0800
+Message-ID: <1603370247-30437-4-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1603370247-30437-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1603370247-30437-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201022_083800_240445_45A14787 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20201022_083800_963748_93BD58AD 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,40 +92,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the new binding documentation of vdecsys soc controller
+This patch adds the new binding documentation of mdpsys controller
 for Mediatek MT8192.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- .../arm/mediatek/mediatek,vdecsys-soc.yaml         | 38 ++++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,mdpsys.yaml     | 38 ++++++++++++++++++++++
  1 file changed, 38 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
 new file mode 100644
-index 0000000..082f22e
+index 0000000..831acdc
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys-soc.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
 @@ -0,0 +1,38 @@
 +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,vdecsys-soc.yaml#
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mdpsys.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek VDECSYS SOC Controller
++title: MediaTek MDPSYS Controller
 +
 +maintainers:
 +  - Weiyi Lu <weiyi.lu@mediatek.com>
 +
 +description:
-+  The Mediatek vdecsys soc controller provides functional configurations and clocks to the system.
++  The Mediatek mdpsys controller provides functional configurations and clocks to the system.
 +
 +properties:
 +  compatible:
 +    items:
 +      - enum:
-+          - mediatek,mt8192-vdecsys_soc
++          - mediatek,mt8192-mdpsys
 +      - const: syscon
 +
 +  reg:
@@ -140,9 +140,9 @@ index 0000000..082f22e
 +
 +examples:
 +  - |
-+    vdecsys_soc: syscon@1600f000 {
-+        compatible = "mediatek,mt8192-vdecsys_soc", "syscon";
-+        reg = <0 0x1600f000 0 0x1000>;
++    mdpsys: syscon@1f000000 {
++        compatible = "mediatek,mt8192-mdpsys", "syscon";
++        reg = <0 0x1f000000 0 0x1000>;
 +        #clock-cells = <1>;
 +    };
 -- 
