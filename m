@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93221C388F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A43EC388F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:51:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D03E2223FB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:51:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DD91922267
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 12:51:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PrLEQBLk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XkLPqel5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D03E2223FB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QDyNnr7g";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ohlgz9mz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD91922267
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6Df0H7PG/ypc4yxovr/piUwQ/W8K7ETDyIWCZb8WTmg=; b=PrLEQBLkBhKuE8zkYRjtriMEi
-	UcmJm+w5l/IykHoCSpIS8cxDICzvxJ9Pzz/SZAB5sfxabMuSuQ8uAln6Aq2lRz1o0Lc5yBkLpMdDc
-	ycbYJXZ6YNl6iRYWc14vYPgHZeV6TAoC9C+kyxp2QOROpMBsBPqKu6R48cGaJxbN2AdnuHstaM9XC
-	CEgDga5fnPHjyhTPFQEkKSgOGgIvxjWc78Yrd8Cg0FgUI0zyTdkVNLvRv6SYDPhrvKMFbYImYmcCc
-	ywdBmg7/mvEepX77Squ9PuMl/L1xKWd9K/8jeF7W1zAVsFTiKifGq3+2Dcb6oxt7kWc2L15LmLArF
-	TubWZMsXQ==;
+	 bh=BCQMs8ii2MTWj0EgNeZR6n1/vGi9uyXKSQCtsYhCsMc=; b=QDyNnr7ghlH/AX6JDCHrtLOJC
+	o25BycH7I/J/h6AlSZ26TCCIBlh9hQ/BIPTbl6vFzO4Pmk96z9EvDC2DX9W9kC6Bg7se8hPYYXd4s
+	CI4DQZC4nGajf38hCy+hhqkdyK8q5uc+pbkPgJ3B6hw2OYQt/zaFQ1+zJzw4Z7I58JoKN3EZOAJSm
+	wUc3h3RCnzXR9HiGJcP97Gl1UGDXUgINMvSKlnUiYqcTt3P94yzL6xfj+bfW8Yt37Bbb+hU0SVKRD
+	uv6zK3gojU9YmShaFSSYXWBQJEvUGd2lhkdR4iujzmfaP0YBsF/xDclR3mDH8E4V7ONOfkXueZe6i
+	AmrIxwtdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVa3Q-0008Li-6O; Thu, 22 Oct 2020 12:50:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kVa3X-0008Ov-Ec; Thu, 22 Oct 2020 12:50:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVa0h-0007BO-KY; Thu, 22 Oct 2020 12:48:07 +0000
-X-UUID: d4b78a5c01984f95b56ac61f5c0a12ae-20201022
+ id 1kVa0h-0007Ce-3h; Thu, 22 Oct 2020 12:48:07 +0000
+X-UUID: b614b950fff4488ba0661d0854d849d5-20201022
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=tnNBLT8QS4sxWquOIKDNtO9WwSSmSHSH00fYNlT7kkA=; 
- b=XkLPqel506M67stAiB0gRYbZ8ULPAy9HlDal0ZfjN8H2sslwkbeMCZBuAte0kq2c15xYxF0ZpjVPfFIhK+DFg5qVkEgZXkBD+CskddLN+jvUaZTQzSI58Uc8s2My417vVGwHI2tSFPbBZpVA2OeUZSg0qiCi1T6Mg9zNgGvA8EU=;
-X-UUID: d4b78a5c01984f95b56ac61f5c0a12ae-20201022
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=Rd/rgu71cjk7BJg3fJ7fmfL9SL7aLAs1L3NOIrXhYCY=; 
+ b=ohlgz9mzruJr4w4xNIoIGEWOnp3icxIpp18/FG/zfPlM8oSnuDQg3kjAK8ZpYFM0ejE6x5kDeXuQGCPgFKK0oqA/vgRNy7rT+6CltN4KF0P/P2eFFAwbpjMlAb4xzGOABdiTc+a6nYJegmw0Sutc/6O1V3yGJDJk7Jaw7cTk4z0=;
+X-UUID: b614b950fff4488ba0661d0854d849d5-20201022
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2024121380; Thu, 22 Oct 2020 04:47:57 -0800
+ with ESMTP id 2082770092; Thu, 22 Oct 2020 04:47:56 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Oct 2020 05:47:40 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Oct 2020 05:37:58 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Oct 2020 20:47:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Thu, 22 Oct 2020 20:37:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 22 Oct 2020 20:47:39 +0800
+ Frontend Transport; Thu, 22 Oct 2020 20:37:55 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
- Herring" <robh@kernel.org>
-Subject: [PATCH v2 1/4] dt-bindings: power: Add MT8192 power domains
-Date: Thu, 22 Oct 2020 20:47:34 +0800
-Message-ID: <1603370857-30646-2-git-send-email-weiyi.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+Subject: [PATCH v4 25/34] clk: mediatek: Add MT8192 ipesys clock support
+Date: Thu, 22 Oct 2020 20:37:18 +0800
+Message-ID: <1603370247-30437-26-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1603370857-30646-1-git-send-email-weiyi.lu@mediatek.com>
-References: <1603370857-30646-1-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1603370247-30437-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1603370247-30437-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201022_084803_852655_2462A27E 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20201022_084803_379233_DA7DFF47 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,73 +83,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>,
- srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power domains dt-bindings for MT8192.
+Add MT8192 ipesys clock provider
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- .../bindings/power/mediatek,power-controller.yaml  |  1 +
- include/dt-bindings/power/mt8192-power.h           | 32 ++++++++++++++++++++++
- 2 files changed, 33 insertions(+)
- create mode 100644 include/dt-bindings/power/mt8192-power.h
+ drivers/clk/mediatek/Kconfig          |  6 ++++
+ drivers/clk/mediatek/Makefile         |  1 +
+ drivers/clk/mediatek/clk-mt8192-ipe.c | 64 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 71 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-ipe.c
 
-diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-index 67a15f2..1ebed79 100644
---- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-@@ -25,6 +25,7 @@ properties:
-     enum:
-       - mediatek,mt8173-power-controller
-       - mediatek,mt8183-power-controller
-+      - mediatek,mt8192-power-controller
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 037f74f2..df75a09 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -527,6 +527,12 @@ config COMMON_CLK_MT8192_IMP_IIC_WRAP_WS
+ 	help
+ 	  This driver supports MediaTek MT8192 imp_iic_wrap_ws clocks.
  
-   '#power-domain-cells':
-     const: 1
-diff --git a/include/dt-bindings/power/mt8192-power.h b/include/dt-bindings/power/mt8192-power.h
++config COMMON_CLK_MT8192_IPESYS
++	bool "Clock driver for MediaTek MT8192 ipesys"
++	depends on COMMON_CLK_MT8192
++	help
++	  This driver supports MediaTek MT8192 ipesys clocks.
++
+ config COMMON_CLK_MT8516
+ 	bool "Clock driver for MediaTek MT8516"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 4faa9ad..5fe21f9 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -75,5 +75,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_IMP_IIC_WRAP_N) += clk-mt8192-imp_iic_wrap_n.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_IMP_IIC_WRAP_S) += clk-mt8192-imp_iic_wrap_s.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_IMP_IIC_WRAP_W) += clk-mt8192-imp_iic_wrap_w.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_IMP_IIC_WRAP_WS) += clk-mt8192-imp_iic_wrap_ws.o
++obj-$(CONFIG_COMMON_CLK_MT8192_IPESYS) += clk-mt8192-ipe.o
+ obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+ obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+diff --git a/drivers/clk/mediatek/clk-mt8192-ipe.c b/drivers/clk/mediatek/clk-mt8192-ipe.c
 new file mode 100644
-index 0000000..4eaa53d
+index 0000000..304dca4
 --- /dev/null
-+++ b/include/dt-bindings/power/mt8192-power.h
-@@ -0,0 +1,32 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * Copyright (c) 2020 MediaTek Inc.
-+ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
-+ */
++++ b/drivers/clk/mediatek/clk-mt8192-ipe.c
+@@ -0,0 +1,64 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2020 MediaTek Inc.
++// Author: Weiyi Lu <weiyi.lu@mediatek.com>
 +
-+#ifndef _DT_BINDINGS_POWER_MT8192_POWER_H
-+#define _DT_BINDINGS_POWER_MT8192_POWER_H
++#include <linux/clk-provider.h>
++#include <linux/platform_device.h>
 +
-+#define MT8192_POWER_DOMAIN_AUDIO	0
-+#define MT8192_POWER_DOMAIN_CONN	1
-+#define MT8192_POWER_DOMAIN_MFG0	2
-+#define MT8192_POWER_DOMAIN_MFG1	3
-+#define MT8192_POWER_DOMAIN_MFG2	4
-+#define MT8192_POWER_DOMAIN_MFG3	5
-+#define MT8192_POWER_DOMAIN_MFG4	6
-+#define MT8192_POWER_DOMAIN_MFG5	7
-+#define MT8192_POWER_DOMAIN_MFG6	8
-+#define MT8192_POWER_DOMAIN_DISP	9
-+#define MT8192_POWER_DOMAIN_IPE		10
-+#define MT8192_POWER_DOMAIN_ISP		11
-+#define MT8192_POWER_DOMAIN_ISP2	12
-+#define MT8192_POWER_DOMAIN_MDP		13
-+#define MT8192_POWER_DOMAIN_VENC	14
-+#define MT8192_POWER_DOMAIN_VDEC	15
-+#define MT8192_POWER_DOMAIN_VDEC2	16
-+#define MT8192_POWER_DOMAIN_CAM		17
-+#define MT8192_POWER_DOMAIN_CAM_RAWA	18
-+#define MT8192_POWER_DOMAIN_CAM_RAWB	19
-+#define MT8192_POWER_DOMAIN_CAM_RAWC	20
++#include "clk-mtk.h"
++#include "clk-gate.h"
 +
-+#endif /* _DT_BINDINGS_POWER_MT8192_POWER_H */
++#include <dt-bindings/clock/mt8192-clk.h>
++
++static const struct mtk_gate_regs ipe_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x0,
++};
++
++#define GATE_IPE(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &ipe_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate ipe_clks[] = {
++	GATE_IPE(CLK_IPE_LARB19, "ipe_larb19", "ipe_sel", 0),
++	GATE_IPE(CLK_IPE_LARB20, "ipe_larb20", "ipe_sel", 1),
++	GATE_IPE(CLK_IPE_SMI_SUBCOM, "ipe_smi_subcom", "ipe_sel", 2),
++	GATE_IPE(CLK_IPE_FD, "ipe_fd", "ipe_sel", 3),
++	GATE_IPE(CLK_IPE_FE, "ipe_fe", "ipe_sel", 4),
++	GATE_IPE(CLK_IPE_RSC, "ipe_rsc", "ipe_sel", 5),
++	GATE_IPE(CLK_IPE_DPE, "ipe_dpe", "ipe_sel", 6),
++	GATE_IPE(CLK_IPE_GALS, "ipe_gals", "ipe_sel", 8),
++};
++
++static int clk_mt8192_ipe_probe(struct platform_device *pdev)
++{
++	struct clk_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(CLK_IPE_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	r = mtk_clk_register_gates(node, ipe_clks, ARRAY_SIZE(ipe_clks), clk_data);
++	if (r)
++		return r;
++
++	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++}
++
++static const struct of_device_id of_match_clk_mt8192_ipe[] = {
++	{ .compatible = "mediatek,mt8192-ipesys", },
++	{}
++};
++
++static struct platform_driver clk_mt8192_ipe_drv = {
++	.probe = clk_mt8192_ipe_probe,
++	.driver = {
++		.name = "clk-mt8192-ipe",
++		.of_match_table = of_match_clk_mt8192_ipe,
++	},
++};
++
++builtin_platform_driver(clk_mt8192_ipe_drv);
 -- 
 1.8.1.1.dirty
 _______________________________________________
