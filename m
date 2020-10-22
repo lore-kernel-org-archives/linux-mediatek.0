@@ -2,103 +2,78 @@ Return-Path: <SRS0=jz23=D5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9EB34C4363A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 10:13:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01890C4363A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 10:32:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2475322248
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 10:13:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 51C8822267
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 10:32:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N2ozFWV0";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="FHx9aWm9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2475322248
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xUi/HaD3";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ha60ki7w"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51C8822267
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Zk9EW22e1PecJbSNwuMTqcNm6tBEGJLM7Mx8osg+OwA=; b=N2ozFWV0YqgonmQcaj+uM2dNl
-	ZqZr7yfzVPgFthI6AbxNHRD13TU60lvM5lr5L7HW/4ujH6tTv5I+NlmBnmP+N0o+DsJwq/rSiHCjK
-	rpf3bFldQCtLk7/3XyE8ZlNMcF+INzNd3oRsjLu4t4LX3ErWeLOVfKjHvERdy0mMq4yFN6q/iDskz
-	ArQZo6OF4DVTUE/sa5StV1FXJqy0V9Q/luVxmk3pPAlDBLsh77ILDf2XTXUDL2syl4eTs1FOLNLDN
-	cLpXyIMLGKx/ZeHLCK646KApETAr37f8fK2Ez+wyrk8S0QzoZbyf8lqyYT2YsWTGKDP6q3ekPSVmj
-	rKR71UoCA==;
+	 bh=BrplY/8I2mlCL6cnQmZXcor2MRXLCrlckaNu7b40328=; b=xUi/HaD3zznAJemX8oDqOf5uf
+	SClBZaZi7Geyjz1635u294cB2lUF7a5U/LbpxxAn+BE+eX3rDjxT7dG4lnObi1oGU2duGm+qL0xxS
+	CmHIzb5Rr3AfLxqprXTsVUueF2TbSWrzyBCzEC5vza7hB9gv0PXmfxUT3yHUh5nt4wXM4lysHeUtX
+	nyf++OIfE5/YZ/XUilB9CqCFd3VUf8aY1TMSSupUWBzkjRnxNF0xiZPfT8cQC4sbFfXW/OxXMSpVg
+	k9BYLOq9w0NPcfW6Jvi22Ym9mUFYd6M/0qkbtFGynON8nZS5jctXr0XPcpGlZPdinNWfqaN1SH4sa
+	nB1ANRV8g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVXaf-0002DR-Fh; Thu, 22 Oct 2020 10:13:01 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1kVXtJ-0005av-2L; Thu, 22 Oct 2020 10:32:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVXaa-0002B8-NQ
- for linux-mediatek@lists.infradead.org; Thu, 22 Oct 2020 10:12:58 +0000
-Received: by mail-wr1-x441.google.com with SMTP id n18so1522037wrs.5
- for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2020 03:12:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=AVYqBwFNeS8pknHZcG1tJcoDoQAS4sJ1OEwl1v423e8=;
- b=FHx9aWm9FktJEtNY/lWrc3MGLVVQTVRPkaKpE/BrIvI65HE1/l83fZFIYH41tRBW5/
- HKpKCopsEU3q8T3e3RTCblClXa64BkmrSnDKUmEoPNCVOcIgrYGplAj9LWAKZ+88ul3F
- lShjw/BQ54t6I7EfHNGaZ+p78XcoqGFpJD0s1hDHX1X/G8PgJdwsSPIC6OZyB6i5yCqL
- gdjFYC4gh/xNnO8/pYQEZW78XHILWr7IPoR8M97YTNxfst2lz5YZ+orcSJCZTZA7XUgH
- eyA+LqsmkQUZMZWg3e26x9FmT7iYAi3exYSCwVAw2BYim7sgprHx7allxCYqNPMTgCdF
- vp5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=AVYqBwFNeS8pknHZcG1tJcoDoQAS4sJ1OEwl1v423e8=;
- b=fhGuP7tAnt2B2KFCNt1onKHQAxw9rNEdhOT6kKIrRANwK+8dLTZCdGGjnI7DDAzt18
- h1ULJLlCfA4sQeMgU0UZDOVl8ROf7g5HomSJedJqDscQ++P8oJ/JCGAA7pGAp2wVybo8
- uQss4McxYN/7tZgts+gv02k0g8RdaAWh1LO13PHcryRi/w+oUHKMwW6vXgkliqI8dwc/
- 8+qE9ugktAVlDO2M33QUWu9lnfbwFUThSeS9/8fnBMPmuAtxcPlOWwAvbAtCvYkELXM9
- qYRhz+TyURo3UwutdxsARkIfmNZJoJYdfJCiaU5Hlgtl2OG4CcWT9QcrmILRgLqXW2A/
- lQsw==
-X-Gm-Message-State: AOAM531tcgPDq9NYsnCk2sl/WQziI0mAx5CdAYC+iIz0T3Mg+JK7GobV
- f9IGzF3RJ1LVrjXWe6z6vt5t1Q==
-X-Google-Smtp-Source: ABdhPJynoIRUVGmbBNtiBqCFMZFtDduY5X7CJApEBX+q08WHFZubdBFJCCYOFMWx5UVgG0TeQNEdlA==
-X-Received: by 2002:adf:ef02:: with SMTP id e2mr1777892wro.381.1603361574107; 
- Thu, 22 Oct 2020 03:12:54 -0700 (PDT)
-Received: from [192.168.86.34]
- (cpc86377-aztw32-2-0-cust226.18-1.cable.virginm.net. [92.233.226.227])
- by smtp.googlemail.com with ESMTPSA id j13sm2935385wru.86.2020.10.22.03.12.52
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 22 Oct 2020 03:12:53 -0700 (PDT)
-Subject: Re: [PATCH v11 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-To: Tzung-Bi Shih <tzungbi@google.com>, Mark Brown <broonie@kernel.org>
-References: <20200914080619.4178587-1-cychiang@chromium.org>
- <20200914080619.4178587-3-cychiang@chromium.org>
- <7bdc0d63-27b1-f99e-c5f8-65f880733d16@linaro.org>
- <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
- <20201015161251.GF4390@sirena.org.uk>
- <CAFv8NwL1xX=yPGFqQL_mOzAnPTfH0Z0J6ibG1+D32W46Nx0KYQ@mail.gmail.com>
- <20201020143711.GC9448@sirena.org.uk>
- <63f1a29c-0758-97b8-ce80-fe43d91630fa@linaro.org>
- <CAFv8NwJ-+f146Ss9Mk=nEXjm1B--ZwhAgnfx-cTi7DGEKqC1-Q@mail.gmail.com>
- <e876421c-dfeb-e853-1b65-53a786e9bcf9@linaro.org>
- <20201021123913.GD4497@sirena.org.uk>
- <CA+Px+wV-uoODRQTZqv7RuyOUoGBoh5GnT2h4iW9mJGRL=UFfgQ@mail.gmail.com>
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Message-ID: <14e7db29-4825-6e9d-22a0-5121bb7006e2@linaro.org>
-Date: Thu, 22 Oct 2020 11:12:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1kVXtE-0005Zi-GK; Thu, 22 Oct 2020 10:32:13 +0000
+X-UUID: 458c8258d0d849098218c4437e04395a-20201022
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=mKI//o1Lk40Yi815nVYXanqjQKt/9UrGV5fgSoCAeH4=; 
+ b=ha60ki7wcIGTs1bJnKkZE/nT8iqEUCUQvZPSayyFFNSw+Sit8wZIHvGXQ6MKVUHaO81aVxrQAHNWcFk5S0uCd9z29rRxt6k9nrAqeej6t12hv0+gge05ANLiQPvB4Y1X5OcE+4YHd/UEmcbFf+6YwWEF7BAwmDvypg6GEGBkDzA=;
+X-UUID: 458c8258d0d849098218c4437e04395a-20201022
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 118090480; Thu, 22 Oct 2020 02:32:07 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Oct 2020 03:32:05 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs07n1.mediatek.inc
+ (172.21.101.16) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 22 Oct 2020 18:32:04 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 22 Oct 2020 18:32:03 +0800
+Message-ID: <1603362723.8921.37.camel@mhfsdcap03>
+Subject: Re: [PATCH v2 5/5] dt-bindings: mediatek: mt8192: add
+ mt8192-mt6358-rt1015-rt5682 document
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Thu, 22 Oct 2020 18:32:03 +0800
+In-Reply-To: <20201021145605.GA2775711@bogus>
+References: <1603270435-3548-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1603270435-3548-6-git-send-email-jiaxin.yu@mediatek.com>
+ <20201021145605.GA2775711@bogus>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <CA+Px+wV-uoODRQTZqv7RuyOUoGBoh5GnT2h4iW9mJGRL=UFfgQ@mail.gmail.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201022_061256_867735_C6F24E76 
-X-CRM114-Status: GOOD (  24.07  )
+X-CRM114-CacheID: sfid-20201022_063212_760512_08687FB1 
+X-CRM114-Status: GOOD (  22.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,101 +85,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Takashi Iwai <tiwai@suse.com>, Rohit kumar <rohitkr@codeaurora.org>,
- Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
- Cheng-yi Chiang <cychiang@chromium.org>, Patrick Lai <plai@codeaurora.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
- Jaroslav Kysela <perex@perex.cz>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Srinivasa Rao <srivasam@codeaurora.org>, Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ kuninori.morimoto.gx@renesas.com, shane.chien@mediatek.com, tiwai@suse.com,
+ tzungbi@google.com, broonie@kernel.org, linux-mediatek@lists.infradead.org,
+ p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 2020-10-21 at 09:56 -0500, Rob Herring wrote:
+> On Wed, Oct 21, 2020 at 04:53:55PM +0800, Jiaxin Yu wrote:
+> > This patch adds document for the machine board with mt6358, rt1015
+> > and rt5682.
+> > 
+> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > ---
+> >  .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 42 +++++++++++++++++++
+> >  1 file changed, 42 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> > new file mode 100644
+> > index 0000000000000..4c39e88906fc1
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+> > @@ -0,0 +1,42 @@
+> > +# SPDX-License-Identifier: (GPL-2.0+ OR BSD-2-Clause)
+> 
+> GPL-2.0-only
+> 
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/sound/mt8192-mt6359-rt1015-rt5682.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Mediatek MT8192 with MT6359, RT1015 and RT5682 ASoC sound card driver
+> > +
+> > +maintainers:
+> > +   - Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > +   - Shane Chien <shane.chien@mediatek.com>
+> > +
+> > +description:
+> > +  This binding describes the MT8192 sound card.
+> > +
+> > +properties:
+> > +  compatible:
+> > +      const: mediatek,mt8192_mt6359_rt1015_rt5682
+> 
+> I still don't think this is the right way to do this.
+> 
+Dear Rob,
+This nomencalture is extended to the MTK mt8183/mt8173.
+And we think it's better to maintain multiple boards, but
+the disadvantage is need to write one more machine drivers.
 
+> > +
+> > +  mediatek,platform:
+> > +    $ref: "/schemas/types.yaml#/definitions/phandle"
+> > +    description: The phandle of MT8192 ASoC platform.
+> 
+> I still don't understand what this is.
+> 
 
-On 22/10/2020 04:29, Tzung-Bi Shih wrote:
-> Hi, sorry for jumping into your discussion but I am trying to
-> summarize them to make sure we are on the same page.  Pardon me to
-> manually copy-and-paste partial sentences to quote.
-> 
-> ACK:
-> - Don't expose DAI connections in compatible strings.
-> - Use "model" DT property to make the card more UCM2-friendly.
-> - Expose new DT properties to distinguish different DMIC models.
-> 
-> NACK:
-> - All the board variations using exactly the same compatible string.
-> => This is less realistic.  Although the CODECS information can be
-> retrieved from DT, it is inevitable to have some custom code for each
-> CODEC.
-> 
-> Per Mark's words:
->> a different CODEC is something that often justifies a separate compatible
-> I think we should use different compatible strings for new CODECS
-> combinations.  And we should try to reuse the machine driver if they
-> share the most code.  In the worst case, introduce a new machine
-> driver for the new CODECS combinations.
-> 
-> - Srinivas's suggestion to set driver_name.
-> e.g. card->driver_name = "SM8250";
-> => This sounds like a new DT property should be parsed in
-> sound/soc/qcom/common.c.  For example: "qcom,family"?  But as we do
-> less care about UCM2 for now, I would prefer to just leave it as is.
-> 
-No, you can just hardcode this driver_name in your machine driver rather 
-than getting it from DT, this is how everyone does!.
-So need of adding anything to common.c
+This property will assign to 'snd_soc_dai_link->platforms->of_node'.
+The value of 'mediatek,platform' here is &afe that is mt8192 platform
+driver.
+It will be resolved from a phandle property to a device_node pointer.
 
-The thing that I suggested to add to common.c is setting card->long_name 
-from "model" property.
-
-> 
-> I would expect the following variants in DTS (just for example):
-> 
-> sound {
->    compatible = "qcom,sc7180-trogdor";
-Make sure that vendor name is correct here, am not sure if trogdor is 
-qcom board or Google own board!
-
->    model = "sc7180-rt5682-max98357a-1mic";
-> }
-> 
-> sound {
->    compatible = "qcom,sc7180-trogdor";
->    model = "sc7180-rt5682-max98357a-2mic";
->    dmic-gpio = ...
-> }
-> 
-> sound {
->    compatible = "qcom,sc7180-pompom";
->    model = "sc7180-adau7002-max98357a";
-> }
-> 
-> 
-> Please correct me if there is any misunderstanding.
-
-Looks good to me!
-thanks for doing this!
-
---srini
-> 
+> > +
+> > +additionalProperties: false
+> > +
+> > +required:
+> > +  - compatible
+> > +  - mediatek,platform
+> > +
+> > +examples:
+> > +  - |
+> > +
+> > +    sound: mt8192-sound {
+> > +        compatible = "mediatek,mt8192-mt6359-rt1015-rt5682";
+> > +        mediatek,platform = <&afe>;
+> > +        pinctrl-names = "aud_clk_mosi_off",
+> > +                        "aud_clk_mosi_on";
+> > +        pinctrl-0 = <&aud_clk_mosi_off>;
+> > +        pinctrl-1 = <&aud_clk_mosi_on>;
+> > +    };
+> > +
+> > +...
+> > -- 
+> > 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
