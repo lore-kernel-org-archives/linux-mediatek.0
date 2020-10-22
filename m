@@ -2,65 +2,78 @@ Return-Path: <SRS0=jz23=D5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E43EC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 01:13:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94B48C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 02:29:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D69B622206
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 01:13:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 16B4822249
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2020 02:29:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="esFa+DeA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="pT4iXXRK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D69B622206
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L9fG5S4J";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ux63eHHp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16B4822249
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+8V0l6hxX6pnDYIQHxgAeNVSZK9KWOjxvi1tFT9QcKQ=; b=esFa+DeAXy2paJbwmIxKG9frx
-	Z0oHDcZ6J3Amx/CM6FvrJqcuw9+7GcBOTEyLzj1th6vZTPWpJzpTTx8bGarSVleFuS9nfQfzNV//C
-	ujhbO2jq9YPR2H9QSeONxxMgBXapislcf7SaiUErpaDLgFjzRxi+Hafn5RHuyM1ssUM5r3Pzq4D/Y
-	amBP5XnjlwPGwGyp6FK1Ew0jteV/PKbcGhfNba8Z3iZI+P9TMK/sgvmkMRV6+q1Rzlqs+mRst9UCc
-	eCUIw9cqGim558wqgOX40RAqC5t1m7KAi4ruGBPvspUTfj4Xppv2UzL51vvbUYNd/T0Nxj9BGLi6s
-	U+UUyE7jw==;
+	 bh=e/UNocHpIaFTvY2Zd885g8jEcqOHf5wBIuDYh2wlC04=; b=L9fG5S4JfNDdY06LS+frV3ATZ
+	EDjai+4C30A18AvUuvVGNocz1JPk9TugDK2MsX/Ioa7HPHxCzuI+9MlUH6/vhNV8b9pTlAEQppYWB
+	UPeLxcEbzamfgiF1eWLGuMpWgomZhVoqr/ZUPWEkBgeujumq36EuHn9TF0R99yXPZA+my11bLT4A5
+	c754QWP1AxdaZXpwxx5fBPaBFICkKl/VM0dB4onYIuFHh+UPB3PuZkYzzkkuzuLNS8UxxT7tMbNZp
+	QGzU6++m9SI/3beWYUESZ3nHeuV5JILemqCjx1r5kAtej1R2D1CLey4jZNEF9n10xWV9xZJ/2nUmL
+	8JhLMXMuw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVPAR-0005kU-Cr; Thu, 22 Oct 2020 01:13:23 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kVQLa-0002y5-4a; Thu, 22 Oct 2020 02:28:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVPAN-0005jh-Tv; Thu, 22 Oct 2020 01:13:21 +0000
-Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com
- (c-67-180-217-166.hsd1.ca.comcast.net [67.180.217.166])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0E10222206;
- Thu, 22 Oct 2020 01:13:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603329198;
- bh=hRSK5jgPP6SQkhADwi5D+5wcZXb/oB5ihs9bdluPud8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=pT4iXXRK0wWPsL/2GD4C2/kT6vtSr9y6ITMg9VGLRB6f2KvkFteJWVUrkztiZEjdW
- tIlNOSKvpFhK3PHeJ4se4VRAsauQOgKAoUrxNdRJTQRmpVDC3nJJajv0d/kzGn0wO7
- UA0vktFp65M0llBp2/FhZk1xJwg8LDtprE2FCS5Y=
-Date: Wed, 21 Oct 2020 18:13:16 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Subject: Re: [PATCH] net: ethernet: mtk-star-emac: select REGMAP_MMIO
-Message-ID: <20201021181316.78bc9700@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20201020073515.22769-1-brgl@bgdev.pl>
-References: <20201020073515.22769-1-brgl@bgdev.pl>
+ id 1kVQLV-0002uX-5n
+ for linux-mediatek@lists.infradead.org; Thu, 22 Oct 2020 02:28:55 +0000
+X-UUID: 854b3e08c9794413b376c67c41a597b6-20201021
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=guyuTsoRUuSIeXgClFrwBChoxIhGLul/egI0BsmawRk=; 
+ b=ux63eHHpMmtk5l6aDADjDviBZlrxohd4mcYpYs0NuroW/mMt2BKGinHF7/+QGjhrML4P9zq1nWIJY5u6j34W88GyCGszLB9ByrVm1MXr5YRrSXCH2d9qffWNklb1/FJxPrGmUI6pMRZDI2CqfF7c53qpZnDsDeVzyM+4bZRb8xI=;
+X-UUID: 854b3e08c9794413b376c67c41a597b6-20201021
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 894066515; Wed, 21 Oct 2020 18:28:42 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 21 Oct 2020 19:28:40 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Oct 2020 10:28:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 22 Oct 2020 10:28:38 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: [PATCH v4 02/10] mt76: testmode: add snr attribute in rx statistics
+Date: Thu, 22 Oct 2020 10:28:12 +0800
+Message-ID: <20201022022820.3077-2-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201022022820.3077-1-shayne.chen@mediatek.com>
+References: <20201022022820.3077-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: A48846BED3A15C7579A47C7470F215387AD934F3FF0CC8ABEDFA51E09C5F6C442000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201021_211320_056932_CD680679 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20201021_222853_393559_4F637D81 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,34 +85,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, "David S .
- Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
- Felix Fietkau <nbd@nbd.name>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 20 Oct 2020 09:35:15 +0200 Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> 
-> The driver depends on mmio regmap API but doesn't select the appropriate
-> Kconfig option. This fixes it.
-> 
-> Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
-> Cc: <stable@vger.kernel.org>
+Support to display snr value when dumping rx statistics.
 
-No need, we queue all fixes from the networking tree to stable, anyway.
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+v2: change snr attribute description to u8
 
-> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+ drivers/net/wireless/mediatek/mt76/testmode.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Applied, thanks!
-
+diff --git a/drivers/net/wireless/mediatek/mt76/testmode.h b/drivers/net/wireless/mediatek/mt76/testmode.h
+index 02c9495..4d22627 100644
+--- a/drivers/net/wireless/mediatek/mt76/testmode.h
++++ b/drivers/net/wireless/mediatek/mt76/testmode.h
+@@ -101,6 +101,7 @@ enum mt76_testmode_stats_attr {
+  * @MT76_TM_RX_ATTR_RCPI: received channel power indicator (array, u8)
+  * @MT76_TM_RX_ATTR_IB_RSSI: internal inband RSSI (array, s8)
+  * @MT76_TM_RX_ATTR_WB_RSSI: internal wideband RSSI (array, s8)
++ * @MT76_TM_RX_ATTR_SNR: signal-to-noise ratio (u8)
+  */
+ enum mt76_testmode_rx_attr {
+ 	MT76_TM_RX_ATTR_UNSPEC,
+@@ -109,6 +110,7 @@ enum mt76_testmode_rx_attr {
+ 	MT76_TM_RX_ATTR_RCPI,
+ 	MT76_TM_RX_ATTR_IB_RSSI,
+ 	MT76_TM_RX_ATTR_WB_RSSI,
++	MT76_TM_RX_ATTR_SNR,
+ 
+ 	/* keep last */
+ 	NUM_MT76_TM_RX_ATTRS,
+-- 
+2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
