@@ -2,92 +2,66 @@ Return-Path: <SRS0=bV6b=D6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DDBDC388F9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 13:32:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 135AFC4363A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 14:10:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 330A6208E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 13:32:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 74718208C3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 14:10:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="z+Rtzb8q";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="xqjypZaY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 330A6208E4
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mbsL1fmp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74718208C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YxxcYkfUEBD119qciypB9UPDIX+gVcMp5O2UaBBlVlY=; b=z+Rtzb8q2B/Wp0zSpe5ZbpLwI
-	nGFRx0HquGddNDY46C0fQM8vGqf+65jcfAB6Cc+S/F8CYhQ5cDj65XDcrC8NpjUKbWAzmBpRElQVf
-	+wQjq0job/uHfQ2bjTIvMx/fsRK39mciftQbaF8S7AylH0z6Ns/qvMpW4z1Td1RtBD3XK3uLnjBeY
-	cmRdBh4MZqoqvTj0jbCcb8elROxaIq+Euu22To9nrBHcGPiCJ5bf0DyMsyevhTqMJ9iIETSBOkgxk
-	Ius1MSnFo01/LMXudr7hQPZgO6tc/2atm0ifQVFXZZ+4Kmtx3bsByvS0y/odEvS1uOoVa8CqWsBYN
-	XitHn0Ewg==;
+	 bh=nesVAQtjPOQaD85lB3ixJsvDlpgXYFTE3Kg4Z8OGQyQ=; b=mbsL1fmpGYRQzbve7eFyV1ZQn
+	dS3DWxNeoKF+/9O4qJn6DVfo4Iu4+T2PzPSsXp8/hN4TQMftsNF21KYJX4HbdyDWQMwOEjVxK2l2n
+	35VYKcLBxGXXRivbgApXvprGn9cj9LEvQmMB7CRh9I44p2rcWiX6+deRfKOjlKruRR5I6oS1vyaDz
+	GSJ7I8HCOQ6fRl89jURsmNzmRKu9SNe683jMLIG3eg1E23A7C/bPxSg59suVlxGxW5GPAKHFQa+Hj
+	HAqiR1Nm2FuL494nHbCqQ3rSzm98TlVRigxwpLv7Pc/h1euWfQ9bV2xghv3Lg+XKdRukzz8HXH/d+
+	9lddac+PA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVxBT-00044G-O4; Fri, 23 Oct 2020 13:32:43 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVxAX-0003gn-0f
- for linux-mediatek@lists.infradead.org; Fri, 23 Oct 2020 13:31:51 +0000
-Received: by mail-wr1-x442.google.com with SMTP id y12so1846461wrp.6
- for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2020 06:31:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=7UUKG/LdlfV6sZK7oObeH3Pp/56/1o4238Sc20l0q64=;
- b=xqjypZaYlllZdmVqeTaUnqnDJZlcUG5lEMaD+ainEZ095AMyG2pF2UHy1gdG26tnPW
- /yacinSuDEoApePc41tq4elhlIEuX2E7ybJh+xt4ukyRL7QAxJi+9yTfqGP55ED/hRlT
- wicq/trKzki+t5NVjTmpkfwAcIUx3Cge8KbmVhmARga9u7FHvbifw3+5mPzGVdeNCdr5
- MiOLsnefFlRfeCznEh7TzczyPfkVEECNa3AjNPo1Fap6bm8Lf1SSgPols6ip+yW355wU
- Eet3uJN7M4agZJrrtiqWT5+n7nDG4/DX3EL2zLXoevaTX9Q0/OVicySy/KAwvUVXY/S1
- Qh7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=7UUKG/LdlfV6sZK7oObeH3Pp/56/1o4238Sc20l0q64=;
- b=P4oq7xsLHlOrOBBSSLxytca8GPURDjr7GMKGCqXaM4d6gg0CHs57z94tytn31X02GE
- i7SKCnJNueyNVSSiEqSRH2MbZGEP1wjkWzLVhYXgc+k+oM/aAqRA0Qjdi/9UARR/ZhDI
- j65WcoFyQ29b0LfoEWdCXLjPSbcnkG//4abU6nleAxGSPDuSfKyTBhTJGWY6L0CO+S6c
- CsthP7UdoE0+ojAdD/yuFXFBfjf4MPdDDkQpcNmLitMaVQBqKdnhBapTDGYpR/SZShBB
- PpJgysB3Qvak9JXysP4bsn/Ce7PZYuDfpMVnRZYkUGVbPe6QRSolUHowvaB7vGgIGM7a
- GpVg==
-X-Gm-Message-State: AOAM533JFqHM9OojC3pQquZ/qyfACqjnRjHRqOLYLpPjNzi7LjQI4+uS
- wkfWmBDTrx7h98E0nXpoN6FKmfnuadmfFg==
-X-Google-Smtp-Source: ABdhPJx6l2pdglLr+KqBeAeNzoT8JICIkggqQiEnqOGdVY8A+xxL414KjFEIma8NNitHd9PmMTGEwg==
-X-Received: by 2002:adf:e38e:: with SMTP id e14mr2663318wrm.168.1603459903421; 
- Fri, 23 Oct 2020 06:31:43 -0700 (PDT)
-Received: from localhost.localdomain (211.160.185.81.rev.sfr.net.
- [81.185.160.211])
- by smtp.gmail.com with ESMTPSA id f6sm3146107wru.50.2020.10.23.06.31.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2020 06:31:42 -0700 (PDT)
-From: Fabien Parent <fparent@baylibre.com>
-To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org
-Subject: [PATCH v2 5/5] drm/mediatek: Add support for main DDP path on MT8167
-Date: Fri, 23 Oct 2020 15:31:30 +0200
-Message-Id: <20201023133130.194140-6-fparent@baylibre.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201023133130.194140-1-fparent@baylibre.com>
-References: <20201023133130.194140-1-fparent@baylibre.com>
+	id 1kVxm5-0001PL-Hy; Fri, 23 Oct 2020 14:10:33 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kVxm1-0001OV-D5; Fri, 23 Oct 2020 14:10:30 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 46258113E;
+ Fri, 23 Oct 2020 07:10:27 -0700 (PDT)
+Received: from [10.57.50.191] (unknown [10.57.50.191])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EDCFE3F66B;
+ Fri, 23 Oct 2020 07:10:23 -0700 (PDT)
+Subject: Re: [PATCH v3 11/24] iommu/io-pgtable-arm-v7s: Quad lvl1 pgtable for
+ MediaTek
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Will Deacon <will@kernel.org>
+References: <20200930070647.10188-1-yong.wu@mediatek.com>
+ <20200930070647.10188-12-yong.wu@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <a5713949-1d95-40f1-d35d-d99735b48294@arm.com>
+Date: Fri, 23 Oct 2020 15:10:22 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.3
 MIME-Version: 1.0
+In-Reply-To: <20200930070647.10188-12-yong.wu@mediatek.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_093145_247074_DD02F789 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20201023_101029_909636_E361FA36 
+X-CRM114-Status: GOOD (  23.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,130 +73,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, daniel@ffwll.ch, airlied@linux.ie,
- Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org,
- p.zabel@pengutronix.de, matthias.bgg@gmail.com
-Content-Type: text/plain; charset="us-ascii"
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, kernel-team@android.com, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
+ Greg Kroah-Hartman <gregkh@google.com>, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the main (DSI) drm display path for MT8167.
+On 2020-09-30 08:06, Yong Wu wrote:
+> The standard input iova bits is 32. MediaTek quad the lvl1 pagetable
+> (4 * lvl1). No change for lvl2 pagetable. Then the iova bits can reach
+> 34bit.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/io-pgtable-arm-v7s.c | 13 ++++++++++---
+>   drivers/iommu/mtk_iommu.c          |  2 +-
+>   2 files changed, 11 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+> index 8362fdf76657..306bae2755ed 100644
+> --- a/drivers/iommu/io-pgtable-arm-v7s.c
+> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
+> @@ -50,10 +50,17 @@
+>    */
+>   #define ARM_V7S_ADDR_BITS		32
+>   #define _ARM_V7S_LVL_BITS(lvl)		(16 - (lvl) * 4)
+> +/* MediaTek: totally 34bits, 14bits at lvl1 and 8bits at lvl2. */
+> +#define _ARM_V7S_LVL_BITS_MTK(lvl)	(20 - (lvl) * 6)
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
+This should defined in terms of both lvl and cfg->ias. The formula here 
+is nothing more than a disgusting trick I made up since a linear 
+interpolation happened to fit the required numbers. That said, all of 
+these bits pretending that short-descriptor is a well-defined recursive 
+format only served to allow the rest of the code to look more like the 
+LPAE code - IIRC they've already diverged a fair bit since then, so 
+frankly a lot of this could stand to be unpicked and made considerably 
+clearer by simply accepting that level 1 and level 2 are different from 
+each other.
 
-Changelog:
+Robin.
 
-V2: No change
-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 38 ++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 59c85c63b7cc..3952435093fe 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -112,6 +112,17 @@ static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
- 	DDP_COMPONENT_PWM2,
- };
- 
-+static enum mtk_ddp_comp_id mt8167_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_DSI0,
-+};
-+
- static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
- 	DDP_COMPONENT_OVL0,
- 	DDP_COMPONENT_COLOR0,
-@@ -163,6 +174,11 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8167_mmsys_driver_data = {
-+	.main_path = mt8167_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8167_mtk_ddp_main),
-+};
-+
- static int mtk_drm_kms_init(struct drm_device *drm)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
-@@ -401,26 +417,42 @@ static const struct component_master_ops mtk_drm_ops = {
- static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
- 	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8167-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt8173-disp-ovl",
- 	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8167-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
- 	  .data = (void *)MTK_DISP_WDMA },
-+	{ .compatible = "mediatek,mt8167-disp-ccorr",
-+	  .data = (void *)MTK_DISP_CCORR },
- 	{ .compatible = "mediatek,mt2701-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
-+	{ .compatible = "mediatek,mt8167-disp-color",
-+	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
-+	{ .compatible = "mediatek,mt8167-disp-aal",
-+	  .data = (void *)MTK_DISP_AAL},
- 	{ .compatible = "mediatek,mt8173-disp-aal",
- 	  .data = (void *)MTK_DISP_AAL},
-+	{ .compatible = "mediatek,mt8167-disp-gamma",
-+	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
-+	{ .compatible = "mediatek,mt8167-disp-dither",
-+	  .data = (void *)MTK_DISP_DITHER },
- 	{ .compatible = "mediatek,mt8173-disp-ufoe",
- 	  .data = (void *)MTK_DISP_UFOE },
- 	{ .compatible = "mediatek,mt2701-dsi",
- 	  .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt8167-dsi",
-+	  .data = (void *)MTK_DSI },
- 	{ .compatible = "mediatek,mt8173-dsi",
- 	  .data = (void *)MTK_DSI },
- 	{ .compatible = "mediatek,mt2701-dpi",
-@@ -431,10 +463,14 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2712-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8167-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2701-disp-pwm",
- 	  .data = (void *)MTK_DISP_BLS },
-+	{ .compatible = "mediatek,mt8167-disp-pwm",
-+	  .data = (void *)MTK_DISP_PWM },
- 	{ .compatible = "mediatek,mt8173-disp-pwm",
- 	  .data = (void *)MTK_DISP_PWM },
- 	{ .compatible = "mediatek,mt8173-disp-od",
-@@ -449,6 +485,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt7623_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt2712-mmsys",
- 	  .data = &mt2712_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8167-mmsys",
-+	  .data = &mt8167_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8173-mmsys",
- 	  .data = &mt8173_mmsys_driver_data},
- 	{ }
--- 
-2.28.0
-
+>   #define ARM_V7S_LVL_SHIFT(lvl)		(ARM_V7S_ADDR_BITS - (4 + 8 * (lvl)))
+>   #define ARM_V7S_TABLE_SHIFT		10
+>   
+> -#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	(1 << _ARM_V7S_LVL_BITS(lvl))
+> +#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	({				\
+> +	int _lvl = lvl;							\
+> +	!arm_v7s_is_mtk_enabled(cfg) ?					\
+> +	 (1 << _ARM_V7S_LVL_BITS(_lvl)) : (1 << _ARM_V7S_LVL_BITS_MTK(_lvl));\
+> +})
+> +
+>   #define ARM_V7S_TABLE_SIZE(lvl, cfg)					\
+>   	(ARM_V7S_PTES_PER_LVL(lvl, cfg) * sizeof(arm_v7s_iopte))
+>   
+> @@ -63,7 +70,7 @@
+>   #define _ARM_V7S_IDX_MASK(lvl, cfg)	(ARM_V7S_PTES_PER_LVL(lvl, cfg) - 1)
+>   #define ARM_V7S_LVL_IDX(addr, lvl, cfg)	({			\
+>   	int _l = lvl;							\
+> -	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
+> +	((addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
+>   })
+>   
+>   /*
+> @@ -755,7 +762,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+>   {
+>   	struct arm_v7s_io_pgtable *data;
+>   
+> -	if (cfg->ias > ARM_V7S_ADDR_BITS)
+> +	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
+>   		return NULL;
+>   
+>   	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index f6a2e3eb59d2..6e85c9976a33 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -316,7 +316,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+>   			IO_PGTABLE_QUIRK_TLBI_ON_MAP |
+>   			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
+>   		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
+> -		.ias = 32,
+> +		.ias = 34,
+>   		.oas = 35,
+>   		.tlb = &mtk_iommu_flush_ops,
+>   		.iommu_dev = data->dev,
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
