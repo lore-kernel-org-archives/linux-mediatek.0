@@ -2,22 +2,23 @@ Return-Path: <SRS0=bV6b=D6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1781C4363A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 13:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68F26C388F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 13:32:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30D7E208E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 13:32:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E119820795
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 13:32:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A6A86iss";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="GS5fOfQI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30D7E208E4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PrBOI9Us";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="dPB4J4uq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E119820795
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,68 +27,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ISQoJVyyEgyOJGsWig6Et4A5jLbFo+54A3VconVYIAI=; b=A6A86iss5Jll6SNdM02uzXuwR
-	NW36fIQw1vc2dmtBPdDVl3eKh1YPWNY81+jZMPbiItjLVBmCOjhspcRk9Xw80Kl4Ep+mR+MiFy0o1
-	oZt6gxJuKaVJxXL/Pocn6BIcpRX45rMoV/V6ftiZc3DEtLS205SONVSuEqmkOrCcVXRnlfqhfBNVC
-	3Rv61+upkeGtyRLxnKrFT1qxTyzcBKMJFF6szGM5ZVgW82BNdH7EQx6+oE6HqQT0sNdHX1YJCctIp
-	MeAoNx6vfz52H/HVNWLQWwChTrO6QXs4pMq2ty/cGok1dkwMB8kg3c5dgc3xek69gLwMLy3xuOFvE
-	fZkwRKE7Q==;
+	 bh=tjwtr+Lp1/A0H63A3sOEOxnVgQDPWlCTwbYGMyQH8is=; b=PrBOI9UsKwJjXzpH3m7T74hfo
+	UhYzggJ8UGUvXJ/FK6Yv4MdAhT5fCWQGoV8B2cjPa83QlQFjXrpIA6XTIOprhT13tJbROhyp0Cb6H
+	7dUfe8Hb5zTu0zOpIvisyksIen2u6Lk/ErEoqm04scRyhjL7Bhzo2KjewVxSR/IqBashebmhw1rCM
+	/94xdcu+ddTp0wHNkuXTxx+5DMjMHGIU4iuH+EBCj//o3lW5T7sI9h718wWfVYuIqcd5SxchLHXGs
+	9Nx8TlH1e17MOQXqKnzcuIF/PuXrow99l1UOYTFwr3fogqNEALc2QpR8ks4s/qOF1t/M2RyOG6+5J
+	Fonf5HEXQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVxAn-0003n0-Oy; Fri, 23 Oct 2020 13:32:01 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1kVxB9-0003uC-Ny; Fri, 23 Oct 2020 13:32:23 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVxAP-0003bx-Dk
- for linux-mediatek@lists.infradead.org; Fri, 23 Oct 2020 13:31:39 +0000
-Received: by mail-wr1-x444.google.com with SMTP id n18so1847473wrs.5
- for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2020 06:31:37 -0700 (PDT)
+ id 1kVxAT-0003eJ-6T
+ for linux-mediatek@lists.infradead.org; Fri, 23 Oct 2020 13:31:43 +0000
+Received: by mail-wm1-x343.google.com with SMTP id c16so1576644wmd.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2020 06:31:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZZZhZb2rEz5fHuVG55QJOamqxxRM5CUTX2itYU5vANI=;
- b=GS5fOfQIIw3GAMYSybwFZT5Uml1Gn5gqpzXW88Ram1s3RNRCBylCYem2I1Wg7k5rL0
- EXZ8Npi3dbjRFjfNP3pY5jMVq2AVTQMvmFmz4rQn0+cWxvIgA7HI62U+yAX19Gzoz1xi
- EVIvDLb0VwGihRMVDBYY2DvsDkFRbmi0oqqFNuHl83mxxz94pi6TOu82iJIKSJA+Nb8C
- 16s7BFs1f/gOM3djshd+VuHkUmMe2vffHtBmY+e8+73QJ2tnVsDgvl/8LawF+g7nxiC+
- 5PW872nYyg7HAzjeGNHgwzWZlaNaAmi8xWu46qcK3GB90sluZ5kwmfaJqEkgtdN2lzvO
- 0Dbg==
+ bh=g+2yN9MeRTEf/pnT8y/kZe4gz63gE6nshqU+Yqjv0/I=;
+ b=dPB4J4uq4UmIx/feUZt/6vYh5sK0pnO9jZRfvO+jfbOL6OULIEcCQo/zLlWVo0Re9T
+ PBQfcFLylfMH9c5MILSk/ytseU3R6p4wywTIPUZyVJgQ5MHgJoPVLFu8CtaTvU0rpXAc
+ D7dh1HC3zpOl3Elt/GbcDesudaLQ6/lmnOL7RNILjDR9Wgz6yHarIqBGxds8PD/2J8xq
+ sV5IjcrI6TZlHIzo+IVQ59ohoRQDy0+YSGpB5FRAkBlBzZmITIecDJGZ++eeDV58inNr
+ ofy48vywVaElIXHD/S37euH4PaLPyQ0pQEKrQRuZVsGM45I1Q9XvtFQF+Fc6t9C5AjfZ
+ J+5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZZZhZb2rEz5fHuVG55QJOamqxxRM5CUTX2itYU5vANI=;
- b=Gdo759jyH0AtsOp3oEuWUAT9Uit4Sl9PvG4UL/kT+2NZDgJIlZ+XN9Ee5G1RM/burF
- NsVXjyt7OQ0HJFBSAPBpUBNvP0YnbBTGB2GkYMP/E7LBB51QK9rgUwr3vRiHoPm+k+aC
- 2td8IE5llf+pP/WXZf58KNNZF/rmpGYfgcidp1GVrOQdI/kQHEDnUL6wN21siF5VqQFQ
- OCWJ7vR2H36ED5AaYGludNh7J5t/WFlwjFNb8Y1BMPZx9C6PlMz09r83zlcfQe/zTh1D
- SWu/WEi/D8vNnvLi+0srGyCBm6l0pvNimYecOV0wCavTGsOmxoH+avBNwxDPwecNw1Y3
- Xn3A==
-X-Gm-Message-State: AOAM532bqm0VIrcSGKzJrev7ld+AD/Cvssj9/6sPWuYS1TnU5/lDRLhD
- kau4EttIEWR1NQh0j9Clu5mQpGfJ12XSGQ==
-X-Google-Smtp-Source: ABdhPJzqrOGaTf+kRDwUvFhLf41amL9nkhiLntJO+SJUCOhPk4RcEpRuGLBe5yMpJi6sbEOlMwjURA==
-X-Received: by 2002:a5d:448b:: with SMTP id j11mr2574289wrq.129.1603459896327; 
- Fri, 23 Oct 2020 06:31:36 -0700 (PDT)
+ bh=g+2yN9MeRTEf/pnT8y/kZe4gz63gE6nshqU+Yqjv0/I=;
+ b=IavFTcrUVgnpIsGNY3v/mNRo5/cy2EuFUhmc1/Jc9UHN2djMhv3zhMY1XVJhOEtBf7
+ lPXxmI1z4v5EJOyKHx8RjfItyKrl3N84TXmyb2G2Vg8YB7x+ZnPhQiVJdPsLHuEStLaB
+ ve8t+nubsNuQXjBANoBIfXOuQ0UjTPb8TAjqdCoAKYManTyQJELPwLJWzIeRXlfbKwqU
+ ecqKz5iAnaQdFf0rM+SeAI6C+jlVdQHXEaQzCNqO8PqIBQVn9d1yQCQ4B5CvaP6q4Djs
+ GOg8YPvEP1JVzC4sWIga91cYEngXuFXz9v/MH5huHkmt/yfhOrTSTh+KmhzF7IHWJ5bR
+ tcgg==
+X-Gm-Message-State: AOAM530nc7CJ66bqkEBG2sULrfae+e8z8J6hsK9vhzm4OV2pPUVdIQmK
+ oaukW0ze9/38+fQAfCWjK9Q7BnfC63rw0w==
+X-Google-Smtp-Source: ABdhPJx3cxGQumgk9TFoam7BXXLYtxG3Pzw2YD4YI6h/rEfg8EwN7KF842rzjfywLCEt05riGq4EBQ==
+X-Received: by 2002:a7b:c055:: with SMTP id u21mr2295428wmc.27.1603459899863; 
+ Fri, 23 Oct 2020 06:31:39 -0700 (PDT)
 Received: from localhost.localdomain (211.160.185.81.rev.sfr.net.
  [81.185.160.211])
- by smtp.gmail.com with ESMTPSA id f6sm3146107wru.50.2020.10.23.06.31.34
+ by smtp.gmail.com with ESMTPSA id f6sm3146107wru.50.2020.10.23.06.31.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2020 06:31:35 -0700 (PDT)
+ Fri, 23 Oct 2020 06:31:39 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  dri-devel@lists.freedesktop.org
-Subject: [PATCH v2 1/5] dt-bindings: display: mediatek: disp: add
- documentation for MT8167 SoC
-Date: Fri, 23 Oct 2020 15:31:26 +0200
-Message-Id: <20201023133130.194140-2-fparent@baylibre.com>
+Subject: [PATCH v2 3/5] drm/mediatek: add disp-color MT8167 support
+Date: Fri, 23 Oct 2020 15:31:28 +0200
+Message-Id: <20201023133130.194140-4-fparent@baylibre.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201023133130.194140-1-fparent@baylibre.com>
 References: <20201023133130.194140-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_093137_483167_791B81D5 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20201023_093141_525898_48A1ABF8 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,7 +107,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding documentation for the MT8167 SoC
+Add support for disp-color on MT8167 SoC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
@@ -117,31 +117,41 @@ Changelog:
 
 V2: No change
 
- .../devicetree/bindings/display/mediatek/mediatek,disp.txt    | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_color.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-index 121220745d46..33977e15bebd 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-@@ -43,7 +43,7 @@ Required properties (all function blocks):
- 	"mediatek,<chip>-dpi"        		- DPI controller, see mediatek,dpi.txt
- 	"mediatek,<chip>-disp-mutex" 		- display mutex
- 	"mediatek,<chip>-disp-od"    		- overdrive
--  the supported chips are mt2701, mt7623, mt2712 and mt8173.
-+  the supported chips are mt2701, mt7623, mt2712, mt8167 and mt8173.
- - reg: Physical base address and length of the function block register space
- - interrupts: The interrupt signal from the function block (required, except for
-   merge and split function blocks).
-@@ -59,7 +59,7 @@ Required properties (DMA function blocks):
- 	"mediatek,<chip>-disp-ovl"
- 	"mediatek,<chip>-disp-rdma"
- 	"mediatek,<chip>-disp-wdma"
--  the supported chips are mt2701 and mt8173.
-+  the supported chips are mt2701, mt8167 and mt8173.
- - larb: Should contain a phandle pointing to the local arbiter device as defined
-   in Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
- - iommus: Should point to the respective IOMMU block with master port as
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+index 3ae9c810845b..a1227cefbf31 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+@@ -16,6 +16,7 @@
+ 
+ #define DISP_COLOR_CFG_MAIN			0x0400
+ #define DISP_COLOR_START_MT2701			0x0f00
++#define DISP_COLOR_START_MT8167			0x0400
+ #define DISP_COLOR_START_MT8173			0x0c00
+ #define DISP_COLOR_START(comp)			((comp)->data->color_offset)
+ #define DISP_COLOR_WIDTH(comp)			(DISP_COLOR_START(comp) + 0x50)
+@@ -148,6 +149,10 @@ static const struct mtk_disp_color_data mt2701_color_driver_data = {
+ 	.color_offset = DISP_COLOR_START_MT2701,
+ };
+ 
++static const struct mtk_disp_color_data mt8167_color_driver_data = {
++	.color_offset = DISP_COLOR_START_MT8167,
++};
++
+ static const struct mtk_disp_color_data mt8173_color_driver_data = {
+ 	.color_offset = DISP_COLOR_START_MT8173,
+ };
+@@ -155,6 +160,8 @@ static const struct mtk_disp_color_data mt8173_color_driver_data = {
+ static const struct of_device_id mtk_disp_color_driver_dt_match[] = {
+ 	{ .compatible = "mediatek,mt2701-disp-color",
+ 	  .data = &mt2701_color_driver_data},
++	{ .compatible = "mediatek,mt8167-disp-color",
++	  .data = &mt8167_color_driver_data},
+ 	{ .compatible = "mediatek,mt8173-disp-color",
+ 	  .data = &mt8173_color_driver_data},
+ 	{},
 -- 
 2.28.0
 
