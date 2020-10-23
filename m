@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B520EC388F9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5B73C388F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:27:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 078ED20770
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:27:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 50F412192A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:27:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GsxtFtx1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aWGzMDSn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 078ED20770
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eOrcv7BH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="erwrWHQN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50F412192A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/NkR8c1bN4d315lvUO7mh+K/uG144uGda+Yp50qPdc0=; b=GsxtFtx1Te4RKrYgNKggddbQJ
-	c0DA/UXJo2l3WLdqyex20aA4cwnax9ttxcukgtq+KFW7gDXgGR4aKFDqVesmYDKBFhfYguv8DXQKj
-	2YL3dQpjfsuJPozPeGz5L/usurysFxSKswWGNk6eEcLGMiGiCcUgrk7A9Y/44GXMQs7ZwJsjXO7mZ
-	IoFjjpDzh74V8F9WCPKnXD+/Xo+Cx1zmaIJVpnMgmlrP7x1nYKgaIO4iS8OY9qTNv+Nr+ZhMywpIo
-	wLsXHz/iv2MY3x0yowxouY+R+UG+VLHbw+9sAm3WIDqNfClJw+hTP2kK4cRmk280NtmN77Ghh5A4e
-	dCNih2pzQ==;
+	 bh=TbCHWMIScTUwFFWWAn2t6JxCr0t3tAnd1LpGAwtKOL0=; b=eOrcv7BH65sBdrfIheo8r3laz
+	5Nux6ZUcE9+DMbBRQuozo0ltDU4mrHj4m1gh+OsEWsbNrB9WEVu3JMTwOxYLPViyx1eAAmDK1gDxS
+	mjy7Bs0ifqNogm8ta9Y53UclSueB+1/ofIRXY0mcLZ8MXj2mBK9sistRCa00qKwiuSbEd2QgJUa65
+	T/Nf+r0cU6C7vJk3pxJ67V7byuI5IZwXrPt7cHrf6xmfastyzMncKAgTZx4UvAIivDa8OeggLjC90
+	C3isjW9Amtz8OdisW3aWmUDDtc91Sfi+O5ghnZnTXDFkelB1wai6zNVZJM9m8/RizLogGt793VZTT
+	+0O53nX+A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVtM4-0001dK-J6; Fri, 23 Oct 2020 09:27:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kVtMF-0001i1-Q8; Fri, 23 Oct 2020 09:27:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVtM1-0001bS-Jv; Fri, 23 Oct 2020 09:27:22 +0000
-X-UUID: 14f800cd2d0544d6b56c82c3aa63ae36-20201023
+ id 1kVtM2-0001bV-3j; Fri, 23 Oct 2020 09:27:24 +0000
+X-UUID: b4890bf064214b3eb1f2b632cbd10bf1-20201023
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=BR60j2F54p2pGcLrRVjIn/yPVbDNmaSCHOH23EULGII=; 
- b=aWGzMDSnvY6a3HhH+Y3/wjSuQLfNTMZx/CLd7uersbcqTnJONkSdQ6VLGmBt1D0FVz2TSp/0q5hMvYNGr7uJPrGuHQrK1lRl2SnaAQaCZTNzuBFDgriAlc+FlZmydJoaldG6m7eUCbeG+fEpVUpMLXWw2FlEZAOKpVTrGYgwNNI=;
-X-UUID: 14f800cd2d0544d6b56c82c3aa63ae36-20201023
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=NJ00D3ADH+TaQiR+vIP4cEWpTaYnE61vqjYFfO4icjA=; 
+ b=erwrWHQN9DIYmDmMLyKJXJVX6fR1fFbSe0DNHi/RXcbrn05LGP/TCEfeuLbnzYxTYmMxhNoEYu158CXlHuKUnvY6Smq6UvvLdZM4DXFMnoi81kF3B9CukEiKHQN55RKhtY+DW5ZjWINb+urcEELAiDlbTVA8JP/i2/IEYmvl01Y=;
+X-UUID: b4890bf064214b3eb1f2b632cbd10bf1-20201023
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1426969810; Fri, 23 Oct 2020 01:20:52 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 23 Oct 2020 02:15:00 -0700
+ with ESMTP id 1411791551; Fri, 23 Oct 2020 01:25:10 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 23 Oct 2020 02:15:07 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 23 Oct 2020 17:14:54 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -61,18 +61,17 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
 From: Miles Chen <miles.chen@mediatek.com>
 To: Catalin Marinas <catalin.marinas@arm.com>, Russell King
  <linux@armlinux.org.uk>, Minchan Kim <minchan@kernel.org>
-Subject: [PATCH v2 4/4] arm: replace vector mem type with read-only type
-Date: Fri, 23 Oct 2020 17:14:37 +0800
-Message-ID: <20201023091437.8225-5-miles.chen@mediatek.com>
+Subject: [PATCH v2 1/4] arm: mm: use strict p[gum]d types
+Date: Fri, 23 Oct 2020 17:14:34 +0800
+Message-ID: <20201023091437.8225-2-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201023091437.8225-1-miles.chen@mediatek.com>
 References: <20201023091437.8225-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E8A464A3D2B693A78F39320912CA98801136E8EB1B1EEC0E5212E5D3E01CC5D02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_052721_859403_97732250 
-X-CRM114-Status: GOOD (  19.70  )
+X-CRM114-CacheID: sfid-20201023_052722_301200_023E12E1 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,18 +91,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since kernel no longer writes to the vector, try to replace
-the vector mem type with read-only type and remove L_PTE_MT_VECTORS.
+When use mm/gup.c, it is necessary to use strict p*d types.
+Otherwise, we will get build breaks such as:
 
-from Catalin in [1]:
-"
-> I don't think this matters since the kernel no longer writes to the
-> vectors page at run-time but it needs cleaning up a bit (and testing in
-> case I missed something). IOW, do we still need a dedicated mapping type
-> for the vectors or we can simply use the read-only user page attributes?
-"
+mm/gup.c:2589:9: error: incompatible pointer types passing 'pmdval_t **'
+(aka 'unsigned int **') to parameter of type 'pgd_t *'
+(aka 'pmdval_t (*)[2]') [-Werror,-Wincompatible-pointer-types]
+mm/gup.c:2616:9: error: array initializer must be an initializer list
 
-[1] https://lore.kernel.org/patchwork/patch/986574/
+Fix some types errors in fixmap.h after using strict types.
 
 Cc: Russell King <linux@armlinux.org.uk>
 Cc: Catalin Marinas <catalin.marinas@arm.com>
@@ -111,56 +107,84 @@ Cc: Minchan Kim <minchan@kernel.org>
 Cc: Suren Baghdasaryan <surenb@google.com>
 Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- arch/arm/include/asm/pgtable-2level.h | 1 -
- arch/arm/mm/mmu.c                     | 7 +++----
- arch/arm/mm/proc-macros.S             | 2 +-
- 3 files changed, 4 insertions(+), 6 deletions(-)
+ arch/arm/include/asm/fixmap.h               |  6 ++---
+ arch/arm/include/asm/pgtable-2level-types.h | 26 ---------------------
+ arch/arm/include/asm/pgtable-2level.h       |  1 +
+ 3 files changed, 4 insertions(+), 29 deletions(-)
 
+diff --git a/arch/arm/include/asm/fixmap.h b/arch/arm/include/asm/fixmap.h
+index fc56fc3e1931..3ea12b2da708 100644
+--- a/arch/arm/include/asm/fixmap.h
++++ b/arch/arm/include/asm/fixmap.h
+@@ -42,11 +42,11 @@ static const enum fixed_addresses __end_of_fixed_addresses =
+ 
+ #define FIXMAP_PAGE_COMMON	(L_PTE_YOUNG | L_PTE_PRESENT | L_PTE_XN | L_PTE_DIRTY)
+ 
+-#define FIXMAP_PAGE_NORMAL	(pgprot_kernel | L_PTE_XN)
+-#define FIXMAP_PAGE_RO		(FIXMAP_PAGE_NORMAL | L_PTE_RDONLY)
++#define FIXMAP_PAGE_NORMAL	__pgprot(pgprot_val(pgprot_kernel) | L_PTE_XN)
++#define FIXMAP_PAGE_RO		__pgprot(pgprot_val(FIXMAP_PAGE_NORMAL) | L_PTE_RDONLY)
+ 
+ /* Used by set_fixmap_(io|nocache), both meant for mapping a device */
+-#define FIXMAP_PAGE_IO		(FIXMAP_PAGE_COMMON | L_PTE_MT_DEV_SHARED | L_PTE_SHARED)
++#define FIXMAP_PAGE_IO		__pgprot(FIXMAP_PAGE_COMMON | L_PTE_MT_DEV_SHARED | L_PTE_SHARED)
+ #define FIXMAP_PAGE_NOCACHE	FIXMAP_PAGE_IO
+ 
+ #define __early_set_fixmap	__set_fixmap
+diff --git a/arch/arm/include/asm/pgtable-2level-types.h b/arch/arm/include/asm/pgtable-2level-types.h
+index 650e793f4142..64fd5b8d9dc2 100644
+--- a/arch/arm/include/asm/pgtable-2level-types.h
++++ b/arch/arm/include/asm/pgtable-2level-types.h
+@@ -12,12 +12,6 @@
+ typedef u32 pteval_t;
+ typedef u32 pmdval_t;
+ 
+-#undef STRICT_MM_TYPECHECKS
+-
+-#ifdef STRICT_MM_TYPECHECKS
+-/*
+- * These are used to make use of C type-checking..
+- */
+ typedef struct { pteval_t pte; } pte_t;
+ typedef struct { pmdval_t pmd; } pmd_t;
+ typedef struct { pmdval_t pgd[2]; } pgd_t;
+@@ -32,24 +26,4 @@ typedef struct { pteval_t pgprot; } pgprot_t;
+ #define __pmd(x)        ((pmd_t) { (x) } )
+ #define __pgprot(x)     ((pgprot_t) { (x) } )
+ 
+-#else
+-/*
+- * .. while these make it easier on the compiler
+- */
+-typedef pteval_t pte_t;
+-typedef pmdval_t pmd_t;
+-typedef pmdval_t pgd_t[2];
+-typedef pteval_t pgprot_t;
+-
+-#define pte_val(x)      (x)
+-#define pmd_val(x)      (x)
+-#define pgd_val(x)	((x)[0])
+-#define pgprot_val(x)   (x)
+-
+-#define __pte(x)        (x)
+-#define __pmd(x)        (x)
+-#define __pgprot(x)     (x)
+-
+-#endif /* STRICT_MM_TYPECHECKS */
+-
+ #endif	/* _ASM_PGTABLE_2LEVEL_TYPES_H */
 diff --git a/arch/arm/include/asm/pgtable-2level.h b/arch/arm/include/asm/pgtable-2level.h
-index 385e7a32394e..438359d3675f 100644
+index 3502c2f746ca..27a8635abea0 100644
 --- a/arch/arm/include/asm/pgtable-2level.h
 +++ b/arch/arm/include/asm/pgtable-2level.h
-@@ -163,7 +163,6 @@
- #define L_PTE_MT_WRITETHROUGH	(_AT(pteval_t, 0x02) << 2)	/* 0010 */
- #define L_PTE_MT_WRITEBACK	(_AT(pteval_t, 0x03) << 2)	/* 0011 */
- #define L_PTE_MT_DEV_SHARED	(_AT(pteval_t, 0x04) << 2)	/* 0100 */
--#define L_PTE_MT_VECTORS	(_AT(pteval_t, 0x05) << 2)	/* 0101 */
- #define L_PTE_MT_MINICACHE	(_AT(pteval_t, 0x06) << 2)	/* 0110 (sa1100, xscale) */
- #define L_PTE_MT_WRITEALLOC	(_AT(pteval_t, 0x07) << 2)	/* 0111 */
- #if defined(CONFIG_CPU_V7) || defined(CONFIG_CPU_V6) || defined(CONFIG_CPU_V6K)
-diff --git a/arch/arm/mm/mmu.c b/arch/arm/mm/mmu.c
-index ab69250a86bc..0b6b377e2cce 100644
---- a/arch/arm/mm/mmu.c
-+++ b/arch/arm/mm/mmu.c
-@@ -536,12 +536,11 @@ static void __init build_mem_type_table(void)
+@@ -180,6 +180,7 @@
+ #define pud_none(pud)		(0)
+ #define pud_bad(pud)		(0)
+ #define pud_present(pud)	(1)
++#define pud_page(pud)		pmd_page(__pmd(pud_val(pud)))
+ #define pud_clear(pudp)		do { } while (0)
+ #define set_pud(pud,pudp)	do { } while (0)
  
- #ifndef CONFIG_ARM_LPAE
- 	/*
--	 * We don't use domains on ARMv6 (since this causes problems with
--	 * v6/v7 kernels), so we must use a separate memory type for user
--	 * r/o, kernel r/w to map the vectors page.
-+	 * We no longer write to the vector pages ar run-time, to
-+	 * use read-only user page attribute for vector.
- 	 */
- 	if (cpu_arch == CPU_ARCH_ARMv6)
--		vecs_pgprot |= L_PTE_MT_VECTORS;
-+		vecs_pgprot |= L_PTE_RDONLY;
- 
- 	/*
- 	 * Check is it with support for the PXN bit
-diff --git a/arch/arm/mm/proc-macros.S b/arch/arm/mm/proc-macros.S
-index dde1d6374250..f3e6551b4a7e 100644
---- a/arch/arm/mm/proc-macros.S
-+++ b/arch/arm/mm/proc-macros.S
-@@ -137,7 +137,7 @@
- 	.long	PTE_CACHEABLE					@ L_PTE_MT_WRITETHROUGH
- 	.long	PTE_CACHEABLE | PTE_BUFFERABLE			@ L_PTE_MT_WRITEBACK
- 	.long	PTE_BUFFERABLE					@ L_PTE_MT_DEV_SHARED
--	.long	PTE_CACHEABLE | PTE_BUFFERABLE | PTE_EXT_APX	@ L_PTE_MT_VECTORS
-+	.long	0x00						@ unused
- 	.long	0x00						@ L_PTE_MT_MINICACHE (not present)
- 	.long	PTE_EXT_TEX(1) | PTE_CACHEABLE | PTE_BUFFERABLE	@ L_PTE_MT_WRITEALLOC
- 	.long	0x00						@ unused
 -- 
 2.18.0
 _______________________________________________
