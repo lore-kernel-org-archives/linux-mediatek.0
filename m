@@ -2,91 +2,77 @@ Return-Path: <SRS0=bV6b=D6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DF2BC388F9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C283CC388F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 10:08:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9D4BA2168B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:55:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 18BA920874
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 10:08:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iSUNo+9C";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Pf6ThxZA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D4BA2168B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L2eqGvXY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="zy/rP3W8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18BA920874
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2Z5LXk9a6buBfx/fU0kYY3Hc5CyZvlpkENL2Kx9m0Uk=; b=iSUNo+9C0y3SxQ5GGeo3UUG73
-	hIDvWN3bXgZRu8pbWB7W+B7z/2zdXLPG7u7esrVbs0XHq38Bai5c6wDa9tcQ5b/Y+pVIse/Boluxa
-	tJ5eQ/RsUiXHKfm5ddshAh5eKt7gvUqEtMMpawMLwB/kh5i11+UXFGf47ilEPpC7vzrs1UjGgoay1
-	kq9k/oj2D9Saw4yc7N8ssx+IpZcQkDw66zac+XtXQakao+lemeEvUIlo3nLvfuWsu7f2wqMVeRxgL
-	bKHKWhksxsNOi5Xa4XHdHz+G1S3/8GK6ZZvGZQGOBmBKKYN5pP1+PEs+rKEd8Wd3SXVqxyQc1FTi+
-	lDsZMqPOQ==;
+	 bh=jqQBlcL7H0jpTQUP/qp1B/6dC6vXMqcFsuE8Enn+HjA=; b=L2eqGvXYKG6D+V8/ycS82tuzV
+	YLqRbiSz/29ATDr7f5KgXCsRyT44YXYR3vKi3fc0dWk7LSzmtsbcjCYjsjGv8OoZng6QXON+2TUML
+	b9bJwW4M1RDKSMr3ZZgy7wizJ7p/fodJHZ2iyo2tujRQ7lw9VVcFEuGxBC4FFXV5kT8cjK+fIbAYX
+	1FB2H2vD1Fo2TMkh8Txv//UUoRfFRU1sdms+cTjnqdq9XuDgmqOAeF8+Z9kENXn47klKaorHF2yTq
+	Id0q0ec7B9L1CnnET6COI/KQbwDtwt0k4Fz9VK/65p4ONVNP4ygWJHcLSQSa4rZNUm2nQJ/A2B8I8
+	FnUUmnaEw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVtmj-0008Hv-1i; Fri, 23 Oct 2020 09:54:57 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kVtzl-0000zO-F0; Fri, 23 Oct 2020 10:08:25 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVtme-0008Gl-Ph; Fri, 23 Oct 2020 09:54:53 +0000
-Received: by mail-wr1-x442.google.com with SMTP id n18so1110262wrs.5;
- Fri, 23 Oct 2020 02:54:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=33PxRKHXGZaR8Akuh25nhwh94mQILSpGUhfNOEDRamY=;
- b=Pf6ThxZAqQDbjixttCY5ALkbcs0hoN7kkdH6NwwXvfnfR0AMHG9dRaPPT8Dpq3e/DX
- ewBWEPM9xvzxF3LJhl8O4wXjq641eSO5lPl73XJMpXdqQta/gmtz9W20vzNJICItsrn+
- jCtfjcXH9tMJDa0TS2mCuBQ0f08tETCacGVEKn1ZhVjYjls40xxyQhITTxp8N34Pmggq
- X65Um0q5prMNdeMm5XOSukFxXsFQLbYs3CrO48VWSihj/lKVaR2Vpw+iIFnuzMaX+F0Z
- Ig9TLXm7wDd7255n19casZ183Rr6BCQ353GJxofAF/45U6A5pNgziPh2Rl1SABtvibOn
- 2RhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=33PxRKHXGZaR8Akuh25nhwh94mQILSpGUhfNOEDRamY=;
- b=IQG6MU6cV3uob6ghqWvaBflXpByjVBChBr5DoPjzeQAl7MT7wwHxDi1lsZsZxaiAPO
- /Fa1WJ9x+3tSSjm537E4uAgSeFTYyXO3oTCq7efwdr40Hxv/eXjexhx+B7Es3TNSeXIC
- njaTL6CzGEZgBcFnh7IH1pAepQw7OKex+bs40cjEjaZYWxddqZ5qFyWP68CGNvZluP8+
- v1QfHN4oTpf4xLmasjZDKBJOXjz2J1+48FDeay4HOw1tz4cNKcnaxgolZ339iehHOcd5
- 9Oq8e6TEWI8EL00iq9iUUunLYDHYsm0hFmH7Rauoa1OgycWOlKnn7xJQLQrN2Q9fyYF8
- TGtg==
-X-Gm-Message-State: AOAM530RC4zr9csMT72tGv6hNbv80OikR55wt7DJx7/OI+VjyFXRk/u6
- Yo4EgXHv6cwtloHrdldQ/HggyirVTLMnyw==
-X-Google-Smtp-Source: ABdhPJy+ySkVkHwUExvk/bcRpM2hZ71hE496Y1reuvgUUPyeXvWXypE55nkBpoJIYXnB/yxtaIqz4w==
-X-Received: by 2002:adf:a455:: with SMTP id e21mr1898622wra.158.1603446890187; 
- Fri, 23 Oct 2020 02:54:50 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.117.206])
- by smtp.gmail.com with ESMTPSA id q6sm2325490wma.0.2020.10.23.02.54.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Oct 2020 02:54:49 -0700 (PDT)
-Subject: Re: [PATCH] MAINTAINERS: change mediatek wiki page
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, matthias.bgg@kernel.org
-References: <20201020152639.21950-1-matthias.bgg@kernel.org>
- <CAAOTY__MegNwaUGphYNpnKrC_y8SX-_rDNXGxsaBJ6FDBKsQ_w@mail.gmail.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <8605c61c-4329-9771-ba45-058e7d3f199c@gmail.com>
-Date: Fri, 23 Oct 2020 11:54:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kVtzh-0000yc-2Z; Fri, 23 Oct 2020 10:08:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=FCMu17GKL3SVbRY42WZqlRD8EE43zhJfJQWsX4JtRSw=; b=zy/rP3W8k2zB2e+ib5aUr7OVu
+ hYHQ11edwlCmCqSX7E5Br7LYx9ymLD8vDqt0Yp5sIXmgiPEFbtQGib6ImDLcp54WY0pgdSIx03OW9
+ j18jwFW+qnOPM9LRvFPa+NfEdkSOWe8X+Ar6JRvLKooJ9j3/+VkRTGJILcR4+OXnw0IZAxKU0eW1D
+ LdaqpkM0hnPQqa1Y4GF/+ctbvGsAgz7usOMF87KbXQCa01pJKQvICW03TnNIUbLcDFJmaBPq/P5eC
+ ZB0g2esjo2ch9p97XCv6Xrr2arp81wDQzXgFK4Z+YyyzloqTdQsDjbS1H/ozU5vUVSn5VEH472ieR
+ 5u64fBZ9Q==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:49920)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1kVtzZ-0003Gk-N8; Fri, 23 Oct 2020 11:08:13 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1kVtzW-0008LM-Go; Fri, 23 Oct 2020 11:08:10 +0100
+Date: Fri, 23 Oct 2020 11:08:10 +0100
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v2 3/4] arm: mm: introduce L_PTE_SPECIAL
+Message-ID: <20201023100810.GY1551@shell.armlinux.org.uk>
+References: <20201023091437.8225-1-miles.chen@mediatek.com>
+ <20201023091437.8225-4-miles.chen@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <CAAOTY__MegNwaUGphYNpnKrC_y8SX-_rDNXGxsaBJ6FDBKsQ_w@mail.gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20201023091437.8225-4-miles.chen@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_055452_859756_7F235365 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20201023_060821_566001_730A0F68 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,39 +84,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kuohong.wang@mediatek.com, yh.chen@mediatek.com,
- linux-kernel <linux-kernel@vger.kernel.org>, Miles.Chen@mediatek.com,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Yingjoe.Chen@mediatek.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Steve Capper <steve.capper@linaro.org>, wsd_upstream@mediatek.com,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>,
+ linux-kernel@vger.kernel.org, Minchan Kim <minchan@kernel.org>,
+ linux-mediatek@lists.infradead.org, Suren Baghdasaryan <surenb@google.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAyMS8xMC8yMDIwIDE4OjUzLCBDaHVuLUt1YW5nIEh1IHdyb3RlOgo+IEhpLCBNYXR0aGlh
-czoKPiAKPiA8bWF0dGhpYXMuYmdnQGtlcm5lbC5vcmc+IOaWvCAyMDIw5bm0MTDmnIgyMOaXpSDp
-gLHkuowg5LiL5Y2IMTE6Mjflr6vpgZPvvJoKPj4KPj4gRnJvbTogTWF0dGhpYXMgQnJ1Z2dlciA8
-bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPj4KPj4gVGhlIG9sZCB3aWtpIHBhZ2UgdW5mb3J0dW5h
-dGVseSBnb3QgbG9zdCBieSBzZXJ2ZXIgY3Jhc2guCj4+IFRoZSBuZXcgd2lraSBjYW4gYmUgZm91
-bmQgb24gdGhlIGtlcm5lbC5vcmcgaW5mcmFzdHJ1Y3R1cmUKPj4KPiAKPiBSZXZpZXdlZC1ieTog
-Q2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cj4gCgpwdXNoZWQgdG8gdjUu
-MTAtdG1wL3NvYwoKVGhhbmtzCgo+PiBTaWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxt
-YXR0aGlhcy5iZ2dAZ21haWwuY29tPgo+PiAtLS0KPj4gICBNQUlOVEFJTkVSUyB8IDIgKy0KPj4g
-ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPj4KPj4gZGlm
-ZiAtLWdpdCBhL01BSU5UQUlORVJTIGIvTUFJTlRBSU5FUlMKPj4gaW5kZXggMTRiOGVjMGJiNThi
-Li43ZDAwODg3ODJhOWYgMTAwNjQ0Cj4+IC0tLSBhL01BSU5UQUlORVJTCj4+ICsrKyBiL01BSU5U
-QUlORVJTCj4+IEBAIC0yMDY3LDcgKzIwNjcsNyBAQCBNOiAgICAgICAgTWF0dGhpYXMgQnJ1Z2dl
-ciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPj4gICBMOiAgICAgbGludXgtYXJtLWtlcm5lbEBs
-aXN0cy5pbmZyYWRlYWQub3JnIChtb2RlcmF0ZWQgZm9yIG5vbi1zdWJzY3JpYmVycykKPj4gICBM
-OiAgICAgbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZyAobW9kZXJhdGVkIGZvciBu
-b24tc3Vic2NyaWJlcnMpCj4+ICAgUzogICAgIE1haW50YWluZWQKPj4gLVc6ICAgICBodHRwczov
-L210ay5iY25mcy5vcmcvCj4+ICtXOiAgICAgaHR0cHM6Ly9tdGsud2lraS5rZXJuZWwub3JnLwo+
-PiAgIEM6ICAgICBpcmM6Ly9jaGF0LmZyZWVub2RlLm5ldC9saW51eC1tZWRpYXRlawo+PiAgIEY6
-ICAgICBhcmNoL2FybS9ib290L2R0cy9tdDYqCj4+ICAgRjogICAgIGFyY2gvYXJtL2Jvb3QvZHRz
-L210NyoKPj4gLS0KPj4gMi4yOC4wCj4+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCj4+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+PiBM
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlz
-dApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Fri, Oct 23, 2020 at 05:14:36PM +0800, Miles Chen wrote:
+> From: Minchan Kim <minchan@kernel.org>
+> 
+> This patch introduces L_PTE_SPECIAL and pte functions for supporting
+> get_user_pages_fast.
+> 
+> Cc: Russell King <linux@armlinux.org.uk>
+> Cc: Catalin Marinas <catalin.marinas@arm.com>
+> Cc: Will Deacon <will.deacon@arm.com>
+> Cc: Steve Capper <steve.capper@linaro.org>
+> Cc: Minchan Kim <minchan@kernel.org>
+> Cc: Suren Baghdasaryan <surenb@google.com>
+> Signed-off-by: Minchan Kim <minchan@kernel.org>
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  arch/arm/Kconfig                      |  4 ++--
+>  arch/arm/include/asm/pgtable-2level.h |  1 +
+>  arch/arm/include/asm/pgtable-3level.h |  6 ------
+>  arch/arm/include/asm/pgtable.h        | 13 +++++++++++++
+>  4 files changed, 16 insertions(+), 8 deletions(-)
+> 
+> diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+> index c18fa9d382b7..1f75864b7c7a 100644
+> --- a/arch/arm/Kconfig
+> +++ b/arch/arm/Kconfig
+> @@ -13,7 +13,7 @@ config ARM
+>  	select ARCH_HAS_KCOV
+>  	select ARCH_HAS_MEMBARRIER_SYNC_CORE
+>  	select ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE
+> -	select ARCH_HAS_PTE_SPECIAL if ARM_LPAE
+> +	select ARCH_HAS_PTE_SPECIAL if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
+>  	select ARCH_HAS_PHYS_TO_DMA
+>  	select ARCH_HAS_SETUP_DMA_OPS
+>  	select ARCH_HAS_SET_MEMORY
+> @@ -82,7 +82,7 @@ config ARM
+>  	select HAVE_DYNAMIC_FTRACE_WITH_REGS if HAVE_DYNAMIC_FTRACE
+>  	select HAVE_EFFICIENT_UNALIGNED_ACCESS if (CPU_V6 || CPU_V6K || CPU_V7) && MMU
+>  	select HAVE_EXIT_THREAD
+> -	select HAVE_FAST_GUP if ARM_LPAE
+> +	select HAVE_FAST_GUP if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
+>  	select HAVE_FTRACE_MCOUNT_RECORD if !XIP_KERNEL
+>  	select HAVE_FUNCTION_GRAPH_TRACER if !THUMB2_KERNEL && !CC_IS_CLANG
+>  	select HAVE_FUNCTION_TRACER if !XIP_KERNEL
+> diff --git a/arch/arm/include/asm/pgtable-2level.h b/arch/arm/include/asm/pgtable-2level.h
+> index cdcd55cca37d..385e7a32394e 100644
+> --- a/arch/arm/include/asm/pgtable-2level.h
+> +++ b/arch/arm/include/asm/pgtable-2level.h
+> @@ -117,6 +117,7 @@
+>  #define L_PTE_VALID		(_AT(pteval_t, 1) << 0)		/* Valid */
+>  #define L_PTE_PRESENT		(_AT(pteval_t, 1) << 0)
+>  #define L_PTE_YOUNG		(_AT(pteval_t, 1) << 1)
+> +#define L_PTE_SPECIAL		(_AT(pteval_t, 1) << 5)
+
+How does this work?  Bits 2 through 5 are already in use for the memory
+type.
+
+Repurposing this bit means that L_PTE_MT_DEV_NONSHARED,
+L_PTE_MT_DEV_WC, L_PTE_MT_DEV_CACHED and L_PTE_MT_VECTORS clash with
+it.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
