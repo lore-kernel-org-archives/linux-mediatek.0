@@ -2,22 +2,22 @@ Return-Path: <SRS0=bV6b=D6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DF1AC4363A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 14:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 47671C388F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 14:49:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CABDC21527
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 14:31:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D549720853
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 14:49:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s/IXYFQT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CABDC21527
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S5cdrpZ8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D549720853
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,50 +25,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gMzblBmkQSWMcpmiksTEC/amlhNqLyjxa/jdcDDonYA=; b=s/IXYFQT+0cv8B7A5oPjA5X8p
-	oLJdurGGZDNcXiwuZirGxKocY7WuP8mWNkvDAh7dTpYM4O31R3zOkjQGwqrxTCaic49cbxzUMvQPB
-	GaxUYRaWgySAnKwKLRmJP0/JmAsxs9Mmqx42h8woAXRA37jGEWkOi7CHZI4OFVOB7WzRXNnRSrC9h
-	Ydk+SjmZcuhWnoSF1CZAa9FENhEr90dfqqROWOgrcGoeEcZmVujcu78My54IDYA8+/BlZqAibSNI4
-	h+UcZU0whrFwN9+xO06fGGi+TX21D954P7EK1ogQCsVIq5kypkJlBu26ihVg2Mfcm0Bff6NaiMg+Y
-	MuleQ6XTQ==;
+	 bh=+B7Z6I5intpngKKXJyo8q9TIwzUeGvVjpzXBczQI6Qg=; b=S5cdrpZ8xZjLr7iiIQtFl7zor
+	n8cNt0O9eIToQDjQ7HzULv2KCOERXLPr71z4mWmiJyuGaLocEdmiKNb3NDIJ3fyDS8BKx7Y6UZ8XW
+	RbmezqYbeEjpOn9VWXaH75FXc0V+NPxfS0ekTZIog5CoxJnnUgnUaRFR6bkd+qy9W13AZmWE3565r
+	KAhWEvygYRby089ntY+gVxbek6BVb7lasHpjscGARQ4/DvWaCmDCL0UaKB2wxRHZsv3vp1IoQhiNe
+	6a+oWAwoj6ADvvVliEo0WOj3VphFAokz00Dgte50DVst4GM2KVoH2Lo7w+s7X19Ec2NTJV1LNVFOM
+	631mbPRBw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVy63-0002XJ-Bu; Fri, 23 Oct 2020 14:31:12 +0000
-Received: from mga02.intel.com ([134.134.136.20])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVy5x-0002VV-Df; Fri, 23 Oct 2020 14:31:06 +0000
-IronPort-SDR: g7l3V+1nTvJfHdTgYE20vPnRGIMSV8AxGtUiDXtFhR8QRj3062pSJSgTVI5x5xWWcQe3l94U9c
- vY4wdYAIZqkQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9782"; a="154640202"
-X-IronPort-AV: E=Sophos;i="5.77,408,1596524400"; d="scan'208";a="154640202"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Oct 2020 07:30:58 -0700
-IronPort-SDR: strZ7qZQpzKzpW+H9q1kQAGAQ2o4KKVxcx2BObcjmBmCxf0w5J4zy48ak1cHbj/rIJ9J49uzSh
- S2ndozz2CtvA==
-X-IronPort-AV: E=Sophos;i="5.77,408,1596524400"; d="scan'208";a="523514927"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Oct 2020 07:30:54 -0700
-Received: from andy by smile with local (Exim 4.94)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1kVy6m-00E8jW-Fi; Fri, 23 Oct 2020 17:31:56 +0300
-Date: Fri, 23 Oct 2020 17:31:56 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [PATCH v15 2/2] media: i2c: Add OV02A10 image sensor driver
-Message-ID: <20201023143156.GX4077@smile.fi.intel.com>
-References: <20201013130503.2412-1-dongchun.zhu@mediatek.com>
- <20201013130503.2412-3-dongchun.zhu@mediatek.com>
+	id 1kVyNE-0005Ip-3i; Fri, 23 Oct 2020 14:48:56 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kVyN9-0005Hg-KD; Fri, 23 Oct 2020 14:48:52 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AF27A113E;
+ Fri, 23 Oct 2020 07:48:47 -0700 (PDT)
+Received: from bogus (unknown [10.57.15.80])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6CC673F66E;
+ Fri, 23 Oct 2020 07:48:45 -0700 (PDT)
+Date: Fri, 23 Oct 2020 15:48:42 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: claude yen <claude.yen@mediatek.com>
+Subject: Re: [PATCH] PM / s2idle: Export s2idle_set_ops
+Message-ID: <20201023144842.zos4pvpwv4r3rv4j@bogus>
+References: <20201022061748.13730-1-claude.yen@mediatek.com>
+ <20201022061748.13730-2-claude.yen@mediatek.com>
+ <20201022070154.hqvksoj4nss3er2e@bogus>
+ <1603427300.7573.6.camel@mtkswgap22>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201013130503.2412-3-dongchun.zhu@mediatek.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <1603427300.7573.6.camel@mtkswgap22>
+User-Agent: NeoMutt/20171215
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_103105_632217_9096B656 
-X-CRM114-Status: GOOD (  23.01  )
+X-CRM114-CacheID: sfid-20201023_104851_724136_48C92B41 
+X-CRM114-Status: GOOD (  22.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,156 +70,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Len Brown <len.brown@intel.com>, wsd_upstream@mediatek.com,
+ linux-pm@vger.kernel.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Pavel Machek <pavel@ucw.cz>, Sudeep Holla <sudeep.holla@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 13, 2020 at 09:05:03PM +0800, Dongchun Zhu wrote:
-> Add a V4L2 sub-device driver for OmniVision OV02A10 image sensor.
+On Fri, Oct 23, 2020 at 12:28:20PM +0800, claude yen wrote:
+> On Thu, 2020-10-22 at 08:02 +0100, Sudeep Holla wrote:
+> > On Thu, Oct 22, 2020 at 02:17:48PM +0800, Claude Yen wrote:
+> > > As suspend_set_ops is exported in commit a5e4fd8783a2
+> > > ("PM / Suspend: Export suspend_set_ops, suspend_valid_only_mem"),
+> > > exporting s2idle_set_ops to make kernel module setup s2idle ops too.
+> > > 
+> > > In this way, kernel module can hook platform suspend
+> > > functions regardless of Suspend-to-Ram(S2R) or
+> > > Suspend-to-Idle(S2I)
+> > >
+> > 
+> > If this is for arm64 platform, then NACK. You must use PSCI and it will
+> > set the ops and it can't be module.
+> > 
+> 
+> PSCI uses suspend_set_ops instead. And suspend_set_ops has been
+> exported years ago.
+> 
+> Suspend-to_Idle(S2I) is another suspend method supported by linux
+> kernel. The corresponding s2idle_ops can be hooked by s2idle_set_ops
+> by underlying platforms.  For example, S2I is now introduced into
+> Mediatek SoC platforms. Besides, power management driver is built as
+> kernel module.
+> 
+> Mobile platforms are now call for kernel drivers to be kernel modules.
+> This could help drivers easier to migrate to newer linux kernel.
+> Ref: https://linuxplumbersconf.org/event/7/contributions/790/
+> 
 
-...
-
-> +#define OV02A10_ID_MASK					0xffff
-
-GENMASK()
-
-(And include bits.h for that)
-
-...
-
-> +static int __ov02a10_start_stream(struct ov02a10 *ov02a10)
-> +{
-> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> +	const struct ov02a10_reg_list *reg_list;
-> +	int ret;
-> +
-> +	/* Apply default values of current mode */
-> +	reg_list = &ov02a10->cur_mode->reg_list;
-> +	ret = ov02a10_write_array(ov02a10, reg_list);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Apply customized values from user */
-> +	ret = __v4l2_ctrl_handler_setup(ov02a10->subdev.ctrl_handler);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Set orientation to 180 degree */
-> +	if (ov02a10->upside_down) {
-> +		ret = i2c_smbus_write_byte_data(client, REG_MIRROR_FLIP_CONTROL,
-> +						REG_MIRROR_FLIP_ENABLE);
-> +		if (ret) {
-
-Shouldn't you use 'ret < 0' here as well?
-
-> +			dev_err(&client->dev, "failed to set orientation\n");
-> +			return ret;
-> +		}
-> +		ret = i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> +						REG_ENABLE);
-> +		if (ret < 0)
-> +			return ret;
-> +	}
-> +
-> +	/* Set MIPI TX speed according to DT property */
-> +	if (ov02a10->mipi_clock_voltage != OV02A10_MIPI_TX_SPEED_DEFAULT) {
-> +		ret = i2c_smbus_write_byte_data(client, TX_SPEED_AREA_SEL,
-> +						ov02a10->mipi_clock_voltage);
-> +		if (ret < 0)
-> +			return ret;
-> +	}
-> +
-> +	/* Set stream on register */
-> +	return i2c_smbus_write_byte_data(client, REG_SC_CTRL_MODE,
-> +					 SC_CTRL_MODE_STREAMING);
-> +}
-
-...
-
-> +/*
-
-Was your intention to declare it as a kernel doc?
-
-> + * ov02a10_set_exposure - Function called when setting exposure time
-> + * @priv: Pointer to device structure
-> + * @val: Variable for exposure time, in the unit of micro-second
-> + *
-> + * Set exposure time based on input value.
-> + *
-> + * Return: 0 on success
-> + */
-> +static int ov02a10_set_exposure(struct ov02a10 *ov02a10, int val)
-
-...
-
-> +static int ov02a10_check_hwcfg(struct device *dev, struct ov02a10 *ov02a10)
-> +{
-> +	struct fwnode_handle *ep;
-> +	struct fwnode_handle *fwnode = dev_fwnode(dev);
-> +	struct v4l2_fwnode_endpoint bus_cfg = {
-> +		.bus_type = V4L2_MBUS_CSI2_DPHY,
-> +	};
-> +	unsigned int i, j;
-> +	int ret;
-
-> +	if (!fwnode)
-> +		return -EINVAL;
-
-Basically you can avoid this check, but it's up to you.
-
-> +	ep = fwnode_graph_get_next_endpoint(fwnode, NULL);
-> +	if (!ep)
-> +		return -ENXIO;
-> +
-> +	ret = v4l2_fwnode_endpoint_alloc_parse(ep, &bus_cfg);
-> +	fwnode_handle_put(ep);
-> +	if (ret)
-> +		return ret;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(link_freq_menu_items); i++) {
-> +		for (j = 0; j < bus_cfg.nr_of_link_frequencies; j++) {
-> +			if (link_freq_menu_items[i] ==
-> +				bus_cfg.link_frequencies[j]) {
-> +				ov02a10->freq_index = i;
-> +				break;
-> +			}
-> +		}
-> +
-> +		if (j == bus_cfg.nr_of_link_frequencies) {
-> +			dev_err(dev, "no link frequency %lld supported\n",
-> +				link_freq_menu_items[i]);
-> +			ret = -EINVAL;
-> +			break;
-> +		}
-> +	}
-> +
-> +	v4l2_fwnode_endpoint_free(&bus_cfg);
-> +
-> +	return ret;
-> +}
-
-...
-
-> +	fwnode_property_read_u32(dev_fwnode(dev), "rotation", &rotation);
-
-Same Q as per previous reviews. Why device property API can't be used here?
-
-And everywhere else when you have
-	 fwnode_property_read_*(dev_fwnode(dev), ...)
-calls.
+I understand that. But I am interested in looking at the module you want
+to use this and how that interacts with PSCI. If this is arm64, you must
+use PSCI for system suspend and cpu suspend. What does this module do on
+top of those is what I want to know. Please post that module or point
+me if it is already present in the tree.
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
-
+Regards,
+Sudeep
 
 _______________________________________________
 Linux-mediatek mailing list
