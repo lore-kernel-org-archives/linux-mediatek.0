@@ -2,76 +2,92 @@ Return-Path: <SRS0=bV6b=D6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0571C388F9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:28:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24D29C55179
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:28:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 691322225F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:28:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9CBBF2192A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 09:28:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z01sLX6O";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cbvsxBAD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 691322225F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sG2H4UWU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="f07s3VLB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CBBF2192A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MM036lR7NuDEELpZYo/ki1Dk5h5lMeqBTtgHi1ooB5k=; b=Z01sLX6OWZ4TMjG/66TDaVPn6
-	pTmF7MCTWixR0A4f1bvQ9zrArD7EIZoEgfMK/nZvec5EsTexTciVU+FNU3PacI7a6Y1xlODXET7RH
-	v8XcQGeezNjERy6oNi9tlPuuis/p2q9jRlYBxoxqztXjDoOeZz2kpAKcG/gCCjRig4gpLR7nVuyxB
-	6jJJOX2UXs4smuLXk4Wo1sQiIQB/zH/Qs26g2XIXRlo2H1ucy9+y6df7agEFzmZyKRsxn1i8qpEPV
-	0t8fDwAjP0k4yzvbTQhAYpHG+fC+1dmEIrJXN716GusQgWPTmQW8ak6I87VVWpLDqR8ZOzW+y7KSS
-	uvbyf3jeA==;
+	 bh=KS5g+kCaBIPy/zdyXqT1SoMthfHVOW6ZltVQUeSRkUc=; b=sG2H4UWUskeOnM+NdqilvMhKo
+	U5xFtKnvP/xMY8mmTFpWe36PY2w3R8boxPwBaQ3fOojikhEicd308CGuB/Co4v6YdGb1AsZ2XcxBP
+	hSt3AGr6w/+e5IiTV4Ag9b/cFR+o/jDhfj7sZmKMoj2/cFctOvxfg18u4uqcL4IoPoALlQcb3Z5Hx
+	llLlWL5ANyULoFFpsHgRRchgLJ2/PS4mSXtZk5g2cw7RmtEhD+fxPLaliqFHpXtJOnbvXyl/A2X+h
+	LY+ljCyZ93DUfh/COlDFaxunqPP0u/LLumgiXpVXELMuazbC8FuQ6n+1mMFRpoXfFgJquEixkyXtu
+	c+0+oCmWg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVtMV-0001np-1K; Fri, 23 Oct 2020 09:27:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kVtMW-0001oF-9D; Fri, 23 Oct 2020 09:27:52 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVtM4-0001bV-LG; Fri, 23 Oct 2020 09:27:26 +0000
-X-UUID: 93b0baf5a4034c79a4c618581ff9916f-20201023
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=LFxbOOl0A2kIOyhu8/sycF3YNV75YE/93bSFD6Yl2wM=; 
- b=cbvsxBADek+rvwMG6nw5Cl1r9TQWXhoelUI++NbYbnZG5y7wboSjIEh8Heiu48V8DlH6SRcBUDM6FBVOziUGgi49VDgmPGYcyOqTDvA8H8yvvV8OZsq9KNdYb0GniXp7Hfvxgpk+m0QaOIuyhfsRdnWqCVSzTiQdO89edhrCqNc=;
-X-UUID: 93b0baf5a4034c79a4c618581ff9916f-20201023
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1981476347; Fri, 23 Oct 2020 01:14:58 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 23 Oct 2020 02:14:56 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 23 Oct 2020 17:14:54 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 23 Oct 2020 17:14:54 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Catalin Marinas <catalin.marinas@arm.com>, Russell King
- <linux@armlinux.org.uk>, Minchan Kim <minchan@kernel.org>
-Subject: [PATCH v2 3/4] arm: mm: introduce L_PTE_SPECIAL
-Date: Fri, 23 Oct 2020 17:14:36 +0800
-Message-ID: <20201023091437.8225-4-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201023091437.8225-1-miles.chen@mediatek.com>
-References: <20201023091437.8225-1-miles.chen@mediatek.com>
+ id 1kVtM5-0001d9-7L
+ for linux-mediatek@lists.infradead.org; Fri, 23 Oct 2020 09:27:27 +0000
+Received: by mail-pg1-x543.google.com with SMTP id h6so772007pgk.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2020 02:27:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=ucv5oR6DPdGRMnKY0683TdGM4cbhJcd2cZfvbWq/+PU=;
+ b=f07s3VLB2MfVm1O3IHZ0eF7bXrbz5q+OMq7d217XRq9up5bkItIWfl7qKlNY+ATmJV
+ 4DovSd07C399R6SJrO1As9FKrmDERtWx5kJxc8DRoMJ+mxRaMkW0AoM45IF+41hG3rZP
+ dKa0tPDvPO/MDNOsapAIMlYh40B5L1H/RKp5Om7zDiBn5DSZptfMyMgU+QpFQlJQWdcI
+ Ed+VZC14LdegGJtYX7zFcRF7qKq62X4xqR4cjPePX5kPPD2cbCZWFP3wspS1A/+71EnK
+ HG8VbMzQxU33SMfkk4pL55/YNMbLTdglZWjpTUOU1ZN/ohpfdr4UeO2OzSJKxvXWhepm
+ Dm5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=ucv5oR6DPdGRMnKY0683TdGM4cbhJcd2cZfvbWq/+PU=;
+ b=YWYCTJQRhaYLttuWcK0ggz2zRA4XRy7OHuO5fJO1pV/IIwK5vGu0jTKDPl22OwwG7a
+ Ml7AJtlfrlr0USZyFxHak/GvgLAknu8ZvnrHAFpn2IbXbE9J/5ByAZzjkx+tAM3uax//
+ Au9R4fpcFKlnONJJehHinjQHgR5ZY2nolfw/nGoakQuKTnzv42VdGHM2CzRuYefwcdny
+ UZfTlTKlzFXEsY1WcFpsM2IYBwF5tVt/3fDamhtLha8uO7z5CHQhcWFEMvYjmn0HEuIl
+ sXQR3JsY+yDDj0qT8LpO1H5dKr/nypFLXRC7aVvXVimyy0+hvh8lXl03FRoNtJoC1TUX
+ trKg==
+X-Gm-Message-State: AOAM531temfQ7OROtQkiBQZSYPEQuEwlaWGocz72SoTaIwIEv37Zfj2p
+ QuBILoah2/Pl4qGSmFCb1xIuNA==
+X-Google-Smtp-Source: ABdhPJyuPfJLoxrZf/YA+PmXSKVSfNq2TGaMvcJ9QKvWEeZvn/5j5V974zQbFeFOsyw0rCEczr08RA==
+X-Received: by 2002:a17:90a:f187:: with SMTP id
+ bv7mr1555398pjb.198.1603445242886; 
+ Fri, 23 Oct 2020 02:27:22 -0700 (PDT)
+Received: from localhost ([122.181.54.133])
+ by smtp.gmail.com with ESMTPSA id gx20sm1545390pjb.1.2020.10.23.02.27.21
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 23 Oct 2020 02:27:22 -0700 (PDT)
+Date: Fri, 23 Oct 2020 14:57:20 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Hector Yuan <hector.yuan@mediatek.com>
+Subject: Re: [PATCH v1] cpufreq: mediatek-hw: Add support for Mediatek
+ cpufreq HW driver
+Message-ID: <20201023092720.qpws5wivqb4u6fwl@vireshk-i7>
+References: <1603441493-18554-1-git-send-email-hector.yuan@mediatek.com>
+ <20201023082817.5vp4cvi2lmpaozcn@vireshk-i7>
+ <1603444138.20224.19.camel@mtkswgap22>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1603444138.20224.19.camel@mtkswgap22>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_052724_900373_55EE228F 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20201023_052725_383505_E7081273 
+X-CRM114-Status: GOOD (  26.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,120 +99,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Steve Capper <steve.capper@linaro.org>, wsd_upstream@mediatek.com, Will
- Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org,
- Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
- Suren
- Baghdasaryan <surenb@google.com>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ Florian Fainelli <f.fainelli@gmail.com>, wsd_upstream@mediatek.com,
+ linux-pm@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+ Dave Gerlach <d-gerlach@ti.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Amit Kucheria <amit.kucheria@linaro.org>,
+ Santosh Shilimkar <ssantosh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Minchan Kim <minchan@kernel.org>
+On 23-10-20, 17:08, Hector Yuan wrote:
+> On Fri, 2020-10-23 at 13:58 +0530, Viresh Kumar wrote:
+> > On 23-10-20, 16:24, Hector Yuan wrote:
+> > > This patchset includes 6 patches and depends on the MT6779 DTS patch[1] submitted by Hanks Chen.
+> > > The first 3 patches are for CPUFREQ HW driver and device tree binding, which are already sent before separately [2][3]. For binding part, I add a new patch to add property in cpu schema.
+> > > Besides, we add three more patches including EM power table, SVS CPU initialize, and cooling device.
+> > 
+> > And even after so many versions of these you chose to name this V1. It
+> > is very difficult for reviewers to find time to review your stuff, and
+> > they expect some sort of summary from you on what exactly changed from
+> > last version and you also need to name the current version currently.
+> > 
+> > This should have been V8 and you should have added a "V7->V8 diff:"
+> > section here, naming all the changes you did. Please send that as
+> > reply to this email, so I can see what really changed.
+> > 
+> Hi, Viresh
+> 
+> Sorry for your inconvenience.
+> #1~#3 is for cpufreq driver we have reviewed and the bindings which
+> separate freq domain to CPU schema.There is no change for the driver
+> itself.
+>   1. cpufreq: mediatek-hw: Add support for CPUFREQ HW
+>   2. dt-bindings: arm: cpus: Document 'mtk,freq-domain' property
+>   3. dt-bindings: cpufreq: add bindings for MediaTek cpufreq HW
+> 
+> #4~#6 is for other CPU features, i.e. SVS [1]
+>   4. cpufreq: mediatek-hw: register EM power table
+>   5. cpufreq: mediatek-hw: Add SVS CPU initialization
+>   6. cpufreq: mediatek-hw: Add cooling dev flag
+> 
+> I supposed that it could be more clean to separate #4~#6 in another
+> patchset.May I know is it okay to you? Or I should merge all of changes
+> into v8 like you mentioned? Thank you.
 
-This patch introduces L_PTE_SPECIAL and pte functions for supporting
-get_user_pages_fast.
+Merge them all together and explain any special features (like SVS) in
+the commit log. It will also help in future when people want to
+understand your driver. Explain whatever is worth explaining there and
+is not straight forward.
 
-Cc: Russell King <linux@armlinux.org.uk>
-Cc: Catalin Marinas <catalin.marinas@arm.com>
-Cc: Will Deacon <will.deacon@arm.com>
-Cc: Steve Capper <steve.capper@linaro.org>
-Cc: Minchan Kim <minchan@kernel.org>
-Cc: Suren Baghdasaryan <surenb@google.com>
-Signed-off-by: Minchan Kim <minchan@kernel.org>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- arch/arm/Kconfig                      |  4 ++--
- arch/arm/include/asm/pgtable-2level.h |  1 +
- arch/arm/include/asm/pgtable-3level.h |  6 ------
- arch/arm/include/asm/pgtable.h        | 13 +++++++++++++
- 4 files changed, 16 insertions(+), 8 deletions(-)
+Thanks for the details.
 
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index c18fa9d382b7..1f75864b7c7a 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -13,7 +13,7 @@ config ARM
- 	select ARCH_HAS_KCOV
- 	select ARCH_HAS_MEMBARRIER_SYNC_CORE
- 	select ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE
--	select ARCH_HAS_PTE_SPECIAL if ARM_LPAE
-+	select ARCH_HAS_PTE_SPECIAL if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
- 	select ARCH_HAS_PHYS_TO_DMA
- 	select ARCH_HAS_SETUP_DMA_OPS
- 	select ARCH_HAS_SET_MEMORY
-@@ -82,7 +82,7 @@ config ARM
- 	select HAVE_DYNAMIC_FTRACE_WITH_REGS if HAVE_DYNAMIC_FTRACE
- 	select HAVE_EFFICIENT_UNALIGNED_ACCESS if (CPU_V6 || CPU_V6K || CPU_V7) && MMU
- 	select HAVE_EXIT_THREAD
--	select HAVE_FAST_GUP if ARM_LPAE
-+	select HAVE_FAST_GUP if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
- 	select HAVE_FTRACE_MCOUNT_RECORD if !XIP_KERNEL
- 	select HAVE_FUNCTION_GRAPH_TRACER if !THUMB2_KERNEL && !CC_IS_CLANG
- 	select HAVE_FUNCTION_TRACER if !XIP_KERNEL
-diff --git a/arch/arm/include/asm/pgtable-2level.h b/arch/arm/include/asm/pgtable-2level.h
-index cdcd55cca37d..385e7a32394e 100644
---- a/arch/arm/include/asm/pgtable-2level.h
-+++ b/arch/arm/include/asm/pgtable-2level.h
-@@ -117,6 +117,7 @@
- #define L_PTE_VALID		(_AT(pteval_t, 1) << 0)		/* Valid */
- #define L_PTE_PRESENT		(_AT(pteval_t, 1) << 0)
- #define L_PTE_YOUNG		(_AT(pteval_t, 1) << 1)
-+#define L_PTE_SPECIAL		(_AT(pteval_t, 1) << 5)
- #define L_PTE_DIRTY		(_AT(pteval_t, 1) << 6)
- #define L_PTE_RDONLY		(_AT(pteval_t, 1) << 7)
- #define L_PTE_USER		(_AT(pteval_t, 1) << 8)
-diff --git a/arch/arm/include/asm/pgtable-3level.h b/arch/arm/include/asm/pgtable-3level.h
-index fbb6693c3352..46fcc6725d3e 100644
---- a/arch/arm/include/asm/pgtable-3level.h
-+++ b/arch/arm/include/asm/pgtable-3level.h
-@@ -175,12 +175,6 @@ static inline pmd_t *pud_page_vaddr(pud_t pud)
- 
- #define pmd_present(pmd)	(pmd_isset((pmd), L_PMD_SECT_VALID))
- #define pmd_young(pmd)		(pmd_isset((pmd), PMD_SECT_AF))
--#define pte_special(pte)	(pte_isset((pte), L_PTE_SPECIAL))
--static inline pte_t pte_mkspecial(pte_t pte)
--{
--	pte_val(pte) |= L_PTE_SPECIAL;
--	return pte;
--}
- 
- #define pmd_write(pmd)		(pmd_isclear((pmd), L_PMD_SECT_RDONLY))
- #define pmd_dirty(pmd)		(pmd_isset((pmd), L_PMD_SECT_DIRTY))
-diff --git a/arch/arm/include/asm/pgtable.h b/arch/arm/include/asm/pgtable.h
-index c02f24400369..4092154ca779 100644
---- a/arch/arm/include/asm/pgtable.h
-+++ b/arch/arm/include/asm/pgtable.h
-@@ -195,6 +195,11 @@ static inline pte_t *pmd_page_vaddr(pmd_t pmd)
- #define pte_dirty(pte)		(pte_isset((pte), L_PTE_DIRTY))
- #define pte_young(pte)		(pte_isset((pte), L_PTE_YOUNG))
- #define pte_exec(pte)		(pte_isclear((pte), L_PTE_XN))
-+#ifdef CONFIG_ARCH_HAS_PTE_SPECIAL
-+#define pte_special(pte)	(pte_isset((pte), L_PTE_SPECIAL))
-+#else
-+#define pte_special(pte)	(0)
-+#endif
- 
- #define pte_valid_user(pte)	\
- 	(pte_valid(pte) && pte_isset((pte), L_PTE_USER) && pte_young(pte))
-@@ -274,6 +279,14 @@ static inline pte_t pte_mknexec(pte_t pte)
- 	return set_pte_bit(pte, __pgprot(L_PTE_XN));
- }
- 
-+#ifdef CONFIG_ARCH_HAS_PTE_SPECIAL
-+static inline pte_t pte_mkspecial(pte_t pte)
-+{
-+	return set_pte_bit(pte, __pgprot(L_PTE_SPECIAL));
-+}
-+#else
-+static inline pte_t pte_mkspecial(pte_t pte) { return pte; }
-+#endif
- static inline pte_t pte_modify(pte_t pte, pgprot_t newprot)
- {
- 	const pteval_t mask = L_PTE_XN | L_PTE_RDONLY | L_PTE_USER |
 -- 
-2.18.0
+viresh
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
