@@ -2,22 +2,22 @@ Return-Path: <SRS0=bV6b=D6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 413C2C55178
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:36:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F485C388F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:38:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C08F621527
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:36:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A7B8521527
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:38:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i5ZM3qQj";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="h4icBj/T"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C08F621527
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QihW100T";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="qZh++Pak"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7B8521527
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,66 +26,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rbaaHBFoXTQ7rv6UHX/o758EeJpKeAqgKqZYn4Frtug=; b=i5ZM3qQjf3iYWaOMFIkOOHDpX
-	h8YW0sAoAlXTq3e72VBUPGfJ0TIi1ZPR420+bNFVhoYv8neNJDpEqlksboVcQEvqCgUj8YxoO6dN+
-	mJsbQPNQKnqXeU0rw3SZdchAUsN0RQ8oArGaOoO+ELx5JkzaSEUgWMUE31Pl7FIbLFNi7N62Qbgbh
-	fk3WBxoTnOP/HpbhJ0Ii8jIgEoGW+9rUUQOsVqz/uv0GbzTukaXs3iOLEKWFQ4opYPSYJAG8lAEHU
-	R9kw4qqltaH53PnSwUUISAgeES69hygXvDWq9N7qnsoYf0jMqucuqf205EcVFbxQ2XD47xU4BTKnq
-	/wSfioc1g==;
+	 bh=/yOQzVLSAkjIZoqKV/oW7yjaPuxgpTfsBMaTmAe0UhU=; b=QihW100T9r2WbfNcd9ril6u0O
+	lPfGXsuULyv2UPHnhG7ZFGFfRYiV8Y5wLQNOZvERuXpOCTmh4JCvOLUHGneABrIZBd6C755NJkTFt
+	yVbQAcdEmTQ0I4Z/7gx6J7mtelfopGMsr8en08kACBVcaPq48Yl4X71nyXEcttuHbyqATXZGQTyuq
+	Y2r+IJ78h2gK7lYa2dBmPZP4eXPfN+5yGWQWimkmorzUH0KDFM2zR7U5a/Kc5gLvvPw/l7fVIkQy2
+	Xy0EHU+3oDTpYSpCN8bx1idAoLsmbS586OEZzpJomxXr1ACdDUuQVFs8pE5vq3CQsBx9U1RXrnpS9
+	3FDWLUBvQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVsY7-00021S-55; Fri, 23 Oct 2020 08:35:47 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1kVsaI-0002pJ-Sy; Fri, 23 Oct 2020 08:38:03 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVsY4-0001zA-3J
- for linux-mediatek@lists.infradead.org; Fri, 23 Oct 2020 08:35:45 +0000
-Received: by mail-pf1-x441.google.com with SMTP id e15so612189pfh.6
- for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2020 01:35:43 -0700 (PDT)
+ id 1kVsaE-0002nK-1S
+ for linux-mediatek@lists.infradead.org; Fri, 23 Oct 2020 08:37:58 +0000
+Received: by mail-pg1-x544.google.com with SMTP id n16so645838pgv.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2020 01:37:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=f+1AbkQy0A87BtmUgjwi9U43PkE6jzonKJ0Vu1is7Vo=;
- b=h4icBj/TmDHkcs+rhSs8XB2RNfjMBq5yYqyS0YSnDGSwFXPCqoDP/lxPP8V+vXHR8r
- oRQI1RxYVegeWAVl0m0H7iKa99OsNGct9JAcqom9WRHZ6ul4RvUUnui+KvrWXnWS/pHN
- /Kk2lGLpT63GC0MunDRXmZVti00Fi73wxul5FY/lrR1bqB46daudyNUZbVACVIszm9ic
- cG0wKRKoIEMLtDl/MX4kFyJqIdwWsUmLtsYy7B+8ROEp8UImTx/y5NkFgdGWkoZt1nwB
- 4WosCkRK9/JTL638s0CA4Vs6eONP0Ynr4um/xvHySi6roD8V01T+/rXTJXOyNiRgEVSs
- eF0w==
+ bh=Va8ts6a4Am407gshGkf677mIZGRewAIXYF9e6UNiPl8=;
+ b=qZh++PakWDfWQaCPx4PHufb8MscJWFMsERaUAmsnmx5/i0aQAt6Ax9EpCQgK72uNJI
+ bOYCzGhW6fWDIHmEYxxjTPGsUk4lypFdANrpHVO28k3V+m/zxTWAsro6g1gBlfFbi7+B
+ QmWfgHkBMTXbQcs16d8Mn7jZIdYL1ZuGi1s+4PdYr/Ufxn73fw44wdPAMA9ZSM+7dF18
+ cKHUKW6UomOwHzJOFUEBgHwe+UqfJe9ImDQGYW20rflFNFZMoSn+dEk8x1PF13wN0h38
+ 1skEBLQU7Xx7YIXW4sAOw8bOfHLQQFUS9OJyplUGM5vW6rSJCaKb4d3TASSD6m+qtzJ+
+ PWfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=f+1AbkQy0A87BtmUgjwi9U43PkE6jzonKJ0Vu1is7Vo=;
- b=CEt9iIOnVRCa5wtLD8PDg5rsclB4bEhr4HJLmveukg1wwtn51uigDZw5prQA0ofSGg
- zt89M8FCfNW5FmRxrniJ3/itqzLLhZrOmF41NJenPLCvoa+Im/ACs9an12zlcNTdjQW/
- Za2K1gzNSUxV5jWY94g38kOfjebomwR1Emg2N4eksaHjFPJrhkO386LPWKH8YUM3fBkd
- HTpLd099FNvgD/IrS9u2PtXnOgzBIvENZmt5OMob9/ljUHIRkJjgjp5tZppJ7xgkX1n1
- 1XGt/5RCkmlLkEacF7RgRet8mKAXjX9zOrnhZylQhq7Bj5XKsOjD1iZx7Ega92PwRc1w
- cwnQ==
-X-Gm-Message-State: AOAM532fQx+Id4gl1/H1AydgNqMrSLiSDqw7hBAHj2D5A9YWKCajyjmD
- 40n3pO+CH11m5UVlu+FEoy5Lh+8cncyouA==
-X-Google-Smtp-Source: ABdhPJxCa+aIUzR7XJtvhWGZdJtyvpTOifCyidYzBuGnz3Csh06sevyXOFdA7OARjrkuXKzbqORTaQ==
-X-Received: by 2002:a65:6243:: with SMTP id q3mr1227075pgv.154.1603442141794; 
- Fri, 23 Oct 2020 01:35:41 -0700 (PDT)
+ bh=Va8ts6a4Am407gshGkf677mIZGRewAIXYF9e6UNiPl8=;
+ b=eZWFU8EXulebRpz5hgCQ6iyJ3a6K0jEevxzbqBg6J3mm7e2YMP3pbnFJ2PyEfUFjfa
+ Ru08GukL2xs9yO8GYFKW7KRhu7BkwSL7vph5zH5qPSv9H7ripZBl2rBS+ICs13yFePyQ
+ DMmLCVVNouxwxa44KobCiYXlwAHp5W8mKE73rOEnyI8aiCbwoXTigtLlga1zRpmVEIty
+ qw7lhv9UlhYoASGBtH+m+dIMfJ4zanp9/ZBvKcinzXM9NncXz99OG25wpyNv85sSlz5b
+ SWEur2MUdIG5dQlyFPh6Rs07P/NH1ijv3wD1gjVWIuuQEw7SiyYVqD8iGpbeMkXIt4dC
+ 6OaQ==
+X-Gm-Message-State: AOAM530w20gA+CEC6KcZQcJ2u9ecKSmZA5xnbLBK1v5tqpH94JJqyFLq
+ QgP/4svPXaGpEFu+YDQi3Ceo8A==
+X-Google-Smtp-Source: ABdhPJzvwM7agBM8o5iD2nhR22zj6lxjJQ41h59XnY+6Mh7VdeZdilMlX2MulKBFEniL7EkdoXa8pg==
+X-Received: by 2002:a17:90a:6ba7:: with SMTP id
+ w36mr1300199pjj.12.1603442275873; 
+ Fri, 23 Oct 2020 01:37:55 -0700 (PDT)
 Received: from localhost ([122.181.54.133])
- by smtp.gmail.com with ESMTPSA id w19sm1267173pff.6.2020.10.23.01.35.40
+ by smtp.gmail.com with ESMTPSA id w17sm1302824pjq.42.2020.10.23.01.37.54
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 23 Oct 2020 01:35:40 -0700 (PDT)
-Date: Fri, 23 Oct 2020 14:05:38 +0530
+ Fri, 23 Oct 2020 01:37:54 -0700 (PDT)
+Date: Fri, 23 Oct 2020 14:07:52 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
 To: Hector Yuan <hector.yuan@mediatek.com>
-Subject: Re: [PATCH v1 3/6] dt-bindings: cpufreq: add bindings for MediaTek
- cpufreq HW
-Message-ID: <20201023083538.f6hhcyizvlf2ufjr@vireshk-i7>
+Subject: Re: [PATCH v1 5/6] cpufreq: mediatek-hw: Add SVS CPU initialization
+Message-ID: <20201023083752.bvs4oabbsdzlnnip@vireshk-i7>
 References: <1603441493-18554-1-git-send-email-hector.yuan@mediatek.com>
- <1603441493-18554-4-git-send-email-hector.yuan@mediatek.com>
+ <1603441493-18554-6-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1603441493-18554-4-git-send-email-hector.yuan@mediatek.com>
+In-Reply-To: <1603441493-18554-6-git-send-email-hector.yuan@mediatek.com>
 User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_043544_231875_F0B997F1 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20201023_043758_101286_98560E23 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,68 +115,14 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 23-10-20, 16:24, Hector Yuan wrote:
 > From: "Hector.Yuan" <hector.yuan@mediatek.com>
 > 
-> Add devicetree bindings for MediaTek HW driver.
-> 
-> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
-> ---
->  .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |   46 ++++++++++++++++++++
->  1 file changed, 46 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> new file mode 100644
-> index 0000000..a99f44f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> @@ -0,0 +1,46 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/cpufreq/cpufreq-mediatek-hw.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek's CPUFREQ Bindings
-> +
-> +maintainers:
-> +  - Hector Yuan <hector.yuan@mediatek.com>
-> +
-> +description:
-> +  CPUFREQ HW is a hardware engine used by MediaTek
-> +  SoCs to manage frequency in hardware. It is capable of controlling frequency
-> +  for multiple clusters.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,cpufreq-hw
-> +
-> +  reg:
-> +    minItems: 1
-> +    maxItems: 2
-> +    description: |
-> +      Addresses and sizes for the memory of the HW bases in each frequency domain.
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +examples:
-> +  - |
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        cpufreq_hw: cpufreq@11bc00 {
-> +            compatible = "mediatek,cpufreq-hw";
-> +            reg = <0 0x11bc10 0 0x8c>,
-> +               <0 0x11bca0 0 0x8c>;
-> +        };
-> +    };
+> Use pm_qos to block cpu-idle state for SVS initializing.
+> CPUs must be in power on state when doing SVS.
+> Add polling ack while coufreq hw is ready.(SVS init done)
 
-You still need to keep the CPU specific part here and explain how this
-block is going to get used using the other binding you added.
+Why is this required ?
 
--- 
-viresh
+And when you send the next version, please send a single patch for the
+cpufreq-driver by merging all of these together.
 
 _______________________________________________
 Linux-mediatek mailing list
