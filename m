@@ -2,83 +2,90 @@ Return-Path: <SRS0=bV6b=D6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22156C55178
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 413C2C55178
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:36:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A59CE22253
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:35:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C08F621527
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2020 08:36:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="v8E6Rfo/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cXdsTago"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A59CE22253
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i5ZM3qQj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="h4icBj/T"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C08F621527
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XwdMqOmcmx1DAOBA+LlPxhLaXUO+BI3PlXMJvDxsQyE=; b=v8E6Rfo/VO0GmVGLg6zNuBMF1
-	tnMlcE05ikEzwpZOuXize3KPyd2TIBZsdXBwSHNbolcx0ZpFLcLKxMx7aXulboOgwzfyNTFHV+ngj
-	UugARh5zNpQynUS3KiFT2t+7oyscgF/1NAuqKizVeUvak6yanrEs9ZhKOrV5Dpax5GTQYYHHckcJx
-	xZRxSibzmB2aA5fhoOHfQwAosSxFA7P+DTP/ASxH1DHwLlxDhAvZKuNf5mtKnZOVEBBF7kgpViXiE
-	AX/Oyp77tcAqVSPHpxdBzUvR0QhTS8gFhfzeBn8QAmUA0z0Nf6otT2qEUZGAchlJVNbHGh2SHjwmm
-	bGKNbyFUg==;
+	 bh=rbaaHBFoXTQ7rv6UHX/o758EeJpKeAqgKqZYn4Frtug=; b=i5ZM3qQjf3iYWaOMFIkOOHDpX
+	h8YW0sAoAlXTq3e72VBUPGfJ0TIi1ZPR420+bNFVhoYv8neNJDpEqlksboVcQEvqCgUj8YxoO6dN+
+	mJsbQPNQKnqXeU0rw3SZdchAUsN0RQ8oArGaOoO+ELx5JkzaSEUgWMUE31Pl7FIbLFNi7N62Qbgbh
+	fk3WBxoTnOP/HpbhJ0Ii8jIgEoGW+9rUUQOsVqz/uv0GbzTukaXs3iOLEKWFQ4opYPSYJAG8lAEHU
+	R9kw4qqltaH53PnSwUUISAgeES69hygXvDWq9N7qnsoYf0jMqucuqf205EcVFbxQ2XD47xU4BTKnq
+	/wSfioc1g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVsXj-0001r5-PV; Fri, 23 Oct 2020 08:35:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kVsY7-00021S-55; Fri, 23 Oct 2020 08:35:47 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kVsXT-0001id-HR; Fri, 23 Oct 2020 08:35:09 +0000
-X-UUID: bcf0ca36fbea4c5bb15f1c7a38242e72-20201023
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jUKvU/HzCuL2PPK0da8gu19V+NdKcPP0gYDYa+SwXrM=; 
- b=cXdsTagocYteyw1rA2GymNELY/goEo9kDLxqRAQrJznube8V7CaYnMEk+VqLxNMy7uS3gCCYxgePyrf+m8KQKTZNoiaQxYGJHkmDQ52Oa8gBP4ST0R7iJ8v3p+9HCqHXUllf7hJcmo+6J6CiReln5ItfxzhxTmQ6tnETO1bHFS0=;
-X-UUID: bcf0ca36fbea4c5bb15f1c7a38242e72-20201023
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <hector.yuan@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 128534925; Fri, 23 Oct 2020 00:35:03 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 23 Oct 2020 01:25:00 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 23 Oct 2020 16:24:59 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 23 Oct 2020 16:24:59 +0800
-From: Hector Yuan <hector.yuan@mediatek.com>
-To: <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>, "Rob
- Herring" <robh+dt@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- "Viresh Kumar" <viresh.kumar@linaro.org>, Maxime Ripard <mripard@kernel.org>, 
- "Santosh Shilimkar" <ssantosh@kernel.org>, Amit Kucheria
- <amit.kucheria@linaro.org>, Stephen Boyd <sboyd@kernel.org>, Ulf Hansson
- <ulf.hansson@linaro.org>, "Dave Gerlach" <d-gerlach@ti.com>, Florian Fainelli
- <f.fainelli@gmail.com>, "Robin Murphy" <robin.murphy@arm.com>, Lorenzo
- Pieralisi <lorenzo.pieralisi@arm.com>, <devicetree@vger.kernel.org>
-Subject: [PATCH v1 5/6] cpufreq: mediatek-hw: Add SVS CPU initialization
-Date: Fri, 23 Oct 2020 16:24:52 +0800
-Message-ID: <1603441493-18554-6-git-send-email-hector.yuan@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1603441493-18554-1-git-send-email-hector.yuan@mediatek.com>
+ id 1kVsY4-0001zA-3J
+ for linux-mediatek@lists.infradead.org; Fri, 23 Oct 2020 08:35:45 +0000
+Received: by mail-pf1-x441.google.com with SMTP id e15so612189pfh.6
+ for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2020 01:35:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=f+1AbkQy0A87BtmUgjwi9U43PkE6jzonKJ0Vu1is7Vo=;
+ b=h4icBj/TmDHkcs+rhSs8XB2RNfjMBq5yYqyS0YSnDGSwFXPCqoDP/lxPP8V+vXHR8r
+ oRQI1RxYVegeWAVl0m0H7iKa99OsNGct9JAcqom9WRHZ6ul4RvUUnui+KvrWXnWS/pHN
+ /Kk2lGLpT63GC0MunDRXmZVti00Fi73wxul5FY/lrR1bqB46daudyNUZbVACVIszm9ic
+ cG0wKRKoIEMLtDl/MX4kFyJqIdwWsUmLtsYy7B+8ROEp8UImTx/y5NkFgdGWkoZt1nwB
+ 4WosCkRK9/JTL638s0CA4Vs6eONP0Ynr4um/xvHySi6roD8V01T+/rXTJXOyNiRgEVSs
+ eF0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=f+1AbkQy0A87BtmUgjwi9U43PkE6jzonKJ0Vu1is7Vo=;
+ b=CEt9iIOnVRCa5wtLD8PDg5rsclB4bEhr4HJLmveukg1wwtn51uigDZw5prQA0ofSGg
+ zt89M8FCfNW5FmRxrniJ3/itqzLLhZrOmF41NJenPLCvoa+Im/ACs9an12zlcNTdjQW/
+ Za2K1gzNSUxV5jWY94g38kOfjebomwR1Emg2N4eksaHjFPJrhkO386LPWKH8YUM3fBkd
+ HTpLd099FNvgD/IrS9u2PtXnOgzBIvENZmt5OMob9/ljUHIRkJjgjp5tZppJ7xgkX1n1
+ 1XGt/5RCkmlLkEacF7RgRet8mKAXjX9zOrnhZylQhq7Bj5XKsOjD1iZx7Ega92PwRc1w
+ cwnQ==
+X-Gm-Message-State: AOAM532fQx+Id4gl1/H1AydgNqMrSLiSDqw7hBAHj2D5A9YWKCajyjmD
+ 40n3pO+CH11m5UVlu+FEoy5Lh+8cncyouA==
+X-Google-Smtp-Source: ABdhPJxCa+aIUzR7XJtvhWGZdJtyvpTOifCyidYzBuGnz3Csh06sevyXOFdA7OARjrkuXKzbqORTaQ==
+X-Received: by 2002:a65:6243:: with SMTP id q3mr1227075pgv.154.1603442141794; 
+ Fri, 23 Oct 2020 01:35:41 -0700 (PDT)
+Received: from localhost ([122.181.54.133])
+ by smtp.gmail.com with ESMTPSA id w19sm1267173pff.6.2020.10.23.01.35.40
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 23 Oct 2020 01:35:40 -0700 (PDT)
+Date: Fri, 23 Oct 2020 14:05:38 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Hector Yuan <hector.yuan@mediatek.com>
+Subject: Re: [PATCH v1 3/6] dt-bindings: cpufreq: add bindings for MediaTek
+ cpufreq HW
+Message-ID: <20201023083538.f6hhcyizvlf2ufjr@vireshk-i7>
 References: <1603441493-18554-1-git-send-email-hector.yuan@mediatek.com>
+ <1603441493-18554-4-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1603441493-18554-4-git-send-email-hector.yuan@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_043507_887406_0F58A5F3 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20201023_043544_231875_F0B997F1 
+X-CRM114-Status: GOOD (  19.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,109 +97,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: hector.yuan@mediatek.com, linux-kernel@vger.kernel.org,
- wsd_upstream@mediatek.com
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ Florian Fainelli <f.fainelli@gmail.com>, wsd_upstream@mediatek.com,
+ linux-pm@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+ Dave Gerlach <d-gerlach@ti.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Amit Kucheria <amit.kucheria@linaro.org>,
+ Santosh Shilimkar <ssantosh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Hector.Yuan" <hector.yuan@mediatek.com>
+On 23-10-20, 16:24, Hector Yuan wrote:
+> From: "Hector.Yuan" <hector.yuan@mediatek.com>
+> 
+> Add devicetree bindings for MediaTek HW driver.
+> 
+> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> ---
+>  .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |   46 ++++++++++++++++++++
+>  1 file changed, 46 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+> new file mode 100644
+> index 0000000..a99f44f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+> @@ -0,0 +1,46 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/cpufreq/cpufreq-mediatek-hw.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek's CPUFREQ Bindings
+> +
+> +maintainers:
+> +  - Hector Yuan <hector.yuan@mediatek.com>
+> +
+> +description:
+> +  CPUFREQ HW is a hardware engine used by MediaTek
+> +  SoCs to manage frequency in hardware. It is capable of controlling frequency
+> +  for multiple clusters.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,cpufreq-hw
+> +
+> +  reg:
+> +    minItems: 1
+> +    maxItems: 2
+> +    description: |
+> +      Addresses and sizes for the memory of the HW bases in each frequency domain.
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +examples:
+> +  - |
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        cpufreq_hw: cpufreq@11bc00 {
+> +            compatible = "mediatek,cpufreq-hw";
+> +            reg = <0 0x11bc10 0 0x8c>,
+> +               <0 0x11bca0 0 0x8c>;
+> +        };
+> +    };
 
-Use pm_qos to block cpu-idle state for SVS initializing.
-CPUs must be in power on state when doing SVS.
-Add polling ack while coufreq hw is ready.(SVS init done)
+You still need to keep the CPU specific part here and explain how this
+block is going to get used using the other binding you added.
 
-Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
----
- drivers/cpufreq/mediatek-cpufreq-hw.c |   32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
-
-diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-index 241d93f..15fba20 100644
---- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-+++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-@@ -7,20 +7,27 @@
- #include <linux/cpufreq.h>
- #include <linux/energy_model.h>
- #include <linux/init.h>
-+#include <linux/iopoll.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of_address.h>
- #include <linux/of_platform.h>
-+#include <linux/pm_qos.h>
- #include <linux/slab.h>
- 
- #define LUT_MAX_ENTRIES			32U
- #define LUT_FREQ			GENMASK(11, 0)
- #define LUT_ROW_SIZE			0x4
-+#define CPUFREQ_HW_STATUS		BIT(0)
-+#define SVS_HW_STATUS			BIT(1)
-+#define POLL_USEC			1000
-+#define TIMEOUT_USEC			300000
- 
- enum {
- 	REG_FREQ_LUT_TABLE,
- 	REG_FREQ_ENABLE,
- 	REG_FREQ_PERF_STATE,
-+	REG_FREQ_HW_STATE,
- 	REG_EM_POWER_TBL,
- 
- 	REG_ARRAY_SIZE,
-@@ -37,6 +44,7 @@ struct cpufreq_mtk {
- 	[REG_FREQ_LUT_TABLE]	= 0x0,
- 	[REG_FREQ_ENABLE]	= 0x84,
- 	[REG_FREQ_PERF_STATE]	= 0x88,
-+	[REG_FREQ_HW_STATE]	= 0x8c,
- 	[REG_EM_POWER_TBL]	= 0x3D0,
- };
- 
-@@ -89,6 +97,12 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
- 	struct cpufreq_mtk *c;
- 	struct device *cpu_dev;
- 	struct em_data_callback em_cb = EM_DATA_CB(mtk_cpufreq_get_cpu_power);
-+	struct pm_qos_request *qos_request;
-+	int sig, pwr_hw = CPUFREQ_HW_STATUS | SVS_HW_STATUS;
-+
-+	qos_request = kzalloc(sizeof(*qos_request), GFP_KERNEL);
-+	if (!qos_request)
-+		return -ENOMEM;
- 
- 	cpu_dev = get_cpu_device(policy->cpu);
- 	if (!cpu_dev) {
-@@ -107,11 +121,29 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
- 	policy->freq_table = c->table;
- 	policy->driver_data = c;
- 
-+	/* Let CPUs leave idle-off state for SVS CPU initializing */
-+	cpu_latency_qos_add_request(qos_request, 0);
-+
- 	/* HW should be in enabled state to proceed now */
- 	writel_relaxed(0x1, c->reg_bases[REG_FREQ_ENABLE]);
- 
-+	if (readl_poll_timeout(c->reg_bases[REG_FREQ_HW_STATE], sig,
-+			       (sig & pwr_hw) == pwr_hw, POLL_USEC,
-+			       TIMEOUT_USEC)) {
-+		if (!(sig & CPUFREQ_HW_STATUS)) {
-+			pr_info("cpufreq hardware of CPU%d is not enabled\n",
-+				policy->cpu);
-+			return -ENODEV;
-+		}
-+
-+		pr_info("SVS of CPU%d is not enabled\n", policy->cpu);
-+	}
-+
- 	em_dev_register_perf_domain(cpu_dev, c->nr_opp, &em_cb, policy->cpus);
- 
-+	cpu_latency_qos_remove_request(qos_request);
-+	kfree(qos_request);
-+
- 	return 0;
- }
- 
 -- 
-1.7.9.5
+viresh
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
