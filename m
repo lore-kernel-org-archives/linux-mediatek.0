@@ -2,79 +2,65 @@ Return-Path: <SRS0=L9pZ=D7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE9FAC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 08:09:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 135D6C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 08:26:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D58E2177B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 08:09:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A02332177B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 08:26:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1eg1Rzrr";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EdThZFgq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D58E2177B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SnZxLvRI";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="od7s9IcH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A02332177B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+AVc2dGBWs9VFG/OrCPj7ULfqGs0HHCHmnKpNdhjxM4=; b=1eg1RzrrpSWapPWTNQItLUOYk
-	jXhr7Z3cfB9WHPryx/LXA303WeKkhS6KCuKSv3cBMcB+pLZ/fO2LI6I5rs7bkGvQh2+MvLFmMgSKk
-	KY2W8aiINrYZHjYdiHUNAzE1IopyxYIcVEfiqFm3qznojoPG8s2kFt6TKD6gVl/uWdwBDJds9LUYW
-	HS1zHUCt12/N49LgJ2cxhuFwisHn9xfkZ2qiHzozl/f+FHBqArymB7lR8nrA/Uzh+C2J7n8t6FyyX
-	w9wu2bMvxR/yV0RGbJdqSCyMeHHInwZb7ZCONctSjXbtefA8Tz630403/doHMGRcuUJtvN5f5nOeu
-	3gg/M5XNg==;
+	 bh=g+sv3fJUDiBq0cKfvisIcWP1hss4QGlZq0rY9XTa5gw=; b=SnZxLvRI8fpHl3lTBorW+Xr11
+	/vWiu6kRbF+Qvz87hH5SIOry9/M5K+1eoeBxJRmBXALfuw7pSs7Hi/2+PO3EO0/ukWFhsdE5/1wai
+	M1noLzYE1BW3gXPa7wJIZhAGDjAFiNSq53z6mpc+2S1jHyrnpXgCOUxU7QlfkiqKmcZwUSPFT/n0Q
+	oAkAkXa8ycNuizH7wG2qHZ6OeO7lnqPAs1uZqd0M4xeppyNyZYCrkbZqJVImTuojSIWoltjqCGGpB
+	SWl+hqtJRxxv3LnXG+aRYcVRXewAdX1Y341EWorpSYDl2IXULTIx5LLN5+34GASBa3kfCKUDlfkJh
+	LoDNAgtZQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kWEcF-0002Io-U4; Sat, 24 Oct 2020 08:09:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kWEsc-00039W-6e; Sat, 24 Oct 2020 08:26:26 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kWEcB-0002HI-Ck; Sat, 24 Oct 2020 08:09:28 +0000
-X-UUID: 260f804dc1364cb7ad254bd72301d414-20201024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=3AjCwyELXJsAF7KDdOI9+UHESz6oEunbkSh/sKmq2DQ=; 
- b=EdThZFgqrJGZSDlJhbthkDxNUG3fEfmRQ73mWYKKxI5BMV+uRpdUKgK2fzXpyxvRno2VIrSJIXrCY4fETnv6Y7EMYdfekCbZglYUfmokOofIsue5RwNvbj1SJru42BMxbvDW3QA3Tm7W6jsrfz6AM/LQzkyCqd4q2GqlluNiF2w=;
-X-UUID: 260f804dc1364cb7ad254bd72301d414-20201024
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 855431842; Sat, 24 Oct 2020 00:09:25 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 24 Oct 2020 00:59:22 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 24 Oct 2020 15:59:06 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 24 Oct 2020 15:59:05 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <matthias.bgg@gmail.com>,
- <robh+dt@kernel.org>, <p.zabel@pengutronix.de>, <tzungbi@google.com>,
- <alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH v3 7/9] dt-bindings: mediatek: mt8192: add audio afe document
-Date: Sat, 24 Oct 2020 15:58:57 +0800
-Message-ID: <1603526339-15005-8-git-send-email-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1603526339-15005-1-git-send-email-jiaxin.yu@mediatek.com>
-References: <1603526339-15005-1-git-send-email-jiaxin.yu@mediatek.com>
+ id 1kWEsb-00039M-7W; Sat, 24 Oct 2020 08:26:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=7WW5OjIy5DyHhu4sd+/BFehn7zhBtJPdgdSvBW+0nug=; b=od7s9IcHsTFcQ60ryu18jthu4I
+ tb2R2rJxn3zQfbHPnVVKSnxt2ZAPoC2wcS8OcyYayPjWJ6Wmgb37qXN8hvJ1rOoUPe3XJMzJpg5s+
+ kwmAWmOfSggXZaqgigIHK2sVs9ZoKzHvSUaPhBDeH1nzRObTzMEGFhxhZJJ030Q5RBau+Y9QPerqq
+ DQs31HF9msjTKWVMYSQzeOoAnTNru1QN+nA9aIs3LEgFBn/fkMNw87uNWF7cBD66lsU8Vjiee3H8Q
+ EYuvrzHBEfGoPK2QCqcnsfAO67lXimVaecmmG4sZTjnBESEZYL6SRLDl7I5dlLXA8F1pxnVc3s+9J
+ u21gzJUg==;
+Received: from hch by casper.infradead.org with local (Exim 4.92.3 #3 (Red Hat
+ Linux)) id 1kWEsU-00037d-Od; Sat, 24 Oct 2020 08:26:18 +0000
+Date: Sat, 24 Oct 2020 09:26:18 +0100
+From: Christoph Hellwig <hch@infradead.org>
+To: Claude Yen <claude.yen@mediatek.com>
+Subject: Re: [PATCH] PM / s2idle: Export s2idle_set_ops
+Message-ID: <20201024082618.GA10844@infradead.org>
+References: <20201022061748.13730-1-claude.yen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 752CD73EACB22FF28118C6D94BA59127F50E0A8B90263C55B5BCF1A76A41BD472000:8
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201024_040927_555657_91718748 
-X-CRM114-Status: GOOD (  12.70  )
+Content-Disposition: inline
+In-Reply-To: <20201022061748.13730-1-claude.yen@mediatek.com>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,138 +72,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: shane.chien@mediatek.com, Bicycle.Tsai@mediatek.com,
- Jiaxin Yu <jiaxin.yu@mediatek.com>, Trevor.Wu@mediatek.com,
- kuninori.morimoto.gx@renesas.com
+Cc: Len Brown <len.brown@intel.com>, wsd_upstream@mediatek.com,
+ linux-pm@vger.kernel.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Pavel Machek <pavel@ucw.cz>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds mt8192 audio afe document.
+On Thu, Oct 22, 2020 at 02:17:47PM +0800, Claude Yen wrote:
+> This series based on 5.9-rc1
+> 
+> As suspend_set_ops is exported in commit a5e4fd8783a2
+> ("PM / Suspend: Export suspend_set_ops, suspend_valid_only_mem"),
+> exporting s2idle_set_ops to make kernel module setup s2idle ops too.
+> 
+> In this way, kernel module can hook platform suspend functions
+> regardless of Suspend-to-Ram(S2R) or Suspend-to-Idle(S2I)
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
-This patch depends on following series that has not been accepted:
-https://patchwork.kernel.org/cover/11752231
-(dt-bindings/clock/mt8192-clk.h is included in it.)
-https://patchwork.kernel.org/patch/11755895
-(dt-bindings/power/mt8192-power.h is included in it.)
-https://lore.kernel.org/patchwork/patch/1321118
-(dt-bindings/reset-controller/mt8192-resets.h is included in it.)
+Where is the actual users of the export?
 
- .../bindings/sound/mt8192-afe-pcm.yaml        | 100 ++++++++++++++++++
- 1 file changed, 100 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-
-diff --git a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-new file mode 100644
-index 0000000000000..0170c93802d29
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-@@ -0,0 +1,100 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mt8192-afe-pcm.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek AFE PCM controller for mt8192
-+
-+maintainers:
-+   - Jiaxin Yu <jiaxin.yu@mediatek.com>
-+   - Shane Chien <shane.chien@mediatek.com>
-+
-+properties:
-+  compatible:
-+      const: mediatek,mt8192-audio
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  resets:
-+    maxItems: 1
-+
-+  reset-names:
-+    const: audiosys
-+
-+  mediatek,apmixedsys:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of the mediatek apmixedsys controller
-+
-+  mediatek,infracfg:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of the mediatek infracfg controller
-+
-+  mediatek,topckgen:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of the mediatek topckgen controller
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: AFE clock
-+      - description: ADDA DAC clock
-+      - description: ADDA DAC pre-distortion clock
-+      - description: audio infra sys clock
-+      - description: audio infra 26M clock
-+
-+  clock-names:
-+    items:
-+      - const: aud_afe_clk
-+      - const: aud_dac_clk
-+      - const: aud_dac_predis_clk
-+      - const: aud_infra_clk
-+      - const: aud_infra_26m_clk
-+
-+required:
-+  - compatible
-+  - interrupts
-+  - resets
-+  - reset-names
-+  - mediatek,apmixedsys
-+  - mediatek,infracfg
-+  - mediatek,topckgen
-+  - power-domains
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8192-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/mt8192-power.h>
-+    #include <dt-bindings/reset-controller/mt8192-resets.h>
-+
-+    afe: mt8192-afe-pcm {
-+        compatible = "mediatek,mt8192-audio";
-+        interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_HIGH>;
-+        resets = <&watchdog MT8192_TOPRGU_AUDIO_SW_RST>;
-+        reset-names = "audiosys";
-+        mediatek,apmixedsys = <&apmixedsys>;
-+        mediatek,infracfg = <&infracfg>;
-+        mediatek,topckgen = <&topckgen>;
-+        power-domains = <&scpsys MT8192_POWER_DOMAIN_AUDIO>;
-+        clocks = <&audsys CLK_AUD_AFE>,
-+                 <&audsys CLK_AUD_DAC>,
-+                 <&audsys CLK_AUD_DAC_PREDIS>,
-+                 <&infracfg CLK_INFRA_AUDIO>,
-+                 <&infracfg CLK_INFRA_AUDIO_26M_B>;
-+        clock-names = "aud_afe_clk",
-+                      "aud_dac_clk",
-+                      "aud_dac_predis_clk",
-+                      "aud_infra_clk",
-+                      "aud_infra_26m_clk";
-+    };
-+
-+...
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
