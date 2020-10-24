@@ -2,77 +2,88 @@ Return-Path: <SRS0=L9pZ=D7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3187AC55178
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 16:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C526C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 20:03:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C9B312087C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 16:23:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C0E59222BA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2020 20:03:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PUQcV+aw";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="sdiKsUzL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C9B312087C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YsrdfbGr";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="f/th5z/N"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0E59222BA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LnE8a2pWjFlvgc6Ei677D4lNcEb8ba04gh6aUpdNov4=; b=PUQcV+awAdhlgJqdvPBi7Ipm5
-	c6gwJo1FYmyQ/O7evhgNWpL6umVzfQTcpnOdjqkIdhhHk7FrrDuoMmxQQ96MpwRYnpWUNGQWLih1R
-	vNsKhxXZIeB5zQdGvBmpj6cMiU3CaIcRuz9V0Yp9Zia/NCOAMgVptx1ijW4JXYSL00gxSNjFnMTRX
-	X67rENSDqcm7cZHElgt4H39Hq/y3c/salS3T9UfIokWajQawnKrxKTQt+VdfSyIDQh+KPSrxFBuj8
-	Q+P9ujhqtLNV21ydVbdumV3OvhcASib9WIWM1FOu87UjWKuVnB6Kcnk6HYFZU2UwjcJR0+0mqsNQE
-	RVqxRAWuQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=R5KgzbAuGUY5JI7yWX3UhHXERkyQ3V8ZuytPi3pA8/0=; b=YsrdfbGrq5VYy4sTCrc4HNyoQc
+	tiYWAP1MzouDhNfWL4scOHM/zWza7xT5MLsNI0QyKfh1y1cqeOcbzSqyG7MyAZpTBbwTdn2rFkzma
+	f6pDGDXakEmReYKVsZXRUeRdc7FoCxVHBnDwXIEwknYeMRrPhPTPUyHW6/Vvq5ENIxkYxRn5DG7ye
+	/LjAvdQcfCsIWrzRkCObplsH1072grshiJqKpV/ZxiJk7l4nB1+BCEt1lL402BMNxhZPCAwOn+aBq
+	/OS2lriTY2n/3iySeiY+M4KeaWv/vz4CwIYu6H8EA6Pm3DgV+IOUHbQtcIxfmwgztH7QOFAvUAYC9
+	hWl8y9Kw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kWMJi-0003Ap-CU; Sat, 24 Oct 2020 16:22:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kWPl4-00031J-Fq; Sat, 24 Oct 2020 20:03:22 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kWMJc-00038A-Jd; Sat, 24 Oct 2020 16:22:50 +0000
-X-UUID: 0d7c04f6cf494f8b96f7dd10da8c86b3-20201024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=clO7x/VOL80tb0fdj/oUgJ/S8826gq/72f6K4BLeZc8=; 
- b=sdiKsUzLPhVCy/zztNbQ1pmzh5iRJ3jpC1dx6qyvpEKtRcuyePMXz5+UN4qvhdeqyE/UIYze4RMh2zDInWTJXYt7Cz4dgx7sYQv/tVLBgF+s/9GLcOWnGC9013IBOhH7kFj64xhMuerh0gESrP6ZjavGQogSKq5p2ld/PDoRXIE=;
-X-UUID: 0d7c04f6cf494f8b96f7dd10da8c86b3-20201024
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1023938168; Sat, 24 Oct 2020 08:22:39 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 24 Oct 2020 09:22:37 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 25 Oct 2020 00:22:34 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 25 Oct 2020 00:22:34 +0800
-Message-ID: <1603556556.28119.4.camel@mtksdaap41>
-Subject: Re: [PATCH v4 19/34] clk: mediatek: Add MT8192 imp i2c wrapper c
- clock support
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Date: Sun, 25 Oct 2020 00:22:36 +0800
-In-Reply-To: <1603370247-30437-20-git-send-email-weiyi.lu@mediatek.com>
-References: <1603370247-30437-1-git-send-email-weiyi.lu@mediatek.com>
- <1603370247-30437-20-git-send-email-weiyi.lu@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kWPku-0002yM-E4
+ for linux-mediatek@lists.infradead.org; Sat, 24 Oct 2020 20:03:17 +0000
+Received: by mail-wm1-x344.google.com with SMTP id v5so6194897wmh.1
+ for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2020 13:03:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ykbWFrF4DLoLSFHlYjKaVhZVh2Azih5ulLgw1xBdGTk=;
+ b=f/th5z/NtzzTdGYC5io7O8vnGVy/XLnUYRkmFTzv+dpVZmij+8dq6P1BafNn1mlnml
+ pea9J9jay9+663rTHY2ftfK8JIYN4EftFobuXdr9gymCSNYXqiEiu33Epd1GMsVykS/z
+ fBg7yhRdFOjX7BaQs1hpIjhcTD5T8NDbVqC2f71KfhaJ0n+4JL/o60XC73o6y+wnX2HS
+ LQYl181Isk9Jj4iiJqaclEJHE6A55DdJDsunBm7CWGOw3pkbbx0Wq4O+21l+1k5IOPix
+ Sylim7g+yHlGGNX22vYT8YoDSpQejDd8iPn05n5mJKWbbwTCiqmup0+kTUwizJf0Wzef
+ NMMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ykbWFrF4DLoLSFHlYjKaVhZVh2Azih5ulLgw1xBdGTk=;
+ b=sg8FJe3mr+Kh7FH7gNjUOEbK8OYHavTNuG4/lnBjrNOcN2kJeJpE5q92/dT7lI/hYO
+ Bb1eDHRAlv0Qlx4XOHxmKpMnHNmBGVUzqesVJORjsT73r1BoEzMsdIGnyPM12ok00a49
+ 9jM013zUmSLBs5C0qokFp+ls4EcuECPhyR1A8Pbu7kuXPaGCgVKvESyeSPwTop3AEm/Y
+ QbPMZHTYU6HJgUoPlGmJughNLjczFR0jmKN+w62gAfFUU+Tns3ytucOaA8z2sRu2iUXI
+ jvRCWmKEJBPXoV6X2MNE5px2jnL++XnRv3d7dAfyR5v+1+y2Y0apVFzWCQj79g/A4Uko
+ rgfg==
+X-Gm-Message-State: AOAM532F85UOpJeJlBOfD9Dp9UbWYLtTGF4sMUv8wCub/7wZ7s6Str8B
+ hIe3Ebsd9PM4WWyLH82QcyRd3HIe7EJSfQ==
+X-Google-Smtp-Source: ABdhPJzutYOC//lk9+11Sdq3e30rkbq13pc0iEetkKhWNXaPX/bi4gYoZ+fiA3GQoDJDXpLShTm5ww==
+X-Received: by 2002:a1c:c912:: with SMTP id f18mr8535466wmb.150.1603569788433; 
+ Sat, 24 Oct 2020 13:03:08 -0700 (PDT)
+Received: from localhost.localdomain (34.169.185.81.rev.sfr.net.
+ [81.185.169.34])
+ by smtp.gmail.com with ESMTPSA id j7sm14106305wrn.81.2020.10.24.13.03.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 24 Oct 2020 13:03:07 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v5 1/2] dt-bindings: regulator: add support for MT6392
+Date: Sat, 24 Oct 2020 22:03:03 +0200
+Message-Id: <20201024200304.1427864-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201024_122248_860546_DD81376A 
-X-CRM114-Status: GOOD (  21.41  )
+X-CRM114-CacheID: sfid-20201024_160312_500348_12107820 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,128 +95,264 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, lgirdwood@gmail.com, robh+dt@kernel.org,
+ Fabien Parent <fparent@baylibre.com>, broonie@kernel.org,
+ matthias.bgg@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-10-22 at 20:37 +0800, Weiyi Lu wrote:
-> Add MT8192 imp i2c wrapper c clock provider
-> 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/clk/mediatek/Kconfig                     |  6 +++
->  drivers/clk/mediatek/Makefile                    |  1 +
->  drivers/clk/mediatek/clk-mt8192-imp_iic_wrap_c.c | 62 ++++++++++++++++++++++++
->  3 files changed, 69 insertions(+)
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-imp_iic_wrap_c.c
-> 
-> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index 99b0168..a0eb76d 100644
-> --- a/drivers/clk/mediatek/Kconfig
-> +++ b/drivers/clk/mediatek/Kconfig
-> @@ -491,6 +491,12 @@ config COMMON_CLK_MT8192_IMGSYS2
->  	help
->  	  This driver supports MediaTek MT8192 imgsys2 clocks.
->  
-> +config COMMON_CLK_MT8192_IMP_IIC_WRAP_C
-> +	bool "Clock driver for MediaTek MT8192 imp_iic_wrap_c"
-> +	depends on COMMON_CLK_MT8192
-> +	help
-> +	  This driver supports MediaTek MT8192 imp_iic_wrap_c clocks.
-> +
->  config COMMON_CLK_MT8516
->  	bool "Clock driver for MediaTek MT8516"
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index 012a01a..8aac821 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -69,5 +69,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS_RAWB) += clk-mt8192-cam_rawb.o
->  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS_RAWC) += clk-mt8192-cam_rawc.o
->  obj-$(CONFIG_COMMON_CLK_MT8192_IMGSYS) += clk-mt8192-img.o
->  obj-$(CONFIG_COMMON_CLK_MT8192_IMGSYS2) += clk-mt8192-img2.o
-> +obj-$(CONFIG_COMMON_CLK_MT8192_IMP_IIC_WRAP_C) += clk-mt8192-imp_iic_wrap_c.o
->  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
->  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-> diff --git a/drivers/clk/mediatek/clk-mt8192-imp_iic_wrap_c.c b/drivers/clk/mediatek/clk-mt8192-imp_iic_wrap_c.c
-> new file mode 100644
-> index 0000000..e7a0033
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8192-imp_iic_wrap_c.c
-> @@ -0,0 +1,62 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +//
-> +// Copyright (c) 2020 MediaTek Inc.
-> +// Author: Weiyi Lu <weiyi.lu@mediatek.com>
-> +
-> +#include <linux/clk-provider.h>
-> +#include <linux/platform_device.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-gate.h"
-> +
-> +#include <dt-bindings/clock/mt8192-clk.h>
-> +
-> +static const struct mtk_gate_regs imp_iic_wrap_c_cg_regs = {
-> +	.set_ofs = 0xe08,
-> +	.clr_ofs = 0xe04,
-> +	.sta_ofs = 0xe00,
-> +};
-> +
-> +#define GATE_IMP_IIC_WRAP_C(_id, _name, _parent, _shift)			\
-> +	GATE_MTK_FLAGS(_id, _name, _parent, &imp_iic_wrap_c_cg_regs, _shift,	\
-> +		&mtk_clk_gate_ops_setclr, CLK_OPS_PARENT_ENABLE)
-> +
-> +static const struct mtk_gate imp_iic_wrap_c_clks[] = {
-> +	GATE_IMP_IIC_WRAP_C(CLK_IMP_IIC_WRAP_C_I2C10, "imp_iic_wrap_c_i2c10", "infra_i2c0", 0),
-> +	GATE_IMP_IIC_WRAP_C(CLK_IMP_IIC_WRAP_C_I2C11, "imp_iic_wrap_c_i2c11", "infra_i2c0", 1),
-> +	GATE_IMP_IIC_WRAP_C(CLK_IMP_IIC_WRAP_C_I2C12, "imp_iic_wrap_c_i2c12", "infra_i2c0", 2),
-> +	GATE_IMP_IIC_WRAP_C(CLK_IMP_IIC_WRAP_C_I2C13, "imp_iic_wrap_c_i2c13", "infra_i2c0", 3),
-> +};
-> +
-> +static int clk_mt8192_imp_iic_wrap_c_probe(struct platform_device *pdev)
-> +{
-> +	struct clk_onecell_data *clk_data;
-> +	struct device_node *node = pdev->dev.of_node;
-> +	int r;
-> +
-> +	clk_data = mtk_alloc_clk_data(CLK_IMP_IIC_WRAP_C_NR_CLK);
-> +	if (!clk_data)
-> +		return -ENOMEM;
-> +
-> +	r = mtk_clk_register_gates(node, imp_iic_wrap_c_clks, ARRAY_SIZE(imp_iic_wrap_c_clks),
-> +			clk_data);
-> +	if (r)
-> +		return r;
-> +
-> +	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> +}
-> +
-> +static const struct of_device_id of_match_clk_mt8192_imp_iic_wrap_c[] = {
-> +	{ .compatible = "mediatek,mt8192-imp_iic_wrap_c", },
-> +	{}
-> +};
+Add binding documentation of the regulator for MT6392 SoCs.
 
-It seems these mt8192-imp_iic_wrap_* drivers are very similar.
-I think it make more sense to use 1 single driver to provide them, ie:
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
 
-+static const struct of_device_id of_match_clk_mt8192_imp_iic_wrap[] = {
-+	{ .compatible = "mediatek,mt8192-imp_iic_wrap_c", imp_iic_wrap_c_clks},
-+	{ .compatible = "mediatek,mt8192-imp_iic_wrap_e", imp_iic_wrap_e_clks},
-+	{ .compatible = "mediatek,mt8192-imp_iic_wrap_n", imp_iic_wrap_n_clks},
-....
-+	{}
-+};
+v5:
+	* No change
+v4:
+	* No change
+v3:
+	* No change
+v2:
+	* Use 'pmic' as node name for the pmic.
+	* Use 'regulators' as node name for the regulators
+	* use dash instead of underscore for regulator's node names.
 
-Maybe other clk drivers can be merged to the same driverl.
+ .../bindings/regulator/mt6392-regulator.txt   | 220 ++++++++++++++++++
+ 1 file changed, 220 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6392-regulator.txt
 
-Joe.C
+diff --git a/Documentation/devicetree/bindings/regulator/mt6392-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6392-regulator.txt
+new file mode 100644
+index 000000000000..d03c0707fabc
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mt6392-regulator.txt
+@@ -0,0 +1,220 @@
++Mediatek MT6392 Regulator
++
++Required properties:
++- compatible: "mediatek,mt6392-regulator"
++- mt6392regulator: List of regulators provided by this controller. It is named
++  according to its regulator type, buck_<name> and ldo_<name>.
++  The definition for each of these nodes is defined using the standard binding
++  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
++
++The valid names for regulators are::
++BUCK:
++  buck_vproc, buck_vsys, buck_vcore
++LDO:
++  ldo_vxo22, ldo_vaud22, ldo_vcama, ldo_vaud28, ldo_vadc18, ldo_vcn35,
++  ldo_vio28. ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
++  ldo_vcn18, ldo_vcamaf, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio, ldo_vm25,
++  ldo_vefuse
++
++Example:
++	pmic {
++		compatible = "mediatek,mt6392", "mediatek,mt6323";
++		mediatek,system-power-controller;
++
++		regulator {
++			compatible = "mediatek,mt6392-regulator";
++
++			mt6392_vproc_reg: buck-vproc {
++				regulator-name = "buck_vproc";
++				regulator-min-microvolt = < 700000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <12500>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vsys_reg: buck-vsys {
++				regulator-name = "buck_vsys";
++				regulator-min-microvolt = <1400000>;
++				regulator-max-microvolt = <2987500>;
++				regulator-ramp-delay = <25000>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vcore_reg: buck-vcore {
++				regulator-name = "buck_vcore";
++				regulator-min-microvolt = < 700000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <12500>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vxo22_reg: ldo-vxo22 {
++				regulator-name = "ldo_vxo22";
++				regulator-min-microvolt = <2200000>;
++				regulator-max-microvolt = <2200000>;
++				regulator-enable-ramp-delay = <110>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vaud22_reg: ldo-vaud22 {
++				regulator-name = "ldo_vaud22";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <2200000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vcama_reg: ldo-vcama {
++				regulator-name = "ldo_vcama";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vaud28_reg: ldo-vaud28 {
++				regulator-name = "ldo_vaud28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vadc18_reg: ldo-vadc18 {
++				regulator-name = "ldo_vadc18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vcn35_reg: ldo-vcn35 {
++				regulator-name = "ldo_vcn35";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vio28_reg: ldo-vio28 {
++				regulator-name = "ldo_vio28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vusb_reg: ldo-vusb {
++				regulator-name = "ldo_vusb";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vmc_reg: ldo-vmc {
++				regulator-name = "ldo_vmc";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-boot-on;
++			};
++
++			mt6392_vmch_reg: ldo-vmch {
++				regulator-name = "ldo_vmch";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-boot-on;
++			};
++
++			mt6392_vemc3v3_reg: ldo-vemc3v3 {
++				regulator-name = "ldo_vemc3v3";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-boot-on;
++			};
++
++			mt6392_vgp1_reg: ldo-vgp1 {
++				regulator-name = "ldo_vgp1";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vgp2_reg: ldo-vgp2 {
++				regulator-name = "ldo_vgp2";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vcn18_reg: ldo-vcn18 {
++				regulator-name = "ldo_vcn18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vcamaf_reg: ldo-vcamaf {
++				regulator-name = "ldo_vcamaf";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vm_reg: ldo-vm {
++				regulator-name = "ldo_vm";
++				regulator-min-microvolt = <1240000>;
++				regulator-max-microvolt = <1390000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vio18_reg: ldo-vio18 {
++				regulator-name = "ldo_vio18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <264>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6392_vcamd_reg: ldo-vcamd {
++				regulator-name = "ldo_vcamd";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vcamio_reg: ldo-vcamio {
++				regulator-name = "ldo_vcamio";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vm25_reg: ldo-vm25 {
++				regulator-name = "ldo_vm25";
++				regulator-min-microvolt = <2500000>;
++				regulator-max-microvolt = <2500000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++
++			mt6392_vefuse_reg: ldo-vefuse {
++				regulator-name = "ldo_vefuse";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <2000000>;
++				regulator-enable-ramp-delay = <264>;
++			};
++		};
++	};
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
