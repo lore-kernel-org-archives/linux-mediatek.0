@@ -2,86 +2,74 @@ Return-Path: <SRS0=oVGr=EB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5822AC4363A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:38:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2B57C4363A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 20:08:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA5112084C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:38:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2F84F21BE5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 20:08:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qq+kxrPj";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="U6rgcLPo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA5112084C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eRavBxoh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F84F21BE5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5KRwaOHOZUWlkqpVJUpZPuL+mLcsC1JSHeV4yvj46iU=; b=qq+kxrPj20hlJS2obW/xtb2Cg
-	KUpNv8RY3AGFele6V7SPF2nlSlbFlmp9XlY28GmsvmKl0ieHXW2nJkQgOWTJXpSKRNBgSmcZWZRbe
-	kDom7vYRJvTvpc5ySnRknb5D3GHu1DsoHMh585KfSyorUiEAEgLlpy658pDGVE4vEtwXxHVLRdAiu
-	PHL+4AMlBBjDvMGQ5hoxquuOQZacgawGkWz8LmjTDUkdSrvAcjYh74Rfk0kluUEgTpSA/Pe+QKdba
-	+GTepD+BqiYLa0vYdJTgNzIabAWPeBtn6AhLOv9vSWbx+PZsnbn7c+e31w01gNSMvZTwVa9P6xlNv
-	nCTvoAx8Q==;
+	 bh=tZWAC+Im44VJ9gO+jDXCx3jdOS3Dh6VQC81jnzhogi0=; b=eRavBxoh8KgLzhZcRsHK8ptke
+	9sBJpkB9oJf8PlHMOA1HEo8JAuQYXCR0BEoE6PSuQnC1b25Ck4WoJPAGq2s63s5fZAFNKfQEiZbQf
+	b3hm/hsOqrBiZyyO3zfOSuj50rxXiNC+yE1Hia2RZ6SjwLQ5RVHsi7MLqY4tMzHaskrvfckUhRKHb
+	Z2FEuDjP86ZXytYbbpxdmAnKcJ1I1+GPwhm/0Z8OTLGSUc0bVJZHdLV0Rl0HJdylc2IymdxJdcbgE
+	/Cm9myLMuNa5+thN2KWJ6RDQi5hUIXQc0hxTx+BIJQKSJk6fdaGIz+UTTKLr3QlOIgtj0pZ7/BEYF
+	OGoyEetpQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kX7O8-0004hl-8u; Mon, 26 Oct 2020 18:38:36 +0000
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
+	id 1kX8nO-0006cq-3K; Mon, 26 Oct 2020 20:08:46 +0000
+Received: from mail-ed1-f65.google.com ([209.85.208.65])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kX7O4-0004fs-8J
- for linux-mediatek@lists.infradead.org; Mon, 26 Oct 2020 18:38:34 +0000
-Received: by mail-io1-xd44.google.com with SMTP id k21so11165761ioa.9
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2020 11:38:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1XLqJl5vO2wWqmgb9LT+ITrNAM4FaYnH32PMkyjUkwU=;
- b=U6rgcLPopeY+yLxDRznBLJXxFLKGgrzqcjfFpNlkRuTjUZU3L6L4X9PU1ee3RvMa7+
- tCNGjsczrHyLeuJpp1FJgIusoZAD2HQRw/b0XMwu3MjheCJPPp5miFBqKhQ2awQB5ARS
- Quh6VF2ccXhCSoc422X2K9Iw5F7vGpvUkXKgZhR2yBiTYrLcv6qBpFW6o+pyFKIvFLdi
- IH0K6HDRCn6/4tc3gyOB5Sju904nMvGLHbtkK83c+fIFJE5RKwlKJpWXosyPofqszADl
- RkjngwAtJtRSWaxQVC5doRFFBX+p+JxbGtgkaher5nXaaL7lLDWPrzrTVor88nQkjsKu
- ILHg==
+ id 1kX8nM-0006cM-8H; Mon, 26 Oct 2020 20:08:45 +0000
+Received: by mail-ed1-f65.google.com with SMTP id w25so10875697edx.2;
+ Mon, 26 Oct 2020 13:08:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1XLqJl5vO2wWqmgb9LT+ITrNAM4FaYnH32PMkyjUkwU=;
- b=iuZVdvZFrDHY8hdIziOlTBHcGkk2zvtWhWxDWtRb5CoYQWl8KsJv0aC+baO9wcIMz4
- 9dNIiJTPIJez3CHQfFWg+F07osht+wrPcEXs7W/ws95LxOQ6SOxXJjpPTLcbauotlwNd
- mZsmA+gB1RCG89Jx5rkjuSk25Mtm1fh4qI6LF0w0jffLfAtvQuOgzPp3WmPm4Lija85L
- diSrRP8cNIuyg5fZbVAzOwKvvXBXN/2/q/FGViejEr9jd3F2bUUgydvxtT5Y1MewGKOc
- 2mC2heDahwZt08+cffIBK3VpGQD+oLVIGgyKkI45CK4n9qdgL7toQ7Sz8oICjfvcYKQw
- yxBg==
-X-Gm-Message-State: AOAM530ER/U6fT3ENoSQJQzE3muaA2Dlqi9H8bu49A2wygjVnBKZzT/B
- 3i7V2IsfvgiqnR94f7YPtF46A2taC74414rleXWDNV23Ykg7yg==
-X-Google-Smtp-Source: ABdhPJwf56+lb7bD44CUrLWq/bsLRBUFkrCwKEnxLO52La3PA3TL1ljkGdJ1n02YMO6sRL1kgcUE4qOIFcgHOMQErFw=
-X-Received: by 2002:a05:6602:2d8c:: with SMTP id
- k12mr5570349iow.46.1603737510347; 
- Mon, 26 Oct 2020 11:38:30 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=QAhJNTcBuylpc827Gc8DE790mcWVOqgUgREe8IN9rGk=;
+ b=nDgDSM0f13fh2VAPU1aJ3VKdg4L9UAIBihS4S79ovDAiY86hnAXGDrU20Fn79bnjpE
+ q1arUYu5MdIggNqHEBQm6Tu4T4cXX5bTtLsindxhDQd2sSCcxNgY01mOuCBsPl66663e
+ 8lU3asZ2Gi/qnaMY+SzLSaL4P/Fm9sdwuT8tV+QeUh4OyUhLwPW2157IFJ6mqkd/zXb8
+ AlpqGWXRdsRjcpQdWqHG4lOQMTObQPY1xcqBI6reRwYcfgeas4PTxsPa/+4VN/MblsYS
+ 6L+ICgBdplQsUOqMc0HTglNEXf5NzWCqgW4Ss4rO7BmdA8dNf0gZvzKjvIE+ncZS67mi
+ nc/Q==
+X-Gm-Message-State: AOAM531kQkH2aRqu0zT9ZdVQg+GHKUrPsRAZu9ywO1cS1a/H9sTyLgzW
+ tHCuU+W8RObHJ7CLiA8ch4o=
+X-Google-Smtp-Source: ABdhPJyeTtkh+7BD+iZP00A29Rs+E9CbsQNM30SNnmXJaudtE/elyiDZQpiu12bDhX/8rOr3FlmfEA==
+X-Received: by 2002:a50:fb0d:: with SMTP id d13mr17781115edq.85.1603742922751; 
+ Mon, 26 Oct 2020 13:08:42 -0700 (PDT)
+Received: from kozik-lap ([194.230.155.184])
+ by smtp.googlemail.com with ESMTPSA id f23sm6453141ejd.5.2020.10.26.13.08.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 Oct 2020 13:08:41 -0700 (PDT)
+Date: Mon, 26 Oct 2020 21:08:38 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v3 00/24] MT8192 IOMMU support
+Message-ID: <20201026200838.GB240203@kozik-lap>
+References: <20200930070647.10188-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-References: <20201024200304.1427864-1-fparent@baylibre.com>
- <20201026121316.GB7402@sirena.org.uk>
- <CAOwMV_w5N0_Qgg3MFph1147cbvFP1Y=mUtNjGbcr-Tca4ZJ3yA@mail.gmail.com>
- <20201026172431.GI7402@sirena.org.uk>
-In-Reply-To: <20201026172431.GI7402@sirena.org.uk>
-From: Fabien Parent <fparent@baylibre.com>
-Date: Mon, 26 Oct 2020 19:38:14 +0100
-Message-ID: <CAOwMV_xt=OV6cKqQTZUUSAvYKxUUQZAUywAHtFFHL=E5xVu-Zg@mail.gmail.com>
-Subject: Re: [PATCH v5 1/2] dt-bindings: regulator: add support for MT6392
-To: Mark Brown <broonie@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200930070647.10188-1-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_143832_345403_A093E3EA 
-X-CRM114-Status: GOOD (  24.04  )
+X-CRM114-CacheID: sfid-20201026_160844_359500_E10184D4 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,70 +81,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>, Rob Herring <robh@kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, lgirdwood@gmail.com,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ kernel-team@android.com, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream@mediatek.com, chao.hao@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ Greg Kroah-Hartman <gregkh@google.com>, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ ming-fan.chen@mediatek.com, anan.sun@mediatek.com,
+ Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+On Wed, Sep 30, 2020 at 03:06:23PM +0800, Yong Wu wrote:
+> This patch mainly adds support for mt8192 IOMMU and SMI.
+> 
+> mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> table format. The M4U-SMI HW diagram is as below:
+> 
+>                           EMI
+>                            |
+>                           M4U
+>                            |
+>                       ------------
+>                        SMI Common
+>                       ------------
+>                            |
+>   +-------+------+------+----------------------+-------+
+>   |       |      |      |       ......         |       |
+>   |       |      |      |                      |       |
+> larb0   larb1  larb2  larb4     ......      larb19   larb20
+> disp0   disp1   mdp    vdec                   IPE      IPE
+> 
+> All the connections are HW fixed, SW can NOT adjust it.
+> 
+> Comparing with the preview SoC, this patchset mainly adds two new functions:
+> a) add iova 34 bits support.
+> b) add multi domains support since several HW has the special iova
+> region requirement.
+> 
+> this patchset depend on v5.9-rc1.
 
-On Mon, Oct 26, 2020 at 6:24 PM Mark Brown <broonie@kernel.org> wrote:
->
-> On Mon, Oct 26, 2020 at 06:18:35PM +0100, Fabien Parent wrote:
-> > On Mon, Oct 26, 2020 at 1:13 PM Mark Brown <broonie@kernel.org> wrote:
->
-> > > On Sat, Oct 24, 2020 at 10:03:03PM +0200, Fabien Parent wrote:
->
-> > > > +Required properties:
-> > > > +- compatible: "mediatek,mt6392-regulator"
->
-> > > This is no longer used by the driver, should be unneeded and therefore
-> > > should be removed.
->
-> > It is not used by the driver but it will be used by the MFD driver [0]
-> > like this:
-> > static const struct mfd_cell mt6392_devs[] = {
-> >     {
-> >         [snip]
-> >     }, {
-> >         [snip]
-> >     }, {
-> >         .name = "mt6392-regulator",
-> >         .of_compatible = "mediatek,mt6392-regulator"
->
-> This is still unneeded, it's just a reflection of Linux implementation
-> details and should be removed.   The MFD can just register the child
-> without supplying a compatible and things will continue to work just as
-> well.
+Hi,
 
-I'm not exactly sure how it is supposed to work. mfd_add_devices seems
-to register devices based on of_compatible or acpi_match from the
-mfd_cell. This platform does not have ACPI so I don't understand how
-the regulator driver would probe without this line. Anyway I tried to
-remove the lines below in the MFD driver and the device tree and the
-boot of the board failed because the regulator driver didn't probe.
-Any help to get me understand how it should work without this line
-would be helpful, thanks.
+I think there will be v4 of this, right? If yes, please also describe
+the dependencies between the patches. If the entire patchset is strictly
+ordered, then mention this as well.
 
+Best regards,
+Krzysztof
 
-                regulators {
--                       compatible = "mediatek,mt6392-regulator";
--
-                        mt6392_vproc_reg: buck-vproc {
-
-
-@@ -135,7 +135,6 @@ static const struct mfd_cell mt6392_devs[] = {
-                .of_compatible = "mediatek,mt6392-keys"
-        }, {
-                .name = "mt6392-regulator",
--               .of_compatible = "mediatek,mt6392-regulator"
-        }, {
 
 _______________________________________________
 Linux-mediatek mailing list
