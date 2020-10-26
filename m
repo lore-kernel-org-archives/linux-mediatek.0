@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 31148C4363A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0EF4C388F9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C685F2231B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 29165222C8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j0ObnFl2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C685F2231B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="awEGJiKs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29165222C8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,32 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CAckf0Xo0PaHEEbET3zAl8hHtoVGFYyOgBXvkkrH/UU=; b=j0ObnFl2Q/hltsZ4QhNEV2ns7
-	hYIpi3NEsmrft4AYELG6nWDL7iXfr8gwpUxO5zFBG4Aq4sDq0pZZYXdeEv9n0EdYnqNeGZOGLxeTs
-	dTewMK+eMc1mLtlXO0vSi/0d4RM4EfDcgYdEohR9Uhti6i+xSZ3X/xRe7p8H5wpyGQFs15/1MpkRH
-	LDca6caPgIGJCufnJLyW1N4VcE7Vh7kRQN9MqCPwNM0G1G2S5xGy1EtsEFH6in4xH542w3k99PhI8
-	Tjz2WK72W4wVmDfr6RA9iCMVmXlZqqs7l187AUzdnwWmWDPPRORHz7cwmpF+rqQUUcrp7F1GYbf9O
-	wp3K+Tc1A==;
+	 bh=UpcJ1ur3kCGkxVLHb6X7IC+kqZ/FDTAmSqvDyrIDbCM=; b=awEGJiKseYUe0YS1k8OeurEAH
+	sNnNnStbwHCt4k2m8a71mntOmPhvFAayrTkzmW8+H5a0IOyzGUHlw1zupLQ/JJvZYW2i8VBUqlLNt
+	cYUPt1kB95VSJqevITe67Cdsnw0g67s9mgyVgc/DKry+nnbIP1DdBoVEYY4ikZSbkdGukOuyRwgku
+	eoBQetzozeXfFANZxaQbHyR4WJKvh84oLgRwU118H81NMSWMroDt5G2/DvnyjZVin+GXeP+niQmaL
+	VisBg6QBzvsjXWtvRfi8zkH7ba60P0sS9AxpXw4mLT2wTPRiefQ6YQYYeMCGe7QhWEzqkhozms6O7
+	n8ZVi3WaA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kX6o7-0002Jo-EH; Mon, 26 Oct 2020 18:01:24 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kX6oB-0002Mn-7y; Mon, 26 Oct 2020 18:01:27 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kX6ii-0007yv-Vl; Mon, 26 Oct 2020 17:55:56 +0000
+ id 1kX6ii-0007yt-W5; Mon, 26 Oct 2020 17:55:57 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id B67761F44FD4
+ (Authenticated sender: eballetbo) with ESMTPSA id C7A781F44FCA
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v3 15/16] soc: mediatek: pm-domains: Add default power off flag
-Date: Mon, 26 Oct 2020 18:55:24 +0100
-Message-Id: <20201026175526.2915399-16-enric.balletbo@collabora.com>
+Subject: [PATCH v3 13/16] arm64: dts: mediatek: Add mt8183 power domains
+ controller
+Date: Mon, 26 Oct 2020 18:55:22 +0100
+Message-Id: <20201026175526.2915399-14-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201026175526.2915399-1-enric.balletbo@collabora.com>
 References: <20201026175526.2915399-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_135549_468760_915AEDBB 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20201026_135549_582710_1A07F197 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,93 +64,211 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, weiyi.lu@mediatek.com, fparent@baylibre.com,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, fparent@baylibre.com,
+ Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, matthias.bgg@gmail.com,
+ Collabora Kernel ML <kernel@collabora.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Weiyi Lu <weiyi.lu@mediatek.com>
+From: Matthias Brugger <mbrugger@suse.com>
 
-For some power domain, like conn on MT8192, it should be default OFF.
-Because the power on/off control relies the function of connectivity chip
-and its firmware. And if project choose other chip vendor solution,
-those necessary connectivity functions will not provided.
+Add power domains controller node for SoC mt8183
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/soc/mediatek/mtk-pm-domains.c | 23 +++++++++++++++++------
- drivers/soc/mediatek/mtk-pm-domains.h |  1 +
- 2 files changed, 18 insertions(+), 6 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 162 +++++++++++++++++++++++
+ 1 file changed, 162 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index 63993076a544..fe0e955076a0 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.c
-+++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -378,10 +378,16 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 	 * software.  The unused domains will be switched off during
- 	 * late_init time.
- 	 */
--	ret = scpsys_power_on(&pd->genpd);
--	if (ret < 0) {
--		dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
--		goto err_unprepare_clocks;
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF)) {
-+		if (scpsys_domain_is_on(pd))
-+			dev_warn(scpsys->dev,
-+				 "%pOF: A default off power domain has been ON\n", node);
-+	} else {
-+		ret = scpsys_power_on(&pd->genpd);
-+		if (ret < 0) {
-+			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
-+			goto err_unprepare_clocks;
-+		}
- 	}
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index c06778d21c4f..3e01592409cd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/clock/mt8183-clk.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/power/mt8183-power.h>
+ #include <dt-bindings/reset-controller/mt8183-resets.h>
+ #include <dt-bindings/phy/phy.h>
+ #include "mt8183-pinfunc.h"
+@@ -316,6 +317,167 @@ pio: pinctrl@10005000 {
+ 			#interrupt-cells = <2>;
+ 		};
  
- 	if (scpsys->domains[id]) {
-@@ -395,7 +401,11 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 	pd->genpd.power_off = scpsys_power_off;
- 	pd->genpd.power_on = scpsys_power_on;
- 
--	pm_genpd_init(&pd->genpd, NULL, false);
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF))
-+		pm_genpd_init(&pd->genpd, NULL, true);
-+	else
-+		pm_genpd_init(&pd->genpd, NULL, false);
++		scpsys: syscon@10006000 {
++			compatible = "syscon", "simple-mfd";
++			reg = <0 0x10006000 0 0x1000>;
++			#power-domain-cells = <1>;
 +
- 	scpsys->domains[id] = &pd->genpd;
- 
- 	return scpsys->pd_data.domains[id];
-@@ -478,7 +488,8 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
- 			"failed to remove domain '%s' : %d - state may be inconsistent\n",
- 			pd->genpd.name, ret);
- 
--	scpsys_power_off(&pd->genpd);
-+	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF))
-+		scpsys_power_off(&pd->genpd);
- 
- 	clk_bulk_unprepare(pd->num_clks, pd->clks);
- 	clk_bulk_put(pd->num_clks, pd->clks);
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-index 2ad213be84a5..0fa6a938b40c 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.h
-+++ b/drivers/soc/mediatek/mtk-pm-domains.h
-@@ -6,6 +6,7 @@
- #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
- #define MTK_SCPD_FWAIT_SRAM		BIT(1)
- #define MTK_SCPD_SRAM_ISO		BIT(2)
-+#define MTK_SCPD_KEEP_DEFAULT_OFF	BIT(3)
- #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
- 
- #define SPM_VDE_PWR_CON			0x0210
++			/* System Power Manager */
++			spm: power-controller {
++				compatible = "mediatek,mt8183-power-controller";
++				#address-cells = <1>;
++				#size-cells = <0>;
++				#power-domain-cells = <1>;
++
++				/* power domain of the SoC */
++				power-domain@MT8183_POWER_DOMAIN_AUDIO {
++					reg = <MT8183_POWER_DOMAIN_AUDIO>;
++					clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
++						 <&infracfg CLK_INFRA_AUDIO>,
++						 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>;
++					clock-names = "audio", "audio1", "audio2";
++					#power-domain-cells = <0>;
++				};
++
++				power-domain@MT8183_POWER_DOMAIN_CONN {
++					reg = <MT8183_POWER_DOMAIN_CONN>;
++					mediatek,infracfg = <&infracfg>;
++					#power-domain-cells = <0>;
++				};
++
++				power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
++					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
++					clocks =  <&topckgen CLK_TOP_MUX_MFG>;
++					clock-names = "mfg";
++					#address-cells = <1>;
++					#size-cells = <0>;
++					#power-domain-cells = <1>;
++
++					power-domain@MT8183_POWER_DOMAIN_MFG {
++						reg = <MT8183_POWER_DOMAIN_MFG>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++						#power-domain-cells = <1>;
++
++						power-domain@MT8183_POWER_DOMAIN_MFG_CORE0 {
++							reg = <MT8183_POWER_DOMAIN_MFG_CORE0>;
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8183_POWER_DOMAIN_MFG_CORE1 {
++							reg = <MT8183_POWER_DOMAIN_MFG_CORE1>;
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8183_POWER_DOMAIN_MFG_2D {
++							reg = <MT8183_POWER_DOMAIN_MFG_2D>;
++							mediatek,infracfg = <&infracfg>;
++							#power-domain-cells = <0>;
++						};
++					};
++				};
++
++				power-domain@MT8183_POWER_DOMAIN_DISP {
++					reg = <MT8183_POWER_DOMAIN_DISP>;
++					clocks = <&topckgen CLK_TOP_MUX_MM>,
++						 <&mmsys CLK_MM_SMI_COMMON>,
++						 <&mmsys CLK_MM_SMI_LARB0>,
++						 <&mmsys CLK_MM_SMI_LARB1>,
++						 <&mmsys CLK_MM_GALS_COMM0>,
++						 <&mmsys CLK_MM_GALS_COMM1>,
++						 <&mmsys CLK_MM_GALS_CCU2MM>,
++						 <&mmsys CLK_MM_GALS_IPU12MM>,
++						 <&mmsys CLK_MM_GALS_IMG2MM>,
++						 <&mmsys CLK_MM_GALS_CAM2MM>,
++						 <&mmsys CLK_MM_GALS_IPU2MM>;
++					clock-names = "mm", "mm-0", "mm-1", "mm-2", "mm-3",
++						      "mm-4", "mm-5", "mm-6", "mm-7",
++						      "mm-8", "mm-9";
++					mediatek,infracfg = <&infracfg>;
++					mediatek,smi = <&smi_common>;
++					#address-cells = <1>;
++					#size-cells = <0>;
++					#power-domain-cells = <1>;
++
++					power-domain@MT8183_POWER_DOMAIN_CAM {
++						reg = <MT8183_POWER_DOMAIN_CAM>;
++						clocks = <&topckgen CLK_TOP_MUX_CAM>,
++							 <&camsys CLK_CAM_LARB6>,
++							 <&camsys CLK_CAM_LARB3>,
++							 <&camsys CLK_CAM_SENINF>,
++							 <&camsys CLK_CAM_CAMSV0>,
++							 <&camsys CLK_CAM_CAMSV1>,
++							 <&camsys CLK_CAM_CAMSV2>,
++							 <&camsys CLK_CAM_CCU>;
++						clock-names = "cam", "cam-0", "cam-1",
++							      "cam-2", "cam-3", "cam-4",
++							      "cam-5", "cam-6";
++						mediatek,infracfg = <&infracfg>;
++						mediatek,smi = <&smi_common>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8183_POWER_DOMAIN_ISP {
++						reg = <MT8183_POWER_DOMAIN_ISP>;
++						clocks = <&topckgen CLK_TOP_MUX_IMG>,
++							 <&imgsys CLK_IMG_LARB5>,
++							 <&imgsys CLK_IMG_LARB2>;
++						clock-names = "isp", "isp-0", "isp-1";
++						mediatek,infracfg = <&infracfg>;
++						mediatek,smi = <&smi_common>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8183_POWER_DOMAIN_VDEC {
++						reg = <MT8183_POWER_DOMAIN_VDEC>;
++						mediatek,smi = <&smi_common>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8183_POWER_DOMAIN_VENC {
++						reg = <MT8183_POWER_DOMAIN_VENC>;
++						mediatek,smi = <&smi_common>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8183_POWER_DOMAIN_VPU_TOP {
++						reg = <MT8183_POWER_DOMAIN_VPU_TOP>;
++						clocks = <&topckgen CLK_TOP_MUX_IPU_IF>,
++							 <&topckgen CLK_TOP_MUX_DSP>,
++							 <&ipu_conn CLK_IPU_CONN_IPU>,
++							 <&ipu_conn CLK_IPU_CONN_AHB>,
++							 <&ipu_conn CLK_IPU_CONN_AXI>,
++							 <&ipu_conn CLK_IPU_CONN_ISP>,
++							 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
++							 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
++						clock-names = "vpu", "vpu1", "vpu-0", "vpu-1",
++							      "vpu-2", "vpu-3", "vpu-4", "vpu-5";
++						mediatek,infracfg = <&infracfg>;
++						mediatek,smi = <&smi_common>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++						#power-domain-cells = <1>;
++
++						power-domain@MT8183_POWER_DOMAIN_VPU_CORE0 {
++							reg = <MT8183_POWER_DOMAIN_VPU_CORE0>;
++							clocks = <&topckgen CLK_TOP_MUX_DSP1>;
++							clock-names = "vpu2";
++							mediatek,infracfg = <&infracfg>;
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8183_POWER_DOMAIN_VPU_CORE1 {
++							reg = <MT8183_POWER_DOMAIN_VPU_CORE1>;
++							clocks = <&topckgen CLK_TOP_MUX_DSP2>;
++							clock-names = "vpu3";
++							mediatek,infracfg = <&infracfg>;
++							#power-domain-cells = <0>;
++						};
++					};
++				};
++			};
++		};
++
+ 		watchdog: watchdog@10007000 {
+ 			compatible = "mediatek,mt8183-wdt";
+ 			reg = <0 0x10007000 0 0x100>;
 -- 
 2.28.0
 
