@@ -2,59 +2,59 @@ Return-Path: <SRS0=oVGr=EB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3835CC5517A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 08:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 898ACC388F9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 08:19:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B7FC320878
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 08:19:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0D20720878
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 08:19:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ckcQqIPq";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QutFhI46"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7FC320878
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EyvYKr1K";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jm00NxZS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D20720878
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=irNaHt1C2TE9z34uPmj3A+N6759r6aDqlzF24RJfcLU=; b=ckcQqIPqVxk8iyIXhLkAY1TyOk
-	JBA43yBhALj0N1dWD5mbutd1Dbzclb5UUhkxQxgkcoNkBpBHCckUBcaqOVtd8oNhOdTxRPsTubAuw
-	3yQQ74Y5YjoylWZqlfQnm+K6ESTaPS9pACcO38d4xKqH8gUSg9XT/50ngfgmTdFHztBanSSZu+Elb
-	VtM6gswByQCt551xmoQ+mmPqNx6mPvpw5jFoElMEfE1fhxhvO09IfKp/Y7r2tbWdn0O/atR5mPGsE
-	YMshz6Q/IIkOs9b8WhpERUZnf0kiOcBjy9OkrqxSR6nAwW4T4grL8AKgaqCti5/pm1vVDTgICaL9Y
-	5dfjquDg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=l1DP5UNyQS8LENHanMlcb2JWXFLXk9BJj9qH8DScRjo=; b=EyvYKr1KSg4ZT5SSgNT+oyWjS
+	LFEAdhwKeTO4xjlk/xwjse7d2UKNAhRQ7MFG0TDnG9EBTxcVuuFXao8TuLqUzsBaFoj4wYOqGorDW
+	FitPqTiSjOjTMwMxj+4za0C5eM4bExkHhKePNSOx2jNTKXjzW7BJKW+xTvKrNqTNC1TfxvqFZAjEn
+	PCxi1tZrdIBD++1vsB81A50kVoReOybBVk1w6c4BNZzh809UpPcsU3797kTsUZcm7pVVJERfZAMca
+	4T1wh/EJzUeesDUNWyJQ2/9ayX/9R/+mon1DT5DGryMX5bGxd8tlMVtpG3h3skPziCjjawKHJpAUi
+	RRDtv6e5w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kWxiv-0006jc-OA; Mon, 26 Oct 2020 08:19:25 +0000
+	id 1kWxj7-0006mi-FD; Mon, 26 Oct 2020 08:19:37 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kWxir-0006go-6E; Mon, 26 Oct 2020 08:19:23 +0000
-X-UUID: 17ed2ade880f478d88b2e191f1cdd6a3-20201026
+ id 1kWxit-0006gi-W9; Mon, 26 Oct 2020 08:19:25 +0000
+X-UUID: 3201fda57fe846d2aa5cbf0c8f9ac692-20201026
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=VsODDh3KIxQlll6BhtrmRw5xCTw49FcPfdwVLthSeUg=; 
- b=QutFhI46hKHUwJ3nWbZgj0AcPcA3xqRX6fIBF81+VUs1eikJVvu0KuqAwPYttFHctZdAuCtrx9vzjQCAKi4zC+SpWqvtV1YjJWzcjT0eGu5Yw//Wvodl132x5Unm7PP70hWw/SX8xeh09E8aFBSDNcO1LznyDrNk3oGWpyBo6Kc=;
-X-UUID: 17ed2ade880f478d88b2e191f1cdd6a3-20201026
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=s89f08KvBYl1d0htgXzsoi2iHSJgKoDYNXWWA86n02U=; 
+ b=jm00NxZS9vVSeZArMqOgaEXsPcCPAe6Rv14yWJf/tCDCOoP2WaXbHg38B7EjRt29XxX+UqRWHyGP75Iiev8PQumVDe7CcLqBpliN7NeTaSM3L4VbldKAUQqe7ZMglKyyKBJWJg9j0IvZqvxmFSuWYRDgWyhF56YY8/NHqd4ATEI=;
+X-UUID: 3201fda57fe846d2aa5cbf0c8f9ac692-20201026
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <hector.yuan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 352759058; Mon, 26 Oct 2020 00:19:17 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1733819593; Mon, 26 Oct 2020 00:19:17 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Oct 2020 01:19:15 -0700
+ 15.0.1497.2; Mon, 26 Oct 2020 01:19:16 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Oct 2020 16:19:13 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Oct 2020 16:19:14 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Mon, 26 Oct 2020 16:19:13 +0800
@@ -69,16 +69,17 @@ To: <linux-mediatek@lists.infradead.org>,
  <d-gerlach@ti.com>, "Florian Fainelli" <f.fainelli@gmail.com>, Robin Murphy
  <robin.murphy@arm.com>, "Lorenzo Pieralisi" <lorenzo.pieralisi@arm.com>,
  <devicetree@vger.kernel.org>
-Subject: [PATCH v8] cpufreq: mediatek-hw: Add support for Mediatek cpufreq HW
- driver
-Date: Mon, 26 Oct 2020 16:19:06 +0800
-Message-ID: <1603700349-5922-1-git-send-email-hector.yuan@mediatek.com>
+Subject: [PATCH v8 1/3] cpufreq: mediatek-hw: Add support for CPUFREQ HW
+Date: Mon, 26 Oct 2020 16:19:07 +0800
+Message-ID: <1603700349-5922-2-git-send-email-hector.yuan@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1603700349-5922-1-git-send-email-hector.yuan@mediatek.com>
+References: <1603700349-5922-1-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_041921_462439_6CDDA513 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20201026_041924_322375_6D03009C 
+X-CRM114-Status: GOOD (  27.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,42 +98,404 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The CPUfreq HW present in some Mediatek chipsets offloads the steps necessary for changing the frequency of CPUs. 
-The driver implements the cpufreq driver interface for this hardware engine. 
-This patch depends on MT6779 DTS patch[1] submitted by Hanks Chen.
+From: "Hector.Yuan" <hector.yuan@mediatek.com>
 
-From v7 to v8, there are three more patches based on patchset[2].
-This patchset is about to register power table to Energy model for EAS and thermal usage.
-1. EM CPU power table
-- Register energy model table for EAS and thermal cooling device usage.
-- Read the coresponding LUT for power table.
-2. SVS initialization
-- The SVS(Smart Voltage Scaling) engine is a hardware which is
-  used to calculate optimized voltage values for CPU power domain.
-  DVFS driver could apply those optimized voltage values to reduce power consumption.
-- Driver will polling if HW engine is done for SVS initialization.
-  After that, driver will read power table and register it to EAS.
-- CPUs must be in power on state when doing SVS. Use pm_qos to block cpu-idle state for SVS initializing.
-3. Cooling device flag
-- Add cooling device flag for thermal
+Add cpufreq HW support.
 
-[1] https://lkml.org/lkml/2020/8/4/1094
-[2] https://lkml.org/lkml/2020/9/23/384
-
-
-Hector.Yuan (3):
-  cpufreq: mediatek-hw: Add support for CPUFREQ HW
-  dt-bindings: arm: cpus: Document 'mediatek,freq-domain' property
-  dt-bindings: cpufreq: add bindings for MediaTek cpufreq HW
-
- Documentation/devicetree/bindings/arm/cpus.yaml    |    6 +
- .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |  113 +++++++
- drivers/cpufreq/Kconfig.arm                        |   12 +
- drivers/cpufreq/Makefile                           |    1 +
- drivers/cpufreq/mediatek-cpufreq-hw.c              |  343 ++++++++++++++++++++
- 5 files changed, 475 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+---
+ drivers/cpufreq/Kconfig.arm           |   12 ++
+ drivers/cpufreq/Makefile              |    1 +
+ drivers/cpufreq/mediatek-cpufreq-hw.c |  343 +++++++++++++++++++++++++++++++++
+ 3 files changed, 356 insertions(+)
  create mode 100644 drivers/cpufreq/mediatek-cpufreq-hw.c
+
+diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
+index cb72fb5..b9d17c5 100644
+--- a/drivers/cpufreq/Kconfig.arm
++++ b/drivers/cpufreq/Kconfig.arm
+@@ -123,6 +123,18 @@ config ARM_MEDIATEK_CPUFREQ
+ 	help
+ 	  This adds the CPUFreq driver support for MediaTek SoCs.
+ 
++config ARM_MEDIATEK_CPUFREQ_HW
++	tristate "MediaTek CPUFreq HW driver"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	default m
++	help
++	  Support for the CPUFreq HW driver.
++	  Some MediaTek chipsets have a HW engine to offload the steps
++	  necessary for changing the frequency of the CPUs. Firmware loaded
++	  in this engine exposes a programming interface to the OS.
++	  The driver implements the cpufreq interface for this HW engine.
++	  Say Y if you want to support CPUFreq HW.
++
+ config ARM_OMAP2PLUS_CPUFREQ
+ 	bool "TI OMAP2+"
+ 	depends on ARCH_OMAP2PLUS
+diff --git a/drivers/cpufreq/Makefile b/drivers/cpufreq/Makefile
+index f1b7e3d..ffc61cd 100644
+--- a/drivers/cpufreq/Makefile
++++ b/drivers/cpufreq/Makefile
+@@ -57,6 +57,7 @@ obj-$(CONFIG_ARM_IMX6Q_CPUFREQ)		+= imx6q-cpufreq.o
+ obj-$(CONFIG_ARM_IMX_CPUFREQ_DT)	+= imx-cpufreq-dt.o
+ obj-$(CONFIG_ARM_KIRKWOOD_CPUFREQ)	+= kirkwood-cpufreq.o
+ obj-$(CONFIG_ARM_MEDIATEK_CPUFREQ)	+= mediatek-cpufreq.o
++obj-$(CONFIG_ARM_MEDIATEK_CPUFREQ_HW)	+= mediatek-cpufreq-hw.o
+ obj-$(CONFIG_MACH_MVEBU_V7)		+= mvebu-cpufreq.o
+ obj-$(CONFIG_ARM_OMAP2PLUS_CPUFREQ)	+= omap-cpufreq.o
+ obj-$(CONFIG_ARM_PXA2xx_CPUFREQ)	+= pxa2xx-cpufreq.o
+diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+new file mode 100644
+index 0000000..3af36b0
+--- /dev/null
++++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+@@ -0,0 +1,343 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ */
++
++#include <linux/bitfield.h>
++#include <linux/cpufreq.h>
++#include <linux/energy_model.h>
++#include <linux/init.h>
++#include <linux/iopoll.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/of_address.h>
++#include <linux/of_platform.h>
++#include <linux/pm_qos.h>
++#include <linux/slab.h>
++
++#define LUT_MAX_ENTRIES			32U
++#define LUT_FREQ			GENMASK(11, 0)
++#define LUT_ROW_SIZE			0x4
++#define CPUFREQ_HW_STATUS		BIT(0)
++#define SVS_HW_STATUS			BIT(1)
++#define POLL_USEC			1000
++#define TIMEOUT_USEC			300000
++
++enum {
++	REG_FREQ_LUT_TABLE,
++	REG_FREQ_ENABLE,
++	REG_FREQ_PERF_STATE,
++	REG_FREQ_HW_STATE,
++	REG_EM_POWER_TBL,
++
++	REG_ARRAY_SIZE,
++};
++
++struct cpufreq_mtk {
++	struct cpufreq_frequency_table *table;
++	void __iomem *reg_bases[REG_ARRAY_SIZE];
++	int nr_opp;
++	cpumask_t related_cpus;
++};
++
++static const u16 cpufreq_mtk_offsets[REG_ARRAY_SIZE] = {
++	[REG_FREQ_LUT_TABLE]	= 0x0,
++	[REG_FREQ_ENABLE]	= 0x84,
++	[REG_FREQ_PERF_STATE]	= 0x88,
++	[REG_FREQ_HW_STATE]	= 0x8c,
++	[REG_EM_POWER_TBL]	= 0x3D0,
++};
++
++static struct cpufreq_mtk *mtk_freq_domain_map[NR_CPUS];
++
++static int mtk_cpufreq_get_cpu_power(unsigned long *mW,
++				     unsigned long *KHz, struct device *cpu_dev)
++{
++	struct cpufreq_mtk *c = mtk_freq_domain_map[cpu_dev->id];
++	int i;
++
++	for (i = 0; i < c->nr_opp; i++) {
++		if (c->table[i].frequency < *KHz)
++			break;
++	}
++	i--;
++
++	*KHz = c->table[i].frequency;
++	*mW = readl_relaxed(c->reg_bases[REG_EM_POWER_TBL] +
++			    i * LUT_ROW_SIZE) / 1000;
++
++	return 0;
++}
++
++static int mtk_cpufreq_hw_target_index(struct cpufreq_policy *policy,
++				       unsigned int index)
++{
++	struct cpufreq_mtk *c = policy->driver_data;
++
++	writel_relaxed(index, c->reg_bases[REG_FREQ_PERF_STATE]);
++
++	return 0;
++}
++
++static unsigned int mtk_cpufreq_hw_get(unsigned int cpu)
++{
++	struct cpufreq_mtk *c;
++	unsigned int index;
++
++	c = mtk_freq_domain_map[cpu];
++
++	index = readl_relaxed(c->reg_bases[REG_FREQ_PERF_STATE]);
++	index = min(index, LUT_MAX_ENTRIES - 1);
++
++	return c->table[index].frequency;
++}
++
++static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
++{
++	struct cpufreq_mtk *c;
++	struct device *cpu_dev;
++	struct em_data_callback em_cb = EM_DATA_CB(mtk_cpufreq_get_cpu_power);
++	struct pm_qos_request *qos_request;
++	int sig, pwr_hw = CPUFREQ_HW_STATUS | SVS_HW_STATUS;
++
++	qos_request = kzalloc(sizeof(*qos_request), GFP_KERNEL);
++	if (!qos_request)
++		return -ENOMEM;
++
++	cpu_dev = get_cpu_device(policy->cpu);
++	if (!cpu_dev) {
++		pr_err("failed to get cpu%d device\n", policy->cpu);
++		return -ENODEV;
++	}
++
++	c = mtk_freq_domain_map[policy->cpu];
++	if (!c) {
++		pr_err("No scaling support for CPU%d\n", policy->cpu);
++		return -ENODEV;
++	}
++
++	cpumask_copy(policy->cpus, &c->related_cpus);
++
++	policy->freq_table = c->table;
++	policy->driver_data = c;
++
++	/* Let CPUs leave idle-off state for SVS CPU initializing */
++	cpu_latency_qos_add_request(qos_request, 0);
++
++	/* HW should be in enabled state to proceed now */
++	writel_relaxed(0x1, c->reg_bases[REG_FREQ_ENABLE]);
++
++	if (readl_poll_timeout(c->reg_bases[REG_FREQ_HW_STATE], sig,
++			       (sig & pwr_hw) == pwr_hw, POLL_USEC,
++			       TIMEOUT_USEC)) {
++		if (!(sig & CPUFREQ_HW_STATUS)) {
++			pr_info("cpufreq hardware of CPU%d is not enabled\n",
++				policy->cpu);
++			return -ENODEV;
++		}
++
++		pr_info("SVS of CPU%d is not enabled\n", policy->cpu);
++	}
++
++	em_dev_register_perf_domain(cpu_dev, c->nr_opp, &em_cb, policy->cpus);
++
++	cpu_latency_qos_remove_request(qos_request);
++	kfree(qos_request);
++
++	return 0;
++}
++
++static int mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
++{
++	struct cpufreq_mtk *c;
++
++	c = mtk_freq_domain_map[policy->cpu];
++	if (!c) {
++		pr_err("No scaling support for CPU%d\n", policy->cpu);
++		return -ENODEV;
++	}
++
++	/* HW should be in paused state now */
++	writel_relaxed(0x0, c->reg_bases[REG_FREQ_ENABLE]);
++
++	return 0;
++}
++
++static struct cpufreq_driver cpufreq_mtk_hw_driver = {
++	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
++			  CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
++			  CPUFREQ_IS_COOLING_DEV,
++	.verify		= cpufreq_generic_frequency_table_verify,
++	.target_index	= mtk_cpufreq_hw_target_index,
++	.get		= mtk_cpufreq_hw_get,
++	.init		= mtk_cpufreq_hw_cpu_init,
++	.exit		= mtk_cpufreq_hw_cpu_exit,
++	.name		= "mtk-cpufreq-hw",
++	.attr		= cpufreq_generic_attr,
++};
++
++static int mtk_cpu_create_freq_table(struct platform_device *pdev,
++				     struct cpufreq_mtk *c)
++{
++	struct device *dev = &pdev->dev;
++	void __iomem *base_table;
++	u32 data, i, freq, prev_freq = 0;
++
++	c->table = devm_kcalloc(dev, LUT_MAX_ENTRIES + 1,
++				sizeof(*c->table), GFP_KERNEL);
++	if (!c->table)
++		return -ENOMEM;
++
++	base_table = c->reg_bases[REG_FREQ_LUT_TABLE];
++
++	for (i = 0; i < LUT_MAX_ENTRIES; i++) {
++		data = readl_relaxed(base_table + (i * LUT_ROW_SIZE));
++		freq = FIELD_GET(LUT_FREQ, data) * 1000;
++
++		if (freq == prev_freq)
++			break;
++
++		c->table[i].frequency = freq;
++
++		dev_dbg(dev, "index=%d freq=%d\n",
++			i, c->table[i].frequency);
++
++		prev_freq = freq;
++	}
++
++	c->table[i].frequency = CPUFREQ_TABLE_END;
++	c->nr_opp = i;
++
++	return 0;
++}
++
++static int mtk_get_related_cpus(int index, struct cpufreq_mtk *c)
++{
++	struct device_node *cpu_np;
++	struct of_phandle_args args;
++	int cpu, ret;
++
++	for_each_possible_cpu(cpu) {
++		cpu_np = of_cpu_device_node_get(cpu);
++		if (!cpu_np)
++			continue;
++
++		ret = of_parse_phandle_with_args(cpu_np, "mediatek,freq-domain",
++						 "#freq-domain-cells", 0,
++						 &args);
++		of_node_put(cpu_np);
++		if (ret < 0)
++			continue;
++
++		if (index == args.args[0]) {
++			cpumask_set_cpu(cpu, &c->related_cpus);
++			mtk_freq_domain_map[cpu] = c;
++		}
++	}
++
++	return 0;
++}
++
++static int mtk_cpu_resources_init(struct platform_device *pdev,
++				  unsigned int cpu, int index,
++				  const u16 *offsets)
++{
++	struct cpufreq_mtk *c;
++	struct device *dev = &pdev->dev;
++	int ret, i;
++	void __iomem *base;
++
++	if (mtk_freq_domain_map[cpu])
++		return 0;
++
++	c = devm_kzalloc(dev, sizeof(*c), GFP_KERNEL);
++	if (!c)
++		return -ENOMEM;
++
++	base = devm_platform_ioremap_resource(pdev, index);
++	if (IS_ERR(base))
++		return PTR_ERR(base);
++
++	for (i = REG_FREQ_LUT_TABLE; i < REG_ARRAY_SIZE; i++)
++		c->reg_bases[i] = base + offsets[i];
++
++	ret = mtk_get_related_cpus(index, c);
++	if (ret) {
++		dev_err(dev, "Domain-%d failed to get related CPUs\n", index);
++		return ret;
++	}
++
++	ret = mtk_cpu_create_freq_table(pdev, c);
++	if (ret) {
++		dev_err(dev, "Domain-%d failed to create freq table\n", index);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int mtk_cpufreq_hw_driver_probe(struct platform_device *pdev)
++{
++	struct device_node *cpu_np;
++	struct of_phandle_args args;
++	const u16 *offsets;
++	unsigned int cpu;
++	int ret;
++
++	offsets = of_device_get_match_data(&pdev->dev);
++	if (!offsets)
++		return -EINVAL;
++
++	for_each_possible_cpu(cpu) {
++		cpu_np = of_cpu_device_node_get(cpu);
++		if (!cpu_np) {
++			dev_err(&pdev->dev, "Failed to get cpu %d device\n",
++				cpu);
++			return -ENODEV;
++		}
++
++		ret = of_parse_phandle_with_args(cpu_np, "mediatek,freq-domain",
++						 "#freq-domain-cells", 0,
++						 &args);
++		if (ret < 0)
++			return ret;
++
++		/* Get the bases of cpufreq for domains */
++		ret = mtk_cpu_resources_init(pdev, cpu, args.args[0], offsets);
++		if (ret) {
++			dev_err(&pdev->dev, "CPUFreq resource init failed\n");
++			return ret;
++		}
++	}
++
++	ret = cpufreq_register_driver(&cpufreq_mtk_hw_driver);
++	if (ret) {
++		dev_err(&pdev->dev, "CPUFreq HW driver failed to register\n");
++		return ret;
++	}
++
++	return 0;
++}
++
++static int mtk_cpufreq_hw_driver_remove(struct platform_device *pdev)
++{
++	return cpufreq_unregister_driver(&cpufreq_mtk_hw_driver);
++}
++
++static const struct of_device_id mtk_cpufreq_hw_match[] = {
++	{ .compatible = "mediatek,cpufreq-hw", .data = &cpufreq_mtk_offsets },
++	{}
++};
++
++static struct platform_driver mtk_cpufreq_hw_driver = {
++	.probe = mtk_cpufreq_hw_driver_probe,
++	.remove = mtk_cpufreq_hw_driver_remove,
++	.driver = {
++		.name = "mtk-cpufreq-hw",
++		.of_match_table = mtk_cpufreq_hw_match,
++	},
++};
++module_platform_driver(mtk_cpufreq_hw_driver);
++
++MODULE_DESCRIPTION("Mediatek cpufreq-hw driver");
++MODULE_LICENSE("GPL v2");
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
