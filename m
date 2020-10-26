@@ -2,22 +2,22 @@ Return-Path: <SRS0=oVGr=EB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 24305C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 06:25:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CC997C388F9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 06:29:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B195B2225C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 06:25:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7020F22247
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 06:29:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fUGpRixg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mYfw8KvP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B195B2225C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aVKxBG9T";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="p529y4or"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7020F22247
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7P3YWjFlD4T0e3V1nDNlmHzoZIZQrAX6oDSnVWPqWeM=; b=fUGpRixgvunsA6KMJFyP2WwWH
-	xVZ5HbLeOW0XpEd3otTKsdjPp5F9Q4GXU7DnG9x+RaD2ufNb6C0Icl+R7r6dK/7227iCkO7Mw6sBt
-	fPOm95q4lmWsNM2vOP0OgR685sidlTNNFrrm9G6OTfipqoZMQnWjUbyqlfanr9Gzertr5+e1wQ9qU
-	ch33qZUETliMx9D7HK5NWgeMPF+LgldN2Gw4HGewhadXM5Y0erYihOaURSyE7jzoTcM1NKTwQ99AZ
-	B7MA5roOypP9bgWKHCfoZAU/M05mLpaEZBh0/TlgC8wfTHKTPKFaQqJcrv4bgaDjnubMwHXD85c9x
-	BBkv+P+MA==;
+	 bh=k/wn+8RP/jfSZMIOb10xQRJpJ1ncUP6bW0noZYy2FOQ=; b=aVKxBG9TdayxtGUMcVWFSL5VV
+	JYS5suzDhOxwcJdjn77ALe+bin+wWWc546dqcV3OBhU+jjKG0RV2G32bxkgeID3PPIyZ6eAZZWDB9
+	VB5Rht7qDw8b5lZZGe/HzFtk1zkvHQGNFeu3H+EF5SSvJ8XLY5+VThZAtEoO0lKxMa8t3EFwKlsoq
+	Ged+gAFQqT38W6G8xYYrgQflijPRBnyX/km/JkfIeIu89RFMW/mX3tSFYjiPaNqz1fhqafGJuJufm
+	0TDznpu6tMayvCvbWfjl6CiZHdYywx3YTDZbpeLbrznyXE4EgJZWC16Y2PEaekQRu4LvtWbYmvktk
+	87uVhkL0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kWvw3-00021n-OY; Mon, 26 Oct 2020 06:24:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kWw05-0002Rg-Sa; Mon, 26 Oct 2020 06:29:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kWvw0-000214-14; Mon, 26 Oct 2020 06:24:49 +0000
-X-UUID: 84b3a01307dd493993779561fc460163-20201025
+ id 1kWw01-0002Pt-1W; Mon, 26 Oct 2020 06:28:58 +0000
+X-UUID: ac03eb72db1444258c4cda3adba647bc-20201025
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=N5cnpKHxqvg4FtGCE4b75ACj8g4RCxqwiKLoHCbkZXs=; 
- b=mYfw8KvPCSjMBAofj5hJ4YeIHYfuBEyXUnJCHj7Wu27/RexTQTKdR1vfWdX18u2P2UL411QFhb0jUTO+0GYxckMn8MuIzpw9T6vBN8gRBjR+1Yy9RpmDBDPTvIvd55llakCn4OclKL+ntK0UH9St0n2WDtOGMGHRNhvUeEag86o=;
-X-UUID: 84b3a01307dd493993779561fc460163-20201025
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=XLrInF8GgdwjAwEAE1PEiTWBLKaCKIMlSZI9fSZKKDU=; 
+ b=p529y4orBaNRzV74H1ibS+yvd74NHJCf4SR+eb/HGILQqwGEjnjyvFFsh/DlAw+UMas4ux4rxZQm4Vxus/ic+0H50cN2ugvzUbPM21uxaI4G7V7eMU+gstexBKX0WSB0moFc/N6ovdkyQwcaQ+gO1zrCi/tKxZhDdBdn4DqbCfU=;
+X-UUID: ac03eb72db1444258c4cda3adba647bc-20201025
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <hector.yuan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 576610565; Sun, 25 Oct 2020 22:24:45 -0800
+ with ESMTP id 1252759746; Sun, 25 Oct 2020 22:28:54 -0800
 Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 25 Oct 2020 23:14:42 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 25 Oct 2020 23:20:55 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Oct 2020 14:14:13 +0800
+ 15.0.1497.2; Mon, 26 Oct 2020 14:20:34 +0800
 Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 26 Oct 2020 14:14:12 +0800
-Message-ID: <1603692853.20535.4.camel@mtkswgap22>
-Subject: Re: [PATCH v1 2/6] dt-bindings: arm: cpus: Document
- 'mtk,freq-domain' property
+ Transport; Mon, 26 Oct 2020 14:20:33 +0800
+Message-ID: <1603693234.20535.9.camel@mtkswgap22>
+Subject: Re: [PATCH v1] cpufreq: mediatek-hw: Add support for Mediatek
+ cpufreq HW driver
 From: Hector Yuan <hector.yuan@mediatek.com>
 To: Viresh Kumar <viresh.kumar@linaro.org>
-Date: Mon, 26 Oct 2020 14:14:13 +0800
-In-Reply-To: <20201023082941.yfjewzdsnspug7by@vireshk-i7>
+Date: Mon, 26 Oct 2020 14:20:34 +0800
+In-Reply-To: <20201023092720.qpws5wivqb4u6fwl@vireshk-i7>
 References: <1603441493-18554-1-git-send-email-hector.yuan@mediatek.com>
- <1603441493-18554-3-git-send-email-hector.yuan@mediatek.com>
- <20201023082941.yfjewzdsnspug7by@vireshk-i7>
+ <20201023082817.5vp4cvi2lmpaozcn@vireshk-i7>
+ <1603444138.20224.19.camel@mtkswgap22>
+ <20201023092720.qpws5wivqb4u6fwl@vireshk-i7>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_022448_220785_8EC8209D 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20201026_022857_327988_EDCA0724 
+X-CRM114-Status: GOOD (  28.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,45 +101,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-10-23 at 13:59 +0530, Viresh Kumar wrote:
-> On 23-10-20, 16:24, Hector Yuan wrote:
-> > From: "Hector.Yuan" <hector.yuan@mediatek.com>
+On Fri, 2020-10-23 at 14:57 +0530, Viresh Kumar wrote:
+> On 23-10-20, 17:08, Hector Yuan wrote:
+> > On Fri, 2020-10-23 at 13:58 +0530, Viresh Kumar wrote:
+> > > On 23-10-20, 16:24, Hector Yuan wrote:
+> > > > This patchset includes 6 patches and depends on the MT6779 DTS patch[1] submitted by Hanks Chen.
+> > > > The first 3 patches are for CPUFREQ HW driver and device tree binding, which are already sent before separately [2][3]. For binding part, I add a new patch to add property in cpu schema.
+> > > > Besides, we add three more patches including EM power table, SVS CPU initialize, and cooling device.
+> > > 
+> > > And even after so many versions of these you chose to name this V1. It
+> > > is very difficult for reviewers to find time to review your stuff, and
+> > > they expect some sort of summary from you on what exactly changed from
+> > > last version and you also need to name the current version currently.
+> > > 
+> > > This should have been V8 and you should have added a "V7->V8 diff:"
+> > > section here, naming all the changes you did. Please send that as
+> > > reply to this email, so I can see what really changed.
+> > > 
+> > Hi, Viresh
 > > 
-> > Add devicetree documentation for 'mtk,freq-domain' property specific
-> > to Mediatek CPUs. This property is used to reference the CPUFREQ node
-> > along with the domain id.
+> > Sorry for your inconvenience.
+> > #1~#3 is for cpufreq driver we have reviewed and the bindings which
+> > separate freq domain to CPU schema.There is no change for the driver
+> > itself.
+> >   1. cpufreq: mediatek-hw: Add support for CPUFREQ HW
+> >   2. dt-bindings: arm: cpus: Document 'mtk,freq-domain' property
+> >   3. dt-bindings: cpufreq: add bindings for MediaTek cpufreq HW
 > > 
-> > Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/arm/cpus.yaml |    6 ++++++
-> >  1 file changed, 6 insertions(+)
+> > #4~#6 is for other CPU features, i.e. SVS [1]
+> >   4. cpufreq: mediatek-hw: register EM power table
+> >   5. cpufreq: mediatek-hw: Add SVS CPU initialization
+> >   6. cpufreq: mediatek-hw: Add cooling dev flag
 > > 
-> > diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-> > index 1222bf1..06a6f5b 100644
-> > --- a/Documentation/devicetree/bindings/arm/cpus.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> > @@ -255,6 +255,12 @@ properties:
-> >  
-> >        where voltage is in V, frequency is in MHz.
-> >  
-> > +  mtk-freq-domain:
-> > +    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-> > +    description:
-> > +      CPUs supporting freq-domain must set their "mtk-freq-domain" property
-> > +      with phandle to a cpufreq_hw node followed by the domain id.
-> > +
+> > I supposed that it could be more clean to separate #4~#6 in another
+> > patchset.May I know is it okay to you? Or I should merge all of changes
+> > into v8 like you mentioned? Thank you.
 > 
-> Name should have been mtk,freq-domain I believe. Rob will confirm the
-> rest.
+> Merge them all together and explain any special features (like SVS) in
+> the commit log. It will also help in future when people want to
+> understand your driver. Explain whatever is worth explaining there and
+> is not straight forward.
 > 
-OK, will name it as mediatek,freq-domain. Thank you.
-
-> >    power-domains:
-> >      $ref: '/schemas/types.yaml#/definitions/phandle-array'
-> >      description:
-> > -- 
-> > 1.7.9.5
+> Thanks for the details.
 > 
+OK, I will merge all changes in v8. And explain details in cover-letter.
+Thank you. 
 
 _______________________________________________
 Linux-mediatek mailing list
