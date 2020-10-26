@@ -2,80 +2,66 @@ Return-Path: <SRS0=oVGr=EB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C500C4363A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 09:59:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A826C4363A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 11:36:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DABFC222EC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 09:59:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A542522250
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 11:36:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lut0I2fu";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hnLHNoZt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DABFC222EC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="R1kcSQDM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A542522250
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QSn0eSeHHyouBs0n+bIwmWs+3btR/sDISlNmImIguJ0=; b=lut0I2fuKsuP0zq4GjaajxQrZ
-	hBdXko0D0/abpiDiamodNl2qvKGadqyJPYccdiZG6EO7A75keve3ylcFkUX0s48nESONGk9jxVA46
-	mQYMorMn52TGOntWRbfyU7DmaVxqMgBVMyj1Q42ep4TIRt6kw2NCpyuc+p14NV/SCEMUqcPmy5Fdl
-	A/VrOznBAaV2xr2XQeBWS0KaVUJtFmBwcwXiOFNsL+zOlgPDsXjCwftJvzDFNwOuimHdlCTlgZpM6
-	JfJqlXSRw6yg6wuyvzUp93LaXwHBcAh5zd6cdGk5aJyl/fuefc4iFkvFJ5+0AqRSCtzw26kGRIY/B
-	KFtomwkxA==;
+	 bh=NGQXJYdrb07SMIQZH7sz0T1WxYT1ILjo81w11jSCgjU=; b=R1kcSQDMB3bph2aoGQqe8NsYg
+	iHTwaB4/tE5awckb4Akv6DHIOBO83AUAAgGT2TbZRW9SuXPQSUpJLK0h4GgVr2qJu0h0qEDot1Jwk
+	UoE4Wtb+y08pAhSLMTpkJF11DSsqSyiI+Xxxqk52GEFxA1y5ZBHK6dY8BNVX86vUOr9QQwdCIsdtb
+	GEzIktGbsmhjiSrkcqn+4sIpugafzdeNqwt9atCyR2Ukk3mT/G49D3oi3a0EcQrP7Mza+kBVypi7O
+	GsiThlEBnLLsUeBy+jxFShODrv5fbqJ5SK3fzsbFWUxMgF4u3WSHNTPXWC9VejyHZW8vAL66C25uG
+	MyXqaFY9Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kWzHy-0005XD-MG; Mon, 26 Oct 2020 09:59:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kWzHt-0005VY-3U; Mon, 26 Oct 2020 09:59:38 +0000
-X-UUID: 2b7e10825d5146c290fc030852bc9422-20201026
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=20g0W1OHC8ECWUuvX8bYtkQwtQjsCCtxJSPzMi5pZ3Y=; 
- b=hnLHNoZt83lzo3EIi+h9NFGmBN9lxqgSR3A4N+lQmDENvgqZkaUzhWL5ZLkWdFUJgwitHtkAezv0DvsbiD9hebpU2iDLC1GzBLjck1mrkdukeV+IQDbI/p3KXjJYWeaEPLXgy7Qg0Yvkq+/i/3Lmce3BcbC/xoOta0XfX0cvaus=;
-X-UUID: 2b7e10825d5146c290fc030852bc9422-20201026
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <claude.yen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1038577914; Mon, 26 Oct 2020 01:55:21 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Oct 2020 02:55:19 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Oct 2020 17:55:18 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 26 Oct 2020 17:55:18 +0800
-Message-ID: <1603706118.2127.2.camel@mtkswgap22>
-Subject: Re: [PATCH] PM / s2idle: Export s2idle_set_ops
-From: claude yen <claude.yen@mediatek.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Mon, 26 Oct 2020 17:55:18 +0800
-In-Reply-To: <CAJZ5v0jJHBBrxANa-+mHFE47TZfE4NKNpgp0-rq2BD=Yw7qMXg@mail.gmail.com>
-References: <20201022061748.13730-1-claude.yen@mediatek.com>
- <20201022061748.13730-2-claude.yen@mediatek.com>
- <20201022070154.hqvksoj4nss3er2e@bogus>
- <1603427300.7573.6.camel@mtkswgap22>
- <20201023144842.zos4pvpwv4r3rv4j@bogus>
- <CAJZ5v0jJHBBrxANa-+mHFE47TZfE4NKNpgp0-rq2BD=Yw7qMXg@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+	id 1kX0nO-0005X3-U2; Mon, 26 Oct 2020 11:36:14 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kX0nH-0005V6-OC; Mon, 26 Oct 2020 11:36:11 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A68D3101E;
+ Mon, 26 Oct 2020 04:36:05 -0700 (PDT)
+Received: from [10.57.50.191] (unknown [10.57.50.191])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A3DC63F719;
+ Mon, 26 Oct 2020 04:36:02 -0700 (PDT)
+Subject: Re: [PATCH v3 11/24] iommu/io-pgtable-arm-v7s: Quad lvl1 pgtable for
+ MediaTek
+To: Yong Wu <yong.wu@mediatek.com>
+References: <20200930070647.10188-1-yong.wu@mediatek.com>
+ <20200930070647.10188-12-yong.wu@mediatek.com>
+ <a5713949-1d95-40f1-d35d-d99735b48294@arm.com>
+ <1603698083.26323.87.camel@mhfsdcap03>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <7a03faf4-b382-2923-b9fa-9a55861f49d6@arm.com>
+Date: Mon, 26 Oct 2020 11:35:56 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1603698083.26323.87.camel@mhfsdcap03>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_055937_356504_92889058 
-X-CRM114-Status: GOOD (  30.02  )
+X-CRM114-CacheID: sfid-20201026_073607_891309_7EB9DE5F 
+X-CRM114-Status: GOOD (  25.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,81 +73,134 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Len Brown <len.brown@intel.com>, wsd_upstream <wsd_upstream@mediatek.com>,
- Linux PM <linux-pm@vger.kernel.org>, "Rafael J . Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "moderated
- list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Pavel Machek <pavel@ucw.cz>, Sudeep Holla <sudeep.holla@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, kernel-team@android.com, Joerg Roedel <joro@8bytes.org>,
+ Greg Kroah-Hartman <gregkh@google.com>, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
+ anan.sun@mediatek.com, Will Deacon <will@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-10-23 at 16:58 +0200, Rafael J. Wysocki wrote:
-> On Fri, Oct 23, 2020 at 4:48 PM Sudeep Holla <sudeep.holla@arm.com> wrote:
-> >
-> > On Fri, Oct 23, 2020 at 12:28:20PM +0800, claude yen wrote:
-> > > On Thu, 2020-10-22 at 08:02 +0100, Sudeep Holla wrote:
-> > > > On Thu, Oct 22, 2020 at 02:17:48PM +0800, Claude Yen wrote:
-> > > > > As suspend_set_ops is exported in commit a5e4fd8783a2
-> > > > > ("PM / Suspend: Export suspend_set_ops, suspend_valid_only_mem"),
-> > > > > exporting s2idle_set_ops to make kernel module setup s2idle ops too.
-> > > > >
-> > > > > In this way, kernel module can hook platform suspend
-> > > > > functions regardless of Suspend-to-Ram(S2R) or
-> > > > > Suspend-to-Idle(S2I)
-> > > > >
-> > > >
-> > > > If this is for arm64 platform, then NACK. You must use PSCI and it will
-> > > > set the ops and it can't be module.
-> > > >
-> > >
-> > > PSCI uses suspend_set_ops instead. And suspend_set_ops has been
-> > > exported years ago.
-> > >
-> > > Suspend-to_Idle(S2I) is another suspend method supported by linux
-> > > kernel. The corresponding s2idle_ops can be hooked by s2idle_set_ops
-> > > by underlying platforms.  For example, S2I is now introduced into
-> > > Mediatek SoC platforms. Besides, power management driver is built as
-> > > kernel module.
-> > >
-> > > Mobile platforms are now call for kernel drivers to be kernel modules.
-> > > This could help drivers easier to migrate to newer linux kernel.
-> > > Ref: https://linuxplumbersconf.org/event/7/contributions/790/
-> > >
-> >
-> > I understand that. But I am interested in looking at the module you want
-> > to use this and how that interacts with PSCI. If this is arm64, you must
-> > use PSCI for system suspend and cpu suspend. What does this module do on
-> > top of those is what I want to know. Please post that module or point
-> > me if it is already present in the tree.
+On 2020-10-26 07:41, Yong Wu wrote:
+> On Fri, 2020-10-23 at 15:10 +0100, Robin Murphy wrote:
+>> On 2020-09-30 08:06, Yong Wu wrote:
+>>> The standard input iova bits is 32. MediaTek quad the lvl1 pagetable
+>>> (4 * lvl1). No change for lvl2 pagetable. Then the iova bits can reach
+>>> 34bit.
+>>>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>> ---
+>>>    drivers/iommu/io-pgtable-arm-v7s.c | 13 ++++++++++---
+>>>    drivers/iommu/mtk_iommu.c          |  2 +-
+>>>    2 files changed, 11 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+>>> index 8362fdf76657..306bae2755ed 100644
+>>> --- a/drivers/iommu/io-pgtable-arm-v7s.c
+>>> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
+>>> @@ -50,10 +50,17 @@
+>>>     */
+>>>    #define ARM_V7S_ADDR_BITS		32
+>>>    #define _ARM_V7S_LVL_BITS(lvl)		(16 - (lvl) * 4)
+>>> +/* MediaTek: totally 34bits, 14bits at lvl1 and 8bits at lvl2. */
+>>> +#define _ARM_V7S_LVL_BITS_MTK(lvl)	(20 - (lvl) * 6)
+>>
+>> This should defined in terms of both lvl and cfg->ias. The formula here
+>> is nothing more than a disgusting trick I made up since a linear
+>> interpolation happened to fit the required numbers. That said, all of
+>> these bits pretending that short-descriptor is a well-defined recursive
+>> format only served to allow the rest of the code to look more like the
+>> LPAE code - IIRC they've already diverged a fair bit since then, so
+>> frankly a lot of this could stand to be unpicked and made considerably
+>> clearer by simply accepting that level 1 and level 2 are different from
+>> each other.
 > 
-> Regardless, generally speaking, patches that export stuff to modules
-> without an in-the-tree user needing this are not applicable to the
-> mainline kernel source tree IMV.
+> If the formula is not good and make it clearer, How about this?
 > 
-> Cheers!
+> 
+> /*
+>   * We have 32 bits total; 12 bits resolved at level 1, 8 bits at level
+> 2,
+> -* and 12 bits in a page. With some carefully-chosen coefficients we can
+> -* hide the ugly inconsistencies behind these macros and at least let
+> the
+> -* rest of the code pretend to be somewhat sane.
+> +* and 12 bits in a page.
+> +*
+> +* MediaTek extend 2 bits to reach 34 bits, 14 bits at lvl1 and 8 bits
+> at lvl2.
+>   */
+> 
+> -#define _ARM_V7S_LVL_BITS(lvl)		(16 - (lvl) * 4)
+> +#define _ARM_V7S_LVL1_BITS_NR(cfg)     (((cfg)->ias == 32) ? 12 : 14)
+> +#define _ARM_V7S_LVL2_BITS_NR		8
+> +
+> +#define _ARM_V7S_LVL_BITS(lvl, cfg)    \
+> +      (((lvl) == 1) ? _ARM_V7S_LVL1_BITS_NR(cfg):_ARM_V7S_LVL2_BITS_NR)
 
+Well, I'd have gone for something really simple and clear like:
 
-Thank for your feedbacks!
+#define ARM_V7S_LVL_BITS(lvl, cfg) ((lvl) == 1 ? (cfg)->ias - 20 : 8)
+#define ARM_V7S_LVL_SHIFT(lvl)     ((lvl) == 1 ? 20 : 12)
 
-Indeed, there is no actual kernel module which uses s2idle_set_ops in
-Mainline kernel right now.
+Then maybe see if enough of the users could resolve lvl significantly 
+earlier to make it worth splitting things up further.
 
-However, Google recently ask SoC vendors to build drivers as kernel
-modules for reducing migration efforts. For example, The power
-management driver on Mediatek platform is now built as vendor module,
-which has no plan to upstream so far. 
+Robin.
 
-From Mainline kernel's perspective, I am wondering whether such vendor
-modules are applicable to export APIs. Exporting APIs only at Google's
-Android Common Kernel is an option, but this would make Android Kernel
-and Mainline kernel much more diverse.
-
-Regards,
-Claude
+>>>    #define ARM_V7S_LVL_SHIFT(lvl)		(ARM_V7S_ADDR_BITS - (4 + 8 * (lvl)))
+>>>    #define ARM_V7S_TABLE_SHIFT		10
+>>>    
+>>> -#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	(1 << _ARM_V7S_LVL_BITS(lvl))
+>>> +#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	({				\
+>>> +	int _lvl = lvl;							\
+>>> +	!arm_v7s_is_mtk_enabled(cfg) ?					\
+>>> +	 (1 << _ARM_V7S_LVL_BITS(_lvl)) : (1 << _ARM_V7S_LVL_BITS_MTK(_lvl));\
+>>> +})
+>>> +
+>>>    #define ARM_V7S_TABLE_SIZE(lvl, cfg)					\
+>>>    	(ARM_V7S_PTES_PER_LVL(lvl, cfg) * sizeof(arm_v7s_iopte))
+>>>    
+>>> @@ -63,7 +70,7 @@
+>>>    #define _ARM_V7S_IDX_MASK(lvl, cfg)	(ARM_V7S_PTES_PER_LVL(lvl, cfg) - 1)
+>>>    #define ARM_V7S_LVL_IDX(addr, lvl, cfg)	({			\
+>>>    	int _l = lvl;							\
+>>> -	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
+>>> +	((addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
+>>>    })
+>>>    
+>>>    /*
+>>> @@ -755,7 +762,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+>>>    {
+>>>    	struct arm_v7s_io_pgtable *data;
+>>>    
+>>> -	if (cfg->ias > ARM_V7S_ADDR_BITS)
+>>> +	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
+>>>    		return NULL;
+>>>    
+>>>    	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
+>>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>>> index f6a2e3eb59d2..6e85c9976a33 100644
+>>> --- a/drivers/iommu/mtk_iommu.c
+>>> +++ b/drivers/iommu/mtk_iommu.c
+>>> @@ -316,7 +316,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+>>>    			IO_PGTABLE_QUIRK_TLBI_ON_MAP |
+>>>    			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
+>>>    		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
+>>> -		.ias = 32,
+>>> +		.ias = 34,
+>>>    		.oas = 35,
+>>>    		.tlb = &mtk_iommu_flush_ops,
+>>>    		.iommu_dev = data->dev,
+>>>
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
