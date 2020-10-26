@@ -5,18 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0AA1C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02270C388F9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 80C88222C8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9EC00222D9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:01:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D7UYe6Py"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80C88222C8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tbl7npZt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9EC00222D9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,32 +26,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=90bKgRh6BYfX7Jg/mmwol2gdWnozs5g3pqPdj/iYriM=; b=D7UYe6PyKNZvf07MAZR8koGTX
-	5tx0l3D9kodi9Y4MDTDsLywN6TwdlSETGR7684OjKr/Nm2bqns+PDLJBZfXjAfMxuORZ4k5ZpyFsU
-	Jb7iNHhHAa4lTPewy5eBm0ldHGHVZK5CN5h6/5mdJAMhrFEPBnp0qXK+8a87K4Ls5gu262/yNcMoQ
-	sGV4XlDnpOJQSEeST7Mzn4GL+RrGSxAygNeXs+qcGcH/cWR9gj55oNYO7YlpgW8XQrctWJJ5PBrso
-	EkEjf+ZmGKqk1coofZvlhviXyJAP93+osbGLVJNqn+S0qmwwl6DlMVO5Oben5yp4hCOM83/Vic6x/
-	ncPF30GJw==;
+	 bh=OYOFORWftK45lDJLKJb5MgQS8ZYOkZv/v16qRWVBZ88=; b=Tbl7npZtZDDxSCbp0asJFQrMl
+	laqJy7hPR++8WGRDQCcsu66pMc+mD+F6DU+mzfjRZY40bIiyu0sIVdffB7VxkY7cp/5IKG/KRQNxg
+	lIhd7/UkJuDKtxqRllkwhzOijKmK1SksqFErV2zeEwRzdn6R43CSXpIcUASmcF8lLQK+cazWLndTJ
+	g9MVG2K+QJ3cy2B3lA9bWL+y0piPUF3pYKpm005bdqU8JlacmmUuow178YtrkfpO179seGnzJJS0y
+	FJegNTgt0SGqRwZsX7sRmAh6g8MemMzfPpqxfNq0pR/wuU2yRuI5ciLP0hnjK7KgA7eiL8xssrpMo
+	2g3dPCwHQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kX6o2-0002Ec-SC; Mon, 26 Oct 2020 18:01:19 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kX6o5-0002Hs-J3; Mon, 26 Oct 2020 18:01:21 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kX6ii-0007yl-UP; Mon, 26 Oct 2020 17:55:54 +0000
+ id 1kX6ii-0007yu-VV; Mon, 26 Oct 2020 17:55:55 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id DD0421F44FD2
+ (Authenticated sender: eballetbo) with ESMTPSA id C53191F44FD3
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v3 12/16] arm64: dts: mediatek: Add smi_common node for MT8183
-Date: Mon, 26 Oct 2020 18:55:21 +0100
-Message-Id: <20201026175526.2915399-13-enric.balletbo@collabora.com>
+Subject: [PATCH v3 14/16] dt-bindings: power: Add MT8192 power domains
+Date: Mon, 26 Oct 2020 18:55:23 +0100
+Message-Id: <20201026175526.2915399-15-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201026175526.2915399-1-enric.balletbo@collabora.com>
 References: <20201026175526.2915399-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_135549_201445_321C386F 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20201026_135549_467791_BB6B280B 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,42 +73,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SMI (Smart Multimedia Interface) Common is a bridge between the m4u
-(Multimedia Memory Management Unit) and the Multimedia HW. This block is
-needed to support different multimedia features, like display, video
-decode, and camera. Also is needed to control the power domains of such
-HW blocks.
+From: Weiyi Lu <weiyi.lu@mediatek.com>
 
+Add power domains dt-bindings for MT8192.
+
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
 Changes in v3: None
 Changes in v2: None
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ .../power/mediatek,power-controller.yaml      |  2 ++
+ include/dt-bindings/power/mt8192-power.h      | 32 +++++++++++++++++++
+ 2 files changed, 34 insertions(+)
+ create mode 100644 include/dt-bindings/power/mt8192-power.h
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 9cfd961c45eb..c06778d21c4f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -765,6 +765,16 @@ mmsys: syscon@14000000 {
- 			#clock-cells = <1>;
- 		};
+diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+index 7126c3c81570..0318ffb1133c 100644
+--- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
++++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+@@ -25,6 +25,7 @@ properties:
+     enum:
+       - mediatek,mt8173-power-controller
+       - mediatek,mt8183-power-controller
++      - mediatek,mt8192-power-controller
  
-+		smi_common: smi@14019000 {
-+			compatible = "mediatek,mt8183-smi-common", "syscon";
-+			reg = <0 0x14019000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_GALS_COMM0>,
-+				 <&mmsys CLK_MM_GALS_COMM1>;
-+			clock-names = "apb", "smi", "gals0", "gals1";
-+		};
+   '#power-domain-cells':
+     const: 1
+@@ -60,6 +61,7 @@ patternProperties:
+           Power domain index. Valid values are defined in:
+               "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
+               "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
++              "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
+         maxItems: 1
+ 
+       clocks:
+diff --git a/include/dt-bindings/power/mt8192-power.h b/include/dt-bindings/power/mt8192-power.h
+new file mode 100644
+index 000000000000..4eaa53d7270a
+--- /dev/null
++++ b/include/dt-bindings/power/mt8192-power.h
+@@ -0,0 +1,32 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * Copyright (c) 2020 MediaTek Inc.
++ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
++ */
 +
- 		imgsys: syscon@15020000 {
- 			compatible = "mediatek,mt8183-imgsys", "syscon";
- 			reg = <0 0x15020000 0 0x1000>;
++#ifndef _DT_BINDINGS_POWER_MT8192_POWER_H
++#define _DT_BINDINGS_POWER_MT8192_POWER_H
++
++#define MT8192_POWER_DOMAIN_AUDIO	0
++#define MT8192_POWER_DOMAIN_CONN	1
++#define MT8192_POWER_DOMAIN_MFG0	2
++#define MT8192_POWER_DOMAIN_MFG1	3
++#define MT8192_POWER_DOMAIN_MFG2	4
++#define MT8192_POWER_DOMAIN_MFG3	5
++#define MT8192_POWER_DOMAIN_MFG4	6
++#define MT8192_POWER_DOMAIN_MFG5	7
++#define MT8192_POWER_DOMAIN_MFG6	8
++#define MT8192_POWER_DOMAIN_DISP	9
++#define MT8192_POWER_DOMAIN_IPE		10
++#define MT8192_POWER_DOMAIN_ISP		11
++#define MT8192_POWER_DOMAIN_ISP2	12
++#define MT8192_POWER_DOMAIN_MDP		13
++#define MT8192_POWER_DOMAIN_VENC	14
++#define MT8192_POWER_DOMAIN_VDEC	15
++#define MT8192_POWER_DOMAIN_VDEC2	16
++#define MT8192_POWER_DOMAIN_CAM		17
++#define MT8192_POWER_DOMAIN_CAM_RAWA	18
++#define MT8192_POWER_DOMAIN_CAM_RAWB	19
++#define MT8192_POWER_DOMAIN_CAM_RAWC	20
++
++#endif /* _DT_BINDINGS_POWER_MT8192_POWER_H */
 -- 
 2.28.0
 
