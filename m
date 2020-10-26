@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 05C2DC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 07:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 92D5CC2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 07:54:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8A40B222EA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 07:49:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1F430222EA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 07:54:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tQ+OpROW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="u+fN7kJl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A40B222EA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ectPXLRi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FXW5f8pG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F430222EA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OBmNQjYV+eXNoBEMuqEn8x14j5FRZmIwSWw0b97/vlg=; b=tQ+OpROWKPlT/gFFQLSKd5FFS
-	rEAd5GUx4s23sOKecvrxLgnLa+EBA6tFfmvy1PGKI6SjUChAwBvPTlczd40+FV9LNIZ27sTxn4THn
-	CW0baIF5lg3BXottCyWviUvUs3uWn4XX79NcVA6IjoSXLIkNSy6DtGt8Ytdhcltq6dH+BvRm3G8ae
-	l5nlZgjSbkwp7Mes2F0b0ol9b/DCZYQHUZjFzuYdWxh1CnY+S6glUm03D6zIkw2hftNVZBjIn0wNo
-	5i8NoWJ2rad8mBO2by6FyS+FpMLmnZwAfWFbksiPMtWmQ+UanGhcrH0m8MV+ZuFKn4JAsDs8sTZve
-	BGL9WZ6LQ==;
+	 bh=7iYkP88fqmRngUPlOtPwNF0gZrGruVW6l4ChJrAKaG8=; b=ectPXLRi5Qm+XQUsMCceq+ImB
+	1tq/VJeYzGich3f+uLFxAHPHPt8ukjObRB85tH7uJ4aQvBkvvhf/wDEjCLK+KkT1daJLXANbY22a4
+	yhs6S01KmCkwTxfBj2ouaC2CDP3rt/+/WhvaRLDidOgT6t/ZCY5s+W0rvNg0kd1IlEhLQvYkCIVJc
+	hs1ALEXUzwhKq/ShHV/gdaVhgm37g5UqA1SuNJrfnACFVwLaHL0tte1Dsvyda2bSpEgO8NVlxbWvI
+	tfj35ML2ipFxO06+T9DKOmT3RNkVxWB9rM+gK0nCNUUtW8gRPdTsZfhXzZ/hEo6iCml+JXawoh4h4
+	dL+dH53tQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kWxFz-0001aU-9V; Mon, 26 Oct 2020 07:49:31 +0000
+	id 1kWxKf-0002LE-T5; Mon, 26 Oct 2020 07:54:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kWxFw-0001Z8-Da; Mon, 26 Oct 2020 07:49:29 +0000
-X-UUID: bfacdd3ac4a04ba0b200aaa86bc6b4b3-20201025
+ id 1kWxKc-0002KW-8p; Mon, 26 Oct 2020 07:54:20 +0000
+X-UUID: 9e8f0400d18a464eb9bfdf349d15197a-20201025
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=SfAVNttk78qRQKKemA7Ud33MHHCmqu34nhu5o0stHqY=; 
- b=u+fN7kJlDgpXkW2VyRhnBLoYkwrtZD/IKv0DltJ4yn/yUhJ6/XAcoxgJ1ymkA6l94fhp982U8WIBhhdG185QV79GLcNnvBRM8FuBARjRYMUvhsN+kfSMcHaochbt3/boH8Ks/otCXQkqbjTb+F6GgQhdwMYjiBqI1fEuHhkMfXE=;
-X-UUID: bfacdd3ac4a04ba0b200aaa86bc6b4b3-20201025
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=lojLUg9fFbo8jOsfPb9idJA9/aY654a36SbR0fCGZpQ=; 
+ b=FXW5f8pGDDlqGl/OVd1XO2KoNC4wG2GzGQtDOhRESU092WwJ24EbVZ3o3hJ18JzHFotdMdLKKW3hjF9FaIAsiIMlMH9qm9dHN0C4duXxiS4nZTlM+Arpx/qBHIv9LwiT6CSGj++ANfioOA83EVYMosle0ER8wFhq5tifenm5EVU=;
+X-UUID: 9e8f0400d18a464eb9bfdf349d15197a-20201025
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1811044683; Sun, 25 Oct 2020 23:49:25 -0800
+ with ESMTP id 171248323; Sun, 25 Oct 2020 23:54:13 -0800
 Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Oct 2020 00:49:23 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Oct 2020 00:45:44 -0700
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
  (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 26 Oct 2020 15:49:07 +0800
+ Mon, 26 Oct 2020 15:45:35 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 26 Oct 2020 15:49:06 +0800
-Message-ID: <1603698546.26323.89.camel@mhfsdcap03>
-Subject: Re: [PATCH v3 08/24] iommu/io-pgtable-arm-v7s: Use ias to check the
- valid iova in unmap
+ Transport; Mon, 26 Oct 2020 15:45:34 +0800
+Message-ID: <1603698334.26323.88.camel@mhfsdcap03>
+Subject: Re: [PATCH v3 11/24] iommu/io-pgtable-arm-v7s: Quad lvl1 pgtable
+ for MediaTek
 From: Yong Wu <yong.wu@mediatek.com>
 To: Will Deacon <will@kernel.org>
-Date: Mon, 26 Oct 2020 15:49:06 +0800
-In-Reply-To: <20201023111740.GA20933@willie-the-truck>
+Date: Mon, 26 Oct 2020 15:45:34 +0800
+In-Reply-To: <20201023112148.GB20933@willie-the-truck>
 References: <20200930070647.10188-1-yong.wu@mediatek.com>
- <20200930070647.10188-9-yong.wu@mediatek.com>
- <20201023111740.GA20933@willie-the-truck>
+ <20200930070647.10188-12-yong.wu@mediatek.com>
+ <20201023112148.GB20933@willie-the-truck>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8750D7412EF4047F0F7D427B7CA7C541119F84D3827A3506E3419C88D3EFEC702000:8
+X-TM-SNTS-SMTP: 7D5007B554F3125CBCD9B8D492C92003C020E35494172D92BAFD6D3255A98BE82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_034928_634946_B695E3B2 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20201026_035418_454591_01696BAF 
+X-CRM114-Status: GOOD (  20.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,49 +101,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-10-23 at 12:17 +0100, Will Deacon wrote:
-> On Wed, Sep 30, 2020 at 03:06:31PM +0800, Yong Wu wrote:
-> > Use the ias for the valid iova checking in arm_v7s_unmap. This is a
-> > preparing patch for supporting iova 34bit for MediaTek.
-> > BTW, change the ias/oas checking format in arm_v7s_map.
+On Fri, 2020-10-23 at 12:21 +0100, Will Deacon wrote:
+> On Wed, Sep 30, 2020 at 03:06:34PM +0800, Yong Wu wrote:
+> > The standard input iova bits is 32. MediaTek quad the lvl1 pagetable
+> > (4 * lvl1). No change for lvl2 pagetable. Then the iova bits can reach
+> > 34bit.
 > > 
 > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > > ---
-> >  drivers/iommu/io-pgtable-arm-v7s.c | 5 ++---
-> >  1 file changed, 2 insertions(+), 3 deletions(-)
+> >  drivers/iommu/io-pgtable-arm-v7s.c | 13 ++++++++++---
+> >  drivers/iommu/mtk_iommu.c          |  2 +-
+> >  2 files changed, 11 insertions(+), 4 deletions(-)
 > > 
 > > diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-> > index a688f22cbe3b..4c9d8dccfc5a 100644
+> > index 8362fdf76657..306bae2755ed 100644
 > > --- a/drivers/iommu/io-pgtable-arm-v7s.c
 > > +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-> > @@ -526,8 +526,7 @@ static int arm_v7s_map(struct io_pgtable_ops *ops, unsigned long iova,
-> >  	if (!(prot & (IOMMU_READ | IOMMU_WRITE)))
-> >  		return 0;
-> >  
-> > -	if (WARN_ON(iova >= (1ULL << data->iop.cfg.ias) ||
-> > -		    paddr >= (1ULL << data->iop.cfg.oas)))
-> > +	if (WARN_ON(iova >> data->iop.cfg.ias || paddr >> data->iop.cfg.oas))
-> >  		return -ERANGE;
+> > @@ -50,10 +50,17 @@
+> >   */
+> >  #define ARM_V7S_ADDR_BITS		32
 > 
-> As discussed when reviewing these for Android, please leave this code as-is.
+> If we rename this to _ARM_V7S_ADDR_BITS can we then have ARM_V7S_ADDR_BITS
+> take a cfg parameter and move the arm_v7s_is_mtk_enabled() check in there?
+> Same for _ARM_V7S_LVL_BITS.
 > 
-> >  
-> >  	ret = __arm_v7s_map(data, iova, paddr, size, prot, 1, data->pgd, gfp);
-> > @@ -717,7 +716,7 @@ static size_t arm_v7s_unmap(struct io_pgtable_ops *ops, unsigned long iova,
-> >  {
-> >  	struct arm_v7s_io_pgtable *data = io_pgtable_ops_to_data(ops);
-> >  
-> > -	if (WARN_ON(upper_32_bits(iova)))
-> > +	if (WARN_ON(iova >> data->iop.cfg.ias))
-> >  		return 0;
-> 
-> And avoid the UB here for 32-bit machines by comparing with 1ULL <<
-> iop.cfg.ias instead.
+> That would avoid scattering arm_v7s_is_mtk_enabled() into all the users.
 
-Thanks. I will fix it in next version.
+I added "cfg" for _ARM_V7S_LVL_BITS in Robin's mail. is that ok?
 
-> 
-> Thanks,
+Regarding ARM_V7S_ADDR_BITS, I'd like to keep it as is(Don't add cfg),
+this macro only is used in ARM_V7S_LVL_SHIFT and checking the value of
+ias/oas.
+
+a) ARM_V7S_LVL_SHIFT always expect ARM_V7S_ADDR_BITS is 32.
+
+b) our ias/oas is different(ias is 34 while oas is 35). If we define a
+new macro, we need two about this, like:
+#define ARM_V7S_IADDR_BITS(cfg)	(!arm_v7s_is_mtk_enabled(cfg) ? 32 : 34)
+#define ARM_V7S_OADDR_BITS(cfg)	(!arm_v7s_is_mtk_enabled(cfg) ? 32 : 35)
+and the two will only are used in the checking of ias/oas.
+
+thus it looks unnecessary?
+
 > 
 > Will
 
