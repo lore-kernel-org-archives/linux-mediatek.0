@@ -2,22 +2,22 @@ Return-Path: <SRS0=oVGr=EB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25A8AC388F9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:00:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA8E8C4363A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:00:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9BFEF222C8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:00:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 342C8222C8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 18:00:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JA9ma57p"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BFEF222C8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jDHCP+um"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 342C8222C8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FDgaL60Voy+xhEDrXG9AIJLTQ48oi5qlw0XG3kRm6aE=; b=JA9ma57pZ2WI+SPPYtuMgCWjE
-	jH+7hr2hv+PIXKaTzm6aQ4tk/ogXBAuCRDytasdGtb4fOcRnL1xFnwcEwZRGyzW1wbfT0aZfZVBBD
-	ZpsvT4NNM/KpWoRDHLO9AB+ypi+ok1n6uFOTr81a6/yG1z8/dMnlBBr2AKX2nl8j27JRQAuVjG2WF
-	r1jfpKhpbDnDAZx/eysQ/IOkmYD+fp36v6BI5uT/+HfvjaheUbJMarM49dPs4E+C26SoxetaYNIEs
-	3fIG9XbtL6n0fk64ADvp+stjvS4ecG93so35RczSsxEN8gstMMgWUdilodUzPrDxBbKeDgU01Z+Nk
-	RSC6kV5Cw==;
+	 bh=V/sCj4vACOJRHL//ZxULmWUGIJ9m8QvJtz+saHvCaBM=; b=jDHCP+umNHrE4u4i64l99EcvR
+	P2fhTguexWruv4pfM4czXU8UDMMRT3wROm2rGRuJNUqNTtc3gRFna+/wDut+akuGbNVHzEV9K8sLP
+	nBaKLfEPlfoeBjj/kYZRM/xahxzkJ+jH5qzrAGzcAxyFPEsWp0qp/9liHxXAq/2SD+Bj95moJb/FF
+	8kAYqrmUJYxAB6Q7es0R7Hbe8C8wUTWlldyBjYzWzgt+IiI1zPJKuKXm31T6AzgQYGo2uBp9kP2Tk
+	1Ry8/7tgkPCyX0/sacogtaYNs2NsF3jR684oxO/Brf+AkVToHM1nhVJq0JJZKuQRxGg053PqKWmdH
+	QbtDhMiQg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kX6mm-0001Qf-4N; Mon, 26 Oct 2020 18:00:00 +0000
+	id 1kX6mq-0001Ul-SI; Mon, 26 Oct 2020 18:00:04 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kX6iZ-0007uh-0b; Mon, 26 Oct 2020 17:55:47 +0000
+ id 1kX6iX-0007tM-37; Mon, 26 Oct 2020 17:55:47 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 6E8191F44FCD
+ (Authenticated sender: eballetbo) with ESMTPSA id 93D531F44FCB
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v3 05/16] soc: mediatek: pm_domains: Make bus protection
- generic
-Date: Mon, 26 Oct 2020 18:55:14 +0100
-Message-Id: <20201026175526.2915399-6-enric.balletbo@collabora.com>
+Subject: [PATCH v3 03/16] arm64: dts: mediatek: Add mt8173 power domain
+ controller
+Date: Mon, 26 Oct 2020 18:55:12 +0100
+Message-Id: <20201026175526.2915399-4-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201026175526.2915399-1-enric.balletbo@collabora.com>
 References: <20201026175526.2915399-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_135539_320340_75CF956C 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20201026_135537_360412_BE174D38 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,158 +64,480 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, weiyi.lu@mediatek.com, fparent@baylibre.com,
- Miles Chen <miles.chen@mediatek.com>, Matthias Brugger <mbrugger@suse.com>,
- linux-mediatek@lists.infradead.org, Joerg Roedel <jroedel@suse.de>,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
- Collabora Kernel ML <kernel@collabora.com>,
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
+ fparent@baylibre.com, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+Add power domain controller node for SoC mt8173.
 
-Bus protection is not exclusively done by calling the infracfg misc driver.
-Make the calls for setting and clearing the bus protection generic so
-that we can use other blocks for it as well.
-
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
 Changes in v3: None
-Changes in v2: None
+Changes in v2:
+- Add a scpsys syscon node as parent and a SPM (System Power Manager) as
+  a child.
 
- drivers/soc/mediatek/mtk-infracfg.c   |  5 ---
- drivers/soc/mediatek/mtk-pm-domains.c | 53 +++++++++++++++++++++------
- include/linux/soc/mediatek/infracfg.h |  5 +++
- 3 files changed, 47 insertions(+), 16 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 164 ++++++++++++++++-------
+ 1 file changed, 115 insertions(+), 49 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-index 4a123796aad3..0590b68e0d78 100644
---- a/drivers/soc/mediatek/mtk-infracfg.c
-+++ b/drivers/soc/mediatek/mtk-infracfg.c
-@@ -12,11 +12,6 @@
- #define MTK_POLL_DELAY_US   10
- #define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 5e046f9d48ce..7fa870e4386a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -450,16 +450,82 @@ pins1 {
+ 			};
+ 		};
  
--#define INFRA_TOPAXI_PROTECTEN		0x0220
--#define INFRA_TOPAXI_PROTECTSTA1	0x0228
--#define INFRA_TOPAXI_PROTECTEN_SET	0x0260
--#define INFRA_TOPAXI_PROTECTEN_CLR	0x0264
--
- /**
-  * mtk_infracfg_set_bus_protection - enable bus protection
-  * @infracfg: The infracfg regmap
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index 2121e05cb9a4..92c61e59255b 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.c
-+++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -87,18 +87,24 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
- 					MTK_POLL_TIMEOUT);
- }
- 
--static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
-+static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
- {
--	const struct scpsys_bus_prot_data *bpd = pd->data->bp_infracfg;
- 	int i, ret;
- 
- 	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
--		if (!bpd[i].bus_prot_mask)
-+		u32 val, mask = bpd[i].bus_prot_mask;
+-		scpsys: power-controller@10006000 {
+-			compatible = "mediatek,mt8173-scpsys";
+-			#power-domain-cells = <1>;
++		scpsys: syscon@10006000 {
++			compatible = "syscon", "simple-mfd";
+ 			reg = <0 0x10006000 0 0x1000>;
+-			clocks = <&clk26m>,
+-				 <&topckgen CLK_TOP_MM_SEL>,
+-				 <&topckgen CLK_TOP_VENC_SEL>,
+-				 <&topckgen CLK_TOP_VENC_LT_SEL>;
+-			clock-names = "mfg", "mm", "venc", "venc_lt";
+-			infracfg = <&infracfg>;
++			#power-domain-cells = <1>;
 +
-+		if (!mask)
- 			break;
++			/* System Power Manager */
++			spm: power-controller {
++				compatible = "mediatek,mt8173-power-controller";
++				#address-cells = <1>;
++				#size-cells = <0>;
++				#power-domain-cells = <1>;
++
++				/* power domains of the SoC */
++				power-domain@MT8173_POWER_DOMAIN_VDEC {
++					reg = <MT8173_POWER_DOMAIN_VDEC>;
++					clocks = <&topckgen CLK_TOP_MM_SEL>;
++					clock-names = "mm";
++					#power-domain-cells = <0>;
++				};
++				power-domain@MT8173_POWER_DOMAIN_VENC {
++					reg = <MT8173_POWER_DOMAIN_VENC>;
++					clocks = <&topckgen CLK_TOP_MM_SEL>,
++						 <&topckgen CLK_TOP_VENC_SEL>;
++					clock-names = "mm", "venc";
++					#power-domain-cells = <0>;
++				};
++				power-domain@MT8173_POWER_DOMAIN_ISP {
++					reg = <MT8173_POWER_DOMAIN_ISP>;
++					clocks = <&topckgen CLK_TOP_MM_SEL>;
++					clock-names = "mm";
++					#power-domain-cells = <0>;
++				};
++				power-domain@MT8173_POWER_DOMAIN_MM {
++					reg = <MT8173_POWER_DOMAIN_MM>;
++					clocks = <&topckgen CLK_TOP_MM_SEL>;
++					clock-names = "mm";
++					#power-domain-cells = <0>;
++					mediatek,infracfg = <&infracfg>;
++				};
++				power-domain@MT8173_POWER_DOMAIN_VENC_LT {
++					reg = <MT8173_POWER_DOMAIN_VENC_LT>;
++					clocks = <&topckgen CLK_TOP_MM_SEL>,
++						 <&topckgen CLK_TOP_VENC_LT_SEL>;
++					clock-names = "mm", "venclt";
++					#power-domain-cells = <0>;
++				};
++				power-domain@MT8173_POWER_DOMAIN_AUDIO {
++					reg = <MT8173_POWER_DOMAIN_AUDIO>;
++					#power-domain-cells = <0>;
++				};
++				power-domain@MT8173_POWER_DOMAIN_USB {
++					reg = <MT8173_POWER_DOMAIN_USB>;
++					#power-domain-cells = <0>;
++				};
++				power-domain@MT8173_POWER_DOMAIN_MFG_ASYNC {
++					reg = <MT8173_POWER_DOMAIN_MFG_ASYNC>;
++					clocks = <&clk26m>;
++					clock-names = "mfg";
++					#address-cells = <1>;
++					#size-cells = <0>;
++					#power-domain-cells = <1>;
++
++					power-domain@MT8173_POWER_DOMAIN_MFG_2D {
++						reg = <MT8173_POWER_DOMAIN_MFG_2D>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++						#power-domain-cells = <1>;
++
++						power-domain@MT8173_POWER_DOMAIN_MFG {
++							reg = <MT8173_POWER_DOMAIN_MFG>;
++							#power-domain-cells = <0>;
++							mediatek,infracfg = <&infracfg>;
++						};
++					};
++				};
++			};
+ 		};
  
--		ret = mtk_infracfg_set_bus_protection(pd->infracfg,
--						      bpd[i].bus_prot_mask,
--						      bpd[i].bus_prot_reg_update);
-+		if (bpd[i].bus_prot_reg_update)
-+			regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, mask);
-+		else
-+			regmap_write(regmap, INFRA_TOPAXI_PROTECTEN_SET, mask);
-+
-+		ret = regmap_read_poll_timeout(regmap, INFRA_TOPAXI_PROTECTSTA1,
-+					       val, (val & mask) == mask,
-+					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
- 		if (ret)
- 			return ret;
- 	}
-@@ -106,18 +112,34 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
- 	return 0;
- }
+ 		watchdog: watchdog@10007000 {
+@@ -792,7 +858,7 @@ afe: audio-controller@11220000  {
+ 			compatible = "mediatek,mt8173-afe-pcm";
+ 			reg = <0 0x11220000 0 0x1000>;
+ 			interrupts = <GIC_SPI 134 IRQ_TYPE_EDGE_FALLING>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_AUDIO>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_AUDIO>;
+ 			clocks = <&infracfg CLK_INFRA_AUDIO>,
+ 				 <&topckgen CLK_TOP_AUDIO_SEL>,
+ 				 <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
+@@ -868,7 +934,7 @@ ssusb: usb@11271000 {
+ 			phys = <&u2port0 PHY_TYPE_USB2>,
+ 			       <&u3port0 PHY_TYPE_USB3>,
+ 			       <&u2port1 PHY_TYPE_USB2>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_USB>;
+ 			clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
+ 			clock-names = "sys_ck", "ref_ck";
+ 			mediatek,syscon-wakeup = <&pericfg 0x400 1>;
+@@ -882,7 +948,7 @@ usb_host: xhci@11270000 {
+ 				reg = <0 0x11270000 0 0x1000>;
+ 				reg-names = "mac";
+ 				interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+-				power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
++				power-domains = <&spm MT8173_POWER_DOMAIN_USB>;
+ 				clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
+ 				clock-names = "sys_ck", "ref_ck";
+ 				status = "disabled";
+@@ -925,7 +991,7 @@ u2port1: usb-phy@11291000 {
+ 		mmsys: syscon@14000000 {
+ 			compatible = "mediatek,mt8173-mmsys", "syscon";
+ 			reg = <0 0x14000000 0 0x1000>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
+ 			assigned-clock-rates = <400000000>;
+ 			#clock-cells = <1>;
+@@ -940,7 +1006,7 @@ mdp_rdma0: rdma@14001000 {
+ 			reg = <0 0x14001000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+ 				 <&mmsys CLK_MM_MUTEX_32K>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+ 			mediatek,larb = <&larb0>;
+ 			mediatek,vpu = <&vpu>;
+@@ -951,7 +1017,7 @@ mdp_rdma1: rdma@14002000 {
+ 			reg = <0 0x14002000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_RDMA1>,
+ 				 <&mmsys CLK_MM_MUTEX_32K>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_RDMA1>;
+ 			mediatek,larb = <&larb4>;
+ 		};
+@@ -960,28 +1026,28 @@ mdp_rsz0: rsz@14003000 {
+ 			compatible = "mediatek,mt8173-mdp-rsz";
+ 			reg = <0 0x14003000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 		};
  
--static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
-+static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
- {
- 	const struct scpsys_bus_prot_data *bpd = pd->data->bp_infracfg;
-+	int ret;
-+
-+	ret = _scpsys_bus_protect_enable(bpd, pd->infracfg);
-+	return ret;
-+}
-+
-+static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
-+				       struct regmap *regmap)
-+{
- 	int i, ret;
+ 		mdp_rsz1: rsz@14004000 {
+ 			compatible = "mediatek,mt8173-mdp-rsz";
+ 			reg = <0 0x14004000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 		};
  
- 	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
--		if (!bpd[i].bus_prot_mask)
-+		u32 val, mask = bpd[i].bus_prot_mask;
-+
-+		if (!mask)
- 			return 0;
+ 		mdp_rsz2: rsz@14005000 {
+ 			compatible = "mediatek,mt8173-mdp-rsz";
+ 			reg = <0 0x14005000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_RSZ2>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 		};
  
--		ret = mtk_infracfg_clear_bus_protection(pd->infracfg,
--							bpd[i].bus_prot_mask,
--							bpd[i].bus_prot_reg_update);
-+		if (bpd[i].bus_prot_reg_update)
-+			regmap_update_bits(regmap, INFRA_TOPAXI_PROTECTEN, mask, 0);
-+		else
-+			regmap_write(regmap, INFRA_TOPAXI_PROTECTEN_CLR, mask);
-+
-+		ret = regmap_read_poll_timeout(regmap, INFRA_TOPAXI_PROTECTSTA1,
-+					       val, !(val & mask),
-+					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
- 		if (ret)
- 			return ret;
- 	}
-@@ -125,6 +147,15 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
- 	return 0;
- }
+ 		mdp_wdma0: wdma@14006000 {
+ 			compatible = "mediatek,mt8173-mdp-wdma";
+ 			reg = <0 0x14006000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_WDMA>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_WDMA>;
+ 			mediatek,larb = <&larb0>;
+ 		};
+@@ -990,7 +1056,7 @@ mdp_wrot0: wrot@14007000 {
+ 			compatible = "mediatek,mt8173-mdp-wrot";
+ 			reg = <0 0x14007000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_WROT0>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_WROT0>;
+ 			mediatek,larb = <&larb0>;
+ 		};
+@@ -999,7 +1065,7 @@ mdp_wrot1: wrot@14008000 {
+ 			compatible = "mediatek,mt8173-mdp-wrot";
+ 			reg = <0 0x14008000 0 0x1000>;
+ 			clocks = <&mmsys CLK_MM_MDP_WROT1>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			iommus = <&iommu M4U_PORT_MDP_WROT1>;
+ 			mediatek,larb = <&larb4>;
+ 		};
+@@ -1008,7 +1074,7 @@ ovl0: ovl@1400c000 {
+ 			compatible = "mediatek,mt8173-disp-ovl";
+ 			reg = <0 0x1400c000 0 0x1000>;
+ 			interrupts = <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_OVL0>;
+ 			iommus = <&iommu M4U_PORT_DISP_OVL0>;
+ 			mediatek,larb = <&larb0>;
+@@ -1019,7 +1085,7 @@ ovl1: ovl@1400d000 {
+ 			compatible = "mediatek,mt8173-disp-ovl";
+ 			reg = <0 0x1400d000 0 0x1000>;
+ 			interrupts = <GIC_SPI 181 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_OVL1>;
+ 			iommus = <&iommu M4U_PORT_DISP_OVL1>;
+ 			mediatek,larb = <&larb4>;
+@@ -1030,7 +1096,7 @@ rdma0: rdma@1400e000 {
+ 			compatible = "mediatek,mt8173-disp-rdma";
+ 			reg = <0 0x1400e000 0 0x1000>;
+ 			interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
+ 			mediatek,larb = <&larb0>;
+@@ -1041,7 +1107,7 @@ rdma1: rdma@1400f000 {
+ 			compatible = "mediatek,mt8173-disp-rdma";
+ 			reg = <0 0x1400f000 0 0x1000>;
+ 			interrupts = <GIC_SPI 183 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
+ 			mediatek,larb = <&larb4>;
+@@ -1052,7 +1118,7 @@ rdma2: rdma@14010000 {
+ 			compatible = "mediatek,mt8173-disp-rdma";
+ 			reg = <0 0x14010000 0 0x1000>;
+ 			interrupts = <GIC_SPI 184 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_RDMA2>;
+ 			iommus = <&iommu M4U_PORT_DISP_RDMA2>;
+ 			mediatek,larb = <&larb4>;
+@@ -1063,7 +1129,7 @@ wdma0: wdma@14011000 {
+ 			compatible = "mediatek,mt8173-disp-wdma";
+ 			reg = <0 0x14011000 0 0x1000>;
+ 			interrupts = <GIC_SPI 185 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_WDMA0>;
+ 			iommus = <&iommu M4U_PORT_DISP_WDMA0>;
+ 			mediatek,larb = <&larb0>;
+@@ -1074,7 +1140,7 @@ wdma1: wdma@14012000 {
+ 			compatible = "mediatek,mt8173-disp-wdma";
+ 			reg = <0 0x14012000 0 0x1000>;
+ 			interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_WDMA1>;
+ 			iommus = <&iommu M4U_PORT_DISP_WDMA1>;
+ 			mediatek,larb = <&larb4>;
+@@ -1085,7 +1151,7 @@ color0: color@14013000 {
+ 			compatible = "mediatek,mt8173-disp-color";
+ 			reg = <0 0x14013000 0 0x1000>;
+ 			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x3000 0x1000>;
+ 		};
+@@ -1094,7 +1160,7 @@ color1: color@14014000 {
+ 			compatible = "mediatek,mt8173-disp-color";
+ 			reg = <0 0x14014000 0 0x1000>;
+ 			interrupts = <GIC_SPI 188 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_COLOR1>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x4000 0x1000>;
+ 		};
+@@ -1103,7 +1169,7 @@ aal@14015000 {
+ 			compatible = "mediatek,mt8173-disp-aal";
+ 			reg = <0 0x14015000 0 0x1000>;
+ 			interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_AAL>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
+ 		};
+@@ -1112,7 +1178,7 @@ gamma@14016000 {
+ 			compatible = "mediatek,mt8173-disp-gamma";
+ 			reg = <0 0x14016000 0 0x1000>;
+ 			interrupts = <GIC_SPI 190 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_GAMMA>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
+ 		};
+@@ -1120,21 +1186,21 @@ gamma@14016000 {
+ 		merge@14017000 {
+ 			compatible = "mediatek,mt8173-disp-merge";
+ 			reg = <0 0x14017000 0 0x1000>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_MERGE>;
+ 		};
  
-+static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
-+{
-+	const struct scpsys_bus_prot_data *bpd = pd->data->bp_infracfg;
-+	int ret;
-+
-+	ret = _scpsys_bus_protect_disable(bpd, pd->infracfg);
-+	return ret;
-+}
-+
- static int scpsys_power_on(struct generic_pm_domain *genpd)
- {
- 	struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-index 233463d789c6..5bcaab767f6a 100644
---- a/include/linux/soc/mediatek/infracfg.h
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -32,6 +32,11 @@
- #define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
- 						 BIT(7) | BIT(8))
+ 		split0: split@14018000 {
+ 			compatible = "mediatek,mt8173-disp-split";
+ 			reg = <0 0x14018000 0 0x1000>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_SPLIT0>;
+ 		};
  
-+#define INFRA_TOPAXI_PROTECTEN			0x0220
-+#define INFRA_TOPAXI_PROTECTSTA1		0x0228
-+#define INFRA_TOPAXI_PROTECTEN_SET		0x0260
-+#define INFRA_TOPAXI_PROTECTEN_CLR		0x0264
-+
- #define REG_INFRA_MISC				0xf00
- #define F_DDR_4GB_SUPPORT_EN			BIT(13)
+ 		split1: split@14019000 {
+ 			compatible = "mediatek,mt8173-disp-split";
+ 			reg = <0 0x14019000 0 0x1000>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_SPLIT1>;
+ 		};
  
+@@ -1142,7 +1208,7 @@ ufoe@1401a000 {
+ 			compatible = "mediatek,mt8173-disp-ufoe";
+ 			reg = <0 0x1401a000 0 0x1000>;
+ 			interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DISP_UFOE>;
+ 		};
+ 
+@@ -1150,7 +1216,7 @@ dsi0: dsi@1401b000 {
+ 			compatible = "mediatek,mt8173-dsi";
+ 			reg = <0 0x1401b000 0 0x1000>;
+ 			interrupts = <GIC_SPI 192 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DSI0_ENGINE>,
+ 				 <&mmsys CLK_MM_DSI0_DIGITAL>,
+ 				 <&mipi_tx0>;
+@@ -1164,7 +1230,7 @@ dsi1: dsi@1401c000 {
+ 			compatible = "mediatek,mt8173-dsi";
+ 			reg = <0 0x1401c000 0 0x1000>;
+ 			interrupts = <GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DSI1_ENGINE>,
+ 				 <&mmsys CLK_MM_DSI1_DIGITAL>,
+ 				 <&mipi_tx1>;
+@@ -1178,7 +1244,7 @@ dpi0: dpi@1401d000 {
+ 			compatible = "mediatek,mt8173-dpi";
+ 			reg = <0 0x1401d000 0 0x1000>;
+ 			interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_DPI_PIXEL>,
+ 				 <&mmsys CLK_MM_DPI_ENGINE>,
+ 				 <&apmixedsys CLK_APMIXED_TVDPLL>;
+@@ -1218,7 +1284,7 @@ mutex: mutex@14020000 {
+ 			compatible = "mediatek,mt8173-disp-mutex";
+ 			reg = <0 0x14020000 0 0x1000>;
+ 			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_MUTEX_32K>;
+ 			mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
+                                               <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+@@ -1228,7 +1294,7 @@ larb0: larb@14021000 {
+ 			compatible = "mediatek,mt8173-smi-larb";
+ 			reg = <0 0x14021000 0 0x1000>;
+ 			mediatek,smi = <&smi_common>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_SMI_LARB0>,
+ 				 <&mmsys CLK_MM_SMI_LARB0>;
+ 			clock-names = "apb", "smi";
+@@ -1237,7 +1303,7 @@ larb0: larb@14021000 {
+ 		smi_common: smi@14022000 {
+ 			compatible = "mediatek,mt8173-smi-common";
+ 			reg = <0 0x14022000 0 0x1000>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_SMI_COMMON>,
+ 				 <&mmsys CLK_MM_SMI_COMMON>;
+ 			clock-names = "apb", "smi";
+@@ -1285,7 +1351,7 @@ larb4: larb@14027000 {
+ 			compatible = "mediatek,mt8173-smi-larb";
+ 			reg = <0 0x14027000 0 0x1000>;
+ 			mediatek,smi = <&smi_common>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+ 			clocks = <&mmsys CLK_MM_SMI_LARB4>,
+ 				 <&mmsys CLK_MM_SMI_LARB4>;
+ 			clock-names = "apb", "smi";
+@@ -1301,7 +1367,7 @@ larb2: larb@15001000 {
+ 			compatible = "mediatek,mt8173-smi-larb";
+ 			reg = <0 0x15001000 0 0x1000>;
+ 			mediatek,smi = <&smi_common>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_ISP>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_ISP>;
+ 			clocks = <&imgsys CLK_IMG_LARB2_SMI>,
+ 				 <&imgsys CLK_IMG_LARB2_SMI>;
+ 			clock-names = "apb", "smi";
+@@ -1338,7 +1404,7 @@ vcodec_dec: vcodec@16000000 {
+ 				 <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
+ 				 <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
+ 			mediatek,vpu = <&vpu>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_VDEC>;
+ 			clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
+ 				 <&topckgen CLK_TOP_UNIVPLL_D2>,
+ 				 <&topckgen CLK_TOP_CCI400_SEL>,
+@@ -1370,7 +1436,7 @@ larb1: larb@16010000 {
+ 			compatible = "mediatek,mt8173-smi-larb";
+ 			reg = <0 0x16010000 0 0x1000>;
+ 			mediatek,smi = <&smi_common>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_VDEC>;
+ 			clocks = <&vdecsys CLK_VDEC_CKEN>,
+ 				 <&vdecsys CLK_VDEC_LARB_CKEN>;
+ 			clock-names = "apb", "smi";
+@@ -1386,7 +1452,7 @@ larb3: larb@18001000 {
+ 			compatible = "mediatek,mt8173-smi-larb";
+ 			reg = <0 0x18001000 0 0x1000>;
+ 			mediatek,smi = <&smi_common>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_VENC>;
+ 			clocks = <&vencsys CLK_VENC_CKE1>,
+ 				 <&vencsys CLK_VENC_CKE0>;
+ 			clock-names = "apb", "smi";
+@@ -1443,7 +1509,7 @@ jpegdec: jpegdec@18004000 {
+ 				 <&vencsys CLK_VENC_CKE3>;
+ 			clock-names = "jpgdec-smi",
+ 				      "jpgdec";
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_VENC>;
+ 			mediatek,larb = <&larb3>;
+ 			iommus = <&iommu M4U_PORT_JPGDEC_WDMA>,
+ 				 <&iommu M4U_PORT_JPGDEC_BSDMA>;
+@@ -1459,7 +1525,7 @@ larb5: larb@19001000 {
+ 			compatible = "mediatek,mt8173-smi-larb";
+ 			reg = <0 0x19001000 0 0x1000>;
+ 			mediatek,smi = <&smi_common>;
+-			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC_LT>;
++			power-domains = <&spm MT8173_POWER_DOMAIN_VENC_LT>;
+ 			clocks = <&vencltsys CLK_VENCLT_CKE1>,
+ 				 <&vencltsys CLK_VENCLT_CKE0>;
+ 			clock-names = "apb", "smi";
 -- 
 2.28.0
 
