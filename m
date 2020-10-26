@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 99876C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 13:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E27E8C4363A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 13:48:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4088922281
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 13:30:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 61B122242C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2020 13:48:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k5OFAOAE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4088922281
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AX+Xgqev"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61B122242C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,56 +24,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qMn+9veXgAd0jgBsOAm9x+Gont+oO4pYKlcupvpZRFU=; b=k5OFAOAE+cLtLfw+dipUq7h2o
-	3yTiAYzqyo4IAtgnSUIqiXLxWTRAkULzk9AlYpAMKBixQGPVMSRoamya5NcHQIIX/6YVQ5fOv8Q48
-	penxep2ATWt/f6LMjwR4GhsE0sy78zTjyuoYpsEWc/HOA4FVibM/3tni+VwcWuPfO4PDC5z2L18lU
-	t/j/dA0i6Qk9vJNfbZ90MIFrXhYLHQf49SUhA95pEIyqGaPYFDhTXhRPgjlTI9Jedp+C99nD7NmSg
-	nX+Fw846T5Re4C+wG68HJvaC4IDtoFF7/T8LKrvb73X+LYMqSo5SqsR89twjCdOB/ocvJFMUx+RZE
-	oaNk6t2iQ==;
+	 bh=xd9dxLJT3qK5TBv3HFCARnEQME1qeZa+jvRYZvP11Dk=; b=AX+XgqevKjam5IIt8Gsr1+uzK
+	8vz4TKLm6Fhp+KYbgqgwaWfStABonIry1AQxlIxW0VmspXoS/2dfCAf72ZxO42bOWiIhTroIo1qXK
+	vdem6f6TQt/5gy9+oGbhQGrxAzNQPkK6qAZep44Lf43kVP6NOIHEE5gUKUHql+5CSbQZvlYZ/dpql
+	s26xAnqmvnO+j19dUm6VtJkGYfhE2zLCVDR4OC5eHqZkFKZ54nUCMyu6KYBVCVUmOcOTuT3bTGwEm
+	zqRVBBRS+BHfbf9CsMvG2xfmcFzwiZvrA5o4iDbuzHiXOgqJfr9aWW6/wvPq+DCzq+yYIaIMCZrDY
+	JqO0hznJg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kX2Zy-0005sL-3r; Mon, 26 Oct 2020 13:30:30 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1kX2r6-0005T5-8j; Mon, 26 Oct 2020 13:48:12 +0000
+Received: from mail-oi1-f193.google.com ([209.85.167.193])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kX2Zu-0005qQ-Of; Mon, 26 Oct 2020 13:30:29 +0000
-Received: by mail-ot1-f67.google.com with SMTP id x7so3747416ota.0;
- Mon, 26 Oct 2020 06:30:26 -0700 (PDT)
+ id 1kX2hk-0000nl-1H; Mon, 26 Oct 2020 13:38:33 +0000
+Received: by mail-oi1-f193.google.com with SMTP id k27so10466682oij.11;
+ Mon, 26 Oct 2020 06:38:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=cPBCTWshldNb+DyrWEllGuNdGSidH3ORsb+qdtp0qFc=;
- b=bhdLD0hQkK8KmN71FTpudnw1sQqwB0GhYnqRQwQEMCtKRcns3nlrd5at663TDtjdO5
- BRIIkOTU8uumhiyJYDOeYPocWJGIH/9gw0EzUgXmj2NEZMHt3ALohH4Xs369YrSpRvHK
- 6Xp1VZZ5r+hMIC1A2fKpv25swu7Z2I7uqsNPjXKPMe5wb9Fi1Bn1yozmNAh7uWx07rG+
- ShGYKqueKZF+1LPIjxV8qXMl+kxpndF2vsTC5/Q4qNLS6LHg3hfuolDrHFZFRHriQ6lI
- pAU3a/jbuxcM2EoqNDZpmtpa6jwq4HNmanorZdIRYFoJiOg9bQiCUvoEfFlEqkdW+LKZ
- uSMg==
-X-Gm-Message-State: AOAM530gFMKSpua8Q941PPf+xVq/iUX3PoDhP2u5+CsfcjhlT5qE4Ms0
- dJqHH08Oup74vW6YxcrLNg==
-X-Google-Smtp-Source: ABdhPJzw6SoFVouAT7FkD/EIAwqrhDs04Eu79z3EyjHzdSZ38W/xzJ6Hl2NKvxsG0Ebl93ht3jFp6Q==
-X-Received: by 2002:a05:6830:17d8:: with SMTP id
- p24mr13901537ota.111.1603719025655; 
- Mon, 26 Oct 2020 06:30:25 -0700 (PDT)
+ bh=xeSglgw6V+lXedmY2yfKw+hxq6uo2upHgu1Rrr+TqIw=;
+ b=n3idlG8ocsGLS6ffOqkRtb72Wx/4p68BcHdxXhNKXotSrZsHkSbJgEXC5LHF6QQKhk
+ e8yVh9wmDxor546f+7VlUcOElnBTQdb5609RNnTZcW6szfetz+vrW4KIN8BRGlxAL03G
+ 34jkyohv1lr3bvdHYdNE1Etr+xBHbar9xtjXvhcS+Ibq9gVAx3RsgcWkgx/ZZEZn0+55
+ 9t/1YqqqChKPkC714PwOGdCkWTWbjqgHrUSN66hMFoKWdRwdzC1ZewIshvf0V0ZsdM29
+ Hjq5wXYXddsXtrt7ySmSArvo2qT5Sdoak0uYuZFNxK/ATQjzhiE4asCYSZjSJsXSJpxh
+ Lbtw==
+X-Gm-Message-State: AOAM5339BVIT91UQXxFt1j20bc6YjSL0FocQNmHfNo322CbWYazSh4/l
+ NrZhZZQbS2OqK7izvtio2g==
+X-Google-Smtp-Source: ABdhPJwf8rWPGWPFxMh9FCJA9hqD+W6fqMrnAa7HRWtQOWAfWPHvQI2l4u1rlwvS2lGh3pCiZKqHfg==
+X-Received: by 2002:a05:6808:aa1:: with SMTP id
+ r1mr10468829oij.153.1603719509673; 
+ Mon, 26 Oct 2020 06:38:29 -0700 (PDT)
 Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id u1sm3884802ooj.28.2020.10.26.06.30.24
+ by smtp.gmail.com with ESMTPSA id u125sm4017909oif.21.2020.10.26.06.38.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Oct 2020 06:30:25 -0700 (PDT)
-Received: (nullmailer pid 33081 invoked by uid 1000);
- Mon, 26 Oct 2020 13:30:24 -0000
-Date: Mon, 26 Oct 2020 08:30:24 -0500
+ Mon, 26 Oct 2020 06:38:28 -0700 (PDT)
+Received: (nullmailer pid 43832 invoked by uid 1000);
+ Mon, 26 Oct 2020 13:38:28 -0000
+Date: Mon, 26 Oct 2020 08:38:28 -0500
 From: Rob Herring <robh@kernel.org>
 To: Fabien Parent <fparent@baylibre.com>
-Subject: Re: [PATCH 1/2] dt-bindings: timer: mtk-timer: add optional 13m and
- bus clock
-Message-ID: <20201026133024.GA33031@bogus>
-References: <20201017153857.2494845-1-fparent@baylibre.com>
+Subject: Re: [PATCH 1/5] dt-bindings: pwm: pwm-mediatek: Add documentation
+ for MT8183 SoC
+Message-ID: <20201026133828.GA43785@bogus>
+References: <20201019140705.1518822-1-fparent@baylibre.com>
+ <20201019140705.1518822-2-fparent@baylibre.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201017153857.2494845-1-fparent@baylibre.com>
+In-Reply-To: <20201019140705.1518822-2-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_093027_125607_E1A82469 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20201026_093832_242349_88831C81 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,23 +86,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, daniel.lezcano@linaro.org,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, tglx@linutronix.de,
+Cc: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org, thierry.reding@gmail.com,
+ linux-mediatek@lists.infradead.org, u.kleine-koenig@pengutronix.de,
+ matthias.bgg@gmail.com, lee.jones@linaro.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 17 Oct 2020 17:38:56 +0200, Fabien Parent wrote:
-> The timer IP on MT8516 requires two clocks to be enabled. Add both
-> clocks.
+On Mon, 19 Oct 2020 16:07:01 +0200, Fabien Parent wrote:
+> Add binding documentation for the MT8183 SoC.
 > 
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->  .../devicetree/bindings/timer/mediatek,mtk-timer.txt         | 5 +++++
->  1 file changed, 5 insertions(+)
+>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
