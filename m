@@ -7,82 +7,84 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B23E7C5517A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 16:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31606C55178
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 16:07:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D882206C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 16:06:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A0851206C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 16:07:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mPAmt4nG";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="gc3wETkf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D882206C1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r4/bhr9Z";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="Z7PBAuqg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0851206C1
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/tK2/a34owRPLZXZNpyJTG9FWGhN/AzDhFm3wzwONVU=; b=mPAmt4nGe7MhMEn7eI6usSadec
-	fpwVewlV3k2UW68qfw27TwARuqRjN7ONx4kz4U2EiPhBOK0N2fmF0p6No8mkcjfg4STFL3gh359qO
-	qqEDLY0vFiJYdJ2iyQuyjWcT2xf4M1swDLlVSTiEFYTY7D5h5H4ffLpKnIZBLAYjX0jOo5DxOlFSC
-	T58c8UvZaxHK1Ayuz7unA+RhsvfqDQWFtyV99CcIC/FIzvvJU6MaEyVc+i8ITswUQ3A8kCm+joQw9
-	pwhuUncv/IdU0TTzdVkp/XwtUJN4n1j/ffpg2IGngS85k053kfKKeLGvsUoGbKurJrDLETKXhfM0v
-	GqsgrFWA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=LTSG8igj16j/Pc6N6MVk3N8MdUOCzg84VZ+QGZyjJnw=; b=r4/bhr9Zo0tTHafSm9EmPpedA
+	zCILwwR7wdDMnCOpEK6iXrP+yi6si7NeMPgTCvV8bFBmqTUMah513XLS2twsGyqSTPeP3lwuAWEVR
+	AieWoO0cEABib+b7oBrp+fqaJfchSiCRxQ9hElRWGmg+B73y2whd5wxuxwiLEkZm2+VcV/AlprnKL
+	W92RbA9iAjAzRR+uTNfjT/gIhFFLUgQNDoxDYyYgT1CzRLvyUzX6ZQyw+cX8AOzDoGT2GvTTU83Sx
+	uyuzHURMQP4D6Nhm39W/pg3Ghk7kg7LEH1GGYQx2pHsqV6unwdzJMKsowJmY58TWVNStfsZch6M9A
+	+By3FMc6w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXRUk-0008Bm-Dg; Tue, 27 Oct 2020 16:06:46 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1kXRUk-0008Bw-WC; Tue, 27 Oct 2020 16:06:47 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXRUb-00086C-8S
- for linux-mediatek@lists.infradead.org; Tue, 27 Oct 2020 16:06:38 +0000
-Received: by mail-wr1-x441.google.com with SMTP id h5so2529614wrv.7
- for <linux-mediatek@lists.infradead.org>; Tue, 27 Oct 2020 09:06:36 -0700 (PDT)
+ id 1kXRUd-00087e-8E
+ for linux-mediatek@lists.infradead.org; Tue, 27 Oct 2020 16:06:41 +0000
+Received: by mail-wm1-x343.google.com with SMTP id h22so2002904wmb.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Oct 2020 09:06:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2o0NP0S9IKMIYtZh0rK85wpdZyLqH3CjfIzafWh3T1M=;
- b=gc3wETkfZTjfdkDofvqk/rEFWOyZf/bsJh0lBSp4vQHy7Xmup3eUSnw0ckfNsMTlKc
- 7qI0BUBC6g9BKYJP2QxOnBQY0WwTJ4qFmAIS7pnW7erJjxnqwbjpUyhU65bOG69ASDtX
- 32MSBAfRRU1msgTl3ycWW1oIG07Nz7Z06ppDOy0s8jsIe9ajHSEQTZRHMiyjhfE5G/kV
- wSx83YYM4BUtB/Til+Psdi8mMYz470jReTlXEilugMS+GkbYA5dvWuiWoY/1v17vkE5E
- 2Mf3vPTWa6G70bMLabvnxNa5WNbXhaXG5DXvElQz57gEIeMF38qvGRks8mpca4L30rgr
- JI5g==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=gXSEQ4RUigdrvEfUyIgbTcDJA4ZN5o0EgF33NFMe/HI=;
+ b=Z7PBAuqgcEVXrYXq5zpM+K2aVf6AMg0r/JAMVFHkIIX/SHkuy21wembDxlSchyeVQh
+ skD9R5Gul6GtMbRtqXsI+hBPJj2U0IUVhsxaZ1nGFh3tgll1CkOvokBHZMgal5o10fFO
+ +oRUWXI9R7Pr1xIfIN4Sq5jUmRkZ2JP3ro70EHknjrLAnlrD9DnwrP8tRqYdDJm4Fb7d
+ QarJtt56QEdZRJJnvD/cAG8DaqgCJf9xdNx08meoEWciBLS6UaSTN/a8fE1egL2q1ksd
+ wZBetg/t1OPkekJaTkVjbJL94qD6ETjcTrM0/PEfrYQdK7TXRYlFLsJ0YYwUfNnA7tVC
+ LNXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2o0NP0S9IKMIYtZh0rK85wpdZyLqH3CjfIzafWh3T1M=;
- b=KExQlt7dyD7iTIIzPAQWWOZXdVk0Q8FtTOX2jl0BW4Gj+Sg3o8GdNbhBhJGop8G3XW
- 9ClDr5Rlpecpp+IiKfaNwVUtu0OFVWLR/v1MvmwwtyxCSuF3Z59g9p80df8Ete/jGVyH
- frtc2N8/vY0Xd7WX12oKdP8iviA04fJy4K+MnJ5KaTI6qopG+sluFuY6JrrHAf1qplUk
- PoVwZQmMYcfZhEVsNwkWWvC57LXLxcnlED8EDWZBoNqjvz2/2dyqXX36h882jBWoVhpq
- LMgdESNq49UzEWSSiFo9SDZVUiZSTy573eKxai7wBUlPnbVh44GSuPmvj9IWP7gG2Yh8
- E8vg==
-X-Gm-Message-State: AOAM531eL06kwh3BomjRUBxGN6u+fx4l+RDLbK5ens7quEWi4pJQgUND
- 8itjwHiPwpgWH1BVbl3BdneYxw==
-X-Google-Smtp-Source: ABdhPJx7aos5PzrahnnOd9RdHxUgT77NM16RV43TCCat0bwz+NKJkLk+zqi21kJ4IXAXwFVHn5MHog==
-X-Received: by 2002:adf:e885:: with SMTP id d5mr3732878wrm.100.1603814795825; 
- Tue, 27 Oct 2020 09:06:35 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=gXSEQ4RUigdrvEfUyIgbTcDJA4ZN5o0EgF33NFMe/HI=;
+ b=Fgn+zwKXcHlaDqkLsYAiLI2qGgZbwUDvUT9mBEMOKxQIADLYMBlLt2ZBMnDYDIMxQ/
+ qzTrWGl+IrQzEWVZhRiFSf5XS4fZCWCjJIiJ+pEKi27D0vnOJFnhPLqSJban7WF99z1N
+ wsqN+LzwUZcUsvRuJZ0OPqpeZuhfCe6Jtu38iWktv6ifpjaJSs6XAC6KzBYmyRzx9Fuj
+ RDc/qt2/8tYZOkODTlis4OU62ZgBA90scueiwoXWCR+gNv2+u6xMgx2A6emxf+6ABjWY
+ yMvbiODAvjam0lDq5rY6LtJT/VuK6ItP+b1vC0AaiyF+wDga0mpXCsZ0xvVrTALvI1XF
+ 2/Ug==
+X-Gm-Message-State: AOAM530YPjWD2umQ/m/gV5Dsb0ls4EmNbRxm2D/NQbgbZ8DhllecCMKY
+ OVwCTKaYfApLl8RNhk9fJdqbMQ==
+X-Google-Smtp-Source: ABdhPJxihresPsw4/wvhbg7EfhnGhObn99mfaRvDs9xBb/F2uJ0PuDX4OWXZtPU1lCMWjoAHckfkaQ==
+X-Received: by 2002:a7b:cb81:: with SMTP id m1mr3644718wmi.140.1603814797773; 
+ Tue, 27 Oct 2020 09:06:37 -0700 (PDT)
 Received: from localhost.localdomain (159.174.185.81.rev.sfr.net.
  [81.185.174.159])
- by smtp.gmail.com with ESMTPSA id u15sm2656988wrm.77.2020.10.27.09.06.34
+ by smtp.gmail.com with ESMTPSA id u15sm2656988wrm.77.2020.10.27.09.06.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Oct 2020 09:06:35 -0700 (PDT)
+ Tue, 27 Oct 2020 09:06:37 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 1/2] dt-bindings: mediatek: mmsys: add mt1867 binding
-Date: Tue, 27 Oct 2020 17:06:29 +0100
-Message-Id: <20201027160631.608503-1-fparent@baylibre.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH 2/2] soc: mediatek: mmsys: Add support for MT8167 SoC
+Date: Tue, 27 Oct 2020 17:06:30 +0100
+Message-Id: <20201027160631.608503-2-fparent@baylibre.com>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20201027160631.608503-1-fparent@baylibre.com>
+References: <20201027160631.608503-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201027_120637_519521_3B2C3475 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20201027_120639_366911_C0D9A07C 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,32 +97,108 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding documentation for MT8167 SoC.
+Add routing table for DSI on MT8167 SoC. The registers are mostly
+incompatible with the current defines, so new one for MT8167 are added.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- .../devicetree/bindings/arm/mediatek/mediatek,mmsys.txt          | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-index d8c9108c3b4a..78c50733985c 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-@@ -13,6 +13,7 @@ Required Properties:
- 	- "mediatek,mt6779-mmsys", "syscon"
- 	- "mediatek,mt6797-mmsys", "syscon"
- 	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
-+	- "mediatek,mt8167-mmsys", "syscon"
- 	- "mediatek,mt8173-mmsys", "syscon"
- 	- "mediatek,mt8183-mmsys", "syscon"
- - #clock-cells: Must be 1
+This patch depends on the patch series
+"soc: mediatek: Prepare MMSYS for DDP routing using tables"
+
+[0] https://lore.kernel.org/patchwork/cover/1317813/
+
+ drivers/soc/mediatek/mtk-mmsys.c | 50 ++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index f00d6d08c9c5..9890990a74a9 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -85,6 +85,22 @@
+ #define DSI_SEL_IN_RDMA				0x1
+ #define DSI_SEL_IN_MASK				0x1
+ 
++/* MT8167 */
++#define MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN	0x030
++#define MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN	0x038
++#define MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN	0x058
++#define MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN		0x064
++#define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
++
++#define MT8167_DITHER_MOUT_EN_RDMA0			BIT(0)
++#define MT8167_DITHER_MOUT_EN_MASK			0x7
++
++#define MT8167_RDMA0_SOUT_DSI0				0x2
++#define MT8167_RDMA0_SOUT_MASK				0x3
++
++#define MT8167_DSI0_SEL_IN_RDMA0			0x1
++#define MT8167_DSI0_SEL_IN_MASK				0x3
++
+ struct mtk_mmsys_routes {
+ 	u32 from_comp;
+ 	u32 to_comp;
+@@ -124,6 +140,30 @@ struct mtk_mmsys {
+ 	const struct mtk_mmsys_driver_data *data;
+ };
+ 
++static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
++	{
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
++		MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN,
++		OVL0_MOUT_EN_COLOR0, OVL0_MOUT_EN_COLOR0
++	}, {
++		DDP_COMPONENT_DITHER, DDP_COMPONENT_RDMA0,
++		MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN,
++		MT8167_DITHER_MOUT_EN_MASK, MT8167_DITHER_MOUT_EN_RDMA0
++	}, {
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
++		MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN,
++		COLOR0_SEL_IN_OVL0, COLOR0_SEL_IN_OVL0
++	}, {
++		DDP_COMPONENT_RDMA0, DDP_COMPONENT_DSI0,
++		MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN,
++		MT8167_DSI0_SEL_IN_MASK, MT8167_DSI0_SEL_IN_RDMA0
++	}, {
++		DDP_COMPONENT_RDMA0, DDP_COMPONENT_DSI0,
++		MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN,
++		MT8167_RDMA0_SOUT_MASK, MT8167_RDMA0_SOUT_DSI0
++	},
++};
++
+ static const struct mtk_mmsys_routes mt8173_mmsys_routing_table[] = {
+ 	{
+ 		DDP_COMPONENT_BLS, DDP_COMPONENT_DSI0,
+@@ -288,6 +328,12 @@ static const struct mtk_mmsys_routes mt8173_mmsys_routing_table[] = {
+ 	}
+ };
+ 
++static const struct mtk_mmsys_driver_data mt8167_mmsys_driver_data = {
++	.clk_driver = "clk-mt8167-mm",
++	.routes = mt8167_mmsys_routing_table,
++	.num_routes = ARRAY_SIZE(mt8167_mmsys_routing_table),
++};
++
+ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt8173-mm",
+ 	.routes = mt8173_mmsys_routing_table,
+@@ -385,6 +431,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+ 		.compatible = "mediatek,mt6797-mmsys",
+ 		.data = &mt6797_mmsys_driver_data,
+ 	},
++	{
++		.compatible = "mediatek,mt8167-mmsys",
++		.data = &mt8167_mmsys_driver_data,
++	},
+ 	{
+ 		.compatible = "mediatek,mt8173-mmsys",
+ 		.data = &mt8173_mmsys_driver_data,
 -- 
 2.28.0
 
