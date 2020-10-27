@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B189C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 00:10:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C426C4363A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 00:19:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 378CD20709
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 00:10:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BF74B20708
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 00:19:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KyNqaVrM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="w7wf35Q0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 378CD20709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JCz/j7j6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="qKvEG1QF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF74B20708
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,46 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wBSCES6z1EQ1sAU7Ehu/oQP1L5HkfW+3Da1kuBU+fnE=; b=KyNqaVrMjkMRlV7h8tdNfbDG5
-	xEk3p7ZkCgL1H0/za6xuVwjwEi1GV3ty0FJ7lur+kXNRtiug8Zio8nbTQT+IWEOBUjgqwzLzcKs0l
-	C93kjnkX74eIxKxFh2IdwJKeSLgO0HMtjs0AI8bVfS796zypt2IIc2aX7Ku26LSNkaiDueVy/W80I
-	yxKzLzEuTKqnMOC8maXcg5EDLPLRsjC2/4JnrIHaTnhlK0ap+qIiLEnHfvn7dKiJ6Nj8sMeJfriJn
-	zT1s+nV2X6yHG4x2dGgyJt+ZnEhDyh88G/dO7FdwLsiq7akrd5rAgN5XX0onruEs+GBTsHYnKxpYT
-	CvBOO+Ilg==;
+	 bh=NurVdsK7c/1n+rikW4SRyKbYvCsnQB/+2XAOvdUQI9E=; b=JCz/j7j6UUJm0PIC3IfgPAWGE
+	TjgEnq63eHETFdKUcsExa2GRgVPGYScIcUuM2sgSsPOe1IoKBf88LCkevWZxRMKDS9gm15I1vl501
+	Y+P1Pr6kyN5wzXE3Ce3Lu5UujFzCxgewny9qSzJE5oZtxcVRkZ7gRYo+OvUyToSRBEBxfirYMhw12
+	pzF5wSrZmsvw/kIBAtny4CD2aqvdj0ZPWO5yn749KZmPa3i8EgFYZNEVlanRJvUdL1ZB54jca0AQR
+	foR4JkvzHTwg/rJqsNDfue6tOisknMZJ/B2zYQ4Cz96Ew7QeP12NfkcmEqxps93/ZE9J7DkbKH4RK
+	VKmATiAjA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXCZC-0002BV-DO; Tue, 27 Oct 2020 00:10:23 +0000
+	id 1kXChc-00065s-M2; Tue, 27 Oct 2020 00:19:04 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXCL5-0003c0-J3; Mon, 26 Oct 2020 23:55:58 +0000
+ id 1kXCTg-00087K-Tw; Tue, 27 Oct 2020 00:04:45 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3236320770;
- Mon, 26 Oct 2020 23:55:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 05C8921741;
+ Tue, 27 Oct 2020 00:04:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603756544;
- bh=9t3Xistk61WoA1A0FKjUUGRtE46g0p5WJG73qvpjFDA=;
+ s=default; t=1603757076;
+ bh=fmRtHEK0Tym1FaMMnGkWtGsKkOg0oSQl/zoUI35lHgY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=w7wf35Q09SzAOUrYuIzTeVJGNtspkp5qWu0PA1zJS5pJUH6ptpsZEd4pM+yn9Epyl
- 6WXF/oqM0Ws6c/ns9n21QB8xLwfnguuFCcov72rRMJjAzvZxhMH+N5vUYSJXIsaeVW
- DihSFli+jjRcyybIJvFh/rLqUnqN4a/dpir4KrgE=
+ b=qKvEG1QF2O6fqSQwNy4fW3SjhFYaC68nSPJp7KfTq3FUQtkisW0kbsn2nMKXuFLyx
+ KMqtTXf4mEqWKTg49IZwIgPZkLUnat1EsUXz2vurq/9+jFMCdA2bKY/EgY4E9IWXEA
+ qktClJu1lD3HHY047FwAsVXJdLHN8fPxZ2HhOYwc=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 22/80] media: platform: Improve queue set up flow
+Subject: [PATCH AUTOSEL 4.19 17/60] media: platform: Improve queue set up flow
  for bug fixing
-Date: Mon, 26 Oct 2020 19:54:18 -0400
-Message-Id: <20201026235516.1025100-22-sashal@kernel.org>
+Date: Mon, 26 Oct 2020 20:03:32 -0400
+Message-Id: <20201027000415.1026364-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201026235516.1025100-1-sashal@kernel.org>
-References: <20201026235516.1025100-1-sashal@kernel.org>
+In-Reply-To: <20201027000415.1026364-1-sashal@kernel.org>
+References: <20201027000415.1026364-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_195548_218766_21F74310 
+X-CRM114-CacheID: sfid-20201026_200441_324695_2DC27D3A 
 X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -104,10 +104,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 7 insertions(+)
 
 diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index ee802fc3bcdfc..9fa1bc5514f3e 100644
+index 11429633b2fbc..f0bca30a0a805 100644
 --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -571,6 +571,13 @@ static int mtk_jpeg_queue_setup(struct vb2_queue *q,
+@@ -579,6 +579,13 @@ static int mtk_jpeg_queue_setup(struct vb2_queue *q,
  	if (!q_data)
  		return -EINVAL;
  
