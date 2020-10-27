@@ -2,83 +2,82 @@ Return-Path: <SRS0=3R1W=EC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 39CFDC55178
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 11:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BCB65C388F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 12:12:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A33B7204FD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 11:18:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2644720725
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 12:12:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n+dnF7oe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SxaYmaE4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A33B7204FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="07C9o8zL";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="PDTzx3wA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2644720725
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cFR2MpTAqz61KnyqckNHsD8GQlkYEPjeeZFrDgRghXc=; b=n+dnF7oef15rATvh9kM3wXzlX
-	cDtv+ktXlAJ7cO58XdbLPJCK7ifJP4MFvQR1wwAFkYUFBoaj7QnhTrqId17WhCMEPIlrthfRXYqGm
-	pe0FMd6jhmRLbNv+vvTCjn/nWtlj41euuf0chRVQvfNByURZMiNKQjzfwvnZ1gjcVWRethBHunI5E
-	m0+73T9enOWr6Lzdi+uDANwvvYE8Oj6p+LCXZHZj4rDr4XBhYecZkGyCoA2oVUil43TaQvrfH7CuB
-	qjET9QhrzEVVpRLBqZ/xQccUT2b/3M0M+8IzDwxJnOdyT5C/Vz/M+dz3CP9UdbLezVGjodwpHM18f
-	TuJTq6jbA==;
+	 bh=ueekJ89cpiDjgoauuBWXsViNPbrHfK9d1C7OQRAtY8E=; b=07C9o8zL2O4CJLbzOo00b+ch+
+	RpK+JiBVql19E3xfNiSAs8TU8oQsyd+qG4TCmjTB+AK1MJE5Zhgs2ReDKIrgoAEDzf4myn5S029Ya
+	0M46c3fYHr0o2Q01UOdBz0OHDIzqvG4M6Bm+G8SZYdvevMjFMqq3Ridp8xQOE2YAsZDRQvcruHtCj
+	Cfmc53xMI68JPLud5DsArJVBGg3q2cEYVatJ5GzXOyeYIUL2m3zAXX3jbmQntRvzLSejhxNkDY+YN
+	PSAcpXr0lSdYUWDuSFshcgitqZgrDEAl4rNJIInCfpM4gulDAd8xRVVYObv209NnX8pjegiiVX3OS
+	2I3mjvlqg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXN04-0008NP-Ai; Tue, 27 Oct 2020 11:18:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kXNpq-0004w6-Ga; Tue, 27 Oct 2020 12:12:18 +0000
+Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXN00-0008MP-V9; Tue, 27 Oct 2020 11:18:46 +0000
-X-UUID: e3cb440b43204e49a89b5141d98c995d-20201027
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=CX9QvQnyne8Hpt4VfAuu4sA7J/V8CvxMVl7RhxE/DMU=; 
- b=SxaYmaE49XuilnmphaNEB71Dw/oBm2b7ZYqo6E1yITGPA0p7w9N/qomU53DfViooGIicj1kbYvyGHjBBG6HROr/CAph4DIPSXH16qvFNglsI8BQwKVtOM/70fcohhqIoEXJMGMipSrsj3iR9wFWixT4XRzqUM/3CgM2fAecpJV8=;
-X-UUID: e3cb440b43204e49a89b5141d98c995d-20201027
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <weiyi.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 865214672; Tue, 27 Oct 2020 03:18:40 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Oct 2020 04:18:38 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Oct 2020 19:18:37 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 27 Oct 2020 19:18:36 +0800
-Message-ID: <1603797517.25228.3.camel@mtksdaap41>
-Subject: Re: [PATCH v3 15/16] soc: mediatek: pm-domains: Add default power
- off flag
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>
-Date: Tue, 27 Oct 2020 19:18:37 +0800
-In-Reply-To: <05be2a94-d6e6-36e5-2c14-6d971e4a7677@gmail.com>
-References: <20201026175526.2915399-1-enric.balletbo@collabora.com>
- <20201026175526.2915399-16-enric.balletbo@collabora.com>
- <05be2a94-d6e6-36e5-2c14-6d971e4a7677@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kXNpn-0004uZ-3M
+ for linux-mediatek@lists.infradead.org; Tue, 27 Oct 2020 12:12:16 +0000
+Received: by mail-vk1-xa44.google.com with SMTP id z10so302278vkn.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Oct 2020 05:12:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=V3hdAD2/SfSVH7mLkNbOazbZ1K7Ev/XT9ONQ25TQSDM=;
+ b=PDTzx3wAmjvtMIqJLQf55wBX3zV38/E1NKQ5hbF9J37P08tWIczYGfMiDSri4xIg9+
+ D9gol1nV6KVYi6Khf2wEMy5sYHrpUr86+CdjE4fqGO/REJGVUHnZUXG5c6vNYAxLrYwy
+ 3IoFi5UPd8B2S77Jp9ejkSanfGhEY8mCZhKnaNEp285Gp8oHExqo54MoOfC2hGyT7ghA
+ lDgQ8iHU5tPmPNjJaCcADMi2qU3OqvBBPliNvYl52SLhS2icaiKPhg5V8e/LmAvonKhX
+ x6e9HDTk4W8radGJrKEUVq1y91uAunqgLpmeNau7FcOO19Njbz7l1MaIDoV9Q3NDvpwu
+ WMsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=V3hdAD2/SfSVH7mLkNbOazbZ1K7Ev/XT9ONQ25TQSDM=;
+ b=fUdbHU+2KrYaRLFw5c1jHZhUXuixVAKw5Wpi3QF9aYXpPi8RMK1qrX6v2p6VcKqow0
+ NDK1aGYwqKmM/FoYhkXGK1KhflrLR9nuOrQvOzfZPq7S+HA9bCdZJeOTQFB4Tz3VnXs5
+ UetHKXIxbu2isgWs4Y9f1r9L7D0YZEWp8R5Oz9/GiMrhKCDALx6j0FOqR8CVe91OV9V/
+ CjGIdxUPCUEc1FlSOFyWvngfAfsYfkV0LBgxwkwjlId/Cvzn9Fhyvph6B+5+eTs0i5Yt
+ 5lJY4y8XBufGZlqgez/VKbVpY0B9nrM0Y9lXEmhceogrR/bIdK6dblYcnx/fvV052aZv
+ IN9A==
+X-Gm-Message-State: AOAM533e6M/6hl4NhVXXz5y8cPToV1kvZKSKEWtimJZlwYrnJQNrxpsW
+ oCkonhGDIJFFC6daC1tsI7IzVMiuKq+AhCv+LgtXKw==
+X-Google-Smtp-Source: ABdhPJz9LZoiTJhx1SHZvE2wOEztXoNObRC3nyLzZpkAJKjEOp/2NEgP80ioL4M98sMqoh79lv2vrnEnNPppto8YuAU=
+X-Received: by 2002:ac5:c1ca:: with SMTP id g10mr1144150vkk.6.1603800731083;
+ Tue, 27 Oct 2020 05:12:11 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: ED58C28063F2386AC2BAD60DEE964D3B242838AD98D89E15AEA1582974FEA3202000:8
-X-MTK: N
+References: <20201023122950.60903-1-fparent@baylibre.com>
+In-Reply-To: <20201023122950.60903-1-fparent@baylibre.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 27 Oct 2020 13:11:34 +0100
+Message-ID: <CAPDyKFrMwLeuQoFDgXYo_-T_e2AzfqM-rgp3-SgeuC6Qn6rxMA@mail.gmail.com>
+Subject: Re: [PATCH] mmc: host: mtk-sd: enable recheck_sdio_irq for MT8516 SoC
+To: Fabien Parent <fparent@baylibre.com>, Yong Mao <yong.mao@mediatek.com>, 
+ Chaotian Jing <chaotian.jing@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201027_071845_272489_B829DBC1 
-X-CRM114-Status: GOOD (  26.14  )
+X-CRM114-CacheID: sfid-20201027_081215_186272_3E8F32BE 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,111 +89,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, linux-kernel@vger.kernel.org, fparent@baylibre.com,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-10-27 at 11:53 +0100, Matthias Brugger wrote:
-> 
-> On 26/10/2020 18:55, Enric Balletbo i Serra wrote:
-> > From: Weiyi Lu <weiyi.lu@mediatek.com>
-> > 
-> > For some power domain, like conn on MT8192, it should be default OFF.
-> > Because the power on/off control relies the function of connectivity chip
-> > and its firmware. And if project choose other chip vendor solution,
-> > those necessary connectivity functions will not provided.
-> > 
-> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> > ---
-> > 
-> > Changes in v3: None
-> > Changes in v2: None
-> > 
-> >   drivers/soc/mediatek/mtk-pm-domains.c | 23 +++++++++++++++++------
-> >   drivers/soc/mediatek/mtk-pm-domains.h |  1 +
-> >   2 files changed, 18 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> > index 63993076a544..fe0e955076a0 100644
-> > --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> > @@ -378,10 +378,16 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
-> >   	 * software.  The unused domains will be switched off during
-> >   	 * late_init time.
-> >   	 */
-> > -	ret = scpsys_power_on(&pd->genpd);
-> > -	if (ret < 0) {
-> > -		dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
-> > -		goto err_unprepare_clocks;
-> > +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF)) {
-> > +		if (scpsys_domain_is_on(pd))
-> > +			dev_warn(scpsys->dev,
-> > +				 "%pOF: A default off power domain has been ON\n", node);
-> > +	} else {
-> > +		ret = scpsys_power_on(&pd->genpd);
-> > +		if (ret < 0) {
-> > +			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
-> > +			goto err_unprepare_clocks;
-> > +		}
-> >   	}
-> >   
-> >   	if (scpsys->domains[id]) {
-> > @@ -395,7 +401,11 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
-> >   	pd->genpd.power_off = scpsys_power_off;
-> >   	pd->genpd.power_on = scpsys_power_on;
-> >   
-> > -	pm_genpd_init(&pd->genpd, NULL, false);
-> > +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF))
-> > +		pm_genpd_init(&pd->genpd, NULL, true);
-> > +	else
-> > +		pm_genpd_init(&pd->genpd, NULL, false);
-> > +
-> >   	scpsys->domains[id] = &pd->genpd;
-> >   
-> >   	return scpsys->pd_data.domains[id];
-> > @@ -478,7 +488,8 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
-> >   			"failed to remove domain '%s' : %d - state may be inconsistent\n",
-> >   			pd->genpd.name, ret);
-> >   
-> > -	scpsys_power_off(&pd->genpd);
-> > +	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF))
-> > +		scpsys_power_off(&pd->genpd);
-> 
-> OK, so you merged Weiyi's patches in this series :)
-> 
-> So same comment here: Does it really hurt if we turn-off a already turned-off 
-> power domain? Or can we get rid of this check?
-> 
++ Yong Mao, Chaotian Jing
 
-We do need this check here. If you try to turn-off this power domain,
-you might make the clock or regulator reference count unbalanced.
+On Fri, 23 Oct 2020 at 14:29, Fabien Parent <fparent@baylibre.com> wrote:
+>
+> MT8516 SoC suffers from sometimes losing SDIO IRQs, this makes SDIO
+> devices sometimes unstable. Make use of the new property
+> recheck_sdio_irq to fix the SDIO stability issues on MT8516.
+>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-> Regards,
-> Matthias
-> 
-> >   
-> >   	clk_bulk_unprepare(pd->num_clks, pd->clks);
-> >   	clk_bulk_put(pd->num_clks, pd->clks);
-> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> > index 2ad213be84a5..0fa6a938b40c 100644
-> > --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> > +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> > @@ -6,6 +6,7 @@
-> >   #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
-> >   #define MTK_SCPD_FWAIT_SRAM		BIT(1)
-> >   #define MTK_SCPD_SRAM_ISO		BIT(2)
-> > +#define MTK_SCPD_KEEP_DEFAULT_OFF	BIT(3)
-> >   #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
-> >   
-> >   #define SPM_VDE_PWR_CON			0x0210
-> > 
+Maybe this is a common problem, thus I am thinking that potentially we
+should enable the workaround for all variants?
+
+I have looped in Yong Mao (who invented the workaround) and Chaotian
+Jing, to see if they can advise us how to proceed.
+
+In any case, I think we should add a stable tag and a fixes tag.
+
+Kind regards
+Uffe
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index a704745e5882..3dc102eefe49 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -524,7 +524,7 @@ static const struct mtk_mmc_compatible mt7622_compat = {
+>
+>  static const struct mtk_mmc_compatible mt8516_compat = {
+>         .clk_div_bits = 12,
+> -       .recheck_sdio_irq = false,
+> +       .recheck_sdio_irq = true,
+>         .hs400_tune = false,
+>         .pad_tune_reg = MSDC_PAD_TUNE0,
+>         .async_fifo = true,
+> --
+> 2.28.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
