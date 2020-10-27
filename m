@@ -2,79 +2,69 @@ Return-Path: <SRS0=3R1W=EC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 74404C55179
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 09:12:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59992C388F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 09:24:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A9FC42225C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 09:12:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D3C2620829
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 09:24:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N+LZOh4d";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="ypPh/8sH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A9FC42225C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qb/wim0k";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UWF6aOhC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3C2620829
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jGkO/9yj4Ol9mRV/wvg6WSoe4UxCAGsl5vRy91LlDJk=; b=N+LZOh4d3ka6lK8goawWcFJZe
-	Ppl4VHGUuRcQRYAEulFrGnl+xnyDInXJ/sEfTRxTHe0lmDsxpQjtmB+PPbm/speyamCs0gHOVwCKU
-	AM78Wz0mcEpqnanQN3yKSzs5QIifppsf8gATaOoCxAZCV5W6DzqNAUZ8ATg0CdyKriC//gB7BWKfx
-	xtNyGERRgx2+WRoFfuZz9ZgjotC6OIxbja0w1L1Ikp3qvL0zP9Bcd8I4/XivgeBDnpvQkvjBRIE46
-	6lPX9H8gYhK5GHl3o4uvs9LR1A0vrhmJ94wSXkb2TOBjn/MEu5mlENs2fJ7XZcmmrCNiLmllt27Z+
-	iFwK5ykiw==;
+	 bh=IojIZPyUHntic/MIRuP/4o6HtzNHe2atL2PSk7aNnls=; b=qb/wim0kPc74gGEEeJbWV7WLK
+	t9HXJ0wUa7J+xTmRLbrZPHaEtduzhgly0huPXWt06QIq5rx3XpwlOgb8PLd1eGsPwjSGQSu6ulPtn
+	G9LJ6n3XKv5CVoKKV1N7NUQEA2HMRUb4D/MC9q+39OJ5UEuo/l2PGmuqbMy13t1k6fcO2y8XTHGwk
+	wLSCg9+BWxtW5j9xbqaB08/VgGTIgGtka/yI1Ev+bqyIsI01EEbPXEhfJPjdurz4ZDWURi5gP7mQY
+	iHqKPRShy0iNQvFNvmO9OTrCsfQRIQOJB5epi4E3ma4099BuF5HmSUU5SVuDgba5L+iViAbwd7vFS
+	HCi4fRehw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXL1U-0008DS-5K; Tue, 27 Oct 2020 09:12:08 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1kXLD2-0001Fo-BQ; Tue, 27 Oct 2020 09:24:04 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXL1P-0008Bd-6w; Tue, 27 Oct 2020 09:12:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=TMkLt/rNxFdEdQi472ZNTOiyxBW2w+d4MoB+yvd1Sv8=; b=ypPh/8sH8HxnftbwLqnSudRB9
- hbcn0SoKDBZxB9veMP/HJXTXjOmqiG9zF8HL4xUjBQHFAEkOGKz8Bzpkgg9haW5afxHU8DrfFYKIf
- yzl5YmrqIOS5bQ1vwvFTUV2AgoMswpxJIibdn+HGIQ29qIpenHzLjHMizJ8sf6+ImKe3A52LKlBjb
- Zb/5pE6vAE8nPynFK3zBCQj40+aThX2+zH+2VaF//B6pXgKUU5bX2fRiEvbv6RYG60WxyhapQQTm/
- K/Pp8dzz9TGwxk+WsfLo2MCJ8EkbCvMPeIu8dTxBX1cWyzEpvhEyzPmOw+w4wNcpZj8jbkT4sicWf
- 3CTT2a2Bw==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51558)
- by pandora.armlinux.org.uk with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <linux@armlinux.org.uk>)
- id 1kXL1G-0000eI-Q1; Tue, 27 Oct 2020 09:11:54 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1kXL1D-0003tx-Af; Tue, 27 Oct 2020 09:11:51 +0000
-Date: Tue, 27 Oct 2020 09:11:51 +0000
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-To: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH v2 3/4] arm: mm: introduce L_PTE_SPECIAL
-Message-ID: <20201027091151.GK1551@shell.armlinux.org.uk>
-References: <20201023091437.8225-1-miles.chen@mediatek.com>
- <20201023091437.8225-4-miles.chen@mediatek.com>
- <20201023100810.GY1551@shell.armlinux.org.uk>
- <1603784712.12492.5.camel@mtkswgap22>
+ id 1kXLCw-0001EH-TN; Tue, 27 Oct 2020 09:23:59 +0000
+Received: from saruman (88-113-213-94.elisa-laajakaista.fi [88.113.213.94])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 57E2A20829;
+ Tue, 27 Oct 2020 09:23:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1603790638;
+ bh=k0q1UXQyIMVNWtmVhow0jpMDJ0XmJolwwLg8XgByQUg=;
+ h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+ b=UWF6aOhC4q0nsNt2300n7nUokiHRXjqrNCtWimEBvdk0KNDuCgoBjaOxMVuIC4plq
+ 8JeKxkI/G1EwQKZnPg6XKCDPDiunZ5JpcfK8EuHs+Kv7TYYdqtJsaYjSidnhC/KmzA
+ Z3vOQRDLZojGT4Vbr1wWnXwS9Vi2CNnzZzXkfMrw=
+From: Felipe Balbi <balbi@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] usb: gadget: configfs: Fix use-after-free issue with
+ udc_name
+In-Reply-To: <1595040303-23046-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1594881666-8843-1-git-send-email-macpaul.lin@mediatek.com>
+ <1595040303-23046-1-git-send-email-macpaul.lin@mediatek.com>
+Date: Tue, 27 Oct 2020 11:23:49 +0200
+Message-ID: <87eelkc996.fsf@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1603784712.12492.5.camel@mtkswgap22>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201027_051203_337848_01EFE648 
-X-CRM114-Status: GOOD (  25.75  )
+X-CRM114-CacheID: sfid-20201027_052359_131454_3569A4F1 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,90 +76,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Steve Capper <steve.capper@linaro.org>, wsd_upstream@mediatek.com,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>,
- linux-kernel@vger.kernel.org, Minchan Kim <minchan@kernel.org>,
- linux-mediatek@lists.infradead.org, Suren Baghdasaryan <surenb@google.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: stable@vger.kernel.org, Macpaul Lin <macpaul.lin@gmail.com>,
+ Eddie Hung <eddie.hung@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>
+Content-Type: multipart/mixed; boundary="===============0673861011766726199=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 27, 2020 at 03:45:12PM +0800, Miles Chen wrote:
-> On Fri, 2020-10-23 at 11:08 +0100, Russell King - ARM Linux admin wrote:
-> > On Fri, Oct 23, 2020 at 05:14:36PM +0800, Miles Chen wrote:
-> > > From: Minchan Kim <minchan@kernel.org>
-> > > 
-> > > This patch introduces L_PTE_SPECIAL and pte functions for supporting
-> > > get_user_pages_fast.
-> > > 
-> > > Cc: Russell King <linux@armlinux.org.uk>
-> > > Cc: Catalin Marinas <catalin.marinas@arm.com>
-> > > Cc: Will Deacon <will.deacon@arm.com>
-> > > Cc: Steve Capper <steve.capper@linaro.org>
-> > > Cc: Minchan Kim <minchan@kernel.org>
-> > > Cc: Suren Baghdasaryan <surenb@google.com>
-> > > Signed-off-by: Minchan Kim <minchan@kernel.org>
-> > > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > > ---
-> > >  arch/arm/Kconfig                      |  4 ++--
-> > >  arch/arm/include/asm/pgtable-2level.h |  1 +
-> > >  arch/arm/include/asm/pgtable-3level.h |  6 ------
-> > >  arch/arm/include/asm/pgtable.h        | 13 +++++++++++++
-> > >  4 files changed, 16 insertions(+), 8 deletions(-)
-> > > 
-> > > diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-> > > index c18fa9d382b7..1f75864b7c7a 100644
-> > > --- a/arch/arm/Kconfig
-> > > +++ b/arch/arm/Kconfig
-> > > @@ -13,7 +13,7 @@ config ARM
-> > >  	select ARCH_HAS_KCOV
-> > >  	select ARCH_HAS_MEMBARRIER_SYNC_CORE
-> > >  	select ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE
-> > > -	select ARCH_HAS_PTE_SPECIAL if ARM_LPAE
-> > > +	select ARCH_HAS_PTE_SPECIAL if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
-> > >  	select ARCH_HAS_PHYS_TO_DMA
-> > >  	select ARCH_HAS_SETUP_DMA_OPS
-> > >  	select ARCH_HAS_SET_MEMORY
-> > > @@ -82,7 +82,7 @@ config ARM
-> > >  	select HAVE_DYNAMIC_FTRACE_WITH_REGS if HAVE_DYNAMIC_FTRACE
-> > >  	select HAVE_EFFICIENT_UNALIGNED_ACCESS if (CPU_V6 || CPU_V6K || CPU_V7) && MMU
-> > >  	select HAVE_EXIT_THREAD
-> > > -	select HAVE_FAST_GUP if ARM_LPAE
-> > > +	select HAVE_FAST_GUP if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
-> > >  	select HAVE_FTRACE_MCOUNT_RECORD if !XIP_KERNEL
-> > >  	select HAVE_FUNCTION_GRAPH_TRACER if !THUMB2_KERNEL && !CC_IS_CLANG
-> > >  	select HAVE_FUNCTION_TRACER if !XIP_KERNEL
-> > > diff --git a/arch/arm/include/asm/pgtable-2level.h b/arch/arm/include/asm/pgtable-2level.h
-> > > index cdcd55cca37d..385e7a32394e 100644
-> > > --- a/arch/arm/include/asm/pgtable-2level.h
-> > > +++ b/arch/arm/include/asm/pgtable-2level.h
-> > > @@ -117,6 +117,7 @@
-> > >  #define L_PTE_VALID		(_AT(pteval_t, 1) << 0)		/* Valid */
-> > >  #define L_PTE_PRESENT		(_AT(pteval_t, 1) << 0)
-> > >  #define L_PTE_YOUNG		(_AT(pteval_t, 1) << 1)
-> > > +#define L_PTE_SPECIAL		(_AT(pteval_t, 1) << 5)
-> > 
-> > How does this work?  Bits 2 through 5 are already in use for the memory
-> > type.
-> > 
-> > Repurposing this bit means that L_PTE_MT_DEV_NONSHARED,
-> > L_PTE_MT_DEV_WC, L_PTE_MT_DEV_CACHED and L_PTE_MT_VECTORS clash with
-> > it.
-> 
-> Thanks for the comment.
-> The idea is to re-order the memory type table in [1] (patch v2/4) and
-> use bit 5 for L_PTE_SPECIAL.
+--===============0673861011766726199==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
 
-Thanks, I know what you are trying to achieve. I don't think it's
-possible without breaking the kernel on some CPUs and configurations.
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+
+Hi,
+
+Macpaul Lin <macpaul.lin@mediatek.com> writes:
+> From: Eddie Hung <eddie.hung@mediatek.com>
+>
+> There is a use-after-free issue, if access udc_name
+> in function gadget_dev_desc_UDC_store after another context
+> free udc_name in function unregister_gadget.
+>
+> Context 1:
+> gadget_dev_desc_UDC_store()->unregister_gadget()->
+> free udc_name->set udc_name to NULL
+>
+> Context 2:
+> gadget_dev_desc_UDC_show()-> access udc_name
+>
+> Call trace:
+> dump_backtrace+0x0/0x340
+> show_stack+0x14/0x1c
+> dump_stack+0xe4/0x134
+> print_address_description+0x78/0x478
+> __kasan_report+0x270/0x2ec
+> kasan_report+0x10/0x18
+> __asan_report_load1_noabort+0x18/0x20
+> string+0xf4/0x138
+> vsnprintf+0x428/0x14d0
+> sprintf+0xe4/0x12c
+> gadget_dev_desc_UDC_show+0x54/0x64
+> configfs_read_file+0x210/0x3a0
+> __vfs_read+0xf0/0x49c
+> vfs_read+0x130/0x2b4
+> SyS_read+0x114/0x208
+> el0_svc_naked+0x34/0x38
+>
+> Add mutex_lock to protect this kind of scenario.
+>
+> Signed-off-by: Eddie Hung <eddie.hung@mediatek.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Reviewed-by: Peter Chen <peter.chen@nxp.com>
+> Cc: stable@vger.kernel.org
+
+patch doesn't apply:
+
+$ patch -p1 --dry-run
+/usr/bin/patch: **** Only garbage was found in the patch input.
+
+Please resend using git send-email and make sure your smtp server sends
+it as plain text, not base64.
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJFBAEBCAAvFiEElLzh7wn96CXwjh2IzL64meEamQYFAl+X5yURHGJhbGJpQGtl
+cm5lbC5vcmcACgkQzL64meEamQZtZg//coyB3wE6OkS6Hlv+h19vVYx+t2brKcxC
+g5bumXnlkQ9Alqu77kfPmqXkdtGtTTCIF/hM3WsrvfnHUaewkm2XpFpLfsL4grDQ
+cI6VO1basL0cPUDsYYkVcujkTNNpQfAkQ1dcaUn7+Q7OM0uYMDI164AKENynlF+e
+pJKHzeo5WJY+FETSac0fqwDoDBuPucHcx+dPjZH4QYCIyEmmCinzrp4CISOpjXCv
+mu2n9Ix8CfuFbocuXtqHRZq/t7ZlmhPo9y2+hX1+F33oBRLx4L37/GdicJXWp+Rd
+DeZCO5klDOnXheRXK/pyIPOMWrGCar2jyjw1EdqPvW34aabTb2Ms7NuH0u2LaOxu
+AGUfuFXML/iWAnBuU1S/Gkjn7+hnZJiLJIV6EM380frH/dz7QXYUdjAlMnCp9qCY
+grjypjGIW87GmF8IQS3G2Ip/Ique0rRt03ioUlG/4zq+OKiRaVXCFCvxOyARELmu
+r/AlOo+fugXhAaJqcjIS2lYc0j6qp0NV27LVQDDFJI+dJzTXLbENIrxGacn/M0ll
+JQnEA0iDmDWXQU1Dv+Lki4ezHg7NWNQSNDBqY/LjdymwtYQd8XcjKo/11Dlq4cpJ
+TT72bdl7Rqg/Qm4JB/KWryxSdJlYzK1iLxZLsfuUD5w3I8AO5L+QRurTAhtZ2FT8
+fVqBmJhM+/w=
+=y0xX
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============0673861011766726199==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0673861011766726199==--
+
