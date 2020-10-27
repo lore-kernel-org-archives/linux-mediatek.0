@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 80A76C4363A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 02:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7D81C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 02:47:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 03D7520872
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 02:45:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4B71120780
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 02:47:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z8hfYpdQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="T/557vXy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03D7520872
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="f7ulp6Iq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ceBFFlgj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B71120780
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LWbWA92vgqopW5hLh/CtaKFyD9nKro45IoYqS0m6WL0=; b=Z8hfYpdQ7JTj0mTtTZ6UmSU91
-	RcJFgc+SRAEc+6zV/ju6JRtjPVoBU5Imax3Ct0BPaCroXRLKU5wMbxoFY4Fa4ljpwmZAl7++EdCIG
-	GLKF/FORzu/hAVd2xsk03swyl3ercqNcpNxxJPGXrnLkAmdf9QnZJl/pWUrk44OXu5EK3xF5LGfA8
-	8PrRxEVDXmGyUcSXb+zhTD5TnBDJyNcmcQFXtZBGgM7QeREMoAjmRnIjumZ/9a/8jr9azrRzQ3Ahs
-	o2WUTOwYJBQXd/Flgs8UjkIZgrUADXIk2GCY3nyEIoHuYOeiGgEcnWmWixPFQRNhO0o7JtLfjn+n9
-	LF9fJywxg==;
+	 bh=cPr5wWr5obAmNMrYF4YjIeeQRdCE5eARgup/6rJdnQI=; b=f7ulp6Iq8IKxHesH/9MhfvclH
+	2883Xo/rhKlyMMk9XUS5qayf3C1JAAW9xovW8Vzw2B7f3h4GwYo+YL5WkybbzWd6HZMw3gop4PS/9
+	yA9PEIIFeDo2AE9kCANV8/Kosc2kAYpHBzGy2iYAYmriN/Tb1ywNe52YfAQjDimbDhRT8mubvTPJq
+	3yynt7Q0T7JHByDdONVExJfxk1TaWwlodum9fvAmufF81GLk/AxluuN+FUSVaOkkpvQCNRcu5J77L
+	eHBzTn3DjNZKO8WKOP7ZA8vxHQ/yL/+L0r6sIBHKxPVk2mX2JmLkqwy9hj98/bH7Pz/toTsXTWLNr
+	TCw7YxUnA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXEyr-0005eX-TY; Tue, 27 Oct 2020 02:45:02 +0000
-Received: from mail-vs1-xe43.google.com ([2607:f8b0:4864:20::e43])
+	id 1kXF17-0006AW-UF; Tue, 27 Oct 2020 02:47:21 +0000
+Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXEyp-0005cs-1u
- for linux-mediatek@lists.infradead.org; Tue, 27 Oct 2020 02:45:00 +0000
-Received: by mail-vs1-xe43.google.com with SMTP id b129so69060vsb.1
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2020 19:44:58 -0700 (PDT)
+ id 1kXF15-00069g-Lw
+ for linux-mediatek@lists.infradead.org; Tue, 27 Oct 2020 02:47:20 +0000
+Received: by mail-ua1-x941.google.com with SMTP id 52so55024uaj.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2020 19:47:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wXRta/l0rIpVqWKOqa7VKxnC+dawIwiqAsPvJhT8cAw=;
- b=T/557vXyVCMYMplHmwqgl2C/+oWuotWYjE5ulgHmbhcBcoUTGTUcLKoLrseSR4dNbW
- lf70JtnoluukbB2REDI+6kSD1qMUWEwgv4Nw3GBikF9JZLY7vPGmYAXbyJRKbcFRr3ar
- WJklOqdkzS/LIIQLdrIKO3yASrpnU3LO4SrEM=
+ :cc; bh=CfHMJowBDH8fp8MkQnVoV3I8mZnnK2rYmrQmkGAHTzk=;
+ b=ceBFFlgjHmpT89ryHtdWPO+jbawd3DaOCZ5D0I9wPI7EANCEz9yiRF5j/PpZ0X9k8r
+ PYDSAJeEQHPwrD+KlFRiMQEQ1f9cLZahvLrGuFHX6Y8tDyVxaenvNkfpXzdJRdi3Tn6l
+ 25+N0Xs9GMfsO9xLAUSjk/qNScs6PEEQGLDss=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=wXRta/l0rIpVqWKOqa7VKxnC+dawIwiqAsPvJhT8cAw=;
- b=MC7gfKNXqrLlQpXmiVUS56ypjqqhAWLYPlYA3PcwvqXrr4MWynud/1h7465SJI7rKY
- zuBZmi4k/6HigyAyL4cNUluuOUsClEFKr1c9xfqqOG+Nqin1hCnFdFTaBskV6on/thkW
- TP/fV7oEFPNiiayDfGM6IE1IZhkysjoTyFZ95PT/dKQQeCb+Nirz3n45ssPaqkkg1YJo
- Ov29xe2kyTgiDXnwakZSDYn7uhHRxJXM5f3bg+2XlGa9wNb4nZcQI9dd6xhrAFKSOeKg
- wqGbqzQOLe+lP812K3K9t4VEAyIzzNLQSIcanO1FsK47pAGEEEOvf2PAHQ4Iug2UZ3Fg
- +P3Q==
-X-Gm-Message-State: AOAM5325uOFXYfxIOB0ZO6FavaeyI4j+UEJTzonfCL+tK833kTbKFBu+
- fCg+EsVde2GjZuJiv5N687CwrDZbRIG3FIi3axwXbg==
-X-Google-Smtp-Source: ABdhPJyaj4h+nsHSHvyeat3tzFBttagersKPsH8TB4jnReJYbVxBNFyR6MXj9JmE7u1qH0zeqev5JFPLu55kIKQjZFI=
-X-Received: by 2002:a67:2783:: with SMTP id n125mr231844vsn.47.1603766697607; 
- Mon, 26 Oct 2020 19:44:57 -0700 (PDT)
+ bh=CfHMJowBDH8fp8MkQnVoV3I8mZnnK2rYmrQmkGAHTzk=;
+ b=pX9oQM3h33LQwDWG4d9q+I1u4Mh4Zb2CRkHPk/1H8sPK9qGx75Eox/+8xjPObPsOqB
+ 1XdHUrfJal/s+D1pzb2Th4VvdIbS974+edUonQvXngjXFVGxRbIhXmdtrBteXJJ1Dzk7
+ AFE+vKOujtAubsCTt3J7e6EDMmOvtsPwXI0y4Qu7Ca3WAmSIuKiJCV1K12IPFV1uopvM
+ oCugpI6M0+FVoTTXdJN5Vb4LGwAyLJOlRvIjRnu+Dz3PzgXUzWZj51iaEQO0yr8Q4ORK
+ JvRLXm1l+V++Ka6bXsr8o/JE9KBcBv8aIsiBxrlPQeU5RYJZUcNuJuNEmhXM1gEXEnpd
+ g3BA==
+X-Gm-Message-State: AOAM530qExmaofbAN62Ac6+RyeYXiInZNbmbCvR/ey4iOAAY/FsTMTDB
+ c/aX/EWlgHjnUDOZk5zxMO/ADGib+OBrGQT5CzhA5A==
+X-Google-Smtp-Source: ABdhPJyGpM3YUMVBx+nYfxPQlQBmBPZ6taDoHHfBDTZRvvPNjg6JOU0pushp7zq9etEWT3DiHWgNQq2vIQtsljEaHek=
+X-Received: by 2002:ab0:5b0b:: with SMTP id u11mr95907uae.74.1603766837803;
+ Mon, 26 Oct 2020 19:47:17 -0700 (PDT)
 MIME-Version: 1.0
 References: <20201026175526.2915399-1-enric.balletbo@collabora.com>
- <20201026175526.2915399-7-enric.balletbo@collabora.com>
-In-Reply-To: <20201026175526.2915399-7-enric.balletbo@collabora.com>
+ <20201026175526.2915399-8-enric.balletbo@collabora.com>
+In-Reply-To: <20201026175526.2915399-8-enric.balletbo@collabora.com>
 From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Tue, 27 Oct 2020 10:44:46 +0800
-Message-ID: <CANMq1KCDNH1w+jo5kjyhusLdzCR0hF8QUi3a+jkkDvv75uGK5A@mail.gmail.com>
-Subject: Re: [PATCH v3 06/16] soc: mediatek: pm-domains: Add SMI block as bus
- protection block
+Date: Tue, 27 Oct 2020 10:47:06 +0800
+Message-ID: <CANMq1KCRk6Wb=pFh03vUQ02ZoJw7ZvDJi8ayjsw1LG-hVqaBAQ@mail.gmail.com>
+Subject: Re: [PATCH v3 07/16] soc: mediatek: pm-domains: Add extra sram control
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_224459_130005_AB9485CA 
-X-CRM114-Status: GOOD (  23.24  )
+X-CRM114-CacheID: sfid-20201026_224719_792609_547605A4 
+X-CRM114-Status: GOOD (  22.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,92 +102,101 @@ On Tue, Oct 27, 2020 at 1:55 AM Enric Balletbo i Serra
 >
 > From: Matthias Brugger <mbrugger@suse.com>
 >
-> Apart from the infracfg block, the SMI block is used to enable the bus
-> protection for some power domains. Add support for this block.
+> For some power domains like vpu_core on MT8183 whose sram need to do clock
+> and internal isolation while power on/off sram. We add a cap
+> "MTK_SCPD_SRAM_ISO" to judge if we need to do the extra sram isolation
+> control or not.
 >
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > ---
 >
-> Changes in v3:
-> - Do not reuse bpd for 2 different things.
-> - Disable pd->smi first and after that pd->infracfg.
-> - Rename BUT_PROT_UPDATE_MT8173 to BUS_PROT_UPDATE_TOPAXI as in all the
->   other SoCs TOPAXI is mapped to the same address.
+> Changes in v3: None
+> Changes in v2:
+> - Nit, split readl(ctl_addr) | pd->data->sram_pdn_bits in two lines.
+> - Use regmap API
 >
-[snip]
->  static int scpsys_power_on(struct generic_pm_domain *genpd)
-> @@ -266,6 +271,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
->         if (IS_ERR(pd->infracfg))
->                 pd->infracfg = NULL;
+>  drivers/soc/mediatek/mtk-pm-domains.c | 25 +++++++++++++++++++++++--
+>  drivers/soc/mediatek/mtk-pm-domains.h |  1 +
+>  2 files changed, 24 insertions(+), 2 deletions(-)
 >
-> +       pd->smi = syscon_regmap_lookup_by_phandle(node, "mediatek,smi");
-> +       if (IS_ERR(pd->smi))
-> +               pd->smi = NULL;
-
-This is the second time I see this pattern, I think.
-
-Do we want to create a new syscon_regmap_lookup_by_phandle_optional wrapper?
-
-Also, are we ok with ignoring all errors? I agree we can ignore
--ENODEV if optional, but I'm not sure about the others.
-
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index 006eb7571d32..82f6d937ed93 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -24,6 +24,8 @@
+>  #define PWR_ON_BIT                     BIT(2)
+>  #define PWR_ON_2ND_BIT                 BIT(3)
+>  #define PWR_CLK_DIS_BIT                        BIT(4)
+> +#define PWR_SRAM_CLKISO_BIT            BIT(5)
+> +#define PWR_SRAM_ISOINT_B_BIT          BIT(6)
+>
+>  struct scpsys_domain {
+>         struct generic_pm_domain genpd;
+> @@ -65,12 +67,24 @@ static int scpsys_sram_enable(struct scpsys_domain *pd)
+>         u32 pdn_ack = pd->data->sram_pdn_ack_bits;
+>         struct scpsys *scpsys = pd->scpsys;
+>         unsigned int tmp;
+> +       int ret;
+>
+>         regmap_update_bits(scpsys->base, pd->data->ctl_offs, pd->data->sram_pdn_bits, 0);
+>
+>         /* Either wait until SRAM_PDN_ACK all 1 or 0 */
+> -       return regmap_read_poll_timeout(scpsys->base, pd->data->ctl_offs, tmp,
+> -                                       (tmp & pdn_ack) == 0, MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +       ret = regmap_read_poll_timeout(scpsys->base, pd->data->ctl_offs, tmp,
+> +                                      (tmp & pdn_ack) == 0, MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +       if (ret < 0)
+> +               return ret;
 > +
->         pd->num_clks = of_clk_get_parent_count(node);
->         if (pd->num_clks > 0) {
->                 pd->clks = devm_kcalloc(scpsys->dev, pd->num_clks, sizeof(*pd->clks), GFP_KERNEL);
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> index e428fe23a7e3..7b1abcfc4ba3 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> @@ -34,8 +34,31 @@
->
->  #define SPM_MAX_BUS_PROT_DATA          3
->
-> +#define _BUS_PROT(_mask, _set, _clr, _sta, _update) {  \
-> +               .bus_prot_mask = (_mask),               \
-> +               .bus_prot_set = _set,                   \
-> +               .bus_prot_clr = _clr,                   \
-> +               .bus_prot_sta = _sta,                   \
-> +               .bus_prot_reg_update = _update,         \
+> +       if (MTK_SCPD_CAPS(pd, MTK_SCPD_SRAM_ISO)) {
+> +               regmap_update_bits(scpsys->base, pd->data->ctl_offs, PWR_SRAM_ISOINT_B_BIT,
+> +                                  PWR_SRAM_ISOINT_B_BIT);
+
+regmap_set_bits?
+
+> +               udelay(1);
+> +               regmap_update_bits(scpsys->base, pd->data->ctl_offs, PWR_SRAM_CLKISO_BIT, 0);
+
+regmap_clear_bits?
+
+But then I'm afraid we'll want to modify it everywhere for consistency.
+
+I only noticed here as the first call spans over 2 lines..
+
 > +       }
 > +
-> +#define BUS_PROT_WR(_mask, _set, _clr, _sta)           \
-> +               _BUS_PROT(_mask, _set, _clr, _sta, false)
-> +
-> +#define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)               \
-> +               _BUS_PROT(_mask, _set, _clr, _sta, true)
-> +
-> +#define BUS_PROT_UPDATE_TOPAXI(_mask)                          \
-> +               BUS_PROT_UPDATE(_mask,                          \
-> +                               INFRA_TOPAXI_PROTECTEN,         \
-> +                               INFRA_TOPAXI_PROTECTEN_CLR,     \
-> +                               INFRA_TOPAXI_PROTECTSTA1)
-> +
->  struct scpsys_bus_prot_data {
->         u32 bus_prot_mask;
-> +       u32 bus_prot_set;
-> +       u32 bus_prot_clr;
-> +       u32 bus_prot_sta;
->         bool bus_prot_reg_update;
->  };
+> +       return 0;
+>  }
 >
-> @@ -47,6 +70,7 @@ struct scpsys_bus_prot_data {
->   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
->   * @caps: The flag for active wake-up action.
->   * @bp_infracfg: bus protection for infracfg subsystem
-> + * @bp_smi: bus protection for smi subsystem
->   */
->  struct scpsys_domain_data {
->         u32 sta_mask;
-> @@ -55,6 +79,7 @@ struct scpsys_domain_data {
->         u32 sram_pdn_ack_bits;
->         u8 caps;
->         const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
-> +       const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
->  };
+>  static int scpsys_sram_disable(struct scpsys_domain *pd)
+> @@ -79,6 +93,13 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+>         struct scpsys *scpsys = pd->scpsys;
+>         unsigned int tmp;
 >
->  struct scpsys_soc_data {
+> +       if (MTK_SCPD_CAPS(pd, MTK_SCPD_SRAM_ISO)) {
+> +               regmap_update_bits(scpsys->base, pd->data->ctl_offs, PWR_SRAM_CLKISO_BIT,
+> +                                  PWR_SRAM_CLKISO_BIT);
+> +               udelay(1);
+> +               regmap_update_bits(scpsys->base, pd->data->ctl_offs, PWR_SRAM_ISOINT_B_BIT, 0);
+> +       }
+> +
+>         regmap_update_bits(scpsys->base, pd->data->ctl_offs, pd->data->sram_pdn_bits,
+>                            pd->data->sram_pdn_bits);
+>
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+> index 7b1abcfc4ba3..4152b96c1b29 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> @@ -5,6 +5,7 @@
+>
+>  #define MTK_SCPD_ACTIVE_WAKEUP         BIT(0)
+>  #define MTK_SCPD_FWAIT_SRAM            BIT(1)
+> +#define MTK_SCPD_SRAM_ISO              BIT(2)
+>  #define MTK_SCPD_CAPS(_scpd, _x)       ((_scpd)->data->caps & (_x))
+>
+>  #define SPM_VDE_PWR_CON                        0x0210
 > --
 > 2.28.0
 >
