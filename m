@@ -7,77 +7,83 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BCB65C388F9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 12:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F91FC388F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 12:44:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2644720725
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 12:12:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8F84120757
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2020 12:44:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="07C9o8zL";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="PDTzx3wA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2644720725
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gzd1e5d5";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="Ck9y9jNd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F84120757
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ueekJ89cpiDjgoauuBWXsViNPbrHfK9d1C7OQRAtY8E=; b=07C9o8zL2O4CJLbzOo00b+ch+
-	RpK+JiBVql19E3xfNiSAs8TU8oQsyd+qG4TCmjTB+AK1MJE5Zhgs2ReDKIrgoAEDzf4myn5S029Ya
-	0M46c3fYHr0o2Q01UOdBz0OHDIzqvG4M6Bm+G8SZYdvevMjFMqq3Ridp8xQOE2YAsZDRQvcruHtCj
-	Cfmc53xMI68JPLud5DsArJVBGg3q2cEYVatJ5GzXOyeYIUL2m3zAXX3jbmQntRvzLSejhxNkDY+YN
-	PSAcpXr0lSdYUWDuSFshcgitqZgrDEAl4rNJIInCfpM4gulDAd8xRVVYObv209NnX8pjegiiVX3OS
-	2I3mjvlqg==;
+	 bh=6mkAhY4MAaeykVeh2uELLHKAf/SYJqiI0etLcL89G88=; b=gzd1e5d5sC0/CUXA75W1cOuF5
+	YP217qJm+IHLHSiG/dYiTYpanCW0fsHyPidQ+uDyQ1FFPPaxUeWBNV4BIGCejl9pR4ZK0rzj1ssTj
+	r0WYy4StXw8a/M0SfhfFsM+CcVECrCyoYLeWrAwsavFh4G1z5KYV28U26a/x6sPt+3x+urQSEeWdu
+	TROiHjcXXIl9gSuss4FYItC7m8QHqwIIEYj0/PBzE9BHB+5pgbosW/TlwL4m5CGVnQaAQaPeTYkKX
+	38BMdoLO8c66eKd8Q7gm8kcMzI4qD5ZkTKCRAjr8zaA18zwiIkn7ioc/HLtM5vT7m+fho4Rw0jcNw
+	ki7cGBeew==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXNpq-0004w6-Ga; Tue, 27 Oct 2020 12:12:18 +0000
-Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44])
+	id 1kXOKn-0006Xe-8q; Tue, 27 Oct 2020 12:44:17 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXNpn-0004uZ-3M
- for linux-mediatek@lists.infradead.org; Tue, 27 Oct 2020 12:12:16 +0000
-Received: by mail-vk1-xa44.google.com with SMTP id z10so302278vkn.0
- for <linux-mediatek@lists.infradead.org>; Tue, 27 Oct 2020 05:12:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=V3hdAD2/SfSVH7mLkNbOazbZ1K7Ev/XT9ONQ25TQSDM=;
- b=PDTzx3wAmjvtMIqJLQf55wBX3zV38/E1NKQ5hbF9J37P08tWIczYGfMiDSri4xIg9+
- D9gol1nV6KVYi6Khf2wEMy5sYHrpUr86+CdjE4fqGO/REJGVUHnZUXG5c6vNYAxLrYwy
- 3IoFi5UPd8B2S77Jp9ejkSanfGhEY8mCZhKnaNEp285Gp8oHExqo54MoOfC2hGyT7ghA
- lDgQ8iHU5tPmPNjJaCcADMi2qU3OqvBBPliNvYl52SLhS2icaiKPhg5V8e/LmAvonKhX
- x6e9HDTk4W8radGJrKEUVq1y91uAunqgLpmeNau7FcOO19Njbz7l1MaIDoV9Q3NDvpwu
- WMsw==
+ id 1kXOKk-0006VH-HF
+ for linux-mediatek@lists.infradead.org; Tue, 27 Oct 2020 12:44:16 +0000
+Received: by mail-wr1-x442.google.com with SMTP id b8so1784966wrn.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Oct 2020 05:44:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=HBFttdYAiRM1KfFacsdZju3R8FEz52UG6psn2mn812k=;
+ b=Ck9y9jNdJH1H9KVu2owJyTBu42rV4XSWLdMUbByrEIQhakBN7YO3viBNE7ywGE3yJV
+ 21nxkfIOqKJYmVR7phi6Mzl7xabBrqCSHVDvC6wQjQdXQwgh7fpBlxLd0spJm6TD1f/z
+ i8rfkkdL3rv1kNNzjwl5ccwoTqDMuUQz+sXBzzY6oWTJcr7pbtuUho/VDBaGCbA+JUFy
+ 8rFIc0Mph/wTGNCdJiEdu+j+TUPeGOqq7vp55s9RrKz7oPhApmbGbRXD5yrp3Ko8tRiS
+ uvrWHwR+8dFXWShuf4c5KsxIDyJiXxw78K3ZGM/ChFHu1dDwpDKmBilfGofXcucVgkOj
+ pjKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=V3hdAD2/SfSVH7mLkNbOazbZ1K7Ev/XT9ONQ25TQSDM=;
- b=fUdbHU+2KrYaRLFw5c1jHZhUXuixVAKw5Wpi3QF9aYXpPi8RMK1qrX6v2p6VcKqow0
- NDK1aGYwqKmM/FoYhkXGK1KhflrLR9nuOrQvOzfZPq7S+HA9bCdZJeOTQFB4Tz3VnXs5
- UetHKXIxbu2isgWs4Y9f1r9L7D0YZEWp8R5Oz9/GiMrhKCDALx6j0FOqR8CVe91OV9V/
- CjGIdxUPCUEc1FlSOFyWvngfAfsYfkV0LBgxwkwjlId/Cvzn9Fhyvph6B+5+eTs0i5Yt
- 5lJY4y8XBufGZlqgez/VKbVpY0B9nrM0Y9lXEmhceogrR/bIdK6dblYcnx/fvV052aZv
- IN9A==
-X-Gm-Message-State: AOAM533e6M/6hl4NhVXXz5y8cPToV1kvZKSKEWtimJZlwYrnJQNrxpsW
- oCkonhGDIJFFC6daC1tsI7IzVMiuKq+AhCv+LgtXKw==
-X-Google-Smtp-Source: ABdhPJz9LZoiTJhx1SHZvE2wOEztXoNObRC3nyLzZpkAJKjEOp/2NEgP80ioL4M98sMqoh79lv2vrnEnNPppto8YuAU=
-X-Received: by 2002:ac5:c1ca:: with SMTP id g10mr1144150vkk.6.1603800731083;
- Tue, 27 Oct 2020 05:12:11 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201023122950.60903-1-fparent@baylibre.com>
-In-Reply-To: <20201023122950.60903-1-fparent@baylibre.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 27 Oct 2020 13:11:34 +0100
-Message-ID: <CAPDyKFrMwLeuQoFDgXYo_-T_e2AzfqM-rgp3-SgeuC6Qn6rxMA@mail.gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=HBFttdYAiRM1KfFacsdZju3R8FEz52UG6psn2mn812k=;
+ b=G3dYcU9PhyBACB9E6hrb4wfoyt01opf7zwuoKzsciHUP5Ccmlziwdy+MxiVWtdPbTh
+ 1h9Huz+qBRdm2E2XsTvUJyevBSIGHJHsljKFWGb7MpAKNcGHwcxBo2DC6EIr6jq2jMxR
+ mTLyJ8lr+wnAUuVF443DUEE9nPAZDI1oNOBtQEQKfZmzCxkCEnQrNPSi1BC8PdW/xbZ9
+ evMgvb7XwAzPSnY1Rv2YvmfaIua9xADeW1HjqRmNoWjkR+bswtSsnL4YMEq8JxVq2VJH
+ ixC0CUKwEw2475mXnRamhR+9hGeHhS7UdrLDoqTJvksY2yCmOyZhVDnBhO8PxeW479B9
+ KdkQ==
+X-Gm-Message-State: AOAM532GZUleefFiQRpq4QkCusdYpfZ06NQaHX0laA7s3w6gAjUWF8Fk
+ De72pYIjEsnpX1tI+/J3yW75MA==
+X-Google-Smtp-Source: ABdhPJxGIvXpfpZxv774x6oG+TdKSVGildynsy97gcSuNQ0khyKnhSHNQjEj6Ais+Xmhl4PIo0XW7A==
+X-Received: by 2002:adf:84a5:: with SMTP id 34mr2855003wrg.152.1603802651408; 
+ Tue, 27 Oct 2020 05:44:11 -0700 (PDT)
+Received: from localhost ([2a01:cb19:8ae7:9d00:68a3:7a03:6c11:8947])
+ by smtp.gmail.com with ESMTPSA id m14sm1891082wro.43.2020.10.27.05.44.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Oct 2020 05:44:10 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Fabien Parent <fparent@baylibre.com>,
+ Yong Mao <yong.mao@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 Subject: Re: [PATCH] mmc: host: mtk-sd: enable recheck_sdio_irq for MT8516 SoC
-To: Fabien Parent <fparent@baylibre.com>, Yong Mao <yong.mao@mediatek.com>, 
- Chaotian Jing <chaotian.jing@mediatek.com>
+In-Reply-To: <CAPDyKFrMwLeuQoFDgXYo_-T_e2AzfqM-rgp3-SgeuC6Qn6rxMA@mail.gmail.com>
+References: <20201023122950.60903-1-fparent@baylibre.com>
+ <CAPDyKFrMwLeuQoFDgXYo_-T_e2AzfqM-rgp3-SgeuC6Qn6rxMA@mail.gmail.com>
+Date: Tue, 27 Oct 2020 13:44:08 +0100
+Message-ID: <87wnzbg7on.fsf@baylibre.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201027_081215_186272_3E8F32BE 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20201027_084414_820924_46311399 
+X-CRM114-Status: GOOD (  21.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,8 +96,9 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
  "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
@@ -99,47 +106,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+ Yong Mao, Chaotian Jing
+Hi Ulf,
 
-On Fri, 23 Oct 2020 at 14:29, Fabien Parent <fparent@baylibre.com> wrote:
+Ulf Hansson <ulf.hansson@linaro.org> writes:
+
+> + Yong Mao, Chaotian Jing
 >
-> MT8516 SoC suffers from sometimes losing SDIO IRQs, this makes SDIO
-> devices sometimes unstable. Make use of the new property
-> recheck_sdio_irq to fix the SDIO stability issues on MT8516.
+> On Fri, 23 Oct 2020 at 14:29, Fabien Parent <fparent@baylibre.com> wrote:
+>>
+>> MT8516 SoC suffers from sometimes losing SDIO IRQs, this makes SDIO
+>> devices sometimes unstable. Make use of the new property
+>> recheck_sdio_irq to fix the SDIO stability issues on MT8516.
+>>
+>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 >
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Maybe this is a common problem, thus I am thinking that potentially we
+> should enable the workaround for all variants?
+Not sure if this is of any help, but: we use the btmtksdio driver on a
+MT8183 soc with an Android kernel based on upstream.
 
-Maybe this is a common problem, thus I am thinking that potentially we
-should enable the workaround for all variants?
+With that kernel, we did not to apply this work-around in order to
+have a stable bluetooth experience (pairing with a remote controller)
 
-I have looped in Yong Mao (who invented the workaround) and Chaotian
-Jing, to see if they can advise us how to proceed.
+However, on the MT8516 SoC, it's impossible for us to use btmtksdio
+without Fabien's fix.
 
-In any case, I think we should add a stable tag and a fixes tag.
-
-Kind regards
-Uffe
-
-> ---
->  drivers/mmc/host/mtk-sd.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index a704745e5882..3dc102eefe49 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -524,7 +524,7 @@ static const struct mtk_mmc_compatible mt7622_compat = {
+> I have looped in Yong Mao (who invented the workaround) and Chaotian
+> Jing, to see if they can advise us how to proceed.
 >
->  static const struct mtk_mmc_compatible mt8516_compat = {
->         .clk_div_bits = 12,
-> -       .recheck_sdio_irq = false,
-> +       .recheck_sdio_irq = true,
->         .hs400_tune = false,
->         .pad_tune_reg = MSDC_PAD_TUNE0,
->         .async_fifo = true,
-> --
-> 2.28.0
+> In any case, I think we should add a stable tag and a fixes tag.
 >
+> Kind regards
+> Uffe
+>
+>> ---
+>>  drivers/mmc/host/mtk-sd.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+>> index a704745e5882..3dc102eefe49 100644
+>> --- a/drivers/mmc/host/mtk-sd.c
+>> +++ b/drivers/mmc/host/mtk-sd.c
+>> @@ -524,7 +524,7 @@ static const struct mtk_mmc_compatible mt7622_compat = {
+>>
+>>  static const struct mtk_mmc_compatible mt8516_compat = {
+>>         .clk_div_bits = 12,
+>> -       .recheck_sdio_irq = false,
+>> +       .recheck_sdio_irq = true,
+>>         .hs400_tune = false,
+>>         .pad_tune_reg = MSDC_PAD_TUNE0,
+>>         .async_fifo = true,
+>> --
+>> 2.28.0
+>>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
