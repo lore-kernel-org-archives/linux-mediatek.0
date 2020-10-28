@@ -7,73 +7,70 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50656C388F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8364C388F9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:36:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C86722283
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:26:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E567021D7B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:36:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j54Ej0+d";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZlfUyj/w"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C86722283
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r8O+y9VR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="t4sJoMLm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E567021D7B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=B1Nbp7cNIHyPfwXfRIE74JUue025YWII1JXNnIhMkEY=; b=j54Ej0+dCQlxF1fquQ7c5FI4o
-	C17GAqWRTywL/tOX+B8F9VwDGmQa+pE9zo5SS9PDiHuvc/gB8iojetp4Ls7TJV4ljD/XHKeVmMhm7
-	zJFETMX4lUfXWTU5PEAv+4wHBMTxjsK8f7v/GlxR8kp3j9J0VDrAhronQ0zuwW1N5WPlr4JidVBY2
-	/MOR/feFBfzP9R2a9LbW+7WPCa6on+gvDfAjAsA42QEZwB+sRiincUXEv50p4I4wZXaeLmbWvwnDL
-	LJY8UbDFvcIegzIJRPyEqPDXiQq6kC2qXJEqwpVFzZiSwL9Rkn2MfYX6fp7uW+QsrTt07dW5IQuR9
-	JathAmfzw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3/srVaXLRQRcqXDRa0z0eTIUBSYL9F7+zgAX8l2JU3M=; b=r8O+y9VR8l/4BGoKt6EtKSZBSe
+	sGA0gWzpC0rpj8JDw4wwobrL5GXIN3ChdDY86TQPjjqh9rU/wrX9LWfRCVYsxa5ZEwRFa/nIlIyYC
+	qzGCokykAEdR6sQ2kahUyQ2/8S6RLl0j6HU9CJ1rK0SyYp6mMoXmA2iig25DYou2mT0DMhEQ6Jlye
+	mEFi0ktePdtJz1K61dbejXbQ6XOr6jLRjdBjf4+r3vh4mazBndcSX9GICmdU3Hf1FIxf0zuE+2JLF
+	3cpmRFhmrg2W9K3DGNtKlABDH3oqs7CCY03FnGj1kMHbtB6c371LUMA4qsQ0ODtQVSoWZY8xQYQ9S
+	TljYYGRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXbAK-0006tQ-Dy; Wed, 28 Oct 2020 02:26:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kXbK3-0007NX-Uk; Wed, 28 Oct 2020 02:36:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXbAH-0006st-Q9
- for linux-mediatek@lists.infradead.org; Wed, 28 Oct 2020 02:26:18 +0000
-X-UUID: a4d7fe032b094bf0ac77ad81bfb8f245-20201027
+ id 1kXbK2-0007N2-1i
+ for linux-mediatek@lists.infradead.org; Wed, 28 Oct 2020 02:36:23 +0000
+X-UUID: e48081b094c34f8f9a438b3e0d29b633-20201027
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=JkugRJeKy2/Hrcd9iL5Ifee/WNeQ4+/HGaw55rdaxEA=; 
- b=ZlfUyj/wUhy9YGFQD5og8uB4CRfXlgtS+l8wR3nmsqONd+v2F64Zh3SiVYHadbK1ut9qwYpwbhRWdGFR0D/gj4bO/VQtSBbG5p/0FWIUC59Us0Sr2DoxeaEsvfEoXpdYeyUXDtnw2AuG3SRSNl/nLchwTqLXRu4SOcYI0M8xCd4=;
-X-UUID: a4d7fe032b094bf0ac77ad81bfb8f245-20201027
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=rHnJvyRuC+Q6pEX9APo1cQzlBAu7Gfh0TtiXRxOMke0=; 
+ b=t4sJoMLmTaSNMjGxYGT36gb8V4jmd7M7Sx4VD6yu2pSJe4dorv+4Z++1cJXXZDky9h8u6ICbUNqlEZYwiUsgik80AQJLmmgj+20FuWc5d/DO1TZHYtzQSLFv954izE9DVOb5uimfUivTRoksa557GneSApZHlKfQqixe3au7tsU=;
+X-UUID: e48081b094c34f8f9a438b3e0d29b633-20201027
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 286379177; Tue, 27 Oct 2020 18:26:02 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Oct 2020 19:20:24 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Oct 2020 10:20:23 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ with ESMTP id 742903809; Tue, 27 Oct 2020 18:36:17 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 27 Oct 2020 19:36:15 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Oct 2020 10:36:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 28 Oct 2020 10:20:22 +0800
+ Frontend Transport; Wed, 28 Oct 2020 10:36:14 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 2/2] mt76: mt7915: remove unused mt7915_mcu_bss_sync_tlv()
-Date: Wed, 28 Oct 2020 10:20:21 +0800
-Message-ID: <d4bad9e858de1f0f81951d1783c759f1b1e8179c.1603850919.git.ryder.lee@mediatek.com>
+Subject: [PATCH v2 1/2] mt76: mt7915: use BIT_ULL for omac_idx
+Date: Wed, 28 Oct 2020 10:36:11 +0800
+Message-ID: <879705a8af8fa44c711feb3aa0351c1138aeef6c.1603852250.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <879705a8af8fa44c711feb3aa0351c1138aeef6c.1603850919.git.ryder.lee@mediatek.com>
-References: <879705a8af8fa44c711feb3aa0351c1138aeef6c.1603850919.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 59E9319954A9A32B902E4B116D53967F2EDCE26671AD6AF65EBC524CB4E5D1D32000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201027_222618_061465_EA87EC98 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20201027_223622_290078_8982AFAA 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,80 +89,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7915_mcu_bss_sync_tlv() is no longer used, so remove it.
+The omac_idx variable is u64 so we should use the 64-bit BIT_ULL().
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 19 ++-----------------
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 11 +----------
- 2 files changed, 3 insertions(+), 27 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 18383dcdaf35..b08d71996e55 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -938,20 +938,6 @@ mt7915_mcu_bss_bmc_tlv(struct sk_buff *skb, struct mt7915_phy *phy)
- 	}
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 650dcad432de..254db8a6e1df 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -231,7 +231,7 @@ static void mt7915_remove_interface(struct ieee80211_hw *hw,
  
--static void
--mt7915_mcu_bss_sync_tlv(struct sk_buff *skb, struct ieee80211_vif *vif)
--{
--	struct bss_info_sync_mode *sync;
--	struct tlv *tlv;
--
--	tlv = mt7915_mcu_add_tlv(skb, BSS_INFO_SYNC_MODE, sizeof(*sync));
--
--	sync = (struct bss_info_sync_mode *)tlv;
--	sync->bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int);
--	sync->dtim_period = vif->bss_conf.dtim_period;
--	sync->enable = true;
--}
--
- static int
- mt7915_mcu_muar_config(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 		       bool bssid, bool enable)
-@@ -1019,9 +1005,8 @@ int mt7915_mcu_add_bss_info(struct mt7915_phy *phy,
- 		if (vif->bss_conf.he_support)
- 			mt7915_mcu_bss_he_tlv(skb, vif, phy);
+ 	mutex_lock(&dev->mt76.mutex);
+ 	phy->mt76->vif_mask &= ~BIT(mvif->idx);
+-	phy->omac_mask &= ~BIT(mvif->omac_idx);
++	phy->omac_mask &= ~BIT_ULL(mvif->omac_idx);
+ 	mutex_unlock(&dev->mt76.mutex);
  
--		if (mvif->omac_idx < EXT_BSSID_START)
--			mt7915_mcu_bss_sync_tlv(skb, vif);
--		else if (mvif->omac_idx < REPEATER_BSSID_START)
-+		if (mvif->omac_idx > EXT_BSSID_START &&
-+		    mvif->omac_idx < REPEATER_BSSID_START)
- 			mt7915_mcu_bss_ext_tlv(skb, mvif);
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 57446cd11c40..3e04a1f986cc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -387,15 +387,6 @@ struct bss_info_ext_bss {
- 	u8 rsv[8];
- } __packed;
- 
--struct bss_info_sync_mode {
--	__le16 tag;
--	__le16 len;
--	__le16 bcn_interval;
--	u8 enable;
--	u8 dtim_period;
--	u8 rsv[8];
--} __packed;
--
- struct bss_info_bmc_rate {
- 	__le16 tag;
- 	__le16 len;
-@@ -513,7 +504,7 @@ enum {
- 	BSS_INFO_LQ_RM,		/* obsoleted */
- 	BSS_INFO_EXT_BSS,
- 	BSS_INFO_BMC_RATE,	/* for bmc rate control in CR4 */
--	BSS_INFO_SYNC_MODE,
-+	BSS_INFO_SYNC_MODE,	/* obsoleted */
- 	BSS_INFO_RA,
- 	BSS_INFO_HW_AMSDU,
- 	BSS_INFO_BSS_COLOR,
+ 	spin_lock_bh(&dev->sta_poll_lock);
 -- 
 2.18.0
 _______________________________________________
