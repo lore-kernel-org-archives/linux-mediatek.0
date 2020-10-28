@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 44A43C388F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52787C55178
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:37:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2C0821D7B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:36:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 62C8120759
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2020 02:37:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zXZMKpeb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="e8M1rdia"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2C0821D7B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qOdh2QT1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62C8120759
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jV6Q6xi9GBeMcWERB6uH4iM9+nT+XE54kT5J8kVp4Cg=; b=zXZMKpebOdl53jWy/+LZM90sw
-	waNWrEzEMZytfHSgRpwo2obyIYySo9lxg0/7T8KdgVhQf81uefPZaaA/IklIMg8Lt+wl7xUQ/yln/
-	UU7zEZPSdXH0h57xA2Fx9w0kR/0qN/UYmF7JMMIQhns++znsS+yh/C8rYpRK8jhjyCEkaTC5w1IUF
-	oI7A8wjxYzmfHvradD/1rns0dP5+dkcZIyMVFPbNmJf3EDIis8e1l6lLx1v6q9ct/MVogAkqqqcuA
-	evk9O57WEPKPrEGQIr3024v/geA+MUOHZA1zBEaw8ZFphS2qtYmO/CLc/RYxo8dT6wxCiuwYJ0Hq0
-	bDvC1sDdQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hC8Ot5aQUCs/1M3K2M/2A0EFCQ4Vnj71X0GZW96OW+A=; b=qOdh2QT117z/kg35WMQEb8bUsF
+	846hHGQ8gIgIpkFPYXXVQj+2L0bUXMl3LRwwSOw4+DmmvtAr4Fsvpi/u2NfEnCGBp9IwCcNjDoG4x
+	3cy4awvTPZxgJuDCZk76lkfOwXGFkXAxUW4vKlvzLZq43M1GJGEo2PkwvUiXBRf+b5RxBxdElGQmg
+	fB40Abc+gx2f8w2kxLquTiwd7fZ8/EDn9O7bPHyjwGfUh4WT8TLKbcuCBUDu9Y/fNX9Ywfd1smtnW
+	lftE+1Dd7gKKM/6FCsJx/ObuJ6kKzApTcosIBjvp8L3I5SyOaCQOVoV38bwyvJyXvym+QupWdOiyz
+	DlLpx2Mw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXbKL-0007P9-Jh; Wed, 28 Oct 2020 02:36:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kXbL5-0007T4-Ur; Wed, 28 Oct 2020 02:37:27 +0000
+Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXbKJ-0007OW-Gy
- for linux-mediatek@lists.infradead.org; Wed, 28 Oct 2020 02:36:40 +0000
-X-UUID: 639ea52b40c943cfa4012422eb6570ae-20201027
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=gS+vCOJVy0cTZhMvsun++TDIhcVFUgj6QyhhmdyMrlw=; 
- b=e8M1rdiam4EM7/soOQQ6ZvhoIW9RAxn8VG5wtePhCxVue1p6AT0CL5GW7qJnLRAI5z5TnPgW8m9ErNyIryK2c87wP2A2wsGLZFchaSS6JkY9xBfTEbnpNz24LPAbscA1ZFoxqK/p3agH48egNW37MuFsaX9H/2Jv4GNiNFjTku0=;
-X-UUID: 639ea52b40c943cfa4012422eb6570ae-20201027
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 979950449; Tue, 27 Oct 2020 18:36:30 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Oct 2020 19:36:28 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Oct 2020 10:36:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 28 Oct 2020 10:36:15 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v2 2/2] mt76: mt7915: remove unused mt7915_mcu_bss_sync_tlv()
-Date: Wed, 28 Oct 2020 10:36:12 +0800
-Message-ID: <4e10985307260de60fea3fae0b6f41985136082c.1603852250.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <879705a8af8fa44c711feb3aa0351c1138aeef6c.1603852250.git.ryder.lee@mediatek.com>
-References: <879705a8af8fa44c711feb3aa0351c1138aeef6c.1603852250.git.ryder.lee@mediatek.com>
+ id 1kXbL1-0007SG-R8; Wed, 28 Oct 2020 02:37:25 +0000
+Authenticated-By: 
+X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 09S2axIW3006266,
+ This message is accepted by code: ctloc85258
+Received: from mail.realtek.com (rtexmb06.realtek.com.tw[172.21.6.99])
+ by rtits2.realtek.com.tw (8.15.2/2.70/5.88) with ESMTPS id 09S2axIW3006266
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Wed, 28 Oct 2020 10:36:59 +0800
+Received: from RTEXMBS03.realtek.com.tw (172.21.6.34) by
+ RTEXMB06.realtek.com.tw (172.21.6.99) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2044.4; Wed, 28 Oct 2020 10:36:59 +0800
+Received: from localhost.localdomain (172.21.132.186) by
+ RTEXMBS03.realtek.com.tw (172.21.6.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2106.2; Wed, 28 Oct 2020 10:36:58 +0800
+From: <max.chou@realtek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <matthias.bgg@gmail.com>
+Subject: [PATCH] Bluetooth: btusb: Add more IDs to usb_device_id table for
+ Realtek RTL8822CE
+Date: Wed, 28 Oct 2020 10:36:53 +0800
+Message-ID: <20201028023653.2760-1-max.chou@realtek.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: EA96F4C36EE8AD6D751C5B8BBFBEDAD095611E08581E41972959E8B1106401392000:8
-X-MTK: N
+X-Originating-IP: [172.21.132.186]
+X-ClientProxiedBy: RTEXMB03.realtek.com.tw (172.21.6.96) To
+ RTEXMBS03.realtek.com.tw (172.21.6.34)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201027_223639_713107_6FEB24C1 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20201027_223724_132908_327D8AAF 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,91 +77,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
- linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>
+Cc: josephsih@chromium.org, max.chou@realtek.com, kidman@realtek.com,
+ hildawu@realtek.com, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, alex_lu@realsil.com.cn,
+ linux-mediatek@lists.infradead.org, abhishekpandit@chromium.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7915_mcu_bss_sync_tlv() is no longer used, so remove it.
+From: Max Chou <max.chou@realtek.com>
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-v2 - modify a wrong operator
----
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 19 ++-----------------
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 11 +----------
- 2 files changed, 3 insertions(+), 27 deletions(-)
+Add more IDs to usb_device_id table for Realtek
+RTL8822CE and also support the wideband speech capability.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 18383dcdaf35..ed767b28aa86 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -938,20 +938,6 @@ mt7915_mcu_bss_bmc_tlv(struct sk_buff *skb, struct mt7915_phy *phy)
- 	}
- }
+Signed-off-by: Max Chou <max.chou@realtek.com>
+---
+ drivers/bluetooth/btusb.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 1005b6e8ff74..4a1f877616d6 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -425,8 +425,22 @@ static const struct usb_device_id blacklist_table[] = {
+ 	{ USB_DEVICE(0x0b05, 0x185c), .driver_info = BTUSB_REALTEK },
  
--static void
--mt7915_mcu_bss_sync_tlv(struct sk_buff *skb, struct ieee80211_vif *vif)
--{
--	struct bss_info_sync_mode *sync;
--	struct tlv *tlv;
--
--	tlv = mt7915_mcu_add_tlv(skb, BSS_INFO_SYNC_MODE, sizeof(*sync));
--
--	sync = (struct bss_info_sync_mode *)tlv;
--	sync->bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int);
--	sync->dtim_period = vif->bss_conf.dtim_period;
--	sync->enable = true;
--}
--
- static int
- mt7915_mcu_muar_config(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 		       bool bssid, bool enable)
-@@ -1019,9 +1005,8 @@ int mt7915_mcu_add_bss_info(struct mt7915_phy *phy,
- 		if (vif->bss_conf.he_support)
- 			mt7915_mcu_bss_he_tlv(skb, vif, phy);
+ 	/* Additional Realtek 8822CE Bluetooth devices */
+-	{ USB_DEVICE(0x04ca, 0x4005), .driver_info = BTUSB_REALTEK },
+-	{ USB_DEVICE(0x13d3, 0x3548), .driver_info = BTUSB_REALTEK },
++	{ USB_DEVICE(0x04ca, 0x4005), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x04c5, 0x161f), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0b05, 0x18ef), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3548), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3549), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3553), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3555), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x2ff8, 0x3051), .driver_info = BTUSB_REALTEK |
++						     BTUSB_WIDEBAND_SPEECH },
  
--		if (mvif->omac_idx < EXT_BSSID_START)
--			mt7915_mcu_bss_sync_tlv(skb, vif);
--		else if (mvif->omac_idx < REPEATER_BSSID_START)
-+		if (mvif->omac_idx >= EXT_BSSID_START &&
-+		    mvif->omac_idx < REPEATER_BSSID_START)
- 			mt7915_mcu_bss_ext_tlv(skb, mvif);
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 57446cd11c40..3e04a1f986cc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -387,15 +387,6 @@ struct bss_info_ext_bss {
- 	u8 rsv[8];
- } __packed;
- 
--struct bss_info_sync_mode {
--	__le16 tag;
--	__le16 len;
--	__le16 bcn_interval;
--	u8 enable;
--	u8 dtim_period;
--	u8 rsv[8];
--} __packed;
--
- struct bss_info_bmc_rate {
- 	__le16 tag;
- 	__le16 len;
-@@ -513,7 +504,7 @@ enum {
- 	BSS_INFO_LQ_RM,		/* obsoleted */
- 	BSS_INFO_EXT_BSS,
- 	BSS_INFO_BMC_RATE,	/* for bmc rate control in CR4 */
--	BSS_INFO_SYNC_MODE,
-+	BSS_INFO_SYNC_MODE,	/* obsoleted */
- 	BSS_INFO_RA,
- 	BSS_INFO_HW_AMSDU,
- 	BSS_INFO_BSS_COLOR,
+ 	/* Silicon Wave based devices */
+ 	{ USB_DEVICE(0x0c10, 0x0000), .driver_info = BTUSB_SWAVE },
 -- 
-2.18.0
+2.17.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
