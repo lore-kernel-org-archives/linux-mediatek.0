@@ -2,23 +2,22 @@ Return-Path: <SRS0=uLCs=EE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B886C4363A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 01:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F50EC388F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 02:55:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C4562075E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 01:27:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 786482076C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 02:55:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QvPjZTCe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aAlerXkC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C4562075E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OONdKA+j";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="f5C04r3k"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 786482076C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,52 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mofXm1nPbvGLukP+asG2UDL+NLnrJsdmTV4h4m3Xo1w=; b=QvPjZTCe0e71sazlIhrJQ7W2P
-	oIauaVtH3IdS6BSuktkPBowZO+Ed0FBxApSZgoaKC2TgAFr9flx8Gw7qKkyfS8u+YrHckLdafINI6
-	n3nO29t9DBAaxLiCh4PV6YwYtPq6OK0VJ4vOxLOpp5LCTBiaYxkytHfIL0sSsrpz2cUOFu/DnaeF6
-	kq2Pmzx1C98y4WFFgixgYAWffQ3ioPZUb3QHgNrI9jm9Dw83Qkbj07A9ULTuu/GzVrzd7QJ9NigZ8
-	TW+SofELDGqffaQnzII2PaCVArCU08/ZO9m5ofcBnIbwenS2/xAx7EMQjskfDlaIjzBzZmO4FbjPy
-	wR/qBpkCA==;
+	 bh=xF0AzAyK3viuGuymeR+qyakqJs7rbYaMOJdv+TZHrm0=; b=OONdKA+j985CVZ5tqy249btpq
+	Cx3zyQFnyRgg1gl+uMexQHXibJwg2hYLuCrEkTKmm/byiV1nkydpfT/3j9nzeI4FrRHPrh7vW4VAn
+	khMk80LNTD2mpgThejLPVQF5FGnxmEf9fI5DBxvlQvZHMZYnsv0hpXtQ7BkNnqOggX0j7Rw+bYfTb
+	YKGeovPAW8ignz7zssCLX2QeEiVtT0zZj/rIREPrzHOv9mJPCdZd3w1KuLE/RJ5ki1SPNYOz0rdWT
+	ibRrbrXf9dFP72xkp4F6cSbgcFbB9XOFDiBflWurukJ07DddXKDXWHQopigkmFqAgXGzwNReqsvQa
+	zhvex8uqQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXwj7-00039G-Bn; Thu, 29 Oct 2020 01:27:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kXy6F-0001g2-UK; Thu, 29 Oct 2020 02:55:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXwj5-00038m-SK; Thu, 29 Oct 2020 01:27:40 +0000
-X-UUID: 338503d637db42a5a3c45cc4155d6edd-20201028
+ id 1kXy6B-0001ed-Oy; Thu, 29 Oct 2020 02:55:37 +0000
+X-UUID: 22e1ca956f864afa81e11e56301e1992-20201028
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=twT+r5b5fxyEgKPFMU6gXc8bZs5Mwk3ZxfFWSI7c33Q=; 
- b=aAlerXkCRKGEwbQ8NukTm+uRpER7Li4/ilkfZdfczcduNVEmyC5M8ZgnftIT3jpEtw4tyeWcNn7X4qgJg/BEGRgDTKvPcErgFy3JoHMlV3D7iqseVSV/KAWx4t0nGDTEzJfRrbxuyUEPzZrZPi4gKuv/xHlATLae3bcm05BNCPI=;
-X-UUID: 338503d637db42a5a3c45cc4155d6edd-20201028
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <irui.wang@mediatek.com>)
+ bh=cEM1LWDBi2N7/5hyjwmoorAI0e6rVfo41SEmYG6o+0E=; 
+ b=f5C04r3kVSAk52EiZN2jfVbGRNhd73ygw5Rgkejo7Kq4EmrllKJu1WyrP9qmAsSQ89JYaeO0kF0OGi6MfRckoElUpe4wFEtXjfZZqgUYWy0hRobpeqahQS8KISQ7ji1jLHM6Qabg5FWmfRnHCIhj1EJPua7l+aZ7uCUHtWdNaWg=;
+X-UUID: 22e1ca956f864afa81e11e56301e1992-20201028
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1574167956; Wed, 28 Oct 2020 17:27:35 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Oct 2020 18:17:33 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Oct 2020 09:17:31 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ with ESMTP id 1858679838; Wed, 28 Oct 2020 18:55:27 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Oct 2020 19:55:25 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Oct 2020 10:55:22 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Oct 2020 09:17:30 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: <hverkuil@xs4all.nl>, <acourbot@chromium.org>, <mchehab@kernel.org>,
- <matthias.bgg@gmail.com>
-Subject: [PATCH 2/2] media: mtk-vpu: dump VPU status when IPI times out
-Date: Thu, 29 Oct 2020 09:17:21 +0800
-Message-ID: <20201029011721.6705-2-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201029011721.6705-1-irui.wang@mediatek.com>
-References: <20201029011721.6705-1-irui.wang@mediatek.com>
+ Transport; Thu, 29 Oct 2020 10:55:20 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
+Subject: [PATCH 02/17] phy: amlogic: convert to devm_platform_ioremap_resource
+Date: Thu, 29 Oct 2020 10:54:24 +0800
+Message-ID: <1603940079-8131-2-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 2A5C93524AEAEF77FF4004B70ABFA4DD214476DFA35D26D8AC7DF7AAF039F51D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201028_212740_047775_76E1755C 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20201028_225536_007488_C2418278 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,114 +83,161 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT.Chen@mediatek.com, Maoguang.Meng@mediatek.com,
- srv_heupstream@mediatek.com, irui.wang@mediatek.com, Yunfei.Dong@mediatek.com,
- erin.lo@mediatek.com, Longfei.Wang@mediatek.com, linux-kernel@vger.kernel.org,
- houlong.wei@mediatek.com, linux-mediatek@lists.infradead.org,
- PoChun.Lin@mediatek.com, hsinyi@google.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Ondrej Jirman <megous@megous.com>, Peter Chen <peter.chen@nxp.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, Anil Varughese <aniljoy@cadence.com>,
+ Wei Yongjun <weiyongjun1@huawei.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Kevin
+ Hilman <khilman@baylibre.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Rayagonda Kokatanur <rayagonda.kokatanur@broadcom.com>,
+ Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com,
+ NXP Linux Team <linux-imx@nxp.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Icenowy Zheng <icenowy@aosc.io>, Bharat Gooty <bharat.gooty@broadcom.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Maxime Ripard <mripard@kernel.org>, Yue Wang <yue.wang@amlogic.com>,
+ Lubomir Rintel <lkundrak@v3.sk>, Remi Pommarel <repk@triplefau.lt>,
+ linux-mediatek@lists.infradead.org,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Roger
+ Quadros <rogerq@ti.com>, Hanjie Lin <hanjie.lin@amlogic.com>,
+ Ma Feng <mafeng.ma@huawei.com>, Scott
+ Branden <sbranden@broadcom.com>, Randy Dunlap <rdunlap@infradead.org>,
+ Jyri Sarha <jsarha@ti.com>, linux-kernel@vger.kernel.org,
+ Sanket Parmar <sparmar@cadence.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Joe Perches <joe@perches.com>,
+ Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
+ Li Jun <jun.li@nxp.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-when IPI time out, dump VPU status to get more debug information
+Use devm_platform_ioremap_resource to simplify code
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/media/platform/mtk-vpu/mtk_vpu.c | 33 +++++++++++++++++++++---
- 1 file changed, 29 insertions(+), 4 deletions(-)
+ drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c | 4 +---
+ drivers/phy/amlogic/phy-meson-axg-pcie.c             | 4 +---
+ drivers/phy/amlogic/phy-meson-g12a-usb2.c            | 4 +---
+ drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c       | 4 +---
+ drivers/phy/amlogic/phy-meson-gxl-usb2.c             | 4 +---
+ 5 files changed, 5 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-index 86ab808ba877..043894f7188c 100644
---- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-@@ -61,6 +61,8 @@
- #define VPU_IDLE_REG		0x002C
- #define VPU_INT_STATUS		0x0034
- #define VPU_PC_REG		0x0060
-+#define VPU_SP_REG		0x0064
-+#define VPU_RA_REG		0x0068
- #define VPU_WDT_REG		0x0084
- 
- /* vpu inter-processor communication interrupt */
-@@ -268,6 +270,20 @@ static int vpu_clock_enable(struct mtk_vpu *vpu)
- 	return ret;
- }
- 
-+static void vpu_dump_status(struct mtk_vpu *vpu)
-+{
-+	dev_info(vpu->dev,
-+		 "vpu: run %x, pc = 0x%x, ra = 0x%x, sp = 0x%x, idle = 0x%x\n"
-+		 "vpu: int %x, hv = 0x%x, vh = 0x%x, wdt = 0x%x\n",
-+		 vpu_running(vpu), vpu_cfg_readl(vpu, VPU_PC_REG),
-+		 vpu_cfg_readl(vpu, VPU_RA_REG), vpu_cfg_readl(vpu, VPU_SP_REG),
-+		 vpu_cfg_readl(vpu, VPU_IDLE_REG),
-+		 vpu_cfg_readl(vpu, VPU_INT_STATUS),
-+		 vpu_cfg_readl(vpu, HOST_TO_VPU),
-+		 vpu_cfg_readl(vpu, VPU_TO_HOST),
-+		 vpu_cfg_readl(vpu, VPU_WDT_REG));
-+}
-+
- int vpu_ipi_register(struct platform_device *pdev,
- 		     enum ipi_id id, ipi_handler_t handler,
- 		     const char *name, void *priv)
-@@ -328,6 +344,7 @@ int vpu_ipi_send(struct platform_device *pdev,
- 		if (time_after(jiffies, timeout)) {
- 			dev_err(vpu->dev, "vpu_ipi_send: IPI timeout!\n");
- 			ret = -EIO;
-+			vpu_dump_status(vpu);
- 			goto mut_unlock;
- 		}
- 	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
-@@ -347,8 +364,9 @@ int vpu_ipi_send(struct platform_device *pdev,
- 	ret = wait_event_timeout(vpu->ack_wq, vpu->ipi_id_ack[id], timeout);
- 	vpu->ipi_id_ack[id] = false;
- 	if (ret == 0) {
--		dev_err(vpu->dev, "vpu ipi %d ack time out !", id);
-+		dev_err(vpu->dev, "vpu ipi %d ack time out !\n", id);
- 		ret = -EIO;
-+		vpu_dump_status(vpu);
- 		goto clock_disable;
- 	}
- 	vpu_clock_disable(vpu);
-@@ -633,7 +651,7 @@ static ssize_t vpu_debug_read(struct file *file, char __user *user_buf,
- {
- 	char buf[256];
- 	unsigned int len;
--	unsigned int running, pc, vpu_to_host, host_to_vpu, wdt;
-+	unsigned int running, pc, vpu_to_host, host_to_vpu, wdt, idle, ra, sp;
+diff --git a/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c b/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
+index 1431cbf885e1..7d06cda329fb 100644
+--- a/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
++++ b/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
+@@ -126,7 +126,6 @@ static int phy_axg_mipi_pcie_analog_probe(struct platform_device *pdev)
+ 	struct phy_axg_mipi_pcie_analog_priv *priv;
+ 	struct device_node *np = dev->of_node;
+ 	struct regmap *map;
+-	struct resource *res;
+ 	void __iomem *base;
  	int ret;
- 	struct device *dev = file->private_data;
- 	struct mtk_vpu *vpu = dev_get_drvdata(dev);
-@@ -650,6 +668,10 @@ static ssize_t vpu_debug_read(struct file *file, char __user *user_buf,
- 	wdt = vpu_cfg_readl(vpu, VPU_WDT_REG);
- 	host_to_vpu = vpu_cfg_readl(vpu, HOST_TO_VPU);
- 	vpu_to_host = vpu_cfg_readl(vpu, VPU_TO_HOST);
-+	ra = vpu_cfg_readl(vpu, VPU_RA_REG);
-+	sp = vpu_cfg_readl(vpu, VPU_SP_REG);
-+	idle = vpu_cfg_readl(vpu, VPU_IDLE_REG);
-+
- 	vpu_clock_disable(vpu);
  
- 	if (running) {
-@@ -658,9 +680,12 @@ static ssize_t vpu_debug_read(struct file *file, char __user *user_buf,
- 		"PC: 0x%x\n"
- 		"WDT: 0x%x\n"
- 		"Host to VPU: 0x%x\n"
--		"VPU to Host: 0x%x\n",
-+		"VPU to Host: 0x%x\n"
-+		"SP: 0x%x\n"
-+		"RA: 0x%x\n"
-+		"idle: 0x%x\n",
- 		vpu->run.fw_ver, pc, wdt,
--		host_to_vpu, vpu_to_host);
-+		host_to_vpu, vpu_to_host, sp, ra, idle);
- 	} else {
- 		len = snprintf(buf, sizeof(buf), "VPU not running\n");
+@@ -134,8 +133,7 @@ static int phy_axg_mipi_pcie_analog_probe(struct platform_device *pdev)
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base)) {
+ 		dev_err(dev, "failed to get regmap base\n");
+ 		return PTR_ERR(base);
+diff --git a/drivers/phy/amlogic/phy-meson-axg-pcie.c b/drivers/phy/amlogic/phy-meson-axg-pcie.c
+index 377ed0dcd0d9..58a7507a8422 100644
+--- a/drivers/phy/amlogic/phy-meson-axg-pcie.c
++++ b/drivers/phy/amlogic/phy-meson-axg-pcie.c
+@@ -129,7 +129,6 @@ static int phy_axg_pcie_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct phy_axg_pcie_priv *priv;
+ 	struct device_node *np = dev->of_node;
+-	struct resource *res;
+ 	void __iomem *base;
+ 	int ret;
+ 
+@@ -145,8 +144,7 @@ static int phy_axg_pcie_probe(struct platform_device *pdev)
+ 		return ret;
  	}
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+diff --git a/drivers/phy/amlogic/phy-meson-g12a-usb2.c b/drivers/phy/amlogic/phy-meson-g12a-usb2.c
+index b26e30e1afaf..9d1efa0d9394 100644
+--- a/drivers/phy/amlogic/phy-meson-g12a-usb2.c
++++ b/drivers/phy/amlogic/phy-meson-g12a-usb2.c
+@@ -292,7 +292,6 @@ static int phy_meson_g12a_usb2_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct phy_provider *phy_provider;
+-	struct resource *res;
+ 	struct phy_meson_g12a_usb2_priv *priv;
+ 	struct phy *phy;
+ 	void __iomem *base;
+@@ -305,8 +304,7 @@ static int phy_meson_g12a_usb2_probe(struct platform_device *pdev)
+ 	priv->dev = dev;
+ 	platform_set_drvdata(pdev, priv);
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+diff --git a/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c b/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
+index 08e322789e59..ebe3d0ddd304 100644
+--- a/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
++++ b/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
+@@ -386,7 +386,6 @@ static int phy_g12a_usb3_pcie_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct phy_g12a_usb3_pcie_priv *priv;
+-	struct resource *res;
+ 	struct phy_provider *phy_provider;
+ 	void __iomem *base;
+ 	int ret;
+@@ -395,8 +394,7 @@ static int phy_g12a_usb3_pcie_probe(struct platform_device *pdev)
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb2.c b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+index 43ec9bf24abf..875afb2672c7 100644
+--- a/drivers/phy/amlogic/phy-meson-gxl-usb2.c
++++ b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+@@ -230,7 +230,6 @@ static int phy_meson_gxl_usb2_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct phy_provider *phy_provider;
+-	struct resource *res;
+ 	struct phy_meson_gxl_usb2_priv *priv;
+ 	struct phy *phy;
+ 	void __iomem *base;
+@@ -242,8 +241,7 @@ static int phy_meson_gxl_usb2_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, priv);
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
 -- 
-2.25.1
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
