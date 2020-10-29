@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 441E1C4363A
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 362F4C388F7
 	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 03:00:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B4DD220780
+	by mail.kernel.org (Postfix) with ESMTPS id 986DF206B6
 	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 03:00:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PJ0wdye4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OfXUebKs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4DD220780
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KUxdoC8l";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="t/Ye8pPF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 986DF206B6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gs0gmNy+O//3p74TI4cNY4tr/RzS1+rWj0Kr6mjqxY0=; b=PJ0wdye41rvLg7VSKNqPtiNU2
-	sdG8ILvIVcXXHJsIfagBgwIHqcuHqdXY5GCRLmRntUbAXEsA9epZW3BnGF9XAwqBww7WSRcv6cZ99
-	2dHUAPjn/p7/iuD2FVkoCo8YrX4wFqu8roE/dY5Vq+CgQRRYLkkrWK03jM1LsP4FhRiZGmF2Ye+ad
-	h39T9nSsbzpK0cCnAmg64muH/qtVJ6vCVwxG7dkDXkRaQPirktX4S1nnNe6tAN5Xj/00SSyuEBGdH
-	997ac+cEKi2Ym6mJ7rKFN2iql8ul4WHPDWKhtcKHx/fWB0l51rFV1Bg52NqHD5YP1FLExNrYTccno
-	sJetKiZwA==;
+	 bh=njLHhUdKBLWR2EXhntDHacCV/Xt7TYxd17kk/XNwcK4=; b=KUxdoC8lbKyq22gjoBSbbBIHo
+	rII5VjJjyl1kurdICY/fdFi2lEZ8qArbZNDICrzPRkWAPMFD1U2og7Iy5Ewjehl16s7nfY5WEOvt0
+	+KUSImzGp+LU92lqF7ECS+VlXe1ool4G2d0iTdqf+uYv57QbkuRS0xjmNFWOBLO/sDKGzxUft/YA6
+	O0Nw97yFS6Z5ehGvs3AhPBWrxZwcNKJpIF6N3NJk2hp78B0YrSqwqen+YAAL1TqLpTWyrtKCfWoAV
+	yIAU+jQxd0YGtN3fiBbkiUUpOts20saUiwE5XG6nLQPgHoh2T0HZnf9juB2FTZovXdzvAlu3iHyyN
+	PemehWZ3g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXyAN-0002jy-Rl; Thu, 29 Oct 2020 02:59:55 +0000
+	id 1kXyAO-0002kW-MM; Thu, 29 Oct 2020 02:59:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXy9e-0002Ob-Oo; Thu, 29 Oct 2020 02:59:14 +0000
-X-UUID: 094fbf20b79c4f8d8a3a7224bcc71622-20201028
+ id 1kXy9e-0002Oi-P2; Thu, 29 Oct 2020 02:59:15 +0000
+X-UUID: f94462e808ae497f86e791292cca52d1-20201028
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=4DoLPnUex0E3/Q0LMotVGJitdPo5IhDbP2YK9c+o3+g=; 
- b=OfXUebKs0qBjsYjb4feT4efD1AZuUt4G1OuRaQ8arnZ9g3YTA1PNw6QxkiSp6hW3y/R+V5wBz/726/LEZexuWjG1w9TavV5SZMukm9KUl+aqNkJMz+Vw6Bcva1Uhh0gZo+KPEYQ2VkQ2T/epcl2sHYHt9b2QZz74tNGxsxJNarI=;
-X-UUID: 094fbf20b79c4f8d8a3a7224bcc71622-20201028
+ bh=2yglO2+Fw9yrkCr6zLS67+gi/jATwblG8RbFe/ClajA=; 
+ b=t/Ye8pPFdAPOhPhmv18iDkFY8HVxvbAyX5N5etFuDk6jlRpTw1DEE9AEY8+X3gfLlp+T2MGk/ZyEhS1pCa3FJWoz/1E+TBGV1yBP/6njsu53Iv9hRnnuhEqqe2Du0PmGjzBTqeBNEDXSnS0y3nrRf+D+UimGCF8VSEliA2LSBHg=;
+X-UUID: f94462e808ae497f86e791292cca52d1-20201028
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1379429313; Wed, 28 Oct 2020 18:59:04 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 1384615871; Wed, 28 Oct 2020 18:59:04 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Oct 2020 19:55:37 -0700
+ 15.0.1497.2; Wed, 28 Oct 2020 19:55:34 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Oct 2020 10:55:33 +0800
+ MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Oct 2020 10:55:25 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Oct 2020 10:55:32 +0800
+ Transport; Thu, 29 Oct 2020 10:55:23 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH 05/17] phy: freescale: convert to
- devm_platform_ioremap_resource
-Date: Thu, 29 Oct 2020 10:54:27 +0800
-Message-ID: <1603940079-8131-5-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 03/17] phy: broadcom: convert to
+ devm_platform_ioremap_resource(_byname)
+Date: Thu, 29 Oct 2020 10:54:25 +0800
+Message-ID: <1603940079-8131-3-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5A06FF3E0DE660FC193962D069AF9D56BC008A2D346E09192A690E95A2C6EEA72000:8
+X-TM-SNTS-SMTP: 9711090682E4990AAE49B6CF90781ECCEAD14381B3DB1D43AAF43C5A4AAAC73D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201028_225911_011708_E9CE2A94 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20201028_225911_037356_DE2BEBE3 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,8 +86,8 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Ondrej Jirman <megous@megous.com>, Peter Chen <peter.chen@nxp.com>,
- Neil Armstrong <narmstrong@baylibre.com>, Anil Varughese <aniljoy@cadence.com>,
- Wei Yongjun <weiyongjun1@huawei.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, Al Cooper <alcooperx@gmail.com>,
+ Anil Varughese <aniljoy@cadence.com>, Wei Yongjun <weiyongjun1@huawei.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
  Florian Fainelli <f.fainelli@gmail.com>, Kevin
@@ -117,58 +117,233 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use devm_platform_ioremap_resource to simplify code
+Use devm_platform_ioremap_resource(_byname) to simplify code
 
+Cc: Al Cooper <alcooperx@gmail.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/freescale/phy-fsl-imx8-mipi-dphy.c | 4 +---
- drivers/phy/freescale/phy-fsl-imx8mq-usb.c     | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+ drivers/phy/broadcom/phy-bcm-cygnus-pcie.c |  4 +---
+ drivers/phy/broadcom/phy-bcm-kona-usb2.c   |  4 +---
+ drivers/phy/broadcom/phy-bcm-ns-usb2.c     |  4 +---
+ drivers/phy/broadcom/phy-bcm-ns-usb3.c     |  7 ++-----
+ drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c  | 13 ++++---------
+ drivers/phy/broadcom/phy-bcm-sr-pcie.c     |  5 +----
+ drivers/phy/broadcom/phy-bcm-sr-usb.c      |  4 +---
+ drivers/phy/broadcom/phy-brcm-sata.c       |  8 ++------
+ 8 files changed, 13 insertions(+), 36 deletions(-)
 
-diff --git a/drivers/phy/freescale/phy-fsl-imx8-mipi-dphy.c b/drivers/phy/freescale/phy-fsl-imx8-mipi-dphy.c
-index 9f2c1da14f5a..a95572b397ca 100644
---- a/drivers/phy/freescale/phy-fsl-imx8-mipi-dphy.c
-+++ b/drivers/phy/freescale/phy-fsl-imx8-mipi-dphy.c
-@@ -434,7 +434,6 @@ static int mixel_dphy_probe(struct platform_device *pdev)
- 	struct device_node *np = dev->of_node;
- 	struct phy_provider *phy_provider;
- 	struct mixel_dphy_priv *priv;
+diff --git a/drivers/phy/broadcom/phy-bcm-cygnus-pcie.c b/drivers/phy/broadcom/phy-bcm-cygnus-pcie.c
+index b074682d9dd8..548e46776100 100644
+--- a/drivers/phy/broadcom/phy-bcm-cygnus-pcie.c
++++ b/drivers/phy/broadcom/phy-bcm-cygnus-pcie.c
+@@ -126,7 +126,6 @@ static int cygnus_pcie_phy_probe(struct platform_device *pdev)
+ 	struct device_node *node = dev->of_node, *child;
+ 	struct cygnus_pcie_phy_core *core;
+ 	struct phy_provider *provider;
 -	struct resource *res;
- 	struct phy *phy;
- 	void __iomem *base;
+ 	unsigned cnt = 0;
+ 	int ret;
  
-@@ -449,8 +448,7 @@ static int mixel_dphy_probe(struct platform_device *pdev)
- 	if (!priv->devdata)
- 		return -EINVAL;
+@@ -141,8 +140,7 @@ static int cygnus_pcie_phy_probe(struct platform_device *pdev)
+ 
+ 	core->dev = dev;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	base = devm_ioremap_resource(dev, res);
-+	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
+-	core->base = devm_ioremap_resource(dev, res);
++	core->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(core->base))
+ 		return PTR_ERR(core->base);
  
-diff --git a/drivers/phy/freescale/phy-fsl-imx8mq-usb.c b/drivers/phy/freescale/phy-fsl-imx8mq-usb.c
-index 62d6d6849ad6..0b9ee2b1716f 100644
---- a/drivers/phy/freescale/phy-fsl-imx8mq-usb.c
-+++ b/drivers/phy/freescale/phy-fsl-imx8mq-usb.c
-@@ -152,7 +152,6 @@ static int imx8mq_usb_phy_probe(struct platform_device *pdev)
- 	struct phy_provider *phy_provider;
+diff --git a/drivers/phy/broadcom/phy-bcm-kona-usb2.c b/drivers/phy/broadcom/phy-bcm-kona-usb2.c
+index 6459296d9bf9..e9cc5f2cb89a 100644
+--- a/drivers/phy/broadcom/phy-bcm-kona-usb2.c
++++ b/drivers/phy/broadcom/phy-bcm-kona-usb2.c
+@@ -94,7 +94,6 @@ static int bcm_kona_usb2_probe(struct platform_device *pdev)
+ {
  	struct device *dev = &pdev->dev;
- 	struct imx8mq_usb_phy *imx_phy;
+ 	struct bcm_kona_usb *phy;
 -	struct resource *res;
- 	const struct phy_ops *phy_ops;
+ 	struct phy *gphy;
+ 	struct phy_provider *phy_provider;
  
- 	imx_phy = devm_kzalloc(dev, sizeof(*imx_phy), GFP_KERNEL);
-@@ -165,8 +164,7 @@ static int imx8mq_usb_phy_probe(struct platform_device *pdev)
- 		return PTR_ERR(imx_phy->clk);
+@@ -102,8 +101,7 @@ static int bcm_kona_usb2_probe(struct platform_device *pdev)
+ 	if (!phy)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	phy->regs = devm_ioremap_resource(&pdev->dev, res);
++	phy->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(phy->regs))
+ 		return PTR_ERR(phy->regs);
+ 
+diff --git a/drivers/phy/broadcom/phy-bcm-ns-usb2.c b/drivers/phy/broadcom/phy-bcm-ns-usb2.c
+index 9f2f84d65dcd..4b015b8a71c3 100644
+--- a/drivers/phy/broadcom/phy-bcm-ns-usb2.c
++++ b/drivers/phy/broadcom/phy-bcm-ns-usb2.c
+@@ -83,7 +83,6 @@ static int bcm_ns_usb2_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct bcm_ns_usb2 *usb2;
+-	struct resource *res;
+ 	struct phy_provider *phy_provider;
+ 
+ 	usb2 = devm_kzalloc(&pdev->dev, sizeof(*usb2), GFP_KERNEL);
+@@ -91,8 +90,7 @@ static int bcm_ns_usb2_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	usb2->dev = dev;
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dmu");
+-	usb2->dmu = devm_ioremap_resource(dev, res);
++	usb2->dmu = devm_platform_ioremap_resource_byname(pdev, "dmu");
+ 	if (IS_ERR(usb2->dmu)) {
+ 		dev_err(dev, "Failed to map DMU regs\n");
+ 		return PTR_ERR(usb2->dmu);
+diff --git a/drivers/phy/broadcom/phy-bcm-ns-usb3.c b/drivers/phy/broadcom/phy-bcm-ns-usb3.c
+index 47b029fbebbd..42baf4d6dd5d 100644
+--- a/drivers/phy/broadcom/phy-bcm-ns-usb3.c
++++ b/drivers/phy/broadcom/phy-bcm-ns-usb3.c
+@@ -305,7 +305,6 @@ static int bcm_ns_usb3_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	const struct of_device_id *of_id;
+ 	struct bcm_ns_usb3 *usb3;
+-	struct resource *res;
+ 	struct phy_provider *phy_provider;
+ 
+ 	usb3 = devm_kzalloc(dev, sizeof(*usb3), GFP_KERNEL);
+@@ -319,15 +318,13 @@ static int bcm_ns_usb3_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	usb3->family = (enum bcm_ns_family)of_id->data;
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dmp");
+-	usb3->dmp = devm_ioremap_resource(dev, res);
++	usb3->dmp = devm_platform_ioremap_resource_byname(pdev, "dmp");
+ 	if (IS_ERR(usb3->dmp)) {
+ 		dev_err(dev, "Failed to map DMP regs\n");
+ 		return PTR_ERR(usb3->dmp);
  	}
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	imx_phy->base = devm_ioremap_resource(dev, res);
-+	imx_phy->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(imx_phy->base))
- 		return PTR_ERR(imx_phy->base);
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ccb-mii");
+-	usb3->ccb_mii = devm_ioremap_resource(dev, res);
++	usb3->ccb_mii = devm_platform_ioremap_resource_byname(pdev, "ccb-mii");
+ 	if (IS_ERR(usb3->ccb_mii)) {
+ 		dev_err(dev, "Failed to map ChipCommon B MII regs\n");
+ 		return PTR_ERR(usb3->ccb_mii);
+diff --git a/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c b/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
+index 9630ac127366..65a399acc845 100644
+--- a/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
++++ b/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
+@@ -293,7 +293,6 @@ static int ns2_drd_phy_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct ns2_phy_driver *driver;
+ 	struct ns2_phy_data *data;
+-	struct resource *res;
+ 	int ret;
+ 	u32 val;
  
+@@ -307,23 +306,19 @@ static int ns2_drd_phy_probe(struct platform_device *pdev)
+ 	if (!driver->data)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "icfg");
+-	driver->icfgdrd_regs = devm_ioremap_resource(dev, res);
++	driver->icfgdrd_regs = devm_platform_ioremap_resource_byname(pdev, "icfg");
+ 	if (IS_ERR(driver->icfgdrd_regs))
+ 		return PTR_ERR(driver->icfgdrd_regs);
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "rst-ctrl");
+-	driver->idmdrd_rst_ctrl = devm_ioremap_resource(dev, res);
++	driver->idmdrd_rst_ctrl = devm_platform_ioremap_resource_byname(pdev, "rst-ctrl");
+ 	if (IS_ERR(driver->idmdrd_rst_ctrl))
+ 		return PTR_ERR(driver->idmdrd_rst_ctrl);
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "crmu-ctrl");
+-	driver->crmu_usb2_ctrl = devm_ioremap_resource(dev, res);
++	driver->crmu_usb2_ctrl = devm_platform_ioremap_resource_byname(pdev, "crmu-ctrl");
+ 	if (IS_ERR(driver->crmu_usb2_ctrl))
+ 		return PTR_ERR(driver->crmu_usb2_ctrl);
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "usb2-strap");
+-	driver->usb2h_strap_reg = devm_ioremap_resource(dev, res);
++	driver->usb2h_strap_reg = devm_platform_ioremap_resource_byname(pdev, "usb2-strap");
+ 	if (IS_ERR(driver->usb2h_strap_reg))
+ 		return PTR_ERR(driver->usb2h_strap_reg);
+ 
+diff --git a/drivers/phy/broadcom/phy-bcm-sr-pcie.c b/drivers/phy/broadcom/phy-bcm-sr-pcie.c
+index 96a3af126a78..8a4aadf166cf 100644
+--- a/drivers/phy/broadcom/phy-bcm-sr-pcie.c
++++ b/drivers/phy/broadcom/phy-bcm-sr-pcie.c
+@@ -217,7 +217,6 @@ static int sr_pcie_phy_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node = dev->of_node;
+ 	struct sr_pcie_phy_core *core;
+-	struct resource *res;
+ 	struct phy_provider *provider;
+ 	unsigned int phy_idx = 0;
+ 
+@@ -226,9 +225,7 @@ static int sr_pcie_phy_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	core->dev = dev;
+-
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	core->base = devm_ioremap_resource(core->dev, res);
++	core->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(core->base))
+ 		return PTR_ERR(core->base);
+ 
+diff --git a/drivers/phy/broadcom/phy-bcm-sr-usb.c b/drivers/phy/broadcom/phy-bcm-sr-usb.c
+index c3e99ad17487..0002da3b5b5d 100644
+--- a/drivers/phy/broadcom/phy-bcm-sr-usb.c
++++ b/drivers/phy/broadcom/phy-bcm-sr-usb.c
+@@ -300,14 +300,12 @@ static int bcm_usb_phy_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *dn = dev->of_node;
+ 	const struct of_device_id *of_id;
+-	struct resource *res;
+ 	void __iomem *regs;
+ 	int ret;
+ 	enum bcm_usb_phy_version version;
+ 	struct phy_provider *phy_provider;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	regs = devm_ioremap_resource(dev, res);
++	regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(regs))
+ 		return PTR_ERR(regs);
+ 
+diff --git a/drivers/phy/broadcom/phy-brcm-sata.c b/drivers/phy/broadcom/phy-brcm-sata.c
+index 18251f232172..53942973f508 100644
+--- a/drivers/phy/broadcom/phy-brcm-sata.c
++++ b/drivers/phy/broadcom/phy-brcm-sata.c
+@@ -726,7 +726,6 @@ static int brcm_sata_phy_probe(struct platform_device *pdev)
+ 	struct device_node *dn = dev->of_node, *child;
+ 	const struct of_device_id *of_id;
+ 	struct brcm_sata_phy *priv;
+-	struct resource *res;
+ 	struct phy_provider *provider;
+ 	int ret, count = 0;
+ 
+@@ -739,8 +738,7 @@ static int brcm_sata_phy_probe(struct platform_device *pdev)
+ 	dev_set_drvdata(dev, priv);
+ 	priv->dev = dev;
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "phy");
+-	priv->phy_base = devm_ioremap_resource(dev, res);
++	priv->phy_base = devm_platform_ioremap_resource_byname(pdev, "phy");
+ 	if (IS_ERR(priv->phy_base))
+ 		return PTR_ERR(priv->phy_base);
+ 
+@@ -751,9 +749,7 @@ static int brcm_sata_phy_probe(struct platform_device *pdev)
+ 		priv->version = BRCM_SATA_PHY_STB_28NM;
+ 
+ 	if (priv->version == BRCM_SATA_PHY_IPROC_NS2) {
+-		res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
+-						   "phy-ctrl");
+-		priv->ctrl_base = devm_ioremap_resource(dev, res);
++		priv->ctrl_base = devm_platform_ioremap_resource_byname(pdev, "phy-ctrl");
+ 		if (IS_ERR(priv->ctrl_base))
+ 			return PTR_ERR(priv->ctrl_base);
+ 	}
 -- 
 2.18.0
 _______________________________________________
