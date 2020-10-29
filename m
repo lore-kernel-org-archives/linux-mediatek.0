@@ -8,70 +8,72 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86DEFC4363A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 03:04:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05F60C388F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 03:04:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 06F8E20780
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 03:04:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8A55B20780
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 03:04:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dq6udoz1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TWCTJihb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 06F8E20780
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0AbhM0/Q";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VtvD9CVe"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A55B20780
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mukCJwmyQ4z4MD8M6JOuylx/PRwB1hISJmVLgNySvHg=; b=dq6udoz1caAw24VCO6T1QE+y2d
-	ZwC3N9SY6lynf//YJ5UC2Lzl2kGVzogYHXjpmk/ujZTEIAIQYjNjBgQK9nTU+ln7y/leWl+thMxM0
-	qQCnNp+j7UIH690y/AY9vtjaYH+Df45deYApqQZOuVlp9LxEB75LV0+Owvp0pk0HcIzI+y6A4Wcf0
-	bJQSVHjEWp+yrdl5hq6S3FfLTIoIwVZmhEqfS/hYzm6tT7vo8hZhp/yPhZkmCbtFsTinPiY3+o3iF
-	9ULsvdey05D+aMeSy5i5Gykfu7VHOOV2a201fCQBrdl6O4dJv30nwLeW70JiPR8rOW8jg60OR8US3
-	1yxYa1Lw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=5WHiCAfFuDs6ZD/EWMxc0+8+DqR7TIDt2Q13rPpsn9M=; b=0AbhM0/QG3YwjMMwOzOsM9r+X
+	UfPa+uzGTWIp9oCb5vUnNXmnu0GaVEhTd+ofrqDC093+XF1Ji7vOD3DZrvwRYAs6yP7BJAFjFyIBU
+	7PjfhHYoU1bkOoYbFRFJwT+qOjOM9AVe//hy2zqzvienx1OgcUW/ZpOJfcghuXpTWk1vvxlXhxxMP
+	ViMfFrdRjmrZ9scF1VUiBUhCijkfBXj0QQeCDcKCFzfCcGB227rzl6/zjg1G9oAtBFOP+/UqDTqlQ
+	k8r12LZT1NIZE1kOII8+q1JAQP+iFmUH6hm1usLc/7prbVAiAUjMl+0mheJHepevMCnQkQsobGFLK
+	k3h/jj7fQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXyEn-0004gl-IH; Thu, 29 Oct 2020 03:04:29 +0000
+	id 1kXyEu-0004k3-Uo; Thu, 29 Oct 2020 03:04:37 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXyD5-0003t4-RW; Thu, 29 Oct 2020 03:02:46 +0000
-X-UUID: 97e439c4d1d3417abbd8bc83a5bdf587-20201028
+ id 1kXyD0-0003t4-VB; Thu, 29 Oct 2020 03:02:43 +0000
+X-UUID: 022fd4ccfa9c496dabdef2449feebf8a-20201028
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=YwnaWlP9ZQHoUb7ngFnTh4rZmTv+6JYNiGBIPULpw8k=; 
- b=TWCTJihbknn3V5NLW6LLJzV/AjbnTI27w56akzsjujhEy3Y6beIKQ72JRUwZSZMCLtDf/YG8KkjVcHoK9WPymxANYH6/i817LnMbOkXdjdQkqTGabnCgAIyTX8orJp4LnJLCdqe7QyHclo0PONd00z5YRhx0qrif1uVlf/mJd3I=;
-X-UUID: 97e439c4d1d3417abbd8bc83a5bdf587-20201028
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=FvVamXYQKmO65s8c1CgF2/zCOV/ePHRX7UzcYAa8aUk=; 
+ b=VtvD9CVeHMsOaq2zAn+taUzlvvTn0FAMYsxnacadkMqLQtDIcD/DyH/zlP6uq76W6FaIHix9VzGFhUhIRD6iyQ5iRnLQbnXq8+FQWPmeFjIybLa7+XjZYC2yGMDBOBBpSQCQO/MEdCJUntj9gMikGG+rNATeHhVK7379+PNc1LI=;
+X-UUID: 022fd4ccfa9c496dabdef2449feebf8a-20201028
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 318325795; Wed, 28 Oct 2020 19:02:29 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 1497507191; Wed, 28 Oct 2020 19:02:29 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Oct 2020 19:55:23 -0700
+ 15.0.1497.2; Wed, 28 Oct 2020 19:56:35 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Oct 2020 10:55:16 +0800
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Oct 2020 10:56:29 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Oct 2020 10:55:15 +0800
+ Transport; Thu, 29 Oct 2020 10:56:27 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH 01/17] phy: allwinner: convert to
+Subject: [PATCH 16/17] phy: tegra: convert to
  devm_platform_ioremap_resource(_byname)
-Date: Thu, 29 Oct 2020 10:54:23 +0800
-Message-ID: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
+Date: Thu, 29 Oct 2020 10:54:38 +0800
+Message-ID: <1603940079-8131-16-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: ABD9262E7090C852F3090186B651931645AAB2216D9B4C6A679D99FD2336D4932000:8
+X-TM-SNTS-SMTP: A7B2DD7F2278EB545E3B7D3A032CF1F4CC0446031EB135DF18A86C00AD03B0132000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201028_230244_068766_5CCC2C95 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20201028_230239_192238_815E345E 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,9 +106,9 @@ Cc: Ondrej Jirman <megous@megous.com>, Peter Chen <peter.chen@nxp.com>,
  linux-arm-kernel@lists.infradead.org, Roger
  Quadros <rogerq@ti.com>, Hanjie Lin <hanjie.lin@amlogic.com>,
  Ma Feng <mafeng.ma@huawei.com>, Scott
- Branden <sbranden@broadcom.com>, Randy Dunlap <rdunlap@infradead.org>,
- Jyri Sarha <jsarha@ti.com>, linux-kernel@vger.kernel.org,
- Sanket Parmar <sparmar@cadence.com>,
+ Branden <sbranden@broadcom.com>, JC Kuo <jckuo@nvidia.com>,
+ Randy Dunlap <rdunlap@infradead.org>, Jyri Sarha <jsarha@ti.com>,
+ linux-kernel@vger.kernel.org, Sanket Parmar <sparmar@cadence.com>,
  Pengutronix Kernel Team <kernel@pengutronix.de>, Joe Perches <joe@perches.com>,
  Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
  Li Jun <jun.li@nxp.com>
@@ -117,112 +119,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Use devm_platform_ioremap_resource(_byname) to simplify code
 
+Cc: JC Kuo <jckuo@nvidia.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/allwinner/phy-sun4i-usb.c       | 8 ++------
- drivers/phy/allwinner/phy-sun50i-usb3.c     | 4 +---
- drivers/phy/allwinner/phy-sun6i-mipi-dphy.c | 4 +---
- drivers/phy/allwinner/phy-sun9i-usb.c       | 4 +---
- 4 files changed, 5 insertions(+), 15 deletions(-)
+ drivers/phy/tegra/phy-tegra194-p2u.c | 4 +---
+ drivers/phy/tegra/xusb.c             | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/phy/allwinner/phy-sun4i-usb.c b/drivers/phy/allwinner/phy-sun4i-usb.c
-index 651d5e2a25ce..406d5943f8a8 100644
---- a/drivers/phy/allwinner/phy-sun4i-usb.c
-+++ b/drivers/phy/allwinner/phy-sun4i-usb.c
-@@ -686,7 +686,6 @@ static int sun4i_usb_phy_probe(struct platform_device *pdev)
+diff --git a/drivers/phy/tegra/phy-tegra194-p2u.c b/drivers/phy/tegra/phy-tegra194-p2u.c
+index 7042bed9feaa..3ee02b9eb04f 100644
+--- a/drivers/phy/tegra/phy-tegra194-p2u.c
++++ b/drivers/phy/tegra/phy-tegra194-p2u.c
+@@ -72,14 +72,12 @@ static int tegra_p2u_probe(struct platform_device *pdev)
  	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
- 	struct phy_provider *phy_provider;
--	struct resource *res;
- 	int i, ret;
- 
- 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
-@@ -700,8 +699,7 @@ static int sun4i_usb_phy_probe(struct platform_device *pdev)
- 	if (!data->cfg)
- 		return -EINVAL;
- 
--	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "phy_ctrl");
--	data->base = devm_ioremap_resource(dev, res);
-+	data->base = devm_platform_ioremap_resource_byname(pdev, "phy_ctrl");
- 	if (IS_ERR(data->base))
- 		return PTR_ERR(data->base);
- 
-@@ -796,9 +794,7 @@ static int sun4i_usb_phy_probe(struct platform_device *pdev)
- 
- 		if (i || data->cfg->phy0_dual_route) { /* No pmu for musb */
- 			snprintf(name, sizeof(name), "pmu%d", i);
--			res = platform_get_resource_byname(pdev,
--							IORESOURCE_MEM, name);
--			phy->pmu = devm_ioremap_resource(dev, res);
-+			phy->pmu = devm_platform_ioremap_resource_byname(pdev, name);
- 			if (IS_ERR(phy->pmu))
- 				return PTR_ERR(phy->pmu);
- 		}
-diff --git a/drivers/phy/allwinner/phy-sun50i-usb3.c b/drivers/phy/allwinner/phy-sun50i-usb3.c
-index b1c04f71a31d..84055b720016 100644
---- a/drivers/phy/allwinner/phy-sun50i-usb3.c
-+++ b/drivers/phy/allwinner/phy-sun50i-usb3.c
-@@ -134,7 +134,6 @@ static int sun50i_usb3_phy_probe(struct platform_device *pdev)
- 	struct sun50i_usb3_phy *phy;
- 	struct device *dev = &pdev->dev;
- 	struct phy_provider *phy_provider;
+ 	struct phy *generic_phy;
+ 	struct tegra_p2u *phy;
 -	struct resource *res;
  
  	phy = devm_kzalloc(dev, sizeof(*phy), GFP_KERNEL);
  	if (!phy)
-@@ -153,8 +152,7 @@ static int sun50i_usb3_phy_probe(struct platform_device *pdev)
- 		return PTR_ERR(phy->reset);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	phy->regs = devm_ioremap_resource(dev, res);
-+	phy->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(phy->regs))
- 		return PTR_ERR(phy->regs);
- 
-diff --git a/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c b/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
-index 1fa761ba6cbb..f0bc87d654d4 100644
---- a/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
-+++ b/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
-@@ -253,15 +253,13 @@ static int sun6i_dphy_probe(struct platform_device *pdev)
- {
- 	struct phy_provider *phy_provider;
- 	struct sun6i_dphy *dphy;
--	struct resource *res;
- 	void __iomem *regs;
- 
- 	dphy = devm_kzalloc(&pdev->dev, sizeof(*dphy), GFP_KERNEL);
- 	if (!dphy)
  		return -ENOMEM;
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	regs = devm_ioremap_resource(&pdev->dev, res);
-+	regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(regs)) {
- 		dev_err(&pdev->dev, "Couldn't map the DPHY encoder registers\n");
- 		return PTR_ERR(regs);
-diff --git a/drivers/phy/allwinner/phy-sun9i-usb.c b/drivers/phy/allwinner/phy-sun9i-usb.c
-index fc6784dd7fa0..2f9e60c188b8 100644
---- a/drivers/phy/allwinner/phy-sun9i-usb.c
-+++ b/drivers/phy/allwinner/phy-sun9i-usb.c
-@@ -117,7 +117,6 @@ static int sun9i_usb_phy_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
- 	struct phy_provider *phy_provider;
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ctl");
+-	phy->base = devm_ioremap_resource(dev, res);
++	phy->base = devm_platform_ioremap_resource_byname(pdev, "ctl");
+ 	if (IS_ERR(phy->base))
+ 		return PTR_ERR(phy->base);
+ 
+diff --git a/drivers/phy/tegra/xusb.c b/drivers/phy/tegra/xusb.c
+index de4a46fe1763..067e71326826 100644
+--- a/drivers/phy/tegra/xusb.c
++++ b/drivers/phy/tegra/xusb.c
+@@ -1148,7 +1148,6 @@ static int tegra_xusb_padctl_probe(struct platform_device *pdev)
+ 	const struct tegra_xusb_padctl_soc *soc;
+ 	struct tegra_xusb_padctl *padctl;
+ 	const struct of_device_id *match;
 -	struct resource *res;
+ 	int err;
  
- 	phy = devm_kzalloc(dev, sizeof(*phy), GFP_KERNEL);
- 	if (!phy)
-@@ -156,8 +155,7 @@ static int sun9i_usb_phy_probe(struct platform_device *pdev)
- 		}
- 	}
+ 	/* for backwards compatibility with old device trees */
+@@ -1173,8 +1172,7 @@ static int tegra_xusb_padctl_probe(struct platform_device *pdev)
+ 	INIT_LIST_HEAD(&padctl->pads);
+ 	mutex_init(&padctl->lock);
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	phy->pmu = devm_ioremap_resource(dev, res);
-+	phy->pmu = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(phy->pmu))
- 		return PTR_ERR(phy->pmu);
- 
+-	padctl->regs = devm_ioremap_resource(&pdev->dev, res);
++	padctl->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(padctl->regs)) {
+ 		err = PTR_ERR(padctl->regs);
+ 		goto remove;
 -- 
 2.18.0
 _______________________________________________
