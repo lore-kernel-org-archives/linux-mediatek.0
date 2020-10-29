@@ -2,70 +2,76 @@ Return-Path: <SRS0=uLCs=EE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CD2DAC55178
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 12:37:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9EEB9C55178
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 13:23:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0139C206BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 12:37:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0D3B22067D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 13:23:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D7T8rtmo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0139C206BE
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AzVYWliJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="n0vFVgEu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D3B22067D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fkg0Gudgfrym1gCW4hNkYXG2AJiOc7F0BLiApMIz7Oo=; b=D7T8rtmoCtGZnjgMgXyKJr/Bot
-	IS2YiO2RjG7/HvMOmSfuKu+jnPC1VRfIlJFHtCx71A2yxlo/rzv+ftJPEaHmqsw/N4OjZuXudGkaB
-	sItS+NbznrJHn+nQakNTbP7OtX1KH1qcX6Mkrdg9Q9ee8FTD/sLrTIPekkBqrtWEljBwAWmKvCAcj
-	EQclfo/NbSRNuTiwRPYcptLOlQ2Ey5uOlUnL8Vs5NyMs7dQQ0sP9wtFjHtS1HDYVo4aNQGuwFIFpR
-	YJzy9CfNjeTFltZGqNXCPuH6duZE4QbxAq1tlz59JwNAIz31lBx+dr0rNgtsd88esEerxai/P/qGA
-	iKu7slgQ==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Ja7kFtKbuLoOwRQU0tPUP6DT0r1MMsDSg62rR0rLOQA=; b=AzVYWliJw87xnvPZlpyQcpApx
+	uk6hwvh0iUCJ5OtnaiSvS9IB6wqZ0oMLl8LV3smCy8BA8MwtDAUUphHV+ppN1ywqPC2mn7Yxw++/s
+	ZkgBfucOmqmumRvdf1FpIjy8qpAjgrIavscVJqph0yygaGFd64zZ+UkCLZvJyE3a3vlw3GFX8rbFo
+	9y8Lphw5Yx36if4aCmC2pF9YWckCgOSfLgfz3rzrovWcnYwEL9hbxuzATiFagvBaRU2/NCwKFGMqF
+	+Faxp/qEDpz78+HEYzhg0YFtnRSIHqmJG6c2Aczi7HJppWOLME7BXXVBzwUx98/oml9nPwXxv21DX
+	9bs2FqUpQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kY7BC-0005LG-9S; Thu, 29 Oct 2020 12:37:22 +0000
-Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
+	id 1kY7tM-0004AV-Ri; Thu, 29 Oct 2020 13:23:01 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kY7B7-0005JD-Dx; Thu, 29 Oct 2020 12:37:19 +0000
-Authenticated-By: 
-X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 09TCas8Z3024159,
- This message is accepted by code: ctloc85258
-Received: from mail.realtek.com (rtexmb04.realtek.com.tw[172.21.6.97])
- by rtits2.realtek.com.tw (8.15.2/2.70/5.88) with ESMTPS id 09TCas8Z3024159
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 29 Oct 2020 20:36:54 +0800
-Received: from RTEXMBS03.realtek.com.tw (172.21.6.34) by
- RTEXMB04.realtek.com.tw (172.21.6.97) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2044.4; Thu, 29 Oct 2020 20:36:54 +0800
-Received: from localhost.localdomain (172.21.132.186) by
- RTEXMBS03.realtek.com.tw (172.21.6.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Thu, 29 Oct 2020 20:36:53 +0800
-From: <max.chou@realtek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <matthias.bgg@gmail.com>
-Subject: [PATCH v2] Bluetooth: btusb: Add more IDs to usb_device_id table for
- Realtek RTL8822CE
-Date: Thu, 29 Oct 2020 20:36:49 +0800
-Message-ID: <20201029123649.1220-1-max.chou@realtek.com>
-X-Mailer: git-send-email 2.17.1
+ id 1kY7sz-00041Z-A1; Thu, 29 Oct 2020 13:22:40 +0000
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com
+ [209.85.208.46])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 783532076E;
+ Thu, 29 Oct 2020 13:22:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1603977755;
+ bh=SSqEczktkXqJPCkYJd5JJVd8x3QTRgXyJPz9DieXvI4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=n0vFVgEuizL/dTUyl+wJFfcFZMUwk+0j4zhPJs5vSe4XjhlYhsY0EfpbaEQTylhWt
+ Cubd0FfxN5Ee2oJDXYXEOxUZlwmqAWAKdT/7JjFbdX+nfd/dDeF2qeDk5f6rU5tvO4
+ 3Skh01R/yatRbFl/JN9wAt8ukwMHssGIzImAfJzg=
+Received: by mail-ed1-f46.google.com with SMTP id dg9so2958204edb.12;
+ Thu, 29 Oct 2020 06:22:35 -0700 (PDT)
+X-Gm-Message-State: AOAM530YFzHjphDN+EbB5iKcdwwa079b/+YZFFcfe4ZGB+/Ib5hSVBFg
+ uioIDG3nK7sLHiVv5oE4TorEHcLetnBIK4Hskw==
+X-Google-Smtp-Source: ABdhPJwDHdKRH0zxp2zdI0rhG8MdiqpEtBhgAHcNHzUa5A/NrM0N2+qgtroMDJUvOVjURs3Jt16EVSasoziDTaYiQJ8=
+X-Received: by 2002:aa7:cb1a:: with SMTP id s26mr3896896edt.219.1603977753903; 
+ Thu, 29 Oct 2020 06:22:33 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [172.21.132.186]
-X-ClientProxiedBy: RTEXMB03.realtek.com.tw (172.21.6.96) To
- RTEXMBS03.realtek.com.tw (172.21.6.34)
+References: <20201013100625.13056-1-jitao.shi@mediatek.com>
+ <20201013100625.13056-2-jitao.shi@mediatek.com>
+In-Reply-To: <20201013100625.13056-2-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 29 Oct 2020 21:22:19 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_800OtqtJCtCAYS2Kcw7QLp-ojv63mNu8TS1aunTOsHGQ@mail.gmail.com>
+Message-ID: <CAAOTY_800OtqtJCtCAYS2Kcw7QLp-ojv63mNu8TS1aunTOsHGQ@mail.gmail.com>
+Subject: Re: [PATCH v5 1/1] drm/mediatek: dsi: fix scrolling of panel with
+ small hfp or hbp
+To: Jitao Shi <jitao.shi@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201029_083717_889944_2BD63578 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20201029_092237_606840_5595850B 
+X-CRM114-Status: GOOD (  22.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,249 +83,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: max.chou@realtek.com, kidman@realtek.com, hildawu@realtek.com,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- alex_lu@realsil.com.cn, linux-mediatek@lists.infradead.org,
- abhishekpandit@chromium.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Max Chou <max.chou@realtek.com>
-
-Add more IDs to usb_device_id table for Realtek
-RTL8822CE and also support the wideband speech capability for all
-RTL8822CE devices.
-
--Device(04c5:161f) from /sys/kernel/debug/usb/devices
-T:  Bus=02 Lev=02 Prnt=02 Port=05 Cnt=01 Dev#=  3 Spd=12   MxCh= 0
-D:  Ver= 1.00 Cls=e0(wlcon) Sub=01 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=04c5 ProdID=161f Rev= 0.00
-S:  Manufacturer=Realtek
-S:  Product=Bluetooth Radio
-S:  SerialNumber=00e04c000001
-C:* #Ifs= 2 Cfg#= 1 Atr=a0 MxPwr=500mA
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=1ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-E:  Ad=82(I) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-
--Device(0b05:18ef) from /sys/kernel/debug/usb/devices
-T:  Bus=02 Lev=02 Prnt=02 Port=05 Cnt=01 Dev#=  4 Spd=12   MxCh= 0
-D:  Ver= 1.00 Cls=e0(wlcon) Sub=01 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0b05 ProdID=18ef Rev= 0.00
-S:  Manufacturer=Realtek
-S:  Product=Bluetooth Radio
-S:  SerialNumber=00e04c000001
-C:* #Ifs= 2 Cfg#= 1 Atr=a0 MxPwr=500mA
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=1ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-E:  Ad=82(I) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-
--Device(13d3:3549) from /sys/kernel/debug/usb/devices
-T:  Bus=02 Lev=02 Prnt=02 Port=05 Cnt=01 Dev#=  3 Spd=12   MxCh= 0
-D:  Ver= 1.00 Cls=e0(wlcon) Sub=01 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3549 Rev= 0.00
-S:  Manufacturer=Realtek
-S:  Product=Bluetooth Radio
-S:  SerialNumber=00e04c000001
-C:* #Ifs= 2 Cfg#= 1 Atr=a0 MxPwr=500mA
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=1ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-E:  Ad=82(I) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-
--Device(13d3:3553) from /sys/kernel/debug/usb/devices
-T:  Bus=02 Lev=02 Prnt=02 Port=05 Cnt=01 Dev#=  3 Spd=12   MxCh= 0
-D:  Ver= 1.00 Cls=e0(wlcon) Sub=01 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3553 Rev= 0.00
-S:  Manufacturer=Realtek
-S:  Product=Bluetooth Radio
-S:  SerialNumber=00e04c000001
-C:* #Ifs= 2 Cfg#= 1 Atr=a0 MxPwr=500mA
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=1ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-E:  Ad=82(I) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-
--Device(13d3:3555) from /sys/kernel/debug/usb/devices
-T:  Bus=02 Lev=02 Prnt=02 Port=05 Cnt=01 Dev#=  3 Spd=12   MxCh= 0
-D:  Ver= 1.00 Cls=e0(wlcon) Sub=01 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3555 Rev= 0.00
-S:  Manufacturer=Realtek
-S:  Product=Bluetooth Radio
-S:  SerialNumber=00e04c000001
-C:* #Ifs= 2 Cfg#= 1 Atr=a0 MxPwr=500mA
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=1ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-E:  Ad=82(I) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-
--Device(2ff8:3051) from /sys/kernel/debug/usb/devices
-T:  Bus=02 Lev=02 Prnt=02 Port=05 Cnt=01 Dev#=  3 Spd=12   MxCh= 0
-D:  Ver= 1.00 Cls=e0(wlcon) Sub=01 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=2ff8 ProdID=3051 Rev= 0.00
-S:  Manufacturer=Realtek
-S:  Product=Bluetooth Radio
-S:  SerialNumber=00e04c000001
-C:* #Ifs= 2 Cfg#= 1 Atr=a0 MxPwr=500mA
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=1ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-E:  Ad=82(I) Atr=02(Bulk) MxPS=  64 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-
-Signed-off-by: Max Chou <max.chou@realtek.com>
----
-Changes in v2:
-- dump "/sys/kernel/debug/usb/devices" for the additional devices
----
- drivers/bluetooth/btusb.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 1005b6e8ff74..4a1f877616d6 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -425,8 +425,22 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x0b05, 0x185c), .driver_info = BTUSB_REALTEK },
- 
- 	/* Additional Realtek 8822CE Bluetooth devices */
--	{ USB_DEVICE(0x04ca, 0x4005), .driver_info = BTUSB_REALTEK },
--	{ USB_DEVICE(0x13d3, 0x3548), .driver_info = BTUSB_REALTEK },
-+	{ USB_DEVICE(0x04ca, 0x4005), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x04c5, 0x161f), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0b05, 0x18ef), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3548), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3549), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3553), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3555), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x2ff8, 0x3051), .driver_info = BTUSB_REALTEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 
- 	/* Silicon Wave based devices */
- 	{ USB_DEVICE(0x0c10, 0x0000), .driver_info = BTUSB_SWAVE },
--- 
-2.17.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5
+tDEw5pyIMTPml6Ug6YCx5LqMIOS4i+WNiDY6MDblr6vpgZPvvJoKPgo+IFJlcGxhY2UgaG9yaXpv
+bnRhbF9iYWNrcG9yY2hfYnl0ZSB3aXRoIHZtLT5oYmFja19wb3JjaCAqIGJwcCB0byBhb3ZpZAo+
+IGZsb3dpbmcganVkZ2VtZW50IG5lZ2F0aXZlIG51bWJlci4KPgo+IGlmICgodm0tPmhmcm9udF9w
+b3JjaCAqIGRzaV90bXBfYnVmX2JwcCArIGhvcml6b250YWxfYmFja3BvcmNoX2J5dGUpID4KPiAg
+ICAgICAgIGRhdGFfcGh5X2N5Y2xlcyAqIGRzaS0+bGFuZXMgKyBkZWx0YSkKPgo+IFNpZ25lZC1v
+ZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDY1ICsrKysrKysrKysrKysrKy0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyNSBpbnNlcnRpb25zKCspLCA0MCBk
+ZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IGluZGV4IDgwYjdh
+MDgyZTg3NC4uZGRkZGY2OWViZWFmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5j
+Cj4gQEAgLTQ0NSw2ICs0NDUsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZHNpX2NvbmZpZ192ZG9fdGlt
+aW5nKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gICAgICAgICB1MzIgaG9yaXpvbnRhbF9iYWNrcG9y
+Y2hfYnl0ZTsKPiAgICAgICAgIHUzMiBob3Jpem9udGFsX2Zyb250cG9yY2hfYnl0ZTsKPiAgICAg
+ICAgIHUzMiBkc2lfdG1wX2J1Zl9icHAsIGRhdGFfcGh5X2N5Y2xlczsKPiArICAgICAgIHUzMiBk
+ZWx0YTsKPiAgICAgICAgIHN0cnVjdCBtdGtfcGh5X3RpbWluZyAqdGltaW5nID0gJmRzaS0+cGh5
+X3RpbWluZzsKPgo+ICAgICAgICAgc3RydWN0IHZpZGVvbW9kZSAqdm0gPSAmZHNpLT52bTsKPiBA
+QCAtNDY2LDUwICs0NjcsMzQgQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9jb25maWdfdmRvX3RpbWlu
+ZyhzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAgICAgICAgaG9yaXpvbnRhbF9zeW5jX2FjdGl2ZV9i
+eXRlID0gKHZtLT5oc3luY19sZW4gKiBkc2lfdG1wX2J1Zl9icHAgLSAxMCk7Cj4KPiAgICAgICAg
+IGlmIChkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPX1NZTkNfUFVMU0UpCj4g
+LSAgICAgICAgICAgICAgIGhvcml6b250YWxfYmFja3BvcmNoX2J5dGUgPSB2bS0+aGJhY2tfcG9y
+Y2ggKiBkc2lfdG1wX2J1Zl9icHA7Cj4gKyAgICAgICAgICAgICAgIGhvcml6b250YWxfYmFja3Bv
+cmNoX2J5dGUgPQo+ICsgICAgICAgICAgICAgICAgICAgICAgICh2bS0+aGJhY2tfcG9yY2ggKiBk
+c2lfdG1wX2J1Zl9icHAgLSAxMCk7Cj4gICAgICAgICBlbHNlCj4gLSAgICAgICAgICAgICAgIGhv
+cml6b250YWxfYmFja3BvcmNoX2J5dGUgPSAodm0tPmhiYWNrX3BvcmNoICsgdm0tPmhzeW5jX2xl
+bikgKgo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZHNpX3Rt
+cF9idWZfYnBwOwo+ICsgICAgICAgICAgICAgICBob3Jpem9udGFsX2JhY2twb3JjaF9ieXRlID0g
+KCh2bS0+aGJhY2tfcG9yY2ggKyB2bS0+aHN5bmNfbGVuKSAqCj4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgZHNpX3RtcF9idWZfYnBwIC0gMTApOwo+Cj4gICAgICAgICBkYXRhX3BoeV9jeWNsZXMg
+PSB0aW1pbmctPmxweCArIHRpbWluZy0+ZGFfaHNfcHJlcGFyZSArCj4gLSAgICAgICAgICAgICAg
+ICAgICAgICAgICB0aW1pbmctPmRhX2hzX3plcm8gKyB0aW1pbmctPmRhX2hzX2V4aXQ7Cj4gLQo+
+IC0gICAgICAgaWYgKGRzaS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU9fQlVSU1Qp
+IHsKPiAtICAgICAgICAgICAgICAgaWYgKCh2bS0+aGZyb250X3BvcmNoICsgdm0tPmhiYWNrX3Bv
+cmNoKSAqIGRzaV90bXBfYnVmX2JwcCA+Cj4gLSAgICAgICAgICAgICAgICAgICBkYXRhX3BoeV9j
+eWNsZXMgKiBkc2ktPmxhbmVzICsgMTgpIHsKPiAtICAgICAgICAgICAgICAgICAgICAgICBob3Jp
+em9udGFsX2Zyb250cG9yY2hfYnl0ZSA9Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICB2bS0+aGZyb250X3BvcmNoICogZHNpX3RtcF9idWZfYnBwIC0KPiAtICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIChkYXRhX3BoeV9jeWNsZXMgKiBkc2ktPmxhbmVzICsgMTgpICoKPiAt
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZtLT5oZnJvbnRfcG9yY2ggLwo+IC0gICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgKHZtLT5oZnJvbnRfcG9yY2ggKyB2bS0+aGJhY2tf
+cG9yY2gpOwo+IC0KPiAtICAgICAgICAgICAgICAgICAgICAgICBob3Jpem9udGFsX2JhY2twb3Jj
+aF9ieXRlID0KPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhvcml6b250YWxfYmFj
+a3BvcmNoX2J5dGUgLQo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKGRhdGFfcGh5
+X2N5Y2xlcyAqIGRzaS0+bGFuZXMgKyAxOCkgKgo+IC0gICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgdm0tPmhiYWNrX3BvcmNoIC8KPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICh2bS0+aGZyb250X3BvcmNoICsgdm0tPmhiYWNrX3BvcmNoKTsKPiAtICAgICAgICAgICAgICAg
+fSBlbHNlIHsKPiAtICAgICAgICAgICAgICAgICAgICAgICBEUk1fV0FSTigiSEZQIGxlc3MgdGhh
+biBkLXBoeSwgRlBTIHdpbGwgdW5kZXIgNjBIelxuIik7Cj4gLSAgICAgICAgICAgICAgICAgICAg
+ICAgaG9yaXpvbnRhbF9mcm9udHBvcmNoX2J5dGUgPSB2bS0+aGZyb250X3BvcmNoICoKPiAtICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRzaV90bXBf
+YnVmX2JwcDsKPiAtICAgICAgICAgICAgICAgfQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
+dGltaW5nLT5kYV9oc196ZXJvICsgdGltaW5nLT5kYV9oc19leGl0ICsgMzsKPiArCj4gKyAgICAg
+ICBkZWx0YSA9IChkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPX0JVUlNUKSA/
+IDE4IDogMTI7Cj4gKwo+ICsgICAgICAgaWYgKCh2bS0+aGZyb250X3BvcmNoICogZHNpX3RtcF9i
+dWZfYnBwICsgaG9yaXpvbnRhbF9iYWNrcG9yY2hfYnl0ZSkgPgo+ICsgICAgICAgICAgIGRhdGFf
+cGh5X2N5Y2xlcyAqIGRzaS0+bGFuZXMgKyBkZWx0YSkgewo+ICsgICAgICAgICAgICAgICBob3Jp
+em9udGFsX2Zyb250cG9yY2hfYnl0ZSA9Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgdm0tPmhm
+cm9udF9wb3JjaCAqIGRzaV90bXBfYnVmX2JwcCAtCj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+KGRhdGFfcGh5X2N5Y2xlcyAqIGRzaS0+bGFuZXMgKyBkZWx0YSkgKgo+ICsgICAgICAgICAgICAg
+ICAgICAgICAgIHZtLT5oZnJvbnRfcG9yY2ggLwo+ICsgICAgICAgICAgICAgICAgICAgICAgICh2
+bS0+aGZyb250X3BvcmNoICsgdm0tPmhiYWNrX3BvcmNoKTsKPiArCj4gKyAgICAgICAgICAgICAg
+IGhvcml6b250YWxfYmFja3BvcmNoX2J5dGUgPQo+ICsgICAgICAgICAgICAgICAgICAgICAgIGhv
+cml6b250YWxfYmFja3BvcmNoX2J5dGUgLQo+ICsgICAgICAgICAgICAgICAgICAgICAgIChkYXRh
+X3BoeV9jeWNsZXMgKiBkc2ktPmxhbmVzICsgZGVsdGEpICoKPiArICAgICAgICAgICAgICAgICAg
+ICAgICB2bS0+aGJhY2tfcG9yY2ggLwo+ICsgICAgICAgICAgICAgICAgICAgICAgICh2bS0+aGZy
+b250X3BvcmNoICsgdm0tPmhiYWNrX3BvcmNoKTsKPiAgICAgICAgIH0gZWxzZSB7Cj4gLSAgICAg
+ICAgICAgICAgIGlmICgodm0tPmhmcm9udF9wb3JjaCArIHZtLT5oYmFja19wb3JjaCkgKiBkc2lf
+dG1wX2J1Zl9icHAgPgo+IC0gICAgICAgICAgICAgICAgICAgZGF0YV9waHlfY3ljbGVzICogZHNp
+LT5sYW5lcyArIDEyKSB7Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgaG9yaXpvbnRhbF9mcm9u
+dHBvcmNoX2J5dGUgPQo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdm0tPmhmcm9u
+dF9wb3JjaCAqIGRzaV90bXBfYnVmX2JwcCAtCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAoZGF0YV9waHlfY3ljbGVzICogZHNpLT5sYW5lcyArIDEyKSAqCj4gLSAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICB2bS0+aGZyb250X3BvcmNoIC8KPiAtICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICh2bS0+aGZyb250X3BvcmNoICsgdm0tPmhiYWNrX3BvcmNoKTsKPiAt
+ICAgICAgICAgICAgICAgICAgICAgICBob3Jpem9udGFsX2JhY2twb3JjaF9ieXRlID0gaG9yaXpv
+bnRhbF9iYWNrcG9yY2hfYnl0ZSAtCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo
+ZGF0YV9waHlfY3ljbGVzICogZHNpLT5sYW5lcyArIDEyKSAqCj4gLSAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICB2bS0+aGJhY2tfcG9yY2ggLwo+IC0gICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgKHZtLT5oZnJvbnRfcG9yY2ggKyB2bS0+aGJhY2tfcG9yY2gpOwo+IC0gICAgICAg
+ICAgICAgICB9IGVsc2Ugewo+IC0gICAgICAgICAgICAgICAgICAgICAgIERSTV9XQVJOKCJIRlAg
+bGVzcyB0aGFuIGQtcGh5LCBGUFMgd2lsbCB1bmRlciA2MEh6XG4iKTsKPiAtICAgICAgICAgICAg
+ICAgICAgICAgICBob3Jpem9udGFsX2Zyb250cG9yY2hfYnl0ZSA9IHZtLT5oZnJvbnRfcG9yY2gg
+Kgo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ZHNpX3RtcF9idWZfYnBwOwo+IC0gICAgICAgICAgICAgICB9Cj4gKyAgICAgICAgICAgICAgIERS
+TV9XQVJOKCJIRlAgKyBIQlAgbGVzcyB0aGFuIGQtcGh5LCBGUFMgd2lsbCB1bmRlciA2MEh6XG4i
+KTsKPiArICAgICAgICAgICAgICAgaG9yaXpvbnRhbF9mcm9udHBvcmNoX2J5dGUgPSB2bS0+aGZy
+b250X3BvcmNoICoKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBkc2lfdG1wX2J1Zl9icHA7CgpJJ3ZlIGFwcGxpZWQgdGhpcyBwYXRjaCwgYnV0IHNtYWxsIGhi
+cCBoYXMgcHJvYmxlbSBiZWNhdXNlCmhvcml6b250YWxfYmFja3BvcmNoX2J5dGUgPCAwLgpJIHRy
+eSB0byBtb2RpZnkgdGhpcyBwYXRjaCBhY2NvcmRpbmcgdG8gdHdvIGFzc3VtcHRpb246CgoxLiBo
+b3Jpem9udGFsX2JhY2twb3JjaF9ieXRlIHNob3VsZCBiZSBzbWFsbGVyIHRoYW4gKHZtLT5oYmFj
+a19wb3JjaCArCnZtLT5oc3luY19sZW4pICogZHNpX3RtcF9idWZfYnBwIGF0IGxlYXN0IDEwLgoy
+LiBob3Jpem9udGFsX2JhY2twb3JjaF9ieXRlIHNob3VsZCA+PSAwLgoKQWNjb3JkaW5nIHRvIHRo
+ZXNlIHR3byBhc3N1bXB0aW9uLCBJJ3ZlIGEgcGF0Y2ggWzFdLiBNeSBrZXkgcG9pbnQgaXMKdGhh
+dCBJIHVzZSBob3Jpem9udGFsX2JhY2twb3JjaF9ieXRlIHRvIGNhbGN1bGF0ZSB0aGUgcmF0aW8g
+dG8Kc3VidHJhY3QgaXQuIElzIG15IGFzc3VtcHRpb24gY29ycmVjdD8KSWYgbm90LCBwbGVhc2Ug
+ZXhwbGFpbiB3aHkgZG8geW91IGNhbGN1bGF0ZSBpbiB0aGlzIHdheSwgc28gd2UgY291bGQKZmlu
+ZCBvdXQgaG93IHRvIHNvbHZlIHRoaXMgcHJvYmxlbS4KClsxXSBodHRwczovL2Nocm9taXVtLXJl
+dmlldy5nb29nbGVzb3VyY2UuY29tL2MvY2hyb21pdW1vcy90aGlyZF9wYXJ0eS9rZXJuZWwvKy8y
+NTA2OTkyCgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPiAgICAgICAgIH0KPgo+ICAgICAgICAgd3Jp
+dGVsKGhvcml6b250YWxfc3luY19hY3RpdmVfYnl0ZSwgZHNpLT5yZWdzICsgRFNJX0hTQV9XQyk7
+Cj4gLS0KPiAyLjEyLjUKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtbWVkaWF0ZWsK
