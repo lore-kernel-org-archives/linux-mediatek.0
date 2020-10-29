@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 898CDC388F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 02:59:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BFBBC4363A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 02:59:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0B49206B6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 02:59:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 55F36206B6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 02:59:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vbzU5/jG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="khg622DL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0B49206B6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FyxH0if+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UiUdCoab"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55F36206B6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bQGwINQb9L4xa+zHMpi8JSoQzhkAXCkUEBbb1VMuCFo=; b=vbzU5/jG9PK6AFy48jly1jqN9
-	lRE3YP6iP6ag8g9IhEuCHpm0E7bv+ICMc4ewowAYo6Sq7arE/YFkExS5jFl6W4wXwFsDqIuxskS1j
-	NZ6nKf2wpbJbX8/qE8Yl4pM7VKx7Z/YEZRWXj/0jU297hKxP9yDalK+t+wYQLaL/KHEfih0JbxGmC
-	lgduZNP+HFPdcoZ8V3aQQwY31S0tYDpSc3h8fyVDxppR2hoaxOVwwhfoLfuPfA1rGlal6GF1hkhN9
-	3vB4h5H649joyKuEm0G0Vx8mQG9eU/Pq+boVr7SzaGgqopjIJ/divFIqsAf//P7+LpgoTqKD63A9v
-	//9VtNW2w==;
+	 bh=bHBoqdaXi2nR0QRLBXKWhpkPWMrJimH44eFeKh0lNWI=; b=FyxH0if+Rx9DjpZrM4TBBnd9I
+	ifKX6mzXcbHMixNIw/yOJULUwLplHFGpnKaV0hzVyxOpnVxH7Bxw5BS0okvw+OrhtyTlKbSB3JTNO
+	8+Y/caO1wvScMZL9LzyzAreCLi4/WSfDavvJw2rzF/CJ4SsGFup+inpKrLOJShhy8J+JXkDVIyhRc
+	/GBYBIYfrT1V3vLDjuu1VaTXsYgl+AeWqajX9LyxpwPCvvQorYjg/BJgpxI0UbCp/VeGDvfm/6b+f
+	HQO8cxJphCRGIyJRumF6Yje4bjtlEacWaWZh2YHagAumPzjSbVef3J72GJV2YGjgGtdjjunAhVGtp
+	syVML9Wvg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXy9j-0002TN-Uy; Thu, 29 Oct 2020 02:59:16 +0000
+	id 1kXy9x-0002Xo-PA; Thu, 29 Oct 2020 02:59:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXy9a-0002Ob-8C; Thu, 29 Oct 2020 02:59:07 +0000
-X-UUID: a721b07e7f644fa3a193b13dbe260408-20201028
+ id 1kXy9b-0002Ob-NB; Thu, 29 Oct 2020 02:59:10 +0000
+X-UUID: 76bbc5ab6f4f47f58410ac5f65d524c9-20201028
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=QY2jHI900F+g3iEa8I5Mh3xo6vMoLoYCdQN6EhrvxoA=; 
- b=khg622DLXwSYbG66POBvZXZGGjSBxIXmNnzh8CC0V+sRwSbWXmaayOesjkkZv32QFD9bdwswucVT8xohLcBuTXV/A3KSSKIzIoJlX/7LX624nLsuIlJuBzhpJvn5qpSkNgRfOeri9OgSRdkyU4gkN/5pj0xQabrBmkkEzPMTK64=;
-X-UUID: a721b07e7f644fa3a193b13dbe260408-20201028
+ bh=0lidYFRdznlERKwE4qlyxmnrtFMdqqziqL+m01s3wOc=; 
+ b=UiUdCoabruqZ8s7PjtX72CXQNkpPiN5odCrRdT4vGsDTX7GRNiEVffxhql/xYe4djnnQCogRnIOfURfs1ZmRJOrY3Min6n4ES0Es2rKj3+bOo0RwqV0CbpQ7mwvg/fzZGd9tA/syzJ4AjFx2kID9dcXkvtvasqIjDeDFkK4yWew=;
+X-UUID: 76bbc5ab6f4f47f58410ac5f65d524c9-20201028
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 527612213; Wed, 28 Oct 2020 18:59:04 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ with ESMTP id 1994371121; Wed, 28 Oct 2020 18:59:04 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Oct 2020 19:56:05 -0700
+ 15.0.1497.2; Wed, 28 Oct 2020 19:56:24 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Oct 2020 10:55:57 +0800
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Oct 2020 10:56:07 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Oct 2020 10:55:55 +0800
+ Transport; Thu, 29 Oct 2020 10:56:03 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH 11/17] phy: phy-ralink-usb: convert to
- devm_platform_ioremap_resource
-Date: Thu, 29 Oct 2020 10:54:33 +0800
-Message-ID: <1603940079-8131-11-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 13/17] phy: rockchip: convert to devm_platform_ioremap_resource
+Date: Thu, 29 Oct 2020 10:54:35 +0800
+Message-ID: <1603940079-8131-13-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8D80DE2D4E7C4A622E290E7D8C2A887C8A8912E9D4E1553D094223C2247E28DE2000:8
+X-TM-SNTS-SMTP: 22EE6CE640544E0EE53AEA6A7845BD2A4D114FB6539DC3D85986EAAABD26CFB82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201028_225906_454439_BA103CE1 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20201028_225907_986961_6A2184B3 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,31 +119,31 @@ Use devm_platform_ioremap_resource to simplify code
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/ralink/phy-ralink-usb.c | 4 +---
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/phy/ralink/phy-ralink-usb.c b/drivers/phy/ralink/phy-ralink-usb.c
-index 95dfa9fd284d..2bd8ad2e76ed 100644
---- a/drivers/phy/ralink/phy-ralink-usb.c
-+++ b/drivers/phy/ralink/phy-ralink-usb.c
-@@ -170,7 +170,6 @@ MODULE_DEVICE_TABLE(of, ralink_usb_phy_of_match);
- static int ralink_usb_phy_probe(struct platform_device *pdev)
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+index 9ca20c947283..a37f3f342642 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+@@ -1144,7 +1144,6 @@ static int inno_hdmi_phy_probe(struct platform_device *pdev)
  {
- 	struct device *dev = &pdev->dev;
--	struct resource *res;
+ 	struct inno_hdmi_phy *inno;
  	struct phy_provider *phy_provider;
- 	const struct of_device_id *match;
- 	struct ralink_usb_phy *phy;
-@@ -194,8 +193,7 @@ static int ralink_usb_phy_probe(struct platform_device *pdev)
+-	struct resource *res;
+ 	void __iomem *regs;
+ 	int ret;
  
- 	/* The MT7628 and MT7688 require extra setup of PHY registers. */
- 	if (of_device_is_compatible(dev->of_node, "mediatek,mt7628-usbphy")) {
--		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--		phy->base = devm_ioremap_resource(&pdev->dev, res);
-+		phy->base = devm_platform_ioremap_resource(pdev, 0);
- 		if (IS_ERR(phy->base)) {
- 			dev_err(dev, "failed to remap register memory\n");
- 			return PTR_ERR(phy->base);
+@@ -1158,8 +1157,7 @@ static int inno_hdmi_phy_probe(struct platform_device *pdev)
+ 	if (!inno->plat_data || !inno->plat_data->ops)
+ 		return -EINVAL;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	regs = devm_ioremap_resource(inno->dev, res);
++	regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(regs))
+ 		return PTR_ERR(regs);
+ 
 -- 
 2.18.0
 _______________________________________________
