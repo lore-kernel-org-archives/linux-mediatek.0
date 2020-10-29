@@ -2,88 +2,75 @@ Return-Path: <SRS0=uLCs=EE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A0211C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 07:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9086CC2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 08:15:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33A80204FD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 07:47:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 066D12071A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2020 08:15:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wjXzj5Yb";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ujy//ADr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33A80204FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="z2CVHdRz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IuMklBxh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 066D12071A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oWF0oAJtcPi//gGC7ql3OfuYr5GON7hc7V3wapPZCsw=; b=wjXzj5YbFpuYyEcVhbIUzFlTw
-	mc8Gwp+iqf+1rwBS761a0OK5xMdDz0wK21MNteurUIbO9qlQh8mdS6BtTUo81Cj0ieLvuluIgqKPK
-	sOdQGUhhDrtOREz8+G9sah40KQFZWDoCvtnQRcbjV0Xn+KrCy/72fs9SrdnRG9mMVss4HmVPtZ6Bv
-	lEp7ljrhmnaANGe8QfCa4bb+F1upEXwKh+8nD9d66vJBjp2G3vI8Plnz0d5rsVVpe9yPs6vL35Sv7
-	OPm7vG7UWj/wvwQXHQHLX11Vv/6kKaGeM/vCnC/O7v/kPaqpfCkMleNRE8c0Oey3ueCUiL1xp+XvX
-	lsuvp+BPQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NQ3kDzF/wF5ba3dKH2dKVxqvhcEWdo9uX0ZSun5TIHA=; b=z2CVHdRzewUYgLXVhmyQOUeLWE
+	5ASvo+bjWaLYVZpwjC6t6s7IYTP6lkR3iap8LHGOx6soJaLUKK4X/Lfq3NEC6t+CBc6DDyNY1Sm5y
+	0va5VgB2JLKkU8X9adDaEODQCXAYb0tFprNElwJIHwkoxSA/CQXZHV3DOQjZKgCUQrZcZlfDxNQY3
+	ytkNGmDIj7CwSwaDbGWnjdXZ7QzXgGJ+E+MfulWPbgjPkdGRsSz5s8gIoGw/N7pT0Wkq6/uT4Q+md
+	ed++Kp7VKQPSi+AVnXV4sOVS7AZSCsJax+OAB3th/6e6DnCbMDak+UYDTommrAwjc/bB/c/xfOT0l
+	Wz7COwrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kY2ee-00005J-Lw; Thu, 29 Oct 2020 07:47:28 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1kY35t-0006JO-Vz; Thu, 29 Oct 2020 08:15:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kY2eV-0008TF-GO; Thu, 29 Oct 2020 07:47:20 +0000
-Received: by mail-pg1-x544.google.com with SMTP id r10so1646157pgb.10;
- Thu, 29 Oct 2020 00:47:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=RMptxvJmzOcZiuXNgbU/HwziNAPryxG8DYu7tZwcxLQ=;
- b=ujy//ADrms1eofnQAz11bblwO1E1flvt7rEanUwzH3ALIbzvBP8QBeaL8UwceylDcl
- YXu+MnsHF6Ic+PrAKO3yIyzJLA1R99bWvJYzlrOClwOiPjDKaipwPPi5E4RC/kYAE8SQ
- ZAaFZFUfYjlzhrKNLO/PD4/DxffevErzJ21FnJ8G9pPKJQnLrqQgnaYSF1rweqqAf/lm
- qrlo+rrqS+2m+4fbCkt8p94IQXKMtyAIOmlbGUmz/fX5f9JdlaYyBAEqlGq37dpDK0AV
- NQIDiHozX1XNOaonMf0QYYT2GexsXc/bwQWdeiaodSADmULgs8GPhKr9yk5arffDnDf2
- wTbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=RMptxvJmzOcZiuXNgbU/HwziNAPryxG8DYu7tZwcxLQ=;
- b=ihdDxOK876RWfz8YWBxRtLeoMeQlCnbEGlY2qRlfDDpVxMKDRZWZ3xtJ18CzqJGVV/
- 0PEbA5qMUSKkDCv7ye6v17iyZpZq8D2u5zc0XXLGBchteMwflioGK44ELE7/gIh/o6WF
- YWmICiWl1AbqejVJ+aUOKmAiYwq2rAmZjdB7SVy+cfx552jpiUZ4As+Os6SH1OfeB5wS
- G8tm7xeuq5lYdwCdFlcJZypMokSVQR763nacCVy6g4Dt8RIPxNrrl2/OtlgKPJj0qgSW
- KyNGOygT1xF9Gg3+k4Lqh7o9S8/vVR1y1wtwTnxz+vZrx+dcV5b3MOU8Iu73sLyFSKND
- Z8BQ==
-X-Gm-Message-State: AOAM5319MBoM3VSdV3LIRvhY/5FLDgO++2HtUIDUabRpA3BJEgaweHhD
- r7S+IdoLl/OUMUrsgchht4E=
-X-Google-Smtp-Source: ABdhPJw8P1RoK4I78C2zTcT3FY9ZJ4cZamb/26Rqvh2ViBc7KDj3Fnsuu9LYIO9HCkQJTW/1BzyCMA==
-X-Received: by 2002:aa7:9dcd:0:b029:152:421f:23eb with SMTP id
- g13-20020aa79dcd0000b0290152421f23ebmr3223431pfq.58.1603957637685; 
- Thu, 29 Oct 2020 00:47:17 -0700 (PDT)
-Received: from localhost ([2409:8a28:3c42:6840:9efc:e8ff:fef2:1cdc])
- by smtp.gmail.com with ESMTPSA id v125sm1864615pfv.75.2020.10.29.00.47.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Oct 2020 00:47:17 -0700 (PDT)
-From: Coiby Xu <coiby.xu@gmail.com>
-To: linux-i2c@vger.kernel.org
-Subject: [PATCH 2/5] i2c: mediatek: remove unnecessary CONFIG_PM_SLEEP
-Date: Thu, 29 Oct 2020 15:46:51 +0800
-Message-Id: <20201029074654.227263-2-coiby.xu@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201029074654.227263-1-coiby.xu@gmail.com>
-References: <20201029074654.227263-1-coiby.xu@gmail.com>
+ id 1kY35q-0006Id-GH; Thu, 29 Oct 2020 08:15:36 +0000
+X-UUID: e1d3e0ecd2c5428aa4b06677f81781df-20201029
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=o3Qv9OfYUwrK9tVE0LcM9g+mhJJ29QPAQxRIwyUon6o=; 
+ b=IuMklBxh9jPBsM9YlHkwq4jQy6j1bA7Q5MPEIEeAVQ+YkuJ1Y/tJlYbYj+M3UkA/0EeByMs5dVqGkcPYRue7e48wUXq697rFoqGdSLhCDN0v4PkdolEsuaoIohxdvcHsTSSyc4P03IFuoQg+9eRhLLYA+VaCM3lBTyCrr/bCvB4=;
+X-UUID: e1d3e0ecd2c5428aa4b06677f81781df-20201029
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chuanjia.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1230872092; Thu, 29 Oct 2020 00:15:24 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Oct 2020 01:15:22 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Oct 2020 16:15:19 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 29 Oct 2020 16:15:19 +0800
+From: Chuanjia Liu <chuanjia.liu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi
+ <lorenzo.pieralisi@arm.com>
+Subject: [PATCH v7 0/4] PCI: mediatek: Spilt PCIe node to comply with hardware
+ design
+Date: Thu, 29 Oct 2020 16:15:09 +0800
+Message-ID: <20201029081513.10562-1-chuanjia.liu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201029_034719_563693_451664C5 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20201029_041535_326540_6EC7DFED 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,48 +82,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Qii Wang <qii.wang@mediatek.com>,
- open list <linux-kernel@vger.kernel.org>
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Frank
+ Wunderlich <frank-w@public-files.de>, linux-pci@vger.kernel.org,
+ chuanjia.liu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, yong.wu@mediatek.com,
+ Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SET_SYSTEM_SLEEP_PM_OPS has already took good care of CONFIG_PM_CONFIG.
+In current architecture, MSI domain will be inherited from the root
+bridge, and all of the devices will share the same MSI domain.
+Hence that, the PCIe devices will not work properly if the irq number
+which required is more than 32.
+Split the PCIe node for MT2712 and MT7622 platform to fix MSI issue
+and comply with the hardware design.
 
-Signed-off-by: Coiby Xu <coiby.xu@gmail.com>
----
- drivers/i2c/busses/i2c-mt65xx.c | 2 --
- 1 file changed, 2 deletions(-)
+change note:
+  v7:dt-bindings file was modified as suggested by Rob, other file no
+     change.
+  v6:Fix yaml error. make sure driver compatible with old and 
+     new DTS format.
+  v5:rebase for 5.9-rc1, no code change. 
+  v4:change commit message due to bayes statistical bogofilter
+     considers this series patch SPAM.
+  v3:rebase for 5.8-rc1. Only collect ack of Ryder, No code change.
+  v2:change the allocation of MT2712 PCIe MMIO space due to the
+     allocation size is not right in v1.
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 0cbdfbe605b5..c2939f2e5dea 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -1284,7 +1284,6 @@ static int mtk_i2c_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--#ifdef CONFIG_PM_SLEEP
- static int mtk_i2c_resume(struct device *dev)
- {
- 	int ret;
-@@ -1302,7 +1301,6 @@ static int mtk_i2c_resume(struct device *dev)
- 
- 	return 0;
- }
--#endif
- 
- static const struct dev_pm_ops mtk_i2c_pm = {
- 	SET_SYSTEM_SLEEP_PM_OPS(NULL, mtk_i2c_resume)
--- 
-2.28.0
+Chuanjia Liu (4):
+  dt-bindings: pci: mediatek: Modified the Device tree bindings
+  PCI: mediatek: Add new method to get shared pcie-cfg base and irq
+  arm64: dts: mediatek: Split PCIe node for MT2712 and MT7622
+  ARM: dts: mediatek: Modified MT7629 PCIe node
 
+  .../bindings/pci/mediatek-pcie-cfg.yaml       |  39 +++++
+  .../devicetree/bindings/pci/mediatek-pcie.txt | 129 +++++++++++-------
+  arch/arm/boot/dts/mt7629-rfb.dts              |   3 +-
+  arch/arm/boot/dts/mt7629.dtsi                 |  22 +--
+  arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  75 ++++++----
+  .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  |  16 +-
+  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  |   6 +-
+  arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  66 ++++++---
+  drivers/pci/controller/pcie-mediatek.c        |  23 ++-
+  9 files changed, 248 insertions(+), 131 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
 
+ -- 
+ 2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
