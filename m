@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93828C4363A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 10:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24D29C00A89
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 10:56:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 196212224A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 10:55:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A76732231B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 10:56:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G10yZotM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 196212224A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RJMTi9iX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A76732231B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,37 +26,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
 	To:Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o6sURGTOT2ist1iseA8oJVUUdpeuUQTcfTSDoVTczDk=; b=G10yZotMZKyDQMys716yPZVzi
-	bEV1ktoUZ1/VGX970ZsjQkKUwIUFeRaJRgIAKNCOxrJukb7PFwqTvZQG4jwFDW2aEiKCHWH6u5H/H
-	lvR/6GjxnRga7rKHrAKLOXuGdL1ikJqeSasRvBneXoEGG72fEWZpTd4dKzc09y6dR6VVtD/USe40d
-	ef5qWB7ty0yC9OS/MggH5kUscX8PIDfPtsUMlDz6M+XOK58BdIEnzBtd7fB+QI0wTqSog/F8SfcBK
-	jXG3wbQlzYizUcXmWnURB1enKj2qo7YBkjzRaSFdLskAm8YEfII+0NWouFCNpWaoJVI+h1zSGi/pq
-	g2mjaNJ0Q==;
+	 bh=5JdQ1Bh/Rbkg27Aigdvzv/ybj9g5bLX3AELr0gy8BBY=; b=RJMTi9iXK8/Myw0jYA2P0ehxp
+	2zeGKpIogqPj/iJNPb6zgXJrSCOD8yjG4RTZCsw2bJlh5tti5o1VF/Le+vjizn3fBjb+xvV97el9j
+	jXbV2Wp+ePMhy+fMetXSANJVNcld5/hnTwrXOY2mvBeL5VJ35PmJAlmXwPVBnOGedOD4pTE+4d50w
+	ap7/qXrDCQpMB8u9+ICw98oq6FaXRC/o48htxAnA44tXJ3ZNPlkCcc7X+tHLYpV0gutiGFPoiRFdO
+	wQweClNDUI0K7sskB9rtaXhKcmBd3QJVhO343JInKJEibPEghTs+gxr8kRm9zDPk7aIc7Gko9PeNN
+	EOvz9ZkvA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYS44-0002pD-0E; Fri, 30 Oct 2020 10:55:24 +0000
+	id 1kYS57-0003Ev-9i; Fri, 30 Oct 2020 10:56:29 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYS3y-0002nZ-2p; Fri, 30 Oct 2020 10:55:19 +0000
+ id 1kYS4v-0003AP-L5; Fri, 30 Oct 2020 10:56:18 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 9783A1F45E6C
+ (Authenticated sender: eballetbo) with ESMTPSA id 4081F1F45E6C
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v3 04/16] soc: mediatek: pm-domains: Add bus protection
- protocol
-To: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v3 06/16] soc: mediatek: pm-domains: Add SMI block as bus
+ protection block
+To: Nicolas Boichat <drinkcat@chromium.org>
 References: <20201026175526.2915399-1-enric.balletbo@collabora.com>
- <20201026175526.2915399-5-enric.balletbo@collabora.com>
- <1603796869.16422.2.camel@mtksdaap41>
-Message-ID: <891af5b7-42e1-3d52-b2b6-45139a92ec1a@collabora.com>
-Date: Fri, 30 Oct 2020 11:55:14 +0100
+ <20201026175526.2915399-7-enric.balletbo@collabora.com>
+ <CANMq1KCDNH1w+jo5kjyhusLdzCR0hF8QUi3a+jkkDvv75uGK5A@mail.gmail.com>
+Message-ID: <adbcc9a6-d101-62e1-265c-146b38c3165a@collabora.com>
+Date: Fri, 30 Oct 2020 11:56:14 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <1603796869.16422.2.camel@mtksdaap41>
+In-Reply-To: <CANMq1KCDNH1w+jo5kjyhusLdzCR0hF8QUi3a+jkkDvv75uGK5A@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_065518_367726_46F91B5C 
-X-CRM114-Status: GOOD (  23.54  )
+X-CRM114-CacheID: sfid-20201030_065617_843951_3B616746 
+X-CRM114-Status: GOOD (  26.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,159 +68,123 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, linux-kernel@vger.kernel.org, fparent@baylibre.com,
- Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
+Cc: Matthias Brugger <mbrugger@suse.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ lkml <linux-kernel@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Weiyi Lu,
+Hi Nicolas,
 
-Many thanks for your comments.
+Thank you for your comments.
 
-On 27/10/20 12:07, Weiyi Lu wrote:
-> On Mon, 2020-10-26 at 18:55 +0100, Enric Balletbo i Serra wrote:
+On 27/10/20 3:44, Nicolas Boichat wrote:
+> On Tue, Oct 27, 2020 at 1:55 AM Enric Balletbo i Serra
+> <enric.balletbo@collabora.com> wrote:
+>>
 >> From: Matthias Brugger <mbrugger@suse.com>
 >>
->> Bus protection will need to update more then one register
->> in infracfg. Add support for several operations.
+>> Apart from the infracfg block, the SMI block is used to enable the bus
+>> protection for some power domains. Add support for this block.
 >>
 >> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 >> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 >> ---
 >>
->> Changes in v3: None
->> Changes in v2: None
+>> Changes in v3:
+>> - Do not reuse bpd for 2 different things.
+>> - Disable pd->smi first and after that pd->infracfg.
+>> - Rename BUT_PROT_UPDATE_MT8173 to BUS_PROT_UPDATE_TOPAXI as in all the
+>>   other SoCs TOPAXI is mapped to the same address.
 >>
->>  drivers/soc/mediatek/mt8173-pm-domains.h |  4 +--
->>  drivers/soc/mediatek/mtk-pm-domains.c    | 36 +++++++++++++++++-------
->>  drivers/soc/mediatek/mtk-pm-domains.h    |  4 ++-
->>  3 files changed, 31 insertions(+), 13 deletions(-)
->>
->> diff --git a/drivers/soc/mediatek/mt8173-pm-domains.h b/drivers/soc/mediatek/mt8173-pm-domains.h
->> index a2a624bbd8b8..341cc287c8ce 100644
->> --- a/drivers/soc/mediatek/mt8173-pm-domains.h
->> +++ b/drivers/soc/mediatek/mt8173-pm-domains.h
->> @@ -34,7 +34,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
->>  		.ctl_offs = SPM_DIS_PWR_CON,
->>  		.sram_pdn_bits = GENMASK(11, 8),
->>  		.sram_pdn_ack_bits = GENMASK(12, 12),
->> -		.bp_infracfg = {
->> +		.bp_infracfg[0] = {
->>  			.bus_prot_reg_update = true,
->>  			.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
->>  				MT8173_TOP_AXI_PROT_EN_MM_M1,
->> @@ -76,7 +76,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
->>  		.ctl_offs = SPM_MFG_PWR_CON,
->>  		.sram_pdn_bits = GENMASK(13, 8),
->>  		.sram_pdn_ack_bits = GENMASK(21, 16),
->> -		.bp_infracfg = {
->> +		.bp_infracfg[0] = {
->>  			.bus_prot_reg_update = true,
->>  			.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
->>  				MT8173_TOP_AXI_PROT_EN_MFG_M0 |
->> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
->> index 16503d6db6a8..2121e05cb9a4 100644
->> --- a/drivers/soc/mediatek/mtk-pm-domains.c
->> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
->> @@ -89,24 +89,40 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
->>  
->>  static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
->>  {
->> -	const struct scpsys_bus_prot_data *bp_data = &pd->data->bp_infracfg;
->> +	const struct scpsys_bus_prot_data *bpd = pd->data->bp_infracfg;
->> +	int i, ret;
->>  
->> -	if (!bp_data->bus_prot_mask)
->> -		return 0;
->> +	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
->> +		if (!bpd[i].bus_prot_mask)
->> +			break;
->>  
->> -	return mtk_infracfg_set_bus_protection(pd->infracfg, bp_data->bus_prot_mask,
->> -					       bp_data->bus_prot_reg_update);
->> +		ret = mtk_infracfg_set_bus_protection(pd->infracfg,
->> +						      bpd[i].bus_prot_mask,
->> +						      bpd[i].bus_prot_reg_update);
->> +		if (ret)
->> +			return ret;
->> +	}
->> +
->> +	return 0;
->>  }
->>  
->>  static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
->>  {
->> -	const struct scpsys_bus_prot_data *bp_data = &pd->data->bp_infracfg;
->> +	const struct scpsys_bus_prot_data *bpd = pd->data->bp_infracfg;
->> +	int i, ret;
->>  
->> -	if (!bp_data->bus_prot_mask)
->> -		return 0;
->> +	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
-> 
-> I thought it should be
-> 
-> for (i = SPM_MAX_BUS_PROT_DATA - 1; i > 0; i--) {
-> 	if (!bpd[i].bus_prot_mask)
-> 		continue;
-> 
-
-Done.
-
-> ...
-> 
->> +		if (!bpd[i].bus_prot_mask)
->> +			return 0;
->>  
->> -	return mtk_infracfg_clear_bus_protection(pd->infracfg, bp_data->bus_prot_mask,
->> -						 bp_data->bus_prot_reg_update);
->> +		ret = mtk_infracfg_clear_bus_protection(pd->infracfg,
->> +							bpd[i].bus_prot_mask,
->> +							bpd[i].bus_prot_reg_update);
->> +		if (ret)
->> +			return ret;
->> +	}
->> +
->> +	return 0;
->>  }
->>  
+> [snip]
 >>  static int scpsys_power_on(struct generic_pm_domain *genpd)
+>> @@ -266,6 +271,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>>         if (IS_ERR(pd->infracfg))
+>>                 pd->infracfg = NULL;
+>>
+>> +       pd->smi = syscon_regmap_lookup_by_phandle(node, "mediatek,smi");
+>> +       if (IS_ERR(pd->smi))
+>> +               pd->smi = NULL;
+> 
+> This is the second time I see this pattern, I think.
+> 
+> Do we want to create a new syscon_regmap_lookup_by_phandle_optional wrapper?
+> 
+
+I think could be useful, yes. So I sent a patch to add this wrapper, let's see
+what the MFD maintainers think.
+
+> Also, are we ok with ignoring all errors? I agree we can ignore
+> -ENODEV if optional, but I'm not sure about the others.
+> 
+
+Right, we shouldn't ignore the other errors.
+
+>> +
+>>         pd->num_clks = of_clk_get_parent_count(node);
+>>         if (pd->num_clks > 0) {
+>>                 pd->clks = devm_kcalloc(scpsys->dev, pd->num_clks, sizeof(*pd->clks), GFP_KERNEL);
 >> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
->> index 7c8efcb3cef2..e428fe23a7e3 100644
+>> index e428fe23a7e3..7b1abcfc4ba3 100644
 >> --- a/drivers/soc/mediatek/mtk-pm-domains.h
 >> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
->> @@ -32,6 +32,8 @@
->>  #define PWR_STATUS_AUDIO		BIT(24)
->>  #define PWR_STATUS_USB			BIT(25)
->>  
->> +#define SPM_MAX_BUS_PROT_DATA		3
+>> @@ -34,8 +34,31 @@
+>>
+>>  #define SPM_MAX_BUS_PROT_DATA          3
+>>
+>> +#define _BUS_PROT(_mask, _set, _clr, _sta, _update) {  \
+>> +               .bus_prot_mask = (_mask),               \
+>> +               .bus_prot_set = _set,                   \
+>> +               .bus_prot_clr = _clr,                   \
+>> +               .bus_prot_sta = _sta,                   \
+>> +               .bus_prot_reg_update = _update,         \
+>> +       }
 >> +
-> 
-> #define SPM_MAX_BUS_PROT_DATA		5
-> 
-> to be compatible with MT8192
-> 
-
-Done.
-
+>> +#define BUS_PROT_WR(_mask, _set, _clr, _sta)           \
+>> +               _BUS_PROT(_mask, _set, _clr, _sta, false)
+>> +
+>> +#define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)               \
+>> +               _BUS_PROT(_mask, _set, _clr, _sta, true)
+>> +
+>> +#define BUS_PROT_UPDATE_TOPAXI(_mask)                          \
+>> +               BUS_PROT_UPDATE(_mask,                          \
+>> +                               INFRA_TOPAXI_PROTECTEN,         \
+>> +                               INFRA_TOPAXI_PROTECTEN_CLR,     \
+>> +                               INFRA_TOPAXI_PROTECTSTA1)
+>> +
 >>  struct scpsys_bus_prot_data {
->>  	u32 bus_prot_mask;
->>  	bool bus_prot_reg_update;
->> @@ -52,7 +54,7 @@ struct scpsys_domain_data {
->>  	u32 sram_pdn_bits;
->>  	u32 sram_pdn_ack_bits;
->>  	u8 caps;
->> -	const struct scpsys_bus_prot_data bp_infracfg;
->> +	const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
+>>         u32 bus_prot_mask;
+>> +       u32 bus_prot_set;
+>> +       u32 bus_prot_clr;
+>> +       u32 bus_prot_sta;
+>>         bool bus_prot_reg_update;
 >>  };
->>  
+>>
+>> @@ -47,6 +70,7 @@ struct scpsys_bus_prot_data {
+>>   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+>>   * @caps: The flag for active wake-up action.
+>>   * @bp_infracfg: bus protection for infracfg subsystem
+>> + * @bp_smi: bus protection for smi subsystem
+>>   */
+>>  struct scpsys_domain_data {
+>>         u32 sta_mask;
+>> @@ -55,6 +79,7 @@ struct scpsys_domain_data {
+>>         u32 sram_pdn_ack_bits;
+>>         u8 caps;
+>>         const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
+>> +       const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
+>>  };
+>>
 >>  struct scpsys_soc_data {
-> 
+>> --
+>> 2.28.0
+>>
 
 _______________________________________________
 Linux-mediatek mailing list
