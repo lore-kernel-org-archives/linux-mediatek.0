@@ -2,77 +2,73 @@ Return-Path: <SRS0=gG0U=EF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB64DC55179
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B761C4742C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:22:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 65FC720728
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:14:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5A21E20663
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:22:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hVxOybel";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aEr5fIs1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65FC720728
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rpz7X7TA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cBX0BWv/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A21E20663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=stDrcQ3jajOrm/spKtN9cWHp3gsyYXzxBMNd5TmFR14=; b=hVxOybelSV/PIxcmFiN+C0Zl3
-	ulI+3Aa2FRFCiXraMBCWySPct/VAT9FlLLJa5NRWaRWtQ7YrXJFY31a1HAMhH3TnACHc2dZi0dMks
-	KyshmbiCLvb8C7q3AaqFqBuuzQm2IarOsNlav09/l8ks+iNii2BIet5ewkFXSiczpPc+LZB50j7FD
-	SCZ81lOuAyfiJHcxebaI1BWsTDfJVM5z3VodZ1Yf2GM4WqvEFatwbhCjljB2J5K5VRtb6UHrAETx6
-	vRvdQQpDA5LX2af4YpNXCU+pL8G4dofIGTn4lPEkVGGJylCWcZmE+8VNp/KjAhSU/U4Kn0hocQkdF
-	Tnm7yRe2Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=d1tdnwlPMMe/jSQI/Mx5KOPhiWErgH7YxQVJ3bJbNO0=; b=rpz7X7TAYIaKA4uEyYHt3e/SwX
+	fxj5x4SkDVfte6jGAahSxum2SQiD61wCVRs/hclKI5atV3a0ay+kUo6g5MFeisPmH/psuP9Opded1
+	t/GqFleA9K2clgqxhn4vVtIeAQBHfLfYSo/JwmRwnri3vsWyN998iyNxh2bZBM7NMSN985sJRNUL8
+	fFm2XesGjlGarOR3hTuQUQDPkS69qM9qKFZCNrbYndKi1YxH82/+W/B5ZNpF+gHOdvkIFRYS3FKWX
+	keE9LNzyL7YeScR0ZooST4Euz6hdJME7wPu/1DB6BEguI3Juc77B1HHMv2tNGJipiWea9VF28hx3W
+	rO6ZOI8Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYQTt-0004qD-I2; Fri, 30 Oct 2020 09:13:57 +0000
+	id 1kYQc5-0006vN-Qg; Fri, 30 Oct 2020 09:22:25 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYQTe-0004kR-Ca; Fri, 30 Oct 2020 09:13:43 +0000
-X-UUID: fd2dc3261237454f9d876a8948f24776-20201030
+ id 1kYQc3-0006uV-Pr; Fri, 30 Oct 2020 09:22:24 +0000
+X-UUID: ff81dac276a44bd18601dbf830b719b1-20201030
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=9EF5fmWDJQpSzok5QIIOcImlkZOclAV35NMvCm2KEY0=; 
- b=aEr5fIs1CTI7EGwDkLIZj6lEqwuMGVb5j6+jvQDnTY2WtF7CaO5WE0mM4geRx4kStF9VAqSU6e9pJA7kL8VvRrZ/xyhCXIslovP25cLtWS/Vvk36HgaFuZZuYgI4xbLHZoUhyTfbID/xl3UAV9dV+Kg8B93yy4QWtYWXFF+qU88=;
-X-UUID: fd2dc3261237454f9d876a8948f24776-20201030
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=K5V31xXaT/tsnSWsgwrn41aFfqWokiL6hIHcHbvcD1M=; 
+ b=cBX0BWv/rKSIXBO/256zH2ssZc0MhalDgmejsftWSVZIZDI/WP73Lk1NuLmkW6NheGibFLtvJXQ6quZaBxvsR16zM72mx+WrVwv7fDx2FT4O1JEVU2+jRqyS4WwestC28OM9oY1K1FDJx6pSv2ygI2RF7pP+2BfRpYDu22qI1/U=;
+X-UUID: ff81dac276a44bd18601dbf830b719b1-20201030
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ (envelope-from <seiya.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 330159133; Fri, 30 Oct 2020 01:13:37 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Oct 2020 02:13:35 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Oct 2020 17:13:34 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 30 Oct 2020 17:13:33 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzk@kernel.org>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 2/3] dt-bindings: memory: mediatek: Add mt8192 support
-Date: Fri, 30 Oct 2020 17:12:53 +0800
-Message-ID: <20201030091254.26382-3-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201030091254.26382-1-yong.wu@mediatek.com>
-References: <20201030091254.26382-1-yong.wu@mediatek.com>
+ with ESMTP id 2019987047; Fri, 30 Oct 2020 01:22:15 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Oct 2020 02:22:12 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Oct 2020 17:22:12 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 30 Oct 2020 17:22:12 +0800
+From: Seiya Wang <seiya.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v6 0/1] Add basic node support for Mediatek MT8192 SoC
+Date: Fri, 30 Oct 2020 17:22:06 +0800
+Message-ID: <20201030092207.26488-1-seiya.wang@mediatek.com>
+X-Mailer: git-send-email 2.14.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_051342_625082_7FD8C029 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20201030_052223_978609_6AFB7F35 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,78 +80,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@google.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- yong.wu@mediatek.com, ming-fan.chen@mediatek.com, anan.sun@mediatek.com, Will
- Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8192 smi support in the bindings.
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- .../bindings/memory-controllers/mediatek,smi-common.yaml      | 4 +++-
- .../bindings/memory-controllers/mediatek,smi-larb.yaml        | 2 ++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+MT8192 is a SoC based on 64bit ARMv8 architecture.
+It contains 4 CA55 and 4 CA76 cores.
+MT8192 share many HW IP with MT65xx series.
+This patchset was tested on MT8192 evaluation board to shell.
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-index e050a0c2aed6..a5b5adce0310 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-@@ -16,7 +16,7 @@ description: |+
-   MediaTek SMI have two generations of HW architecture, here is the list
-   which generation the SoCs use:
-   generation 1: mt2701 and mt7623.
--  generation 2: mt2712, mt6779, mt8167, mt8173 and mt8183.
-+  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183 and mt8192.
- 
-   There's slight differences between the two SMI, for generation 2, the
-   register which control the iommu port is at each larb's register base. But
-@@ -35,6 +35,7 @@ properties:
-           - mediatek,mt8167-smi-common
-           - mediatek,mt8173-smi-common
-           - mediatek,mt8183-smi-common
-+          - mediatek,mt8192-smi-common
- 
-       - description: for mt7623
-         items:
-@@ -98,6 +99,7 @@ allOf:
-             enum:
-               - mediatek,mt6779-smi-common
-               - mediatek,mt8183-smi-common
-+              - mediatek,mt8192-smi-common
- 
-     then:
-       properties:
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-index a11a105e872f..0376700e2cd2 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-@@ -23,6 +23,7 @@ properties:
-           - mediatek,mt8167-smi-larb
-           - mediatek,mt8173-smi-larb
-           - mediatek,mt8183-smi-larb
-+          - mediatek,mt8192-smi-larb
- 
-       - description: for mt7623
-         items:
-@@ -106,6 +107,7 @@ allOf:
-               - mediatek,mt2712-smi-larb
-               - mediatek,mt6779-smi-larb
-               - mediatek,mt8167-smi-larb
-+              - mediatek,mt8192-smi-larb
- 
-     then:
-       required:
--- 
-2.18.0
+Based on v5.10-rc1
+
+Change in v6:
+1. Remove including mt8192-clk.h
+2. Use clk26m for spi clock
+
+Change in v5:
+1. Remove watchdog and all syscon nodes
+2. Use clk26m for uart clock
+3. Remove the dependency list
+
+Change in v4:
+1. Remove scpsys, spmi and apu nodes
+2. Add i2c nodes
+3. Update watchdog binding
+4. Update dependency list
+
+Change in v3:
+Fix typo in binding document of timer
+
+Change in v2:
+1. Remove mt8192-power.h from mt8192.dtsi which is not used yet
+2. Add timer binding document and device tree node in mt8192.dtsi
+3. Remove watchdog driver modification
+
+Seiya Wang (1):
+  arm64: dts: Add Mediatek SoC MT8192 and evaluation board dts and
+    Makefile
+
+ arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+ arch/arm64/boot/dts/mediatek/mt8192-evb.dts |  29 ++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 512 ++++++++++++++++++++++++++++
+ 3 files changed, 542 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192.dtsi
+
+--
+2.14.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
