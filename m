@@ -5,19 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB40DC55179
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:24:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C38A6C00A89
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:24:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2471320720
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:24:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2E1C020720
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 09:24:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FpA7H103";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="u6P/azNa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2471320720
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ntVWn45c";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dxvx0WHN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E1C020720
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +27,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dfiHjK/eoC4lyfqPjGw6lzg7OK3pb5ceiXxAP4PNoTY=; b=FpA7H103ejGhu/kQ0Lt8fMoYm
-	8Q17G91MJSZ4dEvZb0NEy1wW+8h6/6GytTIca5iptnrKRPkDMir+ORbJccNR3Errjiy5xaSPxF+CX
-	GQRX+lJP7Ks5iHREzkViM/Ytn7VrmCgnHE3FA8sk247sZDBLRIeUkMPRSfOQG83yWqYnzkapgL/d+
-	KuEi5VpMZu1JxXIPywc/h6jxjzQ+CjNVo7u/2aZCAm93WJFzOnog5L9Y2K4oJNSPQgKwJkQBFZCUY
-	zCVPpbyL/KDs91I1aHkyDXG05snv56WLjELQFPaCHGCzpSvEJGHEZrR8G/W3CNK69A8jIdCBLGa9x
-	vwKJ6TyPg==;
+	 bh=UipjQElnwxDBZu7NGeoaVp1JAgDUFWTy+GBxbZA2QKc=; b=ntVWn45c9jOCao7FfOWmxvpjJ
+	N9Qx+gz/zYNzq8rDLCXNjLaYJyKm2QXj5MzVVGSc3N7b/8CgyER++k3w+6af1NA4kCwhk8p+y+V4J
+	q0IGnRFpkVVEx9HLIBBit+qlf/Phf7YFeQSVOXljiT/sfcOI4eo8sRYA0GR2wdHEMuabdsGhFNu7g
+	DJ8fbGYgK3FnO2SMbyfxaOoMlZSyH1GobsmhwtiMrH8eTEnVZIdfLGH5cDrP5WsmaduQ2/7uRs3FC
+	CY1OrQVDUUxG2cPnCNU/sfl+tZsx5pnrO2wAfzL+XM5qii/onYEIN9tc/VQekoJhrIO1/euBSPgpV
+	L9b0Edipg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYQe0-0007Qn-QE; Fri, 30 Oct 2020 09:24:24 +0000
+	id 1kYQe5-0007SC-0w; Fri, 30 Oct 2020 09:24:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYQdQ-00076y-Ai; Fri, 30 Oct 2020 09:23:51 +0000
-X-UUID: e0e23ca1b8fc4c0faafe6986c9364edd-20201030
+ id 1kYQdO-000778-Gw; Fri, 30 Oct 2020 09:23:50 +0000
+X-UUID: 136f33a15de14b3cb8b41de3918b5058-20201030
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=tO6p3DEk5xxQnLalf0ymZtVY6LVQdJPNur/UiY/A+l0=; 
- b=u6P/azNaZERqCOuZ9zwPBcd1qKYSDdAExfziR/yldAk04tKeNdfFpbcRaM+/togYQBcYmIFN3/fcKj9yzggTa/lRFVpy6hAz977bZreCBzxz/fW3eXVfshFFfd+h2Bjil6t8J2angUVk0Bsc9AZUTt1fRfqBMPS4tqkWesZWvsA=;
-X-UUID: e0e23ca1b8fc4c0faafe6986c9364edd-20201030
+ bh=w7gy7SucjIOx9PSFlRyJ6C5ZEwoiSnoYyoOz+LDwkns=; 
+ b=dxvx0WHNAgAiQpXfAXLoxmuo0IQvnTaP+vC6LY5S14baKR2HBwxQ+Olnphu8WzJt9eTy913ChmnULkmi32P44U9lj8FNnB1a9dXQ5ROZLnIcEQxYXGDoYm8p6gSWAzCmj/MrYoJtjbj6gSIH8zGjHiyIPE0gy9h/O2feWq/r2qQ=;
+X-UUID: 136f33a15de14b3cb8b41de3918b5058-20201030
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <seiya.wang@mediatek.com>)
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1285357230; Fri, 30 Oct 2020 01:23:26 -0800
+ with ESMTP id 1292108967; Fri, 30 Oct 2020 01:23:26 -0800
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Oct 2020 02:22:22 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ 15.0.1497.2; Fri, 30 Oct 2020 02:13:24 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Oct 2020 17:22:20 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 30 Oct 2020 17:22:21 +0800
-From: Seiya Wang <seiya.wang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v6 1/1] arm64: dts: Add Mediatek SoC MT8192 and evaluation
- board dts and Makefile
-Date: Fri, 30 Oct 2020 17:22:07 +0800
-Message-ID: <20201030092207.26488-2-seiya.wang@mediatek.com>
-X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20201030092207.26488-1-seiya.wang@mediatek.com>
-References: <20201030092207.26488-1-seiya.wang@mediatek.com>
+ 15.0.1497.2; Fri, 30 Oct 2020 17:13:21 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 30 Oct 2020 17:13:21 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v4 1/3] dt-bindings: memory: mediatek: Convert SMI to DT schema
+Date: Fri, 30 Oct 2020 17:12:52 +0800
+Message-ID: <20201030091254.26382-2-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201030091254.26382-1-yong.wu@mediatek.com>
+References: <20201030091254.26382-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_052348_646695_9B0E2A8E 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20201030_052346_896511_A03378BB 
+X-CRM114-Status: GOOD (  20.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,590 +84,431 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Seiya Wang <seiya.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ Fabien Parent <fparent@baylibre.com>, Robin Murphy <robin.murphy@arm.com>,
+ Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, yong.wu@mediatek.com,
+ ming-fan.chen@mediatek.com, anan.sun@mediatek.com, Will
+ Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic chip support for Mediatek MT8192
+Convert MediaTek SMI to DT schema.
 
-Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+CC: Fabien Parent <fparent@baylibre.com>
+CC: Ming-Fan Chen <ming-fan.chen@mediatek.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/Makefile       |   1 +
- arch/arm64/boot/dts/mediatek/mt8192-evb.dts |  29 ++
- arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 512 ++++++++++++++++++++++++++++
- 3 files changed, 542 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-evb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192.dtsi
+ .../mediatek,smi-common.txt                   |  50 -------
+ .../mediatek,smi-common.yaml                  | 140 ++++++++++++++++++
+ .../memory-controllers/mediatek,smi-larb.txt  |  50 -------
+ .../memory-controllers/mediatek,smi-larb.yaml | 129 ++++++++++++++++
+ 4 files changed, 269 insertions(+), 100 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+ delete mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 3ee682c266cc..b431ee2d6cac 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -12,4 +12,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana-rev7.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+deleted file mode 100644
+index dbafffe3f41e..000000000000
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
++++ /dev/null
+@@ -1,50 +0,0 @@
+-SMI (Smart Multimedia Interface) Common
+-
+-The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
+-
+-Mediatek SMI have two generations of HW architecture, here is the list
+-which generation the SoCs use:
+-generation 1: mt2701 and mt7623.
+-generation 2: mt2712, mt6779, mt8167, mt8173 and mt8183.
+-
+-There's slight differences between the two SMI, for generation 2, the
+-register which control the iommu port is at each larb's register base. But
+-for generation 1, the register is at smi ao base(smi always on register
+-base). Besides that, the smi async clock should be prepared and enabled for
+-SMI generation 1 to transform the smi clock into emi clock domain, but that is
+-not needed for SMI generation 2.
+-
+-Required properties:
+-- compatible : must be one of :
+-	"mediatek,mt2701-smi-common"
+-	"mediatek,mt2712-smi-common"
+-	"mediatek,mt6779-smi-common"
+-	"mediatek,mt7623-smi-common", "mediatek,mt2701-smi-common"
+-	"mediatek,mt8167-smi-common"
+-	"mediatek,mt8173-smi-common"
+-	"mediatek,mt8183-smi-common"
+-- reg : the register and size of the SMI block.
+-- power-domains : a phandle to the power domain of this local arbiter.
+-- clocks : Must contain an entry for each entry in clock-names.
+-- clock-names : must contain 3 entries for generation 1 smi HW and 2 entries
+-  for generation 2 smi HW as follows:
+-  - "apb" : Advanced Peripheral Bus clock, It's the clock for setting
+-	    the register.
+-  - "smi" : It's the clock for transfer data and command.
+-	    They may be the same if both source clocks are the same.
+-  - "async" : asynchronous clock, it help transform the smi clock into the emi
+-	      clock domain, this clock is only needed by generation 1 smi HW.
+-  and these 2 option clocks for generation 2 smi HW:
+-  - "gals0": the path0 clock of GALS(Global Async Local Sync).
+-  - "gals1": the path1 clock of GALS(Global Async Local Sync).
+-  Here is the list which has this GALS: mt6779 and mt8183.
+-
+-Example:
+-	smi_common: smi@14022000 {
+-		compatible = "mediatek,mt8173-smi-common";
+-		reg = <0 0x14022000 0 0x1000>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		clocks = <&mmsys CLK_MM_SMI_COMMON>,
+-			 <&mmsys CLK_MM_SMI_COMMON>;
+-		clock-names = "apb", "smi";
+-	};
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
 new file mode 100644
-index 000000000000..0205837fa698
+index 000000000000..e050a0c2aed6
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-@@ -0,0 +1,29 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2020 MediaTek Inc.
-+ * Author: Seiya Wang <seiya.wang@mediatek.com>
-+ */
-+/dts-v1/;
-+#include "mt8192.dtsi"
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -0,0 +1,140 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2020 MediaTek Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/memory-controllers/mediatek,smi-common.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+/ {
-+	model = "MediaTek MT8192 evaluation board";
-+	compatible = "mediatek,mt8192-evb", "mediatek,mt8192";
++title: SMI (Smart Multimedia Interface) Common
 +
-+	aliases {
-+		serial0 = &uart0;
-+	};
++maintainers:
++  - Yong Wu <yong.wu@mediatek.com>
 +
-+	chosen {
-+		stdout-path = "serial0:921600n8";
-+	};
++description: |+
++  The hardware block diagram please check bindings/iommu/mediatek,iommu.yaml
 +
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x80000000>;
-+	};
-+};
++  MediaTek SMI have two generations of HW architecture, here is the list
++  which generation the SoCs use:
++  generation 1: mt2701 and mt7623.
++  generation 2: mt2712, mt6779, mt8167, mt8173 and mt8183.
 +
-+&uart0 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++  There's slight differences between the two SMI, for generation 2, the
++  register which control the iommu port is at each larb's register base. But
++  for generation 1, the register is at smi ao base(smi always on register
++  base). Besides that, the smi async clock should be prepared and enabled for
++  SMI generation 1 to transform the smi clock into emi clock domain, but that is
++  not needed for SMI generation 2.
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt2701-smi-common
++          - mediatek,mt2712-smi-common
++          - mediatek,mt6779-smi-common
++          - mediatek,mt8167-smi-common
++          - mediatek,mt8173-smi-common
++          - mediatek,mt8183-smi-common
++
++      - description: for mt7623
++        items:
++          - const: mediatek,mt7623-smi-common
++          - const: mediatek,mt2701-smi-common
++
++  reg:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    description: |
++      apb and smi are mandatory. the async is only for generation 1 smi HW.
++      gals(global async local sync) also is optional, see below.
++    minItems: 2
++    maxItems: 4
++    items:
++      - description: apb is Advanced Peripheral Bus clock, It's the clock for
++          setting the register.
++      - description: smi is the clock for transfer data and command.
++      - description: async is asynchronous clock, it help transform the smi clock
++          into the emi clock domain.
++      - description: gals0 is the path0 clock of gals.
++      - description: gals1 is the path1 clock of gals.
++
++  clock-names:
++    minItems: 2
++    maxItems: 4
++
++required:
++  - compatible
++  - reg
++  - power-domains
++  - clocks
++  - clock-names
++
++allOf:
++  - if: #only for gen1 HW
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt2701-smi-common
++    then:
++       properties:
++         clock:
++           items:
++             minItems: 3
++             maxItems: 3
++         clock-names:
++           items:
++             - const: apb
++             - const: smi
++             - const: async
++
++  - if: #for gen2 HW that have gals
++      properties:
++        compatible:
++            enum:
++              - mediatek,mt6779-smi-common
++              - mediatek,mt8183-smi-common
++
++    then:
++      properties:
++        clock:
++          items:
++            minItems: 4
++            maxItems: 4
++        clock-names:
++          items:
++            - const: apb
++            - const: smi
++            - const: gals0
++            - const: gals1
++
++    else: #for gen2 HW that don't have gals
++      properties:
++        clock:
++          items:
++            minItems: 2
++            maxItems: 2
++        clock-names:
++          items:
++            - const: apb
++            - const: smi
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/power/mt8173-power.h>
++
++    smi_common: smi@14022000 {
++            compatible = "mediatek,mt8173-smi-common";
++            reg = <0x14022000 0x1000>;
++            power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++            clocks = <&mmsys CLK_MM_SMI_COMMON>,
++                     <&mmsys CLK_MM_SMI_COMMON>;
++            clock-names = "apb", "smi";
++    };
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+deleted file mode 100644
+index 0c5de12b5496..000000000000
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
++++ /dev/null
+@@ -1,50 +0,0 @@
+-SMI (Smart Multimedia Interface) Local Arbiter
+-
+-The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
+-
+-Required properties:
+-- compatible : must be one of :
+-		"mediatek,mt2701-smi-larb"
+-		"mediatek,mt2712-smi-larb"
+-		"mediatek,mt6779-smi-larb"
+-		"mediatek,mt7623-smi-larb", "mediatek,mt2701-smi-larb"
+-		"mediatek,mt8167-smi-larb"
+-		"mediatek,mt8173-smi-larb"
+-		"mediatek,mt8183-smi-larb"
+-- reg : the register and size of this local arbiter.
+-- mediatek,smi : a phandle to the smi_common node.
+-- power-domains : a phandle to the power domain of this local arbiter.
+-- clocks : Must contain an entry for each entry in clock-names.
+-- clock-names: must contain 2 entries, as follows:
+-  - "apb" : Advanced Peripheral Bus clock, It's the clock for setting
+-	    the register.
+-  - "smi" : It's the clock for transfer data and command.
+-  and this optional clock name:
+-  - "gals": the clock for GALS(Global Async Local Sync).
+-  Here is the list which has this GALS: mt8183.
+-
+-Required property for mt2701, mt2712, mt6779, mt7623 and mt8167:
+-- mediatek,larb-id :the hardware id of this larb.
+-
+-Example:
+-	larb1: larb@16010000 {
+-		compatible = "mediatek,mt8173-smi-larb";
+-		reg = <0 0x16010000 0 0x1000>;
+-		mediatek,smi = <&smi_common>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
+-		clocks = <&vdecsys CLK_VDEC_CKEN>,
+-			 <&vdecsys CLK_VDEC_LARB_CKEN>;
+-		clock-names = "apb", "smi";
+-	};
+-
+-Example for mt2701:
+-	larb0: larb@14010000 {
+-		compatible = "mediatek,mt2701-smi-larb";
+-		reg = <0 0x14010000 0 0x1000>;
+-		mediatek,smi = <&smi_common>;
+-		mediatek,larb-id = <0>;
+-		clocks = <&mmsys CLK_MM_SMI_LARB0>,
+-			 <&mmsys CLK_MM_SMI_LARB0>;
+-		clock-names = "apb", "smi";
+-		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
+-	};
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
 new file mode 100644
-index 000000000000..e12e024de122
+index 000000000000..a11a105e872f
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -0,0 +1,512 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2020 MediaTek Inc.
-+ * Author: Seiya Wang <seiya.wang@mediatek.com>
-+ */
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -0,0 +1,129 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2020 MediaTek Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/memory-controllers/mediatek,smi-larb.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+/dts-v1/;
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/pinctrl/mt8192-pinfunc.h>
++title: SMI (Smart Multimedia Interface) Local Arbiter
 +
-+/ {
-+	compatible = "mediatek,mt8192";
-+	interrupt-parent = <&gic>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
++maintainers:
++  - Yong Wu <yong.wu@mediatek.com>
 +
-+	clk26m: oscillator0 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <26000000>;
-+		clock-output-names = "clk26m";
-+	};
++description: |+
++  The hardware block diagram please check bindings/iommu/mediatek,iommu.yaml
 +
-+	clk32k: oscillator1 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <32768>;
-+		clock-output-names = "clk32k";
-+	};
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt2701-smi-larb
++          - mediatek,mt2712-smi-larb
++          - mediatek,mt6779-smi-larb
++          - mediatek,mt8167-smi-larb
++          - mediatek,mt8173-smi-larb
++          - mediatek,mt8183-smi-larb
 +
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
++      - description: for mt7623
++        items:
++          - const: mediatek,mt7623-smi-larb
++          - const: mediatek,mt2701-smi-larb
 +
-+		cpu0: cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x000>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			next-level-cache = <&l2_0>;
-+			capacity-dmips-mhz = <530>;
-+		};
++  reg:
++    maxItems: 1
 +
-+		cpu1: cpu@100 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x100>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			next-level-cache = <&l2_0>;
-+			capacity-dmips-mhz = <530>;
-+		};
++  clocks:
++    description: |
++      apb and smi are mandatory. gals(global async local sync) is optional.
++    minItems: 2
++    maxItems: 3
++    items:
++       - description: apb is Advanced Peripheral Bus clock, It's the clock for
++           setting the register.
++       - description: smi is the clock for transfer data and command.
++       - description: the clock for gals.
 +
-+		cpu2: cpu@200 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x200>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			next-level-cache = <&l2_0>;
-+			capacity-dmips-mhz = <530>;
-+		};
++  clock-names:
++    minItems: 2
++    maxItems: 3
 +
-+		cpu3: cpu@300 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x300>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			next-level-cache = <&l2_0>;
-+			capacity-dmips-mhz = <530>;
-+		};
++  power-domains:
++    maxItems: 1
 +
-+		cpu4: cpu@400 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a76";
-+			reg = <0x400>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			next-level-cache = <&l2_1>;
-+			capacity-dmips-mhz = <1024>;
-+		};
++  mediatek,smi:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: a phandle to the smi_common node.
 +
-+		cpu5: cpu@500 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a76";
-+			reg = <0x500>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			next-level-cache = <&l2_1>;
-+			capacity-dmips-mhz = <1024>;
-+		};
++  mediatek,larb-id:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 31
++    description: the hardware id of this larb.
 +
-+		cpu6: cpu@600 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a76";
-+			reg = <0x600>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			next-level-cache = <&l2_1>;
-+			capacity-dmips-mhz = <1024>;
-+		};
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - power-domains
 +
-+		cpu7: cpu@700 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a76";
-+			reg = <0x700>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			next-level-cache = <&l2_1>;
-+			capacity-dmips-mhz = <1024>;
-+		};
++allOf:
++  - if: # HW has gals
++      properties:
++        compatible:
++          enum:
++            - mediatek,mt8183-smi-larb
 +
-+		cpu-map {
-+			cluster0 {
-+				core0 {
-+					cpu = <&cpu0>;
-+				};
-+				core1 {
-+					cpu = <&cpu1>;
-+				};
-+				core2 {
-+					cpu = <&cpu2>;
-+				};
-+				core3 {
-+					cpu = <&cpu3>;
-+				};
-+			};
++    then:
++      properties:
++        clock:
++          items:
++            minItems: 3
++            maxItems: 3
++        clock-names:
++          items:
++            - const: apb
++            - const: smi
++            - const: gals
 +
-+			cluster1 {
-+				core0 {
-+					cpu = <&cpu4>;
-+				};
-+				core1 {
-+					cpu = <&cpu5>;
-+				};
-+				core2 {
-+					cpu = <&cpu6>;
-+				};
-+				core3 {
-+					cpu = <&cpu7>;
-+				};
-+			};
-+		};
++    else:
++      properties:
++        clock:
++          items:
++            minItems: 2
++            maxItems: 2
++        clock-names:
++          items:
++            - const: apb
++            - const: smi
 +
-+		l2_0: l2-cache0 {
-+			compatible = "cache";
-+			next-level-cache = <&l3_0>;
-+		};
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt2701-smi-larb
++              - mediatek,mt2712-smi-larb
++              - mediatek,mt6779-smi-larb
++              - mediatek,mt8167-smi-larb
 +
-+		l2_1: l2-cache1 {
-+			compatible = "cache";
-+			next-level-cache = <&l3_0>;
-+		};
++    then:
++      required:
++        - mediatek,larb-id
 +
-+		l3_0: l3-cache {
-+			compatible = "cache";
-+		};
-+	};
++additionalProperties: false
 +
-+	pmu-a55 {
-+		compatible = "arm,cortex-a55-pmu";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster0>;
-+	};
++examples:
++  - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/power/mt8173-power.h>
 +
-+	pmu-a76 {
-+		compatible = "arm,cortex-a76-pmu";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster1>;
-+	};
-+
-+	psci {
-+		compatible = "arm,psci-1.0";
-+		method = "smc";
-+	};
-+
-+	timer: timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clock-frequency = <13000000>;
-+	};
-+
-+	soc {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		gic: interrupt-controller@c000000 {
-+			compatible = "arm,gic-v3";
-+			#interrupt-cells = <4>;
-+			#redistributor-regions = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0x0c000000 0 0x40000>,
-+			      <0 0x0c040000 0 0x200000>;
-+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-+
-+			ppi-partitions {
-+				ppi_cluster0: interrupt-partition-0 {
-+					affinity = <&cpu0 &cpu1 &cpu2 &cpu3>;
-+				};
-+				ppi_cluster1: interrupt-partition-1 {
-+					affinity = <&cpu4 &cpu5 &cpu6 &cpu7>;
-+				};
-+			};
-+		};
-+
-+		pio: pinctrl@10005000 {
-+			compatible = "mediatek,mt8192-pinctrl";
-+			reg = <0 0x10005000 0 0x1000>,
-+			      <0 0x11c20000 0 0x1000>,
-+			      <0 0x11d10000 0 0x1000>,
-+			      <0 0x11d30000 0 0x1000>,
-+			      <0 0x11d40000 0 0x1000>,
-+			      <0 0x11e20000 0 0x1000>,
-+			      <0 0x11e70000 0 0x1000>,
-+			      <0 0x11ea0000 0 0x1000>,
-+			      <0 0x11f20000 0 0x1000>,
-+			      <0 0x11f30000 0 0x1000>,
-+			      <0 0x1000b000 0 0x1000>;
-+			reg-names = "iocfg0", "iocfg_rm", "iocfg_bm",
-+				    "iocfg_bl", "iocfg_br", "iocfg_lm",
-+				    "iocfg_lb", "iocfg_rt", "iocfg_lt",
-+				    "iocfg_tl", "eint";
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			gpio-ranges = <&pio 0 0 220>;
-+			interrupt-controller;
-+			interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#interrupt-cells = <2>;
-+		};
-+
-+		systimer: timer@10017000 {
-+			compatible = "mediatek,mt8192-timer",
-+				     "mediatek,mt6765-timer";
-+			reg = <0 0x10017000 0 0x1000>;
-+			interrupts = <GIC_SPI 233 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>;
-+			clock-names = "clk13m";
-+		};
-+
-+		uart0: serial@11002000 {
-+			compatible = "mediatek,mt8192-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11002000 0 0x1000>;
-+			interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		uart1: serial@11003000 {
-+			compatible = "mediatek,mt8192-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11003000 0 0x1000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		spi0: spi@1100a000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x1100a000 0 0x1000>;
-+			interrupts = <GIC_SPI 159 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi1: spi@11010000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11010000 0 0x1000>;
-+			interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi2: spi@11012000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11012000 0 0x1000>;
-+			interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi3: spi@11013000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11013000 0 0x1000>;
-+			interrupts = <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi4: spi@11018000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11018000 0 0x1000>;
-+			interrupts = <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi5: spi@11019000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11019000 0 0x1000>;
-+			interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi6: spi@1101d000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x1101d000 0 0x1000>;
-+			interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi7: spi@1101e000 {
-+			compatible = "mediatek,mt8192-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x1101e000 0 0x1000>;
-+			interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		i2c3: i2c3@11cb0000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11cb0000 0 0x1000>,
-+			      <0 0x10217300 0 0x80>;
-+			interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c7: i2c7@11d00000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11d00000 0 0x1000>,
-+			      <0 0x10217600 0 0x180>;
-+			interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c8: i2c8@11d01000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11d01000 0 0x1000>,
-+			      <0 0x10217780 0 0x180>;
-+			interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c9: i2c9@11d02000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11d02000 0 0x1000>,
-+			      <0 0x10217900 0 0x180>;
-+			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c1: i2c1@11d20000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11d20000 0 0x1000>,
-+			      <0 0x10217100 0 0x80>;
-+			interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c2: i2c2@11d21000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11d21000 0 0x1000>,
-+			      <0 0x10217180 0 0x180>;
-+			interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c4: i2c4@11d22000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11d22000 0 0x1000>,
-+			      <0 0x10217380 0 0x180>;
-+			interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c5: i2c5@11e00000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11e00000 0 0x1000>,
-+			      <0 0x10217500 0 0x80>;
-+			interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c0: i2c0@11f00000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11f00000 0 0x1000>,
-+			      <0 0x10217080 0 0x80>;
-+			interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c6: i2c6@11f01000 {
-+			compatible = "mediatek,mt8192-i2c";
-+			reg = <0 0x11f01000 0 0x1000>,
-+			      <0 0x10217580 0 0x80>;
-+			interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "main", "dma";
-+			clock-div = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+	};
-+};
++    larb1: larb@16010000 {
++      compatible = "mediatek,mt8173-smi-larb";
++      reg = <0x16010000 0x1000>;
++      mediatek,smi = <&smi_common>;
++      power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
++      clocks = <&vdecsys CLK_VDEC_CKEN>,
++               <&vdecsys CLK_VDEC_LARB_CKEN>;
++      clock-names = "apb", "smi";
++    };
 -- 
-2.14.1
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
