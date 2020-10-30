@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48C40C4363A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15D2FC4363A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:48:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B8E702076D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:44:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8E5E5207DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:48:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QDXq8JhL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8E702076D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ztqUTUbi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E5E5207DE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,35 +26,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NyFlTl8sVYIgEf7mlr0K8Fp7Ec/6SqNg04p7wgI9mNA=; b=QDXq8JhLp5+ALQHKEv/f5tsDt
-	NIXsiC1o2aErlsk0pSTXaWiTEWrKQF74QyUuN8wYGZ3D9bJByC5DIMS93J9bSj32dGa+ze3QGT6Yi
-	NBlz0cLItbpqNDoBsh4FsESX3ipwvz45tNqBPSA9th4PsQ1WfrrrDz8iTMdTSyGkgJ8gReFOGG7LB
-	/KTAlz01soFRLEy6vxmnQ42/n0y5aHT+vBF/Ci8qAw2nfTPofcEVXONJEfbu6Sx6OPUWgs1PN9hQD
-	BqqX1l4zwTAMrxQpttYk+OTgramzBhAcuTK4Wg5eXusJ43gUjpprjXyJ0kObjbYtBbz4sSUrUnVsq
-	dRDfDvV7A==;
+	 bh=h7Y/SMUsp1ibpkzKOiXBlMQOdFphLqThN+o5eGJZLrU=; b=ztqUTUbifgHMqOtVaTvcAXQRq
+	SGLypl/GzWD26IOxY9eMXL6l5O93aMMF1ljR/fYu+x+VDMngB6Td5fo0TLAhQ78Zbwe4KOM5m1Fr5
+	zMq/Q+n1y/TivaYoKE/hCoYwL8o16DPUbjPPyGwlurB4pLgMtYIUs6ZaKVRBV6miqnxbHaLesPPne
+	XzmotFtyBc6ppFxmzKgENmcES3c0CYoqPBZsX2maIjRjws13TftSRDYiovYTrew4RN5jfJw7woxq6
+	oVdVDZE5xgHv0FYgUFo9VL6mGcDzY2qBtiw7HdfvTR3+UicCa3SfQm873ZEOlWnwc5SS/H0iJ1E7R
+	FKqwaIMGg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYSpE-0004dz-UI; Fri, 30 Oct 2020 11:44:09 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kYSsw-0005zC-Bc; Fri, 30 Oct 2020 11:47:58 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYSoe-0004PP-Re; Fri, 30 Oct 2020 11:43:46 +0000
+ id 1kYSsm-0005vk-8Q; Fri, 30 Oct 2020 11:47:49 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id F132C1F45EBC
-Subject: Re: [PATCH v2 1/2] dt-bindings: power: Add MT8167 power domains
-To: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Weiyi Lu <weiyi.lu@mediatek.com>
+ (Authenticated sender: eballetbo) with ESMTPSA id 07CC01F45EBD
+Subject: Re: [PATCH v2 2/2] soc: mediatek: pm-domains: Add support for mt8167
+To: Fabien Parent <fparent@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
 References: <20201027131122.374046-1-fparent@baylibre.com>
+ <20201027131122.374046-2-fparent@baylibre.com>
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <c00a5ba1-154d-66ab-2ac7-c504e2e87b3e@collabora.com>
-Date: Fri, 30 Oct 2020 12:43:28 +0100
+Message-ID: <157c2b93-4ac3-5368-d04c-b574f04d6f41@collabora.com>
+Date: Fri, 30 Oct 2020 12:47:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201027131122.374046-1-fparent@baylibre.com>
+In-Reply-To: <20201027131122.374046-2-fparent@baylibre.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_074333_195598_B613613D 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20201030_074748_491599_D70D3DD5 
+X-CRM114-Status: GOOD (  24.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,8 +67,7 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -76,10 +76,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Fabien,
 
-Thank you for the patch and base it on [0]
+Thank you for the patch and base it on the new SCPSYS PM domains driver
 
 On 27/10/20 14:11, Fabien Parent wrote:
-> Add power domains dt-bindings for MT8167.
+> Add the needed board data to support mt8167 SoC.
 > 
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
@@ -90,60 +90,168 @@ On 27/10/20 14:11, Fabien Parent wrote:
 > 	* Implement on top of new SCPSYS PM domains driver [0]
 > 
 > [0] https://patchwork.kernel.org/project/linux-mediatek/list/?series=370737
+>  drivers/soc/mediatek/mt8167-pm-domains.h | 86 ++++++++++++++++++++++++
+>  drivers/soc/mediatek/mtk-pm-domains.c    |  5 ++
+>  drivers/soc/mediatek/mtk-pm-domains.h    |  1 +
+>  include/linux/soc/mediatek/infracfg.h    |  8 +++
+>  4 files changed, 100 insertions(+)
+>  create mode 100644 drivers/soc/mediatek/mt8167-pm-domains.h
 > 
->  .../power/mediatek,power-controller.yaml       |  2 ++
->  include/dt-bindings/power/mt8167-power.h       | 18 ++++++++++++++++++
->  2 files changed, 20 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt8167-power.h
-> 
-> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> index 0318ffb1133c..73e5452c3a5d 100644
-> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> @@ -23,6 +23,7 @@ properties:
->  
->    compatible:
->      enum:
-> +      - mediatek,mt8167-power-controller
->        - mediatek,mt8173-power-controller
->        - mediatek,mt8183-power-controller
->        - mediatek,mt8192-power-controller
-> @@ -59,6 +60,7 @@ patternProperties:
->        reg:
->          description: |
->            Power domain index. Valid values are defined in:
-> +              "include/dt-bindings/power/mt8167-power.h" - for MT8167 type power domain.
->                "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
->                "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
->                "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
-> diff --git a/include/dt-bindings/power/mt8167-power.h b/include/dt-bindings/power/mt8167-power.h
+> diff --git a/drivers/soc/mediatek/mt8167-pm-domains.h b/drivers/soc/mediatek/mt8167-pm-domains.h
 > new file mode 100644
-> index 000000000000..7e3babfc2eef
+> index 000000000000..ff18139d0d6c
 > --- /dev/null
-> +++ b/include/dt-bindings/power/mt8167-power.h
-> @@ -0,0 +1,18 @@
-> +/* SPDX-License-Identifier: GPL-2.0
-> + *
-> + * Copyright (c) 2020 MediaTek Inc.
+> +++ b/drivers/soc/mediatek/mt8167-pm-domains.h
+> @@ -0,0 +1,86 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +
+> +#ifndef __SOC_MEDIATEK_MT8167_PM_DOMAINS_H
+> +#define __SOC_MEDIATEK_MT8167_PM_DOMAINS_H
+> +
+> +#include "mtk-pm-domains.h"
+> +#include <dt-bindings/power/mt8167-power.h>
+> +
+> +#define MT8167_PWR_STATUS_MFG_2D	BIT(24)
+> +#define MT8167_PWR_STATUS_MFG_ASYNC	BIT(25)
+> +
+> +/*
+> + * MT8167 power domain support
 > + */
 > +
-> +#ifndef _DT_BINDINGS_POWER_MT8167_POWER_H
-> +#define _DT_BINDINGS_POWER_MT8167_POWER_H
+> +static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+> +	[MT8167_POWER_DOMAIN_DISP] = {
+> +		.sta_mask = PWR_STATUS_DISP,
+> +		.ctl_offs = SPM_DIS_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.bp_infracfg = {
+> +			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_MM_EMI |
+> +					       MT8167_TOP_AXI_PROT_EN_MCU_MM),
+> +		},
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +	},
+> +	[MT8167_POWER_DOMAIN_VDEC] = {
+> +		.sta_mask = PWR_STATUS_VDEC,
+> +		.ctl_offs = SPM_VDE_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +	},
+> +	[MT8167_POWER_DOMAIN_ISP] = {
+> +		.sta_mask = PWR_STATUS_ISP,
+> +		.ctl_offs = SPM_ISP_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(13, 12),
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +	},
+> +	[MT8167_POWER_DOMAIN_MFG_ASYNC] = {
+> +		.sta_mask = MT8167_PWR_STATUS_MFG_ASYNC,
+> +		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
+> +		.sram_pdn_bits = 0,
+> +		.sram_pdn_ack_bits = 0,
+> +		.bp_infracfg = {
+> +			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_MCU_MFG |
+> +					       MT8167_TOP_AXI_PROT_EN_MFG_EMI),
+> +		},
+> +	},
+> +	[MT8167_POWER_DOMAIN_MFG_2D] = {
+> +		.sta_mask = MT8167_PWR_STATUS_MFG_2D,
+> +		.ctl_offs = SPM_MFG_2D_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(15, 12),
+> +	},
+> +	[MT8167_POWER_DOMAIN_MFG] = {
+> +		.sta_mask = PWR_STATUS_MFG,
+> +		.ctl_offs = SPM_MFG_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(15, 12),
+> +	},
+> +	[MT8167_POWER_DOMAIN_CONN] = {
+> +		.sta_mask = PWR_STATUS_CONN,
+> +		.ctl_offs = SPM_CONN_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = 0,
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +		.bp_infracfg = {
+> +			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_CONN_EMI |
+> +					       MT8167_TOP_AXI_PROT_EN_CONN_MCU |
+> +					       MT8167_TOP_AXI_PROT_EN_MCU_CONN),
+> +		},
+> +	},
+> +};
 > +
-> +#define MT8167_POWER_DOMAIN_MM		0
-> +#define MT8167_POWER_DOMAIN_DISP	0
+> +static const struct scpsys_soc_data mt8167_scpsys_data = {
+> +	.domains = scpsys_domain_data_mt8167,
 
-Is that correct? Both domains have the same index?
+Just to let you know, this is now domains_data.
 
-> +#define MT8167_POWER_DOMAIN_VDEC	1
-> +#define MT8167_POWER_DOMAIN_ISP		2
-> +#define MT8167_POWER_DOMAIN_CONN	3
-> +#define MT8167_POWER_DOMAIN_MFG_ASYNC	4
-> +#define MT8167_POWER_DOMAIN_MFG_2D	5
-> +#define MT8167_POWER_DOMAIN_MFG		6
+> +	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8167),
+> +	.pwr_sta_offs = SPM_PWR_STATUS,
+> +	.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+> +};
 > +
-> +#endif /* _DT_BINDINGS_POWER_MT8167_POWER_H */
+> +#endif /* __SOC_MEDIATEK_MT8167_PM_DOMAINS_H */
+> +
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index 293efa27b6ce..34c704865f01 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/regmap.h>
+>  #include <linux/soc/mediatek/infracfg.h>
+>  
+> +#include "mt8167-pm-domains.h"
+>  #include "mt8173-pm-domains.h"
+>  #include "mt8183-pm-domains.h"
+>  #include "mt8192-pm-domains.h"
+> @@ -515,6 +516,10 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
+>  }
+>  
+>  static const struct of_device_id scpsys_of_match[] = {
+> +	{
+> +		.compatible = "mediatek,mt8167-power-controller",
+> +		.data = &mt8167_scpsys_data,
+> +	},
+>  	{
+>  		.compatible = "mediatek,mt8173-power-controller",
+>  		.data = &mt8173_scpsys_data,
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+> index eda453f55126..7c1e1a7209f1 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> @@ -14,6 +14,7 @@
+>  #define SPM_VEN_PWR_CON			0x0230
+>  #define SPM_ISP_PWR_CON			0x0238
+>  #define SPM_DIS_PWR_CON			0x023c
+> +#define SPM_CONN_PWR_CON		0x0280
+>  #define SPM_VEN2_PWR_CON		0x0298
+>  #define SPM_AUDIO_PWR_CON		0x029c
+>  #define SPM_MFG_2D_PWR_CON		0x02c0
+> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
+> index e7842debc05d..4615a228da51 100644
+> --- a/include/linux/soc/mediatek/infracfg.h
+> +++ b/include/linux/soc/mediatek/infracfg.h
+> @@ -123,6 +123,14 @@
+>  #define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
+>  #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
+>  
+> +#define MT8167_TOP_AXI_PROT_EN_MM_EMI		BIT(1)
+> +#define MT8167_TOP_AXI_PROT_EN_MCU_MFG		BIT(2)
+> +#define MT8167_TOP_AXI_PROT_EN_CONN_EMI		BIT(4)
+> +#define MT8167_TOP_AXI_PROT_EN_MFG_EMI		BIT(5)
+> +#define MT8167_TOP_AXI_PROT_EN_CONN_MCU		BIT(8)
+> +#define MT8167_TOP_AXI_PROT_EN_MCU_CONN		BIT(9)
+> +#define MT8167_TOP_AXI_PROT_EN_MCU_MM		BIT(11)
+> +
+>  #define MT2701_TOP_AXI_PROT_EN_MM_M0		BIT(1)
+>  #define MT2701_TOP_AXI_PROT_EN_CONN_M		BIT(2)
+>  #define MT2701_TOP_AXI_PROT_EN_CONN_S		BIT(8)
 > 
+
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+Thanks,
+ Enric
 
 _______________________________________________
 Linux-mediatek mailing list
