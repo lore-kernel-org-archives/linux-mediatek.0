@@ -2,79 +2,77 @@ Return-Path: <SRS0=gG0U=EF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43A96C00A89
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 18:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 677C7C55178
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 18:37:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C4F3820709
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 18:24:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D833520729
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 18:37:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eULca+TA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4F3820709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="taRVKBZu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="2DVdS4mH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D833520729
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=i1QjMQtfxg3zHbmhwmkpKPWfzqU/aRU0C/epDJ0gGP0=; b=eULca+TAAlmJkS9wEndTSP91/
-	z/Kv3ThPHMpMSXUVQFMUhBiqwYf+NxpfklYYgJ7AZtMCmQ1mTO4A8/XUwU8nenaQ6auTAKR6ZlLbs
-	nmH1upiVN/PItRwTOhJv72HiBktViXcppcyM0JmdNqCLqgGekZbwVMUWRNKjzfJ56PXjBzgiZoY0l
-	sVfdq2yzrrS0GBnl8dr1Ejf/HyZotBL8LDM1upewv+o0UUK1lDv1fcZI8M8piMjA8YUbehwIMPro9
-	Ij0+E+B0K0lG0fYC3eY5IY/KZn1zd2vzYNKh6+ZyoYXpsueoGeuy8C/3qOk0efWHlVPN008ZzSseF
-	rRtpnr+zQ==;
+	 bh=FMlMhhAYntSMGSpvgrm/ZMHBS0Lw0mOSTUutTCJBO1c=; b=taRVKBZuoiLyA80fcjoKdLPob
+	ROKrdQ8RA2henFHdJrlqSlrGNwlGYxtkQuUpM5cuocQA6WRdbAKR6MbakRveibfbJimhTip6A6yF/
+	Zz5dawGnQBVaTJLF1dSkcv66bPlm4kl21cDgMxDMmoEOY5lCztkdTseAO4SijdQJC7Z6LUSzldjjv
+	EmcsTDcBw8CiBDF0t27tAwaLwhOhpcXKzEO3AzjOsJZGzYQHEKxRIJ7IwgrN09jxVgl7RCba0GKfl
+	HPCzDyxtEgSl1STM+a2XaicxWYTJ1xR9ZXwV/e01Lz3apW1XucLrz/w+YqAjtGZuBxHkwnYTMNZKY
+	V8nKLZWeA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYZ49-0001jQ-Er; Fri, 30 Oct 2020 18:23:57 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1kYZGi-0003Tx-NV; Fri, 30 Oct 2020 18:36:56 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYZ44-0001hc-Ef; Fri, 30 Oct 2020 18:23:53 +0000
-Received: by mail-oi1-f193.google.com with SMTP id f7so7595907oib.4;
- Fri, 30 Oct 2020 11:23:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=2inLjJbsAMkvoGMY+1AnyOCvk2aTurr24HiDc4FcZ/8=;
- b=P7ppMlELCTbnvWsdMYHUi8VxARSJwOlQD4vzlhUwjE1trf6e/a2S4GxRaiSw5qvte1
- W+soSuetAD6J/dp8M5IGpGxRA543csbX+0jsXDnFjt5O0BVDTen6+cclwfRWUx9qggo6
- INmkcWSW4uaUp6zBIQm+VI61xhM1qMQvmh20NKdqL2G45YgQ5fMJZgidNrMYClMSFFEC
- k0Lr4TbTFkBbc5rCaAVICjbPXuY4k33Vkvhqu4gQ8JrLQGsnCa31/aV42B74AGjXlV9P
- qmCaiqo5YNtohxM+EUI3nkELZquOR4kmtqy0WS5y/JNaerLHnBb2CDuv+ziRDGZjZ+MY
- 1YVw==
-X-Gm-Message-State: AOAM533U8oymAzws6nQKqg4NZkZ0OCWYdtAIY7CBWQyKPNmYg1qgziMW
- 2mlg2Fm/DLXGU/tsMSBgBw==
-X-Google-Smtp-Source: ABdhPJzaDb2ohyIsfJyr5ytEjd3zNgm/t/ARqTbOLtJdwTgoAzDkMIVKjnk/1oZSlSF1bY7JMwpWCA==
-X-Received: by 2002:aca:4f55:: with SMTP id d82mr2532939oib.172.1604082221243; 
- Fri, 30 Oct 2020 11:23:41 -0700 (PDT)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id 104sm1553996otu.81.2020.10.30.11.23.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2020 11:23:40 -0700 (PDT)
-Received: (nullmailer pid 4098973 invoked by uid 1000);
- Fri, 30 Oct 2020 18:23:39 -0000
-Date: Fri, 30 Oct 2020 13:23:39 -0500
-From: Rob Herring <robh@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH 2/2] dt-bindings: mediatek: mt8192: add ul-delay-ms
- property
-Message-ID: <20201030182339.GA4069524@bogus>
-References: <1603521686-13036-1-git-send-email-jiaxin.yu@mediatek.com>
- <1603521686-13036-3-git-send-email-jiaxin.yu@mediatek.com>
+ id 1kYZGe-0003SY-JJ; Fri, 30 Oct 2020 18:36:53 +0000
+Received: from mail-ed1-f48.google.com (mail-ed1-f48.google.com
+ [209.85.208.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 55F342151B;
+ Fri, 30 Oct 2020 18:36:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604083010;
+ bh=Ij7toGsdodJH+g5af0r9MiYPy/qpAd3YN5F+RhUxgsY=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=2DVdS4mHCoUE4JHIUSmVHAmvB594iwVT4qjbLAdq0KaYWtLmkAcQzyhvgZg75ag0n
+ PEWhdDNqSIOTh1JMt0AAzcJ00Ze5LokKTaV/So8QMlv7X6uZVpJF15tiGGivE0hh7O
+ RCV+AWVeb5MnfC3QnfBRznxcfwWg7DAuaQExdjBQ=
+Received: by mail-ed1-f48.google.com with SMTP id g25so6835678edm.6;
+ Fri, 30 Oct 2020 11:36:50 -0700 (PDT)
+X-Gm-Message-State: AOAM531Gd1afViLWBEUqkXQpbCulu3IVTDO22VKWkLIxFLL0HTmZnOA3
+ RQRpTf5le2NACBMcDxspZLvEW8KVDfmaRfA79cI=
+X-Google-Smtp-Source: ABdhPJzlGGUy2WAzm1IY09sGJUjxwv5CeNCRC+4gAdJEbqaWeaJ5HOn9h3HyxBxr7WDmVj09M2PsHz3ShD//bDdRLiY=
+X-Received: by 2002:a05:6402:10d5:: with SMTP id
+ p21mr3957562edu.327.1604083008757; 
+ Fri, 30 Oct 2020 11:36:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1603521686-13036-3-git-send-email-jiaxin.yu@mediatek.com>
+References: <20201016204019.2606-1-linux@fw-web.de>
+ <20201016204019.2606-4-linux@fw-web.de>
+ <CACRpkdZrUbq6h4uDoxfN70mzfbeWAeqo5KAdTWhiHbsb7VTbJg@mail.gmail.com>
+In-Reply-To: <CACRpkdZrUbq6h4uDoxfN70mzfbeWAeqo5KAdTWhiHbsb7VTbJg@mail.gmail.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Fri, 30 Oct 2020 11:36:37 -0700
+X-Gmail-Original-Message-ID: <CAGp9LzosDB1V-b5ek1epzxkvvuow-7YCDHsgS=2WsvT_aZYHdg@mail.gmail.com>
+Message-ID: <CAGp9LzosDB1V-b5ek1epzxkvvuow-7YCDHsgS=2WsvT_aZYHdg@mail.gmail.com>
+Subject: Re: [RFC 3/3] pinctl: mt7622: drop pwm ch7 as mt7622 only has 6
+ channels
+To: Linus Walleij <linus.walleij@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_142352_852238_52E02CB6 
-X-CRM114-Status: GOOD (  16.91  )
+X-CRM114-CacheID: sfid-20201030_143652_720867_051BAA98 
+X-CRM114-Status: GOOD (  14.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,54 +84,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
- shane.chien@mediatek.com, tiwai@suse.com, tzungbi@google.com,
- broonie@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Frank Wunderlich <frank-w@public-files.de>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 24, 2020 at 02:41:26PM +0800, Jiaxin Yu wrote:
-> We can choose to drop any length of data from the beginning according
-> accroding 'ul-delay-ms'.
-> 
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/sound/mt6359.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/mt6359.yaml b/Documentation/devicetree/bindings/sound/mt6359.yaml
-> index a54f466f769d4..fd2d02c97fe7c 100644
-> --- a/Documentation/devicetree/bindings/sound/mt6359.yaml
-> +++ b/Documentation/devicetree/bindings/sound/mt6359.yaml
-> @@ -49,6 +49,11 @@ properties:
->      description: |
->        Specifies the type of mic type connected to adc2
->  
-> +  mediatek,ul-delay-ms:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description: |
-> +      Skip first time data at the beginning of DMIC recording
+> > mt7622 is reported by mediatek to have only 6 pwm channels
+> > so drop pindefines for 7th channel
+> >
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>
+> I can merge this patch to the pinctrl tree if I get some kind of
+> review response from one of the Mediatek maintainers.
+>
 
-What does 'ul' mean? Nothing tells me this is DMIC related in the name 
-and 'ul' is not used anywhere in the description.
+After confirming with the internal team, MT7622 actually does not have
+the 7th channel. Thanks for Frank's catchup and patch.
 
-> +
->  additionalProperties: false
->  
->  examples:
-> @@ -56,6 +61,7 @@ examples:
->      mt6359codec: mt6359codec {
->        mediatek,dmic-mode = <0>;
->        mediatek,mic-type-0 = <2>;
-> +      mediatek,ul-delay-ms = <50>;
->      };
->  
->  ...
-> -- 
-> 2.18.0
+Acked-by: Sean Wang <sean.wang@kernel.org>
+
+> The rest should probably go through ARM SoC.
+>
+> Yours,
+> Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
