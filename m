@@ -2,100 +2,80 @@ Return-Path: <SRS0=gG0U=EF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 82FC0C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 01:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 280E9C388F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 03:47:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0B4C20723
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 01:58:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 40F7F20702
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 03:47:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BYk0yYaz";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="TGaH6sbn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0B4C20723
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dVtq3xvg";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gWWgcDUE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40F7F20702
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:References:Message-ID:
-	From:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fF3YDlkSHKp4JCSZE8OVKGy9qAvfgnLZXF18nnka7XE=; b=BYk0yYazu7u5ACgGftzlScC13
-	zg5hE3MwnAT/wsizPKbcTeiX0q4E64dfZRowlc2Gs5UBVLcrBH4BNO05PWK6CfPZAm5uhSSmp6Yf3
-	vyv7KdgObJYPMcOpVAqay9Lnhr4erBBpCDAtKZ/JP2ECmyZ0RopXL6vjxNC6DL5bu7Ziz9UMENO0D
-	fyxjTvaQuiRN6WAVDJUSwy7LrAUbDoPSNmLAAikUUM7uvfWOIvhqWTYuwopghU80ooOxNk/teR4G+
-	S5WisrLELuC98Ghta+1UOTachzyT7rttSx3oQafYt6N6dLiOsuJmQAG1ZA+MGC4eJogp1VWSmvApm
-	2Ay609sqw==;
+	 bh=L1QfSXpiZ8U+7ZgLppMv5nlcRB+tq33iZOZOrHJqswA=; b=dVtq3xvg4GUuxQrWsKnA+sZBw
+	yYCO6qPECGVt9sWfhmXHLqJKDJ9zYmcZCwIfET38efJkK5X+5nEE359xP5W/AmQlbPJL0ZzYbwAuE
+	s6Xur6gORuRxJBx9QJkQGwMhb1tL22e7aHUxktqc92hmrZR1Kg2JaAkhdgTqWAZ81CIYxczi3D2lR
+	hdrmQTi0XI36wFVesWZQHflr8czw2S/7fw0DFjPZOZet7n12derl+ROR6yaUfKyR2UKah07hCGybw
+	r4WdzGA9cewffmOl2hctCl7dhxTYtX+8L2DCCqaCqKSHiEuOGzBcSLZcJhI/lNdnzj5ku6AMpMvPt
+	Req0UqgPw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYJg1-00051n-QU; Fri, 30 Oct 2020 01:58:01 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
+	id 1kYLNk-0006TM-QK; Fri, 30 Oct 2020 03:47:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYJfy-00050p-SM; Fri, 30 Oct 2020 01:58:00 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09U1meL5165332;
- Fri, 30 Oct 2020 01:57:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : message-id : references : date : in-reply-to : mime-version :
- content-type; s=corp-2020-01-29;
- bh=Xo4961axV8+bFG/0+a1irfWYVoKHxcVZBEbloOyD+OI=;
- b=TGaH6sbnseOioiaCfe3Tln7baygF+t91CosgtuKpRisdLMWTJUA+pjCE04PpUvTuZZXM
- Ggh0eSiJEMfSZZldoef9Cfmzt/tpVM3/Bx8fcVBqFDlNlMhwCUcmi2+36AjfLMi8Bmzp
- cTfF/krecrYIitVWHY+YxGuV4kdNs3iNozSrPi0S23NNSQjySPzEVp5BRLDX3lMlfkrl
- IrbERUmnSSZf92CmqHqd57/iTq8/PXy0McnDUJZzLC0vz9XL3oNAytGPnz/DB2EQ0Ow3
- CyaGO9ViAXTlbi/sEAM3DvHmU3U20vriec/ehh0wuME//MpLrAIRt0Kf6Tl5SFrBQYjP AQ== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 34dgm4d9yw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 30 Oct 2020 01:57:42 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09U1uBE7104141;
- Fri, 30 Oct 2020 01:57:42 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 34cx616f11-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 30 Oct 2020 01:57:42 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09U1vcO4028926;
- Fri, 30 Oct 2020 01:57:38 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 29 Oct 2020 18:57:38 -0700
-To: Asutosh Das <asutoshd@codeaurora.org>
-Subject: Re: [PATCH v2 1/2] scsi: ufs: Put hba into LPM during clk gating
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-Message-ID: <yq1mu041nnc.fsf@ca-mkp.ca.oracle.com>
-References: <52198e70bff750632740d78678a815256d697e43.1603825776.git.asutoshd@codeaurora.org>
-Date: Thu, 29 Oct 2020 21:57:35 -0400
-In-Reply-To: <52198e70bff750632740d78678a815256d697e43.1603825776.git.asutoshd@codeaurora.org>
- (Asutosh Das's message of "Tue, 27 Oct 2020 12:10:36 -0700")
+ id 1kYLNg-0006Rm-8T; Fri, 30 Oct 2020 03:47:13 +0000
+X-UUID: 6597e76038074931b72a0ce5bda6483c-20201029
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=KLiLvyxExc2xjvd/BMtMmzQJRvshLItb8K0fl1F3uQs=; 
+ b=gWWgcDUEAXK+EapRqaKL3W+lVSdnxlQzDnWSW7yQq/+RvgAX5SL8KZ7siru/LWy79G/IESG/3Bc5qjij3ha5wdA7krzUY3HpEPga9k2jWpBXKr9ngw+S4AcsTLS091JoIfFTC3GkJD6elhk/pm4pBRbvAfoeT1GpTx0oxlxbo5E=;
+X-UUID: 6597e76038074931b72a0ce5bda6483c-20201029
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1926455247; Thu, 29 Oct 2020 19:46:59 -0800
+Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Oct 2020 20:46:57 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33DR.mediatek.inc
+ (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 30 Oct 2020 11:46:54 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 30 Oct 2020 11:46:47 +0800
+Message-ID: <1604029608.31607.10.camel@mhfsdcap03>
+Subject: Re: [PATCH 02/17] phy: amlogic: convert to
+ devm_platform_ioremap_resource
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Remi Pommarel <repk@triplefau.lt>
+Date: Fri, 30 Oct 2020 11:46:48 +0800
+In-Reply-To: <20201029082415.GB15700@pilgrim>
+References: <1603940079-8131-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1603940079-8131-2-git-send-email-chunfeng.yun@mediatek.com>
+ <20201029082415.GB15700@pilgrim>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9789
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxscore=0 mlxlogscore=999
- suspectscore=1 bulkscore=0 malwarescore=0 spamscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010300012
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9789
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 impostorscore=0
- adultscore=0 bulkscore=0 spamscore=0 phishscore=0 mlxlogscore=999
- suspectscore=1 clxscore=1011 mlxscore=0 malwarescore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010300011
+X-TM-SNTS-SMTP: 3185889AB76AB04BA80EAB8AEBF54879DC4FCB5D585B072F7DBE2BD0F0F608DE2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201029_215759_067424_350CAC52 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20201029_234712_495916_F63F2862 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,32 +87,179 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: martin.petersen@oracle.com, linux-scsi@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, "James
- E.J. Bottomley" <jejb@linux.ibm.com>, open list <linux-kernel@vger.kernel.org>,
- Satya Tangirala <satyat@google.com>, Avri Altman <avri.altman@wdc.com>,
- cang@codeaurora.org, "moderated list:ARM/Mediatek
- SoC support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>, Bart Van Assche <bvanassche@acm.org>,
- "moderated list:ARM/Mediatek SoC
- support" <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+Cc: Ondrej Jirman <megous@megous.com>, Peter Chen <peter.chen@nxp.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, Anil Varughese <aniljoy@cadence.com>,
+ Wei Yongjun <weiyongjun1@huawei.com>, Fabio Estevam <festevam@gmail.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Kevin Hilman <khilman@baylibre.com>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Rayagonda Kokatanur <rayagonda.kokatanur@broadcom.com>,
+ Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com,
+ NXP Linux Team <linux-imx@nxp.com>, Icenowy Zheng <icenowy@aosc.io>, Bharat
+ Gooty <bharat.gooty@broadcom.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Maxime Ripard <mripard@kernel.org>, Yue Wang <yue.wang@amlogic.com>,
+ Lubomir Rintel <lkundrak@v3.sk>, Lorenzo
+ Pieralisi <lorenzo.pieralisi@arm.com>, linux-mediatek@lists.infradead.org,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Roger
+ Quadros <rogerq@ti.com>, Hanjie Lin <hanjie.lin@amlogic.com>,
+ Ma Feng <mafeng.ma@huawei.com>, Scott
+ Branden <sbranden@broadcom.com>, Randy Dunlap <rdunlap@infradead.org>,
+ Jyri Sarha <jsarha@ti.com>, linux-kernel@vger.kernel.org,
+ Vinod Koul <vkoul@kernel.org>, Sanket Parmar <sparmar@cadence.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Joe Perches <joe@perches.com>,
+ Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
+ Li Jun <jun.li@nxp.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Asutosh,
-
-> During clock gating, after clocks are disabled, put hba into LPM to
-> save more power.
-
-Applied to 5.11/scsi-staging, thanks!
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+On Thu, 2020-10-29 at 09:24 +0100, Remi Pommarel wrote:
+> Hi,
+> 
+> On Thu, Oct 29, 2020 at 10:54:24AM +0800, Chunfeng Yun wrote:
+> > Use devm_platform_ioremap_resource to simplify code
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c | 4 +---
+> >  drivers/phy/amlogic/phy-meson-axg-pcie.c             | 4 +---
+> >  drivers/phy/amlogic/phy-meson-g12a-usb2.c            | 4 +---
+> >  drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c       | 4 +---
+> >  drivers/phy/amlogic/phy-meson-gxl-usb2.c             | 4 +---
+> >  5 files changed, 5 insertions(+), 15 deletions(-)
+> > 
+> > diff --git a/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c b/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
+> > index 1431cbf885e1..7d06cda329fb 100644
+> > --- a/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
+> > +++ b/drivers/phy/amlogic/phy-meson-axg-mipi-pcie-analog.c
+> > @@ -126,7 +126,6 @@ static int phy_axg_mipi_pcie_analog_probe(struct platform_device *pdev)
+> >  	struct phy_axg_mipi_pcie_analog_priv *priv;
+> >  	struct device_node *np = dev->of_node;
+> >  	struct regmap *map;
+> > -	struct resource *res;
+> >  	void __iomem *base;
+> >  	int ret;
+> >  
+> > @@ -134,8 +133,7 @@ static int phy_axg_mipi_pcie_analog_probe(struct platform_device *pdev)
+> >  	if (!priv)
+> >  		return -ENOMEM;
+> >  
+> > -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > -	base = devm_ioremap_resource(dev, res);
+> > +	base = devm_platform_ioremap_resource(pdev, 0);
+> >  	if (IS_ERR(base)) {
+> >  		dev_err(dev, "failed to get regmap base\n");
+> >  		return PTR_ERR(base);
+> 
+> This patch will conflict with [0] that uses syscon to map those shared
+> resources instead and that is hopefully going to be merged soon.
+> 
+> So I think you can skip this file.
+Ok, will drop it, thanks
+> 
+> > diff --git a/drivers/phy/amlogic/phy-meson-axg-pcie.c b/drivers/phy/amlogic/phy-meson-axg-pcie.c
+> > index 377ed0dcd0d9..58a7507a8422 100644
+> > --- a/drivers/phy/amlogic/phy-meson-axg-pcie.c
+> > +++ b/drivers/phy/amlogic/phy-meson-axg-pcie.c
+> > @@ -129,7 +129,6 @@ static int phy_axg_pcie_probe(struct platform_device *pdev)
+> >  	struct device *dev = &pdev->dev;
+> >  	struct phy_axg_pcie_priv *priv;
+> >  	struct device_node *np = dev->of_node;
+> > -	struct resource *res;
+> >  	void __iomem *base;
+> >  	int ret;
+> >  
+> > @@ -145,8 +144,7 @@ static int phy_axg_pcie_probe(struct platform_device *pdev)
+> >  		return ret;
+> >  	}
+> >  
+> > -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > -	base = devm_ioremap_resource(dev, res);
+> > +	base = devm_platform_ioremap_resource(pdev, 0);
+> >  	if (IS_ERR(base))
+> >  		return PTR_ERR(base);
+> >  
+> > diff --git a/drivers/phy/amlogic/phy-meson-g12a-usb2.c b/drivers/phy/amlogic/phy-meson-g12a-usb2.c
+> > index b26e30e1afaf..9d1efa0d9394 100644
+> > --- a/drivers/phy/amlogic/phy-meson-g12a-usb2.c
+> > +++ b/drivers/phy/amlogic/phy-meson-g12a-usb2.c
+> > @@ -292,7 +292,6 @@ static int phy_meson_g12a_usb2_probe(struct platform_device *pdev)
+> >  {
+> >  	struct device *dev = &pdev->dev;
+> >  	struct phy_provider *phy_provider;
+> > -	struct resource *res;
+> >  	struct phy_meson_g12a_usb2_priv *priv;
+> >  	struct phy *phy;
+> >  	void __iomem *base;
+> > @@ -305,8 +304,7 @@ static int phy_meson_g12a_usb2_probe(struct platform_device *pdev)
+> >  	priv->dev = dev;
+> >  	platform_set_drvdata(pdev, priv);
+> >  
+> > -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > -	base = devm_ioremap_resource(dev, res);
+> > +	base = devm_platform_ioremap_resource(pdev, 0);
+> >  	if (IS_ERR(base))
+> >  		return PTR_ERR(base);
+> >  
+> > diff --git a/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c b/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
+> > index 08e322789e59..ebe3d0ddd304 100644
+> > --- a/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
+> > +++ b/drivers/phy/amlogic/phy-meson-g12a-usb3-pcie.c
+> > @@ -386,7 +386,6 @@ static int phy_g12a_usb3_pcie_probe(struct platform_device *pdev)
+> >  	struct device *dev = &pdev->dev;
+> >  	struct device_node *np = dev->of_node;
+> >  	struct phy_g12a_usb3_pcie_priv *priv;
+> > -	struct resource *res;
+> >  	struct phy_provider *phy_provider;
+> >  	void __iomem *base;
+> >  	int ret;
+> > @@ -395,8 +394,7 @@ static int phy_g12a_usb3_pcie_probe(struct platform_device *pdev)
+> >  	if (!priv)
+> >  		return -ENOMEM;
+> >  
+> > -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > -	base = devm_ioremap_resource(dev, res);
+> > +	base = devm_platform_ioremap_resource(pdev, 0);
+> >  	if (IS_ERR(base))
+> >  		return PTR_ERR(base);
+> >  
+> > diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb2.c b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+> > index 43ec9bf24abf..875afb2672c7 100644
+> > --- a/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+> > +++ b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+> > @@ -230,7 +230,6 @@ static int phy_meson_gxl_usb2_probe(struct platform_device *pdev)
+> >  {
+> >  	struct device *dev = &pdev->dev;
+> >  	struct phy_provider *phy_provider;
+> > -	struct resource *res;
+> >  	struct phy_meson_gxl_usb2_priv *priv;
+> >  	struct phy *phy;
+> >  	void __iomem *base;
+> > @@ -242,8 +241,7 @@ static int phy_meson_gxl_usb2_probe(struct platform_device *pdev)
+> >  
+> >  	platform_set_drvdata(pdev, priv);
+> >  
+> > -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > -	base = devm_ioremap_resource(dev, res);
+> > +	base = devm_platform_ioremap_resource(pdev, 0);
+> >  	if (IS_ERR(base))
+> >  		return PTR_ERR(base);
+> >  
+> 
+> So without the modification on phy-meson-axg-mipi-pcie-analog.c and
+> FWIW,
+> 
+> Reviewed-by: Remi Pommarel <repk@triplefau.lt>
+> 
+> Thanks,
+> 
+> [0] https://patchwork.kernel.org/project/linux-amlogic/patch/20200915130339.11079-4-narmstrong@baylibre.com/
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
