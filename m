@@ -2,21 +2,22 @@ Return-Path: <SRS0=gG0U=EF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1D5BC4741F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 15:51:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AD52C55178
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 17:09:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3308D206E9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 15:51:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F0E1C20731
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 17:09:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q8Aitwlf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3308D206E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nbzYmhuY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0E1C20731
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -24,57 +25,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xILOYNaifXSW1E+7TR/GAfSpbFA3OAypz1JdhazFV64=; b=q8AitwlfnEhHGacRbvMStss6z
-	uymD3QJt/wp4jpTTdiJsYNMY8/M+ZuLkzAYT6aLFSz/c13Y4Pn6IyxFxjB/83kkkKKiKp+QcEqIva
-	gAVdfWwgciL6l5W048h2qyhOqU/5kYFdVRL8/1Iy8NAKDvkkV3wqY9u3/IVhCZqob0ss5GlTJv08Q
-	XcEds97u7/F3mQf/AcVroWPybvfCrNk8c5hzXEdxqZpO00af7HMO+JFkMeKR98ywETkNxKv3YF9kS
-	RJzToXbuFGATtmeSXWfCADRN0/PCGXMwhtDZMZe7dvzxznyBQIgTcuTsxMx3+WUbYjVRKmGa3MTFR
-	IA3lUN6nw==;
+	 bh=MGP/wvncouHrOrF1G7kmUPVssBtIFqRnlAFf9m2aidg=; b=nbzYmhuYgXJKmsgnGwc2Omk3t
+	3rQIDJt9/w0BiGwLZ1xnwaPVb904/3sJLEo6V0ooD+77F2vC79E1tCszZRPAJwQqQEEH2/0nEB6rk
+	1tYPENJOnjdeT2j+61+RwDyHkeTWi3T1SjhIQpMiPKEN+S+AePbacEA3Nk7bcFo7Ha82Y3AMhd8wC
+	8kGabLVRdBtS8w9EoiDmXvlRa7UtDjPEDxh2TOi+GBO6E5N3Hyd5lfj/H6hSydWSEDEnIvIofItvF
+	v4Diq2lrPfFSc0oS/EG5dfY/S31CswG4ppDjSzlSw70Vxc9HQ384uQPU8C699dHADoEptNl8b681P
+	KFQ6U88lA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYWgt-0003dK-DT; Fri, 30 Oct 2020 15:51:47 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1kYXu8-0002K7-1E; Fri, 30 Oct 2020 17:09:32 +0000
+Received: from mga11.intel.com ([192.55.52.93])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYWex-000307-9p; Fri, 30 Oct 2020 15:49:59 +0000
-Received: by mail-ot1-f67.google.com with SMTP id m22so5951920ots.4;
- Fri, 30 Oct 2020 08:49:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=1ftl2mmglzVyNPpTmwwRhyO51W+rV9lT76LSvntTyw0=;
- b=B50Rvlp0YCWAbpa2cmdF1g7hU1n9TUubvGfq9adseHX7lQ2lAHf6euZpbNqs7s+puD
- wuWjSQSPMv258yYIEV/SyWkjgGZN6+6NNED19zizWfg9FP4VdxuTXDdKU5bg0jlvwFIi
- C12wSrruKZQ13gTWvP8EliIIYA/4IU9nCEKxcLAeh7Getmv/ElHFS3ZEYGgGNjPvYW4O
- ap+Z2V98aaBISUuPyRwfwAWMXtqldLm9dt+H+pwCJ4OZwiu1RogP3O8ewQBKkYTAAzIh
- /CxK/aAsCJ9mx1I8obrjg3nfV58jP+hLgqYBMLa6c8jcZAgny1TRegILWz7b0CNAyZyw
- bgiw==
-X-Gm-Message-State: AOAM533L3ivXX5QKIq+/DwSFjAcufPjMC6u7rMmTw9Xx9w36kiito5sg
- xvtrAhND957P/pN1QRN0yg==
-X-Google-Smtp-Source: ABdhPJz9aMo+yJ2ejJuLVzoOC70cg6U3LofBzYRBqTxOKAB+DSztHTx+rg5h2SrWLXIwxS+SilU8AQ==
-X-Received: by 2002:a05:6830:2018:: with SMTP id
- e24mr2241291otp.278.1604072985738; 
- Fri, 30 Oct 2020 08:49:45 -0700 (PDT)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id w8sm186211otm.64.2020.10.30.08.49.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Oct 2020 08:49:45 -0700 (PDT)
-Received: (nullmailer pid 3905477 invoked by uid 1000);
- Fri, 30 Oct 2020 15:49:44 -0000
-Date: Fri, 30 Oct 2020 10:49:44 -0500
-From: Rob Herring <robh@kernel.org>
-To: Fabien Parent <fparent@baylibre.com>
-Subject: Re: [PATCH v2 1/5] dt-bindings: display: mediatek: disp: add
- documentation for MT8167 SoC
-Message-ID: <20201030154944.GA3905431@bogus>
-References: <20201023133130.194140-1-fparent@baylibre.com>
- <20201023133130.194140-2-fparent@baylibre.com>
+ id 1kYXu1-0002Gx-MZ; Fri, 30 Oct 2020 17:09:27 +0000
+IronPort-SDR: xVXodWRkv+QDakZ7VbulZSrb13gQ7BrNGNdiShca+jp8ego0UUURgqNauBhOPLEy3BF/6sc2r/
+ Ro1OJpiciSjA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9790"; a="165139496"
+X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="165139496"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2020 10:09:21 -0700
+IronPort-SDR: ws0AqHa+sfBSJMWZTmlC/P4vwPmOIJTN6GqcPVJPQA6N2F3meXhAevZDbLaMQoghfLO+k1rVnM
+ PGExSGNFJgsw==
+X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="469582751"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2020 10:09:17 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 2F86C20AA6; Fri, 30 Oct 2020 18:27:56 +0200 (EET)
+Date: Fri, 30 Oct 2020 18:27:56 +0200
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v15 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+Message-ID: <20201030162756.GR26150@paasikivi.fi.intel.com>
+References: <20201013130503.2412-1-dongchun.zhu@mediatek.com>
+ <20201013130503.2412-2-dongchun.zhu@mediatek.com>
+ <20201013161938.GE13341@paasikivi.fi.intel.com>
+ <1602641418.4733.80.camel@mhfsdcap03>
+ <20201014083139.GG13341@paasikivi.fi.intel.com>
+ <CAAFQd5BVzN=49s4S98E9mGNuxzOt4633dAw9mbyu3Sr-rA61qw@mail.gmail.com>
+ <20201019082759.GL13341@paasikivi.fi.intel.com>
+ <CAAFQd5B9inO_-WJdJg_EMULw-e0EAAo8DXNgo5d+qrGvq6F8qQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201023133130.194140-2-fparent@baylibre.com>
+In-Reply-To: <CAAFQd5B9inO_-WJdJg_EMULw-e0EAAo8DXNgo5d+qrGvq6F8qQ@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_114947_479973_C8171CB7 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20201030_130925_892235_A63F28C9 
+X-CRM114-Status: GOOD (  47.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,31 +86,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, devicetree@vger.kernel.org, airlied@linux.ie,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
+ Louis Kuo <louis.kuo@mediatek.com>, Sj Huang <sj.huang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 23 Oct 2020 15:31:26 +0200, Fabien Parent wrote:
-> Add binding documentation for the MT8167 SoC
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> ---
-> 
-> Changelog:
-> 
-> V2: No change
-> 
->  .../devicetree/bindings/display/mediatek/mediatek,disp.txt    | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+Hi Tomasz, Dongchun,
 
-Acked-by: Rob Herring <robh@kernel.org>
+On Mon, Oct 19, 2020 at 09:20:15PM +0200, Tomasz Figa wrote:
+> On Mon, Oct 19, 2020 at 10:28 AM Sakari Ailus
+> <sakari.ailus@linux.intel.com> wrote:
+> >
+> > On Wed, Oct 14, 2020 at 01:48:00PM +0200, Tomasz Figa wrote:
+> > > On Wed, Oct 14, 2020 at 10:31 AM Sakari Ailus
+> > > <sakari.ailus@linux.intel.com> wrote:
+> > > >
+> > > > On Wed, Oct 14, 2020 at 10:10:18AM +0800, Dongchun Zhu wrote:
+> > > > > Hello Sakari,
+> > > > >
+> > > > > Thanks for your timely review.
+> > > > >
+> > > > > On Tue, 2020-10-13 at 19:19 +0300, Sakari Ailus wrote:
+> > > > > > Hi Dongchun,
+> > > > > >
+> > > > > > On Tue, Oct 13, 2020 at 09:05:02PM +0800, Dongchun Zhu wrote:
+> > > > > > > Add YAML device tree binding for OV02A10 CMOS image sensor, and the
+> > > > > > > relevant MAINTAINERS entries.
+> > > > > > >
+> > > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > > > > > ---
+> > > > > > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 162 +++++++++++++++++++++
+> > > > > > >  MAINTAINERS                                        |   7 +
+> > > > > > >  2 files changed, 169 insertions(+)
+> > > > > > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > > > > >
+> > > > >
+> > > > > [snip]...
+> > > > >
+> > > > > > > +  ovti,mipi-clock-voltage:
+> > > > > > > +    description:
+> > > > > > > +      An array of 2-tuples items, and each item consists of link frequency and
+> > > > > > > +      MIPI clock voltage unit like <freq-kHz volt-unit>. Clock voltage unit is
+> > > > > > > +      dependent upon link speed, indicating MIPI transmission speed select that
+> > > > > > > +      controls D-PHY timing setting by adjusting MIPI clock voltage to improve
+> > > > > > > +      the clock driver capability.
+> > > > > > > +    $ref: "/schemas/types.yaml#/definitions/uint32-array"
+> > > > > > > +    minItems: 2
+> > > > > > > +    default: [390000, 4]
+> > > > > >
+> > > > > > Why do you have the link frequency here as well?
+> > > > > >
+> > > > > > In principle this does belong to the endpoint as link frequencies are
+> > > > > > specific to that, but I don't mind; there's just a single port anyway.
+> > > > > >
+> > > > >
+> > > > > This is an optional property which we model as an array of <link speed,
+> > > > > clock voltage> pairs. An example to have all link speeds up to 390MHz
+> > > > > use the value 4 for current driver. If one wants to select different
+> > > > > voltage for different link, they could do so as well.
+> > > >
+> > > > If you think you'd need that, then you need to put this to the endpoint.
+> > >
+> > > The mipi-clock-voltage property is not a property of the endpoint. The
+> > > link frequency there does not set the link frequency - it only
+> > > specifies which link frequency the given voltage should be used for.
+> >
+> > If it is not bound to the endpoint --- that specifies the properties of the
+> > link --- then you could just put it to the driver, couldn't you?
+> >
+> > But earlier on, we established that this is specific to a given board, or a
+> > given link. Endpoints are used to describe connections that a device may
+> > have to other devices. Therefore their properties are different.
+> >
+> > The graph bindings allow for several endpoints on a single physical port,
+> > some may be disabled in that case. This is admittedly mostly done with
+> > CSI-2 receivers.
+> >
+> > Either way, putting this property to the device may affect how DT source is
+> > arranged for boards that have this device. Any similar configuration on
+> > other devices with multiple transmitters or receivers would be in endpoints
+> > anyway --- because they have to, so I don't see why bindings for this
+> > device should be different.
+> >
+> > If you put it to endpoint, the driver also doesn't need to match the link
+> > frequencies in kHz and Hz between the two properties, but just use the same
+> > index for both.
+> 
+> I agree in general, but I think in this case this is a device-specific
+> property and the sensor only has 1 CSI-2 interface, so maybe it
+> doesn't really matter?
+> 
+> Specifying frequency, voltage pairs is a common practice in other
+> bindings, such as the OPP bindings, by the way.
+> 
+> That said, if you insist, I'm fine with this being moved to the
+> endpoint node too.
+
+Please, unless there are sound technical reasons to do otherwise.
+
+-- 
+Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
