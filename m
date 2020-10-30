@@ -2,60 +2,73 @@ Return-Path: <SRS0=gG0U=EF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15D2FC4363A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:48:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0FD0C4363A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 12:10:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E5E5207DE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:48:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3DC482076E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 12:10:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ztqUTUbi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E5E5207DE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L/Hllzn9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ucDTi/88"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DC482076E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=h7Y/SMUsp1ibpkzKOiXBlMQOdFphLqThN+o5eGJZLrU=; b=ztqUTUbifgHMqOtVaTvcAXQRq
-	SGLypl/GzWD26IOxY9eMXL6l5O93aMMF1ljR/fYu+x+VDMngB6Td5fo0TLAhQ78Zbwe4KOM5m1Fr5
-	zMq/Q+n1y/TivaYoKE/hCoYwL8o16DPUbjPPyGwlurB4pLgMtYIUs6ZaKVRBV6miqnxbHaLesPPne
-	XzmotFtyBc6ppFxmzKgENmcES3c0CYoqPBZsX2maIjRjws13TftSRDYiovYTrew4RN5jfJw7woxq6
-	oVdVDZE5xgHv0FYgUFo9VL6mGcDzY2qBtiw7HdfvTR3+UicCa3SfQm873ZEOlWnwc5SS/H0iJ1E7R
-	FKqwaIMGg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FHYiJLW5nEbxefkdPtMNPsG3qLmkTkTqWjkbf70uJRw=; b=L/Hllzn95UMtGNsOjseq3WqtTW
+	p+3+yPESyXa35rcq7r9TgKqzzp0XR3cbIqC9RKvq7TI3zeB9M0ChGBVqWjNn4HCJBDk9U1PEkqlCk
+	IZjaeNpGU4UmWcji62g8V92tZop5mwJhD9dr3nFvCmpUgQzyEeXMQK1OVtpVCztcAM4r5JV6pwfJ8
+	EC8skKTEpmNtIb6yriB6Xoh7gC+mTvik0wPwAOpyDMF2Fw1S8dvnZcMgQi2qgfsTtB9KQdiLmZ21N
+	8qXD/y8Bxx7aNbgbWBS1rkYzNtqJcalKoKk5u5Xv5WrlOlBVpo/1GRsjM0BYFuwqMYgM6Bw2CzMXm
+	dsjI9DNw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYSsw-0005zC-Bc; Fri, 30 Oct 2020 11:47:58 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kYTE5-0000v5-SE; Fri, 30 Oct 2020 12:09:49 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYSsm-0005vk-8Q; Fri, 30 Oct 2020 11:47:49 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 07CC01F45EBD
-Subject: Re: [PATCH v2 2/2] soc: mediatek: pm-domains: Add support for mt8167
-To: Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20201027131122.374046-1-fparent@baylibre.com>
- <20201027131122.374046-2-fparent@baylibre.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <157c2b93-4ac3-5368-d04c-b574f04d6f41@collabora.com>
-Date: Fri, 30 Oct 2020 12:47:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kYTE0-0000tQ-Mm; Fri, 30 Oct 2020 12:09:46 +0000
+X-UUID: 2352950f4d5a4f4dbfa74619e97c39fa-20201030
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ToIiaIPerS3D72ArokmIM6oaTzcfLiLc3SIQSu5S6cI=; 
+ b=ucDTi/88lvtdsPWqQALsPDdX8fIAkj6w6GaxWkXpDsH97iAONDYKS/cNEdIEUsf/Mo0sAlf869odvsCc6u6tawE89URCU+1nKHFPVoCk9JTyVQ+rAW4N97DsNUfxN5DbqSMg0ZYREVU0T80vu4fe0SmeNQ5NaVXpyzbeJ1sUnwg=;
+X-UUID: 2352950f4d5a4f4dbfa74619e97c39fa-20201030
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1328416473; Fri, 30 Oct 2020 03:58:09 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Oct 2020 04:58:08 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Oct 2020 19:58:06 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 30 Oct 2020 19:58:05 +0800
+From: <qii.wang@mediatek.com>
+To: <wsa@the-dreams.de>
+Subject: [PATCH] i2c: mediatek: move dma reset before i2c reset
+Date: Fri, 30 Oct 2020 19:58:01 +0800
+Message-ID: <1604059081-28197-1-git-send-email-qii.wang@mediatek.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-In-Reply-To: <20201027131122.374046-2-fparent@baylibre.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_074748_491599_D70D3DD5 
-X-CRM114-Status: GOOD (  24.07  )
+X-CRM114-CacheID: sfid-20201030_080944_940083_FB949985 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,192 +80,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+Cc: qii.wang@mediatek.com, srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-i2c@vger.kernel.org, matthias.bgg@gmail.com,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Fabien,
+From: Qii Wang <qii.wang@mediatek.com>
 
-Thank you for the patch and base it on the new SCPSYS PM domains driver
+The i2c driver default do dma reset after i2c reset, but sometimes
+i2c reset will trigger dma tx2rx, then apdma write data to dram
+which has been i2c_put_dma_safe_msg_buf(kfree). Move dma reset
+before i2c reset in mtk_i2c_init_hw to fix it.
 
-On 27/10/20 14:11, Fabien Parent wrote:
-> Add the needed board data to support mt8167 SoC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
-> 
-> This patch depends on the SCPSYS PM domains driver [0].
-> 
-> v2:
-> 	* Implement on top of new SCPSYS PM domains driver [0]
-> 
-> [0] https://patchwork.kernel.org/project/linux-mediatek/list/?series=370737
->  drivers/soc/mediatek/mt8167-pm-domains.h | 86 ++++++++++++++++++++++++
->  drivers/soc/mediatek/mtk-pm-domains.c    |  5 ++
->  drivers/soc/mediatek/mtk-pm-domains.h    |  1 +
->  include/linux/soc/mediatek/infracfg.h    |  8 +++
->  4 files changed, 100 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mt8167-pm-domains.h
-> 
-> diff --git a/drivers/soc/mediatek/mt8167-pm-domains.h b/drivers/soc/mediatek/mt8167-pm-domains.h
-> new file mode 100644
-> index 000000000000..ff18139d0d6c
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/mt8167-pm-domains.h
-> @@ -0,0 +1,86 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +
-> +#ifndef __SOC_MEDIATEK_MT8167_PM_DOMAINS_H
-> +#define __SOC_MEDIATEK_MT8167_PM_DOMAINS_H
-> +
-> +#include "mtk-pm-domains.h"
-> +#include <dt-bindings/power/mt8167-power.h>
-> +
-> +#define MT8167_PWR_STATUS_MFG_2D	BIT(24)
-> +#define MT8167_PWR_STATUS_MFG_ASYNC	BIT(25)
-> +
-> +/*
-> + * MT8167 power domain support
-> + */
-> +
-> +static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
-> +	[MT8167_POWER_DOMAIN_DISP] = {
-> +		.sta_mask = PWR_STATUS_DISP,
-> +		.ctl_offs = SPM_DIS_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(11, 8),
-> +		.sram_pdn_ack_bits = GENMASK(12, 12),
-> +		.bp_infracfg = {
-> +			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_MM_EMI |
-> +					       MT8167_TOP_AXI_PROT_EN_MCU_MM),
-> +		},
-> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> +	},
-> +	[MT8167_POWER_DOMAIN_VDEC] = {
-> +		.sta_mask = PWR_STATUS_VDEC,
-> +		.ctl_offs = SPM_VDE_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(8, 8),
-> +		.sram_pdn_ack_bits = GENMASK(12, 12),
-> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> +	},
-> +	[MT8167_POWER_DOMAIN_ISP] = {
-> +		.sta_mask = PWR_STATUS_ISP,
-> +		.ctl_offs = SPM_ISP_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(11, 8),
-> +		.sram_pdn_ack_bits = GENMASK(13, 12),
-> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> +	},
-> +	[MT8167_POWER_DOMAIN_MFG_ASYNC] = {
-> +		.sta_mask = MT8167_PWR_STATUS_MFG_ASYNC,
-> +		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
-> +		.sram_pdn_bits = 0,
-> +		.sram_pdn_ack_bits = 0,
-> +		.bp_infracfg = {
-> +			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_MCU_MFG |
-> +					       MT8167_TOP_AXI_PROT_EN_MFG_EMI),
-> +		},
-> +	},
-> +	[MT8167_POWER_DOMAIN_MFG_2D] = {
-> +		.sta_mask = MT8167_PWR_STATUS_MFG_2D,
-> +		.ctl_offs = SPM_MFG_2D_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(11, 8),
-> +		.sram_pdn_ack_bits = GENMASK(15, 12),
-> +	},
-> +	[MT8167_POWER_DOMAIN_MFG] = {
-> +		.sta_mask = PWR_STATUS_MFG,
-> +		.ctl_offs = SPM_MFG_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(11, 8),
-> +		.sram_pdn_ack_bits = GENMASK(15, 12),
-> +	},
-> +	[MT8167_POWER_DOMAIN_CONN] = {
-> +		.sta_mask = PWR_STATUS_CONN,
-> +		.ctl_offs = SPM_CONN_PWR_CON,
-> +		.sram_pdn_bits = GENMASK(8, 8),
-> +		.sram_pdn_ack_bits = 0,
-> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> +		.bp_infracfg = {
-> +			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_CONN_EMI |
-> +					       MT8167_TOP_AXI_PROT_EN_CONN_MCU |
-> +					       MT8167_TOP_AXI_PROT_EN_MCU_CONN),
-> +		},
-> +	},
-> +};
-> +
-> +static const struct scpsys_soc_data mt8167_scpsys_data = {
-> +	.domains = scpsys_domain_data_mt8167,
+Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Just to let you know, this is now domains_data.
-
-> +	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8167),
-> +	.pwr_sta_offs = SPM_PWR_STATUS,
-> +	.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-> +};
-> +
-> +#endif /* __SOC_MEDIATEK_MT8167_PM_DOMAINS_H */
-> +
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index 293efa27b6ce..34c704865f01 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -15,6 +15,7 @@
->  #include <linux/regmap.h>
->  #include <linux/soc/mediatek/infracfg.h>
->  
-> +#include "mt8167-pm-domains.h"
->  #include "mt8173-pm-domains.h"
->  #include "mt8183-pm-domains.h"
->  #include "mt8192-pm-domains.h"
-> @@ -515,6 +516,10 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
->  }
->  
->  static const struct of_device_id scpsys_of_match[] = {
-> +	{
-> +		.compatible = "mediatek,mt8167-power-controller",
-> +		.data = &mt8167_scpsys_data,
-> +	},
->  	{
->  		.compatible = "mediatek,mt8173-power-controller",
->  		.data = &mt8173_scpsys_data,
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> index eda453f55126..7c1e1a7209f1 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> @@ -14,6 +14,7 @@
->  #define SPM_VEN_PWR_CON			0x0230
->  #define SPM_ISP_PWR_CON			0x0238
->  #define SPM_DIS_PWR_CON			0x023c
-> +#define SPM_CONN_PWR_CON		0x0280
->  #define SPM_VEN2_PWR_CON		0x0298
->  #define SPM_AUDIO_PWR_CON		0x029c
->  #define SPM_MFG_2D_PWR_CON		0x02c0
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> index e7842debc05d..4615a228da51 100644
-> --- a/include/linux/soc/mediatek/infracfg.h
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -123,6 +123,14 @@
->  #define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
->  #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
->  
-> +#define MT8167_TOP_AXI_PROT_EN_MM_EMI		BIT(1)
-> +#define MT8167_TOP_AXI_PROT_EN_MCU_MFG		BIT(2)
-> +#define MT8167_TOP_AXI_PROT_EN_CONN_EMI		BIT(4)
-> +#define MT8167_TOP_AXI_PROT_EN_MFG_EMI		BIT(5)
-> +#define MT8167_TOP_AXI_PROT_EN_CONN_MCU		BIT(8)
-> +#define MT8167_TOP_AXI_PROT_EN_MCU_CONN		BIT(9)
-> +#define MT8167_TOP_AXI_PROT_EN_MCU_MM		BIT(11)
-> +
->  #define MT2701_TOP_AXI_PROT_EN_MM_M0		BIT(1)
->  #define MT2701_TOP_AXI_PROT_EN_CONN_M		BIT(2)
->  #define MT2701_TOP_AXI_PROT_EN_CONN_S		BIT(8)
-> 
-
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-Thanks,
- Enric
-
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 0cbdfbe..33de99b 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -475,6 +475,10 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ {
+ 	u16 control_reg;
+ 
++	writel(I2C_DMA_HARD_RST, i2c->pdmabase + OFFSET_RST);
++	udelay(50);
++	writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_RST);
++
+ 	mtk_i2c_writew(i2c, I2C_SOFT_RST, OFFSET_SOFTRESET);
+ 
+ 	/* Set ioconfig */
+@@ -529,10 +533,6 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ 
+ 	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
+ 	mtk_i2c_writew(i2c, I2C_DELAY_LEN, OFFSET_DELAY_LEN);
+-
+-	writel(I2C_DMA_HARD_RST, i2c->pdmabase + OFFSET_RST);
+-	udelay(50);
+-	writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_RST);
+ }
+ 
+ static const struct i2c_spec_values *mtk_i2c_get_spec(unsigned int speed)
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
