@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 993F7C4363A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0A16C4363A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:41:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2564D2087E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:41:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7D2022076D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2020 11:41:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PybZI85V"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2564D2087E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WKytWW83"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D2022076D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eVs+10g3WfAwAu0+8wlFfm8tomqqqCY2RZj9iRghBdY=; b=PybZI85VnqfLTCD1/YdT/VGik
-	Cu5BrsNEJUZinxUh1CxAf/FM+3Mll+dtJyOiE/OEl5bTKLf3TBbDhJjuFed+EhknjzFbRMhE4sMFq
-	RsawDJbAbiSnNpf/2B+qrFdX2D50/fNiakQmqf2Ww4WGGDxMziud8BB2b1CSJH94Qv0Pli/5QlBT6
-	yXNA3PyxmPVVDjp/CsJxZIekDIMi6qRUiGMMHlewkk/+5u2ECsL6cKVEGQcxIOFUVzG60QdZRDXpU
-	3z1dqx6R4KAQQSDhcA8pG8R4b5B8kdTwZrn2jsFGOsLChzbZBktOnTyU8YRbUcMzfWBG2lz507tK+
-	7eUFgmlLQ==;
+	 bh=aZuorgnWh2o5FEb0SrRsyfcDgFBux4vBC8YSGlrw5es=; b=WKytWW83GCOM3m8pTwFke4b1p
+	A4m6QIIsHGFbIRQCVG/iiIKH81mXqfxCRC5WmVlY72pTrWlk6ODM7LiSXPvZR2GHk6I+C0uQ/XF6Q
+	zvTAquq0JB13XIXoA5Dez4RNd/hBfNbij6XSyHCEvyi0nRrT/pAC7WnS5B03i6uujRrM71ic1j6wZ
+	Py1NVNm88zf9ht1IWT5dU+SH47fyp8no6nuRIPCPCQiQSZIQTMz4GPSTH75aUobJN1Vtj+Js+QtU4
+	daGYdfOExfOe8WZmDmZ/dzrbYXvu8Fihs8okobxP9UonfTgsDr4nJ/nIWHYlQVhATxc9vMfGvXaQP
+	dAgFTRDAQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYSmD-0002xh-Mg; Fri, 30 Oct 2020 11:41:02 +0000
+	id 1kYSmM-00033W-FR; Fri, 30 Oct 2020 11:41:10 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYSi3-0000zE-76; Fri, 30 Oct 2020 11:36:48 +0000
+ id 1kYSi4-0000zf-9H; Fri, 30 Oct 2020 11:36:48 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 8D6751F45EC5
+ (Authenticated sender: eballetbo) with ESMTPSA id 915DB1F45EBC
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v4 13/16] arm64: dts: mediatek: Add mt8183 power domains
- controller
-Date: Fri, 30 Oct 2020 12:36:19 +0100
-Message-Id: <20201030113622.201188-14-enric.balletbo@collabora.com>
+Subject: [PATCH v4 14/16] dt-bindings: power: Add MT8192 power domains
+Date: Fri, 30 Oct 2020 12:36:20 +0100
+Message-Id: <20201030113622.201188-15-enric.balletbo@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201030113622.201188-1-enric.balletbo@collabora.com>
 References: <20201030113622.201188-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_073643_546456_B9E251B6 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20201030_073644_511471_FA9CFFD3 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,21 +64,20 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
- Rob Herring <robh+dt@kernel.org>, fparent@baylibre.com,
- Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
- Collabora Kernel ML <kernel@collabora.com>,
+ fparent@baylibre.com, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
 
-Add power domains controller node for SoC mt8183
+Add power domains dt-bindings for MT8192.
 
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
@@ -87,189 +85,69 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 162 +++++++++++++++++++++++
- 1 file changed, 162 insertions(+)
+ .../power/mediatek,power-controller.yaml      |  2 ++
+ include/dt-bindings/power/mt8192-power.h      | 32 +++++++++++++++++++
+ 2 files changed, 34 insertions(+)
+ create mode 100644 include/dt-bindings/power/mt8192-power.h
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c06778d21c4f..3e01592409cd 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mt8183-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/power/mt8183-power.h>
- #include <dt-bindings/reset-controller/mt8183-resets.h>
- #include <dt-bindings/phy/phy.h>
- #include "mt8183-pinfunc.h"
-@@ -316,6 +317,167 @@ pio: pinctrl@10005000 {
- 			#interrupt-cells = <2>;
- 		};
+diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+index 8cae43412327..fd12bafe3548 100644
+--- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
++++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+@@ -25,6 +25,7 @@ properties:
+     enum:
+       - mediatek,mt8173-power-controller
+       - mediatek,mt8183-power-controller
++      - mediatek,mt8192-power-controller
  
-+		scpsys: syscon@10006000 {
-+			compatible = "syscon", "simple-mfd";
-+			reg = <0 0x10006000 0 0x1000>;
-+			#power-domain-cells = <1>;
+   '#power-domain-cells':
+     const: 1
+@@ -60,6 +61,7 @@ patternProperties:
+           Power domain index. Valid values are defined in:
+               "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
+               "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
++              "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
+         maxItems: 1
+ 
+       clocks:
+diff --git a/include/dt-bindings/power/mt8192-power.h b/include/dt-bindings/power/mt8192-power.h
+new file mode 100644
+index 000000000000..4eaa53d7270a
+--- /dev/null
++++ b/include/dt-bindings/power/mt8192-power.h
+@@ -0,0 +1,32 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * Copyright (c) 2020 MediaTek Inc.
++ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
++ */
 +
-+			/* System Power Manager */
-+			spm: power-controller {
-+				compatible = "mediatek,mt8183-power-controller";
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				#power-domain-cells = <1>;
++#ifndef _DT_BINDINGS_POWER_MT8192_POWER_H
++#define _DT_BINDINGS_POWER_MT8192_POWER_H
 +
-+				/* power domain of the SoC */
-+				power-domain@MT8183_POWER_DOMAIN_AUDIO {
-+					reg = <MT8183_POWER_DOMAIN_AUDIO>;
-+					clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
-+						 <&infracfg CLK_INFRA_AUDIO>,
-+						 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>;
-+					clock-names = "audio", "audio1", "audio2";
-+					#power-domain-cells = <0>;
-+				};
++#define MT8192_POWER_DOMAIN_AUDIO	0
++#define MT8192_POWER_DOMAIN_CONN	1
++#define MT8192_POWER_DOMAIN_MFG0	2
++#define MT8192_POWER_DOMAIN_MFG1	3
++#define MT8192_POWER_DOMAIN_MFG2	4
++#define MT8192_POWER_DOMAIN_MFG3	5
++#define MT8192_POWER_DOMAIN_MFG4	6
++#define MT8192_POWER_DOMAIN_MFG5	7
++#define MT8192_POWER_DOMAIN_MFG6	8
++#define MT8192_POWER_DOMAIN_DISP	9
++#define MT8192_POWER_DOMAIN_IPE		10
++#define MT8192_POWER_DOMAIN_ISP		11
++#define MT8192_POWER_DOMAIN_ISP2	12
++#define MT8192_POWER_DOMAIN_MDP		13
++#define MT8192_POWER_DOMAIN_VENC	14
++#define MT8192_POWER_DOMAIN_VDEC	15
++#define MT8192_POWER_DOMAIN_VDEC2	16
++#define MT8192_POWER_DOMAIN_CAM		17
++#define MT8192_POWER_DOMAIN_CAM_RAWA	18
++#define MT8192_POWER_DOMAIN_CAM_RAWB	19
++#define MT8192_POWER_DOMAIN_CAM_RAWC	20
 +
-+				power-domain@MT8183_POWER_DOMAIN_CONN {
-+					reg = <MT8183_POWER_DOMAIN_CONN>;
-+					mediatek,infracfg = <&infracfg>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
-+					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
-+					clocks =  <&topckgen CLK_TOP_MUX_MFG>;
-+					clock-names = "mfg";
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					#power-domain-cells = <1>;
-+
-+					power-domain@MT8183_POWER_DOMAIN_MFG {
-+						reg = <MT8183_POWER_DOMAIN_MFG>;
-+						#address-cells = <1>;
-+						#size-cells = <0>;
-+						#power-domain-cells = <1>;
-+
-+						power-domain@MT8183_POWER_DOMAIN_MFG_CORE0 {
-+							reg = <MT8183_POWER_DOMAIN_MFG_CORE0>;
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8183_POWER_DOMAIN_MFG_CORE1 {
-+							reg = <MT8183_POWER_DOMAIN_MFG_CORE1>;
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8183_POWER_DOMAIN_MFG_2D {
-+							reg = <MT8183_POWER_DOMAIN_MFG_2D>;
-+							mediatek,infracfg = <&infracfg>;
-+							#power-domain-cells = <0>;
-+						};
-+					};
-+				};
-+
-+				power-domain@MT8183_POWER_DOMAIN_DISP {
-+					reg = <MT8183_POWER_DOMAIN_DISP>;
-+					clocks = <&topckgen CLK_TOP_MUX_MM>,
-+						 <&mmsys CLK_MM_SMI_COMMON>,
-+						 <&mmsys CLK_MM_SMI_LARB0>,
-+						 <&mmsys CLK_MM_SMI_LARB1>,
-+						 <&mmsys CLK_MM_GALS_COMM0>,
-+						 <&mmsys CLK_MM_GALS_COMM1>,
-+						 <&mmsys CLK_MM_GALS_CCU2MM>,
-+						 <&mmsys CLK_MM_GALS_IPU12MM>,
-+						 <&mmsys CLK_MM_GALS_IMG2MM>,
-+						 <&mmsys CLK_MM_GALS_CAM2MM>,
-+						 <&mmsys CLK_MM_GALS_IPU2MM>;
-+					clock-names = "mm", "mm-0", "mm-1", "mm-2", "mm-3",
-+						      "mm-4", "mm-5", "mm-6", "mm-7",
-+						      "mm-8", "mm-9";
-+					mediatek,infracfg = <&infracfg>;
-+					mediatek,smi = <&smi_common>;
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					#power-domain-cells = <1>;
-+
-+					power-domain@MT8183_POWER_DOMAIN_CAM {
-+						reg = <MT8183_POWER_DOMAIN_CAM>;
-+						clocks = <&topckgen CLK_TOP_MUX_CAM>,
-+							 <&camsys CLK_CAM_LARB6>,
-+							 <&camsys CLK_CAM_LARB3>,
-+							 <&camsys CLK_CAM_SENINF>,
-+							 <&camsys CLK_CAM_CAMSV0>,
-+							 <&camsys CLK_CAM_CAMSV1>,
-+							 <&camsys CLK_CAM_CAMSV2>,
-+							 <&camsys CLK_CAM_CCU>;
-+						clock-names = "cam", "cam-0", "cam-1",
-+							      "cam-2", "cam-3", "cam-4",
-+							      "cam-5", "cam-6";
-+						mediatek,infracfg = <&infracfg>;
-+						mediatek,smi = <&smi_common>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8183_POWER_DOMAIN_ISP {
-+						reg = <MT8183_POWER_DOMAIN_ISP>;
-+						clocks = <&topckgen CLK_TOP_MUX_IMG>,
-+							 <&imgsys CLK_IMG_LARB5>,
-+							 <&imgsys CLK_IMG_LARB2>;
-+						clock-names = "isp", "isp-0", "isp-1";
-+						mediatek,infracfg = <&infracfg>;
-+						mediatek,smi = <&smi_common>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8183_POWER_DOMAIN_VDEC {
-+						reg = <MT8183_POWER_DOMAIN_VDEC>;
-+						mediatek,smi = <&smi_common>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8183_POWER_DOMAIN_VENC {
-+						reg = <MT8183_POWER_DOMAIN_VENC>;
-+						mediatek,smi = <&smi_common>;
-+						#power-domain-cells = <0>;
-+					};
-+
-+					power-domain@MT8183_POWER_DOMAIN_VPU_TOP {
-+						reg = <MT8183_POWER_DOMAIN_VPU_TOP>;
-+						clocks = <&topckgen CLK_TOP_MUX_IPU_IF>,
-+							 <&topckgen CLK_TOP_MUX_DSP>,
-+							 <&ipu_conn CLK_IPU_CONN_IPU>,
-+							 <&ipu_conn CLK_IPU_CONN_AHB>,
-+							 <&ipu_conn CLK_IPU_CONN_AXI>,
-+							 <&ipu_conn CLK_IPU_CONN_ISP>,
-+							 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
-+							 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
-+						clock-names = "vpu", "vpu1", "vpu-0", "vpu-1",
-+							      "vpu-2", "vpu-3", "vpu-4", "vpu-5";
-+						mediatek,infracfg = <&infracfg>;
-+						mediatek,smi = <&smi_common>;
-+						#address-cells = <1>;
-+						#size-cells = <0>;
-+						#power-domain-cells = <1>;
-+
-+						power-domain@MT8183_POWER_DOMAIN_VPU_CORE0 {
-+							reg = <MT8183_POWER_DOMAIN_VPU_CORE0>;
-+							clocks = <&topckgen CLK_TOP_MUX_DSP1>;
-+							clock-names = "vpu2";
-+							mediatek,infracfg = <&infracfg>;
-+							#power-domain-cells = <0>;
-+						};
-+
-+						power-domain@MT8183_POWER_DOMAIN_VPU_CORE1 {
-+							reg = <MT8183_POWER_DOMAIN_VPU_CORE1>;
-+							clocks = <&topckgen CLK_TOP_MUX_DSP2>;
-+							clock-names = "vpu3";
-+							mediatek,infracfg = <&infracfg>;
-+							#power-domain-cells = <0>;
-+						};
-+					};
-+				};
-+			};
-+		};
-+
- 		watchdog: watchdog@10007000 {
- 			compatible = "mediatek,mt8183-wdt";
- 			reg = <0 0x10007000 0 0x100>;
++#endif /* _DT_BINDINGS_POWER_MT8192_POWER_H */
 -- 
 2.28.0
 
