@@ -2,62 +2,78 @@ Return-Path: <SRS0=R22q=EG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4CD4C00A89
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 01:13:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54821C00A89
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 01:49:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 09D6E207DE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 01:13:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC8E720702
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 01:49:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sUU/Tdgv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09D6E207DE
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PuNfk2Ph";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="PzOU5zcQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC8E720702
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8PQLopQ/s9eqxfPTQfsUvSlRtclkUjT/gadzU6jF4KA=; b=sUU/TdgvlkXbBfRNBzh8UzVWB4
-	C87jQgbxVq4Fk6TgpTECo3i7al0J4dQ4z9yftbSoUhNvQ69N2D9x89wzJs3OrKlfMVL1kj3EGLkCG
-	Y8t2Qe6KjfEYxGf8IzztFmFeyZrwaVpBKC+7NSEvRUr7TZnE0+3s5Hqth3oeZqaMyjE0RmYzf7MJa
-	3qG3mRxj/w7kDOKU+yM3qIjs0yycc/cNtE+47fPljuVWsRwrelpCNdo4a6VgXbHu5iclSXGw8rXt+
-	UnNUJZ7vm/Q6Jg9EWnyuFN49N7oD+bX7VwR0w2dIQxg4OkMWm/CV8ISVZuiMDe+fot5Pqo1tdDEPE
-	y8FQNNnw==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1T7rZeFQo5S34EoT1p2N4dwDhBPqI8sm9+JrRWKA2HU=; b=PuNfk2Phr1Ufe7flDfrw87QDt
+	f9lcGlHyW7I1r8OuI/NJjvFPJZ2T4vD8jQY/gip+EvvLL9Hve6/AZgR7BG/XrO1SBnezXg47Yj4Cw
+	kNOEKfbIOTi4HLDboHIHdxFCFO/rB5OAqOx258yptbRR5XHY+IdJXb5NGaDIVAwTCynDOFRshfwkH
+	73NO8athUI0ptUNQLWdd/qFZUhj6rPObTSB38ARvMh0MTHuu9V1jxrYHiWpX6Cjm+/wsd6tKmNh5Y
+	ufZ+T0HQlo7vC/0Z4KpltC64LdOdHLylvB1/UaWBDCNGovilDw5IMjVEbGw0a0GTsMTOyRfSHmmBU
+	DGPHNk2/g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYfSe-00079a-CD; Sat, 31 Oct 2020 01:13:40 +0000
-Received: from szxga06-in.huawei.com ([45.249.212.32])
+	id 1kYg1I-0000T7-Nd; Sat, 31 Oct 2020 01:49:28 +0000
+Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYfSY-000786-Lp; Sat, 31 Oct 2020 01:13:36 +0000
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4CNLlf00YszhdT9;
- Sat, 31 Oct 2020 09:13:17 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.487.0; Sat, 31 Oct 2020 09:13:07 +0800
-From: Qinglang Miao <miaoqinglang@huawei.com>
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar
- <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] cpufreq: mediatek: add missing platform_driver_unregister()
- on error in mtk_cpufreq_driver_init
-Date: Sat, 31 Oct 2020 09:18:54 +0800
-Message-ID: <20201031011854.137261-1-miaoqinglang@huawei.com>
-X-Mailer: git-send-email 2.20.1
+ id 1kYg1E-0000S9-RG
+ for linux-mediatek@lists.infradead.org; Sat, 31 Oct 2020 01:49:26 +0000
+Received: by mail-vk1-xa43.google.com with SMTP id u202so1855556vkb.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 30 Oct 2020 18:49:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZPV/6ZjBRsY6KZRFVNPjP+7C/4GJI8B4fX6GI9U1bfY=;
+ b=PzOU5zcQSwvi3EzbEIVtg/DDLYvsBmNveN2MNbLTY9mOYyUxQcT6gnk2XY50TSq+Mz
+ 3ZcJz1PeIpxCswbwjZlQlHFzrSksRfTGt1+j7WVq4oKwFdbbLh2Mxe6/Bq+E/XxJVT+p
+ +Z7jFzxTvSthZYITChYtjD1+qY54ytXoGDKWI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZPV/6ZjBRsY6KZRFVNPjP+7C/4GJI8B4fX6GI9U1bfY=;
+ b=C9WGLcWx0xnaVQZUq5Y7B52sXTJGP0svfeoXqJyeQoDeuMlMti5x4kQ5oZ0FY7gBlq
+ PbOkZZiVs6VJjF+MoEWQlRIESNbP8YS5+AYJM9yZt/E5eEiIkS0cvh02LTO1pZHOj0CW
+ INKD8GBlzme5i+IIE+1Ek8iGKCaejwnmEmiED6hst1rY74PTRIc5LQj4K6fIOv8r299V
+ JJ7Ww7aVwGYtNSGJWY5OZPgjjT3Cq2FB261FYhC7WKO1PyNmB4R2rLnJRly7aCmXOaXp
+ rX4mrVgrFJWQANNlK4fDGKAgbOqUAN2IGWyP0uOtADa3VZFcJjFHANO8GZEla8RKh8dC
+ DIZA==
+X-Gm-Message-State: AOAM530NIVlsIMFiqTFyCiEgtcYqtx2pXyWBm+EJ3PYnf7CPIIRlC35P
+ tvbh7Kg3cDkeqS8F0BHtomCYgjEDJWoL+vdvOJ0/mg==
+X-Google-Smtp-Source: ABdhPJxBfKPPEJsrRFAmfTb4PERFWlWcbJtupKxWmgnrLFxU+/eLQiLlHLypOOh1LpMzphA/TROBecVMymzvZfkoUrI=
+X-Received: by 2002:a1f:2e45:: with SMTP id u66mr2964184vku.9.1604108962735;
+ Fri, 30 Oct 2020 18:49:22 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
+References: <20201022094152.17662-1-houlong.wei@mediatek.com>
+In-Reply-To: <20201022094152.17662-1-houlong.wei@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Sat, 31 Oct 2020 09:49:11 +0800
+Message-ID: <CANMq1KC0nDNRUGm8Y5Lw1nH1uecYx7FnG9sWY=Gg9RhisroafA@mail.gmail.com>
+Subject: Re: [PATCH] soc: mediatek: cmdq: fixup possible timeout issue
+To: Houlong Wei <houlong.wei@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_211334_962850_DA19BFFD 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201030_214925_019052_A92D8342 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,38 +85,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Qinglang Miao <miaoqinglang@huawei.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-pm@vger.kernel.org
+Cc: Nicolas Boichat <drinkcat@chromium.org>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Daoyuan Huang <daoyuan.huang@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, lkml <linux-kernel@vger.kernel.org>,
+ Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, CK HU <ck.hu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ ginny.chen@mediatek.com, Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the missing platform_driver_unregister() before return from
-mtk_cpufreq_driver_init in the error handling case when failed
-to register mtk-cpufreq platform device
+Thanks for the patch.
 
-Signed-off-by: Qinglang Miao <miaoqinglang@huawei.com>
----
- drivers/cpufreq/mediatek-cpufreq.c | 1 +
- 1 file changed, 1 insertion(+)
+On Thu, Oct 22, 2020 at 5:44 PM Houlong Wei <houlong.wei@mediatek.com> wrote:
+>
+> Fixes: 576f1b4bc802 ("soc: mediatek: Add Mediatek CMDQ helper")
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 7d1212c9b..c03c76a0c 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -572,6 +572,7 @@ static int __init mtk_cpufreq_driver_init(void)
- 	pdev = platform_device_register_simple("mtk-cpufreq", -1, NULL, 0);
- 	if (IS_ERR(pdev)) {
- 		pr_err("failed to register mtk-cpufreq platform device\n");
-+		platform_driver_unregister(&mtk_cpufreq_platdrv);
- 		return PTR_ERR(pdev);
- 	}
- 
--- 
-2.23.0
+nit: This belongs right next to the Sob line, but I guess/hope
+Matthias can help you fix that ,-)
 
+>
+> There may be possible timeout issue when lots of cmdq packets are
+> flushed to the same cmdq client. The necessary modifications are as
+> below.
+> 1.Adjust the timer timeout period as client->timeout_ms * client->pkt_cnt.
+> 2.Optimize the time to start the timer.
+>
+
+Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+
+> Signed-off-by: Houlong Wei <houlong.wei@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 22 ++++++++++++++++++----
+>  1 file changed, 18 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index dc644cfb6419..31142c193527 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -350,7 +350,8 @@ static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
+>                         del_timer(&client->timer);
+>                 else
+>                         mod_timer(&client->timer, jiffies +
+> -                                 msecs_to_jiffies(client->timeout_ms));
+> +                                 msecs_to_jiffies(client->timeout_ms *
+> +                                                  client->pkt_cnt));
+>                 spin_unlock_irqrestore(&client->lock, flags);
+>         }
+>
+> @@ -379,9 +380,7 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+>
+>         if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+>                 spin_lock_irqsave(&client->lock, flags);
+> -               if (client->pkt_cnt++ == 0)
+> -                       mod_timer(&client->timer, jiffies +
+> -                                 msecs_to_jiffies(client->timeout_ms));
+> +               client->pkt_cnt++;
+>                 spin_unlock_irqrestore(&client->lock, flags);
+>         }
+>
+> @@ -391,6 +390,21 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+>         /* We can send next packet immediately, so just call txdone. */
+>         mbox_client_txdone(client->chan, 0);
+>
+> +       if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+> +               spin_lock_irqsave(&client->lock, flags);
+> +               /*
+> +                * GCE HW maybe execute too quickly and the callback function
+> +                * may be invoked earlier. If this happens, pkt_cnt is reduced
+> +                * by 1 in cmdq_pkt_flush_async_cb(). The timer is set only if
+> +                * pkt_cnt is greater than 0.
+> +                */
+> +               if (client->pkt_cnt > 0)
+> +                       mod_timer(&client->timer, jiffies +
+> +                                 msecs_to_jiffies(client->timeout_ms *
+> +                                                  client->pkt_cnt));
+> +               spin_unlock_irqrestore(&client->lock, flags);
+> +       }
+> +
+>         return 0;
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_flush_async);
+> --
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
