@@ -2,84 +2,71 @@ Return-Path: <SRS0=R22q=EG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C24CBC4742C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 11:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E07FC388F7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 14:04:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C11B20719
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 11:39:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 34DA220723
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2020 14:04:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1aBD9VQO";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="MzPO9MZk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C11B20719
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o5VuoTH5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mailerdienst.de header.i=@mailerdienst.de header.b="bVQemA23"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 34DA220723
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1D0mI3eaNxlC/SCbaZvB2/cnfuZKoBZeRlLwlMPND0o=; b=1aBD9VQOe10fPt3EpbYg3zolp
-	kVnFcX+xR51LsotQvLd3I0veLueVsHoH5G2MZxudk+lxuCxOo+rvE/xpvjkFeHI5ydKDxItOTd6c9
-	QsXtRHC+XAd+kUgoXOOG0a8ssBPJJVkxHyNx1p/Hbyw9LLWVP9jIWO85T8Kwh1zuvpeMnL6OKmgbD
-	ghhphcC2pWHxygCPbtpa6+kIxCAkF6UnlHpCI4QAHU/fd7EBXpaOrCL3TajEYkSQxbv9+7F4/xGRp
-	KT2bLUJWqb+GfZkWukO4Nk4jjPz6bCAWs8CsaRq81+rDEu5A3TXE62SuXzE10T7N2xhwhzDSsvY+9
-	kWMEFnrNg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GGkJ9luaPMgXpynLPI63qZOJtgc8zG+PwtPI3sEGu+E=; b=o5VuoTH5dLO5prd98ebwqUXySm
+	X4meV+mX6uXN5bjDXj1ZMGLhxBnq7evjmWtNaNc6Emz9VcJaKZV3Fd9cROYuXohPqjhJggn6TeNqd
+	YJrW/eb6hVA9+r+yIErRBg9sO2+ZGi+0OGcyBoWgwxZ2Q6y43CyWrvS89ICCRyN140LGufeIefM9b
+	oJsk4Efyj3Frm4oeZb4tcTdAB7QrZoONjVz1R7oMH1tZPv5Jl5SgnmaTTwJYi2BSodoTK+TOTgpCx
+	U9EVLGmckbunkNK7qEZGej9grziBfCohBt/XuPf7b1PAhYd52h0wlHnkiy2G++rlVAT3/DH6BoCaB
+	DT7NAlng==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYpDu-0005Jk-Ib; Sat, 31 Oct 2020 11:39:06 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1kYrUA-0008K9-6i; Sat, 31 Oct 2020 14:04:02 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYpDq-0005IS-L9
- for linux-mediatek@lists.infradead.org; Sat, 31 Oct 2020 11:39:03 +0000
-Received: by mail-il1-x143.google.com with SMTP id k1so8773058ilc.10
- for <linux-mediatek@lists.infradead.org>; Sat, 31 Oct 2020 04:39:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iWr+b4d6vRwF0t5pomRiiNEuuSgjMZV6gdO6R0PGLGI=;
- b=MzPO9MZkXm8AlGd0bbcmenmj7NNR02MYFGX58iMzgPYBVdibEAsD6rhrnBbLTiSN2e
- QJ2+W9cgZrEAyuJKQuK8CSpJMY29IJKDaQEnU8V6duBohUzStWQhsAsy6k2z+6hSU12u
- ASW0Uzerm/BtVE/Ah1sBFrIxjkP3lrHBg9XwGiCigGkMGA3+4mY06kR6JZwSsXnonGrn
- eQwZ2wbLdZQokDrDN8o+VLv9+LBf6tOHq1JqxalVnAd1sENv2Pbv0tDw4quoHb2w6lY2
- rRQpLQ2F6ppixFa5jX8QaNEAX9JhEfoqJmr1Ocgvpg+tgLg4XYSYqPpx94/Mqhv9JKmC
- FDKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iWr+b4d6vRwF0t5pomRiiNEuuSgjMZV6gdO6R0PGLGI=;
- b=FXjeN1RWYgW1XVyc7ejvdaG4S59YJzOVr8DAx7+SXZLYnmYAQhHRtN4JDh9nv2Pqi5
- elMw1+/4wFoPxbqJBRf8MQIgLeB/1vjKU+OzrjsadwoXiKJuL+F3MAaMV0WwhSVbQ1L7
- 4jSjqYQiH/R3I03EwAfiAc+3QxPa527G5CSOAaqqXYmEtleHwflxPWVMEaUPBqLlhhvx
- I7KjY8rrRdvaa+nEu9tEfF9pYsbv0ROWkkhF0G8ZIhoc7YS8+YhmX5pnKe9oYEKFohuD
- Oqt6VCTo1qH0sre3E0V2s2L8H31nt2KnfYWrQkX5oScOb8DkBL61m/KA66llXrB4+Wo2
- Am3Q==
-X-Gm-Message-State: AOAM532Nd3WVcPgvHPuaE5dtKSnyakoG6YWaiNXXwzaQvc/g4J7qwMFD
- ItqTL64pYxm/kylVLZAK6Za6HxQwKWwyMOQ0Lz7VCw==
-X-Google-Smtp-Source: ABdhPJxbtHT4iEyYwAkR4uBqXRY1zR99kXZQu5XEK1tkG0oSS3Wtm3zR0200hnrm2sMfkJJaP+DMIB2xXM3V68/vRfQ=
-X-Received: by 2002:a92:480e:: with SMTP id v14mr4468180ila.218.1604144338898; 
- Sat, 31 Oct 2020 04:38:58 -0700 (PDT)
+ id 1kYrU6-0008JT-Ny
+ for linux-mediatek@lists.infradead.org; Sat, 31 Oct 2020 14:04:00 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+ by mxout3.routing.net (Postfix) with ESMTP id 7AA7D60131;
+ Sat, 31 Oct 2020 14:03:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1604153030;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=nnqpdwBRoGTj+JO7bkuaUY6oKrUxMavYYaV/d3fKDdQ=;
+ b=bVQemA238/wVSfo5rW9auRUYepbmAnKBqLrz9KJUXnluHpXQv3wtzei+B9qRorOmKRxj8B
+ C3e13ePdrdgOfaDFXlI2RPzevDEsoiN3L2pG8pCQAuiBmH1uBXPnRo2rbG8u1yHCBG5/9B
+ AMQAt6gYbCUhbPxmX1I9Uae1C1Z7/EE=
+Received: from localhost.localdomain (fttx-pool-217.61.156.230.bambit.de
+ [217.61.156.230])
+ by mxbox3.masterlogin.de (Postfix) with ESMTPSA id E134D360085;
+ Sat, 31 Oct 2020 14:03:43 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] pci: mediatek: fix warning in msi.h
+Date: Sat, 31 Oct 2020 15:03:30 +0100
+Message-Id: <20201031140330.83768-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <1603521686-13036-1-git-send-email-jiaxin.yu@mediatek.com>
- <1603521686-13036-3-git-send-email-jiaxin.yu@mediatek.com>
- <20201030182339.GA4069524@bogus>
-In-Reply-To: <20201030182339.GA4069524@bogus>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Sat, 31 Oct 2020 19:38:48 +0800
-Message-ID: <CA+Px+wV5v2NK5hQ7sqHHFXVE34iLmi8+7caHZpD5Y=SX5x57ag@mail.gmail.com>
-Subject: Re: [PATCH 2/2] dt-bindings: mediatek: mt8192: add ul-delay-ms
- property
-To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201031_073902_765741_DCCCEE0F 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20201031_100359_325452_2D7C7A4C 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,35 +78,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, ALSA development <alsa-devel@alsa-project.org>,
- Takashi Iwai <tiwai@suse.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- shane.chien@mediatek.com, Mark Brown <broonie@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>, Marc Zyngier <maz@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Thomas Gleixner <tglx@linutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 31, 2020 at 2:23 AM Rob Herring <robh@kernel.org> wrote:
-> On Sat, Oct 24, 2020 at 02:41:26PM +0800, Jiaxin Yu wrote:
-> > +  mediatek,ul-delay-ms:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    description: |
-> > +      Skip first time data at the beginning of DMIC recording
->
-> What does 'ul' mean? Nothing tells me this is DMIC related in the name
-> and 'ul' is not used anywhere in the description.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-UL stands for Up-Link.
+5.10 shows these warnings on bootup while enabling pcie
+at least on bananapi-r2:
 
-Please ignore the patch series.  We won't implement the delay in
-mt6359.c.  Instead, we'll leverage generic dmic.c.  See
-https://patchwork.kernel.org/project/alsa-devel/patch/1603521686-13036-2-git-send-email-jiaxin.yu@mediatek.com/#23716495
-for previous discussion.
+[    6.161730] WARNING: CPU: 2 PID: 73 at include/linux/msi.h:213 pci_msi_setup_
+msi_irqs.constprop.0+0x78/0x80
+....
+[    6.724607] WARNING: CPU: 2 PID: 73 at include/linux/msi.h:219 free_msi_irqs+
+
+fix this by selecting PCI_MSI_ARCH_FALLBACKS for MTK PCIe driver
+
+Fixes: 077ee78e3928 ("PCI/MSI: Make arch_.*_msi_irq[s] fallbacks selectable")
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/pci/controller/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+index 64e2f5e379aa..8345de010186 100644
+--- a/drivers/pci/controller/Kconfig
++++ b/drivers/pci/controller/Kconfig
+@@ -238,6 +238,7 @@ config PCIE_MEDIATEK
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+ 	depends on OF
+ 	depends on PCI_MSI_IRQ_DOMAIN
++	select PCI_MSI_ARCH_FALLBACKS
+ 	help
+ 	  Say Y here if you want to enable PCIe controller support on
+ 	  MediaTek SoCs.
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
