@@ -2,79 +2,67 @@ Return-Path: <SRS0=ZPt7=EH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29623C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 12:49:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D2F9C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 15:13:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AB8020756
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 12:49:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 002B52223F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 15:13:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LEq/tJ5V";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Fnz8Ke7X"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AB8020756
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="moPIWnP2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Ec+X8YBt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 002B52223F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LuQdpldMaHqO8hJrNizKnV3GVD6WOWCmet078vKO3wk=; b=LEq/tJ5VrsfPyuprccZJcsnWP
-	BPtg5e397apg2u4JpQOeaYeLKGviyMf2K7zYbE9EVBikUqERmolXsKTVdU305G+u6h6eR+zcBE+wq
-	JbH70CFtjXN93QCek3jSDhXBsivVN2qRVlyeXYc1nVcGXvVZj5wJ4r49lCg5s5nm1PoTdwyIjmXp7
-	4EMTL8EUOfgDW0wkWPwlycaFbFYvEW0g95JYS9QEDoyw+eUUsH+K/Li4/zjtO4tYTIc2CH4SiAoUw
-	wfBbTOSL8sGKXbSrFAZW4fyE4NgkfsVDYfjv+bYRENxXXE9ou1LJIGapxylhBju4NEedmjYVrmkmD
-	Q7SGDaFrQ==;
+	 bh=pqmGG+MpSwW45jSKNpzrT29c8XOd8dF5Vu0EI0/esCM=; b=moPIWnP2cwHZ66+VEtSMv3W3o
+	KMh/zS9CtG6TOX0smSyY6gO+JPqGntXLoPQBWvWWlaYP06PCouGu4nXKafMwx43ZrX0QrEmtJG1gw
+	L0MTXIWMYBeAXBv6A2L8pzR/TsgdzN+PdgBfd+kKY2LgZievRECvDAMq7hK/q7nhDq+Qi6v3a/rog
+	8e0jVQLh8AmvVIwq2SRsx9UgxskbObzJSV8gmQ3bmshql0U9xMiyPpp/GQJ1+4sP5MnvevEkY/Nfh
+	EvSWPk0z81dFxSVZ3OjqcfhqOGcZTKP6x+QykLVNaZ4wI3h/fXb++O7NpNlA1c5ezkzu8lU5OQBLb
+	7TNumzg3w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZCnO-0001hh-VK; Sun, 01 Nov 2020 12:49:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kZF31-00024F-3Q; Sun, 01 Nov 2020 15:13:35 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZCnK-0001h4-Uy; Sun, 01 Nov 2020 12:49:17 +0000
-X-UUID: f699dde3501d48c5a46980fcbb12d64b-20201101
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=T9oJMU+t5XPbuAxFuLhwzMivW8NW/dhCpaqdCmT8708=; 
- b=Fnz8Ke7XxjTi77ldcKJPeWhtz4HcVfqiWf+O0hSPJuZ7LgELIxqzHhmzbqmqtybejW6ijtxO00xqnBvLG46/G7TtrSX7tiofuEc32Kkr2R7B0Oqu+xTHxnCFJtmpWxIgBFF5IwMi3sym18ICKZS0H5xx06L66pKWoCnEk+OQG5U=;
-X-UUID: f699dde3501d48c5a46980fcbb12d64b-20201101
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 280211795; Sun, 01 Nov 2020 04:49:07 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 1 Nov 2020 04:49:05 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 1 Nov 2020 20:48:50 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 1 Nov 2020 20:48:51 +0800
-Message-ID: <1604234932.13617.0.camel@mtkswgap22>
-Subject: Re: [PATCH v2 3/4] arm: mm: introduce L_PTE_SPECIAL
-From: Miles Chen <miles.chen@mediatek.com>
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Date: Sun, 1 Nov 2020 20:48:52 +0800
-In-Reply-To: <20201027091151.GK1551@shell.armlinux.org.uk>
-References: <20201023091437.8225-1-miles.chen@mediatek.com>
- <20201023091437.8225-4-miles.chen@mediatek.com>
- <20201023100810.GY1551@shell.armlinux.org.uk>
- <1603784712.12492.5.camel@mtkswgap22>
- <20201027091151.GK1551@shell.armlinux.org.uk>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kZF2s-000228-AM; Sun, 01 Nov 2020 15:13:31 +0000
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
+ [82.4.196.95])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A1EBE2223F;
+ Sun,  1 Nov 2020 15:13:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604243604;
+ bh=1WOrV1jjtHcG7addgh8YJpo8rrwOUU24MJKpjdERXRE=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Ec+X8YBt7oP1F3vLOxylHK9Ei/R7rhJqbRKWffexjKA4K0qzs03KxfUKe4UVaRlef
+ mSgIzJDEYz/zpcLh7fDzUl21l8n2OlHH00lNG1VGW/ynJeXu6hIdF18OHEA3AISzv4
+ 1fcdhrX8RXoLyROvANs1aksll0pv4qc89vhlFImY=
+Date: Sun, 1 Nov 2020 15:13:18 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Fabien Parent <fparent@baylibre.com>
+Subject: Re: [PATCH v3] iio: adc: mediatek: fix unset field
+Message-ID: <20201101151318.052a9d19@archlinux>
+In-Reply-To: <20201018194644.3366846-1-fparent@baylibre.com>
+References: <20201018194644.3366846-1-fparent@baylibre.com>
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201101_074915_135642_A35231EE 
-X-CRM114-Status: GOOD (  28.20  )
+X-CRM114-CacheID: sfid-20201101_101326_429012_574B3647 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,90 +74,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Steve Capper <steve.capper@linaro.org>, wsd_upstream@mediatek.com,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>,
- linux-kernel@vger.kernel.org, Minchan Kim <minchan@kernel.org>,
- linux-mediatek@lists.infradead.org, Suren Baghdasaryan <surenb@google.com>,
+Cc: lars@metafoo.de, linux-iio@vger.kernel.org, chun-hung.wu@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ pmeerw@pmeerw.net, matthias.bgg@gmail.com, alexandru.ardelean@analog.com,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-10-27 at 09:11 +0000, Russell King - ARM Linux admin wrote:
-> On Tue, Oct 27, 2020 at 03:45:12PM +0800, Miles Chen wrote:
-> > On Fri, 2020-10-23 at 11:08 +0100, Russell King - ARM Linux admin wrote:
-> > > On Fri, Oct 23, 2020 at 05:14:36PM +0800, Miles Chen wrote:
-> > > > From: Minchan Kim <minchan@kernel.org>
-> > > > 
-> > > > This patch introduces L_PTE_SPECIAL and pte functions for supporting
-> > > > get_user_pages_fast.
-> > > > 
-> > > > Cc: Russell King <linux@armlinux.org.uk>
-> > > > Cc: Catalin Marinas <catalin.marinas@arm.com>
-> > > > Cc: Will Deacon <will.deacon@arm.com>
-> > > > Cc: Steve Capper <steve.capper@linaro.org>
-> > > > Cc: Minchan Kim <minchan@kernel.org>
-> > > > Cc: Suren Baghdasaryan <surenb@google.com>
-> > > > Signed-off-by: Minchan Kim <minchan@kernel.org>
-> > > > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > > > ---
-> > > >  arch/arm/Kconfig                      |  4 ++--
-> > > >  arch/arm/include/asm/pgtable-2level.h |  1 +
-> > > >  arch/arm/include/asm/pgtable-3level.h |  6 ------
-> > > >  arch/arm/include/asm/pgtable.h        | 13 +++++++++++++
-> > > >  4 files changed, 16 insertions(+), 8 deletions(-)
-> > > > 
-> > > > diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-> > > > index c18fa9d382b7..1f75864b7c7a 100644
-> > > > --- a/arch/arm/Kconfig
-> > > > +++ b/arch/arm/Kconfig
-> > > > @@ -13,7 +13,7 @@ config ARM
-> > > >  	select ARCH_HAS_KCOV
-> > > >  	select ARCH_HAS_MEMBARRIER_SYNC_CORE
-> > > >  	select ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE
-> > > > -	select ARCH_HAS_PTE_SPECIAL if ARM_LPAE
-> > > > +	select ARCH_HAS_PTE_SPECIAL if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
-> > > >  	select ARCH_HAS_PHYS_TO_DMA
-> > > >  	select ARCH_HAS_SETUP_DMA_OPS
-> > > >  	select ARCH_HAS_SET_MEMORY
-> > > > @@ -82,7 +82,7 @@ config ARM
-> > > >  	select HAVE_DYNAMIC_FTRACE_WITH_REGS if HAVE_DYNAMIC_FTRACE
-> > > >  	select HAVE_EFFICIENT_UNALIGNED_ACCESS if (CPU_V6 || CPU_V6K || CPU_V7) && MMU
-> > > >  	select HAVE_EXIT_THREAD
-> > > > -	select HAVE_FAST_GUP if ARM_LPAE
-> > > > +	select HAVE_FAST_GUP if (ARM_LPAE || CPU_V7 || CPU_V6 || CPUV6K)
-> > > >  	select HAVE_FTRACE_MCOUNT_RECORD if !XIP_KERNEL
-> > > >  	select HAVE_FUNCTION_GRAPH_TRACER if !THUMB2_KERNEL && !CC_IS_CLANG
-> > > >  	select HAVE_FUNCTION_TRACER if !XIP_KERNEL
-> > > > diff --git a/arch/arm/include/asm/pgtable-2level.h b/arch/arm/include/asm/pgtable-2level.h
-> > > > index cdcd55cca37d..385e7a32394e 100644
-> > > > --- a/arch/arm/include/asm/pgtable-2level.h
-> > > > +++ b/arch/arm/include/asm/pgtable-2level.h
-> > > > @@ -117,6 +117,7 @@
-> > > >  #define L_PTE_VALID		(_AT(pteval_t, 1) << 0)		/* Valid */
-> > > >  #define L_PTE_PRESENT		(_AT(pteval_t, 1) << 0)
-> > > >  #define L_PTE_YOUNG		(_AT(pteval_t, 1) << 1)
-> > > > +#define L_PTE_SPECIAL		(_AT(pteval_t, 1) << 5)
-> > > 
-> > > How does this work?  Bits 2 through 5 are already in use for the memory
-> > > type.
-> > > 
-> > > Repurposing this bit means that L_PTE_MT_DEV_NONSHARED,
-> > > L_PTE_MT_DEV_WC, L_PTE_MT_DEV_CACHED and L_PTE_MT_VECTORS clash with
-> > > it.
-> > 
-> > Thanks for the comment.
-> > The idea is to re-order the memory type table in [1] (patch v2/4) and
-> > use bit 5 for L_PTE_SPECIAL.
+On Sun, 18 Oct 2020 21:46:44 +0200
+Fabien Parent <fparent@baylibre.com> wrote:
+
+> dev_comp field is used in a couple of places but it is never set. This
+> results in kernel oops when dereferencing a NULL pointer. Set the
+> `dev_comp` field correctly in the probe function.
 > 
-> Thanks, I know what you are trying to achieve. I don't think it's
-> possible without breaking the kernel on some CPUs and configurations.
+> Fixes: 6d97024dce23 ("iio: adc: mediatek: mt6577-auxadc, add mt6765 support")
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Applied to the fixes-togreg branch of iio.git and marked for stable.
+
+Thanks,
+
+Jonathan
+> ---
 > 
-Got it. Thanks for your review.
+> Changelog:
+> V2:
+> 	* s/of_device_get_match_data/device_get_match_data
+> 	* include mod_devicetable.h and property.h instead of of_*.h headers
+> V3:
+> 	* Remove extra space between Fixes tag and Signed-off-by tag
+> 	* Add missing Reviewed-by tag from Matthias Brugger
+> 
+>  drivers/iio/adc/mt6577_auxadc.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> index ac415cb089cd..79c1dd68b909 100644
+> --- a/drivers/iio/adc/mt6577_auxadc.c
+> +++ b/drivers/iio/adc/mt6577_auxadc.c
+> @@ -9,9 +9,9 @@
+>  #include <linux/err.h>
+>  #include <linux/kernel.h>
+>  #include <linux/module.h>
+> -#include <linux/of.h>
+> -#include <linux/of_device.h>
+> +#include <linux/mod_devicetable.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/property.h>
+>  #include <linux/iopoll.h>
+>  #include <linux/io.h>
+>  #include <linux/iio/iio.h>
+> @@ -276,6 +276,8 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
+>  		goto err_disable_clk;
+>  	}
+>  
+> +	adc_dev->dev_comp = device_get_match_data(&pdev->dev);
+> +
+>  	mutex_init(&adc_dev->lock);
+>  
+>  	mt6577_auxadc_mod_reg(adc_dev->reg_base + MT6577_AUXADC_MISC,
 
 
-Miles
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
