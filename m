@@ -2,88 +2,79 @@ Return-Path: <SRS0=ZPt7=EH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E42A5C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 21:47:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 08546C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 22:27:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6ECFC222B9
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 21:47:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 517CC221FC
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 22:27:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OAEjcFhr";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="pDFSihJJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6ECFC222B9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k0PnTd2+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="zrhVLZVB";
+	dkim=permerror (0-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="91YBEhR4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 517CC221FC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:To:From:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0afOikMvnTOO1wlFyV8W0i8TIDMR+P8qciK1j5UcGrU=; b=OAEjcFhraQOVnaqU3ORvHGu7z
-	mc9Ep2nD7ZW4xpffqij9wtaUllnbqLj1UcTlml3rdwtNan7R3NXL8qpLzvTwpZ/uXsh45D+ar9AhM
-	1WjpLfAyOuNiD04koepxZNYI46NuYvF/4gaxjr06FegVwa+TpbtNhFlvHRSZJOrQz2ycLrf2raul8
-	Hhk65sU49VlCCKZ3OPGS1v8oqDt942Q/gjX0+tSSxv0dMxpSL47ylPP2zZ8vBSgRi515BxFmAagN8
-	7SUWWmujvzXhW19dXdQUZMaLUJoTyXC6rDVKOwEVzqWqreFJMYcXFrfuEkf38P8fSzGrdrOToommR
-	/0oeMqa4g==;
+	 bh=Zrbdh7a4QhfX4DgrYg4QSNdjGRhlGPkJShOdlPnqXho=; b=k0PnTd2+GUiBGqD3PKWagzE2J
+	cT353ZbUSSslJZD5SinHcLvcJfehYIPC+ZSdi/+c+T6+8xa/9SxGiB/DKT9gY+f4qgcbSOuD/cgQV
+	d8IFfdOYHXozpZAu0WQEqP+2b4cguQ8KZb+Q/idVwpDcBg1ynuHrAHFFSy+VJgiRtgRh4Nqvwdb0L
+	lph1nllcZtxtfOJG6iMmAdVvnwmBL0kqM0s000N77Yq/4PS41dmm3HOEz7Qqd23J/pk64CSx96RmQ
+	B2O28G7czSzu1uvXBm8Q6gVTe6QI1XQzwgdjuBL2G1rYy2AMBoqEsErsQbJuqW7coUtRODSXmlxIh
+	7a6jLCE1g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZLCH-0006wk-DO; Sun, 01 Nov 2020 21:47:33 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kZLp0-000059-A6; Sun, 01 Nov 2020 22:27:34 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZLCF-0006w6-FY
- for linux-mediatek@lists.infradead.org; Sun, 01 Nov 2020 21:47:32 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DDC3621556;
- Sun,  1 Nov 2020 21:47:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604267249;
- bh=8S3wMtP+VFlBVcZ9n2fsYn9WTHET+KxjV5vyC/DTu88=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=pDFSihJJ+3uGmK65I79KGSAWNgTRbsMqKkMWBUHLDeMlcA1hY+j5WLUuQmjj7tzy0
- vX23s/USciVchrf0JHhApr310e6Z7jQZF2u5yHpmoSvWQcPFlDQIeISlObQZQT5nDR
- UmQMp6LoWU9dmTsx3fILr0SNcBW1yNYAb+3S/woU=
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=wait-a-minute.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1kZLCA-006VDT-FF; Sun, 01 Nov 2020 21:47:26 +0000
-Date: Sun, 01 Nov 2020 21:47:25 +0000
-Message-ID: <87k0v4u4uq.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Frank Wunderlich <frank-w@public-files.de>
+ id 1kZLon-0008Vw-9p
+ for linux-mediatek@lists.infradead.org; Sun, 01 Nov 2020 22:27:22 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1604269638;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ptxTsFp2L6efDZ+NSsWwAuqOWnuRT3+qbc/ppVuKKyc=;
+ b=zrhVLZVBFb+q3hwt5X/nvPFMdsf4VVl0ZxIm6E9eDxZYf3tEfrB4GMorHj70CBSscXfA5q
+ 7tO17wbxtYzyEztnPNpp6pQuRYCAeWfhc7Il6oGoD1aiHBTVutRnmhuHxyiWTlq68VnE58
+ w27URJOE8zqC0GDeT+YmTP5UZSmKvsdovTCAcCrGw2yE4gMtVEv+1ZBI/nIQsjtImf17A9
+ Z8Ov/wMPndW4hznqwyyx8pNQ/R/xQ/YDb/BcA+2d6aeBZoGbhd5JGWBYCzq/dgNYGItFzD
+ kCo8gVDp9I4LV4+AEt6/OCNhbW9bTtWPNdhpo7NJShn3Hlhb+E+zrRbzN8RcLQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1604269638;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ptxTsFp2L6efDZ+NSsWwAuqOWnuRT3+qbc/ppVuKKyc=;
+ b=91YBEhR4RkDtGn4ekE0bM4GfC1r7cgSSnIrSGBCPZonjdRxEx8D8WPiVKEkZJtgtNmQJ3J
+ 9Lpp8U5BuAPEbmAw==
+To: Marc Zyngier <maz@kernel.org>, Frank Wunderlich <frank-w@public-files.de>
 Subject: Re: Aw: Re: [PATCH] pci: mediatek: fix warning in msi.h
-In-Reply-To: <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
+In-Reply-To: <87k0v4u4uq.wl-maz@kernel.org>
 References: <20201031140330.83768-1-linux@fw-web.de>
  <878sbm9icl.fsf@nanos.tec.linutronix.de>
  <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
- <87lfflti8q.wl-maz@kernel.org>
- <1604253261.22363.0.camel@mtkswgap22>
+ <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
  <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 EasyPG/1.0.0 Emacs/26.3
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: frank-w@public-files.de, ryder.lee@mediatek.com,
- linux-mediatek@lists.infradead.org, tglx@linutronix.de, linux@fw-web.de,
- linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
- linux-pci@vger.kernel.org, bhelgaas@google.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ <87k0v4u4uq.wl-maz@kernel.org>
+Date: Sun, 01 Nov 2020 23:27:17 +0100
+Message-ID: <87pn4w90hm.fsf@nanos.tec.linutronix.de>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201101_164731_769337_D4EB272F 
-X-CRM114-Status: GOOD (  23.54  )
+X-CRM114-CacheID: sfid-20201101_172721_517875_2D9C8283 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,55 +89,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
  linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
  linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Frank Wunderlich <linux@fw-web.de>
+ Frank Wunderlich <linux@fw-web.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 01 Nov 2020 18:27:13 +0000,
-Frank Wunderlich <frank-w@public-files.de> wrote:
-> 
-> > Gesendet: Sonntag, 01. November 2020 um 18:54 Uhr
-> > Von: "Ryder Lee" <ryder.lee@mediatek.com>
-> 
-> > Yea, mt7623 (mtk_pcie_soc_v1) does not support MSI, so that's a way to
-> > handle it.
-> >
-> > @Frank, could you help to test it?
-> >
-> > Ryder
-> 
-> compiles clean for mt7623/armhf and mt7622/aarch64 so far
-> 
-> at least bananapi-r2/mt7623 booting is clean now - no warning pcie
-> and sata/ahci seems still working as expected. I have a mt7615 card
-> in pcie-slot (firmware-load and init without errors) and hdd
-> connected to outer sata port (can access partitions witout errors)
-> 
-> booted r64 too, still see no warning, but have not yet connected
-> hdd/pcie-device, but i guess this should not break anything here
-> 
-> so Marc, if you post the patch separately, you can add my tested-by
-> ;) thank you for this
+On Sun, Nov 01 2020 at 21:47, Marc Zyngier wrote:
+> On Sun, 01 Nov 2020 18:27:13 +0000,
+> Frank Wunderlich <frank-w@public-files.de> wrote:
+> Thinking of it a bit more, I think this is the wrong solution.
+>
+> PCI MSIs are optional, and not a requirement. I can trivially spin a
+> VM with PCI devices and yet no MSI capability (yes, it is more
+> difficult with real HW), and this results in a bunch of warning, none
+> of which are actually indicative of anything being wrong.
 
-Thinking of it a bit more, I think this is the wrong solution.
+Well. No. 
 
-PCI MSIs are optional, and not a requirement. I can trivially spin a
-VM with PCI devices and yet no MSI capability (yes, it is more
-difficult with real HW), and this results in a bunch of warning, none
-of which are actually indicative of anything being wrong.
+The problem is that the device enumerates MSI capability, but the host
+bridge is not proving support for MSI. 
 
-I think the real fix is to get rid of the warnings altogether. If we
-could detect that there should be an MSI domain associated with the
-device and that it wasn't there, that'd be a good reason to scream.
-But on its own, the absence of a MSI domain is not an indication of
-anything being amiss.
+The host bridge fails to mark the bus with PCI_BUS_FLAGS_NO_MSI. That's
+the reason why this runs into this issue.
 
-	M.
+Something like the uncompiled hack below. I haven't found a way to hand
+that down to the probe function.
 
--- 
-Without deviation from the norm, progress is not possible.
+Thanks,
+
+        tglx
+---
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index cf4c18f0c25a..d91bdfea7329 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -143,6 +143,7 @@ struct mtk_pcie_port;
+  * struct mtk_pcie_soc - differentiate between host generations
+  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
+  * @need_fix_device_id: whether this host's device ID needed to be fixed or not
++ * @no_msi: Bridge has no MSI support
+  * @device_id: device ID which this host need to be fixed
+  * @ops: pointer to configuration access functions
+  * @startup: pointer to controller setting functions
+@@ -151,6 +152,7 @@ struct mtk_pcie_port;
+ struct mtk_pcie_soc {
+ 	bool need_fix_class_id;
+ 	bool need_fix_device_id;
++	bool no_msi;
+ 	unsigned int device_id;
+ 	struct pci_ops *ops;
+ 	int (*startup)(struct mtk_pcie_port *port);
+@@ -1089,6 +1091,9 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	if (err)
+ 		goto put_resources;
+ 
++	if (!pcie->soc->no_msi)
++		host->bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
++
+ 	return 0;
+ 
+ put_resources:
+@@ -1173,6 +1178,7 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
+ };
+ 
+ static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
++	.no_msi = true,
+ 	.ops = &mtk_pcie_ops,
+ 	.startup = mtk_pcie_startup_port,
+ };
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
