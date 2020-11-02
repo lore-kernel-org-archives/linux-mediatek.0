@@ -2,86 +2,84 @@ Return-Path: <SRS0=vtlS=EI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A640C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 11:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FFE3C00A89
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 12:08:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 72AB522275
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 11:30:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E3D242223C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 12:08:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BQUjLao6";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="s3eYWJ4N"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 72AB522275
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="alhb+f0K";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="OER6ydD3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3D242223C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eUkh4XGtSibl1EiLFTPQhdxuaZ2RjjlxYx3EISob+9o=; b=BQUjLao6FA3USUHfszwPhQ4w3
-	GlYlGnGouTlEYYo7bGrplcfqUmoMBPwL6bL6fIiR5eXufgI+VzHoaGI5V0opTz+Ra8KUyqUq9lEAJ
-	XW0xr1nOrta6c+rshUS6JTMi8OWwNDwEhhum0WeU+8pkpCixnELYAEGIn1tjBdnzLYXl2Jkwq7zuJ
-	GoJYulz1VfN884rK54EwpV3DCq2UVbNijpWMVOMWeCzMxM4eLy/mqfM5JWCTbrRCcXGe96oF6L3b0
-	3PP3nNgmRzDOhwD3RnjqoGtx7n3TFjJNegdsan1cCOOHUDa7Klp0pAzrVLWOX2/CKwONrhHDUJ8C7
-	FN5mSl/sw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DGQP4xXKt42QSRS43pmsZhTTZfkBe5bXWvkhRMdzUNo=; b=alhb+f0KdXIXw2QA5gPaGjpLRi
+	15/xK/ab+FRPtiENPq2G+4rx7/DM0px0oSyzS3sm8czhp0v8uLB+tyvbyIGmTRHMi3bI65Yt9gIy4
+	Ygh1kKFGcKDhsT2p5lhzKp7fSi8ugysF5FQhD2XZAWYpxrhYrdUIkuiRveZGI0qiZyAPqF/Hk/ors
+	2It+OpN4/I9wbonXEuXHUwnGikHEno6F0YxT5Q1IoXQufXV7DVhuN58R92tPnRRC3wN9HVI+XEByk
+	vX7oU4BWlCV0/cOzwbo6OQl8OuAI0I9OF009s7Drb6vkwEApM8lvXKl6O7/0+jRNOvc37ic6SxK0D
+	sj15sldw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZY2u-0003wL-Il; Mon, 02 Nov 2020 11:30:44 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kZYd3-00035E-8J; Mon, 02 Nov 2020 12:08:05 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZY2o-0003v3-B0
- for linux-mediatek@lists.infradead.org; Mon, 02 Nov 2020 11:30:39 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1BBD722275;
- Mon,  2 Nov 2020 11:30:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604316637;
- bh=X8JnEcClp9UY0EBJJar83EIQZ/sedukphcjMgxzniwA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=s3eYWJ4N05JGw5+J/sKBXzA4jKOxGBTv3QKtEmtbFH+eQG0ZYZbnrRoFbkrLQEo8k
- J3xp60f0jrLcPmTns9Q7lBXGpZyNGjzoDZ2w5KPGfjBDrJfgR1mS0IsennEMBptZEA
- uf6FJ8R0fyKiLzl+69lS77KXzFVvcPJpF4lw5sQc=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1kZY2k-006drC-O9; Mon, 02 Nov 2020 11:30:35 +0000
+ id 1kZYcy-00031r-6D
+ for linux-mediatek@lists.infradead.org; Mon, 02 Nov 2020 12:08:02 +0000
+Received: by mail-pg1-x544.google.com with SMTP id k9so8920539pgt.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 02 Nov 2020 04:07:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=aFM6/afG6N6GkffE6RVsA6XQhyhMXSUQ6Tq0CrN9TdE=;
+ b=OER6ydD30mEycoQTkeJ2IEiFZdYdh0NneHHHSB7KDLQJaaFrFNIHAk7YS3b99bIBqf
+ CY5P3j+LjyDibyo6PH6yMuXRpQ7mGTtlXVUKW7EjBLFMhrrAU0dIKL732N7CSpkrDwSg
+ JyBBMOnObcDhu+y53bZi+INnV6NUX6CI2ZIJc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=aFM6/afG6N6GkffE6RVsA6XQhyhMXSUQ6Tq0CrN9TdE=;
+ b=dhQoxpgbd3v5ASGeH27RDjifNA648Z72EmJtaFNn+4LobmKbouf2hwfIxOGwydKRTk
+ CaUO3YhP3cRQAKZrQVOrsw6GunJ/9EzmxI3FT3g+OBihE/V9KL/AGAxMUbvLIWy5rBC7
+ ercpQGkjJK3SoPKKdNTnuaLYG1jAjiq6dXqvzV9Xy0mbu6mxLrW9XiJrfkWLDPK2dGqD
+ y3S328OiZ7GoC20SqD3C/k7kZgF54l+T+Ap8PG1AN99ReldH61MlUO7gLZTPE2LXfXUG
+ BsNTV0+pDnpRmC6DExNDOnQetzJa4BFNagf5owpEPyz6R8H7Z905yHuKLYDFQZXpeoTV
+ 498g==
+X-Gm-Message-State: AOAM533MBERFPlkF1EHUEEgMn9UbhCVskhxvyeK6BaWDm1LZ0o5PvWL9
+ O72Ue/Ne79o5wWXh/dpyF9SrKl4k8sS8Tw==
+X-Google-Smtp-Source: ABdhPJwK6F4gpRDNplhBJ76hPT238QfpHnacXB+pi3j8WSLJHBoyl01NGnhMR9ZQeZeIkxPlSSGM+g==
+X-Received: by 2002:a17:90b:30d2:: with SMTP id
+ hi18mr5754162pjb.186.1604318875646; 
+ Mon, 02 Nov 2020 04:07:55 -0800 (PST)
+Received: from localhost ([2401:fa00:1:10:3e52:82ff:fe5e:cc9d])
+ by smtp.gmail.com with ESMTPSA id h26sm11675226pfq.139.2020.11.02.04.07.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Nov 2020 04:07:54 -0800 (PST)
+From: Claire Chang <tientzu@chromium.org>
+To: gregkh@linuxfoundation.org, jirislaby@kernel.org,
+ andriy.shevchenko@linux.intel.com
+Subject: [PATCH] serial: 8250_mtk: Fix uart_get_baud_rate warning
+Date: Mon,  2 Nov 2020 20:07:49 +0800
+Message-Id: <20201102120749.374458-1-tientzu@chromium.org>
+X-Mailer: git-send-email 2.29.1.341.ge80a0c044ae-goog
 MIME-Version: 1.0
-Date: Mon, 02 Nov 2020 11:30:34 +0000
-From: Marc Zyngier <maz@kernel.org>
-To: Thomas Gleixner <tglx@linutronix.de>
-Subject: Re: Aw: Re: [PATCH] pci: mediatek: fix warning in msi.h
-In-Reply-To: <87pn4w90hm.fsf@nanos.tec.linutronix.de>
-References: <20201031140330.83768-1-linux@fw-web.de>
- <878sbm9icl.fsf@nanos.tec.linutronix.de>
- <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
- <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
- <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
- <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
-User-Agent: Roundcube Webmail/1.4.9
-Message-ID: <df5565a2f1e821041c7c531ad52a3344@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: tglx@linutronix.de, frank-w@public-files.de,
- ryder.lee@mediatek.com, linux-mediatek@lists.infradead.org, linux@fw-web.de,
- linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
- linux-pci@vger.kernel.org, bhelgaas@google.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201102_063038_665049_8012DB43 
-X-CRM114-Status: GOOD (  21.43  )
+X-CRM114-CacheID: sfid-20201102_070800_351112_3C37750B 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,76 +91,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Frank Wunderlich <linux@fw-web.de>
+Cc: changqi.hu@mediatek.com, linux-kernel@vger.kernel.org,
+ Sergey.Semin@baikalelectronics.ru, linux-mediatek@lists.infradead.org,
+ linux-serial@vger.kernel.org, hsinyi@chromium.org,
+ Claire Chang <tientzu@chromium.org>, eddie.huang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-11-01 22:27, Thomas Gleixner wrote:
-> On Sun, Nov 01 2020 at 21:47, Marc Zyngier wrote:
->> On Sun, 01 Nov 2020 18:27:13 +0000,
->> Frank Wunderlich <frank-w@public-files.de> wrote:
->> Thinking of it a bit more, I think this is the wrong solution.
->> 
->> PCI MSIs are optional, and not a requirement. I can trivially spin a
->> VM with PCI devices and yet no MSI capability (yes, it is more
->> difficult with real HW), and this results in a bunch of warning, none
->> of which are actually indicative of anything being wrong.
-> 
-> Well. No.
-> 
-> The problem is that the device enumerates MSI capability, but the host
-> bridge is not proving support for MSI.
-> 
-> The host bridge fails to mark the bus with PCI_BUS_FLAGS_NO_MSI. That's
-> the reason why this runs into this issue.
+Mediatek 8250 port supports speed higher than uartclk / 16. If the baud
+rates in both the new and the old termios setting are higher than
+uartclk / 16, the WARN_ON in uart_get_baud_rate() will be triggered.
+Passing NULL as the old termios so uart_get_baud_rate() will use
+uartclk / 16 - 1 as the new baud rate which will be replaced by the
+original baud rate later by tty_termios_encode_baud_rate() in
+mtk8250_set_termios().
 
-Right, that's the piece I was missing, thanks for that.
+Fixes: 551e553f0d4a ("serial: 8250_mtk: Fix high-speed baud rates clamping")
+Signed-off-by: Claire Chang <tientzu@chromium.org>
+---
+ drivers/tty/serial/8250/8250_mtk.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-However, that doesn't really address the issue when the host bridge and
-the MSI widget are two separate entities, oblivious of each other (which
-is a pretty common thing on the ARM side).
-
-In this configuration, you can't really decide whether you have a MSI
-domain in the host bridge driver (the association is done in the code
-PCI code, after you have registered it with the core code), and by the
-time you get a pointer to the bus, the endpoints have already been 
-probed.
-
-The following patch makes it work for me (GICv3 guest without an ITS)by
-checking for the presence of an MSI domain at the point where we 
-actually
-perform this association, and before starting to scan for endpoints.
-
-I *think* this should work for the MTK thingy, but someone needs to
-go and check.
-
-Thanks,
-
-         M.
-
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index 4289030b0fff..bb363eb103a2 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -871,6 +871,8 @@ static void pci_set_bus_msi_domain(struct pci_bus 
-*bus)
-  		d = pci_host_bridge_msi_domain(b);
-
-  	dev_set_msi_domain(&bus->dev, d);
-+	if (!d)
-+		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
-  }
-
-  static int pci_register_host_bridge(struct pci_host_bridge *bridge)
-
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index 41f4120abdf2..fa876e2c13e5 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -317,7 +317,7 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+ 	 */
+ 	baud = tty_termios_baud_rate(termios);
+ 
+-	serial8250_do_set_termios(port, termios, old);
++	serial8250_do_set_termios(port, termios, NULL);
+ 
+ 	tty_termios_encode_baud_rate(termios, baud, baud);
+ 
 -- 
-Jazz is not dead. It just smells funny...
+2.29.1.341.ge80a0c044ae-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
