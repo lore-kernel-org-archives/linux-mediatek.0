@@ -2,84 +2,105 @@ Return-Path: <SRS0=vtlS=EI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FFE3C00A89
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 12:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54BEFC00A89
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 12:11:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E3D242223C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 12:08:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66F1F223B0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 12:11:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="alhb+f0K";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="OER6ydD3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3D242223C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xvN2sPDe";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="pwPddPG6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="WOPzX3cl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66F1F223B0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DGQP4xXKt42QSRS43pmsZhTTZfkBe5bXWvkhRMdzUNo=; b=alhb+f0KdXIXw2QA5gPaGjpLRi
-	15/xK/ab+FRPtiENPq2G+4rx7/DM0px0oSyzS3sm8czhp0v8uLB+tyvbyIGmTRHMi3bI65Yt9gIy4
-	Ygh1kKFGcKDhsT2p5lhzKp7fSi8ugysF5FQhD2XZAWYpxrhYrdUIkuiRveZGI0qiZyAPqF/Hk/ors
-	2It+OpN4/I9wbonXEuXHUwnGikHEno6F0YxT5Q1IoXQufXV7DVhuN58R92tPnRRC3wN9HVI+XEByk
-	vX7oU4BWlCV0/cOzwbo6OQl8OuAI0I9OF009s7Drb6vkwEApM8lvXKl6O7/0+jRNOvc37ic6SxK0D
-	sj15sldw==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=xLufDjYbOBXYhKiqMgjiWE9tNU2rFtdZu73ItkjCZdQ=; b=xvN2sPDe66hB+tAsEvLbrtW/2
+	91T9UvOVteGBxeUfW+4gx4BkxS/cvkYDXLEb92X5CywwY0xSxSyz2n1YLzur+KyKmVjJpOA0+4TEW
+	YxYqMIVf38g5XQBPVSPWlUt1dLlCl/SMygvQtg45jfiq/U56h1YGQPPkfTFzWM1Ri1MY550UKQrpd
+	uC04YYM6h9vMbwa6N0qlTXh1rkGNnvh5gh2fVe+Cz3kQV9yaEEtggxiWl4isCWt2Y7ktu7quIhe93
+	/Jwq7WFxHEQWjAEWW3hjjMKR9ex01UX3HnlWn65R+vHvXuwSiS99MPr4q/n/zNpc9QIm3ZK48BO1C
+	IkY12ZhNQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZYd3-00035E-8J; Mon, 02 Nov 2020 12:08:05 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1kZYgR-0003qB-2t; Mon, 02 Nov 2020 12:11:35 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZYcy-00031r-6D
- for linux-mediatek@lists.infradead.org; Mon, 02 Nov 2020 12:08:02 +0000
-Received: by mail-pg1-x544.google.com with SMTP id k9so8920539pgt.9
- for <linux-mediatek@lists.infradead.org>; Mon, 02 Nov 2020 04:07:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aFM6/afG6N6GkffE6RVsA6XQhyhMXSUQ6Tq0CrN9TdE=;
- b=OER6ydD30mEycoQTkeJ2IEiFZdYdh0NneHHHSB7KDLQJaaFrFNIHAk7YS3b99bIBqf
- CY5P3j+LjyDibyo6PH6yMuXRpQ7mGTtlXVUKW7EjBLFMhrrAU0dIKL732N7CSpkrDwSg
- JyBBMOnObcDhu+y53bZi+INnV6NUX6CI2ZIJc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aFM6/afG6N6GkffE6RVsA6XQhyhMXSUQ6Tq0CrN9TdE=;
- b=dhQoxpgbd3v5ASGeH27RDjifNA648Z72EmJtaFNn+4LobmKbouf2hwfIxOGwydKRTk
- CaUO3YhP3cRQAKZrQVOrsw6GunJ/9EzmxI3FT3g+OBihE/V9KL/AGAxMUbvLIWy5rBC7
- ercpQGkjJK3SoPKKdNTnuaLYG1jAjiq6dXqvzV9Xy0mbu6mxLrW9XiJrfkWLDPK2dGqD
- y3S328OiZ7GoC20SqD3C/k7kZgF54l+T+Ap8PG1AN99ReldH61MlUO7gLZTPE2LXfXUG
- BsNTV0+pDnpRmC6DExNDOnQetzJa4BFNagf5owpEPyz6R8H7Z905yHuKLYDFQZXpeoTV
- 498g==
-X-Gm-Message-State: AOAM533MBERFPlkF1EHUEEgMn9UbhCVskhxvyeK6BaWDm1LZ0o5PvWL9
- O72Ue/Ne79o5wWXh/dpyF9SrKl4k8sS8Tw==
-X-Google-Smtp-Source: ABdhPJwK6F4gpRDNplhBJ76hPT238QfpHnacXB+pi3j8WSLJHBoyl01NGnhMR9ZQeZeIkxPlSSGM+g==
-X-Received: by 2002:a17:90b:30d2:: with SMTP id
- hi18mr5754162pjb.186.1604318875646; 
- Mon, 02 Nov 2020 04:07:55 -0800 (PST)
-Received: from localhost ([2401:fa00:1:10:3e52:82ff:fe5e:cc9d])
- by smtp.gmail.com with ESMTPSA id h26sm11675226pfq.139.2020.11.02.04.07.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Nov 2020 04:07:54 -0800 (PST)
-From: Claire Chang <tientzu@chromium.org>
-To: gregkh@linuxfoundation.org, jirislaby@kernel.org,
- andriy.shevchenko@linux.intel.com
-Subject: [PATCH] serial: 8250_mtk: Fix uart_get_baud_rate warning
-Date: Mon,  2 Nov 2020 20:07:49 +0800
-Message-Id: <20201102120749.374458-1-tientzu@chromium.org>
-X-Mailer: git-send-email 2.29.1.341.ge80a0c044ae-goog
+ id 1kZYgQ-0003p2-8m
+ for linux-mediatek@merlin.infradead.org; Mon, 02 Nov 2020 12:11:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:References:
+ In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=COlY1Z9JTlziHRckXInvL6YPMd8otPIw1L1qTPONsB0=; b=pwPddPG6rQldD6e/tpx/g3RhCL
+ 7nT7G6e0BNdhiwxB7rkySIc2e93wdxiI3hVWuEi4yDkqWOcXOGuC+qP8WQFe7WcLGxhqLUhB2uN8/
+ k4FY/sW4PPD39tkzzKMGDN3D0Nwf5pjhjshl3eizMEiFsFZ5Tqk9AKYDvsSMrzvK/RHO//+C9abZF
+ MXu0tFzMfbwbWz9V5XU8ZbZH1h/DlzkQKDx3IWRgcm9s8X1Jh21hmunoCbSumVnFCiO0NR0Xs4Uau
+ 5E6D7OL8tJ8WhWx/qjqhrDEtnbJqIjJAQzxTCHa7k4GzhC62dc5Ef0W7q12svGL6UWmzQkHjVSccU
+ wU7oDw0g==;
+Received: from mout.gmx.net ([212.227.17.22])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kZYSN-0005B5-Os
+ for linux-mediatek@lists.infradead.org; Mon, 02 Nov 2020 11:57:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1604318207;
+ bh=ulH0yL49Zs5eNoVaKp+OGHU1yD5vDappgjihQPEn7Ks=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=WOPzX3clf18xjkG6cpbmvAufRSL4BLR7SHWar27PIxCzjzFD4OAWAbwOBaijiK7aF
+ yKvKL+BBepNKKPW0bg8OqzmUlcriOPZlfG6rbW+e26OwOHS7U3laNOv6lvuVS3IiMl
+ o3gkhAmcSMH3zLVcENL8ChVdjwx/i/zUndQbOJXA=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [185.76.97.212] ([185.76.97.212]) by web-mail.gmx.net
+ (3c-app-gmx-bap57.server.lan [172.19.172.127]) (via HTTP); Mon, 2 Nov 2020
+ 12:56:47 +0100
 MIME-Version: 1.0
+Message-ID: <trinity-4313623b-1adf-4cc3-8b50-2d0593669995-1604318207058@3c-app-gmx-bap57>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Marc Zyngier <maz@kernel.org>
+Subject: Aw: Re:  Re: [PATCH] pci: mediatek: fix warning in msi.h
+Date: Mon, 2 Nov 2020 12:56:47 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <df5565a2f1e821041c7c531ad52a3344@kernel.org>
+References: <20201031140330.83768-1-linux@fw-web.de>
+ <878sbm9icl.fsf@nanos.tec.linutronix.de>
+ <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
+ <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
+ <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
+ <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
+ <df5565a2f1e821041c7c531ad52a3344@kernel.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:jYyejVeaj2brOcs4Q4UH22OqS7aiIjBeum4maSh2Zmyo+vBA0JlOayRM2AcnNYk4HcVN6
+ p7yRyg/7PGHgiaviKxOOHfQIKOxIFhzucxw8UajnwnTy8ZanOEBLEXJ1b3V7MbnBnH6TmVOwOCV9
+ xFUpNVFsnW996VhE7e7jSmHvVKSmVEo9neamw4RFiAWPSA3PB7CR68xGvQR7yoZiw4OeMyA/UYLv
+ sLSpUt86s8JSawinnsQBP85qyWaXa2vF0Rr50ofRE7d5u9q9jY1q3GQ20290lUy5FL5mwCoEehs3
+ X8=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:S3IivwM+kT4=:xaI1fXywJdp+SJdYRytlKF
+ Vn2q1E3VySGKmOtACNRSqAv7fHe1soTH1bRUgz6FC5P4twwJIDoXh16+fi+p1g22oCpY53E7+
+ uzZgDn+b+T8GkGeZhEWUc/Tq4zg1pEQAxbnSuQCAiEKEwnHpT+BlVicNp9gymfp5H+QTwhCKo
+ uPa3YmwBuxy7L0rBYmsJhNoLexBsfrDoSVpC38qpej84z351HXtTVt8AV4lFIsGYF9dMjsp4j
+ AZUmjocOHKpFMXuxk8rH0bXm6MdZeyEQb43dt58yMVaO2m+eWjsLb2T0bpMU5AlJ1ncH2MpIp
+ H9kPQd4afMChDz9YCUWXN47C1lINzhOW5HAc2PSJpnbKHNcMpOyvPFXbA+sNhs1CVCb6bDwkI
+ cpFUtwTvXMmoM60df0UXNiDdJZsELiN67qXDgPhYiUmVrKUdS8X3TWv0j8dHyo2MO1FpobXN3
+ 788r1lzrRT10QDBFK7Q2gdljLqROoofyJkHhIyZ/TKbLDcbZVoVzL3jNHhzuwETBI0hDxZ85R
+ kd/Dxt8YpzqL7iJXBYoqWgW21Zk7CU5Q9xJQ6AghZeIUCpRPDaYN0A6pRabqjU2Di1+B524Ll
+ F+/t3f787BOeE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201102_070800_351112_3C37750B 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20201102_115704_544965_1B3798D0 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,45 +112,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: changqi.hu@mediatek.com, linux-kernel@vger.kernel.org,
- Sergey.Semin@baikalelectronics.ru, linux-mediatek@lists.infradead.org,
- linux-serial@vger.kernel.org, hsinyi@chromium.org,
- Claire Chang <tientzu@chromium.org>, eddie.huang@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Frank Wunderlich <linux@fw-web.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mediatek 8250 port supports speed higher than uartclk / 16. If the baud
-rates in both the new and the old termios setting are higher than
-uartclk / 16, the WARN_ON in uart_get_baud_rate() will be triggered.
-Passing NULL as the old termios so uart_get_baud_rate() will use
-uartclk / 16 - 1 as the new baud rate which will be replaced by the
-original baud rate later by tty_termios_encode_baud_rate() in
-mtk8250_set_termios().
+looks good on bananapi-r2, no warning, pcie-card and hdd recognized
 
-Fixes: 551e553f0d4a ("serial: 8250_mtk: Fix high-speed baud rates clamping")
-Signed-off-by: Claire Chang <tientzu@chromium.org>
----
- drivers/tty/serial/8250/8250_mtk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+regards Frank
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index 41f4120abdf2..fa876e2c13e5 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -317,7 +317,7 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
- 	 */
- 	baud = tty_termios_baud_rate(termios);
- 
--	serial8250_do_set_termios(port, termios, old);
-+	serial8250_do_set_termios(port, termios, NULL);
- 
- 	tty_termios_encode_baud_rate(termios, baud, baud);
- 
--- 
-2.29.1.341.ge80a0c044ae-goog
+
+> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> index 4289030b0fff..bb363eb103a2 100644
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -871,6 +871,8 @@ static void pci_set_bus_msi_domain(struct pci_bus
+> *bus)
+>   		d = pci_host_bridge_msi_domain(b);
+>
+>   	dev_set_msi_domain(&bus->dev, d);
+> +	if (!d)
+> +		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
+>   }
+>
+>   static int pci_register_host_bridge(struct pci_host_bridge *bridge)
 
 
 _______________________________________________
