@@ -1,80 +1,66 @@
-Return-Path: <SRS0=ZPt7=EH=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=vtlS=EI=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07CDEC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 23:09:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C231FC2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 00:05:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 427D92225C
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2020 23:09:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6140A22265
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2020 00:05:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ya19uaLM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="SlAfecU9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 427D92225C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JIu2oGXj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="PaQYm0Ap"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6140A22265
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KlWGf+MjzhRvFPr5u5wNMyTYGuoxMhZ8tUSuvzE4tv8=; b=ya19uaLMcMikBupmRqc2Fn0CQ
-	6CMB83HASw+mm8XnAoP9LXu5ytV5+Pi/7uN5bCLl7RJVzyYUwuniIxmugfV/BKwDv4u6SkZhxwurg
-	JWTQL2hWGvO7JOyK/+p4/dsFwoGc2d7G/KZGF9l7Vicu8gQlhK/3t3Wvyc0JxW7A4Q9tq2++aiAn4
-	mjrV/qiK1ANFRK4R2rdk/jGdT2z9fJUUVcnLUlWfb3AN3so7seTBs69ctLLHFsVqT5WSwjjcGS2Zb
-	tRCTbWyrGXLtlcCR7SGUsClPw5BU/sAb7iKKAvQy6qjAwZJiYMag85uS3ZQdh0yMqiGVyhZetIeIX
-	GVRAn5u4g==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=324n14UDG5YcE+wnMIpiPwX03azEDdwZ05pKaIHCC1U=; b=JIu2oGXjdoS/7Apg6JbFs7yj4t
+	jrT2XtfjLSoypadHQ/HRk1kuXqiXTaoaC1djfptXBJFgUjAiqbzeFJs8SbHr0ZcoFZHftttdR6let
+	NskK84ArSnrh1PNpxOt8iRa2M+2aa4CsEIw8J03HDTO24UPNb0I7FMVMqlP6i17a1SI7vqhfHK7XA
+	0FSiI3WGeAZFXqSOqEluoUcynuz6O6daaaEASnq4yQneOcTU27Zaf+wYv5rCinQUJP9EZkeZnt2d6
+	ZXo9eS72RbEL8crZsHux8+G1f8i+B7wR4g83J1gTnFCpJSbeNfYhMhBsqtwNhiOWTMo3jlrl92k65
+	MMCe6RHQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZMT2-0001pg-TF; Sun, 01 Nov 2020 23:08:57 +0000
+	id 1kZNLU-0004tw-6j; Mon, 02 Nov 2020 00:05:12 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZMSr-0001ng-Lm
- for linux-mediatek@lists.infradead.org; Sun, 01 Nov 2020 23:08:46 +0000
-Received: from mail-ej1-f49.google.com (mail-ej1-f49.google.com
- [209.85.218.49])
+ id 1kZNLE-0004rq-Qz; Mon, 02 Nov 2020 00:04:58 +0000
+Received: from DESKTOP-GFFITBK.localdomain (218-161-90-76.HINET-IP.hinet.net
+ [218.161.90.76])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6FA1F22370
- for <linux-mediatek@lists.infradead.org>; Sun,  1 Nov 2020 23:08:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id F168D22265;
+ Mon,  2 Nov 2020 00:04:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604272123;
- bh=Daf3cedAfsWFZ8LaPoAP0BurQA0TaRmQuvz1zCMuTcM=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=SlAfecU94oWlViEtb8HXVqRLPwAaM7y0hULWhzBRZvJ6woHCrsnwrudqiEMagtxyl
- MgXJamUlYW1EhaG7GZDCLvQVkqfuXOkq7wB6qp6vaL1b0ws3YciVJb7FmqIv45s8Kh
- 216iAfzBMushIicISpvJEAQ+OvgQ3vgsC6dU8kNI=
-Received: by mail-ej1-f49.google.com with SMTP id cw8so2850813ejb.8
- for <linux-mediatek@lists.infradead.org>; Sun, 01 Nov 2020 15:08:43 -0800 (PST)
-X-Gm-Message-State: AOAM532kFRzcPcRE7JdTA0PokwnXv86G6pGhoo5sQKg0LPJIOpU57xdK
- QenvQDqJnBn4MLR3lGr0o46jSBg9JgdrlAiqsw==
-X-Google-Smtp-Source: ABdhPJwwVYRVtfleTE1rDFQyKE26UbeEsl9z6niI/v8LCfBDJtkI4L3ysCoHGFUcrnxlM1TnjgHman6q8lDmpg7qjts=
-X-Received: by 2002:a17:906:5a96:: with SMTP id
- l22mr12666847ejq.303.1604272121876; 
- Sun, 01 Nov 2020 15:08:41 -0800 (PST)
-MIME-Version: 1.0
-References: <20201029152702.533-1-chunkuang.hu@kernel.org>
- <20201029152702.533-3-chunkuang.hu@kernel.org>
- <1604039049.31607.13.camel@mhfsdcap03>
-In-Reply-To: <1604039049.31607.13.camel@mhfsdcap03>
+ s=default; t=1604275495;
+ bh=7AwFlpNAUGBzP3ut3qPs5PVqzUstVwf0/NRb3gDYugY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=PaQYm0Apw0b1uVPrlYldPeQcIsd0vyIEF+Ax3YEYu7h3JrARZyCab506PYGK8upgh
+ sHy+C7pbjubmEIdFbkxca9+iYQKFoSbrNy0XReoaSnoMRtvUgVvx+FeW01mRdjNEdv
+ h1wCl3Z7gzllr0twgxxzu7O03WEHcDlJ49ZWzQTo=
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 2 Nov 2020 07:08:30 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8Nf=Lh_JDojKY3oHdTigO=i+BHuvVA+9hYXCzgu-2Cfg@mail.gmail.com>
-Message-ID: <CAAOTY_8Nf=Lh_JDojKY3oHdTigO=i+BHuvVA+9hYXCzgu-2Cfg@mail.gmail.com>
-Subject: Re: [PATCH 2/3] phy: mediatek: Move mtk_mipi_dsi_phy driver into
- drivers/phy/mediatek folder
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2] soc / drm: mediatek: cmdq: Remove timeout handler in
+ helper function
+Date: Mon,  2 Nov 2020 08:04:38 +0800
+Message-Id: <20201102000438.29225-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201101_180845_972988_BCAAF8D4 
-X-CRM114-Status: GOOD (  22.54  )
+X-CRM114-CacheID: sfid-20201101_190457_012433_B60F42DF 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,133 +72,189 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-arm-kernel@lists.infradead.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-KyBWaW5vZDoKCkhpLCBDaHVuZmVuZzoKCkNodW5mZW5nIFl1biA8Y2h1bmZlbmcueXVuQG1lZGlh
-dGVrLmNvbT4g5pa8IDIwMjDlubQxMOaciDMw5pelIOmAseS6lCDkuIvljYgyOjI05a+r6YGT77ya
-Cj4KPiBPbiBUaHUsIDIwMjAtMTAtMjkgYXQgMjM6MjcgKzA4MDAsIENodW4tS3VhbmcgSHUgd3Jv
-dGU6Cj4gPiBtdGtfbWlwaV9kc2lfcGh5IGlzIGN1cnJlbnRseSBwbGFjZWQgaW5zaWRlIG1lZGlh
-dGVrIGRybSBkcml2ZXIsIGJ1dCBpdCdzCj4gPiBtb3JlIHN1aXRhYmxlIHRvIHBsYWNlIGEgcGh5
-IGRyaXZlciBpbnRvIHBoeSBkcml2ZXIgZm9sZGVyLCBzbyBtb3ZlCj4gPiBtdGtfbWlwaV9kc2lf
-cGh5IGRyaXZlciBpbnRvIHBoeSBkcml2ZXIgZm9sZGVyLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6
-IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+ID4gLS0tCj4gPiAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICB8
-IDcgLS0tLS0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSAgICAgICAg
-ICAgICAgICAgICAgICAgICAgfCA2IC0tLS0tLQo+ID4gIGRyaXZlcnMvcGh5L21lZGlhdGVrL0tj
-b25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCA3ICsrKysrKysKPiA+ICBkcml2
-ZXJzL3BoeS9tZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
-NSArKysrKwo+ID4gIC4uLi9tZWRpYXRlay9waHktbXRrLW1pcGktZHNpLW10ODE3My5jfSAgICAg
-ICAgICAgICAgICAgICAgfCAyICstCj4gPiAgLi4uL21lZGlhdGVrL3BoeS1tdGstbWlwaS1kc2kt
-bXQ4MTgzLmN9ICAgICAgICAgICAgICAgICAgICB8IDIgKy0KPiA+ICAuLi4vbXRrX21pcGlfdHgu
-YyA9PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1taXBpLWRzaS5jfSAgICAgIHwgMiArLQo+ID4gIC4u
-Li9tdGtfbWlwaV90eC5oID0+IHBoeS9tZWRpYXRlay9waHktbXRrLW1pcGktZHNpLmh9ICAgICAg
-fCAwCj4gPiAgOCBmaWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxNiBkZWxldGlvbnMo
-LSkKPiA+ICByZW5hbWUgZHJpdmVycy97Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX21pcGlf
-dHguYyA9PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1taXBpLWRzaS1tdDgxNzMuY30gKDk5JSkKPiA+
-ICByZW5hbWUgZHJpdmVycy97Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTgzX21pcGlfdHguYyA9
-PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1taXBpLWRzaS1tdDgxODMuY30gKDk5JSkKPiA+ICByZW5h
-bWUgZHJpdmVycy97Z3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jID0+IHBoeS9tZWRpYXRl
-ay9waHktbXRrLW1pcGktZHNpLmN9ICg5OSUpCj4gPiAgcmVuYW1lIGRyaXZlcnMve2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX21pcGlfdHguaCA9PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1taXBpLWRzaS5o
-fSAoMTAwJSkKPgo+IFJldmlld2VkLWJ5OiBDaHVuZmVuZyBZdW4gPGNodW5mZW5nLnl1bkBtZWRp
-YXRlay5jb20+CgpJIHdvdWxkIGxpa2UgdG8gYXBwbHkgdGhlIHdob2xlIHNlcmllcyBpbnRvIG15
-IHRyZWUsIHdvdWxkIHlvdSBwbGVhc2UKZ2l2ZSBhbiBhY2tlZC1ieSB0YWcgb24gdGhpcyBwYXRj
-aCwgc28gSSBjb3VsZCBhcHBseSB0aGlzIHBhdGNoIGludG8KbXkgdHJlZS4KClJlZ2FyZHMsCkNo
-dW4tS3VhbmcuCgo+Cj4gUGxlYXNlIGFkZCBwaHkgbWFpbnRhbmluZXIgIlZpbm9kIEtvdWwgPHZr
-b3VsQGtlcm5lbC5vcmc+Igo+Cj4gVGhhbmtzCj4KPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2Nv
-bmZpZwo+ID4gaW5kZXggMjRjNDg5MGE2ZTY1Li4yOTc2ZDIxZTlhMzQgMTAwNjQ0Cj4gPiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZwo+ID4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL0tjb25maWcKPiA+IEBAIC0yOCwxMCArMjgsMyBAQCBjb25maWcgRFJNX01F
-RElBVEVLX0hETUkKPiA+ICAgICAgIHNlbGVjdCBQSFlfTVRLX0hETUkKPiA+ICAgICAgIGhlbHAK
-PiA+ICAgICAgICAgRFJNL0tNUyBIRE1JIGRyaXZlciBmb3IgTWVkaWF0ZWsgU29Dcwo+ID4gLQo+
-ID4gLWNvbmZpZyBQSFlfTVRLX01JUElfRFNJCj4gPiAtICAgICB0cmlzdGF0ZSAiTWVkaWF0ZWsg
-TUlQSS1EU0ktUEhZIERyaXZlciIKPiA+IC0gICAgIGRlcGVuZHMgb24gQVJDSF9NRURJQVRFSyAm
-JiBPRgo+ID4gLSAgICAgc2VsZWN0IEdFTkVSSUNfUEhZCj4gPiAtICAgICBoZWxwCj4gPiAtICAg
-ICAgIFN1cHBvcnQgTUlQSSBEU0kgUEhZIGZvciBNZWRpYXRlayBTb0NzLgo+ID4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9NYWtlZmlsZQo+ID4gaW5kZXggYmFhMTg4MDAwNTQzLi5hODkyZWRlYzU1NjMgMTAw
-NjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUKPiA+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQo+ID4gQEAgLTE5LDkgKzE5LDMgQEAg
-bWVkaWF0ZWstZHJtLWhkbWktb2JqcyA6PSBtdGtfY2VjLm8gXAo+ID4gICAgICAgICAgICAgICAg
-ICAgICAgICAgbXRrX2hkbWlfZGRjLm8KPiA+Cj4gPiAgb2JqLSQoQ09ORklHX0RSTV9NRURJQVRF
-S19IRE1JKSArPSBtZWRpYXRlay1kcm0taGRtaS5vCj4gPiAtCj4gPiAtcGh5LW10ay1taXBpLWRz
-aS1kcnYtb2JqcyA6PSBtdGtfbWlwaV90eC5vIFwKPiA+IC0gICAgICAgICAgICAgICAgICAgICAg
-ICAgIG10a19tdDgxNzNfbWlwaV90eC5vIFwKPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAg
-IG10a19tdDgxODNfbWlwaV90eC5vCj4gPiAtCj4gPiAtb2JqLSQoQ09ORklHX1BIWV9NVEtfTUlQ
-SV9EU0kpICs9IHBoeS1tdGstbWlwaS1kc2ktZHJ2Lm8KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L3BoeS9tZWRpYXRlay9LY29uZmlnIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvS2NvbmZpZwo+ID4g
-aW5kZXggNTBjNWU5MzA2ZTE5Li41NzRiOGU2Mzk4ZDIgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJz
-L3BoeS9tZWRpYXRlay9LY29uZmlnCj4gPiArKysgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9LY29u
-ZmlnCj4gPiBAQCAtNDIsMyArNDIsMTAgQEAgY29uZmlnIFBIWV9NVEtfSERNSQo+ID4gICAgICAg
-c2VsZWN0IEdFTkVSSUNfUEhZCj4gPiAgICAgICBoZWxwCj4gPiAgICAgICAgIFN1cHBvcnQgSERN
-SSBQSFkgZm9yIE1lZGlhdGVrIFNvQ3MuCj4gPiArCj4gPiArY29uZmlnIFBIWV9NVEtfTUlQSV9E
-U0kKPiA+ICsgICAgIHRyaXN0YXRlICJNZWRpYVRlayBNSVBJLURTSSBEcml2ZXIiCj4gPiArICAg
-ICBkZXBlbmRzIG9uIEFSQ0hfTUVESUFURUsgJiYgT0YKPiA+ICsgICAgIHNlbGVjdCBHRU5FUklD
-X1BIWQo+ID4gKyAgICAgaGVscAo+ID4gKyAgICAgICBTdXBwb3J0IE1JUEkgRFNJIGZvciBNZWRp
-YXRlayBTb0NzLgo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGh5L21lZGlhdGVrL01ha2VmaWxl
-IGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZpbGUKPiA+IGluZGV4IDYzMjVlMzg3MDllZC4u
-YWNlNjYwZmJlZDNhIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZp
-bGUKPiA+ICsrKyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL01ha2VmaWxlCj4gPiBAQCAtMTEsMyAr
-MTEsOCBAQCBwaHktbXRrLWhkbWktZHJ2LXkgICAgICAgICAgICAgICAgICA6PSBwaHktbXRrLWhk
-bWkubwo+ID4gIHBoeS1tdGstaGRtaS1kcnYteSAgICAgICAgICAgICAgICAgICArPSBwaHktbXRr
-LWhkbWktbXQyNzAxLm8KPiA+ICBwaHktbXRrLWhkbWktZHJ2LXkgICAgICAgICAgICAgICAgICAg
-Kz0gcGh5LW10ay1oZG1pLW10ODE3My5vCj4gPiAgb2JqLSQoQ09ORklHX1BIWV9NVEtfSERNSSkg
-ICAgICAgICAgICs9IHBoeS1tdGstaGRtaS1kcnYubwo+ID4gKwo+ID4gK3BoeS1tdGstbWlwaS1k
-c2ktZHJ2LXkgICAgICAgICAgICAgICAgICAgICAgIDo9IHBoeS1tdGstbWlwaS1kc2kubwo+ID4g
-K3BoeS1tdGstbWlwaS1kc2ktZHJ2LXkgICAgICAgICAgICAgICAgICAgICAgICs9IHBoeS1tdGst
-bWlwaS1kc2ktbXQ4MTczLm8KPiA+ICtwaHktbXRrLW1pcGktZHNpLWRydi15ICAgICAgICAgICAg
-ICAgICAgICAgICArPSBwaHktbXRrLW1pcGktZHNpLW10ODE4My5vCj4gPiArb2JqLSQoQ09ORklH
-X1BIWV9NVEtfTUlQSV9EU0kpICAgICAgICAgICAgICAgKz0gcGh5LW10ay1taXBpLWRzaS1kcnYu
-bwo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX21p
-cGlfdHguYyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1tdGstbWlwaS1kc2ktbXQ4MTczLmMK
-PiA+IHNpbWlsYXJpdHkgaW5kZXggOTklCj4gPiByZW5hbWUgZnJvbSBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX210ODE3M19taXBpX3R4LmMKPiA+IHJlbmFtZSB0byBkcml2ZXJzL3BoeS9t
-ZWRpYXRlay9waHktbXRrLW1pcGktZHNpLW10ODE3My5jCj4gPiBpbmRleCBmMThkYjE0ZDhiNjMu
-LjdhODQ3OTU0NTk0ZiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfbXQ4MTczX21pcGlfdHguYwo+ID4gKysrIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvcGh5LW10
-ay1taXBpLWRzaS1tdDgxNzMuYwo+ID4gQEAgLTQsNyArNCw3IEBACj4gPiAgICogQXV0aG9yOiBq
-aXRhby5zaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gPiAgICovCj4gPgo+ID4gLSNpbmNs
-dWRlICJtdGtfbWlwaV90eC5oIgo+ID4gKyNpbmNsdWRlICJwaHktbXRrLW1pcGktZHNpLmgiCj4g
-Pgo+ID4gICNkZWZpbmUgTUlQSVRYX0RTSV9DT04gICAgICAgICAgICAgICAweDAwCj4gPiAgI2Rl
-ZmluZSBSR19EU0lfTERPQ09SRV9FTiAgICAgICAgICAgIEJJVCgwKQo+ID4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTgzX21pcGlfdHguYyBiL2RyaXZlcnMv
-cGh5L21lZGlhdGVrL3BoeS1tdGstbWlwaS1kc2ktbXQ4MTgzLmMKPiA+IHNpbWlsYXJpdHkgaW5k
-ZXggOTklCj4gPiByZW5hbWUgZnJvbSBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE4
-M19taXBpX3R4LmMKPiA+IHJlbmFtZSB0byBkcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLW1p
-cGktZHNpLW10ODE4My5jCj4gPiBpbmRleCA5ZjNlNTVhZWViYjIuLjk5MTA4NDI2ZDU3YyAxMDA2
-NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTgzX21pcGlfdHgu
-Ywo+ID4gKysrIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvcGh5LW10ay1taXBpLWRzaS1tdDgxODMu
-Ywo+ID4gQEAgLTQsNyArNCw3IEBACj4gPiAgICogQXV0aG9yOiBqaXRhby5zaGkgPGppdGFvLnNo
-aUBtZWRpYXRlay5jb20+Cj4gPiAgICovCj4gPgo+ID4gLSNpbmNsdWRlICJtdGtfbWlwaV90eC5o
-Igo+ID4gKyNpbmNsdWRlICJwaHktbXRrLW1pcGktZHNpLmgiCj4gPgo+ID4gICNkZWZpbmUgTUlQ
-SVRYX0xBTkVfQ09OICAgICAgICAgICAgICAweDAwMGMKPiA+ICAjZGVmaW5lIFJHX0RTSV9DUEhZ
-X1QxRFJWX0VOICAgICAgICAgQklUKDApCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19taXBpX3R4LmMgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLW1p
-cGktZHNpLmMKPiA+IHNpbWlsYXJpdHkgaW5kZXggOTklCj4gPiByZW5hbWUgZnJvbSBkcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguYwo+ID4gcmVuYW1lIHRvIGRyaXZlcnMvcGh5
-L21lZGlhdGVrL3BoeS1tdGstbWlwaS1kc2kuYwo+ID4gaW5kZXggZjJhODkyZTE2YzI3Li4xOGM0
-ODEyNTFmMDQgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21p
-cGlfdHguYwo+ID4gKysrIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvcGh5LW10ay1taXBpLWRzaS5j
-Cj4gPiBAQCAtMyw3ICszLDcgQEAKPiA+ICAgKiBDb3B5cmlnaHQgKGMpIDIwMTUgTWVkaWFUZWsg
-SW5jLgo+ID4gICAqLwo+ID4KPiA+IC0jaW5jbHVkZSAibXRrX21pcGlfdHguaCIKPiA+ICsjaW5j
-bHVkZSAicGh5LW10ay1taXBpLWRzaS5oIgo+ID4KPiA+ICBpbmxpbmUgc3RydWN0IG10a19taXBp
-X3R4ICptdGtfbWlwaV90eF9mcm9tX2Nsa19odyhzdHJ1Y3QgY2xrX2h3ICpodykKPiA+ICB7Cj4g
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmggYi9k
-cml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLW1pcGktZHNpLmgKPiA+IHNpbWlsYXJpdHkgaW5k
-ZXggMTAwJQo+ID4gcmVuYW1lIGZyb20gZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBp
-X3R4LmgKPiA+IHJlbmFtZSB0byBkcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLW1pcGktZHNp
-LmgKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
-YXRlawo=
+For each client driver, its timeout handler need to dump hardware register
+or its state machine information, and their way to detect timeout are
+also different, so remove timeout handler in helper function and
+let client driver implement its own timeout handler.
+
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+---
+v1 is one patch in series "Mediatek DRM driver detect CMDQ execution
+timeout by vblank IRQ", but according to Jassi's suggestion [1], send 
+each patch in different series. 
+
+[2] is an example that different client has different way to calculate
+timeout. Some client driver care about each packet's execution time, but
+some client driver care about the total execution time for all packets.
+
+[1]
+https://patchwork.kernel.org/project/linux-mediatek/cover/20200927230422.11610-1-chunkuang.hu@kernel.org/
+[2]
+https://patchwork.kernel.org/project/linux-mediatek/patch/20201022094152.17662-1-houlong.wei@mediatek.com/
+
+Changes in v2:
+1. Rebase onto Linux 5.10-rc1
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  3 +-
+ drivers/soc/mediatek/mtk-cmdq-helper.c  | 41 +------------------------
+ include/linux/soc/mediatek/mtk-cmdq.h   | 10 +-----
+ 3 files changed, 3 insertions(+), 51 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index ac038572164d..4be5d1fccf2e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -824,8 +824,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	mtk_crtc->cmdq_client =
+ 			cmdq_mbox_create(mtk_crtc->mmsys_dev,
+-					 drm_crtc_index(&mtk_crtc->base),
+-					 2000);
++					 drm_crtc_index(&mtk_crtc->base));
+ 	if (IS_ERR(mtk_crtc->cmdq_client)) {
+ 		dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
+ 			drm_crtc_index(&mtk_crtc->base));
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index 505651b0d715..280d3bd9f675 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -70,14 +70,7 @@ int cmdq_dev_get_client_reg(struct device *dev,
+ }
+ EXPORT_SYMBOL(cmdq_dev_get_client_reg);
+ 
+-static void cmdq_client_timeout(struct timer_list *t)
+-{
+-	struct cmdq_client *client = from_timer(client, t, timer);
+-
+-	dev_err(client->client.dev, "cmdq timeout!\n");
+-}
+-
+-struct cmdq_client *cmdq_mbox_create(struct device *dev, int index, u32 timeout)
++struct cmdq_client *cmdq_mbox_create(struct device *dev, int index)
+ {
+ 	struct cmdq_client *client;
+ 
+@@ -85,12 +78,6 @@ struct cmdq_client *cmdq_mbox_create(struct device *dev, int index, u32 timeout)
+ 	if (!client)
+ 		return (struct cmdq_client *)-ENOMEM;
+ 
+-	client->timeout_ms = timeout;
+-	if (timeout != CMDQ_NO_TIMEOUT) {
+-		spin_lock_init(&client->lock);
+-		timer_setup(&client->timer, cmdq_client_timeout, 0);
+-	}
+-	client->pkt_cnt = 0;
+ 	client->client.dev = dev;
+ 	client->client.tx_block = false;
+ 	client->client.knows_txdone = true;
+@@ -112,11 +99,6 @@ EXPORT_SYMBOL(cmdq_mbox_create);
+ 
+ void cmdq_mbox_destroy(struct cmdq_client *client)
+ {
+-	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+-		spin_lock(&client->lock);
+-		del_timer_sync(&client->timer);
+-		spin_unlock(&client->lock);
+-	}
+ 	mbox_free_channel(client->chan);
+ 	kfree(client);
+ }
+@@ -449,18 +431,6 @@ static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
+ 	struct cmdq_task_cb *cb = &pkt->cb;
+ 	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+ 
+-	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+-		unsigned long flags = 0;
+-
+-		spin_lock_irqsave(&client->lock, flags);
+-		if (--client->pkt_cnt == 0)
+-			del_timer(&client->timer);
+-		else
+-			mod_timer(&client->timer, jiffies +
+-				  msecs_to_jiffies(client->timeout_ms));
+-		spin_unlock_irqrestore(&client->lock, flags);
+-	}
+-
+ 	dma_sync_single_for_cpu(client->chan->mbox->dev, pkt->pa_base,
+ 				pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 	if (cb->cb) {
+@@ -473,7 +443,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+ 			 void *data)
+ {
+ 	int err;
+-	unsigned long flags = 0;
+ 	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+ 
+ 	pkt->cb.cb = cb;
+@@ -484,14 +453,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+ 	dma_sync_single_for_device(client->chan->mbox->dev, pkt->pa_base,
+ 				   pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 
+-	if (client->timeout_ms != CMDQ_NO_TIMEOUT) {
+-		spin_lock_irqsave(&client->lock, flags);
+-		if (client->pkt_cnt++ == 0)
+-			mod_timer(&client->timer, jiffies +
+-				  msecs_to_jiffies(client->timeout_ms));
+-		spin_unlock_irqrestore(&client->lock, flags);
+-	}
+-
+ 	err = mbox_send_message(client->chan, pkt);
+ 	if (err < 0)
+ 		return err;
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index 960704d75994..8e9996610978 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -11,7 +11,6 @@
+ #include <linux/mailbox/mtk-cmdq-mailbox.h>
+ #include <linux/timer.h>
+ 
+-#define CMDQ_NO_TIMEOUT		0xffffffffu
+ #define CMDQ_ADDR_HIGH(addr)	((u32)(((addr) >> 16) & GENMASK(31, 0)))
+ #define CMDQ_ADDR_LOW(addr)	((u16)(addr) | BIT(1))
+ 
+@@ -24,12 +23,8 @@ struct cmdq_client_reg {
+ };
+ 
+ struct cmdq_client {
+-	spinlock_t lock;
+-	u32 pkt_cnt;
+ 	struct mbox_client client;
+ 	struct mbox_chan *chan;
+-	struct timer_list timer;
+-	u32 timeout_ms; /* in unit of microsecond */
+ };
+ 
+ /**
+@@ -51,13 +46,10 @@ int cmdq_dev_get_client_reg(struct device *dev,
+  * cmdq_mbox_create() - create CMDQ mailbox client and channel
+  * @dev:	device of CMDQ mailbox client
+  * @index:	index of CMDQ mailbox channel
+- * @timeout:	timeout of a pkt execution by GCE, in unit of microsecond, set
+- *		CMDQ_NO_TIMEOUT if a timer is not used.
+  *
+  * Return: CMDQ mailbox client pointer
+  */
+-struct cmdq_client *cmdq_mbox_create(struct device *dev, int index,
+-				     u32 timeout);
++struct cmdq_client *cmdq_mbox_create(struct device *dev, int index);
+ 
+ /**
+  * cmdq_mbox_destroy() - destroy CMDQ mailbox client and channel
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
