@@ -2,89 +2,91 @@ Return-Path: <SRS0=lxeM=EJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03A43C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 10:42:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2729BC2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 11:41:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 72A7F206F1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 10:42:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9CE74206B5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 11:41:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CXDDB6Y8";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LGghbXNh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 72A7F206F1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XvHSvAOG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fOUAsDZI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CE74206B5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CkvNiSDzfyvOG8oulr4AeQNvyAcdPPX2qNri4Shg4Uk=; b=CXDDB6Y8IlaztvIX+pIOJ4kD/Z
-	SP0/Dh5/8LSdYUnii1464dkYF5POWeC+Zn2mUPhDwGlU8OT+/6Mg00h8BG7xqvenG66yLLpgUYT35
-	2Ee0SF4yNwaCiwYlgXNHMMa+CJWmdzH1gGyVEq2/vJDFchym2PJHoetq5rYu2eRSwvwRIbTwSIurl
-	AUh4KXQoNvvctApHbtqr1k4G4P78u5ZQ1zrQbXOc4mV6C0hKKoazsujyVBI3IrmmaO6znZp5iAK4H
-	inlN2QhxzxZsefp9UBbn/4i5wBEf/HFaS2HRhnj1ZHKFy9b27qGM8O51oQzhPzAxLk6BxQ2EP38mV
-	6N1399HQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=3eDAyiDjOVlQggcGOeUXxaefJsrCB3W1201egbi2vKE=; b=XvHSvAOGbkHa6JY3R0Ub5IA7j
+	2KFv6sh0R3HtXFGwL+lSTpCzXWvUPSdbG1b710Dflr1byPr0Qr7TaVv/AiPtQh7LUH/iaJC5yQ4ni
+	CZdHXQpZMrQ1HsB5HhsA03KaIxoR2/E4cGtcHTzd+lWehUjDnV/X9nxgcT6gwmWsRSpqTMgKpg1tW
+	YdIl54ihraqC82Fg3YfLqmFBGtDYP4vhdfrWMpGBYNtWX8RxaNM44ygfcPpkGCnrBNp+j5zmVDCxF
+	rfCfJMloC56Wn2R1k9Z3zsRyFJOpn96COUdCQ1Zzg7omWHxjLdRQfOiQ4nVdowe5Jku+m08tC4uUM
+	IViZIOVHQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZtlU-0006T6-Hw; Tue, 03 Nov 2020 10:42:12 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1kZugp-0002wC-Nw; Tue, 03 Nov 2020 11:41:27 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZtl9-0006MM-Uy; Tue, 03 Nov 2020 10:41:58 +0000
-Received: by mail-pl1-x642.google.com with SMTP id f21so8373184plr.5;
- Tue, 03 Nov 2020 02:41:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=cda91sbA7DbL355x9643go6QmUnuG8dA2WEdF4syvBU=;
- b=LGghbXNh9xmMN0eoIupQrf8/DrHsBsNr/RnSeSGfk5R44OSzSC2ird/AuTeHxwrxQ2
- Kl+s8fQgh8T83D2HPoxHOsNeufWNGYCcKe8D9i1LkosdNEON+NzLwwpiPzv4Cvg5mnoH
- +RRLHaPhHG1Ek5eQ2oV4Beg9E0V+YwmC8iC6JcNbYX2Y+kf+dHHbJS+Gj5ircy+eMUQh
- xn7m5h7i0yrA9cxAAd2lT2vNLRiUVOyUv6i20CYLMqTvDm4dN4hTcMfO48DbOdXTFkSp
- Yv0XMJQIAXv2b//RMnGhWdjs78rlCDzMaoTpa+sKQWeLPF77SOD+OTFMgoApch4NYntJ
- X7CA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=cda91sbA7DbL355x9643go6QmUnuG8dA2WEdF4syvBU=;
- b=aYl1slIcorp76rAp8yLNcvYGOeuEdyUDQbw1+GUuaKkuLyKDnFhgAyrr1/hq5AGKv0
- 1uabXyomr1Qiob+wPd9psgxty2tFwhDoFfzhSLx6Fr9bVXLCxS3ORwIvS6XDH6VGv1RL
- SuuWPRNsFB5hIC+kmbW3+PfWKj3pxi9SV8uZqCFLLc3Bw7Xq2UY5WU7B+xDo1s14j9Zw
- 5l/4khVMEojQhxOdwZ4wXJSHQceFWB+Ky02Kd46bpz5JkOMn2kuRMTKvoUB2h0tN3L8+
- 7dmtLecQwIIEbWsgf2qX0Cn90SxYkg4zdrY23Jl3uusyIOsOtynkGzlxv/Rkh5AwuC5I
- JxJg==
-X-Gm-Message-State: AOAM5312E7ux1/Z8lnfMznDk0s20+VhtCQTghZTvLqB5yVz1l2Op3iDA
- sY62Nflb+ncT6hCZ5eQuTf1zKDfcOxw=
-X-Google-Smtp-Source: ABdhPJw9SLetncl8epNIWKkhpjQoyZZElduBa3rmOvRc0jou0ToArMUYeG2Ib/isjAHTqFyZ77ElVQ==
-X-Received: by 2002:a17:902:9a48:b029:d6:e0ba:f301 with SMTP id
- x8-20020a1709029a48b02900d6e0baf301mr3276337plv.30.1604400109844; 
- Tue, 03 Nov 2020 02:41:49 -0800 (PST)
-Received: from localhost.localdomain ([2402:7500:57a:6823:8ab3:4b5d:4c53:f39b])
- by smtp.gmail.com with ESMTPSA id 26sm5235537pgm.92.2020.11.03.02.41.44
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 03 Nov 2020 02:41:49 -0800 (PST)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: sre@kernel.org,
-	matthias.bgg@gmail.com,
-	robh+dt@kernel.org
-Subject: [PATCH v2 2/2] power: supply: mt6360_charger: add MT6360 charger
- support
-Date: Tue,  3 Nov 2020 18:41:31 +0800
-Message-Id: <1604400091-14618-3-git-send-email-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1604400091-14618-1-git-send-email-gene.chen.richtek@gmail.com>
-References: <1604400091-14618-1-git-send-email-gene.chen.richtek@gmail.com>
+ id 1kZugm-0002va-HG
+ for linux-mediatek@lists.infradead.org; Tue, 03 Nov 2020 11:41:25 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 68A7D206B5;
+ Tue,  3 Nov 2020 11:41:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604403683;
+ bh=uWJT7Ml+UyvnL/NnaTwU6dru3EcKTJDjPAymbTqARt0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=fOUAsDZIQrYWY3ZJkSU+lyevxxrz6WH8w6rQuMwGy4W13DTB0O0B3mQwn3dbpAykW
+ qHEi9Q6q9LBk8OHO4Ir+HSA+eaMnDpMD6xlBFUFPjlaha1qLldA1Vikl2qSEm9WXfL
+ DXercj+2yuzfUo22H4cRBGq+KDXZqaMtMiRUMuFs=
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94)
+ (envelope-from <maz@kernel.org>)
+ id 1kZugj-0077zU-64; Tue, 03 Nov 2020 11:41:21 +0000
+MIME-Version: 1.0
+Date: Tue, 03 Nov 2020 11:41:21 +0000
+From: Marc Zyngier <maz@kernel.org>
+To: Thomas Gleixner <tglx@linutronix.de>
+Subject: Re: Aw: Re: [PATCH] pci: mediatek: fix warning in msi.h
+In-Reply-To: <87k0v27mve.fsf@nanos.tec.linutronix.de>
+References: <20201031140330.83768-1-linux@fw-web.de>
+ <878sbm9icl.fsf@nanos.tec.linutronix.de>
+ <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
+ <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
+ <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
+ <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
+ <df5565a2f1e821041c7c531ad52a3344@kernel.org>
+ <87h7q791j8.fsf@nanos.tec.linutronix.de>
+ <877dr38kt8.fsf@nanos.tec.linutronix.de>
+ <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
+ <87k0v27mve.fsf@nanos.tec.linutronix.de>
+User-Agent: Roundcube Webmail/1.4.9
+Message-ID: <41e2e3ea115aa8cbbb9a5c313dca0210@kernel.org>
+X-Sender: maz@kernel.org
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: tglx@linutronix.de, frank-w@public-files.de,
+ ryder.lee@mediatek.com, linux-mediatek@lists.infradead.org, linux@fw-web.de,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
+ linux-pci@vger.kernel.org, bhelgaas@google.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201103_054152_368567_82D0382F 
-X-CRM114-Status: GOOD (  24.01  )
+X-CRM114-CacheID: sfid-20201103_064124_757034_572E8666 
+X-CRM114-Status: GOOD (  24.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,1092 +98,188 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
- linux-mediatek@lists.infradead.org, Wilma.Wu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Frank Wunderlich <linux@fw-web.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
+On 2020-11-03 10:31, Thomas Gleixner wrote:
+> On Tue, Nov 03 2020 at 09:54, Marc Zyngier wrote:
+>> On 2020-11-02 22:18, Thomas Gleixner wrote:
+>>> So we really need some other solution and removing the warning is not
+>>> an option. If MSI is enabled then we want to get a warning when a PCI
+>>> device has no MSI domain associated. Explicitly expressing the PCIE
+>>> brigde misfeature of not supporting MSI is way better than silently
+>>> returning an error code which is swallowed anyway.
+>> 
+>> I don't disagree here, though the PCI_MSI_ARCH_FALLBACKS mechanism
+>> makes it more difficult to establish.
+> 
+> Only for the few leftovers which implement msi_controller, i.e.
+> 
+> drivers/pci/controller/pci-hyperv.c
+> drivers/pci/controller/pci-tegra.c
+> drivers/pci/controller/pcie-rcar-host.c
+> drivers/pci/controller/pcie-xilinx.c
+> 
+> The architectures which select PCI_MSI_ARCH_FALLBACKS are:
+> 
+> arch/ia64/Kconfig:      select PCI_MSI_ARCH_FALLBACKS if PCI_MSI
+> arch/mips/Kconfig:      select PCI_MSI_ARCH_FALLBACKS if PCI_MSI
+> arch/powerpc/Kconfig:   select PCI_MSI_ARCH_FALLBACKS           if 
+> PCI_MSI
+> arch/s390/Kconfig:      select PCI_MSI_ARCH_FALLBACKS   if PCI_MSI
+> arch/sparc/Kconfig:     select PCI_MSI_ARCH_FALLBACKS if PCI_MSI
+> 
+> implement arch_setup_msi_irq() which makes it magically work :)
+> 
+>>> Whatever the preferred way is via flags at host probe time or 
+>>> flagging
+>>> it post probe I don't care much as long as it is consistent.
+>> 
+>> Host probe time is going to require some changes in the core PCI api,
+>> as everything that checks for a MSI domain is based on the pci_bus
+>> structure, which is only allocated much later.
+> 
+> Yeah, it's nasty. One possible solution is to add flags or a callback 
+> to
+> pci_ops, but it's not pretty either.
+> 
+> I think we should go with the 'mark it after pci_host_probe()' hack for
+> 5.10-rc. The real fix will be larger and go into 5.11.
+> 
+> Thoughts?
 
-Add basic support for the battery charger for MT6360 PMIC
+We can do that, although I worried that it isn't 100% reliable:
 
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
----
- drivers/power/supply/Kconfig          |   10 +
- drivers/power/supply/Makefile         |    1 +
- drivers/power/supply/mt6360_charger.c | 1022 +++++++++++++++++++++++++++++++++
- 3 files changed, 1033 insertions(+)
- create mode 100644 drivers/power/supply/mt6360_charger.c
+pci_host_probe() ends up calling pci_add_device(), and will start
+probing devices if the endpoint drivers have already registered
+with the core code, long before the flag gets set.
 
-diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index faf2830..e2d53a3 100644
---- a/drivers/power/supply/Kconfig
-+++ b/drivers/power/supply/Kconfig
-@@ -562,6 +562,16 @@ config CHARGER_MP2629
- 	  Battery charger. This driver provides Battery charger power management
- 	  functions on the systems.
- 
-+config CHARGER_MT6360
-+	tristate "Mediatek MT6360 Charger Driver"
-+	depends on MFD_MT6360
-+	depends on REGULATOR
-+	help
-+	  Say Y here to enable MT6360 Charger Part.
-+	  The device supports High-Accuracy Voltage/Current Regulation,
-+	  Average Input Current Regulation, Battery Tempature Sensing,
-+	  Over-Temperature Protection, DPDM Detection for BC1.2
-+
- config CHARGER_QCOM_SMBB
- 	tristate "Qualcomm Switch-Mode Battery Charger and Boost"
- 	depends on MFD_SPMI_PMIC || COMPILE_TEST
-diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index b3c694a..9abecb9c 100644
---- a/drivers/power/supply/Makefile
-+++ b/drivers/power/supply/Makefile
-@@ -77,6 +77,7 @@ obj-$(CONFIG_CHARGER_MAX77693)	+= max77693_charger.o
- obj-$(CONFIG_CHARGER_MAX8997)	+= max8997_charger.o
- obj-$(CONFIG_CHARGER_MAX8998)	+= max8998_charger.o
- obj-$(CONFIG_CHARGER_MP2629)	+= mp2629_charger.o
-+obj-$(CONFIG_CHARGER_MT6360)	+= mt6360_charger.o
- obj-$(CONFIG_CHARGER_QCOM_SMBB)	+= qcom_smbb.o
- obj-$(CONFIG_CHARGER_BQ2415X)	+= bq2415x_charger.o
- obj-$(CONFIG_CHARGER_BQ24190)	+= bq24190_charger.o
-diff --git a/drivers/power/supply/mt6360_charger.c b/drivers/power/supply/mt6360_charger.c
-new file mode 100644
-index 0000000..5631875
---- /dev/null
-+++ b/drivers/power/supply/mt6360_charger.c
-@@ -0,0 +1,1022 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ */
-+
-+#include <linux/init.h>
-+#include <linux/module.h>
-+#include <linux/kernel.h>
-+#include <linux/regmap.h>
-+#include <linux/platform_device.h>
-+#include <linux/of.h>
-+#include <linux/interrupt.h>
-+#include <linux/power_supply.h>
-+#include <linux/regulator/driver.h>
-+
-+#define MT6360_PMU_CHG_CTRL1	0x311
-+#define MT6360_PMU_CHG_CTRL2	0x312
-+#define MT6360_PMU_CHG_CTRL3	0x313
-+#define MT6360_PMU_CHG_CTRL4	0x314
-+#define MT6360_PMU_CHG_CTRL5	0x315
-+#define MT6360_PMU_CHG_CTRL6	0x316
-+#define MT6360_PMU_CHG_CTRL7	0x317
-+#define MT6360_PMU_CHG_CTRL8	0x318
-+#define MT6360_PMU_CHG_CTRL9	0x319
-+#define MT6360_PMU_CHG_CTRL10	0x31A
-+#define MT6360_PMU_CHG_CTRL11	0x31B
-+#define MT6360_PMU_CHG_CTRL12	0x31C
-+#define MT6360_PMU_CHG_CTRL13	0x31D
-+#define MT6360_PMU_DEVICE_TYPE	0x322
-+#define MT6360_PMU_USB_STATUS1	0x327
-+#define MT6360_PMU_CHG_CTRL17	0x32B
-+#define MT6360_PMU_CHG_CTRL18	0x32C
-+#define MT6360_PMU_CHG_STAT	0x34A
-+#define MT6360_PMU_CHG_CTRL19	0x361
-+#define MT6360_PMU_FOD_STAT	0x3E7
-+
-+/* MT6360_PMU_CHG_CTRL1 */
-+#define MT6360_FSLP_SHFT	(3)
-+#define MT6360_FSLP_MASK	BIT(MT6360_FSLP_SHFT)
-+#define MT6360_HIZ_SHFT		(2)
-+#define MT6360_HIZ_MASK		BIT(MT6360_HIZ_SHFT)
-+#define MT6360_OPA_MODE_SHFT	(0)
-+#define MT6360_OPA_MODE_MASK	BIT(MT6360_OPA_MODE_SHFT)
-+/* MT6360_PMU_CHG_CTRL2 */
-+#define MT6360_TE_SHFT		(4)
-+#define MT6360_TE_MASK		BIT(MT6360_TE_SHFT)
-+#define MT6360_IINLMTSEL_SHFT	(2)
-+#define MT6360_IINLMTSEL_MASK	GENMASK(3, 2)
-+#define MT6360_CHG_EN_SHFT	(0)
-+#define MT6360_CHG_EN_MASK	BIT(MT6360_CHG_EN_SHFT)
-+/* MT6360_PMU_CHG_CTRL3 */
-+#define MT6360_IAICR_SHFT	(2)
-+#define MT6360_IAICR_MASK	GENMASK(7, 2)
-+#define MT6360_ILIM_EN_MASK	BIT(0)
-+/* MT6360_PMU_CHG_CTRL4 */
-+#define MT6360_VOREG_SHFT	(1)
-+#define MT6360_VOREG_MASK	GENMASK(7, 1)
-+/* MT6360_PMU_CHG_CTRL5 */
-+#define MT6360_VOBST_MASK	GENMASK(7, 2)
-+/* MT6360_PMU_CHG_CTRL6 */
-+#define MT6360_VMIVR_SHFT	(1)
-+#define MT6360_VMIVR_MASK	GENMASK(7, 1)
-+/* MT6360_PMU_CHG_CTRL7 */
-+#define MT6360_ICHG_SHFT	(2)
-+#define MT6360_ICHG_MASK	GENMASK(7, 2)
-+/* MT6360_PMU_CHG_CTRL8 */
-+#define MT6360_IPREC_SHFT	(0)
-+#define MT6360_IPREC_MASK	GENMASK(3, 0)
-+/* MT6360_PMU_CHG_CTRL9 */
-+#define MT6360_IEOC_SHFT	(4)
-+#define MT6360_IEOC_MASK	GENMASK(7, 4)
-+/* MT6360_PMU_CHG_CTRL10 */
-+#define MT6360_LBP_SHFT		(4)
-+#define MT6360_LBP_MASK		GENMASK(7, 4)
-+#define MT6360_OTG_OC_SHFT	(0)
-+#define MT6360_OTG_OC_MASK	GENMASK(3, 0)
-+/* MT6360_PMU_CHG_CTRL11 */
-+#define MT6360_SYSREG_SHFT	(2)
-+#define MT6360_SYSREG_MASK	GENMASK(4, 2)
-+#define MT6360_VREC_SHFT	(0)
-+#define MT6360_VREC_MASK	GENMASK(2, 0)
-+/* MT6360_PMU_CHG_CTRL12 */
-+#define MT6360_WT_FC_SHFT	(5)
-+#define MT6360_WT_FC_MASK	GENMASK(7, 5)
-+/* MT6360_PMU_CHG_CTRL13 */
-+#define MT6360_CHG_WDT_EN_SHFT	(7)
-+#define MT6360_CHG_WDT_EN_MASK	BIT(MT6360_CHG_WDT_EN_SHFT)
-+#define MT6360_CHG_WDT_SHFT	(4)
-+#define MT6360_CHG_WDT_MASK	GENMASK(5, 4)
-+/* MT6360_PMU_DEVICE_TYPE */
-+#define MT6360_USBCHGEN_SHFT	(7)
-+#define MT6360_USBCHGEN_MASK	BIT(MT6360_USBCHGEN_SHFT)
-+/* MT6360_PMU_USB_STATUS1 */
-+#define MT6360_USB_STATUS_SHFT	(4)
-+#define MT6360_USB_STATUS_MASK	GENMASK(6, 4)
-+/* MT6360_PMU_CHG_CTRL18 */
-+#define MT6360_BAT_COMP_SHFT	(3)
-+#define MT6360_BAT_COMP_MASK	GENMASK(5, 3)
-+#define MT6360_VCLAMP_SHFT	(0)
-+#define MT6360_VCLAMP_MASK	GENMASK(2, 0)
-+/* MT6360_PMU_CHG_STAT */
-+#define MT6360_CHG_STAT_SHFT	(6)
-+#define MT6360_CHG_STAT_MASK	GENMASK(7, 6)
-+#define MT6360_VBAT_LVL_MASK	BIT(5)
-+/* MT6360_PMU_CHG_CTRL19 */
-+#define MT6360_VINOVP_SHFT	(5)
-+#define MT6360_VINOVP_MASK	GENMASK(6, 5)
-+/* MT6360_PMU_FOD_STAT */
-+#define MT6360_CHRDET_EXT_SHFT	(4)
-+#define MT6360_CHRDET_EXT_MASK	BIT(4)
-+
-+/* uA */
-+#define MT6360_ICHG_MIN		100000
-+#define MT6360_ICHG_MAX		5000000
-+#define MT6360_ICHG_STEP	100000
-+/* uV */
-+#define MT6360_VOREG_MIN	3900000
-+#define MT6360_VOREG_MAX	4710000
-+#define MT6360_VOREG_STEP	10000
-+/* uA */
-+#define MT6360_AICR_MIN		100000
-+#define MT6360_AICR_MAX		3250000
-+#define MT6360_AICR_STEP	50000
-+/* uA */
-+#define MT6360_IPREC_MIN	100000
-+#define MT6360_IPREC_MAX	850000
-+#define MT6360_IPREC_STEP	50000
-+/* uA */
-+#define MT6360_IEOC_MIN		100000
-+#define MT6360_IEOC_MAX		850000
-+#define MT6360_IEOC_STEP	50000
-+
-+struct mt6360_chg_platform_data {
-+	u32 vinovp;
-+};
-+
-+struct mt6360_chg_info {
-+	struct device *dev;
-+	struct mt6360_chg_platform_data *pdata;
-+	struct regmap *regmap;
-+	struct power_supply_desc psy_desc;
-+	struct power_supply *psy;
-+	struct regulator_dev *otg_rdev;
-+	struct mutex chgdet_lock;
-+	bool pwr_rdy;
-+	bool bc12_en;
-+	int psy_usb_type;
-+	struct work_struct chrdet_work;
-+};
-+
-+static struct mt6360_chg_platform_data def_platform_data = {
-+	.vinovp = 6500000,
-+};
-+
-+enum mt6360_iinlmtsel {
-+	MT6360_IINLMTSEL_AICR_3250 = 0,
-+	MT6360_IINLMTSEL_CHG_TYPE,
-+	MT6360_IINLMTSEL_AICR,
-+	MT6360_IINLMTSEL_LOWER_LEVEL,
-+};
-+
-+enum mt6360_pmu_chg_type {
-+	MT6360_CHG_TYPE_NOVBUS = 0,
-+	MT6360_CHG_TYPE_UNDER_GOING,
-+	MT6360_CHG_TYPE_SDP,
-+	MT6360_CHG_TYPE_SDPNSTD,
-+	MT6360_CHG_TYPE_DCP,
-+	MT6360_CHG_TYPE_CDP,
-+	MT6360_CHG_TYPE_MAX,
-+};
-+
-+static enum power_supply_usb_type mt6360_charger_usb_types[] = {
-+	POWER_SUPPLY_USB_TYPE_UNKNOWN,
-+	POWER_SUPPLY_USB_TYPE_SDP,
-+	POWER_SUPPLY_USB_TYPE_DCP,
-+	POWER_SUPPLY_USB_TYPE_CDP,
-+	POWER_SUPPLY_USB_TYPE_C,
-+	POWER_SUPPLY_USB_TYPE_PD,
-+	POWER_SUPPLY_USB_TYPE_PD_DRP,
-+	POWER_SUPPLY_USB_TYPE_APPLE_BRICK_ID
-+};
-+
-+static unsigned int mt6360_trans_reg_sel(u32 data, u32 min_val, u32 step,
-+						u32 max_sel)
-+{
-+	unsigned int target = 0;
-+
-+	if (data >= min_val)
-+		target = (data - min_val) / step;
-+	if (target > max_sel)
-+		target = max_sel;
-+	return target;
-+}
-+
-+static int mt6360_get_chrdet_ext_stat(struct mt6360_chg_info *mci,
-+					     bool *pwr_rdy)
-+{
+Here's what I've hacked together for a guest that doesn't have
+any MSI capability:
+
+diff --git a/drivers/pci/controller/pci-host-common.c 
+b/drivers/pci/controller/pci-host-common.c
+index 6ce34a1deecb..7dd5145cd38d 100644
+--- a/drivers/pci/controller/pci-host-common.c
++++ b/drivers/pci/controller/pci-host-common.c
+@@ -55,6 +55,7 @@ int pci_host_common_probe(struct platform_device 
+*pdev)
+  	struct pci_host_bridge *bridge;
+  	struct pci_config_window *cfg;
+  	const struct pci_ecam_ops *ops;
 +	int ret;
-+	unsigned int regval;
+
+  	ops = of_device_get_match_data(&pdev->dev);
+  	if (!ops)
+@@ -80,7 +81,10 @@ int pci_host_common_probe(struct platform_device 
+*pdev)
+
+  	platform_set_drvdata(pdev, bridge);
+
+-	return pci_host_probe(bridge);
++	ret = pci_host_probe(bridge);
++	bridge->bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
 +
-+	ret = regmap_read(mci->regmap, MT6360_PMU_FOD_STAT, &regval);
-+	if (ret < 0)
-+		return ret;
-+	*pwr_rdy = (regval & MT6360_CHRDET_EXT_MASK) ? true : false;
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_online(struct mt6360_chg_info *mci,
-+				     union power_supply_propval *val)
-+{
-+	int ret;
-+	bool pwr_rdy;
-+
-+	ret = mt6360_get_chrdet_ext_stat(mci, &pwr_rdy);
-+	if (ret < 0)
-+		return ret;
-+	val->intval = pwr_rdy ? true : false;
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_status(struct mt6360_chg_info *mci,
-+				     union power_supply_propval *val)
-+{
-+	int status, ret;
-+	unsigned int regval;
-+	bool pwr_rdy;
-+
-+	ret = mt6360_get_chrdet_ext_stat(mci, &pwr_rdy);
-+	if (ret < 0)
-+		return ret;
-+	if (!pwr_rdy) {
-+		status = POWER_SUPPLY_STATUS_DISCHARGING;
-+		goto out;
-+	}
-+
-+	ret = regmap_read(mci->regmap, MT6360_PMU_CHG_STAT, &regval);
-+	if (ret < 0)
-+		return ret;
-+	regval &= MT6360_CHG_STAT_MASK;
-+	regval >>= MT6360_CHG_STAT_SHFT;
-+	switch (regval) {
-+	case 0x0:
-+		status = POWER_SUPPLY_STATUS_NOT_CHARGING;
-+		break;
-+	case 0x1:
-+		status = POWER_SUPPLY_STATUS_CHARGING;
-+		break;
-+	case 0x2:
-+		status = POWER_SUPPLY_STATUS_FULL;
-+		break;
-+	default:
-+		ret = -EIO;
-+	}
-+out:
-+	if (!ret)
-+		val->intval = status;
 +	return ret;
-+}
-+
-+static int mt6360_charger_get_charge_type(struct mt6360_chg_info *mci,
-+					  union power_supply_propval *val)
-+{
-+	int type, ret;
-+	unsigned int regval;
-+	u8 chg_stat;
-+
-+	ret = regmap_read(mci->regmap, MT6360_PMU_CHG_STAT, &regval);
-+	if (ret < 0)
-+		return ret;
-+
-+	chg_stat = (regval & MT6360_CHG_STAT_MASK) >> MT6360_CHG_STAT_SHFT;
-+	switch (chg_stat) {
-+	case 0x01: /* Charge in Progress */
-+		if (regval & MT6360_VBAT_LVL_MASK)
-+			type = POWER_SUPPLY_CHARGE_TYPE_FAST;
-+		else
-+			type = POWER_SUPPLY_CHARGE_TYPE_TRICKLE;
-+		break;
-+	case 0x00: /* Not Charging */
-+	case 0x02: /* Charge Done */
-+	case 0x03: /* Charge Fault */
-+	default:
-+		type = POWER_SUPPLY_CHARGE_TYPE_NONE;
-+		break;
-+	}
-+
-+	val->intval = type;
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_ichg(struct mt6360_chg_info *mci,
-+				   union power_supply_propval *val)
-+{
-+	int ichg, ret;
-+	unsigned int regval;
-+
-+	ret = regmap_read(mci->regmap, MT6360_PMU_CHG_CTRL7, &regval);
-+	if (ret < 0)
-+		return ret;
-+	regval = (regval & MT6360_ICHG_MASK) >> MT6360_ICHG_SHFT;
-+	ichg = MT6360_ICHG_MIN + (regval * MT6360_ICHG_STEP);
-+	if (ichg > MT6360_ICHG_MAX)
-+		ichg = MT6360_ICHG_MAX;
-+	val->intval = ichg;
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_max_ichg(struct mt6360_chg_info *mci,
-+				       union power_supply_propval *val)
-+{
-+	val->intval = MT6360_ICHG_MAX;
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_cv(struct mt6360_chg_info *mci,
-+				 union power_supply_propval *val)
-+{
-+	int cv, ret;
-+	unsigned int regval;
-+
-+	ret = regmap_read(mci->regmap, MT6360_PMU_CHG_CTRL4, &regval);
-+	if (ret < 0)
-+		return ret;
-+	regval = (regval & MT6360_VOREG_MASK) >> MT6360_VOREG_SHFT;
-+	cv = MT6360_VOREG_MIN + (regval * MT6360_VOREG_STEP);
-+	if (cv > MT6360_VOREG_MAX)
-+		cv = MT6360_VOREG_MAX;
-+	val->intval = cv;
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_max_cv(struct mt6360_chg_info *mci,
-+				     union power_supply_propval *val)
-+{
-+	val->intval = MT6360_VOREG_MAX;
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_aicr(struct mt6360_chg_info *mci,
-+				   union power_supply_propval *val)
-+{
-+	int ret;
-+	unsigned int regval;
-+
-+	ret = regmap_read(mci->regmap, MT6360_PMU_CHG_CTRL3, &regval);
-+	if (ret < 0)
-+		return ret;
-+	regval = (regval & MT6360_IAICR_MASK) >> MT6360_IAICR_SHFT;
-+	val->intval = MT6360_AICR_MIN + (regval * MT6360_AICR_STEP);
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_iprechg(struct mt6360_chg_info *mci,
-+				      union power_supply_propval *val)
-+{
-+	int ret;
-+	unsigned int regval;
-+
-+	ret = regmap_read(mci->regmap, MT6360_PMU_CHG_CTRL8, &regval);
-+	if (ret < 0)
-+		return ret;
-+	regval = (regval & MT6360_IPREC_MASK) >> MT6360_IPREC_SHFT;
-+	val->intval = MT6360_IPREC_MIN + (regval * MT6360_IPREC_STEP);
-+	return 0;
-+}
-+
-+static int mt6360_charger_get_ieoc(struct mt6360_chg_info *mci,
-+				   union power_supply_propval *val)
-+{
-+	int ret;
-+	unsigned int regval;
-+
-+	ret = regmap_read(mci->regmap, MT6360_PMU_CHG_CTRL9, &regval);
-+	if (ret < 0)
-+		return ret;
-+	regval = (regval & MT6360_IEOC_MASK) >> MT6360_IEOC_SHFT;
-+	val->intval = MT6360_IEOC_MIN + (regval * MT6360_IEOC_STEP);
-+	return 0;
-+}
-+
-+static int mt6360_charger_set_online(struct mt6360_chg_info *mci,
-+				     const union power_supply_propval *val)
-+{
-+	u8 force_sleep = val->intval ? 0 : 1;
-+
-+	return regmap_update_bits(mci->regmap, MT6360_PMU_CHG_CTRL1,
-+				  MT6360_FSLP_MASK,
-+				  force_sleep << MT6360_FSLP_SHFT);
-+}
-+
-+static int mt6360_charger_set_ichg(struct mt6360_chg_info *mci,
-+				   const union power_supply_propval *val)
-+{
-+	unsigned int regval;
-+
-+	regval = mt6360_trans_reg_sel(val->intval, 100000, 100000, 0x31);
-+	return regmap_update_bits(mci->regmap, MT6360_PMU_CHG_CTRL7,
-+				  MT6360_ICHG_MASK, regval << MT6360_ICHG_SHFT);
-+}
-+
-+static int mt6360_charger_set_cv(struct mt6360_chg_info *mci,
-+				 const union power_supply_propval *val)
-+{
-+	unsigned int regval;
-+
-+	regval = mt6360_trans_reg_sel(val->intval, 3900000, 10000, 0x51);
-+	return regmap_update_bits(mci->regmap,
-+				  MT6360_PMU_CHG_CTRL4,
-+				  MT6360_VOREG_MASK,
-+				  regval << MT6360_VOREG_SHFT);
-+}
-+
-+static int mt6360_charger_set_aicr(struct mt6360_chg_info *mci,
-+				   const union power_supply_propval *val)
-+{
-+	unsigned int regval;
-+
-+	regval = mt6360_trans_reg_sel(val->intval, 100000, 50000, 0x3F);
-+	return regmap_update_bits(mci->regmap,
-+				  MT6360_PMU_CHG_CTRL3,
-+				  MT6360_IAICR_MASK,
-+				  regval << MT6360_IAICR_SHFT);
-+}
-+
-+static int mt6360_charger_set_iprechg(struct mt6360_chg_info *mci,
-+				      const union power_supply_propval *val)
-+{
-+	unsigned int regval;
-+
-+	regval = mt6360_trans_reg_sel(val->intval, 100000, 50000, 0x0F);
-+	return regmap_update_bits(mci->regmap,
-+				  MT6360_PMU_CHG_CTRL8,
-+				  MT6360_IPREC_MASK,
-+				  regval << MT6360_IPREC_SHFT);
-+}
-+
-+static int mt6360_charger_set_ieoc(struct mt6360_chg_info *mci,
-+				   const union power_supply_propval *val)
-+{
-+	unsigned int regval;
-+
-+	regval = mt6360_trans_reg_sel(val->intval, 100000, 50000, 0x0F);
-+	return regmap_update_bits(mci->regmap,
-+				  MT6360_PMU_CHG_CTRL9,
-+				  MT6360_IEOC_MASK,
-+				  regval << MT6360_IEOC_SHFT);
-+}
-+
-+static int mt6360_charger_get_property(struct power_supply *psy,
-+				       enum power_supply_property psp,
-+				       union power_supply_propval *val)
-+{
-+	struct mt6360_chg_info *mci = power_supply_get_drvdata(psy);
-+	int ret = 0;
-+
-+	dev_dbg(mci->dev, "%s: prop = %d\n", __func__, psp);
-+	switch (psp) {
-+	case POWER_SUPPLY_PROP_ONLINE:
-+		ret = mt6360_charger_get_online(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_STATUS:
-+		ret = mt6360_charger_get_status(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_TYPE:
-+		ret = mt6360_charger_get_charge_type(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
-+		ret = mt6360_charger_get_ichg(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
-+		ret = mt6360_charger_get_max_ichg(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
-+		ret = mt6360_charger_get_cv(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
-+		ret = mt6360_charger_get_max_cv(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-+		ret = mt6360_charger_get_aicr(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
-+		ret = mt6360_charger_get_iprechg(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
-+		ret = mt6360_charger_get_ieoc(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_USB_TYPE:
-+		val->intval = mci->psy_usb_type;
-+		break;
-+	default:
-+		ret = -ENODATA;
-+	}
-+	return ret;
-+}
-+
-+static int mt6360_charger_set_property(struct power_supply *psy,
-+				       enum power_supply_property psp,
-+				       const union power_supply_propval *val)
-+{
-+	struct mt6360_chg_info *mci = power_supply_get_drvdata(psy);
-+	int ret;
-+
-+	dev_dbg(mci->dev, "%s: prop = %d\n", __func__, psp);
-+	switch (psp) {
-+	case POWER_SUPPLY_PROP_ONLINE:
-+		ret = mt6360_charger_set_online(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
-+		ret = mt6360_charger_set_ichg(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
-+		ret = mt6360_charger_set_cv(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-+		ret = mt6360_charger_set_aicr(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
-+		ret = mt6360_charger_set_iprechg(mci, val);
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
-+		ret = mt6360_charger_set_ieoc(mci, val);
-+		break;
-+	default:
-+		ret = -EINVAL;
-+	}
-+	return ret;
-+}
-+
-+static int mt6360_charger_property_is_writeable(struct power_supply *psy,
-+					       enum power_supply_property psp)
-+{
-+	switch (psp) {
-+	case POWER_SUPPLY_PROP_ONLINE:
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
-+	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-+	case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
-+	case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
-+		return 1;
-+	default:
-+		return 0;
-+	}
-+}
-+
-+static enum power_supply_property mt6360_charger_properties[] = {
-+	POWER_SUPPLY_PROP_ONLINE,
-+	POWER_SUPPLY_PROP_STATUS,
-+	POWER_SUPPLY_PROP_CHARGE_TYPE,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX,
-+	POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT,
-+	POWER_SUPPLY_PROP_PRECHARGE_CURRENT,
-+	POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT,
-+	POWER_SUPPLY_PROP_USB_TYPE,
-+};
-+
-+static char *mt6360_charger_supplied_to[] = {
-+	"main-battery"
-+};
-+
-+static const struct power_supply_desc mt6360_charger_desc = {
-+	.type			= POWER_SUPPLY_TYPE_USB,
-+	.properties		= mt6360_charger_properties,
-+	.num_properties		= ARRAY_SIZE(mt6360_charger_properties),
-+	.get_property		= mt6360_charger_get_property,
-+	.set_property		= mt6360_charger_set_property,
-+	.property_is_writeable	= mt6360_charger_property_is_writeable,
-+	.usb_types		= mt6360_charger_usb_types,
-+	.num_usb_types		= ARRAY_SIZE(mt6360_charger_usb_types),
-+};
-+
-+static const struct regulator_ops mt6360_chg_otg_ops = {
-+	.list_voltage = regulator_list_voltage_linear,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+};
-+
-+static const struct regulator_desc mt6360_otg_rdesc = {
-+	.of_match = "usb-otg-vbus",
-+	.name = "usb-otg-vbus",
-+	.ops = &mt6360_chg_otg_ops,
-+	.owner = THIS_MODULE,
-+	.type = REGULATOR_VOLTAGE,
-+	.min_uV = 4425000,
-+	.uV_step = 25000, /* step  25mV */
-+	.n_voltages = 57, /* 4425mV to 5825mV */
-+	.vsel_reg = MT6360_PMU_CHG_CTRL5,
-+	.vsel_mask = MT6360_VOBST_MASK,
-+	.enable_reg = MT6360_PMU_CHG_CTRL1,
-+	.enable_mask = MT6360_OPA_MODE_MASK,
-+};
-+
-+static irqreturn_t mt6360_pmu_attach_i_handler(int irq, void *data)
-+{
-+	struct mt6360_chg_info *mci = data;
-+	int ret;
-+	unsigned int usb_status;
-+	int last_usb_type;
-+
-+	dev_dbg(mci->dev, "%s\n", __func__);
-+	mutex_lock(&mci->chgdet_lock);
-+	if (!mci->bc12_en) {
-+		dev_info(mci->dev, "%s: bc12 disabled, ignore irq\n", __func__);
-+		goto out;
-+	}
-+	last_usb_type = mci->psy_usb_type;
-+	/* Plug in */
-+	ret = regmap_read(mci->regmap, MT6360_PMU_USB_STATUS1, &usb_status);
-+	if (ret < 0)
-+		goto out;
-+	usb_status &= MT6360_USB_STATUS_MASK;
-+	usb_status >>= MT6360_USB_STATUS_SHFT;
-+	switch (usb_status) {
-+	case MT6360_CHG_TYPE_UNDER_GOING:
-+		dev_info(mci->dev, "%s: under going...\n", __func__);
-+		goto out;
-+	case MT6360_CHG_TYPE_SDP:
-+		mci->psy_usb_type = POWER_SUPPLY_USB_TYPE_SDP;
-+		break;
-+	case MT6360_CHG_TYPE_SDPNSTD:
-+		mci->psy_usb_type = POWER_SUPPLY_USB_TYPE_SDP;
-+		break;
-+	case MT6360_CHG_TYPE_CDP:
-+		mci->psy_usb_type = POWER_SUPPLY_USB_TYPE_CDP;
-+		break;
-+	case MT6360_CHG_TYPE_DCP:
-+		mci->psy_usb_type = POWER_SUPPLY_USB_TYPE_DCP;
-+		break;
-+	default:
-+		dev_warn(mci->dev,
-+			 "%s: disconnect or unknown status\n", __func__);
-+		goto out;
-+	}
-+
-+	dev_info(mci->dev, "%s: chg_type = %d\n", __func__, mci->psy_usb_type);
-+	if (last_usb_type != mci->psy_usb_type)
-+		power_supply_changed(mci->psy);
-+out:
-+	mutex_unlock(&mci->chgdet_lock);
-+	return IRQ_HANDLED;
-+}
-+
-+static void mt6360_handle_chrdet_ext_evt(struct mt6360_chg_info *mci)
-+{
-+	int ret;
-+	bool pwr_rdy;
-+	int last_usb_type;
-+
-+	mutex_lock(&mci->chgdet_lock);
-+	ret = mt6360_get_chrdet_ext_stat(mci, &pwr_rdy);
-+	if (ret < 0)
-+		goto out;
-+	if (mci->pwr_rdy == pwr_rdy) {
-+		dev_info(mci->dev,
-+			 "%s: pwr_rdy is same(%d)\n", __func__, pwr_rdy);
-+		goto out;
-+	}
-+	mci->pwr_rdy = pwr_rdy;
-+	last_usb_type = mci->psy_usb_type;
-+	dev_info(mci->dev, "%s: pwr_rdy = %d\n", __func__, pwr_rdy);
-+	if (!pwr_rdy) {
-+		mci->psy_usb_type = POWER_SUPPLY_USB_TYPE_UNKNOWN;
-+		if (last_usb_type != mci->psy_usb_type)
-+			power_supply_changed(mci->psy);
-+
-+	}
-+	ret = regmap_update_bits(mci->regmap,
-+				 MT6360_PMU_DEVICE_TYPE,
-+				 MT6360_USBCHGEN_MASK,
-+				 pwr_rdy ? MT6360_USBCHGEN_MASK : 0);
-+	if (ret < 0)
-+		goto out;
-+	mci->bc12_en = pwr_rdy;
-+out:
-+	mutex_unlock(&mci->chgdet_lock);
-+}
-+
-+static void mt6360_chrdet_work(struct work_struct *work)
-+{
-+	struct mt6360_chg_info *mci = (struct mt6360_chg_info *)container_of(
-+				     work, struct mt6360_chg_info, chrdet_work);
-+
-+	dev_info(mci->dev, "%s\n", __func__);
-+	mt6360_handle_chrdet_ext_evt(mci);
-+}
-+
-+static irqreturn_t mt6360_pmu_chrdet_ext_evt_handler(int irq, void *data)
-+{
-+	struct mt6360_chg_info *mci = data;
-+
-+	dev_info(mci->dev, "%s\n", __func__);
-+	mt6360_handle_chrdet_ext_evt(mci);
-+	return IRQ_HANDLED;
-+}
-+
-+static int mt6360_chg_irq_register(struct platform_device *pdev)
-+{
-+	const struct {
-+		const char *name;
-+		irq_handler_t handler;
-+	} irq_descs[] = {
-+		{ "attach_i", mt6360_pmu_attach_i_handler },
-+		{ "chrdet_ext_evt", mt6360_pmu_chrdet_ext_evt_handler }
-+	};
-+	int i, ret;
-+
-+	for (i = 0; i < ARRAY_SIZE(irq_descs); i++) {
-+		ret = platform_get_irq_byname(pdev, irq_descs[i].name);
-+		if (ret < 0)
-+			return ret;
-+
-+		ret = devm_request_threaded_irq(&pdev->dev, ret, NULL,
-+						irq_descs[i].handler,
-+						IRQF_TRIGGER_FALLING,
-+						irq_descs[i].name,
-+						platform_get_drvdata(pdev));
-+		if (ret < 0) {
-+			dev_err(&pdev->dev,
-+				"request %s irq fail\n", irq_descs[i].name);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+struct mt6360_field_info {
-+	struct device_attribute dev_attr;
-+	u16 reg;
-+	u8 mask;
-+	u8 shft;
-+};
-+
-+static ssize_t mt6360_sysfs_show(struct device *dev,
-+		struct device_attribute *attr, char *buf);
-+static ssize_t mt6360_sysfs_store(struct device *dev,
-+		struct device_attribute *attr, const char *buf, size_t count);
-+
-+#define MT6360_FIELD_RW(_name, _reg, _nbit)			\
-+{								\
-+	.dev_attr = __ATTR(_name, 0664,				\
-+		       mt6360_sysfs_show, mt6360_sysfs_store),	\
-+	.reg	= MT6360_PMU_##_reg,				\
-+	.mask	= MT6360_##_nbit##_MASK,				\
-+	.shft	= MT6360_##_nbit##_SHFT,				\
-+}
-+
-+#define MT6360_FIELD_RO(_name, _reg, _nbit)			\
-+{								\
-+	.dev_attr = __ATTR(_name, 0444,				\
-+			mt6360_sysfs_show, NULL),		\
-+	.reg	= MT6360_PMU_##_reg,				\
-+	.mask	= MT6360_##_nbit##_MASK,			\
-+	.shft	= MT6360_##_nbit##_SHFT,			\
-+}
-+
-+static struct mt6360_field_info mt6360_field_tbl[] = {
-+	MT6360_FIELD_RW(hiz,		CHG_CTRL1,	HIZ),
-+	MT6360_FIELD_RW(vmivr,		CHG_CTRL6,	VMIVR),
-+	MT6360_FIELD_RW(iaicr,		CHG_CTRL3,	IAICR),
-+	MT6360_FIELD_RW(SYSREG,		CHG_CTRL11,	SYSREG),
-+	MT6360_FIELD_RW(otg_oc,		CHG_CTRL10,	OTG_OC),
-+	MT6360_FIELD_RW(ichg,		CHG_CTRL17,	ICHG),
-+	MT6360_FIELD_RW(iprec,		CHG_CTRL8,	IPREC),
-+	MT6360_FIELD_RW(ieoc,		CHG_CTRL9,	IEOC),
-+	MT6360_FIELD_RW(voreg,		CHG_CTRL4,	VOREG),
-+	MT6360_FIELD_RW(lbp,		CHG_CTRL10,	LBP),
-+	MT6360_FIELD_RW(vrec,		CHG_CTRL11,	VREC),
-+	MT6360_FIELD_RW(te,		CHG_CTRL2,	TE),
-+	MT6360_FIELD_RW(chg_wdt_en,	CHG_CTRL13,	CHG_WDT_EN),
-+	MT6360_FIELD_RW(chg_wdt,	CHG_CTRL13,	CHG_WDT),
-+	MT6360_FIELD_RW(wt_fc,		CHG_CTRL12,	WT_FC),
-+	MT6360_FIELD_RW(bat_comp,	CHG_CTRL18,	BAT_COMP),
-+	MT6360_FIELD_RW(vclamp,		CHG_CTRL18,	VCLAMP),
-+	MT6360_FIELD_RW(usbchgen,	DEVICE_TYPE,	USBCHGEN),
-+	MT6360_FIELD_RW(chg_en,		CHG_CTRL2,	CHG_EN),
-+	MT6360_FIELD_RO(chrdet_ext,	FOD_STAT,	CHRDET_EXT),
-+};
-+
-+static struct attribute *mt6360_attrs[ARRAY_SIZE(mt6360_field_tbl) + 1];
-+
-+static const struct attribute_group mt6360_attr_group = {
-+	.attrs = mt6360_attrs,
-+};
-+
-+static ssize_t mt6360_sysfs_show(struct device *dev,
-+				 struct device_attribute *attr, char *buf)
-+{
-+	struct mt6360_chg_info *mci = dev_get_drvdata(dev->parent);
-+	struct mt6360_field_info *info = (void *)attr;
-+	unsigned int regval;
-+	int ret;
-+
-+	ret = regmap_read(mci->regmap, info->reg, &regval);
-+	if (ret < 0)
-+		return ret;
-+	regval = (regval & info->mask) >> info->shft;
-+	return scnprintf(buf, PAGE_SIZE, "%02x\n", regval);
-+}
-+
-+static ssize_t mt6360_sysfs_store(struct device *dev,
-+		   struct device_attribute *attr, const char *buf, size_t count)
-+{
-+	struct mt6360_chg_info *mci = dev_get_drvdata(dev->parent);
-+	struct mt6360_field_info *info = (void *)attr;
-+	int ret, tmp;
-+
-+	if (kstrtoint(buf, 10, &tmp) < 0) {
-+		dev_err(dev, "failed to parsing number\n");
-+		return -EINVAL;
-+	}
-+	ret = regmap_update_bits(mci->regmap,
-+				 info->reg, info->mask, tmp << info->shft);
-+	if (ret < 0)
-+		return ret;
-+	return count;
-+}
-+
-+static int mt6360_sysfs_create_group(struct mt6360_chg_info *mci)
-+{
-+	int i, tb_size = ARRAY_SIZE(mt6360_field_tbl);
-+
-+	for (i = 0; i < tb_size; i++)
-+		mt6360_attrs[i] = &(mt6360_field_tbl[i].dev_attr.attr);
-+	return devm_device_add_group(&mci->psy->dev, &mt6360_attr_group);
-+}
-+
-+static int mt6360_chg_init_setting(struct mt6360_chg_info *mci)
-+{
-+	int ret;
-+
-+	/* Disable bc12 */
-+	ret = regmap_update_bits(mci->regmap, MT6360_PMU_DEVICE_TYPE,
-+				 MT6360_USBCHGEN_MASK, 0);
-+	if (ret < 0) {
-+		dev_err(mci->dev, "%s: disable bc12 fail\n", __func__);
-+		goto out;
-+	}
-+	/* Set input current limit select by AICR */
-+	ret = regmap_update_bits(mci->regmap, MT6360_PMU_CHG_CTRL2,
-+				 MT6360_IINLMTSEL_MASK,
-+				 MT6360_IINLMTSEL_AICR <<
-+					MT6360_IINLMTSEL_SHFT);
-+	if (ret < 0) {
-+		dev_err(mci->dev,
-+			"%s: switch iinlmtsel to aicr fail\n", __func__);
-+		goto out;
-+	}
-+	usleep_range(5000, 6000);
-+	/* Disable ilim */
-+	ret = regmap_update_bits(mci->regmap, MT6360_PMU_CHG_CTRL3,
-+				 MT6360_ILIM_EN_MASK, 0);
-+	if (ret < 0) {
-+		dev_err(mci->dev,
-+			"%s: switch iinlmtsel to aicr fail\n", __func__);
-+		goto out;
-+	}
-+	/* Enlarge OTG_OC to max 3A */
-+	ret = regmap_update_bits(mci->regmap,
-+				 MT6360_PMU_CHG_CTRL10, 0x07, 0x07);
-+	if (ret < 0) {
-+		dev_err(mci->dev,
-+			"%s: faled config otg oc to maximum\n", __func__);
-+	}
-+out:
-+	return ret;
-+}
-+
-+static u32 mt6360_vinovp_trans_to_sel(u32 val)
-+{
-+	u32 vinovp_tbl[] = { 5500000, 6500000, 11000000, 14500000 };
-+	int i;
-+
-+	/* Select the smaller and equal supported value */
-+	for (i = 0; i < ARRAY_SIZE(vinovp_tbl)-1; i++) {
-+		if (val < vinovp_tbl[i+1])
-+			break;
-+	}
-+	return i;
-+}
-+
-+static struct mt6360_chg_platform_data *mt6360_parse_pdata(
-+						   struct platform_device *pdev)
-+{
-+	struct mt6360_chg_platform_data *pdata = dev_get_platdata(&pdev->dev);
-+	struct device_node *np = pdev->dev.of_node;
-+	int ret;
-+
-+	pdata = kmemdup(&def_platform_data, sizeof(*pdata), GFP_KERNEL);
-+	ret = of_property_read_u32(np, "richtek,vinovp-microvolt", &pdata->vinovp);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to parse vinovp in DT\n");
-+		return ERR_PTR(ret);
-+	}
-+	return pdata;
-+}
-+
-+static int mt6360_apply_pdata(struct platform_device *pdev)
-+{
-+	struct mt6360_chg_platform_data *pdata = dev_get_platdata(&pdev->dev);
-+	struct mt6360_chg_info *mci = dev_get_drvdata(&pdev->dev);
-+	int ret;
-+	u32 sel;
-+
-+	sel = mt6360_vinovp_trans_to_sel(pdata->vinovp);
-+	ret = regmap_update_bits(mci->regmap, MT6360_PMU_CHG_CTRL19,
-+				 MT6360_VINOVP_MASK, sel << MT6360_VINOVP_SHFT);
-+	if (ret)
-+		return ret;
-+	return 0;
-+}
-+
-+static int mt6360_charger_probe(struct platform_device *pdev)
-+{
-+	struct mt6360_chg_platform_data *pdata = dev_get_platdata(&pdev->dev);
-+	struct mt6360_chg_info *mci;
-+	struct power_supply_config charger_cfg = {};
-+	struct regulator_config config = { };
-+	int ret;
-+
-+	mci = devm_kzalloc(&pdev->dev, sizeof(*mci), GFP_KERNEL);
-+	if (!mci)
-+		return -ENOMEM;
-+
-+	pdata = mt6360_parse_pdata(pdev);
-+	if (IS_ERR_OR_NULL(pdata))
-+		return PTR_ERR(pdata);
-+
-+	pdev->dev.platform_data = pdata;
-+
-+	mci->dev = &pdev->dev;
-+	mutex_init(&mci->chgdet_lock);
-+	platform_set_drvdata(pdev, mci);
-+	INIT_WORK(&mci->chrdet_work, &mt6360_chrdet_work);
-+
-+	mci->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!mci->regmap) {
-+		dev_err(&pdev->dev, "Failed to get parent regmap\n");
-+		return -ENODEV;
-+	}
-+
-+	ret = mt6360_apply_pdata(pdev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to apply pdata\n");
-+		return ret;
-+	}
-+
-+	memcpy(&mci->psy_desc, &mt6360_charger_desc, sizeof(mci->psy_desc));
-+	mci->psy_desc.name = dev_name(&pdev->dev);
-+	charger_cfg.drv_data = mci;
-+	charger_cfg.of_node = pdev->dev.of_node;
-+	charger_cfg.supplied_to = mt6360_charger_supplied_to;
-+	charger_cfg.num_supplicants = ARRAY_SIZE(mt6360_charger_supplied_to);
-+	mci->psy = devm_power_supply_register(&pdev->dev,
-+					      &mci->psy_desc, &charger_cfg);
-+	if (IS_ERR(mci->psy)) {
-+		dev_err(&pdev->dev, "Failed to register power supply dev\n");
-+		return PTR_ERR(mci->psy);
-+	}
-+
-+	ret = mt6360_chg_init_setting(mci);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to initial setting\n");
-+		return ret;
-+	}
-+
-+	schedule_work(&mci->chrdet_work);
-+
-+	ret = mt6360_chg_irq_register(pdev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to register irqs\n");
-+		return ret;
-+	}
-+
-+	config.dev = &pdev->dev;
-+	config.regmap = mci->regmap;
-+	mci->otg_rdev = devm_regulator_register(&pdev->dev, &mt6360_otg_rdesc,
-+						&config);
-+	if (IS_ERR(mci->otg_rdev))
-+		return PTR_ERR(mci->otg_rdev);
-+
-+	ret = mt6360_sysfs_create_group(mci);
-+	if (ret) {
-+		dev_err(&pdev->dev,
-+			"%s: create sysfs attrs fail\n", __func__);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id __maybe_unused mt6360_charger_of_id[] = {
-+	{ .compatible = "mediatek,mt6360-chg", },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mt6360_charger_of_id);
-+
-+static const struct platform_device_id mt6360_charger_id[] = {
-+	{ "mt6360-chg", 0 },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(platform, mt6360_charger_id);
-+
-+static struct platform_driver mt6360_charger_driver = {
-+	.driver = {
-+		.name = "mt6360-chg",
-+		.of_match_table = of_match_ptr(mt6360_charger_of_id),
-+	},
-+	.probe = mt6360_charger_probe,
-+	.id_table = mt6360_charger_id,
-+};
-+module_platform_driver(mt6360_charger_driver);
-+
-+MODULE_AUTHOR("CY_Huang <cy_huang@richtek.com>");
-+MODULE_DESCRIPTION("MT6360 Charger Driver");
-+MODULE_LICENSE("GPL");
+  }
+  EXPORT_SYMBOL_GPL(pci_host_common_probe);
+
+(plus another hack to get the host controller to initialise a bit
+later, though building it as a module will achieve the same thing):
+
+[    0.369114] 9pnet: Installing 9P2000 support
+[    0.369807] mpls_gso: MPLS GSO support
+[    0.370512] registered taskstats version 1
+[    0.371204] Loading compiled-in X.509 certificates
+[    0.371988] zswap: loaded using pool lzo/zbud
+[    0.373041] pci-host-generic 40000000.pci: host bridge /pci ranges:
+[    0.374045] pci-host-generic 40000000.pci:       IO 
+0x0000000000..0x000000ffff -> 0x0000000000
+[    0.375458] pci-host-generic 40000000.pci:      MEM 
+0x0041000000..0x007fffffff -> 0x0041000000
+[    0.376848] pci-host-generic 40000000.pci: ECAM at [mem 
+0x40000000-0x40ffffff] for [bus 00]
+[    0.378204] pci-host-generic 40000000.pci: PCI host bridge to bus 
+0000:00
+[    0.379316] pci_bus 0000:00: root bus resource [bus 00]
+[    0.380146] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    0.381131] pci_bus 0000:00: root bus resource [mem 
+0x41000000-0x7fffffff]
+[    0.382267] pci 0000:00:00.0: [1af4:1009] type 00 class 0xff0000
+[    0.383369] pci 0000:00:00.0: reg 0x10: [io  0x6200-0x62ff]
+[    0.384286] pci 0000:00:00.0: reg 0x14: [mem 0x41000000-0x410000ff]
+[    0.385324] pci 0000:00:00.0: reg 0x18: [mem 0x41000200-0x410003ff]
+[    0.386680] pci 0000:00:01.0: [1af4:1009] type 00 class 0xff0000
+[    0.387778] pci 0000:00:01.0: reg 0x10: [io  0x6300-0x63ff]
+[    0.388696] pci 0000:00:01.0: reg 0x14: [mem 0x41000400-0x410004ff]
+[    0.389730] pci 0000:00:01.0: reg 0x18: [mem 0x41000600-0x410007ff]
+[    0.391070] pci 0000:00:02.0: [1af4:1000] type 00 class 0x020000
+[    0.392212] pci 0000:00:02.0: reg 0x10: [io  0x6400-0x64ff]
+[    0.393137] pci 0000:00:02.0: reg 0x14: [mem 0x41000800-0x410008ff]
+[    0.394163] pci 0000:00:02.0: reg 0x18: [mem 0x41000a00-0x41000bff]
+[    0.395678] pci 0000:00:00.0: BAR 2: assigned [mem 
+0x41000000-0x410001ff]
+[    0.396762] pci 0000:00:01.0: BAR 2: assigned [mem 
+0x41000200-0x410003ff]
+[    0.397851] pci 0000:00:02.0: BAR 2: assigned [mem 
+0x41000400-0x410005ff]
+[    0.398934] pci 0000:00:00.0: BAR 0: assigned [io  0x1000-0x10ff]
+[    0.400014] pci 0000:00:00.0: BAR 1: assigned [mem 
+0x41000600-0x410006ff]
+[    0.401105] pci 0000:00:01.0: BAR 0: assigned [io  0x1100-0x11ff]
+[    0.402080] pci 0000:00:01.0: BAR 1: assigned [mem 
+0x41000700-0x410007ff]
+[    0.403185] pci 0000:00:02.0: BAR 0: assigned [io  0x1200-0x12ff]
+[    0.404156] pci 0000:00:02.0: BAR 1: assigned [mem 
+0x41000800-0x410008ff]
+[    0.405344] virtio-pci 0000:00:00.0: virtio_pci: leaving for legacy 
+driver
+[    0.406569] ------------[ cut here ]------------
+[    0.407347] WARNING: CPU: 1 PID: 1 at include/linux/msi.h:213 
+__pci_enable_msix_range+0x680/0x720
+[    0.408884] Modules linked in:
+[    0.409429] CPU: 1 PID: 1 Comm: swapper/0 Not tainted 
+5.10.0-rc2-dirty #2117
+[    0.410646] Hardware name: linux,dummy-virt (DT)
+[    0.411463] pstate: 60000005 (nZCv daif -PAN -UAO -TCO BTYPE=--)
+[    0.412505] pc : __pci_enable_msix_range+0x680/0x720
+[    0.413380] lr : __pci_enable_msix_range+0x394/0x720
+[    0.414244] sp : ffffffc0119ab3d0
+[    0.414830] x29: ffffffc0119ab3d0 x28: 0000000000000002
+[    0.415766] x27: ffffff804107b0b8 x26: ffffff804107b000
+[    0.416689] x25: ffffff80410acb00 x24: 0000000000000000
+[    0.417623] x23: ffffff80410ac480 x22: ffffff804107b000
+[    0.418549] x21: ffffff804107b2e8 x20: 0000000000000014
+[    0.419482] x19: 0000000000000002 x18: 00000000fffffffc
+[    0.420408] x17: 000000002ce4d3e3 x16: 00000000a4f09d66
+[    0.421342] x15: 0000000000000020 x14: ffffffffffffffff
+[    0.422268] x13: 0000000041001000 x12: ffffffc0119cf000
+[    0.423201] x11: ffffffc010000000 x10: ffffffc0119cd000
+[    0.424127] x9 : ffffffc010628ad4 x8 : 0000000000000000
+[    0.425063] x7 : 0000000000000000 x6 : 000000000000003f
+[    0.425989] x5 : 0000000000000040 x4 : ffffff804107b2e8
+[    0.426914] x3 : 0000000000000004 x2 : 0000000000000000
+[    0.427855] x1 : 0000000000000000 x0 : 0000000000000000
+[    0.428788] Call trace:
+[    0.429226]  __pci_enable_msix_range+0x680/0x720
+[    0.430033]  pci_alloc_irq_vectors_affinity+0xcc/0x144
+[    0.430932]  vp_find_vqs_msix+0xdc/0x414
+[    0.431631]  vp_find_vqs+0x54/0x1c0
+[    0.432245]  p9_virtio_probe+0xa8/0x374
+
+This is admittedly a contrived example, but I'm not convinced it is
+completely unlikely.
+
+         M.
 -- 
-2.7.4
-
+Jazz is not dead. It just smells funny...
 
 _______________________________________________
 Linux-mediatek mailing list
