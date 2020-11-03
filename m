@@ -2,85 +2,60 @@ Return-Path: <SRS0=lxeM=EJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2430C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 14:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2245BC2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 21:13:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0260222280
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 14:23:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0074D20757
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 21:13:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="066fVe6m";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="QalBqNAl";
-	dkim=permerror (0-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="oNuU5EJE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0260222280
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1gzix6U3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0074D20757
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LB4OVFE3uDK8PipzG2oI/ZcXwwpLj/Zd8203omp0ZhU=; b=066fVe6mhXkSJoOBgQAbUQvMl
-	Nm4LWlWLJqCUiMaDZWfi2/JTDLiJxr1b842aQOD5BUgPlCLwgBJqvS2NbIAKS4VNYOqh3p1LNaieD
-	CeS6WJHHuqMxldt8RXJZ2Z+w5rkZ9uL5R62jsJF19A1QN5qncjq56Ay+g5SnJre/gUG4q31xMPI+H
-	8WPzNhph1133aq8H0Qm4KztwWzFg/y1GOPxN4I7eQ8WT/SCua/rB5o8XfhwTK3448p99HwSM+0ycc
-	mZYd/pCyDxIBT8vo1t/51Q3nir461KYxx+klIgrWZ+hwURMbVLZ9Um+vsr1u2sMokqZWanrhdkCCP
-	6UvfpbNYw==;
+	 bh=1pTZI+TuT6ORA4CU06Qds4UIA0wK/wx1PH2+0IHksSU=; b=1gzix6U3dVkVjH96eOdDs6Dgd
+	VBpkfxPHZSqgddRpuHI0fo46Y9rsoB3t+PPsFa3NMmPR8OBEC1CItE2FcDnpfQMeX6dQi0ANH6XNZ
+	l5DC+7RpAsVBeornmc+sHfiBiAeHJ9IPOTPfEPQeP/6X3f4NGs/zZT6Tdh+jC0wcCn0CBeEd1xgoT
+	U9dfiZdNIlbt8AyCtfMy3LLyost1EFpcnaQhB41oQ/5704YSOjuETAWSVpbCkkcFSEICIqWkhvU1V
+	bp9KS0F3Prvm9m80m8rirkEe67a81WzjJYJSLhL+DeYmGE1W4Awt68UY/krqnlIF7gybMEBxlfNNm
+	buVg28U6w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZxDI-0005Tc-Kq; Tue, 03 Nov 2020 14:23:08 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZxDD-0005SF-TI
- for linux-mediatek@lists.infradead.org; Tue, 03 Nov 2020 14:23:05 +0000
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1604413382;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zQk/S97ZspWiP1IuSwnWiJWHXBzyWFTe6e9hOnmA6WE=;
- b=QalBqNAlxHCvA00U58wEBxzceCcxe6LuAsBqou0YkPb69sAg6Dc5SsXKt0KflY23a9gqio
- HjzxxXFDEHPOtciZQw7z+k5kphA/aRZGpa5uBtMVlQwoKXVBP3fE2E4wMcWTv73gVzfg+Q
- Zg9dyWFt9POExqgBYBMYAHFscyYePzEwiWooI/iG1S94360E+p9lSWzbLJ3DvjlAf5ZT8i
- ieX0nGBK1p8OOBdsEvZZENvT755t6QTkbZKGBhG9jvVJIuVnS40MoXHNI5k+F+5+Lu+oyP
- PmvKmP4enLYz+aSV3PAhqcxvI8VG/x5iMkt4IzUR1/P9jmQiuzCpDHxaMV0lfA==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1604413382;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zQk/S97ZspWiP1IuSwnWiJWHXBzyWFTe6e9hOnmA6WE=;
- b=oNuU5EJETbCC1hnFqgqleMG/b4FxXNvPyqRgnq0lRnt8yGGAJfGSdQPnE3oHZ+jbyiRbFu
- og17+KydbVPoo1Ag==
-To: Marc Zyngier <maz@kernel.org>
-Subject: Re: Aw: Re: [PATCH] pci: mediatek: fix warning in msi.h
-In-Reply-To: <41e2e3ea115aa8cbbb9a5c313dca0210@kernel.org>
-References: <20201031140330.83768-1-linux@fw-web.de>
- <878sbm9icl.fsf@nanos.tec.linutronix.de>
- <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
- <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
- <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
- <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
- <df5565a2f1e821041c7c531ad52a3344@kernel.org>
- <87h7q791j8.fsf@nanos.tec.linutronix.de>
- <877dr38kt8.fsf@nanos.tec.linutronix.de>
- <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
- <87k0v27mve.fsf@nanos.tec.linutronix.de>
- <41e2e3ea115aa8cbbb9a5c313dca0210@kernel.org>
-Date: Tue, 03 Nov 2020 15:23:02 +0100
-Message-ID: <874km634ft.fsf@nanos.tec.linutronix.de>
+	id 1ka3cJ-0003O2-IM; Tue, 03 Nov 2020 21:13:25 +0000
+Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1ka3cC-0003Kb-R3; Tue, 03 Nov 2020 21:13:18 +0000
+Received: from localhost (p5486c89f.dip0.t-ipconnect.de [84.134.200.159])
+ by pokefinder.org (Postfix) with ESMTPSA id 4BCBD2C0561;
+ Tue,  3 Nov 2020 22:13:13 +0100 (CET)
+Date: Tue, 3 Nov 2020 22:13:12 +0100
+From: Wolfram Sang <wsa@the-dreams.de>
+To: qii.wang@mediatek.com
+Subject: Re: [PATCH] i2c: mediatek: move dma reset before i2c reset
+Message-ID: <20201103211312.GG1583@kunai>
+Mail-Followup-To: Wolfram Sang <wsa@the-dreams.de>, qii.wang@mediatek.com,
+ matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ leilk.liu@mediatek.com
+References: <1604059081-28197-1-git-send-email-qii.wang@mediatek.com>
 MIME-Version: 1.0
+In-Reply-To: <1604059081-28197-1-git-send-email-qii.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201103_092304_213393_FEEBC117 
-X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-CacheID: sfid-20201103_161317_028603_E43FB696 
+X-CRM114-Status: UNSURE (   9.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -93,27 +68,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Frank Wunderlich <linux@fw-web.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-i2c@vger.kernel.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============5349715694751468194=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 03 2020 at 11:41, Marc Zyngier wrote:
-> On 2020-11-03 10:31, Thomas Gleixner wrote:
-> We can do that, although I worried that it isn't 100% reliable:
->
-> pci_host_probe() ends up calling pci_add_device(), and will start
-> probing devices if the endpoint drivers have already registered
-> with the core code, long before the flag gets set.
 
-Bah, you're right. What a mess.
+--===============5349715694751468194==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4ndw/alBWmZEhfcZ"
+Content-Disposition: inline
+
+
+--4ndw/alBWmZEhfcZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Oct 30, 2020 at 07:58:01PM +0800, qii.wang@mediatek.com wrote:
+> From: Qii Wang <qii.wang@mediatek.com>
+>=20
+> The i2c driver default do dma reset after i2c reset, but sometimes
+> i2c reset will trigger dma tx2rx, then apdma write data to dram
+> which has been i2c_put_dma_safe_msg_buf(kfree). Move dma reset
+> before i2c reset in mtk_i2c_init_hw to fix it.
+>=20
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+
+Applied to for-current, thanks!
+
+
+--4ndw/alBWmZEhfcZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl+hx+gACgkQFA3kzBSg
+KbYX6Q//ZGVdd7tkdj2nWfdk4zLv7XxhsnNc0yRj5kGzxUJKvKNkQhYfnhhxFMX7
+HPEU0NIyBcT0NniiLqHhqAvAe91PNdUt2rlaD8zoWJkm22nBHH06IO1XBLglK6Ok
+9mQWJ/h4E9SZVA7pPoOKQE8XDdD4Th767jmIDQ16xvo/YyAWu0yxwMep5ausuIHr
+RT2MmJisrXYHXXMDCVBkgBrD2UWR8XjNVrjap0aMfvdEb5N35BxsEB4BO3472XKI
+Ex00+kTjc+mFbwOtMTxtjVnOqW9fqqYu7indYah0mqDX5W8XUK/Ztuqi1qnQ7FBE
+4X3DXxmZYGBgMBYfU4oQYQJDbCu/+X7hljgmvZ+uobhnEMIBIcRZ1qgNIGG3/my5
+9Xdzvc6fKdfZefYc2cUFoJ7EpLgY+KJP/oKEhYQ43y0ORN0ZWdO2eMH2GUOJdhhd
+9YH1lPPnZQcvCkt14U5FYyDCT2ZnbgTcZFo9TgLctlNqdm2o7xTYokbwmbooBx1m
+scA3peUJ+OyjQJrIX/b1+I1uYdh2v1Z/WRnIEIt2fdf+cBJGUEOC6VAP5v5FRO2M
+Is7BlkZnyuLXMyIz3wHYng/ivGqE2SPrO/JYk3rR2O8w+8dn/2HWOsZsyydyKa/l
+GPuN3WQru6TiDeD7lYTjRqRjl9jGzkSETQFO9jtdiTy3Wu+4uBk=
+=YC2K
+-----END PGP SIGNATURE-----
+
+--4ndw/alBWmZEhfcZ--
+
+
+--===============5349715694751468194==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5349715694751468194==--
+
