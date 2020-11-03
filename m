@@ -2,79 +2,76 @@ Return-Path: <SRS0=lxeM=EJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59DEFC2D0A3
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68433C388F7
 	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 08:05:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DAF65223FD
+	by mail.kernel.org (Postfix) with ESMTPS id D9D8322384
 	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2020 08:05:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uCZOXKsl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IrQ5tCiS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DAF65223FD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jzAXYu5d";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="J2pwWnbe"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9D8322384
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ka9GH7TpajRRk8fdhdkHXPCznSf9kWMa62FM85wlOfc=; b=uCZOXKslyIwH3twnBxpYKVmvW
-	beqC7Wvt1dlOMjp53wcTlmyaxRY8p56MwOm10AarSoqazlJaauzUEnx/Ga0tj/OWURY1VRU4tcLd6
-	t7XXRMmWXA6SBpIeb1i/sVvqPnWN++BvPTdkYAx2pc9o2hzR8hh79ShydfMMHTiS+tu+hG9O9Am+Z
-	WkkfLSjh/K1bm46mDiAVvZZRfs5r+OuHxt2b7UFEMCqtleXifp6rO/KC4W27OEPtoGxkMy+QK0RhY
-	CF69lzEs43TsHLjt/dVMhh1kdHXQ20spju9PX76Au7UvH+bLVJa4iZULdfFFLvLDRz8HP547anyiC
-	/a4BE3T/g==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oH8OSJoKYrjdQlaETMK9/L8boG3+iYyHKRgizJef77A=; b=jzAXYu5dayn60DummLqiDXiW8B
+	4U8914oCIVZLekZ4vjDLPny/k7KKRyIiJxOjI5yNo3j4BjkXpsfCQHGkWVQj369I6KkdQt6nU9TEL
+	Q9WZj/ibVU2qzRMVxghddlivHCYDg/Pn20F1VxUcqu1dMb0XcdEeRo7oaEKvg5sitEPiBvnrhSsVc
+	AjJdsgA04cuAAlkfA2lUIJyjZYX8UtG1WWfxhkRINCFe7FiJIyCK7LarPBv9J+dJ/1UCRTbb+0v2N
+	zrTyjzxufq7CcT4J2ikU9lSa/ACphwihVH4HG6OTqkD7AdwXlqsukLe+qb2onfs3buEBne3+EyI2u
+	hkzNYCZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZrJI-0005v9-4s; Tue, 03 Nov 2020 08:04:56 +0000
+	id 1kZrJG-0005uP-PG; Tue, 03 Nov 2020 08:04:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZrIp-0005kz-1u; Tue, 03 Nov 2020 08:04:28 +0000
-X-UUID: c7417edf0a0f4fd1a24855f8856bd034-20201103
+ id 1kZrIo-0005kL-6d; Tue, 03 Nov 2020 08:04:27 +0000
+X-UUID: 47a1dd2df33042c89ddcaf2b41552e10-20201103
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=dQHGZ/X9kqMRlDO20+nTSs8HUl433ZbvQ99yB97Y2tY=; 
- b=IrQ5tCiSZbIZRTqKMEOdQHeUD1nW1qzNCQs4cVF2+MI7pNoxfv3Ja5FCcuYW2za+UmRz84xHhBE+VnIiYUtAmurYMC8Eh0DvewKg181jfpzB2Fdf4aiWedJnp7+CQgrDRx1a+HDS+DyJcxLqYisjU7f2wIOGqzYUr2lvtW2ikig=;
-X-UUID: c7417edf0a0f4fd1a24855f8856bd034-20201103
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=0QBSEOMZBWHt6e5tK2HT31+z/BJjLgKUQg5qu0chQ6Q=; 
+ b=J2pwWnbenV6tkSKAcpwga2IFdve5wPBz/3AMbBvaOBl2mAb+ACZyTo+CyCXWSXCct2E/VmGNKwkyrhYFSXmkRlewMSYaIIo3pxoo2FRMbsW1VzBlskiv/bpO1MXVRibUImyBPG1jEKGEDs1W+jHo4mzpHZ2MHPdQ2jq72gAPfIo=;
+X-UUID: 47a1dd2df33042c89ddcaf2b41552e10-20201103
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1123851446; Tue, 03 Nov 2020 00:04:24 -0800
+ with ESMTP id 766109322; Tue, 03 Nov 2020 00:04:24 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 2 Nov 2020 23:59:52 -0800
+ 15.0.1497.2; Mon, 2 Nov 2020 23:59:42 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 Nov 2020 15:59:51 +0800
+ 15.0.1497.2; Tue, 3 Nov 2020 15:59:41 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 3 Nov 2020 15:59:50 +0800
+ Transport; Tue, 3 Nov 2020 15:59:40 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <tiwai@suse.com>, <matthias.bgg@gmail.com>,
  <robh+dt@kernel.org>, <p.zabel@pengutronix.de>, <tzungbi@google.com>,
  <alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH v4 9/9] dt-bindings: mediatek: mt8192: add
- mt8192-mt6358-rt1015-rt5682 document
-Date: Tue, 3 Nov 2020 15:59:38 +0800
-Message-ID: <1604390378-23993-10-git-send-email-jiaxin.yu@mediatek.com>
+Subject: [PATCH v4 0/9] ASoC: Mediatek: Add support for MT8192 SoC
+Date: Tue, 3 Nov 2020 15:59:29 +0800
+Message-ID: <1604390378-23993-1-git-send-email-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1604390378-23993-1-git-send-email-jiaxin.yu@mediatek.com>
-References: <1604390378-23993-1-git-send-email-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201103_030427_309594_7A1AB375 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20201103_030426_443387_59F2320A 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,63 +91,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds document for the machine board with mt6358, rt1015
-and rt5682.
+This series of patches adds support for Mediatek AFE for MT8192 SoC. At the same
+time, the calibration function of MT6359 is completed with real machine driver.
+The patch is based on broonie tree "for-next" branch.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- .../sound/mt8192-mt6359-rt1015-rt5682.yaml    | 42 +++++++++++++++++++
- 1 file changed, 42 insertions(+)
+Change since v3:
+  - use normal conditional statements to improve legiblity in [v3,3/9]
+  - remove mtk_i2s_hd_en_event as there's trace in the core
+  - impove mt8192_i2s_enum and mt8192_adda_enum
+
+Change since v2:
+  - split the dai driver files as a separate patch
+  - fix dt-bindings to GPL-2.0-only License
+  - remove unnecessary preperty descriptions such as 'maxItems'
+
+Change since v1:
+  - fixed some typos related to dt-bindings in [v1,3/5] and [v1,5/5]
+  - add vendor prefix to the properties, such as "mediatek,apmixedsys"
+  - add a dependency description to indicate the required header files
+
+Jiaxin Yu (9):
+  ASoC: mediatek: mt6359: add the calibration functions
+  ASoC: mediatek: mt8192: add platform driver
+  ASoC: mediatek: mt8192: support i2s in platform driver
+  ASoC: mediatek: mt8192: support adda in platform driver
+  ASoC: mediatek: mt8192: support pcm in platform driver
+  ASoC: mediatek: mt8192: support tdm in platform driver
+  dt-bindings: mediatek: mt8192: add audio afe document
+  ASoC: mediatek: mt8192: add machine driver with mt6359, rt1015 and
+    rt5682
+  dt-bindings: mediatek: mt8192: add mt8192-mt6358-rt1015-rt5682
+    document
+
+ .../bindings/sound/mt8192-afe-pcm.yaml        |  100 +
+ .../sound/mt8192-mt6359-rt1015-rt5682.yaml    |   42 +
+ sound/soc/codecs/mt6359.c                     |  110 +
+ sound/soc/codecs/mt6359.h                     |    7 +
+ sound/soc/mediatek/Kconfig                    |   23 +
+ sound/soc/mediatek/Makefile                   |    1 +
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c    |   13 +-
+ sound/soc/mediatek/common/mtk-base-afe.h      |    1 +
+ sound/soc/mediatek/mt8192/Makefile            |   16 +
+ sound/soc/mediatek/mt8192/mt8192-afe-clk.c    |  669 ++++
+ sound/soc/mediatek/mt8192/mt8192-afe-clk.h    |  244 ++
+ sound/soc/mediatek/mt8192/mt8192-afe-common.h |  170 +
+ .../soc/mediatek/mt8192/mt8192-afe-control.c  |  163 +
+ sound/soc/mediatek/mt8192/mt8192-afe-gpio.c   |  306 ++
+ sound/soc/mediatek/mt8192/mt8192-afe-gpio.h   |   19 +
+ sound/soc/mediatek/mt8192/mt8192-afe-pcm.c    | 2389 +++++++++++++
+ sound/soc/mediatek/mt8192/mt8192-dai-adda.c   | 1471 ++++++++
+ sound/soc/mediatek/mt8192/mt8192-dai-i2s.c    | 2110 +++++++++++
+ sound/soc/mediatek/mt8192/mt8192-dai-pcm.c    |  409 +++
+ sound/soc/mediatek/mt8192/mt8192-dai-tdm.c    |  778 ++++
+ .../mediatek/mt8192/mt8192-interconnection.h  |   65 +
+ .../mt8192/mt8192-mt6359-rt1015-rt5682.c      | 1058 ++++++
+ sound/soc/mediatek/mt8192/mt8192-reg.h        | 3131 +++++++++++++++++
+ 23 files changed, 13291 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
  create mode 100644 Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
+ create mode 100644 sound/soc/mediatek/mt8192/Makefile
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-afe-control.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-afe-gpio.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-afe-gpio.h
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-dai-i2s.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-dai-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-dai-tdm.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-mt6359-rt1015-rt5682.c
+ create mode 100644 sound/soc/mediatek/mt8192/mt8192-reg.h
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-new file mode 100644
-index 0000000000000..342232a61cfb5
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-@@ -0,0 +1,42 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mt8192-mt6359-rt1015-rt5682.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek MT8192 with MT6359, RT1015 and RT5682 ASoC sound card driver
-+
-+maintainers:
-+   - Jiaxin Yu <jiaxin.yu@mediatek.com>
-+   - Shane Chien <shane.chien@mediatek.com>
-+
-+description:
-+  This binding describes the MT8192 sound card.
-+
-+properties:
-+  compatible:
-+      const: mediatek,mt8192_mt6359_rt1015_rt5682
-+
-+  mediatek,platform:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of MT8192 ASoC platform.
-+
-+additionalProperties: false
-+
-+required:
-+  - compatible
-+  - mediatek,platform
-+
-+examples:
-+  - |
-+
-+    sound: mt8192-sound {
-+        compatible = "mediatek,mt8192-mt6359-rt1015-rt5682";
-+        mediatek,platform = <&afe>;
-+        pinctrl-names = "aud_clk_mosi_off",
-+                        "aud_clk_mosi_on";
-+        pinctrl-0 = <&aud_clk_mosi_off>;
-+        pinctrl-1 = <&aud_clk_mosi_on>;
-+    };
-+
-+...
 -- 
 2.18.0
 _______________________________________________
