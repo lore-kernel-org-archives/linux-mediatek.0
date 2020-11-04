@@ -2,58 +2,66 @@ Return-Path: <SRS0=xu2G=EK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F01BC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 10:45:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F5F0C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 12:38:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 80D1A20786
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 10:45:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 334C2221F8
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 12:38:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kYn/OOm8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80D1A20786
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2e8SbKeR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 334C2221F8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+lepUztu2pkYXWTR0/GTqKi/HlEsaBHJYFnBSUtzomY=; b=kYn/OOm8m6VEo4abWixuqZZBN
-	QfSvaMVwVj6Sx/eLEkDnTVdSiXjuZpw1/UkG8/QB3r3Rbg89tPOrjIecAQQ+XQ8zkR1WSXM4mWZRS
-	SIqmTV48y28XHI4dSLhlEhb7L3R/DxRAlHpmYe7oBTeyk/oENzrg333YNT7L2ZG9xVY6L1wMU9lq8
-	RAylPSKkMUbyzY4UbJh326pHaO204XiU4Tu3UTkS6zAubtkEgCHAzZQgU2TFfAGLGKh8s9XXnbYzH
-	wVM4w/ifE+cmGY8aBo6XYngrzKeQK5uPu7fKZkos0glFnj7i+RxLE/QDBpYHEyGfMyNCBojG5TOON
-	PUK9jntjA==;
+	 bh=yEeZu7f3NiAuUIQswqJgdENnjVI+ZOI9C5Dvp3cUNXA=; b=2e8SbKeRsuAiyHkUaLTusSJYJ
+	tr+KqcybmEWn1twvb57WTEqN5tZBF3H6kLF6HO2n5HYby0dcwlJNf7I1X+5Ib1+wrxbDu3KwglEYz
+	TRk2MGrA6i8dWxs8N+gJ0AWerNwDQQ+OPondNIBT/l2N0/Qapv85w70oaNQowA2nsKgGydjaXUTeS
+	WA70GSZHiwQOEHhl6eQ2qs9RdtoFlJ2s60Ici/mum8qWpVmbs5GASHXkTAHuHzGcX6WOjGA9/LKTK
+	H47A4NoNzzyQBGuvcCnojff0u8jsVMmOpuFBHCK8EddK8XU6Exxl3LmaRVdHBm8ffF7XZkVWOd/ej
+	5UONTCZJQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaGHk-0005tQ-3c; Wed, 04 Nov 2020 10:45:00 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kaI3h-0001ci-8y; Wed, 04 Nov 2020 12:38:37 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaGGe-0005Mn-9f; Wed, 04 Nov 2020 10:43:55 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 923391F45919
-Subject: Re: [PATCH 0/4] soc: mediatek: Prepare MMSYS for DDP routing using
- tables
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-References: <20201006193320.405529-1-enric.balletbo@collabora.com>
-Message-ID: <e8f42689-4c5f-b5ab-8b4c-ac6b8eafc1d3@collabora.com>
-Date: Wed, 4 Nov 2020 11:43:46 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kaI3Q-0001St-UX; Wed, 04 Nov 2020 12:38:23 +0000
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CR5m15fKjzhgl3;
+ Wed,  4 Nov 2020 20:38:09 +0800 (CST)
+Received: from huawei.com (10.175.127.227) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Wed, 4 Nov 2020
+ 20:38:06 +0800
+From: Yu Kuai <yukuai3@huawei.com>
+To: <rick.chang@mediatek.com>, <bin.liu@mediatek.com>, <mchehab@kernel.org>,
+ <matthias.bgg@gmail.com>, <tiffany.lin@mediatek.com>,
+ <andrew-ct.chen@mediatek.com>, <xia.jiang@mediatek.com>,
+ <hverkuil-cisco@xs4all.nl>, <tfiga@chromium.org>,
+ <minghsiu.tsai@mediatek.com>, <jcliang@chromium.org>
+Subject: [patch V3 5/6] media: mtk-vcodec: add missing put_device() call in
+ mtk_vcodec_init_enc_pm()
+Date: Wed, 4 Nov 2020 20:41:39 +0800
+Message-ID: <20201104124140.3443309-6-yukuai3@huawei.com>
+X-Mailer: git-send-email 2.25.4
+In-Reply-To: <20201104124140.3443309-1-yukuai3@huawei.com>
+References: <20201104124140.3443309-1-yukuai3@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20201006193320.405529-1-enric.balletbo@collabora.com>
-Content-Language: en-US
+X-Originating-IP: [10.175.127.227]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_054352_592498_DD4D5856 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20201104_073821_295866_7A6BE920 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,61 +73,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, drinkcat@chromium.org,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>,
- linux-mediatek@lists.infradead.org, yongqiang.niu@mediatek.com,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: yi.zhang@huawei.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, yukuai3@huawei.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+if of_find_device_by_node() succeed, mtk_vcodec_init_enc_pm() doesn't have
+a corresponding put_device(). Thus add jump target to fix the exception
+handling for this function implementation.
 
-On 6/10/20 21:33, Enric Balletbo i Serra wrote:
-> Dear all,
-> 
-> The following series are intended to prepare the mtk-mmsys driver to
-> allow different DDP (Data Display Path) routing tables per SoC. Note
-> that the series has been tested only on MT8173 platform and could break
-> the display on MT2701 and MT2712 based devices. I kindly ask for someone
-> having these devices to provide a tested routing table (unfortunately I
-> didn't have enough documentation to figure out this myself).
-> 
-> For the other devices (MT8183, MT6779 and MT6797) DRM support is not in
-> mainline yet so nothing will break.
-> 
-> Thanks,
->   Enric
-> 
-> 
-> CK Hu (2):
->   soc: mediatek: mmsys: Create struct mtk_mmsys to store context data
->   soc: mediatek: mmsys: Use an array for setting the routing registers
-> 
-> Enric Balletbo i Serra (1):
->   soc: mediatek: mmsys: Use devm_platform_ioremap_resource()
-> 
-> Yongqiang Niu (1):
->   soc / drm: mediatek: Move DDP component defines into mtk-mmsys.h
-> 
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  34 +-
->  drivers/soc/mediatek/mtk-mmsys.c            | 429 +++++++++++---------
->  include/linux/soc/mediatek/mtk-mmsys.h      |  33 ++
->  3 files changed, 263 insertions(+), 233 deletions(-)
-> 
+Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
+Signed-off-by: Yu Kuai <yukuai3@huawei.com>
+---
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 26 ++++++++++++++-----
+ 1 file changed, 19 insertions(+), 7 deletions(-)
 
-Although the patches 3 and 4 are controversial, and I'll work on it, I am
-wondering if 1 and 2 are ready to be picked, as they are independent, so I can
-send next version without these two patches.
-
-Thanks,
-  Enric
-
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+index ee22902aaa71..1a047c25679f 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+@@ -47,14 +47,16 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 	node = of_parse_phandle(dev->of_node, "mediatek,larb", 1);
+ 	if (!node) {
+ 		mtk_v4l2_err("no mediatek,larb found");
+-		return -ENODEV;
++		ret = -ENODEV;
++		goto put_larbvenc;
+ 	}
+ 
+ 	pdev = of_find_device_by_node(node);
+ 	of_node_put(node);
+ 	if (!pdev) {
+ 		mtk_v4l2_err("no mediatek,larb device found");
+-		return -ENODEV;
++		ret = -ENODEV;
++		goto put_larbvenc;
+ 	}
+ 
+ 	pm->larbvenclt = &pdev->dev;
+@@ -67,11 +69,14 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 		enc_clk->clk_info = devm_kcalloc(&pdev->dev,
+ 			enc_clk->clk_num, sizeof(*clk_info),
+ 			GFP_KERNEL);
+-		if (!enc_clk->clk_info)
+-			return -ENOMEM;
++		if (!enc_clk->clk_info) {
++			ret = -ENOMEM;
++			goto put_larbvenclt;
++		}
+ 	} else {
+ 		mtk_v4l2_err("Failed to get venc clock count");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto put_larbvenclt;
+ 	}
+ 
+ 	for (i = 0; i < enc_clk->clk_num; i++) {
+@@ -80,17 +85,24 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 			"clock-names", i, &clk_info->clk_name);
+ 		if (ret) {
+ 			mtk_v4l2_err("venc failed to get clk name %d", i);
+-			return ret;
++			goto put_larbvenclt;
+ 		}
+ 		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
+ 			clk_info->clk_name);
+ 		if (IS_ERR(clk_info->vcodec_clk)) {
+ 			mtk_v4l2_err("venc devm_clk_get (%d)%s fail", i,
+ 				clk_info->clk_name);
+-			return PTR_ERR(clk_info->vcodec_clk);
++			ret = PTR_ERR(clk_info->vcodec_clk);
++			goto put_larbvenclt;
+ 		}
+ 	}
+ 
++	return 0;
++
++put_larbvenclt:
++	put_device(pm->larbvenclt);
++put_larbvenc:
++	put_device(pm->larbvenc);
+ 	return ret;
+ }
+ 
+-- 
+2.25.4
 
 
 _______________________________________________
