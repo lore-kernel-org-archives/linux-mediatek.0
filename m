@@ -2,94 +2,79 @@ Return-Path: <SRS0=xu2G=EK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AF3B2C5517A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 16:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F03AC2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 18:57:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 252DB206DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 16:49:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E07312087D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 18:57:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yyKYmO0l";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="Gsge5Zyc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 252DB206DB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kSNF5PXq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E07312087D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
-	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nqe/Fb5g4YIt9fEGr3HgkR4fu+6KVEVrGGIxS1laylI=; b=yyKYmO0l6JjO/J+6azrq+L65F
-	1CHTHGPqk+rulwX+jKMp6zhz7KdfJWztTcw8Brst9PEG1LlSiNK9fui5q3jMVZiuuTtXMT/4b9p9S
-	SJzQOUAdUO4NMcQDZakiL2rdHT4m8T+lTKQ5o+dd1L9tUxtkJfbK4KWMADEHDpJGq4PaxUpsRKLmU
-	6GyAotcew/KXWeuDKpf2vV8ELja2aiHEjuTlR0Y5rXCk65RtoHayUjyGBN3AzX/AK2dbpiB0x/CWk
-	I+uJSjgPf8s0IL9Ykd+wAdwSH3MIVxQeTY1D0vugpicAAxz9Qh+K2I9bZ4v48AF6KXZeR2O/IWkru
-	vHHIf6IBg==;
+	 bh=DZfyFsOJCCqCoBCM9zu63LK1zy2LZt6r4G/Tp61Ybl0=; b=kSNF5PXqTa5o7jpdw/8zILkd6
+	o677Z0WV4HIfm4cRhI1lSnEiOCAk57hlgr3G57xRqXCAz3o+R8hlGDnlMKtY10KHgvVzv+YZ/A6s4
+	NpVYzrWt8kPlerK0OyNgxrwx2wb6XKyG3Oqgq/ukIt4FbB7w1XuEO+mom2vKDWRAvFaIwiUtEtnmi
+	mqGVeIsii3ta8SOXG1KFHRv63TwSXoS8OnUWcVnQRY3bVsgSwOze6Yy+M1S2+hE8fmWP3Vq7Qbv3h
+	J4FqTSC5kcDZpyIpHHvpdYqxORBJRxar3Nep6UxA6maxj78R59aZ7PIpqtXn+y05k3cDEwnwXHlx8
+	1HsYrgpdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaLym-0007t2-8L; Wed, 04 Nov 2020 16:49:48 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1kaNxp-0002No-TO; Wed, 04 Nov 2020 18:56:57 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaLyj-0007r5-LU
- for linux-mediatek@lists.infradead.org; Wed, 04 Nov 2020 16:49:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1604508572;
- bh=itzpSSQZMzHTOjFQwaEjOIn3NoQnKY3T93SB2E0JxlU=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=Gsge5Zyc+RmE8Sl9apnpDqbBJ8G8EAQ/AP19g1QVh5rXrd+ZejDwLdDUnxKeIAWr1
- IOACslAO3KuY9TuywV5nYTeOmXvP2Z5YJNyhDqHKu/q1jSSiviPw6GSaZCV9uakHG9
- VhZTPhfyNdY0FrgMQ+DAI4UVtZIPc4KzxShuNETw=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [185.75.74.195] ([185.75.74.195]) by web-mail.gmx.net
- (3c-app-gmx-bs02.server.lan [172.19.170.51]) (via HTTP); Wed, 4 Nov 2020
- 17:49:31 +0100
+ id 1kaNxn-0002MZ-U2; Wed, 04 Nov 2020 18:56:56 +0000
+Received: by mail-ot1-f68.google.com with SMTP id k3so8430105otp.12;
+ Wed, 04 Nov 2020 10:56:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=VFWuzwJSbzZgP3QJ9+E0rWgVzccQnC1YvFD5b/UokjA=;
+ b=a3X3y27IhsTo6iP7duTivVocui7dL+DSFpis7rK8TVcLpjhCOZhrwAEbO0lVWXpfaL
+ wx+je9vwrv399Jk64fKQ+L6PNIB+R8FgHQqQKcxC2L4HeiwMuxTNmXPcNJccEpomPmDG
+ Z65eYhwlpJ/wEeXr9Mc+rcO4FAFsA1oZ7ajDZMarhfJ8yR4CRZ5WflzVcScz5gu2Ac9V
+ WZ0Be1St+4ctwt0i9O0yVJlXPPM5xPqhQvqPjNOeDOSd0zIxjAxXbyMsQVAzZolYUXK8
+ /RCPyQnz2/1Ji10z4lyn9unLD2K3qgzG1bnurZtOdceuv3mnex8dncmDioWm/8gzTLrZ
+ OV4w==
+X-Gm-Message-State: AOAM532qT39RVw7lSuCgF9T3UpNFaltqmh3Zsv2lgnx1AVH09W+WJ1j1
+ IFoG2RlTpxRqIWxbHT8NcQ==
+X-Google-Smtp-Source: ABdhPJws0729OuS+J73/HqFJI9wECuK1AqYDP1g32egUbxndlt30IEgUrdNjDMDR5RzcZc2UJAjHSQ==
+X-Received: by 2002:a05:6830:2ef:: with SMTP id
+ r15mr5683837ote.261.1604516212970; 
+ Wed, 04 Nov 2020 10:56:52 -0800 (PST)
+Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id y22sm735450ooa.2.2020.11.04.10.56.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Nov 2020 10:56:52 -0800 (PST)
+Received: (nullmailer pid 3947080 invoked by uid 1000);
+ Wed, 04 Nov 2020 18:56:51 -0000
+Date: Wed, 4 Nov 2020 12:56:51 -0600
+From: Rob Herring <robh@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH v4 7/9] dt-bindings: mediatek: mt8192: add audio afe
+ document
+Message-ID: <20201104185651.GB3946406@bogus>
+References: <1604390378-23993-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1604390378-23993-8-git-send-email-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-1d7f8900-10db-40c0-a0aa-47bb99ed84cd-1604508571909@3c-app-gmx-bs02>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Thomas Gleixner <tglx@linutronix.de>
-Subject: Aw: Re:  Re: [PATCH] pci: mediatek: fix warning in msi.h
-Date: Wed, 4 Nov 2020 17:49:31 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <87o8ke7njb.fsf@nanos.tec.linutronix.de>
-References: <20201031140330.83768-1-linux@fw-web.de>
- <878sbm9icl.fsf@nanos.tec.linutronix.de>
- <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
- <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
- <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
- <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
- <df5565a2f1e821041c7c531ad52a3344@kernel.org>
- <87h7q791j8.fsf@nanos.tec.linutronix.de>
- <877dr38kt8.fsf@nanos.tec.linutronix.de>
- <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
- <87o8ke7njb.fsf@nanos.tec.linutronix.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:ICfh3WtogdrpOnkT/gXuEFWIaM4DIXYnB6COgVA3DMs2B7BYKR0IimJCA1wNt80BnphrN
- b6RXx+FWw4J8CmDkM5SfE7XkSYj865O3iXpD8zOrKFKQQqApmFLgevMu7mlJT4rnIK9z9x2oZa2z
- 9DigQch4XDeQoGUPG2OqhId4i0Jnzsfy6wHJoNc+0Mforeye4AWbl52RfriMaCuKpmXFmI0VoUfd
- f2khjJaTHIqxyagSS2C02FdjMC/t0s1y+KM6EZ2dNDyPMNbs0472YDr+il/FD/BM742DBSYF69XY
- po=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:o7DDce+FsRY=:fDyjahd9aVh+82I0GoJ23v
- JW5+QemSWiUMZJTMvMGE5axjm1sY0mpUNeNy2Ls20p1D41mAOaBH32Kbeb/my7WAj2pSslnKC
- WOaCrq2NBU0ha6lQDJY1cHo4SyOoRYMGeUabvOZSpx9+al3OjhsWw6Mris1ZSZ8lbJuKIIUMK
- KG+0TNWpKWfgLbdcVX3mMWfnQhujuKATPJKp2yAnLAOe/faUjQ0/sueVoNNYWPrapgyrKjS3V
- BjN8/WNf5716FWqhQQoSRvlq/CUNHcGH0GPAhs0dtpPYT5onSAZavK1GUem8V7jFSy02T33d9
- pcZuybC/8DRT5Uerg5CtZzO7nZovo8ywB/p6Qf/CDlogLdijHzmxkwW3RbJITA6hM52QoOd2G
- j8XSBWqQkzONvW3Rwo3zsV0dsj1HyfIqWu/k0B6FjYiI+Qbr88xrQcTmJE41nV61ke10wVeIh
- PY62GVe8ezVCfwXxmGUr7F/J+KPh9dHc7CEuuyW46jGj02eAJsWEMknFkvZkP4uOY3ZpIlDwc
- JuJjpAuNiPBJo+3S0xSWNO8TGdezBXupyMNf3W//PYGIQtcB+jejYmoHpPIz20AQOiylrxCcH
- qTa/iS9HJTi/Q=
+Content-Disposition: inline
+In-Reply-To: <1604390378-23993-8-git-send-email-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_114945_918257_8DF34539 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20201104_135655_979333_AD417178 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,43 +86,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Marc Zyngier <maz@kernel.org>,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ kuninori.morimoto.gx@renesas.com, tzungbi@google.com,
+ Bicycle.Tsai@mediatek.com, tiwai@suse.com, robh+dt@kernel.org,
+ shane.chien@mediatek.com, broonie@kernel.org,
+ linux-mediatek@lists.infradead.org, Trevor.Wu@mediatek.com,
+ p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 03 Nov 2020 15:59:36 +0800, Jiaxin Yu wrote:
+> This patch adds mt8192 audio afe document.
+> 
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> ---
+> This patch depends on following series that has not been accepted:
+> https://patchwork.kernel.org/cover/11752231
+> (dt-bindings/clock/mt8192-clk.h is included in it.)
+> https://patchwork.kernel.org/patch/11755895
+> (dt-bindings/power/mt8192-power.h is included in it.)
+> https://lore.kernel.org/patchwork/patch/1321118
+> (dt-bindings/reset-controller/mt8192-resets.h is included in it.)
+> 
+>  .../bindings/sound/mt8192-afe-pcm.yaml        | 100 ++++++++++++++++++
+>  1 file changed, 100 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+> 
 
-> Gesendet: Dienstag, 03. November 2020 um 11:16 Uhr
-> Von: "Thomas Gleixner" <tglx@linutronix.de>
-> Any architecture which selects PCI_MSI_ARCH_FALLBACKS and does not have
-> irqdomain support runs into:
->
-> 	if (!d)
-> 		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
->
-> which in turn makes pci_msi_supported() return 0 and consequently makes
-> pci_enable_msi[x]() fail.
 
-i'm not that deep into this, but just my thoughts...you are the experts :)
+My bot found errors running 'make dt_binding_check' on your patch:
 
-checking for PCI_MSI_ARCH_FALLBACKS here does not help?
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml:10:4: [warning] wrong indentation: expected 2 but found 3 (indentation)
+./Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml:15:7: [warning] wrong indentation: expected 4 but found 6 (indentation)
 
-something like this:
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/sound/mt8192-afe-pcm.example.dts:19:18: fatal error: dt-bindings/clock/mt8192-clk.h: No such file or directory
+   19 |         #include <dt-bindings/clock/mt8192-clk.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.lib:342: Documentation/devicetree/bindings/sound/mt8192-afe-pcm.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1364: dt_binding_check] Error 2
 
-#ifndef PCI_MSI_ARCH_FALLBACKS
-	if (!d)
-		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
-#endif
 
-imho pci_enable_msi[x]() does not do anything if there is no msi-support (or does not get called), so maybe check the PCI_BUS_FLAGS_NO_MSI before the call (if this is inside core) or inside the enable-function (if called from outside)....
+See https://patchwork.ozlabs.org/patch/1392703
 
-or is this the issue marc talkes about (called before flag is set)?
+The base for the patch is generally the last rc1. Any dependencies
+should be noted.
 
-regards Frank
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
