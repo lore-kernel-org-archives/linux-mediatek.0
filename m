@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA674C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 12:39:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4474C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 12:39:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6EABF2224E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 12:39:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 38902221F8
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2020 12:39:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="elvD5rFJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EABF2224E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SlPi4p+8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38902221F8
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,34 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3bVpi9RTQrdS09liZgy9RkEbIaw7+H+XI0cIkRBKzGk=; b=elvD5rFJPlCW3f01Hv8jt2J2N
-	lVb7RfFD2NIJ74PTgUOqbLSlahpNvRQdk6KTbkdRg2u4s7ueUwvsajOpg37lIn13iCvTGONya2UOo
-	b4BtQeq6kP9Jn3ehza1AeB9qnfDuWIP3NjVaMoTZRBIEIRaKIHXWETthoUVmKO7etBY8BlwJ1zetm
-	1E3sz2GKA9+CL0jUPCxTMq+ILLGBrFv0zH3TMQqIg8zEzVL5aOiTCLpB+OoTtXW0zeMWyad1RVKwW
-	ogocyd6VpgxkpeK00SbwDVELx+R5UEg2v13Pl15pLqH08FqSgSGjqaPsQcxJpHxD/hEnh46ZR+L49
-	ymYWfRk/g==;
+	 bh=lH004DJ1nInS0TKWgDWUolHsvId/bPIQ/gupkJxSlLY=; b=SlPi4p+82BPAZyZIeooTfnpJS
+	5+BhqJKDnVIf4Gi6f1XqGhXcLIQVhIVG6ZBr0c+R2QaSVTIHvn9Tt5Sm6uRQWZGyGP8B3/91N0Z06
+	ZA3+8Bp1RMCAf+lZrA9sab7A4XvRu7F7+GQI0DkROLZSc72sR0/n7gAO1y+/D8uPoHPQw0XGLGWzA
+	hWli2yKhOMdvC+itLyWEs1/F8/9zr7qyaiJcXDudUAEN0FaPt4pd5KX+0q/Iap8vI4DUeOs/xQqQo
+	R3MfgVb55B3gAWwVKTqa8m3p4MnEnHtUVLXxLinrYl9MgO66B71qd2prEWbiEvE/6Jk9J87t1hKPJ
+	PYra9A4DQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaI3v-0001k7-91; Wed, 04 Nov 2020 12:38:51 +0000
+	id 1kaI40-0001n5-7M; Wed, 04 Nov 2020 12:38:56 +0000
 Received: from szxga05-in.huawei.com ([45.249.212.191])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaI3S-0001Sv-Uo; Wed, 04 Nov 2020 12:38:25 +0000
+ id 1kaI3W-0001Sw-8i; Wed, 04 Nov 2020 12:38:27 +0000
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CR5m14bmlzhgkq;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CR5m15HtTzhgkx;
  Wed,  4 Nov 2020 20:38:09 +0800 (CST)
 Received: from huawei.com (10.175.127.227) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Wed, 4 Nov 2020
- 20:38:04 +0800
+ 20:38:05 +0800
 From: Yu Kuai <yukuai3@huawei.com>
 To: <rick.chang@mediatek.com>, <bin.liu@mediatek.com>, <mchehab@kernel.org>,
  <matthias.bgg@gmail.com>, <tiffany.lin@mediatek.com>,
  <andrew-ct.chen@mediatek.com>, <xia.jiang@mediatek.com>,
  <hverkuil-cisco@xs4all.nl>, <tfiga@chromium.org>,
  <minghsiu.tsai@mediatek.com>, <jcliang@chromium.org>
-Subject: [patch V3 3/6] media: mtk-vcodec: add missing put_device() call in
- mtk_vcodec_init_dec_pm()
-Date: Wed, 4 Nov 2020 20:41:37 +0800
-Message-ID: <20201104124140.3443309-4-yukuai3@huawei.com>
+Subject: [patch V3 4/6] media: mtk-vcodec: add missing put_device() call in
+ mtk_vcodec_release_dec_pm()
+Date: Wed, 4 Nov 2020 20:41:38 +0800
+Message-ID: <20201104124140.3443309-5-yukuai3@huawei.com>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20201104124140.3443309-1-yukuai3@huawei.com>
 References: <20201104124140.3443309-1-yukuai3@huawei.com>
@@ -60,8 +60,9 @@ MIME-Version: 1.0
 X-Originating-IP: [10.175.127.227]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_073823_345653_DEA9ECB5 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20201104_073826_596830_EABF846D 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,64 +82,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-if of_find_device_by_node() succeed, mtk_vcodec_init_dec_pm() doesn't have
-a corresponding put_device(). Thus add jump target to fix the exception
-handling for this function implementation.
+mtk_vcodec_release_dec_pm() will be called in two places:
+
+a. mtk_vcodec_init_dec_pm() succeed while mtk_vcodec_probe() return error.
+b. mtk_vcodec_dec_remove().
+
+In both cases put_device() call is needed, since of_find_device_by_node()
+was called in mtk_vcodec_init_dec_pm() previously.
+
+Thus add put_devices() call in mtk_vcodec_release_dec_pm()
 
 Fixes: 590577a4e525 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Decoder Driver")
 Signed-off-by: Yu Kuai <yukuai3@huawei.com>
 ---
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c    | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-index 36dfe3fc056a..f6a6b42865fb 100644
+index f6a6b42865fb..ddee7046ce42 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-@@ -47,11 +47,14 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
- 		dec_clk->clk_info = devm_kcalloc(&pdev->dev,
- 			dec_clk->clk_num, sizeof(*clk_info),
- 			GFP_KERNEL);
--		if (!dec_clk->clk_info)
--			return -ENOMEM;
-+		if (!dec_clk->clk_info) {
-+			ret = -ENOMEM;
-+			goto put_device;
-+		}
- 	} else {
- 		mtk_v4l2_err("Failed to get vdec clock count");
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto put_device;
- 	}
- 
- 	for (i = 0; i < dec_clk->clk_num; i++) {
-@@ -60,19 +63,22 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
- 			"clock-names", i, &clk_info->clk_name);
- 		if (ret) {
- 			mtk_v4l2_err("Failed to get clock name id = %d", i);
--			return ret;
-+			goto put_device;
- 		}
- 		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
- 			clk_info->clk_name);
- 		if (IS_ERR(clk_info->vcodec_clk)) {
- 			mtk_v4l2_err("devm_clk_get (%d)%s fail", i,
- 				clk_info->clk_name);
--			return PTR_ERR(clk_info->vcodec_clk);
-+			ret = PTR_ERR(clk_info->vcodec_clk);
-+			goto put_device;
- 		}
- 	}
- 
- 	pm_runtime_enable(&pdev->dev);
--
-+	return 0;
-+put_device:
-+	put_device(pm->larbvdec);
- 	return ret;
+@@ -85,6 +85,7 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+ void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
+ {
+ 	pm_runtime_disable(dev->pm.dev);
++	put_device(dev->pm.larbvdec);
  }
  
+ void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
 -- 
 2.25.4
 
