@@ -2,23 +2,22 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 563C3C00A89
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:55:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23220C00A89
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 05:02:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C28AF2083B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:55:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7849C20936
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 05:02:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1evcr9OB";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="QybcdYkG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C28AF2083B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F+JxC6Yc";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Y+ZFHZCz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7849C20936
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,65 +25,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KX74wFqRsMrCMSybnnyagaAUUDDX5KPOXxaObqsbnhU=; b=1evcr9OBRyXihdQxyTJbBNNEz
-	9yZ9Sbgmo+t0vRRUdikCHSMJsQuucRJ63vs/wkQZiMj3nBT7KWe95W5tLxAMH43BzQchcobP4k+3G
-	scdtZ+x1dtL6WBnzP/7aOEO7lVZw2fl6+5Qnm78f8dNx/hMzQLuo2jfIAPpb8Q0Xg4E6PsqejIpgE
-	DMVTgS52DA4zKEVPUmmJTClyEXS1lLK+l25cQggE+QiCmTHU/QuWixnBaiXOmvak7UO0oj+0TWvaD
-	JyCz2KYVUv1/ighjyD81hnUUQlu0WQChOKCWYgFTVuWXNFnPTkTgqQyFQp+EDdDlYJUybSYID8lPe
-	9pcVU4MEA==;
+	 bh=CYGZ+ZTxg+4GXtjmo7qUbmfJd5GBJwDDZnyh/DzcyX4=; b=F+JxC6YcFPGnrXPt/D2/VFNOQ
+	UOX4s1EkacI70AFn6z4/46SCywYBGaWLsRIj/0Dk6+VOE7+8ALlFwuYjee45E0+6la/74m6mGbGii
+	kUF0qzsL8FFK9+ljYmO30Y+z0md9N8snYVqioNipKPLMbommak9irgccc7IwTknJaiF45VFOIcRv/
+	bsGYDoU67E155wKrmyHMNfuJVL1+aHJ4YMFzct6eDiZIIvNnE582LsHDJ2dKkUanDH3P8K6FDMxth
+	/OGHG9x8CeHUS2y3gnEFKeBnNpUup2zSQbhGfUQEF6fLVMt/Ybc6fpSxG+sbtKGyQ3TWL3ozS29ga
+	jOgO2v07A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaXJK-0001n4-By; Thu, 05 Nov 2020 04:55:46 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1kaXQ0-0003Yc-Aa; Thu, 05 Nov 2020 05:02:40 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaXJI-0001lQ-1w
- for linux-mediatek@lists.infradead.org; Thu, 05 Nov 2020 04:55:44 +0000
-Received: by mail-ot1-x343.google.com with SMTP id n11so300889ota.2
- for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2020 20:55:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=i6MGr/Kg3VZyORAXNQIPSqeLnV8zx9yqFNyMUoSyDIg=;
- b=QybcdYkGQifdwCUvS6mzcHt5x/ze6Uk+AU8hfeX5CCttAAjMJ9JixZwigksaFEM1U8
- v/okucIqFFVU7VHHDOMk+/vW3ceFa/smhEYZKI3wHU4eN5TPV25FIT14cJgS7Zp7WLmJ
- gcjWURKjGLYBgmYycdwu1V64hbzyatd/3umDLpv/6+FshkDeLD1qJ35IK7KNbXnaMmzR
- SejanBqzPKxCy15mDtB2/KqyQTFGCQD0m/3N29NgrgYBsQyTWF4c0yWAvFBLe4RG+nYD
- 3jMfs8d6Njg8jo76DutCptIjzK9ankBp9i7CdLZpoN5UwGUOg/Q4j2mBtdUq8SavqrwZ
- fRFw==
+ id 1kaW6r-000145-AT; Thu, 05 Nov 2020 03:38:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=RoHmyvawdfHUv1CllgHUwLfDLAfJEk1MgJAjHKAD5jA=; b=Y+ZFHZCzYG8m6oa18Sh5Cy5Acc
+ ap8C30R+5nRbW0eA79bdpWFGB58RSN1YkRoEI3hzvKvMBG48JVpbWWoAK0Olyqs9EZeegKBkUnsZJ
+ s52WdIDz7bXjdWMKSHOk6U6owPNZpb2ejhvPmrlxGlt9SKEFlgwW6hiGXuUje9A1ksJcsw7SZuGSL
+ IZ5foNo5nQSLQG60/Gs6oK5sEY1ojLtpjboCUYyK+24ccNG/4pP0g3GC7awl4ietp+NUCeCq63C/7
+ 0yfDN2tKRrd9sBoTUrbV7PUd2mZmhvU6Kf/jD58nCcAYrqiX+ArJrOZK4NzxXoyFWgYJn7mn+D65U
+ pxIjP7Iw==;
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kaQt3-00055x-B4; Wed, 04 Nov 2020 22:04:15 +0000
+Received: by mail-oi1-f194.google.com with SMTP id j7so23814906oie.12;
+ Wed, 04 Nov 2020 14:04:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=i6MGr/Kg3VZyORAXNQIPSqeLnV8zx9yqFNyMUoSyDIg=;
- b=F88vbfhcxlli5bSWDmKNGkjWFdsWlNxnH1dwgs1IdyFdrF9ARJ9lQwqVhj6tEDBE2I
- hmH5UelZfC5J8WwDGoXm+gunO5VO5BHdfYUU97hMj6r4BWKMCaQggXsl79Mvn3Ph+LnA
- 8sU9YnB6hKrHT0MMD3DB0e7Di0PJQrss+2pWpizhUFttxe3nG4WhQxdLTbPMK+OZ5Ibl
- hysvpdocKxpopXkIWElcpo47r3NhWQN2yvd2UzLKbs6DkqdNNps2Hr2b4vhAbqkRvlxy
- Zs7bBCxSfMh5pAkVZxl+gPapDNAARZnHYrQ+pbh92C3sGAv/mgFL3lsDtho/Kpz9I33i
- 1EyQ==
-X-Gm-Message-State: AOAM533L+3HwiwymoagkgcGrjjnjJCG7ea8eimgvTHKO50lblgxK+EES
- Li4eWzg/rMTGu9C3Icohve96hA==
-X-Google-Smtp-Source: ABdhPJx8wemuxHJ5PcafcR+3WSW0gpy0QWAV+NsA3hxjXU/Wnf4rhD2zTdNnzBM3zh6Mhoi0OJRe7g==
-X-Received: by 2002:a9d:7d87:: with SMTP id j7mr510237otn.356.1604552140570;
- Wed, 04 Nov 2020 20:55:40 -0800 (PST)
-Received: from builder.lan (104-57-184-186.lightspeed.austtx.sbcglobal.net.
- [104.57.184.186])
- by smtp.gmail.com with ESMTPSA id l23sm95998otk.68.2020.11.04.20.55.39
+ bh=RoHmyvawdfHUv1CllgHUwLfDLAfJEk1MgJAjHKAD5jA=;
+ b=g7/VSgvHw7AUits26JhPUW03pI8I648B93CWsp6oWXF8RZ1rRYeEi/1vT7P8ykSkHj
+ xtxdF9ND/Eb2vm6zvUfcWaXrEe/mXoMH3awu/uphXEDPAhyrmTsUZ/Qwt9np6K7R+x5S
+ h0dpfrKp9DIEVK0uSIU8lCwLpGW+x255NqityOH/jhW8wK33evihCUEYaAaryqcBtAZ8
+ v4rkLmfIk5lpc1nACIbpQrOm97XCCvHygHp3fyVrPNTlzOc1t55A9X4besnMLnRjvUb/
+ 68oAmyuX8o9TnCJzcmy+fii2IKZAVF1bn7LtMONifOJZxi0inbB1GTHdzCTOkgSYUt9s
+ QMPA==
+X-Gm-Message-State: AOAM532Lo1cZL37CK0a7EeZdFIRh08rJUBtphu2IRTq2vQ/7Fo2sSSGK
+ mEw7wRfyIquqC/Ysre8G+Q==
+X-Google-Smtp-Source: ABdhPJzGaxwmDh+Yc5KevScWJsbFrWd7wFC9hqALT0pF0pIQ2haITx+cA93FaOeVFC4wgMEYwWoNoA==
+X-Received: by 2002:aca:2405:: with SMTP id n5mr4037469oic.9.1604527449714;
+ Wed, 04 Nov 2020 14:04:09 -0800 (PST)
+Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id m10sm831660oon.27.2020.11.04.14.04.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 20:55:39 -0800 (PST)
-Date: Wed, 4 Nov 2020 22:55:38 -0600
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-Subject: Re: [PATCH] remoteproc/mtk_scp: surround DT device IDs with CONFIG_OF
-Message-ID: <20201105045538.GA29931@builder.lan>
-References: <20201102074007.299222-1-acourbot@chromium.org>
- <20201104190547.GD2893396@xps15>
+ Wed, 04 Nov 2020 14:04:09 -0800 (PST)
+Received: (nullmailer pid 8016 invoked by uid 1000);
+ Wed, 04 Nov 2020 22:04:08 -0000
+Date: Wed, 4 Nov 2020 16:04:08 -0600
+From: Rob Herring <robh@kernel.org>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v4 14/16] dt-bindings: power: Add MT8192 power domains
+Message-ID: <20201104220408.GA7986@bogus>
+References: <20201030113622.201188-1-enric.balletbo@collabora.com>
+ <20201030113622.201188-15-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201104190547.GD2893396@xps15>
+In-Reply-To: <20201030113622.201188-15-enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_235544_166357_9D346C10 
-X-CRM114-Status: GOOD (  22.31  )
+X-CRM114-CacheID: sfid-20201104_220413_699506_E02C70B6 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,60 +98,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>, kernel test robot <lkp@intel.com>,
- Alexandre Courbot <acourbot@chromium.org>, linux-remoteproc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
+ linux-kernel@vger.kernel.org, fparent@baylibre.com,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, matthias.bgg@gmail.com,
+ Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed 04 Nov 13:05 CST 2020, Mathieu Poirier wrote:
-
-> Hi Alexander,
+On Fri, 30 Oct 2020 12:36:20 +0100, Enric Balletbo i Serra wrote:
+> From: Weiyi Lu <weiyi.lu@mediatek.com>
 > 
-> On Mon, Nov 02, 2020 at 04:40:07PM +0900, Alexandre Courbot wrote:
-> > Now that this driver can be compiled with COMPILE_TEST, we have no
-> > guarantee that CONFIG_OF will also be defined. When that happens, a
-> > warning about mtk_scp_of_match being defined but unused will be reported
-> > so make sure this variable is only defined if of_match_ptr() actually
-> > uses it.
-> > 
-> > Fixes: cbd2dca74926c0e4610c40923cc786b732c9e8ef remoteproc: scp: add COMPILE_TEST dependency
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> > ---
-> >  drivers/remoteproc/mtk_scp.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > index 577cbd5d421e..f74f22d4d1ff 100644
-> > --- a/drivers/remoteproc/mtk_scp.c
-> > +++ b/drivers/remoteproc/mtk_scp.c
-> > @@ -772,12 +772,14 @@ static const struct mtk_scp_of_data mt8192_of_data = {
-> >  	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
-> >  };
-> >  
-> > +#if defined(CONFIG_OF)
-> >  static const struct of_device_id mtk_scp_of_match[] = {
-> >  	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
-> >  	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
-> >  	{},
-> >  };
-> >  MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
-> > +#endif
+> Add power domains dt-bindings for MT8192.
 > 
-> I think it is better to add a "depends on OF" in the Kconfig.
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+> 
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  .../power/mediatek,power-controller.yaml      |  2 ++
+>  include/dt-bindings/power/mt8192-power.h      | 32 +++++++++++++++++++
+>  2 files changed, 34 insertions(+)
+>  create mode 100644 include/dt-bindings/power/mt8192-power.h
 > 
 
-That would reduce the efficiency of COMPILE_TEST, so I would prefer that
-we drop of_match_ptr(), which will result in the pointer always being
-populated and this being referenced - although unused when built without
-OF.
-
-Regards,
-Bjorn
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
