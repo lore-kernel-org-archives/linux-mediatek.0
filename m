@@ -2,69 +2,90 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50663C00A89
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 03:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 89560C00A89
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 03:40:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D416820A8B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 03:33:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F2B6A2072E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 03:40:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ExbtQSHo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.b="Nu6XJ2Vo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D416820A8B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.microsoft.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uzYMeyy5";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="auybq3Gn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tQblVnWx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F2B6A2072E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xy+TSf/4Q7SVXEn0cwcuOOSZaXRAZ38ANxb9U940hD0=; b=ExbtQSHohL1KLflbAbMNujaym
-	wHXActpQrhAQ7fkYm25LHuVBuoC/ahw4Wd/ObH3Zfphhk8scU52Opa9Tpsc9+OBF72XgoCuxw2xfa
-	PNLICBgd7JmaMSKPUXqY9NnwpGRuvLP3ftS1xINJOgDlqJe/9L8EsuienPXK0m7GZUFTy+qRWMgx5
-	kjXe551Bf/VlUwUNM2jEbGvSotn2QfbPzA2JNI/PL91JW98dDcMTP9j/GW6Fs1xPE1lpAfSbXYEkK
-	YF+CZp+5flf/rTPfuxXXmQd04cDR6c7ncJIQPgMpIL7z5DrQOiGmefORTumgFd+/JnvmJb3eVnsTe
-	FR2ZQotQw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=in5W5uRsiLfKtCeLHlUABNan7nLi34yUvEbbgDqQbgw=; b=uzYMeyy5W4Erk58KnO2Xec2s+W
+	AYbF5nlGNptkzwzLNZo4HCPcFaH54m0ProB4juI1qzjbodjMt6NmXyWevzco1+VTV9TE5Dg3oEeLV
+	/hvgETpQPjCidg+q43NEfWq5kDH9QYUm8X+b8gOWVNXiPvi6SO9xg+uQk2GhYemnMzr0sZFRQDyXJ
+	MFScH297URNY6l7RvWR8VdnET6ds+c/VuFRZahOWBY8/amuWS65LfDpLM+EUYYTlv/LvRok5Nff2A
+	BkDbeX3gSYpzOTk9VxcyHZXXWYl8fISAZ/m+MATzIzH1jMIcYRZtTjR4/OU/UJwrZUfns7u8WlDyz
+	NGLa8npA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaW1h-0001Vc-Oe; Thu, 05 Nov 2020 03:33:29 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaW1e-0001UH-0x; Thu, 05 Nov 2020 03:33:26 +0000
-Received: from [192.168.0.114] (unknown [49.207.198.216])
- by linux.microsoft.com (Postfix) with ESMTPSA id E10CF20B4905;
- Wed,  4 Nov 2020 19:33:20 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com E10CF20B4905
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1604547204;
- bh=Oe/MfzqV2v9zkGZtZkogWbchmVLqgIEFJ/RW772EC/c=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=Nu6XJ2VormhUSq9kLwFfSbjzHyC68StGlGoTNgXV+mwIaCsOe5JAOdRQgx3i/5hQ2
- GgPMRq4avNV/vXNXYCGRoml/CspyCPj033Yz6s3SMvg4XtehZgIKysuxvq6NFFJlri
- UA8dXYoP3hB+GLehJy4OQovzioUu3lSZFZlHbub0=
-Subject: Re: [PATCH v2 0/3] wireless: convert tasklets to use new
-To: Kalle Valo <kvalo@codeaurora.org>
-References: <20201007103309.363737-1-allen.lkml@gmail.com>
- <c3d71677-a428-f215-2ba8-4dd277a69fb6@linux.microsoft.com>
- <87blgdqdpb.fsf@codeaurora.org>
-From: Allen Pais <apais@linux.microsoft.com>
-Message-ID: <9e9219d9-fab7-404b-0f40-f5721f781a1d@linux.microsoft.com>
-Date: Thu, 5 Nov 2020 09:03:10 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+	id 1kaW8V-0002fr-6J; Thu, 05 Nov 2020 03:40:31 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kaW8R-0002bw-R5
+ for linux-mediatek@merlin.infradead.org; Thu, 05 Nov 2020 03:40:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=wUuoNNfKE+1eTR8n4GLbokBW3m4NSs3Rt+4Y39MdhxM=; b=auybq3Gn6GC/JqrEvzgivQcC3O
+ D+S7qE54QZr9M0ZruSeuXBaF2XuVALdmbfdj5BhWPqe0+FUx91Mj9AlkZZPobOXtTM6KOF9FYD5Nb
+ Omq8C4VRdVa2g7tEW461EPcVVvzBnW9Cr9fMNWxAa4KjKiQDBh7Q/AB5TN+tf+8fvWAtu5d9szTNc
+ 6dLl8Xb5Xd8hqKoLvn4gsxtXEvgkyY3esw/sl1iBieXL8AcDsRNThyCvO5wz4cGOkhHzJnIKxJjDJ
+ PeEfK9EekHx78xuLTypSDrYVQp0nSmbLm8NIJWbWFEes/jrrSALOlk4dRdNUkAv4B+WuEckmzG3Zu
+ AUDFHSKQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kaPs1-0007dV-DJ
+ for linux-mediatek@lists.infradead.org; Wed, 04 Nov 2020 20:59:09 +0000
+X-UUID: df780a7234c34a7d90bb69ccd9ed3ea6-20201104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=wUuoNNfKE+1eTR8n4GLbokBW3m4NSs3Rt+4Y39MdhxM=; 
+ b=tQblVnWx1Ht4vT4hd4tF1VTSqGQHoK3MiQZPcGbuMzscSv5BUnwHOqgvju8hsV5oSVI092r/fs4WrrlZxfD8uKZdpkl6/2dym0Bb6d/n2HaOcPR+78Qh3Qd0ToGH3VKzRZpjdkRrjOR5NlAalexsQSZPzNJl8TwbcShcBs7dJ5Y=;
+X-UUID: df780a7234c34a7d90bb69ccd9ed3ea6-20201104
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 952617824; Wed, 04 Nov 2020 12:58:49 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 Nov 2020 12:58:47 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 Nov 2020 04:58:33 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 5 Nov 2020 04:58:33 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Bjorn Helgaas <bhelgaas@google.com>
+Subject: [PATCH v3] PCI: mediatek: Configure FC and FTS for functions other
+ than 0
+Date: Thu, 5 Nov 2020 04:58:33 +0800
+Message-ID: <c529dbfc066f4bda9b87edbdbf771f207e69b84e.1604510053.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <87blgdqdpb.fsf@codeaurora.org>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_223326_145873_927952C3 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20201104_205906_142240_82F2B09D 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,32 +97,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ryder.lee@mediatek.com, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, Allen Pais <allen.lkml@gmail.com>,
- davem@davemloft.net, lorenzo.bianconi83@gmail.com,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org,
- ath11k@lists.infradead.org, nbd@nbd.name
+Cc: linux-pci@vger.kernel.org, Ryder
+ Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->>>
->>> This series converts the remaining drivers to use new
->>> tasklet_setup() API.
->>>
->>> The patches are based on wireless-drivers-next (c2568c8c9e63)
->>
->>   Is this series queue? I haven't seen any email. This is the last
->> series as part of the tasklet conversion effort.
-> 
-> They are queued in linux-wireless patchwork, see the link below. I have
-> lots of patches pending but hopefully I'll tackle most of them soon.
-> 
+PCI_FUNC(port->slot << 3)" is always 0, so previously
+mtk_pcie_startup_port() only configured FC credits and FTs for
+function 0.
 
-Thank you very much.
+Compute "func" correctly so we also configure functions other than
+0. This affects MT2701 and MT7623.
 
+Addresses-Coverity-ID: 1437218 ("Wrong operator used")
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+v2 & v3 - update commit log
+---
+ drivers/pci/controller/pcie-mediatek.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index cf4c18f0c25a..1980b01cee35 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -760,7 +760,7 @@ static struct pci_ops mtk_pcie_ops = {
+ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+ {
+ 	struct mtk_pcie *pcie = port->pcie;
+-	u32 func = PCI_FUNC(port->slot << 3);
++	u32 func = PCI_FUNC(port->slot);
+ 	u32 slot = PCI_SLOT(port->slot << 3);
+ 	u32 val;
+ 	int err;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
