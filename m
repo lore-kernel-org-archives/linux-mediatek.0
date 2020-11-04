@@ -2,91 +2,90 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23220C00A89
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 05:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C180C00A89
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 05:07:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7849C20936
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 05:02:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E71621556
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 05:07:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F+JxC6Yc";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Y+ZFHZCz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7849C20936
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NcbYNeb+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="FH46GHWx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="EsbawDsG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E71621556
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CYGZ+ZTxg+4GXtjmo7qUbmfJd5GBJwDDZnyh/DzcyX4=; b=F+JxC6YcFPGnrXPt/D2/VFNOQ
-	UOX4s1EkacI70AFn6z4/46SCywYBGaWLsRIj/0Dk6+VOE7+8ALlFwuYjee45E0+6la/74m6mGbGii
-	kUF0qzsL8FFK9+ljYmO30Y+z0md9N8snYVqioNipKPLMbommak9irgccc7IwTknJaiF45VFOIcRv/
-	bsGYDoU67E155wKrmyHMNfuJVL1+aHJ4YMFzct6eDiZIIvNnE582LsHDJ2dKkUanDH3P8K6FDMxth
-	/OGHG9x8CeHUS2y3gnEFKeBnNpUup2zSQbhGfUQEF6fLVMt/Ybc6fpSxG+sbtKGyQ3TWL3ozS29ga
-	jOgO2v07A==;
+	 bh=6sets1ujtMm134appvjVZzVexVcNUCvaPbnrngTmDBY=; b=NcbYNeb+OWiQ1D7MADu7WfV0E
+	cIrlGkaNoiUcz7Ut+7cJWQ8NNBMReCgzEcZAvTdmwNtVUL1ErWWsYhmQTSRxia/E68wisZxWwL1az
+	wIvAkMnyqiuD9yBCib7DfSHg+FoZF4foAFYfIY3tbvDKWCDvMK/GpJmHQl7hnQs12devomAPth3BQ
+	leXTFLnJss4nZdQk2ZfyQ5G1yIBjMt8VlA8b64yVFfMhstijLwRwCevUfhFatoopo0Nk2I5snyr7X
+	LdBwjNesMQgoLutfmDf7W5PX2P8nSWDExKHFaEGvrdWpJvOEJo67k6VOeT3ZKBMvMeqOnck2HtV24
+	yNpNfUWwg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaXQ0-0003Yc-Aa; Thu, 05 Nov 2020 05:02:40 +0000
+	id 1kaXUa-0005lV-Sb; Thu, 05 Nov 2020 05:07:25 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaW6r-000145-AT; Thu, 05 Nov 2020 03:38:49 +0000
+ id 1kaW4D-000145-K0; Thu, 05 Nov 2020 03:36:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=RoHmyvawdfHUv1CllgHUwLfDLAfJEk1MgJAjHKAD5jA=; b=Y+ZFHZCzYG8m6oa18Sh5Cy5Acc
- ap8C30R+5nRbW0eA79bdpWFGB58RSN1YkRoEI3hzvKvMBG48JVpbWWoAK0Olyqs9EZeegKBkUnsZJ
- s52WdIDz7bXjdWMKSHOk6U6owPNZpb2ejhvPmrlxGlt9SKEFlgwW6hiGXuUje9A1ksJcsw7SZuGSL
- IZ5foNo5nQSLQG60/Gs6oK5sEY1ojLtpjboCUYyK+24ccNG/4pP0g3GC7awl4ietp+NUCeCq63C/7
- 0yfDN2tKRrd9sBoTUrbV7PUd2mZmhvU6Kf/jD58nCcAYrqiX+ArJrOZK4NzxXoyFWgYJn7mn+D65U
- pxIjP7Iw==;
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=e91Mn+tIfjTQCCBf3TfjxwQ/KJopJcc0RlLHy8ayUJ8=; b=FH46GHWxkALGftb/Zr+Q9xXA5d
+ 34P/Z5WUCUZ5lG+JqOl1KhFC81P9tJmHiY9MYKeCsXzGb+d44jq47L0UnsSsa3RvJmuYCbrOP7PKN
+ E2s/q+W49zK8MHLurXoOhXk8hSPj2SUdUXsRFeqL0ajaHCjSDnr169jiaK3ECuICn1sQlcEGV/BrH
+ fbYJgkVI18e2MZ/UJR1N4zgRawBphoGW+XXkQa/r96vtLvRTvaP1DDQACSpwQRPKRuZLrIfitZegT
+ BaCcNPERjYEHb1ia2tpbcET5g4mK+PjriyfypZZgGWBiwzPvjFsygdS3C7QvaA+ZMd028n2soJfi9
+ 28jv3Hzg==;
+Received: from mail.kernel.org ([198.145.29.99])
  by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaQt3-00055x-B4; Wed, 04 Nov 2020 22:04:15 +0000
-Received: by mail-oi1-f194.google.com with SMTP id j7so23814906oie.12;
- Wed, 04 Nov 2020 14:04:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=RoHmyvawdfHUv1CllgHUwLfDLAfJEk1MgJAjHKAD5jA=;
- b=g7/VSgvHw7AUits26JhPUW03pI8I648B93CWsp6oWXF8RZ1rRYeEi/1vT7P8ykSkHj
- xtxdF9ND/Eb2vm6zvUfcWaXrEe/mXoMH3awu/uphXEDPAhyrmTsUZ/Qwt9np6K7R+x5S
- h0dpfrKp9DIEVK0uSIU8lCwLpGW+x255NqityOH/jhW8wK33evihCUEYaAaryqcBtAZ8
- v4rkLmfIk5lpc1nACIbpQrOm97XCCvHygHp3fyVrPNTlzOc1t55A9X4besnMLnRjvUb/
- 68oAmyuX8o9TnCJzcmy+fii2IKZAVF1bn7LtMONifOJZxi0inbB1GTHdzCTOkgSYUt9s
- QMPA==
-X-Gm-Message-State: AOAM532Lo1cZL37CK0a7EeZdFIRh08rJUBtphu2IRTq2vQ/7Fo2sSSGK
- mEw7wRfyIquqC/Ysre8G+Q==
-X-Google-Smtp-Source: ABdhPJzGaxwmDh+Yc5KevScWJsbFrWd7wFC9hqALT0pF0pIQ2haITx+cA93FaOeVFC4wgMEYwWoNoA==
-X-Received: by 2002:aca:2405:: with SMTP id n5mr4037469oic.9.1604527449714;
- Wed, 04 Nov 2020 14:04:09 -0800 (PST)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id m10sm831660oon.27.2020.11.04.14.04.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Nov 2020 14:04:09 -0800 (PST)
-Received: (nullmailer pid 8016 invoked by uid 1000);
- Wed, 04 Nov 2020 22:04:08 -0000
-Date: Wed, 4 Nov 2020 16:04:08 -0600
-From: Rob Herring <robh@kernel.org>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v4 14/16] dt-bindings: power: Add MT8192 power domains
-Message-ID: <20201104220408.GA7986@bogus>
-References: <20201030113622.201188-1-enric.balletbo@collabora.com>
- <20201030113622.201188-15-enric.balletbo@collabora.com>
+ id 1kaSYI-0007QJ-Qz; Wed, 04 Nov 2020 23:50:57 +0000
+Received: from mail-ed1-f53.google.com (mail-ed1-f53.google.com
+ [209.85.208.53])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BDE8122206;
+ Wed,  4 Nov 2020 23:50:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604533844;
+ bh=rZVugjYB/4k+eXAwY+hWif6/XHITjDjkK7t3jd5Csy4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=EsbawDsGEKH+HSWm5ZqrktZxUyNrCzYQca0ZDpvEtrcVpRXlKY6HNjfKKJ+3WlkQh
+ BUK08Kd8M9xHJnWndv2aR9KWEJu5dOWzc5R/c7qA0Y37gn0u3HfLFO48b/npedoL1B
+ j23Ym4si1TZbG6lj5jRJmyUiNKEgChO4xSbi2meE=
+Received: by mail-ed1-f53.google.com with SMTP id k9so56311edo.5;
+ Wed, 04 Nov 2020 15:50:43 -0800 (PST)
+X-Gm-Message-State: AOAM533dskXtAT/mRUdzdeyo7WY0sBQEitAPwE2m5Ihx61PiXODwouJ0
+ lKyKP6O4FU8X99TQpmAr6dmZrVzPjiSir6u0yQ==
+X-Google-Smtp-Source: ABdhPJw2MFzA4i3gboFt85gvfEIsJhYi9NkO2Z8ek0sVWS6OAHSRmjU7y5MiPocAd0n+Veh84MiPymNv3gkFS0LgVtE=
+X-Received: by 2002:a50:d587:: with SMTP id v7mr306527edi.38.1604533842193;
+ Wed, 04 Nov 2020 15:50:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201030113622.201188-15-enric.balletbo@collabora.com>
+References: <20201005162241.172912-1-enric.balletbo@collabora.com>
+ <9752ce85-a3e3-1e2f-c9d8-eae729364fee@collabora.com>
+In-Reply-To: <9752ce85-a3e3-1e2f-c9d8-eae729364fee@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 5 Nov 2020 07:50:30 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__yPAph065cbgL8St5U4auW9H8mfWJrT67q5HVNiAmsBA@mail.gmail.com>
+Message-ID: <CAAOTY__yPAph065cbgL8St5U4auW9H8mfWJrT67q5HVNiAmsBA@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: mtk_dpi: Fix unused variable
+ 'mtk_dpi_encoder_funcs'
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_220413_699506_E02C70B6 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20201104_235055_339932_98250837 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,39 +97,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, weiyi.lu@mediatek.com,
- linux-kernel@vger.kernel.org, fparent@baylibre.com,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, kernel test robot <lkp@intel.com>,
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 30 Oct 2020 12:36:20 +0100, Enric Balletbo i Serra wrote:
-> From: Weiyi Lu <weiyi.lu@mediatek.com>
-> 
-> Add power domains dt-bindings for MT8192.
-> 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
-> 
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  .../power/mediatek,power-controller.yaml      |  2 ++
->  include/dt-bindings/power/mt8192-power.h      | 32 +++++++++++++++++++
->  2 files changed, 34 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt8192-power.h
-> 
-
-Acked-by: Rob Herring <robh@kernel.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEVucmljOgoKRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFi
+b3JhLmNvbT4g5pa8IDIwMjDlubQxMeaciDTml6Ug6YCx5LiJIOS4i+WNiDY6NDDlr6vpgZPvvJoK
+Pgo+IEhpCj4KPiBPbiA1LzEwLzIwIDE4OjIyLCBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIHdyb3Rl
+Ogo+ID4gQ29tbWl0IGY4OWM2OTZlN2Y2MyAoImRybS9tZWRpYXRlazogbXRrX2RwaTogQ29udmVy
+dCB0byBicmlkZ2UgZHJpdmVyIikKPiA+IGludHJvZHVjZWQgdGhlIGZvbGxvd2luZyBidWlsZCB3
+YXJuaW5nIHdpdGggVz0xCj4gPgo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBp
+LmM6NTMwOjM5OiB3YXJuaW5nOiB1bnVzZWQgdmFyaWFibGUgJ210a19kcGlfZW5jb2Rlcl9mdW5j
+cycgWy1XdW51c2VkLWNvbnN0LXZhcmlhYmxlXQo+ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJt
+X2VuY29kZXJfZnVuY3MgbXRrX2RwaV9lbmNvZGVyX2Z1bmNzID0gewo+ID4KPiA+IFRoaXMgc3Ry
+dWN0IGlzIGFuZCB0aGUgJ210a19kcGlfZW5jb2Rlcl9kZXN0cm95KCknIGFyZSBub3QgbmVlZGVk
+Cj4gPiBhbnltb3JlLCBzbyByZW1vdmUgdGhlbS4KPiA+Cj4gPiBGaXhlczogZjg5YzY5NmU3ZjYz
+ICgiZHJtL21lZGlhdGVrOiBtdGtfZHBpOiBDb252ZXJ0IHRvIGJyaWRnZSBkcml2ZXIiKQo+ID4g
+UmVwb3J0ZWQtYnk6IGtlcm5lbCB0ZXN0IHJvYm90IDxsa3BAaW50ZWwuY29tPgo+ID4gU2lnbmVk
+LW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3Jh
+LmNvbT4KPiA+IC0tLQo+Cj4gQSBnZW50bGUgcGluZyBvbiB0aGlzIHNtYWxsIGZpeC4gVGhhbmtz
+LAoKQXBwbGllZCB0byBtZWRpYXRlay1kcm0tZml4ZXMgWzFdLCB0aGFua3MuCgpbMV0gaHR0cHM6
+Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xp
+bnV4LmdpdC9sb2cvP2g9bWVkaWF0ZWstZHJtLWZpeGVzCgpSZWdhcmRzLApDaHVuLUt1YW5nLgoK
+Pgo+ICAgRW5yaWMKPgo+ID4KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5j
+IHwgOSAtLS0tLS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgOSBkZWxldGlvbnMoLSkKPiA+Cj4g
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiA+IGluZGV4IDU4OWVmMzNhMTc4MC4uMjYw
+OWQ5MTdlM2Y5IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cGkuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+ID4gQEAg
+LTUyMiwxNSArNTIyLDYgQEAgc3RhdGljIGludCBtdGtfZHBpX3NldF9kaXNwbGF5X21vZGUoc3Ry
+dWN0IG10a19kcGkgKmRwaSwKPiA+ICAgICAgIHJldHVybiAwOwo+ID4gIH0KPiA+Cj4gPiAtc3Rh
+dGljIHZvaWQgbXRrX2RwaV9lbmNvZGVyX2Rlc3Ryb3koc3RydWN0IGRybV9lbmNvZGVyICplbmNv
+ZGVyKQo+ID4gLXsKPiA+IC0gICAgIGRybV9lbmNvZGVyX2NsZWFudXAoZW5jb2Rlcik7Cj4gPiAt
+fQo+ID4gLQo+ID4gLXN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2VuY29kZXJfZnVuY3MgbXRrX2Rw
+aV9lbmNvZGVyX2Z1bmNzID0gewo+ID4gLSAgICAgLmRlc3Ryb3kgPSBtdGtfZHBpX2VuY29kZXJf
+ZGVzdHJveSwKPiA+IC19Owo+ID4gLQo+ID4gIHN0YXRpYyBpbnQgbXRrX2RwaV9icmlkZ2VfYXR0
+YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4gPiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgZW51bSBkcm1fYnJpZGdlX2F0dGFjaF9mbGFncyBmbGFncykKPiA+ICB7Cj4gPgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
