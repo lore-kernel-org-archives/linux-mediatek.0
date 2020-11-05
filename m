@@ -2,97 +2,67 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BB0AEC4741F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 14:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 60CFAC4741F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 16:45:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 065512074B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 14:00:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D5210221FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 16:45:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qV/UxZju";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="MFZUPIDD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 065512074B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KBCF91LL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="MLhqhGWk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5210221FE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
-	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Subject:References:
+	In-Reply-To:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6zw5vph6S5mvNRBGnaryXfme0/VF7/oBedRwclDvfNM=; b=qV/UxZjuPPPTS1OjOXpQyJVmi
-	jy+u2/nYI/oDHztirTu5tDv4c2YuhwcP3mvn5e2xqgsmiPhq4N7rL2Y3Q8jJo+oMXYeduwiYul0MO
-	pb8ZKFZIlykfFYSD9wLle9UuGYBurdtNt9OL1a4peijhqdVnvpLuZhf7WElHkMUVk56xKtifb1ywO
-	NhhEObZYkNsIMmV837ExUHOmZDz4Dfb563RY1mq9FJcFdDjoUwTUZoCGJ7PzEaByOqCLu68Lnney2
-	5jaf7QiseRMfrEd3f+zAyUpuSHIkdkzHgvUN72IKYtOKxFA2LwMASo8mdwOhdUK3MII6P9bvaZuOj
-	nc3DnDmnw==;
+	 bh=zUxiGelKPPluHe2E5z65wIl1A08d6xb2dYYF+lPSlig=; b=KBCF91LLZxX/diJrkKvvuF0Yo
+	XirswqE1I6/0E6jKgj2oPukjOI4UbkV0/vV5ji/ho6Ko16R0+E192QI2I8uiq/7NUkBqkK4hJRaRw
+	wr5YmwYOdrblLZ8Z5tU1gYOg6eZH+mXwKmdeQgiBEGs13r+moXr0FtS3qe75qFF5cn/U+7Jou7QkO
+	KvRn0Ja9CslSljVMcnxEI6kupJxp40Wxf4uZiOEVxHBc25RlG72kKtGseu6MCkB08Icw0l0GcXB4z
+	xMbWSKyXMRf6jWo+HFUpvgWmMzTdaSvG7v9VY77rdfG6rdTqYDePjN8+xiM2hlajOi5+ljYRK1W3V
+	/tttaMrsw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kafo9-00053u-IB; Thu, 05 Nov 2020 14:00:09 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1kaiOO-0006JK-Sp; Thu, 05 Nov 2020 16:45:44 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kafo6-00052U-Nd
- for linux-mediatek@lists.infradead.org; Thu, 05 Nov 2020 14:00:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1604584786;
- bh=voomDKjD1D7OFb6dvnpVpguZn8+/Bj7qz4MAi/lSVa8=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=MFZUPIDDrlAcNE6Rc1XottMcZR3BIl3VWMREoMZVBWH0IsvMeS9A+16vnKKAYvUiq
- 23Qhhc8hKaF0iet+XuY9/U/VyVIAmmsN2+i9Np5S6HiW6Z6nZCs4ySVrk29xTHab2X
- ZJbISFJre4VhSipDkcc77yxe7vVfV6aowBO+aoyw=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.147.34] ([217.61.147.34]) by web-mail.gmx.net
- (3c-app-gmx-bap66.server.lan [172.19.172.66]) (via HTTP); Thu, 5 Nov 2020
- 14:59:46 +0100
+ id 1kaiOJ-0006I6-Sx; Thu, 05 Nov 2020 16:45:40 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8747A2080D;
+ Thu,  5 Nov 2020 16:45:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604594739;
+ bh=1RsXmYB4zCj2jaeADbfq59xOu2k8CzrD8CU1zJns5Ns=;
+ h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+ b=MLhqhGWkfnNlnY+Z8zzA1y2bzWmyu1mhidmsGBJGklbZ+cKftwN7eSvqPEuMpnF/O
+ fjMkwh+1jgbrjLe2znUd1EBmSwFA3mJPvAMDeANBzPDckSLp+JTAUgfBZ/S53Bqebn
+ xOq9V6y8L5GeUZ3EUwwEQDtuKA5c+7y1qoRvAcNc=
+Date: Thu, 05 Nov 2020 16:45:27 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>,
+ Liam Girdwood <lgirdwood@gmail.com>
+In-Reply-To: <20201105124747.18383-1-sudipm.mukherjee@gmail.com>
+References: <20201105124747.18383-1-sudipm.mukherjee@gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8192: Fix build failure
+Message-Id: <160459472200.54851.16651455731881675062.b4-ty@kernel.org>
 MIME-Version: 1.0
-Message-ID: <trinity-6e877df5-d3f5-434c-9723-20a1257ec1ca-1604584786441@3c-app-gmx-bap66>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Marc Zyngier <maz@kernel.org>
-Subject: Aw: Re:  Re:  Re: [PATCH] pci: mediatek: fix warning in msi.h
-Date: Thu, 5 Nov 2020 14:59:46 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <074d057910c3e834f4bd58821e8583b1@kernel.org>
-References: <20201031140330.83768-1-linux@fw-web.de>
- <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
- <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
- <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
- <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
- <df5565a2f1e821041c7c531ad52a3344@kernel.org>
- <87h7q791j8.fsf@nanos.tec.linutronix.de>
- <877dr38kt8.fsf@nanos.tec.linutronix.de>
- <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
- <87o8ke7njb.fsf@nanos.tec.linutronix.de>
- <trinity-1d7f8900-10db-40c0-a0aa-47bb99ed84cd-1604508571909@3c-app-gmx-bs02>
- <87h7q4lnoz.fsf@nanos.tec.linutronix.de>
- <074d057910c3e834f4bd58821e8583b1@kernel.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:GLUO7D/wO+tb37W5SZ5xe0Eu0qDFWwHPzFWW24p1mEWACj/z/qcwnTSCcoEwSXaB+14Nk
- 7wDTbnUHHVNZo6VPxDewR2/8VXujIgH030nqAs/Itv5DX4F5F0sSMTblaQKV7qZQ8z/VLkSrU7e8
- 3eDKoY//ms/KCmlzkD+IylD/pK5tSaw41J7P22MIif12lj2dpYAuAua3/Z0S4bUv1phFS/DP/vKa
- +1NLuzhw2pmKKW4I1R2ohLzqWDqKm/hfzeBr7nqZ6H5QYJaIH8GFl3tfh8d8j+vvVI9Acu0rAWfn
- rs=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Va1155uyhes=:jW7Xw99631EbAyN4YqXhUt
- A6kc1A3xBXmyhPvQWp5gTojcxYr+l9OKQaAa6F6hSGlKGJKK3IjsbWH/E4QFrfO8QuZYk5l3t
- KTckb1BlI5CA64ULsOAzDQSjvA1Iq14Yvnj/U3gHVRqfy0xd1ZmGLAjOqw8Rh/Ut+p8dSC0bh
- ZFm+70EIqZxK0ifwlN8kAyedXD4dV7mycTDGSFEqcun7sFngFoILQkeMKuks53AbRv6WdnA6l
- 78v7pJp5nFIUP1iEMDIMA9YhIfUOwac5OQyhlLzEKEnHjoVp6aLKazAGVJPMy2N9DmO/7PaSX
- 8RHlg1YR14kS5H0x0Np6TcD19t6hopBGofdD7xrPwYFvAt61482BexBT1cBAZtnJ7ha0AZe77
- Mmb28JhVBD811f1D9N7Aq4N2s+jFI0NwU+zn/RexHbps4OQNDxAL60qD3xtznq0r3Y1NB9LBz
- M7Tqyomhxm1g7+3GskBthMsw3b9PfOH6d7YwiL5ZHJ3Q0gqCj1dwmTnY6oE62YPN+RxJZfa5x
- ynPITwwdy66fJyUtD0r5EK1IskA3LonAq1xWuVmM6Yd1NFW0g3Aihhopfl4CzmAEypjTM8Vjq
- MZfbHhvwEBs0w=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201105_090007_118907_D8A03DBC 
-X-CRM114-Status: UNSURE (   8.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201105_114540_050271_699C6A92 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,18 +74,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Frank Wunderlich <linux@fw-web.de>
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Marc's Patch based on thomas' last one also seems to work well for r2, again no warning, PCI and AHCI (connected to pcie bus) working
+On Thu, 5 Nov 2020 12:47:47 +0000, Sudip Mukherjee wrote:
+> A build of arm64 allmodconfig with next-20201105 fails with the error:
+> ERROR: modpost: "mt8192_afe_gpio_request" undefined!
+> ERROR: modpost: "mt8192_afe_gpio_init" undefined!
+> 
+> Export the symbols so that mt8192-mt6359-rt1015-rt5682.ko finds it.
 
-regards Frank
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8192: Fix build failure
+      commit: 8bfe8c967546dc05385b52bac49ad972fea5887c
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
