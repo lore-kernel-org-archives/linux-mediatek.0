@@ -2,60 +2,86 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75EA4C00A89
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B0F7C55179
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:50:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF20F20719
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:16:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ED52820867
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:50:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z5S9RM8l"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF20F20719
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="f8A4Gr8f";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="f8u26zDO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED52820867
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=A0FmmCNKCFUWEgK3j8UiKybOLCDBqQBcvdCeFmqHoiU=; b=Z5S9RM8lOffX1aIDYK3rc8f/KL
-	usyUuvf+yHzgWUoXqgfkSZTgZVlXyVam7o/HYsT6XMzD8nDZZBBecgbOg91suJQ+3unTvpx0Vg3pn
-	mF/UTorQmUze1gH7LFShXYdZU4Lc2ww3Nx9zD9wH5o0HS1H8CUgwaVZDx+eFRGC0A2xc16uu5SZv8
-	b/W5c6dKOnEFosTUqtmJXb24h04T4Z2EwoFRcEXXuL02GPH4A4W39G2ZhK6Xx1RR28el/522dGW/F
-	gtxp0B6ONZMZH53ymWyWEPqj7rgrV4wKS0TAcfcyJjhHRaL/UJxfDDhLagWCduLstPUkgFM3LZTI6
-	eVw9pOfg==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aSj74nKCV4laW8Q2gGi/kFHSjT+hWR8cRgD0FwcGgWs=; b=f8A4Gr8fATyFXfo7nPhXu9www/
+	OwhVGqPYX9ALQR6daW6qNPrHuZWHKGN4lh+FkcXc3K6VZ+jcEiMtYXItes6Y9VhgY+T1x28+24fPL
+	lKJgKwtYbVyuVYNuqCu8JajS4aPQ8PQAwsni4r2SNCNZU74en4PUc4BYZbe4F0RLhI4TnNdibD/Y4
+	433l4othgEjTf0nXQVyaiFyMlClWiXSNDKPY9ToicWM+PrqR2q/EYB9ri/RGcUc2WHN51ljAr38C2
+	CQzbKmVDRA4M7+SMXOJcYRYGsZK4GuyuP3VYY+DZWVD2T47X35jkCuqF4sZJMBwP3dv3CSlTlnpgU
+	Fjwu+WcQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaeBv-0007i9-Fa; Thu, 05 Nov 2020 12:16:35 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1kaeiN-0003cc-6b; Thu, 05 Nov 2020 12:50:07 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaeBq-0007gv-6t; Thu, 05 Nov 2020 12:16:31 +0000
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CRjDL542NzkfFR;
- Thu,  5 Nov 2020 20:16:18 +0800 (CST)
-Received: from linux-lmwb.huawei.com (10.175.103.112) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 5 Nov 2020 20:16:13 +0800
-From: Zou Wei <zou_wei@huawei.com>
-To: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
- <tiwai@suse.com>, <matthias.bgg@gmail.com>
-Subject: [PATCH -next v2] ASoC: mediatek: mt8192: Make some symbols static
-Date: Thu, 5 Nov 2020 20:28:07 +0800
-Message-ID: <1604579287-25251-1-git-send-email-zou_wei@huawei.com>
-X-Mailer: git-send-email 2.6.2
-MIME-Version: 1.0
-X-Originating-IP: [10.175.103.112]
-X-CFilter-Loop: Reflected
+ id 1kaeiJ-0003bN-8J; Thu, 05 Nov 2020 12:50:03 +0000
+Received: by mail-wr1-x441.google.com with SMTP id n15so1634416wrq.2;
+ Thu, 05 Nov 2020 04:50:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=+C+hFQf4fR17sqAg53ZRGOMsBqw3qEsg3zbacKAW2d8=;
+ b=f8u26zDOnu1BHe89VUV3H5l7cWUXq3IOJJDl3y9WOFjOWmn9enFSVWlENWcnFAVlyf
+ FWW36yGMR49eouTFeMSwwlCN0RzZUoO7J+ZmVG5zfNzP7UJ0IyjS9lEF0PxD8Mg7U8yb
+ 3TuvgD62sf0Q6+wkpvAPJ7QiZ1jKRwJceI6KW7o9o3iGSISI0HrZi719NZTNn9YaEPBq
+ n0q5VzdIkgpGpMmdadSqhXACzqhgQ0hdCvY/ifc3feBtkPGkTxhOZOjjnIsyZGaPmsXr
+ pnj/+6oNEMgEaNaZkEEXX5paKK17nM+/J2NZl5aWlAeBCzybf4uFAQhOQuyB+5HfSeO3
+ gv7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=+C+hFQf4fR17sqAg53ZRGOMsBqw3qEsg3zbacKAW2d8=;
+ b=rW3OKE9ahksnXbgMc99jZbCxdPV5dE6RzgkPFGkeY/HczOJ7gp9WjuN/ILzuzrfz12
+ koGCV2VzsEERHHU0aWgFGZqAQwQdZjVQARFaKtVFVMzMPKXMc2qePPm8042Kt8pmZVHk
+ 0fijD9i+/bUFdTRMVGsZZiO/rEWO4yE171Tzkw1PhJAu1vKNhgS1JX9KJVa/Sv+IqQh8
+ gesYDq38eKY1nnrCu2NmxezgqWXfaqcPqN1tFYnyZgrVJAIVvZ3mOp879ZCzIVkZOwuv
+ iU6Nwze1oZDxhhXKrXUruiCTUcYDzcvxbVRmsfoeKkW19/Pgc6TyvivmrmW8k6GEL2ww
+ 4M0Q==
+X-Gm-Message-State: AOAM533w2Cq+ShtQgrV9+B/OSf8fwxn8NXYtDoj0D1KqnJwwdLugEIKC
+ jmUkrlrZESi1SUd4jBX+442/jyfopzjmVQ==
+X-Google-Smtp-Source: ABdhPJy/qX5s2E/jLJsvII8+siT5LuOIrYywzGOEyLvMOrkQ6pRobv0L+e6n83dwD/3JM2IetjjaRA==
+X-Received: by 2002:a5d:4ed2:: with SMTP id s18mr2744512wrv.36.1604580600491; 
+ Thu, 05 Nov 2020 04:50:00 -0800 (PST)
+Received: from localhost.localdomain (host-92-5-241-147.as43234.net.
+ [92.5.241.147])
+ by smtp.gmail.com with ESMTPSA id n17sm2188378wrw.69.2020.11.05.04.49.59
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 05 Nov 2020 04:50:00 -0800 (PST)
+From: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: mt8192: Fix build failure
+Date: Thu,  5 Nov 2020 12:47:47 +0000
+Message-Id: <20201105124747.18383-1-sudipm.mukherjee@gmail.com>
+X-Mailer: git-send-email 2.11.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201105_071630_819792_78C41D69 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20201105_075003_307021_497C4BBF 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,89 +93,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
- jiaxin.yu@mediatek.com, linux-mediatek@lists.infradead.org,
- Zou Wei <zou_wei@huawei.com>, linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the following sparse warnings:
+A build of arm64 allmodconfig with next-20201105 fails with the error:
+ERROR: modpost: "mt8192_afe_gpio_request" undefined!
+ERROR: modpost: "mt8192_afe_gpio_init" undefined!
 
-./mt8192-dai-i2s.c:2040:5: warning: symbol 'mt8192_dai_i2s_get_share' was not declared. Should it be static?
-./mt8192-dai-i2s.c:2060:5: warning: symbol 'mt8192_dai_i2s_set_priv' was not declared. Should it be static?
-./mt8192-afe-gpio.c:15:16: warning: symbol 'aud_pinctrl' was not declared. Should it be static?
-./mt8192-afe-pcm.c:70:5: warning: symbol 'mt8192_get_memif_pbuf_size' was not declared. Should it be static?
-./mt8192-afe-pcm.c:2137:39: warning: symbol 'mt8192_afe_component' was not declared. Should it be static?
+Export the symbols so that mt8192-mt6359-rt1015-rt5682.ko finds it.
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Zou Wei <zou_wei@huawei.com>
+Signed-off-by: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 ---
- sound/soc/mediatek/mt8192/mt8192-afe-gpio.c | 2 +-
- sound/soc/mediatek/mt8192/mt8192-afe-pcm.c  | 4 ++--
- sound/soc/mediatek/mt8192/mt8192-dai-i2s.c  | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
+
+build log at: https://travis-ci.com/github/sudipm-mukherjee/linux-test/jobs/428486008
+
+ sound/soc/mediatek/mt8192/mt8192-afe-gpio.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c b/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c
-index ea00088..4208820 100644
+index ea000888c9e8..fbbe9ed9adb3 100644
 --- a/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c
 +++ b/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c
-@@ -12,7 +12,7 @@
- #include "mt8192-afe-common.h"
- #include "mt8192-afe-gpio.h"
+@@ -160,6 +160,7 @@ int mt8192_afe_gpio_init(struct device *dev)
  
--struct pinctrl *aud_pinctrl;
-+static struct pinctrl *aud_pinctrl;
- 
- enum mt8192_afe_gpio {
- 	MT8192_AFE_GPIO_DAT_MISO_OFF,
-diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-index 4a4729f..e7fec2d 100644
---- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-@@ -67,7 +67,7 @@ static int mt8192_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
- 	return mt8192_general_rate_transform(afe->dev, rate);
- }
- 
--int mt8192_get_memif_pbuf_size(struct snd_pcm_substream *substream)
-+static int mt8192_get_memif_pbuf_size(struct snd_pcm_substream *substream)
- {
- 	struct snd_pcm_runtime *runtime = substream->runtime;
- 
-@@ -2134,7 +2134,7 @@ static int mt8192_afe_component_probe(struct snd_soc_component *component)
- 	return mtk_afe_add_sub_dai_control(component);
- }
- 
--const struct snd_soc_component_driver mt8192_afe_component = {
-+static const struct snd_soc_component_driver mt8192_afe_component = {
- 	.name = AFE_PCM_NAME,
- 	.probe = mt8192_afe_component_probe,
- 	.pointer = mtk_afe_pcm_pointer,
-diff --git a/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c b/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c
-index 53c560e..5b29340 100644
---- a/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c
-@@ -2037,7 +2037,7 @@ static const struct mtk_afe_i2s_priv mt8192_i2s_priv[DAI_I2S_NUM] = {
- 	},
- };
- 
--int mt8192_dai_i2s_get_share(struct mtk_base_afe *afe)
-+static int mt8192_dai_i2s_get_share(struct mtk_base_afe *afe)
- {
- 	struct mt8192_afe_private *afe_priv = afe->platform_priv;
- 	const struct device_node *of_node = afe->dev->of_node;
-@@ -2057,7 +2057,7 @@ int mt8192_dai_i2s_get_share(struct mtk_base_afe *afe)
  	return 0;
  }
++EXPORT_SYMBOL(mt8192_afe_gpio_init);
  
--int mt8192_dai_i2s_set_priv(struct mtk_base_afe *afe)
-+static int mt8192_dai_i2s_set_priv(struct mtk_base_afe *afe)
+ static int mt8192_afe_gpio_adda_dl(struct device *dev, bool enable)
  {
- 	int i;
- 	int ret;
+@@ -304,3 +305,4 @@ int mt8192_afe_gpio_request(struct device *dev, bool enable,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL(mt8192_afe_gpio_request);
 -- 
-2.6.2
+2.11.0
 
 
 _______________________________________________
