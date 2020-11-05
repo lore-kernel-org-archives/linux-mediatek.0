@@ -2,81 +2,100 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3A00C00A89
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 03:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F5EDC388F9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:22:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4F115205F4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 03:42:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DD7DF20795
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:22:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sFsK+blb";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="JaSTjnKE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="DOS8mXkc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F115205F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tdvOqN8d";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="xzBkHHw7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD7DF20795
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Subject:References:
-	In-Reply-To:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LBFe38y3fw7VVA8qexMuaukCix7JEIzQ463Glg3Qh1Q=; b=sFsK+blbgjZgKPtRRerYVWTfR
-	7U2EEMRrSJKjB70W2MzCmompFzTf9CXQmbFibDnPKR398E21j0PyE1LZxg3oiq5cMdp52h04g47vB
-	iVP6/0tQdopnAOqvzJbW0t29mSUygpsMF1gbBbM4U1x+apz0dylXm+GfSmyJhr6+3EXWvG7f/0GIW
-	8gA8W3w6QzcjFyPXssIeYKCH9Eq31b5qt51EnWf+R5hQXKtw73G1EhHo0V+keal5ZdHmuWD3LxfjE
-	xoJDql0YZH9+eJPWTZgqdaKvDAMQLkMR6FFvW3ByiVmgKwYDvJzSfuqkImb9Dj6cy7eXU7pwn4NAf
-	bIS2TACoQ==;
+	 bh=gu8uaSYLBUKRi75G529PC+amxGqxzXNo8sXzp/7Xqwo=; b=tdvOqN8dtwDsY0pttlSHKTlgZ
+	4oR8XsvgtbF/W3QrRwjRhOcPBdFp9rb97molJtky+lkiKkFmoLoMCnSdRNQmtDu0xjxI/rSc9l/qM
+	FgYzCM8Ys2wjoa/0hvL2I+Wum2gdvPPkotlSM+C09DK2rfr1T/VUsA9JgAp4aEY8z6cWIKgWTcDjw
+	1QK6SOmNbbRPhZj/GU0Kka1aNp6JwKNckjW5j4pkg2f8SRBQ1zS7MgsLnxOhKZ0o9NhOMgOILXx1P
+	DYjLmgZFW4q5w7/BKD00iLPNAvpvOu5wkCw+ua0li8TQ3reykb6gn3wM/ScvpsbVfFxNqyoD/cDqb
+	DXCeafhqw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaWAI-0003ZK-J4; Thu, 05 Nov 2020 03:42:22 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1kaWmo-0006AF-Bb; Thu, 05 Nov 2020 04:22:10 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaW9D-0002bw-6t; Thu, 05 Nov 2020 03:41:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-Id:Subject:References:In-Reply-To:Cc:To:From:Date:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=76S9Pg6UZc4IU3uHCkL+6FrsA8kRsuFfo9JTBQMjJqU=; b=JaSTjnKEiMQXUZHhXQeR+dEjRe
- J/RqIaF0F2p74nz6aPz+XnYzQepn+IT421ZoidN8WkvskCUcEQmjkO5ETcNoiE7jhJyuOV5ANeCnf
- cNJavJUBNeHcrzTbojZncykym7/Yj2nFhfhSIov474aXutJzE7NTL/zvJTy/8DTEmcnhIj5OSSOBI
- r7VFWcbTZQEdm+0vv7CTW7zQJbjDKhMH7IgmrNoZIK2xKqRWFdl1ePuGw9sN0sQlOUTR1k1H4u7fY
- JxxzfJ8nWZ+8dqp8um+b1GS2iA3BPaT/m38YoGOeadlgycpGVLIQP3vQPrhTzYSP/66vD1gVzMrNP
- VAKuJecA==;
-Received: from mail.kernel.org ([198.145.29.99])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaPcg-0006Ht-TH; Wed, 04 Nov 2020 20:43:19 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EE27220637;
- Wed,  4 Nov 2020 20:43:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604522585;
- bh=qHG+qglNHl7EPko96pTWFo/vpVvFsDwd7t26z3aXLJc=;
- h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=DOS8mXkcDZNKMUjg+ZIQqDOAwtHelZak+3QSk6S4F39enXPIJ718WG2AOBUxNJRB7
- XbUkby8jGhOE1J0RrQypWuPdNV4d0auEe+7+L0J7gFVcElF6JDKiC5Z12/C6ilAef6
- nhXRYEvEyGFlFxdChviPRbiomgXa3oX1txwFMauY=
-Date: Wed, 04 Nov 2020 20:42:54 +0000
-From: Mark Brown <broonie@kernel.org>
-To: linux-arm-kernel@lists.infradead.org, tiwai@suse.com, robh+dt@kernel.org,
- Jiaxin Yu <jiaxin.yu@mediatek.com>, tzungbi@google.com,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- alsa-devel@alsa-project.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com
-In-Reply-To: <1604390378-23993-1-git-send-email-jiaxin.yu@mediatek.com>
-References: <1604390378-23993-1-git-send-email-jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH v4 0/9] ASoC: Mediatek: Add support for MT8192 SoC
-Message-Id: <160452257414.7226.8411635930831702201.b4-ty@kernel.org>
+ id 1kaWml-00069Y-N9; Thu, 05 Nov 2020 04:22:08 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0A54Jh4m146131;
+ Thu, 5 Nov 2020 04:21:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=Q/Zxvd8Y2ETDhPysP3vR7GgbkKkwEG1Cl5eXaCf/fe8=;
+ b=xzBkHHw7LXUkd0oDkDaZx33aT+UMvLcF3XsZBEmSc6gdJTky7+BxLaq5trrunXYiwZnJ
+ BfBvjOWewoWvXsJ7b2x4XfTaQXdGwWpbC2L/QtVd8hoVkYTjRuIIfGXAUpgKXHH2Vd8l
+ MHGHq/0J3qj+UDyQIwFWXSoFJiPYPzHPhu3fHV7kAbgWlrrteh6Q/9cQJtC1bljKUezj
+ i63C878rWpa2SUjTF57R9PKApvCS1pOj2O9hiWnan1F7tzS9x71UFMe/6bBxz/CrD5Ds
+ crX3r+pLQEsyNM0cSQP7tfq4sS4QZpAuEIWah+OCBd/P08e+e4phLd4Pb5dGuEXA5z1g eg== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 34hhvchya2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 05 Nov 2020 04:21:57 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0A54Kkhn020897;
+ Thu, 5 Nov 2020 04:21:57 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 34hw0m0e9k-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 05 Nov 2020 04:21:57 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0A54Lo4M017180;
+ Thu, 5 Nov 2020 04:21:50 GMT
+Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 04 Nov 2020 20:21:50 -0800
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: cang@codeaurora.org, Asutosh Das <asutoshd@codeaurora.org>,
+ linux-scsi@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] scsi: ufs: Put hba into LPM during clk gating
+Date: Wed,  4 Nov 2020 23:21:45 -0500
+Message-Id: <160455005256.26277.2812826866099587703.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <52198e70bff750632740d78678a815256d697e43.1603825776.git.asutoshd@codeaurora.org>
+References: <52198e70bff750632740d78678a815256d697e43.1603825776.git.asutoshd@codeaurora.org>
 MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9795
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ adultscore=0 bulkscore=0
+ mlxscore=0 suspectscore=0 spamscore=0 mlxlogscore=999 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2011050030
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9795
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ suspectscore=0
+ impostorscore=0 malwarescore=0 priorityscore=1501 mlxlogscore=999
+ bulkscore=0 phishscore=0 adultscore=0 mlxscore=0 lowpriorityscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011050030
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_204315_525426_1263BE85 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20201104_232207_873053_A1B6B5DB 
+X-CRM114-Status: GOOD (  16.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,68 +107,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: shane.chien@mediatek.com, Bicycle.Tsai@mediatek.com, Trevor.Wu@mediatek.com,
- kuninori.morimoto.gx@renesas.com
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-arm-msm@vger.kernel.org, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ open list <linux-kernel@vger.kernel.org>, Satya Tangirala <satyat@google.com>,
+ Avri Altman <avri.altman@wdc.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 3 Nov 2020 15:59:29 +0800, Jiaxin Yu wrote:
-> This series of patches adds support for Mediatek AFE for MT8192 SoC. At the same
-> time, the calibration function of MT6359 is completed with real machine driver.
-> The patch is based on broonie tree "for-next" branch.
-> 
-> Change since v3:
->   - use normal conditional statements to improve legiblity in [v3,3/9]
->   - remove mtk_i2s_hd_en_event as there's trace in the core
->   - impove mt8192_i2s_enum and mt8192_adda_enum
-> 
-> [...]
+On Tue, 27 Oct 2020 12:10:36 -0700, Asutosh Das wrote:
 
-Applied to
+> During clock gating, after clocks are disabled,
+> put hba into LPM to save more power.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Applied to 5.11/scsi-queue, thanks!
 
-Thanks!
+[1/2] scsi: ufs: Put HBA into LPM during clk gating
+      https://git.kernel.org/mkp/scsi/c/dd7143e27cb7
+[2/2] scsi: ufs: qcom: Enable aggressive power collapse for ufs HBA
+      https://git.kernel.org/mkp/scsi/c/61906fd465c0
 
-[1/9] ASoC: mediatek: mt6359: add the calibration functions
-      commit: 682c5a72a2bb0745da73211bed5f47ccccd84025
-[2/9] ASoC: mediatek: mt8192: add platform driver
-      commit: 125ab5d588b0b3b842064c4d53a666ca74521ae8
-[3/9] ASoC: mediatek: mt8192: support i2s in platform driver
-      commit: 2c37b4ed730bc45e936794031a2fa13d75fb4572
-[4/9] ASoC: mediatek: mt8192: support adda in platform driver
-      commit: 607ac48595640d549a769f0dde0732e69c3a6c03
-[5/9] ASoC: mediatek: mt8192: support pcm in platform driver
-      commit: c63b7866011e63038d32bc37f3abd0deabbc34f6
-[6/9] ASoC: mediatek: mt8192: support tdm in platform driver
-      commit: 52fcd65414abfcf31206d9d8ac6dba9cc1cbbf85
-[7/9] dt-bindings: mediatek: mt8192: add audio afe document
-      commit: 1afc60e00de3abbb6c559da409c5c1bb8c1d98ec
-[8/9] ASoC: mediatek: mt8192: add machine driver with mt6359, rt1015 and rt5682
-      commit: 18b13ff23fab34a9d35cec60ed19aceab61dc3f9
-[9/9] dt-bindings: mediatek: mt8192: add mt8192-mt6358-rt1015-rt5682 document
-      commit: 4a232122124bcbc241b8099c2f98a62c79699324
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
