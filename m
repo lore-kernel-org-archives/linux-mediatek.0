@@ -2,75 +2,95 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A655C00A89
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 13:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB0AEC4741F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 14:00:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AFA2820719
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 13:27:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 065512074B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 14:00:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xsMX7DWe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BJFp4CeD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFA2820719
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qV/UxZju";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="MFZUPIDD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 065512074B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yF9BI9fqzjTd09XwMnLbKLTnW568Zq/SMpNjSOWYP+w=; b=xsMX7DWemh0Q4ItyiDFv5V6jq
-	S+9wv5gY53NkZ0FuEB1q4dBBhHXreNIH2flTlMmO3OqiBY99EhhAw4KFwuMf8EVYgD5QkR/rnz8kB
-	U2ARgXo29nYmo70loD6LMnL2mJr2cS3PGvAl6aGvKboLy7fWGlssd0wSfF/d9kkt4Gh2/12EXIQBn
-	J3ae6RWMrDGtcoY0PlKBnVLm6+bvUz/awpPfNgcWq9SCcM7cP/3vs9eihq7icw7MrEB6YFRLi2BZL
-	r/A6o2CpgvPgN0jfveF6C5D3Xq6Jx1XUZpu4QvpkSAUHzlNjZnD0aYfxXpV3fxhebX+fNf2I7UigG
-	fvuHKRMfA==;
+	 bh=6zw5vph6S5mvNRBGnaryXfme0/VF7/oBedRwclDvfNM=; b=qV/UxZjuPPPTS1OjOXpQyJVmi
+	jy+u2/nYI/oDHztirTu5tDv4c2YuhwcP3mvn5e2xqgsmiPhq4N7rL2Y3Q8jJo+oMXYeduwiYul0MO
+	pb8ZKFZIlykfFYSD9wLle9UuGYBurdtNt9OL1a4peijhqdVnvpLuZhf7WElHkMUVk56xKtifb1ywO
+	NhhEObZYkNsIMmV837ExUHOmZDz4Dfb563RY1mq9FJcFdDjoUwTUZoCGJ7PzEaByOqCLu68Lnney2
+	5jaf7QiseRMfrEd3f+zAyUpuSHIkdkzHgvUN72IKYtOKxFA2LwMASo8mdwOhdUK3MII6P9bvaZuOj
+	nc3DnDmnw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kafIV-0000nA-H7; Thu, 05 Nov 2020 13:27:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kafo9-00053u-IB; Thu, 05 Nov 2020 14:00:09 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kafIR-0000m8-Qj; Thu, 05 Nov 2020 13:27:25 +0000
-X-UUID: daa7e1f828334f64a8849f813e2f37f1-20201105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=pcnmHbDQu8GbyyLey8ydD5w9czPlndqFD5Nfo7Y2uWo=; 
- b=BJFp4CeDNTLhAImvpbmcRUVrD6suw/DRxo18fc5U14f0HQ3Lm4tV39SJ6WeVncZy9DiWZkKYV9W2AfxAleCdLKfdb0UsAJVuFSScFI5zb/txwWh5JEeXDzNbXBhTSsGGcWsBqHI0CD2Agx8YkEliS9WypTXl/g/kTFrDvbLs2eQ=;
-X-UUID: daa7e1f828334f64a8849f813e2f37f1-20201105
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 731729646; Thu, 05 Nov 2020 05:27:14 -0800
-Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Nov 2020 05:27:12 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
- (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 5 Nov 2020 21:27:09 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 5 Nov 2020 21:27:09 +0800
-Message-ID: <1604582829.26523.17.camel@mhfsdcap03>
-Subject: Re: [PATCH -next v2] ASoC: mediatek: mt8192: Make some symbols static
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: Zou Wei <zou_wei@huawei.com>
-Date: Thu, 5 Nov 2020 21:27:09 +0800
-In-Reply-To: <1604579287-25251-1-git-send-email-zou_wei@huawei.com>
-References: <1604579287-25251-1-git-send-email-zou_wei@huawei.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kafo6-00052U-Nd
+ for linux-mediatek@lists.infradead.org; Thu, 05 Nov 2020 14:00:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1604584786;
+ bh=voomDKjD1D7OFb6dvnpVpguZn8+/Bj7qz4MAi/lSVa8=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=MFZUPIDDrlAcNE6Rc1XottMcZR3BIl3VWMREoMZVBWH0IsvMeS9A+16vnKKAYvUiq
+ 23Qhhc8hKaF0iet+XuY9/U/VyVIAmmsN2+i9Np5S6HiW6Z6nZCs4ySVrk29xTHab2X
+ ZJbISFJre4VhSipDkcc77yxe7vVfV6aowBO+aoyw=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.147.34] ([217.61.147.34]) by web-mail.gmx.net
+ (3c-app-gmx-bap66.server.lan [172.19.172.66]) (via HTTP); Thu, 5 Nov 2020
+ 14:59:46 +0100
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 4E3BCA4F16C884482DEDA47F609076C23E9CAA032D1A648EB2745A62481CDE4C2000:8
-X-MTK: N
+Message-ID: <trinity-6e877df5-d3f5-434c-9723-20a1257ec1ca-1604584786441@3c-app-gmx-bap66>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Marc Zyngier <maz@kernel.org>
+Subject: Aw: Re:  Re:  Re: [PATCH] pci: mediatek: fix warning in msi.h
+Date: Thu, 5 Nov 2020 14:59:46 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <074d057910c3e834f4bd58821e8583b1@kernel.org>
+References: <20201031140330.83768-1-linux@fw-web.de>
+ <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
+ <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
+ <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
+ <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
+ <df5565a2f1e821041c7c531ad52a3344@kernel.org>
+ <87h7q791j8.fsf@nanos.tec.linutronix.de>
+ <877dr38kt8.fsf@nanos.tec.linutronix.de>
+ <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
+ <87o8ke7njb.fsf@nanos.tec.linutronix.de>
+ <trinity-1d7f8900-10db-40c0-a0aa-47bb99ed84cd-1604508571909@3c-app-gmx-bs02>
+ <87h7q4lnoz.fsf@nanos.tec.linutronix.de>
+ <074d057910c3e834f4bd58821e8583b1@kernel.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:GLUO7D/wO+tb37W5SZ5xe0Eu0qDFWwHPzFWW24p1mEWACj/z/qcwnTSCcoEwSXaB+14Nk
+ 7wDTbnUHHVNZo6VPxDewR2/8VXujIgH030nqAs/Itv5DX4F5F0sSMTblaQKV7qZQ8z/VLkSrU7e8
+ 3eDKoY//ms/KCmlzkD+IylD/pK5tSaw41J7P22MIif12lj2dpYAuAua3/Z0S4bUv1phFS/DP/vKa
+ +1NLuzhw2pmKKW4I1R2ohLzqWDqKm/hfzeBr7nqZ6H5QYJaIH8GFl3tfh8d8j+vvVI9Acu0rAWfn
+ rs=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Va1155uyhes=:jW7Xw99631EbAyN4YqXhUt
+ A6kc1A3xBXmyhPvQWp5gTojcxYr+l9OKQaAa6F6hSGlKGJKK3IjsbWH/E4QFrfO8QuZYk5l3t
+ KTckb1BlI5CA64ULsOAzDQSjvA1Iq14Yvnj/U3gHVRqfy0xd1ZmGLAjOqw8Rh/Ut+p8dSC0bh
+ ZFm+70EIqZxK0ifwlN8kAyedXD4dV7mycTDGSFEqcun7sFngFoILQkeMKuks53AbRv6WdnA6l
+ 78v7pJp5nFIUP1iEMDIMA9YhIfUOwac5OQyhlLzEKEnHjoVp6aLKazAGVJPMy2N9DmO/7PaSX
+ 8RHlg1YR14kS5H0x0Np6TcD19t6hopBGofdD7xrPwYFvAt61482BexBT1cBAZtnJ7ha0AZe77
+ Mmb28JhVBD811f1D9N7Aq4N2s+jFI0NwU+zn/RexHbps4OQNDxAL60qD3xtznq0r3Y1NB9LBz
+ M7Tqyomhxm1g7+3GskBthMsw3b9PfOH6d7YwiL5ZHJ3Q0gqCj1dwmTnY6oE62YPN+RxJZfa5x
+ ynPITwwdy66fJyUtD0r5EK1IskA3LonAq1xWuVmM6Yd1NFW0g3Aihhopfl4CzmAEypjTM8Vjq
+ MZfbHhvwEBs0w=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201105_082724_070847_E25D5A3E 
+X-CRM114-CacheID: sfid-20201105_090007_118907_D8A03DBC 
 X-CRM114-Status: UNSURE (   8.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -84,28 +104,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, tiwai@suse.com,
- lgirdwood@gmail.com, broonie@kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, perex@perex.cz, linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Frank Wunderlich <linux@fw-web.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-11-05 at 20:28 +0800, Zou Wei wrote:
-> Fix the following sparse warnings:
-> 
-> ./mt8192-dai-i2s.c:2040:5: warning: symbol 'mt8192_dai_i2s_get_share' was not declared. Should it be static?
-> ./mt8192-dai-i2s.c:2060:5: warning: symbol 'mt8192_dai_i2s_set_priv' was not declared. Should it be static?
-> ./mt8192-afe-gpio.c:15:16: warning: symbol 'aud_pinctrl' was not declared. Should it be static?
-> ./mt8192-afe-pcm.c:70:5: warning: symbol 'mt8192_get_memif_pbuf_size' was not declared. Should it be static?
-> ./mt8192-afe-pcm.c:2137:39: warning: symbol 'mt8192_afe_component' was not declared. Should it be static?
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Zou Wei <zou_wei@huawei.com>
+Marc's Patch based on thomas' last one also seems to work well for r2, again no warning, PCI and AHCI (connected to pcie bus) working
 
-Acked-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Thanks for the fixing.
+regards Frank
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
