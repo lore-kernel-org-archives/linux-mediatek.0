@@ -2,100 +2,89 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D3F8C00A89
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:54:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 563C3C00A89
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:55:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9D9A12083B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:54:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C28AF2083B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 04:55:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l2q1dJ8L";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="cxjx0u7D";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="zxQWjZ8/";
-	dkim=permerror (0-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="dOfXSMPz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D9A12083B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1evcr9OB";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="QybcdYkG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C28AF2083B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NGhodhtNo+Mdm/vmOYrO8IxacpgVx04/PtzLMPUIJKM=; b=l2q1dJ8Lqq6xCL2yOILYTlR95
-	MupH7bTzv7Qwmj7jDRIAdCxDoIscc9gG/vnFtN2kquRVwranAc8P33/9ITYxF/Zhb2D5pga375ABh
-	lcfrt5DdNuN7GlodtZcg3y5JF2EHojWTQzn6iTnF/ylkY5crwmQk3PA5Kjx4e/+DrzHfgEtI0R+Vk
-	MHFkh2Iwo0pKqAm4RUb4hmoKzvr8WZq62jIkg4cQqMiK5DQ5QKqzgXmwhgCOIrd3SR/PwmzcNq6GQ
-	EdWRT+HC9/q+PMcSV6dZ8vxb5v3zHbKqezJqaLAOnYlpZzJYbdsNV7GHGuPEjkEB9o9Qr5zwNVVTc
-	frfHMW2pw==;
+	 bh=KX74wFqRsMrCMSybnnyagaAUUDDX5KPOXxaObqsbnhU=; b=1evcr9OBRyXihdQxyTJbBNNEz
+	9yZ9Sbgmo+t0vRRUdikCHSMJsQuucRJ63vs/wkQZiMj3nBT7KWe95W5tLxAMH43BzQchcobP4k+3G
+	scdtZ+x1dtL6WBnzP/7aOEO7lVZw2fl6+5Qnm78f8dNx/hMzQLuo2jfIAPpb8Q0Xg4E6PsqejIpgE
+	DMVTgS52DA4zKEVPUmmJTClyEXS1lLK+l25cQggE+QiCmTHU/QuWixnBaiXOmvak7UO0oj+0TWvaD
+	JyCz2KYVUv1/ighjyD81hnUUQlu0WQChOKCWYgFTVuWXNFnPTkTgqQyFQp+EDdDlYJUybSYID8lPe
+	9pcVU4MEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaXID-0001Sx-Iz; Thu, 05 Nov 2020 04:54:37 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1kaXJK-0001n4-By; Thu, 05 Nov 2020 04:55:46 +0000
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaW5T-00016k-QY
- for linux-mediatek@merlin.infradead.org; Thu, 05 Nov 2020 03:37:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:Message-ID:
- Date:References:In-Reply-To:Subject:Cc:To:From:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=S1uT/ory2tJYYKprq7tpAtg+6JYjWTDzAvdKLuSxFsE=; b=cxjx0u7DiLzg4g/gTzBoSNkpFp
- r5JRy2eYPV8Zr4eQFYghOa8z8KpoAbD6IUbD4aznhE9fEdxjPzcExsxX4unEFE3TB7ieMawhdFTA1
- Z9Lt3hgi26yZVPiNganzdwBZES3C6fx5dMS6je16zMHuNeX0N0Ghkkp/5u3VSEFAKJgqOPQixdm0K
- B+3dUFrYVtikv3laK/AfBtQ5khsIq022SgueiTYdkuPMQywiNgpQ9q6O6xjn76tv0SQXkzkxMZ9ka
- Awnf2n6PjAKOMxnpkBWG3d+BT/tgDytyjNXiCGMo+oms4dybFiQez0sQoCcNxNwowUMmGYg9FVHnV
- VGteAIeg==;
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaRz2-0003SF-J7
- for linux-mediatek@lists.infradead.org; Wed, 04 Nov 2020 23:14:30 +0000
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1604531661;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=S1uT/ory2tJYYKprq7tpAtg+6JYjWTDzAvdKLuSxFsE=;
- b=zxQWjZ8/AB2Lwf78tMX7LeYKasG61OYcb90cptjPXIebDsJSwRhcNkMrSTvCJZ1yGDbEyR
- NXEA+Vo57Iybw8eFxlOuM68KL7Mi0R/iV8SC3tl2QcbA2cBdwTwHuTmLnaLY46yIjK0jcH
- WaJZ2/ttNxTf6dWOU4hw1IngCDCEAkqQpPqpP2a+7GQo7YMxgEDijLuI1udRtf9YcEv8JO
- 0NfuyhdFKs83wvb7TEl8omLUTe51wXqvi9Qihu6s8PkMBSwCejhj1c12Z6bu1RuWADWH29
- 15zj/t5AAwE3kJaF4wJ1SZWXdESIff94YI3z7nMPCgOHNZDBM5bKymokk/CZmA==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1604531661;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=S1uT/ory2tJYYKprq7tpAtg+6JYjWTDzAvdKLuSxFsE=;
- b=dOfXSMPz5OxVxeZ5HDfZvfWqs8tGpBO9c7pDG6DteaqHiILOmLTr2FhW29AGAczpj5iDdb
- PrIdVoFXFH/Z+1AQ==
-To: Frank Wunderlich <frank-w@public-files.de>
-Subject: Re: Aw: Re:  Re: [PATCH] pci: mediatek: fix warning in msi.h
-In-Reply-To: <trinity-1d7f8900-10db-40c0-a0aa-47bb99ed84cd-1604508571909@3c-app-gmx-bs02>
-References: <20201031140330.83768-1-linux@fw-web.de>
- <878sbm9icl.fsf@nanos.tec.linutronix.de>
- <EC02022C-64CF-4F4B-A0A2-215A0A49E826@public-files.de>
- <87lfflti8q.wl-maz@kernel.org> <1604253261.22363.0.camel@mtkswgap22>
- <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
- <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
- <df5565a2f1e821041c7c531ad52a3344@kernel.org>
- <87h7q791j8.fsf@nanos.tec.linutronix.de>
- <877dr38kt8.fsf@nanos.tec.linutronix.de>
- <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
- <87o8ke7njb.fsf@nanos.tec.linutronix.de>
- <trinity-1d7f8900-10db-40c0-a0aa-47bb99ed84cd-1604508571909@3c-app-gmx-bs02>
-Date: Thu, 05 Nov 2020 00:14:20 +0100
-Message-ID: <87h7q4lnoz.fsf@nanos.tec.linutronix.de>
+ id 1kaXJI-0001lQ-1w
+ for linux-mediatek@lists.infradead.org; Thu, 05 Nov 2020 04:55:44 +0000
+Received: by mail-ot1-x343.google.com with SMTP id n11so300889ota.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2020 20:55:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=i6MGr/Kg3VZyORAXNQIPSqeLnV8zx9yqFNyMUoSyDIg=;
+ b=QybcdYkGQifdwCUvS6mzcHt5x/ze6Uk+AU8hfeX5CCttAAjMJ9JixZwigksaFEM1U8
+ v/okucIqFFVU7VHHDOMk+/vW3ceFa/smhEYZKI3wHU4eN5TPV25FIT14cJgS7Zp7WLmJ
+ gcjWURKjGLYBgmYycdwu1V64hbzyatd/3umDLpv/6+FshkDeLD1qJ35IK7KNbXnaMmzR
+ SejanBqzPKxCy15mDtB2/KqyQTFGCQD0m/3N29NgrgYBsQyTWF4c0yWAvFBLe4RG+nYD
+ 3jMfs8d6Njg8jo76DutCptIjzK9ankBp9i7CdLZpoN5UwGUOg/Q4j2mBtdUq8SavqrwZ
+ fRFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=i6MGr/Kg3VZyORAXNQIPSqeLnV8zx9yqFNyMUoSyDIg=;
+ b=F88vbfhcxlli5bSWDmKNGkjWFdsWlNxnH1dwgs1IdyFdrF9ARJ9lQwqVhj6tEDBE2I
+ hmH5UelZfC5J8WwDGoXm+gunO5VO5BHdfYUU97hMj6r4BWKMCaQggXsl79Mvn3Ph+LnA
+ 8sU9YnB6hKrHT0MMD3DB0e7Di0PJQrss+2pWpizhUFttxe3nG4WhQxdLTbPMK+OZ5Ibl
+ hysvpdocKxpopXkIWElcpo47r3NhWQN2yvd2UzLKbs6DkqdNNps2Hr2b4vhAbqkRvlxy
+ Zs7bBCxSfMh5pAkVZxl+gPapDNAARZnHYrQ+pbh92C3sGAv/mgFL3lsDtho/Kpz9I33i
+ 1EyQ==
+X-Gm-Message-State: AOAM533L+3HwiwymoagkgcGrjjnjJCG7ea8eimgvTHKO50lblgxK+EES
+ Li4eWzg/rMTGu9C3Icohve96hA==
+X-Google-Smtp-Source: ABdhPJx8wemuxHJ5PcafcR+3WSW0gpy0QWAV+NsA3hxjXU/Wnf4rhD2zTdNnzBM3zh6Mhoi0OJRe7g==
+X-Received: by 2002:a9d:7d87:: with SMTP id j7mr510237otn.356.1604552140570;
+ Wed, 04 Nov 2020 20:55:40 -0800 (PST)
+Received: from builder.lan (104-57-184-186.lightspeed.austtx.sbcglobal.net.
+ [104.57.184.186])
+ by smtp.gmail.com with ESMTPSA id l23sm95998otk.68.2020.11.04.20.55.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Nov 2020 20:55:39 -0800 (PST)
+Date: Wed, 4 Nov 2020 22:55:38 -0600
+From: Bjorn Andersson <bjorn.andersson@linaro.org>
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+Subject: Re: [PATCH] remoteproc/mtk_scp: surround DT device IDs with CONFIG_OF
+Message-ID: <20201105045538.GA29931@builder.lan>
+References: <20201102074007.299222-1-acourbot@chromium.org>
+ <20201104190547.GD2893396@xps15>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201104190547.GD2893396@xps15>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_231428_817055_98B51BD0 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20201104_235544_166357_9D346C10 
+X-CRM114-Status: GOOD (  22.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,113 +96,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Marc Zyngier <maz@kernel.org>,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>
+Cc: Ohad Ben-Cohen <ohad@wizery.com>, kernel test robot <lkp@intel.com>,
+ Alexandre Courbot <acourbot@chromium.org>, linux-remoteproc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Frank,
+On Wed 04 Nov 13:05 CST 2020, Mathieu Poirier wrote:
 
-On Wed, Nov 04 2020 at 17:49, Frank Wunderlich wrote:
->> Von: "Thomas Gleixner" <tglx@linutronix.de>
->> Any architecture which selects PCI_MSI_ARCH_FALLBACKS and does not have
->> irqdomain support runs into:
->>
->> 	if (!d)
->> 		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
->>
->> which in turn makes pci_msi_supported() return 0 and consequently makes
->> pci_enable_msi[x]() fail.
->
-> i'm not that deep into this, but just my thoughts...you are the experts :)
->
-> checking for PCI_MSI_ARCH_FALLBACKS here does not help?
->
-> something like this:
->
-> #ifndef PCI_MSI_ARCH_FALLBACKS
-> 	if (!d)
-> 		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
-> #endif
+> Hi Alexander,
+> 
+> On Mon, Nov 02, 2020 at 04:40:07PM +0900, Alexandre Courbot wrote:
+> > Now that this driver can be compiled with COMPILE_TEST, we have no
+> > guarantee that CONFIG_OF will also be defined. When that happens, a
+> > warning about mtk_scp_of_match being defined but unused will be reported
+> > so make sure this variable is only defined if of_match_ptr() actually
+> > uses it.
+> > 
+> > Fixes: cbd2dca74926c0e4610c40923cc786b732c9e8ef remoteproc: scp: add COMPILE_TEST dependency
+> > Reported-by: kernel test robot <lkp@intel.com>
+> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > ---
+> >  drivers/remoteproc/mtk_scp.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> > index 577cbd5d421e..f74f22d4d1ff 100644
+> > --- a/drivers/remoteproc/mtk_scp.c
+> > +++ b/drivers/remoteproc/mtk_scp.c
+> > @@ -772,12 +772,14 @@ static const struct mtk_scp_of_data mt8192_of_data = {
+> >  	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+> >  };
+> >  
+> > +#if defined(CONFIG_OF)
+> >  static const struct of_device_id mtk_scp_of_match[] = {
+> >  	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
+> >  	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
+> >  	{},
+> >  };
+> >  MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+> > +#endif
+> 
+> I think it is better to add a "depends on OF" in the Kconfig.
+> 
 
-TBH, that's butt ugly. So after staring long enough into the PCI code I
-came up with a way to transport that information to the probe code.
+That would reduce the efficiency of COMPILE_TEST, so I would prefer that
+we drop of_match_ptr(), which will result in the pointer always being
+populated and this being referenced - although unused when built without
+OF.
 
-That allows a particular device to say 'I can't do MSI' and at the same
-time keeps the warning machinery intact which tells us that a particular
-host controller driver is broken.
-
-Uncompiled and untested as usual :)
-
-Thanks,
-
-        tglx
----
- drivers/pci/controller/pcie-mediatek.c |    4 ++++
- drivers/pci/probe.c                    |    3 +++
- include/linux/pci.h                    |    1 +
- 3 files changed, 8 insertions(+)
-
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -143,6 +143,7 @@ struct mtk_pcie_port;
-  * struct mtk_pcie_soc - differentiate between host generations
-  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-  * @need_fix_device_id: whether this host's device ID needed to be fixed or not
-+ * @no_msi: Bridge has no MSI support
-  * @device_id: device ID which this host need to be fixed
-  * @ops: pointer to configuration access functions
-  * @startup: pointer to controller setting functions
-@@ -151,6 +152,7 @@ struct mtk_pcie_port;
- struct mtk_pcie_soc {
- 	bool need_fix_class_id;
- 	bool need_fix_device_id;
-+	bool no_msi;
- 	unsigned int device_id;
- 	struct pci_ops *ops;
- 	int (*startup)(struct mtk_pcie_port *port);
-@@ -1084,6 +1086,7 @@ static int mtk_pcie_probe(struct platfor
- 
- 	host->ops = pcie->soc->ops;
- 	host->sysdata = pcie;
-+	host->no_msi = pcie->soc->no_msi;
- 
- 	err = pci_host_probe(host);
- 	if (err)
-@@ -1173,6 +1176,7 @@ static const struct dev_pm_ops mtk_pcie_
- };
- 
- static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
-+	.no_msi = true,
- 	.ops = &mtk_pcie_ops,
- 	.startup = mtk_pcie_startup_port,
- };
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -889,6 +889,9 @@ static int pci_register_host_bridge(stru
- 	if (!bus)
- 		return -ENOMEM;
- 
-+	if (bridge->no_msi)
-+		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
-+
- 	bridge->bus = bus;
- 
- 	/* Temporarily move resources off the list */
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -545,6 +545,7 @@ struct pci_host_bridge {
- 	unsigned int	native_dpc:1;		/* OS may use PCIe DPC */
- 	unsigned int	preserve_config:1;	/* Preserve FW resource setup */
- 	unsigned int	size_windows:1;		/* Enable root bus sizing */
-+	unsigned int	no_msi:1;		/* Bridge has no MSI support */
- 
- 	/* Resource alignment requirements */
- 	resource_size_t (*align_resource)(struct pci_dev *dev,
+Regards,
+Bjorn
 
 _______________________________________________
 Linux-mediatek mailing list
