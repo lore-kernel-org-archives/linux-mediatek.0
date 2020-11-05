@@ -2,77 +2,60 @@ Return-Path: <SRS0=qi5H=EL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,
-	CHARSET_FARAWAY_HEADER,DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AD45C4742C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:06:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75EA4C00A89
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:16:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C8E122243
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:05:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EF20F20719
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2020 12:16:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cJ2jMzpD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C8E122243
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z5S9RM8l"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF20F20719
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZXxscXMdtz1ehOA9tqlTi2094J/mYiYezWS3t1wnPds=; b=cJ2jMzpD5u51c5zqzYHjE0CS1
-	XOZvJPDHz2ZClwroYoijW1aDiWqY5tRZKAOr1UQZHaHuQ+KswjjS98tBirSHyGB4jbVUh6Lrrl1ll
-	0Oy3ARvGLLotCUGdIhPQbLxreuKG/GpQj1efMNP4zav20c8PbWa92Y7xuhQYs3XQQtdRB/K7aDGSi
-	HXeyn4q8m+CSfuB+hx3fTOakKyoRW/17NXS1WEu252Zhrld38KM2K/Hpv858BPT1SJXl85UEznFmg
-	eY2zLC6jCRGwPBUjtNPCgeCyiUkUX0ze1CfgnguJuA0GvGJP/AqSqecx8+MXo2A7NSnsW+89uxIvG
-	pYbiwJTUA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A0FmmCNKCFUWEgK3j8UiKybOLCDBqQBcvdCeFmqHoiU=; b=Z5S9RM8lOffX1aIDYK3rc8f/KL
+	usyUuvf+yHzgWUoXqgfkSZTgZVlXyVam7o/HYsT6XMzD8nDZZBBecgbOg91suJQ+3unTvpx0Vg3pn
+	mF/UTorQmUze1gH7LFShXYdZU4Lc2ww3Nx9zD9wH5o0HS1H8CUgwaVZDx+eFRGC0A2xc16uu5SZv8
+	b/W5c6dKOnEFosTUqtmJXb24h04T4Z2EwoFRcEXXuL02GPH4A4W39G2ZhK6Xx1RR28el/522dGW/F
+	gtxp0B6ONZMZH53ymWyWEPqj7rgrV4wKS0TAcfcyJjhHRaL/UJxfDDhLagWCduLstPUkgFM3LZTI6
+	eVw9pOfg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kae1W-0006pN-09; Thu, 05 Nov 2020 12:05:50 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1kaeBv-0007i9-Fa; Thu, 05 Nov 2020 12:16:35 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kae1P-0006kS-VY; Thu, 05 Nov 2020 12:05:46 +0000
-Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.53])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4CRhzt591Vz52Dh;
- Thu,  5 Nov 2020 20:05:30 +0800 (CST)
-Received: from dggemi709-chm.china.huawei.com (10.3.20.108) by
- DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Thu, 5 Nov 2020 20:05:34 +0800
-Received: from dggemi762-chm.china.huawei.com (10.1.198.148) by
- dggemi709-chm.china.huawei.com (10.3.20.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Thu, 5 Nov 2020 20:05:34 +0800
-Received: from dggemi762-chm.china.huawei.com ([10.1.198.148]) by
- dggemi762-chm.china.huawei.com ([10.1.198.148]) with mapi id 15.01.1913.007;
- Thu, 5 Nov 2020 20:05:33 +0800
-From: "Zouwei (Samuel)" <zou_wei@huawei.com>
-To: "lgirdwood@gmail.com" <lgirdwood@gmail.com>, "broonie@kernel.org"
- <broonie@kernel.org>, "perex@perex.cz" <perex@perex.cz>, "tiwai@suse.com"
- <tiwai@suse.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: =?gb2312?B?tPC4tDogW1BBVENIIC1uZXh0XSBBU29DOiBtZWRpYXRlazogbXQ4MTkyOiBN?=
- =?gb2312?Q?ake_some_symbols_static?=
-Thread-Topic: [PATCH -next] ASoC: mediatek: mt8192: Make some symbols static
-Thread-Index: AQHWs2nWluaJsVCcpEKkmgl3F4+tXam5cHAg
-Date: Thu, 5 Nov 2020 12:05:33 +0000
-Message-ID: <5f10d3f7d9b24bdc82b7ce9f6bf50023@huawei.com>
-References: <1604577724-24687-1-git-send-email-zou_wei@huawei.com>
-In-Reply-To: <1604577724-24687-1-git-send-email-zou_wei@huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.178.100]
+ id 1kaeBq-0007gv-6t; Thu, 05 Nov 2020 12:16:31 +0000
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CRjDL542NzkfFR;
+ Thu,  5 Nov 2020 20:16:18 +0800 (CST)
+Received: from linux-lmwb.huawei.com (10.175.103.112) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 5 Nov 2020 20:16:13 +0800
+From: Zou Wei <zou_wei@huawei.com>
+To: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
+ <tiwai@suse.com>, <matthias.bgg@gmail.com>
+Subject: [PATCH -next v2] ASoC: mediatek: mt8192: Make some symbols static
+Date: Thu, 5 Nov 2020 20:28:07 +0800
+Message-ID: <1604579287-25251-1-git-send-email-zou_wei@huawei.com>
+X-Mailer: git-send-email 2.6.2
 MIME-Version: 1.0
+X-Originating-IP: [10.175.103.112]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201105_070545_038656_2570B41E 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20201105_071630_819792_78C41D69 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,47 +67,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
+ jiaxin.yu@mediatek.com, linux-mediatek@lists.infradead.org,
+ Zou Wei <zou_wei@huawei.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgYWxsLA0KDQpQbGVhc2UgaWdub3JlIHRoaXMgcGF0Y2gsIEknbGwgc2VuZCBhbm90aGVyIHBh
-dGNoIHdpdGggb3RoZXIgZml4ZXMuDQoNCi0tLS0t08q8/tStvP4tLS0tLQ0Kt6K8/sjLOiBab3V3
-ZWkgKFNhbXVlbCkgDQq3osvNyrG85DogMjAyMMTqMTHUwjXI1SAyMDowMg0KytW8/sjLOiBsZ2ly
-ZHdvb2RAZ21haWwuY29tOyBicm9vbmllQGtlcm5lbC5vcmc7IHBlcmV4QHBlcmV4LmN6OyB0aXdh
-aUBzdXNlLmNvbTsgbWF0dGhpYXMuYmdnQGdtYWlsLmNvbQ0Ks63LzTogYWxzYS1kZXZlbEBhbHNh
-LXByb2plY3Qub3JnOyBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmc7IGxpbnV4
-LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmc7IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5v
-cmc7IFpvdXdlaSAoU2FtdWVsKSA8em91X3dlaUBodWF3ZWkuY29tPg0K1vfM4jogW1BBVENIIC1u
-ZXh0XSBBU29DOiBtZWRpYXRlazogbXQ4MTkyOiBNYWtlIHNvbWUgc3ltYm9scyBzdGF0aWMNCg0K
-Rml4IHRoZSBmb2xsb3dpbmcgc3BhcnNlIHdhcm5pbmdzOg0KDQouL210ODE5Mi1kYWktaTJzLmM6
-MjA0MDo1OiB3YXJuaW5nOiBzeW1ib2wgJ210ODE5Ml9kYWlfaTJzX2dldF9zaGFyZScgd2FzIG5v
-dCBkZWNsYXJlZC4gU2hvdWxkIGl0IGJlIHN0YXRpYz8NCi4vbXQ4MTkyLWRhaS1pMnMuYzoyMDYw
-OjU6IHdhcm5pbmc6IHN5bWJvbCAnbXQ4MTkyX2RhaV9pMnNfc2V0X3ByaXYnIHdhcyBub3QgZGVj
-bGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/DQoNClJlcG9ydGVkLWJ5OiBIdWxrIFJvYm90IDxo
-dWxrY2lAaHVhd2VpLmNvbT4NClNpZ25lZC1vZmYtYnk6IFpvdSBXZWkgPHpvdV93ZWlAaHVhd2Vp
-LmNvbT4NCi0tLQ0KIHNvdW5kL3NvYy9tZWRpYXRlay9tdDgxOTIvbXQ4MTkyLWRhaS1pMnMuYyB8
-IDQgKystLQ0KIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0p
-DQoNCmRpZmYgLS1naXQgYS9zb3VuZC9zb2MvbWVkaWF0ZWsvbXQ4MTkyL210ODE5Mi1kYWktaTJz
-LmMgYi9zb3VuZC9zb2MvbWVkaWF0ZWsvbXQ4MTkyL210ODE5Mi1kYWktaTJzLmMNCmluZGV4IDUz
-YzU2MGUuLjViMjkzNDAgMTAwNjQ0DQotLS0gYS9zb3VuZC9zb2MvbWVkaWF0ZWsvbXQ4MTkyL210
-ODE5Mi1kYWktaTJzLmMNCisrKyBiL3NvdW5kL3NvYy9tZWRpYXRlay9tdDgxOTIvbXQ4MTkyLWRh
-aS1pMnMuYw0KQEAgLTIwMzcsNyArMjAzNyw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2Fm
-ZV9pMnNfcHJpdiBtdDgxOTJfaTJzX3ByaXZbREFJX0kyU19OVU1dID0gew0KIAl9LA0KIH07DQog
-DQotaW50IG10ODE5Ml9kYWlfaTJzX2dldF9zaGFyZShzdHJ1Y3QgbXRrX2Jhc2VfYWZlICphZmUp
-DQorc3RhdGljIGludCBtdDgxOTJfZGFpX2kyc19nZXRfc2hhcmUoc3RydWN0IG10a19iYXNlX2Fm
-ZSAqYWZlKQ0KIHsNCiAJc3RydWN0IG10ODE5Ml9hZmVfcHJpdmF0ZSAqYWZlX3ByaXYgPSBhZmUt
-PnBsYXRmb3JtX3ByaXY7DQogCWNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqb2Zfbm9kZSA9IGFm
-ZS0+ZGV2LT5vZl9ub2RlOyBAQCAtMjA1Nyw3ICsyMDU3LDcgQEAgaW50IG10ODE5Ml9kYWlfaTJz
-X2dldF9zaGFyZShzdHJ1Y3QgbXRrX2Jhc2VfYWZlICphZmUpDQogCXJldHVybiAwOw0KIH0NCiAN
-Ci1pbnQgbXQ4MTkyX2RhaV9pMnNfc2V0X3ByaXYoc3RydWN0IG10a19iYXNlX2FmZSAqYWZlKQ0K
-K3N0YXRpYyBpbnQgbXQ4MTkyX2RhaV9pMnNfc2V0X3ByaXYoc3RydWN0IG10a19iYXNlX2FmZSAq
-YWZlKQ0KIHsNCiAJaW50IGk7DQogCWludCByZXQ7DQotLQ0KMi42LjINCg0KX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Fix the following sparse warnings:
+
+./mt8192-dai-i2s.c:2040:5: warning: symbol 'mt8192_dai_i2s_get_share' was not declared. Should it be static?
+./mt8192-dai-i2s.c:2060:5: warning: symbol 'mt8192_dai_i2s_set_priv' was not declared. Should it be static?
+./mt8192-afe-gpio.c:15:16: warning: symbol 'aud_pinctrl' was not declared. Should it be static?
+./mt8192-afe-pcm.c:70:5: warning: symbol 'mt8192_get_memif_pbuf_size' was not declared. Should it be static?
+./mt8192-afe-pcm.c:2137:39: warning: symbol 'mt8192_afe_component' was not declared. Should it be static?
+
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Zou Wei <zou_wei@huawei.com>
+---
+ sound/soc/mediatek/mt8192/mt8192-afe-gpio.c | 2 +-
+ sound/soc/mediatek/mt8192/mt8192-afe-pcm.c  | 4 ++--
+ sound/soc/mediatek/mt8192/mt8192-dai-i2s.c  | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c b/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c
+index ea00088..4208820 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c
++++ b/sound/soc/mediatek/mt8192/mt8192-afe-gpio.c
+@@ -12,7 +12,7 @@
+ #include "mt8192-afe-common.h"
+ #include "mt8192-afe-gpio.h"
+ 
+-struct pinctrl *aud_pinctrl;
++static struct pinctrl *aud_pinctrl;
+ 
+ enum mt8192_afe_gpio {
+ 	MT8192_AFE_GPIO_DAT_MISO_OFF,
+diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+index 4a4729f..e7fec2d 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
++++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+@@ -67,7 +67,7 @@ static int mt8192_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
+ 	return mt8192_general_rate_transform(afe->dev, rate);
+ }
+ 
+-int mt8192_get_memif_pbuf_size(struct snd_pcm_substream *substream)
++static int mt8192_get_memif_pbuf_size(struct snd_pcm_substream *substream)
+ {
+ 	struct snd_pcm_runtime *runtime = substream->runtime;
+ 
+@@ -2134,7 +2134,7 @@ static int mt8192_afe_component_probe(struct snd_soc_component *component)
+ 	return mtk_afe_add_sub_dai_control(component);
+ }
+ 
+-const struct snd_soc_component_driver mt8192_afe_component = {
++static const struct snd_soc_component_driver mt8192_afe_component = {
+ 	.name = AFE_PCM_NAME,
+ 	.probe = mt8192_afe_component_probe,
+ 	.pointer = mtk_afe_pcm_pointer,
+diff --git a/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c b/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c
+index 53c560e..5b29340 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c
++++ b/sound/soc/mediatek/mt8192/mt8192-dai-i2s.c
+@@ -2037,7 +2037,7 @@ static const struct mtk_afe_i2s_priv mt8192_i2s_priv[DAI_I2S_NUM] = {
+ 	},
+ };
+ 
+-int mt8192_dai_i2s_get_share(struct mtk_base_afe *afe)
++static int mt8192_dai_i2s_get_share(struct mtk_base_afe *afe)
+ {
+ 	struct mt8192_afe_private *afe_priv = afe->platform_priv;
+ 	const struct device_node *of_node = afe->dev->of_node;
+@@ -2057,7 +2057,7 @@ int mt8192_dai_i2s_get_share(struct mtk_base_afe *afe)
+ 	return 0;
+ }
+ 
+-int mt8192_dai_i2s_set_priv(struct mtk_base_afe *afe)
++static int mt8192_dai_i2s_set_priv(struct mtk_base_afe *afe)
+ {
+ 	int i;
+ 	int ret;
+-- 
+2.6.2
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
