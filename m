@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8FC5C388F2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:21:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E208CC388F2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:21:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 201E1206F9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:21:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 723C8206F9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:21:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zj8ITJIG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UBn3Uvoq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 201E1206F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ylHi90RH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lnlCEnwL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 723C8206F9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VKlMBGOznow3tJAoNFd3J13TtugJ3IvlTb5uud+8ZtE=; b=zj8ITJIGSYLpC1jcSXUnYfnbC
-	HEBcjT+qu3uOi278V3tGQvTUhQL9puP8GounOkwzkIqUbDqgRPLaqiHEv77dyoK88XblFYYOe+vJG
-	IVtdfwI4+1TsnD2aEu5PM0NlFJMF59kdrR5kTlg/cX9wXvLHc8utgdUwJtacnsRG+uVfKvVdFz/A/
-	cEAp6un0cNqDg6Gr+THWzEZiyNVSYpCI6WQwuAjl3Y1/tY3oHDwTRlDq7YhoaJG9N+YSxV0zirQ7z
-	GEey5M8exdrFNde1JRsSTzFWlLS1kQRU1qw5DO4x1D3Zg4BXiZK76j3Z6NhwImOa3afF9sCO5H4v2
-	G39SYviMw==;
+	 bh=PQYdXLYF2fpteeKIk2CYo4okFYYv1eNtzlVjNfJvJbY=; b=ylHi90RHcPj6JJpIql+G8xCLw
+	P8ZZ6KqpNE9qUj57vTbhFCI3hbLy1uAMVfdH04exoWNZpWCGmQu2siYS+y0j76Xa8cCHwuiOWD4GC
+	LmY8JJLcO9SigeXY+/jZ0Xg4GNodN9lAHmrXT9CO0iVzCp4l6zJmkcfLD2DnYEhL85kF30c4rUX5c
+	xGh7pJ+bzEHhgYvalJFFEELkQ6DJKZ9dLLFwG47Lin9nKVyS8ngnqwSQIusf075VOc0aqObybJ1XY
+	BNS9gLRvNxaZpavWzmu4ZiuGuFc6SupkBEF/WT0CSXCm8bgWq2hC7ph8O9SCU99GZnSYC2KJqDM6f
+	Uizu/jYLw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kav7a-00040k-0a; Fri, 06 Nov 2020 06:21:14 +0000
+	id 1kav7g-00046f-T4; Fri, 06 Nov 2020 06:21:20 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kav6L-0003FQ-Go; Fri, 06 Nov 2020 06:20:01 +0000
-X-UUID: 262d05df23ca4dc2875b86c41b5151a6-20201105
+ id 1kav6M-0003FW-40; Fri, 06 Nov 2020 06:20:03 +0000
+X-UUID: 2f9ebd1c5e4944dab911d85cbe705948-20201105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=COJEGhwhZ3YiSgy4tngOZ9SFs4XBRBqOlSY8hmLbX5E=; 
- b=UBn3Uvoqprv9vmt31afFMhGcvRAQfYE84Uz5xwDl5VVylT8EOgDCVZpwdTNli+pYF9TmMEmjp3stAMwcCei0IUwqEqnb1er++xMWO+j/jmxr+kmwb+UzTgXeHnLWpSgSn+8uP+fi0qwiM+eQYeqwgzv1Rr6bLZf/gkhX8ULH6nQ=;
-X-UUID: 262d05df23ca4dc2875b86c41b5151a6-20201105
+ bh=9WnGz+IS7H2UGNGbzXXA9+mRl9+Op988EvcCwWjyl1s=; 
+ b=lnlCEnwLC1F6ZO6T3Et4b70WRlO2kgkgbr6HwSC+zk15V76m0QaGK0mAOcMirX7hADQ66QGLG9vUb/Dd3IG2iNDYt0O8u/9XLzArpbv3pUpgfWzjpsIf6el+fivJwWhWJiQiuWiRI6gHKV9L7nDUe5CPlyDMby94PaMRBNDDBVY=;
+X-UUID: 2f9ebd1c5e4944dab911d85cbe705948-20201105
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 85257129; Thu, 05 Nov 2020 22:19:52 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 966722986; Thu, 05 Nov 2020 22:19:53 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Nov 2020 22:09:50 -0800
+ 15.0.1497.2; Thu, 5 Nov 2020 22:10:23 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 Nov 2020 14:09:47 +0800
+ MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 Nov 2020 14:10:20 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 6 Nov 2020 14:09:45 +0800
+ Transport; Fri, 6 Nov 2020 14:10:17 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH v2 09/17] phy: phy-mtk-ufs: convert to
+Subject: [PATCH v2 15/17] phy: phy-stm32-usbphyc: convert to
  devm_platform_ioremap_resource
-Date: Fri, 6 Nov 2020 14:08:42 +0800
-Message-ID: <1604642930-29019-9-git-send-email-chunfeng.yun@mediatek.com>
+Date: Fri, 6 Nov 2020 14:08:48 +0800
+Message-ID: <1604642930-29019-15-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1604642930-29019-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1604642930-29019-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 45453EAE72756B745B4B72D84C1D76AA618179DF419B512DF28C53DFD2BAE7C12000:8
+X-TM-SNTS-SMTP: EFD9E1E2B992AEB5ADB5BF5B3ED927FA5564FAD6F08C4EA53AAF509C7A4E78BF2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201106_011957_825762_7076D8D5 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20201106_011958_416930_66FD4711 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,33 +119,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Use devm_platform_ioremap_resource to simplify code
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Reviewed-by: Amelie Delaunay <amelie.delaunay@st.com>
 ---
-v2: no changes
+v2: add Reviewed-by Amelie
 ---
- drivers/phy/mediatek/phy-mtk-ufs.c | 4 +---
+ drivers/phy/st/phy-stm32-usbphyc.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/phy-mtk-ufs.c
-index cf94f5c35dc5..769b00b038d8 100644
---- a/drivers/phy/mediatek/phy-mtk-ufs.c
-+++ b/drivers/phy/mediatek/phy-mtk-ufs.c
-@@ -195,7 +195,6 @@ static int ufs_mtk_phy_probe(struct platform_device *pdev)
+diff --git a/drivers/phy/st/phy-stm32-usbphyc.c b/drivers/phy/st/phy-stm32-usbphyc.c
+index 2b3639cba51a..0ab18f2078db 100644
+--- a/drivers/phy/st/phy-stm32-usbphyc.c
++++ b/drivers/phy/st/phy-stm32-usbphyc.c
+@@ -311,7 +311,6 @@ static int stm32_usbphyc_probe(struct platform_device *pdev)
+ 	struct stm32_usbphyc *usbphyc;
  	struct device *dev = &pdev->dev;
- 	struct phy *generic_phy;
- 	struct phy_provider *phy_provider;
+ 	struct device_node *child, *np = dev->of_node;
 -	struct resource *res;
- 	struct ufs_mtk_phy *phy;
- 	int ret;
- 
-@@ -203,8 +202,7 @@ static int ufs_mtk_phy_probe(struct platform_device *pdev)
- 	if (!phy)
- 		return -ENOMEM;
+ 	struct phy_provider *phy_provider;
+ 	u32 version;
+ 	int ret, port = 0;
+@@ -322,8 +321,7 @@ static int stm32_usbphyc_probe(struct platform_device *pdev)
+ 	usbphyc->dev = dev;
+ 	dev_set_drvdata(dev, usbphyc);
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	phy->mmio = devm_ioremap_resource(dev, res);
-+	phy->mmio = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(phy->mmio))
- 		return PTR_ERR(phy->mmio);
+-	usbphyc->base = devm_ioremap_resource(dev, res);
++	usbphyc->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(usbphyc->base))
+ 		return PTR_ERR(usbphyc->base);
  
 -- 
 2.18.0
