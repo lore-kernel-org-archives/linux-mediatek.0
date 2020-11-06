@@ -5,20 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 907ADC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A60A3C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:22:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 194FC206F9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:22:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 179B7206F9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:22:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UWe2g+rx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="D9MPGBiY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 194FC206F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tlKh8y5V";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jSwp0rju"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 179B7206F9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iMcCwrtaxmBdZbiR3LNE1a8iqC565y37tEs/GpxdRbA=; b=UWe2g+rxViXCcsLEOM987wSht
-	OzecSaAyYUsWPJsstc3hDZHp1MHF8aUfgMk4Qje//FoCvVLs0cZ/j5T2zImGIa5/0vnjRwArmB69i
-	9l0jzpidNlnC+wUbLor843zKN9q45lm5xQwI9ScW3hbSnuiNkLjO7pbrHshWyAPEe/iC/wCj1xjtp
-	v+TRe0KppwAkzC4Nf7/HJ7LeQWlNdqjVvw9RLcwgaGfUsAjIuHqYjvZZRrzqGho7ce3S2lSGnK3e1
-	kk72i6xQzj3TwWrglzRkUdAygZgAUgdDoRCMWkqnD6gIfOgGAZu2e/9zRzhkr3YHm2zLEzsS3SNnL
-	T6e1y716g==;
+	 bh=RdwPFnsWaNCI2+18QSLiiOU2GuWRsT33pgq06ZRVi2o=; b=tlKh8y5Vd6qGNGI06SMI5YITr
+	sPG5ShV4mV1W5aLIEPYnpXIc0PNWBXpwa9T5uwlgjIqqqm/U0rGtXbnmoF4VJRrwiseNtYE8aCKOE
+	15XLJENKHPfqXXl5CLr+gNC8j/zi+Pk+Lmi6jI+LRHb+hacRkQXkbPaR9zH1gmxXCGZpjq9923YbZ
+	Fn6CfKtxFiu2EUBkZF6944g2Rrdq7eqe9PjR9QiMkHkQip4QQKbxCHjBS7xjDr9lE8OKoeV4k/hIL
+	lNjsh0H3aIZtY6VBFll9LxjYFEsZICldZ5/M/HxHrFTYXWlAnxag3nf1H8Kb2t0WDIjjLXmMcEcPU
+	LlnA9vtFw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kav85-0004Nr-RF; Fri, 06 Nov 2020 06:21:45 +0000
+	id 1kav8R-0004dm-R3; Fri, 06 Nov 2020 06:22:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kav6P-0003FQ-W7; Fri, 06 Nov 2020 06:20:08 +0000
-X-UUID: aef1ace46ee2432d90c423a7f85a90b0-20201105
+ id 1kav6T-0003FW-Ef; Fri, 06 Nov 2020 06:20:16 +0000
+X-UUID: 93cebd9c9d41446b9069001f9db58f75-20201105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=kcYJOQCUhpL0Je8ZLN8zpzjkwI1DXOb1DaBG4XizmFU=; 
- b=D9MPGBiY1gRZ3SiJsUY7pBdVn+dZy9K23wDRTAv7L9JSydb5ubNRHLRVCF0LXvYlbgoECKmYvr9XQ3mC5rHgCFn09QqA0kJxKwhbVQ7h2+xzN3ctQc2wpZW2AZ6YwwO1GIyY02+ygrNAfjBFcPmkVK9Q2QpbVdQo1/Nra9VxKnI=;
-X-UUID: aef1ace46ee2432d90c423a7f85a90b0-20201105
+ bh=SZ/bmiQ31xaUdPCdAKSj0fT+ct7Qr3u27vV3q/CfUUI=; 
+ b=jSwp0rju+Mcpfpojpp24GJW+1NUIKE6kgZwDRlL6y0a3TPDVgTlSPJl0uiHv9gkn7talk+MZSsnNJ9gty3EvbBr0/+nvTV1i60uO27ydm7blRN9XeCqN5EOOpB1luS49m6Rv+MdzmovwjVhLUKTs7nP9nShFlO8llG6Diw9FHJc=;
+X-UUID: 93cebd9c9d41446b9069001f9db58f75-20201105
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1704202875; Thu, 05 Nov 2020 22:19:50 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Nov 2020 22:10:20 -0800
+ with ESMTP id 1178816276; Thu, 05 Nov 2020 22:19:53 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 Nov 2020 22:09:53 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 Nov 2020 14:10:17 +0800
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 Nov 2020 14:09:49 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 6 Nov 2020 14:10:08 +0800
+ Transport; Fri, 6 Nov 2020 14:09:48 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
-Subject: [PATCH v2 14/17] phy: samsung: convert to
- devm_platform_ioremap_resource
-Date: Fri, 6 Nov 2020 14:08:47 +0800
-Message-ID: <1604642930-29019-14-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 10/17] phy: qualcomm: convert to
+ devm_platform_ioremap_resource(_byname)
+Date: Fri, 6 Nov 2020 14:08:43 +0800
+Message-ID: <1604642930-29019-10-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1604642930-29019-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1604642930-29019-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FC796B7022F1A2B384200FD8F2280FDFCAF8AABA395D4A6FE9B23C12774B49BB2000:8
+X-TM-SNTS-SMTP: 2C7404545813924BCDB9CF82E2506933C885144DAB531D918CBFB360B05661F72000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201106_012002_287879_BE77EAB8 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20201106_012006_739780_2DCA4F68 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,114 +116,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use devm_platform_ioremap_resource to simplify code
+Use devm_platform_ioremap_resource(_byname) to simplify code
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
-v2: add Reviewed-by Krzysztof
+v2: no changes
 ---
- drivers/phy/samsung/phy-exynos-pcie.c     | 7 ++-----
- drivers/phy/samsung/phy-exynos5-usbdrd.c  | 4 +---
- drivers/phy/samsung/phy-exynos5250-sata.c | 5 +----
- drivers/phy/samsung/phy-samsung-usb2.c    | 4 +---
- 4 files changed, 5 insertions(+), 15 deletions(-)
+ drivers/phy/qualcomm/phy-qcom-apq8064-sata.c | 4 +---
+ drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c  | 4 +---
+ drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c | 4 +---
+ drivers/phy/qualcomm/phy-qcom-pcie2.c        | 5 +----
+ drivers/phy/qualcomm/phy-qcom-qusb2.c        | 4 +---
+ 5 files changed, 5 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/phy/samsung/phy-exynos-pcie.c b/drivers/phy/samsung/phy-exynos-pcie.c
-index 7e28b1aea0d1..c98fff5c1ac8 100644
---- a/drivers/phy/samsung/phy-exynos-pcie.c
-+++ b/drivers/phy/samsung/phy-exynos-pcie.c
-@@ -232,7 +232,6 @@ static int exynos_pcie_phy_probe(struct platform_device *pdev)
- 	struct exynos_pcie_phy *exynos_phy;
- 	struct phy *generic_phy;
- 	struct phy_provider *phy_provider;
--	struct resource *res;
- 	const struct exynos_pcie_phy_data *drv_data;
- 
- 	drv_data = of_device_get_match_data(dev);
-@@ -243,13 +242,11 @@ static int exynos_pcie_phy_probe(struct platform_device *pdev)
- 	if (!exynos_phy)
- 		return -ENOMEM;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	exynos_phy->phy_base = devm_ioremap_resource(dev, res);
-+	exynos_phy->phy_base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(exynos_phy->phy_base))
- 		return PTR_ERR(exynos_phy->phy_base);
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
--	exynos_phy->blk_base = devm_ioremap_resource(dev, res);
-+	exynos_phy->blk_base = devm_platform_ioremap_resource(pdev, 1);
- 	if (IS_ERR(exynos_phy->blk_base))
- 		return PTR_ERR(exynos_phy->blk_base);
- 
-diff --git a/drivers/phy/samsung/phy-exynos5-usbdrd.c b/drivers/phy/samsung/phy-exynos5-usbdrd.c
-index cfa9b8b7e5ac..ee0848fe8432 100644
---- a/drivers/phy/samsung/phy-exynos5-usbdrd.c
-+++ b/drivers/phy/samsung/phy-exynos5-usbdrd.c
-@@ -829,7 +829,6 @@ static int exynos5_usbdrd_phy_probe(struct platform_device *pdev)
- 	struct device_node *node = dev->of_node;
- 	struct exynos5_usbdrd_phy *phy_drd;
- 	struct phy_provider *phy_provider;
--	struct resource *res;
- 	const struct exynos5_usbdrd_phy_drvdata *drv_data;
- 	struct regmap *reg_pmu;
- 	u32 pmu_offset;
-@@ -843,8 +842,7 @@ static int exynos5_usbdrd_phy_probe(struct platform_device *pdev)
- 	dev_set_drvdata(dev, phy_drd);
- 	phy_drd->dev = dev;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	phy_drd->reg_phy = devm_ioremap_resource(dev, res);
-+	phy_drd->reg_phy = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(phy_drd->reg_phy))
- 		return PTR_ERR(phy_drd->reg_phy);
- 
-diff --git a/drivers/phy/samsung/phy-exynos5250-sata.c b/drivers/phy/samsung/phy-exynos5250-sata.c
-index 4dd7324d91b2..9ec234243f7c 100644
---- a/drivers/phy/samsung/phy-exynos5250-sata.c
-+++ b/drivers/phy/samsung/phy-exynos5250-sata.c
-@@ -162,7 +162,6 @@ static int exynos_sata_phy_probe(struct platform_device *pdev)
+diff --git a/drivers/phy/qualcomm/phy-qcom-apq8064-sata.c b/drivers/phy/qualcomm/phy-qcom-apq8064-sata.c
+index ce91ae7f8dbd..d437a249cd73 100644
+--- a/drivers/phy/qualcomm/phy-qcom-apq8064-sata.c
++++ b/drivers/phy/qualcomm/phy-qcom-apq8064-sata.c
+@@ -201,7 +201,6 @@ static int qcom_apq8064_sata_phy_probe(struct platform_device *pdev)
  {
- 	struct exynos_sata_phy *sata_phy;
+ 	struct qcom_apq8064_sata_phy *phy;
  	struct device *dev = &pdev->dev;
 -	struct resource *res;
  	struct phy_provider *phy_provider;
- 	struct device_node *node;
- 	int ret = 0;
-@@ -171,9 +170,7 @@ static int exynos_sata_phy_probe(struct platform_device *pdev)
- 	if (!sata_phy)
+ 	struct phy *generic_phy;
+ 	int ret;
+@@ -210,8 +209,7 @@ static int qcom_apq8064_sata_phy_probe(struct platform_device *pdev)
+ 	if (!phy)
  		return -ENOMEM;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--
--	sata_phy->regs = devm_ioremap_resource(dev, res);
-+	sata_phy->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(sata_phy->regs))
- 		return PTR_ERR(sata_phy->regs);
+-	phy->mmio = devm_ioremap_resource(dev, res);
++	phy->mmio = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(phy->mmio))
+ 		return PTR_ERR(phy->mmio);
  
-diff --git a/drivers/phy/samsung/phy-samsung-usb2.c b/drivers/phy/samsung/phy-samsung-usb2.c
-index a3ed3ff04690..f79f605cff79 100644
---- a/drivers/phy/samsung/phy-samsung-usb2.c
-+++ b/drivers/phy/samsung/phy-samsung-usb2.c
-@@ -143,7 +143,6 @@ static int samsung_usb2_phy_probe(struct platform_device *pdev)
- 	const struct samsung_usb2_phy_config *cfg;
+diff --git a/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c b/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c
+index fc7f9df80a7b..d3e7d5e1d1b6 100644
+--- a/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c
++++ b/drivers/phy/qualcomm/phy-qcom-ipq4019-usb.c
+@@ -95,7 +95,6 @@ MODULE_DEVICE_TABLE(of, ipq4019_usb_phy_of_match);
+ static int ipq4019_usb_phy_probe(struct platform_device *pdev)
+ {
  	struct device *dev = &pdev->dev;
+-	struct resource *res;
  	struct phy_provider *phy_provider;
--	struct resource *mem;
- 	struct samsung_usb2_phy_driver *drv;
- 	int i, ret;
+ 	struct ipq4019_usb_phy *phy;
  
-@@ -167,8 +166,7 @@ static int samsung_usb2_phy_probe(struct platform_device *pdev)
- 	drv->cfg = cfg;
- 	drv->dev = dev;
+@@ -104,8 +103,7 @@ static int ipq4019_usb_phy_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
  
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	drv->reg_phy = devm_ioremap_resource(dev, mem);
-+	drv->reg_phy = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(drv->reg_phy)) {
- 		dev_err(dev, "Failed to map register memory (phy)\n");
- 		return PTR_ERR(drv->reg_phy);
+ 	phy->dev = &pdev->dev;
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	phy->base = devm_ioremap_resource(&pdev->dev, res);
++	phy->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(phy->base)) {
+ 		dev_err(dev, "failed to remap register memory\n");
+ 		return PTR_ERR(phy->base);
+diff --git a/drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c b/drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c
+index 41a69f56b346..0fc2a1ed39b3 100644
+--- a/drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c
++++ b/drivers/phy/qualcomm/phy-qcom-ipq806x-sata.c
+@@ -128,7 +128,6 @@ static int qcom_ipq806x_sata_phy_probe(struct platform_device *pdev)
+ {
+ 	struct qcom_ipq806x_sata_phy *phy;
+ 	struct device *dev = &pdev->dev;
+-	struct resource *res;
+ 	struct phy_provider *phy_provider;
+ 	struct phy *generic_phy;
+ 	int ret;
+@@ -137,8 +136,7 @@ static int qcom_ipq806x_sata_phy_probe(struct platform_device *pdev)
+ 	if (!phy)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	phy->mmio = devm_ioremap_resource(dev, res);
++	phy->mmio = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(phy->mmio))
+ 		return PTR_ERR(phy->mmio);
+ 
+diff --git a/drivers/phy/qualcomm/phy-qcom-pcie2.c b/drivers/phy/qualcomm/phy-qcom-pcie2.c
+index 9dba3594e6d9..5407e59bb185 100644
+--- a/drivers/phy/qualcomm/phy-qcom-pcie2.c
++++ b/drivers/phy/qualcomm/phy-qcom-pcie2.c
+@@ -250,7 +250,6 @@ static int qcom_pcie2_phy_probe(struct platform_device *pdev)
+ {
+ 	struct phy_provider *phy_provider;
+ 	struct qcom_phy *qphy;
+-	struct resource *res;
+ 	struct device *dev = &pdev->dev;
+ 	struct phy *phy;
+ 	int ret;
+@@ -260,9 +259,7 @@ static int qcom_pcie2_phy_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	qphy->dev = dev;
+-
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	qphy->base = devm_ioremap_resource(dev, res);
++	qphy->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(qphy->base))
+ 		return PTR_ERR(qphy->base);
+ 
+diff --git a/drivers/phy/qualcomm/phy-qcom-qusb2.c b/drivers/phy/qualcomm/phy-qcom-qusb2.c
+index 557547dabfd5..109792203baf 100644
+--- a/drivers/phy/qualcomm/phy-qcom-qusb2.c
++++ b/drivers/phy/qualcomm/phy-qcom-qusb2.c
+@@ -844,7 +844,6 @@ static int qusb2_phy_probe(struct platform_device *pdev)
+ 	struct qusb2_phy *qphy;
+ 	struct phy_provider *phy_provider;
+ 	struct phy *generic_phy;
+-	struct resource *res;
+ 	int ret, i;
+ 	int num;
+ 	u32 value;
+@@ -855,8 +854,7 @@ static int qusb2_phy_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	or = &qphy->overrides;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	qphy->base = devm_ioremap_resource(dev, res);
++	qphy->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(qphy->base))
+ 		return PTR_ERR(qphy->base);
+ 
 -- 
 2.18.0
 _______________________________________________
