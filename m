@@ -8,73 +8,70 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C40E6C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 05:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40059C388F2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:09:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23A0D206A1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 05:55:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC0D421D46
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 06:09:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DgNIS1KB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pQkH6esf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23A0D206A1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y0Lnn8Ik";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PJhNgMNC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC0D421D46
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wl2glubZ1h2zwdmt5G2KOTvXDTab5EFkkpytFPIKFXo=; b=DgNIS1KBhaHa0ySNG08bGGWMU
-	UfheMRtHcPKL9bUwtwW9QNW0v1/efV57HRVlei3ELdEgtONQWjiew19SYg1xUKMlyzKMyA5iSENSE
-	DGdfBLLeDbvaJIMEtK9YfSLUov0QrKqeR+kzhYR4G32/RSrjG+l4wioJnirkA7K5Q1sfrEQg6rOUO
-	dKC6W+OobHC2tuXqoIy1k/DCK9AeMbI281+bgdgE1XvqfCvSSGJQYmJM6PJr+8AL2zAzMve+4/ul5
-	i5IdczF/KwpaBUTiHfogGgTvQVbMfFSZrOWIZZfDNE8p4ViJV3pxJ+TAIujjrrk1vV+jvzs4a0S9J
-	fH4hBDpkA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4pfUAVy3JCvu43d46KY0OntZEfj8QOuJhFSjgskYeG4=; b=Y0Lnn8IkzMpfZu9mUsXEV+kOIi
+	3IfYcrquL1HuCwzqKJumCgKbdnMV2oiGwXFUYP3YTqAlaMU4rm7Ftp/e+sp4SgR3IJSLmqY4ZtTI+
+	JG0pjqjeBwWXTCQFURFvkZ8Z7G+wq3rf9AX7F9rQm3uxjyIRgxovDNzJtr7V6K9ueZIHdQGWGSW2K
+	SI+yKVc4WdLaDb1kcP7+DNuftpVuM9Zs/jnL8YvuwnvVm4IJBXZbvMeVE7rXEDBhO8z1DUoO8QNs1
+	LN+VnU3Sfc+lf1TGJJw0sq/4VPq2XxBphI8ePkP2Z42feJSXbdvfEmFCnVGLlnetXyyhRVw424y4m
+	aknmSfJw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kauiC-0008BO-9P; Fri, 06 Nov 2020 05:55:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kauwR-0000qm-WA; Fri, 06 Nov 2020 06:09:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaui9-0008AM-GX; Fri, 06 Nov 2020 05:54:58 +0000
-X-UUID: 9bfebf4e2b9f43a8b353f80d2bdc3af8-20201105
+ id 1kauwL-0000ns-Mv; Fri, 06 Nov 2020 06:09:39 +0000
+X-UUID: 33c28090eb7f43c89b7f88a563788a86-20201105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jrzc89JpNcNErmmlzzWp/qr11crPr2vGajZEAmBKLmI=; 
- b=pQkH6esfRoBdxhywTXq7oyuHlRmFHtlnf7ME8WiUV+er3ve37r1iBaqm3dbZulWAOwvXdyWDNk5+YADYP0V6bmNIwirfQ4/8MvCgL1eXYIwOd7P+K5fFLz6ydi8bs9+X+NgR/tOV5CuBRwLkDl7eyOBqbGhOaRNu5FXmQLQkBEY=;
-X-UUID: 9bfebf4e2b9f43a8b353f80d2bdc3af8-20201105
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=nEoLX1/+6duNwH8WrVAfgyNUeWNqni/qD+IGm5v49yw=; 
+ b=PJhNgMNC1nfgsQAp55EojwMP0HPpaeZ86wKP7nByg50MvJQ486WJRWnSd/xskEY1UMwVxxGb8TUvqO9BM8il545euKrcY6VlfFD3H7TIBkAECw0Kb4ki+wGbR2SMXSugtTLa8hOtFJTuXez8UtOBturzu//czOeMhrTXpa1/QwA=;
+X-UUID: 33c28090eb7f43c89b7f88a563788a86-20201105
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1740271884; Thu, 05 Nov 2020 21:54:48 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 633491757; Thu, 05 Nov 2020 22:09:31 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Nov 2020 21:54:46 -0800
+ 15.0.1497.2; Thu, 5 Nov 2020 22:09:29 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 Nov 2020 13:54:43 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 6 Nov 2020 13:54:41 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Alan Stern <stern@rowland.harvard.edu>, Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [RESEND PATCH v4] usb: mtu3: fix panic in mtu3_gadget_stop()
-Date: Fri, 6 Nov 2020 13:54:29 +0800
-Message-ID: <1604642069-20961-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1598539328-1976-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1598539328-1976-1-git-send-email-macpaul.lin@mediatek.com>
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 Nov 2020 14:09:25 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 6 Nov 2020 14:09:24 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
+Subject: [PATCH v2 01/17] phy: allwinner: convert to
+ devm_platform_ioremap_resource(_byname)
+Date: Fri, 6 Nov 2020 14:08:34 +0800
+Message-ID: <1604642930-29019-1-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 39034FCC61EDF9B6A654BEEF06F6764DB605319D12BBEBE5EA98C7A01A428BEF2000:8
+X-TM-SNTS-SMTP: 3C3951C449F6D73153743392941B122F987841F75BC64504B988C2BC4C288B302000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201106_005457_776301_3A734C25 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20201106_010937_941610_576BE8B5 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,94 +83,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-usb@vger.kernel.org,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Eddie Hung <eddie.hung@mediatek.com>, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Macpaul Lin <macpaul@gmail.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Ainge Hsu <ainge.hsu@mediatek.com>
+Cc: Ondrej Jirman <megous@megous.com>, Peter Chen <peter.chen@nxp.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, Anil Varughese <aniljoy@cadence.com>,
+ Wei Yongjun <weiyongjun1@huawei.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Kevin
+ Hilman <khilman@baylibre.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Rayagonda Kokatanur <rayagonda.kokatanur@broadcom.com>,
+ Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com,
+ NXP Linux Team <linux-imx@nxp.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Icenowy Zheng <icenowy@aosc.io>, Bharat Gooty <bharat.gooty@broadcom.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Maxime Ripard <mripard@kernel.org>, Yue Wang <yue.wang@amlogic.com>,
+ Lubomir Rintel <lkundrak@v3.sk>, Remi Pommarel <repk@triplefau.lt>,
+ linux-mediatek@lists.infradead.org,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Roger
+ Quadros <rogerq@ti.com>, Hanjie Lin <hanjie.lin@amlogic.com>,
+ Ma Feng <mafeng.ma@huawei.com>, Scott
+ Branden <sbranden@broadcom.com>, Randy Dunlap <rdunlap@infradead.org>,
+ Jyri Sarha <jsarha@ti.com>, linux-kernel@vger.kernel.org,
+ Sanket Parmar <sparmar@cadence.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Joe Perches <joe@perches.com>,
+ Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
+ Li Jun <jun.li@nxp.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch fixes a possible issue when mtu3_gadget_stop()
-already assigned NULL to mtu->gadget_driver during mtu_gadget_disconnect().
+Use devm_platform_ioremap_resource(_byname) to simplify code
 
-[<ffffff9008161974>] notifier_call_chain+0xa4/0x128
-[<ffffff9008161fd4>] __atomic_notifier_call_chain+0x84/0x138
-[<ffffff9008162ec0>] notify_die+0xb0/0x120
-[<ffffff900809e340>] die+0x1f8/0x5d0
-[<ffffff90080d03b4>] __do_kernel_fault+0x19c/0x280
-[<ffffff90080d04dc>] do_bad_area+0x44/0x140
-[<ffffff90080d0f9c>] do_translation_fault+0x4c/0x90
-[<ffffff9008080a78>] do_mem_abort+0xb8/0x258
-[<ffffff90080849d0>] el1_da+0x24/0x3c
-[<ffffff9009bde01c>] mtu3_gadget_disconnect+0xac/0x128
-[<ffffff9009bd576c>] mtu3_irq+0x34c/0xc18
-[<ffffff90082ac03c>] __handle_irq_event_percpu+0x2ac/0xcd0
-[<ffffff90082acae0>] handle_irq_event_percpu+0x80/0x138
-[<ffffff90082acc44>] handle_irq_event+0xac/0x148
-[<ffffff90082b71cc>] handle_fasteoi_irq+0x234/0x568
-[<ffffff90082a8708>] generic_handle_irq+0x48/0x68
-[<ffffff90082a96ac>] __handle_domain_irq+0x264/0x1740
-[<ffffff90080819f4>] gic_handle_irq+0x14c/0x250
-[<ffffff9008084cec>] el1_irq+0xec/0x194
-[<ffffff90085b985c>] dma_pool_alloc+0x6e4/0xae0
-[<ffffff9008d7f890>] cmdq_mbox_pool_alloc_impl+0xb0/0x238
-[<ffffff9008d80904>] cmdq_pkt_alloc_buf+0x2dc/0x7c0
-[<ffffff9008d80f60>] cmdq_pkt_add_cmd_buffer+0x178/0x270
-[<ffffff9008d82320>] cmdq_pkt_perf_begin+0x108/0x148
-[<ffffff9008d824d8>] cmdq_pkt_create+0x178/0x1f0
-[<ffffff9008f96230>] mtk_crtc_config_default_path+0x328/0x7a0
-[<ffffff90090246cc>] mtk_drm_idlemgr_kick+0xa6c/0x1460
-[<ffffff9008f9bbb4>] mtk_drm_crtc_atomic_begin+0x1a4/0x1a68
-[<ffffff9008e8df9c>] drm_atomic_helper_commit_planes+0x154/0x878
-[<ffffff9008f2fb70>] mtk_atomic_complete.isra.16+0xe80/0x19c8
-[<ffffff9008f30910>] mtk_atomic_commit+0x258/0x898
-[<ffffff9008ef142c>] drm_atomic_commit+0xcc/0x108
-[<ffffff9008ef7cf0>] drm_mode_atomic_ioctl+0x1c20/0x2580
-[<ffffff9008ebc768>] drm_ioctl_kernel+0x118/0x1b0
-[<ffffff9008ebcde8>] drm_ioctl+0x5c0/0x920
-[<ffffff900863b030>] do_vfs_ioctl+0x188/0x1820
-[<ffffff900863c754>] SyS_ioctl+0x8c/0xa0
-
-Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: stable@vger.kernel.org
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-RESEND for v4:
-  - Resend this patch by plain-text instead of MTK IT's default (base64)
-    outgoing SMTP settings.
-  - Add Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Changes for v4:
-  - Add a "Fixes:" line.  Thanks Felipe.
-Changes for v3:
-  - Call synchronize_irq() in mtu3_gadget_stop() instead of remembering
-    callback function in mtu3_gadget_disconnect().
-    Thanks for Alan's suggestion.
-Changes for v2:
-  - Check mtu_gadget_driver out of spin_lock might still not work.
-    We use a temporary pointer to remember the callback function.
+v2: no changes
+---
+ drivers/phy/allwinner/phy-sun4i-usb.c       | 8 ++------
+ drivers/phy/allwinner/phy-sun50i-usb3.c     | 4 +---
+ drivers/phy/allwinner/phy-sun6i-mipi-dphy.c | 4 +---
+ drivers/phy/allwinner/phy-sun9i-usb.c       | 4 +---
+ 4 files changed, 5 insertions(+), 15 deletions(-)
 
- drivers/usb/mtu3/mtu3_gadget.c |    1 +
- 1 file changed, 1 insertions(+)
-
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index 1de5c9a..1ab3d3a 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -564,6 +564,7 @@ static int mtu3_gadget_stop(struct usb_gadget *g)
+diff --git a/drivers/phy/allwinner/phy-sun4i-usb.c b/drivers/phy/allwinner/phy-sun4i-usb.c
+index 651d5e2a25ce..406d5943f8a8 100644
+--- a/drivers/phy/allwinner/phy-sun4i-usb.c
++++ b/drivers/phy/allwinner/phy-sun4i-usb.c
+@@ -686,7 +686,6 @@ static int sun4i_usb_phy_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct phy_provider *phy_provider;
+-	struct resource *res;
+ 	int i, ret;
  
- 	spin_unlock_irqrestore(&mtu->lock, flags);
+ 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+@@ -700,8 +699,7 @@ static int sun4i_usb_phy_probe(struct platform_device *pdev)
+ 	if (!data->cfg)
+ 		return -EINVAL;
  
-+	synchronize_irq(mtu->irq);
- 	return 0;
- }
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "phy_ctrl");
+-	data->base = devm_ioremap_resource(dev, res);
++	data->base = devm_platform_ioremap_resource_byname(pdev, "phy_ctrl");
+ 	if (IS_ERR(data->base))
+ 		return PTR_ERR(data->base);
+ 
+@@ -796,9 +794,7 @@ static int sun4i_usb_phy_probe(struct platform_device *pdev)
+ 
+ 		if (i || data->cfg->phy0_dual_route) { /* No pmu for musb */
+ 			snprintf(name, sizeof(name), "pmu%d", i);
+-			res = platform_get_resource_byname(pdev,
+-							IORESOURCE_MEM, name);
+-			phy->pmu = devm_ioremap_resource(dev, res);
++			phy->pmu = devm_platform_ioremap_resource_byname(pdev, name);
+ 			if (IS_ERR(phy->pmu))
+ 				return PTR_ERR(phy->pmu);
+ 		}
+diff --git a/drivers/phy/allwinner/phy-sun50i-usb3.c b/drivers/phy/allwinner/phy-sun50i-usb3.c
+index b1c04f71a31d..84055b720016 100644
+--- a/drivers/phy/allwinner/phy-sun50i-usb3.c
++++ b/drivers/phy/allwinner/phy-sun50i-usb3.c
+@@ -134,7 +134,6 @@ static int sun50i_usb3_phy_probe(struct platform_device *pdev)
+ 	struct sun50i_usb3_phy *phy;
+ 	struct device *dev = &pdev->dev;
+ 	struct phy_provider *phy_provider;
+-	struct resource *res;
+ 
+ 	phy = devm_kzalloc(dev, sizeof(*phy), GFP_KERNEL);
+ 	if (!phy)
+@@ -153,8 +152,7 @@ static int sun50i_usb3_phy_probe(struct platform_device *pdev)
+ 		return PTR_ERR(phy->reset);
+ 	}
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	phy->regs = devm_ioremap_resource(dev, res);
++	phy->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(phy->regs))
+ 		return PTR_ERR(phy->regs);
+ 
+diff --git a/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c b/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
+index 1fa761ba6cbb..f0bc87d654d4 100644
+--- a/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
++++ b/drivers/phy/allwinner/phy-sun6i-mipi-dphy.c
+@@ -253,15 +253,13 @@ static int sun6i_dphy_probe(struct platform_device *pdev)
+ {
+ 	struct phy_provider *phy_provider;
+ 	struct sun6i_dphy *dphy;
+-	struct resource *res;
+ 	void __iomem *regs;
+ 
+ 	dphy = devm_kzalloc(&pdev->dev, sizeof(*dphy), GFP_KERNEL);
+ 	if (!dphy)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	regs = devm_ioremap_resource(&pdev->dev, res);
++	regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(regs)) {
+ 		dev_err(&pdev->dev, "Couldn't map the DPHY encoder registers\n");
+ 		return PTR_ERR(regs);
+diff --git a/drivers/phy/allwinner/phy-sun9i-usb.c b/drivers/phy/allwinner/phy-sun9i-usb.c
+index fc6784dd7fa0..2f9e60c188b8 100644
+--- a/drivers/phy/allwinner/phy-sun9i-usb.c
++++ b/drivers/phy/allwinner/phy-sun9i-usb.c
+@@ -117,7 +117,6 @@ static int sun9i_usb_phy_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct phy_provider *phy_provider;
+-	struct resource *res;
+ 
+ 	phy = devm_kzalloc(dev, sizeof(*phy), GFP_KERNEL);
+ 	if (!phy)
+@@ -156,8 +155,7 @@ static int sun9i_usb_phy_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	phy->pmu = devm_ioremap_resource(dev, res);
++	phy->pmu = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(phy->pmu))
+ 		return PTR_ERR(phy->pmu);
  
 -- 
-1.7.9.5
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
