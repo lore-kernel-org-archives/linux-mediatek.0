@@ -2,23 +2,23 @@ Return-Path: <SRS0=NSCp=EM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01195C2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 11:10:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7595C55178
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 11:11:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C78720735
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 11:10:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2961020825
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2020 11:11:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zt3LUNr6";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BicWgc2s"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C78720735
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q7jHrr9p";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="U0RNXPmq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2961020825
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,63 +27,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mHKeaDWks8MBcTth5IDGD7cJvFMo30p5CDf31QPdDp0=; b=zt3LUNr6n3DPIevGyhMbAYDIqC
-	nLn2rxJNReeIxtDyNtLX/omJdnBgP9SbGHYpn/FsCXPyUdG1EjpX6u1fh9p328vcP/7Q/Fi7UAGNc
-	XTnK6Y5uk3VOqZXshr2fexTFvGlFh9hIOb1nmKVojvbSCPOGs3zB09HKDIN0DBPBKE6kSqeTQu5jC
-	edKb8bM4+r5vnMByLHMcIZEbrQkYQBpsAVlJJSk+WegW6GFhpMVu9pcW1JJNxMGsw+HuzIFPkm3se
-	pIFFVzEe2tilBzwEBdAPN3aiu8KGdsNvB/Z+2UrmmKSm7rzeJB93ZMZ0e03LbtIUaHvy3o8dMFI5s
-	mOAXZxFw==;
+	bh=w3LBE0jTONZbeP5AwL/KWRCbtGlXM4Oygh99Mt86fPw=; b=Q7jHrr9p5ebehbUGQqU/VnrTSw
+	6n5AAnTJ0/swqWPzb3+AAK5OxYa8lNsGY2H8it03KUyG4ABhz5qb2N5DtxQAmGZte7tes2OGVGoFd
+	2sjzrr4OauVzoSgmTUIl72qaX5l8wgNXq2BvVpH1OpPDKWwE1cAytBHaLJzY/olYp0xtTSLnL5Cos
+	5xv7ckDz15ESezhz3Pcfw70/Zbq8YNAptjzC5u6YB6AOvxECKKoSyqVWbS6mEzUUL+HkGFwBUi2Fc
+	7G2q6g2AERmvMaVofU2px49ZjUoHQ67FZYx5uVL0SPoUzYmxNz6C3qAq0UJi2umOywZJxnKJchNDs
+	cUIvFRGg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kayxb-00015b-Ap; Fri, 06 Nov 2020 10:27:11 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1kayxP-0000wv-V5; Fri, 06 Nov 2020 10:27:00 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaywe-0000Sn-VI; Fri, 06 Nov 2020 10:26:14 +0000
-Received: by mail-pg1-x532.google.com with SMTP id t14so615391pgg.1;
- Fri, 06 Nov 2020 02:26:12 -0800 (PST)
+ id 1kaywb-0000RN-0u; Fri, 06 Nov 2020 10:26:10 +0000
+Received: by mail-pl1-x641.google.com with SMTP id x23so460175plr.6;
+ Fri, 06 Nov 2020 02:26:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=sie6Ok4mlr9HWDpV1MC03OrgT3qnjwcXYjtFoY6fZME=;
- b=BicWgc2skITP6pCnRp+XYsBk/xqMSnzp7eK/v1Lu8Ftv82GrJTw3f8yEN0u/AdQw3C
- M37EzjjnJL425kb1Qhdmh5+ToMRA+C6EeOzRUd1hBN3JwJptJMyWHkYzE9Ushr50TLPB
- i41g7xbhZBlOFKiUFoqTmkdydxxHJ7+1+R+4SbBtR5boQnr00JdwCMulxASZC2xjdxGH
- wSMhJdWgQnEBJeJuAjrRDQH0faPd+NiOUMNSWIEeK0t0GKiLINpdvxGgXGLa/ZB3RxO5
- lnyMHgp+9uR8YT4LWCbXkpyexMezOm+VbbqiQjtllMNvkDXhbHClP7Pd53K2gS2zJzSM
- wPRg==
+ bh=kmywJl/aDPZ8Djl80CkqitFsv9eXGzrnwpaDbuS6TqE=;
+ b=U0RNXPmqGXgO2WsWHsGyFAdI++mep3U2of8IK2BSQOI++hOUFoF038OqUfW0687vFP
+ Z2E0KMCOYzBLYnDkl0WdjcHZkQDW1vj6iIakrdLZVp0kiLZcI3o260ACfFROv+d7Fttz
+ PN4I7auhkkJcD4mq8Ubg11gZdka+CRKuitABuPbKuuei/cHYh44/C6wYYIAn5InGbha/
+ IZpX9rblGe9l/wkNfc2DMsMUN40mOjdhYfuTJc3KWzJIrFEmmF4GYfVhte4teB6iX1/t
+ 8O4twF+tVpoeJTHzYZUvhha7QUO7wBiIpKtSOV2cRSNCVx5+CrIJheyJLqCjlz7kbHm5
+ C4Cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=sie6Ok4mlr9HWDpV1MC03OrgT3qnjwcXYjtFoY6fZME=;
- b=YCpIYzq2BZtq1W2M+UwZSNsihUJe5SosVNa4qhHsa+bg3gyQ+vBdTwL1yzt48rdeLY
- l7V7ZfHG1iE69rTYytd57R0pd9OnNIVDkaodDNRd6a1VOqmuVkmqRVPjf53kOp8P2Rnp
- fw0q9mglTkzZnLRzN14IfmYKckJwp9Vcrnay6Q6t9Gt/IQq4oR0co4J5Y+99ijeuXFZ1
- zopLeiyOMsos6q4i6jc0qD3UeEy5jMwyEqAUgG17qw9CswjSLLbDfTInw2s6n4uQI6Wm
- oSKj7KO+3P1w1wAqFVkf9vRgOl0GFYhjLR35zDayoyPThxzJqjrz9h+PhwdIVHqPKGfj
- 5F0g==
-X-Gm-Message-State: AOAM532b8zm+01wktLq+clUGw0DGtVW8zlbnnj9Rne69MKlx3uC+ZJnq
- lxgABFR4+KqQr6OeN0FzFqQ=
-X-Google-Smtp-Source: ABdhPJxPb7Om9zddm/hHGndM/SdO0Qc71uSJYj8yWOvW/RYvx4INQsCpmbc3l5/cR5K5ejAGsNNyzA==
-X-Received: by 2002:a17:90a:fa93:: with SMTP id
- cu19mr1854974pjb.117.1604658370559; 
- Fri, 06 Nov 2020 02:26:10 -0800 (PST)
+ bh=kmywJl/aDPZ8Djl80CkqitFsv9eXGzrnwpaDbuS6TqE=;
+ b=p4m9ILcoPrxHf2XTloFymNTX66jVulDokzuxXjJl+nH5rPefzQhpQjvMswL4j8UMr6
+ h6D43zh4NU6npf0kTG5v9hXpmo7L8JPnZ0fmKvV2VE1cm+zXxatMrVzPPrQYw+x+cSmQ
+ RJ0D9/KQxBf18DjwdDoaarwZTIhze5vY2NvkR7WCpb/DMZytG/3LO/GRPoHCd+1iadQu
+ am2C5BnH9Ag3imjHAFkeySIOJtXJFFRfREGdLOdkazrtJrJg/KqQl7tuZt3cSIfh+xAD
+ wE8hn8mQ4iOihYFVn5gXIv6GqZ/EDSd/kGjAeU12XhFvJbmEUW1/15wGdnxtdr5hA6K5
+ GvPg==
+X-Gm-Message-State: AOAM5314ot6JL2yUfU0tppL0vsXglkbD89ofmHMp9Uv2g78Ry6zagIkz
+ 4lVLFg81lt0WO4XXxnwsaH4=
+X-Google-Smtp-Source: ABdhPJx/3q+VtYSpNfx8qdiDwDcqPk10MeUP3EYxfZrmFiSiiWh8ID9eKs6zZqfQ0qfD0u/CfJz3Fw==
+X-Received: by 2002:a17:902:e983:b029:d5:f469:60c0 with SMTP id
+ f3-20020a170902e983b02900d5f46960c0mr1112781plb.61.1604658367078; 
+ Fri, 06 Nov 2020 02:26:07 -0800 (PST)
 Received: from localhost.localdomain ([2402:7500:57a:6823:8ab3:4b5d:4c53:f39b])
- by smtp.gmail.com with ESMTPSA id g3sm1260633pgl.55.2020.11.06.02.26.07
+ by smtp.gmail.com with ESMTPSA id g3sm1260633pgl.55.2020.11.06.02.26.04
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 06 Nov 2020 02:26:10 -0800 (PST)
+ Fri, 06 Nov 2020 02:26:06 -0800 (PST)
 From: Gene Chen <gene.chen.richtek@gmail.com>
 To: sre@kernel.org,
 	matthias.bgg@gmail.com,
 	robh+dt@kernel.org
-Subject: [PATCH v6 07/11] mfd: mt6360: Remove handle_post_irq callback function
-Date: Fri,  6 Nov 2020 17:53:48 +0800
-Message-Id: <1604656432-10215-8-git-send-email-gene.chen.richtek@gmail.com>
+Subject: [PATCH v6 06/11] mfd: mt6360: Rename mt6360_pmu by mt6360
+Date: Fri,  6 Nov 2020 17:53:47 +0800
+Message-Id: <1604656432-10215-7-git-send-email-gene.chen.richtek@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1604656432-10215-1-git-send-email-gene.chen.richtek@gmail.com>
 References: <1604656432-10215-1-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201106_052613_115080_CEC14853 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20201106_052609_207103_D11B7A1D 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,72 +107,118 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Gene Chen <gene_chen@richtek.com>
 
-Remove handle_post_irq which is used to retrigger IRQ.
-Set IRQ level low trigger in dtsi to keep IRQ always be handled.
+Rename mt6360_pmu by mt6360, because of including
+not only PMU part, but also entire MT6360 IC
 
 Signed-off-by: Gene Chen <gene_chen@richtek.com>
 Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
 ---
- drivers/mfd/mt6360-core.c  | 17 ++++-------------
- include/linux/mfd/mt6360.h |  2 +-
- 2 files changed, 5 insertions(+), 14 deletions(-)
+ drivers/mfd/mt6360-core.c | 41 ++++++++++++++++++++---------------------
+ 1 file changed, 20 insertions(+), 21 deletions(-)
 
 diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
-index f75122b..2356d99 100644
+index 332eb5d..f75122b 100644
 --- a/drivers/mfd/mt6360-core.c
 +++ b/drivers/mfd/mt6360-core.c
-@@ -208,15 +208,8 @@ static const struct regmap_irq mt6360_irqs[] =  {
- 	REGMAP_IRQ_REG_LINE(MT6360_LDO7_PGB_EVT, 8),
- };
+@@ -119,7 +119,7 @@
+ #define MT6360_LDO6_PGB_EVT		126
+ #define MT6360_LDO7_PGB_EVT		127
  
--static int mt6360_pmu_handle_post_irq(void *irq_drv_data)
--{
--	struct mt6360_ddata *ddata = irq_drv_data;
--
--	return regmap_update_bits(ddata->regmap,
--		MT6360_PMU_IRQ_SET, MT6360_IRQ_RETRIG, MT6360_IRQ_RETRIG);
--}
--
--static struct regmap_irq_chip mt6360_irq_chip = {
-+static const struct regmap_irq_chip mt6360_irq_chip = {
-+	.name = "mt6360_irqs",
- 	.irqs = mt6360_irqs,
- 	.num_irqs = ARRAY_SIZE(mt6360_irqs),
+-static const struct regmap_irq mt6360_pmu_irqs[] =  {
++static const struct regmap_irq mt6360_irqs[] =  {
+ 	REGMAP_IRQ_REG_LINE(MT6360_CHG_TREG_EVT, 8),
+ 	REGMAP_IRQ_REG_LINE(MT6360_CHG_AICR_EVT, 8),
+ 	REGMAP_IRQ_REG_LINE(MT6360_CHG_MIVR_EVT, 8),
+@@ -216,9 +216,9 @@ static int mt6360_pmu_handle_post_irq(void *irq_drv_data)
+ 		MT6360_PMU_IRQ_SET, MT6360_IRQ_RETRIG, MT6360_IRQ_RETRIG);
+ }
+ 
+-static struct regmap_irq_chip mt6360_pmu_irq_chip = {
+-	.irqs = mt6360_pmu_irqs,
+-	.num_irqs = ARRAY_SIZE(mt6360_pmu_irqs),
++static struct regmap_irq_chip mt6360_irq_chip = {
++	.irqs = mt6360_irqs,
++	.num_irqs = ARRAY_SIZE(mt6360_irqs),
  	.num_regs = MT6360_PMU_IRQ_REGNUM,
-@@ -225,7 +218,6 @@ static struct regmap_irq_chip mt6360_irq_chip = {
- 	.ack_base = MT6360_PMU_CHG_IRQ1,
- 	.init_ack_masked = true,
- 	.use_ack = true,
--	.handle_post_irq = mt6360_pmu_handle_post_irq,
+ 	.mask_base = MT6360_PMU_CHG_MASK1,
+ 	.status_base = MT6360_PMU_CHG_IRQ1,
+@@ -308,7 +308,7 @@ static const unsigned short mt6360_slave_addr[MT6360_SLAVE_MAX] = {
+ 	MT6360_TCPC_SLAVEID,
  };
  
- static const struct regmap_config mt6360_pmu_regmap_config = {
-@@ -339,10 +331,9 @@ static int mt6360_probe(struct i2c_client *client)
+-static int mt6360_pmu_probe(struct i2c_client *client)
++static int mt6360_probe(struct i2c_client *client)
+ {
+ 	struct mt6360_ddata *ddata;
+ 	unsigned int reg_data;
+@@ -339,10 +339,10 @@ static int mt6360_pmu_probe(struct i2c_client *client)
  		return -ENODEV;
  	}
  
--	mt6360_irq_chip.irq_drv_data = ddata;
+-	mt6360_pmu_irq_chip.irq_drv_data = ddata;
++	mt6360_irq_chip.irq_drv_data = ddata;
  	ret = devm_regmap_add_irq_chip(&client->dev, ddata->regmap, client->irq,
--				       IRQF_TRIGGER_FALLING, 0,
--				       &mt6360_irq_chip, &ddata->irq_data);
-+				       0, 0, &mt6360_irq_chip,
-+				       &ddata->irq_data);
+ 				       IRQF_TRIGGER_FALLING, 0,
+-				       &mt6360_pmu_irq_chip, &ddata->irq_data);
++				       &mt6360_irq_chip, &ddata->irq_data);
  	if (ret) {
  		dev_err(&client->dev, "Failed to add Regmap IRQ Chip\n");
  		return ret;
-diff --git a/include/linux/mfd/mt6360.h b/include/linux/mfd/mt6360.h
-index 81bca7c..ef8257d 100644
---- a/include/linux/mfd/mt6360.h
-+++ b/include/linux/mfd/mt6360.h
-@@ -230,7 +230,7 @@ struct mt6360_ddata {
- #define MT6360_PMU_MAXREG			MT6360_PMU_LDO_MASK2
+@@ -374,7 +374,7 @@ static int mt6360_pmu_probe(struct i2c_client *client)
+ 	return 0;
+ }
  
- /* MT6360_PMU_IRQ_SET */
--#define MT6360_PMU_IRQ_REGNUM	(MT6360_PMU_LDO_IRQ2 - MT6360_PMU_CHG_IRQ1 + 1)
-+#define MT6360_PMU_IRQ_REGNUM	16
- #define MT6360_IRQ_RETRIG	BIT(2)
+-static int __maybe_unused mt6360_pmu_suspend(struct device *dev)
++static int __maybe_unused mt6360_suspend(struct device *dev)
+ {
+ 	struct i2c_client *i2c = to_i2c_client(dev);
  
- #define CHIP_VEN_MASK				0xF0
+@@ -384,7 +384,7 @@ static int __maybe_unused mt6360_pmu_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused mt6360_pmu_resume(struct device *dev)
++static int __maybe_unused mt6360_resume(struct device *dev)
+ {
+ 
+ 	struct i2c_client *i2c = to_i2c_client(dev);
+@@ -395,25 +395,24 @@ static int __maybe_unused mt6360_pmu_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(mt6360_pmu_pm_ops,
+-			 mt6360_pmu_suspend, mt6360_pmu_resume);
++static SIMPLE_DEV_PM_OPS(mt6360_pm_ops, mt6360_suspend, mt6360_resume);
+ 
+-static const struct of_device_id __maybe_unused mt6360_pmu_of_id[] = {
+-	{ .compatible = "mediatek,mt6360_pmu", },
++static const struct of_device_id __maybe_unused mt6360_of_id[] = {
++	{ .compatible = "mediatek,mt6360", },
+ 	{},
+ };
+-MODULE_DEVICE_TABLE(of, mt6360_pmu_of_id);
++MODULE_DEVICE_TABLE(of, mt6360_of_id);
+ 
+-static struct i2c_driver mt6360_pmu_driver = {
++static struct i2c_driver mt6360_driver = {
+ 	.driver = {
+-		.name = "mt6360_pmu",
+-		.pm = &mt6360_pmu_pm_ops,
+-		.of_match_table = of_match_ptr(mt6360_pmu_of_id),
++		.name = "mt6360",
++		.pm = &mt6360_pm_ops,
++		.of_match_table = of_match_ptr(mt6360_of_id),
+ 	},
+-	.probe_new = mt6360_pmu_probe,
++	.probe_new = mt6360_probe,
+ };
+-module_i2c_driver(mt6360_pmu_driver);
++module_i2c_driver(mt6360_driver);
+ 
+ MODULE_AUTHOR("Gene Chen <gene_chen@richtek.com>");
+-MODULE_DESCRIPTION("MT6360 PMU I2C Driver");
++MODULE_DESCRIPTION("MT6360 I2C Driver");
+ MODULE_LICENSE("GPL v2");
 -- 
 2.7.4
 
