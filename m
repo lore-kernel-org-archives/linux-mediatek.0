@@ -5,76 +5,70 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65E9BC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 09:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3571DC4741F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 09:37:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1C79206ED
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 09:31:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B6E34206ED
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 09:37:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PxXuGRcg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="duSPzjzU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1C79206ED
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q1gJI2R+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aUSm5LzE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6E34206ED
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UcoYFrP4oaKkqFlIgQyyjLq1S0n7YrLPBxkcZ3rimNU=; b=PxXuGRcgOI6EPl6Egw8rcQy5l
-	Uz55u5CsHY6oWp/99khzsR5zuAfKbC+lf2E5j7Jw5zrE4MWLsrXFpmbi2eZfnvQ0577/EX3TYj5Ca
-	lBh/ZFAd/nagTKZaLiKMk2Wbp5Vrl4qroFQ5bXULmiaKzzcoBYOGUPSNBwd6m82XRy97U17WbYL1c
-	AHl7SYFIXyUSOETOobUnULr9PlDgvo9Ryc85xy0rEolLryPFb9KANNco86XrjhF5ZJY8BbOHZdGhY
-	L3RDS8196+tTCMPb+8En0HMX0Is5woNjTLXgiJ8IWd21EGX5Wyel6xQGL7Wo7fC4tRHL1cVheCSHR
-	Kti7tShjg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oqtzux8/8thVCIgz84YzFzs/l0N4IuLo/wD3MeWBZTU=; b=Q1gJI2R+yFzFhEgL2QRNSz6VXZ
+	KLHC6VA9WdQ2H2GJuUA4teg125/nMJ6DuYfTCEkBzI+Gdu5T/V8LltphTlEKmjyaIRshpsEGKhqJk
+	EqpwYawe4IiVMHuZnL5/7GKtVF0+7Tza9Gp9AiU20d3YwJzPmBipuPC1FnZMsdklzU+A7DxBdlfuj
+	NbQ9GzyKahoq7gZ62ZbgrayUdn1mWhI2TpSuQgSXWoK5x1KDQypq+mVKMPyQlQqBVZGCtjiMz75oB
+	FnTP9N5vTI9Z04uNrS9p2PZpqXiFqoFpmcIhfy6EeoYr3DruR4qLZZql6O06/MUtxf4fa4gqhsnX4
+	DW7ILKOw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kc3Vq-00061u-JA; Mon, 09 Nov 2020 09:30:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kc3by-0006k7-9Z; Mon, 09 Nov 2020 09:37:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kc3Vo-00060z-8e
- for linux-mediatek@lists.infradead.org; Mon, 09 Nov 2020 09:30:57 +0000
-X-UUID: dba7de30cdaf416ab8a25dae07c8ccb7-20201109
+ id 1kc3bw-0006j8-4u; Mon, 09 Nov 2020 09:37:17 +0000
+X-UUID: 49b3de6712dc458aba809b4d2bdd02ce-20201109
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=GnfMW8jsJKJKjkxKfIW5PrpfQm7eCsYrh92o5wGt4tQ=; 
- b=duSPzjzUUXfZlppqHjFM87uf3+e20jig3+0N9svIS8RQHNh4fI9fIpN5RFdSFULcMEC9lmnKYh6byugjf/P7O9lDolKWMMo3pV/JeJZSWoHlTwLDfJ8RI4XwKank6pDBWwJxkdsjZHpGcsS446rx6bkhA8B1jgP1+eu+TcTFYxk=;
-X-UUID: dba7de30cdaf416ab8a25dae07c8ccb7-20201109
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <shane.chien@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=y18PdOi4AAYhrSttdKfUyYbFn/VzBQNwj5oUxyKSku8=; 
+ b=aUSm5LzEOcmmlkpLQNc3aUnoBvMulocdAIaCV6qXRPWFOaiD1APDYmIwUDzdxLoIr6HIlAJbcuR40ER2mHZRD64sBaxIM0Wad721m/aL50nJO0k6w1nK0KtVZRt75d5/w9/hP0PbxkbiaInoyqsBvyxVozz8vIC4JGd5JGCE7Bg=;
+X-UUID: 49b3de6712dc458aba809b4d2bdd02ce-20201109
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1273244451; Mon, 09 Nov 2020 01:30:38 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 80126527; Mon, 09 Nov 2020 01:37:11 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 Nov 2020 01:30:35 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 Nov 2020 17:30:29 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ 15.0.1497.2; Mon, 9 Nov 2020 01:37:09 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 Nov 2020 17:37:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 9 Nov 2020 17:30:28 +0800
-From: Shane Chien <shane.chien@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown
- <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring
- <robh+dt@kernel.org>
-Subject: [PATCH v2 1/2] ASoC: Fix vaud18 power leakage of mt6359
-Date: Mon, 9 Nov 2020 17:30:08 +0800
-Message-ID: <1604914209-9174-2-git-send-email-shane.chien@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1604914209-9174-1-git-send-email-shane.chien@mediatek.com>
-References: <1604914209-9174-1-git-send-email-shane.chien@mediatek.com>
+ Frontend Transport; Mon, 9 Nov 2020 17:37:08 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
+Subject: [PATCH] clk: mediatek: fix mtk_clk_register_mux() as static function
+Date: Mon, 9 Nov 2020 17:37:07 +0800
+Message-ID: <1604914627-9203-1-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201109_043056_457610_6E417515 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20201109_043716_330627_DD19E9A5 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,125 +80,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- chipeng.chang@mediatek.com, linux-kernel@vger.kernel.org,
- jiaxin.yu@mediatek.com, shane.chien@mediatek.com,
- linux-mediatek@lists.infradead.org
+Cc: Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Owen Chen <owen.chen@mediatek.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Shane.Chien" <shane.chien@mediatek.com>
+mtk_clk_register_mux() should be a static function
 
-vaud18 is power of mt6359 audio path. It
-should only enable when audio is used,
-instead of in boot up stage.
-Once mt6359 audio path is enabled or disabled,
-vaud18 is controlled by regulator supply widget
-"LDO_VAUD18". Due to vaud18 is controlled by
-regulator dapm macro instead of regmap, the macro
-MT6359_LDO_VAUD18_CON0 and variable avdd_reg
-is no used and removed from mt6359.h.
-
-Signed-off-by: Shane.Chien <shane.chien@mediatek.com>
+Fixes: a3ae549917f16 ("clk: mediatek: Add new clkmux register API")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- sound/soc/codecs/mt6359.c |   25 +------------------------
- sound/soc/codecs/mt6359.h |    8 --------
- 2 files changed, 1 insertion(+), 32 deletions(-)
+ drivers/clk/mediatek/clk-mux.c | 2 +-
+ drivers/clk/mediatek/clk-mux.h | 4 ----
+ 2 files changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
-index d20c59a..ecdfd57 100644
---- a/sound/soc/codecs/mt6359.c
-+++ b/sound/soc/codecs/mt6359.c
-@@ -1943,9 +1943,7 @@ static int mt_ncp_event(struct snd_soc_dapm_widget *w,
- 	SND_SOC_DAPM_SUPPLY_S("CLK_BUF", SUPPLY_SEQ_CLK_BUF,
- 			      MT6359_DCXO_CW12,
- 			      RG_XO_AUDIO_EN_M_SFT, 0, NULL, 0),
--	SND_SOC_DAPM_SUPPLY_S("LDO_VAUD18", SUPPLY_SEQ_LDO_VAUD18,
--			      MT6359_LDO_VAUD18_CON0,
--			      RG_LDO_VAUD18_EN_SFT, 0, NULL, 0),
-+	SND_SOC_DAPM_REGULATOR_SUPPLY("LDO_VAUD18", 0, 0),
- 	SND_SOC_DAPM_SUPPLY_S("AUDGLB", SUPPLY_SEQ_AUD_GLB,
- 			      MT6359_AUDDEC_ANA_CON13,
- 			      RG_AUDGLB_PWRDN_VA32_SFT, 1, NULL, 0),
-@@ -2807,20 +2805,6 @@ static int mt6359_platform_driver_probe(struct platform_device *pdev)
- 	dev_set_drvdata(&pdev->dev, priv);
- 	priv->dev = &pdev->dev;
- 
--	priv->avdd_reg = devm_regulator_get(&pdev->dev, "vaud18");
--	if (IS_ERR(priv->avdd_reg)) {
--		dev_err(&pdev->dev, "%s(), have no vaud18 supply: %ld",
--			__func__, PTR_ERR(priv->avdd_reg));
--		return PTR_ERR(priv->avdd_reg);
--	}
--
--	ret = regulator_enable(priv->avdd_reg);
--	if (ret) {
--		dev_err(&pdev->dev, "%s(), failed to enable regulator!\n",
--			__func__);
--		return ret;
--	}
--
- 	ret = mt6359_parse_dt(priv);
- 	if (ret) {
- 		dev_warn(&pdev->dev, "%s() failed to parse dts\n", __func__);
-@@ -2841,13 +2825,6 @@ static int mt6359_platform_driver_remove(struct platform_device *pdev)
- 	dev_dbg(&pdev->dev, "%s(), dev name %s\n",
- 		__func__, dev_name(&pdev->dev));
- 
--	ret = regulator_disable(priv->avdd_reg);
--	if (ret) {
--		dev_err(&pdev->dev, "%s(), failed to disable regulator!\n",
--			__func__);
--		return ret;
--	}
--
- 	return 0;
- }
- 
-diff --git a/sound/soc/codecs/mt6359.h b/sound/soc/codecs/mt6359.h
-index af6f07f..35f806b 100644
---- a/sound/soc/codecs/mt6359.h
-+++ b/sound/soc/codecs/mt6359.h
-@@ -135,11 +135,6 @@
- /* MT6359_DCXO_CW12 */
- #define RG_XO_AUDIO_EN_M_SFT				13
- 
--/* LDO_VAUD18_CON0 */
--#define RG_LDO_VAUD18_EN_SFT				0
--#define RG_LDO_VAUD18_EN_MASK				0x1
--#define RG_LDO_VAUD18_EN_MASK_SFT			(0x1 << 0)
--
- /* AUD_TOP_CKPDN_CON0 */
- #define RG_VOW13M_CK_PDN_SFT				13
- #define RG_VOW13M_CK_PDN_MASK				0x1
-@@ -2132,7 +2127,6 @@
- 
- #define MT6359_DCXO_CW11				0x7a6
- #define MT6359_DCXO_CW12				0x7a8
--#define MT6359_LDO_VAUD18_CON0				0x1c98
- 
- #define MT6359_GPIO_MODE0				0xcc
- #define MT6359_GPIO_MODE0_SET				0xce
-@@ -2469,7 +2463,6 @@ enum {
- enum {
- 	/* common */
- 	SUPPLY_SEQ_CLK_BUF,
--	SUPPLY_SEQ_LDO_VAUD18,
- 	SUPPLY_SEQ_AUD_GLB,
- 	SUPPLY_SEQ_HP_PULL_DOWN,
- 	SUPPLY_SEQ_CLKSQ,
-@@ -2629,7 +2622,6 @@ struct mt6359_priv {
- 	int hp_gain_ctl;
- 	int hp_hifi_mode;
- 	int mtkaif_protocol;
--	struct regulator *avdd_reg;
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index 14e127e..dcc1352 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -155,7 +155,7 @@ static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
+ 	.set_parent = mtk_clk_mux_set_parent_setclr_lock,
  };
  
- #define CODEC_MT6359_NAME "mtk-codec-mt6359"
+-struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
++static struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+ 				 struct regmap *regmap,
+ 				 spinlock_t *lock)
+ {
+diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
+index f5625f4..8e2f927 100644
+--- a/drivers/clk/mediatek/clk-mux.h
++++ b/drivers/clk/mediatek/clk-mux.h
+@@ -77,10 +77,6 @@ struct mtk_mux {
+ 			_width, _gate, _upd_ofs, _upd,			\
+ 			CLK_SET_RATE_PARENT)
+ 
+-struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+-				 struct regmap *regmap,
+-				 spinlock_t *lock);
+-
+ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+ 			   int num, struct device_node *node,
+ 			   spinlock_t *lock,
 -- 
-1.7.9.5
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
