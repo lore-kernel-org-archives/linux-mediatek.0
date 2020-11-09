@@ -2,67 +2,77 @@ Return-Path: <SRS0=FEjz=EP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4DFBC55ABD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 10:19:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E732C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 12:32:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 11E9920684
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 10:19:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 00BAC20659
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 12:32:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lKSqnRh1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fjmKBgS8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11E9920684
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KTJeEzKd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HEAANq1F"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00BAC20659
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=noNe7Af0swSyv/L6vI1/5xsiIvhdEI+Su+TWNP/Eb14=; b=lKSqnRh1Cs1D2eqTq1Clupfob
-	GdEJlIHx3BVOFKSW0MvMkUNUA4bdtDTa4fW4t0BLq450cs6VR9IyUt1M74MtgOT5uDXb4T/sU+cfx
-	b6LOgxbdC70RHRl+zHOUjFfxAKfzWbBVnWJWCKjKgi2XV21uo75FJnrcum9IBBurDYtQUpgPB7e8d
-	Yl4TNVjOr69H/kSl9HESgsZI4lxQV3II++j1zPsNoatedcVuch2GGwDZs77g/UQLXVQdkDTo9PA88
-	fhP3+KPL4wMNGiUv2KhGrpfDuwYNYVA6dzJsj7OnzXOdzL7/WQ7b7L1Ae8xBFpFtOOx4DGie29/ny
-	SDx8eNVlw==;
+	 bh=YK039oCzzcIv4DyW2UM3jjlUMpQUYd7+aUZ2Dag0fjc=; b=KTJeEzKdhokFEyW5C8Flx8rW9
+	jmrj8W+OVdqQvvLS3qa6KeFzweRzYXHC30mRIuhLcJwjIBaI9SXN1ES1zzjX2IaGGF9YDktc6dveP
+	EkMUtS8azpQuKooZre6kJmIRk4WZ67EsjE583wnyCHuWa4Ju+GVZ+7y4mnrp1Jz/+j/HikFZ09eKO
+	iIFBh2mSi0jKvgQyaZz+wYT+sF1k5si5mYZYB0AerLbJqYEW9/FdhZn7s1nfkxuAi6e+Zw6hw7cWb
+	ILVVy/usmPecwjY+5g8vdiLr6aexpqeX2nn/WcJi7azBEaIzl7olW8oJQsvaHoSIMW4qgXqMC/rKs
+	+t3MUmqOg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kc4Gy-0006Y5-79; Mon, 09 Nov 2020 10:19:40 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kc6LA-0003IM-JD; Mon, 09 Nov 2020 12:32:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kc4Gu-0006XN-LD; Mon, 09 Nov 2020 10:19:37 +0000
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DC70020684;
- Mon,  9 Nov 2020 10:19:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604917175;
- bh=ujdtjONW6IMNC9nuw+sGKzRyA8g09Lt4MGCnjePFh/o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fjmKBgS8WrHpIl2O8dJ0a8cIhDE1OYrlZzMEZclXByLig/MGB43JCIt99psN3y3U/
- 3hvOTQA1fPAGyHz69hORtqMSiZz5n0ikDRW1hfiITnK5Qpzv9+CogDs8f0k7hgNwdh
- rF0Ia6SgNh0KdwUNsqJRXV+bQXNK8XyQMN2WYvKo=
-Date: Mon, 9 Nov 2020 11:20:35 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: fix mtk_clk_register_mux() as static
- function
-Message-ID: <20201109102035.GA1238638@kroah.com>
-References: <1604914627-9203-1-git-send-email-weiyi.lu@mediatek.com>
+ id 1kc6L4-0003FZ-2h; Mon, 09 Nov 2020 12:32:03 +0000
+X-UUID: 2d97a104a3ce41f2b3425f1affbcc2a2-20201109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=WJtPHpW+0YyB7rI0wRU9pvErODSR4itX2vnVqUYeC14=; 
+ b=HEAANq1F196w6kg49Y5TjB/ci8z2C+s+raERdHeRnHOj0HSYGyn+E+oKvB5GC+Nb64DPvcaKJNHoq88gt/T0KnhKThqLI7balimW2rm1JXFYleBjebDeWzZZknKHuZKVGOR5JHBnogvX3P6ohEq7zSEBdmSPrh6S3uxxGMaV6Ns=;
+X-UUID: 2d97a104a3ce41f2b3425f1affbcc2a2-20201109
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1374360585; Mon, 09 Nov 2020 04:31:54 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 Nov 2020 04:21:51 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 9 Nov 2020 20:21:48 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 9 Nov 2020 20:21:48 +0800
+Message-ID: <1604924508.25719.24.camel@mhfsdcap03>
+Subject: Re: [i2c-next,PATCH] i2c: medaitek: Move suspend and resume
+ handling to NOIRQ phase
+From: Qii Wang <qii.wang@mediatek.com>
+To: <wsa@the-dreams.de>
+Date: Mon, 9 Nov 2020 20:21:48 +0800
+In-Reply-To: <1604740180-14645-1-git-send-email-qii.wang@mediatek.com>
+References: <1604740180-14645-1-git-send-email-qii.wang@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1604914627-9203-1-git-send-email-weiyi.lu@mediatek.com>
+X-TM-SNTS-SMTP: AC90FDB39BE5BB9BF4DC8700836DAB9494D29A8B859090525ABE5C95D6F179852000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201109_051936_798307_64E70D06 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20201109_073202_882969_4C6429A9 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,23 +84,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Owen Chen <owen.chen@mediatek.com>, linux-clk@vger.kernel.org,
+Cc: srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-i2c@vger.kernel.org, matthias.bgg@gmail.com,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 09, 2020 at 05:37:07PM +0800, Weiyi Lu wrote:
-> mtk_clk_register_mux() should be a static function
-> 
-> Fixes: a3ae549917f16 ("clk: mediatek: Add new clkmux register API")
-> Cc: <stable@vger.kernel.org>
+I am sorry, there is a misspelling in my subject.
+-medaitek
++mediatek
+I will revise it with other new comments and then update this patch.
 
-Why is this for stable trees?
+On Sat, 2020-11-07 at 17:09 +0800, qii.wang@mediatek.com wrote:
+> From: Qii Wang <qii.wang@mediatek.com>
+> 
+> Some i2c device driver indirectly uses I2C driver when it is now
+> being suspended. The i2c devices driver is suspended during the
+> NOIRQ phase and this cannot be changed due to other dependencies.
+> Therefore, we also need to move the suspend handling for the I2C
+> controller driver to the NOIRQ phase as well.
+> 
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 19 ++++++++++++++++---
+>  1 file changed, 16 insertions(+), 3 deletions(-)
 
 
 _______________________________________________
