@@ -2,116 +2,76 @@ Return-Path: <SRS0=FEjz=EP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AEF2C4742C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 02:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BD5DC71156
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 02:15:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A490206C1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 02:06:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 12940221FF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2020 02:14:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nWo3wNFI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=Synaptics.onmicrosoft.com header.i=@Synaptics.onmicrosoft.com header.b="fj6ma5fs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A490206C1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=synaptics.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hxNXhwBW";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jjYfK3F2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12940221FF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vkXN2cFuIV3PJ/tyVU5/SfnvOj5XaixloK9Ric9ns30=; b=nWo3wNFIh0Q0wbWs+u78q4jAr
-	OkvSK+br4tYD4pdKgNfRMsKmuvaYPEpQUBOha68d/vjD9NOkgD66yor8/tWZh/yNMysGe9dnt+/2K
-	uXqkLfpOmOUPAtUn1/7rIo7rjKq4zOUc9xW14LeMkyFcoB50DoE/Keo0GVqoEosWuVtyfH/P1zk9x
-	dgmzc6LiFfYaVwGCsqaHh6ie0oUPWfTZ/2tELvdhVFElQmEFSS+LN2IAw6KhW5L0TcD8CwFd+jd92
-	ywIlgIbsHephHE/m+UCrlpwiG+1z7nKsgboZMpvgRbhHpkQvXLmrM0b7CDr1SbczQuHBMDrg/fWNY
-	MTkhrHMzA==;
+	 bh=/qTBoM5D7GPYFDUiF1DWEgzsZeIyGTH3jQMNkopPC2c=; b=hxNXhwBWMwb9hVjmGOCuFGG5u
+	95XvPCLkXoPnHsCo+YyK9ZxE46klOBZVt2LQkliE4D+cd2viHFY1v/8BOjsxeb24SHNauCeFzy6xc
+	wd9M4+rh83RvAa3OaQ/p6+GEDyc/7d+MXFT4ZUap7pRIKoc6eMHDMHfs/yP6CK8elR0Sbn7t+gu3K
+	cj48ifa997ba+LEedBSHiJ0IXZbswYuhYDnCM9Ac7ejr+fk6d0oUKw+j3xEPchjftNvcH3ZhaLFo7
+	CqJz5G3YoWw6Jb73wm+7WmdkZP29OvRUztosKuXlqEodmXjsqYPmcrpOVAAiTDLKuyT/eh8ibyvOx
+	WwStF7Bqg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kbwZt-00043s-Dn; Mon, 09 Nov 2020 02:06:41 +0000
-Received: from mail-mw2nam10on2041.outbound.protection.outlook.com
- ([40.107.94.41] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1kbwhN-0006r2-2Z; Mon, 09 Nov 2020 02:14:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kbwY1-0002jZ-Tb; Mon, 09 Nov 2020 02:04:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FjZRWHCZa6UPXEQ0Psgqu7ae5Ejg8qS2fXhDno2yEXgKiyFzpMwiLFFySXzyJ0XNQiZ3Wf9RAYK9+8HAlIabmIUGa2xSGJRewymnfbYB8n3BGg/QCyYOSp13yOEPzwBPChq2YgfCcrPbk8FUfkG9SkX9h+L5SPGmjJ8yNf4uBy0IaNhmW2EbPiNlxoSqQsx9c76V+is8A0xtSrIv1JAKUG6J5T7L8SSgBBqYg6kjkVh1PC70bGVmmUfHy7e/9sfv2j1lcPxz39EJ/q+SITBEdYE9zRWmF/ktbBxT0DRSsium2r0VhdUTvMB3qgMXn6iCdqOTJJ8cQqfqFMwm1e4k2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IVEoGc4pV9zGxubvBWRdGb4X9FkXV5W7HKrRovjb3PU=;
- b=oZYK27fY9ksJ2DN5ggptVc7u9gkhXJjvPXBPv4Iipw3EEhTj9TpInALW5JOmVeX2/fCqSMmzZWr5bYMQ7tfKWB1VXylAhL/jdG6mfomspk5mozZTGCg6bF8J0Ya8zvcxLg9Fom5MHZe0EyW+2srx52lspRN+OQuh/4SeZKFEYGz77Fh0xYGzZYerNpAcDeeoWGfoA3Gcw/XQ0Q9iTB71O72RgoyeQTPnMSan2xtc8PrIfTfL7KBzZIuF1YqHildRuuQ/dsxk6DWHonZZOIjsXpNzJ53pjVTo9gzbic6H/Qa25V8u/npeurRmr97TjqD98DFiLNQy9F709NfYLyqLTw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=synaptics.com; dmarc=pass action=none
- header.from=synaptics.com; dkim=pass header.d=synaptics.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Synaptics.onmicrosoft.com; s=selector2-Synaptics-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IVEoGc4pV9zGxubvBWRdGb4X9FkXV5W7HKrRovjb3PU=;
- b=fj6ma5fsQ92rhj3vwdS2lBTVauE6DKbYHuE/DCdIxqLyMZ+JoH6HNh7v+i8j14Plz/LSGHD46g/CIiBq34HgL30Oob6oj/kTBgVL6xe5QEiNRkGU1TH9gPAjc7jCpYQ3szXoZvKo5fB57beJRVgMrt4+cocGkcxJucOfd2UjSIc=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none; mediatek.com; dmarc=none action=none header.from=synaptics.com; 
-Received: from SN2PR03MB2383.namprd03.prod.outlook.com (2603:10b6:804:d::23)
- by SN6PR03MB3981.namprd03.prod.outlook.com (2603:10b6:805:77::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3541.21; Mon, 9 Nov
- 2020 02:04:42 +0000
-Received: from SN2PR03MB2383.namprd03.prod.outlook.com
- ([fe80::49be:5ea3:8961:a22]) by SN2PR03MB2383.namprd03.prod.outlook.com
- ([fe80::49be:5ea3:8961:a22%6]) with mapi id 15.20.3541.024; Mon, 9 Nov 2020
- 02:04:42 +0000
-Date: Mon, 9 Nov 2020 10:04:23 +0800
-From: Jisheng Zhang <Jisheng.Zhang@synaptics.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v2 07/17] phy: marvell: convert to
- devm_platform_ioremap_resource
-Message-ID: <20201109100423.0d734ec3@xhacker.debian>
-In-Reply-To: <1604642930-29019-7-git-send-email-chunfeng.yun@mediatek.com>
-References: <1604642930-29019-1-git-send-email-chunfeng.yun@mediatek.com>
- <1604642930-29019-7-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-X-Originating-IP: [192.147.44.204]
-X-ClientProxiedBy: BYAPR03CA0035.namprd03.prod.outlook.com
- (2603:10b6:a02:a8::48) To SN2PR03MB2383.namprd03.prod.outlook.com
- (2603:10b6:804:d::23)
+ id 1kbwgy-0006f8-JH; Mon, 09 Nov 2020 02:14:01 +0000
+X-UUID: a035379052894c7fa95bdce9edf205a8-20201108
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=Qnv5Xb7VHtVK2S0G8qfgezSXXevML+BserTOFwpCMV4=; 
+ b=jjYfK3F2qRQu5HMLY5lDVKPhXE6aCpIi56JvAjO8nP2QISbcMejTsSE/YwlDu3fmxpYHaaYYNOcOOaRZCHPykHAQBjKGOIrcbDizDuKg+ityvhJxX5sIRxjtV5kkfU3GqY7yQ6JYPAO7OhKORPX7HmM8BM9vbo7UoNxVHEkcRng=;
+X-UUID: a035379052894c7fa95bdce9edf205a8-20201108
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1466523025; Sun, 08 Nov 2020 18:13:58 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 8 Nov 2020 18:03:56 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 Nov 2020 10:03:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 9 Nov 2020 10:03:54 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+Subject: [PATCH v5 18/24] clk: mediatek: Add MT8192 mmsys clock support
+Date: Mon, 9 Nov 2020 10:03:43 +0800
+Message-ID: <1604887429-29445-19-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1604887429-29445-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1604887429-29445-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from xhacker.debian (192.147.44.204) by
- BYAPR03CA0035.namprd03.prod.outlook.com (2603:10b6:a02:a8::48) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3499.22 via Frontend Transport; Mon, 9 Nov 2020 02:04:30 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 2a6834b6-9686-4a1d-3646-08d88453d295
-X-MS-TrafficTypeDiagnostic: SN6PR03MB3981:
-X-Microsoft-Antispam-PRVS: <SN6PR03MB398132B37C6A0B7EE5C03CD3EDEA0@SN6PR03MB3981.namprd03.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:60;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: E/9+//NVyJSFxnYEVIe0z3QfJ1izFffoPCEY/OS/kKjgafdAAzoruBOMSBuQf1+MK1zavgacLuMKo8Wemq7mfdMOQRi4N4B0JGbvpH+43h8i5L1DPCtbnlF76zeCTccMpvnIP/t2X7AfVWbdETk+NBapwIWm9wfQS77tiDyzTU3TKbuEiZoXRURPqU9rZbvLt0BDqok6u4UztIj/0wf63GY2z05ku7IjSxsiV6wNK1TSbbK4AtUZG+r9oOjmo18lOVc1C891Pyawf4QF6tXr8b8YGlDgPfdLo0PavxMTrp8iIPyh3nA5xFILlUDu9hmlcNxY9YmeHQ+SWrTtoKFlsw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN2PR03MB2383.namprd03.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(39850400004)(366004)(346002)(136003)(396003)(5660300002)(54906003)(9686003)(7406005)(7416002)(26005)(956004)(478600001)(6506007)(86362001)(52116002)(7696005)(8676002)(6666004)(55016002)(83380400001)(8936002)(186003)(16526019)(1076003)(2906002)(66946007)(6916009)(66476007)(66556008)(4326008)(316002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: YYjAoLMOvfAckFQnPPBYN3l5xKf2pX+wT/EyT8hcxSY8+pUiZe+jBY8SZ1lvV5jCpxVobXwDJcliYpS4WJjed+PNFR84DcuMD120ceEFjqipoqAlQwrWGnKEF+4e6R7TnfqqtxCt0s0FrNy8z62SnhunMKmlYz9qzkFvsWYM8eqHxLcotnBW6W90GSHU/0vN8xjJ6kHUA+cOw+vJldgl3yV09bKSmdcqQA16Ji+m/JLAn8dv8Lv7ZOD45swEId/Daw07l+xiqGDCdjqEHXgk3U3Nqm2fpvMTQ98sRVpwk41uPmYqhavTr2x+I6+S4q569oJiiSKWnSqu6W0GD4OX3t00Lh/xSppm7EQLJGchQjQl/S5L0jbfofqKdYjfdS1Zt50tzccxoCpXp13SL2kZxIhDGaux+KR/xoSobCyKAwOJ8WByX4xzEVNQ7a9xKdhPHw4sQhKL5D7PRCDA8cUHNeBNP+zJnZVOJUDcjKcysQ/lhAjIo1/cwTNYkK+iS05VHwKy4NiqSrmYEEeglkMAV2KRR9k5QkeI+xfVuNcn/oSc4Z/zE2rVAFiBi0ZMK22JFtptZv+UTNO5V2BL48BOzORq9kTFIkT3hIbbHmZIjFiIP6Ks3I6YRlnm7O/UomgGIU+sdg/XZCu9LoAKbHmaGA==
-X-OriginatorOrg: synaptics.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2a6834b6-9686-4a1d-3646-08d88453d295
-X-MS-Exchange-CrossTenant-AuthSource: SN2PR03MB2383.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Nov 2020 02:04:42.5680 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 335d1fbc-2124-4173-9863-17e7051a2a0e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: JbR57/27HhbrxRsAkPFuOjzWnJ6mxjXsFVBGvq0wPy3YlaRZK/yv3tfHrfxN5QI2gyddmQVF0pxiLUtic+/Kcw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR03MB3981
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201108_210446_076134_3DA5F81E 
-X-CRM114-Status: GOOD (  17.71  )
+X-CRM114-CacheID: sfid-20201108_211400_837068_3E396D60 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,221 +83,169 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ondrej Jirman <megous@megous.com>, Peter Chen <peter.chen@nxp.com>,
- Neil Armstrong <narmstrong@baylibre.com>, Anil Varughese <aniljoy@cadence.com>,
- Wei Yongjun <weiyongjun1@huawei.com>, Fabio Estevam <festevam@gmail.com>,
- Jerome Brunet <jbrunet@baylibre.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Kevin Hilman <khilman@baylibre.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Chen-Yu Tsai <wens@csie.org>, Sanket Parmar <sparmar@cadence.com>,
- bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
- Icenowy Zheng <icenowy@aosc.io>, Bharat Gooty <bharat.gooty@broadcom.com>,
- Rayagonda Kokatanur <rayagonda.kokatanur@broadcom.com>,
- Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Maxime Ripard <mripard@kernel.org>, Yue Wang <yue.wang@amlogic.com>,
- Lubomir Rintel <lkundrak@v3.sk>, Florian Fainelli <f.fainelli@gmail.com>,
- linux-mediatek@lists.infradead.org,
- Rikard Falkeborn <rikard.falkeborn@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>,
- Hanjie Lin <hanjie.lin@amlogic.com>, Ma Feng <mafeng.ma@huawei.com>,
- Scott Branden <sbranden@broadcom.com>, Randy Dunlap <rdunlap@infradead.org>,
- Jyri Sarha <jsarha@ti.com>, linux-kernel@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, Remi Pommarel <repk@triplefau.lt>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Joe Perches <joe@perches.com>,
- Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
- Li Jun <jun.li@nxp.com>
+Cc: Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 6 Nov 2020 14:08:40 +0800 Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+Add MT8192 mmsys clock provider
 
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/clk/mediatek/Kconfig         |   6 ++
+ drivers/clk/mediatek/Makefile        |   1 +
+ drivers/clk/mediatek/clk-mt8192-mm.c | 108 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 115 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-mm.c
 
-> 
-> Use devm_platform_ioremap_resource to simplify code
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2: no changes
-> ---
->  drivers/phy/marvell/phy-armada375-usb2.c | 4 +---
->  drivers/phy/marvell/phy-berlin-usb.c     | 4 +---
-
-For phy-berlin-usb.c, 
-
-Reviewed-by: Jisheng Zhang <Jisheng.Zhang@synaptics.com>
-
->  drivers/phy/marvell/phy-mmp3-usb.c       | 4 +---
->  drivers/phy/marvell/phy-mvebu-sata.c     | 4 +---
->  drivers/phy/marvell/phy-pxa-28nm-hsic.c  | 4 +---
->  drivers/phy/marvell/phy-pxa-28nm-usb2.c  | 4 +---
->  drivers/phy/marvell/phy-pxa-usb.c        | 4 +---
->  7 files changed, 7 insertions(+), 21 deletions(-)
-> 
-> diff --git a/drivers/phy/marvell/phy-armada375-usb2.c b/drivers/phy/marvell/phy-armada375-usb2.c
-> index fa5dc9462d09..b141e3cd8a94 100644
-> --- a/drivers/phy/marvell/phy-armada375-usb2.c
-> +++ b/drivers/phy/marvell/phy-armada375-usb2.c
-> @@ -105,15 +105,13 @@ static int armada375_usb_phy_probe(struct platform_device *pdev)
->         struct phy *phy;
->         struct phy_provider *phy_provider;
->         void __iomem *usb_cluster_base;
-> -       struct resource *res;
->         struct armada375_cluster_phy *cluster_phy;
-> 
->         cluster_phy = devm_kzalloc(dev, sizeof(*cluster_phy), GFP_KERNEL);
->         if (!cluster_phy)
->                 return  -ENOMEM;
-> 
-> -       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       usb_cluster_base = devm_ioremap_resource(&pdev->dev, res);
-> +       usb_cluster_base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(usb_cluster_base))
->                 return PTR_ERR(usb_cluster_base);
-> 
-> diff --git a/drivers/phy/marvell/phy-berlin-usb.c b/drivers/phy/marvell/phy-berlin-usb.c
-> index a43df63007c5..78ef6ae72a9a 100644
-> --- a/drivers/phy/marvell/phy-berlin-usb.c
-> +++ b/drivers/phy/marvell/phy-berlin-usb.c
-> @@ -165,7 +165,6 @@ static int phy_berlin_usb_probe(struct platform_device *pdev)
->         const struct of_device_id *match =
->                 of_match_device(phy_berlin_usb_of_match, &pdev->dev);
->         struct phy_berlin_usb_priv *priv;
-> -       struct resource *res;
->         struct phy *phy;
->         struct phy_provider *phy_provider;
-> 
-> @@ -173,8 +172,7 @@ static int phy_berlin_usb_probe(struct platform_device *pdev)
->         if (!priv)
->                 return -ENOMEM;
-> 
-> -       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       priv->base = devm_ioremap_resource(&pdev->dev, res);
-> +       priv->base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(priv->base))
->                 return PTR_ERR(priv->base);
-> 
-> diff --git a/drivers/phy/marvell/phy-mmp3-usb.c b/drivers/phy/marvell/phy-mmp3-usb.c
-> index 499869595a58..04c0bada3519 100644
-> --- a/drivers/phy/marvell/phy-mmp3-usb.c
-> +++ b/drivers/phy/marvell/phy-mmp3-usb.c
-> @@ -246,7 +246,6 @@ MODULE_DEVICE_TABLE(of, mmp3_usb_phy_of_match);
->  static int mmp3_usb_phy_probe(struct platform_device *pdev)
->  {
->         struct device *dev = &pdev->dev;
-> -       struct resource *resource;
->         struct mmp3_usb_phy *mmp3_usb_phy;
->         struct phy_provider *provider;
-> 
-> @@ -254,8 +253,7 @@ static int mmp3_usb_phy_probe(struct platform_device *pdev)
->         if (!mmp3_usb_phy)
->                 return -ENOMEM;
-> 
-> -       resource = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       mmp3_usb_phy->base = devm_ioremap_resource(dev, resource);
-> +       mmp3_usb_phy->base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(mmp3_usb_phy->base)) {
->                 dev_err(dev, "failed to remap PHY regs\n");
->                 return PTR_ERR(mmp3_usb_phy->base);
-> diff --git a/drivers/phy/marvell/phy-mvebu-sata.c b/drivers/phy/marvell/phy-mvebu-sata.c
-> index 3c01b5dceaae..51a4646e2933 100644
-> --- a/drivers/phy/marvell/phy-mvebu-sata.c
-> +++ b/drivers/phy/marvell/phy-mvebu-sata.c
-> @@ -80,7 +80,6 @@ static const struct phy_ops phy_mvebu_sata_ops = {
->  static int phy_mvebu_sata_probe(struct platform_device *pdev)
->  {
->         struct phy_provider *phy_provider;
-> -       struct resource *res;
->         struct priv *priv;
->         struct phy *phy;
-> 
-> @@ -88,8 +87,7 @@ static int phy_mvebu_sata_probe(struct platform_device *pdev)
->         if (!priv)
->                 return -ENOMEM;
-> 
-> -       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       priv->base = devm_ioremap_resource(&pdev->dev, res);
-> +       priv->base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(priv->base))
->                 return PTR_ERR(priv->base);
-> 
-> diff --git a/drivers/phy/marvell/phy-pxa-28nm-hsic.c b/drivers/phy/marvell/phy-pxa-28nm-hsic.c
-> index 31b43d2ee39a..c5c100563f55 100644
-> --- a/drivers/phy/marvell/phy-pxa-28nm-hsic.c
-> +++ b/drivers/phy/marvell/phy-pxa-28nm-hsic.c
-> @@ -162,7 +162,6 @@ static int mv_hsic_phy_probe(struct platform_device *pdev)
->  {
->         struct phy_provider *phy_provider;
->         struct mv_hsic_phy *mv_phy;
-> -       struct resource *r;
-> 
->         mv_phy = devm_kzalloc(&pdev->dev, sizeof(*mv_phy), GFP_KERNEL);
->         if (!mv_phy)
-> @@ -176,8 +175,7 @@ static int mv_hsic_phy_probe(struct platform_device *pdev)
->                 return PTR_ERR(mv_phy->clk);
->         }
-> 
-> -       r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       mv_phy->base = devm_ioremap_resource(&pdev->dev, r);
-> +       mv_phy->base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(mv_phy->base))
->                 return PTR_ERR(mv_phy->base);
-> 
-> diff --git a/drivers/phy/marvell/phy-pxa-28nm-usb2.c b/drivers/phy/marvell/phy-pxa-28nm-usb2.c
-> index a175ae915f02..0b390b9d2ae1 100644
-> --- a/drivers/phy/marvell/phy-pxa-28nm-usb2.c
-> +++ b/drivers/phy/marvell/phy-pxa-28nm-usb2.c
-> @@ -294,7 +294,6 @@ static int mv_usb2_phy_probe(struct platform_device *pdev)
->  {
->         struct phy_provider *phy_provider;
->         struct mv_usb2_phy *mv_phy;
-> -       struct resource *r;
-> 
->         mv_phy = devm_kzalloc(&pdev->dev, sizeof(*mv_phy), GFP_KERNEL);
->         if (!mv_phy)
-> @@ -308,8 +307,7 @@ static int mv_usb2_phy_probe(struct platform_device *pdev)
->                 return PTR_ERR(mv_phy->clk);
->         }
-> 
-> -       r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       mv_phy->base = devm_ioremap_resource(&pdev->dev, r);
-> +       mv_phy->base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(mv_phy->base))
->                 return PTR_ERR(mv_phy->base);
-> 
-> diff --git a/drivers/phy/marvell/phy-pxa-usb.c b/drivers/phy/marvell/phy-pxa-usb.c
-> index 87ff7550b912..ffe889893ff4 100644
-> --- a/drivers/phy/marvell/phy-pxa-usb.c
-> +++ b/drivers/phy/marvell/phy-pxa-usb.c
-> @@ -286,7 +286,6 @@ MODULE_DEVICE_TABLE(of, pxa_usb_phy_of_match);
->  static int pxa_usb_phy_probe(struct platform_device *pdev)
->  {
->         struct device *dev = &pdev->dev;
-> -       struct resource *resource;
->         struct pxa_usb_phy *pxa_usb_phy;
->         struct phy_provider *provider;
->         const struct of_device_id *of_id;
-> @@ -301,8 +300,7 @@ static int pxa_usb_phy_probe(struct platform_device *pdev)
->         else
->                 pxa_usb_phy->version = PXA_USB_PHY_MMP2;
-> 
-> -       resource = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       pxa_usb_phy->base = devm_ioremap_resource(dev, resource);
-> +       pxa_usb_phy->base = devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(pxa_usb_phy->base)) {
->                 dev_err(dev, "failed to remap PHY regs\n");
->                 return PTR_ERR(pxa_usb_phy->base);
-> --
-> 2.18.0
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
->
-
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 3db8670..bc92611 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -539,6 +539,12 @@ config COMMON_CLK_MT8192_MFGCFG
+ 	help
+ 	  This driver supports MediaTek MT8192 mfgcfg clocks.
+ 
++config COMMON_CLK_MT8192_MMSYS
++	bool "Clock driver for MediaTek MT8192 mmsys"
++	depends on COMMON_CLK_MT8192
++	help
++	  This driver supports MediaTek MT8192 mmsys clocks.
++
+ config COMMON_CLK_MT8516
+ 	bool "Clock driver for MediaTek MT8516"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 024841a..838bb01 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -75,5 +75,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_IMP_IIC_WRAP) += clk-mt8192-imp_iic_wrap.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_IPESYS) += clk-mt8192-ipe.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_MDPSYS) += clk-mt8192-mdp.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_MFGCFG) += clk-mt8192-mfg.o
++obj-$(CONFIG_COMMON_CLK_MT8192_MMSYS) += clk-mt8192-mm.o
+ obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+ obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+diff --git a/drivers/clk/mediatek/clk-mt8192-mm.c b/drivers/clk/mediatek/clk-mt8192-mm.c
+new file mode 100644
+index 0000000..dfdfb21
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8192-mm.c
+@@ -0,0 +1,108 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2020 MediaTek Inc.
++// Author: Weiyi Lu <weiyi.lu@mediatek.com>
++
++#include <linux/clk-provider.h>
++#include <linux/platform_device.h>
++
++#include "clk-mtk.h"
++#include "clk-gate.h"
++
++#include <dt-bindings/clock/mt8192-clk.h>
++
++static const struct mtk_gate_regs mm0_cg_regs = {
++	.set_ofs = 0x104,
++	.clr_ofs = 0x108,
++	.sta_ofs = 0x100,
++};
++
++static const struct mtk_gate_regs mm1_cg_regs = {
++	.set_ofs = 0x114,
++	.clr_ofs = 0x118,
++	.sta_ofs = 0x110,
++};
++
++static const struct mtk_gate_regs mm2_cg_regs = {
++	.set_ofs = 0x1a4,
++	.clr_ofs = 0x1a8,
++	.sta_ofs = 0x1a0,
++};
++
++#define GATE_MM0(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &mm0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_MM1(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &mm1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++#define GATE_MM2(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &mm2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate mm_clks[] = {
++	/* MM0 */
++	GATE_MM0(CLK_MM_DISP_MUTEX0, "mm_disp_mutex0", "disp_sel", 0),
++	GATE_MM0(CLK_MM_DISP_CONFIG, "mm_disp_config", "disp_sel", 1),
++	GATE_MM0(CLK_MM_DISP_OVL0, "mm_disp_ovl0", "disp_sel", 2),
++	GATE_MM0(CLK_MM_DISP_RDMA0, "mm_disp_rdma0", "disp_sel", 3),
++	GATE_MM0(CLK_MM_DISP_OVL0_2L, "mm_disp_ovl0_2l", "disp_sel", 4),
++	GATE_MM0(CLK_MM_DISP_WDMA0, "mm_disp_wdma0", "disp_sel", 5),
++	GATE_MM0(CLK_MM_DISP_UFBC_WDMA0, "mm_disp_ufbc_wdma0", "disp_sel", 6),
++	GATE_MM0(CLK_MM_DISP_RSZ0, "mm_disp_rsz0", "disp_sel", 7),
++	GATE_MM0(CLK_MM_DISP_AAL0, "mm_disp_aal0", "disp_sel", 8),
++	GATE_MM0(CLK_MM_DISP_CCORR0, "mm_disp_ccorr0", "disp_sel", 9),
++	GATE_MM0(CLK_MM_DISP_DITHER0, "mm_disp_dither0", "disp_sel", 10),
++	GATE_MM0(CLK_MM_SMI_INFRA, "mm_smi_infra", "disp_sel", 11),
++	GATE_MM0(CLK_MM_DISP_GAMMA0, "mm_disp_gamma0", "disp_sel", 12),
++	GATE_MM0(CLK_MM_DISP_POSTMASK0, "mm_disp_postmask0", "disp_sel", 13),
++	GATE_MM0(CLK_MM_DISP_DSC_WRAP0, "mm_disp_dsc_wrap0", "disp_sel", 14),
++	GATE_MM0(CLK_MM_DSI0, "mm_dsi0", "disp_sel", 15),
++	GATE_MM0(CLK_MM_DISP_COLOR0, "mm_disp_color0", "disp_sel", 16),
++	GATE_MM0(CLK_MM_SMI_COMMON, "mm_smi_common", "disp_sel", 17),
++	GATE_MM0(CLK_MM_DISP_FAKE_ENG0, "mm_disp_fake_eng0", "disp_sel", 18),
++	GATE_MM0(CLK_MM_DISP_FAKE_ENG1, "mm_disp_fake_eng1", "disp_sel", 19),
++	GATE_MM0(CLK_MM_MDP_TDSHP4, "mm_mdp_tdshp4", "disp_sel", 20),
++	GATE_MM0(CLK_MM_MDP_RSZ4, "mm_mdp_rsz4", "disp_sel", 21),
++	GATE_MM0(CLK_MM_MDP_AAL4, "mm_mdp_aal4", "disp_sel", 22),
++	GATE_MM0(CLK_MM_MDP_HDR4, "mm_mdp_hdr4", "disp_sel", 23),
++	GATE_MM0(CLK_MM_MDP_RDMA4, "mm_mdp_rdma4", "disp_sel", 24),
++	GATE_MM0(CLK_MM_MDP_COLOR4, "mm_mdp_color4", "disp_sel", 25),
++	GATE_MM0(CLK_MM_DISP_Y2R0, "mm_disp_y2r0", "disp_sel", 26),
++	GATE_MM0(CLK_MM_SMI_GALS, "mm_smi_gals", "disp_sel", 27),
++	GATE_MM0(CLK_MM_DISP_OVL2_2L, "mm_disp_ovl2_2l", "disp_sel", 28),
++	GATE_MM0(CLK_MM_DISP_RDMA4, "mm_disp_rdma4", "disp_sel", 29),
++	GATE_MM0(CLK_MM_DISP_DPI0, "mm_disp_dpi0", "disp_sel", 30),
++	/* MM1 */
++	GATE_MM1(CLK_MM_SMI_IOMMU, "mm_smi_iommu", "disp_sel", 0),
++	/* MM2 */
++	GATE_MM2(CLK_MM_DSI_DSI0, "mm_dsi_dsi0", "disp_sel", 0),
++	GATE_MM2(CLK_MM_DPI_DPI0, "mm_dpi_dpi0", "dpi_sel", 8),
++	GATE_MM2(CLK_MM_26MHZ, "mm_26mhz", "clk26m", 24),
++	GATE_MM2(CLK_MM_32KHZ, "mm_32khz", "clk32k", 25),
++};
++
++static int clk_mt8192_mm_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->parent->of_node;
++	struct clk_onecell_data *clk_data;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	r = mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks), clk_data);
++	if (r)
++		return r;
++
++	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++}
++
++static struct platform_driver clk_mt8192_mm_drv = {
++	.probe = clk_mt8192_mm_probe,
++	.driver = {
++		.name = "clk-mt8192-mm",
++	},
++};
++
++builtin_platform_driver(clk_mt8192_mm_drv);
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
