@@ -2,81 +2,92 @@ Return-Path: <SRS0=XLXJ=EQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DCC9CC388F7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 09:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C26E9C388F7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 10:50:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 504BB20780
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 09:04:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5B620205CB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 10:50:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wrxMn7ru";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="e9ou+vdO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 504BB20780
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e/phxJ74";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FrhFbwdH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B620205CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=keTuWq/DQyGLZrm09Lc+/hqP33/CoBVu7nU0s5iKWGo=; b=wrxMn7ruIfNl02Dm2JD0ZYLhx
-	xYSSRRRlSlblUVkDb39NBTdrwC+q0dGOFXswKipdFDZxe5Ts8uwtKtv/RzGEuGMZ0WdJyV8lERVhD
-	Py2HqVsMYW7Cn1MPUkMpwxI1uRxkSrls15pGkX++n+W1PqzG4cXBgjXlat5CbgTPN5CdP6kEOPJO4
-	lpf7upPBAZoTQxdsio5yGHcNarzwKYgx9hL8mdhkNfMQYTHKYRyzKkSafojmCelgDFBXuK9ny5yyH
-	Yavvll3j3+bcYhIPeqbWZEeQ7vFnPUe1L+dNK5M4504w2A231C7PQ80g9jtvxJauloH16uv4gOVW5
-	hwZ8PApgw==;
+	 bh=9qpAuK+0FHmUqWOxIwNqlgtcy4d0d5LerZziceK6j7Q=; b=e/phxJ74d4VQPwNOXMWT5DxWR
+	Hijiu+K1nVR0APZMgsUnHBgGG5i1MtZvFa+jarIzsX1nBCNK8da5vFL5/O03AxIPHODebKA54eTRK
+	EuDUvjhKbDWLRkxcyaPNq2pEWzrNQDM1O/A/17ky2UtmS2O2hUheSRMgrqdK+wS88cLqjgsE+sRRj
+	Q1G+5smAynae1WKrdaf8dyuigSqcWjFDht3A/lRvQlxosau+HDg5oyUWaRKor2naJWGa9UNGSrDE/
+	JXVK9wjd4J+3W5UJL4tnTCKiFXcpnQlH5wJojWS26QtBa5BBBC2nReTrxYaXq3ChdmEBlbYNv2p+4
+	wu86QB/Yg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcPZg-0000mQ-3s; Tue, 10 Nov 2020 09:04:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kcRE7-0007FW-6o; Tue, 10 Nov 2020 10:50:15 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcPZd-0000ll-M3; Tue, 10 Nov 2020 09:04:22 +0000
-X-UUID: 50bf0f8fe8ea4802896b5593dcd60224-20201110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6OV9wGSAEwr0pX0L4yDJ9RfJ0hw2c+slkm0LFbn1+iE=; 
- b=e9ou+vdODBshE0nQ2HpK4EC3YqnQKKhIYINXIyb26W9h7W5a305kqkMoPl6TrRQxDWXvTXJ0P53CWiun+cRPeVs/oXYrid9qxID7Mh27yyctQgdG/KpoL8O1KsVU0LqIhV1a9kIWCZ6tE9n0vvqVpsVO8ZNOdas/V1EcPGcwhn4=;
-X-UUID: 50bf0f8fe8ea4802896b5593dcd60224-20201110
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 658580548; Tue, 10 Nov 2020 01:04:18 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 Nov 2020 01:04:17 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 Nov 2020 17:04:14 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 10 Nov 2020 17:04:15 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Alexander Tsoy <alexander@tsoy.me>,
- "Nicola Lunghi" <nick83ola@gmail.com>, Christopher Swenson
- <swenson@swenson.io>, "Nick Kossifidis" <mickflemm@gmail.com>,
- <alsa-devel@alsa-project.org>
-Subject: [PATCH v3] ALSA: usb-audio: disable 96khz support for HUAWEI USB-C
- HEADSET
-Date: Tue, 10 Nov 2020 17:04:08 +0800
-Message-ID: <1604999048-20294-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1604996266.2817.1.camel@mtkswgap22>
-References: <1604996266.2817.1.camel@mtkswgap22>
+ id 1kcRE5-0007E0-CP; Tue, 10 Nov 2020 10:50:14 +0000
+Received: by mail-wm1-x342.google.com with SMTP id p19so1738786wmg.0;
+ Tue, 10 Nov 2020 02:50:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=RI3echpmsILHMbwDzAgMqcqkjUKk2AOhPsGaeepkNKI=;
+ b=FrhFbwdHS6/kq3jq8MO8bIfVNpx/tqWrlhlOsA3bKsZghA74MehbDZoUkpZHwRJM9j
+ 4g0/JpvOD6J4nGOkh8cLPQG8LK5xHzSP2efrQ+y8UBN7JoBdflYvnLUmqWWmaVOa4XZh
+ HJZP5sqeRG/lRZAvH5YMsdwOxr8dsfPsTrSV+0kJVaPP2Ecm08KQRP1Q6QfUI8+E6gRh
+ uxcowjkBfnD69wwWMgU+E9/miAGpncdYoQGEt2jhyNckw77imOXJ9qirusZt4ptHaADF
+ 6SU7wyJzV9+k5IccBZ+nfFT984BpzWZ7p//S+aGMh7NuoIgFqWHshg9WYhW7ahC++LXd
+ yBzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=RI3echpmsILHMbwDzAgMqcqkjUKk2AOhPsGaeepkNKI=;
+ b=FjXKO930WpRhAYtcObDSsZ9e6J1Nv7/mT4gkQoO4wgYlUU08F0QwX95fGLJs92rdMV
+ MZS/A4ob52ukBD2vYdo4M9+StWt++wtKbFgOnvmPuAq/fo0CR6GSPe0S0fsPeuAgOgiT
+ w7F+U74p/DIMr4x8HpMrJWnCpMxeubrwfw3Nae/IoBIRwDyeyjLEimc5SDf9OGzMAOIk
+ EyBU1+mCX4Rs+dnj2xruQXUvxC3Orz7KU5tELEyqFYQOMFpFKRBmnqRcrco5zIp4bo1X
+ 0I6cMRygXCGBnGdX19+RL/bDcuZ5PD4KhWvAzybDzpUVnxvRB1BtkOT33KR0g0AmF12d
+ YViQ==
+X-Gm-Message-State: AOAM530S2Vr0gv+EeX+pwpYlPhC5inCWeqzFzgnrepQjFte/gdFx0Hrt
+ RUAtObbZhC/HAdPtpM9wBRE=
+X-Google-Smtp-Source: ABdhPJx4aH/axjJpFpDOjbOiN8JuiZiLYbtFxERcm0uuN9Xjc0uKWDIuFz8ESgqBpekhNRBqg9O1LQ==
+X-Received: by 2002:a1c:9652:: with SMTP id y79mr4175402wmd.71.1605005410743; 
+ Tue, 10 Nov 2020 02:50:10 -0800 (PST)
+Received: from ziggy.stardust ([213.195.112.112])
+ by smtp.gmail.com with ESMTPSA id m20sm18743080wrg.81.2020.11.10.02.50.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Nov 2020 02:50:10 -0800 (PST)
+Subject: Re: [PATCH] clk: mediatek: fix mtk_clk_register_mux() as static
+ function
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Greg KH <gregkh@linuxfoundation.org>
+References: <1604914627-9203-1-git-send-email-weiyi.lu@mediatek.com>
+ <20201109102035.GA1238638@kroah.com> <1604972321.16474.9.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <00a5aabb-b478-66e0-0663-3cf5557e861b@gmail.com>
+Date: Tue, 10 Nov 2020 11:50:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3B1BA5211D1AEA1F9D389FD0B8F95556B1905E286E655FC53C5BEFF736FBB5782000:8
-X-MTK: N
+In-Reply-To: <1604972321.16474.9.camel@mtksdaap41>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201110_040421_929493_2FC31758 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20201110_055013_498374_E854E264 
+X-CRM114-Status: GOOD (  19.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,54 +99,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-usb@vger.kernel.org,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Eddie Hung <eddie.hung@mediatek.com>, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org, linux-mediatek@lists.infradead.org, Macpaul
- Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- Ainge Hsu <ainge.hsu@mediatek.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Owen Chen <owen.chen@mediatek.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The HUAWEI USB-C headset (VID:0x12d1, PID:0x3a07) reported it supports
-96khz. However there will be some random issue under 96khz.
-Not sure if there is any alternate setting could be applied.
-Hence 48khz is suggested to be applied at this moment.
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Signed-off-by: Eddie Hung <eddie.hung@mediatek.com>
-Cc: stable@vger.kernel.org
----
-Changes for v2:
-  - Fix build error.
-  - Add Cc: stable@vger.kernel.org
-Changes for v3:
-  - Replace "udev" with "chip->dev" according to Takashi's suggestion. Thanks.
 
- sound/usb/format.c |    5 +++++
- 1 file changed, 5 insertions(+)
+On 10/11/2020 02:38, Weiyi Lu wrote:
+> On Mon, 2020-11-09 at 11:20 +0100, Greg KH wrote:
+>> On Mon, Nov 09, 2020 at 05:37:07PM +0800, Weiyi Lu wrote:
+>>> mtk_clk_register_mux() should be a static function
+>>>
+>>> Fixes: a3ae549917f16 ("clk: mediatek: Add new clkmux register API")
+>>> Cc: <stable@vger.kernel.org>
+>>
+>> Why is this for stable trees?
+> 
+> Hi Greg,
+> 
+> My Mistake. Indeed, this is not a bug fix for stable tree.
+> And there are simple questions.
+> Will I be allowed to keep the fixes tag in this patch to indicate the
+> mistakes we made in previous commit if it's not a bug fix for stable
+> tree?
+> And all I need to do now is to remove stable tree from cc list. Is it
+> correct?
 
-diff --git a/sound/usb/format.c b/sound/usb/format.c
-index 1b28d01..0aff774 100644
---- a/sound/usb/format.c
-+++ b/sound/usb/format.c
-@@ -217,6 +217,11 @@ static int parse_audio_format_rates_v1(struct snd_usb_audio *chip, struct audiof
- 			    (chip->usb_id == USB_ID(0x041e, 0x4064) ||
- 			     chip->usb_id == USB_ID(0x041e, 0x4068)))
- 				rate = 8000;
-+			/* Huawei headset can't support 96kHz fully */
-+			if (rate == 96000 &&
-+			    chip->usb_id == USB_ID(0x12d1, 0x3a07) &&
-+			    le16_to_cpu(chip->dev->descriptor.bcdDevice) == 0x49)
-+				continue;
- 
- 			fp->rate_table[fp->nr_rates] = rate;
- 			if (!fp->rate_min || rate < fp->rate_min)
--- 
-1.7.9.5
+That's my understanding, yes. Keep fixes tag but delete cc to stable.
+
+Regards,
+Matthias
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
