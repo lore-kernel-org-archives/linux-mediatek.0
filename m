@@ -2,67 +2,74 @@ Return-Path: <SRS0=XLXJ=EQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13BD9C55ABD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 16:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4D40C388F7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 16:03:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84DD6206E3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 16:03:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3BB832076E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 16:03:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DUAW1K90";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ztGWDagn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84DD6206E3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fwe2Q9gv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="A6KVxoRV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BB832076E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Subject:References:
-	In-Reply-To:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JXedM+1iadi94GidVavNqL2G6H/wcfo8CZeLMpyl8WM=; b=DUAW1K90h8SSB4SwgYvVCyLzH
-	GQj8OThXyNj3/rXrisdxL6mwcB+b5PC49GOYtv5RilkUAqS5pSQICrc4+pEmU/zf8/bRkrcFqY7Nq
-	RsSDU80avYSpMMjjMNRwdmoNp7XD0KkLGJT2QcU/1CyUsR4ZrYPRVLTAJsIg+4NJpncInsYzXtqAv
-	vAn2IeuWG9s+JZ7gR2/em5DYCTGrW3k3CCm/JEwJYtksTWMtbQuQR3k0Mco+prWbs0LyEkTmDJFIh
-	XDntkRPqHB27Ob88+T8hoLmePR6uK1SXOgtVsCV+8UCUcxab/2By4a8lkzviUCLScAM5ifF0+DOlt
-	w0+PcEHeg==;
+	 bh=CHELvtQROygR5hdlWMULyUQEQv9arQTder1/jCmVGAQ=; b=Fwe2Q9gvqwNxZ0W5FTes6N8+2
+	zEYFdK5fzRbpH2uFo6oXtx4dr7oAtbTo7WitFJelG0SMGJGoh+EnxZXEBWg0Z/oNlqUZnMB/Ule05
+	NBHiAKzH08JTKSARuHkoHU2NfuiXaTYtKWGCc06u5MnOvsyeylvIlsTMkBaxgRz0YscTAzYdsGBU4
+	J+HZt3gQxmc63jLWe5o3vLp3u3vC24xJE+/JwDptiV8V6KUtjuSM4sBnGddz2p6cer7ujbXItbfx2
+	43/lN6rvVg8UWzgaSAQWR0KjkBpwDIi6sNByGX3+apH0kn6Y5eDT44XbZixpl7NBO0AG+G9VwCry9
+	1LTewU9OA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcW6m-0001tW-Kp; Tue, 10 Nov 2020 16:03:00 +0000
+	id 1kcW7M-00027h-5Y; Tue, 10 Nov 2020 16:03:36 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcW6k-0001s4-Ji
- for linux-mediatek@lists.infradead.org; Tue, 10 Nov 2020 16:02:59 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ id 1kcW7D-00023q-3b; Tue, 10 Nov 2020 16:03:28 +0000
+Received: from mail-oi1-f181.google.com (mail-oi1-f181.google.com
+ [209.85.167.181])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 42076206E3;
- Tue, 10 Nov 2020 16:02:57 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0DF0420829;
+ Tue, 10 Nov 2020 16:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605024177;
- bh=WJXkq/qLfyFh+DckIEnAcIep+CU9DCKkiyIv2h4DaAQ=;
- h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=ztGWDagnj0CVj5lK0DWRoyRfrfi34z17w/bnM1KqBFCDhDMXCDVLyrEQH/sjEJW0C
- 6etHtbnkrQPb+OXt7ADwznVBjbDH+iUZj8riUog3l+4y3wzBg6n4Cxm0npMIuIFXml
- mltGcr0THDT1vpNd3OC2LgRWPFHg0e2styF5GdaQ=
-Date: Tue, 10 Nov 2020 16:02:43 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Shane Chien <shane.chien@mediatek.com>
-In-Reply-To: <1604975492-6142-1-git-send-email-shane.chien@mediatek.com>
-References: <1604975492-6142-1-git-send-email-shane.chien@mediatek.com>
-Subject: Re: [PATCH v3 0/2] Fix vaud18 power leakage of mt6359
-Message-Id: <160502414080.45830.9030480275474005075.b4-ty@kernel.org>
+ s=default; t=1605024206;
+ bh=Q4tizdLmjkzMbfpePr+avvWWNz2g0MJUKN8eJ2xoJc8=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=A6KVxoRVUh7MGpM78oa3naUGFo1EcjhPmNuJoaAofEbM4A1BSeiqKQPmq7g7OEDvo
+ /7P91TM9kqQ1O2kq4xIYur9mfdDywNu6VkjsrLrpX12sVUWDACrjbTm3U+JGiGfz29
+ h/Y6nTdFSFQhx/+ikQUBprsBbdi1sI/l/h6O1vRo=
+Received: by mail-oi1-f181.google.com with SMTP id o25so14042067oie.5;
+ Tue, 10 Nov 2020 08:03:26 -0800 (PST)
+X-Gm-Message-State: AOAM530BEvA623YPWeHYY7S9PLFd1INcJaL/Mwag6bNbCrshkIBxi3Tu
+ y6uysbdakuqJDxXiYkBTJDzQ7srn3//G0SDbmw==
+X-Google-Smtp-Source: ABdhPJxffCMld8zxb9GQXqc30p3WWWPLcHwsDvjVqY4ZjnX3Xq/4kK3Jyc+SH7Uma8dDisNt6kO4m/SmAfDDh4PMeBw=
+X-Received: by 2002:aca:fdd4:: with SMTP id b203mr3276663oii.152.1605024205264; 
+ Tue, 10 Nov 2020 08:03:25 -0800 (PST)
 MIME-Version: 1.0
+References: <1604887429-29445-1-git-send-email-weiyi.lu@mediatek.com>
+ <1604887429-29445-7-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1604887429-29445-7-git-send-email-weiyi.lu@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 10 Nov 2020 10:03:14 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqKj3Mr6fT_R8JLCK4Ciyt-NyEbUbXXrxnbCBzo2TsLFZg@mail.gmail.com>
+Message-ID: <CAL_JsqKj3Mr6fT_R8JLCK4Ciyt-NyEbUbXXrxnbCBzo2TsLFZg@mail.gmail.com>
+Subject: Re: [PATCH v5 06/24] clk: mediatek: Add dt-bindings of MT8192 clocks
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Stephen Boyd <sboyd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201110_110258_789212_D657E886 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20201110_110327_269844_4CD926BC 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,56 +81,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- chipeng.chang@mediatek.com, linux-kernel@vger.kernel.org,
- jiaxin.yu@mediatek.com, linux-mediatek@lists.infradead.org
+Cc: Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ linux-clk <linux-clk@vger.kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 10 Nov 2020 10:31:30 +0800, Shane Chien wrote:
-> This series of patches is to fix vaud18 power leakage problem.
-> vaud18 will be enable only when mt6359 audio path is turned on.
-> 
-> Change since v2:
->  - fix dt-binnding syntex error
-> 
-> Change since v1:
->  - use dapm regulator supply widget for vaud18 control.
->  - add vaud18 regulator property in mt6359 dt-binding.
-> 
-> [...]
+On Sun, Nov 8, 2020 at 8:03 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+>
+> Add MT8192 clock dt-bindings, include topckgen, apmixedsys,
+> infracfg, pericfg and subsystem clocks.
+>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>  include/dt-bindings/clock/mt8192-clk.h | 592 +++++++++++++++++++++++++++++++++
+>  1 file changed, 592 insertions(+)
+>  create mode 100644 include/dt-bindings/clock/mt8192-clk.h
 
-Applied to
+linux-next binding checks are broken until this is applied.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/2] ASoC: Fix vaud18 power leakage of mt6359
-      commit: 64a70744b77898a15d7a5b2b4dc0fa9523a75cde
-[2/2] dt-bindings: mediatek: mt6359: Add new property for mt6359
-      commit: 08651373808e16b01d3b12207f52504c17b6774c
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
