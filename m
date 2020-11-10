@@ -2,92 +2,104 @@ Return-Path: <SRS0=XLXJ=EQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C26E9C388F7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 10:50:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 67939C388F7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 13:12:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5B620205CB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 10:50:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 00FFA20674
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2020 13:12:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e/phxJ74";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FrhFbwdH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B620205CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JobDYZ0R";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Di+p8tHp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00FFA20674
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9qpAuK+0FHmUqWOxIwNqlgtcy4d0d5LerZziceK6j7Q=; b=e/phxJ74d4VQPwNOXMWT5DxWR
-	Hijiu+K1nVR0APZMgsUnHBgGG5i1MtZvFa+jarIzsX1nBCNK8da5vFL5/O03AxIPHODebKA54eTRK
-	EuDUvjhKbDWLRkxcyaPNq2pEWzrNQDM1O/A/17ky2UtmS2O2hUheSRMgrqdK+wS88cLqjgsE+sRRj
-	Q1G+5smAynae1WKrdaf8dyuigSqcWjFDht3A/lRvQlxosau+HDg5oyUWaRKor2naJWGa9UNGSrDE/
-	JXVK9wjd4J+3W5UJL4tnTCKiFXcpnQlH5wJojWS26QtBa5BBBC2nReTrxYaXq3ChdmEBlbYNv2p+4
-	wu86QB/Yg==;
+	 bh=NV/Wrm+xa2LE5pdEdZK5fqfffJ0M1ScSaBikYUlDOfo=; b=JobDYZ0RZb0Tu3LKPxLtLle9U
+	RFyPXfd9UNpIZHmPbAdEsn5F2YtIqblw3doegV4OLQXWFZvgpzNvzdFesUInL+BWHD/1QUhnVWHQL
+	ZB3ptqSrFlY3Jdb42EBu8e4jcTXxZcOLW8EL+YecFDVF4T/OEZ7amemKxbOZAnu/R2Xw7uiGyjTZe
+	XGvt375mNgN87t3bgud9P35BDChFpVsXY5EYRYLlFszwy7zNdf3i2kp2EvSRSmZLfIG+qwVYFXbpG
+	3QZyTEfFa8keI4/44KGjuAMnOYwg7245mCCRasPITV4mVWajrYTPf6o4+0mDDoyYfzczGJD2d2jiC
+	K3fg+6vDQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcRE7-0007FW-6o; Tue, 10 Nov 2020 10:50:15 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kcTRu-0004AG-Si; Tue, 10 Nov 2020 13:12:38 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcRE5-0007E0-CP; Tue, 10 Nov 2020 10:50:14 +0000
-Received: by mail-wm1-x342.google.com with SMTP id p19so1738786wmg.0;
- Tue, 10 Nov 2020 02:50:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=RI3echpmsILHMbwDzAgMqcqkjUKk2AOhPsGaeepkNKI=;
- b=FrhFbwdHS6/kq3jq8MO8bIfVNpx/tqWrlhlOsA3bKsZghA74MehbDZoUkpZHwRJM9j
- 4g0/JpvOD6J4nGOkh8cLPQG8LK5xHzSP2efrQ+y8UBN7JoBdflYvnLUmqWWmaVOa4XZh
- HJZP5sqeRG/lRZAvH5YMsdwOxr8dsfPsTrSV+0kJVaPP2Ecm08KQRP1Q6QfUI8+E6gRh
- uxcowjkBfnD69wwWMgU+E9/miAGpncdYoQGEt2jhyNckw77imOXJ9qirusZt4ptHaADF
- 6SU7wyJzV9+k5IccBZ+nfFT984BpzWZ7p//S+aGMh7NuoIgFqWHshg9WYhW7ahC++LXd
- yBzQ==
+ id 1kcTRq-00047R-C7
+ for linux-mediatek@lists.infradead.org; Tue, 10 Nov 2020 13:12:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605013952;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2V11rFQ3FKVTN+koXAVvig/bkOvKVZoOl9jWSSiZ8Ik=;
+ b=Di+p8tHpuaV5rtMlatp24D6j8+WKmCUBtqz8yv0zCEdrS6sGXtBKp/ajiNQKnRgk1iVbBf
+ EPgPhQ0oDcmNLweqKLA2uf1G287zKEdUoDcJ+SAJtNZ7ElvnOQlZ77m+OxtwtGg6hoPAvK
+ H8JUZjK8UjW7EnlIU91t9XZBpHRi/X8=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-198-jGHkhq6VPoSvJ31vA-5wJQ-1; Tue, 10 Nov 2020 08:12:31 -0500
+X-MC-Unique: jGHkhq6VPoSvJ31vA-5wJQ-1
+Received: by mail-qk1-f198.google.com with SMTP id f9so8630076qkg.13
+ for <linux-mediatek@lists.infradead.org>; Tue, 10 Nov 2020 05:12:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=RI3echpmsILHMbwDzAgMqcqkjUKk2AOhPsGaeepkNKI=;
- b=FjXKO930WpRhAYtcObDSsZ9e6J1Nv7/mT4gkQoO4wgYlUU08F0QwX95fGLJs92rdMV
- MZS/A4ob52ukBD2vYdo4M9+StWt++wtKbFgOnvmPuAq/fo0CR6GSPe0S0fsPeuAgOgiT
- w7F+U74p/DIMr4x8HpMrJWnCpMxeubrwfw3Nae/IoBIRwDyeyjLEimc5SDf9OGzMAOIk
- EyBU1+mCX4Rs+dnj2xruQXUvxC3Orz7KU5tELEyqFYQOMFpFKRBmnqRcrco5zIp4bo1X
- 0I6cMRygXCGBnGdX19+RL/bDcuZ5PD4KhWvAzybDzpUVnxvRB1BtkOT33KR0g0AmF12d
- YViQ==
-X-Gm-Message-State: AOAM530S2Vr0gv+EeX+pwpYlPhC5inCWeqzFzgnrepQjFte/gdFx0Hrt
- RUAtObbZhC/HAdPtpM9wBRE=
-X-Google-Smtp-Source: ABdhPJx4aH/axjJpFpDOjbOiN8JuiZiLYbtFxERcm0uuN9Xjc0uKWDIuFz8ESgqBpekhNRBqg9O1LQ==
-X-Received: by 2002:a1c:9652:: with SMTP id y79mr4175402wmd.71.1605005410743; 
- Tue, 10 Nov 2020 02:50:10 -0800 (PST)
-Received: from ziggy.stardust ([213.195.112.112])
- by smtp.gmail.com with ESMTPSA id m20sm18743080wrg.81.2020.11.10.02.50.09
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=2V11rFQ3FKVTN+koXAVvig/bkOvKVZoOl9jWSSiZ8Ik=;
+ b=IswHJ97dvViNdIbeY5IPCrv2uYKDhNQRt9c9uwElUD/76LQ6VIx6JuVSF5TxyNDszm
+ V8NQYEAOrwwZnkDOwvU+1RyxBBuQG1lfnU4tEABr6JYfIHTttBv1SOx1+rP4mNrEsMI0
+ D920dDKqNQlKblaFH27B+aSmwJeCvXdsPrECnI8c8USGB/lS4+BzSo2fG45ZPGOA1CaM
+ jrUpPBvYKqXtmu9arkFB+XJb6khlckQk6veg0l7zGNEDM+S/w7LfKPINb+hcXlOIjU9W
+ L3riSpOXBCcBO1GzDjOkZmN2EP5fE/u/mJCWevMHBb+qXuOJLoMq1PywC15Rz1RQykGJ
+ BZRQ==
+X-Gm-Message-State: AOAM533zxbPHdYcEoCy1fwuicf/Ogt7J8qC6bknng+4gTi7oP3TMz/bX
+ EG9tT7c7QdQwvHwBvjoV3UyvhJmMnrsXktWLRn2wg/IIkr7h73h/HHfHuyQ6TmYW5Z8xIC0Gfj4
+ ifNn7M84Wb6qspJy1u56M89Vcf6KDdnoY
+X-Received: by 2002:ac8:3621:: with SMTP id m30mr8787098qtb.168.1605013950433; 
+ Tue, 10 Nov 2020 05:12:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyRnI1rUF5eW2rST1vImtIogpOlMRBum2fO0dVCe+zUlRqVIaRBqmVo31rjlhOk2kmW2Hr8dQ==
+X-Received: by 2002:ac8:3621:: with SMTP id m30mr8787064qtb.168.1605013950178; 
+ Tue, 10 Nov 2020 05:12:30 -0800 (PST)
+Received: from trix.remote.csb (075-142-250-213.res.spectrum.com.
+ [75.142.250.213])
+ by smtp.gmail.com with ESMTPSA id e8sm7658678qti.28.2020.11.10.05.12.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Nov 2020 02:50:10 -0800 (PST)
-Subject: Re: [PATCH] clk: mediatek: fix mtk_clk_register_mux() as static
- function
-To: Weiyi Lu <weiyi.lu@mediatek.com>, Greg KH <gregkh@linuxfoundation.org>
-References: <1604914627-9203-1-git-send-email-weiyi.lu@mediatek.com>
- <20201109102035.GA1238638@kroah.com> <1604972321.16474.9.camel@mtksdaap41>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <00a5aabb-b478-66e0-0663-3cf5557e861b@gmail.com>
-Date: Tue, 10 Nov 2020 11:50:07 +0100
+ Tue, 10 Nov 2020 05:12:29 -0800 (PST)
+Subject: Re: Subject: [RFC] clang tooling cleanups
+To: Joe Perches <joe@perches.com>, linux-kernel@vger.kernel.org,
+ clang-built-linux@googlegroups.com, cocci <cocci@systeme.lip6.fr>
+References: <20201027164255.1573301-1-trix@redhat.com>
+ <3c39c363690d0b46069afddc3ad09213011e5cd4.camel@perches.com>
+From: Tom Rix <trix@redhat.com>
+Message-ID: <cc512954-2e1d-a165-f1f1-2c489fd6d3a9@redhat.com>
+Date: Tue, 10 Nov 2020 05:12:26 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <1604972321.16474.9.camel@mtksdaap41>
+In-Reply-To: <3c39c363690d0b46069afddc3ad09213011e5cd4.camel@perches.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201110_055013_498374_E854E264 
-X-CRM114-Status: GOOD (  19.29  )
+X-CRM114-CacheID: sfid-20201110_081234_485740_4300333B 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,43 +111,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Owen Chen <owen.chen@mediatek.com>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: alsa-devel@alsa-project.org, linux-aspeed@lists.ozlabs.org,
+ linux-iio@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-rtc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-rdma@vger.kernel.org, qat-linux@intel.com, amd-gfx@lists.freedesktop.org,
+ linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-nfs@vger.kernel.org,
+ netdev@vger.kernel.org, linux-mmc@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ linux-btrfs@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 10/11/2020 02:38, Weiyi Lu wrote:
-> On Mon, 2020-11-09 at 11:20 +0100, Greg KH wrote:
->> On Mon, Nov 09, 2020 at 05:37:07PM +0800, Weiyi Lu wrote:
->>> mtk_clk_register_mux() should be a static function
->>>
->>> Fixes: a3ae549917f16 ("clk: mediatek: Add new clkmux register API")
->>> Cc: <stable@vger.kernel.org>
->>
->> Why is this for stable trees?
-> 
-> Hi Greg,
-> 
-> My Mistake. Indeed, this is not a bug fix for stable tree.
-> And there are simple questions.
-> Will I be allowed to keep the fixes tag in this patch to indicate the
-> mistakes we made in previous commit if it's not a bug fix for stable
-> tree?
-> And all I need to do now is to remove stable tree from cc list. Is it
-> correct?
-
-That's my understanding, yes. Keep fixes tag but delete cc to stable.
-
-Regards,
-Matthias
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Ck9uIDExLzkvMjAgNjo1MiBQTSwgSm9lIFBlcmNoZXMgd3JvdGU6Cj4gT24gVHVlLCAyMDIwLTEw
+LTI3IGF0IDA5OjQyIC0wNzAwLCB0cml4QHJlZGhhdC5jb20gd3JvdGU6Cj4+IFRoaXMgcmZjIHdp
+bGwgZGVzY3JpYmUKPj4gQW4gdXBjb21pbmcgdHJlZXdpZGUgY2xlYW51cC4KPj4gSG93IGNsYW5n
+IHRvb2xpbmcgd2FzIHVzZWQgdG8gcHJvZ3JhbWF0aWNhbGx5IGRvIHRoZSBjbGVhbiB1cC4KPj4g
+U29saWNpdCBvcGluaW9ucyBvbiBob3cgdG8gZ2VuZXJhbGx5IHVzZSBjbGFuZyB0b29saW5nLgo+
+Pgo+PiBUaGUgY2xhbmcgd2FybmluZyAtV2V4dHJhLXNlbWktc3RtdCBwcm9kdWNlcyBhYm91dCAx
+MGsgd2FybmluZ3MuCj4+IFJldmlld2luZyB0aGVzZSwgYSBzdWJzZXQgb2Ygc2VtaWNvbG9uIGFm
+dGVyIGEgc3dpdGNoIGxvb2tzIHNhZmUgdG8KPj4gZml4IGFsbCB0aGUgdGltZS4gIEFuIGV4YW1w
+bGUgcHJvYmxlbQo+Pgo+PiB2b2lkIGZvbyhpbnQgYSkgewo+PiDCoMKgwqDCoMKgc3dpdGNoKGEp
+IHsKPj4gwqDCoMKgwqDCoAkgICAgICAgY2FzZSAxOgo+PiAJICAgICAgIC4uLgo+PiDCoMKgwqDC
+oMKgfTsgPC0tLSBleHRyYSBzZW1pY29sb24KPj4gfQo+Pgo+PiBUcmVld2lkZSwgdGhlcmUgYXJl
+IGFib3V0IDEwMCBwcm9ibGVtcyBpbiA1MCBmaWxlcyBmb3IgeDg2XzY0IGFsbHllc2NvbmZpZy4K
+Pj4gVGhlc2UgZml4ZXMgd2lsbCBiZSB0aGUgdXBjb21pbmcgY2xlYW51cC4KPiBjb2NjaW5lbGxl
+IGFscmVhZHkgZG9lcyBzb21lIG9mIHRoZXNlLgo+Cj4gRm9yIGluc3RhbmNlOiBzY3JpcHRzL2Nv
+Y2NpbmVsbGUvbWlzYy9zZW1pY29sb24uY29jY2kKPgo+IFBlcmhhcHMgc29tZSB0b29sIGNvb3Jk
+aW5hdGlvbiBjYW4gYmUgZG9uZSBoZXJlIGFzCj4gY29jY2luZWxsZS9jaGVja3BhdGNoL2NsYW5n
+L0xpbmRlbnQgY2FsbCBhbGwgYmUgdXNlZAo+IHRvIGRvIHNvbWUgZmFjZXQgb3IgYW5vdGhlciBv
+ZiB0aGVzZSBjbGVhbnVwIGlzc3Vlcy4KClRoYW5rcyBmb3IgcG9pbnRpbmcgdGhpcyBvdXQuCgpJ
+IHdpbGwgdGFrZSBhIGxvb2sgYXQgaXQuCgpUb20KCj4KPgoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
