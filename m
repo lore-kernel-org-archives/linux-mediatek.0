@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B5F6C56201
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:49:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4BE2C5517A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:50:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E243E20709
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:49:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 411A920709
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:50:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S564pAqm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="D2xs1r0e"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E243E20709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yxA0ObO7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GbcJK9EN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 411A920709
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RWm2zzu3t5xuteSKogQFqOYibJQrCSLEmKHHxfgY2zg=; b=S564pAqm4pskR7yb6CGqX66lj
-	V9wTvrLQ/3IKdTqZ3HoZUEfFz/VlYJAUd7TCrF5g6TxVsgF/dp5A2BK3+j4wNNKV2pkimcrZh1ilo
-	ogpqb0KRIJ6XZ0NLVk/H967L7fiR87bsyQMCMvdKEcevt6tG9u3dIrYmMNNurgZgtPTdb3tliLoWo
-	Q7d94cec8L0bDoWtPlxhzx+mXeR2WlUM1LAaw1DUA7dSG6GC1Ya9K4h4/CUwlzN94tu7KiBmU5Fc2
-	ilV754ibdn1oW+Jdz/LR+00/nBDta6EaNo+FxjHUlyMfqsC8gAyQ2CAh5enfcfvqfPLvFVO1Axs6B
-	dESU7qwRA==;
+	 bh=3Xt9aRw+34CUMYcdG4LbyNCQEUwOSm2LyQZD/j2UuuU=; b=yxA0ObO749UzAYxwpA5ItPPW2
+	lwkXvicifmzOuz+g+hjLFROj/QvinoSltFtHk6rGVqGQctAR397B5sTwajltHoLdMavupKXsQvfcA
+	E1HSBiHE0OIgO/wydLWvGcnuQlWLXG0e1bMV9Qb8a4nPg/QEbMNs42YaUV8Qoj8gt0fiK/kGosTlI
+	KrLrN1OprM0cyGau23/0YYcKUVvc3MFsh0ukUh6RNHpANRIJiaE6D4PVCn2tpZHWLQz4uAl/C+/Zb
+	PWnWgkp6KUGiDZvyF7So16VISufcGDSnUK6WYcMQCOHy12ESMbr75dsaZpGn3535jsLd5tWwK0F47
+	mKGU6qUtA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcpZK-0003hX-RA; Wed, 11 Nov 2020 12:49:46 +0000
+	id 1kcpZR-0003mS-U0; Wed, 11 Nov 2020 12:49:53 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcpYm-0003QO-7f; Wed, 11 Nov 2020 12:49:13 +0000
-X-UUID: 4b0c6c81ff3b4d32b38041bb6543a705-20201111
+ id 1kcpYo-0003QI-1D; Wed, 11 Nov 2020 12:49:16 +0000
+X-UUID: 266c4c22fdcd48d2bd1f3c99aff4a54a-20201111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jtKs+zNJBVquqsUub9eFHt2GpZNydL4Uo5jy9gWDFfo=; 
- b=D2xs1r0eytBNPesNEwUq+ZfdfDZwuaH+iHA/zRZIWjCW5tEupjv/Ja1uqc6HkdGPWMN1QDx50taivuuZgMyhLnMgEMvdKA1WhP8IKZwCkDz7UQA6fSoplWGFpK7hj915lSRcMRkHnTj04LehAUar65jQ1d2hqrHyFwEEH1Q7GXQ=;
-X-UUID: 4b0c6c81ff3b4d32b38041bb6543a705-20201111
+ bh=afEK9xitvn79KV2oApacjr8s+CvTqEi6bG15NWM8IgY=; 
+ b=GbcJK9ENQRO0xGbWPtn/5pfCQ5LfbQ4h6TLzA6BKBZZ0vr7OQGr16Ki5Kk82/vnoS7/D7uQnLZRVo+c/ngELWR1wNju3AAdfYvANkeXaWLeaZlDsRh3UG2vsCHq7ocjGHZtUzFwz7UIkaxArpw+fMLTgfEtnicvVRgQxRcv5xzw=;
+X-UUID: 266c4c22fdcd48d2bd1f3c99aff4a54a-20201111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1746617937; Wed, 11 Nov 2020 04:49:07 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1736663567; Wed, 11 Nov 2020 04:49:07 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 04:41:50 -0800
+ 15.0.1497.2; Wed, 11 Nov 2020 04:40:19 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 20:41:47 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 Nov 2020 20:40:16 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 11 Nov 2020 20:41:46 +0800
+ Transport; Wed, 11 Nov 2020 20:40:15 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v4 21/24] iommu/mediatek: Add support for multi domain
-Date: Wed, 11 Nov 2020 20:38:35 +0800
-Message-ID: <20201111123838.15682-22-yong.wu@mediatek.com>
+Subject: [PATCH v4 10/24] iommu/io-pgtable-arm-v7s: Add cfg as a param in some
+ macros
+Date: Wed, 11 Nov 2020 20:38:24 +0800
+Message-ID: <20201111123838.15682-11-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201111123838.15682-1-yong.wu@mediatek.com>
 References: <20201111123838.15682-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201111_074912_519503_D45ECDB8 
-X-CRM114-Status: GOOD (  24.76  )
+X-CRM114-CacheID: sfid-20201111_074914_258693_9DE94D12 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,158 +99,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some HW IP(ex: CCU) require the special iova range. That means the
-iova got from dma_alloc_attrs for that devices must locate in his
-special range. In this patch, we allocate a special iova_range for
-each a special requirement and create each a iommu domain for each
-a iova_range.
-
-meanwhile we still use one pagetable which support 16GB iova.
-
-After this patch, If the iova range of a master is over 4G, the master
-should:
-a) Declare its special dma_ranges in its dtsi node. For example, If we
-   preassign the iova 4G-8G for vcodec, then the vcodec dtsi node should
-   add this:
-   /*
-    * iova start at 0x1_0000_0000, pa still start at 0x4000_0000
-    * size is 0x1_0000_0000.
-    */
-   dma-ranges = <0x1 0x0 0x0 0x40000000 0x1 0x0>;  /* 4G ~ 8G */
- Note: we don't have a actual bus concept here. the master doesn't have its
- special parent node, thus this dma-ranges can only be put in the master's
- node.
-
-b) Update the dma_mask:
-  dma_set_mask_and_coherent(dev, DMA_BIT_MASK(33));
+Add "cfg" as a parameter for some macros. This is a preparing patch for
+mediatek extend the lvl1 pgtable. No functional change.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Acked-by: Will Deacon <will@kernel.org>
 ---
- drivers/iommu/mtk_iommu.c | 47 +++++++++++++++++++++++++++++++--------
- drivers/iommu/mtk_iommu.h |  3 ++-
- 2 files changed, 40 insertions(+), 10 deletions(-)
+ drivers/iommu/io-pgtable-arm-v7s.c | 36 +++++++++++++++---------------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index fdf08e2d9ed5..d9a66b2d55e9 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -354,6 +354,14 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+index 58cc201c10a3..0b3c5b904ddc 100644
+--- a/drivers/iommu/io-pgtable-arm-v7s.c
++++ b/drivers/iommu/io-pgtable-arm-v7s.c
+@@ -47,21 +47,21 @@
+  * and 12 bits in a page.
+  */
+ #define ARM_V7S_ADDR_BITS		32
+-#define _ARM_V7S_LVL_BITS(lvl)		((lvl) == 1 ? 12 : 8)
++#define _ARM_V7S_LVL_BITS(lvl, cfg)	((lvl) == 1 ? 12 : 8)
+ #define ARM_V7S_LVL_SHIFT(lvl)		((lvl) == 1 ? 20 : 12)
+ #define ARM_V7S_TABLE_SHIFT		10
+ 
+-#define ARM_V7S_PTES_PER_LVL(lvl)	(1 << _ARM_V7S_LVL_BITS(lvl))
+-#define ARM_V7S_TABLE_SIZE(lvl)						\
+-	(ARM_V7S_PTES_PER_LVL(lvl) * sizeof(arm_v7s_iopte))
++#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	(1 << _ARM_V7S_LVL_BITS(lvl, cfg))
++#define ARM_V7S_TABLE_SIZE(lvl, cfg)						\
++	(ARM_V7S_PTES_PER_LVL(lvl, cfg) * sizeof(arm_v7s_iopte))
+ 
+ #define ARM_V7S_BLOCK_SIZE(lvl)		(1UL << ARM_V7S_LVL_SHIFT(lvl))
+ #define ARM_V7S_LVL_MASK(lvl)		((u32)(~0U << ARM_V7S_LVL_SHIFT(lvl)))
+ #define ARM_V7S_TABLE_MASK		((u32)(~0U << ARM_V7S_TABLE_SHIFT))
+-#define _ARM_V7S_IDX_MASK(lvl)		(ARM_V7S_PTES_PER_LVL(lvl) - 1)
+-#define ARM_V7S_LVL_IDX(addr, lvl)	({				\
++#define _ARM_V7S_IDX_MASK(lvl, cfg)	(ARM_V7S_PTES_PER_LVL(lvl, cfg) - 1)
++#define ARM_V7S_LVL_IDX(addr, lvl, cfg)	({				\
+ 	int _l = lvl;							\
+-	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l); \
++	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
+ })
+ 
+ /*
+@@ -237,7 +237,7 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+ 	struct device *dev = cfg->iommu_dev;
+ 	phys_addr_t phys;
+ 	dma_addr_t dma;
+-	size_t size = ARM_V7S_TABLE_SIZE(lvl);
++	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
+ 	void *table = NULL;
+ 
+ 	if (lvl == 1)
+@@ -283,7 +283,7 @@ static void __arm_v7s_free_table(void *table, int lvl,
  {
- 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+ 	struct io_pgtable_cfg *cfg = &data->iop.cfg;
+ 	struct device *dev = cfg->iommu_dev;
+-	size_t size = ARM_V7S_TABLE_SIZE(lvl);
++	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
  
-+	/* Use the exist domain as there is only one m4u pgtable here. */
-+	if (data->m4u_dom) {
-+		dom->iop = data->m4u_dom->iop;
-+		dom->cfg = data->m4u_dom->cfg;
-+		dom->domain.pgsize_bitmap = data->m4u_dom->cfg.pgsize_bitmap;
-+		return 0;
-+	}
-+
- 	dom->cfg = (struct io_pgtable_cfg) {
- 		.quirks = IO_PGTABLE_QUIRK_ARM_NS |
- 			IO_PGTABLE_QUIRK_NO_PERMS |
-@@ -379,6 +387,8 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+ 	if (!cfg->coherent_walk)
+ 		dma_unmap_single(dev, __arm_v7s_dma_addr(table), size,
+@@ -427,7 +427,7 @@ static int arm_v7s_init_pte(struct arm_v7s_io_pgtable *data,
+ 			arm_v7s_iopte *tblp;
+ 			size_t sz = ARM_V7S_BLOCK_SIZE(lvl);
  
- static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
- {
-+	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-+	const struct mtk_iommu_iova_region *region;
- 	struct mtk_iommu_domain *dom;
+-			tblp = ptep - ARM_V7S_LVL_IDX(iova, lvl);
++			tblp = ptep - ARM_V7S_LVL_IDX(iova, lvl, cfg);
+ 			if (WARN_ON(__arm_v7s_unmap(data, NULL, iova + i * sz,
+ 						    sz, lvl, tblp) != sz))
+ 				return -EINVAL;
+@@ -480,7 +480,7 @@ static int __arm_v7s_map(struct arm_v7s_io_pgtable *data, unsigned long iova,
+ 	int num_entries = size >> ARM_V7S_LVL_SHIFT(lvl);
  
- 	if (type != IOMMU_DOMAIN_DMA)
-@@ -394,8 +404,9 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
- 	if (mtk_iommu_domain_finalise(dom))
- 		goto  put_dma_cookie;
+ 	/* Find our entry at the current level */
+-	ptep += ARM_V7S_LVL_IDX(iova, lvl);
++	ptep += ARM_V7S_LVL_IDX(iova, lvl, cfg);
  
--	dom->domain.geometry.aperture_start = 0;
--	dom->domain.geometry.aperture_end = DMA_BIT_MASK(32);
-+	region = data->plat_data->iova_region + data->cur_domid;
-+	dom->domain.geometry.aperture_start = region->iova_base;
-+	dom->domain.geometry.aperture_end = region->iova_base + region->size - 1;
- 	dom->domain.geometry.force_aperture = true;
+ 	/* If we can install a leaf entry at this level, then do so */
+ 	if (num_entries)
+@@ -553,7 +553,7 @@ static void arm_v7s_free_pgtable(struct io_pgtable *iop)
+ 	struct arm_v7s_io_pgtable *data = io_pgtable_to_data(iop);
+ 	int i;
  
- 	return &dom->domain;
-@@ -539,19 +550,31 @@ static void mtk_iommu_release_device(struct device *dev)
- static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- {
- 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct iommu_group *group;
-+	int domid;
+-	for (i = 0; i < ARM_V7S_PTES_PER_LVL(1); i++) {
++	for (i = 0; i < ARM_V7S_PTES_PER_LVL(1, &data->iop.cfg); i++) {
+ 		arm_v7s_iopte pte = data->pgd[i];
  
- 	if (!data)
- 		return ERR_PTR(-ENODEV);
+ 		if (ARM_V7S_PTE_IS_TABLE(pte, 1))
+@@ -605,9 +605,9 @@ static size_t arm_v7s_split_blk_unmap(struct arm_v7s_io_pgtable *data,
+ 	if (!tablep)
+ 		return 0; /* Bytes unmapped */
  
--	/* All the client devices are in the same m4u iommu-group */
--	if (!data->m4u_group) {
--		data->m4u_group = iommu_group_alloc();
--		if (IS_ERR(data->m4u_group))
-+	domid = MTK_M4U_TO_DOM(fwspec->ids[0]);
-+	if (domid >= data->plat_data->iova_region_nr) {
-+		dev_err(dev, "iommu domain id(%d/%d) is error.\n", domid,
-+			data->plat_data->iova_region_nr);
-+		return ERR_PTR(-EINVAL);
-+	}
-+
-+	group = data->m4u_group[domid];
-+	if (!group) {
-+		group = iommu_group_alloc();
-+		if (IS_ERR(group))
- 			dev_err(dev, "Failed to allocate M4U IOMMU group\n");
-+		data->m4u_group[domid] = group;
- 	} else {
--		iommu_group_ref_get(data->m4u_group);
-+		iommu_group_ref_get(group);
- 	}
--	return data->m4u_group;
-+	data->cur_domid = domid;
-+	return group;
- }
+-	num_ptes = ARM_V7S_PTES_PER_LVL(2);
++	num_ptes = ARM_V7S_PTES_PER_LVL(2, cfg);
+ 	num_entries = size >> ARM_V7S_LVL_SHIFT(2);
+-	unmap_idx = ARM_V7S_LVL_IDX(iova, 2);
++	unmap_idx = ARM_V7S_LVL_IDX(iova, 2, cfg);
  
- static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
-@@ -580,14 +603,20 @@ static void mtk_iommu_get_resv_regions(struct device *dev,
- 				       struct list_head *head)
- {
- 	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
--	const struct mtk_iommu_iova_region *resv;
-+	const struct mtk_iommu_iova_region *resv, *curdom;
- 	struct iommu_resv_region *region;
- 	int prot = IOMMU_WRITE | IOMMU_READ;
- 	unsigned int i;
+ 	pte = arm_v7s_prot_to_pte(arm_v7s_pte_to_prot(blk_pte, 1), 2, cfg);
+ 	if (num_entries > 1)
+@@ -649,7 +649,7 @@ static size_t __arm_v7s_unmap(struct arm_v7s_io_pgtable *data,
+ 	if (WARN_ON(lvl > 2))
+ 		return 0;
  
-+	curdom = data->plat_data->iova_region + data->cur_domid;
- 	for (i = 0; i < data->plat_data->iova_region_nr; i++) {
- 		resv = data->plat_data->iova_region + i;
+-	idx = ARM_V7S_LVL_IDX(iova, lvl);
++	idx = ARM_V7S_LVL_IDX(iova, lvl, &iop->cfg);
+ 	ptep += idx;
+ 	do {
+ 		pte[i] = READ_ONCE(ptep[i]);
+@@ -735,7 +735,7 @@ static phys_addr_t arm_v7s_iova_to_phys(struct io_pgtable_ops *ops,
+ 	u32 mask;
  
-+		/* Only reserve when the region is in the current domain */
-+		if (resv->iova_base <= curdom->iova_base ||
-+		    resv->iova_base + resv->size >= curdom->iova_base + curdom->size)
-+			continue;
-+
- 		region = iommu_alloc_resv_region(resv->iova_base, resv->size,
- 						 prot, IOMMU_RESV_RESERVED);
- 		if (!region)
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index e867cd3aeeac..b54862307128 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -67,7 +67,7 @@ struct mtk_iommu_data {
- 	phys_addr_t			protect_base; /* protect memory base */
- 	struct mtk_iommu_suspend_reg	reg;
- 	struct mtk_iommu_domain		*m4u_dom;
--	struct iommu_group		*m4u_group;
-+	struct iommu_group		*m4u_group[MTK_M4U_DOM_NR_MAX];
- 	bool                            enable_4GB;
- 	spinlock_t			tlb_lock; /* lock for tlb range flush */
+ 	do {
+-		ptep += ARM_V7S_LVL_IDX(iova, ++lvl);
++		ptep += ARM_V7S_LVL_IDX(iova, ++lvl, &data->iop.cfg);
+ 		pte = READ_ONCE(*ptep);
+ 		ptep = iopte_deref(pte, lvl, data);
+ 	} while (ARM_V7S_PTE_IS_TABLE(pte, lvl));
+@@ -778,8 +778,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
  
-@@ -77,6 +77,7 @@ struct mtk_iommu_data {
- 
- 	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
- 
-+	unsigned int			cur_domid;
- 	struct list_head		list;
- 	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
- };
+ 	spin_lock_init(&data->split_lock);
+ 	data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
+-					    ARM_V7S_TABLE_SIZE(2),
+-					    ARM_V7S_TABLE_SIZE(2),
++					    ARM_V7S_TABLE_SIZE(2, cfg),
++					    ARM_V7S_TABLE_SIZE(2, cfg),
+ 					    ARM_V7S_TABLE_SLAB_FLAGS, NULL);
+ 	if (!data->l2_tables)
+ 		goto out_free_data;
 -- 
 2.18.0
 _______________________________________________
