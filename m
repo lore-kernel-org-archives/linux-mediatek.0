@@ -2,21 +2,20 @@ Return-Path: <SRS0=/0MH=ER=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F3C1C56202
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 21:30:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56CC8C56201
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 21:30:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D8C2B208FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 21:30:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B8830208B3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 21:30:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xa+DGct+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8C2B208FE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sIsZt+YC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8830208B3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +24,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y5mbg9jD13/lvyAPoUGVAkB2nuQxouasIUvMBDO8P+Y=; b=xa+DGct+UUcIOqo+m6BDhva02
-	nE8dC3a9h0IoD/ts9Q2WK1R59KOWr3fJj1KKl51k8A7FjhqjaUpiQOBYOSJTcP7npbODBosCod7gj
-	04C9ZvvNTww7+Fleqn1SPfJ00juj+jMB+V0XhVGyf2MXZXyo5UfM9w1aVWjdJHYskeP5V5b1PObuY
-	xcvadsCpdIrd6fqQPpANcSHnd6a6EsF7jtTfO9Xe8MG8yn98LqeLrIo+M2avA1Sk4enCvnhxswy6V
-	1zMPcgnBIQ/9XPg1KkJxVCvJXcQSbmOGXnTlyVZ2Wm8BRpWa9JLydMcX9bKXKdZoSBoUqnsnQbOOs
-	jH14ojpVQ==;
+	 bh=skQuKeOoa3ZsEo6XSmMJN0m0xWOFzgBzdAqf6pU53NA=; b=sIsZt+YCP68kcjtcpXlYiokxa
+	MHRGJuPuM56/82JxadRoJmLahM+cdA/ADs8GZLTgxtGuEdv1hD5a0Fhtpt92i9dLUWZJ0gx3EFRhJ
+	NE/k1pnfVEthSUsOiisJZwUdtcBS3btBGFw6E1Oas2r9oE9h3yoJXfgdYr5DzpoDLbmTOuTtxzLi5
+	wSm1ZXIeM7KjtgJd/mR/WCBY6bBC/rTw1uxa6CLHG8JPtYpgYwzEgFLJkOvHQNHpA2rYXMpe+fLi4
+	Xh5f+0MQLWjvk5M6++KS5lh3Wsd1lLCH9boc+MwapdsU1jYbdMGN1/hhK93P/won2KOjm1jhJmbln
+	mW9Hr0BTw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcxh4-0001Eo-FV; Wed, 11 Nov 2020 21:30:18 +0000
-Received: from mail-ed1-f67.google.com ([209.85.208.67])
+	id 1kcxhG-0001H0-NC; Wed, 11 Nov 2020 21:30:34 +0000
+Received: from mail-ed1-f66.google.com ([209.85.208.66])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcxh2-0001Da-Ab; Wed, 11 Nov 2020 21:30:17 +0000
-Received: by mail-ed1-f67.google.com with SMTP id ay21so3883209edb.2;
- Wed, 11 Nov 2020 13:30:11 -0800 (PST)
+ id 1kcxhE-0001GA-Np; Wed, 11 Nov 2020 21:30:29 +0000
+Received: by mail-ed1-f66.google.com with SMTP id q3so3830808edr.12;
+ Wed, 11 Nov 2020 13:30:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=HXTmIvGpS6O2JN7ZP+tV8NA98uj/d24NOFx2y9hbQXo=;
- b=cksAGzg63T8dFCmN7YgHhBKa8YBZJVvx8z7dG2t8YXoiCOxONEoiQ6HEzX4XM1T7hN
- +Sg07UAiCwg681WDyFORaY1CmAAxkxkZV8Qz2N6w6mEfUN2LMYAr7Rb65Oq78PFNbfXl
- 9fjrw5cqYIFIq0rmY6U5nF1GUSmXv+NMkRzqTHrnpRKyJWUe+8nF2D+bdsGOlsuOZ94V
- AInAtpOtfo7XmSlxIiIqaWua31bqDwTa7reCNc1FNxBnSTcCQXvtmVqGXSp4KKevZLUQ
- UQYZe/sCX5RejSmxJAFO4nIkz4nKkXdBD/jMTWl3p6svV2hIDceMvt+yDOfFeoDQSYyO
- zkvg==
-X-Gm-Message-State: AOAM533nKIPmkEp6rUGQMRb0vp6amElRXqnOaJW2zNOH5TDHQlXsS4Sx
- RLx7mb9z5f3IaDfuq74o/CM=
-X-Google-Smtp-Source: ABdhPJzZenTK1Rz6VyR60TpP7GxdbeoRs2AcpvlAu6VCtNPuHEDus85c+Hal/IVl6aOsp2lRL06b2Q==
-X-Received: by 2002:a50:fe14:: with SMTP id f20mr1601079edt.61.1605130210735; 
- Wed, 11 Nov 2020 13:30:10 -0800 (PST)
+ bh=VXU2Y8um07dYkZOSE2h8yApKemYd1SjZEtR4nU/PGP4=;
+ b=r73hIskN6LlFfMtW43fKhuYpcm7bJVvX+sHA/T8Nb/tfixrK75z87V7saZKHTa49O7
+ sSabIoS5/PCUV8yi1jdLg+4LHQCJRvs57KZk82jJE9AGMAG8plLp2A5Gw6Gq76Gvh0yz
+ 9hGJQW2tcoBoufnOsBEP73LHLe/qSMyiMqrfZhFzLjvb52kDJ5/7q2bS8TCBNZQ6mPO1
+ KCpZKjMuZzuMhYYrJGtPSkf0o02AmbY59FOIF2KnY7OeffSvqvqN77X6ofCepqtjPQ0n
+ 6u8vomPzK2cB/3l8H0+fwKYO77Ayhfof7bvU17MA39Ul/Y4RlAEBRt1sQsflfzrFGrLE
+ WY6Q==
+X-Gm-Message-State: AOAM532RUTNYA/kFb2RXPdUaTYhdeXuc/oAV6OAkvCqMwIRjWbmPzXLc
+ z05AoXbvpJYxyBseQMIqBmU=
+X-Google-Smtp-Source: ABdhPJwVSGs92SscCBCPBRoMp1HtHTNhBg0G7orwBTU8eK0jeXqo9NPvVCdZIMkZeStonb8IonVcFg==
+X-Received: by 2002:a50:b761:: with SMTP id g88mr1638344ede.387.1605130227345; 
+ Wed, 11 Nov 2020 13:30:27 -0800 (PST)
 Received: from kozik-lap (adsl-84-226-167-205.adslplus.ch. [84.226.167.205])
- by smtp.googlemail.com with ESMTPSA id z2sm1433060edr.47.2020.11.11.13.30.09
+ by smtp.googlemail.com with ESMTPSA id k12sm1319337ejz.48.2020.11.11.13.30.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Nov 2020 13:30:09 -0800 (PST)
-Date: Wed, 11 Nov 2020 22:30:07 +0100
+ Wed, 11 Nov 2020 13:30:26 -0800 (PST)
+Date: Wed, 11 Nov 2020 22:30:24 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v4 02/24] dt-bindings: memory: mediatek: Add a common
- larb-port header file
-Message-ID: <20201111213007.GA287176@kozik-lap>
+Subject: Re: [PATCH v4 03/24] dt-bindings: memory: mediatek: Extend
+ LARB_NR_MAX to 32
+Message-ID: <20201111213024.GB287176@kozik-lap>
 References: <20201111123838.15682-1-yong.wu@mediatek.com>
- <20201111123838.15682-3-yong.wu@mediatek.com>
+ <20201111123838.15682-4-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201111123838.15682-3-yong.wu@mediatek.com>
+In-Reply-To: <20201111123838.15682-4-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201111_163016_432493_36B4C9B5 
-X-CRM114-Status: GOOD (  14.02  )
+X-CRM114-CacheID: sfid-20201111_163028_869711_F99BB10C 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,23 +98,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 11, 2020 at 08:38:16PM +0800, Yong Wu wrote:
-> Put all the macros about smi larb/port togethers, this is a preparing
-> patch for extending LARB_NR and adding new dom-id support.
+On Wed, Nov 11, 2020 at 08:38:17PM +0800, Yong Wu wrote:
+> Extend the max larb number definition as mt8192 has larb_nr over 16.
 > 
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > Acked-by: Rob Herring <robh@kernel.org>
 > ---
->  include/dt-bindings/memory/mt2712-larb-port.h  |  2 +-
->  include/dt-bindings/memory/mt6779-larb-port.h  |  2 +-
->  include/dt-bindings/memory/mt8167-larb-port.h  |  2 +-
->  include/dt-bindings/memory/mt8173-larb-port.h  |  2 +-
->  include/dt-bindings/memory/mt8183-larb-port.h  |  2 +-
->  include/dt-bindings/memory/mtk-smi-larb-port.h | 15 +++++++++++++++
->  6 files changed, 20 insertions(+), 5 deletions(-)
->  create mode 100644 include/dt-bindings/memory/mtk-smi-larb-port.h
+>  Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 2 +-
+>  include/dt-bindings/memory/mtk-smi-larb-port.h              | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/include/dt-bindings/memory/mt2712-larb-port.h b/include/dt-bindings/memory/mt2712-larb-port.h
 
 Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 
