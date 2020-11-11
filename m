@@ -2,90 +2,76 @@ Return-Path: <SRS0=/0MH=ER=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D9BEC55ABD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 16:47:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5538C5517A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 16:53:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C60EA206FB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 16:47:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 49B2B206FB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 16:53:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YcKNOMQC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="B/+8hOwV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C60EA206FB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GquacqaN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="vrWvgsCU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49B2B206FB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fZBxrxzSHpIiUELCvdY/t8h0sE1K++9e61NRN8VdDTA=; b=YcKNOMQC8ccwqKENnOB6+cTzb
-	7cQsvbEGFNsaAJv8ZS+VcEODtfLRIvRbQgBLdigi6nREdmn5JzwKAkZME4PCPP7SY2SKCDnCeUvvm
-	gdhJ2vKZsSFueqEpolSs1/jmimUM7N7soW+2RRG5y2tVQa3+vxVUiJFgQZ57gnAoWUrR50eawd24L
-	RH+rOayjtyo2Y4vNjkTVzUWBDeUbFgDp10xeCOCXE+H852R/yPFHFgOyIhQGjX21o8NFoHK2EgVd4
-	HtM8LfWZrTpDM/Qz9iF+wZK/zmgHabrXJBgkFkrAof5Lo1I3mCPyb4ZolaMp4MXcG/Uroy1xPDxKQ
-	mB3hOZXFQ==;
+	 bh=/icIogOezZ/9JM2+Qo8wzw4lCewW1kZ+Xy+QvQ8LCOk=; b=GquacqaNtozda0+xpjjwMtuk3
+	IOTpyv8WvJbFrIaX7mWs5GhS3ccjfKpPfXby8ZfHO0B3JNzbl4BDuktuZmb04ABBa0n2RnBFcW6HG
+	HRORrEhUeSa0mAU9XxHJrEtWyY2Psz4T7Ukcw57Uj7zoSmUSKVhYSCOhRDLMIPPHc92uBPENG/WVo
+	k5uKGHmVwD+dz6sIxcTVTP/OkkSaRgPCAxrBCY88yyZ6xiXc9aUxgkFHK27VfdZCt0Ig4odO02KLg
+	MqJ+727oFhyWmWIKpQh1FECQarYofkJditHkAC8/grVMfAXH54Lv643k+7vGwil1uwPamZeh29aSx
+	n74gawWxg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kctHG-0000Rj-9y; Wed, 11 Nov 2020 16:47:22 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kctMo-0001KH-Rw; Wed, 11 Nov 2020 16:53:06 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kctHC-0000PA-LB
- for linux-mediatek@lists.infradead.org; Wed, 11 Nov 2020 16:47:19 +0000
-Received: by mail-wr1-x442.google.com with SMTP id r17so3196758wrw.1
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Nov 2020 08:47:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=iFsaSefHhmkCScyFYoknkXxLil5Qp2yw29m3QJALDc0=;
- b=B/+8hOwVHut4qAjEftspH+8vOftFemj7qMkkqsNfSt9PH1QrCUn7bFMuufqiEPYHvf
- CdmPz2mS5JPSwdBBTN3N+khMGnoAGP2AMLWxir+wYUZpoPc8LzHTAHww18QLMHCLtGYB
- WdS1kZXw1Wk0uKOLDhIKppmqhF3IRsIPWNzfTn9bLxl5JmBlg6Q7imM185QgomyT7bns
- goQSjXEEH8X/SURQO3CsKV8CgFklhDx6f8EPYOP2Wn8iCNBG0Nh+SLEoIZhcKXUsGWMQ
- Qy/b3ca3qV3J2XYHhKzCGO+yZLvq7xFp70cyUOg4Cn2HgU4qdJ00TQIkU9tKw04hBuju
- YPXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=iFsaSefHhmkCScyFYoknkXxLil5Qp2yw29m3QJALDc0=;
- b=q6Ar8Ph24NmeYXL1WXm++5//IKwiTW3bI6jaQgJK5s1X5iV3Ey5WVpO+EcZxDzQgf/
- g5bGt68tefdypT7Ljc0y0ZPxteGM/+0k8WItIZFNYeQDInR7eNhFV/PLHmWOVNe2FRcW
- y+iXWlrwtIlkn/HhuieAk031nzYac+gwgQj/X23EH7eOmvmJIEm/PJDD6EsFpjYHopif
- 5F4Z2rwYsnUcqxPPVnwUP20/gRHyL/hFM4+qqxLIKAtBYD2KR1HYFY/EvsCVcTyyVhlz
- ZOJou9LjbGQLxFIp4mKm+k9NLf77L0dOdS7H/trUQVvinfKsEt8hEXjY+m7QHKyYcPA1
- fsig==
-X-Gm-Message-State: AOAM5323p2shhJEZh8H8p/EeRjiTThq3DGA5xlaXSFRqxV0KEqq/3ONh
- 6ig2p7aigv5vT5SJ0qYjm1oKCw==
-X-Google-Smtp-Source: ABdhPJzRnnvVYKTjowXa7ib7kM/imqHcA0TsWc1jxSxFSms9DDStsTD9noYghcLYEnaRaNhZGEfe7g==
-X-Received: by 2002:adf:ffc3:: with SMTP id x3mr2959101wrs.32.1605113237207;
- Wed, 11 Nov 2020 08:47:17 -0800 (PST)
-Received: from dell ([91.110.221.159])
- by smtp.gmail.com with ESMTPSA id s4sm3225443wro.10.2020.11.11.08.47.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Nov 2020 08:47:16 -0800 (PST)
-Date: Wed, 11 Nov 2020 16:47:14 +0000
-From: Lee Jones <lee.jones@linaro.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: Re: [PATCH v6 11/11] mfd: mt6360: Remove MT6360 regulator
- of_compatible attribute
-Message-ID: <20201111164714.GR2063125@dell>
-References: <1604656432-10215-1-git-send-email-gene.chen.richtek@gmail.com>
- <1604656432-10215-12-git-send-email-gene.chen.richtek@gmail.com>
+ id 1kctMk-0001Iu-3s; Wed, 11 Nov 2020 16:53:03 +0000
+Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com
+ [209.85.218.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BC29020756;
+ Wed, 11 Nov 2020 16:53:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605113581;
+ bh=JmHvo1SzasskdROAWMoAgJ6ASA6flz7HfKula4/+Rxc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=vrWvgsCUe3WUikOynKF6WlqA5l0n3Ae1O6V5ZPQigDunSwUXIaYX8ZofQhXb9U4LG
+ Esja9EsroullITulSAV8dkBDv3SOgb7xsRWgGf6oTesxapQG9ngNCNgSOZufBQADRR
+ PvjNyIoTkRIvuA/Pa4Or0KVFxrn9OX8zEqdV9Jjg=
+Received: by mail-ej1-f50.google.com with SMTP id o9so3715271ejg.1;
+ Wed, 11 Nov 2020 08:53:00 -0800 (PST)
+X-Gm-Message-State: AOAM532ShnWqtWF5TJuYfdIeAs/bMHnaBEY5wySj2NsyJWotRy54CnPt
+ bHRvgZGV+odqLTlA9NscQEpKuf9SUHGDSAg7/A==
+X-Google-Smtp-Source: ABdhPJzdRmYGXhqdGMuO0dJRFroeBzeq9MJGO2EU8QQlLa+CkCedj+n4fq3F2ISZsjzb4o981Dy2VwbcJ3xH0AIJoko=
+X-Received: by 2002:a17:906:5f8d:: with SMTP id
+ a13mr26062667eju.194.1605113579120; 
+ Wed, 11 Nov 2020 08:52:59 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1604656432-10215-12-git-send-email-gene.chen.richtek@gmail.com>
+References: <20201111123838.15682-1-yong.wu@mediatek.com>
+ <20201111123838.15682-25-yong.wu@mediatek.com>
+In-Reply-To: <20201111123838.15682-25-yong.wu@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 12 Nov 2020 00:52:48 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_85-PWMVh3k+P_984irVVLaEWjPSyw1amFkRaQ+x=wg=A@mail.gmail.com>
+Message-ID: <CAAOTY_85-PWMVh3k+P_984irVVLaEWjPSyw1amFkRaQ+x=wg=A@mail.gmail.com>
+Subject: Re: [PATCH v4 24/24] MAINTAINERS: Add entry for MediaTek IOMMU
+To: Yong Wu <yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201111_114718_898266_282F00F1 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20201111_115302_341774_81DF69A5 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,38 +83,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- sre@kernel.org, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- benjamin.chao@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
+Cc: youlin.pei@mediatek.com, DTML <devicetree@vger.kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, kernel-team@android.com,
+ Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Greg Kroah-Hartman <gregkh@google.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>,
+ iommu@lists.linux-foundation.org, chao.hao@mediatek.com,
+ Tomasz Figa <tfiga@google.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAwNiBOb3YgMjAyMCwgR2VuZSBDaGVuIHdyb3RlOgoKPiBGcm9tOiBHZW5lIENoZW4g
-PGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiAKPiBSZW1vdmUgTVQ2MzYwIHJlZ3VsYXRvciBvZl9j
-b21wYXRpYmxlIGF0dHJpYnV0ZSBiZWNhdXNlCj4gTUZEIGRldmljZSBzaG91bGQganVzdCBpbnN0
-YW50aWF0ZSB0aGUgcGxhdGZvcm0gZGV2aWNlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEdlbmUgQ2hl
-biA8Z2VuZV9jaGVuQHJpY2h0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL21mZC9tdDYzNjAtY29y
-ZS5jIHwgMiArLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
-LSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYyBiL2RyaXZlcnMv
-bWZkL210NjM2MC1jb3JlLmMKPiBpbmRleCA0YmNmYTdmLi41MzlhYjQzIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMKPiArKysgYi9kcml2ZXJzL21mZC9tdDYzNjAtY29y
-ZS5jCj4gQEAgLTM0MCw3ICszNDAsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG1mZF9jZWxsIG10
-NjM2MF9kZXZzW10gPSB7Cj4gIAlPRl9NRkRfQ0VMTCgibXQ2MzYwLWxlZCIsIG10NjM2MF9sZWRf
-cmVzb3VyY2VzLAo+ICAJCSAgICBOVUxMLCAwLCAwLCAibWVkaWF0ZWssbXQ2MzYwLWxlZCIpLAo+
-ICAJT0ZfTUZEX0NFTEwoIm10NjM2MC1yZWd1bGF0b3IiLCBtdDYzNjBfcmVndWxhdG9yX3Jlc291
-cmNlcywKPiAtCQkgICAgTlVMTCwgMCwgMCwgIm1lZGlhdGVrLG10NjM2MC1yZWd1bGF0b3IiKSwK
-PiArCQkgICAgTlVMTCwgMCwgMCwgTlVMTCksCgpJZiB5b3UncmUgbm8gbG9uZ2VyIHByb3ZpZGlu
-ZyBhbiBPRiBjb21wYXRpYmxlLCB5b3Ugc2hvdWxkIHVzZSBvbmUgb2YKdGhlIHNpbXBlciBoZWxw
-ZXJzLgoKPiAgCU9GX01GRF9DRUxMKCJtdDYzNjAtdGNwYyIsIE5VTEwsCj4gIAkJICAgIE5VTEws
-IDAsIDAsICJtZWRpYXRlayxtdDYzNjAtdGNwYyIpLAo+ICB9OwoKLS0gCkxlZSBKb25lcyBb5p2O
-55C85pavXQpTZW5pb3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJv
-Lm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86
-IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRp
-YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+SGkgWW9uZzoKCllvbmcgV3UgPHlvbmcud3VAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDEx5pyI
+MTHml6Ug6YCx5LiJIOS4i+WNiDg6NTPlr6vpgZPvvJoKPgo+IEkgYW0gdGhlIGF1dGhvciBvZiBN
+ZWRpYVRlayBpb21tdSBkcml2ZXIsIGFuZCB3aWxsIHRvIG1haW50YWluIGFuZAo+IGRldmVsb3Ag
+aXQgZnVydGhlci4KPiBBZGQgbXlzZWxmIHRvIGNvdmVyIHRoZXNlIGl0ZW1zLgoKUmV2aWV3ZWQt
+Ynk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPgo+IFNpZ25lZC1v
+ZmYtYnk6IFlvbmcgV3UgPHlvbmcud3VAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBNQUlOVEFJTkVS
+UyB8IDkgKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKykKPgo+IGRp
+ZmYgLS1naXQgYS9NQUlOVEFJTkVSUyBiL01BSU5UQUlORVJTCj4gaW5kZXggZTczNjM2Yjc1ZjI5
+Li40NjJhODdlZTE5YzggMTAwNjQ0Cj4gLS0tIGEvTUFJTlRBSU5FUlMKPiArKysgYi9NQUlOVEFJ
+TkVSUwo+IEBAIC0xMTA1Niw2ICsxMTA1NiwxNSBAQCBTOiAgICAgTWFpbnRhaW5lZAo+ICBGOiAg
+ICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2kyYy9pMmMtbXQ2NXh4LnR4dAo+
+ICBGOiAgICAgZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDY1eHguYwo+Cj4gK01FRElBVEVLIElP
+TU1VIERSSVZFUgo+ICtNOiAgICAgWW9uZyBXdSA8eW9uZy53dUBtZWRpYXRlay5jb20+Cj4gK0w6
+ICAgICBpb21tdUBsaXN0cy5saW51eC1mb3VuZGF0aW9uLm9yZwo+ICtMOiAgICAgbGludXgtbWVk
+aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZyAobW9kZXJhdGVkIGZvciBub24tc3Vic2NyaWJlcnMp
+Cj4gK1M6ICAgICBTdXBwb3J0ZWQKPiArRjogICAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9pb21tdS9tZWRpYXRlayoKPiArRjogICAgIGRyaXZlcnMvaW9tbXUvbXRrLWlvbW11
+Kgo+ICtGOiAgICAgaW5jbHVkZS9kdC1iaW5kaW5ncy9tZW1vcnkvbXQqLWxhcmItcG9ydC5oCj4g
+Kwo+ICBNRURJQVRFSyBKUEVHIERSSVZFUgo+ICBNOiAgICAgUmljayBDaGFuZyA8cmljay5jaGFu
+Z0BtZWRpYXRlay5jb20+Cj4gIE06ICAgICBCaW4gTGl1IDxiaW4ubGl1QG1lZGlhdGVrLmNvbT4K
+PiAtLQo+IDIuMTguMAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gTGludXgtbWVkaWF0ZWtAbGlz
+dHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtbWVkaWF0ZWsK
