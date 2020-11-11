@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 909F2C5517A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:40:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C2F0C5517A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:40:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2197220709
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:40:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BF160207BB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:40:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bi27tyfN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XEO99O9+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2197220709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="usOWQIhC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qM3aaBhl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF160207BB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MHYhX9smKAaZKfFGQP4o4saSVFnQClT0MhJd8gW2uYo=; b=bi27tyfN+uXi4fHH5E/FSXj5A
-	Qnrd1wenlWxNOGDaYhcf76LW/wh5XztLT3gnhdedPA/I5lmJSVUexMRKtoIfiMMWrB+MNmLBIyGPd
-	QOtD2bKm+cviWjyxrv4/srMUBSddhy48fgyzRBAtCOWnXOkszuwAaoMZGby2Jp8Y0WY5dUsxfl/pr
-	XBh2Eyt0QnUXhUngecOexF/bpWkBkDeDKxH+lqupr3M9pkM/lb7VZJFN8BPXTEO54DEpmBKiUv784
-	B5qsw+W5DsmqHrckHmWeXXLF5v730DeYGgj7Mj4p01iLE2IudTfYReRMyKDpTN33cksiqnqaftwVY
-	JaMyHHqrA==;
+	 bh=u/nz4vFPFG7o8WWTHPjxi/oVGziKF9ibWfc+e78UcT4=; b=usOWQIhC3KLizAGbVEIXUGa9z
+	Y9lFh5+XH8jDWaJqC3SUwP6DCmLXte0w8nxLom9H0dYySEcstL2pAoPRgl8aBHfiJoaLFkTDLUP7l
+	Pr+0MUHKIo7/lba6FrgrdWizogp7x/Sb4QYsOrUkpZ0PTvIRko4/ZavtN7mnJCZxRFyN/eaO4mjXL
+	pvfptBkic1dRQLd+OgMUm/LY790mFv7IxS8/ilelpr8pQ5DWfBWIQP++8oPNGWFZkaFP4IFlgCr6s
+	h15Kk+ynU0aYMyOwlPA/rhVgZS6QoHteEz5/UbiwinBayXZb85ZnZ7B8Bilw6EMCUkYDu4IWSDsiT
+	MqAqNJR0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcpPu-0000aY-Jj; Wed, 11 Nov 2020 12:40:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kcpQA-0000js-0C; Wed, 11 Nov 2020 12:40:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcpPo-0000XF-I4; Wed, 11 Nov 2020 12:39:57 +0000
-X-UUID: 0993d0bd80e74d2ebb0f4f5ff03eef56-20201111
+ id 1kcpQ6-0000hQ-GK; Wed, 11 Nov 2020 12:40:15 +0000
+X-UUID: 43317a620633437487be82cb16741ec5-20201111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=74lc2JMd05M8wdllwI61cVJLISsvnJhiBWDEiK+sC2Q=; 
- b=XEO99O9+H9YEpRVlAYiQTzYonAv2vRHkPsMNdIVrPAtSOVAz1NBNMurffnADTu3Rop2c8M4f9upwFfY6KFxwXMnigqHPRUMJU8LFNDBvDmJ0sT/kmld600pVwmaqL0GC/aYqhY+nLtZJHB2QcTKNRFZyzGf0o5UooVn0wQWq6co=;
-X-UUID: 0993d0bd80e74d2ebb0f4f5ff03eef56-20201111
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=Cb003awGzEYZSiLmzf+eWCH9T/zfDYtLVEMnRb9iPm4=; 
+ b=qM3aaBhlbjQgbF28438grjJOTIw3Jr/3cE8EJvJA+KfQrsCp8cNCTldL2NTjuzPpKszyas7OufKAMXDyjtVcbXG5tCU10DH6uvZVxBlMYgOXTmO5K6t5UCK0SHDL2LkonxD8Ud02Cc8n1Y2EQz2XHQz2Uel5fzutGo55v3VOq7M=;
+X-UUID: 43317a620633437487be82cb16741ec5-20201111
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 601784003; Wed, 11 Nov 2020 04:39:52 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 803823936; Wed, 11 Nov 2020 04:40:10 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 04:39:50 -0800
+ 15.0.1497.2; Wed, 11 Nov 2020 04:40:08 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 20:39:48 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 Nov 2020 20:40:07 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 11 Nov 2020 20:39:48 +0800
+ Transport; Wed, 11 Nov 2020 20:40:06 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v4 07/24] iommu/io-pgtable-arm-v7s: Use ias to check the valid
- iova in unmap
-Date: Wed, 11 Nov 2020 20:38:21 +0800
-Message-ID: <20201111123838.15682-8-yong.wu@mediatek.com>
+Subject: [PATCH v4 09/24] iommu/io-pgtable-arm-v7s: Clear LVL_SHIFT/BITS macro
+ instead of the formula
+Date: Wed, 11 Nov 2020 20:38:23 +0800
+Message-ID: <20201111123838.15682-10-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201111123838.15682-1-yong.wu@mediatek.com>
 References: <20201111123838.15682-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201111_073956_770185_2FFDC44E 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20201111_074014_747748_4B81F4D9 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,27 +98,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the ias for the valid iova checking in arm_v7s_unmap. This is a
-preparing patch for supporting iova 34bit for MediaTek.
+The current _ARM_V7S_LVL_BITS/ARM_V7S_LVL_SHIFT use a formula to calculate
+the corresponding value for level1 and level2 to pretend the code sane.
+Actually their level1 and level2 values are different from each other.
+This patch only clear the two macro. No functional change.
 
+Suggested-by: Robin Murphy <robin.murphy@arm.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/io-pgtable-arm-v7s.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iommu/io-pgtable-arm-v7s.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index a688f22cbe3b..e880745ab1e8 100644
+index 4d0aa079470f..58cc201c10a3 100644
 --- a/drivers/iommu/io-pgtable-arm-v7s.c
 +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -717,7 +717,7 @@ static size_t arm_v7s_unmap(struct io_pgtable_ops *ops, unsigned long iova,
- {
- 	struct arm_v7s_io_pgtable *data = io_pgtable_ops_to_data(ops);
+@@ -44,13 +44,11 @@
  
--	if (WARN_ON(upper_32_bits(iova)))
-+	if (WARN_ON(iova >= (1ULL << data->iop.cfg.ias)))
- 		return 0;
+ /*
+  * We have 32 bits total; 12 bits resolved at level 1, 8 bits at level 2,
+- * and 12 bits in a page. With some carefully-chosen coefficients we can
+- * hide the ugly inconsistencies behind these macros and at least let the
+- * rest of the code pretend to be somewhat sane.
++ * and 12 bits in a page.
+  */
+ #define ARM_V7S_ADDR_BITS		32
+-#define _ARM_V7S_LVL_BITS(lvl)		(16 - (lvl) * 4)
+-#define ARM_V7S_LVL_SHIFT(lvl)		(ARM_V7S_ADDR_BITS - (4 + 8 * (lvl)))
++#define _ARM_V7S_LVL_BITS(lvl)		((lvl) == 1 ? 12 : 8)
++#define ARM_V7S_LVL_SHIFT(lvl)		((lvl) == 1 ? 20 : 12)
+ #define ARM_V7S_TABLE_SHIFT		10
  
- 	return __arm_v7s_unmap(data, gather, iova, size, 1, data->pgd);
+ #define ARM_V7S_PTES_PER_LVL(lvl)	(1 << _ARM_V7S_LVL_BITS(lvl))
 -- 
 2.18.0
 _______________________________________________
