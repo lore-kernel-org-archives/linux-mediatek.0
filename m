@@ -2,76 +2,86 @@ Return-Path: <SRS0=/0MH=ER=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5538C5517A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 16:53:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40A2DC388F9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 20:27:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 49B2B206FB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 16:53:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B1EAF206F1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 20:27:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GquacqaN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="vrWvgsCU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49B2B206FB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Daek8X0b";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="D8+RxB+e"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1EAF206F1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/icIogOezZ/9JM2+Qo8wzw4lCewW1kZ+Xy+QvQ8LCOk=; b=GquacqaNtozda0+xpjjwMtuk3
-	IOTpyv8WvJbFrIaX7mWs5GhS3ccjfKpPfXby8ZfHO0B3JNzbl4BDuktuZmb04ABBa0n2RnBFcW6HG
-	HRORrEhUeSa0mAU9XxHJrEtWyY2Psz4T7Ukcw57Uj7zoSmUSKVhYSCOhRDLMIPPHc92uBPENG/WVo
-	k5uKGHmVwD+dz6sIxcTVTP/OkkSaRgPCAxrBCY88yyZ6xiXc9aUxgkFHK27VfdZCt0Ig4odO02KLg
-	MqJ+727oFhyWmWIKpQh1FECQarYofkJditHkAC8/grVMfAXH54Lv643k+7vGwil1uwPamZeh29aSx
-	n74gawWxg==;
+	 bh=wGFDQBD1u9WXE4iGxQZqdeVu/tEJbhbCTrMXHjyDvNw=; b=Daek8X0bq1/C12zQcbRgXlEq5
+	b78+SfoSB49jRY/wHRZ9lWVAZ/fIlntgwn6NL1MCQJcwJbdO+1upJ61dcApgEmgBfgG+w8JIc+lZq
+	oEG6stt8G3w63rT/iuWATRSXfxiBNm+v9zw0bc60DDRNNPnqgQHMidgnSkf7X7a6SBD+XiqKpq1Uy
+	YUjyjLtf/oZprhqd7uKo6sJuk9UPzho6iLCf5SbBGvfgnNOutRT4+ypdQvOJLqXJgoJeFNwFb5rtH
+	Xi5utu6kvmrLkTy08/3UDFrtfKrmhTKoTrxsj79Q4qKwjmMXG3pzwd7kxzONcvr2rdzW/gzFQli/J
+	BeYv0Gfrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kctMo-0001KH-Rw; Wed, 11 Nov 2020 16:53:06 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kcwiT-0004oR-3a; Wed, 11 Nov 2020 20:27:41 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kctMk-0001Iu-3s; Wed, 11 Nov 2020 16:53:03 +0000
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com
- [209.85.218.50])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BC29020756;
- Wed, 11 Nov 2020 16:53:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605113581;
- bh=JmHvo1SzasskdROAWMoAgJ6ASA6flz7HfKula4/+Rxc=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=vrWvgsCUe3WUikOynKF6WlqA5l0n3Ae1O6V5ZPQigDunSwUXIaYX8ZofQhXb9U4LG
- Esja9EsroullITulSAV8dkBDv3SOgb7xsRWgGf6oTesxapQG9ngNCNgSOZufBQADRR
- PvjNyIoTkRIvuA/Pa4Or0KVFxrn9OX8zEqdV9Jjg=
-Received: by mail-ej1-f50.google.com with SMTP id o9so3715271ejg.1;
- Wed, 11 Nov 2020 08:53:00 -0800 (PST)
-X-Gm-Message-State: AOAM532ShnWqtWF5TJuYfdIeAs/bMHnaBEY5wySj2NsyJWotRy54CnPt
- bHRvgZGV+odqLTlA9NscQEpKuf9SUHGDSAg7/A==
-X-Google-Smtp-Source: ABdhPJzdRmYGXhqdGMuO0dJRFroeBzeq9MJGO2EU8QQlLa+CkCedj+n4fq3F2ISZsjzb4o981Dy2VwbcJ3xH0AIJoko=
-X-Received: by 2002:a17:906:5f8d:: with SMTP id
- a13mr26062667eju.194.1605113579120; 
- Wed, 11 Nov 2020 08:52:59 -0800 (PST)
+ id 1kcwiQ-0004nd-63; Wed, 11 Nov 2020 20:27:39 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 10so3428770wml.2;
+ Wed, 11 Nov 2020 12:27:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=3SSKXZnWdwq0DOqj159XH5NCn8HYxBH6TPSbcPh2Y1Q=;
+ b=D8+RxB+ee3V7rv4D9DbN3BymYsiV4i6V7xi+ZM2FKjD7wr3uriBDJ1aWDaLRuXKfuo
+ pz4zUWwhOAe3AZ4PAq70bFaNObbjiNqv9MHgkBnPNiDOzbWx8e8WXj4f4nEiEgbN3R/t
+ ezV6DWXhyT5houkGSgpws1XgpEm9yuLVglRUFx/JA/j2f37BN2ABU9CP+H8C/zRgwU96
+ oKRymmI0jovLiUT0CTYEkPM6L4fllNn7Hi/waf6HD7JSdX8sv2cSiRpegYvQAOiKaoY4
+ tOmQ47ikhmOWNS96lHlEUl4kC2Fvh7Z7SdnUveo5zfWqokJeYkHqp0B2nx1MapD+xE7O
+ GUzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=3SSKXZnWdwq0DOqj159XH5NCn8HYxBH6TPSbcPh2Y1Q=;
+ b=scQtrReRJ2MkSvDWmzOJtr8msSIcK7cHI2wgyRFhGlvMkOv33ihdFoKhbWs4cse0Cp
+ KdT6FG6/FbjD9BLs1jElpDoZODRrpAwvsBZ/8Bg/0AVR6RBR14zdHesq40/rCNVBOuhh
+ Wo+lyjfN3iqPuxjFDnQ+RxPkiowaP78cty9DkUqesuiuHvmteoUYZQFR1bs5R8RHlbuh
+ dv/9zopbaW/q5VQm5CvufD7ULvCnwD4XUGCizk71mN6xHg9i0v20yLrIukwrWySnD4f+
+ /vx1jb+UE2WGStg0xtqUNdy1qGaWGlU3DF0mn5fCgnW0uBgKGcgvfCamrtiueRL/7Pvt
+ AgUQ==
+X-Gm-Message-State: AOAM531ItgdfCNIX4zyF6z8FGmaQcwTKwEkndH4pzzzJajdyCIReIU7I
+ kVOBCjpSmjGw4qcMSyYKxr8=
+X-Google-Smtp-Source: ABdhPJyB+uwh0qX7g9Q8P68FrQC1zOZSo+JKQ/sfk5Q6Q3JRAfHsdr79q/u2RA6gPbHDLQLg0VjcOQ==
+X-Received: by 2002:a1c:df04:: with SMTP id w4mr5906338wmg.3.1605126457267;
+ Wed, 11 Nov 2020 12:27:37 -0800 (PST)
+Received: from localhost ([217.111.27.204])
+ by smtp.gmail.com with ESMTPSA id f5sm3964460wrg.32.2020.11.11.12.27.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Nov 2020 12:27:36 -0800 (PST)
+Date: Wed, 11 Nov 2020 21:27:34 +0100
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Fabien Parent <fparent@baylibre.com>
+Subject: Re: [PATCH 0/5] Add PWM support for MT8183 EVB
+Message-ID: <20201111202734.GL6125@ulmo>
+References: <20201019140705.1518822-1-fparent@baylibre.com>
 MIME-Version: 1.0
-References: <20201111123838.15682-1-yong.wu@mediatek.com>
- <20201111123838.15682-25-yong.wu@mediatek.com>
-In-Reply-To: <20201111123838.15682-25-yong.wu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 12 Nov 2020 00:52:48 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_85-PWMVh3k+P_984irVVLaEWjPSyw1amFkRaQ+x=wg=A@mail.gmail.com>
-Message-ID: <CAAOTY_85-PWMVh3k+P_984irVVLaEWjPSyw1amFkRaQ+x=wg=A@mail.gmail.com>
-Subject: Re: [PATCH v4 24/24] MAINTAINERS: Add entry for MediaTek IOMMU
-To: Yong Wu <yong.wu@mediatek.com>
+In-Reply-To: <20201019140705.1518822-1-fparent@baylibre.com>
+User-Agent: Mutt/1.14.7 (2020-08-29)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201111_115302_341774_81DF69A5 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20201111_152738_348526_85AC8813 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,48 +93,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, DTML <devicetree@vger.kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, kernel-team@android.com,
- Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Greg Kroah-Hartman <gregkh@google.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>,
- iommu@lists.linux-foundation.org, chao.hao@mediatek.com,
- Tomasz Figa <tfiga@google.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, u.kleine-koenig@pengutronix.de,
+ matthias.bgg@gmail.com, lee.jones@linaro.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============4307942240285758783=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgWW9uZzoKCllvbmcgV3UgPHlvbmcud3VAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5tDEx5pyI
-MTHml6Ug6YCx5LiJIOS4i+WNiDg6NTPlr6vpgZPvvJoKPgo+IEkgYW0gdGhlIGF1dGhvciBvZiBN
-ZWRpYVRlayBpb21tdSBkcml2ZXIsIGFuZCB3aWxsIHRvIG1haW50YWluIGFuZAo+IGRldmVsb3Ag
-aXQgZnVydGhlci4KPiBBZGQgbXlzZWxmIHRvIGNvdmVyIHRoZXNlIGl0ZW1zLgoKUmV2aWV3ZWQt
-Ynk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPgo+IFNpZ25lZC1v
-ZmYtYnk6IFlvbmcgV3UgPHlvbmcud3VAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBNQUlOVEFJTkVS
-UyB8IDkgKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKykKPgo+IGRp
-ZmYgLS1naXQgYS9NQUlOVEFJTkVSUyBiL01BSU5UQUlORVJTCj4gaW5kZXggZTczNjM2Yjc1ZjI5
-Li40NjJhODdlZTE5YzggMTAwNjQ0Cj4gLS0tIGEvTUFJTlRBSU5FUlMKPiArKysgYi9NQUlOVEFJ
-TkVSUwo+IEBAIC0xMTA1Niw2ICsxMTA1NiwxNSBAQCBTOiAgICAgTWFpbnRhaW5lZAo+ICBGOiAg
-ICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2kyYy9pMmMtbXQ2NXh4LnR4dAo+
-ICBGOiAgICAgZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDY1eHguYwo+Cj4gK01FRElBVEVLIElP
-TU1VIERSSVZFUgo+ICtNOiAgICAgWW9uZyBXdSA8eW9uZy53dUBtZWRpYXRlay5jb20+Cj4gK0w6
-ICAgICBpb21tdUBsaXN0cy5saW51eC1mb3VuZGF0aW9uLm9yZwo+ICtMOiAgICAgbGludXgtbWVk
-aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZyAobW9kZXJhdGVkIGZvciBub24tc3Vic2NyaWJlcnMp
-Cj4gK1M6ICAgICBTdXBwb3J0ZWQKPiArRjogICAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy9pb21tdS9tZWRpYXRlayoKPiArRjogICAgIGRyaXZlcnMvaW9tbXUvbXRrLWlvbW11
-Kgo+ICtGOiAgICAgaW5jbHVkZS9kdC1iaW5kaW5ncy9tZW1vcnkvbXQqLWxhcmItcG9ydC5oCj4g
-Kwo+ICBNRURJQVRFSyBKUEVHIERSSVZFUgo+ICBNOiAgICAgUmljayBDaGFuZyA8cmljay5jaGFu
-Z0BtZWRpYXRlay5jb20+Cj4gIE06ICAgICBCaW4gTGl1IDxiaW4ubGl1QG1lZGlhdGVrLmNvbT4K
-PiAtLQo+IDIuMTguMAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+
+--===============4307942240285758783==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="1X+6QtwRodzgDPAC"
+Content-Disposition: inline
+
+
+--1X+6QtwRodzgDPAC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Oct 19, 2020 at 04:07:00PM +0200, Fabien Parent wrote:
+> This patch series adds PWM to MT8183 EVB. MT8183 has 4 PWM channels.
+>=20
+> Fabien Parent (5):
+>   dt-bindings: pwm: pwm-mediatek: Add documentation for MT8183 SoC
+>   pwm: pwm-mediatek: always use bus clock
+>   pwm: pwm-mediatek: Add MT8183 SoC support
+
+Applied these three patches, thanks.
+
+Thierry
+
+--1X+6QtwRodzgDPAC
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl+sSTYACgkQ3SOs138+
+s6GuAw//TXgbWEb85bt+2X/j8kLwdVl7gGV7DCzKg+8qvuaJCjOYYKwsQWv4Q3KI
+ey+W8EYrE/hAm7y8o1JYX5aMeO+FWoyt16jWjZnqGdmP6vyOguxU8HIgPoctQUE9
+4BTMWOZNCRyi55/HGUZKgpzn0nPrvEr8zx1gyCqtfeH4YRsQ7Vsgnze88bbmkp5j
+RHzm9p/77+/zHPro00KeOvUuWApXNwR9Xw8BHOK9MZvgIAXZboXP4V7Sjs3eXGLh
+5gfe5j6izeKvmGNAGb9Rm2J1sNhSKVYh0dNCzxJyvXmN5IWJhBjbnl1GobWl81ef
+LjqncsNIMp8g+p95jt5zxJ7TCpE59RzlS+FW31fgTLe4tw3CD5EcM1ibMHYdAR4x
+s2aLEN2USunPS0FnDIHY6d+s/6ngv5alyukouLoGnQXZhmm2Xkbe5BZzj22/mGq7
+ei93TERbuy5NOAJsPol7+BAbKFL9pYELQXVYBlgCY9sOat3JixGiEo9mhoKvvQPP
+aKVllQa+K6YlW1LVtX8QetjCdNnKvwj3iuKNT4aNbZg9Crk97hXFcOKbHPWp++GS
+WYsVnvo67BZy4C8CkApI25GfuP7kh+sXgv9G2F06pgZKCSMOQl+xd+tGO1tQbh2e
+a6e07/DtAnnXylT2zhXOgqM1zIpOYwZ+EusOpKU3mB8QsQ6d/PU=
+=GlhE
+-----END PGP SIGNATURE-----
+
+--1X+6QtwRodzgDPAC--
+
+
+--===============4307942240285758783==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4307942240285758783==--
+
