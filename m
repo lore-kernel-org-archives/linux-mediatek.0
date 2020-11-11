@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08FD6C388F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:53:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 878D0C5517A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:53:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71229206B5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:53:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA646206F1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2020 12:53:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Oz/hDS/n";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RIy8nzGE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71229206B5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s0feV6R6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hjG3/P/6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA646206F1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=q/WtMtBDjDA9DgytWIl/VDOqVRVg8STuABASgWRcwEo=; b=Oz/hDS/nCUiswqn99AVgP53lG
-	qVYoRSmtBDX9TJjIEKiojztplFnlwVNd+vu8v+74wV9L6+aDMFmyLsnzCU1jwgHq1atVzM4+vH1bW
-	stLPWXwIzXonvkO5CHWShlUoHy9gSW7F3avYpIawe7Dl+vjVDr2UcTPjLMvER3/u3SvNatbT1uaXF
-	ESijkyBbwySC8W3YTq3g277UXBcDczyuvYtByx4i9Y5bAW12BXnEgDYBoN+Fyuf37bTf99LmIbZj/
-	76zHj2BIu4aXH2R0dP4dbZ9NHABL2kLrKrOhOfbwhZsfPhvEMozeM6+af+dF3OUDmFWtpMQFWJFq4
-	lY+5lL7gA==;
+	 bh=7zlwA5DpTJOQ2I6DOITu6wau5tpGs1Py/r1BvSB+u98=; b=s0feV6R6kaY9nkm8Rc0uDS9rB
+	lGMBnLRVF0NEigXd5LY6REqaunzq0KI7+w5ZIMUvNQs69OesrOgByuIdWrEHGYr8CHiaj+yBc3CGv
+	tWmokysdqFsWU3vkmn7zhGrxQl0+QTGJmk0RnDTTw++Zh8U9N/b8CnSI22m9wq66+Ct8gFhkQJK5A
+	g7rBuZnb2ii+c/yT+5Vv+aFOvdLLVOJGvr9i03rYQfdIs7pCAMJOyimI+sJYr9ImgVZfDwyBnXnha
+	lYpKHcSoFl6goAXf9di9S2DKmt2tLozH3ALXknuar70NAIySxn3t18GSjsaHnxOzF9C/g/xn8obMQ
+	Tb82g8/5A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcpca-0005Ve-J4; Wed, 11 Nov 2020 12:53:08 +0000
+	id 1kcpcb-0005WR-Ud; Wed, 11 Nov 2020 12:53:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcpax-0004Z3-Nr; Wed, 11 Nov 2020 12:51:34 +0000
-X-UUID: 39fb64d80f9743cda4e3674475b17173-20201111
+ id 1kcpax-0004YN-69; Wed, 11 Nov 2020 12:51:34 +0000
+X-UUID: 083b7962735142f5aa9c243e602c9e4e-20201111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=tFaMjaNYgCsCgR0iGOh48eyE9PaE+L5rG+vY3ON9VCg=; 
- b=RIy8nzGED9Pigbc/CGy8rAei/G7prcYG+hXNLDoD/DQfliUvaE+Q/rVblW9LTBTiPjwdR3syL3uyewQ2NjhFWQJG+ry6t05SAuN/Y3M422IN/ZQkQMuLU0XOlmGiAA3gkkVCcFqffPRRWjgNZxXv4DsarZsYwC+AdkHDra89ZKk=;
-X-UUID: 39fb64d80f9743cda4e3674475b17173-20201111
+ bh=rm668r0RDK0m2n2vuZyRe5rqyo2Zat+pLtVj5yztQZg=; 
+ b=hjG3/P/68vWmeoyw08GFo0m3NbDudt1pb0RYpbtosCnzbuEj5eoV1mEI8wkvmz096/ZNRBKscMzUd9vLwf8I9Dkpqmuqu5UMuHk3ixm3v9SezkT6jpOU4kIOdeA3ugIWvBfQfuOcEdq62YZUqLY9rPVfE1B84bkXTaXOlsWFzJ8=;
+X-UUID: 083b7962735142f5aa9c243e602c9e4e-20201111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 48222422; Wed, 11 Nov 2020 04:51:20 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 209271931; Wed, 11 Nov 2020 04:51:20 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 04:41:23 -0800
+ 15.0.1497.2; Wed, 11 Nov 2020 04:41:17 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 20:41:22 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 Nov 2020 20:41:16 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 11 Nov 2020 20:41:21 +0800
+ Transport; Wed, 11 Nov 2020 20:41:15 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v4 17/24] iommu/mediatek: Add single domain
-Date: Wed, 11 Nov 2020 20:38:31 +0800
-Message-ID: <20201111123838.15682-18-yong.wu@mediatek.com>
+Subject: [PATCH v4 16/24] iommu/mediatek: Add iova reserved function
+Date: Wed, 11 Nov 2020 20:38:30 +0800
+Message-ID: <20201111123838.15682-17-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201111123838.15682-1-yong.wu@mediatek.com>
 References: <20201111123838.15682-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201111_075128_388983_40DE58B1 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20201111_075127_570935_D1B8561E 
+X-CRM114-Status: GOOD (  18.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,64 +98,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Defaultly the iova range is 0-4G. here we add a single-domain(0-4G)
-for the previous SoC. this also is a preparing patch for supporting
-multi-domains.
+For multiple iommu_domains, we need to reserve some iova regions. Take a
+example, If the default iova region is 0 ~ 4G, but the 0x4000_0000 ~
+0x43ff_ffff is only for the special CCU0 domain. Thus we should exclude
+this region for the default iova region.
 
+This patch adds iova reserved flow. It's a preparing patch for supporting
+multi-domain.
+
+Signed-off-by: Anan sun <anan.sun@mediatek.com>
+Signed-off-by: Chao Hao <chao.hao@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/iommu/mtk_iommu.c | 28 ++++++++++++++++++++++++++++
+ drivers/iommu/mtk_iommu.h |  5 +++++
+ 2 files changed, 33 insertions(+)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index bf3f4e0f4748..a7727a3899d1 100644
+index 90aae34f4da0..bf3f4e0f4748 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -161,6 +161,10 @@ struct mtk_iommu_iova_region {
- 	unsigned long long	size;
- };
+@@ -156,6 +156,11 @@ static LIST_HEAD(m4ulist);	/* List all the M4U HWs */
  
-+static const struct mtk_iommu_iova_region single_domain[] = {
-+	{.iova_base = 0,		.size = SZ_4G},
+ #define for_each_m4u(data)	list_for_each_entry(data, &m4ulist, list)
+ 
++struct mtk_iommu_iova_region {
++	dma_addr_t		iova_base;
++	unsigned long long	size;
 +};
 +
  /*
   * There may be 1 or 2 M4U HWs, But we always expect they are in the same domain
   * for the performance.
-@@ -922,6 +926,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
- 	.m4u_plat     = M4U_MT2712,
- 	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
+@@ -544,6 +549,27 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ 	return iommu_fwspec_add_ids(dev, args->args, 1);
+ }
+ 
++static void mtk_iommu_get_resv_regions(struct device *dev,
++				       struct list_head *head)
++{
++	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
++	const struct mtk_iommu_iova_region *resv;
++	struct iommu_resv_region *region;
++	int prot = IOMMU_WRITE | IOMMU_READ;
++	unsigned int i;
++
++	for (i = 0; i < data->plat_data->iova_region_nr; i++) {
++		resv = data->plat_data->iova_region + i;
++
++		region = iommu_alloc_resv_region(resv->iova_base, resv->size,
++						 prot, IOMMU_RESV_RESERVED);
++		if (!region)
++			return;
++
++		list_add_tail(&region->list, head);
++	}
++}
++
+ static const struct iommu_ops mtk_iommu_ops = {
+ 	.domain_alloc	= mtk_iommu_domain_alloc,
+ 	.domain_free	= mtk_iommu_domain_free,
+@@ -558,6 +584,8 @@ static const struct iommu_ops mtk_iommu_ops = {
+ 	.release_device	= mtk_iommu_release_device,
+ 	.device_group	= mtk_iommu_device_group,
+ 	.of_xlate	= mtk_iommu_of_xlate,
++	.get_resv_regions = mtk_iommu_get_resv_regions,
++	.put_resv_regions = generic_iommu_put_resv_regions,
+ 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
  };
  
-@@ -929,6 +935,8 @@ static const struct mtk_iommu_plat_data mt6779_data = {
- 	.m4u_plat      = M4U_MT6779,
- 	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN,
- 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
-+	.iova_region   = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index 5e03a029c4dc..e867cd3aeeac 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -45,10 +45,15 @@ enum mtk_iommu_plat {
+ 	M4U_MT8183,
  };
  
-@@ -944,6 +952,8 @@ static const struct mtk_iommu_plat_data mt8173_data = {
- 	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
- 			HAS_LEGACY_IVRP_PADDR,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
- };
- 
-@@ -951,6 +961,8 @@ static const struct mtk_iommu_plat_data mt8183_data = {
- 	.m4u_plat     = M4U_MT8183,
- 	.flags        = RESET_AXI,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {4}, {5}, {6}, {7}, {2}, {3}, {1}},
++struct mtk_iommu_iova_region;
++
+ struct mtk_iommu_plat_data {
+ 	enum mtk_iommu_plat m4u_plat;
+ 	u32                 flags;
+ 	u32                 inv_sel_reg;
++
++	unsigned int        iova_region_nr;
++	const struct mtk_iommu_iova_region   *iova_region;
+ 	unsigned char       larbid_remap[MTK_LARB_COM_MAX][MTK_LARB_SUBCOM_MAX];
  };
  
 -- 
