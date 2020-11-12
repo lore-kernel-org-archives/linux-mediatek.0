@@ -2,73 +2,76 @@ Return-Path: <SRS0=Fc+n=ES=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F72FC5517A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 07:52:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50B00C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 07:52:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B38B9221FB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 07:52:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BE05D20709
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 07:52:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JiNnUtiW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NwJn6/LR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B38B9221FB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iDdyNt5V";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MBhIgbEK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE05D20709
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fga930NbVZjTsDf7YPVk8Z7UPs/rGQQbm9AK9qj/bC8=; b=JiNnUtiWPNjXypZzll8NQhC6v9
-	8+8Fseo6U5Jqi0uoSSWZ7AkUYbV01N6NlTUv2B/Z0IQhXgrq8EoWujnkuvhKeg9C/f149pCBirOkw
-	0yuIUaR+ZLftGGd2Vhh43FP8FLXOpFp9Ty4IxJpxVarTrJoGNAoHsyK6OT0NQ4Va7rqbrHzabHzaZ
-	arLhowVj2QzZRMBJkvz9aj54TlE3q/9Li1czxP7KCwtCQLPkGj2iWoBTxm6w5ASKwL18KKwm0TAOP
-	l4iuk0oK/GV8VEZ7d3jVcj/QTs1eW6l1Msrx4R2p0gO001Kwwbyt7+v1hu3C0P0K6xKygEudpXP12
-	CceCe3nw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=fGO4jA1Ca1Sr9yi54+MyYBp+vXR/oj2jMNFNY6rsyQ8=; b=iDdyNt5VEBSgeO+Gaa4IICXpO
+	E7wCW1uGPnJOwoY63cQjvjVDnj09aIFyt26F063VSlQNsdg/J2DKD3MDH3gjriWyNz3/XdTfOtxkG
+	f0NBspI7ake9Le6huCuukje/AKjFKnYnoy2n/SunuUaUBKL/2ExA8x/ezMPPB032TSR5cYPe5OTr5
+	mSnqqbJih9aLZ0elYm3jSr25lpMMzUNCId1dpZJRSLKZpTjnPyxEZ/eoJm3cmjQ4LPyXAE6mfoiMy
+	jqKwYafv3OSs8Kd1yWgacq6R3eJFFs+b82eVr3wRfka7mMQiuXQO0XVifbJL6Z0Hlio3yRNsAnTpz
+	3B1AAX4eA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kd7PC-0006dT-5A; Thu, 12 Nov 2020 07:52:30 +0000
+	id 1kd7PF-0006et-JO; Thu, 12 Nov 2020 07:52:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kd7P2-0006aq-SJ; Thu, 12 Nov 2020 07:52:22 +0000
-X-UUID: 1fc01d8b0aae48d4808ba51ec69477d2-20201111
+ id 1kd7P2-0006at-SJ; Thu, 12 Nov 2020 07:52:23 +0000
+X-UUID: 8b6c0000356a4b9eb0e641611bb95572-20201111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=HRIBWY1x6TEgipWRllyeEf/7f3rrT3UV94QusJIqEec=; 
- b=NwJn6/LRDOAphr9H0rIrqIpmO/+0cTek9ZrmwG4kwbl1uOu+LtqWsD7l5u6NmspN0WZyr0jwVHZnrm2jpScRQzBix/Csexwrvtp0+ozHkORwn6MkDOpuGdnqCwAN3tkwW46XMxD/xG1oz2O0dp+qd2S5Tk/7415U2pQzr4xMFHc=;
-X-UUID: 1fc01d8b0aae48d4808ba51ec69477d2-20201111
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=j2elWQhSJ/7nCe/AfhWTGvJ2VkQvhtzWDug696/uT6U=; 
+ b=MBhIgbEKHBNsNDZVngzqvkzOfwVhA5xL81/l9s2YokSwjOJ8x9LIZAKUvsbwX7zCAxSwxCRKLwzTj55fgktnYKHAmg4zjKehQfQURcrJrtvwSScQVqEuRSifxGJR6FFqXPiy3MxcNJQqnS7/8zdtAaDrCsKbo+PpdRgZ2V68dDk=;
+X-UUID: 8b6c0000356a4b9eb0e641611bb95572-20201111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 132372096; Wed, 11 Nov 2020 23:52:06 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1679770062; Wed, 11 Nov 2020 23:52:06 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 23:52:11 -0800
+ 15.0.1497.2; Wed, 11 Nov 2020 23:52:12 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Nov 2020 15:52:10 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 Nov 2020 15:52:11 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 12 Nov 2020 15:52:09 +0800
+ Transport; Thu, 12 Nov 2020 15:52:10 +0800
 From: Wenbin Mei <wenbin.mei@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v1 0/3] Set cqe off during suspend flow
-Date: Thu, 12 Nov 2020 15:52:05 +0800
-Message-ID: <20201112075208.28183-1-wenbin.mei@mediatek.com>
+Subject: [PATCH v1 1/3] dt-bindings: mmc: Add optional cqe off properties
+Date: Thu, 12 Nov 2020 15:52:06 +0800
+Message-ID: <20201112075208.28183-2-wenbin.mei@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201112075208.28183-1-wenbin.mei@mediatek.com>
+References: <20201112075208.28183-1-wenbin.mei@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201112_025221_068504_522F408D 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20201112_025221_136500_2603C94F 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,28 +98,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Wenbin Mei (3):
-  dt-bindings: mmc: Add optional cqe off properties
-  arm64: dts: mt8192: Add cqe off flag
-  mmc: core: Set cqe off during suspend flow
----
-This patch depends on
-[PATCH v7 3/4] arm64: dts: mt8192: add mmc device node
+Add optional properties for cqe hosts which are used to set cqe off
+during suspend flow.
 
-Please also accept this patch together with [1]
-to avoid build and dt binding check error.
-[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=364279
+Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
 ---
  Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 7 +++++++
- arch/arm64/boot/dts/mediatek/mt8192-evb.dts               | 1 +
- drivers/mmc/core/host.c                                   | 2 ++
- drivers/mmc/core/mmc.c                                    | 5 +++++
- include/linux/mmc/pm.h                                    | 1 +
- 5 files changed, 16 insertions(+)
+ 1 file changed, 7 insertions(+)
 
---
+diff --git a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+index b96da0c7f819..457c9a84b988 100644
+--- a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
++++ b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+@@ -164,6 +164,13 @@ properties:
+     description:
+       enable SDIO IRQ signalling on this interface
+ 
++  cqe-off-in-suspend:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      After suspend, the mmc host is powered off by HW, and bring CQE register
++      to default state, so we add the flag to re-init CQE register after resume
++      back.
++
+   full-pwr-cycle:
+     $ref: /schemas/types.yaml#/definitions/flag
+     description:
+-- 
 2.18.0
-
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
