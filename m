@@ -2,79 +2,94 @@ Return-Path: <SRS0=Fc+n=ES=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A5B9BC388F9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 02:52:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 111A2C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 04:27:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 06B1C206F1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 02:52:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 38626207BB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2020 04:27:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KpwXf51Y";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="I8svIXQ+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 06B1C206F1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WcBqdDv/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="HWhp+x5n"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38626207BB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EJwpTGo6qJE3BjNwU6XNULhJHrnJ0qTEjrhcODPeVvE=; b=KpwXf51YKqEKFSfyZ/aaRYrQV
-	pJ4mFJZL9JStLqdO9y/v1NRK/aOchjdISDwx6HgUY341MXpT1JqNXybIh0LX0qTAl+FZao23SLbAX
-	E0modKvBM9bvnOZRM647cRj8u5/DADWpepCB8OQDa7VIv+pb58xG/i8av5Bc5CC5OP8fn4KWpj6Wd
-	ab7ZVFxPl+ABrmx6yzrNbQSdWvr63xXVrarg/ggEdjt41vEhIGpImoRoYt+04V+eaYcNsWssiBPl5
-	ZBn5OdBpCqVQCd9qZiiUlFl4o/7Bz6fxvJtzGUBrcZ7ilbgmnDf4SMLkd74lsDSMJWMcWE4yRJMOV
-	k8zgVd7uA==;
+	 bh=uJmqreuNKPJxvo4IsVVbMEHMc4aoEDbZ6wHUwWX+b1c=; b=WcBqdDv/Y4f8UcMKTqrCIIEnV
+	7uelukMXuy3F/34PgBvoOqdF6ASzgiYXgN7FzFkbDGJYzh8JvIHr8/ltxO+QgbdZqkL7yGSB81Hum
+	ZDXc87K66bG02ik3CMOhb+FN+WHvZZvgtOVpNoNpwUBjb6Dnc2YJTqA8S3qVIDfIJ9TD4ckycEiFj
+	ezZcWEaQKLoFW5XjSJyFH+J5XrZmdzs3BnBnWXW+CsoqX+NHmi9J+l5EqyQMyXZhVbMzR39xfTy3M
+	AprjiQljuJ+OdfYGqLzM03SJwmh5QvCrcC9cV2Kx3rX9fLMz5DpnysnsZq6gOqYKp2RHX9KxjA5XY
+	D6wCPqtEQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kd2iQ-0005zP-VQ; Thu, 12 Nov 2020 02:52:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kd4CQ-0001gg-29; Thu, 12 Nov 2020 04:27:06 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kd2iI-0005ym-AD; Thu, 12 Nov 2020 02:51:57 +0000
-X-UUID: b616ef46b6ae4502b16baac9ae02743f-20201111
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Se+dg4+AYHxaxLtO87h0o7d56UKD1EUz3XmAcnOw+/s=; 
- b=I8svIXQ+P+LzMKVqB/D6kkIVA7asPV9D5V0UjI5XTQ0WqFr7sYYgA1v0fXmC5RUubY+vdUYFJBytnFJJj4VKDFoyHkBl3tvbbNJP/yxcwBGKCFiDDBr8B/iCIrHralq1ArvT2oM58VE1Bj8KyzGBRFgCayS2aZcUp5/gj7e8bhI=;
-X-UUID: b616ef46b6ae4502b16baac9ae02743f-20201111
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 585260452; Wed, 11 Nov 2020 18:51:47 -0800
-Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Nov 2020 18:41:46 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
- (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 12 Nov 2020 10:41:42 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 12 Nov 2020 10:41:42 +0800
-Message-ID: <1605148902.26323.126.camel@mhfsdcap03>
-Subject: Re: [PATCH v4 05/24] dt-bindings: mediatek: Add binding for mt8192
- IOMMU
-From: Yong Wu <yong.wu@mediatek.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Thu, 12 Nov 2020 10:41:42 +0800
-In-Reply-To: <20201111213338.GD287176@kozik-lap>
-References: <20201111123838.15682-1-yong.wu@mediatek.com>
- <20201111123838.15682-6-yong.wu@mediatek.com>
- <20201111213338.GD287176@kozik-lap>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kd4CF-0001fH-Tu
+ for linux-mediatek@lists.infradead.org; Thu, 12 Nov 2020 04:26:56 +0000
+Received: by mail-ed1-x544.google.com with SMTP id t11so4628170edj.13
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Nov 2020 20:26:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PrJGFWR5LfPadBQJXtxR3X13DiYJSukzmCqstyB653Y=;
+ b=HWhp+x5nR3T+EuumQWwhx5XTPD7QV5SlMbprd7oGYb7NT1tsUS8M5b4CCExQirLXf1
+ n6xB1vMrsTHoCd3FbJvdOGzMuDQtsl1hs78cs62DjPqqlEQe7GQ0p/ZW5fyjKOmsxAtD
+ iRHM55F9z6oGEmav+yyjAu5YCy5KSCZCidFCw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PrJGFWR5LfPadBQJXtxR3X13DiYJSukzmCqstyB653Y=;
+ b=pm384N+23RnL87aipk/VzgYKd1VzP3RoYhC0FFWKQPHQ1Jz/OHEwTm2V6/oDa17Z8v
+ /k8xTPSMDIqxDUCgAoSSctkwT9Ukp8gm/7Zwd/P/NYUp/8IRWM3iY5LGegd01ZTqBOTm
+ FrDIRqun2qh5/x2JYjb5R0waqtFZEJ2NHgY+Fm9p7rGdQzgnEnsltbySNfp2RwoSsG7O
+ yAkQYP7GaivSNJW27QPNbQ89XNBksJ+RTpnPrsT6XgvPjSxuDdqqhlHmQTCxujE8lKFc
+ 9ovIVRDtLro4fZRRxexgI+mpPnajrNxeeeF13JGkNFCQuZimHN1V95y4DBOzVFgRikgs
+ MfRQ==
+X-Gm-Message-State: AOAM531uNBM68LeyAj1suX5+UXq58p4HT2MTsC0JbnRYe/CUZO8R1jBZ
+ xn8Pn1ZCTqiCB7YETKobH6s2znmywV5OOA==
+X-Google-Smtp-Source: ABdhPJwZfY73BpZpX2YoPGhrZ+BEj/LTseVc2XIxjv14yYCXC0CR/Fv1/28zCIPSot5+lSbWDhBQvg==
+X-Received: by 2002:aa7:c597:: with SMTP id g23mr3140519edq.184.1605155212889; 
+ Wed, 11 Nov 2020 20:26:52 -0800 (PST)
+Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com.
+ [209.85.221.45])
+ by smtp.gmail.com with ESMTPSA id y12sm1592218ejc.8.2020.11.11.20.26.50
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Nov 2020 20:26:51 -0800 (PST)
+Received: by mail-wr1-f45.google.com with SMTP id p8so4581923wrx.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Nov 2020 20:26:50 -0800 (PST)
+X-Received: by 2002:adf:e54f:: with SMTP id z15mr32685970wrm.159.1605155209811; 
+ Wed, 11 Nov 2020 20:26:49 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1C18FA5020027ADAA5CD122CFFAF794DF7B24B6C49C7403F677C225959A3CB292000:8
-X-MTK: N
+References: <20191204124732.10932-1-Jerry-Ch.chen@mediatek.com>
+ <1588903371.16825.14.camel@mtksdccf07>
+ <CAAFQd5CP+gH3zG9fejBv_hTzeAExMoY+L38W8e4e3OSc-gVRHg@mail.gmail.com>
+ <20200521183825.GB249683@chromium.org> <1593526253.29676.28.camel@mtksdccf07>
+ <20200630171912.GE1212092@chromium.org> <1605095509.28992.7.camel@mtksdccf07>
+In-Reply-To: <1605095509.28992.7.camel@mtksdccf07>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Thu, 12 Nov 2020 13:26:39 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5CeZYOAxwHjsVOV9eJRt15-npTsH15Y5idwr3-ux+85qQ@mail.gmail.com>
+Message-ID: <CAAFQd5CeZYOAxwHjsVOV9eJRt15-npTsH15Y5idwr3-ux+85qQ@mail.gmail.com>
+Subject: Re: [RFC PATCH V4 0/4] media: platform: Add support for Face
+ Detection (FD) on mt8183 SoC
+To: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201111_215154_722523_1DA333B4 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20201111_232656_017180_69851789 
+X-CRM114-Status: GOOD (  37.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,84 +101,133 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, Nicolas
- Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Will Deacon <will@kernel.org>,
- Joerg Roedel <joro@8bytes.org>, Greg Kroah-Hartman <gregkh@google.com>,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, kernel-team@android.com,
- anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>,
+ "laurent.pinchart+renesas@ideasonboard.com"
+ <laurent.pinchart+renesas@ideasonboard.com>,
+ "zwisler@chromium.org" <zwisler@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>,
+ HansVerkuil <hverkuil@xs4all.nl>,
+ =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin@mediatek.com>,
+ =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>,
+ "yuzhao@chromium.org" <yuzhao@chromium.org>,
+ "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>,
+ "pihsun@chromium.org" <pihsun@chromium.org>,
+ =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <Frederic.Chen@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On Wed, Nov 11, 2020 at 8:51 PM Jerry-ch Chen
+<Jerry-ch.Chen@mediatek.com> wrote:
+>
+> Hi Tomasz,
+>
+> On Wed, 2020-07-01 at 01:19 +0800, Tomasz Figa wrote:
+> > Hi Jerry,
+> >
+> > On Tue, Jun 30, 2020 at 10:10:53PM +0800, Jerry-ch Chen wrote:
+> > > Hi Tomasz,
+> > >
+> > > On Thu, 2020-05-21 at 18:38 +0000, Tomasz Figa wrote:
+> > > > Hi Jerry,
+> > > >
+> > > > On Wed, May 13, 2020 at 11:45:37PM +0200, Tomasz Figa wrote:
+> > > > > Hi Jerry,
+> > > > >
+> > > > > On Fri, May 8, 2020 at 4:03 AM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
+> > > > > >
+> > > > > > Hi Laurent, Tomasz, Matthias,
+> > > > > >
+> > > > > > gentle ping for this patch set,
+> > > > > > If no new comments, I would like to send a newer version.
+> > > > > >
+> > > > >
+> > > > > Sorry, I still haven't had a chance to look at the series, so feel
+> > > > > free to send a new version and I will take a look at the new one.
+> > > > >
+> > > >
+> > > > Finally found some time to review the series. Again sorry for the delay
+> > > > and thanks for your patience.
+> > > >
+> > > > Some general comments:
+> > > > 1) The metadata format FourCC should be added in a separate patch,
+> > > > together with documentation for it.
+> > > > 2) Control IDs, structs used by the userspace, etc. should be defined in
+> > > > a header under include/uapi/linux.
+> > > >
+> > > > Please also check my replies to particular patches for further comments.
+> > > >
+> > > > Best regards,
+> > > > Tomasz
+> > >
+> > > Appreciate for your reply,
+> > >
+> > > So far, I've locally created an uapi header:
+> > > include/uapi/linux/mtk_fd_40.h
+> > > which provides some values, control ids, and the definitions of
+> > > structures that would be needed by user of mtk_fd_40 driver.
+> > > In addition, I also provide a MACRO as example in comments that can
+> > > extract the struct member with bit length and offset
+> > > definitions(eliminate the bit-fields).
+> > >
+> > > Also, I would like to rename struct fd_user_output with struct
+> > > mtk_fd_hw_result. I worry fd_user_output would be a confusing name.
+> >
+> > The change sounds good to me.
+> >
+> > > I will add them in a separate patch in next version.
+> > >
+> >
+> > Okay.
+> >
+> > > I am still working on the documentation, which might be
+> > > Documentation/media/uapi/v4l/pixfmt-meta-mtk-fd-40.rst.
+> > > Refering the other pixfmt-*.rst files, I will try to provide the
+> > > flat-table of the metadata with the structure of the mtk_fd_hw_result.
+> > >
+> >
+> > Sounds good to me.
+> >
+> > > I am confusing that should I remain the name with -40 in the tail of rst
+> > > file?
+> >
+> > The header and documentation file names should match the driver name.  I
+> > just noticed there is some inconsistency in the naming, though. The
+> > driver seems to be located under drivers/media/platform/mtk-isp/fd, but
+> > the driver name in the platform driver struct and as reported by
+> > VIDIOC_QUERYCAP seems to be "mtk-fd-4.0".
+>
+> > Since we have many mtk-* drivers in the tree currently, I think it might
+> > make sense to consolidate them under drivers/media/platform/mediatek,
+> > similarly to drivers/media/platform/qcom or /rockchip. But it could be
+> > done later, as a follow-up.
+> >
+> > My suggestion would be to place the driver under
+> > drivers/media/platform/mtk-fd-40 and also rename the related Kconfig
+> > symbol to include the _40 suffix.
+> >
+> > What do you think?
+> >
+>
+> I Appreciate your comments,
+> Sorry for the late reply.
+>
+> Would it be possible for me to replace the driver as drivers/media/platform/mtk_fd/mtk-fd-40?(Just like mtk-isp/isp_50)
+>
 
-On Wed, 2020-11-11 at 22:33 +0100, Krzysztof Kozlowski wrote:
-> On Wed, Nov 11, 2020 at 08:38:19PM +0800, Yong Wu wrote:
-> > This patch adds decriptions for mt8192 IOMMU and SMI.
-> > 
-> > mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
-> > table format. The M4U-SMI HW diagram is as below:
-> > 
-> >                           EMI
-> >                            |
-> >                           M4U
-> >                            |
-> >                       ------------
-> >                        SMI Common
-> >                       ------------
-> >                            |
-> >   +-------+------+------+----------------------+-------+
-> >   |       |      |      |       ......         |       |
-> >   |       |      |      |                      |       |
-> > larb0   larb1  larb2  larb4     ......      larb19   larb20
-> > disp0   disp1   mdp    vdec                   IPE      IPE
-> > 
-> > All the connections are HW fixed, SW can NOT adjust it.
-> > 
-> > mt8192 M4U support 0~16GB iova range. we preassign different engines
-> > into different iova ranges:
-> > 
-> > domain-id  module     iova-range                  larbs
-> >    0       disp        0 ~ 4G                      larb0/1
-> >    1       vcodec      4G ~ 8G                     larb4/5/7
-> >    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
-> >    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
-> >    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
-> > 
-> > The iova range for CCU0/1(camera control unit) is HW requirement.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> > ---
+I'm not a big fan of duplicating "mtk fd" in the path. How about just
+making it drivers/media/platform/mtk-fd-40?
 
-[...]
-
-> > +#ifndef _DTS_IOMMU_PORT_MT8192_H_
-> > +#define _DTS_IOMMU_PORT_MT8192_H_
-> 
-> Not accurate header guard. Shoud be:
-> _DT_BINDINGS_MEMORY_MT8192_LARB_PORT_H_
-> 
-> Probably you copied it from some other Mediatek headers - all of them
-> have header guard pointing to different directory.
-
-Thanks very much for your reviewing so many patches.
-
-This name like this when it was in the first version. Since it is only
-used when the consumer devices enable IOMMU, thus called it
-_IOMMU_PORT...
-
-I will use a new patch to rename all of them.
-
-> 
-> Best regards,
-> Krzysztof
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
