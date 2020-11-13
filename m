@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95D2DC61DD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2020 13:51:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CB48EC4742C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2020 13:51:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B3EB22201
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2020 13:51:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 47F2720639
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2020 13:51:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o5elHEwN";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="sDMRPQsw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B3EB22201
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lCcyC7I+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Yv+njuEX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47F2720639
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,64 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=W8aLJt1NVBZOsNWulPBuZoGtue+d0MKzWxOgckN225s=; b=o5elHEwN6NVaeSio6Ipp+M/At
-	DJuZVZpcW/GFzIwkAPlF1E4M7dGdtdcd/2mEukJWQIqRzwLEGzl/1Xt7KHk8m/VsWY2yiiwqpnlcf
-	mPkWoe7uTroqD7s8OFUyCSLJ+HGlx5HhXmvuh4UIm3PwOonzV/QIIwYMDsUV+ueItP9LptdQVbShi
-	QC6kv1gbb8b+ka5O8CbPrpDpWBMVZnGZr/V9BcKYaaIjBjyKHz9NE2qMTnDICQWo7CDHkhg24yFOv
-	Jr3mtDoJa7Qd6m3NQWADlBQptay0mtY30XqIATs0eEq9IUicR3Q59uLVnVNVp8zBmxXNsZIhYnmKY
-	mSgKvruyA==;
+	 bh=mz5480bA0ciwlLQG8kn3eT6+lG1YXdtoBsAEVs9EVD0=; b=lCcyC7I+ErGxz0J9bXM2TLSRH
+	lAEKfEChclK/B9NKcXpyE9hh3D12qaBsgm4SMz6qE+gk0yRCDtOxNjMG3RAthYQSKusYzeGyNtoyu
+	v6KT6ZvH2FLMmI6/DLvk4x+CrEhpqoiIFy4DbOpdFsCtF580RazJIzd00EO9beNRZTkERtVukAR3w
+	RUBqM79ceLZFELIDAc/QC8s/ystxYFcS2za76hYcNFwiGgwLUGsslO45A1tDb4k2sCU4AqE1NAW7x
+	6oB85h1kp2rPMu3pl/9LGFWwWn8fBf11NV78MBYexg0uXNKcuYFGMj/QmtJjd6ou9nNVLbpENjMiU
+	YzRJaoE+Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kdZTr-0007kj-7T; Fri, 13 Nov 2020 13:51:11 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1kdZUJ-0007zp-Vu; Fri, 13 Nov 2020 13:51:40 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kdZSc-000741-D4
- for linux-mediatek@lists.infradead.org; Fri, 13 Nov 2020 13:49:57 +0000
-Received: by mail-wr1-x443.google.com with SMTP id l1so9972306wrb.9
- for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2020 05:49:54 -0800 (PST)
+ id 1kdZSe-00074o-B0
+ for linux-mediatek@lists.infradead.org; Fri, 13 Nov 2020 13:50:01 +0000
+Received: by mail-wm1-x343.google.com with SMTP id c16so8553978wmd.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2020 05:49:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pCTuXmjwQai/CDFPUzQ3kg8YDOVHQv+4DVCFDqYGwk4=;
- b=sDMRPQswWGSH++5S2Loy2vzVU6PKTlMKGyiB2LA3prnW76xMrNwZA0nmexJsaEobkL
- 38w/XO7PKggGRLVdb2wtak4X17JNVk35qD6R3pbK0i8q6LyutT3Iou5Y94lsl1k4blLz
- p2xkf3ETUNYs6hssfPEjjPlm89LkhETsVduJvbmkM3oEMJrW5ApTPE2MkFqTfGAQ5U5R
- w7ZuvayjNoZuO5u87vJsYPZsZ0HoKo43J0Vty3iLo3fpfA8NBAVzw4EFGH1TJZbsHJnA
- tvdmSrzbQTEsCnu2Izn1p6tYQRXU5QZq3hdTi8ApEpzNiZ6yyhAX2cc6OmgfC51eg6y8
- 0meA==
+ bh=e/knA7px3ItuZjnu7kmhshhnJxUB7qJyEjkrpKqZtiA=;
+ b=Yv+njuEXEnBreJ8gLTiSi7E/xj85s7S1U0w/6zQmiPZ1aSp7ZCFuVeOXtQ700dVUZY
+ 9cYICnqGX8VqTm9uswhkeCOG1WtAgHPlSd0c5esIEBrxnfKNGIGJ7N8p3mHPOWhQfTc1
+ nC3wfYKKdObN0Tc9WdhW5lnWd2XE2C8FVH/YwzSsMK/FEI4Sr8lWCjkLc40a3q/X6SyT
+ UgKx9M745DJvAIjlEINmUn1V9VoRLqlMR+Mzj+ZgD/IZxefVR1P/a0fFZ2ta9U0SnQuq
+ SE8cIQ/hFaUu8KdY84nozKy8eDIdoFOTixMUC5F5T/SUqdfdqRWs1tIjHdgcknmYQkwG
+ RpPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=pCTuXmjwQai/CDFPUzQ3kg8YDOVHQv+4DVCFDqYGwk4=;
- b=PDJr7x5yXnkL8pg5r1lFuLaPUdH/gxsBywRy0TOr23UK1BItjbJerfFVCXMsuZzCWX
- kBq8gyn0/bbIohGRBvH1drAsMPEZ7nriBQYD5vn5yP6HkzoaVoSGF0aKaoP0DGAu5qth
- Zi1vJfWnzOkI4woc0KfYtXWYved/K8LbEc55XNNwjPGBvQyVOF1R2YU8YkvjqBsJChbp
- S0HH4DE+NFhZukH0LPfoMqbsowEfRU5Ovveu0qw4iPsdjvB8Lchg26X6ldPme7RFQR30
- 5OyCErwi2KwwuaJFURNopiRioshE/chDP5GTwTPd4aAOburj+YbGIOOoBEJIAOOmQrNG
- QaPw==
-X-Gm-Message-State: AOAM532bh4byEkX6YEAAGrW6vmVGg+gx/1tIoK+cqWiUgt+W7y+yCt4q
- ZjxeErOQqub/vzyOJXzrMheyhg==
-X-Google-Smtp-Source: ABdhPJwC5dZ17zovLWTwBFMnjLJ/S6DTsonz5wBvHLFm45TRGQA1LxJ9EXZzT2BBh6sywylyM2FixA==
-X-Received: by 2002:a5d:654c:: with SMTP id z12mr3461026wrv.46.1605275393304; 
- Fri, 13 Nov 2020 05:49:53 -0800 (PST)
+ bh=e/knA7px3ItuZjnu7kmhshhnJxUB7qJyEjkrpKqZtiA=;
+ b=MootJb0gdNnRRLqxWA5zSNnLgV96iievlomNMfan8m5z12CO+EWhoZc8+yENMIAcBI
+ OsgwxR8BBbewRHZIw5rluVz/B/xnyAXZaZTCUbgDC+kyPZlR3LmGcxavZVpiyuibKZzY
+ j8b/ygiUaGpb2P0wwTNCGhCG6PPlBlhwhKEN4zC3l5PnZi3XR0PKK+gtLxnxZ2nMWfMe
+ mB7734amDnm3pTQHKpJwQPC/7VDa59eiqqaCahAGZTTHe4/OZuubzz5eCKwKgI6nDFtg
+ XV5inICm99W1dM/fdSlwde9pPFbn5wy9gOO7nAQ/FwxpgaD7bkEONqOcSHkgWoL8n2Uc
+ o7Jw==
+X-Gm-Message-State: AOAM531inhhzoSHGYK8FR3ytxj82kb7dlEAzMf+acwul1pY0Vx7GDQer
+ Y2yzK8hrgsDDdTvL2wFnjMgDJg==
+X-Google-Smtp-Source: ABdhPJwR/sJKpEHbFTNMAquVWfrvJqacpk5fI57RXqCKzBoxehBUK0EZ5Dy/sI0mHknNbdzfm98Okg==
+X-Received: by 2002:a1c:9d08:: with SMTP id g8mr2624009wme.171.1605275394497; 
+ Fri, 13 Nov 2020 05:49:54 -0800 (PST)
 Received: from dell.default ([91.110.221.159])
- by smtp.gmail.com with ESMTPSA id t11sm4561614wrm.8.2020.11.13.05.49.52
+ by smtp.gmail.com with ESMTPSA id t11sm4561614wrm.8.2020.11.13.05.49.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Nov 2020 05:49:52 -0800 (PST)
+ Fri, 13 Nov 2020 05:49:53 -0800 (PST)
 From: Lee Jones <lee.jones@linaro.org>
 To: lee.jones@linaro.org
-Subject: [PATCH 09/40] drm/mediatek/mtk_drm_crtc: Demote seriously out-of-date
- struct header
-Date: Fri, 13 Nov 2020 13:49:07 +0000
-Message-Id: <20201113134938.4004947-10-lee.jones@linaro.org>
+Subject: [PATCH 10/40] drm/mediatek/mtk_drm_drv: Staticise local function
+ invoked by reference
+Date: Fri, 13 Nov 2020 13:49:08 +0000
+Message-Id: <20201113134938.4004947-11-lee.jones@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201113134938.4004947-1-lee.jones@linaro.org>
 References: <20201113134938.4004947-1-lee.jones@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201113_084954_891147_A2F2CE0C 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20201113_084956_472721_D83B7371 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,66 +98,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+ linaro-mm-sig@lists.linaro.org, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This needs someone with in-depth knowledge of the driver to complete.
-
-Fixes the following W=1 kernel build warning(s):
-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'pending_needs_vblank' not described in 'mtk_drm_crtc'
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'event' not described in 'mtk_drm_crtc'
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'layer_nr' not described in 'mtk_drm_crtc'
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'pending_async_planes' not described in 'mtk_drm_crtc'
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'cmdq_client' not described in 'mtk_drm_crtc'
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'cmdq_event' not described in 'mtk_drm_crtc'
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'hw_lock' not described in 'mtk_drm_crtc'
-
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>
-Cc: Daniel Vetter <daniel@ffwll.ch>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Lee Jones <lee.jones@linaro.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 193848fd75154..bfe9942305435 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -24,7 +24,7 @@
- #include "mtk_drm_gem.h"
- #include "mtk_drm_plane.h"
- 
--/**
-+/*
-  * struct mtk_drm_crtc - MediaTek specific crtc structure.
-  * @base: crtc object.
-  * @enabled: records whether crtc_enable succeeded
-@@ -34,6 +34,8 @@
-  * @mutex: handle to one of the ten disp_mutex streams
-  * @ddp_comp_nr: number of components in ddp_comp
-  * @ddp_comp: array of pointers the mtk_ddp_comp structures used by this crtc
-+ *
-+ * TODO: Needs update: this header is missing a bunch of member descriptions.
-  */
- struct mtk_drm_crtc {
- 	struct drm_crtc			base;
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Rml4ZXMgdGhlIGZvbGxvd2luZyBXPTEga2VybmVsIGJ1aWxkIHdhcm5pbmcocyk6CgogZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmM6MzE2OjI0OiB3YXJuaW5nOiBubyBwcmV2
+aW91cyBwcm90b3R5cGUgZm9yIOKAmG10a19kcm1fZ2VtX3ByaW1lX2ltcG9ydOKAmSBbLVdtaXNz
+aW5nLXByb3RvdHlwZXNdCgpDYzogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5v
+cmc+CkNjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgpDYzogRGF2aWQg
+QWlybGllIDxhaXJsaWVkQGxpbnV4LmllPgpDYzogRGFuaWVsIFZldHRlciA8ZGFuaWVsQGZmd2xs
+LmNoPgpDYzogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KQ2M6IFN1
+bWl0IFNlbXdhbCA8c3VtaXQuc2Vtd2FsQGxpbmFyby5vcmc+CkNjOiAiQ2hyaXN0aWFuIEvDtm5p
+ZyIgPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4KQ2M6IFlUIFNIRU4gPHl0LnNoZW5AbWVkaWF0
+ZWsuY29tPgpDYzogZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpDYzogbGludXgtYXJt
+LWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
+YWRlYWQub3JnCkNjOiBsaW51eC1tZWRpYUB2Z2VyLmtlcm5lbC5vcmcKQ2M6IGxpbmFyby1tbS1z
+aWdAbGlzdHMubGluYXJvLm9yZwpTaWduZWQtb2ZmLWJ5OiBMZWUgSm9uZXMgPGxlZS5qb25lc0Bs
+aW5hcm8ub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwg
+NCArKy0tCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIGIvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKaW5kZXggMmU4MDY1YjFlMmJiYy4u
+NDAxMzExNDUzZTdkMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKQEAg
+LTMxMyw4ICszMTMsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGZpbGVfb3BlcmF0aW9ucyBtdGtf
+ZHJtX2ZvcHMgPSB7CiAgKiBXZSBuZWVkIHRvIG92ZXJyaWRlIHRoaXMgYmVjYXVzZSB0aGUgZGV2
+aWNlIHVzZWQgdG8gaW1wb3J0IHRoZSBtZW1vcnkgaXMKICAqIG5vdCBkZXYtPmRldiwgYXMgZHJt
+X2dlbV9wcmltZV9pbXBvcnQoKSBleHBlY3RzLgogICovCi1zdHJ1Y3QgZHJtX2dlbV9vYmplY3Qg
+Km10a19kcm1fZ2VtX3ByaW1lX2ltcG9ydChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAotCQkJCQkJ
+c3RydWN0IGRtYV9idWYgKmRtYV9idWYpCitzdGF0aWMgc3RydWN0IGRybV9nZW1fb2JqZWN0ICpt
+dGtfZHJtX2dlbV9wcmltZV9pbXBvcnQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKKwkJCQkJCSAg
+ICAgICBzdHJ1Y3QgZG1hX2J1ZiAqZG1hX2J1ZikKIHsKIAlzdHJ1Y3QgbXRrX2RybV9wcml2YXRl
+ICpwcml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKIAotLSAKMi4yNS4xCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
