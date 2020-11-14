@@ -1,69 +1,63 @@
-Return-Path: <SRS0=9UGu=ET=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=9X0+=EU=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BD14C61DD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2020 17:41:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A2078C5519F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2020 12:05:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0D1A20791
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2020 17:41:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1CEF922240
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2020 12:05:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="I75XH9Rl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0D1A20791
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tze8QgEi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1CEF922240
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zSQJnz/OHmRzyVj7tVz3feYWAHARpmOiRiImKVmJ6lA=; b=I75XH9RlEQiE/E0VYuPmZNxAp
-	5kKtrOD/eILIOPKcXWdKDBBHptLyTS0AD5Qg/1swmmr/uMo60X3wOwNqfCbZqbLbIq9HqqpHPpkh7
-	eDXOVaQCo3qxwUgH7SnqIAvhVnbX4Ja+yqDBkj4pCy5pG7QsmFeZfPvjfD8i0wdvBInTZWy4BLZb8
-	Bx9NtcKbuaztpddXWWVYlJ2Uo71t3k1pc8KXT5VdQayl/8DqaSFaM23teIq5Rs00cv0xQ9TY0ytOJ
-	kJXHFCmw4d8gnJfEILPNx3qS424L2dryvAnx6a/ITFY+cUBhU00eISLv0Io1gr0L51XLehXRhNTRt
-	EWfqmc0nA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jj37cEQyTSsSeOlmkmMHmrdvmYnNbW+Y93eK2MjGyoc=; b=Tze8QgEi556MVBPqH8EHED9ETI
+	JCc4iG4TtofyrexACC9NrkqlIkSYB5FJD53aku5OoX08V5UFyJC7jAXH1yJNqS1a7jTrY/g5oXyjP
+	Bj87w4lN8YKzv+NMIxJ9gcq8MF0YicfRW12S5rrqVBSzS2su11mwFT/Oe70YivoWN3je/LXQAmHKH
+	FvYxvAgrfbrFOT8gqSRj1wFQhnxgLV9t9hnbegCSp3s4fEGiAz6Chvr/1CXBbxgw3PIcu4X+bYe0D
+	UQAUu01z+4R7HZkRmfK/Ra9rokcKl8hu2nvgG+54lk2XBHRcf5Qqnjwtspp1Qk9OOtmw3A3JTl8+d
+	J6ma76yw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kdd4G-0006dT-8m; Fri, 13 Nov 2020 17:41:00 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kdd4A-0006bX-IW; Fri, 13 Nov 2020 17:40:55 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6D6711042;
- Fri, 13 Nov 2020 09:40:51 -0800 (PST)
-Received: from [10.57.53.43] (unknown [10.57.53.43])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C6B8C3F718;
- Fri, 13 Nov 2020 09:40:42 -0800 (PST)
-Subject: Re: About devm_platform_ioremap_resource [Was: Re: [PATCH 01/32] pwm:
- sun4i: convert to devm_platform_ioremap_resource]
-To: Thierry Reding <thierry.reding@gmail.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
- <20201112161346.gp5nenuagx5wmwl2@pengutronix.de>
- <20201112190649.GA908613@ulmo>
- <20201112211429.kfyqzkmmchjo6pll@pengutronix.de>
- <20201113070343.lhcsbyvi5baxn3lq@pengutronix.de>
- <20201113161153.GB1408970@ulmo>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <6cddd32c-50eb-4399-02bc-d4377237134c@arm.com>
-Date: Fri, 13 Nov 2020 17:40:41 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.4.3
+	id 1kduJ8-0003Ik-9U; Sat, 14 Nov 2020 12:05:30 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kduJ4-0003IR-Hg
+ for linux-mediatek@lists.infradead.org; Sat, 14 Nov 2020 12:05:27 +0000
+Received: from cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net
+ ([80.193.200.194] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1kduIw-0002O5-Jt; Sat, 14 Nov 2020 12:05:18 +0000
+From: Colin King <colin.king@canonical.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH] phy: mediatek: fix spelling mistake in Kconfig "veriosn" ->
+ "version"
+Date: Sat, 14 Nov 2020 12:05:18 +0000
+Message-Id: <20201114120518.416120-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-In-Reply-To: <20201113161153.GB1408970@ulmo>
-Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201113_124054_715687_67EC4228 
-X-CRM114-Status: GOOD (  30.25  )
+X-CRM114-CacheID: sfid-20201114_070526_671802_8D885B9C 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,131 +69,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, heiko@sntech.de,
- Yangtao Li <tiny.windzz@gmail.com>, Linus Walleij <linus.walleij@linaro.org>,
- nicolas.ferre@microchip.com, matthias.bgg@gmail.com,
- linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com,
- shc_work@mail.ru, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- khilman@baylibre.com, ludovic.desroches@microchip.com, jonathanh@nvidia.com,
- linux-rockchip@lists.infradead.org, wens@csie.org,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com,
- s.hauer@pengutronix.de, mripard@kernel.org, vz@mleia.com,
- linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
- paul.walmsley@sifive.com, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- palmer@dabbelt.com, kernel@pengutronix.de, shawnguo@kernel.org,
- claudiu.beznea@microchip.com, nsaenzjulienne@suse.de
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-11-13 16:11, Thierry Reding wrote:
-> On Fri, Nov 13, 2020 at 08:03:43AM +0100, Uwe Kleine-K=F6nig wrote:
->> Hello,
->>
->> [Added lkml and the people involved in commit 7945f929f1a7
->> ("drivers: provide devm_platform_ioremap_resource()") to Cc:. For the
->> new readers: This is about patches making use of
->> devm_platform_ioremap_resource() instead of open coding it. Full context
->> at https://lore.kernel.org/r/20201112190649.GA908613@ulmo]
->>
->> On Thu, Nov 12, 2020 at 10:14:29PM +0100, Uwe Kleine-K=F6nig wrote:
->>> On Thu, Nov 12, 2020 at 08:06:49PM +0100, Thierry Reding wrote:
->>>> I also think that it's overly narrow is scope, so you can't actually
->>>> "blindly" use this helper and I've seen quite a few cases where this w=
-as
->>>> unknowingly used for cases where it shouldn't have been used and then
->>>> broke things (because some drivers must not do the request_mem_region()
->>>> for example).
->>>
->>> You have a link to such an accident?
->>
->> I got a hint in private here: https://lore.kernel.org/r/1555670144-24220=
--1-git-send-email-aisheng.dong@nxp.com
->>
->> devm_platform_ioremap_resource() is platform_get_resource() +
->> devm_ioremap_resource() and here it was used to replace
->> platform_get_resource() + devm_ioremap().
->>
->> IMHO the unlucky thing in this situation is that devm_ioremap_resource()
->> and devm_ioremap() are different by more than just how they get the area
->> to remap. (i.e. devm_ioremap_resource() also does
->> devm_request_mem_region().)
->>
->> So the problem is not the added wrapper, but unclear semantics in the
->> functions it uses.
-> =
+From: Colin Ian King <colin.king@canonical.com>
 
-> The semantics aren't unclear. It's just that the symbol name doesn't
-> spell out every detail that the function implements, which, frankly, no
-> function name ever does, at least not for anything beyond simple
-> instructional examples. That's what we have documentation for and why
-> people should read the documentation before they use a function and make
-> (potentially wrong) assumption about what it does.
-> =
+There is a spelling mistake in the Kconfig. Fix it.
 
->>                     In my eyes devm_ioremap() and
->> devm_platform_ioremap_resource() should better be named
->> devm_request_ioremap() and devm_platform_request_ioremap_resource()
->> respectively. Is it worth to rename these for clearity?
-> =
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/phy/mediatek/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> I think function names are always a compromise between giving you the
-> gist of what the implementation does and being short enough so it
-> doesn't become difficult to read or use.
-> =
+diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+index 50c5e9306e19..c8126bde9d7c 100644
+--- a/drivers/phy/mediatek/Kconfig
++++ b/drivers/phy/mediatek/Kconfig
+@@ -12,7 +12,7 @@ config PHY_MTK_TPHY
+ 	  it supports multiple usb2.0, usb3.0 ports, PCIe and
+ 	  SATA, and meanwhile supports two version T-PHY which have
+ 	  different banks layout, the T-PHY with shared banks between
+-	  multi-ports is first version, otherwise is second veriosn,
++	  multi-ports is first version, otherwise is second version,
+ 	  so you can easily distinguish them by banks layout.
+ 
+ config PHY_MTK_UFS
+-- 
+2.28.0
 
-> One of the reasons why I dislike the addition of helpers for every
-> common special case (like devm_platform_ioremap_resource()) is because
-> it doesn't (always) actually make things easier for developers and/or
-> maintainers. Replacing three lines of code with one is a minor
-> improvement, even though there may be many callsites and therefore in
-> the sum this being a fairly sizeable reduction. The flip side is that
-> now we've got an extra symbol with an unwieldy name that people need
-> to become familiar with, and then, like the link above shows, it doesn't
-> work in all cases, so you either need to fall back to the open-coded
-> version or you keep adding helpers until you've covered all cases. And
-> then we end up with a bunch of helpers that you actually have to go and
-> read the documentation for in order to find out which one exactly fits
-> your use-case.
-> =
-
-> Without the helpers it's pretty simple to write, even if a little
-> repetitive:
-> =
-
->    1) get the resource you want to map
->    2) request the resource
->    3) map the resource
-> =
-
-> 2) & 3) are very commonly done together, so it makes sense to have a
-> generic helper for them. If you look at the implementation, the
-> devm_ioremap_request() implementation does quite a bit of things in
-> addition to just requesting and remapping, and that's the reason why
-> that helper makes sense.
-> =
-
-> For me personally, devm_platform_ioremap_resource() is just not adding
-> enough value to justify its existence. And then we get all these other
-> variants that operate on the resource name (_byname) and those which
-> remap write-combined (_wc). But don't we also need a _byname_wc()
-> variant for the combination? Where does it stop?
-
-Arguably the worst thing about devm_platform_ioremap_resource() is that =
-
-it was apparently the gateway drug to a belief that =
-
-devm_platform_get_and_ioremap_resource() is anything other than a =
-
-hideous way to obfuscate an assignment...
-
-Robin.
 
 _______________________________________________
 Linux-mediatek mailing list
