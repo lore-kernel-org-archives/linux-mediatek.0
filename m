@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9386BC55ABD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 66982C63697
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:45:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1ACB9208C7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:45:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 01B5E208C7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:45:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FxBDdil+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="GXgOGre7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1ACB9208C7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qaL8YGt3";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="kehch9xJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01B5E208C7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,60 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:From:Subject:References:Mime-Version:Message-Id:
 	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+UnXXhqYMBun1M5vaLD8va0s5kQt7jhNkwv22TN9dcg=; b=FxBDdil+QSGgpA2tgleJ0xf7A
-	kddbxz71GEJNiOt0v3tdlrosxsNrX6sqGm68hwChG8r0VXhG1uBd47mvMB9BrJfiDDVCqsqL6YplV
-	W0Bec+56Ep/DmGgeIuGTcdy2QKkkIhL9KREHu19ec1/O1QHLtxzyFN04OY3KPsBbKATKiT7aQaqOv
-	r/xXIL3F3iFtnfJ4u7CSFveHmEdQE324WP1teM3KGKovvyp6i/NcvJM/fJdgQyhP5HtVcFKHhVdpl
-	soju82Zr6lS7OrkFjkgbPqDcDk68wD+PKIhn/pNyUOU5Owc6rRX9rqlIb6FSwKRVpuwSNiCNW4Qib
-	AsQLervfw==;
+	 bh=lojfOox/PtCbi3abADrHKuVxlNpy7yGCZUymbAqZqTo=; b=qaL8YGt3goczhk/8aW+jF2dnX
+	CD51+ya5ae2+6XodCHiyNHWzYHst1120nLB4aL8fqnWG9BOQbfz9fRKJnXKgcjlEG81uYgJPzaSDH
+	dtH3lp3r16d85SBBElB3NPjFIXcnrllK5WMVm8A8CbAK9MLwizMyxXiQXF4dQLi7usw0DZWcdmBw9
+	8I1RBMOlUaVj3rIdLacWti36VwWNRYzMl2eKPtJbvUJ77jldDYDxT6dubTsJ/LFU1FbZJIl+6atCe
+	BUQPFTvTnBI95Hw8M5YHmd/Zf0eyblVPydNbLNCt97idt+Y79UZ0hTaLkb5i5e2cGQbzHEJC94jLc
+	/b0Svt/2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kea87-000473-I6; Mon, 16 Nov 2020 08:44:55 +0000
-Received: from mail-qt1-x84a.google.com ([2607:f8b0:4864:20::84a])
+	id 1kea8H-0004Aa-JX; Mon, 16 Nov 2020 08:45:05 +0000
+Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kea7q-000406-Pj
- for linux-mediatek@lists.infradead.org; Mon, 16 Nov 2020 08:44:40 +0000
-Received: by mail-qt1-x84a.google.com with SMTP id o1so9682544qtp.7
- for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 00:44:36 -0800 (PST)
+ id 1kea7x-00041f-1u
+ for linux-mediatek@lists.infradead.org; Mon, 16 Nov 2020 08:44:46 +0000
+Received: by mail-pl1-x64a.google.com with SMTP id f3so6165691plb.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 00:44:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=U1SYL24RcTv9N7iT3p8Gk3jg0reoXyBjPpMVxH+Yb2c=;
- b=GXgOGre7Vz7fMb34bNE5Fnr0Fuz4xu004X0MvPHy3/ZVL+bYlIvBjrV+j3YFiM1CTK
- mJkoYwcw3HaG/wFWu+8a8eNgFdyZ+lugSDUKxpy2+KE2NszFF0T4QCsaW2mRSU0o1cr0
- L4JjnBcgjutYdsDlHwx8ar2SgdZzcFlAMC8payn3TF3SmxFFyMHRpVKYKwva/yq8awSr
- wVcZ3GEscUwsETAU+tAXkq1+65Jv1of7kB0ZGMYWCVf5FwPvBffxwIrF+WOJpVYS0v3R
- 7yr57qXUpXc/ywOqBLbco3E3QgGAYb4X9rQf2/4JaE+1hQFmMa8LP0vowZgbRmzD8ypy
- 08bw==
+ :from:to:cc; bh=U3Gi1qahwlJP98+q+DzLZd9zkdZHDpsmepdISgH+9NE=;
+ b=kehch9xJroI7LjWkkrpaK2y/pA8zVVNmlv6bS9Hbia0MVnrY0lfoB8heEZAxrT4eQq
+ fqe9MOaa7/zAwhOHo+YXMJR5NKRvjqcmt5RB+q7UMvH19i1c4vR4w+S5FAVQugwZRgeN
+ oODQ4xY8Xf0tbfWP08c2BW/dkJzdrkSJwhd91t+4DTd494czrp0MNGsUV940AjKk4FIF
+ 0HuTUm9j5cKpr1eghbwhADpRLMY7r1JHk469OR3d5F7XJQb5YIApr8NFeNLukci6Jz9l
+ MdR2MBIPLn629hut04JnPig15lPf9BOIL6yaC/vjblJddFywFtcVD8he0amkWpjrkDyl
+ XyDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=U1SYL24RcTv9N7iT3p8Gk3jg0reoXyBjPpMVxH+Yb2c=;
- b=owD6939fI8k0l72s+QXt0mIoYh3k5Q5YfY4NKEuTHOtNLh11Le/1uPtM4AwkKOYn+c
- rehpwkTbPjZ+/cRbSVA9b25sxrIVL2o7OqWf/bFWG46V+ucZuUsk0EY7OFztqSuj3x57
- 553R/UNJZyU8Du1oqb3J/lsM7VXnBkXEc49gk8+mm4PKQZoeY5Z2QdoOI8OoShsqEbu/
- 0EsqFvwxQMldFDAHIfTQQyNsjfi315UMEoS6lijj516lVnLb+wVwy8twgG2iWZ0eClXH
- 1eis31xvUPO6BmmuA4jP7EEFY11ogFrBu757xsxv9sJFO/TuVgFylKVqWhYk8v6FM7oY
- acuw==
-X-Gm-Message-State: AOAM5323ObjDv5VbBRni+hnu1FtWMafjP9o3fiHiebXdmKbp4joxxYHv
- azxa23GTppVWQj6iCOdhnLWerktH8CZI
-X-Google-Smtp-Source: ABdhPJzhbiY6OL3SEP4f5SvcBbQqzn20Wueip3Hg4YPjnhhPTZC1kw4E3QbluKfoOYm2U9VaaZ7MgAacn1oH
+ bh=U3Gi1qahwlJP98+q+DzLZd9zkdZHDpsmepdISgH+9NE=;
+ b=uPu9Ag8DRj2Ue/eDxmHC8k4ZlADDaz6/76aVX9KmWoUblnYlbcJDto/4+ZVI7/mBq+
+ x543vXiQOcRNAL51AP7kkmvGkfNO+b2pxKynhssYUwk54Nac0yC08XUuJ1axh/RvBUjI
+ 7ZtO7vNkycggyvkHvK8AKR8/M+rVyQEnk4EBuwgVmv731nlNZQjNrg7iR3sQddhDnY3j
+ 6eD60auWLNOVhkazlYk+S/STXJH1Y6jmI/YTa6gZxWiK7h+Qx2OIQE1VDHXNYrik+TZY
+ NVWk1ALvMVgbdI5oA0KFGR6xy8XJH4RWBzYiP5x+qZ4C2eal2tE/ZPzL9zpp5Mx46usy
+ g4Sg==
+X-Gm-Message-State: AOAM5330j64BTHQvkch2f78Wa0pRbu6IrS7XlJJ55ItdNGd86Fm64k51
+ NVxqujw6dEQfkeQs1P9MdMnOTeRVcM9m
+X-Google-Smtp-Source: ABdhPJxg+Z8Zu9B3dSqceVno3+Brgq9ObO149i6jMRBUlUkXml8qKyHkCmVunSfSYifJf7XSVOpNenMRFqPo
 X-Received: from tzungbi-z840.tpe.corp.google.com
  ([2401:fa00:1:b:725a:fff:fe41:c6a5])
- (user=tzungbi job=sendgmr) by 2002:a0c:a8c4:: with SMTP id
- h4mr404502qvc.58.1605516275666; Mon, 16 Nov 2020 00:44:35 -0800 (PST)
-Date: Mon, 16 Nov 2020 16:44:11 +0800
+ (user=tzungbi job=sendgmr) by 2002:a17:902:a503:b029:d8:e685:3e58 with SMTP
+ id s3-20020a170902a503b02900d8e6853e58mr5843637plq.68.1605516279549; Mon, 16
+ Nov 2020 00:44:39 -0800 (PST)
+Date: Mon, 16 Nov 2020 16:44:12 +0800
 In-Reply-To: <20201116084413.3312631-1-tzungbi@google.com>
-Message-Id: <20201116084413.3312631-2-tzungbi@google.com>
+Message-Id: <20201116084413.3312631-3-tzungbi@google.com>
 Mime-Version: 1.0
 References: <20201116084413.3312631-1-tzungbi@google.com>
 X-Mailer: git-send-email 2.29.2.299.gdc1121823c-goog
-Subject: [PATCH v2 1/3] remoteproc/mediatek: fix boundary check
+Subject: [PATCH v2 2/3] remoteproc/mediatek: skip if filesz is 0
 From: Tzung-Bi Shih <tzungbi@google.com>
 To: ohad@wizery.com, bjorn.andersson@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_034438_890815_605A2D10 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20201116_034445_205049_1AE9190C 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,34 +100,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is valid if offset+length == sram_size.
+The main purpose of the loop is to load the memory to the SCP SRAM.
+If filesz is 0, can go to next program header directly.
 
-For example, sram_size=100, offset=99, length=1.  Accessing offset 99
-with length 1 is valid.
+We don't need to try to validate the FW binary for those filesz==0
+segments.
 
 Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
 ---
- drivers/remoteproc/mtk_scp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/remoteproc/mtk_scp.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index a1e23b5f19b9..0abbeb62cf43 100644
+index 0abbeb62cf43..74ed675f61a6 100644
 --- a/drivers/remoteproc/mtk_scp.c
 +++ b/drivers/remoteproc/mtk_scp.c
-@@ -408,11 +408,11 @@ static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len)
+@@ -234,12 +234,14 @@ static int scp_elf_load_segments(struct rproc *rproc, const struct firmware *fw)
+ 		u32 offset = phdr->p_offset;
+ 		void __iomem *ptr;
  
- 	if (da < scp->sram_size) {
- 		offset = da;
--		if (offset >= 0 && (offset + len) < scp->sram_size)
-+		if (offset >= 0 && (offset + len) <= scp->sram_size)
- 			return (void __force *)scp->sram_base + offset;
- 	} else if (scp->dram_size) {
- 		offset = da - scp->dma_addr;
--		if (offset >= 0 && (offset + len) < scp->dram_size)
-+		if (offset >= 0 && (offset + len) <= scp->dram_size)
- 			return scp->cpu_addr + offset;
+-		if (phdr->p_type != PT_LOAD)
+-			continue;
+-
+ 		dev_dbg(dev, "phdr: type %d da 0x%x memsz 0x%x filesz 0x%x\n",
+ 			phdr->p_type, da, memsz, filesz);
+ 
++		if (phdr->p_type != PT_LOAD)
++			continue;
++		if (!filesz)
++			continue;
++
+ 		if (filesz > memsz) {
+ 			dev_err(dev, "bad phdr filesz 0x%x memsz 0x%x\n",
+ 				filesz, memsz);
+@@ -263,9 +265,7 @@ static int scp_elf_load_segments(struct rproc *rproc, const struct firmware *fw)
+ 		}
+ 
+ 		/* put the segment where the remote processor expects it */
+-		if (phdr->p_filesz)
+-			scp_memcpy_aligned(ptr, elf_data + phdr->p_offset,
+-					   filesz);
++		scp_memcpy_aligned(ptr, elf_data + phdr->p_offset, filesz);
  	}
  
+ 	return ret;
 -- 
 2.29.2.299.gdc1121823c-goog
 
