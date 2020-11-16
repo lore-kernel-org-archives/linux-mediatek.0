@@ -5,19 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A909EC2D0A3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 17:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8767C2D0A3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 17:44:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D7CF20B80
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 17:44:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3B24920B80
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 17:44:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j6I8fG7f";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Zrf2ywI6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D7CF20B80
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uxJFZ1JN";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="kqhZccK8";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="gfFikjbN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B24920B80
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,64 +27,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cTOqss6Bd6r7J7OKVMzLTV2r566Pygm/hhUT2pjaIro=; b=j6I8fG7fq4QC7GU6pQ83Zla94
-	h9uGOR/zWPt3jiYyIIbBJPth4kXlqWxZxGG1HDVDlFGiISM5YrYdnp9vTBvYv2gSFKV5S6wyVgMMY
-	KfcFoDDdlekUjYfG7YKIAw7iFqZefB5Cq1Vq/wjuqdsGjkeTaGpCb4Ksikxnu+SnhRTAUJltQDNH7
-	YW4YIpcnR7L5kny7ivEVl7cRNPRslrbz1EFlesUpE4U232+JQFih6CYCZuQxFnBsYGtg+np2D+xl7
-	usfkxQYuzPVr8uGjjTsVbH2Ewl5kt01Y/0axx0NJt7Z/axMEygxKU5DzN/d6zFK7mJke4J0yF1rb6
-	lMveqqeaQ==;
+	 bh=W8aLJt1NVBZOsNWulPBuZoGtue+d0MKzWxOgckN225s=; b=uxJFZ1JN/7izusqiYTTF786XH
+	25HM+t9EdjiGbz4Y/kW3kiCRpX+Ivvo+Q5sMzd95t7tsyXveMmkq33cMsYdMnsQNqTrb7vvkP5yQq
+	DhAIpYtvmk1gmFeddHUhGQkJKOx1Ty9iBpVGM0oai5raYFyRUJDewR0pQZAni8Nt56+FU5Q/3VlDt
+	N9yZKRkzKt6R8Xe0QQTD/ZsI/uV27DaNYOYo4VIkZOqcv20JoKhngwgBiM6zquoLWa+ry2VW62Ujt
+	/zXb9cJZUlDZSgDD2XrakdpXudsAlbcKsG+WlkefJF0dxLDl41PHxXnn7Mmmlcl23AhdASPboZZmh
+	bAa7/qpnQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1keiXf-000587-1W; Mon, 16 Nov 2020 17:43:51 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1keiXy-0005Hx-1Q; Mon, 16 Nov 2020 17:44:10 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1keiVQ-00041i-M7
- for linux-mediatek@lists.infradead.org; Mon, 16 Nov 2020 17:41:39 +0000
-Received: by mail-wm1-x342.google.com with SMTP id p22so43781wmg.3
- for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 09:41:32 -0800 (PST)
+ id 1keiVb-00048A-C2
+ for linux-mediatek@merlin.infradead.org; Mon, 16 Nov 2020 17:41:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=pCTuXmjwQai/CDFPUzQ3kg8YDOVHQv+4DVCFDqYGwk4=; b=kqhZccK85qZbzn0cPk08Ee7bNp
+ c0HK/THCJ2qtLFvQxdeAIHE/8NKYHq0dJ+cbjRUxFnzi6VX3wVAGlT1E9sUQqOTMrbI9bdVKReV4o
+ V3o6EQtPTcnpVKVtWtt/l3C4N96kHjH8MbMOzXh7Rmj4YfvyZfiIieTygM4Fz2hWprvSWAqj7JYJC
+ IepPab0Pv7kbZgmozC5q4lGXL7pu9UOTn42iQSP1RRRrsSc9zSNqsh02BMS3n6wEMEibyrPbdQlmz
+ bbxn3o/ZACP1qiBOl67bwsS0icbU9y9X+DgpCEVlV4ExIGZKP3jjRlWhqZ5EXEB22t+mM9OyCUZdb
+ /B0Fl1+g==;
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1keiVV-0001GP-9P
+ for linux-mediatek@lists.infradead.org; Mon, 16 Nov 2020 17:41:41 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 10so49087wml.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 09:41:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=lV20qvkcXuKJ/8kdoQy2xSMx6pSot2KZYylCMdc97vk=;
- b=Zrf2ywI6nk+V0LerSSoBh85knKxg9wJ+fPH0SnSGqaqQ12rxleOIn+iiCOD32LvrWe
- Bkf/Wb6oGiBXh81lSfbbUzMj46qGlT4x4+1uL52OqwD66udoi+19y2OiHokqejefMpki
- LmeWQ+MHrkhBMuJk+MdgLyk7MESyvv31arSx0QUkqSIS1x66KRZp1d4y24TPZMNm83lQ
- Z/8XQ6zO07K0BXmGzG4J9egEP+HIctkyoaLLrtPIWFXQNAkfouPKrKFL3r8kdJz9S87x
- 0LJf4EPdEEJ9lt64nU1UXv2v/MlEJ25+E2sOtvy96/QpqSBFGgfC2NTk1OGeGMfirb+6
- SY+g==
+ bh=pCTuXmjwQai/CDFPUzQ3kg8YDOVHQv+4DVCFDqYGwk4=;
+ b=gfFikjbNe9YkvOd+VXcfbf0J4Wd2441zhnFbQBUFTSfGl/11fLgrzMNsROSrDNKZnB
+ 56O56aOR/HmR02tQ/3tiNJAhdUCmKv3PyRLNB0tFPnqebgucJjargzJMwuSJqsg4qUDz
+ lUADz1TsIKFAEDWw/i6YYk8HVxvDJqeRjFeh11I8P7jIVCANAQ8XqJPeo2AmjbptibFD
+ 3BUaOo+e/x2FHDxxqyNUMx1CFmyFSNvfDMIXzxiO4enNnSLj6DwZyaW/AX6d3z+XhZkM
+ Hol8SB/aqA0USEkFwB5UEN9vO92vFQ3LpEYj0SMeSchExJmGtxQjQooiNX6+MTrjskNO
+ qkgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lV20qvkcXuKJ/8kdoQy2xSMx6pSot2KZYylCMdc97vk=;
- b=Jy7KpqZF5TCvNu16bVtX8FmmH4fKdT8fq9ImUEp2wNcc99kf1iPWREyH9r9tIBYadT
- og/gxfTMS9PG/lpceZG3ESycadJNFhmhfbFACav8wOA1MMEA+QFt9YeE9AjWL35g7dZt
- 6+rXeTcy1GCFdAYBZLOxfkWsKA1H2/iFKC41xQ1bgIBpu1qHplawDopAqQv52RK4ykyM
- PjnYyYyHlONuEzZpGMcI8u2VhCMM3fBGaHQeQvDMJ4J58cNpyn48Q9dozg3ZasA2Mz+Q
- cw36HLSgoNWJvY3PypmpbJRTN+zmp642m9GPN8LuaKMmPrb661ZC5NVvV4ZN2+O8o5Sw
- B+6A==
-X-Gm-Message-State: AOAM531cdRbPJZ2GdzgPfPJuhMiSxtgBWwIvwgeosKxBWSQx41wGViqu
- TiDzrQQLrj+m8XJpNSU/c73VmA==
-X-Google-Smtp-Source: ABdhPJxIdXRERwdbm0KN6pgN4q/8GjFcbWLDvydipEOB1BxVtliCNpiCbiQUfPa+193dGkiQ5Fu86A==
-X-Received: by 2002:a1c:658b:: with SMTP id z133mr7692wmb.1.1605548491414;
- Mon, 16 Nov 2020 09:41:31 -0800 (PST)
+ bh=pCTuXmjwQai/CDFPUzQ3kg8YDOVHQv+4DVCFDqYGwk4=;
+ b=ULD6mx0xJlgiOfF2z8LqSKFPCXN+0oX2b0XDD4DIglyYLnLwUMtWzeKNlpo36eLoGJ
+ yZIqWuybfOu/SIkCD9Ex31tyDH3QFDKm3pIx9Awq1fxbdmP7va7taehTqxINgUESeczE
+ eNDOEyDfptnrcs5noxg7v23gJ4BYfryJEqcy2Dn85TUYVRbj+QmkJuRZk7Sgj3zEPCCB
+ d3OQzDNOsCeRew83xzsh9tWPw283BNWofNO9tZz5gU2VErJUn4RyPaPhqg2MSamT5Jje
+ WzF/QnuEILILvqA7Dja4dyxL2nTqnM+9GKJ6E9f5iYlyGCtnSD7VP8gbnhJzkuvTkCw4
+ cdaQ==
+X-Gm-Message-State: AOAM533Dk7NQrq+6CbXW9b5qkRzGXJycg/bo3GBTOE9+M5bW1pT43Vyl
+ 7wOlpAAuxqnHtXUSU8oGQLNzL5FYt9Bu34bJ
+X-Google-Smtp-Source: ABdhPJwrqzcWWtyPydLaEIxmPE66hOyh5iCvJ3dX8GBSzMZleXIeT0J7SjvsguKoHdDSGAfq4DLbJQ==
+X-Received: by 2002:a1c:9ec9:: with SMTP id h192mr48224wme.8.1605548494375;
+ Mon, 16 Nov 2020 09:41:34 -0800 (PST)
 Received: from dell.default ([91.110.221.159])
- by smtp.gmail.com with ESMTPSA id n10sm24667224wrx.9.2020.11.16.09.41.30
+ by smtp.gmail.com with ESMTPSA id n10sm24667224wrx.9.2020.11.16.09.41.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 09:41:30 -0800 (PST)
+ Mon, 16 Nov 2020 09:41:33 -0800 (PST)
 From: Lee Jones <lee.jones@linaro.org>
 To: lee.jones@linaro.org
-Subject: [PATCH 09/42] drm/mediatek/mtk_disp_ovl: Fix formatting and provide
- missing member description
-Date: Mon, 16 Nov 2020 17:40:39 +0000
-Message-Id: <20201116174112.1833368-10-lee.jones@linaro.org>
+Subject: [PATCH 11/42] drm/mediatek/mtk_drm_crtc: Demote seriously out-of-date
+ struct header
+Date: Mon, 16 Nov 2020 17:40:41 +0000
+Message-Id: <20201116174112.1833368-12-lee.jones@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201116174112.1833368-1-lee.jones@linaro.org>
 References: <20201116174112.1833368-1-lee.jones@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_124132_991024_0F07C19A 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20201116_174137_628493_0D1657A1 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,11 +121,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This needs someone with in-depth knowledge of the driver to complete.
+
 Fixes the following W=1 kernel build warning(s):
 
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:75: warning: Function parameter or member 'ddp_comp' not described in 'mtk_disp_ovl'
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:75: warning: Function parameter or member 'crtc' not described in 'mtk_disp_ovl'
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:75: warning: Function parameter or member 'data' not described in 'mtk_disp_ovl'
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'pending_needs_vblank' not described in 'mtk_drm_crtc'
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'event' not described in 'mtk_drm_crtc'
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'layer_nr' not described in 'mtk_drm_crtc'
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'pending_async_planes' not described in 'mtk_drm_crtc'
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'cmdq_client' not described in 'mtk_drm_crtc'
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'cmdq_event' not described in 'mtk_drm_crtc'
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c:62: warning: Function parameter or member 'hw_lock' not described in 'mtk_drm_crtc'
 
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Cc: Philipp Zabel <p.zabel@pengutronix.de>
@@ -122,25 +143,31 @@ Cc: linux-arm-kernel@lists.infradead.org
 Cc: linux-mediatek@lists.infradead.org
 Signed-off-by: Lee Jones <lee.jones@linaro.org>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 28651bc579bc9..74ef6fc0528b6 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -65,8 +65,9 @@ struct mtk_disp_ovl_data {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 193848fd75154..bfe9942305435 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -24,7 +24,7 @@
+ #include "mtk_drm_gem.h"
+ #include "mtk_drm_plane.h"
  
- /**
-  * struct mtk_disp_ovl - DISP_OVL driver structure
-- * @ddp_comp - structure containing type enum and hardware resources
-- * @crtc - associated crtc to report vblank events to
-+ * @ddp_comp: structure containing type enum and hardware resources
-+ * @crtc: associated crtc to report vblank events to
-+ * @data: platform data
+-/**
++/*
+  * struct mtk_drm_crtc - MediaTek specific crtc structure.
+  * @base: crtc object.
+  * @enabled: records whether crtc_enable succeeded
+@@ -34,6 +34,8 @@
+  * @mutex: handle to one of the ten disp_mutex streams
+  * @ddp_comp_nr: number of components in ddp_comp
+  * @ddp_comp: array of pointers the mtk_ddp_comp structures used by this crtc
++ *
++ * TODO: Needs update: this header is missing a bunch of member descriptions.
   */
- struct mtk_disp_ovl {
- 	struct mtk_ddp_comp		ddp_comp;
+ struct mtk_drm_crtc {
+ 	struct drm_crtc			base;
 -- 
 2.25.1
 
