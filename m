@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A715C4742C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 356A4C55ABD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7EE06205ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF3F62067C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F6GPcl5u";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dcymQY1Y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EE06205ED
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W0lrpzzz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VswJ+/5n"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF3F62067C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RjSftKblT6qru4BZLzx5jKw7R2EjVYe2GyDsmY8ULsw=; b=F6GPcl5uRb2Z7XnsC1rtE2baz
-	RB/nlAzFBYEK5nOF9GyxXxMSQ10BC9y1+2XXQbrpIyUfmlppHVd2JYkmPSsKaP1Ov1ToumJe7qMR0
-	GLO6TcqT+PfJHpXUywpUIvzi8ku5kHnezSo/7HSdsVzTQ4FSekwJrR03xMhIUCp67nzWLiTsqq3qG
-	BP87jmHcIek2p61J9S22tyWMW3XbbzfYItCJH4EMo40UEVumdW5kM1063vn7AwIMNOKoWwqwUC+gH
-	ZDewbRJjta7qRQCeNqAFe9KpxrbvOnXJzNhyXG+yaJZt57kPKSolJgawu/1R8h8XNBHZ/c+B2rviK
-	5J0AusJrQ==;
+	 bh=5vtE3k5jc4OfeObOSiScD7vD9aFPSpHl/mIBFzUZAls=; b=W0lrpzzzX4il6SiSO41JMKn1L
+	gS4MkPvVzUKGMJShE8Rme0hpL6DTKUAEddz0kZtUwo9u1F5fZ6xspkiYrpmQH0J4pNeTyPaNjZLMK
+	iZ3LgVFHoOykbLnNqhw1LsgKX4RpbwJWGxMwuau6gcv+0UFN51wI4StMv53wNO9iqebKMH000obhU
+	0+dy9w7nWb6wy24UZqXR/kwirNnOIHnOBEpzwmGj5zUVhkLg06kkgYrI2hfaAIYnhRq4kF8QhfBbW
+	OS/uqAGxjzNtTKeWftfb0utHSHHkQ7v3eA/ux+cevozTeLveXYQPmwDbAQdat0R/tS0hKGXYsrEcI
+	C+erZvgmA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1keYVt-000634-0p; Mon, 16 Nov 2020 07:01:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1keYW8-00068R-CB; Mon, 16 Nov 2020 07:01:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1keYVe-0005wd-Cj; Mon, 16 Nov 2020 07:01:08 +0000
-X-UUID: e570a9b1cd72401a9b8a67376a758dc5-20201115
+ id 1keYVj-0005xz-RM; Mon, 16 Nov 2020 07:01:13 +0000
+X-UUID: 0a503d19e4e54fb2b5ff74bcb25e255d-20201115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=12sWmcr47VMxInYTaXFnfJ9he4NVxl9BMogcTGHlvps=; 
- b=dcymQY1Ys2eJQYOhHUF9iHR5732krzRXsW6F0OrZZwco49/34GG2vM1C7Q4xCeidB7NuOtlSVUjlhu/iBIwN6RBsNRF7qcNAEXFP0ChE3xis0IZcl3qBoJsmq/HvJIDx7+K2v3t8gJBk0am5JbzdPcvh5ZcfAajejQ1LGNQYJzg=;
-X-UUID: e570a9b1cd72401a9b8a67376a758dc5-20201115
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=lxTEI2W6rBNmdevySAyMHjPQS/uRMZrjwgm4K8FZsHU=; 
+ b=VswJ+/5n1Cey0/hADrl/546xCAid2lnQp77clTkETfkd/vnbYPacOJ/+1p923+uOnGdXsH3yKCVkP09FpxpBMVi3UeFO+h9GuvemUwO2cIXYPVZlpYBBqlMowRw3m0NGDJ3nsefM1GVlEDQlb3YM+OrhbvA/Q5wAp7SdztYWtNE=;
+X-UUID: 0a503d19e4e54fb2b5ff74bcb25e255d-20201115
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1916960853; Sun, 15 Nov 2020 23:01:00 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 15 Nov 2020 22:50:58 -0800
+ with ESMTP id 964641143; Sun, 15 Nov 2020 23:01:05 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 15 Nov 2020 22:51:04 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Nov 2020 14:50:56 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 Nov 2020 14:50:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 16 Nov 2020 14:50:56 +0800
+ Frontend Transport; Mon, 16 Nov 2020 14:50:57 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 8/9] scsi: ufs-mediatek: Use common ADAPT configuration
- function
-Date: Mon, 16 Nov 2020 14:50:53 +0800
-Message-ID: <20201116065054.7658-9-stanley.chu@mediatek.com>
+Subject: [PATCH v1 9/9] scsi: ufs-qcom: Use common ADAPT configuration function
+Date: Mon, 16 Nov 2020 14:50:54 +0800
+Message-ID: <20201116065054.7658-10-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201116065054.7658-1-stanley.chu@mediatek.com>
 References: <20201116065054.7658-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 586618FD9FC2E94551F1713EFAAF3BF557FB27D60D232CE7923BD1AADFE1CDAF2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_020107_217440_8D0CAC36 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20201116_020112_118203_3B076A60 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,38 +100,34 @@ code in UFS drivers.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/scsi/ufs/ufs-qcom.c | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 87b4bf125e23..1d3c5cd4592e 100644
---- a/drivers/scsi/ufs/ufs-mediatek.c
-+++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -677,7 +677,6 @@ static int ufs_mtk_pre_pwr_change(struct ufs_hba *hba,
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 	struct ufs_dev_params host_cap;
--	u32 adapt_val;
- 	int ret;
+diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
+index 04adfbd10753..1e434cce0f79 100644
+--- a/drivers/scsi/ufs/ufs-qcom.c
++++ b/drivers/scsi/ufs/ufs-qcom.c
+@@ -723,17 +723,9 @@ static int ufs_qcom_pwr_change_notify(struct ufs_hba *hba,
+ 			ufs_qcom_dev_ref_clk_ctrl(host, true);
  
- 	ufshcd_init_pwr_dev_param(&host_cap);
-@@ -693,13 +692,9 @@ static int ufs_mtk_pre_pwr_change(struct ufs_hba *hba,
- 	}
- 
- 	if (host->hw_ver.major >= 3) {
--		if (dev_req_params->gear_tx == UFS_HS_G4)
--			adapt_val = PA_INITIAL_ADAPT;
--		else
--			adapt_val = PA_NO_ADAPT;
--		ufshcd_dme_set(hba,
--			       UIC_ARG_MIB(PA_TXHSADAPTTYPE),
--			       adapt_val);
-+		ret = ufshcd_dme_configure_adapt(hba,
-+					   dev_req_params->gear_tx,
-+					   PA_INITIAL_ADAPT);
- 	}
- 
- 	return ret;
+ 		if (host->hw_ver.major >= 0x4) {
+-			if (dev_req_params->gear_tx == UFS_HS_G4) {
+-				/* INITIAL ADAPT */
+-				ufshcd_dme_set(hba,
+-					       UIC_ARG_MIB(PA_TXHSADAPTTYPE),
+-					       PA_INITIAL_ADAPT);
+-			} else {
+-				/* NO ADAPT */
+-				ufshcd_dme_set(hba,
+-					       UIC_ARG_MIB(PA_TXHSADAPTTYPE),
+-					       PA_NO_ADAPT);
+-			}
++			ufshcd_dme_configure_adapt(hba,
++						dev_req_params->gear_tx,
++						PA_INITIAL_ADAPT);
+ 		}
+ 		break;
+ 	case POST_CHANGE:
 -- 
 2.18.0
 _______________________________________________
