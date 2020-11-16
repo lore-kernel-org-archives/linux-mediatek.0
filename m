@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BB0D7C4742C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DBC26C55ABD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:26:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42B6E2068E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:26:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5B7F520702
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 08:26:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gScx9LfE";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="JsL/W1lT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42B6E2068E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O/qK0P++";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="QOBEhTLv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B7F520702
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,61 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:From:Subject:References:Mime-Version:Message-Id:
 	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZbTupOGc+kiV5xnpOTNRIWk2yOemBntrsfrIxLMSp3w=; b=gScx9LfEATMyWuiyK+JqoWWlI
-	eZaFFgmaL75ChJ4asrMvaBnN+A47TOHel21fxn29jZQooFsXzLBZJb8jra4nwdX9AOeUIbrgVKF6l
-	Jtu5BNjMyZtt3ZkiCRzs0fKi9VIEst8uolBN/3EN9348GrQlY/4tW8dAcVpdtvsg73XIZDpmWQQvH
-	nrNKAbQYD8osV6n9XjLTjn/R0j/OQG37gvZITywTjMFkBn1OYEhipCQOayOyylIT1sa7rccIV3ImJ
-	hKmRFD3PcjtQoifpcd2VZ/JU2yyOHuE6jkuGVsj/CL2kJ5aPa+ZYuYIKFC7uaOtoV6oKB8w40Zcq2
-	r1l82/y4Q==;
+	 bh=In7pOsPcTpEvhTLcYK6TnTs+rhj00ibCZqoARDr1AEY=; b=O/qK0P++1V7YHhankDMMO4O8U
+	VyRT+Gu3qtzDk+Bhl74cfZHVoJEaxqtyz8UOXTXWjprHIBpcQeHMGCH6OArUrYWmIpo85IeDmG+DI
+	yOvQDd2xNEb1OzOPS4/s5k0nzKLMRqph+mjjAAS4QEfuyZVZKbPyF1B7hkC4rpVEwkvJc92cA1zFO
+	LhF33noU0NhPWrQ3acrTAOm9D+RLuSn2Qs3+0H9twOF0HdLR6cqrowx1get4dqaOKZBZauOG1gNgJ
+	xMVdW59bOTMu+sIlseImwwuWrQeZ2rKJc2up3nrVxTOSwGhg5vP2rGMxHgl4yG7BLfXr/bNqcX4NY
+	z2p+iQF+w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1keZqD-0007Pr-0c; Mon, 16 Nov 2020 08:26:25 +0000
-Received: from mail-qv1-xf4a.google.com ([2607:f8b0:4864:20::f4a])
+	id 1keZqH-0007RU-VE; Mon, 16 Nov 2020 08:26:30 +0000
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1keZq0-0007MG-1D
- for linux-mediatek@lists.infradead.org; Mon, 16 Nov 2020 08:26:14 +0000
-Received: by mail-qv1-xf4a.google.com with SMTP id dp12so4441614qvb.2
- for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 00:26:09 -0800 (PST)
+ id 1keZq4-0007NK-RD
+ for linux-mediatek@lists.infradead.org; Mon, 16 Nov 2020 08:26:18 +0000
+Received: by mail-yb1-xb4a.google.com with SMTP id k196so19551993ybf.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 00:26:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=FGK3po+1mabmofbsrOAmqgZTB285sISrAEMhHIPEXVY=;
- b=JsL/W1lTuj6I5ZApSjpS7ca/5BQyo4GmrFUADec+nmp2dPG5WZqt3B+a7DbQaVymYU
- x6f2oycz6c8JtN9wbjU7JRHN5+lvqWJAIiT97Q5+7aQVf/Io/EUh2rKdP/QJ9N8XWQaS
- 9gaGS9xBbiCluwBzhShkSc2E5FHOUW+cSc+46uw7R4MS5y94nQImZ2Ihb7HlwdcfFjgY
- L+SsuYC5oaTo4rUy5ZOGTDLTXH0rLMswsJHlMJrrSUkuvqVhGc+2xz75zROYAw52tcuA
- pz5sB6lq3VnDeAxlylx+pHesOCHROgprfGpQ9q7kY023QojLs4IjQ6879cCAY8Vn3Z3x
- C0zw==
+ :from:to:cc; bh=iRKdGUeQKewf5nuXxBX2agP7HYNBW301CirwCFhx4pU=;
+ b=QOBEhTLv6QVv/QjZqTP+H+yyG/6mzw35iNQXRNy1YtY/1cays5xvfiDfdKHvbTTDS+
+ 2YSyEvQ1HADSKiodkgTxOjX1QQDG/L/gJ5iA9Hz6adaEPpASQUu9DvqifQpNAgE0nU5T
+ PFlgzbIQ6XbOXWAe2kerZkJUBEkmpnLyQ/IFB7WXMy76lv+rK/fasC7cEZd6DmdebDpv
+ S9uV5tIvfjS1zglfg1qhhPaqBfBcIyqFWgO309RdbxgEAR6aj4e4GoSvWVjA7JrnV0Un
+ l8bNzLcVj+e56k+Eq1KzcueJlH62U0gTkqNjKyzsuqyyr4g2L8Ist6sX40HSJZh9IgFE
+ 7Tmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=FGK3po+1mabmofbsrOAmqgZTB285sISrAEMhHIPEXVY=;
- b=B6xy7yuvxZoqkJGXyzy+rV1/o1TV09dyhbV+lnaLY1E7vxJfnopcKoutbypp4oMO5C
- pxFiJRFZoazThPQSTefLDIW2O4D4zHYdQuI/QBai8OvEG3iHRrP2olqDXxOlCYXgmAzQ
- 9XrfwlwCVET9aOycIxuAC9eFVeEQDzU9jKKXY+aW4LdErAxRziuMzb14FtxLSOWVlQv+
- eMQunF0BRdUQs2AK/9sSHFUsoS5R5Y5PTX/RzOYY+oGFP3K0JCjHWbxP8U7zyZEQDHl5
- dNgBrLbFdS7Lr/5ISvh0PEE5CMGjNv8jNqrx0dYHXHOXkuCIQNJGU0eIci0/+Dd9l/Ct
- VR2g==
-X-Gm-Message-State: AOAM533zBT72Y2aJGiWPe9K88/cHR1QxYUsVOm7dUdE4TDdtCbZzqs5l
- 5TjyuYMnDOnNPz4TN6UQdK/JHHWGUQau
-X-Google-Smtp-Source: ABdhPJzDrTnHczzHtkZNBK/N7SQ6we1yTn8KBhiJm4PEqnZsFVM7m+93BhG3MptVNJqxfLnG0DfgmB+BOgq7
+ bh=iRKdGUeQKewf5nuXxBX2agP7HYNBW301CirwCFhx4pU=;
+ b=OOkdhRKJjXy4YDKGJlIH1d9ejOPbyeEc7vrwwRy9jiDW+7f4afdH3kjsOO6Bt0hVoE
+ 6gjBIzKFywQmP2sIka+wsQc1rNW+P5HD4ZRNqv/4fHm8Wn9jr5HXkGeqdVZYaTNN7OqJ
+ 5AR7uurAmZN+jnKNsjw91fTQ2Yx33K++M+gxWty8+oL8VttjZFrxOFVUCTn8w1ZyxmSM
+ 7bMQzPSnGkEkmuR6W4VRsV34hP58C0D0vpxrS/LdHWFsUsFTO/ekfm2xxhg/2L6LuzkU
+ Afjg+WOaDQM34ROR2qaTjg+V4aXjNic4Tskbqr0x30cd9nHPHNiW0qV+2j3LFED4ZPaW
+ Molg==
+X-Gm-Message-State: AOAM533x5BJLOxnoChNWo0SrbG8hJD9bL51AY16h4JpX69xdHtY+j5Rh
+ fGLun5CfMeLUKNjmA9hPvTiBnMSMgpka
+X-Google-Smtp-Source: ABdhPJw0N0XKpM+KTbbElpvFZIMiwftJ2h8EAOI91tZQq6qWMiAPMPFuFLr/2HlvN0EDQXvVSWUOTPNvIvX4
 X-Received: from tzungbi-z840.tpe.corp.google.com
  ([2401:fa00:1:b:725a:fff:fe41:c6a5])
- (user=tzungbi job=sendgmr) by 2002:ad4:54cd:: with SMTP id
- j13mr13656224qvx.8.1605515168633; Mon, 16 Nov 2020 00:26:08 -0800 (PST)
-Date: Mon, 16 Nov 2020 16:25:36 +0800
+ (user=tzungbi job=sendgmr) by 2002:a25:da0f:: with SMTP id
+ n15mr13910518ybf.481.1605515172335; Mon, 16 Nov 2020 00:26:12 -0800 (PST)
+Date: Mon, 16 Nov 2020 16:25:37 +0800
 In-Reply-To: <20201116082537.3287009-1-tzungbi@google.com>
-Message-Id: <20201116082537.3287009-2-tzungbi@google.com>
+Message-Id: <20201116082537.3287009-3-tzungbi@google.com>
 Mime-Version: 1.0
 References: <20201116082537.3287009-1-tzungbi@google.com>
 X-Mailer: git-send-email 2.29.2.299.gdc1121823c-goog
-Subject: [PATCH v2 1/2] remoteproc/mediatek: fix sparse errors on sram power
- on and off
+Subject: [PATCH v2 2/2] remoteproc/mediatek: fix sparse errors on dma_alloc
+ and dma_free
 From: Tzung-Bi Shih <tzungbi@google.com>
 To: ohad@wizery.com, bjorn.andersson@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_032612_122570_4ACEDF69 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20201116_032616_949768_0C6F1E22 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,56 +101,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fixes the following sparse errors on sram power on and off:
+Fixes the following sparse errors on dma_alloc_coherent() and
+dma_free_coherent().
 
-On drivers/remoteproc/mtk_scp.c:306:17:
-warning: incorrect type in argument 2 (different address spaces)
-   expected void volatile [noderef] __iomem *addr
-   got void *addr
+On drivers/remoteproc/mtk_scp.c:559:23:
+warning: incorrect type in assignment (different address spaces)
+   expected void [noderef] __iomem *cpu_addr
+   got void *
 
-On drivers/remoteproc/mtk_scp.c:307:9:
-warning: incorrect type in argument 2 (different address spaces)
-   expected void volatile [noderef] __iomem *addr
-   got void *addr
+On drivers/remoteproc/mtk_scp.c:572:56:
+warning: incorrect type in argument 3 (different address spaces)
+   expected void *cpu_addr
+   got void [noderef] __iomem *cpu_addr
 
-On drivers/remoteproc/mtk_scp.c:314:9:
-warning: incorrect type in argument 2 (different address spaces)
-   expected void volatile [noderef] __iomem *addr
-   got void *addr
-
-On drivers/remoteproc/mtk_scp.c:316:17:
-warning: incorrect type in argument 2 (different address spaces)
-   expected void volatile [noderef] __iomem *addr
-   got void *addr
+The cpu_addr is not a __iomem address.  Removes the marker.
 
 Reported-by: kernel test robot <lkp@intel.com>
 Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
 ---
- drivers/remoteproc/mtk_scp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/remoteproc/mtk_common.h | 2 +-
+ drivers/remoteproc/mtk_scp.c    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index 47b4561443a9..b3397d327786 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -99,7 +99,7 @@ struct mtk_scp {
+ 	bool ipi_id_ack[SCP_IPI_MAX];
+ 	wait_queue_head_t ack_wq;
+ 
+-	void __iomem *cpu_addr;
++	void *cpu_addr;
+ 	dma_addr_t dma_addr;
+ 	size_t dram_size;
+ 
 diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 577cbd5d421e..8ed89ea1eb78 100644
+index 8ed89ea1eb78..a1e23b5f19b9 100644
 --- a/drivers/remoteproc/mtk_scp.c
 +++ b/drivers/remoteproc/mtk_scp.c
-@@ -298,7 +298,7 @@ static int mt8183_scp_before_load(struct mtk_scp *scp)
- 	return 0;
- }
+@@ -413,7 +413,7 @@ static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len)
+ 	} else if (scp->dram_size) {
+ 		offset = da - scp->dma_addr;
+ 		if (offset >= 0 && (offset + len) < scp->dram_size)
+-			return (void __force *)scp->cpu_addr + offset;
++			return scp->cpu_addr + offset;
+ 	}
  
--static void mt8192_power_on_sram(void *addr)
-+static void mt8192_power_on_sram(void __iomem *addr)
- {
- 	int i;
- 
-@@ -307,7 +307,7 @@ static void mt8192_power_on_sram(void *addr)
- 	writel(0, addr);
- }
- 
--static void mt8192_power_off_sram(void *addr)
-+static void mt8192_power_off_sram(void __iomem *addr)
- {
- 	int i;
- 
+ 	return NULL;
 -- 
 2.29.2.299.gdc1121823c-goog
 
