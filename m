@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 297D8C63697
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A715C4742C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 86E942067C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7EE06205ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2020 07:01:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cNvaK09c";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NCsKcMtA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 86E942067C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F6GPcl5u";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dcymQY1Y"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EE06205ED
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=l0rsvIyzIP8MKepvgEMI/9sIxpVTCGOSbU6WkJY9JKs=; b=cNvaK09cwkV+BL0H8F+2+t/Ds
-	3P3qeBl65NNlT8uEHhN/NBKhCem1xkQynkVrZAP6nElfyDwhOHKeFER2ela0j/NAKcQkke082RKZ3
-	Tj/x1pNmxcSe0UhdyLHOI4nFWRNntmont+JU5/wt4a91dkXZ1sEVOmtcjrJ54FLhI2A66TPxjPfEI
-	HZB4OtoEOXhKzBTb0KLSOOhCpkucDi0VUxtnZ7BRgA79uB+ZTdIk03fUvZFtJckTiRWCGSP0NSGaX
-	hWo1KG2ZQUwmZ+vl/ijp0rV+0JdnxJ+JrkN+X85JFC+XBxwowre0L6xyge2Eodu4iXXyIf/UWDdDg
-	CPYCXZ14g==;
+	 bh=RjSftKblT6qru4BZLzx5jKw7R2EjVYe2GyDsmY8ULsw=; b=F6GPcl5uRb2Z7XnsC1rtE2baz
+	RB/nlAzFBYEK5nOF9GyxXxMSQ10BC9y1+2XXQbrpIyUfmlppHVd2JYkmPSsKaP1Ov1ToumJe7qMR0
+	GLO6TcqT+PfJHpXUywpUIvzi8ku5kHnezSo/7HSdsVzTQ4FSekwJrR03xMhIUCp67nzWLiTsqq3qG
+	BP87jmHcIek2p61J9S22tyWMW3XbbzfYItCJH4EMo40UEVumdW5kM1063vn7AwIMNOKoWwqwUC+gH
+	ZDewbRJjta7qRQCeNqAFe9KpxrbvOnXJzNhyXG+yaJZt57kPKSolJgawu/1R8h8XNBHZ/c+B2rviK
+	5J0AusJrQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1keYVz-000659-5Y; Mon, 16 Nov 2020 07:01:27 +0000
+	id 1keYVt-000634-0p; Mon, 16 Nov 2020 07:01:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1keYVg-0005ww-Qn; Mon, 16 Nov 2020 07:01:10 +0000
-X-UUID: c42300ea3cfd4aa7b77b146f9d7aec60-20201115
+ id 1keYVe-0005wd-Cj; Mon, 16 Nov 2020 07:01:08 +0000
+X-UUID: e570a9b1cd72401a9b8a67376a758dc5-20201115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=4IeDmzj71Xpj7H/oflO+5sbTswLwDEPGwwVMggQWihY=; 
- b=NCsKcMtABSLp6/TsB7h8CO1BvjuRQH4kYD7E9q5noiJ0L/+fb7GxlvZVWL9ONux1A0MqeeQLDA6oBFWoxTFDt2gwS8XkjcHp1Xg/uyk8o0YN+yJuxU5B9P+IrerteNvlah7RgrdSEdARmvwrdvTbBnqkhRtTZbPmqFTIVL2zAb0=;
-X-UUID: c42300ea3cfd4aa7b77b146f9d7aec60-20201115
+ bh=12sWmcr47VMxInYTaXFnfJ9he4NVxl9BMogcTGHlvps=; 
+ b=dcymQY1Ys2eJQYOhHUF9iHR5732krzRXsW6F0OrZZwco49/34GG2vM1C7Q4xCeidB7NuOtlSVUjlhu/iBIwN6RBsNRF7qcNAEXFP0ChE3xis0IZcl3qBoJsmq/HvJIDx7+K2v3t8gJBk0am5JbzdPcvh5ZcfAajejQ1LGNQYJzg=;
+X-UUID: e570a9b1cd72401a9b8a67376a758dc5-20201115
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 889664186; Sun, 15 Nov 2020 23:00:59 -0800
+ with ESMTP id 1916960853; Sun, 15 Nov 2020 23:01:00 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 15 Nov 2020 22:50:57 -0800
+ 15.0.1497.2; Sun, 15 Nov 2020 22:50:58 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Nov 2020 14:50:55 +0800
+ 15.0.1497.2; Mon, 16 Nov 2020 14:50:56 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 16 Nov 2020 14:50:55 +0800
+ Frontend Transport; Mon, 16 Nov 2020 14:50:56 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 1/9] scsi: ufs-mediatek: Refactor performance scaling
- functions
-Date: Mon, 16 Nov 2020 14:50:46 +0800
-Message-ID: <20201116065054.7658-2-stanley.chu@mediatek.com>
+Subject: [PATCH v1 8/9] scsi: ufs-mediatek: Use common ADAPT configuration
+ function
+Date: Mon, 16 Nov 2020 14:50:53 +0800
+Message-ID: <20201116065054.7658-9-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201116065054.7658-1-stanley.chu@mediatek.com>
 References: <20201116065054.7658-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 7BA158C2F014F9EBECDA729273DE98A4D70B8A66006E120B5A876D526A8E02762000:8
+X-TM-SNTS-SMTP: 586618FD9FC2E94551F1713EFAAF3BF557FB27D60D232CE7923BD1AADFE1CDAF2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_020109_132104_BA91197C 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20201116_020107_217440_8D0CAC36 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,54 +97,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Refactor preformance scaling related functions in MediaTek
-UFS driver.
+Use common ADAPT configuration function to reduce duplicated
+code in UFS drivers.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ drivers/scsi/ufs/ufs-mediatek.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 7fed7630d36c..b9b423752ee1 100644
+index 87b4bf125e23..1d3c5cd4592e 100644
 --- a/drivers/scsi/ufs/ufs-mediatek.c
 +++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -514,6 +514,19 @@ static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
- 	dev_info(hba->dev, "caps: 0x%x", host->caps);
- }
+@@ -677,7 +677,6 @@ static int ufs_mtk_pre_pwr_change(struct ufs_hba *hba,
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 	struct ufs_dev_params host_cap;
+-	u32 adapt_val;
+ 	int ret;
  
-+static void ufs_mtk_scale_perf(struct ufs_hba *hba, bool up)
-+{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+
-+	ufs_mtk_boost_crypt(hba, up);
-+	ufs_mtk_setup_ref_clk(hba, up);
-+
-+	if (up)
-+		phy_power_on(host->mphy);
-+	else
-+		phy_power_off(host->mphy);
-+}
-+
- /**
-  * ufs_mtk_setup_clocks - enables/disable clocks
-  * @hba: host controller instance
-@@ -555,15 +568,10 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
- 				clk_pwr_off = true;
- 		}
+ 	ufshcd_init_pwr_dev_param(&host_cap);
+@@ -693,13 +692,9 @@ static int ufs_mtk_pre_pwr_change(struct ufs_hba *hba,
+ 	}
  
--		if (clk_pwr_off) {
--			ufs_mtk_boost_crypt(hba, on);
--			ufs_mtk_setup_ref_clk(hba, on);
--			phy_power_off(host->mphy);
--		}
-+		if (clk_pwr_off)
-+			ufs_mtk_scale_perf(hba, false);
- 	} else if (on && status == POST_CHANGE) {
--		phy_power_on(host->mphy);
--		ufs_mtk_setup_ref_clk(hba, on);
--		ufs_mtk_boost_crypt(hba, on);
-+		ufs_mtk_scale_perf(hba, true);
+ 	if (host->hw_ver.major >= 3) {
+-		if (dev_req_params->gear_tx == UFS_HS_G4)
+-			adapt_val = PA_INITIAL_ADAPT;
+-		else
+-			adapt_val = PA_NO_ADAPT;
+-		ufshcd_dme_set(hba,
+-			       UIC_ARG_MIB(PA_TXHSADAPTTYPE),
+-			       adapt_val);
++		ret = ufshcd_dme_configure_adapt(hba,
++					   dev_req_params->gear_tx,
++					   PA_INITIAL_ADAPT);
  	}
  
  	return ret;
