@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3333C5519F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 13:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 246B5C5519F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 13:02:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1F6922151B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 13:00:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 93D812065D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 13:02:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tPKVuUmN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="YUE1kVOo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F6922151B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xRWK/cf/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="jylpcKqV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93D812065D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,47 +26,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9XotQWdF2E4DZeFaBqwkHHhPgDtP1YW6WJTPfpIzzyg=; b=tPKVuUmNvhMSx9Jze6PRE7u2C
-	DxVtNCO2itWdHSGfYpkDkuxBkSLcpakQQGbUNFXMfWjtgZkWPQExWWdo9J7febMsYw6NGw0yPK8fl
-	AT7H+oDqx8cttCgXRBivOGdE2XtHksiG0dSs8Qkeok9wJ4H08QDEB9KJS2UxvjIGXuSNY7BXPqK+r
-	G34mwoe14LpGf+c5tuvvFkuRwObx/mJT3stSezzHYVUjrivluDPM4ufzIiYsxhEKeG99qImtqrYcD
-	o+5J/BUxyzrBqCfQFKfyL8FoVfPjDNUD5ENcJewZ7Qdtcx14LCQGFYM7WVtEFHqj5dN+Ph9iXc+Gh
-	HWGqXvilQ==;
+	 bh=OTcE5oG5P4Z0LWr9Mx1/lQ/pg1hfZtn9U0Gv71al+9E=; b=xRWK/cf/wI1SGiuZ6Joeg+6OP
+	oQT/ztLjbBLfupMXYBq8Ri5q+6fTpBSrwKyOrTEB3PsFc+AOSpSKudt/OWfsS3RhciyDvGVDw/nlJ
+	xRbXftBDJR15vuboq3znHoIG9SvaxF43bzBwlfOEe/QlICI9AtUdr5lHLyhxNKdhi8RPCoQEBs2yR
+	1DKytfPisxsikAOh4uPsr+917J1dl04fsWkEUL9dLOD8R1If2YwxcWCP2qdC1OcLgVaj1V6/Hdh1L
+	eEeJ0DWz4FiN7rx8Pc43m/7LpqbbfJ037jRxncNId4YSH6xoCWs+l4xPSpoy90d1/SdVir0zP+Lwy
+	mlCzYjwow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kf0b3-0002XO-Ks; Tue, 17 Nov 2020 13:00:34 +0000
+	id 1kf0cc-0003Sc-TC; Tue, 17 Nov 2020 13:02:11 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kf0Y6-00017b-Cc; Tue, 17 Nov 2020 12:57:39 +0000
+ id 1kf0YP-0001Ft-Gs; Tue, 17 Nov 2020 12:58:02 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5CC2D2225E;
- Tue, 17 Nov 2020 12:57:28 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 370BC2464E;
+ Tue, 17 Nov 2020 12:57:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605617849;
- bh=rZhCcoxyzUhsV6+Tfjb0wBJ4sLCM3axaR3A755iBjDg=;
+ s=default; t=1605617867;
+ bh=/MUdipLcb4JkvDppPS27UAP/oB9I9J9uiNiR54nSO1g=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=YUE1kVOo6VipaWSHkAYE60ksbIsgSjrADNGIRrmqIkAAS48oxrcgWHCQ2iDMF5nVo
- O0J8TZotu+732GBByDXWELm8ePqN1dgzLFd5qY8eFs1P5ZHUmn5ybuAuXg5TizHKWR
- /cTtQEP3iMb5x8xK4ks3zo1cW7T4xmdmur6f2HFw=
+ b=jylpcKqVW8hCDlNBLEKHqzy4fCLj0xMN0eJpwOXUzR+abXIhUiHlztSivdwvtF1C4
+ 9zobbYxRTq8Tp31tZAeO/abolv6l1QqH00Icf2hAPNGgGWSxgJ1VmHddV63WoGgCtR
+ SCz22s6E1dc0Ehe5/815A1jVtKqfAQvgjoMcrSDM=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 02/11] scsi: ufs: Fix unbalanced
+Subject: [PATCH AUTOSEL 4.19 2/6] scsi: ufs: Fix unbalanced
  scsi_block_reqs_cnt caused by ufshcd_hold()
-Date: Tue, 17 Nov 2020 07:57:16 -0500
-Message-Id: <20201117125725.599833-2-sashal@kernel.org>
+Date: Tue, 17 Nov 2020 07:57:39 -0500
+Message-Id: <20201117125743.599974-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201117125725.599833-1-sashal@kernel.org>
-References: <20201117125725.599833-1-sashal@kernel.org>
+In-Reply-To: <20201117125743.599974-1-sashal@kernel.org>
+References: <20201117125743.599974-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201117_075730_852391_04443A56 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20201117_075749_859369_FDF0CE3C 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,12 +112,12 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index d538b3d4f74a5..0772327f87d93 100644
+index b2cbdd01ab10b..a63119c35fde8 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1569,12 +1569,12 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
+@@ -1592,12 +1592,12 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
+ 		 * work and to enable clocks.
  		 */
- 		/* fallthrough */
  	case CLKS_OFF:
 -		ufshcd_scsi_block_requests(hba);
  		hba->clk_gating.state = REQ_CLKS_ON;
