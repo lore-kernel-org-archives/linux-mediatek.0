@@ -2,23 +2,23 @@ Return-Path: <SRS0=M313=EX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8ADBC2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 07:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 88124C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 07:34:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 60325221EB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 07:13:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 06E42221FD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 07:34:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S8Cr5dOh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="ZMRHKDiu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60325221EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="18+0el4B";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="FkJC1Qkz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 06E42221FD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,62 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=a1qubIyE/mtompjB8HZn0ex2y7jT6XR24zEDmPdg+ng=; b=S8Cr5dOhBvXtFNrxCUgNelfB3
-	ZIlukEPYijDLgfaqQKO0ML+ub1VnhLo0E2NGbYi+0S0f+57Kni/nKwAEpdSEKtdtoLT9m9ZO2qkcb
-	sTir/pCrf8s/CiKrSkU2JNBVzVTvB+vi6Lzyr8P38mS6hglNv9tqZXGKrtGZmKQ0M6iKMpL3G2pdq
-	Wha8aEQlXL8GsMizhRGDe9quktBCvVt6hi60+x0/bBaIwnvGNECUeQ64JqokM2qbcrOug9KbuucyK
-	by1MFy6gtHhGJrIgFmqw0sF+WmmYsNfliMPQ2gwkgp9UgMl9R+hUFBwxTsvdkvuTmP2oo2WjGRNpn
-	Rjqa5Yj8Q==;
+	 bh=ANW+ss4XN0FEMc0N5CZInwRp9wgqe/QTCiHqX8JkALQ=; b=18+0el4BKSGE75GltyAZvnjb+
+	qqnInJ2kdwQFxYNhJY8n/WTdFyrCuouJ6ow3kr864YqRVX5BVy8dDqPTS+G+EfJ2KkdPUJ8FAKWDr
+	4U3pp2r+rGrg28NRqsH4i2CTv+2T57iaOB1K4zXrGFMm7PzKfsCm09P6+TZQ8Wx5bjrKIjbu7T0VA
+	zskL8dlTZYX6DA7NquClTskeI2lLnp5zIcxHeQuNasYU01vxE0Y2kAWpa31F2DvamvM04EDowz2tr
+	NtG+Xk/CV/oiEjhZqfDYoyQLG3JonEJkncB5RIK34k0dczd2TMcFTD2VU30iiv1EhLgef+FlmqX4k
+	ab2o7iXdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kevBJ-0001j4-F4; Tue, 17 Nov 2020 07:13:37 +0000
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
+	id 1kevVS-0003Ps-Co; Tue, 17 Nov 2020 07:34:26 +0000
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kevBF-0001he-Ud
- for linux-mediatek@lists.infradead.org; Tue, 17 Nov 2020 07:13:35 +0000
-Received: by mail-qk1-x743.google.com with SMTP id v143so19575966qkb.2
- for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 23:13:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ id 1kevVO-0003Op-Ln
+ for linux-mediatek@lists.infradead.org; Tue, 17 Nov 2020 07:34:23 +0000
+Received: by mail-il1-x144.google.com with SMTP id q1so17684387ilt.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2020 23:34:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Zr5Zwdnm9g0v0RoWFdb/Hft1niHdwCm4sqYnYTlZRA0=;
- b=ZMRHKDiuXueL/8jyVbzGk+0iT/AIEbWL6GWC5QTrV2A7rPKuoGLaXxRitj9EC9IwtR
- cNewNcdIAov9nYZIGyeib8EoNwIycq4gAuAZUe/et3xvlchA894HLfcpuAlF4K37bFDW
- UmiOUVH7m9ZY2SibIh/bUyIHJ/h3GMLtL582Xm4j3rRXBzgMnokEcmHDGiYYGjm7AI4B
- fPBuJPoMTMV4cuUNMmjIipkwnR0XkWrYEtqJN3zrgWf3wxoPeb2c+EZ9hbeX69w5WX+1
- Azx3WAjuRl+XU7wXFatycydI7NbLFCfBodLwj6LJNJQkLzXW2KnAwaydlzhYxkB6IqiC
- L7Ig==
+ :cc; bh=6HDQ36IQmVwckUFR1jBquv3GATc8YP+i067nuhtqXMU=;
+ b=FkJC1QkzBGq1xiw3ZYZUvrgU3D/qhzlZFl95blKrpdFb0mMjRtHTGcsKULzeSqxcLD
+ TcJtuOPAQKUv0SRgMRAb2Z390dosWlnmIoZX2RRjoNzGmW3ofFHJCaJ9FOP1FI+nBpb+
+ 9dJ7L2uxkDZN8uJKmzLsnnFBlw4TCwwcwwkmk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Zr5Zwdnm9g0v0RoWFdb/Hft1niHdwCm4sqYnYTlZRA0=;
- b=q+CMhYrppVkh7XkDGNxpz9me9XlAMctdRuKb63SzCReIN2NHAS54RbGDD+P9NHxB5h
- qU8KlOqBQ3tTG7SuckVHV6PUHjEMUbB0hMc4NY2ZkvAsmEbpLiSOmDhMSdvQNXy3L6uF
- /LQPFpuLnr86bt9snu7q7Rt3uo790Rp7z6acYe3MdIJrsxXIfZ+EH9W4BrH9vs+jE7E9
- 96AF11g2DLcAImDIk7DANyIMB+0qxJLut6V4ehn2MyfBFq3Bj7R+SbQgT2YE2kHTidct
- FvF5LIS5UhRNL/KVuRzYwNxqsGp1JUSQ9G9zcz2ijEA5SddVFBhj3Xq/tUSDWUQDR5ME
- GJTg==
-X-Gm-Message-State: AOAM530eyduiP75pLe3LQy80fAA0knQqWHdNkSfQ8BYhHS5oykq9oVk0
- yBN214rOAJz/U7Ubm7Ux9ipx+7Y7isy7DKqItCwR8g==
-X-Google-Smtp-Source: ABdhPJw8b30PxRuXNHPWCgSoAq0sYHVucwIBErjKYF4ve78qZaiDmTiLrDDHpTCjOXqRjFaoxGsq8HIpFSxFRy2RTCM=
-X-Received: by 2002:a05:620a:15ce:: with SMTP id
- o14mr19106447qkm.231.1605597212067; 
- Mon, 16 Nov 2020 23:13:32 -0800 (PST)
+ bh=6HDQ36IQmVwckUFR1jBquv3GATc8YP+i067nuhtqXMU=;
+ b=IVQIQspl2bwLUxY91X2vVCq3nhLDYGthaIhSYy10uLC1vr6He9CNu1SJDubWxzMKvO
+ dB/e+LFUKPUB6hUfLd5+S8w91YVCSj38pxWG5ucqEctiJ9j77cc/P5wmhZ/xAuD0LLNh
+ LLexNnAJkT3U/FnZP3ZM1GucnV9ND1HWqmdJprRcMqy+2JOerrrxs95vzy3oUYOwdt9O
+ 4cCUY/aeTFOw3HO+LrzrznXnomF/HRIJpE1ZEc3riH1qL7DKH406Kj04XLwMlu/cySDZ
+ J0+RzBHp2DN+br5a933/GyLFIvrQABxibK5HONggmeDfagQaMXbwoWXEbjDaFiv61TVt
+ 0jkw==
+X-Gm-Message-State: AOAM532PhK6GsQmlpeuINxBYrizbKrqXIdj9fXDWBh9S20pw4ZcC4Rk/
+ cHOEsQXAzJ2+aNFwrcNiOSCeglkexZpkbsIacuJCfQ==
+X-Google-Smtp-Source: ABdhPJyhldjhwb1mLZC438M7LVHuxra/t1HCNICdkNriJ7L2AIbB4FEpFKlINz1Bn9qS+8p5dsClFMJU1CAg1+wejAE=
+X-Received: by 2002:a92:dd87:: with SMTP id g7mr12363454iln.102.1605598458861; 
+ Mon, 16 Nov 2020 23:34:18 -0800 (PST)
 MIME-Version: 1.0
-References: <1605508168-7418-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
- <1605508168-7418-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
- <CACT4Y+Zy_JQ3y7_P2NXffiijTuxcnh7VPcAGL66Ks2LaLTj-eg@mail.gmail.com>
- <1605595583.29084.24.camel@mtksdccf07>
-In-Reply-To: <1605595583.29084.24.camel@mtksdccf07>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Tue, 17 Nov 2020 08:13:20 +0100
-Message-ID: <CACT4Y+ZpK5YKLrN_jvaD60YFKQ-kVHc=91NTBzhX5PZRTHVd7g@mail.gmail.com>
-Subject: Re: [PATCH v2 1/1] kasan: fix object remain in offline per-cpu
- quarantine
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+References: <1596855231-5782-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1596855231-5782-5-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1596855231-5782-5-git-send-email-yongqiang.niu@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Tue, 17 Nov 2020 15:33:53 +0800
+Message-ID: <CAJMQK-hAhu00a4X3SWZVFJLodDqAdTMZi4TmZPFJN=O6VM=DCQ@mail.gmail.com>
+Subject: Re: [RESEND v7, PATCH 4/7] mtk-mmsys: add mt8183 mmsys support
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201117_021334_097793_4B46686F 
-X-CRM114-Status: GOOD (  32.65  )
+X-CRM114-CacheID: sfid-20201117_023422_795509_067FA833 
+X-CRM114-Status: GOOD (  22.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,197 +86,215 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Miles Chen <miles.chen@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org,
- LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
- Linux-MM <linux-mm@kvack.org>, nicholas.tang@mediatek.com,
- Alexander Potapenko <glider@google.com>, guangye.yang@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 17, 2020 at 7:46 AM Kuan-Ying Lee
-<Kuan-Ying.Lee@mediatek.com> wrote:
+On Sat, Aug 8, 2020 at 2:53 AM Yongqiang Niu <yongqiang.niu@mediatek.com> wrote:
 >
-> On Mon, 2020-11-16 at 10:26 +0100, Dmitry Vyukov wrote:
-> > On Mon, Nov 16, 2020 at 7:30 AM Kuan-Ying Lee
-> > <Kuan-Ying.Lee@mediatek.com> wrote:
-> > >
-> > > We hit this issue in our internal test.
-> > > When enabling generic kasan, a kfree()'d object is put into per-cpu
-> > > quarantine first. If the cpu goes offline, object still remains in
-> > > the per-cpu quarantine. If we call kmem_cache_destroy() now, slub
-> > > will report "Objects remaining" error.
-> > >
-> > > [   74.982625] =============================================================================
-> > > [   74.983380] BUG test_module_slab (Not tainted): Objects remaining in test_module_slab on __kmem_cache_shutdown()
-> > > [   74.984145] -----------------------------------------------------------------------------
-> > > [   74.984145]
-> > > [   74.984883] Disabling lock debugging due to kernel taint
-> > > [   74.985561] INFO: Slab 0x(____ptrval____) objects=34 used=1 fp=0x(____ptrval____) flags=0x2ffff00000010200
-> > > [   74.986638] CPU: 3 PID: 176 Comm: cat Tainted: G    B             5.10.0-rc1-00007-g4525c8781ec0-dirty #10
-> > > [   74.987262] Hardware name: linux,dummy-virt (DT)
-> > > [   74.987606] Call trace:
-> > > [   74.987924]  dump_backtrace+0x0/0x2b0
-> > > [   74.988296]  show_stack+0x18/0x68
-> > > [   74.988698]  dump_stack+0xfc/0x168
-> > > [   74.989030]  slab_err+0xac/0xd4
-> > > [   74.989346]  __kmem_cache_shutdown+0x1e4/0x3c8
-> > > [   74.989779]  kmem_cache_destroy+0x68/0x130
-> > > [   74.990176]  test_version_show+0x84/0xf0
-> > > [   74.990679]  module_attr_show+0x40/0x60
-> > > [   74.991218]  sysfs_kf_seq_show+0x128/0x1c0
-> > > [   74.991656]  kernfs_seq_show+0xa0/0xb8
-> > > [   74.992059]  seq_read+0x1f0/0x7e8
-> > > [   74.992415]  kernfs_fop_read+0x70/0x338
-> > > [   74.993051]  vfs_read+0xe4/0x250
-> > > [   74.993498]  ksys_read+0xc8/0x180
-> > > [   74.993825]  __arm64_sys_read+0x44/0x58
-> > > [   74.994203]  el0_svc_common.constprop.0+0xac/0x228
-> > > [   74.994708]  do_el0_svc+0x38/0xa0
-> > > [   74.995088]  el0_sync_handler+0x170/0x178
-> > > [   74.995497]  el0_sync+0x174/0x180
-> > > [   74.996050] INFO: Object 0x(____ptrval____) @offset=15848
-> > > [   74.996752] INFO: Allocated in test_version_show+0x98/0xf0 age=8188 cpu=6 pid=172
-> > > [   75.000802]  stack_trace_save+0x9c/0xd0
-> > > [   75.002420]  set_track+0x64/0xf0
-> > > [   75.002770]  alloc_debug_processing+0x104/0x1a0
-> > > [   75.003171]  ___slab_alloc+0x628/0x648
-> > > [   75.004213]  __slab_alloc.isra.0+0x2c/0x58
-> > > [   75.004757]  kmem_cache_alloc+0x560/0x588
-> > > [   75.005376]  test_version_show+0x98/0xf0
-> > > [   75.005756]  module_attr_show+0x40/0x60
-> > > [   75.007035]  sysfs_kf_seq_show+0x128/0x1c0
-> > > [   75.007433]  kernfs_seq_show+0xa0/0xb8
-> > > [   75.007800]  seq_read+0x1f0/0x7e8
-> > > [   75.008128]  kernfs_fop_read+0x70/0x338
-> > > [   75.008507]  vfs_read+0xe4/0x250
-> > > [   75.008990]  ksys_read+0xc8/0x180
-> > > [   75.009462]  __arm64_sys_read+0x44/0x58
-> > > [   75.010085]  el0_svc_common.constprop.0+0xac/0x228
-> > > [   75.011006] kmem_cache_destroy test_module_slab: Slab cache still has objects
-> > >
-> > > Register a cpu hotplug function to remove all objects in the offline
-> > > per-cpu quarantine when cpu is going offline. Set a per-cpu variable
-> > > to indicate this cpu is offline.
-> > >
-> > > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> > > Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> > > Reported-by: Guangye Yang <guangye.yang@mediatek.com>
-> > > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> > > Cc: Alexander Potapenko <glider@google.com>
-> > > Cc: Andrew Morton <akpm@linux-foundation.org>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > ---
-> > >  mm/kasan/quarantine.c | 35 +++++++++++++++++++++++++++++++++++
-> > >  1 file changed, 35 insertions(+)
-> > >
-> > > diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
-> > > index 4c5375810449..16e618ea805e 100644
-> > > --- a/mm/kasan/quarantine.c
-> > > +++ b/mm/kasan/quarantine.c
-> > > @@ -29,6 +29,7 @@
-> > >  #include <linux/srcu.h>
-> > >  #include <linux/string.h>
-> > >  #include <linux/types.h>
-> > > +#include <linux/cpuhotplug.h>
-> > >
-> > >  #include "../slab.h"
-> > >  #include "kasan.h"
-> > > @@ -43,6 +44,7 @@ struct qlist_head {
-> > >         struct qlist_node *head;
-> > >         struct qlist_node *tail;
-> > >         size_t bytes;
-> > > +       bool offline;
-> > >  };
-> > >
-> > >  #define QLIST_INIT { NULL, NULL, 0 }
-> > > @@ -188,6 +190,11 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
-> > >         local_irq_save(flags);
-> > >
-> > >         q = this_cpu_ptr(&cpu_quarantine);
-> > > +       if (q->offline) {
-> > > +               qlink_free(&info->quarantine_link, cache);
-> > > +               local_irq_restore(flags);
-> > > +               return;
-> > > +       }
+> add mt8183 mmsys support
 >
-> I think we need to make sure objects will not be put in per-cpu
-> quarantine which is offline.
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mmsys/Makefile       |   1 +
+>  drivers/soc/mediatek/mmsys/mt8183-mmsys.c | 154 ++++++++++++++++++++++++++++++
+>  drivers/soc/mediatek/mtk-mmsys.c          |   1 +
+>  3 files changed, 156 insertions(+)
+>  create mode 100644 drivers/soc/mediatek/mmsys/mt8183-mmsys.c
 >
-> > >         qlist_put(q, &info->quarantine_link, cache->size);
-> > >         if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
-> > >                 qlist_move_all(q, &temp);
-> > > @@ -328,3 +335,31 @@ void quarantine_remove_cache(struct kmem_cache *cache)
-> > >
-> > >         synchronize_srcu(&remove_cache_srcu);
-> > >  }
-> > > +
-> > > +static int kasan_cpu_online(unsigned int cpu)
-> > > +{
-> > > +       this_cpu_ptr(&cpu_quarantine)->offline = false;
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int kasan_cpu_offline(unsigned int cpu)
-> > > +{
-> > > +       struct qlist_head *q;
-> > > +
-> > > +       q = this_cpu_ptr(&cpu_quarantine);
-> > > +       q->offline = true;
-> > > +       qlist_free_all(q, NULL);
-> >
-> > Looks much nicer now!
-> >
-> > What is the story with interrupts in these callbacks?
-> > In the previous patch you mentioned that this CPU can still receive
-> > interrupts for a brief period of time. If these interrupts also free
-> > something, can't we corrupt the per-cpu quarantine? In quarantine_put
-> > we protect it by disabling interrupts I think.
-> >
->
-> Here is a situation.
-> After we freed all objects from the per-cpu quarantine which is going
-> offline, the interrupts happened. These interrupts free something and
-> put objects into this per-cpu quarantine. If we call
-> kmem_cache_destroy() now, slub still detect objects remain in
-> the per-cpu quarantine and report "Object remaining" error.
->
-> Thus, we need to check q->offline in quarantine_put and make sure
-> the offline per-cpu quarantine is not corrupted.
+> diff --git a/drivers/soc/mediatek/mmsys/Makefile b/drivers/soc/mediatek/mmsys/Makefile
+> index 33b0dab..62cfedf 100644
+> --- a/drivers/soc/mediatek/mmsys/Makefile
+> +++ b/drivers/soc/mediatek/mmsys/Makefile
+> @@ -1,2 +1,3 @@
+>  # SPDX-License-Identifier: GPL-2.0-only
+>  obj-y += mt2701-mmsys.o
+> +obj-y += mt8183-mmsys.o
+> diff --git a/drivers/soc/mediatek/mmsys/mt8183-mmsys.c b/drivers/soc/mediatek/mmsys/mt8183-mmsys.c
+> new file mode 100644
+> index 0000000..e5170b5
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/mmsys/mt8183-mmsys.c
+> @@ -0,0 +1,154 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2020 MediaTek Inc.
+> +
+> +#include <linux/device.h>
+> +#include <linux/io.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/soc/mediatek/mtk-mmsys.h>
+> +
+> +#define DISP_OVL0_MOUT_EN              0xf00
+> +#define DISP_OVL0_2L_MOUT_EN           0xf04
+> +#define DISP_OVL1_2L_MOUT_EN           0xf08
+> +#define DISP_DITHER0_MOUT_EN           0xf0c
+> +#define DISP_PATH0_SEL_IN              0xf24
+> +#define DISP_DSI0_SEL_IN               0xf2c
+> +#define DISP_DPI0_SEL_IN               0xf30
+> +#define DISP_RDMA0_SOUT_SEL_IN         0xf50
+> +#define DISP_RDMA1_SOUT_SEL_IN         0xf54
+> +
+> +#define OVL0_MOUT_EN_OVL0_2L                   BIT(4)
+> +#define OVL0_2L_MOUT_EN_DISP_PATH0             BIT(0)
+> +#define OVL1_2L_MOUT_EN_RDMA1                  BIT(4)
+> +#define DITHER0_MOUT_IN_DSI0                   BIT(0)
+> +#define DISP_PATH0_SEL_IN_OVL0_2L              0x1
+> +#define DSI0_SEL_IN_RDMA0                      0x1
+> +#define DSI0_SEL_IN_RDMA1                      0x3
+> +#define DPI0_SEL_IN_RDMA0                      0x1
+> +#define DPI0_SEL_IN_RDMA1                      0x2
+> +#define RDMA0_SOUT_COLOR0                      0x1
+> +#define RDMA1_SOUT_DSI0                                0x1
+> +
+> +struct mmsys_path_sel {
+> +       enum mtk_ddp_comp_id cur;
+> +       enum mtk_ddp_comp_id next;
+> +       u32 addr;
+> +       u32 val;
+> +};
+> +
+> +static struct mmsys_path_sel mmsys_mout_en[] = {
+> +       {
+> +               DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
+> +               DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_OVL0_2L,
+> +       },
+> +       {
+> +               DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
+> +               DISP_OVL0_2L_MOUT_EN, OVL0_2L_MOUT_EN_DISP_PATH0,
+> +       },
+> +       {
+> +               DDP_COMPONENT_OVL_2L1, DDP_COMPONENT_RDMA1,
+> +               DISP_OVL1_2L_MOUT_EN, OVL1_2L_MOUT_EN_RDMA1,
+> +       },
+> +       {
+> +               DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
+> +               DISP_DITHER0_MOUT_EN, DITHER0_MOUT_IN_DSI0,
+> +       },
+> +};
+> +
+> +static struct mmsys_path_sel mmsys_sel_in[] = {
+> +       {
+> +               DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
+> +               DISP_PATH0_SEL_IN, DISP_PATH0_SEL_IN_OVL0_2L,
+> +       },
+> +       {
+> +               DDP_COMPONENT_RDMA1, DDP_COMPONENT_DPI0,
+> +               DISP_DPI0_SEL_IN, DPI0_SEL_IN_RDMA1,
+> +       },
+> +};
+> +
+> +static struct mmsys_path_sel mmsys_sout_sel[] = {
+> +       {
+> +               DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
+> +               DISP_RDMA0_SOUT_SEL_IN, RDMA0_SOUT_COLOR0,
+> +       },
+> +};
+> +
+> +static unsigned int mtk_mmsys_ddp_mout_en(enum mtk_ddp_comp_id cur,
+> +                                         enum mtk_ddp_comp_id next,
+> +                                         unsigned int *addr)
+> +{
+> +       u32 i;
+> +       struct mmsys_path_sel *path;
+> +
+> +       for (i = 0; i < ARRAY_SIZE(mmsys_mout_en); i++) {
+> +               path = &mmsys_mout_en[i];
+> +               if (cur == path->cur && next == path->next) {
+> +                       *addr = path->addr;
+> +                       return path->val;
+> +               }
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+> +static unsigned int mtk_mmsys_ddp_sel_in(enum mtk_ddp_comp_id cur,
+> +                                        enum mtk_ddp_comp_id next,
+> +                                        unsigned int *addr)
+> +{
+> +       u32 i;
+> +       struct mmsys_path_sel *path;
+> +
+> +       for (i = 0; i < ARRAY_SIZE(mmsys_sel_in); i++) {
+> +               path = &mmsys_sel_in[i];
+> +               if (cur == path->cur && next == path->next) {
+> +                       *addr = path->addr;
+> +                       return path->val;
+> +               }
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+> +static void mtk_mmsys_ddp_sout_sel(void __iomem *config_regs,
+> +                                  enum mtk_ddp_comp_id cur,
+> +                                  enum mtk_ddp_comp_id next)
+> +{
+> +       u32 i;
+> +       u32 val = 0;
 
-If an interrupt can happen later, can't it happen right during our
-call to qlist_free_all and corrupt the per-cpu cache?
-Perhaps we need something like:
+This variable is unused.
 
-// ... explain the subtleness ...
-WRITE_ONCE(q->offline, true);
-barrier();
-qlist_free_all(q, NULL);
-
-?
-
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int __init kasan_cpu_offline_quarantine_init(void)
-> > > +{
-> > > +       int ret = 0;
-> > > +
-> > > +       ret = cpuhp_setup_state(CPUHP_AP_ONLINE_DYN, "mm/kasan:online",
-> > > +                               kasan_cpu_online, kasan_cpu_offline);
-> > > +       if (ret < 0)
-> > > +               pr_err("kasan offline cpu quarantine register failed [%d]\n", ret);
-> > > +       return ret;
-> > > +}
-> > > +late_initcall(kasan_cpu_offline_quarantine_init);
-> > > --
-> > > 2.18.0
+> +       u32 addr = 0;
+> +       struct mmsys_path_sel *path;
+> +
+> +       for (i = 0; i < ARRAY_SIZE(mmsys_sout_sel); i++) {
+> +               path = &mmsys_sout_sel[i];
+> +               if (cur == path->cur && next == path->next) {
+> +                       addr = path->addr;
+> +                       writel_relaxed(path->val, config_regs + addr);
+> +                       return;
+> +               }
+> +       }
+> +}
+> +
+> +static struct mtk_mmsys_conn_funcs mmsys_funcs = {
+> +       .mout_en = mtk_mmsys_ddp_mout_en,
+> +       .sel_in = mtk_mmsys_ddp_sel_in,
+> +       .sout_sel = mtk_mmsys_ddp_sout_sel,
+> +};
+> +
+> +static int mmsys_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +
+> +       mtk_mmsys_register_conn_funcs(dev->parent, &mmsys_funcs);
+> +
+> +       return 0;
+> +}
+> +
+> +static struct platform_driver mmsys_drv = {
+> +       .probe = mmsys_probe,
+> +       .driver = {
+> +               .name = "mt8183-mmsys",
+> +       },
+> +};
+> +
+> +builtin_platform_driver(mmsys_drv);
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index 605b992..6a451ac 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -47,6 +47,7 @@ struct mtk_mmsys_private_data {
+>
+>  static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+>         .clk_driver = "clk-mt8183-mm",
+> +       .mmsys_driver = "mt8183-mmsys",
+>  };
+>
+>  void mtk_mmsys_ddp_connect(struct device *dev,
 
 _______________________________________________
 Linux-mediatek mailing list
