@@ -2,79 +2,100 @@ Return-Path: <SRS0=M313=EX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BACB3C388F9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 03:36:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30432C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 04:33:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4ABFD24697
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 03:36:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 61B0C24671
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2020 04:33:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mj0xtZqH";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NwAMHIKP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4ABFD24697
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rFFsX/hj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="wFDiUo6i"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61B0C24671
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:References:Message-ID:
+	From:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BAq8QEhVC7TpDVyZDOqDG+6zwczu2Knb88ResJhtJkY=; b=mj0xtZqHe5w5rjqriFYDjxCxP
-	Xu7gxtsHM7ddYYp6RIRUMw0uuuPsdlTH0PIil3E7g7Ysv7pItY6tCcx+gyFpqVB+9fqvRHf3/6OLC
-	2OTT/GywgYPjXQuMdo8TBE3ieme83T5b7Q+5kgp1kax4rhEZEXAJmAkMgKRcsT6BLMRinL60QQjfu
-	MtPmWCK3x151mm7t6+qoYQFZr/oe77xhzO7Gv0OUqn4YYKSmrBMJYFxevNBE8GH9VxlRR+DjiExGp
-	bDWhzovFa3foxqHSTdNiN+h6nU9z91YshZBYfV0Q1qQ/WhiK6AJ5lWk4Su2lqVZIDY7M75e9+gl25
-	5j2Y3aE+g==;
+	 bh=+ojgi39gUJNoV95pDeoPJrjNgwreAph7O+deR3IqWB8=; b=rFFsX/hjpHuQYrI35DV++ex1p
+	rsTquliwX6gLDv7/TnrBS4oLM93JCGQkJlVKWMRZtxFTdWhTsbF0QLLjVLNBfueQ7e5S1jjnhxUwv
+	cDPsV2O5Zr23OcTM4r42mnWFuE7AeTXMr4khEuD1oFrZDwtiGF04ywwkbRH8gWlP5xqNkMqe49ZRD
+	lmvvMzBlziosFx3xBOkV46bWOdjJf+9R0sHVFzstZDeXeWiNKCazu7e2eUBdzuKYbBZCMnos3zEqv
+	UcD52RO4Xa5mtenKKvDy4sKNS+3DpM+0jJ0o2tjC0fkZL2/KifjMegSQRW5YGEOHhS+u1W+MpFPgw
+	7D/l8Lgiw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kermt-0006GO-MA; Tue, 17 Nov 2020 03:36:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kesgQ-0001cP-D0; Tue, 17 Nov 2020 04:33:34 +0000
+Received: from aserp2130.oracle.com ([141.146.126.79])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kermp-0006Ei-1v
- for linux-mediatek@lists.infradead.org; Tue, 17 Nov 2020 03:36:09 +0000
-X-UUID: 3ee4b8c9a7e84583971e8981e83239eb-20201116
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=9lXqFzp2pUfNGG0hxIdRdfJ3T4i/tYEZMqpOmdgUWe4=; 
- b=NwAMHIKPDUxghXmhheTZaX8TbvdtnnUNCGj+cRrNViRVLxUKTajis6Y6KZnEEuu9nkF3FUfzGK7TtuRFmTZ3J+8g9lReaRDxiO/26J88l+TfWU1wskFi5GmUncqdWzEr7gNnN9/1NfZlPJjWXKYDPs2ZV3PZF2WxjVQz6llTGog=;
-X-UUID: 3ee4b8c9a7e84583971e8981e83239eb-20201116
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2065659588; Mon, 16 Nov 2020 19:36:03 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Nov 2020 19:35:56 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33DR.mediatek.inc
- (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 17 Nov 2020 11:35:52 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 17 Nov 2020 11:35:50 +0800
-Message-ID: <1605584151.31607.35.camel@mhfsdcap03>
-Subject: Re: [RESEND PATCH 2/3] phy: mediatek: Move mtk_mipi_dsi_phy driver
- into drivers/phy/mediatek folder
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 17 Nov 2020 11:35:51 +0800
-In-Reply-To: <20201116231407.94-3-chunkuang.hu@kernel.org>
-References: <20201116231407.94-1-chunkuang.hu@kernel.org>
- <20201116231407.94-3-chunkuang.hu@kernel.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kesgO-0001c0-EZ; Tue, 17 Nov 2020 04:33:33 +0000
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AH4OSrx161203;
+ Tue, 17 Nov 2020 04:33:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : mime-version :
+ content-type; s=corp-2020-01-29;
+ bh=EshNhEFwh1JJV/VNuwzW9QTaC7Bvbm9d7b6KWQCmOho=;
+ b=wFDiUo6iRgfzZTEIdhfF89uMbyIKr75LZMJFXT0FbVQweW6K5NJl4C+S0b9mNp2GJON+
+ jvCujcRJ/Wevc4KByozmj5KoeWO/7JLQVUXYYzzXNPw6dHnxbaOux+3yQoY0sDv8x2SG
+ kwxgeopaf5e2iXNx1GPIGNNAwup+QDYXLHgmmE++VzPRNePmF6RhqI18nJYlkhg/wCre
+ 2XXqw78xjpDTWAl5MPI9jYTojkL+aUrS/YFeZykpAyAEc8Zv88wNIkouWx4qL7eaTTfu
+ 7Ikv9RmX1HuS4t5Z41T1j75ckqG+J9FLVl/QNPXyBNgA5FvN0HVQwjMoCdIJT7s170za 9w== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 34t4rarm0w-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 17 Nov 2020 04:33:23 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AH4VYsF039937;
+ Tue, 17 Nov 2020 04:33:22 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 34uspsv0v5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 17 Nov 2020 04:33:22 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0AH4XCIa017287;
+ Tue, 17 Nov 2020 04:33:12 GMT
+Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 16 Nov 2020 20:33:10 -0800
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH] scsi: ufs: Add retry flow for failed hba enabling
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1sg984n7p.fsf@ca-mkp.ca.oracle.com>
+References: <20201112054537.22494-1-stanley.chu@mediatek.com>
+Date: Mon, 16 Nov 2020 23:33:06 -0500
+In-Reply-To: <20201112054537.22494-1-stanley.chu@mediatek.com> (Stanley Chu's
+ message of "Thu, 12 Nov 2020 13:45:37 +0800")
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B95D2D481DAC4A3038D14ED72C3D9D030F57D0A6ED6B197E021B229AAED557D92000:8
-X-MTK: N
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9807
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ malwarescore=0
+ mlxscore=0 bulkscore=0 suspectscore=1 adultscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011170033
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9807
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ clxscore=1015
+ malwarescore=0 impostorscore=0 lowpriorityscore=0 priorityscore=1501
+ mlxlogscore=999 adultscore=0 phishscore=0 suspectscore=1 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011170032
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_223607_888949_1124243F 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20201116_233332_687091_C113EBD4 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,149 +107,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>
+Cc: jiajie.hao@mediatek.com, alice.chao@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, andy.teng@mediatek.com,
+ jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cc.chou@mediatek.com, avri.altman@wdc.com,
+ cang@codeaurora.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ asutoshd@codeaurora.org, chaotian.jing@mediatek.com, bvanassche@acm.org,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi CK,
-On Tue, 2020-11-17 at 07:14 +0800, Chun-Kuang Hu wrote:
-> mtk_mipi_dsi_phy is currently placed inside mediatek drm driver, but it's
-> more suitable to place a phy driver into phy driver folder, so move
-> mtk_mipi_dsi_phy driver into phy driver folder.
-> 
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-You forgot to add acked-by me
 
-> ---
->  drivers/gpu/drm/mediatek/Kconfig                           | 7 -------
->  drivers/gpu/drm/mediatek/Makefile                          | 6 ------
->  drivers/phy/mediatek/Kconfig                               | 7 +++++++
->  drivers/phy/mediatek/Makefile                              | 5 +++++
->  .../mediatek/phy-mtk-mipi-dsi-mt8173.c}                    | 2 +-
->  .../mediatek/phy-mtk-mipi-dsi-mt8183.c}                    | 2 +-
->  .../mtk_mipi_tx.c => phy/mediatek/phy-mtk-mipi-dsi.c}      | 2 +-
->  .../mtk_mipi_tx.h => phy/mediatek/phy-mtk-mipi-dsi.h}      | 0
->  8 files changed, 15 insertions(+), 16 deletions(-)
->  rename drivers/{gpu/drm/mediatek/mtk_mt8173_mipi_tx.c => phy/mediatek/phy-mtk-mipi-dsi-mt8173.c} (99%)
->  rename drivers/{gpu/drm/mediatek/mtk_mt8183_mipi_tx.c => phy/mediatek/phy-mtk-mipi-dsi-mt8183.c} (99%)
->  rename drivers/{gpu/drm/mediatek/mtk_mipi_tx.c => phy/mediatek/phy-mtk-mipi-dsi.c} (99%)
->  rename drivers/{gpu/drm/mediatek/mtk_mipi_tx.h => phy/mediatek/phy-mtk-mipi-dsi.h} (100%)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-> index 24c4890a6e65..2976d21e9a34 100644
-> --- a/drivers/gpu/drm/mediatek/Kconfig
-> +++ b/drivers/gpu/drm/mediatek/Kconfig
-> @@ -28,10 +28,3 @@ config DRM_MEDIATEK_HDMI
->  	select PHY_MTK_HDMI
->  	help
->  	  DRM/KMS HDMI driver for Mediatek SoCs
-> -
-> -config PHY_MTK_MIPI_DSI
-> -	tristate "Mediatek MIPI-DSI-PHY Driver"
-> -	depends on ARCH_MEDIATEK && OF
-> -	select GENERIC_PHY
-> -	help
-> -	  Support MIPI DSI PHY for Mediatek SoCs.
-> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-> index baa188000543..a892edec5563 100644
-> --- a/drivers/gpu/drm/mediatek/Makefile
-> +++ b/drivers/gpu/drm/mediatek/Makefile
-> @@ -19,9 +19,3 @@ mediatek-drm-hdmi-objs := mtk_cec.o \
->  			  mtk_hdmi_ddc.o
->  
->  obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mediatek-drm-hdmi.o
-> -
-> -phy-mtk-mipi-dsi-drv-objs := mtk_mipi_tx.o \
-> -			     mtk_mt8173_mipi_tx.o \
-> -			     mtk_mt8183_mipi_tx.o
-> -
-> -obj-$(CONFIG_PHY_MTK_MIPI_DSI) += phy-mtk-mipi-dsi-drv.o
-> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-> index 50c5e9306e19..574b8e6398d2 100644
-> --- a/drivers/phy/mediatek/Kconfig
-> +++ b/drivers/phy/mediatek/Kconfig
-> @@ -42,3 +42,10 @@ config PHY_MTK_HDMI
->  	select GENERIC_PHY
->  	help
->  	  Support HDMI PHY for Mediatek SoCs.
-> +
-> +config PHY_MTK_MIPI_DSI
-> +	tristate "MediaTek MIPI-DSI Driver"
-> +	depends on ARCH_MEDIATEK && OF
-> +	select GENERIC_PHY
-> +	help
-> +	  Support MIPI DSI for Mediatek SoCs.
-> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
-> index 6325e38709ed..ace660fbed3a 100644
-> --- a/drivers/phy/mediatek/Makefile
-> +++ b/drivers/phy/mediatek/Makefile
-> @@ -11,3 +11,8 @@ phy-mtk-hdmi-drv-y			:= phy-mtk-hdmi.o
->  phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt2701.o
->  phy-mtk-hdmi-drv-y			+= phy-mtk-hdmi-mt8173.o
->  obj-$(CONFIG_PHY_MTK_HDMI)		+= phy-mtk-hdmi-drv.o
-> +
-> +phy-mtk-mipi-dsi-drv-y			:= phy-mtk-mipi-dsi.o
-> +phy-mtk-mipi-dsi-drv-y			+= phy-mtk-mipi-dsi-mt8173.o
-> +phy-mtk-mipi-dsi-drv-y			+= phy-mtk-mipi-dsi-mt8183.o
-> +obj-$(CONFIG_PHY_MTK_MIPI_DSI)		+= phy-mtk-mipi-dsi-drv.o
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_mipi_tx.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
-> similarity index 99%
-> rename from drivers/gpu/drm/mediatek/mtk_mt8173_mipi_tx.c
-> rename to drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
-> index f18db14d8b63..7a847954594f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt8173_mipi_tx.c
-> +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
-> @@ -4,7 +4,7 @@
->   * Author: jitao.shi <jitao.shi@mediatek.com>
->   */
->  
-> -#include "mtk_mipi_tx.h"
-> +#include "phy-mtk-mipi-dsi.h"
->  
->  #define MIPITX_DSI_CON		0x00
->  #define RG_DSI_LDOCORE_EN		BIT(0)
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-> similarity index 99%
-> rename from drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-> rename to drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-> index 9f3e55aeebb2..99108426d57c 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-> +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-> @@ -4,7 +4,7 @@
->   * Author: jitao.shi <jitao.shi@mediatek.com>
->   */
->  
-> -#include "mtk_mipi_tx.h"
-> +#include "phy-mtk-mipi-dsi.h"
->  
->  #define MIPITX_LANE_CON		0x000c
->  #define RG_DSI_CPHY_T1DRV_EN		BIT(0)
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> similarity index 99%
-> rename from drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> rename to drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> index f2a892e16c27..18c481251f04 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> @@ -3,7 +3,7 @@
->   * Copyright (c) 2015 MediaTek Inc.
->   */
->  
-> -#include "mtk_mipi_tx.h"
-> +#include "phy-mtk-mipi-dsi.h"
->  
->  inline struct mtk_mipi_tx *mtk_mipi_tx_from_clk_hw(struct clk_hw *hw)
->  {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.h b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-> similarity index 100%
-> rename from drivers/gpu/drm/mediatek/mtk_mipi_tx.h
-> rename to drivers/phy/mediatek/phy-mtk-mipi-dsi.h
+Stanley,
+
+> Once hba enabling is failed, add retry mechanism and in the meanwhile
+> allow vendors to apply specific handlings before the next retry. For
+> example, vendors can do vendor-specific host reset flow in variant
+> function "ufshcd_vops_hce_enable_notify()".
+
+Applied to 5.11/scsi-staging, thanks!
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
