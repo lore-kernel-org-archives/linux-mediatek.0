@@ -2,88 +2,77 @@ Return-Path: <SRS0=HQvY=EY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC6A7C5519F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 10:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF7AAC5519F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 11:41:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2DA4C206A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 10:49:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3B1642225B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 11:41:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JWDEIBJW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mxPewrW5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2DA4C206A5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YxWKvtp5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uDAXjzxs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B1642225B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w5IObyIxx7MKfqwI8IvzrswPmeLS4GDV90AgL7uON9o=; b=JWDEIBJWQtj/i6CtgS+2AHeweI
-	zWO1KHkFYW2yh01vFYJdzIXjUuAI6DE3zHF3erogdPrpJP4VFLiW/cLvQ328iyfkI0uRHX5UHm30D
-	PoO4xoSWE03PBEcoyMyVLyt7z2LxekXxu0jDA7b/dcFwUFj7j35n2kOXS8KpMu1GqZLQkhwsUIsOX
-	IjRgB6GCj96JVBKcYzEaPx1/sC5oo5Pclc+9vK1mR+jHLZAPDnS9a+sc0xJHqv3Wa1XuOJCIKXOH7
-	vSRba1HFPxWXj4SFagAdErWSqcK9LNlbWMqX9TsFIRlTGx+byr/39a04xv2GAXauKtUJWMbgDcJPZ
-	Wlcf4vOQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=dX9Q+jecBVrgygYf8FPAP8qus1yHKJlxGXz1wnlwL2s=; b=YxWKvtp5/WtiegCdGUoB3Tf9X
+	V02tDP1WeG1R7LMMHEgqz8wz2oohjhCqaUjs7nMcy0uLQXbi1OxyJtNvma0A/2/qbNQRz72+ojY1j
+	3Ztk3lkuBktOIC7k00iOpqNs2yeJBYmCt/bALh3IVQX6OihyXD87YUS1S/nXZgOB72VIbpjf66v1S
+	XVMt0HmWlITlwrHwIojG7JTZw/ahGMBVIAGyaYkC3mtAaQlxVNEkauR+K5L5pzE4U+xKjtuVj36ft
+	6XYE9wicZl8xJQqmEful+EMYXhDBtEiJAD1Gwfe8kNu8hQVP+OutbGfUuF84kxp8XIAm6HpDEu+oa
+	LndRO/m3g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfL1R-0005hf-0Q; Wed, 18 Nov 2020 10:49:09 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1kfLpq-0003Ez-EY; Wed, 18 Nov 2020 11:41:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfL17-0005XM-LR; Wed, 18 Nov 2020 10:48:54 +0000
-Received: by mail-pg1-x534.google.com with SMTP id t21so934944pgl.3;
- Wed, 18 Nov 2020 02:48:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=/StUAlBzhEGUCJ0jWbUgxYnI1WseRWF715j590J3okk=;
- b=mxPewrW57X02nT9xn/VC+6zsF2kIx5GDnXduwDCXUIiCM7R5AQ4O3QgRhFZ6eX1iOm
- uwBgvI41Gkf/Y9pkptWMmF97BWsfB5lyypjs46fZnTbYrzUjQVPV8NLxhOpLM+vmp/JR
- wOc/SPhGpYa7p5v+oEumhpQ+BFGGFBa4pK+UwCJcmNMgNq7HINIl+wL5d756z/aLwn89
- N05k6iDJn++1zDBUZdVIZloXz78klLnmZk3LGFwiH1VW6fVOQgTpnsu07if71M4ohDUP
- 9x0l9XEpcyZy/1g1ILYoNxdnX+q9r3442xgm9PA/OCkMHnVnf7BGQHQsTm8wXm9KTY0H
- f7aQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=/StUAlBzhEGUCJ0jWbUgxYnI1WseRWF715j590J3okk=;
- b=gBzXAzTMxnGF1kZSj1rEWJfXOk/Tx6U2yHyZdulUH4+bkwy9RZyDf96bMR2gLatpzu
- uJxPL8YlbgUej0k+yEfEWCAOdzj5NGRHurlSHh4ehwU2ReO7MwNYlIVo+En0esR1t3NS
- dAg4uYCYbk15Vg2zzT9bVLVrkAT/wsecxsCvsy0o/z32oQIGmGjMXCUBIcK2Ukrt/II+
- PU1sWHM1Tuc1GS0YQNcDSQLVsJQvTO6BXw05c6Z5GFc6rgijpwtyqhMjXC+63nnt9/Wr
- avGJ69lbn5gwu9ueILquNde9ycM/77X58SQtrdI7QKxJ4vUD9xtmsuCxwKChLfrHj/3o
- GuFQ==
-X-Gm-Message-State: AOAM533MkMgXtSnawpC+TiHmvSXZSNpcY8KnfSxtX1m1bMdmfWL+c+ag
- k5AVR1ffxFpME8mRl5/K+ehYnJytt5c=
-X-Google-Smtp-Source: ABdhPJzafPFXR+gz9o77jwCmzy6D5mJmewN1QjOg07zfMQQ00rLT0bcUAiZVX0BoOyBYet3h9bnAXQ==
-X-Received: by 2002:aa7:8704:0:b029:18a:e2c9:c38 with SMTP id
- b4-20020aa787040000b029018ae2c90c38mr4023954pfo.79.1605696527244; 
- Wed, 18 Nov 2020 02:48:47 -0800 (PST)
-Received: from localhost.localdomain ([2402:7500:575:2174:b7aa:599:e762:e486])
- by smtp.gmail.com with ESMTPSA id
- a3sm25345154pfd.58.2020.11.18.02.48.40
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 18 Nov 2020 02:48:46 -0800 (PST)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: jacek.anaszewski@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
- matthias.bgg@gmail.com
-Subject: [PATCH v7 5/5] leds: mt6360: Add LED driver for MT6360
-Date: Wed, 18 Nov 2020 18:47:42 +0800
-Message-Id: <1605696462-391-6-git-send-email-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1605696462-391-1-git-send-email-gene.chen.richtek@gmail.com>
-References: <1605696462-391-1-git-send-email-gene.chen.richtek@gmail.com>
+ id 1kfLpl-0003Db-5j; Wed, 18 Nov 2020 11:41:12 +0000
+X-UUID: 9b9ae80fa2f944a59ce72aec71f9d995-20201118
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8hI5pE/fW5YE4WRcx9jY+XE+a4953PtVWG78c5fIJaU=; 
+ b=uDAXjzxsI+dQ8rCJMwCIq4GcBB/6VJnL3N/5c2nEoIc7Dq7rn3b7jcqNV8RksCoCJ4ynfDAnaaiwFA57Z4Uhy5eqR0MWaBvATZXyBp1yrR9gYYX67X+DrKL3JVDJbpipmJqtp+CYhgh1lfsUIdSNAlf+BJ9r3s4dP1kp6iWR8jE=;
+X-UUID: 9b9ae80fa2f944a59ce72aec71f9d995-20201118
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <hsin-hsiung.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 641577561; Wed, 18 Nov 2020 03:40:50 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Nov 2020 03:40:59 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Nov 2020 19:40:58 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 18 Nov 2020 19:40:57 +0800
+Message-ID: <1605699658.24420.3.camel@mtksdaap41>
+Subject: Re: [PATCH v3 2/4] soc: mediatek: pwrap: add arbiter capability
+From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Wed, 18 Nov 2020 19:40:58 +0800
+In-Reply-To: <46c0e204-b5e2-4ee3-678b-e09844442aad@gmail.com>
+References: <1600686235-27979-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1600686235-27979-3-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <46c0e204-b5e2-4ee3-678b-e09844442aad@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201118_054849_922251_5E8E6C4B 
-X-CRM114-Status: GOOD (  26.94  )
+X-CRM114-CacheID: sfid-20201118_064109_435323_AB9B8AF9 
+X-CRM114-Status: GOOD (  28.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,884 +84,188 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
- linux-mediatek@lists.infradead.org, dmurphy@ti.com, linux-leds@vger.kernel.org,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
-MIME-Version: 1.0
+Cc: devicetree@vger.kernel.org, drinkcat@chromium.org,
+ srv_heupstream@mediatek.com, Argus Lin <argus.lin@mediatek.com>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, hsin-hsiung.wang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
+Hi,
 
-Add MT6360 LED driver include 2-channel Flash LED with torch/strobe mode,
-3-channel RGB LED support Register/Flash/Breath Mode, and 1-channel for
-moonlight LED.
+On Mon, 2020-09-21 at 18:48 +0200, Matthias Brugger wrote:
+> 
+> On 21/09/2020 13:03, Hsin-Hsiung Wang wrote:
+> > Add arbiter capability for pwrap driver.
+> 
+> Can you provide a bit more verbose commit message, please.
+> 
+Thanks for reviewing. I will update it in next patch.
 
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
----
- drivers/leds/Kconfig       |  13 +
- drivers/leds/Makefile      |   1 +
- drivers/leds/leds-mt6360.c | 808 +++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 822 insertions(+)
- create mode 100644 drivers/leds/leds-mt6360.c
+> > This patch is preparing for adding mt6873/8192 pwrap support.
+> > 
+> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 57 ++++++++++++++++++++++++++++++------
+> >   1 file changed, 48 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index c897205..149bf02 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -25,10 +25,12 @@
+> >   
+> >   /* macro for wrapper status */
+> >   #define PWRAP_GET_WACS_RDATA(x)		(((x) >> 0) & 0x0000ffff)
+> > +#define PWRAP_GET_WACS_ARB_FSM(x)	(((x) >> 1) & 0x00000007)
+> >   #define PWRAP_GET_WACS_FSM(x)		(((x) >> 16) & 0x00000007)
+> >   #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) & 0x00000001)
+> >   #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
+> >   #define PWRAP_STATE_INIT_DONE0		BIT(21)
+> > +#define PWRAP_STATE_INIT_DONE1		BIT(15)
+> >   
+> >   /* macro for WACS FSM */
+> >   #define PWRAP_WACS_FSM_IDLE		0x00
+> > @@ -74,6 +76,7 @@
+> >   #define PWRAP_CAP_DCM		BIT(2)
+> >   #define PWRAP_CAP_INT1_EN	BIT(3)
+> >   #define PWRAP_CAP_WDT_SRC1	BIT(4)
+> > +#define PWRAP_CAP_ARB		BIT(5)
+> >   
+> >   /* defines for slave device wrapper registers */
+> >   enum dew_regs {
+> > @@ -340,6 +343,8 @@ enum pwrap_regs {
+> >   	PWRAP_DCM_DBC_PRD,
+> >   	PWRAP_EINT_STA0_ADR,
+> >   	PWRAP_EINT_STA1_ADR,
+> > +	PWRAP_SWINF_2_WDATA_31_0,
+> > +	PWRAP_SWINF_2_RDATA_31_0,
+> >   
+> >   	/* MT2701 only regs */
+> >   	PWRAP_ADC_CMD_ADDR,
+> > @@ -1108,14 +1113,22 @@ static void pwrap_writel(struct pmic_wrapper *wrp, u32 val, enum pwrap_regs reg)
+> >   
+> >   static bool pwrap_is_fsm_idle(struct pmic_wrapper *wrp)
+> >   {
+> > -	u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
+> > +	u32 val;
+> > +
+> > +	val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
+> > +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> > +		return PWRAP_GET_WACS_ARB_FSM(val) == PWRAP_WACS_FSM_IDLE;
+> >   
+> >   	return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_IDLE;
+> >   }
+> >   
+> >   static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
+> >   {
+> > -	u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
+> > +	u32 val;
+> > +
+> > +	val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
+> > +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> > +		return PWRAP_GET_WACS_ARB_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
+> >   
+> >   	return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
+> >   }
+> > @@ -1165,6 +1178,7 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
+> >   static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
+> >   {
+> >   	int ret;
+> > +	u32 val;
+> >   
+> >   	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+> >   	if (ret) {
+> > @@ -1172,13 +1186,21 @@ static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
+> >   		return ret;
+> >   	}
+> >   
+> > -	pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
+> > +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> > +		val = adr;
+> > +	else
+> > +		val = (adr >> 1) << 16;
+> > +	pwrap_writel(wrp, val, PWRAP_WACS2_CMD);
+> >   
+> >   	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_vldclr);
+> >   	if (ret)
+> >   		return ret;
+> >   
+> > -	*rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp, PWRAP_WACS2_RDATA));
+> > +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> > +		val = pwrap_readl(wrp, PWRAP_SWINF_2_RDATA_31_0);
+> > +	else
+> > +		val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
+> > +	*rdata = PWRAP_GET_WACS_RDATA(val);
+> >   
+> >   	pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
+> >   
+> > @@ -1228,8 +1250,13 @@ static int pwrap_write16(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
+> >   		return ret;
+> >   	}
+> >   
+> > -	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
+> > -		     PWRAP_WACS2_CMD);
+> > +	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB)) {
+> 
+> Please switch if's so that we take the else branch on the arbiter not present 
+> case. Or the other way round, just make it uniform, where possible, of course.
+> 
 
-diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index 1c181df..4f533bc 100644
---- a/drivers/leds/Kconfig
-+++ b/drivers/leds/Kconfig
-@@ -271,6 +271,19 @@ config LEDS_MT6323
- 	  This option enables support for on-chip LED drivers found on
- 	  Mediatek MT6323 PMIC.
- 
-+config LEDS_MT6360
-+	tristate "LED Support for Mediatek MT6360 PMIC"
-+	depends on LEDS_CLASS && OF
-+	depends on LEDS_CLASS_FLASH || !LEDS_CLASS_FLASH
-+	depends on LEDS_CLASS_MULTICOLOR || !LEDS_CLASS_MULTICOLOR
-+	depends on V4L2_FLASH_LED_CLASS || !V4L2_FLASH_LED_CLASS
-+	depends on MFD_MT6360
-+	help
-+	  This option enables support for dual Flash LED drivers found on
-+	  Mediatek MT6360 PMIC.
-+	  Independent current sources supply for each flash LED support torch
-+	  and strobe mode.
-+
- config LEDS_S3C24XX
- 	tristate "LED Support for Samsung S3C24XX GPIO LEDs"
- 	depends on LEDS_CLASS
-diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-index c2c7d7a..5596427 100644
---- a/drivers/leds/Makefile
-+++ b/drivers/leds/Makefile
-@@ -66,6 +66,7 @@ obj-$(CONFIG_LEDS_MIKROTIK_RB532)	+= leds-rb532.o
- obj-$(CONFIG_LEDS_MLXCPLD)		+= leds-mlxcpld.o
- obj-$(CONFIG_LEDS_MLXREG)		+= leds-mlxreg.o
- obj-$(CONFIG_LEDS_MT6323)		+= leds-mt6323.o
-+obj-$(CONFIG_LEDS_MT6360)		+= leds-mt6360.o
- obj-$(CONFIG_LEDS_NET48XX)		+= leds-net48xx.o
- obj-$(CONFIG_LEDS_NETXBIG)		+= leds-netxbig.o
- obj-$(CONFIG_LEDS_NIC78BX)		+= leds-nic78bx.o
-diff --git a/drivers/leds/leds-mt6360.c b/drivers/leds/leds-mt6360.c
-new file mode 100644
-index 0000000..8432901
---- /dev/null
-+++ b/drivers/leds/leds-mt6360.c
-@@ -0,0 +1,808 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+
-+#include <linux/bitops.h>
-+#include <linux/delay.h>
-+#include <linux/init.h>
-+#include <linux/interrupt.h>
-+#include <linux/kernel.h>
-+#include <linux/led-class-flash.h>
-+#include <linux/led-class-multicolor.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/regmap.h>
-+#include <media/v4l2-flash-led-class.h>
-+
-+enum {
-+	MT6360_LED_ISNK1 = 0,
-+	MT6360_LED_ISNK2,
-+	MT6360_LED_ISNK3,
-+	MT6360_LED_ISNKML,
-+	MT6360_LED_FLASH1,
-+	MT6360_LED_FLASH2,
-+	MT6360_LED_MULTICOLOR,
-+	MT6360_MAX_LEDS = MT6360_LED_MULTICOLOR
-+};
-+
-+#define MT6360_REG_RGBEN		0x380
-+#define MT6360_REG_ISNK(_led_no)	(0x381 + (_led_no))
-+#define MT6360_ISNK_ENMASK(_led_no)	BIT(7 - (_led_no))
-+#define MT6360_ISNK_MASK		GENMASK(4, 0)
-+#define MT6360_CHRINDSEL_MASK		BIT(3)
-+
-+#define MULTICOLOR_NUM_CHANNELS		3
-+
-+#define MT6360_REG_FLEDEN		0x37E
-+#define MT6360_REG_STRBTO		0x373
-+#define MT6360_REG_FLEDBASE(_id)	(0x372 + 4 * (_id - MT6360_LED_FLASH1))
-+#define MT6360_REG_FLEDISTRB(_id)	(MT6360_REG_FLEDBASE(_id) + 2)
-+#define MT6360_REG_FLEDITOR(_id)	(MT6360_REG_FLEDBASE(_id) + 3)
-+#define MT6360_REG_CHGSTAT2		0x3E1
-+#define MT6360_REG_FLEDSTAT1		0x3E9
-+#define MT6360_ITORCH_MASK		GENMASK(4, 0)
-+#define MT6360_ISTROBE_MASK		GENMASK(6, 0)
-+#define MT6360_STRBTO_MASK		GENMASK(6, 0)
-+#define MT6360_TORCHEN_MASK		BIT(3)
-+#define MT6360_STROBEN_MASK		BIT(2)
-+#define MT6360_FLCSEN_MASK(_id)		BIT(MT6360_LED_FLASH2 - _id)
-+#define MT6360_FLEDCHGVINOVP_MASK	BIT(3)
-+#define MT6360_FLED1STRBTO_MASK		BIT(11)
-+#define MT6360_FLED2STRBTO_MASK		BIT(10)
-+#define MT6360_FLED1STRB_MASK		BIT(9)
-+#define MT6360_FLED2STRB_MASK		BIT(8)
-+#define MT6360_FLED1SHORT_MASK		BIT(7)
-+#define MT6360_FLED2SHORT_MASK		BIT(6)
-+#define MT6360_FLEDLVF_MASK		BIT(3)
-+
-+#define MT6360_ISNKRGB_STEPUA		2000
-+#define MT6360_ISNKRGB_MAXUA		24000
-+#define MT6360_ISNKML_STEPUA		5000
-+#define MT6360_ISNKML_MAXUA		150000
-+
-+#define MT6360_ITORCH_MINUA		25000
-+#define MT6360_ITORCH_STEPUA		12500
-+#define MT6360_ITORCH_MAXUA		400000
-+#define MT6360_ISTRB_MINUA		50000
-+#define MT6360_ISTRB_STEPUA		12500
-+#define MT6360_ISTRB_MAXUA		1500000
-+#define MT6360_STRBTO_MINUS		64000
-+#define MT6360_STRBTO_STEPUS		32000
-+#define MT6360_STRBTO_MAXUS		2432000
-+
-+#define STATE_OFF			0
-+#define STATE_KEEP			1
-+#define STATE_ON			2
-+
-+struct mt6360_led {
-+	union {
-+		struct led_classdev isnk;
-+		struct led_classdev_mc mc;
-+		struct led_classdev_flash flash;
-+	};
-+	struct v4l2_flash *v4l2_flash;
-+	struct mt6360_priv *priv;
-+	u32 led_no;
-+	u32 default_state;
-+};
-+
-+struct mt6360_priv {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct mutex lock;
-+	unsigned int fled_strobe_used;
-+	unsigned int fled_torch_used;
-+	unsigned int leds_active;
-+	unsigned int leds_count;
-+	struct mt6360_led leds[];
-+};
-+
-+static int mt6360_mc_brightness_set(struct led_classdev *lcdev, enum led_brightness level)
-+{
-+	struct led_classdev_mc *mccdev = lcdev_to_mccdev(lcdev);
-+	struct mt6360_led *led = container_of(mccdev, struct mt6360_led, mc);
-+	struct mt6360_priv *priv = led->priv;
-+	u32 real_bright, enable_mask = 0, enable = 0;
-+	int i, ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	led_mc_calc_color_components(mccdev, level);
-+
-+	for (i = 0; i < mccdev->num_colors; i++) {
-+		struct mc_subled *subled = mccdev->subled_info + i;
-+
-+		real_bright = min(lcdev->max_brightness, subled->brightness);
-+		ret = regmap_update_bits(priv->regmap, MT6360_REG_ISNK(i), MT6360_ISNK_MASK,
-+					 real_bright);
-+		if (ret)
-+			goto out;
-+
-+		enable_mask |= MT6360_ISNK_ENMASK(subled->channel);
-+		if (real_bright)
-+			enable |= MT6360_ISNK_ENMASK(subled->channel);
-+	}
-+
-+	ret = regmap_update_bits(priv->regmap, MT6360_REG_RGBEN, enable_mask, enable);
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+	return ret;
-+}
-+
-+static int mt6360_isnk_brightness_set(struct led_classdev *lcdev, enum led_brightness level)
-+{
-+	struct mt6360_led *led = container_of(lcdev, struct mt6360_led, isnk);
-+	struct mt6360_priv *priv = led->priv;
-+	u32 enable_mask = MT6360_ISNK_ENMASK(led->led_no);
-+	u32 val = level ? MT6360_ISNK_ENMASK(led->led_no) : 0;
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	ret = regmap_update_bits(priv->regmap, MT6360_REG_ISNK(led->led_no), MT6360_ISNK_MASK,
-+				 level);
-+	if (ret)
-+		goto out;
-+
-+	ret = regmap_update_bits(priv->regmap, MT6360_REG_RGBEN, enable_mask, val);
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+	return ret;
-+}
-+
-+static int mt6360_torch_brightness_set(struct led_classdev *lcdev, enum led_brightness level)
-+{
-+	struct mt6360_led *led = container_of(lcdev, struct mt6360_led, flash.led_cdev);
-+	struct mt6360_priv *priv = led->priv;
-+	u32 enable_mask = MT6360_TORCHEN_MASK | MT6360_FLCSEN_MASK(led->led_no);
-+	u32 val = level ? MT6360_FLCSEN_MASK(led->led_no) : 0;
-+	u32 prev = priv->fled_torch_used, curr;
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	/* Only one set of flash control logic, use the flag to avoid strobe is currently used */
-+	if (priv->fled_strobe_used) {
-+		dev_warn(lcdev->dev, "Please disable strobe first [%d]\n", priv->fled_strobe_used);
-+		ret = -EBUSY;
-+		goto unlock;
-+	}
-+
-+	if (level)
-+		curr = prev | BIT(led->led_no);
-+	else
-+		curr = prev & ~BIT(led->led_no);
-+
-+	if (curr)
-+		val |= MT6360_TORCHEN_MASK;
-+
-+	if (level) {
-+		ret = regmap_update_bits(priv->regmap, MT6360_REG_FLEDITOR(led->led_no),
-+					 MT6360_ITORCH_MASK, level - 1);
-+		if (ret)
-+			goto unlock;
-+	}
-+
-+	ret = regmap_update_bits(priv->regmap, MT6360_REG_FLEDEN, enable_mask, val);
-+	if (ret)
-+		goto unlock;
-+
-+	priv->fled_torch_used = curr;
-+
-+unlock:
-+	mutex_unlock(&priv->lock);
-+	return ret;
-+}
-+
-+static int mt6360_flash_brightness_set(struct led_classdev_flash *fl_cdev, u32 brightness)
-+{
-+	/*
-+	 * Due to the current spike when turning on flash, let brightness to be kept by framework.
-+	 * This empty function is used to prevent led_classdev_flash register ops check failure.
-+	 */
-+	return 0;
-+}
-+
-+static int _mt6360_flash_brightness_set(struct led_classdev_flash *fl_cdev, u32 brightness)
-+{
-+	struct mt6360_led *led = container_of(fl_cdev, struct mt6360_led, flash);
-+	struct mt6360_priv *priv = led->priv;
-+	struct led_flash_setting *s = &fl_cdev->brightness;
-+	u32 val = (brightness - s->min) / s->step;
-+
-+	return regmap_update_bits(priv->regmap, MT6360_REG_FLEDISTRB(led->led_no),
-+				 MT6360_ISTROBE_MASK, val);
-+}
-+
-+static int mt6360_strobe_set(struct led_classdev_flash *fl_cdev, bool state)
-+{
-+	struct mt6360_led *led = container_of(fl_cdev, struct mt6360_led, flash);
-+	struct mt6360_priv *priv = led->priv;
-+	struct led_classdev *lcdev = &fl_cdev->led_cdev;
-+	struct led_flash_setting *s = &fl_cdev->brightness;
-+	u32 enable_mask = MT6360_STROBEN_MASK | MT6360_FLCSEN_MASK(led->led_no);
-+	u32 val = state ? MT6360_FLCSEN_MASK(led->led_no) : 0;
-+	u32 prev = priv->fled_strobe_used, curr;
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	/* Only one set of flash control logic, use the flag to avoid torch is currently used */
-+	if (priv->fled_torch_used) {
-+		dev_warn(lcdev->dev, "Please disable torch first [0x%x]\n", priv->fled_torch_used);
-+		ret = -EBUSY;
-+		goto unlock;
-+	}
-+
-+	if (state)
-+		curr = prev | BIT(led->led_no);
-+	else
-+		curr = prev & ~BIT(led->led_no);
-+
-+	if (curr)
-+		val |= MT6360_STROBEN_MASK;
-+
-+	ret = regmap_update_bits(priv->regmap, MT6360_REG_FLEDEN, enable_mask, val);
-+	if (ret) {
-+		dev_err(lcdev->dev, "[%d] control current source %d fail\n", led->led_no, state);
-+		goto unlock;
-+	}
-+
-+	/*
-+	 * If the flash need to be on, config the flash current ramping up to the setting value
-+	 * Else, always recover back to the minimum one
-+	 */
-+	ret = _mt6360_flash_brightness_set(fl_cdev, state ? s->val : s->min);
-+	if (ret)
-+		goto unlock;
-+
-+	/* For the flash turn on/off, HW rampping up/down time is 5ms/500us, respectively */
-+	if (!prev && curr)
-+		usleep_range(5000, 6000);
-+	else if (prev && !curr)
-+		udelay(500);
-+
-+	priv->fled_strobe_used = curr;
-+
-+unlock:
-+	mutex_unlock(&priv->lock);
-+	return ret;
-+}
-+
-+static int mt6360_strobe_get(struct led_classdev_flash *fl_cdev, bool *state)
-+{
-+	struct mt6360_led *led = container_of(fl_cdev, struct mt6360_led, flash);
-+	struct mt6360_priv *priv = led->priv;
-+
-+	mutex_lock(&priv->lock);
-+	*state = !!(priv->fled_strobe_used & BIT(led->led_no));
-+	mutex_unlock(&priv->lock);
-+
-+	return 0;
-+}
-+
-+static int mt6360_timeout_set(struct led_classdev_flash *fl_cdev, u32 timeout)
-+{
-+	struct mt6360_led *led = container_of(fl_cdev, struct mt6360_led, flash);
-+	struct mt6360_priv *priv = led->priv;
-+	struct led_flash_setting *s = &fl_cdev->timeout;
-+	u32 val = (timeout - s->min) / s->step;
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+	ret = regmap_update_bits(priv->regmap, MT6360_REG_STRBTO, MT6360_STRBTO_MASK, val);
-+	mutex_unlock(&priv->lock);
-+
-+	return ret;
-+}
-+
-+static int mt6360_fault_get(struct led_classdev_flash *fl_cdev, u32 *fault)
-+{
-+	struct mt6360_led *led = container_of(fl_cdev, struct mt6360_led, flash);
-+	struct mt6360_priv *priv = led->priv;
-+	u16 fled_stat;
-+	unsigned int chg_stat, strobe_timeout_mask, fled_short_mask;
-+	u32 rfault = 0;
-+	int ret;
-+
-+	ret = regmap_read(priv->regmap, MT6360_REG_CHGSTAT2, &chg_stat);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_raw_read(priv->regmap, MT6360_REG_FLEDSTAT1, &fled_stat, sizeof(fled_stat));
-+	if (ret)
-+		return ret;
-+
-+	if (led->led_no == MT6360_LED_FLASH1) {
-+		strobe_timeout_mask = MT6360_FLED1STRBTO_MASK;
-+		fled_short_mask = MT6360_FLED1SHORT_MASK;
-+	} else {
-+		strobe_timeout_mask = MT6360_FLED2STRBTO_MASK;
-+		fled_short_mask = MT6360_FLED2SHORT_MASK;
-+	}
-+
-+	if (chg_stat & MT6360_FLEDCHGVINOVP_MASK)
-+		rfault |= LED_FAULT_INPUT_VOLTAGE;
-+
-+	if (fled_stat & strobe_timeout_mask)
-+		rfault |= LED_FAULT_TIMEOUT;
-+
-+	if (fled_stat & fled_short_mask)
-+		rfault |= LED_FAULT_SHORT_CIRCUIT;
-+
-+	if (fled_stat & MT6360_FLEDLVF_MASK)
-+		rfault |= LED_FAULT_UNDER_VOLTAGE;
-+
-+	*fault = rfault;
-+	return 0;
-+}
-+
-+static const struct led_flash_ops mt6360_flash_ops = {
-+	.flash_brightness_set = mt6360_flash_brightness_set,
-+	.strobe_set = mt6360_strobe_set,
-+	.strobe_get = mt6360_strobe_get,
-+	.timeout_set = mt6360_timeout_set,
-+	.fault_get = mt6360_fault_get,
-+};
-+
-+static int mt6360_isnk_init_default_state(struct mt6360_led *led)
-+{
-+	struct mt6360_priv *priv = led->priv;
-+	unsigned int regval;
-+	u32 level;
-+	int ret;
-+
-+	ret = regmap_read(priv->regmap, MT6360_REG_ISNK(led->led_no), &regval);
-+	if (ret)
-+		return ret;
-+	level = regval & MT6360_ISNK_MASK;
-+
-+	ret = regmap_read(priv->regmap, MT6360_REG_RGBEN, &regval);
-+	if (ret)
-+		return ret;
-+
-+	if (!(regval & MT6360_ISNK_ENMASK(led->led_no)))
-+		level = LED_OFF;
-+
-+	switch (led->default_state) {
-+	case STATE_ON:
-+		led->isnk.brightness = led->isnk.max_brightness;
-+		break;
-+	case STATE_KEEP:
-+		led->isnk.brightness = min(level, led->isnk.max_brightness);
-+		break;
-+	default:
-+		led->isnk.brightness = LED_OFF;
-+	}
-+
-+	return mt6360_isnk_brightness_set(&led->isnk, led->isnk.brightness);
-+}
-+
-+static int mt6360_flash_init_default_state(struct mt6360_led *led)
-+{
-+	struct led_classdev_flash *flash = &led->flash;
-+	struct mt6360_priv *priv = led->priv;
-+	u32 enable_mask = MT6360_TORCHEN_MASK | MT6360_FLCSEN_MASK(led->led_no);
-+	u32 level;
-+	unsigned int regval;
-+	int ret;
-+
-+	ret = regmap_read(priv->regmap, MT6360_REG_FLEDITOR(led->led_no), &regval);
-+	if (ret)
-+		return ret;
-+	level = regval & MT6360_ITORCH_MASK;
-+
-+	ret = regmap_read(priv->regmap, MT6360_REG_FLEDEN, &regval);
-+	if (ret)
-+		return ret;
-+
-+	if ((regval & enable_mask) == enable_mask)
-+		level += 1;
-+	else
-+		level = LED_OFF;
-+
-+	switch (led->default_state) {
-+	case STATE_ON:
-+		flash->led_cdev.brightness = flash->led_cdev.max_brightness;
-+		break;
-+	case STATE_KEEP:
-+		flash->led_cdev.brightness = min(level, flash->led_cdev.max_brightness);
-+		break;
-+	default:
-+		flash->led_cdev.brightness = LED_OFF;
-+	}
-+
-+	return mt6360_torch_brightness_set(&flash->led_cdev, flash->led_cdev.brightness);
-+}
-+
-+#if IS_ENABLED(CONFIG_V4L2_FLASH_LED_CLASS)
-+static int mt6360_flash_external_strobe_set(struct v4l2_flash *v4l2_flash, bool enable)
-+{
-+	struct led_classdev_flash *flash = v4l2_flash->fled_cdev;
-+	struct mt6360_led *led = container_of(flash, struct mt6360_led, flash);
-+	struct mt6360_priv *priv = led->priv;
-+	u32 mask = MT6360_FLCSEN_MASK(led->led_no);
-+	u32 val = enable ? mask : 0;
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	ret = regmap_update_bits(priv->regmap, MT6360_REG_FLEDEN, mask, val);
-+	if (ret)
-+		goto unlock;
-+
-+	if (enable)
-+		priv->fled_strobe_used |= BIT(led->led_no);
-+	else
-+		priv->fled_strobe_used &= ~BIT(led->led_no);
-+
-+unlock:
-+	mutex_unlock(&priv->lock);
-+	return ret;
-+}
-+
-+static const struct v4l2_flash_ops v4l2_flash_ops = {
-+	.external_strobe_set = mt6360_flash_external_strobe_set,
-+};
-+
-+static void mt6360_init_v4l2_flash_config(struct mt6360_led *led, struct v4l2_flash_config *config)
-+{
-+	struct led_classdev *lcdev;
-+	struct led_flash_setting *s = &config->intensity;
-+
-+	lcdev = &led->flash.led_cdev;
-+
-+	s->min = MT6360_ITORCH_MINUA;
-+	s->step = MT6360_ITORCH_STEPUA;
-+	s->val = s->max = s->min + (lcdev->max_brightness - 1) * s->step;
-+
-+	config->has_external_strobe = 1;
-+	strscpy(config->dev_name, lcdev->dev->kobj.name, sizeof(config->dev_name));
-+
-+	config->flash_faults = LED_FAULT_SHORT_CIRCUIT | LED_FAULT_TIMEOUT |
-+			       LED_FAULT_INPUT_VOLTAGE | LED_FAULT_UNDER_VOLTAGE;
-+}
-+#else
-+static const struct v4l2_flash_ops v4l2_flash_ops;
-+static void mt6360_init_v4l2_flash_config(struct mt6360_led *led, struct v4l2_flash_config *config)
-+{
-+}
-+#endif
-+
-+static int mt6360_led_register(struct device *parent, struct mt6360_led *led,
-+				struct led_init_data *init_data)
-+{
-+	struct mt6360_priv *priv = led->priv;
-+	struct v4l2_flash_config v4l2_config = {0};
-+	int ret;
-+
-+	if ((led->led_no == MT6360_LED_ISNK1 || led->led_no == MT6360_LED_MULTICOLOR) &&
-+		(priv->leds_active & BIT(MT6360_LED_ISNK1))) {
-+		/* Change isink1 to SW control mode, disconnect it with charger state */
-+		ret = regmap_update_bits(priv->regmap, MT6360_REG_RGBEN, MT6360_CHRINDSEL_MASK,
-+					 MT6360_CHRINDSEL_MASK);
-+		if (ret) {
-+			dev_err(parent, "Failed to config ISNK1 to SW mode\n");
-+			return ret;
-+		}
-+	}
-+
-+	switch (led->led_no) {
-+	case MT6360_LED_MULTICOLOR:
-+		ret = mt6360_mc_brightness_set(&led->mc.led_cdev, LED_OFF);
-+		if (ret) {
-+			dev_err(parent, "Failed to init multicolor brightness\n");
-+			return ret;
-+		}
-+
-+		ret = devm_led_classdev_multicolor_register_ext(parent, &led->mc, init_data);
-+		if (ret) {
-+			dev_err(parent, "Couldn't register multicolor\n");
-+			return ret;
-+		}
-+		break;
-+	case MT6360_LED_ISNK1 ... MT6360_LED_ISNKML:
-+		ret = mt6360_isnk_init_default_state(led);
-+		if (ret) {
-+			dev_err(parent, "Failed to init %d isnk state\n", led->led_no);
-+			return ret;
-+		}
-+
-+		ret = devm_led_classdev_register_ext(parent, &led->isnk, init_data);
-+		if (ret) {
-+			dev_err(parent, "Couldn't register isink %d\n", led->led_no);
-+			return ret;
-+		}
-+		break;
-+	default:
-+		ret = mt6360_flash_init_default_state(led);
-+		if (ret) {
-+			dev_err(parent, "Failed to init %d flash state\n", led->led_no);
-+			return ret;
-+		}
-+
-+		ret = devm_led_classdev_flash_register_ext(parent, &led->flash, init_data);
-+		if (ret) {
-+			dev_err(parent, "Couldn't register flash %d\n", led->led_no);
-+			return ret;
-+		}
-+
-+		mt6360_init_v4l2_flash_config(led, &v4l2_config);
-+		led->v4l2_flash = v4l2_flash_init(parent, init_data->fwnode, &led->flash,
-+						  &v4l2_flash_ops, &v4l2_config);
-+		if (IS_ERR(led->v4l2_flash)) {
-+			dev_err(parent, "Failed to register %d v4l2 sd\n", led->led_no);
-+			return PTR_ERR(led->v4l2_flash);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static u32 clamp_align(u32 val, u32 min, u32 max, u32 step)
-+{
-+	u32 retval;
-+
-+	retval = clamp_val(val, min, max);
-+	if (step > 1)
-+		retval = rounddown(retval - min, step) + min;
-+
-+	return retval;
-+}
-+
-+static int mt6360_init_isnk_properties(struct mt6360_led *led, struct led_init_data *init_data)
-+{
-+	struct led_classdev *lcdev;
-+	struct mt6360_priv *priv = led->priv;
-+	struct fwnode_handle *child;
-+	u32 step_uA = MT6360_ISNKRGB_STEPUA, max_uA = MT6360_ISNKRGB_MAXUA;
-+	u32 val;
-+	int num_color = 0, ret;
-+
-+	if (led->led_no == MT6360_LED_MULTICOLOR) {
-+		struct mc_subled *sub_led;
-+
-+		sub_led = devm_kzalloc(priv->dev, sizeof(*sub_led) * MULTICOLOR_NUM_CHANNELS,
-+				       GFP_KERNEL);
-+		if (!sub_led)
-+			return -ENOMEM;
-+
-+		fwnode_for_each_child_node(init_data->fwnode, child) {
-+			u32 reg, color;
-+
-+			ret = fwnode_property_read_u32(child, "reg", &reg);
-+			if (ret || reg > MT6360_LED_ISNK3 || priv->leds_active & BIT(reg))
-+				return -EINVAL;
-+
-+			ret = fwnode_property_read_u32(child, "color", &color);
-+			if (ret) {
-+				dev_err(priv->dev, "led %d, no color specified\n", led->led_no);
-+				return ret;
-+			}
-+
-+			priv->leds_active |= BIT(reg);
-+			sub_led[num_color].color_index = color;
-+			sub_led[num_color].channel = reg;
-+			num_color++;
-+		}
-+
-+		if (num_color < 2) {
-+			dev_err(priv->dev, "Multicolor must include 2 or more led channel\n");
-+			return -EINVAL;
-+		}
-+
-+		led->mc.num_colors = num_color;
-+		led->mc.subled_info = sub_led;
-+
-+		lcdev = &led->mc.led_cdev;
-+		lcdev->brightness_set_blocking = mt6360_mc_brightness_set;
-+	} else {
-+		if (led->led_no == MT6360_LED_ISNKML) {
-+			step_uA = MT6360_ISNKML_STEPUA;
-+			max_uA = MT6360_ISNKML_MAXUA;
-+		}
-+
-+		lcdev = &led->isnk;
-+		lcdev->brightness_set_blocking = mt6360_isnk_brightness_set;
-+	}
-+
-+	ret = fwnode_property_read_u32(init_data->fwnode, "led-max-microamp", &val);
-+	if (ret) {
-+		dev_warn(priv->dev, "Not specified led-max-microamp, config to the minimum\n");
-+		val = step_uA;
-+	} else
-+		val = clamp_align(val, 0, max_uA, step_uA);
-+
-+	lcdev->max_brightness = val / step_uA;
-+
-+	fwnode_property_read_string(init_data->fwnode, "linux,default-trigger",
-+				    &lcdev->default_trigger);
-+
-+	return 0;
-+}
-+
-+static int mt6360_init_flash_properties(struct mt6360_led *led, struct led_init_data *init_data)
-+{
-+	struct led_classdev_flash *flash = &led->flash;
-+	struct led_classdev *lcdev = &flash->led_cdev;
-+	struct mt6360_priv *priv = led->priv;
-+	struct led_flash_setting *s;
-+	u32 val;
-+	int ret;
-+
-+	ret = fwnode_property_read_u32(init_data->fwnode, "led-max-microamp", &val);
-+	if (ret) {
-+		dev_warn(priv->dev, "Not specified led-max-microamp, config to the minimum\n");
-+		val = MT6360_ITORCH_MINUA;
-+	} else
-+		val = clamp_align(val, MT6360_ITORCH_MINUA, MT6360_ITORCH_MAXUA,
-+				  MT6360_ITORCH_STEPUA);
-+
-+	lcdev->max_brightness = (val - MT6360_ITORCH_MINUA) / MT6360_ITORCH_STEPUA + 1;
-+	lcdev->brightness_set_blocking = mt6360_torch_brightness_set;
-+	lcdev->flags |= LED_DEV_CAP_FLASH;
-+
-+	ret = fwnode_property_read_u32(init_data->fwnode, "flash-max-microamp", &val);
-+	if (ret) {
-+		dev_warn(priv->dev, "Not specified flash-max-microamp, config to the minimum\n");
-+		val = MT6360_ISTRB_MINUA;
-+	} else
-+		val = clamp_align(val, MT6360_ISTRB_MINUA, MT6360_ISTRB_MAXUA, MT6360_ISTRB_STEPUA);
-+
-+	s = &flash->brightness;
-+	s->min = MT6360_ISTRB_MINUA;
-+	s->step = MT6360_ISTRB_STEPUA;
-+	s->val = s->max = val;
-+
-+	/* Always configure as min level when off to prevent flash current spike */
-+	ret = _mt6360_flash_brightness_set(flash, s->min);
-+	if (ret)
-+		return ret;
-+
-+	ret = fwnode_property_read_u32(init_data->fwnode, "flash-max-timeout-us", &val);
-+	if (ret) {
-+		dev_warn(priv->dev, "Not specified flash-max-timeout-us, config to the minimum\n");
-+		val = MT6360_STRBTO_MINUS;
-+	} else
-+		val = clamp_align(val, MT6360_STRBTO_MINUS, MT6360_STRBTO_MAXUS,
-+				  MT6360_STRBTO_STEPUS);
-+
-+	s = &flash->timeout;
-+	s->min = MT6360_STRBTO_MINUS;
-+	s->step = MT6360_STRBTO_STEPUS;
-+	s->val = s->max = val;
-+
-+	flash->ops = &mt6360_flash_ops;
-+
-+	return 0;
-+}
-+
-+static int mt6360_init_common_properties(struct mt6360_led *led, struct led_init_data *init_data)
-+{
-+	const char * const states[] = { "off", "keep", "on" };
-+	const char *str;
-+	int ret;
-+
-+	if (!fwnode_property_read_string(init_data->fwnode, "default-state", &str)) {
-+		ret = match_string(states, ARRAY_SIZE(states), str);
-+		if (ret < 0)
-+			ret = STATE_OFF;
-+
-+		led->default_state = ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void mt6360_v4l2_flash_release(struct mt6360_priv *priv)
-+{
-+	int i;
-+
-+	for (i = 0; i < priv->leds_count; i++) {
-+		struct mt6360_led *led = priv->leds + i;
-+
-+		if (led->v4l2_flash)
-+			v4l2_flash_release(led->v4l2_flash);
-+	}
-+}
-+
-+static int mt6360_led_probe(struct platform_device *pdev)
-+{
-+	struct mt6360_priv *priv;
-+	struct fwnode_handle *child;
-+	size_t count;
-+	int i = 0, ret;
-+
-+	count = device_get_child_node_count(&pdev->dev);
-+	if (!count || count > MT6360_MAX_LEDS) {
-+		dev_err(&pdev->dev, "No child node or node count over max led number %lu\n", count);
-+		return -EINVAL;
-+	}
-+
-+	priv = devm_kzalloc(&pdev->dev, struct_size(priv, leds, count), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->leds_count = count;
-+	priv->dev = &pdev->dev;
-+	mutex_init(&priv->lock);
-+
-+	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!priv->regmap) {
-+		dev_err(&pdev->dev, "Failed to get parent regmap\n");
-+		return -ENODEV;
-+	}
-+
-+	device_for_each_child_node(&pdev->dev, child) {
-+		struct mt6360_led *led = priv->leds + i;
-+		struct led_init_data init_data = { .fwnode = child, };
-+		u32 reg;
-+
-+		ret = fwnode_property_read_u32(child, "reg", &reg);
-+		if (ret)
-+			goto out_flash_release;
-+
-+		if (reg > MT6360_MAX_LEDS || priv->leds_active & BIT(reg))
-+			return -EINVAL;
-+		priv->leds_active |= BIT(reg);
-+
-+		led->led_no = reg;
-+		led->priv = priv;
-+
-+		ret = mt6360_init_common_properties(led, &init_data);
-+		if (ret)
-+			goto out_flash_release;
-+
-+		if (reg == MT6360_LED_MULTICOLOR ||
-+			(reg >= MT6360_LED_ISNK1 && reg <= MT6360_LED_ISNKML))
-+			ret = mt6360_init_isnk_properties(led, &init_data);
-+		else
-+			ret = mt6360_init_flash_properties(led, &init_data);
-+
-+		if (ret)
-+			goto out_flash_release;
-+
-+		ret = mt6360_led_register(&pdev->dev, led, &init_data);
-+		if (ret)
-+			goto out_flash_release;
-+
-+		i++;
-+	}
-+
-+	platform_set_drvdata(pdev, priv);
-+	return 0;
-+
-+out_flash_release:
-+	mt6360_v4l2_flash_release(priv);
-+	return ret;
-+}
-+
-+static int mt6360_led_remove(struct platform_device *pdev)
-+{
-+	struct mt6360_priv *priv = platform_get_drvdata(pdev);
-+
-+	mt6360_v4l2_flash_release(priv);
-+	return 0;
-+}
-+
-+static const struct of_device_id __maybe_unused mt6360_led_of_id[] = {
-+	{ .compatible = "mediatek,mt6360-led", },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt6360_led_of_id);
-+
-+static struct platform_driver mt6360_led_driver = {
-+	.driver = {
-+		.name = "mt6360-led",
-+		.of_match_table = mt6360_led_of_id,
-+	},
-+	.probe = mt6360_led_probe,
-+	.remove = mt6360_led_remove,
-+};
-+module_platform_driver(mt6360_led_driver);
-+
-+MODULE_AUTHOR("Gene Chen <gene_chen@richtek.com>");
-+MODULE_DESCRIPTION("MT6360 LED Driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.7.4
+Thanks, I will update it in next patch.
 
+> > +		pwrap_writel(wrp, BIT(31) | ((adr >> 1) << 16) | wdata,
+> > +			     PWRAP_WACS2_CMD);
+> > +	} else {
+> > +		pwrap_writel(wrp, wdata, PWRAP_SWINF_2_WDATA_31_0);
+> > +		pwrap_writel(wrp, BIT(29) | adr, PWRAP_WACS2_CMD);
+> > +	}
+> >   
+> >   	return 0;
+> >   }
+> > @@ -2022,6 +2049,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
+> >   static int pwrap_probe(struct platform_device *pdev)
+> >   {
+> >   	int ret, irq;
+> > +	u32 mask_done;
+> >   	struct pmic_wrapper *wrp;
+> >   	struct device_node *np = pdev->dev.of_node;
+> >   	const struct of_device_id *of_slave_id = NULL;
+> > @@ -2116,14 +2144,21 @@ static int pwrap_probe(struct platform_device *pdev)
+> >   		}
+> >   	}
+> >   
+> > -	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_INIT_DONE0)) {
+> > +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> > +		mask_done = PWRAP_STATE_INIT_DONE1;
+> > +	else
+> > +		mask_done = PWRAP_STATE_INIT_DONE0;
+> > +
+> > +	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done)) {
+> >   		dev_dbg(wrp->dev, "initialization isn't finished\n");
+> >   		ret = -ENODEV;
+> >   		goto err_out2;
+> >   	}
+> >   
+> >   	/* Initialize watchdog, may not be done by the bootloader */
+> > -	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+> > +	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> > +		pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+> > +
+> 
+> Whats the connection between an arbiter being present and the watchdog?
+> 
+
+Thanks for reviewing.
+The arbiter capability uses new design of pwrap.
+This design cannot change the watch dog timer, So I add it here.
+Is it better to use another capability to define it?
+
+> Regards,
+> Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
