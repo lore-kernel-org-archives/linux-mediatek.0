@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF343C2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 02:47:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A2CFC2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 03:27:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 336A922228
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 02:47:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BF77524695
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2020 03:27:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GTOWs1FS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="P350qQqV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 336A922228
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TZCmxFD6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uJj7O8VB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF77524695
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EG3P/387wzZGJdaf2lL6AZeQmm+QdRWUn1KoQ5UUhCw=; b=GTOWs1FSepb+FKyco4e2ZMs+6
-	2JpNhsozxcDVcrAO/YC15L1I5eQWG0CDAdqyh+v0VnkPfj4pUvk/6Sp10svUKH6/MpYIU9GHOdJAQ
-	/qI9xQnHZ4CxCU6ZkZskvH5Lpdz4nEVkC5Uk4FvFpGJyHlnh7hL+OzOeW8v0eyqaCMiFHcefa5w44
-	zW6c1EjPpAjg8gD4NntQyDYUCcjWMsBLx6d5m1I0gSaL8hgxrZqbZqmyOVDorC+eKnFsEN1AYiv1m
-	Ab9Rn+CjgyEkkoaERDzLB7/wbBWP30ZaXOIZs54CnwCScBWK1Z2qtowSvSqITI1q2PEHtOh+TIxUi
-	Psla9EfKw==;
+	 bh=SnZfUejO/Kah70WqKbC97DKjmuraD1Rm1HBMcA2yo1A=; b=TZCmxFD6n+ZzcRWyZ58T+JJXK
+	QPxg6ewIV5KGa308S/WLd796LUCZE/jy9Z6pF+SVj6M516SmNFdEwDek1iowDedh+dCosm8EVG3Bh
+	vD1tlKgYxE7uZdcu+YCvrq3lvbQIktjgHJnvt85naxPlcuAA8DpCfHZJ/Lxe+SPLxx5fpVzvfAczi
+	a1xUxlkrpf/9/lcaLD11tcifLxq/eHSUc+T0bHrYHGER/s03FU3XZqjnaQ20hr2GSWWTijvT6ZAez
+	AW4G0ejduAWZ5Jc+iLIj2MwuGIMqY35L3U3iebyb2s/wLgOEXDmM2UqgivS7zgEqF6aJ45UkUCP7K
+	OPWyEoJbg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfDUq-00057D-5k; Wed, 18 Nov 2020 02:47:00 +0000
+	id 1kfE7j-0007lR-Ii; Wed, 18 Nov 2020 03:27:11 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfDUk-00056Q-Tn; Wed, 18 Nov 2020 02:46:56 +0000
-X-UUID: 364397a3f2704e028114bbf5defa507d-20201117
+ id 1kfE7g-0007jz-Cf; Wed, 18 Nov 2020 03:27:09 +0000
+X-UUID: 664ab064e7794e2db7cbcd4a90c5dbd1-20201117
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=+WZEfb7k1YczY34xv0fToQ3dUxzEeZQPIUHuAbvFbuk=; 
- b=P350qQqV1KteqSvrE2hxhSoVXCItho1t/zVls4ZcITHhiBvbfugiY3jcZtZfnth+nm7bHw40RJVQTbkxtGkTkj078s4ZQ5Jo1mok/xsYmblNqnabNlvf6BqhX00GSXTl0/TCAyjYVQCWsUqriEZVHh6lhd08IvtD5a88edRmQT8=;
-X-UUID: 364397a3f2704e028114bbf5defa507d-20201117
+ bh=rVcqz6XUTMam5Rpds84b/f/9khQeZe+z1fGfOnsNnj0=; 
+ b=uJj7O8VBaWuZG+jsiOSgFdaJfvgnPrhqDliQrIVbjJ4j5ATy3t4MoJEOS91EUHNyOw867NNgNEittQRiYhbs9QEUMaIpMgcITugGKI5i1gjvqXChROHTk0S8nXaoTuVLzhZKYUGnHmCXQM7tugYC373CdT4Q55EGDn4bG9gIx0Y=;
+X-UUID: 664ab064e7794e2db7cbcd4a90c5dbd1-20201117
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
+ (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2113715504; Tue, 17 Nov 2020 18:46:48 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 173023410; Tue, 17 Nov 2020 19:27:00 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Nov 2020 18:41:36 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Nov 2020 10:41:35 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 18 Nov 2020 10:41:34 +0800
-Message-ID: <1605667293.8636.5.camel@mtksdaap41>
-Subject: Re: [PATCH v5 14/24] clk: mediatek: Add MT8192 imp i2c wrapper
- clock support
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Date: Wed, 18 Nov 2020 10:41:33 +0800
-In-Reply-To: <1604887429-29445-15-git-send-email-weiyi.lu@mediatek.com>
-References: <1604887429-29445-1-git-send-email-weiyi.lu@mediatek.com>
- <1604887429-29445-15-git-send-email-weiyi.lu@mediatek.com>
+ 15.0.1497.2; Tue, 17 Nov 2020 19:26:58 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 18 Nov 2020 11:26:55 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 18 Nov 2020 11:26:54 +0800
+Message-ID: <1605670015.11864.5.camel@mhfsdcap03>
+Subject: Re: [PATCH v1 1/3] dt-bindings: mmc: Add optional cqe off properties
+From: Wenbin Mei <wenbin.mei@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Wed, 18 Nov 2020 11:26:55 +0800
+In-Reply-To: <20201116192801.GA1991505@bogus>
+References: <20201112075208.28183-1-wenbin.mei@mediatek.com>
+ <20201112075208.28183-2-wenbin.mei@mediatek.com>
+ <20201116192801.GA1991505@bogus>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E0983558C713B21671019A4B5CB7E2E62F2D4A278694AFAB10C6DD3BE75DF4EE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201117_214655_094356_302BFF19 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20201117_222708_561920_71922F6E 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,61 +85,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>, Bradley Bolen <bradleybolen@gmail.com>,
+ srv_heupstream@mediatek.com, Baolin Wang <baolin.wang@linaro.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, irq-linux@rere.qmqm.pl,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Ludovic Barre <ludovic.barre@st.com>,
+ Krishna Konda <kkonda@codeaurora.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Veerabhadrarao Badiganti <vbadigan@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-11-09 at 10:03 +0800, Weiyi Lu wrote:
-> Add MT8192 imp i2c wrapper clock provider
+On Mon, 2020-11-16 at 13:28 -0600, Rob Herring wrote:
+> On Thu, Nov 12, 2020 at 03:52:06PM +0800, Wenbin Mei wrote:
+> > Add optional properties for cqe hosts which are used to set cqe off
+> > during suspend flow.
+> > 
+> > Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> > ---
+> >  Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+> > index b96da0c7f819..457c9a84b988 100644
+> > --- a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+> > +++ b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+> > @@ -164,6 +164,13 @@ properties:
+> >      description:
+> >        enable SDIO IRQ signalling on this interface
+> >  
+> > +  cqe-off-in-suspend:
+> > +    $ref: /schemas/types.yaml#/definitions/flag
+> > +    description:
+> > +      After suspend, the mmc host is powered off by HW, and bring CQE register
+> > +      to default state, so we add the flag to re-init CQE register after resume
+> > +      back.
 > 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/clk/mediatek/Kconfig                   |   6 ++
->  drivers/clk/mediatek/Makefile                  |   1 +
->  drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c | 119 +++++++++++++++++++++++++
->  3 files changed, 126 insertions(+)
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c
+> The driver change is before suspend, but this says on resume...
 > 
-> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index eb549f8..8acc7d6 100644
-> --- a/drivers/clk/mediatek/Kconfig
-> +++ b/drivers/clk/mediatek/Kconfig
-> @@ -515,6 +515,12 @@ config COMMON_CLK_MT8192_IMGSYS
->  	help
->  	  This driver supports MediaTek MT8192 imgsys and imgsys2 clocks.
->  
-> +config COMMON_CLK_MT8192_IMP_IIC_WRAP
-> +	bool "Clock driver for MediaTek MT8192 imp_iic_wrap"
-> +	depends on COMMON_CLK_MT8192
-> +	help
-> +	  This driver supports MediaTek MT8192 imp_iic_wrap clocks.
-> +
->  config COMMON_CLK_MT8516
->  	bool "Clock driver for MediaTek MT8516"
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
-
-<...>
-
-> +
-> +static struct platform_driver clk_mt8192_imp_iic_wrap_drv = {
-> +	.probe = mtk_clk_simple_probe,
-
-Good to have this generic probe function. Now several mtk clk drivers
-are just a few data.
-
-But this series still add >10 configs for mt8192 clock drivers. Why do
-we need separate configs for clocks of different domain? I don't think
-they need lots of resource. We should review the rationale and reduce
-the numbers. 
-
-
-Joe.C
+> In any case, this should be implied by the SoC specific compatible.
+> 
+Thanks for your reply, I will drop this patchset, and resend another
+patchset for this issue.
+> > +
+> >    full-pwr-cycle:
+> >      $ref: /schemas/types.yaml#/definitions/flag
+> >      description:
+> > -- 
+> > 2.18.0
+> > 
 
 _______________________________________________
 Linux-mediatek mailing list
