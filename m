@@ -2,23 +2,24 @@ Return-Path: <SRS0=wQP+=EZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73BB8C63777
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 22:27:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3475CC63777
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 22:29:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD9CE208FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 22:27:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8E670221F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 22:29:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ryIDi9a+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LfNizfWw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD9CE208FE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DxYFNCqg";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="sJZ8Pspc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E670221F8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,71 +28,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+ViE6i/RAd3cRsQSFnKdzCRpxnLZx3+UfnPFXeuKmdM=; b=ryIDi9a+YgBzhTNrLYJnp+4Uh
-	pYxDnTfDlTLENlM455pq8ybnYxOOG+Uslws31yPE8pt4yPXVLLwBktqSd8/fKtk89S4ld9O97/jNW
-	r36zDLWztegd328pMwFruaqFQr2eUa1UTZQwxB9BpoGPv3Ih1l7FXKaNmXA+HM0zxyiO2rlzo9pAh
-	3nK4OA9K9HUPxft+7MQVghC2exMPzz5Bad9OrZL81HJYKiPouBW24vi6WnpmBYTCu3Udgqn9k8Pt6
-	u8LpQlSZW+cDIDcvG8gh6GaBwU0yn12bB2KPKxJtpbb0xtw9SoW/xSzDG1kteRnJeDwTPQWMDfod3
-	yFS5GjACg==;
+	 bh=iAOdY5PuO1edlUkst4Mng72L6DvLYUSCEQuW0tOk6es=; b=DxYFNCqgJKTFohNW46nXOteCc
+	T1yPztCJFll6l3oFOb94wjKhEmjAdkdtfLSfpvld3Gvguau8tEbWtgmpbApicDqmDFqldnja5tPrw
+	TdCY0pHyMo+KysOj+R7gbgI0TJHGBhMx1IhZybDk+16CbmP770uKgMnAWn2tqRKSAVt0JxFj9Qgxw
+	wIXv1W7jzhxNij/1aW4ISBrnd5pTJQhixWm+nk15bU/jBR/VVzi+mM1sCir8X2RTpajbnUKlAD/3F
+	FIoThqml54EKPY/6jpQaeGi6UvIfsFyqM6Ai0R+jgTW2goD5NwUK5I1sljis/ia4mkvkmoVDLJBTC
+	FcJzwcmkw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfsOJ-0008JS-LO; Thu, 19 Nov 2020 22:26:59 +0000
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
+	id 1kfsQx-0000Mg-8V; Thu, 19 Nov 2020 22:29:43 +0000
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfsOH-0008Ij-Hf; Thu, 19 Nov 2020 22:26:58 +0000
-Received: by mail-ej1-x643.google.com with SMTP id f20so10164716ejz.4;
- Thu, 19 Nov 2020 14:26:56 -0800 (PST)
+ id 1kfsQu-0000LN-La; Thu, 19 Nov 2020 22:29:41 +0000
+Received: by mail-ej1-x642.google.com with SMTP id i19so10148804ejx.9;
+ Thu, 19 Nov 2020 14:29:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LbNQsMFkK1yV1B1LtL5N3Qufx4e03bP9/878SJx99ZY=;
- b=LfNizfWwMJlvsDK7TkuVLjpZmsZJ47u3qRc+5tuIayvySsP/F42X1P3q7d0Y2Tjryi
- r4N/ChZgBGa/Lvda+9kRXn4gKMr4m8DUqTNqQSdbcxr3GLh3hknmKq3Z6iGP3ckt+r38
- 1OQz+W7d2W71tTvoQxBsAHoAlPShWNceF7OzdXcqyPScS0SLoLLfUhn+S9KuOssyetwI
- Oy46k9O5vCnntSmz4qHUzKnNiUujMgL9dl+Gr4ON7tdPTyBRATASB+c8Nl0r5Fwb8UnU
- 2ckq6uegVBO91pPF6UvKFXij9vVmqJ754lnSyoAau+yoWZejMp6T2s3AZoEF8HY7fzfR
- q6oQ==
+ bh=YE+NfLWS5nN0QpwMQoDKHvzm/h0QK+Pd5fMfxxvArlQ=;
+ b=sJZ8PspcKQvHwdsuWkKA6BzPZ9GjaqKhwq99gFjNplm0+Qv1GtbjlG7kTfD9RPhgPN
+ kWatUjM6i4M1JHZ1CVojXI+gG51faLdWhKHQ6iLZilY6OfKY3/WsekzgVWpPU+5i22lQ
+ SvBwm24uppGA92+X5EB9YW/23or4D2XlSQjCA6HFuQJpk9Tf/OheMz/SAlo7JxjdWh95
+ 9pGTr4z+zIM/EEoAjnSVHDFdNL6wIacksV96CIQ/Q3tVODUXRDIUnKtie+1rtgSt0AXF
+ LZbUWNPUaBO8bqwxuv8eDfZm2k5+fVsA8kfjfahqUudEHKQdT9X5B0lTJ/f/Ypowlbmx
+ NLkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=LbNQsMFkK1yV1B1LtL5N3Qufx4e03bP9/878SJx99ZY=;
- b=ZOsn+cQhv38uVk+T6tJZgsCtdO/s51uLJgNGMD0fhyUXrC5JtDVaNYz5xECM3Lz5pk
- qscY1kANvfzV7+PiAP3AQelzYYINuR+hmoysYjygqkT9CgJXq76Nr3Jfmys3W3oZ5dJE
- YR6AhlFo91qx03mdUPvu26J30lwZMPHu3XBuuR4OI0AwEnjQC1Nmi0MzucaGkCb2icsU
- IiJUatW4lV0bCLSrwUSvzqkBehDxPXAnFLVXvt/TLPZpk72NGX7kmcFhYtp31UwG5WPd
- G5Tv8sIXHhGx5z99vbxMTrZPFeFnuaYMr5WfePcHdlQK3EvahLrRYVNUnvV0q8VipRAN
- JiHA==
-X-Gm-Message-State: AOAM5310DtLbb/CbUrj7UaHa4p6LdZpFUI6WM249gwoQw8a2MDFZH8fB
- xqaryK8VWheE0IPAXr85nT8=
-X-Google-Smtp-Source: ABdhPJxm/T3wnrw3Zcv7cp66ZFcGtFhRT7XBaN1zQUgG4VBx5/eLl4bxa8i8fMHRnq6Y0sVcIldDog==
-X-Received: by 2002:a17:906:6b86:: with SMTP id
- l6mr30525271ejr.524.1605824815814; 
- Thu, 19 Nov 2020 14:26:55 -0800 (PST)
+ bh=YE+NfLWS5nN0QpwMQoDKHvzm/h0QK+Pd5fMfxxvArlQ=;
+ b=i1YY6IZ18wV6xr3sPGVK+Ao042uUgAeoWSGSr4S4GyZX2Q1z0tnXkiH81IWxon64vy
+ Z6omSlpCXrf9XnrIVmgoOlxJ4aNKkHlfBnn9Evt6iu1mwFJsIffnZcnazcrWHaue4dVF
+ q9PFA7MpAkNJEMMkEOi1Ny8ecmKVwE+ggq19UFTfthNwtoDKi4zfdrIR7FEY64rlnvgs
+ /xA6u7UJSdAfBmVVj8Elw/0Vyp8OUkYVAphMMM4mer/HSMJZBJlw1k0tujyoiU/UIgJJ
+ yAAY1ARuXgXSjSJESFnK5yIkCCV5p8+bZUuplCJDpNJLLb2sCc/30eUf2jthFrEmuJky
+ 5tiQ==
+X-Gm-Message-State: AOAM533e2LcQ0FRPDEexezx1D5xpLoZc3nLCxtiMww8hR+hXAUJ0VU62
+ m5ojtC8TZf1/R/jybhMHVsJUwrBdWqM=
+X-Google-Smtp-Source: ABdhPJw2rQ1fkucfU+GA3P4pJqvB9mWFBRySbizNIECPrFVzfhykidWs/IvGPgG7CDECBB9djxnpqg==
+X-Received: by 2002:a17:906:c1c3:: with SMTP id
+ bw3mr28934986ejb.126.1605824979191; 
+ Thu, 19 Nov 2020 14:29:39 -0800 (PST)
 Received: from ?IPv6:2a01:110f:b59:fd00:5807:584b:19c8:e7be?
  ([2a01:110f:b59:fd00:5807:584b:19c8:e7be])
- by smtp.gmail.com with ESMTPSA id n22sm342031edr.11.2020.11.19.14.26.53
+ by smtp.gmail.com with ESMTPSA id rn2sm400989ejb.94.2020.11.19.14.29.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Nov 2020 14:26:55 -0800 (PST)
-Subject: Re: [PATCH v7 2/5] dt-bindings: leds: Add LED_COLOR_ID_MOONLIGHT
- definitions
-To: Pavel Machek <pavel@ucw.cz>
+ Thu, 19 Nov 2020 14:29:38 -0800 (PST)
+Subject: Re: [PATCH v7 1/5] leds: flash: Add flash registration with undefined
+ CONFIG_LEDS_CLASS_FLASH
+To: Gene Chen <gene.chen.richtek@gmail.com>, pavel@ucw.cz,
+ robh+dt@kernel.org, matthias.bgg@gmail.com
 References: <1605696462-391-1-git-send-email-gene.chen.richtek@gmail.com>
- <1605696462-391-3-git-send-email-gene.chen.richtek@gmail.com>
- <20201118213712.GA22371@amd> <6068b1e3-a4c8-6c7d-d33d-f2238e905e43@gmail.com>
- <20201119215721.GA5337@amd>
+ <1605696462-391-2-git-send-email-gene.chen.richtek@gmail.com>
 From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Message-ID: <0700c32d-643b-fedb-06f0-21547b18205d@gmail.com>
-Date: Thu, 19 Nov 2020 23:26:52 +0100
+Message-ID: <3164b1ed-9e47-88cd-d492-ff5a9243e5ef@gmail.com>
+Date: Thu, 19 Nov 2020 23:29:36 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.2
 MIME-Version: 1.0
-In-Reply-To: <20201119215721.GA5337@amd>
+In-Reply-To: <1605696462-391-2-git-send-email-gene.chen.richtek@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201119_172657_615729_D49E5AAD 
-X-CRM114-Status: GOOD (  17.57  )
+X-CRM114-CacheID: sfid-20201119_172940_779370_45A9D79B 
+X-CRM114-Status: GOOD (  23.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,53 +103,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- cy_huang@richtek.com, linux-kernel@vger.kernel.org, gene_chen@richtek.com,
- benjamin.chao@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, dmurphy@ti.com, matthias.bgg@gmail.com,
- Gene Chen <gene.chen.richtek@gmail.com>, Wilma.Wu@mediatek.com,
- linux-leds@vger.kernel.org, shufan_lee@richtek.com
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
+ linux-mediatek@lists.infradead.org, dmurphy@ti.com, linux-leds@vger.kernel.org,
+ Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ shufan_lee@richtek.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/19/20 10:57 PM, Pavel Machek wrote:
-> On Thu 2020-11-19 22:03:14, Jacek Anaszewski wrote:
->> Hi Pavel, Gene,
->>
->> On 11/18/20 10:37 PM, Pavel Machek wrote:
->>> Hi!
->>>
->>>> From: Gene Chen <gene_chen@richtek.com>
->>>>
->>>> Add LED_COLOR_ID_MOONLIGHT definitions
->>>
->>> Why is moonlight a color? Camera flashes are usually white, no?
->>>
->>> At least it needs a comment...
->>
->> That's my fault, In fact I should have asked about adding
->> LED_FUNCTION_MOONLIGHT, it was evidently too late for me that evening...
-> 
-> Aha, that makes more sense.
-> 
-> But please let's call it "torch" if we do that, as that is already
-> used in kernel sources... and probably in the interface, too:
+Hi Gene,
 
-I'd say that torch is something different that moonlight,
-but we would need more input from Gene to learn more about
-the nature of light emitted by ML LED on his device.
-
-Please note that torch is usually meant as the other mode of
-flash LED (sometimes it is called "movie mode"), which is already
-handled by brightness file of LED class flash device (i.e. its LED class
-subset), and which also maps to v4l2-flash TORCH mode.
-
-> ./arch/arm/mach-pxa/ezx.c:    	       	  .name = "a910::torch",
+On 11/18/20 11:47 AM, Gene Chen wrote:
+> From: Gene Chen <gene_chen@richtek.com>
 > 
-> Best regards,
-> 							Pavel
+> Add flash registration with undefined CONFIG_LEDS_CLASS_FLASH
+> 
+> Signed-off-by: Gene Chen <gene_chen@richtek.com>
+> ---
+>   include/linux/led-class-flash.h | 36 ++++++++++++++++++++++++++++++++++++
+>   1 file changed, 36 insertions(+)
+> 
+> diff --git a/include/linux/led-class-flash.h b/include/linux/led-class-flash.h
+> index 21a3358..4f56c28 100644
+> --- a/include/linux/led-class-flash.h
+> +++ b/include/linux/led-class-flash.h
+> @@ -85,6 +85,7 @@ static inline struct led_classdev_flash *lcdev_to_flcdev(
+>   	return container_of(lcdev, struct led_classdev_flash, led_cdev);
+>   }
+>   
+> +#if IS_ENABLED(CONFIG_LEDS_CLASS_FLASH)
+>   /**
+>    * led_classdev_flash_register_ext - register a new object of LED class with
+>    *				     init data and with support for flash LEDs
+> @@ -127,6 +128,41 @@ static inline int devm_led_classdev_flash_register(struct device *parent,
+>   void devm_led_classdev_flash_unregister(struct device *parent,
+>   					struct led_classdev_flash *fled_cdev);
+>   
+> +#else
+> +
+> +static inline int led_classdev_flash_register_ext(struct device *parent,
+> +				    struct led_classdev_flash *fled_cdev,
+> +				    struct led_init_data *init_data)
+> +{
+> +	return -EINVAL;
+
+s/-EINVAL/0/
+
+The goal here is to assure that client will not fail when using no-op.
+
+> +}
+> +
+> +static inline int led_classdev_flash_register(struct device *parent,
+> +					   struct led_classdev_flash *fled_cdev)
+> +{
+> +	return led_classdev_flash_register_ext(parent, fled_cdev, NULL);
+> +}
+
+This function should be placed after #ifdef block because its
+shape is the same for both cases.
+
+> +static inline void led_classdev_flash_unregister(struct led_classdev_flash *fled_cdev) {};
+> +static inline int devm_led_classdev_flash_register_ext(struct device *parent,
+> +				     struct led_classdev_flash *fled_cdev,
+> +				     struct led_init_data *init_data)
+> +{
+> +	return -EINVAL;
+
+/-EINVAL/0/
+
+Please do the same fix in all no-ops in the led-class-multicolor.h,
+as we've discussed.
+
+> +}
+> +
+> +static inline int devm_led_classdev_flash_register(struct device *parent,
+> +				     struct led_classdev_flash *fled_cdev)
+> +{
+> +	return devm_led_classdev_flash_register_ext(parent, fled_cdev, NULL);
+> +}
+
+
+This function should also be placed after #ifdef block.
+Please make the same optimizations in the led-class-multicolor.h as you
+are at it.
+
+> +
+> +void devm_led_classdev_flash_unregister(struct device *parent,
+
+s/void/static inline void/
+
+That's the reason why you got warning from buildbot.
+
+> +					struct led_classdev_flash *fled_cdev)
+> +{};
+> +
+> +#endif  /* IS_ENABLED(CONFIG_LEDS_CLASS_FLASH) */
+> +
+>   /**
+>    * led_set_flash_strobe - setup flash strobe
+>    * @fled_cdev: the flash LED to set strobe on
 > 
 
 -- 
