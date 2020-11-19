@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2AE2C388F9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 06:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 10204C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 06:28:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 545DB246AD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 06:27:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 79F4B246B8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 06:28:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GlvpSxA3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cH0y2BVM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 545DB246AD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EIeIknkZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Of9FLX4a"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79F4B246B8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=G7w8/8ntR9eIMT2mJPkx1IjTpmPbbbsqhcG3vsH/sys=; b=GlvpSxA36OUMXB58yumyUgQm7
-	/zy0GijeD6EYwqs4r+KwOaWwJz/QNEEHNkLit7xM958NE+5gQiGybfKIw9rrmBkg2HQD8C+sP7zk2
-	uzsJ+nSHg6JWC2a4p+4QPvGOZyPcUJ3BjmJucy0I82h3iWI4AJCrSJ//TOo5YifQPHth6lzF4dNUw
-	tbxZTx6vYUqvWyHR3I47bH17W5T7JcSABnN7TTl1tYxS+DWQ6pJt+4s8164MiDJTbQLuirAYFMrno
-	hfNUYaT6wuKBpj6FlJC/I6N4j1yK/E2fPmEOp5WJCdcFQOc4IqOj/BZ47JDG89ugqzNz5f459Rc1H
-	BQeQxk6WQ==;
+	 bh=36OooZVC9MOxxXmRwa9pmQFYoBSwrc70OvUQeZAyodQ=; b=EIeIknkZAAKngHdhCcwY759MT
+	hhHipSmOOW2BbqUxU0qgWYGTD5X2X1UWmYQ2pmNp8DU8HZZuCZCVsP4gbFfm8eIrwKQfmjFr9XHzT
+	eWUi6j1wB0KZdy3gKyl0/8HL4KAi300z+qKKyaTA46Wx5azvRew1PWi+tnI62LLgDE25SozNuCPko
+	uuLBD9JYD6Pd1Oy1Ws9e50HrEPJ/QCIiMpVJU4+QexbzB+3vMeTTY4KoYlTI/0iRW/eRZkhlwSO9A
+	i8YBY1axlxTk84I9bm4mKEaK4WjqPjBBGg3TLD73me3q6OfV4z41+VTwOdDDYqr/QWLuPG69NyJ4C
+	1hS7vraJg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfdPs-0001dD-IN; Thu, 19 Nov 2020 06:27:36 +0000
+	id 1kfdQR-0001nc-2x; Thu, 19 Nov 2020 06:28:11 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfdPW-0001Xx-U4; Thu, 19 Nov 2020 06:27:16 +0000
-X-UUID: 1576fb255de64cd784dc6f54cde11066-20201118
+ id 1kfdQ9-0001hS-SR; Thu, 19 Nov 2020 06:27:55 +0000
+X-UUID: 564c9a3810e8473682c25a1862d36ac4-20201118
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Ioem/N90dye+4AvaddbOXGvKCEWYhEsXSifGJdwDonE=; 
- b=cH0y2BVMDrukZV42uqZRRKgBmdy2NMTnVOk3AFWTgEgkmXXvZLAqK8axKYwxYzk7bcUsKqZJZ185Zcqlx3t0bgUCNb1Wlq/KiRuT/gEsS3DLzapEQYZ3Karz9pZDqv4ifN2Rj6Ej1cwsuHKTDwM7QKaSbe1XBO+AKrc/FOKwwII=;
-X-UUID: 1576fb255de64cd784dc6f54cde11066-20201118
+ bh=bKN9T7uUGAHhnimOEbGd5+D2/dUtgAt7UmwoP5xnvQk=; 
+ b=Of9FLX4aAdJ1ZAUq8WYhe6sBrKPARAS7YBOwBBwfKUzMLMvPgFU/ip1cCXuInDzHVzzYJ95HswDZz2AVi+Jcwt+3umxyS4VM2O7Cw9LzaHLAsU4PYtOMVjRFiXAVVHdYUaxviOYr4Vm0ouLa2MKQFavPlMWRgJ/Sv99kLICnNIY=;
+X-UUID: 564c9a3810e8473682c25a1862d36ac4-20201118
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1144522444; Wed, 18 Nov 2020 22:26:55 -0800
+ with ESMTP id 1453560156; Wed, 18 Nov 2020 22:27:46 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Nov 2020 22:19:09 -0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Nov 2020 22:19:18 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Nov 2020 14:19:07 +0800
+ 15.0.1497.2; Thu, 19 Nov 2020 14:19:17 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 19 Nov 2020 14:19:06 +0800
+ Transport; Thu, 19 Nov 2020 14:19:16 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Robin
  Murphy" <robin.murphy@arm.com>
-Subject: [PATCH v2 3/6] iommu/mediatek: Add iotlb_sync_map to sync whole the
- iova range
-Date: Thu, 19 Nov 2020 14:18:33 +0800
-Message-ID: <20201119061836.15238-4-yong.wu@mediatek.com>
+Subject: [PATCH v2 5/6] iommu/mediatek: Enable granule_ignore for unmap
+Date: Thu, 19 Nov 2020 14:18:35 +0800
+Message-ID: <20201119061836.15238-6-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201119061836.15238-1-yong.wu@mediatek.com>
 References: <20201119061836.15238-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201119_012715_207451_382733EE 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20201119_012754_711061_135AD18D 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,53 +96,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove IO_PGTABLE_QUIRK_TLBI_ON_MAP to avoid tlb sync for each a small
-chunk memory, Use the new iotlb_sync_map to tlb_sync once for whole the
-iova range of iommu_map.
+MediaTek IOMMU HW don't care about granule when it flush tlb.
+In order to flush tlb once when unmap, Enable this flag to gather all
+the iova chunk of unmap.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
-After reading msm_iommu.c, It looks IO_PGTABLE_QUIRK_TLBI_ON_MAP can be
-removed.
----
- drivers/iommu/mtk_iommu.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ drivers/iommu/mtk_iommu.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index c072cee532c2..8c2d4a225666 100644
+index 8c2d4a225666..94786860bd84 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -323,7 +323,6 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
- 	dom->cfg = (struct io_pgtable_cfg) {
- 		.quirks = IO_PGTABLE_QUIRK_ARM_NS |
- 			IO_PGTABLE_QUIRK_NO_PERMS |
--			IO_PGTABLE_QUIRK_TLBI_ON_MAP |
- 			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
- 		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
- 		.ias = 32,
-@@ -454,6 +453,14 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
- 				       data);
+@@ -432,6 +432,7 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 
++	gather->granule_ignore = true;
+ 	return dom->iop->unmap(dom->iop, iova, size, gather);
  }
  
-+static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
-+			       size_t size)
-+{
-+	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+
-+	mtk_iommu_tlb_flush_range_sync(iova, size, size, dom->data);
-+}
-+
- static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 					  dma_addr_t iova)
- {
-@@ -540,6 +547,7 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.unmap		= mtk_iommu_unmap,
- 	.flush_iotlb_all = mtk_iommu_flush_iotlb_all,
- 	.iotlb_sync	= mtk_iommu_iotlb_sync,
-+	.iotlb_sync_map	= mtk_iommu_sync_map,
- 	.iova_to_phys	= mtk_iommu_iova_to_phys,
- 	.probe_device	= mtk_iommu_probe_device,
- 	.release_device	= mtk_iommu_release_device,
 -- 
 2.18.0
 _______________________________________________
