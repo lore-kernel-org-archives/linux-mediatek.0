@@ -2,89 +2,61 @@ Return-Path: <SRS0=wQP+=EZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50684C2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 13:56:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70ADEC63697
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 14:08:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B501D24698
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 13:56:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ECA3C246CA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 14:08:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VbtW/hTU";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="X7ZAjI1B"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B501D24698
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N1HNUT2E"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ECA3C246CA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SwWl6m7njh7BZnYHyWCOC56g33zmJIfHETj4Z5dVyJI=; b=VbtW/hTUJuIdPd+fOMuFHYPUL
-	Zh9pi0Sfq/ybDIZvcqgKvsB688CgeEAjtgubwybZm+rTm9Pev/4vs4LJDjl5qJ5cpNaDfH/v7HfXJ
-	e4Pi27RdfdWuISRTiOfs+0391PeA8WmwvJcprSLd2Gj1qevss87LbQ6wfv9FCZxnGuBjAX1kBr7h7
-	jyYpV9YYzvZw719ozsKnMuAl5A+5eDcrup7MPWqXEFDz4+DsvtkjNI2ELFGmxzFuQDZTdC7/kYpAE
-	6aXm2qxQoTFQ7AUDvkyc4gVObkepgUgCyAwR5hqoV8ynNlx2LhiN0KxVrDCnOWQkjpbdCMsNnJYy/
-	XE51AVAYw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KvxUQeHzqJlPWPvobJ7+s8vPiFFu5UU6W+JoWGzcILc=; b=N1HNUT2E844MRZfPO0X6eIf8mG
+	5GUNjcY5OAem5nLp7WBCGwPqK/nPl1pne4kDb/anj9UN8DEW03tbM2SwhmWYbiVFQyU+Dpzyy9Ylm
+	MnC91hLXyMzGqpsSviZ8tUlUsHPhTW5OzqpwwSv2jRJ8UjCOWzdTO0lhn2GFO6LQv1o39BplshBsL
+	DlGfV2WbwquEne+Q4Lkj2TV4UMkj9kLi0ZTR1JsP7nHMzGJkk46PSM0gkWBIddgYA3at4vUS4gzot
+	PihbQCmKMUYAgIJ1wNHD6ti2dAdEHJa93ckbpA3WiB+zT0MTpn+E68sXVEx0fPojADAMj7p3TJ7hq
+	q8dSS/yw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfkQN-0007Gi-Te; Thu, 19 Nov 2020 13:56:36 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1kfkbf-0000Aw-Rt; Thu, 19 Nov 2020 14:08:15 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfkQ3-0007A6-Az; Thu, 19 Nov 2020 13:56:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=LWOlXFpsgc9zSJ4vRGvLpe0n1Bm9CyIcRgP2r0s6WIE=; b=X7ZAjI1Bn4b2pNaffwzcAqmiB+
- +8HG5r81ozlqOLnUqn/NjaS3+OMDoiQASgF2xfUFWgN1RqIo3EPYzRLT8r6wtWXuY+Vgv1DgWL97n
- 7fQm/8I8lZ89qQRZAjkPWouIrQtosgFfXgqICk55PPYqeVNi8xrvso/r2nFLvh6PxZbTdjam1LyPR
- suMm8gDfuAWqSnG9L6hsXf5M7TtbUoIliY3oCrVPntU9y93atUFOVHlVPfKX83g+2vwCWER0nrEJu
- PYEFyNiu0kJ6gO9z5Fa65JgG4OJHWxT4yjcPL+93N8za/FhZeTEBvvcuGXF+DLQXR567iPLnuucG4
- oqreJbFg==;
-Received: from mga18.intel.com ([134.134.136.126])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfkPz-0005k9-DL; Thu, 19 Nov 2020 13:56:14 +0000
-IronPort-SDR: 67mS6Mb4ZOPgdXyrTBhsdo+Eifi0ZW1E9n4yeK3L7NIToveDVMEoKf1eB5COXS6WlR7AqTXm8R
- LaP733XFl0OA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9809"; a="159062055"
-X-IronPort-AV: E=Sophos;i="5.77,490,1596524400"; d="scan'208";a="159062055"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Nov 2020 05:56:03 -0800
-IronPort-SDR: nQ5Pp2HkbFiq3GYBNci212BokRNBZNjV8o0SpI2jXmN6rlfNSU26gxrwPladBWPG2lW2WcCxw/
- TStzdtqXjHZw==
-X-IronPort-AV: E=Sophos;i="5.77,490,1596524400"; d="scan'208";a="330939080"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Nov 2020 05:55:59 -0800
-Received: from andy by smile with local (Exim 4.94)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1kfkQm-007xXE-JR; Thu, 19 Nov 2020 15:57:00 +0200
-Date: Thu, 19 Nov 2020 15:57:00 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [PATCH v15 2/2] media: i2c: Add OV02A10 image sensor driver
-Message-ID: <20201119135700.GG4077@smile.fi.intel.com>
-References: <20201013130503.2412-1-dongchun.zhu@mediatek.com>
- <20201013130503.2412-3-dongchun.zhu@mediatek.com>
- <20201023143156.GX4077@smile.fi.intel.com>
- <1605791201.4733.114.camel@mhfsdcap03>
+ id 1kfkbd-00008u-Ht
+ for linux-mediatek@lists.infradead.org; Thu, 19 Nov 2020 14:08:14 +0000
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CcM2C5Hmbzkbn8;
+ Thu, 19 Nov 2020 22:07:31 +0800 (CST)
+Received: from huawei.com (10.175.127.227) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Thu, 19 Nov 2020
+ 22:07:49 +0800
+From: Zhang Qilong <zhangqilong3@huawei.com>
+To: <gregkh@linuxfoundation.org>, <jirislaby@kernel.org>,
+ <matthias.bgg@gmail.com>
+Subject: [PATCH] serial: 8250-mtk: Fix reference leak in mtk8250_probe
+Date: Thu, 19 Nov 2020 22:11:26 +0800
+Message-ID: <20201119141126.168850-1-zhangqilong3@huawei.com>
+X-Mailer: git-send-email 2.25.4
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1605791201.4733.114.camel@mhfsdcap03>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-Originating-IP: [10.175.127.227]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201119_135611_937618_D0EEE88B 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20201119_090813_864805_54A003B5 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,41 +68,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 19, 2020 at 09:06:41PM +0800, Dongchun Zhu wrote:
-> On Fri, 2020-10-23 at 17:31 +0300, Andy Shevchenko wrote:
-> > On Tue, Oct 13, 2020 at 09:05:03PM +0800, Dongchun Zhu wrote:
-> > > Add a V4L2 sub-device driver for OmniVision OV02A10 image sensor.
+The pm_runtime_enable will increase power disable depth.
+Thus a pairing decrement is needed on the error handling
+path to keep it balanced according to context.
 
-...
+Fixes: e32a83c70cf98 ("serial: 8250-mtk: modify mtk uart power and clock management")
+Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
+---
+ drivers/tty/serial/8250/8250_mtk.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-> > > +#define OV02A10_ID_MASK					0xffff
-> > 
-> > GENMASK()
-> > 
-> > (And include bits.h for that)
-> > 
-> 
-> It seems could build pass without including bits.h, as DW9768 once used.
-
-The rule of thumb is to include all headers you have direct users for.
-Exceptions when you have indirect inclusion that guarantees to provide
-others (like bitmap.h implies bits.h, etc).
-
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index fa876e2c13e5..f7d3023f860f 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -572,15 +572,22 @@ static int mtk8250_probe(struct platform_device *pdev)
+ 	pm_runtime_enable(&pdev->dev);
+ 	err = mtk8250_runtime_resume(&pdev->dev);
+ 	if (err)
+-		return err;
++		goto err_pm_disable;
+ 
+ 	data->line = serial8250_register_8250_port(&uart);
+-	if (data->line < 0)
+-		return data->line;
++	if (data->line < 0) {
++		err = data->line;
++		goto err_pm_disable;
++	}
+ 
+ 	data->rx_wakeup_irq = platform_get_irq_optional(pdev, 1);
+ 
+ 	return 0;
++
++err_pm_disable:
++	pm_runtime_disable(&pdev->dev);
++
++	return err;
+ }
+ 
+ static int mtk8250_remove(struct platform_device *pdev)
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.25.4
 
 
 _______________________________________________
