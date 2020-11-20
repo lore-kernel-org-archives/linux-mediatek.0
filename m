@@ -2,85 +2,67 @@ Return-Path: <SRS0=OETw=E2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 574D5C56201
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 19:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DDDEC2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 19:51:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E7E7E22464
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 19:31:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0443C2242B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 19:51:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VVuvpOWb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="GgFl3K9I"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E7E7E22464
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nySzm7D1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="0HJ898xk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0443C2242B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JIuvBfGGI6pZSbhveKY9wr8j3kSr8W/44Q3j41sfDOU=; b=VVuvpOWbqqB9r/z9nPEPyxM7n
-	cqQnRIO9tblUWTH3TllSO0dwgapIkBIFTNQoD34Q1ibIUzVCOOaev3TMJCOXyGyjNgxTPviNpYW+R
-	AlJP0uVQ6jBivsJkRfH9WmhJh9nqBBbIzA1L6jKT2QHJTnBOUqX74P/h+Usnj3A/KAQZXqN0SwxQh
-	NOmfyMM0wpyt8YGiHa8nQ4OWst1d2bfRp4uaS59kOWrmY9H/Wl0xgo2vv/dmwWu9adf4GhiY8UuMv
-	2aaciXhwUTRGDml1reeDJkO6zO9ZWv1Y0fghpFUSj4jZEOmTmurAvmZA7MWpSAJYQA1emG93ozl08
-	qty/dDXRw==;
+	 bh=2wxE0sL0Y4Fx6i74uF02jYBT551BLh76Q6at7DWJovg=; b=nySzm7D1hxILw1BvqoWkzyTwB
+	AeKxQnJ5Sd7HoFD5mXihSL19sOMh8DrZxCBZmmKj9tXLzQpVKk73tFJXUxMgJMBo2h3JaABb156LX
+	P9vWHrosAY01ed+4Bebs4yLbLkuET2XA23qE0nmIQThSW5pxqSKR7E8yiJ5DIRX2JKOvnNGURSK7d
+	+ULfFD+JchVnoMkKJxCPeMZHPd0LGM9dV1hr+vGxc3R04Pth7NTxbiC7cQHLYHBnuB59bTpUtAbLd
+	EF1SWcGUQQ7uC4Y0hn+J+Ua3HHljVF0QwINpipUQPT8MABYG3+BY5NQ1N1GH/UASpDKG4O2i9IGK3
+	XuLNuLtqA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kgC7P-0004tt-S4; Fri, 20 Nov 2020 19:30:51 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1kgCRm-0006f7-Hu; Fri, 20 Nov 2020 19:51:54 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgC7K-0004po-U8
- for linux-mediatek@lists.infradead.org; Fri, 20 Nov 2020 19:30:49 +0000
-Received: by mail-pf1-x443.google.com with SMTP id 10so8838822pfp.5
- for <linux-mediatek@lists.infradead.org>; Fri, 20 Nov 2020 11:30:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=3bv50j9tOMZCSWAChUvUk5K6TgooTRt3SRcQZBJ9fcA=;
- b=GgFl3K9IS/lWsdMjkEVVAtTSDzsQ0sxEOabPKwuHzNJyTA7s1nVN/P5Py+wtAIOvbE
- i43RryzoLL4QMDFVI6bDxTe0ngekUN0rycJ/u5dixn0o4ZWxiMdHtnF6M1zgV7bxdmjG
- OxnZTS8PQwcd6ZCwnahaxVB8GYQEw6f4nxFx4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=3bv50j9tOMZCSWAChUvUk5K6TgooTRt3SRcQZBJ9fcA=;
- b=sYi8zWey+pjXUVQQ8jp5vwH4YYLAzR770Aops3gvqlYIn+TxyXyKDttQfPKrTsXkA+
- DQvJYn/fKBBGr39Zem8aufKwrrMJJ3c+mtF6LPA4WGz1+0sOqp+zlv3eljIyH6ugftSg
- 0auLAlMTGxvBL/16nyHG4LaRdtXPWeTMrDnkXoWyq49KhtvN7ifuoV1A2jaHqoqVhGHQ
- eZ6mDgoqPFaA6GspWCpLpIDt1nMqQ9m2P2+pPg1WY371/q4e/v2Xzyvmyz0VPA8cMSob
- E8IWEXzdln3kxPlWUPwfechMGHsNV9TdhxwVzHs+rMuRZLgn5AOKhUAquqnXLpYqO56x
- NVeQ==
-X-Gm-Message-State: AOAM531JJa9UsCoh1dZNkduWnXHKgQHGI7erOq4yMd9uw1eDqqzY/ozg
- EOnrLW+iyeTbtKyAQnbQbBx9vIWat1gjjiwF
-X-Google-Smtp-Source: ABdhPJwl3VgOHP/MWhG5DtpaEL0Yyt6dBbRzpe/94BRgWnGkgcq6AJ5JXkZmDK0TJqDkyAhq9Y3Q+Q==
-X-Received: by 2002:a63:5043:: with SMTP id q3mr17907345pgl.137.1605900643099; 
- Fri, 20 Nov 2020 11:30:43 -0800 (PST)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id d10sm4785681pjj.38.2020.11.20.11.30.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2020 11:30:41 -0800 (PST)
-Date: Fri, 20 Nov 2020 11:30:40 -0800
-From: Kees Cook <keescook@chromium.org>
-To: Jakub Kicinski <kuba@kernel.org>
+ id 1kgCRh-0006cH-00; Fri, 20 Nov 2020 19:51:50 +0000
+Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
+ [163.114.132.6])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id ADA4D206B6;
+ Fri, 20 Nov 2020 19:51:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605901908;
+ bh=RBzOhaxiAPO90htsWQNreeN48VhmFALIIs8F+S8F2tg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=0HJ898xky9A4AiX47c8E/kv2vloKTCLDsa1B08r0Ns0UI6ViLC8sEEmzvLmSWmHDR
+ rh+QM7asV5JMfRqDaW/zMVHUMAG8pWVLOHT3LXTHM6aAp9QNwMcpVcVlrfF8wRUqJ9
+ pWgdeTKSVxQ+8c5KHivLBQCp2OjpIRpNZteZuQdk=
+Date: Fri, 20 Nov 2020 11:51:42 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Kees Cook <keescook@chromium.org>
 Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-Message-ID: <202011201129.B13FDB3C@keescook>
+Message-ID: <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <202011201129.B13FDB3C@keescook>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011201129.B13FDB3C@keescook>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201120_143047_088397_D31AB72E 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20201120_145149_277572_1B2CCDF9 
+X-CRM114-Status: GOOD (  22.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,40 +117,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 20, 2020 at 10:53:44AM -0800, Jakub Kicinski wrote:
-> On Fri, 20 Nov 2020 12:21:39 -0600 Gustavo A. R. Silva wrote:
-> > This series aims to fix almost all remaining fall-through warnings in
-> > order to enable -Wimplicit-fallthrough for Clang.
+On Fri, 20 Nov 2020 11:30:40 -0800 Kees Cook wrote:
+> On Fri, Nov 20, 2020 at 10:53:44AM -0800, Jakub Kicinski wrote:
+> > On Fri, 20 Nov 2020 12:21:39 -0600 Gustavo A. R. Silva wrote:  
+> > > This series aims to fix almost all remaining fall-through warnings in
+> > > order to enable -Wimplicit-fallthrough for Clang.
+> > > 
+> > > In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
+> > > add multiple break/goto/return/fallthrough statements instead of just
+> > > letting the code fall through to the next case.
+> > > 
+> > > Notice that in order to enable -Wimplicit-fallthrough for Clang, this
+> > > change[1] is meant to be reverted at some point. So, this patch helps
+> > > to move in that direction.
+> > > 
+> > > Something important to mention is that there is currently a discrepancy
+> > > between GCC and Clang when dealing with switch fall-through to empty case
+> > > statements or to cases that only contain a break/continue/return
+> > > statement[2][3][4].  
 > > 
-> > In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
-> > add multiple break/goto/return/fallthrough statements instead of just
-> > letting the code fall through to the next case.
+> > Are we sure we want to make this change? Was it discussed before?
 > > 
-> > Notice that in order to enable -Wimplicit-fallthrough for Clang, this
-> > change[1] is meant to be reverted at some point. So, this patch helps
-> > to move in that direction.
+> > Are there any bugs Clangs puritanical definition of fallthrough helped
+> > find?
 > > 
-> > Something important to mention is that there is currently a discrepancy
-> > between GCC and Clang when dealing with switch fall-through to empty case
-> > statements or to cases that only contain a break/continue/return
-> > statement[2][3][4].
+> > IMVHO compiler warnings are supposed to warn about issues that could
+> > be bugs. Falling through to default: break; can hardly be a bug?!  
 > 
-> Are we sure we want to make this change? Was it discussed before?
-> 
-> Are there any bugs Clangs puritanical definition of fallthrough helped
-> find?
-> 
-> IMVHO compiler warnings are supposed to warn about issues that could
-> be bugs. Falling through to default: break; can hardly be a bug?!
+> It's certainly a place where the intent is not always clear. I think
+> this makes all the cases unambiguous, and doesn't impact the machine
+> code, since the compiler will happily optimize away any behavioral
+> redundancy.
 
-It's certainly a place where the intent is not always clear. I think
-this makes all the cases unambiguous, and doesn't impact the machine
-code, since the compiler will happily optimize away any behavioral
-redundancy.
+If none of the 140 patches here fix a real bug, and there is no change
+to machine code then it sounds to me like a W=2 kind of a warning.
 
-
--- 
-Kees Cook
+I think clang is just being annoying here, but if I'm the only one who
+feels this way chances are I'm wrong :)
 
 _______________________________________________
 Linux-mediatek mailing list
