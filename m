@@ -2,80 +2,101 @@ Return-Path: <SRS0=OETw=E2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43113C5519F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B336C56202
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:31:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 95F7F221F8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:13:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EE92D22267
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:31:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ss5IAItm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nOAIDYqa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95F7F221F8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EA0UWXis";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="lWHAHkAD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE92D22267
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5xP0M3vi6bFvOgVdufcO6SiedQMY+Mg2DIoQjsB/OB4=; b=ss5IAItmSk5/OecmKOiRAYboi
-	KEISSp0oB1/5jaPSzCMtjmj5fNqC4mFfvv0xdeHCV5pXa9Bqugs0uWVNxqqtQKGRD92O+RIsWifnj
-	/nCohMwYOoKSqLa9m8/h2zQCkp2vovN3WfjFTvDohub7NjiYXOEfsblOKVDohSgBDcylTpNnh/+4I
-	8IqYqXD1kD6uLA9vMOwuPwodMpXsrYQ/WwEEO/hi64cI1woeMmK4k8BjqSQHuba+aoPeIGs5DVc8v
-	Oa4LRvLg8X7ysPapF8emadhI/2Bf1b1qwKgp3PXqgsNiMngRSu4/7iVvw0/tbY4sqryHzW5y3jisQ
-	qm/p017zg==;
+	 bh=7diJCLqgEj+AYUgCpNcOo7mkXBZl27Cp1g3XAhfT6E0=; b=EA0UWXisfE6PeU7jmgWgNT1Yh
+	isL2ElAYjO8I+R+DUrcl7cj8IPaBwva7ytnBlD4fwRBV0fgDUIelUGTxKkIftAtG5lDhrX7i8qqBU
+	cKsqI9YsUAee6Nwahy5GSjWKworNol0CXv6AxJPzKv395r+/Wf/dQlM8bedyU/stGiwN6aF7XBDL+
+	tYg5GNzAgDZahFDBxU1hMrD2aMiHZBOjyNbisEjED8v9euJYViVPKGT/DXGPB/KBC7Lm0l18UEvFx
+	qMrHtXlA8N0uaOPXjmDWIbzsxBuE1D3kU16pqZK1xmm7tOXkEXokZkA/oiAfNptr0Zy5NFew+PWaz
+	1kxZqiAkA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfwr4-0001C6-Iy; Fri, 20 Nov 2020 03:12:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kfx8T-0002SH-48; Fri, 20 Nov 2020 03:30:57 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfwr0-0001BK-5s; Fri, 20 Nov 2020 03:12:55 +0000
-X-UUID: 575822cbe7b74023856a2678f2c80137-20201119
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=VmKEyw32nvky3c16rWdPOFpeaZYuIxA9Yo9izbfe0w8=; 
- b=nOAIDYqaMO9CXt3RU7TAoD734YUD8KSjpsQA1bGUbk5XmAFKCuHwOUhzGTqQKRA5KdtcEYCUtVfyGwyFEQjP+Ssb5eFpaCuhw5Z/XbzY3AeyssUB6XZaL+wZSClT8zA/IiOLNW8yEmOgnUCZDNFvvccVaL19YWKPYNbz4gflXbI=;
-X-UUID: 575822cbe7b74023856a2678f2c80137-20201119
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 742133256; Thu, 19 Nov 2020 19:12:47 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Nov 2020 19:06:19 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 Nov 2020 11:06:15 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 20 Nov 2020 11:06:15 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <matthias.bgg@gmail.com>,
- <tzungbi@google.com>, <alsa-devel@alsa-project.org>, <robh+dt@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH 1/2] ASoC: mediatek: mt6359: Fix regulator_dev_lookup() fails
- for id "LDO_VAUD18"
-Date: Fri, 20 Nov 2020 11:06:12 +0800
-Message-ID: <1605841573-1442-2-git-send-email-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1605841573-1442-1-git-send-email-jiaxin.yu@mediatek.com>
-References: <1605841573-1442-1-git-send-email-jiaxin.yu@mediatek.com>
+ id 1kfx8Q-0002RE-9K; Fri, 20 Nov 2020 03:30:55 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AK3POrJ096713;
+ Fri, 20 Nov 2020 03:30:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=jpMD3b1qJW/Kul31vRtcwfkmxhU26skq+zg6BUmega4=;
+ b=lWHAHkAD0KmpcibgC0Z1+H2PrV/CUbDLr7rie2WaMBxfIjbR1dwusGS4rZvG/W1kP5kp
+ tt9mQYoNNZXX+iGSciu29U6CbSQvuXQZdT6oxsl497RxZwA31oFsRvkthsZnf7XSEG3E
+ FkKTztrFIwFclkJ2oSzL/rtkzFbO1c3TWKyNE4QlikmIHN08lVNqoZdKdnZfHk/IWKbA
+ aQ+xuJyTXjy9hZBcPz2TG0/HleMRX+JjFEL0lgDiyKNqcjenxtnZyw6ZMb4ciDzXbCV5
+ Bfa6sA7qBh8qGuYlqNgicogwawemTPLGc8zPG41ctu4uWVuZcB0ji1KTvOTg6h4APdDx Gg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 34t76m8qvp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Fri, 20 Nov 2020 03:30:42 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AK3PjYv032437;
+ Fri, 20 Nov 2020 03:30:41 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 34uspx2hq7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 20 Nov 2020 03:30:41 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AK3UaPc017127;
+ Fri, 20 Nov 2020 03:30:36 GMT
+Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 19 Nov 2020 19:30:36 -0800
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, jejb@linux.ibm.com,
+ alim.akhtar@samsung.com, avri.altman@wdc.com, linux-scsi@vger.kernel.org
+Subject: Re: [PATCH v1] scsi: ufs: Fix race between shutdown and runtime
+ resume flow
+Date: Thu, 19 Nov 2020 22:30:34 -0500
+Message-Id: <160584260540.532.6488395968913616505.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201119062916.12931-1-stanley.chu@mediatek.com>
+References: <20201119062916.12931-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9810
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ malwarescore=0
+ mlxscore=0 bulkscore=0 suspectscore=0 adultscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011200023
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9810
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ phishscore=0
+ adultscore=0 priorityscore=1501 bulkscore=0 clxscore=1015 mlxlogscore=999
+ malwarescore=0 mlxscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2011200023
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201119_221254_482320_449420E0 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20201119_223054_505085_29E5C161 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,67 +108,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: shane.chien@mediatek.com, Trevor.Wu@mediatek.com,
- Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, bvanassche@acm.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>, andy.teng@mediatek.com,
+ beanhuo@micron.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mt6359 platform device is instantiated by mfd_add_devices(). In the
-case, dev->of_node is NULL so that always fails to get the regulator_dev.
+On Thu, 19 Nov 2020 14:29:16 +0800, Stanley Chu wrote:
 
-Use regualator-name "vaud18" that in dts node instead of
-"LDO_VAUD19-supply". So that we can get regulator_dev through
-regulator_lookup_by_name() directly.
+> If UFS host device is in runtime-suspended state while
+> UFS shutdown callback is invoked, UFS device shall be
+> resumed for register accesses. Currently only UFS local
+> runtime resume function will be invoked to wake up the host.
+> This is not enough because if someone triggers runtime
+> resume from block layer, then race may happen between
+> shutdown and runtime resume flow, and finally lead to
+> unlocked register access.
+> 
+> [...]
 
-Fixes: 64a70744b778 ("ASoC: Fix vaud18 power leakage of mt6359")
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- sound/soc/codecs/mt6359.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Applied to 5.10/scsi-fixes, thanks!
 
-diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
-index d37dbd2b50c2..6de0d744fa9e 100644
---- a/sound/soc/codecs/mt6359.c
-+++ b/sound/soc/codecs/mt6359.c
-@@ -1943,7 +1943,6 @@ static const struct snd_soc_dapm_widget mt6359_dapm_widgets[] = {
- 	SND_SOC_DAPM_SUPPLY_S("CLK_BUF", SUPPLY_SEQ_CLK_BUF,
- 			      MT6359_DCXO_CW12,
- 			      RG_XO_AUDIO_EN_M_SFT, 0, NULL, 0),
--	SND_SOC_DAPM_REGULATOR_SUPPLY("LDO_VAUD18", 0, 0),
- 	SND_SOC_DAPM_SUPPLY_S("AUDGLB", SUPPLY_SEQ_AUD_GLB,
- 			      MT6359_AUDDEC_ANA_CON13,
- 			      RG_AUDGLB_PWRDN_VA32_SFT, 1, NULL, 0),
-@@ -1963,6 +1962,8 @@ static const struct snd_soc_dapm_widget mt6359_dapm_widgets[] = {
- 	SND_SOC_DAPM_SUPPLY_S("AUDIF_CK", SUPPLY_SEQ_TOP_CK,
- 			      MT6359_AUD_TOP_CKPDN_CON0,
- 			      RG_AUDIF_CK_PDN_SFT, 1, NULL, 0),
-+	SND_SOC_DAPM_REGULATOR_SUPPLY("vaud18", 0, 0),
-+
- 	/* Digital Clock */
- 	SND_SOC_DAPM_SUPPLY_S("AUDIO_TOP_AFE_CTL", SUPPLY_SEQ_AUD_TOP_LAST,
- 			      MT6359_AUDIO_TOP_CON0,
-@@ -2312,7 +2313,7 @@ static int mt_dcc_clk_connect(struct snd_soc_dapm_widget *source,
- static const struct snd_soc_dapm_route mt6359_dapm_routes[] = {
- 	/* Capture */
- 	{"AIFTX_Supply", NULL, "CLK_BUF"},
--	{"AIFTX_Supply", NULL, "LDO_VAUD18"},
-+	{"AIFTX_Supply", NULL, "vaud18"},
- 	{"AIFTX_Supply", NULL, "AUDGLB"},
- 	{"AIFTX_Supply", NULL, "CLKSQ Audio"},
- 	{"AIFTX_Supply", NULL, "AUD_CK"},
-@@ -2440,7 +2441,7 @@ static const struct snd_soc_dapm_route mt6359_dapm_routes[] = {
- 
- 	/* DL Supply */
- 	{"DL Power Supply", NULL, "CLK_BUF"},
--	{"DL Power Supply", NULL, "LDO_VAUD18"},
-+	{"DL Power Supply", NULL, "vaud18"},
- 	{"DL Power Supply", NULL, "AUDGLB"},
- 	{"DL Power Supply", NULL, "CLKSQ Audio"},
- 	{"DL Power Supply", NULL, "AUDNCP_CK"},
+[1/1] scsi: ufs: Fix race between shutdown and runtime resume flow
+      https://git.kernel.org/mkp/scsi/c/e92643db5148
+
 -- 
-2.18.0
+Martin K. Petersen	Oracle Linux Engineering
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
