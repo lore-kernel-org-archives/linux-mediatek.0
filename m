@@ -1,76 +1,90 @@
-Return-Path: <SRS0=wQP+=EZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=OETw=E2=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04E55C388F9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 23:46:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 17410C388F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 00:30:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4416122227
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2020 23:46:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7FED122240
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 00:30:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rNn6mSHU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="2GywtwA3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4416122227
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bQMlcdUU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="dC/Qm7TK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FED122240
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y2rkyiNwYusYdyKHe9IANKoTI9PDfsB3FInDk7CvCck=; b=rNn6mSHUvNmCtZMijqMpquKKM
-	3//PZlFhGEMgl5vUtl+3tqCtPeC3+hYRrjYHK+N22WLIccknMGk7zq0KqLpGG8LyYd0yh2s649nID
-	O/WMMLZOhe8HFoIsvezX1FYCONcY1i8jVFhaU3IR6GP1toObwzi08BpqUpur+V3FA6/cwwq1oRZFS
-	g/TND3kayHheODf9R8ewuBlt2J434zvTH2VaZbqsiS352PTk1jLF+pkkdsV6zrYLRpEKVoLJArMbg
-	LFZJlAi62ZQ96+hNGrMZpWarOoyE04fDsp9P9knUjLZd0fCNwPmgCGwkLmU68vxyYPypysdyPVJOo
-	j/Wd6Wc2w==;
+	 bh=P6xib7UGHLN+/uaobrHhbj5WmBaiQxRj0qGGlRS6i+0=; b=bQMlcdUUZlukIvdh22g3XAaQh
+	h90a99a57lU975+MzHLKPDNcT+imM9QWmRtcboJsSLDbnbXXjL1/GC9I+xUDr1lFZOVWHYEeWi2im
+	24aQVP/1qcqCGtnJW5aEXiOgTpMLjz9sk5KmoFC9ifCxFQJggv+Va9j7BzymBNH16gPqBlEqipNH9
+	w7P7gWpMS9Vejxp+COtXrL46chqbmlCvVIZFKeNIwyS+kJJ2v4w4JmgSRZlRJ3fq6uf3IoUtbUbwm
+	0xl7dJAGi09d5nZAmtT1Jg2l94L2v+ptuRuN/3KzBLxGVg1713JKT+3pZOjwwhWaQUrGRXhCSpaSI
+	OeMLFfJig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kftdO-0007kW-Ee; Thu, 19 Nov 2020 23:46:38 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kfuJU-0006KL-73; Fri, 20 Nov 2020 00:30:08 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kftdJ-0007jH-6g; Thu, 19 Nov 2020 23:46:34 +0000
-Received: from mail-ed1-f49.google.com (mail-ed1-f49.google.com
- [209.85.208.49])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D89DE22242;
- Thu, 19 Nov 2020 23:46:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605829592;
- bh=atNqHP21gJT9rAEgD1/FeO1JQmSYlgzMpUpGQRs2Du8=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=2GywtwA3CR4Qhf+369j5zwvc4+ncMYL+XNgKiTJhaxnK/iioXpBRJYw+k0bLQ665+
- iD1oWEPUEp5FN9qPOaJtkdY++LO+mXpZ/uwXaTsgxH2oUYU3TpBRcWEy60NqXtbLCf
- LsgTxQ6bjkPyU8lKDAvb+SaU/vqYkFGKOQxpBEqg=
-Received: by mail-ed1-f49.google.com with SMTP id d18so7673343edt.7;
- Thu, 19 Nov 2020 15:46:31 -0800 (PST)
-X-Gm-Message-State: AOAM531vdWSYPl/YY/T2YM3ZhXm8Q7AFnEnbYzuCFQZfSpuA58xo8oOf
- 2Xk5yzLzjL5ZytIkxgnjR+J+tAZ9cH3tncHdsg==
-X-Google-Smtp-Source: ABdhPJyar4nqIkLSrBO4OCyU9WzttgY6mv+UDLe/f1ki0Hk2sOtBHKjgo58dJwCpmIQDuPNcF0Vp70N159KFXI/AY6A=
-X-Received: by 2002:aa7:dbca:: with SMTP id v10mr33460798edt.219.1605829590176; 
- Thu, 19 Nov 2020 15:46:30 -0800 (PST)
-MIME-Version: 1.0
-References: <20201102000438.29225-1-chunkuang.hu@kernel.org>
-In-Reply-To: <20201102000438.29225-1-chunkuang.hu@kernel.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 20 Nov 2020 07:46:20 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8c3WxPQ3igPojuF-3HbctQW0qiFM5GaqSuTDNcTSvvQA@mail.gmail.com>
-Message-ID: <CAAOTY_8c3WxPQ3igPojuF-3HbctQW0qiFM5GaqSuTDNcTSvvQA@mail.gmail.com>
-Subject: Re: [PATCH v2] soc / drm: mediatek: cmdq: Remove timeout handler in
- helper function
+ id 1kfuJN-0006JC-K2
+ for linux-mediatek@lists.infradead.org; Fri, 20 Nov 2020 00:30:07 +0000
+Received: by mail-wm1-x341.google.com with SMTP id c198so6950363wmd.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 19 Nov 2020 16:29:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=tVDijfDshOZ5EX5JCLPn1kfMb9n0yaU32SCV2DQVsFg=;
+ b=dC/Qm7TK0SdC/clTSEdXr+ZlvFVP6/r3El7Nj1d85rGH0xWL4QXS/SQmTtEHILh9YP
+ YzWHTlI9/+08wfIiXcVSPNk4Oyo0c0oTXUP+OHKR8PC4/+irR6FX3xGZDbucyPxOF6XC
+ TFHDhg10JUjzcHvg/NLWA2mBhPB44RbYU+ngMNqwotrIC0P6wSNOs7PArgE0rqkQeEEf
+ xLN8Ep0UUjTav28YLp11bWjs8VKmSq8nDgW7v+YXnzQef/BqP0LhqY6fO/aZSiCgz1CQ
+ uiIlxdF31UHobu8ieTnDNdtRem1oVC+3+Uz1V9I8Mjl+XxuqdBQgpwmFau0frUlWh56o
+ jB2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=tVDijfDshOZ5EX5JCLPn1kfMb9n0yaU32SCV2DQVsFg=;
+ b=XNa3Xg8HDfqK5bbpM4SpSFKA81QDxaDLKGEl7syIaBlvoPZsnBO6N2oJG9J+uUoGGj
+ khutA+8S1BeWNJ0In03ZYYsN+GHCEJgQ6IEq86zKKSuvunaduQJsZXdvntbwGCW45MAB
+ xdMxQ+uqZMuxLol+A0bakpJLLQUDYScErTeTR7g/GAAnb2lh1WpwNVXz5wOI1F377a76
+ DOLPntSf3fnBGJxvvsLaUK3NU9YOhTfPt41/hz9UB65pHdhvRzSubn+xF4IpnL84i+Mm
+ poqAlTh/6r1QPhnDdWE5JruM/REgI3XR7vtvkgGIFkNcFjXcEr+I+0jt3uwErij8/+uh
+ uZ0Q==
+X-Gm-Message-State: AOAM531mpItS8Z2DDzq956OGIQZeq9gG6jRFfLvHsUsCKoRqUi6M0sND
+ +u8hRP8Ii/JfXze/HP5i8ko=
+X-Google-Smtp-Source: ABdhPJyxtKzKptFTtq9dzV6T1By5V/tWzrHZ3dAmfuqSv6J1FS5yP9p5uuDSbEtaaBzYolhgL2Ff7g==
+X-Received: by 2002:a7b:cb09:: with SMTP id u9mr7044795wmj.109.1605832199186; 
+ Thu, 19 Nov 2020 16:29:59 -0800 (PST)
+Received: from a-VirtualBox ([103.120.71.253])
+ by smtp.gmail.com with ESMTPSA id 89sm2554633wrp.58.2020.11.19.16.29.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Nov 2020 16:29:58 -0800 (PST)
+Date: Fri, 20 Nov 2020 05:29:50 +0500
+From: Bilal Wasim <bilalwasim676@gmail.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: Re: [PATCH] drm/mediatek: dsi: Modify horizontal front/back porch
+ byte formula
+Message-ID: <20201120052950.0ca597fb@a-VirtualBox>
+In-Reply-To: <20201119232335.6704-1-chunkuang.hu@kernel.org>
+References: <20201119232335.6704-1-chunkuang.hu@kernel.org>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201119_184633_425136_FC14B8ED 
-X-CRM114-Status: GOOD (  29.43  )
+X-CRM114-CacheID: sfid-20201119_193001_678364_4F6B5C34 
+X-CRM114-Status: GOOD (  19.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,148 +96,145 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE1hdHRoaWFzOgoKSSd2ZSBwcm92aWRlZCB0aGUgZXhhbXBsZSBmb3Igd2h5IG9mIHRoaXMg
-cGF0Y2guIEhvdyBkbyB5b3UgdGhpbmsKYWJvdXQgdGhpcyBwYXRjaD8KClJlZ2FyZHMsCkNodW4t
-S3VhbmcuCgpDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4g5pa8IDIwMjDl
-ubQxMeaciDLml6Ug6YCx5LiAIOS4iuWNiDg6MDTlr6vpgZPvvJoKPgo+IEZvciBlYWNoIGNsaWVu
-dCBkcml2ZXIsIGl0cyB0aW1lb3V0IGhhbmRsZXIgbmVlZCB0byBkdW1wIGhhcmR3YXJlIHJlZ2lz
-dGVyCj4gb3IgaXRzIHN0YXRlIG1hY2hpbmUgaW5mb3JtYXRpb24sIGFuZCB0aGVpciB3YXkgdG8g
-ZGV0ZWN0IHRpbWVvdXQgYXJlCj4gYWxzbyBkaWZmZXJlbnQsIHNvIHJlbW92ZSB0aW1lb3V0IGhh
-bmRsZXIgaW4gaGVscGVyIGZ1bmN0aW9uIGFuZAo+IGxldCBjbGllbnQgZHJpdmVyIGltcGxlbWVu
-dCBpdHMgb3duIHRpbWVvdXQgaGFuZGxlci4KPgo+IFNpZ25lZC1vZmYtYnk6IENodW4tS3Vhbmcg
-SHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+IC0tLQo+IHYxIGlzIG9uZSBwYXRjaCBpbiBz
-ZXJpZXMgIk1lZGlhdGVrIERSTSBkcml2ZXIgZGV0ZWN0IENNRFEgZXhlY3V0aW9uCj4gdGltZW91
-dCBieSB2YmxhbmsgSVJRIiwgYnV0IGFjY29yZGluZyB0byBKYXNzaSdzIHN1Z2dlc3Rpb24gWzFd
-LCBzZW5kCj4gZWFjaCBwYXRjaCBpbiBkaWZmZXJlbnQgc2VyaWVzLgo+Cj4gWzJdIGlzIGFuIGV4
-YW1wbGUgdGhhdCBkaWZmZXJlbnQgY2xpZW50IGhhcyBkaWZmZXJlbnQgd2F5IHRvIGNhbGN1bGF0
-ZQo+IHRpbWVvdXQuIFNvbWUgY2xpZW50IGRyaXZlciBjYXJlIGFib3V0IGVhY2ggcGFja2V0J3Mg
-ZXhlY3V0aW9uIHRpbWUsIGJ1dAo+IHNvbWUgY2xpZW50IGRyaXZlciBjYXJlIGFib3V0IHRoZSB0
-b3RhbCBleGVjdXRpb24gdGltZSBmb3IgYWxsIHBhY2tldHMuCj4KPiBbMV0KPiBodHRwczovL3Bh
-dGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvY292ZXIvMjAyMDA5Mjcy
-MzA0MjIuMTE2MTAtMS1jaHVua3VhbmcuaHVAa2VybmVsLm9yZy8KPiBbMl0KPiBodHRwczovL3Bh
-dGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvcGF0Y2gvMjAyMDEwMjIw
-OTQxNTIuMTc2NjItMS1ob3Vsb25nLndlaUBtZWRpYXRlay5jb20vCj4KPiBDaGFuZ2VzIGluIHYy
-Ogo+IDEuIFJlYmFzZSBvbnRvIExpbnV4IDUuMTAtcmMxCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8ICAzICstCj4gIGRyaXZlcnMvc29jL21lZGlhdGVr
-L210ay1jbWRxLWhlbHBlci5jICB8IDQxICstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgaW5j
-bHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLWNtZHEuaCAgIHwgMTAgKy0tLS0tCj4gIDMgZmls
-ZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA1MSBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiBpbmRleCBhYzAzODU3MjE2NGQuLjRiZTVk
-MWZjY2YyZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9j
-cnRjLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiBA
-QCAtODI0LDggKzgyNCw3IEBAIGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVjdCBkcm1fZGV2
-aWNlICpkcm1fZGV2LAo+ICAjaWYgSVNfUkVBQ0hBQkxFKENPTkZJR19NVEtfQ01EUSkKPiAgICAg
-ICAgIG10a19jcnRjLT5jbWRxX2NsaWVudCA9Cj4gICAgICAgICAgICAgICAgICAgICAgICAgY21k
-cV9tYm94X2NyZWF0ZShtdGtfY3J0Yy0+bW1zeXNfZGV2LAo+IC0gICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgZHJtX2NydGNfaW5kZXgoJm10a19jcnRjLT5iYXNlKSwKPiAt
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwMDApOwo+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZHJtX2NydGNfaW5kZXgoJm10a19jcnRj
-LT5iYXNlKSk7Cj4gICAgICAgICBpZiAoSVNfRVJSKG10a19jcnRjLT5jbWRxX2NsaWVudCkpIHsK
-PiAgICAgICAgICAgICAgICAgZGV2X2RiZyhkZXYsICJtdGtfY3J0YyAlZCBmYWlsZWQgdG8gY3Jl
-YXRlIG1haWxib3ggY2xpZW50LCB3cml0aW5nIHJlZ2lzdGVyIGJ5IENQVSBub3dcbiIsCj4gICAg
-ICAgICAgICAgICAgICAgICAgICAgZHJtX2NydGNfaW5kZXgoJm10a19jcnRjLT5iYXNlKSk7Cj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1jbWRxLWhlbHBlci5jIGIvZHJp
-dmVycy9zb2MvbWVkaWF0ZWsvbXRrLWNtZHEtaGVscGVyLmMKPiBpbmRleCA1MDU2NTFiMGQ3MTUu
-LjI4MGQzYmQ5ZjY3NSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstY21k
-cS1oZWxwZXIuYwo+ICsrKyBiL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1jbWRxLWhlbHBlci5j
-Cj4gQEAgLTcwLDE0ICs3MCw3IEBAIGludCBjbWRxX2Rldl9nZXRfY2xpZW50X3JlZyhzdHJ1Y3Qg
-ZGV2aWNlICpkZXYsCj4gIH0KPiAgRVhQT1JUX1NZTUJPTChjbWRxX2Rldl9nZXRfY2xpZW50X3Jl
-Zyk7Cj4KPiAtc3RhdGljIHZvaWQgY21kcV9jbGllbnRfdGltZW91dChzdHJ1Y3QgdGltZXJfbGlz
-dCAqdCkKPiAtewo+IC0gICAgICAgc3RydWN0IGNtZHFfY2xpZW50ICpjbGllbnQgPSBmcm9tX3Rp
-bWVyKGNsaWVudCwgdCwgdGltZXIpOwo+IC0KPiAtICAgICAgIGRldl9lcnIoY2xpZW50LT5jbGll
-bnQuZGV2LCAiY21kcSB0aW1lb3V0IVxuIik7Cj4gLX0KPiAtCj4gLXN0cnVjdCBjbWRxX2NsaWVu
-dCAqY21kcV9tYm94X2NyZWF0ZShzdHJ1Y3QgZGV2aWNlICpkZXYsIGludCBpbmRleCwgdTMyIHRp
-bWVvdXQpCj4gK3N0cnVjdCBjbWRxX2NsaWVudCAqY21kcV9tYm94X2NyZWF0ZShzdHJ1Y3QgZGV2
-aWNlICpkZXYsIGludCBpbmRleCkKPiAgewo+ICAgICAgICAgc3RydWN0IGNtZHFfY2xpZW50ICpj
-bGllbnQ7Cj4KPiBAQCAtODUsMTIgKzc4LDYgQEAgc3RydWN0IGNtZHFfY2xpZW50ICpjbWRxX21i
-b3hfY3JlYXRlKHN0cnVjdCBkZXZpY2UgKmRldiwgaW50IGluZGV4LCB1MzIgdGltZW91dCkKPiAg
-ICAgICAgIGlmICghY2xpZW50KQo+ICAgICAgICAgICAgICAgICByZXR1cm4gKHN0cnVjdCBjbWRx
-X2NsaWVudCAqKS1FTk9NRU07Cj4KPiAtICAgICAgIGNsaWVudC0+dGltZW91dF9tcyA9IHRpbWVv
-dXQ7Cj4gLSAgICAgICBpZiAodGltZW91dCAhPSBDTURRX05PX1RJTUVPVVQpIHsKPiAtICAgICAg
-ICAgICAgICAgc3Bpbl9sb2NrX2luaXQoJmNsaWVudC0+bG9jayk7Cj4gLSAgICAgICAgICAgICAg
-IHRpbWVyX3NldHVwKCZjbGllbnQtPnRpbWVyLCBjbWRxX2NsaWVudF90aW1lb3V0LCAwKTsKPiAt
-ICAgICAgIH0KPiAtICAgICAgIGNsaWVudC0+cGt0X2NudCA9IDA7Cj4gICAgICAgICBjbGllbnQt
-PmNsaWVudC5kZXYgPSBkZXY7Cj4gICAgICAgICBjbGllbnQtPmNsaWVudC50eF9ibG9jayA9IGZh
-bHNlOwo+ICAgICAgICAgY2xpZW50LT5jbGllbnQua25vd3NfdHhkb25lID0gdHJ1ZTsKPiBAQCAt
-MTEyLDExICs5OSw2IEBAIEVYUE9SVF9TWU1CT0woY21kcV9tYm94X2NyZWF0ZSk7Cj4KPiAgdm9p
-ZCBjbWRxX21ib3hfZGVzdHJveShzdHJ1Y3QgY21kcV9jbGllbnQgKmNsaWVudCkKPiAgewo+IC0g
-ICAgICAgaWYgKGNsaWVudC0+dGltZW91dF9tcyAhPSBDTURRX05PX1RJTUVPVVQpIHsKPiAtICAg
-ICAgICAgICAgICAgc3Bpbl9sb2NrKCZjbGllbnQtPmxvY2spOwo+IC0gICAgICAgICAgICAgICBk
-ZWxfdGltZXJfc3luYygmY2xpZW50LT50aW1lcik7Cj4gLSAgICAgICAgICAgICAgIHNwaW5fdW5s
-b2NrKCZjbGllbnQtPmxvY2spOwo+IC0gICAgICAgfQo+ICAgICAgICAgbWJveF9mcmVlX2NoYW5u
-ZWwoY2xpZW50LT5jaGFuKTsKPiAgICAgICAgIGtmcmVlKGNsaWVudCk7Cj4gIH0KPiBAQCAtNDQ5
-LDE4ICs0MzEsNiBAQCBzdGF0aWMgdm9pZCBjbWRxX3BrdF9mbHVzaF9hc3luY19jYihzdHJ1Y3Qg
-Y21kcV9jYl9kYXRhIGRhdGEpCj4gICAgICAgICBzdHJ1Y3QgY21kcV90YXNrX2NiICpjYiA9ICZw
-a3QtPmNiOwo+ICAgICAgICAgc3RydWN0IGNtZHFfY2xpZW50ICpjbGllbnQgPSAoc3RydWN0IGNt
-ZHFfY2xpZW50ICopcGt0LT5jbDsKPgo+IC0gICAgICAgaWYgKGNsaWVudC0+dGltZW91dF9tcyAh
-PSBDTURRX05PX1RJTUVPVVQpIHsKPiAtICAgICAgICAgICAgICAgdW5zaWduZWQgbG9uZyBmbGFn
-cyA9IDA7Cj4gLQo+IC0gICAgICAgICAgICAgICBzcGluX2xvY2tfaXJxc2F2ZSgmY2xpZW50LT5s
-b2NrLCBmbGFncyk7Cj4gLSAgICAgICAgICAgICAgIGlmICgtLWNsaWVudC0+cGt0X2NudCA9PSAw
-KQo+IC0gICAgICAgICAgICAgICAgICAgICAgIGRlbF90aW1lcigmY2xpZW50LT50aW1lcik7Cj4g
-LSAgICAgICAgICAgICAgIGVsc2UKPiAtICAgICAgICAgICAgICAgICAgICAgICBtb2RfdGltZXIo
-JmNsaWVudC0+dGltZXIsIGppZmZpZXMgKwo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBtc2Vjc190b19qaWZmaWVzKGNsaWVudC0+dGltZW91dF9tcykpOwo+IC0gICAgICAgICAg
-ICAgICBzcGluX3VubG9ja19pcnFyZXN0b3JlKCZjbGllbnQtPmxvY2ssIGZsYWdzKTsKPiAtICAg
-ICAgIH0KPiAtCj4gICAgICAgICBkbWFfc3luY19zaW5nbGVfZm9yX2NwdShjbGllbnQtPmNoYW4t
-Pm1ib3gtPmRldiwgcGt0LT5wYV9iYXNlLAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgcGt0LT5jbWRfYnVmX3NpemUsIERNQV9UT19ERVZJQ0UpOwo+ICAgICAgICAgaWYgKGNiLT5j
-Yikgewo+IEBAIC00NzMsNyArNDQzLDYgQEAgaW50IGNtZHFfcGt0X2ZsdXNoX2FzeW5jKHN0cnVj
-dCBjbWRxX3BrdCAqcGt0LCBjbWRxX2FzeW5jX2ZsdXNoX2NiIGNiLAo+ICAgICAgICAgICAgICAg
-ICAgICAgICAgICB2b2lkICpkYXRhKQo+ICB7Cj4gICAgICAgICBpbnQgZXJyOwo+IC0gICAgICAg
-dW5zaWduZWQgbG9uZyBmbGFncyA9IDA7Cj4gICAgICAgICBzdHJ1Y3QgY21kcV9jbGllbnQgKmNs
-aWVudCA9IChzdHJ1Y3QgY21kcV9jbGllbnQgKilwa3QtPmNsOwo+Cj4gICAgICAgICBwa3QtPmNi
-LmNiID0gY2I7Cj4gQEAgLTQ4NCwxNCArNDUzLDYgQEAgaW50IGNtZHFfcGt0X2ZsdXNoX2FzeW5j
-KHN0cnVjdCBjbWRxX3BrdCAqcGt0LCBjbWRxX2FzeW5jX2ZsdXNoX2NiIGNiLAo+ICAgICAgICAg
-ZG1hX3N5bmNfc2luZ2xlX2Zvcl9kZXZpY2UoY2xpZW50LT5jaGFuLT5tYm94LT5kZXYsIHBrdC0+
-cGFfYmFzZSwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBrdC0+Y21kX2J1
-Zl9zaXplLCBETUFfVE9fREVWSUNFKTsKPgo+IC0gICAgICAgaWYgKGNsaWVudC0+dGltZW91dF9t
-cyAhPSBDTURRX05PX1RJTUVPVVQpIHsKPiAtICAgICAgICAgICAgICAgc3Bpbl9sb2NrX2lycXNh
-dmUoJmNsaWVudC0+bG9jaywgZmxhZ3MpOwo+IC0gICAgICAgICAgICAgICBpZiAoY2xpZW50LT5w
-a3RfY250KysgPT0gMCkKPiAtICAgICAgICAgICAgICAgICAgICAgICBtb2RfdGltZXIoJmNsaWVu
-dC0+dGltZXIsIGppZmZpZXMgKwo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBt
-c2Vjc190b19qaWZmaWVzKGNsaWVudC0+dGltZW91dF9tcykpOwo+IC0gICAgICAgICAgICAgICBz
-cGluX3VubG9ja19pcnFyZXN0b3JlKCZjbGllbnQtPmxvY2ssIGZsYWdzKTsKPiAtICAgICAgIH0K
-PiAtCj4gICAgICAgICBlcnIgPSBtYm94X3NlbmRfbWVzc2FnZShjbGllbnQtPmNoYW4sIHBrdCk7
-Cj4gICAgICAgICBpZiAoZXJyIDwgMCkKPiAgICAgICAgICAgICAgICAgcmV0dXJuIGVycjsKPiBk
-aWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLWNtZHEuaCBiL2luY2x1
-ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1jbWRxLmgKPiBpbmRleCA5NjA3MDRkNzU5OTQuLjhl
-OTk5NjYxMDk3OCAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRlay9tdGst
-Y21kcS5oCj4gKysrIGIvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLWNtZHEuaAo+IEBA
-IC0xMSw3ICsxMSw2IEBACj4gICNpbmNsdWRlIDxsaW51eC9tYWlsYm94L210ay1jbWRxLW1haWxi
-b3guaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3RpbWVyLmg+Cj4KPiAtI2RlZmluZSBDTURRX05PX1RJ
-TUVPVVQgICAgICAgICAgICAgICAgMHhmZmZmZmZmZnUKPiAgI2RlZmluZSBDTURRX0FERFJfSElH
-SChhZGRyKSAgICgodTMyKSgoKGFkZHIpID4+IDE2KSAmIEdFTk1BU0soMzEsIDApKSkKPiAgI2Rl
-ZmluZSBDTURRX0FERFJfTE9XKGFkZHIpICAgICgodTE2KShhZGRyKSB8IEJJVCgxKSkKPgo+IEBA
-IC0yNCwxMiArMjMsOCBAQCBzdHJ1Y3QgY21kcV9jbGllbnRfcmVnIHsKPiAgfTsKPgo+ICBzdHJ1
-Y3QgY21kcV9jbGllbnQgewo+IC0gICAgICAgc3BpbmxvY2tfdCBsb2NrOwo+IC0gICAgICAgdTMy
-IHBrdF9jbnQ7Cj4gICAgICAgICBzdHJ1Y3QgbWJveF9jbGllbnQgY2xpZW50Owo+ICAgICAgICAg
-c3RydWN0IG1ib3hfY2hhbiAqY2hhbjsKPiAtICAgICAgIHN0cnVjdCB0aW1lcl9saXN0IHRpbWVy
-Owo+IC0gICAgICAgdTMyIHRpbWVvdXRfbXM7IC8qIGluIHVuaXQgb2YgbWljcm9zZWNvbmQgKi8K
-PiAgfTsKPgo+ICAvKioKPiBAQCAtNTEsMTMgKzQ2LDEwIEBAIGludCBjbWRxX2Rldl9nZXRfY2xp
-ZW50X3JlZyhzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gICAqIGNtZHFfbWJveF9jcmVhdGUoKSAtIGNy
-ZWF0ZSBDTURRIG1haWxib3ggY2xpZW50IGFuZCBjaGFubmVsCj4gICAqIEBkZXY6ICAgICAgIGRl
-dmljZSBvZiBDTURRIG1haWxib3ggY2xpZW50Cj4gICAqIEBpbmRleDogICAgIGluZGV4IG9mIENN
-RFEgbWFpbGJveCBjaGFubmVsCj4gLSAqIEB0aW1lb3V0OiAgIHRpbWVvdXQgb2YgYSBwa3QgZXhl
-Y3V0aW9uIGJ5IEdDRSwgaW4gdW5pdCBvZiBtaWNyb3NlY29uZCwgc2V0Cj4gLSAqICAgICAgICAg
-ICAgIENNRFFfTk9fVElNRU9VVCBpZiBhIHRpbWVyIGlzIG5vdCB1c2VkLgo+ICAgKgo+ICAgKiBS
-ZXR1cm46IENNRFEgbWFpbGJveCBjbGllbnQgcG9pbnRlcgo+ICAgKi8KPiAtc3RydWN0IGNtZHFf
-Y2xpZW50ICpjbWRxX21ib3hfY3JlYXRlKHN0cnVjdCBkZXZpY2UgKmRldiwgaW50IGluZGV4LAo+
-IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1MzIgdGltZW91dCk7Cj4gK3N0
-cnVjdCBjbWRxX2NsaWVudCAqY21kcV9tYm94X2NyZWF0ZShzdHJ1Y3QgZGV2aWNlICpkZXYsIGlu
-dCBpbmRleCk7Cj4KPiAgLyoqCj4gICAqIGNtZHFfbWJveF9kZXN0cm95KCkgLSBkZXN0cm95IENN
-RFEgbWFpbGJveCBjbGllbnQgYW5kIGNoYW5uZWwKPiAtLQo+IDIuMTcuMQo+CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi CK, 
+
+On Fri, 20 Nov 2020 07:23:35 +0800
+Chun-Kuang Hu <chunkuang.hu@kernel.org> wrote:
+
+> From: CK Hu <ck.hu@mediatek.com>
+> 
+> In the patch to be fixed, horizontal_backporch_byte become to large
+> for some panel, so roll back that patch. For small hfp or hbp panel,
+> using vm->hfront_porch + vm->hback_porch to calculate
+> horizontal_backporch_byte would make it negtive, so
+> use horizontal_backporch_byte itself to make it positive.
+> 
+> Fixes: 35bf948f1edb ("drm/mediatek: dsi: Fix scrolling of panel with
+> small hfp or hbp")
+> 
+> Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 61
+> +++++++++++------------------- 1 file changed, 22 insertions(+), 39
+> deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> b/drivers/gpu/drm/mediatek/mtk_dsi.c index 4a188a942c38..65fd99c528af
+> 100644 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -444,7 +444,10 @@ static void mtk_dsi_config_vdo_timing(struct
+> mtk_dsi *dsi) u32 horizontal_sync_active_byte;
+>  	u32 horizontal_backporch_byte;
+>  	u32 horizontal_frontporch_byte;
+> +	u32 horizontal_front_back_byte;
+> +	u32 data_phy_cycles_byte;
+>  	u32 dsi_tmp_buf_bpp, data_phy_cycles;
+> +	u32 delta;
+>  	struct mtk_phy_timing *timing = &dsi->phy_timing;
+>  
+>  	struct videomode *vm = &dsi->vm;
+> @@ -466,50 +469,30 @@ static void mtk_dsi_config_vdo_timing(struct
+> mtk_dsi *dsi) horizontal_sync_active_byte = (vm->hsync_len *
+> dsi_tmp_buf_bpp - 10); 
+>  	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
+> -		horizontal_backporch_byte = vm->hback_porch *
+> dsi_tmp_buf_bpp;
+> +		horizontal_backporch_byte = vm->hback_porch *
+> dsi_tmp_buf_bpp - 10; else
+>  		horizontal_backporch_byte = (vm->hback_porch +
+> vm->hsync_len) *
+> -					    dsi_tmp_buf_bpp;
+> +					    dsi_tmp_buf_bpp - 10;
+>  
+>  	data_phy_cycles = timing->lpx + timing->da_hs_prepare +
+> -			  timing->da_hs_zero + timing->da_hs_exit;
+> -
+> -	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
+> -		if ((vm->hfront_porch + vm->hback_porch) *
+> dsi_tmp_buf_bpp >
+> -		    data_phy_cycles * dsi->lanes + 18) {
+> -			horizontal_frontporch_byte =
+> -				vm->hfront_porch * dsi_tmp_buf_bpp -
+> -				(data_phy_cycles * dsi->lanes + 18) *
+> -				vm->hfront_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -
+> -			horizontal_backporch_byte =
+> -				horizontal_backporch_byte -
+> -				(data_phy_cycles * dsi->lanes + 18) *
+> -				vm->hback_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -		} else {
+> -			DRM_WARN("HFP less than d-phy, FPS will
+> under 60Hz\n");
+> -			horizontal_frontporch_byte =
+> vm->hfront_porch *
+> -						     dsi_tmp_buf_bpp;
+> -		}
+> +			  timing->da_hs_zero + timing->da_hs_exit +
+> 3; +
+> +	delta = dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST ? 18 :
+> 12; +
+> +	horizontal_frontporch_byte = vm->hfront_porch *
+> dsi_tmp_buf_bpp;
+> +	horizontal_front_back_byte = horizontal_frontporch_byte +
+> horizontal_backporch_byte;
+> +	data_phy_cycles_byte = data_phy_cycles * dsi->lanes + delta;
+> +
+> +	if (horizontal_front_back_byte > data_phy_cycles_byte) {
+> +		horizontal_frontporch_byte -= data_phy_cycles_byte *
+> +
+> horizontal_frontporch_byte /
+> +
+> horizontal_front_back_byte; +
+> +		horizontal_backporch_byte -= data_phy_cycles_byte *
+> +
+> horizontal_backporch_byte /
+> +
+> horizontal_front_back_byte; } else {
+> -		if ((vm->hfront_porch + vm->hback_porch) *
+> dsi_tmp_buf_bpp >
+> -		    data_phy_cycles * dsi->lanes + 12) {
+> -			horizontal_frontporch_byte =
+> -				vm->hfront_porch * dsi_tmp_buf_bpp -
+> -				(data_phy_cycles * dsi->lanes + 12) *
+> -				vm->hfront_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -			horizontal_backporch_byte =
+> horizontal_backporch_byte -
+> -				(data_phy_cycles * dsi->lanes + 12) *
+> -				vm->hback_porch /
+> -				(vm->hfront_porch + vm->hback_porch);
+> -		} else {
+> -			DRM_WARN("HFP less than d-phy, FPS will
+> under 60Hz\n");
+> -			horizontal_frontporch_byte =
+> vm->hfront_porch *
+> -						     dsi_tmp_buf_bpp;
+> -		}
+> +		DRM_WARN("HFP + HBP less than d-phy, FPS will under
+> 60Hz\n"); }
+>  
+>  	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+
+Tested on Chromebook ELM.
+
+Tested-by: Bilal Wasim <bilal.wasim@imgtec.com>
+
+Thanks,
+Bilal
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
