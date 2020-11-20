@@ -2,100 +2,83 @@ Return-Path: <SRS0=OETw=E2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E51CC5519F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1DDBC5519F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:38:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 27EAE22256
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:32:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2A1DB22253
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 03:38:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xwPQ6Yg1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="L+D+on2g"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27EAE22256
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NHTTU/hE";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ceTHKqCR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A1DB22253
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lO4gIwRyXaXLWz80cLag8bX2WSjedzglssbiMK1TnFg=; b=xwPQ6Yg19Xei2EL3niAy8hWy1
-	sE2wsXviPdJeIt1h1kst3AQaocgFYlZQlYYTXJSJhH0fpKgvH6IGb3J4p5Au9s8br3iScSyR7Zy0x
-	j2d6AIu0o+pHJe+hJ1pQkXQfTXYTjOScFRL70arxr2QbUI30jb6/VtQ+XEnVau4FFhvRipw1lm/Ma
-	dqJiCPUsV0L7ITOFlQVV84Pb+jDe5rWNZebyy/r7YZ3uR3xjBct9XXTlORrsKrjMTF8rAKojytj21
-	CYZKWUJpnaOOtCp9wAcyEakadMvCBieCxmpe3Jfu9z21GuF+it7YLiGeKfl015gcC+ejpNVXK4ngw
-	rPEykLgJw==;
+	 bh=GMtcwW4qsRynX1F6woJnxpCfnKeXA4DW8GpYU/IaeeI=; b=NHTTU/hE6XauqY0NOtF24wabd
+	YM7J1zx5bLTyk9Jn5V/aqRqxDl7m/ch+0zYQCKUkcR+dPEGafjFRpopgl2PxvdySnjN3pHc2Jnr9z
+	oY3RMACajoer9nIQoNcn2r9tj17um7xwjyLM9/KrKEZzDzVSKgB+rgpf3wMOXxj4LRFq/3Or+rxjj
+	VLQFcOjbh5CtjwubpKXJ/80nzqPPnw2v5AKiXDd29PAs5CogHC5LliTWLnb9zqIy54usuxcLwgqqa
+	yK48wPBA3OXnh7o7A7bMrxUn/PVT/TF4S5kG6X2t1X5cAnb8WdcEh69NiUd/u3hqE3juUIRc/+AUZ
+	tetBXulcQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfx9l-0002tl-9g; Fri, 20 Nov 2020 03:32:17 +0000
-Received: from aserp2120.oracle.com ([141.146.126.78])
+	id 1kfxFO-0004HM-FI; Fri, 20 Nov 2020 03:38:06 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfx9e-0002ql-QC; Fri, 20 Nov 2020 03:32:12 +0000
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AK3OpV8095751;
- Fri, 20 Nov 2020 03:32:00 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2020-01-29;
- bh=h8p/eGxprONg2I24EcQmXpw8YFJpgN/ZNu2mYAE5OnY=;
- b=L+D+on2g5WNWWIuzKP7WxyUmASLDHSwznpDAJu7vTXqBd30V1pBId6SPMutdclspdK4V
- QFmNE5sENf9nbHhgiQUJSe2vSj6yGunXE7RzO+T1Zkd/jfEd5/3Vxf+/s6egMoorR6yE
- qIDK59R40SyyKp8SXBvNaq2RQA+GN5rdT+H5b20opxhYfjLV5PzGhbZ01u+yCQhfVdBr
- 8Jq3Gxxto2fLTyJwji+y2+udquNlpUHscUqXPiKFxSVTsPBkD+tmqkDWBia+lG14Lyyh
- RTCNy/y8DAsste0xFZ5EZWX0TgCOx2ZfGCeXEMrCfrquqWDKg++YM05GyF/mIlEBYAka dQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 34t76m8qy2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 20 Nov 2020 03:32:00 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AK3OffG029306;
- Fri, 20 Nov 2020 03:31:59 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3030.oracle.com with ESMTP id 34ts60whc8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 20 Nov 2020 03:31:59 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AK3Vtcr025948;
- Fri, 20 Nov 2020 03:31:56 GMT
-Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 19 Nov 2020 19:31:55 -0800
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: jejb@linux.ibm.com, linux-scsi@vger.kernel.org, alim.akhtar@samsung.com,
- avri.altman@wdc.com, Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1 0/9] scsi: ufs: Refactoring and cleanups
-Date: Thu, 19 Nov 2020 22:31:45 -0500
-Message-Id: <160584262853.7157.6454883311543649940.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201116065054.7658-1-stanley.chu@mediatek.com>
-References: <20201116065054.7658-1-stanley.chu@mediatek.com>
+ id 1kfxFM-0004Gk-OQ
+ for linux-mediatek@lists.infradead.org; Fri, 20 Nov 2020 03:38:05 +0000
+Received: by mail-io1-xd43.google.com with SMTP id i18so8524640ioa.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 19 Nov 2020 19:38:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qjb0TOjLsMDjUodICH7KCcrpDGKufjexd1+8o7B9kb8=;
+ b=ceTHKqCRixhp7kONN33MxtSkd783OojNPQR5/0AG/7DDFyEw59YudMfnCY7wgicujN
+ M+qkJB0p65VxB5LaBCFKtoxY6vX8sUsueiN04sxxLhRcNO6VWkycNtPbF9ncobZMTWCm
+ RjNmoxfTAwHOQ/2H9q9IdOUiGzlOOIecMdv8Su7g0oN1+yjya03FV1hdAJS45zCIM8le
+ eEJa1TLZZSAUVuIc9ofmknfotd4V1EdtBsxIHJg2QBnuMJ6UzVwtGrUBJ1LvRX0nhYh4
+ 7cIvS1a6ET58abJ+N0LkpiHVRf2eNipHohu3wVIzFi2Ji02BXHd508Q9x8hIevmTJlaH
+ 9qqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qjb0TOjLsMDjUodICH7KCcrpDGKufjexd1+8o7B9kb8=;
+ b=PgM7PNv+b1WpCExTL02jlgFR34OJo1jpTZAV1r8NLxCuWsR+cagFQW+lDqvoXYU+om
+ N0nthUZ23cCXD+kg0mLbGoqkzUjVp8gC2lDCimj46ui9zDy9grQv4BSc9NToZ6pfBB1o
+ j6cPpZX2mbrV9ferWM2D+Cf5VyqE3bpgNTrPT366uG/CTQV6t0VTvWZ/YSgbiRVKvxuj
+ Ue8Vq323b7k+86dBdpVwG8tAJBXaPXufq4sr1Lg68bpyCgX3bMyDSDUD1eISJYXnHsU2
+ oO4MfdNn8QvcxqabBt+M2UnhEUqxjEMx/coCjWKu2RiQ+GDVDHQzzJ1s5VMOhiE3rGl7
+ G6PA==
+X-Gm-Message-State: AOAM532COYCWrfOXExYpWymlkLUvr3PIxlIkNBYnlgxpq4UgI15GuKe/
+ q34y9siYIa+aw4Q+mlH9lf+RHqLh66unRUjgYU4=
+X-Google-Smtp-Source: ABdhPJypsMqrPht3AzlEWEj54WD7QLcxASxpFnXOhG3GU8sv2Ggz+0Z5+J3rw5aatqCoU3Xoo7EEMPQMqRCCPMzXIt0=
+X-Received: by 2002:a6b:b3d6:: with SMTP id c205mr8665601iof.68.1605843482923; 
+ Thu, 19 Nov 2020 19:38:02 -0800 (PST)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9810
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- spamscore=0 phishscore=0
- suspectscore=0 mlxscore=0 malwarescore=0 bulkscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2011200023
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9810
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- phishscore=0
- adultscore=0 priorityscore=1501 bulkscore=0 clxscore=1015 mlxlogscore=999
- malwarescore=0 mlxscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2011200023
+References: <20201119064020.19522-1-dqfext@gmail.com>
+ <20201120022540.GD1804098@lunn.ch>
+In-Reply-To: <20201120022540.GD1804098@lunn.ch>
+From: DENG Qingfang <dqfext@gmail.com>
+Date: Fri, 20 Nov 2020 11:37:53 +0800
+Message-ID: <CALW65jZzAh7sk-2ASuAj0gM=DGv6g6M7t_SjfSsBWkG=2pk_Og@mail.gmail.com>
+Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: support setting ageing time
+To: Andrew Lunn <andrew@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201119_223211_011490_989B867F 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20201119_223804_828920_8FE7CC38 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,59 +90,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, alice.chao@mediatek.com,
- "Martin K . Petersen" <martin.petersen@oracle.com>, liwei213@huawei.com,
- andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, kwmad.kim@samsung.com,
- matthias.bgg@gmail.com, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- jiajie.hao@mediatek.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
- asutoshd@codeaurora.org
+Cc: Landen Chao <Landen.Chao@mediatek.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>, netdev <netdev@vger.kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ "David S . Miller" <davem@davemloft.net>,
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
+ Alex Dewar <alex.dewar90@gmail.com>, Greg Ungerer <gerg@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Vladimir Oltean <olteanv@gmail.com>, Chuanhong Guo <gch981213@gmail.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 Nov 2020 14:50:45 +0800, Stanley Chu wrote:
+On Fri, Nov 20, 2020 at 10:26 AM Andrew Lunn <andrew@lunn.ch> wrote:
+> The bridge code will default to 300 seconds. And after a topology
+> change, it sets it to 2 * the forwarding delay, which defaults to 15
+> seconds. So maybe you can look for these two values, and use
+> pre-computed values?
 
-> This series simply do some refactoring and cleanups in UFS drivers.
-> 
-> Stanley Chu (9):
->   scsi: ufs-mediatek: Refactor performance scaling functions
->   scsi: ufs: Introduce device parameter initialization function
->   scsi: ufs-mediatek: Use device parameter initialization function
->   scsi: ufs-qcom: Use device parameter initialization function
->   scsi: ufs-exynos: Use device parameter initialization function
->   scsi: ufs-hisi: Use device parameter initialization function
->   scsi: ufs: Refactor ADAPT configuration function
->   scsi: ufs-mediatek: Use common ADAPT configuration function
->   scsi: ufs-qcom: Use common ADAPT configuration function
-> 
-> [...]
+15 and 300 are not larger than 4096 (AGE_UNIT_MAX + 1) so the exact
+match can always be found in the first iteration:
 
-Applied to 5.11/scsi-queue, thanks!
+age_count = 0, age_unit = 14, secs = (0 + 1) * (14 + 1) = 15
+age_count = 0, age_unit = 299, secs = (0 + 1) * (299 + 1) = 300
 
-[1/9] scsi: ufs: ufs-mediatek: Refactor performance scaling functions
-      https://git.kernel.org/mkp/scsi/c/54770cbebe2c
-[2/9] scsi: ufs: Introduce device parameter initialization function
-      https://git.kernel.org/mkp/scsi/c/65858014ee20
-[3/9] scsi: ufs: ufs-mediatek: Use device parameter initialization function
-      https://git.kernel.org/mkp/scsi/c/a4b537ea656e
-[4/9] scsi: ufs: ufs-qcom: Use device parameter initialization function
-      https://git.kernel.org/mkp/scsi/c/8beef54716e6
-[5/9] scsi: ufs: ufs-exynos: Use device parameter initialization function
-      https://git.kernel.org/mkp/scsi/c/5b3573d68d9a
-[6/9] scsi: ufs: ufs-hisi: Use device parameter initialization function
-      https://git.kernel.org/mkp/scsi/c/85d6d3c18953
-[7/9] scsi: ufs: Refactor ADAPT configuration function
-      https://git.kernel.org/mkp/scsi/c/fc85a74e28fe
-[8/9] scsi: ufs: ufs-mediatek: Use common ADAPT configuration function
-      https://git.kernel.org/mkp/scsi/c/e1e25d1b8996
-[9/9] scsi: ufs: ufs-qcom: Use common ADAPT configuration function
-      https://git.kernel.org/mkp/scsi/c/d9fa1e731e24
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+>
+> You still need to handle other values, the user can configure these.
+>
+>              Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
