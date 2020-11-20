@@ -2,88 +2,69 @@ Return-Path: <SRS0=OETw=E2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48C96C2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 20:48:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0685C56202
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 21:35:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA05E2223F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 20:48:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2DBA62237B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2020 21:35:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DJvWwRcI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="avd4TaFU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA05E2223F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="v9kKBwnV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="STsrivqA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2DBA62237B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Subject:References:
+	In-Reply-To:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3h1urRGZ7ljt1b7USfrf/BjvElSAP2nhdKy7+JbuzIk=; b=DJvWwRcI4kqMda4ebcTgzL6hx
-	7NneepU/8YbH1+S+DetPEA5hhwaQW/bAyD1OzUGn28StyjcI7xKArsE/O+BCv76Cn9yxvfGT0Xfdg
-	orAuo32o7PkzwbgKn2U4gNqfbZAZfPlOCZ+qtfZa0qfKrM683knGA2/aHYB/3hle/ukZKo+tvFUiY
-	M11xX7iqhqqCcvOG9f9QjXzrFaCMGH1tlLAMFK04fan1fOBpbbEo5344qcXwfyD+GqHd0Cb9XHDqp
-	YTTV9iKE3qVjnO9As3jTiDQk8PBK2W6BFwN3CQNB2PMJUwmXM4m6jjgVJs+Kz+AUDrtDnURA/1z/Y
-	St0Fe28pQ==;
+	 bh=6FSI0Tq0kPdOg2TxPBe6LmJ9yUKzsu1Xk67gw7w5uvs=; b=v9kKBwnVlcCxXBwRTd0kYyKOj
+	YQe4s9iWNghaCgVlizeOwB2heX4DT6PO551lGjSmg7qigCIpqNv0DLzFxpLCVi/YoBfZxTOBH6f7u
+	Tiv6go5jvL/nVtZ1ERDpSuqpvndcTIpXwvepQw5oimemyTAKgR2UeqOio5azHDSmX+7dTU9U9TxWA
+	3adWhgpp5fMlh1oe04j/4KESIbTBOUAdqoWnG7ad/xiShIIfGH9fZWBM3aFvPwe7vyiSiLD6sloox
+	ZnMxyxYyn7Qs4lqynoXU026C0pcloSCTes/d20Io3F8dXPuGHGF23f9iyRInikutDCZlO0tF8vntA
+	XeUatYLdw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kgDKG-0005UL-TC; Fri, 20 Nov 2020 20:48:13 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1kgE4I-0000JV-1Y; Fri, 20 Nov 2020 21:35:46 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgDK9-0005PX-BD
- for linux-mediatek@lists.infradead.org; Fri, 20 Nov 2020 20:48:09 +0000
-Received: by mail-pl1-x643.google.com with SMTP id 18so5449746pli.13
- for <linux-mediatek@lists.infradead.org>; Fri, 20 Nov 2020 12:48:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=v0uQ3+ZvQ790GJbfbb1ESqfRrqQ38XoL7hho1t1Gb0k=;
- b=avd4TaFUM+Ab56B8iWTc3giej2JyPXQeNqj8Vqwh4pMfYMm6E7ROZ43KbUMGq3c2kN
- Y7wgImiWtwhH33QCuhXwX5xfYnbd8ZoAoymaiVLMsflRM4OrtMTi7raBVieCeB5e9/kv
- qCr4nXKui27aGXF6t1ziK2ispJ9UlbNRnpYGc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=v0uQ3+ZvQ790GJbfbb1ESqfRrqQ38XoL7hho1t1Gb0k=;
- b=e6H51GSHvavKh8KDxmNEfwLSidmFaiYe7UOUtI/zNL7kRUGj6GhbAL+ojc3Pgqy20H
- LCSvkKUacYCnmmw64SwNtzu8Zah5/vl3GsFXrsgOjKzKB9evRc6CemjR4nWW1ReMxm+5
- x2MJ+g52U2JcBuYhj4N0+w+ZHxa+PgmeQ3dj0zTZ211kidZPtqkPNmVSUIk9iUb7lgnh
- bfIFrg2JQdtVHC0LFY9weg+tfqEEWOulK/B7Q9Y/V3/HPuyX7W19RMjm+LV7Ctm5UXe9
- uu/R7+Oyr53eR0xMkp/UxjTTCB7dh7Dm8vY8XjPLJMKH0nI4gcr5F40i/K5BPsWQpclL
- 8VDw==
-X-Gm-Message-State: AOAM530q1CR0nbXT0N/lSJNFSyuYrpjMM7KiwE9A9XCeNK0Ne8VWRrng
- QiUPoIyiHndnGihN9GGwSq8Gkw==
-X-Google-Smtp-Source: ABdhPJwusp2Lb+4OqT162rurUKkT/e5T3DAOLIduq4rICrKRG7vcFewdIWNkE66BLMZ+8SMrIPoLqA==
-X-Received: by 2002:a17:902:7890:b029:d8:bb20:518e with SMTP id
- q16-20020a1709027890b02900d8bb20518emr15184915pll.66.1605905283037; 
- Fri, 20 Nov 2020 12:48:03 -0800 (PST)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id w11sm565810pfi.162.2020.11.20.12.48.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2020 12:48:02 -0800 (PST)
-Date: Fri, 20 Nov 2020 12:48:01 -0800
-From: Kees Cook <keescook@chromium.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-Message-ID: <202011201244.78E002D5@keescook>
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ id 1kgE4E-0000FQ-Aq; Fri, 20 Nov 2020 21:35:43 +0000
+Received: from localhost (cpc102334-sgyl38-2-0-cust884.18-2.cable.virginm.net
+ [92.233.91.117])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 73AC12237B;
+ Fri, 20 Nov 2020 21:35:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605908141;
+ bh=EFiexHFZKW7N+/KrKxGNqn62prfsHu7FTDQCJmxMJts=;
+ h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+ b=STsrivqAhf90GKlMJGc4Ab5vZuotHcUl+J6aFoNmwlmhupWVdNrgTBwS9GuuPcSNJ
+ WNejah8Hw1fnaL/6Jc+Cp1GqGBEw9AUacZZWUYFBS89eQiib9EQIxX6JPSL0QzenjK
+ I4M6/forAw2zSQBvIRmre7dM/7zXseMQHnEGFJck=
+Date: Fri, 20 Nov 2020 21:35:19 +0000
+From: Mark Brown <broonie@kernel.org>
+To: tiwai@suse.com, Jiaxin Yu <jiaxin.yu@mediatek.com>, matthias.bgg@gmail.com,
+ tzungbi@google.com, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ robh+dt@kernel.org, alsa-devel@alsa-project.org
+In-Reply-To: <1605841573-1442-1-git-send-email-jiaxin.yu@mediatek.com>
+References: <1605841573-1442-1-git-send-email-jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH 0/2] ASoC: mt6359: Fix regulator_dev_lookup() fails for id
+ "LDO_VAUD18"
+Message-Id: <160590773742.47461.980400438580357576.b4-ty@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201120_154805_680612_052D6E69 
-X-CRM114-Status: GOOD (  25.87  )
+X-CRM114-CacheID: sfid-20201120_163542_473455_64C08298 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,100 +76,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-fbdev@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
- linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
- linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
- Miguel Ojeda <ojeda@kernel.org>, tipc-discussion@lists.sourceforge.net,
- linux-ext4@vger.kernel.org, linux-media@vger.kernel.org,
- linux-watchdog@vger.kernel.org, selinux@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
- linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
- virtualization@lists.linux-foundation.org,
- linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
- x86@kernel.org, linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- linux-mm@kvack.org, netdev@vger.kernel.org,
- linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- linux-renesas-soc@vger.kernel.org, linux-sctp@vger.kernel.org,
- linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
- linux-crypto@vger.kernel.org, patches@opensource.cirrus.com,
- Joe Perches <joe@perches.com>, linux-integrity@vger.kernel.org,
- target-devel@vger.kernel.org, linux-hardening@vger.kernel.org
+Cc: shane.chien@mediatek.com, Trevor.Wu@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 20, 2020 at 11:51:42AM -0800, Jakub Kicinski wrote:
-> On Fri, 20 Nov 2020 11:30:40 -0800 Kees Cook wrote:
-> > On Fri, Nov 20, 2020 at 10:53:44AM -0800, Jakub Kicinski wrote:
-> > > On Fri, 20 Nov 2020 12:21:39 -0600 Gustavo A. R. Silva wrote:  
-> > > > This series aims to fix almost all remaining fall-through warnings in
-> > > > order to enable -Wimplicit-fallthrough for Clang.
-> > > > 
-> > > > In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
-> > > > add multiple break/goto/return/fallthrough statements instead of just
-> > > > letting the code fall through to the next case.
-> > > > 
-> > > > Notice that in order to enable -Wimplicit-fallthrough for Clang, this
-> > > > change[1] is meant to be reverted at some point. So, this patch helps
-> > > > to move in that direction.
-> > > > 
-> > > > Something important to mention is that there is currently a discrepancy
-> > > > between GCC and Clang when dealing with switch fall-through to empty case
-> > > > statements or to cases that only contain a break/continue/return
-> > > > statement[2][3][4].  
-> > > 
-> > > Are we sure we want to make this change? Was it discussed before?
-> > > 
-> > > Are there any bugs Clangs puritanical definition of fallthrough helped
-> > > find?
-> > > 
-> > > IMVHO compiler warnings are supposed to warn about issues that could
-> > > be bugs. Falling through to default: break; can hardly be a bug?!  
-> > 
-> > It's certainly a place where the intent is not always clear. I think
-> > this makes all the cases unambiguous, and doesn't impact the machine
-> > code, since the compiler will happily optimize away any behavioral
-> > redundancy.
+On Fri, 20 Nov 2020 11:06:11 +0800, Jiaxin Yu wrote:
+> This series fixed "LDO_VAUD18-supply" regulator register fail.
+> We can see the error log "mt6359-sound supply LDO_VAUD18 not found, using
+> dummy regulator" when register the DAPM widget "LDO_VAUD18"
+> Otherwise, the power can not be turned on correctly when recording.
 > 
-> If none of the 140 patches here fix a real bug, and there is no change
-> to machine code then it sounds to me like a W=2 kind of a warning.
+> Jiaxin Yu (2):
+>   ASoC: mediatek: mt6359: Fix regulator_dev_lookup() fails for id
+>     "LDO_VAUD18"
+>   dt-bindings: mediatek: mt6359: remove unused property for mt6359
+> 
+> [...]
 
-I'd like to avoid splitting common -W options between default and W=2
-just based on the compiler. Getting -Wimplicit-fallthrough enabled found
-plenty of bugs, so making sure it works correctly for both compilers
-feels justified to me. (This is just a subset of the same C language
-short-coming.)
+Applied to
 
-> I think clang is just being annoying here, but if I'm the only one who
-> feels this way chances are I'm wrong :)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-It's being pretty pedantic, but I don't think it's unreasonable to
-explicitly state how every case ends. GCC's silence for the case of
-"fall through to a break" doesn't really seem justified.
+Thanks!
 
--- 
-Kees Cook
+[1/2] ASoC: mediatek: mt6359: Fix regulator_dev_lookup() fails for id "LDO_VAUD18"
+      commit: 9546c76c73a1ee8b662b09f7308bcb63d2cd0d51
+[2/2] ASoC: mt6359: remove unused property for mt6359
+      commit: 6e85530496a496616ece6c444df23522afc81520
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
