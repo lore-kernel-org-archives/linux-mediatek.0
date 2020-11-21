@@ -2,113 +2,59 @@ Return-Path: <SRS0=jy+D=E3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D44E8C388F9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2020 22:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11ACDC388F9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2020 23:04:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0489A2158C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2020 22:52:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 632BA21741
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2020 23:04:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xDC3AlBi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="E+4epdWz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="WQolZIuu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0489A2158C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SytUhaOY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 632BA21741
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rowland.harvard.edu
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
-	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tMCCKYFvtgaqcyu1em+w7ojg0DA/9IL16y+0yx8omIU=; b=xDC3AlBiTjVRHej1rRLnDV6RO
-	3Hnn7nzhJ5bZIwZUx7msk81DrBmyvtBWbCvQ2/M3J+7ypDaNtcBlOYll7ssvMEJlrh0p28s4HY0No
-	bi/eeT5r+AqWO+EudlB6hRiZGelRXyBqek/v+rRIxwy8HAgYvbFOdH8ivHCNUJj31JqHENBMof3wU
-	B8S77RHbNdzzE/zwHEFhAY6sbFA4arsEJzFRhq4qmfzUtnyhQnu4sgQFDFSYPJt1drTpmC/qgA7Nm
-	XGjL++H5NZHGZ1MEF+OmH07heCme7uZgegF8UrNI1b9I4ks/+w5na2N+jsYAWFaXShUPesOqLWS9K
-	zgVB6uyVg==;
+	 bh=hBDDvyigtqY+JhdeAlawCR9a+uP8r+HoLGsqUw027OY=; b=SytUhaOY1GypsHPjrZL3yn+VF
+	RS5tXZnEL//J1gbSyfvT1TBNw16N3v1uqZuTG/cnRrPo2FOLDqB37t0oyM+3JtG2X+Yve5d8YbfIV
+	2QJbQNP/JLxUorpfCQjUQpjvFb4FXmg1riS+zDT2k6qtwVhpGthExT0yrWc+AHFlukNsqcvzdUqXR
+	1ni6Kg5tgJXrXqgWxtisbpmWocYbs/tmJKbchfbqgQX26ds/KRXyURfl7fuZiSG0NnFGyxIaMX/r9
+	qVwUWR//2N0gQJX/w22PfI3ODiegppI5mm2HvOIZCqvZYZYHMnDXBAWadN/o7x4I/PiPRc5/bNoRW
+	luLIjPQbA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kgbjl-0005da-6A; Sat, 21 Nov 2020 22:52:09 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgbjg-0005cg-Fy
- for linux-mediatek@merlin.infradead.org; Sat, 21 Nov 2020 22:52:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Date:
- Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=5XWucgV8E35bUAw4aZcK+RdQSdGH0BbK0144kscnzcI=; b=E+4epdWzhHOovHpYSgsF7WctEz
- a3KOLCMplBUmvrcMY8YEcxuvwo2j/9o5ISsZlrw0OqGjnXVWkX6pTLAd4Nd2RVg8MpXjnwaxZg2Ib
- 5qXifJENBM91ODdz2HndloDJlUta6mx8rU+WTkrPPA7q+lLjHFYc8B5El0j44ib3VpGHNQnvKThtB
- FocCR3isn8NjBZ21BFTk9UTK3f2qxVOwGl8cb+Hm9sb6T4riShvqT7e2ZL1RY8lgwb7wuPxARak3S
- coImuzuq/i6ZwbMzyT+C9gCsYiDIpSpw3E00ewhoE/21UEnzdXONADhEEJOSELUv63gnJcfT+R76b
- 0fe7zqBA==;
-Received: from mout.gmx.net ([212.227.15.18])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgVVo-00014q-TE
- for linux-mediatek@lists.infradead.org; Sat, 21 Nov 2020 16:13:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1605975168;
- bh=5XWucgV8E35bUAw4aZcK+RdQSdGH0BbK0144kscnzcI=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=WQolZIuuxEiDb/4MIogv7qWitrEDh9yZwc21+uMJ8+WIOE/ed1OKqJoypw6F/kbvl
- 39WotD6bjU87mQ5cmeTjoXAKZPL+PjeUve69J1kCDVxTd/HqW77CA2MEvSXyNrz9AR
- /cCVn5tv+VYz93V1lWMNOrSuYpy4Y2N4jnQOLp24=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [185.75.72.182] ([185.75.72.182]) by web-mail.gmx.net
- (3c-app-gmx-bs42.server.lan [172.19.170.94]) (via HTTP); Sat, 21 Nov 2020
- 17:12:48 +0100
+	id 1kgbvC-00074B-9r; Sat, 21 Nov 2020 23:03:58 +0000
+Received: from netrider.rowland.org ([192.131.102.5])
+ by merlin.infradead.org with smtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kgbvA-00073A-CU
+ for linux-mediatek@lists.infradead.org; Sat, 21 Nov 2020 23:03:57 +0000
+Received: (qmail 658838 invoked by uid 1000); 21 Nov 2020 12:32:31 -0500
+Date: Sat, 21 Nov 2020 12:32:31 -0500
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Bart Van Assche <bvanassche@acm.org>
+Subject: Re: [PATCH RFC v2 1/1] scsi: pm: Leave runtime PM status alone
+ during system resume/thaw/restore
+Message-ID: <20201121173231.GA657814@rowland.harvard.edu>
+References: <1605861443-11459-1-git-send-email-cang@codeaurora.org>
+ <20201120163524.GB619708@rowland.harvard.edu>
+ <9df460a7-c7fc-4999-bfaa-076229b8a752@acm.org>
 MIME-Version: 1.0
-Message-ID: <trinity-79472418-bec7-4097-9612-fa7a79c27620-1605975168396@3c-app-gmx-bs42>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Marc Zyngier <maz@kernel.org>
-Subject: Aw: Re:  Re:  Re: [PATCH] pci: mediatek: fix warning in msi.h
-Date: Sat, 21 Nov 2020 17:12:48 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <c63d8d7d966c1dda82884f361d4691c3@kernel.org>
-References: <20201031140330.83768-1-linux@fw-web.de>
- <1604253261.22363.0.camel@mtkswgap22>
- <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
- <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
- <df5565a2f1e821041c7c531ad52a3344@kernel.org>
- <87h7q791j8.fsf@nanos.tec.linutronix.de>
- <877dr38kt8.fsf@nanos.tec.linutronix.de>
- <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
- <87o8ke7njb.fsf@nanos.tec.linutronix.de>
- <trinity-1d7f8900-10db-40c0-a0aa-47bb99ed84cd-1604508571909@3c-app-gmx-bs02>
- <87h7q4lnoz.fsf@nanos.tec.linutronix.de>
- <074d057910c3e834f4bd58821e8583b1@kernel.org>
- <87blgbl887.fsf@nanos.tec.linutronix.de>
- <c63d8d7d966c1dda82884f361d4691c3@kernel.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:0WIPfXZNx+COWrzO6EWqhIOYRhYsuaEetPZRHGICmDa5l4cTCVnVnw0NbFHdi/ukfb57B
- 6Lxz2OgLXMSr5/sLZ9j0KeqQe9najHHMVgLiJavcBw1i28PIl+j0IgRbSTL8Th60ZpqaRZYhyRIK
- QjWgVE5drMTBYjDwVBLFA4kAa/3ZuKPVy1/qTV/Hh7g5rsFwX6y5eGEE+zxoF6Sv9oDXvsEC2oDj
- DZkqXXREa2aW5ClACLGG2C2cD7q4q7NS0LHGaoTWc8wnipzl4h9m3r17XTbZcvlS5ciH6UT3Hxwp
- Cc=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:eADDipfb3v0=:KBRN9L8eDneVATspJUwmja
- XPTN2pmGNuR+KRj/6s7kAKPPo6YhEbChm8G0MtP+rjsnpBZCOXSjBbTUS+gE0zLVh3XhqGHRs
- gwQopYWXCPmE+LUThjau41VJI8mrH9VyebUy2hiWKLfCkoZiqQNAWiGi4X49zFS9+pY3pABs2
- FF1ikYXvw90kdUxYZnc1V0vli/ebkvfnAvX3Hy07dUbXZMoANVO8le7DL5x4jdLS3SR8Ffrcz
- x9DNglGD0SdwwoOWazBCLvBDD6Tiyk4a38OYvjStb777J3XegwXEBO/YCgKCLJK6W+LTtkIJZ
- TClV2KG0egtTMd5P0Wg7IsyHPvMd9+38wAcHJFTMnfC9u6pLpWZU1z4OY970dhJfTJFC1aGAK
- Caxwvu8Wp0aQ06xJdPvocBRh88WAOum2QjOQKnILjCi95/KaSZoWuCLKCDQAPVRbGADYhgPKh
- w7fpVLoH9BI4ThFZQ0Rdt5uro74R4XbRP8YtNonBHiND+KoLYdOBBRKVKZL8CZyrHC5+VGjGj
- cqRIhWV/R92vXLQcpvkuI+irJc576bjainFPKd+C6+xouBNIvH7my3NiJF+CRBwvegJ5kekcT
- 7LSM9o73dxXyw=
+Content-Disposition: inline
+In-Reply-To: <9df460a7-c7fc-4999-bfaa-076229b8a752@acm.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201121_161321_227015_5FB77428 
-X-CRM114-Status: UNSURE (   5.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201121_180356_538912_894B6070 
+X-CRM114-Status: GOOD (  22.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,22 +66,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Frank Wunderlich <linux@fw-web.de>
+Cc: "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, rnayak@codeaurora.org,
+ saravanak@google.com, linux-scsi@vger.kernel.org,
+ open list <linux-kernel@vger.kernel.org>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>, nguyenb@codeaurora.org,
+ ziqichen@codeaurora.org, Can Guo <cang@codeaurora.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ salyzyn@google.com, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com,
+ hongwus@codeaurora.org, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Sat, Nov 21, 2020 at 09:00:02AM -0800, Bart Van Assche wrote:
+> On 11/20/20 8:35 AM, Alan Stern wrote:
+> > On Fri, Nov 20, 2020 at 12:37:22AM -0800, Can Guo wrote:
+> >> Runtime resume is handled by runtime PM framework, no need to forcibly
+> >> set runtime PM status to RPM_ACTIVE during system resume/thaw/restore.
+> > 
+> > Sorry, I don't understand this explanation at all.
+> > 
+> > Sure, runtime resume is handled by the runtime PM framework.  But this 
+> > patch changes the code for system resume, which is completely different.
+> > 
+> > Following a system resume, the hardware will be at full power.  We don't 
+> > want the kernel to think that the device is still in runtime suspend; 
+> > otherwise is would never put the device back into low-power mode.
+> 
+> Hi Alan,
+> 
+> Does this mean that every driver needs similar code for handling runtime
+> suspended devices upon system resume? If so, would it be possible to
+> move that code into the power management core (drivers/base/power)?
 
-any new state here?
+That's a complicated story.
 
-last fix works, but i have not seen it approved by anyone for merge or sent as separate Patch
+In short, many drivers need to do this, but not all.  There is a complex 
+collection of settings available for subsystems or drivers that would 
+like their devices to remain in runtime system across a system sleep.
 
-regards Frank
+For the subsystems/drivers that don't care to deal with this complexity 
+or don't have any special requirements -- yes, they all need to include 
+code like this in their system-resume paths.
+
+I had a very long discussion with Rafael Wysocki about all this starting 
+last March; you can find the relevant emails beginning roughly here:
+
+	https://marc.info/?l=linux-pm&m=158516934924947&w=2
+
+and continuing through a few different threads.
+
+Rafael ended up making a large number of changes to the PM core and API 
+to simplify things, straighten them out, and improve the documentation.  
+But we never did try to add this automatic set-runtime-active thing into 
+the core.  Probably we wanted all the other changes to settle down 
+before trying to do it, and then just forgot about it.  In fact, I'm not 
+certain that it is possible now, but we should look into it.
+
+Alan Stern
 
 _______________________________________________
 Linux-mediatek mailing list
