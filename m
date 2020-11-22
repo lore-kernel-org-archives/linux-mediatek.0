@@ -6,19 +6,17 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
 	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65414C56201
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 19:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20468C56201
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 19:23:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9EE22076C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 19:12:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 776A92076E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 19:23:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tRy8lTkQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="cqs+SSmh";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="cqs+SSmh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9EE22076C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=HansenPartnership.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dZsmFf/a"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 776A92076E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=perches.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,52 +24,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FQGYcrVG0fdXigOvIrRVLnwHhrYFp4W951ADDl7w408=; b=tRy8lTkQD3rI+YW+Rl6sO5kuE
-	Qo5frjxsOqobOZWbH0CZj65SHUAYi4SCGA3WGstdcBkGSXP/+MBcd47y4CqVYiwzoY/m+lyyA5uTO
-	FzhNPxW10U+1dJiZziC8+jxmh72iNq0tbvU7o31zLJj3SS8WcT83g/dB+vE66I/yDusONbnvHbGml
-	5JOwsbCV47qhZsgfNdD943CEm2iMcsZhXFO385n7kDsjTgisJcXZg/vz/fn+AZfJflaN0NpQnXtuL
-	Vmuc5tS0cgmOf+Qcn8IRD/FTkcfSvS+ABs8pb439L9XLk09Uqd7wnVqSYjycUnfutdrGR/1XwHzHq
-	KMzkNG4BA==;
+	 bh=PjXv3sAiBqP2OsPa05eyERobSyDjwUNM8nqaTQdFpsQ=; b=dZsmFf/ausopJNf84CTnOrqGy
+	3bcxF15BoCjAAWWKOhB1DUwOX0Jn+PtejjDHFq9LWaSoIVI4p8TVN9XTNLJSPNoY8AUdzQJMkYfVX
+	W27HHpco97LqDavELNCIlNMyF1mZ1NbYZGqIeob7s5xeg9TNlI54o1Sbjs4AlUgNOoRNTJ8Iy1LxQ
+	P9/uedLMROeUswNCZZ+/QW93IPYJ56f9nG4oCBDURlDBTFrjTWuVnvJ/OvHo60CXLnDF35D5Jyzpa
+	5l6KVJOB8B4yhbOszTQLw1DYDkkgtJJF6dm1ppizAd5ir164DOdM9VlY1E/8m4skZi9CWghMnGhCG
+	4vrBCHeuQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kgumv-0008M2-Jk; Sun, 22 Nov 2020 19:12:41 +0000
-Received: from bedivere.hansenpartnership.com ([2607:fcd0:100:8a00::2])
+	id 1kguwz-0000tL-O3; Sun, 22 Nov 2020 19:23:05 +0000
+Received: from smtprelay0182.hostedemail.com ([216.40.44.182]
+ helo=smtprelay.hostedemail.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgumq-0008K7-Mp; Sun, 22 Nov 2020 19:12:37 +0000
-Received: from localhost (localhost [127.0.0.1])
- by bedivere.hansenpartnership.com (Postfix) with ESMTP id 96EF41280181;
- Sun, 22 Nov 2020 11:12:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1606072354;
- bh=RkMkP78xnGMXpQYwW6B64FZnxQgTZZOXvlSf0xxLQvs=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=cqs+SSmhVi1ZEA6KYpGlCOCKLLv9H3tmiNoTpcFF7F+1vb1QgbekNgnLlgvfKOfrE
- OZFKROCwJ+4Dh9AKsWr2ZhTbG6lfWTbk5QBrrreOMOUbINEmr9+ncDNzytUg1VYukU
- VtKrfA4fWPJSjG94bNM6AxKG7W4waC4yzJNdPcng=
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id T_J7YGNeXPBb; Sun, 22 Nov 2020 11:12:34 -0800 (PST)
-Received: from jarvis.int.hansenpartnership.com (unknown
- [IPv6:2601:600:8280:66d1::527])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id D7CFF128010B;
- Sun, 22 Nov 2020 11:12:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1606072354;
- bh=RkMkP78xnGMXpQYwW6B64FZnxQgTZZOXvlSf0xxLQvs=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=cqs+SSmhVi1ZEA6KYpGlCOCKLLv9H3tmiNoTpcFF7F+1vb1QgbekNgnLlgvfKOfrE
- OZFKROCwJ+4Dh9AKsWr2ZhTbG6lfWTbk5QBrrreOMOUbINEmr9+ncDNzytUg1VYukU
- VtKrfA4fWPJSjG94bNM6AxKG7W4waC4yzJNdPcng=
-Message-ID: <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
+ id 1kguwv-0000ri-8v; Sun, 22 Nov 2020 19:23:02 +0000
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay06.hostedemail.com (Postfix) with ESMTP id 8A2DD18221869;
+ Sun, 22 Nov 2020 19:22:59 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-HE-Tag: curve68_4013d692735f
+X-Filterd-Recvd-Size: 4350
+Received: from XPS-9350.home (unknown [47.151.128.180])
+ (Authenticated sender: joe@perches.com)
+ by omf17.hostedemail.com (Postfix) with ESMTPA;
+ Sun, 22 Nov 2020 19:22:48 +0000 (UTC)
+Message-ID: <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
 Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Joe Perches <joe@perches.com>, Kees Cook <keescook@chromium.org>, Jakub
- Kicinski <kuba@kernel.org>
-Date: Sun, 22 Nov 2020 11:12:30 -0800
-In-Reply-To: <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
+From: Joe Perches <joe@perches.com>
+To: James Bottomley <James.Bottomley@HansenPartnership.com>, Kees Cook
+ <keescook@chromium.org>, Jakub Kicinski <kuba@kernel.org>
+Date: Sun, 22 Nov 2020 11:22:47 -0800
+In-Reply-To: <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
@@ -79,11 +62,13 @@ References: <cover.1605896059.git.gustavoars@kernel.org>
  <202011220816.8B6591A@keescook>
  <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
  <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
-User-Agent: Evolution 3.34.4 
+ <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
+User-Agent: Evolution 3.38.1-1 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201122_141237_019864_008B8F3B 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20201122_142301_399710_069922DF 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,18 +123,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2020-11-22 at 10:25 -0800, Joe Perches wrote:
-> On Sun, 2020-11-22 at 10:21 -0800, James Bottomley wrote:
-> > Please tell me our reward for all this effort isn't a single
-> > missing error print.
+On Sun, 2020-11-22 at 11:12 -0800, James Bottomley wrote:
+> On Sun, 2020-11-22 at 10:25 -0800, Joe Perches wrote:
+> > On Sun, 2020-11-22 at 10:21 -0800, James Bottomley wrote:
+> > > Please tell me our reward for all this effort isn't a single
+> > > missing error print.
+> > 
+> > There were quite literally dozens of logical defects found
+> > by the fallthrough additions.  Very few were logging only.
 > 
-> There were quite literally dozens of logical defects found
-> by the fallthrough additions.  Very few were logging only.
+> So can you give us the best examples (or indeed all of them if someone
+> is keeping score)?  hopefully this isn't a US election situation ...
 
-So can you give us the best examples (or indeed all of them if someone
-is keeping score)?  hopefully this isn't a US election situation ...
+Gustavo?  Are you running for congress now?
 
-James
+https://lwn.net/Articles/794944/
 
 
 
