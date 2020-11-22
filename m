@@ -6,45 +6,72 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
 	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B9EA9C5519F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 22:55:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8A91C5519F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 23:04:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FCAA20773
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 22:55:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 221BA20773
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2020 23:04:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gG3gScQp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FCAA20773
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=telegraphics.com.au
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RlVhB0Sb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="WmZvrZ8S";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="WmZvrZ8S"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 221BA20773
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=HansenPartnership.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=x/MBTqJvWRJY655kUiXVqFZy4WOaeoYiW3DhGHT2NAo=; b=gG3gScQpkKwx7s/5EoUMp39Ih
-	J4a9c4faky5v/F5YkTCFl2Uw6dZTU39SeA6vWUv59ZGEqOqYdoZ0LhPUJWeBzAC9/IQJOHl2XW+fw
-	u2yVEcv08CFizMHCgYf95aHc6fy/hCb6J9AIT49tyxSflKz3JTZNZVo4MlVUnWGPIp7lkuGms+hz/
-	+wRx3iHV15fC097ssCMiPCo6YXrBMbLh4cvN5K9Wxxmt0DXbsNFiWIw5JF+ofIuEGToMzFu04gGac
-	MsG1AX1J/4foH45nYzWnino2Uh76dPtCp6Din8OmuLFnyL0Cru9+ZwGGIDBjOH/DpoxUS1g3eXIr1
-	HsRqeyEmg==;
+	 bh=u6+nKQDi9DYunrjo7wRpj37/qBlvQJBj1jfLV5t9NoQ=; b=RlVhB0Sbvc7JMsIwnHJuzyRf4
+	+ANYfhG2f9Kq6NPw2QZ76cd/b6fBVegygxNyhSbSTQTOSUmznprXyKaMCun0zKj2j8zzFjX//sj51
+	j3Hq+yUR1rLqghGN0Fydr3mubDWqVZleeuXeF17btt1vIZRu61Awgo0EVhXlLlBVlPJS+QmKR9p6j
+	tXHjplTfgw1fLddAv8S2uPO5S+ix5iIE4AuIXT2woYJ4URquI6FDId9Yb1gpULcSBOClIq7jh+WYN
+	ILAnlOjjFQYCY3RIdB+tnW0YqFIQpCXcIavI1ZKLecwkKp2e8KtaIfiuzdiZeAJET8os6RRebyTtg
+	ZyXAv7Diw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kgyG2-000532-9g; Sun, 22 Nov 2020 22:54:58 +0000
-Received: from kvm5.telegraphics.com.au ([98.124.60.144])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgyFw-000517-QY; Sun, 22 Nov 2020 22:54:54 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by kvm5.telegraphics.com.au (Postfix) with ESMTP id BF98E29DB3;
- Sun, 22 Nov 2020 17:54:47 -0500 (EST)
-Date: Mon, 23 Nov 2020 09:54:48 +1100 (AEDT)
-From: Finn Thain <fthain@telegraphics.com.au>
-To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+	id 1kgyPZ-0005Xt-3s; Sun, 22 Nov 2020 23:04:49 +0000
+Received: from bedivere.hansenpartnership.com ([2607:fcd0:100:8a00::2])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kgyPT-0005Vs-Kg; Sun, 22 Nov 2020 23:04:44 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 5C1741280900;
+ Sun, 22 Nov 2020 15:04:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606086281;
+ bh=ampKVWKUqLiKYyObj0dhEgltdPGbsuliUrstEBadWMw=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=WmZvrZ8SISP4O7CkmRRwRn7Ww4EqbFeoj9AudkGWHrTHPvBGVyYGXPtxxL5/3UBwZ
+ KEGMUiR7FBhAVO42W5uBkyouydambEWUMRvvMR32eyWutkJh8vdHwfKrPde3Z6lPQr
+ zwZuERjUvzNlbmlNByqn4M9h7sLDVk7BBiQeo3h4=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id PvG_3ynFL_Uj; Sun, 22 Nov 2020 15:04:41 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 9178D12808F6;
+ Sun, 22 Nov 2020 15:04:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606086281;
+ bh=ampKVWKUqLiKYyObj0dhEgltdPGbsuliUrstEBadWMw=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=WmZvrZ8SISP4O7CkmRRwRn7Ww4EqbFeoj9AudkGWHrTHPvBGVyYGXPtxxL5/3UBwZ
+ KEGMUiR7FBhAVO42W5uBkyouydambEWUMRvvMR32eyWutkJh8vdHwfKrPde3Z6lPQr
+ zwZuERjUvzNlbmlNByqn4M9h7sLDVk7BBiQeo3h4=
+Message-ID: <c3371b7c15ed30b92e9bb8609ff65bdaa0ef61fa.camel@HansenPartnership.com>
 Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-In-Reply-To: <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
-Message-ID: <alpine.LNX.2.23.453.2011230938390.7@nippy.intranet>
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Finn Thain <fthain@telegraphics.com.au>, Miguel Ojeda
+ <miguel.ojeda.sandonis@gmail.com>
+Date: Sun, 22 Nov 2020 15:04:36 -0800
+In-Reply-To: <alpine.LNX.2.23.453.2011230938390.7@nippy.intranet>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
@@ -52,10 +79,12 @@ References: <cover.1605896059.git.gustavoars@kernel.org>
  <202011220816.8B6591A@keescook>
  <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
  <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
+ <alpine.LNX.2.23.453.2011230938390.7@nippy.intranet>
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201122_175453_659003_016D15A6 
-X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-CacheID: sfid-20201122_180443_964949_2B69443B 
+X-CRM114-Status: UNSURE (   8.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -72,16 +101,15 @@ Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
  reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
  linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
  dri-devel@lists.freedesktop.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
- linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
- wcn36xx@lists.infradead.org, samba-technical@lists.samba.org,
- linux-i3c@lists.infradead.org, linux1394-devel@lists.sourceforge.net,
- linux-afs@lists.infradead.org, usb-storage@lists.one-eyed-alien.net,
- drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
- Nick Desaulniers <ndesaulniers@google.com>, linux-scsi@vger.kernel.org,
- Nathan Chancellor <natechancellor@gmail.com>, linux-rdma@vger.kernel.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
+ dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
+ GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
+ samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
  oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
  linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
  linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
@@ -116,51 +144,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 2020-11-23 at 09:54 +1100, Finn Thain wrote:
+> But is anyone keeping score of the regressions? If unreported bugs
+> count, what about unreported regressions?
 
-On Sun, 22 Nov 2020, Miguel Ojeda wrote:
+Well, I was curious about the former (obviously no tool will tell me
+about the latter), so I asked git what patches had a fall-through
+series named in a fixes tag and these three popped out:
 
-> 
-> It isn't that much effort, isn't it? Plus we need to take into account 
-> the future mistakes that it might prevent, too.
+9cf51446e686 bpf, powerpc: Fix misuse of fallthrough in bpf_jit_comp()
+6a9dc5fd6170 lib: Revert use of fallthrough pseudo-keyword in lib/
+91dbd73a1739 mips/oprofile: Fix fallthrough placement
 
-We should also take into account optimisim about future improvements in 
-tooling.
+I don't think any of these is fixing a significant problem, but they
+did cause someone time and trouble to investigate.
 
-> So even if there were zero problems found so far, it is still a positive 
-> change.
-> 
+James
 
-It is if you want to spin it that way.
 
-> I would agree if these changes were high risk, though; but they are 
-> almost trivial.
-> 
-
-This is trivial:
-
- case 1:
-	this();
-+	fallthrough;
- case 2:
- 	that();
-
-But what we inevitably get is changes like this:
-
- case 3:
-        this();
-+       break;
- case 4:
-        hmmm();
-
-Why? Mainly to silence the compiler. Also because the patch author argued 
-successfully that they had found a theoretical bug, often in mature code.
-
-But is anyone keeping score of the regressions? If unreported bugs count, 
-what about unreported regressions?
-
-> Cheers,
-> Miguel
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
