@@ -2,60 +2,57 @@ Return-Path: <SRS0=13eL=E5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DEB9CC2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 10:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09A10C388F9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 11:52:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 588302072C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 10:18:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6EDE620756
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 11:52:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pULAflQi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 588302072C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a88zPFB5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EDE620756
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YZjL8Bntq6U0BpPyeXrAsk7FgbHmnIwU68HDXKz63qc=; b=pULAflQi66xbuiwBrnhV5O7VVn
-	uMefGxbhlZigcuC6NLY8Tjwa5wcfx25IOewWymZayAjB3lVymXxKzsg21xiSusAtfTAbDQZXLJskK
-	f+KnPRrfbgCmbrn4wEMBzreXfIqaGyxNw46QyhVfxbuaT1CEEbLkjQO4KL6Dgdch3U2I5uthi3ftY
-	QlY7v5qu1ypM5v3Cqvq8AzBf6roLc5ZIhfLqAJsJYSQHV8YVAgEE6q5aJf569IIUdJkaQn/O1GW+0
-	TurtAayyXYsuMEcaYq8LfphJWc1T19oJjjE7SkLK9Xsc4xIJcFbD79CSa6UqsO6u5azEej02/XPO5
-	LdXPogGg==;
+	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Hg6xSVnpnjQiIh4CrRdLOJ019rQjFkNQ4mQRRCCu3kA=; b=a88zPFB5rvU2b7B6f7m/MrbQs
+	g5Lswo4gBZVuZcJbnwdCtgbbulILxgkI8XIKIeAyk5bmV55r7F8CtrWI6ktoY0EH5HaGUaCMnOAnk
+	jBlBqcfe5y06JMRADqZDaxi5F4y+Q8CO3xs0qilwX9Lx3ghMFF4mYHmgG7FHsHydeiaTKWBqXieUH
+	v0I3sH5Gp6TkuoOfD/8bfaQ05UJUSIRbeixpvMytldCRgyqu8gcTGHreyzidRJFcovP2pNdgGBQ5+
+	kjxWHmbGwyRMxaZhd4shKBdLRk9OaRXKm1a7V7Y+rkHDBzkynBir2IOY03xspbHe6wVzsOw6PfJhO
+	bg1fMQyQw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kh8v5-0003Th-I2; Mon, 23 Nov 2020 10:18:03 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kh8v2-0003S2-RW
- for linux-mediatek@lists.infradead.org; Mon, 23 Nov 2020 10:18:02 +0000
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cfjl03nmCz15Ptp;
- Mon, 23 Nov 2020 18:17:32 +0800 (CST)
-Received: from huawei.com (10.175.127.227) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Mon, 23 Nov 2020
- 18:17:46 +0800
-From: Zhang Qilong <zhangqilong3@huawei.com>
-To: <krzk@kernel.org>, <matthias.bgg@gmail.com>
-Subject: [PATCH] memory: mtk-smi: Fix PM usage counter unbalance in mtk_smi ops
-Date: Mon, 23 Nov 2020 18:21:18 +0800
-Message-ID: <20201123102118.3866195-1-zhangqilong3@huawei.com>
-X-Mailer: git-send-email 2.25.4
-MIME-Version: 1.0
-X-Originating-IP: [10.175.127.227]
-X-CFilter-Loop: Reflected
+	id 1khAO0-0004mF-Hm; Mon, 23 Nov 2020 11:52:00 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1khANv-0004kc-3P; Mon, 23 Nov 2020 11:51:56 +0000
+Received: from marcel-macbook.holtmann.net (unknown [37.83.193.87])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 02097CECCF;
+ Mon, 23 Nov 2020 12:58:59 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.20.0.2.21\))
+Subject: Re: [PATCH] Bluetooth: btmtksdio: Add the missed release_firmware()
+ in mtk_setup_firmware()
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <20201117024332.165771-1-jingxiangfeng@huawei.com>
+Date: Mon, 23 Nov 2020 12:51:48 +0100
+Message-Id: <9917F51E-C0C5-45AA-903A-DA3C10398F95@holtmann.org>
+References: <20201117024332.165771-1-jingxiangfeng@huawei.com>
+To: Jing Xiangfeng <jingxiangfeng@huawei.com>
+X-Mailer: Apple Mail (2.3654.20.0.2.21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201123_051801_163960_A6568C72 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20201123_065155_252099_9355FE00 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,48 +64,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, Mark-YW.Chen@mediatek.com,
+ sean.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pm_runtime_get_sync will increment pm usage counter
-even it failed. Forgetting to putting operation will
-result in reference leak here. We fix it by replacing
-it with pm_runtime_resume_and_get to keep usage counter
-balanced.
+Hi Jing,
 
-Fixes: 4f0a1a1ae3519 ("memory: mtk-smi: Invoke pm runtime_callback to enable clocks")
-Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
----
- drivers/memory/mtk-smi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> mtk_setup_firmware() misses to call release_firmware() in an error
+> path. Jump to free_fw to fix it.
+> 
+> Fixes: 737cd06072a7 ("Bluetooth: btmtksdio: fix up firmware download sequence")
+> Signed-off-by: Jing Xiangfeng <jingxiangfeng@huawei.com>
+> ---
+> drivers/bluetooth/btmtksdio.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index ac350f8d1e20..82d09b88240e 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -130,7 +130,7 @@ static void mtk_smi_clk_disable(const struct mtk_smi *smi)
- 
- int mtk_smi_larb_get(struct device *larbdev)
- {
--	int ret = pm_runtime_get_sync(larbdev);
-+	int ret = pm_runtime_resume_and_get(larbdev);
- 
- 	return (ret < 0) ? ret : 0;
- }
-@@ -374,7 +374,7 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
- 	int ret;
- 
- 	/* Power on smi-common. */
--	ret = pm_runtime_get_sync(larb->smi_common_dev);
-+	ret = pm_runtime_resume_and_get(larb->smi_common_dev);
- 	if (ret < 0) {
- 		dev_err(dev, "Failed to pm get for smi-common(%d).\n", ret);
- 		return ret;
--- 
-2.25.4
+patch has been applied to bluetooth-next tree.
+
+Regards
+
+Marcel
 
 
 _______________________________________________
