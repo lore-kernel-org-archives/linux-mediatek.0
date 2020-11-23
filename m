@@ -2,81 +2,85 @@ Return-Path: <SRS0=13eL=E5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 059E4C5519F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 01:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36DB5C5519F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:00:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9102F20771
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 01:24:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CF15E20DD4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:00:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YaBiSC5R";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="p/5WHEne"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9102F20771
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ON2+qLdJ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="O0bCyjkQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF15E20DD4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cEayyILH8l8mGT4rSm+BxJfcNlvDGUEek4/op6RYBOg=; b=YaBiSC5RcbLfy7YcE0M+hx4Xk
-	UcEIbPqy4tRiPmymvNrM7Qc8sIwxKm9xT4guIheAoIM7FQYpjIMBN7dqk08R/pnkFpYz42DbOmqgx
-	XbP3UGqhFVQoy1Z7WS2rgeGp5Vj45l7/G2zHxide0gck0NUz/Rg1GkzTSSCM84hI3YOd0CGxGefkO
-	1TsLCWY6A31qCWzob2W93F42Z+w85vusbjggWo46HC3g22mlqY70Rslq7b+PJlWZCU9f+PnYz+Zm5
-	toBc2P4StUcLlctKDp1o4c8bbekn3EffAgUNSakhoAl8NHli0VyS0C4t8ssEfFtYD82YYkNGYzJDT
-	zTeJ8fNvA==;
+	 bh=0c7suhV5QeD8bdUDVdUyt4UHenFwwv0NlDg9P6ABtTg=; b=ON2+qLdJPKpygm+JQNDb/zI0u
+	rhADxpCLVwFCuPRMewZXIpr7N6GHP5rlQoRjFatCT+eEF9g/Zjkb7lZzzhJ/FNhVslZQyBvHTdj2m
+	a0jbzpY82dnGJn7tbNP78HDGBWh1OAu+ZdmG2tgcoaM8rTYiPBfjbjB0HTeI7ep92o3awgNOOKnJB
+	4Zudjd29VUmcA3CHE5EGPXKZoWPLOVqp5u3pC4FcK31rTRIYmCz+Q4XjH032WFxdMIkL6koY/mVre
+	ZFbymRemEnDlv9PsiZho+y0H4KqYeIT82Eh6F4ae/kHyJ4RVyWrq1ZFLOMWusTMjTDwyM5yBchCez
+	rEC0IavXg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kh0aI-0002Xu-SY; Mon, 23 Nov 2020 01:24:02 +0000
-Received: from z5.mailgun.us ([104.130.96.5])
+	id 1kh25d-0006Wz-Oi; Mon, 23 Nov 2020 03:00:29 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kh0aE-0002XF-Kp
- for linux-mediatek@lists.infradead.org; Mon, 23 Nov 2020 01:24:00 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1606094637; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=WVW8SEFhmmTXHu0CNeD1oWMm387GTbxMvfMsPgLO/r4=;
- b=p/5WHEneX1chUhDx4KsuY1JpC3ZsnjXGAVQJNMQsIx7qvFTIO/FxLNjicrS9+vgXCFwGA8oD
- bi8eNpULyxeGO9u1I3iOEDjmezAMiw+pMPN+WCDulthggLaq0BoRttO+vs6dRIlBmfbfJwgB
- b0FNMHI0jTFTT3QUfbAgHof8s4k=
-X-Mailgun-Sending-Ip: 104.130.96.5
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
- 5fbb0f2c7f0cfa6a16c0e1f4 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 23 Nov 2020 01:23:56
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 9510DC43463; Mon, 23 Nov 2020 01:23:55 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 16917C433ED;
- Mon, 23 Nov 2020 01:23:54 +0000 (UTC)
+ id 1kh25Z-0006WD-It; Mon, 23 Nov 2020 03:00:26 +0000
+Received: by mail-ot1-x344.google.com with SMTP id n11so14617785ota.2;
+ Sun, 22 Nov 2020 19:00:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=X6ea8y+7o1VS2+hJJcwmIepII7pozzGa349DC5946o4=;
+ b=O0bCyjkQ/bAlyYl/p3JN/CYCEM/L/vJ4GpfrG23A/z6KykNoJ0gli/NpFZQfNj+czP
+ i0o0sQFjZ8RE/zL1dwgb1guZ56q5RD8nsTO0UvvMq751OO8OiGxqJGmY3SonCTQ5Lspn
+ XYg6yJmsGkLWVLETDQprpFj4DNoJABK7ArAqKLW42zHl+xnpn/Bu7Jl4x/N17ilhzZwe
+ +WJgrpCpIVAxxg+jOcLHmFvQ0OGa4ag0BSPCNfNWxztnDy2ZR3/vPrbEta1KIF+CuicY
+ PhU93xVocYP8DlMNsSHS63hBpQhFIk79H4pGuTgLP9A/oooIGopj4i/hhUNDRA4Fq3V/
+ WVuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=X6ea8y+7o1VS2+hJJcwmIepII7pozzGa349DC5946o4=;
+ b=I6xtZk/OntN4WTpwWIWT2+uvBI8wv2ZN/A+WD//pgWy/qRLxO8O8ZluRPtjcLYcTLU
+ /IbZpO0G6aA2+ODS/0FkO0mHUhw+ElIrelB0svvLY1nMvWiLe+Pa1BpBnnzp1PPLVNhn
+ 2244r8Pw0K9qSShLYvoHNObIhu1Jm45HnOrqGnfIsrgtphgHfPh1T4AkQqQ3cZ+/V0Uc
+ LWU04qBLZ6qYAU2CdfPGsq7hQ2VyadnBIDevi0IWhOTa6LjPd0a3D5h6vBF+m6y6WT+w
+ 4OrMqNCkSiq44Y47zRfhb3b5fw1KfKIZLorRC8QzmY6P3XjSVUgJiQGR70FKNc5NSYVh
+ Fsbg==
+X-Gm-Message-State: AOAM5307mhAT5YGqKgrF6cQjmu7rfxyht0V2uUIjxMR7djJ12jhWmQdN
+ I34lSno0Gu2o+YwLBiDO1t3urka/uCBnIAJ64Dw=
+X-Google-Smtp-Source: ABdhPJxZjezUseMBEoGgj0Bb6+2zeayiCYTxLMkNBbkr2KfxEZ23lfObPxA14lZP64GdkYiIRfDnVIR4/Qm0SWsI+Vc=
+X-Received: by 2002:a9d:6c99:: with SMTP id c25mr22787464otr.327.1606100418882; 
+ Sun, 22 Nov 2020 19:00:18 -0800 (PST)
 MIME-Version: 1.0
-Date: Mon, 23 Nov 2020 09:23:53 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Alan Stern <stern@rowland.harvard.edu>
-Subject: Re: [PATCH RFC v2 1/1] scsi: pm: Leave runtime PM status alone during
- system resume/thaw/restore
-In-Reply-To: <20201120163524.GB619708@rowland.harvard.edu>
-References: <1605861443-11459-1-git-send-email-cang@codeaurora.org>
- <20201120163524.GB619708@rowland.harvard.edu>
-Message-ID: <ff2975f88cc452d134b8bf24c55bec09@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+References: <1605696462-391-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1605696462-391-3-git-send-email-gene.chen.richtek@gmail.com>
+ <20201118213712.GA22371@amd> <6068b1e3-a4c8-6c7d-d33d-f2238e905e43@gmail.com>
+ <20201119215721.GA5337@amd> <0700c32d-643b-fedb-06f0-21547b18205d@gmail.com>
+In-Reply-To: <0700c32d-643b-fedb-06f0-21547b18205d@gmail.com>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Date: Mon, 23 Nov 2020 11:00:09 +0800
+Message-ID: <CAE+NS363BpytNGZzfZHLa7KLKL8gjGj14oNvRi3oaH9KT79REg@mail.gmail.com>
+Subject: Re: [PATCH v7 2/5] dt-bindings: leds: Add LED_COLOR_ID_MOONLIGHT
+ definitions
+To: Jacek Anaszewski <jacek.anaszewski@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201122_202358_828446_AE4E17D4 
-X-CRM114-Status: GOOD (  27.64  )
+X-CRM114-CacheID: sfid-20201122_220025_732436_FBB8D9C0 
+X-CRM114-Status: GOOD (  20.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,143 +92,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC
- support" <linux-arm-kernel@lists.infradead.org>, rnayak@codeaurora.org,
- saravanak@google.com, linux-scsi@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>, "James
- E.J. Bottomley" <jejb@linux.ibm.com>, nguyenb@codeaurora.org,
- ziqichen@codeaurora.org, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- salyzyn@google.com, "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com,
- Bart Van Assche <bvanassche@acm.org>, hongwus@codeaurora.org,
- asutoshd@codeaurora.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ devicetree <devicetree@vger.kernel.org>, cy_huang@richtek.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dan Murphy <dmurphy@ti.com>, Pavel Machek <pavel@ucw.cz>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Wilma.Wu@mediatek.com,
+ Linux LED Subsystem <linux-leds@vger.kernel.org>, shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Alan,
-
-On 2020-11-21 00:35, Alan Stern wrote:
-> On Fri, Nov 20, 2020 at 12:37:22AM -0800, Can Guo wrote:
->> Runtime resume is handled by runtime PM framework, no need to forcibly
->> set runtime PM status to RPM_ACTIVE during system resume/thaw/restore.
-> 
-> Sorry, I don't understand this explanation at all.
-> 
-> Sure, runtime resume is handled by the runtime PM framework.  But this
-> patch changes the code for system resume, which is completely 
-> different.
-> 
-> Following a system resume, the hardware will be at full power.  We 
-> don't
-> want the kernel to think that the device is still in runtime suspend;
-> otherwise is would never put the device back into low-power mode.
-
-How about adding below lines to the patch?
-
-diff --git a/drivers/scsi/scsi_pm.c b/drivers/scsi/scsi_pm.c
-index 908f27f..7ebe582 100644
---- a/drivers/scsi/scsi_pm.c
-+++ b/drivers/scsi/scsi_pm.c
-@@ -75,9 +75,11 @@ static int scsi_dev_type_resume(struct device *dev,
-         const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : 
-NULL;
-         int err = 0;
-
--       err = cb(dev, pm);
--       scsi_device_resume(to_scsi_device(dev));
--       dev_dbg(dev, "scsi resume: %d\n", err);
-+       if (pm_runtime_active(dev)) {
-+               err = cb(dev, pm);
-+               scsi_device_resume(to_scsi_device(dev));
-+               dev_dbg(dev, "scsi resume: %d\n", err);
-+       }
-
-         return err;
-  }
-
-Whenever a device is accessed, the issuer or somewhere in the path
-should do something like pm_runtime_get_sync (e.g. in sg_open()) or
-pm_runtime_resume() (e.g. in blk_queue_enter()), in either sync or
-async way. After the job (read/write/ioctl or whatever) is done,
-either a pm_runtime_put_sync() or auto runtime suspend puts the device
-back into runtime suspended/low-power mode. Since the func
-scsi_bus_suspend_common() does nothing if device is already in runtime
-suspended mode, scsi_dev_type_resume() should only resume the device
-if it is runtime active.
-
-Thanks,
-
-Can Guo.
-
-> Alan Stern
-> 
->> Cc: Stanley Chu <stanley.chu@mediatek.com>
->> Cc: Bart Van Assche <bvanassche@acm.org>
->> Cc: Alan Stern <stern@rowland.harvard.edu>
->> Signed-off-by: Can Guo <cang@codeaurora.org>
->> ---
->> 
->> Changes since v1:
->> - Incorporated Bart's comments
->> 
->> ---
->>  drivers/scsi/scsi_pm.c | 24 +-----------------------
->>  1 file changed, 1 insertion(+), 23 deletions(-)
->> 
->> diff --git a/drivers/scsi/scsi_pm.c b/drivers/scsi/scsi_pm.c
->> index 3717eea..908f27f 100644
->> --- a/drivers/scsi/scsi_pm.c
->> +++ b/drivers/scsi/scsi_pm.c
->> @@ -79,25 +79,6 @@ static int scsi_dev_type_resume(struct device *dev,
->>  	scsi_device_resume(to_scsi_device(dev));
->>  	dev_dbg(dev, "scsi resume: %d\n", err);
->> 
->> -	if (err == 0) {
->> -		pm_runtime_disable(dev);
->> -		err = pm_runtime_set_active(dev);
->> -		pm_runtime_enable(dev);
->> -
->> -		/*
->> -		 * Forcibly set runtime PM status of request queue to "active"
->> -		 * to make sure we can again get requests from the queue
->> -		 * (see also blk_pm_peek_request()).
->> -		 *
->> -		 * The resume hook will correct runtime PM status of the disk.
->> -		 */
->> -		if (!err && scsi_is_sdev_device(dev)) {
->> -			struct scsi_device *sdev = to_scsi_device(dev);
->> -
->> -			blk_set_runtime_active(sdev->request_queue);
->> -		}
->> -	}
->> -
->>  	return err;
->>  }
->> 
->> @@ -165,11 +146,8 @@ static int scsi_bus_resume_common(struct device 
->> *dev,
->>  		 */
->>  		if (strncmp(scsi_scan_type, "async", 5) != 0)
->>  			async_synchronize_full_domain(&scsi_sd_pm_domain);
->> -	} else {
->> -		pm_runtime_disable(dev);
->> -		pm_runtime_set_active(dev);
->> -		pm_runtime_enable(dev);
->>  	}
->> +
->>  	return 0;
->>  }
->> 
->> --
->> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a 
->> Linux Foundation Collaborative Project.
->> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SmFjZWsgQW5hc3pld3NraSA8amFjZWsuYW5hc3pld3NraUBnbWFpbC5jb20+IOaWvCAyMDIw5bm0
+MTHmnIgyMOaXpSDpgLHkupQg5LiK5Y2INjoyNuWvq+mBk++8mgo+Cj4gT24gMTEvMTkvMjAgMTA6
+NTcgUE0sIFBhdmVsIE1hY2hlayB3cm90ZToKPiA+IE9uIFRodSAyMDIwLTExLTE5IDIyOjAzOjE0
+LCBKYWNlayBBbmFzemV3c2tpIHdyb3RlOgo+ID4+IEhpIFBhdmVsLCBHZW5lLAo+ID4+Cj4gPj4g
+T24gMTEvMTgvMjAgMTA6MzcgUE0sIFBhdmVsIE1hY2hlayB3cm90ZToKPiA+Pj4gSGkhCj4gPj4+
+Cj4gPj4+PiBGcm9tOiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiA+Pj4+Cj4g
+Pj4+PiBBZGQgTEVEX0NPTE9SX0lEX01PT05MSUdIVCBkZWZpbml0aW9ucwo+ID4+Pgo+ID4+PiBX
+aHkgaXMgbW9vbmxpZ2h0IGEgY29sb3I/IENhbWVyYSBmbGFzaGVzIGFyZSB1c3VhbGx5IHdoaXRl
+LCBubz8KPiA+Pj4KPiA+Pj4gQXQgbGVhc3QgaXQgbmVlZHMgYSBjb21tZW50Li4uCj4gPj4KPiA+
+PiBUaGF0J3MgbXkgZmF1bHQsIEluIGZhY3QgSSBzaG91bGQgaGF2ZSBhc2tlZCBhYm91dCBhZGRp
+bmcKPiA+PiBMRURfRlVOQ1RJT05fTU9PTkxJR0hULCBpdCB3YXMgZXZpZGVudGx5IHRvbyBsYXRl
+IGZvciBtZSB0aGF0IGV2ZW5pbmcuLi4KPiA+Cj4gPiBBaGEsIHRoYXQgbWFrZXMgbW9yZSBzZW5z
+ZS4KPiA+Cj4gPiBCdXQgcGxlYXNlIGxldCdzIGNhbGwgaXQgInRvcmNoIiBpZiB3ZSBkbyB0aGF0
+LCBhcyB0aGF0IGlzIGFscmVhZHkKPiA+IHVzZWQgaW4ga2VybmVsIHNvdXJjZXMuLi4gYW5kIHBy
+b2JhYmx5IGluIHRoZSBpbnRlcmZhY2UsIHRvbzoKPgo+IEknZCBzYXkgdGhhdCB0b3JjaCBpcyBz
+b21ldGhpbmcgZGlmZmVyZW50IHRoYXQgbW9vbmxpZ2h0LAo+IGJ1dCB3ZSB3b3VsZCBuZWVkIG1v
+cmUgaW5wdXQgZnJvbSBHZW5lIHRvIGxlYXJuIG1vcmUgYWJvdXQKPiB0aGUgbmF0dXJlIG9mIGxp
+Z2h0IGVtaXR0ZWQgYnkgTUwgTEVEIG9uIGhpcyBkZXZpY2UuCj4KPiBQbGVhc2Ugbm90ZSB0aGF0
+IHRvcmNoIGlzIHVzdWFsbHkgbWVhbnQgYXMgdGhlIG90aGVyIG1vZGUgb2YKPiBmbGFzaCBMRUQg
+KHNvbWV0aW1lcyBpdCBpcyBjYWxsZWQgIm1vdmllIG1vZGUiKSwgd2hpY2ggaXMgYWxyZWFkeQo+
+IGhhbmRsZWQgYnkgYnJpZ2h0bmVzcyBmaWxlIG9mIExFRCBjbGFzcyBmbGFzaCBkZXZpY2UgKGku
+ZS4gaXRzIExFRCBjbGFzcwo+IHN1YnNldCksIGFuZCB3aGljaCBhbHNvIG1hcHMgdG8gdjRsMi1m
+bGFzaCBUT1JDSCBtb2RlLgo+CgpJdCdzIHVzZWQgdG8gZnJvbnQgY2FtZXJhIGZpbGwgbGlnaHQu
+Ck1vcmUgYnJpZ2h0bmVzcyB0aGFuIHNjcmVlbiBiYWNrbGlnaHQsIGFuZCBtb3JlIHNvZnQgbGln
+aHQgdGhhbiBmbGFzaC4KSSB0aGluayBMRURfSURfQ09MT1JfV0hJVEUgaXMgb2theS4KCj4gPiAu
+L2FyY2gvYXJtL21hY2gtcHhhL2V6eC5jOiAgICAgICAgICAgICAgICAgICAgICAubmFtZSA9ICJh
+OTEwOjp0b3JjaCIsCj4gPgo+ID4gQmVzdCByZWdhcmRzLAo+ID4gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUGF2ZWwKPiA+Cj4KPiAtLQo+IEJl
+c3QgcmVnYXJkcywKPiBKYWNlayBBbmFzemV3c2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
+bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
