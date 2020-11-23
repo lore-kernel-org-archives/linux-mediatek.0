@@ -2,59 +2,84 @@ Return-Path: <SRS0=13eL=E5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9808BC56201
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 164A8C5519F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:03:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 275D120DD4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:02:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ACFA02137B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:03:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1AFNsiq2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 275D120DD4
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rowland.harvard.edu
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vFUw6HuO";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="mv7jqd2j"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACFA02137B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NT/aWS+Rmod5/Om9kZlUSeE023GrhJCawsEIlPDsD4o=; b=1AFNsiq2PXRbhOJCD5I3tbWwx
-	gvvZCPktwFtDl0XlAx36aIMIBOwyhrQ/TM+mttA+ZU2Si+qxeadKqSNY01+CuyLTkbascCyRfH59w
-	CpI5Afc3Jo3RhbGTkBjx6vVibHP0K7gclMgbujqE9j64wtqy+1ZZ0K6xKf8yPjDT3MJy+PYcLjuLj
-	2t6BJ2AvzynKL0rdXgND6vwY4bNQDBCEhKwnTNTRA2dnwCbogOt5j02QWKKAs6c6ijOCVxFxzi7ps
-	IUk0qrbsaiS2+votxFGjW7mGpYVkOx3kh9yYPld6UlcufcHylmzYkSwP4Wbvb1c/DL2HbJcq4OUtN
-	h8GvzB3mA==;
+	 bh=82rEK1c78FcPfnQGK1sJs4Qk7HLQtDQOBnoEZ6jzZjY=; b=vFUw6HuOwHBS3EeKjM4AfHtcu
+	e3r7MAbs2nz7T4yKLw6+SrTpz7wMZXq3/Mtuh9G7CclL5G4s3rnFde/0ybMKH6kySbLOycibV9lEj
+	v4OLpEFuVMifB0wahs7rH+Pxe6s3eIAGdFcuxG1LafqJ1CBVLZ/58jS329IPQgtx8+VN86s2w/L8I
+	BGBA0Tpg6KZS42m11s0jr6efXnnZP+veHQY2zJcCGfA5iNAGK5aOYgkjzOh8r75bQ/6tf2+wnJ5x7
+	mAg+t2jv4LtqeCfRxauk7GhCCs4ADfh/oQ/Ki7xaerSm9ioQ8UIsefIzmznjC+AXCiCHyLSo7UAw5
+	4GJa4dVAg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kh27E-0006hn-Eg; Mon, 23 Nov 2020 03:02:08 +0000
-Received: from netrider.rowland.org ([192.131.102.5])
- by merlin.infradead.org with smtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kh27B-0006gj-SK
- for linux-mediatek@lists.infradead.org; Mon, 23 Nov 2020 03:02:06 +0000
-Received: (qmail 695174 invoked by uid 1000); 22 Nov 2020 22:02:02 -0500
-Date: Sun, 22 Nov 2020 22:02:02 -0500
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Can Guo <cang@codeaurora.org>
-Subject: Re: [PATCH RFC v2 1/1] scsi: pm: Leave runtime PM status alone
- during system resume/thaw/restore
-Message-ID: <20201123030202.GA694907@rowland.harvard.edu>
-References: <1605861443-11459-1-git-send-email-cang@codeaurora.org>
- <20201120163524.GB619708@rowland.harvard.edu>
- <ff2975f88cc452d134b8bf24c55bec09@codeaurora.org>
+	id 1kh28U-0006x5-DO; Mon, 23 Nov 2020 03:03:26 +0000
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kh28S-0006vi-Bs
+ for linux-mediatek@lists.infradead.org; Mon, 23 Nov 2020 03:03:25 +0000
+Received: by mail-io1-xd30.google.com with SMTP id i9so16533409ioo.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 22 Nov 2020 19:03:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=cmZ2kkoeLoaVXWsbBzaDLLnsyKzK7HyWpB00+aI5R04=;
+ b=mv7jqd2joqZTqXkI4wFOSBKjG7mjGzwc8NaV90PMqDA/DN8tf+ynMKFWkB0YE5Xdtu
+ XwDb7MsRyYVJ31vIHzOxIdkKAuYop1oDNg2T3wdLwpn4t3bR4jiFCzi50pZH4CDb614G
+ Qr/UNiKI8pabdnGpSCMyBP7x4BVvwNOw2GpgtWJlxyNdFWg5QGJtwz0saIFfU/EKpiI2
+ 4m7tBqqLiuDTB7I2VMH4Px+fD09edrqypQCe2O4OFa8Ko9EqMSOIsN5awSVLurciXmeh
+ TBwObMWQGtRNet6CeLTeDRDEA11rp3RXV9fyts+WDXHvnjn7np2Y7SyikX1ABWRu6rii
+ gBgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=cmZ2kkoeLoaVXWsbBzaDLLnsyKzK7HyWpB00+aI5R04=;
+ b=dBzgMZNEbxKR8ZwVrRP4PICDQGHhvwWJZ17hM4TzeP74Bv4y4bSUZ9JXLMeyjTYnRi
+ 2kP7TMtU881lrHzakD4C/gaUHUl7IFPw0m//OxJDDXQI769c4056qPkIzsVwhbFVEaIE
+ lOmROv2lj7y+3WpNuD0krG+kTy/lHas/ZRGT0UAgHWebFC66RZXy5ebZyPE5LBceKk13
+ pQECcvDXVE92H7eo2AshTcurrNl/eTVAKnJGnUDW4e8JLZmzdBqTXasCDGXMtoXvxufr
+ FGeOaT7usmi3Lz6yKS05ilBZQEmgDHZ5VobrlELzplMU1I4zUDay3fsVfIJmMbMHIoZa
+ RxZQ==
+X-Gm-Message-State: AOAM532xsgJX/4qjrdAi0ydKBm1p7aKm0UeNPiWohRY2FAOwogF7FEqZ
+ BA9BF6Hs7PINa7ItxpSEhGuNL2LfO5x39ctJLA3jSg==
+X-Google-Smtp-Source: ABdhPJwptrKso09cemQUc5m/nxPNPk7xqo4MYznakzCuHAhqaRV7MRIz8vyAnBx+NtiZFKXMuZapIY5faME+27pSUxI=
+X-Received: by 2002:a02:5e45:: with SMTP id h66mr10874397jab.126.1606100600165; 
+ Sun, 22 Nov 2020 19:03:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ff2975f88cc452d134b8bf24c55bec09@codeaurora.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20201116084413.3312631-1-tzungbi@google.com>
+ <20201116084413.3312631-4-tzungbi@google.com>
+ <20201120235020.GI4137289@xps15>
+In-Reply-To: <20201120235020.GI4137289@xps15>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Date: Mon, 23 Nov 2020 11:03:09 +0800
+Message-ID: <CA+Px+wXor-iCk98JfSx8pph10=WdkjGRNacY-FBGAX3xh9x71g@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] remoteproc/mediatek: read IPI buffer offset from FW
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201122_220205_991382_4AE8D8C4 
-X-CRM114-Status: GOOD (  28.34  )
+X-CRM114-CacheID: sfid-20201122_220324_476940_1987B3B0 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,88 +91,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, rnayak@codeaurora.org,
- saravanak@google.com, linux-scsi@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>, nguyenb@codeaurora.org,
- ziqichen@codeaurora.org,
+Cc: Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- salyzyn@google.com, "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com,
- Bart Van Assche <bvanassche@acm.org>, hongwus@codeaurora.org,
- asutoshd@codeaurora.org
+ Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 23, 2020 at 09:23:53AM +0800, Can Guo wrote:
-> Hi Alan,
-> 
-> On 2020-11-21 00:35, Alan Stern wrote:
-> > On Fri, Nov 20, 2020 at 12:37:22AM -0800, Can Guo wrote:
-> > > Runtime resume is handled by runtime PM framework, no need to forcibly
-> > > set runtime PM status to RPM_ACTIVE during system resume/thaw/restore.
-> > 
-> > Sorry, I don't understand this explanation at all.
-> > 
-> > Sure, runtime resume is handled by the runtime PM framework.  But this
-> > patch changes the code for system resume, which is completely different.
-> > 
-> > Following a system resume, the hardware will be at full power.  We don't
-> > want the kernel to think that the device is still in runtime suspend;
-> > otherwise is would never put the device back into low-power mode.
-> 
-> How about adding below lines to the patch?
-> 
-> diff --git a/drivers/scsi/scsi_pm.c b/drivers/scsi/scsi_pm.c
-> index 908f27f..7ebe582 100644
-> --- a/drivers/scsi/scsi_pm.c
-> +++ b/drivers/scsi/scsi_pm.c
-> @@ -75,9 +75,11 @@ static int scsi_dev_type_resume(struct device *dev,
->         const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : NULL;
->         int err = 0;
-> 
-> -       err = cb(dev, pm);
-> -       scsi_device_resume(to_scsi_device(dev));
-> -       dev_dbg(dev, "scsi resume: %d\n", err);
-> +       if (pm_runtime_active(dev)) {
-> +               err = cb(dev, pm);
-> +               scsi_device_resume(to_scsi_device(dev));
-> +               dev_dbg(dev, "scsi resume: %d\n", err);
-> +       }
-> 
->         return err;
->  }
-> 
-> Whenever a device is accessed, the issuer or somewhere in the path
-> should do something like pm_runtime_get_sync (e.g. in sg_open()) or
-> pm_runtime_resume() (e.g. in blk_queue_enter()), in either sync or
-> async way. After the job (read/write/ioctl or whatever) is done,
-> either a pm_runtime_put_sync() or auto runtime suspend puts the device
-> back into runtime suspended/low-power mode. Since the func
-> scsi_bus_suspend_common() does nothing if device is already in runtime
-> suspended mode, scsi_dev_type_resume() should only resume the device
-> if it is runtime active.
+On Sat, Nov 21, 2020 at 7:50 AM Mathieu Poirier
+<mathieu.poirier@linaro.org> wrote:
+>
+> Here you are breaking all the current implementation with a firmware image that
+> doesn't have a .ipi_buffer section name.  I'm not against this change but you need
+> to make sure you don't break anything else with your changes.
 
-You're starting to think along the right lines, but you are ignoring all 
-the other work that people have already done for handling these cases.
-
-Please read Documentation/driver-api/pm/devices.rst very carefully, 
-especially the parts about returning a positive value from the ->prepare 
-callback (also known as "direct-complete" and related to the 
-DPM_FLAG_NO_DIRECT_COMPLETE and DPM_FLAG_SMART_PREPARE flags) and the 
-parts about the DPM_FLAG_SMART_SUSPEND and DPM_FLAG_MAY_SKIP_RESUME 
-flags.  Then think about what you want to accomplish and write a patch 
-that takes all this information into account.
-
-Key point: At no time should any part of the kernel think that the 
-device is in a low-power state when it is actually in a high-power 
-state, or vice versa.
-
-Alan Stern
+Thanks for your review.  And yes, this change could break MTK SCP when
+working with legacy firmware.  We'll make sure the new firmware in
+MT8183 also contains the .ipi_buffer section to not really break
+anything.
 
 _______________________________________________
 Linux-mediatek mailing list
