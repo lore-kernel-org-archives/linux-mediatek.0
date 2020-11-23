@@ -2,85 +2,92 @@ Return-Path: <SRS0=13eL=E5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E1ED3C5519F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:20:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 19E79C63798
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:46:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6211F212CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:20:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A9EA52137B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 03:45:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sitV80xH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="oEv9koOs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6211F212CC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aUHVVquP";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="puwQs1Jg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A9EA52137B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PjnU0TLLlLJ21I0GL/L9qWOjLiN2hWteXk9aZO/Gr+4=; b=sitV80xH0h0iVmSABwHSAWTfK
-	Ul/H4jqjSLB2xqqrBueGlIa7dWXJgGfn0REyIMQ2d2lJyTL3NzJbdOyo7dD9DhYUaas52fyCfMHEH
-	9BXKodr0QpBVIZmTI4YarU5WAUDEEbCDsL6rfErazx9Su8XiT5RGqVRxLEVzgpd4K8lr0ZxYB1iSk
-	P+/tZkm9I2luIAAbnmbk65LkHItgeiEYzBUzOIgLuoR6UPv2hlIzQJvvtx/0CgpMeZJg0914W4DUX
-	nQdfv7g5zKyci1gcrAP+Law/nMtijx0Fn0mGZS7RLwhaDjMralzwmyF1Tel25Uq8bDyKRZd3FHFSc
-	vvfQdX/9w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uh4hhKxLWmmtPero0cmklozCQ3YVZikj59YRXE2DK+A=; b=aUHVVquP5VTwVtJclk6MUpVjjG
+	Ais+UXvYKYhKMgKSvO7A4oZcI4zXewPd+z00j+LS61umYajlza5IqGL08lOCqdQlx4qAKPjgsn9Aw
+	sLITHU6ObekmfrURUVWV46XC93ZOx7gq63eNZU6P5Rg9JJsVuW8ltg0n7U78w0w7V2wOAfSMphrrT
+	WDDkAH0Ecm8MOzSMsGFoP51R0tw6amxNnL5rH9ct/73UkYNT0pte74zcFdIrxtF3jtSQXgQvd/VWh
+	nClBXb1bJyC4apn9awqpXE/F2RoZbUGBHnHCmdyeth2N7xDLkFkSm76x3zzZjcBv2L/J7QvKMjhf0
+	+Ro/x3eA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kh2Os-00084w-TY; Mon, 23 Nov 2020 03:20:22 +0000
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
+	id 1kh2nX-0001Eo-SM; Mon, 23 Nov 2020 03:45:51 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kh2On-00084D-SG; Mon, 23 Nov 2020 03:20:18 +0000
-Received: by mail-ot1-x341.google.com with SMTP id l36so14660319ota.4;
- Sun, 22 Nov 2020 19:20:14 -0800 (PST)
+ id 1kh2nT-0001DJ-6f; Mon, 23 Nov 2020 03:45:48 +0000
+Received: by mail-lj1-x244.google.com with SMTP id y10so1005820ljc.7;
+ Sun, 22 Nov 2020 19:45:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=rmUZ/LefwZKjwq5aooyNQE4MC8myDjdpN3Ckl6d1zcs=;
- b=oEv9koOsTJ2WOd46od2F9FFUSIWNHZbckGQwAdsWs4zZMift70bSlIYBmW6NcPSNFI
- XpztoiWYbYV4m3jqG/OSoeB49QZPVIVn1jiLAcm2csSnc4bHTOWrW8d453rNs0noabG2
- N9o/EKno/E5fZ+6BIt8xTEaw/LaiJtng4+KFNXdVeBgw6zS+hb6qvK+adFKA6sIt8QFx
- jlkzXUFzQYGTCQkjDv/FNFx2zTgvGDOeE7Gat+aUkF8/kdRpzB6wC1M6749W2c9E+2D3
- nneZ9pEgN3CQxCAfAxeHc+2iJk4t+dxHC7/BX/8RZXi3VcnoAF2F5Y6xD2e6y3z/QGlu
- 5s2g==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UU8EP5wBKEQP6da8/PNv0YuofmsT1cYlYb+MrY2uJNM=;
+ b=puwQs1JgTJ5JRiyxJapv349RmvdEYM882XwnQgxN1WO1XZ/4rIpFptI3nk84L3L1Hf
+ 5i95Ku69I51Zru18c78/2JpAew8jGPCHz3QlT/eR+0SLwEBh3tjxGlwlsy7GiXXI7rzo
+ 78cdYl1p0ca4UiXeWwQbXaWYL6cmT38E9KXNOhWmNqYXoePp7Re01tF478Yki+Y9n5SH
+ /ttTph36ZcidX5kH2moF64VDHZin68Cklzmq7ckt7FP6L3PTO39iW5XOBEvvQESErIT1
+ zqPoEnqjtZzhb4hbvk1E4ZFxy634LaqtNXgrq2iFjb+6aegWMriXDKar/YuMiyCN58eP
+ 6+cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=rmUZ/LefwZKjwq5aooyNQE4MC8myDjdpN3Ckl6d1zcs=;
- b=kkOg6ZslFFGUDq6CqwhnCe2H3Ahgfkk3kQfDr8bEogRsV1AbrmDYgzgFi8BJpXh9pe
- i0kNipDPNLusIxMH9kOeaF7zrLBWpjX8PGgOUqVERYfRlXtJ1OzTOrNngAuGdlJplrcX
- oWZqLU7T8tvmnJCiMi3WqkWQa1b5p3mzqiyTiqYYiSZerQ0DN00J2SCD+3FuxTGwsg+r
- Moe0GPDQ65LDI4+stq+iqrya5jgdDRqceojG2WQxUT2vE1nS2jCERqCW/D07s039IWii
- g07opHS33T88tQK+BXL9EYjW8gmIRa0MXD0AAY00O8wk93qqhAJ1Jy8E12Tlx3sorPZJ
- NZmg==
-X-Gm-Message-State: AOAM530BaK6NsqP8l600cbv3BHSCtnO0cB8hH6SkogrxUbhcYYaJe5uj
- ZOpVjrUugLWs+XekOOJ1Qr0G2Kk+FdayCrahwA4=
-X-Google-Smtp-Source: ABdhPJwmZ+yhrflagrOqYCRNj7dnimh/KjhNwCI/2kJH//K6O8faeNXSzM1EAjFZjsIHMzoNWnfnz6XIjOoFTw0qmLY=
-X-Received: by 2002:a9d:6c99:: with SMTP id c25mr22827600otr.327.1606101613081; 
- Sun, 22 Nov 2020 19:20:13 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UU8EP5wBKEQP6da8/PNv0YuofmsT1cYlYb+MrY2uJNM=;
+ b=PQYwDAcObQNn+UX7taECNip1yt2LicAkMlfjR25AfT09Q35SaZnuy3WG5my1xuX1PK
+ 9MtzgcvUN8sl5X19PJbfdoYdDzWDZ+eRVlcyDVFUukET8A1KDVrx3Gm0D38EP8IpjRYX
+ J/7gYeHk1xZtosRepu58JrIAlJ6CtMN1v9HUgEblXwP5E0SvcaNE/+szdhQWHVvXLtsY
+ SZuhi4Mi+1F32Tb1ROEfqijt7T2NxiZhuUo+kJQfSuhEXnRDmMDad0lNPMaye3XKyNfF
+ Vzo7cAGy8mvjzSjnsFrLoPlbrQf4YNKMUqDQCBznTFXvFv+JeQdQ5mrz1PfwGamyNOrK
+ RHNQ==
+X-Gm-Message-State: AOAM531hnlG5/xzpPlF053EyZyGfVnf5h5+D4OEU7lUk4UiIpdU/bc8W
+ CFjbugyizKKB0nCj5rYQVMhmu+vNUVGt3A==
+X-Google-Smtp-Source: ABdhPJzETsKeKiB7E7nu5SY0i/2zCu1rLnuLi1ddHAgRWYuzzweN0a3lkVu3pPJN0YV6HGYMWrWaMg==
+X-Received: by 2002:a05:651c:203:: with SMTP id
+ y3mr11499902ljn.66.1606103144192; 
+ Sun, 22 Nov 2020 19:45:44 -0800 (PST)
+Received: from container-ubuntu.lan ([240e:398:25da:d530::d2c])
+ by smtp.gmail.com with ESMTPSA id f10sm780378ljf.26.2020.11.22.19.45.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 22 Nov 2020 19:45:43 -0800 (PST)
+From: DENG Qingfang <dqfext@gmail.com>
+To: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+ John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next] net: ethernet: mediatek: support setting MTU
+Date: Mon, 23 Nov 2020 11:45:22 +0800
+Message-Id: <20201123034522.1268-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <1605696462-391-1-git-send-email-gene.chen.richtek@gmail.com>
- <1605696462-391-2-git-send-email-gene.chen.richtek@gmail.com>
- <3164b1ed-9e47-88cd-d492-ff5a9243e5ef@gmail.com>
-In-Reply-To: <3164b1ed-9e47-88cd-d492-ff5a9243e5ef@gmail.com>
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Date: Mon, 23 Nov 2020 11:20:03 +0800
-Message-ID: <CAE+NS350vuY1qNwn4_7ow8Z22_DfHrJAnKX1dsFM_WbaHziZiw@mail.gmail.com>
-Subject: Re: [PATCH v7 1/5] leds: flash: Add flash registration with undefined
- CONFIG_LEDS_CLASS_FLASH
-To: Jacek Anaszewski <jacek.anaszewski@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201122_222017_944253_E0123C76 
-X-CRM114-Status: GOOD (  24.26  )
+X-CRM114-CacheID: sfid-20201122_224547_317372_E2BBE2FD 
+X-CRM114-Status: GOOD (  16.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,82 +99,125 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- devicetree <devicetree@vger.kernel.org>, cy_huang@richtek.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Dan Murphy <dmurphy@ti.com>, Pavel Machek <pavel@ucw.cz>,
- Matthias Brugger <matthias.bgg@gmail.com>, Wilma.Wu@mediatek.com,
- Linux LED Subsystem <linux-leds@vger.kernel.org>, shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Rene van Dorst <opensource@vdorst.com>, Andrew Lunn <andrew@lunn.ch>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Frank Wunderlich <frank-w@public-files.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SmFjZWsgQW5hc3pld3NraSA8amFjZWsuYW5hc3pld3NraUBnbWFpbC5jb20+IOaWvCAyMDIw5bm0
-MTHmnIgyMOaXpSDpgLHkupQg5LiK5Y2INjoyOeWvq+mBk++8mgo+Cj4gSGkgR2VuZSwKPgo+IE9u
-IDExLzE4LzIwIDExOjQ3IEFNLCBHZW5lIENoZW4gd3JvdGU6Cj4gPiBGcm9tOiBHZW5lIENoZW4g
-PGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiA+Cj4gPiBBZGQgZmxhc2ggcmVnaXN0cmF0aW9uIHdp
-dGggdW5kZWZpbmVkIENPTkZJR19MRURTX0NMQVNTX0ZMQVNICj4gPgo+ID4gU2lnbmVkLW9mZi1i
-eTogR2VuZSBDaGVuIDxnZW5lX2NoZW5AcmljaHRlay5jb20+Cj4gPiAtLS0KPiA+ICAgaW5jbHVk
-ZS9saW51eC9sZWQtY2xhc3MtZmxhc2guaCB8IDM2ICsrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKwo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMzYgaW5zZXJ0aW9ucygrKQo+ID4KPiA+
-IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L2xlZC1jbGFzcy1mbGFzaC5oIGIvaW5jbHVkZS9s
-aW51eC9sZWQtY2xhc3MtZmxhc2guaAo+ID4gaW5kZXggMjFhMzM1OC4uNGY1NmMyOCAxMDA2NDQK
-PiA+IC0tLSBhL2luY2x1ZGUvbGludXgvbGVkLWNsYXNzLWZsYXNoLmgKPiA+ICsrKyBiL2luY2x1
-ZGUvbGludXgvbGVkLWNsYXNzLWZsYXNoLmgKPiA+IEBAIC04NSw2ICs4NSw3IEBAIHN0YXRpYyBp
-bmxpbmUgc3RydWN0IGxlZF9jbGFzc2Rldl9mbGFzaCAqbGNkZXZfdG9fZmxjZGV2KAo+ID4gICAg
-ICAgcmV0dXJuIGNvbnRhaW5lcl9vZihsY2Rldiwgc3RydWN0IGxlZF9jbGFzc2Rldl9mbGFzaCwg
-bGVkX2NkZXYpOwo+ID4gICB9Cj4gPgo+ID4gKyNpZiBJU19FTkFCTEVEKENPTkZJR19MRURTX0NM
-QVNTX0ZMQVNIKQo+ID4gICAvKioKPiA+ICAgICogbGVkX2NsYXNzZGV2X2ZsYXNoX3JlZ2lzdGVy
-X2V4dCAtIHJlZ2lzdGVyIGEgbmV3IG9iamVjdCBvZiBMRUQgY2xhc3Mgd2l0aAo+ID4gICAgKiAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbml0IGRhdGEgYW5kIHdpdGggc3VwcG9ydCBm
-b3IgZmxhc2ggTEVEcwo+ID4gQEAgLTEyNyw2ICsxMjgsNDEgQEAgc3RhdGljIGlubGluZSBpbnQg
-ZGV2bV9sZWRfY2xhc3NkZXZfZmxhc2hfcmVnaXN0ZXIoc3RydWN0IGRldmljZSAqcGFyZW50LAo+
-ID4gICB2b2lkIGRldm1fbGVkX2NsYXNzZGV2X2ZsYXNoX3VucmVnaXN0ZXIoc3RydWN0IGRldmlj
-ZSAqcGFyZW50LAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1
-Y3QgbGVkX2NsYXNzZGV2X2ZsYXNoICpmbGVkX2NkZXYpOwo+ID4KPiA+ICsjZWxzZQo+ID4gKwo+
-ID4gK3N0YXRpYyBpbmxpbmUgaW50IGxlZF9jbGFzc2Rldl9mbGFzaF9yZWdpc3Rlcl9leHQoc3Ry
-dWN0IGRldmljZSAqcGFyZW50LAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHN0cnVjdCBsZWRfY2xhc3NkZXZfZmxhc2ggKmZsZWRfY2RldiwKPiA+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgbGVkX2luaXRfZGF0YSAqaW5pdF9kYXRhKQo+ID4g
-K3sKPiA+ICsgICAgIHJldHVybiAtRUlOVkFMOwo+Cj4gcy8tRUlOVkFMLzAvCj4KPiBUaGUgZ29h
-bCBoZXJlIGlzIHRvIGFzc3VyZSB0aGF0IGNsaWVudCB3aWxsIG5vdCBmYWlsIHdoZW4gdXNpbmcg
-bm8tb3AuCj4KPiA+ICt9Cj4gPiArCj4gPiArc3RhdGljIGlubGluZSBpbnQgbGVkX2NsYXNzZGV2
-X2ZsYXNoX3JlZ2lzdGVyKHN0cnVjdCBkZXZpY2UgKnBhcmVudCwKPiA+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0IGxlZF9jbGFzc2Rldl9mbGFzaCAqZmxl
-ZF9jZGV2KQo+ID4gK3sKPiA+ICsgICAgIHJldHVybiBsZWRfY2xhc3NkZXZfZmxhc2hfcmVnaXN0
-ZXJfZXh0KHBhcmVudCwgZmxlZF9jZGV2LCBOVUxMKTsKPiA+ICt9Cj4KPiBUaGlzIGZ1bmN0aW9u
-IHNob3VsZCBiZSBwbGFjZWQgYWZ0ZXIgI2lmZGVmIGJsb2NrIGJlY2F1c2UgaXRzCj4gc2hhcGUg
-aXMgdGhlIHNhbWUgZm9yIGJvdGggY2FzZXMuCj4KPiA+ICtzdGF0aWMgaW5saW5lIHZvaWQgbGVk
-X2NsYXNzZGV2X2ZsYXNoX3VucmVnaXN0ZXIoc3RydWN0IGxlZF9jbGFzc2Rldl9mbGFzaCAqZmxl
-ZF9jZGV2KSB7fTsKPiA+ICtzdGF0aWMgaW5saW5lIGludCBkZXZtX2xlZF9jbGFzc2Rldl9mbGFz
-aF9yZWdpc3Rlcl9leHQoc3RydWN0IGRldmljZSAqcGFyZW50LAo+ID4gKyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgbGVkX2NsYXNzZGV2X2ZsYXNoICpmbGVkX2NkZXYs
-Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBsZWRfaW5pdF9k
-YXRhICppbml0X2RhdGEpCj4gPiArewo+ID4gKyAgICAgcmV0dXJuIC1FSU5WQUw7Cj4KPiAvLUVJ
-TlZBTC8wLwo+Cj4gUGxlYXNlIGRvIHRoZSBzYW1lIGZpeCBpbiBhbGwgbm8tb3BzIGluIHRoZSBs
-ZWQtY2xhc3MtbXVsdGljb2xvci5oLAo+IGFzIHdlJ3ZlIGRpc2N1c3NlZC4KPgoKSSB0aGluayBy
-ZXR1cm4gLUVJTlZBTCBpcyBjb3JyZWN0LCBiZWNhdXNlIEkgc2hvdWxkIHJlZ2lzdGVyIGZsYXNo
-CmxpZ2h0IGRldmljZSBpZiBJIGRlZmluZSBGTEVEIGluIERUUyBub2RlLgoKPiA+ICt9Cj4gPiAr
-Cj4gPiArc3RhdGljIGlubGluZSBpbnQgZGV2bV9sZWRfY2xhc3NkZXZfZmxhc2hfcmVnaXN0ZXIo
-c3RydWN0IGRldmljZSAqcGFyZW50LAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBzdHJ1Y3QgbGVkX2NsYXNzZGV2X2ZsYXNoICpmbGVkX2NkZXYpCj4gPiArewo+ID4gKyAg
-ICAgcmV0dXJuIGRldm1fbGVkX2NsYXNzZGV2X2ZsYXNoX3JlZ2lzdGVyX2V4dChwYXJlbnQsIGZs
-ZWRfY2RldiwgTlVMTCk7Cj4gPiArfQo+Cj4KPiBUaGlzIGZ1bmN0aW9uIHNob3VsZCBhbHNvIGJl
-IHBsYWNlZCBhZnRlciAjaWZkZWYgYmxvY2suCj4gUGxlYXNlIG1ha2UgdGhlIHNhbWUgb3B0aW1p
-emF0aW9ucyBpbiB0aGUgbGVkLWNsYXNzLW11bHRpY29sb3IuaCBhcyB5b3UKPiBhcmUgYXQgaXQu
-Cj4KPiA+ICsKPiA+ICt2b2lkIGRldm1fbGVkX2NsYXNzZGV2X2ZsYXNoX3VucmVnaXN0ZXIoc3Ry
-dWN0IGRldmljZSAqcGFyZW50LAo+Cj4gcy92b2lkL3N0YXRpYyBpbmxpbmUgdm9pZC8KPgo+IFRo
-YXQncyB0aGUgcmVhc29uIHdoeSB5b3UgZ290IHdhcm5pbmcgZnJvbSBidWlsZGJvdC4KPgoKQUNL
-Cgo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgbGVkX2Ns
-YXNzZGV2X2ZsYXNoICpmbGVkX2NkZXYpCj4gPiAre307Cj4gPiArCj4gPiArI2VuZGlmICAvKiBJ
-U19FTkFCTEVEKENPTkZJR19MRURTX0NMQVNTX0ZMQVNIKSAqLwo+ID4gKwo+ID4gICAvKioKPiA+
-ICAgICogbGVkX3NldF9mbGFzaF9zdHJvYmUgLSBzZXR1cCBmbGFzaCBzdHJvYmUKPiA+ICAgICog
-QGZsZWRfY2RldjogdGhlIGZsYXNoIExFRCB0byBzZXQgc3Ryb2JlIG9uCj4gPgo+Cj4gLS0KPiBC
-ZXN0IHJlZ2FyZHMsCj4gSmFjZWsgQW5hc3pld3NraQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
-LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+MT762x HW, except for MT7628, supports frame length up to 2048
+(maximum length on GDM), so allow setting MTU up to 2030.
+
+Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 36 ++++++++++++++++++++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 11 +++++--
+ 2 files changed, 43 insertions(+), 4 deletions(-)
+
+Changes RFC -> v1:
+	Exclude MT7628
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 6d2d60675ffd..27cae3f43972 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -353,7 +353,7 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+ 	/* Setup gmac */
+ 	mcr_cur = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
+ 	mcr_new = mcr_cur;
+-	mcr_new |= MAC_MCR_MAX_RX_1536 | MAC_MCR_IPG_CFG | MAC_MCR_FORCE_MODE |
++	mcr_new |= MAC_MCR_IPG_CFG | MAC_MCR_FORCE_MODE |
+ 		   MAC_MCR_BACKOFF_EN | MAC_MCR_BACKPR_EN | MAC_MCR_FORCE_LINK;
+ 
+ 	/* Only update control register when needed! */
+@@ -2499,6 +2499,39 @@ static void mtk_uninit(struct net_device *dev)
+ 	mtk_rx_irq_disable(eth, ~0);
+ }
+ 
++static int mtk_change_mtu(struct net_device *dev, int new_mtu)
++{
++	int length = new_mtu + MTK_RX_ETH_HLEN;
++	struct mtk_mac *mac = netdev_priv(dev);
++	struct mtk_eth *eth = mac->hw;
++	u32 mcr_cur, mcr_new;
++
++	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628)) {
++		if (length > 1536)
++			return -EINVAL;
++	} else {
++		mcr_cur = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
++		mcr_new = mcr_cur & ~MAC_MCR_MAX_RX_LEN_MASK;
++
++		if (length <= 1518)
++			mcr_new |= MAC_MCR_MAX_RX_LEN(MAC_MCR_MAX_RX_LEN_1518);
++		else if (length <= 1536)
++			mcr_new |= MAC_MCR_MAX_RX_LEN(MAC_MCR_MAX_RX_LEN_1536);
++		else if (length <= 1552)
++			mcr_new |= MAC_MCR_MAX_RX_LEN(MAC_MCR_MAX_RX_LEN_1552);
++		else
++			mcr_new |= MAC_MCR_MAX_RX_LEN(MAC_MCR_MAX_RX_LEN_2048);
++
++		/* Only update control register when needed! */
++		if (mcr_new != mcr_cur)
++			mtk_w32(mac->hw, mcr_new, MTK_MAC_MCR(mac->id));
++	}
++
++	dev->mtu = new_mtu;
++
++	return 0;
++}
++
+ static int mtk_do_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
+ {
+ 	struct mtk_mac *mac = netdev_priv(dev);
+@@ -2795,6 +2828,7 @@ static const struct net_device_ops mtk_netdev_ops = {
+ 	.ndo_set_mac_address	= mtk_set_mac_address,
+ 	.ndo_validate_addr	= eth_validate_addr,
+ 	.ndo_do_ioctl		= mtk_do_ioctl,
++	.ndo_change_mtu		= mtk_change_mtu,
+ 	.ndo_tx_timeout		= mtk_tx_timeout,
+ 	.ndo_get_stats64        = mtk_get_stats64,
+ 	.ndo_fix_features	= mtk_fix_features,
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 454cfcd465fd..cfc11654ccd6 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -17,12 +17,12 @@
+ #include <linux/phylink.h>
+ 
+ #define MTK_QDMA_PAGE_SIZE	2048
+-#define	MTK_MAX_RX_LENGTH	1536
++#define MTK_MAX_RX_LENGTH	2048
+ #define MTK_TX_DMA_BUF_LEN	0x3fff
+ #define MTK_DMA_SIZE		256
+ #define MTK_NAPI_WEIGHT		64
+ #define MTK_MAC_COUNT		2
+-#define MTK_RX_ETH_HLEN		(VLAN_ETH_HLEN + VLAN_HLEN + ETH_FCS_LEN)
++#define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
+ #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
+ #define MTK_DMA_DUMMY_DESC	0xffffffff
+ #define MTK_DEFAULT_MSG_ENABLE	(NETIF_MSG_DRV | \
+@@ -320,7 +320,12 @@
+ 
+ /* Mac control registers */
+ #define MTK_MAC_MCR(x)		(0x10100 + (x * 0x100))
+-#define MAC_MCR_MAX_RX_1536	BIT(24)
++#define MAC_MCR_MAX_RX_LEN_MASK	GENMASK(25, 24)
++#define MAC_MCR_MAX_RX_LEN(_x)	(MAC_MCR_MAX_RX_LEN_MASK & ((_x) << 24))
++#define MAC_MCR_MAX_RX_LEN_1518	0x0
++#define MAC_MCR_MAX_RX_LEN_1536	0x1
++#define MAC_MCR_MAX_RX_LEN_1552	0x2
++#define MAC_MCR_MAX_RX_LEN_2048	0x3
+ #define MAC_MCR_IPG_CFG		(BIT(18) | BIT(16))
+ #define MAC_MCR_FORCE_MODE	BIT(15)
+ #define MAC_MCR_TX_EN		BIT(14)
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
