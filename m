@@ -2,92 +2,96 @@ Return-Path: <SRS0=13eL=E5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1EFC1C388F9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25FF6C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:53:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 787B820706
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:48:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9E04B206B7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:53:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0ostpRDW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="Tyy0xQy0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="Tyy0xQy0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 787B820706
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=HansenPartnership.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mTTFSoCk";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XalzOCON"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E04B206B7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=l1bgZK2fBViimW/Fa4R9EF/yByZhCilcJ7V7DK2+3aI=; b=0ostpRDWYrN3DtcIHh81J0rKw
-	SyyVHEyXdKrYlYrELzGdmOLTdAWj2ifZnfGhY5I1/wuXP3ZkaINtWPY1fRAimpTf9ODpUzgyNeuQP
-	+xPZ0oJPWQ1V+H7Fj/OzBvcKskxvPmfK/hgaJ5B/2UE+eacbU3vH3DARZT6t4ntlMk0Nvtdc0ZKID
-	sUmhoZOZZ1LhT+dxlgROUsFaVy3AzIEqZEq6xIWeLIbXFLI20HiPKUIu2WNFthkZSloIA0NZv41lx
-	4nijt/VKwBxbvG8DCfdEtWhuwR7rTgfTlVgBUIJOfgHNiVGa4czT9BlkVb68aDUOmihyLxVQgl5/a
-	gIpr7G9YA==;
+	 bh=FIo9w08zkDez+CtwxrHjW1cdtX/qHCeIgTMBHbVYDo4=; b=mTTFSoCk+9JIMQf8BWpdSxPhc
+	qa1w1aeexKoIic0Q/FzKtOslm5+SJcBlcgZFKVl9nkR292L6R51KzqyXKMJGhZ6UJnqqpEyXc6Y2i
+	+6oJ2dXxz8WI21YdbV527wF7E+jzixmmiUm7RCgsTZbk5deFxa/LaTbbdzDIej2hl80yqT/grCqpk
+	rFbfyiSKQhggMQo+EOrFhT3qC2QrJLKYrqpgXrz3mlZ/pSWH+6pEXtC3ePZla7PXMPSuZte94yAQa
+	HNiuG55Bvm3SLkVB0iwhJdrsgTTwq9ApdZDXel5w20+xOsig4/Nx64g5tckqNUNHc8cx4IMArumNJ
+	+FSdrckJg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khIl6-0008Kz-8m; Mon, 23 Nov 2020 20:48:24 +0000
-Received: from bedivere.hansenpartnership.com ([2607:fcd0:100:8a00::2])
+	id 1khIpc-0000cv-U9; Mon, 23 Nov 2020 20:53:05 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khIl1-0008Iy-Gi; Mon, 23 Nov 2020 20:48:20 +0000
-Received: from localhost (localhost [127.0.0.1])
- by bedivere.hansenpartnership.com (Postfix) with ESMTP id 81FC7128092C;
- Mon, 23 Nov 2020 12:38:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1606163883;
- bh=+EDGs3PYzl3z47JpXWUueALZlElPDdJywkYLk/HcIjg=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=Tyy0xQy0htMQEdpfMUvFUuPG04g7ZXvYvYsCjWoq+QOlUp2WQfo8Vk+CnXXw5nkQT
- a3Wz7+ONj/4K4WJ6m4qOiNdEl9e5tbHlW07s/zxEoMhv+eMdbQKfvYZ25zqNb6Olj/
- onXIz2W3FBWOnXIoTYXwnsUNPzdRLL+aS2e3QsY4=
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id Fm687JPabQpA; Mon, 23 Nov 2020 12:38:03 -0800 (PST)
-Received: from jarvis.int.hansenpartnership.com (unknown
- [IPv6:2601:600:8280:66d1::527])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id EBC5C128091E;
- Mon, 23 Nov 2020 12:37:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1606163883;
- bh=+EDGs3PYzl3z47JpXWUueALZlElPDdJywkYLk/HcIjg=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=Tyy0xQy0htMQEdpfMUvFUuPG04g7ZXvYvYsCjWoq+QOlUp2WQfo8Vk+CnXXw5nkQT
- a3Wz7+ONj/4K4WJ6m4qOiNdEl9e5tbHlW07s/zxEoMhv+eMdbQKfvYZ25zqNb6Olj/
- onXIz2W3FBWOnXIoTYXwnsUNPzdRLL+aS2e3QsY4=
-Message-ID: <4993259d01a0064f8bb22770503490f9252f3659.camel@HansenPartnership.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Date: Mon, 23 Nov 2020 12:37:58 -0800
-In-Reply-To: <CANiq72k5tpDoDPmJ0ZWc1DGqm+81Gi-uEENAtvEs9v3SZcx6_Q@mail.gmail.com>
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
- <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
- <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
- <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
- <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
- <CANiq72k5tpDoDPmJ0ZWc1DGqm+81Gi-uEENAtvEs9v3SZcx6_Q@mail.gmail.com>
-User-Agent: Evolution 3.34.4 
+ id 1khIpZ-0000cW-H3; Mon, 23 Nov 2020 20:53:03 +0000
+Received: by mail-wm1-x344.google.com with SMTP id s13so753394wmh.4;
+ Mon, 23 Nov 2020 12:52:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=TklskZDnCVeTGWPgpS/EioL+kUbmsF81Ea3U/G7UyjM=;
+ b=XalzOCONIhWS9jkNG1EunxZBVEy7yc8msz02bgtym8eiZJFJEZRHy1JQTXBOjyeF9Q
+ 4URaCOA6xTWvoKVsf2WQLh1rdy4ArdnXv5iBb3mFok8XX0V3DGk5FVw5OAjUD9h3E3PQ
+ T4sa48kAMq3wdKEePwAUpx9KLTQJ4GBcucX5AM2/c69fVSnP5VSN5Sy1148iyMqgbgPW
+ /tZY3+JA7KqsST89d2tfLGpkdGeZVv4wT84vJKubQBIccNfrdnB85q1SNABgvanqyYts
+ 7FXxIzk1A1R4lbI5YbTNDqWtWMHn2hT5Yl/GdwFHBWHG0Ehloqc2VXXD1VngfDCwIJRa
+ oqBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=TklskZDnCVeTGWPgpS/EioL+kUbmsF81Ea3U/G7UyjM=;
+ b=YLPBpGQ5PRvKAAhj0op+xp7xg4h/sF0Kxav8WPEnBax+W3TyHwXJPRK2oIwjlUVoeR
+ l/8bXtRBxBpaDdSU16fxi5T1I6NqcNVCudhAp1S6gtAt3YFzSEZJP7PPQEWsGYT7M3Fj
+ FQAME3/MhYLJke7bvk84N66AGNQcrJ4HJtZr0cinKobf8EE8Zgm7CLwQEm3NDoplG4XE
+ UAcyWum14FDt9b9jsUIHxQVWy6BNtA9q96220DF2i3QfiTT8vDZ3PB5Td6QGToaXnGsd
+ md/zRu56Bi4+3aOPyZwnaJq37hmoGtmNTIzhhDx0HnzNKefyq6h7E16KCx5tK+a8R/5e
+ 1EEA==
+X-Gm-Message-State: AOAM530sxZZvqDTyfgdnXpfhRYwbrEgbIoEPQtxZ17vsy7fR+zRFnBNx
+ oz0QNVnnOQTjnqpXN5BNZOw++JfRVks=
+X-Google-Smtp-Source: ABdhPJzJyKRYbtdA9Cx+e50La8cu1sTApANl+eqq31Z3u2jcpquwGMQrfTZIEq4gm1VUzJpDGUK3FA==
+X-Received: by 2002:a1c:3b07:: with SMTP id i7mr760093wma.118.1606164778848;
+ Mon, 23 Nov 2020 12:52:58 -0800 (PST)
+Received: from ?IPv6:2a01:110f:b59:fd00:7836:e682:dddf:6361?
+ ([2a01:110f:b59:fd00:7836:e682:dddf:6361])
+ by smtp.gmail.com with ESMTPSA id b4sm1109779wmc.1.2020.11.23.12.52.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 23 Nov 2020 12:52:58 -0800 (PST)
+Subject: Re: [PATCH v7 2/5] dt-bindings: leds: Add LED_COLOR_ID_MOONLIGHT
+ definitions
+To: Gene Chen <gene.chen.richtek@gmail.com>
+References: <1605696462-391-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1605696462-391-3-git-send-email-gene.chen.richtek@gmail.com>
+ <20201118213712.GA22371@amd> <6068b1e3-a4c8-6c7d-d33d-f2238e905e43@gmail.com>
+ <20201119215721.GA5337@amd> <0700c32d-643b-fedb-06f0-21547b18205d@gmail.com>
+ <CAE+NS363BpytNGZzfZHLa7KLKL8gjGj14oNvRi3oaH9KT79REg@mail.gmail.com>
+From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Message-ID: <25fef924-634d-7f60-7e1d-0290d1701fab@gmail.com>
+Date: Mon, 23 Nov 2020 21:52:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
+In-Reply-To: <CAE+NS363BpytNGZzfZHLa7KLKL8gjGj14oNvRi3oaH9KT79REg@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201123_154819_992765_C32CF706 
-X-CRM114-Status: GOOD (  30.95  )
+X-CRM114-CacheID: sfid-20201123_155301_672703_4BCE22E9 
+X-CRM114-Status: GOOD (  19.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,157 +103,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
- dri-devel@lists.freedesktop.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
- linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
- linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
- Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Ext4 Developers List <linux-ext4@vger.kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
- linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
- virtualization@lists.linux-foundation.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
- GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
- Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- linux-renesas-soc@vger.kernel.org, linux-sctp@vger.kernel.org,
- linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
- linux-integrity@vger.kernel.org, target-devel@vger.kernel.org,
- linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ devicetree <devicetree@vger.kernel.org>, cy_huang@richtek.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dan Murphy <dmurphy@ti.com>, Pavel Machek <pavel@ucw.cz>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Wilma.Wu@mediatek.com,
+ Linux LED Subsystem <linux-leds@vger.kernel.org>, shufan_lee@richtek.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-11-23 at 19:56 +0100, Miguel Ojeda wrote:
-> On Mon, Nov 23, 2020 at 4:58 PM James Bottomley
-> <James.Bottomley@hansenpartnership.com> wrote:
-> > Well, I used git.  It says that as of today in Linus' tree we have
-> > 889 patches related to fall throughs and the first series went in
-> > in october 2017 ... ignoring a couple of outliers back to February.
-> 
-> I can see ~10k insertions over ~1k commits and 15 years that mention
-> a fallthrough in the entire repo. That is including some commits
-> (like the biggest one, 960 insertions) that have nothing to do with C
-> fallthrough. A single kernel release has an order of magnitude more
-> changes than this...
-> 
-> But if we do the math, for an author, at even 1 minute per line
-> change and assuming nothing can be automated at all, it would take 1
-> month of work. For maintainers, a couple of trivial lines is noise
-> compared to many other patches.
-
-So you think a one line patch should take one minute to produce ... I
-really don't think that's grounded in reality.  I suppose a one line
-patch only takes a minute to merge with b4 if no-one reviews or tests
-it, but that's not really desirable.
-
-> In fact, this discussion probably took more time than the time it
-> would take to review the 200 lines. :-)
-
-I'm framing the discussion in terms of the whole series of changes we
-have done for fall through, both what's in the tree currently (889
-patches) both in terms of the produce and the consumer.  That's what I
-used for my figures for cost.
-
-> > We're also complaining about the inability to recruit maintainers:
-> > 
-> > https://www.theregister.com/2020/06/30/hard_to_find_linux_maintainers_says_torvalds/
-> > 
-> > And burn out:
-> > 
-> > http://antirez.com/news/129
-> 
-> Accepting trivial and useful 1-line patches
-
-Part of what I'm trying to measure is the "and useful" bit because
-that's not a given.
-
-> is not what makes a voluntary maintainer quit...
-
-so the proverb "straw which broke the camel's back" uniquely doesn't
-apply to maintainers
-
->  Thankless work with demanding deadlines is.
-
-That's another potential reason, but it doesn't may other reasons less
-valid.
-
-> > The whole crux of your argument seems to be maintainers' time isn't
-> > important so we should accept all trivial patches
-> 
-> I have not said that, at all. In fact, I am a voluntary one and I
-> welcome patches like this. It takes very little effort on my side to
-> review and it helps the kernel overall.
-
-Well, you know, subsystems are very different in terms of the amount of
-patches a maintainer has to process per release cycle of the kernel. 
-If a maintainer is close to capacity, additional patches, however
-trivial, become a problem.  If a maintainer has spare cycles, trivial
-patches may look easy.
-
-> Paid maintainers are the ones that can take care of big
-> features/reviews.
-> 
-> > What I'm actually trying to articulate is a way of measuring value
-> > of the patch vs cost ... it has nothing really to do with who foots
-> > the actual bill.
-> 
-> I understand your point, but you were the one putting it in terms of
-> a junior FTE.
-
-No, I evaluated the producer side in terms of an FTE.  What we're
-mostly arguing about here is the consumer side: the maintainers and
-people who have to rework their patch sets. I estimated that at 100h.
-
->  In my view, 1 month-work (worst case) is very much worth
-> removing a class of errors from a critical codebase.
-> 
-> > One thesis I'm actually starting to formulate is that this
-> > continual devaluing of maintainers is why we have so much
-> > difficulty keeping and recruiting them.
-> 
-> That may very well be true, but I don't feel anybody has devalued
-> maintainers in this discussion.
-
-You seem to be saying that because you find it easy to merge trivial
-patches, everyone should.  I'm reminded of a friend long ago who
-thought being a Tees River Pilot was a sinecure because he could
-navigate the Tees blindfold.  What he forgot, of course, is that just
-because it's easy with a trawler doesn't mean it's easy with an oil
-tanker.  In fact it takes longer to qualify as a Tees River Pilot than
-it does to get a PhD.
-
-James
-
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMTEvMjMvMjAgNDowMCBBTSwgR2VuZSBDaGVuIHdyb3RlOgo+IEphY2VrIEFuYXN6ZXdza2kg
+PGphY2VrLmFuYXN6ZXdza2lAZ21haWwuY29tPiDmlrwgMjAyMOW5tDEx5pyIMjDml6Ug6YCx5LqU
+IOS4iuWNiDY6Mjblr6vpgZPvvJoKPj4KPj4gT24gMTEvMTkvMjAgMTA6NTcgUE0sIFBhdmVsIE1h
+Y2hlayB3cm90ZToKPj4+IE9uIFRodSAyMDIwLTExLTE5IDIyOjAzOjE0LCBKYWNlayBBbmFzemV3
+c2tpIHdyb3RlOgo+Pj4+IEhpIFBhdmVsLCBHZW5lLAo+Pj4+Cj4+Pj4gT24gMTEvMTgvMjAgMTA6
+MzcgUE0sIFBhdmVsIE1hY2hlayB3cm90ZToKPj4+Pj4gSGkhCj4+Pj4+Cj4+Pj4+PiBGcm9tOiBH
+ZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPj4+Pj4+Cj4+Pj4+PiBBZGQgTEVEX0NP
+TE9SX0lEX01PT05MSUdIVCBkZWZpbml0aW9ucwo+Pj4+Pgo+Pj4+PiBXaHkgaXMgbW9vbmxpZ2h0
+IGEgY29sb3I/IENhbWVyYSBmbGFzaGVzIGFyZSB1c3VhbGx5IHdoaXRlLCBubz8KPj4+Pj4KPj4+
+Pj4gQXQgbGVhc3QgaXQgbmVlZHMgYSBjb21tZW50Li4uCj4+Pj4KPj4+PiBUaGF0J3MgbXkgZmF1
+bHQsIEluIGZhY3QgSSBzaG91bGQgaGF2ZSBhc2tlZCBhYm91dCBhZGRpbmcKPj4+PiBMRURfRlVO
+Q1RJT05fTU9PTkxJR0hULCBpdCB3YXMgZXZpZGVudGx5IHRvbyBsYXRlIGZvciBtZSB0aGF0IGV2
+ZW5pbmcuLi4KPj4+Cj4+PiBBaGEsIHRoYXQgbWFrZXMgbW9yZSBzZW5zZS4KPj4+Cj4+PiBCdXQg
+cGxlYXNlIGxldCdzIGNhbGwgaXQgInRvcmNoIiBpZiB3ZSBkbyB0aGF0LCBhcyB0aGF0IGlzIGFs
+cmVhZHkKPj4+IHVzZWQgaW4ga2VybmVsIHNvdXJjZXMuLi4gYW5kIHByb2JhYmx5IGluIHRoZSBp
+bnRlcmZhY2UsIHRvbzoKPj4KPj4gSSdkIHNheSB0aGF0IHRvcmNoIGlzIHNvbWV0aGluZyBkaWZm
+ZXJlbnQgdGhhdCBtb29ubGlnaHQsCj4+IGJ1dCB3ZSB3b3VsZCBuZWVkIG1vcmUgaW5wdXQgZnJv
+bSBHZW5lIHRvIGxlYXJuIG1vcmUgYWJvdXQKPj4gdGhlIG5hdHVyZSBvZiBsaWdodCBlbWl0dGVk
+IGJ5IE1MIExFRCBvbiBoaXMgZGV2aWNlLgo+Pgo+PiBQbGVhc2Ugbm90ZSB0aGF0IHRvcmNoIGlz
+IHVzdWFsbHkgbWVhbnQgYXMgdGhlIG90aGVyIG1vZGUgb2YKPj4gZmxhc2ggTEVEIChzb21ldGlt
+ZXMgaXQgaXMgY2FsbGVkICJtb3ZpZSBtb2RlIiksIHdoaWNoIGlzIGFscmVhZHkKPj4gaGFuZGxl
+ZCBieSBicmlnaHRuZXNzIGZpbGUgb2YgTEVEIGNsYXNzIGZsYXNoIGRldmljZSAoaS5lLiBpdHMg
+TEVEIGNsYXNzCj4+IHN1YnNldCksIGFuZCB3aGljaCBhbHNvIG1hcHMgdG8gdjRsMi1mbGFzaCBU
+T1JDSCBtb2RlLgo+Pgo+IAo+IEl0J3MgdXNlZCB0byBmcm9udCBjYW1lcmEgZmlsbCBsaWdodC4K
+PiBNb3JlIGJyaWdodG5lc3MgdGhhbiBzY3JlZW4gYmFja2xpZ2h0LCBhbmQgbW9yZSBzb2Z0IGxp
+Z2h0IHRoYW4gZmxhc2guCj4gSSB0aGluayBMRURfSURfQ09MT1JfV0hJVEUgaXMgb2theS4KClNv
+IHdoeSBpbiB2NiB5b3UgYXNzaWduZWQgTEVEX0NPTE9SX0lEX0FNQkVSIHRvIGl0PwoKUmVnYXJk
+bGVzcyBvZiB0aGF0LCBub3cgd2UncmUgdGFsa2luZyBhYm91dCBMRUQgZnVuY3Rpb24gLSB5b3Ug
+Y2hvc2UKTEVEX0ZVTkNUSU9OX0lORElDQVRPUiBmb3IgaXQsIGJ1dCBpbmZlcnJpbmcgZnJvbSB5
+b3VyIGFib3ZlIGRlc2NyaXB0aW9uCi0gaXQgY2VydGFpbmx5IGRvZXNuJ3QgZml0IGhlcmUuCgpB
+bHNvIHJlZ2lzdGVyIG5hbWVzLCBjb250YWluaW5nIHBhcnQgIk1MIiBpbmRpY2F0ZSB0aGF0IHRo
+aXMgTEVEJ3MKaW50ZW5kZWQgZnVuY3Rpb24gaXMgbW9vbmxpbmdodCwgd2hpY2ggeW91ciBkZXNj
+cmlwdGlvbiBzb21laG93CmNvcnJvYm9yYXRlcy4KCk1vb25saWdodCBMRURzIGJlY29tZSB1Ymlx
+dWl0b3VzIG5vd2FkYXlzIHNvIHNvb25lciBvciBsYXRlciB3ZSB3aWxsCm5lZWQgdG8gYWRkIHRo
+aXMgZnVuY3Rpb24gYW55d2F5IFswXS4KClswXSAKaHR0cHM6Ly9sYW5kc2NhcGVsaWdodGluZ29h
+a3ZpbGxlLmNvbS93aGF0LWlzLW1vb24tbGlnaHRpbmctYW5kLXdoeS1kb2VzLWl0LXJlbWFpbi1z
+by1wb3B1bGFyLwoKLS0gCkJlc3QgcmVnYXJkcywKSmFjZWsgQW5hc3pld3NraQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFp
+bGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
