@@ -2,22 +2,21 @@ Return-Path: <SRS0=13eL=E5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6189C64EBC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 12:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35987C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 13:04:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4FD5720721
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 12:33:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B35442076E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 13:04:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aGkaSB0X";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="wRhhY5oD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4FD5720721
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hcry9AZ7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="huMDpxd3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B35442076E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,43 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uP9Wop2ihrLMz7bAqCuWfwOwBNvPRzMiN+91DYDIkFQ=; b=aGkaSB0XDSptAN5Lwiy7v/715
-	RWcfgLTu5RXnQAeXQedTexzRBW46Il+lMbKdRK3eh/oqlOGUXodatucbnnCV8rS18ANGJHQsClRkj
-	kOSTZrg7b6HYNUUwslLphZ2biU9fn/vq5754HiWts9vvY/BT2Hz5yPHAh2MZAZLNYyIE9a0MCaTxa
-	cS+hZr/1gct8I2GGt6NnUzltprZb/kyiclFRRlgqAklXyhjoQNSNMfufsXKUITbq5F+jOOPXz61iF
-	sk9zLA57dzyC8Kn/X7rK6/AQOu93LlJAPHwt5VkzyxA3xQKGjWipnahy1AlGVQD1X8S5OgDAaz7mN
-	lXmmgpPGg==;
+	 bh=dP1wZpNd3VL0I9ZAHIuuAQNQub/x4p0z8JBdDRh1iKg=; b=hcry9AZ7YvpjJljQXaqMvMFlE
+	SGVSS5e049ujyCC1XRjMRYADO/ldSxmB7xVK52wJ2bUFnt07vVPhk/yq8GRPqXF27nJosVRXfNIsA
+	xCNcWgc3VKfXf8EIAvhQRv30hII8zjWD+eJOiTqyeU1GnL/wXnm3f5tnfLI3MWh9Cz2pVWwRk2d+X
+	zGTLwJKFS6u+6h2JQQqdp652GM1keL3U+2LMVu6tKfyhtLT37yJvuwcRQdK+i1+J1w0APhS5F0ZY0
+	0M6HizbvOOuQG5gQ+pnaFfvSxfARHHDYjAVF2CMBWDlsoacv/4FwcslRJTvYtXVajK0omahD1ZYJK
+	+BTyA8jsA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khB1q-00081n-Oc; Mon, 23 Nov 2020 12:33:10 +0000
+	id 1khBVd-0004Ez-A4; Mon, 23 Nov 2020 13:03:57 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khB1m-00080X-4c; Mon, 23 Nov 2020 12:33:07 +0000
-Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 769942076E;
- Mon, 23 Nov 2020 12:33:02 +0000 (UTC)
+ id 1khBVZ-0004AH-R7; Mon, 23 Nov 2020 13:03:54 +0000
+Received: from embeddedor (187-162-31-110.static.axtel.net [187.162.31.110])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 191D120758;
+ Mon, 23 Nov 2020 13:03:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1606134785;
- bh=0QSv09rGW0WuAiAunEEQ7oj/27dyFGEZgt+e6cLrLtI=;
+ s=default; t=1606136621;
+ bh=J/TET3MqSRKQBkZDLmw3offBuTNq8xblR6VPj5c7KTQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=wRhhY5oDR9O6SI4elKUy6j4JiYwRnLeUIusACXuaJrzeN9ZZiguwygT+Vh+BIK5bn
- 1QQ4VhGF8+m8rzx/29h0VjrBkQpBujH/X1jgFMI76jBaK+oDdnmWyGqrWuW6MUTBOc
- 5iEqZjkGYXfposO9rTtzNODSeMyzzsozvxw40LXc=
-Date: Mon, 23 Nov 2020 12:32:58 +0000
-From: Will Deacon <will@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH] iommu: Improve the performance for direct_mapping
-Message-ID: <20201123123258.GC10233@willie-the-truck>
-References: <20201120090628.6566-1-yong.wu@mediatek.com>
+ b=huMDpxd34lY8zl81VJt6WrkzA8VbZ3WZKfCc+01YUsnQkEm+dvBfrNL343ZTscxgS
+ 4cn7RRAIuR/6lyK6TO0qxACy3TNrSBuTodAx+s4Q2YpvApK9inZpqsbsSdtJmbV9Zx
+ YwwBYqtSxUH9kHvWkiEz2t98c4vnYVnAJ6qqQTEg=
+Date: Mon, 23 Nov 2020 07:03:48 -0600
+From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+To: James Bottomley <James.Bottomley@HansenPartnership.com>
+Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
+ Clang
+Message-ID: <20201123130348.GA3119@embeddedor>
+References: <cover.1605896059.git.gustavoars@kernel.org>
+ <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011201129.B13FDB3C@keescook>
+ <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011220816.8B6591A@keescook>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
+ <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
+ <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
+ <dbd2cb703ed9eefa7dde9281ea26ab0f7acc8afe.camel@HansenPartnership.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201120090628.6566-1-yong.wu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <dbd2cb703ed9eefa7dde9281ea26ab0f7acc8afe.camel@HansenPartnership.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201123_073306_325711_FE3E9E30 
-X-CRM114-Status: GOOD (  25.05  )
+X-CRM114-CacheID: sfid-20201123_080354_024546_2146CA30 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,93 +83,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org, bridge@lists.linux-foundation.org,
+ target-devel@vger.kernel.org, Greg KH <gregkh@linuxfoundation.org>,
+ linux-iio@vger.kernel.org, linux-wireless@vger.kernel.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, linux-fbdev@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
+ linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
+ wcn36xx@lists.infradead.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ linux-scsi@vger.kernel.org, linux-acpi@vger.kernel.org,
+ linux-rdma@vger.kernel.org, oss-drivers@netronome.com,
+ linux-atm-general@lists.sourceforge.net, ceph-devel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
+ cluster-devel@redhat.com, usb-storage@lists.one-eyed-alien.net,
+ linux-mmc@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ linux-ext4@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ linux-media@vger.kernel.org, Kees Cook <keescook@chromium.org>,
+ selinux@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-sctp@vger.kernel.org,
+ reiserfs-devel@vger.kernel.org, linux-geode@lists.infradead.org,
+ linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
+ op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
+ linux-hams@vger.kernel.org, Nathan Chancellor <natechancellor@gmail.com>,
+ linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-hwmon@vger.kernel.org, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-watchdog@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
+ linux-mm@kvack.org, netdev@vger.kernel.org,
+ linux-decnet-user@lists.sourceforge.net, samba-technical@lists.samba.org,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-security-module@vger.kernel.org, linux-usb@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, linux-nfs@vger.kernel.org, x86@kernel.org,
+ linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 20, 2020 at 05:06:28PM +0800, Yong Wu wrote:
-> Currently direct_mapping always use the smallest pgsize which is SZ_4K
-> normally to mapping. This is unnecessary. we could gather the size, and
-> call iommu_map then, iommu_map could decide how to map better with the
-> just right pgsize.
+On Sun, Nov 22, 2020 at 11:53:55AM -0800, James Bottomley wrote:
+> On Sun, 2020-11-22 at 11:22 -0800, Joe Perches wrote:
+> > On Sun, 2020-11-22 at 11:12 -0800, James Bottomley wrote:
+> > > On Sun, 2020-11-22 at 10:25 -0800, Joe Perches wrote:
+> > > > On Sun, 2020-11-22 at 10:21 -0800, James Bottomley wrote:
+> > > > > Please tell me our reward for all this effort isn't a single
+> > > > > missing error print.
+> > > > 
+> > > > There were quite literally dozens of logical defects found
+> > > > by the fallthrough additions.  Very few were logging only.
+> > > 
+> > > So can you give us the best examples (or indeed all of them if
+> > > someone is keeping score)?  hopefully this isn't a US election
+> > > situation ...
+> > 
+> > Gustavo?  Are you running for congress now?
+> > 
+> > https://lwn.net/Articles/794944/
 > 
-> From the original comment, we should take care overlap, otherwise,
-> iommu_map may return -EEXIST. In this overlap case, we should map the
-> previous region before overlap firstly. then map the left part.
-> 
-> Each a iommu device will call this direct_mapping when its iommu
-> initialize, This patch is effective to improve the boot/initialization
-> time especially while it only needs level 1 mapping.
-> 
-> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->  drivers/iommu/iommu.c | 20 ++++++++++++++++++--
->  1 file changed, 18 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index df87c8e825f7..854a8fcb928d 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -737,6 +737,7 @@ static int iommu_create_device_direct_mappings(struct iommu_group *group,
->  	/* We need to consider overlapping regions for different devices */
->  	list_for_each_entry(entry, &mappings, list) {
->  		dma_addr_t start, end, addr;
-> +		size_t unmapped_sz = 0;
+> That's 21 reported fixes of which about 50% seem to produce no change
+> in code behaviour at all, a quarter seem to have no user visible effect
+> with the remaining quarter producing unexpected errors on obscure
+> configuration parameters, which is why no-one really noticed them
+> before.
 
-I think "unmapped" is the wrong word here, as this variable actually
-represents the amount we want to map! I suggest "map_size" instead.
+The really important point here is the number of bugs this has prevented
+and will prevent in the future. See an example of this, below:
 
->  		if (domain->ops->apply_resv_region)
->  			domain->ops->apply_resv_region(dev, domain, entry);
-> @@ -752,10 +753,25 @@ static int iommu_create_device_direct_mappings(struct iommu_group *group,
->  			phys_addr_t phys_addr;
->  
->  			phys_addr = iommu_iova_to_phys(domain, addr);
-> -			if (phys_addr)
-> +			if (phys_addr == 0) {
-> +				unmapped_sz += pg_size; /* Gather the size. */
->  				continue;
-> +			}
->  
-> -			ret = iommu_map(domain, addr, addr, pg_size, entry->prot);
-> +			if (unmapped_sz) {
-> +				/* Map the region before the overlap. */
-> +				ret = iommu_map(domain, start, start,
-> +						unmapped_sz, entry->prot);
-> +				if (ret)
-> +					goto out;
-> +				start += unmapped_sz;
+https://lore.kernel.org/linux-iio/20190813135802.GB27392@kroah.com/
 
-I think it's a bit confusing to update start like this. Can we call
-iommu_map(domain, addr - map_size, addr - map_size, map_size, entry->prot)
-instead?
+This work is still relevant, even if the total number of issues/bugs
+we find in the process is zero (which is not the case).
 
-> +				unmapped_sz = 0;
-> +			}
-> +			start += pg_size;
-> +		}
-> +		if (unmapped_sz) {
-> +			ret = iommu_map(domain, start, start, unmapped_sz,
-> +					entry->prot);
+"The sucky thing about doing hard work to deploy hardening is that the
+result is totally invisible by definition (things not happening) [..]"
+- Dmitry Vyukov
 
-Can you avoid this hunk by changing your loop check to something like:
+Thanks
+--
+Gustavo
 
-	if (!phys_addr) {
-		map_size += pg_size;
-		if (addr + pg_size < end)
-			continue;
-	}
 
-Will
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
