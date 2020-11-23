@@ -2,66 +2,92 @@ Return-Path: <SRS0=13eL=E5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 621C1C2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1EFC1C388F9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:48:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9BAB206B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:44:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 787B820706
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2020 20:48:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RpoPaBJa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="F1IFkrbs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9BAB206B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0ostpRDW";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="Tyy0xQy0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="Tyy0xQy0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 787B820706
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=HansenPartnership.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Subject:References:
-	In-Reply-To:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QN/h6PJTjJRfBSEMYR2gyrvZu+mhTJ78GJl8TO7FB3o=; b=RpoPaBJajJMqmJcvWRAQNh6eE
-	d3dQRjfb2/xjnKzgtQzX5dHgxXQfggP7IXI75/C0kx8D1WmK2KyKaW0U2bnAZKAMWC389lmxe/Msh
-	LlcZ7bSciAXfbQqdeJP2NQ65AJenoQJw5ZOpjsEHwDUlUK2VCUYVh9aC2wK5/tEfZ1UIxF/EPshpt
-	acHIjqh6R7f1TZ0psEyotwUZ0IBIBtf3ECfsYB3eAKWMmklFVsTVyjW2L+EWQI2bcgthr9qbqVfX/
-	MfBU270R2ScxYA0pBCAqfTtRpFdc5B2DXJCdxMFr2uZAHT1jotiMDb6Vg6GleIa1kj5reNxCfoH59
-	LJAvGqoJQ==;
+	 bh=l1bgZK2fBViimW/Fa4R9EF/yByZhCilcJ7V7DK2+3aI=; b=0ostpRDWYrN3DtcIHh81J0rKw
+	SyyVHEyXdKrYlYrELzGdmOLTdAWj2ifZnfGhY5I1/wuXP3ZkaINtWPY1fRAimpTf9ODpUzgyNeuQP
+	+xPZ0oJPWQ1V+H7Fj/OzBvcKskxvPmfK/hgaJ5B/2UE+eacbU3vH3DARZT6t4ntlMk0Nvtdc0ZKID
+	sUmhoZOZZ1LhT+dxlgROUsFaVy3AzIEqZEq6xIWeLIbXFLI20HiPKUIu2WNFthkZSloIA0NZv41lx
+	4nijt/VKwBxbvG8DCfdEtWhuwR7rTgfTlVgBUIJOfgHNiVGa4czT9BlkVb68aDUOmihyLxVQgl5/a
+	gIpr7G9YA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khIhP-0006um-G6; Mon, 23 Nov 2020 20:44:35 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1khIl6-0008Kz-8m; Mon, 23 Nov 2020 20:48:24 +0000
+Received: from bedivere.hansenpartnership.com ([2607:fcd0:100:8a00::2])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khIc0-0004VG-9U; Mon, 23 Nov 2020 20:39:14 +0000
-Received: from localhost (cpc102334-sgyl38-2-0-cust884.18-2.cable.virginm.net
- [92.233.91.117])
+ id 1khIl1-0008Iy-Gi; Mon, 23 Nov 2020 20:48:20 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 81FC7128092C;
+ Mon, 23 Nov 2020 12:38:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606163883;
+ bh=+EDGs3PYzl3z47JpXWUueALZlElPDdJywkYLk/HcIjg=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=Tyy0xQy0htMQEdpfMUvFUuPG04g7ZXvYvYsCjWoq+QOlUp2WQfo8Vk+CnXXw5nkQT
+ a3Wz7+ONj/4K4WJ6m4qOiNdEl9e5tbHlW07s/zxEoMhv+eMdbQKfvYZ25zqNb6Olj/
+ onXIz2W3FBWOnXIoTYXwnsUNPzdRLL+aS2e3QsY4=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id Fm687JPabQpA; Mon, 23 Nov 2020 12:38:03 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 44D2A204FD;
- Mon, 23 Nov 2020 20:38:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1606163938;
- bh=A8e5XsmrEj94F0Lbxy4tU9ohPxOZwgP/VW6wbdCvxdI=;
- h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=F1IFkrbsk2ZUP+5vsvu62iGXHiaCjEomOSw7B1hCcEu6ne6r9Vq3NlvF2FdwUk2l+
- UNk+lt6HuuoAXyvHKn2uSogZpgdB5YUt5NoxHYVO22Y5vhxjxveY8t5+pmdZF/dQsc
- vgOoQHbCyxfMximLrhvrqzecmlcxwQp9kGhC2l/Q=
-Date: Mon, 23 Nov 2020 20:38:35 +0000
-From: Mark Brown <broonie@kernel.org>
-To: linux-kernel@vger.kernel.org, Cheng-Yi Chiang <cychiang@chromium.org>
-In-Reply-To: <20201118043852.1338877-1-cychiang@chromium.org>
-References: <20201118043852.1338877-1-cychiang@chromium.org>
-Subject: Re: [PATCH v2] ASoC: hdmi-codec: Get ELD in before reporting plugged
- event
-Message-Id: <160616391558.20973.12207964506823429764.b4-ty@kernel.org>
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id EBC5C128091E;
+ Mon, 23 Nov 2020 12:37:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606163883;
+ bh=+EDGs3PYzl3z47JpXWUueALZlElPDdJywkYLk/HcIjg=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=Tyy0xQy0htMQEdpfMUvFUuPG04g7ZXvYvYsCjWoq+QOlUp2WQfo8Vk+CnXXw5nkQT
+ a3Wz7+ONj/4K4WJ6m4qOiNdEl9e5tbHlW07s/zxEoMhv+eMdbQKfvYZ25zqNb6Olj/
+ onXIz2W3FBWOnXIoTYXwnsUNPzdRLL+aS2e3QsY4=
+Message-ID: <4993259d01a0064f8bb22770503490f9252f3659.camel@HansenPartnership.com>
+Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+Date: Mon, 23 Nov 2020 12:37:58 -0800
+In-Reply-To: <CANiq72k5tpDoDPmJ0ZWc1DGqm+81Gi-uEENAtvEs9v3SZcx6_Q@mail.gmail.com>
+References: <cover.1605896059.git.gustavoars@kernel.org>
+ <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011201129.B13FDB3C@keescook>
+ <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011220816.8B6591A@keescook>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
+ <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
+ <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
+ <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
+ <CANiq72k5tpDoDPmJ0ZWc1DGqm+81Gi-uEENAtvEs9v3SZcx6_Q@mail.gmail.com>
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201123_153900_478901_679E5450 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20201123_154819_992765_C32CF706 
+X-CRM114-Status: GOOD (  30.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,54 +99,155 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, dianders@chromium.org,
- Srinivasa Rao <srivasam@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
- Takashi Iwai <tiwai@suse.com>, tzungbi@chromium.org,
- Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Rohit kumar <rohitkr@codeaurora.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- dgreid@chromium.org, judyhsiao@chromium.org,
- linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
+ reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
+ dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
+ GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
+ samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
+ oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
+ linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
+ linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Ext4 Developers List <linux-ext4@vger.kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
+ op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
+ linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
+ Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
+ linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ linux-renesas-soc@vger.kernel.org, linux-sctp@vger.kernel.org,
+ linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Nov 2020 12:38:52 +0800, Cheng-Yi Chiang wrote:
-> In plugged callback, ELD should be updated from display driver so that
-> user space can query information from ELD immediately after receiving jack
-> plugged event.
+On Mon, 2020-11-23 at 19:56 +0100, Miguel Ojeda wrote:
+> On Mon, Nov 23, 2020 at 4:58 PM James Bottomley
+> <James.Bottomley@hansenpartnership.com> wrote:
+> > Well, I used git.  It says that as of today in Linus' tree we have
+> > 889 patches related to fall throughs and the first series went in
+> > in october 2017 ... ignoring a couple of outliers back to February.
 > 
-> When jack is unplugged, clear ELD buffer so that user space does not get
-> obsolete information of unplugged HDMI.
+> I can see ~10k insertions over ~1k commits and 15 years that mention
+> a fallthrough in the entire repo. That is including some commits
+> (like the biggest one, 960 insertions) that have nothing to do with C
+> fallthrough. A single kernel release has an order of magnitude more
+> changes than this...
+> 
+> But if we do the math, for an author, at even 1 minute per line
+> change and assuming nothing can be automated at all, it would take 1
+> month of work. For maintainers, a couple of trivial lines is noise
+> compared to many other patches.
 
-Applied to
+So you think a one line patch should take one minute to produce ... I
+really don't think that's grounded in reality.  I suppose a one line
+patch only takes a minute to merge with b4 if no-one reviews or tests
+it, but that's not really desirable.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> In fact, this discussion probably took more time than the time it
+> would take to review the 200 lines. :-)
 
-Thanks!
+I'm framing the discussion in terms of the whole series of changes we
+have done for fall through, both what's in the tree currently (889
+patches) both in terms of the produce and the consumer.  That's what I
+used for my figures for cost.
 
-[1/1] ASoC: hdmi-codec: Get ELD in before reporting plugged event
-      commit: 25ce4f2b3593fa6bba70ddabbd2ee297b262784f
+> > We're also complaining about the inability to recruit maintainers:
+> > 
+> > https://www.theregister.com/2020/06/30/hard_to_find_linux_maintainers_says_torvalds/
+> > 
+> > And burn out:
+> > 
+> > http://antirez.com/news/129
+> 
+> Accepting trivial and useful 1-line patches
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Part of what I'm trying to measure is the "and useful" bit because
+that's not a given.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+> is not what makes a voluntary maintainer quit...
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+so the proverb "straw which broke the camel's back" uniquely doesn't
+apply to maintainers
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+>  Thankless work with demanding deadlines is.
 
-Thanks,
-Mark
+That's another potential reason, but it doesn't may other reasons less
+valid.
+
+> > The whole crux of your argument seems to be maintainers' time isn't
+> > important so we should accept all trivial patches
+> 
+> I have not said that, at all. In fact, I am a voluntary one and I
+> welcome patches like this. It takes very little effort on my side to
+> review and it helps the kernel overall.
+
+Well, you know, subsystems are very different in terms of the amount of
+patches a maintainer has to process per release cycle of the kernel. 
+If a maintainer is close to capacity, additional patches, however
+trivial, become a problem.  If a maintainer has spare cycles, trivial
+patches may look easy.
+
+> Paid maintainers are the ones that can take care of big
+> features/reviews.
+> 
+> > What I'm actually trying to articulate is a way of measuring value
+> > of the patch vs cost ... it has nothing really to do with who foots
+> > the actual bill.
+> 
+> I understand your point, but you were the one putting it in terms of
+> a junior FTE.
+
+No, I evaluated the producer side in terms of an FTE.  What we're
+mostly arguing about here is the consumer side: the maintainers and
+people who have to rework their patch sets. I estimated that at 100h.
+
+>  In my view, 1 month-work (worst case) is very much worth
+> removing a class of errors from a critical codebase.
+> 
+> > One thesis I'm actually starting to formulate is that this
+> > continual devaluing of maintainers is why we have so much
+> > difficulty keeping and recruiting them.
+> 
+> That may very well be true, but I don't feel anybody has devalued
+> maintainers in this discussion.
+
+You seem to be saying that because you find it easy to merge trivial
+patches, everyone should.  I'm reminded of a friend long ago who
+thought being a Tees River Pilot was a sinecure because he could
+navigate the Tees blindfold.  What he forgot, of course, is that just
+because it's easy with a trawler doesn't mean it's easy with an oil
+tanker.  In fact it takes longer to qualify as a Tees River Pilot than
+it does to get a PhD.
+
+James
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
