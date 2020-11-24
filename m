@@ -3,84 +3,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 981DAC83017
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 01:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DE2AC2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 02:48:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2827720729
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 01:33:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 377BB20719
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 02:48:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S146drS4";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="mZ10EKN9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2827720729
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i7rEyCq7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 377BB20719
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=telegraphics.com.au
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VLiXEsQWbvhR6bp4PAC4/Fgova9iRFEkW9jycx312JQ=; b=S146drS4zOJpete+XxqJQ0sES
-	ilHs3i9dcqPKgW//gCJ088iNqCpVrf6UiFXPy7eDOtLhGdioFj/exudOEyzcA2SYjygVlfLPb/U1K
-	prYGxyttmR1btTm8FW7tJnc8WScP3wpMT1LzZK5nxe4CA1MTOcDyx0IB2go+4TR8gLHMsitlPJehg
-	UwQ0RfFXU07sUpj83UeNxx5yshJ9iP5MuhHEQmym4D+3E/bamxAspPmo39eYi9H5hmKakEBpnrHsT
-	nReMdai+vbs/HVdq662Eddvbj9S1FZMg0tTLZSkWC1lVte4NKj7/jHZRPEruZAGHF5+ETEVl7QOkm
-	Av2L2pb7Q==;
+	 bh=dYSQy4bAizWJnzMnalSTiWR60Pr0BiTTzDsyag7XYuw=; b=i7rEyCq7XgbTYklHf2zuhE3H5
+	JMZczo4GOO2QyywgiWoe93DKjf7+Y+svMdF1tVjimKCAtcfaVmCyvQ+vNnO525gq6GJFu45Elf1v+
+	yOEBcbbQBV5bbMRTayOIm5ZDKiun4aW1fBtkOZ1wfyuLuTSf8mM+ZNMIDKsVcBFoB/e02FUjk4rVW
+	/oz+G9oyIuI9AJiLCtonNMjCa5wd93l5PcgZLTye2c8Ms9JL3BPRUiHyvDRs1nAickmFi1ME1O2p3
+	USzNvkP0NKlQNDjFpsaXSJzppl9dFEyHDTPhwTYrMhmToWR639vkqdMKbbmkf6vf+Ivn7mtou65S2
+	KcI18b+mg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khNCt-0000aO-7m; Tue, 24 Nov 2020 01:33:23 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khNCc-0000UH-Rw
- for linux-mediatek@lists.infradead.org; Tue, 24 Nov 2020 01:33:09 +0000
-Received: by mail-pg1-x544.google.com with SMTP id j19so15963049pgg.5
- for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2020 17:33:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1Fpt+3NGNjcuXPoKd+YKzvfWCCI+i2QS11ln4xb/K2c=;
- b=mZ10EKN9Q6HwSmECmmsUHbUHF/oTLT4c/YpQVGCE0gPLnlz6SgHQW3ieQ7zeUHJnUi
- XUPs+F1GoZaFLBKWU3CvMTPUTS8a5+RdM3NBjgdsJpNB5L7Gee8a5rDblh6bnWIWT9TK
- uir+AjWjaGJnRAA0K84IM0yu+WQnaSePUaJNJPiE7LfLBhB3Pd0A4gWblql3Lao7defI
- n9Uw15itvZVSId22hyle+f6GM1M4THjCwMgL7v1hyU5f7oNm+YC3/Fk6KnTIGBq7Lgby
- +eM5Ju8Jh9l5BxBe3HwjA5bt+bnUjVm7e9zM9zQUlIbVcSVLiqKYS2m+arIIzBAIXu/j
- s+uw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1Fpt+3NGNjcuXPoKd+YKzvfWCCI+i2QS11ln4xb/K2c=;
- b=TxdUojK4lftI088CLWEfg15QaZxAKss6c7yyxiATwNlHrzD60dzN3iMA0Qv5DQjwKV
- BjzInlsxtvx48eUZgI15cu4gjRNPZjbwdJl9CG/tqoQRpUVRvtVfHzsMnSYMCmOZF8bn
- 0w9Yukz0mgA9r017+VKwO37G09lmmF9jllwux5DEMsVGfyOnp94ZfkSuWfrwWpkJ3Fz4
- HRnU2Imv9JoAFwuOoZ7/nqyw8Ro8SZd5KPNq9W5eEo2UdryRqoFG5eEx5w52lxoRzXgQ
- tKXJeMko/R2Ofmy5Re3LXqjPERziNLZ0joj12QwWodp74rDpOdzz14Sdkb+RxyOR47X4
- pSNw==
-X-Gm-Message-State: AOAM532JN83WQCcyW3TeCz9pwup7rfEZNvhd/jvALtmV8PXDsiT2imGa
- 1aK0uftZb6lYi4Yesug/yXKy19IT8mRZfa65wkjrcw==
-X-Google-Smtp-Source: ABdhPJwQDF2vxX46wbajF4ioOOwzM/J33jC4qlEIQ0nX0CJ8Ae2/iYNAtfiNkgC6UbM9BT3sKlieSNPFWrTquhIIwSk=
-X-Received: by 2002:a65:6a4e:: with SMTP id o14mr1859973pgu.263.1606181584110; 
- Mon, 23 Nov 2020 17:33:04 -0800 (PST)
-MIME-Version: 1.0
+	id 1khONo-0006WP-Do; Tue, 24 Nov 2020 02:48:44 +0000
+Received: from kvm5.telegraphics.com.au ([98.124.60.144])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1khONj-0006Uj-Na; Tue, 24 Nov 2020 02:48:40 +0000
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by kvm5.telegraphics.com.au (Postfix) with ESMTP id EF15F2AA0D;
+ Mon, 23 Nov 2020 21:48:35 -0500 (EST)
+Date: Tue, 24 Nov 2020 13:48:34 +1100 (AEDT)
+From: Finn Thain <fthain@telegraphics.com.au>
+To: Joe Perches <joe@perches.com>
+Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
+In-Reply-To: <e72a1aaef8673553a3ee9dfa033d6e893e00abcd.camel@perches.com>
+Message-ID: <alpine.LNX.2.23.453.2011241210310.7@nippy.intranet>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
  <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011220816.8B6591A@keescook>
-In-Reply-To: <202011220816.8B6591A@keescook>
-From: Nick Desaulniers <ndesaulniers@google.com>
-Date: Mon, 23 Nov 2020 17:32:51 -0800
-Message-ID: <CAKwvOdntVfXj2WRR5n6Kw7BfG7FdKpTeHeh5nPu5AzwVMhOHTg@mail.gmail.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-To: Kees Cook <keescook@chromium.org>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
+ <alpine.LNX.2.23.453.2011230938390.7@nippy.intranet>
+ <CANiq72=z+tmuey9wj3Kk7wX5s0hTHpsQdLhAqcOVNrHon6xn5Q@mail.gmail.com>
+ <alpine.LNX.2.23.453.2011241036520.7@nippy.intranet>
+ <e72a1aaef8673553a3ee9dfa033d6e893e00abcd.camel@perches.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201123_203307_502627_FC24D437 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20201123_214839_818846_C9FE987B 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,26 +76,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
  reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
  linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
- dri-devel <dri-devel@lists.freedesktop.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, linux-scsi@vger.kernel.org,
- linux-rdma@vger.kernel.org, oss-drivers@netronome.com,
- bridge@lists.linux-foundation.org, linux-security-module@vger.kernel.org,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ dri-devel@lists.freedesktop.org, linux-kernel <linux-kernel@vger.kernel.org>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>,
+ linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
+ linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
+ wcn36xx@lists.infradead.org, samba-technical@lists.samba.org,
+ linux-i3c@lists.infradead.org, linux1394-devel@lists.sourceforge.net,
+ linux-afs@lists.infradead.org, usb-storage@lists.one-eyed-alien.net,
+ drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-scsi@vger.kernel.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-rdma@vger.kernel.org,
+ oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
+ linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
  linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
  linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
  Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- linux-ext4@vger.kernel.org, linux-media@vger.kernel.org,
- linux-watchdog@vger.kernel.org, selinux@vger.kernel.org,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, intel-gfx@lists.freedesktop.org,
+ Ext4 Developers List <linux-ext4@vger.kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
  linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
  linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
  op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
@@ -122,76 +104,43 @@ Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
  linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
  virtualization@lists.linux-foundation.org,
  Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- tipc-discussion@lists.sourceforge.net,
- Linux Memory Management List <linux-mm@kvack.org>,
- Network Development <netdev@vger.kernel.org>,
+ linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
+ Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
  linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
  "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>, linux-sctp@vger.kernel.org,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ linux-renesas-soc@vger.kernel.org,
+ Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>, linux-sctp@vger.kernel.org,
  linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
- "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
- <linux-crypto@vger.kernel.org>, patches@opensource.cirrus.com,
- Joe Perches <joe@perches.com>, linux-integrity@vger.kernel.org,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ patches@opensource.cirrus.com, linux-integrity@vger.kernel.org,
  target-devel@vger.kernel.org, linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 22, 2020 at 8:17 AM Kees Cook <keescook@chromium.org> wrote:
->
-> On Fri, Nov 20, 2020 at 11:51:42AM -0800, Jakub Kicinski wrote:
-> > If none of the 140 patches here fix a real bug, and there is no change
-> > to machine code then it sounds to me like a W=2 kind of a warning.
->
-> FWIW, this series has found at least one bug so far:
-> https://lore.kernel.org/lkml/CAFCwf11izHF=g1mGry1fE5kvFFFrxzhPSM6qKAO8gxSp=Kr_CQ@mail.gmail.com/
 
-So looks like the bulk of these are:
-switch (x) {
-  case 0:
-    ++x;
-  default:
-    break;
-}
+On Mon, 23 Nov 2020, Joe Perches wrote:
 
-I have a patch that fixes those up for clang:
-https://reviews.llvm.org/D91895
+> On Tue, 2020-11-24 at 11:58 +1100, Finn Thain wrote:
+> > it's not for me to prove that such patches don't affect code 
+> > generation. That's for the patch author and (unfortunately) for 
+> > reviewers.
+> 
+> Ideally, that proof would be provided by the compilation system itself 
+> and not patch authors nor reviewers nor maintainers.
+> 
+> Unfortunately gcc does not guarantee repeatability or deterministic 
+> output. To my knowledge, neither does clang.
+> 
 
-There's 3 other cases that don't quite match between GCC and Clang I
-observe in the kernel:
-switch (x) {
-  case 0:
-    ++x;
-  default:
-    goto y;
-}
-y:;
+Yes, I've said the same thing myself. But having attempted it, I now think 
+this is a hard problem. YMMV.
 
-switch (x) {
-  case 0:
-    ++x;
-  default:
-    return;
-}
-
-switch (x) {
-  case 0:
-    ++x;
-  default:
-    ;
-}
-
-Based on your link, and Nathan's comment on my patch, maybe Clang
-should continue to warn for the above (at least the `default: return;`
-case) and GCC should change?  While the last case looks harmless,
-there were only 1 or 2 across the tree in my limited configuration
-testing; I really think we should just add `break`s for those.
--- 
-Thanks,
-~Nick Desaulniers
+https://lore.kernel.org/linux-scsi/alpine.LNX.2.22.394.2004281017310.12@nippy.intranet/
+https://lore.kernel.org/linux-scsi/alpine.LNX.2.22.394.2005211358460.8@nippy.intranet/
 
 _______________________________________________
 Linux-mediatek mailing list
