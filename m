@@ -2,94 +2,69 @@ Return-Path: <SRS0=KQlx=E6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BEC4C2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 10:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6B09C56202
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 11:05:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26FD32076B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 10:54:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6F0F020708
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 11:05:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jE+GRpOi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Al1ICsud"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26FD32076B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ObbCAzRu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="F3SBAmZR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F0F020708
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uz8YC0Vb83JKvp+tJcqnihqxoToIylFtbStk35QUAkk=; b=jE+GRpOiWczm5LnbRv9O+cSbM
-	VH2iz5lpd61zCECqPfQHp1V1OhQk0B45NFSj/igL/KjDFRH/44dRhBQadTiwOLyI15jWM3SbVp1ns
-	rl+ccPX+Y2G/ZEkBjWZ76NrD0BfHnmAW3dXwczsKWLvQFxNpWy01JAZiwVkI9FDMxUnQ3JibRTlE4
-	vOU1HMy7jQHWHFti8RKnIf/4EPwXhDtQtJSiUAzI3Jmp+ssFEo4kupKLmV2mZ+eMdn38fLedxUqRM
-	cYjNB9PHZR0jEHtiyUpJFZixju4U9rdG7TV56xbMPfqQJ54UCOYSDbVf1fv7MrIKCIrRAT2YjkxQR
-	yPSr6Np4Q==;
+	 bh=n/Jiw88NI9ABJBwxVGLPYTPdIc6dEyaEJwHwDrDamJ8=; b=ObbCAzRuxZ6gtQVvDuUzQYBZ3
+	J/ofA/yo7rdQOSbx8Y5B/eA/1h7Tw+x3j+L801Vxj43bkxHG39B0k8Vo9RiHi4owXHpeLVLDoahQc
+	bZLaBOkQkJFljn7kjtJjSpDwCj6MbeUGzTREDad6Ust6t/lAIcsvMuFOiwryMA99q+WcwAvmF1OSn
+	CHqnlzgWIN6ZczrUMX5oJdu6yj40AlvdfNZ7EqpAnUf/BXcElypBcontIN3lsrWr3+e/7Y3jfOKNa
+	7w59ceJGbPIKR9xLGIcCikIjBNeVwSNpiU63/leyqreGXiS6EsdAK+IsH1cl1E9fR5MUXirWjkZjo
+	l6LMDIb6Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khVxa-0004Tg-Ce; Tue, 24 Nov 2020 10:54:10 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1khW8a-0006wS-FW; Tue, 24 Nov 2020 11:05:32 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khVxX-0004S4-El
- for linux-mediatek@lists.infradead.org; Tue, 24 Nov 2020 10:54:08 +0000
-Received: by mail-wm1-x343.google.com with SMTP id c198so2019601wmd.0
- for <linux-mediatek@lists.infradead.org>; Tue, 24 Nov 2020 02:54:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Kvdr8KP4BhHPunB6/HiX28Sf9PSdmI9kMBfi8vaUsaQ=;
- b=Al1ICsudCsEbcON7RNT7a0Aq78qbaIjzkhprm1rz6a59jc1X7l9uuJitKRcl/SxyGM
- 3RadN3gB39d3VNCKxPPNecy9fP1t9roSKy8Bnyrv1s26sin9R9GPRKSv37d7pn9zfDKu
- YV9HGC59lYbc3LsGq3TFTSt7MM2h6gUeTGAD7YcWL7Sv6G6x3hJ2iUUHMQ/B5Qh09KCg
- /ScovBicjTLEts2r89XApTzbaljzMdjLcFFP9o9TsYEA/tQys8UKzWbbqEgFAhW6ci0x
- YLTt4F8odZQmK+5KeZazDes3cq4gk1EOTq0sNTS7PitYkQe8hIsdF+UKlhlJyp+lFmBx
- wvvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Kvdr8KP4BhHPunB6/HiX28Sf9PSdmI9kMBfi8vaUsaQ=;
- b=Y+AphlMl2vim1VpSyxFNB/i57ENTwHOFEnWxZ6rJjYb1Bv3nAg+Hm35Jgi1bSloXH1
- wb3iaN6xCj+rAIEeKF2tMWbKkSjdPMjLCG5q8jTsO69DPXASPvjDVOnkaSqJ46t5ukhJ
- iJFyuT+3T9/rtzg5nPM5qZb4Gqp8LoNa+6boKmkaaCViYHbh832C3oNR/wGvncAOOhDz
- hr59MGt55ZFCQypIjpDu75tBGsSnstVFntyDZHOVUSug+PqfdGm/nDryduy5BECkcP77
- PoLQz132gL5SaY+t245GDjHVmWUDp4faVYdUjMMar9+UAQ2bDaQJYJ7KdWTlw4ifWz7d
- ZyLA==
-X-Gm-Message-State: AOAM533xpFLdUES/zDdUSD7BR1pi1GLPfAgvj0i6neocoSTHkeM1CUH5
- QHOEZkVkRyqRhrN5ViYkYJEnlg==
-X-Google-Smtp-Source: ABdhPJxdsl2r1PW9eMx03bqdIbiAzAu599V8F/cQEp3EzXU3lEc4g9vLOKzCqj4J2BCsZVy4Ht54Ig==
-X-Received: by 2002:a1c:2c88:: with SMTP id s130mr3773241wms.79.1606215246270; 
- Tue, 24 Nov 2020 02:54:06 -0800 (PST)
-Received: from [192.168.86.34]
- (cpc86377-aztw32-2-0-cust226.18-1.cable.virginm.net. [92.233.226.227])
- by smtp.googlemail.com with ESMTPSA id z8sm18928761wrv.0.2020.11.24.02.54.05
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 24 Nov 2020 02:54:05 -0800 (PST)
-Subject: Re: [PATCH 1/2] dt-bindings: nvmem: mtk-efuse: add documentation for
- MT8516 SoC
-To: Fabien Parent <fparent@baylibre.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20201016171837.3261310-1-fparent@baylibre.com>
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Message-ID: <d5cade4b-de2e-9137-ef0d-afd3c11d1884@linaro.org>
-Date: Tue, 24 Nov 2020 10:54:04 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1khW8W-0006vf-5L; Tue, 24 Nov 2020 11:05:28 +0000
+Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9A41B20708;
+ Tue, 24 Nov 2020 11:05:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1606215927;
+ bh=p7cS0enyaISQXUsFbBkJBL1aoa2MlX33h5/J260iXIw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=F3SBAmZRTb54N/YAxmPu1vt5vCXgqcUrDxC/I6tq4FoRWdxlhKAXh24e2A3yq6vzm
+ BgHxbhukrj9r3LrDIPXIc3Mwe2Guh38i3iRJEe4ZQjjNxebY2oBWMFXYq3afwnmKfK
+ THIyImd3gme1xi91jEdzIxGCeTTwpRkoTNsv8iK8=
+Date: Tue, 24 Nov 2020 11:05:21 +0000
+From: Will Deacon <will@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH] iommu: Improve the performance for direct_mapping
+Message-ID: <20201124110520.GA12980@willie-the-truck>
+References: <20201120090628.6566-1-yong.wu@mediatek.com>
+ <20201123123258.GC10233@willie-the-truck>
+ <1606209884.26323.132.camel@mhfsdcap03>
 MIME-Version: 1.0
-In-Reply-To: <20201016171837.3261310-1-fparent@baylibre.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1606209884.26323.132.camel@mhfsdcap03>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201124_055407_595345_9B48F65E 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20201124_060528_310211_372C9B1E 
+X-CRM114-Status: GOOD (  22.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,23 +76,86 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org
+Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 16/10/2020 18:18, Fabien Parent wrote:
-> Add binding documentation for MT8516 SoCs.
+On Tue, Nov 24, 2020 at 05:24:44PM +0800, Yong Wu wrote:
+> On Mon, 2020-11-23 at 12:32 +0000, Will Deacon wrote:
+> > On Fri, Nov 20, 2020 at 05:06:28PM +0800, Yong Wu wrote:
+> > > +				unmapped_sz = 0;
+> > > +			}
+> > > +			start += pg_size;
+> > > +		}
+> > > +		if (unmapped_sz) {
+> > > +			ret = iommu_map(domain, start, start, unmapped_sz,
+> > > +					entry->prot);
+> > 
+> > Can you avoid this hunk by changing your loop check to something like:
+> > 
+> > 	if (!phys_addr) {
+> > 		map_size += pg_size;
+> > 		if (addr + pg_size < end)
+> > 			continue;
+> > 	}
 > 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Thanks for your quick review. I have fixed and tested it. the patch is
+> simple. I copy it here. Is this readable for you now?
+> 
+> 
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -737,6 +737,7 @@ static int
+> iommu_create_device_direct_mappings(struct iommu_group *group,
+>  	/* We need to consider overlapping regions for different devices */
+>  	list_for_each_entry(entry, &mappings, list) {
+>  		dma_addr_t start, end, addr;
+> +		size_t map_size = 0;
+>  
+>  		if (domain->ops->apply_resv_region)
+>  			domain->ops->apply_resv_region(dev, domain, entry);
+> @@ -752,12 +753,21 @@ static int
+> iommu_create_device_direct_mappings(struct iommu_group *group,
+>  			phys_addr_t phys_addr;
+>  
+>  			phys_addr = iommu_iova_to_phys(domain, addr);
+> -			if (phys_addr)
+> -				continue;
+> +			if (!phys_addr) {
+> +				map_size += pg_size;
+> +				if (addr + pg_size < end)
+> +					continue;
+> +				else
 
-I have picked up the dt-bindings patch, but dts changes have to go via 
-arm-soc tree!
+You don't need the 'else' here  ^^^
 
---srini
+> +					addr += pg_size; /*Point to End */
+
+addr = end ?
+
+That said, maybe we could simplify this further by changing the loop bounds
+to be:
+
+	for (addr = start; addr <= end; addr += pg_size)
+
+and checking:
+
+	if (!phys_addr && addr != end) {
+		map_size += pg_size;
+		continue;
+	}
+
+does that work?
+
+Will
 
 _______________________________________________
 Linux-mediatek mailing list
