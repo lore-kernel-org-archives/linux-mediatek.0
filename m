@@ -2,74 +2,66 @@ Return-Path: <SRS0=KQlx=E6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2005CC56201
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 06:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9E5CC56201
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 07:24:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B830206CA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 06:36:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3212320679
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 07:24:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2hZk5c/C";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KBSuK2RA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B830206CA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UKkme8Xn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="N533lIgj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3212320679
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ajJEvh19mEaVwtviUjMcS0Sg8Y0cTs6l9fNnoys9tzE=; b=2hZk5c/C8qahiujSGZAX+lvCJQ
-	pY0E7Y5aWxuLEHdYX/CUyRxh2PxLbkst4aeFE4Bkubeg1orea12JhF2nVBTJsHX3FvDHin892JwRv
-	8s2X7Mj13QaZ5lCC9VUZK7xF1GL37vyDzW9awAhfKHP4UZl6U/WK95wR5J17rqBJNDWVVY55nqXnp
-	wJZZDNHTNikyCoBfc+1P9do6NeVgJTFKJlV4/8BL12wjkrSeo0kIz5PoZyafz4RvSTR0QUqEK+PWX
-	P3K6NKz208En7t7Xt2o9q5IHdfW54P2P1ceB8locNyOZa8VF4kzm1fKJliR8APhtcKrdVbEleMz/a
-	r/M+vGhQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=g6AyJO0ZZbbXskSw+73dGsOCvALXMJgAYTBO9cXYzYg=; b=UKkme8XnIJm6J8U7EB+ASU4fq
+	eN3waVsiO3IczfM53Z+zz471Af/gmq83zusV9xucBeIHUstdp2ba4pCYrS/AFr5yzgwY9HoHQXaX/
+	AgBRkycapkeG4CVPdBCxmKANmmSY0uPCtYoB85aQ7bAbOPn2peQcGiTLiwpGUZqA02NO8n+Y3lpA0
+	JBKuLpj4X3xTQjjmM4cVSwYm5Zqzl44YC15HxHDQ6fUEYNBoUOZgZwm3TGYM4E5JL3Ll/mzWBuNrP
+	IbekZCL1nqs9jaSOXnvqZgoP8JK0wRk/5+5kxENw6kfPiDFeoiAULSAyNCwS1Y4hJbBlgmEdDTF0U
+	PmBv7Rrkw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khRwF-0001wr-Ka; Tue, 24 Nov 2020 06:36:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1khSg8-0004Fb-7Q; Tue, 24 Nov 2020 07:23:56 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khRwC-0001w0-JJ; Tue, 24 Nov 2020 06:36:30 +0000
-X-UUID: 72bb416ff96248d0b7bca6e3f1a92cb7-20201123
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=KOvP6Adop49lEOciDyRhQc/9Eu4+EOCyo4S68U6yHkI=; 
- b=KBSuK2RA0KH3bQSx3AcioXS8deVQPDoltub6TNXvKfUCR0ZuDoln+2Wg0Zf5xV/zLZePPsudNt7aJ5ikGhd9YxiFVm87MYzgRRRncvGOVcF5P3E+rfPa3QqMqnjAJ9uW/cmMXMIOFRBeKWQ6otFgPdqW8Sm0JIzEZx0ABeerc48=;
-X-UUID: 72bb416ff96248d0b7bca6e3f1a92cb7-20201123
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <min.guo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2063248694; Mon, 23 Nov 2020 22:36:21 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Nov 2020 22:36:20 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Nov 2020 14:36:16 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 24 Nov 2020 14:36:16 +0800
-From: <min.guo@mediatek.com>
-To: Bin Liu <b-liu@ti.com>
-Subject: [PATCH v2] usb: musb: remove unused variable 'devctl'
-Date: Tue, 24 Nov 2020 14:36:13 +0800
-Message-ID: <20201124063613.28796-1-min.guo@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1khSg3-0004EX-Rw; Tue, 24 Nov 2020 07:23:52 +0000
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B80F720679;
+ Tue, 24 Nov 2020 07:23:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1606202630;
+ bh=hGvjCXUrD2s4wdSYVX0JDuusUwGBrIWDOHYN8zVuzv8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=N533lIgjC0TkGs7IOqLrfv/v08xX5xYIetmohAEM+zPMCshpdpEs1R1ccVfwkCNZS
+ qX38NB2JRe+AOg3tLwSX1LGU6WbMT4TVeVOSYCp1SJJEBm7PPSjnVEwZnFm9VK61Yx
+ yd/lsmvhQSSfjoA3Lo//S0jlPTqzm2M45G1M8GKk=
+Date: Tue, 24 Nov 2020 08:24:58 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: min.guo@mediatek.com
+Subject: Re: [PATCH v2] usb: musb: remove unused variable 'devctl'
+Message-ID: <X7y1SpiRE+CcBQIa@kroah.com>
+References: <20201124063613.28796-1-min.guo@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A0F036620D6F33AE240B439D83807945270E56099E0A8C59D8D388BF22A197642000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20201124063613.28796-1-min.guo@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201124_013629_396310_AED45D3B 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20201124_022352_101051_517B86EC 
+X-CRM114-Status: GOOD (  20.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,58 +73,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com,
- Alan Stern <stern@rowland.harvard.edu>, Min Guo <min.guo@mediatek.com>,
+Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ chunfeng.yun@mediatek.com, Alan Stern <stern@rowland.harvard.edu>,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+ Bin Liu <b-liu@ti.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Min Guo <min.guo@mediatek.com>
+On Tue, Nov 24, 2020 at 02:36:13PM +0800, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
+> 
+> Remove unused 'devctl' variable to fix compile warnings:
+> 
+>     drivers/usb/musb/musbhsdma.c: In function 'dma_controller_irq':
+>     drivers/usb/musb/musbhsdma.c:324:8: warning: variable 'devctl' set
+>     but not used [-Wunused-but-set-variable]
+> 
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
+> ---
+> changes in v2
+> suggested by Alan Stern:
+> Add void before musb_read to indicate that the register MUSB_DEVCTL
+> was intended to be read and discarded.
+> ---
+>  drivers/usb/musb/musbhsdma.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
+> index 0aacfc8be5a1..f59a009c533e 100644
+> --- a/drivers/usb/musb/musbhsdma.c
+> +++ b/drivers/usb/musb/musbhsdma.c
+> @@ -321,8 +321,6 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
+>  				musb_channel->channel.status =
+>  					MUSB_DMA_STATUS_BUS_ABORT;
+>  			} else {
+> -				u8 devctl;
+> -
+>  				addr = musb_read_hsdma_addr(mbase,
+>  						bchannel);
+>  				channel->actual_len = addr
+> @@ -336,7 +334,7 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
+>  						< musb_channel->len) ?
+>  					"=> reconfig 0" : "=> complete");
+>  
+> -				devctl = musb_readb(mbase, MUSB_DEVCTL);
+> +				(void)musb_readb(mbase, MUSB_DEVCTL);
 
-Remove unused 'devctl' variable to fix compile warnings:
+Please put a comment here as to why the read is happening so that people
+do not throw it away sometime in the future.
 
-    drivers/usb/musb/musbhsdma.c: In function 'dma_controller_irq':
-    drivers/usb/musb/musbhsdma.c:324:8: warning: variable 'devctl' set
-    but not used [-Wunused-but-set-variable]
+thanks,
 
-Signed-off-by: Min Guo <min.guo@mediatek.com>
----
-changes in v2
-suggested by Alan Stern:
-Add void before musb_read to indicate that the register MUSB_DEVCTL
-was intended to be read and discarded.
----
- drivers/usb/musb/musbhsdma.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+greg k-h
 
-diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
-index 0aacfc8be5a1..f59a009c533e 100644
---- a/drivers/usb/musb/musbhsdma.c
-+++ b/drivers/usb/musb/musbhsdma.c
-@@ -321,8 +321,6 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
- 				musb_channel->channel.status =
- 					MUSB_DMA_STATUS_BUS_ABORT;
- 			} else {
--				u8 devctl;
--
- 				addr = musb_read_hsdma_addr(mbase,
- 						bchannel);
- 				channel->actual_len = addr
-@@ -336,7 +334,7 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
- 						< musb_channel->len) ?
- 					"=> reconfig 0" : "=> complete");
- 
--				devctl = musb_readb(mbase, MUSB_DEVCTL);
-+				(void)musb_readb(mbase, MUSB_DEVCTL);
- 
- 				channel->status = MUSB_DMA_STATUS_FREE;
- 
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
