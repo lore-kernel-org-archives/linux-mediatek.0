@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8ED4AC2D0E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 08:51:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF9D8C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 09:01:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 04CDE2073C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 08:51:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 65CF42073C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 09:01:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JY9PpzaK";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qpgxeS/y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 04CDE2073C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RG5WpVbQ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="p6fcjET4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65CF42073C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,50 +26,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fMc0RMBt/tvcummnu4HjzcFDnUku4jNQLpAw6A1iwNA=; b=JY9PpzaKSOj89a/pA130BcqViP
-	P/HeU/wnKSI9XLST6eEeZNK+nNz2SmMr4oxxFqmzXfdUsn2B36JTUum6UZESI53qJhifMO0oeo+sO
-	vMAb0HhokTMEznuF2zDS/kEqbJhj/B2+BtWQS1NMHwYJt2TXVOVRhvQaQ27qeA3v7kWEoNzqxeaRX
-	nwAuttSen6Nm2Ts7S9EjBSyEy/8mP9PqdoG21u567BrbRRSD1FLwEDG+8gD8Xx8kEdZAaM1rKoZbG
-	Pv4zmX2ujvbSfX3IRCVX3MGqNboDGn7VzdnA/iSnDHYAB/hclAAotgFX8nR5AzVHlxEirvpu+fpOU
-	14HjjOig==;
+	bh=o5bc3dsBamYSJRcheoTRrJQOtOzM0eqf2tBLetjAsuo=; b=RG5WpVbQ/+O3CRgwikcOD/YKpK
+	TcdDq1Fi5FDNzCCizDGD6JDjHdRpWzAsnFUlfStPSohAyAVII/Z95AYJNVv0DwD+Ljr+gI5davZ8N
+	uLjG44FE8GEmVVrNxnqV5Zj/V47tI59HXOmjMDIb/SHNMhl+HaXjsVW4LOfdMbGm2E3U9uujUu82P
+	/tc2VsE2jJst/nEeT8L6wiNCW8y1aaR1EbgZrBr2aYTpDZXxXmOSPHHJOmzrpRQLIV3uW5rdYR87G
+	aO0dtc9j1BL0Gv4C1uxasR/ha9gWo1TKXIN8uAwkFJ7Hy0ujhWZZFRY6WbiMkclyR87DIzn/FJs+A
+	eK7MB3VA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khU3D-00075s-BK; Tue, 24 Nov 2020 08:51:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1khUCt-0000MX-UK; Tue, 24 Nov 2020 09:01:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khU3A-00074Q-2I; Tue, 24 Nov 2020 08:51:49 +0000
-X-UUID: e39d181c10144d2ba22030293f0d0884-20201124
+ id 1khUCr-0000LW-QC; Tue, 24 Nov 2020 09:01:51 +0000
+X-UUID: 89f5383e0bbf48548f12a8333ddecaa9-20201124
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=9sIVDJBuEaAOUoPHy/lYogT86NvFz8Vb89tEUjRT4yI=; 
- b=qpgxeS/yPsIUNiyF7wHDmyhcAZPt4q+JYde7b70RHuH+0wWKU3DbR+CaPKG9KjZweOChAIcF0hPwmfukUJOsVcqVMOpDCQzCkQi4jw3iwE6qqlj3Z9GIK/qjsYTNd1Sd6f67sQAXEDmZpHz8rGYyvGkYn8ojqCWbp5lTkU1/YF8=;
-X-UUID: e39d181c10144d2ba22030293f0d0884-20201124
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <min.guo@mediatek.com>)
+ bh=+79SKGa+A8TGnUbLjyi9ibN0YOHhB4vqu41JpiHRmUg=; 
+ b=p6fcjET4bppElR4RsYjpeJoegejkw4nH0LysqAesKlvqhQns2HuvDwLxQ9qymd3WC2HqXUOPvyir0fK44xZQuu6j9mtQBalt0IB3oH+w/vmsksQhQPU8MP3PvMsgrU2BHlIz53Kpi5leIFQlvqCAF+jJ/DtdHpFb5XBWs0jq5KQ=;
+X-UUID: 89f5383e0bbf48548f12a8333ddecaa9-20201124
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <lecopzer.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 40011476; Tue, 24 Nov 2020 00:51:40 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Nov 2020 00:50:02 -0800
+ with ESMTP id 1754348229; Tue, 24 Nov 2020 01:01:42 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 24 Nov 2020 01:01:36 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Nov 2020 16:49:58 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 24 Nov 2020 16:49:59 +0800
-From: <min.guo@mediatek.com>
-To: Bin Liu <b-liu@ti.com>
-Subject: [PATCH v3] usb: musb: remove unused variable 'devctl'
-Date: Tue, 24 Nov 2020 16:49:55 +0800
-Message-ID: <20201124084955.30270-1-min.guo@mediatek.com>
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 24 Nov 2020 17:01:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 24 Nov 2020 17:01:39 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] arm64: Kconfig: Add SYS_SUPPORTS_APM_EMULATION
+Date: Tue, 24 Nov 2020 17:01:31 +0800
+Message-ID: <20201124090131.27257-1-lecopzer.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1E15F157744AEC9989CA4857FFB6D99450DE2308CA458A37E137A2127E0005752000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201124_035148_872404_B530EDA1 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20201124_040150_076240_70D5535D 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,64 +80,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com,
- Alan Stern <stern@rowland.harvard.edu>, Min Guo <min.guo@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>, catalin.marinas@arm.com,
+ yj.chiang@mediatek.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, will@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Min Guo <min.guo@mediatek.com>
+From: "Lecopzer Chen" <lecopzer.chen@mediatek.com>
 
-Remove unused 'devctl' variable to fix compile warnings:
+Although most of modern devices use ACPI, there still has combination
+of APM + ARM64.
 
-    drivers/usb/musb/musbhsdma.c: In function 'dma_controller_irq':
-    drivers/usb/musb/musbhsdma.c:324:8: warning: variable 'devctl' set
-    but not used [-Wunused-but-set-variable]
+In order to select CONFIG_APM_EMULATION, make SYS_SUPPORTS_APM_EMULATION
+default is y if ACPI isn't configured.
 
-Signed-off-by: Min Guo <min.guo@mediatek.com>
+Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Suggested-by: YJ Chiang <yj.chiang@mediatek.com>
 ---
-changes in v3
-suggested by Greg Kroah-Hartman:
-Add a comment.
+ arch/arm64/Kconfig | 3 +++
+ 1 file changed, 3 insertions(+)
 
-changes in v2
-suggested by Alan Stern:
-Add void before musb_read to indicate that the register MUSB_DEVCTL
-was intended to be read and discarded.
----
- drivers/usb/musb/musbhsdma.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
-index 0aacfc8be5a1..2a345b4ad015 100644
---- a/drivers/usb/musb/musbhsdma.c
-+++ b/drivers/usb/musb/musbhsdma.c
-@@ -321,8 +321,6 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
- 				musb_channel->channel.status =
- 					MUSB_DMA_STATUS_BUS_ABORT;
- 			} else {
--				u8 devctl;
--
- 				addr = musb_read_hsdma_addr(mbase,
- 						bchannel);
- 				channel->actual_len = addr
-@@ -336,7 +334,11 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
- 						< musb_channel->len) ?
- 					"=> reconfig 0" : "=> complete");
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index 1515f6f153a0..5e9e3694015a 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -260,6 +260,9 @@ config NO_IOPORT_MAP
+ config STACKTRACE_SUPPORT
+ 	def_bool y
  
--				devctl = musb_readb(mbase, MUSB_DEVCTL);
-+				/*
-+				 * Some hardware may need to read the
-+				 * MUSB_DEVCTL register once to take effect.
-+				 */
-+				(void)musb_readb(mbase, MUSB_DEVCTL);
- 
- 				channel->status = MUSB_DMA_STATUS_FREE;
- 
++config SYS_SUPPORTS_APM_EMULATION
++	def_bool y if !ACPI
++
+ config ILLEGAL_POINTER_VALUE
+ 	hex
+ 	default 0xdead000000000000
 -- 
 2.18.0
 _______________________________________________
