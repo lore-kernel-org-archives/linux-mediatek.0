@@ -2,68 +2,69 @@ Return-Path: <SRS0=KQlx=E6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AAE30C56201
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 14:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FDDDC2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 17:09:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2777F20738
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 14:48:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D1C0720715
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2020 17:09:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RLb2YNRV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="tWoPDQgv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2777F20738
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Pla8AchG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Ec4UNRWN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1C0720715
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JbSofHvSpazW/Pgip49MjDG4/YiDdXSoDEPRc4eHdYM=; b=RLb2YNRVhCagyEVY6lQf6uGoJ
-	BSoPEzEIok6B9bFs6SVFnIke8DD69E2LNhhS8StjW0fXvqnPjJ1nngM4uSo5p+drUGh0AiM5IA+rd
-	LJK+8wmz+VezxtCPCN2x12amI0bd93ndp2SwyFDqxrgZmSz8zPOlL9xtvQQ2RS37+0IhhGk7FzV2o
-	LEZSdHBrqpoSekCRGgPdSXr22XxtlSGWWYpj3qg5loR4K8xHM0h1Wah78FpSV+CIzOtKq54Sfgjoj
-	6TDQ2kVdJL9Khhpg1gp4iO9VBKEHASO7oWcbmSD8TAOL3t6bh1F+T4v4tMjpPWHpJ9vOYv37w8G6O
-	alvMpDDNQ==;
+	 bh=MGmaIcPTHMQLUEAJIT5CdiBFCiEB8KvqTvNtLi1qNqg=; b=Pla8AchG1EdP7JYAYQal4heJV
+	1OnFoItn7ehRaUyuz5Qi02Mq+KN7gUuUA2nkmh8QyeaLvu8vS1g7hvsLheJAJdg5NY98HnoTK/N+C
+	2S5FP2HhJFq3p7GWYy3sf/YRMonRbGax5V4JzK2o3fiLEnLr4H2NK2F+PcTVFE3sfFyEjTQtM8MCb
+	PsYa/4hZk58YVpn5Am+tYLdtxZy6IdiC6ZiXcIOazLBG1AuYVpOmmlLN8JN8VOKMjSxkZJ9JJECfJ
+	UapA/3V8nDraz2PhqvqLdTYAxSW7pPbPAIfuUCw+m4U3Vxn7TdyYeMe/ZZ9HyIqFNA3OWPac+3cTG
+	K7UZvbGVw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khZbm-0005aR-H5; Tue, 24 Nov 2020 14:47:54 +0000
+	id 1khbor-000828-Ns; Tue, 24 Nov 2020 17:09:33 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khZbf-0005WA-HV; Tue, 24 Nov 2020 14:47:48 +0000
-Received: from embeddedor (187-162-31-110.static.axtel.net [187.162.31.110])
+ id 1khboo-000814-DI; Tue, 24 Nov 2020 17:09:31 +0000
+Received: from localhost (cpc102334-sgyl38-2-0-cust884.18-2.cable.virginm.net
+ [92.233.91.117])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A5073206F9;
- Tue, 24 Nov 2020 14:47:38 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2727820715;
+ Tue, 24 Nov 2020 17:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1606229266;
- bh=KHWIOvsVxIgxzJ3ANvrXr+IcifXvCH3d9eC+5p4MJwo=;
+ s=default; t=1606237769;
+ bh=JE/XKDv219ahc78trmf4QDOLhTKFVqmxBCF2JSioF4s=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=tWoPDQgvsKVPCfxibPNl9c0zBQ9NfBrnsDyv8UIAtPJxHLfF4o1CuP3vwUt19y/P8
- Y66kkjj2Cim4kMyRQiiYzb1whNr+v/N+nMKfcHqv3RaX8mBnUDrFmNddDbw9/dIVnH
- xirANyC4hb8bYXXRvxw8qG9eYp8JWf8UX9D38PQM=
-Date: Tue, 24 Nov 2020 08:47:54 -0600
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-Message-ID: <20201124144754.GL16084@embeddedor>
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <160616392671.21180.16517492185091399884.b4-ty@kernel.org>
+ b=Ec4UNRWNLGR6RwTKTnjzLAn4sURi8lQuEvTZcc5zu2R5cYt7qYqJ1PqoDzCIBou3A
+ QSsFRyLhD0YI9s58P3nkgWrihKzdGgZdpWIwIOjnVd0U2tQ5se+c11rolL1Cb52mKk
+ JzZqtSIpwa6IAxN3t/LD+FBvnBSPb3a4oFIch4Dk=
+Date: Tue, 24 Nov 2020 17:09:06 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH v3 7/8] regulator: mt6359: Add support for MT6359P
+ regulator
+Message-ID: <20201124170906.GJ4933@sirena.org.uk>
+References: <1606103290-15034-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1606103290-15034-8-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <160616392671.21180.16517492185091399884.b4-ty@kernel.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <1606103290-15034-8-git-send-email-hsin-hsiung.wang@mediatek.com>
+X-Cookie: Who was that masked man?
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201124_094747_780810_FAD2BCE0 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20201124_120930_529123_3931B692 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,73 +76,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- dm-devel@redhat.com, usb-storage@lists.one-eyed-alien.net,
- Nick Desaulniers <ndesaulniers@google.com>, x86@kernel.org,
- dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-hardening@vger.kernel.org,
- wcn36xx@lists.infradead.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
- linux-scsi@vger.kernel.org, linux-acpi@vger.kernel.org,
- linux-rdma@vger.kernel.org, bridge@lists.linux-foundation.org,
- ceph-devel@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- oss-drivers@netronome.com, linux-mmc@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
- Miguel Ojeda <ojeda@kernel.org>, tipc-discussion@lists.sourceforge.net,
- linux-ext4@vger.kernel.org, linux-media@vger.kernel.org,
- Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- reiserfs-devel@vger.kernel.org, linux-geode@lists.infradead.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- samba-technical@lists.samba.org, linux-fbdev@vger.kernel.org,
- xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
- linux-hams@vger.kernel.org, Nathan Chancellor <natechancellor@gmail.com>,
- linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hwmon@vger.kernel.org, linux-watchdog@vger.kernel.org,
- linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- linux-ide@vger.kernel.org, linux-decnet-user@lists.sourceforge.net,
- patches@opensource.cirrus.com, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-security-module@vger.kernel.org, keyrings@vger.kernel.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
- linux-integrity@vger.kernel.org, GR-everest-linux-l2@marvell.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============3209227498499430499=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 23, 2020 at 08:38:46PM +0000, Mark Brown wrote:
-> On Fri, 20 Nov 2020 12:21:39 -0600, Gustavo A. R. Silva wrote:
-> > This series aims to fix almost all remaining fall-through warnings in
-> > order to enable -Wimplicit-fallthrough for Clang.
-> > 
-> > In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
-> > add multiple break/goto/return/fallthrough statements instead of just
-> > letting the code fall through to the next case.
-> > 
-> > [...]
-> 
-> Applied to
-> 
->    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-> 
-> Thanks!
-> 
-> [1/1] regulator: as3722: Fix fall-through warnings for Clang
->       commit: b52b417ccac4fae5b1f2ec4f1d46eb91e4493dc5
 
-Thank you, Mark.
---
-Gustavo
+--===============3209227498499430499==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/jvaajy/zP2g41+Q"
+Content-Disposition: inline
+
+
+--/jvaajy/zP2g41+Q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Nov 23, 2020 at 11:48:09AM +0800, Hsin-Hsiung Wang wrote:
+> The MT6359P is a eco version for MT6359 regulator.
+> We add support based on MT6359 regulator driver.
+
+This and the prior patch look fine.
+
+--/jvaajy/zP2g41+Q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl+9PjEACgkQJNaLcl1U
+h9AlNAf8DECrNSbsknU6bM5hQl8m/t6H1PgEtYza1esl6hv+LJ6jpdDeI+jgB7AU
+1CuLhu8bgpb8D9JQVkd/IPbmg4CA9LOXCXeSoi4I7F38nc+MURan+m4z5BAwhM1V
+NLAb0z472Y3+cPCyLg9qx7w4VP94kKEU0Sq2BNlIjWQPJtcmzWaj6YpWHmGhe9WY
+DWFDFuGof7CcNt1DIh0ZiiMXR2QjHQVQKxsRl50zXt0oqpuQMP9Hfc0WVnf9mJ0I
+ugQwYbjhA/kK5ehK7kJrfTNlGkVMffPpcYzHgfWICJfGUTz8SkTnAXdcEsyQOasY
+youTWPS5qGzgUs4lg0Sg/akO263uCA==
+=zKUx
+-----END PGP SIGNATURE-----
+
+--/jvaajy/zP2g41+Q--
+
+
+--===============3209227498499430499==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============3209227498499430499==--
+
