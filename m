@@ -2,95 +2,78 @@ Return-Path: <SRS0=wG/x=E7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1224DC56201
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 18:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EBBBC56201
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 18:32:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90F9D2075A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 18:16:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9DA2420656
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 18:32:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jXWRxN2C";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="a9JuQV1O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90F9D2075A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PLMALA8Q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DA2420656
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=L8naVAKn+2J5P6c1VUqOToKXV5DItIvvWAbN8YO4Te0=; b=jXWRxN2CZ8t7ZgkrClLinMauo
-	UUvcwEYFO7jxnnss5JtVKPY/N6mf2zWMYehfjJ06B2kF/y4fpY9smrhNege0kf6gMrCsAYsO3H5Fa
-	W2Pcqcq/6gRhdgjb1lVGdCmqAr6aizJBRUqFbF3eZmH9aJmG/biisWJgmUj8LMZdk8OXe7lnNuyFC
-	NhXpaF9Aud+1e6t7ep7d52/i+eQ7blOl6EORSoHLlFr79EMJogyfpsyXQllsxhMlWSnAXoYZuSdGB
-	+0pbn5q6VK8kd3IV9pACCm6uxCWQ7AEqxAGgGQ08vBmmKHKRHkAga1xovgbn0uj92dntI0c9sB+91
-	CYe2pdPFA==;
+	 bh=F9g5UqaP4Oy/Fb1RMjT3gOSOPsddptVlNsd1m+B3giM=; b=PLMALA8QJ9dlEv8fn6gPNxuHn
+	vdDB3vqOQjGCrr7kuIFxdc03acYDofzPWUWUvu6b2yV6DnzFkoq6EDGNvtDIDWW6vrEbO2wtyyFWj
+	nfIWb1cWAc0EJbjpdDqNZXM/jnXwUL3GBqCbaWuRFuoa1+2mnfwj2EhLYMdHTDefNOrsnfmYflsEw
+	MZ4wiLELYas4IslIPQU5HRKGfW78L2He7FtoMJTC7etjkUjkhbj2oQiqwEn73YaNHk4OKNs+ZheJn
+	I/+9fI03rScwwDUx/i1Zv887rvujzm9DJJ+jxqrUTDtHd/+wgUKPguP1QCcTCqVTKPoN36CauyMNa
+	7DMzcS3sA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khzLF-0000iQ-8c; Wed, 25 Nov 2020 18:16:33 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1khzaV-0003hd-Mo; Wed, 25 Nov 2020 18:32:19 +0000
+Received: from mail-wm1-f65.google.com ([209.85.128.65])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khzLC-0000gd-SM; Wed, 25 Nov 2020 18:16:31 +0000
-Received: by mail-wr1-x444.google.com with SMTP id i2so2839271wrs.4;
- Wed, 25 Nov 2020 10:16:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=n4hwd00ocT6s6wXE4aWR7hZJHlhuuSKMzexv7VkV7Mw=;
- b=a9JuQV1OC/BQyeL00FMok9glgoVuNCD/+Elyq/nge76ARwshEepHQSKxr7kCBHnEbe
- MbhHgYK3tuF6bsTXWzEKNqX0n2TCW3r7paoRT/DOnj9snKjDsukcZIYO9qcf+z7/NI4Z
- fL2fF5iW2LLPI3sfTE+KRW8E0AxqgaBUMYZVPBfU5LEJLkRFHuk6rxtakxVNs5QkxF4G
- SGI+Km0FmdZNSH1Z2lPoPAkapzVEPz6GjkEqhbh0d97SaEmE1fBDFjuzuo+Yh5W7K8a1
- VgmKjac9tMJ8UWzDjf+CD/L2itp5DfxjT6VVun80JW1tiX9TB/Pmg6B0jqNdxZO0MT5C
- PKUA==
+ id 1khzaT-0003h4-Di
+ for linux-mediatek@lists.infradead.org; Wed, 25 Nov 2020 18:32:18 +0000
+Received: by mail-wm1-f65.google.com with SMTP id w24so3063010wmi.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2020 10:32:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=n4hwd00ocT6s6wXE4aWR7hZJHlhuuSKMzexv7VkV7Mw=;
- b=Ey1fquII4q1OPgf2tFXZpLNUAl3kvXU97p042TgT+fToA+bKf4vAoUbczBAWKHiBxm
- 77FCY+PhxS7qWFgRq8QTRe5nodMwlzEV1UG6C1Xebl0VsR59nlSa/v3kHOtaSLEYmWNd
- lY01RzKW91iR3/MySkc0tE1huKO/sl8GwqEdG+6br1rJhzUziPJ+sjYbE0Irrnax6Did
- mNDA6hgSG3g0ar3sRUh2Lo8HAKtE9o3DWlFhGGyFK5AOWgf4BPv7W0nT2E39mXRHmZ4R
- qjXLIlY5E/E9Q3i01jOGz4J9RWXXMMp20sd8z05xI2vPYY0bByhYNx0f2iRheH3o8d0j
- yoYA==
-X-Gm-Message-State: AOAM532tVR1TOty79X7puma8rGAh4BSVTEz617lr3bHmYJS2WfxDSQgp
- 2s/KNAWIY4pzboo35T12QfE=
-X-Google-Smtp-Source: ABdhPJw8vmMWiSs7cDX0SbbFaXMxwan1mjJjv4qDg0Hsg/qazz8EKp0A2vyM0mumuAxawkEJuc70Sw==
-X-Received: by 2002:a05:6000:151:: with SMTP id
- r17mr5726131wrx.157.1606328189902; 
- Wed, 25 Nov 2020 10:16:29 -0800 (PST)
-Received: from ?IPv6:2a01:110f:b59:fd00:a410:510b:ab5:5694?
- ([2a01:110f:b59:fd00:a410:510b:ab5:5694])
- by smtp.gmail.com with ESMTPSA id b145sm6244969wmd.0.2020.11.25.10.16.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Nov 2020 10:16:29 -0800 (PST)
-Subject: Re: [PATCH v8 3/6] dt-bindings: leds: Add LED_FUNCTION_MOONLIGHT
- definitions
-To: Gene Chen <gene.chen.richtek@gmail.com>, pavel@ucw.cz,
- robh+dt@kernel.org, matthias.bgg@gmail.com
-References: <1606301475-7030-1-git-send-email-gene.chen.richtek@gmail.com>
- <1606301475-7030-4-git-send-email-gene.chen.richtek@gmail.com>
-From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Message-ID: <e16d7ef2-912e-8f2d-8368-603ba27833b3@gmail.com>
-Date: Wed, 25 Nov 2020 19:16:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=5GkTO/25VVUukwZ9zh97AvZy/dEeO6lHGqjonU7CXlI=;
+ b=DyhTdhLw2xz+l/7o/XPEzv6tvDkhghxb8S6irQ/MX5/gn5k8uRNfIdwoUMT21rBsAm
+ D0nzOrSpC6g1g8ARkBuyy1EIHf27yvfXhBALXdg1WUMvIRdlJBdWkjKWHpYfboHyrtT9
+ FFip5mNnwkrzGtoHB0DJCAuItFQ89rL5ZK+O+1YjvKzGHhKXLKHUjmDXMFcXvk3apQxR
+ o4EPyRT2vEb8M2oxABqUNNw2mdfXGIylHRscaFlUqfTmRgEyL/0Y0lTeOfnN6O0v8vLK
+ D4Am8wCZmszF3PhNrTpdjgcpKnE0JN9jqv9yMDvtu6Mv4EnxMpO5yPxWtmWUY8nJTQkE
+ ontQ==
+X-Gm-Message-State: AOAM533uDQAyjwV1ZvoMINjZhpUo2o4hK+VEoQl2rQ/zW2P8eE2s1oen
+ VYA+7JSHl0seg/GfJaBNuy8=
+X-Google-Smtp-Source: ABdhPJwQF52MOMubIDrG2tGa8X5k5t/uVNz84W9l+rimXRerR2hN1cYDKN+37C4kmh3UVe8bK87Bbw==
+X-Received: by 2002:a05:600c:2541:: with SMTP id
+ e1mr5555749wma.185.1606329132868; 
+ Wed, 25 Nov 2020 10:32:12 -0800 (PST)
+Received: from kozik-lap (adsl-84-226-167-205.adslplus.ch. [84.226.167.205])
+ by smtp.googlemail.com with ESMTPSA id v8sm6023116wmg.28.2020.11.25.10.32.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 25 Nov 2020 10:32:11 -0800 (PST)
+Date: Wed, 25 Nov 2020 19:32:10 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Zhang Qilong <zhangqilong3@huawei.com>
+Subject: Re: [PATCH] memory: mtk-smi: Fix PM usage counter unbalance in
+ mtk_smi ops
+Message-ID: <20201125183210.GA3665@kozik-lap>
+References: <20201123102118.3866195-1-zhangqilong3@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <1606301475-7030-4-git-send-email-gene.chen.richtek@gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20201123102118.3866195-1-zhangqilong3@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_131630_941191_38FED86C 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20201125_133217_521506_2314150A 
+X-CRM114-Status: GOOD (  17.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,47 +85,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
- linux-mediatek@lists.infradead.org, dmurphy@ti.com, linux-leds@vger.kernel.org,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
+Cc: matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Gene,
-
-On 11/25/20 11:51 AM, Gene Chen wrote:
-> From: Gene Chen <gene_chen@richtek.com>
+On Mon, Nov 23, 2020 at 06:21:18PM +0800, Zhang Qilong wrote:
+> pm_runtime_get_sync will increment pm usage counter
+> even it failed. Forgetting to putting operation will
+> result in reference leak here. We fix it by replacing
+> it with pm_runtime_resume_and_get to keep usage counter
+> balanced.
 > 
-> Add LED_FUNCTION_MOONLIGHT definitions
-> 
-> Signed-off-by: Gene Chen <gene_chen@richtek.com>
+> Fixes: 4f0a1a1ae3519 ("memory: mtk-smi: Invoke pm runtime_callback to enable clocks")
+> Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
 > ---
->   include/dt-bindings/leds/common.h | 1 +
->   1 file changed, 1 insertion(+)
+>  drivers/memory/mtk-smi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/include/dt-bindings/leds/common.h b/include/dt-bindings/leds/common.h
-> index 52b619d..843e65d 100644
-> --- a/include/dt-bindings/leds/common.h
-> +++ b/include/dt-bindings/leds/common.h
-> @@ -78,6 +78,7 @@
->   #define LED_FUNCTION_INDICATOR "indicator"
->   #define LED_FUNCTION_LAN "lan"
->   #define LED_FUNCTION_MAIL "mail"
-> +#define LED_FUNCTION_MOONLIGHT "moonlight"
->   #define LED_FUNCTION_MTD "mtd"
->   #define LED_FUNCTION_PANIC "panic"
->   #define LED_FUNCTION_PROGRAMMING "programming"
-> 
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index ac350f8d1e20..82d09b88240e 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -130,7 +130,7 @@ static void mtk_smi_clk_disable(const struct mtk_smi *smi)
+>  
+>  int mtk_smi_larb_get(struct device *larbdev)
+>  {
+> -	int ret = pm_runtime_get_sync(larbdev);
+> +	int ret = pm_runtime_resume_and_get(larbdev);
 
-Acked-by: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Thanks for the patch, but it cannot be applied.
 
--- 
+There is no pm_runtime_resume_and_get() in v5.10-rc1. I see you authored it
+around middle of November, so don't expect that it gets magically to all
+other trees. In such case - when you know that your patch cannot be
+applied or you suspect any dependencies, you should describe
+requirements for the patch.
+
 Best regards,
-Jacek Anaszewski
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
