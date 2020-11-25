@@ -2,59 +2,92 @@ Return-Path: <SRS0=wG/x=E7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01B27C5519F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 10:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A962EC5519F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 10:37:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84B782063A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 10:36:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 33AAB2063A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 10:37:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HJuc/EOs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84B782063A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JerqaoMZ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YCtEdyPA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33AAB2063A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=S73mjbo6Ssa3vbCvW0vnOc/IESgK2HnxnosWJHT+c6E=; b=HJuc/EOsNcQLnHLSOhZEDYroF
-	u/Txgupw2kSOh/HQhxJifR1GIi3GErhmEtauOvGIlbMR0YkHtpJCiW3KeS/Udc784nNMbMOgdNFna
-	lQ/QR46mc+iAWkdVX1U1UU+c0O2zUa98kG+ONzmYHzwi9yAyNUDan7dDK/fTdPPuIX76mNoFDxe6w
-	dql7a0Zg/mzx7GBA+gqefFITtLi1hAFsfM5xoEUltGRTEsZ5jL5tz8tKPnq45UShyKTH3hFaVxREF
-	7je9PBxq3pNf1NFbjHHaAgpnr5TdX4z+I+ONzDRuxdYeqgzQeGnDZdbuDzDLOWZ8Ou00Yc5ey8m82
-	36alUj0wA==;
+	 bh=tRLjZuPRM8Zwro2hkb/T+8oSiai+KQZ4FAngvITnErY=; b=JerqaoMZ/LROjh+K+H6HMn0jP
+	odBZVjx6ePaifO7g5QfUcdz0g/8L/4Dh0bipUZbEAbtH72bMsy2UeBcKp05IckQuo0PUGa75T6DTV
+	oaqSjTtq2YA7S+7s5p1ktuQoKNTDMogD84ZJ/j2DOziwlLrSaM6RCxTcdTbX1PrLHrVMsRqgWWmoE
+	QcOYTJr8JjTtHxvGuV/AX3iG8OQ+VDLHexoRKBbHC3QsrMy8D/lttnRwoTrtQPyVCtL5cPMcE/s4b
+	4MV0dnCqy/J+DoVm/0CskQRNJ3IkIU9nqi1xJ36crWcZmaEfmN7aP70AqcjdrtqLNH1n2e6Tku9Bp
+	QM4qotrLQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khsAJ-00010k-6j; Wed, 25 Nov 2020 10:36:47 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khsAE-0000zq-Rt; Wed, 25 Nov 2020 10:36:43 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 39361106F;
- Wed, 25 Nov 2020 02:36:41 -0800 (PST)
-Received: from C02TD0UTHF1T.local (unknown [172.31.20.19])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D4A923F70D;
- Wed, 25 Nov 2020 02:36:39 -0800 (PST)
-Date: Wed, 25 Nov 2020 10:36:37 +0000
-From: Mark Rutland <mark.rutland@arm.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Subject: Re: [PATCH] arm64: Kconfig: Add SYS_SUPPORTS_APM_EMULATION
-Message-ID: <20201125103637.GC70906@C02TD0UTHF1T.local>
-References: <20201124090131.27257-1-lecopzer.chen@mediatek.com>
+	id 1khsB8-0001AZ-06; Wed, 25 Nov 2020 10:37:38 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1khsB2-00015d-4L; Wed, 25 Nov 2020 10:37:33 +0000
+Received: by mail-pl1-x644.google.com with SMTP id v21so896270plo.12;
+ Wed, 25 Nov 2020 02:37:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lG3+Uwz8lZti6FSb8xjGyaQfdt5OwV03xvf6+L3ZqWc=;
+ b=YCtEdyPA4vCzWZsMjIt3djSgR9gg7vMRhn3I5LT7lEmWHdT3b/jEkR0QdduouORJ7k
+ kiuUl5RijkS3EJmc3PIdIbhuWrYEtLAccN+wdoprBDsU56ruoUGszfH1Sxvuy4WXIhMK
+ 0dDt7R//JtRYOU1+gQ96Rpa2FinP3O1pFccTMutbPTGjvqTac0chojMQO8cZdySzLIim
+ HHsTKo91pUaUTwyxPnWizwDASocTC+n+eyDdN/HKPn9pe4V2vLDA/DOFrCcWbsrVXkvE
+ 5CsjPeXzCB0gF8EvrEVdW+qQjVnUcViOyjSAD57xy0gbwLs+FCHLejwxIxOdH/xJHiTG
+ +NRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lG3+Uwz8lZti6FSb8xjGyaQfdt5OwV03xvf6+L3ZqWc=;
+ b=J/0C0HAKfE/kkAmCTv+1Oc6vcbyBlGeY+yA6DOVZwQu47K1b4UIk7sYLu5bpZGXQXs
+ A9xzZ2R2Piz9a0r5C01YzzoivdT4610cYDN7yJnFyeip7SQmM0x2pAmqsyv5XXojzXqf
+ A1csZms+TLFlUoUCfeQ49VeCWWzIv6deVcoC/Yoj8X4hnZ4o/KJnEsyDO4EiXUdDUsDp
+ q9kxieRyIrHXBn/5ZGQ5ATwT6fjvkX1ECPjNJd9XznlV9jVGw3H4pL3/TFXx2MzqBQc5
+ x0AL0+93IqYyPLXTeYISTVfGZQpDygzclIlNfNaMcyeMRI9t6sJ38afd3sdIl+fyre62
+ gH2g==
+X-Gm-Message-State: AOAM530AIAycjyWbxhnvUoq0tjjxOROwu7jlWF8UhCS1CxwIeuX1T/h1
+ N2ZF5j/8B3eJ08Kla45nWdLzLcyG8ChU9Qh2mpI=
+X-Google-Smtp-Source: ABdhPJzEY8ebPN4xZ4jf0ZFVw9i65L6qlCom+E751HZA34/qY3SkadUuuLf2HukIG4qONDPWI5feIsM1VQGLuSbFYSc=
+X-Received: by 2002:a17:902:ead2:b029:da:2596:198e with SMTP id
+ p18-20020a170902ead2b02900da2596198emr1937529pld.21.1606300648824; Wed, 25
+ Nov 2020 02:37:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201124090131.27257-1-lecopzer.chen@mediatek.com>
+References: <cover.1605896059.git.gustavoars@kernel.org>
+ <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011201129.B13FDB3C@keescook>
+ <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011220816.8B6591A@keescook>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
+ <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
+ <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
+ <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
+ <CANiq72k5tpDoDPmJ0ZWc1DGqm+81Gi-uEENAtvEs9v3SZcx6_Q@mail.gmail.com>
+ <4993259d01a0064f8bb22770503490f9252f3659.camel@HansenPartnership.com>
+In-Reply-To: <4993259d01a0064f8bb22770503490f9252f3659.camel@HansenPartnership.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 25 Nov 2020 12:38:17 +0200
+Message-ID: <CAHp75VfaewwkLsrht95Q7DaxFk7JpQjwx0KQ7Jvh5f7DUbZkRA@mail.gmail.com>
+Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
+To: James Bottomley <James.Bottomley@hansenpartnership.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_053642_995683_A32C78E2 
-X-CRM114-Status: GOOD (  18.05  )
+X-CRM114-CacheID: sfid-20201125_053732_208702_498E4F98 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,55 +99,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: catalin.marinas@arm.com, yj.chiang@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, will@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ linux-atm-general@lists.sourceforge.net, reiserfs-devel@vger.kernel.org,
+ linux-iio <linux-iio@vger.kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ "open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
+ device-mapper development <dm-devel@redhat.com>, keyrings@vger.kernel.org,
+ "open list:MEMORY TECHNOLOGY..." <linux-mtd@lists.infradead.org>,
+ GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
+ samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
+ "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
+ linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ linux-scsi <linux-scsi@vger.kernel.org>,
+ "open list:HFI1 DRIVER" <linux-rdma@vger.kernel.org>,
+ oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
+ linux-security-module <linux-security-module@vger.kernel.org>,
+ amd-gfx@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
+ cluster-devel@redhat.com, ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
+ linux-input <linux-input@vger.kernel.org>, Miguel Ojeda <ojeda@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Ext4 Developers List <linux-ext4@vger.kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx <intel-gfx@lists.freedesktop.org>,
+ linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-block@vger.kernel.org,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ op-tee@lists.trustedfirmware.org,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
+ linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
+ Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
+ linux-decnet-user@lists.sourceforge.net, linux-mmc <linux-mmc@vger.kernel.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>, linux-sctp@vger.kernel.org,
+ USB <linux-usb@vger.kernel.org>, netfilter-devel@vger.kernel.org,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity <linux-integrity@vger.kernel.org>,
+ target-devel <target-devel@vger.kernel.org>, linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 24, 2020 at 05:01:31PM +0800, Lecopzer Chen wrote:
-> From: "Lecopzer Chen" <lecopzer.chen@mediatek.com>
-> 
-> Although most of modern devices use ACPI, there still has combination
-> of APM + ARM64.
-> 
-> In order to select CONFIG_APM_EMULATION, make SYS_SUPPORTS_APM_EMULATION
-> default is y if ACPI isn't configured.
+On Mon, Nov 23, 2020 at 10:39 PM James Bottomley
+<James.Bottomley@hansenpartnership.com> wrote:
+> On Mon, 2020-11-23 at 19:56 +0100, Miguel Ojeda wrote:
+> > On Mon, Nov 23, 2020 at 4:58 PM James Bottomley
+> > <James.Bottomley@hansenpartnership.com> wrote:
 
-I'm a bit confused why this should be enabled for !ACPI. Which DT
-platforms need this, and how do they use it? Why should this only be
-enabled for kernels without ACPI support, and not for kernels that
-support both ACPI and DT?
+...
 
-Thanks,
-Mark.
+> > But if we do the math, for an author, at even 1 minute per line
+> > change and assuming nothing can be automated at all, it would take 1
+> > month of work. For maintainers, a couple of trivial lines is noise
+> > compared to many other patches.
+>
+> So you think a one line patch should take one minute to produce ... I
+> really don't think that's grounded in reality.  I suppose a one line
+> patch only takes a minute to merge with b4 if no-one reviews or tests
+> it, but that's not really desirable.
 
-> 
-> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> Suggested-by: YJ Chiang <yj.chiang@mediatek.com>
-> ---
->  arch/arm64/Kconfig | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-> index 1515f6f153a0..5e9e3694015a 100644
-> --- a/arch/arm64/Kconfig
-> +++ b/arch/arm64/Kconfig
-> @@ -260,6 +260,9 @@ config NO_IOPORT_MAP
->  config STACKTRACE_SUPPORT
->  	def_bool y
->  
-> +config SYS_SUPPORTS_APM_EMULATION
-> +	def_bool y if !ACPI
-> +
->  config ILLEGAL_POINTER_VALUE
->  	hex
->  	default 0xdead000000000000
-> -- 
-> 2.18.0
-> 
+In my practice most of the one line patches were either to fix or to
+introduce quite interesting issues.
+1 minute is 2-3 orders less than usually needed for such patches.
+That's why I don't like churn produced by people who often even didn't
+compile their useful contributions.
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
 _______________________________________________
 Linux-mediatek mailing list
