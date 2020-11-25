@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20D7CC56201
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:38:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5489C56201
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:38:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 938592083E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:38:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 782332083E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:38:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="snXcayl6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 938592083E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pNK3nG6Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 782332083E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,41 +26,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6RvIswWeUAQBuzKZe9lz4Ar4YK5EEPew3r6nmLbQlhs=; b=snXcayl6IhPSpHyYl6fo3t1rA
-	LBAEv/JtpbTSR/+BZFkcGfh/S2Jqtox8HLqPetFDfbMDnLinvdghzGDF3WZYkZ9ODZgcTvEFFS8gC
-	QaytI/3MikN4Az2z1sQtR5KLGxioTfVMXExWCd3Yxg2QBykkC4QrZiZS25O/vQ2fmIrwY6pX1uUCa
-	K4iNgSgEef1k5RkgR6NwjbgdK1Fhfbn1J3aLSntYmldWJkp+Yhfn8vX2IEwLuQq9FP1BHx2YFZVU/
-	BXzlqeXrqmPKnDESwm5gsC71Lln2A5GqjQCYd+ZcmkMwGpnKf/9LkPg39wLxkYbqUsGVGLZG97iJH
-	EjMXtgc6Q==;
+	 bh=KYiFi7tXPpAk97opLoVJDNjU/PxdduKGY6geDU867I4=; b=pNK3nG6ZtuB6VSqop1vhuo7E8
+	FlaAGYXoKkl9QdLeMPTQ1wKSvUvzhlA3RnSWOV2oD2l7opLXm47Vn6eVW6ccxhomPj0+D2HhdVDdk
+	cxqfucXJ7jwxa8jvxtdtP+xMu3mZveWTfc13D/8O9G+H0uFJMbQLoT5dSguPkDG+oICvRJwzhYf9a
+	zuzkigwBnwe/X8WW4X9LtPW1OcrxmxJSjQzNdbNrCd0THG7PclP6ppO//333rH4MvkgWj3D9S9Hnf
+	aiMtdpDYjxTDwANlYPOdOFLViKnmrDGKFp41J2S1NUDuPRghSE5Tz3MYYqOH9bFFU5jdQFV3TMvOh
+	6XGP8cOCQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khxoF-0003ii-0f; Wed, 25 Nov 2020 16:38:23 +0000
+	id 1khxoT-0003ok-DN; Wed, 25 Nov 2020 16:38:37 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khxo5-0003fN-6D; Wed, 25 Nov 2020 16:38:14 +0000
+ id 1khxoK-0003kf-Lr; Wed, 25 Nov 2020 16:38:29 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B928F31B;
- Wed, 25 Nov 2020 08:38:11 -0800 (PST)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 47A0631B;
+ Wed, 25 Nov 2020 08:38:25 -0800 (PST)
 Received: from [10.57.59.159] (unknown [10.57.59.159])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 46E283F7BB;
- Wed, 25 Nov 2020 08:38:09 -0800 (PST)
-Subject: Re: [PATCH v2 2/6] iommu: Add iova and size as parameters in
- iommu_iotlb_map
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BEBEA3F7BB;
+ Wed, 25 Nov 2020 08:38:22 -0800 (PST)
+Subject: Re: [PATCH v2 3/6] iommu/mediatek: Add iotlb_sync_map to sync whole
+ the iova range
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Will Deacon <will@kernel.org>
 References: <20201119061836.15238-1-yong.wu@mediatek.com>
- <20201119061836.15238-3-yong.wu@mediatek.com>
+ <20201119061836.15238-4-yong.wu@mediatek.com>
 From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <a8ae45e0-d384-c87e-946a-1c36bf889f84@arm.com>
-Date: Wed, 25 Nov 2020 16:38:08 +0000
+Message-ID: <751e08a1-d3c3-29f9-5c62-560370ac0703@arm.com>
+Date: Wed, 25 Nov 2020 16:38:21 +0000
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
  Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <20201119061836.15238-3-yong.wu@mediatek.com>
+In-Reply-To: <20201119061836.15238-4-yong.wu@mediatek.com>
 Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_113813_974638_283C630A 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20201125_113828_845484_2D571E73 
+X-CRM114-Status: GOOD (  20.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,79 +85,60 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2020-11-19 06:18, Yong Wu wrote:
-> iotlb_sync_map allow IOMMU drivers tlb sync after completing the whole
-> mapping. This patch adds iova and size as the parameters in it. then the
-> IOMMU driver could flush tlb with the whole range once after iova mapping
-> to improve performance.
+> Remove IO_PGTABLE_QUIRK_TLBI_ON_MAP to avoid tlb sync for each a small
+> chunk memory, Use the new iotlb_sync_map to tlb_sync once for whole the
+> iova range of iommu_map.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+> After reading msm_iommu.c, It looks IO_PGTABLE_QUIRK_TLBI_ON_MAP can be
+> removed.
+> ---
+>   drivers/iommu/mtk_iommu.c | 10 +++++++++-
+>   1 file changed, 9 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index c072cee532c2..8c2d4a225666 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -323,7 +323,6 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+>   	dom->cfg = (struct io_pgtable_cfg) {
+>   		.quirks = IO_PGTABLE_QUIRK_ARM_NS |
+>   			IO_PGTABLE_QUIRK_NO_PERMS |
+> -			IO_PGTABLE_QUIRK_TLBI_ON_MAP |
+>   			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
+>   		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
+>   		.ias = 32,
+> @@ -454,6 +453,14 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+>   				       data);
+>   }
+>   
+> +static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
+> +			       size_t size)
+> +{
+> +	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+> +
+> +	mtk_iommu_tlb_flush_range_sync(iova, size, size, dom->data);
+
+So we have a conflict/dependency against the MT8192 series here - I 
+guess we need to make a decision up-front about which series should go 
+first. Other than that, though:
 
 Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->   drivers/iommu/iommu.c      | 6 +++---
->   drivers/iommu/tegra-gart.c | 3 ++-
->   include/linux/iommu.h      | 3 ++-
->   3 files changed, 7 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index decef851fa3a..df87c8e825f7 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -2425,7 +2425,7 @@ int iommu_map(struct iommu_domain *domain, unsigned long iova,
->   	might_sleep();
->   	ret = __iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
->   	if (ret == 0 && ops->iotlb_sync_map)
-> -		ops->iotlb_sync_map(domain);
-> +		ops->iotlb_sync_map(domain, iova, size);
->   
->   	return ret;
->   }
-> @@ -2439,7 +2439,7 @@ int iommu_map_atomic(struct iommu_domain *domain, unsigned long iova,
->   
->   	ret = __iommu_map(domain, iova, paddr, size, prot, GFP_ATOMIC);
->   	if (ret == 0 && ops->iotlb_sync_map)
-> -		ops->iotlb_sync_map(domain);
-> +		ops->iotlb_sync_map(domain, iova, size);
->   
->   	return ret;
->   }
-> @@ -2557,7 +2557,7 @@ static size_t __iommu_map_sg(struct iommu_domain *domain, unsigned long iova,
->   	}
->   
->   	if (ops->iotlb_sync_map)
-> -		ops->iotlb_sync_map(domain);
-> +		ops->iotlb_sync_map(domain, iova, mapped);
->   	return mapped;
->   
->   out_err:
-> diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
-> index fac720273889..d15d13a98ed1 100644
-> --- a/drivers/iommu/tegra-gart.c
-> +++ b/drivers/iommu/tegra-gart.c
-> @@ -261,7 +261,8 @@ static int gart_iommu_of_xlate(struct device *dev,
->   	return 0;
->   }
->   
-> -static void gart_iommu_sync_map(struct iommu_domain *domain)
-> +static void gart_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
-> +				size_t size)
+> +}
+> +
+>   static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+>   					  dma_addr_t iova)
 >   {
->   	FLUSH_GART_REGS(gart_handle);
->   }
-> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-> index b95a6f8db6ff..794d4085edd3 100644
-> --- a/include/linux/iommu.h
-> +++ b/include/linux/iommu.h
-> @@ -244,7 +244,8 @@ struct iommu_ops {
->   	size_t (*unmap)(struct iommu_domain *domain, unsigned long iova,
->   		     size_t size, struct iommu_iotlb_gather *iotlb_gather);
->   	void (*flush_iotlb_all)(struct iommu_domain *domain);
-> -	void (*iotlb_sync_map)(struct iommu_domain *domain);
-> +	void (*iotlb_sync_map)(struct iommu_domain *domain, unsigned long iova,
-> +			       size_t size);
->   	void (*iotlb_sync)(struct iommu_domain *domain,
->   			   struct iommu_iotlb_gather *iotlb_gather);
->   	phys_addr_t (*iova_to_phys)(struct iommu_domain *domain, dma_addr_t iova);
+> @@ -540,6 +547,7 @@ static const struct iommu_ops mtk_iommu_ops = {
+>   	.unmap		= mtk_iommu_unmap,
+>   	.flush_iotlb_all = mtk_iommu_flush_iotlb_all,
+>   	.iotlb_sync	= mtk_iommu_iotlb_sync,
+> +	.iotlb_sync_map	= mtk_iommu_sync_map,
+>   	.iova_to_phys	= mtk_iommu_iova_to_phys,
+>   	.probe_device	= mtk_iommu_probe_device,
+>   	.release_device	= mtk_iommu_release_device,
 > 
 
 _______________________________________________
