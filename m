@@ -2,23 +2,24 @@ Return-Path: <SRS0=wG/x=E7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A978C5519F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 06:37:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 76897C5519F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 07:06:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 107CA206D8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 06:37:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F0782206E5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 07:06:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xSWcA4zt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="npVbsbVB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 107CA206D8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qebr7wgm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="DUjk2u5m";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=hansenpartnership.com header.i=@hansenpartnership.com header.b="DUjk2u5m"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0782206E5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=HansenPartnership.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,55 +27,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FE8U/3qOkSnwlKboWQs/J7ZYd6+rRVdgFOq47fAtsIw=; b=xSWcA4ztA5oz5ZJp44HoDKgva
-	gah5m+AmJMkxIZk+O1/pw+iYCYs6vPkMBORvQkdBVamlx7VgN5MmEtb8pQe28+WfVcIimmzWPmvQV
-	QCRmUBy7VhFHCBbfycHDqkvUnJGHrvHLlxinVa5GJAcDRO12B4yeAz7ZwiZZzK4V5LPwLb3tDB4WK
-	ZX5xwiWMNJ2KsTlI/Hb4hbpO1Uu4nq2Etrai+5sMHRvDryfIq8zlRaQDLjfCwHmc+mMy8vt7iAI0z
-	AVWsCvZBQKvqMZ6KO8LPhCT3MUcMn+H4xdIv6vhcp1ovq3F4Jwmh7DkKCKTJzOBhrMjqlja4MTl6V
-	vJlEjuaoQ==;
+	 bh=hQ11n3E3qtd8Vu/juc/utrv/75PVJYkoIOXjzQaCTJQ=; b=qebr7wgme4fxX2pB1p7sYAKuk
+	zuefeEqoAWfE80fJaHKJTZho1ko2LPxIRjtD1p2NIO2rbSa/wCkNE7UPpocz/YkGthl/lB0qX9ggh
+	Dl3NZUqbFNxPBteof1W83Zf5ovrK828vghR/IzYaUZzD5yeqfpoGlcsmsaVfNbbf2cCniLfxK1i9M
+	E+/njMjqp0hXpsnxAHk4oP7P7rQETR1bRdvpaczdj2O4HpVyPX0z81/6ESfcXcWdXbCVIgZEyr4L0
+	mFnGySlhGKpX0rzuUqXMmQf609TQ8EHp543lmNj28PmFTqtAcKrV7BQDSvO6STUoLJHAMdkQKNAUY
+	xTjp/SM6w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khoQV-0002Go-Iz; Wed, 25 Nov 2020 06:37:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1khosC-000593-Gf; Wed, 25 Nov 2020 07:05:52 +0000
+Received: from bedivere.hansenpartnership.com ([96.44.175.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khoQS-0002Ft-DF; Wed, 25 Nov 2020 06:37:13 +0000
-X-UUID: fbbedf3856314907912c0fd4d78d21d3-20201124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=4wT0sL2p4bYjUtORLYx8X9YW4UaRtS4zF13rlFd4m3U=; 
- b=npVbsbVBTp/WKl7ZKsAq2Vb5DWaKBbf3ey98EcKsQMJzpZOo37pKOp2YyF6gQWMog0yXnnK3ajbOEFYbbwSlGP16kYRhkAdqBVjVGjUbYIwEXNhnbpoaN6ryko/kTmwZKhGpkvovfx13IkECLAqzg1U01ZXHEvADGVqF+6fDLNA=;
-X-UUID: fbbedf3856314907912c0fd4d78d21d3-20201124
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1025566034; Tue, 24 Nov 2020 22:37:05 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Nov 2020 22:27:05 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 25 Nov 2020 14:27:02 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 25 Nov 2020 14:27:01 +0800
-Message-ID: <1606285623.7284.8.camel@mhfsdcap03>
-Subject: Re: [PATCH] phy/mediatek: Make PHY_MTK_XSPHY depend on HAS_IOMEM
- and OF_ADDRESS to fix build errors
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Randy Dunlap <rdunlap@infradead.org>, Tiezhu Yang <yangtiezhu@loongson.cn>
-Date: Wed, 25 Nov 2020 14:27:03 +0800
-In-Reply-To: <d3cee8b0-b699-a51a-ff33-568e10cb2df7@infradead.org>
-References: <1606211233-7425-1-git-send-email-yangtiezhu@loongson.cn>
- <1606271044.32484.20.camel@mhfsdcap03>
- <d3cee8b0-b699-a51a-ff33-568e10cb2df7@infradead.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1khos7-00055o-7L; Wed, 25 Nov 2020 07:05:48 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 313DE1280408;
+ Tue, 24 Nov 2020 23:05:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606287940;
+ bh=PpyvloC8ztllb7q8ndtGKJRs78ChiB3jg6tteM0zYL0=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=DUjk2u5mMxkvusJZ7TUknDmT+9jEkjAK5Du54VYrLnX3ZVAsqbXKInJF3+bjbWxe1
+ sPTOm9Jo8O4FiM37EcbSbGJ09Z6i3toRLj70BanOqmx/doOouqQw1ofRfirJ315HKN
+ ACp6UaCD/rMf1rqLOvr/v7W+FqOYQZREI5LkhaoU=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id 8AuMCu2vLv9Z; Tue, 24 Nov 2020 23:05:40 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id A873112803EC;
+ Tue, 24 Nov 2020 23:05:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606287940;
+ bh=PpyvloC8ztllb7q8ndtGKJRs78ChiB3jg6tteM0zYL0=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=DUjk2u5mMxkvusJZ7TUknDmT+9jEkjAK5Du54VYrLnX3ZVAsqbXKInJF3+bjbWxe1
+ sPTOm9Jo8O4FiM37EcbSbGJ09Z6i3toRLj70BanOqmx/doOouqQw1ofRfirJ315HKN
+ ACp6UaCD/rMf1rqLOvr/v7W+FqOYQZREI5LkhaoU=
+Message-ID: <a841536fe65bb33f1c72ce2455a6eb47a0107565.camel@HansenPartnership.com>
+Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
+ Clang
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Kees Cook <keescook@chromium.org>
+Date: Tue, 24 Nov 2020 23:05:35 -0800
+In-Reply-To: <202011241327.BB28F12F6@keescook>
+References: <202011201129.B13FDB3C@keescook>
+ <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011220816.8B6591A@keescook>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
+ <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
+ <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
+ <dbd2cb703ed9eefa7dde9281ea26ab0f7acc8afe.camel@HansenPartnership.com>
+ <20201123130348.GA3119@embeddedor>
+ <8f5611bb015e044fa1c0a48147293923c2d904e4.camel@HansenPartnership.com>
+ <202011241327.BB28F12F6@keescook>
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0B25F89E42C9C88A9D286BF25D5F4853EA184271D894796D64149F03AEBE79732000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_013712_589957_5E92D121 
-X-CRM114-Status: GOOD (  25.07  )
+X-CRM114-CacheID: sfid-20201125_020547_404517_4026B15A 
+X-CRM114-Status: GOOD (  25.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,78 +100,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- linux-mediatek@lists.infradead.org, Tiezhu Yang <yangtiezhu@loongson.cn>,
- Xuefeng Li <lixuefeng@loongson.cn>, linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org, bridge@lists.linux-foundation.org,
+ target-devel@vger.kernel.org, Greg KH <gregkh@linuxfoundation.org>,
+ linux-iio@vger.kernel.org, samba-technical@lists.samba.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, linux-fbdev@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
+ linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
+ wcn36xx@lists.infradead.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ linux-scsi@vger.kernel.org, linux-acpi@vger.kernel.org,
+ linux-rdma@vger.kernel.org, oss-drivers@netronome.com,
+ linux-atm-general@lists.sourceforge.net, ceph-devel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
+ cluster-devel@redhat.com, usb-storage@lists.one-eyed-alien.net,
+ linux-mmc@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ linux-ext4@vger.kernel.org, virtualization@lists.linux-foundation.org,
+ netfilter-devel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-sctp@vger.kernel.org, reiserfs-devel@vger.kernel.org,
+ linux-geode@lists.infradead.org, linux-block@vger.kernel.org,
+ linux-gpio@vger.kernel.org, op-tee@lists.trustedfirmware.org,
+ linux-mediatek@lists.infradead.org, xen-devel@lists.xenproject.org,
+ nouveau@lists.freedesktop.org, linux-hams@vger.kernel.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-can@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, linux-mm@kvack.org, netdev@vger.kernel.org,
+ linux-decnet-user@lists.sourceforge.net, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-security-module@vger.kernel.org, linux-usb@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, x86@kernel.org,
+ linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-11-24 at 19:31 -0800, Randy Dunlap wrote:
-> On 11/24/20 6:24 PM, Chunfeng Yun wrote:
-> > Hi Tiezhu,
-> > 
-> > On Tue, 2020-11-24 at 17:47 +0800, Tiezhu Yang wrote:
-> >> devm_ioremap_resource() will be not built in lib/devres.c if
-> >> CONFIG_HAS_IOMEM is not set, of_address_to_resource() will be
-> >> not built in drivers/of/address.c if CONFIG_OF_ADDRESS is not
-> >> set, and then there exists two build errors about undefined
-> >> reference to "devm_ioremap_resource" and "of_address_to_resource"
-> >> in phy-mtk-xsphy.c under COMPILE_TEST and CONFIG_PHY_MTK_XSPHY,
-> >> make PHY_MTK_XSPHY depend on HAS_IOMEM and OF_ADDRESS to fix it.
-> >>
-> >> Reported-by: kernel test robot <lkp@intel.com>
-> >> Signed-off-by: Tiezhu Yang <yangtiezhu@loongson.cn>
-> >> ---
-> >>  drivers/phy/mediatek/Kconfig | 2 ++
-> >>  1 file changed, 2 insertions(+)
-> >>
-> >> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-> >> index 50c5e93..66df045 100644
-> >> --- a/drivers/phy/mediatek/Kconfig
-> >> +++ b/drivers/phy/mediatek/Kconfig
-> >> @@ -30,6 +30,8 @@ config PHY_MTK_XSPHY
-> >>  	tristate "MediaTek XS-PHY Driver"
-> >>  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> >>  	depends on OF
-Hi Tiezhu,
-
-Would you please help to put OF and OF_ADDRESS into one line as
-following:
-depends on OF && OF_ADDRESS.
-
-Also please help to add them for PHY_MTK_TPHY.
-And change the tile 'phy/mediatek: ...' as 'phy: mediatek: ...'
-
-Thank you
-
-
-> >> +	depends on HAS_IOMEM
-> >> +	depends on OF_ADDRESS
-> > Why not add them into deconfig but here? In fact I don't know which way
-> > is better and follow the kernel rule.
-> > 
-> > Vinod and Kishon, do you have any suggestion about this?
+On Tue, 2020-11-24 at 13:32 -0800, Kees Cook wrote:
+> On Mon, Nov 23, 2020 at 08:31:30AM -0800, James Bottomley wrote:
+> > Really, no ... something which produces no improvement has no value
+> > at all ... we really shouldn't be wasting maintainer time with it
+> > because it has a cost to merge.  I'm not sure we understand where
+> > the balance lies in value vs cost to merge but I am confident in
+> > the zero value case.
 > 
-> Putting them into a defconfig won't prevent random build errors
-> while putting them here will (or at least should).
-hi Randy,
+> What? We can't measure how many future bugs aren't introduced because
+> the kernel requires explicit case flow-control statements for all new
+> code.
 
-Got it, thank you
+No but we can measure how vulnerable our current coding habits are to
+the mistake this warning would potentially prevent.  I don't think it's
+wrong to extrapolate that if we had no instances at all of prior coding
+problems we likely wouldn't have any in future either making adopting
+the changes needed to enable the warning valueless ... that's the zero
+value case I was referring to above.
 
+Now, what we have seems to be about 6 cases (at least what's been shown
+in this thread) where a missing break would cause potentially user
+visible issues.  That means the value of this isn't zero, but it's not
+a no-brainer massive win either.  That's why I think asking what we've
+invested vs the return isn't a useless exercise.
+
+> We already enable -Wimplicit-fallthrough globally, so that's not the
+> discussion. The issue is that Clang is (correctly) even more strict
+> than GCC for this, so these are the remaining ones to fix for full
+> Clang coverage too.
 > 
-> >>  	select GENERIC_PHY
-> >>  	help
-> >>  	  Enable this to support the SuperSpeedPlus XS-PHY transceiver for
-> > 
-> 
-> The patch LGTM.
-> 
-> Acked-by: Randy Dunlap <rdunlap@infradead.org>
-> 
-> thanks.
+> People have spent more time debating this already than it would have
+> taken to apply the patches. :)
+
+You mean we've already spent 90% of the effort to come this far so we
+might as well go the remaining 10% because then at least we get some
+return? It's certainly a clinching argument in defence procurement ...
+
+> This is about robustness and language wrangling. It's a big code-
+> base, and this is the price of our managing technical debt for
+> permanent robustness improvements. (The numbers I ran from Gustavo's
+> earlier patches were that about 10% of the places adjusted were
+> identified as legitimate bugs being fixed. This final series may be
+> lower, but there are still bugs being found from it -- we need to
+> finish this and shut the door on it for good.)
+
+I got my six patches by analyzing the lwn.net report of the fixes that
+was cited which had 21 of which 50% didn't actually change the emitted
+code, and 25% didn't have a user visible effect.
+
+But the broader point I'm making is just because the compiler people
+come up with a shiny new warning doesn't necessarily mean the problem
+it's detecting is one that causes us actual problems in the code base. 
+I'd really be happier if we had a theory about what classes of CVE or
+bug we could eliminate before we embrace the next new warning.
+
+James
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
