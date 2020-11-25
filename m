@@ -2,94 +2,95 @@ Return-Path: <SRS0=wG/x=E7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F916C64E7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 17:11:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3D4EC56201
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 18:15:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0CDF7206D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 17:11:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2E3A0206F9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 18:15:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iI6StBZ+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bn+pL/Hm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CDF7206D9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Yl0KvoTY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Z1ITS4HE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E3A0206F9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CYZox6SHKzC5JLbsHkYH7S4KbPOgqiBlC2Qw+QBkJ/Y=; b=iI6StBZ+1grmBGad8asmLmEzF
-	5uPuk2n7oUpKqZ9vES1BwmBT7LT8lqOpJ1cPAsSHLDxdtIIYHvs00fj5OLGMMefiUVxIl2T6djUP3
-	gGtHHKUEjx1O0qUxowHf6l0yLMKK0NeQQ3hoZ40SJMJ1PJwwH39ptw5Hk6vy6wEaLLLWio9n+lZ3q
-	OahNJIcyavkDiWGlSmui4l0LpMnoTRICV0528Wodk3LGyLAkhXr9FS6GX9kAZS0RlERBJ7D+avcBz
-	OQMiINddcpbd9xzZdvEkFmx4ayzvyJvTV4jLQcVTKsIZ1+Y1ztkMOrLbCF9am12IXyoPibY1PZ/qp
-	86E7p5t2w==;
+	 bh=CtDeMvcIezPA7aWDyBR3rUW+EjAtG+yqZVYQFGB3T1A=; b=Yl0KvoTY9RVUOW04mNZ8aVnB/
+	wAa5XiRB4xdsYdWXWbVTgItZXFTYv5j0uPA+BGSzkmDwv8W1DzcJuPs4Q4fwWvKbq68zpeLrTCPcS
+	4flgPQp/hjBXIMpA2n1oe/oU+uuiFoPioAyhWpcI75ufbZ+MbxXeLWze2EF1uBzIQz29PNfqjufAV
+	GeIUG9FAgSXWyk5jjkSC0i1mNQW9KJL8VnKBUKeg4pg63UQnt4fyAw556IoJK5fvNOfE2uuJHzWYt
+	IeClTdA4vbVbpVgVecsG7ojzz1amB2qWujgOZhhOg6pwQ6u14jNl46Ik2plwRxl30yxxE+yUXWhIL
+	HzeH/YPRA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khyK3-0002Kr-71; Wed, 25 Nov 2020 17:11:15 +0000
-Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42])
+	id 1khzKP-0000Sr-51; Wed, 25 Nov 2020 18:15:41 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khyDX-00073d-Hm; Wed, 25 Nov 2020 17:04:33 +0000
-Received: by mail-yb1-xb42.google.com with SMTP id g15so375929ybq.6;
- Wed, 25 Nov 2020 09:04:28 -0800 (PST)
+ id 1khzKM-0000Re-TL; Wed, 25 Nov 2020 18:15:39 +0000
+Received: by mail-wr1-x443.google.com with SMTP id z7so2841560wrn.3;
+ Wed, 25 Nov 2020 10:15:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=U7yONu+GErpj3wVA3mUEvd1gZrZu1iMtuB4J5cc4iYs=;
- b=bn+pL/HmrYW2tlvsO08UsmlB+e0sDsIo/gBe6lZBPy5Ml0r7IepVRmwL3Z1msCDTmB
- 4Fj8yYJnSSwKpycrMD6jc9mJYcLEOxyjBt+mj/swgeJwfcTqBWFSYbINT99XJh8MBLLG
- BhdJX4URpdAlU1PS41QCV8cX0uycEbKi5uankHMmLYXfRheyb1dBSnJ2lYbkM9jPzYRg
- +YL1Fiv4xli6A/G5oR00+c/fqffNKJdLOgNLmafCTxGe8sUqpvTjraMjrzXLQkd2Vyg7
- 6NJIAQ3gm8Ro9XvzXTxxo6aHXEqSB5bdv5UB5bHkEX37ZUG4NR8CwSl4aaovOFcf7q/J
- MTKg==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=cxDV/cJpIfcx9YO7YSoPmjZvWF3a1aMv7vyPqRw+nys=;
+ b=Z1ITS4HEGGlN44kxO/mL0CCOmvDCCv4Vhdb3eLCCji8LCUdYLutVT5azV2xAhboLT3
+ /78QMKmJtgZk7NiPxo9MPnufc3Fztepx9rnU8kxVMu5REmrL5750IDNyXDpkubW+yDcw
+ xS1Fmo7qvONYFsoY8cTUdTs6PtBlOzAOMFUmGf86cULQweiLCRd2canys0jeLXsYCOE2
+ B8+QF1Rn2W0J52u5dUrE8bfCh4bssT886l5v0IrBQbhi94KYGr2hZ/J14TF9ZINCp5jB
+ nPV6wbepj5J4EzsnoQip8UAxRxNDUdQRTeOyLzRAhrooshahRLtwlX7tzy7bUMoR/7HD
+ dq3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=U7yONu+GErpj3wVA3mUEvd1gZrZu1iMtuB4J5cc4iYs=;
- b=ltcKgrbbFl2kP4M7vcb+2c4J2zz16fpLZBcq5kGBI0s388AENCmt2pQ/qPYmo1CtYU
- KMIhI6p8EsgQKG/IG74OaRZGiAB0l0ApQsY+cBihQ6qmpvNNiLDfSsjfI6+qcUxESrWW
- KJObpRRREXz7MFjtu+AQKHEyIbsje9jroOso7Idx8zAksWv8Ubk2+LRS5q6dq9/VmS3/
- D9SswmT2WwWNujRBesCXthsEizPxB2KNWdwRLSm0Rus/MyqTte6K0eLbqQKahVGSRYwd
- CvATH4ZjlNW0C5GT3wixAxEuIlNQkHPCMyp6xf0S7h0AeoCnb3bVt0eaIfzUb6ogjSmj
- zqGg==
-X-Gm-Message-State: AOAM533yzWEqk17uSwOlixR/Kv2hJ9BkCcT42s2eqdNhuQ9LSv7x4Dcx
- ZJF52QQLwJicxJzYqa6jvjO7GTmlVgfVotoBSuI=
-X-Google-Smtp-Source: ABdhPJwRDTWwRnnt/vVfXeVU3lUNCXdaAf9CCrzUJdkBRbFdtXrCpJBbeymEiGhAam+E5oqqQjDTbAdkVQMGwErIDPw=
-X-Received: by 2002:a25:aac5:: with SMTP id t63mr6307293ybi.22.1606323866493; 
- Wed, 25 Nov 2020 09:04:26 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cxDV/cJpIfcx9YO7YSoPmjZvWF3a1aMv7vyPqRw+nys=;
+ b=BM2M7hERMjzbe9bXweRvKzZ3OnBAEuqRytV6zGm8X1i82Gz2KH4F38JiToNGd8al/c
+ 8fSVYazcW0pygNsM5xbo1mlmrRZ3TLICTfWTd2zYGVH9eWm4yFEM0RIKgmWX1zQfj2Jx
+ MaHfO9CQVM0xXGpC5JF4+eft5d9d7MFqYcHgqdslDc/ItUaXK7hI1AA0qy6EkHVfHPq/
+ Fz+wI/KaUXYluT3jBAJXugM5AcJ09/pyT0xQ6et+r4FFAu5FKZw2RmLiCtXwM7+cicy1
+ GMKLEhmTu0HNmp8mqfFhc/WEJCDR2LjPC2Kx9adSGdtpSqa5BW8RuTxEvnck1EE+b+nY
+ XRnQ==
+X-Gm-Message-State: AOAM531MY6kT1yPgqls8oFZtJZoOTMOhY+1S1taPFqpXagh4L/7NJHCT
+ btGUuKzLQLMWkVrxIo/gz72Pww3zqQM=
+X-Google-Smtp-Source: ABdhPJwH143DPR/m8Ye15E/IMHSzxYoFs35JplLGyBmM4CvNLf+S+vQZyZHTh8os+pO9uvboH1qnlw==
+X-Received: by 2002:adf:dc4b:: with SMTP id m11mr5416545wrj.328.1606328137508; 
+ Wed, 25 Nov 2020 10:15:37 -0800 (PST)
+Received: from ?IPv6:2a01:110f:b59:fd00:a410:510b:ab5:5694?
+ ([2a01:110f:b59:fd00:a410:510b:ab5:5694])
+ by smtp.gmail.com with ESMTPSA id c9sm5412252wrp.73.2020.11.25.10.15.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Nov 2020 10:15:36 -0800 (PST)
+Subject: Re: [PATCH v8 1/6] leds: flash: Add flash registration with undefined
+ CONFIG_LEDS_CLASS_FLASH
+To: Gene Chen <gene.chen.richtek@gmail.com>, pavel@ucw.cz,
+ robh+dt@kernel.org, matthias.bgg@gmail.com
+References: <1606301475-7030-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1606301475-7030-2-git-send-email-gene.chen.richtek@gmail.com>
+From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Message-ID: <da86a941-2752-fd25-a74f-e22b3e82357e@gmail.com>
+Date: Wed, 25 Nov 2020 19:15:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-References: <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
- <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
- <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
- <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
- <dbd2cb703ed9eefa7dde9281ea26ab0f7acc8afe.camel@HansenPartnership.com>
- <20201123130348.GA3119@embeddedor>
- <8f5611bb015e044fa1c0a48147293923c2d904e4.camel@HansenPartnership.com>
- <202011241327.BB28F12F6@keescook>
- <a841536fe65bb33f1c72ce2455a6eb47a0107565.camel@HansenPartnership.com>
- <CAKwvOdkGBn7nuWTAqrORMeN1G+w3YwBfCqqaRD2nwvoAXKi=Aw@mail.gmail.com>
- <20201125082405.1d8c23dc@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20201125082405.1d8c23dc@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Date: Wed, 25 Nov 2020 18:04:15 +0100
-Message-ID: <CANiq72=RuekXf1O6Fxrz2Eend0GtS6=E72P4T2=48SDqVcTChA@mail.gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
- Clang
-To: Jakub Kicinski <kuba@kernel.org>
+In-Reply-To: <1606301475-7030-2-git-send-email-gene.chen.richtek@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_120432_048207_6AF38472 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20201125_131539_035437_39E98C30 
+X-CRM114-Status: GOOD (  22.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,100 +102,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, bridge@lists.linux-foundation.org,
- linux-iio@vger.kernel.org, linux-wireless <linux-wireless@vger.kernel.org>,
- linux-fbdev@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>,
- LKML <linux-kernel@vger.kernel.org>,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
- linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
- wcn36xx@lists.infradead.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
- linux-scsi@vger.kernel.org, linux-acpi@vger.kernel.org,
- linux-rdma@vger.kernel.org, oss-drivers@netronome.com,
- linux-atm-general@lists.sourceforge.net, ceph-devel@vger.kernel.org,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- usb-storage@lists.one-eyed-alien.net, linux-mmc@vger.kernel.org,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- linux-input <linux-input@vger.kernel.org>, Miguel Ojeda <ojeda@kernel.org>,
- xen-devel@lists.xenproject.org,
- Ext4 Developers List <linux-ext4@vger.kernel.org>,
- virtualization@lists.linux-foundation.org, netfilter-devel@vger.kernel.org,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, intel-gfx@lists.freedesktop.org,
- linux-sctp@vger.kernel.org, reiserfs-devel@vger.kernel.org,
- linux-geode@lists.infradead.org, linux-block@vger.kernel.org,
- linux-gpio@vger.kernel.org, op-tee@lists.trustedfirmware.org,
- linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
- linux-hams@vger.kernel.org, Nathan Chancellor <natechancellor@gmail.com>,
- linux-can@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-hwmon@vger.kernel.org, Nick Desaulniers <ndesaulniers@google.com>,
- linux-watchdog@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- Linux Memory Management List <linux-mm@kvack.org>,
- Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net, samba-technical@lists.samba.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-security-module@vger.kernel.org, linux-usb@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net,
- =?UTF-8?Q?open_list=3AHARDWARE_RANDOM_NUMBER_GENERATOR_CORE_=3Clinux=2Dcrypt?=
- =?UTF-8?Q?o=40vger=2Ekernel=2Eorg=3E=2C_patches=40opensource=2Ecirrus=2Ecom=2C_linux=2Dint?=
- =?UTF-8?Q?egrity=40vger=2Ekernel=2Eorg=2C_target=2Ddevel=40vger=2Ekernel=2Eorg=2C_linux=2D?=
- =?UTF-8?Q?hardening=40vger=2Ekernel=2Eorg=2C_Jonathan_Cameron_=3CJonathan=2ECamero?=
- =?UTF-8?Q?n=40huawei=2Ecom=3E=2C_Greg_KH?= <gregkh@linuxfoundation.org>,
- Joe Perches <joe@perches.com>, linux-nfs@vger.kernel.org,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, cy_huang@richtek.com, benjamin.chao@mediatek.com,
+ linux-mediatek@lists.infradead.org, dmurphy@ti.com, linux-leds@vger.kernel.org,
+ Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ shufan_lee@richtek.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 25, 2020 at 5:24 PM Jakub Kicinski <kuba@kernel.org> wrote:
->
-> And just to spell it out,
->
-> case ENUM_VALUE1:
->         bla();
->         break;
-> case ENUM_VALUE2:
->         bla();
-> default:
->         break;
->
-> is a fairly idiomatic way of indicating that not all values of the enum
-> are expected to be handled by the switch statement.
+Hi Gene,
 
-It looks like a benign typo to me -- `ENUM_VALUE2` does not follow the
-same pattern like `ENUM_VALUE1`. To me, the presence of the `default`
-is what indicates (explicitly) that not everything is handled.
+On 11/25/20 11:51 AM, Gene Chen wrote:
+> From: Gene Chen <gene_chen@richtek.com>
+> 
+> Add flash registration with undefined CONFIG_LEDS_CLASS_FLASH
+> 
+> Signed-off-by: Gene Chen <gene_chen@richtek.com>
+> ---
+>   include/linux/led-class-flash.h | 36 ++++++++++++++++++++++++++++++++++++
+>   1 file changed, 36 insertions(+)
+> 
+> diff --git a/include/linux/led-class-flash.h b/include/linux/led-class-flash.h
+> index 21a3358..5f36eae 100644
+> --- a/include/linux/led-class-flash.h
+> +++ b/include/linux/led-class-flash.h
+> @@ -85,6 +85,7 @@ static inline struct led_classdev_flash *lcdev_to_flcdev(
+>   	return container_of(lcdev, struct led_classdev_flash, led_cdev);
+>   }
+>   
+> +#if IS_ENABLED(CONFIG_LEDS_CLASS_FLASH)
+>   /**
+>    * led_classdev_flash_register_ext - register a new object of LED class with
+>    *				     init data and with support for flash LEDs
+> @@ -127,6 +128,41 @@ static inline int devm_led_classdev_flash_register(struct device *parent,
+>   void devm_led_classdev_flash_unregister(struct device *parent,
+>   					struct led_classdev_flash *fled_cdev);
+>   
+> +#else
+> +
+> +static inline int led_classdev_flash_register_ext(struct device *parent,
+> +				    struct led_classdev_flash *fled_cdev,
+> +				    struct led_init_data *init_data)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline int led_classdev_flash_register(struct device *parent,
+> +					   struct led_classdev_flash *fled_cdev)
+> +{
+> +	return led_classdev_flash_register_ext(parent, fled_cdev, NULL);
+> +}
 
-> Applying a real patch set and then getting a few follow ups the next day
-> for trivial coding things like fallthrough missing or static missing,
-> just because I didn't have the full range of compilers to check with
-> before applying makes me feel pretty shitty, like I'm not doing a good
-> job. YMMV.
+This function can be placed after #ifdef block - now it is in two copies
+in this file.
 
-The number of compilers, checkers, static analyzers, tests, etc. we
-use keeps going up. That, indeed, means maintainers will miss more
-things (unless maintainers do more work than before). But catching
-bugs before they happen is *not* a bad thing.
+> +
+> +static inline void led_classdev_flash_unregister(struct led_classdev_flash *fled_cdev) {};
+> +static inline int devm_led_classdev_flash_register_ext(struct device *parent,
+> +				     struct led_classdev_flash *fled_cdev,
+> +				     struct led_init_data *init_data)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline int devm_led_classdev_flash_register(struct device *parent,
+> +				     struct led_classdev_flash *fled_cdev)
+> +{
+> +	return devm_led_classdev_flash_register_ext(parent, fled_cdev, NULL);
+> +}
 
-Perhaps we could encourage more rebasing in -next (while still giving
-credit to bots and testers) to avoid having many fixing commits
-afterwards, but that is orthogonal.
+Ditto.
 
-I really don't think we should encourage the feeling that a maintainer
-is doing a bad job if they don't catch everything on their reviews.
-Any review is worth it. Maintainers, in the end, are just the
-"guaranteed" reviewers that decide when the code looks reasonable
-enough. They should definitely not feel pressured to be perfect.
+> +static inline void devm_led_classdev_flash_unregister(struct device *parent,
+> +					struct led_classdev_flash *fled_cdev)
+> +{};
+> +
+> +#endif  /* IS_ENABLED(CONFIG_LEDS_CLASS_FLASH) */
+> +
+>   /**
+>    * led_set_flash_strobe - setup flash strobe
+>    * @fled_cdev: the flash LED to set strobe on
+> 
 
-Cheers,
-Miguel
+-- 
+Best regards,
+Jacek Anaszewski
 
 _______________________________________________
 Linux-mediatek mailing list
