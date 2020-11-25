@@ -2,79 +2,92 @@ Return-Path: <SRS0=wG/x=E7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C787C5519F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:13:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C639C5519F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:29:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0DE23206B7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:13:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 16A92206C0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:29:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1PF+ofen";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Fk02J6x4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DE23206B7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QNKkE0cJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="UYz/jCqr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16A92206C0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5/lmIZRzx8rOgP3JyiTwe+O48hD2JdD4DgFaUhDJhMs=; b=1PF+ofencS6TSAksVmKBsVAzE
-	Y9gDBgusnWvfjBpQ0feHCQ9plypu4BrWFHn9RUuCV4RAP7Y2IWkFbD9mwFaQfSclp0ok6O7U0vSSS
-	8StodkXoLt4flkt9X1mu3CJjkKQaUFsOieDWnPVZgCU9Dcok0AWQA2neKTbyVhnsBR8BnWQNWKNaO
-	2/Vo4OQShOKjBZ4DmyeDBCuXM0AFGvrt9QpBIkoMkZlU2RNUnoZXY4aW5JO8Ql2yDbtRH/+7QLEkd
-	ojQtBKybvkvbCJSf/JUZlq/4uzErv4xY/cciOruPhA2dPxKVtj/bO6shZgBx0m0quq0DkyC5ZnuVS
-	HsNXodvcw==;
+	 bh=M6UQR5I6xlQXnAgWQk0ipDwaBX+F2+WDvKi87f2ImRo=; b=QNKkE0cJxhR7a+QKsIwhnozT3
+	NCZ6kk34je5AZvDftQ0yeb6v8yJoc6o1MW3u02K26LYxw2oYGAq76Qrs4ohWqAaWkMdRMYRthTOwo
+	7QQNG/C8UfONs0Xn0UY3MoP/H0Udu2ygRQ6k1bqZyIeOgNoLhDSpwYebtTsWrGvHLtZTE1+hm5TOP
+	0byhB4jaIxnxXWg1T7bk2tpXKWrgfhmCrQJxvOmL32QJD+ER5p9JdJHck7rCNyLd3G+TwD7PCpITS
+	H+iJC0LRUbku7S0WFikf77BcE4dAzdEv0zP+I5q/DYIw/8HtbVmMZyquBNDGsRO088cDuqOXz1l33
+	m2yEyFxuA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khskB-0007nQ-Ua; Wed, 25 Nov 2020 11:13:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1khsyr-0001VE-0j; Wed, 25 Nov 2020 11:29:01 +0000
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khsk9-0007l5-D4; Wed, 25 Nov 2020 11:13:50 +0000
-X-UUID: f3284587bf584583b6bfe09288cd2695-20201125
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=xI/ceqZKKONm10j9fLWN04WfsGQ+Y6PfpXlP79ucbtc=; 
- b=Fk02J6x4gYEjQNlA9YmduD9VtFZEumjvhjw9/e55K8RlZ3n6s4XuiYYZmGU8WfxVKLa3z8OnHIJ42GpiZt7Q8QBp046nkh/qoaZF9Ca+0sHhqgJvOhdpTKr0NPzmPfSlCrfcWpFtQ88gnMj1q4uSaUH9i3dQqfrwTGk2K4xmzLk=;
-X-UUID: f3284587bf584583b6bfe09288cd2695-20201125
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 938886545; Wed, 25 Nov 2020 03:13:33 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Nov 2020 03:03:36 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 25 Nov 2020 19:03:34 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 25 Nov 2020 19:03:33 +0800
-Message-ID: <1606302214.26323.141.camel@mhfsdcap03>
-Subject: Re: [PATCH] iommu: Improve the performance for direct_mapping
-From: Yong Wu <yong.wu@mediatek.com>
-To: Will Deacon <will@kernel.org>
-Date: Wed, 25 Nov 2020 19:03:34 +0800
-In-Reply-To: <20201124110520.GA12980@willie-the-truck>
-References: <20201120090628.6566-1-yong.wu@mediatek.com>
- <20201123123258.GC10233@willie-the-truck>
- <1606209884.26323.132.camel@mhfsdcap03>
- <20201124110520.GA12980@willie-the-truck>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1khsyp-0001Un-9u
+ for linux-mediatek@lists.infradead.org; Wed, 25 Nov 2020 11:29:00 +0000
+Received: by mail-lj1-x242.google.com with SMTP id z1so1912550ljn.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2020 03:28:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2nOPkD46qA6zqYvfk5N1mr7k9F+AjAsV4itAgMMq35k=;
+ b=UYz/jCqr2QvHnOp8GVH62QzciFhLIGNOUqAxPEPAMeNaYMIl9PjcgIpzya9CXKYaE/
+ SQBBiQY5ovG8meLwtPVBh5u8PxOUXuIYTupgxrMdcqk9YSvndHs8R+iKqEa2HGcMnYP2
+ CsXXhHkNkhMMx9d/wjgKRbFoGCu0pDX2G7cCs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2nOPkD46qA6zqYvfk5N1mr7k9F+AjAsV4itAgMMq35k=;
+ b=IjWNOgOGr8kFYKJsxbNzOnRpTwAN2tXTRAOv73kFTw0z5WS4kocEJixf/XvMbNk0ZY
+ qbk1UCoEV5iyGuVC6dNvntgl98/gb57hp7rwEaCdg0hsKiqgKqT8A2Q1iy8g6I9Ze2vy
+ dBoAggBv9ur1Llt/aa8erRVOkjBU5DN1+z0+1MSICisO/jNWQ9vKz1mJim+T2K142/ZU
+ kUYDwP6LM7UnFkvE9XNR0qHpZtEYcoF8jCawS3pSk3fv5B5mb5NqtIfrFb2v5DFXbD80
+ geu/ShE+ICvrVZE96+l+qcYrRDmVsQB9Po9RMQQXDmfIa06LGg6kIfnqWWk1TlXbsXOc
+ jDtg==
+X-Gm-Message-State: AOAM530Uxv+TbKJhJtHa1GbqXiFzFDdzz5Br93iSY6/aVrGSRCXmFF8M
+ s1QofdsVV2/qjDABe4h7t74iiNiiJJYk+rsj
+X-Google-Smtp-Source: ABdhPJxEQX8ltxkL7eldwpoIz4/urAORyjHBXJcac75zx9qwKEYILkgRXzQ3kF8bUuw4qikoaMyaag==
+X-Received: by 2002:a2e:7d10:: with SMTP id y16mr1093086ljc.257.1606303737181; 
+ Wed, 25 Nov 2020 03:28:57 -0800 (PST)
+Received: from mail-lj1-f173.google.com (mail-lj1-f173.google.com.
+ [209.85.208.173])
+ by smtp.gmail.com with ESMTPSA id k9sm221175lfk.288.2020.11.25.03.28.56
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Nov 2020 03:28:56 -0800 (PST)
+Received: by mail-lj1-f173.google.com with SMTP id o24so1897896ljj.6
+ for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2020 03:28:56 -0800 (PST)
+X-Received: by 2002:a2e:b4c6:: with SMTP id r6mr1243590ljm.248.1606303735968; 
+ Wed, 25 Nov 2020 03:28:55 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3E37F2948B73A16F8990BEF5FB644CD56B780219D1EF19A777FBD0308C48F13A2000:8
-X-MTK: N
+References: <20201013124428.783025-1-acourbot@chromium.org>
+ <CAPBb6MVM81dQyLJANUH7j8b5uhpk8ERdm9gpsGkF4k1Y-ZkYDQ@mail.gmail.com>
+ <20201124083925.GC3940@paasikivi.fi.intel.com>
+In-Reply-To: <20201124083925.GC3940@paasikivi.fi.intel.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Wed, 25 Nov 2020 20:28:45 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MVZshFO3kiHXeP4FAgJ7am_SjZfcHrbF8h4SXUz+MimVw@mail.gmail.com>
+Message-ID: <CAPBb6MVZshFO3kiHXeP4FAgJ7am_SjZfcHrbF8h4SXUz+MimVw@mail.gmail.com>
+Subject: Re: [PATCH v4 0/2] media: mtk-vcodec: fix builds when remoteproc is
+ disabled
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_061349_667379_96755502 
-X-CRM114-Status: GOOD (  28.67  )
+X-CRM114-CacheID: sfid-20201125_062859_387165_3898AEE4 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,135 +99,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- Tomasz Figa <tfiga@google.com>, Joerg Roedel <joro@8bytes.org>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- chao.hao@mediatek.com, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-11-24 at 11:05 +0000, Will Deacon wrote:
-> On Tue, Nov 24, 2020 at 05:24:44PM +0800, Yong Wu wrote:
-> > On Mon, 2020-11-23 at 12:32 +0000, Will Deacon wrote:
-> > > On Fri, Nov 20, 2020 at 05:06:28PM +0800, Yong Wu wrote:
-> > > > +				unmapped_sz = 0;
-> > > > +			}
-> > > > +			start += pg_size;
-> > > > +		}
-> > > > +		if (unmapped_sz) {
-> > > > +			ret = iommu_map(domain, start, start, unmapped_sz,
-> > > > +					entry->prot);
-> > > 
-> > > Can you avoid this hunk by changing your loop check to something like:
-> > > 
-> > > 	if (!phys_addr) {
-> > > 		map_size += pg_size;
-> > > 		if (addr + pg_size < end)
-> > > 			continue;
-> > > 	}
-> > 
-> > Thanks for your quick review. I have fixed and tested it. the patch is
-> > simple. I copy it here. Is this readable for you now?
-> > 
-> > 
-> > --- a/drivers/iommu/iommu.c
-> > +++ b/drivers/iommu/iommu.c
-> > @@ -737,6 +737,7 @@ static int
-> > iommu_create_device_direct_mappings(struct iommu_group *group,
-> >  	/* We need to consider overlapping regions for different devices */
-> >  	list_for_each_entry(entry, &mappings, list) {
-> >  		dma_addr_t start, end, addr;
-> > +		size_t map_size = 0;
-> >  
-> >  		if (domain->ops->apply_resv_region)
-> >  			domain->ops->apply_resv_region(dev, domain, entry);
-> > @@ -752,12 +753,21 @@ static int
-> > iommu_create_device_direct_mappings(struct iommu_group *group,
-> >  			phys_addr_t phys_addr;
-> >  
-> >  			phys_addr = iommu_iova_to_phys(domain, addr);
-> > -			if (phys_addr)
-> > -				continue;
-> > +			if (!phys_addr) {
-> > +				map_size += pg_size;
-> > +				if (addr + pg_size < end)
-> > +					continue;
-> > +				else
-> 
-> You don't need the 'else' here  ^^^
-> 
-> > +					addr += pg_size; /*Point to End */
-> 
-> addr = end ?
-> 
-> That said, maybe we could simplify this further by changing the loop bounds
-> to be:
-> 
-> 	for (addr = start; addr <= end; addr += pg_size)
-> 
-> and checking:
-> 
-> 	if (!phys_addr && addr != end) {
-> 		map_size += pg_size;
-> 		continue;
-> 	}
-> 
-> does that work?
+On Tue, Nov 24, 2020 at 5:39 PM Sakari Ailus
+<sakari.ailus@linux.intel.com> wrote:
+>
+> On Tue, Nov 24, 2020 at 08:56:00AM +0900, Alexandre Courbot wrote:
+> > Gentle ping about this - we are already well into the 5.10 cycle so we
+> > don't have much time left if we want to merge this build breakage
+> > fix...
+>
+> Thanks for the ping.
+>
+> For the set:
+>
+> Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
-It works but I think we can not check iommu_iova_to_phys(domain, end).
-We should add a "if", like:
-
-for (addr = start; addr <= end; addr += pg_size) {
-...
-	if (addr < end) {
-		phys_addr = iommu_iova_to_phys(domain, addr);
-		if (!phys_addr) {
-			map_size += pg_size;
-			continue;
-		}
-	}
-...
-
-
-If you don't like this "if (addr < end)", then we have to add a "goto".
-like this:
-
-
-for (addr = start; addr <= end; addr += pg_size) {
- 	phys_addr_t phys_addr;
- 
-	if (addr == end)
-		goto map_last;
-
-	phys_addr = iommu_iova_to_phys(domain, addr);
-	if (!phys_addr) {
-		map_size += pg_size;
-		continue;
-	}
-
-map_last:
-	if (!map_size)
-		continue;
-	ret = iommu_map(domain, addr - map_size,
-			addr - map_size, map_size, entry->prot);
-	if (ret)
-		goto out;
-}
-
-Which one is better?
-
-> 
-> Will
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Ah, just saw these patches included in Mauro's latest pull request.
+Seems all is good, thanks! :)
 
 _______________________________________________
 Linux-mediatek mailing list
