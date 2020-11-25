@@ -2,92 +2,75 @@ Return-Path: <SRS0=wG/x=E7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C639C5519F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:29:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5386C5519F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:56:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16A92206C0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:29:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D66CA2083E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 11:56:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QNKkE0cJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="UYz/jCqr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16A92206C0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2tDcbMDa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mXrqfsej"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D66CA2083E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M6UQR5I6xlQXnAgWQk0ipDwaBX+F2+WDvKi87f2ImRo=; b=QNKkE0cJxhR7a+QKsIwhnozT3
-	NCZ6kk34je5AZvDftQ0yeb6v8yJoc6o1MW3u02K26LYxw2oYGAq76Qrs4ohWqAaWkMdRMYRthTOwo
-	7QQNG/C8UfONs0Xn0UY3MoP/H0Udu2ygRQ6k1bqZyIeOgNoLhDSpwYebtTsWrGvHLtZTE1+hm5TOP
-	0byhB4jaIxnxXWg1T7bk2tpXKWrgfhmCrQJxvOmL32QJD+ER5p9JdJHck7rCNyLd3G+TwD7PCpITS
-	H+iJC0LRUbku7S0WFikf77BcE4dAzdEv0zP+I5q/DYIw/8HtbVmMZyquBNDGsRO088cDuqOXz1l33
-	m2yEyFxuA==;
+	 bh=PjbvmBKwpH2hD0fgtKhwgfmOVl0b/TQhOSo5MsHQfSI=; b=2tDcbMDaMl9KdGAhci3ftqFd8
+	7V+nUnr9p6L9XWGwwIhYbnZQBtE7YTp5k77JzL92h+jdiHCipRlLuuSpGyWpPm1wg3/EvPXi7dH7G
+	bZbXPI053Z92BrGdrnIKAONrKcMDKkNwbO7nMpDEbH/NyqP9rEG1xtiGD1nGnilaAZnKMkM+8WIB7
+	zWLB/ND3opfNxj490K5bxrFnag5UY3dm7wd333ojvx5SnVKI9dynO+1Ork+TYsQYTkqnM2oc7ehfj
+	UO6HzBX6twIvk/SKGQSUF3ifi0OTA86T1WTMfJNF43yZ/DKIUSRctUsxrgw6xmJVeVRngnmKNY290
+	Lz9SFUnqw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khsyr-0001VE-0j; Wed, 25 Nov 2020 11:29:01 +0000
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
+	id 1khtOp-0005rP-LZ; Wed, 25 Nov 2020 11:55:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khsyp-0001Un-9u
- for linux-mediatek@lists.infradead.org; Wed, 25 Nov 2020 11:29:00 +0000
-Received: by mail-lj1-x242.google.com with SMTP id z1so1912550ljn.4
- for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2020 03:28:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2nOPkD46qA6zqYvfk5N1mr7k9F+AjAsV4itAgMMq35k=;
- b=UYz/jCqr2QvHnOp8GVH62QzciFhLIGNOUqAxPEPAMeNaYMIl9PjcgIpzya9CXKYaE/
- SQBBiQY5ovG8meLwtPVBh5u8PxOUXuIYTupgxrMdcqk9YSvndHs8R+iKqEa2HGcMnYP2
- CsXXhHkNkhMMx9d/wjgKRbFoGCu0pDX2G7cCs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2nOPkD46qA6zqYvfk5N1mr7k9F+AjAsV4itAgMMq35k=;
- b=IjWNOgOGr8kFYKJsxbNzOnRpTwAN2tXTRAOv73kFTw0z5WS4kocEJixf/XvMbNk0ZY
- qbk1UCoEV5iyGuVC6dNvntgl98/gb57hp7rwEaCdg0hsKiqgKqT8A2Q1iy8g6I9Ze2vy
- dBoAggBv9ur1Llt/aa8erRVOkjBU5DN1+z0+1MSICisO/jNWQ9vKz1mJim+T2K142/ZU
- kUYDwP6LM7UnFkvE9XNR0qHpZtEYcoF8jCawS3pSk3fv5B5mb5NqtIfrFb2v5DFXbD80
- geu/ShE+ICvrVZE96+l+qcYrRDmVsQB9Po9RMQQXDmfIa06LGg6kIfnqWWk1TlXbsXOc
- jDtg==
-X-Gm-Message-State: AOAM530Uxv+TbKJhJtHa1GbqXiFzFDdzz5Br93iSY6/aVrGSRCXmFF8M
- s1QofdsVV2/qjDABe4h7t74iiNiiJJYk+rsj
-X-Google-Smtp-Source: ABdhPJxEQX8ltxkL7eldwpoIz4/urAORyjHBXJcac75zx9qwKEYILkgRXzQ3kF8bUuw4qikoaMyaag==
-X-Received: by 2002:a2e:7d10:: with SMTP id y16mr1093086ljc.257.1606303737181; 
- Wed, 25 Nov 2020 03:28:57 -0800 (PST)
-Received: from mail-lj1-f173.google.com (mail-lj1-f173.google.com.
- [209.85.208.173])
- by smtp.gmail.com with ESMTPSA id k9sm221175lfk.288.2020.11.25.03.28.56
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Nov 2020 03:28:56 -0800 (PST)
-Received: by mail-lj1-f173.google.com with SMTP id o24so1897896ljj.6
- for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2020 03:28:56 -0800 (PST)
-X-Received: by 2002:a2e:b4c6:: with SMTP id r6mr1243590ljm.248.1606303735968; 
- Wed, 25 Nov 2020 03:28:55 -0800 (PST)
+ id 1khtOn-0005qf-G1; Wed, 25 Nov 2020 11:55:50 +0000
+X-UUID: bc470b51f3fd4cddb3a99ff046c82d5d-20201125
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=QVCe+Q2tfMm/K2LDvufZ3yRpNHq9ZrnxVWmLvTzVGDU=; 
+ b=mXrqfsej3EmDA95l//QBtQUTVcIrDekItwYH9PrnZ8y4DY2evhdOu/9CQWF8MWOj1Alg64W8IbHCbkGQGk1zRNhV84E2xHfiru83Ee3yug9hkLTgI+7TPx8Hmeb9I/ooOkaMnSVvlx69YYLsDvQtk76bdmjohcD/edqFw0cZEKQ=;
+X-UUID: bc470b51f3fd4cddb3a99ff046c82d5d-20201125
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <lecopzer.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 282420847; Wed, 25 Nov 2020 03:51:26 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 Nov 2020 03:41:29 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 Nov 2020 19:41:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 25 Nov 2020 19:41:27 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <mark.rutland@arm.com>
+Subject: Re: [PATCH] arm64: Kconfig: Add SYS_SUPPORTS_APM_EMULATION
+Date: Wed, 25 Nov 2020 19:41:30 +0800
+Message-ID: <20201125114130.507-1-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201125103637.GC70906@C02TD0UTHF1T.local>
+References: <20201125103637.GC70906@C02TD0UTHF1T.local>
 MIME-Version: 1.0
-References: <20201013124428.783025-1-acourbot@chromium.org>
- <CAPBb6MVM81dQyLJANUH7j8b5uhpk8ERdm9gpsGkF4k1Y-ZkYDQ@mail.gmail.com>
- <20201124083925.GC3940@paasikivi.fi.intel.com>
-In-Reply-To: <20201124083925.GC3940@paasikivi.fi.intel.com>
-From: Alexandre Courbot <acourbot@chromium.org>
-Date: Wed, 25 Nov 2020 20:28:45 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MVZshFO3kiHXeP4FAgJ7am_SjZfcHrbF8h4SXUz+MimVw@mail.gmail.com>
-Message-ID: <CAPBb6MVZshFO3kiHXeP4FAgJ7am_SjZfcHrbF8h4SXUz+MimVw@mail.gmail.com>
-Subject: Re: [PATCH v4 0/2] media: mtk-vcodec: fix builds when remoteproc is
- disabled
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_062859_387165_3898AEE4 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20201125_065549_733437_68D9CEC3 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,34 +82,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: lecopzer.chen@mediatek.com, catalin.marinas@arm.com, yj.chiang@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, will@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 24, 2020 at 5:39 PM Sakari Ailus
-<sakari.ailus@linux.intel.com> wrote:
+>> From: "Lecopzer Chen" <lecopzer.chen@mediatek.com>
+>> 
+>> Although most of modern devices use ACPI, there still has combination
+>> of APM + ARM64.
+>> 
+>> In order to select CONFIG_APM_EMULATION, make SYS_SUPPORTS_APM_EMULATION
+>> default is y if ACPI isn't configured.
 >
-> On Tue, Nov 24, 2020 at 08:56:00AM +0900, Alexandre Courbot wrote:
-> > Gentle ping about this - we are already well into the 5.10 cycle so we
-> > don't have much time left if we want to merge this build breakage
-> > fix...
+>I'm a bit confused why this should be enabled for !ACPI. Which DT
+>platforms need this, and how do they use it? Why should this only be
+>enabled for kernels without ACPI support, and not for kernels that
+>support both ACPI and DT?
 >
-> Thanks for the ping.
->
-> For the set:
->
-> Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+>Thanks,
+>Mark.
 
-Ah, just saw these patches included in Mauro's latest pull request.
-Seems all is good, thanks! :)
+Hi Mark,
 
+In our internal patch has no !ACPI here,
+the reason I add here is that in kernel document[1] it mention:
+> No, sorry, you cannot have both ACPI and APM enabled and running at once.
+Thus, I try to limit the scope for who don't use the ACPI because I'm not sure
+they could exist at the same time or not.
+
+But I think it should be fine without !ACPI if APM and APCI
+config won't conflict with each other.
+
+So if it's better to remove !ACPI I'll send v2 for this.
+
+
+BTW, The platform is for our internal kernel drivers, they utilize APM interface,
+/dev/apm_bios to do their works in arm64.
+
+
+
+
+
+[1] APM or ACPI?:
+https://www.kernel.org/doc/html/latest/power/apm-acpi.html
+
+
+Thanks,
+Lecopzer
+
+
+>> 
+>> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+>> Suggested-by: YJ Chiang <yj.chiang@mediatek.com>
+>> ---
+>>  arch/arm64/Kconfig | 3 +++
+>>  1 file changed, 3 insertions(+)
+>> 
+>> diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+>> index 1515f6f153a0..5e9e3694015a 100644
+>> --- a/arch/arm64/Kconfig
+>> +++ b/arch/arm64/Kconfig
+>> @@ -260,6 +260,9 @@ config NO_IOPORT_MAP
+>>  config STACKTRACE_SUPPORT
+>>  	def_bool y
+>>  
+>> +config SYS_SUPPORTS_APM_EMULATION
+>> +	def_bool y if !ACPI
+>> +
+>>  config ILLEGAL_POINTER_VALUE
+>>  	hex
+>>  	default 0xdead000000000000
+>> -- 
+>> 2.18.0
+>> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
