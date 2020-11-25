@@ -2,72 +2,75 @@ Return-Path: <SRS0=wG/x=E7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3143EC5519F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 07:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C10AC56201
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 09:01:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E001206B5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 07:38:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9C389206B5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 09:01:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sQmgbz1f"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E001206B5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=loongson.cn
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vIBkP0lY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=mess.org header.i=@mess.org header.b="SJYLrwiK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C389206B5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mess.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PUi7h9OYiHM44QscwJueJhkrAf5cNUdMbm2niSCN2JI=; b=sQmgbz1f9z3msPBF8tNZiaemJ3
-	bd72PioGPYXvYy1OU8TcgBsppgEB4hXtDIwICeKMmqkDieOHwwznTgaPcvKxgiuJ4llztfFi9xVcM
-	a1oZ4/Joo+ZVZ5QL12qG8lgpgCGxdpykkHDF3hQw+doTJIFjXz609fTT64BIIk3A5+dmvCTMq01d/
-	zBBO+8rY4PdSVNaj0m+JjT6IgfPF8A+ZN5anZ3mL0JrpPwVotHDWfu7jejXlFgzHZztW5J4cADmxV
-	zK1fXsYo2ef1RM/Gg/h6b1aiXJ55eW96GE+m9KOKbUz8HZyxgRtZYErwxiEetlsdzRXAhjU40LNUU
-	vUcH/8dQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=rCVJpt3jKwF1Sn96noQ+tpv/Sh08cS0A//64pJGRFfo=; b=vIBkP0lY8YM4ozGs9m+6nk35v
+	1KH4TT5jhe34incf1JBM5PKsefMOqqZdpRQwIDlg8f3cmYKqIwfSUAlV0u5ilibma1gdHQmPSfvug
+	DzrYY8oqrxILwVGRxkKtq+40cJrDm0uGzo4xm7YVAMmmkrnSC8cs2icHL2wgRKfUghkuds7T0lBOA
+	2dtZnSDzn+vQNGC5aAo38Fbacs4M3BoeiXszWZgh3fOyafkD0pBf4u+1omxDuTXiPP624KWafAvpv
+	0QU8FJ/R6tyt3EwS2wWgSMlnig1HxO0Lx4n3iIUoHKjGDQQAV1nkYbvenWY9s6NWll+hJik2LCyF1
+	Zag3ouu4Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khpNL-00017b-Bb; Wed, 25 Nov 2020 07:38:03 +0000
-Received: from mail.loongson.cn ([114.242.206.163] helo=loongson.cn)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khpNE-00013m-Fk; Wed, 25 Nov 2020 07:37:58 +0000
-Received: from linux.localdomain (unknown [113.200.148.30])
- by mail.loongson.cn (Coremail) with SMTP id AQAAf9AxytHJCb5fJnAWAA--.50625S2; 
- Wed, 25 Nov 2020 15:37:46 +0800 (CST)
-From: Tiezhu Yang <yangtiezhu@loongson.cn>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v2] phy: mediatek: Make PHY_MTK_{XSPHY,
- TPHY} depend on HAS_IOMEM and OF_ADDRESS to fix build errors
-Date: Wed, 25 Nov 2020 15:37:45 +0800
-Message-Id: <1606289865-692-1-git-send-email-yangtiezhu@loongson.cn>
-X-Mailer: git-send-email 2.1.0
-X-CM-TRANSID: AQAAf9AxytHJCb5fJnAWAA--.50625S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7ArWfXryfGF1DJrWrAr1xAFb_yoW8ZF48p3
- 93Ka10kry8XFyDCw4xXFy7GFs8CFZrZ3y5GrsxWw13Xa15A3y7AwsYy34agFWUArWv93y7
- t34rWayUGaykJFUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUkm14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
- 6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
- CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
- 2Ix0cI8IcVAFwI0_JrI_JrylYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJV
- W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc2xSY4AK67AK6r4x
- MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr
- 0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0E
- wIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVWUJV
- W8JwCI42IY6xAIw20EY4v20xvaj40_WFyUJVCq3wCI42IY6I8E87Iv67AKxVWUJVW8JwCI
- 42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfUYgAwDUUUU
-X-CM-SenderInfo: p1dqw3xlh2x3gn0dqz5rrqw2lrqou0/
+	id 1khqg0-0006sz-Rm; Wed, 25 Nov 2020 09:01:24 +0000
+Received: from gofer.mess.org ([2a02:8011:d000:212::1])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1khqfw-0006r3-3s; Wed, 25 Nov 2020 09:01:21 +0000
+Received: by gofer.mess.org (Postfix, from userid 1000)
+ id C2D44C63FB; Wed, 25 Nov 2020 09:01:14 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mess.org; s=2020;
+ t=1606294874; bh=KH9dzgywMXfGPGDwmO8Qm6o//zr8KQDL4nO6EawRuDY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=SJYLrwiKZrmMRjkeBYo7cqsbs6xljPuQypU3vE6W0mhxhiBNmXN2bqL5RV07d2awA
+ Wb5Oa7L0TiIxfU/vxoLt2vFycI3gN8Kh1qdOF59uK2dEnqITAnDV+wsiQw/exDF78D
+ hoTz22IC76edW7bl4Xm8hYrqoRAlLOCNTSbizDTKI7x8BBnutJW03OyPsTxurVqfdC
+ T9t8y4uSMzXA9L5TYoAbkkzEdR07qHfBTYdhaiYGGYuE1E1bdzLhtRTU2iYu251NBa
+ zqIr2827TZMk9I1fNh/951tgkmCQWewUCt5nrmXnkgqHhLp9nxDE6gWAGCUXG6XCXv
+ 3mw8Hv064saVQ==
+Date: Wed, 25 Nov 2020 09:01:14 +0000
+From: Sean Young <sean@mess.org>
+To: James Bottomley <James.Bottomley@HansenPartnership.com>
+Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
+Message-ID: <20201125090114.GA24274@gofer.mess.org>
+References: <cover.1605896059.git.gustavoars@kernel.org>
+ <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011201129.B13FDB3C@keescook>
+ <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011220816.8B6591A@keescook>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
+ <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
+ <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
+ <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_023757_145338_86C422C0 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20201125_040120_405194_6275BD6F 
+X-CRM114-Status: GOOD (  24.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,65 +82,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Randy Dunlap <rdunlap@infradead.org>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Xuefeng Li <lixuefeng@loongson.cn>, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
+ reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-kernel <linux-kernel@vger.kernel.org>,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
+ dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
+ GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
+ samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ usb-storage@lists.one-eyed-alien.net, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
+ oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
+ linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
+ linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Ext4 Developers List <linux-ext4@vger.kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
+ op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
+ linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
+ Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
+ linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ linux-renesas-soc@vger.kernel.org,
+ Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>, linux-sctp@vger.kernel.org,
+ linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-devm_ioremap_resource() will be not built in lib/devres.c if
-CONFIG_HAS_IOMEM is not set, of_address_to_resource() will be
-not built in drivers/of/address.c if CONFIG_OF_ADDRESS is not
-set, and then there exists two build errors about undefined
-reference to "devm_ioremap_resource" and "of_address_to_resource"
-in phy-mtk-xsphy.c under COMPILE_TEST and CONFIG_PHY_MTK_XSPHY,
-make PHY_MTK_XSPHY depend on HAS_IOMEM and OF_ADDRESS to fix it.
+On Mon, Nov 23, 2020 at 07:58:06AM -0800, James Bottomley wrote:
+> On Mon, 2020-11-23 at 15:19 +0100, Miguel Ojeda wrote:
+> > On Sun, Nov 22, 2020 at 11:36 PM James Bottomley
+> > <James.Bottomley@hansenpartnership.com> wrote:
+> > > It's not about the risk of the changes it's about the cost of
+> > > implementing them.  Even if you discount the producer time (which
+> > > someone gets to pay for, and if I were the engineering manager, I'd
+> > > be unhappy about), the review/merge/rework time is pretty
+> > > significant in exchange for six minor bug fixes.  Fine, when a new
+> > > compiler warning comes along it's certainly reasonable to see if we
+> > > can benefit from it and the fact that the compiler people think
+> > > it's worthwhile is enough evidence to assume this initially.  But
+> > > at some point you have to ask whether that assumption is supported
+> > > by the evidence we've accumulated over the time we've been using
+> > > it.  And if the evidence doesn't support it perhaps it is time to
+> > > stop the experiment.
+> > 
+> > Maintainers routinely review 1-line trivial patches, not to mention
+> > internal API changes, etc.
+> 
+> We're also complaining about the inability to recruit maintainers:
+> 
+> https://www.theregister.com/2020/06/30/hard_to_find_linux_maintainers_says_torvalds/
+> 
+> And burn out:
+> 
+> http://antirez.com/news/129
+> 
+> The whole crux of your argument seems to be maintainers' time isn't
+> important so we should accept all trivial patches ... I'm pushing back
+> on that assumption in two places, firstly the valulessness of the time
+> and secondly that all trivial patches are valuable.
 
-The above issue is reported by kernel test robot <lkp@intel.com>,
-through the discussion in the v1 patch, as Chunfeng said we need
-also do this for config PHY_MTK_TPHY:
+You're assuming burn out or recruitment problems is due to patch workload
+or too many "trivial" patches.
 
-drivers/phy/mediatek/phy-mtk-tphy.c:1157:		retval = of_address_to_resource(child_np, 0, &res);
-drivers/phy/mediatek/phy-mtk-tphy.c:1123:		tphy->sif_base = devm_ioremap_resource(dev, sif_res);
-drivers/phy/mediatek/phy-mtk-tphy.c:1164:		instance->port_base = devm_ioremap_resource(&phy->dev, &res);
+In my experience, "other maintainers" is by far the biggest cause of
+burn out for my kernel maintenance work.
 
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Tiezhu Yang <yangtiezhu@loongson.cn>
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
----
- drivers/phy/mediatek/Kconfig | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Certainly arguing with a maintainer about some obviously-correct patch
+series must be a good example of this.
 
-diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-index 50c5e93..f44800b 100644
---- a/drivers/phy/mediatek/Kconfig
-+++ b/drivers/phy/mediatek/Kconfig
-@@ -5,7 +5,8 @@
- config PHY_MTK_TPHY
- 	tristate "MediaTek T-PHY Driver"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
--	depends on OF
-+	depends on OF && OF_ADDRESS
-+	depends on HAS_IOMEM
- 	select GENERIC_PHY
- 	help
- 	  Say 'Y' here to add support for MediaTek T-PHY driver,
-@@ -29,7 +30,8 @@ config PHY_MTK_UFS
- config PHY_MTK_XSPHY
- 	tristate "MediaTek XS-PHY Driver"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
--	depends on OF
-+	depends on OF && OF_ADDRESS
-+	depends on HAS_IOMEM
- 	select GENERIC_PHY
- 	help
- 	  Enable this to support the SuperSpeedPlus XS-PHY transceiver for
--- 
-2.1.0
 
+Sean
 
 _______________________________________________
 Linux-mediatek mailing list
