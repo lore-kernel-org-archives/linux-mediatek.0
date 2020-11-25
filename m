@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5489C56201
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:38:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1E9DC56202
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:39:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 782332083E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:38:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 114D82083E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2020 16:39:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pNK3nG6Z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 782332083E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ez4M+z1L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 114D82083E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,41 +26,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KYiFi7tXPpAk97opLoVJDNjU/PxdduKGY6geDU867I4=; b=pNK3nG6ZtuB6VSqop1vhuo7E8
-	FlaAGYXoKkl9QdLeMPTQ1wKSvUvzhlA3RnSWOV2oD2l7opLXm47Vn6eVW6ccxhomPj0+D2HhdVDdk
-	cxqfucXJ7jwxa8jvxtdtP+xMu3mZveWTfc13D/8O9G+H0uFJMbQLoT5dSguPkDG+oICvRJwzhYf9a
-	zuzkigwBnwe/X8WW4X9LtPW1OcrxmxJSjQzNdbNrCd0THG7PclP6ppO//333rH4MvkgWj3D9S9Hnf
-	aiMtdpDYjxTDwANlYPOdOFLViKnmrDGKFp41J2S1NUDuPRghSE5Tz3MYYqOH9bFFU5jdQFV3TMvOh
-	6XGP8cOCQ==;
+	 bh=15nN8GVDvxA9vAqa1foRoAbpPZt3dNERgs3CUe2H3Xo=; b=Ez4M+z1LF5/kAO6y5KKIBLiYp
+	2K8/W5WTsuC3/eHb65fsMRhzfXJwWahLHil3wPTt+OUnsYRRZkjfkPHFq5MrwJ14m5Mit5dx2mT+O
+	HxAD6J5Hhw41MzYT0jrnuYQML1DgDh4y3D891ple5ZJf2wlma4asS2EJZUt7CLGbuXf1b4evIQGnz
+	j7TkpCGpH54rUe+Hv4W42dyfl3iWKlzR1M58kpfet8Eol2qw496k/tnI9eOnc5VJWEc4jV12PnCov
+	Lr45Xh28aJx/Lr10mVhavGnvcAvcnm+HkvZeR34sdCOGN4vfrLATbUaDX6pLJFCDFjHQ1AZHKwZin
+	mG++gPbFA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1khxoT-0003ok-DN; Wed, 25 Nov 2020 16:38:37 +0000
+	id 1khxp3-00044W-Do; Wed, 25 Nov 2020 16:39:13 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1khxoK-0003kf-Lr; Wed, 25 Nov 2020 16:38:29 +0000
+ id 1khxoY-0003qd-Jq; Wed, 25 Nov 2020 16:38:43 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 47A0631B;
- Wed, 25 Nov 2020 08:38:25 -0800 (PST)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AF38131B;
+ Wed, 25 Nov 2020 08:38:38 -0800 (PST)
 Received: from [10.57.59.159] (unknown [10.57.59.159])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BEBEA3F7BB;
- Wed, 25 Nov 2020 08:38:22 -0800 (PST)
-Subject: Re: [PATCH v2 3/6] iommu/mediatek: Add iotlb_sync_map to sync whole
- the iova range
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4EE6E3F7BB;
+ Wed, 25 Nov 2020 08:38:36 -0800 (PST)
+Subject: Re: [PATCH v2 4/6] iommu: Add granule_ignore when tlb gather
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Will Deacon <will@kernel.org>
 References: <20201119061836.15238-1-yong.wu@mediatek.com>
- <20201119061836.15238-4-yong.wu@mediatek.com>
+ <20201119061836.15238-5-yong.wu@mediatek.com>
 From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <751e08a1-d3c3-29f9-5c62-560370ac0703@arm.com>
-Date: Wed, 25 Nov 2020 16:38:21 +0000
+Message-ID: <49bae447-d662-e6cf-7500-ab78e3b75dc4@arm.com>
+Date: Wed, 25 Nov 2020 16:38:35 +0000
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
  Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <20201119061836.15238-4-yong.wu@mediatek.com>
+In-Reply-To: <20201119061836.15238-5-yong.wu@mediatek.com>
 Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201125_113828_845484_2D571E73 
-X-CRM114-Status: GOOD (  20.73  )
+X-CRM114-CacheID: sfid-20201125_113842_905110_921A22B8 
+X-CRM114-Status: GOOD (  27.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,60 +84,59 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2020-11-19 06:18, Yong Wu wrote:
-> Remove IO_PGTABLE_QUIRK_TLBI_ON_MAP to avoid tlb sync for each a small
-> chunk memory, Use the new iotlb_sync_map to tlb_sync once for whole the
-> iova range of iommu_map.
+> Add a granule_ignore option when tlb gather for some HW which don't care
+> about granule when it flush tlb.
 > 
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
-> After reading msm_iommu.c, It looks IO_PGTABLE_QUIRK_TLBI_ON_MAP can be
-> removed.
-> ---
->   drivers/iommu/mtk_iommu.c | 10 +++++++++-
->   1 file changed, 9 insertions(+), 1 deletion(-)
+>   include/linux/iommu.h | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index c072cee532c2..8c2d4a225666 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -323,7 +323,6 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
->   	dom->cfg = (struct io_pgtable_cfg) {
->   		.quirks = IO_PGTABLE_QUIRK_ARM_NS |
->   			IO_PGTABLE_QUIRK_NO_PERMS |
-> -			IO_PGTABLE_QUIRK_TLBI_ON_MAP |
->   			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
->   		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
->   		.ias = 32,
-> @@ -454,6 +453,14 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
->   				       data);
->   }
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index 794d4085edd3..1aad32238510 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -171,6 +171,7 @@ enum iommu_dev_features {
+>    * @start: IOVA representing the start of the range to be flushed
+>    * @end: IOVA representing the end of the range to be flushed (exclusive)
+>    * @pgsize: The interval at which to perform the flush
+> + * @granule_ignore: For tlb flushing that could be regardless of granule.
+>    *
+>    * This structure is intended to be updated by multiple calls to the
+>    * ->unmap() function in struct iommu_ops before eventually being passed
+> @@ -180,6 +181,7 @@ struct iommu_iotlb_gather {
+>   	unsigned long		start;
+>   	unsigned long		end;
+>   	size_t			pgsize;
+> +	bool			granule_ignore;
+
+I can't see that this would ever need to vary on a per-unmap-operation 
+basis, so this doesn't seem like the right level of abstraction. AFAICS 
+it should simply be hard-coded in the driver logic.
+
+>   };
 >   
-> +static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
-> +			       size_t size)
-> +{
-> +	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-> +
-> +	mtk_iommu_tlb_flush_range_sync(iova, size, size, dom->data);
+>   /**
+> @@ -544,7 +546,7 @@ static inline void iommu_iotlb_gather_add_page(struct iommu_domain *domain,
+>   	 * a different granularity, then sync the TLB so that the gather
+>   	 * structure can be rewritten.
+>   	 */
+> -	if (gather->pgsize != size ||
+> +	if ((!gather->granule_ignore && gather->pgsize != size) ||
 
-So we have a conflict/dependency against the MT8192 series here - I 
-guess we need to make a decision up-front about which series should go 
-first. Other than that, though:
+I also think this is a slippery slope in the wrong direction anyway - 
+there is likely to be a fair bit of hardware-dependent variation around 
+how low-level TLB maintenance works (also consider drivers that may want 
+to convert a sufficiently large range to an "invalidate all" operation), 
+so if a generic helper function doesn't do the right thing for a given 
+driver, that driver should simply not use the helper, and directly 
+implement the logic it does need.
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+Robin.
 
-> +}
-> +
->   static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
->   					  dma_addr_t iova)
->   {
-> @@ -540,6 +547,7 @@ static const struct iommu_ops mtk_iommu_ops = {
->   	.unmap		= mtk_iommu_unmap,
->   	.flush_iotlb_all = mtk_iommu_flush_iotlb_all,
->   	.iotlb_sync	= mtk_iommu_iotlb_sync,
-> +	.iotlb_sync_map	= mtk_iommu_sync_map,
->   	.iova_to_phys	= mtk_iommu_iova_to_phys,
->   	.probe_device	= mtk_iommu_probe_device,
->   	.release_device	= mtk_iommu_release_device,
+>   	    end < gather->start || start > gather->end) {
+>   		if (gather->pgsize)
+>   			iommu_iotlb_sync(domain, gather);
 > 
 
 _______________________________________________
