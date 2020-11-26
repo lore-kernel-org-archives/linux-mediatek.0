@@ -2,94 +2,63 @@ Return-Path: <SRS0=o4uA=FA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3149C64E75
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 14:53:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E3ECC63798
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 15:19:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C57621D7E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 14:53:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C81DA21D40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 15:19:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZHVr8tox";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QWuS1TBf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C57621D7E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xZJdrDNE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C81DA21D40
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zTxa4Y7LCtNNo46cXXQxHtds1Q+2V/hIWn5ZptJepYc=; b=ZHVr8toxVsrDtzdUtEjJDqAPC
-	EweBHKLhNGu7qGJgcRmtxCbrjTw0YmHdCdbwfl8d0IpXN228I94HTXJAhNj4Mfee4QFlmMEg7sqOn
-	G2k2KqI7mkoBzOg2QoXLq90rtnXPTs+Ry+7sSKANYKkg4cossg3RzQF9jWKNL6a6ufRcvC5CdCR9p
-	7abDp7RQj+/wxnWNldTvvi4bipTUJ0r033+Lmc4sUbAcd3NS+o5aNpHcmdxmquqJXgkU/eiv4C1LS
-	BmYY1SvZdqDtAw6CJZMitQ1CHsE0L6W3HSQZ4SG76FOX76SgITF5RZI65LOyIHPtHzdBsjhgNyzsE
-	r6m8Ef38g==;
+	 bh=7g4s0T9ObJyIjcfkFNIqTBmUCOb9OR9F/ceRkYVQI/U=; b=xZJdrDNEkAQkJnBdngaLiqpGl
+	bHJdlPh9wfRfOop+9VFq5k1abg1zgyGAvZeucCJqCI5ckkz+Aammp60etpBbouJK3PIsTTtMrIybZ
+	EO1BC2buCeqo1xhn0CsGqaYVCyA6fpCwJSKegK2Fh3VXHTQK9v9Q7BETaoCYqvgoTJq4A/Gktif4G
+	4tfQQJuGW6UrwnVBug/0Vb0HVZNJT5BbRxQ6nWnKCdIjs3CthJvNV0/ktKOMgmaWjDS0GcYwCK8lg
+	ID21eVCP3DOza7VxZLlAhwVDCvJZERbbbtif8LlBo+OuW2iB/ay0kGbkkOU6YKMKefdlYis/wI6xz
+	IcWw1PNTA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kiIeZ-0006ge-L5; Thu, 26 Nov 2020 14:53:47 +0000
-Received: from mail-yb1-xb44.google.com ([2607:f8b0:4864:20::b44])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kiIeV-0006eF-Ln; Thu, 26 Nov 2020 14:53:44 +0000
-Received: by mail-yb1-xb44.google.com with SMTP id l14so1881469ybq.3;
- Thu, 26 Nov 2020 06:53:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=DTotsfb8u+PB0eT0g4gTrA/vgT4HfiDZTYQ/geteWC4=;
- b=QWuS1TBfImi/m9J+5lB37414TjwoB+kfRyX/7ohuLNDuEazbBA4fEE506RPmuhzrQT
- KCYao+uRLv4Su9SW/eKLjGfymcNDAcVP9irkT5MfO/ys+N1YXqwwODp/at6Hjf5mbn7y
- sEjBq+fitA5RwLT9szzutyPemHxF/3vzz+qMkDnIA1HF+rIjtAU7PcoRO+GQ0ANzP2/3
- 4RgPAdoGGim7svP8Zrp9IWC0s7kVtrSQn/PXobh5aGfJoVk3uyVZYliED/q0Nk6tCoA8
- W9fyUHPup50QVVdVd9NqYx0m2pkDUcyuxLwwV68mOS3NFLJOgvtFKpngAgg7rBEfKLyO
- Kn5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=DTotsfb8u+PB0eT0g4gTrA/vgT4HfiDZTYQ/geteWC4=;
- b=YU2AeI6eMA4hl40yO8uxQbcocXXP4TWt08LEoHLXKWsXJSFK6gL3oz9MVZHOKJ4NTR
- bjwMztOjb6qdPbEzRTZ1qX5gIC80rdq8GR136nvOnBe/NyO4Y7XB3zN9iv32oC689f+H
- uNY4OPqPOBOO3VjpAiJw2FPEsMls/S+orxLg6zsisOLvTlkfoXoR4ey22xu7c8R66/kj
- oNM/B3dy063tpz+xg85wCVuDV4NHk6Nw5gwZS7SW8+HRLy3/oc+0XKzs8PASaOJVBn2S
- SDbWL1vBmFdVtLmvIzS6F3mECFDIPGZNqeS68udrdBATgPOq+BhuBwlniYuDX2YSydfH
- 4BJA==
-X-Gm-Message-State: AOAM531i3hL1I3kmjPUhvoKLAQqhM2d40wTLjra4INCvz/gcK+UnoI2n
- MU8SMxd45hIGJ0c3FZr0UYKdyQu+VVXGMXliqQ8=
-X-Google-Smtp-Source: ABdhPJxnOXTYq+iR4KCiqWmvI5brXjGTtWFP5n3J8AJAa70YoLiXvitjZtrbfPlByRts+Q0mJZBucXgMnTrbOCoAA44=
-X-Received: by 2002:a25:aac5:: with SMTP id t63mr5128050ybi.22.1606402419264; 
- Thu, 26 Nov 2020 06:53:39 -0800 (PST)
+	id 1kiJ3f-0002vg-Dc; Thu, 26 Nov 2020 15:19:43 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kiJ3a-0002uS-R4; Thu, 26 Nov 2020 15:19:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DFC2631B;
+ Thu, 26 Nov 2020 07:19:32 -0800 (PST)
+Received: from [10.57.59.159] (unknown [10.57.59.159])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 47AEB3F71F;
+ Thu, 26 Nov 2020 07:19:30 -0800 (PST)
+Subject: Re: [PATCH] iommu: Improve the performance for direct_mapping
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>
+References: <20201120090628.6566-1-yong.wu@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <cbc9763b-aa7e-aea9-2a21-315dfdd2c407@arm.com>
+Date: Thu, 26 Nov 2020 15:19:28 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
- <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
- <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
- <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
- <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
- <CANiq72k5tpDoDPmJ0ZWc1DGqm+81Gi-uEENAtvEs9v3SZcx6_Q@mail.gmail.com>
- <4993259d01a0064f8bb22770503490f9252f3659.camel@HansenPartnership.com>
- <CANiq72kqO=bYMJnFS2uYRpgWATJ=uXxZuNUsTXT+3aLtrpnzvQ@mail.gmail.com>
- <44005bde-f6d4-5eaa-39b8-1a5efeedb2d3@gmail.com>
-In-Reply-To: <44005bde-f6d4-5eaa-39b8-1a5efeedb2d3@gmail.com>
-From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Date: Thu, 26 Nov 2020 15:53:27 +0100
-Message-ID: <CANiq72nobq=ptWK-qWxU91JHqkKhMcRtJNnw2XJd5-vSJWZd8Q@mail.gmail.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-To: Edward Cree <ecree.xilinx@gmail.com>
+In-Reply-To: <20201120090628.6566-1-yong.wu@mediatek.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201126_095343_753164_6C9F68FB 
-X-CRM114-Status: GOOD (  26.55  )
+X-CRM114-CacheID: sfid-20201126_101938_999736_E2BBACD2 
+X-CRM114-Status: GOOD (  25.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,115 +70,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
- dri-devel <dri-devel@lists.freedesktop.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
- linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
- wcn36xx@lists.infradead.org, samba-technical@lists.samba.org,
- linux-i3c@lists.infradead.org, linux1394-devel@lists.sourceforge.net,
- linux-afs@lists.infradead.org, usb-storage@lists.one-eyed-alien.net,
- drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
- Nick Desaulniers <ndesaulniers@google.com>, linux-scsi@vger.kernel.org,
- Nathan Chancellor <natechancellor@gmail.com>, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
- linux-security-module@vger.kernel.org,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
- Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Ext4 Developers List <linux-ext4@vger.kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, intel-gfx@lists.freedesktop.org,
- linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
- linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
- virtualization@lists.linux-foundation.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
- GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
- Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>, linux-sctp@vger.kernel.org,
- linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
- linux-integrity@vger.kernel.org, target-devel@vger.kernel.org,
- linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk@kernel.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBOb3YgMjUsIDIwMjAgYXQgMTE6NDQgUE0gRWR3YXJkIENyZWUgPGVjcmVlLnhpbGlu
-eEBnbWFpbC5jb20+IHdyb3RlOgo+Cj4gVG8gbWFrZSB0aGUgaW50ZW50IGNsZWFyLCB5b3UgaGF2
-ZSB0byBmaXJzdCBiZSBjZXJ0YWluIHRoYXQgeW91Cj4gIHVuZGVyc3RhbmQgdGhlIGludGVudDsg
-b3RoZXJ3aXNlIGJ5IGFkZGluZyBlaXRoZXIgYSBicmVhayBvciBhCj4gIGZhbGx0aHJvdWdoIHRv
-IHN1cHByZXNzIHRoZSB3YXJuaW5nIHlvdSBhcmUganVzdCBkZXN0cm95aW5nIHRoZQo+ICBpbmZv
-cm1hdGlvbiB0aGF0ICJ0aGUgaW50ZW50IG9mIHRoaXMgY29kZSBpcyB1bmtub3duIi4KCklmIHlv
-dSBkb24ndCBrbm93IHdoYXQgdGhlIGludGVudCBvZiB5b3VyIG93biBjb2RlIGlzLCB0aGVuIHlv
-dQoqYWxyZWFkeSogaGF2ZSBhIHByb2JsZW0gaW4geW91ciBoYW5kcy4KCj4gRmlndXJpbmcgb3V0
-IHRoZSBpbnRlbnQgb2YgYSBwaWVjZSBvZiB1bmZhbWlsaWFyIGNvZGUgdGFrZXMgbW9yZQo+ICB0
-aGFuIDEgbWludXRlOyBqdXN0IGJlY2F1c2UKPiAgICAgY2FzZSBmb286Cj4gICAgICAgICB0aGlu
-ZzsKPiAgICAgY2FzZSBiYXI6Cj4gICAgICAgICBicmVhazsKPiAgcHJvZHVjZXMgaWRlbnRpY2Fs
-IGNvZGUgdG8KPiAgICAgY2FzZSBmb286Cj4gICAgICAgICB0aGluZzsKPiAgICAgICAgIGJyZWFr
-Owo+ICAgICBjYXNlIGJhcjoKPiAgICAgICAgIGJyZWFrOwo+ICBkb2Vzbid0IG1lYW4gdGhhdCAq
-ZWl0aGVyKiBpcyBjb3JyZWN0IOKAlCBtYXliZSB0aGUgYXV0aG9yIG1lYW50CgpXaGF0IHRha2Vz
-IDEgbWludXRlIGlzIGFkZGluZyBpdCAqbWVjaGFuaWNhbGx5KiBieSB0aGUgYXV0aG9yLCBpLmUu
-IHNvCnRoYXQgeW91IGxhdGVyIGNvbXBhcmUgd2hldGhlciBjb2RlZ2VuIGlzIHRoZSBzYW1lLgoK
-PiAgdG8gd3JpdGUKPiAgICAgY2FzZSBmb286Cj4gICAgICAgICByZXR1cm4gdGhpbmc7Cj4gICAg
-IGNhc2UgYmFyOgo+ICAgICAgICAgYnJlYWs7Cj4gIGFuZCBieSBpbnNlcnRpbmcgdGhhdCBicmVh
-ayB5b3UndmUgZGVzdHJveWVkIHRoZSBtYXJrZXIgdGhhdAo+ICB3b3VsZCBkaXJlY3Qgc29tZW9u
-ZSB3aG8ga25ldyB3aGF0IHRoZSBjb2RlIHdhcyBhYm91dCB0byBsb29rCj4gIGF0IHRoYXQgcG9p
-bnQgaW4gdGhlIGNvZGUgYW5kIHNwb3QgdGhlIHByb2JsZW0uCgpUaGVuIGl0IG1lYW5zIHlvdSBh
-bHJlYWR5IGhhdmUgYSBidWcuIFRoaXMgcGF0Y2hzZXQgZ2l2ZXMgdGhlCm1haW50YWluZXIgYSBj
-aGFuY2UgdG8gbm90aWNlIGl0LCB3aGljaCBpcyBhIGdvb2QgdGhpbmcuIFRoZSAieW91J3ZlCmRl
-c3Ryb3llZCB0aGUgbWFya2V0IiBjbGFpbSBpcyBib2d1cywgYmVjYXVzZToKICAxLiB5b3Ugd2Vy
-ZSBub3QgbG9va2luZyBpbnRvIGl0CiAgMi4geW91IGRpZG4ndCBub3RpY2UgdGhlIGJ1ZyBzbyBm
-YXIKICAzLiBpcyBpbXBsaWNpdCAtLSBoYXJkZXIgdG8gc3BvdAogIDQuIGlzIG9ubHkgdXNlZnVs
-IGlmIHlvdSBleHBsaWNpdGx5IHRha2UgYSBsb29rIGF0IHRoaXMga2luZCBvZiBidWcuClNvIHdo
-eSBkb24ndCB5b3UgZG8gaXQgbm93PwoKPiBUaHVzLCB5b3UgKmFsd2F5cyogaGF2ZSB0byBsb29r
-IGF0IG1vcmUgdGhhbiBqdXN0IHRoZSBpbW1lZGlhdGUKPiAgbWVjaGFuaWNhbCBjb250ZXh0IG9m
-IHRoZSBjb2RlLCB0byBtYWtlIGEgcHJvcGVyIGp1ZGdlbWVudCB0aGF0Cj4gIHllcywgdGhpcyB3
-YXMgdGhlIGludGVudC4KCkkgZmluZCB0aGF0IGlzIHRoZSByZXNwb25zaWJpbGl0eSBvZiB0aGUg
-bWFpbnRhaW5lcnMgYW5kIHJldmlld2VycyBmb3IKdHJlZS13aWRlIHBhdGNoZXMgbGlrZSB0aGlz
-LCBhc3N1bWluZyB0aGV5IHdhbnQuIFRoZXkgY2FuIGFsc28ga2VlcAp0aGUgYmVoYXZpb3IgKGFu
-ZCB0aGUgYnVncykgd2l0aG91dCBzcGVuZGluZyB0aW1lLiBUaGVpciBjaG9pY2UuCgo+IElmIHlv
-dSB0aGluayB0aGF0IHRoYXQgc29ydCBvZiB0aGluZwo+ICBjYW4gYmUgZG9uZSBpbiBhbiAqYXZl
-cmFnZSogdGltZSBvZiBvbmUgbWludXRlLCB0aGVuIEkgaG9wZSB5b3UKPiAgc3RheSBhd2F5IGZy
-b20gY29kZSBJJ20gcmVzcG9uc2libGUgZm9yIQoKUGxlYXNlIGRvbid0IGFjY3VzZSBvdGhlcnMg
-b2YgcmVja2xlc3NuZXNzIG9yIGluY29tcGV0ZW5jZSwgZXNwZWNpYWxseQppZiB5b3UgZGlkbid0
-IHVuZGVyc3RhbmQgd2hhdCB0aGV5IHNhaWQuCgo+IEEgd2FybmluZyBpcyBvbmx5IHVzZWZ1bCBi
-ZWNhdXNlIGl0IG1ha2VzIHlvdSAqdGhpbmsqIGFib3V0IHRoZQo+ICBjb2RlLiAgSWYgeW91IHN1
-cHByZXNzIHRoZSB3YXJuaW5nIHdpdGhvdXQgZG9pbmcgdGhhdCB0aGlua2luZywKPiAgdGhlbiB5
-b3UgbWFkZSB0aGUgd2FybmluZyB1c2VsZXNzOyBhbmQgaWYgdGhlIHdhcm5pbmcgbWFkZSB5b3UK
-PiAgdGhpbmsgYWJvdXQgY29kZSB0aGF0IGRpZG4ndCAqbmVlZCogaXQsIHRoZW4gdGhlIHdhcm5p
-bmcgd2FzCj4gIHVzZWxlc3MgZnJvbSB0aGUgc3RhcnQuCgpXZSBhcmUgbm90IHN1cHByZXNzaW5n
-IHRoZSB3YXJuaW5nLiBRdWl0ZSB0aGUgb3Bwb3NpdGUsIGluIGZhY3QuCgo+IFNvIG1ha2UgeW91
-ciBtaW5kIHVwOiBkb2VzIENsYW5nJ3Mgc3RyaWN0ZXIgLVdpbXBsaWNpdC1mYWxsdGhyb3VnaAo+
-ICBmbGFnIHVwIGNvZGUgdGhhdCBuZWVkcyB0aG91Z2h0IChpbiB3aGljaCBjYXNlIHRoZSBmaXhl
-cyB0YWtlCj4gIGVmZm9ydCBib3RoIHRvIGF1dGhvciBhbmQgdG8gcmV2aWV3KQoKQXMgSSBzYWlk
-IHNldmVyYWwgdGltZXMgYWxyZWFkeSwgaXQgZG9lcyB0YWtlIHRpbWUgdG8gcmV2aWV3IGlmIHRo
-ZQptYWludGFpbmVyIHdhbnRzIHRvIHRha2UgdGhlIGNoYW5jZSB0byBzZWUgaWYgdGhleSBoYWQg
-YSBidWcgdG8gYmVnaW4Kd2l0aCwgYnV0IGl0IGRvZXMgbm90IHJlcXVpcmUgdGhvdWdodCBmb3Ig
-dGhlIGF1dGhvciBpZiB0aGV5IGp1c3QgZ28KZm9yIGVxdWl2YWxlbnQgY29kZWdlbi4KCj4gb3Ig
-ZG9lcyBpdCBmbGFnIHVwIGNvZGUKPiAgdGhhdCBjYW4gYmUgbWluZGxlc3NseSAiZml4ZWQiIChp
-biB3aGljaCBjYXNlIHRoZSB3YXJuaW5nIGlzCj4gIHdvcnRobGVzcyk/ICBQcm9wb25lbnRzIGlu
-IHRoaXMgdGhyZWFkIHNlZW0gdG8gYmUgdHJ5aW5nIHRvCj4gIGhhdmUgaXQgYm90aCB3YXlzLgoK
-QSB3YXJuaW5nIGlzIG5vdCB3b3J0aGxlc3MganVzdCBiZWNhdXNlIHlvdSBjYW4gbWluZGxlc3Ns
-eSBmaXggaXQuClRoZXJlIGFyZSBtYW55IGNvdW50ZXJleGFtcGxlcywgZS5nLiBtYW55CmNoZWNr
-cGF0Y2gvbGludC9sYW5nLWZvcm1hdC9pbmRlbnRhdGlvbiB3YXJuaW5ncywgZnVuY3Rpb25hbCBv
-bmVzIGxpa2UKdGhlIGBpZiAoYSA9IGIpYCB3YXJuaW5nLi4uCgpDaGVlcnMsCk1pZ3VlbAoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
-ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On 2020-11-20 09:06, Yong Wu wrote:
+> Currently direct_mapping always use the smallest pgsize which is SZ_4K
+> normally to mapping. This is unnecessary. we could gather the size, and
+> call iommu_map then, iommu_map could decide how to map better with the
+> just right pgsize.
+> 
+>  From the original comment, we should take care overlap, otherwise,
+> iommu_map may return -EEXIST. In this overlap case, we should map the
+> previous region before overlap firstly. then map the left part.
+> 
+> Each a iommu device will call this direct_mapping when its iommu
+> initialize, This patch is effective to improve the boot/initialization
+> time especially while it only needs level 1 mapping.
+> 
+> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/iommu.c | 20 ++++++++++++++++++--
+>   1 file changed, 18 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index df87c8e825f7..854a8fcb928d 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -737,6 +737,7 @@ static int iommu_create_device_direct_mappings(struct iommu_group *group,
+>   	/* We need to consider overlapping regions for different devices */
+>   	list_for_each_entry(entry, &mappings, list) {
+>   		dma_addr_t start, end, addr;
+> +		size_t unmapped_sz = 0;
+>   
+>   		if (domain->ops->apply_resv_region)
+>   			domain->ops->apply_resv_region(dev, domain, entry);
+> @@ -752,10 +753,25 @@ static int iommu_create_device_direct_mappings(struct iommu_group *group,
+>   			phys_addr_t phys_addr;
+>   
+>   			phys_addr = iommu_iova_to_phys(domain, addr);
+> -			if (phys_addr)
+> +			if (phys_addr == 0) {
+> +				unmapped_sz += pg_size; /* Gather the size. */
+>   				continue;
+> +			}
+
+I guess the reason we need to validate every page is because they may 
+already have been legitimately mapped if someone else's reserved region 
+overlaps - is it worth explicitly validating that, i.e. bail out if 
+something's gone wrong enough that phys_addr != addr?
+
+Other than the naming issue (I agree that map_size is a far, far better 
+choice), I don't have any strong opinions about the rest of the 
+implementation - I've written enough variations of this pattern to know 
+that there's just no "nice" way to do it in C; all you can do is shuffle 
+the clunkiness around :)
+
+Robin.
+
+>   
+> -			ret = iommu_map(domain, addr, addr, pg_size, entry->prot);
+> +			if (unmapped_sz) {
+> +				/* Map the region before the overlap. */
+> +				ret = iommu_map(domain, start, start,
+> +						unmapped_sz, entry->prot);
+> +				if (ret)
+> +					goto out;
+> +				start += unmapped_sz;
+> +				unmapped_sz = 0;
+> +			}
+> +			start += pg_size;
+> +		}
+> +		if (unmapped_sz) {
+> +			ret = iommu_map(domain, start, start, unmapped_sz,
+> +					entry->prot);
+>   			if (ret)
+>   				goto out;
+>   		}
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
