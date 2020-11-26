@@ -2,77 +2,84 @@ Return-Path: <SRS0=o4uA=FA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 39E5DC56202
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 09:29:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63997C63697
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 11:10:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8B87B21D91
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 09:29:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BD29320DD4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 11:10:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U6easbTt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B87B21D91
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=hisilicon.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g+vc9ilt";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=arm-com.20150623.gappssmtp.com header.i=@arm-com.20150623.gappssmtp.com header.b="Xr53pffB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD29320DD4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	 bh=Nc/hWyf1GQUwulYaz9xgViFcWfZvUk4CT3mKjdpjCjk=; b=U6easbTt69z5Q5zYhPbf27Jsv
-	FMBhA+jQSSW9qopZbhNUYSCpwJvSGyv7OmbC5ZklYJJT7aWkprsKzcSRJJF2khlPhFZlmSVzo1HkN
-	1Ths6duNr0EOx8z1XK/pGRXqCjd7J7dzDqfEhKLoa2zqBuJEHh2tZ1Je90GEJ3O0UzZUQo/7nQ84d
-	cOxjRYniSZvTiN+x5UEVkklyPDOocHPdYaz0bk0qGlCCiHXNwyjEpCnqOgPUg3FeEeTzDbRTdat5s
-	SjdBTcH+KSTR3bS5iF8A6eFDDC0uKKqJNLtK2S5gurDEQCnVX15AYiuaL7GfehZcf9ojnE89vl/8U
-	tGcYe/4rQ==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=PwpR3AP4/n4vAdp2wACbGiIazx7+Uo6+66S55ZgqJok=; b=g+vc9iltMtDfWO2tvfEvPTG4V
+	0wxINh1sfCuLMaYAUqpeNXFcFWyDvi7K6ZNktT10xDCgDz62gHFuwEg2TjY4YLXxTdQn8D2ohE/Ml
+	81TNspxsw4UWIbwW8RRH0yNQzKust/toZNFAc7bFfkaIBGq0YIRkERni8oCL6u1aVNsggD6SkHRoB
+	xOkFlZy2WslVc1O6M0x+BOG5QWuewgaakDfZcD+qaEO0+cpotH5FhLa5YIJdkdH1PZ0K5rTId+DKj
+	fdmbOzBx8usACo6Kb/+gX5Eh+3Sn2i3CqpmQZH11UENpsZaHX3N8sVexHgC6bc3zdWqA8lRudVFpZ
+	N85ZkoaHg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kiDaz-0006e0-Ln; Thu, 26 Nov 2020 09:29:45 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1kiFAS-00057R-VO; Thu, 26 Nov 2020 11:10:29 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kiDav-0006dQ-PR
- for linux-mediatek@lists.infradead.org; Thu, 26 Nov 2020 09:29:43 +0000
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.55])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4ChXWh6Q6Pz4xym;
- Thu, 26 Nov 2020 17:29:04 +0800 (CST)
-Received: from dggemi710-chm.china.huawei.com (10.3.20.109) by
- DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Thu, 26 Nov 2020 17:29:31 +0800
-Received: from dggemi761-chm.china.huawei.com (10.1.198.147) by
- dggemi710-chm.china.huawei.com (10.3.20.109) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Thu, 26 Nov 2020 17:29:32 +0800
-Received: from dggemi761-chm.china.huawei.com ([10.9.49.202]) by
- dggemi761-chm.china.huawei.com ([10.9.49.202]) with mapi id 15.01.1913.007;
- Thu, 26 Nov 2020 17:29:32 +0800
-From: "Song Bao Hua (Barry Song)" <song.bao.hua@hisilicon.com>
-To: Miles Chen <miles.chen@mediatek.com>
-Subject: RE: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
- addresses
-Thread-Topic: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
- addresses
-Thread-Index: AQHWwWNz5MRhXZKR2UCNja39TEhHcanaA0sg//+FDQCAAIXFIIAAGMsQ
-Date: Thu, 26 Nov 2020 09:29:31 +0000
-Message-ID: <94ffb814f1dd4c6dbf6c501985ce0410@hisilicon.com>
-References: <20201123063835.18981-1-miles.chen@mediatek.com>
- <24d32889abb1412abcd4e868a36783f9@hisilicon.com>
- <1606376946.17565.6.camel@mtkswgap22> 
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.126.202.201]
+ id 1kiFAP-00056e-5S
+ for linux-mediatek@lists.infradead.org; Thu, 26 Nov 2020 11:10:26 +0000
+Received: by mail-pg1-x541.google.com with SMTP id l17so1486286pgk.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2020 03:10:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=arm-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ysDAMzeQzMrmseqw54pHHcgme62kOCrHB1LTNQfRYkQ=;
+ b=Xr53pffB+0JmTjNdhXpjfVXnysRhdot/YQSjQUJlVWTn/ra/bYOUd4f50o4JZ0CL0A
+ ioWAtUAU+RQByPSuQqokkjMgg232/OhoKQ8N4kpXItcBPzWsX7bIWIjB4v+/7xdZS7Dj
+ iLKY7YoLqzT61mgxsIV84+OBt3qwCq9vM7Cvr3hMldHQU/kL+1cp2SlPSewjqTguauLE
+ R0pjpvsizfkUFEsDRCHINR7RhPez5hJnh2rafYy11tElHz4+M2rQlqb5dilAsqjGZ6tS
+ yyWcYo1xgCC0NtARWGWnjulKrfhRqWBf5xDBFDKbNYvab/BQo4ehaPAcablRXN7fsn33
+ yp3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ysDAMzeQzMrmseqw54pHHcgme62kOCrHB1LTNQfRYkQ=;
+ b=Wq2QzZKbXGkfpLh3Twur7gohIiTuiW4+jc2asuYSQDAHeZ9OkzcSyo/830pkurpOzl
+ y7tHr4+imzIZEhNK3KNeXqWPGO3eNtX/gEhIx4C2EpOlj3YUkFdAfIOrBqonpsvDHqxG
+ A7Oc/+3yFXq7NtuM591nKOM0YjUzXB4XQn75Nvs4imV2UrK1r6UdYp8Wu3mP+rLdWHuR
+ O9X7vvRgdHtS2NXhS7fujayeCdvs6deauhauCNu9SQMxm6y9Gm+YSABmXGvHi9zMaPO9
+ xJ4Rb/6trKGeeyrbaVWfvdWqtwRUwaUJs3MxGiJxsuUAvUD+BC6kNZenzEzrKdekgB+f
+ KrXA==
+X-Gm-Message-State: AOAM532rC+jVmcYE63KHPUSIlHaJkqk2/bmYBc/+MvE6zDMEa+Gh5n5M
+ bTuMDEVT13mDvkBjMqG6IceBZM9pKeo7wF8xtj8=
+X-Google-Smtp-Source: ABdhPJxJD1NykgWeec15xFKr3NqfS1cXWilGx/PVFgSGw7gcEgeheK7b3dQCpTxeed6pibGoMSpYnv3Ex1gCrw5ZXOo=
+X-Received: by 2002:a05:6a00:14cf:b029:18c:959d:929e with SMTP id
+ w15-20020a056a0014cfb029018c959d929emr2306209pfu.53.1606389020793; Thu, 26
+ Nov 2020 03:10:20 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+References: <20201123063835.18981-1-miles.chen@mediatek.com>
+In-Reply-To: <20201123063835.18981-1-miles.chen@mediatek.com>
+From: Catalin Marinas <catalin.marinas@arm.com>
+Date: Thu, 26 Nov 2020 11:10:09 +0000
+Message-ID: <CAHkRjk7xGoU=KBeFE4gy=yxkLhvHqz2A1JyCBKF8dhjJNDD=zA@mail.gmail.com>
+Subject: Re: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
+ addresses
+To: Miles Chen <miles.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201126_042942_341280_C050D5B5 
-X-CRM114-Status: GOOD (  40.23  )
+X-CRM114-CacheID: sfid-20201126_061025_295239_51F443EA 
+X-CRM114-Status: GOOD (  20.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,10 +91,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
+Cc: wsd_upstream@mediatek.com, andreyknvl@google.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-fsdevel@vger.kernel.org,
  Andrew Morton <akpm@linux-foundation.org>,
  Alexey Dobriyan <adobriyan@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -95,182 +101,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Miles,
 
+Could you please cc me and Andrey Konovalov on future versions of this
+patch (if any)?
 
-> -----Original Message-----
-> From: Song Bao Hua (Barry Song)
-> Sent: Thursday, November 26, 2020 8:53 PM
-> To: 'Miles Chen' <miles.chen@mediatek.com>
-> Cc: Alexey Dobriyan <adobriyan@gmail.com>; Andrew Morton
-> <akpm@linux-foundation.org>; linux-kernel@vger.kernel.org;
-> linux-fsdevel@vger.kernel.org; linux-mediatek@lists.infradead.org;
-> wsd_upstream@mediatek.com
-> Subject: RE: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
-> addresses
-> 
-> 
-> 
-> > -----Original Message-----
-> > From: Miles Chen [mailto:miles.chen@mediatek.com]
-> > Sent: Thursday, November 26, 2020 8:49 PM
-> > To: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>
-> > Cc: Alexey Dobriyan <adobriyan@gmail.com>; Andrew Morton
-> > <akpm@linux-foundation.org>; linux-kernel@vger.kernel.org;
-> > linux-fsdevel@vger.kernel.org; linux-mediatek@lists.infradead.org;
-> > wsd_upstream@mediatek.com
-> > Subject: RE: [RESEND PATCH v1] proc: use untagged_addr() for
-> pagemap_read
-> > addresses
-> >
-> > On Thu, 2020-11-26 at 07:16 +0000, Song Bao Hua (Barry Song) wrote:
-> > >
-> > > > -----Original Message-----
-> > > > From: Miles Chen [mailto:miles.chen@mediatek.com]
-> > > > Sent: Monday, November 23, 2020 7:39 PM
-> > > > To: Alexey Dobriyan <adobriyan@gmail.com>; Andrew Morton
-> > > > <akpm@linux-foundation.org>
-> > > > Cc: linux-kernel@vger.kernel.org; linux-fsdevel@vger.kernel.org;
-> > > > linux-mediatek@lists.infradead.org; wsd_upstream@mediatek.com; Miles
-> > > > Chen <miles.chen@mediatek.com>
-> > > > Subject: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
-> > > > addresses
-> > > >
-> > > > When we try to visit the pagemap of a tagged userspace pointer, we find
-> > > > that the start_vaddr is not correct because of the tag.
-> > > > To fix it, we should untag the usespace pointers in pagemap_read().
-> > > >
-> > > > I tested with 5.10-rc4 and the issue remains.
-> > > >
-> > > > My test code is baed on [1]:
-> > > >
-> > > > A userspace pointer which has been tagged by 0xb4:
-> 0xb400007662f541c8
-> > > >
-> > > > === userspace program ===
-> > > >
-> > > > uint64 OsLayer::VirtualToPhysical(void *vaddr) {
-> > > > 	uint64 frame, paddr, pfnmask, pagemask;
-> > > > 	int pagesize = sysconf(_SC_PAGESIZE);
-> > > > 	off64_t off = ((uintptr_t)vaddr) / pagesize * 8; // off =
-> > > > 0xb400007662f541c8 / pagesize * 8 = 0x5a00003b317aa0
-> > > > 	int fd = open(kPagemapPath, O_RDONLY);
-> > > > 	...
-> > > >
-> > > > 	if (lseek64(fd, off, SEEK_SET) != off || read(fd, &frame, 8) != 8) {
-> > > > 		int err = errno;
-> > > > 		string errtxt = ErrorString(err);
-> > > > 		if (fd >= 0)
-> > > > 			close(fd);
-> > > > 		return 0;
-> > > > 	}
-> > > > ...
-> > > > }
-> > > >
-> > > > === kernel fs/proc/task_mmu.c ===
-> > > >
-> > > > static ssize_t pagemap_read(struct file *file, char __user *buf,
-> > > > 		size_t count, loff_t *ppos)
-> > > > {
-> > > > 	...
-> > > > 	src = *ppos;
-> > > > 	svpfn = src / PM_ENTRY_BYTES; // svpfn == 0xb400007662f54
-> > > > 	start_vaddr = svpfn << PAGE_SHIFT; // start_vaddr ==
-> > > > 0xb400007662f54000
-> > > > 	end_vaddr = mm->task_size;
-> > > >
-> > > > 	/* watch out for wraparound */
-> > > > 	// svpfn == 0xb400007662f54
-> > > > 	// (mm->task_size >> PAGE) == 0x8000000
-> > > > 	if (svpfn > mm->task_size >> PAGE_SHIFT) // the condition is true
-> because
-> > > > of the tag 0xb4
-> > > > 		start_vaddr = end_vaddr;
-> > > >
-> > > > 	ret = 0;
-> > > > 	while (count && (start_vaddr < end_vaddr)) { // we cannot visit
-> correct
-> > > > entry because start_vaddr is set to end_vaddr
-> > > > 		int len;
-> > > > 		unsigned long end;
-> > > > 		...
-> > > > 	}
-> > > > 	...
-> > > > }
-> > > >
-> > > > [1]
-> > > >
-> > https://github.com/stressapptest/stressapptest/blob/master/src/os.cc#L158
-> > > >
-> > > > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > > > ---
-> > > >  fs/proc/task_mmu.c | 4 ++--
-> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > >
-> > > > diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
-> > > > index 217aa2705d5d..e9a70f7ee515 100644
-> > > > --- a/fs/proc/task_mmu.c
-> > > > +++ b/fs/proc/task_mmu.c
-> > > > @@ -1599,11 +1599,11 @@ static ssize_t pagemap_read(struct file *file,
-> > char
-> > > > __user *buf,
-> > > >
-> > > >  	src = *ppos;
-> > > >  	svpfn = src / PM_ENTRY_BYTES;
-> > > > -	start_vaddr = svpfn << PAGE_SHIFT;
-> > > > +	start_vaddr = untagged_addr(svpfn << PAGE_SHIFT);
-> > > >  	end_vaddr = mm->task_size;
-> > > >
-> > > >  	/* watch out for wraparound */
-> > > > -	if (svpfn > mm->task_size >> PAGE_SHIFT)
-> > > > +	if (start_vaddr > mm->task_size)
-> > > >  		start_vaddr = end_vaddr;
-> > >
-> > > Wouldn't the untag be done by the user reading pagemap file?
-> > > With this patch, even users pass an illegal address, for example,
-> > > users put a tag on a virtual address which hasn't really a tag,
-> > > they will still get the right pagemap.
-> > >
-> >
-> >
-> > I run arm64 devices.
-> > If the tagged pointer is enabled, the ARM top-byte Ignore is also
-> > enabled. It means the top-byte is always be ignored.
-> >
-> > I think the kernel should not break existing userspace program, so it's
-> > better to handle the tagged user pointer in kernel.
-> >
-> > grep 'untag' mm -RnH to see existing examples.
-> 
-> I see your point. But the existing examples such as gup etc are receiving
-> an address from userspace.
-> 
-> pagemap isn't getting an address, it is getting a file offset which
-> should be figured out by userspace correctly. While we read a file,
-> we should make sure the offset is in the range of the file length.
+On Mon, 23 Nov 2020 at 08:47, Miles Chen <miles.chen@mediatek.com> wrote:
+> When we try to visit the pagemap of a tagged userspace pointer, we find
+> that the start_vaddr is not correct because of the tag.
+> To fix it, we should untag the usespace pointers in pagemap_read().
+>
+> I tested with 5.10-rc4 and the issue remains.
+>
+> My test code is baed on [1]:
+>
+> A userspace pointer which has been tagged by 0xb4: 0xb400007662f541c8
+>
+> === userspace program ===
+>
+> uint64 OsLayer::VirtualToPhysical(void *vaddr) {
+>         uint64 frame, paddr, pfnmask, pagemask;
+>         int pagesize = sysconf(_SC_PAGESIZE);
+>         off64_t off = ((uintptr_t)vaddr) / pagesize * 8; // off = 0xb400007662f541c8 / pagesize * 8 = 0x5a00003b317aa0
 
-BTW, personally I don't object to this patch. I just feel a little bit weird
-as the parameter in pagemap_read is an offset in one file rather than
-a virtual address.
+Arguably, that's a user-space bug since tagged file offsets were never
+supported. In this case it's not even a tag at bit 56 as per the arm64
+tagged address ABI but rather down to bit 47. You could say that the
+problem is caused by the C library (malloc()) or whoever created the
+tagged vaddr and passed it to this function. It's not a kernel
+regression as we've never supported it.
 
-if there are many user programs which are written without the
-awareness of tag while reading pagemap or if other people like
-this patch, it might make sense to have it in kernel :-)
+Now, pagemap is a special case where the offset is usually not
+generated as a classic file offset but rather derived by shifting a
+user virtual address. I guess we can make a concession for pagemap
+(only) and allow such offset with the tag at bit (56 - PAGE_SHIFT +
+3).
 
-> 
-> >
-> >
-> > thanks,
-> > Miles
-> >
-> > > >
-> > > >  	/*
-> > > > --
-> > > > 2.18.0
-> > >
-> 
+Please fix the patch as per Eric's suggestion on avoiding the
+overflow. You should also add a Cc: stable v5.4- as that's when we
+enabled the tagged address ABI on arm64 and when it's more likely for
+the C library/malloc() to start generating such pointers.
 
-Thanks
-Barry
+If the problem is only limited to this test, I'd rather fix the user
+but I can't tell how widespread the /proc/pid/pagemap usage is.
+
+Thanks.
+
+-- 
+Catalin
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
