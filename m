@@ -2,107 +2,65 @@ Return-Path: <SRS0=o4uA=FA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EBFE3C63697
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 16:20:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 328B8C56202
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 16:44:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F020207BC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 16:20:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E1C7320B80
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 16:44:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zwt4VG1b";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="NiJ729oC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F020207BC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="03N7A/pJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1C7320B80
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=V5xs8DV5XPvnf5UYit6UqbQ2Cy6zlPE8qryHVVlK4xc=; b=zwt4VG1bdissMMU/M1HZZhwHI
-	Oy5lJU/z5rbigr6DT2V1Ub09UapE5toVMlPkCO6bgvGYhqUXKthWTpdLkRWMLV3wEtkZjr+CQ0/V9
-	nPkI1hWp/F2yc/5g5hlbJB4+TFgQeTbdw+Z3FqMNcQx/LJeErwQNPR0pdohtaZKcF8AvHtUgogCJv
-	dZCMRCotWfj9lQptljZ+w1sDnoLR3MB/HaJk9o8+jgCuMuB1g5ddTCS5DMhWZjt5pqVPcxj3bTZ4+
-	kDS0CsD3Fu3aC467w7vv/iuBdhKYGAvvi0BwxnswZ9tviltW6Vd+jpjdf2+qv1f8oeMbduqlWIwg9
-	anRbydxag==;
+	 bh=r3MUX/B2GBz2Z5u5ysQKB0lsdH0LsBxNn0uobr19a0Q=; b=03N7A/pJ2c2udRsFHPk+37ZlF
+	fsD7LAk3xB9NPEbCxXcgKn2bDUS5RB/6LK6fCOfFJn39oV63y11OiXbETTW/6A+S6GoykNbm1NvFJ
+	R0rDBR5LYNnIzJvpK8q3gdVynWnp19esVK04ygqrprGlOfY6aAYHXz8b+TA8pdE+8EnVGToFlCta5
+	ifaFea7ba6J2X9QRxuPFTyFcFFUTx/X933sudNVX2+q5jfU4NG+PnaTBRbp2oA7pB38kV/nLCLaaB
+	k4s2KEYOfWKJJmC2YK8XMJ+SS9v7c6k1YqbQgLi/pXU5PJgWlJRHj/+MWFW3fZOTRExux2fdFmyfQ
+	DBJdJxQow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kiK0G-0007Dj-6g; Thu, 26 Nov 2020 16:20:16 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kiK04-00078h-Ap
- for linux-mediatek@lists.infradead.org; Thu, 26 Nov 2020 16:20:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606407601;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=IL7sPB68gF1YeWIUFuBJ//YIBDjI3bDL6qHHKubt/Z0=;
- b=NiJ729oCq6c/YFQ51l+ggQeIRtqmPp8H4lLJ165EPFvwB6PSNWB+uvZPeGDPsC2S2+j5TO
- AaEzfoBzCEevbIHTDE5y60URPa+B+7F1vB/rNId1UMFIOc3mMYxjHW3C6vOkUpq5aSwAHE
- jbtKjAXJTBKoSDdqsJF0ArriU45uZp0=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-448-5h4biVmBMgKefOQ2RQQITg-1; Thu, 26 Nov 2020 11:18:25 -0500
-X-MC-Unique: 5h4biVmBMgKefOQ2RQQITg-1
-Received: by mail-qv1-f72.google.com with SMTP id d41so1492610qvc.23
- for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2020 08:18:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=IL7sPB68gF1YeWIUFuBJ//YIBDjI3bDL6qHHKubt/Z0=;
- b=gjAbNlJ4rYh/9zvjGqmmbKJ5PxQpmWLRJ9yWIG5L2a9LMEw0HiETpeKUfpAJYFvVgF
- vJYDZiLqEFkc0LHGJcqvrxKOgQnPIc6Cq03SVX9Qobo41jn21ZbCnJCV0QRrIWqEras8
- idTt1WVVBuJyWh109fMATnA+9oQ7+x/hFxNuDVnpXg9VDJefNekbTteOG6UYtwJI0ZZh
- yTHDCLff0BfS1N/WeVlkcnFYgR6r1Sc04/XG9uMuEoAynv7DfnkaXEULFjTYNAfXIWNi
- grJViXrCJPV6b11f0o9lQbFWJdbrUhqL+rzFOTCWj4XQRuV4Xrx6WXN1C0iQoqKLbMcD
- jeTw==
-X-Gm-Message-State: AOAM532syl2tAAfQaYZc9/3FNeOccauac95g/RLVWyAUQcdWbp4j/ciA
- VFpGlSQg2RHEOeBaA+Au/2yvgmyX3o1eH172s1ZdZ6Y09EEdICEkAIcL09V0r7xcLzj6Evnzy/r
- 2MrExX+DL3VJTckgXazmB4ztabKdkhswZzl80lhJVFetvWZgo
-X-Received: by 2002:a37:ac8:: with SMTP id 191mr3793960qkk.381.1606407504845; 
- Thu, 26 Nov 2020 08:18:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzCU4CKAolN2PpaYdMoKCHma/+NC3lHjkQkQkRPTWC20j3rANbYTTy+FG9V7n634RRlgf0kcsxPjR4LO+NB5fA=
-X-Received: by 2002:a37:ac8:: with SMTP id 191mr3793888qkk.381.1606407504531; 
- Thu, 26 Nov 2020 08:18:24 -0800 (PST)
+	id 1kiKNK-00025W-DK; Thu, 26 Nov 2020 16:44:06 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kiKNG-00023p-48; Thu, 26 Nov 2020 16:44:03 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8C5F631B;
+ Thu, 26 Nov 2020 08:43:59 -0800 (PST)
+Received: from [10.57.59.159] (unknown [10.57.59.159])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 571FC3F23F;
+ Thu, 26 Nov 2020 08:43:56 -0800 (PST)
+Subject: Re: [PATCH v4 12/24] iommu/mediatek: Move hw_init into attach_device
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Will Deacon <will@kernel.org>
+References: <20201111123838.15682-1-yong.wu@mediatek.com>
+ <20201111123838.15682-13-yong.wu@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <55bb14ef-f674-e55c-0803-43d91093eccb@arm.com>
+Date: Thu, 26 Nov 2020 16:43:54 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
- <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
- <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
- <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
- <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
- <CANiq72k5tpDoDPmJ0ZWc1DGqm+81Gi-uEENAtvEs9v3SZcx6_Q@mail.gmail.com>
- <4993259d01a0064f8bb22770503490f9252f3659.camel@HansenPartnership.com>
- <CANiq72kqO=bYMJnFS2uYRpgWATJ=uXxZuNUsTXT+3aLtrpnzvQ@mail.gmail.com>
- <44005bde-f6d4-5eaa-39b8-1a5efeedb2d3@gmail.com>
- <CANiq72nobq=ptWK-qWxU91JHqkKhMcRtJNnw2XJd5-vSJWZd8Q@mail.gmail.com>
- <CAMuHMdV5kOakvZJMWLxbpigFPS+Xuw6DVYsWCWZy7wGsv3idcw@mail.gmail.com>
-In-Reply-To: <CAMuHMdV5kOakvZJMWLxbpigFPS+Xuw6DVYsWCWZy7wGsv3idcw@mail.gmail.com>
-From: Karol Herbst <kherbst@redhat.com>
-Date: Thu, 26 Nov 2020 17:18:13 +0100
-Message-ID: <CACO55tsBj3gLECoMWtViDitd7fVTnW+Cp0LVmqYkR=QFBJkEmQ@mail.gmail.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kherbst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20201111123838.15682-13-yong.wu@mediatek.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201126_112004_579718_D54A1EAD 
-X-CRM114-Status: GOOD (  28.64  )
+X-CRM114-CacheID: sfid-20201126_114402_322210_383CD737 
+X-CRM114-Status: GOOD (  21.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,126 +72,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- linux-atm-general@lists.sourceforge.net, linux-iio@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Linux Fbdev development list <linux-fbdev@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- virtualization@lists.linux-foundation.org,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- linux-ide@vger.kernel.org, dm-devel@redhat.com,
- target-devel <target-devel@vger.kernel.org>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- linux-i3c@lists.infradead.org, linux1394-devel@lists.sourceforge.net,
- "open list:NFS, SUNRPC, AND..." <linux-nfs@vger.kernel.org>,
- linux-afs@lists.infradead.org, usb-storage@lists.one-eyed-alien.net,
- Lars Ellenberg <drbd-dev@lists.linbit.com>,
- driverdevel <devel@driverdev.osuosl.org>, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, scsi <linux-scsi@vger.kernel.org>,
- Edward Cree <ecree.xilinx@gmail.com>, linux-rdma <linux-rdma@vger.kernel.org>,
- oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- ACPI Devel Maling List <linux-acpi@vger.kernel.org>, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- linux-input <linux-input@vger.kernel.org>, Miguel Ojeda <ojeda@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>,
- Ext4 Developers List <linux-ext4@vger.kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- reiserfs-devel@vger.kernel.org, linux-geode@lists.infradead.org,
- linux-block@vger.kernel.org,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- samba-technical@lists.samba.org, xen-devel@lists.xenproject.org,
- Nouveau Dev <nouveau@lists.freedesktop.org>, linux-hams@vger.kernel.org,
- ceph-devel <ceph-devel@vger.kernel.org>, linux-can@vger.kernel.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
- Nick Desaulniers <ndesaulniers@google.com>,
- Linux Watchdog Mailing List <linux-watchdog@vger.kernel.org>,
- GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
- Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net,
- Linux MMC List <linux-mmc@vger.kernel.org>, linux-sctp@vger.kernel.org,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Nathan Chancellor <natechancellor@gmail.com>,
- Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>,
- linux-security-module <linux-security-module@vger.kernel.org>,
- keyrings@vger.kernel.org, NetFilter <netfilter-devel@vger.kernel.org>,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-integrity <linux-integrity@vger.kernel.org>,
- USB list <linux-usb@vger.kernel.org>,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ Tomasz Figa <tfiga@google.com>, Greg Kroah-Hartman <gregkh@google.com>,
+ linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
+ chao.hao@mediatek.com, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ anan.sun@mediatek.com, kernel-team@android.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 26, 2020 at 4:28 PM Geert Uytterhoeven <geert@linux-m68k.org> wrote:
->
-> Hi Miguel,
->
-> On Thu, Nov 26, 2020 at 3:54 PM Miguel Ojeda
-> <miguel.ojeda.sandonis@gmail.com> wrote:
-> > On Wed, Nov 25, 2020 at 11:44 PM Edward Cree <ecree.xilinx@gmail.com> wrote:
-> > > To make the intent clear, you have to first be certain that you
-> > >  understand the intent; otherwise by adding either a break or a
-> > >  fallthrough to suppress the warning you are just destroying the
-> > >  information that "the intent of this code is unknown".
-> >
-> > If you don't know what the intent of your own code is, then you
-> > *already* have a problem in your hands.
->
-> The maintainer is not necessarily the owner/author of the code, and
-> thus may not know the intent of the code.
->
-> > > or does it flag up code
-> > >  that can be mindlessly "fixed" (in which case the warning is
-> > >  worthless)?  Proponents in this thread seem to be trying to
-> > >  have it both ways.
-> >
-> > A warning is not worthless just because you can mindlessly fix it.
-> > There are many counterexamples, e.g. many
-> > checkpatch/lint/lang-format/indentation warnings, functional ones like
-> > the `if (a = b)` warning...
->
-> BTW, you cannot mindlessly fix the latter, as you cannot know if
-> "(a == b)" or "((a = b))" was intended, without understanding the code
-> (and the (possibly unavailable) data sheet, and the hardware, ...).
->
+On 2020-11-11 12:38, Yong Wu wrote:
+> In attach device, it will update the pagetable base address register.
+> Move the hw_init function also here. Then it only need call
+> pm_runtime_get/put one time here if m4u has power domain.
 
-to allow assignments in if statements was clearly a mistake and if you
-need outside information to understand the code, your code is the
-issue already.
+Doesn't that mean you'll end up writing most of the registers twice 
+every time? (first from mtk_iommu_resume(), then again from 
+mtk_iommu_hw_init())
 
-> P.S. So far I've stayed out of this thread, as I like it if the compiler
->      flags possible mistakes.  After all I was the one fixing new
->      "may be used uninitialized" warnings thrown up by gcc-4.1, until
->      (a bit later than) support for that compiler was removed...
->
-> Gr{oetje,eeting}s,
->
->                         Geert
->
-> --
-> Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
->
-> In personal conversations with technical people, I call myself a hacker. But
-> when I'm talking to journalists I just say "programmer" or something like that.
->                                 -- Linus Torvalds
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
->
+It might be neater to have mtk_iommu_hw_init() simply populate the 
+mtk_iommu_suspend_reg data with the initial values at probe time and 
+manually call mtk_iommu_resume() if the hardware is already powered up 
+at that point. Or maybe just don't bother saving those registers on 
+suspend and put the initialisation directly in the resume path.
 
+Robin.
+
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 10 ++++++----
+>   1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 55f9b329e637..cfdf5ce696fd 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -125,6 +125,8 @@ struct mtk_iommu_domain {
+>   
+>   static const struct iommu_ops mtk_iommu_ops;
+>   
+> +static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
+> +
+>   /*
+>    * In M4U 4GB mode, the physical address is remapped as below:
+>    *
+> @@ -380,12 +382,16 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+>   {
+>   	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+>   	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+> +	int ret;
+>   
+>   	if (!data)
+>   		return -ENODEV;
+>   
+>   	/* Update the pgtable base address register of the M4U HW */
+>   	if (!data->m4u_dom) {
+> +		ret = mtk_iommu_hw_init(data);
+> +		if (ret)
+> +			return ret;
+>   		data->m4u_dom = dom;
+>   		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
+>   		       data->base + REG_MMU_PT_BASE_ADDR);
+> @@ -729,10 +735,6 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>   
+>   	platform_set_drvdata(pdev, data);
+>   
+> -	ret = mtk_iommu_hw_init(data);
+> -	if (ret)
+> -		return ret;
+> -
+>   	ret = iommu_device_sysfs_add(&data->iommu, dev, NULL,
+>   				     "mtk-iommu.%pa", &ioaddr);
+>   	if (ret)
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
