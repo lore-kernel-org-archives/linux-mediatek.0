@@ -6,19 +6,19 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0795EC56202
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 11:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D5EEC63697
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 11:54:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 849E520857
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 11:54:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 097A820DD4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 11:54:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3UR8MBHv";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TxZnp9EE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 849E520857
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YSdr4Z3a";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bJU25zwA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 097A820DD4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,63 +27,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2k0SsK140AqktlLMh8IyIydyWrbR5Rhlo5iJePVshR0=; b=3UR8MBHvaQN2wHp1Vwws+Q3/nc
-	qALUxU/QKJgqqHlpZoFtUKSJfRZURuVBya8grda/UYHpGB6A7wGGhy1x6h1yCK2N1/H0ITEH6Xrrt
-	vr2LIoGh+RVIOU3TDeTmfZdZujK2CrmGIp6YPXazFdNZpWD8wVSPx+OLiQD4EGeXHlusYgS5G3zYr
-	81kDKSNdS7pz6MwP0g93rcbsR/Sm/Y/FI4samrFSm4gSF6ZS10B16lzM8iAcxBNAEAbrzmPWXR/k9
-	bGdb+Dy1FuXxIFR3758SP1dUXhMlzHF/h9W+FjIA4DYpkQteT0QWXTxcAdzh/lAty5LLONZd+uUIj
-	dDRdgr0A==;
+	bh=Emd/1YbJWNgmiTUKPx3sEYDTDJxKAjDlIiNSSf66A2o=; b=YSdr4Z3adz38ueJxAC484pC5+3
+	v+sPAsFZ2vPOyyfQh1U/hTnRs2pKkYcGtxVZsjWY021wbKRNsQHBCKy3FNw6T/ruITM2pVGjS1o0l
+	istLQKXfcRs74qr+UJTqHm+cxZf7xP9XswOHzCHbvkvwrJzNqJ3zkh1BsHG7TBNhK3XTBSNHbPH5X
+	O2U+Cs8tJocfp1npDaeQe7KPClx8IRFGPHgF2CezLEvTVE7HN/5gH6Z9UIYfgrMRl1oUULhNNv1oQ
+	/6ls/i6corw2fASCtmG0xVIWEYpk2aLtB5ekznh+9Br3o4D9X1zXQPpXWiPtdnGaehOJz7hQx3ryl
+	PYfPHuXg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kiFqy-0003v0-8H; Thu, 26 Nov 2020 11:54:24 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1kiFrB-00040y-GW; Thu, 26 Nov 2020 11:54:37 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kiFq1-0003cP-0Z; Thu, 26 Nov 2020 11:53:27 +0000
-Received: by mail-pg1-x532.google.com with SMTP id t3so1546201pgi.11;
- Thu, 26 Nov 2020 03:53:24 -0800 (PST)
+ id 1kiFq5-0003db-BE; Thu, 26 Nov 2020 11:53:31 +0000
+Received: by mail-pg1-x542.google.com with SMTP id s63so1553411pgc.8;
+ Thu, 26 Nov 2020 03:53:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=tYTwl9UyzE7O08dqCyL0rs00lmC5U5Wi10EjecyWl6k=;
- b=TxZnp9EEKj1GWsDhJ5bzUL1FFWUksdJ07SGVOVtK+eUCdtflTx0DH0HP7AKZo1xXge
- /TCVIn0JjeLSjRTE1QKN9PjjisDUtrnX2vJqr31endeGW/DnYhKCBbNk9X5uMt/51mQf
- Pgz5XuYSOJRvFbpNu3sqUj2sYiZlifdvH3iGlPGUKbKp3mFY6kEZliIkrE1sOBba53vd
- OV0fjKiZlW8HIsadc7Apus3je37TVR5KfDrJxsrTB7whvI9hS6QC8i8U503vGBxKsxHa
- hC0HNy6DiOo7g5RN2KL6qz7g32MNtbnEpB+whrpbXWcvhMKIAyEdxV+StiW2M7Nw+jEp
- 1ukg==
+ bh=H/noxsdqbHTy7YTJLMe8Q0bNJzadLfFfvDoNP+7iW/w=;
+ b=bJU25zwAVPJLYkFyHYvalMdGzuRUPkroRW17lec6/IRVNpTmqgz5VQefEmlje4KJou
+ wNR9O2nW4LhejshofYdMtYFuV0jn1m7tNGXCauthD4DFOxODS7WHZW01o6qwxUaE2/Vq
+ nrs5LQUrKsjhu9PPku4NsVhlvZq5RGY1Z+E1x/bYURRKXmGevbO3uQb+LtrGihi/Pi0q
+ u5+SdRwRp6F+h/iLGQUtBoj9+8ONWlv1XKUNY+HUVmuuHRb9zJFVggXbUokXgPlZKplp
+ BBIeU5CHNp3LBNm4o0U9KNiiNaplx4jwhqYtFWhtOHhB2dNKCk0Tgo+2QU4GSQWjeIPb
+ vXjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=tYTwl9UyzE7O08dqCyL0rs00lmC5U5Wi10EjecyWl6k=;
- b=P3lCR3YEb+9//GWzfKv6x5URdB0hGgICrXlx5ZXzss5DKGYbKF3Mv74Lx7XcKNPcpn
- DgQkVKMN4jPJphtif/L9pyCrG3igVzjnBG0kOVhJ7s7Rxo5eSz93bqWM77biSwZLl9gp
- s/9zioxm/GMqYfEzOtnyOp0VcfEYJf5C8WNQSPUz5pUH3YOw3VG8Eig2N6kNOHJtC6Vf
- GOUaqoRhpvhCeYJSsFKD5qHgj3C6nLmAeA1ph1dEBWpb4lZiokbbS/40mKaPqYcPgfDO
- LkEbALvznhvzUQ05qV6oZOxkmFgHpPUVgvpu0PPHCbjuBN0VHE/GZKSbMoUU8UowO+rb
- WiWQ==
-X-Gm-Message-State: AOAM5303Bp55B3qTuuV30uK9dgnB+6SIY9FNRshf1QfmqK+lsr9csLip
- jrSY3+RWSACgdakZ7hfg/Xw=
-X-Google-Smtp-Source: ABdhPJx+KiR9rXRtoRf1/iQ/w47KqjvKuGz+YtSpLuqMd2uSMB9voMZ/xGsHYbw/ayXrIZchFpysTQ==
-X-Received: by 2002:a17:90b:1918:: with SMTP id
- mp24mr3135741pjb.45.1606391602773; 
- Thu, 26 Nov 2020 03:53:22 -0800 (PST)
+ bh=H/noxsdqbHTy7YTJLMe8Q0bNJzadLfFfvDoNP+7iW/w=;
+ b=fBoUg/tLYijs4KWjYqJWxvEiIZXPzMEVkE8492TcC2k/8VQvqWfMJv4anroh2iNeD+
+ rq0mjoUOReXwCV5khkGWIdYkKFqBy10rjl1h6ZsL4aZaZjwjibeJB/HL9Vyqyu+NiiyL
+ GgoZxI6cwtx8YscAWH/x3QTPnG48Q86pnDuW7tBmeW2NFa1WxJOBf7wESDtn0wLnvOCO
+ KjGkxa+XmQPdhUaixEdwJCw0HUmkp4UAxvtHiahJmMRKqqaTqSxqauPdnfMLHPOKFVzR
+ nO5167IXuW1ZOPWCVI26BtlX4LBXZBO3NFNW+IZg7qXN1jqC2hWlTHQHhCaveaVr5zsh
+ fW+g==
+X-Gm-Message-State: AOAM533oT3PEed2+7DRm7HbRxS7lK3ri3T5zoqm7eQsb9kDjJgOgn8CK
+ eJFsngteVmFWrX1Z68UzCzU=
+X-Google-Smtp-Source: ABdhPJy59FZOddM7Bn6UIyFd5SykaUuV/ItpRFbHHEDzAliJZnRNdV0Tblq0c9F8zO5KC/nNMVuomg==
+X-Received: by 2002:a17:90a:a10c:: with SMTP id
+ s12mr3371776pjp.86.1606391607106; 
+ Thu, 26 Nov 2020 03:53:27 -0800 (PST)
 Received: from localhost.localdomain ([101.10.31.14])
- by smtp.gmail.com with ESMTPSA id r4sm4721617pgs.54.2020.11.26.03.53.18
+ by smtp.gmail.com with ESMTPSA id r4sm4721617pgs.54.2020.11.26.03.53.23
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 26 Nov 2020 03:53:22 -0800 (PST)
+ Thu, 26 Nov 2020 03:53:26 -0800 (PST)
 From: Gene Chen <gene.chen.richtek@gmail.com>
 To: jacek.anaszewski@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
  matthias.bgg@gmail.com
-Subject: [PATCH v9 4/6] dt-bindings: leds: common: Increase LED_COLOR_ID_*
- maximum size
-Date: Thu, 26 Nov 2020 19:37:32 +0800
-Message-Id: <1606390654-6075-5-git-send-email-gene.chen.richtek@gmail.com>
+Subject: [PATCH v9 5/6] dt-bindings: leds: Add bindings for MT6360 LED
+Date: Thu, 26 Nov 2020 19:37:33 +0800
+Message-Id: <1606390654-6075-6-git-send-email-gene.chen.richtek@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1606390654-6075-1-git-send-email-gene.chen.richtek@gmail.com>
 References: <1606390654-6075-1-git-send-email-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201126_065327_111592_888017E7 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20201126_065329_695428_3ED36CA2 
+X-CRM114-Status: GOOD (  15.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,26 +107,184 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Gene Chen <gene_chen@richtek.com>
 
-Increase LED_COLOR_ID maximum size for LED_COLOR_ID_RGB
+Add bindings document for LED support on MT6360 PMIC
 
 Signed-off-by: Gene Chen <gene_chen@richtek.com>
 ---
- Documentation/devicetree/bindings/leds/common.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../devicetree/bindings/leds/leds-mt6360.yaml      | 164 +++++++++++++++++++++
+ 1 file changed, 164 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6360.yaml
 
-diff --git a/Documentation/devicetree/bindings/leds/common.yaml b/Documentation/devicetree/bindings/leds/common.yaml
-index a2a541b..0c9f912 100644
---- a/Documentation/devicetree/bindings/leds/common.yaml
-+++ b/Documentation/devicetree/bindings/leds/common.yaml
-@@ -43,7 +43,7 @@ properties:
-       LED_COLOR_ID available, add a new one.
-     $ref: /schemas/types.yaml#definitions/uint32
-     minimum: 0
--    maximum: 8
-+    maximum: 9
- 
-   function-enumerator:
-     description:
+diff --git a/Documentation/devicetree/bindings/leds/leds-mt6360.yaml b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
+new file mode 100644
+index 0000000..b2ffbc6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
+@@ -0,0 +1,164 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/leds/leds-mt6360.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: LED driver for MT6360 PMIC from MediaTek Integrated.
++
++maintainers:
++  - Gene Chen <gene_chen@richtek.com>
++
++description: |
++  This module is part of the MT6360 MFD device.
++  see Documentation/devicetree/bindings/mfd/mt6360.yaml
++  Add MT6360 LED driver include 2-channel Flash LED with torch/strobe mode,
++  and 4-channel RGB LED support Register/Flash/Breath Mode
++
++properties:
++  compatible:
++    const: mediatek,mt6360-led
++
++  "#address-cells":
++    const: 1
++
++  "#size-cells":
++    const: 0
++
++patternProperties:
++  "^led@[0-6]$":
++    type: object
++    $ref: common.yaml#
++    description:
++      Properties for a single LED.
++
++    properties:
++      reg:
++        description: Index of the LED.
++        enum:
++          - 0 # LED output INDICATOR1_RED
++          - 1 # LED output INDICATOR1_GREEN
++          - 2 # LED output INDICATOR1_BLUE
++          - 3 # LED output INDICATOR2_ML
++          - 4 # LED output FLED1
++          - 5 # LED output FLED2
++          - 6 # LED output MULTICOLOR
++
++unevaluatedProperties: false
++
++required:
++  - compatible
++  - "#address-cells"
++  - "#size-cells"
++
++additionalProperties: false
++
++examples:
++ - |
++   #include <dt-bindings/leds/common.h>
++   led-controller {
++     compatible = "mediatek,mt6360-led";
++     #address-cells = <1>;
++     #size-cells = <0>;
++
++     led@3 {
++       reg = <3>;
++       function = LED_FUNCTION_MOONLIGHT;
++       color = <LED_COLOR_ID_WHITE>;
++       led-max-microamp = <150000>;
++     };
++     led@4 {
++       reg = <4>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <1>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++     led@5 {
++       reg = <5>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <2>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++     led@6 {
++       reg = <6>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_RGB>;
++       led-max-microamp = <24000>;
++       #address-cells = <1>;
++       #size-cells = <0>;
++
++       led@0 {
++         reg = <0>;
++         function = LED_FUNCTION_INDICATOR;
++         color = <LED_COLOR_ID_RED>;
++       };
++       led@1 {
++         reg = <1>;
++         function = LED_FUNCTION_INDICATOR;
++         color = <LED_COLOR_ID_GREEN>;
++       };
++       led@2 {
++         reg = <2>;
++         function = LED_FUNCTION_INDICATOR;
++         color = <LED_COLOR_ID_BLUE>;
++       };
++     };
++   };
++
++ - |
++
++   led-controller {
++     compatible = "mediatek,mt6360-led";
++     #address-cells = <1>;
++     #size-cells = <0>;
++
++     led@0 {
++       reg = <0>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_RED>;
++       led-max-microamp = <24000>;
++     };
++     led@1 {
++       reg = <1>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_GREEN>;
++       led-max-microamp = <24000>;
++     };
++     led@2 {
++       reg = <2>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_BLUE>;
++       led-max-microamp = <24000>;
++     };
++     led@3 {
++       reg = <3>;
++       function = LED_FUNCTION_MOONLIGHT;
++       color = <LED_COLOR_ID_WHITE>;
++       led-max-microamp = <150000>;
++     };
++     led@4 {
++       reg = <4>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <1>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++     led@5 {
++       reg = <5>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <2>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++   };
++...
 -- 
 2.7.4
 
