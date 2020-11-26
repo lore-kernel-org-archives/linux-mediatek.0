@@ -2,75 +2,77 @@ Return-Path: <SRS0=o4uA=FA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8EBDAC63777
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 09:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39E5DC56202
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 09:29:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01E2C20B1F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 09:00:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8B87B21D91
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2020 09:29:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FqNmX0tk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kcNY5vax"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01E2C20B1F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U6easbTt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B87B21D91
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=hisilicon.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=A8OJ/76tf4Vm09gOyx27cMahzWcDGsNc4YlXQDDnbI4=; b=FqNmX0tkxKtE0Az4gWpQq54JVT
-	sYIEnT26D/uauOGnAiNrC3CISdPHQj6K2YpSeoOmqblXniJ5Z21uBPcYQqlyn1lT+WGbRP4Bs2Cix
-	GmtCmjdfTwC6m2Hb7zmTagjMnsznJphaTttOrC4dHHN48+PuLWPdOxhv6p1oBZGZX05LkCs7JPFv1
-	tRrzI34y5cBeipvIxl58UJzgNoP5XflGisKE7bJvuR5UcZVGsmkQAh6zdIiN8vjuik0swD17B96cW
-	bXtVNGuhTQs0ZgP0uIRIvMLNCX3qPKiG19o/v0HFKGT50PJO3edm3360ocngKS0YzFqcnX73h1kRp
-	PD/ciAww==;
+	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	 bh=Nc/hWyf1GQUwulYaz9xgViFcWfZvUk4CT3mKjdpjCjk=; b=U6easbTt69z5Q5zYhPbf27Jsv
+	FMBhA+jQSSW9qopZbhNUYSCpwJvSGyv7OmbC5ZklYJJT7aWkprsKzcSRJJF2khlPhFZlmSVzo1HkN
+	1Ths6duNr0EOx8z1XK/pGRXqCjd7J7dzDqfEhKLoa2zqBuJEHh2tZ1Je90GEJ3O0UzZUQo/7nQ84d
+	cOxjRYniSZvTiN+x5UEVkklyPDOocHPdYaz0bk0qGlCCiHXNwyjEpCnqOgPUg3FeEeTzDbRTdat5s
+	SjdBTcH+KSTR3bS5iF8A6eFDDC0uKKqJNLtK2S5gurDEQCnVX15AYiuaL7GfehZcf9ojnE89vl/8U
+	tGcYe/4rQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kiD8P-0004cw-1N; Thu, 26 Nov 2020 09:00:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kiDaz-0006e0-Ln; Thu, 26 Nov 2020 09:29:45 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kiD8K-0004bU-WE
- for linux-mediatek@lists.infradead.org; Thu, 26 Nov 2020 09:00:11 +0000
-X-UUID: 052c97071a7e497f927685f1737af47c-20201126
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=50Gu0zVHYq9AuyBsR3Y/85eHF/LphWSTrBmkHHTudSc=; 
- b=kcNY5vaxq/JSdjyXmqWo/Qe2iroHhvwjECE9oCNyF3JxN4Itp7nplJvFqdmGPueBhoSUS38MZggJMX9gOZevnIaFEwaUuN49BbGAPR+vloUbdw4EfL/UWTvzNEem2pfONzm3R5vMbxkp0VWLv/Hdq0uEcG9sgnqPMLgbVFWK9ak=;
-X-UUID: 052c97071a7e497f927685f1737af47c-20201126
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 920740866; Thu, 26 Nov 2020 01:00:02 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 26 Nov 2020 00:59:58 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 26 Nov 2020 16:59:58 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 26 Nov 2020 16:59:58 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH] mt76: mt7915: fix ht mcs in mt7915_mcu_get_rx_rate()
-Date: Thu, 26 Nov 2020 16:59:18 +0800
-Message-ID: <20201126085918.1222-1-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kiDav-0006dQ-PR
+ for linux-mediatek@lists.infradead.org; Thu, 26 Nov 2020 09:29:43 +0000
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.55])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4ChXWh6Q6Pz4xym;
+ Thu, 26 Nov 2020 17:29:04 +0800 (CST)
+Received: from dggemi710-chm.china.huawei.com (10.3.20.109) by
+ DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Thu, 26 Nov 2020 17:29:31 +0800
+Received: from dggemi761-chm.china.huawei.com (10.1.198.147) by
+ dggemi710-chm.china.huawei.com (10.3.20.109) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1913.5; Thu, 26 Nov 2020 17:29:32 +0800
+Received: from dggemi761-chm.china.huawei.com ([10.9.49.202]) by
+ dggemi761-chm.china.huawei.com ([10.9.49.202]) with mapi id 15.01.1913.007;
+ Thu, 26 Nov 2020 17:29:32 +0800
+From: "Song Bao Hua (Barry Song)" <song.bao.hua@hisilicon.com>
+To: Miles Chen <miles.chen@mediatek.com>
+Subject: RE: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
+ addresses
+Thread-Topic: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
+ addresses
+Thread-Index: AQHWwWNz5MRhXZKR2UCNja39TEhHcanaA0sg//+FDQCAAIXFIIAAGMsQ
+Date: Thu, 26 Nov 2020 09:29:31 +0000
+Message-ID: <94ffb814f1dd4c6dbf6c501985ce0410@hisilicon.com>
+References: <20201123063835.18981-1-miles.chen@mediatek.com>
+ <24d32889abb1412abcd4e868a36783f9@hisilicon.com>
+ <1606376946.17565.6.camel@mtkswgap22> 
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.126.202.201]
 MIME-Version: 1.0
-X-MTK: N
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201126_040009_800155_FF47DC26 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201126_042942_341280_C050D5B5 
+X-CRM114-Status: GOOD (  40.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,43 +84,193 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Yiwei Chung <yiwei.chung@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>
+Cc: "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Alexey Dobriyan <adobriyan@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mcs value of HT mode reported by mt7915_mcu_get_rx_rate()
-has already been converted to the expected format.
 
-Tested-by: Yiwei Chung <yiwei.chung@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 600ab7a..71f9140 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3524,7 +3524,9 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 		break;
- 	case MT_PHY_TYPE_HT:
- 	case MT_PHY_TYPE_HT_GF:
--		rate->mcs += (rate->nss - 1) * 8;
-+		if (rate->mcs > 31)
-+			return -EINVAL;
-+
- 		flags |= RATE_INFO_FLAGS_MCS;
- 
- 		if (res->gi)
--- 
-2.17.1
+> -----Original Message-----
+> From: Song Bao Hua (Barry Song)
+> Sent: Thursday, November 26, 2020 8:53 PM
+> To: 'Miles Chen' <miles.chen@mediatek.com>
+> Cc: Alexey Dobriyan <adobriyan@gmail.com>; Andrew Morton
+> <akpm@linux-foundation.org>; linux-kernel@vger.kernel.org;
+> linux-fsdevel@vger.kernel.org; linux-mediatek@lists.infradead.org;
+> wsd_upstream@mediatek.com
+> Subject: RE: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
+> addresses
+> 
+> 
+> 
+> > -----Original Message-----
+> > From: Miles Chen [mailto:miles.chen@mediatek.com]
+> > Sent: Thursday, November 26, 2020 8:49 PM
+> > To: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>
+> > Cc: Alexey Dobriyan <adobriyan@gmail.com>; Andrew Morton
+> > <akpm@linux-foundation.org>; linux-kernel@vger.kernel.org;
+> > linux-fsdevel@vger.kernel.org; linux-mediatek@lists.infradead.org;
+> > wsd_upstream@mediatek.com
+> > Subject: RE: [RESEND PATCH v1] proc: use untagged_addr() for
+> pagemap_read
+> > addresses
+> >
+> > On Thu, 2020-11-26 at 07:16 +0000, Song Bao Hua (Barry Song) wrote:
+> > >
+> > > > -----Original Message-----
+> > > > From: Miles Chen [mailto:miles.chen@mediatek.com]
+> > > > Sent: Monday, November 23, 2020 7:39 PM
+> > > > To: Alexey Dobriyan <adobriyan@gmail.com>; Andrew Morton
+> > > > <akpm@linux-foundation.org>
+> > > > Cc: linux-kernel@vger.kernel.org; linux-fsdevel@vger.kernel.org;
+> > > > linux-mediatek@lists.infradead.org; wsd_upstream@mediatek.com; Miles
+> > > > Chen <miles.chen@mediatek.com>
+> > > > Subject: [RESEND PATCH v1] proc: use untagged_addr() for pagemap_read
+> > > > addresses
+> > > >
+> > > > When we try to visit the pagemap of a tagged userspace pointer, we find
+> > > > that the start_vaddr is not correct because of the tag.
+> > > > To fix it, we should untag the usespace pointers in pagemap_read().
+> > > >
+> > > > I tested with 5.10-rc4 and the issue remains.
+> > > >
+> > > > My test code is baed on [1]:
+> > > >
+> > > > A userspace pointer which has been tagged by 0xb4:
+> 0xb400007662f541c8
+> > > >
+> > > > === userspace program ===
+> > > >
+> > > > uint64 OsLayer::VirtualToPhysical(void *vaddr) {
+> > > > 	uint64 frame, paddr, pfnmask, pagemask;
+> > > > 	int pagesize = sysconf(_SC_PAGESIZE);
+> > > > 	off64_t off = ((uintptr_t)vaddr) / pagesize * 8; // off =
+> > > > 0xb400007662f541c8 / pagesize * 8 = 0x5a00003b317aa0
+> > > > 	int fd = open(kPagemapPath, O_RDONLY);
+> > > > 	...
+> > > >
+> > > > 	if (lseek64(fd, off, SEEK_SET) != off || read(fd, &frame, 8) != 8) {
+> > > > 		int err = errno;
+> > > > 		string errtxt = ErrorString(err);
+> > > > 		if (fd >= 0)
+> > > > 			close(fd);
+> > > > 		return 0;
+> > > > 	}
+> > > > ...
+> > > > }
+> > > >
+> > > > === kernel fs/proc/task_mmu.c ===
+> > > >
+> > > > static ssize_t pagemap_read(struct file *file, char __user *buf,
+> > > > 		size_t count, loff_t *ppos)
+> > > > {
+> > > > 	...
+> > > > 	src = *ppos;
+> > > > 	svpfn = src / PM_ENTRY_BYTES; // svpfn == 0xb400007662f54
+> > > > 	start_vaddr = svpfn << PAGE_SHIFT; // start_vaddr ==
+> > > > 0xb400007662f54000
+> > > > 	end_vaddr = mm->task_size;
+> > > >
+> > > > 	/* watch out for wraparound */
+> > > > 	// svpfn == 0xb400007662f54
+> > > > 	// (mm->task_size >> PAGE) == 0x8000000
+> > > > 	if (svpfn > mm->task_size >> PAGE_SHIFT) // the condition is true
+> because
+> > > > of the tag 0xb4
+> > > > 		start_vaddr = end_vaddr;
+> > > >
+> > > > 	ret = 0;
+> > > > 	while (count && (start_vaddr < end_vaddr)) { // we cannot visit
+> correct
+> > > > entry because start_vaddr is set to end_vaddr
+> > > > 		int len;
+> > > > 		unsigned long end;
+> > > > 		...
+> > > > 	}
+> > > > 	...
+> > > > }
+> > > >
+> > > > [1]
+> > > >
+> > https://github.com/stressapptest/stressapptest/blob/master/src/os.cc#L158
+> > > >
+> > > > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> > > > ---
+> > > >  fs/proc/task_mmu.c | 4 ++--
+> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > >
+> > > > diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
+> > > > index 217aa2705d5d..e9a70f7ee515 100644
+> > > > --- a/fs/proc/task_mmu.c
+> > > > +++ b/fs/proc/task_mmu.c
+> > > > @@ -1599,11 +1599,11 @@ static ssize_t pagemap_read(struct file *file,
+> > char
+> > > > __user *buf,
+> > > >
+> > > >  	src = *ppos;
+> > > >  	svpfn = src / PM_ENTRY_BYTES;
+> > > > -	start_vaddr = svpfn << PAGE_SHIFT;
+> > > > +	start_vaddr = untagged_addr(svpfn << PAGE_SHIFT);
+> > > >  	end_vaddr = mm->task_size;
+> > > >
+> > > >  	/* watch out for wraparound */
+> > > > -	if (svpfn > mm->task_size >> PAGE_SHIFT)
+> > > > +	if (start_vaddr > mm->task_size)
+> > > >  		start_vaddr = end_vaddr;
+> > >
+> > > Wouldn't the untag be done by the user reading pagemap file?
+> > > With this patch, even users pass an illegal address, for example,
+> > > users put a tag on a virtual address which hasn't really a tag,
+> > > they will still get the right pagemap.
+> > >
+> >
+> >
+> > I run arm64 devices.
+> > If the tagged pointer is enabled, the ARM top-byte Ignore is also
+> > enabled. It means the top-byte is always be ignored.
+> >
+> > I think the kernel should not break existing userspace program, so it's
+> > better to handle the tagged user pointer in kernel.
+> >
+> > grep 'untag' mm -RnH to see existing examples.
+> 
+> I see your point. But the existing examples such as gup etc are receiving
+> an address from userspace.
+> 
+> pagemap isn't getting an address, it is getting a file offset which
+> should be figured out by userspace correctly. While we read a file,
+> we should make sure the offset is in the range of the file length.
+
+BTW, personally I don't object to this patch. I just feel a little bit weird
+as the parameter in pagemap_read is an offset in one file rather than
+a virtual address.
+
+if there are many user programs which are written without the
+awareness of tag while reading pagemap or if other people like
+this patch, it might make sense to have it in kernel :-)
+
+> 
+> >
+> >
+> > thanks,
+> > Miles
+> >
+> > > >
+> > > >  	/*
+> > > > --
+> > > > 2.18.0
+> > >
+> 
+
+Thanks
+Barry
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
