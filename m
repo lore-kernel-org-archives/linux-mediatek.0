@@ -2,24 +2,23 @@ Return-Path: <SRS0=3jAl=FB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 401B5C63777
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 11:20:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D453C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 11:23:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A9E1D20B80
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 11:20:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B9EAB21534
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 11:23:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SLL4tIHt";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="oMcX1SSP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A9E1D20B80
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rt5KnnMU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VtMIQeon"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9EAB21534
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -28,67 +27,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4P1MICwv/gjc103kxF6kNTu8uAUZ0gOf9eJeOhBOOEM=; b=SLL4tIHt18qdznPTZtC/vkDBf
-	RDFrtYf2fYzQ6ssY26SC85EgMZU7uqn68kGewERnIB8ulA8Td3d5+El6+XGynfv+AXR7F20NtZKON
-	9XxKoubPqnr9GTpRKRxvIaNiBL1glsxCZLdafYFOQzsxNWiapLQ5UXg3dg51pjqvkEPUKgvktu66g
-	YT9rct1rV5R4/Gd1AdhV5anEb+J9deYQBoYuHUi4qgWx/taGl8t4A4yjlKJqp0MddN2TtU0ARHJwJ
-	kpgV+3qQJ2It5fFlsPL4FGAnBr1v4wvfha4CoZyiwvjsVpDtzNnEO3fC2ZNZiShycm8FtzoDgxP/y
-	yoUNJLljA==;
+	 bh=T1FJ32LacNZCn0zgYE4lS7vOfQAClyFZ2dd+kvZaImA=; b=rt5KnnMUc19HngY675wEuAb2U
+	DYlBsu4Sw1ULC1EbOlBI6ltw3OEB/j2o2HjbSWWCDLLHnWrFNi0FdLhjT8A55flCQ9txbd1cfcRjb
+	1tIHEP89XWkP1biyQMRjJUGBueVsLhFGjHN/dFAkNaR9WY8EqyIVueLI0uLRSixWmvzvShbsl5S8x
+	Rneizf6yOEVCbgkeRhVlzLCst7QtDg/d9i8IKORBbPsRHzkQtmZ7U2I3bvg7tXOfQJhkPnY2kSsHZ
+	3oliQuGCGDvAHxoek/aO9SNAxGflVqZcuftzYJRvw7DrCjtb44yF6zGbuEaH6SQv67YCBMBpZ16m4
+	KEwGmtzQA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kibns-00071Q-Su; Fri, 27 Nov 2020 11:20:40 +0000
+	id 1kibqn-0007rS-Gt; Fri, 27 Nov 2020 11:23:41 +0000
 Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kibnr-00070q-7y; Fri, 27 Nov 2020 11:20:40 +0000
-Received: by mail-wr1-x441.google.com with SMTP id i2so5196060wrs.4;
- Fri, 27 Nov 2020 03:20:38 -0800 (PST)
+ id 1kibqk-0007px-7b; Fri, 27 Nov 2020 11:23:39 +0000
+Received: by mail-wr1-x441.google.com with SMTP id r3so5228532wrt.2;
+ Fri, 27 Nov 2020 03:23:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=cxB5L4+nF4sAICEXNlH6T+45cqgn3iHBYM/XseYVDT0=;
- b=oMcX1SSPuZ7WZNlcfoLpo5kUKsjOQsj7bbxQ+lSji6KOD5rEscQ/FDo0JAKzLmYlfS
- NZuaij9DXI5uOth4VRJ7/pkSVEQ0Ay5D3gIEI9AXJzfAnnNM9hFz4l/IaxhUJuzzNws8
- tIfhOuGPV7vS1wfaOYCMw23AKZ1Yjp0DK0Z7p7g6AQzZz86cJT42EmpKwoYRChRV0mG7
- JmJ5U7H84XyU+eDGQxjYdOy1CMxgjuIABGf7lYGTiR+T0P+Nv0lhUsr5CiKbkxE7Vm7v
- VypW2u4Qziv8rhqzkGAwhh3Mt+Fu8JcAN2RY7bRIRPMKf/tsK1+rWf72nX9vLpdKdw2w
- /SOw==
+ bh=LhhiEW4KSlNFZUbpyyVfomsLPj+WD51ZBQLOEOaXXA4=;
+ b=VtMIQeonz59RDuOkHzr0iTf6DwQwS647PwRLUPfmoqqVOmnzv6KGmYvJ17YWGeOIq3
+ Nqu2yCrgPZw9CEYtmxwL6wY8BKOUmEr3ZF2jr8l7SZrkpgMVll+OpErOCwsGVoWJhsr3
+ rZQDX9Nz3dlAE2kc3o57fDUVfeacBzA/mWByrHSnx6KVZ+YFhEnDKanZ9sMawAjSc2U/
+ xxYAJvSLxg+yZMkFmStdOS66jcl+whTAwofjIvBZtQJTbO8HvqKXUC3Lif2Cxg5YTaWc
+ pnLv8GRqnAAj8YtqRiWoagqRTpTM5n7nPuitC0RhvUPK8CkRyOM5o1wvY967JJBSue5c
+ rlyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=cxB5L4+nF4sAICEXNlH6T+45cqgn3iHBYM/XseYVDT0=;
- b=VIXX6i6YpdaHI3E2UuqbqYLVp5sbLkPoV3kYitA8arJK65jkw6XC1DVULGo+nrK+dB
- ZPEksfxBNGw6FIrqTI+khMrzEN4zgaONkXtZK6L7AMcL9xHw4U2rSBZtk8D+ifs/kQGb
- iQX2Cx1kww/at8947btk1B1dsHOhHM0XqqhTbS7xgqrn4X6rhgSMYke83jwrwIztl/jC
- S0/+pPbrNUMLnea/tonr2Z2+OUIX1ieLxBzg1oTxkIIcn1o5i94I+Zu87LHWnV/d0tn+
- Yu0Eyg0xRVs7c1t6NXgua8oeMOx0VKRGw3A0f065RRzNcVXh8jjv8enuRpEEyUKxHymR
- PuJA==
-X-Gm-Message-State: AOAM530yE82D+OfQQ5WWlwMPRvJEkqTdESSGDxBZIapADBS3cLi6fW+L
- r+GmhnGalUtwGb9barUK4O+zkiYzz99EKw==
-X-Google-Smtp-Source: ABdhPJwrYIqMkKez+ccJKOv7rpRAHruS5C1aifhxSJlqY+fgx0LKeQ89hHcgT/0TXhf2e0s2uxvG8w==
-X-Received: by 2002:adf:b78d:: with SMTP id s13mr9631926wre.383.1606476037970; 
- Fri, 27 Nov 2020 03:20:37 -0800 (PST)
+ bh=LhhiEW4KSlNFZUbpyyVfomsLPj+WD51ZBQLOEOaXXA4=;
+ b=tyMwzlPvU4dwzrBScaQDiaNYPGKJmcLgVyIL/i9WxQ6AfpsVuJnYOC07vG2sAxEa+v
+ XntGX20J5ZbEKw0O4vvVJCBmo5qTq+0XGzDxIKdPORxjM4hPkBxeNoZxbGWu9JfuGWZG
+ 95g7Xy7yjOPrdHLNihN1NC08usgAPuazSHsqwQhiUaPjq9yVrvjVDg3wTyE0KGfIFHuL
+ 3K6BAtb2qilN5TeK4XlXsH8tmiaRSLyPLLATxwlentTlCaL9+EdMMfU5F1KOiqRbWtHp
+ 2bVnnWlLyAMrixehM6g3RvHYKgQo7hnE4vefLWsjtwhaVgHWnQduLEgznBt/7xU64X9v
+ H+Cg==
+X-Gm-Message-State: AOAM533QCzOQFWjDrgJ3R3gEioRDquDVdC7TjwfUsQXenOG+vj54oM6R
+ Hslljz5ha06x8PbijUguvtj6MJBwKgKsSQ==
+X-Google-Smtp-Source: ABdhPJxY/2/QR/4yr5F1mQgU87OQIFws27IhKyl9W840Q9+BZaUu+NSpgPsf2FlkbuSiMwOT17tYFw==
+X-Received: by 2002:a5d:49ce:: with SMTP id t14mr9851504wrs.75.1606476215624; 
+ Fri, 27 Nov 2020 03:23:35 -0800 (PST)
 Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id 189sm13678368wmb.18.2020.11.27.03.20.36
+ by smtp.gmail.com with ESMTPSA id v6sm15302413wrb.53.2020.11.27.03.23.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Nov 2020 03:20:37 -0800 (PST)
-Subject: Re: [PATCH] arm64: dts: mt8183: Add pwm and backlight node
+ Fri, 27 Nov 2020 03:23:34 -0800 (PST)
+Subject: Re: [PATCH 0/3] arm64: dts: mediatek: Add dsi and display support for
+ MT8183 based boards
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, linux-kernel@vger.kernel.org
-References: <20201124041253.4181273-1-hsinyi@chromium.org>
- <8484ec3b-14aa-f0de-28d6-f360c491515b@collabora.com>
+ linux-kernel@vger.kernel.org
+References: <20201127104930.1981497-1-enric.balletbo@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <acb813d6-8643-5b9a-2ae1-bc03f2a37ffa@gmail.com>
-Date: Fri, 27 Nov 2020 12:20:36 +0100
+Message-ID: <96ae2394-ed66-f233-e858-00890813793c@gmail.com>
+Date: Fri, 27 Nov 2020 12:23:33 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <8484ec3b-14aa-f0de-28d6-f360c491515b@collabora.com>
+In-Reply-To: <20201127104930.1981497-1-enric.balletbo@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201127_062039_329146_24E18316 
-X-CRM114-Status: GOOD (  20.01  )
+X-CRM114-CacheID: sfid-20201127_062338_307886_D249C370 
+X-CRM114-Status: GOOD (  16.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,8 +99,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Collabora Kernel ML <kernel@collabora.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -109,106 +109,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 25/11/2020 11:24, Enric Balletbo i Serra wrote:
-> Hi Hsin-Yi,
+On 27/11/2020 11:49, Enric Balletbo i Serra wrote:
+> Dear all,
 > 
-> Thank you for your patch.
-> 
-> On 24/11/20 5:12, Hsin-Yi Wang wrote:
->> Add pwm to mt8183 and backlight to mt8183-kukui.
->>
->> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
->> ---
-> 
-> Picked the patch and checked that pwm for the backlight is working as expected
-> on my Lenovo Ideapad Duet.
-> 
-> Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> 
+> The following patches add the required nodes to enable dsi and display
+> support for MT8183 based boards. The patches were tested on a Lenovo
+> Ideapad Duet with an out-of-tree patch that enables the display for that
+> board.
 
 Applied to v5.10-next/dts64
 
 Thanks!
 
->>   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 28 +++++++++++++++++++
->>   arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 10 +++++++
->>   2 files changed, 38 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
->> index 85f7c33ba4461..bf2ad1294dd30 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
->> @@ -19,6 +19,17 @@ chosen {
->>   		stdout-path = "serial0:115200n8";
->>   	};
->>   
->> +	backlight_lcd0: backlight_lcd0 {
->> +		compatible = "pwm-backlight";
->> +		pwms = <&pwm0 0 500000>;
->> +		power-supply = <&bl_pp5000>;
->> +		enable-gpios = <&pio 176 0>;
->> +		brightness-levels = <0 1023>;
->> +		num-interpolated-steps = <1023>;
->> +		default-brightness-level = <576>;
->> +		status = "okay";
->> +	};
->> +
->>   	memory@40000000 {
->>   		device_type = "memory";
->>   		reg = <0 0x40000000 0 0x80000000>;
->> @@ -536,6 +547,17 @@ pins_clk {
->>   		};
->>   	};
->>   
->> +	pwm0_pin_default: pwm0_pin_default {
->> +		pins1 {
->> +			pinmux = <PINMUX_GPIO176__FUNC_GPIO176>;
->> +			output-high;
->> +			bias-pull-up;
->> +		};
->> +		pins2 {
->> +			pinmux = <PINMUX_GPIO43__FUNC_DISP_PWM>;
->> +		};
->> +	};
->> +
->>   	scp_pins: scp {
->>   		pins_scp_uart {
->>   			pinmux = <PINMUX_GPIO110__FUNC_TP_URXD1_AO>,
->> @@ -670,6 +692,12 @@ pins_wifi_wakeup {
->>   	};
->>   };
->>   
->> +&pwm0 {
->> +	status = "okay";
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&pwm0_pin_default>;
->> +};
->> +
->>   &scp {
->>   	status = "okay";
->>   	pinctrl-names = "default";
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> index 08a914d3a6435..a974bad899365 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> @@ -479,6 +479,16 @@ spi0: spi@1100a000 {
->>   			status = "disabled";
->>   		};
->>   
->> +		pwm0: pwm@1100e000 {
->> +			compatible = "mediatek,mt8183-disp-pwm";
->> +			reg = <0 0x1100e000 0 0x1000>;
->> +			interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_LOW>;
->> +			#pwm-cells = <2>;
->> +			clocks = <&topckgen CLK_TOP_MUX_DISP_PWM>,
->> +					<&infracfg CLK_INFRA_DISP_PWM>;
->> +			clock-names = "main", "mm";
->> +		};
->> +
->>   		i2c3: i2c@1100f000 {
->>   			compatible = "mediatek,mt8183-i2c";
->>   			reg = <0 0x1100f000 0 0x1000>,
->>
+> 
+> The patches depends on [1].
+> 
+> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=374013
+> 
+> Enric Balletbo i Serra (2):
+>    arm64: dts: mt8183: Add iommu and larb nodes
+>    arm64: dts: mt8183: Add display nodes for MT8183
+> 
+> Jitao Shi (1):
+>    arm64: dts: mt8183: Add dsi node
+> 
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 224 +++++++++++++++++++++++
+>   1 file changed, 224 insertions(+)
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
