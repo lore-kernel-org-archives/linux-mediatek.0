@@ -2,82 +2,92 @@ Return-Path: <SRS0=3jAl=FB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0897C63798
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 16:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C752C2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 16:13:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5913F20B80
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 16:11:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4BDE220786
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2020 16:13:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dUFLZQjk";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="rFq//t+8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5913F20B80
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z4a8mkoo";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="N7gWS7x5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BDE220786
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pCHLIfZhttGE48vZXB7eANVpBnnW0J4qdyGaxmodgfk=; b=dUFLZQjkfsva7QNz/XBmqBDvS
-	avDl4TLMI0Rv3yx6IPYFrTQqGt3UJOzfEXMn3/dYpztq+nioTmZopnGavywOxOdwvIw5DFGwvlbAd
-	8slab2ZFXpweOJWSI8JPcije8hi2yC7MOXiQzhtiuA3PwdZjcomGGE90Trmal3x/AvoK9iNuQfPww
-	C39AUcXbJJXlsp1J8FhvT2uKBE10JqCzsmH0oR4Du7pihkdwLCWH7CVfPYCaNcwVFpIvDD3szTncy
-	kWSYJ1UU7CDH86LY9LQcyqOaEhYHUTnkwpOEPoLqlpUF9pnpxk1Lxlx3oZBmPiocz6mQGCIrrTY1Y
-	Bq1oRzjlg==;
+	 bh=e890MTxcYy5/QnpqGdjy2dyrk4oOxeBXkkoBdeuIQ8s=; b=Z4a8mkoofwiMFoasq7LtX5V6T
+	NlZqoYxwDqo5xyz7kHqsWPZjcgVUfGg6nxnfyM4rp/BYDkqisO6wf0PudDusYPUIiLigsLiOersxW
+	AiIMHxarfV0wxY+Xoj+ULEMc/KKVyYNGHTQu8/jbkHzJ8kd9nn86KA11CfPJahLgsbkXquraB3JAd
+	V2zqilYA1GaHjknETjqyGP2GsxCZMVIZzx5rjrB5FBv/tL/iEEHtpj9j5Zg+XocCmbSQx/fw8Si0M
+	pnsUfq+VoIRRRkO2rx6NTrRLK/tKlWsAA9VFiC/vBinPeqFU7mI0ngsJU60aCANb02BsWiub1KdrL
+	a9hZEpveg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kigLU-000586-FG; Fri, 27 Nov 2020 16:11:40 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1kigMk-0005Gl-1Z; Fri, 27 Nov 2020 16:12:58 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kigLP-000572-5b
- for linux-mediatek@lists.infradead.org; Fri, 27 Nov 2020 16:11:36 +0000
-Received: by mail-il1-x144.google.com with SMTP id k8so5047783ilr.4
- for <linux-mediatek@lists.infradead.org>; Fri, 27 Nov 2020 08:11:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=oLIVGdors/jvY1LZOdEC4pOzls30kNbhHy34iFDXeSg=;
- b=rFq//t+8IjH5diUpGLOUN7ZfRNM30YFN0twMHSpHm/UGk0MxD5+0oD354DZvb9t6zf
- 8MPLulmot2rq0qHu5JOgD0pm/owtY5v0t920vRHA1CeQDmDtvHV0HHDPoayTUc0ijfz7
- KSoVlvnA9pSJQStL2Iw7QfT+0fgaSbiCNLRAZ0sBdpLIYE7LtX6s8rNbvXQMLYMP1aoK
- cdb28w51Jex/GhDyY6sFH/xyNXKoGb9qMBAYASdBG5N+rvC9IuMssVMkSiH6ypS734Cb
- 2+wMGjb8UNw+3RmXWSq+Auyb7q8x6O4cu0Df8CDDnM2M5ZgKlR9OEbhg8KRwRwhXJQlK
- aSHA==
+ id 1kigMg-0005Fd-DI; Fri, 27 Nov 2020 16:12:55 +0000
+Received: by mail-wr1-x442.google.com with SMTP id i2so6120741wrs.4;
+ Fri, 27 Nov 2020 08:12:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=eXqA66SSXSjOYL7nUJMPq8DdoGjGHwevZLW6WLAEElY=;
+ b=N7gWS7x5A52K8T1zw0wAND5sZ/5XsYmmE0RCNZ2Wuy9ZUeZIIVoT/ZY2NeuhNfP7ux
+ 7Huzi2chLlyuA68tfuMVetfMpzQGD9t5WWNHEhOCaoQSyWhTkn1GqLUNT0BD6xeHy7Z2
+ A6YRxpUCcPof9j+1WMCgyzySpnsVdfVqqITxfAzcrM0vuDI9pj3PJFiiZUacgaqk+Mgj
+ YS1vaabEloZ8bf9ViOar13AYkzqjGv9PBIF1zkODv6FoKfRoxUXyxrdV1cULmcGl/LUi
+ ZIFmBkp95BINqX82z5eRaNaSJ/kA6XpGi9vqLSKGSTijln/npRSAfzAv+bg1ZV7dK1rb
+ nZMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=oLIVGdors/jvY1LZOdEC4pOzls30kNbhHy34iFDXeSg=;
- b=EUM1IM53StmUxyuq96ArSxSMhedlrlWE+l9CfmU6xKXQyMkECyednN22Di4T+UVwFW
- jfXKqmbY4MibRb1iyiTIWuyKCRYwA9C0gLN2951gTnSCqmCGnHvxzoIfxz3gQ+gi36bj
- tnNOOCcf0uMXjRXvf+3nw9Kpfr4VNpG3tJhzB+bGHt9gu2SKpm0hvFmXzwy8XiKj1pKl
- B8lYQ/MbEj2zCkDgitle5LjanyVVu05BHwjVp6azQ4Oy1Xj8PrvOzLbZS8g8PJIjjTxl
- EpdRZh0aVrjNcB1I8pVOHeuoG6Cn/gibszJE/l0whNFC5df+tjIdk+DzzY+IWiyVpibN
- SoVg==
-X-Gm-Message-State: AOAM532X0N8nLi4+X336ikzF192gVXUiPdbAK4NMJzS/7yMLsYumDZXz
- hrFDsmd2Vne/9Orp/N4wWdique3Fl5B8bagoN8naZg==
-X-Google-Smtp-Source: ABdhPJwaRqOXi6U80AZBCmE/d3ARD9FAnoZR7HmPy9JnwQSWhO1d9QbGRcR5szwcr5uw9gKmC+fNkMzV+ik2ROQT5OE=
-X-Received: by 2002:a05:6e02:47:: with SMTP id i7mr7580931ilr.57.1606493491327; 
- Fri, 27 Nov 2020 08:11:31 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=eXqA66SSXSjOYL7nUJMPq8DdoGjGHwevZLW6WLAEElY=;
+ b=Q2mrM9dEmW4vc+h2eaJJHAFOiZ2KSdymgP8cvUFa9J3LnT6kKQfeei+qQn+Jg2/alC
+ 8AVeIcp+uIKvA15n6gOIUxEgqLjHCSG8AIeD+2TDeuyqZwXwhMZFdK9k4fzBCBbpOJPe
+ 5ke/KS7H3XdhsV6ipI4KBPCraaYAka++vU7QFK2lI40q60+S8MIqPce+AwIMGX9z+fF+
+ xrzX9QeTsj9ANQvAaEvTYTkmViJQ4V3xxg6LrL7PDtietHUL4wNdCwJemDKl01ACV5Fd
+ 4/nbtLJHv12jQ4DdnJsefHqXRnAGhWQ7B69UbSKXFchL5sHoXfiiIC8KduTabbBp9qzN
+ PTfw==
+X-Gm-Message-State: AOAM532IAySLEgI3yO3SwuQ5bIH6/Wbbw/fiXMNs2A45uTEqu2Tf+23G
+ T3wxymzZL1yxazHFFpoTOvw=
+X-Google-Smtp-Source: ABdhPJzp1q4bYCuJp9sGSOAEKbZTGkCjwZtlbkOLd/Quw+3RcvdAkkCqfaO9Of2YoaLukCQ8MNcbkA==
+X-Received: by 2002:a5d:5342:: with SMTP id t2mr11489578wrv.243.1606493573151; 
+ Fri, 27 Nov 2020 08:12:53 -0800 (PST)
+Received: from ziggy.stardust ([213.195.126.134])
+ by smtp.gmail.com with ESMTPSA id z19sm13971840wmk.12.2020.11.27.08.12.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 27 Nov 2020 08:12:52 -0800 (PST)
+Subject: Re: [PATCH] MAINTAINERS: assign mediatek headers to Mediatek SoC
+ support
+To: Lukas Bulwahn <lukas.bulwahn@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20201103060733.25729-1-lukas.bulwahn@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <9bce8087-b734-d6bd-c21a-3e9701cc1d94@gmail.com>
+Date: Fri, 27 Nov 2020 17:12:51 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-References: <20201127092941.1646260-1-tzungbi@google.com>
-In-Reply-To: <20201127092941.1646260-1-tzungbi@google.com>
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-Date: Fri, 27 Nov 2020 09:11:19 -0700
-Message-ID: <CANLsYkx5FqGUe46SDwV8yYZkES66j5daFEAs9_eafiJm8RNz_A@mail.gmail.com>
-Subject: Re: [RESEND PATCH v2] remoteproc/mediatek: read IPI buffer offset
- from FW
-To: Tzung-Bi Shih <tzungbi@google.com>
+In-Reply-To: <20201103060733.25729-1-lukas.bulwahn@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201127_111135_351780_149532D7 
-X-CRM114-Status: GOOD (  25.84  )
+X-CRM114-CacheID: sfid-20201127_111254_588296_03E31243 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,172 +99,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>,
- linux-remoteproc <linux-remoteproc@vger.kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-mediatek@lists.infradead.org, Pi-Hsun Shih <pihsun@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Joe Perches <joe@perches.com>,
+ Pia Eichinger <pia.eichinger@st.oth-regensburg.de>,
+ kernel-janitors@vger.kernel.org,
+ Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>, linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 27 Nov 2020 at 02:30, Tzung-Bi Shih <tzungbi@google.com> wrote:
->
-> Reads the IPI buffer offset from the FW binary.  The information resides
-> in addr of .ipi_buffer section.
->
-> Moves scp_ipi_init() to scp_load() phase.  The IPI buffer can be
-> initialized only if the offset is clear.
->
-> Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
+
+
+On 03/11/2020 07:07, Lukas Bulwahn wrote:
+> ./include/soc/mediatek/smi.h and ./include/linux/soc/mediatek/infracfg.h
+> are currently not assigned to a specific section in MAINTAINERS.
+> 
+> ./include/soc/mediatek/smi.h is the header file for definitions in
+> ./drivers/memory/mtk-smi.c, which is assigned to the section ARM/Mediatek
+> SoC support in MAINTAINERS.
+> 
+> ./include/linux/soc/mediatek/infracfg.h is the header file for definitions
+> in ./drivers/soc/mediatek/mtk-infracfg.c, which is assigned to the section
+> ARM/Mediatek SoC support in MAINTAINERS.
+> 
+> Hence, assign those header files to ARM/Mediatek SoC support as well.
+> 
+> Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
 > ---
-> The patch bases on https://git.kernel.org/pub/scm/linux/kernel/git/andersson/remoteproc.git/log/?h=for-next
->
-> The first 2 patches in the series
-> https://patchwork.kernel.org/project/linux-remoteproc/cover/20201116084413.3312631-1-tzungbi@google.com/
-> have been merged to remoteproc for-next branch.
->
-> Follow up the discussion in
-> https://patchwork.kernel.org/project/linux-remoteproc/patch/20201116084413.3312631-4-tzungbi@google.com/#23784483
->
-> The patch breaks MTK SCP when working with legacy SCP firmware.  We're
-> aware of it and will upgrade the devices' kernel and SCP firmware
-> carefully.  Other than that, AFAICT, no other devices in the wild are
-> using this driver.
->
->  drivers/remoteproc/mtk_scp.c | 73 ++++++++++++++++++++++++------------
->  1 file changed, 49 insertions(+), 24 deletions(-)
+> Matthias, please pick this minor non-urgent cleanup patch.
+> 
+> This patch is part of an initial experiment to assign all files to
+> specific sections in MAINTAINERS. At the moment, about 3200 files are
+> currently not assigned to specific sections and maintainers.
+> 
+> If you think these cleanup patch cause more churn than value, please let
+> me know. Thanks.
+> 
+>   MAINTAINERS | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b4197e9da495..1703c7d2e146 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2066,6 +2066,8 @@ F:	arch/arm/boot/dts/mt8*
+>   F:	arch/arm/mach-mediatek/
+>   F:	arch/arm64/boot/dts/mediatek/
+>   F:	drivers/soc/mediatek/
+> +F:	include/linux/soc/mediatek/infracfg.h
+> +F:	include/soc/mediatek/smi.h
 
-This is the exact same patch that you sent here [1], that I commented
-on, and that you agreed with my assessment.
+I the most important file is missing: mtk-mmsys.h
+smi.h is part of drivers/memory and should be added to Krzysztof entry.
 
-What do you want me to do here?  What am I missing?
+Regards,
+Matthias
 
-[1]. https://patchwork.kernel.org/project/linux-remoteproc/patch/20201116084413.3312631-4-tzungbi@google.com/
 
->
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 7e0f1e1a335b..4467ed646bb1 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -21,7 +21,7 @@
->  #include "remoteproc_internal.h"
->
->  #define MAX_CODE_SIZE 0x500000
-> -#define SCP_FW_END 0x7C000
-> +#define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
->
->  /**
->   * scp_get() - get a reference to SCP.
-> @@ -119,16 +119,24 @@ static void scp_ipi_handler(struct mtk_scp *scp)
->         wake_up(&scp->ack_wq);
->  }
->
-> -static int scp_ipi_init(struct mtk_scp *scp)
-> +static int scp_elf_read_ipi_buf_addr(struct mtk_scp *scp,
-> +                                    const struct firmware *fw,
-> +                                    size_t *offset);
-> +
-> +static int scp_ipi_init(struct mtk_scp *scp, const struct firmware *fw)
->  {
-> -       size_t send_offset = SCP_FW_END - sizeof(struct mtk_share_obj);
-> -       size_t recv_offset = send_offset - sizeof(struct mtk_share_obj);
-> +       int ret;
-> +       size_t offset;
-> +
-> +       ret = scp_elf_read_ipi_buf_addr(scp, fw, &offset);
-> +       if (ret)
-> +               return ret;
-> +       dev_info(scp->dev, "IPI buf addr %#010zx\n", offset);
->
-> -       /* shared buffer initialization */
-> -       scp->recv_buf =
-> -               (struct mtk_share_obj __iomem *)(scp->sram_base + recv_offset);
-> -       scp->send_buf =
-> -               (struct mtk_share_obj __iomem *)(scp->sram_base + send_offset);
-> +       scp->recv_buf = (struct mtk_share_obj __iomem *)
-> +                       (scp->sram_base + offset);
-> +       scp->send_buf = (struct mtk_share_obj __iomem *)
-> +                       (scp->sram_base + offset + sizeof(*scp->recv_buf));
->         memset_io(scp->recv_buf, 0, sizeof(*scp->recv_buf));
->         memset_io(scp->send_buf, 0, sizeof(*scp->send_buf));
->
-> @@ -271,6 +279,32 @@ static int scp_elf_load_segments(struct rproc *rproc, const struct firmware *fw)
->         return ret;
->  }
->
-> +static int scp_elf_read_ipi_buf_addr(struct mtk_scp *scp,
-> +                                    const struct firmware *fw,
-> +                                    size_t *offset)
-> +{
-> +       struct elf32_hdr *ehdr;
-> +       struct elf32_shdr *shdr, *shdr_strtab;
-> +       int i;
-> +       const u8 *elf_data = fw->data;
-> +       const char *strtab;
-> +
-> +       ehdr = (struct elf32_hdr *)elf_data;
-> +       shdr = (struct elf32_shdr *)(elf_data + ehdr->e_shoff);
-> +       shdr_strtab = shdr + ehdr->e_shstrndx;
-> +       strtab = (const char *)(elf_data + shdr_strtab->sh_offset);
-> +
-> +       for (i = 0; i < ehdr->e_shnum; i++, shdr++) {
-> +               if (strcmp(strtab + shdr->sh_name,
-> +                          SECTION_NAME_IPI_BUFFER) == 0) {
-> +                       *offset = shdr->sh_addr;
-> +                       return 0;
-> +               }
-> +       }
-> +
-> +       return -ENOENT;
-> +}
-> +
->  static int mt8183_scp_before_load(struct mtk_scp *scp)
->  {
->         /* Clear SCP to host interrupt */
-> @@ -350,11 +384,15 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
->
->         ret = scp->data->scp_before_load(scp);
->         if (ret < 0)
-> -               return ret;
-> +               goto leave;
->
->         ret = scp_elf_load_segments(rproc, fw);
-> -       clk_disable_unprepare(scp->clk);
-> +       if (ret)
-> +               goto leave;
->
-> +       ret = scp_ipi_init(scp, fw);
-> +leave:
-> +       clk_disable_unprepare(scp->clk);
->         return ret;
->  }
->
-> @@ -680,19 +718,6 @@ static int scp_probe(struct platform_device *pdev)
->                 goto release_dev_mem;
->         }
->
-> -       ret = clk_prepare_enable(scp->clk);
-> -       if (ret) {
-> -               dev_err(dev, "failed to enable clocks\n");
-> -               goto release_dev_mem;
-> -       }
-> -
-> -       ret = scp_ipi_init(scp);
-> -       clk_disable_unprepare(scp->clk);
-> -       if (ret) {
-> -               dev_err(dev, "Failed to init ipi\n");
-> -               goto release_dev_mem;
-> -       }
-> -
->         /* register SCP initialization IPI */
->         ret = scp_ipi_register(scp, SCP_IPI_INIT, scp_init_ipi_handler, scp);
->         if (ret) {
-> --
-> 2.29.2.454.gaff20da3a2-goog
->
+>   N:	mtk
+>   N:	mt[678]
+>   K:	mediatek
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
