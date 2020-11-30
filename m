@@ -2,66 +2,75 @@ Return-Path: <SRS0=DVVK=FE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-23.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A118C63777
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 23:48:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25A66C64E90
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 23:52:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93B14207BB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 23:48:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 985A3207F7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 23:52:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Rfhm2sME";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="bITjYOIj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93B14207BB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HZeaNjyv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="dNj7TJbK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 985A3207F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=u0gc5VnaccOlk8uZokS3RWGVpYGARytVzKhjOB0UFwQ=; b=Rfhm2sMED/o023hRQ3qV9aIyqx
-	ItESwsU2I4Bd4vBz8U2ZhMUciwQgelQEHCHNd/E5dOSwUeTWOM+AnC+q3UA7x4RsWBIPXWiG6NaUu
-	8VaAPUMxEi12J5JWnM25bcMGZJCOzDKfQ9Y0JJSlET3kSgvXnlVU2rVd/7/BzHuDbqQDSE6eIVPQ3
-	HSdXoKmpCwVWWO2keJJN83z/awajoWeU0Dw6y8zcp4fCbUi5DqvcVobcdDCWfRcJHEKOHkXY3IAWv
-	kWZMa/05FQsZmLrF73ZXjONDt7XzxyipfmYUhe6xLhaNcjC42hAFaEzqYtxEKnY2wRcFXYKsnkFGq
-	d3vKySRw==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=EMEp6xDHBnK45VbuCypvsD186atkBCpnoPgyS/4Rps4=; b=HZeaNjyv+GLDxKK1O5v65eNMl
+	x7FHmExA6pV+YrywZUIcJx0dZ1xOIBMXffMoJhdvYzuBA+m9dKRGYgj+Cl/yjEGiwXtutjbqcp9XG
+	k6wx728LuedT8SAAXw3juXV7H53/8H4eJ4W2xXCgV1iTjFLuLQ4BihiDhRSdUKMg+LrgiDXIIdOze
+	vePPeB6kXItPnnArxNJGZpuwfE+5sWKO1K8sNZZ8EI1KDgJv3VKkD9jxgy8DSz4awDA9PrFujvLqW
+	vrYMIizGLXugKX8ZI3oTkWMvdTs8kIbeajQ0dzH4ds8FMawIW1sFFbehs+hEupGHqmvYLTjuYYi/G
+	dLhK3lHRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjsu1-00038S-Ff; Mon, 30 Nov 2020 23:48:17 +0000
+	id 1kjsyH-0004Cb-U9; Mon, 30 Nov 2020 23:52:41 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjsty-00037W-0R
- for linux-mediatek@lists.infradead.org; Mon, 30 Nov 2020 23:48:15 +0000
-Received: from DESKTOP-GFFITBK.localdomain (218-161-90-76.HINET-IP.hinet.net
- [218.161.90.76])
+ id 1kjsyE-0004By-9L
+ for linux-mediatek@lists.infradead.org; Mon, 30 Nov 2020 23:52:40 +0000
+Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com
+ [209.85.218.42])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1300B207BB;
- Mon, 30 Nov 2020 23:48:09 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 52692207BB
+ for <linux-mediatek@lists.infradead.org>; Mon, 30 Nov 2020 23:52:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1606780092;
- bh=+xv/f+h5mrQR6/0RhJ3LoQUvb0DRrGTXZM9jPFfSmVY=;
- h=From:To:Cc:Subject:Date:From;
- b=bITjYOIjE0izugD+qlNWZ5uahY4XQ0g0WJ1xmY64t/HKr7qGM85e3hBy1vcZYJW3E
- /KLkKVyLl9fw3upJ8SThc27s7BWEx8WP+Fj6q708kcovfGmdEqFn0tOjxZV401v5BO
- +y3Xyw+U/FTtFuGXLIxTjtogkyWufahjcpTBFSOQ=
+ s=default; t=1606780357;
+ bh=LOcDmEiyyubx/sa5xPQL50c/I/K8W1HaHNV8Uul68mQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=dNj7TJbKhID1Xs/xydwREyDy++lk3c66UpQ9nenMjBgVAZklTTxj4hwai5UU2hyCG
+ NC1fRKZMdi5Z2Nfnvr5pDA0spuBFCfl3KGaG2py0Sh1WN4hLeb0nOliyNCmn7q8Pxv
+ NKMC+qpgJPSgjc+0ai+37qlDgeCMuL6GSnKRsHAQ=
+Received: by mail-ej1-f42.google.com with SMTP id lt17so86833ejb.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 30 Nov 2020 15:52:37 -0800 (PST)
+X-Gm-Message-State: AOAM531LeI2ZEedVZWPATHyj9UkFI1HuswXvjHy09hDveCCvHAatfhh0
+ vq6dv4c1QQIihRfnmnzUC4xPBmkvFfzLxC7T0Q==
+X-Google-Smtp-Source: ABdhPJxLHGWiMBURVIYQ+sMpozodVYSe0HYY+kVtzCaQRyTVwhikE19JU0xGxYI9Iv7ONDN2K4eox7/KpzJTeRjobyU=
+X-Received: by 2002:a17:906:a106:: with SMTP id t6mr284369ejy.63.1606780355813; 
+ Mon, 30 Nov 2020 15:52:35 -0800 (PST)
+MIME-Version: 1.0
+References: <20201129004351.16212-1-chunkuang.hu@kernel.org>
+In-Reply-To: <20201129004351.16212-1-chunkuang.hu@kernel.org>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Subject: [GIT PULL] mediatek drm next for 5.11-2
-Date: Tue,  1 Dec 2020 07:48:07 +0800
-Message-Id: <20201130234807.936-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.17.1
+Date: Tue, 1 Dec 2020 07:52:24 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__xO7F3br1GVFpvsuSW8nqrOoFm1YEWvkRoBkh9PquwRQ@mail.gmail.com>
+Message-ID: <CAAOTY__xO7F3br1GVFpvsuSW8nqrOoFm1YEWvkRoBkh9PquwRQ@mail.gmail.com>
+Subject: Re: [GIT PULL] mediatek drm next for 5.11
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201130_184814_194419_DC3BEF6F 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20201130_185238_494553_9B7DCBFD 
+X-CRM114-Status: GOOD (  19.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,118 +82,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, Robin Murphy <robin.murphy@arm.com>,
- Fabien Parent <fparent@baylibre.com>, Thomas Zimmermann <tzimmermann@suse.de>,
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@linux.ie>, Lee Jones <lee.jones@linaro.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Fabien Parent <fparent@baylibre.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Lee Jones <lee.jones@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Robin Murphy <robin.murphy@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
-
-This includes:
-
-1. Add MT8167 support
-2. Cleanup function
-3. Convert the dpi bindings to yaml
-4. Drop local dma_parms
-5. Fix formatting and provide missing member description
-6. Introduce GEM object functions
-7. Fix aliases name
-8. Move MIPI DSI phy driver to phy folder
-
-Regards,
-Chun-Kuang.
-
-The following changes since commit 3650b228f83adda7e5ee532e2b90429c03f7b9ec:
-
-  Linux 5.10-rc1 (2020-10-25 15:14:11 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-5.11-2
-
-for you to fetch changes up to a4423bec44744ce556e91fe8efffbd10327f79fd:
-
-  MAINTAINERS: add files for Mediatek DRM drivers (2020-11-30 23:43:03 +0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 5.11-2
-
-1. Add MT8167 support
-2. Cleanup function
-3. Convert the dpi bindings to yaml
-4. Drop local dma_parms
-5. Fix formatting and provide missing member description
-6. Introduce GEM object functions
-7. Fix aliases name
-8. Move MIPI DSI phy driver to phy folder
-
-----------------------------------------------------------------
-Bernard Zhao (1):
-      drm/mediatek: Optimize functions which do not need to return
-
-Chun-Kuang Hu (3):
-      drm/mediatek: Separate mtk_mipi_tx to an independent module
-      phy: mediatek: Move mtk_mipi_dsi_phy driver into drivers/phy/mediatek folder
-      MAINTAINERS: add files for Mediatek DRM drivers
-
-Enric Balletbo i Serra (1):
-      drm/mediatek: Use correct aliases name for ovl
-
-Fabien Parent (3):
-      dt-bindings: display: mediatek: disp: add documentation for MT8167 SoC
-      drm/mediatek: Add disp-color MT8167 support
-      drm/mediatek: Add DDP support for MT8167
-
-Jitao Shi (1):
-      dt-bindings: display: mediatek: convert the dpi bindings to yaml
-
-Lee Jones (4):
-      drm/mediatek/mtk_disp_rdma: Fix formatting and supply missing struct member description
-      drm/mediatek/mtk_drm_drv: Staticise local function invoked by reference
-      drm/mediatek/mtk_disp_color: Fix formatting and provide missing member description
-      drm/mediatek/mtk_disp_ovl: Fix formatting and provide missing member description
-
-Robin Murphy (1):
-      drm/mediatek: Drop local dma_parms
-
-Thomas Zimmermann (1):
-      drm/mediatek: Introduce GEM object functions
-
- .../bindings/display/mediatek/mediatek,disp.txt    |  4 +-
- .../bindings/display/mediatek/mediatek,dpi.txt     | 42 ----------
- .../bindings/display/mediatek/mediatek,dpi.yaml    | 98 ++++++++++++++++++++++
- MAINTAINERS                                        |  1 +
- drivers/gpu/drm/mediatek/Kconfig                   |  1 +
- drivers/gpu/drm/mediatek/Makefile                  |  3 -
- drivers/gpu/drm/mediatek/mtk_disp_color.c          | 12 ++-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  5 +-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  5 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 47 +++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             | 37 ++------
- drivers/gpu/drm/mediatek/mtk_drm_drv.h             |  3 -
- drivers/gpu/drm/mediatek/mtk_drm_gem.c             | 11 +++
- drivers/gpu/drm/mediatek/mtk_hdmi.c                | 27 ++----
- drivers/phy/mediatek/Kconfig                       |  7 ++
- drivers/phy/mediatek/Makefile                      |  5 ++
- .../mediatek/phy-mtk-mipi-dsi-mt8173.c}            |  2 +-
- .../mediatek/phy-mtk-mipi-dsi-mt8183.c}            |  2 +-
- .../mediatek/phy-mtk-mipi-dsi.c}                   |  5 +-
- .../mediatek/phy-mtk-mipi-dsi.h}                   |  0
- 21 files changed, 207 insertions(+), 112 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
- rename drivers/{gpu/drm/mediatek/mtk_mt8173_mipi_tx.c => phy/mediatek/phy-mtk-mipi-dsi-mt8173.c} (99%)
- rename drivers/{gpu/drm/mediatek/mtk_mt8183_mipi_tx.c => phy/mediatek/phy-mtk-mipi-dsi-mt8183.c} (99%)
- rename drivers/{gpu/drm/mediatek/mtk_mipi_tx.c => phy/mediatek/phy-mtk-mipi-dsi.c} (97%)
- rename drivers/{gpu/drm/mediatek/mtk_mipi_tx.h => phy/mediatek/phy-mtk-mipi-dsi.h} (100%)
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIERhdmUgJiBEYW5pZWw6CgpJJ3ZlIHNlbmQgYW5vdGhlciBwdWxsIHJlcXVlc3QgIm1lZGlh
+dGVrIGRybSBuZXh0IGZvciA1LjExLTIiIHdoaWNoCmluY2x1ZGUgdGhpcyBhbmQgYWRkIG1vcmUg
+cGF0Y2hlcywgc28geW91IGNvdWxkIGRpcmVjdGx5IHB1bGwgdGhhdApyZXF1ZXN0IGFuZCBpZ25v
+cmUgdGhpcy4KClsxXSBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9hcmNoaXZlcy9kcmkt
+ZGV2ZWwvMjAyMC1Ob3ZlbWJlci8yODk2ODYuaHRtbAoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCkNo
+dW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPiDmlrwgMjAyMOW5tDEx5pyIMjnm
+l6Ug6YCx5pelIOS4iuWNiDg6NDTlr6vpgZPvvJoKPgo+IEhpLCBEYXZlICYgRGFuaWVsOgo+Cj4g
+VGhpcyBpbmNsdWRlczoKPgo+IDEuIEFkZCBNVDgxNjcgc3VwcG9ydAo+IDIuIENsZWFudXAgZnVu
+Y3Rpb24KPiAzLiBDb252ZXJ0IHRoZSBkcGkgYmluZGluZ3MgdG8geWFtbAo+IDQuIERyb3AgbG9j
+YWwgZG1hX3Bhcm1zCj4gNS4gRml4IGZvcm1hdHRpbmcgYW5kIHByb3ZpZGUgbWlzc2luZyBtZW1i
+ZXIgZGVzY3JpcHRpb24KPiA2LiBJbnRyb2R1Y2UgR0VNIG9iamVjdCBmdW5jdGlvbnMKPiA3LiBG
+aXggYWxpYXNlcyBuYW1lCj4KPiBSZWdhcmRzLAo+IENodW4tS3VhbmcuCj4KPiBUaGUgZm9sbG93
+aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDM2NTBiMjI4ZjgzYWRkYTdlNWVlNTMyZTJiOTA0Mjlj
+MDNmN2I5ZWM6Cj4KPiAgIExpbnV4IDUuMTAtcmMxICgyMDIwLTEwLTI1IDE1OjE0OjExIC0wNzAw
+KQo+Cj4gYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6Cj4KPiAgIGh0dHBz
+Oi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9s
+aW51eC5naXQgdGFncy9tZWRpYXRlay1kcm0tbmV4dC01LjExCj4KPiBmb3IgeW91IHRvIGZldGNo
+IGNoYW5nZXMgdXAgdG8gNDE0NTYyYjBlZjM2Y2U2NThmMGZmZWMwMGU3MDM5Yzc5MTFlNGNkYzoK
+Pgo+ICAgZHJtL21lZGlhdGVrOiBVc2UgY29ycmVjdCBhbGlhc2VzIG5hbWUgZm9yIG92bCAoMjAy
+MC0xMS0yOCAxNjo1Njo1NSArMDgwMCkKPgo+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiBNZWRpYXRlayBEUk0gTmV4dCBm
+b3IgTGludXggNS4xMQo+Cj4gMS4gQWRkIE1UODE2NyBzdXBwb3J0Cj4gMi4gQ2xlYW51cCBmdW5j
+dGlvbgo+IDMuIENvbnZlcnQgdGhlIGRwaSBiaW5kaW5ncyB0byB5YW1sCj4gNC4gRHJvcCBsb2Nh
+bCBkbWFfcGFybXMKPiA1LiBGaXggZm9ybWF0dGluZyBhbmQgcHJvdmlkZSBtaXNzaW5nIG1lbWJl
+ciBkZXNjcmlwdGlvbgo+IDYuIEludHJvZHVjZSBHRU0gb2JqZWN0IGZ1bmN0aW9ucwo+IDcuIEZp
+eCBhbGlhc2VzIG5hbWUKPgo+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiBCZXJuYXJkIFpoYW8gKDEpOgo+ICAgICAgIGRy
+bS9tZWRpYXRlazogT3B0aW1pemUgZnVuY3Rpb25zIHdoaWNoIGRvIG5vdCBuZWVkIHRvIHJldHVy
+bgo+Cj4gRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSAoMSk6Cj4gICAgICAgZHJtL21lZGlhdGVrOiBV
+c2UgY29ycmVjdCBhbGlhc2VzIG5hbWUgZm9yIG92bAo+Cj4gRmFiaWVuIFBhcmVudCAoMyk6Cj4g
+ICAgICAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IG1lZGlhdGVrOiBkaXNwOiBhZGQgZG9jdW1lbnRh
+dGlvbiBmb3IgTVQ4MTY3IFNvQwo+ICAgICAgIGRybS9tZWRpYXRlazogQWRkIGRpc3AtY29sb3Ig
+TVQ4MTY3IHN1cHBvcnQKPiAgICAgICBkcm0vbWVkaWF0ZWs6IEFkZCBERFAgc3VwcG9ydCBmb3Ig
+TVQ4MTY3Cj4KPiBKaXRhbyBTaGkgKDEpOgo+ICAgICAgIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiBt
+ZWRpYXRlazogY29udmVydCB0aGUgZHBpIGJpbmRpbmdzIHRvIHlhbWwKPgo+IExlZSBKb25lcyAo
+NCk6Cj4gICAgICAgZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWE6IEZpeCBmb3JtYXR0aW5nIGFu
+ZCBzdXBwbHkgbWlzc2luZyBzdHJ1Y3QgbWVtYmVyIGRlc2NyaXB0aW9uCj4gICAgICAgZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2OiBTdGF0aWNpc2UgbG9jYWwgZnVuY3Rpb24gaW52b2tlZCBieSBy
+ZWZlcmVuY2UKPiAgICAgICBkcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfY29sb3I6IEZpeCBmb3JtYXR0
+aW5nIGFuZCBwcm92aWRlIG1pc3NpbmcgbWVtYmVyIGRlc2NyaXB0aW9uCj4gICAgICAgZHJtL21l
+ZGlhdGVrL210a19kaXNwX292bDogRml4IGZvcm1hdHRpbmcgYW5kIHByb3ZpZGUgbWlzc2luZyBt
+ZW1iZXIgZGVzY3JpcHRpb24KPgo+IFJvYmluIE11cnBoeSAoMSk6Cj4gICAgICAgZHJtL21lZGlh
+dGVrOiBEcm9wIGxvY2FsIGRtYV9wYXJtcwo+Cj4gVGhvbWFzIFppbW1lcm1hbm4gKDEpOgo+ICAg
+ICAgIGRybS9tZWRpYXRlazogSW50cm9kdWNlIEdFTSBvYmplY3QgZnVuY3Rpb25zCj4KPiAgLi4u
+L2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAgfCAgNCArLQo+
+ICAuLi4vYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkcGkudHh0ICAgICB8IDQy
+IC0tLS0tLS0tLS0KPiAgLi4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZHBp
+LnlhbWwgICAgfCA5OCArKysrKysrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZGlzcF9jb2xvci5jICAgICAgICAgIHwgMTIgKystCj4gIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyAgICAgICAgICAgIHwgIDUgKy0KPiAgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyAgICAgICAgICAgfCAgNSArLQo+ICBk
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgICAgICB8IDQ3ICsr
+KysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMg
+ICAgICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMg
+ICAgICAgICAgICAgfCAzNiArKy0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kcnYuaCAgICAgICAgICAgICB8ICAyIC0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZ2VtLmMgICAgICAgICAgICAgfCAxMSArKysKPiAgZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19oZG1pLmMgICAgICAgICAgICAgICAgfCAyNyArKy0tLS0KPiAgMTIgZmlsZXMg
+Y2hhbmdlZCwgMTg3IGluc2VydGlvbnMoKyksIDEwNCBkZWxldGlvbnMoLSkKPiAgZGVsZXRlIG1v
+ZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
+dGVrL21lZGlhdGVrLGRwaS50eHQKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRwaS55YW1sCj4g
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
