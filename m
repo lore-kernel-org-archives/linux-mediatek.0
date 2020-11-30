@@ -2,79 +2,65 @@ Return-Path: <SRS0=DVVK=FE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20160C64E7B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 16:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8787C64E7B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 16:56:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8E8E2065C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 16:33:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3540320825
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 16:56:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u22+TKEe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8E8E2065C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jhYQt5Sw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="PWlBhoks"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3540320825
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Subject:References:
+	In-Reply-To:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c+/+UTKhLMJBt3foD1MQoAPzc8CZYswQaU5HrOmPoiM=; b=u22+TKEemT5A6CSw6o2MTFzSp
-	JrfgL5xMzXYlSZtc/TdMQIO29NJFFOhFuvfO75hyQNwow4ILNZkCMiCrYqtYBtY4YbCjxMtc8UC4t
-	sAirTPc/SgQO1cWtdtgU62I7WxDCkaiDYrIFgwbzBNlPVtXX87lOLjZMe5Jqd7lnmn642H6RQQmbN
-	ReRhM1gJ6oY1VxLBaqruVSrCSSZid9Er7qhTUOJd74JdacpKHaOf2RQH8nehjcQSV2S7HSZojd23T
-	kCSCH0MsouZzIPf1m5Tf1gNv+hmI3itCd3LSTujk5PmVZnyovCnfWBhg+LLJkp3UMj+VwxelsxC7R
-	VNCsOlMPw==;
+	 bh=YOHi0pwuTjzyIu5Nb261Im4EDuvNqs5gccBaIpyihQk=; b=jhYQt5SwD+N0a3KJwG5q6yNm4
+	+I33gW6GTNuVG12t9Xgi0hGaijNggTiKBhyIlSbGe7fGOEYxZnNMtZ519jd2L2w/CdOhU+ousG2dl
+	ow23A0IMzbBg4pT7X9aJ7ocxHX1uYv1/vrx014zKGOnniE7Q2YyvHYqa31eOdx9L0CHlXqnv8bUXx
+	mQwnZ1eNFxbsohPpHgBiqq5/i7cVbhquxQHc8m28lsD/Gs2zSgO+Ptm8G/5weUfPIZe6y8CnnXpP1
+	MxJNmekuhbhu08gBAi864OAVKHoTrf6RSfLWiiNu4HcIIlZGcdyKXYagDJF91pUiwztTEEPB/Q9dQ
+	a8nE+x3TQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjm7B-0002oq-JM; Mon, 30 Nov 2020 16:33:25 +0000
-Received: from mail-il1-f195.google.com ([209.85.166.195])
+	id 1kjmT5-0006Ck-Qh; Mon, 30 Nov 2020 16:56:03 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjm77-0002ne-4W; Mon, 30 Nov 2020 16:33:22 +0000
-Received: by mail-il1-f195.google.com with SMTP id y9so11879804ilb.0;
- Mon, 30 Nov 2020 08:33:18 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZBBwW3NkUSuFPPRYNjLGyBC//UcL1yNtoBYCa8FcsK4=;
- b=L9OLap9piTBpURXK5Z6qoul3097PWNvVflh7QoJme3Gu9fibI7i69C3r3W+ZfRBf2X
- 0uMKTX2S1UP4KYqvjYiIc44qXLx4/pv45FLIxqvG11XuzRFuLrlOHYJO+P99xWTwndfP
- gLuAS0Io1j1zSBwyOO6GHc2fRYmbDSPcnHOzgHXCRFWxAMj7zS2tmOhCzutw2XaAIhu6
- oinwC9AzYpZ5M+KCY1779Ppe8e7QKuL8ptk8/yddBQ9lHwjmzSjmWrKcrfpOJlmkumAL
- RosUpqpEislza8UruMwEnUihWoH0brxbDQkK58+A7bAdm32JuXSAZ/9IIjhv8rp4COQw
- DvgA==
-X-Gm-Message-State: AOAM533r9TbbAUs5HotjKm1X3axP6BrfgGQCvsQgvVkvWRuWxrA/9MeU
- LbWtB1Vix/3IXIPQ0IeI5qH0FFCSlA==
-X-Google-Smtp-Source: ABdhPJwo98x9fcLfGsa/fOEkRiiTPfg0HG5OZjgyT5/bJuvDcYPknYRrLNe/75450Ba2DHlYQ7En3w==
-X-Received: by 2002:a92:444e:: with SMTP id a14mr2066584ilm.129.1606753998497; 
- Mon, 30 Nov 2020 08:33:18 -0800 (PST)
-Received: from xps15 ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id c8sm8427863ioq.40.2020.11.30.08.33.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Nov 2020 08:33:17 -0800 (PST)
-Received: (nullmailer pid 2583689 invoked by uid 1000);
- Mon, 30 Nov 2020 16:33:14 -0000
-Date: Mon, 30 Nov 2020 09:33:14 -0700
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v3 3/8] dt-bindings: regulator: Add document for MT6359
- regulator
-Message-ID: <20201130163314.GA2583085@robh.at.kernel.org>
-References: <1606103290-15034-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1606103290-15034-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+ id 1kjmT2-0006C4-IW
+ for linux-mediatek@lists.infradead.org; Mon, 30 Nov 2020 16:56:01 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4C9492076B;
+ Mon, 30 Nov 2020 16:55:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1606755359;
+ bh=7Vk28EpWuHZuMnrQqTFNVfiCs4UlJCZKrdZFJcP3amk=;
+ h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+ b=PWlBhokstXIrt3HShF+u0MtDphfvLTvqH/VUpu4q1S5g7N1fbQjHvJ9uzeb6VVqLM
+ YaHrWqeAEvSiw4KWEXyYy+byh161jIrXzbHhv9Tis+sOfIJCXnPM7wpoXSEVFo1vR9
+ rDSAMxpKEY+xOzmDG8uqQ+QEdF0pS0Z4GRLLYx88=
+Date: Mon, 30 Nov 2020 16:55:31 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Lumi Lee <Lumi.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <1606705875-1940-1-git-send-email-Lumi.Lee@mediatek.com>
+References: <1606705875-1940-1-git-send-email-Lumi.Lee@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: btcvsd fix tx stream assign
+Message-Id: <160675530955.30326.8266521477804403197.b4-ty@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1606103290-15034-4-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201130_113321_195933_393DED35 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20201130_115600_717843_BD266F6F 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,50 +72,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
- Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ wsd_upstream@mediatek.com, Lumi Lee <lumi.lee@mediatek.com>,
+ jiaxin.yu@mediatek.com, linux-kernel@vger.kernel.org, Shane.Chien@mediatek.com,
+ linux-mediatek@lists.infradead.org, eason.yen@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 Nov 2020 11:48:05 +0800, Hsin-Hsiung Wang wrote:
-> add dt-binding document for MediaTek MT6359 PMIC
-> 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->  .../bindings/regulator/mt6359-regulator.yaml  | 145 ++++++++++++++++++
->  1 file changed, 145 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-> 
+On Mon, 30 Nov 2020 11:11:15 +0800, Lumi Lee wrote:
+> Fix tx/rx stream assign in write.
+> Write should use tx instead of rx.
 
+Applied to
 
-My bot found errors running 'make dt_binding_check' on your patch:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-yamllint warnings/errors:
+Thanks!
 
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml: 'additionalProperties' is a required property
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml: ignoring, error in schema: 
-warning: no schema found in file: ./Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+[1/1] ASoC: mediatek: btcvsd fix tx stream assign
+      commit: bbe1f69dce94089943cc407a88325ae7e851d49c
 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-See https://patchwork.ozlabs.org/patch/1404625
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-The base for the patch is generally the last rc1. Any dependencies
-should be noted.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
