@@ -1,91 +1,88 @@
-Return-Path: <SRS0=HK5I=FD=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=DVVK=FE=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D6485C3E8C5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Nov 2020 21:22:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 782BDC64E7B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 01:20:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 378142078D
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Nov 2020 21:22:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2156020757
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Nov 2020 01:20:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mCn7ivM3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="hKr1UKx0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 378142078D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1V+YOnbi";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="sP8kFzR6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2156020757
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:From:To:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UQPlZpXZTLaeNplAZ0mRljBxpJjagu5m5Go1VtILlHU=; b=mCn7ivM3PpovhvDFUKAuNrxsm1
-	2cqttPESAjHD6y1aj6AvYApfPgnK3I8G21aae5jnRZkg3IMnx/QPk+8rvTs3YQKyhPfUWIpEjkvZr
-	GuX83oMik9LlkW24p7j51qSQJp+gd5vm+VtnfzLde7ra5zIYqn2Qd4oAGBNVob85Nja4xAadAiC3z
-	WB3dZa715II12IUvnwyCN7KaWgC6vfvDkF0YrpyWdsIbpGKXdzSN9ie3BZWeGoZaVgPe4ru15/TVi
-	6NN8d0vAyEBZv0uiCB9nliBwoYbTfq8qioA7hAoovFl4iM8BHuZu7crssgHosXDyl5fOwxgVEMxLV
-	jD37D+eQ==;
+	bh=vVNqQPY3pVRKKfAZhNZMqesMjrojBcW5+bojw2MNSMI=; b=1V+YOnbib06RI1I3J/3lRQ5v//
+	+TEbV57FpPqwpEAQfv9kubZYTXqKdW3AGykaAey7CHt03S9gybE6fAPgvatG335BN3HynA5+doVHC
+	HI7du6DewE/7xkuRkIt9IVQNBJFZVDqP1y0SCMhCRPL/HbgtCf5X3NbkC1xE7Hl90+VlXsuUPZhAh
+	/mXIqtHF/piWF18xqSd6tqZgUr9yF6z3BAdvVfgFPmqTQc7A8rIYUKDmhs1ybpM35r0rEYpNOHxm3
+	ivF9QUtnm9WwIHKP30hisI4rAZFCY3qJbl6bPKDhsq5UApSJsjyiSXTw3thri+eibGEYk1ehRVj0l
+	rRmVmN+A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjU9L-0007CR-8a; Sun, 29 Nov 2020 21:22:27 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1kjXrm-0000uU-QJ; Mon, 30 Nov 2020 01:20:34 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjU9J-0007By-6B; Sun, 29 Nov 2020 21:22:26 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id 7so17180995ejm.0;
- Sun, 29 Nov 2020 13:22:24 -0800 (PST)
+ id 1kjXrj-0000tv-8W; Mon, 30 Nov 2020 01:20:32 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id x15so5563625pll.2;
+ Sun, 29 Nov 2020 17:20:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=8zPXm1FBDR9qfVumeaUOjP3wuQsBIpEAySwImCtGpPc=;
- b=hKr1UKx0pDGx7PEAKapmxdpIOuF2VjB1mXd8MGEMMRIiGtzYAE6nFsiF1BfySdyhEC
- Ur2OuyrAghYdfNvDuTAkcz5yfvgVdYob8+pgIO/nVjWpiC8KY0xUYf8gcNE5fVBhxu36
- yN6szorqQHIgYCA2qV1Cbc01Nqm+I8F6AFSmcoUFARbiXdY7oIrHXzA811OHViAoUYLf
- ys+ysh4t42DKS9ebj1xYv5tWZjf4k8bokJXamj9TlfmYrTRBPBOctAOLMSog57IuXj2W
- Fz34D9ewvbEKTslczDOaWo82Ut1RJDBf70a4jd23jlMAqnnTeWR+5gTcS6kVVogFob/b
- wbrQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=p9neIC2nP4AkQG8eY+IlQyOgSSMBX6Quf44ZMyRQcc0=;
+ b=sP8kFzR69H9wb2BgjF9BVHIprW940obj2C3GgnE5KiSsX26HBnzEte+yBu2/xs7nF7
+ NxupZizj41Df2KVAP5epghac0sLnIf7LavS+NbHqe+FL+QFaBn7Vju807Efy/ok7gVUX
+ nuF1iWP1zWKzNdiOEID78J8vIvzwl+P3+puPkRITotCQf2iDU60datuh+gjF4GA52+Pg
+ zt3zEcrhy4VuB/y6cuXINykKyw7eNvlSqQ7fJoYpvW6UBAeRn7z5nlWHsye2gYlmQL6J
+ MvxkDVnS1o8zMn+vNK+DLn/8udePoShPcOGn6ZHQAJG8o9rM0tiNggs4FafYaCYmEbRf
+ JDzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=8zPXm1FBDR9qfVumeaUOjP3wuQsBIpEAySwImCtGpPc=;
- b=eRli6Zn7YYOZrimRXHvVw4jIWq6dDqu1Q/JwLrqLHbrZQTdMw+FT8gGBdhOaUDh3ga
- JpMlrMS7hwW8uGFfc/cxCH8Elv1uuw/feKVItMhdqomuD9sqaCPhobI89VT3wiRxLpCM
- AeTUU1TuNFZarnLuXeraAoaA4ftblu2zkFf4jtmukn0YSwmzIlPQacmqo+YOjbecXfMk
- XGVFeWoZAbte4FCaPN7hpdlLW/IcIZxqzE1YNB1j0Wn7UreHcX9uV9rjvyinZjfQ/BI1
- XpUEY9Y0bZVXIs/3X0k4bpQZsKfr+itGbmndgnGvEroLnLzY4w+7vmeId0ycBoICnS7X
- OBCA==
-X-Gm-Message-State: AOAM530GePoG2RT4ZkFRPVrVwZHZzweKVYfCcZv/eTPjkHSavF0beduw
- L4sfTwEfNVJVAMOc6+omfA4=
-X-Google-Smtp-Source: ABdhPJzevcx/WzHeFiw1cNVO5mrWErqDpdFenCCaJuFtBmfR2FpmE6dpM9+NTHxiR3b2EerILyZfaw==
-X-Received: by 2002:a17:906:3899:: with SMTP id
- q25mr2796412ejd.173.1606684943998; 
- Sun, 29 Nov 2020 13:22:23 -0800 (PST)
-Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id z29sm8169733edi.1.2020.11.29.13.22.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 29 Nov 2020 13:22:23 -0800 (PST)
-List-Id: <soc.lore.kernel.org>
-To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] soc: mediatek: changes for v5.11
-Message-ID: <b03fe343-e183-c6f3-f2dc-4c58aae3146b@gmail.com>
-Date: Sun, 29 Nov 2020 22:22:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=p9neIC2nP4AkQG8eY+IlQyOgSSMBX6Quf44ZMyRQcc0=;
+ b=Q+6t4xqZyZ55ddiuZp8n1OllFlhorOAkhxZXUIyi0vIcpXXSciJTF1WbqN9/jxmeKJ
+ 6YfGVHBtLrSdnuXOpSlTa3aVYlm668KGq+suejiOHJOZHtqKUlcaBGOfBKEb8zM0erTU
+ ZFeWdYtCu3iPoa9ueuR9LQ5QXHMCaULYJmb2Qy6UkrQdZf7E2INfBqWQN68QNdEfwExf
+ 6PPbXAuTrxeP3z7TefDj9h7aUA95haXhhYXS0aMISFNsL1l9uxtETdIhuk8nh6jfAglA
+ zJbxUw1EZzW+1YXF4zNIzU8TK4lEoRL8oBB5ZvZ5wUqCIcLSXtkJl5pbEQd7VZJqALQq
+ qTSg==
+X-Gm-Message-State: AOAM530+gBa0zwHzvkAdiFsOYzS/TrQgvthbrvmiBQhfZDiq+DjcEAUn
+ 5Im/jcg56W5S65U/U4xdNlk=
+X-Google-Smtp-Source: ABdhPJywNIp8bBDK+nxoBIkEXPB7hi3yXNEqpvBhNXKu3OFZe7JfHWZbeDitlY1UswE1xADVZpOxVA==
+X-Received: by 2002:a17:90a:b782:: with SMTP id
+ m2mr10256163pjr.185.1606699226333; 
+ Sun, 29 Nov 2020 17:20:26 -0800 (PST)
+Received: from localhost.localdomain ([49.207.196.188])
+ by smtp.gmail.com with ESMTPSA id l10sm20002567pjg.3.2020.11.29.17.20.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 29 Nov 2020 17:20:25 -0800 (PST)
+From: Anant Thazhemadam <anant.thazhemadam@gmail.com>
+To: 
+Subject: [PATCH v2 00/15] drivers: usb: misc: update to use
+ usb_control_msg_{send|recv}()
+Date: Mon, 30 Nov 2020 06:48:04 +0530
+Message-Id: <20201130011819.2576481-1-anant.thazhemadam@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201129_162225_324537_679B8409 
-X-CRM114-Status: GOOD (  24.02  )
+X-CRM114-CacheID: sfid-20201129_202031_361763_08123930 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,144 +94,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Neal Liu <neal.liu@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Anant Thazhemadam <anant.thazhemadam@gmail.com>, linux-usb@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Olof and Arnd,
+The new usb_control_msg_{send|recv}() API provides an improved way of 
+using usb_control_msg(). Using this, short reads/writes are considered
+as errors, data can be used off the stack, and the need for the calling
+function to create a raw usb pipe is eliminated.
+This patch series aims to update existing instances of usb_control_msg() 
+in drivers/usb/misc to usb_control_msg_{send|recv}() appropriately, and
+also update the return value checking mechanisms in place (if any), as
+necessary so nothing breaks.
 
-Please find below the commit for the MediaTek SoC drivers. The most important 
-changes are the inclusion of two new drivers. Devapc is an TrustZone interface 
-found on the mobile phone chips to identify malicious accesses from bus 
-controllers. Apart from that you can find a new power domain driver. We have the 
-old scpsys driver for quite some time around, But it has some limitations, that 
-we could only overcome with a brand new driver with a new binding. Right now 
-these new driver supports mt8192 and mt8183 but the plan is, to move all SoCs to 
-the new driver model and later on retire the old driver.
+I was however unable to update one instance of usb_control_msg() in 
+drivers/usb/misc/apple-mfi-fastcharge.c.
 
-Please beware that I had to create a stable branch to share some include files 
-for the driver between the dts64 and this branch.
+The return value checking mechanism present here, is as follows.
+	if (retval) {
+		dev_dbg(&mfi->udev->dev, "retval = %d\n", retval);
+		return retval;
+	}
 
-Regards,
-Matthias
+	mfi->charge_type = val->intval;
 
----
+	return 0;
 
-The following changes since commit 3650b228f83adda7e5ee532e2b90429c03f7b9ec:
+This implies that mfi->charge_type = val->intval only when number of
+bytes transferred = 0, and the return value is directly returned 
+otherwise. Since the new API doesn't return the number of bytes 
+transferred, I wasn't quite sure how this instance could be updated.
+In case this check is logically incorrect, a patch with a fix 
+can be sent in as well.
 
-   Linux 5.10-rc1 (2020-10-25 15:14:11 -0700)
+Changes in v2:
 
-are available in the Git repository at:
+  * Buffer variables that were previously dynamically allocated are no
+    longer dynamically allocated unless they have a variable length
+    (since that threw a warning).
+    
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
-tags/v5.10-next-soc
+Anant Thazhemadam (15):
+  usb: misc: appledisplay: update to use the
+    usb_control_msg_{send|recv}() API
+  usb: misc: cypress_cy7c63: update to use usb_control_msg_recv()
+  usb: misc: cytherm: update to use usb_control_msg_recv()
+  usb: misc: ehset: update to use the usb_control_msg_{send|recv}() API
+  usb: misc: emi26: update to use usb_control_msg_send()
+  usb: misc: emi62: update to use usb_control_msg_send()
+  usb: misc: ezusb: update to use usb_control_msg_send()
+  usb: misc: idmouse: update to use usb_control_msg_send()
+  usb: misc: iowarrior: update to use the usb_control_msg_{send|recv}()
+    API
+  usb: misc: isight_firmware: update to use usb_control_msg_send()
+  usb: misc: ldusb: update to use usb_control_msg_send()
+  usb: misc: lvstest: update to use the usb_control_msg_{send|recv}()
+    API
+  usb: misc: trancevibrator: update to use usb_control_msg_send()
+  usb: misc: usbsevseg: update to use usb_control_msg_send()
+  usb: misc: usbtest: update to use the usb_control_msg_{send|recv}()
+    API
 
-for you to fetch changes up to cc6576029aedc79ce87b9fcb22cbd396d47f2852:
+ drivers/usb/misc/appledisplay.c    |  46 +++++------
+ drivers/usb/misc/cypress_cy7c63.c  |  21 ++---
+ drivers/usb/misc/cytherm.c         | 128 ++++++++++-------------------
+ drivers/usb/misc/ehset.c           |  76 ++++++++---------
+ drivers/usb/misc/emi26.c           |  31 ++-----
+ drivers/usb/misc/emi62.c           |  30 ++-----
+ drivers/usb/misc/ezusb.c           |  16 +---
+ drivers/usb/misc/idmouse.c         |   5 +-
+ drivers/usb/misc/iowarrior.c       |  34 ++++----
+ drivers/usb/misc/isight_firmware.c |  30 +++----
+ drivers/usb/misc/ldusb.c           |   8 +-
+ drivers/usb/misc/lvstest.c         |  38 ++++-----
+ drivers/usb/misc/trancevibrator.c  |   4 +-
+ drivers/usb/misc/usbsevseg.c       |  60 ++++----------
+ drivers/usb/misc/usbtest.c         |  69 +++++++---------
+ 15 files changed, 216 insertions(+), 380 deletions(-)
 
-   soc: mediatek: mmsys: Use devm_platform_ioremap_resource() (2020-11-28 
-00:37:12 +0100)
+-- 
+2.25.1
 
-----------------------------------------------------------------
-power-domains:
-- add support for new power domain driver.
-- add support for mt8183 and mt8192
-
-devapc:
-- add support for the devapc device found on mt6779 to identify of
-   malicious bus accesses from a controller to a device
-
-mmsys:
-- move DDP routing IDs into the driver
-
-cmdq:
-- drop timeout handler support as not usefull
-
-scpsys:
-- print warning on theoretical error
-
-----------------------------------------------------------------
-Chun-Kuang Hu (1):
-       soc / drm: mediatek: cmdq: Remove timeout handler in helper function
-
-Enric Balletbo i Serra (5):
-       mfd: syscon: Add syscon_regmap_lookup_by_phandle_optional() function.
-       dt-bindings: power: Add bindings for the Mediatek SCPSYS power domains 
-controller
-       dt-bindings: power: Add MT8183 power domains
-       soc: mediatek: Add MediaTek SCPSYS power domains
-       soc: mediatek: mmsys: Use devm_platform_ioremap_resource()
-
-Matthias Brugger (10):
-       MAINTAINERS: change mediatek wiki page
-       Merge tag 'ib-mfd-mediatek-v5.11' into HEAD
-       Merge tag 'v5.10-next-pm-domains-stable' into HEAD
-       soc: mediatek: pm-domains: Add bus protection protocol
-       soc: mediatek: pm_domains: Make bus protection generic
-       soc: mediatek: pm-domains: Add SMI block as bus protection block
-       soc: mediatek: pm-domains: Add extra sram control
-       soc: mediatek: pm-domains: Add subsystem clocks
-       soc: mediatek: pm-domains: Allow bus protection to ignore clear ack
-       soc: mediatek: pm-domains: Add support for mt8183
-
-Neal Liu (2):
-       dt-bindings: devapc: add bindings for mtk-devapc
-       soc: mediatek: add mt6779 devapc driver
-
-Nicolas Boichat (1):
-       soc: mediatek: Check if power domains can be powered on at boot time
-
-Weiyi Lu (3):
-       dt-bindings: power: Add MT8192 power domains
-       soc: mediatek: pm-domains: Add default power off flag
-       soc: mediatek: pm-domains: Add support for mt8192
-
-Yongqiang Niu (1):
-       soc / drm: mediatek: Move DDP component defines into mtk-mmsys.h
-
-  .../bindings/power/mediatek,power-controller.yaml  | 293 ++++++++++
-  .../devicetree/bindings/soc/mediatek/devapc.yaml   |  58 ++
-  MAINTAINERS                                        |   2 +-
-  drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |   3 +-
-  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  34 +-
-  drivers/mfd/syscon.c                               |  18 +
-  drivers/soc/mediatek/Kconfig                       |  21 +
-  drivers/soc/mediatek/Makefile                      |   2 +
-  drivers/soc/mediatek/mt8173-pm-domains.h           |  94 ++++
-  drivers/soc/mediatek/mt8183-pm-domains.h           | 221 ++++++++
-  drivers/soc/mediatek/mt8192-pm-domains.h           | 292 ++++++++++
-  drivers/soc/mediatek/mtk-cmdq-helper.c             |  41 +-
-  drivers/soc/mediatek/mtk-devapc.c                  | 308 +++++++++++
-  drivers/soc/mediatek/mtk-infracfg.c                |   5 -
-  drivers/soc/mediatek/mtk-mmsys.c                   |  11 +-
-  drivers/soc/mediatek/mtk-pm-domains.c              | 614 +++++++++++++++++++++
-  drivers/soc/mediatek/mtk-pm-domains.h              | 102 ++++
-  drivers/soc/mediatek/mtk-scpsys.c                  |   5 +-
-  include/dt-bindings/power/mt8183-power.h           |  26 +
-  include/dt-bindings/power/mt8192-power.h           |  32 ++
-  include/linux/mfd/syscon.h                         |  11 +
-  include/linux/soc/mediatek/infracfg.h              | 107 ++++
-  include/linux/soc/mediatek/mtk-cmdq.h              |  10 +-
-  include/linux/soc/mediatek/mtk-mmsys.h             |  33 ++
-  24 files changed, 2243 insertions(+), 100 deletions(-)
-  create mode 100644 
-Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
-  create mode 100644 drivers/soc/mediatek/mt8173-pm-domains.h
-  create mode 100644 drivers/soc/mediatek/mt8183-pm-domains.h
-  create mode 100644 drivers/soc/mediatek/mt8192-pm-domains.h
-  create mode 100644 drivers/soc/mediatek/mtk-devapc.c
-  create mode 100644 drivers/soc/mediatek/mtk-pm-domains.c
-  create mode 100644 drivers/soc/mediatek/mtk-pm-domains.h
-  create mode 100644 include/dt-bindings/power/mt8183-power.h
-  create mode 100644 include/dt-bindings/power/mt8192-power.h
 
 _______________________________________________
 Linux-mediatek mailing list
