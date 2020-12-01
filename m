@@ -2,23 +2,23 @@ Return-Path: <SRS0=+qQs=FF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18C8EC64E7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:31:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E4D8C64E7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:51:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9172F20757
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:31:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D1F29206B7
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:51:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s5/oE25r";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="oMsqBM0R"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9172F20757
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oi2dvtbk";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="Od7Oq8i5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1F29206B7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,55 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Xuhs/Jbu+b/eWF7LOplRJZPrHkWkONZq4COzdr8qLw8=; b=s5/oE25rSf2TDakKrLqJXlVa1
-	5CvDixCSl+lLtG7JsIdcLFkDJzP0PQlUAazOy01ZzNWGSAFGdLoSuwYMvYc9LEVY6bYk0ZC/T9Kpd
-	5Dci95HVfNbiMCHBjpQutH0HyYPuyiJH5i/zRTMKiy2cgB34MtPlqPJXduhpm2u/Soxp1N803+lsi
-	gs2KMGiJ4ooiH+RTF6ET1AgLe+juCK4xGP81Fkuovwmu7bsxWt14HAt5JVpZ20XtMObdYeFszkDnC
-	XnRtiPjvuNBnYL3a+DvyBD3Od1Mh0Qjej+rxj/z89MgeE/BNk37GJ5E1gWbSMhevNTlkH7jwGpF2l
-	nf8RG7ZSw==;
+	 bh=mxnS7LvmXPQOuGJmj+XAvxrfsRJoPfVpo8ENfWxC78c=; b=oi2dvtbk4KfDExEwi8UJ/F0P0
+	Nbp9wTtQIRrpqWUbGAM6L8h/xNkseaQzdqx7Gt84If3RxEKRqrvtA8RMkHjm3a/8Hqbgd0ylRHKf3
+	ktsFP624mIdwjIGuq1miS61bEMB7BMf54CdhzPZ2kS9MRaSqBHAGeUiCvqJwsKWzXe80Qa3xkt/16
+	Z3P6qfrNoEH3YjsTozt3nYWpt+ViEAIpytsBKA2RuE8T+97lIk7PhYMhhuPDYCk5vsn3go6nJzGK2
+	4+hWtpJ6VLxTxJqIeDjSpqznwHYOiXG7wFhKd5nvEQgsSB7ooziODW36CM3BI/WNtgO1A3wb/H8mS
+	QWXDb8Y5A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kk6gV-00020D-GF; Tue, 01 Dec 2020 14:31:15 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kk70A-0005Eq-Ea; Tue, 01 Dec 2020 14:51:34 +0000
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kk6gO-0001xE-Iz
- for linux-mediatek@lists.infradead.org; Tue, 01 Dec 2020 14:31:12 +0000
-Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com
- [209.85.218.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4D8192085B
- for <linux-mediatek@lists.infradead.org>; Tue,  1 Dec 2020 14:31:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1606833067;
- bh=iKyVt3ei4IjF6uUcpgpDuCr1OPzvs8ktfZvmbaiq0V4=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=oMsqBM0RKejCzfstwlt6YyEpaxDWsKgOG+o0IPk82w9kBAgkGtQL6ftCiJ8ERMZ2u
- cgwTOds2N8B26XkSvBv5MlYgDUiE9ylwA2mJ0qy/1mmvH+QikgJwL40rAjTzcrQnRt
- 8tIXOjHigZTfKj6SbWHaYT2ryjk+BGEnLXZ0qT3E=
-Received: by mail-ej1-f44.google.com with SMTP id m19so4462435ejj.11
- for <linux-mediatek@lists.infradead.org>; Tue, 01 Dec 2020 06:31:07 -0800 (PST)
-X-Gm-Message-State: AOAM532kQ5O2bVpPRxeSCOxlqmrMvSVcHKKDDxb5vJ2yFLwIJ2tOpDBN
- ISL4G4t24DsiTJUrUSuwnYtfewQBFDp7cRzMcA==
-X-Google-Smtp-Source: ABdhPJzlHxdV4VGqzoWpb7rYlMAdgwMJ1nH13c0Yed4GR1AZ/tKtVHvegqEicS3dnzhWhT9kSKQM68aoJzZdQwO0v8w=
-X-Received: by 2002:a17:906:af0a:: with SMTP id
- lx10mr3263894ejb.75.1606833065729; 
- Tue, 01 Dec 2020 06:31:05 -0800 (PST)
+ id 1kk704-0005DL-HJ
+ for linux-mediatek@lists.infradead.org; Tue, 01 Dec 2020 14:51:29 +0000
+Received: by mail-qk1-x744.google.com with SMTP id q5so1435777qkc.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 01 Dec 2020 06:51:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=55sCzQdwTnWWY4frFoH/T/BSKgGKnPew/6aq6eljiTo=;
+ b=Od7Oq8i5EKOt7lyAPLohe/T+qZWO41dmeqZhqZpqtDgfvunVjdg9tf32XLjJenj8L+
+ JGidx639XPF8hqU42hKavQY/o0ww8LWaxLXeStBRoE5igoG8X9kxoORory35BiCYr0E9
+ HzsGUGiqSTL1ts87Bl3ZH1DxxvuqoMl1tWsJ7EuEzbUtwafzKk0fS+JCI3C9x5JMkgFl
+ LcOoRC5QQT2Vi2QFULdi/0FU32TizK504jXS8wi2Dtd7rZI3SGHSEPXMul3KJgenD9SV
+ q8gQnWlGGaRf4lazzxswYs7WeQYK50tXi0qt5aobSwa6iH5VsOgJtcHrVMLessAf+PNy
+ wf6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=55sCzQdwTnWWY4frFoH/T/BSKgGKnPew/6aq6eljiTo=;
+ b=LH36Cu3q+xvrJgPWBIc7ZEAq97yS/nbPx/ZVGC9rDF7k8+CRKB2ZsG81RvNUbghmrt
+ orebyoD46JdwrVIHGqufsl8Sd4aaz1WfItfzyU/BmWCttIsys3O1apJREJuqbo7BCtjC
+ PKA2I4BcZ8jXAaQIuGM9mJS35m1l6xxKXWVBnnPjAaS876H2aPZxqHYA1YslmFLCCrCh
+ ZDjsZVm1PSnM2eBj9QhsCOYqZp8Aa0Yr4lv17RqkRarWgMGyOt70LL/XGj3EyZLdIwL7
+ oXPvZ1bHIjDqeRQRXBG/pBu1dlq34dzH7oNcVV3o2IEJ5/m90vNEOZkmRTye8crggGRd
+ HXyQ==
+X-Gm-Message-State: AOAM530+/2mkD0X9g+LX0LHEh5avK6RPyxo3LTRq3IGA5zqwf6ttgK58
+ BH8He1sqx3XpdheBudBq6+/sUIcQNXSmo2iYIPuWfw==
+X-Google-Smtp-Source: ABdhPJzpKx5kjzDF60IrrSHfJjD1sCFpkAQsI2Hw2vF4+LKJGRJnyv7Y0PWJYKsCVbdIIj/02E5TWg3mKpDOj/VXPo4=
+X-Received: by 2002:a37:7b44:: with SMTP id w65mr3270634qkc.350.1606834285972; 
+ Tue, 01 Dec 2020 06:51:25 -0800 (PST)
 MIME-Version: 1.0
-References: <20201116231407.94-1-chunkuang.hu@kernel.org>
- <20201116231407.94-3-chunkuang.hu@kernel.org>
- <20201130103411.GN8403@vkoul-mobl>
-In-Reply-To: <20201130103411.GN8403@vkoul-mobl>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 1 Dec 2020 22:30:54 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-Dkn_cwb39+G3SHJZdKdiBk9fsUWJN8sfM2fhLbVT8tg@mail.gmail.com>
-Message-ID: <CAAOTY_-Dkn_cwb39+G3SHJZdKdiBk9fsUWJN8sfM2fhLbVT8tg@mail.gmail.com>
-Subject: Re: [RESEND PATCH 2/3] phy: mediatek: Move mtk_mipi_dsi_phy driver
- into drivers/phy/mediatek folder
-To: Vinod Koul <vkoul@kernel.org>
+References: <20200924040152.30851-1-walter-zh.wu@mediatek.com>
+ <87h7rfi8pn.fsf@nanos.tec.linutronix.de>
+ <CACT4Y+a=GmYVZwwjyXwO=_AeGy4QB9X=5x7cL76erwjPvRW6Zw@mail.gmail.com>
+ <871rg9hawf.fsf@nanos.tec.linutronix.de>
+In-Reply-To: <871rg9hawf.fsf@nanos.tec.linutronix.de>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Tue, 1 Dec 2020 15:51:14 +0100
+Message-ID: <CACT4Y+bWm_bPdbes60u=3d_u34yxBBC7rGQz1yAt1FQXXqP4-A@mail.gmail.com>
+Subject: Re: [PATCH v4 0/6] kasan: add workqueue and timer stack for generic
+ KASAN
+To: Thomas Gleixner <tglx@linutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201201_093108_731768_890A0D72 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20201201_095128_658684_D6E9416F 
+X-CRM114-Status: GOOD (  19.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,31 +92,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Walter Wu <walter-zh.wu@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Linux-MM <linux-mm@kvack.org>,
+ Stephen Boyd <sboyd@kernel.org>, Alexander Potapenko <glider@google.com>,
+ Lai Jiangshan <jiangshanlai@gmail.com>, Marco Elver <elver@google.com>,
+ kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ John Stultz <john.stultz@linaro.org>, Andrey Konovalov <andreyknvl@google.com>,
+ Tejun Heo <tj@kernel.org>, Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFZpbm9kOgoKVmlub2QgS291bCA8dmtvdWxAa2VybmVsLm9yZz4g5pa8IDIwMjDlubQxMeac
-iDMw5pelIOmAseS4gCDkuIvljYg2OjM05a+r6YGT77yaCj4KPiBPbiAxNy0xMS0yMCwgMDc6MTQs
-IENodW4tS3VhbmcgSHUgd3JvdGU6Cj4gPiBtdGtfbWlwaV9kc2lfcGh5IGlzIGN1cnJlbnRseSBw
-bGFjZWQgaW5zaWRlIG1lZGlhdGVrIGRybSBkcml2ZXIsIGJ1dCBpdCdzCj4gPiBtb3JlIHN1aXRh
-YmxlIHRvIHBsYWNlIGEgcGh5IGRyaXZlciBpbnRvIHBoeSBkcml2ZXIgZm9sZGVyLCBzbyBtb3Zl
-Cj4gPiBtdGtfbWlwaV9kc2lfcGh5IGRyaXZlciBpbnRvIHBoeSBkcml2ZXIgZm9sZGVyLgo+Cj4g
-QWNrZWQtQnk6IFZpbm9kIEtvdWwgPHZrb3VsQGtlcm5lbC5vcmc+Cj4KPiBJIGFtIHRoaW5raW5n
-IHRoaXMgd291bGQgZ28gdGhydSBkcm0tdHJlZSwgaWYgbm90IGxldCBtZSBrbm93IEkgd291bGQK
-PiBhcHBseSB0aGlzCgpBcHBsaWVkIHRvIG1lZGlhdGVrLWRybS1uZXh0IFsxXSwgdGhhbmtzLgoK
-WzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5r
-dWFuZy5odS9saW51eC5naXQvbG9nLz9oPW1lZGlhdGVrLWRybS1uZXh0CgpSZWdhcmRzLApDaHVu
-LUt1YW5nLgoKPgo+IC0tCj4gflZpbm9kCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
-ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Tue, Dec 1, 2020 at 3:13 PM Thomas Gleixner <tglx@linutronix.de> wrote:
+> >> > Syzbot reports many UAF issues for workqueue or timer, see [1] and [2].
+> >> > In some of these access/allocation happened in process_one_work(),
+> >> > we see the free stack is useless in KASAN report, it doesn't help
+> >> > programmers to solve UAF on workqueue. The same may stand for times.
+> >> >
+> >> > This patchset improves KASAN reports by making them to have workqueue
+> >> > queueing stack and timer stack information. It is useful for programmers
+> >> > to solve use-after-free or double-free memory issue.
+> >> >
+> >> > Generic KASAN also records the last two workqueue and timer stacks and
+> >> > prints them in KASAN report. It is only suitable for generic KASAN.
+> >
+> > Walter, did you mail v5?
+> > Checking statuses of KASAN issues and this seems to be not in linux-next.
+> >
+> >> > [1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
+> >> > [2]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22%20expire_timers
+> >>
+> >> How are these links useful for people who do not have a gurgle account?
+> >
+> > This is a public mailing list archive, so effectively the same way as
+> > lore links ;)
+>
+> Just that it asked me to log in last time. That's why I wrote the
+> above. Today it does not, odd.
+
+Some random permissions settings changes were observed before, so I
+can believe that.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
