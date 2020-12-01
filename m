@@ -2,100 +2,77 @@ Return-Path: <SRS0=+qQs=FF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9156CC64E7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 05:53:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 29466C64E7B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 06:54:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 158AB2087D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 05:53:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2BE882085B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 06:54:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QrelADH5";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="emDPbOhP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 158AB2087D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YAj6aMZl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uPVk90cb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BE882085B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:References:Message-ID:
-	From:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7rLZiuyhuPjajjVs4oquEnehMQoY3iB8noaGNw4yTyE=; b=QrelADH5xpvlu2bFCULhZCe6j
-	8jrbECW/x2Zsj9/O9VYZSj8tuSboihj2Q9wgxokR2TbX4JT1mpHPx4myNh6xBbNIT74Qqw2ul8/nb
-	z2wHcaZhjwWYUwSXYAfp/4GfLnDgZepAd+andVBpVoJoCIg6YLgOUsvl29F/Cm31sGzhq1o5RTNHt
-	sggFerjGlBLqw9mxZiehcIKhdfmpXuZ7wjgRb9aA0MsVoJmm82HYsCRmPg71pDdZ92YbhDqlKGSK6
-	Qa7fcOapqFYtXmqiI9gduM2ckfFFE44KZNJiXE3d6oDXKeXrbo9DeTFXxQPCkDXMTgWANiNNG6qAD
-	yLkfDVoaQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=K/jnOmzV/2zJKtXdEVw5DNnPJ+E3Wjzr2DTnDH6pjzU=; b=YAj6aMZltaxEDm6PhDc9HMp615
+	wav6g6R5l/ReA9asda+yQHUGevQnuA0DpgJ8BjhocxR6+jyqU+V7Ne0R0tm3/rnrt4KF5nWhRJ7bC
+	w01GOUeJ60lHn6eTGbOS8vDMV0iY1n7Htl0TJmTPnmgGysOFjo8fZEXkBkj0/lrTTPbaPbUFuQuo+
+	P59rjn/RwrHZYaCvqZLD4DXP9NFrs+XYURyPoJMDVdm1nbKkUbxCBP1+WsHCL3lKADSCqqrRqxICa
+	orH7J9+m5jrznQwEJukN58SviABhm/RiyhS3ao8m0jGtfNkdgwGw03RfkI6rgvUx6L01Pcro+U1We
+	rntiBseA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjybH-0006ck-6Z; Tue, 01 Dec 2020 05:53:19 +0000
-Received: from aserp2130.oracle.com ([141.146.126.79])
+	id 1kjzXv-0000oU-2O; Tue, 01 Dec 2020 06:53:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjybF-0006bY-GF; Tue, 01 Dec 2020 05:53:18 +0000
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B15n67q107471;
- Tue, 1 Dec 2020 05:53:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : message-id : references : date : in-reply-to : mime-version :
- content-type; s=corp-2020-01-29;
- bh=l9ihS9O8ty7fvCGsyg6t+FL2UWzq+Pp7wI7g9M3fu94=;
- b=emDPbOhPomsDJ0NVhkgalKaWcDmTVt43uxmasZhRdsIKDAK5SyUn3ZBbDT0tfjc2Ub+G
- pwnVB+2L6jYArSQUwoKsFjxw+gIeAIQd1agInCI9m5zu6sstYek99cFlGrF83pfAMoYp
- 7h3VW08t/kH06cHx+UsVCvNai9zlonapT50haza8ExqU3V0ifCJ/7nW0lmA/qRSavM+P
- eE0d7ezZdfPLepa71ISDd/u3VXj3GbiZhoaxq0dsKdiEuu46H687kMfk2k9ooRtVL0+n
- yN1cC747fo++ObKGg9Es3E0DMkXRjQCXCIESHdIfuri0sdDNQNO6hiI2IHC3bOw+gche Nw== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2130.oracle.com with ESMTP id 353c2aru96-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 01 Dec 2020 05:53:05 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B15oGDF104852;
- Tue, 1 Dec 2020 05:53:04 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by userp3020.oracle.com with ESMTP id 3540arqfy6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 01 Dec 2020 05:53:04 +0000
-Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 0B15r2KY111063;
- Tue, 1 Dec 2020 05:53:02 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 3540arqfwj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 01 Dec 2020 05:53:02 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0B15qbsa005213;
- Tue, 1 Dec 2020 05:52:40 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 30 Nov 2020 21:52:37 -0800
-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-Message-ID: <yq1h7p6gjkk.fsf@ca-mkp.ca.oracle.com>
-References: <cover.1605896059.git.gustavoars@kernel.org>
-Date: Tue, 01 Dec 2020 00:52:27 -0500
-In-Reply-To: <cover.1605896059.git.gustavoars@kernel.org> (Gustavo
- A. R. Silva's message of "Fri, 20 Nov 2020 12:21:39 -0600")
+ id 1kjzXs-0000nv-It; Tue, 01 Dec 2020 06:53:54 +0000
+X-UUID: 05f94dbb632642a1926e3625614ab3ca-20201130
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=5SWOMWnx7VbWK/8OGOPjbEiQ8yykHhgq6v/1DH0xraQ=; 
+ b=uPVk90cbZ7gLkhJYGfs9HAQdltx2rEWM3xpuEH380j4vCyw9HKQsEX8s6x/5plfIcgBjnDW1TWQ151Ll5vJcRKgWFfRgwcc3W0iMKTExI0pdBo/5cRzb9x2rdhJrv5IRlzc2+UVghATTpkzW4yp5GmgWln1OetgOuORQs+LSizg=;
+X-UUID: 05f94dbb632642a1926e3625614ab3ca-20201130
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 382288951; Mon, 30 Nov 2020 22:53:23 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 Nov 2020 22:51:15 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Dec 2020 14:51:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 1 Dec 2020 14:51:12 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+Subject: [PATCH v2] scsi: ufs: Remove pre-defined initial voltage values of
+ device powers
+Date: Tue, 1 Dec 2020 14:51:14 +0800
+Message-ID: <20201201065114.1001-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9821
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- lowpriorityscore=0
- clxscore=1011 bulkscore=0 mlxlogscore=289 phishscore=0 malwarescore=0
- spamscore=0 adultscore=0 mlxscore=0 priorityscore=1501 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2012010039
+X-TM-SNTS-SMTP: 5428731B956507ECEFDF6B91B5227C59E128979F9A063864B9E6434E4E3E18F72000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201201_005317_689784_C645E4DF 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20201201_015353_383214_14BDAE8F 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,59 +84,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- reiserfs-devel@vger.kernel.org, nouveau@lists.freedesktop.org,
- linux-iio@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-fbdev@vger.kernel.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org,
- Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
- linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
- usb-storage@lists.one-eyed-alien.net, target-devel@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
- linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
- linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
- Miguel Ojeda <ojeda@kernel.org>, tipc-discussion@lists.sourceforge.net,
- linux-ext4@vger.kernel.org, linux-media@vger.kernel.org,
- linux-watchdog@vger.kernel.org, selinux@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, drbd-dev@tron.linbit.com,
- linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
- x86@kernel.org, linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- Kees Cook <keescook@chromium.org>, linux-mm@kvack.org, netdev@vger.kernel.org,
- linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-sctp@vger.kernel.org, linux-usb@vger.kernel.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
- linux-integrity@vger.kernel.org, linux-hardening@vger.kernel.org
+Cc: bjorn.andersson@linaro.org, Stanley Chu <stanley.chu@mediatek.com>,
+ alice.chao@mediatek.com, bvanassche@acm.org, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, nguyenb@codeaurora.org, jiajie.hao@mediatek.com,
+ cang@codeaurora.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, matthias.bgg@gmail.com, beanhuo@micron.com,
+ chaotian.jing@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+UFS specficication allows different VCC configurations for UFS devices,
+for example,
+	(1). 2.70V - 3.60V (Activated by default in UFS core driver)
+	(2). 1.70V - 1.95V (Activated if "vcc-supply-1p8" is declared in
+                          device tree)
+	(3). 2.40V - 2.70V (Supported since UFS 3.x)
 
-Gustavo,
+With the introduction of UFS 3.x products, an issue is happening that
+UFS driver will use wrong "min_uV-max_uV" values to configure the
+voltage of VCC regulator on UFU 3.x products with the configuration (3)
+used.
 
-> This series aims to fix almost all remaining fall-through warnings in
-> order to enable -Wimplicit-fallthrough for Clang.
+To solve this issue, we simply remove pre-defined initial VCC voltage
+values in UFS core driver with below reasons,
 
-Applied 20-22,54,120-124 to 5.11/scsi-staging, thanks.
+1. UFS specifications do not define how to detect the VCC configuration
+   supported by attached device.
 
+2. Device tree already supports standard regulator properties.
+
+Therefore VCC voltage shall be defined correctly in device tree, and
+shall not changed by UFS driver. What UFS driver needs to do is simply
+enable or disable the VCC regulator only.
+
+Similar change is applied to VCCQ and VCCQ2 as well.
+
+Note that we keep struct ufs_vreg unchanged. This is allow vendors to
+configure proper min_uV and max_uV of any regulators to make
+regulator_set_voltage() works during regulator toggling flow.
+Without specific vendor configurations, min_uV and max_uV will be NULL
+by default and UFS core driver will enable or disable the regulator
+only without adjusting its voltage.
+
+Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd-pltfrm.c | 16 ----------------
+ 1 file changed, 16 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
+index a6f76399b3ae..09e2f04bf4f6 100644
+--- a/drivers/scsi/ufs/ufshcd-pltfrm.c
++++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
+@@ -133,22 +133,6 @@ static int ufshcd_populate_vreg(struct device *dev, const char *name,
+ 		vreg->max_uA = 0;
+ 	}
+ 
+-	if (!strcmp(name, "vcc")) {
+-		if (of_property_read_bool(np, "vcc-supply-1p8")) {
+-			vreg->min_uV = UFS_VREG_VCC_1P8_MIN_UV;
+-			vreg->max_uV = UFS_VREG_VCC_1P8_MAX_UV;
+-		} else {
+-			vreg->min_uV = UFS_VREG_VCC_MIN_UV;
+-			vreg->max_uV = UFS_VREG_VCC_MAX_UV;
+-		}
+-	} else if (!strcmp(name, "vccq")) {
+-		vreg->min_uV = UFS_VREG_VCCQ_MIN_UV;
+-		vreg->max_uV = UFS_VREG_VCCQ_MAX_UV;
+-	} else if (!strcmp(name, "vccq2")) {
+-		vreg->min_uV = UFS_VREG_VCCQ2_MIN_UV;
+-		vreg->max_uV = UFS_VREG_VCCQ2_MAX_UV;
+-	}
+-
+ 	goto out;
+ 
+ out:
 -- 
-Martin K. Petersen	Oracle Linux Engineering
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
