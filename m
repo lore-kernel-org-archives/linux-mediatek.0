@@ -2,90 +2,76 @@ Return-Path: <SRS0=+qQs=FF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63ECCC64E90
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 03:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31238C64E7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 03:28:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA3AB20796
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 03:19:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 901B520705
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 03:28:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JBnTO/j/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="pg8e/th/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA3AB20796
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UEby/V3y";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fb2t/M/V"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 901B520705
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xCtpnDzP+lFvg1qEiPtoGiRevonaXH1DMmV6W4uSv38=; b=JBnTO/j/qyyCc3gQbbj0Ckvba
-	vhehgq8Y9fKMjWyXSNV3xe0JmRl2Ai/tMmYd7528nsR1H3XMvur7dd45DwS61l4AVLJVt/+yNzZpP
-	wrInppAJQsKn46UFCBaEdPQFSN6kWEd/tvTktPt8QTZPoE1/CTn/a8XVw0cWncaX4XtmpRLwATN05
-	6vW17WcbgkTBSntar5vxd98T+pmJHi08WNdVxgH79brlOCm/JpwfDVBzNLtUBNKzrtlGoryQyj4VF
-	9BzgMd7/fUkxRORB/gT68hAEa/K7DN7vCavWkVzR5JdklkgTMEpi2rEPPZk/vtVi0lNktdQgpnahp
-	VY3fXpWBA==;
+	 bh=57lkvzIKU6QejRoSuuhYCRMvxijqQZV1h4VMrfuRTNM=; b=UEby/V3ydHb1fue+Oshu7mjEj
+	OLfTjFwuQQRFi3GmA3txZbbFeDk5liEyKJABaVvGML+ClnOq2t1ZJU4SMmaMvss0PkPHBmlWB1u3o
+	onrf3pAi4EjmPqIJUvyaGmEBXy9wxfaexI/JVdOSUMfm3HehoaLycWW2eo8Qt3NsAT1arZstiO29W
+	5uuY7VNW8UsMsPqK0/4LdYvW1/3kI1qbScFFmJrCacBrKJm8las+a0hC5cdwZk89w7DEoGgsBgG0v
+	DNUEDmPMgzsr1B2yzWE2t01HYKJ5bcw2pK1Sc1bBoiyLPd83WQ82Rn85BN5LfyTQ0WDoPajvjAqTz
+	s8igZMS2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjwCP-0004IG-CX; Tue, 01 Dec 2020 03:19:29 +0000
-Received: from m42-4.mailgun.net ([69.72.42.4])
+	id 1kjwL2-0004o7-3b; Tue, 01 Dec 2020 03:28:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjwCN-0004Hk-4I
- for linux-mediatek@lists.infradead.org; Tue, 01 Dec 2020 03:19:28 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1606792767; h=Content-Transfer-Encoding: Content-Type:
- In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
- Subject: Sender; bh=e5XSNz5GYuQl6HFRNC6Bk5fj6G7MZnlEwPsXQRTJm5Y=;
- b=pg8e/th/Btx5It6c+N8vDcS6oRdxA43xGHrGh09uW8/hZJOQ5742OVvliFYx2+pOCd8bGYoe
- NVc0fZwWv9xKRUisdn0ZqCRzXcZgZNE1++1SiRvr06s3xLI/lAPpYEjDNTWHrV3Rj1P4bKYs
- K+GKoyu5ez+4pPI6f5cJ0jEjggM=
-X-Mailgun-Sending-Ip: 69.72.42.4
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n02.prod.us-west-2.postgun.com with SMTP id
- 5fc5b63d0b1f6587dd130a99 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 01 Dec 2020 03:19:25
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id A45B2C43463; Tue,  1 Dec 2020 03:19:25 +0000 (UTC)
-Received: from [192.168.8.168] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 8DADAC43460;
- Tue,  1 Dec 2020 03:19:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 8DADAC43460
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=asutoshd@codeaurora.org
-Subject: Re: [RFC PATCH v1] scsi: ufs: Remove pre-defined initial VCC voltage
- values
-To: Bjorn Andersson <bjorn.andersson@linaro.org>
-References: <20201130091610.2752-1-stanley.chu@mediatek.com>
- <568660cd-80e6-1b8f-d426-4614c9159ff4@codeaurora.org>
- <X8V83T+Tx6teNLOR@builder.lan>
- <4335d590-0506-d920-8e7f-f0f0372780f9@codeaurora.org>
- <X8WwPs1MPg64FEp8@builder.lan>
-From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Message-ID: <bf6e03ee-95ab-4768-7ce5-7f196ab6db60@codeaurora.org>
-Date: Mon, 30 Nov 2020 19:19:21 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.3
+ id 1kjwKz-0004nc-Ix; Tue, 01 Dec 2020 03:28:22 +0000
+X-UUID: 0e42aab36fcb4a89ac273a4fc1b72ba5-20201130
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=2aXVN+zVHNxxltuwnwGBJajzVvMc3w46iOtEkP3tAkc=; 
+ b=fb2t/M/VJUhauyRALv1pYceOCzyqIjsT/M++V0qELJcw/YxNKaIiTtbLhF99+GVIxxC0aCov9WcEm4RVRu17Dtilvc8kdAjQhY/izNJNEsfVh9ILb6XuuZCAeSZRaKewo+FG130KcNfyeRwAwfSzRyw9ggF8LWjnO7+xk0TXRG4=;
+X-UUID: 0e42aab36fcb4a89ac273a4fc1b72ba5-20201130
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1877702219; Mon, 30 Nov 2020 19:16:35 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 Nov 2020 19:06:46 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 1 Dec 2020 11:06:44 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 1 Dec 2020 11:06:43 +0800
+Message-ID: <1606792003.14736.63.camel@mhfsdcap03>
+Subject: Re: [v4,2/3] PCI: mediatek: Add new generation controller support
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Date: Tue, 1 Dec 2020 11:06:43 +0800
+In-Reply-To: <20201130173005.GA1088958@bjorn-Precision-5520>
+References: <20201130173005.GA1088958@bjorn-Precision-5520>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <X8WwPs1MPg64FEp8@builder.lan>
-Content-Language: en-US
+X-TM-SNTS-SMTP: FC451FC4603DE65A509FD6378268318300EC02B2017977A484F41EC915355B5E2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201130_221927_418659_4FFCCE83 
-X-CRM114-Status: GOOD (  35.39  )
+X-CRM114-CacheID: sfid-20201130_222821_827366_A41AE486 
+X-CRM114-Status: GOOD (  32.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,164 +83,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nguyenb@codeaurora.org, matthias.bgg@gmail.com, cang@codeaurora.org,
- alim.akhtar@samsung.com, beanhuo@micron.com, bvanassche@acm.org,
- linux-scsi@vger.kernel.org, peter.wang@mediatek.com, cc.chou@mediatek.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- avri.altman@wdc.com, linux-mediatek@lists.infradead.org,
- jiajie.hao@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>,
- chaotian.jing@mediatek.com, linux-arm-kernel@lists.infradead.org,
- martin.petersen@oracle.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, alice.chao@mediatek.com
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, qizhong.cheng@mediatek.com,
+ chuanjia.liu@mediatek.com, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-pci@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-kernel@vger.kernel.org, Matthias
+ Brugger <matthias.bgg@gmail.com>, Sj Huang <sj.huang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lukas Wunner <lukas@wunner.de>, sin_jieyang@mediatek.com, davem@davemloft.net,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/30/2020 6:53 PM, Bjorn Andersson wrote:
-> On Mon 30 Nov 17:54 CST 2020, Asutosh Das (asd) wrote:
+On Mon, 2020-11-30 at 11:30 -0600, Bjorn Helgaas wrote:
+> [+cc Lukas, pciehp power control question]
 > 
->> On 11/30/2020 3:14 PM, Bjorn Andersson wrote:
->>> On Mon 30 Nov 16:51 CST 2020, Asutosh Das (asd) wrote:
->>>
->>>> On 11/30/2020 1:16 AM, Stanley Chu wrote:
->>>>> UFS specficication allows different VCC configurations for UFS devices,
->>>>> for example,
->>>>> 	(1). 2.70V - 3.60V (By default)
->>>>> 	(2). 1.70V - 1.95V (Activated if "vcc-supply-1p8" is declared in
->>>>>                              device tree)
->>>>> 	(3). 2.40V - 2.70V (Supported since UFS 3.x)
->>>>>
->>>>> With the introduction of UFS 3.x products, an issue is happening that
->>>>> UFS driver will use wrong "min_uV/max_uV" configuration to toggle VCC
->>>>> regulator on UFU 3.x products with VCC configuration (3) used.
->>>>>
->>>>> To solve this issue, we simply remove pre-defined initial VCC voltage
->>>>> values in UFS driver with below reasons,
->>>>>
->>>>> 1. UFS specifications do not define how to detect the VCC configuration
->>>>>       supported by attached device.
->>>>>
->>>>> 2. Device tree already supports standard regulator properties.
->>>>>
->>>>> Therefore VCC voltage shall be defined correctly in device tree, and
->>>>> shall not be changed by UFS driver. What UFS driver needs to do is simply
->>>>> enabling or disabling the VCC regulator only.
->>>>>
->>>>> This is a RFC conceptional patch. Please help review this and feel
->>>>> free to feedback any ideas. Once this concept is accepted, and then
->>>>> I would post a more completed patch series to fix this issue.
->>>>>
->>>>> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
->>>>> ---
->>>>>     drivers/scsi/ufs/ufshcd-pltfrm.c | 10 +---------
->>>>>     1 file changed, 1 insertion(+), 9 deletions(-)
->>>>>
->>>>> diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
->>>>> index a6f76399b3ae..3965be03c136 100644
->>>>> --- a/drivers/scsi/ufs/ufshcd-pltfrm.c
->>>>> +++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
->>>>> @@ -133,15 +133,7 @@ static int ufshcd_populate_vreg(struct device *dev, const char *name,
->>>>>     		vreg->max_uA = 0;
->>>>>     	}
->>>>> -	if (!strcmp(name, "vcc")) {
->>>>> -		if (of_property_read_bool(np, "vcc-supply-1p8")) {
->>>>> -			vreg->min_uV = UFS_VREG_VCC_1P8_MIN_UV;
->>>>> -			vreg->max_uV = UFS_VREG_VCC_1P8_MAX_UV;
->>>>> -		} else {
->>>>> -			vreg->min_uV = UFS_VREG_VCC_MIN_UV;
->>>>> -			vreg->max_uV = UFS_VREG_VCC_MAX_UV;
->>>>> -		}
->>>>> -	} else if (!strcmp(name, "vccq")) {
->>>>> +	if (!strcmp(name, "vccq")) {
->>>>>     		vreg->min_uV = UFS_VREG_VCCQ_MIN_UV;
->>>>>     		vreg->max_uV = UFS_VREG_VCCQ_MAX_UV;
->>>>>     	} else if (!strcmp(name, "vccq2")) {
->>>>>
->>>>
->>>> Hi Stanley
->>>>
->>>> Thanks for the patch. Bao (nguyenb) was also working towards something
->>>> similar.
->>>> Would it be possible for you to take into account the scenario in which the
->>>> same platform supports both 2.x and 3.x UFS devices?
->>>>
->>>> These've different voltage requirements, 2.4v-3.6v.
->>>> I'm not sure if standard dts regulator properties can support this.
->>>>
->>>
->>> What is the actual voltage requirement for these devices and how does
->>> the software know what voltage to pick in this range?
->>>
->>> Regards,
->>> Bjorn
->>>
->>>> -asd
->>>>
->>>>
->>>> -- 
->>>> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
->>>> Linux Foundation Collaborative Project
->>
->> For platforms that support both 2.x (2.7v-3.6v) and 3.x (2.4v-2.7v), the
->> voltage requirements (Vcc) are 2.4v-3.6v. The software initializes the ufs
->> device at 2.95v & reads the version and if the device is 3.x, it may do the
->> following:
->> - Set the device power mode to SLEEP
->> - Disable the Vcc
->> - Enable the Vcc and set it to 2.5v
->> - Set the device power mode to ACTIVE
->>
->> All of the above may be done at HS-G1 & moved to max supported gear based on
->> the device version, perhaps?
->>
->> Am open to other ideas though.
->>
+> On Mon, Nov 23, 2020 at 02:45:13PM +0800, Jianjun Wang wrote:
+> > On Thu, 2020-11-19 at 14:28 -0600, Bjorn Helgaas wrote:
+> > > "Add new generation" really contains no information.  And "mediatek"
+> > > is already used for the pcie-mediatek.c driver, so we should have a
+> > > new tag for this new driver.  Include useful information in the
+> > > subject, e.g.,
+> > > 
+> > >   PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
 > 
-> But that means that for a board where we don't know (don't want to know)
-> if we have a 2.x or 3.x device we need to set:
+> > > > +static int mtk_pcie_setup(struct mtk_pcie_port *port)
+> > > > +{
+> > > > +	struct device *dev = port->dev;
+> > > > +	struct platform_device *pdev = to_platform_device(dev);
+> > > > +	struct resource *regs;
+> > > > +	int err;
+> > > > +
+> > > > +	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
+> > > > +	port->base = devm_ioremap_resource(dev, regs);
+> > > > +	if (IS_ERR(port->base)) {
+> > > > +		dev_notice(dev, "failed to map register base\n");
+> > > > +		return PTR_ERR(port->base);
+> > > > +	}
+> > > > +
+> > > > +	port->reg_base = regs->start;
+> > > > +
+> > > > +	/* Don't touch the hardware registers before power up */
+> > > > +	err = mtk_pcie_power_up(port);
+> > > > +	if (err)
+> > > > +		return err;
+> > > > +
+> > > > +	/* Try link up */
+> > > > +	err = mtk_pcie_startup_port(port);
+> > > > +	if (err) {
+> > > > +		dev_notice(dev, "PCIe link down\n");
+> > > > +		goto err_setup;
+> > > 
+> > > Generally it should not be a fatal error if the link is not up at
+> > > probe-time.  You may be able to hot-add a device, or the device may
+> > > have some external power control that will power it up later.
+> > 
+> > This is for the power saving requirement. If there is no device
+> > connected with the PCIe slot, the PCIe MAC and PHY should be powered
+> > off.
+> > 
+> > Is there any standard flow to support power down the hardware at
+> > probe-time if no device is connected and power it up when hot-add a
+> > device?
 > 
->    regulator-min-microvolt = <2.4V>
->    regulator-max-microvolt = <3.6V>
+> That's a good question.  I assume this looks like a standard PCIe
+> hot-add event?
 > 
-> And the 2.5V and the two ranges should be hard coded into the ufshcd (in
-> particular if they come from the specification).
+> When you hot-add a device, does the Root Port generate a Presence
+> Detect Changed interrupt?  The pciehp driver should field that
+> interrupt and turn on power to the slot via the Power Controller
+> Control bit in the Slot Control register.
 > 
-> For devices with only 2.x or 3.x devices, regulator-{min,max}-microvolt
-> should be adjusted accordingly.
+> Does your hardware require something more than that to control the MAC
+> and PHY power?
 > 
-> Note that driving the regulators outside these ranges will either damage
-> the hardware or cause it to misbehave, so these values should be defined
-> in the board.dts anyways.
-> 
-> Also note that regulator_set_voltage(2.4V, 3.6V) won't give you "a
-> voltage between 2.4V and 3.6V, it will most likely give either 2.4V or
-> any more specific voltage that we've specified in the board file because
-> the regulator happens to be shared with some other consumer and changing
-> it in runtime would be bad.
-> 
-> Regards,
 > Bjorn
-> 
 
-Understood.
-I also understand that assumptions on the regulator limits in the driver 
-is a bad idea. I'm not sure how it's designed, but I should think the 
-power-grid design should take care of regulator sharing; if it's being 
-shared and the platform supports both 2.x and 3.x. Perhaps, such 
-platforms be identified using a dts flag - not sure if that's such a 
-good idea though.
+The hardware support to generate a Presence Detect Changed interrupt
+when hot-add a device.
 
-I like Stanley's proposal of a vops and let vendors handle it, until 
-specs or someone has a better suggestion.
+But it seems that we should keep the PHY's power and clocks to ensure
+the data link layer state change can be detected, and keep the MAC layer
+active for routing the interrupt event to pciehp driver handler.
 
--asd
+For the power saving requirement, the modules that is not used when
+probe-time must be powered off, so I think we may not support hot-plug
+in this case.
 
-
--- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-Linux Foundation Collaborative Project
-
+Thanks
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
