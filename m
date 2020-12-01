@@ -2,76 +2,79 @@ Return-Path: <SRS0=+qQs=FF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18055C64E7B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18C8EC64E7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:31:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93F9E20757
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:13:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9172F20757
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:31:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WA/Su0fC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="Mw9HOaWV";
-	dkim=permerror (0-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="+uah8n9H"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93F9E20757
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s5/oE25r";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="oMsqBM0R"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9172F20757
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VJTCuTkifDZHrr1eLsRfiWT7hzf+rGrp9fYmgrrb8uo=; b=WA/Su0fClBL3Ace96MoUmuNSW
-	nXSJhpU8P0NtNr7hIupCoGbsKNcmqRYEHuhiQZCUOmEnkr5Alt2r12ClpK4PjUMcOrujZSU1XHCz0
-	2urlHRMSETL6mBDyGsmpMohuuJdzumPG6aYXrfaoq7qi1ijhV+64rUwzmUnAuwj4scpe9eb93lo+S
-	Ow73yO1e6d318KLALZSGn+aeoW3JQLqGbKEkRIAeuNh8b03xQcgWuDK7xXqKSGyhqqU8lrSokqbmX
-	VBD6XWos4UqklZA9Yx1FbpSn0t6sRSiR1ETH7xit94uMjYuSQ2Ngqx7+bR6fhiH0Il5Yh7s/c9EAb
-	pnwDfn2fA==;
+	 bh=Xuhs/Jbu+b/eWF7LOplRJZPrHkWkONZq4COzdr8qLw8=; b=s5/oE25rSf2TDakKrLqJXlVa1
+	5CvDixCSl+lLtG7JsIdcLFkDJzP0PQlUAazOy01ZzNWGSAFGdLoSuwYMvYc9LEVY6bYk0ZC/T9Kpd
+	5Dci95HVfNbiMCHBjpQutH0HyYPuyiJH5i/zRTMKiy2cgB34MtPlqPJXduhpm2u/Soxp1N803+lsi
+	gs2KMGiJ4ooiH+RTF6ET1AgLe+juCK4xGP81Fkuovwmu7bsxWt14HAt5JVpZ20XtMObdYeFszkDnC
+	XnRtiPjvuNBnYL3a+DvyBD3Od1Mh0Qjej+rxj/z89MgeE/BNk37GJ5E1gWbSMhevNTlkH7jwGpF2l
+	nf8RG7ZSw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kk6PX-000723-MY; Tue, 01 Dec 2020 14:13:43 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1kk6gV-00020D-GF; Tue, 01 Dec 2020 14:31:15 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kk6PS-0006zI-9E; Tue, 01 Dec 2020 14:13:39 +0000
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1606832016;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Skhg6O9p2Trnjrbm81ayS393ZogAa9PiayeejAPB7Ow=;
- b=Mw9HOaWVR79l72uLb07taz0LhZWUg8d2/HcmPfRcpZ4cCq6AZpzlRRr0IS9gzoIga3r+bO
- NywKzYVIGI/2M4ARyuCPl0/wuC1Xp5OFqTHMuYEFR/xerUVW4pEyqOwq9RPANMLUr8nnj6
- nK9RgMhl6/iHcXlj1MwZtbBiTQlJji+h1+OSgVyxaylqkdMQxxNPKZEBzgS1T4VuBACrXQ
- 7H1zXyEIEeWWp673BEURkomaOIfS0UWl5PrTTAX9WUAp02CCJRLpzcXYMylMEtig3BnurG
- 3WDPJBaoWh8ly+UtGwljZirT85nz/Lqkgx/ANbTHgmcfETrHkj5MPa/PVfoMgw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1606832016;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Skhg6O9p2Trnjrbm81ayS393ZogAa9PiayeejAPB7Ow=;
- b=+uah8n9H51Y4ejsCR0Zmx8WPPwKY1FEz2dTA8w9rlY73cNkQ3nWGd3qzkRRjnXqZVhA9ir
- 2eJhR8yltoybsLAg==
-To: Dmitry Vyukov <dvyukov@google.com>
-Subject: Re: [PATCH v4 0/6] kasan: add workqueue and timer stack for generic
- KASAN
-In-Reply-To: <CACT4Y+a=GmYVZwwjyXwO=_AeGy4QB9X=5x7cL76erwjPvRW6Zw@mail.gmail.com>
-References: <20200924040152.30851-1-walter-zh.wu@mediatek.com>
- <87h7rfi8pn.fsf@nanos.tec.linutronix.de>
- <CACT4Y+a=GmYVZwwjyXwO=_AeGy4QB9X=5x7cL76erwjPvRW6Zw@mail.gmail.com>
-Date: Tue, 01 Dec 2020 15:13:36 +0100
-Message-ID: <871rg9hawf.fsf@nanos.tec.linutronix.de>
+ id 1kk6gO-0001xE-Iz
+ for linux-mediatek@lists.infradead.org; Tue, 01 Dec 2020 14:31:12 +0000
+Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com
+ [209.85.218.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4D8192085B
+ for <linux-mediatek@lists.infradead.org>; Tue,  1 Dec 2020 14:31:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1606833067;
+ bh=iKyVt3ei4IjF6uUcpgpDuCr1OPzvs8ktfZvmbaiq0V4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=oMsqBM0RKejCzfstwlt6YyEpaxDWsKgOG+o0IPk82w9kBAgkGtQL6ftCiJ8ERMZ2u
+ cgwTOds2N8B26XkSvBv5MlYgDUiE9ylwA2mJ0qy/1mmvH+QikgJwL40rAjTzcrQnRt
+ 8tIXOjHigZTfKj6SbWHaYT2ryjk+BGEnLXZ0qT3E=
+Received: by mail-ej1-f44.google.com with SMTP id m19so4462435ejj.11
+ for <linux-mediatek@lists.infradead.org>; Tue, 01 Dec 2020 06:31:07 -0800 (PST)
+X-Gm-Message-State: AOAM532kQ5O2bVpPRxeSCOxlqmrMvSVcHKKDDxb5vJ2yFLwIJ2tOpDBN
+ ISL4G4t24DsiTJUrUSuwnYtfewQBFDp7cRzMcA==
+X-Google-Smtp-Source: ABdhPJzlHxdV4VGqzoWpb7rYlMAdgwMJ1nH13c0Yed4GR1AZ/tKtVHvegqEicS3dnzhWhT9kSKQM68aoJzZdQwO0v8w=
+X-Received: by 2002:a17:906:af0a:: with SMTP id
+ lx10mr3263894ejb.75.1606833065729; 
+ Tue, 01 Dec 2020 06:31:05 -0800 (PST)
 MIME-Version: 1.0
+References: <20201116231407.94-1-chunkuang.hu@kernel.org>
+ <20201116231407.94-3-chunkuang.hu@kernel.org>
+ <20201130103411.GN8403@vkoul-mobl>
+In-Reply-To: <20201130103411.GN8403@vkoul-mobl>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 1 Dec 2020 22:30:54 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-Dkn_cwb39+G3SHJZdKdiBk9fsUWJN8sfM2fhLbVT8tg@mail.gmail.com>
+Message-ID: <CAAOTY_-Dkn_cwb39+G3SHJZdKdiBk9fsUWJN8sfM2fhLbVT8tg@mail.gmail.com>
+Subject: Re: [RESEND PATCH 2/3] phy: mediatek: Move mtk_mipi_dsi_phy driver
+ into drivers/phy/mediatek folder
+To: Vinod Koul <vkoul@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201201_091338_476500_5E7854FF 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20201201_093108_731768_890A0D72 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,57 +86,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Walter Wu <walter-zh.wu@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, Linux-MM <linux-mm@kvack.org>,
- Stephen Boyd <sboyd@kernel.org>, Alexander Potapenko <glider@google.com>,
- Lai Jiangshan <jiangshanlai@gmail.com>, Marco Elver <elver@google.com>,
- kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- John Stultz <john.stultz@linaro.org>, Andrey Konovalov <andreyknvl@google.com>,
- Tejun Heo <tj@kernel.org>, Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 01 2020 at 08:59, Dmitry Vyukov wrote:
-> On Wed, Sep 30, 2020 at 5:29 PM Thomas Gleixner <tglx@linutronix.de> wrote:
->> On Thu, Sep 24 2020 at 12:01, Walter Wu wrote:
->> > Syzbot reports many UAF issues for workqueue or timer, see [1] and [2].
->> > In some of these access/allocation happened in process_one_work(),
->> > we see the free stack is useless in KASAN report, it doesn't help
->> > programmers to solve UAF on workqueue. The same may stand for times.
->> >
->> > This patchset improves KASAN reports by making them to have workqueue
->> > queueing stack and timer stack information. It is useful for programmers
->> > to solve use-after-free or double-free memory issue.
->> >
->> > Generic KASAN also records the last two workqueue and timer stacks and
->> > prints them in KASAN report. It is only suitable for generic KASAN.
->
-> Walter, did you mail v5?
-> Checking statuses of KASAN issues and this seems to be not in linux-next.
->
->> > [1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
->> > [2]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22%20expire_timers
->>
->> How are these links useful for people who do not have a gurgle account?
->
-> This is a public mailing list archive, so effectively the same way as
-> lore links ;)
-
-Just that it asked me to log in last time. That's why I wrote the
-above. Today it does not, odd.
-
-Thanks,
-
-        tglx
-
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFZpbm9kOgoKVmlub2QgS291bCA8dmtvdWxAa2VybmVsLm9yZz4g5pa8IDIwMjDlubQxMeac
+iDMw5pelIOmAseS4gCDkuIvljYg2OjM05a+r6YGT77yaCj4KPiBPbiAxNy0xMS0yMCwgMDc6MTQs
+IENodW4tS3VhbmcgSHUgd3JvdGU6Cj4gPiBtdGtfbWlwaV9kc2lfcGh5IGlzIGN1cnJlbnRseSBw
+bGFjZWQgaW5zaWRlIG1lZGlhdGVrIGRybSBkcml2ZXIsIGJ1dCBpdCdzCj4gPiBtb3JlIHN1aXRh
+YmxlIHRvIHBsYWNlIGEgcGh5IGRyaXZlciBpbnRvIHBoeSBkcml2ZXIgZm9sZGVyLCBzbyBtb3Zl
+Cj4gPiBtdGtfbWlwaV9kc2lfcGh5IGRyaXZlciBpbnRvIHBoeSBkcml2ZXIgZm9sZGVyLgo+Cj4g
+QWNrZWQtQnk6IFZpbm9kIEtvdWwgPHZrb3VsQGtlcm5lbC5vcmc+Cj4KPiBJIGFtIHRoaW5raW5n
+IHRoaXMgd291bGQgZ28gdGhydSBkcm0tdHJlZSwgaWYgbm90IGxldCBtZSBrbm93IEkgd291bGQK
+PiBhcHBseSB0aGlzCgpBcHBsaWVkIHRvIG1lZGlhdGVrLWRybS1uZXh0IFsxXSwgdGhhbmtzLgoK
+WzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5r
+dWFuZy5odS9saW51eC5naXQvbG9nLz9oPW1lZGlhdGVrLWRybS1uZXh0CgpSZWdhcmRzLApDaHVu
+LUt1YW5nLgoKPgo+IC0tCj4gflZpbm9kCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
