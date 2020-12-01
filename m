@@ -2,104 +2,76 @@ Return-Path: <SRS0=+qQs=FF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D57AAC64E7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:12:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18055C64E7B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:13:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3FD6A20705
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:12:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 93F9E20757
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Dec 2020 14:13:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u3fFlC1Q";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="Q8Pq03hi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FD6A20705
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WA/Su0fC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="Mw9HOaWV";
+	dkim=permerror (0-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="+uah8n9H"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93F9E20757
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GkExyvsyBra8k5YmLRXcvrJzstQuDzUJ2SqvADPEGXQ=; b=u3fFlC1Qj7rKkAogaxoU+4d0J
-	kqZmHg99kiGnmoF5DvDyv4Yl1Pmuapbqv7pdDKie4zWKeXe+vXlM6Mh/DXjB+eBKXqXSEQjhhCGF6
-	Nqu6OqxsQNu1DwxwDvaKnlHeBLKetMmkt8YpchzxAo3T8p/XzYaOHBxvBu1soYYezNRWDwiZE4/7f
-	g4O+UwVGodBCo+a1+GPwQm/S4lOofzV6QLto07BIePKrrv8ituKL9PNWj3RJsuwKUrVjN2p/s7Dls
-	lcoNCsAjDckzoFvfJCOEGeiKVlLH8I7NYKmiWgRdqD1LJOq6SOcG7o8NcUkKzC6/paKcLUk2xXwME
-	qNBr2H3aQ==;
+	 bh=VJTCuTkifDZHrr1eLsRfiWT7hzf+rGrp9fYmgrrb8uo=; b=WA/Su0fClBL3Ace96MoUmuNSW
+	nXSJhpU8P0NtNr7hIupCoGbsKNcmqRYEHuhiQZCUOmEnkr5Alt2r12ClpK4PjUMcOrujZSU1XHCz0
+	2urlHRMSETL6mBDyGsmpMohuuJdzumPG6aYXrfaoq7qi1ijhV+64rUwzmUnAuwj4scpe9eb93lo+S
+	Ow73yO1e6d318KLALZSGn+aeoW3JQLqGbKEkRIAeuNh8b03xQcgWuDK7xXqKSGyhqqU8lrSokqbmX
+	VBD6XWos4UqklZA9Yx1FbpSn0t6sRSiR1ETH7xit94uMjYuSQ2Ngqx7+bR6fhiH0Il5Yh7s/c9EAb
+	pnwDfn2fA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kk6Nk-0006TI-NT; Tue, 01 Dec 2020 14:11:52 +0000
-Received: from aserp2130.oracle.com ([141.146.126.79])
+	id 1kk6PX-000723-MY; Tue, 01 Dec 2020 14:13:43 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kk6Na-0006Ob-Cm; Tue, 01 Dec 2020 14:11:51 +0000
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B1Dt8Jx186047;
- Tue, 1 Dec 2020 14:11:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=CVxJrJvszPiYRoVvo8QMoaANjq0rT1w3VAIVepGqitY=;
- b=Q8Pq03hifJp4hxcZYQuiJvbKTKZMKP2mLNTS1aHW6hAxlDpObu2xNteC6Yj/L36I1kmY
- WSfMJZMdSk8bN2J9+UmYiF9MWo5KvhVT37I7ctRf5KKEocNW4v8PFVCDeiU3k6pn404k
- Igra+V15xZpvhIpriUlAo6fac2mI985JVt4CqtU5vfkzzkfANqieFePUQJBzO6eRndXt
- r4RGB+aUeJDKgHUaSwwmUD5k/B0oZ1T+RFudNU+Upzz4yF4kbfdExpcaXwIzXbiJCqdd
- NFMbLYQpnYBf2dU4wooUhfeXNwTuWm/ESbR6RxVNN2eeS+ZfeOwZNtuQUXq4Dn72Z2fB vg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2130.oracle.com with ESMTP id 353c2attky-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 01 Dec 2020 14:11:31 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B1Du5hA003823;
- Tue, 1 Dec 2020 14:09:31 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by aserp3020.oracle.com with ESMTP id 3540ey0nwv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 01 Dec 2020 14:09:31 +0000
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 0B1E8IaF039759;
- Tue, 1 Dec 2020 14:09:29 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 3540ey0nvu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 01 Dec 2020 14:09:29 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0B1E9NOp018011;
- Tue, 1 Dec 2020 14:09:24 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 01 Dec 2020 06:09:23 -0800
-Date: Tue, 1 Dec 2020 17:08:49 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nick Desaulniers <ndesaulniers@google.com>
-Subject: Re: [PATCH 000/141] Fix fall-through warnings for Clang
-Message-ID: <20201201140849.GH2767@kadam>
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <CAKwvOdntVfXj2WRR5n6Kw7BfG7FdKpTeHeh5nPu5AzwVMhOHTg@mail.gmail.com>
+ id 1kk6PS-0006zI-9E; Tue, 01 Dec 2020 14:13:39 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1606832016;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Skhg6O9p2Trnjrbm81ayS393ZogAa9PiayeejAPB7Ow=;
+ b=Mw9HOaWVR79l72uLb07taz0LhZWUg8d2/HcmPfRcpZ4cCq6AZpzlRRr0IS9gzoIga3r+bO
+ NywKzYVIGI/2M4ARyuCPl0/wuC1Xp5OFqTHMuYEFR/xerUVW4pEyqOwq9RPANMLUr8nnj6
+ nK9RgMhl6/iHcXlj1MwZtbBiTQlJji+h1+OSgVyxaylqkdMQxxNPKZEBzgS1T4VuBACrXQ
+ 7H1zXyEIEeWWp673BEURkomaOIfS0UWl5PrTTAX9WUAp02CCJRLpzcXYMylMEtig3BnurG
+ 3WDPJBaoWh8ly+UtGwljZirT85nz/Lqkgx/ANbTHgmcfETrHkj5MPa/PVfoMgw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1606832016;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Skhg6O9p2Trnjrbm81ayS393ZogAa9PiayeejAPB7Ow=;
+ b=+uah8n9H51Y4ejsCR0Zmx8WPPwKY1FEz2dTA8w9rlY73cNkQ3nWGd3qzkRRjnXqZVhA9ir
+ 2eJhR8yltoybsLAg==
+To: Dmitry Vyukov <dvyukov@google.com>
+Subject: Re: [PATCH v4 0/6] kasan: add workqueue and timer stack for generic
+ KASAN
+In-Reply-To: <CACT4Y+a=GmYVZwwjyXwO=_AeGy4QB9X=5x7cL76erwjPvRW6Zw@mail.gmail.com>
+References: <20200924040152.30851-1-walter-zh.wu@mediatek.com>
+ <87h7rfi8pn.fsf@nanos.tec.linutronix.de>
+ <CACT4Y+a=GmYVZwwjyXwO=_AeGy4QB9X=5x7cL76erwjPvRW6Zw@mail.gmail.com>
+Date: Tue, 01 Dec 2020 15:13:36 +0100
+Message-ID: <871rg9hawf.fsf@nanos.tec.linutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAKwvOdntVfXj2WRR5n6Kw7BfG7FdKpTeHeh5nPu5AzwVMhOHTg@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9821
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- lowpriorityscore=0
- clxscore=1015 bulkscore=0 mlxlogscore=924 phishscore=0 malwarescore=0
- spamscore=0 adultscore=0 mlxscore=0 priorityscore=1501 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2012010090
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201201_091142_617313_87F63C15 
-X-CRM114-Status: GOOD (  26.54  )
+X-CRM114-CacheID: sfid-20201201_091338_476500_5E7854FF 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,117 +83,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, bridge@lists.linux-foundation.org,
- target-devel@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
- dri-devel <dri-devel@lists.freedesktop.org>,
- virtualization@lists.linux-foundation.org,
- Linux Memory Management List <linux-mm@kvack.org>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- linux-i3c@lists.infradead.org, linux1394-devel@lists.sourceforge.net,
- linux-afs@lists.infradead.org, linux-watchdog@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, linux-scsi@vger.kernel.org,
- linux-acpi@vger.kernel.org, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, linux-atm-general@lists.sourceforge.net,
- ceph-devel@vger.kernel.org, amd-gfx list <amd-gfx@lists.freedesktop.org>,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- usb-storage@lists.one-eyed-alien.net, linux-mmc@vger.kernel.org,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, linux-input@vger.kernel.org,
- Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- linux-ext4@vger.kernel.org, netfilter-devel@vger.kernel.org,
- linux-media@vger.kernel.org, Kees Cook <keescook@chromium.org>,
- selinux@vger.kernel.org, linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- intel-gfx@lists.freedesktop.org, linux-sctp@vger.kernel.org,
- reiserfs-devel@vger.kernel.org, linux-geode@lists.infradead.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, drbd-dev@tron.linbit.com,
- linux-hams@vger.kernel.org, Nathan Chancellor <natechancellor@gmail.com>,
- linux-can@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-hwmon@vger.kernel.org,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- nouveau@lists.freedesktop.org, Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net, samba-technical@lists.samba.org,
- LKML <linux-kernel@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-security-module@vger.kernel.org, linux-usb@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net,
- "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
- <linux-crypto@vger.kernel.org>, patches@opensource.cirrus.com,
- Joe Perches <joe@perches.com>, linux-integrity@vger.kernel.org,
- linux-hardening@vger.kernel.org
+Cc: Walter Wu <walter-zh.wu@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Linux-MM <linux-mm@kvack.org>,
+ Stephen Boyd <sboyd@kernel.org>, Alexander Potapenko <glider@google.com>,
+ Lai Jiangshan <jiangshanlai@gmail.com>, Marco Elver <elver@google.com>,
+ kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ John Stultz <john.stultz@linaro.org>, Andrey Konovalov <andreyknvl@google.com>,
+ Tejun Heo <tj@kernel.org>, Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 23, 2020 at 05:32:51PM -0800, Nick Desaulniers wrote:
-> On Sun, Nov 22, 2020 at 8:17 AM Kees Cook <keescook@chromium.org> wrote:
-> >
-> > On Fri, Nov 20, 2020 at 11:51:42AM -0800, Jakub Kicinski wrote:
-> > > If none of the 140 patches here fix a real bug, and there is no change
-> > > to machine code then it sounds to me like a W=2 kind of a warning.
-> >
-> > FWIW, this series has found at least one bug so far:
-> > https://lore.kernel.org/lkml/CAFCwf11izHF=g1mGry1fE5kvFFFrxzhPSM6qKAO8gxSp=Kr_CQ@mail.gmail.com/
-> 
-> So looks like the bulk of these are:
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     break;
-> }
+On Tue, Dec 01 2020 at 08:59, Dmitry Vyukov wrote:
+> On Wed, Sep 30, 2020 at 5:29 PM Thomas Gleixner <tglx@linutronix.de> wrote:
+>> On Thu, Sep 24 2020 at 12:01, Walter Wu wrote:
+>> > Syzbot reports many UAF issues for workqueue or timer, see [1] and [2].
+>> > In some of these access/allocation happened in process_one_work(),
+>> > we see the free stack is useless in KASAN report, it doesn't help
+>> > programmers to solve UAF on workqueue. The same may stand for times.
+>> >
+>> > This patchset improves KASAN reports by making them to have workqueue
+>> > queueing stack and timer stack information. It is useful for programmers
+>> > to solve use-after-free or double-free memory issue.
+>> >
+>> > Generic KASAN also records the last two workqueue and timer stacks and
+>> > prints them in KASAN report. It is only suitable for generic KASAN.
+>
+> Walter, did you mail v5?
+> Checking statuses of KASAN issues and this seems to be not in linux-next.
+>
+>> > [1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
+>> > [2]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22%20expire_timers
+>>
+>> How are these links useful for people who do not have a gurgle account?
+>
+> This is a public mailing list archive, so effectively the same way as
+> lore links ;)
 
-This should not generate a warning.
+Just that it asked me to log in last time. That's why I wrote the
+above. Today it does not, odd.
 
-> 
-> I have a patch that fixes those up for clang:
-> https://reviews.llvm.org/D91895
-> 
-> There's 3 other cases that don't quite match between GCC and Clang I
-> observe in the kernel:
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     goto y;
-> }
-> y:;
+Thanks,
 
-This should generate a warning.
-
-> 
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     return;
-> }
-
-Warn for this.
+        tglx
 
 
-> 
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     ;
-> }
-
-Don't warn for this.
-
-If adding a break statement changes the flow of the code then warn about
-potentially missing break statements, but if it doesn't change anything
-then don't warn about it.
-
-regards,
-dan carpenter
 
 _______________________________________________
 Linux-mediatek mailing list
