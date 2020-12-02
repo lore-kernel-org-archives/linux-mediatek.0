@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B27C1C64E8A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 04:46:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC581C64E90
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 04:46:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16414221FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 04:46:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16414221FE
+	by mail.kernel.org (Postfix) with ESMTPS id 2AF71221FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 04:46:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AF71221FE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:From:Subject:Mime-Version:Message-Id:Date:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qkTbwlPA5no1Ba7PC4PuOuFVZGsQTrjpArDw9uq9m7A=; b=wKtclob1Mo1iC7m6skUS74Fmfh
-	4aqX8bnPjajdphCW4wCHk3ml4X6st9GdJUidIRIbzXzYpJUJWTGZf2w4ku2uIOIwG1kGrrUSH3yDo
-	7yKf3jEVTIFlvY2q3ojpqjnyQAmIW7jBaNQ7PqG2ob5YB9M6YAz/2eedGMWq8LF9hs3C1PyzFS6Tg
-	rVud9aKKe8ihn3hTGvRwMqCkacYdrVV1EXU8AsH5qJMZAXTNpeJpxcI3R9V0+oU+pFusOUQcwEpDT
-	NSOclCaNVOrWfvkd6MUEOIMwiz7b36bBbpWMjy90xvKSqKBIpzm28ayp7fZOlHNwmeBDw/AtH6XxK
-	CNGbU1Mg==;
+	bh=5V0mG/cSE4VHHrcatpASGwW4q1Juqh/y+g872Gk+dDY=; b=bPUKMVP3VDVf/ROtDTpU2/VLr5
+	B84CGKVWr+nF3WGrQxfqPNARnhxSjy8ogXh5To0XAcMGHihQaFFmS9FKyyNPc23lBxMaqIc+Oa37+
+	dmOAfZrTj0hdPcxmKVjSKnJ+Q07h+M5iCfKwPGld1PQLaLLEylHfAiURyE7ESGCWzDYzHiaBhBdgX
+	55++hlf76rimNym+bjYkHL/y0k/2/taydg2KYJtGqa5OkV3XLmO/1E6QTOTH/08GyEEXmCuKzEz63
+	wMtb/7fM5qTMvb0vq1+SiGp3SvagyRvjMPYg4vGoThY8RJNJv8R2xDQatq8enW5NveRj+j1qcHDVL
+	SzR6Wrsw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkK1s-0006PI-6V; Wed, 02 Dec 2020 04:46:12 +0000
-Received: from mail-qt1-x84a.google.com ([2607:f8b0:4864:20::84a])
+	id 1kkK21-0006RS-2g; Wed, 02 Dec 2020 04:46:21 +0000
+Received: from mail-qt1-x849.google.com ([2607:f8b0:4864:20::849])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkK1n-0006O9-Up
- for linux-mediatek@lists.infradead.org; Wed, 02 Dec 2020 04:46:10 +0000
-Received: by mail-qt1-x84a.google.com with SMTP id c11so383370qtw.10
- for <linux-mediatek@lists.infradead.org>; Tue, 01 Dec 2020 20:46:05 -0800 (PST)
+ id 1kkK1y-0006QH-PK
+ for linux-mediatek@lists.infradead.org; Wed, 02 Dec 2020 04:46:20 +0000
+Received: by mail-qt1-x849.google.com with SMTP id r29so364797qtu.21
+ for <linux-mediatek@lists.infradead.org>; Tue, 01 Dec 2020 20:46:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:message-id:mime-version:subject:from:to:cc;
- bh=KaD/sETMhQdwAs4CxEJvlROU3dFFHCWo0dFsT9X/rFw=;
- b=HqtyOa7OG56z5TA7PLMydmHYJxsAKx/WMKSXgBPdXYpQbAMfKonL5cSXWbbkl9KjhI
- JdBgvEZTXZGjXhN6yukz5tIIIB3ZeA9f4vzH0+fw1J2jwW2B6ZMxm6iP/KSgC2G1SmGE
- yT3qY0rHdTKa1M0OD9DYU4abtt/AQeZIex8J8aWxexSKwHtb9aa2mpwwX8TSm8p+wk0Y
- DVEJLOxa5SnTwD59EFqZrWzmxpPLeyTlMbxwmWzV6F44qStm3c6oTqAvK1Fucqh/+uXs
- /JWUHmohoaQ+K0MYpGXJX9J1qsGzS2EclWMkPNb2tsBOLgtTwmcbK0QyEqnoBjG9CSv+
- pKmg==
+ bh=EJIkGbMwGweiA8accuD7cTOgHJm9UvrQYFz8KGV9AuU=;
+ b=WjwJudTOz7CcjKxhs1e1IIacD2HC6PYCVI4DBZona+Y59Gai0iCACyFNrR7AJo3K1M
+ 5uSfunL3WwVnaf3h70o/9O4gJB9NWAdnOtSP3Aoo8y8yZKwBHlZHUAR5w4EZ5mW6PfnW
+ 8TxKwXs4BzeBMnyL+Hoz3sXuhJYvR8NPHtS1C3MDsSiJDAa1KjWzvrY5YZdH95QGaSCQ
+ rXAt6FzPe5fmC+R2HFnYGjSoepEMgYNhwx5KV5GL9xkzSTiNRPF3nii7LJFZHMJcoQFs
+ h5p25j/s7Hmzt+v87NTATbSX+UhAHm+7HLoBnCA67J9baJP45Frobjk4JFohqpn2fNyU
+ qmiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
  :to:cc;
- bh=KaD/sETMhQdwAs4CxEJvlROU3dFFHCWo0dFsT9X/rFw=;
- b=BeaP4shejxfQ7sEboIgGbqUI2HywoZJyW6w1Nhof2z6EAC2hCoxbrU9cOiqRS4o8vv
- U6obtKB7CuvNcxd8cKswtcK+sRCXDle2te06TkV7dEMKzrB/fZ1d8uVx0LInyc0Ya0Pz
- O74ooW67cOKt+zYC5BkIyVMrgknzwIVMDC1SqGekhyjxD3GjkP2NV1RYLTrsFXZhRym7
- TEsqGM3UVRKtX9ZzBKIckdSfL/PBlEE2ENdfSWoQckVKIa4UkAkuvloRvprgSQ73CZ7l
- iL7BERFb4PVvfXRd0eMmcPUOyy6O9RnKX6XBaf0sxGVst7uKjk7SoA5RI0Pf7ZV4irNl
- /4kg==
-X-Gm-Message-State: AOAM53369j+/Dq2+mPFM+zydTdz7snN8US22HcbDfjkfY0m+HKOk1Ji3
- iPbGM79w+0fBCFRLcs1t/8rbvoxm3S5+
-X-Google-Smtp-Source: ABdhPJxIqcCBWdbzcwmEwprb6kcsp08cmzPY7xMIsej180ilIQOQ7gBZtgOPoEGoGa4RkKipRh5+zEF+lUBj
+ bh=EJIkGbMwGweiA8accuD7cTOgHJm9UvrQYFz8KGV9AuU=;
+ b=cNFc3LP0Ii9dRLmpTGPpDyDNdliMF3Lpwqi0Ygy3XTjwrIig4U5VP7EG1uEq8tUV8P
+ GVRQI5YXAnRRXRX9LQnpxvZBgrP/X4IOA/xC9T6SOdBILuccos2iaOCdSPFtjsg0deup
+ rIx9GDQ7Xm1551LxQowQtanGTkf1mGp/LU/MMfk0V0hCMQ98scEaHzKlYssXC7q1PEVY
+ 74F5ph8rvXLi2HD2EBjLmxJyJ854FrXAwaU9eTeuu04KvAFBmSpnYYw9ZINX0M8BDDbj
+ inJYpzd9JJ1NQaly/c0KOG0LCFMLz+BkDiuukEQgjLf3LFyY8LefbPn0TBla/C2dLO8n
+ 9M/A==
+X-Gm-Message-State: AOAM531klLs5nOaTBIqe4NncxxwU1oo941BgpPToscOiprzNDCr7NYqf
+ 7PxEqCr3NlWmqQIkzU6jEDtRimI7LtxL
+X-Google-Smtp-Source: ABdhPJxT8BPsXuU2maHNlokyO3UDZdEnif0Ynm/I6r45fPTrCJGU++ch1LnND0AA4UcZsA2OvMQ4PcIc2y/2
 X-Received: from tzungbi-z840.tpe.corp.google.com
  ([2401:fa00:1:b:725a:fff:fe41:c6a5])
- (user=tzungbi job=sendgmr) by 2002:ad4:4721:: with SMTP id
- l1mr908110qvz.30.1606884364037; Tue, 01 Dec 2020 20:46:04 -0800 (PST)
-Date: Wed,  2 Dec 2020 12:45:37 +0800
-Message-Id: <20201202044537.2500497-1-tzungbi@google.com>
+ (user=tzungbi job=sendgmr) by 2002:a0c:9026:: with SMTP id
+ o35mr932832qvo.6.1606884375469; Tue, 01 Dec 2020 20:46:15 -0800 (PST)
+Date: Wed,  2 Dec 2020 12:46:09 +0800
+Message-Id: <20201202044609.2501913-1-tzungbi@google.com>
 Mime-Version: 1.0
 X-Mailer: git-send-email 2.29.2.454.gaff20da3a2-goog
-Subject: [PATCH] remoteproc/mediatek: unprepare clk if scp_before_load fails
+Subject: [PATCH v4] remoteproc/mediatek: read IPI buffer offset from FW
 From: Tzung-Bi Shih <tzungbi@google.com>
 To: ohad@wizery.com, bjorn.andersson@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201201_234608_003383_35425C28 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20201201_234618_874118_9F789343 
+X-CRM114-Status: GOOD (  20.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,31 +94,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fixes the error handling to unprepare clk if scp_before_load fails.
+Reads the IPI buffer offset from the FW binary.  The information resides
+in addr of .ipi_buffer section.
+
+Moves scp_ipi_init() to rproc_ops::parse_fw() phase.  The IPI buffer can
+be initialized only if the offset is clear.
+
+To backward compatible to MT8183 SCP, specify the offset in the board
+specific mtk_scp_of_data.  Reads the default offset if the firmware
+doesn't have it.
 
 Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
 ---
- drivers/remoteproc/mtk_scp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes from v3[2]:
+- move scp_ipi_init() to rproc_ops::parse_fw()
+- separate error handling fixing if scp_before_load() fails to standalone
+  patch
 
+Changes from v2[1]:
+- to backward-compatible, reads the default offset if the firmware doesn't
+  have it
+
+[1]: https://patchwork.kernel.org/project/linux-remoteproc/patch/20201127092941.1646260-1-tzungbi@google.com/
+[2]: https://patchwork.kernel.org/project/linux-remoteproc/patch/20201130034025.3232229-1-tzungbi@google.com/
+
+ drivers/remoteproc/mtk_common.h |  2 +
+ drivers/remoteproc/mtk_scp.c    | 89 +++++++++++++++++++++++++--------
+ 2 files changed, 69 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index b3397d327786..5169ddce2dc7 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -78,6 +78,8 @@ struct mtk_scp_of_data {
+ 
+ 	u32 host_to_scp_reg;
+ 	u32 host_to_scp_int_bit;
++
++	size_t ipi_buf_offset;
+ };
+ 
+ struct mtk_scp {
 diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 5f42b9ce7185..c7d49c861adb 100644
+index c7d49c861adb..7c2dd1b5dd12 100644
 --- a/drivers/remoteproc/mtk_scp.c
 +++ b/drivers/remoteproc/mtk_scp.c
-@@ -350,11 +350,11 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+@@ -21,7 +21,7 @@
+ #include "remoteproc_internal.h"
  
- 	ret = scp->data->scp_before_load(scp);
- 	if (ret < 0)
--		return ret;
-+		goto leave;
+ #define MAX_CODE_SIZE 0x500000
+-#define SCP_FW_END 0x7C000
++#define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
  
- 	ret = scp_elf_load_segments(rproc, fw);
-+leave:
- 	clk_disable_unprepare(scp->clk);
--
+ /**
+  * scp_get() - get a reference to SCP.
+@@ -119,16 +119,29 @@ static void scp_ipi_handler(struct mtk_scp *scp)
+ 	wake_up(&scp->ack_wq);
+ }
+ 
+-static int scp_ipi_init(struct mtk_scp *scp)
++static int scp_elf_read_ipi_buf_addr(struct mtk_scp *scp,
++				     const struct firmware *fw,
++				     size_t *offset);
++
++static int scp_ipi_init(struct mtk_scp *scp, const struct firmware *fw)
+ {
+-	size_t send_offset = SCP_FW_END - sizeof(struct mtk_share_obj);
+-	size_t recv_offset = send_offset - sizeof(struct mtk_share_obj);
++	int ret;
++	size_t offset;
++
++	/* read the ipi buf addr from FW itself first */
++	ret = scp_elf_read_ipi_buf_addr(scp, fw, &offset);
++	if (ret) {
++		/* use default ipi buf addr if the FW doesn't have it */
++		offset = scp->data->ipi_buf_offset;
++		if (!offset)
++			return ret;
++	}
++	dev_info(scp->dev, "IPI buf addr %#010zx\n", offset);
+ 
+-	/* shared buffer initialization */
+-	scp->recv_buf =
+-		(struct mtk_share_obj __iomem *)(scp->sram_base + recv_offset);
+-	scp->send_buf =
+-		(struct mtk_share_obj __iomem *)(scp->sram_base + send_offset);
++	scp->recv_buf = (struct mtk_share_obj __iomem *)
++			(scp->sram_base + offset);
++	scp->send_buf = (struct mtk_share_obj __iomem *)
++			(scp->sram_base + offset + sizeof(*scp->recv_buf));
+ 	memset_io(scp->recv_buf, 0, sizeof(*scp->recv_buf));
+ 	memset_io(scp->send_buf, 0, sizeof(*scp->send_buf));
+ 
+@@ -271,6 +284,32 @@ static int scp_elf_load_segments(struct rproc *rproc, const struct firmware *fw)
  	return ret;
  }
  
++static int scp_elf_read_ipi_buf_addr(struct mtk_scp *scp,
++				     const struct firmware *fw,
++				     size_t *offset)
++{
++	struct elf32_hdr *ehdr;
++	struct elf32_shdr *shdr, *shdr_strtab;
++	int i;
++	const u8 *elf_data = fw->data;
++	const char *strtab;
++
++	ehdr = (struct elf32_hdr *)elf_data;
++	shdr = (struct elf32_shdr *)(elf_data + ehdr->e_shoff);
++	shdr_strtab = shdr + ehdr->e_shstrndx;
++	strtab = (const char *)(elf_data + shdr_strtab->sh_offset);
++
++	for (i = 0; i < ehdr->e_shnum; i++, shdr++) {
++		if (strcmp(strtab + shdr->sh_name,
++			   SECTION_NAME_IPI_BUFFER) == 0) {
++			*offset = shdr->sh_addr;
++			return 0;
++		}
++	}
++
++	return -ENOENT;
++}
++
+ static int mt8183_scp_before_load(struct mtk_scp *scp)
+ {
+ 	/* Clear SCP to host interrupt */
+@@ -358,6 +397,23 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+ 	return ret;
+ }
+ 
++static int scp_parse_fw(struct rproc *rproc, const struct firmware *fw)
++{
++	struct mtk_scp *scp = rproc->priv;
++	struct device *dev = scp->dev;
++	int ret;
++
++	ret = clk_prepare_enable(scp->clk);
++	if (ret) {
++		dev_err(dev, "failed to enable clocks\n");
++		return ret;
++	}
++
++	ret = scp_ipi_init(scp, fw);
++	clk_disable_unprepare(scp->clk);
++	return ret;
++}
++
+ static int scp_start(struct rproc *rproc)
+ {
+ 	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
+@@ -461,6 +517,7 @@ static const struct rproc_ops scp_ops = {
+ 	.stop		= scp_stop,
+ 	.load		= scp_load,
+ 	.da_to_va	= scp_da_to_va,
++	.parse_fw	= scp_parse_fw,
+ };
+ 
+ /**
+@@ -680,19 +737,6 @@ static int scp_probe(struct platform_device *pdev)
+ 		goto release_dev_mem;
+ 	}
+ 
+-	ret = clk_prepare_enable(scp->clk);
+-	if (ret) {
+-		dev_err(dev, "failed to enable clocks\n");
+-		goto release_dev_mem;
+-	}
+-
+-	ret = scp_ipi_init(scp);
+-	clk_disable_unprepare(scp->clk);
+-	if (ret) {
+-		dev_err(dev, "Failed to init ipi\n");
+-		goto release_dev_mem;
+-	}
+-
+ 	/* register SCP initialization IPI */
+ 	ret = scp_ipi_register(scp, SCP_IPI_INIT, scp_init_ipi_handler, scp);
+ 	if (ret) {
+@@ -760,6 +804,7 @@ static const struct mtk_scp_of_data mt8183_of_data = {
+ 	.scp_stop = mt8183_scp_stop,
+ 	.host_to_scp_reg = MT8183_HOST_TO_SCP,
+ 	.host_to_scp_int_bit = MT8183_HOST_IPC_INT_BIT,
++	.ipi_buf_offset = 0x7bdb0,
+ };
+ 
+ static const struct mtk_scp_of_data mt8192_of_data = {
 -- 
 2.29.2.454.gaff20da3a2-goog
 
