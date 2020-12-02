@@ -2,83 +2,77 @@ Return-Path: <SRS0=Og7P=FG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B9AF6C64E7C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 07:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79157C64E7C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 07:58:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3875C206E3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 07:36:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3875C206E3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=quicinc.com
+	by mail.kernel.org (Postfix) with ESMTPS id EA2892065C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 07:58:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA2892065C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gpuRlVd5ksbeGiWTc/9T0ToWTBCts1/5O232Fbv+AXk=; b=Rhqrcc7JSrCjWowjHY+V5lh2/
-	GdK8/J5BTroenwge/0pWf2oGfQ5796/gENvVpG4RkcSRheRCMHoOLDVHqvV/izz6VJ52MRiJ0T5n6
-	TR6Vh5OdxObNzsS67axLgqSh38i5rNCqb1cQNk5dLRf9xOKFJolHNULqX1DG7PJRc3X68Mb0fx2+Q
-	In6yFTXCslhWC7/4GYk7Zj+tidEheA9mQCI7fnJvihSn0ghQa5cpXi/Oeu//10FjWPElzL6mz6l8w
-	9ozwBCqwtLGUJ6LGMp6utt/87eAJ+x8PClehUXwfcMJCG97JrbcJTgnRcVe0r3ad3Q71PZY4eyaW7
-	el79Aj5hg==;
+	 bh=G9dVav8dgkUu0kLJMLGSY6ltEXgK977APwJE+UYdAgU=; b=UtZblSSg8dV/cdwzqhksOiOC0
+	RORGtKnR4T5PAV2/gVzbQML0fHxPGy8QQHLgikzK0Iy8ObtieGmiZIPeXQedVcVNS9Ytb5xLyE37d
+	4jRFzIzpeJyOi0bSbBy9LPdPMTEJxRiOECC5UqcbrEMxp6FNVyFivzhbIMEBkz4ZW++2Yz2Jyl4aA
+	t7zRTGut2Xyz1UZDF1y0Bvkg5mXl+VkAVFFUWoOXhW+rKQuTg0Y9ZxEimYabFtLb8sDKspRy2RVk0
+	lwcPT+pf212gvkSYp9gwa4T32YrjVZDhSZhTP2ECWGWwaxTN0oNTBcUD5oTZI/+ZvmSQtmXVayFHb
+	IML9JDnxg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkMgp-0007GY-11; Wed, 02 Dec 2020 07:36:39 +0000
-Received: from a2.mail.mailgun.net ([198.61.254.61])
+	id 1kkN1h-0001sd-1u; Wed, 02 Dec 2020 07:58:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkMgm-0007Fs-7R
- for linux-mediatek@lists.infradead.org; Wed, 02 Dec 2020 07:36:37 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1606894594; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=zn9zKUogHkTpu4hqDPdgxv9s4TFFHlGGfE+xtDidB9c=;
- b=ITMEs0n6VNqhAAW3nqKJNENFz+bgZUw7t3RtEPAWqYhYpKQQ5tiZJYsiJcU5V0zgTxszUgOo
- s1qn+G+JJ+THYpGq5viZZSQUquA/BKH5Uv062BX2i56xmHeSfPpPV05Xxd8REE+S0c94v3bR
- V+QsDDpjxHvVVcsYPcZRoufPJQ0=
-X-Mailgun-Sending-Ip: 198.61.254.61
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n05.prod.us-west-2.postgun.com with SMTP id
- 5fc744018d03b22a5ad5f5a6 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Wed, 02 Dec 2020 07:36:33
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 482A9C43461; Wed,  2 Dec 2020 07:36:33 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: nguyenb)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 727A0C433ED;
- Wed,  2 Dec 2020 07:36:31 +0000 (UTC)
+ id 1kkN1e-0001rj-AI; Wed, 02 Dec 2020 07:58:11 +0000
+X-UUID: 25760059214549e2a1218e9294198a8b-20201201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=x4ZUQ2VnOYL3lCvMZoOF2wnxwWFFObU7xd9vbDP5bVg=; 
+ b=N3QjKp/EsI6Mj17MofcbtTBcZE2qbemGPxGudsqcG8dQj+GAtvx+ZrJRFDjWt5rUbU7b3i10O1paNXYCHroPj6wl0QVveasWuZrVv0cgGhugnAswXHQzh3IOwY3qOPlrRIGBru5qghs6mgYaj1iyaRj9kkgBoLqyngfObNyOlWI=;
+X-UUID: 25760059214549e2a1218e9294198a8b-20201201
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <kuan-ying.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 781181050; Tue, 01 Dec 2020 23:57:56 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Dec 2020 23:53:30 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Dec 2020 15:53:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 2 Dec 2020 15:53:30 +0800
+From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
+ <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Nicholas Tang <nicholas.tang@mediatek.com>, Miles Chen
+ <miles.chen@mediatek.com>
+Subject: [PATCH v3 1/1] kasan: fix object remain in offline per-cpu quarantine
+Date: Wed, 2 Dec 2020 15:53:05 +0800
+Message-ID: <1606895585-17382-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1606895585-17382-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
+References: <1606895585-17382-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
 MIME-Version: 1.0
-Date: Tue, 01 Dec 2020 23:36:31 -0800
-From: nguyenb@quicinc.com
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [RFC PATCH v1] scsi: ufs: Remove pre-defined initial VCC voltage
- values
-In-Reply-To: <1606805690.23925.29.camel@mtkswgap22>
-References: <20201130091610.2752-1-stanley.chu@mediatek.com>
- <568660cd-80e6-1b8f-d426-4614c9159ff4@codeaurora.org>
- <X8V83T+Tx6teNLOR@builder.lan>
- <4335d590-0506-d920-8e7f-f0f0372780f9@codeaurora.org>
- <1606785904.23925.25.camel@mtkswgap22>
- <d998857a-1744-a8bb-1a3e-77166c171f37@codeaurora.org>
- <1606805690.23925.29.camel@mtkswgap22>
-Message-ID: <66ec58decfa1a0096cf5ed34560655ee@quicinc.com>
-X-Sender: nguyenb@quicinc.com
-User-Agent: Roundcube Webmail/1.3.9
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201202_023636_431277_E37E6CE9 
-X-CRM114-Status: GOOD (  42.25  )
+X-CRM114-CacheID: sfid-20201202_025810_570658_98D5D218 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,199 +84,155 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, cang@codeaurora.org,
- alim.akhtar@samsung.com, beanhuo@micron.com, bvanassche@acm.org,
- linux-scsi@vger.kernel.org, peter.wang@mediatek.com, cc.chou@mediatek.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- avri.altman@wdc.com, linux-mediatek@lists.infradead.org,
- jiajie.hao@mediatek.com, Bjorn Andersson <bjorn.andersson@linaro.org>,
- chaotian.jing@mediatek.com, linux-arm-kernel@lists.infradead.org,
- martin.petersen@oracle.com, kuohong.wang@mediatek.com, nguyenb@codeaurora.org,
- alice.chao@mediatek.com, "Asutosh Das \(asd\)" <asutoshd@codeaurora.org>
+Cc: wsd_upstream@mediatek.com, Kuan-Ying
+ Lee <Kuan-Ying.Lee@mediatek.com>, linux-kernel@vger.kernel.org,
+ kasan-dev@googlegroups.com, linux-mm@kvack.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-11-30 22:54, Stanley Chu wrote:
-> Hi Asutosh,
-> 
-> On Mon, 2020-11-30 at 19:07 -0800, Asutosh Das (asd) wrote:
->> On 11/30/2020 5:25 PM, Stanley Chu wrote:
->> > On Mon, 2020-11-30 at 15:54 -0800, Asutosh Das (asd) wrote:
->> >> On 11/30/2020 3:14 PM, Bjorn Andersson wrote:
->> >>> On Mon 30 Nov 16:51 CST 2020, Asutosh Das (asd) wrote:
->> >>>
->> >>>> On 11/30/2020 1:16 AM, Stanley Chu wrote:
->> >>>>> UFS specficication allows different VCC configurations for UFS devices,
->> >>>>> for example,
->> >>>>> 	(1). 2.70V - 3.60V (By default)
->> >>>>> 	(2). 1.70V - 1.95V (Activated if "vcc-supply-1p8" is declared in
->> >>>>>                              device tree)
->> >>>>> 	(3). 2.40V - 2.70V (Supported since UFS 3.x)
->> >>>>>
->> >>>>> With the introduction of UFS 3.x products, an issue is happening that
->> >>>>> UFS driver will use wrong "min_uV/max_uV" configuration to toggle VCC
->> >>>>> regulator on UFU 3.x products with VCC configuration (3) used.
->> >>>>>
->> >>>>> To solve this issue, we simply remove pre-defined initial VCC voltage
->> >>>>> values in UFS driver with below reasons,
->> >>>>>
->> >>>>> 1. UFS specifications do not define how to detect the VCC configuration
->> >>>>>       supported by attached device.
->> >>>>>
->> >>>>> 2. Device tree already supports standard regulator properties.
->> >>>>>
->> >>>>> Therefore VCC voltage shall be defined correctly in device tree, and
->> >>>>> shall not be changed by UFS driver. What UFS driver needs to do is simply
->> >>>>> enabling or disabling the VCC regulator only.
->> >>>>>
->> >>>>> This is a RFC conceptional patch. Please help review this and feel
->> >>>>> free to feedback any ideas. Once this concept is accepted, and then
->> >>>>> I would post a more completed patch series to fix this issue.
->> >>>>>
->> >>>>> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
->> >>>>> ---
->> >>>>>     drivers/scsi/ufs/ufshcd-pltfrm.c | 10 +---------
->> >>>>>     1 file changed, 1 insertion(+), 9 deletions(-)
->> >>>>>
->> >>>>> diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
->> >>>>> index a6f76399b3ae..3965be03c136 100644
->> >>>>> --- a/drivers/scsi/ufs/ufshcd-pltfrm.c
->> >>>>> +++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
->> >>>>> @@ -133,15 +133,7 @@ static int ufshcd_populate_vreg(struct device *dev, const char *name,
->> >>>>>     		vreg->max_uA = 0;
->> >>>>>     	}
->> >>>>> -	if (!strcmp(name, "vcc")) {
->> >>>>> -		if (of_property_read_bool(np, "vcc-supply-1p8")) {
->> >>>>> -			vreg->min_uV = UFS_VREG_VCC_1P8_MIN_UV;
->> >>>>> -			vreg->max_uV = UFS_VREG_VCC_1P8_MAX_UV;
->> >>>>> -		} else {
->> >>>>> -			vreg->min_uV = UFS_VREG_VCC_MIN_UV;
->> >>>>> -			vreg->max_uV = UFS_VREG_VCC_MAX_UV;
->> >>>>> -		}
->> >>>>> -	} else if (!strcmp(name, "vccq")) {
->> >>>>> +	if (!strcmp(name, "vccq")) {
->> >>>>>     		vreg->min_uV = UFS_VREG_VCCQ_MIN_UV;
->> >>>>>     		vreg->max_uV = UFS_VREG_VCCQ_MAX_UV;
->> >>>>>     	} else if (!strcmp(name, "vccq2")) {
->> >>>>>
->> >>>>
->> >>>> Hi Stanley
->> >>>>
->> >>>> Thanks for the patch. Bao (nguyenb) was also working towards something
->> >>>> similar.
->> >>>> Would it be possible for you to take into account the scenario in which the
->> >>>> same platform supports both 2.x and 3.x UFS devices?
->> >>>>
->> >>>> These've different voltage requirements, 2.4v-3.6v.
->> >>>> I'm not sure if standard dts regulator properties can support this.
->> >>>>
->> >>>
->> >>> What is the actual voltage requirement for these devices and how does
->> >>> the software know what voltage to pick in this range?
->> >>>
->> >>> Regards,
->> >>> Bjorn
->> >>>
->> >>>> -asd
->> >>>>
->> >>>>
->> >>>> --
->> >>>> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
->> >>>> Linux Foundation Collaborative Project
->> >>
->> >> For platforms that support both 2.x (2.7v-3.6v) and 3.x (2.4v-2.7v), the
->> >> voltage requirements (Vcc) are 2.4v-3.6v. The software initializes the
->> >> ufs device at 2.95v & reads the version and if the device is 3.x, it may
->> >> do the following:
->> >> - Set the device power mode to SLEEP
->> >> - Disable the Vcc
->> >> - Enable the Vcc and set it to 2.5v
->> >> - Set the device power mode to ACTIVE
->> >>
->> >> All of the above may be done at HS-G1 & moved to max supported gear
->> >> based on the device version, perhaps?
->> >
->> > Hi Asutosh,
->> >
->> > Thanks for sharing this idea.
->> >
->> > 1. I did not see above flow defined in UFS specifications, please
->> > correct me if I was wrong.
->> >
->> > 2. For above flow, the concern is that I am not sure if all devices
->> > supporting VCC (2.4v - 2.7v) can accept higher voltage, say 2.95v, for
->> > version detection.
->> >
->> > 3. For version detection, another concern is that I am not sure if all
->> > 3.x devices support VCC (2.4v - 2.7v) only, or in other words, I am not
->> > sure if all 2.x devices support VCC (2.7v - 3.6v) only. The above rule
->> > will break any devices not obeying this "conventions".
->> >
->> > For platforms that support both 2.x (2.7v-3.6v) and 3.x (2.4v-2.7v),
->> >
->> > It would be good for UFS drivers detecting the correct voltage if the
->> > protocol is well-defined in specifications. Until that day, any
->> > "non-standard" way may be better implemented in vendor's ops?
->> >
->> > If the vop concept works on your platform, we could still keep struct
->> > ufs_vreg and allow vendors to configure proper min_uV and max_uV to make
->> > regulator_set_voltage() works during VCC toggling flow. Without specific
->> > vendor configurations, min_uV and max_uV would be NULL by default and
->> > UFS core driver will only enable/disasble VCC regulator only without
->> > adjusting its voltage.
->> >
->> 
->> I think this would work. Do you plan to implement this?
->> If not, I can take this up. Please let me know.
-> 
-> Thanks for the understanding and support.
-> 
-> I would like to re-post this patch to simply removing the pre-defined
-> initial values of all device powers.
-> 
-> For vop idea supporting the voltage detection way, could you please 
-> take
-> it up since this would be better to fit what you need for fixing this
-> issue?
-> 
-> Thanks,
-> Stanley Chu
-While we are on this topic, another similar concern is how to set the 
-UFS's regulators loading to Low Power Mode (LPM).
-Currently, the UFS_VREG_LPM_LOAD_UA is hardcoded to 1mA in the driver, 
-and it is invoked by the ufshcd_config_vreg_lpm().
-However, for some platforms, to put the regulators into LPM mode, it may 
-be a different value than 1mA.
-Should we be using ufs_vreg's min_uA in the ufshcd_config_vreg_lpm() 
-instead of using the hardcoded value?
-And the ufs_vreg's min_uA value would be parsed by the vendor's code?
-We can post a proposal if this sounds ok.
+We hit this issue in our internal test.
+When enabling generic kasan, a kfree()'d object is put into per-cpu
+quarantine first. If the cpu goes offline, object still remains in
+the per-cpu quarantine. If we call kmem_cache_destroy() now, slub
+will report "Objects remaining" error.
 
-Regards,
-Bao
+[   74.982625] =============================================================================
+[   74.983380] BUG test_module_slab (Not tainted): Objects remaining in test_module_slab on __kmem_cache_shutdown()
+[   74.984145] -----------------------------------------------------------------------------
+[   74.984145]
+[   74.984883] Disabling lock debugging due to kernel taint
+[   74.985561] INFO: Slab 0x(____ptrval____) objects=34 used=1 fp=0x(____ptrval____) flags=0x2ffff00000010200
+[   74.986638] CPU: 3 PID: 176 Comm: cat Tainted: G    B             5.10.0-rc1-00007-g4525c8781ec0-dirty #10
+[   74.987262] Hardware name: linux,dummy-virt (DT)
+[   74.987606] Call trace:
+[   74.987924]  dump_backtrace+0x0/0x2b0
+[   74.988296]  show_stack+0x18/0x68
+[   74.988698]  dump_stack+0xfc/0x168
+[   74.989030]  slab_err+0xac/0xd4
+[   74.989346]  __kmem_cache_shutdown+0x1e4/0x3c8
+[   74.989779]  kmem_cache_destroy+0x68/0x130
+[   74.990176]  test_version_show+0x84/0xf0
+[   74.990679]  module_attr_show+0x40/0x60
+[   74.991218]  sysfs_kf_seq_show+0x128/0x1c0
+[   74.991656]  kernfs_seq_show+0xa0/0xb8
+[   74.992059]  seq_read+0x1f0/0x7e8
+[   74.992415]  kernfs_fop_read+0x70/0x338
+[   74.993051]  vfs_read+0xe4/0x250
+[   74.993498]  ksys_read+0xc8/0x180
+[   74.993825]  __arm64_sys_read+0x44/0x58
+[   74.994203]  el0_svc_common.constprop.0+0xac/0x228
+[   74.994708]  do_el0_svc+0x38/0xa0
+[   74.995088]  el0_sync_handler+0x170/0x178
+[   74.995497]  el0_sync+0x174/0x180
+[   74.996050] INFO: Object 0x(____ptrval____) @offset=15848
+[   74.996752] INFO: Allocated in test_version_show+0x98/0xf0 age=8188 cpu=6 pid=172
+[   75.000802]  stack_trace_save+0x9c/0xd0
+[   75.002420]  set_track+0x64/0xf0
+[   75.002770]  alloc_debug_processing+0x104/0x1a0
+[   75.003171]  ___slab_alloc+0x628/0x648
+[   75.004213]  __slab_alloc.isra.0+0x2c/0x58
+[   75.004757]  kmem_cache_alloc+0x560/0x588
+[   75.005376]  test_version_show+0x98/0xf0
+[   75.005756]  module_attr_show+0x40/0x60
+[   75.007035]  sysfs_kf_seq_show+0x128/0x1c0
+[   75.007433]  kernfs_seq_show+0xa0/0xb8
+[   75.007800]  seq_read+0x1f0/0x7e8
+[   75.008128]  kernfs_fop_read+0x70/0x338
+[   75.008507]  vfs_read+0xe4/0x250
+[   75.008990]  ksys_read+0xc8/0x180
+[   75.009462]  __arm64_sys_read+0x44/0x58
+[   75.010085]  el0_svc_common.constprop.0+0xac/0x228
+[   75.011006] kmem_cache_destroy test_module_slab: Slab cache still has objects
 
-> 
-> 
->> 
->> > Maybe one possible another idea is to decide the correct voltage and
->> > configure regulator properly before kernel?
->> >
->> > Thanks,
->> > Stanley Chu
->> >
->> >>
->> >> Am open to other ideas though.
->> >>
->> >> -asd
->> >>
->> >
->> 
->> -asd
->> 
->> 
+Register a cpu hotplug function to remove all objects in the offline
+per-cpu quarantine when cpu is going offline. Set a per-cpu variable
+to indicate this cpu is offline.
 
+Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+Reported-by: Guangye Yang <guangye.yang@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Cc: Alexander Potapenko <glider@google.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ mm/kasan/quarantine.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+
+diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
+index 4c5375810449..cac7c617df72 100644
+--- a/mm/kasan/quarantine.c
++++ b/mm/kasan/quarantine.c
+@@ -29,6 +29,7 @@
+ #include <linux/srcu.h>
+ #include <linux/string.h>
+ #include <linux/types.h>
++#include <linux/cpuhotplug.h>
+ 
+ #include "../slab.h"
+ #include "kasan.h"
+@@ -43,6 +44,7 @@ struct qlist_head {
+ 	struct qlist_node *head;
+ 	struct qlist_node *tail;
+ 	size_t bytes;
++	bool offline;
+ };
+ 
+ #define QLIST_INIT { NULL, NULL, 0 }
+@@ -188,6 +190,11 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
+ 	local_irq_save(flags);
+ 
+ 	q = this_cpu_ptr(&cpu_quarantine);
++	if (q->offline) {
++		qlink_free(&info->quarantine_link, cache);
++		local_irq_restore(flags);
++		return;
++	}
+ 	qlist_put(q, &info->quarantine_link, cache->size);
+ 	if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
+ 		qlist_move_all(q, &temp);
+@@ -328,3 +335,36 @@ void quarantine_remove_cache(struct kmem_cache *cache)
+ 
+ 	synchronize_srcu(&remove_cache_srcu);
+ }
++
++static int kasan_cpu_online(unsigned int cpu)
++{
++	this_cpu_ptr(&cpu_quarantine)->offline = false;
++	return 0;
++}
++
++static int kasan_cpu_offline(unsigned int cpu)
++{
++	struct qlist_head *q;
++
++	q = this_cpu_ptr(&cpu_quarantine);
++	/* Ensure the ordering between the writing to q->offline and
++	 * qlist_free_all. Otherwise, cpu_quarantine may be corrupted
++	 * by interrupt.
++	 */
++	WRITE_ONCE(q->offline, true);
++	barrier();
++	qlist_free_all(q, NULL);
++	return 0;
++}
++
++static int __init kasan_cpu_quarantine_init(void)
++{
++	int ret = 0;
++
++	ret = cpuhp_setup_state(CPUHP_AP_ONLINE_DYN, "mm/kasan:online",
++				kasan_cpu_online, kasan_cpu_offline);
++	if (ret < 0)
++		pr_err("kasan cpu quarantine register failed [%d]\n", ret);
++	return ret;
++}
++late_initcall(kasan_cpu_quarantine_init);
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
