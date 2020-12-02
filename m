@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9465C64E7C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 12:04:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 321C2C64E8A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 12:04:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 50AAD221FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 12:04:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50AAD221FE
+	by mail.kernel.org (Postfix) with ESMTPS id A6575221FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 12:04:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6575221FE
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,45 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ak3zHhWvWHmZhC8hB0TfbexlKIN6nYY1YBpzN0Yg+hE=; b=GTJKwXLu62WryzoUoLdA/MbuJ+
-	mTUrLo5zDgGcua9UlbTV03jAA7+fbvkM0JMNq+8qZWCCeWCF+9cmrPi4Nwhisqg7vn5+YnSdBNWt2
-	O4Oa66bQ83xtJWdBDWG/aRw2uYfO4hyjLrk1z4FYX+z2NVEIbvFpq8KGGurxcJAsYI4Rv0SUWaDD7
-	YfzDwEfPZag6LHG4nIFa31D+JmfLsfGa2WyDwp5I/kqi/ra3CGlB4n1QxPNxSjfF0APr0es8+ArkU
-	wdqRcomRgoV9FxBEWStez5J90NSknvf3QJtDEdTfZ/paMjMX8S7erOKGsmexAj64nYTGhgtsoQ3Fg
-	+TdJDxog==;
+	bh=qXKAlg0uF3KJoE4FNuB2JKJQBD9OLm3Draa9pxoOygs=; b=syeN7mEh3w8qk9Fr4lz/fVbnPG
+	f8A409WubEe1YbiR/QZIFn5DU+rE3z/4CREgzcnCI/YFwa7Bkcz4b9K8IMFPet0MppHZl+CWXCWj5
+	J8iOJjzv/XHOHAgJ95JCr2huffXQU3CHz2xnSxUTNNqLTGpeIYNQfbbPFIeiZLyyZ9Hq/mgRmYjYM
+	UzM/R0RX4EOUBBa1H5vWFdgIFLYyT7JAvrNx4pE6IEW/TFs6DqKJFAjXg85yYH9Qy4KnV1+1lfW8O
+	liOkk0DGLw/v7pZA7dHyCZS+NK/KIbEGHVgJliUSXoBC6iaIpYtY6OyA4lrRL53MpFqYlf8mzaXA6
+	hUCEDYUA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkQrx-0000j1-Ca; Wed, 02 Dec 2020 12:04:25 +0000
+	id 1kkQrt-0000hQ-Fb; Wed, 02 Dec 2020 12:04:21 +0000
 Received: from labrats.qualcomm.com ([199.106.110.90])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkQrr-0000gU-NA; Wed, 02 Dec 2020 12:04:20 +0000
-IronPort-SDR: g9jAffxBAYy8vjgsNRxjoVmXcn5jzUqBIOPo+H+d7pjKM2N0MQAF2P1J+MMaQ/geTBFjFRX5N9
- rK3I9UUZsXvLNovXuvQHgp/Izv6AO8JuuKNSyyYANy1cb44xHKhqe9W6DBfOwQOTkLRGCh4J51
- qdiZvDUvYqfghv6zpkCMouOtSMX/g3+jsUm77ag86NmDJ2G2+cfOHcl3nqngSzCG/yWWL7bzJT
- Qy8fgXj3ciDGjyrW4/ehRsFpDhCam+ijFEVM8YE/2TD8ybE9S4Emsm3of/3rKgdYoKNX9Zy4m+
- E/w=
-X-IronPort-AV: E=Sophos;i="5.78,386,1599548400"; d="scan'208";a="47540559"
-Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
- by labrats.qualcomm.com with ESMTP; 02 Dec 2020 04:04:18 -0800
+ id 1kkQrn-0000eb-G5; Wed, 02 Dec 2020 12:04:16 +0000
+IronPort-SDR: rpKbxyeQLZOrmLTHaXl3YK7ZHmHaNm/vhrWi99N6a0yQWsiAtUHVLxs73+jn7LASSdCDcJbcG5
+ pl8PH/JGIGuz02RD8o0KsL18LO711Qzp3UAy6Xe7KJgeNHkhWG6BbYKCDVhPtgLphijFDrjOJV
+ eSP9w/KFEvWkqKjt8TNLsasfR3VmzzhKWviswdtzxZYDKsmMS25QOEzrqPH5GvhlpIA/8QBAUy
+ LCG7k5ajUHdB3O0RJuDF7dkmHHJ6HFgoCfdUxWcd1VsVoLMiQQ2kzgwuHuWr2bkeeey/e7d1PX
+ 748=
+X-IronPort-AV: E=Sophos;i="5.78,386,1599548400"; d="scan'208";a="29322160"
+Received: from unknown (HELO ironmsg-SD-alpha.qualcomm.com) ([10.53.140.30])
+ by labrats.qualcomm.com with ESMTP; 02 Dec 2020 04:04:10 -0800
 X-QCInternal: smtphost
-Received: from stor-presley.qualcomm.com ([192.168.140.85])
- by ironmsg03-sd.qualcomm.com with ESMTP; 02 Dec 2020 04:04:18 -0800
+Received: from wsp769891wss.qualcomm.com (HELO stor-presley.qualcomm.com)
+ ([192.168.140.85])
+ by ironmsg-SD-alpha.qualcomm.com with ESMTP; 02 Dec 2020 04:04:09 -0800
 Received: by stor-presley.qualcomm.com (Postfix, from userid 359480)
- id F3E5F2106D; Wed,  2 Dec 2020 04:04:17 -0800 (PST)
+ id E34532106D; Wed,  2 Dec 2020 04:04:09 -0800 (PST)
 From: Can Guo <cang@codeaurora.org>
 To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
  rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
  saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH V7 3/3] scsi: ufs: Print host regs in IRQ handler when AH8
- error happens
-Date: Wed,  2 Dec 2020 04:04:03 -0800
-Message-Id: <1606910644-21185-4-git-send-email-cang@codeaurora.org>
+Subject: [PATCH V7 1/3] scsi: ufs: Serialize eh_work with system PM events and
+ async scan
+Date: Wed,  2 Dec 2020 04:04:01 -0800
+Message-Id: <1606910644-21185-2-git-send-email-cang@codeaurora.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1606910644-21185-1-git-send-email-cang@codeaurora.org>
 References: <1606910644-21185-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201202_070419_994076_89F02AF6 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20201202_070415_687542_2CDAE2F2 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,7 +77,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Bart Van Assche <bvanassche@acm.org>,
  "Martin K. Petersen" <martin.petersen@oracle.com>,
  "James E.J. Bottomley" <jejb@linux.ibm.com>,
- open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
+ open list <linux-kernel@vger.kernel.org>, Satya Tangirala <satyat@google.com>,
+ Avri Altman <avri.altman@wdc.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Alim Akhtar <alim.akhtar@samsung.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -89,33 +91,245 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When AH8 error happens, all the regs and states are dumped in err handler.
-Sometime we need to look into host regs right after AH8 error happens,
-which is before leaving the IRQ handler.
+Serialize eh_work with system PM events and async scan to make sure eh_work
+does not run in parallel with them.
 
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Bao D. Nguyen <nguyenb@codeaurora.org>
 Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
 Reviewed-by: Hongwu Su<hongwus@codeaurora.org>
 Signed-off-by: Can Guo <cang@codeaurora.org>
 ---
- drivers/scsi/ufs/ufshcd.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/scsi/ufs/ufshcd.c | 64 +++++++++++++++++++++++++++++------------------
+ drivers/scsi/ufs/ufshcd.h |  1 +
+ 2 files changed, 41 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 26c1fa0..4561601 100644
+index 47c544d..f0bb3fc 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6060,7 +6060,8 @@ static irqreturn_t ufshcd_check_errors(struct ufs_hba *hba)
- 		hba->saved_uic_err |= hba->uic_error;
+@@ -5597,7 +5597,9 @@ static inline void ufshcd_schedule_eh_work(struct ufs_hba *hba)
+ static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
+ {
+ 	pm_runtime_get_sync(hba->dev);
+-	if (pm_runtime_suspended(hba->dev)) {
++	if (pm_runtime_status_suspended(hba->dev) || hba->is_sys_suspended) {
++		enum ufs_pm_op pm_op;
++
+ 		/*
+ 		 * Don't assume anything of pm_runtime_get_sync(), if
+ 		 * resume fails, irq and clocks can be OFF, and powers
+@@ -5612,7 +5614,8 @@ static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
+ 		if (!ufshcd_is_clkgating_allowed(hba))
+ 			ufshcd_setup_clocks(hba, true);
+ 		ufshcd_release(hba);
+-		ufshcd_vops_resume(hba, UFS_RUNTIME_PM);
++		pm_op = hba->is_sys_suspended ? UFS_SYSTEM_PM : UFS_RUNTIME_PM;
++		ufshcd_vops_resume(hba, pm_op);
+ 	} else {
+ 		ufshcd_hold(hba, false);
+ 		if (hba->clk_scaling.is_allowed) {
+@@ -5633,7 +5636,7 @@ static void ufshcd_err_handling_unprepare(struct ufs_hba *hba)
  
- 		/* dump controller state before resetting */
--		if ((hba->saved_err & (INT_FATAL_ERRORS)) ||
-+		if ((hba->saved_err &
-+		     (INT_FATAL_ERRORS | UFSHCD_UIC_HIBERN8_MASK)) ||
- 		    (hba->saved_uic_err &&
- 		     (hba->saved_uic_err != UFSHCD_UIC_PA_GENERIC_ERROR))) {
- 			dev_err(hba->dev, "%s: saved_err 0x%x saved_uic_err 0x%x\n",
+ static inline bool ufshcd_err_handling_should_stop(struct ufs_hba *hba)
+ {
+-	return (hba->ufshcd_state == UFSHCD_STATE_ERROR ||
++	return (!hba->is_powered || hba->ufshcd_state == UFSHCD_STATE_ERROR ||
+ 		(!(hba->saved_err || hba->saved_uic_err || hba->force_reset ||
+ 			ufshcd_is_link_broken(hba))));
+ }
+@@ -5646,6 +5649,7 @@ static void ufshcd_recover_pm_error(struct ufs_hba *hba)
+ 	struct request_queue *q;
+ 	int ret;
+ 
++	hba->is_sys_suspended = false;
+ 	/*
+ 	 * Set RPM status of hba device to RPM_ACTIVE,
+ 	 * this also clears its runtime error.
+@@ -5704,11 +5708,13 @@ static void ufshcd_err_handler(struct work_struct *work)
+ 
+ 	hba = container_of(work, struct ufs_hba, eh_work);
+ 
++	down(&hba->eh_sem);
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ 	if (ufshcd_err_handling_should_stop(hba)) {
+ 		if (hba->ufshcd_state != UFSHCD_STATE_ERROR)
+ 			hba->ufshcd_state = UFSHCD_STATE_OPERATIONAL;
+ 		spin_unlock_irqrestore(hba->host->host_lock, flags);
++		up(&hba->eh_sem);
+ 		return;
+ 	}
+ 	ufshcd_set_eh_in_progress(hba);
+@@ -5716,20 +5722,18 @@ static void ufshcd_err_handler(struct work_struct *work)
+ 	ufshcd_err_handling_prepare(hba);
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ 	ufshcd_scsi_block_requests(hba);
+-	/*
+-	 * A full reset and restore might have happened after preparation
+-	 * is finished, double check whether we should stop.
+-	 */
+-	if (ufshcd_err_handling_should_stop(hba)) {
+-		if (hba->ufshcd_state != UFSHCD_STATE_ERROR)
+-			hba->ufshcd_state = UFSHCD_STATE_OPERATIONAL;
+-		goto out;
+-	}
+ 	hba->ufshcd_state = UFSHCD_STATE_RESET;
+ 
+ 	/* Complete requests that have door-bell cleared by h/w */
+ 	ufshcd_complete_requests(hba);
+ 
++	/*
++	 * A full reset and restore might have happened after preparation
++	 * is finished, double check whether we should stop.
++	 */
++	if (ufshcd_err_handling_should_stop(hba))
++		goto skip_err_handling;
++
+ 	if (hba->dev_quirks & UFS_DEVICE_QUIRK_RECOVERY_FROM_DL_NAC_ERRORS) {
+ 		bool ret;
+ 
+@@ -5737,17 +5741,10 @@ static void ufshcd_err_handler(struct work_struct *work)
+ 		/* release the lock as ufshcd_quirk_dl_nac_errors() may sleep */
+ 		ret = ufshcd_quirk_dl_nac_errors(hba);
+ 		spin_lock_irqsave(hba->host->host_lock, flags);
+-		if (!ret && !hba->force_reset && ufshcd_is_link_active(hba))
++		if (!ret && ufshcd_err_handling_should_stop(hba))
+ 			goto skip_err_handling;
+ 	}
+ 
+-	if (hba->force_reset || ufshcd_is_link_broken(hba) ||
+-	    ufshcd_is_saved_err_fatal(hba) ||
+-	    ((hba->saved_err & UIC_ERROR) &&
+-	     (hba->saved_uic_err & (UFSHCD_UIC_DL_NAC_RECEIVED_ERROR |
+-				    UFSHCD_UIC_DL_TCx_REPLAY_ERROR))))
+-		needs_reset = true;
+-
+ 	if ((hba->saved_err & (INT_FATAL_ERRORS | UFSHCD_UIC_HIBERN8_MASK)) ||
+ 	    (hba->saved_uic_err &&
+ 	     (hba->saved_uic_err != UFSHCD_UIC_PA_GENERIC_ERROR))) {
+@@ -5767,8 +5764,14 @@ static void ufshcd_err_handler(struct work_struct *work)
+ 	 * transfers forcefully because they will get cleared during
+ 	 * host reset and restore
+ 	 */
+-	if (needs_reset)
++	if (hba->force_reset || ufshcd_is_link_broken(hba) ||
++	    ufshcd_is_saved_err_fatal(hba) ||
++	    ((hba->saved_err & UIC_ERROR) &&
++	     (hba->saved_uic_err & (UFSHCD_UIC_DL_NAC_RECEIVED_ERROR |
++				    UFSHCD_UIC_DL_TCx_REPLAY_ERROR)))) {
++		needs_reset = true;
+ 		goto do_reset;
++	}
+ 
+ 	/*
+ 	 * If LINERESET was caught, UFS might have been put to PWM mode,
+@@ -5876,12 +5879,11 @@ static void ufshcd_err_handler(struct work_struct *work)
+ 			dev_err_ratelimited(hba->dev, "%s: exit: saved_err 0x%x saved_uic_err 0x%x",
+ 			    __func__, hba->saved_err, hba->saved_uic_err);
+ 	}
+-
+-out:
+ 	ufshcd_clear_eh_in_progress(hba);
+ 	spin_unlock_irqrestore(hba->host->host_lock, flags);
+ 	ufshcd_scsi_unblock_requests(hba);
+ 	ufshcd_err_handling_unprepare(hba);
++	up(&hba->eh_sem);
+ }
+ 
+ /**
+@@ -6856,6 +6858,7 @@ static int ufshcd_reset_and_restore(struct ufs_hba *hba)
+ 	 */
+ 	scsi_report_bus_reset(hba->host, 0);
+ 	if (err) {
++		hba->ufshcd_state = UFSHCD_STATE_ERROR;
+ 		hba->saved_err |= saved_err;
+ 		hba->saved_uic_err |= saved_uic_err;
+ 	}
+@@ -7704,8 +7707,10 @@ static void ufshcd_async_scan(void *data, async_cookie_t cookie)
+ 	struct ufs_hba *hba = (struct ufs_hba *)data;
+ 	int ret;
+ 
++	down(&hba->eh_sem);
+ 	/* Initialize hba, detect and initialize UFS device */
+ 	ret = ufshcd_probe_hba(hba, true);
++	up(&hba->eh_sem);
+ 	if (ret)
+ 		goto out;
+ 
+@@ -8718,6 +8723,7 @@ int ufshcd_system_suspend(struct ufs_hba *hba)
+ 	int ret = 0;
+ 	ktime_t start = ktime_get();
+ 
++	down(&hba->eh_sem);
+ 	if (!hba || !hba->is_powered)
+ 		return 0;
+ 
+@@ -8748,6 +8754,8 @@ int ufshcd_system_suspend(struct ufs_hba *hba)
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 	if (!ret)
+ 		hba->is_sys_suspended = true;
++	else
++		up(&hba->eh_sem);
+ 	return ret;
+ }
+ EXPORT_SYMBOL(ufshcd_system_suspend);
+@@ -8764,8 +8772,10 @@ int ufshcd_system_resume(struct ufs_hba *hba)
+ 	int ret = 0;
+ 	ktime_t start = ktime_get();
+ 
+-	if (!hba)
++	if (!hba) {
++		up(&hba->eh_sem);
+ 		return -EINVAL;
++	}
+ 
+ 	if (!hba->is_powered || pm_runtime_suspended(hba->dev))
+ 		/*
+@@ -8781,6 +8791,7 @@ int ufshcd_system_resume(struct ufs_hba *hba)
+ 		hba->curr_dev_pwr_mode, hba->uic_link_state);
+ 	if (!ret)
+ 		hba->is_sys_suspended = false;
++	up(&hba->eh_sem);
+ 	return ret;
+ }
+ EXPORT_SYMBOL(ufshcd_system_resume);
+@@ -8872,6 +8883,7 @@ int ufshcd_shutdown(struct ufs_hba *hba)
+ {
+ 	int ret = 0;
+ 
++	down(&hba->eh_sem);
+ 	if (!hba->is_powered)
+ 		goto out;
+ 
+@@ -8888,6 +8900,8 @@ int ufshcd_shutdown(struct ufs_hba *hba)
+ out:
+ 	if (ret)
+ 		dev_err(hba->dev, "%s failed, err %d\n", __func__, ret);
++	hba->is_powered = false;
++	up(&hba->eh_sem);
+ 	/* allow force shutdown even in case of errors */
+ 	return 0;
+ }
+@@ -9082,6 +9096,8 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
+ 	INIT_WORK(&hba->eh_work, ufshcd_err_handler);
+ 	INIT_WORK(&hba->eeh_work, ufshcd_exception_event_handler);
+ 
++	sema_init(&hba->eh_sem, 1);
++
+ 	/* Initialize UIC command mutex */
+ 	mutex_init(&hba->uic_cmd_mutex);
+ 
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index 47eb143..1e680bf 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -728,6 +728,7 @@ struct ufs_hba {
+ 	u32 intr_mask;
+ 	u16 ee_ctrl_mask;
+ 	bool is_powered;
++	struct semaphore eh_sem;
+ 
+ 	/* Work Queues */
+ 	struct workqueue_struct *eh_wq;
 -- 
 Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
 
