@@ -2,75 +2,81 @@ Return-Path: <SRS0=Og7P=FG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B01E7C64E8A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 08:22:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0628C64E8A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 08:27:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 494AB20DD4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 08:22:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 494AB20DD4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7E52F22202
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Dec 2020 08:27:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E52F22202
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9CirVG7z//J30+F5z9UGpiNwtrO7q6MNXUaenbmeviE=; b=zar/fHDmqwtAdnjbEwoUSLkka
-	/JOv0yHwArYy2XUJv+shWxC21SY/g6l40yJp/JeGu3h0mR56O7FIEnyNaP0JlZoLFzpHQXngALFcR
-	7hkZ4hhbaadmdVU0KtN0oW8Vxz6pYjNTCYqzZK+Jv2SFaJihAIdzUhiiX82CaFvg1SncEDZqiBp/f
-	92t8ro9fcA7v5Rbgof50zIe+039UOHHktMf5sCJwgCTTlH23oBUJolhuOp51kZMkJzsizP5J4uOOL
-	IS2s7rk0LFS8gNNTdCSCCFLPSmakI2Pbhf363O/ZItvM+OPbgzN/vMuA2rCLbelcEo1G6O5/Oh3Pc
-	rPv8sCzgg==;
+	 bh=uKbP5GMRYciLOerng/t0lZeaYSZuq5Aj8RDBFed5eEE=; b=0ZUp17COxBTvWTD5W3QhSjQW9
+	eYwd/UfUzzzQZ29xpiAU4K0c636evVCyR0ov0pRA2/yuwJu0jXqNtfcLqM/bFOxQ6TtXGbJ2W3tgC
+	WnSZtTRm+iS3ML4UjkFCQE3/afuPulWXlX/GHbUTyzuhxtF8P3uBbgt3cZH/fLBxuCRRcHi9Gcp4j
+	gisvkYgih7/75zG3kWEaCuFuKtJeQscZolYQF7i5jOvU2lEz0w58IDFoD0a3dNfzV+A9lFX1TgpoK
+	Xx3sZjpk4eUTHo+nHwQ4jdvT9Pz2G/HOxwGwfahIx1C7KWbMB5v7jeSPY/LlLruxVDXRLKfnirNw3
+	ulAvXzRIQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkNPT-00072D-NE; Wed, 02 Dec 2020 08:22:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kkNTQ-0000L5-Te; Wed, 02 Dec 2020 08:26:52 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkNPP-0006z8-I3; Wed, 02 Dec 2020 08:22:46 +0000
-X-UUID: ae2d5bb50b664c39b44d005106234aad-20201202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=eW3bJobgy0k/p95VGblYVIXoRiGa/RVCmghE8dcbJ9Y=; 
- b=WFNd0ndneFa6baOFFO3+I7ZodIBKDaikfN8gIL3/7urddhKUPaNWcVxfR7GC33X0uHgkJ698E8f7zTDan1LF8TEJkbdTj8rGgX4xXcccCyQlPTCYObf1/JX9Kajqr3cwxgvaqbr2PTflv8xgJyEfx+skHSYR7Fbdr1tFnQohXg8=;
-X-UUID: ae2d5bb50b664c39b44d005106234aad-20201202
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1456603812; Wed, 02 Dec 2020 00:22:34 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Dec 2020 00:22:35 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Dec 2020 16:22:33 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 2 Dec 2020 16:22:34 +0800
-Message-ID: <1606897354.23925.33.camel@mtkswgap22>
-Subject: Re: [PATCH v2] scsi: ufs: Remove pre-defined initial voltage values
- of device powers
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <nguyenb@codeaurora.org>
-Date: Wed, 2 Dec 2020 16:22:34 +0800
-In-Reply-To: <c855aaeb419bc7c124889c5afb0cae71@codeaurora.org>
-References: <20201201065114.1001-1-stanley.chu@mediatek.com>
- <c855aaeb419bc7c124889c5afb0cae71@codeaurora.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kkNTG-0000FH-TY
+ for linux-mediatek@lists.infradead.org; Wed, 02 Dec 2020 08:26:45 +0000
+Received: by mail-qk1-x741.google.com with SMTP id v143so507710qkb.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Dec 2020 00:26:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FmY534xqIDhl01APeKsQP14KEWKOgWXllxn9uDK2ABs=;
+ b=kQMR5gNi5TDH332Pa7ETOmqwHvBgxezCa03fuaaL/uc+zo4Nqd38tV0R3zThLAmg82
+ wK/EdICSpKUw4nZmM4xqvE2eQYkDMnRWzCYyudxKqW0MWFuZMwsdHx5ChzaBZQU1mMey
+ rZNu7KgPDYyDtPF73ND/TsCvpPRQr9QhJxKTfyMp+dH5uYP9Ct97vJc8RA4iN34zsZZM
+ Zjzlf5y2hbnf9i33EdOzabJ8cEaCy37ekuTpK4gBPkF75M3LfxiMyJVXUQdLkTZ0Z/ky
+ t7otq7kqnvfIrCIL7Q+gBD/DqFOxJYtpIeTne0cjvsdkq1wUof9gjDmxzbCCgku3Qo68
+ DhRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FmY534xqIDhl01APeKsQP14KEWKOgWXllxn9uDK2ABs=;
+ b=fyEGC4CTEtnmZ8JhJPpbSJzk2PwzjJ+TyLjuCrjyf3uhc5pn07kdM6ag+8pxyxJuB8
+ Ay3GnI+A2qXGaABRcW4wA8j6z3L5GMh0ZUxXx6c1zWoPfGR7jwb/U0moIVYgdsYpB4/t
+ SA1pfPTW+o/E034cG6DWUKdiq2iVYphluNRIEtQc9lXv3nGlCffyrbHsMbNumSXTCf9i
+ 6YjmF9CKK710IZXr4CRyjsB2nGASS9Kmj2ndbYAdOJyTUMukiXg8fOrqqYnrLPEfadJu
+ BKsPCwScEwG6ezb50WayDWZjtQkXBrZWOAfumUiT0ENyimNgP3neem0Z31xh9Ho5RS5p
+ UoxQ==
+X-Gm-Message-State: AOAM530JSBTHshb7jYAciwao1mJ4N0pIdes7RbgWlWEsvthZL19u/QxX
+ hsAcu+FdeMIbCiDyhEezpIsOAexc5UTEXTrcs+OMAw==
+X-Google-Smtp-Source: ABdhPJxhe31Fzd6Gs61++5CHWaoySY80+QpqhG/33P7Dh4HFGzz6Ykis3BleHaY3ujJ4grxJNZhZ5fNZD9On61L5S0I=
+X-Received: by 2002:a05:620a:12e4:: with SMTP id
+ f4mr1370416qkl.265.1606897601009; 
+ Wed, 02 Dec 2020 00:26:41 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 59F7DD2B71DFE41EF021D9395D5202A7A9640B3088C7A4077DEE432C3854098A2000:8
-X-MTK: N
+References: <1606895585-17382-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
+ <1606895585-17382-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
+In-Reply-To: <1606895585-17382-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Wed, 2 Dec 2020 09:26:29 +0100
+Message-ID: <CACT4Y+bvo5Hg1OfXYipdWTJPsBtG265X5wtBaVBqhydBwouMkA@mail.gmail.com>
+Subject: Re: [PATCH v3 1/1] kasan: fix object remain in offline per-cpu
+ quarantine
+To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201202_032243_825845_927B3CD8 
-X-CRM114-Status: GOOD (  27.67  )
+X-CRM114-CacheID: sfid-20201202_032643_315172_4E62420A 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,99 +88,168 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, cang@codeaurora.org,
- alim.akhtar@samsung.com, beanhuo@micron.com, bvanassche@acm.org,
- linux-scsi@vger.kernel.org, peter.wang@mediatek.com, cc.chou@mediatek.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- avri.altman@wdc.com, linux-mediatek@lists.infradead.org,
- jiajie.hao@mediatek.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, martin.petersen@oracle.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
- asutoshd@codeaurora.org, alice.chao@mediatek.com
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>,
+ kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
+ Linux-MM <linux-mm@kvack.org>, Nicholas Tang <nicholas.tang@mediatek.com>,
+ Alexander Potapenko <glider@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-12-02 at 00:19 -0800, nguyenb@codeaurora.org wrote:
-> On 2020-11-30 22:51, Stanley Chu wrote:
-> > UFS specficication allows different VCC configurations for UFS devices,
-> > for example,
-> > 	(1). 2.70V - 3.60V (Activated by default in UFS core driver)
-> > 	(2). 1.70V - 1.95V (Activated if "vcc-supply-1p8" is declared in
-> >                           device tree)
-> > 	(3). 2.40V - 2.70V (Supported since UFS 3.x)
-> > 
-> > With the introduction of UFS 3.x products, an issue is happening that
-> > UFS driver will use wrong "min_uV-max_uV" values to configure the
-> > voltage of VCC regulator on UFU 3.x products with the configuration (3)
-> > used.
-> > 
-> > To solve this issue, we simply remove pre-defined initial VCC voltage
-> > values in UFS core driver with below reasons,
-> > 
-> > 1. UFS specifications do not define how to detect the VCC configuration
-> >    supported by attached device.
-> > 
-> > 2. Device tree already supports standard regulator properties.
-> > 
-> > Therefore VCC voltage shall be defined correctly in device tree, and
-> > shall not changed by UFS driver. What UFS driver needs to do is simply
-> > enable or disable the VCC regulator only.
-> > 
-> > Similar change is applied to VCCQ and VCCQ2 as well.
-> > 
-> > Note that we keep struct ufs_vreg unchanged. This is allow vendors to
-> > configure proper min_uV and max_uV of any regulators to make
-> > regulator_set_voltage() works during regulator toggling flow.
-> > Without specific vendor configurations, min_uV and max_uV will be NULL
-> > by default and UFS core driver will enable or disable the regulator
-> > only without adjusting its voltage.
-> > 
-> > Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
-> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > ---
-> >  drivers/scsi/ufs/ufshcd-pltfrm.c | 16 ----------------
-> >  1 file changed, 16 deletions(-)
-> > 
-> > diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c 
-> > b/drivers/scsi/ufs/ufshcd-pltfrm.c
-> > index a6f76399b3ae..09e2f04bf4f6 100644
-> > --- a/drivers/scsi/ufs/ufshcd-pltfrm.c
-> > +++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
-> > @@ -133,22 +133,6 @@ static int ufshcd_populate_vreg(struct device
-> > *dev, const char *name,
-> >  		vreg->max_uA = 0;
-> >  	}
-> > 
-> > -	if (!strcmp(name, "vcc")) {
-> > -		if (of_property_read_bool(np, "vcc-supply-1p8")) {
-> > -			vreg->min_uV = UFS_VREG_VCC_1P8_MIN_UV;
-> > -			vreg->max_uV = UFS_VREG_VCC_1P8_MAX_UV;
-> > -		} else {
-> > -			vreg->min_uV = UFS_VREG_VCC_MIN_UV;
-> > -			vreg->max_uV = UFS_VREG_VCC_MAX_UV;
-> > -		}
-> > -	} else if (!strcmp(name, "vccq")) {
-> > -		vreg->min_uV = UFS_VREG_VCCQ_MIN_UV;
-> > -		vreg->max_uV = UFS_VREG_VCCQ_MAX_UV;
-> > -	} else if (!strcmp(name, "vccq2")) {
-> > -		vreg->min_uV = UFS_VREG_VCCQ2_MIN_UV;
-> > -		vreg->max_uV = UFS_VREG_VCCQ2_MAX_UV;
-> > -	}
-> > -
-> >  	goto out;
-> Do we need this "goto out;"?
+On Wed, Dec 2, 2020 at 8:58 AM Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
+>
+> We hit this issue in our internal test.
+> When enabling generic kasan, a kfree()'d object is put into per-cpu
+> quarantine first. If the cpu goes offline, object still remains in
+> the per-cpu quarantine. If we call kmem_cache_destroy() now, slub
+> will report "Objects remaining" error.
+>
+> [   74.982625] =============================================================================
+> [   74.983380] BUG test_module_slab (Not tainted): Objects remaining in test_module_slab on __kmem_cache_shutdown()
+> [   74.984145] -----------------------------------------------------------------------------
+> [   74.984145]
+> [   74.984883] Disabling lock debugging due to kernel taint
+> [   74.985561] INFO: Slab 0x(____ptrval____) objects=34 used=1 fp=0x(____ptrval____) flags=0x2ffff00000010200
+> [   74.986638] CPU: 3 PID: 176 Comm: cat Tainted: G    B             5.10.0-rc1-00007-g4525c8781ec0-dirty #10
+> [   74.987262] Hardware name: linux,dummy-virt (DT)
+> [   74.987606] Call trace:
+> [   74.987924]  dump_backtrace+0x0/0x2b0
+> [   74.988296]  show_stack+0x18/0x68
+> [   74.988698]  dump_stack+0xfc/0x168
+> [   74.989030]  slab_err+0xac/0xd4
+> [   74.989346]  __kmem_cache_shutdown+0x1e4/0x3c8
+> [   74.989779]  kmem_cache_destroy+0x68/0x130
+> [   74.990176]  test_version_show+0x84/0xf0
+> [   74.990679]  module_attr_show+0x40/0x60
+> [   74.991218]  sysfs_kf_seq_show+0x128/0x1c0
+> [   74.991656]  kernfs_seq_show+0xa0/0xb8
+> [   74.992059]  seq_read+0x1f0/0x7e8
+> [   74.992415]  kernfs_fop_read+0x70/0x338
+> [   74.993051]  vfs_read+0xe4/0x250
+> [   74.993498]  ksys_read+0xc8/0x180
+> [   74.993825]  __arm64_sys_read+0x44/0x58
+> [   74.994203]  el0_svc_common.constprop.0+0xac/0x228
+> [   74.994708]  do_el0_svc+0x38/0xa0
+> [   74.995088]  el0_sync_handler+0x170/0x178
+> [   74.995497]  el0_sync+0x174/0x180
+> [   74.996050] INFO: Object 0x(____ptrval____) @offset=15848
+> [   74.996752] INFO: Allocated in test_version_show+0x98/0xf0 age=8188 cpu=6 pid=172
+> [   75.000802]  stack_trace_save+0x9c/0xd0
+> [   75.002420]  set_track+0x64/0xf0
+> [   75.002770]  alloc_debug_processing+0x104/0x1a0
+> [   75.003171]  ___slab_alloc+0x628/0x648
+> [   75.004213]  __slab_alloc.isra.0+0x2c/0x58
+> [   75.004757]  kmem_cache_alloc+0x560/0x588
+> [   75.005376]  test_version_show+0x98/0xf0
+> [   75.005756]  module_attr_show+0x40/0x60
+> [   75.007035]  sysfs_kf_seq_show+0x128/0x1c0
+> [   75.007433]  kernfs_seq_show+0xa0/0xb8
+> [   75.007800]  seq_read+0x1f0/0x7e8
+> [   75.008128]  kernfs_fop_read+0x70/0x338
+> [   75.008507]  vfs_read+0xe4/0x250
+> [   75.008990]  ksys_read+0xc8/0x180
+> [   75.009462]  __arm64_sys_read+0x44/0x58
+> [   75.010085]  el0_svc_common.constprop.0+0xac/0x228
+> [   75.011006] kmem_cache_destroy test_module_slab: Slab cache still has objects
+>
+> Register a cpu hotplug function to remove all objects in the offline
+> per-cpu quarantine when cpu is going offline. Set a per-cpu variable
+> to indicate this cpu is offline.
+>
+> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> Reported-by: Guangye Yang <guangye.yang@mediatek.com>
+> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
 
-Will remove it in next version.
+Looks good to me, thanks.
 
-Thanks for remind.
+Reviewed-by: Dmitry Vyukov <dvyukov@google.com>
 
-Stanley Chu
 
-> 
-> > 
-> >  out:
+> ---
+>  mm/kasan/quarantine.c | 40 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 40 insertions(+)
+>
+> diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
+> index 4c5375810449..cac7c617df72 100644
+> --- a/mm/kasan/quarantine.c
+> +++ b/mm/kasan/quarantine.c
+> @@ -29,6 +29,7 @@
+>  #include <linux/srcu.h>
+>  #include <linux/string.h>
+>  #include <linux/types.h>
+> +#include <linux/cpuhotplug.h>
+>
+>  #include "../slab.h"
+>  #include "kasan.h"
+> @@ -43,6 +44,7 @@ struct qlist_head {
+>         struct qlist_node *head;
+>         struct qlist_node *tail;
+>         size_t bytes;
+> +       bool offline;
+>  };
+>
+>  #define QLIST_INIT { NULL, NULL, 0 }
+> @@ -188,6 +190,11 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
+>         local_irq_save(flags);
+>
+>         q = this_cpu_ptr(&cpu_quarantine);
+> +       if (q->offline) {
+> +               qlink_free(&info->quarantine_link, cache);
+> +               local_irq_restore(flags);
+> +               return;
+> +       }
+>         qlist_put(q, &info->quarantine_link, cache->size);
+>         if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
+>                 qlist_move_all(q, &temp);
+> @@ -328,3 +335,36 @@ void quarantine_remove_cache(struct kmem_cache *cache)
+>
+>         synchronize_srcu(&remove_cache_srcu);
+>  }
+> +
+> +static int kasan_cpu_online(unsigned int cpu)
+> +{
+> +       this_cpu_ptr(&cpu_quarantine)->offline = false;
+> +       return 0;
+> +}
+> +
+> +static int kasan_cpu_offline(unsigned int cpu)
+> +{
+> +       struct qlist_head *q;
+> +
+> +       q = this_cpu_ptr(&cpu_quarantine);
+> +       /* Ensure the ordering between the writing to q->offline and
+> +        * qlist_free_all. Otherwise, cpu_quarantine may be corrupted
+> +        * by interrupt.
+> +        */
+> +       WRITE_ONCE(q->offline, true);
+> +       barrier();
+> +       qlist_free_all(q, NULL);
+> +       return 0;
+> +}
+> +
+> +static int __init kasan_cpu_quarantine_init(void)
+> +{
+> +       int ret = 0;
+> +
+> +       ret = cpuhp_setup_state(CPUHP_AP_ONLINE_DYN, "mm/kasan:online",
+> +                               kasan_cpu_online, kasan_cpu_offline);
+> +       if (ret < 0)
+> +               pr_err("kasan cpu quarantine register failed [%d]\n", ret);
+> +       return ret;
+> +}
+> +late_initcall(kasan_cpu_quarantine_init);
+> --
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
