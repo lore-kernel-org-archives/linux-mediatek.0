@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A5631C2BB40
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 14:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1710C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 14:52:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33DCF222B4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 14:41:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33DCF222B4
+	by mail.kernel.org (Postfix) with ESMTPS id 3C49E206D5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 14:52:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C49E206D5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PZSCP4wYnequRzdQmVvjfoPkeBA+Q1LAomwaxS2vcX4=; b=G/kZsIF8XgbBTGLH+tsWmRXd3
-	YILy8lWWsBmK97b7y3LREGI6sUPP2h6M5v7GtiToQLceycjcgx6h9nInKC6dylOqMPOX8qYJkH/GV
-	Ph22eVmoSdr6J+t849tqLREFBAz/NdNOga5nV1yPVAOl2dWggo2m6bJB2u6yMYTZSPRwSVSwxD64Q
-	rxUGTgglwOsB98pkOnrIYasZnK3CMFHRovav0lToyRtMOqaEMXgZ/pzGPOWO8QuV13G9z50SVWXcZ
-	QOpFKikHRf7rcirvN7+vT/fIMYhJEyxDrBQb5A5jbPALi1QPP4vFMSpPvdztSfZwmFesvS9heiTYT
-	FgHpY0+uA==;
+	 bh=CNfJqZQZM4RQav2IMo0KzrJCxM+rGGceK0s4dMuuctU=; b=WAvSbh3i32uDH5l5R0kSXKBDN
+	HWHTmbLcPC10RbGT/KY16rKqc7GaGCho24Lhhq5atx2Er3aEn9lyrvvyR8jAZHL7lxSdYEPdojlvA
+	1Dmlbye3de7DVqDirobrvdhlieGoeNjsqr5HNJJAWqKqZ8gJix3HAeHZZ9hFzy+0ZZC2HgWXWwyKh
+	qlLnUA8dBr5byRTXN9hpQNJHdcPyGqXoStp2P5rV8FPvllEzHelJLD2nqURsA6cYIH/F9/LrAZb6l
+	dE3LhvCN/w/jmyxTvfO8zj9N/5tqozy6czsol7Jo7NoFuWcN5C+1zwgDTEc1f8eCiCzG5a8Qhbcf8
+	3iFNioAiQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkomX-0006T5-AO; Thu, 03 Dec 2020 13:36:25 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkoh7-0003W7-OG; Thu, 03 Dec 2020 13:30:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=jQ83exShKY4V7l2epdjYKw3UqY0ww2lUXiEJBnyMAHw=; b=uUcAKZ3s21WAWxVyGZnDLgNsv1
- 4XwlFoyV/4nX5u6w/EhtYp6+PfLAYc4eZOEXYLGoDxViuABKN+wEVGjiVvq9iLzJTgTMysFMdHEa8
- 4PMAshtMQJyQHb39D2itzvnhpzINHHlFtnvXQAAMYZ4VBc00xbDF5YDj/a/vwM6Xyzc4yeEWk1QhO
- QVJIV9GJp9fMvjBtd0aI63nlXtUHFQlNXVuPWQgg/+LlnAgz91JggFRJnS0OrNIlsTCsjV+H8EvVf
- sPagAx/nzbcd41f0yQmxZa05NyZAey2MiqDWPATqNu40s1jiSC6H17C3Yf0UTgg1QMe3auhjeuHyX
- nC0GqJLw==;
+	id 1kkoll-00064J-M5; Thu, 03 Dec 2020 13:35:37 +0000
 Received: from mail.kernel.org ([198.145.29.99])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkoh2-0002js-ER; Thu, 03 Dec 2020 13:30:47 +0000
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kkogg-0003Ic-UB; Thu, 03 Dec 2020 13:30:31 +0000
 From: Sasha Levin <sashal@kernel.org>
 Authentication-Results: mail.kernel.org;
  dkim=permerror (bad message/signature format)
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 5/9] scsi: ufs: Make sure clk scaling happens
+Subject: [PATCH AUTOSEL 4.19 06/14] scsi: ufs: Make sure clk scaling happens
  only when HBA is runtime ACTIVE
-Date: Thu,  3 Dec 2020 08:30:27 -0500
-Message-Id: <20201203133031.931763-5-sashal@kernel.org>
+Date: Thu,  3 Dec 2020 08:30:02 -0500
+Message-Id: <20201203133010.931600-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201203133031.931763-1-sashal@kernel.org>
-References: <20201203133031.931763-1-sashal@kernel.org>
+In-Reply-To: <20201203133010.931600-1-sashal@kernel.org>
+References: <20201203133010.931600-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_133044_945061_9FE152A5 
-X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-CacheID: sfid-20201203_083023_267068_D12C0958 
+X-CRM114-Status: UNSURE (   9.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -116,10 +103,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 7 insertions(+)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index a3a3ee6e2a002..342e086e41991 100644
+index 7e4e6e982055e..61b1eae42ea85 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1215,8 +1215,15 @@ static int ufshcd_devfreq_target(struct device *dev,
+@@ -1281,8 +1281,15 @@ static int ufshcd_devfreq_target(struct device *dev,
  	}
  	spin_unlock_irqrestore(hba->host->host_lock, irq_flags);
  
