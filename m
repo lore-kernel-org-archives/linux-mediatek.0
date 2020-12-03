@@ -2,58 +2,86 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1710C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 14:52:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 542F8C4361A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 15:34:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C49E206D5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 14:52:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C49E206D5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id BB101206F9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 15:34:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB101206F9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CNfJqZQZM4RQav2IMo0KzrJCxM+rGGceK0s4dMuuctU=; b=WAvSbh3i32uDH5l5R0kSXKBDN
-	HWHTmbLcPC10RbGT/KY16rKqc7GaGCho24Lhhq5atx2Er3aEn9lyrvvyR8jAZHL7lxSdYEPdojlvA
-	1Dmlbye3de7DVqDirobrvdhlieGoeNjsqr5HNJJAWqKqZ8gJix3HAeHZZ9hFzy+0ZZC2HgWXWwyKh
-	qlLnUA8dBr5byRTXN9hpQNJHdcPyGqXoStp2P5rV8FPvllEzHelJLD2nqURsA6cYIH/F9/LrAZb6l
-	dE3LhvCN/w/jmyxTvfO8zj9N/5tqozy6czsol7Jo7NoFuWcN5C+1zwgDTEc1f8eCiCzG5a8Qhbcf8
-	3iFNioAiQ==;
+	 bh=IETEpDsdg4/hpbrMIt4TJEEQROZ2lYX0M8onCSos47E=; b=avPP/MWGYEsrH1OkK/ZVOhhz+
+	oUU8VlwBVx0Jic+Xaimq804imlgKrTLrErzZkH80kAXe/WDZzYKTc4vFaB3u+ckPd3pcvcSfDFa+Q
+	m6i3htaXu2c8ycVPESsqaT9LJ6ZCbFLMrgESv2e7kkJiyeGjTS/Up5cEGYta2wx63rtKYZKiexBFL
+	be1LZTsRsGhMAre6AeK+LZBb30+KyZAv+PROaV/twc+FAUjMMNGsLc1hKnogS5F9birklUu7AnM8p
+	Idr3tq40p5UZDrjG/afsD28xakYBxoifa8a3MVQo6NimHKHC/gWP4H/o317JvBayAaGQtMCNsNSNV
+	cXDCgBwqg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkoll-00064J-M5; Thu, 03 Dec 2020 13:35:37 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kkqcC-0000aq-93; Thu, 03 Dec 2020 15:33:52 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkogg-0003Ic-UB; Thu, 03 Dec 2020 13:30:31 +0000
-From: Sasha Levin <sashal@kernel.org>
-Authentication-Results: mail.kernel.org;
- dkim=permerror (bad message/signature format)
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 06/14] scsi: ufs: Make sure clk scaling happens
- only when HBA is runtime ACTIVE
-Date: Thu,  3 Dec 2020 08:30:02 -0500
-Message-Id: <20201203133010.931600-6-sashal@kernel.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201203133010.931600-1-sashal@kernel.org>
-References: <20201203133010.931600-1-sashal@kernel.org>
+ id 1kkqc6-0000ZO-Gj
+ for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 15:33:48 +0000
+Received: by mail-pl1-x642.google.com with SMTP id t18so1347660plo.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 03 Dec 2020 07:33:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=gd//BVtbrF5fIQYuVuMwSd46+y/wcSCEQb7Z0473XMQ=;
+ b=barcV+xgeUTsOnM6H6n031a9IlXxNTl0S6RqfKjbbP8/OMSvhfZ5nbC8mKY19XarkF
+ RUXmSEOXyT9ewEFxzXYZpbgUjJugYzW3MjXPKFTvmxdUIMT1tOZ3JTlVs6XB5V6yAuKT
+ 9+6A1KQnNFrscfbLxkG7Xy/JnKywHrGPnGRmuQSquceIwz3W6okYcRqxT342rvZfP0/0
+ y7k7evIrMW1+4a8IO7eLnCW7lT/KAUMyqKUTzvzU1vJbIyXWdUup8qyMlH8SYpnNWE/L
+ DlP2vDZ0w8K43M8aUnsuJzyuvp4aFaDnLbg5LgOqqhH6FCMWXgXhNG/sqPSZ0FDoeFOw
+ mnKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=gd//BVtbrF5fIQYuVuMwSd46+y/wcSCEQb7Z0473XMQ=;
+ b=tcIm5b6Hmt28H1lqGXxBG+8IHJ7cBoG1WcOKzBuy/vjVidj6r74pNcOXc2pOTwTd3C
+ Mbzx+L+GtwtwsWwnFy7mRrRNdWeYfbkQYG57glH9QasJdw6M9p5bFLUr+e24N7QIwPKo
+ 9OkHRkw+5r6kQLBD6jBAxXkGWcC7l47+gcZm7489rK9PaAYYxHBt2bYlaQUXYXQSh8y2
+ zaUoSJogfji1JldWmxWYiRMks0Xown+QJEJYG9qq+l/y7MI3sc7tRArp559VI6i/wQIU
+ EyX3mWLIjnHrKfGC+WT+cbXSI35OyUbOxdagDaId+l9JGktSieKLhUVyGo3ZRIw6mcIT
+ 5qHQ==
+X-Gm-Message-State: AOAM530wFfG6fXotNHIBTnVopGEQunxNt5ZsWj8Su1SmDWMLqsTTcKxv
+ ZqvdkCUycxZPasjDT+gJ1thF/g==
+X-Google-Smtp-Source: ABdhPJxyvFQey/fKSX93EFbjSsCaaXfm5uiD2gx3x4OYLyzPU7Hjt40N+4uhu6X3HkQycL4HvmobcA==
+X-Received: by 2002:a17:902:c401:b029:da:6fa4:d208 with SMTP id
+ k1-20020a170902c401b02900da6fa4d208mr3561055plk.33.1607009620776; 
+ Thu, 03 Dec 2020 07:33:40 -0800 (PST)
+Received: from xps15 (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id x26sm2117436pfn.46.2020.12.03.07.33.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Dec 2020 07:33:40 -0800 (PST)
+Date: Thu, 3 Dec 2020 08:33:38 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tzung-Bi Shih <tzungbi@google.com>
+Subject: Re: [PATCH v2] remoteproc/mediatek: unprepare clk if scp_before_load
+ fails
+Message-ID: <20201203153338.GA1386676@xps15>
+References: <20201203030436.3583198-1-tzungbi@google.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Content-Disposition: inline
+In-Reply-To: <20201203030436.3583198-1-tzungbi@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_083023_267068_D12C0958 
-X-CRM114-Status: UNSURE (   9.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201203_103346_938189_2B34EDF6 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,66 +93,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Can Guo <cang@codeaurora.org>, linux-mediatek@lists.infradead.org,
- Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: ohad@wizery.com, linux-remoteproc@vger.kernel.org,
+ bjorn.andersson@linaro.org, linux-mediatek@lists.infradead.org,
+ pihsun@chromium.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Can Guo <cang@codeaurora.org>
+On Thu, Dec 03, 2020 at 11:04:36AM +0800, Tzung-Bi Shih wrote:
+> Fixes the error handling to unprepare clk if scp_before_load fails.
+> 
+> Fixes: fd0b6c1ff85a4 ("remoteproc/mediatek: Add support for mt8192 SCP")
 
-[ Upstream commit 73cc291c270248567245f084dcdf5078069af6b5 ]
+https://elixir.bootlin.com/linux/v5.10-rc6/source/Documentation/process/submitting-patches.rst#L122
 
-If someone plays with the UFS clk scaling devfreq governor through sysfs,
-ufshcd_devfreq_scale may be called even when HBA is not runtime ACTIVE.
-This can lead to unexpected error. We cannot just protect it by calling
-pm_runtime_get_sync() because that may cause a race condition since HBA
-runtime suspend ops need to suspend clk scaling. To fix this call
-pm_runtime_get_noresume() and check HBA's runtime status. Only proceed if
-HBA is runtime ACTIVE, otherwise just bail.
-
-governor_store
- devfreq_performance_handler
-  update_devfreq
-   devfreq_set_target
-    ufshcd_devfreq_target
-     ufshcd_devfreq_scale
-
-Link: https://lore.kernel.org/r/1600758548-28576-1-git-send-email-cang@codeaurora.org
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Can Guo <cang@codeaurora.org>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/scsi/ufs/ufshcd.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 7e4e6e982055e..61b1eae42ea85 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1281,8 +1281,15 @@ static int ufshcd_devfreq_target(struct device *dev,
- 	}
- 	spin_unlock_irqrestore(hba->host->host_lock, irq_flags);
- 
-+	pm_runtime_get_noresume(hba->dev);
-+	if (!pm_runtime_active(hba->dev)) {
-+		pm_runtime_put_noidle(hba->dev);
-+		ret = -EAGAIN;
-+		goto out;
-+	}
- 	start = ktime_get();
- 	ret = ufshcd_devfreq_scale(hba, scale_up);
-+	pm_runtime_put(hba->dev);
- 
- 	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
- 		(scale_up ? "up" : "down"),
--- 
-2.27.0
-
+> Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
+> ---
+> Changes from v1[1]:
+> - add "Fixes" tag
+> - remove an unneeded change
+> 
+> [1]: https://patchwork.kernel.org/project/linux-remoteproc/patch/20201202044537.2500497-1-tzungbi@google.com/
+> 
+>  drivers/remoteproc/mtk_scp.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 5f42b9ce7185..5e5705fe35a8 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -350,9 +350,10 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+>  
+>  	ret = scp->data->scp_before_load(scp);
+>  	if (ret < 0)
+> -		return ret;
+> +		goto leave;
+>  
+>  	ret = scp_elf_load_segments(rproc, fw);
+> +leave:
+>  	clk_disable_unprepare(scp->clk);
+>  
+>  	return ret;
+> -- 
+> 2.29.2.454.gaff20da3a2-goog
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
