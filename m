@@ -2,80 +2,58 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60D85C63777
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 12:47:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64F4DC63777
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 13:29:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6DA120709
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 12:47:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6DA120709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 01B8E208D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 13:29:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01B8E208D1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tWwJB1OHBWCLGBME/b3e/8MiHMdKHWc3M/N4H2nAqoo=; b=jsIl4QoddUA0MjJAD248WgOAM
-	Ui7ZZ0r9ISKJDrb58TtIZJADTorg1FKbOCFNkuPr0gEzdI3K6YNhh5fktsIFTcnvbFR4ukiDzGVL8
-	sdUXWG768m+pDW641nVtuzeuVu6eJe8ZQ6rSDFJWwY5JOWAeKg+IO30/UzhLstMDlEFV+GjL3N+UU
-	hbRAwHTAqRJo7Y5luYFI/LDQhS+a89ReXwkqml1O+BfHfsp6bDhD+LUTRYxfa0SEKf9LwntcGkBtJ
-	OBwL1rqhcpCNCT+ijn64Tbqfq7+PPT0JiI6LmrCN82GY5fQ1rXQhJPi95vaQf6jQAgjK5g8X+ErXL
-	lKsEYNaTA==;
+	 bh=CZ36sEclPePUWgiAe8STaXYtd3xJxzKYWtYKI7k3qXs=; b=od0SBlWrf8Vaw4W8yJMlMTqq6
+	7srt6E8oErapBRnYixrLARAlw52/3f9n7isetNDuiqSPuxvjy4SsYYahOwPuGAHceZp0AZihnKUHm
+	IMZDjPf67FZiY18ketPH2RZT3ZxVAHInDdRmbfMYrHYBF+IjOvyTQ+q4qgm5P3/7e5Tsf6fkwdniG
+	PuXY1gD7p29/7fI8moNiU/gP5OHU74wNTS/Ms/CW53++2mjGTjD4WbrFPBGiRg9L3mZuEyFm5yuDF
+	kVD1MXiRXQziQmP1M23IjxyBO/0MX4vouFIvjYV60zweIew02fv1JGDAMVFai8iWAShN1ygz+5RJp
+	2/1p4UDYQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kko11-0004nK-Uv; Thu, 03 Dec 2020 12:47:19 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1kkofw-0002p4-PJ; Thu, 03 Dec 2020 13:29:36 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kko0x-0004lS-BZ
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 12:47:16 +0000
-Received: by mail-pf1-x441.google.com with SMTP id s21so1190989pfu.13
- for <linux-mediatek@lists.infradead.org>; Thu, 03 Dec 2020 04:47:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LyhE2Gh6cABbrVZ7ov6yfexMpJrP0k999yqFA1LYZCc=;
- b=RVIUWgPtVJpSq34PZD9bY+aGnf8j+weA4FOfHjRVQJmUYTLo4fnlvYPIRondXFPrhJ
- Mf66xvkoLkQ5CeJ3l/Ik/Uz0KGrK8y3LSJUEZu88TpMlMEtqJCoaaB4BCIzTLRQ7TJwJ
- T+4ccip/UhjP+OHTOsqyeK3m2NU7278vfreDpRCLPCqwSmKr/38/rVhvfR35Giwk0tgk
- NGsDWRhkxXCoERrwXSc2sWjTCF0M3Yvsdt2ahHgb7nDoXet1hJJrsW9VzCKpM7yp3EGa
- Mwia3bqqqE/6TUVDMcAXJr7lwxyu+BgV+q0AxlQGFwzHFysC5UfkrTALSWTXCSmr/j3G
- tWyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=LyhE2Gh6cABbrVZ7ov6yfexMpJrP0k999yqFA1LYZCc=;
- b=Nk3TX0iELuMJqBpULeqQba+NM7upV7i4VZaKc6aWas2lhFwcTG9cET1gJEDsTFuPMv
- SyvuhAOR4TDJZKqEc9LFuNkZaz9WDe7Ap4fUSZ8KPA9cU2VZy1UHgmMnHh33WVCzjZnp
- vf37hqx78ywmaBenK5HAHpLYZmE4/XNvlx+Dr5bbLFAxcYN48haHQuXpnxmqkTAWOtO0
- 7CJ2kczsIfyrolHbktpSskg7tTI3il/t+n34uNwErPODKllZomZRb008S/cgTsnVpxp0
- HNq41Ff2SF4FhwTqjg0bpYTYes67d1863X8qqIbwBDVHjmC6E4Gb7KrVIQmfZlKPXj8M
- Dung==
-X-Gm-Message-State: AOAM5301smKpAtSsReCx6/XtMdxc0hQGkqFSvl/hSdi9RsnBWzpeTcD0
- rbZ3o5MbZGLDuABtJfg/UVrh47I8pDIBuJscMbAlzg==
-X-Google-Smtp-Source: ABdhPJzUdDE/gpu4h72S7w9Bh53pDtC/8FlltR0gvMuL/8CEwzlFpfP6QFQ0Rzbzcxg1N8SSRasp8M0poZqL3UUc6so=
-X-Received: by 2002:a63:f20:: with SMTP id e32mr2860728pgl.130.1606999630819; 
- Thu, 03 Dec 2020 04:47:10 -0800 (PST)
+ id 1kkofH-0002Rb-Oo; Thu, 03 Dec 2020 13:28:56 +0000
+From: Sasha Levin <sashal@kernel.org>
+Authentication-Results: mail.kernel.org;
+ dkim=permerror (bad message/signature format)
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.9 13/39] scsi: ufs: Make sure clk scaling happens
+ only when HBA is runtime ACTIVE
+Date: Thu,  3 Dec 2020 08:28:07 -0500
+Message-Id: <20201203132834.930999-13-sashal@kernel.org>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20201203132834.930999-1-sashal@kernel.org>
+References: <20201203132834.930999-1-sashal@kernel.org>
 MIME-Version: 1.0
-References: <1606895585-17382-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
- <1606895585-17382-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
-In-Reply-To: <1606895585-17382-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
-From: Andrey Konovalov <andreyknvl@google.com>
-Date: Thu, 3 Dec 2020 13:46:59 +0100
-Message-ID: <CAAeHK+z+DPNysrUwfeu27h6sKdn5DDE=BL4t96KiF0mRBNPs+Q@mail.gmail.com>
-Subject: Re: [PATCH v3 1/1] kasan: fix object remain in offline per-cpu
- quarantine
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_074715_459865_DD615B43 
-X-CRM114-Status: GOOD (  28.83  )
+X-CRM114-CacheID: sfid-20201203_082855_917790_CFD57681 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,176 +65,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>,
- kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
- Linux Memory Management List <linux-mm@kvack.org>,
- Nicholas Tang <nicholas.tang@mediatek.com>,
- Alexander Potapenko <glider@google.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
+Cc: Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Can Guo <cang@codeaurora.org>, linux-mediatek@lists.infradead.org,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 2, 2020 at 8:58 AM Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
->
-> We hit this issue in our internal test.
-> When enabling generic kasan, a kfree()'d object is put into per-cpu
-> quarantine first. If the cpu goes offline, object still remains in
-> the per-cpu quarantine. If we call kmem_cache_destroy() now, slub
-> will report "Objects remaining" error.
->
-> [   74.982625] =============================================================================
-> [   74.983380] BUG test_module_slab (Not tainted): Objects remaining in test_module_slab on __kmem_cache_shutdown()
-> [   74.984145] -----------------------------------------------------------------------------
-> [   74.984145]
-> [   74.984883] Disabling lock debugging due to kernel taint
-> [   74.985561] INFO: Slab 0x(____ptrval____) objects=34 used=1 fp=0x(____ptrval____) flags=0x2ffff00000010200
-> [   74.986638] CPU: 3 PID: 176 Comm: cat Tainted: G    B             5.10.0-rc1-00007-g4525c8781ec0-dirty #10
-> [   74.987262] Hardware name: linux,dummy-virt (DT)
-> [   74.987606] Call trace:
-> [   74.987924]  dump_backtrace+0x0/0x2b0
-> [   74.988296]  show_stack+0x18/0x68
-> [   74.988698]  dump_stack+0xfc/0x168
-> [   74.989030]  slab_err+0xac/0xd4
-> [   74.989346]  __kmem_cache_shutdown+0x1e4/0x3c8
-> [   74.989779]  kmem_cache_destroy+0x68/0x130
-> [   74.990176]  test_version_show+0x84/0xf0
-> [   74.990679]  module_attr_show+0x40/0x60
-> [   74.991218]  sysfs_kf_seq_show+0x128/0x1c0
-> [   74.991656]  kernfs_seq_show+0xa0/0xb8
-> [   74.992059]  seq_read+0x1f0/0x7e8
-> [   74.992415]  kernfs_fop_read+0x70/0x338
-> [   74.993051]  vfs_read+0xe4/0x250
-> [   74.993498]  ksys_read+0xc8/0x180
-> [   74.993825]  __arm64_sys_read+0x44/0x58
-> [   74.994203]  el0_svc_common.constprop.0+0xac/0x228
-> [   74.994708]  do_el0_svc+0x38/0xa0
-> [   74.995088]  el0_sync_handler+0x170/0x178
-> [   74.995497]  el0_sync+0x174/0x180
-> [   74.996050] INFO: Object 0x(____ptrval____) @offset=15848
-> [   74.996752] INFO: Allocated in test_version_show+0x98/0xf0 age=8188 cpu=6 pid=172
-> [   75.000802]  stack_trace_save+0x9c/0xd0
-> [   75.002420]  set_track+0x64/0xf0
-> [   75.002770]  alloc_debug_processing+0x104/0x1a0
-> [   75.003171]  ___slab_alloc+0x628/0x648
-> [   75.004213]  __slab_alloc.isra.0+0x2c/0x58
-> [   75.004757]  kmem_cache_alloc+0x560/0x588
-> [   75.005376]  test_version_show+0x98/0xf0
-> [   75.005756]  module_attr_show+0x40/0x60
-> [   75.007035]  sysfs_kf_seq_show+0x128/0x1c0
-> [   75.007433]  kernfs_seq_show+0xa0/0xb8
-> [   75.007800]  seq_read+0x1f0/0x7e8
-> [   75.008128]  kernfs_fop_read+0x70/0x338
-> [   75.008507]  vfs_read+0xe4/0x250
-> [   75.008990]  ksys_read+0xc8/0x180
-> [   75.009462]  __arm64_sys_read+0x44/0x58
-> [   75.010085]  el0_svc_common.constprop.0+0xac/0x228
-> [   75.011006] kmem_cache_destroy test_module_slab: Slab cache still has objects
->
-> Register a cpu hotplug function to remove all objects in the offline
-> per-cpu quarantine when cpu is going offline. Set a per-cpu variable
-> to indicate this cpu is offline.
->
-> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Reported-by: Guangye Yang <guangye.yang@mediatek.com>
-> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  mm/kasan/quarantine.c | 40 ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 40 insertions(+)
->
-> diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
-> index 4c5375810449..cac7c617df72 100644
-> --- a/mm/kasan/quarantine.c
-> +++ b/mm/kasan/quarantine.c
-> @@ -29,6 +29,7 @@
->  #include <linux/srcu.h>
->  #include <linux/string.h>
->  #include <linux/types.h>
-> +#include <linux/cpuhotplug.h>
->
->  #include "../slab.h"
->  #include "kasan.h"
-> @@ -43,6 +44,7 @@ struct qlist_head {
->         struct qlist_node *head;
->         struct qlist_node *tail;
->         size_t bytes;
-> +       bool offline;
->  };
->
->  #define QLIST_INIT { NULL, NULL, 0 }
-> @@ -188,6 +190,11 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
->         local_irq_save(flags);
->
->         q = this_cpu_ptr(&cpu_quarantine);
-> +       if (q->offline) {
-> +               qlink_free(&info->quarantine_link, cache);
+From: Can Guo <cang@codeaurora.org>
 
-Hi Kuan-Ying,
+[ Upstream commit 73cc291c270248567245f084dcdf5078069af6b5 ]
 
-This needs to be rebased onto the mm tree: it has some KASAN patches
-that touch this code and rename the info variable to meta.
+If someone plays with the UFS clk scaling devfreq governor through sysfs,
+ufshcd_devfreq_scale may be called even when HBA is not runtime ACTIVE.
+This can lead to unexpected error. We cannot just protect it by calling
+pm_runtime_get_sync() because that may cause a race condition since HBA
+runtime suspend ops need to suspend clk scaling. To fix this call
+pm_runtime_get_noresume() and check HBA's runtime status. Only proceed if
+HBA is runtime ACTIVE, otherwise just bail.
 
-Thanks!
+governor_store
+ devfreq_performance_handler
+  update_devfreq
+   devfreq_set_target
+    ufshcd_devfreq_target
+     ufshcd_devfreq_scale
 
-> +               local_irq_restore(flags);
-> +               return;
-> +       }
->         qlist_put(q, &info->quarantine_link, cache->size);
->         if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
->                 qlist_move_all(q, &temp);
-> @@ -328,3 +335,36 @@ void quarantine_remove_cache(struct kmem_cache *cache)
->
->         synchronize_srcu(&remove_cache_srcu);
->  }
-> +
-> +static int kasan_cpu_online(unsigned int cpu)
-> +{
-> +       this_cpu_ptr(&cpu_quarantine)->offline = false;
-> +       return 0;
-> +}
-> +
-> +static int kasan_cpu_offline(unsigned int cpu)
-> +{
-> +       struct qlist_head *q;
-> +
-> +       q = this_cpu_ptr(&cpu_quarantine);
-> +       /* Ensure the ordering between the writing to q->offline and
-> +        * qlist_free_all. Otherwise, cpu_quarantine may be corrupted
-> +        * by interrupt.
-> +        */
-> +       WRITE_ONCE(q->offline, true);
-> +       barrier();
-> +       qlist_free_all(q, NULL);
-> +       return 0;
-> +}
-> +
-> +static int __init kasan_cpu_quarantine_init(void)
-> +{
-> +       int ret = 0;
-> +
-> +       ret = cpuhp_setup_state(CPUHP_AP_ONLINE_DYN, "mm/kasan:online",
-> +                               kasan_cpu_online, kasan_cpu_offline);
-> +       if (ret < 0)
-> +               pr_err("kasan cpu quarantine register failed [%d]\n", ret);
-> +       return ret;
-> +}
-> +late_initcall(kasan_cpu_quarantine_init);
-> --
-> 2.18.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/1606895585-17382-2-git-send-email-Kuan-Ying.Lee%40mediatek.com.
+Link: https://lore.kernel.org/r/1600758548-28576-1-git-send-email-cang@codeaurora.org
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/scsi/ufs/ufshcd.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index cbcdd79a1f76f..18326eb772aeb 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1279,8 +1279,15 @@ static int ufshcd_devfreq_target(struct device *dev,
+ 	}
+ 	spin_unlock_irqrestore(hba->host->host_lock, irq_flags);
+ 
++	pm_runtime_get_noresume(hba->dev);
++	if (!pm_runtime_active(hba->dev)) {
++		pm_runtime_put_noidle(hba->dev);
++		ret = -EAGAIN;
++		goto out;
++	}
+ 	start = ktime_get();
+ 	ret = ufshcd_devfreq_scale(hba, scale_up);
++	pm_runtime_put(hba->dev);
+ 
+ 	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
+ 		(scale_up ? "up" : "down"),
+-- 
+2.27.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
