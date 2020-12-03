@@ -2,62 +2,72 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3390BC71156
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20DE0C64E8A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:57:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B5B8E20758
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:42:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5B8E20758
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6CC702086A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:57:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CC702086A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iePCGdbtKEbsa4/3//N+rJdrJjw2ZwCvA79uXyemKl8=; b=gy8OWcuhxQ7xXLwRf9WEAu6ph
-	Wlw/IlnM6N/UadhZhkhcLmC8Lf5QLQ1M2anIIKZX9AN/Xmvn5CnE3PaT8KQDSZVoo9pH4jYtmuC59
-	3M4zmmhW07d5yggIA5udDswO6GvSPvJ0gE6birrchIecF10IYkO4PPRDzQRbOTaR0dzm809qRbVCs
-	QePXsi3bTzxhvxTYX5U67+0qv//mrQ3Iyzzh86THbO9UrGrQiYfxrUZxXLtH31/VSv/Ad4zOdXTzj
-	qKnTX53FxfeZkjg+lpPTfF81QBhF/qdj1Gg0w7oJOS/iHP6+JwTdHCgaRAVSCvEO7oTWYLthTB5mk
-	eYyKeIO+Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5KBJZqAAc0wr+EiMPQ8nyOF/MHsVMYLY8/rxytixLqM=; b=BEas8e7ucIAjL1yqh9145+FZg9
+	vSgeSc0ZpdyoYJC+yZ68J63x+3xmOmGDBqxm7+7/EQbM+o23Rennrd0Kxrla2b/Owv88KaI7hlGtz
+	ycOE+/pMbu1pT985HSDJIkh1FhLUJZbdBcmHcP9DGgFFokMJOlX8BM15Ez6Rd324qg8xrnI9+MtXe
+	mfRDf1gFUM3cur9qw5H+N4ktl24e8lqGCAVIPtJSnr4KY1mBgis4USphzz0/slEROBwsnFK2ELruH
+	bjMDKgQQOClxD9DmnUNkXUR4Cu46DVByLS1t+XwoPyzfQEF866dYfP0tBXj/k53WiX3BSfRN8mvqC
+	81v8yzpw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkn0a-0004w7-3l; Thu, 03 Dec 2020 11:42:48 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkn0X-0004vX-5v
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 11:42:46 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1D325113E;
- Thu,  3 Dec 2020 03:42:44 -0800 (PST)
-Received: from [10.37.8.53] (unknown [10.37.8.53])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4CC8E3F66B;
- Thu,  3 Dec 2020 03:42:40 -0800 (PST)
-Subject: Re: [PATCH v2] proc: use untagged_addr() for pagemap_read addresses
-To: Miles Chen <miles.chen@mediatek.com>,
- Alexey Dobriyan <adobriyan@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>
-References: <20201127050738.14440-1-miles.chen@mediatek.com>
-From: Vincenzo Frascino <vincenzo.frascino@arm.com>
-Message-ID: <d836c2d2-321f-3931-568b-430d73c60c2c@arm.com>
-Date: Thu, 3 Dec 2020 11:45:56 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+	id 1kknEC-000729-7d; Thu, 03 Dec 2020 11:56:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kknE8-00070s-H2
+ for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 11:56:50 +0000
+X-UUID: b599dba0aa8142e29eeb4dbeb4e0fe19-20201203
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=HSHxG8q1H4egF4YXnlRz4M+YmKMMhxA4qznWJn6PoOA=; 
+ b=g5qz2m9+UtlhY8/ZcN94NKhP6UJ1rmkiURnPIg8C57V9iQ5NCY4gw2ZJSfVjnCyM+afJ6j+s2mqbeVjS0Umcp7HbMV8wD8liU4hVIL/LVcAwDZVERrCvznpTIrBkkd2dp4TgH5FwgcfGn0Zd1DHg4PKQUIuifJzbbSafQLZDHDI=;
+X-UUID: b599dba0aa8142e29eeb4dbeb4e0fe19-20201203
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 759370121; Thu, 03 Dec 2020 03:41:41 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Dec 2020 03:32:17 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Dec 2020 19:32:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 3 Dec 2020 19:32:15 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: [PATCH] mt76: mt7915: fix "defined but not used" compiler warning
+Date: Thu, 3 Dec 2020 19:32:10 +0800
+Message-ID: <20201203113210.16354-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <20201127050738.14440-1-miles.chen@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_064245_362908_AFC6C546 
-X-CRM114-Status: GOOD (  28.67  )
+X-CRM114-CacheID: sfid-20201203_065648_803380_DBB87CEB 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,96 +79,132 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Song Bao Hua <song.bao.hua@hisilicon.com>, Marco Elver <elver@google.com>,
- Catalin Marinas <catalin.marinas@arm.com>, wsd_upstream@mediatek.com,
- Andrey Konovalov <andreyknvl@google.com>, Will Deacon <will.deacon@arm.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- Alexander Potapenko <glider@google.com>,
- "Eric W . Biederman" <ebiederm@xmission.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>, linux-fsdevel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Dmitry Vyukov <dvyukov@google.com>
+Cc: linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Miles,
+If CONFIG_NL80211_TESTMODE is not set, the following compiler warning
+appears:
 
-On 11/27/20 5:07 AM, Miles Chen wrote:
-> When we try to visit the pagemap of a tagged userspace pointer, we find
-> that the start_vaddr is not correct because of the tag.
-> To fix it, we should untag the usespace pointers in pagemap_read().
-> 
+warning: 'mt7915_mac_tx_rate_val' defined but not used [-Wunused-function]
 
-Nit: s/usespace/userspace/ (please search and replace all occurrences :) )
+Since mt7915_mac_tx_rate_val() is only used by
+mt7915_mac_write_txwi_tm(), merge them to get rid of this warning.
 
-> I tested with 5.10-rc4 and the issue remains.
-> 
-> Explaination from Catalin in [1]:
->
+Fixes: 3ac860a ("mt76: mt7915: implement testmode tx support")
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 68 ++++++++-----------
+ 1 file changed, 28 insertions(+), 40 deletions(-)
 
-Nit: s/Explaination/Explanation/ (please search and replace all occurrences :) )
-
-> "
-> Arguably, that's a user-space bug since tagged file offsets were never
-> supported. In this case it's not even a tag at bit 56 as per the arm64
-> tagged address ABI but rather down to bit 47. You could say that the
-> problem is caused by the C library (malloc()) or whoever created the
-> tagged vaddr and passed it to this function. It's not a kernel
-> regression as we've never supported it.
-> 
-> Now, pagemap is a special case where the offset is usually not generated
-> as a classic file offset but rather derived by shifting a user virtual
-> address. I guess we can make a concession for pagemap (only) and allow
-> such offset with the tag at bit (56 - PAGE_SHIFT + 3).
-> "
-> 
-> My test code is baed on [2]:
-
-Nit: s/baed/based/ (please search and replace all occurrences :) )
-
-[...]
-
-> ---
->  fs/proc/task_mmu.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
-> index 217aa2705d5d..92b277388f05 100644
-> --- a/fs/proc/task_mmu.c
-> +++ b/fs/proc/task_mmu.c
-> @@ -1599,11 +1599,15 @@ static ssize_t pagemap_read(struct file *file, char __user *buf,
->  
->  	src = *ppos;
->  	svpfn = src / PM_ENTRY_BYTES;
-> -	start_vaddr = svpfn << PAGE_SHIFT;
->  	end_vaddr = mm->task_size;
->  
->  	/* watch out for wraparound */
-> -	if (svpfn > mm->task_size >> PAGE_SHIFT)
-> +	start_vaddr = end_vaddr;
-> +	if (svpfn < (ULONG_MAX >> PAGE_SHIFT))
-
-It seems that 'svpfn' should be less-then-equal (<=) '(ULONG_MAX >>
-PAGE_SHIFT)'. Is there any specific reason why this is not the case?
-
-> +		start_vaddr = untagged_addr(svpfn << PAGE_SHIFT);
-> +
-> +	/* Ensure the address is inside the task */
-> +	if (start_vaddr > mm->task_size)
->  		start_vaddr = end_vaddr;
->  
->  	/*
-> 
-
-Otherwise:
-
-Reviewed-by: Vincenzo Frascino <vincenzo.frascino@arm.com>
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index d93d5ba..21005be 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -600,51 +600,16 @@ void mt7915_mac_fill_rx_vector(struct mt7915_dev *dev, struct sk_buff *skb)
+ }
+ #endif
+ 
+-static u16
+-mt7915_mac_tx_rate_val(struct mt76_phy *mphy, u8 mode, u8 rate_idx,
+-		       u8 nss, u8 stbc, u8 *bw)
+-{
+-	u16 rateval = 0;
+-
+-	switch (mphy->chandef.width) {
+-	case NL80211_CHAN_WIDTH_40:
+-		*bw = 1;
+-		break;
+-	case NL80211_CHAN_WIDTH_80:
+-		*bw = 2;
+-		break;
+-	case NL80211_CHAN_WIDTH_80P80:
+-	case NL80211_CHAN_WIDTH_160:
+-		*bw = 3;
+-		break;
+-	default:
+-		*bw = 0;
+-		break;
+-	}
+-
+-	if (mode == MT_PHY_TYPE_HT || mode == MT_PHY_TYPE_HT_GF)
+-		nss = 1 + (rate_idx >> 3);
+-
+-	if (stbc && nss == 1) {
+-		nss++;
+-		rateval |= MT_TX_RATE_STBC;
+-	}
+-
+-	rateval |= FIELD_PREP(MT_TX_RATE_IDX, rate_idx) |
+-		   FIELD_PREP(MT_TX_RATE_MODE, mode) |
+-		   FIELD_PREP(MT_TX_RATE_NSS, nss - 1);
+-
+-	return rateval;
+-}
+-
+ static void
+ mt7915_mac_write_txwi_tm(struct mt7915_dev *dev, struct mt76_phy *mphy,
+ 			 __le32 *txwi, struct sk_buff *skb)
+ {
+ #ifdef CONFIG_NL80211_TESTMODE
+ 	struct mt76_testmode_data *td = &dev->mt76.test;
++	u8 rate_idx = td->tx_rate_idx;
++	u8 nss = td->tx_rate_nss;
+ 	u8 bw, mode;
+-	u16 rateval;
++	u16 rateval = 0;
+ 	u32 val;
+ 
+ 	if (skb != dev->mt76.test.tx_skb)
+@@ -655,6 +620,7 @@ mt7915_mac_write_txwi_tm(struct mt7915_dev *dev, struct mt76_phy *mphy,
+ 		mode = MT_PHY_TYPE_CCK;
+ 		break;
+ 	case MT76_TM_TX_MODE_HT:
++		nss = 1 + (rate_idx >> 3);
+ 		mode = MT_PHY_TYPE_HT;
+ 		break;
+ 	case MT76_TM_TX_MODE_VHT:
+@@ -678,8 +644,30 @@ mt7915_mac_write_txwi_tm(struct mt7915_dev *dev, struct mt76_phy *mphy,
+ 		break;
+ 	}
+ 
+-	rateval = mt7915_mac_tx_rate_val(mphy, mode, td->tx_rate_idx,
+-					 td->tx_rate_nss, td->tx_rate_stbc, &bw);
++	switch (mphy->chandef.width) {
++	case NL80211_CHAN_WIDTH_40:
++		bw = 1;
++		break;
++	case NL80211_CHAN_WIDTH_80:
++		bw = 2;
++		break;
++	case NL80211_CHAN_WIDTH_80P80:
++	case NL80211_CHAN_WIDTH_160:
++		bw = 3;
++		break;
++	default:
++		bw = 0;
++		break;
++	}
++
++	if (td->tx_rate_stbc && nss == 1) {
++		nss++;
++		rateval |= MT_TX_RATE_STBC;
++	}
++
++	rateval |= FIELD_PREP(MT_TX_RATE_IDX, rate_idx) |
++		   FIELD_PREP(MT_TX_RATE_MODE, mode) |
++		   FIELD_PREP(MT_TX_RATE_NSS, nss - 1);
+ 
+ 	txwi[2] |= cpu_to_le32(MT_TXD2_FIX_RATE);
+ 
 -- 
-Regards,
-Vincenzo
-
+2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
