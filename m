@@ -2,77 +2,82 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF785C63777
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 05:49:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 812C4C63777
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 06:42:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42F4720B80
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 05:49:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42F4720B80
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1B78E206F9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 06:42:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B78E206F9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OFZ2GvEVdfhNUEB11RI5Cr0VKPGgNHg/RNKuwY3Gm3c=; b=aapBJH0j4fdv6Ly6Sq7ats4dF
-	zycQ3Kq0BRGYtIUe8Kwa9y0wuuujd2dRp5GX8NjUXBP1LRqZPU0VNZYYiuEaf9PdBuE9vBL2S2cAz
-	B4bxUi41ZYxm3OMfb6QP6XTgU/hynWYSAFccAp+xGSC8brbZgDYX6Ys1QhZPmU40yzfs1ZgV2jpkW
-	STaQLqdC3mN16+2ZpmmkG5GN0xOC3qWypiTeeiP5jwVBtTUYRP2ROrTJXnkC9aNXJRZ1HcfS5Q81k
-	fXFEVPxGHSq7iVoqrj9fV83ytrKSghpbnZDwkTZ5QC5AYAb3y4PtNNs1JeLszxpS8YOAQDEbjK0Yl
-	jx8hU7JxQ==;
+	 bh=ah2ik9j3mgJyNYrwQeqjNJMyq56Jt81FFM33LKO2VyE=; b=hVTVlIU+x5CyjDrPuE39R90Xd
+	vaObRv1PoLV/Ht+2O6gZ6EKxNyxtCqW/L6v9XEkJXLlTK2VwK9wSeW/ywP+n6JNuGon29yKyBMnTt
+	SesGZniU3U4Uu65Oxi4C9nMRUBKksN98eGJ+sMFHcyXJUOLwRPerhdLOL7W4hDMYZmJXwQw5vOT1T
+	uB++ssx4m9riptwFXMLyWJQo+Tcji3dokadkwLRXJxWuMz7vSKlaRrTHLCQ3jRNEhkVheyHIbF/6x
+	sIE0F6WgupA2p7KXHjr9OOPwMamZnFvu/Qbs8JLevjj2PkAyl8Tqp4aihB8Az+uYF/lFc9SJ9ofQx
+	GTvFOxTGA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkhUS-0007pX-Uu; Thu, 03 Dec 2020 05:49:16 +0000
-Received: from m42-5.mailgun.net ([69.72.42.5])
+	id 1kkiJv-00007t-5Y; Thu, 03 Dec 2020 06:42:27 +0000
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkhUP-0007oe-EI
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 05:49:15 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1606974554; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=NJ4IfsZbGPDKNl9KMbMJltvvUnRSFPpja3eddaNzntw=;
- b=Ecg/zk/Dp5a+h95QCbj33cObW7X548ojGR6swgmFtDJNnZAbCZuRDen1D6x+FwB99IsL6eIy
- Umruqij0pnVLPwMs6I8f2cHqvjRqBHmDmqBCv9EuPTWg3fzBk75UgRETHb2O9JzA9l/jNNnD
- YzqgPUf4cZJc/rjP0tQQzJgSDyM=
-X-Mailgun-Sending-Ip: 69.72.42.5
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n02.prod.us-east-1.postgun.com with SMTP id
- 5fc87c53a5d4da3a6cd4c244 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 03 Dec 2020 05:49:07
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 49280C43462; Thu,  3 Dec 2020 05:49:06 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 5AFD3C433C6;
- Thu,  3 Dec 2020 05:49:05 +0000 (UTC)
+ id 1kkiJq-00006m-KZ; Thu, 03 Dec 2020 06:42:23 +0000
+Received: by mail-oi1-x242.google.com with SMTP id s18so1169654oih.1;
+ Wed, 02 Dec 2020 22:42:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=yO4TsI43MuLziGL33Z3oiOkLAP8j5oHC1iNCg4TI+/s=;
+ b=do7maqArbCHRAVqvvu3JPEzYvoePnCjywZhayzI88KuqX/pY/Mk/RUtCE64RPOVfRm
+ TgP1176mObueziXjkJE6hqIistnArhXtSoNRwoR1Ig1yMTgbZdczCOMIHKUvAqyLLjMw
+ NPlTOCb87S9lxfK1SuC9diY1uJYvQrIIYi0+UsUU94ddIKHVdCSeQuiB6RL7dmh7sE1H
+ dvo1pomq2vZEYTPqfk11jw02eHma9nEv6HARLxIGaNyclUPED2HyLEdv5vmHk97OBQ2x
+ FRo70IFI7ym0cY0hujL5T49ryJ5IaMK9wzDKW6Kr9TwXCgY3hah7i2iJYLJb0CjeIPm7
+ 5FpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yO4TsI43MuLziGL33Z3oiOkLAP8j5oHC1iNCg4TI+/s=;
+ b=J7ZtMVWAPoqElmfb7RDUDZMZv4JtWcDEk5Cmka9KNqzkTG+QK6RkQLRT6CDMWmWDMp
+ sZmUPXDWmXt0IRfQTxS9YPB2DDXce2mcUfZEuWVDb4OwQSjsGO0bK8dNrmanNZ+ZomkS
+ wKs3QjaTJ5iRhdj63lHpw0ogOIpx3Zsaxbcw/S4PrqZszUgADqE5/sArlLEoLoSn2gDe
+ tn69TVyX+pLScjmXyRz0+SP411kH+F2pr3nZu0zRb1NelLt5kO1Z5lkLo9rb8JS7wml1
+ ZdOrnXGT2Mg/i4ba5N6V9f00lMooRntM60W1811NsZXk5O3lfi2dEgLv8B7FcMjxhXF0
+ WJBA==
+X-Gm-Message-State: AOAM533PZOpcNOgP7lmbFjPPPCCjAhfJ84nHralvyT/Lgi4ZSDXn+WhV
+ 9eb1IK9oHSDdwdChrJUp3uyMWONttiBH0Ffx6Qg=
+X-Google-Smtp-Source: ABdhPJyZxsbM2i/OH6A7N9hQqS+cFLzd3IgXb6p+JDZhAGOqIiZA9i7J/kWZ06MeDUjjRo9n1my70PTRPfSRt+eQDZE=
+X-Received: by 2002:aca:3e84:: with SMTP id l126mr976185oia.55.1606977740583; 
+ Wed, 02 Dec 2020 22:42:20 -0800 (PST)
 MIME-Version: 1.0
-Date: Thu, 03 Dec 2020 13:49:05 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1 3/3] scsi: ufs: Introduce notify_event variant function
-In-Reply-To: <20201126053839.25889-4-stanley.chu@mediatek.com>
-References: <20201126053839.25889-1-stanley.chu@mediatek.com>
- <20201126053839.25889-4-stanley.chu@mediatek.com>
-Message-ID: <b8d2d4e45e1738865925de17d53dcaa7@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+References: <1606906011-25633-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1606906011-25633-4-git-send-email-gene.chen.richtek@gmail.com>
+ <20201202122329.GA30929@duo.ucw.cz>
+In-Reply-To: <20201202122329.GA30929@duo.ucw.cz>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Date: Thu, 3 Dec 2020 14:42:08 +0800
+Message-ID: <CAE+NS34D8a6Udt7ZZ0=U7oqm5POtihKvD3WjD_sAADamqQ=1AQ@mail.gmail.com>
+Subject: Re: [PATCH v11 3/5] dt-bindings: leds: Add LED_FUNCTION_MOONLIGHT
+ definitions
+To: Pavel Machek <pavel@ucw.cz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_004914_619009_585AF29A 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20201203_014222_729659_5743E680 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,86 +89,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: jiajie.hao@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, huadian.liu@mediatek.com, andy.teng@mediatek.com,
- jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cc.chou@mediatek.com, avri.altman@wdc.com,
- alice.chao@mediatek.com, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- asutoshd@codeaurora.org, chaotian.jing@mediatek.com, bvanassche@acm.org,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ devicetree <devicetree@vger.kernel.org>, cy_huang@richtek.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, shufan_lee@richtek.com,
+ Wilma.Wu@mediatek.com, Linux LED Subsystem <linux-leds@vger.kernel.org>,
+ Dan Murphy <dmurphy@ti.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-11-26 13:38, Stanley Chu wrote:
-> Introduce notify_event variant function to allow
-> vendor to get notified of important events and connect
-> to any proprietary debugging facilities.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufshcd.c |  2 ++
->  drivers/scsi/ufs/ufshcd.h | 11 +++++++++++
->  2 files changed, 13 insertions(+)
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 7194bed1f10b..63fe37e1c908 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -4484,6 +4484,8 @@ void ufshcd_update_evt_hist(struct ufs_hba *hba,
-> u32 id, u32 val)
->  	e->val[e->pos] = val;
->  	e->tstamp[e->pos] = ktime_get();
->  	e->pos = (e->pos + 1) % UFS_EVENT_HIST_LENGTH;
-> +
-> +	ufshcd_vops_notify_event(hba, id, &val);
->  }
->  EXPORT_SYMBOL_GPL(ufshcd_update_evt_hist);
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index 82c2fc5597bb..a81ca36c1715 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -317,6 +317,7 @@ struct ufs_pwr_mode_info {
->   * @phy_initialization: used to initialize phys
->   * @device_reset: called to issue a reset pulse on the UFS device
->   * @program_key: program or evict an inline encryption key
-> + * @notify_event: called to notify important events
->   */
->  struct ufs_hba_variant_ops {
->  	const char *name;
-> @@ -352,6 +353,8 @@ struct ufs_hba_variant_ops {
->  					void *data);
->  	int	(*program_key)(struct ufs_hba *hba,
->  			       const union ufs_crypto_cfg_entry *cfg, int slot);
-> +	void	(*notify_event)(struct ufs_hba *hba,
-> +				enum ufs_event_type evt, void *data);
->  };
-> 
->  /* clock gating state  */
-> @@ -1097,6 +1100,14 @@ static inline int
-> ufshcd_vops_clk_scale_notify(struct ufs_hba *hba,
->  	return 0;
->  }
-> 
-> +static inline void ufshcd_vops_notify_event(struct ufs_hba *hba,
-> +					    enum ufs_event_type evt,
-> +					    void *data)
-> +{
-> +	if (hba->vops && hba->vops->notify_event)
-> +		hba->vops->notify_event(hba, evt, data);
-> +}
-> +
->  static inline int ufshcd_vops_setup_clocks(struct ufs_hba *hba, bool 
-> on,
->  					enum ufs_notify_change_status status)
->  {
-
-Reviewed-by: Can Guo <cang@codeaurora.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+UGF2ZWwgTWFjaGVrIDxwYXZlbEB1Y3cuY3o+IOaWvCAyMDIw5bm0MTLmnIgy5pelIOmAseS4iSDk
+uIvljYg4OjIz5a+r6YGT77yaCj4KPiBPbiBXZWQgMjAyMC0xMi0wMiAxODo0Njo0OSwgR2VuZSBD
+aGVuIHdyb3RlOgo+ID4gRnJvbTogR2VuZSBDaGVuIDxnZW5lX2NoZW5AcmljaHRlay5jb20+Cj4g
+Pgo+ID4gQWRkIExFRF9GVU5DVElPTl9NT09OTElHSFQgZGVmaW5pdGlvbnMKPiA+Cj4gPiBTaWdu
+ZWQtb2ZmLWJ5OiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiA+IEFja2VkLWJ5
+OiBKYWNlayBBbmFzemV3c2tpIDxqYWNlay5hbmFzemV3c2tpQGdtYWlsLmNvbT4KPiA+IEFja2Vk
+LWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+ID4gLS0tCj4gPiAgaW5jbHVkZS9k
+dC1iaW5kaW5ncy9sZWRzL2NvbW1vbi5oIHwgMSArCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5z
+ZXJ0aW9uKCspCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHQtYmluZGluZ3MvbGVkcy9j
+b21tb24uaCBiL2luY2x1ZGUvZHQtYmluZGluZ3MvbGVkcy9jb21tb24uaAo+ID4gaW5kZXggNTJi
+NjE5ZC4uODQzZTY1ZCAxMDA2NDQKPiA+IC0tLSBhL2luY2x1ZGUvZHQtYmluZGluZ3MvbGVkcy9j
+b21tb24uaAo+ID4gKysrIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9sZWRzL2NvbW1vbi5oCj4gPiBA
+QCAtNzgsNiArNzgsNyBAQAo+ID4gICNkZWZpbmUgTEVEX0ZVTkNUSU9OX0lORElDQVRPUiAiaW5k
+aWNhdG9yIgo+ID4gICNkZWZpbmUgTEVEX0ZVTkNUSU9OX0xBTiAibGFuIgo+ID4gICNkZWZpbmUg
+TEVEX0ZVTkNUSU9OX01BSUwgIm1haWwiCj4gPiArI2RlZmluZSBMRURfRlVOQ1RJT05fTU9PTkxJ
+R0hUICJtb29ubGlnaHQiCj4KPiBUaGVyZSdzICJ0b3JjaCIgZnVuY3Rpb24gdGhhdCBzaG91bGQg
+YmUgdXNlZCBmb3IgdGhpcy4gSSBndWVzcyBjb21tZW50Cj4gc2hvdWxkIGJlIGFkZGVkIHdpdGgg
+ZXhwbGFuYXRpb24gd2hhdCBleGFjdGx5IHRoYXQgaXMgYW5kIGhvdyBzaG91bGQKPiB0aGUgTEVE
+IGJlIG5hbWVkLgo+CgpBY2NvcmRpbmcgdG8gbWFpbCwgMTEvMjUgIlJlOiBbUEFUQ0ggdjcgMi81
+XSBkdC1iaW5kaW5nczogbGVkczogQWRkCkxFRF9DT0xPUl9JRF9NT09OTElHSFQgZGVmaW5pdGlv
+bnMiLApUaGUgTW9vbmxpZ2h0IExFRCBpcyBMRUQgd2hpY2ggbWF4aW11bSBjdXJyZW50IG1vcmUg
+dGhhbiB0b3JjaCwgYnV0Cmxlc3MgdGhhbiBmbGFzaC4gU3VjaCBhcyBmcm9udCBjYW1lcmEgZmls
+bCBsaWdodC4KSSB0aGluayBvdXIgY2hhbm5lbCBpcyBtb29ubGlnaHQsIG5vdCB0b3JjaC4KSSB3
+aWxsIGFkZCB0aGlzIGRlc2NyaXB0aW9uIHRvIGNvbW1lbnQuCldlIGNhbid0IGV4YWN0bHkgZGVm
+aW5lIG1vb25saWdodCBjdXJyZW50IGxldmVsLCBiZWNhdXNlIGV2ZXJ5IHZlbmRvcgpoYXMgdGhl
+aXIgb3duIHNwZWNpZmljYXRpb24uCgo+IEJlc3QgcmVnYXJkcywKPiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUGF2ZWwKPiAt
+LQo+IGh0dHA6Ly93d3cubGl2ZWpvdXJuYWwuY29tL35wYXZlbG1hY2hlawoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
