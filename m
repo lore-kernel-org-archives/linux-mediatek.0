@@ -2,81 +2,78 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E2EFC4361A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 17:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7799EC18E57
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 18:09:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01E65207A4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 17:11:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01E65207A4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
+	by mail.kernel.org (Postfix) with ESMTPS id D6ABE207B3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 18:09:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6ABE207B3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2m5F3yLtvNHbRutMaSddwOA0DSCdl/ZhD88QHTTgKQQ=; b=PztHwD5GvMbIRci/X4kySzVQ/
-	zm3YAH/2T51legcgL7HsGmzALyxyu2AxpxRZkCxsaxf6wGNa1dmCdrogo/8/SoSLeW28SkbuuTwF4
-	zDP2yhW/bLl9ItjLF5iFM+2XIZ2nc1us8WMDrVKoCMJSIuBRu+z8YHcKzw/YGg94ZFGCIZPBQOM8U
-	dSlNwOKKFTI/zIXCrTxYAMiUZmOuMZ7jGwOYLxHJd3sZvjXoPXCWlPttBw9rd74thfMRlekMcsini
-	+pQ2UbjM2uVIHfH8fOvVFL3FGvLYMqfF8aTolqf0VyOs0KIekM4rAV+sy1DDH69JnefVriSlHmjY9
-	ncL992wAw==;
+	 bh=vqASgnFXZH3flMgVu2VsfVsbzVbopwXTGbtQ5i1Wync=; b=oCMli80ipU8ivcxPl/WftBw/e
+	FgbO77kcnux0GV9jxCnahg4AwXPu4XvcAoU5a19hWl8lCCUdN+Wt7q16H6hD76teH39EoxiM/urex
+	NwXeYffvIq1Z5X2N1jwNwvODeCDW/yMaOvkl02SkRH7dljCQdJGN/waS8412qIG/BOBI4heifk575
+	8fZGYABvBcmQcdWII+D0hwETZaWkY8hpkXS636axdSDYeKtEEt60hUFwiRDF4tFWNuEfpEixbWVI/
+	an8SPprlgIQZUinc/WKge1ArYnid4LddPUCr25Q2OJnQog98KmKkOU0DwobClGa2NRTbMWnBgWyJo
+	Y2TjD1ZaQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kks8J-0003g5-On; Thu, 03 Dec 2020 17:11:07 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124])
+	id 1kkt2p-0000LZ-Ed; Thu, 03 Dec 2020 18:09:31 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kks8H-0003f7-46
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 17:11:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607015464;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uhkrIbkP+2I5PD5prOOeLdY5JuL7PV97yJKzCyL+Jhc=;
- b=Q5/WuWzxmd4l97IHaKlTM2oCbXv+jmSlfGVv+7Q00y/vU7X7kGUp6yBfg01YjVuNJEGe2u
- 2qY3ETMMY4Sr9j/RFrFIvIA65DExTANmeVw+JF6uXq6YyInZybz047Jn5VtEjG49kXQz5s
- ap0sRMuBar3SPDvzffbrq4VPJEaUtbs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-48-gAySmrSKMpGBPP4yfuhAEg-1; Thu, 03 Dec 2020 12:10:59 -0500
-X-MC-Unique: gAySmrSKMpGBPP4yfuhAEg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1AE05858181;
- Thu,  3 Dec 2020 17:10:57 +0000 (UTC)
-Received: from ovpn-66-132.rdu2.redhat.com (unknown [10.10.67.132])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 08B8060CE0;
- Thu,  3 Dec 2020 17:10:54 +0000 (UTC)
-Message-ID: <840af74e06e2515c84eb86df2825d466bcf75e96.camel@redhat.com>
-Subject: Re: [PATCH v3 1/1] kasan: fix object remain in offline per-cpu
- quarantine
-From: Qian Cai <qcai@redhat.com>
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>, Andrey Ryabinin
- <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry
- Vyukov <dvyukov@google.com>, Andrew Morton <akpm@linux-foundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Nicholas Tang
- <nicholas.tang@mediatek.com>, Miles Chen <miles.chen@mediatek.com>
-Date: Thu, 03 Dec 2020 12:10:54 -0500
-In-Reply-To: <1606895585-17382-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
-References: <1606895585-17382-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
- <1606895585-17382-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+ id 1kkt2m-0000K9-30; Thu, 03 Dec 2020 18:09:28 +0000
+Received: by mail-pg1-x534.google.com with SMTP id q3so1888999pgr.3;
+ Thu, 03 Dec 2020 10:09:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kX4KVJsGsKYPIIK4aDYtyzJtYeHdnevNwh4wjCWOb0c=;
+ b=QTBbK3JkISvsp2gZHBrLBJQZyAPMGYoyF0ezaPFpZ/hWd0KfzK91FRON+2mulxyaJC
+ 24vSphbfclOZbVO8HPWclbTJtCcX9+kbg3OESxXydsCwKX+NdE8Ue0hkWwQ+1HXhHebU
+ m6DdRwBjI4o5jAaD3xm+16hEaB8HOXltbiGcG59sUxroV+YdGzuCgfV4vCYswLH+cPRz
+ 4Fzp5CQRWlo/KEskO1CMb+CKSV2HIrRESbWGOu8O3DOJmtBrTFALnQR44CrDs1mRM2+W
+ ElMWMOKfkO8hainvVY8ebqRZYKhPQGBocLduTwSCiNVsLOIGWZCzVQpDAe51ftyLZElB
+ h3QA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kX4KVJsGsKYPIIK4aDYtyzJtYeHdnevNwh4wjCWOb0c=;
+ b=OeY98Pff1Pzz/YXpQ5Jp3FCvHNtLomhi4QsEp1KIkWM9U3zgrQBG+xBZmN06odf13y
+ dBb/So0qINucJcCxcP124EvpMMlNbin5eoY/aQFa4s9YZIZYAANp8oUuKUF18A4wf7Ub
+ YEr3N6ifFAtru8TAOYyTLp2Mbbe8PXuXZq9Ty4wlSigjGAWIneLQtRcmzrAoljYLsX42
+ PwnISglGtOvh6rVuzQtgw+VeXDgex1kONIXbomWMBoe5dG3hXfOzZYtLxzr4MBsPrUmf
+ q0IayjWEdNMMfiNxjunCcilFl/6NpieT85RK9zRzKjPZgozBxlzyUUbEMj3qj5WfjFng
+ LweQ==
+X-Gm-Message-State: AOAM530NOo89OFpGJ2I41HkcM4Kajp63JHeG1vb0m1BcdBu9A/Ub2c1P
+ RkwspBzSggBtvYjtMFGY1bKdNK+006d6BVOTg80=
+X-Google-Smtp-Source: ABdhPJwra2X3D41eYNE1JAbptcU2GxCMf3L2f8csctuSUqDap0iHk6iRo5leC3xzgYlyjSqNIXA2yx4jLkuOdXuijYs=
+X-Received: by 2002:a62:445:0:b029:19c:162b:bbef with SMTP id
+ 66-20020a6204450000b029019c162bbbefmr90263pfe.40.1607018963998; Thu, 03 Dec
+ 2020 10:09:23 -0800 (PST)
+MIME-Version: 1.0
+References: <9af089ea-2532-68ac-5d22-97a669ccec91@canonical.com>
+In-Reply-To: <9af089ea-2532-68ac-5d22-97a669ccec91@canonical.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 3 Dec 2020 20:10:12 +0200
+Message-ID: <CAHp75Ve7Sdf=Zy5N1LN_w22=YwPgWWR-FZtrQcAkOF=ViT2Kbw@mail.gmail.com>
+Subject: Re: media: i2c: add OV02A10 image sensor driver
+To: Colin Ian King <colin.king@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_121105_239239_AB0F35CB 
-X-CRM114-Status: GOOD (  25.41  )
+X-CRM114-CacheID: sfid-20201203_130928_168962_4D0FBC4D 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,245 +85,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sfr@canb.auug.org.au, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org,
- linux-next@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ linux-media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-12-02 at 15:53 +0800, Kuan-Ying Lee wrote:
-> We hit this issue in our internal test.
-> When enabling generic kasan, a kfree()'d object is put into per-cpu
-> quarantine first. If the cpu goes offline, object still remains in
-> the per-cpu quarantine. If we call kmem_cache_destroy() now, slub
-> will report "Objects remaining" error.
+On Thu, Dec 3, 2020 at 8:03 PM Colin Ian King <colin.king@canonical.com> wrote:
 
-Reverting this commit on the top of today's linux-next fixed memory corruptions
-while doing CPU hotplug.
+> Static analysis on linux-next with Coverity has detected an issue with
+> the following commit:
 
-.config: https://cailca.coding.net/public/linux/mm/git/files/master/x86.config
+If you want to fix it properly, see my comments below...
 
-[  421.539476][  T120] BUG kmalloc-128 (Not tainted): Object already free
-[  421.546047][  T120] -----------------------------------------------------------------------------
-[  421.546047][  T120] 
-[  421.557165][  T120] INFO: Allocated in memcg_alloc_page_obj_cgroups+0x86/0x140 age=755 cpu=21 pid=2316
-[  421.566533][  T120] 	__slab_alloc+0x55/0x70
-[  421.570744][  T120] 	__kmalloc_node+0xdc/0x280
-[  421.575215][  T120] 	memcg_alloc_page_obj_cgroups+0x86/0x140
-[  421.580910][  T120] 	allocate_slab+0xd8/0x610
-[  421.585299][  T120] 	___slab_alloc+0x4cb/0x830
-[  421.589770][  T120] 	__slab_alloc+0x55/0x70
-[  421.593985][  T120] 	kmem_cache_alloc+0x225/0x280
-[  421.598724][  T120] 	vm_area_dup+0x76/0x2a0
-[  421.602940][  T120] 	__split_vma+0x90/0x4b0
-[  421.607151][  T120] 	mprotect_fixup+0x5da/0x7d0
-[  421.611712][  T120] 	do_mprotect_pkey+0x41a/0x7c0
-[  421.616447][  T120] 	__x64_sys_mprotect+0x74/0xb0
-[  421.621181][  T120] 	do_syscall_64+0x33/0x40
-[  421.625479][  T120] 	entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  421.631262][  T120] INFO: Freed in quarantine_put+0xb5/0x1b0 age=3 cpu=21 pid=120
-[  421.638795][  T120] 	quarantine_put+0xe7/0x1b0
-[  421.643270][  T120] 	slab_free_freelist_hook+0x71/0x1a0
-[  421.648529][  T120] 	kfree+0xe2/0x5d0
-[  421.652215][  T120] 	__free_slab+0x1f8/0x300
-[  421.656517][  T120] 	qlist_free_all+0x56/0xc0
-[  421.660903][  T120] 	kasan_cpu_offline+0x1a/0x20
-[  421.665550][  T120] 	cpuhp_invoke_callback+0x1dd/0x1530
-[  421.670811][  T120] 	cpuhp_thread_fun+0x343/0x690
-[  421.675547][  T120] 	smpboot_thread_fn+0x30f/0x780
-[  421.680371][  T120] 	kthread+0x359/0x420
-[  421.684317][  T120] 	ret_from_fork+0x22/0x30
-[  421.688616][  T120] INFO: Slab 0x0000000080d42669 objects=12 used=11 fp=0x000000000ce8ce1d flags=0x4bfffc000010201
-[  421.699031][  T120] INFO: Object 0x000000000ce8ce1d @offset=1408 fp=0x0000000000000000
-[  421.699031][  T120] 
-[  421.709186][  T120] Redzone 000000002d1421b0: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.719339][  T120] Redzone 0000000018565a7c: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.729492][  T120] Redzone 00000000d8a699c9: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.739645][  T120] Redzone 00000000af065f39: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.749800][  T120] Redzone 00000000480c8db9: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.759954][  T120] Redzone 00000000c37ee06b: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.770106][  T120] Redzone 0000000040f9cbf1: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.780256][  T120] Redzone 00000000e714e01e: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb  ................
-[  421.790408][  T120] Object 000000000ce8ce1d: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b  kkkkkkkkkkkkkkkk
-[  421.800471][  T120] Object 0000000046eb4462: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b  kkkkkkkkkkkkkkkk
-[  421.810536][  T120] Object 00000000c3a122ae: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b  kkkkkkkkkkkkkkkk
-[  421.820599][  T120] Object 00000000d0195822: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b  kkkkkkkkkkkkkkkk
-[  421.830665][  T120] Object 000000008332e5f7: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b  kkkkkkkkkkkkkkkk
-[  421.840729][  T120] Object 00000000a04f77eb: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b  kkkkkkkkkkkkkkkk
-[  421.850796][  T120] Object 00000000326e9ce3: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b  kkkkkkkkkkkkkkkk
-[  421.860862][  T120] Object 00000000fa32b4b7: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5  kkkkkkkkkkkkkkk.
-[  421.870926][  T120] Redzone 000000001d59aa8f: bb bb bb bb bb bb bb bb                          ........
-[  421.880382][  T120] Padding 00000000f49e6727: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a  ZZZZZZZZZZZZZZZZ
-[  421.890537][  T120] Padding 000000007eb7befd: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a  ZZZZZZZZZZZZZZZZ
-[  421.900691][  T120] Padding 00000000c69f7c35: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a  ZZZZZZZZZZZZZZZZ
-[  421.910842][  T120] CPU: 21 PID: 120 Comm: cpuhp/21 Tainted: G    B             5.10.0-rc6-next-20201203+ #8
-[  421.920733][  T120] Hardware name: HPE ProLiant DL385 Gen10/ProLiant DL385 Gen10, BIOS A40 07/10/2019
-[  421.930011][  T120] Call Trace:
-[  421.933174][  T120]  dump_stack+0x99/0xcb
-[  421.937210][  T120]  free_debug_processing.cold.98+0x6a/0x111
-[  421.942993][  T120]  ? __free_slab+0x1f8/0x300
-[  421.947467][  T120]  ? __free_slab+0x1f8/0x300
-[  421.951942][  T120]  __slab_free+0x302/0x560
-[  421.956241][  T120]  ? lockdep_hardirqs_on_prepare+0x27c/0x3d0
-[  421.962110][  T120]  ? quarantine_put+0x10a/0x1b0
-[  421.966846][  T120]  ? trace_hardirqs_on+0x1c/0x150
-[  421.971754][  T120]  ? slab_free_freelist_hook+0x71/0x1a0
-[  421.977192][  T120]  kfree+0x595/0x5d0
-[  421.980967][  T120]  ? __free_slab+0x1f8/0x300
-[  421.985439][  T120]  __free_slab+0x1f8/0x300
-[  421.989738][  T120]  ? qlist_free_all+0x2f/0xc0
-[  421.994299][  T120]  qlist_free_all+0x56/0xc0
-[  421.998684][  T120]  ? qlist_free_all+0xc0/0xc0
-[  422.003244][  T120]  kasan_cpu_offline+0x1a/0x20
-[  422.007893][  T120]  cpuhp_invoke_callback+0x1dd/0x1530
-[  422.013152][  T120]  cpuhp_thread_fun+0x343/0x690
-[  422.017887][  T120]  ? __cpuhp_state_remove_instance+0x490/0x490
-[  422.023934][  T120]  smpboot_thread_fn+0x30f/0x780
-[  422.028756][  T120]  ? smpboot_register_percpu_thread+0x370/0x370
-[  422.034888][  T120]  ? trace_hardirqs_on+0x1c/0x150
-[  422.039800][  T120]  ? __kthread_parkme+0xd1/0x1a0
-[  422.044622][  T120]  ? smpboot_register_percpu_thread+0x370/0x370
-[  422.050753][  T120]  kthread+0x359/0x420
-[  422.054704][  T120]  ? kthread_create_on_node+0xc0/0xc0
-[  422.059965][  T120]  ret_from_fork+0x22/0x30
+> 529 static int ov02a10_s_stream(struct v4l2_subdev *sd, int on)
+> 530 {
+> 531        struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> 532        struct i2c_client *client =
+> v4l2_get_subdevdata(&ov02a10->subdev);
+>
+>    1. var_decl: Declaring variable ret without initializer.
+>
+> 533        int ret;
+> 534
+> 535        mutex_lock(&ov02a10->mutex);
+> 536
+>
+>    2. Condition ov02a10->streaming == on, taking true branch.
+>
+> 537        if (ov02a10->streaming == on)
+>
+>    3. Jumping to label unlock_and_return.
+>
+> 538                goto unlock_and_return;
+> 539
+> 540        if (on) {
+> 541                ret = pm_runtime_get_sync(&client->dev);
+> 542                if (ret < 0) {
 
-> 
-> [   74.982625] =============================================================================
-> [   74.983380] BUG test_module_slab (Not tainted): Objects remaining in test_module_slab on __kmem_cache_shutdown()
-> [   74.984145] -----------------------------------------------------------------------------
-> [   74.984145]
-> [   74.984883] Disabling lock debugging due to kernel taint
-> [   74.985561] INFO: Slab 0x(____ptrval____) objects=34 used=1 fp=0x(____ptrval____) flags=0x2ffff00000010200
-> [   74.986638] CPU: 3 PID: 176 Comm: cat Tainted: G    B             5.10.0-rc1-00007-g4525c8781ec0-dirty #10
-> [   74.987262] Hardware name: linux,dummy-virt (DT)
-> [   74.987606] Call trace:
-> [   74.987924]  dump_backtrace+0x0/0x2b0
-> [   74.988296]  show_stack+0x18/0x68
-> [   74.988698]  dump_stack+0xfc/0x168
-> [   74.989030]  slab_err+0xac/0xd4
-> [   74.989346]  __kmem_cache_shutdown+0x1e4/0x3c8
-> [   74.989779]  kmem_cache_destroy+0x68/0x130
-> [   74.990176]  test_version_show+0x84/0xf0
-> [   74.990679]  module_attr_show+0x40/0x60
-> [   74.991218]  sysfs_kf_seq_show+0x128/0x1c0
-> [   74.991656]  kernfs_seq_show+0xa0/0xb8
-> [   74.992059]  seq_read+0x1f0/0x7e8
-> [   74.992415]  kernfs_fop_read+0x70/0x338
-> [   74.993051]  vfs_read+0xe4/0x250
-> [   74.993498]  ksys_read+0xc8/0x180
-> [   74.993825]  __arm64_sys_read+0x44/0x58
-> [   74.994203]  el0_svc_common.constprop.0+0xac/0x228
-> [   74.994708]  do_el0_svc+0x38/0xa0
-> [   74.995088]  el0_sync_handler+0x170/0x178
-> [   74.995497]  el0_sync+0x174/0x180
-> [   74.996050] INFO: Object 0x(____ptrval____) @offset=15848
-> [   74.996752] INFO: Allocated in test_version_show+0x98/0xf0 age=8188 cpu=6 pid=172
-> [   75.000802]  stack_trace_save+0x9c/0xd0
-> [   75.002420]  set_track+0x64/0xf0
-> [   75.002770]  alloc_debug_processing+0x104/0x1a0
-> [   75.003171]  ___slab_alloc+0x628/0x648
-> [   75.004213]  __slab_alloc.isra.0+0x2c/0x58
-> [   75.004757]  kmem_cache_alloc+0x560/0x588
-> [   75.005376]  test_version_show+0x98/0xf0
-> [   75.005756]  module_attr_show+0x40/0x60
-> [   75.007035]  sysfs_kf_seq_show+0x128/0x1c0
-> [   75.007433]  kernfs_seq_show+0xa0/0xb8
-> [   75.007800]  seq_read+0x1f0/0x7e8
-> [   75.008128]  kernfs_fop_read+0x70/0x338
-> [   75.008507]  vfs_read+0xe4/0x250
-> [   75.008990]  ksys_read+0xc8/0x180
-> [   75.009462]  __arm64_sys_read+0x44/0x58
-> [   75.010085]  el0_svc_common.constprop.0+0xac/0x228
-> [   75.011006] kmem_cache_destroy test_module_slab: Slab cache still has objects
-> 
-> Register a cpu hotplug function to remove all objects in the offline
-> per-cpu quarantine when cpu is going offline. Set a per-cpu variable
-> to indicate this cpu is offline.
-> 
-> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Reported-by: Guangye Yang <guangye.yang@mediatek.com>
-> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  mm/kasan/quarantine.c | 40 ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 40 insertions(+)
-> 
-> diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
-> index 4c5375810449..cac7c617df72 100644
-> --- a/mm/kasan/quarantine.c
-> +++ b/mm/kasan/quarantine.c
-> @@ -29,6 +29,7 @@
->  #include <linux/srcu.h>
->  #include <linux/string.h>
->  #include <linux/types.h>
-> +#include <linux/cpuhotplug.h>
->  
->  #include "../slab.h"
->  #include "kasan.h"
-> @@ -43,6 +44,7 @@ struct qlist_head {
->  	struct qlist_node *head;
->  	struct qlist_node *tail;
->  	size_t bytes;
-> +	bool offline;
->  };
->  
->  #define QLIST_INIT { NULL, NULL, 0 }
-> @@ -188,6 +190,11 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
->  	local_irq_save(flags);
->  
->  	q = this_cpu_ptr(&cpu_quarantine);
-> +	if (q->offline) {
-> +		qlink_free(&info->quarantine_link, cache);
-> +		local_irq_restore(flags);
-> +		return;
-> +	}
->  	qlist_put(q, &info->quarantine_link, cache->size);
->  	if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
->  		qlist_move_all(q, &temp);
-> @@ -328,3 +335,36 @@ void quarantine_remove_cache(struct kmem_cache *cache)
->  
->  	synchronize_srcu(&remove_cache_srcu);
->  }
-> +
-> +static int kasan_cpu_online(unsigned int cpu)
-> +{
-> +	this_cpu_ptr(&cpu_quarantine)->offline = false;
-> +	return 0;
-> +}
-> +
-> +static int kasan_cpu_offline(unsigned int cpu)
-> +{
-> +	struct qlist_head *q;
-> +
-> +	q = this_cpu_ptr(&cpu_quarantine);
-> +	/* Ensure the ordering between the writing to q->offline and
-> +	 * qlist_free_all. Otherwise, cpu_quarantine may be corrupted
-> +	 * by interrupt.
-> +	 */
-> +	WRITE_ONCE(q->offline, true);
-> +	barrier();
-> +	qlist_free_all(q, NULL);
-> +	return 0;
-> +}
-> +
-> +static int __init kasan_cpu_quarantine_init(void)
-> +{
-> +	int ret = 0;
-> +
-> +	ret = cpuhp_setup_state(CPUHP_AP_ONLINE_DYN, "mm/kasan:online",
-> +				kasan_cpu_online, kasan_cpu_offline);
-> +	if (ret < 0)
-> +		pr_err("kasan cpu quarantine register failed [%d]\n", ret);
-> +	return ret;
-> +}
-> +late_initcall(kasan_cpu_quarantine_init);
+> 543                        pm_runtime_put_noidle(&client->dev);
+> 544                        goto unlock_and_return;
 
+Instead of two above:
+                       goto err_rpm_put;
+
+> 545                }
+> 546
+> 547                ret = __ov02a10_start_stream(ov02a10);
+> 548                if (ret) {
+> 549                        __ov02a10_stop_stream(ov02a10);
+> 550                        ov02a10->streaming = !on;
+> 551                        goto err_rpm_put;
+> 552                }
+> 553        } else {
+> 554                __ov02a10_stop_stream(ov02a10);
+> 555                pm_runtime_put(&client->dev);
+> 556        }
+> 557
+> 558        ov02a10->streaming = on;
+
+(1)
+
+> 559        mutex_unlock(&ov02a10->mutex);
+> 560
+> 561        return 0;
+> 562
+> 563 err_rpm_put:
+> 564        pm_runtime_put(&client->dev);
+
+> 565 unlock_and_return:
+
+Should be moved to (1).
+
+> 566        mutex_unlock(&ov02a10->mutex);
+> 567
+>
+> Uninitialized scalar variable (UNINIT)
+>     4. uninit_use: Using uninitialized value ret.
+>
+> 568        return ret;
+> 569 }
+>
+> Variable ret has not been initialized, so the error return value is a
+> garbage value. It should be initialized with some appropriate negative
+> error code, or ret could be removed and the return should return a
+> literal value of a error code.
+>
+> I was unsure what value is appropriate to fix this, so instead I'm
+> reporting this issue.
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
 _______________________________________________
 Linux-mediatek mailing list
