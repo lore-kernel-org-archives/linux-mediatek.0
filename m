@@ -2,53 +2,57 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B5AEC64E8A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A5F9FC64E8A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:41:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 81D80208FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:30:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81D80208FE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id D4F3420758
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 11:41:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4F3420758
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ucw.cz
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pReBs9u716BpMbjCjakpGjWLZNh6jLNhcyR3y5IwU4o=; b=eLVay96SJSr6XxXXVRKZaVFsX
-	Z69iUfx7AFunWr4BHbA6PUienTrxmrRUaXZV19cQxUi6CnAwAKBGEfslMD8ebzJPuZeG7lv44NOZD
-	zfREKyckRQ4Iz/GnQHLwiaHedXU6FFMEJIswFp0iMk8zPPMH/SWBwhGjE9aSIZWus5MC+T/BwhJLA
-	t5ZBORY1iD4xOPdmpaRdJwqiKH1Y8y0FZHR/JhgCK/LNdh4DUtpUXng9q21xDk0CFELsufl//k9KI
-	ySv9HjiV9LPIp1hRijyWcUtaGqLm65DZFslBN2691ImhIKI7aTeNO2lxrvnJENpmTNI5FGHovqc/v
-	wDInwbL4g==;
+	 bh=XxrehwzRxeAFlvEz8/rEyTDZ3XObL9ND8UDL9+uGysc=; b=1VV73ylJOyOE4KDEL9A/SyQbQ
+	fSlnqGRz52VlPyD4FBdQh/Z7u6y60NhSYCZalKyhL/9GwHRFeyfRwmAQ9XylQaig74JJhENxbMF/8
+	a/z3uEqB9Rmz3rd1g5AePSGVW68m21gXGbM25lqGA8DsdV/gD7GRUYhUna75+2FiKv8vzvGWp/RWC
+	lue/f7jkuc05qsqS5jy6uWCZ3EoOSfonmKgNCkmx3oizIBmAY5HQ1xYPzwtiFARFy9I7XgGI3tk/v
+	VJsmaXn0BcotDKdi4ap5UPX1YH9SfQu4EAOuQ2ys4QckOSNR+v3eOkCzmFx8ZewoumL+owBH5aLO9
+	zv2chN9qg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkmog-0003j8-OJ; Thu, 03 Dec 2020 11:30:30 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kkmyi-0004ZA-PT; Thu, 03 Dec 2020 11:40:52 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkmoe-0003il-Ff
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 11:30:29 +0000
-Date: Thu, 3 Dec 2020 11:30:21 +0000
-From: Catalin Marinas <catalin.marinas@arm.com>
-To: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH v2] proc: use untagged_addr() for pagemap_read addresses
-Message-ID: <20201203113020.GE2224@gaia>
-References: <20201127050738.14440-1-miles.chen@mediatek.com>
+ id 1kkmye-0004Y5-Cs; Thu, 03 Dec 2020 11:40:49 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+ id 65C661C0B9E; Thu,  3 Dec 2020 12:40:44 +0100 (CET)
+Date: Thu, 3 Dec 2020 12:40:44 +0100
+From: Pavel Machek <pavel@ucw.cz>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH v11 3/5] dt-bindings: leds: Add LED_FUNCTION_MOONLIGHT
+ definitions
+Message-ID: <20201203114044.GA9061@duo.ucw.cz>
+References: <1606906011-25633-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1606906011-25633-4-git-send-email-gene.chen.richtek@gmail.com>
+ <20201202122329.GA30929@duo.ucw.cz>
+ <CAE+NS34D8a6Udt7ZZ0=U7oqm5POtihKvD3WjD_sAADamqQ=1AQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201127050738.14440-1-miles.chen@mediatek.com>
+In-Reply-To: <CAE+NS34D8a6Udt7ZZ0=U7oqm5POtihKvD3WjD_sAADamqQ=1AQ@mail.gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_063028_659102_B5DD9BB0 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20201203_064048_600330_EF0C1F9D 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,56 +64,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Song Bao Hua <song.bao.hua@hisilicon.com>, Marco Elver <elver@google.com>,
- wsd_upstream@mediatek.com, Andrey Konovalov <andreyknvl@google.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- "Eric W . Biederman" <ebiederm@xmission.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>, linux-fsdevel@vger.kernel.org,
- Alexander Potapenko <glider@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Vincenzo Frascino <vincenzo.frascino@arm.com>, Will Deacon <will@kernel.org>,
- Alexey Dobriyan <adobriyan@gmail.com>, Dmitry Vyukov <dvyukov@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ devicetree <devicetree@vger.kernel.org>, cy_huang@richtek.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, shufan_lee@richtek.com,
+ Wilma.Wu@mediatek.com, Linux LED Subsystem <linux-leds@vger.kernel.org>,
+ Dan Murphy <dmurphy@ti.com>
+Content-Type: multipart/mixed; boundary="===============8957654524232380029=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 27, 2020 at 01:07:38PM +0800, Miles Chen wrote:
-> Cc: Will Deacon <will.deacon@arm.com>
 
-That should be will@kernel.org.
+--===============8957654524232380029==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="liOOAslEiF7prFVr"
+Content-Disposition: inline
 
-> diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
-> index 217aa2705d5d..92b277388f05 100644
-> --- a/fs/proc/task_mmu.c
-> +++ b/fs/proc/task_mmu.c
-> @@ -1599,11 +1599,15 @@ static ssize_t pagemap_read(struct file *file, char __user *buf,
->  
->  	src = *ppos;
->  	svpfn = src / PM_ENTRY_BYTES;
-> -	start_vaddr = svpfn << PAGE_SHIFT;
->  	end_vaddr = mm->task_size;
->  
->  	/* watch out for wraparound */
-> -	if (svpfn > mm->task_size >> PAGE_SHIFT)
-> +	start_vaddr = end_vaddr;
-> +	if (svpfn < (ULONG_MAX >> PAGE_SHIFT))
 
-Does this need to be strict less-than? I think a less-than or equal
-would work better.
+--liOOAslEiF7prFVr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +		start_vaddr = untagged_addr(svpfn << PAGE_SHIFT);
-> +
-> +	/* Ensure the address is inside the task */
-> +	if (start_vaddr > mm->task_size)
->  		start_vaddr = end_vaddr;
+Hi!
 
-Otherwise the logic looks fine to me. With the above:
+> > > +++ b/include/dt-bindings/leds/common.h
+> > > @@ -78,6 +78,7 @@
+> > >  #define LED_FUNCTION_INDICATOR "indicator"
+> > >  #define LED_FUNCTION_LAN "lan"
+> > >  #define LED_FUNCTION_MAIL "mail"
+> > > +#define LED_FUNCTION_MOONLIGHT "moonlight"
+> >
+> > There's "torch" function that should be used for this. I guess comment
+> > should be added with explanation what exactly that is and how should
+> > the LED be named.
+> >
+>=20
+> According to mail, 11/25 "Re: [PATCH v7 2/5] dt-bindings: leds: Add
+> LED_COLOR_ID_MOONLIGHT definitions",
+> The Moonlight LED is LED which maximum current more than torch, but
+> less than flash. Such as front camera fill light.
+> I think our channel is moonlight, not torch.
+> I will add this description to comment.
+> We can't exactly define moonlight current level, because every vendor
+> has their own specification.
 
-Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
+So... what is the timelimit on moonlight?
+
+But if it is used for camera illumination, I believe it should be
+simply called flash.
+
+Best regards,
+
+								Pavel
+--=20
+http://www.livejournal.com/~pavelmachek
+
+--liOOAslEiF7prFVr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCX8jOvAAKCRAw5/Bqldv6
+8pj3AJ9cRVAbTOCXxcUiV3mbTJXFFTKK3QCgpfgXoggeGNEUdtl5msUvdmWnkSA=
+=gXOZ
+-----END PGP SIGNATURE-----
+
+--liOOAslEiF7prFVr--
+
+
+--===============8957654524232380029==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8957654524232380029==--
+
