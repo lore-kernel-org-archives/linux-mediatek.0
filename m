@@ -2,94 +2,65 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BD389C63777
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 08:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01B32C63777
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 08:51:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3FAA421D1A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 08:41:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FAA421D1A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8F00C2084C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 08:51:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F00C2084C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=boldwhite24.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lPt9A0pLTt85p0PY62l8rqdSgNiT0rtdO47JaGUGtW0=; b=L/FEiSNkBgCf4gd+Xz11HLt000
-	lUzAmGj8wQadEIvHZ6ErD51Ciu3YePGih6f3T/yxN7b/ChjEc7wEvyZ1XB0cKB2fHUkbl4QJlS53I
-	JAmeAQKVAdp6eV0WxadxstDHfYvv0VtldaTlnWaX8UdXl0vtdXpIjE2khI8TlMVYFn4bLVy71Wjgy
-	jlNd0/nQNzcgKgxjvk9EM0yD95i9WPEIZbhKQSjIgsvZFrfPhG6OS/TU9mZcckdlcSz+ooYtIQi4Z
-	nmVKSRWS8xM4xXtcXFVWDS6ry4dIyRiv9j0bKx113ZcQwpTf+Am7aFBI6G94Vpq7kZF8/fmAFHek4
-	I7VmdEiQ==;
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2yZVXUzZ42heE8uLz8g0qaaGc3HDJ+XhJMAKScG/gWk=; b=sMkyTgYz1TdspQQBPyI+KlPHJd
+	o3F0n98JZvySszhNfvpQTEkdQWyPvyARnrq+HUC+5/uV27nW1lJcqM2YHmkdFgBbs/rB1rTKVSmdm
+	JDTAkotvT3DpE34+w29T2yFq1UflHjuwx+FSBFqbyxGWH1QMYr8u0zgs2CkUsCY4FsPrvgMR3h8so
+	BRJQyl3tnDvlFhsm72r69t9Ee1Zt8monWskTEkd9dSgSGUe62IWMydsItesd2Ue1MafQ1+cx0EgEf
+	DyFWAVRO1L0SDYtdwKXQP+vhIz6sn8YR7KmYorqBD6oQ7sLaPgI3ky0gs9q0S1BWOn5Fb53NxBjEi
+	d3vrAm+w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkkBQ-0005fO-Jv; Thu, 03 Dec 2020 08:41:48 +0000
-Received: from aserp2130.oracle.com ([141.146.126.79])
+	id 1kkkKm-0007Oe-Tt; Thu, 03 Dec 2020 08:51:28 +0000
+Received: from mail.boldwhite24.com ([80.211.42.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkkBO-0005eO-9I
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 08:41:47 +0000
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B38Z4bU104343;
- Thu, 3 Dec 2020 08:41:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=ngAHlOlhS8B8dIePlASXJBeaZG67oRhYlHd+DRQgKf4=;
- b=yko66+cI3h1IO+pmwX5XtiIVOhyCjcSE0/ncQ/jru6IoVm7YzMdFOOsKEEIxslu6+R0v
- WYCwg4GWh7Uya+lyPsClanMI8eNROY8pS82ZBrkzQGIPpK892f8i3UvEjN74OwPCenyL
- J7XInKu2Iosd3vSetvcOLC26nNMxYM9XqVurDvg29yCSf+cnTHfuIXqT29edpCeZqhN8
- Rse6n/o0nPTjyZXT+Uq2hGBQPyEiSfYO9so0ZAu0MRUPI6iZWs4APXHW2B4zykxPyqBS
- od6x0gxPbbdE5XmwKl8NDTY1dzWvXBJYML71glJowwIABZLOkxpdyYUIIcmL8nWfKe03 cg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2130.oracle.com with ESMTP id 353c2b4nnk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 03 Dec 2020 08:41:44 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B38eBai194219;
- Thu, 3 Dec 2020 08:41:44 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 3540f1hrrp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 03 Dec 2020 08:41:43 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0B38fh8A023113;
- Thu, 3 Dec 2020 08:41:43 GMT
-Received: from mwanda (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 03 Dec 2020 00:41:42 -0800
-Date: Thu, 3 Dec 2020 11:41:35 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/2] usb: mtu3: mtu3_debug: remove an unused struct member
-Message-ID: <X8ikv1QA3Do50D+R@mwanda>
+ id 1kkkKl-0007NX-9o
+ for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 08:51:28 +0000
+Received: by mail.boldwhite24.com (Postfix, from userid 1001)
+ id EA624A333D; Thu,  3 Dec 2020 08:50:26 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=boldwhite24.com;
+ s=mail; t=1606985452;
+ bh=hS3ibs4caZkahrzgcMN2TAJo2B2H5Muwb2NidDYlIzQ=;
+ h=Date:From:To:Subject:From;
+ b=RrabObv9v2R2f1KdInIFGqxhNiNt8qYF81EVWP4HOowQ7IozACoeKIwHs/MRLCoX5
+ WJDwTTpy1PDmbkN/gTWeAtdBs7DE+Shyd4yF+4DsRsFXnm17gHSvg4kpKnHF84keOF
+ Yq5k8g/Rp677/YveWnuN3XTG8RzIqzyAt0iP8wbLYNAzO7N+R1nzCSNDMx7oKHD6Zk
+ FtObqThj+7uJqq+zAPTKFE3RcHsD1KuUEvfe09i3R2IlDnxc7pvMz6hSTdc80kStdk
+ rzQRohdApLpGk5rXyPOk4JFXVs2jC9KOEZ+WyNObb9lbWL0+OHE2XYkEff1LsAoWz4
+ tNtkG9JqI9ccQ==
+Received: by mail.boldwhite24.com for <linux-mediatek@lists.infradead.org>;
+ Thu,  3 Dec 2020 08:50:11 GMT
+Message-ID: <20201203074501-0.1.2m.anht.0.9bh19vo9o8@boldwhite24.com>
+Date: Thu,  3 Dec 2020 08:50:11 GMT
+From: =?UTF-8?Q?"Diego_S=C3=A1nchez"?= <diego.sanchez@boldwhite24.com>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Disinfection
+X-Mailer: mail.boldwhite24.com
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9823
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- malwarescore=0 phishscore=0
- suspectscore=0 bulkscore=0 spamscore=0 adultscore=0 mlxlogscore=992
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2012030053
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9823
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- lowpriorityscore=0
- clxscore=1015 bulkscore=0 mlxlogscore=999 phishscore=0 malwarescore=0
- spamscore=0 adultscore=0 mlxscore=0 priorityscore=1501 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2012030052
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_034146_510262_3464940B 
-X-CRM114-Status: GOOD (  17.16  )
+X-CRM114-CacheID: sfid-20201203_035127_556128_5D18FF81 
+X-CRM114-Status: UNSURE (   0.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,39 +72,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The "nregs" member is not used.  The code uses the "regset.nregs"
-struct member instead.
-
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/usb/mtu3/mtu3_debug.h | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_debug.h b/drivers/usb/mtu3/mtu3_debug.h
-index 3084c46017c3..9a36134b322d 100644
---- a/drivers/usb/mtu3/mtu3_debug.h
-+++ b/drivers/usb/mtu3/mtu3_debug.h
-@@ -19,7 +19,6 @@ struct ssusb_mtk;
- struct mtu3_regset {
- 	char name[MTU3_DEBUGFS_NAME_LEN];
- 	struct debugfs_regset32 regset;
--	size_t nregs;
- };
- 
- struct mtu3_file_map {
--- 
-2.29.2
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+R29vZCBtb3JuaW5nLAoKbG9va2luZyBmb3IgY29tcGFuaWVzIGludGVyZXN0ZWQgaW4gcmFpc2lu
+ZyBhZGRpdGlvbmFsIGNhcGl0YWwgYnkgZGl2ZXJzaWZ5aW5nIHRoZWlyIG9mZmVyIGluIHNvYXBz
+LCBsaXF1aWRzIGFuZCBnZWxzIGZvciBoYW5kIGRpc2luZmVjdGlvbiBhbmQgY29zbWV0aWNzIGZv
+ciBib2R5IGFuZCBoYWlyIGNhcmUuCgpUaGUgZGlzdHJpYnV0aW9uIG9mIGlubm92YXRpdmUgcHJv
+ZHVjdHMgY29ycmVzcG9uZGluZyB0byB0aGUgY3VycmVudCBwcmVmZXJlbmNlcyBvZiBjdXN0b21l
+cnMgaW4gdGhlIGZpZWxkIG9mIGh5Z2llbmUgYW5kIHByZXZlbnRpdmUgaGVhbHRoY2FyZSBhbGxv
+d3Mgb3VyIHBhcnRuZXJzIHRvIGdhaW4gbmV3IG1hcmtldHMgYW5kIGFjaGlldmUgYmV0dGVyIGVj
+b25vbWljIHJlc3VsdHMuCgpJbiBhZGRpdGlvbiB0byBwcm9kdWN0cyB3aXRoIGJhY3RlcmljaWRh
+bCBhY3Rpb24sIG91ciByYW5nZSBpbmNsdWRlcyBzaG93ZXIgZ2Vscywgc2hhbXBvb3MgYW5kIGhh
+aXIgY29uZGl0aW9uZXJzLCBhcyB3ZWxsIGFzIGVmZmljaWVudCwgY29uY2VudHJhdGVkIGRldGVy
+Z2VudHMuCgpUaGUgdmVyc2F0aWxpdHkgKHN1aXRhYmxlIGZvciBhbGwgc2tpbiB0eXBlcykgY29t
+YmluZWQgd2l0aCBhbiBhZmZvcmRhYmxlIHByaWNlIG1lYW5zIHRoYXQgY3VzdG9tZXJzIG1ha2Ug
+YW4gaW5mb3JtZWQgY2hvaWNlIG9mIGEgcHJvZHVjdCBhbW9uZyBvdGhlcnMgYXZhaWxhYmxlIG9u
+IHRoZSBtYXJrZXQuCgpBcmUgeW91IGludGVyZXN0ZWQgaW4gY29vcGVyYXRpb24/CgpEaWVnbyBT
+w6FuY2hlegoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
+ZWRpYXRlawo=
