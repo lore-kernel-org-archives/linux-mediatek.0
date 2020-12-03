@@ -2,81 +2,86 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AD30C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 16:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B32C8C4361A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 16:34:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0080207A5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 16:03:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0080207A5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 43FD5206EC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 16:34:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43FD5206EC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=v1MN26qbmqcX96q6ZzaEoLIveNe+sboed2gYyED9mtA=; b=2JlVFESu6w1vI1+WcCp3MTDRL
-	9ikMwXqUJy4xBWqL3+qfW28XHw2JMjqw202mdZiVX6Tf8PS/Lk4EeZLOjP9P31hMeZyfjL0lWDBtw
-	aEIXtUdReEgJ8YZL38FqYgMA4J01/0icN+3Iwd8GQJOlXxcV7Sbs1GzYLr5OD8+n7FBoqAiRD3C+S
-	BNV1ctrMRjCzgcMfseqoxZasLJdLpURBm5XK3fYkpTc9GsADIaBKnJZgSuEyVkqQ5HCE37JhTk6B1
-	AVPX3j96iTx/9z622Cj7S4BqBlT929B0ZBCRo6UPs16mcQ1MW5VR+ZDAwcre6I+F/WKan+DzbyBC5
-	Zzrm8R7Eg==;
+	 bh=ZBuU0AbR76cKyjupP01YzULn5Rqv5EJ+qN3jLACGjNg=; b=eaR0LLuC13v6udxFfSUxQoU+z
+	56vuwmvy878NARvugeuf6wB5RBxhr7xzzs5WwztSp9uM3lcagXHaMKBJfTCWocBvNbGdaFEiHipc6
+	l02EgX8XD3HQPQK6Jq7LeK2n1iSSq2zsAgizwFLe78ZlQOSjVmfPGQjGlU2rCVXIAwlbCI04ibitY
+	BGlOsKwfwK9YkTHmVkjFOu7r7otYdsqLdXCUa15D2dfKJWef9QfigZCmbphMFM0uh7tPr29xX3TxZ
+	2klQM0pMASJBNdJX2CvBT6dwFnCBQcXnyCU3Zfg2e0N64GKFhR3PAQ60gqwOxj2Oh2ofNv6rN5eNE
+	Ep1J7SE2g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkr4L-0003kv-CU; Thu, 03 Dec 2020 16:02:57 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1kkrYn-0007Z9-3F; Thu, 03 Dec 2020 16:34:25 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkr4J-0003kD-9N
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 16:02:56 +0000
-Received: by mail-io1-xd41.google.com with SMTP id n14so2545486iom.10
- for <linux-mediatek@lists.infradead.org>; Thu, 03 Dec 2020 08:02:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=U76MgfU/JgD+cwf4B5UzlaXPMYuwYvR1oC7emvGw4G8=;
- b=oiOjxTBbUfVKub7HvYBtz+H2+w6LVL57IVsxKMbQ8y3pY9WdOLNY0nlC/HZQXS8MSp
- X5PB4xWeCRmsU4l7XpLlARJuvr7yJRoDUg6ALpKP0VPddpFsvqsMwr4GOs9F4G359vBH
- B1KlD0zpJCI2tJl4nZ/q9WWRKtydLXnQQV5E7Afz5WvyoSIYSeTa1USd2ZxQgco2M1BW
- 1RilXAHNwiOSza7z6K38ZScjfBzbOJIsPMJF/wesM8PghfOB4w1YK/o06gEAMP0IRp9l
- 9B6hJfITG/ym87NwXH4SH+xSchQE9cM0y10W8iUxb/QtaURdkyV7NQkfhker7MWHvewB
- 3WvQ==
+ id 1kkrYi-0007X2-2T
+ for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 16:34:21 +0000
+Received: by mail-pf1-x444.google.com with SMTP id b26so1646725pfi.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 03 Dec 2020 08:34:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=5GGsUtx8kHaJos54ZjmeEjtitiEQD73mc4B0/G5JBTs=;
+ b=Xk2JDXafI8RssLwd0OIM6fQ/apU2/sUaKYG+5ilkeqfhocCwh7w6hUUy0s+/u5/p9q
+ 3d07hVS5akYFA4wMO8kasD2sjLSnrGCXpfuBHse7Qtmq5E4N+xnLz1uMhzG0tar4t+eq
+ xgmQDQefe4btupIMMs97Zq3vvnDL2gMVVi7jN6AoyD5GvUAJg+R2eEyIxfmN8iCxL2Px
+ OrkNiy0AMmbflovC5Q6mFysrpCUyGyWSPTacbWY6LUWopmeW8PFiLzTthgRV3KQimHJt
+ PSWBzDxQcmajcirSzzutFYEn0ndXdapvPucoH0WwOvuGi7gpR/NBqan0/8n+0FFWkxdx
+ mweQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=U76MgfU/JgD+cwf4B5UzlaXPMYuwYvR1oC7emvGw4G8=;
- b=oNmYhU2kSCKG+sIeYnCQZbIOev3iadtAU97kzAnT0Em86MKObLu6hXv1Ba9qCqWrne
- V0xLEsLXaMa+Q1xu3Jw2NBUJNhL+qI96N932HE252F+L9Ma4Rn95Dt7YsztfQ6NwN2Cy
- L/ftgK+6jmpgL16JQVcQ2j5EaALIZO4krX7FEU9+hO+yxaHRrS06dyihdvMrOB4AYBwJ
- UkaKwSqWsjqElpi8KwDJ7nlK3cuR0zC7bcLgz7XwzkEKSdu4rDs3L3Tl5mhY99E4erf7
- wnc5RNruxQfK2qvqO4PPGcfX4BpD5Sxr+nVzSQ9VlP07GtEBtI14J2FROC/406/eW/hx
- QsWw==
-X-Gm-Message-State: AOAM530u9cNcvG74vLEs7rlhEjP/StHQ4zUp/6nQ6630euIcUf/HAC15
- lNGQEnuR0K1XdYAGhzonHEt/Rl9oXkuhmKvomciMAA==
-X-Google-Smtp-Source: ABdhPJxpiyo6lopYPhHWKXqqaUYjP85h1wZcdL5pGiR3z16pqaZljMXQRJDa9XEyQn3tfojsyydoTsREaslMDr2OBbs=
-X-Received: by 2002:a6b:d006:: with SMTP id x6mr3631085ioa.53.1607011371369;
- Thu, 03 Dec 2020 08:02:51 -0800 (PST)
-MIME-Version: 1.0
-References: <20201203030436.3583198-1-tzungbi@google.com>
- <20201203153338.GA1386676@xps15>
-In-Reply-To: <20201203153338.GA1386676@xps15>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Fri, 4 Dec 2020 00:02:40 +0800
-Message-ID: <CA+Px+wXmunYDT4LkPu8Kckc78brAZmxwmEWzoraf3yFp2M3nsA@mail.gmail.com>
-Subject: Re: [PATCH v2] remoteproc/mediatek: unprepare clk if scp_before_load
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=5GGsUtx8kHaJos54ZjmeEjtitiEQD73mc4B0/G5JBTs=;
+ b=uHHbEdhFTLUGjcAi0bCMnqoppy3TYoCCo50H3AQy+i4oaLiSA37GvF0kekQP9/YUFB
+ Kh4uWrhwPl8+p2GqAy//lHSyPxhSsxccN/i50HQ1OBGzt2eAQjEi5ALbCkrAXQPfausx
+ tTQBfEHcOLl23wqqAt6ahITm/tN715284YIwIuOttPVmiBlTtb446yVubT3g2CaoYqlp
+ GVcAx0fhckvFxdfBDbyjrwik75/aioUT/Jq6i2rOgP4GxSpgSBRJs7+D9guC7Abj6IXp
+ 1AlHMGQVLU7zWJiKMKzTvl+XrSRHcTqO3q3M76F0W1xFvfX+OB+ainCKxpTrg2XgACle
+ 2Skg==
+X-Gm-Message-State: AOAM533hMLgw4j2KvZPiuL2DrRCVHsIWqhxKJZ9Py8oG2vsnMabF3Nt/
+ Oqv4Ijl+sFscggYi6vXTf8HhwQ==
+X-Google-Smtp-Source: ABdhPJw09oMrlxwfaCkfjUuibwFibHjd/OnkQyeG4nTh9nQBNuMxGiiaZLZW2eehd9qVBSkwFu4dyA==
+X-Received: by 2002:a62:88c3:0:b029:18c:3203:efb7 with SMTP id
+ l186-20020a6288c30000b029018c3203efb7mr3972241pfd.33.1607013257460; 
+ Thu, 03 Dec 2020 08:34:17 -0800 (PST)
+Received: from xps15 (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id g16sm2222234pfb.201.2020.12.03.08.34.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Dec 2020 08:34:16 -0800 (PST)
+Date: Thu, 3 Dec 2020 09:34:15 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tzung-Bi Shih <tzungbi@google.com>
+Subject: Re: [PATCH v3] remoteproc/mediatek: unprepare clk if scp_before_load
  fails
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
+Message-ID: <20201203163415.GA1389853@xps15>
+References: <20201203155914.3844426-1-tzungbi@google.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201203155914.3844426-1-tzungbi@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_110255_405806_85911B55 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201203_113420_161967_6133A7BB 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,32 +93,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>,
- "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
- <linux-remoteproc@vger.kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: ohad@wizery.com, linux-remoteproc@vger.kernel.org,
+ bjorn.andersson@linaro.org, linux-mediatek@lists.infradead.org,
+ pihsun@chromium.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 3, 2020 at 11:33 PM Mathieu Poirier
-<mathieu.poirier@linaro.org> wrote:
->
-> On Thu, Dec 03, 2020 at 11:04:36AM +0800, Tzung-Bi Shih wrote:
-> > Fixes the error handling to unprepare clk if scp_before_load fails.
-> >
-> > Fixes: fd0b6c1ff85a4 ("remoteproc/mediatek: Add support for mt8192 SCP")
->
-> https://elixir.bootlin.com/linux/v5.10-rc6/source/Documentation/process/submitting-patches.rst#L122
+On Thu, Dec 03, 2020 at 11:59:14PM +0800, Tzung-Bi Shih wrote:
+> Fixes the error handling to unprepare clk if scp_before_load fails.
+> 
+> Fixes: fd0b6c1ff85a ("remoteproc/mediatek: Add support for mt8192 SCP")
+> Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
 
-Fixed in v3[1], not sure what happened when copying the hash.
+Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 
-[1]: https://patchwork.kernel.org/project/linux-remoteproc/patch/20201203155914.3844426-1-tzungbi@google.com/
+> ---
+> Changes from v2[2]:
+> - fix the "Fixes" tag format
+> 
+> Changes from v1[1]:
+> - add "Fixes" tag
+> - remove an unneeded change
+> 
+> [1]: https://patchwork.kernel.org/project/linux-remoteproc/patch/20201202044537.2500497-1-tzungbi@google.com/
+> [2]: https://patchwork.kernel.org/project/linux-remoteproc/patch/20201203030436.3583198-1-tzungbi@google.com/
+> 
+>  drivers/remoteproc/mtk_scp.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 5f42b9ce7185..5e5705fe35a8 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -350,9 +350,10 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+>  
+>  	ret = scp->data->scp_before_load(scp);
+>  	if (ret < 0)
+> -		return ret;
+> +		goto leave;
+>  
+>  	ret = scp_elf_load_segments(rproc, fw);
+> +leave:
+>  	clk_disable_unprepare(scp->clk);
+>  
+>  	return ret;
+> -- 
+> 2.29.2.454.gaff20da3a2-goog
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
