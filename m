@@ -2,78 +2,73 @@ Return-Path: <SRS0=jUzJ=FH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DD2D0C64E7B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 07:01:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A56E8C64E7B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 07:25:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 428CE2086A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 07:01:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 428CE2086A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 307DE20BED
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Dec 2020 07:25:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 307DE20BED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lUYnrFzrwNYxNo3Na6hoMLYsVXSB5kb+Ke5N1JJslZc=; b=faYf3gSRsonlDthAXn9milOOe
-	SW57Tu+KLiz9CDgZSftEunG37Hwn9TwUkEXAkOarZcNpHjd6iBMMN0tUL8hbH0YIo4P/oNAl+PLEG
-	zSpaRPzz/B6/CbEfv+xBDVdRr+ML38S6ixgbYVX+MNsWHHSPYBBjU8+e6BzaI41xU+FOO4nxQT9OP
-	UQPCvVbXvYdZE5E8YY2ZAIfrVzUX+wEYTK+7y7zs5uX0bDHmeggW94kL0nJdnrX9VDdG0Tl2xzyTW
-	vVqAV5iXf0WUccpEBn9S8w+T2gGaYzCmmrbbBJTIF4THJORcN8WwPSS7QWGhJGbq27xmruTFHnsYr
-	STdnIzBnw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=p7WvihTK7nCLMikeIpsF+2gYnQrGX33mbuU9V1RBD/g=; b=aAdqnKbtrLhGj+LpeoXrJw8JjJ
+	xqZltfdpyxdqTic2TZt9EaEZ/viatCxRVEc2L86dFf7MeLF2983b3jCw2+UF8D6aIpRI0CYhf2lhF
+	Q+pWro3Fl4lu0sUZh5Lt4Nl/G6HC3XOeQW9/H63HuOrGbz6TT/XzXraCRoIDn9IvO5TnSDNR/D8Ed
+	woIsUD2p8AanUeGRXNHmBzHTkgqCNxh/DCiXoO2qE1yL1b3qDycFpdz8oJJ7qRqJ2FbOB7Up8dfvF
+	12oZ3ebgNOT9jVlYk/0J3YenqTxkihigD+Em8wVXSbKbJ8HdcZdhmpGXLfRI7AHYRgHUIQ1M5ekQ1
+	y5809FUA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkicl-0002AP-CJ; Thu, 03 Dec 2020 07:01:55 +0000
-Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41])
+	id 1kkizA-0003c0-Lt; Thu, 03 Dec 2020 07:25:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkicg-00028q-SE
- for linux-mediatek@lists.infradead.org; Thu, 03 Dec 2020 07:01:52 +0000
-Received: by mail-qv1-xf41.google.com with SMTP id g19so498768qvy.2
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Dec 2020 23:01:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pWQ9GYyKSHe1JGWbs3Y1m+BNCxpwEs1X4TY/MrUFeCQ=;
- b=AEJpqtMIVwb3X42BIB1/HJea4LLwUtS4HnA8BXFrGROZJqrBKSVEr1cu5IISBqSkrl
- P98xhyU/PWqUV10Y5FY1mzeyyJdt6dobJE2ldbkGkLNV+QXqPM0jBM9w92+NcNT515uJ
- teDyKYcrYvdP3I/iODLw/3Uu+lQrvOmKH0tMfac7aGhcyZzlWzPfWWhayrRW+XZMxdUO
- 06kjm5KwxhHT3smLiB7izlolZjYqnhnGxX1tX0KOrnggY5TOSAj/fb6aXkuBkNS1fLok
- UETNSmvzdRygD1N+AwMvCPLwrz1/VvP/8YHeOCdUaeErlYgDkDl1IJxN3Arh6yPWj6F2
- XRRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pWQ9GYyKSHe1JGWbs3Y1m+BNCxpwEs1X4TY/MrUFeCQ=;
- b=AO9vygU3jKliIHtAMuYlPmbaxbOwEWJlhbXAB8yw6HlrSUPeLFKwegSO5jybKlJK4o
- YcL7X89QhJjlHmRVSYQp9SIQ0rmDKQumgpf4QlFLoEQbiy0q6aGOpjA5pgnxnMbCR4iU
- Gnh5QxvR9YdAT/x9VRwdUyB553KoPiW7HxVOuu4lDAl1B5l8mvRzYVK3dBI9PhsQTq4Z
- LR3WhfoX2MzDzzsupsUFzAYkMAsRkM2249Opm1OAU8Os/5jFDerBOkgHgv8hFdohWV1x
- JGIBt9L4h3GBD3yrBMqR7EfeUgiXqBQJ1JpNbN2fEBWsAhGoRxd7Jhgg3cE7BkQY8kM3
- /zQg==
-X-Gm-Message-State: AOAM530oE3aSeZUY8pAxg4lUEOTsy/RtttcE92P9jL0EOQ8cgpEB7A+G
- AGgUUo6GQbvZ5KpYdDAkEWMWJ8Hf+EIvPb0QYAfNow==
-X-Google-Smtp-Source: ABdhPJz2rjhZqdGJa/6Mjj6mEetaVwe2kA0PLG5+48mAyehB6IZhfKIsje0X6UAhmPuKT58JOTMrZ+YDq5tQhz8LcqI=
-X-Received: by 2002:ad4:5bad:: with SMTP id 13mr1695026qvq.23.1606978906682;
- Wed, 02 Dec 2020 23:01:46 -0800 (PST)
+ id 1kkiz5-0003aZ-4A; Thu, 03 Dec 2020 07:25:01 +0000
+X-UUID: 0219bfdc499b47d686af6cdd1966ec7c-20201202
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=jz0kwiMlBZrqVVsLZvtCmQOTov/DN2uxus8GQ6EyM2U=; 
+ b=ZofuVxI+RPlgSNrhla/t1OgO+6gifGCEbLqHDuiOQiY+qh7JxyyPPrOP8/61yzT3DIdyiE+NzYXDsDKhbjqCJD4GA1rrZvbXmtwUNVHfXjQLh2nayyZFX8g1MrL5Tb8p+OJATi9dHJyzgIuLKbw1o2JIZvabq3UIvEzwRnGq2fM=;
+X-UUID: 0219bfdc499b47d686af6cdd1966ec7c-20201202
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1855707130; Wed, 02 Dec 2020 23:24:41 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Dec 2020 23:24:52 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Dec 2020 15:24:44 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 3 Dec 2020 15:24:45 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+Subject: [PATCH v2 0/3] Refine error history and introduce event_notify vop
+Date: Thu, 3 Dec 2020 15:24:40 +0800
+Message-ID: <20201203072443.6663-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20201203022148.29754-1-walter-zh.wu@mediatek.com>
-In-Reply-To: <20201203022148.29754-1-walter-zh.wu@mediatek.com>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Thu, 3 Dec 2020 08:01:35 +0100
-Message-ID: <CACT4Y+aQ19fUhDZMeLQeVzdECQhje6CpnH4SVmMQtS_cTPq0zg@mail.gmail.com>
-Subject: Re: [PATCH v5 0/4] kasan: add workqueue stack for generic KASAN
-To: Walter Wu <walter-zh.wu@mediatek.com>
+X-TM-SNTS-SMTP: C4D933F04B8EEE2591AD9993567FE9F7560B576AB4461CA834E1FE9700733EDB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_020150_949849_B329B38A 
-X-CRM114-Status: GOOD (  18.88  )
+X-CRM114-CacheID: sfid-20201203_022459_431285_A0D6FF0E 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,79 +80,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Marco Elver <elver@google.com>, wsd_upstream <wsd_upstream@mediatek.com>,
- Linux-MM <linux-mm@kvack.org>, Andrey Konovalov <andreyknvl@google.com>,
- Lai Jiangshan <jiangshanlai@gmail.com>, LKML <linux-kernel@vger.kernel.org>,
- kasan-dev <kasan-dev@googlegroups.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Alexander Potapenko <glider@google.com>, Tejun Heo <tj@kernel.org>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Stanley Chu <stanley.chu@mediatek.com>, alice.chao@mediatek.com,
+ bvanassche@acm.org, huadian.liu@mediatek.com, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 3, 2020 at 3:21 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> Syzbot reports many UAF issues for workqueue, see [1].
-> In some of these access/allocation happened in process_one_work(),
-> we see the free stack is useless in KASAN report, it doesn't help
-> programmers to solve UAF for workqueue issue.
->
-> This patchset improves KASAN reports by making them to have workqueue
-> queueing stack. It is useful for programmers to solve use-after-free
-> or double-free memory issue.
->
-> Generic KASAN also records the last two workqueue stacks and prints
-> them in KASAN report. It is only suitable for generic KASAN.
->
-> [1]https://groups.google.com/g/syzkaller-bugs/search?q=%22use-after-free%22+process_one_work
-> [2]https://bugzilla.kernel.org/show_bug.cgi?id=198437
->
-> Walter Wu (4):
-> workqueue: kasan: record workqueue stack
-> kasan: print workqueue stack
-> lib/test_kasan.c: add workqueue test case
-> kasan: update documentation for generic kasan
->
-> ---
-> Changes since v4:
-> - Not found timer use case, so that remove timer patch
-> - remove a mention of call_rcu() from the kasan_record_aux_stack()
->   Thanks for Dmitry and Alexander suggestion.
->
-> Changes since v3:
-> - testcases have merge conflict, so that need to
->   be rebased onto the KASAN-KUNIT.
->
-> Changes since v2:
-> - modify kasan document to be readable,
->   Thanks for Marco suggestion.
->
-> Changes since v1:
-> - Thanks for Marco and Thomas suggestion.
-> - Remove unnecessary code and fix commit log
-> - reuse kasan_record_aux_stack() and aux_stack
->   to record timer and workqueue stack.
-> - change the aux stack title for common name.
->
-> ---
-> Documentation/dev-tools/kasan.rst |  5 +++--
-> kernel/workqueue.c                |  3 +++
-> lib/test_kasan_module.c           | 29 +++++++++++++++++++++++++++++
-> mm/kasan/generic.c                |  4 +---
-> mm/kasan/report.c                 |  4 ++--
-> 5 files changed, 38 insertions(+), 7 deletions(-)
+Hi,
+This series refines error history functions and introduce a new event_notify vop to allow vendor to get notification of important events.
 
+Change since v1:
+  - Change notify_event() to event_notify() to follow vop naming covention.
 
-Hi Walter,
+Stanley Chu (3):
+  scsi: ufs: Add error history for abort event in UFS Device W-LUN
+  scsi: ufs: Refine error history functions
+  scsi: ufs: Introduce event_notify variant function
 
-Thanks for the update.
-The series still looks good to me. I see patches already have my
-Reviewed-by, so I will not resend them.
+ drivers/scsi/ufs/ufshcd.c | 122 ++++++++++++++++++++++----------------
+ drivers/scsi/ufs/ufshcd.h |  82 ++++++++++++-------------
+ 2 files changed, 112 insertions(+), 92 deletions(-)
 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
