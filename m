@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 19988C4361A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 20:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B6691C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 21:24:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5041B22CB1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 20:44:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5041B22CB1
+	by mail.kernel.org (Postfix) with ESMTPS id 1602922A85
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 21:24:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1602922A85
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AQJLHfSPjDvnej9qrlcjd3JmGBhq+PVURendYkU5fgw=; b=Q4RhTEy7s3Ku0BufeBS5ilU7G
-	QCbAFbb6jTsEo/ZuTPUSn7/UTWFOKjIbzNQ3MS2UINTDfJuwwW/TZwTHWuIo8SUvvk3z/auW1aUcy
-	F8pjPTNg9fqgL2pMaWgvZlcbsuVUhgIyNv0gfrYhCD4Eujzoq3n3809Cl7843ArjXrUhK/VPHe9hO
-	6NfjtM0okRdA00/5CRU8WL4iXQGIzggayvxwXj5DkYtOHoKn2lfmsIFKr66rhQ+jIUJB6ogwbb2g6
-	BoLMKcqnXocDi4TUKckKNC0lzLgwfXoShtYryv+oJuxEsdCvn1dcfG9v7aVvMRN0JQra3giSx2kvx
-	bhGW+c3Ug==;
+	 bh=yxD3xJQNYsU0dLBBfiBByTwqSqEBXldzQeg9GhiI9dE=; b=IJJEPWl4gnKzHu9dbqAsurWRP
+	YAVyZoVqyEFZIUThdljZo3e1yPeOMtHEf5UmXSforKDvvoHn6CJhRQB3TITezKmTmo7bNVp/upmHC
+	Dp2Yu+4MAtsx3ZUrASVdfOem9BcAcWrbp8P1iD0tiSIJwyFKLfla5H1qepMz8fXM2X+VZkY0kyjpR
+	GyJzadQZm68XIsIyr6HGcgwTSy0LKSIFDf3NEJf7CzJo2deOMkAyU2CuoJNmhtt+O8PU79Jz+Xs2y
+	kCvOv7BinniyDjBCtB2AKi29O3ij5EqwHazP5xCo8SCh+EuYSKgd31jK+sSPbEsO9Dgd/SHUBJuPI
+	3ekx2Tutw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1klHw9-0005LF-QH; Fri, 04 Dec 2020 20:44:17 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1klIYz-0007AM-Ue; Fri, 04 Dec 2020 21:24:25 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1klHw7-0005Km-2z
- for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 20:44:16 +0000
-IronPort-SDR: kkbbU2o2WVm6h1kI451Ij8kOQMqw/6zi0ZtjXweMI+/VRCd3DmxGNVdU2v2xdO7g6pRO0wCraH
- 50VAPsSCTVsw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9825"; a="153262090"
+ id 1klIYw-0007A8-7W
+ for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 21:24:23 +0000
+IronPort-SDR: xzc2OikBVRmq7E/bowydtWuMRGr3s1D4B/WrldjBG/H4GTYtEY567LhqbMYymzd9PFDda2hniT
+ TEAtC4U4cYFQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9825"; a="152698588"
 X-IronPort-AV: E=Sophos;i="5.78,393,1599548400"; 
- d="gz'50?scan'50,208,50";a="153262090"
+ d="gz'50?scan'50,208,50";a="152698588"
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2020 12:44:10 -0800
-IronPort-SDR: ofci8N5PXDP+/7KLN/9L/wCqC2dQTKFJQN1SMbd/nUPp5M0K8UMWceDPdqkvYyPrFzjPjjLjko
- lDZ+J2pBzcZQ==
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2020 13:24:19 -0800
+IronPort-SDR: 7e3scG9YovJ8pWlERf/cCJpbhK+JILKfs3g5ozpEoiIHD2/G9QEckFymDX4z7RTEaJZofzB0/q
+ R4+db4lrWXUQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.78,393,1599548400"; 
- d="gz'50?scan'50,208,50";a="374026338"
+ d="gz'50?scan'50,208,50";a="366444066"
 Received: from lkp-server02.sh.intel.com (HELO f74a175f0d75) ([10.239.97.151])
- by orsmga007.jf.intel.com with ESMTP; 04 Dec 2020 12:44:07 -0800
+ by fmsmga004.fm.intel.com with ESMTP; 04 Dec 2020 13:24:16 -0800
 Received: from kbuild by f74a175f0d75 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1klHvy-0000QO-DT; Fri, 04 Dec 2020 20:44:06 +0000
-Date: Sat, 5 Dec 2020 04:43:48 +0800
+ id 1klIYp-0000TF-RK; Fri, 04 Dec 2020 21:24:15 +0000
+Date: Sat, 5 Dec 2020 05:23:36 +0800
 From: kernel test robot <lkp@intel.com>
 To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
  Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Subject: Re: [PATCH 1/2] mt76: mt7915: add vif check in
- mt7915_update_vif_beacon()
-Message-ID: <202012050432.VG7FNbxI-lkp@intel.com>
-References: <6f63bc0fbba35c3005a9d6999104f41174466cb6.1607104742.git.ryder.lee@mediatek.com>
+Subject: Re: [PATCH 2/2] mt76: mt7615: add vif check in
+ mt7615_update_vif_beacon()
+Message-ID: <202012050502.QYMCfOm1-lkp@intel.com>
+References: <87747c34f3dd0f91a5fb68d1a40dd4adc6591092.1607104742.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="IS0zKkzwUGydFO0o"
+Content-Type: multipart/mixed; boundary="qMm9M+Fa2AknHoGS"
 Content-Disposition: inline
-In-Reply-To: <6f63bc0fbba35c3005a9d6999104f41174466cb6.1607104742.git.ryder.lee@mediatek.com>
+In-Reply-To: <87747c34f3dd0f91a5fb68d1a40dd4adc6591092.1607104742.git.ryder.lee@mediatek.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -88,7 +88,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---IS0zKkzwUGydFO0o
+--qMm9M+Fa2AknHoGS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -107,10 +107,10 @@ base:   https://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-n
 config: x86_64-allyesconfig (attached as .config)
 compiler: gcc-9 (Debian 9.3.0-15) 9.3.0
 reproduce (this is a W=1 build):
-        # https://github.com/0day-ci/linux/commit/71ca3f941764d03d97fe0d568c2b26f441410842
+        # https://github.com/0day-ci/linux/commit/70a2e5dfc5fb443d0827fefd13ce0cb8a3785cf6
         git remote add linux-review https://github.com/0day-ci/linux
         git fetch --no-tags linux-review Ryder-Lee/mt76-mt7915-add-vif-check-in-mt7915_update_vif_beacon/20201205-024232
-        git checkout 71ca3f941764d03d97fe0d568c2b26f441410842
+        git checkout 70a2e5dfc5fb443d0827fefd13ce0cb8a3785cf6
         # save the attached .config to linux build tree
         make W=1 ARCH=x86_64 
 
@@ -119,50 +119,52 @@ Reported-by: kernel test robot <lkp@intel.com>
 
 All warnings (new ones prefixed by >>):
 
-   drivers/net/wireless/mediatek/mt76/mt7915/mac.c: In function 'mt7915_update_vif_beacon':
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_UNSPECIFIED' not handled in switch [-Wswitch]
-    1146 |  switch (vif->type) {
+   drivers/net/wireless/mediatek/mt76/mt7615/mac.c: In function 'mt7615_update_vif_beacon':
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_UNSPECIFIED' not handled in switch [-Wswitch]
+    2059 |  switch (vif->type) {
          |  ^~~~~~
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_STATION' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_AP_VLAN' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_WDS' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_MONITOR' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_P2P_CLIENT' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_P2P_GO' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_P2P_DEVICE' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_OCB' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_NAN' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NUM_NL80211_IFTYPES' not handled in switch [-Wswitch]
->> drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1146:2: warning: enumeration value 'NL80211_IFTYPE_MAX' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_STATION' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_AP_VLAN' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_WDS' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_MONITOR' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_P2P_CLIENT' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_P2P_GO' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_P2P_DEVICE' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_OCB' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_NAN' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NUM_NL80211_IFTYPES' not handled in switch [-Wswitch]
+>> drivers/net/wireless/mediatek/mt76/mt7615/mac.c:2059:2: warning: enumeration value 'NL80211_IFTYPE_MAX' not handled in switch [-Wswitch]
 
-vim +/NL80211_IFTYPE_UNSPECIFIED +1146 drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+vim +/NL80211_IFTYPE_UNSPECIFIED +2059 drivers/net/wireless/mediatek/mt76/mt7615/mac.c
 
-  1140	
-  1141	static void
-  1142	mt7915_update_vif_beacon(void *priv, u8 *mac, struct ieee80211_vif *vif)
-  1143	{
-  1144		struct ieee80211_hw *hw = priv;
-  1145	
-> 1146		switch (vif->type) {
-  1147		case NL80211_IFTYPE_MESH_POINT:
-  1148		case NL80211_IFTYPE_ADHOC:
-  1149		case NL80211_IFTYPE_AP:
-  1150			mt7915_mcu_add_beacon(hw, vif, vif->bss_conf.enable_beacon);
-  1151			break;
-  1152		}
-  1153	}
-  1154	
+  2052	
+  2053	static void
+  2054	mt7615_update_vif_beacon(void *priv, u8 *mac, struct ieee80211_vif *vif)
+  2055	{
+  2056		struct ieee80211_hw *hw = priv;
+  2057		struct mt7615_dev *dev = mt7615_hw_dev(hw);
+  2058	
+> 2059		switch (vif->type) {
+  2060		case NL80211_IFTYPE_MESH_POINT:
+  2061		case NL80211_IFTYPE_ADHOC:
+  2062		case NL80211_IFTYPE_AP:
+  2063			mt7615_mcu_add_beacon(dev, hw, vif,
+  2064					      vif->bss_conf.enable_beacon);
+  2065			break;
+  2066		}
+  2067	}
+  2068	
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---IS0zKkzwUGydFO0o
+--qMm9M+Fa2AknHoGS
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICDiTyl8AAy5jb25maWcAlDzJdty2svt8RR9nkyySK8my4px3tABJsBtukqABsAdtcBS5
+H4sICI2fyl8AAy5jb25maWcAlDzJdty2svt8RR9nkyySK8my4px3tABJsBtukqABsAdtcBS5
 7eg8W/LVcK/9968K4FAA0YqfF4lYVZgLNaN//unnBXt+uv9y/XR7c/358/fFp8Pd4eH66fBh
 8fH28+F/FoVcNNIseCHM70Bc3d49f/vXt7cX9uJ88eb305PfT357uDldrA8Pd4fPi/z+7uPt
 p2fo4Pb+7qeff8plU4qlzXO74UoL2VjDd+by1aebm9/+XPxSHP66vb5b/Pn7a+jm9M2v/q9X
@@ -1595,7 +1597,7 @@ NRRk6N2W4Xedn2bZOyImOiQBojCNpOQ3fF5Jb567eQnkBZmcAEktIdMQwrLQDiEddkK/8OOt
 cZUVkYAGbqnNxI2zMID+c+a5o9WbwSNsQbvC4G1E4giFOPOgu0wKFe3EtuR+/OFbsf27hZm0
 70TVn+T49uyy7bi75e8F9e1BligMjdxGRajFKBbj/wfB7qs3U/kEAA==
 
---IS0zKkzwUGydFO0o
+--qMm9M+Fa2AknHoGS
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1606,5 +1608,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---IS0zKkzwUGydFO0o--
+--qMm9M+Fa2AknHoGS--
 
