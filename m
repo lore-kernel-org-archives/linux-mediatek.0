@@ -2,52 +2,59 @@ Return-Path: <SRS0=yJvo=FI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE284C4361A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 18:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4280C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 18:31:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 591DD22AAF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 18:04:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 591DD22AAF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=crapouillou.net
+	by mail.kernel.org (Postfix) with ESMTPS id 22B9022C9C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 18:31:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22B9022C9C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:To:
-	Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IwtmDfG3KCTIzEB7zIVLqOlHbvTX7GLTBoe3kWj+kz8=; b=cy3dhzGcjzSdCE029YRA1j+0H
-	LTPLcCxEqygVFqBn8fOeuApP26YhyceIRSZeS9gzJkoGsB2yVSAynUTn1Djlzp6fsF6ZDn+VgJi3o
-	NyYN+kplQCHbKzJgjjZ/3Q6l7zDu0LdbW1zthfIuFS3JnSfY5y6wZbRyrJN38pyCc4nUAsK2C/UIZ
-	Fqx5E5qTg8zNlEMpP0eGKzP9XrzX0lo+mEAvfIER6xUdENQOjQlBtfeLO5i/AJsjM0JCP60TcmSQ8
-	IuTw/YIzZTigFueYMCk6fbD2q13TPHWiD+VixDTFvRCJA4y8hL47MSXX3dq1RrvUIEye7CIWl+aY4
-	VUyPenofQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=tUDYCGxVODiPjJYkSKtpy2onDtuVtlqn1smcEvyMn7o=; b=ae50gBpXDOeggyv71lNVMLNtY
+	yQn9KDR0bPKsSV4YoDnX9pm/6++WMIIJ6ooIFOiH6OlmRSw/b09kbu3CmZJK4I77jWzvRQBsF31tc
+	B4wF9g+KMoHRTFpoSv3JoQ3cspF5ZPydjqoxRzxVqn8bCSR1RechI4VatCSkrLj3QQWAsa+p5rb/K
+	cUsJTyHUIUhpIY+47YFeU5VQzAlKGpSt4S88xyNoOi5OLybrbAmoGoyMbgktBhjxdEwsmdYvX9nul
+	5hBON3zOxteqWgwpw4IpfNiwa3U4qBuoYlF5MXYmh1d37fpVvGsPAMb2XvdZx1YLQ/czT7SI1gZf+
+	en+e1XvdA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1klFRk-0007Sw-Hg; Fri, 04 Dec 2020 18:04:44 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1klFrB-00027m-6i; Fri, 04 Dec 2020 18:31:01 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1klFRf-0007Re-Ux; Fri, 04 Dec 2020 18:04:41 +0000
-Date: Fri, 04 Dec 2020 18:04:19 +0000
-From: Paul Cercueil <paul@crapouillou.net>
-Subject: Re: [PATCH] mmc: mediatek: mark PM functions as __maybe_unused
-To: Arnd Bergmann <arnd@kernel.org>
-Message-Id: <77UTKQ.VC4AUEXP1CN21@crapouillou.net>
-In-Reply-To: <CAK8P3a3srmTdY69j+g-wazMkrTL8_Grsw=vCMyizyA_7oOC4tg@mail.gmail.com>
-References: <20201203222922.1067522-1-arnd@kernel.org>
- <CAPDyKFqtFYqc8i_fVzOUnuZGJjtwjVLqE-vebtOKuYJ-4PrDBg@mail.gmail.com>
- <CAK8P3a3srmTdY69j+g-wazMkrTL8_Grsw=vCMyizyA_7oOC4tg@mail.gmail.com>
+ id 1klFr6-00026O-7K; Fri, 04 Dec 2020 18:30:57 +0000
+Date: Fri, 4 Dec 2020 12:30:52 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1607106654;
+ bh=UuBKfwwZyUYGDB525W18eDn2DMd2HDAugInym/c7VaM=;
+ h=From:To:Cc:Subject:In-Reply-To:From;
+ b=Twu6FxDsJ5sCFN8s0XlBosvO/6JeQbTYT9GiwnRLvHDJk+jFwg5dNGkKL/YufwpGv
+ bfepItJE0XqAzgjFIg5nfo3ef0738wVtieqtdXl3XBJZWiK6OzdcWFfWEMMMZ5XEru
+ QDDpTt9DZkl6OtkuSkI02r9T1yy8W0sjP+8MNqjhE9WtJ2Qiuysa5K5voDElSjrty2
+ N0wzk3s19JMT3zicYFGAIKBY8Xl1r4195GNMi/VaK2bTT2RVZtf2I7s2041zdNAP0m
+ +dPOtkha9DsZ1Tc9B6KBy0JMOIu942sYepSdDuWaAUeFgRnRaO9FrOqd0r+m8t2La1
+ eZikW3+XEPLpw==
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Lukas Wunner <lukas@wunner.de>
+Subject: Re: [v4,2/3] PCI: mediatek: Add new generation controller support
+Message-ID: <20201204183052.GA1929838@bjorn-Precision-5520>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201204073909.GA17699@wunner.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_130440_138398_8E03363B 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20201204_133056_406384_FE4644AD 
+X-CRM114-Status: GOOD (  35.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,92 +66,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Marek Vasut <marex@denx.de>, Ulf Hansson <ulf.hansson@linaro.org>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
- Chun-Hung Wu <chun-hung.wu@mediatek.com>, linux-mmc@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- yong mao <yong.mao@mediatek.com>, Amey Narkhede <ameynarkhede03@gmail.com>,
- ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, qizhong.cheng@mediatek.com,
+ chuanjia.liu@mediatek.com, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-pci@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-kernel@vger.kernel.org, Jianjun Wang <jianjun.wang@mediatek.com>,
+ sin_jieyang@mediatek.com, Sj Huang <sj.huang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"; Format="flowed"
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Dec 04, 2020 at 08:39:09AM +0100, Lukas Wunner wrote:
+> On Mon, Nov 30, 2020 at 11:30:05AM -0600, Bjorn Helgaas wrote:
+> > On Mon, Nov 23, 2020 at 02:45:13PM +0800, Jianjun Wang wrote:
+> > > On Thu, 2020-11-19 at 14:28 -0600, Bjorn Helgaas wrote:
+> > > > > +static int mtk_pcie_setup(struct mtk_pcie_port *port)
+> > > > > +{
+> [...]
+> > > > > +	/* Try link up */
+> > > > > +	err = mtk_pcie_startup_port(port);
+> > > > > +	if (err) {
+> > > > > +		dev_notice(dev, "PCIe link down\n");
+> > > > > +		goto err_setup;
+> > > > 
+> > > > Generally it should not be a fatal error if the link is not up at
+> > > > probe-time.  You may be able to hot-add a device, or the device may
+> > > > have some external power control that will power it up later.
+> > > 
+> > > This is for the power saving requirement. If there is no device
+> > > connected with the PCIe slot, the PCIe MAC and PHY should be powered
+> > > off.
+> > > 
+> > > Is there any standard flow to support power down the hardware at
+> > > probe-time if no device is connected and power it up when hot-add a
+> > > device?
+> > 
+> > That's a good question.  I assume this looks like a standard PCIe
+> > hot-add event?
+> > 
+> > When you hot-add a device, does the Root Port generate a Presence
+> > Detect Changed interrupt?  The pciehp driver should field that
+> > interrupt and turn on power to the slot via the Power Controller
+> > Control bit in the Slot Control register.
+> > 
+> > Does your hardware require something more than that to control the MAC
+> > and PHY power?
+> 
+> Power saving of unused PCIe ports is generally achieved through the
+> runtime PM framework.  When a PCIe port runtime suspends, the PCIe
+> core will transition it to D3hot.  On top of that, the platform
+> may be able to transition the port to D3cold.  Currently only the
+> ACPI platform supports that.  Conceivably, devicetree-based systems
+> may want to disable certain clocks or regulators when a PCIe port
+> runtime suspends.  I think we do not support that yet but it could
+> be added to drivers/pci/pcie/portdrv*.
+> 
+> A hotplug port is expected to signal PDC and DLLSC interrupts even
+> when in D3hot.  At least that's our experience with Thunderbolt.
+> To support hotplug interrupts in D3cold, some external mechanism
+> (such as a PME) is necessary to wake up the port on hotplug.
+> This is also supported with recent Thunderbolt systems.
+> 
+> Because we've seen various incompatibilities when runtime suspending
+> PCIe ports, certain conditions must be satisfied for runtime PM
+> to be enabled.  They're encoded in pci_bridge_d3_possible().
+> Generally, hotplug ports only runtime suspend if they belong to
+> a Thunderbolt controller or if the ACPI platform explicitly allows
+> runtime PM (through presence of a _PR3 method or a device property).
+> Non-hotplug ports runtime suspend if the BIOS is newer than 2015
+> (as specified by DMI).
+> 
+> Obviously, this policy is very x86-focussed because both Thunderbolt
+> and DMI are only really a thing on x86.  That's about to change though
+> because Apple's new arm64-based Macs have Thunderbolt integrated into
+> the SoC and arm64 SoCs are making inroads in the datacenter, which is
+> an important use case for PCIe hotplug (hot-swappable NVMe drives).
+> So we may have to amend pci_bridge_d3_possible() to whitelist
+> PCIe ports for runtime PM on specific arches or systems.
 
-Le ven. 4 d=E9c. 2020 =E0 15:14, Arnd Bergmann <arnd@kernel.org> a =E9crit =
+Thanks for all this very useful information!
 
-:
-> On Fri, Dec 4, 2020 at 11:02 AM Ulf Hansson <ulf.hansson@linaro.org> =
+My interpretation for the mediatek situation:
 
-> wrote:
->>  On Thu, 3 Dec 2020 at 23:29, Arnd Bergmann <arnd@kernel.org> wrote:
-> =
+  - I assume this patch leaves or puts the Root Port in D3cold if no
+    downstream devices are present.
 
->>  > -#ifdef CONFIG_PM
->>  >  static void msdc_save_reg(struct msdc_host *host)
->> =
+  - I don't see any support for PME or similar mechanisms to signal a
+    hot-add while the RP is in D3cold.
 
->>  Shouldn't msdc_save|restore_reg() be turned into "__maybe_unused" =
-
->> as well?
-> =
-
-> There is no need since the compiler can figure that out already when =
-
-> there
-> is a reference to the function from dead code.
-> =
-
->>  >
->>  > -static int msdc_resume(struct device *dev)
->>  > +static int __maybe_unused msdc_resume(struct device *dev)
->>  >  {
->>  >         return pm_runtime_force_resume(dev);
->>  >  }
->>  > -#endif
->>  >
->>  >  static const struct dev_pm_ops msdc_dev_pm_ops =3D {
->> =
-
->>  You may also change this to a __maybe_unused, as long as you also
->>  assign the .pm pointer in the mt_msdc_driver with
->>  pm_ptr(&msdc_dev_pm_ops).
->> =
-
->>  Ideally the compiler should drop these functions/datas entirely =
-
->> then.
-> =
-
-> I don't see a lot of other instances of that yet, and it's fairly new.
-> Maybe we should fix it before it gets propagated further.
-> =
-
-> I would suggest we redefine pm_ptr like
-> =
-
-> #define pm_ptr(_ptr) (IS_ENABLED(CONFIG_PM) ? (_ptr) : NULL)
-> =
-
-> and remove the __maybe_unused annotations on those that we
-> already have. This also has the effect of dropping the unused
-> data from the object, but without having to an an #ifdef or
-> __maybe_unused.
-> =
-
-> Adding Paul and Rafael to Cc for clarification on this.
-
-I didn't think about that. That's smarter and much more elegant.
-
-Cheers,
--Paul
-
-
+  - So I assume you don't support hot-add if the slot was empty at
+    boot and that's acceptable for your platform.
 
 _______________________________________________
 Linux-mediatek mailing list
