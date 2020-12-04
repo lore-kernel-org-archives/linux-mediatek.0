@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C30FEC4361B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 01:42:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72B3BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 01:42:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 583FB224DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 01:42:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 583FB224DF
+	by mail.kernel.org (Postfix) with ESMTPS id 115BB224DF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 01:42:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 115BB224DF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=imVCxUG7jcUMJF6V/ilp61Nnp8w+gsbnearzgkTIvVU=; b=WPMaf/H6dvLB2hRe7TVLoPB9G
-	EAqMO7+ygFB2/scliM6Jixu7XqcaU6EPO4p27yCrAxHHM0exS51SzrehFKWd7NR5TZ3hasPpDe3MG
-	0UKh49cRoM6/EPK6qaU6e29F/Uc5Jl5LCNgs5Gp17a82tJSQLIiyFNya0HUHl0CWBZfx5GhQERkwV
-	QwFg2u/ocrJlIgYg5nG+Neex6aaVNKekjAU3TTM+N4/CWAzJr0ib3gY6CeGT9BeeX0aE0yPbiC0UM
-	0A3MC9Fn2mmO367FQSwT8x0r6XtnwjYMt7gvQ13Oc9t+pOBSZpyyv8rkBpgKnRA/L8RurkeyoW191
-	+eEoMompA==;
+	 bh=KwZJo+vY5SNm8vBTuOB0eMElgQa9m3IUPNhZg7qy7rE=; b=1zxiY4OAjPR1o9tWfdSXjmtzt
+	/If1NogfUIhFZkWJjYWo8feyqPweu65AbLMCsCHBUp6MdNt+KYxS7eGVpsu14iUPfacn+E51Hijxb
+	zcuNUv/1UzAIoarnh0+cMqMULFn0KLpztJ074xUKIK+EdEW/BRII2c4WeXlahzVJ8wrmk8+G8cZgJ
+	cYCJj8ynUgcIEambqWpUR+ZMM58Tk3Vw85H9o8GAZDifC+QyihNKrxgnAi3hu6TsZJwr4PBG9C7J7
+	UnPF7iKAkZAm2emRUx2a5skfBtAgNBq/Kgcj6iQ6ipEKJhMJYX+3//WEpgyQzO8YksTiKYd+dLK0a
+	jCheJ7pyw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl07T-0003iL-AZ; Fri, 04 Dec 2020 01:42:47 +0000
+	id 1kl07V-0003it-I5; Fri, 04 Dec 2020 01:42:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl07Q-0003h4-2v
- for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 01:42:45 +0000
-X-UUID: a4de14ad5b3b458a8694173ba4a16b8c-20201203
+ id 1kl07Q-0003gy-4w; Fri, 04 Dec 2020 01:42:45 +0000
+X-UUID: cda7a7a4cbf24e228bf15943fa4dc33b-20201203
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=qpJag3JOEGGUczkknHZEtGGVXhrvUUQwFODEalRuGIQ=; 
- b=K/KjUiBFN6+laNMBzZcBvbL+1pSvY4m/JyGUX5m4MFXtWKZyvwtkgtc3RBi8dwYFA1EbhGlnFPf5ysTb4PYIHsqY0GkF7Ly1rS3W2L0ZksThwmqg7EYRfOhQrL+It93yQM5mNWYoC8AeRyE2i7FornrIioFLe5aCUvnj6eIUR60=;
-X-UUID: a4de14ad5b3b458a8694173ba4a16b8c-20201203
+ bh=KWikmV/wDlXuDUVsDyFD6GjELptOAMlHj8HVv2I+cPU=; 
+ b=ZRa98cbvF1HYbZ2/bYY5lqWwPLrMu3JbnmYTRJM5q8//V79QvySGpdptghl8/lokH2P7YgYm+ceoP6+iGxlyKi4YTG59v8SBcfHGCATJ2ngSAkJj2Z+0hXxhgklPVV0BKQfn+I7Lv3J50YgR+YU76Yv5j8fdEd1JHvDlyOW6W3g=;
+X-UUID: cda7a7a4cbf24e228bf15943fa4dc33b-20201203
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1606779229; Thu, 03 Dec 2020 17:42:38 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 1736454323; Thu, 03 Dec 2020 17:42:37 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Dec 2020 17:34:10 -0800
+ 15.0.1497.2; Thu, 3 Dec 2020 17:32:37 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Dec 2020 09:34:07 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas11.mediatek.inc
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Dec 2020 09:32:34 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 4 Dec 2020 09:34:09 +0800
-Message-ID: <1607045648.22275.7.camel@mtkswgap22>
-Subject: Re: [PATCH v2] proc: use untagged_addr() for pagemap_read addresses
-From: Miles Chen <miles.chen@mediatek.com>
-To: Catalin Marinas <catalin.marinas@arm.com>
-Date: Fri, 4 Dec 2020 09:34:08 +0800
-In-Reply-To: <20201203113020.GE2224@gaia>
-References: <20201127050738.14440-1-miles.chen@mediatek.com>
- <20201203113020.GE2224@gaia>
+ Transport; Fri, 4 Dec 2020 09:32:36 +0800
+Message-ID: <1607045555.4722.7.camel@mtksdccf07>
+Subject: Re: [PATCH v5 3/4] lib/test_kasan.c: add workqueue test case
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Marco Elver <elver@google.com>
+Date: Fri, 4 Dec 2020 09:32:35 +0800
+In-Reply-To: <CANpmjNNdaiN=J0TU_AjAoH=ECNC8dJWS8HTvJs9nxBkJce9AmQ@mail.gmail.com>
+References: <20201203022748.30681-1-walter-zh.wu@mediatek.com>
+ <CANpmjNNdaiN=J0TU_AjAoH=ECNC8dJWS8HTvJs9nxBkJce9AmQ@mail.gmail.com>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 552F8B8F974629EEEA03397AF0B305287B0DA99E5025DF5071FD727CF3EB5E5F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_204244_346985_72DAC4A5 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20201203_204244_355409_D0D28090 
+X-CRM114-Status: GOOD (  23.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,60 +80,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Song Bao Hua <song.bao.hua@hisilicon.com>, Marco Elver <elver@google.com>,
- wsd_upstream@mediatek.com, Andrey Konovalov <andreyknvl@google.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- "Eric W . Biederman" <ebiederm@xmission.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>, linux-fsdevel@vger.kernel.org,
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ Andrey Konovalov <andreyknvl@google.com>, linux-mediatek@lists.infradead.org,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
  Alexander Potapenko <glider@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Vincenzo Frascino <vincenzo.frascino@arm.com>, Will
- Deacon <will@kernel.org>, Alexey Dobriyan <adobriyan@gmail.com>,
- Dmitry Vyukov <dvyukov@google.com>
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Dmitry
+ Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-12-03 at 11:30 +0000, Catalin Marinas wrote:
-> On Fri, Nov 27, 2020 at 01:07:38PM +0800, Miles Chen wrote:
-> > Cc: Will Deacon <will.deacon@arm.com>
-> 
-> That should be will@kernel.org.
-
-ok, I will fix it and submit v3
-> 
-> > diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
-> > index 217aa2705d5d..92b277388f05 100644
-> > --- a/fs/proc/task_mmu.c
-> > +++ b/fs/proc/task_mmu.c
-> > @@ -1599,11 +1599,15 @@ static ssize_t pagemap_read(struct file *file, char __user *buf,
-> >  
-> >  	src = *ppos;
-> >  	svpfn = src / PM_ENTRY_BYTES;
-> > -	start_vaddr = svpfn << PAGE_SHIFT;
-> >  	end_vaddr = mm->task_size;
-> >  
-> >  	/* watch out for wraparound */
-> > -	if (svpfn > mm->task_size >> PAGE_SHIFT)
-> > +	start_vaddr = end_vaddr;
-> > +	if (svpfn < (ULONG_MAX >> PAGE_SHIFT))
-> 
-> Does this need to be strict less-than? I think a less-than or equal
-> would work better.
-
-Thanks, I will fix it and submit v3.
-> 
-> > +		start_vaddr = untagged_addr(svpfn << PAGE_SHIFT);
+On Thu, 2020-12-03 at 11:29 +0100, Marco Elver wrote:
+> On Thu, 3 Dec 2020 at 03:27, Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> >
+> > Adds a test to verify workqueue stack recording and print it in
+> > KASAN report.
+> >
+> > The KASAN report was as follows(cleaned up slightly):
+> >
+> >  BUG: KASAN: use-after-free in kasan_workqueue_uaf
+> >
+> >  Freed by task 54:
+> >   kasan_save_stack+0x24/0x50
+> >   kasan_set_track+0x24/0x38
+> >   kasan_set_free_info+0x20/0x40
+> >   __kasan_slab_free+0x10c/0x170
+> >   kasan_slab_free+0x10/0x18
+> >   kfree+0x98/0x270
+> >   kasan_workqueue_work+0xc/0x18
+> >
+> >  Last potentially related work creation:
+> >   kasan_save_stack+0x24/0x50
+> >   kasan_record_wq_stack+0xa8/0xb8
+> >   insert_work+0x48/0x288
+> >   __queue_work+0x3e8/0xc40
+> >   queue_work_on+0xf4/0x118
+> >   kasan_workqueue_uaf+0xfc/0x190
+> >
+> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > Acked-by: Marco Elver <elver@google.com>
+> > Reviewed-by: Dmitry Vyukov <dvyukov@google.com>
+> > Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
+> > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> > Cc: Alexander Potapenko <glider@google.com>
+> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > ---
+> >
+> > v4:
+> > - testcase has merge conflict, so that rebase onto the KASAN-KUNIT
+> >
+> > ---
+> >  lib/test_kasan_module.c | 29 +++++++++++++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
+> >
+> > diff --git a/lib/test_kasan_module.c b/lib/test_kasan_module.c
+> > index 2d68db6ae67b..62a87854b120 100644
+> > --- a/lib/test_kasan_module.c
+> > +++ b/lib/test_kasan_module.c
+> > @@ -91,6 +91,34 @@ static noinline void __init kasan_rcu_uaf(void)
+> >         call_rcu(&global_rcu_ptr->rcu, kasan_rcu_reclaim);
+> >  }
+> >
+> > +static noinline void __init kasan_workqueue_work(struct work_struct *work)
+> > +{
+> > +       kfree(work);
+> > +}
 > > +
-> > +	/* Ensure the address is inside the task */
-> > +	if (start_vaddr > mm->task_size)
-> >  		start_vaddr = end_vaddr;
+> > +static noinline void __init kasan_workqueue_uaf(void)
+> > +{
+> > +       struct workqueue_struct *workqueue;
+> > +       struct work_struct *work;
+> > +
+> > +       workqueue = create_workqueue("kasan_wq_test");
+> > +       if (!workqueue) {
+> > +               pr_err("Allocation failed\n");
+> > +               return;
+> > +       }
+> > +       work = kmalloc(sizeof(struct work_struct), GFP_KERNEL);
+> > +       if (!work) {
+> > +               pr_err("Allocation failed\n");
+> > +               return;
+> > +       }
+> > +
+> > +       INIT_WORK(work, kasan_workqueue_work);
+> > +       queue_work(workqueue, work);
+> > +       destroy_workqueue(workqueue);
+> > +
+> > +       pr_info("use-after-free on workqueue\n");
+> > +       ((volatile struct work_struct *)work)->data;
+> > +}
+> >
+> >  static int __init test_kasan_module_init(void)
+> >  {
+> > @@ -102,6 +130,7 @@ static int __init test_kasan_module_init(void)
+> >
+> >         copy_user_test();
+> >         kasan_rcu_uaf();
+> > +       kasan_workqueue_uaf();
 > 
-> Otherwise the logic looks fine to me. With the above:
 > 
-> Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
+> Why can't this go into the KUnit based KASAN test?
+
+This test case has not been ported to KUnit, because KUnit's expect
+failure will not check whether the work stack is exist. So it remains in
+test_kasan_module, it is the same with kasan_rcu_uaf()[1].
+
+[1]https://lkml.org/lkml/2020/8/1/45
+
+Thanks.
+Walter
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
