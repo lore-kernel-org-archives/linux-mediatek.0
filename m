@@ -2,20 +2,20 @@ Return-Path: <SRS0=yJvo=FI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 52A90C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 11:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DC786C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 13:22:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C83282251D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 11:45:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C83282251D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 67208206A4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 13:22:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67208206A4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=makrotopia.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,51 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ecWHYd4hRgOODeyrMvT6GPsjpDL8DSw6PRH9xIQf52c=; b=Evyq6Zr1NmxIeRGg9pWmf/WA3
-	Iq0mQA/Q4LkBqK6u6IDeuWZFGl7C/aI+o6gE1BPzYkBNV7laTkfPm0fKhdowMv3EMdgBfi3NR6Vx5
-	dOSR2E1s6UxqmieS6Y1wXTVq56i56EZfBCTFsrbTdvDNYmNJ7TT/1hbL4H0IoYY0gYIvK/0vHsSe3
-	yXMLiPFbj50QOUgKFd/K42XYtuH8MW36zW7w3AdtncACFQLsEi6qzxHc5ZdWhwsTXZk1Ut04oeNCf
-	9blGKVu6cKyGRWhnH1rIIUjsRSoUvfccZVFC5M8NxuMlZ3JqCg99L5d9LWNxrJNMIcOcb/HrDblMs
-	06avXk1tA==;
+	 bh=EAt4KkHVbRpGqu4PqVREf7kgmzWXoHDy3otHdrWdMME=; b=ggRBY4muE0+g6U061oYOupkD9
+	0D4mDtDX7aRqklgvdh2Rb77e1sLAyDDHCxg36uYaBZFxaOo4yM5WqBPuYp5pSnPrkCiS11wNZzWwE
+	ccP8vPzTFTIO9Xh2D1buuI4BZ5fzAHpCbAoJfMQ7b0YCShdB/Jksg0j2+KK8642MuMvKA2FPVONG6
+	KHxpbFyuHkIcsjLBfoaXaWDdrdDIeEFVX2NulQuhhNzgEqlFU6b4zpLA9isnWJ3YBBr+o6EkleL8b
+	KvWMy5OT8uQOcq21qb5GEsleCtDacYQOoOumleWaFLP6x8+CTkiHe7Ni0g1AZN7L+MrfSeglXYujN
+	7NGY0ZGCg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl9Ww-0001cx-Vj; Fri, 04 Dec 2020 11:45:43 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1klB2Z-0004qp-VB; Fri, 04 Dec 2020 13:22:28 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl9Wt-0001ag-8q; Fri, 04 Dec 2020 11:45:40 +0000
-IronPort-SDR: qkL8VjzJFCSHLc844+8VyUVjYMnWetvah2pMF9m5abEKQNj33JenIWK9gS7XCV1yESN/+iMgPs
- qKdO2wi27CIQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9824"; a="160420102"
-X-IronPort-AV: E=Sophos;i="5.78,392,1599548400"; d="scan'208";a="160420102"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2020 03:45:36 -0800
-IronPort-SDR: slZITTdZZgS3TJf6ncwEHOUcWPDqpSd03g7ZcabsatqOfCMNKSDL+aDwvNNYba732ekCMsLipC
- j1fMqV9PYD6g==
-X-IronPort-AV: E=Sophos;i="5.78,392,1599548400"; d="scan'208";a="482361261"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2020 03:45:34 -0800
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 5DF3720676; Fri,  4 Dec 2020 13:45:32 +0200 (EET)
-Date: Fri, 4 Dec 2020 13:45:32 +0200
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: Re: media: i2c: add OV02A10 image sensor driver
-Message-ID: <20201204114532.GT852@paasikivi.fi.intel.com>
-References: <9af089ea-2532-68ac-5d22-97a669ccec91@canonical.com>
- <CAHp75Ve7Sdf=Zy5N1LN_w22=YwPgWWR-FZtrQcAkOF=ViT2Kbw@mail.gmail.com>
- <8eb453c7-a221-e741-5fe5-655e59075f34@canonical.com>
- <CAHp75VffBjhvuZ1Uy5Eo5qSiZ4w-+dhH5cR_XgmqGvxtrMd3uQ@mail.gmail.com>
+ id 1klB2X-0004q2-Ms
+ for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 13:22:26 +0000
+Received: from local
+ by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.93.0.4) (envelope-from <daniel@makrotopia.org>)
+ id 1klB2T-00078v-Ln; Fri, 04 Dec 2020 14:22:22 +0100
+Date: Fri, 4 Dec 2020 13:22:18 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Mauro Condarelli <mc5686@mclink.it>
+Subject: Re: Status of rt3050-esw driver
+Message-ID: <X8o4ChkwdAioYoZN@makrotopia.org>
+References: <c5625076-7533-86e8-ef5b-7248b62977d7@mclink.it>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAHp75VffBjhvuZ1Uy5Eo5qSiZ4w-+dhH5cR_XgmqGvxtrMd3uQ@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <c5625076-7533-86e8-ef5b-7248b62977d7@mclink.it>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_064539_444423_9CC9370E 
-X-CRM114-Status: GOOD (  27.21  )
+X-CRM114-CacheID: sfid-20201204_082225_763539_1CE24D6E 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,117 +63,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- linux-media <linux-media@vger.kernel.org>
+Cc: linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 03, 2020 at 08:30:03PM +0200, Andy Shevchenko wrote:
-> On Thu, Dec 3, 2020 at 8:24 PM Colin Ian King <colin.king@canonical.com> wrote:
-> > On 03/12/2020 18:10, Andy Shevchenko wrote:
-> > > On Thu, Dec 3, 2020 at 8:03 PM Colin Ian King <colin.king@canonical.com> wrote:
-> > >
-> > >> Static analysis on linux-next with Coverity has detected an issue with
-> > >> the following commit:
-> > >
-> > > If you want to fix it properly, see my comments below...
-> > >
-> > >> 529 static int ov02a10_s_stream(struct v4l2_subdev *sd, int on)
-> > >> 530 {
-> > >> 531        struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > >> 532        struct i2c_client *client =
-> > >> v4l2_get_subdevdata(&ov02a10->subdev);
-> > >>
-> > >>    1. var_decl: Declaring variable ret without initializer.
-> > >>
-> > >> 533        int ret;
-> > >> 534
-> > >> 535        mutex_lock(&ov02a10->mutex);
-> > >> 536
-> > >>
-> > >>    2. Condition ov02a10->streaming == on, taking true branch.
-> > >>
-> > >> 537        if (ov02a10->streaming == on)
-> > >>
-> > >>    3. Jumping to label unlock_and_return.
-> > >>
-> > >> 538                goto unlock_and_return;
-> > >> 539
-> > >> 540        if (on) {
-> > >> 541                ret = pm_runtime_get_sync(&client->dev);
-> > >> 542                if (ret < 0) {
-> > >
-> > >> 543                        pm_runtime_put_noidle(&client->dev);
-> > >> 544                        goto unlock_and_return;
-> > >
-> > > Instead of two above:
-> > >                        goto err_rpm_put;
-> > >
-> > >> 545                }
-> > >> 546
-> > >> 547                ret = __ov02a10_start_stream(ov02a10);
-> > >> 548                if (ret) {
-> > >> 549                        __ov02a10_stop_stream(ov02a10);
-> > >> 550                        ov02a10->streaming = !on;
-> > >> 551                        goto err_rpm_put;
-> > >> 552                }
-> > >> 553        } else {
-> > >> 554                __ov02a10_stop_stream(ov02a10);
-> > >> 555                pm_runtime_put(&client->dev);
-> > >> 556        }
-> > >> 557
-> > >> 558        ov02a10->streaming = on;
-> > >
-> > > (1)
-> > >
-> > >> 559        mutex_unlock(&ov02a10->mutex);
-> > >> 560
-> > >> 561        return 0;
-> > >> 562
-> > >> 563 err_rpm_put:
-> > >> 564        pm_runtime_put(&client->dev);
-> > >
-> > >> 565 unlock_and_return:
-> > >
-> > > Should be moved to (1).
-> > >
-> > >> 566        mutex_unlock(&ov02a10->mutex);
-> > >> 567
-> > >>
-> > >> Uninitialized scalar variable (UNINIT)
-> > >>     4. uninit_use: Using uninitialized value ret.
-> > >>
-> > >> 568        return ret;
-> > >> 569 }
-> > >>
-> > >> Variable ret has not been initialized, so the error return value is a
-> > >> garbage value. It should be initialized with some appropriate negative
-> > >> error code, or ret could be removed and the return should return a
-> > >> literal value of a error code.
-> > >>
-> > >> I was unsure what value is appropriate to fix this, so instead I'm
-> > >> reporting this issue.
-> > >
-> > Not sure I fully understand how that fixes it.
+Hi Mauro,
+
+when it comes to support in vanilla Linux, the closest it gets to is
+the work of Stefan Roese from about 1 year ago:
+
+https://github.com/stroese/linux/blob/gardena-v5.5/drivers/net/dsa/mt7628-esw.c
+
+In OpenWrt we carry an out-of-tree legacy switch configuration layer
+(swconfig) and that has mature support for the rt3050-esw incl. mt7628:
+
+https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/ramips/files/drivers/net/ethernet/ralink/esw_rt3050.c;h=292f11a1700e03862e35a772a64e4f56da818b59;hb=HEAD
+
+
+I hope that helps a bit
+
+
+On Fri, Dec 04, 2020 at 11:42:01AM +0100, Mauro Condarelli wrote:
+> Hi,
+> I am very confused about the current status of the driver of internal switch in Subject.
+> My need is to statically initialize the ESW found in MT7628 SoC.
 > 
-> If you are not sure and have no means to test, then don't bother. This
-> is not the priority driver anyway.
-
-Arnd sent a patch to address this:
-
-<URL:https://patchwork.linuxtv.org/project/linux-media/patch/20201204082037.1658297-1-arnd@kernel.org/>
-
--- 
-Sakari Ailus
+> I have found several references (some rather old) to some work from John Crispin and other developers, but apparently this work did never found its way in the kernel (but socumentation is there in Documentation/devicetree/bindings/net/ralink,rt3050-esw.txt !) because it doesn't seem to conform to kernel guidelines (using DSA infrastructure).
+> 
+> I have been using a derivative of this driver from Stefan Roese, but it "stopped working" some time ago.
+> I actually use mostly WiFi and thus breakage, happening in some kernel upgrade, went completely unnoticed till recently.
+> I am fighting to find out exactly where I broke things, but this spawned a search and I'm now wondering if there's a better (and more robust) way to enable MT7628 ESW.
+> 
+> Any hint and/or pointer to relevant documentation would be very welcome.
+> 
+> Thanks in Advance
+> Mauro Condarelli
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
