@@ -2,78 +2,72 @@ Return-Path: <SRS0=yJvo=FI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBFB9C4361A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52A90C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 11:45:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CB0B4229EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:57:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB0B4229EF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id C83282251D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 11:45:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C83282251D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
-	:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:
-	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p1zIKqXxTnjMOavhreHgewLPn8dDXRu345+SrjNPK78=; b=VHJeOrJirat5wT4VzfucynfPsL
-	kJTesO4CFC/5bMGW46LCXbeCWOKOfVlTvsfkObzqXy1NAVInmyAY01X+EV1BBUgm/vDMWFQi7SvnA
-	fCy8C4I9FkLeli0RhVLoFWJ0eU/hVc78gtDNh9Xr08P1vZXiRq2rqS3DlrLwyONjPOz07ic6lNvbR
-	8l8qs301InY/RM/x7LzvBzjH7H+dBuZozYQ3ksBJHOZPDVcpDIJvWKui4E4R7p1hto7S8fqkCEm5M
-	gTwb/ZSsStkBLi+5n0I1371xnT5kIdeYEXc/169MlKWDPJ3+3s0kGYUjpWRbK51xG3dABoUkukE3r
-	zDQ8icxQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ecWHYd4hRgOODeyrMvT6GPsjpDL8DSw6PRH9xIQf52c=; b=Evyq6Zr1NmxIeRGg9pWmf/WA3
+	Iq0mQA/Q4LkBqK6u6IDeuWZFGl7C/aI+o6gE1BPzYkBNV7laTkfPm0fKhdowMv3EMdgBfi3NR6Vx5
+	dOSR2E1s6UxqmieS6Y1wXTVq56i56EZfBCTFsrbTdvDNYmNJ7TT/1hbL4H0IoYY0gYIvK/0vHsSe3
+	yXMLiPFbj50QOUgKFd/K42XYtuH8MW36zW7w3AdtncACFQLsEi6qzxHc5ZdWhwsTXZk1Ut04oeNCf
+	9blGKVu6cKyGRWhnH1rIIUjsRSoUvfccZVFC5M8NxuMlZ3JqCg99L5d9LWNxrJNMIcOcb/HrDblMs
+	06avXk1tA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl8lh-0000yD-S1; Fri, 04 Dec 2020 10:56:53 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1kl9Ww-0001cx-Vj; Fri, 04 Dec 2020 11:45:43 +0000
+Received: from mga02.intel.com ([134.134.136.20])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl8ld-0000vu-C5
- for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 10:56:50 +0000
-Received: from lupine.hi.pengutronix.de
- ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1kl8lS-0004Tj-Og; Fri, 04 Dec 2020 11:56:38 +0100
-Received: from pza by lupine with local (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1kl8lM-0006gu-8p; Fri, 04 Dec 2020 11:56:32 +0100
-Message-ID: <2c36ef4c2d022f6f83ec5c78a951d5e76f95378e.camel@pengutronix.de>
-Subject: Re: [PATCH 1/5] media: dt-bindings: add the required property
- 'additionalProperties'
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Zhen Lei <thunder.leizhen@huawei.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Karol Gugala
- <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Pawel Czarnecki
- <pczarnecki@internships.antmicro.com>,  Stafford Horne <shorne@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones
- <lee.jones@linaro.org>,  linux-media <linux-media@vger.kernel.org>,
- linux-serial <linux-serial@vger.kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, devicetree
- <devicetree@vger.kernel.org>,  linux-kernel <linux-kernel@vger.kernel.org>
-Date: Fri, 04 Dec 2020 11:56:32 +0100
-In-Reply-To: <20201204093813.1275-2-thunder.leizhen@huawei.com>
-References: <20201204093813.1275-1-thunder.leizhen@huawei.com>
- <20201204093813.1275-2-thunder.leizhen@huawei.com>
-User-Agent: Evolution 3.30.5-1.1 
+ id 1kl9Wt-0001ag-8q; Fri, 04 Dec 2020 11:45:40 +0000
+IronPort-SDR: qkL8VjzJFCSHLc844+8VyUVjYMnWetvah2pMF9m5abEKQNj33JenIWK9gS7XCV1yESN/+iMgPs
+ qKdO2wi27CIQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9824"; a="160420102"
+X-IronPort-AV: E=Sophos;i="5.78,392,1599548400"; d="scan'208";a="160420102"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2020 03:45:36 -0800
+IronPort-SDR: slZITTdZZgS3TJf6ncwEHOUcWPDqpSd03g7ZcabsatqOfCMNKSDL+aDwvNNYba732ekCMsLipC
+ j1fMqV9PYD6g==
+X-IronPort-AV: E=Sophos;i="5.78,392,1599548400"; d="scan'208";a="482361261"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2020 03:45:34 -0800
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 5DF3720676; Fri,  4 Dec 2020 13:45:32 +0200 (EET)
+Date: Fri, 4 Dec 2020 13:45:32 +0200
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: media: i2c: add OV02A10 image sensor driver
+Message-ID: <20201204114532.GT852@paasikivi.fi.intel.com>
+References: <9af089ea-2532-68ac-5d22-97a669ccec91@canonical.com>
+ <CAHp75Ve7Sdf=Zy5N1LN_w22=YwPgWWR-FZtrQcAkOF=ViT2Kbw@mail.gmail.com>
+ <8eb453c7-a221-e741-5fe5-655e59075f34@canonical.com>
+ <CAHp75VffBjhvuZ1Uy5Eo5qSiZ4w-+dhH5cR_XgmqGvxtrMd3uQ@mail.gmail.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <CAHp75VffBjhvuZ1Uy5Eo5qSiZ4w-+dhH5cR_XgmqGvxtrMd3uQ@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_055649_466353_A5F16602 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20201204_064539_444423_9CC9370E 
+X-CRM114-Status: GOOD (  27.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,30 +79,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ linux-media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-12-04 at 17:38 +0800, Zhen Lei wrote:
-> When I do dt_binding_check for any YAML file, below wanring is always
-> reported:
+On Thu, Dec 03, 2020 at 08:30:03PM +0200, Andy Shevchenko wrote:
+> On Thu, Dec 3, 2020 at 8:24 PM Colin Ian King <colin.king@canonical.com> wrote:
+> > On 03/12/2020 18:10, Andy Shevchenko wrote:
+> > > On Thu, Dec 3, 2020 at 8:03 PM Colin Ian King <colin.king@canonical.com> wrote:
+> > >
+> > >> Static analysis on linux-next with Coverity has detected an issue with
+> > >> the following commit:
+> > >
+> > > If you want to fix it properly, see my comments below...
+> > >
+> > >> 529 static int ov02a10_s_stream(struct v4l2_subdev *sd, int on)
+> > >> 530 {
+> > >> 531        struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > >> 532        struct i2c_client *client =
+> > >> v4l2_get_subdevdata(&ov02a10->subdev);
+> > >>
+> > >>    1. var_decl: Declaring variable ret without initializer.
+> > >>
+> > >> 533        int ret;
+> > >> 534
+> > >> 535        mutex_lock(&ov02a10->mutex);
+> > >> 536
+> > >>
+> > >>    2. Condition ov02a10->streaming == on, taking true branch.
+> > >>
+> > >> 537        if (ov02a10->streaming == on)
+> > >>
+> > >>    3. Jumping to label unlock_and_return.
+> > >>
+> > >> 538                goto unlock_and_return;
+> > >> 539
+> > >> 540        if (on) {
+> > >> 541                ret = pm_runtime_get_sync(&client->dev);
+> > >> 542                if (ret < 0) {
+> > >
+> > >> 543                        pm_runtime_put_noidle(&client->dev);
+> > >> 544                        goto unlock_and_return;
+> > >
+> > > Instead of two above:
+> > >                        goto err_rpm_put;
+> > >
+> > >> 545                }
+> > >> 546
+> > >> 547                ret = __ov02a10_start_stream(ov02a10);
+> > >> 548                if (ret) {
+> > >> 549                        __ov02a10_stop_stream(ov02a10);
+> > >> 550                        ov02a10->streaming = !on;
+> > >> 551                        goto err_rpm_put;
+> > >> 552                }
+> > >> 553        } else {
+> > >> 554                __ov02a10_stop_stream(ov02a10);
+> > >> 555                pm_runtime_put(&client->dev);
+> > >> 556        }
+> > >> 557
+> > >> 558        ov02a10->streaming = on;
+> > >
+> > > (1)
+> > >
+> > >> 559        mutex_unlock(&ov02a10->mutex);
+> > >> 560
+> > >> 561        return 0;
+> > >> 562
+> > >> 563 err_rpm_put:
+> > >> 564        pm_runtime_put(&client->dev);
+> > >
+> > >> 565 unlock_and_return:
+> > >
+> > > Should be moved to (1).
+> > >
+> > >> 566        mutex_unlock(&ov02a10->mutex);
+> > >> 567
+> > >>
+> > >> Uninitialized scalar variable (UNINIT)
+> > >>     4. uninit_use: Using uninitialized value ret.
+> > >>
+> > >> 568        return ret;
+> > >> 569 }
+> > >>
+> > >> Variable ret has not been initialized, so the error return value is a
+> > >> garbage value. It should be initialized with some appropriate negative
+> > >> error code, or ret could be removed and the return should return a
+> > >> literal value of a error code.
+> > >>
+> > >> I was unsure what value is appropriate to fix this, so instead I'm
+> > >> reporting this issue.
+> > >
+> > Not sure I fully understand how that fixes it.
 > 
-> xxx/media/coda.yaml: 'additionalProperties' is a required property
-> xxx/media/coda.yaml: ignoring, error in schema:
-> warning: no schema found in file: xxx/media/coda.yaml
-> 
-> There are three properties defined in allOf, they should be explicitly
-> declared. Otherwise, "additionalProperties: false" will prohibit them.
-> 
-> Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
+> If you are not sure and have no means to test, then don't bother. This
+> is not the priority driver anyway.
 
-Thank you, there already is a patch to fix this:
+Arnd sent a patch to address this:
 
-https://lore.kernel.org/linux-media/20201117200752.4004368-1-robh@kernel.org/
+<URL:https://patchwork.linuxtv.org/project/linux-media/patch/20201204082037.1658297-1-arnd@kernel.org/>
 
-regards
-Philipp
+-- 
+Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
