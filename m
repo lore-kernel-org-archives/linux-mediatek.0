@@ -2,75 +2,78 @@ Return-Path: <SRS0=yJvo=FI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77668C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 09:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2048EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:03:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 15BCC227C3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 09:54:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15BCC227C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id BBC2122795
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:03:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBC2122795
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iu/GAnqVTJOdM9caYDPDxzyaOte40yz4Kpfil9PvDDI=; b=idStccWxB61n0kRdt5Hv57bDV
-	DegrreDwzDpwJpjNpXpTLrpt3/uVFY9f7Z+JNmV73OFchqrl1EiLVs6g6mbbOKssOeb0n9NiJFD2T
-	tKAkBZ9sdbWdsVSqVfuYTP92f9nY6t7iC6iwDnwUihzjBkWj97VVUTprrq/21beeg94wDMwFELNQT
-	GUZabiSYTbocZnZOB0W/Yn2/Ng+5rCWqxQXXZrLVA6bWHiBEs8Cb186Y56nPkNmTBp+3gaElb1LSb
-	Qajr7A3+VmcjyvgKhWgFd1vNFXvXhxZoaNqMOPQKHufp61uGL65EBysjCc/qKwRJYuP+tRiHoTs+n
-	2H8uVG6hg==;
+	 bh=6g/8F797BNmzYxvA6IYKEkEIiidyh8PqlS95hpS0wOs=; b=MSBgZomsGbrmUQRKXKNJ9zbQ2
+	eByy/9R1WuKrAiGzmKzi7LJlLPKv8CdlA7fTScjnmcnlTnDKSvnuLZA41JTlFTccKNh9l+R/51w7n
+	FcTpdztzax57bYWLo9aTorse3yabDc7A83/NbtKcM4wTVsO2PmOY9UPZn64AiNCOGEeU+TvY6+gvo
+	w7k9AfoWThgwapQOrTX2hPSxBgcGJ2gIuaJpXGpJCXsZAN3BOxW1uwub0v5HmsNJkHQaGTdN3TZxc
+	AXr4iLlGkvEZBINiHY0reX4FarFVqWINeMQCa+4G0TV9Fl1FXvqJjQXcVTJNMwZNO0xlAIdULUO9v
+	pvtiOVUhg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl7mn-0002x2-H3; Fri, 04 Dec 2020 09:53:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kl7vo-0005iY-WC; Fri, 04 Dec 2020 10:03:17 +0000
+Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl7mH-0002bG-5F; Fri, 04 Dec 2020 09:53:27 +0000
-X-UUID: d60652ec43a14779b5f7412a891168b4-20201204
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=p4xvRXqOBkhVEVD5PTTYJxWaMikdgbJ1h8y8ubf8BfA=; 
- b=dDt2UTMAH1VFIm8HIMXIrQcjPFJlhAiVuwYxgTfTZlT5sog9OG+0rD1JncbduhlJLB5laRhl+o6cxWtGUSdb3yBq5M6yHa5bDY1DNa+1ofCXGWsXoObwu0Di6mnzXgk+stHFVGXcjJ4VwCRMuamStV4UdjuEgUmha8VWel5RWQk=;
-X-UUID: d60652ec43a14779b5f7412a891168b4-20201204
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1941125546; Fri, 04 Dec 2020 01:52:00 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Dec 2020 01:50:09 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Dec 2020 17:50:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Dec 2020 17:50:06 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v3 6/8] scsi: ufs: Refine error history functions
-Date: Fri, 4 Dec 2020 17:50:05 +0800
-Message-ID: <20201204095007.20639-7-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201204095007.20639-1-stanley.chu@mediatek.com>
-References: <20201204095007.20639-1-stanley.chu@mediatek.com>
+ id 1kl7vk-0005h9-DS
+ for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 10:03:13 +0000
+Received: by mail-vs1-xe42.google.com with SMTP id w18so2912090vsk.12
+ for <linux-mediatek@lists.infradead.org>; Fri, 04 Dec 2020 02:03:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Rcku4lPAn/y4YhBZdjYlkKZQc+t40+z/luVVG1YdFJI=;
+ b=DHGwreClgzq5UgdvP5poTN7RLhMGva3+Muj5jp5VFGgimCmx9WYcK0eAsHiPKmOBvm
+ fNIxvrpnxT7enGivLKac/vig8mhqLw+2Cr5Ryv3fxuRyEA+glFI9u5W3FH+lcviTWeGe
+ gBc30+jMZuskqlYBYm3IDHW+cnGRkBk2GrNsHGWwfc0la+TFas3pa3GnvnDDDfrSJ5E/
+ lbhQqn6JI6qM9R1x/J78C+8KnVayuEfKRieda9i6E3ekSvyEAadWUtTwn7t5ZCmq1hzh
+ 964NVr4rM402IWoljsqluvgZHAACwUvLsZ+XPrjLvLBmKS08Kc99fr5VRKqG48f1KGm8
+ G7Gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Rcku4lPAn/y4YhBZdjYlkKZQc+t40+z/luVVG1YdFJI=;
+ b=Ol/hufzItWuvwi9OYrnnGS37BUgeCPqi5vw1J13lGlvBIK4q7H7KIvw27NIlB7xXIK
+ oGxCNk/R9fdl8qIyml0nOPXzpngLvT4OKrE8EqMYkTmLQHGLgg92i/UI/hszzoC/PUJQ
+ NtB8ZF67ESJV7pzB9wGFNn/cHZwW5LFfuYaghSZ4NwImI6Tg35tcSMEkN6tHX4x+ReV1
+ 37ACGzzDM1sMzfMXW6w3ThEvpFlQhgWEXcxDW8XBgzKgcsSJBciQIVWxhDO7gHBDiDJw
+ /eFGxYASF6vc+oBD23aZJQTP1RIz3nFCnpn1h/uk9glJn6ZQ4IrgUkAAn0iA822tU8hh
+ ovTg==
+X-Gm-Message-State: AOAM532mncIRYCEwXAITVyRE309Uxav86jnetv0VeT3iMJVTIW2ciH8a
+ BdnpQdnokSmFrWHa1H0t52ZBhnXvBhTyKgs47olbiyc3vCbY5NQS
+X-Google-Smtp-Source: ABdhPJzF251m6Qz8Y2YtlC0BVJfa4JQ2d5vZe0SrIQHOSN0qQQLEJYfanTHuPYzxI3so5RnK5TCTPRNHPYoR6mFf9U4=
+X-Received: by 2002:a67:fe85:: with SMTP id b5mr241341vsr.19.1607076189014;
+ Fri, 04 Dec 2020 02:03:09 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8A6DE03B4DACEDEA79F46C1EA18A0D050E89DE2D2BC68B966F9F642A3C73531A2000:8
-X-MTK: N
+References: <20201203222922.1067522-1-arnd@kernel.org>
+In-Reply-To: <20201203222922.1067522-1-arnd@kernel.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 4 Dec 2020 11:02:32 +0100
+Message-ID: <CAPDyKFqtFYqc8i_fVzOUnuZGJjtwjVLqE-vebtOKuYJ-4PrDBg@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mediatek: mark PM functions as __maybe_unused
+To: Arnd Bergmann <arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_045325_470059_F3DFA292 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20201204_050312_504140_942B381F 
+X-CRM114-Status: GOOD (  21.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,462 +85,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, alice.chao@mediatek.com,
- bvanassche@acm.org, huadian.liu@mediatek.com, andy.teng@mediatek.com,
- cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: Marek Vasut <marex@denx.de>, Wenbin Mei <wenbin.mei@mediatek.com>,
+ Arnd Bergmann <arnd@arndb.de>, Chun-Hung Wu <chun-hung.wu@mediatek.com>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ yong mao <yong.mao@mediatek.com>, Amey Narkhede <ameynarkhede03@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Nowadays UFS error history does not only have "history of errors"
-but also have history of some other events which are not defined
-as errors.
+On Thu, 3 Dec 2020 at 23:29, Arnd Bergmann <arnd@kernel.org> wrote:
+>
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> The #ifdef check for the suspend/resume functions is wrong:
+>
+> drivers/mmc/host/mtk-sd.c:2765:12: error: unused function 'msdc_suspend' [-Werror,-Wunused-function]
+> static int msdc_suspend(struct device *dev)
+> drivers/mmc/host/mtk-sd.c:2779:12: error: unused function 'msdc_resume' [-Werror,-Wunused-function]
+> static int msdc_resume(struct device *dev)
+>
+> Remove the #ifdef and mark all four as __maybe_unused to aovid the
+> problem.
+>
+> Fixes: c0a2074ac575 ("mmc: mediatek: Fix system suspend/resume support for CQHCI")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index d057fb11112a..de09c6347524 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -2683,7 +2683,6 @@ static int msdc_drv_remove(struct platform_device *pdev)
+>         return 0;
+>  }
+>
+> -#ifdef CONFIG_PM
+>  static void msdc_save_reg(struct msdc_host *host)
 
-This patch fixes the confused naming of related functions,
-and change the way for updating and printing history as preparation
-of next patch.
+Shouldn't msdc_save|restore_reg() be turned into "__maybe_unused" as well?
 
-This patch shall not change any functionality.
+>  {
+>         u32 tune_reg = host->dev_comp->pad_tune_reg;
+> @@ -2742,7 +2741,7 @@ static void msdc_restore_reg(struct msdc_host *host)
+>                 __msdc_enable_sdio_irq(host, 1);
+>  }
+>
+> -static int msdc_runtime_suspend(struct device *dev)
+> +static int __maybe_unused msdc_runtime_suspend(struct device *dev)
+>  {
+>         struct mmc_host *mmc = dev_get_drvdata(dev);
+>         struct msdc_host *host = mmc_priv(mmc);
+> @@ -2752,7 +2751,7 @@ static int msdc_runtime_suspend(struct device *dev)
+>         return 0;
+>  }
+>
+> -static int msdc_runtime_resume(struct device *dev)
+> +static int __maybe_unused msdc_runtime_resume(struct device *dev)
+>  {
+>         struct mmc_host *mmc = dev_get_drvdata(dev);
+>         struct msdc_host *host = mmc_priv(mmc);
+> @@ -2762,7 +2761,7 @@ static int msdc_runtime_resume(struct device *dev)
+>         return 0;
+>  }
+>
+> -static int msdc_suspend(struct device *dev)
+> +static int __maybe_unused msdc_suspend(struct device *dev)
+>  {
+>         struct mmc_host *mmc = dev_get_drvdata(dev);
+>         int ret;
+> @@ -2776,11 +2775,10 @@ static int msdc_suspend(struct device *dev)
+>         return pm_runtime_force_suspend(dev);
+>  }
+>
+> -static int msdc_resume(struct device *dev)
+> +static int __maybe_unused msdc_resume(struct device *dev)
+>  {
+>         return pm_runtime_force_resume(dev);
+>  }
+> -#endif
+>
+>  static const struct dev_pm_ops msdc_dev_pm_ops = {
 
-Reviewed-by: Can Guo <cang@codeaurora.org>
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 118 +++++++++++++++++++++-----------------
- drivers/scsi/ufs/ufshcd.h |  71 ++++++++++-------------
- 2 files changed, 97 insertions(+), 92 deletions(-)
+You may also change this to a __maybe_unused, as long as you also
+assign the .pm pointer in the mt_msdc_driver with
+pm_ptr(&msdc_dev_pm_ops).
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 922d68bca345..1a7d31849511 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -411,20 +411,25 @@ static void ufshcd_print_clk_freqs(struct ufs_hba *hba)
- 	}
- }
- 
--static void ufshcd_print_err_hist(struct ufs_hba *hba,
--				  struct ufs_err_reg_hist *err_hist,
--				  char *err_name)
-+static void ufshcd_print_evt(struct ufs_hba *hba, u32 id,
-+			     char *err_name)
- {
- 	int i;
- 	bool found = false;
-+	struct ufs_event_hist *e;
- 
--	for (i = 0; i < UFS_ERR_REG_HIST_LENGTH; i++) {
--		int p = (i + err_hist->pos) % UFS_ERR_REG_HIST_LENGTH;
-+	if (id >= UFS_EVT_CNT)
-+		return;
-+
-+	e = &hba->ufs_stats.event[id];
- 
--		if (err_hist->tstamp[p] == 0)
-+	for (i = 0; i < UFS_EVENT_HIST_LENGTH; i++) {
-+		int p = (i + e->pos) % UFS_EVENT_HIST_LENGTH;
-+
-+		if (e->tstamp[p] == 0)
- 			continue;
- 		dev_err(hba->dev, "%s[%d] = 0x%x at %lld us\n", err_name, p,
--			err_hist->reg[p], ktime_to_us(err_hist->tstamp[p]));
-+			e->val[p], ktime_to_us(e->tstamp[p]));
- 		found = true;
- 	}
- 
-@@ -432,26 +437,26 @@ static void ufshcd_print_err_hist(struct ufs_hba *hba,
- 		dev_err(hba->dev, "No record of %s\n", err_name);
- }
- 
--static void ufshcd_print_host_regs(struct ufs_hba *hba)
-+static void ufshcd_print_evt_hist(struct ufs_hba *hba)
- {
- 	ufshcd_dump_regs(hba, 0, UFSHCI_REG_SPACE_SIZE, "host_regs: ");
- 
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.pa_err, "pa_err");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.dl_err, "dl_err");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.nl_err, "nl_err");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.tl_err, "tl_err");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.dme_err, "dme_err");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.auto_hibern8_err,
--			      "auto_hibern8_err");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.fatal_err, "fatal_err");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.link_startup_err,
--			      "link_startup_fail");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.resume_err, "resume_fail");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.suspend_err,
--			      "suspend_fail");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.dev_reset, "dev_reset");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.host_reset, "host_reset");
--	ufshcd_print_err_hist(hba, &hba->ufs_stats.task_abort, "task_abort");
-+	ufshcd_print_evt(hba, UFS_EVT_PA_ERR, "pa_err");
-+	ufshcd_print_evt(hba, UFS_EVT_DL_ERR, "dl_err");
-+	ufshcd_print_evt(hba, UFS_EVT_NL_ERR, "nl_err");
-+	ufshcd_print_evt(hba, UFS_EVT_TL_ERR, "tl_err");
-+	ufshcd_print_evt(hba, UFS_EVT_DME_ERR, "dme_err");
-+	ufshcd_print_evt(hba, UFS_EVT_AUTO_HIBERN8_ERR,
-+			 "auto_hibern8_err");
-+	ufshcd_print_evt(hba, UFS_EVT_FATAL_ERR, "fatal_err");
-+	ufshcd_print_evt(hba, UFS_EVT_LINK_STARTUP_FAIL,
-+			 "link_startup_fail");
-+	ufshcd_print_evt(hba, UFS_EVT_RESUME_ERR, "resume_fail");
-+	ufshcd_print_evt(hba, UFS_EVT_SUSPEND_ERR,
-+			 "suspend_fail");
-+	ufshcd_print_evt(hba, UFS_EVT_DEV_RESET, "dev_reset");
-+	ufshcd_print_evt(hba, UFS_EVT_HOST_RESET, "host_reset");
-+	ufshcd_print_evt(hba, UFS_EVT_ABORT, "task_abort");
- 
- 	ufshcd_vops_dbg_register_dump(hba);
- }
-@@ -3852,7 +3857,7 @@ static int ufshcd_uic_pwr_ctrl(struct ufs_hba *hba, struct uic_command *cmd)
- 	if (ret) {
- 		ufshcd_print_host_state(hba);
- 		ufshcd_print_pwr_info(hba);
--		ufshcd_print_host_regs(hba);
-+		ufshcd_print_evt_hist(hba);
- 	}
- 
- 	spin_lock_irqsave(hba->host->host_lock, flags);
-@@ -4464,14 +4469,19 @@ static inline int ufshcd_disable_device_tx_lcc(struct ufs_hba *hba)
- 	return ufshcd_disable_tx_lcc(hba, true);
- }
- 
--void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
--			    u32 reg)
-+void ufshcd_update_evt_hist(struct ufs_hba *hba, u32 id, u32 val)
- {
--	reg_hist->reg[reg_hist->pos] = reg;
--	reg_hist->tstamp[reg_hist->pos] = ktime_get();
--	reg_hist->pos = (reg_hist->pos + 1) % UFS_ERR_REG_HIST_LENGTH;
-+	struct ufs_event_hist *e;
-+
-+	if (id >= UFS_EVT_CNT)
-+		return;
-+
-+	e = &hba->ufs_stats.event[id];
-+	e->val[e->pos] = val;
-+	e->tstamp[e->pos] = ktime_get();
-+	e->pos = (e->pos + 1) % UFS_EVENT_HIST_LENGTH;
- }
--EXPORT_SYMBOL_GPL(ufshcd_update_reg_hist);
-+EXPORT_SYMBOL_GPL(ufshcd_update_evt_hist);
- 
- /**
-  * ufshcd_link_startup - Initialize unipro link startup
-@@ -4500,7 +4510,8 @@ static int ufshcd_link_startup(struct ufs_hba *hba)
- 
- 		/* check if device is detected by inter-connect layer */
- 		if (!ret && !ufshcd_is_device_present(hba)) {
--			ufshcd_update_reg_hist(&hba->ufs_stats.link_startup_err,
-+			ufshcd_update_evt_hist(hba,
-+					       UFS_EVT_LINK_STARTUP_FAIL,
- 					       0);
- 			dev_err(hba->dev, "%s: Device not present\n", __func__);
- 			ret = -ENXIO;
-@@ -4513,7 +4524,8 @@ static int ufshcd_link_startup(struct ufs_hba *hba)
- 		 * succeeds. So reset the local Uni-Pro and try again.
- 		 */
- 		if (ret && ufshcd_hba_enable(hba)) {
--			ufshcd_update_reg_hist(&hba->ufs_stats.link_startup_err,
-+			ufshcd_update_evt_hist(hba,
-+					       UFS_EVT_LINK_STARTUP_FAIL,
- 					       (u32)ret);
- 			goto out;
- 		}
-@@ -4521,7 +4533,8 @@ static int ufshcd_link_startup(struct ufs_hba *hba)
- 
- 	if (ret) {
- 		/* failed to get the link up... retire */
--		ufshcd_update_reg_hist(&hba->ufs_stats.link_startup_err,
-+		ufshcd_update_evt_hist(hba,
-+				       UFS_EVT_LINK_STARTUP_FAIL,
- 				       (u32)ret);
- 		goto out;
- 	}
-@@ -4555,7 +4568,7 @@ static int ufshcd_link_startup(struct ufs_hba *hba)
- 		dev_err(hba->dev, "link startup failed %d\n", ret);
- 		ufshcd_print_host_state(hba);
- 		ufshcd_print_pwr_info(hba);
--		ufshcd_print_host_regs(hba);
-+		ufshcd_print_evt_hist(hba);
- 	}
- 	return ret;
- }
-@@ -4910,7 +4923,7 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
- 		dev_err(hba->dev,
- 				"OCS error from controller = %x for tag %d\n",
- 				ocs, lrbp->task_tag);
--		ufshcd_print_host_regs(hba);
-+		ufshcd_print_evt_hist(hba);
- 		ufshcd_print_host_state(hba);
- 		break;
- 	} /* end of switch */
-@@ -5792,7 +5805,7 @@ static void ufshcd_err_handler(struct work_struct *work)
- 		spin_unlock_irqrestore(hba->host->host_lock, flags);
- 		ufshcd_print_host_state(hba);
- 		ufshcd_print_pwr_info(hba);
--		ufshcd_print_host_regs(hba);
-+		ufshcd_print_evt_hist(hba);
- 		ufshcd_print_tmrs(hba, hba->outstanding_tasks);
- 		ufshcd_print_trs(hba, hba->outstanding_reqs, pr_prdt);
- 		spin_lock_irqsave(hba->host->host_lock, flags);
-@@ -5937,7 +5950,7 @@ static irqreturn_t ufshcd_update_uic_error(struct ufs_hba *hba)
- 	reg = ufshcd_readl(hba, REG_UIC_ERROR_CODE_PHY_ADAPTER_LAYER);
- 	if ((reg & UIC_PHY_ADAPTER_LAYER_ERROR) &&
- 	    (reg & UIC_PHY_ADAPTER_LAYER_ERROR_CODE_MASK)) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.pa_err, reg);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_PA_ERR, reg);
- 		/*
- 		 * To know whether this error is fatal or not, DB timeout
- 		 * must be checked but this error is handled separately.
-@@ -5967,7 +5980,7 @@ static irqreturn_t ufshcd_update_uic_error(struct ufs_hba *hba)
- 	reg = ufshcd_readl(hba, REG_UIC_ERROR_CODE_DATA_LINK_LAYER);
- 	if ((reg & UIC_DATA_LINK_LAYER_ERROR) &&
- 	    (reg & UIC_DATA_LINK_LAYER_ERROR_CODE_MASK)) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.dl_err, reg);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_DL_ERR, reg);
- 
- 		if (reg & UIC_DATA_LINK_LAYER_ERROR_PA_INIT)
- 			hba->uic_error |= UFSHCD_UIC_DL_PA_INIT_ERROR;
-@@ -5986,7 +5999,7 @@ static irqreturn_t ufshcd_update_uic_error(struct ufs_hba *hba)
- 	reg = ufshcd_readl(hba, REG_UIC_ERROR_CODE_NETWORK_LAYER);
- 	if ((reg & UIC_NETWORK_LAYER_ERROR) &&
- 	    (reg & UIC_NETWORK_LAYER_ERROR_CODE_MASK)) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.nl_err, reg);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_NL_ERR, reg);
- 		hba->uic_error |= UFSHCD_UIC_NL_ERROR;
- 		retval |= IRQ_HANDLED;
- 	}
-@@ -5994,7 +6007,7 @@ static irqreturn_t ufshcd_update_uic_error(struct ufs_hba *hba)
- 	reg = ufshcd_readl(hba, REG_UIC_ERROR_CODE_TRANSPORT_LAYER);
- 	if ((reg & UIC_TRANSPORT_LAYER_ERROR) &&
- 	    (reg & UIC_TRANSPORT_LAYER_ERROR_CODE_MASK)) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.tl_err, reg);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_TL_ERR, reg);
- 		hba->uic_error |= UFSHCD_UIC_TL_ERROR;
- 		retval |= IRQ_HANDLED;
- 	}
-@@ -6002,7 +6015,7 @@ static irqreturn_t ufshcd_update_uic_error(struct ufs_hba *hba)
- 	reg = ufshcd_readl(hba, REG_UIC_ERROR_CODE_DME);
- 	if ((reg & UIC_DME_ERROR) &&
- 	    (reg & UIC_DME_ERROR_CODE_MASK)) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.dme_err, reg);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_DME_ERR, reg);
- 		hba->uic_error |= UFSHCD_UIC_DME_ERROR;
- 		retval |= IRQ_HANDLED;
- 	}
-@@ -6044,7 +6057,8 @@ static irqreturn_t ufshcd_check_errors(struct ufs_hba *hba)
- 	irqreturn_t retval = IRQ_NONE;
- 
- 	if (hba->errors & INT_FATAL_ERRORS) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.fatal_err, hba->errors);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_FATAL_ERR,
-+				       hba->errors);
- 		queue_eh_work = true;
- 	}
- 
-@@ -6061,7 +6075,7 @@ static irqreturn_t ufshcd_check_errors(struct ufs_hba *hba)
- 			__func__, (hba->errors & UIC_HIBERNATE_ENTER) ?
- 			"Enter" : "Exit",
- 			hba->errors, ufshcd_get_upmcrs(hba));
--		ufshcd_update_reg_hist(&hba->ufs_stats.auto_hibern8_err,
-+		ufshcd_update_evt_hist(hba, UFS_EVT_AUTO_HIBERN8_ERR,
- 				       hba->errors);
- 		ufshcd_set_link_broken(hba);
- 		queue_eh_work = true;
-@@ -6602,7 +6616,7 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
- 
- out:
- 	hba->req_abort_count = 0;
--	ufshcd_update_reg_hist(&hba->ufs_stats.dev_reset, (u32)err);
-+	ufshcd_update_evt_hist(hba, UFS_EVT_DEV_RESET, (u32)err);
- 	if (!err) {
- 		err = SUCCESS;
- 	} else {
-@@ -6739,7 +6753,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 	 * handling stage: reset and restore.
- 	 */
- 	if (lrbp->lun == UFS_UPIU_UFS_DEVICE_WLUN) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.task_abort, lrbp->lun);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_ABORT, lrbp->lun);
- 		return ufshcd_eh_host_reset_handler(cmd);
- 	}
- 
-@@ -6765,8 +6779,8 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 	 */
- 	scsi_print_command(hba->lrb[tag].cmd);
- 	if (!hba->req_abort_count) {
--		ufshcd_update_reg_hist(&hba->ufs_stats.task_abort, tag);
--		ufshcd_print_host_regs(hba);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_ABORT, tag);
-+		ufshcd_print_evt_hist(hba);
- 		ufshcd_print_host_state(hba);
- 		ufshcd_print_pwr_info(hba);
- 		ufshcd_print_trs(hba, 1 << tag, true);
-@@ -6849,7 +6863,7 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
- out:
- 	if (err)
- 		dev_err(hba->dev, "%s: Host init failed %d\n", __func__, err);
--	ufshcd_update_reg_hist(&hba->ufs_stats.host_reset, (u32)err);
-+	ufshcd_update_evt_hist(hba, UFS_EVT_HOST_RESET, (u32)err);
- 	return err;
- }
- 
-@@ -8689,7 +8703,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	hba->pm_op_in_progress = 0;
- 
- 	if (ret)
--		ufshcd_update_reg_hist(&hba->ufs_stats.suspend_err, (u32)ret);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_SUSPEND_ERR, (u32)ret);
- 	return ret;
- }
- 
-@@ -8813,7 +8827,7 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- out:
- 	hba->pm_op_in_progress = 0;
- 	if (ret)
--		ufshcd_update_reg_hist(&hba->ufs_stats.resume_err, (u32)ret);
-+		ufshcd_update_evt_hist(hba, UFS_EVT_RESUME_ERR, (u32)ret);
- 	return ret;
- }
- 
-@@ -9265,7 +9279,7 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 	err = ufshcd_hba_enable(hba);
- 	if (err) {
- 		dev_err(hba->dev, "Host controller enable failed\n");
--		ufshcd_print_host_regs(hba);
-+		ufshcd_print_evt_hist(hba);
- 		ufshcd_print_host_state(hba);
- 		goto free_tmf_queue;
- 	}
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 384a042ccb46..b55a71c10fa6 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -58,6 +58,29 @@ enum dev_cmd_type {
- 	DEV_CMD_TYPE_QUERY		= 0x1,
- };
- 
-+enum ufs_event_type {
-+	/* uic specific errors */
-+	UFS_EVT_PA_ERR = 0,
-+	UFS_EVT_DL_ERR,
-+	UFS_EVT_NL_ERR,
-+	UFS_EVT_TL_ERR,
-+	UFS_EVT_DME_ERR,
-+
-+	/* fatal errors */
-+	UFS_EVT_AUTO_HIBERN8_ERR,
-+	UFS_EVT_FATAL_ERR,
-+	UFS_EVT_LINK_STARTUP_FAIL,
-+	UFS_EVT_RESUME_ERR,
-+	UFS_EVT_SUSPEND_ERR,
-+
-+	/* abnormal events */
-+	UFS_EVT_DEV_RESET,
-+	UFS_EVT_HOST_RESET,
-+	UFS_EVT_ABORT,
-+
-+	UFS_EVT_CNT,
-+};
-+
- /**
-  * struct uic_command - UIC command structure
-  * @command: UIC command
-@@ -409,17 +432,17 @@ struct ufs_clk_scaling {
- 	bool is_suspended;
- };
- 
--#define UFS_ERR_REG_HIST_LENGTH 8
-+#define UFS_EVENT_HIST_LENGTH 8
- /**
-- * struct ufs_err_reg_hist - keeps history of errors
-+ * struct ufs_event_hist - keeps history of errors
-  * @pos: index to indicate cyclic buffer position
-  * @reg: cyclic buffer for registers value
-  * @tstamp: cyclic buffer for time stamp
-  */
--struct ufs_err_reg_hist {
-+struct ufs_event_hist {
- 	int pos;
--	u32 reg[UFS_ERR_REG_HIST_LENGTH];
--	ktime_t tstamp[UFS_ERR_REG_HIST_LENGTH];
-+	u32 val[UFS_EVENT_HIST_LENGTH];
-+	ktime_t tstamp[UFS_EVENT_HIST_LENGTH];
- };
- 
- /**
-@@ -430,19 +453,6 @@ struct ufs_err_reg_hist {
-  *		reset this after link-startup.
-  * @last_hibern8_exit_tstamp: Set time after the hibern8 exit.
-  *		Clear after the first successful command completion.
-- * @pa_err: tracks pa-uic errors
-- * @dl_err: tracks dl-uic errors
-- * @nl_err: tracks nl-uic errors
-- * @tl_err: tracks tl-uic errors
-- * @dme_err: tracks dme errors
-- * @auto_hibern8_err: tracks auto-hibernate errors
-- * @fatal_err: tracks fatal errors
-- * @linkup_err: tracks link-startup errors
-- * @resume_err: tracks resume errors
-- * @suspend_err: tracks suspend errors
-- * @dev_reset: tracks device reset events
-- * @host_reset: tracks host reset events
-- * @tsk_abort: tracks task abort events
-  */
- struct ufs_stats {
- 	u32 last_intr_status;
-@@ -450,25 +460,7 @@ struct ufs_stats {
- 
- 	u32 hibern8_exit_cnt;
- 	ktime_t last_hibern8_exit_tstamp;
--
--	/* uic specific errors */
--	struct ufs_err_reg_hist pa_err;
--	struct ufs_err_reg_hist dl_err;
--	struct ufs_err_reg_hist nl_err;
--	struct ufs_err_reg_hist tl_err;
--	struct ufs_err_reg_hist dme_err;
--
--	/* fatal errors */
--	struct ufs_err_reg_hist auto_hibern8_err;
--	struct ufs_err_reg_hist fatal_err;
--	struct ufs_err_reg_hist link_startup_err;
--	struct ufs_err_reg_hist resume_err;
--	struct ufs_err_reg_hist suspend_err;
--
--	/* abnormal events */
--	struct ufs_err_reg_hist dev_reset;
--	struct ufs_err_reg_hist host_reset;
--	struct ufs_err_reg_hist task_abort;
-+	struct ufs_event_hist event[UFS_EVT_CNT];
- };
- 
- enum ufshcd_quirks {
-@@ -912,8 +904,7 @@ int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
- 				u32 val, unsigned long interval_us,
- 				unsigned long timeout_ms);
- void ufshcd_parse_dev_ref_clk_freq(struct ufs_hba *hba, struct clk *refclk);
--void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
--			    u32 reg);
-+void ufshcd_update_evt_hist(struct ufs_hba *hba, u32 id, u32 val);
- 
- static inline void check_upiu_size(void)
- {
-@@ -1219,7 +1210,7 @@ static inline void ufshcd_vops_device_reset(struct ufs_hba *hba)
- 		if (!err)
- 			ufshcd_set_ufs_dev_active(hba);
- 		if (err != -EOPNOTSUPP)
--			ufshcd_update_reg_hist(&hba->ufs_stats.dev_reset, err);
-+			ufshcd_update_evt_hist(hba, UFS_EVT_DEV_RESET, err);
- 	}
- }
- 
--- 
-2.18.0
+Ideally the compiler should drop these functions/datas entirely then.
+
+>         SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
+> --
+> 2.27.0
+>
+
+Kind regards
+Uffe
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
