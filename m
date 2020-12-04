@@ -2,75 +2,73 @@ Return-Path: <SRS0=yJvo=FI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1C4CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 09:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5718AC4361A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 09:53:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 77CB1227C3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 09:53:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77CB1227C3
+	by mail.kernel.org (Postfix) with ESMTPS id E988822838
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 09:53:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E988822838
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=T92Gb2gqOoRqfTblF4rArPC3eGjYT0177UPNaV05tv0=; b=A190IYq2p3o9akCPJTt82vE4d
-	BUNcgoNx0UU3dr0VibeisxjB7fgNfz30kosr5c6Hc7dn0SopNs3FnCB19Eq7gFdipPPztzL68B4Ra
-	mpF/7GdeT/Lk+9P6YBLzoxtf+kONGUhb5EO6zj+rsM+abTWmAUU6tg6oAqTKTxevZ2/w6wa3869y4
-	8ANkMRtU0C3jhGVPqtZ8FDr0Hs4YlWghoakN+zsVN3++VjOnUDilSVGqzsJr6po5ieBNuvA00lAGK
-	Lg1t+MAqTYWo7sjoXsK1FbxEcm2amb5+JcK3GhgIspEPqq29KvHqhUAnM6AeRPF1InbQ2YWCDxrXd
-	D2f11XMag==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=w+iQOzBIdwcZXMdsAONjrVz0F/Q8ye4V+Yhq0uDTsyU=; b=O7V3tplUJknhzPC/oqOvNeHpj0
+	5GDTbWeAdca+DkKUqM3RE6BzFEbVyCMt6i6T8LiSXRsWhWv9QnLKWAUzB5boabghAmGm5IpHZf1RN
+	Uy1rsLPqkSJWQEqmahd4dzq6dJdVVg4a/Z0F2g+c8wvJIL1FRIt/XgJpSbBIT96C2+crl17Mqe+UR
+	koAVYGPNLxmGBHiBSQPcDUU+abu0InPRIsxVULJpA8R8kyL+wrZLlOGEF6Z15OdebZOm0YDk6f3xT
+	ZIT1DTfu3MDVzRfVojmzsjLzpJjAmgNjBmSwBYs2HIOdofHKh1ZPOWCXiz0gbQA1gctir5Na4N/dO
+	v8+cnNog==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl7m4-0002XS-D1; Fri, 04 Dec 2020 09:53:12 +0000
+	id 1kl7mA-0002Z4-3u; Fri, 04 Dec 2020 09:53:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl7lx-0002VQ-W0; Fri, 04 Dec 2020 09:53:07 +0000
-X-UUID: cb0ae1a076a948f68742cfad15855113-20201204
+ id 1kl7lz-0002VP-8q; Fri, 04 Dec 2020 09:53:08 +0000
+X-UUID: 24467a889dfc4456a8d3308a9d86d709-20201204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=BpKAYzxoTlyApqrwt3BBoQOUoZka5Cxh59yW+1BNECM=; 
- b=mKjZrpj+B8LwnCmEBzA2XkNTdBRAATS3pEsKM4HGVNllKj2L78uohIw4c4x2vViRvpHSgBPG4qWFve0RKGfaWnkyMhB0RwrMV7pOQItL2Zxf1HdbK+x7ivXC6dS+v8qmYXVo9nk8a4qtToGKsU95XrgUXsBxDBPnk0DFnmRYB+k=;
-X-UUID: cb0ae1a076a948f68742cfad15855113-20201204
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=FCtZXdBWhCqu46svb1qEjZeZ/CAqZi5wiUZBlRXEPTg=; 
+ b=ErOFi4C84jf8jeqcAg3xttzXst8rum34orTvGoVuKkWs7fQ8WmlwLwO0+LoAgFJzjwQaofTfEKRtAwIVeCxY2gJ3s67WU09n4a1jhg092kvALP5JbW+6FyNv/WC8Av+2d6j91D8Gs8bF/yIvXKtwcXd7HNKO1SqjtZsbmC4eM6Y=;
+X-UUID: 24467a889dfc4456a8d3308a9d86d709-20201204
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1674210396; Fri, 04 Dec 2020 01:52:48 -0800
+ with ESMTP id 968899203; Fri, 04 Dec 2020 01:52:48 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Dec 2020 01:50:16 -0800
+ 15.0.1497.2; Fri, 4 Dec 2020 01:50:15 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Dec 2020 17:50:08 +0800
+ 15.0.1497.2; Fri, 4 Dec 2020 17:50:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Dec 2020 17:50:06 +0800
+ Frontend Transport; Fri, 4 Dec 2020 17:50:05 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v3 7/8] scsi: ufs: Introduce event_notify variant function
-Date: Fri, 4 Dec 2020 17:50:06 +0800
-Message-ID: <20201204095007.20639-8-stanley.chu@mediatek.com>
+Subject: [PATCH v3 0/8] Refine error history and introduce event_notify vop
+Date: Fri, 4 Dec 2020 17:49:59 +0800
+Message-ID: <20201204095007.20639-1-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201204095007.20639-1-stanley.chu@mediatek.com>
-References: <20201204095007.20639-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 024531E2C4CC7D34CC95744E369AA8D6B7D181B19CA48BF999D1145B397BC9152000:8
+X-TM-SNTS-SMTP: E9CA04517EA506731A4081A1E3F223875F831D9094E0AEB5CE6F1301E2DFB8A92000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_045306_170237_BC09C0B1 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20201204_045307_463823_C092AFD8 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,66 +92,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce event_notify variant function to allow
-vendor to get notification of important events and connect
-to any proprietary debugging facilities.
+Hi,
+This series refines error history functions, do vop cleanups and introduce a new event_notify vop to allow vendor to get notification of important events.
 
-Reviewed-by: Can Guo <cang@codeaurora.org>
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c |  2 ++
- drivers/scsi/ufs/ufshcd.h | 11 +++++++++++
- 2 files changed, 13 insertions(+)
+Changes since v2:
+  - Add patches for vop cleanups
+  - Introduce phy_initialization helper and replace direct invoking in ufs-cdns and ufs-dwc drivers/scsi/ufs/cdns-pltfrm
+  - Introduce event_notify vop implemntation in ufs-mediatek
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 1a7d31849511..6e72c0543c7b 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4480,6 +4480,8 @@ void ufshcd_update_evt_hist(struct ufs_hba *hba, u32 id, u32 val)
- 	e->val[e->pos] = val;
- 	e->tstamp[e->pos] = ktime_get();
- 	e->pos = (e->pos + 1) % UFS_EVENT_HIST_LENGTH;
-+
-+	ufshcd_vops_event_notify(hba, id, &val);
- }
- EXPORT_SYMBOL_GPL(ufshcd_update_evt_hist);
- 
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index b55a71c10fa6..8c44929bed53 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -319,6 +319,7 @@ struct ufs_pwr_mode_info {
-  * @phy_initialization: used to initialize phys
-  * @device_reset: called to issue a reset pulse on the UFS device
-  * @program_key: program or evict an inline encryption key
-+ * @event_notify: called to notify important events
-  */
- struct ufs_hba_variant_ops {
- 	const char *name;
-@@ -353,6 +354,8 @@ struct ufs_hba_variant_ops {
- 					void *data);
- 	int	(*program_key)(struct ufs_hba *hba,
- 			       const union ufs_crypto_cfg_entry *cfg, int slot);
-+	void	(*event_notify)(struct ufs_hba *hba,
-+				enum ufs_event_type evt, void *data);
- };
- 
- /* clock gating state  */
-@@ -1100,6 +1103,14 @@ static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba,
- 	return 0;
- }
- 
-+static inline void ufshcd_vops_event_notify(struct ufs_hba *hba,
-+					    enum ufs_event_type evt,
-+					    void *data)
-+{
-+	if (hba->vops && hba->vops->event_notify)
-+		hba->vops->event_notify(hba, evt, data);
-+}
-+
- static inline int ufshcd_vops_setup_clocks(struct ufs_hba *hba, bool on,
- 					enum ufs_notify_change_status status)
- {
+Changes since v1:
+  - Change notify_event() to event_notify() to follow vop naming covention
+
+Stanley Chu (8):
+  scsi: ufs: Remove unused setup_regulators variant function
+  scsi: ufs: Introduce phy_initialization helper
+  scsi: ufs-cdns: Use phy_initialization helper
+  scsi: ufs-dwc: Use phy_initialization helper
+  scsi: ufs: Add error history for abort event in UFS Device W-LUN
+  scsi: ufs: Refine error history functions
+  scsi: ufs: Introduce event_notify variant function
+  scsi: ufs-mediatek: Introduce event_notify implementation
+
+ drivers/scsi/ufs/cdns-pltfrm.c        |   3 +-
+ drivers/scsi/ufs/ufs-mediatek-trace.h |  37 ++++++++
+ drivers/scsi/ufs/ufs-mediatek.c       |  10 ++
+ drivers/scsi/ufs/ufshcd-dwc.c         |  11 +--
+ drivers/scsi/ufs/ufshcd.c             | 132 ++++++++++++++------------
+ drivers/scsi/ufs/ufshcd.h             | 100 +++++++++----------
+ 6 files changed, 173 insertions(+), 120 deletions(-)
+ create mode 100644 drivers/scsi/ufs/ufs-mediatek-trace.h
+
 -- 
 2.18.0
 _______________________________________________
