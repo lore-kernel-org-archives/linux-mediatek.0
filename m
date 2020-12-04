@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BEF8BC4361A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 01:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 93B96C4361A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 02:15:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30AED224F9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 01:59:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30AED224F9
+	by mail.kernel.org (Postfix) with ESMTPS id C265822512
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 02:15:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C265822512
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,51 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mOYhIXmNiDYojK2LF+qEqOuTD2WUoY7lQdsEVpdAXzA=; b=ajiIVuPyd4TK447K7IZSbyN2V
-	FvnGOm965XvLnHRSCa5ipAxOr3UQ6OBui994lUX2n0oftmhZJi/NmjPy0D8z+SSXj8iyelcAiHf3l
-	/TEw9YYVFv+OpKoF2IK4m1s/K1sy7casQvEh/DvIT3sqKOjDYBqNInGHOjE8izqyD9vFEktDUaR5c
-	u2aMEiKXVk67f3ZT+M3dnF0RpMUhFYvaIH8bRDwXZ5gfa0bUAyrvyY7igVsjrLivt5gp8akx3vGnJ
-	L2LFU5RYvLDSEmrifUcHZzrOdjWSHCdCMzf6SrxwyF2uldCmNRvFZVE9v4BNPWc4n5F8LB1KxHPj5
-	L2UXbP2Sw==;
+	 bh=WC+1Ck3/CxBCIgh57hxwCEZ1Yvb2BLUVpOWNu4iqEP0=; b=NtWRyau7QTat3dwb9+UbBrWyv
+	RRBsBkX9F8a8V+WDLiP6z0tY1/Hgb30eaS1gnOGwDBYj/EGMOt11n9S/UWe5RsfNgdLFhxlqcGau3
+	ZFDBlxaVINA1YFHkqqtZ9kxyDRXNo0s/wnXfOH4p5umiZ/H7XKjcoYkLPIDd/emovixfLNqQ3Pcgg
+	S8+ytgAv/EpStOd/fpSzE3Wfg1khZymt9vjJr52aJ04YEGeNYpy4M6KwsTXR0m9TL2MQXdVrHH7GD
+	BKYFlK8lkJyltBSqQNhkcJbuhTwIWGifm1tya9zuEU4DuJIV9P+XrSWCNYowQecUoDm847OrPPocc
+	nmTK+WGxA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl0NF-0005jo-Du; Fri, 04 Dec 2020 01:59:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kl0ca-0006yq-AJ; Fri, 04 Dec 2020 02:14:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl0NB-0005jJ-MP; Fri, 04 Dec 2020 01:59:04 +0000
-X-UUID: 86ee7d8f9de84728b57d721936b9cb3a-20201203
+ id 1kl0cX-0006yM-Q4
+ for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 02:14:55 +0000
+X-UUID: 08f9771b65734a6e823e32e0fa357234-20201203
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=JDygK9+MlAzqYjO/vOov/ICG+of3dViKIL//ICXqI+c=; 
- b=ZISH7iwdaGKul0mGgngyE8y6gio1Bwm2KXBv6OiHW38Sf9eGFLrKaH+MeuztTNfkWur7yGP7ZRir+2IEB38vo3qfNpK0K1BUh8esawEkaL/ous9/6jeL6FbTjg34ZHEYA6shlfAh+l5ZoBILX4CmnlhTyxH2mVKHKhvJoeHe9d4=;
-X-UUID: 86ee7d8f9de84728b57d721936b9cb3a-20201203
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=xs9eF5fglSIsmijGZu14F0E5pV9HzptzLHDNcPvVCIs=; 
+ b=CXPUXZL4sLCAlfchrwMoUS3XmNCzDl34SrYXGro6+x/pC/46Zwn+p/WdSzeSi1bYV6amD+rcDGQ8cl+3M/GUP2YojgUlXnMS9dghtM1irKuFl580HwrQVrNxkn+m1Y7kqNVS3M0KG+I6ADctDQM4lhkHPIJKmFXcxeo5BxzQwKo=;
+X-UUID: 08f9771b65734a6e823e32e0fa357234-20201203
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1286846522; Thu, 03 Dec 2020 17:52:44 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Dec 2020 17:47:08 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n1.mediatek.inc
- (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 4 Dec 2020 09:47:05 +0800
+ with ESMTP id 857104597; Thu, 03 Dec 2020 18:14:43 -0800
+Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Dec 2020 18:07:58 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
+ (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 4 Dec 2020 10:07:56 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 4 Dec 2020 09:47:04 +0800
-Message-ID: <1607046425.7284.17.camel@mhfsdcap03>
-Subject: Re: [PATCH] phy: mediatek: allow compile-testing the hdmi phy
+ Transport; Fri, 4 Dec 2020 10:07:56 +0800
+Message-ID: <1607047676.7284.18.camel@mhfsdcap03>
+Subject: Re: [PATCH 2/2] usb: mtu3: mtu3_debug: remove an unused struct member
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Arnd Bergmann <arnd@kernel.org>
-Date: Fri, 4 Dec 2020 09:47:05 +0800
-In-Reply-To: <20201203225418.1477560-1-arnd@kernel.org>
-References: <20201203225418.1477560-1-arnd@kernel.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Date: Fri, 4 Dec 2020 10:07:56 +0800
+In-Reply-To: <X8ikv1QA3Do50D+R@mwanda>
+References: <X8ikv1QA3Do50D+R@mwanda>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: AC0B05F042C3094CF0C98DC0756865E872A5F19AB13B6FEF8FDFC73BD9F1C23B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_205902_593842_FFF4A795 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20201203_211454_043958_A66F373D 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,55 +81,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Arnd Bergmann <arnd@arndb.de>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, CK Hu <ck.hu@mediatek.com>,
- Vinod Koul <vkoul@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel-janitors@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-12-03 at 23:54 +0100, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
+On Thu, 2020-12-03 at 11:41 +0300, Dan Carpenter wrote:
+> The "nregs" member is not used.  The code uses the "regset.nregs"
+> struct member instead.
 > 
-> Compile-testing the DRM_MEDIATEK_HDMI driver leads to a harmless
-> warning:
-> 
-> WARNING: unmet direct dependencies detected for PHY_MTK_HDMI
->   Depends on [n]: ARCH_MEDIATEK [=n] && OF [=y]
->   Selected by [y]:
->   - DRM_MEDIATEK_HDMI [=y] && HAS_IOMEM [=y] && DRM_MEDIATEK [=y]
-> 
-> The driver builds fine, so allow compile-testing it as well
-> to get rid of the warning.
-> 
-> Fixes: b28be59a2e26 ("phy: mediatek: Move mtk_hdmi_phy driver into drivers/phy/mediatek folder")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 > ---
->  drivers/phy/mediatek/Kconfig | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  drivers/usb/mtu3/mtu3_debug.h | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-> index 65ed26e40c9f..29a85b2738f8 100644
-> --- a/drivers/phy/mediatek/Kconfig
-> +++ b/drivers/phy/mediatek/Kconfig
-> @@ -40,7 +40,9 @@ config PHY_MTK_XSPHY
->  
->  config PHY_MTK_HDMI
->  	tristate "MediaTek HDMI-PHY Driver"
-> -	depends on ARCH_MEDIATEK && OF
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on COMMON_CLK
-Seems no need add COMMON_CLK here
+> diff --git a/drivers/usb/mtu3/mtu3_debug.h b/drivers/usb/mtu3/mtu3_debug.h
+> index 3084c46017c3..9a36134b322d 100644
+> --- a/drivers/usb/mtu3/mtu3_debug.h
+> +++ b/drivers/usb/mtu3/mtu3_debug.h
+> @@ -19,7 +19,6 @@ struct ssusb_mtk;
+>  struct mtu3_regset {
+>  	char name[MTU3_DEBUGFS_NAME_LEN];
+>  	struct debugfs_regset32 regset;
+> -	size_t nregs;
+>  };
+Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-> +	depends on OF
->  	select GENERIC_PHY
->  	help
->  	  Support HDMI PHY for Mediatek SoCs.
+Thanks a lot
+
+>  
+>  struct mtu3_file_map {
 
 _______________________________________________
 Linux-mediatek mailing list
