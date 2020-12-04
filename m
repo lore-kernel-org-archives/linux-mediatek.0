@@ -2,66 +2,78 @@ Return-Path: <SRS0=yJvo=FI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11188C4361A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBFB9C4361A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:57:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 51D972251E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:42:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51D972251E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mclink.it
+	by mail.kernel.org (Postfix) with ESMTPS id CB0B4229EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 10:57:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB0B4229EF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
-	:List-Id:MIME-Version:Date:Message-ID:Subject:From:To:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rKLRAW+PZJpQ12Tvjvv/SmU1H33vK6TzseAo5LVFZow=; b=IfqhQufsxu9Yr9+hv/L7bSPfBi
-	bET2WRb5tTLSUZZJqVMacbt5mRoLBZ1WsvRYiHzavjQ4XmbFaBfFzzeKd0GhK8qPMdOs5EaoRmpfo
-	nUsj/hXbls0bkJcg+EaIMUCjq+GgXx2DjGYHlC/akjXzWG3brxxs3JIcBCVBxX+wcjePGc4EebQzx
-	p4QFu5gXabS/42aMOdldh9NCWNzDbEgd+g5687xPyg63p2uLjfdbOUV9MPyv0S2LD5bhHwNxBoFxZ
-	2fvTGOBJvCuE7f+QGg/qaVZgK1bmPn8ubKNFNAZk7pqakX239ZJwQd7FG+OfeTc+KIZi2GsyngPAD
-	j/pzCcXA==;
+	:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p1zIKqXxTnjMOavhreHgewLPn8dDXRu345+SrjNPK78=; b=VHJeOrJirat5wT4VzfucynfPsL
+	kJTesO4CFC/5bMGW46LCXbeCWOKOfVlTvsfkObzqXy1NAVInmyAY01X+EV1BBUgm/vDMWFQi7SvnA
+	fCy8C4I9FkLeli0RhVLoFWJ0eU/hVc78gtDNh9Xr08P1vZXiRq2rqS3DlrLwyONjPOz07ic6lNvbR
+	8l8qs301InY/RM/x7LzvBzjH7H+dBuZozYQ3ksBJHOZPDVcpDIJvWKui4E4R7p1hto7S8fqkCEm5M
+	gTwb/ZSsStkBLi+5n0I1371xnT5kIdeYEXc/169MlKWDPJ3+3s0kGYUjpWRbK51xG3dABoUkukE3r
+	zDQ8icxQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl8Xr-00088W-CN; Fri, 04 Dec 2020 10:42:35 +0000
-Received: from relaygw4-21.mclink.it ([195.78.211.247])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl8Xo-00087f-Hy
- for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 10:42:33 +0000
-Received: from [172.24.30.46] (HELO cgp-esgout03-rm.mail.irds.it)
- by relaygw4-21.mclink.it (CommuniGate Pro SMTP 6.0.6)
- with ESMTPS id 193380560 for linux-mediatek@lists.infradead.org;
- Fri, 04 Dec 2020 11:42:25 +0100
-X-Envelope-From: <mc5686@mclink.it>
-Received: from [192.168.7.128] (host-87-10-221-96.retail.telecomitalia.it
- [87.10.221.96]) (Authenticated sender: mc5686)
- by cgp-esgout03-rm.mail.irds.it (Postfix) with ESMTPA id ED0E641B6C
- for <linux-mediatek@lists.infradead.org>; Fri,  4 Dec 2020 11:42:04 +0100 (CET)
-To: linux-mediatek@lists.infradead.org
-From: Mauro Condarelli <mc5686@mclink.it>
-Subject: Status of rt3050-esw driver
-Message-ID: <c5625076-7533-86e8-ef5b-7248b62977d7@mclink.it>
-Date: Fri, 4 Dec 2020 11:42:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+	id 1kl8lh-0000yD-S1; Fri, 04 Dec 2020 10:56:53 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kl8ld-0000vu-C5
+ for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 10:56:50 +0000
+Received: from lupine.hi.pengutronix.de
+ ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1kl8lS-0004Tj-Og; Fri, 04 Dec 2020 11:56:38 +0100
+Received: from pza by lupine with local (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1kl8lM-0006gu-8p; Fri, 04 Dec 2020 11:56:32 +0100
+Message-ID: <2c36ef4c2d022f6f83ec5c78a951d5e76f95378e.camel@pengutronix.de>
+Subject: Re: [PATCH 1/5] media: dt-bindings: add the required property
+ 'additionalProperties'
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Zhen Lei <thunder.leizhen@huawei.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Karol Gugala
+ <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, Pawel Czarnecki
+ <pczarnecki@internships.antmicro.com>,  Stafford Horne <shorne@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones
+ <lee.jones@linaro.org>,  linux-media <linux-media@vger.kernel.org>,
+ linux-serial <linux-serial@vger.kernel.org>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, devicetree
+ <devicetree@vger.kernel.org>,  linux-kernel <linux-kernel@vger.kernel.org>
+Date: Fri, 04 Dec 2020 11:56:32 +0100
+In-Reply-To: <20201204093813.1275-2-thunder.leizhen@huawei.com>
+References: <20201204093813.1275-1-thunder.leizhen@huawei.com>
+ <20201204093813.1275-2-thunder.leizhen@huawei.com>
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-Content-Language: en-US
-X-Irideos-Libra-ESVA-Information: Please contact Irideos for more information
-X-Irideos-Libra-ESVA-ID: ED0E641B6C.A8FB7
-X-Irideos-Libra-ESVA: No virus found
-X-Irideos-Libra-ESVA-From: mc5686@mclink.it
-X-Irideos-Libra-ESVA-Watermark: 1607683325.70215@I2UvUN7PM0XfNue4SmM2rw
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_054232_802203_3AED4E83 
-X-CRM114-Status: UNSURE (   7.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201204_055649_466353_A5F16602 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,20 +90,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-I am very confused about the current status of the driver of internal switch in Subject.
-My need is to statically initialize the ESW found in MT7628 SoC.
+On Fri, 2020-12-04 at 17:38 +0800, Zhen Lei wrote:
+> When I do dt_binding_check for any YAML file, below wanring is always
+> reported:
+> 
+> xxx/media/coda.yaml: 'additionalProperties' is a required property
+> xxx/media/coda.yaml: ignoring, error in schema:
+> warning: no schema found in file: xxx/media/coda.yaml
+> 
+> There are three properties defined in allOf, they should be explicitly
+> declared. Otherwise, "additionalProperties: false" will prohibit them.
+> 
+> Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
 
-I have found several references (some rather old) to some work from John Crispin and other developers, but apparently this work did never found its way in the kernel (but socumentation is there in Documentation/devicetree/bindings/net/ralink,rt3050-esw.txt !) because it doesn't seem to conform to kernel guidelines (using DSA infrastructure).
+Thank you, there already is a patch to fix this:
 
-I have been using a derivative of this driver from Stefan Roese, but it "stopped working" some time ago.
-I actually use mostly WiFi and thus breakage, happening in some kernel upgrade, went completely unnoticed till recently.
-I am fighting to find out exactly where I broke things, but this spawned a search and I'm now wondering if there's a better (and more robust) way to enable MT7628 ESW.
+https://lore.kernel.org/linux-media/20201117200752.4004368-1-robh@kernel.org/
 
-Any hint and/or pointer to relevant documentation would be very welcome.
-
-Thanks in Advance
-Mauro Condarelli
+regards
+Philipp
 
 _______________________________________________
 Linux-mediatek mailing list
