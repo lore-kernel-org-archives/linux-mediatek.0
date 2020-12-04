@@ -2,77 +2,73 @@ Return-Path: <SRS0=yJvo=FI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-23.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DD81C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 02:44:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F41FC4361B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 02:44:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B00F224B8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 02:44:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B00F224B8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	by mail.kernel.org (Postfix) with ESMTPS id 061D7224B8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Dec 2020 02:44:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 061D7224B8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/JGvsiNOg6qgjPJbORAYlzIgFSkAHE+VPuZpmwCa5lA=; b=B8M2JZpK82yRIESoZW8raQ0G4
-	rW+qZ06BqcaZ4VNgcsqfbMvNRaRpBKGjrz24zrxVf+mWoegzrkGN4S41Hp+azlOoWgqME8/tsRhQj
-	WGMme/D+gLVq6WBWl3Eo08wbI9LQxqa1yEdRbQYJuikk85ELMuMhiOuMExFdEHGuRzKMt3PNdqm2a
-	yDjH8BZudT/O8hgjrmOtiVuEwaksJJoBSf0ceHfZQrzdC5GYkibbNyKSntdItA1Mjrq479oweR5rB
-	2zv+mSRH8S3Q7aTaPJYbpneUOHR1dxX01HKeogT57X7EZyvcC3EWwwm15KEZPuE+i9GkCdL8G2jrw
-	U8CvOXjLg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4ZSnT1UWqdfgWa7AmNUIHBZ6qATKxifsMM4y0UZttRM=; b=VlU/f69USx8xzRd3rP4XwHpnYH
+	HuDDxvfaQA9ZXZvLpvn/aUICpSgums5G6mcjzI4cIJ2DnmIIv3nlKsVJ8Jjrtuw39ssqKntTU3xB0
+	2IlsqdpdYtVFzO4jwNGe6D+7IaBP6Y0x9TbPDDDVw2daGluoDvZX7MZU6W5qZWqPg63ID5ZrVeBIW
+	9+26EY3cUYTV1qY4LIuzp2lSoMZo3bU1l3IAiIgJgUTnGkwF5Tu5snA2SyXguxR3OnrNctTJNsBRK
+	GiYUl0wtreaEZBANniUok8fNa4DbhAXsYVveQHXMLTt9AUr5ZGeXy1kT6S/n9Shogf7+1j8KUWP9r
+	LuMXgUxw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl14i-0000L4-5f; Fri, 04 Dec 2020 02:44:00 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1kl14j-0000Lw-BG; Fri, 04 Dec 2020 02:44:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl14W-0000HK-5K; Fri, 04 Dec 2020 02:43:50 +0000
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CnH7b2Y2tzkkxZ;
- Fri,  4 Dec 2020 10:43:07 +0800 (CST)
-Received: from thunder-town.china.huawei.com (10.174.177.9) by
- DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.487.0; Fri, 4 Dec 2020 10:43:34 +0800
-From: Zhen Lei <thunder.leizhen@huawei.com>
-To: Rob Herring <robh+dt@kernel.org>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- "NXP Linux Team" <linux-imx@nxp.com>, David Airlie <airlied@linux.ie>,
- "Daniel Vetter" <daniel@ffwll.ch>, Sumit Semwal <sumit.semwal@linaro.org>,
- "Thierry Reding" <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, 
- "Hans Verkuil" <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, "Ricardo
- Ribalda" <ribalda@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, Liam Girdwood
- <lgirdwood@gmail.com>, "Mark Brown" <broonie@kernel.org>, linux-clk
- <linux-clk@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-kernel
- <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>,
- linux-media <linux-media@vger.kernel.org>, linux-mmc
- <linux-mmc@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, alsa-devel
- <alsa-devel@alsa-project.org>
-Subject: [PATCH 1/1] dt-bindings: eliminate yamllint warnings
-Date: Fri, 4 Dec 2020 10:42:26 +0800
-Message-ID: <20201204024226.1222-2-thunder.leizhen@huawei.com>
-X-Mailer: git-send-email 2.26.0.windows.1
-In-Reply-To: <20201204024226.1222-1-thunder.leizhen@huawei.com>
-References: <20201204024226.1222-1-thunder.leizhen@huawei.com>
+ id 1kl14c-0000JF-K6
+ for linux-mediatek@lists.infradead.org; Fri, 04 Dec 2020 02:43:56 +0000
+X-UUID: 6024173dec3c422db3065ca4d5098797-20201203
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=BOF1RXQyljLarFtu3NpN19aJNXFNaN+WUDmXzMB996E=; 
+ b=uNvjmpPgL/uo9jquVCG/hdcDEzRjHYHR1ZZo7KszpfQV0I1FmG3FWVRiHkb1ZbLm7dbyWJEe5hlS+WX7CZSdtJ3aeMnkQik9MN7XaFiUrXLXrc6zn4FxYWUUg0leNfgXr32O8nJc4J8tlc6e61AGPgKq+b40HHfOSir4e9VFLqw=;
+X-UUID: 6024173dec3c422db3065ca4d5098797-20201203
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 688052889; Thu, 03 Dec 2020 18:43:50 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Dec 2020 18:43:49 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Dec 2020 10:43:48 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 4 Dec 2020 10:43:50 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Alexey Dobriyan <adobriyan@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>
+Subject: [PATCH v3] proc: use untagged_addr() for pagemap_read addresses
+Date: Fri, 4 Dec 2020 10:43:47 +0800
+Message-ID: <20201204024347.8295-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Originating-IP: [10.174.177.9]
-X-CFilter-Loop: Reflected
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_214349_043145_325627DB 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20201203_214354_861770_F884E18D 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,301 +80,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhen Lei <thunder.leizhen@huawei.com>
+Cc: Song Bao Hua <song.bao.hua@hisilicon.com>, Marco Elver <elver@google.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, wsd_upstream@mediatek.com,
+ Andrey Konovalov <andreyknvl@google.com>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, Miles Chen <miles.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org,
+ "Eric W . Biederman" <ebiederm@xmission.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>, linux-fsdevel@vger.kernel.org,
+ Alexander Potapenko <glider@google.com>,
+ Vincenzo Frascino <vincenzo.frascino@arm.com>, Will Deacon <will@kernel.org>,
+ Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All warnings are related only to "wrong indentation", except one:
-Documentation/devicetree/bindings/media/i2c/mipi-ccs.yaml:4:1: \
-[error] missing document start "---" (document-start)
+When we try to visit the pagemap of a tagged userspace pointer, we find
+that the start_vaddr is not correct because of the tag.
+To fix it, we should untag the userspace pointers in pagemap_read().
 
-Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>
-Cc: Stephen Boyd <sboyd@kernel.org>
-Cc: Shawn Guo <shawnguo@kernel.org>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-Cc: Fabio Estevam <festevam@gmail.com>
-Cc: NXP Linux Team <linux-imx@nxp.com>
-Cc: David Airlie <airlied@linux.ie>
-Cc: Daniel Vetter <daniel@ffwll.ch>
-Cc: Sumit Semwal <sumit.semwal@linaro.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>
-Cc: Sam Ravnborg <sam@ravnborg.org>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Ricardo Ribalda <ribalda@kernel.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>
+I tested with 5.10-rc4 and the issue remains.
+
+Explanation from Catalin in [1]:
+
+:Arguably, that's a user-space bug since tagged file offsets were never
+:supported. In this case it's not even a tag at bit 56 as per the arm64
+:tagged address ABI but rather down to bit 47. You could say that the
+:problem is caused by the C library (malloc()) or whoever created the
+:tagged vaddr and passed it to this function. It's not a kernel
+:regression as we've never supported it.
+:
+:Now, pagemap is a special case where the offset is usually not generated
+:as a classic file offset but rather derived by shifting a user virtual
+:address. I guess we can make a concession for pagemap (only) and allow
+:such offset with the tag at bit (56 - PAGE_SHIFT + 3).
+
+My test code is based on [2]:
+
+A userspace pointer which has been tagged by 0xb4: 0xb400007662f541c8
+
+=== userspace program ===
+
+uint64 OsLayer::VirtualToPhysical(void *vaddr) {
+	uint64 frame, paddr, pfnmask, pagemask;
+	int pagesize = sysconf(_SC_PAGESIZE);
+	off64_t off = ((uintptr_t)vaddr) / pagesize * 8; // off = 0xb400007662f541c8 / pagesize * 8 = 0x5a00003b317aa0
+	int fd = open(kPagemapPath, O_RDONLY);
+	...
+
+	if (lseek64(fd, off, SEEK_SET) != off || read(fd, &frame, 8) != 8) {
+		int err = errno;
+		string errtxt = ErrorString(err);
+		if (fd >= 0)
+			close(fd);
+		return 0;
+	}
+...
+}
+
+=== kernel fs/proc/task_mmu.c ===
+
+static ssize_t pagemap_read(struct file *file, char __user *buf,
+		size_t count, loff_t *ppos)
+{
+	...
+	src = *ppos;
+	svpfn = src / PM_ENTRY_BYTES; // svpfn == 0xb400007662f54
+	start_vaddr = svpfn << PAGE_SHIFT; // start_vaddr == 0xb400007662f54000
+	end_vaddr = mm->task_size;
+
+	/* watch out for wraparound */
+	// svpfn == 0xb400007662f54
+	// (mm->task_size >> PAGE) == 0x8000000
+	if (svpfn > mm->task_size >> PAGE_SHIFT) // the condition is true because of the tag 0xb4
+		start_vaddr = end_vaddr;
+
+	ret = 0;
+	while (count && (start_vaddr < end_vaddr)) { // we cannot visit correct entry because start_vaddr is set to end_vaddr
+		int len;
+		unsigned long end;
+		...
+	}
+	...
+}
+
+[1] https://lore.kernel.org/patchwork/patch/1343258/
+[2] https://github.com/stressapptest/stressapptest/blob/master/src/os.cc#L158
+
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Alexey Dobriyan <adobriyan@gmail.com>
+Cc: Andrey Konovalov <andreyknvl@google.com>
+Cc: Alexander Potapenko <glider@google.com>
+Cc: Vincenzo Frascino <vincenzo.frascino@arm.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Dmitry Vyukov <dvyukov@google.com>
+Cc: Marco Elver <elver@google.com>
+Cc: Will Deacon <will@kernel.org>
+Cc: Eric W. Biederman <ebiederm@xmission.com>
+Cc: Song Bao Hua (Barry Song) <song.bao.hua@hisilicon.com>
+Cc: stable@vger.kernel.org # v5.4-
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Reviewed-by: Vincenzo Frascino <vincenzo.frascino@arm.com>
+Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
+
 ---
- .../devicetree/bindings/clock/imx8qxp-lpcg.yaml    | 20 ++++++++---------
- .../bindings/display/bridge/analogix,anx7625.yaml  |  4 ++--
- .../bindings/display/bridge/intel,keembay-dsi.yaml |  4 ++--
- .../bindings/display/intel,keembay-msscam.yaml     |  4 ++--
- .../bindings/display/panel/novatek,nt36672a.yaml   |  2 +-
- .../devicetree/bindings/media/i2c/adv7604.yaml     |  4 ++--
- .../devicetree/bindings/media/i2c/mipi-ccs.yaml    | 11 ++++-----
- .../devicetree/bindings/media/i2c/ovti,ov772x.yaml | 12 +++++-----
- .../devicetree/bindings/media/i2c/sony,imx214.yaml | 12 +++++-----
- Documentation/devicetree/bindings/mmc/mtk-sd.yaml  | 26 +++++++++++-----------
- .../sound/mt8192-mt6359-rt1015-rt5682.yaml         |  4 ++--
- 11 files changed, 52 insertions(+), 51 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/clock/imx8qxp-lpcg.yaml b/Documentation/devicetree/bindings/clock/imx8qxp-lpcg.yaml
-index e709e530e17a27a..940486ef1051d10 100644
---- a/Documentation/devicetree/bindings/clock/imx8qxp-lpcg.yaml
-+++ b/Documentation/devicetree/bindings/clock/imx8qxp-lpcg.yaml
-@@ -29,18 +29,18 @@ properties:
-       - const: fsl,imx8qxp-lpcg
-       - items:
-           - enum:
--            - fsl,imx8qm-lpcg
-+              - fsl,imx8qm-lpcg
-           - const: fsl,imx8qxp-lpcg
-       - enum:
--        - fsl,imx8qxp-lpcg-adma
--        - fsl,imx8qxp-lpcg-conn
--        - fsl,imx8qxp-lpcg-dc
--        - fsl,imx8qxp-lpcg-dsp
--        - fsl,imx8qxp-lpcg-gpu
--        - fsl,imx8qxp-lpcg-hsio
--        - fsl,imx8qxp-lpcg-img
--        - fsl,imx8qxp-lpcg-lsio
--        - fsl,imx8qxp-lpcg-vpu
-+          - fsl,imx8qxp-lpcg-adma
-+          - fsl,imx8qxp-lpcg-conn
-+          - fsl,imx8qxp-lpcg-dc
-+          - fsl,imx8qxp-lpcg-dsp
-+          - fsl,imx8qxp-lpcg-gpu
-+          - fsl,imx8qxp-lpcg-hsio
-+          - fsl,imx8qxp-lpcg-img
-+          - fsl,imx8qxp-lpcg-lsio
-+          - fsl,imx8qxp-lpcg-vpu
-         deprecated: true
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-index 60585a4fc22bc9f..9392b5502a3293c 100644
---- a/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-+++ b/Documentation/devicetree/bindings/display/bridge/analogix,anx7625.yaml
-@@ -49,8 +49,8 @@ properties:
-           Video port for panel or connector.
+Change since v1:
+
+1. Follow Eirc's and Catalin's suggestion to avoid overflow
+2. Cc to stable v5.4-
+3. add explaination from Catalin to the commit message
+
+Change since v2:
+1. replace less-than with less-than or equal
+2. Fix bad spelling in commit message
+3. Fix will's email address
+---
+ fs/proc/task_mmu.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
+index 217aa2705d5d..ee5a235b3056 100644
+--- a/fs/proc/task_mmu.c
++++ b/fs/proc/task_mmu.c
+@@ -1599,11 +1599,15 @@ static ssize_t pagemap_read(struct file *file, char __user *buf,
  
-     required:
--        - port@0
--        - port@1
-+      - port@0
-+      - port@1
+ 	src = *ppos;
+ 	svpfn = src / PM_ENTRY_BYTES;
+-	start_vaddr = svpfn << PAGE_SHIFT;
+ 	end_vaddr = mm->task_size;
  
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/display/bridge/intel,keembay-dsi.yaml b/Documentation/devicetree/bindings/display/bridge/intel,keembay-dsi.yaml
-index ab5be26252240ea..35c9dfd866501a0 100644
---- a/Documentation/devicetree/bindings/display/bridge/intel,keembay-dsi.yaml
-+++ b/Documentation/devicetree/bindings/display/bridge/intel,keembay-dsi.yaml
-@@ -39,10 +39,10 @@ properties:
+ 	/* watch out for wraparound */
+-	if (svpfn > mm->task_size >> PAGE_SHIFT)
++	start_vaddr = end_vaddr;
++	if (svpfn <= (ULONG_MAX >> PAGE_SHIFT))
++		start_vaddr = untagged_addr(svpfn << PAGE_SHIFT);
++
++	/* Ensure the address is inside the task */
++	if (start_vaddr > mm->task_size)
+ 		start_vaddr = end_vaddr;
  
-     properties:
-       '#address-cells':
--       const: 1
-+        const: 1
- 
-       '#size-cells':
--       const: 0
-+        const: 0
- 
-       port@0:
-         type: object
-diff --git a/Documentation/devicetree/bindings/display/intel,keembay-msscam.yaml b/Documentation/devicetree/bindings/display/intel,keembay-msscam.yaml
-index 40caa61188098c2..a222b52d8b8ff6b 100644
---- a/Documentation/devicetree/bindings/display/intel,keembay-msscam.yaml
-+++ b/Documentation/devicetree/bindings/display/intel,keembay-msscam.yaml
-@@ -18,8 +18,8 @@ description: |
- properties:
-   compatible:
-     items:
--     - const: intel,keembay-msscam
--     - const: syscon
-+      - const: intel,keembay-msscam
-+      - const: syscon
- 
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/panel/novatek,nt36672a.yaml b/Documentation/devicetree/bindings/display/panel/novatek,nt36672a.yaml
-index d2170de6b72302f..2f5df1d235aea8a 100644
---- a/Documentation/devicetree/bindings/display/panel/novatek,nt36672a.yaml
-+++ b/Documentation/devicetree/bindings/display/panel/novatek,nt36672a.yaml
-@@ -22,7 +22,7 @@ properties:
-   compatible:
-     items:
-       - enum:
--         - tianma,fhd-video
-+          - tianma,fhd-video
-       - const: novatek,nt36672a
-     description: This indicates the panel manufacturer of the panel that is
-       in turn using the NT36672A panel driver. This compatible string
-diff --git a/Documentation/devicetree/bindings/media/i2c/adv7604.yaml b/Documentation/devicetree/bindings/media/i2c/adv7604.yaml
-index 81f17e719d87da5..693f31daf5aa699 100644
---- a/Documentation/devicetree/bindings/media/i2c/adv7604.yaml
-+++ b/Documentation/devicetree/bindings/media/i2c/adv7604.yaml
-@@ -21,8 +21,8 @@ properties:
-   compatible:
-     items:
-       - enum:
--        - adi,adv7611
--        - adi,adv7612
-+          - adi,adv7611
-+          - adi,adv7612
- 
-   reg:
-     minItems: 1
-diff --git a/Documentation/devicetree/bindings/media/i2c/mipi-ccs.yaml b/Documentation/devicetree/bindings/media/i2c/mipi-ccs.yaml
-index 1d90767a61962b3..41400ecbbb35eac 100644
---- a/Documentation/devicetree/bindings/media/i2c/mipi-ccs.yaml
-+++ b/Documentation/devicetree/bindings/media/i2c/mipi-ccs.yaml
-@@ -1,6 +1,7 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- # Copyright (C) 2014--2020 Intel Corporation
--
-+%YAML 1.2
-+---
- $id: http://devicetree.org/schemas/media/i2c/mipi-ccs.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
-@@ -26,11 +27,11 @@ properties:
-   compatible:
-     oneOf:
-       - items:
--        - const: mipi-ccs-1.1
--        - const: mipi-ccs
-+          - const: mipi-ccs-1.1
-+          - const: mipi-ccs
-       - items:
--        - const: mipi-ccs-1.0
--        - const: mipi-ccs
-+          - const: mipi-ccs-1.0
-+          - const: mipi-ccs
-       - const: nokia,smia
- 
-   reg:
-diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov772x.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov772x.yaml
-index 450e5bd64312ddf..eedc560837d2c80 100644
---- a/Documentation/devicetree/bindings/media/i2c/ovti,ov772x.yaml
-+++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov772x.yaml
-@@ -76,18 +76,18 @@ properties:
-                 bus-type:
-                   const: 6
-             then:
--                properties:
--                  hsync-active: false
--                  vsync-active: false
-+              properties:
-+                hsync-active: false
-+                vsync-active: false
- 
-           - if:
-               properties:
-                 bus-width:
-                   const: 10
-             then:
--                properties:
--                  data-shift:
--                    const: 0
-+              properties:
-+                data-shift:
-+                  const: 0
- 
-         required:
-           - bus-type
-diff --git a/Documentation/devicetree/bindings/media/i2c/sony,imx214.yaml b/Documentation/devicetree/bindings/media/i2c/sony,imx214.yaml
-index 884bd3527e0a430..0599df605a4f8a6 100644
---- a/Documentation/devicetree/bindings/media/i2c/sony,imx214.yaml
-+++ b/Documentation/devicetree/bindings/media/i2c/sony,imx214.yaml
-@@ -69,13 +69,13 @@ properties:
-             description: See ../video-interfaces.txt
-             anyOf:
-               - items:
--                - const: 1
--                - const: 2
-+                  - const: 1
-+                  - const: 2
-               - items:
--                - const: 1
--                - const: 2
--                - const: 3
--                - const: 4
-+                  - const: 1
-+                  - const: 2
-+                  - const: 3
-+                  - const: 4
- 
-           link-frequencies:
-             $ref: /schemas/types.yaml#/definitions/uint64-array
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index 030e3fdce49293a..01630b0ecea773e 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -17,21 +17,21 @@ properties:
-   compatible:
-     oneOf:
-       - enum:
--        - mediatek,mt2701-mmc
--        - mediatek,mt2712-mmc
--        - mediatek,mt6779-mmc
--        - mediatek,mt7620-mmc
--        - mediatek,mt7622-mmc
--        - mediatek,mt8135-mmc
--        - mediatek,mt8173-mmc
--        - mediatek,mt8183-mmc
--        - mediatek,mt8516-mmc
-+          - mediatek,mt2701-mmc
-+          - mediatek,mt2712-mmc
-+          - mediatek,mt6779-mmc
-+          - mediatek,mt7620-mmc
-+          - mediatek,mt7622-mmc
-+          - mediatek,mt8135-mmc
-+          - mediatek,mt8173-mmc
-+          - mediatek,mt8183-mmc
-+          - mediatek,mt8516-mmc
-       - items:
--        - const: mediatek,mt7623-mmc
--        - const: mediatek,mt2701-mmc
-+          - const: mediatek,mt7623-mmc
-+          - const: mediatek,mt2701-mmc
-       - items:
--        - const: mediatek,mt8192-mmc
--        - const: mediatek,mt8183-mmc
-+          - const: mediatek,mt8192-mmc
-+          - const: mediatek,mt8183-mmc
- 
-   clocks:
-     description:
-diff --git a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-index bf8c8ba25009dcc..54650823b29a41d 100644
---- a/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8192-mt6359-rt1015-rt5682.yaml
-@@ -7,8 +7,8 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Mediatek MT8192 with MT6359, RT1015 and RT5682 ASoC sound card driver
- 
- maintainers:
--   - Jiaxin Yu <jiaxin.yu@mediatek.com>
--   - Shane Chien <shane.chien@mediatek.com>
-+  - Jiaxin Yu <jiaxin.yu@mediatek.com>
-+  - Shane Chien <shane.chien@mediatek.com>
- 
- description:
-   This binding describes the MT8192 sound card.
+ 	/*
 -- 
-1.8.3
-
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
