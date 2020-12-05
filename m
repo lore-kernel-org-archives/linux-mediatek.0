@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 99513C4167B
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Dec 2020 04:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DB4CEC4361A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Dec 2020 04:16:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 32F5922E00
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Dec 2020 04:16:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32F5922E00
+	by mail.kernel.org (Postfix) with ESMTPS id 7F20322E00
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Dec 2020 04:16:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F20322E00
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aiG6AvEWnEyDcWL7uqh7YhiSMRf65EUdm0I7d+9F8Fg=; b=xITVXzgeKIk+Kl0ZhqBMi4+Me
-	hxQWYn6pE+SyYCjhOJNu+4P90jBNkhWlUp5Y9t4D6Ufc7ucGulR5ynzOBk7pM2wMqsAoxb56qZbYP
-	grL8Wdgfen+z8PXTuq/sZk7qvoaLtOU55og588Jj6sT6FkgdJGN2et9jlr3nZnM6ZDB/gnrwxZmOF
-	uKrVWeSL4WeqfdqHO3T/qphJ5b1mqb0X1wyIczbeh/OtoZSB7SJalw613qhyOI+AfvE18+PfCbKBI
-	QmdbAvJYHvT28uQB/BhINpVoyQtR6J5NxLQliWOlpPPeDRW15sAq8cYfoO9BSyjRgmlfr4cVcOFCD
-	VUKAkK4Gg==;
+	 bh=OBZC95pBQlSlhKJKsIODkgq12a2SW5D+1zjoVfYSV8I=; b=ajjvnr5go4h0cbivrAbhnkXps
+	qBhrotdtIDjEBDF2/Vf4uBiE6+8zH3MY8I7DK7ChgG4H3mJ9Vlypxagld/3azLx3vy8KtfBgaJnbg
+	PcqmGqwt9B4t7w2QkDkK8arTmegF1weygk56mU3+nZLTW66bmJMYLiutXU3+yUgDGgOZoC3Atj2TO
+	YsQkfLGOlGbECFdwwxIlFhpRJ5ETbL6GZn81qdYM9IWbiOUL7y2mTUiS6nuPUaB+2PuTBgnIco4iT
+	4+uPPDaJzKZUwm50/5kXW+USjdGF2Zc9do5kScXQaPZzvQr8l3Ho+uF1A0yxiVw+UOa/v9aCCvN8j
+	clewcZm7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1klOzn-0001ox-VB; Sat, 05 Dec 2020 04:16:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1klP01-0001vA-Gk; Sat, 05 Dec 2020 04:16:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1klOze-0001ly-Re; Sat, 05 Dec 2020 04:16:23 +0000
-X-UUID: 9f4d1f4b726645be8900f1b0be344253-20201204
+ id 1klOzu-0001qG-Rc; Sat, 05 Dec 2020 04:16:39 +0000
+X-UUID: 7de8ac675090404180f52e1454f0353a-20201204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=2MBkZbqf5754Kpk/zE/vTldYnZ5X8xOjf4zI3HpKSRE=; 
- b=hIK7tdRNblkg5C7i/3N2Z/c3KaE5YUoLjwu/UuQ6+EytGK5369e7n15HhQ2aXAYMnw1C2La0lr7L/EqSlKXLmycrARBjV/7Wr+3s09DC/qq25QQOAk1FeepxRW7veClDX5RmbTwWq4euLFUekZ012ZSxj8romSZYJbKBSzbtV9I=;
-X-UUID: 9f4d1f4b726645be8900f1b0be344253-20201204
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=J2fG6Mb72C6zeHuwpfmlbEjvsObxweHLJkcWq7dr8Ls=; 
+ b=RHZWI68MmjjemPTpyNdLnmFMhCxPGsQ50RF8b2HgsfpSA9tbjIExjub88e7KOIO69ds3UHkgy8a4wmaVYiSoFonS5lKWauyOa3BW5ToxcRb5LxK4zX84R7BXa06erbEqeB9BU63CEHSDMD8CI7lF0K9robzCUZPK/0Pgf2Gj384=;
+X-UUID: 7de8ac675090404180f52e1454f0353a-20201204
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1478351048; Fri, 04 Dec 2020 20:16:19 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Dec 2020 20:16:17 -0800
+ with ESMTP id 1643458069; Fri, 04 Dec 2020 20:16:30 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Dec 2020 20:16:30 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Dec 2020 12:16:14 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Dec 2020 12:16:12 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Dec 2020 12:16:16 +0800
+ Transport; Sat, 5 Dec 2020 12:16:15 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH v1, 4/5] soc: mediatek: cmdq: add address shift in jump
-Date: Sat, 5 Dec 2020 12:15:27 +0800
-Message-ID: <1607141728-17307-5-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v1, 2/5] arm64: dts: mt8192: add gce node
+Date: Sat, 5 Dec 2020 12:15:25 +0800
+Message-ID: <1607141728-17307-3-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1607141728-17307-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1607141728-17307-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_231623_076336_7A042C45 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20201204_231639_041372_AD2EDCCC 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,28 +90,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add address shift when compose jump instruction
-to compatible with 35bit format.
+add gce node
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 1c01fe0..5ed39f8 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -174,7 +174,8 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
- 	dma_sync_single_for_cpu(dev, prev_task->pa_base,
- 				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
- 	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
--		(u64)CMDQ_JUMP_BY_PA << 32 | task->pa_base;
-+		(u64)CMDQ_JUMP_BY_PA << 32 |
-+		(task->pa_base >> task->cmdq->shift_pa);
- 	dma_sync_single_for_device(dev, prev_task->pa_base,
- 				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 69d45c7..7c0c233 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -6,6 +6,7 @@
  
+ /dts-v1/;
+ #include <dt-bindings/clock/mt8192-clk.h>
++#include <dt-bindings/gce/mt8192-gce.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
+@@ -272,6 +273,16 @@
+ 			clock-names = "clk13m";
+ 		};
+ 
++		gce: mailbox@10228000 {
++			compatible = "mediatek,mt8192-gce";
++			reg = <0 0x10228000 0 0x4000>;
++			interrupts = <GIC_SPI 203 IRQ_TYPE_LEVEL_HIGH 0>;
++			#mbox-cells = <3>;
++			clocks = <&infracfg CLK_INFRA_GCE>,
++				 <&infracfg CLK_INFRA_GCE_26M>;
++			clock-names = "gce", "gce-timer";
++		};
++
+ 		scp_adsp: syscon@10720000 {
+ 			compatible = "mediatek,mt8192-scp_adsp", "syscon";
+ 			reg = <0 0x10720000 0 0x1000>;
 -- 
 1.8.1.1.dirty
 _______________________________________________
