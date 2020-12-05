@@ -2,54 +2,53 @@ Return-Path: <SRS0=IZYC=FJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D188C4361A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Dec 2020 02:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7432AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Dec 2020 02:50:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 07C1422E00
+	by mail.kernel.org (Postfix) with ESMTPS id 0614B22DFB
 	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Dec 2020 02:50:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07C1422E00
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0614B22DFB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rtx8k69n81IGFezFjqX05mQJWMlPuLCYALM5/TxRXr0=; b=lqgy0pGDbDqQJbvb3NQtACcEy
-	EFo87jkfp1+IKtxYkp4kReqOwIMSo2oCibF1+I1oY4eNhKjYbz1/TDWxpQ3rchcgYC2qgDZ44WNzH
-	AZaSfyXuxUZo+rkXbXfeO31UBWYeyL7Rnem+mGPzq7ZCmjrQ5JIIoOnxBh7BP3SkImyJhqJKjFVuw
-	sauL5LyOHJTunpJUUVKjIPXmmP6iPrWAy6qihp09fjrtzJtiZ4mPjvBK2Fr1L1YxckvfYl09D/NqN
-	jEJ1/c977wnMPjujMK/qmNVQ4Krz7ObUOQIw6MYMnOAvvJjgVBlR8fPG0/av43RpfuslzFRgDjDYt
-	J/sc4tL6A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NBdf5/1B4XoGklBWH+KLdjHZuTtBd197a5M1KVDtW1g=; b=wdkO1PniiP4mihak/9RRuYnHN7
+	ewHM++ssasF2/3AroL3bWuMqdnTZKdaEddn/feB5gC96xJjZmCqTtj+OnlBExEGt1u6px/5xuMXif
+	0PyapXOPpLmlQu5LNlEr5O8IRLJU4bddF3+p95DJ6vJ1bnX97jZjwAGIVDGTkbE3oD3b2G1Itn8kV
+	EWdNzaBXaZYp4rwr6EDICv28H+Xx3M2/oe66heZe/54hFh57DCkiy9/QHqZN8KYGo8+dsI8e51nS9
+	6DC5UwYNTPjYp8YQQpKI4SevOARe8yDNs/l8DrceJyICNfg0kKIHm2+++JCisF9zUY7XQhWZ1tq4Q
+	2EIOAIEg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1klNeC-0005Ru-OT; Sat, 05 Dec 2020 02:50:08 +0000
+	id 1klNeC-0005Rh-3m; Sat, 05 Dec 2020 02:50:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1klNds-0005Ke-EH; Sat, 05 Dec 2020 02:49:49 +0000
-X-UUID: 9aa960bef3694796b89e05c35b0940be-20201204
+ id 1klNds-0005Kd-FE; Sat, 05 Dec 2020 02:49:49 +0000
+X-UUID: 3822b600cd8a469d84fef7b17e693af3-20201204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=12nYlJ8dAThbcPOzqgCSYVFK6E/3Wv4YUgQ2UJ8FAJ8=; 
- b=ihMFEQ4OI+GtzUG6Yg0ZBpdhTMu0vHQhEcAdY+HlQpmzg4dDfh4nx4v7JXRXxriKl5kc+KHQndQj0cOKES3VidRAnr635RjIQIi93Sklif3O8ImpXsUn87c3B3tJpfoB0Zh7Cbc+FR1K4QAGJPMN0yAY11VYgiH0qMfF8Wm+yKo=;
-X-UUID: 9aa960bef3694796b89e05c35b0940be-20201204
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=eeHMfg4p/+msGsBFnS5rz7pxpMPmbQOrK4k+AQe6G+g=; 
+ b=qAQER0PS4rPiuN7wcYrzV9MbWgALmdrzN1UJZi5IewHrcpiet7rWvlailUfTPcXur++g06qrcHz9NTOA/d7HpiezwdoYv1X4ayjCxdOmZfOCkOXCO7p/E+6XDi329nkhgGWU+D5D1/H+YjFAcHvAqfye9K8ObH3fpeQkkeounnE=;
+X-UUID: 3822b600cd8a469d84fef7b17e693af3-20201204
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 549270809; Fri, 04 Dec 2020 18:49:43 -0800
+ with ESMTP id 1214670600; Fri, 04 Dec 2020 18:49:43 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Dec 2020 18:39:42 -0800
+ 15.0.1497.2; Fri, 4 Dec 2020 18:39:41 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sat, 5 Dec 2020 10:39:36 +0800
@@ -59,18 +58,16 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v4 1/8] scsi: ufs: Remove unused setup_regulators variant
- function
-Date: Sat, 5 Dec 2020 10:39:31 +0800
-Message-ID: <20201205023938.13848-2-stanley.chu@mediatek.com>
+Subject: [PATCH v4 0/8] Refine error history and introduce event_notify vop
+Date: Sat, 5 Dec 2020 10:39:30 +0800
+Message-ID: <20201205023938.13848-1-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201205023938.13848-1-stanley.chu@mediatek.com>
-References: <20201205023938.13848-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_214948_624812_4B8B45F4 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20201204_214948_686192_E5F23D5B 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,81 +91,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since setup_regulators variant function is not used by any
-vendors, simply remove it.
+Hi,
+This series refines error history functions, do vop cleanups and introduce a new event_notify vop to allow vendor to get notification of important events.
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 10 +---------
- drivers/scsi/ufs/ufshcd.h | 10 ----------
- 2 files changed, 1 insertion(+), 19 deletions(-)
+Changes since v3:
+  - Fix build warning in patch [8/8]
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 11a4aad09f3a..c2f611516ea7 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -8171,16 +8171,10 @@ static int ufshcd_variant_hba_init(struct ufs_hba *hba)
- 		goto out;
- 
- 	err = ufshcd_vops_init(hba);
--	if (err)
--		goto out;
--
--	err = ufshcd_vops_setup_regulators(hba, true);
--	if (err)
--		ufshcd_vops_exit(hba);
--out:
- 	if (err)
- 		dev_err(hba->dev, "%s: variant %s init failed err %d\n",
- 			__func__, ufshcd_get_var_name(hba), err);
-+out:
- 	return err;
- }
- 
-@@ -8189,8 +8183,6 @@ static void ufshcd_variant_hba_exit(struct ufs_hba *hba)
- 	if (!hba->vops)
- 		return;
- 
--	ufshcd_vops_setup_regulators(hba, false);
--
- 	ufshcd_vops_exit(hba);
- }
- 
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 7a7e056a33a9..21de7607611f 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -277,7 +277,6 @@ struct ufs_pwr_mode_info {
-  * @get_ufs_hci_version: called to get UFS HCI version
-  * @clk_scale_notify: notifies that clks are scaled up/down
-  * @setup_clocks: called before touching any of the controller registers
-- * @setup_regulators: called before accessing the host controller
-  * @hce_enable_notify: called before and after HCE enable bit is set to allow
-  *                     variant specific Uni-Pro initialization.
-  * @link_startup_notify: called before and after Link startup is carried out
-@@ -307,7 +306,6 @@ struct ufs_hba_variant_ops {
- 				    enum ufs_notify_change_status);
- 	int	(*setup_clocks)(struct ufs_hba *, bool,
- 				enum ufs_notify_change_status);
--	int     (*setup_regulators)(struct ufs_hba *, bool);
- 	int	(*hce_enable_notify)(struct ufs_hba *,
- 				     enum ufs_notify_change_status);
- 	int	(*link_startup_notify)(struct ufs_hba *,
-@@ -1119,14 +1117,6 @@ static inline int ufshcd_vops_setup_clocks(struct ufs_hba *hba, bool on,
- 	return 0;
- }
- 
--static inline int ufshcd_vops_setup_regulators(struct ufs_hba *hba, bool status)
--{
--	if (hba->vops && hba->vops->setup_regulators)
--		return hba->vops->setup_regulators(hba, status);
--
--	return 0;
--}
--
- static inline int ufshcd_vops_hce_enable_notify(struct ufs_hba *hba,
- 						bool status)
- {
+Changes since v2:
+  - Add patches for vop cleanups
+  - Introduce phy_initialization helper and replace direct invoking in ufs-cdns and ufs-dwc by the helper
+  - Introduce event_notify vop implemntation in ufs-mediatek
+
+Changes since v1:
+  - Change notify_event() to event_notify() to follow vop naming covention
+
+Stanley Chu (8):
+  scsi: ufs: Remove unused setup_regulators variant function
+  scsi: ufs: Introduce phy_initialization helper
+  scsi: ufs-cdns: Use phy_initialization helper
+  scsi: ufs-dwc: Use phy_initialization helper
+  scsi: ufs: Add error history for abort event in UFS Device W-LUN
+  scsi: ufs: Refine error history functions
+  scsi: ufs: Introduce event_notify variant function
+  scsi: ufs-mediatek: Introduce event_notify implementation
+
+ drivers/scsi/ufs/cdns-pltfrm.c        |   3 +-
+ drivers/scsi/ufs/ufs-mediatek-trace.h |  37 ++++++++
+ drivers/scsi/ufs/ufs-mediatek.c       |  12 +++
+ drivers/scsi/ufs/ufshcd-dwc.c         |  11 +--
+ drivers/scsi/ufs/ufshcd.c             | 132 ++++++++++++++------------
+ drivers/scsi/ufs/ufshcd.h             | 100 +++++++++----------
+ 6 files changed, 175 insertions(+), 120 deletions(-)
+ create mode 100644 drivers/scsi/ufs/ufs-mediatek-trace.h
+
 -- 
 2.18.0
 _______________________________________________
