@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E4E5C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Dec 2020 17:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1435FC4361B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Dec 2020 21:16:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D93222388C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Dec 2020 17:08:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D93222388C
+	by mail.kernel.org (Postfix) with ESMTPS id CC5BE207F7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Dec 2020 21:16:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC5BE207F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JAE3FziugFKIILeTDBhzL+4zL9NQbSfZ8cC6owtXnFo=; b=fGatbb4PsJ6+SFDSxcLIhjq+s
-	p86SUNdiKq4swIlB3zlZrwVoH515GIWiZUoKMEda6YAtZaUKYwgAOLK345PZ3ojRKB6azyPjLjaF4
-	+RYNScOM6Wm09mVvhc4CZty1SOxgR3kWAZspqBwYLJ3e1EixKI/nC/G6cItaAJwvJNjQPJs1+h273
-	U0ii73582c7xB3PKMVG26AvYroYdtTy94IB0djZP0DkacUb9r7j6VIPkph9m6jlaZnGXUO+Mtlhkj
-	vsscIw+aWcHp3bXIDHtIcDt7htDcMTZhi+Hm/IW4drpGAiiV7ZL0d6PZ+ezvPNWrmCNryegOsS0pp
-	xTyLIFoxA==;
+	 bh=2kY7BK/GY0MsJWqABwuRMu1zVZUCOfBOIUIuOz3yVgE=; b=EeelZHUblpNRsyFGef95WZ8LE
+	Ynkig+Qpc17lOyXELBuwRC8MnQK2xq7kq49mX49CixPsf49whGue1bWxrh2+TfikPwTvqzBrCYGT7
+	7JkzYyPHw2OoUm4p5VmAw6AkKGcSBEHLgH3WrF0q5iR6gkupWNhtVplu+HL8V0JocgExX1vYDFyoh
+	ZDI7yqdmdC6VaeOfszmVC0hveNauDcJ68TW2sVjyTWuiR03rffEy+n7GIeKYeTmBqpTMXK59dufA+
+	YZxMCJWRLOvVRCMG6YeWRf9PPGAcVBb89Zt7cTZ9p8N7rRPurUp4sHzFCymq6o85etarvEiw8PEaT
+	7Tok56brA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmJzi-0007mV-Sq; Mon, 07 Dec 2020 17:08:15 +0000
-Received: from mail-oo1-f65.google.com ([209.85.161.65])
+	id 1kmNrV-0004bl-BT; Mon, 07 Dec 2020 21:16:01 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmJzd-0007kz-7w; Mon, 07 Dec 2020 17:08:10 +0000
-Received: by mail-oo1-f65.google.com with SMTP id w9so3339554ooh.13;
- Mon, 07 Dec 2020 09:07:59 -0800 (PST)
+ id 1kmNrQ-0004Zo-Ul; Mon, 07 Dec 2020 21:15:57 +0000
+Received: by mail-ot1-f68.google.com with SMTP id f16so13880267otl.11;
+ Mon, 07 Dec 2020 13:15:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=SogwgdPzZLs7UQaCL9uSzW/XvOBxKSbmidKt0mKHBqM=;
- b=Cab8r8Q0ZnfNajybqH2qW+mGeT4qBvGE+tY0y6P3iRGEpHkRDXdX4LwtRriTdxwFMd
- FY6QFa2PkzopgfHVddsfKy93ZOB4XHV+jvX9F0xH9wr5s9u7XBqvxqnr8Zc7C3sDSpRR
- R+BdjyyaB1xuqLku9XRvQ+NhX/Jc+8FlxfZgNf5VIQoVk7rF7Jdi4kXDh83QCG3XTsOt
- L/Z6ledQ8bLHHzftO88Zf93gd6q7vsmyPjK6K+mDlf6RUjuttgz03faxNqDEqGWyPkvl
- fAkw38J6hEWtaFCB56ujyap6m6NmTsuvO1OFRdpNbd9g2DpktIRpuoUK4Ioo0ot4Sap8
- rTKw==
-X-Gm-Message-State: AOAM533h7kDvLoFn5kHi55BUSgJuHtrwO7m2eE+IQFMst8i14zC6knCF
- H5mfguNYMJYviaZ8qMICqQ==
-X-Google-Smtp-Source: ABdhPJzmdnrsrHxYVXf/qeAQGbpnlZ7/zYKbrxltqs4VunJ1rWtUE6YSlqOlmfjWhHbswR7eYMS+4w==
-X-Received: by 2002:a4a:3e42:: with SMTP id t63mr1568149oot.32.1607360878900; 
- Mon, 07 Dec 2020 09:07:58 -0800 (PST)
+ bh=rSAFkhpNJQAuz9y5dju0W7uXjODyDSx6iiAnGJorzFE=;
+ b=oJhKPmDP339RYj3+Y22c7j0vmxNnqlk2+mCY/U9nviCGSDS/F/bhsb5NYb3JjHS7dz
+ QLjjrsIZjvxlpkdYd92i+087OuukrpSu8lhnIFE9cZovl2FsbJldoKDJ6IxDtdRVRjyD
+ /t0Q+pwMTYb0OxUlu+gW7+puljCKZ/3AquUPwEwLUDb+m8pY9sKeOcoyMFhObtwE04NM
+ Da00Aa4UfbYqxN4bFLB7IquJFLshBTdQYs3F80JLNSZaH74vnGZLjf58W6VjyNHCP2v+
+ 2zwM9Er7ph8v49dRwbVSIZ8UhqpFK59wNug1YTXOwdROOfatSkTgLf43jYRwNLEsU1N4
+ OmZQ==
+X-Gm-Message-State: AOAM5309rlNPJn0ZqdQ6t1OfRK+00vs83mlgWBEuOadD4FEpwud4Fy5V
+ O18xUjdW+Ojux/FTxqypJA==
+X-Google-Smtp-Source: ABdhPJxQpESfvNGlJAqwTMytNEER2nkmsXBzu8vhDgGPWF4PCnXOQyEU6ub0eGzupCQoCYrmNFRMlQ==
+X-Received: by 2002:a05:6830:128a:: with SMTP id
+ z10mr14708659otp.3.1607375754577; 
+ Mon, 07 Dec 2020 13:15:54 -0800 (PST)
 Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id k13sm2929820otl.72.2020.12.07.09.07.57
+ by smtp.gmail.com with ESMTPSA id b28sm2878493oob.22.2020.12.07.13.15.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Dec 2020 09:07:58 -0800 (PST)
-Received: (nullmailer pid 445307 invoked by uid 1000);
- Mon, 07 Dec 2020 17:07:56 -0000
-Date: Mon, 7 Dec 2020 11:07:56 -0600
+ Mon, 07 Dec 2020 13:15:53 -0800 (PST)
+Received: (nullmailer pid 838684 invoked by uid 1000);
+ Mon, 07 Dec 2020 21:15:52 -0000
+Date: Mon, 7 Dec 2020 15:15:52 -0600
 From: Rob Herring <robh@kernel.org>
-To: Michael Kao <michael.kao@mediatek.com>
-Subject: Re: [PATCH 3/3] dt-bindings: thermal: Add binding document for
- mt6873 thermal controller
-Message-ID: <20201207170756.GB439416@robh.at.kernel.org>
-References: <20201207063127.28051-1-michael.kao@mediatek.com>
- <20201207063127.28051-4-michael.kao@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v3 03/11] dt-bindings: phy: convert phy-mtk-xsphy.txt to
+ YAML schema
+Message-ID: <20201207211552.GA838655@robh.at.kernel.org>
+References: <20201118082126.42701-1-chunfeng.yun@mediatek.com>
+ <20201118082126.42701-3-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201207063127.28051-4-michael.kao@mediatek.com>
+In-Reply-To: <20201118082126.42701-3-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201207_120809_446482_874ADBC6 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20201207_161557_091150_599FA257 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,119 +85,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org,
- Eduardo Valentin <edubezval@gmail.com>, ethan.chang@mediatek.com,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, devicetree@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, netdev@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Min Guo <min.guo@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 07, 2020 at 02:31:27PM +0800, Michael Kao wrote:
-> This patch adds binding document for mt6873 thermal controller.
+On Wed, 18 Nov 2020 16:21:18 +0800, Chunfeng Yun wrote:
+> Convert phy-mtk-xsphy.txt to YAML schema mediatek,xsphy.yaml
 > 
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  .../thermal/mediatek-thermal-lvts.yaml        | 80 +++++++++++++++++++
->  1 file changed, 80 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
+> v3:
+>   1. remove type for property with standard unit suffix suggested by Rob
+>   2. remove '|' for descritpion
+>   3. fix yamllint warning
 > 
-> diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml b/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
-> new file mode 100644
-> index 000000000000..745611718c0a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
-> @@ -0,0 +1,80 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/thermal/mediatek-thermal-lvts.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek SoC LVTS thermal controller (DTS) binding
-> +
-> +maintainers:
-> +  - Yu-Chia Chang <ethan.chang@mediatek.com>, Michael Kao <michael.kao@mediatek.com>
-
-Not the right format. 1 email per entry.
-
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6873-lvts
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    items:
-> +      - const: lvts_clk
-> +
-> +  "#thermal-sensor-cells":
-> +    const: 0
-> +
-> +required:
-> +  - "#thermal-sensor-cells"
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/thermal/thermal.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt8192-clk.h>
-> +    dts: lvts@1100b000 {
-> +        compatible = "mediatek,mt6873-lvts";
-> +        reg = <0x1100b000 0x1000>;
-> +        clocks = <&infracfg CLK_INFRA_THERM>;
-> +        clock-names = "lvts_clk";
-> +        #thermal-sensor-cells = <0>;
-> +        interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-> +    };
-> +
-> +    thermal-zones {
-> +        cpu_thermal: cpu-thermal {
-> +            polling-delay-passive = <0>;
-> +            polling-delay = <0>;
-> +
-> +            thermal-sensors = <&dts>;
-> +            trips {
-> +                cpu_alert1: cpu-alert1 {
-> +                    temperature = <85000>;
-> +                    hysteresis = <0>;
-> +                    type = "passive";
-> +                };
-> +
-> +                cpu_crit: cpu-crit {
-> +                    temperature = <120000>;
-> +                    hysteresis = <0>;
-> +                    type = "critical";
-> +                };
-> +            };
-> +
-> +            cooling-maps {
-> +            };
-> +        };
-> +    };
-> +...
-> -- 
-> 2.18.0
+> v2:
+>   1. modify description and compatible definition suggested by Rob
+> ---
+>  .../bindings/phy/mediatek,xsphy.yaml          | 199 ++++++++++++++++++
+>  .../devicetree/bindings/phy/phy-mtk-xsphy.txt | 109 ----------
+>  2 files changed, 199 insertions(+), 109 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-xsphy.txt
 > 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
