@@ -2,91 +2,89 @@ Return-Path: <SRS0=HZpZ=FM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01FC6C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 07:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 19124C4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 09:22:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 938702063A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 07:00:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 938702063A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id BEBB323A7F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 09:22:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BEBB323A7F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=biqY0l/kAxqy13VDi4TYeqdqv57ZRSaZCug8s9Q9D9M=; b=a0KPn33tNshvzPkZ6WUOiXP/RR
-	Hq2gTnUOR56LGBYug6Yp8QmwfxL/zbLlMfIEte/DCT0UcB9lZBQe81Ih9diwO8jwO44bLJygnIUwM
-	jsudequS7T9X+8ZW5AhL2bdC83iKMKXMwHI8tQigf81Fh+P45RFo+6f4rQYPX++3pUVVifrHKPG3k
-	zTg4eCnbahy9XxPL2vUfE6ipK343fH6Sb7yEs/0ueAtN4zQ4b6h1LTLIb3L/3LtM/kn2B39fiqChM
-	lpsPSqZtUJgNGVoJs1FA6FY6X4J6WoWeUw/nE8WpV2xSJYBbeYOMs/NfBHRkOgbPjl5z/HG8QS+fh
-	NW+zXX8Q==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=F7Sqg+wxv+pRKG/0H8LQjIvMnpLWdNhT2cTrZg7uS1E=; b=nVTilFErXPixxUSlqe6p332q3
+	VQ1L0C+STSrQtzdpdZWWaNtmvmu0I4FpuWzQTqiJDHw3azdt1Dk1LOuLYLqAgYWjgEWVV8AUJITGA
+	2k+9diatCMRj+nWFG3CEQ2dlclboNHUTuiAruZqYaF5nuaFL6OOMEs5O6Av3DWTlDJVBIJnVSbxYi
+	91OCaLx3rOdkIDGICmGibjupjqpeh4P5gvQN3V7RjloZpoE90jwAxI7VH7wDP1gIenz3Zva6e8u+6
+	jXxTSaR+ZEPURMDpttBLBIdHcWKxni+3YLrMUGl7YOwQA6E6LJ1DUkrXUbaWP7tjcmGU+b/WrEExu
+	YuBUazMFw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmWzJ-0003E6-Up; Tue, 08 Dec 2020 07:00:42 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1kmZBw-0008VO-Nb; Tue, 08 Dec 2020 09:21:52 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmWzH-0003Db-Ia
- for linux-mediatek@lists.infradead.org; Tue, 08 Dec 2020 07:00:40 +0000
-Received: by mail-pf1-x442.google.com with SMTP id s21so13001389pfu.13
- for <linux-mediatek@lists.infradead.org>; Mon, 07 Dec 2020 23:00:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CfWeqWh61B0oRT0px5jYa6HR5aemQ0N4hQFEILa6eSc=;
- b=sTNj3vmB0ESAzGBue/fZBJ2VjpLAKFV/yTV93WLNRsKS/rxLfvRS6OYoBI4/IJs2b0
- 44MA2Ajg1lxvI3JcsQmENW7BJei0HPXbsrHtDn+pG66J8nIjnVzgDOxCvQRU8QG56U3i
- 09cwZLMKCGb5ps4ZBEu3FRRSQPB7PkakLkRSJ3ZAlsYxU/1739uWPXWxTtyM2X0auLel
- PLx18tCavjWtQf98KSTOV4YImc+r4ZthAPTMC3oOnhIY8GL1O6j1rODX9cSm/qa/Bqsr
- 9CB3mjz7oIJ6u9MHBHb1IsXBU+lgGtwlpmaUJdxZLZ5ZDu31HaW35BU7R3iRAS+hhoD8
- Qk2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CfWeqWh61B0oRT0px5jYa6HR5aemQ0N4hQFEILa6eSc=;
- b=J/HRJZAnGIQedR7rKcd0Z62Kh+7DNRmKi2kuZ+9QidB+A6Krw+daBDIgjusIoo0Tq2
- LdCl/7E4vk98x5sHevdan58PbXIsYvcF5XGs456ftbGCvpeI0hkdYYgqslKjKLbZ3YwQ
- mwVJZyCCjaINpjVg7/vd246UT0UFjc4h6+iodu0wjv/fgpfXcjc7xE9S0HI311f+NmhQ
- HkXDZgh4DQAtoO2FuIF4W1Myxu0SWdvKHVboAlyfP8cpZ0k6WtUc6enqKvah6xCh7+/H
- SfZgZJXQU/4eXX5v00U8u1C7tV5RubDxMNk/V4Kq7TKFktZliH5/YKBsg9V4FBQRZorX
- gXVw==
-X-Gm-Message-State: AOAM532J9HU0QpTkjb/NzqERhnk5wjFFIfdX2jX/4hoZpKY5KloMf39w
- j/6Kq3VRWvMYQEBkHOEuWyk=
-X-Google-Smtp-Source: ABdhPJy23mkSUGG/pkx2q3rwy0qiTqQt1Pdz0w109V8bYUYR6mvqLkwen7oyQejVBZumcBi3g4haQg==
-X-Received: by 2002:a62:aa06:0:b029:19d:f4d3:335e with SMTP id
- e6-20020a62aa060000b029019df4d3335emr9957570pff.60.1607410835733; 
- Mon, 07 Dec 2020 23:00:35 -0800 (PST)
-Received: from container-ubuntu.lan ([218.89.163.171])
- by smtp.gmail.com with ESMTPSA id a22sm13402414pfa.215.2020.12.07.23.00.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Dec 2020 23:00:34 -0800 (PST)
-From: DENG Qingfang <dqfext@gmail.com>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>
-Subject: [PATCH net-next] net: dsa: mt7530: support setting ageing time
-Date: Tue,  8 Dec 2020 15:00:28 +0800
-Message-Id: <20201208070028.3177-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ id 1kmZBv-0008UH-CA; Tue, 08 Dec 2020 09:21:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=cULiqlWoL37xRZzHcBhAg0U9sWJYWEdozEvDASKEWxQ=; b=RPj8Z8V8uox6EA/D4NlCURG9Al
+ 7pXdPynwhsQ/1RgUJT5auk6CDxoIGAVWZhw0Rl0lVGyKGO54ijJHE3TaYeGEu04Fzt0nOE87nO/Et
+ GyLSlaKrGLSooPDR8U6d6cs2SkKCogX+HY/BxAxPL+OXo14mD083mvThQUOa9Q2LSimWaEVkfGDU1
+ pQr4jVWaoX2c6JfQs4EG52t0gTWkdPlI9GNIPQJklHEG9GUlwjzbk9R0oxeG8b80pZaxNRHMK1WJ9
+ iBvsqXaCqY0JE5nLfZNeaR8EImv2Dww245xR5lRL8M1g9wBxt/PB78sAYdk3ZWuDcsERAE2OpKO+5
+ rwU+xBfw==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kmZ2W-0008DG-44; Tue, 08 Dec 2020 09:12:14 +0000
+X-UUID: aafe24b1aee24493825625a8a61fec6f-20201208
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=cULiqlWoL37xRZzHcBhAg0U9sWJYWEdozEvDASKEWxQ=; 
+ b=Sr5RcYgXKMnQ/tBY5BfY8Fx93D3oXG4gM7piSonUw1MATqulFal5c6gdpciCzvKk7bw+wwOGg3iC5+E1vqkktO3HxvsptPYf1JAoktgSCWqtcsXwgx3B5WQ52vezbj0i/DRugQd81Ga2x0wmMeQ5mtEQmxi3gvH1syYMZytmCYI=;
+X-UUID: aafe24b1aee24493825625a8a61fec6f-20201208
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1705686180; Tue, 08 Dec 2020 01:11:55 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Dec 2020 01:11:53 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 8 Dec 2020 17:11:48 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 8 Dec 2020 17:11:46 +0800
+Message-ID: <1607418707.23328.13.camel@mhfsdcap03>
+Subject: Re: [PATCH v3 09/11] dt-bindings: usb: convert
+ mediatek,mtk-xhci.txt to YAML schema
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Tue, 8 Dec 2020 17:11:47 +0800
+In-Reply-To: <20201207212436.GA844756@robh.at.kernel.org>
+References: <20201118082126.42701-1-chunfeng.yun@mediatek.com>
+ <20201118082126.42701-9-chunfeng.yun@mediatek.com>
+ <20201207212436.GA844756@robh.at.kernel.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 165E650B2B563F9B27267EB1C08846DD6F14A21BD51068867FB00394F43FA29A2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201208_020039_653433_33FCF31C 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20201208_091209_461848_EE0BA21F 
+X-CRM114-Status: GOOD (  34.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,109 +96,243 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Frank Wunderlich <frank-w@public-files.de>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Min
+ Guo <min.guo@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ devicetree@vger.kernel.org, David
+ Airlie <airlied@linux.ie>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>, Vinod Koul <vkoul@kernel.org>,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, Matthias
+ Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Stanley Chu <stanley.chu@mediatek.com>, "David S .
+ Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7530 has a global address age control register, so use it to set
-ageing time.
+On Mon, 2020-12-07 at 15:24 -0600, Rob Herring wrote:
+> On Wed, Nov 18, 2020 at 04:21:24PM +0800, Chunfeng Yun wrote:
+> > Convert mediatek,mtk-xhci.txt to YAML schema mediatek,mtk-xhci.yaml
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> > v3:
+> >   1. fix yamllint warning
+> >   2. remove pinctrl* properties supported by default suggested by Rob
+> >   3. drop unused labels
+> >   4. modify description of mediatek,syscon-wakeup
+> >   5. remove type of imod-interval-ns
+> > 
+> > v2: new patch
+> > ---
+> >  .../bindings/usb/mediatek,mtk-xhci.txt        | 121 -------------
+> >  .../bindings/usb/mediatek,mtk-xhci.yaml       | 171 ++++++++++++++++++
+> >  2 files changed, 171 insertions(+), 121 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+> >  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+[...]
+> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > new file mode 100644
+> > index 000000000000..4a36ad5c4d25
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > @@ -0,0 +1,171 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +# Copyright (c) 2020 MediaTek
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: MediaTek USB3 xHCI Device Tree Bindings
+> > +
+> > +maintainers:
+> > +  - Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > +
+> > +allOf:
+> > +  - $ref: "usb-hcd.yaml"
+> > +
+> > +description: |
+> > +  There are two scenarios:
+> > +  case 1: only supports xHCI driver;
+> > +  case 2: supports dual-role mode, and the host is based on xHCI driver.
+> > +
+> > +properties:
+> > +  # common properties for both case 1 and case 2
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - mediatek,mt2712-xhci
+> > +          - mediatek,mt7622-xhci
+> > +          - mediatek,mt7629-xhci
+> > +          - mediatek,mt8173-xhci
+> > +          - mediatek,mt8183-xhci
+> > +      - const: mediatek,mtk-xhci
+> > +
+> > +  reg:
+> > +    minItems: 1
+> > +    maxItems: 2
+> > +    items:
+> > +      - description: the registers of xHCI MAC
+> > +      - description: the registers of IP Port Control
+> > +
+> > +  reg-names:
+> > +    minItems: 1
+> > +    maxItems: 2
+> > +    items:
+> > +      - const: mac
+> > +      - const: ippc  # optional, only needed for case 1.
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +  power-domains:
+> > +    description: A phandle to USB power domain node to control USB's MTCMOS
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    minItems: 1
+> > +    maxItems: 5
+> > +    items:
+> > +      - description: Controller clock used by normal mode
+> > +      - description: Reference clock used by low power mode etc
+> > +      - description: Mcu bus clock for register access
+> > +      - description: DMA bus clock for data transfer
+> > +      - description: controller clock
+> > +
+> > +  clock-names:
+> > +    minItems: 1
+> > +    maxItems: 5
+> > +    items:
+> > +      - const: sys_ck  # required, the following ones are optional
+> > +      - const: ref_ck
+> > +      - const: mcu_ck
+> > +      - const: dma_ck
+> > +      - const: xhci_ck
+> > +
+> > +  phys:
+> > +    $ref: /usb/usb-hcd.yaml#
+> 
+> That's not right.
+> 
+> You need 'items' and list each entry.
+Will add minItems/maxItems instead due to it's variable and phy-names is
+not used
 
-The applied timer is (AGE_CNT + 1) * (AGE_UNIT + 1) seconds
+> 
+> > +    description: List of all the USB PHYs on this HCD
+> > +
+> > +  vusb33-supply:
+> > +    description: Regulator of USB AVDD3.3v
+> > +
+> > +  vbus-supply:
+> > +    description: Regulator of USB VBUS5v
+> > +
+> > +  usb3-lpm-capable:
+> > +    description: supports USB3.0 LPM
+> > +    type: boolean
+> > +
+> > +  imod-interval-ns:
+> > +    description:
+> > +      Interrupt moderation interval value, it is 8 times as much as that
+> > +      defined in the xHCI spec on MTK's controller.
+> > +    default: 5000
+> > +
+> > +  # the following properties are only used for case 1
+> > +  wakeup-source:
+> > +    description: enable USB remote wakeup, see power/wakeup-source.txt
+> > +    type: boolean
+> > +
+> > +  mediatek,syscon-wakeup:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> > +    maxItems: 1
+> > +    description: |
+> > +      A phandle to syscon used to access the register of the USB wakeup glue
+> > +      layer between xHCI and SPM, the field should always be 3 cells long.
+> > +
+> > +      items:
+> 
+> Indentation is wrong here. Should be 2 fewer spaces.
+Will fix it
+> 
+> > +        - description:
+> > +            The first cell represents a phandle to syscon
+> > +        - description:
+> > +            The second cell represents the register base address of the glue
+> > +            layer in syscon
+> > +        - description:
+> > +            The third cell represents the hardware version of the glue layer,
+> > +            1 is used by mt8173 etc, 2 is used by mt2712 etc
+> > +          enum: [1, 2]
+> > +
+> > +  mediatek,u3p-dis-msk:
+> > +    $ref: /schemas/types.yaml#/definitions/uint32
+> > +    description: The mask to disable u3ports, bit0 for u3port0,
+> > +      bit1 for u3port1, ... etc
+> > +
+> > +  "#address-cells":
+> > +    const: 1
+> > +
+> > +  "#size-cells":
+> > +    const: 0
+> > +
+> > +patternProperties:
+> > +  "^[a-f]+@[0-9a-f]+$":
+> > +    $ref: /usb/usb-hcd.yaml#
+> 
+> This $ref isn't right. You already referenced it at the top.
+Will drop it
 
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
----
- drivers/net/dsa/mt7530.c | 41 ++++++++++++++++++++++++++++++++++++++++
- drivers/net/dsa/mt7530.h | 13 +++++++++++++
- 2 files changed, 54 insertions(+)
+Thank you
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 6408402a44f5..99bf8fed6536 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -870,6 +870,46 @@ mt7530_get_sset_count(struct dsa_switch *ds, int port, int sset)
- 	return ARRAY_SIZE(mt7530_mib);
- }
- 
-+static int
-+mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	unsigned int secs = msecs / 1000;
-+	unsigned int tmp_age_count;
-+	unsigned int error = -1;
-+	unsigned int age_count;
-+	unsigned int age_unit;
-+
-+	/* Applied timer is (AGE_CNT + 1) * (AGE_UNIT + 1) seconds */
-+	if (secs < 1 || secs > (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1))
-+		return -ERANGE;
-+
-+	/* iterate through all possible age_count to find the closest pair */
-+	for (tmp_age_count = 0; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
-+		unsigned int tmp_age_unit = secs / (tmp_age_count + 1) - 1;
-+
-+		if (tmp_age_unit <= AGE_UNIT_MAX) {
-+			unsigned int tmp_error = secs -
-+				(tmp_age_count + 1) * (tmp_age_unit + 1);
-+
-+			/* found a closer pair */
-+			if (error > tmp_error) {
-+				error = tmp_error;
-+				age_count = tmp_age_count;
-+				age_unit = tmp_age_unit;
-+			}
-+
-+			/* found the exact match, so break the loop */
-+			if (!error)
-+				break;
-+		}
-+	}
-+
-+	mt7530_write(priv, MT7530_AAC, AGE_CNT(age_count) | AGE_UNIT(age_unit));
-+
-+	return 0;
-+}
-+
- static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- {
- 	struct mt7530_priv *priv = ds->priv;
-@@ -2564,6 +2604,7 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.phy_write		= mt753x_phy_write,
- 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
- 	.get_sset_count		= mt7530_get_sset_count,
-+	.set_ageing_time	= mt7530_set_ageing_time,
- 	.port_enable		= mt7530_port_enable,
- 	.port_disable		= mt7530_port_disable,
- 	.port_change_mtu	= mt7530_port_change_mtu,
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index ee3523a7537e..32d8969b3ace 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -161,6 +161,19 @@ enum mt7530_vlan_egress_attr {
- 	MT7530_VLAN_EGRESS_STACK = 3,
- };
- 
-+/* Register for address age control */
-+#define MT7530_AAC			0xa0
-+/* Disable ageing */
-+#define  AGE_DIS			BIT(20)
-+/* Age count */
-+#define  AGE_CNT_MASK			GENMASK(19, 12)
-+#define  AGE_CNT_MAX			0xff
-+#define  AGE_CNT(x)			(AGE_CNT_MASK & ((x) << 12))
-+/* Age unit */
-+#define  AGE_UNIT_MASK			GENMASK(11, 0)
-+#define  AGE_UNIT_MAX			0xfff
-+#define  AGE_UNIT(x)			(AGE_UNIT_MASK & (x))
-+
- /* Register for port STP state control */
- #define MT7530_SSP_P(x)			(0x2000 + ((x) * 0x100))
- #define  FID_PST(x)			((x) & 0x3)
--- 
-2.25.1
-
+> 
+> > +    type: object
+> > +    description: The hard wired USB devices.
+> > +
+> > +dependencies:
+> > +  wakeup-source: [ 'mediatek,syscon-wakeup' ]
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - reg-names
+> > +  - interrupts
+> > +  - clocks
+> > +  - clock-names
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/mt8173-clk.h>
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/phy/phy.h>
+> > +    #include <dt-bindings/power/mt8173-power.h>
+> > +
+> > +    usb@11270000 {
+> > +        compatible = "mediatek,mt8173-xhci", "mediatek,mtk-xhci";
+> > +        reg = <0x11270000 0x1000>, <0x11280700 0x0100>;
+> > +        reg-names = "mac", "ippc";
+> > +        interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+> > +        power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+> > +        clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
+> > +        clock-names = "sys_ck", "ref_ck";
+> > +        phys = <&u3port0 PHY_TYPE_USB3>, <&u2port1 PHY_TYPE_USB2>;
+> > +        vusb33-supply = <&mt6397_vusb_reg>;
+> > +        vbus-supply = <&usb_p1_vbus>;
+> > +        imod-interval-ns = <10000>;
+> > +        mediatek,syscon-wakeup = <&pericfg 0x400 1>;
+> > +        wakeup-source;
+> > +        usb3-lpm-capable;
+> > +    };
+> > +...
+> > -- 
+> > 2.18.0
+> > 
 
 _______________________________________________
 Linux-mediatek mailing list
