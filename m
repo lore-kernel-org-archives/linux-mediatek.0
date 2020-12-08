@@ -2,87 +2,149 @@ Return-Path: <SRS0=HZpZ=FM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1F4FC4361B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 21:19:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 074A3C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 22:02:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 56A8023AFE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 21:19:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56A8023AFE
+	by mail.kernel.org (Postfix) with ESMTPS id 6DC61221FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 22:02:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DC61221FE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=C+F+gE1ZseAWg5rVgKQV6aoByCfZF87AT9AuFSAJDGM=; b=bPpp3cSIoUhh9VOM0cSfbUsRy
-	lB0zynF2zkJU9DDVG4tW/Q11a89G9Fs+uoDN2SQbE5QptSfu27KIeU1iaCDdo8fNjHWTRbVb0H9nX
-	l1+GWb8GlGmH8bT9VTk6Th/tl0YpHReysKLVcE8e7kj2Eew/XgqaHxQ1T3UAbJ/QNQrwImfIiyUNF
-	MFqmTdrN/7kM4FuHZnUwiplZWuH0d/TM8eajLsQwZv3yNNDL/gSFBByR7KZBRWSv0JX+rMXhIpn8e
-	M44plEOvTqSTEPFAkYKsV1I/y5T3pRr/fx7HBxasOwLBXlAwy+1PoEI+d98OEe5cUqjNV+6HiIq/k
-	f6b59gFww==;
+	 bh=z50ur7ic7rx47UTTNXntMmrE/y4kpl+T1HOyZFMn2B4=; b=sP+q/5vbYISLR9cGJ9nBx7zK1
+	1BbSpOsyQk5LsHhqtyS11QGxuv4bnVbPvwSQMgiuYgjh4Epk6mwnQ8mXnYO0hqEclIlZns5xX2q4D
+	zvq5pa6k03LE2F0ro5Xz2Q5LZh/veL7nuJjLeLikayKLrBHHo0wkCK1m2+OhB3dbjceCTPRtiKH13
+	jIBj2RqNUVZJEbbN5Zfe+OjtmCOWkYqBLZxRg/YcD09mgdFufVZIW7MgmnGf5yaHgzrdcGJyu0cnZ
+	AMmRgKz+v72IAAsMriLFchnd2RhVVWG6WQ1Vf/KXw7VLxGdOw7J6advTpEX0QoOUfHfQVXd1HJEgP
+	Xrb9SRHrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmkOg-0007Kg-00; Tue, 08 Dec 2020 21:19:46 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1kml3h-0001L5-Ag; Tue, 08 Dec 2020 22:02:09 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmkOe-0007K5-0X
- for linux-mediatek@lists.infradead.org; Tue, 08 Dec 2020 21:19:44 +0000
-Received: by mail-ej1-x644.google.com with SMTP id lt17so26750976ejb.3
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Dec 2020 13:19:43 -0800 (PST)
+ id 1kml3e-0001Kh-MK
+ for linux-mediatek@lists.infradead.org; Tue, 08 Dec 2020 22:02:07 +0000
+Received: by mail-pg1-x544.google.com with SMTP id w16so13477320pga.9
+ for <linux-mediatek@lists.infradead.org>; Tue, 08 Dec 2020 14:02:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Uka+2onLr/hF/L1RahMPdiX9WOY0ncZlXCWRJl3wMho=;
- b=tZJD6H2UJyH1H8uxl2LGiKdQsC37miig9Cs+XOWAaIkElGOQH8KHlyEECZjigfn1Hq
- NjGmfS76eTMQscsbJf0kM/9lURDMTFapBdRo6EmXg1jPjzxFoXfBDk+VSEdmBV7xrBy5
- HKZzFoOEJgYVnHxbksPrqCYe6vzTG68Kxp/Ozqz4J6CYTiTyTGXx7MPeckwsBMh0ZoVB
- 5XeG/qYUeHIS2F9hheDcae5FlS8No2k19Tl46ZrlYS7VHldJnOaHkbMaStwQqviV+SdB
- xB8TSRzMsguulFIgL9gKL8fdVIOUqPkUB+/6hGXk3u/ghe5xazeeoNOhFFSlVp7a10uP
- cuXw==
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=kqUn9p53w/mT308efepeyIU/G4NDsQXe8tczdIzVTAc=;
+ b=s1wHxV8nwFJnlDdnCXgYZnMRu9OF0Od/iGtX5mBifZyiCkia6v2uRpstwp6EAeaSv7
+ knoj9JimnI/AV7A9kRW9n3Rjwb+PU3n9Nchhr4WHN9dm1ZhyTp4u24HcBRtJRoBJGC/R
+ q2JdVg8pKJ/z6KEjkNfAod0PtTB6sufSHF4wO5taaq+a1WfKz4ASN2BqXiAhtKV97Xtk
+ f4mnuJwg1qKMpBMLHRzW0yANRcL6vcK2UFSqzFO9AhmlBfPPIUgk67c8Wwn++geJ4uks
+ NcX383b27FjmuhKsefRWyaMaj0AkzrAUV3BV1gKpGmQHDoOgNx1PzanmbMdbJy94RMtH
+ kDWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Uka+2onLr/hF/L1RahMPdiX9WOY0ncZlXCWRJl3wMho=;
- b=sCFXNfhmn0Vnt5B7sLdKkbmHwE7yXD2MCVkF0M27y9DKYHA0108iNKptgtU7Ko/68c
- Xv6VrhbZOrQXtj7gAnaUR5BmmXbfd5Ol8zV39+YAVeoMskoZCEwhHWhqQe/kpHzpZf0f
- LM/CrKCzNXIxwJjeh4GQjMhvgDDypfFAqUZZLBg/bZuHN5Ho6Mi4O1hdCTf4ZV+wUOIx
- tyZjGzLkl/3+PLxWUUWFUjcM2ZvoNP+rJud6ZipV44hB1dzFRFtw3P19Bc7T3YTLsQwr
- RyWZQVJI0LsSCynbB4Sy8SASYbF2Cg1cN3152eAxPMUMPE3ulW1FGIkdN4hCKAUo5HME
- 8Rrg==
-X-Gm-Message-State: AOAM532DnFQM/ZnUNQptrlZ290d9KxaFKVFRGSLXcBUzyEyOKssLQx/8
- 346yBtsk0hfL6Hs7MOtINdI=
-X-Google-Smtp-Source: ABdhPJzqouL6MJZAj0WHsQEsAAutI/cIEX1KtQKWg1qtBSojZwP2QP8JFihSK12g07fJYAB6ubrLGQ==
-X-Received: by 2002:a17:906:6b88:: with SMTP id
- l8mr24998162ejr.482.1607462382650; 
- Tue, 08 Dec 2020 13:19:42 -0800 (PST)
-Received: from skbuf ([188.25.2.120])
- by smtp.gmail.com with ESMTPSA id w20sm37426edi.12.2020.12.08.13.19.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Dec 2020 13:19:42 -0800 (PST)
-Date: Tue, 8 Dec 2020 23:19:40 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=kqUn9p53w/mT308efepeyIU/G4NDsQXe8tczdIzVTAc=;
+ b=nMI4WL6LQysg+keZ2nj5xpuEiRKTJe8Z5RGfHQ6tw+b+nR5zfhpx47FRiwEV9JNXpP
+ 6GF46FoZuHoMEHYv2dN6MTi6xrOre/Lydm5OXCImmSi6aGwBHicL9q7VFO5TEkcomDnC
+ 0GvYjQ1voggjA1PjqJVHwIjKLMDMm0LMMa/x8oGJb9zngUrfwxI7WkW65ce7phTW6H0J
+ SazXs9l4pZzc9bz+QNPjv3jtv5uJm35RiLT0sO3/SIbO9Mo962tqYnjaU83kacc7Y9x1
+ e8hAGFiBjVJApnABr2ubxNUW4Y6AUCDrGZ1LGYk9+qLxPnpS5uJ5GoQzNDMs79C9B/9Q
+ xNHw==
+X-Gm-Message-State: AOAM5304OzjdzSxk4Hm2mrKojqo8TPdkBjtomHm2RWYq6oEk4qw2NsyN
+ uy4B8hVnOYNyLM5ZPhSmih0=
+X-Google-Smtp-Source: ABdhPJwhrUC1EPo1RfkmLFqs95J1XmZzTGKKNfm60FsPMDeF1XJJPM6vT31gbaBR4YbpM5lXEb4loA==
+X-Received: by 2002:a63:ea06:: with SMTP id c6mr124113pgi.344.1607464922133;
+ Tue, 08 Dec 2020 14:02:02 -0800 (PST)
+Received: from [10.67.48.230] ([192.19.223.252])
+ by smtp.googlemail.com with ESMTPSA id fs12sm104336pjb.49.2020.12.08.14.02.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Dec 2020 14:02:01 -0800 (PST)
 Subject: Re: [PATCH net-next] net: dsa: mt7530: support setting ageing time
-Message-ID: <20201208211940.ep7lr7bvvuu2wqno@skbuf>
+To: DENG Qingfang <dqfext@gmail.com>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>
 References: <20201208070028.3177-1-dqfext@gmail.com>
- <20201208205621.2xxscilegk4k4t4g@skbuf>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
+ mQGiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
+ xGlkaOSDuu09rxuW+69Y2f1TzjFuGpBk4ysWOR85O2Nx8AJ6fYGCoeTbovrNlGT1M9obSFGQ
+ X3IzRnWoqlfudjTO5TKoqkbOgpYqIo5n1QbEjCCwCwCg3DOH/4ug2AUUlcIT9/l3pGvoRJ0E
+ AICDzi3l7pmC5IWn2n1mvP5247urtHFs/uusE827DDj3K8Upn2vYiOFMBhGsxAk6YKV6IP0d
+ ZdWX6fqkJJlu9cSDvWtO1hXeHIfQIE/xcqvlRH783KrihLcsmnBqOiS6rJDO2x1eAgC8meAX
+ SAgsrBhcgGl2Rl5gh/jkeA5ykwbxA/9u1eEuL70Qzt5APJmqVXR+kWvrqdBVPoUNy/tQ8mYc
+ nzJJ63ng3tHhnwHXZOu8hL4nqwlYHRa9eeglXYhBqja4ZvIvCEqSmEukfivk+DlIgVoOAJbh
+ qIWgvr3SIEuR6ayY3f5j0f2ejUMYlYYnKdiHXFlF9uXm1ELrb0YX4GMHz7QnRmxvcmlhbiBG
+ YWluZWxsaSA8Zi5mYWluZWxsaUBnbWFpbC5jb20+iGYEExECACYCGyMGCwkIBwMCBBUCCAME
+ FgIDAQIeAQIXgAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2DvCVAJ4u4/bPF4P3jxb4qEY8I2gS
+ 6hG0gACffNWlqJ2T4wSSn+3o7CCZNd7SLSC5BA0ESM+4EhAQAL/o09boR9D3Vk1Tt7+gpYr3
+ WQ6hgYVON905q2ndEoA2J0dQxJNRw3snabHDDzQBAcqOvdi7YidfBVdKi0wxHhSuRBfuOppu
+ pdXkb7zxuPQuSveCLqqZWRQ+Cc2QgF7SBqgznbe6Ngout5qXY5Dcagk9LqFNGhJQzUGHAsIs
+ hap1f0B1PoUyUNeEInV98D8Xd/edM3mhO9nRpUXRK9Bvt4iEZUXGuVtZLT52nK6Wv2EZ1TiT
+ OiqZlf1P+vxYLBx9eKmabPdm3yjalhY8yr1S1vL0gSA/C6W1o/TowdieF1rWN/MYHlkpyj9c
+ Rpc281gAO0AP3V1G00YzBEdYyi0gaJbCEQnq8Vz1vDXFxHzyhgGz7umBsVKmYwZgA8DrrB0M
+ oaP35wuGR3RJcaG30AnJpEDkBYHznI2apxdcuTPOHZyEilIRrBGzDwGtAhldzlBoBwE3Z3MY
+ 31TOpACu1ZpNOMysZ6xiE35pWkwc0KYm4hJA5GFfmWSN6DniimW3pmdDIiw4Ifcx8b3mFrRO
+ BbDIW13E51j9RjbO/nAaK9ndZ5LRO1B/8Fwat7bLzmsCiEXOJY7NNpIEpkoNoEUfCcZwmLrU
+ +eOTPzaF6drw6ayewEi5yzPg3TAT6FV3oBsNg3xlwU0gPK3v6gYPX5w9+ovPZ1/qqNfOrbsE
+ FRuiSVsZQ5s3AAMFD/9XjlnnVDh9GX/r/6hjmr4U9tEsM+VQXaVXqZuHKaSmojOLUCP/YVQo
+ 7IiYaNssCS4FCPe4yrL4FJJfJAsbeyDykMN7wAnBcOkbZ9BPJPNCbqU6dowLOiy8AuTYQ48m
+ vIyQ4Ijnb6GTrtxIUDQeOBNuQC/gyyx3nbL/lVlHbxr4tb6YkhkO6shjXhQh7nQb33FjGO4P
+ WU11Nr9i/qoV8QCo12MQEo244RRA6VMud06y/E449rWZFSTwGqb0FS0seTcYNvxt8PB2izX+
+ HZA8SL54j479ubxhfuoTu5nXdtFYFj5Lj5x34LKPx7MpgAmj0H7SDhpFWF2FzcC1bjiW9mjW
+ HaKaX23Awt97AqQZXegbfkJwX2Y53ufq8Np3e1542lh3/mpiGSilCsaTahEGrHK+lIusl6mz
+ Joil+u3k01ofvJMK0ZdzGUZ/aPMZ16LofjFA+MNxWrZFrkYmiGdv+LG45zSlZyIvzSiG2lKy
+ kuVag+IijCIom78P9jRtB1q1Q5lwZp2TLAJlz92DmFwBg1hyFzwDADjZ2nrDxKUiybXIgZp9
+ aU2d++ptEGCVJOfEW4qpWCCLPbOT7XBr+g/4H3qWbs3j/cDDq7LuVYIe+wchy/iXEJaQVeTC
+ y5arMQorqTFWlEOgRA8OP47L9knl9i4xuR0euV6DChDrguup2aJVU4hPBBgRAgAPAhsMBQJU
+ X9LxBQkeXB3fAAoJEGFXmRW1Y3YOj4UAn3nrFLPZekMeqX5aD/aq/dsbXSfyAKC45Go0YyxV
+ HGuUuzv+GKZ6nsysJ7kCDQRXG8fwARAA6q/pqBi5PjHcOAUgk2/2LR5LjjesK50bCaD4JuNc
+ YDhFR7Vs108diBtsho3w8WRd9viOqDrhLJTroVckkk74OY8r+3t1E0Dd4wHWHQZsAeUvOwDM
+ PQMqTUBFuMi6ydzTZpFA2wBR9x6ofl8Ax+zaGBcFrRlQnhsuXLnM1uuvS39+pmzIjasZBP2H
+ UPk5ifigXcpelKmj6iskP3c8QN6x6GjUSmYx+xUfs/GNVSU1XOZn61wgPDbgINJd/THGdqiO
+ iJxCLuTMqlSsmh1+E1dSdfYkCb93R/0ZHvMKWlAx7MnaFgBfsG8FqNtZu3PCLfizyVYYjXbV
+ WO1A23riZKqwrSJAATo5iTS65BuYxrFsFNPrf7TitM8E76BEBZk0OZBvZxMuOs6Z1qI8YKVK
+ UrHVGFq3NbuPWCdRul9SX3VfOunr9Gv0GABnJ0ET+K7nspax0xqq7zgnM71QEaiaH17IFYGS
+ sG34V7Wo3vyQzsk7qLf9Ajno0DhJ+VX43g8+AjxOMNVrGCt9RNXSBVpyv2AMTlWCdJ5KI6V4
+ KEzWM4HJm7QlNKE6RPoBxJVbSQLPd9St3h7mxLcne4l7NK9eNgNnneT7QZL8fL//s9K8Ns1W
+ t60uQNYvbhKDG7+/yLcmJgjF74XkGvxCmTA1rW2bsUriM533nG9gAOUFQjURkwI8jvMAEQEA
+ AYkCaAQYEQIACQUCVxvH8AIbAgIpCRBhV5kVtWN2DsFdIAQZAQIABgUCVxvH8AAKCRCH0Jac
+ RAcHBIkHD/9nmfog7X2ZXMzL9ktT++7x+W/QBrSTCTmq8PK+69+INN1ZDOrY8uz6htfTLV9+
+ e2W6G8/7zIvODuHk7r+yQ585XbplgP0V5Xc8iBHdBgXbqnY5zBrcH+Q/oQ2STalEvaGHqNoD
+ UGyLQ/fiKoLZTPMur57Fy1c9rTuKiSdMgnT0FPfWVDfpR2Ds0gpqWePlRuRGOoCln5GnREA/
+ 2MW2rWf+CO9kbIR+66j8b4RUJqIK3dWn9xbENh/aqxfonGTCZQ2zC4sLd25DQA4w1itPo+f5
+ V/SQxuhnlQkTOCdJ7b/mby/pNRz1lsLkjnXueLILj7gNjwTabZXYtL16z24qkDTI1x3g98R/
+ xunb3/fQwR8FY5/zRvXJq5us/nLvIvOmVwZFkwXc+AF+LSIajqQz9XbXeIP/BDjlBNXRZNdo
+ dVuSU51ENcMcilPr2EUnqEAqeczsCGpnvRCLfVQeSZr2L9N4svNhhfPOEscYhhpHTh0VPyxI
+ pPBNKq+byuYPMyk3nj814NKhImK0O4gTyCK9b+gZAVvQcYAXvSouCnTZeJRrNHJFTgTgu6E0
+ caxTGgc5zzQHeX67eMzrGomG3ZnIxmd1sAbgvJUDaD2GrYlulfwGWwWyTNbWRvMighVdPkSF
+ 6XFgQaosWxkV0OELLy2N485YrTr2Uq64VKyxpncLh50e2RnyAJ9Za0Dx0yyp44iD1OvHtkEI
+ M5kY0ACeNhCZJvZ5g4C2Lc9fcTHu8jxmEkI=
+Message-ID: <c4bfa29e-9b14-2357-7992-263e4bb02289@gmail.com>
+Date: Tue, 8 Dec 2020 14:01:59 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201208205621.2xxscilegk4k4t4g@skbuf>
+In-Reply-To: <20201208070028.3177-1-dqfext@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201208_161944_124065_A4E0D069 
-X-CRM114-Status: GOOD (  30.04  )
+X-CRM114-CacheID: sfid-20201208_170206_814607_2D3F21C2 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,116 +156,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
- "David S . Miller" <davem@davemloft.net>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Vivien Didelot <vivien.didelot@gmail.com>
+Cc: Frank Wunderlich <frank-w@public-files.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 08, 2020 at 10:56:21PM +0200, Vladimir Oltean wrote:
-> On Tue, Dec 08, 2020 at 03:00:28PM +0800, DENG Qingfang wrote:
-> > MT7530 has a global address age control register, so use it to set
-> > ageing time.
-> > 
-> > The applied timer is (AGE_CNT + 1) * (AGE_UNIT + 1) seconds
-> > 
-> > Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> > ---
-> >  drivers/net/dsa/mt7530.c | 41 ++++++++++++++++++++++++++++++++++++++++
-> >  drivers/net/dsa/mt7530.h | 13 +++++++++++++
-> >  2 files changed, 54 insertions(+)
-> > 
-> > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> > index 6408402a44f5..99bf8fed6536 100644
-> > --- a/drivers/net/dsa/mt7530.c
-> > +++ b/drivers/net/dsa/mt7530.c
-> > @@ -870,6 +870,46 @@ mt7530_get_sset_count(struct dsa_switch *ds, int port, int sset)
-> >  	return ARRAY_SIZE(mt7530_mib);
-> >  }
-> >  
-> > +static int
-> > +mt7530_set_ageing_time(struct dsa_switch *ds, unsigned int msecs)
-> > +{
-> > +	struct mt7530_priv *priv = ds->priv;
-> > +	unsigned int secs = msecs / 1000;
-> > +	unsigned int tmp_age_count;
-> > +	unsigned int error = -1;
-> > +	unsigned int age_count;
-> > +	unsigned int age_unit;
-> > +
-> > +	/* Applied timer is (AGE_CNT + 1) * (AGE_UNIT + 1) seconds */
-> > +	if (secs < 1 || secs > (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1))
-> > +		return -ERANGE;
-> > +
-> > +	/* iterate through all possible age_count to find the closest pair */
-> > +	for (tmp_age_count = 0; tmp_age_count <= AGE_CNT_MAX; ++tmp_age_count) {
-> > +		unsigned int tmp_age_unit = secs / (tmp_age_count + 1) - 1;
-> > +
-> > +		if (tmp_age_unit <= AGE_UNIT_MAX) {
-> > +			unsigned int tmp_error = secs -
-> > +				(tmp_age_count + 1) * (tmp_age_unit + 1);
-> > +
-> > +			/* found a closer pair */
-> > +			if (error > tmp_error) {
-> > +				error = tmp_error;
-> > +				age_count = tmp_age_count;
-> > +				age_unit = tmp_age_unit;
-> > +			}
+On 12/7/20 11:00 PM, DENG Qingfang wrote:
+> MT7530 has a global address age control register, so use it to set
+> ageing time.
 > 
-> I feel that the error calculation is just snake oil. This would be enough:
+> The applied timer is (AGE_CNT + 1) * (AGE_UNIT + 1) seconds
 > 
-> 		if (tmp_age_unit <= AGE_UNIT_MAX)
-> 			break;
-> 
-> Explanation:
-> 
-> You are given a number X, and must find A and B such that the error
-> E = |(A x B) - X| should be minimum, with
-> 1 <= A <= A_max
-> 1 <= B <= B_max
-> 
-> It is logical to try with A=1 first. If X / A <= B_max, then of course,
-> B = X / 1, and the error E is 0.
-> 
-> If that doesn't work out, and B > B_max, then you go to A=2. That gives
-> you another B = X / 2, and the error E is 1. You check again if B <=
-> B_max. If it is, that's your answer. B = X / 2, with an error E of 1.
-> 
-> You get my point. Iterating ascendingly through A, and calculating B as
-> X / A, already gives you the smallest error as soon as it satisfies the
-> B <= B_max requirement.
-> 
-> > +
-> > +			/* found the exact match, so break the loop */
-> > +			if (!error)
-> > +				break;
-> > +		}
-> > +	}
-> > +
-> > +	mt7530_write(priv, MT7530_AAC, AGE_CNT(age_count) | AGE_UNIT(age_unit));
-> > +
-> > +	return 0;
-> > +}
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 
-Thinking more about it, it's not snake oil but is actually correct.
-Where I was wrong was the division giving you a certain error, but it
-actually only gives a maximum error. Other, larger, divisors can still
-give you an error of 0.
-If the number you're searching for, X, is, say, a multiple of 3 but not
-of 2, and is:
-B_max * 1 < X < B_max * 2
-then exiting the loop at A=2 would give you an error E=1. But if you
-continued the loop, then A=3 would have yielded an error E=0, because X
-is a multiple of 3 but not of 2. I should probably go and refresh my
-basic arithmetic.
-
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
 _______________________________________________
 Linux-mediatek mailing list
