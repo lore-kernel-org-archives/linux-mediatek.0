@@ -2,75 +2,96 @@ Return-Path: <SRS0=HZpZ=FM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27C78C4361B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 04:15:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0B49C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 04:52:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A86CB239EB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 04:15:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A86CB239EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 71AA823A58
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 04:52:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71AA823A58
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Nf2N2ak3CwE3L1Xbx+koYR5JlPuHQSWqbH4WGzEAT34=; b=ao9GoeKhWe9785K98LU7j20FQ
-	SuLHjcNTyRzfXl/tF2fPsoWDx/AZgiOPBD3G5tsdApLRlBLVG+0LIyziMtQhUuh9jyQjDFegqBF/+
-	a3/aEa2nvtpvF8Pm+Rk0cRO/dpejFjlPi98F/mv1YsLQ/h4XmGDJWdWAoQ8jDQZEQ4yL1ea0YbcWw
-	PL8OlD/wXUcz9SQpKuEEGqp4wfdmRZG9zvFeqT2pd+YkgrTFlZa3a/OE2YA3ZXIe9ZkrQdY/FzOHs
-	9JLCRk4T2TnzYJyGhzk9Ghw2EDR6BMVwpYwLc5au85JxVX9aikSHyfca8iPUVnKSyC8osJ5r4mnJK
-	YzXSVH/+A==;
+	 bh=OSqZab+6Voe2imt+8+QfUNc5dHCL+pFEvueRKSrKbKI=; b=VwIixslEaEzwASlo8SZt9m4me
+	+8AL8NZSvqB9Xi2etZnF+hAB7PkyCJo2+WJQcNb59YInb1UENV99BtwSrRVvZ8eKGL+PDrUAIJCa5
+	tNf8IyWXfj6W4XevoVDNaYWnYwkP6YYzAswh3rgnQWYeLyVzy9FzUSKbnVJS5E73vKYlXeERwq6Ny
+	8AQfS/Iphdc+MHfFOSvynUGEoFQElS7mG1RCKtNf3eyJlIYMCUpKWqOEcF00lyhkLDCPRlKTkeQYF
+	TvFTQyaUCbFB3XOM38Tb14wepqAOBvxdn+0HKuQPnF3YpPpgajoqfY64mDM50F1jVMIj+PEz+T151
+	c28QpCHVQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmUPE-0008QB-QC; Tue, 08 Dec 2020 04:15:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kmUzY-0003fp-VT; Tue, 08 Dec 2020 04:52:49 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmUPA-0008PZ-1h
- for linux-mediatek@lists.infradead.org; Tue, 08 Dec 2020 04:15:13 +0000
-X-UUID: b04e0f17d1fb4ba9a8dcdd4e8d2576ed-20201207
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=SQbAfHtOLLKSe7iUTymu6Ec7aPGYJE1hWO211GToPfM=; 
- b=kRJX/vvzE+9P9brPBuZlU+p3NZZ2UM+sRTCvTQInVw3qYWrNQJjBmaRFE0sK9l3pEXAI9eENdURgZTLwOjGXBPgWIVmqypgBrTiLx5iweQZGMWUMnfhDvVebLkc/Fxf+DbPVakbNNOtNSoizd6ZK/YBCR4bDdAn2hYY094xKzzA=;
-X-UUID: b04e0f17d1fb4ba9a8dcdd4e8d2576ed-20201207
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1499547853; Mon, 07 Dec 2020 20:15:03 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Dec 2020 20:15:00 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 8 Dec 2020 12:14:52 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Dec 2020 12:14:57 +0800
-Message-ID: <1607400896.23328.7.camel@mhfsdcap03>
-Subject: Re: [PATCH 1/2] usb: mtu3: fix memory corruption in
- mtu3_debugfs_regset()
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Date: Tue, 8 Dec 2020 12:14:56 +0800
-In-Reply-To: <X8ikqc4Mo2/0G72j@mwanda>
-References: <X8ikqc4Mo2/0G72j@mwanda>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kmUzW-0003et-Ot; Tue, 08 Dec 2020 04:52:47 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B84nPNV064006;
+ Tue, 8 Dec 2020 04:52:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=1e3cV7XKyt5cBPHNeWYhYMHu3W87CKppja6U1Jvw5F4=;
+ b=V+G180Fh0lHbcmydQJqS5i+cerb42SoRrRI9QCXlQMjyWKKfj0acXqExTQUiK+7OEtft
+ OuMy/8L57grCegXY4FPi2mfpdUD9NETOrjU6XyLEGnB6yCKU9e30d2WSgQTsYBxq/cMN
+ 5junVfgiRpfFB5rc1EfDtZHP43anCs3FIrUtz16u4yPsKG0NCInMT5yeMTaPCX1MMJeq
+ qZ1GHIcbwNatFRQ/tELhwJDJybfqjlIskC/pDoCLpTPJ2KTrod7PX9rst5aaRTC3xIQA
+ veh/+mbPHLjYXfePq5oiUCHv2+7Gowf8M2KKiHFzojpZKSSSQD2meZy2nTRpI8CVh6TQ Yg== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2120.oracle.com with ESMTP id 35825m0srq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 08 Dec 2020 04:52:35 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B84ocw5155469;
+ Tue, 8 Dec 2020 04:52:34 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by userp3020.oracle.com with ESMTP id 358kys9m8s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 08 Dec 2020 04:52:34 +0000
+Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 0B84qX4M159553;
+ Tue, 8 Dec 2020 04:52:33 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3020.oracle.com with ESMTP id 358kys9m7s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Dec 2020 04:52:33 +0000
+Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0B84qDZf015901;
+ Tue, 8 Dec 2020 04:52:15 GMT
+Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 07 Dec 2020 20:52:13 -0800
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Subject: Re: (subset) [PATCH 000/141] Fix fall-through warnings for Clang
+Date: Mon,  7 Dec 2020 23:52:01 -0500
+Message-Id: <160740299787.710.4201881220590518200.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <cover.1605896059.git.gustavoars@kernel.org>
+References: <cover.1605896059.git.gustavoars@kernel.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 125EA1465074F59FE9EFB536D80038FE4E5F9648639B8DC7B9CA890AC9C2536B2000:8
-X-MTK: N
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9828
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ adultscore=0 bulkscore=0
+ phishscore=0 mlxlogscore=380 clxscore=1015 priorityscore=1501 mlxscore=0
+ spamscore=0 lowpriorityscore=0 malwarescore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2012080029
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201207_231512_859229_A5BE0653 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20201207_235247_036152_450F00D1 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,41 +103,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel-janitors@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+Cc: linux-fbdev@vger.kernel.org, linux-atm-general@lists.sourceforge.net,
+ linux-stm32@st-md-mailman.stormreply.com, linux-iio@vger.kernel.org,
+ linux-wireless@vger.kernel.org, alsa-devel@alsa-project.org,
+ dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linux-mm@kvack.org, linux-ide@vger.kernel.org, dm-devel@redhat.com,
+ keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-hardening@vger.kernel.org, wcn36xx@lists.infradead.org,
+ linux-i3c@lists.infradead.org, linux-decnet-user@lists.sourceforge.net,
+ ceph-devel@vger.kernel.org, usb-storage@lists.one-eyed-alien.net,
+ Kees Cook <keescook@chromium.org>, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ linux1394-devel@lists.sourceforge.net, linux-scsi@vger.kernel.org,
+ linux-rdma@vger.kernel.org, oss-drivers@netronome.com, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
+ cluster-devel@redhat.com, linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ Miguel Ojeda <ojeda@kernel.org>, xen-devel@lists.xenproject.org,
+ linux-ext4@vger.kernel.org, linux-media@vger.kernel.org,
+ bridge@lists.linux-foundation.org, linux-watchdog@vger.kernel.org,
+ selinux@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, reiserfs-devel@vger.kernel.org,
+ linux-geode@lists.infradead.org, linux-block@vger.kernel.org,
+ linux-gpio@vger.kernel.org, op-tee@lists.trustedfirmware.org,
+ linux-mediatek@lists.infradead.org, samba-technical@lists.samba.org,
+ drbd-dev@tron.linbit.com, linux-hams@vger.kernel.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-can@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ nouveau@lists.freedesktop.org, patches@opensource.cirrus.com,
+ linux-usb@vger.kernel.org, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-sctp@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
+ netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
+ netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, GR-everest-linux-l2@marvell.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-12-03 at 11:41 +0300, Dan Carpenter wrote:
-> This code is using the wrong sizeof() so it does not allocate enough
-> memory.  It allocates 32 bytes but 72 are required.  That will lead to
-> memory corruption.
-> 
-> Fixes: ae07809255d3 ("usb: mtu3: add debugfs interface files")
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-> ---
->  drivers/usb/mtu3/mtu3_debugfs.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
-> index fdeade6254ae..7537bfd651af 100644
-> --- a/drivers/usb/mtu3/mtu3_debugfs.c
-> +++ b/drivers/usb/mtu3/mtu3_debugfs.c
-> @@ -127,7 +127,7 @@ static void mtu3_debugfs_regset(struct mtu3 *mtu, void __iomem *base,
->  	struct debugfs_regset32 *regset;
->  	struct mtu3_regset *mregs;
->  
-> -	mregs = devm_kzalloc(mtu->dev, sizeof(*regset), GFP_KERNEL);
-> +	mregs = devm_kzalloc(mtu->dev, sizeof(*mregs), GFP_KERNEL);
->  	if (!mregs)
->  		return;
->  Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+On Fri, 20 Nov 2020 12:21:39 -0600, Gustavo A. R. Silva wrote:
 
-Thanks
+> This series aims to fix almost all remaining fall-through warnings in
+> order to enable -Wimplicit-fallthrough for Clang.
+> 
+> In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
+> add multiple break/goto/return/fallthrough statements instead of just
+> letting the code fall through to the next case.
+> 
+> [...]
 
+Applied to 5.11/scsi-queue, thanks!
+
+[054/141] target: Fix fall-through warnings for Clang
+          https://git.kernel.org/mkp/scsi/c/492096ecfa39
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
