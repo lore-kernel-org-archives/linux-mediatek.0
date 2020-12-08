@@ -2,19 +2,19 @@ Return-Path: <SRS0=HZpZ=FM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2E7CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 01:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79DC8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 01:50:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 639A9238E7
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 01:45:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 639A9238E7
+	by mail.kernel.org (Postfix) with ESMTPS id 144EE238E7
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 01:50:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 144EE238E7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0KF0C3DujO0XDAUkF/2tn6ZNdiQG3MIs/v6ozRf14MY=; b=VdJ3ozTFGGVNEKo/D7m7+jvat
-	cWnYRKLxMyxgePEWUPJxCyLiHU92Sz1UCJdNlLPhnPGrh5YylPneGgFGF+wifTotvJoUYgsSrscJf
-	YJmc6kM9Xuu8FWvsVPNSaFqaIDTNWndleQc1hlGeE+/4UWymIV8wk0SemtTD3RzxSXgJP8dIIqMi7
-	y1IyL99UvjLoSB1ZOFlTlawHROwjpO1N/AobvPRvTUrNfEcZCUO+b17E/8RgVo4wCZDcw6Krmp763
-	/1GGK39CePUQOvF9VXenTeqUr8QYvTHl7vzfrnYvCPNCbsvgKlRshH2BAOCcY+7KIldrrrvxPUogz
-	kOnKglh5Q==;
+	 bh=P4u0dj11taaDfQLAcMjR81jXwy239fHNjrIbOO7xpH0=; b=YlmUzG9rY2KgcSCB0Vk3W8jB6
+	3Alcp9ou/RleOmEI6YXGVX3wayuoA421fKouOu8D1WWVgrE1KRNhE4wLCKuRaCMQ1PshjirUZBMIq
+	CtB/cXL6p6Jkya6AduXd2AKFNmfXOtX7vzuMI6RRkk4CIrHoIjwjh8PU0alceDgrCQ3Jcs/vRu9ZW
+	7eFr2HMQcf5b7rXubPm4veIRY+OGaiz6RT1AHRWaM1DG/5OaTZ+W+2KrHC1ARCrd1jxDfDFtXwKY3
+	z5SwO1KQtRqOBL2HAdp4m/COUZfclLjc+qY66DsHn//nZzvHx6sr2N3wKI57dQ5MfgF3ixa88XY6M
+	v3QT99rCQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmS4R-0006d1-Ub; Tue, 08 Dec 2020 01:45:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kmS8r-0006wi-I9; Tue, 08 Dec 2020 01:50:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmS4O-0006cZ-5E; Tue, 08 Dec 2020 01:45:37 +0000
-X-UUID: ffc47daaa41f4d3fb98edf8b62841302-20201207
+ id 1kmS8o-0006w2-EO; Tue, 08 Dec 2020 01:50:11 +0000
+X-UUID: 9006af38c67042e1a05a8666cbf4a0c4-20201207
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=waqy4i20W1JDrFc1FePMwNNNYqRij3lkjq7dJ8MpdPc=; 
- b=cvKWNSirrPiYVOhzij9Udf7gzWaHSbz6nbFeTdDeLWyeHgATllqzLHOHBU0sUZMYkb+Z3nr63gDUS1l62MHtGX72iz17y4tTx+M530HgQJacavyb4Du9gnI3sWW2geYA4GKBaumx1mqzLfQgF9C1wr+BxBoXQzeZccWnGLf+KVU=;
-X-UUID: ffc47daaa41f4d3fb98edf8b62841302-20201207
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ bh=dCzH311+U2RFvjPiv7C+GlVUPgKHpvOsRKaE8jAB0UM=; 
+ b=dAks2qEQ9ToMg60OeCOyZKIZs2vHSPVaZtFyg63SUZxre5J+IYe0U1+QO+yv1ePO/vFjjqU/SyP7MLSZZaCooHp4ruB658gHV+xp9vdN4SCpMhIqYRxEan8hqQf+B6Fnp6IGd8zktk8cW25wiYpPb0JDnroWJRsQBsnmEJCFsXc=;
+X-UUID: 9006af38c67042e1a05a8666cbf4a0c4-20201207
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 365791845; Mon, 07 Dec 2020 17:37:04 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Dec 2020 17:27:39 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 8 Dec 2020 09:27:33 +0800
+ with ESMTP id 1783293279; Mon, 07 Dec 2020 17:50:06 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Dec 2020 17:50:04 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n2.mediatek.inc
+ (172.21.101.140) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 8 Dec 2020 09:49:59 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Dec 2020 09:27:32 +0800
-Message-ID: <1607390856.14736.77.camel@mhfsdcap03>
-Subject: Re: [v4,2/3] PCI: mediatek: Add new generation controller support
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Date: Tue, 8 Dec 2020 09:27:36 +0800
-In-Reply-To: <20201204183052.GA1929838@bjorn-Precision-5520>
-References: <20201204183052.GA1929838@bjorn-Precision-5520>
+ Transport; Tue, 8 Dec 2020 09:49:57 +0800
+Message-ID: <1607392202.23328.1.camel@mhfsdcap03>
+Subject: Re: [PATCH][next] drm/mediatek: avoid dereferencing a null hdmi_phy
+ on an error message
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Colin King <colin.king@canonical.com>
+Date: Tue, 8 Dec 2020 09:50:02 +0800
+In-Reply-To: <20201207150937.170435-1-colin.king@canonical.com>
+References: <20201207150937.170435-1-colin.king@canonical.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E51732604C4D2E44E18A7FAC374C6508F9E0AEBD30C5B828F9E6F2145E867B3A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201207_204536_422203_49E7400B 
-X-CRM114-Status: GOOD (  40.58  )
+X-CRM114-CacheID: sfid-20201207_205010_634942_5DBDA134 
+X-CRM114-Status: GOOD (  19.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,13 +80,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, Lorenzo
- Pieralisi <lorenzo.pieralisi@arm.com>, qizhong.cheng@mediatek.com,
- chuanjia.liu@mediatek.com, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-pci@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- sin_jieyang@mediatek.com, Sj Huang <sj.huang@mediatek.com>,
- Lukas Wunner <lukas@wunner.de>, linux-mediatek@lists.infradead.org,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ chunhui dai <chunhui.dai@mediatek.com>, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, CK Hu <ck.hu@mediatek.com>, Vinod
+ Koul <vkoul@kernel.org>, linux-mediatek@lists.infradead.org,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
@@ -95,94 +93,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-12-04 at 12:30 -0600, Bjorn Helgaas wrote:
-> On Fri, Dec 04, 2020 at 08:39:09AM +0100, Lukas Wunner wrote:
-> > On Mon, Nov 30, 2020 at 11:30:05AM -0600, Bjorn Helgaas wrote:
-> > > On Mon, Nov 23, 2020 at 02:45:13PM +0800, Jianjun Wang wrote:
-> > > > On Thu, 2020-11-19 at 14:28 -0600, Bjorn Helgaas wrote:
-> > > > > > +static int mtk_pcie_setup(struct mtk_pcie_port *port)
-> > > > > > +{
-> > [...]
-> > > > > > +	/* Try link up */
-> > > > > > +	err = mtk_pcie_startup_port(port);
-> > > > > > +	if (err) {
-> > > > > > +		dev_notice(dev, "PCIe link down\n");
-> > > > > > +		goto err_setup;
-> > > > > 
-> > > > > Generally it should not be a fatal error if the link is not up at
-> > > > > probe-time.  You may be able to hot-add a device, or the device may
-> > > > > have some external power control that will power it up later.
-> > > > 
-> > > > This is for the power saving requirement. If there is no device
-> > > > connected with the PCIe slot, the PCIe MAC and PHY should be powered
-> > > > off.
-> > > > 
-> > > > Is there any standard flow to support power down the hardware at
-> > > > probe-time if no device is connected and power it up when hot-add a
-> > > > device?
-> > > 
-> > > That's a good question.  I assume this looks like a standard PCIe
-> > > hot-add event?
-> > > 
-> > > When you hot-add a device, does the Root Port generate a Presence
-> > > Detect Changed interrupt?  The pciehp driver should field that
-> > > interrupt and turn on power to the slot via the Power Controller
-> > > Control bit in the Slot Control register.
-> > > 
-> > > Does your hardware require something more than that to control the MAC
-> > > and PHY power?
-> > 
-> > Power saving of unused PCIe ports is generally achieved through the
-> > runtime PM framework.  When a PCIe port runtime suspends, the PCIe
-> > core will transition it to D3hot.  On top of that, the platform
-> > may be able to transition the port to D3cold.  Currently only the
-> > ACPI platform supports that.  Conceivably, devicetree-based systems
-> > may want to disable certain clocks or regulators when a PCIe port
-> > runtime suspends.  I think we do not support that yet but it could
-> > be added to drivers/pci/pcie/portdrv*.
-> > 
-> > A hotplug port is expected to signal PDC and DLLSC interrupts even
-> > when in D3hot.  At least that's our experience with Thunderbolt.
-> > To support hotplug interrupts in D3cold, some external mechanism
-> > (such as a PME) is necessary to wake up the port on hotplug.
-> > This is also supported with recent Thunderbolt systems.
-> > 
-> > Because we've seen various incompatibilities when runtime suspending
-> > PCIe ports, certain conditions must be satisfied for runtime PM
-> > to be enabled.  They're encoded in pci_bridge_d3_possible().
-> > Generally, hotplug ports only runtime suspend if they belong to
-> > a Thunderbolt controller or if the ACPI platform explicitly allows
-> > runtime PM (through presence of a _PR3 method or a device property).
-> > Non-hotplug ports runtime suspend if the BIOS is newer than 2015
-> > (as specified by DMI).
-> > 
-> > Obviously, this policy is very x86-focussed because both Thunderbolt
-> > and DMI are only really a thing on x86.  That's about to change though
-> > because Apple's new arm64-based Macs have Thunderbolt integrated into
-> > the SoC and arm64 SoCs are making inroads in the datacenter, which is
-> > an important use case for PCIe hotplug (hot-swappable NVMe drives).
-> > So we may have to amend pci_bridge_d3_possible() to whitelist
-> > PCIe ports for runtime PM on specific arches or systems.
+On Mon, 2020-12-07 at 15:09 +0000, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
-> Thanks for all this very useful information!
+> Currently there is a null pointer check for hdmi_phy that implies it
+> may be null, however a dev_err messages dereferences this potential null
+> pointer.  Avoid a null pointer dereference by only emitting the dev_err
+> message if hdmi_phy is non-null.  It is a moot point if the error message
+> needs to be printed at all, but since this is a relatively new piece of
+> code it may be useful to keep the message in for the moment in case there
+> are unforseen errors that need to be reported.
 > 
-> My interpretation for the mediatek situation:
+> Addresses-Coverity: ("Dereference after null check")
+> Fixes: be28b6507c46 ("drm/mediatek: separate hdmi phy to different file")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/phy/mediatek/phy-mtk-hdmi.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
->   - I assume this patch leaves or puts the Root Port in D3cold if no
->     downstream devices are present.
-> 
->   - I don't see any support for PME or similar mechanisms to signal a
->     hot-add while the RP is in D3cold.
-> 
->   - So I assume you don't support hot-add if the slot was empty at
->     boot and that's acceptable for your platform.
+> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
+> index c5c61f5a9ea0..5184054783c7 100644
+> --- a/drivers/phy/mediatek/phy-mtk-hdmi.c
+> +++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
+> @@ -84,8 +84,9 @@ mtk_hdmi_phy_dev_get_ops(const struct mtk_hdmi_phy *hdmi_phy)
+>  	    hdmi_phy->conf->hdmi_phy_disable_tmds)
+>  		return &mtk_hdmi_phy_dev_ops;
+>  
+> -	dev_err(hdmi_phy->dev, "Failed to get dev ops of phy\n");
+> -		return NULL;
+> +	if (hdmi_phy)
+> +		dev_err(hdmi_phy->dev, "Failed to get dev ops of phy\n");
+> +			return NULL;
+indentation: one tab before return
 
-Yes, the hardware of Root Port will be totally powered off by gating its
-MTCMOS and clocks if the slot is empty at boot time. Because we are
-focus on the scenario of power saving, it's acceptable if we don't
-support hot-add.
+Thanks
 
-Thanks.
+>  }
+>  
+>  static void mtk_hdmi_phy_clk_get_data(struct mtk_hdmi_phy *hdmi_phy,
 
 _______________________________________________
 Linux-mediatek mailing list
