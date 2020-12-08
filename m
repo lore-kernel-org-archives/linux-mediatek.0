@@ -2,73 +2,81 @@ Return-Path: <SRS0=HZpZ=FM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C285C4361B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 05:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CEE2C4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 06:23:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DF3C923A63
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 05:50:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF3C923A63
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1B51323A63
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 06:23:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B51323A63
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=W6nWKy5Q9qeO8V+G/ZxsuoXJycDD4PKlFBZI7EHqYK0=; b=o/NvoRjoV2WITEm/omL8M1fs6r
-	2v8hv4lfInhlbPbRtrsfEvnExR+tUv59q0vRzQP5Yrp0tc3XJ5yXN5aIfQA/3fS3ZIxNTZ1tJz343
-	fCeoLjNbDjE9bXPlQd6DRIWWiXmQH2oj0PStDZi9Fn8M8ZJzRahoiBkzkNNMFcVTU7euMNb4fzQvz
-	QpgJMfWpdgZ6BtJeNy22EksZ8wjoJhZ3+UYxoVqGRnPm4FkqCcnBgj7W5e5UqNKUjLIZrUNDfVw1l
-	PT9r27jwfZ/fvo0zcy5YnHdQf9K/6zsPQudfEYXQw8HzirDzzZaLx/924K22PChJhV7NtapetaK5Y
-	7okR0mGg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:Date:References:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=a3t2NxHGnv/bYLlXTHVh5dgegONk0KM48T16PWQTQIg=; b=DqBQKVsRoasaEK7zuTX3ADCKQ
+	mSBCGYtZb5JYOdsFyiNiAG2boaIdU89J1wz7JgZsqVvI8Xhki8qHUnS9hL8Fx75oWxSmpOXaU6BoT
+	gAmf+HsfSMus8nq/xiPifR6gVWN4SAEIKKqvg8jhZ+1iMigHQlts2sK2glmDH6qP1O3F5U2QWPrn+
+	y/ncXu482qpaF3rx/3KxseBulZDXYhkJ16WvY4nM8LQpcIeooUmAyTOy1UQuDRe7dfYMjfVhEu1DP
+	p6zxBHuNJtJNDV0ryO3IANFSu1PQWptrIWfwMtYM3t/XVHIZaRKaemYKC/LoTfW8aB0eTkhgwRJ2M
+	nbh3NZZHg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmVss-0007tq-Ke; Tue, 08 Dec 2020 05:49:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kmWPV-0001U4-ML; Tue, 08 Dec 2020 06:23:41 +0000
+Received: from m43-15.mailgun.net ([69.72.43.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmVsn-0007tH-L3; Tue, 08 Dec 2020 05:49:55 +0000
-X-UUID: 1782b116692a446f8a7f2a870f5fbfb2-20201207
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=+ZgTMF9/72i3UHEWTWoct9XbkMWHILBD/xFJC2Q533I=; 
- b=rNkZUrZFZl8Kp/Iob9BLeWZLpVaR5s9hc6BBJ38vePS09gwmVIJ/6SBSUEkXULMeZizyFVWzyHUgpZqWg7Kr9F0A7uHRfYnC9SFXJR91q/Ddn9mHuXc7wAdBrUz3d8vLjaWwzsqaT95hiQNYWGIY/nd8v3ClFc9kkHtYGbj0rBc=;
-X-UUID: 1782b116692a446f8a7f2a870f5fbfb2-20201207
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2007556661; Mon, 07 Dec 2020 21:49:47 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Dec 2020 21:49:44 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Dec 2020 13:49:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 8 Dec 2020 13:49:42 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1] scsi: ufs: Ensure WriteBooster to be re-enabled after
- device reset
-Date: Tue, 8 Dec 2020 13:49:40 +0800
-Message-ID: <20201208054940.1855-1-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kmWPS-0001Th-HY
+ for linux-mediatek@lists.infradead.org; Tue, 08 Dec 2020 06:23:40 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1607408619; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=MY5jl5iQhbaMKsCtcmqzUA41XPaUXL7dxhgq0JknUYg=;
+ b=W1iD2TuNdVLwYNOQiErQGKDbMU0av2rlqeHy1IhnNA+Yavp/mkFLu166pKipr2J5NZxHSKe6
+ GAJQsSg8q/Bm+T2d7984vVD2SQoVW3wVB92gW8j78NYBRk7Uqvle4zh7KNLUbjpUHuD8xwjb
+ tCxhl9GZ7AKM8u6dyzo4O/4EI0Q=
+X-Mailgun-Sending-Ip: 69.72.43.15
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n10.prod.us-west-2.postgun.com with SMTP id
+ 5fcf1bdbdc0fd8a3173bb4a5 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 08 Dec 2020 06:23:23
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 5C92AC43461; Tue,  8 Dec 2020 06:23:23 +0000 (UTC)
+Received: from tynnyri.adurom.net (tynnyri.adurom.net [51.15.11.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 35094C433CA;
+ Tue,  8 Dec 2020 06:23:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 35094C433CA
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Subject: Re: [PATCH] mt76: mt7915: fix "defined but not used" compiler warning
+References: <20201203113210.16354-1-shayne.chen@mediatek.com>
+Date: Tue, 08 Dec 2020 08:23:16 +0200
+In-Reply-To: <20201203113210.16354-1-shayne.chen@mediatek.com> (Shayne Chen's
+ message of "Thu, 3 Dec 2020 19:32:10 +0800")
+Message-ID: <87im9c4y0b.fsf@tynnyri.adurom.net>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: EE9471868BCE6F5EBDE13344911B30D28E13E0E7A3F5D3E610102976C6D9DA642000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201208_004954_469251_B29965C5 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20201208_012339_544142_4BF045F3 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,57 +88,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, alice.chao@mediatek.com,
- bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
- chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>, Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-UFS 3.1 specification mentions that below WriteBooster flags will be
-set to default value, say disabled, after power cycle or any type
-of reset event. Thus we need to reset those flag variables kept
-in struct hba to align the device status and ensure WriteBooster
-related functions being configured properly after device reset.
+Shayne Chen <shayne.chen@mediatek.com> writes:
 
-Without this fix, WriteBooster will not be enabled successfully
-by ufshcd_wb_ctrl() after device reset because hba->wb_enabled
-remains as true.
+> If CONFIG_NL80211_TESTMODE is not set, the following compiler warning
+> appears:
+>
+> warning: 'mt7915_mac_tx_rate_val' defined but not used [-Wunused-function]
+>
+> Since mt7915_mac_tx_rate_val() is only used by
+> mt7915_mac_write_txwi_tm(), merge them to get rid of this warning.
+>
+> Fixes: 3ac860a ("mt76: mt7915: implement testmode tx support")
 
-Flags required to be reset to default values:
-- fWriteBoosterEn: hba->wb_enabled
-- fWriteBoosterBufferFlushEn: hba->wb_buf_flush_enabled
-- fWriteBoosterBufferFlushDuringHibernate: No variable mapped
+Fixes line is wrong:
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.h | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches#fixes_line_is_incorrect
 
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 7a7e056a33a9..c22887bee788 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -1218,8 +1218,11 @@ static inline void ufshcd_vops_device_reset(struct ufs_hba *hba)
- 	if (hba->vops && hba->vops->device_reset) {
- 		int err = hba->vops->device_reset(hba);
- 
--		if (!err)
-+		if (!err) {
- 			ufshcd_set_ufs_dev_active(hba);
-+			hba->wb_enabled = false;
-+			hba->wb_buf_flush_enabled = false;
-+		}
- 		if (err != -EOPNOTSUPP)
- 			ufshcd_update_reg_hist(&hba->ufs_stats.dev_reset, err);
- 	}
 -- 
-2.18.0
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
