@@ -2,63 +2,73 @@ Return-Path: <SRS0=HZpZ=FM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78774C4361B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 12:56:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1BA4C4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 13:57:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26B6C23A84
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 12:56:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26B6C23A84
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 947E923AA9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 13:57:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 947E923AA9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OTZZ9Gp4DDtw9MaWeTVDYZwTsegWVPY7EwkX9EPbrfE=; b=s/DWwq+Ge9F3JE/r+/axDly3H
-	CcQ8D5Z86yp77D6XeeSfoM9hy2bk3nWzWbpwLVDc1u4++cc3WytldfEzKeLU3CGX75MntLJY+IH/I
-	hImaimyePp1o+pHYFd3IzRPpVJf1/TEo/qZCRGcxbMyJ3SyzI7kHa8yY47SpRvxvImB+6+yhyujCp
-	dC9vHnFzIkni5zBRsD0RewGa9I2HmWDAgPdULJdIw+7ttBaafAERog/S2MoGTKNkyM8nzE430zhl1
-	/byMALLE1eNQOIq5BgurXasHNpeQCEuxDLB6XLQOAn/CEbAh9MDwJ8Xr/uMM2Ng0HC7w2NtgwWiyh
-	XYYKYN1nA==;
+	 bh=1iiblJrwa1mb1ngoeEDmRR3jHzxZm+xqDVUCItXCLzI=; b=P/RmJy7wqX1H9UuHpwYrbi9Yj
+	HNXObl/47WmfE0s50Buvl/+FtW8raxAolVFPf854JBeNYLMls4pa7qXsrz1NUbIePyRKZNLshuIyP
+	qN+0bj71hBJHxfYgPItLXB52Qs/rkW2gcz+hsuYb4Nkk8y5Y48FOiC7hZfLS5PddYkNPClaNsshHe
+	ELoNSEN7nheNpO1QVlBkI+u4PoAai6GQgZubWIUUR3CUEPl8IMYOQ22RDo1GKwdNXc1L1opiVIXiQ
+	0McxB9zxmgfOh1F6ykv213qYdXvqWJy6AY/dpAZV61cJiKWigSewfQ4FMj5Rq9tvVGHS1swE5GO1X
+	ucKn1ibPA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmcXC-0000RK-0S; Tue, 08 Dec 2020 12:56:02 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kmdU2-0000hi-GJ; Tue, 08 Dec 2020 13:56:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmcX5-0000P1-Kf; Tue, 08 Dec 2020 12:55:56 +0000
-Date: Tue, 8 Dec 2020 18:25:49 +0530
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607432154;
- bh=DwAV7zH+P8yCLLppVdnEWm7jEyFYcY0buhiThYP1IpQ=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=resxd2wxBAM0ElayHYdUDK8fD16d3qFWPlTzJ9Pa+uA4NBMOiSMCECIniE5STbceD
- p9M2qOxsWdRLIGK5SGHHryzOiwFBJI9bCZ9vpQ86EpC2U5x79WgyN8geNp96pRdRId
- 3pE2mT/z9Nl5X1nEctSWVktg2oR0/sH7Ns0/1j0XjqK/Wc7z1TgxEISIgkuo/xtogQ
- Tmz8sMn6tEyk93pdykDJbIjdk0xgQ4IbsJ5ocXtf6V63eyedtzEtLrBOmst3/F0E2v
- NtFQmTOoK6tynjIH0JXY/L4zgYffzJxwjGKA8dpQN94BXgJMMg/Qicwac/1Xu9QBJV
- QsxLKmNRk8LCw==
-From: Vinod Koul <vkoul@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH][next] drm/mediatek: avoid dereferencing a null hdmi_phy
- on an error message
-Message-ID: <20201208125549.GG8403@vkoul-mobl>
-References: <20201207150937.170435-1-colin.king@canonical.com>
- <1607392202.23328.1.camel@mhfsdcap03>
+ id 1kmdTy-0000eY-Ey; Tue, 08 Dec 2020 13:56:48 +0000
+X-UUID: 0db4a970b7144c698cd059301b4367f9-20201208
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=Co+OOr3KYggelm+IGmD6LtTfybVt8t8jRSGk5TvnfEY=; 
+ b=ggFR1MwNKjyc7+Dkdk7mMUM+P6Or28lh6C2c4uGRVDnH2sO8r6WJAOEAQHQIg9UrwpvgdHvd46o0yr4J43suYbOGzR9+tytPQJyub/NMLrwSrLFZF4cFt6orzuENNQMF2WqmGaTYKq1KGml6iB+WvllnZnLPL8Rj4AbGgBdX/TA=;
+X-UUID: 0db4a970b7144c698cd059301b4367f9-20201208
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 574089983; Tue, 08 Dec 2020 05:56:39 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Dec 2020 05:56:37 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Dec 2020 21:56:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 8 Dec 2020 21:56:34 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+Subject: [PATCH v2 1/2] scsi: ufs: Re-enable WriteBooster after device reset
+Date: Tue, 8 Dec 2020 21:56:34 +0800
+Message-ID: <20201208135635.15326-2-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201208135635.15326-1-stanley.chu@mediatek.com>
+References: <20201208135635.15326-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1607392202.23328.1.camel@mhfsdcap03>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201208_075555_750868_ECCE889D 
-X-CRM114-Status: GOOD (  21.49  )
+X-CRM114-CacheID: sfid-20201208_085647_337233_57F5F7B2 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,57 +80,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- chunhui dai <chunhui.dai@mediatek.com>, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Kishon Vijay Abraham I <kishon@ti.com>, CK Hu <ck.hu@mediatek.com>,
- linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Colin King <colin.king@canonical.com>, linux-arm-kernel@lists.infradead.org
+Cc: bjorn.andersson@linaro.org, Stanley Chu <stanley.chu@mediatek.com>,
+ alice.chao@mediatek.com, bvanassche@acm.org, andy.teng@mediatek.com,
+ cc.chou@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, nguyenb@codeaurora.org, jiajie.hao@mediatek.com,
+ cang@codeaurora.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, matthias.bgg@gmail.com, beanhuo@micron.com,
+ chaotian.jing@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08-12-20, 09:50, Chunfeng Yun wrote:
-> On Mon, 2020-12-07 at 15:09 +0000, Colin King wrote:
-> > From: Colin Ian King <colin.king@canonical.com>
-> > 
-> > Currently there is a null pointer check for hdmi_phy that implies it
-> > may be null, however a dev_err messages dereferences this potential null
-> > pointer.  Avoid a null pointer dereference by only emitting the dev_err
-> > message if hdmi_phy is non-null.  It is a moot point if the error message
-> > needs to be printed at all, but since this is a relatively new piece of
-> > code it may be useful to keep the message in for the moment in case there
-> > are unforseen errors that need to be reported.
-> > 
-> > Addresses-Coverity: ("Dereference after null check")
-> > Fixes: be28b6507c46 ("drm/mediatek: separate hdmi phy to different file")
-> > Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> > ---
-> >  drivers/phy/mediatek/phy-mtk-hdmi.c | 5 +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
-> > index c5c61f5a9ea0..5184054783c7 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-hdmi.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
-> > @@ -84,8 +84,9 @@ mtk_hdmi_phy_dev_get_ops(const struct mtk_hdmi_phy *hdmi_phy)
-> >  	    hdmi_phy->conf->hdmi_phy_disable_tmds)
-> >  		return &mtk_hdmi_phy_dev_ops;
-> >  
-> > -	dev_err(hdmi_phy->dev, "Failed to get dev ops of phy\n");
-> > -		return NULL;
-> > +	if (hdmi_phy)
-> > +		dev_err(hdmi_phy->dev, "Failed to get dev ops of phy\n");
-> > +			return NULL;
-> indentation: one tab before return
+UFS 3.1 specification mentions that below WriteBooster flags will be
+set to default value, say disabled, after power cycle or any type
+of reset event. Thus we need to reset those flag variables kept
+in struct hba to align the device status and ensure WriteBooster
+related functions being configured properly after device reset.
 
-I have applied this and fixed the indent while applying
+Without this fix, WriteBooster will not be enabled successfully
+after by ufshcd_wb_ctrl() after device reset because hba->wb_enabled
+remains true.
 
+Flags required to be reset to default values:
+- fWriteBoosterEn: hba->wb_enabled
+- fWriteBoosterBufferFlushEn: hba->wb_buf_flush_enabled
+- fWriteBoosterBufferFlushDuringHibernate: No variable mapped
+
+Fixes: 3d17b9b5ab11 ("scsi: ufs: Add write booster feature support")
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.h | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index 08c8a591e6b0..36d367eb8139 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -1221,8 +1221,13 @@ static inline void ufshcd_vops_device_reset(struct ufs_hba *hba)
+ 	if (hba->vops && hba->vops->device_reset) {
+ 		int err = hba->vops->device_reset(hba);
+ 
+-		if (!err)
++		if (!err) {
+ 			ufshcd_set_ufs_dev_active(hba);
++			if (ufshcd_is_wb_allowed(hba)) {
++				hba->wb_enabled = false;
++				hba->wb_buf_flush_enabled = false;
++			}
++		}
+ 		if (err != -EOPNOTSUPP)
+ 			ufshcd_update_evt_hist(hba, UFS_EVT_DEV_RESET, err);
+ 	}
 -- 
-~Vinod
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
