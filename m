@@ -2,68 +2,89 @@ Return-Path: <SRS0=HZpZ=FM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07C4FC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 14:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E463AC4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 14:13:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A097E23AC4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 14:05:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A097E23AC4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 930A923A33
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Dec 2020 14:13:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 930A923A33
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=O2NyhUoeuXtdYZ8k10foQZSS2hc/xwkBaj475hA/FCQ=; b=zTpn+08rdPy+7AM9qRaWBLnrL
-	LAvYvJwc1cHr1eD78XULTcQ6IOrj41dmOEn3FgYVNT3M8DSKRIfLaQZtW2nRpa/fJDyMpCmb3uY3O
-	wlx4eQjEU307NmkSWOedyRkLkbRwwk53PFY9b4MV2Z+8/AWkaHsfD9ABQcVCtj6/XeN610MQ56QDz
-	bn1yWiQ62xfjGgLzGoGq4lImjbMLRRiKTERkkZvgvaB5haeRIZ0dMbM9bSGKX+0LQo47oMjZfSj/F
-	6IiOQfa/2guKJcLg0k6zT7kUfTpcQ6Y3OKV1LtoROw0MSuAfpXityBYuNCoucCFwI5N4P2Oi33D2T
-	wOcRhvplg==;
+	 bh=YrUIJq4FZ8Qol5zvZ1JegVmF+kBYU3Ls98mKKddJDks=; b=CzquMkDj4beDGNn4d2VZqdkw6
+	/c0707MfTz3Tmf8oHB4Kee8Ix32NvRfAVCTPtRD3LxiRW0m6kNm/CbAe0Y5ohVmJnmtd9Dd7o43l8
+	9MO/QJT5e+qc0RWSbcb7Grmwn9nW4WaoHq5kNZTSwHs+LdB2hwrp0xWR6z42hbCgCTu/EyW5CIpL4
+	FF1QxfoCEc9QVuhJFocXlylDxe8PMEn8WtrH68hCNvqkcnlCjDqoRar1bE68spE7Po+FustCh9CXq
+	bN5Yr/ENMC5TyfjnDj991shU/GspYNNPswx40Xj/1YTYv+3kabdPGX4rncJzndJVQ4QrwHVartmFo
+	Vk6BWBlvQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmdc4-0002Wl-Ts; Tue, 08 Dec 2020 14:05:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kmdkU-0004nm-Mv; Tue, 08 Dec 2020 14:13:50 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmdc0-0002VL-3W; Tue, 08 Dec 2020 14:05:04 +0000
-X-Gm-Message-State: AOAM530b31PCfqMuZjW9CFaus2De0ZeqW4KPZoVJrjCaR9aCcNr55oR1
- y06l4VhB7cMOZvSOVeFGh+77da2JusIlUzJKnDk=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607436303;
- bh=mbsdbwKyczvLHvtpaeUbdE5uuehFNcjej12iuv54kM0=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=t5uiLAeQbxE76Z++9gWAPnbTDDysMrXRk28zPlRtfyuIO7KisYFV51C0+0vmKG/lx
- FDmoSG20CkOI9fWyjYdJ7NGaT7c19OkAKQBfG1TuQ9CJwvMmNBlcMpT9RBEokMdgTO
- JI+YOHY1RkGBEiRYOL4qRgyeMqtE0/y+yNFKHctLaLSULO5eeOojKUyFe08t+XqT8o
- ze7N/fAz5Rgpn5PaUxsuw2xcvh3TQgrsCIpR/wbTURPXqTdJiTR879ONxqAjHDlysJ
- 5bXxC2JOCcuSb30yGAmqESn+giBCnwNguePZrZirB0JPDJIzcr2ah1ev9rj5hnQkst
- ZKoA2TyKqP7aw==
-X-Google-Smtp-Source: ABdhPJwOOS2YE9U5ISalt8ZW6t5h5/7Imq5MdNE9kh6uYThwbWteRjZKRfIw8tfSJKviZjaCwjro3y+psb4Y2uBf6pY=
-X-Received: by 2002:adf:b343:: with SMTP id k3mr22054883wrd.202.1607436301682; 
- Tue, 08 Dec 2020 06:05:01 -0800 (PST)
-MIME-Version: 1.0
-References: <20201203222922.1067522-1-arnd@kernel.org>
- <CAPDyKFqtFYqc8i_fVzOUnuZGJjtwjVLqE-vebtOKuYJ-4PrDBg@mail.gmail.com>
- <CAK8P3a3srmTdY69j+g-wazMkrTL8_Grsw=vCMyizyA_7oOC4tg@mail.gmail.com>
- <IVYYKQ.T5GFS8Z1QTP2@crapouillou.net>
-In-Reply-To: <IVYYKQ.T5GFS8Z1QTP2@crapouillou.net>
-From: Arnd Bergmann <arnd@kernel.org>
-Date: Tue, 8 Dec 2020 15:04:45 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a21gkBsb3rcNvzH3XA_0GRRKPgnsrynTTO=EZVwy6DC+g@mail.gmail.com>
-Message-ID: <CAK8P3a21gkBsb3rcNvzH3XA_0GRRKPgnsrynTTO=EZVwy6DC+g@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mediatek: mark PM functions as __maybe_unused
-To: Paul Cercueil <paul@crapouillou.net>
+ id 1kmdkS-0004mS-M1; Tue, 08 Dec 2020 14:13:49 +0000
+Received: by mail-ed1-x542.google.com with SMTP id cw27so17713044edb.5;
+ Tue, 08 Dec 2020 06:13:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=eSPfpQbfD8TtnWjYs+6jj8qzhsWODAim1cckJ/MJTu0=;
+ b=pMxp4TNM4M+N05Yx9TQgHM79zWQBDbpvpnmuI555O1zxarA53NmboJkgdjPiAvm2rk
+ tA5Nxy3pEFTL8n62f5NDpQA2anFbpBzV6UuZnAmMdt23xIg1F4mQWZtvO0Ea4oWZhiqR
+ Mk788rhqKcb8Z+qCwERSPi7jnRwjPYRDARTP9lDWSyID9m+1ZcJ8ccjghI6h6AZrh5C3
+ 2AdQvAAw5BgPumeEHZboIkxXk2yESbZyjnBCrArWoBb7TIKKaC+w3ANmYjV5CD8tdlck
+ yGAsthsXggHQnxbc/Why3OhoTu2e/oBSBGMEEPYd2fLqeayYYbcl1HqO0wDamcPNgkdF
+ OaGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=eSPfpQbfD8TtnWjYs+6jj8qzhsWODAim1cckJ/MJTu0=;
+ b=IqX9qH++qbhFnYeOQZJ4BciaGHn/gbsXhMhNx7sxds1b2C8Bj/UYq538tWH/LVHx+i
+ +vnPurAUVWEWvEjHfOGv0cE9jnmGIodAbbW9o/v9Otnw3wfmphVfVArg+mMRQeKGiU4J
+ h8A7iH9DgqMzy3SPTLMAs5gbvLqsBkjBKSemtHC8yKE47w4zbMUktHrigpwyT1sOUm9s
+ z8QmbA2EOQwjM/NDG43zWuKGkYYEr2kOWtQn8h5PZrcXPfmjFHoWd5BbdCGpfLgVcfJp
+ d1FRLPxfV6fYLbGyXzX/1dORFNk6Mi1sALSTL+hRPk/mh0T5BnliKwkGHJytZww41EyY
+ tjvg==
+X-Gm-Message-State: AOAM533+OyvAYh/F9nxchUL8190oM3ndfxHPTWfdBqz2dEDd7T0OsvVS
+ q2yYE15yqs7AT9ChLmktqMo=
+X-Google-Smtp-Source: ABdhPJxT3MS0tLQzrz5zGTrmxsemf1EdNibb6+Ece9/iVj28PTNygmtdP13l0xPVSWG+mugPOMO4PA==
+X-Received: by 2002:a50:fb1a:: with SMTP id d26mr25055415edq.101.1607436825849; 
+ Tue, 08 Dec 2020 06:13:45 -0800 (PST)
+Received: from ubuntu-laptop (ip5f5bfce9.dynamic.kabel-deutschland.de.
+ [95.91.252.233])
+ by smtp.googlemail.com with ESMTPSA id s5sm15577093eju.98.2020.12.08.06.13.44
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 08 Dec 2020 06:13:45 -0800 (PST)
+Message-ID: <970af8b1abf565184bf37c3c055bf42ad760201a.camel@gmail.com>
+Subject: Re: [PATCH v2 1/2] scsi: ufs: Re-enable WriteBooster after device
+ reset
+From: Bean Huo <huobean@gmail.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org, 
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, 
+ jejb@linux.ibm.com
+Date: Tue, 08 Dec 2020 15:13:43 +0100
+In-Reply-To: <20201208135635.15326-2-stanley.chu@mediatek.com>
+References: <20201208135635.15326-1-stanley.chu@mediatek.com>
+ <20201208135635.15326-2-stanley.chu@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201208_090504_221070_523B2D7E 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20201208_091348_758873_832FF1E2 
+X-CRM114-Status: GOOD (  14.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,33 +96,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Marek Vasut <marex@denx.de>, Ulf Hansson <ulf.hansson@linaro.org>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
- Chun-Hung Wu <chun-hung.wu@mediatek.com>,
- linux-mmc <linux-mmc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- yong mao <yong.mao@mediatek.com>, Amey Narkhede <ameynarkhede03@gmail.com>,
- ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: bjorn.andersson@linaro.org, alice.chao@mediatek.com, bvanassche@acm.org,
+ andy.teng@mediatek.com, cc.chou@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ nguyenb@codeaurora.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBEZWMgNywgMjAyMCBhdCAxOjMzIFBNIFBhdWwgQ2VyY3VlaWwgPHBhdWxAY3JhcG91
-aWxsb3UubmV0PiB3cm90ZToKPiBMZSB2ZW4uIDQgZMOpYy4gMjAyMCDDoCAxNToxNCwgQXJuZCBC
-ZXJnbWFubiA8YXJuZEBrZXJuZWwub3JnPiBhIMOpY3JpdAoKPiBCeSB0aGUgd2F5LCBhcyBJJ20g
-ZW5kaW5nIHVwIGRvaW5nIHRoZSBzYW1lIGluIGEgZGlmZmVyZW50IGNvbnRleHQsIEkKPiB0aGlu
-ayBpdCB3b3VsZCBiZSB1c2VmdWwgdG8gaGF2ZSBhIElGX0VOQUJMRUQoKSBtYWNybyBkZWZpbmVk
-IGxpa2UgdGhpczoKPgo+ICNkZWZpbmUgSUZfRU5BQkxFRChfY2ZnLCBfcHRyKSAoSVNfRU5BQkxF
-RChfY2ZnKSA/IChfcHRyKSA6IE5VTEwpCj4KPiBUaGVuIHRoZSBwbV9wdHIoX3B0cikgbWFjcm8g
-Y291bGQgYmUgZGVmaW5lZCBsaWtlIHRoaXM6Cj4KPiAjZGVmaW5lIHBtX3B0cihfcHRyKSBJRl9F
-TkFCTEVEKENPTkZJR19QTSwgX3B0cikKCkkgbGlrZSB0aGF0LiBEbyB5b3UganVzdCB3YW50IHRv
-IGdvIGFoZWFkIGFuZCBzdGFydCB3aXRoIGFkZGluZwpJRl9FTkFCTEVEKCkgdG8geW91ciBvd24g
-YnJhbmNoIHRoZW4/CgogICAgQXJuZAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Tue, 2020-12-08 at 21:56 +0800, Stanley Chu wrote:
+> index 08c8a591e6b0..36d367eb8139 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -1221,8 +1221,13 @@ static inline void
+> ufshcd_vops_device_reset(struct ufs_hba *hba)
+>         if (hba->vops && hba->vops->device_reset) {
+>                 int err = hba->vops->device_reset(hba);
+>  
+> -               if (!err)
+> +               if (!err) {
+>                         ufshcd_set_ufs_dev_active(hba);
+> +                       if (ufshcd_is_wb_allowed(hba)) {
+> +                               hba->wb_enabled = false;
+> +                               hba->wb_buf_flush_enabled = false;
+> +                       }
+> +               }
+
+Stanley,
+how do you think group wb_buf_flush_enabled and wb_enabled to the
+dev_info, since they are UFS device attributes. means they are set only
+when UFS device flags being set.
+
+Reviewed-by: Bean Huo <beanhuo@micron.com>
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
