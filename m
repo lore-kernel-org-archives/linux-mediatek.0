@@ -2,86 +2,68 @@ Return-Path: <SRS0=7tkd=FN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-21.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2A11C19425
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 13:32:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FF0FC4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 15:16:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 68E1E2313E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 13:32:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68E1E2313E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id B126823AFE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 15:16:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B126823AFE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lLD7DejN/ak6Kiq9il5AdEby0WdyojItzb7NoeVgFNc=; b=xZX175m7BRgIc/dt44+aQBxtf
-	H/3eu66fhLmAN4E6nlSqa6bW+1s2ukM1VyHHR8nL2NUBRDt8KlK2Kkc3PA3Ow6rjXW8Ojp1zB0U8l
-	BqZO0DSir3xVn8Vrpny8eqmCHzX+kQIYp79PxkuzyPZItEq+YKB+Rg306J/mS0DFv0xMC+jopNBKK
-	vi5tf4Bbczu0asqSmjf9KPGTf6s8rgEkcJDnxocuJGiT668QSUjvCOkRKk+kLYCCbXHwrw7qJbQeW
-	SebX5Q44xkZNnVoLX/3mS36MpyW7IiIhaPD/DqyOqUUsrsY9Q70IsZXsX+jyd9+KhlmPJHi6nFjfi
-	rjJlkYc+A==;
+	 bh=S6WCwA4sW7qVMqty+wic2t0l//9ctFAbl6M0wzQlZy0=; b=NrqCntHp5a5re7CBeCcsfs904
+	Y5u2A/H/7RfBJP82UslOLLSGTPdHpKAB2Svjc7+vLAapdQsMR9xH3OS5rvloHVscXOHvnYT2foMaC
+	4/vgpQBd6KkXJm6SaOBMY3sXOY8o9WqXpPzTmKVbbBSD/UvCsfP17DPiWYMZ3OrBvS5+TNn8FLM4Y
+	QvRfyMJoKhp5ePPjsX+QztuFWNGYCON/Cz1wXBXHDg9kW2OSDa7AL3/coNfdXIgO31zx/Q1RlJxSZ
+	UHq8aT38+QwZhX0mT3LYFC3/Is8wkfMKHf84SAL/04IC+EzvwAjsJoXppcmp35fwr8tGQVsrEu9ud
+	NZZkFa3Fw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmzaL-0006RN-3x; Wed, 09 Dec 2020 13:32:49 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1kn1Cr-0002Kw-PX; Wed, 09 Dec 2020 15:16:41 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmzaH-0006Po-0x
- for linux-mediatek@lists.infradead.org; Wed, 09 Dec 2020 13:32:46 +0000
-Received: by mail-ej1-x644.google.com with SMTP id f23so2146425ejk.2
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Dec 2020 05:32:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=gnPQezsRyZdsHbaKDld50XCLreRYCdlXGZFcJrZyLRI=;
- b=NFa/3iAmkjw7fJ2Cc2BkWL8L2SoJmRWwVQymFZaEkqI+mCVpVJ+nHLDAMG78VyYiaP
- 1WaGO4vfMFd1qtCrjcKpR3vD6SAlQDdnodBXkbsT/RqNdhhY3AIvfpaeEwzClHvAAaGV
- 9hy7oi7yC3wOUmYi2V39O4kdpuyh0YHem+uP+Irl8tOQ81cGs8AsNF+/y64mlKEWoWi6
- l+SQSAKBmFrDK1qT2lBDak4AuTUmQjL6OmFIZFI63kS4eaihkB8rj5JgId4TzLzb4ZWf
- JfJ255VRJQ1DQmusldS7KhlG9d47FXHZsRDeTpG2vEsBq3nBN2MbnVmUuU+4A+YAvA7O
- LNGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=gnPQezsRyZdsHbaKDld50XCLreRYCdlXGZFcJrZyLRI=;
- b=dUWJ17X6Au7Vx6X0H0BWq06wfwOQ31yoKzJ6c0MGERs9XFEKasa+wD/TSoNMTq0T/9
- xUy8iU7kpnLkUIBhzNaxX+LjQImm5Bv3/gTJbUF+xuzlkhXmqLkI7gqPy/S3ClQvzgRG
- 282R0JcXPAmUh27AG5Rx7U0iSVY63K6+zdHF4mLuiZ5MBs0cg0OG4bYLR3tYGYgRcUoW
- uXXIOE8KbjXWajbl+wMiidKqIwuodsrLsQ0j+6MpcBivjofKgzkOgAK6dMrUTx8H20Sp
- 03emyKzvIf817uQt1k+AOPqm45B9xFvUYnJ9vVMJML18m7ktMymYNv7BujA+VL83USHD
- rlyA==
-X-Gm-Message-State: AOAM531mkgZBK6SPl4RsfCnLlzZcNw1mFwF9fAxX6weLUJlzkddbZlUa
- 16L/M3jC0xrbeJeqKI3z4/cKb+zbJ7tKEQ==
-X-Google-Smtp-Source: ABdhPJynnzXqCsWPJQD6bkmbybUjGaPSr3YIfNdZlHKzp+55XOz6ZiRkydX4MD4JdE5Y2Qwcb6TpSg==
-X-Received: by 2002:a17:906:4944:: with SMTP id
- f4mr2118774ejt.231.1607520763689; 
- Wed, 09 Dec 2020 05:32:43 -0800 (PST)
-Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id bq20sm1490646ejb.64.2020.12.09.05.32.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Dec 2020 05:32:43 -0800 (PST)
-From: Fabien Parent <fparent@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 2/2] soc: mediatek: pm-domains: Add support for mt8167
-Date: Wed,  9 Dec 2020 14:32:37 +0100
-Message-Id: <20201209133238.384030-2-fparent@baylibre.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201209133238.384030-1-fparent@baylibre.com>
-References: <20201209133238.384030-1-fparent@baylibre.com>
+ id 1kn1Co-0002KQ-PU; Wed, 09 Dec 2020 15:16:39 +0000
+X-Gm-Message-State: AOAM533wIOSwhCauBBFhWLHEtkeNfCGNKnjvApBDjoAxRNgqZbLB0oRm
+ mcRoj1qCxP0zkpFbvnMSYSeShjyJCN7/A3vV8w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1607526997;
+ bh=lVUITqM3wBlLLCMwZfMJJE4f8P3aH4i3cxhdHeLKdwE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=WslH8wEmlVpqaDl71ybxROkTosAnZP58mHbwXHmgn/KI38WaeTN8BA4JdV3C+xvMZ
+ i8dJqxq4c8PUOBSMyxbpqx8/C7mXUlTwuHgkO5/2T8H1pF0jg44W5S/e0YTVLVPJ4W
+ vKp/R/jS8Kc6l4iIpg1xEPhgGD1LRCe+vT4t98ZyYRG6aFZ7zuNyCL+Tjf8eieD7LR
+ Dx29Fbf7NdBz9dNDzN3DvVPLjZr4ud8XY9X2E3/ylTSr2/ykw79GOgXsKahQC2ffT7
+ bL4JPdHOOFOJNZBiXfDfl3g9NmZCFCmvvxNLATGJAPxF2okXj3vGzIy3ws+XBnLrns
+ Y45NeBVWeVS9g==
+X-Google-Smtp-Source: ABdhPJwKxFDtBsXbsk4rVRivDcq095HuspZwD+RLbGAZbMuQnyG4S281nM/2/1U0U35e2e5hS5J+PlmqXXWbfmPT88E=
+X-Received: by 2002:adf:9567:: with SMTP id 94mr910638wrs.394.1607526995364;
+ Wed, 09 Dec 2020 07:16:35 -0800 (PST)
 MIME-Version: 1.0
+References: <1607141728-17307-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1607141728-17307-5-git-send-email-yongqiang.niu@mediatek.com>
+ <CANMq1KCX+iPXVg-xqVKBGNTfJty=cu+MQYaujjv4NgTd1C740A@mail.gmail.com>
+In-Reply-To: <CANMq1KCX+iPXVg-xqVKBGNTfJty=cu+MQYaujjv4NgTd1C740A@mail.gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 9 Dec 2020 23:16:22 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__2CQ5mo6f0mXNHqcOg_xUCAd7LjkXS2OCf341Dm6rNCg@mail.gmail.com>
+Message-ID: <CAAOTY__2CQ5mo6f0mXNHqcOg_xUCAd7LjkXS2OCf341Dm6rNCg@mail.gmail.com>
+Subject: Re: [PATCH v1, 4/5] soc: mediatek: cmdq: add address shift in jump
+To: Nicolas Boichat <drinkcat@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201209_083245_179789_3F8E0B70 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20201209_101638_994977_A16D9947 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,185 +75,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, lkml <linux-kernel@vger.kernel.org>,
+ Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the needed board data to support mt8167 SoC.
-
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-This patch was made on top of https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/log/?h=v5.10-next/soc
-
-v3:
-	* s/MT8167_POWER_DOMAIN_DISP/MT8167_POWER_DOMAIN_MM
-	* s/.domains/.domains_data
-v2:
-	* Implement on top of new SCPSYS PM domains driver
-
- drivers/soc/mediatek/mt8167-pm-domains.h | 86 ++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-pm-domains.c    |  5 ++
- drivers/soc/mediatek/mtk-pm-domains.h    |  1 +
- include/linux/soc/mediatek/infracfg.h    |  8 +++
- 4 files changed, 100 insertions(+)
- create mode 100644 drivers/soc/mediatek/mt8167-pm-domains.h
-
-diff --git a/drivers/soc/mediatek/mt8167-pm-domains.h b/drivers/soc/mediatek/mt8167-pm-domains.h
-new file mode 100644
-index 000000000000..ad0b8dfa0527
---- /dev/null
-+++ b/drivers/soc/mediatek/mt8167-pm-domains.h
-@@ -0,0 +1,86 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+#ifndef __SOC_MEDIATEK_MT8167_PM_DOMAINS_H
-+#define __SOC_MEDIATEK_MT8167_PM_DOMAINS_H
-+
-+#include "mtk-pm-domains.h"
-+#include <dt-bindings/power/mt8167-power.h>
-+
-+#define MT8167_PWR_STATUS_MFG_2D	BIT(24)
-+#define MT8167_PWR_STATUS_MFG_ASYNC	BIT(25)
-+
-+/*
-+ * MT8167 power domain support
-+ */
-+
-+static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
-+	[MT8167_POWER_DOMAIN_MM] = {
-+		.sta_mask = PWR_STATUS_DISP,
-+		.ctl_offs = SPM_DIS_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.bp_infracfg = {
-+			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_MM_EMI |
-+					       MT8167_TOP_AXI_PROT_EN_MCU_MM),
-+		},
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8167_POWER_DOMAIN_VDEC] = {
-+		.sta_mask = PWR_STATUS_VDEC,
-+		.ctl_offs = SPM_VDE_PWR_CON,
-+		.sram_pdn_bits = GENMASK(8, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8167_POWER_DOMAIN_ISP] = {
-+		.sta_mask = PWR_STATUS_ISP,
-+		.ctl_offs = SPM_ISP_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8167_POWER_DOMAIN_MFG_ASYNC] = {
-+		.sta_mask = MT8167_PWR_STATUS_MFG_ASYNC,
-+		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
-+		.sram_pdn_bits = 0,
-+		.sram_pdn_ack_bits = 0,
-+		.bp_infracfg = {
-+			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_MCU_MFG |
-+					       MT8167_TOP_AXI_PROT_EN_MFG_EMI),
-+		},
-+	},
-+	[MT8167_POWER_DOMAIN_MFG_2D] = {
-+		.sta_mask = MT8167_PWR_STATUS_MFG_2D,
-+		.ctl_offs = SPM_MFG_2D_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+	},
-+	[MT8167_POWER_DOMAIN_MFG] = {
-+		.sta_mask = PWR_STATUS_MFG,
-+		.ctl_offs = SPM_MFG_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+	},
-+	[MT8167_POWER_DOMAIN_CONN] = {
-+		.sta_mask = PWR_STATUS_CONN,
-+		.ctl_offs = SPM_CONN_PWR_CON,
-+		.sram_pdn_bits = GENMASK(8, 8),
-+		.sram_pdn_ack_bits = 0,
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+		.bp_infracfg = {
-+			BUS_PROT_UPDATE_TOPAXI(MT8167_TOP_AXI_PROT_EN_CONN_EMI |
-+					       MT8167_TOP_AXI_PROT_EN_CONN_MCU |
-+					       MT8167_TOP_AXI_PROT_EN_MCU_CONN),
-+		},
-+	},
-+};
-+
-+static const struct scpsys_soc_data mt8167_scpsys_data = {
-+	.domains_data = scpsys_domain_data_mt8167,
-+	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8167),
-+	.pwr_sta_offs = SPM_PWR_STATUS,
-+	.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+};
-+
-+#endif /* __SOC_MEDIATEK_MT8167_PM_DOMAINS_H */
-+
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index fb70cb3b07b3..2d0d50ff35f0 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.c
-+++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -15,6 +15,7 @@
- #include <linux/regmap.h>
- #include <linux/soc/mediatek/infracfg.h>
- 
-+#include "mt8167-pm-domains.h"
- #include "mt8173-pm-domains.h"
- #include "mt8183-pm-domains.h"
- #include "mt8192-pm-domains.h"
-@@ -514,6 +515,10 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
- }
- 
- static const struct of_device_id scpsys_of_match[] = {
-+	{
-+		.compatible = "mediatek,mt8167-power-controller",
-+		.data = &mt8167_scpsys_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt8173-power-controller",
- 		.data = &mt8173_scpsys_data,
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-index a2f4d8f97e05..88f5835e1648 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.h
-+++ b/drivers/soc/mediatek/mtk-pm-domains.h
-@@ -14,6 +14,7 @@
- #define SPM_VEN_PWR_CON			0x0230
- #define SPM_ISP_PWR_CON			0x0238
- #define SPM_DIS_PWR_CON			0x023c
-+#define SPM_CONN_PWR_CON		0x0280
- #define SPM_VEN2_PWR_CON		0x0298
- #define SPM_AUDIO_PWR_CON		0x029c
- #define SPM_MFG_2D_PWR_CON		0x02c0
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-index e7842debc05d..4615a228da51 100644
---- a/include/linux/soc/mediatek/infracfg.h
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -123,6 +123,14 @@
- #define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
- #define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
- 
-+#define MT8167_TOP_AXI_PROT_EN_MM_EMI		BIT(1)
-+#define MT8167_TOP_AXI_PROT_EN_MCU_MFG		BIT(2)
-+#define MT8167_TOP_AXI_PROT_EN_CONN_EMI		BIT(4)
-+#define MT8167_TOP_AXI_PROT_EN_MFG_EMI		BIT(5)
-+#define MT8167_TOP_AXI_PROT_EN_CONN_MCU		BIT(8)
-+#define MT8167_TOP_AXI_PROT_EN_MCU_CONN		BIT(9)
-+#define MT8167_TOP_AXI_PROT_EN_MCU_MM		BIT(11)
-+
- #define MT2701_TOP_AXI_PROT_EN_MM_M0		BIT(1)
- #define MT2701_TOP_AXI_PROT_EN_CONN_M		BIT(2)
- #define MT2701_TOP_AXI_PROT_EN_CONN_S		BIT(8)
--- 
-2.29.2
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFlvbmdxaWFuZzoKCk5pY29sYXMgQm9pY2hhdCA8ZHJpbmtjYXRAY2hyb21pdW0ub3JnPiDm
+lrwgMjAyMOW5tDEy5pyINeaXpSDpgLHlha0g5LiL5Y2IMzozMOWvq+mBk++8mgo+Cj4gT24gU2F0
+LCBEZWMgNSwgMjAyMCBhdCAxMjoxNiBQTSBZb25ncWlhbmcgTml1Cj4gPHlvbmdxaWFuZy5uaXVA
+bWVkaWF0ZWsuY29tPiB3cm90ZToKPiA+Cj4gPiBBZGQgYWRkcmVzcyBzaGlmdCB3aGVuIGNvbXBv
+c2UganVtcCBpbnN0cnVjdGlvbgo+ID4gdG8gY29tcGF0aWJsZSB3aXRoIDM1Yml0IGZvcm1hdC4K
+Pgo+IFRoaXMgbG9va3MgcmVhc29uYWJsZSwgYnV0IHRhc2stPmNtZHEtPnNoaWZ0X3BhIGlzIG5v
+dCBuZXcgYW5kIHdhcwo+IGludHJvZHVjZWQgYXMgcGFydCBvZiBtdDY3NzkgR0NFIHN1cHBvcnQu
+Cj4KPiBEbyB5b3Ugd2FudCB0byBhZGQgYSBGaXhlcyB0YWc/Cj4gRml4ZXM6IDA4NThmZGU0OTZm
+OCAoIm1haWxib3g6IGNtZHE6IHZhcmlhYmxpemUgYWRkcmVzcyBzaGlmdCBpbiBwbGF0Zm9ybSIp
+CgpBZGQgdGhpcyBmaXhlcyB0YWcsIGFuZCBtb3ZlIHRoaXMgcGF0Y2ggb3V0IG9mIHRoaXMgc2Vy
+aWVzIGJlY2F1c2UKdGhpcyBwYXRjaCBpcyByZWxhdGVkIHRvIGFsbCBTb0Mgd2hvc2Ugc2hpZnRf
+cGEgaXMgbm90IHplcm8uCgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPgo+IFJldmlld2VkLWJ5OiBO
+aWNvbGFzIEJvaWNoYXQgPGRyaW5rY2F0QGNocm9taXVtLm9yZz4KPgo+ID4KPiA+IFNpZ25lZC1v
+ZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+ID4gLS0t
+Cj4gPiAgZHJpdmVycy9tYWlsYm94L210ay1jbWRxLW1haWxib3guYyB8IDMgKystCj4gPiAgMSBm
+aWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+ID4KPiA+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL21haWxib3gvbXRrLWNtZHEtbWFpbGJveC5jIGIvZHJpdmVycy9tYWls
+Ym94L210ay1jbWRxLW1haWxib3guYwo+ID4gaW5kZXggMWMwMWZlMC4uNWVkMzlmOCAxMDA2NDQK
+PiA+IC0tLSBhL2RyaXZlcnMvbWFpbGJveC9tdGstY21kcS1tYWlsYm94LmMKPiA+ICsrKyBiL2Ry
+aXZlcnMvbWFpbGJveC9tdGstY21kcS1tYWlsYm94LmMKPiA+IEBAIC0xNzQsNyArMTc0LDggQEAg
+c3RhdGljIHZvaWQgY21kcV90YXNrX2luc2VydF9pbnRvX3RocmVhZChzdHJ1Y3QgY21kcV90YXNr
+ICp0YXNrKQo+ID4gICAgICAgICBkbWFfc3luY19zaW5nbGVfZm9yX2NwdShkZXYsIHByZXZfdGFz
+ay0+cGFfYmFzZSwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJldl90YXNr
+LT5wa3QtPmNtZF9idWZfc2l6ZSwgRE1BX1RPX0RFVklDRSk7Cj4gPiAgICAgICAgIHByZXZfdGFz
+a19iYXNlW0NNRFFfTlVNX0NNRChwcmV2X3Rhc2stPnBrdCkgLSAxXSA9Cj4gPiAtICAgICAgICAg
+ICAgICAgKHU2NClDTURRX0pVTVBfQllfUEEgPDwgMzIgfCB0YXNrLT5wYV9iYXNlOwo+ID4gKyAg
+ICAgICAgICAgICAgICh1NjQpQ01EUV9KVU1QX0JZX1BBIDw8IDMyIHwKPiA+ICsgICAgICAgICAg
+ICAgICAodGFzay0+cGFfYmFzZSA+PiB0YXNrLT5jbWRxLT5zaGlmdF9wYSk7Cj4gPiAgICAgICAg
+IGRtYV9zeW5jX3NpbmdsZV9mb3JfZGV2aWNlKGRldiwgcHJldl90YXNrLT5wYV9iYXNlLAo+ID4g
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcmV2X3Rhc2stPnBrdC0+Y21kX2J1
+Zl9zaXplLCBETUFfVE9fREVWSUNFKTsKPiA+Cj4gPiAtLQo+ID4gMS44LjEuMS5kaXJ0eQo+ID4g
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiA+IExpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+ID4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwo+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1tZWRpYXRlawo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawo=
