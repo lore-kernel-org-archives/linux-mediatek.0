@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5EC9C4167B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:12:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40133C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:12:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A14423B98
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:12:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A14423B98
+	by mail.kernel.org (Postfix) with ESMTPS id B5B1023B7D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:12:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5B1023B7D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +24,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ayTIvUpdbLwHAyMmuryV3DVszFsBKti20WHNDCSCN3E=; b=kDLHhazrxjQDaFW5TkMJ4Phlv
-	WoNj+0pSGjyan4kSK5rjz0jL0XVKDBW2KVJMjrn/lu+6j6RbJvq+yBDHADJld5wyvO2fk6H0bR89Q
-	/YiJVG05Tn9nM53VhkpGX9+WUMHa08wW6m77DWjVqEX+uw1/BsJ/iyw1AmpL3pJ8m16vJiW6Q+Yml
-	xsW6LvQPyaQuOHEqhM2v+x4dbjjbz/gpua2cQlVTcv1P1KIFcQoTaA7DadeOeI4wz9WEUZPvU84yt
-	fshG4NKIIBpmutsTONGs0ptTeEjM1oprcOZyjQ8IqeqK/b2ffDyMWkE6bBvYgzK5Dn/YiMrrGlf4g
-	iTSJzSgEg==;
+	 bh=25tcSJWaugaj9EX29YKi/Rs3WSj4pm8aaaD2p0JgXho=; b=EyiAxTuqSglsiWEtylaTZ0ZAz
+	Q4gVHz8hTpgF0ufBbf2zzRfhLqfdzOSLg1KGUBRNbTYZAEZpoZSKvdHBjs0zLbO9fKHr/3CDPlG5P
+	blEWY7J7LFFwXyNapiseYM27lLPaY29vK+OEcNxbJxI8OuERpF9VUWl05U/a/+H3//CZ8VWYEFcPV
+	w5gM6/WjI5pSy9Z8PAUA5vX7BtizZbf0hEIk4o/1L+QEaxRx3jLx0e7Xw9PcPVWrTPWXccLdgKGrB
+	oH+dRRdu+zwzQnDKKcDVckW0Nlwx+UWlYWpmI4AgU7U+sWqalyG+UpCSZpHtpbgiva+nPTqWwctO/
+	KjQVAQ1Og==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmua0-0006WG-65; Wed, 09 Dec 2020 08:12:08 +0000
+	id 1kmuZt-0006SH-2c; Wed, 09 Dec 2020 08:12:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmuZb-0006H9-15; Wed, 09 Dec 2020 08:11:45 +0000
-X-UUID: fa3185fc19384fe6bd28139990590249-20201209
+ id 1kmuZY-0006H9-I7; Wed, 09 Dec 2020 08:11:42 +0000
+X-UUID: 589bc1aab02049eb842a586cb9947c19-20201209
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=4T0AfB2ii6NXiPmQeqh1F+hk+Ytp00t4rkd3OlZjFh4=; 
- b=MOIdVBkRCJ4MtLivNrI4rNKm9TiuLCTQlLOD832CoHPPoClMDF4Yz4T4psUJj/3jKl9SVMTEanSf6JLZPWSaTjKpO/CvUsYTD2S2PgpUo6iiOrsci++dvmZ9S75X2s0WMIdchukbz8minSCTS8vsQ49ol8rNllYu/gNYG++woGM=;
-X-UUID: fa3185fc19384fe6bd28139990590249-20201209
+ bh=Buz7rcpO3+TO+suvzihBF7+bqGlJGc08b+k3ZVqJJqk=; 
+ b=XNSfUP36DUp+bSO/YfR41/LZeHFNunrQ5K2fnwViGfAJeWLNuME/KejefwNweEwWXjkO+pVoXCMY41QkSUghyXVnOeFjYops9Cb0d7PLAFS1rx598V5tyjlK5yTL9MdOGVwXCEAWSwLKgvhXn+wmzkIQdcV+/nFBWSF4erDglBU=;
+X-UUID: 589bc1aab02049eb842a586cb9947c19-20201209
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1592173458; Wed, 09 Dec 2020 00:11:33 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1353533923; Wed, 09 Dec 2020 00:11:33 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 00:02:53 -0800
+ 15.0.1497.2; Wed, 9 Dec 2020 00:05:12 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 16:02:51 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Dec 2020 16:05:07 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Dec 2020 16:02:51 +0800
+ Transport; Wed, 9 Dec 2020 16:05:10 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v5 09/27] iommu/io-pgtable-arm-v7s: Extend PA34 for MediaTek
-Date: Wed, 9 Dec 2020 16:00:44 +0800
-Message-ID: <20201209080102.26626-10-yong.wu@mediatek.com>
+Subject: [PATCH v5 25/27] iommu/mediatek: Adjust the structure
+Date: Wed, 9 Dec 2020 16:01:00 +0800
+Message-ID: <20201209080102.26626-26-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201209080102.26626-1-yong.wu@mediatek.com>
 References: <20201209080102.26626-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201209_031143_292632_52600037 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20201209_031140_812472_E78B0DD3 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,88 +94,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek extend the bit5 in lvl1 and lvl2 descriptor as PA34.
+Add "struct mtk_iommu_data *" in the "struct mtk_iommu_domain",
+reduce the call mtk_iommu_get_m4u_data().
+No functional change.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Acked-by: Will Deacon <will@kernel.org>
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/iommu/io-pgtable-arm-v7s.c | 9 +++++++--
- drivers/iommu/mtk_iommu.c          | 2 +-
- include/linux/io-pgtable.h         | 4 ++--
- 3 files changed, 10 insertions(+), 5 deletions(-)
+ drivers/iommu/mtk_iommu.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index e880745ab1e8..4d0aa079470f 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -112,9 +112,10 @@
- #define ARM_V7S_TEX_MASK		0x7
- #define ARM_V7S_ATTR_TEX(val)		(((val) & ARM_V7S_TEX_MASK) << ARM_V7S_TEX_SHIFT)
- 
--/* MediaTek extend the two bits for PA 32bit/33bit */
-+/* MediaTek extend the bits below for PA 32bit/33bit/34bit */
- #define ARM_V7S_ATTR_MTK_PA_BIT32	BIT(9)
- #define ARM_V7S_ATTR_MTK_PA_BIT33	BIT(4)
-+#define ARM_V7S_ATTR_MTK_PA_BIT34	BIT(5)
- 
- /* *well, except for TEX on level 2 large pages, of course :( */
- #define ARM_V7S_CONT_PAGE_TEX_SHIFT	6
-@@ -194,6 +195,8 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
- 		pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
- 	if (paddr & BIT_ULL(33))
- 		pte |= ARM_V7S_ATTR_MTK_PA_BIT33;
-+	if (paddr & BIT_ULL(34))
-+		pte |= ARM_V7S_ATTR_MTK_PA_BIT34;
- 	return pte;
- }
- 
-@@ -218,6 +221,8 @@ static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
- 		paddr |= BIT_ULL(32);
- 	if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
- 		paddr |= BIT_ULL(33);
-+	if (pte & ARM_V7S_ATTR_MTK_PA_BIT34)
-+		paddr |= BIT_ULL(34);
- 	return paddr;
- }
- 
-@@ -754,7 +759,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 	if (cfg->ias > ARM_V7S_ADDR_BITS)
- 		return NULL;
- 
--	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
-+	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
- 		return NULL;
- 
- 	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 6451d83753e1..ec3c87d4b172 100644
+index 160690d56bd2..92c1e2f0af89 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -320,7 +320,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
- 			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
- 		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
- 		.ias = 32,
--		.oas = 34,
-+		.oas = 35,
- 		.tlb = &mtk_iommu_flush_ops,
- 		.iommu_dev = data->dev,
- 	};
-diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
-index 4cde111e425b..1ae0757f4f94 100644
---- a/include/linux/io-pgtable.h
-+++ b/include/linux/io-pgtable.h
-@@ -77,8 +77,8 @@ struct io_pgtable_cfg {
- 	 *	TLB maintenance when mapping as well as when unmapping.
- 	 *
- 	 * IO_PGTABLE_QUIRK_ARM_MTK_EXT: (ARM v7s format) MediaTek IOMMUs extend
--	 *	to support up to 34 bits PA where the bit32 and bit33 are
--	 *	encoded in the bit9 and bit4 of the PTE respectively.
-+	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
-+	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
- 	 *
- 	 * IO_PGTABLE_QUIRK_NON_STRICT: Skip issuing synchronous leaf TLBIs
- 	 *	on unmap, for DMA domains using the flush queue mechanism for
+@@ -126,6 +126,7 @@ struct mtk_iommu_domain {
+ 	struct io_pgtable_cfg		cfg;
+ 	struct io_pgtable_ops		*iop;
+ 
++	struct mtk_iommu_data		*data;
+ 	struct iommu_domain		domain;
+ };
+ 
+@@ -353,7 +354,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
+ 
+ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+ {
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
++	struct mtk_iommu_data *data = dom->data;
+ 
+ 	/* Use the exist domain as there is only one m4u pgtable here. */
+ 	if (data->m4u_dom) {
+@@ -402,6 +403,7 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
+ 	if (iommu_get_dma_cookie(&dom->domain))
+ 		goto  free_dom;
+ 
++	dom->data = data;
+ 	if (mtk_iommu_domain_finalise(dom))
+ 		goto  put_dma_cookie;
+ 
+@@ -482,10 +484,9 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
+ 			 phys_addr_t paddr, size_t size, int prot, gfp_t gfp)
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+ 
+ 	/* The "4GB mode" M4U physically can not use the lower remap of Dram. */
+-	if (data->enable_4GB)
++	if (dom->data->enable_4GB)
+ 		paddr |= BIT_ULL(32);
+ 
+ 	/* Synchronize with the tlb_lock */
+@@ -503,31 +504,32 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+ 
+ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+ {
+-	mtk_iommu_tlb_flush_all(mtk_iommu_get_m4u_data());
++	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
++
++	mtk_iommu_tlb_flush_all(dom->data);
+ }
+ 
+ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+ 				 struct iommu_iotlb_gather *gather)
+ {
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
++	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	size_t length = gather->end - gather->start;
+ 
+ 	if (gather->start == ULONG_MAX)
+ 		return;
+ 
+ 	mtk_iommu_tlb_flush_range_sync(gather->start, length, gather->pgsize,
+-				       data);
++				       dom->data);
+ }
+ 
+ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+ 					  dma_addr_t iova)
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+ 	phys_addr_t pa;
+ 
+ 	pa = dom->iop->iova_to_phys(dom->iop, iova);
+-	if (data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
++	if (dom->data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
+ 		pa &= ~BIT_ULL(32);
+ 
+ 	return pa;
 -- 
 2.18.0
 _______________________________________________
