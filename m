@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76570C4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:02:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 857C9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:02:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA03823B87
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:02:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA03823B87
+	by mail.kernel.org (Postfix) with ESMTPS id 3AD2223B98
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:02:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3AD2223B98
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,54 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7q9omamnonSGOn0hN5cOUKFYuCPSO+UN3YM/kTEXKAA=; b=YqmKgSIrWRyP1rZScWlKlEYh0
-	ONfRwXIK7cMhYVQuzi7yenNFVFP92kSmWJdmLyymNo81x32wWff2aEIjq6XCBbEGaOxUXEkVp1dEh
-	xIX98hDwrZrucJcbHda1ZzDBdOwcp2RO6+ujjKf96UtGKN1fV+H21Hq3ghE65S4aI9n7Iiu6PEzKG
-	pqw4H7yD+yObLdu1fnnk6+Yc1QLISy3Uc472VqGUqRTamOdQssxYACAV4y9EoSJ6fEC4PsQ1YmHZ3
-	RrjcKIJQa7CObgWxjJjrQVzjwF8DMB93lju5nprJjDYo4wmTFHTQzzlh+8Ly0FBXaYVl0yFZ5mdfz
-	aUpp2gNUw==;
+	 bh=9L3DpvPAY2gSms3OzjZLupGJuNZvlL5roH60eXt9sZs=; b=geaxCpmV/O79DwF7/9xWBfZvK
+	635F4KWl4dsvxUdhXVCM7hJS3BcQlI2Py3gWJPFc8RGdf442isphk1kizbLlZnvJjqKSqcUHW/hFZ
+	Hs71v2uiK/A23Ad3f/iG/UMBE0At3QRifSDaWIxrODQ5DBHO100jY7Hcx1iXh3F3E6xGrFKASgcGV
+	pq4gEJW9Uzj2zWY+CoGm88X+MesrHwKslaTaIhFieXY0Owdg3YnL28E31qDYX/sTchbQBaEyIA7HU
+	iOLV9WMkxfP1vQShZ3i5PezTSSeIzuCK8PYOLGsrfgpYsQS79JZhbiP43frjzToKyZY9ZnDteSmL/
+	ZwI3LajsA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmuQ6-0004RO-D1; Wed, 09 Dec 2020 08:01:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kmuQM-0004XW-80; Wed, 09 Dec 2020 08:02:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmuQ2-0004QI-Ru; Wed, 09 Dec 2020 08:01:51 +0000
-X-UUID: 40500d20595f460c921f1aef8f2a456c-20201209
+ id 1kmuQI-0004Vd-UO; Wed, 09 Dec 2020 08:02:08 +0000
+X-UUID: a8b8d8c3547c414f841ba33602fcbab1-20201209
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=k/yzc9xQTyYsE2xP1FrcWIvFIv+IFxhsciRLmdT9/7I=; 
- b=BCoY5Fr00qvFisJ1t6coR50V5+QJ+CUVsLyKVzgjeIP4b6N7ucjiESIYSrjIG42jvq4VfiYNrtCOpHvhIiTO2n7DWraGcEa/d+YBzwApYiA8l+/hryhh5UyXUDoVikYkzU6zvU/TTyalbWgBAgcbZBHr/Sj0eAuUDgW51Dx+Dow=;
-X-UUID: 40500d20595f460c921f1aef8f2a456c-20201209
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=TgdfFAZfngFLnBwKy0uwf6lPigW/VOtt80AidvYuSMk=; 
+ b=WpvQhyEdiVKo6FeUVemBAdJGlI8nDDxj/eNQc8L0T+apoOhDubgPHNOZsYBf78bJbX5hLxu1FAQGcls0fyepHBq+4XLTIfyiRFgGhGOhPiQoZl90hvwqGC6d8eHZKvRdTC0d1JMYg1ULnq+63pxRu5qweReVJXU5L1fhw+eQ8Gw=;
+X-UUID: a8b8d8c3547c414f841ba33602fcbab1-20201209
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 541049919; Wed, 09 Dec 2020 00:01:45 -0800
+ with ESMTP id 549987491; Wed, 09 Dec 2020 00:02:04 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 00:01:43 -0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Dec 2020 00:02:00 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 16:01:41 +0800
+ 15.0.1497.2; Wed, 9 Dec 2020 16:01:58 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Dec 2020 16:01:41 +0800
+ Transport; Wed, 9 Dec 2020 16:01:58 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v5 02/27] dt-bindings: memory: mediatek: Add a common
- larb-port header file
-Date: Wed, 9 Dec 2020 16:00:37 +0800
-Message-ID: <20201209080102.26626-3-yong.wu@mediatek.com>
+Subject: [PATCH v5 04/27] dt-bindings: memory: mediatek: Add domain definition
+Date: Wed, 9 Dec 2020 16:00:39 +0800
+Message-ID: <20201209080102.26626-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201209080102.26626-1-yong.wu@mediatek.com>
 References: <20201209080102.26626-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201209_030151_083052_65EFBE68 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20201209_030207_126181_3452558F 
+X-CRM114-Status: GOOD (  14.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,108 +93,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Put all the macros about smi larb/port togethers, this is a preparing
-patch for extending LARB_NR and adding new dom-id support.
+In the latest SoC, there are several HW IP require a sepecial iova
+range, mainly CCU and VPU has this requirement. Take CCU as a example,
+CCU require its iova locate in the range(0x4000_0000 ~ 0x43ff_ffff).
+
+In this patch we add a domain definition for the special port. In the
+example of CCU, If we preassign CCU port in domain1, then iommu driver
+will prepare a independent iommu domain of the special iova range for it,
+then the iova got from dma_alloc_attrs(ccu-dev) will locate in its special
+range.
+
+This is a preparing patch for multi-domain support.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
 Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- include/dt-bindings/memory/mt2712-larb-port.h  |  2 +-
- include/dt-bindings/memory/mt6779-larb-port.h  |  2 +-
- include/dt-bindings/memory/mt8167-larb-port.h  |  2 +-
- include/dt-bindings/memory/mt8173-larb-port.h  |  2 +-
- include/dt-bindings/memory/mt8183-larb-port.h  |  2 +-
- include/dt-bindings/memory/mtk-smi-larb-port.h | 15 +++++++++++++++
- 6 files changed, 20 insertions(+), 5 deletions(-)
- create mode 100644 include/dt-bindings/memory/mtk-smi-larb-port.h
+ include/dt-bindings/memory/mtk-smi-larb-port.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/include/dt-bindings/memory/mt2712-larb-port.h b/include/dt-bindings/memory/mt2712-larb-port.h
-index 6f9aa7349cef..b6b2c6bf4459 100644
---- a/include/dt-bindings/memory/mt2712-larb-port.h
-+++ b/include/dt-bindings/memory/mt2712-larb-port.h
-@@ -6,7 +6,7 @@
- #ifndef __DTS_IOMMU_PORT_MT2712_H
- #define __DTS_IOMMU_PORT_MT2712_H
- 
--#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
-+#include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
- #define M4U_LARB0_ID			0
- #define M4U_LARB1_ID			1
-diff --git a/include/dt-bindings/memory/mt6779-larb-port.h b/include/dt-bindings/memory/mt6779-larb-port.h
-index 2ad0899fbf2f..60f57f54393e 100644
---- a/include/dt-bindings/memory/mt6779-larb-port.h
-+++ b/include/dt-bindings/memory/mt6779-larb-port.h
-@@ -7,7 +7,7 @@
- #ifndef _DTS_IOMMU_PORT_MT6779_H_
- #define _DTS_IOMMU_PORT_MT6779_H_
- 
--#define MTK_M4U_ID(larb, port)		 (((larb) << 5) | (port))
-+#include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
- #define M4U_LARB0_ID			 0
- #define M4U_LARB1_ID			 1
-diff --git a/include/dt-bindings/memory/mt8167-larb-port.h b/include/dt-bindings/memory/mt8167-larb-port.h
-index 000fb299a408..fcb9a49ec60e 100644
---- a/include/dt-bindings/memory/mt8167-larb-port.h
-+++ b/include/dt-bindings/memory/mt8167-larb-port.h
-@@ -8,7 +8,7 @@
- #ifndef __DTS_IOMMU_PORT_MT8167_H
- #define __DTS_IOMMU_PORT_MT8167_H
- 
--#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
-+#include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
- #define M4U_LARB0_ID			0
- #define M4U_LARB1_ID			1
-diff --git a/include/dt-bindings/memory/mt8173-larb-port.h b/include/dt-bindings/memory/mt8173-larb-port.h
-index 9f31ccfeca21..d8c99c946053 100644
---- a/include/dt-bindings/memory/mt8173-larb-port.h
-+++ b/include/dt-bindings/memory/mt8173-larb-port.h
-@@ -6,7 +6,7 @@
- #ifndef __DTS_IOMMU_PORT_MT8173_H
- #define __DTS_IOMMU_PORT_MT8173_H
- 
--#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
-+#include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
- #define M4U_LARB0_ID			0
- #define M4U_LARB1_ID			1
-diff --git a/include/dt-bindings/memory/mt8183-larb-port.h b/include/dt-bindings/memory/mt8183-larb-port.h
-index 2c579f305162..275c095a6fd6 100644
---- a/include/dt-bindings/memory/mt8183-larb-port.h
-+++ b/include/dt-bindings/memory/mt8183-larb-port.h
-@@ -6,7 +6,7 @@
- #ifndef __DTS_IOMMU_PORT_MT8183_H
- #define __DTS_IOMMU_PORT_MT8183_H
- 
--#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
-+#include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
- #define M4U_LARB0_ID			0
- #define M4U_LARB1_ID			1
 diff --git a/include/dt-bindings/memory/mtk-smi-larb-port.h b/include/dt-bindings/memory/mtk-smi-larb-port.h
-new file mode 100644
-index 000000000000..53354cf4f6e3
---- /dev/null
+index 7d64103209af..2d4c973c174f 100644
+--- a/include/dt-bindings/memory/mtk-smi-larb-port.h
 +++ b/include/dt-bindings/memory/mtk-smi-larb-port.h
-@@ -0,0 +1,15 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2020 MediaTek Inc.
-+ * Author: Yong Wu <yong.wu@mediatek.com>
-+ */
-+#ifndef __DT_BINDINGS_MEMORY_MTK_MEMORY_PORT_H_
-+#define __DT_BINDINGS_MEMORY_MTK_MEMORY_PORT_H_
+@@ -7,9 +7,16 @@
+ #define __DT_BINDINGS_MEMORY_MTK_MEMORY_PORT_H_
+ 
+ #define MTK_LARB_NR_MAX			32
++#define MTK_M4U_DOM_NR_MAX		8
 +
-+#define MTK_LARB_NR_MAX			16
++#define MTK_M4U_DOM_ID(domid, larb, port)	\
++	(((domid) & 0x7) << 16 | (((larb) & 0x1f) << 5) | ((port) & 0x1f))
 +
-+#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
-+#define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
-+#define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
-+
-+#endif
++/* The default dom id is 0. */
++#define MTK_M4U_ID(larb, port)		MTK_M4U_DOM_ID(0, larb, port)
+ 
+-#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
+ #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
+ #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
++#define MTK_M4U_TO_DOM(id)		(((id) >> 16) & 0x7)
+ 
+ #endif
 -- 
 2.18.0
 _______________________________________________
