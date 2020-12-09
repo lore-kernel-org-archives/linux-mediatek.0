@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DCDC0C4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB1FDC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21ED423B98
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21ED423B98
+	by mail.kernel.org (Postfix) with ESMTPS id 43BBA23B98
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43BBA23B98
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,54 +24,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kTgeGBT5WhvvTKXj9SmhL6ekA2Gekj1XMG3CKQn1sT4=; b=is53GeYZbUI1PX8H5LlVE6vc3
-	ekPG/La1y0WTcoHd4BB0Rsw873flPvTCtKO2eqHUUeCuWFq5KaohGUYCbYBxHEV4i49E3t70VZlzU
-	xggBBhsNApOtDVsZOfwsqpJE72J74FVOwgyODn7+DAPIL+3zFo5I7+urw3vbA4RGQH1j4XkGK5y5J
-	pXUd/YaIbtljiQ/fQRfYe0rA1ge1c77mLQYIUCHDoVdDW80+5SFrHGyj2oTUSi/O2RFtZ0tRLRLb1
-	6oD4/7rdlVqRQ6OTWKod+tSHiauwRHgWOA/GKQ8byOsJ4jEF4+/EhVmzoxT14g5siYoW7gwSBy9eq
-	3UJRiNYsw==;
+	 bh=3qIK7fIC3bE63QkMZrhIi/euhF9l6+ox8DyhYiOiNjk=; b=m2hHkbXugzj43E4HWxWVR8sIO
+	KRvO+X1yvxz9LpiZ46cdUW9mEdDUeVEO12bJBdpocwX85Yfh5qa9MNggOrJ2Yvp3nq4WDdgldjG/B
+	aZooEP6DB4ab2RM+ThJv1ran9FF5HtvNmEODv2F+Iobdh+6DozQ97Gsl39Bd1nUwcg+TSQnhb3wBq
+	2WMBGoiHjlgnsQwBSenY3qs2ULAbpi8cr6HOOyMHzg4vYI0lSZrq8IEl0jEWe9Z5sDQavY3YOlr2D
+	YlB3oIpwdwDHppmZgzMFTWff0cfwPxT9eEJdkrOC+c+//a3nUPrON9xzjW0KmFuKbII4vzbLktM3z
+	kb+9qKsGA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmuZl-0006On-1i; Wed, 09 Dec 2020 08:11:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kmuao-0006zR-7y; Wed, 09 Dec 2020 08:12:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmuZX-0006H8-2q; Wed, 09 Dec 2020 08:11:40 +0000
-X-UUID: 47c796dee8bc4612a6c21a90c7243cbe-20201209
+ id 1kmuah-0006uF-38; Wed, 09 Dec 2020 08:12:52 +0000
+X-UUID: 94991456e8394b17898f375d196e906e-20201209
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=qIZq1oGv4lzd44ZPcZLr3O+supNCn3ovk2vn+kwAmyI=; 
- b=mgBkY/WR3ocU6Bl/rBSrTrPzvW+tK2+A6TfNGg9Y8YJ4k3FSlo51KVb423Pk2LloXQSlc9RUk4ezpCe5SNJVVWw/276ja744o/LTFpV9WYtM1kJv4xmfgUq/ljP9wH/F/2LAV+JamqNbms/ds9yUCZFQu8P8cscHLi1QkaUkRSE=;
-X-UUID: 47c796dee8bc4612a6c21a90c7243cbe-20201209
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=azVKLcaPBUAuuK/djyxAmnD6aBGrjlOMfsqKimfI86w=; 
+ b=jyIozQJW8L6fgQNZp2gSdy4eldRoF1Opdv1tG0h1UpG1xjGE/Kp954Deq/EcsbE6eSZz1vLr/2xaTksQ+iyT6b+TNnLXZBxUv5A6oz2mrOUFhSVCdFUNCtdKRwBQY9kLxNvF7H/2qqVoSaCOSTI97YyfX05Vj0Qc8BhZQnGtOx4=;
+X-UUID: 94991456e8394b17898f375d196e906e-20201209
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1769432288; Wed, 09 Dec 2020 00:11:33 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 00:02:10 -0800
+ with ESMTP id 140442014; Wed, 09 Dec 2020 00:12:46 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Dec 2020 00:03:57 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 16:02:09 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Dec 2020 16:03:52 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Dec 2020 16:02:08 +0800
+ Transport; Wed, 9 Dec 2020 16:03:55 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v5 05/27] dt-bindings: memory: mediatek: Rename header guard
- for SMI header file
-Date: Wed, 9 Dec 2020 16:00:40 +0800
-Message-ID: <20201209080102.26626-6-yong.wu@mediatek.com>
+Subject: [PATCH v5 17/27] iommu/mediatek: Add pm runtime callback
+Date: Wed, 9 Dec 2020 16:00:52 +0800
+Message-ID: <20201209080102.26626-18-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201209080102.26626-1-yong.wu@mediatek.com>
 References: <20201209080102.26626-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201209_031139_282354_8B389E15 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20201209_031251_382210_03BE8557 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,109 +94,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Only rename the header guard for all the SoC larb port header file.
-No funtional change.
+This patch adds pm runtime callback.
 
-Suggested-by: Krzysztof Kozlowski <krzk@kernel.org>
+In pm runtime case, all the registers backup/restore and bclk are
+controlled in the pm_runtime callback, then pm_suspend is not needed in
+this case.
+
+runtime PM is disabled when suspend, thus we call
+pm_runtime_status_suspended instead of pm_runtime_suspended.
+
+And, m4u doesn't have its special pm runtime domain in previous SoC, in
+this case dev->power.runtime_status is RPM_SUSPENDED defaultly, thus add
+a "dev->pm_domain" checking for the SoC that has pm runtime domain.
+
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- include/dt-bindings/memory/mt2701-larb-port.h | 4 ++--
- include/dt-bindings/memory/mt2712-larb-port.h | 4 ++--
- include/dt-bindings/memory/mt6779-larb-port.h | 4 ++--
- include/dt-bindings/memory/mt8167-larb-port.h | 4 ++--
- include/dt-bindings/memory/mt8173-larb-port.h | 4 ++--
- include/dt-bindings/memory/mt8183-larb-port.h | 4 ++--
- 6 files changed, 12 insertions(+), 12 deletions(-)
+ drivers/iommu/mtk_iommu.c | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
 
-diff --git a/include/dt-bindings/memory/mt2701-larb-port.h b/include/dt-bindings/memory/mt2701-larb-port.h
-index 2d85c2ec6cfd..25d03526f142 100644
---- a/include/dt-bindings/memory/mt2701-larb-port.h
-+++ b/include/dt-bindings/memory/mt2701-larb-port.h
-@@ -4,8 +4,8 @@
-  * Author: Honghui Zhang <honghui.zhang@mediatek.com>
-  */
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 5614015e5b96..6fe3ee2b2bf5 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -808,7 +808,7 @@ static int mtk_iommu_remove(struct platform_device *pdev)
+ 	return 0;
+ }
  
--#ifndef _MT2701_LARB_PORT_H_
--#define _MT2701_LARB_PORT_H_
-+#ifndef _DT_BINDINGS_MEMORY_MT2701_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT2701_LARB_PORT_H_
+-static int __maybe_unused mtk_iommu_suspend(struct device *dev)
++static int __maybe_unused mtk_iommu_runtime_suspend(struct device *dev)
+ {
+ 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
+ 	struct mtk_iommu_suspend_reg *reg = &data->reg;
+@@ -826,7 +826,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
+ 	return 0;
+ }
  
- /*
-  * Mediatek m4u generation 1 such as mt2701 has flat m4u port numbers,
-diff --git a/include/dt-bindings/memory/mt2712-larb-port.h b/include/dt-bindings/memory/mt2712-larb-port.h
-index b6b2c6bf4459..5c7f303f078c 100644
---- a/include/dt-bindings/memory/mt2712-larb-port.h
-+++ b/include/dt-bindings/memory/mt2712-larb-port.h
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2017 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
--#ifndef __DTS_IOMMU_PORT_MT2712_H
--#define __DTS_IOMMU_PORT_MT2712_H
-+#ifndef _DT_BINDINGS_MEMORY_MT2712_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT2712_LARB_PORT_H_
+-static int __maybe_unused mtk_iommu_resume(struct device *dev)
++static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+ {
+ 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
+ 	struct mtk_iommu_suspend_reg *reg = &data->reg;
+@@ -853,7 +853,25 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+ 	return 0;
+ }
  
- #include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
-diff --git a/include/dt-bindings/memory/mt6779-larb-port.h b/include/dt-bindings/memory/mt6779-larb-port.h
-index 60f57f54393e..bc93757df2bf 100644
---- a/include/dt-bindings/memory/mt6779-larb-port.h
-+++ b/include/dt-bindings/memory/mt6779-larb-port.h
-@@ -4,8 +4,8 @@
-  * Author: Chao Hao <chao.hao@mediatek.com>
-  */
- 
--#ifndef _DTS_IOMMU_PORT_MT6779_H_
--#define _DTS_IOMMU_PORT_MT6779_H_
-+#ifndef _DT_BINDINGS_MEMORY_MT6779_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT6779_LARB_PORT_H_
- 
- #include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
-diff --git a/include/dt-bindings/memory/mt8167-larb-port.h b/include/dt-bindings/memory/mt8167-larb-port.h
-index fcb9a49ec60e..8570aab09db8 100644
---- a/include/dt-bindings/memory/mt8167-larb-port.h
-+++ b/include/dt-bindings/memory/mt8167-larb-port.h
-@@ -5,8 +5,8 @@
-  * Author: Honghui Zhang <honghui.zhang@mediatek.com>
-  * Author: Fabien Parent <fparent@baylibre.com>
-  */
--#ifndef __DTS_IOMMU_PORT_MT8167_H
--#define __DTS_IOMMU_PORT_MT8167_H
-+#ifndef _DT_BINDINGS_MEMORY_MT8167_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT8167_LARB_PORT_H_
- 
- #include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
-diff --git a/include/dt-bindings/memory/mt8173-larb-port.h b/include/dt-bindings/memory/mt8173-larb-port.h
-index d8c99c946053..1b568973fc2d 100644
---- a/include/dt-bindings/memory/mt8173-larb-port.h
-+++ b/include/dt-bindings/memory/mt8173-larb-port.h
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
--#ifndef __DTS_IOMMU_PORT_MT8173_H
--#define __DTS_IOMMU_PORT_MT8173_H
-+#ifndef _DT_BINDINGS_MEMORY_MT8173_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT8173_LARB_PORT_H_
- 
- #include <dt-bindings/memory/mtk-smi-larb-port.h>
- 
-diff --git a/include/dt-bindings/memory/mt8183-larb-port.h b/include/dt-bindings/memory/mt8183-larb-port.h
-index 275c095a6fd6..3095630bb190 100644
---- a/include/dt-bindings/memory/mt8183-larb-port.h
-+++ b/include/dt-bindings/memory/mt8183-larb-port.h
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2018 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
--#ifndef __DTS_IOMMU_PORT_MT8183_H
--#define __DTS_IOMMU_PORT_MT8183_H
-+#ifndef _DT_BINDINGS_MEMORY_MT8183_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT8183_LARB_PORT_H_
- 
- #include <dt-bindings/memory/mtk-smi-larb-port.h>
++static int __maybe_unused mtk_iommu_suspend(struct device *dev)
++{
++	/* runtime PM is disabled when suspend in pm_runtime case. */
++	if (dev->pm_domain && pm_runtime_status_suspended(dev))
++		return 0;
++
++	return mtk_iommu_runtime_suspend(dev);
++}
++
++static int __maybe_unused mtk_iommu_resume(struct device *dev)
++{
++	if (dev->pm_domain && pm_runtime_status_suspended(dev))
++		return 0;
++
++	return mtk_iommu_runtime_resume(dev);
++}
++
+ static const struct dev_pm_ops mtk_iommu_pm_ops = {
++	SET_RUNTIME_PM_OPS(mtk_iommu_runtime_suspend, mtk_iommu_runtime_resume, NULL)
+ 	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
+ };
  
 -- 
 2.18.0
