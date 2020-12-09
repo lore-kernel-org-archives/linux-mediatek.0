@@ -7,81 +7,81 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D271C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 11:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E9B0C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 11:47:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F5FC23B5D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 11:45:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F5FC23B5D
+	by mail.kernel.org (Postfix) with ESMTPS id 02D0723B5D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 11:47:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02D0723B5D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Q5GrlzWgKAcC9CN4nbDvQbiq6Cd3Aj56XXwG8cuvAxk=; b=gOXuJoYn6oXi5BCHSp1AGlmHg
-	tyjGIZD1yS380+hNlVrtNKwQmdmMuxwEE5QB4l4RCIn+AsBmPbBg/zyYsVl8PsmPMYOmcKtO7n9Ne
-	xFcAfkzddFsIca/Th1wUWlTtIym47IMU+APnXW9V04xl0IELJBSSvX97kcB+yCWlTDlmJbPZfH4SU
-	d4cIrPb55Sht1R1ZbYwNGd0IsL2LoDx9KjGiwxXuRJHboY2JP9kcESVHnfdMXRTVcE8NwNrcto+Ao
-	c11Q/JZJqCFxh8QEKmD5eRC+9KCS8kn7dgkz9TxGOjJiuYE7A8E+a1w4lH8H17zMizPoNMOqf8Lc6
-	Eljmx4n/g==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kP3jxcQJc6lfcRM5D35EDjUZZb9Ttjqx3vAKEWz0xwc=; b=j6gkEJ9V6ptqP91pX5l99eW/rl
+	aaMDHNbt6LjCicpMPO0mLO19ID4gIQv0QjWfop7zbC6CkDsxFYC0aC2kqqYmCj9GBs0a20Iai2OY0
+	bSqzoyXfY+SPSmLC4JMkAM1up6tdpFbxPEYVH5Dl6+X4BVaItXfVlDPYV6vVstxo8VpzqO6xN3xL/
+	yem7AmXStRAbgi7aEhkEFGPGTgR4CtOhjtGPXfOsKRDvfLTmggYiWI3LSBt2Lawf1uW8DYh4+pJXa
+	8GChh9vj9gVDHmWgrkhpSJ9KuG74R1HEb/9aoqcC6n5svgozeXbYnK4fsh4e8qn1Rem8Aq84DwRWw
+	tGFSR57w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmxty-00015C-Vv; Wed, 09 Dec 2020 11:44:59 +0000
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
+	id 1kmxwd-0001SZ-Hv; Wed, 09 Dec 2020 11:47:43 +0000
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmxts-00012s-W4
- for linux-mediatek@lists.infradead.org; Wed, 09 Dec 2020 11:44:55 +0000
-Received: by mail-ed1-x544.google.com with SMTP id b73so1178769edf.13
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Dec 2020 03:44:51 -0800 (PST)
+ id 1kmxwb-0001RV-Ns
+ for linux-mediatek@lists.infradead.org; Wed, 09 Dec 2020 11:47:42 +0000
+Received: by mail-ej1-x643.google.com with SMTP id m19so1650647ejj.11
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Dec 2020 03:47:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=AZ7wYcWUmWH+uVrdi5m11ZubeY2Wy0/H7RjJZGg6xE4=;
- b=aqX9kip9J67BsY4pqUSEZXQ/TMIQwaOOP0xcefZgGlThWPS+VU2sNeN/oEbCEBTZ2u
- 6FYJ01oNYSo2AkF28wg60tISmWxKpcue92Fu8mM6H1IGfK6JLvYhO8quWwWQKaNkbmmd
- /KTJvFBabmHv8hSXWU0zUOQxUcJDrBrUHfs4GC+3yc+K8WqpmGxPZYAlz6lzGX4AC+qq
- 0NZgu5NPxUKcBP6d6gu8L584maZrmI+4NK5v2KTvQ2ACTr49cRzWHFrIc+rDsxYtErJi
- g/HXOjMqRtZPb4gnt3V3bSLJEV+1aSXGkDE0ofPfIavp338fZD3OZME6nNg6dJEb8urB
- pckA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rs3z5HiZz52Q+PqaHhfTF1Q+uRexoKTRYXUuslD9bJA=;
+ b=d3T36ZkNR/AUgVDsWMcv+epjmknEjkr1S4/hA5BmOBbmMp3QPmqbQ5+T5urLbZsaZm
+ yddM22Ca/MjmaZ65L9Ziy8Eis/rNNRh6ZWV33tysfBDK99xgKIFsPiG/pLxOIGV2msux
+ 3VZ4X/R76YQSx/b/gtQiCbkElRc8FjmqEJZ9snzxdIWHO32LjhfnKFPVl2brKq/cbdPl
+ zpDqtSxW6OC+2JHBCUwRoKYHHWYHCx4jqiOhBquIjUJ4tNKpJzn/IlzziXa4/3PKi8pE
+ aTb57hm0IUn94GQTHu2NhsmG7apvTb2fEUQ2K5isvTgowQlyZ+eEA7pRISQ75ZxcifFr
+ j0UQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=AZ7wYcWUmWH+uVrdi5m11ZubeY2Wy0/H7RjJZGg6xE4=;
- b=pJwBlxphN1wczXzkNelfqwnD69E77pOEZk+PjyxVUxgzqaJXaODroXSDABGY/Sy4SK
- Ue5kPaLZWCbAvAgK8o2qb+xX1q5wwyUY24NqQQpthToIdjsF2kv7NKQ5EhOClV2Ex50L
- VHT/e0IjVeCpyOPZaRGyuTRO8YLfqZVxcZWSzN9S5Rcqg69BfCDGuKyr1qsOiVIJ8uO9
- tgzuPxbhUMzT/nqTTAx/tgjsMsHThmnAY8+pJ/u5qjqcXyz2rHtvewdu7YCIEmKodZ8l
- OFOj0kVPiewcDyvBVXhKrFpypv495prqv8kRZiVLCFtM/QuAAFWMk0cZKJWmCr88ZOxU
- Qk9w==
-X-Gm-Message-State: AOAM533dqX4AUSo4bWUlDM/f2MG4Lo8evcELpp3H9qpD67ic25VDj/nD
- Q1ETY38jryPitxIi92ZIr7Q+Eg==
-X-Google-Smtp-Source: ABdhPJxNqsA7hfko0K/oKynB9g7B5UaxABjUkJLiTKKQ1Ka5HzerQx5TREnQtWCg7kQ3RyD6ytVHTQ==
-X-Received: by 2002:a50:8b61:: with SMTP id l88mr1629668edl.250.1607514290713; 
- Wed, 09 Dec 2020 03:44:50 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rs3z5HiZz52Q+PqaHhfTF1Q+uRexoKTRYXUuslD9bJA=;
+ b=nbdrf3BNQaBY96R+zXCr07hu1iUThp6tuGgigih28V3gImtAz4d1ao3jyIw7kS6aD7
+ qBsT7S/sXTpNcl0uSU0FCdOjJo4Y9N2LhXIzO5Fx67m4x1TmsSNJVKHEEpR6kb5R+uCs
+ 9sXkFdhWJitpS828dHLD2B+6NRw6GUkEpbapsRkzUzOtEjS+3aATaFy6777zCE1BZJdR
+ sEGjfYTl+lnYmmNyaHy5qnlaPe94A6fztDwGFueH+PVI3rWqjKrlVkIGQNx2A4mdeAxv
+ wYpZNj34h81+Oy98907/SO68cl9emIKcNt2+6EjTbHU3n8ouAbazQe9Q8FlPkzTuT2w3
+ rVuQ==
+X-Gm-Message-State: AOAM5300gn+Pc4mfhpTNH1wnXyoPd2N2zyMGqRWNs+QT2CQLwwcJIos/
+ nnJPLNveMwGy4QsjdTCjzvSlFg==
+X-Google-Smtp-Source: ABdhPJz4K0kLaWeuPBop0IAkjqejJVnYvx1By/KhxM6pBUYlU2Hn4uST4po7Bl+o5xWrlrVSPgRe1g==
+X-Received: by 2002:a17:906:98d4:: with SMTP id
+ zd20mr1710918ejb.532.1607514460504; 
+ Wed, 09 Dec 2020 03:47:40 -0800 (PST)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id c25sm1260327ejx.39.2020.12.09.03.44.49
+ by smtp.gmail.com with ESMTPSA id k23sm1244877ejs.100.2020.12.09.03.47.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Dec 2020 03:44:50 -0800 (PST)
+ Wed, 09 Dec 2020 03:47:39 -0800 (PST)
 From: Fabien Parent <fparent@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 2/2] =?UTF-8?q?=F0=9F=93=A4=20arm64:=20dts:=20mediatek:?=
- =?UTF-8?q?=20mt8516:=20add=20support=20for=20APDMA?=
-Date: Wed,  9 Dec 2020 12:44:40 +0100
-Message-Id: <20201209114440.62950-2-fparent@baylibre.com>
+To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v3 1/2] dt-bindings: dma: mtk-apdma: add bindings for MT8516
+ SOC
+Date: Wed,  9 Dec 2020 12:47:35 +0100
+Message-Id: <20201209114736.70625-1-fparent@baylibre.com>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201209114440.62950-1-fparent@baylibre.com>
-References: <20201209114440.62950-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201209_064453_064646_FA6EA68D 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20201209_064741_824478_212E6D79 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,86 +93,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Rob Herring <robh@kernel.org>,
+ linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
+ linux-mediatek@lists.infradead.org, dmaengine@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support the APDMA IP on MT8516. APDMA is a DMA controller
-for UARTs.
+Add bindings to APDMA for MT8516 SoC. MT8516 is compatible with MT6577.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
 
-V2: Add missing dma-names properties on uart nodes
+V3: remove unicode symbol that slips into patch summary
+V2: no change
 
- arch/arm64/boot/dts/mediatek/mt8516.dtsi | 30 ++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index e6e4d9d60094..b80e95574bef 100644
---- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -276,6 +276,27 @@ gic: interrupt-controller@10310000 {
- 				(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
- 		};
+diff --git a/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt b/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
+index 2117db0ce4f2..fef9c1eeb264 100644
+--- a/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
++++ b/Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
+@@ -4,6 +4,7 @@ Required properties:
+ - compatible should contain:
+   * "mediatek,mt2712-uart-dma" for MT2712 compatible APDMA
+   * "mediatek,mt6577-uart-dma" for MT6577 and all of the above
++  * "mediatek,mt8516-uart-dma", "mediatek,mt6577" for MT8516 SoC
  
-+		apdma: dma-controller@11000480 {
-+			compatible = "mediatek,mt8516-uart-dma",
-+				     "mediatek,mt6577-uart-dma";
-+			reg = <0 0x11000480 0 0x80>,
-+			      <0 0x11000500 0 0x80>,
-+			      <0 0x11000580 0 0x80>,
-+			      <0 0x11000600 0 0x80>,
-+			      <0 0x11000980 0 0x80>,
-+			      <0 0x11000a00 0 0x80>;
-+			interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 99 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 100 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 101 IRQ_TYPE_LEVEL_LOW>;
-+			dma-requests = <6>;
-+			clocks = <&topckgen CLK_TOP_APDMA>;
-+			clock-names = "apdma";
-+			#dma-cells = <1>;
-+		};
-+
- 		uart0: serial@11005000 {
- 			compatible = "mediatek,mt8516-uart",
- 				     "mediatek,mt6577-uart";
-@@ -284,6 +305,9 @@ uart0: serial@11005000 {
- 			clocks = <&topckgen CLK_TOP_UART0_SEL>,
- 				 <&topckgen CLK_TOP_UART0>;
- 			clock-names = "baud", "bus";
-+			dmas = <&apdma 0
-+				&apdma 1>;
-+			dma-names = "tx", "rx";
- 			status = "disabled";
- 		};
- 
-@@ -295,6 +319,9 @@ uart1: serial@11006000 {
- 			clocks = <&topckgen CLK_TOP_UART1_SEL>,
- 				 <&topckgen CLK_TOP_UART1>;
- 			clock-names = "baud", "bus";
-+			dmas = <&apdma 2
-+				&apdma 3>;
-+			dma-names = "tx", "rx";
- 			status = "disabled";
- 		};
- 
-@@ -306,6 +333,9 @@ uart2: serial@11007000 {
- 			clocks = <&topckgen CLK_TOP_UART2_SEL>,
- 				 <&topckgen CLK_TOP_UART2>;
- 			clock-names = "baud", "bus";
-+			dmas = <&apdma 4
-+				&apdma 5>;
-+			dma-names = "tx", "rx";
- 			status = "disabled";
- 		};
+ - reg: The base address of the APDMA register bank.
  
 -- 
 2.29.2
