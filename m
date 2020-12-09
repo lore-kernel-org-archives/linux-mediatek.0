@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29A33C4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D0FDC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEC4E23BA7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEC4E23BA7
+	by mail.kernel.org (Postfix) with ESMTPS id BBCEF23B7D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 08:13:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBCEF23B7D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uQdGrXwInOiewgnUmoRuTdwxfT5jvcm13qJNiuMtdsE=; b=PnnzTuZDUVAjtge6q5GYBpKSx
-	feNNG82SDlbfiOqAgofWUXuggtMc2ZvXgx17rpdmNQe+m3Vwg3eTwarsQJOagy8bGbqgKRior9KNk
-	zLj5OVN01OSpS6zrjroCHryBEGb6QawCx36Kr+Jf9HH7cnHtOQpn1BjwYxaDvmBNBeu23r7vDxq7l
-	AObRz/Ve6WQ3+MYmqw2FO+wnZ5qLVtDO7n/WVRsn/GoAEkAIcegwTVHQ77mDExJ8w1YfkEtd1gxc1
-	UwrCqCtRJAdrQN/62dZKgwBa5FgFpdPVw1cYZugE0T04G5Zjk7t3LPKbcR1Tu6Wb+fr69qgYCqRAc
-	+yYNug6jg==;
+	 bh=8HkPIAWTx1DBpzCFokeJhkXYAP0Vjbs1uqBbLJ7xCac=; b=ZJ4pPy9lJN2kdQzQ2zK/JjvH0
+	z+h7Jho/wbJkVAzdcX9sknWRybJfXrsGD9+WOFKvyKhzb25q91dJjSkD3SFm2aWPF+JnDeYFN/YfF
+	me7KtBgrtFUaYOiCY89siGnymJeAi+lnTwAPklcfs5GUWwCY5HHFoURRtHHW2Lhd+uXpyVpXp5A8g
+	xGLlB8UsEM8cbngfpZ6AeWMKjQ5GHPNy0ISIoerqZcUJ5uPvc3VFapE0/AoGvu9EgwnBjNWAuJFoF
+	tyWeODnLgt9DhdMWIMtgxkh9303LVqE8v8MBj5skzZAZ5pzKwtl4k0JmqXM7knY2TutZCCS6wwur1
+	OdoWJMihw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmuZZ-0006JU-Rv; Wed, 09 Dec 2020 08:11:41 +0000
+	id 1kmuZk-0006Od-9n; Wed, 09 Dec 2020 08:11:52 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmuZV-0006H9-T5; Wed, 09 Dec 2020 08:11:38 +0000
-X-UUID: f823d0b6f1d04d57990655627985100d-20201209
+ id 1kmuZX-0006H9-4r; Wed, 09 Dec 2020 08:11:40 +0000
+X-UUID: 5653a5aefdcc492e9f462e506bbc3c47-20201209
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=tg4v8vb/qc/G+kxu9sW3gRRVRf6wnhsg9VCRlhkqXrA=; 
- b=MN5SPnKsbDILAxU9mo9Uq1EwhwVNfI7uNTtTM5L5B24aS02U/s4rQyCZjgSkjG4t2tXrv0IJ+3HjMBYnPQ6G3ixWtsiaTkqXU/8jfGKWW8eMBlk40Pbi7B6iE1J79Wn8QL2tIQ4gHTyLgk5cXrVtUwaYqVxbzcKTE2VSt1EMqg4=;
-X-UUID: f823d0b6f1d04d57990655627985100d-20201209
+ bh=wJ1EVGX6G/SUHEgHmxBXvnzz4IvBsvqb7qB6Sk39wMU=; 
+ b=A9E0rRltb1F6lTku352b9ctjoXEJtOu00BEEIVWDw4N8Y0lwms3jGAKPo/psByXH9ky/wW+XVekgaNPcrb23rFuF832SfsSxJ8D28L66A9AJcqDaV9gz6CbReWrsbTMCH2SprffEMtTFWyxdOqBiSQQwZ462Y46THwg6+ftvVlM=;
+X-UUID: 5653a5aefdcc492e9f462e506bbc3c47-20201209
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 799132880; Wed, 09 Dec 2020 00:11:33 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 122083447; Wed, 09 Dec 2020 00:11:33 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 00:03:35 -0800
+ 15.0.1497.2; Wed, 9 Dec 2020 00:03:43 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 16:03:33 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Dec 2020 16:03:38 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Dec 2020 16:03:33 +0800
+ Transport; Wed, 9 Dec 2020 16:03:41 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
  Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v5 14/27] iommu/mediatek: Move hw_init into attach_device
-Date: Wed, 9 Dec 2020 16:00:49 +0800
-Message-ID: <20201209080102.26626-15-yong.wu@mediatek.com>
+Subject: [PATCH v5 15/27] iommu/mediatek: Add fail handle for sysfs_add and
+ device_register
+Date: Wed, 9 Dec 2020 16:00:50 +0800
+Message-ID: <20201209080102.26626-16-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201209080102.26626-1-yong.wu@mediatek.com>
 References: <20201209080102.26626-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201209_031138_091774_41D4E1B5 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20201209_031139_397075_954D3F5C 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,56 +94,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In attach device, it will update the pagetable base address register.
-Move the hw_init function also here. Then it only need call
-pm_runtime_get/put one time here if m4u has power domain.
+Add fail handle for iommu_device_sysfs_add and iommu_device_register.
 
+Fixes: b16c0170b53c ("iommu/mediatek: Make use of iommu_device_register interface")
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ drivers/iommu/mtk_iommu.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 1bc5e881951c..39478cfbe0f1 100644
+index 39478cfbe0f1..09c8c58feb78 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -126,6 +126,8 @@ struct mtk_iommu_domain {
+@@ -746,7 +746,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
  
- static const struct iommu_ops mtk_iommu_ops;
- 
-+static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
-+
- /*
-  * In M4U 4GB mode, the physical address is remapped as below:
-  *
-@@ -381,12 +383,16 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- {
- 	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	int ret;
- 
- 	if (!data)
- 		return -ENODEV;
- 
- 	/* Update the pgtable base address register of the M4U HW */
- 	if (!data->m4u_dom) {
-+		ret = mtk_iommu_hw_init(data);
-+		if (ret)
-+			return ret;
- 		data->m4u_dom = dom;
- 		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
- 		       data->base + REG_MMU_PT_BASE_ADDR);
-@@ -730,10 +736,6 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, data);
- 
--	ret = mtk_iommu_hw_init(data);
--	if (ret)
--		return ret;
--
- 	ret = iommu_device_sysfs_add(&data->iommu, dev, NULL,
- 				     "mtk-iommu.%pa", &ioaddr);
+ 	ret = iommu_device_register(&data->iommu);
  	if (ret)
+-		return ret;
++		goto out_sysfs_remove;
+ 
+ 	spin_lock_init(&data->tlb_lock);
+ 	list_add_tail(&data->list, &m4ulist);
+@@ -754,7 +754,16 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 	if (!iommu_present(&platform_bus_type))
+ 		bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
+ 
+-	return component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
++	ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
++	if (ret)
++		goto out_dev_unreg;
++	return ret;
++
++out_dev_unreg:
++	iommu_device_unregister(&data->iommu);
++out_sysfs_remove:
++	iommu_device_sysfs_remove(&data->iommu);
++	return ret;
+ }
+ 
+ static int mtk_iommu_remove(struct platform_device *pdev)
 -- 
 2.18.0
 _______________________________________________
