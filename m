@@ -7,79 +7,80 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C70B1C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 12:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7013C4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 12:03:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4914923B6C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 12:03:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4914923B6C
+	by mail.kernel.org (Postfix) with ESMTPS id 59CFD23B77
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 12:03:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59CFD23B77
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9Pxqz0IWSWFLSq6rN8pzMqFYVdmqp/CIt88K5SeGcGQ=; b=cbHgUG+TU32U1Ap7EcTEUTx5wS
-	2oe0DAzFGPRnZcqg2VOmckJtX9JeOvk2ANHte9rcTXqN7VQe4cg4kP6UQdbVsJ5X/hw7ZFfqY1IDy
-	c2tcLIywKZvMGQONayFu9rKmAdowJP8VkDRPx4NKFWK1PWEDAYWduesdRTo5ebOccFmiejmoJglsc
-	q56Q8Ij9SPXLRY13/zPNtz6xV9ZezHWeNrV8p6mcL74gxkw5feMV054kpdzQaHiM16qJ2jc1tRzHC
-	9F2KE/OnjAf2aFzRD03jE+if1I/ffNEKMyneFYAd7IIR30iUFqZSto31Z6hIBQdBuMdNNpSZBa64s
-	RqvRZLsA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4ffLJ9FzXr/bXCn7Un7T6APrEv2FOkvUizm+rJiueks=; b=U8mNnnxQzjeR5WR3hDPnXNZUk
+	HDVbq1AwNYqp/2zW/sI8q7lpGtHaAUCh+sysHp57TTX01OGRTkVsBIL7nVBcPWjf0uLHWaj4M1F9z
+	v3+wx62+fWQStrIBofdmQOB9x3iZfN2O2e4iTQ7H71l9bU7vt6rxAv6R/pHS88fiFbz+Q15MSJc58
+	RxCMO4KvLLf3ux/k7NQSNnywPh1lxCdqEulneVBo41nlyFIWrvXuT9R5ANKfI59e9shU3P5lZWtoi
+	yncA6Gfh1nAawklubOvEnOZGp/dtAPm+xabJhd7Cn0e5D80mL03SNWFPJGbYJlFA864rUBjmmE/mO
+	G0QI0NrYA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmyBv-0003cY-51; Wed, 09 Dec 2020 12:03:31 +0000
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+	id 1kmyBz-0003eG-Sp; Wed, 09 Dec 2020 12:03:35 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmyBr-0003b0-TQ
- for linux-mediatek@lists.infradead.org; Wed, 09 Dec 2020 12:03:29 +0000
-Received: by mail-ej1-x642.google.com with SMTP id ce23so1739423ejb.8
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Dec 2020 04:03:26 -0800 (PST)
+ id 1kmyBs-0003b9-IA
+ for linux-mediatek@lists.infradead.org; Wed, 09 Dec 2020 12:03:30 +0000
+Received: by mail-ed1-x544.google.com with SMTP id cm17so1266974edb.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Dec 2020 04:03:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=YgPOLZ0cXqann9wHWJGTtja1w+Jeu8r8r8uXUCZYKm4=;
- b=hZ2upUa3r7Gb5ZtyGDeoOvFsaXJFdH5Oq7uEsm+viOimuvfSwGP050A5c76vT9BDRH
- gDz3ATdS4jub5Tdh/3EaxWSCt5wsoum7GIo0Sq796fkstnSuGgAJscJkEVVwGO03OQM0
- ALgCi5uF50iYeZGeXXSkNtYsY+jkTkB6gmirp3rclmqefJahtesZ+0KqxlOQt7B66hpj
- x7nTBFP0v20WEriC4IscwzWFHi2wr3Rrj12Zz6ffLe6TJyjZuodt56D8qyn+bS5qyPT8
- XMyVW+mtTrQniy6VmUHZ7Vme7uxJIlZXTLn9trdNLkqPCMvnoYgau4TksvW5+0bXjj74
- lsTw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=jhTebHHB1yKIF7cssKlkVjUKOAUnXogHo6Up4bbqoQg=;
+ b=0hyznWuWZqKpynL5fX4S7bsgyztK44TwnE8qPYF8Memni4zOyv2rFO2SNKtLh7V15T
+ PcUw5jQKJ1/acoYMnFM8pwd9K6M0M7DjeoRp9beNN953P2wKibwzg/jPuljhmk+zUY4P
+ RiP0w78x9veBsdW1Ppfz1Zg7hu3EDKZ83OYZvXBjVANwOVdcWpF5Uqwy/44qSx32wr1+
+ 2cXhJ2LnjHoRwq52o2FLe2TzbAkuhha+3EVhi1x8zg9S9i90k5oDoyc3BH3zlRiv67Bp
+ wYy/kZfSRKYpGNbssaWSY1ch6WVVRhf7AcP5GvmcqhXtjZB4XVd2RP42roXYatZPdCr6
+ +9lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=YgPOLZ0cXqann9wHWJGTtja1w+Jeu8r8r8uXUCZYKm4=;
- b=nPwzaCJsmg2AyE/csKYLCxhlEkCH1jvapnNzMMXr6bxGZClIfNxY5zj9dlQ2//ZbH7
- 58iqrDgmccG2foTl/iejZMq4XaSYORWwdrHl/VlfEpcRhv6d4s8ynC9l9n0FRVBEzCfJ
- dbldrq3dJVCBZtlSVmPR/1jCE6O256fdJfkg/DU3dDzFscX6IMZxrzZ4CeldmWkGC5IZ
- lc19ak1iZP0tSaBgSk1GGpUxBfYbAPWHo3jclmiL6kvKK/ABwv2yS14b9X9iRknAExQ+
- b9bCcBOKesU5dy3tmnd7D/egQSEh1UVT4a5lutcp6lz91/gIKMdbK9TVRJtZJcdiUMZU
- FIRw==
-X-Gm-Message-State: AOAM5305b6crfyzpV0zav+SKkTD52mSwrWzG2oTkyyJFVSgocJWWnDCL
- 95boNOjhKn9AN0d8tPqCoz5p2Q==
-X-Google-Smtp-Source: ABdhPJzGFFxI90GB1VyHjbguUQ1b5/vjj2GWXp5X7Z2DX7SeMMR4nVLPUMgQsmiSkjCxP8XzYj0DJQ==
-X-Received: by 2002:a17:906:1542:: with SMTP id
- c2mr1720748ejd.382.1607515405909; 
- Wed, 09 Dec 2020 04:03:25 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=jhTebHHB1yKIF7cssKlkVjUKOAUnXogHo6Up4bbqoQg=;
+ b=MrDBM3oDdEB7d5LKmCCPmFfWPmwH8X/aaTyzBfOJVM9FD0AARgTt8wFNlfSse1FFeZ
+ bQC7A8ING7VBlRnWKIPnQCSE3/0jQdLIF50dioaqm8cPDeV4TU/KWEj1J+o8/Vsjf5tG
+ tPMYI3oPfOqyskggH2VNSTNFR7AH/w20eFK69exAFJ4I9Gl0iv2RPlDLYKfJiAXbjJlA
+ xz77Z2mCKuNj5mHk8kQcTau72dG2W5loJK1LtZurIX/iFjPpbod/9BE1+Axwsq0M2RV9
+ vStMf89he/Ncom46f2BmKGiSHl3e6OXBQ2/9xpRWemwrYlk2CxWGOtZXz0LKyz9ZGGE/
+ RStw==
+X-Gm-Message-State: AOAM531IKXtXOGBdwDE62w1u4IXaRRo9QTwff6Z3maXtizQPf8pPI9+H
+ RPBCOzNtdc1m2ssQEzMikTDqMg==
+X-Google-Smtp-Source: ABdhPJwRn7OBn73W+KHDERa+We/tGcp650qVwbLdX3kts9uoyWDBr0xqdxk8aNcWE436bWZmB40b0Q==
+X-Received: by 2002:a50:9ee6:: with SMTP id a93mr1692284edf.174.1607515407524; 
+ Wed, 09 Dec 2020 04:03:27 -0800 (PST)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id c23sm1426548eds.88.2020.12.09.04.03.24
+ by smtp.gmail.com with ESMTPSA id c23sm1426548eds.88.2020.12.09.04.03.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Dec 2020 04:03:24 -0800 (PST)
+ Wed, 09 Dec 2020 04:03:26 -0800 (PST)
 From: Fabien Parent <fparent@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 1/2] arm64: dts: mediatek: mt8183: add pwm node
-Date: Wed,  9 Dec 2020 13:03:20 +0100
-Message-Id: <20201209120322.137610-1-fparent@baylibre.com>
+Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8183-evb: add PWM support
+Date: Wed,  9 Dec 2020 13:03:21 +0100
+Message-Id: <20201209120322.137610-2-fparent@baylibre.com>
 X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201209120322.137610-1-fparent@baylibre.com>
+References: <20201209120322.137610-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201209_070327_994666_25295D70 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20201209_070328_630074_E1B70703 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,41 +100,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8183 SoC has 4 PWMs. Add the pwm node in order to support them.
+Enable the pwm driver and set the pinctrl for PWM A line.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
 
-V2: rename pwm0 to pwm1 since disp-pwm has been merged in v5.11 as pwm0
+V2:
+	* rename pwm0 to pwm1 since disp-pwm has been merged in v5.11 as pwm0
+	* rename the pio node and labels to match the coding standard of this dts
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 5b782a4769e7..a0004bd9f9c2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -667,6 +667,20 @@ pwm0: pwm@1100e000 {
- 			clock-names = "main", "mm";
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+index cba2d8933e79..3249c959f76f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+@@ -344,6 +344,12 @@ pins_spi{
+ 			bias-disable;
  		};
- 
-+		pwm1: pwm@11006000 {
-+			compatible = "mediatek,mt8183-pwm";
-+			reg = <0 0x11006000 0 0x1000>;
-+			#pwm-cells = <2>;
-+			clocks = <&infracfg CLK_INFRA_PWM>,
-+				 <&infracfg CLK_INFRA_PWM_HCLK>,
-+				 <&infracfg CLK_INFRA_PWM1>,
-+				 <&infracfg CLK_INFRA_PWM2>,
-+				 <&infracfg CLK_INFRA_PWM3>,
-+				 <&infracfg CLK_INFRA_PWM4>;
-+			clock-names = "top", "main", "pwm1", "pwm2", "pwm3",
-+				      "pwm4";
-+		};
+ 	};
 +
- 		i2c3: i2c@1100f000 {
- 			compatible = "mediatek,mt8183-i2c";
- 			reg = <0 0x1100f000 0 0x1000>,
++	pwm_pins_1: pwm1 {
++		pins_pwm {
++			pinmux = <PINMUX_GPIO90__FUNC_PWM_A>;
++		};
++	};
+ };
+ 
+ &spi0 {
+@@ -392,3 +398,9 @@ &spi5 {
+ &uart0 {
+ 	status = "okay";
+ };
++
++&pwm1 {
++	status = "okay";
++	pinctrl-0 = <&pwm_pins_1>;
++	pinctrl-names = "default";
++};
 -- 
 2.29.2
 
