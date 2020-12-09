@@ -2,76 +2,97 @@ Return-Path: <SRS0=7tkd=FN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A255C4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 01:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 099BBC4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 02:54:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A6248239FD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 01:09:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6248239FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A18C2227C3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Dec 2020 02:53:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A18C2227C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:References:Message-ID:
+	From:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zMyFbVeM9wZAnOfPksum5zXMqDhmNVo4G5lp98zasG4=; b=PhcCL3WZETVdUfzThc7b6xpfz
-	AfO/59mdiWz6s1AgfONpTFRtTUGjL0n1wZRP/vqSLKRwsLtRb2xe69AL7z8MTZUnUZHnQ6EQ3N4Ne
-	SkEOOnAhwqVyhST8MvpAgE2ti3IF8U/w/Lzk0fyh4wjTiRNuyK6IrP0n3yLvokIabLbvaQ2xTA+Mp
-	3H55cPdwBDZF+Lt5S1S0pYyVbFMfpWBH8CEoWOlBfv6mcvwAmiVK+g8XgwEq6jk3gUesFVRYvJsQi
-	PlPEwnZvBVBe90ymDixo0X1pxfjen2XRUCZh8iqLjijcf2//+y7gvZi7KLXDNFzpRDnhfpQf0e+aH
-	ll5vPfftQ==;
+	 bh=16SwB3rSRhXyJIiH2VkWUmupspeP0M4xy1qH66PPjow=; b=hNHSZ9refVXmkvKv1iL8k/HJ1
+	HD8v0kCReM98hbRPUU5PvGT3N4+mbMCnffALebmpCXxVl17kvVXeU7dUGg/lxW+6PYTbYhNzkQHxu
+	usS2nuZps3G4RpYno2b6cx2NJnRg8GfI38433WMm1XhbLj+JTyIIlAstCrT8vWHAhGuUco+wJecRv
+	7Jn0E3XrX7ZaR0W2R1tlfB6vWv19GBlQN54QV3qcR+SFEyIteTAtzOxC+kGkB7FJjshV6lpnIoZfb
+	HdSEHFhPlQYyNWGsITRqYdv88+hfsZLRBbejj+9yOm3HrysuQDqlE79M0DM7oMw2UahbmDr2o0NUg
+	1osAqhcSQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmnzH-000218-QP; Wed, 09 Dec 2020 01:09:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kmpby-0000Dj-NV; Wed, 09 Dec 2020 02:53:50 +0000
+Received: from aserp2130.oracle.com ([141.146.126.79])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmnzF-00020Y-2f; Wed, 09 Dec 2020 01:09:46 +0000
-X-UUID: e1c38be16e884bd9862d5eefc92eb7d3-20201208
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=3KvKaE23ExOsMFcllhdIYY82q3GKWl+g+3RXbSqg8X0=; 
- b=r8w9Q7f58s5+h5YfJMC33Zbl5xWtpoYaYOmdLWOMHOQN9rD9HaJH65i5zmIFrfWH/0hpShd8IH4f0I6SgTAIuUJ+zT8NiVH235kyUNkICpjIDuahUXQlc9PrKsan7p3OCGVz1Z7Rip23Ejy7jzNHpQaaKRIuRU42qCG0+zUWvtI=;
-X-UUID: e1c38be16e884bd9862d5eefc92eb7d3-20201208
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1546860001; Tue, 08 Dec 2020 17:09:40 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Dec 2020 17:09:37 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Dec 2020 09:09:26 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 9 Dec 2020 09:09:26 +0800
-Message-ID: <1607476170.3580.29.camel@mtkswgap22>
-Subject: Re: [PATCH v2 1/2] scsi: ufs: Re-enable WriteBooster after device
- reset
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: Bean Huo <huobean@gmail.com>
-Date: Wed, 9 Dec 2020 09:09:30 +0800
-In-Reply-To: <970af8b1abf565184bf37c3c055bf42ad760201a.camel@gmail.com>
-References: <20201208135635.15326-1-stanley.chu@mediatek.com>
- <20201208135635.15326-2-stanley.chu@mediatek.com>
- <970af8b1abf565184bf37c3c055bf42ad760201a.camel@gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kmpbw-0000Cs-1r; Wed, 09 Dec 2020 02:53:48 +0000
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B92ZLbv193227;
+ Wed, 9 Dec 2020 02:43:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : mime-version :
+ content-type; s=corp-2020-01-29;
+ bh=mVMv5/81Agpr6XuQ1R6ctAlZm6JEeHFZTjeufEXtpgk=;
+ b=OR05Dk1edGfx1vgrVzv5ff6FouXdc09xLx3/vp/WoQAJAMAeJqnzKKUrjMypuerqI69o
+ WfVoTHgwWizHMJZJk8YNO9v6IZTjgSlOCwfFJC2Eyfn9CBmNwOyEJNQRKlO/XzsfEUVo
+ Ifz9PKE/mtklWN5C+jPy/W2EgimXwGYV+aYdv/EGejj1WXxypIUhs7I8EI3L9n4T9Pgz
+ trx/v/MQP8Jvd/wkVL5iyEQvZ7qjvqNcLogdMkkYApCDarGICMO6AJJv06J+qL9YRidq
+ 8B5qPForc1uzpStwboLmMp5dupirp29MsZ0Yag8tMqQMNCdbpuXRb7OT0ttx9ghtTwAS LQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2130.oracle.com with ESMTP id 357yqbx2cp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 09 Dec 2020 02:43:26 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B92Zngi160763;
+ Wed, 9 Dec 2020 02:43:26 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 358m4ytww4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 09 Dec 2020 02:43:26 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0B92hLmL000768;
+ Wed, 9 Dec 2020 02:43:22 GMT
+Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 08 Dec 2020 18:43:21 -0800
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 0/2] scsi: ufs: Allow regulators being always on
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1tusvsnr5.fsf@ca-mkp.ca.oracle.com>
+References: <20201207054955.24366-1-stanley.chu@mediatek.com>
+Date: Tue, 08 Dec 2020 21:43:17 -0500
+In-Reply-To: <20201207054955.24366-1-stanley.chu@mediatek.com> (Stanley Chu's
+ message of "Mon, 7 Dec 2020 13:49:53 +0800")
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2F6065CCECF27701609747200FC9A5B0DE2F5181C9B2FFF1E34952CB6403D5522000:8
-X-MTK: N
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9829
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ spamscore=0 suspectscore=1
+ bulkscore=0 malwarescore=0 phishscore=0 adultscore=0 mlxlogscore=926
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2012090015
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9829
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
+ mlxlogscore=940
+ clxscore=1015 malwarescore=0 bulkscore=0 phishscore=0 adultscore=0
+ spamscore=0 priorityscore=1501 mlxscore=0 lowpriorityscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2012090015
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201208_200945_264050_0BEBFFEB 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20201208_215348_243753_41C2E141 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,58 +104,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, cang@codeaurora.org,
- alim.akhtar@samsung.com, beanhuo@micron.com, bvanassche@acm.org,
- linux-scsi@vger.kernel.org, peter.wang@mediatek.com, cc.chou@mediatek.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- nguyenb@codeaurora.org, avri.altman@wdc.com,
- linux-mediatek@lists.infradead.org, jiajie.hao@mediatek.com,
- chaotian.jing@mediatek.com, linux-arm-kernel@lists.infradead.org,
- martin.petersen@oracle.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, alice.chao@mediatek.com, asutoshd@codeaurora.org
+Cc: jiajie.hao@mediatek.com, alice.chao@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, andy.teng@mediatek.com,
+ jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cc.chou@mediatek.com, avri.altman@wdc.com,
+ cang@codeaurora.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ asutoshd@codeaurora.org, chaotian.jing@mediatek.com, bvanassche@acm.org,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-12-08 at 15:13 +0100, Bean Huo wrote:
-> On Tue, 2020-12-08 at 21:56 +0800, Stanley Chu wrote:
-> > index 08c8a591e6b0..36d367eb8139 100644
-> > --- a/drivers/scsi/ufs/ufshcd.h
-> > +++ b/drivers/scsi/ufs/ufshcd.h
-> > @@ -1221,8 +1221,13 @@ static inline void
-> > ufshcd_vops_device_reset(struct ufs_hba *hba)
-> >         if (hba->vops && hba->vops->device_reset) {
-> >                 int err = hba->vops->device_reset(hba);
-> >  
-> > -               if (!err)
-> > +               if (!err) {
-> >                         ufshcd_set_ufs_dev_active(hba);
-> > +                       if (ufshcd_is_wb_allowed(hba)) {
-> > +                               hba->wb_enabled = false;
-> > +                               hba->wb_buf_flush_enabled = false;
-> > +                       }
-> > +               }
-> 
-> Stanley,
-> how do you think group wb_buf_flush_enabled and wb_enabled to the
-> dev_info, since they are UFS device attributes. means they are set only
-> when UFS device flags being set.
 
-Hi Bean,
+Stanley,
 
-Thanks for your review.
+> This series allow vendors to keep the regulator always-on, and provide
+> an implementation on MediaTek UFS platforms.
 
-Yes, I agreed that wb related variables is a mess currently. I would
-like to clean them up once I have time. Feel free to post your patch if
-you want to take it up : )
+Applied to 5.11/scsi-staging, thanks!
 
-Thanks,
-Stanley Chu
-
-> 
-> Reviewed-by: Bean Huo <beanhuo@micron.com>
-> 
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
