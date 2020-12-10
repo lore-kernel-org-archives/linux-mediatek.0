@@ -2,55 +2,74 @@ Return-Path: <SRS0=Sq/6=FO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D0C6C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 18:19:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41910C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 18:52:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 38D2123406
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 18:19:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38D2123406
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 031EF23C18
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 18:52:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 031EF23C18
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AzM3oVjqhP/Aciowvxsh2jS0saxjCEiMGcUmR7jk5s0=; b=FqZR3TkhjzAJKLNGUgDUS5QYxP
-	5UNF9nqLI43Chw9g4+0RvlKaB2ZgWCmKsMaAJ5iJ8ZazlyAunscQQlyXUL5O6ORKasSYvQrwLnNld
-	+eJ+QY6CKY6wtE/souZ0oAylpwNbtSEQI/OdpgOHs+1ZLiHAn5tfwqSqb17+7D9ETrFZ/vWxnDyE5
-	PK4GYpj+zbO7kTfF9F48u0PhiiMH3MtuE13mXRoRwrKOFn1+31leiFmdW8O/6+1k8qnQnyTjf62pt
-	UX3z8eH6DV1fOhUwvyX/UHW76hZ4DazO66q3soktyULLLn2sG4BXClljr7AeiSQKCNZxwtWb2zpt/
-	0kWFeYNw==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0/Y4h2ll0W0ELroWxtFLTp3HlpSX7R1L7yA7QnYEmZc=; b=YDc80LkIcXWZJndQipAEd+cLs
+	gJTkqPUO31bykrRUcMkK7TxesxRsNOzG/1PIn6z6ykQ75xHLESo0YSfrZxC/vkSrufQQmGEs4yCDO
+	hLma0Xu0MRg3fW/2tu5QqbzXryYPCTGsg30QQmI90PbjoIIEY+T5I9RXN8uUwBH+sgPRpiOdkk6JV
+	3V3LevDvOYB20pdDG9TZKPcT2Gy8P1YpwYGxsBAn+ZcaJXfxyVYHC1fWpz2cNSOD1AXUDIJBicNZX
+	vDpiBRFDPubgCKPWBVs7Y4EhkK2gzjbikG8xiWBF5Okk/7oePKD/CCf3Ofnkuf8aP0W1VFe0xQjJe
+	zrjtZ1PkQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knQXO-00022U-Va; Thu, 10 Dec 2020 18:19:35 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1knR2h-0004YR-KP; Thu, 10 Dec 2020 18:51:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knOX0-0001bC-NG
- for linux-mediatek@lists.infradead.org; Thu, 10 Dec 2020 16:11:06 +0000
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Authentication-Results: mail.kernel.org;
- dkim=permerror (bad message/signature format)
-To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v2 01/12] drm/mediatek: Get CMDQ client register for all ddp
- component
-Date: Fri, 11 Dec 2020 00:10:39 +0800
-Message-Id: <20201210161050.8460-2-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20201210161050.8460-1-chunkuang.hu@kernel.org>
-References: <20201210161050.8460-1-chunkuang.hu@kernel.org>
+ id 1knR2e-0004XT-Ny
+ for linux-mediatek@lists.infradead.org; Thu, 10 Dec 2020 18:51:53 +0000
+X-UUID: 4aa74543d4554f9a9231dcaa081d2da8-20201210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=q6eT0ZkgY2unxmWA7+pVGynFNXveo5Gc6IpaTlFCd6E=; 
+ b=uNBDWqhdANCK8Ff3uKoYP4UJ320/Xdvzs1LkcJT7tRa8OzS0F7bAMpx8faHthu7/zEo0r+XqMeBrY64xtlWlzI5MNZl/kHldwdieNGk38HaAJee/zep6haSWYgiPZuDTn/o+B/03SGOQCgMFmVaBh4UFwvVutiTQx/+UqiloUuA=;
+X-UUID: 4aa74543d4554f9a9231dcaa081d2da8-20201210
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 233677096; Thu, 10 Dec 2020 10:51:45 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Dec 2020 10:51:43 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Dec 2020 02:51:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 11 Dec 2020 02:51:41 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH v3 2/2] mt76: mt7615: reset token when mac_reset happens
+Date: Fri, 11 Dec 2020 02:51:38 +0800
+Message-ID: <7591bc5b4de099713d3bfb3bbf5946bca8a9ff71.1607578601.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <69d62cd40ae52e0ddd5b26ba96bc7480385585a5.1607578601.git.ryder.lee@mediatek.com>
+References: <69d62cd40ae52e0ddd5b26ba96bc7480385585a5.1607578601.git.ryder.lee@mediatek.com>
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201210_111102_948174_36D58510 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20201210_135152_920018_CDE49CA3 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,74 +81,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
-MIME-Version: 1.0
+Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Only OVL, RDMA,and WDMA get CMDQ client register information,
-but all ddp component should work with CMDQ, so get this
-information for all ddp component.
+Reset token in mt7615_mac_reset_work() to avoid possible leakege.
 
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 29 +++++++++++----------
- 1 file changed, 15 insertions(+), 14 deletions(-)
+change since v3 - fix build error
+change since v2 - rebase on top of latest codebase
+---
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 19 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  2 +-
+ .../wireless/mediatek/mt76/mt7615/pci_init.c  | 12 +-----------
+ 3 files changed, 21 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 3064eac1a750..cab53431ceec 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -506,6 +506,21 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 	if (IS_ERR(comp->clk))
- 		return PTR_ERR(comp->clk);
- 
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	if (of_address_to_resource(node, 0, &res) != 0) {
-+		dev_err(dev, "Missing reg in %s node\n", node->full_name);
-+		put_device(&larb_pdev->dev);
-+		return -EINVAL;
-+	}
-+	comp->regs_pa = res.start;
-+
-+	ret = cmdq_dev_get_client_reg(dev, &cmdq_reg, 0);
-+	if (ret)
-+		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
-+	else
-+		comp->subsys = cmdq_reg.subsys;
-+#endif
-+
- 	/* Only DMA capable components need the LARB property */
- 	comp->larb_dev = NULL;
- 	if (type != MTK_DISP_OVL &&
-@@ -531,20 +546,6 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 
- 	comp->larb_dev = &larb_pdev->dev;
- 
--#if IS_REACHABLE(CONFIG_MTK_CMDQ)
--	if (of_address_to_resource(node, 0, &res) != 0) {
--		dev_err(dev, "Missing reg in %s node\n", node->full_name);
--		put_device(&larb_pdev->dev);
--		return -EINVAL;
--	}
--	comp->regs_pa = res.start;
--
--	ret = cmdq_dev_get_client_reg(dev, &cmdq_reg, 0);
--	if (ret)
--		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
--	else
--		comp->subsys = cmdq_reg.subsys;
--#endif
- 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 0f360be0b885..1b4986dd3baa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -2058,6 +2058,22 @@ void mt7615_dma_reset(struct mt7615_dev *dev)
  }
+ EXPORT_SYMBOL_GPL(mt7615_dma_reset);
+ 
++void mt7615_tx_token_put(struct mt7615_dev *dev)
++{
++	struct mt76_txwi_cache *txwi;
++	int id;
++
++	spin_lock_bh(&dev->token_lock);
++	idr_for_each_entry(&dev->token, txwi, id) {
++		mt7615_txp_skb_unmap(&dev->mt76, txwi);
++		if (txwi->skb)
++			dev_kfree_skb_any(txwi->skb);
++		mt76_put_txwi(&dev->mt76, txwi);
++	}
++	spin_unlock_bh(&dev->token_lock);
++	idr_destroy(&dev->token);
++}
++
+ void mt7615_mac_reset_work(struct work_struct *work)
+ {
+ 	struct mt7615_phy *phy2;
+@@ -2101,6 +2117,9 @@ void mt7615_mac_reset_work(struct work_struct *work)
+ 
+ 	mt76_wr(dev, MT_MCU_INT_EVENT, MT_MCU_INT_EVENT_PDMA_STOPPED);
+ 
++	mt7615_tx_token_put(dev);
++	idr_init(&dev->token);
++
+ 	if (mt7615_wait_reset_state(dev, MT_MCU_CMD_RESET_DONE)) {
+ 		mt7615_dma_reset(dev);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 99b8abdbb08f..d697ff2ea56e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -583,7 +583,7 @@ int mt7615_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 			  struct mt76_tx_info *tx_info);
+ 
+ void mt7615_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue_entry *e);
+-
++void mt7615_tx_token_put(struct mt7615_dev *dev);
+ void mt7615_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 			 struct sk_buff *skb);
+ void mt7615_sta_ps(struct mt76_dev *mdev, struct ieee80211_sta *sta, bool ps);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
+index 27fcb1374685..58a0ec1bf8d7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
+@@ -160,9 +160,7 @@ int mt7615_register_device(struct mt7615_dev *dev)
+ 
+ void mt7615_unregister_device(struct mt7615_dev *dev)
+ {
+-	struct mt76_txwi_cache *txwi;
+ 	bool mcu_running;
+-	int id;
+ 
+ 	mcu_running = mt7615_wait_for_mcu_init(dev);
+ 
+@@ -172,15 +170,7 @@ void mt7615_unregister_device(struct mt7615_dev *dev)
+ 		mt7615_mcu_exit(dev);
+ 	mt7615_dma_cleanup(dev);
+ 
+-	spin_lock_bh(&dev->token_lock);
+-	idr_for_each_entry(&dev->token, txwi, id) {
+-		mt7615_txp_skb_unmap(&dev->mt76, txwi);
+-		if (txwi->skb)
+-			dev_kfree_skb_any(txwi->skb);
+-		mt76_put_txwi(&dev->mt76, txwi);
+-	}
+-	spin_unlock_bh(&dev->token_lock);
+-	idr_destroy(&dev->token);
++	mt7615_tx_token_put(dev);
+ 
+ 	tasklet_disable(&dev->irq_tasklet);
  
 -- 
-2.17.1
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
