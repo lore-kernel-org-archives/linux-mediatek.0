@@ -2,53 +2,84 @@ Return-Path: <SRS0=Sq/6=FO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27178C4361B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 10:32:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1F48C4361B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 10:48:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 851A923B31
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 10:32:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 851A923B31
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baikalelectronics.ru
+	by mail.kernel.org (Postfix) with ESMTPS id 5213F23D6A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 10:48:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5213F23D6A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jErtTgyo+Q9WZJXpq+nGUYg/nIkuld1sDaZq2A65rrc=; b=QC3eqnFuD4pr+qHnCwbXgjhrYh
-	NLORJMvwjrbD/uYa/QMfB5iyoayFlw2tWQcfJSDuOT/UF54UU+Ce1I1Vr+qVqt198L9IDI0jEt7NW
-	Qw6DBfiJ5tDQ5H0NmT3Y6l/5v+/PSQaeh6le4QppBW0eZgrZ0XLHgVSWS7g39KO48V0VjEzXE2Jq6
-	crybJtzGVyhXo2Wy3N77kfI/HeQTwcO5vcey7Qhdk99cqbSFGqKR1uTNpEuQghI9YQgbKlNZe1rws
-	GbCQmQFphFg9FZodsauohwt9ApRQCe+R+7FPlST7J+YKttg5UKBAuCAmw9uHTTrUHcolSNkzOP7bm
-	7mK7oIow==;
+	bh=tjkv1tunKml7zwBk/2ZqMIOt5TePKQQW9O+Xev1Uh7U=; b=xw06ygcXUb94+rzG2pPAzzar2u
+	Ql2ejXCzuNj59LURMfRiakdgI3XnJ1PdG3FQIKaIDSYKQB85vvLttyHYWfr8tagpYWbkTt/LBOlTV
+	WyCvBjMvMcc3dllt4nhaToce/VMvctmzpDY/paKUqYgI8encaV9IoTHa09myJkKlmfbXeNIJ7GeK3
+	X0XdTSDL/jAtq6G4+stA4zBmG02ubpFm2uCzrbI8uUjKGTSIHLpqRubAVHtcwWzjDKK2PWq+GEAFF
+	IfOjQFPJbRJUDFLOBJemB12cDuNr1Y79AhEO9Tf53hggIJdr17P11AFRKef3WfkGGSI3v50kJAVRl
+	uvdpqKFg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knJF6-0007Zf-Mh; Thu, 10 Dec 2020 10:32:12 +0000
-Received: from mail.baikalelectronics.com ([87.245.175.226]
- helo=mail.baikalelectronics.ru)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knI5R-00088Z-K0; Thu, 10 Dec 2020 09:18:29 +0000
-From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
-To: Felipe Balbi <balbi@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH RESEND v4 00/10] dt-bindings: usb: Harmonize
- xHCI/EHCI/OHCI/DWC3 nodes name
-Date: Thu, 10 Dec 2020 12:17:45 +0300
-Message-ID: <20201210091756.18057-1-Sergey.Semin@baikalelectronics.ru>
+	id 1knJUR-0002lx-Pd; Thu, 10 Dec 2020 10:48:04 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1knJUL-0002iK-Ee
+ for linux-mediatek@lists.infradead.org; Thu, 10 Dec 2020 10:47:58 +0000
+Received: by mail-pf1-x441.google.com with SMTP id 11so3679988pfu.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 10 Dec 2020 02:47:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/1CLF3jhgzuG8CXsCmdXZEYaITzNoEWk6wc5CrYfURY=;
+ b=MYtZnMZka/yCtbeqjEtHPQMPRp1pS+LV5yBBJOSv5CxwHvamurnZGghYtmeuTU8F61
+ sDFbaTQ5Vh11gbpI41KxB+fM6OZ66qRVUMM00yzvye7KdgyP9tov+Pi9eAdXP0k5Qz7R
+ uSrEc6Xw6liW70X0OkD8dzvMZDS8DkyvuyhmY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/1CLF3jhgzuG8CXsCmdXZEYaITzNoEWk6wc5CrYfURY=;
+ b=VR7gFwVtb+NeRbYtYUiho0TsO1JpWJSFsjCZaFn3LS8BkmAYffRcYOVy0xUAxEm7ra
+ PDUc25d0Z0kMyd+e/HWCBRpAVwm+Ig9kUDy3HFMjRnOXZqQy7qpQwHkAGdrtkuANxv34
+ kR/dClIxytjfUaXa3pCjvJpwdCv7SnoNix64+xaf1ysN5YCzR880tgmbBlB34hfOGUXe
+ 8TMZP1vP7n3Z2Jytax38IXbL+YnHOmV6Mf4huelWVIvxR6KMbXIyTFSWl7ZaQ9PIvK2Z
+ Aazrpm7wej9THnMqSo+np8ahOmg+6NwqfRGNCcJBmwFgG92Pdqnjt+2kJNFgeWMyAjCi
+ pQlQ==
+X-Gm-Message-State: AOAM5310ifl0mPz4eOA3AWd5CaMgITTdSi1ShL5hhsuT/YLDruSkc7th
+ T3/Ra2FuKdBhdD3HdwpEEWCB+0qhnj+mnA==
+X-Google-Smtp-Source: ABdhPJz1UOPyHnOnpgetFP3LmdV2keXwZM75/Y/XQxXs0IUr220E0wzUZTDhvJvtJum/Y71jRrXerg==
+X-Received: by 2002:a62:d142:0:b029:19e:6b61:7f80 with SMTP id
+ t2-20020a62d1420000b029019e6b617f80mr6244596pfl.9.1607597272744; 
+ Thu, 10 Dec 2020 02:47:52 -0800 (PST)
+Received: from ikjn-p920.tpe.corp.google.com
+ ([2401:fa00:1:b:f693:9fff:fef4:a8fc])
+ by smtp.gmail.com with ESMTPSA id y1sm6386658pff.17.2020.12.10.02.47.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Dec 2020 02:47:52 -0800 (PST)
+From: Ikjoon Jang <ikjn@chromium.org>
+To: linux-mediatek@lists.infradead.org,
+	linux-usb@vger.kernel.org
+Subject: [PATCH v2 0/3] Release allocated periodic bandwidth data from
+ reset_bandwidth()
+Date: Thu, 10 Dec 2020 18:47:44 +0800
+Message-Id: <20201210104747.3416781-1-ikjn@chromium.org>
+X-Mailer: git-send-email 2.29.2.576.ga3fc446d84-goog
 MIME-Version: 1.0
-X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201210_041809_980317_90BD61AE 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20201210_054757_506081_BA37D70D 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,201 +91,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Amelie Delaunay <amelie.delaunay@st.com>,
- Tony Lindgren <tony@atomide.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Patrice Chotard <patrice.chotard@st.com>, Paul Cercueil <paul@crapouillou.net>,
- Paul Mackerras <paulus@samba.org>, linux-stm32@st-md-mailman.stormreply.com,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Khuong Dinh <khuong@os.amperecomputing.com>, linux-samsung-soc@vger.kernel.org,
- Michael Ellerman <mpe@ellerman.id.au>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Rafal Milecki <zajec5@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>,
- Wei Xu <xuwei5@hisilicon.com>, Chen-Yu Tsai <wens@csie.org>,
- Andy Gross <agross@kernel.org>, bcm-kernel-feedback-list@broadcom.com,
- linux-arm-msm@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>,
- linux-omap@vger.kernel.org, Hauke Mehrtens <hauke@hauke-m.de>,
- linuxppc-dev@lists.ozlabs.org, Maxime Ripard <mripard@kernel.org>,
- Vladimir Zapolskiy <vz@mleia.com>, Jun Li <lijun.kernel@gmail.com>,
- Santosh Shilimkar <ssantosh@kernel.org>,
+Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Tianping Fang <tianping.fang@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-arm-kernel@lists.infradead.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, linux-mips@vger.kernel.org,
- Vineet Gupta <vgupta@synopsys.com>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, Serge Semin <fancer.lancer@gmail.com>,
- Li Yang <leoyang.li@nxp.com>, Serge Semin <Sergey.Semin@baikalelectronics.ru>,
- Kukjin Kim <kgene@kernel.org>, Benoit Cousson <bcousson@baylibre.com>,
- linux-mediatek@lists.infradead.org, Shawn Guo <shawnguo@kernel.org>
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As the subject states this series is an attempt to harmonize the xHCI,
-EHCI, OHCI and DWC USB3 DT nodes with the DT schema introduced in the
-framework of the patchset [1].
 
-Firstly as Krzysztof suggested we've deprecated a support of DWC USB3
-controllers with "synopsys,"-vendor prefix compatible string in favor of
-the ones with valid "snps,"-prefix. It's done in all the DTS files,
-which have been unfortunate to define such nodes.
+xhci-mtk releases allocated TT bandwidth data only when whole
+endpoints of a device are dropped as there're only {add|drop}_endpoint()
+hooks are defined. This patchset adds more hooks and releases all
+bandwidth data from reset_bandwidth() path, not drop_endpoint().
 
-Secondly we suggest to fix the snps,quirk-frame-length-adjustment property
-declaration in the Amlogic meson-g12-common.dtsi DTS file, since it has
-been erroneously declared as boolean while having uint32 type. Neil said
-it was ok to init that property with 0x20 value.
 
-Thirdly the main part of the patchset concern fixing the xHCI, EHCI/OHCI
-and DWC USB3 DT nodes name as in accordance with their DT schema the
-corresponding node name is suppose to comply with the Generic USB HCD DT
-schema, which requires the USB nodes to have the name acceptable by the
-regexp: "^usb(@.*)?". Such requirement had been applicable even before we
-introduced the new DT schema in [1], but as we can see it hasn't been
-strictly implemented for a lot the DTS files. Since DT schema is now
-available the automated DTS validation shall make sure that the rule isn't
-violated.
+Changes in v2:
+- fix a 0-day warning from unused variable
+- split one big patch into three patches
+- bugfix in hw flags
 
-Note most of these patches have been a part of the last three patches of
-[1]. But since there is no way to have them merged in in a combined
-manner, I had to move them to the dedicated series and split them up so to
-be accepted by the corresponding subsystem maintainers one-by-one.
+Ikjoon Jang (3):
+  usb: xhci-mtk: code cleanups in getting bandwidth table
+  usb: xhci-mtk: delay association of tt and ep
+  usb: xhci-mtk: fix unreleased bandwidth data
 
-[1] Link: https://lore.kernel.org/linux-usb/20201014101402.18271-1-Sergey.Semin@baikalelectronics.ru/
-Changelog v1:
-- As Krzysztof suggested I've created a script which checked whether the
-  node names had been also updated in all the depended dts files. As a
-  result I found two more files which should have been also modified:
-  arch/arc/boot/dts/{axc003.dtsi,axc003_idu.dtsi}
-- Correct the USB DWC3 nodes name found in
-  arch/arm64/boot/dts/apm/{apm-storm.dtsi,apm-shadowcat.dtsi} too.
-
-Link: https://lore.kernel.org/linux-usb/20201020115959.2658-1-Sergey.Semin@baikalelectronics.ru
-Changelog v2:
-- Drop the patch:
-  [PATCH 01/29] usb: dwc3: Discard synopsys,dwc3 compatibility string
-  and get back the one which marks the "synopsys,dwc3" compatible string
-  as deprecated into the DT schema related series.
-- Drop the patches:
-  [PATCH 03/29] arm: dts: am437x: Correct DWC USB3 compatible string
-  [PATCH 04/29] arm: dts: exynos: Correct DWC USB3 compatible string
-  [PATCH 07/29] arm: dts: bcm53x: Harmonize EHCI/OHCI DT nodes name
-  [PATCH 08/29] arm: dts: stm32: Harmonize EHCI/OHCI DT nodes name
-  [PATCH 16/29] arm: dts: bcm5301x: Harmonize xHCI DT nodes name
-  [PATCH 19/29] arm: dts: exynos: Harmonize DWC USB3 DT nodes name
-  [PATCH 21/29] arm: dts: ls1021a: Harmonize DWC USB3 DT nodes name
-  [PATCH 22/29] arm: dts: omap5: Harmonize DWC USB3 DT nodes name
-  [PATCH 24/29] arm64: dts: allwinner: h6: Harmonize DWC USB3 DT nodes name
-  [PATCH 26/29] arm64: dts: exynos: Harmonize DWC USB3 DT nodes name
-  [PATCH 27/29] arm64: dts: layerscape: Harmonize DWC USB3 DT nodes name
-  since they have been applied to the corresponding maintainers repos.
-- Fix drivers/usb/dwc3/dwc3-qcom.c to be looking for the "usb@"-prefixed
-  sub-node and falling back to the "dwc3@"-prefixed one on failure.
-
-Link: https://lore.kernel.org/linux-usb/20201111091552.15593-1-Sergey.Semin@baikalelectronics.ru
-Changelog v3:
-- Drop the patches:
-  [PATCH v2 04/18] arm: dts: hisi-x5hd2: Harmonize EHCI/OHCI DT nodes name
-  [PATCH v2 06/18] arm64: dts: hisi: Harmonize EHCI/OHCI DT nodes name
-  [PATCH v2 07/18] mips: dts: jz47x: Harmonize EHCI/OHCI DT nodes name
-  [PATCH v2 08/18] mips: dts: sead3: Harmonize EHCI/OHCI DT nodes name
-  [PATCH v2 09/18] mips: dts: ralink: mt7628a: Harmonize EHCI/OHCI DT nodes name
-  [PATCH v2 11/18] arm64: dts: marvell: cp11x: Harmonize xHCI DT nodes name
-  [PATCH v2 12/18] arm: dts: marvell: armada-375: Harmonize DWC USB3 DT nodes name
-  [PATCH v2 16/18] arm64: dts: hi3660: Harmonize DWC USB3 DT nodes name
-  since they have been applied to the corresponding maintainers repos.
-
-Link: https://lore.kernel.org/linux-usb/20201205155621.3045-1-Sergey.Semin@baikalelectronics.ru
-Changelog v4:
-- Just resend.
-
-Cc: Vineet Gupta <vgupta@synopsys.com>
-Cc: Rafal Milecki <zajec5@gmail.com>
-Cc: Wei Xu <xuwei5@hisilicon.com>
-Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-Cc: Michael Ellerman <mpe@ellerman.id.au>
-Cc: Jason Cooper <jason@lakedaemon.net>
-Cc: Santosh Shilimkar <ssantosh@kernel.org>
-Cc: Shawn Guo <shawnguo@kernel.org>
-Cc: Benoit Cousson <bcousson@baylibre.com>
-Cc: Patrice Chotard <patrice.chotard@st.com>
-Cc: Maxime Ripard <mripard@kernel.org>
-Cc: Khuong Dinh <khuong@os.amperecomputing.com>
-Cc: Andy Gross <agross@kernel.org>
-Cc: Alexey Brodkin <abrodkin@synopsys.com>
-Cc: Hauke Mehrtens <hauke@hauke-m.de>
-Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@st.com>
-Cc: Amelie Delaunay <amelie.delaunay@st.com>
-Cc: Vladimir Zapolskiy <vz@mleia.com>
-Cc: Paul Cercueil <paul@crapouillou.net>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-Cc: Paul Mackerras <paulus@samba.org>
-Cc: Andrew Lunn <andrew@lunn.ch>
-Cc: Gregory Clement <gregory.clement@bootlin.com>
-Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
-Cc: Kukjin Kim <kgene@kernel.org>
-Cc: Li Yang <leoyang.li@nxp.com>
-Cc: Tony Lindgren <tony@atomide.com>
-Cc: Chen-Yu Tsai <wens@csie.org>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>
-Cc: Jun Li <lijun.kernel@gmail.com>
-Cc: linux-snps-arc@lists.infradead.org
-Cc: bcm-kernel-feedback-list@broadcom.com
-Cc: linux-stm32@st-md-mailman.stormreply.com
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mips@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linuxppc-dev@lists.ozlabs.org
-Cc: linux-samsung-soc@vger.kernel.org
-Cc: linux-omap@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org
-Cc: devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-
-Serge Semin (10):
-  arm: dts: keystone: Correct DWC USB3 compatible string
-  arm64: dts: amlogic: meson-g12: Set FL-adj property value
-  arc: dts: Harmonize EHCI/OHCI DT nodes name
-  arm: dts: lpc18xx: Harmonize EHCI/OHCI DT nodes name
-  powerpc: dts: akebono: Harmonize EHCI/OHCI DT nodes name
-  arm: dts: keystone: Harmonize DWC USB3 DT nodes name
-  arm: dts: stih407-family: Harmonize DWC USB3 DT nodes name
-  arm64: dts: apm: Harmonize DWC USB3 DT nodes name
-  usb: dwc3: qcom: Detect DWC3 DT-nodes with "usb"-prefixed names
-  arm64: dts: qcom: Harmonize DWC USB3 DT nodes name
-
- arch/arc/boot/dts/axc003.dtsi                     | 4 ++--
- arch/arc/boot/dts/axc003_idu.dtsi                 | 4 ++--
- arch/arc/boot/dts/axs10x_mb.dtsi                  | 4 ++--
- arch/arc/boot/dts/hsdk.dts                        | 4 ++--
- arch/arc/boot/dts/vdk_axs10x_mb.dtsi              | 2 +-
- arch/arm/boot/dts/keystone-k2e.dtsi               | 6 +++---
- arch/arm/boot/dts/keystone.dtsi                   | 4 ++--
- arch/arm/boot/dts/lpc18xx.dtsi                    | 4 ++--
- arch/arm/boot/dts/stih407-family.dtsi             | 2 +-
- arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi | 2 +-
- arch/arm64/boot/dts/apm/apm-shadowcat.dtsi        | 4 ++--
- arch/arm64/boot/dts/apm/apm-storm.dtsi            | 6 +++---
- arch/arm64/boot/dts/qcom/apq8096-db820c.dtsi      | 4 ++--
- arch/arm64/boot/dts/qcom/ipq8074.dtsi             | 4 ++--
- arch/arm64/boot/dts/qcom/msm8996.dtsi             | 4 ++--
- arch/arm64/boot/dts/qcom/msm8998.dtsi             | 2 +-
- arch/arm64/boot/dts/qcom/qcs404-evb.dtsi          | 2 +-
- arch/arm64/boot/dts/qcom/qcs404.dtsi              | 4 ++--
- arch/arm64/boot/dts/qcom/sc7180.dtsi              | 2 +-
- arch/arm64/boot/dts/qcom/sdm845.dtsi              | 4 ++--
- arch/arm64/boot/dts/qcom/sm8150.dtsi              | 2 +-
- arch/powerpc/boot/dts/akebono.dts                 | 6 +++---
- drivers/usb/dwc3/dwc3-qcom.c                      | 3 ++-
- 23 files changed, 42 insertions(+), 41 deletions(-)
+ drivers/usb/host/xhci-mtk-sch.c | 180 ++++++++++++++++++++------------
+ drivers/usb/host/xhci-mtk.h     |  13 +++
+ drivers/usb/host/xhci.c         |   9 ++
+ 3 files changed, 133 insertions(+), 69 deletions(-)
 
 -- 
-2.29.2
+2.29.2.576.ga3fc446d84-goog
 
 
 _______________________________________________
