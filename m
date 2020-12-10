@@ -2,72 +2,140 @@ Return-Path: <SRS0=Sq/6=FO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E6A5C4361B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 14:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EA68C4167B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 14:48:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E47B23D56
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 14:35:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E47B23D56
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id CE16C22D74
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 14:48:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE16C22D74
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KJlgNHGI6GBXJ8I/mlXZwD08GgwovXVSZMwh7BkEVBo=; b=fwDOiumbXo9XwZEnHlqw9UbCY
-	L7QHlugyhe8OZD+1PtfmquQ2IF8fdeBHmYNcJTtEeQnKNHIbZt/ssdAVWbiNl2K6HX/1HFHo0ISA9
-	V8i3oDivZAq6wkYOd+VozbCVW4ZO0ocZj1v1SzhKfHfpTCxyaBbTXf5uj1SBSUnKYZzmYnOJM7X1h
-	7QQSYJan4KYPoUUO/NBGKG+/P5e+HDVAQmeMxRQFaTRjJ4/yHdLJuYI0egugOy8jUfeR1s/dxE0sa
-	FLP1+hh8h0wFHXfX6qLJ9j0fP1iln1JI5fuKFRImgRBSBoSX9cwzrlsZaizGU2YoyQFF5O/kRh15t
-	fsTAvbmzw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:To:Subject:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NpysQbMuIf9LFGMqA+JdTfTo3kXoNL97qCTu0u7dDMs=; b=ZUvG+WUPwpKR0BvtRhBMJEtu4s
+	pS8NJ/EpB7IyqXO4rmCa7fnm2b9NW0v49U/QuUyPjxrANhfpD2PMmqy6m0mMkdUSMsTNNd/78p83A
+	N8YuZX4reUV0AofIX2s1/lRgVmfEySOfWMYvQo7O5Aj7rKWbLn50wJQECVBNR5lMHN0e9QrlAqpqU
+	AejlcVAYHsHzbNvoMWp6pTLNC3G8xjaCIdS7S+rxXtJpeIzjjlGfm19hJRGL8lmjtSCOK59qe4uKT
+	TL2b01QkKpjvToeEu0t77aXm69R67ISl6hPUHVqLHHGnbZQPg5WMdXSivs/DsVusLueE6BrlK08UM
+	l/2l2Jgg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knN22-0000XV-Dg; Thu, 10 Dec 2020 14:34:58 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1knNEi-0003rv-Dn; Thu, 10 Dec 2020 14:48:04 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knN1l-0000Rh-LH; Thu, 10 Dec 2020 14:34:44 +0000
-IronPort-SDR: pD+Gg8o7NMgS6D0xfJ+P5jtTXKCIV0wLFQzUTFgCXe/Zgrmtdoi1IWcF/ETBW3oZ0LEV7nUy2L
- BlAgW4H1nVMQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9830"; a="174374999"
-X-IronPort-AV: E=Sophos;i="5.78,408,1599548400"; 
- d="gz'50?scan'50,208,50";a="174374999"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2020 06:34:39 -0800
-IronPort-SDR: jh3o1WX22uPVil0cXX/iJEfCvD2F2LHXXhCsTZgzA7tcgEJaPTMyq4yIPPOrHqN3rvcf0MsxAn
- Wi6ic27Ax52g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,408,1599548400"; 
- d="gz'50?scan'50,208,50";a="319249110"
-Received: from lkp-server01.sh.intel.com (HELO ecc0cebe68d1) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 10 Dec 2020 06:34:35 -0800
-Received: from kbuild by ecc0cebe68d1 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1knN1e-0000K6-Vk; Thu, 10 Dec 2020 14:34:34 +0000
-Date: Thu, 10 Dec 2020 22:33:51 +0800
-From: kernel test robot <lkp@intel.com>
-To: Ikjoon Jang <ikjn@chromium.org>, linux-mediatek@lists.infradead.org,
- linux-usb@vger.kernel.org
-Subject: Re: [PATCH v2 3/3] usb: xhci-mtk: fix unreleased bandwidth data
-Message-ID: <202012102211.jJgJuUFQ-lkp@intel.com>
-References: <20201210184700.v2.3.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+ id 1knNEc-0003pt-9q; Thu, 10 Dec 2020 14:48:00 +0000
+Received: by mail-wm1-x330.google.com with SMTP id x22so4865594wmc.5;
+ Thu, 10 Dec 2020 06:47:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:subject:to:cc:message-id:date:user-agent:mime-version
+ :content-transfer-encoding;
+ bh=AxtVK2Lm2rMkZodCzAOuPbEIHub/TWyXt4Eh0g2SRxc=;
+ b=gn9stn9BwKN4SFiVGlz/q8lXZmAyWT/HLaGjXAnX0aqIV8aPQY3JDgeUlBKi6qXXOs
+ NWFrwc8V0ObGPjU4XF3lSkilzQfl/G4Jb3jskYEmIJ4KcK07hc5u2al8sRp3pcsKFTQg
+ mV0FjlR/N+LhVc32mNxHhigAvQ7czxhqwYBi0+s41mxeCapNQ3lvE0PI1RGiQkDYxwM6
+ TMigIJKh156u5lYMqcu27RKqBg9e+zjT+E6WS4Z/RDxJQon7p4BRdptIJermWt6/gMQI
+ x5yshTz49Z9YWKtG04tBNsXoRtPpsEIR2KyoIVf03Fch9UmvpFQWLHsPZlSSfoonckP9
+ 5oHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
+ :mime-version:content-transfer-encoding;
+ bh=AxtVK2Lm2rMkZodCzAOuPbEIHub/TWyXt4Eh0g2SRxc=;
+ b=WcP4PAlTa6VFAZFxwEIYdvp5ptaqz0TK9azMBkxsoE9wqJjtvK4qMVOMoeqNUCNtWn
+ 1IWA4OmjbGQH/OelJAMFA9zW/oDvgAtqIjhDXSmO3dN+cNqTo9zq+W81SSW79Sgbyj03
+ O3vB4JRoLDGDl9HuuXUaIgVApBQN7NFF5s3YnMb5xWEuoSAVQL5zNta//mBA0XlBXj4q
+ 0tOBXWWAR/yTOFRov1gecEzVya83d4/w591mvLKJGs98mr4r5LXwoH5LXNk6h3F6krAZ
+ l9UasPdSGkLSz540kQv9dZXkc0eLcWwro2aejGggfYnmw0oOfsXPpMTIgrkLafP2EfNY
+ J/8w==
+X-Gm-Message-State: AOAM531NrJNmtabmLR3lcNleJQ9+z/wT3JL3fDDNqzfng5TpJM+7aG9I
+ SaNPt1gaB70SPgNdn+BsCA8=
+X-Google-Smtp-Source: ABdhPJwQexMqTKdM049mz2YKTEzbyRkII5DwpvQT2BZgpTwBskgbmlZMt5UyHfMHbS72d5gimTwWpw==
+X-Received: by 2002:a1c:7c19:: with SMTP id x25mr8771592wmc.94.1607611674709; 
+ Thu, 10 Dec 2020 06:47:54 -0800 (PST)
+Received: from ?IPv6:2003:ea:8f06:5500:915a:a543:6cb0:cf21?
+ (p200300ea8f065500915aa5436cb0cf21.dip0.t-ipconnect.de.
+ [2003:ea:8f06:5500:915a:a543:6cb0:cf21])
+ by smtp.googlemail.com with ESMTPSA id z17sm9200176wrh.88.2020.12.10.06.47.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 10 Dec 2020 06:47:53 -0800 (PST)
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH] dma-mapping: move hint unlikely for dma_mapping_error from
+ drivers to core
+To: George Cherian <gcherian@marvell.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ "David S. Miller" <davem@davemloft.net>, Zaibo Xu <xuzaibo@huawei.com>,
+ Boris Brezillon <bbrezillon@kernel.org>, Arnaud Ebalard <arno@natisbad.org>,
+ Srujana Challa <schalla@marvell.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Giovanni Cabiddu <giovanni.cabiddu@intel.com>,
+ Elie Morisse <syniurge@gmail.com>,
+ Nehal Shah <nehal-bakulchandra.shah@amd.com>,
+ Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
+ Mike Marciniszyn <mike.marciniszyn@cornelisnetworks.com>,
+ Dennis Dalessandro <dennis.dalessandro@cornelisnetworks.com>,
+ Doug Ledford <dledford@redhat.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+ Andreas Larsson <andreas@gaisler.com>, Jakub Kicinski <kuba@kernel.org>,
+ Netanel Belgazal <netanel@amazon.com>, Arthur Kiyanovski
+ <akiyano@amazon.com>, Guy Tzalik <gtzalik@amazon.com>,
+ Saeed Bishara <saeedb@amazon.com>, Zorik Machulsky <zorik@amazon.com>,
+ Iyappan Subramanian <iyappan@os.amperecomputing.com>,
+ Keyur Chudgar <keyur@os.amperecomputing.com>,
+ Quan Nguyen <quan@os.amperecomputing.com>,
+ Igor Russkikh <irusskikh@marvell.com>, Jay Cliburn <jcliburn@gmail.com>,
+ Chris Snook <chris.snook@gmail.com>, Ariel Elior <aelior@marvell.com>,
+ Sudarsana Kalluru <skalluru@marvell.com>, GR-everest-linux-l2@marvell.com,
+ Michael Chan <michael.chan@broadcom.com>, Raju Rangoju <rajur@chelsio.com>,
+ Madalin Bucur <madalin.bucur@nxp.com>, Ioana Ciornei
+ <ioana.ciornei@nxp.com>, Ioana Radulescu <ruxandra.radulescu@nxp.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Catherine Sullivan <csully@google.com>, Sagi Shahar <sagis@google.com>,
+ Jon Olson <jonolson@google.com>, Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Salil Mehta <salil.mehta@huawei.com>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Tariq Toukan <tariqt@nvidia.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Leon Romanovsky <leon@kernel.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Boris Pismenny
+ <borisp@nvidia.com>, Jon Mason <jdmason@kudzu.us>,
+ Rain River <rain.1986.08.12@gmail.com>, Zhu Yanjun <zyjzyj2000@gmail.com>,
+ Shannon Nelson <snelson@pensando.io>, Pensando Drivers
+ <drivers@pensando.io>, Jiri Pirko <jiri@resnulli.us>,
+ Edward Cree <ecree.xilinx@gmail.com>,
+ Martin Habets <habetsm.xilinx@gmail.com>,
+ Daniele Venzano <venza@brownhat.org>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Wingman Kwok <w-kwok2@ti.com>, Murali Karicheri <m-karicheri2@ti.com>,
+ Kevin Brace <kevinbrace@bracecomputerlab.com>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Michal Simek <michal.simek@xilinx.com>, Kalle Valo <kvalo@codeaurora.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Nick Kossifidis <mickflemm@gmail.com>,
+ Luis Chamberlain <mcgrof@kernel.org>,
+ Larry Finger <Larry.Finger@lwfinger.net>,
+ Luca Coelho <luciano.coelho@intel.com>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
+Message-ID: <5d08af46-5897-b827-dcfb-181d869c8f71@gmail.com>
+Date: Thu, 10 Dec 2020 15:47:50 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="/04w6evG8XlLl3ft"
-Content-Disposition: inline
-In-Reply-To: <20201210184700.v2.3.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201210_093442_599111_9ED97C38 
-X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,895 +147,2259 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Tianping Fang <tianping.fang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, kbuild-all@lists.01.org,
- Ikjoon Jang <ikjn@chromium.org>, linux-arm-kernel@lists.infradead.org
+Cc: b43-dev@lists.infradead.org, linux-rdma@vger.kernel.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org, qat-linux@intel.com,
+ ath10k@lists.infradead.org, linux-kernel@vger.kernel.org,
+ iommu@lists.linux-foundation.org, wil6210@qti.qualcomm.com,
+ linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+ bpf@vger.kernel.org, ath11k@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Zillions of drivers use the unlikely() hint when checking the result of
+dma_mapping_error(). This is an inline function anyway, so we can move
+the hint into the function and remove it from drivers.
+From time to time discussions pop up how effective unlikely() is,
+and that it should be used only if something is really very unlikely.
+I think that's the case here.
 
---/04w6evG8XlLl3ft
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Patch was created with some help from coccinelle.
 
-Hi Ikjoon,
+@@
+expression dev, dma_addr;
+@@
 
-Thank you for the patch! Perhaps something to improve:
+- unlikely(dma_mapping_error(dev, dma_addr))
++ dma_mapping_error(dev, dma_addr)
 
-[auto build test WARNING on usb/usb-testing]
-[also build test WARNING on balbi-usb/testing/next peter.chen-usb/ci-for-usb-next v5.10-rc7 next-20201210]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Ikjoon-Jang/Release-allocated-periodic-bandwidth-data-from-reset_bandwidth/20201210-185329
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb.git usb-testing
-config: xtensa-randconfig-r011-20201209 (attached as .config)
-compiler: xtensa-linux-gcc (GCC) 9.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/a99b1fe33b427dd2ca384c78d50b6d05fb04e56d
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Ikjoon-Jang/Release-allocated-periodic-bandwidth-data-from-reset_bandwidth/20201210-185329
-        git checkout a99b1fe33b427dd2ca384c78d50b6d05fb04e56d
-        # save the attached .config to linux build tree
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-9.3.0 make.cross ARCH=xtensa 
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All warnings (new ones prefixed by >>):
-
-   drivers/usb/host/xhci-mtk-sch.c: In function 'xhci_mtk_add_ep_quirk':
->> drivers/usb/host/xhci-mtk-sch.c:606:27: warning: variable 'sch_bw' set but not used [-Wunused-but-set-variable]
-     606 |  struct mu3h_sch_bw_info *sch_bw;
-         |                           ^~~~~~
-
-vim +/sch_bw +606 drivers/usb/host/xhci-mtk-sch.c
-
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  597  
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  598  int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  599  		struct usb_host_endpoint *ep)
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  600  {
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  601  	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-a99b1fe33b427dd Ikjoon Jang  2020-12-10  602  	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  603  	struct xhci_ep_ctx *ep_ctx;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  604  	struct xhci_slot_ctx *slot_ctx;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  605  	struct xhci_virt_device *virt_dev;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24 @606  	struct mu3h_sch_bw_info *sch_bw;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  607  	struct mu3h_sch_ep_info *sch_ep;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  608  	unsigned int ep_index;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  609  
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  610  	virt_dev = xhci->devs[udev->slot_id];
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  611  	ep_index = xhci_get_endpoint_index(&ep->desc);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  612  	slot_ctx = xhci_get_slot_ctx(xhci, virt_dev->in_ctx);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  613  	ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  614  
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  615  	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpkt:%d, dir:%d, ep:%p\n",
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  616  		__func__, usb_endpoint_type(&ep->desc), udev->speed,
-734d3ddd81902d8 Felipe Balbi 2016-09-28  617  		usb_endpoint_maxp(&ep->desc),
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  618  		usb_endpoint_dir_in(&ep->desc), ep);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  619  
-b765a16a11fad6b Chunfeng Yun 2016-01-26  620  	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT)) {
-b765a16a11fad6b Chunfeng Yun 2016-01-26  621  		/*
-b765a16a11fad6b Chunfeng Yun 2016-01-26  622  		 * set @bpkts to 1 if it is LS or FS periodic endpoint, and its
-b765a16a11fad6b Chunfeng Yun 2016-01-26  623  		 * device does not connected through an external HS hub
-b765a16a11fad6b Chunfeng Yun 2016-01-26  624  		 */
-b765a16a11fad6b Chunfeng Yun 2016-01-26  625  		if (usb_endpoint_xfer_int(&ep->desc)
-b765a16a11fad6b Chunfeng Yun 2016-01-26  626  			|| usb_endpoint_xfer_isoc(&ep->desc))
-b765a16a11fad6b Chunfeng Yun 2016-01-26  627  			ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(1));
-b765a16a11fad6b Chunfeng Yun 2016-01-26  628  
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  629  		return 0;
-b765a16a11fad6b Chunfeng Yun 2016-01-26  630  	}
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  631  
-06cc7c739674e71 Ikjoon Jang  2020-12-10  632  	sch_bw = get_bw_info(mtk, udev, ep);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  633  
-95b516c18621d16 Chunfeng Yun 2018-09-20  634  	sch_ep = create_sch_ep(udev, ep, ep_ctx);
-95b516c18621d16 Chunfeng Yun 2018-09-20  635  	if (IS_ERR_OR_NULL(sch_ep))
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  636  		return -ENOMEM;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  637  
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  638  	setup_sch_info(udev, ep_ctx, sch_ep);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  639  
-a99b1fe33b427dd Ikjoon Jang  2020-12-10  640  	list_add_tail(&sch_ep->endpoint, &mtk->bw_ep_list_new);
-08e469de87a2534 Chunfeng Yun 2018-09-20  641  
-a99b1fe33b427dd Ikjoon Jang  2020-12-10  642  	return 0;
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  643  }
-a99b1fe33b427dd Ikjoon Jang  2020-12-10  644  EXPORT_SYMBOL_GPL(xhci_mtk_add_ep_quirk);
-0cbd4b34cda9dfd Chunfeng Yun 2015-11-24  645  
-
+Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+If ok, then tbd through which tree this is supposed to go.
+Patch is based on linux-next-20201210.
+---
+ drivers/crypto/cavium/cpt/cptvf_reqmanager.c  |  3 +--
+ drivers/crypto/hisilicon/hpre/hpre_crypto.c   |  2 +-
+ .../marvell/octeontx/otx_cptvf_reqmgr.c       |  5 ++--
+ drivers/crypto/mediatek/mtk-aes.c             |  2 +-
+ drivers/crypto/mediatek/mtk-sha.c             |  6 ++---
+ drivers/crypto/qat/qat_common/qat_algs.c      |  8 +++---
+ drivers/crypto/qat/qat_common/qat_asym_algs.c | 25 +++++++++----------
+ drivers/i2c/busses/i2c-amd-mp2-plat.c         |  2 +-
+ drivers/infiniband/hw/hfi1/sdma.c             |  2 +-
+ drivers/net/ethernet/aeroflex/greth.c         |  4 +--
+ drivers/net/ethernet/amazon/ena/ena_netdev.c  |  8 +++---
+ .../net/ethernet/apm/xgene/xgene_enet_main.c  |  2 +-
+ .../net/ethernet/aquantia/atlantic/aq_nic.c   |  5 ++--
+ .../net/ethernet/aquantia/atlantic/aq_ring.c  |  2 +-
+ drivers/net/ethernet/arc/emac_main.c          |  2 +-
+ .../net/ethernet/atheros/atl1c/atl1c_main.c   |  6 ++---
+ drivers/net/ethernet/broadcom/bgmac.c         |  4 +--
+ .../net/ethernet/broadcom/bnx2x/bnx2x_cmn.c   | 10 ++++----
+ .../ethernet/broadcom/bnx2x/bnx2x_ethtool.c   |  2 +-
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  4 +--
+ drivers/net/ethernet/chelsio/cxgb4/sge.c      |  4 +--
+ drivers/net/ethernet/chelsio/cxgb4vf/sge.c    |  4 +--
+ drivers/net/ethernet/faraday/ftgmac100.c      |  2 +-
+ drivers/net/ethernet/faraday/ftmac100.c       |  4 +--
+ .../net/ethernet/freescale/dpaa/dpaa_eth.c    | 13 +++++-----
+ .../net/ethernet/freescale/dpaa2/dpaa2-eth.c  | 12 ++++-----
+ drivers/net/ethernet/freescale/enetc/enetc.c  |  4 +--
+ drivers/net/ethernet/freescale/gianfar.c      |  6 ++---
+ drivers/net/ethernet/google/gve/gve_tx.c      |  4 +--
+ drivers/net/ethernet/hisilicon/hisi_femac.c   |  2 +-
+ drivers/net/ethernet/hisilicon/hix5hd2_gmac.c |  4 +--
+ .../net/ethernet/hisilicon/hns3/hns3_enet.c   |  4 +--
+ drivers/net/ethernet/lantiq_xrx200.c          |  5 ++--
+ drivers/net/ethernet/marvell/mv643xx_eth.c    |  3 +--
+ drivers/net/ethernet/marvell/mvneta.c         |  9 +++----
+ drivers/net/ethernet/marvell/mvneta_bm.c      |  2 +-
+ .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |  8 +++---
+ .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 10 ++++----
+ drivers/net/ethernet/mellanox/mlx4/en_rx.c    |  2 +-
+ .../mellanox/mlx5/core/diag/rsc_dump.c        |  2 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |  2 +-
+ .../mellanox/mlx5/core/en_accel/ktls_rx.c     |  2 +-
+ .../mellanox/mlx5/core/en_accel/ktls_tx.c     |  2 +-
+ .../net/ethernet/mellanox/mlx5/core/en_rx.c   |  2 +-
+ .../net/ethernet/mellanox/mlx5/core/en_tx.c   |  6 ++---
+ .../net/ethernet/neterion/vxge/vxge-config.c  |  6 ++---
+ .../net/ethernet/neterion/vxge/vxge-main.c    |  6 ++---
+ drivers/net/ethernet/nvidia/forcedeth.c       | 21 ++++++----------
+ .../net/ethernet/pensando/ionic/ionic_txrx.c  |  2 +-
+ drivers/net/ethernet/qlogic/qed/qed_ll2.c     |  4 +--
+ .../net/ethernet/qlogic/qede/qede_ethtool.c   |  2 +-
+ drivers/net/ethernet/qlogic/qede/qede_fp.c    |  8 +++---
+ drivers/net/ethernet/realtek/r8169_main.c     |  2 +-
+ drivers/net/ethernet/rocker/rocker_main.c     |  2 +-
+ drivers/net/ethernet/sfc/falcon/rx.c          |  3 +--
+ drivers/net/ethernet/sfc/falcon/tx.c          |  4 +--
+ drivers/net/ethernet/sfc/rx_common.c          |  3 +--
+ drivers/net/ethernet/sfc/tx_common.c          |  4 +--
+ drivers/net/ethernet/sfc/tx_tso.c             |  2 +-
+ drivers/net/ethernet/sis/sis900.c             | 24 ++++++++----------
+ drivers/net/ethernet/socionext/sni_ave.c      |  2 +-
+ drivers/net/ethernet/sun/sunhme.c             |  8 +++---
+ drivers/net/ethernet/ti/am65-cpsw-nuss.c      |  6 ++---
+ drivers/net/ethernet/ti/netcp_core.c          |  4 +--
+ drivers/net/ethernet/via/via-rhine.c          |  2 +-
+ .../net/ethernet/xilinx/xilinx_axienet_main.c |  6 ++---
+ drivers/net/wireless/ath/ath10k/htt_rx.c      |  2 +-
+ drivers/net/wireless/ath/ath10k/pci.c         |  2 +-
+ drivers/net/wireless/ath/ath10k/snoc.c        |  2 +-
+ drivers/net/wireless/ath/ath11k/ce.c          |  2 +-
+ drivers/net/wireless/ath/ath11k/dp_rx.c       |  2 +-
+ drivers/net/wireless/ath/ath5k/base.c         |  2 +-
+ drivers/net/wireless/ath/ath9k/beacon.c       |  2 +-
+ drivers/net/wireless/ath/ath9k/recv.c         | 21 +++++++---------
+ drivers/net/wireless/ath/ath9k/xmit.c         |  2 +-
+ drivers/net/wireless/ath/wil6210/txrx.c       | 10 ++++----
+ drivers/net/wireless/ath/wil6210/txrx_edma.c  |  4 +--
+ drivers/net/wireless/broadcom/b43/dma.c       |  2 +-
+ drivers/net/wireless/broadcom/b43legacy/dma.c |  2 +-
+ drivers/net/wireless/intel/iwlwifi/pcie/tx.c  | 10 ++++----
+ drivers/net/wireless/intel/iwlwifi/queue/tx.c | 10 ++++----
+ drivers/net/wireless/mediatek/mt76/dma.c      |  8 +++---
+ .../net/wireless/ralink/rt2x00/rt2x00queue.c  |  4 +--
+ include/linux/dma-mapping.h                   |  3 ++-
+ kernel/dma/map_benchmark.c                    |  2 +-
+ 86 files changed, 207 insertions(+), 230 deletions(-)
 
---/04w6evG8XlLl3ft
-Content-Type: application/gzip
-Content-Disposition: attachment; filename=".config.gz"
-Content-Transfer-Encoding: base64
+diff --git a/drivers/crypto/cavium/cpt/cptvf_reqmanager.c b/drivers/crypto/cavium/cpt/cptvf_reqmanager.c
+index 4fe7898c8..c3d5a5290 100644
+--- a/drivers/crypto/cavium/cpt/cptvf_reqmanager.c
++++ b/drivers/crypto/cavium/cpt/cptvf_reqmanager.c
+@@ -60,8 +60,7 @@ static int setup_sgio_components(struct cpt_vf *cptvf, struct buf_ptr *list,
+ 							  list[i].vptr,
+ 							  list[i].size,
+ 							  DMA_BIDIRECTIONAL);
+-			if (unlikely(dma_mapping_error(&pdev->dev,
+-						       list[i].dma_addr))) {
++			if (dma_mapping_error(&pdev->dev, list[i].dma_addr)) {
+ 				dev_err(&pdev->dev, "DMA map kernel buffer failed for component: %d\n",
+ 					i);
+ 				ret = -EIO;
+diff --git a/drivers/crypto/hisilicon/hpre/hpre_crypto.c b/drivers/crypto/hisilicon/hpre/hpre_crypto.c
+index a87f99040..cf1c20f3d 100644
+--- a/drivers/crypto/hisilicon/hpre/hpre_crypto.c
++++ b/drivers/crypto/hisilicon/hpre/hpre_crypto.c
+@@ -189,7 +189,7 @@ static int hpre_get_data_dma_addr(struct hpre_asym_request *hpre_req,
+ 		dma_dir = DMA_FROM_DEVICE;
+ 	}
+ 	*tmp = dma_map_single(dev, sg_virt(data), len, dma_dir);
+-	if (unlikely(dma_mapping_error(dev, *tmp))) {
++	if (dma_mapping_error(dev, *tmp)) {
+ 		dev_err(dev, "dma map data err!\n");
+ 		return -ENOMEM;
+ 	}
+diff --git a/drivers/crypto/marvell/octeontx/otx_cptvf_reqmgr.c b/drivers/crypto/marvell/octeontx/otx_cptvf_reqmgr.c
+index c80baf1ad..928e01905 100644
+--- a/drivers/crypto/marvell/octeontx/otx_cptvf_reqmgr.c
++++ b/drivers/crypto/marvell/octeontx/otx_cptvf_reqmgr.c
+@@ -112,8 +112,7 @@ static inline int setup_sgio_components(struct pci_dev *pdev,
+ 							  list[i].vptr,
+ 							  list[i].size,
+ 							  DMA_BIDIRECTIONAL);
+-			if (unlikely(dma_mapping_error(&pdev->dev,
+-						       list[i].dma_addr))) {
++			if (dma_mapping_error(&pdev->dev, list[i].dma_addr)) {
+ 				dev_err(&pdev->dev, "Dma mapping failed\n");
+ 				ret = -EIO;
+ 				goto sg_cleanup;
+@@ -223,7 +222,7 @@ static inline int setup_sgio_list(struct pci_dev *pdev,
+ 	info->dma_len = total_mem_len - info_len;
+ 	info->dptr_baddr = dma_map_single(&pdev->dev, (void *)info->in_buffer,
+ 					  info->dma_len, DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(&pdev->dev, info->dptr_baddr))) {
++	if (dma_mapping_error(&pdev->dev, info->dptr_baddr)) {
+ 		dev_err(&pdev->dev, "DMA Mapping failed for cpt req\n");
+ 		return -EIO;
+ 	}
+diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
+index 732306672..b842df020 100644
+--- a/drivers/crypto/mediatek/mtk-aes.c
++++ b/drivers/crypto/mediatek/mtk-aes.c
+@@ -358,7 +358,7 @@ static int mtk_aes_map(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ 
+ 	ctx->ct_dma = dma_map_single(cryp->dev, info, sizeof(*info),
+ 				     DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(cryp->dev, ctx->ct_dma)))
++	if (dma_mapping_error(cryp->dev, ctx->ct_dma))
+ 		goto exit;
+ 
+ 	ctx->tfm_dma = ctx->ct_dma + sizeof(info->cmd);
+diff --git a/drivers/crypto/mediatek/mtk-sha.c b/drivers/crypto/mediatek/mtk-sha.c
+index f55aacdaf..91ff2c3fc 100644
+--- a/drivers/crypto/mediatek/mtk-sha.c
++++ b/drivers/crypto/mediatek/mtk-sha.c
+@@ -338,7 +338,7 @@ static int mtk_sha_info_update(struct mtk_cryp *cryp,
+ 
+ 	ctx->ct_dma = dma_map_single(cryp->dev, info, sizeof(*info),
+ 				     DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(cryp->dev, ctx->ct_dma))) {
++	if (dma_mapping_error(cryp->dev, ctx->ct_dma)) {
+ 		dev_err(cryp->dev, "dma %zu bytes error\n", sizeof(*info));
+ 		return -EINVAL;
+ 	}
+@@ -473,7 +473,7 @@ static int mtk_sha_dma_map(struct mtk_cryp *cryp,
+ {
+ 	ctx->dma_addr = dma_map_single(cryp->dev, ctx->buffer,
+ 				       SHA_BUF_SIZE, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(cryp->dev, ctx->dma_addr))) {
++	if (dma_mapping_error(cryp->dev, ctx->dma_addr)) {
+ 		dev_err(cryp->dev, "dma map error\n");
+ 		return -EINVAL;
+ 	}
+@@ -562,7 +562,7 @@ static int mtk_sha_update_start(struct mtk_cryp *cryp,
+ 
+ 		ctx->dma_addr = dma_map_single(cryp->dev, ctx->buffer,
+ 					       SHA_BUF_SIZE, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(cryp->dev, ctx->dma_addr))) {
++		if (dma_mapping_error(cryp->dev, ctx->dma_addr)) {
+ 			dev_err(cryp->dev, "dma map bytes error\n");
+ 			return -EINVAL;
+ 		}
+diff --git a/drivers/crypto/qat/qat_common/qat_algs.c b/drivers/crypto/qat/qat_common/qat_algs.c
+index b3a68d986..ad5c2cfe8 100644
+--- a/drivers/crypto/qat/qat_common/qat_algs.c
++++ b/drivers/crypto/qat/qat_common/qat_algs.c
+@@ -669,7 +669,7 @@ static int qat_alg_sgl_to_bufl(struct qat_crypto_instance *inst,
+ 		return -ENOMEM;
+ 
+ 	blp = dma_map_single(dev, bufl, sz, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, blp)))
++	if (dma_mapping_error(dev, blp))
+ 		goto err_in;
+ 
+ 	for_each_sg(sgl, sg, n, i) {
+@@ -682,7 +682,7 @@ static int qat_alg_sgl_to_bufl(struct qat_crypto_instance *inst,
+ 						      sg->length,
+ 						      DMA_BIDIRECTIONAL);
+ 		bufl->bufers[y].len = sg->length;
+-		if (unlikely(dma_mapping_error(dev, bufl->bufers[y].addr)))
++		if (dma_mapping_error(dev, bufl->bufers[y].addr))
+ 			goto err_in;
+ 		sg_nctr++;
+ 	}
+@@ -702,7 +702,7 @@ static int qat_alg_sgl_to_bufl(struct qat_crypto_instance *inst,
+ 		if (unlikely(!buflout))
+ 			goto err_in;
+ 		bloutp = dma_map_single(dev, buflout, sz_out, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dev, bloutp)))
++		if (dma_mapping_error(dev, bloutp))
+ 			goto err_out;
+ 		bufers = buflout->bufers;
+ 		for_each_sg(sglout, sg, n, i) {
+@@ -714,7 +714,7 @@ static int qat_alg_sgl_to_bufl(struct qat_crypto_instance *inst,
+ 			bufers[y].addr = dma_map_single(dev, sg_virt(sg),
+ 							sg->length,
+ 							DMA_BIDIRECTIONAL);
+-			if (unlikely(dma_mapping_error(dev, bufers[y].addr)))
++			if (dma_mapping_error(dev, bufers[y].addr))
+ 				goto err_out;
+ 			bufers[y].len = sg->length;
+ 			sg_nctr++;
+diff --git a/drivers/crypto/qat/qat_common/qat_asym_algs.c b/drivers/crypto/qat/qat_common/qat_asym_algs.c
+index 2c863d253..0ef7e5801 100644
+--- a/drivers/crypto/qat/qat_common/qat_asym_algs.c
++++ b/drivers/crypto/qat/qat_common/qat_asym_algs.c
+@@ -275,8 +275,7 @@ static int qat_dh_compute_value(struct kpp_request *req)
+ 							     sg_virt(req->src),
+ 							     req->src_len,
+ 							     DMA_TO_DEVICE);
+-			if (unlikely(dma_mapping_error(dev,
+-						       qat_req->in.dh.in.b)))
++			if (dma_mapping_error(dev, qat_req->in.dh.in.b))
+ 				return ret;
+ 
+ 		} else {
+@@ -306,7 +305,7 @@ static int qat_dh_compute_value(struct kpp_request *req)
+ 						   req->dst_len,
+ 						   DMA_FROM_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(dev, qat_req->out.dh.r)))
++		if (dma_mapping_error(dev, qat_req->out.dh.r))
+ 			goto unmap_src;
+ 
+ 	} else {
+@@ -323,13 +322,13 @@ static int qat_dh_compute_value(struct kpp_request *req)
+ 	qat_req->phy_in = dma_map_single(dev, &qat_req->in.dh.in.b,
+ 					 sizeof(struct qat_dh_input_params),
+ 					 DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, qat_req->phy_in)))
++	if (dma_mapping_error(dev, qat_req->phy_in))
+ 		goto unmap_dst;
+ 
+ 	qat_req->phy_out = dma_map_single(dev, &qat_req->out.dh.r,
+ 					  sizeof(struct qat_dh_output_params),
+ 					  DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, qat_req->phy_out)))
++	if (dma_mapping_error(dev, qat_req->phy_out))
+ 		goto unmap_in_params;
+ 
+ 	msg->pke_mid.src_data_addr = qat_req->phy_in;
+@@ -681,7 +680,7 @@ static int qat_rsa_enc(struct akcipher_request *req)
+ 		qat_req->src_align = NULL;
+ 		qat_req->in.rsa.enc.m = dma_map_single(dev, sg_virt(req->src),
+ 						   req->src_len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dev, qat_req->in.rsa.enc.m)))
++		if (dma_mapping_error(dev, qat_req->in.rsa.enc.m))
+ 			return ret;
+ 
+ 	} else {
+@@ -702,7 +701,7 @@ static int qat_rsa_enc(struct akcipher_request *req)
+ 							req->dst_len,
+ 							DMA_FROM_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(dev, qat_req->out.rsa.enc.c)))
++		if (dma_mapping_error(dev, qat_req->out.rsa.enc.c))
+ 			goto unmap_src;
+ 
+ 	} else {
+@@ -718,13 +717,13 @@ static int qat_rsa_enc(struct akcipher_request *req)
+ 	qat_req->phy_in = dma_map_single(dev, &qat_req->in.rsa.enc.m,
+ 					 sizeof(struct qat_rsa_input_params),
+ 					 DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, qat_req->phy_in)))
++	if (dma_mapping_error(dev, qat_req->phy_in))
+ 		goto unmap_dst;
+ 
+ 	qat_req->phy_out = dma_map_single(dev, &qat_req->out.rsa.enc.c,
+ 					  sizeof(struct qat_rsa_output_params),
+ 					  DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, qat_req->phy_out)))
++	if (dma_mapping_error(dev, qat_req->phy_out))
+ 		goto unmap_in_params;
+ 
+ 	msg->pke_mid.src_data_addr = qat_req->phy_in;
+@@ -825,7 +824,7 @@ static int qat_rsa_dec(struct akcipher_request *req)
+ 		qat_req->src_align = NULL;
+ 		qat_req->in.rsa.dec.c = dma_map_single(dev, sg_virt(req->src),
+ 						   req->dst_len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dev, qat_req->in.rsa.dec.c)))
++		if (dma_mapping_error(dev, qat_req->in.rsa.dec.c))
+ 			return ret;
+ 
+ 	} else {
+@@ -846,7 +845,7 @@ static int qat_rsa_dec(struct akcipher_request *req)
+ 						    req->dst_len,
+ 						    DMA_FROM_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(dev, qat_req->out.rsa.dec.m)))
++		if (dma_mapping_error(dev, qat_req->out.rsa.dec.m))
+ 			goto unmap_src;
+ 
+ 	} else {
+@@ -866,13 +865,13 @@ static int qat_rsa_dec(struct akcipher_request *req)
+ 	qat_req->phy_in = dma_map_single(dev, &qat_req->in.rsa.dec.c,
+ 					 sizeof(struct qat_rsa_input_params),
+ 					 DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, qat_req->phy_in)))
++	if (dma_mapping_error(dev, qat_req->phy_in))
+ 		goto unmap_dst;
+ 
+ 	qat_req->phy_out = dma_map_single(dev, &qat_req->out.rsa.dec.m,
+ 					  sizeof(struct qat_rsa_output_params),
+ 					  DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, qat_req->phy_out)))
++	if (dma_mapping_error(dev, qat_req->phy_out))
+ 		goto unmap_in_params;
+ 
+ 	msg->pke_mid.src_data_addr = qat_req->phy_in;
+diff --git a/drivers/i2c/busses/i2c-amd-mp2-plat.c b/drivers/i2c/busses/i2c-amd-mp2-plat.c
+index 506433bc0..23a4dd1af 100644
+--- a/drivers/i2c/busses/i2c-amd-mp2-plat.c
++++ b/drivers/i2c/busses/i2c-amd-mp2-plat.c
+@@ -51,7 +51,7 @@ static int i2c_amd_dma_map(struct amd_i2c_common *i2c_common)
+ 					      i2c_common->msg->len,
+ 					      dma_direction);
+ 
+-	if (unlikely(dma_mapping_error(dev_pci, i2c_common->dma_addr))) {
++	if (dma_mapping_error(dev_pci, i2c_common->dma_addr)) {
+ 		dev_err(&i2c_dev->pdev->dev,
+ 			"Error while mapping dma buffer %p\n",
+ 			i2c_common->dma_buf);
+diff --git a/drivers/infiniband/hw/hfi1/sdma.c b/drivers/infiniband/hw/hfi1/sdma.c
+index a307d4c8b..2fedcb2c5 100644
+--- a/drivers/infiniband/hw/hfi1/sdma.c
++++ b/drivers/infiniband/hw/hfi1/sdma.c
+@@ -3162,7 +3162,7 @@ int ext_coal_sdma_tx_descs(struct hfi1_devdata *dd, struct sdma_txreq *tx,
+ 				      tx->tlen,
+ 				      DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(&dd->pcidev->dev, addr))) {
++		if (dma_mapping_error(&dd->pcidev->dev, addr)) {
+ 			__sdma_txclean(dd, tx);
+ 			return -ENOSPC;
+ 		}
+diff --git a/drivers/net/ethernet/aeroflex/greth.c b/drivers/net/ethernet/aeroflex/greth.c
+index 9c5891bbf..895bdd6ec 100644
+--- a/drivers/net/ethernet/aeroflex/greth.c
++++ b/drivers/net/ethernet/aeroflex/greth.c
+@@ -506,7 +506,7 @@ greth_start_xmit_gbit(struct sk_buff *skb, struct net_device *dev)
+ 	greth_write_bd(&bdp->stat, status);
+ 	dma_addr = dma_map_single(greth->dev, skb->data, skb_headlen(skb), DMA_TO_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(greth->dev, dma_addr)))
++	if (dma_mapping_error(greth->dev, dma_addr))
+ 		goto map_error;
+ 
+ 	greth_write_bd(&bdp->addr, dma_addr);
+@@ -539,7 +539,7 @@ greth_start_xmit_gbit(struct sk_buff *skb, struct net_device *dev)
+ 		dma_addr = skb_frag_dma_map(greth->dev, frag, 0, skb_frag_size(frag),
+ 					    DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(greth->dev, dma_addr)))
++		if (dma_mapping_error(greth->dev, dma_addr))
+ 			goto frag_map_error;
+ 
+ 		greth_write_bd(&bdp->addr, dma_addr);
+diff --git a/drivers/net/ethernet/amazon/ena/ena_netdev.c b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+index 06596fa1f..abdd531db 100644
+--- a/drivers/net/ethernet/amazon/ena/ena_netdev.c
++++ b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+@@ -257,7 +257,7 @@ static int ena_xdp_tx_map_frame(struct ena_ring *xdp_ring,
+ 				     *push_hdr + *push_len,
+ 				     size - *push_len,
+ 				     DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(xdp_ring->dev, dma)))
++		if (dma_mapping_error(xdp_ring->dev, dma))
+ 			goto error_report_dma_error;
+ 
+ 		tx_info->map_linear_data = 1;
+@@ -1004,7 +1004,7 @@ static int ena_alloc_rx_page(struct ena_ring *rx_ring,
+ 	 */
+ 	dma = dma_map_page(rx_ring->dev, page, 0, ENA_PAGE_SIZE,
+ 			   DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(rx_ring->dev, dma))) {
++	if (dma_mapping_error(rx_ring->dev, dma)) {
+ 		ena_increase_stat(&rx_ring->rx_stats.dma_mapping_err, 1,
+ 				  &rx_ring->syncp);
+ 
+@@ -2951,7 +2951,7 @@ static int ena_tx_map_skb(struct ena_ring *tx_ring,
+ 	if (skb_head_len > push_len) {
+ 		dma = dma_map_single(tx_ring->dev, skb->data + push_len,
+ 				     skb_head_len - push_len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(tx_ring->dev, dma)))
++		if (dma_mapping_error(tx_ring->dev, dma))
+ 			goto error_report_dma_error;
+ 
+ 		ena_buf->paddr = dma;
+@@ -2978,7 +2978,7 @@ static int ena_tx_map_skb(struct ena_ring *tx_ring,
+ 
+ 		dma = skb_frag_dma_map(tx_ring->dev, frag, delta,
+ 				       frag_len - delta, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(tx_ring->dev, dma)))
++		if (dma_mapping_error(tx_ring->dev, dma))
+ 			goto error_report_dma_error;
+ 
+ 		ena_buf->paddr = dma;
+diff --git a/drivers/net/ethernet/apm/xgene/xgene_enet_main.c b/drivers/net/ethernet/apm/xgene/xgene_enet_main.c
+index 5f1fc6582..d2c9ea5ac 100644
+--- a/drivers/net/ethernet/apm/xgene/xgene_enet_main.c
++++ b/drivers/net/ethernet/apm/xgene/xgene_enet_main.c
+@@ -95,7 +95,7 @@ static int xgene_enet_refill_pagepool(struct xgene_enet_desc_ring *buf_pool,
+ 
+ 		dma_addr = dma_map_page(dev, page, 0,
+ 					PAGE_SIZE, DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(dev, dma_addr))) {
++		if (dma_mapping_error(dev, dma_addr)) {
+ 			put_page(page);
+ 			return -ENOMEM;
+ 		}
+diff --git a/drivers/net/ethernet/aquantia/atlantic/aq_nic.c b/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+index 6c049864d..e193a41ca 100644
+--- a/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
++++ b/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+@@ -630,7 +630,7 @@ unsigned int aq_nic_map_skb(struct aq_nic_s *self, struct sk_buff *skb,
+ 				     dx_buff->len,
+ 				     DMA_TO_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(dev, dx_buff->pa))) {
++	if (dma_mapping_error(dev, dx_buff->pa)) {
+ 		ret = 0;
+ 		goto exit;
+ 	}
+@@ -668,8 +668,7 @@ unsigned int aq_nic_map_skb(struct aq_nic_s *self, struct sk_buff *skb,
+ 						   buff_size,
+ 						   DMA_TO_DEVICE);
+ 
+-			if (unlikely(dma_mapping_error(dev,
+-						       frag_pa)))
++			if (dma_mapping_error(dev, frag_pa))
+ 				goto mapping_error;
+ 
+ 			dx = aq_ring_next_dx(ring, dx);
+diff --git a/drivers/net/ethernet/aquantia/atlantic/aq_ring.c b/drivers/net/ethernet/aquantia/atlantic/aq_ring.c
+index 24122ccda..514b1f9f5 100644
+--- a/drivers/net/ethernet/aquantia/atlantic/aq_ring.c
++++ b/drivers/net/ethernet/aquantia/atlantic/aq_ring.c
+@@ -41,7 +41,7 @@ static int aq_get_rxpage(struct aq_rxpage *rxpage, unsigned int order,
+ 	daddr = dma_map_page(dev, page, 0, PAGE_SIZE << order,
+ 			     DMA_FROM_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(dev, daddr)))
++	if (dma_mapping_error(dev, daddr))
+ 		goto free_page;
+ 
+ 	rxpage->page = page;
+diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+index b56a9e2ae..15a02687e 100644
+--- a/drivers/net/ethernet/arc/emac_main.c
++++ b/drivers/net/ethernet/arc/emac_main.c
+@@ -695,7 +695,7 @@ static netdev_tx_t arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
+ 	addr = dma_map_single(&ndev->dev, (void *)skb->data, len,
+ 			      DMA_TO_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(&ndev->dev, addr))) {
++	if (dma_mapping_error(&ndev->dev, addr)) {
+ 		stats->tx_dropped++;
+ 		stats->tx_errors++;
+ 		dev_kfree_skb_any(skb);
+diff --git a/drivers/net/ethernet/atheros/atl1c/atl1c_main.c b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
+index 3f65f2b37..7153e9a99 100644
+--- a/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
++++ b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
+@@ -1719,7 +1719,7 @@ static int atl1c_alloc_rx_buffer(struct atl1c_adapter *adapter)
+ 		buffer_info->length = adapter->rx_buffer_len;
+ 		mapping = dma_map_single(&pdev->dev, vir_addr,
+ 					 buffer_info->length, DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(&pdev->dev, mapping))) {
++		if (dma_mapping_error(&pdev->dev, mapping)) {
+ 			dev_kfree_skb(skb);
+ 			buffer_info->skb = NULL;
+ 			buffer_info->length = 0;
+@@ -2110,7 +2110,7 @@ static int atl1c_tx_map(struct atl1c_adapter *adapter,
+ 		buffer_info->dma = dma_map_single(&adapter->pdev->dev,
+ 						  skb->data, hdr_len,
+ 						  DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(&adapter->pdev->dev, buffer_info->dma)))
++		if (dma_mapping_error(&adapter->pdev->dev, buffer_info->dma))
+ 			goto err_dma;
+ 		ATL1C_SET_BUFFER_STATE(buffer_info, ATL1C_BUFFER_BUSY);
+ 		ATL1C_SET_PCIMAP_TYPE(buffer_info, ATL1C_PCIMAP_SINGLE,
+@@ -2135,7 +2135,7 @@ static int atl1c_tx_map(struct atl1c_adapter *adapter,
+ 			dma_map_single(&adapter->pdev->dev,
+ 				       skb->data + mapped_len,
+ 				       buffer_info->length, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(&adapter->pdev->dev, buffer_info->dma)))
++		if (dma_mapping_error(&adapter->pdev->dev, buffer_info->dma))
+ 			goto err_dma;
+ 
+ 		ATL1C_SET_BUFFER_STATE(buffer_info, ATL1C_BUFFER_BUSY);
+diff --git a/drivers/net/ethernet/broadcom/bgmac.c b/drivers/net/ethernet/broadcom/bgmac.c
+index 98ec1b8a7..065f26695 100644
+--- a/drivers/net/ethernet/broadcom/bgmac.c
++++ b/drivers/net/ethernet/broadcom/bgmac.c
+@@ -161,7 +161,7 @@ static netdev_tx_t bgmac_dma_tx_add(struct bgmac *bgmac,
+ 
+ 	slot->dma_addr = dma_map_single(dma_dev, skb->data, skb_headlen(skb),
+ 					DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dma_dev, slot->dma_addr)))
++	if (dma_mapping_error(dma_dev, slot->dma_addr))
+ 		goto err_dma_head;
+ 
+ 	flags = BGMAC_DESC_CTL0_SOF;
+@@ -179,7 +179,7 @@ static netdev_tx_t bgmac_dma_tx_add(struct bgmac *bgmac,
+ 		slot = &ring->slots[index];
+ 		slot->dma_addr = skb_frag_dma_map(dma_dev, frag, 0,
+ 						  len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dma_dev, slot->dma_addr)))
++		if (dma_mapping_error(dma_dev, slot->dma_addr))
+ 			goto err_dma;
+ 
+ 		if (i == nr_frags - 1)
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+index 1a6ec1a12..d48459fb7 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+@@ -453,7 +453,7 @@ static void bnx2x_tpa_start(struct bnx2x_fastpath *fp, u16 queue,
+ 	 *  when TPA_STOP arrives.
+ 	 */
+ 
+-	if (unlikely(dma_mapping_error(&bp->pdev->dev, mapping))) {
++	if (dma_mapping_error(&bp->pdev->dev, mapping)) {
+ 		/* Move the BD from the consumer to the producer */
+ 		bnx2x_reuse_rx_data(fp, cons, prod);
+ 		tpa_info->tpa_state = BNX2X_TPA_ERROR;
+@@ -562,7 +562,7 @@ static int bnx2x_alloc_rx_sge(struct bnx2x *bp, struct bnx2x_fastpath *fp,
+ 
+ 	mapping = dma_map_page(&bp->pdev->dev, pool->page,
+ 			       pool->offset, SGE_PAGE_SIZE, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(&bp->pdev->dev, mapping))) {
++	if (dma_mapping_error(&bp->pdev->dev, mapping)) {
+ 		BNX2X_ERR("Can't map sge\n");
+ 		return -ENOMEM;
+ 	}
+@@ -839,7 +839,7 @@ static int bnx2x_alloc_rx_data(struct bnx2x *bp, struct bnx2x_fastpath *fp,
+ 	mapping = dma_map_single(&bp->pdev->dev, data + NET_SKB_PAD,
+ 				 fp->rx_buf_size,
+ 				 DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(&bp->pdev->dev, mapping))) {
++	if (dma_mapping_error(&bp->pdev->dev, mapping)) {
+ 		bnx2x_frag_free(fp, data);
+ 		BNX2X_ERR("Can't map rx data\n");
+ 		return -ENOMEM;
+@@ -3830,7 +3830,7 @@ netdev_tx_t bnx2x_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	/* Map skb linear data for DMA */
+ 	mapping = dma_map_single(&bp->pdev->dev, skb->data,
+ 				 skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(&bp->pdev->dev, mapping))) {
++	if (dma_mapping_error(&bp->pdev->dev, mapping)) {
+ 		DP(NETIF_MSG_TX_QUEUED,
+ 		   "SKB mapping failed - silently dropping this SKB\n");
+ 		dev_kfree_skb_any(skb);
+@@ -4076,7 +4076,7 @@ netdev_tx_t bnx2x_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 		mapping = skb_frag_dma_map(&bp->pdev->dev, frag, 0,
+ 					   skb_frag_size(frag), DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(&bp->pdev->dev, mapping))) {
++		if (dma_mapping_error(&bp->pdev->dev, mapping)) {
+ 			unsigned int pkts_compl = 0, bytes_compl = 0;
+ 
+ 			DP(NETIF_MSG_TX_QUEUED,
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c
+index 32245bbe8..3d5660d8e 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c
+@@ -2558,7 +2558,7 @@ static int bnx2x_run_loopback(struct bnx2x *bp, int loopback_mode)
+ 		packet[i] = (unsigned char) (i & 0xff);
+ 	mapping = dma_map_single(&bp->pdev->dev, skb->data,
+ 				 skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(&bp->pdev->dev, mapping))) {
++	if (dma_mapping_error(&bp->pdev->dev, mapping)) {
+ 		rc = -ENOMEM;
+ 		dev_kfree_skb(skb);
+ 		DP(BNX2X_MSG_ETHTOOL, "Unable to map SKB\n");
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+index 4edd6f8e0..d63338a22 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+@@ -482,7 +482,7 @@ static netdev_tx_t bnxt_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 	mapping = dma_map_single(&pdev->dev, skb->data, len, DMA_TO_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(&pdev->dev, mapping))) {
++	if (dma_mapping_error(&pdev->dev, mapping)) {
+ 		dev_kfree_skb_any(skb);
+ 		tx_buf->skb = NULL;
+ 		return NETDEV_TX_OK;
+@@ -545,7 +545,7 @@ static netdev_tx_t bnxt_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 		mapping = skb_frag_dma_map(&pdev->dev, frag, 0, len,
+ 					   DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(&pdev->dev, mapping)))
++		if (dma_mapping_error(&pdev->dev, mapping))
+ 			goto tx_dma_error;
+ 
+ 		tx_buf = &txr->tx_buf_ring[prod];
+diff --git a/drivers/net/ethernet/chelsio/cxgb4/sge.c b/drivers/net/ethernet/chelsio/cxgb4/sge.c
+index 196652a11..6964f7a9c 100644
+--- a/drivers/net/ethernet/chelsio/cxgb4/sge.c
++++ b/drivers/net/ethernet/chelsio/cxgb4/sge.c
+@@ -567,7 +567,7 @@ static unsigned int refill_fl(struct adapter *adap, struct sge_fl *q, int n,
+ 		mapping = dma_map_page(adap->pdev_dev, pg, 0,
+ 				       PAGE_SIZE << s->fl_pg_order,
+ 				       PCI_DMA_FROMDEVICE);
+-		if (unlikely(dma_mapping_error(adap->pdev_dev, mapping))) {
++		if (dma_mapping_error(adap->pdev_dev, mapping)) {
+ 			__free_pages(pg, s->fl_pg_order);
+ 			q->mapping_err++;
+ 			goto out;   /* do not try small pages for this error */
+@@ -597,7 +597,7 @@ static unsigned int refill_fl(struct adapter *adap, struct sge_fl *q, int n,
+ 
+ 		mapping = dma_map_page(adap->pdev_dev, pg, 0, PAGE_SIZE,
+ 				       PCI_DMA_FROMDEVICE);
+-		if (unlikely(dma_mapping_error(adap->pdev_dev, mapping))) {
++		if (dma_mapping_error(adap->pdev_dev, mapping)) {
+ 			put_page(pg);
+ 			q->mapping_err++;
+ 			goto out;
+diff --git a/drivers/net/ethernet/chelsio/cxgb4vf/sge.c b/drivers/net/ethernet/chelsio/cxgb4vf/sge.c
+index 95657da0a..f79bdd1b5 100644
+--- a/drivers/net/ethernet/chelsio/cxgb4vf/sge.c
++++ b/drivers/net/ethernet/chelsio/cxgb4vf/sge.c
+@@ -645,7 +645,7 @@ static unsigned int refill_fl(struct adapter *adapter, struct sge_fl *fl,
+ 		dma_addr = dma_map_page(adapter->pdev_dev, page, 0,
+ 					PAGE_SIZE << s->fl_pg_order,
+ 					PCI_DMA_FROMDEVICE);
+-		if (unlikely(dma_mapping_error(adapter->pdev_dev, dma_addr))) {
++		if (dma_mapping_error(adapter->pdev_dev, dma_addr)) {
+ 			/*
+ 			 * We've run out of DMA mapping space.  Free up the
+ 			 * buffer and return with what we've managed to put
+@@ -683,7 +683,7 @@ static unsigned int refill_fl(struct adapter *adapter, struct sge_fl *fl,
+ 
+ 		dma_addr = dma_map_page(adapter->pdev_dev, page, 0, PAGE_SIZE,
+ 				       PCI_DMA_FROMDEVICE);
+-		if (unlikely(dma_mapping_error(adapter->pdev_dev, dma_addr))) {
++		if (dma_mapping_error(adapter->pdev_dev, dma_addr)) {
+ 			put_page(page);
+ 			break;
+ 		}
+diff --git a/drivers/net/ethernet/faraday/ftgmac100.c b/drivers/net/ethernet/faraday/ftgmac100.c
+index 88bfe2107..4e7815c3c 100644
+--- a/drivers/net/ethernet/faraday/ftgmac100.c
++++ b/drivers/net/ethernet/faraday/ftgmac100.c
+@@ -398,7 +398,7 @@ static int ftgmac100_alloc_rx_buf(struct ftgmac100 *priv, unsigned int entry,
+ 	} else {
+ 		map = dma_map_single(priv->dev, skb->data, RX_BUF_SIZE,
+ 				     DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(priv->dev, map))) {
++		if (dma_mapping_error(priv->dev, map)) {
+ 			if (net_ratelimit())
+ 				netdev_err(netdev, "failed to map rx page\n");
+ 			dev_kfree_skb_any(skb);
+diff --git a/drivers/net/ethernet/faraday/ftmac100.c b/drivers/net/ethernet/faraday/ftmac100.c
+index 473b337b2..10398a5fc 100644
+--- a/drivers/net/ethernet/faraday/ftmac100.c
++++ b/drivers/net/ethernet/faraday/ftmac100.c
+@@ -670,7 +670,7 @@ static int ftmac100_alloc_rx_page(struct ftmac100 *priv,
+ 	}
+ 
+ 	map = dma_map_page(priv->dev, page, 0, RX_BUF_SIZE, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(priv->dev, map))) {
++	if (dma_mapping_error(priv->dev, map)) {
+ 		if (net_ratelimit())
+ 			netdev_err(netdev, "failed to map rx page\n");
+ 		__free_page(page);
+@@ -1015,7 +1015,7 @@ ftmac100_hard_start_xmit(struct sk_buff *skb, struct net_device *netdev)
+ 	}
+ 
+ 	map = dma_map_single(priv->dev, skb->data, skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(priv->dev, map))) {
++	if (dma_mapping_error(priv->dev, map)) {
+ 		/* drop packet */
+ 		if (net_ratelimit())
+ 			netdev_err(netdev, "map socket buffer failed\n");
+diff --git a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+index 4360ce4d3..f261becd5 100644
+--- a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
++++ b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+@@ -1548,8 +1548,7 @@ static int dpaa_bp_add_8_bufs(const struct dpaa_bp *dpaa_bp)
+ 
+ 		addr = dma_map_page(dpaa_bp->priv->rx_dma_dev, p, 0,
+ 				    DPAA_BP_RAW_SIZE, DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(dpaa_bp->priv->rx_dma_dev,
+-					       addr))) {
++		if (dma_mapping_error(dpaa_bp->priv->rx_dma_dev, addr)) {
+ 			netdev_err(net_dev, "DMA map failed\n");
+ 			goto release_previous_buffs;
+ 		}
+@@ -1949,7 +1948,7 @@ static int skb_to_contig_fd(struct dpaa_priv *priv,
+ 	/* Map the entire buffer size that may be seen by FMan, but no more */
+ 	addr = dma_map_single(priv->tx_dma_dev, buff_start,
+ 			      priv->tx_headroom + skb->len, dma_dir);
+-	if (unlikely(dma_mapping_error(priv->tx_dma_dev, addr))) {
++	if (dma_mapping_error(priv->tx_dma_dev, addr)) {
+ 		if (net_ratelimit())
+ 			netif_err(priv, tx_err, net_dev, "dma_map_single() failed\n");
+ 		return -EINVAL;
+@@ -2004,7 +2003,7 @@ static int skb_to_sg_fd(struct dpaa_priv *priv,
+ 	sgt[0].offset = 0;
+ 	addr = dma_map_single(priv->tx_dma_dev, skb->data,
+ 			      skb_headlen(skb), dma_dir);
+-	if (unlikely(dma_mapping_error(priv->tx_dma_dev, addr))) {
++	if (dma_mapping_error(priv->tx_dma_dev, addr)) {
+ 		netdev_err(priv->net_dev, "DMA mapping failed\n");
+ 		err = -EINVAL;
+ 		goto sg0_map_failed;
+@@ -2018,7 +2017,7 @@ static int skb_to_sg_fd(struct dpaa_priv *priv,
+ 		WARN_ON(!skb_frag_page(frag));
+ 		addr = skb_frag_dma_map(priv->tx_dma_dev, frag, 0,
+ 					frag_len, dma_dir);
+-		if (unlikely(dma_mapping_error(priv->tx_dma_dev, addr))) {
++		if (dma_mapping_error(priv->tx_dma_dev, addr)) {
+ 			netdev_err(priv->net_dev, "DMA mapping failed\n");
+ 			err = -EINVAL;
+ 			goto sg_map_failed;
+@@ -2044,7 +2043,7 @@ static int skb_to_sg_fd(struct dpaa_priv *priv,
+ 
+ 	addr = dma_map_page(priv->tx_dma_dev, p, 0,
+ 			    priv->tx_headroom + DPAA_SGT_SIZE, dma_dir);
+-	if (unlikely(dma_mapping_error(priv->tx_dma_dev, addr))) {
++	if (dma_mapping_error(priv->tx_dma_dev, addr)) {
+ 		netdev_err(priv->net_dev, "DMA mapping failed\n");
+ 		err = -EINVAL;
+ 		goto sgt_map_failed;
+@@ -2488,7 +2487,7 @@ static int dpaa_xdp_xmit_frame(struct net_device *net_dev,
+ 	addr = dma_map_single(priv->tx_dma_dev, buff_start,
+ 			      xdpf->headroom + xdpf->len,
+ 			      DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(priv->tx_dma_dev, addr))) {
++	if (dma_mapping_error(priv->tx_dma_dev, addr)) {
+ 		err = -EINVAL;
+ 		goto out_error;
+ 	}
+diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+index 91cff93db..0065f32b9 100644
+--- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
++++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+@@ -806,7 +806,7 @@ static int dpaa2_eth_build_sg_fd(struct dpaa2_eth_priv *priv,
+ 
+ 	/* Separately map the SGT buffer */
+ 	addr = dma_map_single(dev, sgt_buf, sgt_buf_size, DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(dev, addr))) {
++	if (dma_mapping_error(dev, addr)) {
+ 		err = -ENOMEM;
+ 		goto dma_map_single_failed;
+ 	}
+@@ -863,7 +863,7 @@ static int dpaa2_eth_build_sg_fd_single_buf(struct dpaa2_eth_priv *priv,
+ 	sgt = (struct dpaa2_sg_entry *)(sgt_buf + priv->tx_data_offset);
+ 
+ 	addr = dma_map_single(dev, skb->data, skb->len, DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(dev, addr))) {
++	if (dma_mapping_error(dev, addr)) {
+ 		err = -ENOMEM;
+ 		goto data_map_failed;
+ 	}
+@@ -882,7 +882,7 @@ static int dpaa2_eth_build_sg_fd_single_buf(struct dpaa2_eth_priv *priv,
+ 
+ 	/* Separately map the SGT buffer */
+ 	sgt_addr = dma_map_single(dev, sgt_buf, sgt_buf_size, DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(dev, sgt_addr))) {
++	if (dma_mapping_error(dev, sgt_addr)) {
+ 		err = -ENOMEM;
+ 		goto sgt_map_failed;
+ 	}
+@@ -939,7 +939,7 @@ static int dpaa2_eth_build_single_fd(struct dpaa2_eth_priv *priv,
+ 	addr = dma_map_single(dev, buffer_start,
+ 			      skb_tail_pointer(skb) - buffer_start,
+ 			      DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(dev, addr)))
++	if (dma_mapping_error(dev, addr))
+ 		return -ENOMEM;
+ 
+ 	dpaa2_fd_set_addr(fd, addr);
+@@ -1333,7 +1333,7 @@ static int dpaa2_eth_add_bufs(struct dpaa2_eth_priv *priv,
+ 
+ 		addr = dma_map_page(dev, page, 0, priv->rx_buf_size,
+ 				    DMA_BIDIRECTIONAL);
+-		if (unlikely(dma_mapping_error(dev, addr)))
++		if (dma_mapping_error(dev, addr))
+ 			goto err_map;
+ 
+ 		buf_array[i] = addr;
+@@ -2317,7 +2317,7 @@ static int dpaa2_eth_xdp_create_fd(struct net_device *net_dev,
+ 	addr = dma_map_single(dev, buffer_start,
+ 			      swa->xdp.dma_size,
+ 			      DMA_BIDIRECTIONAL);
+-	if (unlikely(dma_mapping_error(dev, addr)))
++	if (dma_mapping_error(dev, addr))
+ 		return -ENOMEM;
+ 
+ 	dpaa2_fd_set_addr(fd, addr);
+diff --git a/drivers/net/ethernet/freescale/enetc/enetc.c b/drivers/net/ethernet/freescale/enetc/enetc.c
+index c78d12229..ac9d74fb9 100644
+--- a/drivers/net/ethernet/freescale/enetc/enetc.c
++++ b/drivers/net/ethernet/freescale/enetc/enetc.c
+@@ -93,7 +93,7 @@ static int enetc_map_tx_buffs(struct enetc_bdr *tx_ring, struct sk_buff *skb,
+ 	prefetchw(txbd);
+ 
+ 	dma = dma_map_single(tx_ring->dev, skb->data, len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(tx_ring->dev, dma)))
++	if (dma_mapping_error(tx_ring->dev, dma))
+ 		goto dma_err;
+ 
+ 	temp_bd.addr = cpu_to_le64(dma);
+@@ -443,7 +443,7 @@ static bool enetc_new_page(struct enetc_bdr *rx_ring,
+ 		return false;
+ 
+ 	addr = dma_map_page(rx_ring->dev, page, 0, PAGE_SIZE, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(rx_ring->dev, addr))) {
++	if (dma_mapping_error(rx_ring->dev, addr)) {
+ 		__free_page(page);
+ 
+ 		return false;
+diff --git a/drivers/net/ethernet/freescale/gianfar.c b/drivers/net/ethernet/freescale/gianfar.c
+index d391a45ce..5ff80bfb9 100644
+--- a/drivers/net/ethernet/freescale/gianfar.c
++++ b/drivers/net/ethernet/freescale/gianfar.c
+@@ -1247,7 +1247,7 @@ static bool gfar_new_page(struct gfar_priv_rx_q *rxq, struct gfar_rx_buff *rxb)
+ 		return false;
+ 
+ 	addr = dma_map_page(rxq->dev, page, 0, PAGE_SIZE, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(rxq->dev, addr))) {
++	if (dma_mapping_error(rxq->dev, addr)) {
+ 		__free_page(page);
+ 
+ 		return false;
+@@ -1900,7 +1900,7 @@ static netdev_tx_t gfar_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 	bufaddr = dma_map_single(priv->dev, skb->data, skb_headlen(skb),
+ 				 DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(priv->dev, bufaddr)))
++	if (dma_mapping_error(priv->dev, bufaddr))
+ 		goto dma_map_err;
+ 
+ 	txbdp_start->bufPtr = cpu_to_be32(bufaddr);
+@@ -1935,7 +1935,7 @@ static netdev_tx_t gfar_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 			bufaddr = skb_frag_dma_map(priv->dev, frag, 0,
+ 						   size, DMA_TO_DEVICE);
+-			if (unlikely(dma_mapping_error(priv->dev, bufaddr)))
++			if (dma_mapping_error(priv->dev, bufaddr))
+ 				goto dma_map_err;
+ 
+ 			/* set the TxBD length and buffer pointer */
+diff --git a/drivers/net/ethernet/google/gve/gve_tx.c b/drivers/net/ethernet/google/gve/gve_tx.c
+index 6938f3a93..8b5f9d7a4 100644
+--- a/drivers/net/ethernet/google/gve/gve_tx.c
++++ b/drivers/net/ethernet/google/gve/gve_tx.c
+@@ -524,7 +524,7 @@ static int gve_tx_add_skb_no_copy(struct gve_priv *priv, struct gve_tx_ring *tx,
+ 	info->skb =  skb;
+ 
+ 	addr = dma_map_single(tx->dev, skb->data, len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(tx->dev, addr))) {
++	if (dma_mapping_error(tx->dev, addr)) {
+ 		tx->dma_mapping_error++;
+ 		goto drop;
+ 	}
+@@ -558,7 +558,7 @@ static int gve_tx_add_skb_no_copy(struct gve_priv *priv, struct gve_tx_ring *tx,
+ 		seg_desc = &tx->desc[idx];
+ 		len = skb_frag_size(frag);
+ 		addr = skb_frag_dma_map(tx->dev, frag, 0, len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(tx->dev, addr))) {
++		if (dma_mapping_error(tx->dev, addr)) {
+ 			tx->dma_mapping_error++;
+ 			goto unmap_drop;
+ 		}
+diff --git a/drivers/net/ethernet/hisilicon/hisi_femac.c b/drivers/net/ethernet/hisilicon/hisi_femac.c
+index 57c3bc4f7..d636b1c5a 100644
+--- a/drivers/net/ethernet/hisilicon/hisi_femac.c
++++ b/drivers/net/ethernet/hisilicon/hisi_femac.c
+@@ -525,7 +525,7 @@ static netdev_tx_t hisi_femac_net_xmit(struct sk_buff *skb,
+ 
+ 	addr = dma_map_single(priv->dev, skb->data,
+ 			      skb->len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(priv->dev, addr))) {
++	if (dma_mapping_error(priv->dev, addr)) {
+ 		dev_kfree_skb_any(skb);
+ 		dev->stats.tx_dropped++;
+ 		return NETDEV_TX_OK;
+diff --git a/drivers/net/ethernet/hisilicon/hix5hd2_gmac.c b/drivers/net/ethernet/hisilicon/hix5hd2_gmac.c
+index 8b2bf8503..45b60ba49 100644
+--- a/drivers/net/ethernet/hisilicon/hix5hd2_gmac.c
++++ b/drivers/net/ethernet/hisilicon/hix5hd2_gmac.c
+@@ -712,7 +712,7 @@ static int hix5hd2_fill_sg_desc(struct hix5hd2_priv *priv,
+ 	desc->total_len = cpu_to_le32(skb->len);
+ 	addr = dma_map_single(priv->dev, skb->data, skb_headlen(skb),
+ 			      DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(priv->dev, addr)))
++	if (dma_mapping_error(priv->dev, addr))
+ 		return -EINVAL;
+ 	desc->linear_addr = cpu_to_le32(addr);
+ 	desc->linear_len = cpu_to_le32(skb_headlen(skb));
+@@ -766,7 +766,7 @@ static netdev_tx_t hix5hd2_net_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	} else {
+ 		addr = dma_map_single(priv->dev, skb->data, skb->len,
+ 				      DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(priv->dev, addr))) {
++		if (dma_mapping_error(priv->dev, addr)) {
+ 			dev_kfree_skb_any(skb);
+ 			dev->stats.tx_dropped++;
+ 			return NETDEV_TX_OK;
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
+index 4c2fb8688..ff9e8600f 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
+@@ -1188,7 +1188,7 @@ static int hns3_fill_desc(struct hns3_enet_ring *ring, void *priv,
+ 		dma = skb_frag_dma_map(dev, frag, 0, size, DMA_TO_DEVICE);
+ 	}
+ 
+-	if (unlikely(dma_mapping_error(dev, dma))) {
++	if (dma_mapping_error(dev, dma)) {
+ 		u64_stats_update_begin(&ring->syncp);
+ 		ring->stats.sw_err_cnt++;
+ 		u64_stats_update_end(&ring->syncp);
+@@ -2462,7 +2462,7 @@ static int hns3_map_buffer(struct hns3_enet_ring *ring, struct hns3_desc_cb *cb)
+ 	cb->dma = dma_map_page(ring_to_dev(ring), cb->priv, 0,
+ 			       cb->length, ring_to_dma_dir(ring));
+ 
+-	if (unlikely(dma_mapping_error(ring_to_dev(ring), cb->dma)))
++	if (dma_mapping_error(ring_to_dev(ring), cb->dma))
+ 		return -EIO;
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/lantiq_xrx200.c b/drivers/net/ethernet/lantiq_xrx200.c
+index 51ed8a54d..1b5112c71 100644
+--- a/drivers/net/ethernet/lantiq_xrx200.c
++++ b/drivers/net/ethernet/lantiq_xrx200.c
+@@ -166,8 +166,7 @@ static int xrx200_alloc_skb(struct xrx200_chan *ch)
+ 	ch->dma.desc_base[ch->dma.desc].addr = dma_map_single(ch->priv->dev,
+ 			ch->skb[ch->dma.desc]->data, XRX200_DMA_DATA_LEN,
+ 			DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(ch->priv->dev,
+-				       ch->dma.desc_base[ch->dma.desc].addr))) {
++	if (dma_mapping_error(ch->priv->dev, ch->dma.desc_base[ch->dma.desc].addr)) {
+ 		dev_kfree_skb_any(ch->skb[ch->dma.desc]);
+ 		ret = -ENOMEM;
+ 		goto skip;
+@@ -308,7 +307,7 @@ static netdev_tx_t xrx200_start_xmit(struct sk_buff *skb,
+ 	ch->skb[ch->dma.desc] = skb;
+ 
+ 	mapping = dma_map_single(priv->dev, skb->data, len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(priv->dev, mapping)))
++	if (dma_mapping_error(priv->dev, mapping))
+ 		goto err_drop;
+ 
+ 	/* dma needs to start on a 16 byte aligned address */
+diff --git a/drivers/net/ethernet/marvell/mv643xx_eth.c b/drivers/net/ethernet/marvell/mv643xx_eth.c
+index 90e6111ce..ee218d71f 100644
+--- a/drivers/net/ethernet/marvell/mv643xx_eth.c
++++ b/drivers/net/ethernet/marvell/mv643xx_eth.c
+@@ -750,8 +750,7 @@ txq_put_data_tso(struct net_device *dev, struct tx_queue *txq,
+ 		txq->tx_desc_mapping[tx_index] = DESC_DMA_MAP_SINGLE;
+ 		desc->buf_ptr = dma_map_single(dev->dev.parent, data,
+ 			length, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dev->dev.parent,
+-					       desc->buf_ptr))) {
++		if (dma_mapping_error(dev->dev.parent, desc->buf_ptr)) {
+ 			WARN(1, "dma_map_single failed!\n");
+ 			return -ENOMEM;
+ 		}
+diff --git a/drivers/net/ethernet/marvell/mvneta.c b/drivers/net/ethernet/marvell/mvneta.c
+index 563ceac30..cb0ed101a 100644
+--- a/drivers/net/ethernet/marvell/mvneta.c
++++ b/drivers/net/ethernet/marvell/mvneta.c
+@@ -2636,8 +2636,7 @@ mvneta_tso_put_data(struct net_device *dev, struct mvneta_tx_queue *txq,
+ 	tx_desc->data_size = size;
+ 	tx_desc->buf_phys_addr = dma_map_single(dev->dev.parent, data,
+ 						size, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev->dev.parent,
+-		     tx_desc->buf_phys_addr))) {
++	if (dma_mapping_error(dev->dev.parent, tx_desc->buf_phys_addr)) {
+ 		mvneta_txq_desc_put(txq);
+ 		return -ENOMEM;
+ 	}
+@@ -2747,8 +2746,7 @@ static int mvneta_tx_frag_process(struct mvneta_port *pp, struct sk_buff *skb,
+ 			dma_map_single(pp->dev->dev.parent, addr,
+ 				       tx_desc->data_size, DMA_TO_DEVICE);
+ 
+-		if (dma_mapping_error(pp->dev->dev.parent,
+-				      tx_desc->buf_phys_addr)) {
++		if (dma_mapping_error(pp->dev->dev.parent, tx_desc->buf_phys_addr)) {
+ 			mvneta_txq_desc_put(txq);
+ 			goto error;
+ 		}
+@@ -2816,8 +2814,7 @@ static netdev_tx_t mvneta_tx(struct sk_buff *skb, struct net_device *dev)
+ 	tx_desc->buf_phys_addr = dma_map_single(dev->dev.parent, skb->data,
+ 						tx_desc->data_size,
+ 						DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev->dev.parent,
+-				       tx_desc->buf_phys_addr))) {
++	if (dma_mapping_error(dev->dev.parent, tx_desc->buf_phys_addr)) {
+ 		mvneta_txq_desc_put(txq);
+ 		frags = 0;
+ 		goto out;
+diff --git a/drivers/net/ethernet/marvell/mvneta_bm.c b/drivers/net/ethernet/marvell/mvneta_bm.c
+index 46c942ef2..6b2776605 100644
+--- a/drivers/net/ethernet/marvell/mvneta_bm.c
++++ b/drivers/net/ethernet/marvell/mvneta_bm.c
+@@ -104,7 +104,7 @@ int mvneta_bm_construct(struct hwbm_pool *hwbm_pool, void *buf)
+ 	*(u32 *)buf = (u32)buf;
+ 	phys_addr = dma_map_single(&priv->pdev->dev, buf, bm_pool->buf_size,
+ 				   DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(&priv->pdev->dev, phys_addr)))
++	if (dma_mapping_error(&priv->pdev->dev, phys_addr))
+ 		return -ENOMEM;
+ 
+ 	mvneta_bm_pool_put_bp(priv, bm_pool, phys_addr);
+diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+index afdd22827..1cab75cfd 100644
+--- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
++++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+@@ -720,7 +720,7 @@ static void *mvpp2_buf_alloc(struct mvpp2_port *port,
+ 		dma_addr = dma_map_single(port->dev->dev.parent, data,
+ 					  MVPP2_RX_BUF_SIZE(bm_pool->pkt_size),
+ 					  DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(port->dev->dev.parent, dma_addr))) {
++		if (dma_mapping_error(port->dev->dev.parent, dma_addr)) {
+ 			mvpp2_frag_free(bm_pool, NULL, data);
+ 			return NULL;
+ 		}
+@@ -3324,7 +3324,7 @@ mvpp2_xdp_submit_frame(struct mvpp2_port *port, u16 txq_id,
+ 		dma_addr = dma_map_single(port->dev->dev.parent, xdpf->data,
+ 					  xdpf->len, DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(port->dev->dev.parent, dma_addr))) {
++		if (dma_mapping_error(port->dev->dev.parent, dma_addr)) {
+ 			mvpp2_txq_desc_put(txq);
+ 			ret = MVPP2_XDP_DROPPED;
+ 			goto out;
+@@ -3864,7 +3864,7 @@ static inline int mvpp2_tso_put_data(struct sk_buff *skb,
+ 
+ 	buf_dma_addr = dma_map_single(dev->dev.parent, tso->data, sz,
+ 				      DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev->dev.parent, buf_dma_addr))) {
++	if (dma_mapping_error(dev->dev.parent, buf_dma_addr)) {
+ 		mvpp2_txq_desc_put(txq);
+ 		return -ENOMEM;
+ 	}
+@@ -3983,7 +3983,7 @@ static netdev_tx_t mvpp2_tx(struct sk_buff *skb, struct net_device *dev)
+ 
+ 	buf_dma_addr = dma_map_single(dev->dev.parent, skb->data,
+ 				      skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev->dev.parent, buf_dma_addr))) {
++	if (dma_mapping_error(dev->dev.parent, buf_dma_addr)) {
+ 		mvpp2_txq_desc_put(txq);
+ 		frags = 0;
+ 		goto out;
+diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
+index 73fb94dd5..87f9a1f75 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
++++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
+@@ -484,7 +484,7 @@ dma_addr_t __otx2_alloc_rbuf(struct otx2_nic *pfvf, struct otx2_pool *pool)
+ 
+ 	iova = dma_map_single_attrs(pfvf->dev, buf, pool->rbsize,
+ 				    DMA_FROM_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
+-	if (unlikely(dma_mapping_error(pfvf->dev, iova))) {
++	if (dma_mapping_error(pfvf->dev, iova)) {
+ 		page_frag_free(buf);
+ 		return -ENOMEM;
+ 	}
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 6d2d60675..971be3bd8 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -808,7 +808,7 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ 	dma_addr = dma_map_single(eth->dev,
+ 				  eth->scratch_head, cnt * MTK_QDMA_PAGE_SIZE,
+ 				  DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(eth->dev, dma_addr)))
++	if (dma_mapping_error(eth->dev, dma_addr))
+ 		return -ENOMEM;
+ 
+ 	phy_ring_tail = eth->phy_scratch_ring +
+@@ -956,7 +956,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 
+ 	mapped_addr = dma_map_single(eth->dev, skb->data,
+ 				     skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(eth->dev, mapped_addr)))
++	if (dma_mapping_error(eth->dev, mapped_addr))
+ 		return -ENOMEM;
+ 
+ 	WRITE_ONCE(itxd->txd1, mapped_addr);
+@@ -998,7 +998,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 			mapped_addr = skb_frag_dma_map(eth->dev, frag, offset,
+ 						       frag_map_size,
+ 						       DMA_TO_DEVICE);
+-			if (unlikely(dma_mapping_error(eth->dev, mapped_addr)))
++			if (dma_mapping_error(eth->dev, mapped_addr))
+ 				goto err_dma;
+ 
+ 			if (i == nr_frags - 1 &&
+@@ -1292,7 +1292,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 					  eth->ip_align,
+ 					  ring->buf_size,
+ 					  DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(eth->dev, dma_addr))) {
++		if (dma_mapping_error(eth->dev, dma_addr)) {
+ 			skb_free_frag(new_data);
+ 			netdev->stats.rx_dropped++;
+ 			goto release_desc;
+@@ -1695,7 +1695,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 				ring->data[i] + NET_SKB_PAD + eth->ip_align,
+ 				ring->buf_size,
+ 				DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(eth->dev, dma_addr)))
++		if (dma_mapping_error(eth->dev, dma_addr))
+ 			return -ENOMEM;
+ 		ring->dma[i].rxd1 = (unsigned int)dma_addr;
+ 
+diff --git a/drivers/net/ethernet/mellanox/mlx4/en_rx.c b/drivers/net/ethernet/mellanox/mlx4/en_rx.c
+index 7954c1daf..39f8b5f99 100644
+--- a/drivers/net/ethernet/mellanox/mlx4/en_rx.c
++++ b/drivers/net/ethernet/mellanox/mlx4/en_rx.c
+@@ -61,7 +61,7 @@ static int mlx4_alloc_page(struct mlx4_en_priv *priv,
+ 	if (unlikely(!page))
+ 		return -ENOMEM;
+ 	dma = dma_map_page(priv->ddev, page, 0, PAGE_SIZE, priv->dma_dir);
+-	if (unlikely(dma_mapping_error(priv->ddev, dma))) {
++	if (dma_mapping_error(priv->ddev, dma)) {
+ 		__free_page(page);
+ 		return -ENOMEM;
+ 	}
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/diag/rsc_dump.c b/drivers/net/ethernet/mellanox/mlx5/core/diag/rsc_dump.c
+index ed4fb79b4..e8e8e6742 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/diag/rsc_dump.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/diag/rsc_dump.c
+@@ -85,7 +85,7 @@ static int mlx5_rsc_dump_trigger(struct mlx5_core_dev *dev, struct mlx5_rsc_dump
+ 	int err;
+ 
+ 	dma = dma_map_page(ddev, page, 0, cmd->mem_size, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(ddev, dma)))
++	if (dma_mapping_error(ddev, dma))
+ 		return -ENOMEM;
+ 
+ 	in_seq_num = MLX5_GET(resource_dump, cmd->cmd, seq_num);
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+index 2e3e78b0f..8d948df89 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+@@ -529,7 +529,7 @@ int mlx5e_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
+ 		xdptxd.dma_addr = dma_map_single(sq->pdev, xdptxd.data,
+ 						 xdptxd.len, DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(sq->pdev, xdptxd.dma_addr))) {
++		if (dma_mapping_error(sq->pdev, xdptxd.dma_addr)) {
+ 			xdp_return_frame_rx_napi(xdpf);
+ 			drops++;
+ 			continue;
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_rx.c b/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_rx.c
+index 6a1d82503..478d2e663 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_rx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_rx.c
+@@ -256,7 +256,7 @@ resync_post_get_progress_params(struct mlx5e_icosq *sq,
+ 	pdev = mlx5_core_dma_dev(sq->channel->priv->mdev);
+ 	buf->dma_addr = dma_map_single(pdev, &buf->progress,
+ 				       PROGRESS_PARAMS_PADDED_SIZE, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(pdev, buf->dma_addr))) {
++	if (dma_mapping_error(pdev, buf->dma_addr)) {
+ 		err = -ENOMEM;
+ 		goto err_free;
+ 	}
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_tx.c b/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_tx.c
+index d16def68e..31dedccf2 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_tx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en_accel/ktls_tx.c
+@@ -324,7 +324,7 @@ tx_post_resync_dump(struct mlx5e_txqsq *sq, skb_frag_t *frag, u32 tisn, bool fir
+ 	fsz = skb_frag_size(frag);
+ 	dma_addr = skb_frag_dma_map(sq->pdev, frag, 0, fsz,
+ 				    DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(sq->pdev, dma_addr)))
++	if (dma_mapping_error(sq->pdev, dma_addr))
+ 		return -ENOMEM;
+ 
+ 	dseg->addr       = cpu_to_be64(dma_addr);
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_rx.c b/drivers/net/ethernet/mellanox/mlx5/core/en_rx.c
+index 7f5851c61..e18ba719a 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en_rx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en_rx.c
+@@ -277,7 +277,7 @@ static inline int mlx5e_page_alloc_pool(struct mlx5e_rq *rq,
+ 
+ 	dma_info->addr = dma_map_page(rq->pdev, dma_info->page, 0,
+ 				      PAGE_SIZE, rq->buff.map_dir);
+-	if (unlikely(dma_mapping_error(rq->pdev, dma_info->addr))) {
++	if (dma_mapping_error(rq->pdev, dma_info->addr)) {
+ 		page_pool_recycle_direct(rq->page_pool, dma_info->page);
+ 		dma_info->page = NULL;
+ 		return -ENOMEM;
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_tx.c b/drivers/net/ethernet/mellanox/mlx5/core/en_tx.c
+index e47e2a005..46edc4fac 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en_tx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en_tx.c
+@@ -282,7 +282,7 @@ mlx5e_txwqe_build_dsegs(struct mlx5e_txqsq *sq, struct sk_buff *skb,
+ 	if (headlen) {
+ 		dma_addr = dma_map_single(sq->pdev, skb_data, headlen,
+ 					  DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(sq->pdev, dma_addr)))
++		if (dma_mapping_error(sq->pdev, dma_addr))
+ 			goto dma_unmap_wqe_err;
+ 
+ 		dseg->addr       = cpu_to_be64(dma_addr);
+@@ -300,7 +300,7 @@ mlx5e_txwqe_build_dsegs(struct mlx5e_txqsq *sq, struct sk_buff *skb,
+ 
+ 		dma_addr = skb_frag_dma_map(sq->pdev, frag, 0, fsz,
+ 					    DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(sq->pdev, dma_addr)))
++		if (dma_mapping_error(sq->pdev, dma_addr))
+ 			goto dma_unmap_wqe_err;
+ 
+ 		dseg->addr       = cpu_to_be64(dma_addr);
+@@ -642,7 +642,7 @@ mlx5e_sq_xmit_mpwqe(struct mlx5e_txqsq *sq, struct sk_buff *skb,
+ 	txd.len = skb->len;
+ 
+ 	txd.dma_addr = dma_map_single(sq->pdev, txd.data, txd.len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(sq->pdev, txd.dma_addr)))
++	if (dma_mapping_error(sq->pdev, txd.dma_addr))
+ 		goto err_unmap;
+ 	mlx5e_dma_push(sq, txd.dma_addr, txd.len, MLX5E_DMA_MAP_SINGLE);
+ 
+diff --git a/drivers/net/ethernet/neterion/vxge/vxge-config.c b/drivers/net/ethernet/neterion/vxge/vxge-config.c
+index da48dd857..289ad74a8 100644
+--- a/drivers/net/ethernet/neterion/vxge/vxge-config.c
++++ b/drivers/net/ethernet/neterion/vxge/vxge-config.c
+@@ -1184,7 +1184,7 @@ __vxge_hw_blockpool_create(struct __vxge_hw_device *hldev,
+ 		dma_addr = dma_map_single(&hldev->pdev->dev, memblock,
+ 					  VXGE_HW_BLOCK_SIZE,
+ 					  DMA_BIDIRECTIONAL);
+-		if (unlikely(dma_mapping_error(&hldev->pdev->dev, dma_addr))) {
++		if (dma_mapping_error(&hldev->pdev->dev, dma_addr)) {
+ 			vxge_os_dma_free(hldev->pdev, memblock, &acc_handle);
+ 			__vxge_hw_blockpool_destroy(blockpool);
+ 			status = VXGE_HW_ERR_OUT_OF_MEMORY;
+@@ -2270,7 +2270,7 @@ static void vxge_hw_blockpool_block_add(struct __vxge_hw_device *devh,
+ 	dma_addr = dma_map_single(&devh->pdev->dev, block_addr, length,
+ 				  DMA_BIDIRECTIONAL);
+ 
+-	if (unlikely(dma_mapping_error(&devh->pdev->dev, dma_addr))) {
++	if (dma_mapping_error(&devh->pdev->dev, dma_addr)) {
+ 		vxge_os_dma_free(devh->pdev, block_addr, &acc_handle);
+ 		blockpool->req_out--;
+ 		goto exit;
+@@ -2358,7 +2358,7 @@ static void *__vxge_hw_blockpool_malloc(struct __vxge_hw_device *devh, u32 size,
+ 		dma_object->addr = dma_map_single(&devh->pdev->dev, memblock,
+ 						  size, DMA_BIDIRECTIONAL);
+ 
+-		if (unlikely(dma_mapping_error(&devh->pdev->dev, dma_object->addr))) {
++		if (dma_mapping_error(&devh->pdev->dev, dma_object->addr)) {
+ 			vxge_os_dma_free(devh->pdev, memblock,
+ 				&dma_object->acc_handle);
+ 			memblock = NULL;
+diff --git a/drivers/net/ethernet/neterion/vxge/vxge-main.c b/drivers/net/ethernet/neterion/vxge/vxge-main.c
+index 87892bd99..af324429f 100644
+--- a/drivers/net/ethernet/neterion/vxge/vxge-main.c
++++ b/drivers/net/ethernet/neterion/vxge/vxge-main.c
+@@ -244,7 +244,7 @@ static int vxge_rx_map(void *dtrh, struct vxge_ring *ring)
+ 	dma_addr = dma_map_single(&ring->pdev->dev, rx_priv->skb_data,
+ 				  rx_priv->data_size, DMA_FROM_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(&ring->pdev->dev, dma_addr))) {
++	if (dma_mapping_error(&ring->pdev->dev, dma_addr)) {
+ 		ring->stats.pci_map_fail++;
+ 		return -EIO;
+ 	}
+@@ -901,7 +901,7 @@ vxge_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	dma_pointer = dma_map_single(&fifo->pdev->dev, skb->data,
+ 				     first_frg_len, DMA_TO_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(&fifo->pdev->dev, dma_pointer))) {
++	if (dma_mapping_error(&fifo->pdev->dev, dma_pointer)) {
+ 		vxge_hw_fifo_txdl_free(fifo_hw, dtr);
+ 		fifo->stats.pci_map_fail++;
+ 		goto _exit0;
+@@ -931,7 +931,7 @@ vxge_xmit(struct sk_buff *skb, struct net_device *dev)
+ 						    0, skb_frag_size(frag),
+ 						    DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(&fifo->pdev->dev, dma_pointer)))
++		if (dma_mapping_error(&fifo->pdev->dev, dma_pointer))
+ 			goto _exit2;
+ 		vxge_debug_tx(VXGE_TRACE,
+ 			"%s: %s:%d frag = %d dma_pointer = 0x%llx",
+diff --git a/drivers/net/ethernet/nvidia/forcedeth.c b/drivers/net/ethernet/nvidia/forcedeth.c
+index 8724d6a9e..be2cf2e02 100644
+--- a/drivers/net/ethernet/nvidia/forcedeth.c
++++ b/drivers/net/ethernet/nvidia/forcedeth.c
+@@ -1836,8 +1836,7 @@ static int nv_alloc_rx(struct net_device *dev)
+ 							     skb->data,
+ 							     skb_tailroom(skb),
+ 							     DMA_FROM_DEVICE);
+-			if (unlikely(dma_mapping_error(&np->pci_dev->dev,
+-						       np->put_rx_ctx->dma))) {
++			if (dma_mapping_error(&np->pci_dev->dev, np->put_rx_ctx->dma)) {
+ 				kfree_skb(skb);
+ 				goto packet_dropped;
+ 			}
+@@ -1877,8 +1876,7 @@ static int nv_alloc_rx_optimized(struct net_device *dev)
+ 							     skb->data,
+ 							     skb_tailroom(skb),
+ 							     DMA_FROM_DEVICE);
+-			if (unlikely(dma_mapping_error(&np->pci_dev->dev,
+-						       np->put_rx_ctx->dma))) {
++			if (dma_mapping_error(&np->pci_dev->dev, np->put_rx_ctx->dma)) {
+ 				kfree_skb(skb);
+ 				goto packet_dropped;
+ 			}
+@@ -2253,8 +2251,7 @@ static netdev_tx_t nv_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 		np->put_tx_ctx->dma = dma_map_single(&np->pci_dev->dev,
+ 						     skb->data + offset, bcnt,
+ 						     DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(&np->pci_dev->dev,
+-					       np->put_tx_ctx->dma))) {
++		if (dma_mapping_error(&np->pci_dev->dev, np->put_tx_ctx->dma)) {
+ 			/* on DMA mapping error - drop the packet */
+ 			dev_kfree_skb_any(skb);
+ 			u64_stats_update_begin(&np->swstats_tx_syncp);
+@@ -2295,8 +2292,7 @@ static netdev_tx_t nv_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 							frag, offset,
+ 							bcnt,
+ 							DMA_TO_DEVICE);
+-			if (unlikely(dma_mapping_error(&np->pci_dev->dev,
+-						       np->put_tx_ctx->dma))) {
++			if (dma_mapping_error(&np->pci_dev->dev, np->put_tx_ctx->dma)) {
+ 
+ 				/* Unwind the mapped fragments */
+ 				do {
+@@ -2430,8 +2426,7 @@ static netdev_tx_t nv_start_xmit_optimized(struct sk_buff *skb,
+ 		np->put_tx_ctx->dma = dma_map_single(&np->pci_dev->dev,
+ 						     skb->data + offset, bcnt,
+ 						     DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(&np->pci_dev->dev,
+-					       np->put_tx_ctx->dma))) {
++		if (dma_mapping_error(&np->pci_dev->dev, np->put_tx_ctx->dma)) {
+ 			/* on DMA mapping error - drop the packet */
+ 			dev_kfree_skb_any(skb);
+ 			u64_stats_update_begin(&np->swstats_tx_syncp);
+@@ -2473,8 +2468,7 @@ static netdev_tx_t nv_start_xmit_optimized(struct sk_buff *skb,
+ 							bcnt,
+ 							DMA_TO_DEVICE);
+ 
+-			if (unlikely(dma_mapping_error(&np->pci_dev->dev,
+-						       np->put_tx_ctx->dma))) {
++			if (dma_mapping_error(&np->pci_dev->dev, np->put_tx_ctx->dma)) {
+ 
+ 				/* Unwind the mapped fragments */
+ 				do {
+@@ -5178,8 +5172,7 @@ static int nv_loopback_test(struct net_device *dev)
+ 	test_dma_addr = dma_map_single(&np->pci_dev->dev, tx_skb->data,
+ 				       skb_tailroom(tx_skb),
+ 				       DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(&np->pci_dev->dev,
+-				       test_dma_addr))) {
++	if (dma_mapping_error(&np->pci_dev->dev, test_dma_addr)) {
+ 		dev_kfree_skb_any(tx_skb);
+ 		goto out;
+ 	}
+diff --git a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
+index 9156c9825..37ce436ea 100644
+--- a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
++++ b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
+@@ -281,7 +281,7 @@ static int ionic_rx_page_alloc(struct ionic_queue *q,
+ 
+ 	page_info->dma_addr = dma_map_page(dev, page_info->page, 0, PAGE_SIZE,
+ 					   DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, page_info->dma_addr))) {
++	if (dma_mapping_error(dev, page_info->dma_addr)) {
+ 		put_page(page_info->page);
+ 		page_info->dma_addr = 0;
+ 		page_info->page = NULL;
+diff --git a/drivers/net/ethernet/qlogic/qed/qed_ll2.c b/drivers/net/ethernet/qlogic/qed/qed_ll2.c
+index 49783f365..16d01fe29 100644
+--- a/drivers/net/ethernet/qlogic/qed/qed_ll2.c
++++ b/drivers/net/ethernet/qlogic/qed/qed_ll2.c
+@@ -2629,7 +2629,7 @@ static int qed_ll2_start_xmit(struct qed_dev *cdev, struct sk_buff *skb,
+ 
+ 	mapping = dma_map_single(&cdev->pdev->dev, skb->data,
+ 				 skb->len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(&cdev->pdev->dev, mapping))) {
++	if (dma_mapping_error(&cdev->pdev->dev, mapping)) {
+ 		DP_NOTICE(cdev, "SKB mapping failed\n");
+ 		return -EINVAL;
+ 	}
+@@ -2672,7 +2672,7 @@ static int qed_ll2_start_xmit(struct qed_dev *cdev, struct sk_buff *skb,
+ 		mapping = skb_frag_dma_map(&cdev->pdev->dev, frag, 0,
+ 					   skb_frag_size(frag), DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(&cdev->pdev->dev, mapping))) {
++		if (dma_mapping_error(&cdev->pdev->dev, mapping)) {
+ 			DP_NOTICE(cdev,
+ 				  "Unable to map frag - dropping packet\n");
+ 			rc = -ENOMEM;
+diff --git a/drivers/net/ethernet/qlogic/qede/qede_ethtool.c b/drivers/net/ethernet/qlogic/qede/qede_ethtool.c
+index bedbb85a1..b25692bbb 100644
+--- a/drivers/net/ethernet/qlogic/qede/qede_ethtool.c
++++ b/drivers/net/ethernet/qlogic/qede/qede_ethtool.c
+@@ -1482,7 +1482,7 @@ static int qede_selftest_transmit_traffic(struct qede_dev *edev,
+ 	/* Map skb linear data for DMA and set in the first BD */
+ 	mapping = dma_map_single(&edev->pdev->dev, skb->data,
+ 				 skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(&edev->pdev->dev, mapping))) {
++	if (dma_mapping_error(&edev->pdev->dev, mapping)) {
+ 		DP_NOTICE(edev, "SKB mapping failed\n");
+ 		return -ENOMEM;
+ 	}
+diff --git a/drivers/net/ethernet/qlogic/qede/qede_fp.c b/drivers/net/ethernet/qlogic/qede/qede_fp.c
+index a2494bf85..907e3b5ca 100644
+--- a/drivers/net/ethernet/qlogic/qede/qede_fp.c
++++ b/drivers/net/ethernet/qlogic/qede/qede_fp.c
+@@ -48,7 +48,7 @@ int qede_alloc_rx_buffer(struct qede_rx_queue *rxq, bool allow_lazy)
+ 	 */
+ 	mapping = dma_map_page(rxq->dev, data, 0,
+ 			       PAGE_SIZE, rxq->data_direction);
+-	if (unlikely(dma_mapping_error(rxq->dev, mapping))) {
++	if (dma_mapping_error(rxq->dev, mapping)) {
+ 		__free_page(data);
+ 		return -ENOMEM;
+ 	}
+@@ -247,7 +247,7 @@ static int map_frag_to_bd(struct qede_tx_queue *txq,
+ 	/* Map skb non-linear frag data for DMA */
+ 	mapping = skb_frag_dma_map(txq->dev, frag, 0,
+ 				   skb_frag_size(frag), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(txq->dev, mapping)))
++	if (dma_mapping_error(txq->dev, mapping))
+ 		return -ENOMEM;
+ 
+ 	/* Setup the data pointer of the frag data */
+@@ -364,7 +364,7 @@ int qede_xdp_transmit(struct net_device *dev, int n_frames,
+ 
+ 		mapping = dma_map_single(dmadev, xdpf->data, xdpf->len,
+ 					 DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dmadev, mapping))) {
++		if (dma_mapping_error(dmadev, mapping)) {
+ 			xdp_return_frame_rx_napi(xdpf);
+ 			drops++;
+ 
+@@ -1542,7 +1542,7 @@ netdev_tx_t qede_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 	/* Map skb linear data for DMA and set in the first BD */
+ 	mapping = dma_map_single(txq->dev, skb->data,
+ 				 skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(txq->dev, mapping))) {
++	if (dma_mapping_error(txq->dev, mapping)) {
+ 		DP_NOTICE(edev, "SKB mapping failed\n");
+ 		qede_free_failed_tx_pkt(txq, first_bd, 0, false);
+ 		qede_update_tx_producer(txq);
+diff --git a/drivers/net/ethernet/realtek/r8169_main.c b/drivers/net/ethernet/realtek/r8169_main.c
+index 46d8510b2..16612108c 100644
+--- a/drivers/net/ethernet/realtek/r8169_main.c
++++ b/drivers/net/ethernet/realtek/r8169_main.c
+@@ -3830,7 +3830,7 @@ static struct page *rtl8169_alloc_rx_data(struct rtl8169_private *tp,
+ 		return NULL;
+ 
+ 	mapping = dma_map_page(d, data, 0, R8169_RX_BUF_SIZE, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(d, mapping))) {
++	if (dma_mapping_error(d, mapping)) {
+ 		netdev_err(tp->dev, "Failed to map RX DMA!\n");
+ 		__free_pages(data, get_order(R8169_RX_BUF_SIZE));
+ 		return NULL;
+diff --git a/drivers/net/ethernet/rocker/rocker_main.c b/drivers/net/ethernet/rocker/rocker_main.c
+index dd0bc7f0a..b1a6022a2 100644
+--- a/drivers/net/ethernet/rocker/rocker_main.c
++++ b/drivers/net/ethernet/rocker/rocker_main.c
+@@ -1875,7 +1875,7 @@ static int rocker_tx_desc_frag_map_put(const struct rocker_port *rocker_port,
+ 	struct rocker_tlv *frag;
+ 
+ 	dma_handle = dma_map_single(&pdev->dev, buf, buf_len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(&pdev->dev, dma_handle))) {
++	if (dma_mapping_error(&pdev->dev, dma_handle)) {
+ 		if (net_ratelimit())
+ 			netdev_err(rocker_port->dev, "failed to dma map tx frag\n");
+ 		return -EIO;
+diff --git a/drivers/net/ethernet/sfc/falcon/rx.c b/drivers/net/ethernet/sfc/falcon/rx.c
+index 966f13e74..68b62402c 100644
+--- a/drivers/net/ethernet/sfc/falcon/rx.c
++++ b/drivers/net/ethernet/sfc/falcon/rx.c
+@@ -170,8 +170,7 @@ static int ef4_init_rx_buffers(struct ef4_rx_queue *rx_queue, bool atomic)
+ 				dma_map_page(&efx->pci_dev->dev, page, 0,
+ 					     PAGE_SIZE << efx->rx_buffer_order,
+ 					     DMA_FROM_DEVICE);
+-			if (unlikely(dma_mapping_error(&efx->pci_dev->dev,
+-						       dma_addr))) {
++			if (dma_mapping_error(&efx->pci_dev->dev, dma_addr)) {
+ 				__free_pages(page, efx->rx_buffer_order);
+ 				return -EIO;
+ 			}
+diff --git a/drivers/net/ethernet/sfc/falcon/tx.c b/drivers/net/ethernet/sfc/falcon/tx.c
+index f7306e93a..486ae15a7 100644
+--- a/drivers/net/ethernet/sfc/falcon/tx.c
++++ b/drivers/net/ethernet/sfc/falcon/tx.c
+@@ -222,7 +222,7 @@ static int ef4_tx_map_data(struct ef4_tx_queue *tx_queue, struct sk_buff *skb)
+ 	unmap_len = len;
+ 	unmap_addr = dma_addr;
+ 
+-	if (unlikely(dma_mapping_error(dma_dev, dma_addr)))
++	if (dma_mapping_error(dma_dev, dma_addr))
+ 		return -EIO;
+ 
+ 	/* Add descriptors for each fragment. */
+@@ -257,7 +257,7 @@ static int ef4_tx_map_data(struct ef4_tx_queue *tx_queue, struct sk_buff *skb)
+ 		unmap_len = len;
+ 		unmap_addr = dma_addr;
+ 
+-		if (unlikely(dma_mapping_error(dma_dev, dma_addr)))
++		if (dma_mapping_error(dma_dev, dma_addr))
+ 			return -EIO;
+ 	} while (1);
+ }
+diff --git a/drivers/net/ethernet/sfc/rx_common.c b/drivers/net/ethernet/sfc/rx_common.c
+index 68fc7d317..4e3b72178 100644
+--- a/drivers/net/ethernet/sfc/rx_common.c
++++ b/drivers/net/ethernet/sfc/rx_common.c
+@@ -393,8 +393,7 @@ static int efx_init_rx_buffers(struct efx_rx_queue *rx_queue, bool atomic)
+ 				dma_map_page(&efx->pci_dev->dev, page, 0,
+ 					     PAGE_SIZE << efx->rx_buffer_order,
+ 					     DMA_FROM_DEVICE);
+-			if (unlikely(dma_mapping_error(&efx->pci_dev->dev,
+-						       dma_addr))) {
++			if (dma_mapping_error(&efx->pci_dev->dev, dma_addr)) {
+ 				__free_pages(page, efx->rx_buffer_order);
+ 				return -EIO;
+ 			}
+diff --git a/drivers/net/ethernet/sfc/tx_common.c b/drivers/net/ethernet/sfc/tx_common.c
+index d530cde2b..6b1bd889f 100644
+--- a/drivers/net/ethernet/sfc/tx_common.c
++++ b/drivers/net/ethernet/sfc/tx_common.c
+@@ -346,7 +346,7 @@ int efx_tx_map_data(struct efx_tx_queue *tx_queue, struct sk_buff *skb,
+ 	unmap_len = len;
+ 	unmap_addr = dma_addr;
+ 
+-	if (unlikely(dma_mapping_error(dma_dev, dma_addr)))
++	if (dma_mapping_error(dma_dev, dma_addr))
+ 		return -EIO;
+ 
+ 	if (segment_count) {
+@@ -395,7 +395,7 @@ int efx_tx_map_data(struct efx_tx_queue *tx_queue, struct sk_buff *skb,
+ 		unmap_len = len;
+ 		unmap_addr = dma_addr;
+ 
+-		if (unlikely(dma_mapping_error(dma_dev, dma_addr)))
++		if (dma_mapping_error(dma_dev, dma_addr))
+ 			return -EIO;
+ 	} while (1);
+ }
+diff --git a/drivers/net/ethernet/sfc/tx_tso.c b/drivers/net/ethernet/sfc/tx_tso.c
+index 898e5c61d..a7febf03a 100644
+--- a/drivers/net/ethernet/sfc/tx_tso.c
++++ b/drivers/net/ethernet/sfc/tx_tso.c
+@@ -202,7 +202,7 @@ static int tso_start(struct tso_state *st, struct efx_nic *efx,
+ 	st->dma_addr = dma_addr + header_len;
+ 	st->unmap_len = 0;
+ 
+-	return unlikely(dma_mapping_error(dma_dev, dma_addr)) ? -ENOMEM : 0;
++	return dma_mapping_error(dma_dev, dma_addr) ? -ENOMEM : 0;
+ }
+ 
+ static int tso_get_fragment(struct tso_state *st, struct efx_nic *efx,
+diff --git a/drivers/net/ethernet/sis/sis900.c b/drivers/net/ethernet/sis/sis900.c
+index 620c26f71..457af6764 100644
+--- a/drivers/net/ethernet/sis/sis900.c
++++ b/drivers/net/ethernet/sis/sis900.c
+@@ -1193,8 +1193,7 @@ sis900_init_rx_ring(struct net_device *net_dev)
+ 							     skb->data,
+ 							     RX_BUF_SIZE,
+ 							     DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(&sis_priv->pci_dev->dev,
+-					       sis_priv->rx_ring[i].bufptr))) {
++		if (dma_mapping_error(&sis_priv->pci_dev->dev, sis_priv->rx_ring[i].bufptr)) {
+ 			dev_kfree_skb(skb);
+ 			sis_priv->rx_skbuff[i] = NULL;
+ 			break;
+@@ -1619,13 +1618,12 @@ sis900_start_xmit(struct sk_buff *skb, struct net_device *net_dev)
+ 	sis_priv->tx_ring[entry].bufptr = dma_map_single(&sis_priv->pci_dev->dev,
+ 							 skb->data, skb->len,
+ 							 DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(&sis_priv->pci_dev->dev,
+-				       sis_priv->tx_ring[entry].bufptr))) {
+-			dev_kfree_skb_any(skb);
+-			sis_priv->tx_skbuff[entry] = NULL;
+-			net_dev->stats.tx_dropped++;
+-			spin_unlock_irqrestore(&sis_priv->lock, flags);
+-			return NETDEV_TX_OK;
++	if (dma_mapping_error(&sis_priv->pci_dev->dev, sis_priv->tx_ring[entry].bufptr)) {
++		dev_kfree_skb_any(skb);
++		sis_priv->tx_skbuff[entry] = NULL;
++		net_dev->stats.tx_dropped++;
++		spin_unlock_irqrestore(&sis_priv->lock, flags);
++		return NETDEV_TX_OK;
+ 	}
+ 	sis_priv->tx_ring[entry].cmdsts = (OWN | INTR | skb->len);
+ 	sw32(cr, TxENA | sr32(cr));
+@@ -1834,8 +1832,8 @@ static int sis900_rx(struct net_device *net_dev)
+ 				dma_map_single(&sis_priv->pci_dev->dev,
+ 					       skb->data, RX_BUF_SIZE,
+ 					       DMA_FROM_DEVICE);
+-			if (unlikely(dma_mapping_error(&sis_priv->pci_dev->dev,
+-						       sis_priv->rx_ring[entry].bufptr))) {
++			if (dma_mapping_error(&sis_priv->pci_dev->dev,
++					      sis_priv->rx_ring[entry].bufptr)) {
+ 				dev_kfree_skb_irq(skb);
+ 				sis_priv->rx_skbuff[entry] = NULL;
+ 				break;
+@@ -1869,8 +1867,8 @@ static int sis900_rx(struct net_device *net_dev)
+ 				dma_map_single(&sis_priv->pci_dev->dev,
+ 					       skb->data, RX_BUF_SIZE,
+ 					       DMA_FROM_DEVICE);
+-			if (unlikely(dma_mapping_error(&sis_priv->pci_dev->dev,
+-						       sis_priv->rx_ring[entry].bufptr))) {
++			if (dma_mapping_error(&sis_priv->pci_dev->dev,
++					      sis_priv->rx_ring[entry].bufptr)) {
+ 				dev_kfree_skb_irq(skb);
+ 				sis_priv->rx_skbuff[entry] = NULL;
+ 				break;
+diff --git a/drivers/net/ethernet/socionext/sni_ave.c b/drivers/net/ethernet/socionext/sni_ave.c
+index 501b9c7ab..afa9d23d6 100644
+--- a/drivers/net/ethernet/socionext/sni_ave.c
++++ b/drivers/net/ethernet/socionext/sni_ave.c
+@@ -553,7 +553,7 @@ static int ave_dma_map(struct net_device *ndev, struct ave_desc *desc,
+ 	dma_addr_t map_addr;
+ 
+ 	map_addr = dma_map_single(ndev->dev.parent, ptr, len, dir);
+-	if (unlikely(dma_mapping_error(ndev->dev.parent, map_addr)))
++	if (dma_mapping_error(ndev->dev.parent, map_addr))
+ 		return -ENOMEM;
+ 
+ 	desc->skbs_dma = map_addr;
+diff --git a/drivers/net/ethernet/sun/sunhme.c b/drivers/net/ethernet/sun/sunhme.c
+index 54b53dbdb..22b5a967b 100644
+--- a/drivers/net/ethernet/sun/sunhme.c
++++ b/drivers/net/ethernet/sun/sunhme.c
+@@ -2038,7 +2038,7 @@ static void happy_meal_rx(struct happy_meal *hp, struct net_device *dev)
+ 			mapping = dma_map_single(hp->dma_dev, new_skb->data,
+ 						 RX_BUF_ALLOC_SIZE,
+ 						 DMA_FROM_DEVICE);
+-			if (unlikely(dma_mapping_error(hp->dma_dev, mapping))) {
++			if (dma_mapping_error(hp->dma_dev, mapping)) {
+ 				dev_kfree_skb_any(new_skb);
+ 				drops++;
+ 				goto drop_it;
+@@ -2318,7 +2318,7 @@ static netdev_tx_t happy_meal_start_xmit(struct sk_buff *skb,
+ 
+ 		len = skb->len;
+ 		mapping = dma_map_single(hp->dma_dev, skb->data, len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(hp->dma_dev, mapping)))
++		if (dma_mapping_error(hp->dma_dev, mapping))
+ 			goto out_dma_error;
+ 		tx_flags |= (TXFLAG_SOP | TXFLAG_EOP);
+ 		hme_write_txd(hp, &hp->happy_block->happy_meal_txd[entry],
+@@ -2335,7 +2335,7 @@ static netdev_tx_t happy_meal_start_xmit(struct sk_buff *skb,
+ 		first_len = skb_headlen(skb);
+ 		first_mapping = dma_map_single(hp->dma_dev, skb->data, first_len,
+ 					       DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(hp->dma_dev, first_mapping)))
++		if (dma_mapping_error(hp->dma_dev, first_mapping))
+ 			goto out_dma_error;
+ 		entry = NEXT_TX(entry);
+ 
+@@ -2346,7 +2346,7 @@ static netdev_tx_t happy_meal_start_xmit(struct sk_buff *skb,
+ 			len = skb_frag_size(this_frag);
+ 			mapping = skb_frag_dma_map(hp->dma_dev, this_frag,
+ 						   0, len, DMA_TO_DEVICE);
+-			if (unlikely(dma_mapping_error(hp->dma_dev, mapping))) {
++			if (dma_mapping_error(hp->dma_dev, mapping)) {
+ 				unmap_partial_tx_skb(hp, first_mapping, first_len,
+ 						     first_entry, entry);
+ 				goto out_dma_error;
+diff --git a/drivers/net/ethernet/ti/am65-cpsw-nuss.c b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+index 766e8866b..f2bf609bd 100644
+--- a/drivers/net/ethernet/ti/am65-cpsw-nuss.c
++++ b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+@@ -367,7 +367,7 @@ static int am65_cpsw_nuss_rx_push(struct am65_cpsw_common *common,
+ 	desc_dma = k3_cppi_desc_pool_virt2dma(rx_chn->desc_pool, desc_rx);
+ 
+ 	buf_dma = dma_map_single(dev, skb->data, pkt_len, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, buf_dma))) {
++	if (dma_mapping_error(dev, buf_dma)) {
+ 		k3_cppi_desc_pool_free(rx_chn->desc_pool, desc_rx);
+ 		dev_err(dev, "Failed to map rx skb buffer\n");
+ 		return -EINVAL;
+@@ -1121,7 +1121,7 @@ static netdev_tx_t am65_cpsw_nuss_ndo_slave_xmit(struct sk_buff *skb,
+ 	/* Map the linear buffer */
+ 	buf_dma = dma_map_single(dev, skb->data, pkt_len,
+ 				 DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, buf_dma))) {
++	if (dma_mapping_error(dev, buf_dma)) {
+ 		dev_err(dev, "Failed to map tx skb buffer\n");
+ 		ndev->stats.tx_errors++;
+ 		goto err_free_skb;
+@@ -1177,7 +1177,7 @@ static netdev_tx_t am65_cpsw_nuss_ndo_slave_xmit(struct sk_buff *skb,
+ 
+ 		buf_dma = skb_frag_dma_map(dev, frag, 0, frag_size,
+ 					   DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dev, buf_dma))) {
++		if (dma_mapping_error(dev, buf_dma)) {
+ 			dev_err(dev, "Failed to map tx skb page\n");
+ 			k3_cppi_desc_pool_free(tx_chn->desc_pool, next_desc);
+ 			ndev->stats.tx_errors++;
+diff --git a/drivers/net/ethernet/ti/netcp_core.c b/drivers/net/ethernet/ti/netcp_core.c
+index d7a144b4a..ce5c19689 100644
+--- a/drivers/net/ethernet/ti/netcp_core.c
++++ b/drivers/net/ethernet/ti/netcp_core.c
+@@ -883,7 +883,7 @@ static int netcp_allocate_rx_buf(struct netcp_intf *netcp, int fdq)
+ 		}
+ 		dma = dma_map_single(netcp->dev, bufptr, buf_len,
+ 				     DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(netcp->dev, dma)))
++		if (dma_mapping_error(netcp->dev, dma))
+ 			goto fail;
+ 
+ 		/* warning!!!! We are saving the virtual ptr in the sw_data
+@@ -1090,7 +1090,7 @@ netcp_tx_map_skb(struct sk_buff *skb, struct netcp_intf *netcp)
+ 
+ 	/* Map the linear buffer */
+ 	dma_addr = dma_map_single(dev, skb->data, pkt_len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, dma_addr))) {
++	if (dma_mapping_error(dev, dma_addr)) {
+ 		dev_err(netcp->ndev_dev, "Failed to map skb buffer\n");
+ 		return NULL;
+ 	}
+diff --git a/drivers/net/ethernet/via/via-rhine.c b/drivers/net/ethernet/via/via-rhine.c
+index 73ca597eb..52318530a 100644
+--- a/drivers/net/ethernet/via/via-rhine.c
++++ b/drivers/net/ethernet/via/via-rhine.c
+@@ -1212,7 +1212,7 @@ static inline int rhine_skb_dma_init(struct net_device *dev,
+ 		return -ENOMEM;
+ 
+ 	sd->dma = dma_map_single(hwdev, sd->skb->data, size, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(hwdev, sd->dma))) {
++	if (dma_mapping_error(hwdev, sd->dma)) {
+ 		netif_err(rp, drv, dev, "Rx DMA mapping failure\n");
+ 		dev_kfree_skb_any(sd->skb);
+ 		return -EIO;
+diff --git a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+index 6fea980ac..f914b30d5 100644
+--- a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
++++ b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+@@ -763,7 +763,7 @@ axienet_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 
+ 	phys = dma_map_single(ndev->dev.parent, skb->data,
+ 			      skb_headlen(skb), DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(ndev->dev.parent, phys))) {
++	if (dma_mapping_error(ndev->dev.parent, phys)) {
+ 		if (net_ratelimit())
+ 			netdev_err(ndev, "TX DMA mapping error\n");
+ 		ndev->stats.tx_dropped++;
+@@ -781,7 +781,7 @@ axienet_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 				      skb_frag_address(frag),
+ 				      skb_frag_size(frag),
+ 				      DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(ndev->dev.parent, phys))) {
++		if (dma_mapping_error(ndev->dev.parent, phys)) {
+ 			if (net_ratelimit())
+ 				netdev_err(ndev, "TX DMA mapping error\n");
+ 			ndev->stats.tx_dropped++;
+@@ -874,7 +874,7 @@ static void axienet_recv(struct net_device *ndev)
+ 		phys = dma_map_single(ndev->dev.parent, new_skb->data,
+ 				      lp->max_frm_size,
+ 				      DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(ndev->dev.parent, phys))) {
++		if (dma_mapping_error(ndev->dev.parent, phys)) {
+ 			if (net_ratelimit())
+ 				netdev_err(ndev, "RX DMA mapping error\n");
+ 			dev_kfree_skb(new_skb);
+diff --git a/drivers/net/wireless/ath/ath10k/htt_rx.c b/drivers/net/wireless/ath/ath10k/htt_rx.c
+index 9c4e6cf21..98c4f9c29 100644
+--- a/drivers/net/wireless/ath/ath10k/htt_rx.c
++++ b/drivers/net/wireless/ath/ath10k/htt_rx.c
+@@ -170,7 +170,7 @@ static int __ath10k_htt_rx_ring_fill_n(struct ath10k_htt *htt, int num)
+ 				       skb->len + skb_tailroom(skb),
+ 				       DMA_FROM_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(htt->ar->dev, paddr))) {
++		if (dma_mapping_error(htt->ar->dev, paddr)) {
+ 			dev_kfree_skb_any(skb);
+ 			ret = -ENOMEM;
+ 			goto fail;
+diff --git a/drivers/net/wireless/ath/ath10k/pci.c b/drivers/net/wireless/ath/ath10k/pci.c
+index 8ab262931..063df651f 100644
+--- a/drivers/net/wireless/ath/ath10k/pci.c
++++ b/drivers/net/wireless/ath/ath10k/pci.c
+@@ -779,7 +779,7 @@ static int __ath10k_pci_rx_post_buf(struct ath10k_pci_pipe *pipe)
+ 	paddr = dma_map_single(ar->dev, skb->data,
+ 			       skb->len + skb_tailroom(skb),
+ 			       DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(ar->dev, paddr))) {
++	if (dma_mapping_error(ar->dev, paddr)) {
+ 		ath10k_warn(ar, "failed to dma map pci rx buf\n");
+ 		dev_kfree_skb_any(skb);
+ 		return -EIO;
+diff --git a/drivers/net/wireless/ath/ath10k/snoc.c b/drivers/net/wireless/ath/ath10k/snoc.c
+index fd41f2545..e2121b5dd 100644
+--- a/drivers/net/wireless/ath/ath10k/snoc.c
++++ b/drivers/net/wireless/ath/ath10k/snoc.c
+@@ -505,7 +505,7 @@ static int __ath10k_snoc_rx_post_buf(struct ath10k_snoc_pipe *pipe)
+ 	paddr = dma_map_single(ar->dev, skb->data,
+ 			       skb->len + skb_tailroom(skb),
+ 			       DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(ar->dev, paddr))) {
++	if (dma_mapping_error(ar->dev, paddr)) {
+ 		ath10k_warn(ar, "failed to dma map snoc rx buf\n");
+ 		dev_kfree_skb_any(skb);
+ 		return -EIO;
+diff --git a/drivers/net/wireless/ath/ath11k/ce.c b/drivers/net/wireless/ath/ath11k/ce.c
+index 9d730f8ac..4a4c946cb 100644
+--- a/drivers/net/wireless/ath/ath11k/ce.c
++++ b/drivers/net/wireless/ath/ath11k/ce.c
+@@ -279,7 +279,7 @@ static int ath11k_ce_rx_post_pipe(struct ath11k_ce_pipe *pipe)
+ 		paddr = dma_map_single(ab->dev, skb->data,
+ 				       skb->len + skb_tailroom(skb),
+ 				       DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(ab->dev, paddr))) {
++		if (dma_mapping_error(ab->dev, paddr)) {
+ 			ath11k_warn(ab, "failed to dma map ce rx buf\n");
+ 			dev_kfree_skb_any(skb);
+ 			ret = -EIO;
+diff --git a/drivers/net/wireless/ath/ath11k/dp_rx.c b/drivers/net/wireless/ath/ath11k/dp_rx.c
+index 5de619d5c..38388a6da 100644
+--- a/drivers/net/wireless/ath/ath11k/dp_rx.c
++++ b/drivers/net/wireless/ath/ath11k/dp_rx.c
+@@ -2716,7 +2716,7 @@ static struct sk_buff *ath11k_dp_rx_alloc_mon_status_buf(struct ath11k_base *ab,
+ 	paddr = dma_map_single(ab->dev, skb->data,
+ 			       skb->len + skb_tailroom(skb),
+ 			       DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(ab->dev, paddr)))
++	if (dma_mapping_error(ab->dev, paddr))
+ 		goto fail_free_skb;
+ 
+ 	spin_lock_bh(&rx_ring->idr_lock);
+diff --git a/drivers/net/wireless/ath/ath5k/base.c b/drivers/net/wireless/ath/ath5k/base.c
+index 4c6e57f99..7f8a0b632 100644
+--- a/drivers/net/wireless/ath/ath5k/base.c
++++ b/drivers/net/wireless/ath/ath5k/base.c
+@@ -617,7 +617,7 @@ struct sk_buff *ath5k_rx_skb_alloc(struct ath5k_hw *ah, dma_addr_t *skb_addr)
+ 				   skb->data, common->rx_bufsize,
+ 				   DMA_FROM_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(ah->dev, *skb_addr))) {
++	if (dma_mapping_error(ah->dev, *skb_addr)) {
+ 		ATH5K_ERR(ah, "%s: DMA mapping failed\n", __func__);
+ 		dev_kfree_skb(skb);
+ 		return NULL;
+diff --git a/drivers/net/wireless/ath/ath9k/beacon.c b/drivers/net/wireless/ath/ath9k/beacon.c
+index 71e2ada86..431b26931 100644
+--- a/drivers/net/wireless/ath/ath9k/beacon.c
++++ b/drivers/net/wireless/ath/ath9k/beacon.c
+@@ -154,7 +154,7 @@ static struct ath_buf *ath9k_beacon_generate(struct ieee80211_hw *hw,
+ 
+ 	bf->bf_buf_addr = dma_map_single(sc->dev, skb->data,
+ 					 skb->len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(sc->dev, bf->bf_buf_addr))) {
++	if (dma_mapping_error(sc->dev, bf->bf_buf_addr)) {
+ 		dev_kfree_skb_any(skb);
+ 		bf->bf_mpdu = NULL;
+ 		bf->bf_buf_addr = 0;
+diff --git a/drivers/net/wireless/ath/ath9k/recv.c b/drivers/net/wireless/ath/ath9k/recv.c
+index 0c0624a3b..0cbb82558 100644
+--- a/drivers/net/wireless/ath/ath9k/recv.c
++++ b/drivers/net/wireless/ath/ath9k/recv.c
+@@ -232,15 +232,13 @@ static int ath_rx_edma_init(struct ath_softc *sc, int nbufs)
+ 		bf->bf_buf_addr = dma_map_single(sc->dev, skb->data,
+ 						 common->rx_bufsize,
+ 						 DMA_BIDIRECTIONAL);
+-		if (unlikely(dma_mapping_error(sc->dev,
+-						bf->bf_buf_addr))) {
+-				dev_kfree_skb_any(skb);
+-				bf->bf_mpdu = NULL;
+-				bf->bf_buf_addr = 0;
+-				ath_err(common,
+-					"dma_mapping_error() on RX init\n");
+-				error = -ENOMEM;
+-				goto rx_init_fail;
++		if (dma_mapping_error(sc->dev, bf->bf_buf_addr)) {
++			dev_kfree_skb_any(skb);
++			bf->bf_mpdu = NULL;
++			bf->bf_buf_addr = 0;
++			ath_err(common, "dma_mapping_error() on RX init\n");
++			error = -ENOMEM;
++			goto rx_init_fail;
+ 		}
+ 
+ 		list_add_tail(&bf->list, &sc->rx.rxbuf);
+@@ -309,8 +307,7 @@ int ath_rx_init(struct ath_softc *sc, int nbufs)
+ 		bf->bf_buf_addr = dma_map_single(sc->dev, skb->data,
+ 						 common->rx_bufsize,
+ 						 DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(sc->dev,
+-					       bf->bf_buf_addr))) {
++		if (dma_mapping_error(sc->dev, bf->bf_buf_addr)) {
+ 			dev_kfree_skb_any(skb);
+ 			bf->bf_mpdu = NULL;
+ 			bf->bf_buf_addr = 0;
+@@ -1134,7 +1131,7 @@ int ath_rx_tasklet(struct ath_softc *sc, int flush, bool hp)
+ 		/* We will now give hardware our shiny new allocated skb */
+ 		new_buf_addr = dma_map_single(sc->dev, requeue_skb->data,
+ 					      common->rx_bufsize, dma_type);
+-		if (unlikely(dma_mapping_error(sc->dev, new_buf_addr))) {
++		if (dma_mapping_error(sc->dev, new_buf_addr)) {
+ 			dev_kfree_skb_any(requeue_skb);
+ 			goto requeue_drop_frag;
+ 		}
+diff --git a/drivers/net/wireless/ath/ath9k/xmit.c b/drivers/net/wireless/ath/ath9k/xmit.c
+index e60d4737f..0988e7c3a 100644
+--- a/drivers/net/wireless/ath/ath9k/xmit.c
++++ b/drivers/net/wireless/ath/ath9k/xmit.c
+@@ -2182,7 +2182,7 @@ static struct ath_buf *ath_tx_setup_buffer(struct ath_softc *sc,
+ 
+ 	bf->bf_buf_addr = dma_map_single(sc->dev, skb->data,
+ 					 skb->len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(sc->dev, bf->bf_buf_addr))) {
++	if (dma_mapping_error(sc->dev, bf->bf_buf_addr)) {
+ 		bf->bf_mpdu = NULL;
+ 		bf->bf_buf_addr = 0;
+ 		ath_err(ath9k_hw_common(sc->sc_ah),
+diff --git a/drivers/net/wireless/ath/wil6210/txrx.c b/drivers/net/wireless/ath/wil6210/txrx.c
+index cc830c795..49b64a558 100644
+--- a/drivers/net/wireless/ath/wil6210/txrx.c
++++ b/drivers/net/wireless/ath/wil6210/txrx.c
+@@ -276,7 +276,7 @@ static int wil_vring_alloc_skb(struct wil6210_priv *wil, struct wil_ring *vring,
+ 	skb->ip_summed = CHECKSUM_NONE;
+ 
+ 	pa = dma_map_single(dev, skb->data, skb->len, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, pa))) {
++	if (dma_mapping_error(dev, pa)) {
+ 		kfree_skb(skb);
+ 		return -ENOMEM;
+ 	}
+@@ -1820,7 +1820,7 @@ static int __wil_tx_vring_tso(struct wil6210_priv *wil, struct wil6210_vif *vif,
+ 	_hdr_desc = &vring->va[i].tx.legacy;
+ 
+ 	pa = dma_map_single(dev, skb->data, hdrlen, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, pa))) {
++	if (dma_mapping_error(dev, pa)) {
+ 		wil_err(wil, "TSO: Skb head DMA map error\n");
+ 		goto err_exit;
+ 	}
+@@ -1878,7 +1878,7 @@ static int __wil_tx_vring_tso(struct wil6210_priv *wil, struct wil6210_vif *vif,
+ 				headlen -= lenmss;
+ 			}
+ 
+-			if (unlikely(dma_mapping_error(dev, pa))) {
++			if (dma_mapping_error(dev, pa)) {
+ 				wil_err(wil, "TSO: DMA map page error\n");
+ 				goto mem_error;
+ 			}
+@@ -2064,7 +2064,7 @@ static int __wil_tx_ring(struct wil6210_priv *wil, struct wil6210_vif *vif,
+ 	wil_hex_dump_txrx("Tx ", DUMP_PREFIX_OFFSET, 16, 1,
+ 			  skb->data, skb_headlen(skb), false);
+ 
+-	if (unlikely(dma_mapping_error(dev, pa)))
++	if (dma_mapping_error(dev, pa))
+ 		return -EINVAL;
+ 	ring->ctx[i].mapped_as = wil_mapped_as_single;
+ 	/* 1-st segment */
+@@ -2098,7 +2098,7 @@ static int __wil_tx_ring(struct wil6210_priv *wil, struct wil6210_vif *vif,
+ 		_d = &ring->va[i].tx.legacy;
+ 		pa = skb_frag_dma_map(dev, frag, 0, skb_frag_size(frag),
+ 				      DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dev, pa))) {
++		if (dma_mapping_error(dev, pa)) {
+ 			wil_err(wil, "Tx[%2d] failed to map fragment\n",
+ 				ring_index);
+ 			goto dma_error;
+diff --git a/drivers/net/wireless/ath/wil6210/txrx_edma.c b/drivers/net/wireless/ath/wil6210/txrx_edma.c
+index 8ca2ce51c..a3cf34548 100644
+--- a/drivers/net/wireless/ath/wil6210/txrx_edma.c
++++ b/drivers/net/wireless/ath/wil6210/txrx_edma.c
+@@ -182,7 +182,7 @@ static int wil_ring_alloc_skb_edma(struct wil6210_priv *wil,
+ 	skb->ip_summed = CHECKSUM_NONE;
+ 
+ 	pa = dma_map_single(dev, skb->data, skb->len, DMA_FROM_DEVICE);
+-	if (unlikely(dma_mapping_error(dev, pa))) {
++	if (dma_mapping_error(dev, pa)) {
+ 		kfree_skb(skb);
+ 		return -ENOMEM;
+ 	}
+@@ -1370,7 +1370,7 @@ static int wil_tx_tso_gen_desc(struct wil6210_priv *wil, void *buff_addr,
+ 		pa = skb_frag_dma_map(dev, frag, 0, len, DMA_TO_DEVICE);
+ 		ring->ctx[i].mapped_as = wil_mapped_as_page;
+ 	}
+-	if (unlikely(dma_mapping_error(dev, pa))) {
++	if (dma_mapping_error(dev, pa)) {
+ 		wil_err(wil, "TSO: Skb DMA map error\n");
+ 		return -EINVAL;
+ 	}
+diff --git a/drivers/net/wireless/broadcom/b43/dma.c b/drivers/net/wireless/broadcom/b43/dma.c
+index 9a7c62bd5..d48f9f142 100644
+--- a/drivers/net/wireless/broadcom/b43/dma.c
++++ b/drivers/net/wireless/broadcom/b43/dma.c
+@@ -539,7 +539,7 @@ static bool b43_dma_mapping_error(struct b43_dmaring *ring,
+ 				  dma_addr_t addr,
+ 				  size_t buffersize, bool dma_to_device)
+ {
+-	if (unlikely(dma_mapping_error(ring->dev->dev->dma_dev, addr)))
++	if (dma_mapping_error(ring->dev->dev->dma_dev, addr))
+ 		return true;
+ 
+ 	switch (ring->type) {
+diff --git a/drivers/net/wireless/broadcom/b43legacy/dma.c b/drivers/net/wireless/broadcom/b43legacy/dma.c
+index 7e2f70c42..30f56090d 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/dma.c
++++ b/drivers/net/wireless/broadcom/b43legacy/dma.c
+@@ -413,7 +413,7 @@ static bool b43legacy_dma_mapping_error(struct b43legacy_dmaring *ring,
+ 					 size_t buffersize,
+ 					 bool dma_to_device)
+ {
+-	if (unlikely(dma_mapping_error(ring->dev->dev->dma_dev, addr)))
++	if (dma_mapping_error(ring->dev->dev->dma_dev, addr))
+ 		return true;
+ 
+ 	switch (ring->type) {
+diff --git a/drivers/net/wireless/intel/iwlwifi/pcie/tx.c b/drivers/net/wireless/intel/iwlwifi/pcie/tx.c
+index 966be5689..bfc704955 100644
+--- a/drivers/net/wireless/intel/iwlwifi/pcie/tx.c
++++ b/drivers/net/wireless/intel/iwlwifi/pcie/tx.c
+@@ -1657,7 +1657,7 @@ static int iwl_fill_data_tbs(struct iwl_trans *trans, struct sk_buff *skb,
+ 		dma_addr_t tb_phys = dma_map_single(trans->dev,
+ 						    skb->data + hdr_len,
+ 						    head_tb_len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(trans->dev, tb_phys)))
++		if (dma_mapping_error(trans->dev, tb_phys))
+ 			return -EINVAL;
+ 		trace_iwlwifi_dev_tx_tb(trans->dev, skb, skb->data + hdr_len,
+ 					tb_phys, head_tb_len);
+@@ -1676,7 +1676,7 @@ static int iwl_fill_data_tbs(struct iwl_trans *trans, struct sk_buff *skb,
+ 		tb_phys = skb_frag_dma_map(trans->dev, frag, 0,
+ 					   skb_frag_size(frag), DMA_TO_DEVICE);
+ 
+-		if (unlikely(dma_mapping_error(trans->dev, tb_phys)))
++		if (dma_mapping_error(trans->dev, tb_phys))
+ 			return -EINVAL;
+ 		trace_iwlwifi_dev_tx_tb(trans->dev, skb, skb_frag_address(frag),
+ 					tb_phys, skb_frag_size(frag));
+@@ -1828,7 +1828,7 @@ static int iwl_fill_data_tbs_amsdu(struct iwl_trans *trans, struct sk_buff *skb,
+ 		hdr_tb_len = hdr_page->pos - start_hdr;
+ 		hdr_tb_phys = dma_map_single(trans->dev, start_hdr,
+ 					     hdr_tb_len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(trans->dev, hdr_tb_phys))) {
++		if (dma_mapping_error(trans->dev, hdr_tb_phys)) {
+ 			dev_kfree_skb(csum_skb);
+ 			return -EINVAL;
+ 		}
+@@ -1853,7 +1853,7 @@ static int iwl_fill_data_tbs_amsdu(struct iwl_trans *trans, struct sk_buff *skb,
+ 
+ 			tb_phys = dma_map_single(trans->dev, tso.data,
+ 						 size, DMA_TO_DEVICE);
+-			if (unlikely(dma_mapping_error(trans->dev, tb_phys))) {
++			if (dma_mapping_error(trans->dev, tb_phys)) {
+ 				dev_kfree_skb(csum_skb);
+ 				return -EINVAL;
+ 			}
+@@ -2039,7 +2039,7 @@ int iwl_trans_pcie_tx(struct iwl_trans *trans, struct sk_buff *skb,
+ 	/* map the data for TB1 */
+ 	tb1_addr = ((u8 *)&dev_cmd->hdr) + IWL_FIRST_TB_SIZE;
+ 	tb1_phys = dma_map_single(trans->dev, tb1_addr, tb1_len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(trans->dev, tb1_phys)))
++	if (dma_mapping_error(trans->dev, tb1_phys))
+ 		goto out_err;
+ 	iwl_pcie_txq_build_tfd(trans, txq, tb1_phys, tb1_len, false);
+ 
+diff --git a/drivers/net/wireless/intel/iwlwifi/queue/tx.c b/drivers/net/wireless/intel/iwlwifi/queue/tx.c
+index af0b27a68..18eff5c33 100644
+--- a/drivers/net/wireless/intel/iwlwifi/queue/tx.c
++++ b/drivers/net/wireless/intel/iwlwifi/queue/tx.c
+@@ -282,7 +282,7 @@ static int iwl_txq_gen2_set_tb_with_wa(struct iwl_trans *trans,
+ 	struct page *page;
+ 	int ret;
+ 
+-	if (unlikely(dma_mapping_error(trans->dev, phys)))
++	if (dma_mapping_error(trans->dev, phys))
+ 		return -ENOMEM;
+ 
+ 	if (likely(!iwl_txq_crosses_4g_boundary(phys, len))) {
+@@ -322,7 +322,7 @@ static int iwl_txq_gen2_set_tb_with_wa(struct iwl_trans *trans,
+ 
+ 	phys = dma_map_single(trans->dev, page_address(page), len,
+ 			      DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(trans->dev, phys)))
++	if (dma_mapping_error(trans->dev, phys))
+ 		return -ENOMEM;
+ 	ret = iwl_txq_gen2_set_tb(trans, tfd, phys, len);
+ 	if (ret < 0) {
+@@ -477,7 +477,7 @@ static int iwl_txq_gen2_build_amsdu(struct iwl_trans *trans,
+ 		tb_len = hdr_page->pos - start_hdr;
+ 		tb_phys = dma_map_single(trans->dev, start_hdr,
+ 					 tb_len, DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(trans->dev, tb_phys))) {
++		if (dma_mapping_error(trans->dev, tb_phys)) {
+ 			dev_kfree_skb(csum_skb);
+ 			goto out_err;
+ 		}
+@@ -563,7 +563,7 @@ iwl_tfh_tfd *iwl_txq_gen2_build_tx_amsdu(struct iwl_trans *trans,
+ 	/* map the data for TB1 */
+ 	tb1_addr = ((u8 *)&dev_cmd->hdr) + IWL_FIRST_TB_SIZE;
+ 	tb_phys = dma_map_single(trans->dev, tb1_addr, len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(trans->dev, tb_phys)))
++	if (dma_mapping_error(trans->dev, tb_phys))
+ 		goto out_err;
+ 	/*
+ 	 * No need for _with_wa(), we ensure (via alignment) that the data
+@@ -658,7 +658,7 @@ iwl_tfh_tfd *iwl_txq_gen2_build_tx(struct iwl_trans *trans,
+ 	/* map the data for TB1 */
+ 	tb1_addr = ((u8 *)&dev_cmd->hdr) + IWL_FIRST_TB_SIZE;
+ 	tb_phys = dma_map_single(trans->dev, tb1_addr, tb1_len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(trans->dev, tb_phys)))
++	if (dma_mapping_error(trans->dev, tb_phys))
+ 		goto out_err;
+ 	/*
+ 	 * No need for _with_wa(), we ensure (via alignment) that the data
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 73eeb00d5..12aeca142 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -317,7 +317,7 @@ mt76_dma_tx_queue_skb_raw(struct mt76_dev *dev, struct mt76_queue *q,
+ 
+ 	addr = dma_map_single(dev->dev, skb->data, skb->len,
+ 			      DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev->dev, addr)))
++	if (dma_mapping_error(dev->dev, addr))
+ 		goto error;
+ 
+ 	buf.addr = addr;
+@@ -365,7 +365,7 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
+ 
+ 	len = skb_headlen(skb);
+ 	addr = dma_map_single(dev->dev, skb->data, len, DMA_TO_DEVICE);
+-	if (unlikely(dma_mapping_error(dev->dev, addr)))
++	if (dma_mapping_error(dev->dev, addr))
+ 		goto free;
+ 
+ 	tx_info.buf[n].addr = t->dma_addr;
+@@ -379,7 +379,7 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
+ 
+ 		addr = dma_map_single(dev->dev, iter->data, iter->len,
+ 				      DMA_TO_DEVICE);
+-		if (unlikely(dma_mapping_error(dev->dev, addr)))
++		if (dma_mapping_error(dev->dev, addr))
+ 			goto unmap;
+ 
+ 		tx_info.buf[n].addr = addr;
+@@ -441,7 +441,7 @@ mt76_dma_rx_fill(struct mt76_dev *dev, struct mt76_queue *q)
+ 			break;
+ 
+ 		addr = dma_map_single(dev->dev, buf, len, DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(dev->dev, addr))) {
++		if (dma_mapping_error(dev->dev, addr)) {
+ 			skb_free_frag(buf);
+ 			break;
+ 		}
+diff --git a/drivers/net/wireless/ralink/rt2x00/rt2x00queue.c b/drivers/net/wireless/ralink/rt2x00/rt2x00queue.c
+index d4d389e8f..24a139dea 100644
+--- a/drivers/net/wireless/ralink/rt2x00/rt2x00queue.c
++++ b/drivers/net/wireless/ralink/rt2x00/rt2x00queue.c
+@@ -78,7 +78,7 @@ struct sk_buff *rt2x00queue_alloc_rxskb(struct queue_entry *entry, gfp_t gfp)
+ 
+ 		skb_dma = dma_map_single(rt2x00dev->dev, skb->data, skb->len,
+ 					 DMA_FROM_DEVICE);
+-		if (unlikely(dma_mapping_error(rt2x00dev->dev, skb_dma))) {
++		if (dma_mapping_error(rt2x00dev->dev, skb_dma)) {
+ 			dev_kfree_skb_any(skb);
+ 			return NULL;
+ 		}
+@@ -98,7 +98,7 @@ int rt2x00queue_map_txskb(struct queue_entry *entry)
+ 	skbdesc->skb_dma =
+ 	    dma_map_single(dev, entry->skb->data, entry->skb->len, DMA_TO_DEVICE);
+ 
+-	if (unlikely(dma_mapping_error(dev, skbdesc->skb_dma)))
++	if (dma_mapping_error(dev, skbdesc->skb_dma))
+ 		return -ENOMEM;
+ 
+ 	skbdesc->flags |= SKBDESC_DMA_MAPPED_TX;
+diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
+index 2e49996a8..c15194ea3 100644
+--- a/include/linux/dma-mapping.h
++++ b/include/linux/dma-mapping.h
+@@ -95,8 +95,9 @@ static inline int dma_mapping_error(struct device *dev, dma_addr_t dma_addr)
+ {
+ 	debug_dma_mapping_error(dev, dma_addr);
+ 
+-	if (dma_addr == DMA_MAPPING_ERROR)
++	if (unlikely(dma_addr == DMA_MAPPING_ERROR))
+ 		return -ENOMEM;
++
+ 	return 0;
+ }
+ 
+diff --git a/kernel/dma/map_benchmark.c b/kernel/dma/map_benchmark.c
+index b1496e744..901420a5d 100644
+--- a/kernel/dma/map_benchmark.c
++++ b/kernel/dma/map_benchmark.c
+@@ -78,7 +78,7 @@ static int map_benchmark_thread(void *data)
+ 
+ 		map_stime = ktime_get();
+ 		dma_addr = dma_map_single(map->dev, buf, PAGE_SIZE, map->dir);
+-		if (unlikely(dma_mapping_error(map->dev, dma_addr))) {
++		if (dma_mapping_error(map->dev, dma_addr)) {
+ 			pr_err("dma_map_single failed on %s\n",
+ 				dev_name(map->dev));
+ 			ret = -ENOMEM;
+-- 
+2.29.2
 
-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
-ggt+rj5nDB90sDstWoW2xT33tULiRiMqpVM5DsdT3Wk8bZ61SecrNNa1eVJ9VR4lh04sDpv6
-kA1FUWq0q9umPO6O5O09Zzgm8pkUkLoOuI2U2j6gFwHebqQdSnop67rBMERK+iIOrNxqLT7o
-reXHbaToMrO8LWTjz4l06drkwKqiU14rRljrI24eqOTfb+r+kp0yrRRfqbmOCdTSYpsa1w9I
-OdRdsVUmMbcQ4pgaNWum4469bmmjJOQZcPPjAYDBV3aWg5KRcZO1p0ty7GqWl3mq5DUHTB9P
-hD7+++NRNn4QJU0qfsc+FUZBYTiV9e7SnWwMaALVYWdZOdokw6iJNMiy1gaN4X1tOI9gJbeh
-HKdbrbLUFPevb4/m04inIsvrixJoemidmoeqKOWez06bWVwqmSqJ80xPTw+Pr6vy6eXnX1ev
-P/B47l3P9bQqpSV6pqknoBIdez2HXlctCARDkp2skcsEhzjQq4oDV0APO1kcC47ueJCry/Os
-8sqDH7WJOLI9H0Dia2mAFoVW6gT1VCVlWesVQySrRHMXO7lhqQZUunN6otxoXr0HsePs/QsS
-+uaIQ0q0q3jh8vnx7v0R25GPpW93H/ylykf+vuWDWYT28f/+fHz/uErEgXfeNyDJqvwAE0Q2
-+7cWnTNlT38+fdw9X3Uns0o49CoRznw2QgTagYxzx7mTHgZF0nR4Gu2GMjQ8iyrGAlPHd5bj
-G5cs509cguRnDENi69key5x6pHSoJlERWSYZtli8Q3DjNE9qYQj/+M/7u+/DjJY+4HssPmLT
-UrFA0YBLcWiO3SU/KYMXmXYMdqsqqQqUF5Z5cbqTE6ou3PzjMrZEqZiSvmzyww1lXjkxACE3
-UxZQUySUZjlzZF3KHNlSYIbyrq4YnS6oNHlTUEvhzPMlRzv5L3QCX0rPcYJNSl24z1zXkE3a
-0Slc14cipWMIzkxV0tKGgxJLu8YYSdQx5cx0OMdyaMoZqE+B/EahAsgxDTTgQn7TJKnnRBYk
-8vUxJUHyVnmGWK54CEvAYQ05yfdROmYZT6C1Fv3mkxblTF8W2xN/BXIUbx2ii82hwA6FllJz
-kNrnaTyhNVs3sLTWzdpSIARSC+LTg4l1145LDhpAXO0JFxkE2UJGtpR4jgfQ+i2zuQstbuES
-S920tOOozHOEJeL6M65THPjUGenMckodJZi7hMCUr+hK9AU+eXoN+wjapGPm/Jr6pNkScjTn
-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
-zC+3mgIA
-
---/04w6evG8XlLl3ft
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---/04w6evG8XlLl3ft--
-
