@@ -2,20 +2,21 @@ Return-Path: <SRS0=zFd5=FP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1000BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1F57C4361B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:52:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC97723EB2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:36:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC97723EB2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 68F7723F2C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:52:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68F7723F2C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,57 +24,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gbrRFh3/osJ/u/mHXDiNAxoEwOlxf5znTUhgCjiYHs4=; b=ZbFWjaa/TiGVkpcuFGOWfOueV
-	qZg63ol6nxGG9hfz1Kbf74X8t9q2WL1wwzEan8LbH48FJU81Y/J+Fl8yhLH9ujJGW0DJ6xm/M+rTo
-	sHUTQrB0e8UNzcO82NAQ5VH+EbXRl0zzn0WxNUbcJQZqcXEM7W/LuFCo7olO3GzFizS4ieIqnX7aN
-	fNMMVUD6xLdp7t4CZleyiLl1e5ttjH9eG/NxneahTrg1kqp64kuDumXOjDOavtEIQGz4+vDwg9Mjl
-	4BuK3Jj98cTD1zDt5tlFpZ/xzSbHmKNj8WHE+xykPdi9bCbQwBuLfxCTQ1gFzYf0oHup56d/84IvG
-	UKXBvOGBg==;
+	 bh=I6m2SKXvLVxn22OINh0+bHuBhDW5WPLfmLN35nY0IDw=; b=b02419+vBEFhKxp1LUoVXeqgG
+	4a+SJDgy7qM5+t94kSYCJ6pu8lwe10kS7oM3gxgjI8vdFpCtZ2h8oo5xp4IZ4aAmBONq/kFe1Y0Z6
+	h3QDSm6GERcsmzWR24Tq0YLuSwgeslJ3HPvOVWSchGh12WcPB0oG9qxqsP21mg4wSBQnshEyDJn+3
+	2RV0NcMv4Vy+60p//mJO4bTFqcgkkZZLV8scvCJ1NmGsIsafkY+hhocBhJAt4nAyvTZyxKAy+UXaj
+	AgNILKGMjVMWArtEPz3BxTVsvfCY5FIji8hm/ieXFxTbMfImxv2mLHcaw/fR2+79DjyedSWR5c6I3
+	gcDK+DwWA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knc2t-00086a-0y; Fri, 11 Dec 2020 06:36:51 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1kncHU-0000YI-Mu; Fri, 11 Dec 2020 06:51:56 +0000
+Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knc2p-00085d-WB
- for linux-mediatek@lists.infradead.org; Fri, 11 Dec 2020 06:36:49 +0000
-Received: by mail-pl1-x641.google.com with SMTP id t6so4115543plq.1
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Dec 2020 22:36:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1kncHR-0000XH-8o; Fri, 11 Dec 2020 06:51:54 +0000
+Received: by mail-vk1-xa43.google.com with SMTP id i62so1840643vkb.7;
+ Thu, 10 Dec 2020 22:51:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=J9Gkfw6PqMYjMiqAsCdoTdxmVJeKL3b8kE1ybX0wQp8=;
- b=WIyjZRThPyIcByjD1VjOn8yzB/aMzxMJnGFYKBhQUxHL/8D99o1+TixNQQzj97PI2l
- Oblyp0AWTkMt/E7msPxQhosmku8buexCrgtuWx2B1epKLnou7e3T2QboFcEldqVJgvoL
- 5rcIzR7SGYwuoKzqr5+ki7K/3DAxIn0tB6nLQ=
+ :cc; bh=U+kfsQcREhjj6iUweM6iPAiozZ1/2mIevjtLhHtCEI8=;
+ b=LcVvyaW8krm/Qx/WlnVFzJFkViCLf+MBIdWHyrLn3STwe5vC8M2b2nLO5coS9bEyWU
+ KBfLI2fN/zqgXok+phpVxpGul/mb0KKBSgdzwaOlrektD6PGMAykG7aTTKn66SoC6smC
+ ORhepN3WUO1fNoSD3unJXKlGnkzNQSFzH1g1OC+ZnxvvPkCyole4PMN/TypnFxsiEkkb
+ kaD99glswq5M/VGDsFdmAivN060XpCKeBDxZqge9Ju71THKusL4IAd6MTPTbib2pBifo
+ uBLSkrkSlTPS9Gc+v5hUULOULvZt6CIAnJEU5DCHVJ+DZ6jQtRf45EnYqzsfha4J+V5p
+ 3Y4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=J9Gkfw6PqMYjMiqAsCdoTdxmVJeKL3b8kE1ybX0wQp8=;
- b=WmoufMivXlUL0fOzdsf/U/r3qJqbZIvYvo/YmEJxmaS0WvA+m249kOA4xZ3K2ej3Sz
- yyF38AgXuZT0EExupgogenTpBICkLm7OkfFPCT6am7fWqCVeXEr730f7wLhbuLXCc8o/
- ZetUJrdv0CoBrGlHRfM8MeKyFguw49vXYG/ONR8SNogdf9pxxwa9HJXnMz3I+SL1xq1n
- q6DMUl8thxCI5Z193Yh1gA6NqRfLk2sB82rspOMnHLmHZJ28VWxs0fwE4N+qi9Aj2iyS
- ZMbsHi4VuZz8+kNnqRyO9oW8135CWWm2MbdZyjKu4Q7liTSimljwM+OlWYES2VVIQSaa
- 0OYQ==
-X-Gm-Message-State: AOAM533VXqehWl7TO3Vvd+KsAd6kKHvA/7OLbrhv0yAT46ikESBUsLrd
- elNfIkpG7zgK/cYpAebF1lPtoisaqHBLz8SO6X2Q8g==
-X-Google-Smtp-Source: ABdhPJwDkFoCYggY1gxt7bDTcWLRlh1MKnrt/rA2AHX4t0ASRNBzxtBE4WdNwcsyoyiZN/ZDRw+9M6uyYvI/XuRdFF4=
-X-Received: by 2002:a17:90a:902:: with SMTP id
- n2mr11676752pjn.126.1607668605729; 
- Thu, 10 Dec 2020 22:36:45 -0800 (PST)
+ bh=U+kfsQcREhjj6iUweM6iPAiozZ1/2mIevjtLhHtCEI8=;
+ b=qcRKfow+Sp5j8pG/t9h96i1xUsejVwn6L/cXBQ5oV9+udlJYyV02RxKtJV02ovbdFz
+ XmvG05o8VRGtXWlINic7Z2wlWWuin8PZ+dds8gijAvU5XG4uwzgOW7QuG7Uw4AiGFW95
+ mx6+E2UE1GU73+TRGi1DwSVnDJFyx+lpWbJPKKZ8PgeI+6reu+wom8SZEeFAopxaJnA5
+ ndvtoWcdscVpL1EIQdMyl90IcVLP9hZKFTK+xDDkSMc9Xr0f2LuGrVkOjhL3k/LRyRnq
+ G9AzlsykinILCMP3LtlvJ3dyki6XLt5fEjwwBZA2+bv9Mjkm+aTSXAPXZxehfgW4fSJl
+ PAyQ==
+X-Gm-Message-State: AOAM532jLHKC9cjQbderPbsLVykggG4IP9aBTNDKY/g93lwhCdAe8pgA
+ sK17Zquu7hFERWhcmpGD1mjnbd8kTh2KtucMbKQ=
+X-Google-Smtp-Source: ABdhPJyGLEO+5mA6kP2n0J+TYi31DJbJy/NQ9a8ts0oVRZdMFNFCtcKaFFmD+6E9VvLtBmqTtuGf+pyTvkEGNkhdXj4=
+X-Received: by 2002:a1f:c545:: with SMTP id v66mr12563955vkf.15.1607669510097; 
+ Thu, 10 Dec 2020 22:51:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20201210104747.3416781-1-ikjn@chromium.org>
- <1607651584.23328.20.camel@mhfsdcap03>
-In-Reply-To: <1607651584.23328.20.camel@mhfsdcap03>
-From: Ikjoon Jang <ikjn@chromium.org>
-Date: Fri, 11 Dec 2020 14:36:34 +0800
-Message-ID: <CAATdQgBZn3oehw_20D3yMmDA8G61oMHVax8LqJ-hPQv+9kJGLQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] Release allocated periodic bandwidth data from
- reset_bandwidth()
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+References: <1607542617-4005-1-git-send-email-jrdr.linux@gmail.com>
+ <87ft4e9lmg.fsf@codeaurora.org>
+In-Reply-To: <87ft4e9lmg.fsf@codeaurora.org>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Date: Fri, 11 Dec 2020 12:21:38 +0530
+Message-ID: <CAFqt6zbgFuQWzmjtYFVcMTLd5zo4g9B1zvEyOzXmWTw=2jPMJQ@mail.gmail.com>
+Subject: Re: [PATCH] mt76: Fixed kernel test robot warning
+To: Kalle Valo <kvalo@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201211_013648_149496_EECC26F0 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20201211_015153_348033_42787104 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,52 +86,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>,
- Tianping Fang <tianping.fang@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: ryder.lee@mediatek.com, netdev@vger.kernel.org,
+ linux-wireless <linux-wireless@vger.kernel.org>, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ lorenzo.bianconi83@gmail.com, kuba@kernel.org,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 11, 2020 at 9:53 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+On Thu, Dec 10, 2020 at 12:46 PM Kalle Valo <kvalo@codeaurora.org> wrote:
 >
-> On Thu, 2020-12-10 at 18:47 +0800, Ikjoon Jang wrote:
-> > xhci-mtk releases allocated TT bandwidth data only when whole
-> > endpoints of a device are dropped as there're only {add|drop}_endpoint()
-> > hooks are defined. This patchset adds more hooks and releases all
-> > bandwidth data from reset_bandwidth() path, not drop_endpoint().
+> Souptick Joarder <jrdr.linux@gmail.com> writes:
+>
+> > Kernel test robot throws below warning ->
 > >
+> >    drivers/net/wireless/mediatek/mt76/tx.c: In function
+> > 'mt76_txq_schedule':
+> >>> drivers/net/wireless/mediatek/mt76/tx.c:499:21: warning: variable 'q'
+> >>> set but not used [-Wunused-but-set-variable]
+> >      499 |  struct mt76_queue *q;
+> >          |                     ^
 > >
-> > Changes in v2:
-> > - fix a 0-day warning from unused variable
-> > - split one big patch into three patches
-> > - bugfix in hw flags
+> > This patch will silence this warning.
 > >
-> > Ikjoon Jang (3):
-> >   usb: xhci-mtk: code cleanups in getting bandwidth table
-> >   usb: xhci-mtk: delay association of tt and ep
-> >   usb: xhci-mtk: fix unreleased bandwidth data
-> >
-> >  drivers/usb/host/xhci-mtk-sch.c | 180 ++++++++++++++++++++------------
-> >  drivers/usb/host/xhci-mtk.h     |  13 +++
-> >  drivers/usb/host/xhci.c         |   9 ++
-> >  3 files changed, 133 insertions(+), 69 deletions(-)
-> Thanks for your patch, I'll test it and check it with our DE
+> > Reported-by: kernel test robot <lkp@intel.com>
+> > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+>
+> I would like to take this directly to wireless-drivers-next, ok?
 
-Thanks, I will upload v3.
-But I don't expect any logic changes from v2.
-Can you please give me feedback on v2 if you find anything?
-
+Ok.
 >
-> >
+> I'll also change the title to:
 >
+> mt76: remove unused variable q
+>
+> --
+> https://patchwork.kernel.org/project/linux-wireless/list/
+>
+> https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
