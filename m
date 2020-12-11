@@ -7,76 +7,76 @@ X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F22E0C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 18:14:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25D39C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 18:28:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A193223106
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 18:14:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A193223106
+	by mail.kernel.org (Postfix) with ESMTPS id 422A623DE3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 18:28:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 422A623DE3
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:Date:References:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Date:Message-Id:To:References:In-Reply-To:From:
+	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vBVQPKxirWzhcJr8rkqmJEJ/6jpU/jO21r8rSNDWQbU=; b=ui150O2nbOQXdE12fAFyl/1L1
-	7Nz6snuLz3ZHa3WrEXDL4GZ6ZlqvZtFhrTeKUAaOuzeKxwXsomrCq/7rP0osH6edH4oXmqKrJO2pA
-	bM9RomLvXGQIqwaYC5KbDAg90IVnNsbEhaZDLKpXFKeY2GW3UPivmU2CD18051CzgNjlOdQ7Pctmt
-	cgRA8zSRra1A5/0NLZHp/XGJx4TBaz86Y6oc72+gfhgPylMIyIB1prZ78/+IE0hsWY7ZnOIei0Np6
-	3GMaVWEOsN7j8w4QicFvCVi+72+acdDwLbB3F18I9BOOVg9F5zhteQxSwQPb4o/iVQdYWzQdVAKxC
-	6PwM63SAg==;
+	 bh=OwVzMxC9HwjyhqN+5+TdAMigThCTUn/lUM3oVYIbvvE=; b=DdyG51GnQGmPGgq4aj+WIrq3x
+	R95Pddi5o2c/AQvr5IHOCxP6Lz4zVAg/jAA6YWesI/hpzYaNGPNCpZq3c8ASsinM2/Z/d6wjb5MYb
+	5S9vlp9kPJEDcgoAq6Eh+9yVV7Wjy3dq+hJfCPHCOPiVkNb1kt8fmiMRFgOGafyv80Y3fhmBjFNle
+	c7dfuOknkf3KVEl1U0oveMv11ViusKZW1d1TclOO91wN6UyByMDX6U7eHqpdM0p4j+FlhcdaE7M2c
+	qlsnEaMuFn9T97u0diclARa48vbjPZSKXkdBnjrIG9zr9Q6uCiv/rAtEZhDtv1Duv1bueo5TKbk+m
+	QS34KQ3Bg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knmwL-00038g-3g; Fri, 11 Dec 2020 18:14:49 +0000
-Received: from so254-31.mailgun.net ([198.61.254.31])
+	id 1knn9H-0004LS-CP; Fri, 11 Dec 2020 18:28:11 +0000
+Received: from m43-15.mailgun.net ([69.72.43.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knmwH-00036L-Jj
- for linux-mediatek@lists.infradead.org; Fri, 11 Dec 2020 18:14:47 +0000
+ id 1knn9E-0004Km-3I
+ for linux-mediatek@lists.infradead.org; Fri, 11 Dec 2020 18:28:10 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1607710486; h=Content-Type: MIME-Version: Message-ID:
- In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=oXuze23NN6AKw2gUMw1y4CWhOudQUoBH+sGqViM+9VQ=;
- b=twaPB/TYUy/57WMqngkdWbAdHBUOXKktUr+zoONu9fWKXEoKjp6jK2DubvOFKWApDlkZ3sLm
- HuAwPfw2mBT24qrp0F1TYyLnYlKsvnWRHcuiRC3wORYE/EKsQNsdKIYtfsILactoR3yXteEA
- K4oBzUhGzH0bHELfFewKPt9DZvQ=
-X-Mailgun-Sending-Ip: 198.61.254.31
+ s=smtp; t=1607711289; h=Date: Message-Id: Cc: To: References:
+ In-Reply-To: From: Subject: Content-Transfer-Encoding: MIME-Version:
+ Content-Type: Sender; bh=oryGkYBZLctiChHEbMyugddvyjEotYdnJsGqR/JGfDo=;
+ b=e7LViwdEFd7Ka2gd0bHbO5tOWkSG1UOsOzDbg2znO9B5AapasbT2Ak/73JqOXPZQRi7Fxa0M
+ ocBkVu7w20Ah/0yg8XJAkiXm2ARwvqMnx3Tq6VL5pozU/qfepO6hUv1pNEyZRbbbgUVY3vvE
+ Y8CoQ2JQt3eOgztqK5JqEpeFmPE=
+X-Mailgun-Sending-Ip: 69.72.43.15
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n02.prod.us-east-1.postgun.com with SMTP id
- 5fd3b70af81e894c5599e56f (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 11 Dec 2020 18:14:34
+ smtp-out-n01.prod.us-west-2.postgun.com with SMTP id
+ 5fd3ba301f9c9f3c536d4806 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 11 Dec 2020 18:28:00
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 3B05CC433CA; Fri, 11 Dec 2020 18:14:34 +0000 (UTC)
-Received: from tynnyri.adurom.net (tynnyri.adurom.net [51.15.11.48])
+ id 23CD9C433C6; Fri, 11 Dec 2020 18:28:00 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 6B540C433C6;
- Fri, 11 Dec 2020 18:14:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 6B540C433C6
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id B8F4FC433C6;
+ Fri, 11 Dec 2020 18:27:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org B8F4FC433C6
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  spf=fail smtp.mailfrom=kvalo@codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: <sean.wang@mediatek.com>
-Subject: Re: [PATCH net-next v1] mt76: mt7921: introduce mt7921e support
-References: <b24467915685771645abfd61adcbbf1341313dda.1607596773.git.objelf@gmail.com>
-Date: Fri, 11 Dec 2020 20:14:24 +0200
-In-Reply-To: <b24467915685771645abfd61adcbbf1341313dda.1607596773.git.objelf@gmail.com>
- (sean wang's message of "Thu, 10 Dec 2020 19:00:22 +0800")
-Message-ID: <87tusstdkv.fsf@tynnyri.adurom.net>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
+Subject: Re: mt76: remove unused variable q
+From: Kalle Valo <kvalo@codeaurora.org>
+In-Reply-To: <1607542617-4005-1-git-send-email-jrdr.linux@gmail.com>
+References: <1607542617-4005-1-git-send-email-jrdr.linux@gmail.com>
+To: Souptick Joarder <jrdr.linux@gmail.com>
+User-Agent: pwcli/0.1.0-git (https://github.com/kvalo/pwcli/) Python/3.5.2
+Message-Id: <20201211182800.23CD9C433C6@smtp.codeaurora.org>
+Date: Fri, 11 Dec 2020 18:28:00 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201211_131446_861021_048BA25B 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20201211_132809_507079_A9DD2390 
+X-CRM114-Status: UNSURE (   8.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -89,35 +89,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ryder.lee@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
- Eric.Liang@mediatek.com, linux-wireless@vger.kernel.org, YN.Chen@mediatek.com,
- linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, Soul.Huang@mediatek.com, nbd@nbd.name
+Cc: ryder.lee@mediatek.com, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ Souptick Joarder <jrdr.linux@gmail.com>, lorenzo.bianconi83@gmail.com,
+ kuba@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org,
+ nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-<sean.wang@mediatek.com> writes:
+Souptick Joarder <jrdr.linux@gmail.com> wrote:
 
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> Introduce support for mt7921e 802.11ax (Wi-Fi 6) 2x2:2SS chipset.
->
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
-> Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Kernel test robot reported warning:
+> 
+>    drivers/net/wireless/mediatek/mt76/tx.c: In function
+> 'mt76_txq_schedule':
+> >> drivers/net/wireless/mediatek/mt76/tx.c:499:21: warning: variable 'q'
+> >> set but not used [-Wunused-but-set-variable]
+>      499 |  struct mt76_queue *q;
+>          |                     ^
+> 
+> Reported-by: kernel test robot <lkp@intel.com>
+> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
 
-For wireless patches you shouldn't use "net-next" in the subject. As
-there's no separate mt76-next tree you can just mark it as "-next"
+Patch applied to wireless-drivers-next.git, thanks.
 
+7f469b6dc484 mt76: remove unused variable q
 
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+https://patchwork.kernel.org/project/linux-wireless/patch/1607542617-4005-1-git-send-email-jrdr.linux@gmail.com/
 
 https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
 _______________________________________________
 Linux-mediatek mailing list
