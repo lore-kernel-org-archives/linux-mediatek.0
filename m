@@ -3,18 +3,18 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15CC2C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1000BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:36:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE0A523ECF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:28:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE0A523ECF
+	by mail.kernel.org (Postfix) with ESMTPS id AC97723EB2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 06:36:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC97723EB2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gF9ypIXZVG7dsHjRrqFspbwXu8I+CbU39JdAvVNdZp0=; b=pXIpozF4hLeVdDmnhJ/2f0Hc2
-	7YzX245Wxs7F2sScvmXtaNQLixQCXeKj/DtezVMHaRCVgjvzr0cyNQcOxlE56Hq0CJqywcyE9vbd7
-	ZlFiPIow2KT8eqA4v/kEW3fb+XSNhOfMqljiREamI/B5SDdc4yO6pI15tvJNWWbaXbNhp98i/xYqi
-	5RFtk7tnUKv1wwbTtTlZ37/o4IHD+O8mNqEUW1luNmtZ2kiSmrV2GVINY8m5sBXPuFuMBB9FfzrZL
-	C86Ujhh4fMSyykWAOKFYGSv9kYCwY3qzLklHyqBlHsht9iC7zEZTSeFgax81/PVnrAxWODmO77tfH
-	yjVrhQ8QQ==;
+	 bh=gbrRFh3/osJ/u/mHXDiNAxoEwOlxf5znTUhgCjiYHs4=; b=ZbFWjaa/TiGVkpcuFGOWfOueV
+	qZg63ol6nxGG9hfz1Kbf74X8t9q2WL1wwzEan8LbH48FJU81Y/J+Fl8yhLH9ujJGW0DJ6xm/M+rTo
+	sHUTQrB0e8UNzcO82NAQ5VH+EbXRl0zzn0WxNUbcJQZqcXEM7W/LuFCo7olO3GzFizS4ieIqnX7aN
+	fNMMVUD6xLdp7t4CZleyiLl1e5ttjH9eG/NxneahTrg1kqp64kuDumXOjDOavtEIQGz4+vDwg9Mjl
+	4BuK3Jj98cTD1zDt5tlFpZ/xzSbHmKNj8WHE+xykPdi9bCbQwBuLfxCTQ1gFzYf0oHup56d/84IvG
+	UKXBvOGBg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knbuD-0007Cz-HQ; Fri, 11 Dec 2020 06:27:53 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1knc2t-00086a-0y; Fri, 11 Dec 2020 06:36:51 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knbu8-0007C6-Ro
- for linux-mediatek@lists.infradead.org; Fri, 11 Dec 2020 06:27:49 +0000
-Received: by mail-pl1-x644.google.com with SMTP id r4so4089394pls.11
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Dec 2020 22:27:48 -0800 (PST)
+ id 1knc2p-00085d-WB
+ for linux-mediatek@lists.infradead.org; Fri, 11 Dec 2020 06:36:49 +0000
+Received: by mail-pl1-x641.google.com with SMTP id t6so4115543plq.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 10 Dec 2020 22:36:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+NZCqNrXpIQOHB+clR8WgE5i45yw+bOFU7a6qyf9U0g=;
- b=Yj8ERgL7ftmm8JcEBoewVHYgPQQHMrBW7T9cqPbsOUJqWlStcwMOoWjOCDBpo/gH2b
- MNnMTibwIfcFnNGUH1IT66nG6hveH887dJ43icRzCcrqSHs+fmX2ORvCQcdaJWzVCNlM
- yOleujohBJZUz/3XayBixb1wwaOeMS3xu7ZaQ=
+ :cc; bh=J9Gkfw6PqMYjMiqAsCdoTdxmVJeKL3b8kE1ybX0wQp8=;
+ b=WIyjZRThPyIcByjD1VjOn8yzB/aMzxMJnGFYKBhQUxHL/8D99o1+TixNQQzj97PI2l
+ Oblyp0AWTkMt/E7msPxQhosmku8buexCrgtuWx2B1epKLnou7e3T2QboFcEldqVJgvoL
+ 5rcIzR7SGYwuoKzqr5+ki7K/3DAxIn0tB6nLQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=+NZCqNrXpIQOHB+clR8WgE5i45yw+bOFU7a6qyf9U0g=;
- b=FtRuo7br+OBCxJLPnUw2QV8ENB1xwm4M+ayyNLfBidbtwcfn3ABA7p0mT9pZOfwo1o
- 2CCYU0ioggcYay6YuoDa/Vf2sq92WzIDN/WKRu10AFAoVhbWz2YVQA1qcpV3eOKLks5U
- TQeQRtO4Q9iJaHLQwATjv7UBULm7MOnhS809X9dx2MIkbD1443OFDk92h0kCEBOXAtIL
- NrRTc63Pbs6hUG9LU4+CfYcrU5A/gfquNWJAZYH5BD2pehVT4eb967Do6CeI4vByZAQq
- gfunMqyBGEi2gg2x/aR4tTnSfKBZvTKhLUHbmEY11c1MdxDk4x3amQ3QFROORVzgD2Vk
- uEEg==
-X-Gm-Message-State: AOAM530Djdggoxorq7ZFjhPFDFKauYC0G+mNTdvRnXSGdvcHtCDswrXv
- UTA2KJTf7kc1qiKVImHTCgCp1uKCOitIOao7ap+Uug==
-X-Google-Smtp-Source: ABdhPJw9a6EUufsiEyEhuZXX3ZGfuxO+oyyeGpF2rgFDPWlkOqpOTbp+QOOQKOzUTUbZHQMB5Q518KWuPZaf2zD/J8o=
-X-Received: by 2002:a17:902:a502:b029:da:f580:bc35 with SMTP id
- s2-20020a170902a502b02900daf580bc35mr9802625plq.60.1607668066723; Thu, 10 Dec
- 2020 22:27:46 -0800 (PST)
+ bh=J9Gkfw6PqMYjMiqAsCdoTdxmVJeKL3b8kE1ybX0wQp8=;
+ b=WmoufMivXlUL0fOzdsf/U/r3qJqbZIvYvo/YmEJxmaS0WvA+m249kOA4xZ3K2ej3Sz
+ yyF38AgXuZT0EExupgogenTpBICkLm7OkfFPCT6am7fWqCVeXEr730f7wLhbuLXCc8o/
+ ZetUJrdv0CoBrGlHRfM8MeKyFguw49vXYG/ONR8SNogdf9pxxwa9HJXnMz3I+SL1xq1n
+ q6DMUl8thxCI5Z193Yh1gA6NqRfLk2sB82rspOMnHLmHZJ28VWxs0fwE4N+qi9Aj2iyS
+ ZMbsHi4VuZz8+kNnqRyO9oW8135CWWm2MbdZyjKu4Q7liTSimljwM+OlWYES2VVIQSaa
+ 0OYQ==
+X-Gm-Message-State: AOAM533VXqehWl7TO3Vvd+KsAd6kKHvA/7OLbrhv0yAT46ikESBUsLrd
+ elNfIkpG7zgK/cYpAebF1lPtoisaqHBLz8SO6X2Q8g==
+X-Google-Smtp-Source: ABdhPJwDkFoCYggY1gxt7bDTcWLRlh1MKnrt/rA2AHX4t0ASRNBzxtBE4WdNwcsyoyiZN/ZDRw+9M6uyYvI/XuRdFF4=
+X-Received: by 2002:a17:90a:902:: with SMTP id
+ n2mr11676752pjn.126.1607668605729; 
+ Thu, 10 Dec 2020 22:36:45 -0800 (PST)
 MIME-Version: 1.0
 References: <20201210104747.3416781-1-ikjn@chromium.org>
- <20201210184700.v2.3.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
- <X9H/ZVpHf2Owd6rj@kroah.com>
-In-Reply-To: <X9H/ZVpHf2Owd6rj@kroah.com>
+ <1607651584.23328.20.camel@mhfsdcap03>
+In-Reply-To: <1607651584.23328.20.camel@mhfsdcap03>
 From: Ikjoon Jang <ikjn@chromium.org>
-Date: Fri, 11 Dec 2020 14:27:35 +0800
-Message-ID: <CAATdQgCZjzoiiReoL-0X5VgWXcEzPsg5B_=SBFFD7dp1Gmvgog@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] usb: xhci-mtk: fix unreleased bandwidth data
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Fri, 11 Dec 2020 14:36:34 +0800
+Message-ID: <CAATdQgBZn3oehw_20D3yMmDA8G61oMHVax8LqJ-hPQv+9kJGLQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] Release allocated periodic bandwidth data from
+ reset_bandwidth()
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201211_012748_953701_52BEE609 
-X-CRM114-Status: GOOD (  18.87  )
+X-CRM114-CacheID: sfid-20201211_013648_149496_EECC26F0 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,12 +86,12 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
  open list <linux-kernel@vger.kernel.org>,
  Tianping Fang <tianping.fang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  "moderated list:ARM/Mediatek SoC support"
  <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
@@ -99,45 +99,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 10, 2020 at 6:57 PM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
+On Fri, Dec 11, 2020 at 9:53 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
 >
-> On Thu, Dec 10, 2020 at 06:47:47PM +0800, Ikjoon Jang wrote:
-> > xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
-> > to handle its own sw bandwidth managements and stores bandwidth data
-> > into internal table every time add_endpoint() is called,
-> > so when bandwidth allocation fails at one endpoint, all earlier
-> > allocation from the same interface could still remain at the table.
+> On Thu, 2020-12-10 at 18:47 +0800, Ikjoon Jang wrote:
+> > xhci-mtk releases allocated TT bandwidth data only when whole
+> > endpoints of a device are dropped as there're only {add|drop}_endpoint()
+> > hooks are defined. This patchset adds more hooks and releases all
+> > bandwidth data from reset_bandwidth() path, not drop_endpoint().
 > >
-> > This patch adds two more hooks from check_bandwidth() and
-> > reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
-> > from reset_bandwidth().
 > >
-> > Fixes: 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
-> > Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> > Changes in v2:
+> > - fix a 0-day warning from unused variable
+> > - split one big patch into three patches
+> > - bugfix in hw flags
+> >
+> > Ikjoon Jang (3):
+> >   usb: xhci-mtk: code cleanups in getting bandwidth table
+> >   usb: xhci-mtk: delay association of tt and ep
+> >   usb: xhci-mtk: fix unreleased bandwidth data
+> >
+> >  drivers/usb/host/xhci-mtk-sch.c | 180 ++++++++++++++++++++------------
+> >  drivers/usb/host/xhci-mtk.h     |  13 +++
+> >  drivers/usb/host/xhci.c         |   9 ++
+> >  3 files changed, 133 insertions(+), 69 deletions(-)
+> Thanks for your patch, I'll test it and check it with our DE
+
+Thanks, I will upload v3.
+But I don't expect any logic changes from v2.
+Can you please give me feedback on v2 if you find anything?
+
 >
-> Shouldn't this be the first patch in the series?  You don't want a fix
-> to be dependent on code style changes, otherwise it is really really
-> hard to backport it to older kernels that might need this fix, right?
-
-yes, you're right.
-
-This patchset also requires
-"4b0f7a77fb3c usb: xhci-mtk: supports bandwidth scheduling with multi-TT",
-which doesn't have a Fixes tag.
-
-I think I can change Fixes to point to that commit (4b0f7a77fb3c),
-as this unreleased bandwidth data is much more impactful to
-TT bandwidth.
-
-Thanks!
-
+> >
 >
-> Can you re-order these patches please?
->
-> thanks,
->
-> greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
