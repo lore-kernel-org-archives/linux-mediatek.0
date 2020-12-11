@@ -1,148 +1,75 @@
-Return-Path: <SRS0=Sq/6=FO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=zFd5=FP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 32124C4361B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 19:59:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 61A39C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 00:45:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B064F22D5A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Dec 2020 19:59:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B064F22D5A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1D83A23DB4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Dec 2020 00:45:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D83A23DB4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2phO9dwFig9Oyph5o454cQfc3c4D8vkArXd5U3zO13w=; b=UF1JLtR4zKhUq2D+UVy6hXIZc
-	FVz2hzV9gUTJkksfYf/5J63pkJbJKa23OVJe0qbL0Rfq77XY4+YtU3H16infToXOMsgWsmMZoxfzg
-	kwMgZ1l2qfBqWFekt0N77zZZdy2pRVINJ6Yh3L09u0EEhsCqjlQizE7e3d1u4lISQRGH3cjwBF40O
-	bnhX74skO5RNwcIVAA4sTfFX5EtVA61k0e/BNKAgN/mtUkbRcTlYy/L4DD1YKSrEDU09zgMSYbrHX
-	iw+7ZiUK8mRGe+umD2/CC/u3nui7XWSoUggcXYwT6qEzVy3Nbq7mcgJK5kyiqwWyCDUAFUOvTEbb5
-	+NX5rvD/g==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OU5X3Oi+byqZXDxQK6H6SHnPorpS3CBmJsKVuU+rS1Y=; b=khAnaiXDPWWHnFUPKe8r3vvOwD
+	HPIa5zDvZg9qjCiKBilqMYPx2PQn18tVPg7wCVLLkPrvvvS4QXLn+NrfuGC1vn8Gx+HX9XAXyvx81
+	IOrk3J4H8vyjgPty9br3gBq7irdSjfLXi2J7rAZab/xPHP6Gg1zcNiEhBPqp0dV5h+2HK0ee/fwpy
+	7rsRZy5bA73bsvrTmD25e/l8WNb7rY4Zv1D6Vheg7c/2RRV4pXG1O6aXVfJ+VfOYLwo/+TllojPgU
+	xBqoAWprme4+s8m1SGIWQ75ugprcsp3hWUJ1EzUE6zBNdpU9xVYIzZRnwhqRWVt1WKJHNtYvgA+PL
+	qRL2G0Yw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knS5j-0001Bd-Uk; Thu, 10 Dec 2020 19:59:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1knWYs-0001xQ-TC; Fri, 11 Dec 2020 00:45:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knS5f-00019O-2t; Thu, 10 Dec 2020 19:59:03 +0000
-Date: Thu, 10 Dec 2020 20:58:55 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607630342;
- bh=s2+iLf6qBKVf58ffYZN9l2zof1I9JLW9V6wDx6uBGB8=;
- h=From:To:Cc:Subject:References:In-Reply-To:From;
- b=eklBHcybGU7NaHOQQv++7WWXgTVIXfU4CnRYhDTvdmMh828hU1HhwGuy262A7mXl3
- UVfMlgSR9hjmxiHEEmyAKdwE8N24GronEa9YX/3xByG12lhH5sLlYjOzWtARATmbU+
- gbjs//eYTsEVpjwIHW5m8/FwAch5WCZ79eUruF3gO37OfRXISugUzkUxi/tczLL5H1
- C81E6xkV7hUWEVha0XOmiWm7bl+CmN06kwTj6Wpcq+BBF8+02d6kP4fL05muxPEfXb
- pZ3KGXhlBNtOeEDWP9EZLwn/4dPMZS2smZLYs42jw9BUNf2bClh/cggGRtfKBSWABt
- n3IVdl/kI4rwg==
-From: Wolfram Sang <wsa@kernel.org>
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: Re: [PATCH] dma-mapping: move hint unlikely for dma_mapping_error
- from drivers to core
-Message-ID: <20201210195855.GA11120@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- George Cherian <gcherian@marvell.com>,
- Herbert Xu <herbert@gondor.apana.org.au>,
- "David S. Miller" <davem@davemloft.net>,
- Zaibo Xu <xuzaibo@huawei.com>,
- Boris Brezillon <bbrezillon@kernel.org>,
- Arnaud Ebalard <arno@natisbad.org>,
- Srujana Challa <schalla@marvell.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Giovanni Cabiddu <giovanni.cabiddu@intel.com>,
- Elie Morisse <syniurge@gmail.com>,
- Nehal Shah <nehal-bakulchandra.shah@amd.com>,
- Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
- Mike Marciniszyn <mike.marciniszyn@cornelisnetworks.com>,
- Dennis Dalessandro <dennis.dalessandro@cornelisnetworks.com>,
- Doug Ledford <dledford@redhat.com>, Jason Gunthorpe <jgg@ziepe.ca>,
- Andreas Larsson <andreas@gaisler.com>,
- Jakub Kicinski <kuba@kernel.org>,
- Netanel Belgazal <netanel@amazon.com>,
- Arthur Kiyanovski <akiyano@amazon.com>,
- Guy Tzalik <gtzalik@amazon.com>, Saeed Bishara <saeedb@amazon.com>,
- Zorik Machulsky <zorik@amazon.com>,
- Iyappan Subramanian <iyappan@os.amperecomputing.com>,
- Keyur Chudgar <keyur@os.amperecomputing.com>,
- Quan Nguyen <quan@os.amperecomputing.com>,
- Igor Russkikh <irusskikh@marvell.com>,
- Jay Cliburn <jcliburn@gmail.com>,
- Chris Snook <chris.snook@gmail.com>,
- Ariel Elior <aelior@marvell.com>,
- Sudarsana Kalluru <skalluru@marvell.com>,
- GR-everest-linux-l2@marvell.com,
- Michael Chan <michael.chan@broadcom.com>,
- Raju Rangoju <rajur@chelsio.com>,
- Madalin Bucur <madalin.bucur@nxp.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>,
- Ioana Radulescu <ruxandra.radulescu@nxp.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Catherine Sullivan <csully@google.com>,
- Sagi Shahar <sagis@google.com>, Jon Olson <jonolson@google.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
- Salil Mehta <salil.mehta@huawei.com>,
- Hauke Mehrtens <hauke@hauke-m.de>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Sunil Goutham <sgoutham@marvell.com>,
- Geetha sowjanya <gakula@marvell.com>,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>,
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Tariq Toukan <tariqt@nvidia.com>,
- Saeed Mahameed <saeedm@nvidia.com>,
- Leon Romanovsky <leon@kernel.org>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Boris Pismenny <borisp@nvidia.com>, Jon Mason <jdmason@kudzu.us>,
- Rain River <rain.1986.08.12@gmail.com>,
- Zhu Yanjun <zyjzyj2000@gmail.com>,
- Shannon Nelson <snelson@pensando.io>,
- Pensando Drivers <drivers@pensando.io>,
- Jiri Pirko <jiri@resnulli.us>, Edward Cree <ecree.xilinx@gmail.com>,
- Martin Habets <habetsm.xilinx@gmail.com>,
- Daniele Venzano <venza@brownhat.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Wingman Kwok <w-kwok2@ti.com>,
- Murali Karicheri <m-karicheri2@ti.com>,
- Kevin Brace <kevinbrace@bracecomputerlab.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Kalle Valo <kvalo@codeaurora.org>,
- Jiri Slaby <jirislaby@kernel.org>,
- Nick Kossifidis <mickflemm@gmail.com>,
- Luis Chamberlain <mcgrof@kernel.org>,
- Larry Finger <Larry.Finger@lwfinger.net>,
- Luca Coelho <luciano.coelho@intel.com>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, qat-linux@intel.com,
- linux-i2c@vger.kernel.org, linux-rdma@vger.kernel.org,
- netdev@vger.kernel.org, bpf@vger.kernel.org,
- ath10k@lists.infradead.org, linux-wireless@vger.kernel.org,
- ath11k@lists.infradead.org, wil6210@qti.qualcomm.com,
- b43-dev@lists.infradead.org, iommu@lists.linux-foundation.org
-References: <5d08af46-5897-b827-dcfb-181d869c8f71@gmail.com>
+ id 1knWYl-0001tP-KG; Fri, 11 Dec 2020 00:45:25 +0000
+X-UUID: 8b019389954640929c6d73e6b684debd-20201210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:Reply-To:From:Subject:Message-ID;
+ bh=E2phvecjpcnxYh432R82AH09qnOeU+p1vhvA2VIcfOk=; 
+ b=F7sjF2eqEjKJMwSSU4AZJLeViYRoUx74iNfXtM69MtyBBtfRoQqtSQZXze3mjpnDasQZYc6fiaOKNTYb0RgoFWEEp2RUviE/mfaJ4wpolQ/Jvbs6D9Sy928OedUFkTQJqbSfGRktPACWB0pBaIKXvial8T1UK4O/9gfsxW2XyCE=;
+X-UUID: 8b019389954640929c6d73e6b684debd-20201210
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2079382488; Thu, 10 Dec 2020 16:45:18 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Dec 2020 16:45:16 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n2.mediatek.inc
+ (172.21.101.140) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 11 Dec 2020 08:45:14 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 11 Dec 2020 08:45:13 +0800
+Message-ID: <1607647514.12750.5.camel@mhfsdcap03>
+Subject: Re: [PATCH v8, 5/6] drm/mediatek: add RDMA fifo size error handle
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 11 Dec 2020 08:45:14 +0800
+In-Reply-To: <CAAOTY_-aYFz1Xg6r2ur+BF_k_35F3qNLLb16_2c0MaMsYre-+w@mail.gmail.com>
+References: <1607591262-21736-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1607591262-21736-6-git-send-email-yongqiang.niu@mediatek.com>
+ <CAAOTY_-aYFz1Xg6r2ur+BF_k_35F3qNLLb16_2c0MaMsYre-+w@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <5d08af46-5897-b827-dcfb-181d869c8f71@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201210_145903_341994_20B9B539 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20201210_194524_476530_1407B2A9 
+X-CRM114-Status: GOOD (  21.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -154,139 +81,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kevin Brace <kevinbrace@bracecomputerlab.com>,
- Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
- Igor Russkikh <irusskikh@marvell.com>,
- Iyappan Subramanian <iyappan@os.amperecomputing.com>,
- GR-everest-linux-l2@marvell.com, Ioana Radulescu <ruxandra.radulescu@nxp.com>,
- Madalin Bucur <madalin.bucur@nxp.com>, Michal Simek <michal.simek@xilinx.com>,
- Doug Ledford <dledford@redhat.com>, Murali Karicheri <m-karicheri2@ti.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Jiri Pirko <jiri@resnulli.us>,
- Jesper Dangaard Brouer <hawk@kernel.org>, Hauke Mehrtens <hauke@hauke-m.de>,
- Arnaud Ebalard <arno@natisbad.org>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Guy Tzalik <gtzalik@amazon.com>, Luis Chamberlain <mcgrof@kernel.org>,
- linux-crypto@vger.kernel.org, Jon Mason <jdmason@kudzu.us>,
- Shannon Nelson <snelson@pensando.io>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Chris Snook <chris.snook@gmail.com>, Daniele Venzano <venza@brownhat.org>,
- Zhu Yanjun <zyjzyj2000@gmail.com>, linux-i2c@vger.kernel.org,
- Ioana Ciornei <ioana.ciornei@nxp.com>, Jon Olson <jonolson@google.com>,
- Arthur Kiyanovski <akiyano@amazon.com>, Leon Romanovsky <leon@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Boris Pismenny <borisp@nvidia.com>,
- John Fastabend <john.fastabend@gmail.com>,
- Rain River <rain.1986.08.12@gmail.com>,
- Martin Habets <habetsm.xilinx@gmail.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>, Wingman Kwok <w-kwok2@ti.com>,
- Sean Wang <sean.wang@mediatek.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Pensando Drivers <drivers@pensando.io>, Kalle Valo <kvalo@codeaurora.org>,
- Boris Brezillon <bbrezillon@kernel.org>, Sagi Shahar <sagis@google.com>,
- Tariq Toukan <tariqt@nvidia.com>, Sudarsana Kalluru <skalluru@marvell.com>,
- Netanel Belgazal <netanel@amazon.com>, Andreas Larsson <andreas@gaisler.com>,
- Catherine Sullivan <csully@google.com>, Zaibo Xu <xuzaibo@huawei.com>,
- Mike Marciniszyn <mike.marciniszyn@cornelisnetworks.com>,
- Alexei Starovoitov <ast@kernel.org>, Elie Morisse <syniurge@gmail.com>,
- Luca Coelho <luciano.coelho@intel.com>,
- Quan Nguyen <quan@os.amperecomputing.com>,
- Subbaraya Sundeep <sbhatta@marvell.com>, Jiri Slaby <jirislaby@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Dennis Dalessandro <dennis.dalessandro@cornelisnetworks.com>,
- linux-rdma@vger.kernel.org, Srujana Challa <schalla@marvell.com>,
- ath10k@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- ath11k@lists.infradead.org, b43-dev@lists.infradead.org,
- Jay Cliburn <jcliburn@gmail.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- John Crispin <john@phrozen.org>, Michael Chan <michael.chan@broadcom.com>,
- Salil Mehta <salil.mehta@huawei.com>, Edward Cree <ecree.xilinx@gmail.com>,
- iommu@lists.linux-foundation.org, wil6210@qti.qualcomm.com,
- Saeed Bishara <saeedb@amazon.com>, bpf@vger.kernel.org,
- Geetha sowjanya <gakula@marvell.com>,
- Giovanni Cabiddu <giovanni.cabiddu@intel.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Zorik Machulsky <zorik@amazon.com>,
- qat-linux@intel.com, Jason Gunthorpe <jgg@ziepe.ca>,
- Nick Kossifidis <mickflemm@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Nehal Shah <nehal-bakulchandra.shah@amd.com>,
- Sunil Goutham <sgoutham@marvell.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Ariel Elior <aelior@marvell.com>, Keyur Chudgar <keyur@os.amperecomputing.com>,
- George Cherian <gcherian@marvell.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- hariprasad <hkelam@marvell.com>, Raju Rangoju <rajur@chelsio.com>,
- Felix Fietkau <nbd@nbd.name>, Saeed Mahameed <saeedm@nvidia.com>,
- Larry Finger <Larry.Finger@lwfinger.net>
-Content-Type: multipart/mixed; boundary="===============2170758860630855186=="
+Reply-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob
+ Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============2170758860630855186==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="k+w/mQv8wyuph6w0"
-Content-Disposition: inline
-
-
---k+w/mQv8wyuph6w0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Dec 10, 2020 at 03:47:50PM +0100, Heiner Kallweit wrote:
-> Zillions of drivers use the unlikely() hint when checking the result of
-> dma_mapping_error(). This is an inline function anyway, so we can move
-> the hint into the function and remove it from drivers.
-> From time to time discussions pop up how effective unlikely() is,
-> and that it should be used only if something is really very unlikely.
-> I think that's the case here.
->=20
-> Patch was created with some help from coccinelle.
->=20
-> @@
-> expression dev, dma_addr;
-> @@
->=20
-> - unlikely(dma_mapping_error(dev, dma_addr))
-> + dma_mapping_error(dev, dma_addr)
->=20
-> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-
-Acked-by: Wolfram Sang <wsa@kernel.org> # for I2C
-
-
---k+w/mQv8wyuph6w0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl/SffoACgkQFA3kzBSg
-KbYcjxAAgOE4gHcgEP8+Oex1fposdP2Z4KiWFjIYYWG4fo/Ry9PjDbSGh9Nptht2
-fnsCRcFXFj4oaSXaflBTq6ky4usgo2Gyp9puXbnpyj7P2uEjrqZs1zUFpAWdzMor
-UgiJkW/P2IZjCDfwxE8nn9L0fm8ZfcHWqVohAgDh/9SKsrQCdzlzwvd7vSQ94fXr
-qnYrmc6BF68dxVZx4TV18GddP5qFXYKytQ8pXL51XZEJTI05IGmc2l6hs/B4tKj6
-muxiEFw5Ac0eseMimi4J5YDJJZxWe28onn69mMJYQDzVPqSZRyhSAqCv0EhMg6Vp
-sABbG/eShtxir8A5ZrVRgqCaVyBjPu6pHAxdccHkj4d/6hfvD6F2FDXXaWirAf3i
-A4gsMJAmxtBYV0Lyx0D+fzCFnvUSDDSOEayRJdzotQXVCbLvuWHTp6EXVJFD5mMU
-/o3LApTC1uYQTXfGh1HHanpSEXLXfVgzjuDHRUsVIwemk5JwUAl6fw4oXbMrHYdZ
-v9Inx4U81LGxayz1vGmzbE39AeE7YH/5lH4metjot96RpKa+Gg++mMxUHBPW6Jam
-AOz6I3cKYsn7mPkzAZfDNvhvfgz2vxXcGGULSCdaWnVCJY7FMqe8i98w1z/Ymo7U
-JSXmDUhFS43r0JqUfbR0sRGgLL+kHTEa6I4ZT8UNd9DmTtS0Jmo=
-=4X1P
------END PGP SIGNATURE-----
-
---k+w/mQv8wyuph6w0--
-
-
---===============2170758860630855186==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============2170758860630855186==--
-
+T24gVGh1LCAyMDIwLTEyLTEwIGF0IDIzOjUwICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
+PiBIaSwgWW9uZ3FpYW5nOg0KPiANCj4gWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRp
+YXRlay5jb20+IOaWvCAyMDIw5bm0MTLmnIgxMOaXpSDpgLHlm5sg5LiL5Y2INTowOOWvq+mBk++8
+mg0KPiA+DQo+ID4gVGhpcyBwYXRjaCBhZGQgUkRNQSBmaWZvIHNpemUgZXJyb3IgaGFuZGxlDQo+
+ID4gcmRtYSBmaWZvIHNpemUgd2lsbCBub3QgYWx3YXlzIGJpZ2dlciB0aGFuIHRoZSBjYWxjdWxh
+dGVkIHRocmVzaG9sZA0KPiA+IGlmIHRoYXQgY2FzZSBoYXBwZW5lZCwgd2UgbmVlZCBzZXQgZmlm
+byBzaXplIGFzIHRoZSB0aHJlc2hvbGQNCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFu
+ZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIHwgNCArKysrDQo+ID4gIDEgZmlsZSBj
+aGFuZ2VkLCA0IGluc2VydGlvbnMoKykNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX3JkbWEuYw0KPiA+IGluZGV4IDc5NGFjYzUuLjA1MDgzOTIgMTAwNjQ0DQo+ID4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYw0KPiA+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMNCj4gPiBAQCAtMTUxLDYg
+KzE1MSwxMCBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19kZHBfY29t
+cCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLA0KPiA+ICAgICAgICAgICogYWNjb3VudCBmb3Ig
+YmxhbmtpbmcsIGFuZCB3aXRoIGEgcGl4ZWwgZGVwdGggb2YgNCBieXRlczoNCj4gPiAgICAgICAg
+ICAqLw0KPiA+ICAgICAgICAgdGhyZXNob2xkID0gd2lkdGggKiBoZWlnaHQgKiB2cmVmcmVzaCAq
+IDQgKiA3IC8gMTAwMDAwMDsNCj4gPiArDQo+ID4gKyAgICAgICBpZiAodGhyZXNob2xkID4gcmRt
+YV9maWZvX3NpemUpDQo+ID4gKyAgICAgICAgICAgICAgIHRocmVzaG9sZCA9IHJkbWFfZmlmb19z
+aXplOw0KPiANCj4gSWYgdGhlIGZvcm11bGEgaXMgbm90IGNvcnJlY3QsIHlvdSBzaG91bGQgZml4
+IHRoZSBmb3JtdWxhIG5vdCB3b3JrIGFyb3VuZC4NCj4gDQo+IFJlZ2FyZHMsDQo+IENodW4tS3Vh
+bmcuDQoNCmhvdyBhYm91dCB0aGlzOg0KdGhyZXNob2xkID0gbWF4KHdpZHRoICogaGVpZ2h0ICog
+dnJlZnJlc2ggKiA0ICogNyAvIDEwMDAwMDAsDQpyZG1hX2ZpZm9fc2l6ZSk7DQo+IA0KPiA+ICsN
+Cj4gPiAgICAgICAgIHJlZyA9IFJETUFfRklGT19VTkRFUkZMT1dfRU4gfA0KPiA+ICAgICAgICAg
+ICAgICAgUkRNQV9GSUZPX1BTRVVET19TSVpFKHJkbWFfZmlmb19zaXplKSB8DQo+ID4gICAgICAg
+ICAgICAgICBSRE1BX09VVFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9MRCh0aHJlc2hvbGQpOw0KPiA+
+IC0tDQo+ID4gMS44LjEuMS5kaXJ0eQ0KPiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fDQo+ID4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0DQo+ID4g
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZw0KPiA+IGh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsNCg0KX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
