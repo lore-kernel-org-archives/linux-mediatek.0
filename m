@@ -2,71 +2,73 @@ Return-Path: <SRS0=F1mA=FQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C0FFC4167B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Dec 2020 04:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82A2BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Dec 2020 04:13:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD09A238E4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Dec 2020 04:12:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD09A238E4
+	by mail.kernel.org (Postfix) with ESMTPS id 4F5842313E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Dec 2020 04:13:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F5842313E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VfZXFpC0lHyxGfbDNhyffL5ekhv9EaVvtgS7wN4QUnE=; b=TvKIIsA1mvm4sXwOUWzvdzYA+B
-	PTfQ1WJY0PizJDz6oT31ZkwGXut7Gn5H5Di6Kh9lAjMAHKTxNa/v/8QMISCPvHYU21OY0F+DkM4vI
-	jFFjO2CN/lN2ccpcJr+Xm9cejjDg+5zoxH25wdqou0ugqmw3Ffk2CGuIkafWWJbYg1wWQCz2aH+Ey
-	1h0QZluWlvD13Kwwcbqwm1F4ODF+HdGBqzNf2fj/4/U9IvXeJ5O1Oi32CCh4z/3/xmM2FnvYCefXU
-	cg3TMwQ8scZ99ulNeBzCp62GSITp7bj9JjDeJmgXQFjCK3LPYUdyGreQZRZdljnpAX5cpYt8iSBfh
-	Nj3drdQg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=evS0lmts9lJ2tvm858vLGWeDfyefTnI6JDePfz/sFFI=; b=gxeK7ThESseKgfiKnqO2OD0Az
+	05zg9pNS+vczBgdZdPhi0kYVWox84WhD0ZLxlFcV+DUK8Xtpoyi41X79afoXvXl/fCwScZSjBcQ9Y
+	EgtfGbvD2WakzUgncXmLbgdBUjsCnCC6u2PFJ0yt8Fj24fNj5Th+Oyx+V3Xytuo0dRfDDRfqsSLDf
+	yLV+uAiVVFQayRnmTDGZvlT7P+s2NLMIxwn9XgDIE3yISTX1wjiFWcKah4WByJfD4S0M4PgIrLHJn
+	GelBsCbCbx6P17zuNL/r6siGyNsGQIYFobuAYDJcsGUei1G1l6eIuoXhkCniT5ruQjdG0OlR8dlzh
+	IYpaH7IPA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knwH0-0002BY-IQ; Sat, 12 Dec 2020 04:12:46 +0000
+	id 1knwH3-0002D3-RC; Sat, 12 Dec 2020 04:12:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knwGS-0001up-04; Sat, 12 Dec 2020 04:12:13 +0000
-X-UUID: 3eac34a58aa34a94965b3759338f302f-20201211
+ id 1knwGS-0001v2-3Q; Sat, 12 Dec 2020 04:12:13 +0000
+X-UUID: b575809382954946a9ec8ea6f1fbfc78-20201211
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=vT0tEz7O56Ljx3heYOs5Vu1t2ZKW5D5UM2elnjUqRL4=; 
- b=d2I8SpT81AjXg45t3rNyLc1PbJS21I0GaCfaKqtn3edXAbBd22fJ7311UjH1OtbGSXfK3Zo81jwt9haT3zTXropEHYbhJQKWwzMs6zIRdNZ2CcgYX5v1AEYyu5F+fY8NexCBBze/yUNYw6sOKK0FJ/GLKLQgBDb/EtC/adgCsX8=;
-X-UUID: 3eac34a58aa34a94965b3759338f302f-20201211
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=TWRqZnq3f9eroqPF7glUmqIDuZpG8BlSAK6obS8Rf/M=; 
+ b=h/Z4+mF9TWpragE2O9Owy+c3xVXwAfai7e13k5CvZEEPJCB+Nq0qHMkXcYzNO2vx1vC3R5mqTz5sdBd6gGJBNw1T3QJG2qvhfXT9rPbLWkNvlqOtuYztdrhxp7vl6jOX8GcBY6FmijmTu+CpIPtoPVG7bzPLxgg/QZaCPVqZv+w=;
+X-UUID: b575809382954946a9ec8ea6f1fbfc78-20201211
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 228861187; Fri, 11 Dec 2020 20:12:04 -0800
+ with ESMTP id 2052391660; Fri, 11 Dec 2020 20:12:07 -0800
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Dec 2020 20:12:01 -0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Dec 2020 20:12:04 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Dec 2020 12:12:01 +0800
+ 15.0.1497.2; Sat, 12 Dec 2020 12:12:04 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 12 Dec 2020 12:12:00 +0800
+ Transport; Sat, 12 Dec 2020 12:12:03 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2, 00/17] drm/mediatek: add support for mediatek SOC MT8192
-Date: Sat, 12 Dec 2020 12:11:40 +0800
-Message-ID: <1607746317-4696-1-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v2, 04/17] drm/mediatek: add component OVL_2L2
+Date: Sat, 12 Dec 2020 12:11:44 +0800
+Message-ID: <1607746317-4696-5-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1607746317-4696-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1607746317-4696-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201211_231212_227447_5828E711 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20201211_231212_574089_378C028C 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,67 +90,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series are based on 5.10-rc1 and provid 17 patch
-to support mediatek SOC MT8192
+This patch add component OVL_2L2
 
-Changes in v2:
-- base mmsys
-https://patchwork.kernel.org/project/linux-mediatek/cover/1607506379-10998-1-git-send-email-yongqiang.niu@mediatek.com/
-- base mt8192 gce dtbinding file
-https://patchwork.kernel.org/project/linux-mediatek/patch/1607141728-17307-2-git-send-email-yongqiang.niu@mediatek.com/
-- add dt-bindings description for post mask
-- add dt-bindings description for mt8192 display
-- fix some comment in v1
-- add mt8192 mmsys function call
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
+ include/linux/soc/mediatek/mtk-mmsys.h      | 1 +
+ 2 files changed, 2 insertions(+)
 
-Changes in v1:
-- add some more ddp component
-- add mt8192 mmsys support
-- add ovl mount on support
-- add 2 more clock into mutex device
-- fix ovl smi_id_en and fb null software bug
-- fix ddp compoent size config bug
-- add mt8192 drm support
-- add ddp bypass shadow register function
-- add 8192 dts description
-
-Yongqiang Niu (17):
-  dt-bindings: mediatek: add description for postmask
-  dt-bindings: mediatek: add CLK_MM_DISP_CONFIG control description for
-    mt8192 display
-  dt-bindings: mediatek: add description for mt8192 display
-  drm/mediatek: add component OVL_2L2
-  drm/mediatek: add component POSTMASK
-  drm/mediatek: add component RDMA4
-  drm/mediatek: add disp config and mm 26mhz clock into mutex device
-  drm/mediatek: enable OVL_LAYER_SMI_ID_EN for multi-layer usecase
-  drm/mediatek: check if fb is null
-  drm/mediatek: fix aal size config
-  drm/mediatek: fix dither size config
-  drm/mediatek: fix gamma size config
-  drm/mediatek: fix ccorr size config
-  soc: mediatek: mmsys: Use function call for setting mmsys ovl mout
-    register
-  soc: mediatek: mmsys: add mt8192 mmsys support
-  drm/mediatek: add support for mediatek SOC MT8192
-  arm64: dts: mt8192: add display node
-
- .../bindings/display/mediatek/mediatek,disp.txt    |   6 +-
- arch/arm64/boot/dts/mediatek/mt8192.dtsi           | 130 +++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_color.c          |   6 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  34 +++++-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |   6 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c             |  84 +++++++++++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  50 +++++++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  48 ++++++++
- drivers/soc/mediatek/mmsys/Makefile                |   1 +
- drivers/soc/mediatek/mmsys/mt8192-mmsys.c          | 119 +++++++++++++++++++
- drivers/soc/mediatek/mmsys/mtk-mmsys.c             |  18 +++
- include/linux/soc/mediatek/mtk-mmsys.h             |   7 ++
- 13 files changed, 496 insertions(+), 14 deletions(-)
- create mode 100644 drivers/soc/mediatek/mmsys/mt8192-mmsys.c
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 8eba44b..8938554 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -403,6 +403,7 @@ struct mtk_ddp_comp_match {
+ 	[DDP_COMPONENT_OVL1]	= { MTK_DISP_OVL,	1, NULL },
+ 	[DDP_COMPONENT_OVL_2L0]	= { MTK_DISP_OVL_2L,	0, NULL },
+ 	[DDP_COMPONENT_OVL_2L1]	= { MTK_DISP_OVL_2L,	1, NULL },
++	[DDP_COMPONENT_OVL_2L2]	= { MTK_DISP_OVL_2L,	2, NULL },
+ 	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
+ 	[DDP_COMPONENT_PWM1]	= { MTK_DISP_PWM,	1, NULL },
+ 	[DDP_COMPONENT_PWM2]	= { MTK_DISP_PWM,	2, NULL },
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 4b6c514..42476c2 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -29,6 +29,7 @@ enum mtk_ddp_comp_id {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_OVL_2L0,
+ 	DDP_COMPONENT_OVL_2L1,
++	DDP_COMPONENT_OVL_2L2,
+ 	DDP_COMPONENT_OVL1,
+ 	DDP_COMPONENT_PWM0,
+ 	DDP_COMPONENT_PWM1,
 -- 
 1.8.1.1.dirty
 _______________________________________________
