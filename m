@@ -7,77 +7,79 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8B56C4361B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 05:17:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE087C4361B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 08:40:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5B1EB224D3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 05:17:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B1EB224D3
+	by mail.kernel.org (Postfix) with ESMTPS id 0BCF9206A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 08:40:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BCF9206A4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J3pYMTGTflUlu6q+UyesWS0lzORvDrZU/rHc+QteJwc=; b=wb4CAPNBckl/A5MZtTCY0yaJGk
-	JQRAAdihP8zDFEiLllZ3WQhjtAPIhaM+skAv5P8dvmV4RvL3rkMRJmP3WH6c2E5Tyb6lNlr312cva
-	er9KAPbTCuvLMlUjAIpatesom61dmqtA6zqy6j8RCKKH0tgMr6bOPuUXjffDrampNYbZsUDhXBm1f
-	gmeHCU3KtG/ty4nEjBh59CacCnjIA48l8OtSiTjhM3vO/9Ve5996cYhUJTBBjv3A+okMlqeo9ZK7h
-	jdH43c6eFm3+8b3ZJ6jONh2/EJ7RCD+bCTNiyDDvJ53abrmh9EvtvL61G4CZzL8oiSRKm52YTO7bc
-	YUSKuV2Q==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=feX8xRyKG9UNzL1RWk6m8CPZw2tKGzjWOcuhx8rJCTQ=; b=of9Y0mCpSI7ohK7syPevZdZfO
+	pAUquXN3TtbVtWDT0E7WY2u8HNuucuCpdsHkSfCFC7tUOWF6qZb1hksoSv/7AY4jFSe8Uy6fw9BBp
+	hTAUXapf2bpQl/QaMqHpAwU5YXVljGTBzV/A22rbGyE4TjBxQmr71PLjJkrvggdX9bZf7wBrm9zay
+	1yrw5wKjn4b+x1fyOaL81IwEU+Co9huo7a479R9U8PIjZCUw2iPL+H69AYsjDAia5zqqdZoi+ZP9+
+	wyJlSpTVbQH/Y0mPuIsq0FwBM4oXjcD00PCdeWTyuypUqF+M3JCa5QDayTja1TOtUa6P9uwuS/gLE
+	cgVDPs6tQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kogEM-0004m5-Ou; Mon, 14 Dec 2020 05:17:06 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1kojP8-0006rs-A4; Mon, 14 Dec 2020 08:40:26 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kogEI-0004lD-5u
- for linux-mediatek@lists.infradead.org; Mon, 14 Dec 2020 05:17:04 +0000
-Received: by mail-pf1-x444.google.com with SMTP id m6so1594129pfm.6
- for <linux-mediatek@lists.infradead.org>; Sun, 13 Dec 2020 21:16:59 -0800 (PST)
+ id 1kojP2-0006qJ-8g
+ for linux-mediatek@lists.infradead.org; Mon, 14 Dec 2020 08:40:21 +0000
+Received: by mail-pg1-x543.google.com with SMTP id w5so11232958pgj.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 14 Dec 2020 00:40:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=N1Nel5Scj6DHsRcstdI0CADTOeJRVxq0W6PfMKurToI=;
- b=d3T/MAP9G2zaws1f/uZ/O5za8PmycfvFhIq66HQJQ6shQhbOBg3qUWb2mFfZMHfn0e
- DVwgWH6A1rgwEM3ANg9TkzhVUT6NgL+q3D7/d6YOxrhmZKNl6XadrYkYLXQkfksqj4s1
- ZG4VUEFRN8a3VpK3ErzXooIKf+hUT/wiILDp8=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=UJDTefHsdcJyvOhY81AQdb/UxL3AvZFQ4NimqKN0Ur8=;
+ b=aT4moFJVSxq0ufLAmXzLxnCv4F7DY+lFzYe2RiIDGDJxpCb689fge0aTlhGeG2PaPm
+ 6IUKDQ3/u6+0cG1omWb+migFuhsxWrwEPDI7iX86QuhUzztFprse0iNApR+kC+NuM7vz
+ an+wNWUNbeDy4aA1iRWqENVF9B7iWBsRaoQHc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=N1Nel5Scj6DHsRcstdI0CADTOeJRVxq0W6PfMKurToI=;
- b=LRWze9wB5GgVvMX4T2MCmr3U1dkZY5djTiB9zRVwMNi9AGc+h71sfWkqI6SJH2z+vo
- Q4QjtYFWhvyK+0tKHIK4OtFl9avqbQsP6fdHHWSCKtmADboDZRj0oeDYx3ZyUBmGgg8o
- Hu97SVuusKrtXotMvs9I3YLQWpw7XWTm2ymIkHIJoAicvObKk37ZhIeeEU/J5uULiZCN
- vf6ryDE6aLletTX8P+pfUASBhgb0UflBd6KDtv0XXk687XKz/NkTxop8WdTasFTEiCFL
- zvcxEd62C+ujfXJc3+QCNJWfr8zBVlaL7S2CX7EjjaU/PaxU6w5gOPhc+qXm3PSdTo/h
- eoww==
-X-Gm-Message-State: AOAM532oDWYMVPdsL/JGmBb5buqyLyWmvpTyGgliILGNkjJzRogHkydx
- O6H+Ef+eE1Fde793RMmdlOB4nIy5RoGJkg==
-X-Google-Smtp-Source: ABdhPJy1CSWhNTkNbc4BjMo2+fs9Xwc9HusvXlkOzgp5pU4/JKZHdOuA0W66NOpmAAf12a2w/JpcbQ==
-X-Received: by 2002:a62:8b:0:b029:19d:a1b3:e78 with SMTP id
- 133-20020a62008b0000b029019da1b30e78mr22106304pfa.25.1607923016991; 
- Sun, 13 Dec 2020 21:16:56 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=UJDTefHsdcJyvOhY81AQdb/UxL3AvZFQ4NimqKN0Ur8=;
+ b=nV/yMwbOCl0rMA0oANws+UhlDeOSo3E+tZNiIUHOmUBOO/hmI3HuKN757dfHZ7lXM8
+ ImXTmBPcfndCS2VPobUYigu50nAtB3twVuIXouNTIqIR3nOP4UhLYOeZCtGWpVvPr6AD
+ MwKMqpFp/1IwzjAAAYGVaj/WH8EO9aLO+nbz+DsWqU/l380LnrdlmbGqoPQfHV8+ULvO
+ CFO8tkLRDU+jXTzgP65wluUbiAtH10ImWXnVAcRGQ6HQpRh2VPSQacNOpk410JrAyS7T
+ kALK7HIUDLpaiWNgS3f7I4mTM4UZ9B8gDlE5kXpkRSp2SqzVK0PaJgaHK2a0bPnwg47X
+ sg7w==
+X-Gm-Message-State: AOAM530PIpePyfIMjmmjNYwzRVw2rER+/E6rAjpzseIr02i+Icr1fs3W
+ HNHT8AybWGeIWfHpWCBzY4tR1QRKBMQjpA==
+X-Google-Smtp-Source: ABdhPJwxOU7UoYIL86+Fif17IFTMdRxXM2DzLDZIHdEhpW0vnSaLMGel11VHcGnAt1gMr+WLHYWjOA==
+X-Received: by 2002:a62:7907:0:b029:19d:cf5d:20ae with SMTP id
+ u7-20020a6279070000b029019dcf5d20aemr23197280pfc.2.1607935216910; 
+ Mon, 14 Dec 2020 00:40:16 -0800 (PST)
 Received: from ikjn-p920.tpe.corp.google.com
  ([2401:fa00:1:b:f693:9fff:fef4:a8fc])
- by smtp.gmail.com with ESMTPSA id n127sm18611747pfd.143.2020.12.13.21.16.54
+ by smtp.gmail.com with ESMTPSA id i7sm358684pfc.50.2020.12.14.00.40.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 13 Dec 2020 21:16:56 -0800 (PST)
+ Mon, 14 Dec 2020 00:40:16 -0800 (PST)
 From: Ikjoon Jang <ikjn@chromium.org>
 To: linux-mediatek@lists.infradead.org,
 	linux-usb@vger.kernel.org
-Subject: [PATCH v3] usb: xhci-mtk: fix unreleased bandwidth data
-Date: Mon, 14 Dec 2020 13:16:50 +0800
-Message-Id: <20201214131640.v3.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+Subject: [PATCH v4] usb: xhci-mtk: fix unreleased bandwidth data
+Date: Mon, 14 Dec 2020 16:39:53 +0800
+Message-Id: <20201214163945.v4.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
 X-Mailer: git-send-email 2.29.2.684.gfbc64c5ab5-goog
+In-Reply-To: <20201214131640.v3.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+References: <20201214131640.v3.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201214_001702_496131_8FB8424E 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20201214_034020_337034_F20BEEE0 
+X-CRM114-Status: GOOD (  22.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,8 +118,12 @@ Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
 
 ---
 
+Changes in v4:
+- bugfix in v3, check_bandwidth() returns an uninitialized
+  value when no endpoints were newly added.
+
 Changes in v3:
-- drop unrelated code cleanups in v2
+- drop unrelated code cleanups
 - change Fixes tag to keep dependency
 
 Changes in v2:
@@ -125,13 +131,13 @@ Changes in v2:
 - split one big patch into three patches
 - fix wrong offset in mediatek hw flags
 
- drivers/usb/host/xhci-mtk-sch.c | 121 ++++++++++++++++++++++----------
+ drivers/usb/host/xhci-mtk-sch.c | 124 ++++++++++++++++++++++----------
  drivers/usb/host/xhci-mtk.h     |  13 ++++
  drivers/usb/host/xhci.c         |   9 +++
- 3 files changed, 106 insertions(+), 37 deletions(-)
+ 3 files changed, 109 insertions(+), 37 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 45c54d56ecbd..72c493758c3f 100644
+index 45c54d56ecbd..95d20de9fd1f 100644
 --- a/drivers/usb/host/xhci-mtk-sch.c
 +++ b/drivers/usb/host/xhci-mtk-sch.c
 @@ -200,6 +200,7 @@ static struct mu3h_sch_ep_info *create_sch_ep(struct usb_device *udev,
@@ -237,7 +243,7 @@ index 45c54d56ecbd..72c493758c3f 100644
  	int bw_index;
  
  	xhci = hcd_to_xhci(hcd);
-@@ -694,17 +687,71 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+@@ -694,17 +687,74 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
  	bw_index = get_bw_index(xhci, udev, ep);
  	sch_bw = &sch_array[bw_index];
  
@@ -268,6 +274,9 @@ index 45c54d56ecbd..72c493758c3f 100644
 +	int bw_index, ret;
 +
 +	dev_dbg(&udev->dev, "%s\n", __func__);
++
++	if (list_empty(&mtk->bw_ep_list_new))
++		return 0;
 +
 +	list_for_each_entry(sch_ep, &mtk->bw_ep_list_new, endpoint) {
 +		bw_index = get_bw_index(xhci, udev, sch_ep->ep);
