@@ -2,84 +2,80 @@ Return-Path: <SRS0=EHBe=FS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AE087C4361B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 08:40:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B51AEC4361B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 08:48:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0BCF9206A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 08:40:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BCF9206A4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 461C0225AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 08:48:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 461C0225AB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=feX8xRyKG9UNzL1RWk6m8CPZw2tKGzjWOcuhx8rJCTQ=; b=of9Y0mCpSI7ohK7syPevZdZfO
-	pAUquXN3TtbVtWDT0E7WY2u8HNuucuCpdsHkSfCFC7tUOWF6qZb1hksoSv/7AY4jFSe8Uy6fw9BBp
-	hTAUXapf2bpQl/QaMqHpAwU5YXVljGTBzV/A22rbGyE4TjBxQmr71PLjJkrvggdX9bZf7wBrm9zay
-	1yrw5wKjn4b+x1fyOaL81IwEU+Co9huo7a479R9U8PIjZCUw2iPL+H69AYsjDAia5zqqdZoi+ZP9+
-	wyJlSpTVbQH/Y0mPuIsq0FwBM4oXjcD00PCdeWTyuypUqF+M3JCa5QDayTja1TOtUa6P9uwuS/gLE
-	cgVDPs6tQ==;
+	 bh=RH0BF6JAuy+DcKkd42d6k+8NWe13KkZjuJ0B5xtE9CY=; b=hIAfULpAQcQS9CnRN2ANGLIF5
+	r+Oi2a7eUHM4JvmJuw5wDUUQk05BkME6HGornPcNRUvKKob0GRdRQbO6LrsjOG3LWxl8U4fFG5uQP
+	9yK+G653G4R9EYJ6vGHIZ9eGQqdmXIVuehL6CsHMXXY5RqNhxGuuFfl2PzpvYy/UoqK9rnQ8ezNYs
+	SxRnb/kDgxPznod9LHKEQ5lo13EgBvd+gKaXg5nv8oFMgsDPnkif5uuYbHbznaQOkz0x93vCfNlgF
+	KwMWnPJm9ZWqaPe/sKwwEW0Lx23G0UoGxx4Bmk/iCICBQyMwPwk2LgL0kyd7BnDL0FRqMW0N/UFJD
+	aizS0fe7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kojP8-0006rs-A4; Mon, 14 Dec 2020 08:40:26 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1kojWm-0007f8-Jo; Mon, 14 Dec 2020 08:48:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kojP2-0006qJ-8g
- for linux-mediatek@lists.infradead.org; Mon, 14 Dec 2020 08:40:21 +0000
-Received: by mail-pg1-x543.google.com with SMTP id w5so11232958pgj.3
- for <linux-mediatek@lists.infradead.org>; Mon, 14 Dec 2020 00:40:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=UJDTefHsdcJyvOhY81AQdb/UxL3AvZFQ4NimqKN0Ur8=;
- b=aT4moFJVSxq0ufLAmXzLxnCv4F7DY+lFzYe2RiIDGDJxpCb689fge0aTlhGeG2PaPm
- 6IUKDQ3/u6+0cG1omWb+migFuhsxWrwEPDI7iX86QuhUzztFprse0iNApR+kC+NuM7vz
- an+wNWUNbeDy4aA1iRWqENVF9B7iWBsRaoQHc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=UJDTefHsdcJyvOhY81AQdb/UxL3AvZFQ4NimqKN0Ur8=;
- b=nV/yMwbOCl0rMA0oANws+UhlDeOSo3E+tZNiIUHOmUBOO/hmI3HuKN757dfHZ7lXM8
- ImXTmBPcfndCS2VPobUYigu50nAtB3twVuIXouNTIqIR3nOP4UhLYOeZCtGWpVvPr6AD
- MwKMqpFp/1IwzjAAAYGVaj/WH8EO9aLO+nbz+DsWqU/l380LnrdlmbGqoPQfHV8+ULvO
- CFO8tkLRDU+jXTzgP65wluUbiAtH10ImWXnVAcRGQ6HQpRh2VPSQacNOpk410JrAyS7T
- kALK7HIUDLpaiWNgS3f7I4mTM4UZ9B8gDlE5kXpkRSp2SqzVK0PaJgaHK2a0bPnwg47X
- sg7w==
-X-Gm-Message-State: AOAM530PIpePyfIMjmmjNYwzRVw2rER+/E6rAjpzseIr02i+Icr1fs3W
- HNHT8AybWGeIWfHpWCBzY4tR1QRKBMQjpA==
-X-Google-Smtp-Source: ABdhPJwxOU7UoYIL86+Fif17IFTMdRxXM2DzLDZIHdEhpW0vnSaLMGel11VHcGnAt1gMr+WLHYWjOA==
-X-Received: by 2002:a62:7907:0:b029:19d:cf5d:20ae with SMTP id
- u7-20020a6279070000b029019dcf5d20aemr23197280pfc.2.1607935216910; 
- Mon, 14 Dec 2020 00:40:16 -0800 (PST)
-Received: from ikjn-p920.tpe.corp.google.com
- ([2401:fa00:1:b:f693:9fff:fef4:a8fc])
- by smtp.gmail.com with ESMTPSA id i7sm358684pfc.50.2020.12.14.00.40.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Dec 2020 00:40:16 -0800 (PST)
-From: Ikjoon Jang <ikjn@chromium.org>
-To: linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org
-Subject: [PATCH v4] usb: xhci-mtk: fix unreleased bandwidth data
-Date: Mon, 14 Dec 2020 16:39:53 +0800
-Message-Id: <20201214163945.v4.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
-X-Mailer: git-send-email 2.29.2.684.gfbc64c5ab5-goog
-In-Reply-To: <20201214131640.v3.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
-References: <20201214131640.v3.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+ id 1kojWh-0007e9-Vv; Mon, 14 Dec 2020 08:48:17 +0000
+X-UUID: 4ed657c646b942c4a8970cf72ff4dd70-20201214
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=n1kA6Xt14g3xa0Kc7PDsfol/8c8gVI0uIJMViFPg2wE=; 
+ b=ENhkujVPk4+U8Q1Qw8QJkWL16yFzOLCfre7VkpWrT88IzkjcRsGcG++nwDhMEsQ35Jyk5/jfEDFdQgTzdLoXKXe79fD3bpV6qAd5ABblKgQNGJS/0prLi4Djr5/RnY6THD8MT6RwaAoj5fRfXcWjRkb7z1qP7cHirN+h5gsAtgg=;
+X-UUID: 4ed657c646b942c4a8970cf72ff4dd70-20201214
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1927615475; Mon, 14 Dec 2020 00:48:10 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Dec 2020 00:48:08 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 14 Dec 2020 16:48:05 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 14 Dec 2020 16:48:04 +0800
+Message-ID: <1607935685.25719.49.camel@mhfsdcap03>
+Subject: Re: [v2] i2c: mediatek: Move suspend and resume handling to NOIRQ
+ phase
+From: Qii Wang <qii.wang@mediatek.com>
+To: Grygorii Strashko <grygorii.strashko@ti.com>
+Date: Mon, 14 Dec 2020 16:48:05 +0800
+In-Reply-To: <e83ab23b-81f2-620c-039b-9cadd84a39fa@ti.com>
+References: <1605701861-30800-1-git-send-email-qii.wang@mediatek.com>
+ <20201202153543.GG874@kunai> <1606958735.25719.29.camel@mhfsdcap03>
+ <629d171a-0e77-3d74-ae23-e6439dcf17b7@ti.com>
+ <1607326431.25719.33.camel@mhfsdcap03>
+ <a9cb5ba5-f3ce-3f82-15cc-30419bb70f4e@ti.com>
+ <1607565387.25719.43.camel@mhfsdcap03>
+ <e83ab23b-81f2-620c-039b-9cadd84a39fa@ti.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: A348A07C4749E292614C871158F2A1BF55706716C364BA0E2AF8FF30E55F93102000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201214_034020_337034_F20BEEE0 
-X-CRM114-Status: GOOD (  22.86  )
+X-CRM114-CacheID: sfid-20201214_034816_816980_33883DA5 
+X-CRM114-Status: GOOD (  24.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,312 +87,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Tianping Fang <tianping.fang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: srv_heupstream@mediatek.com, Wolfram Sang <wsa@the-dreams.de>,
+ leilk.liu@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
-to handle its own sw bandwidth managements and stores bandwidth data
-into internal table every time add_endpoint() is called,
-so when bandwidth allocation fails at one endpoint, all earlier
-allocation from the same interface could still remain at the table.
-
-This patch adds two more hooks from check_bandwidth() and
-reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
-from reset_bandwidth().
-
-Fixes: 4b0f7a77fb3c ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
-Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
-
----
-
-Changes in v4:
-- bugfix in v3, check_bandwidth() returns an uninitialized
-  value when no endpoints were newly added.
-
-Changes in v3:
-- drop unrelated code cleanups
-- change Fixes tag to keep dependency
-
-Changes in v2:
-- fix a 0-day warning from unused variable
-- split one big patch into three patches
-- fix wrong offset in mediatek hw flags
-
- drivers/usb/host/xhci-mtk-sch.c | 124 ++++++++++++++++++++++----------
- drivers/usb/host/xhci-mtk.h     |  13 ++++
- drivers/usb/host/xhci.c         |   9 +++
- 3 files changed, 109 insertions(+), 37 deletions(-)
-
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 45c54d56ecbd..95d20de9fd1f 100644
---- a/drivers/usb/host/xhci-mtk-sch.c
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -200,6 +200,7 @@ static struct mu3h_sch_ep_info *create_sch_ep(struct usb_device *udev,
- 
- 	sch_ep->sch_tt = tt;
- 	sch_ep->ep = ep;
-+	INIT_LIST_HEAD(&sch_ep->tt_endpoint);
- 
- 	return sch_ep;
- }
-@@ -583,6 +584,8 @@ int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk)
- 
- 	mtk->sch_array = sch_array;
- 
-+	INIT_LIST_HEAD(&mtk->bw_ep_list_new);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(xhci_mtk_sch_init);
-@@ -601,19 +604,14 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 	struct xhci_ep_ctx *ep_ctx;
- 	struct xhci_slot_ctx *slot_ctx;
- 	struct xhci_virt_device *virt_dev;
--	struct mu3h_sch_bw_info *sch_bw;
- 	struct mu3h_sch_ep_info *sch_ep;
--	struct mu3h_sch_bw_info *sch_array;
- 	unsigned int ep_index;
--	int bw_index;
--	int ret = 0;
- 
- 	xhci = hcd_to_xhci(hcd);
- 	virt_dev = xhci->devs[udev->slot_id];
- 	ep_index = xhci_get_endpoint_index(&ep->desc);
- 	slot_ctx = xhci_get_slot_ctx(xhci, virt_dev->in_ctx);
- 	ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
--	sch_array = mtk->sch_array;
- 
- 	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpkt:%d, dir:%d, ep:%p\n",
- 		__func__, usb_endpoint_type(&ep->desc), udev->speed,
-@@ -632,39 +630,34 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		return 0;
- 	}
- 
--	bw_index = get_bw_index(xhci, udev, ep);
--	sch_bw = &sch_array[bw_index];
--
- 	sch_ep = create_sch_ep(udev, ep, ep_ctx);
- 	if (IS_ERR_OR_NULL(sch_ep))
- 		return -ENOMEM;
- 
- 	setup_sch_info(udev, ep_ctx, sch_ep);
- 
--	ret = check_sch_bw(udev, sch_bw, sch_ep);
--	if (ret) {
--		xhci_err(xhci, "Not enough bandwidth!\n");
--		if (is_fs_or_ls(udev->speed))
--			drop_tt(udev);
--
--		kfree(sch_ep);
--		return -ENOSPC;
--	}
-+	list_add_tail(&sch_ep->endpoint, &mtk->bw_ep_list_new);
- 
--	list_add_tail(&sch_ep->endpoint, &sch_bw->bw_ep_list);
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(xhci_mtk_add_ep_quirk);
- 
--	ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(sch_ep->pkts)
--		| EP_BCSCOUNT(sch_ep->cs_count) | EP_BBM(sch_ep->burst_mode));
--	ep_ctx->reserved[1] |= cpu_to_le32(EP_BOFFSET(sch_ep->offset)
--		| EP_BREPEAT(sch_ep->repeat));
-+static void xhci_mtk_drop_ep(struct xhci_hcd_mtk *mtk, struct usb_device *udev,
-+			     struct mu3h_sch_ep_info *sch_ep)
-+{
-+	struct xhci_hcd *xhci = hcd_to_xhci(mtk->hcd);
-+	int bw_index = get_bw_index(xhci, udev, sch_ep->ep);
-+	struct mu3h_sch_bw_info *sch_bw = &mtk->sch_array[bw_index];
- 
--	xhci_dbg(xhci, " PKTS:%x, CSCOUNT:%x, BM:%x, OFFSET:%x, REPEAT:%x\n",
--			sch_ep->pkts, sch_ep->cs_count, sch_ep->burst_mode,
--			sch_ep->offset, sch_ep->repeat);
-+	update_bus_bw(sch_bw, sch_ep, 0);
-+	list_del(&sch_ep->endpoint);
- 
--	return 0;
-+	if (sch_ep->sch_tt) {
-+		list_del(&sch_ep->tt_endpoint);
-+		drop_tt(udev);
-+	}
-+	kfree(sch_ep);
- }
--EXPORT_SYMBOL_GPL(xhci_mtk_add_ep_quirk);
- 
- void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		struct usb_host_endpoint *ep)
-@@ -675,7 +668,7 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 	struct xhci_virt_device *virt_dev;
- 	struct mu3h_sch_bw_info *sch_array;
- 	struct mu3h_sch_bw_info *sch_bw;
--	struct mu3h_sch_ep_info *sch_ep;
-+	struct mu3h_sch_ep_info *sch_ep, *tmp;
- 	int bw_index;
- 
- 	xhci = hcd_to_xhci(hcd);
-@@ -694,17 +687,74 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 	bw_index = get_bw_index(xhci, udev, ep);
- 	sch_bw = &sch_array[bw_index];
- 
--	list_for_each_entry(sch_ep, &sch_bw->bw_ep_list, endpoint) {
-+	list_for_each_entry_safe(sch_ep, tmp, &sch_bw->bw_ep_list, endpoint) {
- 		if (sch_ep->ep == ep) {
--			update_bus_bw(sch_bw, sch_ep, 0);
--			list_del(&sch_ep->endpoint);
--			if (is_fs_or_ls(udev->speed)) {
--				list_del(&sch_ep->tt_endpoint);
--				drop_tt(udev);
--			}
--			kfree(sch_ep);
--			break;
-+			xhci_mtk_drop_ep(mtk, udev, sch_ep);
- 		}
- 	}
- }
- EXPORT_SYMBOL_GPL(xhci_mtk_drop_ep_quirk);
-+
-+int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
-+{
-+	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-+	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-+	struct xhci_virt_device *virt_dev = xhci->devs[udev->slot_id];
-+	struct mu3h_sch_bw_info *sch_bw;
-+	struct mu3h_sch_ep_info *sch_ep, *tmp;
-+	int bw_index, ret;
-+
-+	dev_dbg(&udev->dev, "%s\n", __func__);
-+
-+	if (list_empty(&mtk->bw_ep_list_new))
-+		return 0;
-+
-+	list_for_each_entry(sch_ep, &mtk->bw_ep_list_new, endpoint) {
-+		bw_index = get_bw_index(xhci, udev, sch_ep->ep);
-+		sch_bw = &mtk->sch_array[bw_index];
-+
-+		ret = check_sch_bw(udev, sch_bw, sch_ep);
-+		if (ret) {
-+			xhci_err(xhci, "Not enough bandwidth!\n");
-+			return -ENOSPC;
-+		}
-+	}
-+
-+	list_for_each_entry_safe(sch_ep, tmp, &mtk->bw_ep_list_new, endpoint) {
-+		struct xhci_ep_ctx *ep_ctx;
-+		struct usb_host_endpoint *ep = sch_ep->ep;
-+		unsigned int ep_index = xhci_get_endpoint_index(&ep->desc);
-+
-+		bw_index = get_bw_index(xhci, udev, ep);
-+		sch_bw = &mtk->sch_array[bw_index];
-+
-+		list_move_tail(&sch_ep->endpoint, &sch_bw->bw_ep_list);
-+
-+		ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
-+		ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(sch_ep->pkts)
-+			| EP_BCSCOUNT(sch_ep->cs_count)
-+			| EP_BBM(sch_ep->burst_mode));
-+		ep_ctx->reserved[1] |= cpu_to_le32(EP_BOFFSET(sch_ep->offset)
-+			| EP_BREPEAT(sch_ep->repeat));
-+
-+		xhci_dbg(xhci, " PKTS:%x, CSCOUNT:%x, BM:%x, OFFSET:%x, REPEAT:%x\n",
-+			sch_ep->pkts, sch_ep->cs_count, sch_ep->burst_mode,
-+			sch_ep->offset, sch_ep->repeat);
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(xhci_mtk_check_bandwidth);
-+
-+void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
-+{
-+	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-+	struct mu3h_sch_ep_info *sch_ep, *tmp;
-+
-+	dev_dbg(&udev->dev, "%s\n", __func__);
-+
-+	list_for_each_entry_safe(sch_ep, tmp, &mtk->bw_ep_list_new, endpoint) {
-+		xhci_mtk_drop_ep(mtk, udev, sch_ep);
-+	}
-+}
-+EXPORT_SYMBOL_GPL(xhci_mtk_reset_bandwidth);
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 8be8c5f7ff62..05ca989985fc 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -130,6 +130,7 @@ struct mu3c_ippc_regs {
- struct xhci_hcd_mtk {
- 	struct device *dev;
- 	struct usb_hcd *hcd;
-+	struct list_head bw_ep_list_new;
- 	struct mu3h_sch_bw_info *sch_array;
- 	struct mu3c_ippc_regs __iomem *ippc_regs;
- 	bool has_ippc;
-@@ -165,6 +166,8 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		struct usb_host_endpoint *ep);
- void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		struct usb_host_endpoint *ep);
-+int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev);
-+void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev);
- 
- #else
- static inline int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd,
-@@ -178,6 +181,16 @@ static inline void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd,
- {
- }
- 
-+static inline int xhci_mtk_check_bandwidth(struct usb_hcd *hcd,
-+		struct usb_device *udev)
-+{
-+	return 0;
-+}
-+
-+static inline void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd,
-+		struct usb_device *udev)
-+{
-+}
- #endif
- 
- #endif		/* _XHCI_MTK_H_ */
-diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
-index 2bf6c526ac7a..5a9e01b33688 100644
---- a/drivers/usb/host/xhci.c
-+++ b/drivers/usb/host/xhci.c
-@@ -2854,6 +2854,12 @@ static int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 	xhci_dbg(xhci, "%s called for udev %p\n", __func__, udev);
- 	virt_dev = xhci->devs[udev->slot_id];
- 
-+	if (xhci->quirks & XHCI_MTK_HOST) {
-+		ret = xhci_mtk_check_bandwidth(hcd, udev);
-+		if (ret < 0)
-+			return ret;
-+	}
-+
- 	command = xhci_alloc_command(xhci, true, GFP_KERNEL);
- 	if (!command)
- 		return -ENOMEM;
-@@ -2941,6 +2947,9 @@ static void xhci_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 		return;
- 	xhci = hcd_to_xhci(hcd);
- 
-+	if (xhci->quirks & XHCI_MTK_HOST)
-+		xhci_mtk_reset_bandwidth(hcd, udev);
-+
- 	xhci_dbg(xhci, "%s called for udev %p\n", __func__, udev);
- 	virt_dev = xhci->devs[udev->slot_id];
- 	/* Free any rings allocated for added endpoints */
--- 
-2.29.2.684.gfbc64c5ab5-goog
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAyMDIwLTEyLTEwIGF0IDE1OjAzICswMjAwLCBHcnlnb3JpaSBTdHJhc2hrbyB3cm90
+ZToNCj4gDQo+IE9uIDEwLzEyLzIwMjAgMDM6NTYsIFFpaSBXYW5nIHdyb3RlOg0KPiA+IE9uIE1v
+biwgMjAyMC0xMi0wNyBhdCAxODozNSArMDIwMCwgR3J5Z29yaWkgU3RyYXNoa28gd3JvdGU6DQo+
+ID4+DQo+ID4+Pg0KPiA+Pj4gT24gVGh1LCAyMDIwLTEyLTAzIGF0IDEwOjAxICswMjAwLCBHcnln
+b3JpaSBTdHJhc2hrbyB3cm90ZToNCj4gPj4+Pg0KPiA+Pj4+IE9uIDAzLzEyLzIwMjAgMDM6MjUs
+IFFpaSBXYW5nIHdyb3RlOg0KPiA+Pj4+PiBPbiBXZWQsIDIwMjAtMTItMDIgYXQgMTY6MzUgKzAx
+MDAsIFdvbGZyYW0gU2FuZyB3cm90ZToNCj4gPj4+Pj4+IEhpLA0KPiA+Pj4+Pj4NCj4gPj4+Pj4+
+PiBTb21lIGkyYyBkZXZpY2UgZHJpdmVyIGluZGlyZWN0bHkgdXNlcyBJMkMgZHJpdmVyIHdoZW4g
+aXQgaXMgbm93DQo+ID4+Pj4+Pj4gYmVpbmcgc3VzcGVuZGVkLiBUaGUgaTJjIGRldmljZXMgZHJp
+dmVyIGlzIHN1c3BlbmRlZCBkdXJpbmcgdGhlDQo+ID4+Pj4+Pj4gTk9JUlEgcGhhc2UgYW5kIHRo
+aXMgY2Fubm90IGJlIGNoYW5nZWQgZHVlIHRvIG90aGVyIGRlcGVuZGVuY2llcy4NCj4gPj4+Pj4+
+PiBUaGVyZWZvcmUsIHdlIGFsc28gbmVlZCB0byBtb3ZlIHRoZSBzdXNwZW5kIGhhbmRsaW5nIGZv
+ciB0aGUgSTJDDQo+ID4+Pj4+Pj4gY29udHJvbGxlciBkcml2ZXIgdG8gdGhlIE5PSVJRIHBoYXNl
+IGFzIHdlbGwuDQo+ID4+Pj4+Pj4NCj4gPj4+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBRaWkgV2FuZyA8
+cWlpLndhbmdAbWVkaWF0ZWsuY29tPg0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IElzIHRoaXMgYSBidWdm
+aXggYW5kIHNob3VsZCBnbyBpbnRvIDUuMTA/IE9yIGNhbiBpdCB3YWl0IGZvciA1LjExPw0KPiA+
+Pj4+Pj4NCj4gPj4+Pj4NCj4gPj4+Pj4gWWVzLCBDYW4geW91IGhlbHAgdG8gYXBwbHkgaXQgaW50
+byA1LjEwPyBUaGFua3MNCj4gPj4+Pg0KPiA+Pj4+IFRvIGJlIGhvbmVzdCBpZiB5b3Ugc3RpbGwg
+ZG8gaGF2ZSBhbnkgaTJjIGRldmljZSB3aGljaCBhY2Nlc3NpbmcgaTJjIGJ1c3MgYWZ0ZXIgX25v
+aXJxDQo+ID4+Pj4gc3RhZ2UgYW5kIHlvdXIgZHJpdmVyIGRvZXMgbm90IGltcGxlbWVudCAubWFz
+dGVyX3hmZXJfYXRvbWljKCkgLSB5b3UgZGVmaW5pdGVseSBoYXZlIGEgYmlnZ2VyIHByb2JsZW0u
+DQo+ID4+Pj4gU28gYWRkaW5nIElSUUZfTk9fU1VTUEVORCBzb3VuZCBsaWtlIGEgaGFjayBhbmQg
+cHJvYmFibHkgd29ya3MganVzdCBieSBsdWNrLg0KPiA+Pj4+DQo+ID4+Pg0KPiA+Pj4gQXQgcHJl
+c2VudCwgaXQgaXMgb25seSBhIHByb2JsZW0gY2F1c2VkIGJ5IG1pc3NpbmcgaW50ZXJydXB0cywN
+Cj4gPj4+IGFuZCAubWFzdGVyX3hmZXJfYXRvbWljKCkganVzdCBhIGltcGxlbWVudCBpbiBwb2xs
+aW5nIG1vZGUuIFdoeSBub3Qgc2V0DQo+ID4+PiB0aGUgaW50ZXJydXB0IHRvIGEgc3RhdGUgdGhh
+dCBjYW4gYWx3YXlzIGJlIHRyaWdnZXJlZD8NCj4gPj4+DQo+ID4+Pg0KPiA+Pg0KPiA+PiBCZWNh
+dXNlIHlvdSBtdXN0IG5vdCB1c2UgYW55IElSUSBkcml2ZW4gb3BlcmF0aW9ucyBhZnRlciBfbm9p
+cnEgc3VzcGVuZCBzdGF0ZSBhcyBpdCBtaWdodCAoYW5kIG1vc3QgcHJvYmFibHkgd2lsbCkNCj4g
+Pj4gY2F1c2UgdW5wcmVkaWN0YWJsZSBiZWhhdmlvciBsYXRlciAgaW4gc3VzcGVuZF9lbnRlcigp
+Og0KPiA+Pg0KPiA+PiAJYXJjaF9zdXNwZW5kX2Rpc2FibGVfaXJxcygpOw0KPiA+PiAJQlVHX09O
+KCFpcnFzX2Rpc2FibGVkKCkpOw0KPiA+PiBeYWZ0ZXIgdGhpcyBwb2ludCBhbnkgSVJRIGRyaXZl
+biBJMkMgdHJhbnNmZXIgd2lsbCBjYXVzZSBJUlEgdG8gYmUgcmUtZW5hYmxlZA0KPiA+Pg0KPiA+
+PiBpZiB5b3UgbmVlZCAgdHVybiBvZmYgZGV2aWNlIGZyb20gcGxhdGZvcm0gY2FsbGJhY2tzIC0g
+IC5tYXN0ZXJfeGZlcl9hdG9taWMoKSBoYXMgdG8gYmUgaW1wbGVtZW50ZWQgYW5kIHVzZWQuDQo+
+ID4+ICAgIA0KPiA+IE1heWJlIG15IGNvbW1lbnQgaXMgYSBiaXQgZGlzdHVyYmluZy5PdXIgcHVy
+cG9zZSBpcyBub3QgdG8gY2FsbCBpMmMgYW5kDQo+ID4gdXNlIGludGVycnVwdHMgYWZ0ZXIgX25v
+aXJxIHBhdXNlcy5TbyBXZSB1c2UNCj4gPiBpMmNfbWFya19hZGFwdGVyX3N1c3BlbmRlZCZpMmNf
+bWFya19hZGFwdGVyX3Jlc3VtZWQgdG8gYmxvY2sgdGhlc2UgaTJjDQo+ID4gdHJhbnNmZXJz77yM
+IFRoZXJlIHdpbGwgbm90IGhhdmUgYW55IElSUSBkcml2ZW4gSTJDIHRyYW5zZmVyIGFmdGVyIHRo
+aXMNCj4gPiBwb2ludDoNCj4gPiAgICAgICAgICBhcmNoX3N1c3BlbmRfZGlzYWJsZV9pcnFzKCk7
+DQo+ID4gICAgICAgICAgQlVHX09OKCFpcnFzX2Rpc2FibGVkKCkpOw0KPiA+IEJ1dCBzb21lIGRl
+dmljZSBkcml2ZXIgd2lsbCBkbyBpMmMgdHJhbnNmZXIgYWZ0ZXINCj4gPiBkcG1fbm9pcnFfcmVz
+dW1lX2RldmljZXMgaW4gZHBtX3Jlc3VtZV9ub2lycShQTVNHX1JFU1VNRSkgd2hlbiBvdXINCj4g
+PiBkcml2ZXIgaXJxIGhhc24ndCByZXN1bWUuDQo+ID4gCXZvaWQgZHBtX3Jlc3VtZV9ub2lycShw
+bV9tZXNzYWdlX3Qgc3RhdGUpDQo+ID4gCXsNCj4gPiAgICAgICAgICAJZHBtX25vaXJxX3Jlc3Vt
+ZV9kZXZpY2VzKHN0YXRlKTsNCj4gDQo+IEp1c3QgdG8gY2xhcmlmeS4gWW91IGhhdmUgcmVzdW1l
+IHNlcXVlbmNlIGluIGRwbV9ub2lycV9yZXN1bWVfZGV2aWNlcw0KPiAgIGRwbV9ub2lycV9yZXN1
+bWVfZGV2aWNlcyAtPiByZXN1bWUgSTJDIC0+IHJlc3VtZSBzb21lIGRldmljZSAtPiBkbyBpMmMg
+dHJhbnNmZXIgYWZ0ZXI/DQo+IA0KDQpZZXMuDQoNCj4gSXMgInNvbWUgZGV2aWNlIiBpbiBLZXJu
+ZWwgbWFpbmxpbmU/DQo+IA0KDQpUaGUgcHJvYmxlbWF0aWMgZGV2aWNlIGRyaXZlciBpcyBkcml2
+ZXJzL3JlZ3VsYXRvci9kYTkyMTEtcmVndWxhdG9yLmMgaW4NCktlcm5lbCBtYWlubGluZS4NCg0K
+PiA+ICAgICAgICAgIAlyZXN1bWVfZGV2aWNlX2lycXMoKTsNCj4gPiAgICAgICAgICAJZGV2aWNl
+X3dha2V1cF9kaXNhcm1fd2FrZV9pcnFzKCk7DQo+ID4gICAgICAgICAgCWNwdWlkbGVfcmVzdW1l
+KCk7DQo+ID4gCX0NCj4gPiAubWFzdGVyX3hmZXJfYXRvbWljKCkgc2VlbXMgdG8gYmUgaW52YWxp
+ZCBmb3IgdGhpcyBxdWVzdGlvbiBhdCB0aGlzDQo+ID4gdGltZT8NCj4gPiANCj4gDQoNCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVr
+IG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
