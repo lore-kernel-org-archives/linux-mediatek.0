@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93584C4361B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B02AC4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:41:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 414462226A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:41:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 414462226A
+	by mail.kernel.org (Postfix) with ESMTPS id 961402226A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:41:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 961402226A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +24,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mry84cm6D7fYe8b2XgONPn2AdmD7gYquILNx+JQpfmA=; b=tOL64+vbnioKdhFiw6M3oTe3s
-	K9uWl9+C6bX+M5+Hw69o2DRaRaT3Z6cgQ0b/Izcrj2J5V01E7gKrrlNbBoAdgneUbmAoWjujRD8vI
-	wtzkkG9FlEcLL1+p2iU32KGnHGUBYNtTtXx383xExaMwLZRNdYY5qX6QyZN2728VINWLd7TwMLFQm
-	TqTERGR3F60+33xK7LGTUtvV0BYPXm1RTQZl8jHyHsCCchRCHFgT44D2Z5C7sU4DWByqg7QxuOxK/
-	0/XEJ6zxkHXMvMB1+NegB7BjsQ9Lrz6aUI2LZr24/OSZV8eK1ic/OXejQbGwGfsanbzZyDxf8pd21
-	5ZtqROAeQ==;
+	 bh=PUNVJxdVwDNDVDsznoV2R0jc+MghxUpxX5wsMK6I9dI=; b=BzvVsn+Gs/5LhYe9J4OscNKHx
+	uVLwUsC7qvGVXTDz/gx7rUTZgljCE7KD8CyzNqJX3GejD8x3JBicJ8eeaDqRZYc+6Zg6MQePAtpMA
+	FZnbjyhsef4kBBBaTgJ67b5bwztSuPUn6t0w0Khg+IT84CztyUAbaWvS7SjHsa//uPtafWeml5xVl
+	s9rebNJGZ/ZqfHGtkUfiO8fgxTIENC8vCYrdXIF616lTQYBd26HSYXPZzvbQpZs9gONDQBJOnnjdb
+	hxWo2MqTeycz2sSqPYEhUcGFea2QnxvT5IBdfmsygAbKAWPjcXuhUwETRXrpt1Tlx6xdWpMBIvU1R
+	pAyyW+78A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kp6pI-0003Fn-5C; Tue, 15 Dec 2020 09:41:00 +0000
+	id 1kp6pJ-0003GY-Ti; Tue, 15 Dec 2020 09:41:01 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kp6oG-0002in-AG; Tue, 15 Dec 2020 09:39:57 +0000
-X-UUID: 2175fcf1dc4e42a19b80107f4035ea6f-20201215
+ id 1kp6oG-0002iT-Ky; Tue, 15 Dec 2020 09:39:58 +0000
+X-UUID: 8826ee73147f4709849321a3aac14fe3-20201215
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=RrFsO25BU1KuLjJWHpwVSJg5RCBzoyE7vOTiEUbQy2Q=; 
- b=hTn8PhppEB+6Vl+ivH9fMHNv22SzDwefZdCzA1xHj4u0QU5CDHObQmgmW+0xZ6JoAT/6oA7Jcq4mVsWQygDsMG9uac43AdJtazieTH41gxD4xe504B7aQX9XpNlJON7/yq6JNWKrihlGSHtSwmapWm2Bu5wBmi+NWsRBdordu8Y=;
-X-UUID: 2175fcf1dc4e42a19b80107f4035ea6f-20201215
+ bh=qURj1n+f9zj+bbl4eUj6wo00PE8dasZ5NKEIf9N769s=; 
+ b=KftOCjrERJo8ueZ6auHr9sYd/OuC7aCilCTxMebScu12OTazMKz21O2ZORk4CCR96qVsex9gF5oVMZLcxe+xzcXo+zV+Ut3UmFyMAb/0VDcZRcRyimBSQj93Bz87uDadAK+x7FGpAUcZV/LL3OMBAIBm3gbPap/0iGUwpaYk5b8=;
+X-UUID: 8826ee73147f4709849321a3aac14fe3-20201215
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1056747296; Tue, 15 Dec 2020 01:39:51 -0800
+ with ESMTP id 1762918515; Tue, 15 Dec 2020 01:39:51 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 15 Dec 2020 01:39:50 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Dec 2020 17:39:34 +0800
+ 15.0.1497.2; Tue, 15 Dec 2020 17:39:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 15 Dec 2020 17:39:35 +0800
+ Frontend Transport; Tue, 15 Dec 2020 17:39:36 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 1/4] scsi: ufs: Cleanup ufshcd_suspend_clkscaling function
-Date: Tue, 15 Dec 2020 17:39:31 +0800
-Message-ID: <20201215093934.21223-2-stanley.chu@mediatek.com>
+Subject: [PATCH v1 3/4] scsi: ufs: Cleanup and refactor clk-scaling feature
+Date: Tue, 15 Dec 2020 17:39:33 +0800
+Message-ID: <20201215093934.21223-4-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201215093934.21223-1-stanley.chu@mediatek.com>
 References: <20201215093934.21223-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A697137FF3D77AF70E1B83643F3DF2E5C7F94A04A846938C5771F16B97E9A4B32000:8
+X-TM-SNTS-SMTP: 3CAFF49127AEEC67EFC7D1E363E3F12449FA4DAFF1E67EE4408B68ABB45E843A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201215_043956_518241_39574AF8 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20201215_043956_886497_67219E69 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,66 +94,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cancelling suspend_work and resume_work is only required while
-suspending clk-scaling. Thus moving these two invokes into
-ufshcd_suspend_clkscaling() function.
+Manipulate clock scaling related stuff only if the host capability
+supports clock scaling feature to avoid redundant code execution.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 54 ++++++++++++++++++++++-----------------
+ 1 file changed, 30 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 052479a56a6f..a91b73a1fc48 100644
+index 9cc16598136d..15e5877411b3 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1451,6 +1451,9 @@ static void ufshcd_suspend_clkscaling(struct ufs_hba *hba)
- 	if (!ufshcd_is_clkscaling_supported(hba))
- 		return;
+@@ -1448,9 +1448,6 @@ static void ufshcd_suspend_clkscaling(struct ufs_hba *hba)
+ 	unsigned long flags;
+ 	bool suspend = false;
  
-+	cancel_work_sync(&hba->clk_scaling.suspend_work);
-+	cancel_work_sync(&hba->clk_scaling.resume_work);
-+
- 	spin_lock_irqsave(hba->host->host_lock, flags);
- 	if (!hba->clk_scaling.is_suspended) {
- 		suspend = true;
-@@ -1514,9 +1517,6 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
- 	pm_runtime_get_sync(hba->dev);
- 	ufshcd_hold(hba, false);
- 
--	cancel_work_sync(&hba->clk_scaling.suspend_work);
--	cancel_work_sync(&hba->clk_scaling.resume_work);
+-	if (!ufshcd_is_clkscaling_supported(hba))
+-		return;
 -
- 	if (value) {
- 		ufshcd_resume_clkscaling(hba);
- 	} else {
-@@ -5663,11 +5663,8 @@ static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
+ 	cancel_work_sync(&hba->clk_scaling.suspend_work);
+ 	cancel_work_sync(&hba->clk_scaling.resume_work);
+ 
+@@ -1470,9 +1467,6 @@ static void ufshcd_resume_clkscaling(struct ufs_hba *hba)
+ 	unsigned long flags;
+ 	bool resume = false;
+ 
+-	if (!ufshcd_is_clkscaling_supported(hba))
+-		return;
+-
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ 	if (hba->clk_scaling.is_suspended) {
+ 		resume = true;
+@@ -5663,7 +5657,8 @@ static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
  		ufshcd_vops_resume(hba, UFS_RUNTIME_PM);
  	} else {
  		ufshcd_hold(hba, false);
--		if (hba->clk_scaling.is_enabled) {
--			cancel_work_sync(&hba->clk_scaling.suspend_work);
--			cancel_work_sync(&hba->clk_scaling.resume_work);
-+		if (hba->clk_scaling.is_enabled)
+-		if (hba->clk_scaling.is_enabled)
++		if (ufshcd_is_clkscaling_supported(hba) &&
++		    hba->clk_scaling.is_enabled)
  			ufshcd_suspend_clkscaling(hba);
--		}
  	}
  	down_write(&hba->clk_scaling_lock);
- 	hba->clk_scaling.is_allowed = false;
-@@ -8512,11 +8509,9 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+@@ -5678,7 +5673,8 @@ static void ufshcd_err_handling_unprepare(struct ufs_hba *hba)
+ 	down_write(&hba->clk_scaling_lock);
+ 	hba->clk_scaling.is_allowed = true;
+ 	up_write(&hba->clk_scaling_lock);
+-	if (hba->clk_scaling.is_enabled)
++	if (ufshcd_is_clkscaling_supported(hba) &&
++	    hba->clk_scaling.is_enabled)
+ 		ufshcd_resume_clkscaling(hba);
+ 	pm_runtime_put(hba->dev);
+ }
+@@ -8466,6 +8462,25 @@ static void ufshcd_hba_vreg_set_hpm(struct ufs_hba *hba)
+ 		ufshcd_setup_hba_vreg(hba, true);
+ }
+ 
++static void ufshcd_clk_scaling_pm(struct ufs_hba *hba, bool suspend)
++{
++	if (suspend) {
++		if (hba->clk_scaling.is_enabled)
++			ufshcd_suspend_clkscaling(hba);
++
++		down_write(&hba->clk_scaling_lock);
++		hba->clk_scaling.is_allowed = false;
++		up_write(&hba->clk_scaling_lock);
++	} else {
++		down_write(&hba->clk_scaling_lock);
++		hba->clk_scaling.is_allowed = true;
++		up_write(&hba->clk_scaling_lock);
++
++		if (hba->clk_scaling.is_enabled)
++			ufshcd_resume_clkscaling(hba);
++	}
++}
++
+ /**
+  * ufshcd_suspend - helper function for suspend operations
+  * @hba: per adapter instance
+@@ -8507,12 +8522,8 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
  	ufshcd_hold(hba, false);
  	hba->clk_gating.is_suspended = true;
  
--	if (hba->clk_scaling.is_enabled) {
--		cancel_work_sync(&hba->clk_scaling.suspend_work);
--		cancel_work_sync(&hba->clk_scaling.resume_work);
-+	if (hba->clk_scaling.is_enabled)
- 		ufshcd_suspend_clkscaling(hba);
--	}
+-	if (hba->clk_scaling.is_enabled)
+-		ufshcd_suspend_clkscaling(hba);
+-
+-	down_write(&hba->clk_scaling_lock);
+-	hba->clk_scaling.is_allowed = false;
+-	up_write(&hba->clk_scaling_lock);
++	if (ufshcd_is_clkscaling_supported(hba))
++		ufshcd_clk_scaling_pm(hba, true);
+ 
+ 	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
+ 			req_link_state == UIC_LINK_ACTIVE_STATE) {
+@@ -8618,11 +8629,9 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	if (!ufshcd_set_dev_pwr_mode(hba, UFS_ACTIVE_PWR_MODE))
+ 		ufshcd_disable_auto_bkops(hba);
+ enable_gating:
+-	down_write(&hba->clk_scaling_lock);
+-	hba->clk_scaling.is_allowed = true;
+-	up_write(&hba->clk_scaling_lock);
+-	if (hba->clk_scaling.is_enabled)
+-		ufshcd_resume_clkscaling(hba);
++	if (ufshcd_is_clkscaling_supported(hba))
++		ufshcd_clk_scaling_pm(hba, false);
 +
- 	down_write(&hba->clk_scaling_lock);
- 	hba->clk_scaling.is_allowed = false;
- 	up_write(&hba->clk_scaling_lock);
+ 	hba->clk_gating.is_suspended = false;
+ 	hba->dev_info.b_rpm_dev_flush_capable = false;
+ 	ufshcd_release(hba);
+@@ -8719,11 +8728,8 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 
+ 	hba->clk_gating.is_suspended = false;
+ 
+-	down_write(&hba->clk_scaling_lock);
+-	hba->clk_scaling.is_allowed = true;
+-	up_write(&hba->clk_scaling_lock);
+-	if (hba->clk_scaling.is_enabled)
+-		ufshcd_resume_clkscaling(hba);
++	if (ufshcd_is_clkscaling_supported(hba))
++		ufshcd_clk_scaling_pm(hba, false);
+ 
+ 	/* Enable Auto-Hibernate if configured */
+ 	ufshcd_auto_hibern8_enable(hba);
 -- 
 2.18.0
 _______________________________________________
