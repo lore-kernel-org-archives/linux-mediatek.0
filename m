@@ -2,82 +2,77 @@ Return-Path: <SRS0=7Zfj=FT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D314CC2BB48
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 13:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90EB2C4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 13:38:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E35C22510
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 13:19:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E35C22510
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 51DEC224D2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 13:38:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51DEC224D2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=J1kvI2B9ALzVhjTBaJ3CkF0+Swjt9MjRa59OPak055M=; b=Pvn4gFe7flgev0Uk+/L1n/Gev
-	jvwpC+XJDGWSQvCK1OIgtnGsKSKKfSuxaMWX9Jg3B3assSdnmzUNe2h/OF24VoJEqvXdxXs3HOUnj
-	B78Q+MvwrdlAEFRWNaoAarzmKfAuO7R5PQZtjZ6O++YL/A4lhWC7pT7BWj+C93DItbAZ+TWKPj2P7
-	4iuNU5A0twygOvNzMW3YiYc1GHvU0ChQ71qm/rA/il2vworsiNZ9tFw2Qvw7Dyb1cW6P4ofbuFHYy
-	/0RLr2tCozfiSpsuAK5UFr96utYbAmtSwxxHgfl3I2Bzzma1KnpkhSvMDin78amD34UYas71BAZle
-	y0AsJmKDw==;
+	 bh=UcREccgq1+fO5edohk5IPmfvbdTUyf46/T1EKR5qukY=; b=d/LS1pl/p1uxHzUuZq/0TwFBz
+	PJYoJkrhQKSf+SJZAhYsIkFzAlTlry/JTebsozkXexjWMGDyW7viYgk5RPj0VRiq792c1MxpYpBF3
+	/HrpCL7G4iVjkPXnXxnkb/HhRr5GgzZGSHP63NXiSbcXNbLH75OkiRNG75tCOtEFJXC5jFCWIWL9P
+	XNmdTMnBu3eMGclE/mLn6mxoRe6t/rBRtcm6X3b33L2hExNhBw/KhwIV4e6eI2Mr5b8+od4BsRD8c
+	oU3ORuSC18XfWSqVnwR37pWy7X6QsI+XnPr31scXcH15uGvflx++mTZ5oeym3qceLETQGhCTLBP90
+	m7n9JMW8g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpAEP-0001Jj-1w; Tue, 15 Dec 2020 13:19:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kpAWr-0002rX-Ri; Tue, 15 Dec 2020 13:38:13 +0000
+Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpAEK-0001IN-H7; Tue, 15 Dec 2020 13:19:05 +0000
-X-UUID: d49fb2e8dc32462491d618a3881bf0d1-20201215
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=+3hXioTM0uwiQhD/4pc79cMmH/fAPoqBWzJ/jvJrpG4=; 
- b=b/uYNCkBA0kgQQLKXXeliv4BFG3vPDwfkPZZqBAtBN2Ak6WRm12uYZO4DlMONI8gwaYXnDbHdbBhgojrIxG9NYrhe61SmeXU4LxqD0gMqakrbF08ML+w9ADIcSKPZfumyADDlC6EWHG8xogZu6s27bcSA07q8udct0tWeC8WNCw=;
-X-UUID: d49fb2e8dc32462491d618a3881bf0d1-20201215
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <qii.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 191634744; Tue, 15 Dec 2020 05:18:56 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Dec 2020 05:08:53 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 15 Dec 2020 21:08:52 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Dec 2020 21:08:50 +0800
-Message-ID: <1608037730.25719.60.camel@mhfsdcap03>
-Subject: Re: [v2] i2c: mediatek: Move suspend and resume handling to NOIRQ
- phase
-From: Qii Wang <qii.wang@mediatek.com>
-To: Grygorii Strashko <grygorii.strashko@ti.com>
-Date: Tue, 15 Dec 2020 21:08:50 +0800
-In-Reply-To: <765c182a-5c68-b408-85ca-f757e891090e@ti.com>
-References: <1605701861-30800-1-git-send-email-qii.wang@mediatek.com>
- <20201202153543.GG874@kunai> <1606958735.25719.29.camel@mhfsdcap03>
- <629d171a-0e77-3d74-ae23-e6439dcf17b7@ti.com>
- <1607326431.25719.33.camel@mhfsdcap03>
- <a9cb5ba5-f3ce-3f82-15cc-30419bb70f4e@ti.com>
- <1607565387.25719.43.camel@mhfsdcap03>
- <e83ab23b-81f2-620c-039b-9cadd84a39fa@ti.com>
- <1607935685.25719.49.camel@mhfsdcap03>
- <765c182a-5c68-b408-85ca-f757e891090e@ti.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kpAWm-0002pG-Bs
+ for linux-mediatek@lists.infradead.org; Tue, 15 Dec 2020 13:38:10 +0000
+Received: by mail-vs1-xe41.google.com with SMTP id e15so9462736vsa.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 15 Dec 2020 05:38:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9FgvEA6LpRqaZRiWRCs1HzkpZ2wxH4J/Kj/S8yl9EX8=;
+ b=aMDDKyWXNebTeXg5FMLCK9txB+AXo41QnAw7eILkX0NTeyAdt7jEx4r62/kGLfIHLY
+ NTdTfInWItH7WmdFOmFWrs0hZxC8xA4+JavAwYl1jp8pksKKMo4VeyPHa4XewnixNL71
+ 5zM6Wgsl4rhnbDaXq2EpMe4o9FfwGh7clMUv4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9FgvEA6LpRqaZRiWRCs1HzkpZ2wxH4J/Kj/S8yl9EX8=;
+ b=Y0HV4PyjSz83ZqOdrv7Z8svDw3WdoPHzBEWJhEj7iTWg8RrqQ08/11x3tOgaR9h+Ae
+ OOMt9l8VYe/s9t48YHbDT+9Tgx3SFJtzM2BAi+EUzVO22tEnEJaoI3Xj1DubOptmEeOx
+ hSXJiLrRdjQRsoQUKtaG/eykS13jCn/oaAE3rLqVi2LC+izt8/VLzkurAYUboMBiiV5B
+ Jnd46RinuYCWFP31pTpePNZe455VTdNmRP13BHKPc6PuxnNnIC9hRzlkPCZKFhwKkM26
+ FgTEK/EstF/6k65QPWt94ZIybfQnGg0CJHgtS+V44HwX9bRXoZjvTDU1hR85pukjpS03
+ zDlg==
+X-Gm-Message-State: AOAM531uuEBbP/sG5wobq8ZwN11Udj5fjfudw5sdpXYZW7u1MDutTIEm
+ B2HeLh3TBHgnbje694xs/POpgN5nnrJlghxk3k8Paw==
+X-Google-Smtp-Source: ABdhPJw2pSaiM6ovuzcTeKxy3DP6Ku+SVy15pyfTwAwM3z1ikPI1R8D7O7JPHcMCx/NBwXhCbuTiLeGCivpmnPRuZRE=
+X-Received: by 2002:a67:5c03:: with SMTP id q3mr26997421vsb.47.1608039486303; 
+ Tue, 15 Dec 2020 05:38:06 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A3E97A6870CF2A48AC09662A75487A481CCFA902FDD3018193C88B8139F718192000:8
-X-MTK: N
+References: <1607746317-4696-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1607746317-4696-8-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1607746317-4696-8-git-send-email-yongqiang.niu@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Tue, 15 Dec 2020 21:37:55 +0800
+Message-ID: <CANMq1KCbmW4kbY5rbuogr9JJD5c5=-qatFs-EaWbuAxSzWmnLQ@mail.gmail.com>
+Subject: Re: [PATCH v2, 07/17] drm/mediatek: add disp config and mm 26mhz
+ clock into mutex device
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201215_081904_771395_F15C8357 
-X-CRM114-Status: GOOD (  26.36  )
+X-CRM114-CacheID: sfid-20201215_083808_567642_4CCFC3BA 
+X-CRM114-Status: GOOD (  24.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,89 +84,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream@mediatek.com, Wolfram Sang <wsa@the-dreams.de>,
- leilk.liu@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIwLTEyLTE0IGF0IDIyOjA4ICswMjAwLCBHcnlnb3JpaSBTdHJhc2hrbyB3cm90
-ZToNCj4gDQo+IE9uIDE0LzEyLzIwMjAgMTA6NDgsIFFpaSBXYW5nIHdyb3RlOg0KPiA+IE9uIFRo
-dSwgMjAyMC0xMi0xMCBhdCAxNTowMyArMDIwMCwgR3J5Z29yaWkgU3RyYXNoa28gd3JvdGU6DQo+
-ID4+DQo+ID4+IE9uIDEwLzEyLzIwMjAgMDM6NTYsIFFpaSBXYW5nIHdyb3RlOg0KPiA+Pj4gT24g
-TW9uLCAyMDIwLTEyLTA3IGF0IDE4OjM1ICswMjAwLCBHcnlnb3JpaSBTdHJhc2hrbyB3cm90ZToN
-Cj4gPj4+Pg0KPiA+Pj4+Pg0KPiA+Pj4+PiBPbiBUaHUsIDIwMjAtMTItMDMgYXQgMTA6MDEgKzAy
-MDAsIEdyeWdvcmlpIFN0cmFzaGtvIHdyb3RlOg0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IE9uIDAzLzEy
-LzIwMjAgMDM6MjUsIFFpaSBXYW5nIHdyb3RlOg0KPiA+Pj4+Pj4+IE9uIFdlZCwgMjAyMC0xMi0w
-MiBhdCAxNjozNSArMDEwMCwgV29sZnJhbSBTYW5nIHdyb3RlOg0KPiA+Pj4+Pj4+PiBIaSwNCj4g
-Pj4+Pj4+Pj4NCj4gPj4+Pj4+Pj4+IFNvbWUgaTJjIGRldmljZSBkcml2ZXIgaW5kaXJlY3RseSB1
-c2VzIEkyQyBkcml2ZXIgd2hlbiBpdCBpcyBub3cNCj4gPj4+Pj4+Pj4+IGJlaW5nIHN1c3BlbmRl
-ZC4gVGhlIGkyYyBkZXZpY2VzIGRyaXZlciBpcyBzdXNwZW5kZWQgZHVyaW5nIHRoZQ0KPiA+Pj4+
-Pj4+Pj4gTk9JUlEgcGhhc2UgYW5kIHRoaXMgY2Fubm90IGJlIGNoYW5nZWQgZHVlIHRvIG90aGVy
-IGRlcGVuZGVuY2llcy4NCj4gPj4+Pj4+Pj4+IFRoZXJlZm9yZSwgd2UgYWxzbyBuZWVkIHRvIG1v
-dmUgdGhlIHN1c3BlbmQgaGFuZGxpbmcgZm9yIHRoZSBJMkMNCj4gPj4+Pj4+Pj4+IGNvbnRyb2xs
-ZXIgZHJpdmVyIHRvIHRoZSBOT0lSUSBwaGFzZSBhcyB3ZWxsLg0KPiA+Pj4+Pj4+Pj4NCj4gPj4+
-Pj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFFpaSBXYW5nIDxxaWkud2FuZ0BtZWRpYXRlay5jb20+DQo+
-ID4+Pj4+Pj4+DQo+ID4+Pj4+Pj4+IElzIHRoaXMgYSBidWdmaXggYW5kIHNob3VsZCBnbyBpbnRv
-IDUuMTA/IE9yIGNhbiBpdCB3YWl0IGZvciA1LjExPw0KPiA+Pj4+Pj4+Pg0KPiA+Pj4+Pj4+DQo+
-ID4+Pj4+Pj4gWWVzLCBDYW4geW91IGhlbHAgdG8gYXBwbHkgaXQgaW50byA1LjEwPyBUaGFua3MN
-Cj4gPj4+Pj4+DQo+ID4+Pj4+PiBUbyBiZSBob25lc3QgaWYgeW91IHN0aWxsIGRvIGhhdmUgYW55
-IGkyYyBkZXZpY2Ugd2hpY2ggYWNjZXNzaW5nIGkyYyBidXNzIGFmdGVyIF9ub2lycQ0KPiA+Pj4+
-Pj4gc3RhZ2UgYW5kIHlvdXIgZHJpdmVyIGRvZXMgbm90IGltcGxlbWVudCAubWFzdGVyX3hmZXJf
-YXRvbWljKCkgLSB5b3UgZGVmaW5pdGVseSBoYXZlIGEgYmlnZ2VyIHByb2JsZW0uDQo+ID4+Pj4+
-PiBTbyBhZGRpbmcgSVJRRl9OT19TVVNQRU5EIHNvdW5kIGxpa2UgYSBoYWNrIGFuZCBwcm9iYWJs
-eSB3b3JrcyBqdXN0IGJ5IGx1Y2suDQo+ID4+Pj4+Pg0KPiA+Pj4+Pg0KPiA+Pj4+PiBBdCBwcmVz
-ZW50LCBpdCBpcyBvbmx5IGEgcHJvYmxlbSBjYXVzZWQgYnkgbWlzc2luZyBpbnRlcnJ1cHRzLA0K
-PiA+Pj4+PiBhbmQgLm1hc3Rlcl94ZmVyX2F0b21pYygpIGp1c3QgYSBpbXBsZW1lbnQgaW4gcG9s
-bGluZyBtb2RlLiBXaHkgbm90IHNldA0KPiA+Pj4+PiB0aGUgaW50ZXJydXB0IHRvIGEgc3RhdGUg
-dGhhdCBjYW4gYWx3YXlzIGJlIHRyaWdnZXJlZD8NCj4gPj4+Pj4NCj4gPj4+Pj4NCj4gPj4+Pg0K
-PiA+Pj4+IEJlY2F1c2UgeW91IG11c3Qgbm90IHVzZSBhbnkgSVJRIGRyaXZlbiBvcGVyYXRpb25z
-IGFmdGVyIF9ub2lycSBzdXNwZW5kIHN0YXRlIGFzIGl0IG1pZ2h0IChhbmQgbW9zdCBwcm9iYWJs
-eSB3aWxsKQ0KPiA+Pj4+IGNhdXNlIHVucHJlZGljdGFibGUgYmVoYXZpb3IgbGF0ZXIgIGluIHN1
-c3BlbmRfZW50ZXIoKToNCj4gPj4+Pg0KPiA+Pj4+IAlhcmNoX3N1c3BlbmRfZGlzYWJsZV9pcnFz
-KCk7DQo+ID4+Pj4gCUJVR19PTighaXJxc19kaXNhYmxlZCgpKTsNCj4gPj4+PiBeYWZ0ZXIgdGhp
-cyBwb2ludCBhbnkgSVJRIGRyaXZlbiBJMkMgdHJhbnNmZXIgd2lsbCBjYXVzZSBJUlEgdG8gYmUg
-cmUtZW5hYmxlZA0KPiA+Pj4+DQo+ID4+Pj4gaWYgeW91IG5lZWQgIHR1cm4gb2ZmIGRldmljZSBm
-cm9tIHBsYXRmb3JtIGNhbGxiYWNrcyAtICAubWFzdGVyX3hmZXJfYXRvbWljKCkgaGFzIHRvIGJl
-IGltcGxlbWVudGVkIGFuZCB1c2VkLg0KPiA+Pj4+ICAgICANCj4gPj4+IE1heWJlIG15IGNvbW1l
-bnQgaXMgYSBiaXQgZGlzdHVyYmluZy5PdXIgcHVycG9zZSBpcyBub3QgdG8gY2FsbCBpMmMgYW5k
-DQo+ID4+PiB1c2UgaW50ZXJydXB0cyBhZnRlciBfbm9pcnEgcGF1c2VzLlNvIFdlIHVzZQ0KPiA+
-Pj4gaTJjX21hcmtfYWRhcHRlcl9zdXNwZW5kZWQmaTJjX21hcmtfYWRhcHRlcl9yZXN1bWVkIHRv
-IGJsb2NrIHRoZXNlIGkyYw0KPiA+Pj4gdHJhbnNmZXJz77yMIFRoZXJlIHdpbGwgbm90IGhhdmUg
-YW55IElSUSBkcml2ZW4gSTJDIHRyYW5zZmVyIGFmdGVyIHRoaXMNCj4gPj4+IHBvaW50Og0KPiA+
-Pj4gICAgICAgICAgIGFyY2hfc3VzcGVuZF9kaXNhYmxlX2lycXMoKTsNCj4gPj4+ICAgICAgICAg
-ICBCVUdfT04oIWlycXNfZGlzYWJsZWQoKSk7DQo+ID4+PiBCdXQgc29tZSBkZXZpY2UgZHJpdmVy
-IHdpbGwgZG8gaTJjIHRyYW5zZmVyIGFmdGVyDQo+ID4+PiBkcG1fbm9pcnFfcmVzdW1lX2Rldmlj
-ZXMgaW4gZHBtX3Jlc3VtZV9ub2lycShQTVNHX1JFU1VNRSkgd2hlbiBvdXINCj4gPj4+IGRyaXZl
-ciBpcnEgaGFzbid0IHJlc3VtZS4NCj4gPj4+IAl2b2lkIGRwbV9yZXN1bWVfbm9pcnEocG1fbWVz
-c2FnZV90IHN0YXRlKQ0KPiA+Pj4gCXsNCj4gPj4+ICAgICAgICAgICAJZHBtX25vaXJxX3Jlc3Vt
-ZV9kZXZpY2VzKHN0YXRlKTsNCj4gPj4NCj4gPj4gSnVzdCB0byBjbGFyaWZ5LiBZb3UgaGF2ZSBy
-ZXN1bWUgc2VxdWVuY2UgaW4gZHBtX25vaXJxX3Jlc3VtZV9kZXZpY2VzDQo+ID4+ICAgIGRwbV9u
-b2lycV9yZXN1bWVfZGV2aWNlcyAtPiByZXN1bWUgSTJDIC0+IHJlc3VtZSBzb21lIGRldmljZSAt
-PiBkbyBpMmMgdHJhbnNmZXIgYWZ0ZXI/DQo+ID4+DQo+ID4gDQo+ID4gWWVzLg0KPiANCj4gaHVo
-LiBGaXJzdCBjb25zaWRlciBJUlFGX0VBUkxZX1JFU1VNRSAtIGl0J3MgYmV0dGVyLCBidXQgc3Rp
-bGwgd2lsbCBiZSBhIGhhY2sNCj4gDQpUaGVyZSBzaG91bGQgYmUgdGhlIHNhbWUgcHJvYmxlbSBk
-dXJpbmcgdGhlIHN1c3BlbmQgcHJvY2VzcywgU28NCklSUUZfRUFSTFlfUkVTVU1FIHNob3VsZCBu
-b3QgYmUgYWJsZSB0byBzb2x2ZSB0aGUgcHJvYmxlbS4NCg0KPiA+IA0KPiA+PiBJcyAic29tZSBk
-ZXZpY2UiIGluIEtlcm5lbCBtYWlubGluZT8NCj4gPj4NCj4gPiANCj4gPiBUaGUgcHJvYmxlbWF0
-aWMgZGV2aWNlIGRyaXZlciBpcyBkcml2ZXJzL3JlZ3VsYXRvci9kYTkyMTEtcmVndWxhdG9yLmMg
-aW4NCj4gPiBLZXJuZWwgbWFpbmxpbmUuDQo+IA0KPiByZWd1bGF0b3IgaXMgcGFzc2l2ZSBkZXZp
-Y2UsIHNvbWVib2R5IHNob3VsZCBjYWxsIGl0ICE/DQo+IA0KPiBBbmQgZGE5MjExLXJlZ3VsYXRv
-ciBJUlEgaGFuZGxlciBzaG91bGQgcmVtYWluIGRpc2FibGVkIHRpbGwgcmVzdW1lX2RldmljZV9p
-cnFzKCkgY2FsbC4NCj4gDQoNCk5vdCBvbmx5IHdpbGwgaTJjIHRyYW5zZmVyIGJlIGNhbGxlZCBp
-biBkYTkyMTEtcmVndWxhdG9yIElSUSBoYW5kbGVyLA0KYnV0IGFsc28gb3RoZXIgZHJpdmVycyB3
-aWxsIGNhbGwgZGE5MjExX2J1Y2tfb3BzIHdoaWNoIGNvbnRhaW5pbmcgaTJjDQp0cmFuc2ZlcnMu
-DQoNCj4gbm90ZS4gcmVndWxhdG9yX2NsYXNzIGltcGxlbWVudHMgb25seQ0KPiANCj4gc3RhdGlj
-IGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIF9fbWF5YmVfdW51c2VkIHJlZ3VsYXRvcl9wbV9vcHMg
-PSB7DQo+IAkuc3VzcGVuZAk9IHJlZ3VsYXRvcl9zdXNwZW5kLA0KPiAJLnJlc3VtZQkJPSByZWd1
-bGF0b3JfcmVzdW1lLA0KPiB9Ow0KPiANCj4gDQo+ID4gDQo+ID4+PiAgICAgICAgICAgCXJlc3Vt
-ZV9kZXZpY2VfaXJxcygpOw0KPiA+Pj4gICAgICAgICAgIAlkZXZpY2Vfd2FrZXVwX2Rpc2FybV93
-YWtlX2lycXMoKTsNCj4gPj4+ICAgICAgICAgICAJY3B1aWRsZV9yZXN1bWUoKTsNCj4gPj4+IAl9
-DQo+ID4+PiAubWFzdGVyX3hmZXJfYXRvbWljKCkgc2VlbXMgdG8gYmUgaW52YWxpZCBmb3IgdGhp
-cyBxdWVzdGlvbiBhdCB0aGlzDQo+ID4+PiB0aW1lPw0KPiA+Pj4NCj4gPj4NCj4gPiANCj4gDQoN
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
-ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Sat, Dec 12, 2020 at 12:12 PM Yongqiang Niu
+<yongqiang.niu@mediatek.com> wrote:
+>
+> there are 2 more clock need enable for display.
+> parser these clock when mutex device probe,
+> enable and disable when mutex on/off
+>
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 49 ++++++++++++++++++++++++++++------
+>  1 file changed, 41 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> index 60788c1..de618a1 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> @@ -118,7 +118,7 @@ struct mtk_ddp_data {
+>
+>  struct mtk_ddp {
+>         struct device                   *dev;
+> -       struct clk                      *clk;
+> +       struct clk                      *clk[3];
+>         void __iomem                    *regs;
+>         struct mtk_disp_mutex           mutex[10];
+>         const struct mtk_ddp_data       *data;
+> @@ -257,14 +257,39 @@ int mtk_disp_mutex_prepare(struct mtk_disp_mutex *mutex)
+>  {
+>         struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+>                                            mutex[mutex->id]);
+> -       return clk_prepare_enable(ddp->clk);
+> +       int ret;
+> +       int i;
+> +
+> +       for (i = 0; i < ARRAY_SIZE(ddp->clk); i++) {
+> +               if (IS_ERR(ddp->clk[i]))
+> +                       continue;
+> +               ret = clk_prepare_enable(ddp->clk[i]);
+> +               if (ret) {
+> +                       pr_err("failed to enable clock, err %d. i:%d\n",
+> +                               ret, i);
+> +                       goto err;
+> +               }
+> +       }
+> +
+> +       return 0;
+> +
+> +err:
+> +       while (--i >= 0)
+> +               clk_disable_unprepare(ddp->clk[i]);
+> +       return ret;
+>  }
+>
+>  void mtk_disp_mutex_unprepare(struct mtk_disp_mutex *mutex)
+>  {
+>         struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+>                                            mutex[mutex->id]);
+> -       clk_disable_unprepare(ddp->clk);
+> +       int i;
+> +
+> +        for (i = 0; i < ARRAY_SIZE(ddp->clk); i++) {
+> +               if (IS_ERR(ddp->clk[i]))
+> +                       continue;
+> +               clk_disable_unprepare(ddp->clk[i]);
+> +       }
+>  }
+>
+>  void mtk_disp_mutex_add_comp(struct mtk_disp_mutex *mutex,
+> @@ -415,11 +440,19 @@ static int mtk_ddp_probe(struct platform_device *pdev)
+>         ddp->data = of_device_get_match_data(dev);
+>
+>         if (!ddp->data->no_clk) {
+> -               ddp->clk = devm_clk_get(dev, NULL);
+> -               if (IS_ERR(ddp->clk)) {
+> -                       if (PTR_ERR(ddp->clk) != -EPROBE_DEFER)
+> -                               dev_err(dev, "Failed to get clock\n");
+> -                       return PTR_ERR(ddp->clk);
+> +               int ret;
+> +
+> +               for (i = 0; i < ARRAY_SIZE(ddp->clk); i++) {
+> +                       ddp->clk[i] = of_clk_get(dev->of_node, i);
+> +
+> +                       if (IS_ERR(ddp->clk[i])) {
+> +                               ret = PTR_ERR(ddp->clk[i]);
+> +                               if (ret != EPROBE_DEFER)
+> +                                       dev_err(dev, "Failed to get clock %d\n",
+> +                                               ret);
+> +
+> +                               return ret;
+> +                       }
+
+Use of_clk_bulk_get_all instead?
+
+ddp->num_clks = of_clk_bulk_get_all(dev->of_node, &ddp->clks);
+...
+
+Then the calls above can be clk_bulk_enable/clk_bulk_disable using
+num_clks and clks.
+
+
+>                 }
+>         }
+>
+> --
+> 1.8.1.1.dirty
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
