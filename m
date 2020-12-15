@@ -2,74 +2,80 @@ Return-Path: <SRS0=7Zfj=FT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 244B2C4361B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 12:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 65132C2BB48
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 12:21:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 940BF222B6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 12:12:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 940BF222B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id F073922475
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 12:20:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F073922475
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SVc16CYUubie8mSrEizhRQrVf7bDIwPKytSeIDQUgRc=; b=MEOqhO7xe9HvZM5QxyG6pnxoNt
-	3OTeyIGqbO18/lwYpJNJGNOSxnNw5+g7R76SP+zRZyElLdb7gQoo5e+MYMvj6ibmHGkYs3WQTxmPV
-	GWSsVaC9+ido7/xuXMoOmYNZqq3WU46LFx2IzMuSVqw1kzaBRupG8fg0AuD1zjAJfue2PQ391XI28
-	jRovFNlZfWZGk6znabov6Sq1d4vRzgyA/RLAmV3yZ/VI8m+B1f6OOkemBZyHhYmzZ8bpEgSoO+g43
-	5VrDc/svbp5shfqDftOJds2ARsnk5P7HssQ0R5a5BeMkrJbYbdtfQBKvsdB9nHqfM4M0t9+Taok1Z
-	rjuRkuKw==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=dnwDESQH8xiGv0dgqH1W8Anht5xCWJfH8A5RoN59P9g=; b=q/lv03R7C3bbFf4QhP+TdSLza
+	OoDlzpaSZma+3QjgTwLv3HoRwlD8zjOU65itbzXYptLdyE78edDJKJDOBgQ/te8nl5dxilfFHUGV+
+	n05/FBNEpqufdtSas+swFMGw2Hy8yHHopIfkFf70nQdXzlqMmFCKgRqyIDYE/gUyk0uO7ah7NQr+h
+	uiqYLI5j0kQx05c7f17kRUMvLGd88Ky4qFe0imVYPSv2iDJp3AYz1BR3G7Fib7sWZdIXGpCRwyWss
+	Mpdcr53VuD/ReDC0os8dD/HRfoxaqk2xoGG6hBH3q34C8EY3e21ENhnWXtEas42O4ChKH46cuEYYH
+	K8yRYh3xg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kp9Br-0002Em-5J; Tue, 15 Dec 2020 12:12:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kp9Jz-0003PP-TK; Tue, 15 Dec 2020 12:20:52 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kp9Bn-0002EG-QV
- for linux-mediatek@lists.infradead.org; Tue, 15 Dec 2020 12:12:25 +0000
-X-UUID: 1561986884064b768404d2e7b26b1b92-20201215
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=4pIHA2qbQ3jFn4gQRazum5bFNTkkeQfTiZUa4Lu1GFk=; 
- b=Qscfr0tFiH7nqfOHQ8Dw4eTChVMYnF9Qgnx65fjivUnMN6u3GNR2RLtiSGGtWPYpEWCxrPlfTqJd6ofDd/Y4DyoYav4m/1WjYH8MtkravUk1HC9Ov2g4k6vIQ6v6StR1iofWPIcG6tkIIUylG69tj7qWxUDpO/mJxUvfwn+ELSE=;
-X-UUID: 1561986884064b768404d2e7b26b1b92-20201215
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <yz.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 117763825; Tue, 15 Dec 2020 04:06:04 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Dec 2020 04:06:03 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Dec 2020 20:06:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 15 Dec 2020 20:06:01 +0800
-From: <Yz.Wu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] arm64: dts: mt8192: add efuse support for MT8192 SoC
-Date: Tue, 15 Dec 2020 20:03:42 +0800
-Message-ID: <20201215120342.25452-1-Yz.Wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kp9Jw-0003Mk-Dv
+ for linux-mediatek@lists.infradead.org; Tue, 15 Dec 2020 12:20:49 +0000
+Received: by mail-lf1-x130.google.com with SMTP id a12so38791556lfl.6
+ for <linux-mediatek@lists.infradead.org>; Tue, 15 Dec 2020 04:20:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=muII2+EhsrlQ7LSgybh/KUQuhoxu6TW7ebZEi8ZaXUs=;
+ b=Mc5KAKIPsGWsYtuYm15hGWgRznq0FUtGXVP30J7vozIqRfsegWcpjr3xuO8BGX07Jz
+ JkDP+DG0mymmnbM6C8xNMeNeFa4P0r2c8gk9K0jdBai3USeKpbxRj/nvbnclj3O+Ulny
+ LfJARz9rL+VDPB2jgLLOGXgd7FhgXkDrKy8spD4h7z9fY9PmPwvCNVsnv6W98peohNYI
+ +575nEJrfHKiui8ZYD4qhr5VGWg/7MfP5okqTRv+Y//I6AF9rClLTbEOLiWjR2OQTj0E
+ edmjAI/09JWOik8cWNSnbe2RHnjZUU/QdCHDnLkj46l3X3238HHWTFU00PZ7D+Y/JMv9
+ RlpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=muII2+EhsrlQ7LSgybh/KUQuhoxu6TW7ebZEi8ZaXUs=;
+ b=reSRP81uKek0DiOjXHmoWnM1rchNtZ8P5cI1Oc4nzoB2iVi29Y9XWKsKicqtim/D6w
+ zD4sbvA/PyrA0081YAzKTMgN9lZKD9h2ZzBnhBgCQ0KVaHje01poU/icwpKMJe+9aZTs
+ KSFG+fKWioi+TQuXxoq9XuTxVyufx0b/dZTjee5XOFZPbTECMbBUi/fSR96tqgURCroH
+ wLPMKUBVWb4N8HmuwSVh6iFN6iCJE8Dsb/U0vtqX4i7gKPay9X5kGK9zBiJSZePYhZcA
+ 6MMbpjN7e+tc64dY31MhqKGWEkTDXFD+4baM5HFgBqq6a5r2xZJPSQ037rcVm9oGWOAO
+ 0OSQ==
+X-Gm-Message-State: AOAM530Icvq1oKdX9b6MHbPipE/kI9x78DxGOZucen+Y9qq+qJCyN+Ky
+ 8AaxfZu4nHw/O27qSmb5IByfRup2Cgc/bHEMMBA57Q==
+X-Google-Smtp-Source: ABdhPJxub0zGFqVvyvkyWV6EKot8wVecIzimdfMqyEVJRdaceaG3Jlkl7yjhIHyQBDQDuZnp+DULP9lqWDJOF+0ahlk=
+X-Received: by 2002:a19:8384:: with SMTP id
+ f126mr10543104lfd.649.1608034845054; 
+ Tue, 15 Dec 2020 04:20:45 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D8AD67AA2AD05C1B01D7EB649040817094B4E6F74317AEAA9BE8173548E37B8B2000:8
-X-MTK: N
+References: <5fd76cf2.1c69fb81.6f19b.b16a@mx.google.com>
+ <483b08f2-09c3-e753-d2ce-4e34fee627f3@collabora.com>
+In-Reply-To: <483b08f2-09c3-e753-d2ce-4e34fee627f3@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 15 Dec 2020 13:20:34 +0100
+Message-ID: <CACRpkdbozXM3FHQB9+GcPJZdNT+Vi1223m2uEqqJ21ukY1A4Gw@mail.gmail.com>
+Subject: Re: linusw/devel bisection:
+ baseline.bootrr.mediatek-mt8173-pinctrl-probed on mt8173-elm-hana
+To: Guillaume Tucker <guillaume.tucker@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201215_071224_083056_B80DAE07 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201215_072048_758237_90822103 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,42 +87,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryan Wu <Yz.Wu@mediatek.com>, srv_heupstream@mediatek.com
+Cc: "kernelci-results@groups.io" <kernelci-results@groups.io>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Sean Wang <sean.wang@kernel.org>, Johan Hovold <johan@kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Collabora Kernel ML <kernel@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ryan Wu <Yz.Wu@mediatek.com>
+On Mon, Dec 14, 2020 at 11:28 PM Guillaume Tucker
+<guillaume.tucker@collabora.com> wrote:
 
-to read Mediatek efuse
+> Please see the bisection report below about the pinctrl driver
+> failing to probe on the arm64 mt8173-elm-hana platform.
 
-Change-Id: If6810b9ec594fcb72cd18c296736cc56109895bf
-Signed-off-by: Ryan Wu <Yz.Wu@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+That's an excellent, helpful report which helps a lot!
+Thank you for doing this!
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 69d45c7b31f1..55a805a61428 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -422,6 +422,13 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		efuse: efuse@11c10000 {
-+			compatible = "mediatek,efuse";
-+			reg = <0 0x11c10000 0 0x1000>;
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+		};
-+
- 		i2c3: i2c3@11cb0000 {
- 			compatible = "mediatek,mt8192-i2c";
- 			reg = <0 0x11cb0000 0 0x1000>,
--- 
-2.18.0
+> This is the error message:
+>
+> [    0.051788] gpio gpiochip0: Detected name collision for GPIO name ''
+> [    0.051813] gpio gpiochip0: GPIO name collision on the same chip, this is not allowed, fix all lines on the chip to have unique names
+> [    0.051832] gpiochip_add_data_with_key: GPIOs 377..511 (1000b000.pinctrl) failed to register, -17
+> [    0.051946] mediatek-mt8173-pinctrl: probe of 1000b000.pinctrl failed with error -22
+
+It seems we need to teach the core to ignore the name (empty string).
+
+Yours,
+Linus Walleij
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
