@@ -2,74 +2,72 @@ Return-Path: <SRS0=7Zfj=FT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA2E1C2BBCD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:23:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40D7DC4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:40:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A1D522512
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:23:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A1D522512
+	by mail.kernel.org (Postfix) with ESMTPS id CB7E22226A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 09:40:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB7E22226A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LR66szMBKs1+SYlYXbwTYqru8LtbarOLnYfGSNAcOUE=; b=LsXRmlMBQuo1Tbo2KiwN6P4KS
-	2m2DQ02cjQvaR7Wvgtb1R85VMPxPVcWy4ldz7QHKJTM5OC4k2pKqxFfJTSTNrKj6y+7ofGyzqPeYK
-	rKc71MeFUtUc74wx6u6M61gT4q/sAjoXM5c/NSpltgCm7fODiuJ4ykx+cvZYA68VDdX3EpK2uWkfM
-	8d7IGyu0RLUFSlky/eH3A0fkwdXW+qGVnHf9putrZIjg8Fb/KBZBZCZCzyXXUAs3dLStl1m+3wGFs
-	DzeKaOndoDEqEj4igo9Kah0Wfw7wny1FpLwXGpCKsdsYTcNm++MQ3PuWmh59oTf7GwUEc2T7uu0Do
-	V+fWYZGYw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=grCmmWz2L5yvfIG5juYw31OMReB/5Az1V2A6K3MJq48=; b=k9KMccT/iMurTJ4jlxkhOA3SDQ
+	fmMmZ77LRwvB0UbsIdXjApsfe/mdOHRK+osDd3Sw99xOiXPmPisD4twdRFjUzUtreZzsxBjxP/ti4
+	H4k2MaslkVDSwbx9eXT62jxqGp/4zLLiGYV5QxyfCaEi+cBlvK2nobi4FkUDhsW/Fa9BdiLd1fW7W
+	NJBzNkMVPtHDB4n6WhADW89SGFbNg48w/4WT3jkve6AClT2DGATa+yIS8aXwnEFYlKYPmAsaryV/p
+	DQJmdTzBsUWuQI8BWpHE+uY/2/sg3wDRteOMO7jkQcWeJP/GuDuna+736nbHH7VznWelcyvJUHuyB
+	9TXpWVxg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kp6YE-0007qZ-4S; Tue, 15 Dec 2020 09:23:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kp6oy-00031u-RF; Tue, 15 Dec 2020 09:40:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kp6Y8-0007ot-9o; Tue, 15 Dec 2020 09:23:17 +0000
-X-UUID: 0d8d0ef90af34a4f9c88662353f20095-20201215
+ id 1kp6oE-0002in-IX; Tue, 15 Dec 2020 09:39:55 +0000
+X-UUID: 42dc9e75be5548dd8d5120185487fe18-20201215
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=3A3MDRQZ+3g3GIYPtsPrmJUDA8Vs0qbcwBwsyH9jWRw=; 
- b=Xe0po7REhhl9W0OPImOn0FvTHGSiHutY+EqJzZ2OMInDTitQe30QloVxAyGSdfBFWbxvNTHu1FE6olsusZXi/HRKmrmcyEzCn6kv3lzrTeHEF+e/od/FDEFJLNZOQl4T9d3+0hlpS/QsILOljB2b9cc1j38vsu4WIg5jEJKV8a4=;
-X-UUID: 0d8d0ef90af34a4f9c88662353f20095-20201215
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=8rynSoHq6i1XyUjucgZozKBEpXivgLMdgtIJIn3uecM=; 
+ b=FCnuXKOKFLzyehF5RNcP+GRiYhnyY/4OGa4PDQYaj+0PaYLm9RnlsmuVlEPvqp6peycDY/7ZaciyxGDfAGsv1e3IK4PTiBgg8sR1omVCfh0ddECk8kn2eqzkHg4Aa8QEdAmZNXBKQbui2giz17uIQ9TTEmHjIJiq+cb1N+1ss9U=;
+X-UUID: 42dc9e75be5548dd8d5120185487fe18-20201215
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1511908777; Tue, 15 Dec 2020 01:23:11 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Dec 2020 01:23:10 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Dec 2020 17:23:08 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Dec 2020 17:23:08 +0800
-Message-ID: <1608024188.29527.2.camel@mtksdaap41>
-Subject: Re: [PATCH v3 5/8] regulator: mt6359: Add support for MT6359 regulator
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-Date: Tue, 15 Dec 2020 17:23:08 +0800
-In-Reply-To: <20201124170732.GI4933@sirena.org.uk>
-References: <1606103290-15034-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1606103290-15034-6-git-send-email-hsin-hsiung.wang@mediatek.com>
- <20201124170732.GI4933@sirena.org.uk>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 901018126; Tue, 15 Dec 2020 01:39:44 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Dec 2020 01:39:42 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Dec 2020 17:39:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 15 Dec 2020 17:39:35 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+Subject: [PATCH v1 0/4] Cleanup and refactor clock scaling
+Date: Tue, 15 Dec 2020 17:39:30 +0800
+Message-ID: <20201215093934.21223-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201215_042316_531352_A72A0892 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20201215_043954_981385_926D71F2 
+X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,48 +79,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Wen Su <wen.su@mediatek.com>,
- srv_heupstream@mediatek.com, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Cc: Stanley Chu <stanley.chu@mediatek.com>, alice.chao@mediatek.com,
+ bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
+ chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Hi,
+This series cleans up and refactors clk-scaling feature, and shall not change any functionality.
 
-On Tue, 2020-11-24 at 17:07 +0000, Mark Brown wrote:
-> On Mon, Nov 23, 2020 at 11:48:07AM +0800, Hsin-Hsiung Wang wrote:
-> 
-> > +static int mt6359_get_linear_voltage_sel(struct regulator_dev *rdev)
-> > +{
-> > +	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
-> > +	int ret, regval;
-> > +
-> > +	ret = regmap_read(rdev->regmap, info->da_vsel_reg, &regval);
-> > +	if (ret != 0) {
-> > +		dev_err(&rdev->dev,
-> > +			"Failed to get mt6359 Buck %s vsel reg: %d\n",
-> > +			info->desc.name, ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = (regval >> info->da_vsel_shift) & info->da_vsel_mask;
-> > +
-> > +	return ret;
-> > +}
-> 
-> This looks like it could just be regmap_get_voltage_sel_regmap()?
-> Otherwise the driver looks good.
+This series is based on Can's series "Three changes related with UFS clock scaling" in 5.10/scsi-fixes branch in Martin's tree.
 
-Thanks for the review.
-MT6359 regulator has sel_reg and status_reg, so we use
-mt6359_get_linear_voltage_sel for status_reg instead of
-regmap_get_voltage_sel_regmap() which uses sel_reg.
+However this series may not be required to be merged to 5.10. The choice of base branch is simply making these patches easy to be reviewed because this series is based on clk-scaling fixes by Can. If this series is decided not being merged to 5.10, then I would rebase it to 5.11/scsi-queue.
 
-Thanks.
+Stanley Chu (4):
+  scsi: ufs: Cleanup ufshcd_suspend_clkscaling function
+  scsi: ufs: Cleanup ufshcd_add_lus function
+  scsi: ufs: Cleanup and refactor clk-scaling feature
+  scsi: ufs: Fix build warning by incorrect function description
+
+ drivers/scsi/ufs/ufshcd.c | 82 +++++++++++++++++++--------------------
+ 1 file changed, 41 insertions(+), 41 deletions(-)
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
