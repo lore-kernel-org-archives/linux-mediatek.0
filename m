@@ -1,20 +1,21 @@
-Return-Path: <SRS0=EHBe=FS=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=7Zfj=FT=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DE18C2BBCA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 23:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24898C4361B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 00:09:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9C3D22510
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Dec 2020 23:40:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9C3D22510
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id C0641221EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Dec 2020 00:09:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0641221EF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -22,46 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=S/k6vmnL3+T+CqrsZiSixJ9rTmfcEP+FOg4tGSZa0X8=; b=OLstk8Gh47M9pv/M9xaCV6hPn
-	akRHXPRpbwhcnaTaEr0NYrC8s1GTaoXaKZgQQdCkmMEY2Ke32MXLNGbQr8fi1LrWQHQk26gd27rJt
-	INiGk/fr6dWJI88nsC6gFk0Y8CTBwqkGaey1k8x7d669xCUvO2CYs99uF7D0XX+fVz9hkPDMUTyi2
-	9ymcs/lJ61sf6cNkOvmMimHhb3nIRhF3nFGr+GS6WM5DYKUCa1y1esR49jo7Zz1OKtEhqAYpH/eSO
-	kkZtYPQbwLcMi5mZmRnLrttW0g/xbuGx4TGW02/7OIv/8jsm92GEIs/6TE2E8vvdNI61RjnyPonxR
-	UKQ213cuA==;
+	 bh=hBKdRhOPkkww52LSDCSdO1EivBEMMEscXht/TpcKaLw=; b=tTpa3k0YN/TiNDKy0Q1ZR8Nxd
+	I9AV89F6gGBXiY04JXWFFVxVAif/+U3HK6A34wvv7ly78JbgoOtg0C4LoEu3Viq7RpY+g+Jllfj1N
+	eG6tU0GbKE41RJf+NgJMDOThubMWGlD8ct8CjrioKF+4Ci/W4T7xFQMhGZ/4Acs1zc4e2OwWG9W97
+	l2YhvYTrHrHtyRv0S+UJs5QqKo+F7FCzeDIbb5OJTFJKq08A5Z8XiIZgrhqeezyUTkXH5BzfyRVNi
+	rr3bGhp3dh407Hcwis6zoPxxGVijv9GUHSJfGx1BBQ7VhjDq5MCDi71aNxLr7rcdeXEofbSjL8V5N
+	47HGdoZhQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1koxSH-00068m-Sw; Mon, 14 Dec 2020 23:40:37 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1koxtl-0007t0-12; Tue, 15 Dec 2020 00:09:01 +0000
+Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1koxSD-00067T-A7; Mon, 14 Dec 2020 23:40:34 +0000
-X-Gm-Message-State: AOAM5327iOi3tuCv1FrCXW95MB9a9kVELYVGZ+86k/MYe4Z1XW0CriNH
- PW5apXFpuP20cxVqVXMWl5Q1fL5SVN8uK9CsiA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607989232;
- bh=lSvX6jnFQqoxIpPBccW/7g9EJN/cgkuyf1nA2W1wiv8=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=XSQOCR9KRlZI2AHdmt/ukZlEy89IoEm17SJs3lOD0fZiwwAd43Q1ReNJNrxkWj9gr
- 8wXhz/am3uKMBcRbdr1lrKQ/1Zf+pLtwkh8TwbLCW8U6op3W87xpjiNg1yyvDCUit2
- TkxSp0wuaQE8Vq8OXCpT/74qRGMrMr8MsDwD3I5px5wT5ncNdVZQDmMHzzIuGPBB/p
- Gsw50I6FiXK/PC9gLUdx0JugG/usVDEiEnYyZQyK3OVJyaYjgq1rP0cmthpnJb+zLf
- tkzZIrMU6U9JLjKuKBK/ptdlAuYRnqx6XwrPMJJDlXbS8WInT9vAYTOCXh8FSM7X5q
- rfNwqP9PsJxFg==
-X-Google-Smtp-Source: ABdhPJyMR1hWv0NrAVLxlYf3urPvZsTPggqomRIMAVMLDR99rCR51PGzTsrrsSQzNCxZ8SbUppoaI6FehtXfPLhv9Uw=
-X-Received: by 2002:a05:6402:845:: with SMTP id b5mr44289edz.38.1607989230343; 
- Mon, 14 Dec 2020 15:40:30 -0800 (PST)
+ id 1koxtj-0007sR-2V
+ for linux-mediatek@lists.infradead.org; Tue, 15 Dec 2020 00:09:00 +0000
+Received: by mail-vk1-xa34.google.com with SMTP id l187so4367888vki.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 14 Dec 2020 16:08:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2ttijJTfODj0Zw+PUd0CH6vbnNY+xpMxFmKzapopdOo=;
+ b=LhdygB6+PBVsoDGFWC8aF15Je+KPpnI6r+Rt5Sz9g43Zpp0Xs2L2fC5GSgzqBlXg+S
+ vq8JK7fV829mSoDKbXrHdXTSi+nic/z16m6KRLSEFk2bRFeBQhdFzKNApWYzUoMj6rBt
+ rMViZEL6bvs9tRj0RLKx90ABvNFCjAPqS7G0Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2ttijJTfODj0Zw+PUd0CH6vbnNY+xpMxFmKzapopdOo=;
+ b=sNxxDN2lJ9JaBGl/DzW5WmSyM3nCHf1AbBD+xrH/QvnBbJN94KBW/zLwAh+EplexYk
+ oiSlXFjw8ZNkOn+wvScT5ajUWGV+O3LuSpnd8R3zTwEY4vKG0VVrBeLbEeDLl8/4Hl/g
+ YVRDsGABvis5WBz7YLnONv12hdAqqnpDLHzP2mHR517FMv2hTu7mafSiD5KwlPK3o+Dq
+ X6RioFQ3QEHD86bwCU9oIQWisJ1sGp878HjgVmSgKww84Ymu5fhhRc++UQbu40Jnqz2h
+ 4rkv4q8TjDv+XhJ5VtQOUPTOswiwOYYUK8eN+nfpMrcUj2SdUi53k0RLUJHU9B5CUUFz
+ +WtQ==
+X-Gm-Message-State: AOAM530YUSDEyCZY77gr4Kuueg8tD8bH9Od9WbBtALO9XGGSxTtaFUdM
+ L/UIIzi+sbXUlu6jrt6Jc6A7Do1RJFhbEnZ7K8usDQ==
+X-Google-Smtp-Source: ABdhPJy/1hO7y7P77oLAkHG/yrijX8RVfCX/zuNWqZhUuTxFWOz7zvfhphWSajaxWShotI0auCTiSWY1pyVLaO3pj/I=
+X-Received: by 2002:ac5:c5b5:: with SMTP id f21mr26908136vkl.13.1607990935654; 
+ Mon, 14 Dec 2020 16:08:55 -0800 (PST)
 MIME-Version: 1.0
-References: <1607746317-4696-1-git-send-email-yongqiang.niu@mediatek.com>
- <1607746317-4696-13-git-send-email-yongqiang.niu@mediatek.com>
-In-Reply-To: <1607746317-4696-13-git-send-email-yongqiang.niu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 15 Dec 2020 07:40:19 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9gzncFEFe8uyhNSO0Mr9SnQ0b5oCC31_4QSdMtwOx0Mw@mail.gmail.com>
-Message-ID: <CAAOTY_9gzncFEFe8uyhNSO0Mr9SnQ0b5oCC31_4QSdMtwOx0Mw@mail.gmail.com>
-Subject: Re: [PATCH v2, 12/17] drm/mediatek: fix gamma size config
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+References: <4f0b3800cd92e1a45a1a47598174e3ff8e944204.1607949735.git.objelf@gmail.com>
+In-Reply-To: <4f0b3800cd92e1a45a1a47598174e3ff8e944204.1607949735.git.objelf@gmail.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Tue, 15 Dec 2020 08:08:44 +0800
+Message-ID: <CANMq1KAgYKBXGPMgpMpAF=6rWv3zVsHBBjwX1fOCRC2THCYM5Q@mail.gmail.com>
+Subject: Re: [PATCH -next v2] mt76: mt7921: introduce mt7921e support
+To: Sean Wang <sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201214_184033_450783_19447E79 
-X-CRM114-Status: GOOD (  17.09  )
+X-CRM114-CacheID: sfid-20201214_190859_185252_69324368 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,48 +82,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+Cc: Ryder Lee <ryder.lee@mediatek.com>, robin.chiu@mediatek.com,
+ ch.yeh@mediatek.com, Eric.Liang@mediatek.com,
+ "open list:NETWORKING DRIVERS \(WIRELESS\)" <linux-wireless@vger.kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>, YN.Chen@mediatek.com,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ lorenzo.bianconi@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Soul.Huang@mediatek.com, nbd@nbd.name
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
-PiDmlrwgMjAyMOW5tDEy5pyIMTLml6Ug6YCx5YWtIOS4i+WNiDEyOjEz5a+r6YGT77yaCj4KPiBm
-aXggZ2FtbWEgc2l6ZSBjb25maWcKCkkgd291bGQgbGlrZSB5b3UgdG8gcHJvdmlkZSBtb3JlIGlu
-Zm9ybWF0aW9uLiBUaGUgb3JpZ2luYWwgY29kZSB3b3JrcwppbiBtdDgxNzMsIHdoeSBkbyB5b3Ug
-bW9kaWZ5IHRoaXM/IFRoZSBkZXNjcmlwdGlvbiBtYXkgYmUgc29tZXRoaW5nCmxpa2UgdGhpczoK
-CkFjY29yZGluZyB0byBkYXRhIHNoZWV0LCB0aGUgd2lkdGggaXMgaW4gYml0cyBbMzEsIDE2XSBh
-bmQgaGVpZ2h0IGlzCmluIGJpdHMgWzE1LCAwXS4gRXZlbiB0aG91Z2ggd3Jvbmcgc2V0dGluZyBt
-YXkgd29ya3MgaW4gc29tZSBTb0Mgc3VjaAphcyBtdDgxNzMsIGJ1dCBpdCBkb2VzIG5vdCB3b3Jr
-IGluIG10ODE5Mi4KClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+Cj4gRml4ZXM6IGUwYTVkMzM3MDI0
-NSAoZHJtL21lZGlhdGVrOiBBZGQgR0FNTUEgZW5naW5lIGJhc2ljIGZ1bmN0aW9uKQo+IFNpZ25l
-ZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+IC0t
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIHwgMiArLQo+
-ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPgo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+IGluZGV4IDAwZDU2ODcu
-LjUyYjZmYzcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZGRwX2NvbXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9j
-b21wLmMKPiBAQCAtMjk3LDcgKzI5Nyw3IEBAIHN0YXRpYyB2b2lkIG10a19nYW1tYV9jb25maWco
-c3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHcsCj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB1bnNpZ25lZCBpbnQgaCwgdW5zaWduZWQgaW50IHZyZWZyZXNoLAo+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5zaWduZWQgaW50IGJwYywgc3RydWN0IGNt
-ZHFfcGt0ICpjbWRxX3BrdCkKPiAgewo+IC0gICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwg
-aCA8PCAxNiB8IHcsIGNvbXAsIERJU1BfR0FNTUFfU0laRSk7Cj4gKyAgICAgICBtdGtfZGRwX3dy
-aXRlKGNtZHFfcGt0LCB3IDw8IDE2IHwgaCwgY29tcCwgRElTUF9HQU1NQV9TSVpFKTsKPiAgICAg
-ICAgIG10a19kaXRoZXJfc2V0KGNvbXAsIGJwYywgRElTUF9HQU1NQV9DRkcsIGNtZHFfcGt0KTsK
-PiAgfQo+Cj4gLS0KPiAxLjguMS4xLmRpcnR5Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPiBMaW51
-eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Ckxp
-bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Mon, Dec 14, 2020 at 8:56 PM <sean.wang@mediatek.com> wrote:
+>
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> Introduce support for mt7921e 802.11ax (Wi-Fi 6) 2x2:2SS chipset.
+>
+> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
+> Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+> v2:
+>  - Mark the patch as -next
+> ---
+>  drivers/net/wireless/mediatek/mt76/Kconfig    |    1 +
+>  drivers/net/wireless/mediatek/mt76/Makefile   |    1 +
+>  .../net/wireless/mediatek/mt76/mt7921/Kconfig |   10 +
+>  .../wireless/mediatek/mt76/mt7921/Makefile    |    6 +
+>  .../wireless/mediatek/mt76/mt7921/debugfs.c   |  180 ++
+>  .../net/wireless/mediatek/mt76/mt7921/dma.c   |  356 +++
+>  .../wireless/mediatek/mt76/mt7921/eeprom.c    |  247 ++
+>  .../wireless/mediatek/mt76/mt7921/eeprom.h    |  126 +
+>  .../net/wireless/mediatek/mt76/mt7921/init.c  |  482 +++
+>  .../net/wireless/mediatek/mt76/mt7921/mac.c   | 1387 +++++++++
+>  .../net/wireless/mediatek/mt76/mt7921/mac.h   |  367 +++
+>  .../net/wireless/mediatek/mt76/mt7921/main.c  |  854 ++++++
+>  .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 2588 +++++++++++++++++
+>  .../net/wireless/mediatek/mt76/mt7921/mcu.h   |  991 +++++++
+>  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  379 +++
+>  .../net/wireless/mediatek/mt76/mt7921/pci.c   |  209 ++
+>  .../net/wireless/mediatek/mt76/mt7921/regs.h  |  455 +++
+>  17 files changed, 8639 insertions(+)
+
+I'm not likely to review this, but, this is a _huge_ patch, is there a
+way to split it in easier to digest parts?
+
+[snip]
+
+> +static void
+> +mt7921_mcu_debug_msg_event(struct mt7921_dev *dev, struct sk_buff *skb)
+> +{
+> +       struct mt7921_mcu_rxd *rxd = (struct mt7921_mcu_rxd *)skb->data;
+> +       struct debug_msg {
+> +               __le16 id;
+> +               u8 type;
+> +               u8 flag;
+> +               __le32 value;
+> +               __le16 len;
+> +               u8 content[512];
+> +       } __packed * debug_msg;
+> +       u16 cur_len;
+> +       int i;
+> +
+> +       skb_pull(skb, sizeof(*rxd));
+> +       debug_msg = (struct debug_msg *)skb->data;
+> +
+> +       cur_len = min_t(u16, le16_to_cpu(debug_msg->len), 512);
+> +
+> +       if (debug_msg->type == 0x3) {
+> +               for (i = 0 ; i < cur_len; i++)
+> +                       if (!debug_msg->content[i])
+> +                               debug_msg->content[i] = ' ';
+> +
+> +               trace_printk("%s", debug_msg->content);
+
+Please do not use trace_printk in production code [1,2], it is only
+meant for debug use. Consider using trace events, or dev_dbg.
+
+[1] https://elixir.bootlin.com/linux/v5.8/source/kernel/trace/trace.c#L3158
+[2] https://elixir.bootlin.com/linux/v5.8/source/include/linux/kernel.h#L766
+
+> +       }
+> +}
+> +
+
+> --
+> 2.25.1
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
