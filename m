@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 780F4C0018C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 07:48:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80C1BC4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 07:48:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED89E23343
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 07:48:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED89E23343
+	by mail.kernel.org (Postfix) with ESMTPS id 0EB8A23343
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 07:48:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EB8A23343
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iZMsbyIrAKWVfk6a7f1QtzZAn0qCpZSZwBbnHgWzaco=; b=ODWzcsyzfyNzW2Q0MDlV+H7Ag
-	bA7VfipUeDX8vXP6I95mM/oPPTyTF0kCVbfbvmMOVkKFLJE4HB+dCGOGRZMrhiuFqaoU2qsiPPqG6
-	6gldb0o2C6rAH48DIc8csl8xm61ex//QLXS38t8+I5QuqQUGszUHQesax8eymoztg4BfI5CPA4yo+
-	pIHidJOEyjsb6IFfM0wuwwGlt6KX3eH4lJ7AYpT1O8rQmahEW8qMHDO4rJKOCgJ7QMBAoZqHB84Jb
-	EDvla4P1eMwLamzeYMan6OhQtTOStbnl1mUr41y7+jlJP4MWir2ErZfAIHhrC3hm/bg+ejoDmWaq2
-	vtQjbbhbA==;
+	 bh=dfPW72nzNM9NtBlJ7tfqiOB2h8xvfWnvVfvxPe8fgTM=; b=iXtm7fwMdpYIxHv/D3yitmbLe
+	5LxpvkZ06UfmWx6mq/ALbac57mVPeXEPnzeJeAeIn1aO2vRc/guiU/rsWbMU24rHDHRzEzDOy3/Gq
+	dfMKWz0dEQAx+0mdQbaZ0iGeFI1mjIyUIVwi+d0ZGdguZEApTMO4n9vNbjiWcboOM7oScMqAsAj7D
+	4mwCorrtZ4Fsrjc5/48TK/dmfGPOEps9+QFEzYUO1qk1WjU5C5u/dnfh08slDpDynJVDtqYoWs8GI
+	vei1DLWe/Neb9IgYqTkvt46UF2b8989H6WN/sDdItWzdnmuUOpYSYZwIF9NxWoKlgrXv8/GcMD4xl
+	nWmoPV9nA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpRXS-0007SA-1G; Wed, 16 Dec 2020 07:47:58 +0000
+	id 1kpRXc-0007UD-7e; Wed, 16 Dec 2020 07:48:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpRXK-0007PT-Jh; Wed, 16 Dec 2020 07:47:52 +0000
-X-UUID: 5a10becff8f547f19d038fb97952b5b4-20201215
+ id 1kpRXK-0007PY-Jh; Wed, 16 Dec 2020 07:47:54 +0000
+X-UUID: 454d38257a6e40329c37b0e0e74092a8-20201215
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=HJXIw793PFccBAk6e2rNri/BcysvYnVPR9bzggg4grs=; 
- b=uBAdmY8UjvJT5VhURBqMd9xK5Jl3B4DHIiTFmHIHLr0HxVZfzrOsoGX63RSs/jb7AtzbE9CDVLHZEREpsyn5c6YJOCGjGBXnMWcV/x7V47O3B31uxDjLGz5dxAcN5MlqgzG4ASyZ7ba70ptfAN8Eg9jHTU3xv9gGz0T56cWIaIA=;
-X-UUID: 5a10becff8f547f19d038fb97952b5b4-20201215
+ bh=CBN8piBj1xSZl6CADZn5RSUW0gqNBIrBIjOpr/5jhvQ=; 
+ b=WHWrXas8LKstLRMR9XRHNNisRykrq6oS7ZkYMr47L1yh5FTzVxH+G7ov7WiTHFZ/GyZEqIC3Dbv8CA0pEYrv6GQMLp4SBm1QoVDj/SQ+JvaAEUZIFQdhLteJuVNpZdLID45romFeFxugm/kxQtXc3TDUL6xzOqQCGvEc8dlgQZc=;
+X-UUID: 454d38257a6e40329c37b0e0e74092a8-20201215
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1753695223; Tue, 15 Dec 2020 23:47:45 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ with ESMTP id 429520516; Tue, 15 Dec 2020 23:47:45 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 15 Dec 2020 23:47:43 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 16 Dec 2020 15:47:41 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Dec 2020 15:47:40 +0800
+ Frontend Transport; Wed, 16 Dec 2020 15:47:42 +0800
 From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Fei Shao <fshao@chromium.org>,
  Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni
  <alexandre.belloni@bootlin.com>, Liam Girdwood <lgirdwood@gmail.com>, "Mark
  Brown" <broonie@kernel.org>
-Subject: [PATCH v4 4/9] dt-bindings: regulator: Add document for MT6359
- regulator
-Date: Wed, 16 Dec 2020 15:47:02 +0800
-Message-ID: <1608104827-7937-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH v4 9/9] arm64: dts: mt6359: add PMIC MT6359 related nodes
+Date: Wed, 16 Dec 2020 15:47:07 +0800
+Message-ID: <1608104827-7937-10-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1608104827-7937-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 References: <1608104827-7937-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E5771E87116EDF3467D6C5675A246E93ECC222A89CB0EB590F423C9F3F8FAC402000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201216_024751_007477_A3A2D0B6 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20201216_024751_137068_9EAEE7D9 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,9 +84,9 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, Ran Bi <ran.bi@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
+ Wen Su <wen.su@mediatek.com>, srv_heupstream@mediatek.com,
+ Ran Bi <ran.bi@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
  Eddie Huang <eddie.huang@mediatek.com>,
  Yuchen Huang <yuchen.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
@@ -97,189 +95,321 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add dt-binding document for MediaTek MT6359 PMIC
+From: Wen Su <wen.su@mediatek.com>
 
+add PMIC MT6359 related nodes which is for MT6779 platform
+
+Signed-off-by: Wen Su <wen.su@mediatek.com>
 Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 ---
- .../bindings/regulator/mt6359-regulator.yaml  | 169 ++++++++++++++++++
- 1 file changed, 169 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi | 298 +++++++++++++++++++++++
+ 1 file changed, 298 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6359.dtsi
 
-diff --git a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
 new file mode 100644
-index 000000000000..09fd4cb90326
+index 000000000000..649c661e9907
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-@@ -0,0 +1,169 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/regulator/mt6359-regulator.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+@@ -0,0 +1,298 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2020 MediaTek Inc.
++ */
 +
-+title: MT6359 Regulator from MediaTek Integrated
++&pwrap {
++	pmic: pmic {
++		compatible = "mediatek,mt6359";
++		interrupt-controller;
++		#interrupt-cells = <2>;
 +
-+maintainers:
-+  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
++		mt6359codec: mt6359codec {
++		};
 +
-+description: |
-+  List of regulators provided by this controller. It is named
-+  according to its regulator type, buck_<name> and ldo_<name>.
-+  MT6359 regulators node should be sub node of the MT6397 MFD node.
++		mt6359regulator: mt6359regulator {
++			mt6359_vs1_buck_reg: buck_vs1 {
++				regulator-name = "vs1";
++				regulator-min-microvolt = <800000>;
++				regulator-max-microvolt = <2200000>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++			};
++			mt6359_vgpu11_buck_reg: buck_vgpu11 {
++				regulator-name = "vgpu11";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-ramp-delay = <5000>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-allowed-modes = <0 1 2>;
++			};
++			mt6359_vmodem_buck_reg: buck_vmodem {
++				regulator-name = "vmodem";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1100000>;
++				regulator-ramp-delay = <10760>;
++				regulator-enable-ramp-delay = <200>;
++			};
++			mt6359_vpu_buck_reg: buck_vpu {
++				regulator-name = "vpu";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-ramp-delay = <5000>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-allowed-modes = <0 1 2>;
++			};
++			mt6359_vcore_buck_reg: buck_vcore {
++				regulator-name = "vcore";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-ramp-delay = <5000>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-allowed-modes = <0 1 2>;
++			};
++			mt6359_vs2_buck_reg: buck_vs2 {
++				regulator-name = "vs2";
++				regulator-min-microvolt = <800000>;
++				regulator-max-microvolt = <1600000>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++			};
++			mt6359_vpa_buck_reg: buck_vpa {
++				regulator-name = "vpa";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <3650000>;
++				regulator-enable-ramp-delay = <300>;
++			};
++			mt6359_vproc2_buck_reg: buck_vproc2 {
++				regulator-name = "vproc2";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-ramp-delay = <7500>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-allowed-modes = <0 1 2>;
++			};
++			mt6359_vproc1_buck_reg: buck_vproc1 {
++				regulator-name = "vproc1";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-ramp-delay = <7500>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-allowed-modes = <0 1 2>;
++			};
++			mt6359_vcore_sshub_buck_reg: buck_vcore_sshub {
++				regulator-name = "vcore_sshub";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1193750>;
++			};
++			mt6359_vgpu11_sshub_buck_reg: buck_vgpu11_sshub {
++				regulator-name = "vgpu11_sshub";
++				regulator-min-microvolt = <400000>;
++				regulator-max-microvolt = <1193750>;
++			};
++			mt6359_vaud18_ldo_reg: ldo_vaud18 {
++				regulator-name = "vaud18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <240>;
++			};
++			mt6359_vsim1_ldo_reg: ldo_vsim1 {
++				regulator-name = "vsim1";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <3100000>;
++			};
++			mt6359_vibr_ldo_reg: ldo_vibr {
++				regulator-name = "vibr";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++			};
++			mt6359_vrf12_ldo_reg: ldo_vrf12 {
++				regulator-name = "vrf12";
++				regulator-min-microvolt = <1100000>;
++				regulator-max-microvolt = <1300000>;
++			};
++			mt6359_vusb_ldo_reg: ldo_vusb {
++				regulator-name = "vusb";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <960>;
++				regulator-always-on;
++			};
++			mt6359_vsram_proc2_ldo_reg: ldo_vsram_proc2 {
++				regulator-name = "vsram_proc2";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <7500>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++			mt6359_vio18_ldo_reg: ldo_vio18 {
++				regulator-name = "vio18";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <1900000>;
++				regulator-enable-ramp-delay = <960>;
++				regulator-always-on;
++			};
++			mt6359_vcamio_ldo_reg: ldo_vcamio {
++				regulator-name = "vcamio";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <1900000>;
++			};
++			mt6359_vcn18_ldo_reg: ldo_vcn18 {
++				regulator-name = "vcn18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <240>;
++			};
++			mt6359_vfe28_ldo_reg: ldo_vfe28 {
++				regulator-name = "vfe28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <120>;
++			};
++			mt6359_vcn13_ldo_reg: ldo_vcn13 {
++				regulator-name = "vcn13";
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <1300000>;
++			};
++			mt6359_vcn33_1_bt_ldo_reg: ldo_vcn33_1_bt {
++				regulator-name = "vcn33_1_bt";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <3500000>;
++			};
++			mt6359_vcn33_1_wifi_ldo_reg: ldo_vcn33_1_wifi {
++				regulator-name = "vcn33_1_wifi";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <3500000>;
++			};
++			mt6359_vaux18_ldo_reg: ldo_vaux18 {
++				regulator-name = "vaux18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++			mt6359_vsram_others_ldo_reg: ldo_vsram_others {
++				regulator-name = "vsram_others";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <5000>;
++				regulator-enable-ramp-delay = <240>;
++			};
++			mt6359_vefuse_ldo_reg: ldo_vefuse {
++				regulator-name = "vefuse";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <2000000>;
++			};
++			mt6359_vxo22_ldo_reg: ldo_vxo22 {
++				regulator-name = "vxo22";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <2200000>;
++				regulator-always-on;
++			};
++			mt6359_vrfck_ldo_reg: ldo_vrfck {
++				regulator-name = "vrfck";
++				regulator-min-microvolt = <1500000>;
++				regulator-max-microvolt = <1700000>;
++			};
++			mt6359_vrfck_1_ldo_reg: ldo_vrfck_1 {
++				regulator-name = "vrfck";
++				regulator-min-microvolt = <1240000>;
++				regulator-max-microvolt = <1600000>;
++			};
++			mt6359_vbif28_ldo_reg: ldo_vbif28 {
++				regulator-name = "vbif28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <240>;
++			};
++			mt6359_vio28_ldo_reg: ldo_vio28 {
++				regulator-name = "vio28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-always-on;
++			};
++			mt6359_vemc_ldo_reg: ldo_vemc {
++				regulator-name = "vemc";
++				regulator-min-microvolt = <2900000>;
++				regulator-max-microvolt = <3300000>;
++			};
++			mt6359_vemc_1_ldo_reg: ldo_vemc_1 {
++				regulator-name = "vemc";
++				regulator-min-microvolt = <2500000>;
++				regulator-max-microvolt = <3300000>;
++			};
++			mt6359_vcn33_2_bt_ldo_reg: ldo_vcn33_2_bt {
++				regulator-name = "vcn33_2_bt";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <3500000>;
++			};
++			mt6359_vcn33_2_wifi_ldo_reg: ldo_vcn33_2_wifi {
++				regulator-name = "vcn33_2_wifi";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <3500000>;
++			};
++			mt6359_va12_ldo_reg: ldo_va12 {
++				regulator-name = "va12";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-always-on;
++			};
++			mt6359_va09_ldo_reg: ldo_va09 {
++				regulator-name = "va09";
++				regulator-min-microvolt = <800000>;
++				regulator-max-microvolt = <1200000>;
++			};
++			mt6359_vrf18_ldo_reg: ldo_vrf18 {
++				regulator-name = "vrf18";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <1810000>;
++			};
++			mt6359_vsram_md_ldo_reg: ldo_vsram_md {
++				regulator-name = "vsram_md";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <10760>;
++				regulator-enable-ramp-delay = <240>;
++			};
++			mt6359_vufs_ldo_reg: ldo_vufs {
++				regulator-name = "vufs";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <1900000>;
++			};
++			mt6359_vm18_ldo_reg: ldo_vm18 {
++				regulator-name = "vm18";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <1900000>;
++				regulator-always-on;
++			};
++			mt6359_vbbck_ldo_reg: ldo_vbbck {
++				regulator-name = "vbbck";
++				regulator-min-microvolt = <1100000>;
++				regulator-max-microvolt = <1200000>;
++			};
++			mt6359_vsram_proc1_ldo_reg: ldo_vsram_proc1 {
++				regulator-name = "vsram_proc1";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <7500>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++			mt6359_vsim2_ldo_reg: ldo_vsim2 {
++				regulator-name = "vsim2";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <3100000>;
++			};
++			mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub {
++				regulator-name = "vsram_others_sshub";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++			};
++		};
 +
-+properties:
-+  $nodename:
-+    pattern: "^pmic$"
-+
-+  mt6359regulator:
-+    type: object
-+    description:
-+      list of regulators provided by this controller.
-+
-+    patternProperties:
-+      "^buck_v(s1|gpu11|modem|pu|core|s2|pa|proc2|proc1|core_sshub)$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^v(s1|gpu11|modem|pu|core|s2|pa|proc2|proc1|core_sshub)$"
-+
-+        unevaluatedProperties: false
-+
-+      "^ldo_v(ibr|rf12|usb|camio|efuse|xo22)$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^v(ibr|rf12|usb|camio|efuse|xo22)$"
-+
-+        unevaluatedProperties: false
-+
-+      "^ldo_v(rfck|emc|a12|a09|ufs|bbck)$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^v(rfck|emc|a12|a09|ufs|bbck)$"
-+
-+        unevaluatedProperties: false
-+
-+      "^ldo_vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$"
-+
-+        unevaluatedProperties: false
-+
-+      "^ldo_vsram_(proc2|others|md|proc1|others_sshub)$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^vsram_(proc2|others|md|proc1|others_sshub)$"
-+
-+        unevaluatedProperties: false
-+
-+      "^ldo_v(fe|bif|io)28$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^v(fe|bif|io)28$"
-+
-+        unevaluatedProperties: false
-+
-+      "^ldo_v(aud|io|aux|rf|m)18$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^v(aud|io|aux|rf|m)18$"
-+
-+        unevaluatedProperties: false
-+
-+      "^ldo_vsim[12]$":
-+        type: object
-+        $ref: "regulator.yaml#"
-+
-+        properties:
-+          regulator-name:
-+            pattern: "^vsim[12]$"
-+
-+        required:
-+          - regulator-name
-+
-+        unevaluatedProperties: false
-+
-+    additionalProperties: false
-+
-+examples:
-+  - |
-+    pmic {
-+      mt6359regulator {
-+        mt6359_vgpu11_buck_reg: buck_vgpu11 {
-+          regulator-name = "vgpu11";
-+          regulator-min-microvolt = <400000>;
-+          regulator-max-microvolt = <1193750>;
-+          regulator-enable-ramp-delay = <200>;
-+          regulator-always-on;
-+          regulator-allowed-modes = <0 1 2>;
-+        };
-+
-+        mt6359_vcamio_ldo_reg: ldo_vcamio {
-+          regulator-name = "vcamio";
-+          regulator-min-microvolt = <1700000>;
-+          regulator-max-microvolt = <1900000>;
-+        };
-+
-+        mt6359_vcn18_ldo_reg: ldo_vcn18 {
-+          regulator-name = "vcn18";
-+          regulator-min-microvolt = <1800000>;
-+          regulator-max-microvolt = <1800000>;
-+          regulator-enable-ramp-delay = <240>;
-+        };
-+
-+        mt6359_vsram_proc2_ldo_reg: ldo_vsram_proc2 {
-+          regulator-name = "vsram_proc2";
-+          regulator-min-microvolt = <500000>;
-+          regulator-max-microvolt = <1293750>;
-+          regulator-ramp-delay = <7500>;
-+          regulator-enable-ramp-delay = <240>;
-+          regulator-always-on;
-+        };
-+
-+        mt6359_vfe28_ldo_reg: ldo_vfe28 {
-+          regulator-name = "vfe28";
-+          regulator-min-microvolt = <2800000>;
-+          regulator-max-microvolt = <2800000>;
-+          regulator-enable-ramp-delay = <120>;
-+        };
-+
-+        mt6359_vaud18_ldo_reg: ldo_vaud18 {
-+          regulator-name = "vaud18";
-+          regulator-min-microvolt = <1800000>;
-+          regulator-max-microvolt = <1800000>;
-+          regulator-enable-ramp-delay = <240>;
-+        };
-+
-+        mt6359_vsim1_ldo_reg: ldo_vsim1 {
-+          regulator-name = "vsim1";
-+          regulator-min-microvolt = <1700000>;
-+          regulator-max-microvolt = <3100000>;
-+          regulator-enable-ramp-delay = <480>;
-+        };
-+      };
-+    };
-+...
++		mt6359rtc: mt6359rtc {
++			compatible = "mediatek,mt6358-rtc";
++		};
++	};
++};
 -- 
 2.18.0
 _______________________________________________
