@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EB45C4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC2D3C4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:47:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD5C523104
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:46:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD5C523104
+	by mail.kernel.org (Postfix) with ESMTPS id 8568523356
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:47:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8568523356
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7liA/2+MGB8kWDlucv4bqku0yJK9EjJou/AHwM1P2po=; b=1wx6pwYBLwQ/r+w1K2zVBk7GV
-	B6L1VyONakcSN5dCQZ8uFYl8NZODtHC84KYCOzH/vueVrHs/xZhJAeA047+fgjDYO1iAAEHT7UKuB
-	tT8u+Vh5+3IhsGAxjYm3bC7dcr/j39cMnYXieUEtvWu3zY4ZYKDqpoFBpoBeK6tbnJTPlXEZiVzRz
-	MfZz5NQa+UDe1H/RhIY1RU1HwWeYMAZZdBEWDJKpwG8wmGzYtXmLBuumWN8ReDm0UG5PuH3uDfTQi
-	kwNNs/2GUvhqJ3++VRvdSlN8r9ny+DmjdvkD9umON9LxruPOkJ3yog3F8Q7k6ra7MHIdXFlzAHB7A
-	a3tyhdsqg==;
+	 bh=fMCiCHz7DEmGEZvq3fWDmBIE8cr0FpLKJp6EsHqLxN4=; b=bW7AH8SgTkGMXS2VqAmspJQcf
+	8Iy0S4kZbo3XBVeAKKfRgA/MzdkGhjvW50FNE9C0ihUL7YWXGkTCHfHhhyzHW9/p/aCyO/+X+0Fxg
+	Op6Ypf5VEJB5ftGIx2bj+poC1LmHc7Cz43AzLnoT65kzKsvIQ5+UrcnhUk/nzRmnHvL1SsM0jIGtK
+	Dd6+gTy1UMuaAn4gz3auNnZh3DVn+8n7J/nBlM5b5zJ/0zV2kUolKME7c2ix+hUr+yCopyJtrJiw2
+	I98AlOZO1nZt0RvcIpQcQNf7NJ2tfei8HNxnRck7jsI2WJDceaFMpbHLR2dsqnUK+aYYvMJtTQcYE
+	VZ5hJvfbg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpUKX-0001uA-0A; Wed, 16 Dec 2020 10:46:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kpUKf-0001xH-Im; Wed, 16 Dec 2020 10:46:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpUKJ-0001o2-CF; Wed, 16 Dec 2020 10:46:36 +0000
-X-UUID: 1e7f4bb1243549f4bd76cd9adba44936-20201216
+ id 1kpUKR-0001r8-MG; Wed, 16 Dec 2020 10:46:46 +0000
+X-UUID: 68674ae7c36143849ea3742de5ac527b-20201216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=nFF1zICsoDvA1NpBapZUoOvDlIWbNcSze4yQZr/xlEU=; 
- b=b+jfoC2C7CzOAGSrW5c5XWW0qMCzfYAGEljX+VM57j22Or2REUY2y4FTWAnPHPNLtsBEVj/mWBzg86lwPOPjOcNRI7PHmy59n6ZqQXSpzt4haf6AJCCqVkEt2hDd/02oVEi342tOD93UhSMVvjjhj5bhFAu9QgAxjEwEudB7060=;
-X-UUID: 1e7f4bb1243549f4bd76cd9adba44936-20201216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=e9oXGwAx39ohOTDXj/uMO5CaF4S8lsHjnF4ppLVeRAg=; 
+ b=fy5LuHUkSmKDv9sXYCcWlxKNwNscPZaE7vtlpFuCtEqtcKw8/63dkl435onHwywe7O0mqiMjXS3TxB+Pp389t2j0W7vyDT3dqGBS3zsLgis/sbi4KaXT+qHGqBVxxemtaz7vd8NRYaIWM7oybt4/yPjzlXXO2iBBEb20t6lHvrA=;
+X-UUID: 68674ae7c36143849ea3742de5ac527b-20201216
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 653040338; Wed, 16 Dec 2020 02:46:28 -0800
+ with ESMTP id 1776300772; Wed, 16 Dec 2020 02:46:38 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 02:36:26 -0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Dec 2020 02:37:11 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 18:36:23 +0800
+ 15.0.1497.2; Wed, 16 Dec 2020 18:37:08 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Dec 2020 18:36:22 +0800
+ Transport; Wed, 16 Dec 2020 18:37:07 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Robin
  Murphy" <robin.murphy@arm.com>
-Subject: [PATCH v3 1/7] iommu: Move iotlb_sync_map out from __iommu_map
-Date: Wed, 16 Dec 2020 18:36:01 +0800
-Message-ID: <20201216103607.23050-2-yong.wu@mediatek.com>
+Subject: [PATCH v3 7/7] iommu/mediatek: Remove the tlb-ops for v7s
+Date: Wed, 16 Dec 2020 18:36:07 +0800
+Message-ID: <20201216103607.23050-8-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201216103607.23050-1-yong.wu@mediatek.com>
 References: <20201216103607.23050-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201216_054635_666511_D3F14A25 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20201216_054643_975824_B5F18731 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,80 +94,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the end of __iommu_map, It alway call iotlb_sync_map.
-This patch moves iotlb_sync_map out from __iommu_map since it is
-unnecessary to call this for each sg segment especially iotlb_sync_map
-is flush tlb all currently.
+Until now, we have already used the tlb operations from iommu framework,
+then the tlb operations for v7s can be removed.
+
+Correspondingly, Switch the paramenter "cookie" to internal structure.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/iommu/iommu.c | 24 +++++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
+ drivers/iommu/mtk_iommu.c | 27 ++++-----------------------
+ 1 file changed, 4 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 8c470f451a32..decef851fa3a 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -2407,9 +2407,6 @@ static int __iommu_map(struct iommu_domain *domain, unsigned long iova,
- 		size -= pgsize;
- 	}
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 89cec51405cd..5656819cd4a1 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -206,10 +206,8 @@ static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
+ 	return container_of(dom, struct mtk_iommu_domain, domain);
+ }
  
--	if (ops->iotlb_sync_map)
--		ops->iotlb_sync_map(domain);
+-static void mtk_iommu_tlb_flush_all(void *cookie)
++static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+ {
+-	struct mtk_iommu_data *data = cookie;
 -
- 	/* unroll mapping in case something went wrong */
- 	if (ret)
- 		iommu_unmap(domain, orig_iova, orig_size - size);
-@@ -2422,15 +2419,29 @@ static int __iommu_map(struct iommu_domain *domain, unsigned long iova,
- int iommu_map(struct iommu_domain *domain, unsigned long iova,
- 	      phys_addr_t paddr, size_t size, int prot)
- {
-+	const struct iommu_ops *ops = domain->ops;
-+	int ret;
-+
- 	might_sleep();
--	return __iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
-+	ret = __iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
-+	if (ret == 0 && ops->iotlb_sync_map)
-+		ops->iotlb_sync_map(domain);
-+
-+	return ret;
+ 	for_each_m4u(data) {
+ 		if (!pm_runtime_active(data->dev))
+ 			continue;
+@@ -221,9 +219,9 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
  }
- EXPORT_SYMBOL_GPL(iommu_map);
  
- int iommu_map_atomic(struct iommu_domain *domain, unsigned long iova,
- 	      phys_addr_t paddr, size_t size, int prot)
+ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+-					   size_t granule, void *cookie)
++					   size_t granule,
++					   struct mtk_iommu_data *data)
  {
--	return __iommu_map(domain, iova, paddr, size, prot, GFP_ATOMIC);
-+	const struct iommu_ops *ops = domain->ops;
-+	int ret;
-+
-+	ret = __iommu_map(domain, iova, paddr, size, prot, GFP_ATOMIC);
-+	if (ret == 0 && ops->iotlb_sync_map)
-+		ops->iotlb_sync_map(domain);
-+
-+	return ret;
- }
- EXPORT_SYMBOL_GPL(iommu_map_atomic);
- 
-@@ -2514,6 +2525,7 @@ static size_t __iommu_map_sg(struct iommu_domain *domain, unsigned long iova,
- 			     struct scatterlist *sg, unsigned int nents, int prot,
- 			     gfp_t gfp)
- {
-+	const struct iommu_ops *ops = domain->ops;
- 	size_t len = 0, mapped = 0;
- 	phys_addr_t start;
- 	unsigned int i = 0;
-@@ -2544,6 +2556,8 @@ static size_t __iommu_map_sg(struct iommu_domain *domain, unsigned long iova,
- 			sg = sg_next(sg);
+-	struct mtk_iommu_data *data = cookie;
+ 	unsigned long flags;
+ 	int ret;
+ 	u32 tmp;
+@@ -250,7 +248,7 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 		if (ret) {
+ 			dev_warn(data->dev,
+ 				 "Partial TLB flush timed out, falling back to full flush\n");
+-			mtk_iommu_tlb_flush_all(cookie);
++			mtk_iommu_tlb_flush_all(data);
+ 		}
+ 		/* Clear the CPE status */
+ 		writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
+@@ -258,22 +256,6 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
  	}
+ }
  
-+	if (ops->iotlb_sync_map)
-+		ops->iotlb_sync_map(domain);
- 	return mapped;
+-static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
+-					    unsigned long iova, size_t granule,
+-					    void *cookie)
+-{
+-	struct mtk_iommu_data *data = cookie;
+-	struct iommu_domain *domain = &data->m4u_dom->domain;
+-
+-	iommu_iotlb_gather_add_page(domain, gather, iova, granule);
+-}
+-
+-static const struct iommu_flush_ops mtk_iommu_flush_ops = {
+-	.tlb_flush_all = mtk_iommu_tlb_flush_all,
+-	.tlb_flush_walk = mtk_iommu_tlb_flush_range_sync,
+-	.tlb_add_page = mtk_iommu_tlb_flush_page_nosync,
+-};
+-
+ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ {
+ 	struct mtk_iommu_data *data = dev_id;
+@@ -380,7 +362,6 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+ 		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
+ 		.ias = MTK_IOMMU_HAS_FLAG(data->plat_data, IOVA_34_EN) ? 34 : 32,
+ 		.oas = 35,
+-		.tlb = &mtk_iommu_flush_ops,
+ 		.iommu_dev = data->dev,
+ 	};
  
- out_err:
 -- 
 2.18.0
 _______________________________________________
