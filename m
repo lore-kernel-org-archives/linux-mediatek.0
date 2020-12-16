@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07727C0018C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA43FC4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:41:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 92AE023105
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:41:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92AE023105
+	by mail.kernel.org (Postfix) with ESMTPS id 2A74D23105
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:41:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A74D23105
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tUGNWNmraXOYrzxDWT5/EAQa0SYMQCmd4qSzEVt2zXE=; b=lUe1diL/L5S6hKqDKgoyVbFOa
-	PGiwKNxkzJ3rmA1gl2UTgs56EOnvFi5keg8tle+FPETzskB5oDuEWfP9GQG8GlUbFwkT8BtMY5dGe
-	OgMqy05znOw1Kxg2WufQNS+F2SH3Ac4lDfVgXIcyJy1EJM6fU7WYulp/5npMjd+z/Ov+obSow0A9k
-	ZT0h3uH/9lmXUxkWXfhpXAOU5nkipvn2YT7I6m56vBbqDzi7Rc93OEzTSURCE327bbmDKMhRXZFr0
-	k9gnenNknz55II1jM3RDC45tgF96ig0PtJeTnYqXbFhm7a+ektSHKUthRVPvoDnZ5LKzZEgXbFpQF
-	098yF/vNw==;
+	 bh=ou0OzisP6h91vUbb4I4zzIjAeIPau23Vyc8aBfy7Og0=; b=sB+wyBF84bsJ97xISDH4XQDfs
+	in/a0A1Ss3w/9cGLjJLEtclmjSY0fTBJtofHdvFBG0zEe3YSvsIxfbAAHfI/AzpqbACGqTekQr4Pk
+	ptSm1/SWZaQYO2HOr4SB2tvVJbBIOrO67EZP8WjLJ2mpjdNf/86cxUNlHr8EvcptL/GOqHFyj8Ra8
+	+mwMfIAzCh9FnRQzmIYAUmKOCzaxx+raEtrCUFI2ysY/y0FaREU/V6/OUWo6z+HQ0tFOc0lcIctJb
+	rM7IA8DWFG2AujOjmC6spWDgXz3CivqLFT2tV219cdvfvVGgU5t9GgmbXN/2YjuXu85K/pEbppm+F
+	CflzI8hRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpTIw-000358-RM; Wed, 16 Dec 2020 09:41:06 +0000
+	id 1kpTJ9-0003E0-IH; Wed, 16 Dec 2020 09:41:19 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpTId-0002vH-FG; Wed, 16 Dec 2020 09:40:50 +0000
-X-UUID: 54180092b066438ba5b8818fe477b763-20201216
+ id 1kpTId-0002vN-JH; Wed, 16 Dec 2020 09:40:57 +0000
+X-UUID: 2324a20f54d04357b51fb4e1a142597c-20201216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=hhMzDgrZiAQgUe/WAsJ3UjnjIzBz55RqlBQqhSvAlMI=; 
- b=iBILdNNfix1A2xaWRXaaOT5aMVR9q7LKwE+yTadiGhQq1OIDYmLjhn9oYwihDUuN/qj2YyU9jTGPn2b5DB8XG0xN+4/tSRJ/EFbg+mw4a5QmXaeEuWQSm1UD7LvtekT7w1DlCoHnJGS0nBzSeXoE/Um80U7AIEHDRjXsX0Qlxeo=;
-X-UUID: 54180092b066438ba5b8818fe477b763-20201216
+ bh=axYhqoiMIANcV+D4VkgfmDYFMD2P63o+quKrdXp2fms=; 
+ b=fYMvZIjK1ckMmfUnZClgcj6445kFZ7Wf7ktXtAhVA27oiyASS1sLHUcQ1kCyUJCY5iDPtzTwHkLehNvpFs/K+1s3VEEhYMtgYRf/TR6Bqneh5uKCXt/WOZq9K1dm83QIXnrKVzJGkEwlHBzfx6MOq98udS2vHlbTfzswhJURY4Y=;
+X-UUID: 2324a20f54d04357b51fb4e1a142597c-20201216
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1652660703; Wed, 16 Dec 2020 01:40:41 -0800
+ with ESMTP id 1129388191; Wed, 16 Dec 2020 01:40:41 -0800
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 01:30:38 -0800
+ 15.0.1497.2; Wed, 16 Dec 2020 01:30:39 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 17:30:36 +0800
+ 15.0.1497.2; Wed, 16 Dec 2020 17:30:37 +0800
 Received: from mtkslt301.mediatek.inc (10.21.14.114) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Dec 2020 17:30:34 +0800
+ Frontend Transport; Wed, 16 Dec 2020 17:30:35 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 05/11] dt-bindings: phy: convert phy-mtk-ufs.txt to YAML
- schema
-Date: Wed, 16 Dec 2020 17:30:06 +0800
-Message-ID: <20201216093012.24406-5-chunfeng.yun@mediatek.com>
+Subject: [PATCH v4 09/11] dt-bindings: usb: convert mediatek,
+ mtk-xhci.txt to YAML schema
+Date: Wed, 16 Dec 2020 17:30:10 +0800
+Message-ID: <20201216093012.24406-9-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
 References: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201216_044047_704666_5FAF9153 
-X-CRM114-Status: GOOD (  19.26  )
+X-CRM114-CacheID: sfid-20201216_044047_948015_843104F6 
+X-CRM114-Status: GOOD (  24.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,75 +97,304 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert phy-mtk-ufs.txt to YAML schema mediatek,ufs-phy.yaml
+Convert mediatek,mtk-xhci.txt to YAML schema mediatek,mtk-xhci.yaml
 
-Cc: Stanley Chu <stanley.chu@mediatek.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
-v4: add Reviewed-by Stanley
-v3: add Reviewed-by Rob
-v2: fix binding check warning of reg in example
----
- .../bindings/phy/mediatek,ufs-phy.yaml        | 64 +++++++++++++++++++
- .../devicetree/bindings/phy/phy-mtk-ufs.txt   | 38 -----------
- 2 files changed, 64 insertions(+), 38 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
- delete mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+v4: update it according to Rob's suggestion
+  1. modify dictionary of phys
+  2. fix endentation in "mediatek,syscon-wakeup" items
+  3. remove reference to usb-hcd.yaml
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
+v3:
+  1. fix yamllint warning
+  2. remove pinctrl* properties supported by default suggested by Rob
+  3. drop unused labels
+  4. modify description of mediatek,syscon-wakeup
+  5. remove type of imod-interval-ns
+
+v2: new patch
+---
+ .../bindings/usb/mediatek,mtk-xhci.txt        | 121 -------------
+ .../bindings/usb/mediatek,mtk-xhci.yaml       | 171 ++++++++++++++++++
+ 2 files changed, 171 insertions(+), 121 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
+deleted file mode 100644
+index 42d8814f903a..000000000000
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
++++ /dev/null
+@@ -1,121 +0,0 @@
+-MT8173 xHCI
+-
+-The device node for Mediatek SOC USB3.0 host controller
+-
+-There are two scenarios: the first one only supports xHCI driver;
+-the second one supports dual-role mode, and the host is based on xHCI
+-driver. Take account of backward compatibility, we divide bindings
+-into two parts.
+-
+-1st: only supports xHCI driver
+-------------------------------------------------------------------------
+-
+-Required properties:
+- - compatible : should be "mediatek,<soc-model>-xhci", "mediatek,mtk-xhci",
+-	soc-model is the name of SoC, such as mt8173, mt2712 etc, when using
+-	"mediatek,mtk-xhci" compatible string, you need SoC specific ones in
+-	addition, one of:
+-	- "mediatek,mt8173-xhci"
+- - reg : specifies physical base address and size of the registers
+- - reg-names: should be "mac" for xHCI MAC and "ippc" for IP port control
+- - interrupts : interrupt used by the controller
+- - power-domains : a phandle to USB power domain node to control USB's
+-	mtcmos
+- - vusb33-supply : regulator of USB avdd3.3v
+-
+- - clocks : a list of phandle + clock-specifier pairs, one for each
+-	entry in clock-names
+- - clock-names : must contain
+-	"sys_ck": controller clock used by normal mode,
+-	the following ones are optional:
+-	"ref_ck": reference clock used by low power mode etc,
+-	"mcu_ck": mcu_bus clock for register access,
+-	"dma_ck": dma_bus clock for data transfer by DMA,
+-	"xhci_ck": controller clock
+-
+- - phys : see usb-hcd.yaml in the current directory
+-
+-Optional properties:
+- - wakeup-source : enable USB remote wakeup;
+- - mediatek,syscon-wakeup : phandle to syscon used to access the register
+-	of the USB wakeup glue layer between xHCI and SPM; it depends on
+-	"wakeup-source", and has two arguments:
+-	- the first one : register base address of the glue layer in syscon;
+-	- the second one : hardware version of the glue layer
+-		- 1 : used by mt8173 etc
+-		- 2 : used by mt2712 etc
+- - mediatek,u3p-dis-msk : mask to disable u3ports, bit0 for u3port0,
+-	bit1 for u3port1, ... etc;
+- - vbus-supply : reference to the VBUS regulator;
+- - usb3-lpm-capable : supports USB3.0 LPM
+- - pinctrl-names : a pinctrl state named "default" must be defined
+- - pinctrl-0 : pin control group
+-	See: Documentation/devicetree/bindings/pinctrl/pinctrl-bindings.txt
+- - imod-interval-ns: default interrupt moderation interval is 5000ns
+-
+-additionally the properties from usb-hcd.yaml (in the current directory) are
+-supported.
+-
+-Example:
+-usb30: usb@11270000 {
+-	compatible = "mediatek,mt8173-xhci";
+-	reg = <0 0x11270000 0 0x1000>,
+-	      <0 0x11280700 0 0x0100>;
+-	reg-names = "mac", "ippc";
+-	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+-	clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>,
+-		 <&pericfg CLK_PERI_USB0>,
+-		 <&pericfg CLK_PERI_USB1>;
+-	clock-names = "sys_ck", "ref_ck";
+-	phys = <&phy_port0 PHY_TYPE_USB3>,
+-	       <&phy_port1 PHY_TYPE_USB2>;
+-	vusb33-supply = <&mt6397_vusb_reg>;
+-	vbus-supply = <&usb_p1_vbus>;
+-	usb3-lpm-capable;
+-	mediatek,syscon-wakeup = <&pericfg 0x400 1>;
+-	wakeup-source;
+-	imod-interval-ns = <10000>;
+-};
+-
+-2nd: dual-role mode with xHCI driver
+-------------------------------------------------------------------------
+-
+-In the case, xhci is added as subnode to mtu3. An example and the DT binding
+-details of mtu3 can be found in:
+-Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+-
+-Required properties:
+- - compatible : should be "mediatek,<soc-model>-xhci", "mediatek,mtk-xhci",
+-	soc-model is the name of SoC, such as mt8173, mt2712 etc, when using
+-	"mediatek,mtk-xhci" compatible string, you need SoC specific ones in
+-	addition, one of:
+-	- "mediatek,mt8173-xhci"
+- - reg : specifies physical base address and size of the registers
+- - reg-names: should be "mac" for xHCI MAC
+- - interrupts : interrupt used by the host controller
+- - power-domains : a phandle to USB power domain node to control USB's
+-	mtcmos
+- - vusb33-supply : regulator of USB avdd3.3v
+-
+- - clocks : a list of phandle + clock-specifier pairs, one for each
+-	entry in clock-names
+- - clock-names : must contain "sys_ck", and the following ones are optional:
+-	"ref_ck", "mcu_ck" and "dma_ck", "xhci_ck"
+-
+-Optional properties:
+- - vbus-supply : reference to the VBUS regulator;
+- - usb3-lpm-capable : supports USB3.0 LPM
+-
+-Example:
+-usb30: usb@11270000 {
+-	compatible = "mediatek,mt8173-xhci";
+-	reg = <0 0x11270000 0 0x1000>;
+-	reg-names = "mac";
+-	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+-	clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
+-	clock-names = "sys_ck", "ref_ck";
+-	vusb33-supply = <&mt6397_vusb_reg>;
+-	usb3-lpm-capable;
+-};
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
 new file mode 100644
-index 000000000000..3a9be82e7f13
+index 000000000000..e5e03f902802
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
-@@ -0,0 +1,64 @@
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+@@ -0,0 +1,171 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +# Copyright (c) 2020 MediaTek
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/phy/mediatek,ufs-phy.yaml#
++$id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediaTek Universal Flash Storage (UFS) M-PHY binding
++title: MediaTek USB3 xHCI Device Tree Bindings
 +
 +maintainers:
-+  - Stanley Chu <stanley.chu@mediatek.com>
 +  - Chunfeng Yun <chunfeng.yun@mediatek.com>
 +
++allOf:
++  - $ref: "usb-hcd.yaml"
++
 +description: |
-+  UFS M-PHY nodes are defined to describe on-chip UFS M-PHY hardware macro.
-+  Each UFS M-PHY node should have its own node.
-+  To bind UFS M-PHY with UFS host controller, the controller node should
-+  contain a phandle reference to UFS M-PHY node.
++  There are two scenarios:
++  case 1: only supports xHCI driver;
++  case 2: supports dual-role mode, and the host is based on xHCI driver.
 +
 +properties:
-+  $nodename:
-+    pattern: "^ufs-phy@[0-9a-f]+$"
-+
++  # common properties for both case 1 and case 2
 +  compatible:
-+    const: mediatek,mt8183-ufsphy
++    items:
++      - enum:
++          - mediatek,mt2712-xhci
++          - mediatek,mt7622-xhci
++          - mediatek,mt7629-xhci
++          - mediatek,mt8173-xhci
++          - mediatek,mt8183-xhci
++      - const: mediatek,mtk-xhci
 +
 +  reg:
++    minItems: 1
++    maxItems: 2
++    items:
++      - description: the registers of xHCI MAC
++      - description: the registers of IP Port Control
++
++  reg-names:
++    minItems: 1
++    maxItems: 2
++    items:
++      - const: mac
++      - const: ippc  # optional, only needed for case 1.
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    description: A phandle to USB power domain node to control USB's MTCMOS
 +    maxItems: 1
 +
 +  clocks:
++    minItems: 1
++    maxItems: 5
 +    items:
-+      - description: Unipro core control clock.
-+      - description: M-PHY core control clock.
++      - description: Controller clock used by normal mode
++      - description: Reference clock used by low power mode etc
++      - description: Mcu bus clock for register access
++      - description: DMA bus clock for data transfer
++      - description: controller clock
 +
 +  clock-names:
++    minItems: 1
++    maxItems: 5
 +    items:
-+      - const: unipro
-+      - const: mp
++      - const: sys_ck  # required, the following ones are optional
++      - const: ref_ck
++      - const: mcu_ck
++      - const: dma_ck
++      - const: xhci_ck
 +
-+  "#phy-cells":
++  phys:
++    description: List of at most 5 USB2 PHYs and 4 USB3 PHYs on this HCD
++    minItems: 0
++    maxItems: 9
++
++  vusb33-supply:
++    description: Regulator of USB AVDD3.3v
++
++  vbus-supply:
++    description: Regulator of USB VBUS5v
++
++  usb3-lpm-capable:
++    description: supports USB3.0 LPM
++    type: boolean
++
++  imod-interval-ns:
++    description:
++      Interrupt moderation interval value, it is 8 times as much as that
++      defined in the xHCI spec on MTK's controller.
++    default: 5000
++
++  # the following properties are only used for case 1
++  wakeup-source:
++    description: enable USB remote wakeup, see power/wakeup-source.txt
++    type: boolean
++
++  mediatek,syscon-wakeup:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++    description:
++      A phandle to syscon used to access the register of the USB wakeup glue
++      layer between xHCI and SPM, the field should always be 3 cells long.
++    items:
++      items:
++        - description:
++            The first cell represents a phandle to syscon
++        - description:
++            The second cell represents the register base address of the glue
++            layer in syscon
++        - description:
++            The third cell represents the hardware version of the glue layer,
++            1 is used by mt8173 etc, 2 is used by mt2712 etc
++          enum: [1, 2]
++
++  mediatek,u3p-dis-msk:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: The mask to disable u3ports, bit0 for u3port0,
++      bit1 for u3port1, ... etc
++
++  "#address-cells":
++    const: 1
++
++  "#size-cells":
 +    const: 0
++
++patternProperties:
++  "^[a-f]+@[0-9a-f]+$":
++    type: object
++    description: The hard wired USB devices.
++
++dependencies:
++  wakeup-source: [ 'mediatek,syscon-wakeup' ]
 +
 +required:
 +  - compatible
 +  - reg
-+  - "#phy-cells"
++  - reg-names
++  - interrupts
 +  - clocks
 +  - clock-names
 +
@@ -173,61 +402,29 @@ index 000000000000..3a9be82e7f13
 +
 +examples:
 +  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    ufsphy: ufs-phy@11fa0000 {
-+        compatible = "mediatek,mt8183-ufsphy";
-+        reg = <0x11fa0000 0xc000>;
-+        clocks = <&infracfg CLK_INFRA_UNIPRO_SCK>,
-+                 <&infracfg CLK_INFRA_UFS_MP_SAP_BCLK>;
-+        clock-names = "unipro", "mp";
-+        #phy-cells = <0>;
-+    };
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/phy/phy.h>
++    #include <dt-bindings/power/mt8173-power.h>
 +
++    usb@11270000 {
++        compatible = "mediatek,mt8173-xhci", "mediatek,mtk-xhci";
++        reg = <0x11270000 0x1000>, <0x11280700 0x0100>;
++        reg-names = "mac", "ippc";
++        interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
++        clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
++        clock-names = "sys_ck", "ref_ck";
++        phys = <&u3port0 PHY_TYPE_USB3>, <&u2port1 PHY_TYPE_USB2>;
++        vusb33-supply = <&mt6397_vusb_reg>;
++        vbus-supply = <&usb_p1_vbus>;
++        imod-interval-ns = <10000>;
++        mediatek,syscon-wakeup = <&pericfg 0x400 1>;
++        wakeup-source;
++        usb3-lpm-capable;
++    };
 +...
-diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-deleted file mode 100644
-index 5789029a1d42..000000000000
---- a/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-+++ /dev/null
-@@ -1,38 +0,0 @@
--MediaTek Universal Flash Storage (UFS) M-PHY binding
----------------------------------------------------------
--
--UFS M-PHY nodes are defined to describe on-chip UFS M-PHY hardware macro.
--Each UFS M-PHY node should have its own node.
--
--To bind UFS M-PHY with UFS host controller, the controller node should
--contain a phandle reference to UFS M-PHY node.
--
--Required properties for UFS M-PHY nodes:
--- compatible         : Compatible list, contains the following controller:
--                       "mediatek,mt8183-ufsphy" for ufs phy
--                       persent on MT81xx chipsets.
--- reg                : Address and length of the UFS M-PHY register set.
--- #phy-cells         : This property shall be set to 0.
--- clocks             : List of phandle and clock specifier pairs.
--- clock-names        : List of clock input name strings sorted in the same
--                       order as the clocks property. Following clocks are
--                       mandatory.
--                       "unipro": Unipro core control clock.
--                       "mp": M-PHY core control clock.
--
--Example:
--
--	ufsphy: phy@11fa0000 {
--		compatible = "mediatek,mt8183-ufsphy";
--		reg = <0 0x11fa0000 0 0xc000>;
--		#phy-cells = <0>;
--
--		clocks = <&infracfg_ao INFRACFG_AO_UNIPRO_SCK_CG>,
--			 <&infracfg_ao INFRACFG_AO_UFS_MP_SAP_BCLK_CG>;
--		clock-names = "unipro", "mp";
--	};
--
--	ufshci@11270000 {
--		...
--		phys = <&ufsphy>;
--	};
 -- 
 2.18.0
 _______________________________________________
