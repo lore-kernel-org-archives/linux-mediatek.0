@@ -2,73 +2,61 @@ Return-Path: <SRS0=oKwZ=FU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A148C4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 11:53:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDAF5C4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 12:10:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0162F23383
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 11:53:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0162F23383
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7E18923109
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 12:10:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E18923109
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UEOGVf+dDOicZybpkvggwryQtMli593ze6TS9gbYZDQ=; b=KKd8xd/xHhWqgY9i6QY5Y2CuI
-	5+LRbtEurWPQ1CZeFEX6wrHggPAQy3AAs2U65tvgGGYGncA5tr31TiaBE46VYBqVXx2ZCZvoRkcqR
-	bnuwR9ofayYYMuDy2xCCNTDm5nZe8IBhiPvj1sCT4sg7KDPJfUabO1Wty+XNA3Cyz2FH2/7sTOsOa
-	jpTUcz8+12oOUOi+qw4GObzB0iwcpWYLVf50L0x0uvtlVllIahcQO1MaxVT/L1f/ojet6FnyOcbgF
-	bBTiYuCCCnsj+h1R1NhXm3KeVSbaVK0UXRDkZWgWt9LdhnSxcPLOPe6cM6Gy3B4rmC83J6fm03cN+
-	ICyvczhGw==;
+	 bh=z3P6xM3QhnFm27c4CtkEejGKxVMPHj5fDflzE36uxNA=; b=FcW0Oz6iEghCY8x158mNbzOfK
+	m2G8a8fcXVLX+jkZ61Sm7nrJgkSQmigIK3IPlfmP4FxMkStkVMgV5Nki1ne0Hl3Mj0asPf4GgBbg3
+	qqrsJxdpK/CvWUDaBhUQ7b20DWDv8lg0ZXX27AqQAKYg6vktRlbB2lzUIBsFji/2oxRSjw/h9gLIu
+	Ku0eNu0nXOdVlMk4qhkBcl8azfMwXSJxCpuzZIdM3Q+BmmkNGaNlaL7u0hUaiRIhvnegSi6YEqv5y
+	bYcRm4SjU98Ceb7I5+a68osu9wqSse9kfSJM4YoJ2k1WrN4TTr5xB3QOE33TpztvozzqDuGgUch+6
+	qIQqefa0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpVN6-0007Og-Ll; Wed, 16 Dec 2020 11:53:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpVN0-0007MD-W1; Wed, 16 Dec 2020 11:53:27 +0000
-X-UUID: 49b8e0c786164d2c9c7bad6bec76035a-20201216
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=EhM5bUedZiGi+gUkZ9oWBBRQVQNZKqOj1hTnbNAjz8M=; 
- b=vHe7da8xwQg2K+6byUiKxXAw66pFwjQ+VklAyGtnAalj5d7C3SoKzB87MDqpusKXIVwQItE8l6Vjs96Gk3TeXNjTxR+XY7HvU6V4Mxq6BsGAInA3nK/hgqVys9z6/mYhNr6CSz5Z9tD7YoIEUeSPGhvAKxKLSQPNI0mecq82muo=;
-X-UUID: 49b8e0c786164d2c9c7bad6bec76035a-20201216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1987377142; Wed, 16 Dec 2020 03:53:23 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 03:51:29 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 19:51:25 +0800
-Received: from mtkslt301.mediatek.inc (10.21.14.114) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Dec 2020 19:51:25 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
-Subject: [PATCH 2/3] usb: xhci-mtk: fix UAS issue by XHCI_BROKEN_STREAMS quirk
-Date: Wed, 16 Dec 2020 19:51:24 +0800
-Message-ID: <20201216115125.5886-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201216115125.5886-1-chunfeng.yun@mediatek.com>
-References: <20201216115125.5886-1-chunfeng.yun@mediatek.com>
+	id 1kpVdd-0000yl-0t; Wed, 16 Dec 2020 12:10:37 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kpVdY-0000xG-GZ; Wed, 16 Dec 2020 12:10:33 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A86551FB;
+ Wed, 16 Dec 2020 04:10:26 -0800 (PST)
+Received: from [10.57.34.90] (unknown [10.57.34.90])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 09D3C3F66E;
+ Wed, 16 Dec 2020 04:10:23 -0800 (PST)
+Subject: Re: [PATCH v3 4/7] iommu: Switch gather->end to unsigned long long
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>
+References: <20201216103607.23050-1-yong.wu@mediatek.com>
+ <20201216103607.23050-5-yong.wu@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <16a9565e-5b01-e1c2-0f4a-d06db7f3b093@arm.com>
+Date: Wed, 16 Dec 2020 12:10:22 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 16A401981E0BC0AB1C65443D744871EF4B75EBA9A7655DE5439D5904123EC1B42000:8
-X-MTK: N
+In-Reply-To: <20201216103607.23050-5-yong.wu@mediatek.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201216_065327_169264_2C1D4A06 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20201216_071032_644761_758F4DF9 
+X-CRM114-Status: GOOD (  20.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,74 +68,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Ikjoon Jang <ikjn@chromium.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ Tomasz Figa <tfiga@google.com>, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk@kernel.org>, chao.hao@mediatek.com,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Greg Kroah-Hartman <gregkh@google.com>, kernel-team@android.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The 0.96 xHCI controller on some platforms does not support
-bulk stream even HCCPARAMS says supporting, due to MaxPSASize
-is set a non-zero default value by mistake, here use
-XHCI_BROKEN_STREAMS quirk to fix it.
+On 2020-12-16 10:36, Yong Wu wrote:
+> Currently gather->end is "unsigned long" which may be overflow in
+> arch32 in the corner case: 0xfff00000 + 0x100000(iova + size).
+> Although it doesn't affect the size(end - start), it affects the checking
+> "gather->end < end"
 
-Fixes: 94a631d91ad3 ("usb: xhci-mtk: check hcc_params after adding primary hcd")
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk.c | 7 ++++++-
- drivers/usb/host/xhci-mtk.h | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+This won't help the same situation at the top of a 64-bit address space, 
+though, and now that we have TTBR1 support for AArch64 format that is 
+definitely a thing. Better to just encode the end address as the actual 
+end address, i.e. iova + size - 1. We don't lose anything other than the 
+ability to encode zero-sized invalidations that don't make sense anyway.
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 8f321f39ab96..08dab974d847 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -395,6 +395,9 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
- 	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
- 	if (mtk->lpm_support)
- 		xhci->quirks |= XHCI_LPM_SUPPORT;
-+
-+	if (mtk->broken_streams)
-+		xhci->quirks |= XHCI_BROKEN_STREAMS;
- }
- 
- /* called during probe() after chip reset completes */
-@@ -460,6 +463,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	mtk->lpm_support = of_property_read_bool(node, "usb3-lpm-capable");
-+	mtk->broken_streams =
-+		of_property_read_bool(node, "mediatek,broken_streams_quirk");
- 	/* optional property, ignore the error if it does not exist */
- 	of_property_read_u32(node, "mediatek,u3p-dis-msk",
- 			     &mtk->u3p_dis_msk);
-@@ -546,7 +551,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto put_usb3_hcd;
- 
--	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
-+	if (!mtk->broken_streams && HCC_MAX_PSA(xhci->hcc_params) >= 4)
- 		xhci->shared_hcd->can_do_streams = 1;
- 
- 	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index a93cfe817904..86aa4978915e 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -147,6 +147,7 @@ struct xhci_hcd_mtk {
- 	struct phy **phys;
- 	int num_phys;
- 	bool lpm_support;
-+	bool broken_streams;
- 	/* usb remote wakeup */
- 	bool uwk_en;
- 	struct regmap *uwk;
--- 
-2.18.0
+Robin.
+
+> Fixes: a7d20dc19d9e ("iommu: Introduce struct iommu_iotlb_gather for batching TLB flushes")
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   include/linux/iommu.h | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index 794d4085edd3..6e907a95d981 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -178,7 +178,7 @@ enum iommu_dev_features {
+>    */
+>   struct iommu_iotlb_gather {
+>   	unsigned long		start;
+> -	unsigned long		end;
+> +	unsigned long long	end;
+>   	size_t			pgsize;
+>   };
+>   
+> @@ -537,7 +537,8 @@ static inline void iommu_iotlb_gather_add_page(struct iommu_domain *domain,
+>   					       struct iommu_iotlb_gather *gather,
+>   					       unsigned long iova, size_t size)
+>   {
+> -	unsigned long start = iova, end = start + size;
+> +	unsigned long start = iova;
+> +	unsigned long long end = start + size;
+>   
+>   	/*
+>   	 * If the new page is disjoint from the current range or is mapped at
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
