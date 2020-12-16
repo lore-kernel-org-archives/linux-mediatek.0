@@ -2,74 +2,63 @@ Return-Path: <SRS0=oKwZ=FU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AA43FC4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:41:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9ED3FC4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:10:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A74D23105
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:41:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A74D23105
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 150172313C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:10:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 150172313C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ou0OzisP6h91vUbb4I4zzIjAeIPau23Vyc8aBfy7Og0=; b=sB+wyBF84bsJ97xISDH4XQDfs
-	in/a0A1Ss3w/9cGLjJLEtclmjSY0fTBJtofHdvFBG0zEe3YSvsIxfbAAHfI/AzpqbACGqTekQr4Pk
-	ptSm1/SWZaQYO2HOr4SB2tvVJbBIOrO67EZP8WjLJ2mpjdNf/86cxUNlHr8EvcptL/GOqHFyj8Ra8
-	+mwMfIAzCh9FnRQzmIYAUmKOCzaxx+raEtrCUFI2ysY/y0FaREU/V6/OUWo6z+HQ0tFOc0lcIctJb
-	rM7IA8DWFG2AujOjmC6spWDgXz3CivqLFT2tV219cdvfvVGgU5t9GgmbXN/2YjuXu85K/pEbppm+F
-	CflzI8hRQ==;
+	 bh=pH4JdHcPuC/mVWaw7UjjImTt5ouD7KAsmUSn9cgoh3U=; b=RvPYWK3VHgLCRRcmPrGiTWOql
+	hWn4AuZubDsURW4GefpZ/BfwFWAz9/ly/xYN5sgCpGVTQibrFL6dFMFqtpujNNj9dPuMHR2tRrnn9
+	JB9RRgp9CQe6HQ/fQlOSy7R1WPKvdYKvtgd/K1dEocfI2yEOtCO4d+Lo6JzIGOxEXdmpSg5bbi1y7
+	gdWUfEL5arNNfRNFl0Pd5eacedoCW5FhHq4AH1jTI3aFzy1TqEUwaf66AEjdVaQr+x4ZfLqEiuYea
+	moYbhnyrB3OP7kt0iesSPXem+IDxwj97Dp/1pL3QPqXxKu2KBFD9nqYse8GXT5b9cEogivBBWBYwa
+	ZYjW53VMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpTJ9-0003E0-IH; Wed, 16 Dec 2020 09:41:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kpTl8-0005tR-E7; Wed, 16 Dec 2020 10:10:14 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpTId-0002vN-JH; Wed, 16 Dec 2020 09:40:57 +0000
-X-UUID: 2324a20f54d04357b51fb4e1a142597c-20201216
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=axYhqoiMIANcV+D4VkgfmDYFMD2P63o+quKrdXp2fms=; 
- b=fYMvZIjK1ckMmfUnZClgcj6445kFZ7Wf7ktXtAhVA27oiyASS1sLHUcQ1kCyUJCY5iDPtzTwHkLehNvpFs/K+1s3VEEhYMtgYRf/TR6Bqneh5uKCXt/WOZq9K1dm83QIXnrKVzJGkEwlHBzfx6MOq98udS2vHlbTfzswhJURY4Y=;
-X-UUID: 2324a20f54d04357b51fb4e1a142597c-20201216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1129388191; Wed, 16 Dec 2020 01:40:41 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 01:30:39 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 17:30:37 +0800
-Received: from mtkslt301.mediatek.inc (10.21.14.114) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Dec 2020 17:30:35 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 09/11] dt-bindings: usb: convert mediatek,
- mtk-xhci.txt to YAML schema
-Date: Wed, 16 Dec 2020 17:30:10 +0800
-Message-ID: <20201216093012.24406-9-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
-References: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
+ id 1kpTl5-0005s8-0T
+ for linux-mediatek@lists.infradead.org; Wed, 16 Dec 2020 10:10:12 +0000
+Received: from [IPv6:2a00:5f00:102:0:b08e:75ff:fe3e:2a49] (unknown
+ [IPv6:2a00:5f00:102:0:b08e:75ff:fe3e:2a49])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: gtucker)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 5F6C51F448B1;
+ Wed, 16 Dec 2020 10:10:07 +0000 (GMT)
+Subject: Re: linusw/devel bisection:
+ baseline.bootrr.mediatek-mt8173-pinctrl-probed on mt8173-elm-hana
+To: Linus Walleij <linus.walleij@linaro.org>
+References: <5fd76cf2.1c69fb81.6f19b.b16a@mx.google.com>
+ <483b08f2-09c3-e753-d2ce-4e34fee627f3@collabora.com>
+ <CACRpkdbozXM3FHQB9+GcPJZdNT+Vi1223m2uEqqJ21ukY1A4Gw@mail.gmail.com>
+From: Guillaume Tucker <guillaume.tucker@collabora.com>
+Message-ID: <8e5e0251-9450-5c93-cd2e-c44779a72b0c@collabora.com>
+Date: Wed, 16 Dec 2020 10:10:04 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.2
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <CACRpkdbozXM3FHQB9+GcPJZdNT+Vi1223m2uEqqJ21ukY1A4Gw@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201216_044047_948015_843104F6 
-X-CRM114-Status: GOOD (  24.25  )
+X-CRM114-CacheID: sfid-20201216_051011_162336_24424F0C 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,352 +70,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Min Guo <min.guo@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org,
- David Airlie <airlied@linux.ie>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kishon Vijay
- Abraham I <kishon@ti.com>, Serge Semin <Sergey.Semin@baikalelectronics.ru>,
- Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- netdev@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Jakub Kicinski <kuba@kernel.org>, Stanley Chu <stanley.chu@mediatek.com>,
- "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+Cc: "kernelci-results@groups.io" <kernelci-results@groups.io>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Sean Wang <sean.wang@kernel.org>, Johan Hovold <johan@kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Collabora Kernel ML <kernel@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert mediatek,mtk-xhci.txt to YAML schema mediatek,mtk-xhci.yaml
+On 15/12/2020 12:20, Linus Walleij wrote:
+> On Mon, Dec 14, 2020 at 11:28 PM Guillaume Tucker
+> <guillaume.tucker@collabora.com> wrote:
+> 
+>> Please see the bisection report below about the pinctrl driver
+>> failing to probe on the arm64 mt8173-elm-hana platform.
+> 
+> That's an excellent, helpful report which helps a lot!
+> Thank you for doing this!
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v4: update it according to Rob's suggestion
-  1. modify dictionary of phys
-  2. fix endentation in "mediatek,syscon-wakeup" items
-  3. remove reference to usb-hcd.yaml
+Thanks for the feedback!  Glad this helped.
 
-v3:
-  1. fix yamllint warning
-  2. remove pinctrl* properties supported by default suggested by Rob
-  3. drop unused labels
-  4. modify description of mediatek,syscon-wakeup
-  5. remove type of imod-interval-ns
+>> This is the error message:
+>>
+>> [    0.051788] gpio gpiochip0: Detected name collision for GPIO name ''
+>> [    0.051813] gpio gpiochip0: GPIO name collision on the same chip, this is not allowed, fix all lines on the chip to have unique names
+>> [    0.051832] gpiochip_add_data_with_key: GPIOs 377..511 (1000b000.pinctrl) failed to register, -17
+>> [    0.051946] mediatek-mt8173-pinctrl: probe of 1000b000.pinctrl failed with error -22
+> 
+> It seems we need to teach the core to ignore the name (empty string).
 
-v2: new patch
----
- .../bindings/usb/mediatek,mtk-xhci.txt        | 121 -------------
- .../bindings/usb/mediatek,mtk-xhci.yaml       | 171 ++++++++++++++++++
- 2 files changed, 171 insertions(+), 121 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
- create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+OK great, I see you've sent a patch for that.  I'll check if we
+can confirm it fixes the issue (something I'd like to also
+automate...).
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-deleted file mode 100644
-index 42d8814f903a..000000000000
---- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-+++ /dev/null
-@@ -1,121 +0,0 @@
--MT8173 xHCI
--
--The device node for Mediatek SOC USB3.0 host controller
--
--There are two scenarios: the first one only supports xHCI driver;
--the second one supports dual-role mode, and the host is based on xHCI
--driver. Take account of backward compatibility, we divide bindings
--into two parts.
--
--1st: only supports xHCI driver
--------------------------------------------------------------------------
--
--Required properties:
-- - compatible : should be "mediatek,<soc-model>-xhci", "mediatek,mtk-xhci",
--	soc-model is the name of SoC, such as mt8173, mt2712 etc, when using
--	"mediatek,mtk-xhci" compatible string, you need SoC specific ones in
--	addition, one of:
--	- "mediatek,mt8173-xhci"
-- - reg : specifies physical base address and size of the registers
-- - reg-names: should be "mac" for xHCI MAC and "ippc" for IP port control
-- - interrupts : interrupt used by the controller
-- - power-domains : a phandle to USB power domain node to control USB's
--	mtcmos
-- - vusb33-supply : regulator of USB avdd3.3v
--
-- - clocks : a list of phandle + clock-specifier pairs, one for each
--	entry in clock-names
-- - clock-names : must contain
--	"sys_ck": controller clock used by normal mode,
--	the following ones are optional:
--	"ref_ck": reference clock used by low power mode etc,
--	"mcu_ck": mcu_bus clock for register access,
--	"dma_ck": dma_bus clock for data transfer by DMA,
--	"xhci_ck": controller clock
--
-- - phys : see usb-hcd.yaml in the current directory
--
--Optional properties:
-- - wakeup-source : enable USB remote wakeup;
-- - mediatek,syscon-wakeup : phandle to syscon used to access the register
--	of the USB wakeup glue layer between xHCI and SPM; it depends on
--	"wakeup-source", and has two arguments:
--	- the first one : register base address of the glue layer in syscon;
--	- the second one : hardware version of the glue layer
--		- 1 : used by mt8173 etc
--		- 2 : used by mt2712 etc
-- - mediatek,u3p-dis-msk : mask to disable u3ports, bit0 for u3port0,
--	bit1 for u3port1, ... etc;
-- - vbus-supply : reference to the VBUS regulator;
-- - usb3-lpm-capable : supports USB3.0 LPM
-- - pinctrl-names : a pinctrl state named "default" must be defined
-- - pinctrl-0 : pin control group
--	See: Documentation/devicetree/bindings/pinctrl/pinctrl-bindings.txt
-- - imod-interval-ns: default interrupt moderation interval is 5000ns
--
--additionally the properties from usb-hcd.yaml (in the current directory) are
--supported.
--
--Example:
--usb30: usb@11270000 {
--	compatible = "mediatek,mt8173-xhci";
--	reg = <0 0x11270000 0 0x1000>,
--	      <0 0x11280700 0 0x0100>;
--	reg-names = "mac", "ippc";
--	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
--	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
--	clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>,
--		 <&pericfg CLK_PERI_USB0>,
--		 <&pericfg CLK_PERI_USB1>;
--	clock-names = "sys_ck", "ref_ck";
--	phys = <&phy_port0 PHY_TYPE_USB3>,
--	       <&phy_port1 PHY_TYPE_USB2>;
--	vusb33-supply = <&mt6397_vusb_reg>;
--	vbus-supply = <&usb_p1_vbus>;
--	usb3-lpm-capable;
--	mediatek,syscon-wakeup = <&pericfg 0x400 1>;
--	wakeup-source;
--	imod-interval-ns = <10000>;
--};
--
--2nd: dual-role mode with xHCI driver
--------------------------------------------------------------------------
--
--In the case, xhci is added as subnode to mtu3. An example and the DT binding
--details of mtu3 can be found in:
--Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
--
--Required properties:
-- - compatible : should be "mediatek,<soc-model>-xhci", "mediatek,mtk-xhci",
--	soc-model is the name of SoC, such as mt8173, mt2712 etc, when using
--	"mediatek,mtk-xhci" compatible string, you need SoC specific ones in
--	addition, one of:
--	- "mediatek,mt8173-xhci"
-- - reg : specifies physical base address and size of the registers
-- - reg-names: should be "mac" for xHCI MAC
-- - interrupts : interrupt used by the host controller
-- - power-domains : a phandle to USB power domain node to control USB's
--	mtcmos
-- - vusb33-supply : regulator of USB avdd3.3v
--
-- - clocks : a list of phandle + clock-specifier pairs, one for each
--	entry in clock-names
-- - clock-names : must contain "sys_ck", and the following ones are optional:
--	"ref_ck", "mcu_ck" and "dma_ck", "xhci_ck"
--
--Optional properties:
-- - vbus-supply : reference to the VBUS regulator;
-- - usb3-lpm-capable : supports USB3.0 LPM
--
--Example:
--usb30: usb@11270000 {
--	compatible = "mediatek,mt8173-xhci";
--	reg = <0 0x11270000 0 0x1000>;
--	reg-names = "mac";
--	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
--	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
--	clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
--	clock-names = "sys_ck", "ref_ck";
--	vusb33-supply = <&mt6397_vusb_reg>;
--	usb3-lpm-capable;
--};
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-new file mode 100644
-index 000000000000..e5e03f902802
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-@@ -0,0 +1,171 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+# Copyright (c) 2020 MediaTek
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/usb/mediatek,mtk-xhci.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek USB3 xHCI Device Tree Bindings
-+
-+maintainers:
-+  - Chunfeng Yun <chunfeng.yun@mediatek.com>
-+
-+allOf:
-+  - $ref: "usb-hcd.yaml"
-+
-+description: |
-+  There are two scenarios:
-+  case 1: only supports xHCI driver;
-+  case 2: supports dual-role mode, and the host is based on xHCI driver.
-+
-+properties:
-+  # common properties for both case 1 and case 2
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt2712-xhci
-+          - mediatek,mt7622-xhci
-+          - mediatek,mt7629-xhci
-+          - mediatek,mt8173-xhci
-+          - mediatek,mt8183-xhci
-+      - const: mediatek,mtk-xhci
-+
-+  reg:
-+    minItems: 1
-+    maxItems: 2
-+    items:
-+      - description: the registers of xHCI MAC
-+      - description: the registers of IP Port Control
-+
-+  reg-names:
-+    minItems: 1
-+    maxItems: 2
-+    items:
-+      - const: mac
-+      - const: ippc  # optional, only needed for case 1.
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  power-domains:
-+    description: A phandle to USB power domain node to control USB's MTCMOS
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+    maxItems: 5
-+    items:
-+      - description: Controller clock used by normal mode
-+      - description: Reference clock used by low power mode etc
-+      - description: Mcu bus clock for register access
-+      - description: DMA bus clock for data transfer
-+      - description: controller clock
-+
-+  clock-names:
-+    minItems: 1
-+    maxItems: 5
-+    items:
-+      - const: sys_ck  # required, the following ones are optional
-+      - const: ref_ck
-+      - const: mcu_ck
-+      - const: dma_ck
-+      - const: xhci_ck
-+
-+  phys:
-+    description: List of at most 5 USB2 PHYs and 4 USB3 PHYs on this HCD
-+    minItems: 0
-+    maxItems: 9
-+
-+  vusb33-supply:
-+    description: Regulator of USB AVDD3.3v
-+
-+  vbus-supply:
-+    description: Regulator of USB VBUS5v
-+
-+  usb3-lpm-capable:
-+    description: supports USB3.0 LPM
-+    type: boolean
-+
-+  imod-interval-ns:
-+    description:
-+      Interrupt moderation interval value, it is 8 times as much as that
-+      defined in the xHCI spec on MTK's controller.
-+    default: 5000
-+
-+  # the following properties are only used for case 1
-+  wakeup-source:
-+    description: enable USB remote wakeup, see power/wakeup-source.txt
-+    type: boolean
-+
-+  mediatek,syscon-wakeup:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    maxItems: 1
-+    description:
-+      A phandle to syscon used to access the register of the USB wakeup glue
-+      layer between xHCI and SPM, the field should always be 3 cells long.
-+    items:
-+      items:
-+        - description:
-+            The first cell represents a phandle to syscon
-+        - description:
-+            The second cell represents the register base address of the glue
-+            layer in syscon
-+        - description:
-+            The third cell represents the hardware version of the glue layer,
-+            1 is used by mt8173 etc, 2 is used by mt2712 etc
-+          enum: [1, 2]
-+
-+  mediatek,u3p-dis-msk:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: The mask to disable u3ports, bit0 for u3port0,
-+      bit1 for u3port1, ... etc
-+
-+  "#address-cells":
-+    const: 1
-+
-+  "#size-cells":
-+    const: 0
-+
-+patternProperties:
-+  "^[a-f]+@[0-9a-f]+$":
-+    type: object
-+    description: The hard wired USB devices.
-+
-+dependencies:
-+  wakeup-source: [ 'mediatek,syscon-wakeup' ]
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - interrupts
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/phy/phy.h>
-+    #include <dt-bindings/power/mt8173-power.h>
-+
-+    usb@11270000 {
-+        compatible = "mediatek,mt8173-xhci", "mediatek,mtk-xhci";
-+        reg = <0x11270000 0x1000>, <0x11280700 0x0100>;
-+        reg-names = "mac", "ippc";
-+        interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-+        power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-+        clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
-+        clock-names = "sys_ck", "ref_ck";
-+        phys = <&u3port0 PHY_TYPE_USB3>, <&u2port1 PHY_TYPE_USB2>;
-+        vusb33-supply = <&mt6397_vusb_reg>;
-+        vbus-supply = <&usb_p1_vbus>;
-+        imod-interval-ns = <10000>;
-+        mediatek,syscon-wakeup = <&pericfg 0x400 1>;
-+        wakeup-source;
-+        usb3-lpm-capable;
-+    };
-+...
--- 
-2.18.0
+Best wishes,
+Guillaume
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
