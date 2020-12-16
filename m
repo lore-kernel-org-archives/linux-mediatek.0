@@ -2,71 +2,73 @@ Return-Path: <SRS0=oKwZ=FU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E6CCC4361B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:31:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59CF5C4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:35:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 675D923102
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:31:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 675D923102
+	by mail.kernel.org (Postfix) with ESMTPS id C388E23102
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 09:35:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C388E23102
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mFBbcxMAMErfsfw9grzfYSiT2cw6p9M8Dl0xdIbzAa8=; b=viEwwAtja4LGNbSsfKj7Hklj/7
-	CbOGTHObfH4BEy8+01Ixu0dDZbjay91/u3gb0kIqixFIYe3Y8gpB/nPxMOBfgH41DvAuOT8MMSkCx
-	Y2sZ+c2BhQO+WSWo36pFVl9r1FaIn3FBiLdmzzXFgjVj3e4kDNuxe9+vyCk5r8iBM4tbx+ZK50FU4
-	eDTTds+52UOOLHfYU5VNZ25E228pjZ3HxiLZVJhy/3fi5kdGJEi/UK0WOGkOlqBUwz0MqWhyD1r7c
-	17AoIIPPLzmLpOmQ8s8KhCD3GY8HSg27hnlcsZQ4y1rjBvIx3cDD3Gx8R0a5n9AlMMXB+YfYkpFz6
-	6tNWYMMQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=c9hG486OO8wBK+rDpitpBp6ESZzk01+fE+fyZ/3/ujU=; b=tQ57ojt/OBoI1SXMqAz+Gqdgc
+	A4qk3WEdHwWu5uB1xwcF6TLWP4oidFcIyXDIfff74DPOIkzuuM9R9ewyAK3AXqUwi02RGE7qz2ut1
+	eUPifjDGIEKVy2sfixdWlc77gk099KCF6OLaGnK/y96ttQxL1eQiLpkhXONlTphFOg5r160K3WsDx
+	DUQYW17r+fVFmKzLZgadLd2ljPp82Cip5IToa6QXn0HzCo5NhonF0vMgq10gZiscNaIYKs7pLMm2n
+	jk/5kIbEHSJ64un8K00/0wi8VXqsd9FTxQ7rRhGHl2jq64lArCCY5iFdmgjXL+TOaMwK4qI1ZB1KN
+	4qUf4E7Pw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpT91-0000kp-4w; Wed, 16 Dec 2020 09:30:51 +0000
+	id 1kpTDM-0001PA-Bg; Wed, 16 Dec 2020 09:35:20 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpT8w-0000ji-LH; Wed, 16 Dec 2020 09:30:49 +0000
-X-UUID: 764226b25f994cbda8b5cbfa176a068d-20201216
+ id 1kpTDG-0001NE-Co; Wed, 16 Dec 2020 09:35:17 +0000
+X-UUID: 1efffed97e7b4b758dad7cdf6220a8cd-20201216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=GtWrlRLZDOnhSukpTDRgA2wwaCiq+NYKuii5D+ytyM0=; 
- b=c7o5kXPg+TPwCN3+GzGBhQoNGNltKPhiHGdV4V/0lnkAaeQTxWSmeY15ijLJyXOYisgLF0k2JT6Hn2FS9xYqD1b1jeStfrUC9bV5tGTmEp2XD9Y+tGmADjGz+/8Bg40JRupeFzwyFgen9AM0P0N2RB4TvdC7fw5gRChHIqAMXXc=;
-X-UUID: 764226b25f994cbda8b5cbfa176a068d-20201216
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=YnDeB0EPUzDizrn05Xm88U+V8lPbgyBHW/XlFVfhGEY=; 
+ b=BNzSqzxkPGozl0oi6S7ucCYK/cXqe1A+noETXQCyCdmMSqMG8hf6OZNttUHdLw3XHQfHi/xx6hY5WaGVFMcrIcvjE8c4l19Laihf2ByXE8aElbW4zY4arCifM2QFZNc8efGG9oiasjqNa8umdTyJ6YLVMnxu7BGQHTK9uS98ZN0=;
+X-UUID: 1efffed97e7b4b758dad7cdf6220a8cd-20201216
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 90015374; Wed, 16 Dec 2020 01:30:39 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 01:30:36 -0800
+ with ESMTP id 548956733; Wed, 16 Dec 2020 01:35:11 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Dec 2020 01:30:37 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 16 Dec 2020 17:30:35 +0800
 Received: from mtkslt301.mediatek.inc (10.21.14.114) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Wed, 16 Dec 2020 17:30:34 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 01/11] dt-bindings: usb: convert usb-device.txt to YAML
- schema
-Date: Wed, 16 Dec 2020 17:30:02 +0800
-Message-ID: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
+Subject: [PATCH v4 02/11] dt-bindings: net: btusb: change reference file name
+Date: Wed, 16 Dec 2020 17:30:03 +0800
+Message-ID: <20201216093012.24406-2-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
+References: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 9746B196A47EC8930E8369463CB93A980E2478B3795A4CD1C9DE7341FC534D662000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201216_043047_021643_56ADB798 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20201216_043514_614490_80AC0CD3 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,327 +96,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert usb-device.txt to YAML schema usb-device.yaml
+Due to usb-device.txt is converted into usb-device.yaml,
+so modify reference file names at the same time.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v4: no changes, update dependent series:
-    https://patchwork.kernel.org/project/linux-usb/list/?series=399561
-    [v6,00/19] dt-bindings: usb: Add generic USB HCD, xHCI, DWC USB3 DT schema
-
-v3:
-  1. remove $nodenmae and items key word for compatilbe;
-  2. add additionalProperties;
-
-  The followings are suggested by Rob:
-  3. merge the following patch
-    [v2,1/4] dt-bindings: usb: convert usb-device.txt to YAML schema
-    [v2,2/4] dt-bindings: usb: add properties for hard wired devices
-  4. define the unit-address for hard-wired device in usb-hcd.yaml,
-     also define its 'reg' and 'compatible';
-  5. This series is base on Serge's series:
-    https://patchwork.kernel.org/project/linux-usb/cover/20201111090853.14112-1-Sergey.Semin@baikalelectronics.ru/
-    [v4,00/18] dt-bindings: usb: Add generic USB HCD, xHCI, DWC USB3 DT schema
-
-v2 changes suggested by Rob:
-  1. modify pattern to support any USB class
-  2. convert usb-device.txt into usb-device.yaml
+v2~v4: no changes
 ---
- .../devicetree/bindings/usb/usb-device.txt    | 102 --------------
- .../devicetree/bindings/usb/usb-device.yaml   | 125 ++++++++++++++++++
- .../devicetree/bindings/usb/usb-hcd.yaml      |  33 +++++
- 3 files changed, 158 insertions(+), 102 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/usb/usb-device.txt
- create mode 100644 Documentation/devicetree/bindings/usb/usb-device.yaml
+ Documentation/devicetree/bindings/net/btusb.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/usb-device.txt b/Documentation/devicetree/bindings/usb/usb-device.txt
-deleted file mode 100644
-index 036be172b1ae..000000000000
---- a/Documentation/devicetree/bindings/usb/usb-device.txt
-+++ /dev/null
-@@ -1,102 +0,0 @@
--Generic USB Device Properties
--
--Usually, we only use device tree for hard wired USB device.
--The reference binding doc is from:
--http://www.devicetree.org/open-firmware/bindings/usb/usb-1_0.ps
--
--Four types of device-tree nodes are defined: "host-controller nodes"
--representing USB host controllers, "device nodes" representing USB devices,
--"interface nodes" representing USB interfaces and "combined nodes"
--representing simple USB devices.
--
--A combined node shall be used instead of a device node and an interface node
--for devices of class 0 or 9 (hub) with a single configuration and a single
--interface.
--
--A "hub node" is a combined node or an interface node that represents a USB
--hub.
--
--
--Required properties for device nodes:
--- compatible: "usbVID,PID", where VID is the vendor id and PID the product id.
--  The textual representation of VID and PID shall be in lower case hexadecimal
--  with leading zeroes suppressed. The other compatible strings from the above
--  standard binding could also be used, but a device adhering to this binding
--  may leave out all except for "usbVID,PID".
--- reg: the number of the USB hub port or the USB host-controller port to which
--  this device is attached. The range is 1-255.
--
--
--Required properties for device nodes with interface nodes:
--- #address-cells: shall be 2
--- #size-cells: shall be 0
--
--
--Required properties for interface nodes:
--- compatible: "usbifVID,PID.configCN.IN", where VID is the vendor id, PID is
--  the product id, CN is the configuration value and IN is the interface
--  number. The textual representation of VID, PID, CN and IN shall be in lower
--  case hexadecimal with leading zeroes suppressed. The other compatible
--  strings from the above standard binding could also be used, but a device
--  adhering to this binding may leave out all except for
--  "usbifVID,PID.configCN.IN".
--- reg: the interface number and configuration value
--
--The configuration component is not included in the textual representation of
--an interface-node unit address for configuration 1.
--
--
--Required properties for combined nodes:
--- compatible: "usbVID,PID", where VID is the vendor id and PID the product id.
--  The textual representation of VID and PID shall be in lower case hexadecimal
--  with leading zeroes suppressed. The other compatible strings from the above
--  standard binding could also be used, but a device adhering to this binding
--  may leave out all except for "usbVID,PID".
--- reg: the number of the USB hub port or the USB host-controller port to which
--  this device is attached. The range is 1-255.
--
--
--Required properties for hub nodes with device nodes:
--- #address-cells: shall be 1
--- #size-cells: shall be 0
--
--
--Required properties for host-controller nodes with device nodes:
--- #address-cells: shall be 1
--- #size-cells: shall be 0
--
--
--Example:
--
--&usb1 {	/* host controller */
--	#address-cells = <1>;
--	#size-cells = <0>;
--
--	hub@1 {		/* hub connected to port 1 */
--		compatible = "usb5e3,608";
--		reg = <1>;
--	};
--
--	device@2 {	/* device connected to port 2 */
--		compatible = "usb123,4567";
--		reg = <2>;
--	};
--
--	device@3 { 	/* device connected to port 3 */
--		compatible = "usb123,abcd";
--		reg = <3>;
--
--		#address-cells = <2>;
--		#size-cells = <0>;
--
--		interface@0 {	/* interface 0 of configuration 1 */
--			compatible = "usbif123,abcd.config1.0";
--			reg = <0 1>;
--		};
--
--		interface@0,2 {	/* interface 0 of configuration 2 */
--			compatible = "usbif123,abcd.config2.0";
--			reg = <0 2>;
--		};
--	};
--};
-diff --git a/Documentation/devicetree/bindings/usb/usb-device.yaml b/Documentation/devicetree/bindings/usb/usb-device.yaml
-new file mode 100644
-index 000000000000..f31d8a85d3e6
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/usb-device.yaml
-@@ -0,0 +1,125 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/usb/usb-device.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: The device tree bindings for the Generic USB Device
-+
-+maintainers:
-+  - Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-+
-+description: |
-+  Usually, we only use device tree for hard wired USB device.
-+  The reference binding doc is from:
-+  http://www.devicetree.org/open-firmware/bindings/usb/usb-1_0.ps
-+
-+  Four types of device-tree nodes are defined: "host-controller nodes"
-+  representing USB host controllers, "device nodes" representing USB devices,
-+  "interface nodes" representing USB interfaces and "combined nodes"
-+  representing simple USB devices.
-+
-+  A combined node shall be used instead of a device node and an interface node
-+  for devices of class 0 or 9 (hub) with a single configuration and a single
-+  interface.
-+
-+  A "hub node" is a combined node or an interface node that represents a USB
-+  hub.
-+
-+properties:
-+  compatible:
-+    pattern: "^usb[0-9a-f]+,[0-9a-f]+$"
-+    description: Device nodes or combined nodes.
-+      "usbVID,PID", where VID is the vendor id and PID the product id.
-+      The textual representation of VID and PID shall be in lower case
-+      hexadecimal with leading zeroes suppressed. The other compatible
-+      strings from the above standard binding could also be used,
-+      but a device adhering to this binding may leave out all except
-+      for "usbVID,PID".
-+
-+  reg:
-+    description: the number of the USB hub port or the USB host-controller
-+      port to which this device is attached. The range is 1-255.
-+    maxItems: 1
-+
-+  "#address-cells":
-+    description: should be 1 for hub nodes with device nodes,
-+      should be 2 for device nodes with interface nodes.
-+    enum: [1, 2]
-+
-+  "#size-cells":
-+    const: 0
-+
-+patternProperties:
-+  "^interface@[0-9]+(,[0-9]+)$":
-+    type: object
-+    description: USB interface nodes.
-+      The configuration component is not included in the textual
-+      representation of an interface-node unit address for configuration 1.
-+
-+    properties:
-+      compatible:
-+        pattern: "^usbif[0-9a-f]+,[0-9a-f]+.config[0-9a-f]+.[0-9a-f]+$"
-+        description: Interface nodes.
-+          "usbifVID,PID.configCN.IN", where VID is the vendor id, PID is
-+          the product id, CN is the configuration value and IN is the interface
-+          number. The textual representation of VID, PID, CN and IN shall be
-+          in lower case hexadecimal with leading zeroes suppressed.
-+          The other compatible strings from the above standard binding could
-+          also be used, but a device adhering to this binding may leave out
-+          all except for "usbifVID,PID.configCN.IN".
-+
-+      reg:
-+        description: should be 2 cells long, the first cell represents
-+          the interface number and the second cell represents the
-+          configuration value.
-+        maxItems: 1
-+
-+required:
-+  - compatile
-+  - reg
-+
-+additionalProperties: true
-+
-+examples:
-+  #hub connected to port 1
-+  #device connected to port 2
-+  #device connected to port 3
-+  #    interface 0 of configuration 1
-+  #    interface 0 of configuration 2
-+  - |
-+    usb@11270000 {
-+        compatible = "generic-xhci";
-+        reg = <0x11270000 0x1000>;
-+        interrupts = <0x0 0x4e 0x0>;
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        hub@1 {
-+            compatible = "usb5e3,608";
-+            reg = <1>;
-+        };
-+
-+        device@2 {
-+            compatible = "usb123,4567";
-+            reg = <2>;
-+        };
-+
-+        device@3 {
-+            compatible = "usb123,abcd";
-+            reg = <3>;
-+
-+            #address-cells = <2>;
-+            #size-cells = <0>;
-+
-+            interface@0 {
-+                compatible = "usbif123,abcd.config1.0";
-+                reg = <0 1>;
-+            };
-+
-+            interface@0,2 {
-+                compatible = "usbif123,abcd.config2.0";
-+                reg = <0 2>;
-+            };
-+        };
-+    };
-diff --git a/Documentation/devicetree/bindings/usb/usb-hcd.yaml b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
-index 9881ac10380d..5d0c6b5500d6 100755
---- a/Documentation/devicetree/bindings/usb/usb-hcd.yaml
-+++ b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
-@@ -23,6 +23,32 @@ properties:
-       targeted hosts (non-PC hosts).
-     type: boolean
+diff --git a/Documentation/devicetree/bindings/net/btusb.txt b/Documentation/devicetree/bindings/net/btusb.txt
+index b1ad6ee68e90..a9c3f4277f69 100644
+--- a/Documentation/devicetree/bindings/net/btusb.txt
++++ b/Documentation/devicetree/bindings/net/btusb.txt
+@@ -4,7 +4,7 @@ Generic Bluetooth controller over USB (btusb driver)
+ Required properties:
  
-+  "#address-cells":
-+    const: 1
-+
-+  "#size-cells":
-+    const: 0
-+
-+patternProperties:
-+  "@[0-9a-f]+$":
-+    type: object
-+    description: The hard wired USB devices
-+
-+    properties:
-+      compatible:
-+        pattern: "^usb[0-9a-f]+,[0-9a-f]+$"
-+        $ref: /usb/usb-device.yaml
-+        description: the string is 'usbVID,PID', where VID is the vendor id
-+          and PID is the product id
-+
-+      reg:
-+        $ref: /usb/usb-device.yaml
-+        maxItems: 1
-+
-+    required:
-+      - compatible
-+      - reg
-+
- additionalProperties: true
+   - compatible : should comply with the format "usbVID,PID" specified in
+-		 Documentation/devicetree/bindings/usb/usb-device.txt
++		 Documentation/devicetree/bindings/usb/usb-device.yaml
+ 		 At the time of writing, the only OF supported devices
+ 		 (more may be added later) are:
  
- examples:
-@@ -30,4 +56,11 @@ examples:
-     usb {
-         phys = <&usb2_phy1>, <&usb3_phy1>;
-         phy-names = "usb";
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        hub@1 {
-+            compatible = "usb5e3,610";
-+            reg = <1>;
-+        };
-     };
 -- 
 2.18.0
 _______________________________________________
