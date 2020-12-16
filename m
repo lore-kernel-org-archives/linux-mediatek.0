@@ -2,72 +2,73 @@ Return-Path: <SRS0=oKwZ=FU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 794CEC0018C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:36:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 208EDC4361B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:37:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D413723356
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:36:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D413723356
+	by mail.kernel.org (Postfix) with ESMTPS id BBCFB23104
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Dec 2020 10:37:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBCFB23104
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mWtwscmKNZVe9LeDbn9X8t0yWUcVO1LqZERDyCZTGtY=; b=ypJGFexC5c/nxLbAv52O6rWs5y
-	6NADRk0TK7UQwebtbaMn5jrAB15MyABlq330yLBWksW1mLeyAoQqiGRfcR+Y/5oDTU8wS472pv0Gb
-	wnEeZSv1PrR5G/HLicT1hb5jw71zelMw13j8Uf7QJZ0uvY1nzro8rfCaY4tuF79hFl0fkSkK+XRW9
-	T4D9t+JfAGmEFtpPFyEmknj/YNGSkYNnZ3IjFEbnDCe1RCobDx7JGM9DIUyK0MmV4U788liWpj41i
-	CKn8MdVh1kno8aiYIHQx1VtIIGnTsKzp7Xwuc9ZgQC0FUMVHMRkDNVwukL6HRIhs1gR4I+nb5voCI
-	cvR1SL0g==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ZqR0SM5iWor3Mv6lnczYTN9b+Zr4u7dv/omJNlTHKJ4=; b=VFLO1JFf01qbhAa06cFyaDXHa
+	mfo6PV0XR46BEh09Fe/LdMm3uIe4aaS8WNkStsXNv77hTCw8WYHu+xnlCwDmPDJoP8kx4m2+fTphT
+	5hZncdrfHQw8Pjk3Nqt09Q76SuEyM5oFYBq/8XCg80h6eZksxGcyckDsGW05Wy+P2Bo9VK27pDVaL
+	gfUNBqBvTtEf/uYPMlEgd4kNUiWKaaAJobPchwfkpr+nG/Q6V2zz6gw/PTM4EikxZw2O5bBBpxjz/
+	x10ALOQWhhrJQAe+7eXf73KCCXq8KhrfuZ9ZWzB1MXrgQ5BueCDUrYxgZFVrgKai0jxEo5MaT55aP
+	nxW2x5tfQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpUAc-0008Ni-26; Wed, 16 Dec 2020 10:36:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kpUBN-0000Aw-HU; Wed, 16 Dec 2020 10:37:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpUAR-0008KQ-RZ; Wed, 16 Dec 2020 10:36:27 +0000
-X-UUID: 1f01928bef0a4deda6e40a165ba4a3cc-20201216
+ id 1kpUB8-0008VK-EZ; Wed, 16 Dec 2020 10:37:07 +0000
+X-UUID: fd0d1f5e1c604b1aaa18e01d5a570147-20201216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=RUEMA8JdHFnQoro1s2tKclBgBlRJ8Ayx4yGw8mYewYA=; 
- b=t07ZgCFvWmLXDg5zpTwxFTe9e2NpRr8jnfL5l7cHOgHdMLpmmH3JbEOQ2fBvCoJk2F3oRmhcAPF1v3BQI3mJ6hHYhKu4+zl5FHqrEjFGB4zzSUksW9ifXT6ArfCAJ6MTiGoNmcbWtgUsPvut/pogam5IJA2SswUM7HkPgudVzpU=;
-X-UUID: 1f01928bef0a4deda6e40a165ba4a3cc-20201216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=dl2dxMS/I/H49YPGjjYBX3Vo7jnV0XYBPSBdn/Nb5P0=; 
+ b=Ys/sPd1Ktck1TlydqhNrG0MEhU/fdFHxl+c6RJETj4pOT0jmRMyG46K6ullyaH9rcPV4xT5ouJ5m6WGe3xYzLHLljJPylvjZumqmYyvc8HUY//z+EYEJ4pIXqKqZ/76CESezwYWMWrL3ImGNgr4Hsb3IuqqEAE00DSO2XURSsow=;
+X-UUID: fd0d1f5e1c604b1aaa18e01d5a570147-20201216
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1833271664; Wed, 16 Dec 2020 02:36:17 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 797521362; Wed, 16 Dec 2020 02:37:00 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 02:36:16 -0800
+ 15.0.1497.2; Wed, 16 Dec 2020 02:36:59 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Dec 2020 18:36:13 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Dec 2020 18:36:55 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Dec 2020 18:36:11 +0800
+ Transport; Wed, 16 Dec 2020 18:36:54 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Robin
  Murphy" <robin.murphy@arm.com>
-Subject: [PATCH v3 0/7] MediaTek IOMMU improve tlb flush performance in
- map/unmap
-Date: Wed, 16 Dec 2020 18:36:00 +0800
-Message-ID: <20201216103607.23050-1-yong.wu@mediatek.com>
+Subject: [PATCH v3 5/7] iommu: Allow io_pgtable_tlb ops optional
+Date: Wed, 16 Dec 2020 18:36:05 +0800
+Message-ID: <20201216103607.23050-6-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201216103607.23050-1-yong.wu@mediatek.com>
+References: <20201216103607.23050-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201216_053624_216765_E2E2558B 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20201216_053706_656897_BD5EE871 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,69 +93,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset is to improve tlb flushing performance in iommu_map/unmap
-for MediaTek IOMMU.
+This patch allows io_pgtable_tlb ops could be null since the IOMMU drivers
+may use the tlb ops from iommu framework.
 
-For iommu_map, currently MediaTek IOMMU use IO_PGTABLE_QUIRK_TLBI_ON_MAP
-to do tlb_flush for each a memory chunk. this is so unnecessary. we could
-improve it by tlb flushing one time at the end of iommu_map.
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+---
+ include/linux/io-pgtable.h | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-For iommu_unmap, currently we have already improve this performance by
-gather. But the current gather should take care its granule size. if the
-granule size is different, it will do tlb flush and gather again. Our HW
-don't care about granule size. thus I gather the range in our file.
-
-After this patchset, we could achieve only tlb flushing once in iommu_map
-and iommu_unmap.
-
-Regardless of sg, for each a segment, I did a simple test:
-  
-  size = 20 * SZ_1M;
-  /* the worst case, all are 4k mapping. */
-  ret = iommu_map(domain, 0x5bb02000, 0x123f1000, size, IOMMU_READ);
-  iommu_unmap(domain, 0x5bb02000, size);
-
-This is the comparing time(unit is us):
-              original-time  after-improve
-   map-20M    59943           2347
-   unmap-20M  264             36
-
-This patchset also flush tlb once in the iommu_map_sg case.
-
-patch [1/7][2/7][3/7] are for map while the others are for unmap.
-
-This patchset base on:
-  a) mt8192 iommu v5
-https://lore.kernel.org/linux-iommu/20201209080102.26626-1-yong.wu@mediatek.com/T/#t
-  b) iommu/io-pgtable: Remove tlb_flush_leaf
-https://lore.kernel.org/linux-iommu/160744101816.3622130.16266834943434854326.b4-ty@kernel.org/T/#mc8fbc98bee8bca865d73c873275ab34fed1c25c7
-
-change note:
-v3: Refactor the unmap flow suggested by Robin.
-     
-v2: https://lore.kernel.org/linux-iommu/20201119061836.15238-1-yong.wu@mediatek.com/
-    Refactor all the code.
-    base on v5.10-rc1.
-
-Yong Wu (7):
-  iommu: Move iotlb_sync_map out from __iommu_map
-  iommu: Add iova and size as parameters in iotlb_sync_map
-  iommu/mediatek: Add iotlb_sync_map to sync whole the iova range
-  iommu: Switch gather->end to unsigned long long
-  iommu: Allow io_pgtable_tlb ops optional
-  iommu/mediatek: Gather iova in iommu_unmap to achieve tlb sync once
-  iommu/mediatek: Remove the tlb-ops for v7s
-
- drivers/iommu/iommu.c      | 24 +++++++++++++++-----
- drivers/iommu/mtk_iommu.c  | 45 +++++++++++++++-----------------------
- drivers/iommu/tegra-gart.c |  3 ++-
- include/linux/io-pgtable.h |  8 ++++---
- include/linux/iommu.h      |  8 ++++---
- 5 files changed, 49 insertions(+), 39 deletions(-)
-
+diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
+index adde9e49be08..c81796814afa 100644
+--- a/include/linux/io-pgtable.h
++++ b/include/linux/io-pgtable.h
+@@ -206,14 +206,16 @@ struct io_pgtable {
+ 
+ static inline void io_pgtable_tlb_flush_all(struct io_pgtable *iop)
+ {
+-	iop->cfg.tlb->tlb_flush_all(iop->cookie);
++	if (iop->cfg.tlb && iop->cfg.tlb->tlb_flush_all)
++		iop->cfg.tlb->tlb_flush_all(iop->cookie);
+ }
+ 
+ static inline void
+ io_pgtable_tlb_flush_walk(struct io_pgtable *iop, unsigned long iova,
+ 			  size_t size, size_t granule)
+ {
+-	iop->cfg.tlb->tlb_flush_walk(iova, size, granule, iop->cookie);
++	if (iop->cfg.tlb && iop->cfg.tlb->tlb_flush_walk)
++		iop->cfg.tlb->tlb_flush_walk(iova, size, granule, iop->cookie);
+ }
+ 
+ static inline void
+@@ -221,7 +223,7 @@ io_pgtable_tlb_add_page(struct io_pgtable *iop,
+ 			struct iommu_iotlb_gather * gather, unsigned long iova,
+ 			size_t granule)
+ {
+-	if (iop->cfg.tlb->tlb_add_page)
++	if (iop->cfg.tlb && iop->cfg.tlb->tlb_add_page)
+ 		iop->cfg.tlb->tlb_add_page(gather, iova, granule, iop->cookie);
+ }
+ 
 -- 
 2.18.0
-
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
