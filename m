@@ -2,71 +2,79 @@ Return-Path: <SRS0=e3uk=FV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B464EC4361B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 13:07:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C000BC4361B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 14:22:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4958D238D6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 13:07:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4958D238D6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5C80B2389F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 14:22:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5C80B2389F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jzQmo84cjK946tfHv5IccPDOntZm3f6InsZWsEVEJno=; b=r0SVCi63QRTNhjPK7fVicqyfHs
-	HSgy4GZYgBjPEyf8kophlMTaFFBbRmRWuw5jPVwOviIjlFi4jADwh2BYWjP0zWyXqREeclsceGuuN
-	xaQh1cyjvko1Zi3tIH7LtuZQVrAl0XT0jUzbI4sRita6k08gS96dgngbjEAerZ63hR8sMAJeCG6DN
-	4Kaz0aryoidQsbznJmd4izDbwGE6+voQ6+GZO0a5OoYNAJdtvNVyYZgYiq+Z8O0Fu5jpHvIDJKplS
-	a5ADU0k7zWSFFye4x+KT4UiPrgitxfFti1YsocY4COOUDll3znJCg/zAFAkBz76brII2L0/6iOjpC
-	sCwmDp8A==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=JSNcULFqt+wa51CCwVM/XnnjIY+vOm6NbICu7XzGydQ=; b=o3XuhLi1eUp3BgokxUFMBFo+S
+	Xjg8YR4wKrSyFlFtp0VVMcmOY15wiFhUO9T2aWF8QOcC6CmAWuRfP0hwNu5c8ILTevwD0y17c8Tt4
+	9+Qbr3yE6TUhRxskOpEmdqFscEqxelIzrCcAbkssYrM206lJwoKqaS9dCo3wN599c/rr/TOfP0deJ
+	PJrtwh0RPC1u9TokqTUBUotKhvM6nB22H5wK7vJnHml6F61d/1hkjhmyvTc3DtxURjtCcgmmzMree
+	/Lw4DtMbXPBkuBKXJ5m6q82Csdc7utRpNWlCVnjJPEDRjbD6y9hzsoq4XfdLHfMzRqNnRs52EDZoR
+	fNMddRsBQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpszd-0000Dc-8r; Thu, 17 Dec 2020 13:06:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kpuAL-0005ME-3l; Thu, 17 Dec 2020 14:22:01 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpsza-0000CF-4X; Thu, 17 Dec 2020 13:06:51 +0000
-X-UUID: a2964e3ac3964ece89e437a113ad96ba-20201217
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=hnSj/W3WJWDksYPZPWDYXPrubbMEMH4KvtDJQOSem58=; 
- b=n5aDRL7Ni6xWyqGESJ/PzC/LzYZ94doVO1+k4NcfxY5Q5fyNmkGk85pP1phg221nIwZdHebaP55snk2N2cGC9V1486n5Hc3mZ96qzIQH390gTRanGCVQb8wlcXNJ11EjzEalzcqOD86qAYUpLfeKecYXoL9WTamtslJ9Pr/H38A=;
-X-UUID: a2964e3ac3964ece89e437a113ad96ba-20201217
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <lecopzer.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 503461541; Thu, 17 Dec 2020 05:06:39 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Dec 2020 05:06:36 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Dec 2020 21:06:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 17 Dec 2020 21:06:33 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH] kernel/watchdog_hld.c: Fix access percpu in preemptible
- context
-Date: Thu, 17 Dec 2020 21:06:17 +0800
-Message-ID: <20201217130617.32202-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kpuAI-0005Lo-M5
+ for linux-mediatek@lists.infradead.org; Thu, 17 Dec 2020 14:21:59 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id o19so32154872lfo.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 17 Dec 2020 06:21:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fEsDcXj7kC0e9QLMNZJRwfmrhQOpyffdTx2CokzQK+k=;
+ b=riCzgX1IMRf2nv/TCtl+S/ZuEImnBSmdHagRA2iR74qGVwX1jubwWafisAtkUhzJj3
+ ENOvThhHTo4nW3yj3tbG029Llth4Hh5JAp2slI94u4dQk524gEYVrOkD4+bpTmqiyuBt
+ kYBek6VlF6V+Oo1NxpygfEdo4i1DpvjcIx3W+OCwOfID1kPt3GN9SDRITJ+s3HnGr+x6
+ H5NU1L+sefw/qMFIecLB/5xzHN1G0wTL+KU7n6YxjjtY/cq1BIg/440bWC9A4sszE0Mv
+ oYTPL5Vxh35Q2Z8IQ4Diib5LqWkZyvwFtC6lo5VdkDmJ77tqNL128QMhOM90akJGR3fm
+ GffA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fEsDcXj7kC0e9QLMNZJRwfmrhQOpyffdTx2CokzQK+k=;
+ b=KveMAKG+GEGpDBlka5WQcqmheKmdESgDQJm1xUr4GDtvGXjHcbPm/dJnFKU+YWdBuZ
+ DyY9pgRwwRf1JH3YVmcqcYbS5IFpzPcf6XY55w90gvOKrJxo2Q/e+QoJV5pMK/uAKeFo
+ Mpf8yb2wYZF+d1dCSRJFWVrxduW5BzfMG6IBCFTd6rQhYA60NLtCvsWj8GbDan257yms
+ pEILJ+hTJc3sy6hd9bgIrHOKEjqlKwymfjRfLucbptbUQWEfpH5E4sof94PuBVCfH6PH
+ vIuadp5Pa0xCYWHZ8hqzj5tOpNFhvkWB12oYFVLbyIpi5wF4UMZGIgaASpu5qXoZBAX2
+ H5Bw==
+X-Gm-Message-State: AOAM531dLGHfZ9yyxaM/gpZH9bNR20g7ew3wmnMQILHeOcJgCnf8b4DH
+ XPa3t3Zh26EK7qVnRTj32qvxg8Yuo4yJk8I6nGDCkRP7gsc=
+X-Google-Smtp-Source: ABdhPJyUDc+putV0OYw316T4PZsBgszWBOXNkJyofvl7KyfCUKfxWMXfSayYicYYw8zqZ8CH4DI6NBB5PmTmdGVCoDI=
+X-Received: by 2002:a19:495d:: with SMTP id l29mr10494795lfj.465.1608214915009; 
+ Thu, 17 Dec 2020 06:21:55 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20201217083420.411569-1-lee.jones@linaro.org>
+In-Reply-To: <20201217083420.411569-1-lee.jones@linaro.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 17 Dec 2020 15:21:44 +0100
+Message-ID: <CACRpkdbogmGxvs_VsFoB8rbq8-51s2rQWGHwTStBzozmSShT3A@mail.gmail.com>
+Subject: Re: [PATCH 1/1] mfd: Standardise MFD_CELL_* helper names
+To: Lee Jones <lee.jones@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201217_080650_421030_97D441D1 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20201217_092158_799356_73641A41 
+X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,78 +86,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sumit.garg@linaro.org, Lecopzer Chen <lecopzer.chen@mediatek.com>,
- will@kernel.org, yj.chiang@mediatek.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, alexandru.elisei@arm.com
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Gene Chen <gene_chen@richtek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-commit 367c820ef08082 ("arm64: Enable perf events based hard lockup detector")
-reinitilizes lockup detector after arm64 PMU is initialized and provide
-another chance for access smp_processor_id() in preemptible context.
-Since hardlockup_detector_event_create() use many percpu relative variable,
-just try to fix this by get/put_cpu()
+On Thu, Dec 17, 2020 at 9:34 AM Lee Jones <lee.jones@linaro.org> wrote:
 
-    BUG: using smp_processor_id() in preemptible [00000000] code: swapper/0/1
-    caller is debug_smp_processor_id+0x20/0x2c
-    CPU: 2 PID: 1 Comm: swapper/0 Not tainted 5.10.0+ #276
-    Hardware name: linux,dummy-virt (DT)
-    Call trace:
-      dump_backtrace+0x0/0x3c0
-      show_stack+0x20/0x6c
-      dump_stack+0x2f0/0x42c
-      check_preemption_disabled+0x1cc/0x1dc
-      debug_smp_processor_id+0x20/0x2c
-      hardlockup_detector_event_create+0x34/0x18c
-      hardlockup_detector_perf_init+0x2c/0x134
-      watchdog_nmi_probe+0x18/0x24
-      lockup_detector_init+0x44/0xa8
-      armv8_pmu_driver_init+0x54/0x78
-      do_one_initcall+0x184/0x43c
-      kernel_init_freeable+0x368/0x380
-      kernel_init+0x1c/0x1cc
-      ret_from_fork+0x10/0x30
+> Start all helpers with "MFD_CELL_".
+>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Gene Chen <gene_chen@richtek.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Lee Jones <lee.jones@linaro.org>
 
+Makes sense.
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-Fixes: 367c820ef08082 ("arm64: Enable perf events based hard lockup detector")
-Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: Sumit Garg <sumit.garg@linaro.org>
+Yours,
+Linus Walleij
 
----
- kernel/watchdog_hld.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/kernel/watchdog_hld.c b/kernel/watchdog_hld.c
-index 247bf0b1582c..c591a1ea8eb3 100644
---- a/kernel/watchdog_hld.c
-+++ b/kernel/watchdog_hld.c
-@@ -165,7 +165,7 @@ static void watchdog_overflow_callback(struct perf_event *event,
- 
- static int hardlockup_detector_event_create(void)
- {
--	unsigned int cpu = smp_processor_id();
-+	unsigned int cpu = get_cpu();
- 	struct perf_event_attr *wd_attr;
- 	struct perf_event *evt;
- 
-@@ -176,11 +176,13 @@ static int hardlockup_detector_event_create(void)
- 	evt = perf_event_create_kernel_counter(wd_attr, cpu, NULL,
- 					       watchdog_overflow_callback, NULL);
- 	if (IS_ERR(evt)) {
-+		put_cpu();
- 		pr_debug("Perf event create on CPU %d failed with %ld\n", cpu,
- 			 PTR_ERR(evt));
- 		return PTR_ERR(evt);
- 	}
- 	this_cpu_write(watchdog_ev, evt);
-+	put_cpu();
- 	return 0;
- }
- 
--- 
-2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
