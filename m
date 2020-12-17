@@ -7,69 +7,66 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0575C2BB40
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 12:18:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B464EC4361B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 13:07:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 77627206D5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 12:18:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77627206D5
+	by mail.kernel.org (Postfix) with ESMTPS id 4958D238D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 13:07:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4958D238D6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=E40XfTDYsAuJ5sDTmCg8/hbcwSi2xM1/hvDYw80XUXw=; b=FYvxvEz+yqzmKeZz2E5coZUJB
-	Dtv5ZgIlDmRmi9zqegOBbal+EKet+A9dlLJsRxJU3CXTsVC8PvErdibOvwLaA8PYcpfZTZVy8MvLz
-	uldg1dYVC5yRYFzEu3uoJYRRYYx58KtMO5oXS73YURKs760q94Dgi/QO1NGoQu3kPWFBekddeeUMz
-	OJ95d+epLSTvGxNFzbc5GlbKA5o/9f74FIKRgcm+pEcqTIXsq5BTmH5v5MaVoqei6f4rprd4ekj7j
-	5XMOP6+mHsEu+KwRVgPSlq7kQ3mbIeEp4S8tcBhiknQB1YBN2eslMJ2boc632cNzJRCB5zqLpCYb9
-	c7oI56p7A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jzQmo84cjK946tfHv5IccPDOntZm3f6InsZWsEVEJno=; b=r0SVCi63QRTNhjPK7fVicqyfHs
+	HSgy4GZYgBjPEyf8kophlMTaFFBbRmRWuw5jPVwOviIjlFi4jADwh2BYWjP0zWyXqREeclsceGuuN
+	xaQh1cyjvko1Zi3tIH7LtuZQVrAl0XT0jUzbI4sRita6k08gS96dgngbjEAerZ63hR8sMAJeCG6DN
+	4Kaz0aryoidQsbznJmd4izDbwGE6+voQ6+GZO0a5OoYNAJdtvNVyYZgYiq+Z8O0Fu5jpHvIDJKplS
+	a5ADU0k7zWSFFye4x+KT4UiPrgitxfFti1YsocY4COOUDll3znJCg/zAFAkBz76brII2L0/6iOjpC
+	sCwmDp8A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpsF1-00052S-91; Thu, 17 Dec 2020 12:18:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kpszd-0000Dc-8r; Thu, 17 Dec 2020 13:06:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpsEs-0004zU-RR; Thu, 17 Dec 2020 12:18:36 +0000
-X-UUID: 698e8d0045b747dd81dd57b65d878bc8-20201217
+ id 1kpsza-0000CF-4X; Thu, 17 Dec 2020 13:06:51 +0000
+X-UUID: a2964e3ac3964ece89e437a113ad96ba-20201217
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=fWc03B9XOOk2+KXP17jTgBlOUejZGUWa86JmAuFP4dk=; 
- b=ieGZKT4lfno1xaLaj6NGqThWhJpKbN1Yen8xAswF770d4ltitqJXMhOHHN8z1TpQBZnjLjPSwplMFaS4xKZU9totsF+oJy6BShBezn7zw3Sm/Oj2sdnmHX15Z0l9NhZtXA6QQE2ho+Nbr1MePVSZM8EQZRPE89yauj8obRFm1eo=;
-X-UUID: 698e8d0045b747dd81dd57b65d878bc8-20201217
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <kuan-ying.lee@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=hnSj/W3WJWDksYPZPWDYXPrubbMEMH4KvtDJQOSem58=; 
+ b=n5aDRL7Ni6xWyqGESJ/PzC/LzYZ94doVO1+k4NcfxY5Q5fyNmkGk85pP1phg221nIwZdHebaP55snk2N2cGC9V1486n5Hc3mZ96qzIQH390gTRanGCVQb8wlcXNJ11EjzEalzcqOD86qAYUpLfeKecYXoL9WTamtslJ9Pr/H38A=;
+X-UUID: a2964e3ac3964ece89e437a113ad96ba-20201217
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <lecopzer.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 663912482; Thu, 17 Dec 2020 04:18:27 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Dec 2020 04:18:25 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Dec 2020 20:18:23 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 503461541; Thu, 17 Dec 2020 05:06:39 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Dec 2020 05:06:36 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Dec 2020 21:06:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 17 Dec 2020 20:18:24 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
- <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Andrew Morton
- <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 1/1] kasan: fix memory leak of kasan quarantine
-Date: Thu, 17 Dec 2020 20:18:07 +0800
-Message-ID: <1608207487-30537-2-git-send-email-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1608207487-30537-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
-References: <1608207487-30537-1-git-send-email-Kuan-Ying.Lee@mediatek.com>
+ Frontend Transport; Thu, 17 Dec 2020 21:06:33 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] kernel/watchdog_hld.c: Fix access percpu in preemptible
+ context
+Date: Thu, 17 Dec 2020 21:06:17 +0800
+Message-ID: <20201217130617.32202-1-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201217_071835_074357_B2BA9DBB 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20201217_080650_421030_97D441D1 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,48 +78,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
- linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, stable@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: sumit.garg@linaro.org, Lecopzer Chen <lecopzer.chen@mediatek.com>,
+ will@kernel.org, yj.chiang@mediatek.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, alexandru.elisei@arm.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When cpu is going offline, set q->offline as true
-and interrupt happened. The interrupt may call the
-quarantine_put. But quarantine_put do not free the
-the object. The object will cause memory leak.
+commit 367c820ef08082 ("arm64: Enable perf events based hard lockup detector")
+reinitilizes lockup detector after arm64 PMU is initialized and provide
+another chance for access smp_processor_id() in preemptible context.
+Since hardlockup_detector_event_create() use many percpu relative variable,
+just try to fix this by get/put_cpu()
 
-Add qlink_free() to free the object.
+    BUG: using smp_processor_id() in preemptible [00000000] code: swapper/0/1
+    caller is debug_smp_processor_id+0x20/0x2c
+    CPU: 2 PID: 1 Comm: swapper/0 Not tainted 5.10.0+ #276
+    Hardware name: linux,dummy-virt (DT)
+    Call trace:
+      dump_backtrace+0x0/0x3c0
+      show_stack+0x20/0x6c
+      dump_stack+0x2f0/0x42c
+      check_preemption_disabled+0x1cc/0x1dc
+      debug_smp_processor_id+0x20/0x2c
+      hardlockup_detector_event_create+0x34/0x18c
+      hardlockup_detector_perf_init+0x2c/0x134
+      watchdog_nmi_probe+0x18/0x24
+      lockup_detector_init+0x44/0xa8
+      armv8_pmu_driver_init+0x54/0x78
+      do_one_initcall+0x184/0x43c
+      kernel_init_freeable+0x368/0x380
+      kernel_init+0x1c/0x1cc
+      ret_from_fork+0x10/0x30
 
-Fixes: 6c82d45c7f03 (kasan: fix object remaining in offline per-cpu quarantine)
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Cc: Alexander Potapenko <glider@google.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: <stable@vger.kernel.org>    [5.10-]
+
+Fixes: 367c820ef08082 ("arm64: Enable perf events based hard lockup detector")
+Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: Sumit Garg <sumit.garg@linaro.org>
+
 ---
- mm/kasan/quarantine.c | 1 +
- 1 file changed, 1 insertion(+)
+ kernel/watchdog_hld.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
-index 0e3f8494628f..cac7c617df72 100644
---- a/mm/kasan/quarantine.c
-+++ b/mm/kasan/quarantine.c
-@@ -191,6 +191,7 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
+diff --git a/kernel/watchdog_hld.c b/kernel/watchdog_hld.c
+index 247bf0b1582c..c591a1ea8eb3 100644
+--- a/kernel/watchdog_hld.c
++++ b/kernel/watchdog_hld.c
+@@ -165,7 +165,7 @@ static void watchdog_overflow_callback(struct perf_event *event,
  
- 	q = this_cpu_ptr(&cpu_quarantine);
- 	if (q->offline) {
-+		qlink_free(&info->quarantine_link, cache);
- 		local_irq_restore(flags);
- 		return;
+ static int hardlockup_detector_event_create(void)
+ {
+-	unsigned int cpu = smp_processor_id();
++	unsigned int cpu = get_cpu();
+ 	struct perf_event_attr *wd_attr;
+ 	struct perf_event *evt;
+ 
+@@ -176,11 +176,13 @@ static int hardlockup_detector_event_create(void)
+ 	evt = perf_event_create_kernel_counter(wd_attr, cpu, NULL,
+ 					       watchdog_overflow_callback, NULL);
+ 	if (IS_ERR(evt)) {
++		put_cpu();
+ 		pr_debug("Perf event create on CPU %d failed with %ld\n", cpu,
+ 			 PTR_ERR(evt));
+ 		return PTR_ERR(evt);
  	}
+ 	this_cpu_write(watchdog_ev, evt);
++	put_cpu();
+ 	return 0;
+ }
+ 
 -- 
-2.18.0
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
