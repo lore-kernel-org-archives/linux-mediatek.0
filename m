@@ -2,72 +2,78 @@ Return-Path: <SRS0=+cmX=FW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63AF8C4361B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 05:02:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9186AC4361B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 05:58:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC72523A51
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 05:02:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC72523A51
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 18AC023A63
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 05:58:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18AC023A63
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OSqLpHExvGkWpQu3qW29Xa1UaQoXEJPbBtX4HVKoLWQ=; b=ei2PUkgOLEHiOsCgII/gMuwAD
-	WyEc6HoVCo0iXps92JJrA8YMsu8YNEQauurhj0XEb5p6EQ5DRaJxk3Ey+xn5HHzCUOrtgQXnl3XA8
-	tTjCOfT3HLPnrVlmnufwyn7NSBKXwClufUr39B1d9Z0Ncf1Do8AoUI6MvEgNehwjA+9DSaKE6go0l
-	Q7IFyNxIFUEfkH39gim4Baz3BuMU4m3ylAkGUAH7YOTBQRwaMOouidzf0XRSTQNuC48yBpI8ij6zu
-	sn8A8wCSSiiM2z9fOmS/9cX7KEZSQAKn5xIa7iL7eGrgHYTTaHDaZQ5hBSUtSFGXC+p+RNKbeoht9
-	YVxF7M9cg==;
+	 bh=C/3UZioXmhUkdcWGgX5Xftxnm3bg0LhVpbIGmYvAZh0=; b=kke69uuE2WTJJePiyEXPoo9+a
+	skRZmEbJOpPJ/tnp0aGR2OT6umxkeyVsyrhx7EGCbBzOSJwhTBeGoghBEaS2+k+LlESE0eY5JCwxW
+	sF/DAvddPbFCjEvDTd2W4SbrDh8NSUFFaNo3Z6bh2HmVmCULuKhRAlpO3nfg0WtQC4cYTv6qjiZNh
+	QMq8F1iAFSh6wg7qwrhTAQ+SI2Amb7wN50lweICr5BIb64qfCvs553RVMCDZtQkeglQ+dczK2om1j
+	RNgaP6hsQGcm21GID5yB/N9UeO50uQiqkD6Zh5WizZUZlAI1E86zdKrUPC0EWzA959jmRxJwHqXM/
+	J2CTYKylQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kq7uY-0002nF-Ht; Fri, 18 Dec 2020 05:02:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kq8mN-0005GJ-8L; Fri, 18 Dec 2020 05:58:15 +0000
+Received: from m43-15.mailgun.net ([69.72.43.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kq7uV-0002mh-Hs; Fri, 18 Dec 2020 05:02:37 +0000
-X-UUID: a6ade618cacc41a687f35db1782c3be7-20201217
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1AwNI1scHAvM1iOKxsvQyPFoSIHgLYzbcE+9qXzxCEg=; 
- b=M+6xSjGD3Z9copRIY3SuyYn/mEXvUXsBTwRwvHUbw9KXM7ZbczWgs3pvTpGI+JpoykyJ6Q5m9GiX8ufJJpSILiU7v0/rwqW+m2e/EHSo7ckpO/ce8UISzY5y8MUaYuRpqiTOxtERV9kMdZ/QDiHx6hRV3rO62cxUMVeB5WjZVjU=;
-X-UUID: a6ade618cacc41a687f35db1782c3be7-20201217
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <lecopzer.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1645590853; Thu, 17 Dec 2020 21:02:23 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Dec 2020 21:02:21 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Dec 2020 13:02:19 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 18 Dec 2020 13:02:19 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <catalin.marinas@arm.com>
-Subject: Re: [PATCH] arm64: Kconfig: Add SYS_SUPPORTS_APM_EMULATION
-Date: Fri, 18 Dec 2020 13:02:20 +0800
-Message-ID: <20201218050220.25803-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201217164911.GB20278@gaia>
-References: <20201217164911.GB20278@gaia>
+ id 1kq8mK-0005Fw-DT
+ for linux-mediatek@lists.infradead.org; Fri, 18 Dec 2020 05:58:13 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1608271091; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=v417IjGYwt35O1w5OS2PXV+iuMpPkHV54/TeKwYE8Kw=;
+ b=cwaKsn4kbOT3IMj5jfoX57lGnRirKWAzolgireV5JnZA6g/fjGX4LeHwNXVCWbmqdrCk83Dv
+ tyrwBElrG6Y8X+Mm5ty2eDcXdW5mydCnlhukrqelCF6YDgMnqt9RrmSYVj1phSFfw3jfMPZy
+ D02v6IiQ7CxzVk5yaLiqGJrE1Ns=
+X-Mailgun-Sending-Ip: 69.72.43.15
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n01.prod.us-west-2.postgun.com with SMTP id
+ 5fdc44f275ab652e87ae6f10 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 18 Dec 2020 05:58:10
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id BCC03C43465; Fri, 18 Dec 2020 05:58:07 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 6423CC433CA;
+ Fri, 18 Dec 2020 05:58:06 +0000 (UTC)
 MIME-Version: 1.0
-X-MTK: N
+Date: Fri, 18 Dec 2020 13:58:06 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v2 2/4] scsi: ufs: Remove redundant null checking of
+ devfreq instance
+In-Reply-To: <20201216131639.4128-3-stanley.chu@mediatek.com>
+References: <20201216131639.4128-1-stanley.chu@mediatek.com>
+ <20201216131639.4128-3-stanley.chu@mediatek.com>
+Message-ID: <185dca66fbfd881d80f74dacf453aa9f@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201218_000235_932385_CACC4EB1 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20201218_005812_491669_DF5D0A6B 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,37 +85,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, lecopzer.chen@mediatek.com, yj.chiang@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, will@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: jiajie.hao@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, andy.teng@mediatek.com, jejb@linux.ibm.com,
+ chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cc.chou@mediatek.com, avri.altman@wdc.com,
+ alice.chao@mediatek.com, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ asutoshd@codeaurora.org, chaotian.jing@mediatek.com, bvanassche@acm.org,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Catalin,
- 
-Thanks for your explanation.
- 
-> > so there is two points
-> > 1. out-of-tree function can't be approved
-> >     I totally agree with this :) so we may have a driver upstream in the future.
+On 2020-12-16 21:16, Stanley Chu wrote:
+> hba->devfreq is zero-initialized thus it is not required
+> to check its existence in ufshcd_add_lus() function which
+> is invoked during initialization only.
 > 
-> It may not be upstreamable if it relies on the old APM interface ;).
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>  drivers/scsi/ufs/ufshcd.c | 14 ++++++--------
+>  1 file changed, 6 insertions(+), 8 deletions(-)
 > 
-> > 2. APM not make sense on arm64
-> > Could you please let me konw the reason why APM on ARM64 doesn't make sense?
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index a91b73a1fc48..9cc16598136d 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -7636,15 +7636,13 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
+>  			&hba->pwr_info,
+>  			sizeof(struct ufs_pa_layer_attr));
+>  		hba->clk_scaling.saved_pwr_info.is_valid = true;
+> -		if (!hba->devfreq) {
+
+Just FYI, checking this was due to consideration for supporting UFS 
+cards
+which can do hot-plug. But UFS cards seems out of the picture for a long 
+time.
+Anyways, if someday UFS cards come back in future, let's add these 
+checks back again.
+
+Thanks,
+
+Can Guo.
+
+> -			hba->clk_scaling.is_allowed = true;
+> -			ret = ufshcd_devfreq_init(hba);
+> -			if (ret)
+> -				goto out;
+> +		hba->clk_scaling.is_allowed = true;
+> +		ret = ufshcd_devfreq_init(hba);
+> +		if (ret)
+> +			goto out;
 > 
-> It's a very old interface, even on x86 it is disabled in the distro
-> kernels. There are more modern alternatives and you should update your
-> driver and user space to use them (e.g. /sys/power/).
+> -			hba->clk_scaling.is_enabled = true;
+> -			ufshcd_clkscaling_init_sysfs(hba);
+> -		}
+> +		hba->clk_scaling.is_enabled = true;
+> +		ufshcd_clkscaling_init_sysfs(hba);
+>  	}
+> 
+>  	ufs_bsg_probe(hba);
 
-Got it! I will disscuss with our internal team to update their drivers.
-
-thanks a lot!
-
-BRs,
-Lecopzer
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
