@@ -1,78 +1,76 @@
-Return-Path: <SRS0=e3uk=FV=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=+cmX=FW=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98DA5C4361B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 19:28:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FE74C4361B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 02:04:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E232239EE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Dec 2020 19:28:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E232239EE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id ADED923A3C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 02:04:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ADED923A3C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=02l+ZjwFKRozN67YL/FDG/1c9GuZY4x3Kk1t5yXGbD4=; b=V/cCfvtbsXnsT0XRZimOBhpzA
-	gqBPwF66qOHLXWlYMTm0ZbvXoacaHrGXy859uZHbUDkZUYiRwX2FQora5sndYeZTjorUnqLL1Hnj7
-	rXWrIR+yerVgJS/UWGrT8UL5KwIJcJER8Ruj2Y595njfVI95WGk4nkzOJDofyj4QqX8hzT9V5jwoa
-	goUdRYaTzCgCJ30+LKoe9N3/0U+6y6X8ru3wLq882nhu1ITgBlt6bPEd6MsQJ5B0N9pYtP8Ee0yl+
-	CORYWGAY0m0aqFJUU3JdVkTZcSG9aRPBIuXXc/fnlIHajNsXSbIq6kAy6jJDpAZkHAhT/tSqU2dP9
-	II6hctsGw==;
+	 bh=XpZyVnE7gd1LSHsagjMtky4m1FMEOs+1csdrQmIuVOE=; b=FbLahG+/HDbABrJn86EucblT4
+	K3kggnVtgPm6/w/fel4HNrIo0RIvFopOkr/gOppKDFTel1L+A1nwhWj9M9o0/b43lDCL7cWyi4p32
+	QSvMw6x3HIm4bPaBOBM3oIzQ0dzrSeP9WoVT4n7Py2ssuTyqhiZxqXlX6VWdrASAKZt4p1nXm3wH0
+	d3oSX+tPqs1beCmzLyBqTw5ifsS9qvFfxY3H1WVFSOVK114i517ldEnFYjVNrCe31GEAlUkq83G4t
+	JImIH5Jun153Qv1ZjuXqeUFLfnioXdHfakZkMdj8ouuxSQx36Q6xfNAedU9lowXuOfkOd5uLxYBQG
+	SEmxKwYRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kpywq-0005XU-QB; Thu, 17 Dec 2020 19:28:24 +0000
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
+	id 1kq58I-0005vN-PX; Fri, 18 Dec 2020 02:04:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kpywn-0005X4-UI; Thu, 17 Dec 2020 19:28:22 +0000
-Received: by mail-oi1-f182.google.com with SMTP id s2so161659oij.2;
- Thu, 17 Dec 2020 11:28:21 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=OIqxJlEr6qhscRY9Nj69alb23UGeDiYW09DXVg3bkF4=;
- b=IKtwKsJlqHa9LpybMYFYClfmuZ3FD7oO5KXNUuXYOMz9eattXU0m2VY8dgnchrbgKE
- HAOXCCKFL3lmPeVMQ3veANAgiCkQOCNry+Bc69seylOHG/7lB/BnA3aCkX7sxb6WAv9Z
- c3CvGhC9/E5QA9XMRGN334FBpdtOQCkjUm1g2Z+3oSUu9iqbtLArjcz5NcTKyVdzVKyI
- Z6V97Jgv3A5vYcOawwMwYJwW3nhMlnsiYncoBQsJNNJOwxE47uJ+bqfGwTQD++ZnREeA
- q63xG4fMgQRdN37KCDxuSfxGcQf1HzA2bFtPNlXp+L2kwgDo96RZDt14MgVwizyD0vQO
- Oxew==
-X-Gm-Message-State: AOAM531++Y/ENEmH3YRxhFzjzpH2A5nVnIur9R6pojRxHmVLs0KS1ZCR
- mIF5pynJk7/ctJZn8r4WoK0ESK/Y4Q==
-X-Google-Smtp-Source: ABdhPJw3bvC0XYf+pKjCMi2TrfV+zkB/AwPcr+ycvAdNFlDT5V1e88wLbTciwmx3HwL9jGOPY4nPEQ==
-X-Received: by 2002:aca:3257:: with SMTP id y84mr518377oiy.132.1608233301052; 
- Thu, 17 Dec 2020 11:28:21 -0800 (PST)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id b25sm1497885ooe.18.2020.12.17.11.28.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Dec 2020 11:28:20 -0800 (PST)
-Received: (nullmailer pid 101991 invoked by uid 1000);
- Thu, 17 Dec 2020 19:28:18 -0000
-Date: Thu, 17 Dec 2020 13:28:18 -0600
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v4 3/9] dt-bindings: mfd: Add compatible for the MediaTek
- MT6359 PMIC
-Message-ID: <20201217192818.GA101889@robh.at.kernel.org>
+ id 1kq58D-0005uP-Oh; Fri, 18 Dec 2020 02:04:35 +0000
+X-UUID: a16983b5be044e90b9489737d9666e0b-20201217
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=btKOFCjUWo3s6zdtgsKjM1Zw8f6bJKkVDG52Ni7VSlY=; 
+ b=IcOI3CH6wMVqwowfbyGqvYVv238fk8SZzbp8xs+taNso5JAwGomgQ6aQa6LxaWU/Sr1uaHj9nQr+h7Sq+qeJS8qWHZeqD9gZAlnAQi0mCbtixh8/F/V44r30ZKftbRDKDsNiFZUq5wVU0bXHtPC2pEJEbavZbcdMxX9dIDKctCg=;
+X-UUID: a16983b5be044e90b9489737d9666e0b-20201217
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <hsin-hsiung.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1059946650; Thu, 17 Dec 2020 18:04:28 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Dec 2020 18:04:25 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 18 Dec 2020 10:04:21 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 18 Dec 2020 10:04:24 +0800
+Message-ID: <1608257065.9000.3.camel@mtksdaap41>
+Subject: Re: [PATCH v4 3/9] dt-bindings: mfd: Add compatible for the
+ MediaTek MT6359 PMIC
+From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Fri, 18 Dec 2020 10:04:25 +0800
+In-Reply-To: <20201217192818.GA101889@robh.at.kernel.org>
 References: <1608104827-7937-1-git-send-email-hsin-hsiung.wang@mediatek.com>
  <1608104827-7937-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <20201217192818.GA101889@robh.at.kernel.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1608104827-7937-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201217_142821_987233_ED82C3A1 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20201217_210433_953222_A574ADCF 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,23 +96,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Dec 2020 15:47:01 +0800, Hsin-Hsiung Wang wrote:
-> This adds compatible for the MediaTek MT6359 PMIC.
+Hi,
+
+On Thu, 2020-12-17 at 13:28 -0600, Rob Herring wrote:
+> On Wed, 16 Dec 2020 15:47:01 +0800, Hsin-Hsiung Wang wrote:
+> > This adds compatible for the MediaTek MT6359 PMIC.
+> > 
+> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> > ---
+> >  Documentation/devicetree/bindings/mfd/mt6397.txt | 7 ++++++-
+> >  1 file changed, 6 insertions(+), 1 deletion(-)
+> > 
 > 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
 > 
-
-
-Please add Acked-by/Reviewed-by tags when posting new versions. However,
-there's no need to repost patches *only* to add the tags. The upstream
-maintainer will do that for acks received on the version they apply.
-
-If a tag was not added on purpose, please state why and what changed.
-
-
+> Please add Acked-by/Reviewed-by tags when posting new versions. However,
+> there's no need to repost patches *only* to add the tags. The upstream
+> maintainer will do that for acks received on the version they apply.
+> 
+> If a tag was not added on purpose, please state why and what changed.
+> 
+Sorry, the tag disappeared because of the change of rtc compatible name.
+I will list the change in the each patch for the next update.
+Thanks for your review.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
