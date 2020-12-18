@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC607C4361B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:08:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A73FC4361B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:09:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F62B20780
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:08:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F62B20780
+	by mail.kernel.org (Postfix) with ESMTPS id 9E58E23128
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:09:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E58E23128
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
 	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2Pa928+fcGqnV6N7b3c2CCxeorxnz8uYk4JJD2OArww=; b=ZYypHDHwXm+2/D1zlzWBi0uO3
-	vgSEZ26GqA/lEswfyxQKjugTrxWmq3Z6pIAlZ1mfCsiQYtpTdDEiHr2DgKw8j64V0tc3XUbXKQckY
-	EH7jgBUW0ISfLJ10Puvaan845+/VB29d+u80+QBdqDRAZJs7+c/yo/dqbdHKJlZXeDDgAaON2Mchs
-	xEcZSb9kGzLZ8srrT0p4qycMQPqMLSnJb6vrnakxqwgPqtfkO9IcB9tbLMkmxMs9EUPl03sX5QKg2
-	k2Bf/K4BYO1uKMyN93N2qxHH/Fe11/WdTQDKKEuVttFWKuZ9oMNnf0r21TqibhQ1gQdDcylgUq3BX
-	g64hSY5tg==;
+	 bh=rNHzCxZIJKukEjljS9faLhBl9Q3yrhEuPGjGmBOTMCg=; b=mzkFKjJ/wB0EsRk17zeLumwao
+	Ye6Mt4cZAmKJq4paMtuRjutEBvyyDJMttpJUoapBXPOK0LeqDML/TZ+xqRrRVTe0SL0PqIlp/oyTh
+	U1nxUOGmlHpqjodTDAnKm12O/k5PcejV05jPwxocW+GOD6fbbf7moh5FQ1Gf7ov7RJonCZkA9tXqU
+	5DnKk+gEBYZJKgxV0lGCD5c8mcuFTDuzg1XsxeSMImWnDYAGozrNp84cS0WqjrokXBiKV4mQTALzJ
+	I768tOcw8W9HNnPrF2P16Ibss8LTNx+gusVWTvssTgBGp6+GaXIO1m8a1dZfSgj8ChXqNvsbpNWzz
+	R04FG5hhA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kq8wV-0005qk-FJ; Fri, 18 Dec 2020 06:08:43 +0000
-Received: from so254-31.mailgun.net ([198.61.254.31])
+	id 1kq8xA-0005wW-2b; Fri, 18 Dec 2020 06:09:24 +0000
+Received: from m43-15.mailgun.net ([69.72.43.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kq8wS-0005pW-US
- for linux-mediatek@lists.infradead.org; Fri, 18 Dec 2020 06:08:41 +0000
+ id 1kq8x7-0005w2-Jd
+ for linux-mediatek@lists.infradead.org; Fri, 18 Dec 2020 06:09:23 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1608271718; h=Message-ID: References: In-Reply-To: Subject:
+ s=smtp; t=1608271762; h=Message-ID: References: In-Reply-To: Subject:
  Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=uS4mzlo3uSd6U8vrzsDXSBBTfBn/BjCQj5rxsqIrlfA=;
- b=OQk5oJQzyNQET3zekE7Fg9esiQx6nx+3DBgvh2bofx3RITuDjoWUUrB5yWN5ynb1KSxRWm62
- VMtSx95D5AOWFIG/v2cNOfPKRD5cbTiF1FrRlp0ZOoP5upt9AzzE0VWs/6c8LAbQRDua/7GX
- 8iujAuLFDBpNteYbNJFW8zdOsXo=
-X-Mailgun-Sending-Ip: 198.61.254.31
+ MIME-Version: Sender; bh=wvH4HZDno0lJ1hR1mOD7hwlzls6bXIAXkA0JtzPzJ6o=;
+ b=i2Nc29qFpU8NsbJ0/fmDgTa1WhRisUJkGssXQOnXnlUraJ9YWTSgT/Z6Tdgd5KCxfTLRtGUb
+ AKod5TCgaCb5QbzzhEC41Wzaw5YQALkyZ1cFZS+XlUMiW8QcmEFTpXyTPDNu1Ntt1eYuEinC
+ Nl1M07baF/j2kYTd3w78Ei/VieM=
+X-Mailgun-Sending-Ip: 69.72.43.15
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n04.prod.us-west-2.postgun.com with SMTP id
- 5fdc47653d3433393d77ff2d (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 18 Dec 2020 06:08:37
+ smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
+ 5fdc478c0564dfefcd00fcce (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 18 Dec 2020 06:09:16
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id B7B51C433ED; Fri, 18 Dec 2020 06:08:37 +0000 (UTC)
+ id EBEC0C43464; Fri, 18 Dec 2020 06:09:15 +0000 (UTC)
 Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
  (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
  (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id B3600C433CA;
- Fri, 18 Dec 2020 06:08:35 +0000 (UTC)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 195D2C433C6;
+ Fri, 18 Dec 2020 06:09:15 +0000 (UTC)
 MIME-Version: 1.0
-Date: Fri, 18 Dec 2020 14:08:35 +0800
+Date: Fri, 18 Dec 2020 14:09:15 +0800
 From: Can Guo <cang@codeaurora.org>
 To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v2 1/4] scsi: ufs: Refactor cancelling clkscaling works
-In-Reply-To: <20201216131639.4128-2-stanley.chu@mediatek.com>
+Subject: Re: [PATCH v2 2/4] scsi: ufs: Remove redundant null checking of
+ devfreq instance
+In-Reply-To: <20201216131639.4128-3-stanley.chu@mediatek.com>
 References: <20201216131639.4128-1-stanley.chu@mediatek.com>
- <20201216131639.4128-2-stanley.chu@mediatek.com>
-Message-ID: <0a96e3c62a0a77c78285fe92f2db2cd3@codeaurora.org>
+ <20201216131639.4128-3-stanley.chu@mediatek.com>
+Message-ID: <06d27572bb06ed44e914b830201b2e45@codeaurora.org>
 X-Sender: cang@codeaurora.org
 User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201218_010841_023729_7A1CA031 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20201218_010922_647622_5FC0989A 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,70 +99,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2020-12-16 21:16, Stanley Chu wrote:
-> Cancelling suspend_work and resume_work is only required while
-> suspending clk-scaling. Thus moving these two invokes into
-> ufshcd_suspend_clkscaling() function.
+> hba->devfreq is zero-initialized thus it is not required
+> to check its existence in ufshcd_add_lus() function which
+> is invoked during initialization only.
 > 
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
->  drivers/scsi/ufs/ufshcd.c | 17 ++++++-----------
->  1 file changed, 6 insertions(+), 11 deletions(-)
+>  drivers/scsi/ufs/ufshcd.c | 14 ++++++--------
+>  1 file changed, 6 insertions(+), 8 deletions(-)
 > 
 > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 052479a56a6f..a91b73a1fc48 100644
+> index a91b73a1fc48..9cc16598136d 100644
 > --- a/drivers/scsi/ufs/ufshcd.c
 > +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -1451,6 +1451,9 @@ static void ufshcd_suspend_clkscaling(struct 
-> ufs_hba *hba)
->  	if (!ufshcd_is_clkscaling_supported(hba))
->  		return;
+> @@ -7636,15 +7636,13 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
+>  			&hba->pwr_info,
+>  			sizeof(struct ufs_pa_layer_attr));
+>  		hba->clk_scaling.saved_pwr_info.is_valid = true;
+> -		if (!hba->devfreq) {
+> -			hba->clk_scaling.is_allowed = true;
+> -			ret = ufshcd_devfreq_init(hba);
+> -			if (ret)
+> -				goto out;
+> +		hba->clk_scaling.is_allowed = true;
+> +		ret = ufshcd_devfreq_init(hba);
+> +		if (ret)
+> +			goto out;
 > 
-> +	cancel_work_sync(&hba->clk_scaling.suspend_work);
-> +	cancel_work_sync(&hba->clk_scaling.resume_work);
-> +
->  	spin_lock_irqsave(hba->host->host_lock, flags);
->  	if (!hba->clk_scaling.is_suspended) {
->  		suspend = true;
-> @@ -1514,9 +1517,6 @@ static ssize_t
-> ufshcd_clkscale_enable_store(struct device *dev,
->  	pm_runtime_get_sync(hba->dev);
->  	ufshcd_hold(hba, false);
-> 
-> -	cancel_work_sync(&hba->clk_scaling.suspend_work);
-> -	cancel_work_sync(&hba->clk_scaling.resume_work);
-> -
->  	if (value) {
->  		ufshcd_resume_clkscaling(hba);
->  	} else {
-> @@ -5663,11 +5663,8 @@ static void ufshcd_err_handling_prepare(struct
-> ufs_hba *hba)
->  		ufshcd_vops_resume(hba, UFS_RUNTIME_PM);
->  	} else {
->  		ufshcd_hold(hba, false);
-> -		if (hba->clk_scaling.is_enabled) {
-> -			cancel_work_sync(&hba->clk_scaling.suspend_work);
-> -			cancel_work_sync(&hba->clk_scaling.resume_work);
-> +		if (hba->clk_scaling.is_enabled)
->  			ufshcd_suspend_clkscaling(hba);
+> -			hba->clk_scaling.is_enabled = true;
+> -			ufshcd_clkscaling_init_sysfs(hba);
 > -		}
+> +		hba->clk_scaling.is_enabled = true;
+> +		ufshcd_clkscaling_init_sysfs(hba);
 >  	}
->  	down_write(&hba->clk_scaling_lock);
->  	hba->clk_scaling.is_allowed = false;
-> @@ -8512,11 +8509,9 @@ static int ufshcd_suspend(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->  	ufshcd_hold(hba, false);
->  	hba->clk_gating.is_suspended = true;
 > 
-> -	if (hba->clk_scaling.is_enabled) {
-> -		cancel_work_sync(&hba->clk_scaling.suspend_work);
-> -		cancel_work_sync(&hba->clk_scaling.resume_work);
-> +	if (hba->clk_scaling.is_enabled)
->  		ufshcd_suspend_clkscaling(hba);
-> -	}
-> +
->  	down_write(&hba->clk_scaling_lock);
->  	hba->clk_scaling.is_allowed = false;
->  	up_write(&hba->clk_scaling_lock);
+>  	ufs_bsg_probe(hba);
 
 Reviewed-by: Can Guo <cang@codeaurora.org>
 
