@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A73FC4361B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:09:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69E98C4361B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:16:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E58E23128
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:09:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E58E23128
+	by mail.kernel.org (Postfix) with ESMTPS id 050FE2151B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Dec 2020 06:16:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 050FE2151B
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
 	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rNHzCxZIJKukEjljS9faLhBl9Q3yrhEuPGjGmBOTMCg=; b=mzkFKjJ/wB0EsRk17zeLumwao
-	Ye6Mt4cZAmKJq4paMtuRjutEBvyyDJMttpJUoapBXPOK0LeqDML/TZ+xqRrRVTe0SL0PqIlp/oyTh
-	U1nxUOGmlHpqjodTDAnKm12O/k5PcejV05jPwxocW+GOD6fbbf7moh5FQ1Gf7ov7RJonCZkA9tXqU
-	5DnKk+gEBYZJKgxV0lGCD5c8mcuFTDuzg1XsxeSMImWnDYAGozrNp84cS0WqjrokXBiKV4mQTALzJ
-	I768tOcw8W9HNnPrF2P16Ibss8LTNx+gusVWTvssTgBGp6+GaXIO1m8a1dZfSgj8ChXqNvsbpNWzz
-	R04FG5hhA==;
+	 bh=w/XXhdOWXZECxgr1Wf70MOh4htT0pEdZzAjjGwYx2sk=; b=N2uuI7gaKjlwBFr/HfraeAHep
+	9sR3bjMyHD0C4s2XIODCEWA5EMdFBJIPgNsSxTxqvWUqUdMQNaF7PxYjKhqh4uUWTvBx6U65l7GgV
+	AccdZ1TP7de2T+YD9X4NdsgOdHQSrpONLy0Rp13e48vWLFvVEJ6VloHuTb4/WwZOmgL4Ii87p2Zdh
+	FyTmWmBF9QMCIa67kQuEL8HB2FFtvr+O3YTcn7IIvFNRK0NrypTJrlIUI1DlLnaC9EQeuTq/Pnf/m
+	gvp7hoEidCP3RaqrJSIM6b0nIINQfmk0j70udF+XKtjZJ6JRyO77hsAlrQa6qohVn/7b9TlWU/fpX
+	hvCnP1rdw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kq8xA-0005wW-2b; Fri, 18 Dec 2020 06:09:24 +0000
-Received: from m43-15.mailgun.net ([69.72.43.15])
+	id 1kq93p-0006fq-Vu; Fri, 18 Dec 2020 06:16:18 +0000
+Received: from so254-31.mailgun.net ([198.61.254.31])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kq8x7-0005w2-Jd
- for linux-mediatek@lists.infradead.org; Fri, 18 Dec 2020 06:09:23 +0000
+ id 1kq93m-0006fS-V5
+ for linux-mediatek@lists.infradead.org; Fri, 18 Dec 2020 06:16:16 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1608271762; h=Message-ID: References: In-Reply-To: Subject:
+ s=smtp; t=1608272175; h=Message-ID: References: In-Reply-To: Subject:
  Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=wvH4HZDno0lJ1hR1mOD7hwlzls6bXIAXkA0JtzPzJ6o=;
- b=i2Nc29qFpU8NsbJ0/fmDgTa1WhRisUJkGssXQOnXnlUraJ9YWTSgT/Z6Tdgd5KCxfTLRtGUb
- AKod5TCgaCb5QbzzhEC41Wzaw5YQALkyZ1cFZS+XlUMiW8QcmEFTpXyTPDNu1Ntt1eYuEinC
- Nl1M07baF/j2kYTd3w78Ei/VieM=
-X-Mailgun-Sending-Ip: 69.72.43.15
+ MIME-Version: Sender; bh=LTW17UsHmSpSoJcBXlNHnM6V9HWBmm35DKkl0BCtoaM=;
+ b=SA4hn7vNrY9Ed/lPWz/5fL8kyMEHPNpk9Xzn9+rdTsruIb8TDauAAsNUCKBTqAi83R/FaIiZ
+ xQpkPqC1pEFwU6DPcKrUWS6iSbfcY6ZyVRrxQ8k4ODobNol5A460xBiqyZVFlA/2G+FCbukC
+ yBsz56ZDMsRhplSwWcyDcn9P1oQ=
+X-Mailgun-Sending-Ip: 198.61.254.31
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
- 5fdc478c0564dfefcd00fcce (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 18 Dec 2020 06:09:16
+ smtp-out-n07.prod.us-west-2.postgun.com with SMTP id
+ 5fdc492b031793dcb4f0e897 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 18 Dec 2020 06:16:11
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id EBEC0C43464; Fri, 18 Dec 2020 06:09:15 +0000 (UTC)
+ id 499C8C433C6; Fri, 18 Dec 2020 06:16:11 +0000 (UTC)
 Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
  (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
  (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 195D2C433C6;
- Fri, 18 Dec 2020 06:09:15 +0000 (UTC)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 70198C433CA;
+ Fri, 18 Dec 2020 06:16:09 +0000 (UTC)
 MIME-Version: 1.0
-Date: Fri, 18 Dec 2020 14:09:15 +0800
+Date: Fri, 18 Dec 2020 14:16:09 +0800
 From: Can Guo <cang@codeaurora.org>
 To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v2 2/4] scsi: ufs: Remove redundant null checking of
- devfreq instance
-In-Reply-To: <20201216131639.4128-3-stanley.chu@mediatek.com>
+Subject: Re: [PATCH v2 3/4] scsi: ufs: Cleanup and refactor clk-scaling feature
+In-Reply-To: <20201216131639.4128-4-stanley.chu@mediatek.com>
 References: <20201216131639.4128-1-stanley.chu@mediatek.com>
- <20201216131639.4128-3-stanley.chu@mediatek.com>
-Message-ID: <06d27572bb06ed44e914b830201b2e45@codeaurora.org>
+ <20201216131639.4128-4-stanley.chu@mediatek.com>
+Message-ID: <cda3a961b396c48e95b32dd70961ef1b@codeaurora.org>
 X-Sender: cang@codeaurora.org
 User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201218_010922_647622_5FC0989A 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20201218_011615_999728_0B944958 
+X-CRM114-Status: GOOD (  17.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,41 +98,149 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2020-12-16 21:16, Stanley Chu wrote:
-> hba->devfreq is zero-initialized thus it is not required
-> to check its existence in ufshcd_add_lus() function which
-> is invoked during initialization only.
+> Manipulate clock scaling related stuff only if the host capability
+> supports clock scaling feature to avoid redundant code execution.
 > 
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
->  drivers/scsi/ufs/ufshcd.c | 14 ++++++--------
->  1 file changed, 6 insertions(+), 8 deletions(-)
+>  drivers/scsi/ufs/ufshcd.c | 64 ++++++++++++++++++++-------------------
+>  1 file changed, 33 insertions(+), 31 deletions(-)
 > 
 > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index a91b73a1fc48..9cc16598136d 100644
+> index 9cc16598136d..ce0528f2e2ed 100644
 > --- a/drivers/scsi/ufs/ufshcd.c
 > +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -7636,15 +7636,13 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
->  			&hba->pwr_info,
->  			sizeof(struct ufs_pa_layer_attr));
->  		hba->clk_scaling.saved_pwr_info.is_valid = true;
-> -		if (!hba->devfreq) {
-> -			hba->clk_scaling.is_allowed = true;
-> -			ret = ufshcd_devfreq_init(hba);
-> -			if (ret)
-> -				goto out;
-> +		hba->clk_scaling.is_allowed = true;
-> +		ret = ufshcd_devfreq_init(hba);
-> +		if (ret)
-> +			goto out;
+> @@ -1448,9 +1448,6 @@ static void ufshcd_suspend_clkscaling(struct 
+> ufs_hba *hba)
+>  	unsigned long flags;
+>  	bool suspend = false;
 > 
-> -			hba->clk_scaling.is_enabled = true;
-> -			ufshcd_clkscaling_init_sysfs(hba);
-> -		}
-> +		hba->clk_scaling.is_enabled = true;
-> +		ufshcd_clkscaling_init_sysfs(hba);
+> -	if (!ufshcd_is_clkscaling_supported(hba))
+> -		return;
+> -
+>  	cancel_work_sync(&hba->clk_scaling.suspend_work);
+>  	cancel_work_sync(&hba->clk_scaling.resume_work);
+> 
+> @@ -1470,9 +1467,6 @@ static void ufshcd_resume_clkscaling(struct 
+> ufs_hba *hba)
+>  	unsigned long flags;
+>  	bool resume = false;
+> 
+> -	if (!ufshcd_is_clkscaling_supported(hba))
+> -		return;
+> -
+>  	spin_lock_irqsave(hba->host->host_lock, flags);
+>  	if (hba->clk_scaling.is_suspended) {
+>  		resume = true;
+> @@ -5642,6 +5636,26 @@ static inline void
+> ufshcd_schedule_eh_work(struct ufs_hba *hba)
 >  	}
+>  }
 > 
->  	ufs_bsg_probe(hba);
+> +static void ufshcd_clk_scaling_allow(struct ufs_hba *hba, bool allow)
+> +{
+> +	down_write(&hba->clk_scaling_lock);
+> +	hba->clk_scaling.is_allowed = allow;
+> +	up_write(&hba->clk_scaling_lock);
+> +}
+> +
+> +static void ufshcd_clk_scaling_suspend(struct ufs_hba *hba, bool 
+> suspend)
+> +{
+> +	if (suspend) {
+> +		if (hba->clk_scaling.is_enabled)
+> +			ufshcd_suspend_clkscaling(hba);
+> +		ufshcd_clk_scaling_allow(hba, false);
+> +	} else {
+> +		ufshcd_clk_scaling_allow(hba, true);
+> +		if (hba->clk_scaling.is_enabled)
+> +			ufshcd_resume_clkscaling(hba);
+> +	}
+> +}
+> +
+>  static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
+>  {
+>  	pm_runtime_get_sync(hba->dev);
+> @@ -5663,23 +5677,20 @@ static void ufshcd_err_handling_prepare(struct
+> ufs_hba *hba)
+>  		ufshcd_vops_resume(hba, UFS_RUNTIME_PM);
+>  	} else {
+>  		ufshcd_hold(hba, false);
+> -		if (hba->clk_scaling.is_enabled)
+> +		if (ufshcd_is_clkscaling_supported(hba) &&
+> +		    hba->clk_scaling.is_enabled)
+>  			ufshcd_suspend_clkscaling(hba);
+>  	}
+> -	down_write(&hba->clk_scaling_lock);
+> -	hba->clk_scaling.is_allowed = false;
+> -	up_write(&hba->clk_scaling_lock);
+> +	ufshcd_clk_scaling_allow(hba, false);
+>  }
+> 
+>  static void ufshcd_err_handling_unprepare(struct ufs_hba *hba)
+>  {
+>  	ufshcd_release(hba);
+> 
+> -	down_write(&hba->clk_scaling_lock);
+> -	hba->clk_scaling.is_allowed = true;
+> -	up_write(&hba->clk_scaling_lock);
+> -	if (hba->clk_scaling.is_enabled)
+> -		ufshcd_resume_clkscaling(hba);
+> +	if (ufshcd_is_clkscaling_supported(hba))
+> +		ufshcd_clk_scaling_suspend(hba, false);
+> +
+>  	pm_runtime_put(hba->dev);
+>  }
+> 
+> @@ -8507,12 +8518,8 @@ static int ufshcd_suspend(struct ufs_hba *hba,
+> enum ufs_pm_op pm_op)
+>  	ufshcd_hold(hba, false);
+>  	hba->clk_gating.is_suspended = true;
+> 
+> -	if (hba->clk_scaling.is_enabled)
+> -		ufshcd_suspend_clkscaling(hba);
+> -
+> -	down_write(&hba->clk_scaling_lock);
+> -	hba->clk_scaling.is_allowed = false;
+> -	up_write(&hba->clk_scaling_lock);
+> +	if (ufshcd_is_clkscaling_supported(hba))
+> +		ufshcd_clk_scaling_suspend(hba, true);
+> 
+>  	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
+>  			req_link_state == UIC_LINK_ACTIVE_STATE) {
+> @@ -8618,11 +8625,9 @@ static int ufshcd_suspend(struct ufs_hba *hba,
+> enum ufs_pm_op pm_op)
+>  	if (!ufshcd_set_dev_pwr_mode(hba, UFS_ACTIVE_PWR_MODE))
+>  		ufshcd_disable_auto_bkops(hba);
+>  enable_gating:
+> -	down_write(&hba->clk_scaling_lock);
+> -	hba->clk_scaling.is_allowed = true;
+> -	up_write(&hba->clk_scaling_lock);
+> -	if (hba->clk_scaling.is_enabled)
+> -		ufshcd_resume_clkscaling(hba);
+> +	if (ufshcd_is_clkscaling_supported(hba))
+> +		ufshcd_clk_scaling_suspend(hba, false);
+> +
+>  	hba->clk_gating.is_suspended = false;
+>  	hba->dev_info.b_rpm_dev_flush_capable = false;
+>  	ufshcd_release(hba);
+> @@ -8719,11 +8724,8 @@ static int ufshcd_resume(struct ufs_hba *hba,
+> enum ufs_pm_op pm_op)
+> 
+>  	hba->clk_gating.is_suspended = false;
+> 
+> -	down_write(&hba->clk_scaling_lock);
+> -	hba->clk_scaling.is_allowed = true;
+> -	up_write(&hba->clk_scaling_lock);
+> -	if (hba->clk_scaling.is_enabled)
+> -		ufshcd_resume_clkscaling(hba);
+> +	if (ufshcd_is_clkscaling_supported(hba))
+> +		ufshcd_clk_scaling_suspend(hba, false);
+> 
+>  	/* Enable Auto-Hibernate if configured */
+>  	ufshcd_auto_hibern8_enable(hba);
+
+Thanks for the cleanup
 
 Reviewed-by: Can Guo <cang@codeaurora.org>
 
