@@ -2,90 +2,87 @@ Return-Path: <SRS0=cDU4=FX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77DACC4361B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Dec 2020 17:07:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE2C9C4361B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Dec 2020 19:48:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2724823A82
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Dec 2020 17:07:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2724823A82
+	by mail.kernel.org (Postfix) with ESMTPS id 715882333C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Dec 2020 19:48:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 715882333C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bevfxj2VmHXFc8CgTwVLUh0oTkIOh9h7Pnm8uoIp8XA=; b=2cmO4N7oyX/8TbtXMzajXMWSL
-	ldaGajZdNfoUGpL7YlgKohYbVF2usJjp+eo5ZEimlsr+/S8GPL3MW6GSapIPV3e5xalcj+wWQNGZf
-	xT5qUqVUghRnoLTWLzb5PJ/d2es9aH0T3+uievke+cfF5s+yLY5iUiRkX8Y0F63H5/n/vQuacmrG7
-	rjJ3Bm3tIRuD/bX/lsMwakCQZkRW17M4fY/B1njCZplnH1bXQk5iyMUj7n566/Lt+6TH9BSJXu2dt
-	jXA+p7dAcYLtODDs04vy6/zat9UEIQWlCt8xyqh92nujo2fckmWa//2Dh2vI2+TeL2sVT3Zmf76w8
-	q314zZfzQ==;
+	 bh=E7wXOsU8jrlbswXA8G0BNkW/T7KbXUpTtrABrIWmDOg=; b=zQxE4ykiXjP7l1TRZU4Q/hwoK
+	E6DeIjtKzWRhlNk+sgPoYNhvP87g6PIstFLsvdnETo46A6U3Xvn1GZctBObQY5oIhFbXuGIaSij3i
+	CxrML7KVHerdRa5oFxa+6ZPzriTidiGlqRNEcVjeAxIVfw6H7iuEbs0pPaGyml79dHnWD9T+p400c
+	KOb/esyrOOBJePI2G1cBwNlLSFUuRyVLr3/ZBKZIjssU9gyStCzwhFtbE1FP77VHbK+XkMU7Yjzjx
+	8SzGvHvNUjxmHg7uzJI9jLcDYOfN/NpBhV/VzRGHhKhc5QSNX4A3I4lm8qZME/Rf1YYE4HZ8JiOgZ
+	Xb/6cbYig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kqfhR-0005ML-Iz; Sat, 19 Dec 2020 17:07:21 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1kqiDX-0004iy-Dr; Sat, 19 Dec 2020 19:48:39 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kqfhP-0005Lu-3A
- for linux-mediatek@lists.infradead.org; Sat, 19 Dec 2020 17:07:19 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id z12so3119214pjn.1
- for <linux-mediatek@lists.infradead.org>; Sat, 19 Dec 2020 09:07:18 -0800 (PST)
+ id 1kqiDT-0004hU-Ec
+ for linux-mediatek@lists.infradead.org; Sat, 19 Dec 2020 19:48:36 +0000
+Received: by mail-ej1-x633.google.com with SMTP id j22so8060333eja.13
+ for <linux-mediatek@lists.infradead.org>; Sat, 19 Dec 2020 11:48:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zcPwcPXMVpnY+3eclfJ/8aqJ3GoVY62IrGy7/V75q7k=;
- b=fD3UkN+hE3I4EXEN4uJ0V0s6uTHGW/RZwKYBi91VPLSZhW+LnT2hIId8K/QN5m7gz6
- oBnPA3JSId0M8/3sBGWKCnjsL17SNeuIGUo1ez/PjV1yQ637srrNsgnwpG76UcAfioFt
- HYQPMCQbCcZjQrDuSintyvhWhdIEyZMTqv0XsPXCjOVLaRAgBw+bPOXpC90m8WWpi+7p
- P9Ybk5He7MZbXl+7nWrifu+3ugwomWAY0Pd+m8j5M53zhgA4uR9tZzSjOKlc4869wGuU
- Kwd8vX/La5S9EcM+Ugtxn6NhHdzHdAkXez5rhraQhmeeeIEck+mfwuVnLklt3ktP2MNQ
- OvLg==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=nYIRKjTX5DlY+XJntHANQo6lAysYqlroTq1IelMOgX0=;
+ b=VPSqWPZthRVRc55P45/+iXf2rbbPhBV0pbwIONIdJnfx+7pg9bE7Th2I7cc4Me8HQh
+ A8I3uf43rIoLWD8HG2OBz2pxjFLuRs3aetrvYgJXL7x3ugX3W283PgSX+gw96LQnO4UF
+ yFgT2eA213hmSxNHOopv+k2teBtdSYEaPGdbg2maNThUIKy/Yh/hoDOfbJQ13GyRaF8E
+ ItXIZQLppma5t2rzluRgoF6m0jXzWxXchVcAgHmKc5l+ExxOUGIxP2CzM8lJN8sPeLBC
+ bkNc7dtpebQdR1BRVqnRE5IxwxRfOMMbtigOD3Up2/h38Wp89ETWZFDqIOKMJ5kz7Mv+
+ darA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zcPwcPXMVpnY+3eclfJ/8aqJ3GoVY62IrGy7/V75q7k=;
- b=FgVUza/oFjn7jlvDe9zoZQe7RLaFSGIB346yvGxufsHKjMXRWHYybhHECnX1PNW75S
- 6OPfHyk/ySIlVvXdTp8svsZtNgbyeDY3zUd89bSK6Psg2fUfnn2mSIGRLwlt+aBgCBMS
- UPU5BBIyfxOk76M0ju+aUBH0lXs2k6U8UsMSW9TWxhfr0rPyNu2xtaeUda+t8yn7yGhi
- AJ5TwjHLA1w9R+06G03SYXsFZ5IW2UkA5GdDptfktUEsDsZ4Dl315mqduHwki22BP9uK
- ycOEGIZ6PnGyr2sg12KrOtTRAFx5tEHGOWTVkrL3rAixdM4hMs8cS1zlnj8rEOXzk8ij
- 9j0A==
-X-Gm-Message-State: AOAM5338vNeNEexA7wIW8CWjFzokAZqUGPCPagaOFvMVsivKXSStFXK9
- seGACo3qC9s1LO9MdpDvSwY=
-X-Google-Smtp-Source: ABdhPJzCNJAHHMGz9gyVfixo1zoozcw1G2uxKs1g3WPUZvjZcf5GHk4cal7zZ5ovqjJxxy/A2Yc14Q==
-X-Received: by 2002:a17:90b:24c:: with SMTP id
- fz12mr9719452pjb.138.1608397636641; 
- Sat, 19 Dec 2020 09:07:16 -0800 (PST)
-Received: from [10.230.29.166] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id v3sm11452583pjn.7.2020.12.19.09.07.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 19 Dec 2020 09:07:15 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=nYIRKjTX5DlY+XJntHANQo6lAysYqlroTq1IelMOgX0=;
+ b=cjRhUp6vvMJtW7Aux0VmLEwqdRHJmVaCYamZFjwy7nYJyAdOQ8TIO0DI4Be3LgGmXS
+ NfN6kad0mShg7GpH/Ky3vXu1DisEdCSkOIxbmrEA3pXB56FuSAUN3o1cJH+R2T82ISvO
+ O6+z0uNjD2hp33dYFUm5H4ljBFimgkUdgypIIwqvzidEo8WpuhqHzXpBG39E+9ujA1jE
+ qGnzbTvE8aOCv7NIyGWyqafkxG0+bxYumuOPmLKfybd1cHEe/83qWWL2FAJNDsCLFLVJ
+ n7EGrHfhhXOj2kuvB2OCZpWGwibeBPGv5aTGs0ErkCz6CJ9NAj9x7xZSUOc0O03XXqkU
+ y0Ew==
+X-Gm-Message-State: AOAM530htjHsLC/znwPJtVyF5dA1VxouGGdf2DNV/jmiBZOlIW7McPla
+ mMkMzHv8r2XYrW/Kg73klmY=
+X-Google-Smtp-Source: ABdhPJxbQaQ25oYjNeex6xoNRfUoUf05TClF4UYgxJeFvwt7khLZ4z5PZrL5zeGuZsTJEV+UNt2CFw==
+X-Received: by 2002:a17:906:1f8e:: with SMTP id
+ t14mr9671367ejr.350.1608407313375; 
+ Sat, 19 Dec 2020 11:48:33 -0800 (PST)
+Received: from skbuf ([188.25.2.120])
+ by smtp.gmail.com with ESMTPSA id cb14sm7242279ejb.105.2020.12.19.11.48.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 19 Dec 2020 11:48:32 -0800 (PST)
+Date: Sat, 19 Dec 2020 21:48:31 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Florian Fainelli <f.fainelli@gmail.com>
 Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: rename MT7621 compatible
-To: Andrew Lunn <andrew@lunn.ch>, DENG Qingfang <dqfext@gmail.com>
+Message-ID: <20201219194831.5mjlmjfbcpggrh45@skbuf>
 References: <20201219162153.23126-1-dqfext@gmail.com>
  <20201219162601.GE3008889@lunn.ch>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Message-ID: <47673b0d-1da8-d93e-8b56-995a651aa7fd@gmail.com>
-Date: Sat, 19 Dec 2020 09:07:13 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.6.0
+ <47673b0d-1da8-d93e-8b56-995a651aa7fd@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201219162601.GE3008889@lunn.ch>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <47673b0d-1da8-d93e-8b56-995a651aa7fd@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201219_120719_221314_D97F7469 
-X-CRM114-Status: GOOD (  14.51  )
+X-CRM114-CacheID: sfid-20201219_144835_553775_F269C574 
+X-CRM114-Status: GOOD (  23.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,44 +94,144 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
+ Rene van Dorst <opensource@vdorst.com>, netdev@vger.kernel.org,
  Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
- "David S . Miller" <davem@davemloft.net>,
- Rene van Dorst <opensource@vdorst.com>, Greg Ungerer <gerg@kernel.org>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Vladimir Oltean <olteanv@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>
+ "David S . Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>,
+ Greg Ungerer <gerg@kernel.org>, linux-mediatek@lists.infradead.org,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Vivien Didelot <vivien.didelot@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Andrew, Florian,
 
-
-On 12/19/2020 8:26 AM, Andrew Lunn wrote:
->> --- a/drivers/net/dsa/mt7530.c
->> +++ b/drivers/net/dsa/mt7530.c
->> @@ -2688,7 +2688,7 @@ static const struct mt753x_info mt753x_table[] = {
->>  };
->>  
->>  static const struct of_device_id mt7530_of_match[] = {
->> -	{ .compatible = "mediatek,mt7621", .data = &mt753x_table[ID_MT7621], },
->> +	{ .compatible = "mediatek,mt7621-gsw", .data = &mt753x_table[ID_MT7621], },
->>  	{ .compatible = "mediatek,mt7530", .data = &mt753x_table[ID_MT7530], },
->>  	{ .compatible = "mediatek,mt7531", .data = &mt753x_table[ID_MT7531], },
->>  	{ /* sentinel */ },
+On Sat, Dec 19, 2020 at 09:07:13AM -0800, Florian Fainelli wrote:
+> On 12/19/2020 8:26 AM, Andrew Lunn wrote:
+> >> --- a/drivers/net/dsa/mt7530.c
+> >> +++ b/drivers/net/dsa/mt7530.c
+> >> @@ -2688,7 +2688,7 @@ static const struct mt753x_info mt753x_table[] = {
+> >>  };
+> >>  
+> >>  static const struct of_device_id mt7530_of_match[] = {
+> >> -	{ .compatible = "mediatek,mt7621", .data = &mt753x_table[ID_MT7621], },
+> >> +	{ .compatible = "mediatek,mt7621-gsw", .data = &mt753x_table[ID_MT7621], },
+> >>  	{ .compatible = "mediatek,mt7530", .data = &mt753x_table[ID_MT7530], },
+> >>  	{ .compatible = "mediatek,mt7531", .data = &mt753x_table[ID_MT7531], },
+> >>  	{ /* sentinel */ },
+> > 
+> > This will break backwards compatibility with existing DT blobs. You
+> > need to keep the old "mediatek,mt7621", but please add a comment that
+> > it is deprecated.
 > 
-> This will break backwards compatibility with existing DT blobs. You
-> need to keep the old "mediatek,mt7621", but please add a comment that
-> it is deprecated.
+> Besides, adding -gsw would make it inconsistent with the existing
+> matching compatible strings. While it's not ideal to have the same
+> top-level SoC compatible and having another sub-node within that SoC's
+> DTS have the same compatible, given this would be break backwards
+> compatibility, cannot you stay with what is defined today?
 
-Besides, adding -gsw would make it inconsistent with the existing
-matching compatible strings. While it's not ideal to have the same
-top-level SoC compatible and having another sub-node within that SoC's
-DTS have the same compatible, given this would be break backwards
-compatibility, cannot you stay with what is defined today?
--- 
-Florian
+The MT7621 device tree is in staging. I suppose that some amount of
+breaking changes could be tolerated?
+
+But Qingfang, I'm confused when looking at drivers/staging/mt7621-dts/mt7621.dtsi.
+
+/ethernet@1e100000/mdio-bus {
+	switch0: switch0@0 {
+		compatible = "mediatek,mt7621";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0>;
+		mediatek,mcm;
+		resets = <&rstctrl 2>;
+		reset-names = "mcm";
+
+		ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <0>;
+			port@0 {
+				status = "off";
+				reg = <0>;
+				label = "lan0";
+			};
+			port@1 {
+				status = "off";
+				reg = <1>;
+				label = "lan1";
+			};
+			port@2 {
+				status = "off";
+				reg = <2>;
+				label = "lan2";
+			};
+			port@3 {
+				status = "off";
+				reg = <3>;
+				label = "lan3";
+			};
+			port@4 {
+				status = "off";
+				reg = <4>;
+				label = "lan4";
+			};
+			port@6 {
+				reg = <6>;
+				label = "cpu";
+				ethernet = <&gmac0>;
+				phy-mode = "trgmii";
+				fixed-link {
+					speed = <1000>;
+					full-duplex;
+				};
+			};
+		};
+	};
+};
+
+/ {
+	gsw: gsw@1e110000 {
+		compatible = "mediatek,mt7621-gsw";
+		reg = <0x1e110000 0x8000>;
+		interrupt-parent = <&gic>;
+		interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
+	};
+};
+
+What is the platform device at the memory address 1e110000?
+There is no driver for it. The documentation only has me even more
+confused:
+
+Mediatek Gigabit Switch
+=======================
+
+The mediatek gigabit switch can be found on Mediatek SoCs (mt7620, mt7621).
+
+Required properties:
+- compatible: Should be "mediatek,mt7620-gsw" or "mediatek,mt7621-gsw"
+- reg: Address and length of the register set for the device
+- interrupts: Should contain the gigabit switches interrupt
+- resets: Should contain the gigabit switches resets
+- reset-names: Should contain the reset names "gsw"
+
+Example:
+
+gsw@10110000 {
+	compatible = "ralink,mt7620-gsw";     <- notice how even the example is bad and inconsistent
+	reg = <0x10110000 8000>;
+
+	resets = <&rstctrl 23>;
+	reset-names = "gsw";
+
+	interrupt-parent = <&intc>;
+	interrupts = <17>;
+};
+
+Does the MT7621 contain two Ethernet switches, one accessed over MMIO
+and another over MDIO? Or is it the same switch? I don't understand.
+What is the relationship between the new compatible that you're
+proposing, Qingfang, and the existing device tree bindings?
 
 _______________________________________________
 Linux-mediatek mailing list
