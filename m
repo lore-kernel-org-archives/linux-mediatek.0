@@ -2,81 +2,67 @@ Return-Path: <SRS0=XjSu=FY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF885C4361B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Dec 2020 04:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01D6DC4361B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Dec 2020 05:43:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84CF22313B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Dec 2020 04:48:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84CF22313B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 65EA3233CE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Dec 2020 05:43:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65EA3233CE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bQBLXQ0gX+J5rVVJElfKWfuaBBKYoVS/Q4nzhDnw14c=; b=DwiOX58Yxb9ZOCVr8EWgqxHFr
-	3YCo2C8eBy57+oyB5Y8c/0nHXsJowCO6M/CV1aspStrcE3bCnRE1zhqjiEgm8hXhIweyIDGuuygFR
-	cbSsGANXX/UnuPQhurTTg11R4MDfbr34vnyiFhyUl34nfERXXkJohn59qhVTrUU09af61FNtWuWS2
-	KaU6IYGla6p3ueAB1tunMYA7rdyAcyYFY8z5EEkIedVIFxRKbbpPVcml1SJ0FQyU7XDnWduRjmfz7
-	78hlX9AA3YgHfVX7sGwVV6WmXMFlbN6uGvrvA+1uJdlqWAvVOOx+H4mPTgMd0K9Kp+u1z3u/JfqVa
-	gmC8QHbGQ==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y6mexh5RkiRSerWzkLEa9L7W4cejimf5a0Hg1x6HyKU=; b=Ln6MlknFIZcidECoK5K8PRYdFN
+	Q/gsfrzaNRxjXnVSvj+0N3Ejtr370eXMZmDXp8c3TcQuYkZrdX+hI9pVh/FylU7QXwGvgWKlPaSEG
+	ZH477pog8AK3Eu7JI3DMYSCe+xvcqo6T+JSVjMn4Gv0Eva/oL9a4aKrMpbxwjm8IxmGzrt4qd8JTk
+	8qMu40i5trTKnqxF/ItRkTqQdGNyc12SfIiylPV/l0SRVrONoS9mePJA9g+3ClxDomCKGCrCqCVzN
+	+RM0p4R/gv98P7FIUNu5OGUaTm5BWOu9sfyD0Kgy0xOIhwPTYsLoVbPecJU65Xxr51Nt1m92HZYpD
+	OmCrHpsg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kqqdq-0005ZN-W3; Sun, 20 Dec 2020 04:48:23 +0000
-Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
+	id 1kqrUx-0007Uz-NO; Sun, 20 Dec 2020 05:43:15 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kqqdo-0005Z2-Gl
- for linux-mediatek@lists.infradead.org; Sun, 20 Dec 2020 04:48:22 +0000
-Received: by mail-io1-xd2f.google.com with SMTP id z5so5879398iob.11
- for <linux-mediatek@lists.infradead.org>; Sat, 19 Dec 2020 20:48:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=d+I+MxhZRgbV94D9EabdQV93ne2lYILR2KlRArwUle8=;
- b=TN1bLPEVwPotLjbi2RZbsJX5S4wR2E4B8mbH1BYhBabbCuGoCKpl2Zf2Y0wdg4XAb0
- suhvR5RwoQ8qEy90zVWD0cnyQhbdCEQWVzUnGlf2ak2e6dJbSTr48/1WtjyFNiJAKjEM
- JsbWEmouQB5DXkCr3q+rfzDllPdYBGYAWdccnKPQS0EBEkFcDF0Zg9s6vByyaSN4zjV+
- jaxyHDVbyX4ZI8IvpttYYc8qvFbefCuCfi9l238hR8oy8paQhTTXoe5wCNrSBmAUUTYx
- HqkwYiAts7Vdmd8DxRsKQW/36d1e0xgpXFb5gSDk/mAIoGMu9WdShnG5Iq6JYlohv0wI
- D2pA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=d+I+MxhZRgbV94D9EabdQV93ne2lYILR2KlRArwUle8=;
- b=aPVy/lRYdyGr7oYiihJ145VjlGRJC9KjeWTaKb7+OzgwT2+pFdY6DRfznReJkYUdK9
- qj4f6lKKTGD2nNJYv5XrujG8R96CWhjY1Am33De1018F+sHjxS7wPuUyB+JOe/3EDWrF
- r7x6B+JD9fQTumlrWLvYuyToMWRgjFbUwHOy5ZhnFuSRFf4cb8naIi9E3kW9IxQbk1zR
- 51RsjaONcENp7EF7X5UEPYwh6Q5kUt8vViyrCvAvwKjiTZluJ/UrQ6n4kwvv6FJAC6FU
- D709U+rqPPgKmdy60Kg8jt4uEEJcxR9PAsXJt1Gz1vY+YNcY3TpDAMpvoVEA+xERpaw8
- 2NDw==
-X-Gm-Message-State: AOAM530ydGJDhnRGgfvvxfBeqFv7v1rETbb66KKBUR5HquHSL/a9/7F8
- osxy8iqSSd1JgSSKqkqDcc3LkWMovbPxj/j8CvW2CY9mxi8=
-X-Google-Smtp-Source: ABdhPJyXPQSHJwF4yd0MdFCn+ETOqT2J1/g879Vm4IgiWsocYgSJZll/tV0usL2TvKecEvQcfCrjdUQLRGLcqOxT2EI=
-X-Received: by 2002:a6b:3788:: with SMTP id e130mr10222133ioa.23.1608439698367; 
- Sat, 19 Dec 2020 20:48:18 -0800 (PST)
-MIME-Version: 1.0
-References: <20201219162153.23126-1-dqfext@gmail.com>
- <20201219162601.GE3008889@lunn.ch>
- <47673b0d-1da8-d93e-8b56-995a651aa7fd@gmail.com>
- <20201219194831.5mjlmjfbcpggrh45@skbuf>
-In-Reply-To: <20201219194831.5mjlmjfbcpggrh45@skbuf>
-From: DENG Qingfang <dqfext@gmail.com>
-Date: Sun, 20 Dec 2020 12:48:08 +0800
-Message-ID: <CALW65jYtW7EEnXuj2dGSDwYC=3sBLCP0Q9J=tMozkrP6W0gq0w@mail.gmail.com>
-Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: rename MT7621 compatible
-To: Vladimir Oltean <olteanv@gmail.com>
+ id 1kqrUm-0007SN-Qq; Sun, 20 Dec 2020 05:43:06 +0000
+IronPort-SDR: 5Eg2bAC1RJMt6sL3Y6O14yK/uwBUP3cvmjPsi8U/442NN/hMHMEcjQURX6NLsv1E7u9u+4P9OJ
+ hFrf3fZkFORVX4vWnaF2dgfbqxsIbl4B92xbeyu8VJssky18+4DbRHFZ2E3Yxh082skbS3inbr
+ QrU45Z9HTdzRRb7RP9GcvYI13kXBDua82ERxVnRYQdeAP7KDBQCiRXNkOmYT1/SaodP8Oacr9C
+ /IS9Cm+Dd5dRj/l7N8oSRU1zWvC4EjE7xY5D4lw4jI441JAq0f5nK8yPIvuymc4B+mDjiZ/otP
+ dno=
+X-IronPort-AV: E=Sophos;i="5.78,434,1599548400"; d="scan'208";a="29398169"
+Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
+ by labrats.qualcomm.com with ESMTP; 19 Dec 2020 21:42:57 -0800
+X-QCInternal: smtphost
+Received: from wsp769891wss.qualcomm.com (HELO stor-presley.qualcomm.com)
+ ([192.168.140.85])
+ by ironmsg02-sd.qualcomm.com with ESMTP; 19 Dec 2020 21:42:56 -0800
+Received: by stor-presley.qualcomm.com (Postfix, from userid 359480)
+ id E0F35212A8; Sat, 19 Dec 2020 21:42:55 -0800 (PST)
+From: Can Guo <cang@codeaurora.org>
+To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
+ saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
+Subject: [PATCH v6 1/3] scsi: ufs: Protect some contexts from unexpected clock
+ scaling
+Date: Sat, 19 Dec 2020 21:42:45 -0800
+Message-Id: <1608442968-38560-2-git-send-email-cang@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1608442968-38560-1-git-send-email-cang@codeaurora.org>
+References: <1608442968-38560-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201219_234820_989674_A56A2FA7 
-X-CRM114-Status: GOOD (  26.89  )
+X-CRM114-CacheID: sfid-20201220_004305_217990_351004F2 
+X-CRM114-Status: GOOD (  20.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,156 +74,314 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
- Florian Fainelli <f.fainelli@gmail.com>, netdev <netdev@vger.kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
- "David S . Miller" <davem@davemloft.net>,
- Rene van Dorst <opensource@vdorst.com>, Greg Ungerer <gerg@kernel.org>,
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ open list <linux-kernel@vger.kernel.org>, Satya Tangirala <satyat@google.com>,
+ Avri Altman <avri.altman@wdc.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, Vivien Didelot <vivien.didelot@gmail.com>
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vladimir,
+In contexts like suspend, shutdown and error handling, we need to suspend
+devfreq to make sure these contexts won't be disturbed by clock scaling.
+However, suspending devfreq is not enough since users can still trigger a
+clock scaling by manipulating the sysfs node clkscale_enable and devfreq
+sysfs nodes like min/max_freq and governor. Add one more flag in struct
+clk_scaling such that these contexts can prevent clock scaling from being
+invoked through above sysfs nodes.
 
-On Sun, Dec 20, 2020 at 3:48 AM Vladimir Oltean <olteanv@gmail.com> wrote:
->
-> Hi Andrew, Florian,
->
-> On Sat, Dec 19, 2020 at 09:07:13AM -0800, Florian Fainelli wrote:
-> > On 12/19/2020 8:26 AM, Andrew Lunn wrote:
-> > >> --- a/drivers/net/dsa/mt7530.c
-> > >> +++ b/drivers/net/dsa/mt7530.c
-> > >> @@ -2688,7 +2688,7 @@ static const struct mt753x_info mt753x_table[] = {
-> > >>  };
-> > >>
-> > >>  static const struct of_device_id mt7530_of_match[] = {
-> > >> -  { .compatible = "mediatek,mt7621", .data = &mt753x_table[ID_MT7621], },
-> > >> +  { .compatible = "mediatek,mt7621-gsw", .data = &mt753x_table[ID_MT7621], },
-> > >>    { .compatible = "mediatek,mt7530", .data = &mt753x_table[ID_MT7530], },
-> > >>    { .compatible = "mediatek,mt7531", .data = &mt753x_table[ID_MT7531], },
-> > >>    { /* sentinel */ },
-> > >
-> > > This will break backwards compatibility with existing DT blobs. You
-> > > need to keep the old "mediatek,mt7621", but please add a comment that
-> > > it is deprecated.
-> >
-> > Besides, adding -gsw would make it inconsistent with the existing
-> > matching compatible strings. While it's not ideal to have the same
-> > top-level SoC compatible and having another sub-node within that SoC's
-> > DTS have the same compatible, given this would be break backwards
-> > compatibility, cannot you stay with what is defined today?
->
-> The MT7621 device tree is in staging. I suppose that some amount of
-> breaking changes could be tolerated?
->
-> But Qingfang, I'm confused when looking at drivers/staging/mt7621-dts/mt7621.dtsi.
->
-> /ethernet@1e100000/mdio-bus {
->         switch0: switch0@0 {
->                 compatible = "mediatek,mt7621";
->                 #address-cells = <1>;
->                 #size-cells = <0>;
->                 reg = <0>;
->                 mediatek,mcm;
->                 resets = <&rstctrl 2>;
->                 reset-names = "mcm";
->
->                 ports {
->                         #address-cells = <1>;
->                         #size-cells = <0>;
->                         reg = <0>;
->                         port@0 {
->                                 status = "off";
->                                 reg = <0>;
->                                 label = "lan0";
->                         };
->                         port@1 {
->                                 status = "off";
->                                 reg = <1>;
->                                 label = "lan1";
->                         };
->                         port@2 {
->                                 status = "off";
->                                 reg = <2>;
->                                 label = "lan2";
->                         };
->                         port@3 {
->                                 status = "off";
->                                 reg = <3>;
->                                 label = "lan3";
->                         };
->                         port@4 {
->                                 status = "off";
->                                 reg = <4>;
->                                 label = "lan4";
->                         };
->                         port@6 {
->                                 reg = <6>;
->                                 label = "cpu";
->                                 ethernet = <&gmac0>;
->                                 phy-mode = "trgmii";
->                                 fixed-link {
->                                         speed = <1000>;
->                                         full-duplex;
->                                 };
->                         };
->                 };
->         };
-> };
->
-> / {
->         gsw: gsw@1e110000 {
->                 compatible = "mediatek,mt7621-gsw";
->                 reg = <0x1e110000 0x8000>;
->                 interrupt-parent = <&gic>;
->                 interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
->         };
-> };
->
-> What is the platform device at the memory address 1e110000?
-> There is no driver for it. The documentation only has me even more
-> confused:
->
-> Mediatek Gigabit Switch
-> =======================
->
-> The mediatek gigabit switch can be found on Mediatek SoCs (mt7620, mt7621).
->
-> Required properties:
-> - compatible: Should be "mediatek,mt7620-gsw" or "mediatek,mt7621-gsw"
-> - reg: Address and length of the register set for the device
-> - interrupts: Should contain the gigabit switches interrupt
-> - resets: Should contain the gigabit switches resets
-> - reset-names: Should contain the reset names "gsw"
->
-> Example:
->
-> gsw@10110000 {
->         compatible = "ralink,mt7620-gsw";     <- notice how even the example is bad and inconsistent
->         reg = <0x10110000 8000>;
->
->         resets = <&rstctrl 23>;
->         reset-names = "gsw";
->
->         interrupt-parent = <&intc>;
->         interrupts = <17>;
-> };
->
-> Does the MT7621 contain two Ethernet switches, one accessed over MMIO
-> and another over MDIO? Or is it the same switch? I don't understand.
-> What is the relationship between the new compatible that you're
-> proposing, Qingfang, and the existing device tree bindings?
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+---
+ drivers/scsi/ufs/ufshcd.c | 81 +++++++++++++++++++++++++++++++----------------
+ drivers/scsi/ufs/ufshcd.h |  6 +++-
+ 2 files changed, 58 insertions(+), 29 deletions(-)
 
-The current dtsi is copied from OpenWrt, so the existing "mt7621-gsw"
-/ "mt7620-gsw" compatible is for their swconfig driver.
-MT7621 has only one switch, accessed over MDIO, so the reg property
-has no effect.
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 0c148fc..79752a7 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1147,12 +1147,22 @@ static int ufshcd_clock_scaling_prepare(struct ufs_hba *hba)
+ 	 */
+ 	ufshcd_scsi_block_requests(hba);
+ 	down_write(&hba->clk_scaling_lock);
+-	if (ufshcd_wait_for_doorbell_clr(hba, DOORBELL_CLR_TOUT_US)) {
++
++	if (!hba->clk_scaling.is_allowed)
++		ret = -EAGAIN;
++	else if (ufshcd_wait_for_doorbell_clr(hba, DOORBELL_CLR_TOUT_US))
+ 		ret = -EBUSY;
++
++	if (ret) {
+ 		up_write(&hba->clk_scaling_lock);
+ 		ufshcd_scsi_unblock_requests(hba);
++		goto out;
+ 	}
+ 
++	/* let's not get into low power until clock scaling is completed */
++	ufshcd_hold(hba, false);
++
++out:
+ 	return ret;
+ }
+ 
+@@ -1160,6 +1170,7 @@ static void ufshcd_clock_scaling_unprepare(struct ufs_hba *hba)
+ {
+ 	up_write(&hba->clk_scaling_lock);
+ 	ufshcd_scsi_unblock_requests(hba);
++	ufshcd_release(hba);
+ }
+ 
+ /**
+@@ -1175,12 +1186,9 @@ static int ufshcd_devfreq_scale(struct ufs_hba *hba, bool scale_up)
+ {
+ 	int ret = 0;
+ 
+-	/* let's not get into low power until clock scaling is completed */
+-	ufshcd_hold(hba, false);
+-
+ 	ret = ufshcd_clock_scaling_prepare(hba);
+ 	if (ret)
+-		goto out;
++		return ret;
+ 
+ 	/* scale down the gear before scaling down clocks */
+ 	if (!scale_up) {
+@@ -1212,8 +1220,6 @@ static int ufshcd_devfreq_scale(struct ufs_hba *hba, bool scale_up)
+ 
+ out_unprepare:
+ 	ufshcd_clock_scaling_unprepare(hba);
+-out:
+-	ufshcd_release(hba);
+ 	return ret;
+ }
+ 
+@@ -1487,7 +1493,7 @@ static ssize_t ufshcd_clkscale_enable_show(struct device *dev,
+ {
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);
+ 
+-	return snprintf(buf, PAGE_SIZE, "%d\n", hba->clk_scaling.is_allowed);
++	return snprintf(buf, PAGE_SIZE, "%d\n", hba->clk_scaling.is_enabled);
+ }
+ 
+ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
+@@ -1496,12 +1502,20 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);
+ 	u32 value;
+ 	int err;
++	unsigned long flags;
++	bool update = true;
+ 
+ 	if (kstrtou32(buf, 0, &value))
+ 		return -EINVAL;
+ 
+ 	value = !!value;
+-	if (value == hba->clk_scaling.is_allowed)
++	spin_lock_irqsave(hba->host->host_lock, flags);
++	if (value == hba->clk_scaling.is_enabled)
++		update = false;
++	else
++		hba->clk_scaling.is_enabled = value;
++	spin_unlock_irqrestore(hba->host->host_lock, flags);
++	if (!update)
+ 		goto out;
+ 
+ 	pm_runtime_get_sync(hba->dev);
+@@ -1510,8 +1524,6 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
+ 	cancel_work_sync(&hba->clk_scaling.suspend_work);
+ 	cancel_work_sync(&hba->clk_scaling.resume_work);
+ 
+-	hba->clk_scaling.is_allowed = value;
+-
+ 	if (value) {
+ 		ufshcd_resume_clkscaling(hba);
+ 	} else {
+@@ -1845,8 +1857,6 @@ static void ufshcd_init_clk_scaling(struct ufs_hba *hba)
+ 	snprintf(wq_name, sizeof(wq_name), "ufs_clkscaling_%d",
+ 		 hba->host->host_no);
+ 	hba->clk_scaling.workq = create_singlethread_workqueue(wq_name);
+-
+-	ufshcd_clkscaling_init_sysfs(hba);
+ }
+ 
+ static void ufshcd_exit_clk_scaling(struct ufs_hba *hba)
+@@ -1854,6 +1864,8 @@ static void ufshcd_exit_clk_scaling(struct ufs_hba *hba)
+ 	if (!ufshcd_is_clkscaling_supported(hba))
+ 		return;
+ 
++	if (hba->devfreq)
++		device_remove_file(hba->dev, &hba->clk_scaling.enable_attr);
+ 	destroy_workqueue(hba->clk_scaling.workq);
+ 	ufshcd_devfreq_remove(hba);
+ }
+@@ -1918,7 +1930,7 @@ static void ufshcd_clk_scaling_start_busy(struct ufs_hba *hba)
+ 	if (!hba->clk_scaling.active_reqs++)
+ 		queue_resume_work = true;
+ 
+-	if (!hba->clk_scaling.is_allowed || hba->pm_op_in_progress)
++	if (!hba->clk_scaling.is_enabled || hba->pm_op_in_progress)
+ 		return;
+ 
+ 	if (queue_resume_work)
+@@ -4987,7 +4999,8 @@ static void __ufshcd_transfer_req_compl(struct ufs_hba *hba,
+ 				complete(hba->dev_cmd.complete);
+ 			}
+ 		}
+-		if (ufshcd_is_clkscaling_supported(hba))
++		if (ufshcd_is_clkscaling_supported(hba) &&
++		    hba->clk_scaling.active_reqs > 0)
+ 			hba->clk_scaling.active_reqs--;
+ 	}
+ 
+@@ -5650,18 +5663,25 @@ static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
+ 		ufshcd_vops_resume(hba, UFS_RUNTIME_PM);
+ 	} else {
+ 		ufshcd_hold(hba, false);
+-		if (hba->clk_scaling.is_allowed) {
++		if (hba->clk_scaling.is_enabled) {
+ 			cancel_work_sync(&hba->clk_scaling.suspend_work);
+ 			cancel_work_sync(&hba->clk_scaling.resume_work);
+ 			ufshcd_suspend_clkscaling(hba);
+ 		}
+ 	}
++	down_write(&hba->clk_scaling_lock);
++	hba->clk_scaling.is_allowed = false;
++	up_write(&hba->clk_scaling_lock);
+ }
+ 
+ static void ufshcd_err_handling_unprepare(struct ufs_hba *hba)
+ {
+ 	ufshcd_release(hba);
+-	if (hba->clk_scaling.is_allowed)
++
++	down_write(&hba->clk_scaling_lock);
++	hba->clk_scaling.is_allowed = true;
++	up_write(&hba->clk_scaling_lock);
++	if (hba->clk_scaling.is_enabled)
+ 		ufshcd_resume_clkscaling(hba);
+ 	pm_runtime_put(hba->dev);
+ }
+@@ -7620,12 +7640,14 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
+ 			sizeof(struct ufs_pa_layer_attr));
+ 		hba->clk_scaling.saved_pwr_info.is_valid = true;
+ 		if (!hba->devfreq) {
++			hba->clk_scaling.is_allowed = true;
+ 			ret = ufshcd_devfreq_init(hba);
+ 			if (ret)
+ 				goto out;
+-		}
+ 
+-		hba->clk_scaling.is_allowed = true;
++			hba->clk_scaling.is_enabled = true;
++			ufshcd_clkscaling_init_sysfs(hba);
++		}
+ 	}
+ 
+ 	ufs_bsg_probe(hba);
+@@ -8491,11 +8513,14 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	ufshcd_hold(hba, false);
+ 	hba->clk_gating.is_suspended = true;
+ 
+-	if (hba->clk_scaling.is_allowed) {
++	if (hba->clk_scaling.is_enabled) {
+ 		cancel_work_sync(&hba->clk_scaling.suspend_work);
+ 		cancel_work_sync(&hba->clk_scaling.resume_work);
+ 		ufshcd_suspend_clkscaling(hba);
+ 	}
++	down_write(&hba->clk_scaling_lock);
++	hba->clk_scaling.is_allowed = false;
++	up_write(&hba->clk_scaling_lock);
+ 
+ 	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
+ 			req_link_state == UIC_LINK_ACTIVE_STATE) {
+@@ -8592,8 +8617,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	goto out;
+ 
+ set_link_active:
+-	if (hba->clk_scaling.is_allowed)
+-		ufshcd_resume_clkscaling(hba);
+ 	ufshcd_vreg_set_hpm(hba);
+ 	if (ufshcd_is_link_hibern8(hba) && !ufshcd_uic_hibern8_exit(hba))
+ 		ufshcd_set_link_active(hba);
+@@ -8603,7 +8626,10 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	if (!ufshcd_set_dev_pwr_mode(hba, UFS_ACTIVE_PWR_MODE))
+ 		ufshcd_disable_auto_bkops(hba);
+ enable_gating:
+-	if (hba->clk_scaling.is_allowed)
++	down_write(&hba->clk_scaling_lock);
++	hba->clk_scaling.is_allowed = true;
++	up_write(&hba->clk_scaling_lock);
++	if (hba->clk_scaling.is_enabled)
+ 		ufshcd_resume_clkscaling(hba);
+ 	hba->clk_gating.is_suspended = false;
+ 	hba->dev_info.b_rpm_dev_flush_capable = false;
+@@ -8701,7 +8727,10 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 
+ 	hba->clk_gating.is_suspended = false;
+ 
+-	if (hba->clk_scaling.is_allowed)
++	down_write(&hba->clk_scaling_lock);
++	hba->clk_scaling.is_allowed = true;
++	up_write(&hba->clk_scaling_lock);
++	if (hba->clk_scaling.is_enabled)
+ 		ufshcd_resume_clkscaling(hba);
+ 
+ 	/* Enable Auto-Hibernate if configured */
+@@ -8725,8 +8754,6 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	ufshcd_vreg_set_lpm(hba);
+ disable_irq_and_vops_clks:
+ 	ufshcd_disable_irq(hba);
+-	if (hba->clk_scaling.is_allowed)
+-		ufshcd_suspend_clkscaling(hba);
+ 	ufshcd_setup_clocks(hba, false);
+ 	if (ufshcd_is_clkgating_allowed(hba)) {
+ 		hba->clk_gating.state = CLKS_OFF;
+@@ -8944,8 +8971,6 @@ void ufshcd_remove(struct ufs_hba *hba)
+ 
+ 	ufshcd_exit_clk_scaling(hba);
+ 	ufshcd_exit_clk_gating(hba);
+-	if (ufshcd_is_clkscaling_supported(hba))
+-		device_remove_file(hba->dev, &hba->clk_scaling.enable_attr);
+ 	ufshcd_hba_exit(hba);
+ }
+ EXPORT_SYMBOL_GPL(ufshcd_remove);
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index e0f00a4..5737679 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -382,7 +382,10 @@ struct ufs_saved_pwr_info {
+  * @workq: workqueue to schedule devfreq suspend/resume work
+  * @suspend_work: worker to suspend devfreq
+  * @resume_work: worker to resume devfreq
+- * @is_allowed: tracks if scaling is currently allowed or not
++ * @is_enabled: tracks if scaling is currently enabled or not, controlled by
++		clkscale_enable sysfs node
++ * @is_allowed: tracks if scaling is currently allowed or not, used to block
++		clock scaling which is not invoked from devfreq governor
+  * @is_busy_started: tracks if busy period has started or not
+  * @is_suspended: tracks if devfreq is suspended or not
+  */
+@@ -396,6 +399,7 @@ struct ufs_clk_scaling {
+ 	struct workqueue_struct *workq;
+ 	struct work_struct suspend_work;
+ 	struct work_struct resume_work;
++	bool is_enabled;
+ 	bool is_allowed;
+ 	bool is_busy_started;
+ 	bool is_suspended;
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
 
-Should this patch be accepted, the existing gsw nodes can be dropped.
 
 _______________________________________________
 Linux-mediatek mailing list
