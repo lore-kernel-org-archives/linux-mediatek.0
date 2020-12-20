@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 386F4C3526C
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1234EC4361B
 	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Dec 2020 02:37:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD42F23AC1
+	by mail.kernel.org (Postfix) with ESMTPS id C1A5823B08
 	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Dec 2020 02:37:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD42F23AC1
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1A5823B08
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eoCtEbrTvL/7EQ4Q8f4hoIoQ1S3UEJ0sLf/4hnMlwvo=; b=KKWfNmrzdtHCC3SMfUHOsIFs5p
-	v+EOlFX2RJSng2R1aShZP6aTc5sHwwrPKA9Vtaaki+G6MoWdKGRkFyo5Z0PF1OGXAqAi4R4V+dons
-	VN/GmzujZN7OuFnAzkxC0cw8Krn/z/JJlq0Xh0y5eEr4+018tVuU8XqYcN3AJF1JzVWs7DOgtvEhO
-	GqSYSWEy2rbuTjom0jwMgE55eNq5o1OERvkWMPqvkpNNz0+FTETj1Vi7Kyo/S7PnWLIxZNRuFrLj4
-	zCFm+02b1kYvvUFyRWuN4P2tb+tLFa3PP6ghM3DLPrhKELBWAftyAQmMzsQRDXBEHOJ7xb0A2fxJn
-	KT6/m0Sw==;
+	bh=N51mGtdl0HshK5hJoeIGoqiaW5D4ZfrM4Ccw8Js6JO4=; b=E7aS/tcID6SjmADWFV2xsPl2pD
+	NnDuF1cTZO0HaBd93wFYhQb7yxL9YhpRLPvGJ9N4MCT1nfXKJfVVzp+UTQw8dxmWid6MZOPQaxov8
+	o4UUkgNnRFNZJN7kJG37/1KC4//aquE6eBmkeczPNTVcJm/fXdz8S6Gn0eNVBSt85670NWjVmNYpn
+	2yHym6vXsQ4Nq223kWykP9KZ19CXsK9sa0GKNl5YHvfKxBgJpurBsOyokXNN8ivz4PXoZrBM4a5ll
+	NiZ/EXCq6Vk734S5V3UQrAdDWvIwMeQVKZf2YXFSAKDOxQsC1vkBYuwygUcwQjvTkP7yIXnY4tHFn
+	rHxYQqJw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kqobU-0006wa-0U; Sun, 20 Dec 2020 02:37:48 +0000
+	id 1kqobT-0006wJ-1j; Sun, 20 Dec 2020 02:37:47 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kqob3-0006o5-DJ; Sun, 20 Dec 2020 02:37:26 +0000
+ id 1kqob1-0006mu-0K; Sun, 20 Dec 2020 02:37:26 +0000
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Authentication-Results: mail.kernel.org;
  dkim=permerror (bad message/signature format)
 To: Matthias Brugger <matthias.bgg@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH 4/5] drm/mediatek: Automatically search unclaimed mtk mutex in
- mtk_mutex_get()
-Date: Sun, 20 Dec 2020 10:36:54 +0800
-Message-Id: <20201220023655.30795-5-chunkuang.hu@kernel.org>
+Subject: [PATCH 3/5] drm/mediatek: Change disp/ddp term to mutex in mtk mutex
+ driver
+Date: Sun, 20 Dec 2020 10:36:53 +0800
+Message-Id: <20201220023655.30795-4-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201220023655.30795-1-chunkuang.hu@kernel.org>
 References: <20201220023655.30795-1-chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201219_213721_552124_0C9616FC 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20201219_213720_498890_C5926C76 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,74 +73,679 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: CK Hu <ck.hu@mediatek.com>
 
-Moving mutex resource management from client driver to  mutex driver
-could prevent client drivers negotiating for resource management.
+mtk mutex is used by both drm and mdp driver, so change disp/ddp term to
+mutex to show that it's a common driver for drm and mdp.
 
 Signed-off-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  2 +-
- drivers/gpu/drm/mediatek/mtk_mutex.c    | 16 ++++++++--------
- drivers/gpu/drm/mediatek/mtk_mutex.h    |  2 +-
- 3 files changed, 10 insertions(+), 10 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  30 +--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c  |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h  |   2 +-
+ drivers/gpu/drm/mediatek/mtk_mutex.c    | 306 ++++++++++++------------
+ drivers/gpu/drm/mediatek/mtk_mutex.h    |  26 +-
+ 5 files changed, 182 insertions(+), 184 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 5c4e8e2f4448..23d9abc4f46c 100644
+index 1e827de1427d..5c4e8e2f4448 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -55,7 +55,7 @@ struct mtk_drm_crtc {
+ #endif
+ 
+ 	struct device			*mmsys_dev;
+-	struct mtk_disp_mutex		*mutex;
++	struct mtk_mutex		*mutex;
+ 	unsigned int			ddp_comp_nr;
+ 	struct mtk_ddp_comp		**ddp_comp;
+ 
+@@ -107,7 +107,7 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+ 
+-	mtk_disp_mutex_put(mtk_crtc->mutex);
++	mtk_mutex_put(mtk_crtc->mutex);
+ 
+ 	drm_crtc_cleanup(crtc);
+ }
+@@ -283,7 +283,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+ 		return ret;
+ 	}
+ 
+-	ret = mtk_disp_mutex_prepare(mtk_crtc->mutex);
++	ret = mtk_mutex_prepare(mtk_crtc->mutex);
+ 	if (ret < 0) {
+ 		DRM_ERROR("Failed to enable mutex clock: %d\n", ret);
+ 		goto err_pm_runtime_put;
+@@ -299,11 +299,11 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+ 		mtk_mmsys_ddp_connect(mtk_crtc->mmsys_dev,
+ 				      mtk_crtc->ddp_comp[i]->id,
+ 				      mtk_crtc->ddp_comp[i + 1]->id);
+-		mtk_disp_mutex_add_comp(mtk_crtc->mutex,
++		mtk_mutex_add_comp(mtk_crtc->mutex,
+ 					mtk_crtc->ddp_comp[i]->id);
+ 	}
+-	mtk_disp_mutex_add_comp(mtk_crtc->mutex, mtk_crtc->ddp_comp[i]->id);
+-	mtk_disp_mutex_enable(mtk_crtc->mutex);
++	mtk_mutex_add_comp(mtk_crtc->mutex, mtk_crtc->ddp_comp[i]->id);
++	mtk_mutex_enable(mtk_crtc->mutex);
+ 
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+ 		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[i];
+@@ -332,7 +332,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+ 	return 0;
+ 
+ err_mutex_unprepare:
+-	mtk_disp_mutex_unprepare(mtk_crtc->mutex);
++	mtk_mutex_unprepare(mtk_crtc->mutex);
+ err_pm_runtime_put:
+ 	pm_runtime_put(crtc->dev->dev);
+ 	return ret;
+@@ -351,19 +351,19 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+ 	}
+ 
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
+-		mtk_disp_mutex_remove_comp(mtk_crtc->mutex,
++		mtk_mutex_remove_comp(mtk_crtc->mutex,
+ 					   mtk_crtc->ddp_comp[i]->id);
+-	mtk_disp_mutex_disable(mtk_crtc->mutex);
++	mtk_mutex_disable(mtk_crtc->mutex);
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr - 1; i++) {
+ 		mtk_mmsys_ddp_disconnect(mtk_crtc->mmsys_dev,
+ 					 mtk_crtc->ddp_comp[i]->id,
+ 					 mtk_crtc->ddp_comp[i + 1]->id);
+-		mtk_disp_mutex_remove_comp(mtk_crtc->mutex,
++		mtk_mutex_remove_comp(mtk_crtc->mutex,
+ 					   mtk_crtc->ddp_comp[i]->id);
+ 	}
+-	mtk_disp_mutex_remove_comp(mtk_crtc->mutex, mtk_crtc->ddp_comp[i]->id);
++	mtk_mutex_remove_comp(mtk_crtc->mutex, mtk_crtc->ddp_comp[i]->id);
+ 	mtk_crtc_ddp_clk_disable(mtk_crtc);
+-	mtk_disp_mutex_unprepare(mtk_crtc->mutex);
++	mtk_mutex_unprepare(mtk_crtc->mutex);
+ 
+ 	pm_runtime_put(drm->dev);
+ 
+@@ -475,9 +475,9 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+ 		mtk_crtc->pending_async_planes = true;
+ 
+ 	if (priv->data->shadow_register) {
+-		mtk_disp_mutex_acquire(mtk_crtc->mutex);
++		mtk_mutex_acquire(mtk_crtc->mutex);
+ 		mtk_crtc_ddp_config(crtc, NULL);
+-		mtk_disp_mutex_release(mtk_crtc->mutex);
++		mtk_mutex_release(mtk_crtc->mutex);
+ 	}
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	if (mtk_crtc->cmdq_client) {
 @@ -772,7 +772,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
  	if (!mtk_crtc->ddp_comp)
  		return -ENOMEM;
  
--	mtk_crtc->mutex = mtk_mutex_get(priv->mutex_dev, pipe);
-+	mtk_crtc->mutex = mtk_mutex_get(priv->mutex_dev);
+-	mtk_crtc->mutex = mtk_disp_mutex_get(priv->mutex_dev, pipe);
++	mtk_crtc->mutex = mtk_mutex_get(priv->mutex_dev, pipe);
  	if (IS_ERR(mtk_crtc->mutex)) {
  		ret = PTR_ERR(mtk_crtc->mutex);
  		dev_err(dev, "Failed to get mutex: %d\n", ret);
-diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.c b/drivers/gpu/drm/mediatek/mtk_mutex.c
-index ece26359a292..e16b1772317c 100644
---- a/drivers/gpu/drm/mediatek/mtk_mutex.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mutex.c
-@@ -226,18 +226,18 @@ static const struct mtk_mutex_data mt8173_mutex_driver_data = {
- 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 089f956b22c2..907a69eb6d51 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -602,7 +602,7 @@ static struct platform_driver mtk_drm_platform_driver = {
  };
  
--struct mtk_mutex *mtk_mutex_get(struct device *dev, unsigned int id)
-+struct mtk_mutex *mtk_mutex_get(struct device *dev)
- {
- 	struct mtk_mutex_ctx *mtx = dev_get_drvdata(dev);
-+	int i;
+ static struct platform_driver * const mtk_drm_drivers[] = {
+-	&mtk_ddp_driver,
++	&mtk_mutex_driver,
+ 	&mtk_disp_color_driver,
+ 	&mtk_disp_ovl_driver,
+ 	&mtk_disp_rdma_driver,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index 5d771cf0bf25..c7220f267a62 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -46,7 +46,7 @@ struct mtk_drm_private {
+ 	struct drm_atomic_state *suspend_state;
+ };
  
--	if (id >= 10)
--		return ERR_PTR(-EINVAL);
--	if (mtx->mutex[id].claimed)
--		return ERR_PTR(-EBUSY);
+-extern struct platform_driver mtk_ddp_driver;
++extern struct platform_driver mtk_mutex_driver;
+ extern struct platform_driver mtk_disp_color_driver;
+ extern struct platform_driver mtk_disp_ovl_driver;
+ extern struct platform_driver mtk_disp_rdma_driver;
+diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.c b/drivers/gpu/drm/mediatek/mtk_mutex.c
+index ab7295c51b23..ece26359a292 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mutex.c
++++ b/drivers/gpu/drm/mediatek/mtk_mutex.c
+@@ -9,11 +9,10 @@
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
++#include <linux/soc/mediatek/mtk-mmsys.h>
+ 
+-#include "mtk_drm_ddp_comp.h"
 -
--	mtx->mutex[id].claimed = true;
-+	for (i = 0; i < 10; i++)
-+		if (!mtx->mutex[i].claimed) {
-+			mtx->mutex[i].claimed = true;
-+			return &mtx->mutex[i];
-+		}
+-#define MT2701_DISP_MUTEX0_MOD0			0x2c
+-#define MT2701_DISP_MUTEX0_SOF0			0x30
++#define MT2701_MUTEX0_MOD0			0x2c
++#define MT2701_MUTEX0_SOF0			0x30
  
--	return &mtx->mutex[id];
-+	return ERR_PTR(-EBUSY);
+ #define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 * (n))
+ #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
+@@ -78,33 +77,32 @@
+ #define MT2701_MUTEX_MOD_DISP_RDMA0		10
+ #define MT2701_MUTEX_MOD_DISP_RDMA1		12
+ 
+-#define MUTEX_SOF_SINGLE_MODE		0
+-#define MUTEX_SOF_DSI0			1
+-#define MUTEX_SOF_DSI1			2
+-#define MUTEX_SOF_DPI0			3
+-#define MUTEX_SOF_DPI1			4
+-#define MUTEX_SOF_DSI2			5
+-#define MUTEX_SOF_DSI3			6
+-#define MT8167_MUTEX_SOF_DPI0		2
+-#define MT8167_MUTEX_SOF_DPI1		3
+-
+-
+-struct mtk_disp_mutex {
++#define MT2712_MUTEX_SOF_SINGLE_MODE		0
++#define MT2712_MUTEX_SOF_DSI0			1
++#define MT2712_MUTEX_SOF_DSI1			2
++#define MT2712_MUTEX_SOF_DPI0			3
++#define MT2712_MUTEX_SOF_DPI1			4
++#define MT2712_MUTEX_SOF_DSI2			5
++#define MT2712_MUTEX_SOF_DSI3			6
++#define MT8167_MUTEX_SOF_DPI0			2
++#define MT8167_MUTEX_SOF_DPI1			3
++
++struct mtk_mutex {
+ 	int id;
+ 	bool claimed;
+ };
+ 
+-enum mtk_ddp_mutex_sof_id {
+-	DDP_MUTEX_SOF_SINGLE_MODE,
+-	DDP_MUTEX_SOF_DSI0,
+-	DDP_MUTEX_SOF_DSI1,
+-	DDP_MUTEX_SOF_DPI0,
+-	DDP_MUTEX_SOF_DPI1,
+-	DDP_MUTEX_SOF_DSI2,
+-	DDP_MUTEX_SOF_DSI3,
++enum mtk_mutex_sof_id {
++	MUTEX_SOF_SINGLE_MODE,
++	MUTEX_SOF_DSI0,
++	MUTEX_SOF_DSI1,
++	MUTEX_SOF_DPI0,
++	MUTEX_SOF_DPI1,
++	MUTEX_SOF_DSI2,
++	MUTEX_SOF_DSI3,
+ };
+ 
+-struct mtk_ddp_data {
++struct mtk_mutex_data {
+ 	const unsigned int *mutex_mod;
+ 	const unsigned int *mutex_sof;
+ 	const unsigned int mutex_mod_reg;
+@@ -112,12 +110,12 @@ struct mtk_ddp_data {
+ 	const bool no_clk;
+ };
+ 
+-struct mtk_ddp {
++struct mtk_mutex_ctx {
+ 	struct device			*dev;
+ 	struct clk			*clk;
+ 	void __iomem			*regs;
+-	struct mtk_disp_mutex		mutex[10];
+-	const struct mtk_ddp_data	*data;
++	struct mtk_mutex		mutex[10];
++	const struct mtk_mutex_data	*data;
+ };
+ 
+ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+@@ -182,150 +180,150 @@ static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
+ };
+ 
+-static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_DSI3 + 1] = {
+-	[DDP_MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+-	[DDP_MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+-	[DDP_MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
+-	[DDP_MUTEX_SOF_DPI0] = MUTEX_SOF_DPI0,
+-	[DDP_MUTEX_SOF_DPI1] = MUTEX_SOF_DPI1,
+-	[DDP_MUTEX_SOF_DSI2] = MUTEX_SOF_DSI2,
+-	[DDP_MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
++static const unsigned int mt2712_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
++	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
++	[MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
++	[MUTEX_SOF_DPI0] = MUTEX_SOF_DPI0,
++	[MUTEX_SOF_DPI1] = MUTEX_SOF_DPI1,
++	[MUTEX_SOF_DSI2] = MUTEX_SOF_DSI2,
++	[MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
+ };
+ 
+-static const unsigned int mt8167_mutex_sof[DDP_MUTEX_SOF_DSI3 + 1] = {
+-	[DDP_MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+-	[DDP_MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+-	[DDP_MUTEX_SOF_DPI0] = MT8167_MUTEX_SOF_DPI0,
+-	[DDP_MUTEX_SOF_DPI1] = MT8167_MUTEX_SOF_DPI1,
++static const unsigned int mt8167_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
++	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
++	[MUTEX_SOF_DPI0] = MT8167_MUTEX_SOF_DPI0,
++	[MUTEX_SOF_DPI1] = MT8167_MUTEX_SOF_DPI1,
+ };
+ 
+-static const struct mtk_ddp_data mt2701_ddp_driver_data = {
++static const struct mtk_mutex_data mt2701_mutex_driver_data = {
+ 	.mutex_mod = mt2701_mutex_mod,
+ 	.mutex_sof = mt2712_mutex_sof,
+-	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+-	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
++	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
++	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
+ };
+ 
+-static const struct mtk_ddp_data mt2712_ddp_driver_data = {
++static const struct mtk_mutex_data mt2712_mutex_driver_data = {
+ 	.mutex_mod = mt2712_mutex_mod,
+ 	.mutex_sof = mt2712_mutex_sof,
+-	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+-	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
++	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
++	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
+ };
+ 
+-static const struct mtk_ddp_data mt8167_ddp_driver_data = {
++static const struct mtk_mutex_data mt8167_mutex_driver_data = {
+ 	.mutex_mod = mt8167_mutex_mod,
+ 	.mutex_sof = mt8167_mutex_sof,
+-	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+-	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
++	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
++	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
+ 	.no_clk = true,
+ };
+ 
+-static const struct mtk_ddp_data mt8173_ddp_driver_data = {
++static const struct mtk_mutex_data mt8173_mutex_driver_data = {
+ 	.mutex_mod = mt8173_mutex_mod,
+ 	.mutex_sof = mt2712_mutex_sof,
+-	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+-	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
++	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
++	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
+ };
+ 
+-struct mtk_disp_mutex *mtk_disp_mutex_get(struct device *dev, unsigned int id)
++struct mtk_mutex *mtk_mutex_get(struct device *dev, unsigned int id)
+ {
+-	struct mtk_ddp *ddp = dev_get_drvdata(dev);
++	struct mtk_mutex_ctx *mtx = dev_get_drvdata(dev);
+ 
+ 	if (id >= 10)
+ 		return ERR_PTR(-EINVAL);
+-	if (ddp->mutex[id].claimed)
++	if (mtx->mutex[id].claimed)
+ 		return ERR_PTR(-EBUSY);
+ 
+-	ddp->mutex[id].claimed = true;
++	mtx->mutex[id].claimed = true;
+ 
+-	return &ddp->mutex[id];
++	return &mtx->mutex[id];
  }
  
- void mtk_mutex_put(struct mtk_mutex *mutex)
+-void mtk_disp_mutex_put(struct mtk_disp_mutex *mutex)
++void mtk_mutex_put(struct mtk_mutex *mutex)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
+ 
+-	WARN_ON(&ddp->mutex[mutex->id] != mutex);
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+ 
+ 	mutex->claimed = false;
+ }
+ 
+-int mtk_disp_mutex_prepare(struct mtk_disp_mutex *mutex)
++int mtk_mutex_prepare(struct mtk_mutex *mutex)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
+-	return clk_prepare_enable(ddp->clk);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++	return clk_prepare_enable(mtx->clk);
+ }
+ 
+-void mtk_disp_mutex_unprepare(struct mtk_disp_mutex *mutex)
++void mtk_mutex_unprepare(struct mtk_mutex *mutex)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
+-	clk_disable_unprepare(ddp->clk);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++	clk_disable_unprepare(mtx->clk);
+ }
+ 
+-void mtk_disp_mutex_add_comp(struct mtk_disp_mutex *mutex,
+-			     enum mtk_ddp_comp_id id)
++void mtk_mutex_add_comp(struct mtk_mutex *mutex,
++			enum mtk_ddp_comp_id id)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
+ 	unsigned int reg;
+ 	unsigned int sof_id;
+ 	unsigned int offset;
+ 
+-	WARN_ON(&ddp->mutex[mutex->id] != mutex);
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+ 
+ 	switch (id) {
+ 	case DDP_COMPONENT_DSI0:
+-		sof_id = DDP_MUTEX_SOF_DSI0;
++		sof_id = MUTEX_SOF_DSI0;
+ 		break;
+ 	case DDP_COMPONENT_DSI1:
+-		sof_id = DDP_MUTEX_SOF_DSI0;
++		sof_id = MUTEX_SOF_DSI0;
+ 		break;
+ 	case DDP_COMPONENT_DSI2:
+-		sof_id = DDP_MUTEX_SOF_DSI2;
++		sof_id = MUTEX_SOF_DSI2;
+ 		break;
+ 	case DDP_COMPONENT_DSI3:
+-		sof_id = DDP_MUTEX_SOF_DSI3;
++		sof_id = MUTEX_SOF_DSI3;
+ 		break;
+ 	case DDP_COMPONENT_DPI0:
+-		sof_id = DDP_MUTEX_SOF_DPI0;
++		sof_id = MUTEX_SOF_DPI0;
+ 		break;
+ 	case DDP_COMPONENT_DPI1:
+-		sof_id = DDP_MUTEX_SOF_DPI1;
++		sof_id = MUTEX_SOF_DPI1;
+ 		break;
+ 	default:
+-		if (ddp->data->mutex_mod[id] < 32) {
+-			offset = DISP_REG_MUTEX_MOD(ddp->data->mutex_mod_reg,
++		if (mtx->data->mutex_mod[id] < 32) {
++			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+ 						    mutex->id);
+-			reg = readl_relaxed(ddp->regs + offset);
+-			reg |= 1 << ddp->data->mutex_mod[id];
+-			writel_relaxed(reg, ddp->regs + offset);
++			reg = readl_relaxed(mtx->regs + offset);
++			reg |= 1 << mtx->data->mutex_mod[id];
++			writel_relaxed(reg, mtx->regs + offset);
+ 		} else {
+ 			offset = DISP_REG_MUTEX_MOD2(mutex->id);
+-			reg = readl_relaxed(ddp->regs + offset);
+-			reg |= 1 << (ddp->data->mutex_mod[id] - 32);
+-			writel_relaxed(reg, ddp->regs + offset);
++			reg = readl_relaxed(mtx->regs + offset);
++			reg |= 1 << (mtx->data->mutex_mod[id] - 32);
++			writel_relaxed(reg, mtx->regs + offset);
+ 		}
+ 		return;
+ 	}
+ 
+-	writel_relaxed(ddp->data->mutex_sof[sof_id],
+-		       ddp->regs +
+-		       DISP_REG_MUTEX_SOF(ddp->data->mutex_sof_reg, mutex->id));
++	writel_relaxed(mtx->data->mutex_sof[sof_id],
++		       mtx->regs +
++		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id));
+ }
+ 
+-void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
+-				enum mtk_ddp_comp_id id)
++void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
++			   enum mtk_ddp_comp_id id)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
+ 	unsigned int reg;
+ 	unsigned int offset;
+ 
+-	WARN_ON(&ddp->mutex[mutex->id] != mutex);
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+ 
+ 	switch (id) {
+ 	case DDP_COMPONENT_DSI0:
+@@ -335,129 +333,129 @@ void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
+ 	case DDP_COMPONENT_DPI0:
+ 	case DDP_COMPONENT_DPI1:
+ 		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
+-			       ddp->regs +
+-			       DISP_REG_MUTEX_SOF(ddp->data->mutex_sof_reg,
++			       mtx->regs +
++			       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
+ 						  mutex->id));
+ 		break;
+ 	default:
+-		if (ddp->data->mutex_mod[id] < 32) {
+-			offset = DISP_REG_MUTEX_MOD(ddp->data->mutex_mod_reg,
++		if (mtx->data->mutex_mod[id] < 32) {
++			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+ 						    mutex->id);
+-			reg = readl_relaxed(ddp->regs + offset);
+-			reg &= ~(1 << ddp->data->mutex_mod[id]);
+-			writel_relaxed(reg, ddp->regs + offset);
++			reg = readl_relaxed(mtx->regs + offset);
++			reg &= ~(1 << mtx->data->mutex_mod[id]);
++			writel_relaxed(reg, mtx->regs + offset);
+ 		} else {
+ 			offset = DISP_REG_MUTEX_MOD2(mutex->id);
+-			reg = readl_relaxed(ddp->regs + offset);
+-			reg &= ~(1 << (ddp->data->mutex_mod[id] - 32));
+-			writel_relaxed(reg, ddp->regs + offset);
++			reg = readl_relaxed(mtx->regs + offset);
++			reg &= ~(1 << (mtx->data->mutex_mod[id] - 32));
++			writel_relaxed(reg, mtx->regs + offset);
+ 		}
+ 		break;
+ 	}
+ }
+ 
+-void mtk_disp_mutex_enable(struct mtk_disp_mutex *mutex)
++void mtk_mutex_enable(struct mtk_mutex *mutex)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
+ 
+-	WARN_ON(&ddp->mutex[mutex->id] != mutex);
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+ 
+-	writel(1, ddp->regs + DISP_REG_MUTEX_EN(mutex->id));
++	writel(1, mtx->regs + DISP_REG_MUTEX_EN(mutex->id));
+ }
+ 
+-void mtk_disp_mutex_disable(struct mtk_disp_mutex *mutex)
++void mtk_mutex_disable(struct mtk_mutex *mutex)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
+ 
+-	WARN_ON(&ddp->mutex[mutex->id] != mutex);
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+ 
+-	writel(0, ddp->regs + DISP_REG_MUTEX_EN(mutex->id));
++	writel(0, mtx->regs + DISP_REG_MUTEX_EN(mutex->id));
+ }
+ 
+-void mtk_disp_mutex_acquire(struct mtk_disp_mutex *mutex)
++void mtk_mutex_acquire(struct mtk_mutex *mutex)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
+ 	u32 tmp;
+ 
+-	writel(1, ddp->regs + DISP_REG_MUTEX_EN(mutex->id));
+-	writel(1, ddp->regs + DISP_REG_MUTEX(mutex->id));
+-	if (readl_poll_timeout_atomic(ddp->regs + DISP_REG_MUTEX(mutex->id),
++	writel(1, mtx->regs + DISP_REG_MUTEX_EN(mutex->id));
++	writel(1, mtx->regs + DISP_REG_MUTEX(mutex->id));
++	if (readl_poll_timeout_atomic(mtx->regs + DISP_REG_MUTEX(mutex->id),
+ 				      tmp, tmp & INT_MUTEX, 1, 10000))
+ 		pr_err("could not acquire mutex %d\n", mutex->id);
+ }
+ 
+-void mtk_disp_mutex_release(struct mtk_disp_mutex *mutex)
++void mtk_mutex_release(struct mtk_mutex *mutex)
+ {
+-	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+-					   mutex[mutex->id]);
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
+ 
+-	writel(0, ddp->regs + DISP_REG_MUTEX(mutex->id));
++	writel(0, mtx->regs + DISP_REG_MUTEX(mutex->id));
+ }
+ 
+-static int mtk_ddp_probe(struct platform_device *pdev)
++static int mtk_mutex_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+-	struct mtk_ddp *ddp;
++	struct mtk_mutex_ctx *mtx;
+ 	struct resource *regs;
+ 	int i;
+ 
+-	ddp = devm_kzalloc(dev, sizeof(*ddp), GFP_KERNEL);
+-	if (!ddp)
++	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
++	if (!mtx)
+ 		return -ENOMEM;
+ 
+ 	for (i = 0; i < 10; i++)
+-		ddp->mutex[i].id = i;
++		mtx->mutex[i].id = i;
+ 
+-	ddp->data = of_device_get_match_data(dev);
++	mtx->data = of_device_get_match_data(dev);
+ 
+-	if (!ddp->data->no_clk) {
+-		ddp->clk = devm_clk_get(dev, NULL);
+-		if (IS_ERR(ddp->clk)) {
+-			if (PTR_ERR(ddp->clk) != -EPROBE_DEFER)
++	if (!mtx->data->no_clk) {
++		mtx->clk = devm_clk_get(dev, NULL);
++		if (IS_ERR(mtx->clk)) {
++			if (PTR_ERR(mtx->clk) != -EPROBE_DEFER)
+ 				dev_err(dev, "Failed to get clock\n");
+-			return PTR_ERR(ddp->clk);
++			return PTR_ERR(mtx->clk);
+ 		}
+ 	}
+ 
+ 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	ddp->regs = devm_ioremap_resource(dev, regs);
+-	if (IS_ERR(ddp->regs)) {
++	mtx->regs = devm_ioremap_resource(dev, regs);
++	if (IS_ERR(mtx->regs)) {
+ 		dev_err(dev, "Failed to map mutex registers\n");
+-		return PTR_ERR(ddp->regs);
++		return PTR_ERR(mtx->regs);
+ 	}
+ 
+-	platform_set_drvdata(pdev, ddp);
++	platform_set_drvdata(pdev, mtx);
+ 
+ 	return 0;
+ }
+ 
+-static int mtk_ddp_remove(struct platform_device *pdev)
++static int mtk_mutex_remove(struct platform_device *pdev)
+ {
+ 	return 0;
+ }
+ 
+-static const struct of_device_id ddp_driver_dt_match[] = {
++static const struct of_device_id mutex_driver_dt_match[] = {
+ 	{ .compatible = "mediatek,mt2701-disp-mutex",
+-	  .data = &mt2701_ddp_driver_data},
++	  .data = &mt2701_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt2712-disp-mutex",
+-	  .data = &mt2712_ddp_driver_data},
++	  .data = &mt2712_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8167-disp-mutex",
+-	  .data = &mt8167_ddp_driver_data},
++	  .data = &mt8167_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8173-disp-mutex",
+-	  .data = &mt8173_ddp_driver_data},
++	  .data = &mt8173_mutex_driver_data},
+ 	{},
+ };
+-MODULE_DEVICE_TABLE(of, ddp_driver_dt_match);
++MODULE_DEVICE_TABLE(of, mutex_driver_dt_match);
+ 
+-struct platform_driver mtk_ddp_driver = {
+-	.probe		= mtk_ddp_probe,
+-	.remove		= mtk_ddp_remove,
++struct platform_driver mtk_mutex_driver = {
++	.probe		= mtk_mutex_probe,
++	.remove		= mtk_mutex_remove,
+ 	.driver		= {
+-		.name	= "mediatek-ddp",
++		.name	= "mediatek-mutex",
+ 		.owner	= THIS_MODULE,
+-		.of_match_table = ddp_driver_dt_match,
++		.of_match_table = mutex_driver_dt_match,
+ 	},
+ };
 diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.h b/drivers/gpu/drm/mediatek/mtk_mutex.h
-index b678e0988a37..6fe4ffbde290 100644
+index 3abcc20e88fb..b678e0988a37 100644
 --- a/drivers/gpu/drm/mediatek/mtk_mutex.h
 +++ b/drivers/gpu/drm/mediatek/mtk_mutex.h
-@@ -10,7 +10,7 @@ struct regmap;
- struct device;
- struct mtk_mutex;
+@@ -8,19 +8,19 @@
  
--struct mtk_mutex *mtk_mutex_get(struct device *dev, unsigned int id);
-+struct mtk_mutex *mtk_mutex_get(struct device *dev);
- int mtk_mutex_prepare(struct mtk_mutex *mutex);
- void mtk_mutex_add_comp(struct mtk_mutex *mutex,
- 			enum mtk_ddp_comp_id id);
+ struct regmap;
+ struct device;
+-struct mtk_disp_mutex;
++struct mtk_mutex;
+ 
+-struct mtk_disp_mutex *mtk_disp_mutex_get(struct device *dev, unsigned int id);
+-int mtk_disp_mutex_prepare(struct mtk_disp_mutex *mutex);
+-void mtk_disp_mutex_add_comp(struct mtk_disp_mutex *mutex,
+-			     enum mtk_ddp_comp_id id);
+-void mtk_disp_mutex_enable(struct mtk_disp_mutex *mutex);
+-void mtk_disp_mutex_disable(struct mtk_disp_mutex *mutex);
+-void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
+-				enum mtk_ddp_comp_id id);
+-void mtk_disp_mutex_unprepare(struct mtk_disp_mutex *mutex);
+-void mtk_disp_mutex_put(struct mtk_disp_mutex *mutex);
+-void mtk_disp_mutex_acquire(struct mtk_disp_mutex *mutex);
+-void mtk_disp_mutex_release(struct mtk_disp_mutex *mutex);
++struct mtk_mutex *mtk_mutex_get(struct device *dev, unsigned int id);
++int mtk_mutex_prepare(struct mtk_mutex *mutex);
++void mtk_mutex_add_comp(struct mtk_mutex *mutex,
++			enum mtk_ddp_comp_id id);
++void mtk_mutex_enable(struct mtk_mutex *mutex);
++void mtk_mutex_disable(struct mtk_mutex *mutex);
++void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
++			   enum mtk_ddp_comp_id id);
++void mtk_mutex_unprepare(struct mtk_mutex *mutex);
++void mtk_mutex_put(struct mtk_mutex *mutex);
++void mtk_mutex_acquire(struct mtk_mutex *mutex);
++void mtk_mutex_release(struct mtk_mutex *mutex);
+ 
+ #endif /* MTK_MUTEX_H */
 -- 
 2.17.1
 
