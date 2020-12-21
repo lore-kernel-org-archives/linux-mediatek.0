@@ -2,20 +2,20 @@ Return-Path: <SRS0=ptZs=FZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A03C8C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 18:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F340CC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 19:09:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5068A225AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 18:41:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5068A225AA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8A38022AAB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 19:09:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A38022AAB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,65 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LUyzTTwjlo30QB1zYgMTVSS4zkg5p+baeR7bjqPfGTY=; b=2D1UIo0F69kOU4TqLx26YE+wx
-	VaFxPnCc4XKQhYcmvaYIL4qKGXdub16NJviEtdPdsocPHzhpeej4QUKbvLS0pEyi9XxrVzoKQZKwe
-	ZO7v3ScYMnOx+h+XjDbWLLuygp8mMqp6CNG+w4YNQHGMqRKntL1uWEBonzNLO5W0JG+FxsQFnZ9N8
-	F1RGlqrTsh/AW5t3lpy5EA1UsEphc2AZ8UCJcRdffN92L4X8LZPfqydoUiAMIeYZW7AatEdY7cj+p
-	UKGnNrkLHeu/wf4EfqCPLVs7O7s/dx1pwN0B7L5vXFT6e9s513LtLi6L8aNsE1feyN2B2ZBYCv4M1
-	SyzLqDHZA==;
+	 bh=iP0yd/Y3oijZlcdSbquYNodU5jPIFGpqqnKM7B3UrO0=; b=pIN0ozKfaMEN9E5KRSCqgF7/a
+	8l6SJ1MJdUPyjGPpUpVfcIJN/Yv29oYW7ZRqcFwIWVvgrt/C4xf83kClXlGhcIQAKOpLROVe53Qex
+	lr4RIqDP4P//HGEBIGfC4aJ9M+uoNdGetqfKWfOiHCCguudH+24cgMO9Aq5Yndl1H22XdsGFFjXrX
+	ikNyfZA8uHB9I46MKkUxB3VzNplCOhniOcdMzRMTF9eMPhD4f4BcsJme3688Gl31SpzI3yDIK3Z1W
+	ymrI8KN9OPKdQ+xKMJ0bykezR/xAF1WmE3yRnkuRk0x0w6e1oZeSUeCN3R+Ad+7HfWpr7U4qvM6FE
+	xAFxSU/Tg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krQ7n-0006Rq-4z; Mon, 21 Dec 2020 18:41:39 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1krQZ2-0000bE-00; Mon, 21 Dec 2020 19:09:48 +0000
+Received: from mail-ot1-f50.google.com ([209.85.210.50])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krQ7j-0006QG-52
- for linux-mediatek@lists.infradead.org; Mon, 21 Dec 2020 18:41:36 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id n42so3762724ota.12
- for <linux-mediatek@lists.infradead.org>; Mon, 21 Dec 2020 10:41:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=xVcsRRAe3QQsAP3c3tjdQE3L4kRnwMJNIrR1ol7P6LI=;
- b=NUQAhkR7tMApqoWGZztLCQVXhf/juykgQDS+v0C7Mzi4KXQ2fghYM8jonrJ9xTp+jI
- b+2N8LS4N/pMXJALUH0JoFHnGNcPtS4jT7f/4d+ZaNvqpXMLDeombSbT2pFCpfeULW5D
- bv7w6bf0H7K9oBcKE7LWSRaE7YTUDEm9x2klyae/qHU4EcVHKVf0uEViKAtXSVSNDjT6
- wF6tD92zLDA1Yz0y883o9G26zYZNtbaOFswVj+f4HwSZzwb6Dic3AKG46xZkC1uv2Gb7
- mqSsmkRza17vqz1Dq5fqKZYP/6Vg1UChzsEiLDyICnFHel97F03f9N6sz5g84TkXZQdE
- H4YQ==
+ id 1krQYy-0000aW-3M; Mon, 21 Dec 2020 19:09:45 +0000
+Received: by mail-ot1-f50.google.com with SMTP id j20so9765047otq.5;
+ Mon, 21 Dec 2020 11:09:43 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=xVcsRRAe3QQsAP3c3tjdQE3L4kRnwMJNIrR1ol7P6LI=;
- b=ojuy/TK2i/q1zLa7OkPjqETyA/U9t+NiaCp8x6o/u6zEpdklUvnrxmkkMw0cAJgiYb
- apAMx1rJ+RMgkBzb2iwe+8/Di7yYasor+z0ce8FB9ZB9Q0UYBDKH4oW+Jr3V1+vQgmYk
- i4lyNJWXdLmb7UDua3JDYU7Ab+4rOWMilVSf+18zGYAZw/voyny/UbGkk99zFgq2dyAn
- p8x1ECaVwYXbzsNDaDCsQ7X1UE7g5smdEs/mClEwbdPC/1xBsOcnhCi3o5/59byUqbJM
- tIlpYpZqrZ3+esymoYDBz/FXIBJ7S/uVJQruFOq6Atb+C8xvswAD58CmNMbJ+4Na7YZQ
- kkIg==
-X-Gm-Message-State: AOAM5326s2KI9hh9RYaRf5NhNU1dFas2uGmSwHFXTjlw22knkxncfrhG
- HNBISGWiHs8WXebK6+rUsy/gXg==
-X-Google-Smtp-Source: ABdhPJxwRz48sd8HXLykSZi1QNKtTFfr52t8ljWw072lXQLgqmltmACqSFHSdPW33O3TK4vke0+FQQ==
-X-Received: by 2002:a9d:5388:: with SMTP id w8mr13031427otg.311.1608576090861; 
- Mon, 21 Dec 2020 10:41:30 -0800 (PST)
-Received: from builder.lan (104-57-184-186.lightspeed.austtx.sbcglobal.net.
- [104.57.184.186])
- by smtp.gmail.com with ESMTPSA id s26sm3970033otd.8.2020.12.21.10.41.29
+ bh=gpbfWibUolhFX76xZKFQOWQOSDe1PC6J3TzwCljJOM8=;
+ b=tpNgxoxNPwW843NeF3psnr318qmm/she50rWYYwFO6DIJm7RKh++a5dPpZk6+OJ7s1
+ jDWJrSyK0vjU74xXOS0lGozZZqEirTJSddsab2bOBz1G9cXpacDQsjtibumLFpbFXXjP
+ s3vHJgBIgErVoBByiCJnzRW1tAGZ7tTarhEtbZ4d1WWvImzv9zolxBxzCOQkzGmtpgvP
+ QGCBRyQ9HRomQ9sCu3xWMwBeuiZ6FkUz3izCjcs1gr9BP4OIjqb1Cqe4+DcIxbTMwom/
+ xWeNJnF/9JAto7QCoNe5Lb+M7FNwizpzHU+sskVCOF3suAQ9y9odQ8XmfvK7Ukr2p19r
+ ftgA==
+X-Gm-Message-State: AOAM530amtnkwTz9Ta+mygHqpegrcEN8YraYtQXpZM2QWQhow92URkWy
+ bDb1J9MKEQtSjAy33+E6hw==
+X-Google-Smtp-Source: ABdhPJzaiFiWxg7ZzVBsAh2inI/6zkWWvRELyI7/oXbpc7eHTgyHvSth+/vl3FFP4Sr5oJ3OPBlY4A==
+X-Received: by 2002:a05:6830:2413:: with SMTP id
+ j19mr13671148ots.251.1608577783001; 
+ Mon, 21 Dec 2020 11:09:43 -0800 (PST)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id t2sm947176otj.47.2020.12.21.11.09.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Dec 2020 10:41:30 -0800 (PST)
-Date: Mon, 21 Dec 2020 12:41:28 -0600
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-To: Ziqi Chen <ziqichen@codeaurora.org>
-Subject: Re: [PATCH RFC v3 1/1] scsi: ufs: Fix ufs power down/on specs
- violation
-Message-ID: <X+DsWM+/h75doajo@builder.lan>
-References: <1608537091-78575-1-git-send-email-ziqichen@codeaurora.org>
+ Mon, 21 Dec 2020 11:09:41 -0800 (PST)
+Received: (nullmailer pid 379769 invoked by uid 1000);
+ Mon, 21 Dec 2020 19:09:37 -0000
+Date: Mon, 21 Dec 2020 12:09:37 -0700
+From: Rob Herring <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v4 01/11] dt-bindings: usb: convert usb-device.txt to
+ YAML schema
+Message-ID: <20201221190937.GA369845@robh.at.kernel.org>
+References: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1608537091-78575-1-git-send-email-ziqichen@codeaurora.org>
+In-Reply-To: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201221_134135_327642_0DB7FEA5 
-X-CRM114-Status: GOOD (  34.33  )
+X-CRM114-CacheID: sfid-20201221_140944_310841_C671B609 
+X-CRM114-Status: GOOD (  40.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,342 +84,356 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nguyenb@codeaurora.org, cang@codeaurora.org,
- Alim Akhtar <alim.akhtar@samsung.com>, vinholikatti@gmail.com,
- Bean Huo <beanhuo@micron.com>, Satya Tangirala <satyat@google.com>,
- jejb@linux.vnet.ibm.com, Bart Van Assche <bvanassche@acm.org>,
- linux-scsi@vger.kernel.org, kwmad.kim@samsung.com,
- Andy Gross <agross@kernel.org>, kernel-team@android.com, salyzyn@google.com,
- "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>, Avri Altman <avri.altman@wdc.com>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, stanley.chu@mediatek.com,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, rnayak@codeaurora.org,
- saravanak@google.com, martin.petersen@oracle.com,
- Adrian Hunter <adrian.hunter@intel.com>,
- open list <linux-kernel@vger.kernel.org>, hongwus@codeaurora.org,
- asutoshd@codeaurora.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Min Guo <min.guo@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org,
+ David Airlie <airlied@linux.ie>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>, Vinod Koul <vkoul@kernel.org>,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Stanley Chu <stanley.chu@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon 21 Dec 01:51 CST 2020, Ziqi Chen wrote:
-
-> As per specs, e.g, JESD220E chapter 7.2, while powering
-> off/on the ufs device, RST_N signal and REF_CLK signal
-> should be between VSS(Ground) and VCCQ/VCCQ2.
+On Wed, Dec 16, 2020 at 05:30:02PM +0800, Chunfeng Yun wrote:
+> Convert usb-device.txt to YAML schema usb-device.yaml
 > 
-> To flexibly control device reset line, re-name the function
-> ufschd_vops_device_reset(sturct ufs_hba *hba) to ufshcd_
-> vops_toggle_device_reset(sturct ufs_hba *hba, bool down). The
-> new parameter "bool down" is used to separate device reset
-> line pulling down from pulling up.
-> 
-> Cc: Kiwoong Kim <kwmad.kim@samsung.com>
-> Cc: Stanley Chu <stanley.chu@mediatek.com>
-> Signed-off-by: Ziqi Chen <ziqichen@codeaurora.org>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  drivers/scsi/ufs/ufs-mediatek.c | 27 +++++++++-----------------
->  drivers/scsi/ufs/ufs-qcom.c     | 22 ++++++++++-----------
->  drivers/scsi/ufs/ufshcd.c       | 43 ++++++++++++++++++++++++++++++-----------
->  drivers/scsi/ufs/ufshcd.h       | 10 +++++-----
->  4 files changed, 56 insertions(+), 46 deletions(-)
+> v4: no changes, update dependent series:
+>     https://patchwork.kernel.org/project/linux-usb/list/?series=399561
+>     [v6,00/19] dt-bindings: usb: Add generic USB HCD, xHCI, DWC USB3 DT schema
 > 
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-> index 80618af..bff2c42 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.c
-> +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -841,27 +841,18 @@ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
->  	return ret;
->  }
->  
-> -static int ufs_mtk_device_reset(struct ufs_hba *hba)
-> +static int ufs_mtk_toggle_device_reset(struct ufs_hba *hba, bool down)
->  {
->  	struct arm_smccc_res res;
->  
-> -	ufs_mtk_device_reset_ctrl(0, res);
+> v3:
+>   1. remove $nodenmae and items key word for compatilbe;
+>   2. add additionalProperties;
+> 
+>   The followings are suggested by Rob:
+>   3. merge the following patch
+>     [v2,1/4] dt-bindings: usb: convert usb-device.txt to YAML schema
+>     [v2,2/4] dt-bindings: usb: add properties for hard wired devices
+>   4. define the unit-address for hard-wired device in usb-hcd.yaml,
+>      also define its 'reg' and 'compatible';
+>   5. This series is base on Serge's series:
+>     https://patchwork.kernel.org/project/linux-usb/cover/20201111090853.14112-1-Sergey.Semin@baikalelectronics.ru/
+>     [v4,00/18] dt-bindings: usb: Add generic USB HCD, xHCI, DWC USB3 DT schema
+> 
+> v2 changes suggested by Rob:
+>   1. modify pattern to support any USB class
+>   2. convert usb-device.txt into usb-device.yaml
+> ---
+>  .../devicetree/bindings/usb/usb-device.txt    | 102 --------------
+>  .../devicetree/bindings/usb/usb-device.yaml   | 125 ++++++++++++++++++
+>  .../devicetree/bindings/usb/usb-hcd.yaml      |  33 +++++
+>  3 files changed, 158 insertions(+), 102 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/usb/usb-device.txt
+>  create mode 100644 Documentation/devicetree/bindings/usb/usb-device.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/usb-device.txt b/Documentation/devicetree/bindings/usb/usb-device.txt
+> deleted file mode 100644
+> index 036be172b1ae..000000000000
+> --- a/Documentation/devicetree/bindings/usb/usb-device.txt
+> +++ /dev/null
+> @@ -1,102 +0,0 @@
+> -Generic USB Device Properties
 > -
-> -	/*
-> -	 * The reset signal is active low. UFS devices shall detect
-> -	 * more than or equal to 1us of positive or negative RST_n
-> -	 * pulse width.
-> -	 *
-> -	 * To be on safe side, keep the reset low for at least 10us.
-> -	 */
-> -	usleep_range(10, 15);
+> -Usually, we only use device tree for hard wired USB device.
+> -The reference binding doc is from:
+> -http://www.devicetree.org/open-firmware/bindings/usb/usb-1_0.ps
 > -
-> -	ufs_mtk_device_reset_ctrl(1, res);
+> -Four types of device-tree nodes are defined: "host-controller nodes"
+> -representing USB host controllers, "device nodes" representing USB devices,
+> -"interface nodes" representing USB interfaces and "combined nodes"
+> -representing simple USB devices.
 > -
-> -	/* Some devices may need time to respond to rst_n */
-> -	usleep_range(10000, 15000);
-> +	if (down) {
-> +		ufs_mtk_device_reset_ctrl(0, res);
-> +	} else {
-> +		ufs_mtk_device_reset_ctrl(1, res);
->  
-> -	dev_info(hba->dev, "device reset done\n");
-> +		/* Some devices may need time to respond to rst_n */
-> +		usleep_range(10000, 15000);
-> +	}
->  
->  	return 0;
->  }
-> @@ -1052,7 +1043,7 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
->  	.suspend             = ufs_mtk_suspend,
->  	.resume              = ufs_mtk_resume,
->  	.dbg_register_dump   = ufs_mtk_dbg_register_dump,
-> -	.device_reset        = ufs_mtk_device_reset,
-> +	.toggle_device_reset        = ufs_mtk_toggle_device_reset,
->  	.event_notify        = ufs_mtk_event_notify,
->  };
->  
-> diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
-> index 2206b1e..c2ccaa5 100644
-> --- a/drivers/scsi/ufs/ufs-qcom.c
-> +++ b/drivers/scsi/ufs/ufs-qcom.c
-> @@ -1404,12 +1404,13 @@ static void ufs_qcom_dump_dbg_regs(struct ufs_hba *hba)
->  }
->  
->  /**
-> - * ufs_qcom_device_reset() - toggle the (optional) device reset line
-> + * ufs_qcom_toggle_device_reset() - toggle the (optional) device reset line
->   * @hba: per-adapter instance
-> + * @down: pull down or pull up device reset line
->   *
->   * Toggles the (optional) reset line to reset the attached device.
->   */
-> -static int ufs_qcom_device_reset(struct ufs_hba *hba)
-> +static int ufs_qcom_toggle_device_reset(struct ufs_hba *hba, bool down)
->  {
->  	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
->  
-> @@ -1417,15 +1418,12 @@ static int ufs_qcom_device_reset(struct ufs_hba *hba)
->  	if (!host->device_reset)
->  		return -EOPNOTSUPP;
->  
-> -	/*
-> -	 * The UFS device shall detect reset pulses of 1us, sleep for 10us to
-> -	 * be on the safe side.
-> -	 */
-> -	gpiod_set_value_cansleep(host->device_reset, 1);
-> -	usleep_range(10, 15);
+> -A combined node shall be used instead of a device node and an interface node
+> -for devices of class 0 or 9 (hub) with a single configuration and a single
+> -interface.
 > -
-> -	gpiod_set_value_cansleep(host->device_reset, 0);
-> -	usleep_range(10, 15);
-> +	if (down) {
-> +		gpiod_set_value_cansleep(host->device_reset, 1);
-> +	} else {
-> +		gpiod_set_value_cansleep(host->device_reset, 0);
-> +		usleep_range(10, 15);
-
-The comment above describes that the reset pulse should be 10uS, so the
-only reason I can see for the sleep here would be for devices to come
-back up after the reset pulse - i.e. what Mediatek believes needs
-10-15mS.
-
-As such, I would like you to move this sleep out to the caller and then
-turns this snippet into just:
-
-	gpiod_set_value_cansleep(host->device_reset, down);
-
-I don't see a problem using Mediatek's reasoning and sleep values in the
-common case.
-
-> +	}
->  
->  	return 0;
->  }
-> @@ -1473,7 +1471,7 @@ static const struct ufs_hba_variant_ops ufs_hba_qcom_vops = {
->  	.suspend		= ufs_qcom_suspend,
->  	.resume			= ufs_qcom_resume,
->  	.dbg_register_dump	= ufs_qcom_dump_dbg_regs,
-> -	.device_reset		= ufs_qcom_device_reset,
-> +	.toggle_device_reset		= ufs_qcom_toggle_device_reset,
->  	.config_scaling_param = ufs_qcom_config_scaling_param,
->  	.program_key		= ufs_qcom_ice_program_key,
->  };
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index e221add..2ee905f 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -585,7 +585,20 @@ static void ufshcd_device_reset(struct ufs_hba *hba)
->  {
->  	int err;
->  
-> -	err = ufshcd_vops_device_reset(hba);
-> +	err = ufshcd_vops_toggle_device_reset(hba, true);
-> +	if (err) {
-> +		dev_err(hba->dev, "device reset pulling down failure: %d\n", err);
-
-"asserting device reset failed"
-
-> +		return;
-> +	}
-> +
-> +	/*
-> +	 * The reset signal is active low. The UFS device
-> +	 * shall detect reset pulses of 1us, sleep for at
-> +	 * least 10us to be on the safe side.
-> +	 */
-> +	usleep_range(10, 15);
-> +
-> +	err = ufshcd_vops_toggle_device_reset(hba, false);
->  
->  	if (!err) {
->  		ufshcd_set_ufs_dev_active(hba);
-> @@ -593,7 +606,11 @@ static void ufshcd_device_reset(struct ufs_hba *hba)
->  			hba->wb_enabled = false;
->  			hba->wb_buf_flush_enabled = false;
->  		}
-> +		dev_info(hba->dev, "device reset done\n");
-
-Please use dev_dbg(), as this is only interesting to us when we're
-actually debugging UFS related issues.
-
-> +	} else {
-> +		dev_err(hba->dev, "device reset pulling up failure: %d\n", err);
-
-"deasserting device reset failed"
-
->  	}
-> +
->  	if (err != -EOPNOTSUPP)
->  		ufshcd_update_evt_hist(hba, UFS_EVT_DEV_RESET, err);
->  }
-> @@ -8686,8 +8703,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	if (ret)
->  		goto set_dev_active;
->  
-> -	ufshcd_vreg_set_lpm(hba);
+> -A "hub node" is a combined node or an interface node that represents a USB
+> -hub.
 > -
->  disable_clks:
->  	/*
->  	 * Call vendor specific suspend callback. As these callbacks may access
-> @@ -8703,6 +8718,9 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	 */
->  	ufshcd_disable_irq(hba);
->  
-> +	if (ufshcd_is_link_off(hba))
-> +		ufshcd_vops_toggle_device_reset(hba, true);
-> +
->  	ufshcd_setup_clocks(hba, false);
->  
->  	if (ufshcd_is_clkgating_allowed(hba)) {
-> @@ -8711,6 +8729,8 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  					hba->clk_gating.state);
->  	}
->  
-> +	ufshcd_vreg_set_lpm(hba);
-> +
->  	/* Put the host controller in low power mode if possible */
->  	ufshcd_hba_vreg_set_lpm(hba);
->  	goto out;
-> @@ -8778,18 +8798,19 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	old_link_state = hba->uic_link_state;
->  
->  	ufshcd_hba_vreg_set_hpm(hba);
-> +
-> +	ret = ufshcd_vreg_set_hpm(hba);
-> +	if (ret)
-> +		goto out;
-> +
->  	/* Make sure clocks are enabled before accessing controller */
->  	ret = ufshcd_setup_clocks(hba, true);
->  	if (ret)
-> -		goto out;
-> +		goto disable_vreg;
->  
->  	/* enable the host irq as host controller would be active soon */
->  	ufshcd_enable_irq(hba);
->  
-> -	ret = ufshcd_vreg_set_hpm(hba);
-> -	if (ret)
-> -		goto disable_irq_and_vops_clks;
 > -
->  	/*
->  	 * Call vendor specific resume callback. As these callbacks may access
->  	 * vendor specific host controller register space call them when the
-> @@ -8797,7 +8818,7 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	 */
->  	ret = ufshcd_vops_resume(hba, pm_op);
->  	if (ret)
-> -		goto disable_vreg;
-> +		goto disable_irq_and_vops_clks;
+> -Required properties for device nodes:
+> -- compatible: "usbVID,PID", where VID is the vendor id and PID the product id.
+> -  The textual representation of VID and PID shall be in lower case hexadecimal
+> -  with leading zeroes suppressed. The other compatible strings from the above
+> -  standard binding could also be used, but a device adhering to this binding
+> -  may leave out all except for "usbVID,PID".
+> -- reg: the number of the USB hub port or the USB host-controller port to which
+> -  this device is attached. The range is 1-255.
+> -
+> -
+> -Required properties for device nodes with interface nodes:
+> -- #address-cells: shall be 2
+> -- #size-cells: shall be 0
+> -
+> -
+> -Required properties for interface nodes:
+> -- compatible: "usbifVID,PID.configCN.IN", where VID is the vendor id, PID is
+> -  the product id, CN is the configuration value and IN is the interface
+> -  number. The textual representation of VID, PID, CN and IN shall be in lower
+> -  case hexadecimal with leading zeroes suppressed. The other compatible
+> -  strings from the above standard binding could also be used, but a device
+> -  adhering to this binding may leave out all except for
+> -  "usbifVID,PID.configCN.IN".
+> -- reg: the interface number and configuration value
+> -
+> -The configuration component is not included in the textual representation of
+> -an interface-node unit address for configuration 1.
+> -
+> -
+> -Required properties for combined nodes:
+> -- compatible: "usbVID,PID", where VID is the vendor id and PID the product id.
+> -  The textual representation of VID and PID shall be in lower case hexadecimal
+> -  with leading zeroes suppressed. The other compatible strings from the above
+> -  standard binding could also be used, but a device adhering to this binding
+> -  may leave out all except for "usbVID,PID".
+> -- reg: the number of the USB hub port or the USB host-controller port to which
+> -  this device is attached. The range is 1-255.
+> -
+> -
+> -Required properties for hub nodes with device nodes:
+> -- #address-cells: shall be 1
+> -- #size-cells: shall be 0
+> -
+> -
+> -Required properties for host-controller nodes with device nodes:
+> -- #address-cells: shall be 1
+> -- #size-cells: shall be 0
+> -
+> -
+> -Example:
+> -
+> -&usb1 {	/* host controller */
+> -	#address-cells = <1>;
+> -	#size-cells = <0>;
+> -
+> -	hub@1 {		/* hub connected to port 1 */
+> -		compatible = "usb5e3,608";
+> -		reg = <1>;
+> -	};
+> -
+> -	device@2 {	/* device connected to port 2 */
+> -		compatible = "usb123,4567";
+> -		reg = <2>;
+> -	};
+> -
+> -	device@3 { 	/* device connected to port 3 */
+> -		compatible = "usb123,abcd";
+> -		reg = <3>;
+> -
+> -		#address-cells = <2>;
+> -		#size-cells = <0>;
+> -
+> -		interface@0 {	/* interface 0 of configuration 1 */
+> -			compatible = "usbif123,abcd.config1.0";
+> -			reg = <0 1>;
+> -		};
+> -
+> -		interface@0,2 {	/* interface 0 of configuration 2 */
+> -			compatible = "usbif123,abcd.config2.0";
+> -			reg = <0 2>;
+> -		};
+> -	};
+> -};
+> diff --git a/Documentation/devicetree/bindings/usb/usb-device.yaml b/Documentation/devicetree/bindings/usb/usb-device.yaml
+> new file mode 100644
+> index 000000000000..f31d8a85d3e6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/usb-device.yaml
+> @@ -0,0 +1,125 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/usb/usb-device.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: The device tree bindings for the Generic USB Device
+> +
+> +maintainers:
+> +  - Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> +
+> +description: |
+> +  Usually, we only use device tree for hard wired USB device.
+> +  The reference binding doc is from:
+> +  http://www.devicetree.org/open-firmware/bindings/usb/usb-1_0.ps
+> +
+> +  Four types of device-tree nodes are defined: "host-controller nodes"
+> +  representing USB host controllers, "device nodes" representing USB devices,
+> +  "interface nodes" representing USB interfaces and "combined nodes"
+> +  representing simple USB devices.
+> +
+> +  A combined node shall be used instead of a device node and an interface node
+> +  for devices of class 0 or 9 (hub) with a single configuration and a single
+> +  interface.
+> +
+> +  A "hub node" is a combined node or an interface node that represents a USB
+> +  hub.
+> +
+> +properties:
+> +  compatible:
+> +    pattern: "^usb[0-9a-f]+,[0-9a-f]+$"
+
+You can refine the length allowed a bit: [0-9a-f]{1,4}
+
+Same applies elsewhere.
+
+> +    description: Device nodes or combined nodes.
+> +      "usbVID,PID", where VID is the vendor id and PID the product id.
+> +      The textual representation of VID and PID shall be in lower case
+> +      hexadecimal with leading zeroes suppressed. The other compatible
+> +      strings from the above standard binding could also be used,
+> +      but a device adhering to this binding may leave out all except
+> +      for "usbVID,PID".
+> +
+> +  reg:
+> +    description: the number of the USB hub port or the USB host-controller
+> +      port to which this device is attached. The range is 1-255.
+> +    maxItems: 1
+> +
+> +  "#address-cells":
+> +    description: should be 1 for hub nodes with device nodes,
+> +      should be 2 for device nodes with interface nodes.
+> +    enum: [1, 2]
+> +
+> +  "#size-cells":
+> +    const: 0
+> +
+> +patternProperties:
+> +  "^interface@[0-9]+(,[0-9]+)$":
+> +    type: object
+> +    description: USB interface nodes.
+> +      The configuration component is not included in the textual
+> +      representation of an interface-node unit address for configuration 1.
+> +
+> +    properties:
+> +      compatible:
+> +        pattern: "^usbif[0-9a-f]+,[0-9a-f]+.config[0-9a-f]+.[0-9a-f]+$"
+> +        description: Interface nodes.
+> +          "usbifVID,PID.configCN.IN", where VID is the vendor id, PID is
+> +          the product id, CN is the configuration value and IN is the interface
+> +          number. The textual representation of VID, PID, CN and IN shall be
+> +          in lower case hexadecimal with leading zeroes suppressed.
+> +          The other compatible strings from the above standard binding could
+> +          also be used, but a device adhering to this binding may leave out
+> +          all except for "usbifVID,PID.configCN.IN".
+> +
+> +      reg:
+> +        description: should be 2 cells long, the first cell represents
+> +          the interface number and the second cell represents the
+> +          configuration value.
+> +        maxItems: 1
+> +
+> +required:
+> +  - compatile
+> +  - reg
+> +
+> +additionalProperties: true
+> +
+> +examples:
+> +  #hub connected to port 1
+> +  #device connected to port 2
+> +  #device connected to port 3
+> +  #    interface 0 of configuration 1
+> +  #    interface 0 of configuration 2
+> +  - |
+> +    usb@11270000 {
+> +        compatible = "generic-xhci";
+> +        reg = <0x11270000 0x1000>;
+> +        interrupts = <0x0 0x4e 0x0>;
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        hub@1 {
+> +            compatible = "usb5e3,608";
+> +            reg = <1>;
+> +        };
+> +
+> +        device@2 {
+> +            compatible = "usb123,4567";
+> +            reg = <2>;
+> +        };
+> +
+> +        device@3 {
+> +            compatible = "usb123,abcd";
+> +            reg = <3>;
+> +
+> +            #address-cells = <2>;
+> +            #size-cells = <0>;
+> +
+> +            interface@0 {
+> +                compatible = "usbif123,abcd.config1.0";
+> +                reg = <0 1>;
+> +            };
+> +
+> +            interface@0,2 {
+> +                compatible = "usbif123,abcd.config2.0";
+> +                reg = <0 2>;
+> +            };
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/usb/usb-hcd.yaml b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+> index 9881ac10380d..5d0c6b5500d6 100755
+> --- a/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+> +++ b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+> @@ -23,6 +23,32 @@ properties:
+>        targeted hosts (non-PC hosts).
+>      type: boolean
 >  
->  	/* For DeepSleep, the only supported option is to have the link off */
->  	WARN_ON(ufshcd_is_ufs_dev_deepsleep(hba) && !ufshcd_is_link_off(hba));
-> @@ -8864,8 +8885,6 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	ufshcd_link_state_transition(hba, old_link_state, 0);
->  vendor_suspend:
->  	ufshcd_vops_suspend(hba, pm_op);
-> -disable_vreg:
-> -	ufshcd_vreg_set_lpm(hba);
->  disable_irq_and_vops_clks:
->  	ufshcd_disable_irq(hba);
->  	if (hba->clk_scaling.is_allowed)
-> @@ -8876,6 +8895,8 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  		trace_ufshcd_clk_gating(dev_name(hba->dev),
->  					hba->clk_gating.state);
->  	}
-> +disable_vreg:
-> +	ufshcd_vreg_set_lpm(hba);
->  out:
->  	hba->pm_op_in_progress = 0;
->  	if (ret)
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index 9bb5f0e..dccc3eb 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -319,7 +319,7 @@ struct ufs_pwr_mode_info {
->   * @resume: called during host controller PM callback
->   * @dbg_register_dump: used to dump controller debug information
->   * @phy_initialization: used to initialize phys
-> - * @device_reset: called to issue a reset pulse on the UFS device
-> + * @toggle_device_reset: called to change logic level of reset gpio on the UFS device
->   * @program_key: program or evict an inline encryption key
->   * @event_notify: called to notify important events
->   */
-> @@ -350,7 +350,7 @@ struct ufs_hba_variant_ops {
->  	int     (*resume)(struct ufs_hba *, enum ufs_pm_op);
->  	void	(*dbg_register_dump)(struct ufs_hba *hba);
->  	int	(*phy_initialization)(struct ufs_hba *);
-> -	int	(*device_reset)(struct ufs_hba *hba);
-> +	int	(*toggle_device_reset)(struct ufs_hba *hba, bool down);
+> +  "#address-cells":
+> +    const: 1
+> +
+> +  "#size-cells":
+> +    const: 0
+> +
+> +patternProperties:
+> +  "@[0-9a-f]+$":
+> +    type: object
+> +    description: The hard wired USB devices
+> +
+> +    properties:
+> +      compatible:
+> +        pattern: "^usb[0-9a-f]+,[0-9a-f]+$"
+> +        $ref: /usb/usb-device.yaml
 
-I don't think "toggle" adds any value to the understanding of what this
-function is expected to do, so I would prefer that you just keep it
-"device_reset".
+This is wrong. It should be up a level. And no need to define 
+'compatible' or 'reg' here because those are defined within 
+usb-device.yaml.
 
-I also would prefer that you replace "down" with "asserted" - as this
-avoids questions about active high/low etc from the API.
-
-Thanks,
-Bjorn
-
->  	void	(*config_scaling_param)(struct ufs_hba *hba,
->  					struct devfreq_dev_profile *profile,
->  					void *data);
-> @@ -1216,10 +1216,10 @@ static inline void ufshcd_vops_dbg_register_dump(struct ufs_hba *hba)
->  		hba->vops->dbg_register_dump(hba);
->  }
+> +        description: the string is 'usbVID,PID', where VID is the vendor id
+> +          and PID is the product id
+> +
+> +      reg:
+> +        $ref: /usb/usb-device.yaml
+> +        maxItems: 1
+> +
+> +    required:
+> +      - compatible
+> +      - reg
+> +
+>  additionalProperties: true
 >  
-> -static inline int ufshcd_vops_device_reset(struct ufs_hba *hba)
-> +static inline int ufshcd_vops_toggle_device_reset(struct ufs_hba *hba, bool down)
->  {
-> -	if (hba->vops && hba->vops->device_reset)
-> -		return hba->vops->device_reset(hba);
-> +	if (hba->vops && hba->vops->toggle_device_reset)
-> +		return hba->vops->toggle_device_reset(hba, down);
->  
->  	return -EOPNOTSUPP;
->  }
+>  examples:
+> @@ -30,4 +56,11 @@ examples:
+>      usb {
+>          phys = <&usb2_phy1>, <&usb3_phy1>;
+>          phy-names = "usb";
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        hub@1 {
+> +            compatible = "usb5e3,610";
+> +            reg = <1>;
+> +        };
+>      };
 > -- 
-> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-> a Linux Foundation Collaborative Project
+> 2.18.0
 > 
 
 _______________________________________________
