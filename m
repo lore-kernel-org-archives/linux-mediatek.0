@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 479D5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 07:42:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE5EEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 07:52:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEC0E22C7B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 07:42:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEC0E22C7B
+	by mail.kernel.org (Postfix) with ESMTPS id 530F022C7B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 07:52:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 530F022C7B
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,26 +23,26 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yZ4zQhG2s/QDizx+DSTomTP5F4CKuvYbQueD5d56U7k=; b=aJzWYiq9ZNLKCyYiGPACTzFuBC
-	qiTyOOkYxrqqz+BB57Z3oqzn6nt6cS0+i0Gg/KAUGD6g5joEeK9oHHR723nPqrSd21UMhVjHjKAkD
-	Wh123pi/peXxV1SNleWLOlRRCJsbbKzzEBQSHxfrmfBeCPMSRkEtJBdPDRebcI3zY2Eq7hN3flLbW
-	0A6cjgkHZ0ONtKL+zxtkQwc+zSb3mA6c85LeNhFqjLlSZRe1Gju6AqbCXtqHWMEgSCWKwRdt5aRsI
-	vtDm2IGadKgwJAutBtBy7IOR58eR7/a6Jm5hcL8OM2woRsb3Urds7aR7IJetwoinaOe+ZJ6koyusG
-	BZHT/k4A==;
+	bh=44WHx+LdUofGjkjEad4H60Bc0lkypkVI9CSpz3WYdMs=; b=f995mvkTN3srWj1EoWCNJYRb5b
+	86npMxyPpaUtKaKmew9iZVHZF0cPCDXSuP9677I642+c8f4iIEOd7ymnd//3nkycbwL9Xry7P4O16
+	BGHBn8lxqWKHojX6N1n0JilwBxhZukYUjpKsbUyGbRw746FL0cT8EcahYi1BH4EC8tNhvY/kdEIhs
+	Zm1oK6rssAd5a6ry5rTlpC1rmAnKSSdMDApKE7JdsGhRZpggJSDbkPB31VCQswZ6Q9iTVKfDdyumM
+	zMpZLuiIkwWvlxsq5V8gbZtl9Rm1CK118pzgpVK1C8YNoB9BfOtN1B0t0qIEWS8Br6Msf5/k6Bh4x
+	HVBIkeNQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krFqA-0003Qe-8O; Mon, 21 Dec 2020 07:42:46 +0000
+	id 1krFzI-0004Ga-NO; Mon, 21 Dec 2020 07:52:12 +0000
 Received: from alexa-out-tai-01.qualcomm.com ([103.229.16.226])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krFq5-0003Pe-9X; Mon, 21 Dec 2020 07:42:42 +0000
-Received: from ironmsg01-tai.qualcomm.com ([10.249.140.6])
- by alexa-out-tai-01.qualcomm.com with ESMTP; 21 Dec 2020 15:42:36 +0800
+ id 1krFzE-0004Fg-QU; Mon, 21 Dec 2020 07:52:10 +0000
+Received: from ironmsg02-tai.qualcomm.com ([10.249.140.7])
+ by alexa-out-tai-01.qualcomm.com with ESMTP; 21 Dec 2020 15:52:06 +0800
 X-QCInternal: smtphost
 Received: from cbsp-sh-gv.ap.qualcomm.com (HELO cbsp-sh-gv.qualcomm.com)
  ([10.231.249.68])
- by ironmsg01-tai.qualcomm.com with ESMTP; 21 Dec 2020 15:42:04 +0800
+ by ironmsg02-tai.qualcomm.com with ESMTP; 21 Dec 2020 15:51:34 +0800
 Received: by cbsp-sh-gv.qualcomm.com (Postfix, from userid 393357)
- id 79AEF2991; Mon, 21 Dec 2020 15:42:03 +0800 (CST)
+ id 8217E2993; Mon, 21 Dec 2020 15:51:33 +0800 (CST)
 From: Ziqi Chen <ziqichen@codeaurora.org>
 To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, cang@codeaurora.org,
  hongwus@codeaurora.org, rnayak@codeaurora.org, vinholikatti@gmail.com,
@@ -50,13 +50,13 @@ To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, cang@codeaurora.org,
  linux-scsi@vger.kernel.org, kernel-team@android.com, saravanak@google.com,
  salyzyn@google.com, ziqichen@codeaurora.org, kwmad.kim@samsung.com,
  stanley.chu@mediatek.com
-Subject: [PATCH RFC v2 1/1] scsi: ufs: Fix ufs power down/on specs violation
-Date: Mon, 21 Dec 2020 15:41:37 +0800
-Message-Id: <1608536504-76507-1-git-send-email-ziqichen@codeaurora.org>
+Subject: [PATCH RFC v3 1/1] scsi: ufs: Fix ufs power down/on specs violation
+Date: Mon, 21 Dec 2020 15:51:24 +0800
+Message-Id: <1608537091-78575-1-git-send-email-ziqichen@codeaurora.org>
 X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201221_024241_770249_7BC63EA1 
-X-CRM114-Status: GOOD (  21.49  )
+X-CRM114-CacheID: sfid-20201221_025209_316353_EEEA1F7D 
+X-CRM114-Status: GOOD (  21.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,9 +92,9 @@ should be between VSS(Ground) and VCCQ/VCCQ2.
 
 To flexibly control device reset line, re-name the function
 ufschd_vops_device_reset(sturct ufs_hba *hba) to ufshcd_
-vops_toggle_device_reset(sturct ufs_hba *hba, bool up). The
-new parameter "bool up" is used to separate device reset
-line pulling up from pulling down.
+vops_toggle_device_reset(sturct ufs_hba *hba, bool down). The
+new parameter "bool down" is used to separate device reset
+line pulling down from pulling up.
 
 Cc: Kiwoong Kim <kwmad.kim@samsung.com>
 Cc: Stanley Chu <stanley.chu@mediatek.com>
