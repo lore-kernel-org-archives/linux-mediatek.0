@@ -7,70 +7,68 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 279FCC433DB
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2AB3FC433E6
 	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 03:37:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6390E22B3B
+	by mail.kernel.org (Postfix) with ESMTPS id C00F4230FC
 	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Dec 2020 03:37:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6390E22B3B
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C00F4230FC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=d1k5ZJfrLTfIW6yra27mGvykV0HJ/I3c260EwzyZrvA=; b=sOJKFx14UmkIGciqmXCGT296Z
-	L2UJER4us40mWVKC4vNqpN1ne43Zubdr+kI7gcdcUEfjpMvhQdmslIN57WEKkXJwOimxk9+DQ+pfS
-	/+9t3DCCvay7z7z2tplq4NiLC3WPXWI7CDqRu2W7jyBfCr957F7xoiWkLqhXZ7vr7wNUiX2GJQXjQ
-	HtBChE8U1708Bje2dz61ABpQVkK8rxL3XPI2zWnpbLbsG4PYBxZpTE/7FBK7hfkFElSfm+w3ByV2T
-	XrRPNCUd7acupXcSvcFH1Jf9JkbZQr4W3rbg0P9w75nHsOIA8HNfjSMnahr4xkapBRkVRzDHbypjM
-	CQNZZP6Cg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l575Ua5Eubm5hihg26MySasNvnPQmOmJNa+RlTnhWII=; b=lLoJFdLlKEy1Fd27MAVxtQnV3H
+	CtVEdFjKIs0TLTb2T5608xBTSHWYMRDVaJvh/F0MqNBCqTItomPfS2BRQrhlRcWIk/bcZ0ZIDABKL
+	dndSBxC84lFsq3xtEkHtZhRAczufz5YOkGL/gRNGobsBUe6UuqejzeGmyL5yfkws+emI6KfGQo/n2
+	xv+bh5ToHkBde+vdjOR6H833HOy12RZKNBcXfauhOfGWOUxlq+isS6fQOIVw65oOuBKs4nJuSZSW8
+	QaLvRdeIY0PJ8M3PIRqUCLWGyWhjBe4HhjyQjTD8metq6O+/vuotUMA9w7PD7+nydfkCWWflFrC0B
+	qKH8+C1A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krC0d-00007r-34; Mon, 21 Dec 2020 03:37:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1krC0c-00007k-IS; Mon, 21 Dec 2020 03:37:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krC0W-00006K-6q; Mon, 21 Dec 2020 03:37:14 +0000
-X-UUID: 90c157f9720548e99d4885cedcbe5410-20201220
+ id 1krC0W-00006H-1Q; Mon, 21 Dec 2020 03:37:14 +0000
+X-UUID: 758aebcb7e844c1f9995d8269c5ec6ad-20201220
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IqoeTgE55XVjSOpPIl/m9kHTWzTKGLEjro1b69noYbI=; 
- b=CT0gNq8pSB8HzvcwPCkHQBSXUOng5w8VDX6iZZ8IqoleDiqM9RyiH3+m/xwkh4SuyAOTYlzv58Mb/39/aUcp8nsOuMaliCSdp3x60O1cXF5RZyYP6O7GaknnM8ifvZjoRZKEfDq3sOFhJb9d+sYCNgQ7qmInL1KvCYlThMTZYuY=;
-X-UUID: 90c157f9720548e99d4885cedcbe5410-20201220
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Uo+XIg8o4WjWoayIoOc0q0rfThYTl2XUDATJocjPnw0=; 
+ b=QEZCZjixjQ9Rs1F1NSGUHLaDYubQZCtXBHMt6KXYIFBI5s8n6ZWlU35JUIwmRQl+fpm2n9d6du4ph8ATrDLPe3rUEAVMdqPCuFR1qZ06hFpCFnR/djLO9qvj0EKb3uewVgg78SywYmwa7q2TgZzCzsxMXVg5YMoI+mip3OL+xAs=;
+X-UUID: 758aebcb7e844c1f9995d8269c5ec6ad-20201220
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <andrew-sh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1477295957; Sun, 20 Dec 2020 19:37:04 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 207358606; Sun, 20 Dec 2020 19:37:02 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Dec 2020 19:37:02 -0800
+ 15.0.1497.2; Sun, 20 Dec 2020 19:37:01 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Dec 2020 11:37:00 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Dec 2020 11:36:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 21 Dec 2020 11:37:00 +0800
+ Frontend Transport; Mon, 21 Dec 2020 11:36:58 +0800
 From: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>
 Subject: [PATCH] arm64: dts: mediatek: Add Mediatek mt8192 cpufreq device nodes
-Date: Mon, 21 Dec 2020 11:36:54 +0800
-Message-ID: <1608521814-13017-2-git-send-email-andrew-sh.cheng@mediatek.com>
+Date: Mon, 21 Dec 2020 11:36:53 +0800
+Message-ID: <1608521814-13017-1-git-send-email-andrew-sh.cheng@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1608521814-13017-1-git-send-email-andrew-sh.cheng@mediatek.com>
-References: <1608521814-13017-1-git-send-email-andrew-sh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201220_223712_408674_CEC6A37A 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20201220_223712_274680_40F7F5A6 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,7 +100,7 @@ Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
  1 file changed, 14 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 69d45c7..770f7d8 100644
+index 69d45c7b31f1..770f7d8833db 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 @@ -39,6 +39,7 @@
@@ -183,7 +181,7 @@ index 69d45c7..770f7d8 100644
  			compatible = "arm,gic-v3";
  			#interrupt-cells = <4>;
 -- 
-1.8.1.1.dirty
+2.12.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
