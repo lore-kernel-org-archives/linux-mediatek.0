@@ -2,77 +2,74 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB9F8C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 11:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0A06C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:10:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9DCF323124
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 11:34:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DCF323124
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3C3602312E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:10:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C3602312E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=G/5uM0ie+8KXCJPtXTiMX/8d6M6hsWygVFIUZQDKzDQ=; b=Th0hb4s3xJJgmt+xj3b4XXLRY
-	Q8sHEhkfmara6C5aank1bbbuugNjHquSQE1X3IfuN/vxZd305iArYNmEpZeweaYiIvMHQdDmZxSpi
-	lP2YVdIUR5H6XwPUMbbVysthI8SQU7alJSio/nnFn+5yYz2TimgZwZneDhgTPS2yA28TNqaTbeC5E
-	OtFEAx3IJcOu0sZufX7/DLYUPpULyhhJ67b2YdrpCbr5h2NQZOWOV/b3T5KsKr3fg12Fzq6FpXMGe
-	ZMRLR01bPP26e5e/XEiChm+Jg3vWyQzNOVtkMMpSGB6MNIXLcw+lW+6Kv0zLfxR15CIjwS0iC2fDi
-	V5uvscnug==;
+	 bh=I0ZHLxKT4XCcQ9vyJLT3K3xXs6hmT1bmqQUv6Nhc4j4=; b=z5xfvkdyEIv+/S6Rn/KzbLD/o
+	aR1oBm8c9I+B82tYAXwiaoR7Z42vMNKYXFIaBFAEK7nqpNc1pANswtJA6EZPl7UMTwTvgCCL9bkXr
+	hntH7jUVP7Sffmc5ozoeiuh19QpiwKo6YR3vwpFDD/bIETgGyuPAFlj0OYJjBH1e5AOA9GpyijHM4
+	cverFjlDoh8drrvf98cTeN8LKRcf1fr36ZlJxJ70bN9LF19UHp1NhH3n63430lZft0zYXIMHgpPoL
+	EKZnqp3I93qHQgYTyXkPPoz9DzIjuIg49N5SJb5G3sa1U61Z926xa7vM33MM2n0k4Ag8+nLTCWVye
+	qQBt+wPJw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krfwF-0004H6-N9; Tue, 22 Dec 2020 11:34:47 +0000
-Received: from so254-31.mailgun.net ([198.61.254.31])
+	id 1krhQk-0001oL-KX; Tue, 22 Dec 2020 13:10:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krfwD-00040Z-63
- for linux-mediatek@lists.infradead.org; Tue, 22 Dec 2020 11:34:46 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1608636885; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=VzpQ5rwXRSrUDR5+QdfdTTAyPqtNIHURgGYaJE8HPCk=;
- b=fpdZ48G4A6uip1XET1d1/dLRnRTA4qoxpNbS7x3WCxtPj2wZGkxRjnoxZz5XvHhnZKxPUqJ+
- SZIsQLyGdgvHWDR6ebR3L5IDcPFjaC6eNPaPSTGFBJiwTpOzIXWAvmSJOI0SfDv+exSiBLrA
- H3x2+9cL5dRAs1iIPoEDd4Vaf6Y=
-X-Mailgun-Sending-Ip: 198.61.254.31
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n04.prod.us-east-1.postgun.com with SMTP id
- 5fe1d9d47036173f4ff31526 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 22 Dec 2020 11:34:44
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 09600C43462; Tue, 22 Dec 2020 11:34:44 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 4B22DC433ED;
- Tue, 22 Dec 2020 11:34:43 +0000 (UTC)
+ id 1krhQh-0001mV-5u; Tue, 22 Dec 2020 13:10:20 +0000
+X-UUID: f780eb000f4c4892b9c20de669c82deb-20201222
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=t6abyv7GQaCstliXITKrDOnJbXdw7pIR+rkQrfnHEvI=; 
+ b=CfNg9q03Cy4o+UBr4Ess53Lcy9Td/hYSGu/OGp/w6KTTaxM5dnq+VOjQyggQzh9WKaWlqM+JyWNQrwiKCBDtBO2TZH8xyY8jO9Cmn+sgDr5K9JdqriYYMSQDhQ6ebgJkpGBZMXSMmNoKfHfJQTOyLuoxyL8Mkffgrvda9tFOJb4=;
+X-UUID: f780eb000f4c4892b9c20de669c82deb-20201222
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1117250420; Tue, 22 Dec 2020 05:10:02 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 05:09:55 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 21:09:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 22 Dec 2020 21:09:50 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+Subject: [PATCH v6 09/22] clk: mediatek: Add mtk_clk_simple_probe() to
+ simplify clock providers
+Date: Tue, 22 Dec 2020 21:09:34 +0800
+Message-ID: <1608642587-15634-10-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-Date: Tue, 22 Dec 2020 19:34:43 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1] scsi: ufs-mediatek: Enable
- UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL
-In-Reply-To: <20201222072928.32328-1-stanley.chu@mediatek.com>
-References: <20201222072928.32328-1-stanley.chu@mediatek.com>
-Message-ID: <c862866ec97516a7ffb891e5de3d132d@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201222_063445_291173_3DA751A6 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20201222_081019_499308_BEC0B7BB 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,51 +81,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: jiajie.hao@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, andy.teng@mediatek.com, jejb@linux.ibm.com,
- chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cc.chou@mediatek.com, avri.altman@wdc.com,
- alice.chao@mediatek.com, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- asutoshd@codeaurora.org, chaotian.jing@mediatek.com, bvanassche@acm.org,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-12-22 15:29, Stanley Chu wrote:
-> Flush during hibern8 is sufficient on MediaTek platforms, thus
-> enable UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL to skip enabling
-> fWriteBoosterBufferFlush during WriteBooster initialization.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufs-mediatek.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.c 
-> b/drivers/scsi/ufs/ufs-mediatek.c
-> index 80618af7c872..c55202b92a43 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.c
-> +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -661,6 +661,7 @@ static int ufs_mtk_init(struct ufs_hba *hba)
-> 
->  	/* Enable WriteBooster */
->  	hba->caps |= UFSHCD_CAP_WB_EN;
-> +	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
->  	hba->vps->wb_flush_threshold = UFS_WB_BUF_REMAIN_PERCENT(80);
-> 
->  	if (host->caps & UFS_MTK_CAP_DISABLE_AH8)
+Most of subsystem clock providers only need to register clock gates
+in their probe() function.
+To reduce the duplicated code by add a generic function.
 
-I guess we need it too...
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/clk/mediatek/clk-mtk.c | 23 +++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h |  8 ++++++++
+ 2 files changed, 31 insertions(+)
 
-Change LGTM.
-
-Regards,
-
-Can Guo.
-
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index cec1c8a..67693b7 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -13,6 +13,7 @@
+ #include <linux/clkdev.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/device.h>
++#include <linux/of_device.h>
+ 
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
+@@ -286,3 +287,25 @@ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
+ 			clk_data->clks[mcd->id] = clk;
+ 	}
+ }
++
++int mtk_clk_simple_probe(struct platform_device *pdev)
++{
++	const struct mtk_clk_desc *mcd;
++	struct clk_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	int r;
++
++	mcd = of_device_get_match_data(&pdev->dev);
++	if (!mcd)
++		return -EINVAL;
++
++	clk_data = mtk_alloc_clk_data(mcd->num_clks);
++	if (!clk_data)
++		return -ENOMEM;
++
++	r = mtk_clk_register_gates(node, mcd->clks, mcd->num_clks, clk_data);
++	if (r)
++		return r;
++
++	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++}
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index c580663..2f61fba 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -10,6 +10,7 @@
+ #include <linux/regmap.h>
+ #include <linux/bitops.h>
+ #include <linux/clk-provider.h>
++#include <linux/platform_device.h>
+ 
+ struct clk;
+ struct clk_onecell_data;
+@@ -250,4 +251,11 @@ void mtk_register_reset_controller(struct device_node *np,
+ void mtk_register_reset_controller_set_clr(struct device_node *np,
+ 	unsigned int num_regs, int regofs);
+ 
++struct mtk_clk_desc {
++	const struct mtk_gate *clks;
++	size_t num_clks;
++};
++
++int mtk_clk_simple_probe(struct platform_device *pdev);
++
+ #endif /* __DRV_CLK_MTK_H */
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
