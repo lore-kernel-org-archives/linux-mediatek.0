@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6A9DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:12:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B965AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:12:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84E8423133
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:12:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84E8423133
+	by mail.kernel.org (Postfix) with ESMTPS id 783192312E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:12:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 783192312E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Vo8Ltq8FfcPpGmdIsX1sRI1ZylSj3oHRMJfKp2J2pgw=; b=uB9XSfY2rfzLQ91EYIWjQpRjg
-	hcaViNJuc1ARkgPwFD0s0mRlLUGib83nDCDQ7NyZFi32ao8STOccaq0onZjHpuGSvAUgALku6mv6r
-	zOLSx2DFyFbjFuYtVWCDdNTNbjYxBojoX0eQ+4WyPxeCGoNE7RKXFqE+iWgZ7oELs3buy2W7Kv9wS
-	nL2Ee5qfxsTiDSuMAdcUsIAyiD23DoejApnST/bkNbtWSWbHkZvDYhR7IIYSNs8P7QQTb00VzGfkf
-	Vvr/j9oPwTy2YugACNcEJX9Af3aoBYSnJeUnrDGiIrMTJf1VxM8xnO//MrKe6eHiEjKxhOnJaquHn
-	obYJzZYAQ==;
+	 bh=uUWhXJdDIu0/ij/rSunTB0DOjICpBR9GQ3pxQlCWUlk=; b=wT0yiy5jaV0W+Lv7UQFl60Z55
+	8US2htka2jHCDH4uz72ZWqH7yfqouGIZhRjHWOhud7o/X3rVwe+nKa/rPveNuqH/1grf/i1ITiqyG
+	UI7AXNHX13OgaVP6wvNDdmGtvJzILrv0hP+huswWY8r1qjrwHcN/JTpOfL/QbVqxS29pACCGsOguZ
+	dd1EFc0TvntkDXczd83Ubn3u18zO23UAZ0Pgneu0xUSp6oSfAkKPkqoYczXWCjuBt4lBYpxZqIWPv
+	QMOO37rA+mYODuFvbHWAVqI3hhmURtNK2lDygGXV+nwnonSMUiSM3Vqs2VGx/EwVSE6RWqA7fKKnW
+	Ncwo0vEyw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krhSA-0002U2-Ll; Tue, 22 Dec 2020 13:11:50 +0000
+	id 1krhSm-0002m5-KZ; Tue, 22 Dec 2020 13:12:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krhQp-0001mW-9l; Tue, 22 Dec 2020 13:10:29 +0000
-X-UUID: 3ae9ddc4aa7e4987bd1732317d99568a-20201222
+ id 1krhQq-0001mV-Oh; Tue, 22 Dec 2020 13:10:30 +0000
+X-UUID: a1f5505b26684d7b9a48a0c9028de171-20201222
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=d6l7X0D9mFaPMITY5GjptKADXM4I1L0bpxI3MpyN6Is=; 
- b=Rn0uBLFgMeQ33IvLz5YC9rvg+XBsXXhFxPznCwRfm/Sy5+2DRp9cOtTy0qsF+RWNmdnS5OwG/s1WHaDdj5lnYrXlm294uDfy2xL2B1++0HQf0/1zS8u+kbCfU/RDQUp5TNtqQy9JtBvw5HbHcisvA5WcYHXAi0N9r5Ts7DY1moA=;
-X-UUID: 3ae9ddc4aa7e4987bd1732317d99568a-20201222
+ bh=YoELkt3jncoV9qmRJx2dcGeYD818kvYnkljmGtP9+8E=; 
+ b=IKYyEB5rXB4/2i84wcjfhv2AR3PgvSm/pYX+zNTKmaN6eeOqr5N0uAmShpDzdIudBEr8ItpnlCcHKA64d15s5bLt+8ChHrAU97NTjWih51xtmysspCH+ZFxmn3FFCzPzBFEv9T57Nwxj5iOpe9guepkaSrRbifFw0NOlJN0hkeQ=;
+X-UUID: a1f5505b26684d7b9a48a0c9028de171-20201222
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 864233404; Tue, 22 Dec 2020 05:10:02 -0800
+ with ESMTP id 886335331; Tue, 22 Dec 2020 05:10:03 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 05:09:54 -0800
+ 15.0.1497.2; Tue, 22 Dec 2020 05:09:56 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 22 Dec 2020 21:09:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Dec 2020 21:09:49 +0800
+ Frontend Transport; Tue, 22 Dec 2020 21:09:50 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH v6 07/22] clk: mediatek: Fix asymmetrical PLL enable and
- disable control
-Date: Tue, 22 Dec 2020 21:09:32 +0800
-Message-ID: <1608642587-15634-8-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v6 11/22] clk: mediatek: Add MT8192 audio clock support
+Date: Tue, 22 Dec 2020 21:09:36 +0800
+Message-ID: <1608642587-15634-12-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201222_081028_427126_CA2E6D94 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20201222_081029_079380_E99368D4 
+X-CRM114-Status: GOOD (  18.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,77 +91,168 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In fact, the en_mask is a combination of divider enable mask
-and pll enable bit(bit0).
-Before this patch, we enabled both divider mask and bit0 in prepare(),
-but only cleared the bit0 in unprepare().
-In the future, we hope en_mask will only be used as divider enable mask.
-The enable register(CON0) will be set in 2 steps:
-first is divider mask, and then bit0 during prepare(), and vice versa.
-But considering backward compatibility, at this stage we allow en_mask
-to be a combination or a pure divider enable mask.
-And then we will make en_mask a pure divider enable mask in another
-following patch series.
+Add MT8192 audio clock provider
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/clk/mediatek/clk-pll.c | 20 ++++++++++++++++----
- 1 file changed, 16 insertions(+), 4 deletions(-)
+ drivers/clk/mediatek/Kconfig          |   6 ++
+ drivers/clk/mediatek/Makefile         |   1 +
+ drivers/clk/mediatek/clk-mt8192-aud.c | 118 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 125 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-aud.c
 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f440f2cd..11ed5d1 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -238,6 +238,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-+	u32 div_en_mask;
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index f628efd..1a8b0c1 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -497,6 +497,12 @@ config COMMON_CLK_MT8192
+ 	help
+ 	  This driver supports MediaTek MT8192 basic clocks.
  
- 	r = readl(pll->pwr_addr) | CON0_PWR_ON;
- 	writel(r, pll->pwr_addr);
-@@ -247,10 +248,15 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r |= pll->data->en_mask;
-+	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
- 
-+	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
-+	if (div_en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) | div_en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
++config COMMON_CLK_MT8192_AUDSYS
++	bool "Clock driver for MediaTek MT8192 audsys"
++	depends on COMMON_CLK_MT8192
++	help
++	  This driver supports MediaTek MT8192 audsys clocks.
 +
- 	__mtk_pll_tuner_enable(pll);
- 
- 	udelay(20);
-@@ -268,6 +274,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-+	u32 div_en_mask;
- 
- 	if (pll->data->flags & HAVE_RST_BAR) {
- 		r = readl(pll->base_addr + REG_CON0);
-@@ -277,8 +284,13 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 
- 	__mtk_pll_tuner_disable(pll);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r &= ~CON0_BASE_EN;
-+	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
-+	if (div_en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) & ~div_en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
+ config COMMON_CLK_MT8516
+ 	bool "Clock driver for MediaTek MT8516"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index fcde421..1d0f2e8 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -68,5 +68,6 @@ obj-$(CONFIG_COMMON_CLK_MT8183_MMSYS) += clk-mt8183-mm.o
+ obj-$(CONFIG_COMMON_CLK_MT8183_VDECSYS) += clk-mt8183-vdec.o
+ obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
++obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+ obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+diff --git a/drivers/clk/mediatek/clk-mt8192-aud.c b/drivers/clk/mediatek/clk-mt8192-aud.c
+new file mode 100644
+index 0000000..b38f5a5
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8192-aud.c
+@@ -0,0 +1,118 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2020 MediaTek Inc.
++// Author: Weiyi Lu <weiyi.lu@mediatek.com>
 +
-+	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
- 
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
++#include <linux/clk-provider.h>
++#include <linux/of_platform.h>
++#include <linux/platform_device.h>
++
++#include "clk-mtk.h"
++#include "clk-gate.h"
++
++#include <dt-bindings/clock/mt8192-clk.h>
++
++static const struct mtk_gate_regs aud0_cg_regs = {
++	.set_ofs = 0x0,
++	.clr_ofs = 0x0,
++	.sta_ofs = 0x0,
++};
++
++static const struct mtk_gate_regs aud1_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x4,
++	.sta_ofs = 0x4,
++};
++
++static const struct mtk_gate_regs aud2_cg_regs = {
++	.set_ofs = 0x8,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x8,
++};
++
++#define GATE_AUD0(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &aud0_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr)
++
++#define GATE_AUD1(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &aud1_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr)
++
++#define GATE_AUD2(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &aud2_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr)
++
++static const struct mtk_gate aud_clks[] = {
++	/* AUD0 */
++	GATE_AUD0(CLK_AUD_AFE, "aud_afe", "audio_sel", 2),
++	GATE_AUD0(CLK_AUD_22M, "aud_22m", "aud_engen1_sel", 8),
++	GATE_AUD0(CLK_AUD_24M, "aud_24m", "aud_engen2_sel", 9),
++	GATE_AUD0(CLK_AUD_APLL2_TUNER, "aud_apll2_tuner", "aud_engen2_sel", 18),
++	GATE_AUD0(CLK_AUD_APLL_TUNER, "aud_apll_tuner", "aud_engen1_sel", 19),
++	GATE_AUD0(CLK_AUD_TDM, "aud_tdm", "aud_1_sel", 20),
++	GATE_AUD0(CLK_AUD_ADC, "aud_adc", "audio_sel", 24),
++	GATE_AUD0(CLK_AUD_DAC, "aud_dac", "audio_sel", 25),
++	GATE_AUD0(CLK_AUD_DAC_PREDIS, "aud_dac_predis", "audio_sel", 26),
++	GATE_AUD0(CLK_AUD_TML, "aud_tml", "audio_sel", 27),
++	GATE_AUD0(CLK_AUD_NLE, "aud_nle", "audio_sel", 28),
++	/* AUD1 */
++	GATE_AUD1(CLK_AUD_I2S1_B, "aud_i2s1_b", "audio_sel", 4),
++	GATE_AUD1(CLK_AUD_I2S2_B, "aud_i2s2_b", "audio_sel", 5),
++	GATE_AUD1(CLK_AUD_I2S3_B, "aud_i2s3_b", "audio_sel", 6),
++	GATE_AUD1(CLK_AUD_I2S4_B, "aud_i2s4_b", "audio_sel", 7),
++	GATE_AUD1(CLK_AUD_CONNSYS_I2S_ASRC, "aud_connsys_i2s_asrc", "audio_sel", 12),
++	GATE_AUD1(CLK_AUD_GENERAL1_ASRC, "aud_general1_asrc", "audio_sel", 13),
++	GATE_AUD1(CLK_AUD_GENERAL2_ASRC, "aud_general2_asrc", "audio_sel", 14),
++	GATE_AUD1(CLK_AUD_DAC_HIRES, "aud_dac_hires", "audio_h_sel", 15),
++	GATE_AUD1(CLK_AUD_ADC_HIRES, "aud_adc_hires", "audio_h_sel", 16),
++	GATE_AUD1(CLK_AUD_ADC_HIRES_TML, "aud_adc_hires_tml", "audio_h_sel", 17),
++	GATE_AUD1(CLK_AUD_ADDA6_ADC, "aud_adda6_adc", "audio_sel", 20),
++	GATE_AUD1(CLK_AUD_ADDA6_ADC_HIRES, "aud_adda6_adc_hires", "audio_h_sel", 21),
++	GATE_AUD1(CLK_AUD_3RD_DAC, "aud_3rd_dac", "audio_sel", 28),
++	GATE_AUD1(CLK_AUD_3RD_DAC_PREDIS, "aud_3rd_dac_predis", "audio_sel", 29),
++	GATE_AUD1(CLK_AUD_3RD_DAC_TML, "aud_3rd_dac_tml", "audio_sel", 30),
++	GATE_AUD1(CLK_AUD_3RD_DAC_HIRES, "aud_3rd_dac_hires", "audio_h_sel", 31),
++	/* AUD2 */
++	GATE_AUD2(CLK_AUD_I2S5_B, "aud_i2s5_b", "audio_sel", 0),
++	GATE_AUD2(CLK_AUD_I2S6_B, "aud_i2s6_b", "audio_sel", 1),
++	GATE_AUD2(CLK_AUD_I2S7_B, "aud_i2s7_b", "audio_sel", 2),
++	GATE_AUD2(CLK_AUD_I2S8_B, "aud_i2s8_b", "audio_sel", 3),
++	GATE_AUD2(CLK_AUD_I2S9_B, "aud_i2s9_b", "audio_sel", 4),
++};
++
++static int clk_mt8192_aud_probe(struct platform_device *pdev)
++{
++	struct clk_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(CLK_AUD_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	r = mtk_clk_register_gates(node, aud_clks, ARRAY_SIZE(aud_clks), clk_data);
++	if (r)
++		return r;
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	if (r)
++		return r;
++
++	r = devm_of_platform_populate(&pdev->dev);
++	if (r)
++		of_clk_del_provider(node);
++
++	return r;
++}
++
++static const struct of_device_id of_match_clk_mt8192_aud[] = {
++	{ .compatible = "mediatek,mt8192-audsys", },
++	{}
++};
++
++static struct platform_driver clk_mt8192_aud_drv = {
++	.probe = clk_mt8192_aud_probe,
++	.driver = {
++		.name = "clk-mt8192-aud",
++		.of_match_table = of_match_clk_mt8192_aud,
++	},
++};
++
++builtin_platform_driver(clk_mt8192_aud_drv);
 -- 
 1.8.1.1.dirty
 _______________________________________________
