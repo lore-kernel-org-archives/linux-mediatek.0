@@ -2,19 +2,19 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2780C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 04:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F9ECC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 05:46:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6686A22518
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 04:58:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6686A22518
+	by mail.kernel.org (Postfix) with ESMTPS id F314923120
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 05:46:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F314923120
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FJV4jb78Fn/08KWWHyRiDkPAhlUmM5Ib1u4tYtosYWI=; b=npn1wq6RAHOEONnzBarbFQi3g7
-	1x8UjDc68aju+OzZTZzR8Fv5IS/cZb/rXUgTzK5kk86oeYdGMFylPs9iGiFDV8f5y3jR/eQ/fPxE9
-	fRRle4lU91x5tzuJ+DBEbZ/IiI4/yIa0d4ISLZzD4stQpCZ+HrE/8kw+PCvFsNsPL3eVLxdAh+mFB
-	Xg3rnyEY1Mj1shfZGojErghnQH1vNXA/CZq/s9sLWOQ/hwKx9QCmRCn1JV6qCh6kO7GKrbNOvSfMN
-	gfC1iLkGgmDT+CqAuVh3qu5NnCzaxfHrPYeN/8rV6Mx1rPPaBBRCZb7MBNXZBbfTfCUpwMDeGngT5
-	b+7UnUdQ==;
+	bh=5KiFfw2ChN96OC0Qdu65c6SHZ/GQ5k/rXkMNdXAfA7A=; b=k/ZoJzVgDH5PvXECUSbYYTHlod
+	p7EA1KCc1q7h9hP7fm/83qPV+Dd3pmTeC+os8pkuVvbOv32zTKPjxCwlmkkW2EhJmLKJoTM4svyfY
+	MO0fmjlbi3fu6bR//JqEsN3BdrU6ljBiIzodKmakkvbJsrgxKhVjjtr7fehXubX31acP3JyyNf67m
+	YSj1fwEuCK+s8H6YwfkqXKesRbPLd7qyeTdgqcHAgbpdVLCMYJBAY3LFIztDTtvX4CW1r2SHhbPqd
+	AmHLUIp+MFiILZLt5DfonyqATyBKlDSxTLSuGKR1O67NWw69QCeNnKmTiN1lGkqUbCObthap+XW0e
+	3FbsckwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krZkx-0000Hg-10; Tue, 22 Dec 2020 04:58:43 +0000
+	id 1kraUX-0003Ix-O8; Tue, 22 Dec 2020 05:45:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krZks-0000Gg-2d; Tue, 22 Dec 2020 04:58:39 +0000
-X-UUID: 1343cd29808a495dac72a1b466eb5160-20201221
+ id 1kraUU-0003IL-4G; Tue, 22 Dec 2020 05:45:48 +0000
+X-UUID: b8136180097947a685b746ebed4ecd51-20201221
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=ix39aEP/7qBhFODfaYq98ECNI0FRFoI883iGyqKhxxY=; 
- b=soX5LFOiBcCV2HtNbeL6cbqYt/IY3UZYIs0V/DvgqAnDxY3iDGT4XrgE1FL67YiEtBuoVyxEFKKI22CpEsS3dF/vNJFfS3QfPmYiQq71VRKdywrlRlM8SkO6PvZ17bqIc5cG1MyTbj+dfcYXq8WytTVNVMZ+H8CEPSzsESopOvM=;
-X-UUID: 1343cd29808a495dac72a1b466eb5160-20201221
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <jamesjj.liao@mediatek.com>)
+ bh=nft48p5t9B6NpG2N1J2gZzrLpKIpUsWI+M8UHmsqI3k=; 
+ b=pqfcukwRPW5scJiZiy/Fest8Q7un/G5QgF/F1qpPRti2oBfQMDPvl1LMuK3q0zH4dxJC+kIaaf4lGlD7M8bX9TVMLXDPSu2JCcq9ivsOgUDVjvxjd+6xZeZQNX8i74oN6k65SKkj41dHNOMCNMY44Lswcqo7ENxyaJGHNwCJ308=;
+X-UUID: b8136180097947a685b746ebed4ecd51-20201221
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 951786802; Mon, 21 Dec 2020 20:58:26 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 1706706170; Mon, 21 Dec 2020 21:45:36 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Dec 2020 20:58:23 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 12:58:21 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Mon, 21 Dec 2020 21:35:32 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 13:35:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Dec 2020 12:58:21 +0800
-From: James Liao <jamesjj.liao@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] arm64: dts: mt8192: Add cpu-idle-states
-Date: Tue, 22 Dec 2020 12:58:20 +0800
-Message-ID: <20201222045820.26355-1-jamesjj.liao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Frontend Transport; Tue, 22 Dec 2020 13:35:30 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: <drinkcat@chromium.org>, <matthias.bgg@gmail.com>, <sboyd@kernel.org>
+Subject: [PATCH] clk: mediatek: Remove unused MT8192 mcupm clock
+Date: Tue, 22 Dec 2020 13:35:02 +0800
+Message-ID: <20201222053502.27872-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201221_235838_349810_580D6FC3 
-X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-CacheID: sfid-20201222_004546_375703_C1E20A33 
+X-CRM114-Status: UNSURE (   9.59  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -78,136 +78,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- James Liao <jamesjj.liao@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: weiyi.lu@mediatek.com, srv_heupstream@mediatek.com,
+ TingHan Shen <tinghan.shen@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add idle states for cpu-off and cluster-off.
+From: "TingHan Shen" <tinghan.shen@mediatek.com>
 
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Remove unused MT8192 mcupm clock
+
+Signed-off-by: TingHan Shen <tinghan.shen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 44 ++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+This patch depends on series "Mediatek MT8192 clock support"[1].
 
-This patch bases on v5.10 and [1], adds idle-states for MT8192 CPUs.
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=379955
+---
+ drivers/clk/mediatek/clk-mt8192.c | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-[1] https://lore.kernel.org/linux-arm-kernel/20201030092207.26488-2-seiya.wang@mediatek.com/
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index e12e024de122..c7f2ec9ea4f1 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -39,6 +39,7 @@
- 			reg = <0x000>;
- 			enable-method = "psci";
- 			clock-frequency = <1701000000>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
- 		};
-@@ -49,6 +50,7 @@
- 			reg = <0x100>;
- 			enable-method = "psci";
- 			clock-frequency = <1701000000>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
- 		};
-@@ -59,6 +61,7 @@
- 			reg = <0x200>;
- 			enable-method = "psci";
- 			clock-frequency = <1701000000>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
- 		};
-@@ -69,6 +72,7 @@
- 			reg = <0x300>;
- 			enable-method = "psci";
- 			clock-frequency = <1701000000>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
- 		};
-@@ -79,6 +83,7 @@
- 			reg = <0x400>;
- 			enable-method = "psci";
- 			clock-frequency = <2171000000>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
-@@ -89,6 +94,7 @@
- 			reg = <0x500>;
- 			enable-method = "psci";
- 			clock-frequency = <2171000000>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
-@@ -99,6 +105,7 @@
- 			reg = <0x600>;
- 			enable-method = "psci";
- 			clock-frequency = <2171000000>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
-@@ -109,6 +116,7 @@
- 			reg = <0x700>;
- 			enable-method = "psci";
- 			clock-frequency = <2171000000>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
- 		};
-@@ -158,6 +166,42 @@
- 		l3_0: l3-cache {
- 			compatible = "cache";
- 		};
-+
-+		idle-states {
-+			entry-method = "arm,psci";
-+			cpuoff_l: cpuoff_l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010001>;
-+				local-timer-stop;
-+				entry-latency-us = <55>;
-+				exit-latency-us = <140>;
-+				min-residency-us = <780>;
-+			};
-+			cpuoff_b: cpuoff_b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010001>;
-+				local-timer-stop;
-+				entry-latency-us = <35>;
-+				exit-latency-us = <145>;
-+				min-residency-us = <720>;
-+			};
-+			clusteroff_l: clusteroff_l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010002>;
-+				local-timer-stop;
-+				entry-latency-us = <60>;
-+				exit-latency-us = <155>;
-+				min-residency-us = <860>;
-+			};
-+			clusteroff_b: clusteroff_b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010002>;
-+				local-timer-stop;
-+				entry-latency-us = <40>;
-+				exit-latency-us = <155>;
-+				min-residency-us = <780>;
-+			};
-+		};
- 	};
+diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
+index 673dc60182f5..80df1903bd58 100644
+--- a/drivers/clk/mediatek/clk-mt8192.c
++++ b/drivers/clk/mediatek/clk-mt8192.c
+@@ -649,12 +649,6 @@ static const char * const aes_msdcfde_parents[] = {
+ 	"univpll_d6"
+ };
  
- 	pmu-a55 {
+-static const char * const mcupm_parents[] = {
+-	"clk26m",
+-	"mainpll_d6_d4",
+-	"mainpll_d6_d2"
+-};
+-
+ static const char * const sflash_parents[] = {
+ 	"clk26m",
+ 	"mainpll_d7_d8",
+@@ -856,8 +850,6 @@ static const struct mtk_mux top_mtk_muxes[] = {
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AES_MSDCFDE_SEL, "aes_msdcfde_sel",
+ 		aes_msdcfde_parents, 0x100, 0x104, 0x108, 24, 3, 31, 0x00c, 1),
+ 	/* CLK_CFG_16 */
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_MCUPM_SEL, "mcupm_sel",
+-		mcupm_parents, 0x110, 0x114, 0x118, 0, 2, 7, 0x00c, 2),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SFLASH_SEL, "sflash_sel",
+ 		sflash_parents, 0x110, 0x114, 0x118, 8, 2, 15, 0x00c, 3),
+ };
+@@ -983,7 +975,6 @@ static const struct mtk_gate infra_clks[] = {
+ 	GATE_INFRA0(CLK_INFRA_SCPSYS, "infra_scpsys", "scp_sel", 4),
+ 	GATE_INFRA0(CLK_INFRA_SEJ, "infra_sej", "axi_sel", 5),
+ 	GATE_INFRA0(CLK_INFRA_APXGPT, "infra_apxgpt", "axi_sel", 6),
+-	GATE_INFRA0(CLK_INFRA_MCUPM, "infra_mcupm", "mcupm_sel", 7),
+ 	GATE_INFRA0(CLK_INFRA_GCE, "infra_gce", "axi_sel", 8),
+ 	GATE_INFRA0(CLK_INFRA_GCE2, "infra_gce2", "axi_sel", 9),
+ 	GATE_INFRA0(CLK_INFRA_THERM, "infra_therm", "axi_sel", 10),
 -- 
 2.18.0
 _______________________________________________
