@@ -2,79 +2,75 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EBDD1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 03:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CAABEC433E9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 03:52:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 289FE22B43
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 03:36:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 289FE22B43
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8284022CB2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 03:52:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8284022CB2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y/cS9wo4awJkOJ/KzNM1wLzjBpp/bF3f/ymMy7dkuGA=; b=erI9kwLfZkjCE09pnKrnmihpx
-	gvxnBOzuDS8V/wlGxO35dEgl0Mp1DftQYVQhHc2FQGsYPnrv9jx8n8jPk2D72Swq8unws4AJRpfkn
-	Ldmxg4AT5gP0atIZQzvm2lx0BRZko95uFAJOYGPfr12p3YU3OSid2VR8cQKTO+A6t0hqWbNbgjtyJ
-	s9kvHk15OrmV6uvMPYHZwHiO0fzLu0EQe7rYK7CAG46nkgAAIY/ljMEQZmumJvOyUPG2GTOawNtEF
-	aZLYaZBBZX8MdzoGH0QRJr5yf6zp5xOGV7tstzN2Q/igvzjxf+iKS4XBtzuZLPCj4jZHPm9twiCrn
-	HlZK36Q7A==;
+	 bh=olWxVMACWYoZLukmxuFJVkMB2tiMY8BsOfrDO5/MtdQ=; b=aLd8xTLjCl9dWVrh6vOf1X0C1
+	RsO4Wdv+vMLwo61hef8z4CDU7usMrlvgaq8o3hqvC+9lVlOhOtkWKqhiGeilKY4guDmoqeoqdlPf7
+	l76HrVgi/Re+i9Tpli74/2rrj8BN6zbIe7HC8czrVh80TEwwwc/jhbJIULwgOS5NU5T+UZq3Pn9ke
+	fWT7udgyJ0qmxaFbNr9lIaz1Cy0ChLsUo7/aGGqvsrOMH5nGndbnBygbD1cIDcoZoMi3LZNNFgAmY
+	ppKrUBbgXqnbNoNLaGIbHqfvNj5fMn01JhRJ8yL+SoqXS5zUi70bjwA1hL9AfaLq1dWNK87kOHicz
+	niA8aL6mg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krYTb-0003OG-US; Tue, 22 Dec 2020 03:36:43 +0000
-Received: from so254-31.mailgun.net ([198.61.254.31])
+	id 1krYix-0004iK-2V; Tue, 22 Dec 2020 03:52:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krYTY-0003Ni-7u
- for linux-mediatek@lists.infradead.org; Tue, 22 Dec 2020 03:36:41 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1608608200; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=HvCT6XkTblevMVI37LuEtLt98Yo2suLAW3XBP2p9/Vs=;
- b=vnTmEIX+T+HDxc/Ynl7yoVakgBpwlOLFPq7El6JfMPmbq6L/zg4gBYdbbgMhNFft9xjjBKOg
- ZDQ7smxYctv7KxlepqNACitqWxF44L5Si6ZnqaVtRwYjur0kwjglhSVvarREq9aiBSNnHEiI
- WqHvyYyk8kpstyhnKler5vBjjwY=
-X-Mailgun-Sending-Ip: 198.61.254.31
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
- 5fe169c3b00c0d7ad4552a89 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 22 Dec 2020 03:36:35
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id BA653C43469; Tue, 22 Dec 2020 03:36:33 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: ziqichen)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id BD682C433CA;
- Tue, 22 Dec 2020 03:36:30 +0000 (UTC)
+ id 1krYiu-0004hF-7D; Tue, 22 Dec 2020 03:52:34 +0000
+X-UUID: 9d5b13931e114c679648bd9784cac4b5-20201221
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=5OtJXhy+uQdjmMwWXuLqLoFYUtmgpk77dScw+IQBNJE=; 
+ b=Sc+J8jWRYKfBK68VcfWR0l/TEOh3D6nfLPrSIf9xoBwZPCU4HrHFkP6gASMZIHLLxhbIYIgW1m/C6TnRzVk/GCYYyPukOZJY+7OX6Y9TwqS2qW5n+SWlUpdqYStKSdX4LqYmvdmUJ0ZHB+eUPnGdgESIWF9olyfPWctz2H1gSVU=;
+X-UUID: 9d5b13931e114c679648bd9784cac4b5-20201221
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1487145548; Mon, 21 Dec 2020 19:38:46 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Dec 2020 19:38:43 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 22 Dec 2020 11:38:40 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 22 Dec 2020 11:38:39 +0800
+Message-ID: <1608608319.14736.97.camel@mhfsdcap03>
+Subject: Re: [v5,2/3] PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Date: Tue, 22 Dec 2020 11:38:39 +0800
+In-Reply-To: <CANMq1KCSWf4PDMVhxFiLHOHe3dFqZbq1gzn4ph8aApVMX56MDg@mail.gmail.com>
+References: <20201202133813.6917-1-jianjun.wang@mediatek.com>
+ <20201202133813.6917-3-jianjun.wang@mediatek.com>
+ <CANMq1KCSWf4PDMVhxFiLHOHe3dFqZbq1gzn4ph8aApVMX56MDg@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Date: Tue, 22 Dec 2020 11:36:30 +0800
-From: ziqichen@codeaurora.org
-To: Kiwoong Kim <kwmad.kim@samsung.com>
-Subject: Re: [PATCH RFC v3 1/1] scsi: ufs: Fix ufs power down/on specs
- violation
-In-Reply-To: <009001d6d806$bbac1a30$33044e90$@samsung.com>
-References: <CGME20201221075209epcas2p489ef5a304a7227ae1ef20e581c08c043@epcas2p4.samsung.com>
- <1608537091-78575-1-git-send-email-ziqichen@codeaurora.org>
- <009001d6d806$bbac1a30$33044e90$@samsung.com>
-Message-ID: <ddaf73587964e543e916368db036f536@codeaurora.org>
-X-Sender: ziqichen@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+X-TM-SNTS-SMTP: 68D23FE92533385F050B6E85D6FFF03063C34CA88579B1689B0552191E299AE02000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201221_223640_584844_731E220C 
-X-CRM114-Status: GOOD (  27.45  )
+X-CRM114-CacheID: sfid-20201221_225232_549118_4452B37D 
+X-CRM114-Status: GOOD (  42.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,367 +82,317 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nguyenb@codeaurora.org, cang@codeaurora.org,
- 'Alim Akhtar' <alim.akhtar@samsung.com>, vinholikatti@gmail.com,
- 'Bean Huo' <beanhuo@micron.com>, jejb@linux.vnet.ibm.com,
- 'Bart Van Assche' <bvanassche@acm.org>, linux-scsi@vger.kernel.org,
- 'Satya Tangirala' <satyat@google.com>, 'Andy Gross' <agross@kernel.org>,
- kernel-team@android.com, salyzyn@google.com,
- "'open list:ARM/QUALCOMM SUPPORT'" <linux-arm-msm@vger.kernel.org>,
- "'James E.J. Bottomley'" <jejb@linux.ibm.com>,
- 'Avri Altman' <avri.altman@wdc.com>,
- "'moderated list:UNIVERSAL FLASH STORAGE	HOST CONTROLLER DRIVER...'"
- <linux-mediatek@lists.infradead.org>,
- 'Matthias Brugger' <matthias.bgg@gmail.com>,
- 'Bjorn Andersson' <bjorn.andersson@linaro.org>,
- "'moderated list:ARM/Mediatek SoC	support'"
- <linux-arm-kernel@lists.infradead.org>, rnayak@codeaurora.org,
- saravanak@google.com, martin.petersen@oracle.com,
- 'Adrian Hunter' <adrian.hunter@intel.com>,
- 'open list' <linux-kernel@vger.kernel.org>, hongwus@codeaurora.org,
- asutoshd@codeaurora.org
+Cc: youlin.pei@mediatek.com, Devicetree List <devicetree@vger.kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, qizhong.cheng@mediatek.com,
+ Chuanjia Liu <chuanjia.liu@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-pci@vger.kernel.org,
+ lkml <linux-kernel@vger.kernel.org>, Rob
+ Herring <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Sj Huang <sj.huang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Matthias
+ Brugger <matthias.bgg@gmail.com>, sin_jieyang@mediatek.com, "David S .
+ Miller" <davem@davemloft.net>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-12-22 10:04, Kiwoong Kim wrote:
->> As per specs, e.g, JESD220E chapter 7.2, while powering off/on the ufs
->> device, RST_N signal and REF_CLK signal should be between VSS(Ground) 
->> and
->> VCCQ/VCCQ2.
->> 
->> To flexibly control device reset line, re-name the function
->> ufschd_vops_device_reset(sturct ufs_hba *hba) to ufshcd_
->> vops_toggle_device_reset(sturct ufs_hba *hba, bool down). The new
->> parameter "bool down" is used to separate device reset line pulling 
->> down
->> from pulling up.
->> 
->> Cc: Kiwoong Kim <kwmad.kim@samsung.com>
->> Cc: Stanley Chu <stanley.chu@mediatek.com>
->> Signed-off-by: Ziqi Chen <ziqichen@codeaurora.org>
->> ---
->>  drivers/scsi/ufs/ufs-mediatek.c | 27 +++++++++-----------------
->>  drivers/scsi/ufs/ufs-qcom.c     | 22 ++++++++++-----------
->>  drivers/scsi/ufs/ufshcd.c       | 43 
->> ++++++++++++++++++++++++++++++------
-> --
->> ---
->>  drivers/scsi/ufs/ufshcd.h       | 10 +++++-----
->>  4 files changed, 56 insertions(+), 46 deletions(-)
->> 
->> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-
->> mediatek.c index 80618af..bff2c42 100644
->> --- a/drivers/scsi/ufs/ufs-mediatek.c
->> +++ b/drivers/scsi/ufs/ufs-mediatek.c
->> @@ -841,27 +841,18 @@ static int ufs_mtk_link_startup_notify(struct
->> ufs_hba *hba,
->>  	return ret;
->>  }
->> 
->> -static int ufs_mtk_device_reset(struct ufs_hba *hba)
->> +static int ufs_mtk_toggle_device_reset(struct ufs_hba *hba, bool 
->> down)
->>  {
->>  	struct arm_smccc_res res;
->> 
->> -	ufs_mtk_device_reset_ctrl(0, res);
->> -
->> -	/*
->> -	 * The reset signal is active low. UFS devices shall detect
->> -	 * more than or equal to 1us of positive or negative RST_n
->> -	 * pulse width.
->> -	 *
->> -	 * To be on safe side, keep the reset low for at least 10us.
->> -	 */
->> -	usleep_range(10, 15);
->> -
->> -	ufs_mtk_device_reset_ctrl(1, res);
->> -
->> -	/* Some devices may need time to respond to rst_n */
->> -	usleep_range(10000, 15000);
->> +	if (down) {
->> +		ufs_mtk_device_reset_ctrl(0, res);
->> +	} else {
->> +		ufs_mtk_device_reset_ctrl(1, res);
->> 
->> -	dev_info(hba->dev, "device reset done\n");
->> +		/* Some devices may need time to respond to rst_n */
->> +		usleep_range(10000, 15000);
->> +	}
->> 
->>  	return 0;
->>  }
->> @@ -1052,7 +1043,7 @@ static const struct ufs_hba_variant_ops
->> ufs_hba_mtk_vops = {
->>  	.suspend             = ufs_mtk_suspend,
->>  	.resume              = ufs_mtk_resume,
->>  	.dbg_register_dump   = ufs_mtk_dbg_register_dump,
->> -	.device_reset        = ufs_mtk_device_reset,
->> +	.toggle_device_reset        = ufs_mtk_toggle_device_reset,
->>  	.event_notify        = ufs_mtk_event_notify,
->>  };
->> 
->> diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
->> index 2206b1e..c2ccaa5 100644
->> --- a/drivers/scsi/ufs/ufs-qcom.c
->> +++ b/drivers/scsi/ufs/ufs-qcom.c
->> @@ -1404,12 +1404,13 @@ static void ufs_qcom_dump_dbg_regs(struct 
->> ufs_hba
->> *hba)  }
->> 
->>  /**
->> - * ufs_qcom_device_reset() - toggle the (optional) device reset line
->> + * ufs_qcom_toggle_device_reset() - toggle the (optional) device 
->> reset
->> + line
->>   * @hba: per-adapter instance
->> + * @down: pull down or pull up device reset line
->>   *
->>   * Toggles the (optional) reset line to reset the attached device.
->>   */
->> -static int ufs_qcom_device_reset(struct ufs_hba *hba)
->> +static int ufs_qcom_toggle_device_reset(struct ufs_hba *hba, bool 
->> down)
->>  {
->>  	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
->> 
->> @@ -1417,15 +1418,12 @@ static int ufs_qcom_device_reset(struct 
->> ufs_hba
->> *hba)
->>  	if (!host->device_reset)
->>  		return -EOPNOTSUPP;
->> 
->> -	/*
->> -	 * The UFS device shall detect reset pulses of 1us, sleep for 10us
->> to
->> -	 * be on the safe side.
->> -	 */
->> -	gpiod_set_value_cansleep(host->device_reset, 1);
->> -	usleep_range(10, 15);
->> -
->> -	gpiod_set_value_cansleep(host->device_reset, 0);
->> -	usleep_range(10, 15);
->> +	if (down) {
->> +		gpiod_set_value_cansleep(host->device_reset, 1);
->> +	} else {
->> +		gpiod_set_value_cansleep(host->device_reset, 0);
->> +		usleep_range(10, 15);
->> +	}
->> 
->>  	return 0;
->>  }
->> @@ -1473,7 +1471,7 @@ static const struct ufs_hba_variant_ops
->> ufs_hba_qcom_vops = {
->>  	.suspend		= ufs_qcom_suspend,
->>  	.resume			= ufs_qcom_resume,
->>  	.dbg_register_dump	= ufs_qcom_dump_dbg_regs,
->> -	.device_reset		= ufs_qcom_device_reset,
->> +	.toggle_device_reset		= ufs_qcom_toggle_device_reset,
->>  	.config_scaling_param = ufs_qcom_config_scaling_param,
->>  	.program_key		= ufs_qcom_ice_program_key,
->>  };
->> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c 
->> index
->> e221add..2ee905f 100644
->> --- a/drivers/scsi/ufs/ufshcd.c
->> +++ b/drivers/scsi/ufs/ufshcd.c
->> @@ -585,7 +585,20 @@ static void ufshcd_device_reset(struct ufs_hba 
->> *hba)
->> {
->>  	int err;
->> 
->> -	err = ufshcd_vops_device_reset(hba);
->> +	err = ufshcd_vops_toggle_device_reset(hba, true);
->> +	if (err) {
->> +		dev_err(hba->dev, "device reset pulling down failure: %d\n",
->> err);
->> +		return;
->> +	}
->> +
->> +	/*
->> +	 * The reset signal is active low. The UFS device
->> +	 * shall detect reset pulses of 1us, sleep for at
->> +	 * least 10us to be on the safe side.
->> +	 */
->> +	usleep_range(10, 15);
+On Mon, 2020-12-21 at 10:18 +0800, Nicolas Boichat wrote:
+> On Wed, Dec 2, 2020 at 9:39 PM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+> >
+> > MediaTek's PCIe host controller has three generation HWs, the new
+> > generation HW is an individual bridge, it supports Gen3 speed and
+> > up to 256 MSI interrupt numbers for multi-function devices.
+> >
+> > Add support for new Gen3 controller which can be found on MT8192.
+> >
+> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
 > 
-> Is there any point where UFS specification tells this explicitly?
-> I think this should be moved only if the number, i.e. 10 and 15  just
-> relies on hardware conditions.
+> FWIW, I looked at Rob and Bjorn's comments on v4, and they seem to
+> have been addressed (with one small nit highlighted below).
 > 
+> > ---
+> > This patch dependents on "PCI: Export pci_pio_to_address() for module use"[1]
+> > to build as a kernel module.
+> >
+> > This interface will be used by PCI host drivers for PIO translation,
+> > export it to support compiling those drivers as kernel modules.
+> >
+> > [1]http://lists.infradead.org/pipermail/linux-mediatek/2020-December/019504.html
+> > ---
+> >  drivers/pci/controller/Kconfig              |   13 +
+> >  drivers/pci/controller/Makefile             |    1 +
+> >  drivers/pci/controller/pcie-mediatek-gen3.c | 1039 +++++++++++++++++++
+> >  3 files changed, 1053 insertions(+)
+> >  create mode 100644 drivers/pci/controller/pcie-mediatek-gen3.c
+> >
+> > [snip]
+> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > new file mode 100644
+> > index 000000000000..d30ea734ac0a
+> > --- /dev/null
+> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > @@ -0,0 +1,1039 @@
+> > [snip]
+> > +static int mtk_pcie_set_trans_table(struct mtk_pcie_port *port,
+> > +                                   resource_size_t cpu_addr,
+> > +                                   resource_size_t pci_addr,
+> > +                                   resource_size_t size,
+> > +                                   unsigned long type, int num)
+> > +{
+> > +       void __iomem *table;
+> > +       u32 val = 0;
 > 
-> Thanks.
-> Kiwoong Kim
+> You don't need to init val to 0.
+> 
+> > +
+> > +       if (num >= PCIE_MAX_TRANS_TABLES) {
+> > +               dev_notice(port->dev, "not enough translate table[%d] for addr: %#llx, limited to [%d]\n",
+> > +                          num, (unsigned long long) cpu_addr,
+> > +                          PCIE_MAX_TRANS_TABLES);
+> > +               return -ENODEV;
+> > +       }
+> > +
+> > +       table = port->base + PCIE_TRANS_TABLE_BASE_REG +
+> > +               num * PCIE_ATR_TLB_SET_OFFSET;
+> > +
+> > +       writel(lower_32_bits(cpu_addr) | PCIE_ATR_SIZE(fls(size) - 1), table);
+> > +       writel(upper_32_bits(cpu_addr), table + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
+> > +       writel(lower_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
+> > +       writel(upper_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
+> > +
+> > +       if (type == IORESOURCE_IO)
+> > +               val = PCIE_ATR_TYPE_IO | PCIE_ATR_TLP_TYPE_IO;
+> > +       else
+> > +               val = PCIE_ATR_TYPE_MEM | PCIE_ATR_TLP_TYPE_MEM;
+> > +
+> > +       writel(val, table + PCIE_ATR_TRSL_PARAM_OFFSET);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+> > +{
+> > +       struct resource_entry *entry;
+> > +       struct pci_host_bridge *host = pci_host_bridge_from_priv(port);
+> > +       unsigned int table_index = 0;
+> > +       int err;
+> > +       u32 val;
+> > +
+> > +       /* Set as RC mode */
+> > +       val = readl(port->base + PCIE_SETTING_REG);
+> > +       val |= PCIE_RC_MODE;
+> > +       writel(val, port->base + PCIE_SETTING_REG);
+> > +
+> > +       /* Set class code */
+> > +       val = readl(port->base + PCIE_PCI_IDS_1);
+> > +       val &= ~GENMASK(31, 8);
+> > +       val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
+> > +       writel(val, port->base + PCIE_PCI_IDS_1);
+> > +
+> > +       /* Assert all reset signals */
+> > +       val = readl(port->base + PCIE_RST_CTRL_REG);
+> > +       val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> > +       writel(val, port->base + PCIE_RST_CTRL_REG);
+> > +
+> > +       /* De-assert reset signals */
+> > +       val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
+> > +       writel(val, port->base + PCIE_RST_CTRL_REG);
+> > +
+> > +       /* Delay 100ms to wait the reference clocks become stable */
+> > +       usleep_range(100 * 1000, 120 * 1000);
+> 
+> Any reason not to use msleep(100)?
 
-Hi Kiwoong,
+No special reasons, but it seems the msleep() should be used when the
+sleep time is more than 20ms (base on
+Documentation/timers/timers-howto.rst).
 
-Thanks for your comment. JESD220E Line 610~611 "The UFS device shall 
-detect more than or equal to 1us
-of positive or negative RST_n pulse". Both QCOM and Mediatek use 
-10~15us. What
-number do you think more appropriate?
+I will replace to msleep(100) in the next version, thanks for your
+review.
+> 
+> > +
+> > +       /* De-assert PERST# signal */
+> > +       val &= ~PCIE_PE_RSTB;
+> > +       writel(val, port->base + PCIE_RST_CTRL_REG);
+> > +
+> > +       /* Check if the link is up or not */
+> > +       err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_REG, val,
+> > +                       !!(val & PCIE_PORT_LINKUP), 20,
+> > +                       50 * USEC_PER_MSEC);
+> > +       if (err) {
+> > +               val = readl(port->base + PCIE_LTSSM_STATUS_REG);
+> > +               dev_notice(port->dev, "PCIe link down, ltssm reg val: %#x\n",
+> > +                          val);
+> > +               return err;
+> > +       }
+> > +
+> > +       /* Set PCIe translation windows */
+> > +       resource_list_for_each_entry(entry, &host->windows) {
+> > +               struct resource *res = entry->res;
+> > +               unsigned long type = resource_type(res);
+> > +               resource_size_t cpu_addr;
+> > +               resource_size_t pci_addr;
+> > +               resource_size_t size;
+> > +               const char *range_type;
+> > +
+> > +               if (type == IORESOURCE_IO) {
+> > +                       cpu_addr = pci_pio_to_address(res->start);
+> > +                       range_type = "IO";
+> > +               } else if (type == IORESOURCE_MEM) {
+> > +                       cpu_addr = res->start;
+> > +                       range_type = "MEM";
+> > +               } else {
+> > +                       continue;
+> > +               }
+> > +
+> > +               pci_addr = res->start - entry->offset;
+> > +               size = resource_size(res);
+> > +               err = mtk_pcie_set_trans_table(port, cpu_addr, pci_addr, size,
+> > +                                              type, table_index);
+> > +               if (err)
+> > +                       return err;
+> > +
+> > +               dev_dbg(port->dev, "set %s trans window[%d]: cpu_addr = %#llx, pci_addr = %#llx, size = %#llx\n",
+> > +                       range_type, table_index, (unsigned long long) cpu_addr,
+> > +                       (unsigned long long) pci_addr,
+> > +                       (unsigned long long) size);
+> > +
+> > +               table_index++;
+> > +       }
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > [snip]
+> > +static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
+> > +                                             msi_alloc_info_t *arg)
+> > +{
+> > +       struct msi_desc *entry = arg->desc;
+> > +       struct mtk_pcie_port *port = info->chip_data;
+> > +       int hwirq;
+> > +
+> > +       mutex_lock(&port->lock);
+> > +
+> > +       hwirq = bitmap_find_free_region(port->msi_irq_in_use, PCIE_MSI_IRQS_NUM,
+> > +                                       order_base_2(entry->nvec_used));
+> > +       if (hwirq < 0) {
+> > +               mutex_unlock(&port->lock);
+> > +               return -ENOSPC;
+> > +       }
+> > +
+> > +       mutex_unlock(&port->lock);
+> > +
+> > +       return hwirq;
+> 
+> Code is good, but I had to look twice to make sure the mutex is
+> unlocked. Is the following marginally better?
+> 
+> hwirq = ...;
+> 
+> mutex_unlock(&port->lock);
+> 
+> if (hwirq < 0)
+>    return -ENOSPC;
+> 
+> return hwirq;
 
-Best Regards,
-Ziqi
+Impressive, I will fix it in the next version, and I think the hwirq can
+be returned directly since it will be a negative value if
+bitmap_find_free_region is failed. The code will be like the following:
+
+hwirq = ...;
+
+mutex_unlock(&port->lock);
+
+return hwirq;
 
 > 
->> +	err = ufshcd_vops_toggle_device_reset(hba, false);
->> 
->>  	if (!err) {
->>  		ufshcd_set_ufs_dev_active(hba);
->> @@ -593,7 +606,11 @@ static void ufshcd_device_reset(struct ufs_hba 
->> *hba)
->>  			hba->wb_enabled = false;
->>  			hba->wb_buf_flush_enabled = false;
->>  		}
->> +		dev_info(hba->dev, "device reset done\n");
->> +	} else {
->> +		dev_err(hba->dev, "device reset pulling up failure: %d\n",
->> err);
->>  	}
->> +
->>  	if (err != -EOPNOTSUPP)
->>  		ufshcd_update_evt_hist(hba, UFS_EVT_DEV_RESET, err);  } @@ -
->> 8686,8 +8703,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum
->> ufs_pm_op pm_op)
->>  	if (ret)
->>  		goto set_dev_active;
->> 
->> -	ufshcd_vreg_set_lpm(hba);
->> -
->>  disable_clks:
->>  	/*
->>  	 * Call vendor specific suspend callback. As these callbacks may
->> access @@ -8703,6 +8718,9 @@ static int ufshcd_suspend(struct ufs_hba
->> *hba,
->> enum ufs_pm_op pm_op)
->>  	 */
->>  	ufshcd_disable_irq(hba);
->> 
->> +	if (ufshcd_is_link_off(hba))
->> +		ufshcd_vops_toggle_device_reset(hba, true);
->> +
->>  	ufshcd_setup_clocks(hba, false);
->> 
->>  	if (ufshcd_is_clkgating_allowed(hba)) { @@ -8711,6 +8729,8 @@
->> static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->>  					hba->clk_gating.state);
->>  	}
->> 
->> +	ufshcd_vreg_set_lpm(hba);
->> +
->>  	/* Put the host controller in low power mode if possible */
->>  	ufshcd_hba_vreg_set_lpm(hba);
->>  	goto out;
->> @@ -8778,18 +8798,19 @@ static int ufshcd_resume(struct ufs_hba *hba, 
->> enum
->> ufs_pm_op pm_op)
->>  	old_link_state = hba->uic_link_state;
->> 
->>  	ufshcd_hba_vreg_set_hpm(hba);
->> +
->> +	ret = ufshcd_vreg_set_hpm(hba);
->> +	if (ret)
->> +		goto out;
->> +
->>  	/* Make sure clocks are enabled before accessing controller */
->>  	ret = ufshcd_setup_clocks(hba, true);
->>  	if (ret)
->> -		goto out;
->> +		goto disable_vreg;
->> 
->>  	/* enable the host irq as host controller would be active soon */
->>  	ufshcd_enable_irq(hba);
->> 
->> -	ret = ufshcd_vreg_set_hpm(hba);
->> -	if (ret)
->> -		goto disable_irq_and_vops_clks;
->> -
->>  	/*
->>  	 * Call vendor specific resume callback. As these callbacks may
->> access
->>  	 * vendor specific host controller register space call them when
->> the @@ -8797,7 +8818,7 @@ static int ufshcd_resume(struct ufs_hba 
->> *hba,
->> enum ufs_pm_op pm_op)
->>  	 */
->>  	ret = ufshcd_vops_resume(hba, pm_op);
->>  	if (ret)
->> -		goto disable_vreg;
->> +		goto disable_irq_and_vops_clks;
->> 
->>  	/* For DeepSleep, the only supported option is to have the link off
->> */
->>  	WARN_ON(ufshcd_is_ufs_dev_deepsleep(hba)
->> && !ufshcd_is_link_off(hba)); @@ -8864,8 +8885,6 @@ static int
->> ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->>  	ufshcd_link_state_transition(hba, old_link_state, 0);
->>  vendor_suspend:
->>  	ufshcd_vops_suspend(hba, pm_op);
->> -disable_vreg:
->> -	ufshcd_vreg_set_lpm(hba);
->>  disable_irq_and_vops_clks:
->>  	ufshcd_disable_irq(hba);
->>  	if (hba->clk_scaling.is_allowed)
->> @@ -8876,6 +8895,8 @@ static int ufshcd_resume(struct ufs_hba *hba, 
->> enum
->> ufs_pm_op pm_op)
->>  		trace_ufshcd_clk_gating(dev_name(hba->dev),
->>  					hba->clk_gating.state);
->>  	}
->> +disable_vreg:
->> +	ufshcd_vreg_set_lpm(hba);
->>  out:
->>  	hba->pm_op_in_progress = 0;
->>  	if (ret)
->> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h 
->> index
->> 9bb5f0e..dccc3eb 100644
->> --- a/drivers/scsi/ufs/ufshcd.h
->> +++ b/drivers/scsi/ufs/ufshcd.h
->> @@ -319,7 +319,7 @@ struct ufs_pwr_mode_info {
->>   * @resume: called during host controller PM callback
->>   * @dbg_register_dump: used to dump controller debug information
->>   * @phy_initialization: used to initialize phys
->> - * @device_reset: called to issue a reset pulse on the UFS device
->> + * @toggle_device_reset: called to change logic level of reset gpio 
->> on
->> + the UFS device
->>   * @program_key: program or evict an inline encryption key
->>   * @event_notify: called to notify important events
->>   */
->> @@ -350,7 +350,7 @@ struct ufs_hba_variant_ops {
->>  	int     (*resume)(struct ufs_hba *, enum ufs_pm_op);
->>  	void	(*dbg_register_dump)(struct ufs_hba *hba);
->>  	int	(*phy_initialization)(struct ufs_hba *);
->> -	int	(*device_reset)(struct ufs_hba *hba);
->> +	int	(*toggle_device_reset)(struct ufs_hba *hba, bool down);
->>  	void	(*config_scaling_param)(struct ufs_hba *hba,
->>  					struct devfreq_dev_profile *profile,
->>  					void *data);
->> @@ -1216,10 +1216,10 @@ static inline void
->> ufshcd_vops_dbg_register_dump(struct ufs_hba *hba)
->>  		hba->vops->dbg_register_dump(hba);
->>  }
->> 
->> -static inline int ufshcd_vops_device_reset(struct ufs_hba *hba)
->> +static inline int ufshcd_vops_toggle_device_reset(struct ufs_hba 
->> *hba,
->> +bool down)
->>  {
->> -	if (hba->vops && hba->vops->device_reset)
->> -		return hba->vops->device_reset(hba);
->> +	if (hba->vops && hba->vops->toggle_device_reset)
->> +		return hba->vops->toggle_device_reset(hba, down);
->> 
->>  	return -EOPNOTSUPP;
->>  }
->> --
->> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora 
->> Forum,
->> a Linux Foundation Collaborative Project
+> > +}
+> > +
+> > [snip]
+> > +static void mtk_pcie_msi_handler(struct irq_desc *desc)
+> > +{
+> > +       struct mtk_pcie_msi *msi_info = irq_desc_get_handler_data(desc);
+> > +       struct irq_chip *irqchip = irq_desc_get_chip(desc);
+> > +       unsigned long msi_enable, msi_status;
+> > +       unsigned int virq;
+> > +       irq_hw_number_t bit, hwirq;
+> > +
+> > +       chained_irq_enter(irqchip, desc);
+> > +
+> > +       msi_enable = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
+> > +       while ((msi_status = readl(msi_info->base + PCIE_MSI_STATUS_OFFSET))) {
+> > +               msi_status &= msi_enable;
+> 
+> I don't know much about MSI, but what happens if you have a bit that
+> is set in PCIE_MSI_STATUS_OFFSET register, but not in msi_enable?
+
+If the bit that in PCIE_MSI_STATUS_OFFSET register is set but not in
+msi_enable, it must be an abnormal usage of MSI or something goes wrong,
+it should be ignored in case we can not find the corresponding handler.
+
+> Sounds like you'll just spin-loop forever without acknowledging the
+> interrupt.
+
+The interrupt will be acknowledged in the irq_ack callback of
+mtk_msi_irq_chip, which belongs to the msi_domain.
+
+> 
+> > +               for_each_set_bit(bit, &msi_status, PCIE_MSI_IRQS_PER_SET) {
+> > +                       hwirq = bit + msi_info->index * PCIE_MSI_IRQS_PER_SET;
+> > +                       virq = irq_find_mapping(msi_info->domain, hwirq);
+> > +                       generic_handle_irq(virq);
+> > +               }
+> > +       }
+> > +
+> > +       chained_irq_exit(irqchip, desc);
+> > +}
+> > +
+> > [snip]
+> > +static int __maybe_unused mtk_pcie_suspend_noirq(struct device *dev)
+> > +{
+> > +       struct mtk_pcie_port *port = dev_get_drvdata(dev);
+> > +       int err;
+> > +       u32 val;
+> > +
+> > +       /* Trigger link to L2 state */
+> > +       err = mtk_pcie_turn_off_link(port);
+> > +       if (err) {
+> > +               dev_notice(port->dev, "can not enter L2 state\n");
+> 
+> Rob suggested dev_error here.
+> 
+> (and IMHO, or lot of the other dev_notice above should probably get dev_error)
+
+I will replace to dev_err, thanks for your review.
+> 
+> > +               return err;
+> > +       }
+> > +
+> > +       /* Pull down the PERST# pin */
+> > +       val = readl(port->base + PCIE_RST_CTRL_REG);
+> > +       val |= PCIE_PE_RSTB;
+> > +       writel(val, port->base + PCIE_RST_CTRL_REG);
+> > +
+> > +       dev_dbg(port->dev, "enter L2 state success");
+> > +
+> > +       clk_bulk_disable_unprepare(port->num_clks, port->clks);
+> > +
+> > +       phy_power_off(port->phy);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > [snip]
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
