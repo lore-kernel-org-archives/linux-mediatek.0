@@ -2,72 +2,73 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF17FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BE5ACC433E6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:40:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 879C323105
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:40:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 879C323105
+	by mail.kernel.org (Postfix) with ESMTPS id 46B9D23103
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:40:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46B9D23103
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fdNTvA8WeS5lFaSiOLWEHwF7PYSR2ZoQ95MCmDW4lpQ=; b=wDVWLI7Xu/mUUMM1xKjDykuHok
-	kbIhWf7tGuvJnou/PlYhPqZfGlAdJs0z1ZsXTauVHESpCeM1UCOqysOtl4O/REVioNEFm6wm5RPWi
-	9yJudqUnC0I3UyZ0SpWCGtA1niBaJXkhMeJ/mZ+yZFWHha4KIZZk0WJVhF70Z6onf7wqre+lAzU3n
-	Szy2OsW6wzoiSxT2Qj4s7+/YqkdKyON5v7Q4rEpNASCQmKu+YFn5v+ZXwwgegs+IvndARmgC0ckWs
-	1eyNZORcLC16kE3+ZTeDbwvuDkx0Gy/T+bmQJLXM4dlEDZqbNzylL+RjlQUKHqlvM6h6HQyQSovzJ
-	jchxWLrg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=kmFq0gqdx+HclacHv/+uaVVoavA4vFguTZhiVhRsYxM=; b=IpcM2NAlw53A1Yr0EYyKSZ2Lt
+	HSF78zWyB7nYW51zKsqmkCFx+2q9HtK/p7jeIUgUocG+03t/9AmlErkSDTHyjZwb+kpxOo0xqgzbl
+	IrC2gUQZz5Osv+s44aO+5BuquiaGL5dW6zyuI7yw4t2ZZRmVPIrmwkfcXUEqScO/sQeVfVVgX3DIL
+	Kcc5qBuNmIhkJRmDeRCLiWiEFJVGtIhiZz/05OgNmFI1KSRZH9IdEWW+ay8AJ6iqwexK2h+87qd5W
+	pQNyZ+zILeqswh4XWYFSkQ+IM70cd4b4NrQwrwo+TIhi50PqJh68/cDUShTAu55L5oLWvDEs2wrAo
+	v/KhXzbdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krhtv-0001Ss-0v; Tue, 22 Dec 2020 13:40:31 +0000
+	id 1krhu0-0001VT-6z; Tue, 22 Dec 2020 13:40:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krhts-0001Rb-B7; Tue, 22 Dec 2020 13:40:29 +0000
-X-UUID: 2b35157724b44a89bb049419a7f54038-20201222
+ id 1krhtu-0001RZ-0O; Tue, 22 Dec 2020 13:40:31 +0000
+X-UUID: c103924649f34f95b1f83bd7b8582025-20201222
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=6a/KDHc8lz2tmg1fPpbZfL7ONc1uYDwjiuWGE63ugTs=; 
- b=MKxSdhMnodR25l9T2mI33GUpn1wZ7uGDxSKmyhCKjK9f5lD35/wPAjY6qwbab/EFKj9aTIVDp4VeWSyaWtBkvCTKmdUPj0DQta7XbU3GY64OMwLPY8siXlGy9ZEDiu6g5msmMhDcLO9JX9V9f89pZHcTZPqYtLpYkMFT1IMLp4c=;
-X-UUID: 2b35157724b44a89bb049419a7f54038-20201222
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=P9qCPMdBsYu+jfoLURZnh7M+pHNHP530VcNCvuHG/U0=; 
+ b=G4yNQAKo6Z+gwLucg53jNk4hFYTXoGnvkEu5p3Rhp0C8Ie1k8H34ZHEaYY2A8sdIot2sLX/48ZgHSRky8HDsgCrstjgQ1FsgvpF5kkL7jSI+FEpOOTjS/0+YZuIgkpo70GrJdOyBuB2IgnuXm7ywEUKaJveEK1QOv8JVbR+QRKs=;
+X-UUID: c103924649f34f95b1f83bd7b8582025-20201222
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1531901014; Tue, 22 Dec 2020 05:40:18 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 05:40:17 -0800
+ with ESMTP id 896599353; Tue, 22 Dec 2020 05:40:19 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 05:40:16 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 21:40:12 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 21:40:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 22 Dec 2020 21:40:12 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 0/2] Add MediaTek MT8192 clock provider device nodes 
-Date: Tue, 22 Dec 2020 21:40:12 +0800
-Message-ID: <1608644414-17793-1-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH 1/2] arm64: dts: mediatek: Add mt8192 clock controllers
+Date: Tue, 22 Dec 2020 21:40:13 +0800
+Message-ID: <1608644414-17793-2-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1608644414-17793-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1608644414-17793-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201222_084028_633783_A59965C9 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201222_084030_261192_28E80197 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,18 +90,258 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series is based on v5.10-rc1, MT8192 dts v6[1] and
-MT8192 clock v6 series[2].
+Add clock controller nodes for SoC mt8192
 
-[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=373899
-[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405295
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 163 +++++++++++++++++++++++++++++++
+ 1 file changed, 163 insertions(+)
 
-Weiyi Lu (2):
-  arm64: dts: mediatek: Add mt8192 clock controllers
-  arm64: dts: mediatek: Correct UART0 bus clock of MT8192
-
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 165 ++++++++++++++++++++++-
- 1 file changed, 164 insertions(+), 1 deletion(-)
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index e12e024..92dcfbd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -5,6 +5,7 @@
+  */
+ 
+ /dts-v1/;
++#include <dt-bindings/clock/mt8192-clk.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
+@@ -213,6 +214,24 @@
+ 			};
+ 		};
+ 
++		topckgen: syscon@10000000 {
++			compatible = "mediatek,mt8192-topckgen", "syscon";
++			reg = <0 0x10000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		infracfg: syscon@10001000 {
++			compatible = "mediatek,mt8192-infracfg", "syscon";
++			reg = <0 0x10001000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		pericfg: syscon@10003000 {
++			compatible = "mediatek,mt8192-pericfg", "syscon";
++			reg = <0 0x10003000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		pio: pinctrl@10005000 {
+ 			compatible = "mediatek,mt8192-pinctrl";
+ 			reg = <0 0x10005000 0 0x1000>,
+@@ -238,6 +257,12 @@
+ 			#interrupt-cells = <2>;
+ 		};
+ 
++		apmixedsys: syscon@1000c000 {
++			compatible = "mediatek,mt8192-apmixedsys", "syscon";
++			reg = <0 0x1000c000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		systimer: timer@10017000 {
+ 			compatible = "mediatek,mt8192-timer",
+ 				     "mediatek,mt6765-timer";
+@@ -247,6 +272,12 @@
+ 			clock-names = "clk13m";
+ 		};
+ 
++		scp_adsp: syscon@10720000 {
++			compatible = "mediatek,mt8192-scp_adsp", "syscon";
++			reg = <0 0x10720000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		uart0: serial@11002000 {
+ 			compatible = "mediatek,mt8192-uart",
+ 				     "mediatek,mt6577-uart";
+@@ -267,6 +298,12 @@
+ 			status = "disabled";
+ 		};
+ 
++		imp_iic_wrap_c: syscon@11007000 {
++			compatible = "mediatek,mt8192-imp_iic_wrap_c", "syscon";
++			reg = <0 0x11007000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		spi0: spi@1100a000 {
+ 			compatible = "mediatek,mt8192-spi",
+ 				     "mediatek,mt6765-spi";
+@@ -379,6 +416,12 @@
+ 			status = "disabled";
+ 		};
+ 
++		audsys: syscon@11210000 {
++			compatible = "mediatek,mt8192-audsys", "syscon";
++			reg = <0 0x11210000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		i2c3: i2c3@11cb0000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11cb0000 0 0x1000>,
+@@ -392,6 +435,12 @@
+ 			status = "disabled";
+ 		};
+ 
++		imp_iic_wrap_e: syscon@11cb1000 {
++			compatible = "mediatek,mt8192-imp_iic_wrap_e", "syscon";
++			reg = <0 0x11cb1000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		i2c7: i2c7@11d00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d00000 0 0x1000>,
+@@ -431,6 +480,12 @@
+ 			status = "disabled";
+ 		};
+ 
++		imp_iic_wrap_s: syscon@11d03000 {
++			compatible = "mediatek,mt8192-imp_iic_wrap_s", "syscon";
++			reg = <0 0x11d03000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		i2c1: i2c1@11d20000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d20000 0 0x1000>,
+@@ -470,6 +525,12 @@
+ 			status = "disabled";
+ 		};
+ 
++		imp_iic_wrap_ws: syscon@11d23000 {
++			compatible = "mediatek,mt8192-imp_iic_wrap_ws", "syscon";
++			reg = <0 0x11d23000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		i2c5: i2c5@11e00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11e00000 0 0x1000>,
+@@ -483,6 +544,12 @@
+ 			status = "disabled";
+ 		};
+ 
++		imp_iic_wrap_w: syscon@11e01000 {
++			compatible = "mediatek,mt8192-imp_iic_wrap_w", "syscon";
++			reg = <0 0x11e01000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		i2c0: i2c0@11f00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11f00000 0 0x1000>,
+@@ -508,5 +575,101 @@
+ 			#size-cells = <0>;
+ 			status = "disabled";
+ 		};
++
++		imp_iic_wrap_n: syscon@11f02000 {
++			compatible = "mediatek,mt8192-imp_iic_wrap_n", "syscon";
++			reg = <0 0x11f02000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		msdc_top: syscon@11f10000 {
++			compatible = "mediatek,mt8192-msdc_top", "syscon";
++			reg = <0 0x11f10000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		msdc: syscon@11f60000 {
++			compatible = "mediatek,mt8192-msdc", "syscon";
++			reg = <0 0x11f60000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		mfgcfg: syscon@13fbf000 {
++			compatible = "mediatek,mt8192-mfgcfg", "syscon";
++			reg = <0 0x13fbf000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		mmsys: syscon@14000000 {
++			compatible = "mediatek,mt8192-mmsys", "syscon";
++			reg = <0 0x14000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		imgsys: syscon@15020000 {
++			compatible = "mediatek,mt8192-imgsys", "syscon";
++			reg = <0 0x15020000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		imgsys2: syscon@15820000 {
++			compatible = "mediatek,mt8192-imgsys2", "syscon";
++			reg = <0 0x15820000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		vdecsys_soc: syscon@1600f000 {
++			compatible = "mediatek,mt8192-vdecsys_soc", "syscon";
++			reg = <0 0x1600f000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		vdecsys: syscon@1602f000 {
++			compatible = "mediatek,mt8192-vdecsys", "syscon";
++			reg = <0 0x1602f000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		vencsys: syscon@17000000 {
++			compatible = "mediatek,mt8192-vencsys", "syscon";
++			reg = <0 0x17000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		camsys: syscon@1a000000 {
++			compatible = "mediatek,mt8192-camsys", "syscon";
++			reg = <0 0x1a000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		camsys_rawa: syscon@1a04f000 {
++			compatible = "mediatek,mt8192-camsys_rawa", "syscon";
++			reg = <0 0x1a04f000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		camsys_rawb: syscon@1a06f000 {
++			compatible = "mediatek,mt8192-camsys_rawb", "syscon";
++			reg = <0 0x1a06f000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		camsys_rawc: syscon@1a08f000 {
++			compatible = "mediatek,mt8192-camsys_rawc", "syscon";
++			reg = <0 0x1a08f000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		ipesys: syscon@1b000000 {
++			compatible = "mediatek,mt8192-ipesys", "syscon";
++			reg = <0 0x1b000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		mdpsys: syscon@1f000000 {
++			compatible = "mediatek,mt8192-mdpsys", "syscon";
++			reg = <0 0x1f000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
+ 	};
+ };
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
