@@ -2,19 +2,20 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A4F9C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9B03C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:11:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE80923384
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:11:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE80923384
+	by mail.kernel.org (Postfix) with ESMTPS id 6A1C72312E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:11:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A1C72312E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=haVhYRcKCEVUkJ36HIy3FIBK2vBSZB/MLImIxdaSjEk=; b=KBw4PdKS8G2tKH5kDziGmzoni
-	TXJhi3l/3IAnIVWT7uNoCWvszVayxdQSzsuEkVWwjZXvd/AsuO9wqrlTDz3i0AEloP1qi0xLSReDK
-	oNzq5gPuWwpsen7CQiLkfMVw+gFSXKtnfuYtdwXujX1SUaKmbGf9U8HyZ/dzmLWlQ/ZFBAxbtp0FV
-	soU1nOAXXH0UJbf0k0a475im+cO4RJZOQRgZfpSRGMD8kFApnu7Z3BM8kgWy26NbJ3NUAZ/C4SPhU
-	u+tO6WBMLyuvp18uylPHZYA6baZFziazpeCZdCNugf0u7zAxTLw2nmZ1dRVvn3Bss9tI3il1u9YHz
-	iwoJ4t30g==;
+	 bh=hVJPQUiKDsPBoIySD93Piaz1EGPT9dtZRtEUaCZHoKg=; b=K7/dUedKIcVpW6u43pgKL6ix/
+	THC0PL3JtdYhVQtMq9ZVrKpGiTZH2tl0djY5fAJL/Iq6MWw7fHHBT97HCmoOE5Y+CIOBNPn5DabJQ
+	rTNPXfr6/vYWU69nm/D4bf1MjxZLl8QluZcwLpPWqGQLBDdal0YOSWxnAXViMZMCm35hi/8f4ago6
+	oTuexrIcPGznx9B+fYJOdWP96IENpBRiaWQB20+9a0B4bkzSsD5IQnC32ovvDMa0ZYhrjrCQgyGMn
+	BBZvTdY/H8k/T6wQvJJtDruODcHK7xndAkGNz7A/VV3O0hxYRapke4wEOxtn5YvOdUWA9VtmnAKJe
+	ShMqOKkkg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krhRH-00023p-4b; Tue, 22 Dec 2020 13:10:55 +0000
+	id 1krhRL-00025d-ML; Tue, 22 Dec 2020 13:10:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krhQk-0001mV-Cq; Tue, 22 Dec 2020 13:10:24 +0000
-X-UUID: 90ea38b0b0f94caca679ead4d04ee830-20201222
+ id 1krhQl-0001mW-1p; Tue, 22 Dec 2020 13:10:24 +0000
+X-UUID: c3b5efc5ae754bdda491659fe341a978-20201222
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ftPxtc+iQCzrE74P/pq+OCJL4UAyhW8S1+eTiI7YSZ4=; 
- b=eBt9+zjeyuyebpPEM7ikVtiJVRHY1xlBmMq+kDrlfkvBE4Q8idIlevkNQMzMqnkzwVTwV9DkmO1T9xwokNG28rb7kHiCo6GGt5WreUVwfW9ruJVomtfFzJvwd1ej+y09HLrtMxYwt5CUswbkT7eaiITF7dHO06Amdw3WA82h3HU=;
-X-UUID: 90ea38b0b0f94caca679ead4d04ee830-20201222
+ bh=uBdJBOGJxWj2moBFh8n/KpIwH0ve1GHQH2eVZtORZy0=; 
+ b=S1hRt5IqGV/yyYRRsn5g5ooGfYU7euEwDIzb5bbV9fQ77QcTwYvwDOjz4sdYyFYjAO0/wt/BA8gpCb2X3n8FaFG4wKHM+pT/hABF3Sg6mZnzuZ2jxFeYnS9XZvePSww6hb4CgUuec5IQdSh3jbjWttgYOSni0x0tdkl9fhBlqfw=;
+X-UUID: c3b5efc5ae754bdda491659fe341a978-20201222
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1551011991; Tue, 22 Dec 2020 05:10:02 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1253977837; Tue, 22 Dec 2020 05:10:03 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 05:09:55 -0800
+ 15.0.1497.2; Tue, 22 Dec 2020 05:09:58 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 21:09:50 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 21:09:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Dec 2020 21:09:50 +0800
+ Frontend Transport; Tue, 22 Dec 2020 21:09:51 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH v6 08/22] clk: mediatek: Add configurable enable control to
- mtk_pll_data
-Date: Tue, 22 Dec 2020 21:09:33 +0800
-Message-ID: <1608642587-15634-9-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v6 17/22] clk: mediatek: Add MT8192 mfgcfg clock support
+Date: Tue, 22 Dec 2020 21:09:42 +0800
+Message-ID: <1608642587-15634-18-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201222_081022_850552_A3FE77A6 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20201222_081023_294979_4CA9FF54 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,89 +91,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In all MediaTek PLL design, bit0 of CON0 register is always
-the enable bit.
-However, there's a special case of usbpll on MT8192.
-The enable bit of usbpll is moved to bit2 of other register.
-Add configurable en_reg and pll_en_bit for enable control or
-default 0 where pll data are static variables.
-Hence, CON0_BASE_EN could also be removed.
-And there might have another special case on other chips,
-the enable bit is still on CON0 register but not at bit0.
+Add MT8192 mfgcfg clock provider
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mtk.h |  2 ++
- drivers/clk/mediatek/clk-pll.c | 15 ++++++++++-----
- 2 files changed, 12 insertions(+), 5 deletions(-)
+ drivers/clk/mediatek/Kconfig          |  6 +++++
+ drivers/clk/mediatek/Makefile         |  1 +
+ drivers/clk/mediatek/clk-mt8192-mfg.c | 50 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 57 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-mfg.c
 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index c3d6756..c580663 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -233,6 +233,8 @@ struct mtk_pll_data {
- 	uint32_t pcw_chg_reg;
- 	const struct mtk_pll_div_table *div_table;
- 	const char *parent_name;
-+	uint32_t en_reg;
-+	uint8_t pll_en_bit; /* Assume 0, indicates BIT(0) by default */
- };
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index a0a2efa9..3db8670 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -533,6 +533,12 @@ config COMMON_CLK_MT8192_MDPSYS
+ 	help
+ 	  This driver supports MediaTek MT8192 mdpsys clocks.
  
- void mtk_clk_register_plls(struct device_node *node,
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 11ed5d1..7fb001a 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -44,6 +44,7 @@ struct mtk_clk_pll {
- 	void __iomem	*tuner_en_addr;
- 	void __iomem	*pcw_addr;
- 	void __iomem	*pcw_chg_addr;
-+	void __iomem	*en_addr;
- 	const struct mtk_pll_data *data;
- };
- 
-@@ -56,7 +57,7 @@ static int mtk_pll_is_prepared(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 
--	return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
-+	return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) != 0;
- }
- 
- static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
-@@ -248,8 +249,8 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
- 
--	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) | BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
- 
- 	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
- 	if (div_en_mask) {
-@@ -290,8 +291,8 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 		writel(r, pll->base_addr + REG_CON0);
- 	}
- 
--	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) & ~BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
- 
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
- 	writel(r, pll->pwr_addr);
-@@ -333,6 +334,10 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 		pll->tuner_addr = base + data->tuner_reg;
- 	if (data->tuner_en_reg)
- 		pll->tuner_en_addr = base + data->tuner_en_reg;
-+	if (data->en_reg)
-+		pll->en_addr = base + data->en_reg;
-+	else
-+		pll->en_addr = pll->base_addr + REG_CON0;
- 	pll->hw.init = &init;
- 	pll->data = data;
- 
++config COMMON_CLK_MT8192_MFGCFG
++	bool "Clock driver for MediaTek MT8192 mfgcfg"
++	depends on COMMON_CLK_MT8192
++	help
++	  This driver supports MediaTek MT8192 mfgcfg clocks.
++
+ config COMMON_CLK_MT8516
+ 	bool "Clock driver for MediaTek MT8516"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 7b258cb..024841a 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -74,5 +74,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_IMGSYS) += clk-mt8192-img.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_IMP_IIC_WRAP) += clk-mt8192-imp_iic_wrap.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_IPESYS) += clk-mt8192-ipe.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_MDPSYS) += clk-mt8192-mdp.o
++obj-$(CONFIG_COMMON_CLK_MT8192_MFGCFG) += clk-mt8192-mfg.o
+ obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+ obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+diff --git a/drivers/clk/mediatek/clk-mt8192-mfg.c b/drivers/clk/mediatek/clk-mt8192-mfg.c
+new file mode 100644
+index 0000000..510be98
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8192-mfg.c
+@@ -0,0 +1,50 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2020 MediaTek Inc.
++// Author: Weiyi Lu <weiyi.lu@mediatek.com>
++
++#include <linux/clk-provider.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++
++#include "clk-mtk.h"
++#include "clk-gate.h"
++
++#include <dt-bindings/clock/mt8192-clk.h>
++
++static const struct mtk_gate_regs mfg_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x0,
++};
++
++#define GATE_MFG(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate mfg_clks[] = {
++	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_pll_sel", 0),
++};
++
++static const struct mtk_clk_desc mfg_desc = {
++	.clks = mfg_clks,
++	.num_clks = ARRAY_SIZE(mfg_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8192_mfg[] = {
++	{
++		.compatible = "mediatek,mt8192-mfgcfg",
++		.data = &mfg_desc,
++	}, {
++		/* sentinel */
++	}
++};
++
++static struct platform_driver clk_mt8192_mfg_drv = {
++	.probe = mtk_clk_simple_probe,
++	.driver = {
++		.name = "clk-mt8192-mfg",
++		.of_match_table = of_match_clk_mt8192_mfg,
++	},
++};
++
++builtin_platform_driver(clk_mt8192_mfg_drv);
 -- 
 1.8.1.1.dirty
 _______________________________________________
