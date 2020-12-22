@@ -2,78 +2,71 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1C0EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 03:56:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2780C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 04:58:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9402322D03
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 03:56:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9402322D03
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6686A22518
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 04:58:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6686A22518
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NCc6rBg+iF/SEzTCZwrKCVzkVVK0ok7u3NpdvS+v/yo=; b=IqmZZKyBHyA0egDrrehN2Q0fs
-	SKz9eRc5PhiLVfgQ4nrE+QgquIGITx1m8IK4QP8p8YF2bEiVupL/Q9BKTuabho6QHM4YDTBnNzBcX
-	TH19IAl7E8n9DmDpr7kOQ0AMTymmR+sGzbKW3GegdAFL0ROAw6kWPr+pHS24B1gCEolyYzAczylKz
-	asQmQfqu8d32r+s+lcbsk/qQ1agWaSv+YblC6zeRpBcBQsFzM0aRkqIVdP7YKkRCaHN9ep+hG9AsF
-	pS6XK8zO0l/Wu9IcboqYRsS7JxxFs0PxwP3CgamIYki+FCx5aVUluNSqNUfuunUmZFsG7C0WIctOg
-	4pL6NIj3w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FJV4jb78Fn/08KWWHyRiDkPAhlUmM5Ib1u4tYtosYWI=; b=npn1wq6RAHOEONnzBarbFQi3g7
+	1x8UjDc68aju+OzZTZzR8Fv5IS/cZb/rXUgTzK5kk86oeYdGMFylPs9iGiFDV8f5y3jR/eQ/fPxE9
+	fRRle4lU91x5tzuJ+DBEbZ/IiI4/yIa0d4ISLZzD4stQpCZ+HrE/8kw+PCvFsNsPL3eVLxdAh+mFB
+	Xg3rnyEY1Mj1shfZGojErghnQH1vNXA/CZq/s9sLWOQ/hwKx9QCmRCn1JV6qCh6kO7GKrbNOvSfMN
+	gfC1iLkGgmDT+CqAuVh3qu5NnCzaxfHrPYeN/8rV6Mx1rPPaBBRCZb7MBNXZBbfTfCUpwMDeGngT5
+	b+7UnUdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krYmL-0005AD-Ti; Tue, 22 Dec 2020 03:56:05 +0000
-Received: from mail-vs1-xe2c.google.com ([2607:f8b0:4864:20::e2c])
+	id 1krZkx-0000Hg-10; Tue, 22 Dec 2020 04:58:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krYmI-00058f-BS
- for linux-mediatek@lists.infradead.org; Tue, 22 Dec 2020 03:56:04 +0000
-Received: by mail-vs1-xe2c.google.com with SMTP id x26so6390137vsq.1
- for <linux-mediatek@lists.infradead.org>; Mon, 21 Dec 2020 19:56:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zBdY+iGV2k1HyD2s2ItPRsC+/Ij4zOZsTARmabtWF14=;
- b=BEtMAK/Ln7aSQYZB3kzWI2QxXg3ZjJTwvkkPaJIi8TiAvqmropOMZ2PHYAhx7rJzki
- TlQGDs5l4Ngxi5eZ3K6mHDk7R5TIpMvxlnOWsdiA6wkNUiKMvFSVF9/fkj1lzGerCq/0
- IPTWf4AApotLJTiBuuxr/E+GW0Eat60kG2B6A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zBdY+iGV2k1HyD2s2ItPRsC+/Ij4zOZsTARmabtWF14=;
- b=SgCbjPJxwIialTOYnN/rJ++qJ7+5mLYp6HuEwy9SKJoVsVmUD6LWFaCUOxMRodOqON
- 8aP7VjohmrjvC3HmOM3MbQAt5CnLDANkbdQW61PjhN9h6FKMmqasonhNsW9u0yvHtp/S
- 81tA5ofCDm3xxoX55rb5iZPjD/8ihcsxU5r7kvk//uzH/7bqg/q3trEBiRwjPKo60MkB
- lRzJz8Yx2MKpSKsyXkNjv83LBRHR+wDLgdJVioEfNGTH9WijZ7Zel/K+GUeU6gZCItbP
- noiBB/GEIqyuaTP6Kvq3fbyuw5j7FFh9eF5sdNUzQH/+oynQbeSgm86nhMHk4nNasr7h
- 56DQ==
-X-Gm-Message-State: AOAM532AN5aXE0hYwwFm/RY9MBfu4xv7G31eIw8dnRvdyyOnXqF9sl0C
- Z5D2u9TMG0iJ8n/5XoX4Dxk+3CBFlW6mY6Ve+m96Gg==
-X-Google-Smtp-Source: ABdhPJzZ0hdnkwXJgJV2+C+Ef3YdVvAN8t9K9JjReqGbKUR1SNJ3k+OtA3Skw19bt8acyhLtegwBYiZy1L1X2Z295M8=
-X-Received: by 2002:a67:6182:: with SMTP id v124mr14263455vsb.16.1608609358592; 
- Mon, 21 Dec 2020 19:55:58 -0800 (PST)
+ id 1krZks-0000Gg-2d; Tue, 22 Dec 2020 04:58:39 +0000
+X-UUID: 1343cd29808a495dac72a1b466eb5160-20201221
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ix39aEP/7qBhFODfaYq98ECNI0FRFoI883iGyqKhxxY=; 
+ b=soX5LFOiBcCV2HtNbeL6cbqYt/IY3UZYIs0V/DvgqAnDxY3iDGT4XrgE1FL67YiEtBuoVyxEFKKI22CpEsS3dF/vNJFfS3QfPmYiQq71VRKdywrlRlM8SkO6PvZ17bqIc5cG1MyTbj+dfcYXq8WytTVNVMZ+H8CEPSzsESopOvM=;
+X-UUID: 1343cd29808a495dac72a1b466eb5160-20201221
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jamesjj.liao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 951786802; Mon, 21 Dec 2020 20:58:26 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Dec 2020 20:58:23 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 12:58:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 22 Dec 2020 12:58:21 +0800
+From: James Liao <jamesjj.liao@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] arm64: dts: mt8192: Add cpu-idle-states
+Date: Tue, 22 Dec 2020 12:58:20 +0800
+Message-ID: <20201222045820.26355-1-jamesjj.liao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20201202133813.6917-1-jianjun.wang@mediatek.com>
- <20201202133813.6917-3-jianjun.wang@mediatek.com>
- <CANMq1KCSWf4PDMVhxFiLHOHe3dFqZbq1gzn4ph8aApVMX56MDg@mail.gmail.com>
- <1608608319.14736.97.camel@mhfsdcap03>
-In-Reply-To: <1608608319.14736.97.camel@mhfsdcap03>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Tue, 22 Dec 2020 11:55:47 +0800
-Message-ID: <CANMq1KB3UXg8QKwuv3mFaodx-s_AXSrOWp6C+RN7LaA69nsTyg@mail.gmail.com>
-Subject: Re: [v5,2/3] PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
-To: Jianjun Wang <jianjun.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201221_225602_479314_BA6F574D 
-X-CRM114-Status: GOOD (  25.91  )
+X-CRM114-CacheID: sfid-20201221_235838_349810_580D6FC3 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,141 +78,138 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, Devicetree List <devicetree@vger.kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, qizhong.cheng@mediatek.com,
- Chuanjia Liu <chuanjia.liu@mediatek.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-pci@vger.kernel.org,
- lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Sj Huang <sj.huang@mediatek.com>,
- Ryder Lee <ryder.lee@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, sin_jieyang@mediatek.com,
- "David S . Miller" <davem@davemloft.net>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ James Liao <jamesjj.liao@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 22, 2020 at 11:38 AM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
->
-> On Mon, 2020-12-21 at 10:18 +0800, Nicolas Boichat wrote:
-> > On Wed, Dec 2, 2020 at 9:39 PM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
-> > > [snip]
-> > > +static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
-> > > +                                             msi_alloc_info_t *arg)
-> > > +{
-> > > +       struct msi_desc *entry = arg->desc;
-> > > +       struct mtk_pcie_port *port = info->chip_data;
-> > > +       int hwirq;
-> > > +
-> > > +       mutex_lock(&port->lock);
-> > > +
-> > > +       hwirq = bitmap_find_free_region(port->msi_irq_in_use, PCIE_MSI_IRQS_NUM,
-> > > +                                       order_base_2(entry->nvec_used));
-> > > +       if (hwirq < 0) {
-> > > +               mutex_unlock(&port->lock);
-> > > +               return -ENOSPC;
-> > > +       }
-> > > +
-> > > +       mutex_unlock(&port->lock);
-> > > +
-> > > +       return hwirq;
-> >
-> > Code is good, but I had to look twice to make sure the mutex is
-> > unlocked. Is the following marginally better?
-> >
-> > hwirq = ...;
-> >
-> > mutex_unlock(&port->lock);
-> >
-> > if (hwirq < 0)
-> >    return -ENOSPC;
-> >
-> > return hwirq;
->
-> Impressive, I will fix it in the next version, and I think the hwirq can
-> be returned directly since it will be a negative value if
-> bitmap_find_free_region is failed. The code will be like the following:
->
-> hwirq = ...;
->
-> mutex_unlock(&port->lock);
->
-> return hwirq;
+Add idle states for cpu-off and cluster-off.
 
-SG, as long as you're okay with returning -ENOMEM instead of -ENOSPC.
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 44 ++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-But now I'm having doubt if negative return values are ok, as
-irq_hw_number_t is unsigned long.
+This patch bases on v5.10 and [1], adds idle-states for MT8192 CPUs.
 
-msi_domain_alloc
-(https://elixir.bootlin.com/linux/latest/source/kernel/irq/msi.c#L143)
-uses it to call irq_find_mapping
-(https://elixir.bootlin.com/linux/latest/source/kernel/irq/irqdomain.c#L882)
-without check, and I'm not convinced irq_find_mapping will error out
-gracefully...
+[1] https://lore.kernel.org/linux-arm-kernel/20201030092207.26488-2-seiya.wang@mediatek.com/
 
-> >
-> > > +}
-> > > +
-> > > [snip]
-> > > +static void mtk_pcie_msi_handler(struct irq_desc *desc)
-> > > +{
-> > > +       struct mtk_pcie_msi *msi_info = irq_desc_get_handler_data(desc);
-> > > +       struct irq_chip *irqchip = irq_desc_get_chip(desc);
-> > > +       unsigned long msi_enable, msi_status;
-> > > +       unsigned int virq;
-> > > +       irq_hw_number_t bit, hwirq;
-> > > +
-> > > +       chained_irq_enter(irqchip, desc);
-> > > +
-> > > +       msi_enable = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
-> > > +       while ((msi_status = readl(msi_info->base + PCIE_MSI_STATUS_OFFSET))) {
-> > > +               msi_status &= msi_enable;
-> >
-> > I don't know much about MSI, but what happens if you have a bit that
-> > is set in PCIE_MSI_STATUS_OFFSET register, but not in msi_enable?
->
-> If the bit that in PCIE_MSI_STATUS_OFFSET register is set but not in
-> msi_enable, it must be an abnormal usage of MSI or something goes wrong,
-> it should be ignored in case we can not find the corresponding handler.
->
-> > Sounds like you'll just spin-loop forever without acknowledging the
-> > interrupt.
->
-> The interrupt will be acknowledged in the irq_ack callback of
-> mtk_msi_irq_chip, which belongs to the msi_domain.
-
-Let's try to go through it (and please explain to me if I get this wrong).
-
-Say we have:
-
-msi_enable = [PCIE_MSI_ENABLE_OFFSET] = 0x1;
-
-while loop:
-
-msi_status = [PCIE_MSI_STATUS_OFFSET] = 0x3;
-msi_status &= msi_enable => msi_status = 0x3 & 0x1 = 0x1;
-for_each_set_bit(msi_status) {
-   do something that presumably will disable the MSI interrupt status?
-}
-(next loop iteration)
-
-msi_status = [PCIE_MSI_STATUS_OFFSET] = 0x2;
-msi_status &= msi_enable => msi_status = 0x2 & 0x1 = 0x0;
-for_each_set_bit(msi_status) => does nothing.
-
-msi_status = [PCIE_MSI_STATUS_OFFSET] = 0x2;
-(infinite loop)
-
-Basically, I'm wondering if you should replace the while condition
-statement with:
-
-while ((msi_status = readl(msi_info->base + PCIE_MSI_STATUS_OFFSET) &
-msi_enable))
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index e12e024de122..c7f2ec9ea4f1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -39,6 +39,7 @@
+ 			reg = <0x000>;
+ 			enable-method = "psci";
+ 			clock-frequency = <1701000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
+@@ -49,6 +50,7 @@
+ 			reg = <0x100>;
+ 			enable-method = "psci";
+ 			clock-frequency = <1701000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
+@@ -59,6 +61,7 @@
+ 			reg = <0x200>;
+ 			enable-method = "psci";
+ 			clock-frequency = <1701000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
+@@ -69,6 +72,7 @@
+ 			reg = <0x300>;
+ 			enable-method = "psci";
+ 			clock-frequency = <1701000000>;
++			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+ 		};
+@@ -79,6 +83,7 @@
+ 			reg = <0x400>;
+ 			enable-method = "psci";
+ 			clock-frequency = <2171000000>;
++			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+@@ -89,6 +94,7 @@
+ 			reg = <0x500>;
+ 			enable-method = "psci";
+ 			clock-frequency = <2171000000>;
++			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+@@ -99,6 +105,7 @@
+ 			reg = <0x600>;
+ 			enable-method = "psci";
+ 			clock-frequency = <2171000000>;
++			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+@@ -109,6 +116,7 @@
+ 			reg = <0x700>;
+ 			enable-method = "psci";
+ 			clock-frequency = <2171000000>;
++			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+ 		};
+@@ -158,6 +166,42 @@
+ 		l3_0: l3-cache {
+ 			compatible = "cache";
+ 		};
++
++		idle-states {
++			entry-method = "arm,psci";
++			cpuoff_l: cpuoff_l {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x00010001>;
++				local-timer-stop;
++				entry-latency-us = <55>;
++				exit-latency-us = <140>;
++				min-residency-us = <780>;
++			};
++			cpuoff_b: cpuoff_b {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x00010001>;
++				local-timer-stop;
++				entry-latency-us = <35>;
++				exit-latency-us = <145>;
++				min-residency-us = <720>;
++			};
++			clusteroff_l: clusteroff_l {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x01010002>;
++				local-timer-stop;
++				entry-latency-us = <60>;
++				exit-latency-us = <155>;
++				min-residency-us = <860>;
++			};
++			clusteroff_b: clusteroff_b {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x01010002>;
++				local-timer-stop;
++				entry-latency-us = <40>;
++				exit-latency-us = <155>;
++				min-residency-us = <780>;
++			};
++		};
+ 	};
+ 
+ 	pmu-a55 {
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
