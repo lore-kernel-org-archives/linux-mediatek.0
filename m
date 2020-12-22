@@ -2,68 +2,60 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22E5EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 15:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12E07C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 16:20:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0D02230FC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 15:06:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0D02230FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 88E0223103
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 16:20:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88E0223103
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bPufzGKl9gYyOMCFj+rn38h8kH8dRbr6r5mhN/OOc6I=; b=DvZ8y+Y0IT8YxQQRxo/iGff9Td
-	UgNzxXy3IWT0P3aYWkXIbyGu959mxlWe3wdlEJJaZOCXyNfnouqbVSM4ElQbRRxn4rjPHJZbSfcZi
-	4m1AhbGi60ArZkY0u9/+iFqePf4ZTTA+MLXb8OwgiWqefkizKpi8OxKUU4yuzEdbrd3I/sJaylWVg
-	GLlCqrlwaLUC1re4/uSdAuQkpW18dVQXbsPGSNR8ytnzrPS6z4MKVvWG7rdkN8OCiV/5+CC690wem
-	Mt/Td86l8bZEpRwdFvmqr7iZxxW5N8NPmG9bEApG43jCmrJMqhYevHTGzJhud6oYnUXV9vsbNZu5S
-	IJebtP0w==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=8eU6oMxWJVk7gkf8cQ4lktS9iZU3pWUdx6C2KNeugY8=; b=VSXFvHjCnL+fhWD6mGedtOUzr
+	P6tzhwU3BwqIINMbmYBzgyggYshpVmrt4+QTwMKtBQ4FGwSCGZd0coWtaboaA1LLKH9X8mjMlrmSe
+	2Srdr/OLWsAVFmh8RNcf6Q1n9iFgLe2irw6UW0oLca0H6N0GJLi0VauF0GwKVSpmGPMTUTTa6fSFp
+	Ud7w6F+FLKIjsUgztmYECi2OGiIp6vvx1NU6ax8WHYwtocv1sitn65a/1JeHoMfxCMwNOhFqlbu6C
+	y3+UGCvvdFnKxQOF3Mq2rdb8LRoTlfne7CBOOG1jJWxIvjioXoek9qBy1hNCzHsZRC0KGrIS0HZfz
+	M1ZPI63EQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krjEn-0002Ut-1n; Tue, 22 Dec 2020 15:06:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1krkO9-0001ZF-O9; Tue, 22 Dec 2020 16:19:53 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krjEh-0002U9-8O
- for linux-mediatek@lists.infradead.org; Tue, 22 Dec 2020 15:06:07 +0000
-X-UUID: f9be766fd95f4181b78ea31606d078fd-20201222
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=qdR4Bq+D9lTkjWpXMx/lfWq0zLpQtiOIGbOTsQwmSm0=; 
- b=iriDRXj3cJtbN9SjmfRt3GqHtLu42h8O4GIkIUYAPiod7U5/cDQTfknnPoW98odLXb8Cr3Awe0e4IKaesDBzjkPz0qF3735NFAoh24UaSKjkvqz1TPddMJXEMTsvbd/2+x9YazAVHAmagSrNyS1JVYitlgI1DL9BiCX7+sEQ0wY=;
-X-UUID: f9be766fd95f4181b78ea31606d078fd-20201222
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1627558509; Tue, 22 Dec 2020 07:05:53 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 07:05:50 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 23:05:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Dec 2020 23:05:34 +0800
-From: <Mark-YW.Chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-Subject: [PATCH 1/1] [Add support Mediatek mt7921U]
-Date: Tue, 22 Dec 2020 23:05:27 +0800
-Message-ID: <20201222150527.22904-1-Mark-YW.Chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1krkO3-0001YC-SD; Tue, 22 Dec 2020 16:19:50 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7983C2CF;
+ Tue, 22 Dec 2020 17:19:44 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1608653984;
+ bh=R99MruceAVx7kY/8LfEhixrEGfCcxkdXJMIwuY28BZ0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fWV1X1/cwocSqt/q1VimCNii2YETA9cbfXNEYtON6H9bZbUEc+MsoRsFSO4pAL0PV
+ EfQd6qCwBHJ/EcHzUAn7i96m2BGPQsoGXamljB9rvDaOnsu7WotcYvLrnYFssl7JqV
+ sCw/yl56HLOOhzcPn+ZVbJknieZMynwEx3nTobRs=
+Date: Tue, 22 Dec 2020 18:19:36 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: allen.chen@ite.com.tw
+Subject: Re: [PATCH v6] drm/bridge: add it6505 driver
+Message-ID: <X+IcmCK5ek3z5YUm@pendragon.ideasonboard.com>
+References: <20201208105808.78029-1-allen.chen@ite.com.tw>
+ <734036b1c57f4fb89d6cf68e54337ee7@ite.com.tw>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <734036b1c57f4fb89d6cf68e54337ee7@ite.com.tw>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,4492 +67,1772 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "mark-yw.chen" <mark-yw.chen@mediatek.com>, sean.wang@mediatek.com,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-mediatek@lists.infradead.org, peter.tsao@mediatek.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Kenneth.Hung@ite.com.tw, jitao.shi@mediatek.com, daniel@ffwll.ch,
+ Jau-Chih.Tseng@ite.com.tw, yllin@google.com, airlied@linux.ie,
+ narmstrong@baylibre.com, jernej.skrabec@siol.net,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ a.hajda@samsung.com, Hermes.Wu@ite.com.tw, linux-mediatek@lists.infradead.org,
+ pihsun@chromium.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org, jonas@kwiboo.se
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
-
-This patch adds the support of enabling MT7921U, it's USB-based
-Bluetooth function.
-
-There are some component in the Mediatek driver.
-1. Btmtk_main: it's common code for Mediatek devices,
-   such as firmware download, chip initialization,
-   state machine handling and etc.
-2. Btmtkusb: it's for usb interface,
-   such as usb endpoint enumeration, urb handling and etc.
-
-Firstly, we update the common part and usb part for MT7921U.
-Secondly, we will add the support MT7921S, it's SDIO-based device.
-Finally, we will add the procedure to support uart/pcie interfaces.
-
-Signed-off-by: Mark-YW Chen <mark-yw.chen@mediatek.com>
----
- drivers/bluetooth/btmtk_main.c | 1735 +++++++++++++++++++++++++++
- drivers/bluetooth/btmtk_main.h |  578 +++++++++
- drivers/bluetooth/btmtk_usb.h  |   60 +
- drivers/bluetooth/btmtkusb.c   | 2050 ++++++++++++++++++++++++++++++++
- 4 files changed, 4423 insertions(+)
- create mode 100644 drivers/bluetooth/btmtk_main.c
- create mode 100644 drivers/bluetooth/btmtk_main.h
- create mode 100644 drivers/bluetooth/btmtk_usb.h
- create mode 100644 drivers/bluetooth/btmtkusb.c
-
-diff --git a/drivers/bluetooth/btmtk_main.c b/drivers/bluetooth/btmtk_main.c
-new file mode 100644
-index 000000000000..3038eda057e8
---- /dev/null
-+++ b/drivers/bluetooth/btmtk_main.c
-@@ -0,0 +1,1735 @@
-+// SPDX-License-Identifier: GPL-2.0
-+// Copyright (c) 2020 MediaTek Inc.
-+
-+/*
-+ * Bluetooth support for MediaTek SDIO/USB/UART devices
-+ *
-+ */
-+
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/of_irq.h>
-+#include <linux/input.h>
-+#include <linux/pm_wakeup.h>
-+#include <linux/reboot.h>
-+#include <linux/string.h>
-+#include "btmtk_main.h"
-+
-+#define MTKBT_UNSLEEPABLE_LOCK(x, y)	spin_lock_irqsave(x, y)
-+#define MTKBT_UNSLEEPABLE_UNLOCK(x, y)	spin_unlock_irqsave(x, y)
-+
-+/* TODO, need to modify the state mutex for each hci dev*/
-+static DEFINE_MUTEX(btmtk_chip_state_mutex);
-+#define CHIP_STATE_MUTEX_LOCK()	mutex_lock(&btmtk_chip_state_mutex)
-+#define CHIP_STATE_MUTEX_UNLOCK()	mutex_unlock(&btmtk_chip_state_mutex)
-+static DEFINE_MUTEX(btmtk_fops_state_mutex);
-+#define FOPS_MUTEX_LOCK()	mutex_lock(&btmtk_fops_state_mutex)
-+#define FOPS_MUTEX_UNLOCK()	mutex_unlock(&btmtk_fops_state_mutex)
-+
-+static int btmtk_fops_get_state(struct btmtk_dev *bdev);
-+u8 btmtk_log_lvl = BTMTK_LOG_LVL_DEF;
-+
-+/* To support dynamic mount of interface can be probed */
-+static int btmtk_intf_num = BT_MCU_MINIMUM_INTERFACE_NUM;
-+/* To allow g_bdev being sized from btmtk_intf_num setting */
-+static struct btmtk_dev **g_bdev;
-+
-+const u8 RESET_EVENT[] = { 0x0E, 0x04, 0x01, 0x03, 0x0c, 0x00 };
-+const u8 READ_ISO_PACKET_SIZE_CMD[] = { 0x01, 0x98, 0xFD, 0x02 };
-+
-+u8 wmt_over_hci_header[] = { 0x01, 0x6F, 0xFC};
-+
-+/*btmtk main information*/
-+static struct btmtk_main_info main_info;
-+
-+/* State machine table that clarify through each HIF events,
-+ * To specify HIF event on
-+ * Entering / End / Error
-+ */
-+static const struct btmtk_cif_state g_cif_state[] = {
-+	/* HIF_EVENT_PROBE */
-+	{BTMTK_STATE_PROBE, BTMTK_STATE_WORKING, BTMTK_STATE_DISCONNECT},
-+	/* HIF_EVENT_DISCONNECT */
-+	{BTMTK_STATE_DISCONNECT, BTMTK_STATE_DISCONNECT, BTMTK_STATE_DISCONNECT},
-+	/* HIF_EVENT_SUSPEND */
-+	{BTMTK_STATE_SUSPEND, BTMTK_STATE_SUSPEND, BTMTK_STATE_FW_DUMP},
-+	/* HIF_EVENT_RESUME */
-+	{BTMTK_STATE_RESUME, BTMTK_STATE_WORKING, BTMTK_STATE_FW_DUMP},
-+	/* HIF_EVENT_STANDBY */
-+	{BTMTK_STATE_STANDBY, BTMTK_STATE_STANDBY, BTMTK_STATE_FW_DUMP},
-+	/* BTMTK_STATE_FW_DUMP */
-+	{BTMTK_STATE_SUBSYS_RESET, BTMTK_STATE_WORKING, BTMTK_STATE_FW_DUMP},
-+	/* BTMTK_STATE_FW_DUMP */
-+	{BTMTK_STATE_FW_DUMP, BTMTK_STATE_DISCONNECT, BTMTK_STATE_FW_DUMP},
-+	/* BTMTK_STATE_FW_DUMP */
-+	{BTMTK_STATE_FW_DUMP, BTMTK_STATE_FW_DUMP, BTMTK_STATE_FW_DUMP},
-+};
-+
-+__weak int btmtk_cif_register(void)
-+{
-+	BTMTK_ERR("No cif register function");
-+	return -1;
-+}
-+
-+__weak int btmtk_cif_deregister(void)
-+{
-+	BTMTK_ERR("No cif deregister function");
-+	return -1;
-+}
-+
-+int btmtk_get_chip_state(struct btmtk_dev *bdev)
-+{
-+	int state = BTMTK_STATE_INIT;
-+
-+	CHIP_STATE_MUTEX_LOCK();
-+	state = bdev->interface_state;
-+	CHIP_STATE_MUTEX_UNLOCK();
-+
-+	return state;
-+}
-+
-+void btmtk_set_chip_state(struct btmtk_dev *bdev, int new_state)
-+{
-+	static const char * const state_msg[] = {
-+		"UNKNOWN", "INIT", "DISCONNECT", "PROBE", "WORKING", "SUSPEND", "RESUME",
-+		"FW_DUMP", "STANDBY", "SUBSYS_RESET",
-+	};
-+
-+	BTMTK_INFO("%s: %s(%d) -> %s(%d)", __func__, state_msg[bdev->interface_state],
-+		   bdev->interface_state, state_msg[new_state], new_state);
-+
-+	CHIP_STATE_MUTEX_LOCK();
-+	bdev->interface_state = new_state;
-+	CHIP_STATE_MUTEX_UNLOCK();
-+}
-+
-+static int btmtk_fops_get_state(struct btmtk_dev *bdev)
-+{
-+	int state = BTMTK_FOPS_STATE_INIT;
-+
-+	FOPS_MUTEX_LOCK();
-+	state = bdev->fops_state;
-+	FOPS_MUTEX_UNLOCK();
-+
-+	return state;
-+}
-+
-+static void btmtk_fops_set_state(struct btmtk_dev *bdev, int new_state)
-+{
-+	static const char * const fstate_msg[] = {
-+		"UNKNOWN", "INIT", "OPENING", "OPENED", "CLOSING", "CLOSED",
-+	};
-+
-+	BTMTK_INFO("%s: FOPS_%s(%d) -> FOPS_%s(%d)", __func__, fstate_msg[bdev->fops_state],
-+		   bdev->fops_state, fstate_msg[new_state], new_state);
-+	FOPS_MUTEX_LOCK();
-+	bdev->fops_state = new_state;
-+	FOPS_MUTEX_UNLOCK();
-+}
-+
-+struct btmtk_main_info *btmtk_get_main_info(void)
-+{
-+	return &main_info;
-+}
-+
-+static int main_init(void)
-+{
-+	int i = 0;
-+
-+	BTMTK_INFO("%s", __func__);
-+
-+	/* Check if user changes default minimum supported intf count */
-+	if (btmtk_intf_num < BT_MCU_MINIMUM_INTERFACE_NUM) {
-+		btmtk_intf_num = BT_MCU_MINIMUM_INTERFACE_NUM;
-+		BTMTK_WARN("%s minimum interface is %d", __func__, btmtk_intf_num);
-+	}
-+
-+	g_bdev = kzalloc((sizeof(*g_bdev) * btmtk_intf_num), GFP_KERNEL);
-+	if (!g_bdev) {
-+		BTMTK_WARN("%s insufficient memory", __func__);
-+		return -ENOMEM;
-+	}
-+
-+	for (i = 0; i < btmtk_intf_num; i++) {
-+		g_bdev[i] = btmtk_allocate_dev_memory(NULL);
-+		if (g_bdev[i])
-+			btmtk_fops_set_state(g_bdev[i], BTMTK_FOPS_STATE_INIT);
-+		else
-+			return -ENOMEM;
-+	}
-+
-+	return 0;
-+}
-+
-+static int main_exit(void)
-+{
-+	int i = 0;
-+
-+	BTMTK_INFO("%s releasing intf count <%d>", __func__, btmtk_intf_num);
-+
-+	if (!g_bdev) {
-+		BTMTK_WARN("%s g_data is NULL", __func__);
-+		return 0;
-+	}
-+
-+	BTMTK_INFO("%s: Register reboot_notifier callback success.", __func__);
-+
-+	for (i = 0; i < btmtk_intf_num; i++) {
-+		if (!g_bdev[i])
-+			btmtk_free_dev_memory(NULL, g_bdev[i]);
-+	}
-+
-+	kfree(g_bdev);
-+	return 0;
-+}
-+
-+static inline struct sk_buff *h4_recv_buf(struct hci_dev *hdev,
-+					  struct sk_buff *skb,
-+					  const unsigned char *buffer,
-+					  int count,
-+					  const struct h4_recv_pkt *pkts,
-+					  int pkts_count)
-+{
-+	struct btmtk_dev *bdev = NULL;
-+
-+	if (!hdev || !buffer) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		return ERR_PTR(-EINVAL);
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s, bdev is invalid", __func__);
-+		return ERR_PTR(-EINVAL);
-+	}
-+	if (IS_ERR(skb))
-+		skb = NULL;
-+
-+	while (count) {
-+		int i, len;
-+
-+		if (!skb) {
-+			for (i = 0; i < pkts_count; i++) {
-+				if (buffer[0] != (&pkts[i])->type)
-+					continue;
-+
-+				skb = bt_skb_alloc((&pkts[i])->maxlen,
-+						   GFP_ATOMIC);
-+				if (!skb) {
-+					BTMTK_ERR("%s, alloc skb failed!", __func__);
-+					return ERR_PTR(-ENOMEM);
-+				}
-+
-+				hci_skb_pkt_type(skb) = (&pkts[i])->type;
-+				hci_skb_expect(skb) = (&pkts[i])->hlen;
-+				break;
-+			}
-+
-+			/* Check for invalid packet type */
-+			if (!skb) {
-+				BTMTK_ERR("%s,skb is invalid, buffer[0] = %d!", __func__,
-+					  buffer[0]);
-+				return ERR_PTR(-EILSEQ);
-+			}
-+
-+			count -= 1;
-+			buffer += 1;
-+		}
-+
-+		len = min_t(uint, hci_skb_expect(skb) - skb->len, count);
-+		memcpy(skb_put(skb, len), buffer, len);
-+
-+		count -= len;
-+		buffer += len;
-+
-+		if (skb->len < hci_skb_expect(skb))
-+			continue;
-+
-+		for (i = 0; i < pkts_count; i++) {
-+			if (hci_skb_pkt_type(skb) == (&pkts[i])->type)
-+				break;
-+		}
-+
-+		if (i >= pkts_count) {
-+			BTMTK_ERR("%s, pkt type is invalid!", __func__);
-+			kfree_skb(skb);
-+			return ERR_PTR(-EILSEQ);
-+		}
-+
-+		if (skb->len == (&pkts[i])->hlen) {
-+			u16 dlen;
-+
-+			switch ((&pkts[i])->lsize) {
-+			case 0:
-+				/* No variable data length */
-+				dlen = 0;
-+				break;
-+			case 1:
-+				dlen = skb->data[(&pkts[i])->loff];
-+				hci_skb_expect(skb) += dlen;
-+
-+				if (skb_tailroom(skb) < dlen) {
-+					BTMTK_ERR("%s, skb_tailroom is not enough, dlen:%d!",
-+						  __func__, dlen);
-+					kfree_skb(skb);
-+					return ERR_PTR(-EMSGSIZE);
-+				}
-+				break;
-+			case 2:
-+				/* Double octet variable length */
-+				dlen = get_unaligned_le16(skb->data +
-+							  (&pkts[i])->loff);
-+				hci_skb_expect(skb) += dlen;
-+
-+				if (skb_tailroom(skb) < dlen) {
-+					BTMTK_ERR("%s, tailroom isn't enough in case 2, dlen:%d!",
-+						  __func__, dlen);
-+					kfree_skb(skb);
-+					return ERR_PTR(-EMSGSIZE);
-+				}
-+				break;
-+			default:
-+				/* Unsupported variable length */
-+				BTMTK_ERR("%s, Unsupported variable length!", __func__);
-+				kfree_skb(skb);
-+				return ERR_PTR(-EILSEQ);
-+			}
-+
-+			if (!dlen) {
-+				/* No more data, complete frame */
-+				(&pkts[i])->recv(hdev, skb);
-+				skb = NULL;
-+			}
-+		} else {
-+			/* Complete frame */
-+			(&pkts[i])->recv(hdev, skb);
-+			skb = NULL;
-+		}
-+	}
-+
-+	return skb;
-+}
-+
-+static const struct h4_recv_pkt mtk_recv_pkts[] = {
-+	{ H4_RECV_ACL,      .recv = btmtk_recv_acl },
-+	{ H4_RECV_SCO,      .recv = hci_recv_frame },
-+	{ H4_RECV_EVENT,    .recv = btmtk_recv_event },
-+};
-+
-+int btmtk_recv(struct hci_dev *hdev, const u8 *data, size_t count)
-+{
-+	struct btmtk_dev *bdev = NULL;
-+	const unsigned char *p_left = data;
-+	int sz_left = count;
-+	int err;
-+
-+	if (!hdev || !data) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		return -EINVAL;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s, bdev is NULL!", __func__);
-+		return -EINVAL;
-+	}
-+
-+	while (sz_left > 0) {
-+		/*  The serial data received from MT7622 BT controller is
-+		 *  at all time padded around with the STP header and tailer.
-+		 *
-+		 *  A full STP packet is looking like
-+		 *   -----------------------------------
-+		 *  | STP header  |  H:4   | STP tailer |
-+		 *   -----------------------------------
-+		 *  but it doesn't guarantee to contain a full H:4 packet which
-+		 *  means that it's possible for multiple STP packets forms a
-+		 *  full H:4 packet that means extra STP header + length doesn't
-+		 *  indicate a full H:4 frame, things can fragment. Whose length
-+		 *  recorded in STP header just shows up the most length the
-+		 *  H:4 engine can handle currently.
-+		 */
-+
-+		bdev->rx_skb = h4_recv_buf(hdev, bdev->rx_skb, data,
-+					   count, mtk_recv_pkts,
-+					   ARRAY_SIZE(mtk_recv_pkts));
-+
-+		if (IS_ERR(bdev->rx_skb)) {
-+			err = PTR_ERR(bdev->rx_skb);
-+			pr_err("Frame reassembly failed (%d)", err);
-+			bdev->rx_skb = NULL;
-+			return err;
-+		}
-+
-+		sz_left -= count;
-+		p_left += count;
-+	}
-+
-+	return 0;
-+}
-+
-+static int btmtk_dispatch_pkt(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	int state = BTMTK_STATE_INIT;
-+
-+	if ((bt_cb(skb)->pkt_type == HCI_ACLDATA_PKT) &&
-+	    skb->data[0] == 0x6f &&
-+	    skb->data[1] == 0xfc) {
-+		static int dump_data_counter;
-+		static int dump_data_length;
-+
-+		state = btmtk_get_chip_state(bdev);
-+		if (state != BTMTK_STATE_FW_DUMP) {
-+			BTMTK_INFO("%s: FW dump begin", __func__);
-+			dump_data_counter = 0;
-+			dump_data_length = 0;
-+			btmtk_set_chip_state(bdev, BTMTK_STATE_FW_DUMP);
-+		}
-+
-+		dump_data_counter++;
-+		dump_data_length += skb->len;
-+
-+		if (dump_data_counter % 1000 == 0) {
-+			BTMTK_INFO("%s: FW dump on-going, total_packet = %d, total_length = %d",
-+				   __func__, dump_data_counter, dump_data_length);
-+		}
-+
-+		if (dump_data_counter < 20)
-+			BTMTK_INFO("%s: FW dump data (%d): %s",
-+				   __func__, dump_data_counter, &skb->data[4]);
-+
-+		if (skb->data[skb->len - 4] == 'e' &&
-+		    skb->data[skb->len - 3] == 'n' &&
-+		    skb->data[skb->len - 2] == 'd') {
-+			BTMTK_INFO("%s: FW dump end, dump_data_counter = %d",
-+				   __func__, dump_data_counter);
-+		}
-+	} else if (memcmp(skb->data, RESET_EVENT, sizeof(RESET_EVENT)) == 0) {
-+		BTMTK_INFO("%s: Get RESET_EVENT", __func__);
-+	}
-+	return 0;
-+}
-+
-+int btmtk_recv_acl(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_dev *bdev = NULL;
-+
-+	if (!hdev || !skb) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		return -EINVAL;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev || !bdev->workqueue) {
-+		BTMTK_ERR("%s, bdev or workqueue is invalid!", __func__);
-+		return -EINVAL;
-+	}
-+
-+	skb_queue_tail(&bdev->rx_q, skb);
-+	queue_work(bdev->workqueue, &bdev->rx_work);
-+
-+	return 0;
-+}
-+
-+int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_dev *bdev = NULL;
-+
-+	if (!hdev || !skb) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		return -EINVAL;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev || !bdev->workqueue) {
-+		BTMTK_ERR("%s, bdev or workqueue is invalid!", __func__);
-+		kfree_skb(skb);
-+		return -EINVAL;
-+	}
-+
-+	skb_queue_tail(&bdev->rx_q, skb);
-+	queue_work(bdev->workqueue, &bdev->rx_work);
-+
-+	return 0;
-+}
-+
-+int btmtk_main_send_cmd(struct btmtk_dev *bdev, const u8 *cmd,
-+			const int cmd_len, const u8 *event, const int event_len,
-+			int delay, int retry, int pkt_type)
-+{
-+	struct sk_buff *skb = NULL;
-+	int ret = 0;
-+	int state = BTMTK_STATE_INIT;
-+
-+	if (!bdev || !bdev->hdev || !cmd || cmd_len <= 0) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		ret = -EINVAL;
-+		goto exit;
-+	}
-+
-+	if (memcmp(cmd, wmt_over_hci_header, sizeof(wmt_over_hci_header)) &&
-+	    pkt_type != BTMTK_TX_ACL_FROM_DRV &&
-+	    bdev->power_state != BTMTK_DONGLE_STATE_POWER_ON) {
-+		BTMTK_WARN("%s: chip power isn't on, ignore this command, state is %d",
-+			   __func__, bdev->power_state);
-+		goto exit;
-+	}
-+
-+	state = btmtk_get_chip_state(bdev);
-+	if (state == BTMTK_STATE_FW_DUMP) {
-+		BTMTK_WARN("%s: FW dumping ongoing, don't send any cmd to FW!!!", __func__);
-+		ret = -1;
-+		goto exit;
-+	}
-+
-+	skb = alloc_skb(cmd_len + BT_SKB_RESERVE, GFP_ATOMIC);
-+	if (!skb) {
-+		BTMTK_ERR("%s allocate skb failed!!", __func__);
-+		goto exit;
-+	}
-+
-+	skb_reserve(skb, 7);
-+	bt_cb(skb)->pkt_type = HCI_COMMAND_PKT;
-+	memcpy(skb->data, cmd, cmd_len);
-+	skb->len = cmd_len;
-+
-+	ret = main_info.hif_hook.send_and_recv(bdev,
-+					       skb,
-+					       event, event_len,
-+					       delay, retry, pkt_type);
-+
-+	if (ret < 0)
-+		BTMTK_ERR("%s send_and_recv failed!!", __func__);
-+
-+exit:
-+	BTMTK_DBG("%s end!!", __func__);
-+	return ret;
-+}
-+
-+static void btmtk_load_code_from_bin(const struct firmware **fw_firmware,
-+				     char *bin_name, struct device *dev,
-+				     u8 **image, u32 *code_len)
-+{
-+	int err = 0;
-+	int retry = 10;
-+
-+	if (!bin_name) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		return;
-+	}
-+
-+	do {
-+		err = request_firmware(fw_firmware, bin_name, dev);
-+		if (err == 0) {
-+			break;
-+		} else if (retry <= 0) {
-+			*fw_firmware = NULL;
-+			BTMTK_INFO("%s: request_firmware %d times fail, file not exist, err = %d",
-+				   __func__, 10, err);
-+			return;
-+		}
-+		BTMTK_INFO("%s: request_firmware fail, file not exist, err = %d, retry = %d",
-+			   __func__, err, retry);
-+		msleep(100);
-+	} while (retry-- > 0);
-+
-+	*image = (u8 *)(*fw_firmware)->data;
-+	*code_len = (*fw_firmware)->size;
-+}
-+
-+static void btmtk_print_bt_patch_info(struct btmtk_dev *bdev, u8 *fwbuf)
-+{
-+	struct _PATCH_HEADER *patchhdr = NULL;
-+	struct _GLOBAL_DESCR *globaldesrc = NULL;
-+
-+	if (!fwbuf) {
-+		BTMTK_WARN("%s, fwbuf is NULL!", __func__);
-+		return;
-+	}
-+
-+	patchhdr = (struct _PATCH_HEADER *)fwbuf;
-+
-+	if (is_mt7922(bdev->chip_id) || is_mt7961(bdev->chip_id))
-+		globaldesrc = (struct _GLOBAL_DESCR *)(fwbuf + FW_ROM_PATCH_HEADER_SIZE);
-+
-+	BTMTK_INFO("[btmtk] =============== Patch Info ==============");
-+	if (patchhdr) {
-+		BTMTK_INFO("[btmtk] Built Time = %s", patchhdr->ucdatetime);
-+		BTMTK_INFO("[btmtk] Hw Ver = 0x%04x", patchhdr->u2hwver);
-+		BTMTK_INFO("[btmtk] Sw Ver = 0x%04x", patchhdr->u2swver);
-+		BTMTK_INFO("[btmtk] Magic Number = 0x%08x", patchhdr->u4magicnum);
-+
-+		BTMTK_INFO("[btmtk] Platform = %c%c%c%c",
-+			   patchhdr->ucplatform[0],
-+			   patchhdr->ucplatform[1],
-+			   patchhdr->ucplatform[2],
-+			   patchhdr->ucplatform[3]);
-+	}
-+
-+	if (globaldesrc) {
-+		BTMTK_INFO("[btmtk] Patch Ver = 0x%08x", globaldesrc->u4patchver);
-+		BTMTK_INFO("[btmtk] Section num = 0x%08x", globaldesrc->u4sectionnum);
-+	}
-+
-+	BTMTK_INFO("[btmtk] =========================================");
-+}
-+
-+static void btmtk_print_wifi_patch_info(struct btmtk_dev *bdev, u8 *fwbuf)
-+{
-+	struct _PATCH_HEADER *patchhdr = NULL;
-+	struct _GLOBAL_DESCR *globaldesrc = NULL;
-+
-+	if (!fwbuf) {
-+		BTMTK_WARN("%s, fwbuf is NULL!", __func__);
-+		return;
-+	}
-+
-+	patchhdr = (struct _PATCH_HEADER *)fwbuf;
-+
-+	if (is_mt7922(bdev->chip_id) || is_mt7961(bdev->chip_id))
-+		globaldesrc = (struct _GLOBAL_DESCR *)(fwbuf + FW_ROM_PATCH_HEADER_SIZE);
-+
-+	BTMTK_INFO("[btmtk] =============== Wifi Patch Info ==============");
-+	if (patchhdr) {
-+		BTMTK_INFO("[btmtk] Built Time = %s", patchhdr->ucdatetime);
-+		BTMTK_INFO("[btmtk] Hw Ver = 0x%04x",
-+			   ((patchhdr->u2hwver & 0x00ff) << 8) |
-+			   ((patchhdr->u2hwver & 0xff00) >> 8));
-+		BTMTK_INFO("[btmtk] Sw Ver = 0x%04x",
-+			   ((patchhdr->u2swver & 0x00ff) << 8) |
-+			   ((patchhdr->u2swver & 0xff00) >> 8));
-+		BTMTK_INFO("[btmtk] Magic Number = 0x%08x", be2cpu32(patchhdr->u4magicnum));
-+
-+		BTMTK_INFO("[btmtk] Platform = %c%c%c%c",
-+			   patchhdr->ucplatform[0],
-+			   patchhdr->ucplatform[1],
-+			   patchhdr->ucplatform[2],
-+			   patchhdr->ucplatform[3]);
-+	}
-+
-+	if (globaldesrc) {
-+		BTMTK_INFO("[btmtk] Patch Ver = 0x%08x",
-+			   be2cpu32(globaldesrc->u4patchver));
-+		BTMTK_INFO("[btmtk] Section num = 0x%08x",
-+			   be2cpu32(globaldesrc->u4sectionnum));
-+	} else {
-+		BTMTK_WARN("%s, globaldesrc is NULL!", __func__);
-+	}
-+
-+	BTMTK_INFO("[btmtk] =========================================");
-+}
-+
-+static int btmtk_send_wmt_download_cmd(struct btmtk_dev *bdev, u8 *cmd,
-+				       int cmd_len, u8 *event, int event_len,
-+				       struct _SECTION_MAP *sectionmap,
-+				       u8 fw_state, u8 dma_flag, bool patch_flag)
-+{
-+	int payload_len = 0;
-+	int ret = -1;
-+	int i = 0;
-+	u32 revert_secspec = 0;
-+
-+	if (!bdev || !cmd || !event || !sectionmap) {
-+		BTMTK_ERR("%s: invalid parameter!", __func__);
-+		return ret;
-+	}
-+
-+	/* prepare HCI header */
-+	cmd[0] = 0x01;
-+	cmd[1] = 0x6F;
-+	cmd[2] = 0xFC;
-+
-+	/* prepare WMT header */
-+	cmd[4] = 0x01;
-+	cmd[5] = 0x01;
-+
-+	if (fw_state == 0) {
-+		/* prepare WMT DL cmd */
-+		payload_len = SEC_MAP_NEED_SEND_SIZE + 2;
-+
-+		cmd[3] = (payload_len + 4) & 0xFF;
-+		cmd[6] = payload_len & 0xFF;
-+		cmd[7] = (payload_len >> 8) & 0xFF;
-+		cmd[8] = 0x00;
-+		cmd[9] = dma_flag; /* 1:using DMA to download, 0:using legacy wmt cmd*/
-+		cmd_len = SEC_MAP_NEED_SEND_SIZE + PATCH_HEADER_SIZE;
-+
-+		if (patch_flag)
-+			for (i = 0; i < SECTION_SPEC_NUM; i++) {
-+				revert_secspec = be2cpu32(sectionmap->u4secspec[i]);
-+				memcpy(&cmd[PATCH_HEADER_SIZE] + i * sizeof(u32),
-+				       (u8 *)&revert_secspec, sizeof(u32));
-+			}
-+		else
-+			memcpy(&cmd[PATCH_HEADER_SIZE], (u8 *)(sectionmap->u4secspec),
-+			       SEC_MAP_NEED_SEND_SIZE);
-+
-+		ret = btmtk_main_send_cmd(bdev, cmd, cmd_len,
-+					  event, event_len, DELAY_TIMES, RETRY_TIMES,
-+					  BTMTK_TX_CMD_FROM_DRV);
-+		if (ret < 0) {
-+			BTMTK_ERR("%s: send wmd dl cmd failed, terminate!", __func__);
-+			return PATCH_ERR;
-+		}
-+
-+		if (bdev->recv_evt_len >= event_len)
-+			return bdev->io_buf[PATCH_STATUS];
-+
-+		ret = PATCH_ERR;
-+	} else {
-+		BTMTK_ERR("%s: fw state is error!", __func__);
-+	}
-+
-+	return ret;
-+}
-+
-+static int btmtk_load_fw_patch_using_wmt_cmd(struct btmtk_dev *bdev,
-+					     u8 *image, u8 *fwbuf, u8 *event,
-+					     int event_len, u32 patch_len, int offset)
-+{
-+	int ret = 0;
-+	u32 cur_len = 0;
-+	s32 sent_len;
-+	int first_block = 1;
-+	u8 phase;
-+	int delay = PATCH_DOWNLOAD_PHASE1_2_DELAY_TIME;
-+	int retry = PATCH_DOWNLOAD_PHASE1_2_RETRY;
-+
-+	if (!bdev || !image || !fwbuf) {
-+		BTMTK_WARN("%s, invalid parameters!", __func__);
-+		ret = -1;
-+		goto exit;
-+	}
-+
-+	/* loading rom patch */
-+	while (1) {
-+		s32 sent_len_max = UPLOAD_PATCH_UNIT - PATCH_HEADER_SIZE;
-+
-+		sent_len = (patch_len - cur_len) >= sent_len_max ?
-+			    sent_len_max : (patch_len - cur_len);
-+
-+		if (sent_len > 0) {
-+			if (first_block == 1) {
-+				if (sent_len < sent_len_max)
-+					phase = PATCH_PHASE3;
-+				else
-+					phase = PATCH_PHASE1;
-+				first_block = 0;
-+			} else if (sent_len == sent_len_max) {
-+				if (patch_len - cur_len == sent_len_max)
-+					phase = PATCH_PHASE3;
-+				else
-+					phase = PATCH_PHASE2;
-+			} else {
-+				phase = PATCH_PHASE3;
-+			}
-+
-+			/* prepare HCI header */
-+			image[0] = 0x02;
-+			image[1] = 0x6F;
-+			image[2] = 0xFC;
-+			image[3] = (sent_len + 5) & 0xFF;
-+			image[4] = ((sent_len + 5) >> 8) & 0xFF;
-+
-+			/* prepare WMT header */
-+			image[5] = 0x01;
-+			image[6] = 0x01;
-+			image[7] = (sent_len + 1) & 0xFF;
-+			image[8] = ((sent_len + 1) >> 8) & 0xFF;
-+
-+			image[9] = phase;
-+			memcpy(&image[10], fwbuf + offset + cur_len, sent_len);
-+			if (phase == PATCH_PHASE3) {
-+				delay = PATCH_DOWNLOAD_PHASE3_DELAY_TIME;
-+				retry = PATCH_DOWNLOAD_PHASE3_RETRY;
-+			}
-+
-+			cur_len += sent_len;
-+			BTMTK_DBG("%s: sent_len = %d, cur_len = %d, phase = %d", __func__,
-+				  sent_len, cur_len, phase);
-+
-+			ret = btmtk_main_send_cmd(bdev, image, sent_len + PATCH_HEADER_SIZE,
-+						  event, event_len, delay, retry,
-+						  BTMTK_TX_ACL_FROM_DRV);
-+			if (ret < 0) {
-+				BTMTK_INFO("%s: send patch failed, terminate", __func__);
-+				goto exit;
-+			}
-+		} else {
-+			break;
-+		}
-+	}
-+
-+exit:
-+	return ret;
-+}
-+
-+static int btmtk_send_fw_rom_patch_79xx(struct btmtk_dev *bdev,
-+					u8 *fwbuf, bool patch_flag)
-+{
-+	u8 *pos;
-+	int loop_count = 0;
-+	int ret = 0;
-+	u32 section_num = 0;
-+	u32 section_offset = 0;
-+	u32 dl_size = 0;
-+	int patch_status = 0;
-+	int retry = 20;
-+	u8 dma_flag = PATCH_DOWNLOAD_USING_WMT;
-+	struct _SECTION_MAP *sectionmap;
-+	struct _GLOBAL_DESCR *globaldescr;
-+	u8 event[] = {0x04, 0xE4, 0x05, 0x02, 0x01, 0x01, 0x00, 0x00}; /* event[7] is status*/
-+
-+	if (!fwbuf) {
-+		BTMTK_WARN("%s, fwbuf is NULL!", __func__);
-+		ret = -1;
-+		goto exit;
-+	}
-+
-+	globaldescr = (struct _GLOBAL_DESCR *)(fwbuf + FW_ROM_PATCH_HEADER_SIZE);
-+
-+	BTMTK_INFO("%s: loading rom patch...\n", __func__);
-+
-+	if (patch_flag)
-+		section_num = be2cpu32(globaldescr->u4sectionnum);
-+	else
-+		section_num = globaldescr->u4sectionnum;
-+	BTMTK_INFO("%s: section_num = 0x%08x\n", __func__, section_num);
-+
-+	pos = kmalloc(UPLOAD_PATCH_UNIT, GFP_ATOMIC);
-+	if (!pos) {
-+		BTMTK_ERR("%s: alloc memory failed", __func__);
-+		goto exit;
-+	}
-+
-+	do {
-+		sectionmap = (struct _SECTION_MAP *)(fwbuf + FW_ROM_PATCH_HEADER_SIZE +
-+				FW_ROM_PATCH_GD_SIZE + FW_ROM_PATCH_SEC_MAP_SIZE * loop_count);
-+		dma_flag = PATCH_DOWNLOAD_USING_WMT;
-+		if (patch_flag) {
-+			/* wifi is big-endian */
-+			section_offset = be2cpu32(sectionmap->u4secoffset);
-+			dl_size = be2cpu32(sectionmap->bin_info_spec.u4dlsize);
-+			dma_flag = be2cpu32(sectionmap->bin_info_spec.u4dlmodecrctype) & 0xFF;
-+		} else {
-+			/* BT is little-endian */
-+			section_offset = sectionmap->u4secoffset;
-+			dl_size = sectionmap->bin_info_spec.u4dlsize;
-+			/*
-+			 * loop_count = 0: BGF patch
-+			 *              1: BT ILM
-+			 * only BT ILM support DL DMA for Buzzard
-+			 */
-+			dma_flag = le2cpu32(sectionmap->bin_info_spec.u4dlmodecrctype) & 0xFF;
-+		}
-+		BTMTK_INFO("%s:loop=%d, sec_offset=0x%08x, dl patch_len=0x%08x, dl mode=%d",
-+			   __func__, loop_count, section_offset, dl_size, dma_flag);
-+		if (dl_size > 0) {
-+			retry = 20;
-+			do {
-+				patch_status = btmtk_send_wmt_download_cmd(bdev, pos, 0,
-+									   event, sizeof(event) - 1,
-+									   sectionmap, 0, dma_flag,
-+									   patch_flag);
-+				BTMTK_INFO("%s: patch_status %d", __func__, patch_status);
-+
-+				if (patch_status > PATCH_READY || patch_status == PATCH_ERR) {
-+					BTMTK_ERR("%s: patch_status error", __func__);
-+					ret = -1;
-+					goto err;
-+				} else if (patch_status == PATCH_READY) {
-+					BTMTK_INFO("%s: no need to load rom patch section%d",
-+						   __func__, loop_count);
-+					goto next_section;
-+				} else if (patch_status == PATCH_IS_DOWNLOAD_BY_OTHER) {
-+					msleep(100);
-+					retry--;
-+				} else if (patch_status == PATCH_NEED_DOWNLOAD) {
-+					break;  /* Download ROM patch directly */
-+				}
-+			} while (retry > 0);
-+
-+			if (patch_status == PATCH_IS_DOWNLOAD_BY_OTHER) {
-+				BTMTK_WARN("%s: Hold by another fun more than 2 seconds", __func__);
-+				ret = -1;
-+				goto err;
-+			}
-+
-+			if (dma_flag == PATCH_DOWNLOAD_USING_DMA && main_info.hif_hook.dl_dma) {
-+				/* using DMA to download fw patch*/
-+				ret = main_info.hif_hook.dl_dma(bdev,
-+					pos, fwbuf,
-+					dl_size, section_offset);
-+				if (ret < 0) {
-+					BTMTK_ERR("%s: dl using dma failed!", __func__);
-+					goto err;
-+				}
-+			} else {
-+				/* using legacy wmt cmd to download fw patch */
-+				ret = btmtk_load_fw_patch_using_wmt_cmd(bdev, pos, fwbuf, event,
-+									sizeof(event) - 1,
-+									dl_size, section_offset);
-+				if (ret < 0) {
-+					BTMTK_ERR("%s: dl using wmt cmd failed!", __func__);
-+					goto err;
-+				}
-+			}
-+		}
-+next_section:
-+		continue;
-+	} while (++loop_count < section_num);
-+
-+err:
-+	kfree(pos);
-+	pos = NULL;
-+
-+exit:
-+	return ret;
-+}
-+
-+int btmtk_load_rom_patch_79xx(struct btmtk_dev *bdev, bool patch_flag)
-+{
-+	int ret = 0;
-+	const struct firmware *fw_firmware = NULL;
-+	u8 *rom_patch = NULL;
-+	unsigned int rom_patch_len = 0;
-+
-+	BTMTK_ERR("%s, patch_flag = %d!", __func__, patch_flag);
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		return -EINVAL;
-+	}
-+
-+	if (patch_flag) {
-+		if (bdev->flavor)
-+			/* if flavor equals 1, it represent 7920, else it represent 7921*/
-+			snprintf(bdev->rom_patch_bin_file_name, MAX_BIN_FILE_NAME_LEN,
-+				 "WIFI_MT%04x_patch_mcu_1a_%x_hdr.bin",
-+				 bdev->chip_id & 0xffff, (bdev->fw_version & 0xff) + 1);
-+		else
-+			snprintf(bdev->rom_patch_bin_file_name, MAX_BIN_FILE_NAME_LEN,
-+				 "WIFI_MT%04x_patch_mcu_1_%x_hdr.bin",
-+				 bdev->chip_id & 0xffff, (bdev->fw_version & 0xff) + 1);
-+	}
-+
-+	btmtk_load_code_from_bin(&fw_firmware, bdev->rom_patch_bin_file_name, NULL,
-+				 &rom_patch, &rom_patch_len);
-+
-+	if (!rom_patch) {
-+		BTMTK_ERR("%s: please assign a rom patch(/etc/firmware/%s)or(/lib/firmware/%s)",
-+			  __func__, bdev->rom_patch_bin_file_name, bdev->rom_patch_bin_file_name);
-+		ret = -1;
-+		goto err;
-+	}
-+
-+	if (patch_flag)
-+		/*Display rom patch info*/
-+		btmtk_print_wifi_patch_info(bdev, rom_patch);
-+	else
-+		btmtk_print_bt_patch_info(bdev, rom_patch);
-+
-+	ret = btmtk_send_fw_rom_patch_79xx(bdev, rom_patch, patch_flag);
-+	if (ret < 0) {
-+		BTMTK_ERR("%s, btmtk_send_fw_rom_patch_79xx failed!", __func__);
-+		goto err;
-+	}
-+
-+	bdev->power_state = BTMTK_DONGLE_STATE_POWER_OFF;
-+	BTMTK_INFO("%s end", __func__);
-+
-+err:
-+	if (fw_firmware)
-+		release_firmware(fw_firmware);
-+	return ret;
-+}
-+
-+int btmtk_load_rom_patch(struct btmtk_dev *bdev)
-+{
-+	int err = -1;
-+
-+	if (!bdev || !bdev->hdev) {
-+		BTMTK_ERR("%s: invalid parameters!", __func__);
-+		return err;
-+	}
-+
-+	if (is_mt7922(bdev->chip_id) || is_mt7961(bdev->chip_id)) {
-+		err = btmtk_load_rom_patch_79xx(bdev, BT_DOWNLOAD);
-+		if (err < 0) {
-+			BTMTK_ERR("%s: btmtk_load_rom_patch_79xx bt patch failed!", __func__);
-+			return err;
-+		}
-+
-+		err = btmtk_load_rom_patch_79xx(bdev, WIFI_DOWNLOAD);
-+		if (err < 0) {
-+			BTMTK_WARN("%s: btmtk_load_rom_patch_79xx wifi patch failed!", __func__);
-+			err = 0;
-+		}
-+	} else {
-+		BTMTK_WARN("%s: unknown chip id (%d)", __func__, bdev->chip_id);
-+	}
-+
-+	return err;
-+}
-+
-+struct btmtk_dev *btmtk_get_dev(void)
-+{
-+	int i = 0;
-+	struct btmtk_dev *tmp_bdev = NULL;
-+
-+	BTMTK_INFO("%s", __func__);
-+
-+	for (i = 0; i < btmtk_intf_num; i++) {
-+		if (!g_bdev[i]->hdev) {
-+			if (i == 0)
-+				g_bdev[i]->dongle_index = i;
-+			else
-+				g_bdev[i]->dongle_index = g_bdev[i - 1]->dongle_index + 1;
-+
-+			tmp_bdev = g_bdev[i];
-+
-+			/* Hook pre-defined table on state machine */
-+			g_bdev[i]->cif_state = (struct btmtk_cif_state *)g_cif_state;
-+			break;
-+		}
-+	}
-+
-+	return tmp_bdev;
-+}
-+
-+void btmtk_release_dev(struct btmtk_dev *bdev)
-+{
-+	int i = 0;
-+	struct btmtk_dev *tmp_bdev = NULL;
-+
-+	tmp_bdev = bdev;
-+	if (!tmp_bdev) {
-+		for (i = 0; i < btmtk_intf_num; i++) {
-+			if (memcmp(tmp_bdev, g_bdev[i], sizeof(*tmp_bdev)) == 0) {
-+				memset(tmp_bdev, 0, sizeof(*tmp_bdev));
-+
-+				tmp_bdev = NULL;
-+				break;
-+			}
-+		}
-+	}
-+}
-+
-+struct btmtk_dev *btmtk_allocate_dev_memory(struct device *dev)
-+{
-+	struct btmtk_dev *bdev;
-+	size_t len = sizeof(*bdev);
-+
-+	if (!dev)
-+		bdev = devm_kzalloc(dev, len, GFP_KERNEL);
-+	else
-+		bdev = kzalloc(len, GFP_KERNEL);
-+
-+	if (!bdev)
-+		return NULL;
-+
-+	btmtk_set_chip_state(bdev, BTMTK_STATE_INIT);
-+
-+	return bdev;
-+}
-+
-+void btmtk_free_dev_memory(struct device *dev, struct btmtk_dev *bdev)
-+{
-+	if (!bdev) {
-+		if (!dev)
-+			devm_kfree(dev, bdev);
-+		else
-+			kfree(bdev);
-+	}
-+}
-+
-+int btmtk_send_wmt_power_on_cmd(struct btmtk_dev *bdev)
-+{
-+	/* Support 7668 and 7961 */
-+	u8 cmd[] = { 0x01, 0x6F, 0xFC, 0x06, 0x01, 0x06, 0x02, 0x00, 0x00, 0x01 };
-+	u8 event[] = { 0x04, 0xE4, 0x05, 0x02, 0x06, 0x01, 0x00 };
-+	int ret = -1, retry = RETRY_TIMES;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s: bdev is NULL !", __func__);
-+		return ret;
-+	}
-+
-+retry_again:
-+
-+	ret = btmtk_main_send_cmd(bdev, cmd, sizeof(cmd), event, sizeof(event),
-+				  WMT_DELAY_TIMES, RETRY_TIMES, BTMTK_TX_CMD_FROM_DRV);
-+	if (ret < 0) {
-+		BTMTK_ERR("%s: failed(%d)", __func__, ret);
-+		bdev->power_state = BTMTK_DONGLE_STATE_ERROR;
-+		ret = -1;
-+	} else if (ret == 0 && bdev->recv_evt_len > 0) {
-+		switch (bdev->io_buf[6]) {
-+		case 0:			 /* successful */
-+			BTMTK_INFO("%s: OK", __func__);
-+			bdev->power_state = BTMTK_DONGLE_STATE_POWER_ON;
-+			break;
-+		case 2:			 /* TODO:retry */
-+			if (retry > 0) {
-+				retry--;
-+				BTMTK_INFO("%s: need to try again", __func__);
-+				mdelay(50);
-+				goto retry_again;
-+			}
-+			break;
-+		default:
-+			BTMTK_WARN("%s: Unknown result: %02X", __func__, bdev->io_buf[6]);
-+			bdev->power_state = BTMTK_DONGLE_STATE_ERROR;
-+			ret = -1;
-+			break;
-+		}
-+	}
-+
-+	return ret;
-+}
-+
-+int btmtk_send_wmt_power_off_cmd(struct btmtk_dev *bdev)
-+{
-+	/* Support 7668 and 7961 */
-+	u8 cmd[] = { 0x01, 0x6F, 0xFC, 0x06, 0x01, 0x06, 0x02, 0x00, 0x00, 0x00 };
-+	/* To-Do, for event check */
-+	u8 event[] = { 0x04, 0xE4, 0x05, 0x02, 0x06, 0x01, 0x00 };
-+	int ret = -1;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s: bdev is NULL !", __func__);
-+		return ret;
-+	}
-+
-+	if (bdev->power_state == BTMTK_DONGLE_STATE_POWER_OFF) {
-+		BTMTK_WARN("%s: power_state already power off", __func__);
-+		return 0;
-+	}
-+
-+	ret = btmtk_main_send_cmd(bdev, cmd, sizeof(cmd), event, sizeof(event),
-+				  DELAY_TIMES, RETRY_TIMES, BTMTK_TX_CMD_FROM_DRV);
-+	if (ret < 0) {
-+		BTMTK_ERR("%s: failed(%d)", __func__, ret);
-+		bdev->power_state = BTMTK_DONGLE_STATE_ERROR;
-+		return ret;
-+	}
-+
-+	bdev->power_state = BTMTK_DONGLE_STATE_POWER_OFF;
-+	BTMTK_INFO("%s done", __func__);
-+	return ret;
-+}
-+
-+int btmtk_cap_init(struct btmtk_dev *bdev)
-+{
-+	if (!bdev) {
-+		BTMTK_ERR("%s, bdev is NULL!", __func__);
-+		return -1;
-+	}
-+
-+	main_info.hif_hook.reg_read(bdev, CHIP_ID, &bdev->chip_id);
-+	if (is_mt7922(bdev->chip_id) || is_mt7961(bdev->chip_id)) {
-+		main_info.hif_hook.reg_read(bdev, FLAVOR, &bdev->flavor);
-+		main_info.hif_hook.reg_read(bdev, FW_VERSION, &bdev->fw_version);
-+	} else {
-+		BTMTK_ERR("Unknown Mediatek device(%04X)\n", bdev->chip_id);
-+		return -1;
-+	}
-+
-+	BTMTK_INFO("%s: Chip ID = 0x%x", __func__, bdev->chip_id);
-+	BTMTK_INFO("%s: flavor = 0x%x", __func__, bdev->flavor);
-+	BTMTK_INFO("%s: FW Ver = 0x%x", __func__, bdev->fw_version);
-+
-+	memset(bdev->rom_patch_bin_file_name, 0, MAX_BIN_FILE_NAME_LEN);
-+	if ((bdev->fw_version & 0xff) == 0xff) {
-+		BTMTK_ERR("%s: failed, wrong FW version : 0x%x !", __func__, bdev->fw_version);
-+		return -1;
-+	}
-+
-+	/* Bin filename format : "BT_RAM_CODE_MT%04x_%x_%x_hdr.bin"
-+	 *  $$$$ : chip id
-+	 *  % : fw version & 0xFF + 1 (in HEX)
-+	 */
-+	bdev->flavor = (bdev->flavor & 0x00000080) >> 7;
-+	BTMTK_INFO("%s: flavor1 = 0x%x", __func__, bdev->flavor);
-+
-+	/* if flavor equals 1, it represent 7920, else it represent 7921 */
-+	if (bdev->flavor)
-+		snprintf(bdev->rom_patch_bin_file_name, MAX_BIN_FILE_NAME_LEN,
-+			 "BT_RAM_CODE_MT%04x_1a_%x_hdr.bin",
-+			 bdev->chip_id & 0xffff, (bdev->fw_version & 0xff) + 1);
-+	else
-+		snprintf(bdev->rom_patch_bin_file_name, MAX_BIN_FILE_NAME_LEN,
-+			 "BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
-+			 bdev->chip_id & 0xffff, (bdev->fw_version & 0xff) + 1);
-+
-+	BTMTK_INFO("%s: rom patch file name is %s", __func__, bdev->rom_patch_bin_file_name);
-+
-+	return 0;
-+}
-+
-+int btmtk_send_init_cmds(struct btmtk_dev *bdev)
-+{
-+	int ret = -1;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s: bdev is NULL !", __func__);
-+		goto exit;
-+	}
-+
-+	BTMTK_INFO("%s", __func__);
-+
-+	ret = btmtk_send_wmt_power_on_cmd(bdev);
-+	if (ret < 0) {
-+		if (bdev->power_state != BTMTK_DONGLE_STATE_POWER_ON)
-+			BTMTK_ERR("%s, btmtk_send_wmt_power_on_cmd failed!", __func__);
-+		goto exit;
-+	}
-+
-+exit:
-+	return ret;
-+}
-+
-+int btmtk_send_deinit_cmds(struct btmtk_dev *bdev)
-+{
-+	int ret = -1;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s: bdev is NULL !", __func__);
-+		return ret;
-+	}
-+
-+	BTMTK_INFO("%s", __func__);
-+
-+	ret = btmtk_send_wmt_power_off_cmd(bdev);
-+	if (bdev->power_state != BTMTK_DONGLE_STATE_POWER_OFF) {
-+		BTMTK_WARN("Power off failed, reset it");
-+		btmtk_send_assert_cmd(bdev);
-+	}
-+
-+	return ret;
-+}
-+
-+int btmtk_send_assert_cmd(struct btmtk_dev *bdev)
-+{
-+	int ret = 0;
-+	int state;
-+	u8 buf[] = { 0x01, 0x6F, 0xFC, 0x05, 0x01, 0x02, 0x01, 0x00, 0x08 };
-+	struct sk_buff *skb = NULL;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		ret = -EINVAL;
-+		goto exit;
-+	}
-+
-+	state = btmtk_get_chip_state(bdev);
-+	if (state == BTMTK_STATE_FW_DUMP) {
-+		BTMTK_WARN("%s: FW dumping already!!!", __func__);
-+		return ret;
-+	}
-+
-+	BTMTK_INFO("%s: send assert cmd", __func__);
-+
-+	skb = alloc_skb(sizeof(buf) + BT_SKB_RESERVE, GFP_ATOMIC);
-+	if (!skb) {
-+		BTMTK_ERR("%s allocate skb failed!!", __func__);
-+		goto exit;
-+	}
-+	bt_cb(skb)->pkt_type = HCI_COMMAND_PKT;
-+	memcpy(skb->data, buf, sizeof(buf));
-+	skb->len = sizeof(buf);
-+
-+	ret = main_info.hif_hook.send_cmd(bdev, skb, 100, 20, (int)BTMTK_TX_CMD_FROM_DRV);
-+	if (ret < 0)
-+		BTMTK_ERR("%s failed!!", __func__);
-+	else
-+		BTMTK_INFO("%s: OK", __func__);
-+
-+exit:
-+	return ret;
-+}
-+
-+static int bt_flush(struct hci_dev *hdev)
-+{
-+	return 0;
-+}
-+
-+static int bt_close(struct hci_dev *hdev)
-+{
-+	int ret = -1;
-+	int state = BTMTK_STATE_INIT;
-+	int fstate = BTMTK_FOPS_STATE_INIT;
-+	struct btmtk_dev *bdev = NULL;
-+
-+	if (!hdev) {
-+		BTMTK_ERR("%s: invalid parameters!", __func__);
-+		return ret;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s: bdev is invalid!", __func__);
-+		return ret;
-+	}
-+
-+	fstate = btmtk_fops_get_state(bdev);
-+	if (fstate != BTMTK_FOPS_STATE_OPENED) {
-+		BTMTK_WARN("%s: fops is not allow close(%d)", __func__, fstate);
-+		goto err;
-+	}
-+	btmtk_fops_set_state(bdev, BTMTK_FOPS_STATE_CLOSING);
-+
-+	state = btmtk_get_chip_state(bdev);
-+	if (state != BTMTK_STATE_WORKING && state != BTMTK_STATE_STANDBY) {
-+		BTMTK_WARN("%s: not in working state and standby state(%d).", __func__, state);
-+		goto exit;
-+	}
-+
-+	BTMTK_INFO("%s, enter", __func__);
-+
-+	if (main_info.hif_hook.cif_mutex_lock)
-+		main_info.hif_hook.cif_mutex_lock(bdev);
-+
-+	if (state != BTMTK_STATE_STANDBY) {
-+		ret = btmtk_send_deinit_cmds(bdev);
-+		if (ret < 0) {
-+			BTMTK_ERR("%s, btmtk_send_deinit_cmds failed", __func__);
-+			goto unlock;
-+		}
-+	}
-+
-+	/* Flush RX works */
-+	flush_work(&bdev->rx_work);
-+
-+	/* Drop queues */
-+	skb_queue_purge(&bdev->rx_q);
-+
-+	main_info.hif_hook.close(hdev);
-+
-+unlock:
-+	if (main_info.hif_hook.cif_mutex_unlock)
-+		main_info.hif_hook.cif_mutex_unlock(bdev);
-+exit:
-+	btmtk_fops_set_state(bdev, BTMTK_FOPS_STATE_CLOSED);
-+
-+err:
-+	return 0;
-+}
-+
-+static int bt_open(struct hci_dev *hdev)
-+{
-+	int ret = -1;
-+	int state = BTMTK_STATE_INIT;
-+	int fstate = BTMTK_FOPS_STATE_INIT;
-+	struct btmtk_dev *bdev = NULL;
-+
-+	BTMTK_INFO("%s: MTK BT Driver Version : %s", __func__, VERSION);
-+
-+	if (!hdev) {
-+		BTMTK_ERR("%s: invalid parameters!", __func__);
-+		return -EFAULT;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s: bdev is invalid", __func__);
-+		return -EFAULT;
-+	}
-+
-+	state = btmtk_get_chip_state(bdev);
-+	if (state == BTMTK_STATE_INIT || state == BTMTK_STATE_DISCONNECT) {
-+		ret = -EAGAIN;
-+		goto failed;
-+	}
-+
-+	if (state != BTMTK_STATE_WORKING && state != BTMTK_STATE_STANDBY) {
-+		BTMTK_WARN("%s: not in working state and standby state(%d).", __func__, state);
-+		ret = -ENODEV;
-+		goto failed;
-+	}
-+
-+	fstate = btmtk_fops_get_state(bdev);
-+	if (fstate == BTMTK_FOPS_STATE_OPENED) {
-+		BTMTK_WARN("%s: fops opened!", __func__);
-+		ret = 0;
-+		goto failed;
-+	} else if ((fstate == BTMTK_FOPS_STATE_CLOSING) ||
-+	    (fstate == BTMTK_FOPS_STATE_OPENING)) {
-+		BTMTK_WARN("%s: fops open/close is on-going !", __func__);
-+		ret = -EAGAIN;
-+		goto failed;
-+	}
-+
-+	BTMTK_INFO("%s", __func__);
-+	btmtk_fops_set_state(bdev, BTMTK_FOPS_STATE_OPENING);
-+	ret = main_info.hif_hook.open(hdev);
-+	if (ret < 0) {
-+		BTMTK_ERR("%s, cif_open failed", __func__);
-+		goto failed;
-+	}
-+
-+	ret = btmtk_send_init_cmds(bdev);
-+	if (ret < 0) {
-+		BTMTK_ERR("%s, btmtk_send_init_cmds failed", __func__);
-+		goto failed;
-+	}
-+
-+	if (main_info.hif_hook.open_done)
-+		main_info.hif_hook.open_done(bdev);
-+
-+	btmtk_fops_set_state(bdev, BTMTK_FOPS_STATE_OPENED);
-+
-+	return 0;
-+
-+failed:
-+	btmtk_fops_set_state(bdev, BTMTK_FOPS_STATE_CLOSED);
-+
-+	return ret;
-+}
-+
-+static int bt_send_frame(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	int ret = -1;
-+	int state = BTMTK_STATE_INIT;
-+	int fstate = BTMTK_FOPS_STATE_INIT;
-+	struct btmtk_dev *bdev = NULL;
-+
-+	if (!hdev || !skb) {
-+		BTMTK_ERR("%s, invalid parameters!", __func__);
-+		return -ENODEV;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s, bdev is invalid!", __func__);
-+		return -ENODEV;
-+	}
-+
-+	fstate = btmtk_fops_get_state(bdev);
-+	if (fstate != BTMTK_FOPS_STATE_OPENED) {
-+		BTMTK_WARN("%s: fops is not open yet(%d)!", __func__, fstate);
-+		ret = -ENODEV;
-+		goto exit;
-+	}
-+
-+	state = btmtk_get_chip_state(bdev);
-+	if (state != BTMTK_STATE_WORKING) {
-+		BTMTK_WARN("%s: chip state is %d.", __func__, state);
-+		if (state == BTMTK_STATE_DISCONNECT) {
-+			ret = -ENODEV;
-+		} else {
-+			msleep(3000);
-+			ret = -EAGAIN;
-+		}
-+		goto exit;
-+	}
-+
-+	if (bdev->power_state == BTMTK_DONGLE_STATE_POWER_OFF) {
-+		BTMTK_WARN("%s: dongle state already power off, do not write", __func__);
-+		ret = -EFAULT;
-+		goto exit;
-+	}
-+
-+	memcpy(skb_push(skb, 1), &hci_skb_pkt_type(skb), 1);
-+
-+	/* For Ble ISO packet size */
-+	if (memcmp(skb->data, READ_ISO_PACKET_SIZE_CMD, sizeof(READ_ISO_PACKET_SIZE_CMD)) == 0) {
-+		bdev->iso_threshold = skb->data[sizeof(READ_ISO_PACKET_SIZE_CMD)] +
-+					(skb->data[sizeof(READ_ISO_PACKET_SIZE_CMD) + 1]  << 8);
-+		BTMTK_INFO("%s: Ble iso pkt size is %d", __func__, bdev->iso_threshold);
-+	}
-+
-+	ret = main_info.hif_hook.send_cmd(bdev, skb, 0, 0, (int)BTMTK_TX_PKT_FROM_HOST);
-+	if (ret < 0)
-+		BTMTK_ERR("%s failed!!", __func__);
-+exit:
-+	return ret;
-+}
-+
-+static int bt_setup(struct hci_dev *hdev)
-+{
-+	BTMTK_INFO("%s", __func__);
-+	return 0;
-+}
-+
-+void btmtk_reg_hif_hook(struct hif_hook_ptr *hook)
-+{
-+	memcpy(&main_info.hif_hook, hook, sizeof(struct hif_hook_ptr));
-+}
-+
-+static void btmtk_rx_work(struct work_struct *work)
-+{
-+	int err = 0, skip_pkt = 0;
-+	struct btmtk_dev *bdev = container_of(work, struct btmtk_dev, rx_work);
-+	struct sk_buff *skb;
-+	int fstate = BTMTK_FOPS_STATE_INIT;
-+	int state = 0;
-+
-+	BTMTK_DBG("%s enter", __func__);
-+
-+	while ((skb = skb_dequeue(&bdev->rx_q))) {
-+		skip_pkt = btmtk_dispatch_pkt(bdev->hdev, skb);
-+		if (skip_pkt != 0) {
-+			kfree_skb(skb);
-+			continue;
-+		}
-+
-+		if (hci_skb_pkt_type(skb) == HCI_EVENT_PKT) {
-+			if (main_info.hif_hook.event_filter(bdev, skb)) {
-+				kfree_skb(skb);
-+				continue;
-+			}
-+		}
-+
-+		fstate = btmtk_fops_get_state(bdev);
-+		if (fstate != BTMTK_FOPS_STATE_OPENED) {
-+			kfree_skb(skb);
-+			continue;
-+		}
-+
-+		state = btmtk_get_chip_state(bdev);
-+		if (state != BTMTK_STATE_WORKING) {
-+			kfree_skb(skb);
-+			continue;
-+		}
-+
-+		err = hci_recv_frame(bdev->hdev, skb);
-+		if (err < 0) {
-+			if (err != -ENXIO)
-+				BTMTK_ERR("%s failed, err = %d", __func__, err);
-+			return;
-+		}
-+	}
-+}
-+
-+void btmtk_free_hci_device(struct btmtk_dev *bdev, int hci_bus_type)
-+{
-+	if (!bdev)
-+		return;
-+
-+	flush_work(&bdev->rx_work);
-+
-+	skb_queue_purge(&bdev->rx_q);
-+	destroy_workqueue(bdev->workqueue);
-+
-+	BTMTK_INFO("%s", __func__);
-+
-+	if (bdev->hdev)
-+		hci_free_dev(bdev->hdev);
-+
-+	bdev->chip_reset = 0;
-+	BTMTK_INFO("%s done", __func__);
-+}
-+
-+int btmtk_allocate_hci_device(struct btmtk_dev *bdev, int hci_bus_type)
-+{
-+	struct hci_dev *hdev;
-+	int err = 0;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s, bdev is NULL!", __func__);
-+		err = -EINVAL;
-+		goto exit;
-+	}
-+
-+	BTMTK_INFO("%s", __func__);
-+	hdev = hci_alloc_dev();
-+	if (!hdev) {
-+		BTMTK_ERR("%s, hdev is NULL!", __func__);
-+		err = -ENOMEM;
-+		goto exit;
-+	}
-+
-+	hdev->bus = hci_bus_type;
-+	hci_set_drvdata(hdev, bdev);
-+
-+	hdev->dev_type = 0x00;
-+
-+	bdev->hdev = hdev;
-+
-+	hdev->open	   = bt_open;
-+	hdev->close    = bt_close;
-+	hdev->flush    = bt_flush;
-+	hdev->send	   = bt_send_frame;
-+	hdev->setup    = bt_setup;
-+
-+	INIT_WORK(&bdev->rx_work, btmtk_rx_work);
-+
-+	init_waitqueue_head(&bdev->p_wait_event_q);
-+
-+	skb_queue_head_init(&bdev->rx_q);
-+
-+	bdev->workqueue = alloc_workqueue("BTMTK_RX_WQ", WQ_HIGHPRI | WQ_UNBOUND |
-+					  WQ_MEM_RECLAIM, 1);
-+	if (!bdev->workqueue) {
-+		BTMTK_ERR("%s, bdev->workqueue is NULL!", __func__);
-+		err = -ENOMEM;
-+		goto exit;
-+	}
-+
-+	BTMTK_INFO("%s done", __func__);
-+
-+exit:
-+	return err;
-+}
-+
-+int btmtk_register_hci_device(struct btmtk_dev *bdev)
-+{
-+	struct hci_dev *hdev;
-+	int err = 0;
-+
-+	hdev = bdev->hdev;
-+
-+	err = hci_register_dev(hdev);
-+	if (err < 0) {
-+		BTMTK_INFO("%s can't register", __func__);
-+		hci_free_dev(hdev);
-+		goto exit;
-+	}
-+
-+		test_and_clear_bit(HCI_SETUP, &hdev->dev_flags);
-+
-+exit:
-+	return err;
-+}
-+
-+int btmtk_deregister_hci_device(struct btmtk_dev *bdev)
-+{
-+	int err = 0;
-+
-+	if (bdev && bdev->hdev)
-+		hci_unregister_dev(bdev->hdev);
-+
-+	return err;
-+}
-+
-+static int btmtk_main_allocate_memory(struct btmtk_dev *bdev)
-+{
-+	BTMTK_INFO("%s", __func__);
-+
-+	if (!bdev->rom_patch_bin_file_name) {
-+		bdev->rom_patch_bin_file_name = kzalloc(MAX_BIN_FILE_NAME_LEN, GFP_KERNEL);
-+		if (!bdev->rom_patch_bin_file_name) {
-+			BTMTK_ERR("%s: alloc memory fail rom_patch_bin_file_name", __func__);
-+			return -ENOMEM;
-+		}
-+	}
-+
-+	if (!bdev->io_buf) {
-+		bdev->io_buf = kzalloc(IO_BUF_SIZE, GFP_KERNEL);
-+		if (!bdev->io_buf) {
-+			BTMTK_ERR("%s: alloc memory fail io_buf", __func__);
-+			return -ENOMEM;
-+		}
-+	}
-+
-+	BTMTK_INFO("%s: Done", __func__);
-+	return 0;
-+}
-+
-+static void btmtk_main_free_memory(struct btmtk_dev *bdev)
-+{
-+	kfree(bdev->rom_patch_bin_file_name);
-+	bdev->rom_patch_bin_file_name = NULL;
-+
-+	kfree(bdev->io_buf);
-+	bdev->io_buf = NULL;
-+
-+	BTMTK_INFO("%s: Success", __func__);
-+}
-+
-+int btmtk_main_cif_initialize(struct btmtk_dev *bdev, int hci_bus)
-+{
-+	int err = 0;
-+
-+	err = btmtk_main_allocate_memory(bdev);
-+	if (err < 0) {
-+		BTMTK_ERR("btmtk_main_allocate_memory failed!");
-+		goto end;
-+	}
-+
-+	err = btmtk_allocate_hci_device(bdev, hci_bus);
-+	if (err < 0) {
-+		BTMTK_ERR("btmtk_allocate_hci_device failed!");
-+		goto free_mem;
-+	}
-+
-+	err = btmtk_cap_init(bdev);
-+	if (err < 0) {
-+		BTMTK_ERR("btmtk_cap_init failed!");
-+		goto free_hci_dev;
-+	}
-+
-+	return 0;
-+
-+free_hci_dev:
-+	btmtk_free_hci_device(bdev, hci_bus);
-+free_mem:
-+	btmtk_main_free_memory(bdev);
-+end:
-+	return err;
-+}
-+
-+void btmtk_main_cif_uninitialize(struct btmtk_dev *bdev, int hci_bus)
-+{
-+	btmtk_free_hci_device(bdev, hci_bus);
-+	btmtk_main_free_memory(bdev);
-+}
-+
-+int btmtk_main_cif_disconnect_notify(struct btmtk_dev *bdev, int hci_bus)
-+{
-+	btmtk_deregister_hci_device(bdev);
-+	btmtk_free_hci_device(bdev, hci_bus);
-+
-+	bdev->power_state = BTMTK_DONGLE_STATE_POWER_OFF;
-+	btmtk_release_dev(bdev);
-+
-+	return 0;
-+}
-+
-+/**
-+ * Kernel Module init/exit Functions
-+ */
-+static int __init main_driver_init(void)
-+{
-+	int ret = 0;
-+	int i;
-+
-+	/* Mediatek Driver Version */
-+	BTMTK_INFO("%s: MTK BT Driver Version : %s", __func__, VERSION);
-+
-+	ret = main_init();
-+	if (ret < 0)
-+		return ret;
-+
-+	for (i = 0; i < btmtk_intf_num; i++)
-+		btmtk_set_chip_state(g_bdev[i], BTMTK_STATE_DISCONNECT);
-+
-+	ret = btmtk_cif_register();
-+	if (ret < 0) {
-+		BTMTK_ERR("*** USB registration failed(%d)! ***", ret);
-+		main_exit();
-+		return ret;
-+	}
-+
-+	BTMTK_INFO("%s: Done", __func__);
-+	return ret;
-+}
-+
-+static void __exit main_driver_exit(void)
-+{
-+	BTMTK_INFO("%s", __func__);
-+	btmtk_cif_deregister();
-+	main_exit();
-+}
-+module_init(main_driver_init);
-+module_exit(main_driver_exit);
-+
-+/**
-+ * Module Common Information
-+ */
-+MODULE_DESCRIPTION("Mediatek Bluetooth Driver");
-+MODULE_VERSION(VERSION SUBVER);
-+MODULE_LICENSE("GPL");
-+module_param(btmtk_intf_num, int, 0444);
-diff --git a/drivers/bluetooth/btmtk_main.h b/drivers/bluetooth/btmtk_main.h
-new file mode 100644
-index 000000000000..ce8447ff0484
---- /dev/null
-+++ b/drivers/bluetooth/btmtk_main.h
-@@ -0,0 +1,578 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+// Copyright (c) 2020 MediaTek Inc.
-+
-+/*
-+ * Bluetooth support for MediaTek SDIO/USB/UART devices
-+ *
-+ */
-+
-+#ifndef __BTMTK_MAIN_H__
-+#define __BTMTK_MAIN_H__
-+#include <linux/version.h>
-+#include <linux/firmware.h>
-+#include <linux/slab.h>
-+#include <linux/module.h>
-+
-+#include <net/bluetooth/bluetooth.h>
-+#include <net/bluetooth/hci_core.h>
-+
-+#include <linux/spinlock.h>
-+#include <linux/kallsyms.h>
-+#include <linux/device.h>
-+#include <asm/unaligned.h>
-+
-+/* Define for proce node */
-+#include <linux/proc_fs.h>
-+#include <linux/seq_file.h>
-+
-+/* Define for whole chip reset */
-+#include <linux/of.h>
-+#include <linux/of_gpio.h>
-+
-+#include <linux/kthread.h>
-+#include <linux/freezer.h>
-+
-+/** Driver version */
-+#define VERSION "7.0.2020110301"
-+#define SUBVER ":turnkey"
-+
-+#define BTMTKUART_RX_STATE_ACTIVE	1
-+#define BTMTKUART_RX_STATE_WAKEUP	2
-+#define BTMTKUART_RX_STATE_RESET	3
-+
-+/**
-+ * Maximum rom patch file name length
-+ */
-+#define MAX_BIN_FILE_NAME_LEN 64
-+
-+/**
-+ * Type definition
-+ */
-+#ifndef TRUE
-+	#define TRUE 1
-+#endif
-+#ifndef FALSE
-+	#define FALSE 0
-+#endif
-+
-+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
-+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
-+
-+/**
-+ * Log and level definition
-+ */
-+#define BTMTK_LOG_LVL_ERR	1
-+#define BTMTK_LOG_LVL_WARN	2
-+#define BTMTK_LOG_LVL_INFO	3
-+#define BTMTK_LOG_LVL_DBG	4
-+#define BTMTK_LOG_LVL_MAX	BTMTK_LOG_LVL_DBG
-+#define BTMTK_LOG_LVL_DEF	BTMTK_LOG_LVL_INFO	/* default setting */
-+
-+#define HCI_LOG_MAX_BUF_SIZE	66
-+#define WMT_OVER_HCI_HEADER_SIZE	3
-+
-+extern u8 btmtk_log_lvl;
-+
-+#define BTMTK_ERR(fmt, ...)	 \
-+	do { if (btmtk_log_lvl >= BTMTK_LOG_LVL_ERR) \
-+		pr_warn("[btmtk_err] ***" fmt"***\n", ##__VA_ARGS__); } while (0)
-+#define BTMTK_WARN(fmt, ...)	\
-+	do { if (btmtk_log_lvl >= BTMTK_LOG_LVL_WARN) \
-+		pr_warn("[btmtk_warn] " fmt"\n", ##__VA_ARGS__); } while (0)
-+#define BTMTK_INFO(fmt, ...)	\
-+	do { if (btmtk_log_lvl >= BTMTK_LOG_LVL_INFO) \
-+		pr_warn("[btmtk_info] " fmt"\n", ##__VA_ARGS__); } while (0)
-+#define BTMTK_DBG(fmt, ...)	 \
-+	do { if (btmtk_log_lvl >= BTMTK_LOG_LVL_DBG) \
-+		pr_warn("[btmtk_dbg] " fmt"\n", ##__VA_ARGS__); } while (0)
-+
-+#define BTMTK_INFO_RAW(p, l, fmt, ...)						\
-+	do {									\
-+		if (btmtk_log_lvl >= BTMTK_LOG_LVL_INFO) {			\
-+			int raw_count = 0;					\
-+			char str[HCI_LOG_MAX_BUF_SIZE * 3 + 1];			\
-+			char *p_str = str;					\
-+			const unsigned char *ptr = p;				\
-+			pr_warn("[btmtk_info] " fmt, ##__VA_ARGS__);		\
-+			for (raw_count = 0; raw_count < MIN(l, HCI_LOG_MAX_BUF_SIZE); ++raw_count)\
-+				p_str += sprintf(p_str, " %02X", ptr[raw_count]);		\
-+			*p_str = '\0';								\
-+			pr_warn("%s\n", str);					\
-+		}								\
-+	} while (0)
-+
-+#define BTMTK_DBG_RAW(p, l, fmt, ...)						\
-+	do {									\
-+		if (btmtk_log_lvl >= BTMTK_LOG_LVL_DBG) {			\
-+			int raw_count = 0;					\
-+			char str[HCI_LOG_MAX_BUF_SIZE * 3 + 1];			\
-+			char *p_str = str;					\
-+			const unsigned char *ptr = p;				\
-+			pr_warn("[btmtk_debug] " fmt, ##__VA_ARGS__);		\
-+			for (raw_count = 0; raw_count < MIN(l, HCI_LOG_MAX_BUF_SIZE); ++raw_count)\
-+				p_str += sprintf(p_str, " %02X", ptr[raw_count]);		\
-+			*p_str = '\0';						\
-+			pr_warn("%s\n", str);					\
-+		}								\
-+	} while (0)
-+
-+#define BTMTK_CIF_IS_NULL(bdev, cif_event) \
-+	(!bdev || !(&bdev->cif_state[cif_event]))
-+
-+/**
-+ *
-+ * HCI packet type
-+ */
-+#define MTK_HCI_COMMAND_PKT		0x01
-+#define MTK_HCI_ACLDATA_PKT		0x02
-+#define MTK_HCI_SCODATA_PKT		0x03
-+#define MTK_HCI_EVENT_PKT		0x04
-+#define HCI_ISO_PKT			0x05
-+#define HCI_ISO_PKT_HEADER_SIZE	4
-+#define HCI_ISO_PKT_WITH_ACL_HEADER_SIZE	5
-+
-+/**
-+ * ROM patch related
-+ */
-+#define PATCH_HCI_HEADER_SIZE	4
-+#define PATCH_WMT_HEADER_SIZE	5
-+#define PATCH_HEADER_SIZE	(PATCH_HCI_HEADER_SIZE + PATCH_WMT_HEADER_SIZE + 1)
-+
-+#define UPLOAD_PATCH_UNIT	2048
-+#define PATCH_INFO_SIZE		30
-+#define PATCH_PHASE1		1
-+#define PATCH_PHASE2		2
-+#define PATCH_PHASE3		3
-+
-+/* It is for mt7961 download rom patch*/
-+#define FW_ROM_PATCH_HEADER_SIZE	32
-+#define FW_ROM_PATCH_GD_SIZE	64
-+#define FW_ROM_PATCH_SEC_MAP_SIZE	64
-+#define SEC_MAP_NEED_SEND_SIZE	52
-+#define PATCH_STATUS	7
-+
-+#define IO_BUF_SIZE		(HCI_MAX_EVENT_SIZE > 256 ? HCI_MAX_EVENT_SIZE : 256)
-+#define EVENT_COMPARE_SIZE	64
-+
-+#define SECTION_SPEC_NUM	13
-+
-+/**
-+ * Disable RESUME_RESUME
-+ */
-+#ifndef BT_DISABLE_RESET_RESUME
-+#define BT_DISABLE_RESET_RESUME 0
-+#endif
-+
-+#define WIFI_DOWNLOAD	TRUE
-+#define BT_DOWNLOAD	FALSE
-+
-+#define SWAP32(x)\
-+	((u32)(\
-+	(((u32)(x) & (u32)0x000000ffUL) << 24) |\
-+	(((u32)(x) & (u32)0x0000ff00UL) << 8) |\
-+	(((u32)(x) & (u32)0x00ff0000UL) >> 8) |\
-+	(((u32)(x) & (u32)0xff000000UL) >> 24)))
-+
-+/* Endian byte swapping codes */
-+#ifdef __LITTLE_ENDIAN
-+#define cpu2le32(x) ((uint32_t)(x))
-+#define le2cpu32(x) ((uint32_t)(x))
-+#define cpu2be32(x) SWAP32((x))
-+#define be2cpu32(x) SWAP32((x))
-+#else
-+#define cpu2le32(x) SWAP32((x))
-+#define le2cpu32(x) SWAP32((x))
-+#define cpu2be32(x) ((uint32_t)(x))
-+#define be2cpu32(x) ((uint32_t)(x))
-+#endif
-+
-+#define FW_VERSION	0x80021004
-+#define CHIP_ID	0x70010200
-+#define FLAVOR	0x70010020
-+#define COMP_EVENT_TIMO		5000
-+
-+#define hci_dev_test_and_clear_flag(hdev, nr)  test_and_clear_bit((nr), (hdev)->dev_flags)
-+
-+/* h4_recv */
-+#define hci_skb_pkt_type(skb) bt_cb((skb))->pkt_type
-+#define hci_skb_expect(skb) bt_cb((skb))->expect
-+#define hci_skb_opcode(skb) bt_cb((skb))->hci.opcode
-+
-+/* HCI bus types */
-+#define HCI_VIRTUAL	0
-+#define HCI_USB		1
-+#define HCI_PCCARD	2
-+#define HCI_UART	3
-+#define HCI_RS232	4
-+#define HCI_PCI		5
-+#define HCI_SDIO	6
-+#define HCI_SPI		7
-+#define HCI_I2C		8
-+#define HCI_SMD		9
-+
-+#define HCI_TYPE_SIZE	1
-+/* this for 79XX need download patch staus
-+ * 0:
-+ * patch download is not complete, BT driver need to download patch
-+ * 1:
-+ * patch is downloading by Wifi,BT driver need to retry until status = PATCH_READY
-+ * 2:
-+ * patch download is complete, BT driver no need to download patch
-+ */
-+#define PATCH_ERR -1
-+#define PATCH_NEED_DOWNLOAD 0
-+#define PATCH_IS_DOWNLOAD_BY_OTHER 1
-+#define PATCH_READY 2
-+
-+/* 0:
-+ * using legacy wmt cmd/evt to download fw patch, usb/sdio just support 0 now
-+ * 1:
-+ * using DMA to download fw patch
-+ */
-+#define PATCH_DOWNLOAD_USING_WMT 0
-+#define PATCH_DOWNLOAD_USING_DMA 1
-+
-+#define PATCH_DOWNLOAD_PHASE1_2_DELAY_TIME 1
-+#define PATCH_DOWNLOAD_PHASE1_2_RETRY 5
-+#define PATCH_DOWNLOAD_PHASE3_DELAY_TIME 20
-+#define PATCH_DOWNLOAD_PHASE3_RETRY 20
-+
-+/* * delay and retrey for main_send_cmd */
-+#define WMT_DELAY_TIMES 100
-+#define DELAY_TIMES 20
-+#define RETRY_TIMES 20
-+
-+/* Expected minimum supported interface */
-+#define BT_MCU_MINIMUM_INTERFACE_NUM	4
-+
-+/* Bus event */
-+#define HIF_EVENT_PROBE		0
-+#define HIF_EVENT_DISCONNECT	1
-+#define HIF_EVENT_SUSPEND	2
-+#define HIF_EVENT_RESUME	3
-+#define HIF_EVENT_STANDBY	4
-+#define HIF_EVENT_SUBSYS_RESET	5
-+#define HIF_EVENT_WHOLE_CHIP_RESET	6
-+#define HIF_EVENT_FW_DUMP	7
-+
-+#define CHAR2HEX_SIZE	4
-+
-+#define EDR_MIN		-32
-+#define EDR_MAX		20
-+#define EDR_MIN_LV9	13
-+#define BLE_MIN		-29
-+#define BLE_MAX		20
-+#define EDR_MIN_R1	-64
-+#define EDR_MAX_R1	40
-+#define EDR_MIN_LV9_R1	26
-+#define BLE_MIN_R1	-58
-+#define BLE_MAX_R1	40
-+#define EDR_MIN_R2	-128
-+#define EDR_MAX_R2	80
-+#define EDR_MIN_LV9_R2	52
-+#define BLE_MIN_R2	-116
-+#define BLE_MAX_R2	80
-+
-+#define ERR_PWR		-9999
-+
-+enum {
-+	RES_1 = 0,
-+	RES_DOT_5,
-+	RES_DOT_25
-+};
-+
-+enum {
-+	CHECK_SINGLE_SKU_PWR_MODE	= 0,
-+	CHECK_SINGLE_SKU_EDR_MAX,
-+	CHECK_SINGLE_SKU_BLE,
-+	CHECK_SINGLE_SKU_BLE_2M,
-+	CHECK_SINGLE_SKU_BLE_LR_S2,
-+	CHECK_SINGLE_SKU_BLE_LR_S8,
-+	CHECK_SINGLE_SKU_ALL
-+};
-+
-+struct btmtk_cif_state {
-+	unsigned char ops_enter;
-+	unsigned char ops_end;
-+	unsigned char ops_error;
-+};
-+
-+enum TX_TYPE {
-+	BTMTK_TX_CMD_FROM_DRV = 0,	/* send hci cmd and wmt cmd by driver */
-+	BTMTK_TX_ACL_FROM_DRV,	/* send acl pkt with load rompatch by driver */
-+	BTMTK_TX_PKT_FROM_HOST,	/* send pkt from host, include acl and hci */
-+};
-+
-+enum {
-+	BTMTK_DONGLE_STATE_UNKNOWN,
-+	BTMTK_DONGLE_STATE_POWER_ON,
-+	BTMTK_DONGLE_STATE_POWER_OFF,
-+	BTMTK_DONGLE_STATE_ERROR,
-+};
-+
-+enum {
-+	HW_ERR_NONE = 0x00,
-+	HW_ERR_CODE_CHIP_RESET = 0xF0,
-+	HW_ERR_CODE_USB_DISC = 0xF1,
-+	HW_ERR_CODE_CORE_DUMP = 0xF2,
-+	HW_ERR_CODE_POWER_ON = 0xF3,
-+	HW_ERR_CODE_POWER_OFF = 0xF4,
-+	HW_ERR_CODE_SET_SLEEP_CMD = 0xF5,
-+	HW_ERR_CODE_RESET_STACK_AFTER_WOBLE = 0xF6,
-+};
-+
-+/* Please keep sync with btmtk_set_state function */
-+enum {
-+	/* BTMTK_STATE_UNKNOWN = 0, */
-+	BTMTK_STATE_INIT = 1,
-+	BTMTK_STATE_DISCONNECT,
-+	BTMTK_STATE_PROBE,
-+	BTMTK_STATE_WORKING,
-+	BTMTK_STATE_SUSPEND,
-+	BTMTK_STATE_RESUME,
-+	BTMTK_STATE_FW_DUMP,
-+	BTMTK_STATE_STANDBY,
-+	BTMTK_STATE_SUBSYS_RESET,
-+};
-+
-+/* Please keep sync with btmtk_fops_set_state function */
-+enum {
-+	/* BTMTK_FOPS_STATE_UNKNOWN = 0, */
-+	BTMTK_FOPS_STATE_INIT = 1,
-+	BTMTK_FOPS_STATE_OPENING,	/* during opening */
-+	BTMTK_FOPS_STATE_OPENED,	/* open in fops_open */
-+	BTMTK_FOPS_STATE_CLOSING,	/* during closing */
-+	BTMTK_FOPS_STATE_CLOSED,	/* closed */
-+};
-+
-+enum {
-+	BTMTK_EVENT_COMPARE_STATE_UNKNOWN,
-+	BTMTK_EVENT_COMPARE_STATE_NOTHING_NEED_COMPARE,
-+	BTMTK_EVENT_COMPARE_STATE_NEED_COMPARE,
-+	BTMTK_EVENT_COMPARE_STATE_COMPARE_SUCCESS,
-+};
-+
-+struct h4_recv_pkt {
-+	u8  type;	/* Packet type */
-+	u8  hlen;	/* Header length */
-+	u8  loff;	/* Data length offset in header */
-+	u8  lsize;	/* Data length field size */
-+	u16 maxlen;	/* Max overall packet length */
-+	int (*recv)(struct hci_dev *hdev, struct sk_buff *skb);
-+};
-+
-+struct _PATCH_HEADER {
-+	u8 ucdatetime[16];
-+	u8 ucplatform[4];
-+	u16 u2hwver;
-+	u16 u2swver;
-+	u32 u4magicnum;
-+};
-+
-+struct _GLOBAL_DESCR {
-+	u32 u4patchver;
-+	u32 u4subsys;
-+	u32 u4featureopt;
-+	u32 u4sectionnum;
-+};
-+
-+struct _SECTION_MAP {
-+	u32 u4sectype;
-+	u32 u4secoffset;
-+	u32 u4secsize;
-+	union {
-+		u32 u4secspec[SECTION_SPEC_NUM];
-+		struct {
-+			u32 u4dladdr;
-+			u32 u4dlsize;
-+			u32 u4seckeyidx;
-+			u32 u4alignlen;
-+			u32 u4sectype;
-+			u32 u4dlmodecrctype;
-+			u32 u4crc;
-+			u32 reserved[6];
-+		} bin_info_spec;
-+	};
-+};
-+
-+#define H4_RECV_ACL \
-+	.type = HCI_ACLDATA_PKT, \
-+	.hlen = HCI_ACL_HDR_SIZE, \
-+	.loff = 2, \
-+	.lsize = 2, \
-+	.maxlen = HCI_MAX_FRAME_SIZE \
-+
-+#define H4_RECV_SCO \
-+	.type = HCI_SCODATA_PKT, \
-+	.hlen = HCI_SCO_HDR_SIZE, \
-+	.loff = 2, \
-+	.lsize = 1, \
-+	.maxlen = HCI_MAX_SCO_SIZE
-+
-+#define H4_RECV_EVENT \
-+	.type = HCI_EVENT_PKT, \
-+	.hlen = HCI_EVENT_HDR_SIZE, \
-+	.loff = 1, \
-+	.lsize = 1, \
-+	.maxlen = HCI_MAX_EVENT_SIZE
-+
-+struct btmtk_dev {
-+	struct hci_dev	*hdev;
-+	unsigned long	hdev_flags;
-+	unsigned long	flags;
-+	void *intf_dev;
-+	void *cif_dev;
-+
-+	struct work_struct	work;
-+	struct work_struct	waker;
-+	struct work_struct	reset_waker;
-+
-+	int recv_evt_len;
-+	int tx_in_flight;
-+	/* for tx skb buffer */
-+	spinlock_t txlock;
-+	/* for rx skb buffer */
-+	spinlock_t rxlock;
-+	struct sk_buff	*evt_skb;
-+	struct sk_buff	*sco_skb;
-+
-+	/* For ble iso packet size */
-+	int iso_threshold;
-+
-+	unsigned int	sco_num;
-+	int	isoc_altsetting;
-+
-+	int	suspend_count;
-+
-+	/* For tx queue */
-+	unsigned long	tx_state;
-+
-+	/* For rx queue */
-+	struct workqueue_struct	*workqueue;
-+	struct sk_buff_head	rx_q;
-+	struct work_struct	rx_work;
-+	struct sk_buff		*rx_skb;
-+
-+	wait_queue_head_t	p_wait_event_q;
-+
-+	unsigned int	subsys_reset;
-+	unsigned int	chip_reset;
-+	unsigned char	*rom_patch_bin_file_name;
-+	unsigned int	chip_id;
-+	unsigned int	flavor;
-+	unsigned int	fw_version;
-+	unsigned char	dongle_index;
-+	unsigned char	power_state;
-+	unsigned char	fops_state;
-+	unsigned char	interface_state;
-+	struct btmtk_cif_state *cif_state;
-+
-+	/* io buffer for usb control transfer */
-+	unsigned char	*io_buf;
-+};
-+
-+typedef int (*cif_open_ptr)(struct hci_dev *hdev);
-+typedef int (*cif_close_ptr)(struct hci_dev *hdev);
-+typedef int (*cif_reg_read_ptr)(struct btmtk_dev *bdev, u32 reg, u32 *val);
-+typedef int (*cif_reg_write_ptr)(struct btmtk_dev *bdev, u32 reg, u32 val);
-+typedef int (*cif_send_cmd_ptr)(struct btmtk_dev *bdev, struct sk_buff *skb,
-+		int delay, int retry, int pkt_type);
-+typedef int (*cif_send_and_recv_ptr)(struct btmtk_dev *bdev,
-+		struct sk_buff *skb,
-+		const u8 *event, const int event_len,
-+		int delay, int retry, int pkt_type);
-+typedef int (*cif_event_filter_ptr)(struct btmtk_dev *bdev, struct sk_buff *skb);
-+typedef int (*cif_subsys_reset_ptr)(struct btmtk_dev *bdev);
-+typedef int (*cif_whole_reset_ptr)(struct btmtk_dev *bdev);
-+typedef void (*cif_chip_reset_notify_ptr)(struct btmtk_dev *bdev);
-+typedef void (*cif_mutex_lock_ptr)(struct btmtk_dev *bdev);
-+typedef void (*cif_mutex_unlock_ptr)(struct btmtk_dev *bdev);
-+typedef void (*cif_open_done_ptr)(struct btmtk_dev *bdev);
-+typedef int (*cif_dl_dma_ptr)(struct btmtk_dev *bdev, u8 *image,
-+		u8 *fwbuf, int section_dl_size, int section_offset);
-+
-+struct hif_hook_ptr {
-+	cif_open_ptr			open;
-+	cif_close_ptr			close;
-+	cif_reg_read_ptr		reg_read;
-+	cif_reg_write_ptr		reg_write;
-+	cif_send_cmd_ptr		send_cmd;
-+	cif_send_and_recv_ptr		send_and_recv;
-+	cif_event_filter_ptr		event_filter;
-+	cif_subsys_reset_ptr		subsys_reset;
-+	cif_whole_reset_ptr		whole_reset;
-+	cif_chip_reset_notify_ptr	chip_reset_notify;
-+	cif_mutex_lock_ptr		cif_mutex_lock;
-+	cif_mutex_unlock_ptr		cif_mutex_unlock;
-+	cif_open_done_ptr		open_done;
-+	cif_dl_dma_ptr			dl_dma;
-+};
-+
-+struct btmtk_main_info {
-+	struct hif_hook_ptr hif_hook;
-+};
-+
-+static inline int is_mt7922(u32 chip_id)
-+{
-+	chip_id &= 0xFFFF;
-+	if (chip_id == 0x7922)
-+		return 1;
-+	return 0;
-+}
-+
-+static inline int is_mt7961(u32 chip_id)
-+{
-+	chip_id &= 0xFFFF;
-+	if (chip_id == 0x7961)
-+		return 1;
-+	return 0;
-+}
-+
-+int btmtk_get_chip_state(struct btmtk_dev *bdev);
-+void btmtk_set_chip_state(struct btmtk_dev *bdev, int new_state);
-+int btmtk_allocate_hci_device(struct btmtk_dev *bdev, int hci_bus_type);
-+void btmtk_free_hci_device(struct btmtk_dev *bdev, int hci_bus_type);
-+int btmtk_register_hci_device(struct btmtk_dev *bdev);
-+int btmtk_deregister_hci_device(struct btmtk_dev *bdev);
-+int btmtk_recv(struct hci_dev *hdev, const u8 *data, size_t count);
-+int btmtk_recv_event(struct hci_dev *hdev, struct sk_buff *skb);
-+int btmtk_recv_acl(struct hci_dev *hdev, struct sk_buff *skb);
-+int btmtk_send_init_cmds(struct btmtk_dev *hdev);
-+int btmtk_send_deinit_cmds(struct btmtk_dev *hdev);
-+int btmtk_main_send_cmd(struct btmtk_dev *bdev, const u8 *cmd,
-+			const int cmd_len, const u8 *event, const int event_len,
-+			int delay, int retry, int pkt_type);
-+int btmtk_send_wmt_power_on_cmd(struct btmtk_dev *hdev);
-+int btmtk_send_wmt_power_off_cmd(struct btmtk_dev *hdev);
-+int btmtk_uart_send_wakeup_cmd(struct hci_dev *hdev);
-+int btmtk_uart_send_set_uart_cmd(struct hci_dev *hdev);
-+int btmtk_load_rom_patch(struct btmtk_dev *bdev);
-+struct btmtk_dev *btmtk_get_dev(void);
-+void btmtk_release_dev(struct btmtk_dev *bdev);
-+struct btmtk_dev *btmtk_allocate_dev_memory(struct device *dev);
-+void btmtk_free_dev_memory(struct device *dev, struct btmtk_dev *bdev);
-+void btmtk_reset_waker(struct work_struct *work);
-+struct btmtk_main_info *btmtk_get_main_info(void);
-+/** file_operations: stpbtfwlog */
-+int btmtk_fops_openfwlog(struct inode *inode, struct file *file);
-+int btmtk_fops_closefwlog(struct inode *inode, struct file *file);
-+ssize_t btmtk_fops_readfwlog(struct file *filp, char __user *buf, size_t count, loff_t *f_pos);
-+ssize_t btmtk_fops_writefwlog(struct file *filp, const char __user *buf, size_t count,
-+			      loff_t *f_pos);
-+unsigned int btmtk_fops_pollfwlog(struct file *filp, poll_table *wait);
-+long btmtk_fops_unlocked_ioctlfwlog(struct file *filp, unsigned int cmd, unsigned long arg);
-+
-+/* Auto enable picus */
-+int btmtk_picus_enable(struct btmtk_dev *bdev);
-+int btmtk_picus_disable(struct btmtk_dev *bdev);
-+
-+void btmtk_reg_hif_hook(struct hif_hook_ptr *hook);
-+int btmtk_main_cif_initialize(struct btmtk_dev *bdev, int hci_bus);
-+void btmtk_main_cif_uninitialize(struct btmtk_dev *bdev, int hci_bus);
-+int btmtk_main_cif_disconnect_notify(struct btmtk_dev *bdev, int hci_bus);
-+int btmtk_send_assert_cmd(struct btmtk_dev *bdev);
-+int btmtk_efuse_read(struct btmtk_dev *bdev, u16 addr, u8 *value);
-+
-+void btmtk_set_country_code_from_wifi(char *code);
-+
-+#endif /* __BTMTK_MAIN_H__ */
-diff --git a/drivers/bluetooth/btmtk_usb.h b/drivers/bluetooth/btmtk_usb.h
-new file mode 100644
-index 000000000000..92d11e808e78
---- /dev/null
-+++ b/drivers/bluetooth/btmtk_usb.h
-@@ -0,0 +1,60 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+// Copyright (c) 2020 MediaTek Inc.
-+
-+/*
-+ * Bluetooth support for MediaTek USB devices
-+ *
-+ */
-+
-+#ifndef _BTMTK_USB_H_
-+#define _BTMTK_USB_H_
-+#include <linux/usb.h>
-+#include "btmtk_main.h"
-+
-+#define HCI_MAX_COMMAND_SIZE	255
-+#define URB_MAX_BUFFER_SIZE	(4 * 1024)
-+
-+#define BT0_MCU_INTERFACE_NUM 0
-+#define BT1_MCU_INTERFACE_NUM 3
-+#define BT_MCU_INTERFACE_NUM_MAX 4
-+#define BT_MCU_NUM_MAX 2
-+
-+/**
-+ * Send cmd dispatch evt
-+ */
-+#define HCI_EV_VENDOR			0xff
-+#define HCI_USB_IO_BUF_SIZE		256
-+
-+extern u8 wmt_over_hci_header[];
-+
-+struct btmtk_usb_dev {
-+	struct usb_endpoint_descriptor	*intr_ep;
-+	struct usb_endpoint_descriptor	*bulk_tx_ep;
-+	struct usb_endpoint_descriptor	*bulk_rx_ep;
-+	struct usb_endpoint_descriptor	*isoc_tx_ep;
-+	struct usb_endpoint_descriptor	*isoc_rx_ep;
-+
-+	struct usb_device	*udev;
-+	struct usb_interface	*intf;
-+	struct usb_interface	*isoc;
-+	struct usb_interface	*iso_channel;
-+
-+	struct usb_anchor	tx_anchor;
-+	struct usb_anchor	intr_anchor;
-+	struct usb_anchor	bulk_anchor;
-+	struct usb_anchor	isoc_anchor;
-+	struct usb_anchor	ctrl_anchor;
-+
-+	__u8	cmdreq_type;
-+	__u8	cmdreq;
-+
-+	int new_isoc_altsetting;
-+	int new_isoc_altsetting_interface;
-+
-+	unsigned char	*o_usb_buf;
-+
-+	unsigned char	*urb_intr_buf;
-+	unsigned char	*urb_bulk_buf;
-+	unsigned char	*urb_ble_isoc_buf;
-+};
-+#endif
-diff --git a/drivers/bluetooth/btmtkusb.c b/drivers/bluetooth/btmtkusb.c
-new file mode 100644
-index 000000000000..36e00ddebe62
---- /dev/null
-+++ b/drivers/bluetooth/btmtkusb.c
-@@ -0,0 +1,2050 @@
-+// SPDX-License-Identifier: GPL-2.0
-+// Copyright (c) 2020 MediaTek Inc.
-+
-+/*
-+ * Bluetooth support for MediaTek USB devices
-+ *
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/firmware.h>
-+#include <asm/unaligned.h>
-+#include <linux/usb/quirks.h>
-+#include <net/bluetooth/bluetooth.h>
-+#include <net/bluetooth/hci_core.h>
-+#include "btmtk_usb.h"
-+#include "btmtk_main.h"
-+
-+static struct usb_driver btusb_driver;
-+static int intf_to_idx[BT_MCU_INTERFACE_NUM_MAX] = {0, -1, -1, 1};
-+static struct btmtk_usb_dev g_usb_dev[BT_MCU_MINIMUM_INTERFACE_NUM][BT_MCU_NUM_MAX];
-+
-+static const struct usb_device_id btusb_table[] = {
-+	/* Mediatek MT7961 */
-+	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7961, 0xe0, 0x01, 0x01) },
-+	/* Mediatek MT7922 */
-+	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7922, 0xe0, 0x01, 0x01) },
-+
-+	{ }	/* Terminating entry */
-+};
-+
-+static char event_need_compare[EVENT_COMPARE_SIZE] = {0};
-+static char event_need_compare_len;
-+static char event_compare_status;
-+
-+static DEFINE_MUTEX(btmtk_usb_ops_mutex);
-+#define USB_OPS_MUTEX_LOCK()	mutex_lock(&btmtk_usb_ops_mutex)
-+#define USB_OPS_MUTEX_UNLOCK()	mutex_unlock(&btmtk_usb_ops_mutex)
-+
-+MODULE_DEVICE_TABLE(usb, btusb_table);
-+
-+#define BTUSB_MAX_ISOC_FRAMES	24
-+
-+#define BTUSB_INTR_RUNNING	0
-+#define BTUSB_BULK_RUNNING	1
-+#define BTUSB_ISOC_RUNNING	2
-+#define BTUSB_SUSPENDING	3
-+#define BTUSB_DID_ISO_RESUME	4
-+#define BTUSB_BLE_ISOC_RUNNING	5
-+
-+#define DEVICE_VENDOR_REQUEST_IN	0xc0
-+#define DEVICE_CLASS_REQUEST_OUT	0x20
-+#define USB_CTRL_IO_TIMO		100
-+
-+#define BTMTK_CIF_GET_DEV_PRIV(bdev, intf, ifnum_base) \
-+	do { \
-+		bdev = usb_get_intfdata(intf); \
-+		ifnum_base = intf->cur_altsetting->desc.bInterfaceNumber; \
-+	} while (0)
-+
-+static int btmtk_cif_allocate_memory(struct btmtk_usb_dev *cif_dev);
-+static void btmtk_cif_free_memory(struct btmtk_usb_dev *cif_dev);
-+
-+static int btmtk_usb_send_and_recv(struct btmtk_dev *bdev,
-+				   struct sk_buff *skb,
-+				   const u8 *event, const int event_len,
-+				   int delay, int retry, int pkt_type);
-+static int btmtk_usb_event_filter(struct btmtk_dev *bdev, struct sk_buff *skb);
-+static int btmtk_usb_send_cmd(struct btmtk_dev *bdev, struct sk_buff *skb,
-+			      int delay, int retry, int pkt_type);
-+static int btmtk_usb_read_register(struct btmtk_dev *bdev, u32 reg, u32 *val);
-+static int btmtk_usb_write_register(struct btmtk_dev *bdev, u32 reg, u32 val);
-+
-+static void btmtk_usb_cif_mutex_lock(struct btmtk_dev *bdev)
-+{
-+	USB_OPS_MUTEX_LOCK();
-+}
-+
-+static void btmtk_usb_cif_mutex_unlock(struct btmtk_dev *bdev)
-+{
-+	USB_OPS_MUTEX_UNLOCK();
-+}
-+
-+static inline void btusb_free_frags(struct btmtk_dev *bdev)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&bdev->rxlock, flags);
-+
-+	kfree_skb(bdev->evt_skb);
-+	bdev->evt_skb = NULL;
-+
-+	kfree_skb(bdev->sco_skb);
-+	bdev->sco_skb = NULL;
-+
-+	spin_unlock_irqrestore(&bdev->rxlock, flags);
-+}
-+
-+static int btusb_recv_isoc(struct btmtk_dev *bdev, void *buffer, int count)
-+{
-+	struct sk_buff *skb;
-+	int err = 0;
-+
-+	spin_lock(&bdev->rxlock);
-+	skb = bdev->sco_skb;
-+
-+	while (count) {
-+		int len;
-+
-+		if (!skb) {
-+			skb = bt_skb_alloc(HCI_MAX_SCO_SIZE, GFP_ATOMIC);
-+			if (!skb) {
-+				err = -ENOMEM;
-+				break;
-+			}
-+
-+			hci_skb_pkt_type(skb) = HCI_SCODATA_PKT;
-+			hci_skb_expect(skb) = HCI_SCO_HDR_SIZE;
-+		}
-+
-+		len = min_t(uint, hci_skb_expect(skb), count);
-+		memcpy(skb_put(skb, len), buffer, len);
-+
-+		count -= len;
-+		buffer += len;
-+		hci_skb_expect(skb) -= len;
-+
-+		if (skb->len == HCI_SCO_HDR_SIZE) {
-+			hci_skb_expect(skb) = hci_sco_hdr(skb)->dlen;
-+
-+			if (skb_tailroom(skb) < hci_skb_expect(skb)) {
-+				kfree_skb(skb);
-+				skb = NULL;
-+
-+				err = -EILSEQ;
-+				break;
-+			}
-+		}
-+
-+		if (!hci_skb_expect(skb)) {
-+			hci_recv_frame(bdev->hdev, skb);
-+			skb = NULL;
-+		}
-+	}
-+
-+	bdev->sco_skb = skb;
-+	spin_unlock(&bdev->rxlock);
-+
-+	return err;
-+}
-+
-+static void btusb_intr_complete(struct urb *urb)
-+{
-+	struct hci_dev *hdev = NULL;
-+	struct btmtk_dev *bdev = NULL;
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	int err;
-+	u8 *buf;
-+
-+	if (!urb) {
-+		BTMTK_ERR("%s: ERROR, urb is NULL!", __func__);
-+		return;
-+	}
-+
-+	hdev = urb->context;
-+	if (!hdev) {
-+		BTMTK_ERR("%s: ERROR, hdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s: ERROR, bdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	if (!cif_dev) {
-+		BTMTK_ERR("%s: ERROR, cif_dev is NULL!", __func__);
-+		return;
-+	}
-+
-+	BTMTK_DBG("%s urb %p status %d count %d", hdev->name, urb, urb->status,
-+		  urb->actual_length);
-+
-+	if (urb->status != 0) {
-+		BTMTK_WARN("%s: urb %p urb->status %d count %d", __func__,
-+			   urb, urb->status, urb->actual_length);
-+	}
-+
-+	if (urb->status == 0) {
-+		hdev->stat.byte_rx += urb->actual_length;
-+
-+		if (!cif_dev->urb_intr_buf) {
-+			BT_ERR("%s: bdev->urb_intr_buf is NULL!", __func__);
-+			return;
-+		}
-+
-+		buf = urb->transfer_buffer;
-+		if (urb->actual_length >= URB_MAX_BUFFER_SIZE ||
-+		    (urb->actual_length != (buf[1] + 2) && urb->actual_length > 1)) {
-+			BTMTK_ERR("%s: urb->actual_length is invalid, buf[1] = %d!",
-+				  __func__, buf[1]);
-+			goto intr_resub;
-+		}
-+		memset(cif_dev->urb_intr_buf, 0, URB_MAX_BUFFER_SIZE);
-+		cif_dev->urb_intr_buf[0] = HCI_EVENT_PKT;
-+		memcpy(cif_dev->urb_intr_buf + 1, urb->transfer_buffer, urb->actual_length);
-+
-+		err = btmtk_recv(hdev, cif_dev->urb_intr_buf, urb->actual_length + 1);
-+		if (err) {
-+			BTMTK_ERR("%s corrupted event packet, urb_intr_buf = %p, transfer_buf = %p",
-+				  hdev->name, cif_dev->urb_intr_buf, urb->transfer_buffer);
-+			hdev->stat.err_rx++;
-+		}
-+	} else if (urb->status == -ENOENT) {
-+		BTMTK_INFO("%s: urb->status is ENOENT!", __func__);
-+		return;
-+	}
-+
-+	if (!test_bit(BTUSB_INTR_RUNNING, &bdev->flags)) {
-+		BTMTK_INFO("%s: test_bit is not running!", __func__);
-+		return;
-+	}
-+
-+intr_resub:
-+	usb_mark_last_busy(cif_dev->udev);
-+	usb_anchor_urb(urb, &cif_dev->intr_anchor);
-+
-+	err = usb_submit_urb(urb, GFP_ATOMIC);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p failed to resubmit (%d)",
-+				  hdev->name, urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+}
-+
-+static void btusb_mtk_wmt_recv(struct urb *urb)
-+{
-+	struct hci_dev *hdev = urb->context;
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	struct sk_buff *skb;
-+	int err;
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+
-+	if (urb->status == 0 && urb->actual_length > 0) {
-+		hdev->stat.byte_rx += urb->actual_length;
-+		skb = bt_skb_alloc(HCI_MAX_EVENT_SIZE, GFP_ATOMIC);
-+		if (!skb) {
-+			BTMTK_ERR("%s skb is null!", __func__);
-+			hdev->stat.err_rx++;
-+			goto exit;
-+		}
-+
-+		if (urb->actual_length >= HCI_MAX_EVENT_SIZE) {
-+			kfree_skb(skb);
-+			hdev->stat.err_rx++;
-+			goto exit;
-+		}
-+		hci_skb_pkt_type(skb) = HCI_EVENT_PKT;
-+		memcpy(skb_put(skb, urb->actual_length), urb->transfer_buffer, urb->actual_length);
-+
-+		hci_recv_frame(hdev, skb);
-+		return;
-+	} else if (urb->status == -ENOENT) {
-+		goto exit;
-+	}
-+
-+	usb_mark_last_busy(cif_dev->udev);
-+
-+	usleep_range(90, 100);
-+
-+	usb_anchor_urb(urb, &cif_dev->ctrl_anchor);
-+	err = usb_submit_urb(urb, GFP_ATOMIC);
-+	if (err < 0) {
-+		kfree(urb->setup_packet);
-+		if (err != -EPERM && err != -ENODEV)
-+			usb_unanchor_urb(urb);
-+	}
-+
-+	return;
-+
-+exit:
-+	kfree(urb->setup_packet);
-+}
-+
-+static int btusb_submit_wmt_urb(struct hci_dev *hdev, gfp_t mem_flags)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	struct usb_ctrlrequest *dr;
-+	struct urb *urb;
-+	unsigned char *buf;
-+	unsigned int pipe;
-+	int err, size;
-+	unsigned int ifnum_base;
-+
-+	urb = usb_alloc_urb(0, mem_flags);
-+	if (!urb)
-+		return -ENOMEM;
-+
-+	size = le16_to_cpu(HCI_MAX_EVENT_SIZE);
-+
-+	dr = kmalloc(sizeof(*dr), GFP_KERNEL);
-+	if (!dr) {
-+		usb_free_urb(urb);
-+		return -ENOMEM;
-+	}
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+
-+	ifnum_base = cif_dev->intf->cur_altsetting->desc.bInterfaceNumber;
-+
-+	dr->bRequestType = 0xC0;
-+	dr->bRequest     = 0x01;
-+	dr->wIndex       = 0;
-+	dr->wValue       = 0x30;
-+	dr->wLength      = __cpu_to_le16(size);
-+
-+	pipe = usb_rcvctrlpipe(cif_dev->udev, 0);
-+
-+	buf = kmalloc(size, GFP_KERNEL);
-+	if (!buf) {
-+		kfree(dr);
-+		usb_free_urb(urb);
-+		return -ENOMEM;
-+	}
-+
-+	usb_fill_control_urb(urb, cif_dev->udev, pipe, (void *)dr,
-+			     buf, size, btusb_mtk_wmt_recv, hdev);
-+
-+	urb->transfer_flags |= URB_FREE_BUFFER;
-+
-+	usb_anchor_urb(urb, &cif_dev->ctrl_anchor);
-+
-+	err = usb_submit_urb(urb, mem_flags);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p submission failed (%d)",
-+				  hdev->name, urb, -err);
-+		kfree(dr);
-+		usb_unanchor_urb(urb);
-+	}
-+
-+	usb_free_urb(urb);
-+
-+	return err;
-+}
-+
-+static int btusb_submit_intr_urb(struct hci_dev *hdev, gfp_t mem_flags)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	struct urb *urb;
-+	unsigned char *buf;
-+	unsigned int pipe;
-+	int err, size;
-+
-+	BTMTK_DBG("%s", hdev->name);
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+
-+	if (!cif_dev->intr_ep)
-+		return -ENODEV;
-+
-+	urb = usb_alloc_urb(0, mem_flags);
-+	if (!urb)
-+		return -ENOMEM;
-+
-+	size = le16_to_cpu(HCI_MAX_EVENT_SIZE);
-+	BTMTK_INFO("%s: maximum packet size:%d", __func__, size);
-+
-+	buf = kmalloc(size, mem_flags);
-+	if (!buf) {
-+		usb_free_urb(urb);
-+		return -ENOMEM;
-+	}
-+
-+	pipe = usb_rcvintpipe(cif_dev->udev, cif_dev->intr_ep->bEndpointAddress);
-+
-+	usb_fill_int_urb(urb, cif_dev->udev, pipe, buf, size,
-+			 btusb_intr_complete, hdev, cif_dev->intr_ep->bInterval);
-+
-+	urb->transfer_flags |= URB_FREE_BUFFER;
-+
-+	usb_anchor_urb(urb, &cif_dev->intr_anchor);
-+
-+	err = usb_submit_urb(urb, mem_flags);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p submission failed (%d)",
-+				  hdev->name, urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+
-+	usb_free_urb(urb);
-+
-+	return err;
-+}
-+
-+static void btusb_bulk_complete(struct urb *urb)
-+{
-+	struct hci_dev *hdev = NULL;
-+	struct btmtk_dev *bdev = NULL;
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	int err;
-+	u8 *buf;
-+	u16 len = 0;
-+
-+	if (!urb) {
-+		BTMTK_ERR("%s: ERROR, urb is NULL!", __func__);
-+		return;
-+	}
-+
-+	hdev = urb->context;
-+	if (!hdev) {
-+		BTMTK_ERR("%s: ERROR, hdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s: ERROR, bdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	if (!cif_dev) {
-+		BTMTK_ERR("%s: ERROR, cif_dev is NULL!", __func__);
-+		return;
-+	}
-+
-+	if (urb->status != 0) {
-+		BTMTK_INFO("%s: urb %p urb->status %d count %d", __func__, urb,
-+			   urb->status, urb->actual_length);
-+	}
-+
-+	if (urb->status == 0) {
-+		hdev->stat.byte_rx += urb->actual_length;
-+		if (!cif_dev->urb_bulk_buf) {
-+			BT_ERR("%s: bdev->urb_bulk_buf is NULL!", __func__);
-+			return;
-+		}
-+
-+		buf = urb->transfer_buffer;
-+		len = buf[2] + ((buf[3] << 8) & 0xff00);
-+		if (urb->actual_length >= URB_MAX_BUFFER_SIZE ||
-+		    urb->actual_length != len + 4) {
-+			BTMTK_ERR("%s urb->actual_length is invalid, len = %d!", __func__, len);
-+			goto bulk_resub;
-+		}
-+		memset(cif_dev->urb_bulk_buf, 0, URB_MAX_BUFFER_SIZE);
-+		cif_dev->urb_bulk_buf[0] = HCI_ACLDATA_PKT;
-+		memcpy(cif_dev->urb_bulk_buf + 1, urb->transfer_buffer, urb->actual_length);
-+
-+		err = btmtk_recv(hdev, cif_dev->urb_bulk_buf, urb->actual_length + 1);
-+		if (err) {
-+			BTMTK_ERR("%s corrupted ACL packet, urb_bulk_buf = %p, transfer_buf = %p",
-+				  hdev->name, cif_dev->urb_bulk_buf, urb->transfer_buffer);
-+			hdev->stat.err_rx++;
-+		}
-+	} else if (urb->status == -ENOENT) {
-+		/* Avoid suspend failed when usb_kill_urb */
-+		BTMTK_INFO("%s urb %p status %d count %d", hdev->name,
-+			   urb, urb->status, urb->actual_length);
-+		return;
-+	}
-+
-+	if (!test_bit(BTUSB_BULK_RUNNING, &bdev->flags)) {
-+		BTMTK_INFO("%s test flag failed", __func__);
-+		return;
-+	}
-+
-+bulk_resub:
-+	usb_anchor_urb(urb, &cif_dev->bulk_anchor);
-+	usb_mark_last_busy(cif_dev->udev);
-+
-+	err = usb_submit_urb(urb, GFP_ATOMIC);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p failed to resubmit (%d)",
-+				  hdev->name, urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+}
-+
-+static int btusb_submit_bulk_urb(struct hci_dev *hdev, gfp_t mem_flags)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	struct urb *urb;
-+	unsigned char *buf;
-+	unsigned int pipe;
-+	int err, size = HCI_MAX_FRAME_SIZE;
-+
-+	BTMTK_DBG("%s", hdev->name);
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+
-+	if (!cif_dev->bulk_rx_ep)
-+		return -ENODEV;
-+
-+	urb = usb_alloc_urb(0, mem_flags);
-+	if (!urb)
-+		return -ENOMEM;
-+
-+	buf = kmalloc(size, mem_flags);
-+	if (!buf) {
-+		usb_free_urb(urb);
-+		return -ENOMEM;
-+	}
-+
-+	pipe = usb_rcvbulkpipe(cif_dev->udev, cif_dev->bulk_rx_ep->bEndpointAddress);
-+
-+	usb_fill_bulk_urb(urb, cif_dev->udev, pipe, buf, size,
-+			  btusb_bulk_complete, hdev);
-+
-+	urb->transfer_flags |= URB_FREE_BUFFER;
-+
-+	usb_mark_last_busy(cif_dev->udev);
-+	usb_anchor_urb(urb, &cif_dev->bulk_anchor);
-+
-+	err = usb_submit_urb(urb, mem_flags);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p submission failed (%d)",
-+				  hdev->name, urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+
-+	usb_free_urb(urb);
-+
-+	return err;
-+}
-+
-+static void btusb_isoc_complete(struct urb *urb)
-+{
-+	struct hci_dev *hdev = NULL;
-+	struct btmtk_dev *bdev = NULL;
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	int i, err;
-+
-+	if (!urb) {
-+		BTMTK_ERR("%s: ERROR, urb is NULL!", __func__);
-+		return;
-+	}
-+
-+	hdev = urb->context;
-+	if (!hdev) {
-+		BTMTK_ERR("%s: ERROR, hdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	bdev = hci_get_drvdata(hdev);
-+	if (!bdev) {
-+		BTMTK_ERR("%s: ERROR, bdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	if (!cif_dev) {
-+		BTMTK_ERR("%s: ERROR, cif_dev is NULL!", __func__);
-+		return;
-+	}
-+
-+	BTMTK_DBG("%s urb %p status %d count %d", hdev->name,
-+		  urb, urb->status, urb->actual_length);
-+
-+	if (!test_bit(HCI_RUNNING, &hdev->flags))
-+		return;
-+
-+	if (urb->status == 0) {
-+		for (i = 0; i < urb->number_of_packets; i++) {
-+			unsigned int offset = urb->iso_frame_desc[i].offset;
-+			unsigned int length = urb->iso_frame_desc[i].actual_length;
-+
-+			if (urb->iso_frame_desc[i].status)
-+				continue;
-+
-+			hdev->stat.byte_rx += length;
-+
-+			if (btusb_recv_isoc(bdev, urb->transfer_buffer + offset,
-+					    length) < 0) {
-+				BTMTK_ERR("%s corrupted SCO packet", hdev->name);
-+				hdev->stat.err_rx++;
-+			}
-+		}
-+	} else if (urb->status == -ENOENT) {
-+		BTMTK_INFO("%s: urb->status is ENOENT!", __func__);
-+		return;
-+	}
-+
-+	if (!test_bit(BTUSB_ISOC_RUNNING, &bdev->flags)) {
-+		BTMTK_INFO("%s: bdev->flags is RUNNING!", __func__);
-+		return;
-+	}
-+
-+	usb_anchor_urb(urb, &cif_dev->isoc_anchor);
-+
-+	err = usb_submit_urb(urb, GFP_ATOMIC);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p failed to resubmit (%d)",
-+				  hdev->name, urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+}
-+
-+static inline void __fill_isoc_descriptor(struct urb *urb, int len, int mtu)
-+{
-+	int i, offset = 0;
-+
-+	BTMTK_DBG("len %d mtu %d", len, mtu);
-+
-+	for (i = 0; i < BTUSB_MAX_ISOC_FRAMES && len >= mtu;
-+					i++, offset += mtu, len -= mtu) {
-+		urb->iso_frame_desc[i].offset = offset;
-+		urb->iso_frame_desc[i].length = mtu;
-+	}
-+
-+	if (len && i < BTUSB_MAX_ISOC_FRAMES) {
-+		urb->iso_frame_desc[i].offset = offset;
-+		urb->iso_frame_desc[i].length = len;
-+		i++;
-+	}
-+
-+	urb->number_of_packets = i;
-+}
-+
-+static int btusb_submit_isoc_urb(struct hci_dev *hdev, gfp_t mem_flags)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	struct urb *urb;
-+	unsigned char *buf;
-+	unsigned int pipe;
-+	int err, size;
-+
-+	BTMTK_DBG("%s", hdev->name);
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+
-+	if (!cif_dev->isoc_rx_ep)
-+		return -ENODEV;
-+
-+	urb = usb_alloc_urb(BTUSB_MAX_ISOC_FRAMES, mem_flags);
-+	if (!urb)
-+		return -ENOMEM;
-+
-+	size = le16_to_cpu(cif_dev->isoc_rx_ep->wMaxPacketSize) *
-+						BTUSB_MAX_ISOC_FRAMES;
-+
-+	buf = kmalloc(size, mem_flags);
-+	if (!buf) {
-+		usb_free_urb(urb);
-+		return -ENOMEM;
-+	}
-+
-+	pipe = usb_rcvisocpipe(cif_dev->udev, cif_dev->isoc_rx_ep->bEndpointAddress);
-+
-+	usb_fill_int_urb(urb, cif_dev->udev, pipe, buf, size, btusb_isoc_complete,
-+			 hdev, cif_dev->isoc_rx_ep->bInterval);
-+
-+	urb->transfer_flags = URB_FREE_BUFFER | URB_ISO_ASAP;
-+
-+	__fill_isoc_descriptor(urb, size,
-+			       le16_to_cpu(cif_dev->isoc_rx_ep->wMaxPacketSize));
-+
-+	usb_anchor_urb(urb, &cif_dev->isoc_anchor);
-+
-+	err = usb_submit_urb(urb, mem_flags);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p submission failed (%d)",
-+				  hdev->name, urb, -err);
-+		usb_unanchor_urb(urb);
-+	}
-+
-+	usb_free_urb(urb);
-+
-+	return err;
-+}
-+
-+static void btusb_tx_complete(struct urb *urb)
-+{
-+	struct sk_buff *skb = urb->context;
-+	struct hci_dev *hdev = (struct hci_dev *)skb->dev;
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	unsigned long flags;
-+
-+	BTMTK_DBG("%s urb %p status %d count %d", hdev->name, urb,
-+		  urb->status, urb->actual_length);
-+
-+	if (!test_bit(HCI_RUNNING, &hdev->flags))
-+		goto done;
-+
-+	if (!urb->status)
-+		hdev->stat.byte_tx += urb->transfer_buffer_length;
-+	else
-+		hdev->stat.err_tx++;
-+
-+done:
-+	spin_lock_irqsave(&bdev->txlock, flags);
-+	bdev->tx_in_flight--;
-+	spin_unlock_irqrestore(&bdev->txlock, flags);
-+
-+	kfree(urb->setup_packet);
-+
-+	kfree_skb(skb);
-+}
-+
-+static void btusb_isoc_tx_complete(struct urb *urb)
-+{
-+	struct sk_buff *skb = urb->context;
-+	struct hci_dev *hdev = (struct hci_dev *)skb->dev;
-+
-+	BTMTK_DBG("%s urb %p status %d count %d", hdev->name,
-+		  urb, urb->status, urb->actual_length);
-+
-+	if (!test_bit(HCI_RUNNING, &hdev->flags))
-+		goto done;
-+
-+	if (!urb->status)
-+		hdev->stat.byte_tx += urb->transfer_buffer_length;
-+	else
-+		hdev->stat.err_tx++;
-+
-+done:
-+	kfree(urb->setup_packet);
-+
-+	kfree_skb(skb);
-+}
-+
-+static int btmtk_usb_open(struct hci_dev *hdev)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	int err;
-+	unsigned int ifnum_base;
-+
-+	BTMTK_DBG("%s", hdev->name);
-+
-+	err = usb_autopm_get_interface(cif_dev->intf);
-+	if (err < 0)
-+		return err;
-+
-+	cif_dev->intf->needs_remote_wakeup = 1;
-+
-+	if (test_and_set_bit(BTUSB_INTR_RUNNING, &bdev->flags))
-+		goto done;
-+
-+	ifnum_base = cif_dev->intf->cur_altsetting->desc.bInterfaceNumber;
-+	err = btusb_submit_intr_urb(hdev, GFP_KERNEL);
-+	if (err < 0)
-+		goto failed;
-+
-+	err = btusb_submit_bulk_urb(hdev, GFP_KERNEL);
-+	if (err < 0) {
-+		usb_kill_anchored_urbs(&cif_dev->intr_anchor);
-+		goto failed;
-+	}
-+
-+	set_bit(BTUSB_BULK_RUNNING, &bdev->flags);
-+
-+done:
-+	usb_autopm_put_interface(cif_dev->intf);
-+	return 0;
-+
-+failed:
-+	clear_bit(BTUSB_INTR_RUNNING, &bdev->flags);
-+	usb_autopm_put_interface(cif_dev->intf);
-+	return err;
-+}
-+
-+static void btusb_stop_traffic(struct btmtk_usb_dev *cif_dev)
-+{
-+	usb_kill_anchored_urbs(&cif_dev->intr_anchor);
-+	usb_kill_anchored_urbs(&cif_dev->bulk_anchor);
-+	usb_kill_anchored_urbs(&cif_dev->isoc_anchor);
-+	usb_kill_anchored_urbs(&cif_dev->ctrl_anchor);
-+}
-+
-+static int btmtk_usb_close(struct hci_dev *hdev)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	int err;
-+
-+	BTMTK_INFO("%s enter!", __func__);
-+
-+	cancel_work_sync(&bdev->work);
-+	cancel_work_sync(&bdev->waker);
-+
-+	clear_bit(BTUSB_BLE_ISOC_RUNNING, &bdev->flags);
-+	clear_bit(BTUSB_ISOC_RUNNING, &bdev->flags);
-+	clear_bit(BTUSB_BULK_RUNNING, &bdev->flags);
-+	clear_bit(BTUSB_INTR_RUNNING, &bdev->flags);
-+
-+	btusb_stop_traffic(cif_dev);
-+	btusb_free_frags(bdev);
-+
-+	err = usb_autopm_get_interface(cif_dev->intf);
-+	if (err < 0)
-+		goto failed;
-+
-+	cif_dev->intf->needs_remote_wakeup = 0;
-+	usb_autopm_put_interface(cif_dev->intf);
-+
-+failed:
-+	return 0;
-+}
-+
-+static struct urb *alloc_ctrl_urb(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	struct usb_ctrlrequest *dr;
-+	struct urb *urb;
-+	unsigned int pipe;
-+
-+	urb = usb_alloc_urb(0, GFP_KERNEL);
-+	if (!urb)
-+		return ERR_PTR(-ENOMEM);
-+
-+	dr = kmalloc(sizeof(*dr), GFP_KERNEL);
-+	if (!dr) {
-+		usb_free_urb(urb);
-+		return ERR_PTR(-ENOMEM);
-+	}
-+
-+	dr->bRequestType = cif_dev->cmdreq_type;
-+	dr->bRequest     = cif_dev->cmdreq;
-+	dr->wIndex       = 0;
-+	dr->wValue       = 0;
-+	dr->wLength      = __cpu_to_le16(skb->len);
-+
-+	pipe = usb_sndctrlpipe(cif_dev->udev, 0x00);
-+
-+	usb_fill_control_urb(urb, cif_dev->udev, pipe, (void *)dr,
-+			     skb->data, skb->len, btusb_tx_complete, skb);
-+
-+	skb->dev = (void *)hdev;
-+
-+	return urb;
-+}
-+
-+static struct urb *alloc_bulk_urb(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	struct urb *urb;
-+	unsigned int pipe;
-+
-+	if (!cif_dev->bulk_tx_ep)
-+		return ERR_PTR(-ENODEV);
-+
-+	urb = usb_alloc_urb(0, GFP_KERNEL);
-+	if (!urb)
-+		return ERR_PTR(-ENOMEM);
-+
-+	pipe = usb_sndbulkpipe(cif_dev->udev, cif_dev->bulk_tx_ep->bEndpointAddress);
-+
-+	usb_fill_bulk_urb(urb, cif_dev->udev, pipe,
-+			  skb->data, skb->len, btusb_tx_complete, skb);
-+
-+	skb->dev = (void *)hdev;
-+
-+	return urb;
-+}
-+
-+static struct urb *alloc_isoc_urb(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	struct urb *urb;
-+	unsigned int pipe;
-+
-+	if (!cif_dev->isoc_tx_ep)
-+		return ERR_PTR(-ENODEV);
-+
-+	urb = usb_alloc_urb(BTUSB_MAX_ISOC_FRAMES, GFP_KERNEL);
-+	if (!urb)
-+		return ERR_PTR(-ENOMEM);
-+
-+	pipe = usb_sndisocpipe(cif_dev->udev, cif_dev->isoc_tx_ep->bEndpointAddress);
-+
-+	usb_fill_int_urb(urb, cif_dev->udev, pipe,
-+			 skb->data, skb->len, btusb_isoc_tx_complete,
-+			 skb, cif_dev->isoc_tx_ep->bInterval);
-+
-+	urb->transfer_flags  = URB_ISO_ASAP;
-+
-+	__fill_isoc_descriptor(urb, skb->len,
-+			       le16_to_cpu(cif_dev->isoc_tx_ep->wMaxPacketSize));
-+
-+	skb->dev = (void *)hdev;
-+
-+	return urb;
-+}
-+
-+static int submit_tx_urb(struct hci_dev *hdev, struct urb *urb)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	int err;
-+
-+	usb_anchor_urb(urb, &cif_dev->tx_anchor);
-+
-+	err = usb_submit_urb(urb, GFP_KERNEL);
-+	if (err < 0) {
-+		if (err != -EPERM && err != -ENODEV)
-+			BTMTK_ERR("%s urb %p submission failed (%d)",
-+				  hdev->name, urb, -err);
-+		kfree(urb->setup_packet);
-+		usb_unanchor_urb(urb);
-+	} else {
-+		usb_mark_last_busy(cif_dev->udev);
-+	}
-+
-+	usb_free_urb(urb);
-+	return err;
-+}
-+
-+static int submit_or_queue_tx_urb(struct hci_dev *hdev, struct urb *urb)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	unsigned long flags;
-+	bool suspending;
-+
-+	spin_lock_irqsave(&bdev->txlock, flags);
-+	suspending = test_bit(BTUSB_SUSPENDING, &bdev->flags);
-+	if (!suspending)
-+		bdev->tx_in_flight++;
-+	spin_unlock_irqrestore(&bdev->txlock, flags);
-+
-+	if (!suspending)
-+		return submit_tx_urb(hdev, urb);
-+
-+	schedule_work(&bdev->waker);
-+
-+	usb_free_urb(urb);
-+	return 0;
-+}
-+
-+static int btusb_send_frame(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct urb *urb = NULL;
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	unsigned int ifnum_base;
-+	int ret = 0;
-+
-+	if (skb->len <= 0) {
-+		ret = -EFAULT;
-+		BTMTK_ERR("%s: target packet length:%zu is not allowed",
-+			  __func__, (size_t)skb->len);
-+	}
-+
-+	ifnum_base = cif_dev->intf->cur_altsetting->desc.bInterfaceNumber;
-+
-+	skb_pull(skb, 1);
-+	switch (hci_skb_pkt_type(skb)) {
-+	case HCI_COMMAND_PKT:
-+		/* For wmt cmd/evt */
-+		if (!memcmp(skb->data, &wmt_over_hci_header[1], WMT_OVER_HCI_HEADER_SIZE - 1)) {
-+			skb_push(skb, 1);
-+			skb->data[0] = 0x01;
-+			btmtk_usb_send_cmd(bdev, skb, 100, 20, BTMTK_TX_CMD_FROM_DRV);
-+			btusb_submit_wmt_urb(hdev, GFP_KERNEL);
-+			return 0;
-+		}
-+
-+		urb = alloc_ctrl_urb(hdev, skb);
-+
-+		if (IS_ERR(urb)) {
-+			kfree_skb(skb);
-+			skb = NULL;
-+			return PTR_ERR(urb);
-+		}
-+
-+		hdev->stat.cmd_tx++;
-+		return submit_or_queue_tx_urb(hdev, urb);
-+
-+	case HCI_ACLDATA_PKT:
-+		urb = alloc_bulk_urb(hdev, skb);
-+		if (IS_ERR(urb)) {
-+			kfree_skb(skb);
-+			skb = NULL;
-+			return PTR_ERR(urb);
-+		}
-+		hdev->stat.acl_tx++;
-+		return submit_or_queue_tx_urb(hdev, urb);
-+
-+	case HCI_SCODATA_PKT:
-+		urb = alloc_isoc_urb(hdev, skb);
-+		if (IS_ERR(urb)) {
-+			kfree_skb(skb);
-+			skb = NULL;
-+			return PTR_ERR(urb);
-+		}
-+
-+		hdev->stat.sco_tx++;
-+		return submit_tx_urb(hdev, urb);
-+	}
-+
-+	kfree_skb(skb);
-+	skb = NULL;
-+	return -EILSEQ;
-+}
-+
-+static int btmtk_usb_load_fw_patch_using_dma(struct btmtk_dev *bdev, u8 *image,
-+					     u8 *fwbuf, int section_dl_size,
-+					     int section_offset)
-+{
-+	int cur_len = 0;
-+	int ret = 0;
-+	s32 sent_len;
-+	u8 dl_done_cmd[] = {0x01, 0x6F, 0xFC, 0x05, 0x01, 0x01, 0x01, 0x00, PATCH_PHASE3};
-+	u8 event[] = {0x04, 0xE4, 0x05, 0x02, 0x01, 0x01, 0x00, 0x00}; /* event[7] is status*/
-+
-+	if (!bdev || !image || !fwbuf) {
-+		BTMTK_ERR("%s: invalid parameters!", __func__);
-+		ret = -1;
-+		goto exit;
-+	}
-+
-+	BTMTK_INFO("%s: loading rom patch... start", __func__);
-+	while (1) {
-+		sent_len = (section_dl_size - cur_len) >= (UPLOAD_PATCH_UNIT - HCI_TYPE_SIZE) ?
-+				(UPLOAD_PATCH_UNIT - HCI_TYPE_SIZE) : (section_dl_size - cur_len);
-+
-+		if (sent_len > 0) {
-+			image[0] = HCI_ACLDATA_PKT;
-+			memcpy(&image[HCI_TYPE_SIZE], fwbuf + section_offset + cur_len, sent_len);
-+			BTMTK_DBG("%s: sent_len = %d, cur_len = %d", __func__,
-+				  sent_len, cur_len);
-+			ret = btmtk_main_send_cmd(bdev,
-+						  image, sent_len + HCI_TYPE_SIZE,
-+						  NULL, -1,
-+						  0, 0, BTMTK_TX_ACL_FROM_DRV);
-+			if (ret < 0) {
-+				BTMTK_ERR("%s: send patch failed, terminate", __func__);
-+				goto exit;
-+			}
-+			cur_len += sent_len;
-+		} else {
-+			break;
-+		}
-+	}
-+
-+	ret = btmtk_main_send_cmd(bdev, dl_done_cmd, sizeof(dl_done_cmd),
-+				  event, sizeof(event),
-+				  DELAY_TIMES, RETRY_TIMES,
-+				  BTMTK_TX_CMD_FROM_DRV);
-+	if (ret < 0)
-+		BTMTK_ERR("%s: send wmd dl cmd failed, terminate!", __func__);
-+	BTMTK_INFO("%s: loading rom patch... Done", __func__);
-+
-+exit:
-+	return ret;
-+}
-+
-+static void btusb_notify(struct hci_dev *hdev, unsigned int evt)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+
-+	BTMTK_DBG("%s evt %d", hdev->name, evt);
-+
-+	if (hci_conn_num(hdev, SCO_LINK) != bdev->sco_num) {
-+		bdev->sco_num = hci_conn_num(hdev, SCO_LINK);
-+		schedule_work(&bdev->work);
-+	}
-+}
-+
-+static inline int __set_isoc_interface(struct hci_dev *hdev, int altsetting)
-+{
-+	struct btmtk_dev *bdev = hci_get_drvdata(hdev);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	struct usb_interface *intf = cif_dev->isoc;
-+	struct usb_endpoint_descriptor *ep_desc;
-+	int i, err;
-+	unsigned int ifnum_base;
-+
-+	if (!cif_dev->isoc)
-+		return -ENODEV;
-+
-+	ifnum_base = cif_dev->intf->cur_altsetting->desc.bInterfaceNumber;
-+	cif_dev->new_isoc_altsetting_interface = 1;
-+	err = usb_set_interface(cif_dev->udev, cif_dev->new_isoc_altsetting_interface, altsetting);
-+
-+	if (err < 0) {
-+		BTMTK_ERR("%s setting interface failed (%d)", hdev->name, -err);
-+		return err;
-+	}
-+
-+	bdev->isoc_altsetting = altsetting;
-+
-+	cif_dev->isoc_tx_ep = NULL;
-+	cif_dev->isoc_rx_ep = NULL;
-+
-+	for (i = 0; i < intf->cur_altsetting->desc.bNumEndpoints; i++) {
-+		ep_desc = &intf->cur_altsetting->endpoint[i].desc;
-+
-+		if (!cif_dev->isoc_tx_ep && usb_endpoint_is_isoc_out(ep_desc)) {
-+			cif_dev->isoc_tx_ep = ep_desc;
-+			continue;
-+		}
-+
-+		if (!cif_dev->isoc_rx_ep && usb_endpoint_is_isoc_in(ep_desc)) {
-+			cif_dev->isoc_rx_ep = ep_desc;
-+			continue;
-+		}
-+	}
-+
-+	if (!cif_dev->isoc_tx_ep || !cif_dev->isoc_rx_ep) {
-+		BTMTK_ERR("%s invalid SCO descriptors", hdev->name);
-+		return -ENODEV;
-+	}
-+
-+	return 0;
-+}
-+
-+static void btusb_work(struct work_struct *work)
-+{
-+	struct btmtk_dev *bdev = container_of(work, struct btmtk_dev, work);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	struct hci_dev *hdev = bdev->hdev;
-+	int new_alts;
-+	int err;
-+	unsigned long flags;
-+
-+	if (bdev->sco_num > 0) {
-+		if (!test_bit(BTUSB_DID_ISO_RESUME, &bdev->flags)) {
-+			err = usb_autopm_get_interface(cif_dev->isoc ?
-+						       cif_dev->isoc :
-+						       cif_dev->intf);
-+			if (err < 0) {
-+				clear_bit(BTUSB_ISOC_RUNNING, &bdev->flags);
-+				usb_kill_anchored_urbs(&cif_dev->isoc_anchor);
-+				return;
-+			}
-+
-+			set_bit(BTUSB_DID_ISO_RESUME, &bdev->flags);
-+		}
-+
-+		if (hdev->voice_setting & 0x0020) {
-+			static const int alts[3] = { 2, 4, 5 };
-+
-+			new_alts = alts[bdev->sco_num - 1];
-+		} else {
-+			new_alts = bdev->sco_num;
-+		}
-+
-+		clear_bit(BTUSB_ISOC_RUNNING, &bdev->flags);
-+		usb_kill_anchored_urbs(&cif_dev->isoc_anchor);
-+
-+		spin_lock_irqsave(&bdev->rxlock, flags);
-+		kfree_skb(bdev->sco_skb);
-+		bdev->sco_skb = NULL;
-+		spin_unlock_irqrestore(&bdev->rxlock, flags);
-+
-+		if (__set_isoc_interface(hdev, new_alts) < 0)
-+			return;
-+
-+		if (!test_and_set_bit(BTUSB_ISOC_RUNNING, &bdev->flags)) {
-+			if (btusb_submit_isoc_urb(hdev, GFP_KERNEL) < 0)
-+				clear_bit(BTUSB_ISOC_RUNNING, &bdev->flags);
-+			else
-+				btusb_submit_isoc_urb(hdev, GFP_KERNEL);
-+		}
-+	} else {
-+		clear_bit(BTUSB_ISOC_RUNNING, &bdev->flags);
-+		usb_kill_anchored_urbs(&cif_dev->isoc_anchor);
-+		BTMTK_INFO("%s set alt to zero", __func__);
-+		__set_isoc_interface(hdev, 0);
-+		if (test_and_clear_bit(BTUSB_DID_ISO_RESUME, &bdev->flags))
-+			usb_autopm_put_interface(cif_dev->isoc ? cif_dev->isoc : cif_dev->intf);
-+	}
-+}
-+
-+static void btusb_waker(struct work_struct *work)
-+{
-+	struct btmtk_dev *bdev = container_of(work, struct btmtk_dev, waker);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	int err;
-+
-+	err = usb_autopm_get_interface(cif_dev->intf);
-+	if (err < 0)
-+		return;
-+
-+	usb_autopm_put_interface(cif_dev->intf);
-+}
-+
-+static int btusb_probe(struct usb_interface *intf,
-+		       const struct usb_device_id *id)
-+{
-+	struct usb_endpoint_descriptor *ep_desc;
-+	struct btmtk_dev *bdev = NULL;
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	unsigned int ifnum_base;
-+	int i, err = 0;
-+
-+	ifnum_base = intf->cur_altsetting->desc.bInterfaceNumber;
-+	BTMTK_DBG("intf %p id %p, interfacenum = %d", intf, id, ifnum_base);
-+
-+	bdev = usb_get_intfdata(intf);
-+	if (!bdev) {
-+		BTMTK_ERR("[ERR] bdev is NULL");
-+		err = -ENOMEM;
-+		goto end;
-+	}
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+
-+	for (i = 0; i < intf->cur_altsetting->desc.bNumEndpoints; i++) {
-+		ep_desc = &intf->cur_altsetting->endpoint[i].desc;
-+
-+		if (!cif_dev->intr_ep && usb_endpoint_is_int_in(ep_desc)) {
-+			cif_dev->intr_ep = ep_desc;
-+			BTMTK_INFO("intr_rx_ep i = %d  EP 0x%02X, number_of_endpoints=%d",
-+				   i, ep_desc->bEndpointAddress,
-+				   intf->cur_altsetting->desc.bNumEndpoints);
-+			continue;
-+		}
-+
-+		if (!cif_dev->bulk_tx_ep && usb_endpoint_is_bulk_out(ep_desc)) {
-+			cif_dev->bulk_tx_ep = ep_desc;
-+			BTMTK_INFO("bulk_tx_ep i = %d  EP 0x%02X, number_of_endpoints=%d",
-+				   i, ep_desc->bEndpointAddress,
-+				   intf->cur_altsetting->desc.bNumEndpoints);
-+			continue;
-+		}
-+
-+		if (!cif_dev->bulk_rx_ep && usb_endpoint_is_bulk_in(ep_desc)) {
-+			cif_dev->bulk_rx_ep = ep_desc;
-+			BTMTK_INFO("bulk_rx_ep i = %d  EP = 0x%02X, number_of_endpoints=%d",
-+				   i, ep_desc->bEndpointAddress,
-+				   intf->cur_altsetting->desc.bNumEndpoints);
-+			continue;
-+		}
-+	}
-+
-+	if (!cif_dev->intr_ep || !cif_dev->bulk_tx_ep || !cif_dev->bulk_rx_ep) {
-+		BTMTK_ERR("[ERR] intr_ep or bulk_tx_ep or bulk_rx_ep is NULL");
-+		err = -ENODEV;
-+		goto end;
-+	}
-+
-+	cif_dev->cmdreq_type = USB_TYPE_CLASS;
-+	cif_dev->cmdreq = 0x00;
-+
-+	cif_dev->udev = interface_to_usbdev(intf);
-+	cif_dev->intf = intf;
-+	bdev->intf_dev = &cif_dev->udev->dev;
-+
-+	INIT_WORK(&bdev->work, btusb_work);
-+	INIT_WORK(&bdev->waker, btusb_waker);
-+	init_usb_anchor(&cif_dev->tx_anchor);
-+	spin_lock_init(&bdev->txlock);
-+
-+	init_usb_anchor(&cif_dev->intr_anchor);
-+	init_usb_anchor(&cif_dev->bulk_anchor);
-+	init_usb_anchor(&cif_dev->isoc_anchor);
-+	init_usb_anchor(&cif_dev->ctrl_anchor);
-+	spin_lock_init(&bdev->rxlock);
-+
-+	err = btmtk_cif_allocate_memory(cif_dev);
-+	if (err < 0) {
-+		BTMTK_ERR("[ERR] btmtk_cif_allocate_memory failed!");
-+		goto end;
-+	}
-+
-+	err = btmtk_main_cif_initialize(bdev, HCI_USB);
-+	if (err < 0) {
-+		BTMTK_ERR("[ERR] btmtk_main_cif_initialize failed!");
-+		goto free_mem;
-+	}
-+
-+	bdev->hdev->notify = btusb_notify;
-+
-+	SET_HCIDEV_DEV(bdev->hdev, &cif_dev->intf->dev);
-+
-+	err = btmtk_load_rom_patch(bdev);
-+	if (err < 0) {
-+		BTMTK_ERR("btmtk load rom patch failed!");
-+		goto deinit;
-+	}
-+
-+	usb_set_intfdata(intf, bdev);
-+
-+	err = btmtk_send_init_cmds(bdev);
-+	if (err < 0)
-+		BTMTK_ERR("%s, btmtk_send_init_cmds failed, err = %d", __func__, err);
-+
-+	err = btmtk_register_hci_device(bdev);
-+	if (err < 0) {
-+		BTMTK_ERR("btmtk_register_hci_device failed!");
-+		goto deinit;
-+	}
-+
-+	return 0;
-+
-+deinit:
-+	btmtk_main_cif_uninitialize(bdev, HCI_USB);
-+free_mem:
-+	btmtk_cif_free_memory(cif_dev);
-+end:
-+	return err;
-+}
-+
-+static void btusb_disconnect(struct usb_interface *intf)
-+{
-+	struct btmtk_dev *bdev = NULL;
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	struct hci_dev *hdev;
-+
-+	bdev = usb_get_intfdata(intf);
-+	if (!bdev) {
-+		BTMTK_WARN("%s: bdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	if (!cif_dev) {
-+		BTMTK_WARN("%s: cif_dev is NULL!", __func__);
-+		return;
-+	}
-+
-+	hdev = bdev->hdev;
-+	usb_set_intfdata(cif_dev->intf, NULL);
-+
-+	if (cif_dev->isoc)
-+		usb_set_intfdata(cif_dev->isoc, NULL);
-+
-+	if (cif_dev->iso_channel)
-+		usb_set_intfdata(cif_dev->iso_channel, NULL);
-+
-+	if (intf == cif_dev->intf) {
-+		if (cif_dev->isoc)
-+			usb_driver_release_interface(&btusb_driver, cif_dev->isoc);
-+		if (cif_dev->iso_channel)
-+			usb_driver_release_interface(&btusb_driver, cif_dev->iso_channel);
-+	} else if (intf == cif_dev->isoc) {
-+		usb_driver_release_interface(&btusb_driver, cif_dev->intf);
-+	} else if (intf == cif_dev->iso_channel) {
-+		usb_driver_release_interface(&btusb_driver, cif_dev->intf);
-+	}
-+
-+	btmtk_cif_free_memory(cif_dev);
-+
-+	btmtk_main_cif_disconnect_notify(bdev, HCI_USB);
-+}
-+
-+#ifdef CONFIG_PM
-+static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
-+{
-+	struct btmtk_dev *bdev = usb_get_intfdata(intf);
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	int ret = 0;
-+
-+	if (bdev->suspend_count++) {
-+		BTMTK_ERR("%s: Has suspended. suspend_count: %d end",
-+			  __func__, bdev->suspend_count);
-+		return 0;
-+	}
-+
-+	spin_lock_irq(&bdev->txlock);
-+	if (!(PMSG_IS_AUTO(message) && bdev->tx_in_flight)) {
-+		set_bit(BTUSB_SUSPENDING, &bdev->flags);
-+		spin_unlock_irq(&bdev->txlock);
-+	} else {
-+		spin_unlock_irq(&bdev->txlock);
-+		bdev->suspend_count--;
-+		return -EBUSY;
-+	}
-+
-+	cancel_work_sync(&bdev->work);
-+
-+	btusb_stop_traffic(cif_dev);
-+	usb_kill_anchored_urbs(&cif_dev->tx_anchor);
-+
-+	BTMTK_INFO("%s end, suspend_count = %d", __func__, bdev->suspend_count);
-+
-+	return ret;
-+}
-+
-+static int btusb_resume(struct usb_interface *intf)
-+{
-+	struct btmtk_dev *bdev = usb_get_intfdata(intf);
-+	struct hci_dev *hdev = bdev->hdev;
-+	int err = 0;
-+
-+	BTMTK_INFO("%s begin", __func__);
-+
-+	if (--bdev->suspend_count) {
-+		BTMTK_WARN("%s: bdev->suspend_count %d, return 0", __func__,
-+			   bdev->suspend_count);
-+		return 0;
-+	}
-+
-+	if (test_bit(BTUSB_INTR_RUNNING, &bdev->flags)) {
-+		err = btusb_submit_intr_urb(hdev, GFP_NOIO);
-+		if (err < 0) {
-+			clear_bit(BTUSB_INTR_RUNNING, &bdev->flags);
-+			goto done;
-+		}
-+	}
-+
-+	if (test_bit(BTUSB_BULK_RUNNING, &bdev->flags)) {
-+		err = btusb_submit_bulk_urb(hdev, GFP_NOIO);
-+		if (err < 0) {
-+			clear_bit(BTUSB_BULK_RUNNING, &bdev->flags);
-+			goto done;
-+		}
-+
-+		btusb_submit_bulk_urb(hdev, GFP_NOIO);
-+	}
-+
-+	if (test_bit(BTUSB_ISOC_RUNNING, &bdev->flags)) {
-+		if (btusb_submit_isoc_urb(hdev, GFP_NOIO) < 0)
-+			clear_bit(BTUSB_ISOC_RUNNING, &bdev->flags);
-+		else
-+			btusb_submit_isoc_urb(hdev, GFP_NOIO);
-+	}
-+
-+	spin_lock_irq(&bdev->txlock);
-+	clear_bit(BTUSB_SUSPENDING, &bdev->flags);
-+	spin_unlock_irq(&bdev->txlock);
-+	schedule_work(&bdev->work);
-+
-+	BTMTK_INFO("%s end", __func__);
-+
-+	return 0;
-+
-+done:
-+	spin_lock_irq(&bdev->txlock);
-+	clear_bit(BTUSB_SUSPENDING, &bdev->flags);
-+	spin_unlock_irq(&bdev->txlock);
-+
-+	return err;
-+}
-+#endif
-+
-+static int btmtk_cif_probe(struct usb_interface *intf,
-+			   const struct usb_device_id *id)
-+{
-+	int ret = -1;
-+	int cif_event = 0;
-+	unsigned int ifnum_base;
-+	struct btmtk_cif_state *cif_state = NULL;
-+	struct btmtk_dev *bdev = NULL;
-+
-+	/* Mediatek Driver Version */
-+	BTMTK_INFO("%s: MTK BT Driver Version : %s", __func__, VERSION);
-+
-+	ifnum_base = intf->cur_altsetting->desc.bInterfaceNumber;
-+	BTMTK_DBG("intf %p id %p, interfacenum = %d", intf, id, ifnum_base);
-+
-+	if (ifnum_base != BT0_MCU_INTERFACE_NUM &&
-+	    ifnum_base != BT1_MCU_INTERFACE_NUM)
-+		return -ENODEV;
-+
-+	bdev = btmtk_get_dev();
-+	usb_set_intfdata(intf, bdev);
-+	bdev->cif_dev = &g_usb_dev[bdev->dongle_index][intf_to_idx[ifnum_base]];
-+
-+	cif_event = HIF_EVENT_PROBE;
-+	if (BTMTK_CIF_IS_NULL(bdev, cif_event)) {
-+		/* Error */
-+		BTMTK_WARN("%s intf[%d] priv setting is NULL", __func__, ifnum_base);
-+		return -ENODEV;
-+	}
-+
-+	cif_state = &bdev->cif_state[cif_event];
-+
-+	/* Set Entering state */
-+	btmtk_set_chip_state((void *)bdev, cif_state->ops_enter);
-+
-+	/* Do HIF events */
-+	ret = btusb_probe(intf, id);
-+
-+	/* Set End/Error state */
-+	if (ret == 0)
-+		btmtk_set_chip_state((void *)bdev, cif_state->ops_end);
-+	else
-+		btmtk_set_chip_state((void *)bdev, cif_state->ops_error);
-+
-+	return ret;
-+}
-+
-+static void btmtk_cif_disconnect(struct usb_interface *intf)
-+{
-+	int cif_event = 0;
-+	unsigned int ifnum_base;
-+	struct btmtk_cif_state *cif_state = NULL;
-+	struct btmtk_dev *bdev = NULL;
-+
-+	BTMTK_CIF_GET_DEV_PRIV(bdev, intf, ifnum_base);
-+
-+	/* Retrieve current HIF event state */
-+	cif_event = HIF_EVENT_DISCONNECT;
-+	if (BTMTK_CIF_IS_NULL(bdev, cif_event)) {
-+		/* Error */
-+		BTMTK_WARN("%s intf[%d] priv setting is NULL", __func__, ifnum_base);
-+		return;
-+	}
-+
-+	cif_state = &bdev->cif_state[cif_event];
-+
-+	btmtk_usb_cif_mutex_lock(bdev);
-+	/* Set Entering state */
-+	btmtk_set_chip_state((void *)bdev, cif_state->ops_enter);
-+
-+	/* Do HIF events */
-+	btusb_disconnect(intf);
-+
-+	/* Set End/Error state */
-+	btmtk_set_chip_state((void *)bdev, cif_state->ops_end);
-+	btmtk_usb_cif_mutex_unlock(bdev);
-+}
-+
-+#ifdef CONFIG_PM
-+static int btmtk_cif_suspend(struct usb_interface *intf, pm_message_t message)
-+{
-+	int ret = 0;
-+	unsigned int ifnum_base;
-+	int cif_event = 0;
-+	struct btmtk_cif_state *cif_state = NULL;
-+	struct btmtk_dev *bdev = NULL;
-+	int state = BTMTK_STATE_INIT;
-+
-+	BTMTK_INFO("%s, enter", __func__);
-+	BTMTK_CIF_GET_DEV_PRIV(bdev, intf, ifnum_base);
-+
-+	state = btmtk_get_chip_state(bdev);
-+	/* Retrieve current HIF event state */
-+	if (state == BTMTK_STATE_FW_DUMP) {
-+		BTMTK_WARN("%s: FW dumping ongoing, don't dos suspend flow!!!", __func__);
-+		cif_event = HIF_EVENT_FW_DUMP;
-+	} else {
-+		cif_event = HIF_EVENT_SUSPEND;
-+	}
-+
-+	if (BTMTK_CIF_IS_NULL(bdev, cif_event)) {
-+		/* Error */
-+		BTMTK_WARN("%s intf[%d] priv setting is NULL", __func__, ifnum_base);
-+		return -ENODEV;
-+	}
-+
-+	cif_state = &bdev->cif_state[cif_event];
-+
-+	/* Set Entering state */
-+	btmtk_set_chip_state((void *)bdev, cif_state->ops_enter);
-+
-+	/* Do HIF events */
-+	ret = btusb_suspend(intf, message);
-+
-+	/* Set End/Error state */
-+	if (ret == 0)
-+		btmtk_set_chip_state((void *)bdev, cif_state->ops_end);
-+	else
-+		btmtk_set_chip_state((void *)bdev, cif_state->ops_error);
-+
-+	BTMTK_INFO("%s, end. ret = %d", __func__, ret);
-+	return ret;
-+}
-+
-+static int btmtk_cif_resume(struct usb_interface *intf)
-+{
-+	int ret = 0;
-+	unsigned int ifnum_base;
-+	int cif_event = 0;
-+	struct btmtk_cif_state *cif_state = NULL;
-+	struct btmtk_dev *bdev = NULL;
-+
-+	BTMTK_INFO("%s, enter", __func__);
-+	BTMTK_CIF_GET_DEV_PRIV(bdev, intf, ifnum_base);
-+
-+	/* Retrieve current HIF event state */
-+	cif_event = HIF_EVENT_RESUME;
-+	if (BTMTK_CIF_IS_NULL(bdev, cif_event)) {
-+		/* Error */
-+		BTMTK_WARN("%s intf[%d] priv setting is NULL", __func__, ifnum_base);
-+		return -ENODEV;
-+	}
-+
-+	cif_state = &bdev->cif_state[cif_event];
-+
-+	/* Set Entering state */
-+	btmtk_set_chip_state((void *)bdev, cif_state->ops_enter);
-+
-+	/* Do HIF events */
-+	ret = btusb_resume(intf);
-+
-+	/* Set End/Error state */
-+	if (ret == 0)
-+		btmtk_set_chip_state((void *)bdev, cif_state->ops_end);
-+	else
-+		btmtk_set_chip_state((void *)bdev, cif_state->ops_error);
-+
-+	BTMTK_INFO("%s, end. ret = %d", __func__, ret);
-+	return ret;
-+}
-+#endif	// CONFIG_PM //
-+
-+static struct usb_driver btusb_driver = {
-+	.name		= "btmtk_usb",
-+	.probe		= btmtk_cif_probe,
-+	.disconnect	= btmtk_cif_disconnect,
-+#ifdef CONFIG_PM
-+	.suspend	= btmtk_cif_suspend,
-+	.resume		= btmtk_cif_resume,
-+#endif
-+	.id_table	= btusb_table,
-+	.supports_autosuspend = 1,
-+	.disable_hub_initiated_lpm = 1,
-+};
-+
-+int btmtk_cif_register(void)
-+{
-+	int retval = 0;
-+	struct hif_hook_ptr hook;
-+
-+	BTMTK_INFO("%s", __func__);
-+
-+	memset(&hook, 0, sizeof(hook));
-+	hook.open = btmtk_usb_open;
-+	hook.close = btmtk_usb_close;
-+	hook.reg_read = btmtk_usb_read_register;
-+	hook.reg_write = btmtk_usb_write_register;
-+	hook.send_cmd = btmtk_usb_send_cmd;
-+	hook.send_and_recv = btmtk_usb_send_and_recv;
-+	hook.event_filter = btmtk_usb_event_filter;
-+	hook.cif_mutex_lock = btmtk_usb_cif_mutex_lock;
-+	hook.cif_mutex_unlock = btmtk_usb_cif_mutex_unlock;
-+	hook.dl_dma = btmtk_usb_load_fw_patch_using_dma;
-+	btmtk_reg_hif_hook(&hook);
-+
-+	retval = usb_register(&btusb_driver);
-+	if (retval)
-+		BTMTK_ERR("*** USB registration fail(%d)! ***", retval);
-+	else
-+		BTMTK_INFO("%s, usb registration success!", __func__);
-+	return retval;
-+}
-+
-+int btmtk_cif_deregister(void)
-+{
-+	BTMTK_INFO("%s", __func__);
-+	usb_deregister(&btusb_driver);
-+	BTMTK_INFO("%s: Done", __func__);
-+	return 0;
-+}
-+
-+static int btmtk_cif_allocate_memory(struct btmtk_usb_dev *cif_dev)
-+{
-+	if (!cif_dev->o_usb_buf) {
-+		cif_dev->o_usb_buf = kzalloc(HCI_MAX_COMMAND_SIZE, GFP_KERNEL);
-+		if (!cif_dev->o_usb_buf) {
-+			BTMTK_ERR("%s: alloc memory fail (bdev->o_usb_buf)", __func__);
-+			return -1;
-+		}
-+	}
-+
-+	if (!cif_dev->urb_intr_buf) {
-+		cif_dev->urb_intr_buf = kzalloc(URB_MAX_BUFFER_SIZE, GFP_KERNEL);
-+		if (!cif_dev->urb_intr_buf) {
-+			BTMTK_ERR("%s: alloc memory fail (bdev->urb_intr_buf)", __func__);
-+			return -1;
-+		}
-+	}
-+	if (!cif_dev->urb_bulk_buf) {
-+		cif_dev->urb_bulk_buf = kzalloc(URB_MAX_BUFFER_SIZE, GFP_KERNEL);
-+		if (!cif_dev->urb_bulk_buf) {
-+			BTMTK_ERR("%s: alloc memory fail (bdev->urb_bulk_buf)", __func__);
-+			return -1;
-+		}
-+	}
-+	if (!cif_dev->urb_ble_isoc_buf) {
-+		cif_dev->urb_ble_isoc_buf = kzalloc(URB_MAX_BUFFER_SIZE, GFP_KERNEL);
-+		if (!cif_dev->urb_ble_isoc_buf) {
-+			BTMTK_ERR("%s: alloc memory fail (bdev->urb_ble_isoc_buf)", __func__);
-+			return -1;
-+		}
-+	}
-+
-+	BTMTK_INFO("%s: Done", __func__);
-+	return 0;
-+}
-+
-+static void btmtk_cif_free_memory(struct btmtk_usb_dev *cif_dev)
-+{
-+	if (!cif_dev) {
-+		BTMTK_ERR("%s: bdev is NULL!", __func__);
-+		return;
-+	}
-+
-+	kfree(cif_dev->o_usb_buf);
-+	cif_dev->o_usb_buf = NULL;
-+
-+	kfree(cif_dev->urb_intr_buf);
-+	cif_dev->urb_intr_buf = NULL;
-+
-+	kfree(cif_dev->urb_bulk_buf);
-+	cif_dev->urb_bulk_buf = NULL;
-+
-+	kfree(cif_dev->urb_ble_isoc_buf);
-+	cif_dev->urb_ble_isoc_buf = NULL;
-+
-+	memset(cif_dev, 0, sizeof(struct btmtk_usb_dev));
-+
-+	BTMTK_INFO("%s: Success", __func__);
-+}
-+
-+static int btmtk_usb_read_register(struct btmtk_dev *bdev, u32 reg, u32 *val)
-+{
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	int ret = -1;
-+	__le16 reg_high;
-+	__le16 reg_low;
-+
-+	reg_high = ((reg >> 16) & 0xffff);
-+	reg_low = (reg & 0xffff);
-+
-+	memset(bdev->io_buf, 0, IO_BUF_SIZE);
-+	ret = usb_control_msg(cif_dev->udev, usb_rcvctrlpipe(cif_dev->udev, 0),
-+			      0x63,
-+			      DEVICE_VENDOR_REQUEST_IN,
-+			      reg_high,
-+			      reg_low,
-+			      bdev->io_buf,
-+			      sizeof(u32), USB_CTRL_IO_TIMO);
-+
-+	if (ret < 0) {
-+		*val = 0xffffffff;
-+		BTMTK_ERR("%s: error(%d), reg=%x, value=%x", __func__, ret, reg, *val);
-+		return ret;
-+	}
-+
-+	memmove(val, bdev->io_buf, sizeof(u32));
-+	*val = le32_to_cpu(*val);
-+
-+	return 0;
-+}
-+
-+static int btmtk_usb_write_register(struct btmtk_dev *bdev, u32 reg, u32 val)
-+{
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	int ret = -1;
-+	__le16 reg_high;
-+	__le16 reg_low;
-+	u8 buf[4];
-+
-+	reg_high = ((reg >> 16) & 0xffff);
-+	reg_low = (reg & 0xffff);
-+
-+	buf[0] = 0;
-+	buf[1] = 0;
-+	buf[2] = (val & 0x00ff);
-+	buf[3] = ((val >> 8) & 0x00ff);
-+
-+	memcpy(cif_dev->o_usb_buf, buf, sizeof(buf));
-+	ret = usb_control_msg(cif_dev->udev, usb_sndctrlpipe(cif_dev->udev, 0),
-+			      0x66, /* bRequest */
-+			      0x40, /* bRequestType */
-+			      reg_high, /* wValue */
-+			      reg_low, /* wIndex */
-+			      cif_dev->o_usb_buf,
-+			      sizeof(buf), USB_CTRL_IO_TIMO);
-+
-+	if (ret < 0) {
-+		val = 0xffffffff;
-+		BTMTK_ERR("%s: error(%d), reg=%x, value=%x", __func__, ret, reg, val);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void btmtk_cif_load_rom_patch_complete(struct urb *urb)
-+{
-+	struct completion *sent_to_mcu_done = (struct completion *)urb->context;
-+
-+	complete(sent_to_mcu_done);
-+}
-+
-+int btmtk_cif_send_control_out(struct btmtk_dev *bdev, struct sk_buff *skb,
-+			       int delay, int retry)
-+{
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	int ret = 0;
-+	unsigned int ifnum_base;
-+
-+	if (!bdev || !bdev->hdev || !bdev->io_buf || !skb ||
-+	    skb->len > HCI_MAX_COMMAND_SIZE || skb->len <= 0) {
-+		BTMTK_ERR("%s: incorrect parameter", __func__);
-+		ret = -1;
-+		goto exit;
-+	}
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	if (!cif_dev->udev || !cif_dev->o_usb_buf) {
-+		BTMTK_ERR("%s: cif_dev is invalid", __func__);
-+		ret = -1;
-+		goto exit;
-+	}
-+
-+	ifnum_base = cif_dev->intf->cur_altsetting->desc.bInterfaceNumber;
-+	memcpy(cif_dev->o_usb_buf, skb->data + 1, skb->len - 1);
-+	ret = usb_control_msg(cif_dev->udev, usb_sndctrlpipe(cif_dev->udev, 0),
-+			      0x01, DEVICE_CLASS_REQUEST_OUT, 0x30, 0x00,
-+			      (void *)cif_dev->o_usb_buf, skb->len - 1,
-+			      USB_CTRL_IO_TIMO);
-+
-+	if (ret < 0) {
-+		BTMTK_ERR("%s: command send failed(%d)", __func__, ret);
-+		goto exit;
-+	}
-+exit:
-+	kfree_skb(skb);
-+	skb = NULL;
-+	return ret;
-+}
-+
-+static int btmtk_cif_send_bulk_out(struct btmtk_dev *bdev, struct sk_buff *skb)
-+{
-+	int ret = 0;
-+	struct urb *urb;
-+	unsigned int pipe;
-+	struct completion sent_to_mcu_done;
-+	void *buf;
-+	struct btmtk_usb_dev *cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+
-+	urb = usb_alloc_urb(0, GFP_KERNEL);
-+	if (!urb) {
-+		ret = -ENOMEM;
-+		goto exit;
-+	}
-+
-+	buf = usb_alloc_coherent(cif_dev->udev, UPLOAD_PATCH_UNIT,
-+				 GFP_KERNEL, &urb->transfer_dma);
-+	if (!buf) {
-+		ret = -ENOMEM;
-+		goto exit;
-+	}
-+	init_completion(&sent_to_mcu_done);
-+
-+	pipe = usb_sndbulkpipe(cif_dev->udev, cif_dev->bulk_tx_ep->bEndpointAddress);
-+
-+	memcpy(buf, skb->data + 1, skb->len - 1);
-+	usb_fill_bulk_urb(urb,
-+			  cif_dev->udev,
-+			  pipe,
-+			  buf,
-+			  skb->len - 1,
-+			  (usb_complete_t)btmtk_cif_load_rom_patch_complete,
-+			  &sent_to_mcu_done);
-+
-+	urb->transfer_flags |= URB_NO_TRANSFER_DMA_MAP;
-+
-+	ret = usb_submit_urb(urb, GFP_KERNEL);
-+	if (ret < 0) {
-+		BTMTK_ERR("%s: submit urb failed (%d)", __func__, ret);
-+		goto error;
-+	}
-+
-+	if (!wait_for_completion_timeout
-+			(&sent_to_mcu_done, msecs_to_jiffies(1000))) {
-+		usb_kill_urb(urb);
-+		BTMTK_ERR("%s: upload rom_patch timeout", __func__);
-+		ret = -ETIME;
-+		goto error;
-+	}
-+
-+error:
-+	usb_free_coherent(cif_dev->udev, UPLOAD_PATCH_UNIT, buf, urb->transfer_dma);
-+exit:
-+	usb_free_urb(urb);
-+	kfree_skb(skb);
-+	skb = NULL;
-+	return ret;
-+}
-+
-+int btmtk_usb_send_cmd(struct btmtk_dev *bdev, struct sk_buff *skb,
-+		       int delay, int retry, int pkt_type)
-+{
-+	int ret = -1;
-+
-+	if (pkt_type == BTMTK_TX_CMD_FROM_DRV) {
-+		/* handle wmt cmd from driver */
-+		ret = btmtk_cif_send_control_out(bdev, skb, delay, retry);
-+	} else if (pkt_type == BTMTK_TX_ACL_FROM_DRV) {
-+		/* bulk out for load rom patch*/
-+		ret = btmtk_cif_send_bulk_out(bdev, skb);
-+	} else if (pkt_type == BTMTK_TX_PKT_FROM_HOST) {
-+		/* handle hci cmd and acl pkt from host, handle hci cmd from driver */
-+		ret = btusb_send_frame(bdev->hdev, skb);
-+	}
-+
-+	return ret;
-+}
-+
-+static int btmtk_cif_recv_evt(struct btmtk_dev *bdev, int delay, int retry)
-+{
-+	struct btmtk_usb_dev *cif_dev = NULL;
-+	int ret = -1;	/* if successful, 0 */
-+	unsigned int ifnum_base;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s: !bdev!\n", __func__);
-+		return ret;
-+	}
-+
-+	cif_dev = (struct btmtk_usb_dev *)bdev->cif_dev;
-+	if (!cif_dev->udev || !bdev->hdev) {
-+		BTMTK_ERR("%s: invalid parameters!\n", __func__);
-+		return ret;
-+	}
-+
-+	ifnum_base = cif_dev->intf->cur_altsetting->desc.bInterfaceNumber;
-+get_response_again:
-+	/* ms delay */
-+	mdelay(delay);
-+
-+	/* check WMT event */
-+	memset(bdev->io_buf, 0, IO_BUF_SIZE);
-+	bdev->io_buf[0] = HCI_EVENT_PKT;
-+	ret = usb_control_msg(cif_dev->udev, usb_rcvctrlpipe(cif_dev->udev, 0),
-+			      0x01, DEVICE_VENDOR_REQUEST_IN, 0x30, 0x00,
-+			      bdev->io_buf + 1, HCI_USB_IO_BUF_SIZE,
-+			      USB_CTRL_IO_TIMO);
-+
-+	if (ret < 0) {
-+		BTMTK_ERR("%s: event get failed(%d)", __func__, ret);
-+		return ret;
-+	}
-+
-+	if (ret > 0) {
-+		BTMTK_DBG_RAW(bdev->io_buf, ret + 1, "%s OK: EVT:", __func__);
-+		return ret + 1; /* return read length */
-+	} else if (retry > 0) {
-+		BTMTK_WARN("%s: Trying to get response... (%d)", __func__, ret);
-+		retry--;
-+		goto get_response_again;
-+	}
-+
-+	BTMTK_ERR("%s NG: do not got response:(%d)", __func__, ret);
-+	return -1;
-+}
-+
-+int btmtk_usb_send_and_recv(struct btmtk_dev *bdev,
-+			    struct sk_buff *skb, const u8 *event,
-+			    const int event_len, int delay,
-+			    int retry, int pkt_type)
-+{
-+	unsigned long comp_event_timo = 0, start_time = 0;
-+	int ret = 0;
-+
-+	if (!bdev) {
-+		BTMTK_ERR("%s: !bdev!\n", __func__);
-+		return ret;
-+	}
-+
-+	if ((pkt_type == BTMTK_TX_CMD_FROM_DRV || pkt_type == BTMTK_TX_ACL_FROM_DRV)) {
-+		ret = btmtk_usb_send_cmd(bdev, skb, delay, retry, pkt_type);
-+		if (ret < 0) {
-+			BTMTK_ERR("%s btmtk_usb_send_cmd failed!!", __func__);
-+			goto exit;
-+		}
-+
-+		if (event && event_len > 0) {
-+			bdev->recv_evt_len = btmtk_cif_recv_evt(bdev, delay, retry);
-+			if (bdev->recv_evt_len < 0) {
-+				BTMTK_ERR("%s btmtk_cif_recv_evt failed!!", __func__);
-+				ret = -1;
-+				goto exit;
-+			}
-+
-+			if (bdev->io_buf && bdev->recv_evt_len >= event_len) {
-+				if (memcmp(bdev->io_buf, event, event_len) == 0) {
-+					ret = 0;
-+					goto exit;
-+				}
-+			}
-+			BTMTK_INFO("%s compare fail\n", __func__);
-+			ret = -1;
-+		} else {
-+			ret = 0;
-+		}
-+	} else {
-+		if (event) {
-+			if (event_len > EVENT_COMPARE_SIZE) {
-+				BTMTK_ERR("%s, event_len (%d) > EVENT_COMPARE_SIZE(%d), error",
-+					  __func__, event_len, EVENT_COMPARE_SIZE);
-+				ret = -1;
-+				goto exit;
-+			}
-+			event_compare_status = BTMTK_EVENT_COMPARE_STATE_NEED_COMPARE;
-+			memcpy(event_need_compare, event + 1, event_len - 1);
-+			event_need_compare_len = event_len - 1;
-+
-+			start_time = jiffies;
-+			/* check hci event /wmt event for SDIO/UART interface, check hci
-+			 * event for USB interface
-+			 */
-+			comp_event_timo = jiffies + msecs_to_jiffies(COMP_EVENT_TIMO);
-+			BTMTK_INFO("event_need_compare_len %d, event_compare_status %d",
-+				   event_need_compare_len, event_compare_status);
-+		} else {
-+			event_compare_status = BTMTK_EVENT_COMPARE_STATE_COMPARE_SUCCESS;
-+		}
-+
-+		ret = btmtk_usb_send_cmd(bdev, skb, delay, retry, pkt_type);
-+		if (ret < 0) {
-+			BTMTK_ERR("%s btmtk_sdio_send_cmd failed!!", __func__);
-+			goto exit;
-+		}
-+
-+		do {
-+			/* check if event_compare_success */
-+			if (event_compare_status == BTMTK_EVENT_COMPARE_STATE_COMPARE_SUCCESS) {
-+				ret = 0;
-+				break;
-+			}
-+			usleep_range(10, 100);
-+		} while (time_before(jiffies, comp_event_timo));
-+
-+		event_compare_status = BTMTK_EVENT_COMPARE_STATE_NOTHING_NEED_COMPARE;
-+	}
-+
-+exit:
-+	return ret;
-+}
-+
-+int btmtk_usb_event_filter(struct btmtk_dev *bdev, struct sk_buff *skb)
-+{
-+	if (event_compare_status == BTMTK_EVENT_COMPARE_STATE_NEED_COMPARE &&
-+	    skb->len >= event_need_compare_len) {
-+		if (memcmp(skb->data, event_need_compare, event_need_compare_len) == 0) {
-+			event_compare_status = BTMTK_EVENT_COMPARE_STATE_COMPARE_SUCCESS;
-+		} else {
-+			BTMTK_INFO_RAW(event_need_compare, event_need_compare_len,
-+				       "%s: event_need_compare:", __func__);
-+			return 0;
-+		}
-+
-+		return 1;
-+	}
-+	return 0;
-+}
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgQWxsZW4sCgpPbiBUdWUsIERlYyAyMiwgMjAyMCBhdCAxMToyOTozNEFNICswMDAwLCBhbGxl
+bi5jaGVuQGl0ZS5jb20udHcgd3JvdGU6Cj4gSGkKPiAKPiBJdCBoYXMgYmVlbiBhYm91dCB0d28g
+d2Vla3Mgc2luY2UgSSBwb3N0ZWQgdjYgYW5kIGhhdmVuJ3QgaGVhcmQgYW55dGhpbmcuCj4gQ29u
+c2lkZXIgdGhpcyBhIGdlbnRsZSBwaW5nLgo+IAo+IEp1c3Qgd29uZGVyaW5nIGlmIHRoZSBzZXQg
+bmVlZHMgYWRkaXRpb25hbCB3b3JrIGFuZCBJIHdpbGwgZml4IGFuZAo+IHVwc3RyZWFtIGFnYWlu
+LgoKSSdtIGFmcmFpZCBJIGRvbid0IGhhdmUgZW5vdWdoIGJhbmR3aWR0aCB0aGVzZSBkYXlzIHRv
+IHJldmlldyBhbGwgbmV3CmJyaWRnZSBkcml2ZXJzIDotUyBNYXliZSBvbmUgb2YgdGhlIERSTSBi
+cmlkZ2UgbWFpbnRhaW5lcnMgd291bGQgaGF2ZQptb3JlIHRpbWUgdG8gc3BlbmQgPwoKPiAtLS0t
+LU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+IEZyb206IEFsbGVuIENoZW4gKOmZs+afj+WuhykgCj4g
+U2VudDogVHVlc2RheSwgRGVjZW1iZXIgMDgsIDIwMjAgNjo1OCBQTQo+IENjOiBKYXUtQ2hpaCBU
+c2VuZyAo5pu+5pit5pm6KTsgSGVybWVzIFd1ICjlkLPkvbPlro8pOyBLZW5uZXRoIEh1bmcgKOa0
+quWutuWAqyk7IEFsbGVuIENoZW4gKOmZs+afj+Wuhyk7IFBpLUhzdW4gU2hpaDsgSml0YW8gU2hp
+OyBZaWx1biBMaW47IEhlcm1lcyBXdSAo5ZCz5L2z5a6PKTsgQW5kcnplaiBIYWpkYTsgTmVpbCBB
+cm1zdHJvbmc7IExhdXJlbnQgUGluY2hhcnQ7IEpvbmFzIEthcmxtYW47IEplcm5laiBTa3JhYmVj
+OyBEYXZpZCBBaXJsaWU7IERhbmllbCBWZXR0ZXI7IE1hdHRoaWFzIEJydWdnZXI7IG9wZW4gbGlz
+dDsgb3BlbiBsaXN0OkRSTSBEUklWRVJTOyBtb2RlcmF0ZWQgbGlzdDpBUk0vTWVkaWF0ZWsgU29D
+IHN1cHBvcnQ7IG1vZGVyYXRlZCBsaXN0OkFSTS9NZWRpYXRlayBTb0Mgc3VwcG9ydAo+IFN1Ympl
+Y3Q6IFtQQVRDSCB2Nl0gZHJtL2JyaWRnZTogYWRkIGl0NjUwNSBkcml2ZXIKPiAKPiBUaGlzIGFk
+ZHMgc3VwcG9ydCBmb3IgdGhlIGlURSBJVDY1MDUuCj4gVGhpcyBkZXZpY2UgY2FuIGNvbnZlcnQg
+RFBJIHNpZ25hbCB0byBEUCBvdXRwdXQuCj4gCj4gRnJvbTogQWxsZW4gQ2hlbiA8YWxsZW4uY2hl
+bkBpdGUuY29tLnR3Pgo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlh
+dGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBQaS1Ic3VuIFNoaWggPHBpaHN1bkBjaHJvbWl1bS5v
+cmc+Cj4gU2lnbmVkLW9mZi1ieTogWWlsdW4gTGluIDx5bGxpbkBnb29nbGUuY29tPgo+IFNpZ25l
+ZC1vZmYtYnk6IEhlcm1lcyBXdSA8aGVybWVzLnd1QGl0ZS5jb20udHc+Cj4gU2lnbmVkLW9mZi1i
+eTogQWxsZW4gQ2hlbiA8YWxsZW4uY2hlbkBpdGUuY29tLnR3Pgo+IC0tLQo+ICBkcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL0tjb25maWcgICAgICB8ICAgIDcgKwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL01ha2VmaWxlICAgICB8ICAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2l0ZS1p
+dDY1MDUuYyB8IDMzNDMgKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIDMgZmlsZXMgY2hh
+bmdlZCwgMzM1MSBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2l0ZS1pdDY1MDUuYwo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL0tjb25maWcKPiBpbmRl
+eCBlNDExMGQ2Y2E3YjNjLi4yNWQzNGQ3MTk2MDA0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvS2NvbmZpZwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZp
+Zwo+IEBAIC03NCw2ICs3NCwxMyBAQCBjb25maWcgRFJNX0xPTlRJVU1fTFQ5NjExVVhDCj4gIAkg
+IEhETUkgc2lnbmFscwo+ICAJICBQbGVhc2Ugc2F5IFkgaWYgeW91IGhhdmUgc3VjaCBoYXJkd2Fy
+ZS4KPiAgCj4gK2NvbmZpZyBEUk1fSVRFX0lUNjUwNQo+ICsJdHJpc3RhdGUgIklURSBJVDY1MDUg
+RGlzcGxheVBvcnQgYnJpZGdlIgo+ICsJZGVwZW5kcyBvbiBPRgo+ICsJc2VsZWN0IERSTV9LTVNf
+SEVMUEVSCj4gKwloZWxwCj4gKwkgIElURSBJVDY1MDUgRGlzcGxheVBvcnQgYnJpZGdlIGNoaXAg
+ZHJpdmVyLgo+ICsKPiAgY29uZmlnIERSTV9MVkRTX0NPREVDCj4gIAl0cmlzdGF0ZSAiVHJhbnNw
+YXJlbnQgTFZEUyBlbmNvZGVycyBhbmQgZGVjb2RlcnMgc3VwcG9ydCIKPiAgCWRlcGVuZHMgb24g
+T0YKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZSBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvTWFrZWZpbGUKPiBpbmRleCA4NmU3YWNjNzZmOGQ2Li4yYjJmOGYw
+YjViMGZhIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvTWFrZWZpbGUKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL01ha2VmaWxlCj4gQEAgLTQsNiArNCw3IEBAIG9i
+ai0kKENPTkZJR19EUk1fQ0hST05URUxfQ0g3MDMzKSArPSBjaHJvbnRlbC1jaDcwMzMubwo+ICBv
+YmotJChDT05GSUdfRFJNX0RJU1BMQVlfQ09OTkVDVE9SKSArPSBkaXNwbGF5LWNvbm5lY3Rvci5v
+Cj4gIG9iai0kKENPTkZJR19EUk1fTE9OVElVTV9MVDk2MTEpICs9IGxvbnRpdW0tbHQ5NjExLm8K
+PiAgb2JqLSQoQ09ORklHX0RSTV9MT05USVVNX0xUOTYxMVVYQykgKz0gbG9udGl1bS1sdDk2MTF1
+eGMubwo+ICtvYmotJChDT05GSUdfRFJNX0lURV9JVDY1MDUpICs9IGl0ZS1pdDY1MDUubwo+ICBv
+YmotJChDT05GSUdfRFJNX0xWRFNfQ09ERUMpICs9IGx2ZHMtY29kZWMubwo+ICBvYmotJChDT05G
+SUdfRFJNX01FR0FDSElQU19TVERQWFhYWF9HRV9CODUwVjNfRlcpICs9IG1lZ2FjaGlwcy1zdGRw
+eHh4eC1nZS1iODUwdjMtZncubwo+ICBvYmotJChDT05GSUdfRFJNX05YUF9QVE4zNDYwKSArPSBu
+eHAtcHRuMzQ2MC5vCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaXRlLWl0
+NjUwNS5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9pdGUtaXQ2NTA1LmMKPiBuZXcgZmlsZSBt
+b2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAwMDAwMDAuLjVlNzY3MTlhNTFhNGEKPiAtLS0gL2Rl
+di9udWxsCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9pdGUtaXQ2NTA1LmMKPiBAQCAt
+MCwwICsxLDMzNDMgQEAKPiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wLW9u
+bHkgT1IgQlNELTItQ2xhdXNlKQo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMjAsIFRoZSBM
+aW51eCBGb3VuZGF0aW9uLiBBbGwgcmlnaHRzIHJlc2VydmVkLgo+ICsgKi8KPiArI2luY2x1ZGUg
+PGxpbnV4L2JpdHMuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2RlbGF5Lmg+Cj4gKyNpbmNsdWRlIDxs
+aW51eC9kZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+ICsjaW5jbHVkZSA8bGlu
+dXgvZXh0Y29uLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9mcy5oPgo+ICsjaW5jbHVkZSA8bGludXgv
+Z3Bpby9jb25zdW1lci5oPgo+ICsjaW5jbHVkZSA8bGludXgvaTJjLmg+Cj4gKyNpbmNsdWRlIDxs
+aW51eC9pbnRlcnJ1cHQuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgo+ICsjaW5jbHVk
+ZSA8bGludXgvbW9kdWxlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbV9ydW50aW1lLmg+Cj4gKyNp
+bmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3JlZ3VsYXRvci9jb25z
+dW1lci5oPgo+ICsjaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3dh
+aXQuaD4KPiArCj4gKyNpbmNsdWRlIDxjcnlwdG8vaGFzaC5oPgo+ICsKPiArI2luY2x1ZGUgPGRy
+bS9kcm1fYXRvbWljX2hlbHBlci5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9icmlkZ2UuaD4KPiAr
+I2luY2x1ZGUgPGRybS9kcm1fY3J0Yy5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9jcnRjX2hlbHBl
+ci5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9kcF9oZWxwZXIuaD4KPiArI2luY2x1ZGUgPGRybS9k
+cm1fZWRpZC5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9oZGNwLmg+Cj4gKyNpbmNsdWRlIDxkcm0v
+ZHJtX3ByaW50Lmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX3Byb2JlX2hlbHBlci5oPgo+ICsKPiAr
+I2luY2x1ZGUgPHNvdW5kL2hkbWktY29kZWMuaD4KPiArCj4gKyNkZWZpbmUgUkVHX0lDX1ZFUiAw
+eDA0Cj4gKwo+ICsjZGVmaW5lIFJFR19SRVNFVF9DVFJMIDB4MDUKPiArI2RlZmluZSBWSURFT19S
+RVNFVCBCSVQoMCkKPiArI2RlZmluZSBBVURJT19SRVNFVCBCSVQoMSkKPiArI2RlZmluZSBBTExf
+TE9HSUNfUkVTRVQgQklUKDIpCj4gKyNkZWZpbmUgQVVYX1JFU0VUIEJJVCgzKQo+ICsjZGVmaW5l
+IEhEQ1BfUkVTRVQgQklUKDQpCj4gKwo+ICsjZGVmaW5lIElOVF9TVEFUVVNfMDEgMHgwNgo+ICsj
+ZGVmaW5lIElOVF9NQVNLXzAxIDB4MDkKPiArI2RlZmluZSBJTlRfSFBEX0NIQU5HRSBCSVQoMCkK
+PiArI2RlZmluZSBJTlRfUkVDRUlWRV9IUERfSVJRIEJJVCgxKQo+ICsjZGVmaW5lIElOVF9TQ0RU
+X0NIQU5HRSBCSVQoMikKPiArI2RlZmluZSBJTlRfSERDUF9GQUlMIEJJVCgzKQo+ICsjZGVmaW5l
+IElOVF9IRENQX0RPTkUgQklUKDQpCj4gKwo+ICsjZGVmaW5lIElOVF9TVEFUVVNfMDIgMHgwNwo+
+ICsjZGVmaW5lIElOVF9NQVNLXzAyIDB4MEEKPiArI2RlZmluZSBJTlRfQVVYX0NNRF9GQUlMIEJJ
+VCgwKQo+ICsjZGVmaW5lIElOVF9IRENQX0tTVl9DSEVDSyBCSVQoMSkKPiArI2RlZmluZSBJTlRf
+QVVESU9fRklGT19FUlJPUiBCSVQoMikKPiArCj4gKyNkZWZpbmUgSU5UX1NUQVRVU18wMyAweDA4
+Cj4gKyNkZWZpbmUgSU5UX01BU0tfMDMgMHgwQgo+ICsjZGVmaW5lIElOVF9MSU5LX1RSQUlOX0ZB
+SUwgQklUKDQpCj4gKyNkZWZpbmUgSU5UX1ZJRF9GSUZPX0VSUk9SIEJJVCg1KQo+ICsjZGVmaW5l
+IElOVF9JT19MQVRDSF9GSUZPX09WRVJGTE9XIEJJVCg3KQo+ICsKPiArI2RlZmluZSBSRUdfU1lT
+VEVNX1NUUyAweDBECj4gKyNkZWZpbmUgSU5UX1NUUyBCSVQoMCkKPiArI2RlZmluZSBIUERfU1RT
+IEJJVCgxKQo+ICsjZGVmaW5lIFZJREVPX1NUQiBCSVQoMikKPiArCj4gKyNkZWZpbmUgUkVHX0xJ
+TktfVFJBSU5fU1RTIDB4MEUKPiArI2RlZmluZSBMSU5LX1NUQVRFX0NSIEJJVCgyKQo+ICsjZGVm
+aW5lIExJTktfU1RBVEVfRVEgQklUKDMpCj4gKyNkZWZpbmUgTElOS19TVEFURV9OT1JQIEJJVCg0
+KQo+ICsKPiArI2RlZmluZSBSRUdfQkFOS19TRUwgMHgwRgo+ICsjZGVmaW5lIFJFR19DTEtfQ1RS
+TDAgMHgxMAo+ICsjZGVmaW5lIE1fUENMS19ERUxBWSAweDAzCj4gKwo+ICsjZGVmaW5lIFJFR19B
+VVhfT1BUIDB4MTEKPiArI2RlZmluZSBBVVhfQVVUT19SU1QgQklUKDApCj4gKyNkZWZpbmUgQVVY
+X0ZJWF9GUkVRIEJJVCgzKQo+ICsKPiArI2RlZmluZSBSRUdfREFUQV9DVFJMMCAweDEyCj4gKyNk
+ZWZpbmUgVklERU9fTEFUQ0hfRURHRSBCSVQoNCkKPiArI2RlZmluZSBFTkFCTEVfUENMS19DT1VO
+VEVSIEJJVCg3KQo+ICsKPiArI2RlZmluZSBSRUdfUENMS19DT1VOVEVSX1ZBTFVFIDB4MTMKPiAr
+Cj4gKyNkZWZpbmUgUkVHXzUwMV9GSUZPX0NUUkwgMHgxNQo+ICsjZGVmaW5lIFJTVF81MDFfRklG
+TyBCSVQoMSkKPiArCj4gKyNkZWZpbmUgUkVHX1RSQUlOX0NUUkwwIDB4MTYKPiArI2RlZmluZSBG
+T1JDRV9MQlIgQklUKDApCj4gKyNkZWZpbmUgTEFORV9DT1VOVF9NQVNLIDB4MDYKPiArI2RlZmlu
+ZSBMQU5FX1NXQVAgQklUKDMpCj4gKyNkZWZpbmUgU1BSRUFEX0FNUF81IEJJVCg0KQo+ICsjZGVm
+aW5lIEZPUkNFX0NSX0RPTkUgQklUKDUpCj4gKyNkZWZpbmUgRk9SQ0VfRVFfRE9ORSBCSVQoNikK
+PiArCj4gKyNkZWZpbmUgUkVHX1RSQUlOX0NUUkwxIDB4MTcKPiArI2RlZmluZSBBVVRPX1RSQUlO
+IEJJVCgwKQo+ICsjZGVmaW5lIE1BTlVBTF9UUkFJTiBCSVQoMSkKPiArI2RlZmluZSBGT1JDRV9S
+RVRSQUlOIEJJVCgyKQo+ICsKPiArI2RlZmluZSBSRUdfQVVYX0NUUkwgMHgyMwo+ICsjZGVmaW5l
+IENMUl9FRElEX0ZJRk8gQklUKDApCj4gKyNkZWZpbmUgQVVYX1VTRVJfTU9ERSBCSVQoMSkKPiAr
+I2RlZmluZSBBVVhfTk9fU0VHTUVOVF9XUiBCSVQoNikKPiArI2RlZmluZSBBVVhfRU5fRklGT19S
+RUFEIEJJVCg3KQo+ICsKPiArI2RlZmluZSBSRUdfQVVYX0FEUl8wXzcgMHgyNAo+ICsjZGVmaW5l
+IFJFR19BVVhfQURSXzhfMTUgMHgyNQo+ICsjZGVmaW5lIFJFR19BVVhfQURSXzE2XzE5IDB4MjYK
+PiArI2RlZmluZSBSRUdfQVVYX09VVF9EQVRBMCAweDI3Cj4gKwo+ICsjZGVmaW5lIFJFR19BVVhf
+Q01EX1JFUSAweDJCCj4gKyNkZWZpbmUgQVVYX0JVU1kgQklUKDUpCj4gKwo+ICsjZGVmaW5lIFJF
+R19BVVhfREFUQV8wXzcgMHgyQwo+ICsjZGVmaW5lIFJFR19BVVhfREFUQV84XzE1IDB4MkQKPiAr
+I2RlZmluZSBSRUdfQVVYX0RBVEFfMTZfMjMgMHgyRQo+ICsjZGVmaW5lIFJFR19BVVhfREFUQV8y
+NF8zMSAweDJGCj4gKwo+ICsjZGVmaW5lIFJFR19BVVhfREFUQV9GSUZPIDB4MkYKPiArCj4gKyNk
+ZWZpbmUgUkVHX0FVWF9FUlJPUl9TVFMgMHg5Rgo+ICsjZGVmaW5lIE1fQVVYX1JFUV9GQUlMIDB4
+MDMKPiArCj4gKyNkZWZpbmUgUkVHX0hEQ1BfQ1RSTDEgMHgzOAo+ICsjZGVmaW5lIEhEQ1BfQ1Bf
+RU5BQkxFIEJJVCgwKQo+ICsKPiArI2RlZmluZSBSRUdfSERDUF9UUklHR0VSIDB4MzkKPiArI2Rl
+ZmluZSBIRENQX1RSSUdHRVJfU1RBUlQgIEJJVCgwKQo+ICsjZGVmaW5lIEhEQ1BfVFJJR0dFUl9D
+UElSUSAgQklUKDEpCj4gKyNkZWZpbmUgSERDUF9UUklHR0VSX0tTVl9ET05FICBCSVQoNCkKPiAr
+I2RlZmluZSBIRENQX1RSSUdHRVJfS1NWX0ZBSUwgQklUKDUpCj4gKwo+ICsjZGVmaW5lIFJFR19I
+RENQX0NUUkwyIDB4M0EKPiArI2RlZmluZSBIRENQX0FOX1NFTCBCSVQoMCkKPiArI2RlZmluZSBI
+RENQX0FOX0dFTiBCSVQoMSkKPiArI2RlZmluZSBIRENQX0hXX0hQRElSUV9BQ1QgQklUKDIpCj4g
+KyNkZWZpbmUgSERDUF9FTl9NMF9SRUFEIEJJVCg1KQo+ICsKPiArI2RlZmluZSBSRUdfTTBfMF83
+IDB4NEMKPiArI2RlZmluZSBSRUdfQU5fMF83IDB4NEMKPiArI2RlZmluZSBSRUdfU1BfQ1RSTDAg
+MHg1OAo+ICsjZGVmaW5lIFJFR19JUF9DVFJMMSAweDU5Cj4gKyNkZWZpbmUgUkVHX0lQX0NUUkwy
+IDB4NUEKPiArCj4gKyNkZWZpbmUgUkVHX0xJTktfRFJWIDB4NUMKPiArI2RlZmluZSBEUlZfSFMg
+QklUKDEpCj4gKwo+ICsjZGVmaW5lIFJFR19EUlZfTE5fREFUQV9TRUwgMHg1RAo+ICsKPiArI2Rl
+ZmluZSBSRUdfQVVYIDB4NUUKPiArCj4gKyNkZWZpbmUgUkVHX1ZJRF9CVVNfQ1RSTDAgMHg2MAo+
+ICsjZGVmaW5lIElOX0REUiBCSVQoMikKPiArI2RlZmluZSBERFJfQ0QgKDB4MDEgPDwgNikKPiAr
+Cj4gKyNkZWZpbmUgUkVHX1ZJRF9CVVNfQ1RSTDEgMHg2MQo+ICsjZGVmaW5lIFRYX0ZJRk9fUkVT
+RVQgQklUKDEpCj4gKwo+ICsjZGVmaW5lIFJFR19JTlBVVF9DVFJMIDB4QTAKPiArI2RlZmluZSBJ
+TlBVVF9IU1lOQ19QT0wgQklUKDApCj4gKyNkZWZpbmUgSU5QVVRfVlNZTkNfUE9MIEJJVCgyKQo+
+ICsjZGVmaW5lIElOUFVUX0lOVEVSTEFDRUQgQklUKDQpCj4gKwo+ICsjZGVmaW5lIFJFR19JTlBV
+VF9IVE9UQUwgMHhBMQo+ICsjZGVmaW5lIFJFR19JTlBVVF9IQUNUSVZFX1NUQVJUIDB4QTMKPiAr
+I2RlZmluZSBSRUdfSU5QVVRfSEFDVElWRV9XSURUSCAweEE1Cj4gKyNkZWZpbmUgUkVHX0lOUFVU
+X0hGUk9OVF9QT1JDSCAweEE3Cj4gKyNkZWZpbmUgUkVHX0lOUFVUX0hTWU5DX1dJRFRIIDB4QTkK
+PiArI2RlZmluZSBSRUdfSU5QVVRfVlRPVEFMIDB4QUIKPiArI2RlZmluZSBSRUdfSU5QVVRfVkFD
+VElWRV9TVEFSVCAweEFECj4gKyNkZWZpbmUgUkVHX0lOUFVUX1ZBQ1RJVkVfV0lEVEggMHhBRgo+
+ICsjZGVmaW5lIFJFR19JTlBVVF9WRlJPTlRfUE9SQ0ggMHhCMQo+ICsjZGVmaW5lIFJFR19JTlBV
+VF9WU1lOQ19XSURUSCAweEIzCj4gKwo+ICsjZGVmaW5lIFJFR19BVURJT19TUkNfQ1RSTCAweEI4
+Cj4gKyNkZWZpbmUgTV9BVURJT19JMlNfRU4gMHgwRgo+ICsjZGVmaW5lIEVOX0kyUzAgQklUKDAp
+Cj4gKyNkZWZpbmUgRU5fSTJTMSBCSVQoMSkKPiArI2RlZmluZSBFTl9JMlMyIEJJVCgyKQo+ICsj
+ZGVmaW5lIEVOX0kyUzMgQklUKDMpCj4gKyNkZWZpbmUgQVVESU9fRklGT19SRVNFVCBCSVQoNykK
+PiArCj4gKyNkZWZpbmUgUkVHX0FVRElPX0ZNVCAweEI5Cj4gKyNkZWZpbmUgUkVHX0FVRElPX0ZJ
+Rk9fU0VMIDB4QkEKPiArCj4gKyNkZWZpbmUgUkVHX0FVRElPX0NUUkwwIDB4QkIKPiArI2RlZmlu
+ZSBBVURJT19GVUxMX1BLVCBCSVQoNCkKPiArI2RlZmluZSBBVURJT18xNkJfQk9VTkQgQklUKDUp
+Cj4gKwo+ICsjZGVmaW5lIFJFR19BVURJT19DVFJMMSAweEJDCj4gKyNkZWZpbmUgUkVHX0FVRElP
+X0lOUFVUX0ZSRVEgMHhCRQo+ICsKPiArI2RlZmluZSBSRUdfSUVDOTU4X1NUUzAgMHhCRgo+ICsj
+ZGVmaW5lIFJFR19JRUM5NThfU1RTMSAweEMwCj4gKyNkZWZpbmUgUkVHX0lFQzk1OF9TVFMyIDB4
+QzEKPiArI2RlZmluZSBSRUdfSUVDOTU4X1NUUzMgMHhDMgo+ICsjZGVmaW5lIFJFR19JRUM5NThf
+U1RTNCAweEMzCj4gKwo+ICsjZGVmaW5lIFJFR19IUERfSVJRX1RJTUUgMHhDOQo+ICsjZGVmaW5l
+IFJFR19BVVhfREVCVUdfTU9ERSAweENBCj4gKyNkZWZpbmUgUkVHX0FVWF9PUFQyIDB4Q0IKPiAr
+I2RlZmluZSBSRUdfSERDUF9PUFQgMHhDRQo+ICsjZGVmaW5lIFJFR19VU0VSX0RSVl9QUkUgMHhD
+Rgo+ICsKPiArI2RlZmluZSBSRUdfREFUQV9NVVRFX0NUUkwgMHhEMwo+ICsjZGVmaW5lIEVOQUJM
+RV9FTkhBTkNFRF9GUkFNRSBCSVQoMCkKPiArI2RlZmluZSBFTkFCTEVfQVVUT19WSURFT19GSUZP
+X1JFU0VUIEJJVCgxKQo+ICsjZGVmaW5lIEVOX1ZJRF9NVVRFIEJJVCg0KQo+ICsjZGVmaW5lIEVO
+X0FVRF9NVVRFIEJJVCg1KQo+ICsKPiArI2RlZmluZSBSRUdfVElNRV9TVE1QX0NUUkwgMHhENAo+
+ICsjZGVmaW5lIEVOX0VOSEFOQ0VfVklEX1NUTVAgQklUKDApCj4gKyNkZWZpbmUgRU5fRU5IQU5D
+RV9BVURfU1RNUCBCSVQoMikKPiArI2RlZmluZSBNX1NUQU1QX1NURVAgMHgzMAo+ICsjZGVmaW5l
+IEVOX1NTQ19HQVQgQklUKDYpCj4gKwo+ICsjZGVmaW5lIFJFR19JTkZPRlJBTUVfQ1RSTCAweEU4
+Cj4gKyNkZWZpbmUgRU5fQVZJX1BLVCBCSVQoMCkKPiArI2RlZmluZSBFTl9BVURfUEtUIEJJVCgx
+KQo+ICsjZGVmaW5lIEVOX01QR19QS1QgQklUKDIpCj4gKyNkZWZpbmUgRU5fR0VOX1BLVCBCSVQo
+MykKPiArI2RlZmluZSBFTl9WSURfVElNRV9TVE1QIEJJVCg0KQo+ICsjZGVmaW5lIEVOX0FVRF9U
+SU1FX1NUTVAgQklUKDUpCj4gKyNkZWZpbmUgRU5fVklEX0NUUkxfUEtUIChFTl9BVklfUEtUIHwg
+RU5fVklEX1RJTUVfU1RNUCkKPiArI2RlZmluZSBFTl9BVURfQ1RSTF9QS1QgKEVOX0FVRF9QS1Qg
+fCBFTl9BVURfVElNRV9TVE1QKQo+ICsKPiArI2RlZmluZSBSRUdfQVVESU9fTl8wXzcgMHhERQo+
+ICsjZGVmaW5lIFJFR19BVURJT19OXzhfMTUgMHhERgo+ICsjZGVmaW5lIFJFR19BVURJT19OXzE2
+XzIzIDB4RTAKPiArCj4gKyNkZWZpbmUgUkVHX0FWSV9JTkZPX0RCMSAweEU5Cj4gKyNkZWZpbmUg
+UkVHX0FWSV9JTkZPX0RCMiAweEVBCj4gKyNkZWZpbmUgUkVHX0FWSV9JTkZPX0RCMyAweEVCCj4g
+KyNkZWZpbmUgUkVHX0FWSV9JTkZPX0RCNCAweEVDCj4gKyNkZWZpbmUgUkVHX0FWSV9JTkZPX0RC
+NSAweEVECj4gKyNkZWZpbmUgUkVHX0FWSV9JTkZPX1NVTSAweEY2Cj4gKwo+ICsjZGVmaW5lIFJF
+R19BVURfSU5GT0ZSQU1fREIxIDB4RjcKPiArI2RlZmluZSBSRUdfQVVEX0lORk9GUkFNX0RCMiAw
+eEY4Cj4gKyNkZWZpbmUgUkVHX0FVRF9JTkZPRlJBTV9EQjMgMHhGOQo+ICsjZGVmaW5lIFJFR19B
+VURfSU5GT0ZSQU1fREI0IDB4RkEKPiArI2RlZmluZSBSRUdfQVVEX0lORk9GUkFNX1NVTSAweEZC
+Cj4gKwo+ICsvKiB0aGUgZm9sbG93aW5nIHNpeCByZWdpc3RlcnMgYXJlIGluIGJhbmsxICovCj4g
+KyNkZWZpbmUgUkVHX0RSVl8wX0RCXzgwMF9NViAweDdFCj4gKyNkZWZpbmUgUkVHX1BSRV8wX0RC
+XzgwMF9NViAweDdGCj4gKyNkZWZpbmUgUkVHX1BSRV8zUDVfREJfODAwX01WIDB4ODEKPiArI2Rl
+ZmluZSBSRUdfU1NDX0NUUkwwIDB4ODgKPiArI2RlZmluZSBSRUdfU1NDX0NUUkwxIDB4ODkKPiAr
+I2RlZmluZSBSRUdfU1NDX0NUUkwyIDB4OEEKPiArCj4gKyNkZWZpbmUgUkJSIERQX0xJTktfQldf
+MV82Mgo+ICsjZGVmaW5lIEhCUiBEUF9MSU5LX0JXXzJfNwo+ICsjZGVmaW5lIEhCUjIgRFBfTElO
+S19CV181XzQKPiArI2RlZmluZSBIQlIzIERQX0xJTktfQldfOF8xCj4gKwo+ICsvKiBWZW5kb3Ig
+b3B0aW9uICovCj4gKyNkZWZpbmUgSERDUF9ERVNJUkVEIDEKPiArI2RlZmluZSBNQVhfTEFORV9D
+T1VOVCA0Cj4gKyNkZWZpbmUgTUFYX0xJTktfUkFURSBIQlIKPiArI2RlZmluZSBBVVRPX1RSQUlO
+X1JFVFJZIDMKPiArI2RlZmluZSBNQVhfSERDUF9ET1dOX1NUUkVBTV9DT1VOVCAxMAo+ICsjZGVm
+aW5lIE1BWF9DUl9MRVZFTCAweDAzCj4gKyNkZWZpbmUgTUFYX0VRX0xFVkVMIDB4MDMKPiArI2Rl
+ZmluZSBBVVhfV0FJVF9USU1FT1VUX01TIDE1Cj4gKyNkZWZpbmUgQVVYX0ZJRk9fTUFYX1NJWkUg
+MzIKPiArI2RlZmluZSBQSVhFTF9DTEtfREVMQVkgMQo+ICsjZGVmaW5lIFBJWEVMX0NMS19JTlZF
+UlNFIDAKPiArI2RlZmluZSBBREpVU1RfUEhBU0VfVEhSRVNIT0xEIDgwMDAwCj4gKyNkZWZpbmUg
+RFBJX1BJWEVMX0NMS19NQVggOTUwMDAKPiArI2RlZmluZSBIRENQX1NIQTFfRklGT19MRU4gKE1B
+WF9IRENQX0RPV05fU1RSRUFNX0NPVU5UICogNSArIDEwKQo+ICsjZGVmaW5lIERFRkFVTFRfUFdS
+X09OIDAKPiArI2RlZmluZSBERUZBVUxUX0RSVl9IT0xEIDAKPiArCj4gKyNkZWZpbmUgQVVESU9f
+U0VMRUNUIEkyUwo+ICsjZGVmaW5lIEFVRElPX1RZUEUgTFBDTQo+ICsjZGVmaW5lIEFVRElPX1NB
+TVBMRV9SQVRFIFNBTVBMRV9SQVRFXzQ4Swo+ICsjZGVmaW5lIEFVRElPX0NIQU5ORUxfQ09VTlQg
+Mgo+ICsKPiArLyoKPiArICogMDogU3RhbmRhcmQgSTJTCj4gKyAqIDE6IDMyYml0IEkyUwo+ICsg
+Ki8KPiArI2RlZmluZSBJMlNfSU5QVVRfRk9STUFUIDEKPiArCj4gKy8qCj4gKyAqIDA6IExlZnQt
+anVzdGlmaWVkCj4gKyAqIDE6IFJpZ2h0LWp1c3RpZmllZAo+ICsgKi8KPiArI2RlZmluZSBJMlNf
+SlVTVElGSUVEIDAKPiArCj4gKy8qCj4gKyAqIDA6IERhdGEgZGVsYXkgMVQgY29ycmVzcG9uZCB0
+byBXUwo+ICsgKiAxOiBObyBkYXRhIGRlbGF5IGNvcnJlc3BvbmQgdG8gV1MKPiArICovCj4gKyNk
+ZWZpbmUgSTJTX0RBVEFfREVMQVkgMAo+ICsKPiArLyoKPiArICogMDogTGVmdCBjaGFubmVsCj4g
+KyAqIDE6IFJpZ2h0IGNoYW5uZWwKPiArICovCj4gKyNkZWZpbmUgSTJTX1dTX0NIQU5ORUwgMAo+
+ICsKPiArLyoKPiArICogMDogTVNCIHNoaWZ0IGZpcnN0Cj4gKyAqIDE6IExTQiBzaGlmdCBmaXJz
+dAo+ICsgKi8KPiArI2RlZmluZSBJMlNfREFUQV9TRVFVRU5DRSAwCj4gKwo+ICsvKgo+ICsgKiBB
+dWRpbyBTYW1wbGUgV29yZCBMZW5ndGgKPiArICogV09SRF9MRU5HVEhfMTZCSVQKPiArICogV09S
+RF9MRU5HVEhfMThCSVQKPiArICogV09SRF9MRU5HVEhfMjBCSVQKPiArICogV09SRF9MRU5HVEhf
+MjRCSVQKPiArICovCj4gKyNkZWZpbmUgQVVESU9fV09SRF9MRU5HVEggV09SRF9MRU5HVEhfMjRC
+SVQKPiArCj4gK2VudW0gYXV4X2NtZF90eXBlIHsKPiArCUNNRF9BVVhfTkFUSVZFX1JFQUQgPSAw
+eDAsCj4gKwlDTURfQVVYX05BVElWRV9XUklURSA9IDB4NSwKPiArCUNNRF9BVVhfSTJDX0VESURf
+UkVBRCA9IDB4QiwKPiArfTsKPiArCj4gK2VudW0gYXV4X2NtZF9yZXBseSB7Cj4gKwlSRVBMWV9B
+Q0ssCj4gKwlSRVBMWV9OQUNLLAo+ICsJUkVQTFlfREVGRVIsCj4gK307Cj4gKwo+ICtlbnVtIGxp
+bmtfdHJhaW5fc3RhdHVzIHsKPiArCUxJTktfSURMRSwKPiArCUxJTktfQlVTWSwKPiArCUxJTktf
+T0ssCj4gK307Cj4gKwo+ICtlbnVtIGhkY3Bfc3RhdGUgewo+ICsJSERDUF9BVVRIX0lETEUsCj4g
+KwlIRENQX0FVVEhfR09JTkcsCj4gKwlIRENQX0FVVEhfRE9ORSwKPiArfTsKPiArCj4gK3N0cnVj
+dCBpdDY1MDVfcGxhdGZvcm1fZGF0YSB7Cj4gKwlzdHJ1Y3QgcmVndWxhdG9yICpwd3IxODsKPiAr
+CXN0cnVjdCByZWd1bGF0b3IgKm92ZGQ7Cj4gKwlzdHJ1Y3QgZ3Bpb19kZXNjICpncGlvZF9yZXNl
+dDsKPiArfTsKPiArCj4gK2VudW0gaXQ2NTA1X2F1ZGlvX3NlbGVjdCB7Cj4gKwlJMlMgPSAwLAo+
+ICsJU1BESUYsCj4gK307Cj4gKwo+ICtlbnVtIGl0NjUwNV9hdWRpb19zYW1wbGVfcmF0ZSB7Cj4g
+KwlTQU1QTEVfUkFURV8yNEsgPSAweDYsCj4gKwlTQU1QTEVfUkFURV8zMksgPSAweDMsCj4gKwlT
+QU1QTEVfUkFURV80OEsgPSAweDIsCj4gKwlTQU1QTEVfUkFURV85NksgPSAweEEsCj4gKwlTQU1Q
+TEVfUkFURV8xOTJLID0gMHhFLAo+ICsJU0FNUExFX1JBVEVfNDRfMUsgPSAweDAsCj4gKwlTQU1Q
+TEVfUkFURV84OF8ySyA9IDB4OCwKPiArCVNBTVBMRV9SQVRFXzE3Nl80SyA9IDB4QywKPiArfTsK
+PiArCj4gK2VudW0gaXQ2NTA1X2F1ZGlvX3R5cGUgewo+ICsJTFBDTSA9IDAsCj4gKwlOTFBDTSwK
+PiArCURTUywKPiArfTsKPiArCj4gK2VudW0gaXQ2NTA1X2F1ZGlvX3dvcmRfbGVuZ3RoIHsKPiAr
+CVdPUkRfTEVOR1RIXzE2QklUID0gMCwKPiArCVdPUkRfTEVOR1RIXzE4QklULAo+ICsJV09SRF9M
+RU5HVEhfMjBCSVQsCj4gKwlXT1JEX0xFTkdUSF8yNEJJVCwKPiArfTsKPiArCj4gK3N0cnVjdCBp
+dDY1MDVfYXVkaW9fZGF0YSB7Cj4gKwllbnVtIGl0NjUwNV9hdWRpb19zZWxlY3Qgc2VsZWN0Owo+
+ICsJZW51bSBpdDY1MDVfYXVkaW9fc2FtcGxlX3JhdGUgc2FtcGxlX3JhdGU7Cj4gKwllbnVtIGl0
+NjUwNV9hdWRpb190eXBlIHR5cGU7Cj4gKwllbnVtIGl0NjUwNV9hdWRpb193b3JkX2xlbmd0aCB3
+b3JkX2xlbmd0aDsKPiArCXU4IGNoYW5uZWxfY291bnQ7Cj4gKwl1OCBpMnNfaW5wdXRfZm9ybWF0
+Owo+ICsJdTggaTJzX2p1c3RpZmllZDsKPiArCXU4IGkyc19kYXRhX2RlbGF5Owo+ICsJdTggaTJz
+X3dzX2NoYW5uZWw7Cj4gKwl1OCBpMnNfZGF0YV9zZXF1ZW5jZTsKPiArfTsKPiArCj4gK3N0cnVj
+dCBpdDY1MDVfYXVkaW9fc2FtcGxlX3JhdGVfbWFwIHsKPiArCWVudW0gaXQ2NTA1X2F1ZGlvX3Nh
+bXBsZV9yYXRlIHJhdGU7Cj4gKwlpbnQgc2FtcGxlX3JhdGVfdmFsdWU7Cj4gK307Cj4gKwo+ICtz
+dHJ1Y3QgaXQ2NTA1X2RybV9kcF9saW5rIHsKPiArCXVuc2lnbmVkIGNoYXIgcmV2aXNpb247Cj4g
+Kwl1bnNpZ25lZCBpbnQgcmF0ZTsKPiArCXVuc2lnbmVkIGludCBudW1fbGFuZXM7Cj4gKwl1bnNp
+Z25lZCBsb25nIGNhcGFiaWxpdGllczsKPiArfTsKPiArCj4gK3N0cnVjdCBpdDY1MDUgewo+ICsJ
+c3RydWN0IGRybV9kcF9hdXggYXV4Owo+ICsJc3RydWN0IGRybV9icmlkZ2UgYnJpZGdlOwo+ICsJ
+c3RydWN0IGkyY19jbGllbnQgKmNsaWVudDsKPiArCXN0cnVjdCBlZGlkICplZGlkOwo+ICsJc3Ry
+dWN0IGRybV9jb25uZWN0b3IgY29ubmVjdG9yOwo+ICsJc3RydWN0IGl0NjUwNV9kcm1fZHBfbGlu
+ayBsaW5rOwo+ICsJc3RydWN0IGl0NjUwNV9wbGF0Zm9ybV9kYXRhIHBkYXRhOwo+ICsJc3RydWN0
+IG11dGV4IGV4dGNvbl9sb2NrOwo+ICsJc3RydWN0IG11dGV4IG1vZGVfbG9jazsKPiArCXN0cnVj
+dCBtdXRleCBhdXhfbG9jazsKPiArCXN0cnVjdCByZWdtYXAgKnJlZ21hcDsKPiArCXN0cnVjdCBk
+cm1fZGlzcGxheV9tb2RlIHZpZGVvX2luZm87Cj4gKwlzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgZXZl
+bnRfbmI7Cj4gKwlzdHJ1Y3QgZXh0Y29uX2RldiAqZXh0Y29uOwo+ICsJc3RydWN0IHdvcmtfc3Ry
+dWN0IGV4dGNvbl93cTsKPiArCWVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMgY29ubmVjdG9yX3N0
+YXR1czsKPiArCWVudW0gbGlua190cmFpbl9zdGF0dXMgbGlua19zdGF0ZTsKPiArCXN0cnVjdCB3
+b3JrX3N0cnVjdCBsaW5rX3dvcmtzOwo+ICsJdTggZHBjZFtEUF9SRUNFSVZFUl9DQVBfU0laRV07
+Cj4gKwl1OCBsYW5lX2NvdW50Owo+ICsJdTggbGlua19yYXRlX2J3X2NvZGU7Cj4gKwl1OCBzaW5r
+X2NvdW50Owo+ICsJYm9vbCBzdGVwX3RyYWluOwo+ICsJYm9vbCBicmFuY2hfZGV2aWNlOwo+ICsJ
+Ym9vbCBlbmFibGVfc3NjOwo+ICsJYm9vbCBsYW5lX3N3YXBfZGlzYWJsZWQ7Cj4gKwlib29sIGxh
+bmVfc3dhcDsKPiArCWJvb2wgcG93ZXJlZDsKPiArCXUzMiBhZmVfc2V0dGluZzsKPiArCWVudW0g
+aGRjcF9zdGF0ZSBoZGNwX3N0YXR1czsKPiArCXN0cnVjdCBkZWxheWVkX3dvcmsgaGRjcF93b3Jr
+Owo+ICsJc3RydWN0IHdvcmtfc3RydWN0IGhkY3Bfd2FpdF9rc3ZfbGlzdDsKPiArCXN0cnVjdCBj
+b21wbGV0aW9uIHdhaXRfZWRpZF9jb21wbGV0ZTsKPiArCXU4IGF1dG9fdHJhaW5fcmV0cnk7Cj4g
+Kwlib29sIGhkY3BfZGVzaXJlZDsKPiArCWJvb2wgaXNfcmVwZWF0ZXI7Cj4gKwl1OCBoZGNwX2Rv
+d25fc3RyZWFtX2NvdW50Owo+ICsJdTggYmtzdnNbRFJNX0hEQ1BfS1NWX0xFTl07Cj4gKwl1OCBz
+aGExX2lucHV0W0hEQ1BfU0hBMV9GSUZPX0xFTl07Cj4gKwlib29sIGVuYWJsZV9lbmhhbmNlZF9m
+cmFtZTsKPiArCWhkbWlfY29kZWNfcGx1Z2dlZF9jYiBwbHVnZ2VkX2NiOwo+ICsJc3RydWN0IGRl
+dmljZSAqY29kZWNfZGV2Owo+ICsJc3RydWN0IGRlbGF5ZWRfd29yayBkZWxheWVkX2F1ZGlvOwo+
+ICsJc3RydWN0IGl0NjUwNV9hdWRpb19kYXRhIGF1ZGlvOwo+ICsKPiArCS8qIGl0NjUwNSBkcml2
+ZXIgaG9sZCBvcHRpb24gKi8KPiArCWJvb2wgZW5hYmxlX2Rydl9ob2xkOwo+ICt9Owo+ICsKPiAr
+c3RydWN0IGl0NjUwNV9zdGVwX3RyYWluX3BhcmEgewo+ICsJdTggdm9sdGFnZV9zd2luZ1tNQVhf
+TEFORV9DT1VOVF07Cj4gKwl1OCBwcmVfZW1waGFzaXNbTUFYX0xBTkVfQ09VTlRdOwo+ICt9Owo+
+ICsKPiArLyoKPiArICogVmVuZG9yIG9wdGlvbiBhZmUgc2V0dGluZ3MgZm9yIGRpZmZlcmVudCBw
+bGF0Zm9ybXMKPiArICogMDogd2l0aG91dCBGUEMgY2FibGUKPiArICogMTogd2l0aCBGUEMgY2Fi
+bGUKPiArICovCj4gKwo+ICtzdGF0aWMgdTggY29uc3QgYWZlX3NldHRpbmdfdGFibGVbXVszXSA9
+IHsKPiArCXsweDgyLCAweDAwLCAweDQ1fSwKPiArCXsweDkzLCAweDJBLCAweDg1fQo+ICt9Owo+
+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBpdDY1MDVfYXVkaW9fc2FtcGxlX3JhdGVfbWFwIGF1
+ZGlvX3NhbXBsZV9yYXRlX21hcFtdID0gewo+ICsJe1NBTVBMRV9SQVRFXzI0SywgMjQwMDB9LAo+
+ICsJe1NBTVBMRV9SQVRFXzMySywgMzIwMDB9LAo+ICsJe1NBTVBMRV9SQVRFXzQ4SywgNDgwMDB9
+LAo+ICsJe1NBTVBMRV9SQVRFXzk2SywgOTYwMDB9LAo+ICsJe1NBTVBMRV9SQVRFXzE5MkssIDE5
+MjAwMH0sCj4gKwl7U0FNUExFX1JBVEVfNDRfMUssIDQ0MTAwfSwKPiArCXtTQU1QTEVfUkFURV84
+OF8ySywgODgyMDB9LAo+ICsJe1NBTVBMRV9SQVRFXzE3Nl80SywgMTc2NDAwfSwKPiArfTsKPiAr
+Cj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgcmVnbWFwX3JhbmdlIGl0NjUwNV9icmlkZ2Vfdm9sYXRp
+bGVfcmFuZ2VzW10gPSB7Cj4gKwl7IC5yYW5nZV9taW4gPSAwLCAucmFuZ2VfbWF4ID0gMHhGRiB9
+LAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCByZWdtYXBfYWNjZXNzX3RhYmxlIGl0
+NjUwNV9icmlkZ2Vfdm9sYXRpbGVfdGFibGUgPSB7Cj4gKwkueWVzX3JhbmdlcyA9IGl0NjUwNV9i
+cmlkZ2Vfdm9sYXRpbGVfcmFuZ2VzLAo+ICsJLm5feWVzX3JhbmdlcyA9IEFSUkFZX1NJWkUoaXQ2
+NTA1X2JyaWRnZV92b2xhdGlsZV9yYW5nZXMpLAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0
+cnVjdCByZWdtYXBfY29uZmlnIGl0NjUwNV9yZWdtYXBfY29uZmlnID0gewo+ICsJLnJlZ19iaXRz
+ID0gOCwKPiArCS52YWxfYml0cyA9IDgsCj4gKwkudm9sYXRpbGVfdGFibGUgPSAmaXQ2NTA1X2Jy
+aWRnZV92b2xhdGlsZV90YWJsZSwKPiArCS5jYWNoZV90eXBlID0gUkVHQ0FDSEVfTk9ORSwKPiAr
+fTsKPiArCj4gK3N0YXRpYyBpbnQgaXQ2NTA1X3JlYWQoc3RydWN0IGl0NjUwNSAqaXQ2NTA1LCB1
+bnNpZ25lZCBpbnQgcmVnX2FkZHIpCj4gK3sKPiArCXVuc2lnbmVkIGludCB2YWx1ZTsKPiArCWlu
+dCBlcnI7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2NTA1LT5jbGllbnQtPmRldjsKPiAr
+Cj4gKwllcnIgPSByZWdtYXBfcmVhZChpdDY1MDUtPnJlZ21hcCwgcmVnX2FkZHIsICZ2YWx1ZSk7
+Cj4gKwlpZiAoZXJyIDwgMCkgewo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAicmVhZCBmYWlsZWQg
+cmVnWzB4JXhdIGVycjogJWQiLCByZWdfYWRkciwKPiArCQkJICAgICAgZXJyKTsKPiArCQlyZXR1
+cm4gZXJyOwo+ICsJfQo+ICsKPiArCXJldHVybiB2YWx1ZTsKPiArfQo+ICsKPiArc3RhdGljIGlu
+dCBpdDY1MDVfd3JpdGUoc3RydWN0IGl0NjUwNSAqaXQ2NTA1LCB1bnNpZ25lZCBpbnQgcmVnX2Fk
+ZHIsCj4gKwkJICAgICAgdW5zaWduZWQgaW50IHJlZ192YWwpCj4gK3sKPiArCWludCBlcnI7Cj4g
+KwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2NTA1LT5jbGllbnQtPmRldjsKPiArCj4gKwllcnIg
+PSByZWdtYXBfd3JpdGUoaXQ2NTA1LT5yZWdtYXAsIHJlZ19hZGRyLCByZWdfdmFsKTsKPiArCj4g
+KwlpZiAoZXJyIDwgMCkgewo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAid3JpdGUgZmFpbGVkIHJl
+Z1sweCV4XSA9IDB4JXggZXJyID0gJWQiLAo+ICsJCQkgICAgICByZWdfYWRkciwgcmVnX3ZhbCwg
+ZXJyKTsKPiArCQlyZXR1cm4gZXJyOwo+ICsJfQo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+
+ICtzdGF0aWMgaW50IGl0NjUwNV9zZXRfYml0cyhzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUsIHVuc2ln
+bmVkIGludCByZWcsCj4gKwkJCSB1bnNpZ25lZCBpbnQgbWFzaywgdW5zaWduZWQgaW50IHZhbHVl
+KQo+ICt7Cj4gKwlpbnQgZXJyOwo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xp
+ZW50LT5kZXY7Cj4gKwo+ICsJZXJyID0gcmVnbWFwX3VwZGF0ZV9iaXRzKGl0NjUwNS0+cmVnbWFw
+LCByZWcsIG1hc2ssIHZhbHVlKTsKPiArCWlmIChlcnIgPCAwKSB7Cj4gKwkJRFJNX0RFVl9FUlJP
+UigKPiArCQkJZGV2LCAid3JpdGUgcmVnWzB4JXhdID0gMHgleCBtYXNrID0gMHgleCBmYWlsZWQg
+ZXJyICVkIiwKPiArCQkJcmVnLCB2YWx1ZSwgbWFzaywgZXJyKTsKPiArCQlyZXR1cm4gZXJyOwo+
+ICsJfQo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfZGVi
+dWdfcHJpbnQoc3RydWN0IGl0NjUwNSAqaXQ2NTA1LCB1bnNpZ25lZCBpbnQgcmVnLAo+ICsJCQkg
+ICAgIGNvbnN0IGNoYXIgKnByZWZpeCkKPiArewo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0
+NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwlpbnQgdmFsOwo+ICsKPiArCWlmIChsaWtlbHkoIShfX2Ry
+bV9kZWJ1ZyAmIERSTV9VVF9EUklWRVIpKSkKPiArCQlyZXR1cm47Cj4gKwo+ICsJdmFsID0gaXQ2
+NTA1X3JlYWQoaXQ2NTA1LCByZWcpOwo+ICsJaWYgKHZhbCA8IDApCj4gKwkJRFJNX0RFVl9ERUJV
+R19EUklWRVIoZGV2LCAiJXMgcmVnWyUwMnhdIHJlYWQgZXJyb3IgKCVkKSIsCj4gKwkJCQkgICAg
+IHByZWZpeCwgcmVnLCB2YWwpOwo+ICsJZWxzZQo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKGRl
+diwgIiVzIHJlZ1slMDJ4XSA9IDB4JTAyeCIsIHByZWZpeCwgcmVnLAo+ICsJCQkJICAgICB2YWwp
+Owo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IGl0NjUwNV9kcGNkX3JlYWQoc3RydWN0IGl0NjUwNSAq
+aXQ2NTA1LCB1bnNpZ25lZCBsb25nIG9mZnNldCkKPiArewo+ICsJdTggdmFsdWU7Cj4gKwlpbnQg
+cmV0Owo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+
+ICsJcmV0ID0gZHJtX2RwX2RwY2RfcmVhZGIoJml0NjUwNS0+YXV4LCBvZmZzZXQsICZ2YWx1ZSk7
+Cj4gKwlpZiAocmV0IDwgMCkgewo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAiRFBDRCByZWFkIGZh
+aWxlZCBbMHglbHhdIHJldDogJWQiLCBvZmZzZXQsCj4gKwkJCSAgICAgIHJldCk7Cj4gKwkJcmV0
+dXJuIHJldDsKPiArCX0KPiArCXJldHVybiB2YWx1ZTsKPiArfQo+ICsKPiArc3RhdGljIGludCBp
+dDY1MDVfZHBjZF93cml0ZShzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUsIHVuc2lnbmVkIGxvbmcgb2Zm
+c2V0LAo+ICsJCQkgICAgIHVuc2lnbmVkIGxvbmcgZGF0YWluKQo+ICt7Cj4gKwlpbnQgcmV0Owo+
+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+ICsJcmV0
+ID0gZHJtX2RwX2RwY2Rfd3JpdGViKCZpdDY1MDUtPmF1eCwgb2Zmc2V0LCBkYXRhaW4pOwo+ICsJ
+aWYgKHJldCA8IDApIHsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIkRQQ0Qgd3JpdGUgZmFpbGVk
+IFsweCVseF0gcmV0OiAlZCIsIG9mZnNldCwKPiArCQkJICAgICAgcmV0KTsKPiArCQlyZXR1cm4g
+cmV0Owo+ICsJfQo+ICsJcmV0dXJuIDA7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgaXQ2NTA1X2dl
+dF9kcGNkKHN0cnVjdCBpdDY1MDUgKml0NjUwNSwgaW50IG9mZnNldCwgdTggKmRwY2QsIGludCBu
+dW0pCj4gK3sKPiArCWludCByZXQ7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2NTA1LT5j
+bGllbnQtPmRldjsKPiArCj4gKwlyZXQgPSBkcm1fZHBfZHBjZF9yZWFkKCZpdDY1MDUtPmF1eCwg
+b2Zmc2V0LCBkcGNkLCBudW0pOwo+ICsKPiArCWlmIChyZXQgPCAwKQo+ICsJCXJldHVybiByZXQ7
+Cj4gKwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAicmV0ID0gJWQgRFBDRFsweCV4XSA9
+IDB4JSpwaCIsIHJldCwgb2Zmc2V0LAo+ICsJCQkgICAgIG51bSwgZHBjZCk7Cj4gKwo+ICsJcmV0
+dXJuIDA7Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9kdW1wKHN0cnVjdCBpdDY1MDUg
+Kml0NjUwNSkKPiArewo+ICsJdW5zaWduZWQgaW50IGksIGo7Cj4gKwl1OCByZWdzWzE2XTsKPiAr
+CXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsKPiArCWZvciAo
+aSA9IDA7IGkgPD0gMHhmZjsgaSArPSAxNikgewo+ICsJCWZvciAoaiA9IDA7IGogPCAxNjsgaisr
+KQo+ICsJCQlyZWdzW2pdID0gaXQ2NTA1X3JlYWQoaXQ2NTA1LCBpICsgaik7Cj4gKwo+ICsJCURS
+TV9ERVZfREVCVUdfRFJJVkVSKGRldiwgIlsweCUwMnhdID0gJTE2cGgiLCBpLCByZWdzKTsKPiAr
+CX0KPiArfQo+ICsKPiArc3RhdGljIGJvb2wgaXQ2NTA1X2dldF9zaW5rX2hwZF9zdGF0dXMoc3Ry
+dWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlpbnQgcmVnXzBkOwo+ICsKPiArCXJlZ18wZCA9
+IGl0NjUwNV9yZWFkKGl0NjUwNSwgUkVHX1NZU1RFTV9TVFMpOwo+ICsKPiArCWlmIChyZWdfMGQg
+PCAwKQo+ICsJCXJldHVybiBmYWxzZTsKPiArCj4gKwlyZXR1cm4gISEocmVnXzBkICYgSFBEX1NU
+Uyk7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgaXQ2NTA1X3JlYWRfd29yZChzdHJ1Y3QgaXQ2NTA1
+ICppdDY1MDUsIHVuc2lnbmVkIGludCByZWcpCj4gK3sKPiArCWludCB2YWwwLCB2YWwxOwo+ICsK
+PiArCXZhbDAgPSBpdDY1MDVfcmVhZChpdDY1MDUsIHJlZyk7Cj4gKwlpZiAodmFsMCA8IDApCj4g
+KwkJcmV0dXJuIHZhbDA7Cj4gKwo+ICsJdmFsMSA9IGl0NjUwNV9yZWFkKGl0NjUwNSwgcmVnICsg
+MSk7Cj4gKwlpZiAodmFsMSA8IDApCj4gKwkJcmV0dXJuIHZhbDE7Cj4gKwo+ICsJcmV0dXJuICh2
+YWwxIDw8IDgpIHwgdmFsMDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2NhbGNfdmlk
+ZW9faW5mbyhzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCXN0cnVjdCBkZXZpY2UgKmRl
+diA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsJaW50IGhzeW5jX3BvbCwgdnN5bmNfcG9sLCBp
+bnRlcmxhY2VkOwo+ICsJaW50IGh0b3RhbCwgaGRlcywgaGRldywgaGZwaCwgaHN5bmN3Owo+ICsJ
+aW50IHZ0b3RhbCwgdmRlcywgdmRldywgdmZwaCwgdnN5bmN3Owo+ICsJaW50IHJkZGF0YSwgaSwg
+cGNsaywgc3VtID0gMDsKPiArCj4gKwl1c2xlZXBfcmFuZ2UoMTAwMDAsIDE1MDAwKTsKPiArCWl0
+NjUwNV93cml0ZShpdDY1MDUsIFJFR19CQU5LX1NFTCwgMHgwMCk7Cj4gKwlyZGRhdGEgPSBpdDY1
+MDVfcmVhZChpdDY1MDUsIFJFR19JTlBVVF9DVFJMKTsKPiArCWhzeW5jX3BvbCA9IHJkZGF0YSAm
+IElOUFVUX0hTWU5DX1BPTDsKPiArCXZzeW5jX3BvbCA9IChyZGRhdGEgJiBJTlBVVF9WU1lOQ19Q
+T0wpID4+IDI7Cj4gKwlpbnRlcmxhY2VkID0gKHJkZGF0YSAmIElOUFVUX0lOVEVSTEFDRUQpID4+
+IDQ7Cj4gKwo+ICsJaHRvdGFsID0gaXQ2NTA1X3JlYWRfd29yZChpdDY1MDUsIFJFR19JTlBVVF9I
+VE9UQUwpICYgMHgxRkZGOwo+ICsJaGRlcyA9IGl0NjUwNV9yZWFkX3dvcmQoaXQ2NTA1LCBSRUdf
+SU5QVVRfSEFDVElWRV9TVEFSVCkgJiAweDFGRkY7Cj4gKwloZGV3ID0gaXQ2NTA1X3JlYWRfd29y
+ZChpdDY1MDUsIFJFR19JTlBVVF9IQUNUSVZFX1dJRFRIKSAmIDB4MUZGRjsKPiArCWhmcGggPSBp
+dDY1MDVfcmVhZF93b3JkKGl0NjUwNSwgUkVHX0lOUFVUX0hGUk9OVF9QT1JDSCkgJiAweDFGRkY7
+Cj4gKwloc3luY3cgPSBpdDY1MDVfcmVhZF93b3JkKGl0NjUwNSwgUkVHX0lOUFVUX0hTWU5DX1dJ
+RFRIKSAmIDB4MUZGRjsKPiArCj4gKwl2dG90YWwgPSBpdDY1MDVfcmVhZF93b3JkKGl0NjUwNSwg
+UkVHX0lOUFVUX1ZUT1RBTCkgJiAweEZGRjsKPiArCXZkZXMgPSBpdDY1MDVfcmVhZF93b3JkKGl0
+NjUwNSwgUkVHX0lOUFVUX1ZBQ1RJVkVfU1RBUlQpICYgMHhGRkY7Cj4gKwl2ZGV3ID0gaXQ2NTA1
+X3JlYWRfd29yZChpdDY1MDUsIFJFR19JTlBVVF9WQUNUSVZFX1dJRFRIKSAmIDB4RkZGOwo+ICsJ
+dmZwaCA9IGl0NjUwNV9yZWFkX3dvcmQoaXQ2NTA1LCBSRUdfSU5QVVRfVkZST05UX1BPUkNIKSAm
+IDB4RkZGOwo+ICsJdnN5bmN3ID0gaXQ2NTA1X3JlYWRfd29yZChpdDY1MDUsIFJFR19JTlBVVF9W
+U1lOQ19XSURUSCkgJiAweEZGRjsKPiArCj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJo
+c3luY19wb2w6JWQsIHZzeW5jX3BvbDolZCwgaW50ZXJsYWNlZDolZCIsCj4gKwkJCSAgICAgaHN5
+bmNfcG9sLCB2c3luY19wb2wsIGludGVybGFjZWQpOwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIo
+ZGV2LCAiaGFjdGl2ZV9zdGFydDolZCwgdmFjdGl2ZV9zdGFydDolZCIsCj4gKwkJCSAgICAgaGRl
+cywgdmRlcyk7Cj4gKwo+ICsJZm9yIChpID0gMDsgaSA8IDEwOyBpKyspIHsKPiArCQlpdDY1MDVf
+c2V0X2JpdHMoaXQ2NTA1LCBSRUdfREFUQV9DVFJMMCwgRU5BQkxFX1BDTEtfQ09VTlRFUiwKPiAr
+CQkJCUVOQUJMRV9QQ0xLX0NPVU5URVIpOwo+ICsJCXVzbGVlcF9yYW5nZSgxMDAwMCwgMTUwMDAp
+Owo+ICsJCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19EQVRBX0NUUkwwLCBFTkFCTEVfUENM
+S19DT1VOVEVSLAo+ICsJCQkJMHgwMCk7Cj4gKwkJcmRkYXRhID0gaXQ2NTA1X3JlYWRfd29yZChp
+dDY1MDUsIFJFR19QQ0xLX0NPVU5URVJfVkFMVUUpICYKPiArCQkJIDB4RkZGOwo+ICsKPiArCQlz
+dW0gKz0gcmRkYXRhOwo+ICsJfQo+ICsKPiArCWlmIChzdW0gPT0gMCkgewo+ICsJCURSTV9ERVZf
+REVCVUdfRFJJVkVSKGRldiwgImNhbGMgdmlkZW8gdGltaW5nIGVycm9yIik7Cj4gKwkJcmV0dXJu
+Owo+ICsJfQo+ICsKPiArCXN1bSAvPSAxMDsKPiArCXBjbGsgPSAxMzUwMCAqIDIwNDggLyBzdW07
+Cj4gKwlpdDY1MDUtPnZpZGVvX2luZm8uY2xvY2sgPSBwY2xrOwo+ICsJaXQ2NTA1LT52aWRlb19p
+bmZvLmhkaXNwbGF5ID0gaGRldzsKPiArCWl0NjUwNS0+dmlkZW9faW5mby5oc3luY19zdGFydCA9
+IGhkZXcgKyBoZnBoOwo+ICsJaXQ2NTA1LT52aWRlb19pbmZvLmhzeW5jX2VuZCA9IGhkZXcgKyBo
+ZnBoICsgaHN5bmN3Owo+ICsJaXQ2NTA1LT52aWRlb19pbmZvLmh0b3RhbCA9IGh0b3RhbDsKPiAr
+CWl0NjUwNS0+dmlkZW9faW5mby52ZGlzcGxheSA9IHZkZXc7Cj4gKwlpdDY1MDUtPnZpZGVvX2lu
+Zm8udnN5bmNfc3RhcnQgPSB2ZGV3ICsgdmZwaDsKPiArCWl0NjUwNS0+dmlkZW9faW5mby52c3lu
+Y19lbmQgPSB2ZGV3ICsgdmZwaCArIHZzeW5jdzsKPiArCWl0NjUwNS0+dmlkZW9faW5mby52dG90
+YWwgPSB2dG90YWw7Cj4gKwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCBEUk1fTU9ERV9G
+TVQsCj4gKwkJCSAgICAgRFJNX01PREVfQVJHKCZpdDY1MDUtPnZpZGVvX2luZm8pKTsKPiArfQo+
+ICsKPiArc3RhdGljIGludCBpdDY1MDVfZHJtX2RwX2xpbmtfcHJvYmUoc3RydWN0IGRybV9kcF9h
+dXggKmF1eCwKPiArCQkJCSAgICBzdHJ1Y3QgaXQ2NTA1X2RybV9kcF9saW5rICpsaW5rKQo+ICt7
+Cj4gKwl1OCB2YWx1ZXNbM107Cj4gKwlpbnQgZXJyOwo+ICsKPiArCW1lbXNldChsaW5rLCAwLCBz
+aXplb2YoKmxpbmspKTsKPiArCj4gKwllcnIgPSBkcm1fZHBfZHBjZF9yZWFkKGF1eCwgRFBfRFBD
+RF9SRVYsIHZhbHVlcywgc2l6ZW9mKHZhbHVlcykpOwo+ICsJaWYgKGVyciA8IDApCj4gKwkJcmV0
+dXJuIGVycjsKPiArCj4gKwlsaW5rLT5yZXZpc2lvbiA9IHZhbHVlc1swXTsKPiArCWxpbmstPnJh
+dGUgPSBkcm1fZHBfYndfY29kZV90b19saW5rX3JhdGUodmFsdWVzWzFdKTsKPiArCWxpbmstPm51
+bV9sYW5lcyA9IHZhbHVlc1syXSAmIERQX01BWF9MQU5FX0NPVU5UX01BU0s7Cj4gKwo+ICsJaWYg
+KHZhbHVlc1syXSAmIERQX0VOSEFOQ0VEX0ZSQU1FX0NBUCkKPiArCQlsaW5rLT5jYXBhYmlsaXRp
+ZXMgPSAxOwo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IGl0NjUwNV9k
+cm1fZHBfbGlua19wb3dlcl91cChzdHJ1Y3QgZHJtX2RwX2F1eCAqYXV4LAo+ICsJCQkJICAgICAg
+IHN0cnVjdCBpdDY1MDVfZHJtX2RwX2xpbmsgKmxpbmspCj4gK3sKPiArCXU4IHZhbHVlOwo+ICsJ
+aW50IGVycjsKPiArCj4gKwkvKiBEUF9TRVRfUE9XRVIgcmVnaXN0ZXIgaXMgb25seSBhdmFpbGFi
+bGUgb24gRFBDRCB2MS4xIGFuZCBsYXRlciAqLwo+ICsJaWYgKGxpbmstPnJldmlzaW9uIDwgMHgx
+MSkKPiArCQlyZXR1cm4gMDsKPiArCj4gKwllcnIgPSBkcm1fZHBfZHBjZF9yZWFkYihhdXgsIERQ
+X1NFVF9QT1dFUiwgJnZhbHVlKTsKPiArCWlmIChlcnIgPCAwKQo+ICsJCXJldHVybiBlcnI7Cj4g
+Kwo+ICsJdmFsdWUgJj0gfkRQX1NFVF9QT1dFUl9NQVNLOwo+ICsJdmFsdWUgfD0gRFBfU0VUX1BP
+V0VSX0QwOwo+ICsKPiArCWVyciA9IGRybV9kcF9kcGNkX3dyaXRlYihhdXgsIERQX1NFVF9QT1dF
+UiwgdmFsdWUpOwo+ICsJaWYgKGVyciA8IDApCj4gKwkJcmV0dXJuIGVycjsKPiArCj4gKwkvKgo+
+ICsJICogQWNjb3JkaW5nIHRvIHRoZSBEUCAxLjEgc3BlY2lmaWNhdGlvbiwgYSAiU2luayBEZXZp
+Y2UgbXVzdCBleGl0IHRoZQo+ICsJICogcG93ZXIgc2F2aW5nIHN0YXRlIHdpdGhpbiAxIG1zIiAo
+U2VjdGlvbiAyLjUuMy4xLCBUYWJsZSA1LTUyLCAiU2luawo+ICsJICogQ29udHJvbCBGaWVsZCIg
+KHJlZ2lzdGVyIDB4NjAwKS4KPiArCSAqLwo+ICsJdXNsZWVwX3JhbmdlKDEwMDAsIDIwMDApOwo+
+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfY2xlYXJfaW50
+KHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVH
+X0JBTktfU0VMLCAweDAwKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIElOVF9TVEFUVVNfMDEs
+IDB4RkYpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgSU5UX1NUQVRVU18wMiwgMHhGRik7Cj4g
+KwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBJTlRfU1RBVFVTXzAzLCAweEZGKTsKPiArfQo+ICsKPiAr
+c3RhdGljIHZvaWQgaXQ2NTA1X2ludF9tYXNrX2VuYWJsZShzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUp
+Cj4gK3sKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19CQU5LX1NFTCwgMHgwMCk7Cj4gKwlp
+dDY1MDVfd3JpdGUoaXQ2NTA1LCBJTlRfTUFTS18wMSwgMHgxRik7Cj4gKwlpdDY1MDVfd3JpdGUo
+aXQ2NTA1LCBJTlRfTUFTS18wMiwgMHgwNyk7Cj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBJTlRf
+TUFTS18wMywgMHhCMCk7Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9pbnRfbWFza19k
+aXNhYmxlKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUw
+NSwgUkVHX0JBTktfU0VMLCAweDAwKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIElOVF9NQVNL
+XzAxLCAweDAwKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIElOVF9NQVNLXzAyLCAweDAwKTsK
+PiArCWl0NjUwNV93cml0ZShpdDY1MDUsIElOVF9NQVNLXzAzLCAweDAwKTsKPiArfQo+ICsKPiAr
+c3RhdGljIHZvaWQgaXQ2NTA1X2xhbmVfdGVybWluYXRpb25fb24oc3RydWN0IGl0NjUwNSAqaXQ2
+NTA1KQo+ICt7Cj4gKwlpbnQgcmVnY2Y7Cj4gKwo+ICsJcmVnY2YgPSBpdDY1MDVfcmVhZChpdDY1
+MDUsIFJFR19VU0VSX0RSVl9QUkUpOwo+ICsKPiArCWlmIChyZWdjZiA9PSAweEYwKQo+ICsJCWl0
+NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19EUlZfTE5fREFUQV9TRUwsIDB4ODAsIDB4MDApOwo+
+ICsKPiArCWlmIChyZWdjZiA9PSAweDcwKSB7Cj4gKwkJaWYgKGl0NjUwNS0+bGFuZV9zd2FwKSB7
+Cj4gKwkJCXN3aXRjaCAoaXQ2NTA1LT5sYW5lX2NvdW50KSB7Cj4gKwkJCWNhc2UgMToKPiArCQkJ
+Y2FzZSAyOgo+ICsJCQkJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0RSVl9MTl9EQVRBX1NF
+TCwKPiArCQkJCQkJMHgwQywgMHgwOCk7Cj4gKwkJCQlicmVhazsKPiArCQkJZGVmYXVsdDoKPiAr
+CQkJCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19EUlZfTE5fREFUQV9TRUwsCj4gKwkJCQkJ
+CTB4MEMsIDB4MEMpOwo+ICsJCQkJYnJlYWs7Cj4gKwkJCX0KPiArCQl9IGVsc2Ugewo+ICsJCQlz
+d2l0Y2ggKGl0NjUwNS0+bGFuZV9jb3VudCkgewo+ICsJCQljYXNlIDE6Cj4gKwkJCWNhc2UgMjoK
+PiArCQkJCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19EUlZfTE5fREFUQV9TRUwsCj4gKwkJ
+CQkJCTB4MEMsIDB4MDQpOwo+ICsJCQkJYnJlYWs7Cj4gKwkJCWRlZmF1bHQ6Cj4gKwkJCQlpdDY1
+MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfRFJWX0xOX0RBVEFfU0VMLAo+ICsJCQkJCQkweDBDLCAw
+eDBDKTsKPiArCQkJCWJyZWFrOwo+ICsJCQl9Cj4gKwkJfQo+ICsJfQo+ICt9Cj4gKwo+ICtzdGF0
+aWMgdm9pZCBpdDY1MDVfbGFuZV90ZXJtaW5hdGlvbl9vZmYoc3RydWN0IGl0NjUwNSAqaXQ2NTA1
+KQo+ICt7Cj4gKwlpbnQgcmVnY2Y7Cj4gKwo+ICsJcmVnY2YgPSBpdDY1MDVfcmVhZChpdDY1MDUs
+IFJFR19VU0VSX0RSVl9QUkUpOwo+ICsKPiArCWlmIChyZWdjZiA9PSAweEYwKQo+ICsJCWl0NjUw
+NV9zZXRfYml0cyhpdDY1MDUsIFJFR19EUlZfTE5fREFUQV9TRUwsIDB4ODAsIDB4ODApOwo+ICsK
+PiArCWlmIChyZWdjZiA9PSAweDcwKQo+ICsJCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19E
+UlZfTE5fREFUQV9TRUwsIDB4MEMsIDB4MDApOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1
+MDVfbGFuZV9wb3dlcl9vbihzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCWl0NjUwNV9z
+ZXRfYml0cyhpdDY1MDUsIFJFR19MSU5LX0RSViwgMHhGMSwKPiArCQkJKGl0NjUwNS0+bGFuZV9z
+d2FwID8KPiArCQkJCSBHRU5NQVNLKDcsIDggLSBpdDY1MDUtPmxhbmVfY291bnQpIDoKPiArCQkJ
+CSBHRU5NQVNLKDMgKyBpdDY1MDUtPmxhbmVfY291bnQsIDQpKSB8Cj4gKwkJCQkweDAxKTsKPiAr
+fQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2xhbmVfcG93ZXJfb2ZmKHN0cnVjdCBpdDY1MDUg
+Kml0NjUwNSkKPiArewo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0xJTktfRFJWLCAw
+eEYwLCAweDAwKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2xhbmVfb2ZmKHN0cnVj
+dCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaXQ2NTA1X2xhbmVfcG93ZXJfb2ZmKGl0NjUwNSk7
+Cj4gKwlpdDY1MDVfbGFuZV90ZXJtaW5hdGlvbl9vZmYoaXQ2NTA1KTsKPiArfQo+ICsKPiArc3Rh
+dGljIHZvaWQgaXQ2NTA1X2F1eF90ZXJtaW5hdGlvbl9vbihzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUp
+Cj4gK3sKPiArCWludCByZWdjZjsKPiArCj4gKwlyZWdjZiA9IGl0NjUwNV9yZWFkKGl0NjUwNSwg
+UkVHX1VTRVJfRFJWX1BSRSk7Cj4gKwo+ICsJaWYgKHJlZ2NmID09IDB4RjApCj4gKwkJaXQ2NTA1
+X2xhbmVfdGVybWluYXRpb25fb24oaXQ2NTA1KTsKPiArCj4gKwlpZiAocmVnY2YgPT0gMHg3MCkK
+PiArCQlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfRFJWX0xOX0RBVEFfU0VMLCAweDgwLCAw
+eDgwKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2F1eF9wb3dlcl9vbihzdHJ1Y3Qg
+aXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19BVVgs
+IDB4MDIsIDB4MDIpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfYXV4X29uKHN0cnVj
+dCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaXQ2NTA1X2F1eF9wb3dlcl9vbihpdDY1MDUpOwo+
+ICsJaXQ2NTA1X2F1eF90ZXJtaW5hdGlvbl9vbihpdDY1MDUpOwo+ICt9Cj4gKwo+ICtzdGF0aWMg
+dm9pZCBpdDY1MDVfYXV4X3Jlc2V0KHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaXQ2
+NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX1JFU0VUX0NUUkwsIEFVWF9SRVNFVCwgQVVYX1JFU0VU
+KTsKPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19SRVNFVF9DVFJMLCBBVVhfUkVTRVQs
+IDB4MDApOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfcmVzZXRfbG9naWMoc3RydWN0
+IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlyZWdtYXBfd3JpdGUoaXQ2NTA1LT5yZWdtYXAsIFJF
+R19SRVNFVF9DVFJMLCBBTExfTE9HSUNfUkVTRVQpOwo+ICsJdXNsZWVwX3JhbmdlKDEwMDAsIDE1
+MDApOwo+ICt9Cj4gKwo+ICtzdGF0aWMgYm9vbCBpdDY1MDVfYXV4X29wX2ZpbmlzaGVkKHN0cnVj
+dCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaW50IHJlZzJiID0gaXQ2NTA1X3JlYWQoaXQ2NTA1
+LCBSRUdfQVVYX0NNRF9SRVEpOwo+ICsKPiArCWlmIChyZWcyYiA8IDApCj4gKwkJcmV0dXJuIGZh
+bHNlOwo+ICsKPiArCXJldHVybiAocmVnMmIgJiBBVVhfQlVTWSkgPT0gMDsKPiArfQo+ICsKPiAr
+c3RhdGljIGludCBpdDY1MDVfYXV4X3dhaXQoc3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4g
+KwlpbnQgc3RhdHVzOwo+ICsJdW5zaWduZWQgbG9uZyB0aW1lb3V0Owo+ICsJc3RydWN0IGRldmlj
+ZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+ICsJdGltZW91dCA9IGppZmZpZXMg
+KyBtc2Vjc190b19qaWZmaWVzKEFVWF9XQUlUX1RJTUVPVVRfTVMpICsgMTsKPiArCj4gKwl3aGls
+ZSAoIWl0NjUwNV9hdXhfb3BfZmluaXNoZWQoaXQ2NTA1KSkgewo+ICsJCWlmICh0aW1lX2FmdGVy
+KGppZmZpZXMsIHRpbWVvdXQpKSB7Cj4gKwkJCURSTV9ERVZfRVJST1IoZGV2LCAiVGltZWQgb3V0
+IHdhaXRpbmcgQVVYIHRvIGZpbmlzaCIpOwo+ICsJCQlyZXR1cm4gLUVUSU1FRE9VVDsKPiArCQl9
+Cj4gKwkJdXNsZWVwX3JhbmdlKDEwMDAsIDIwMDApOwo+ICsJfQo+ICsKPiArCXN0YXR1cyA9IGl0
+NjUwNV9yZWFkKGl0NjUwNSwgUkVHX0FVWF9FUlJPUl9TVFMpOwo+ICsJaWYgKHN0YXR1cyA8IDAp
+IHsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0byByZWFkIEFVWCBjaGFubmVsOiAl
+ZCIsIHN0YXR1cyk7Cj4gKwkJcmV0dXJuIHN0YXR1czsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsK
+PiArfQo+ICsKPiArc3RhdGljIHNzaXplX3QgaXQ2NTA1X2F1eF9vcGVyYXRpb24oc3RydWN0IGl0
+NjUwNSAqaXQ2NTA1LAo+ICsJCQkJICAgIGVudW0gYXV4X2NtZF90eXBlIGNtZCwKPiArCQkJCSAg
+ICB1bnNpZ25lZCBpbnQgYWRkcmVzcywgdTggKmJ1ZmZlciwKPiArCQkJCSAgICBzaXplX3Qgc2l6
+ZSwgZW51bSBhdXhfY21kX3JlcGx5ICpyZXBseSkKPiArewo+ICsJaW50IGksIHJldDsKPiArCWJv
+b2wgYXV4X3dyaXRlX2NoZWNrID0gZmFsc2U7Cj4gKwo+ICsJaWYgKCFpdDY1MDVfZ2V0X3Npbmtf
+aHBkX3N0YXR1cyhpdDY1MDUpKQo+ICsJCXJldHVybiAtRUlPOwo+ICsKPiArCS8qIHNldCBBVVgg
+dXNlciBtb2RlICovCj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfQVVYX0NUUkwsIEFV
+WF9VU0VSX01PREUsIEFVWF9VU0VSX01PREUpOwo+ICsKPiArYXV4X29wX3N0YXJ0Ogo+ICsJaWYg
+KGNtZCA9PSBDTURfQVVYX0kyQ19FRElEX1JFQUQpIHsKPiArCQkvKiBBVVggRURJRCBGSUZPIGhh
+cyBtYXggbGVuZ3RoIG9mIEFVWF9GSUZPX01BWF9TSVpFIGJ5dGVzLiAqLwo+ICsJCXNpemUgPSBt
+aW5fdChzaXplX3QsIHNpemUsIEFVWF9GSUZPX01BWF9TSVpFKTsKPiArCQkvKiBFbmFibGUgQVVY
+IEZJRk8gcmVhZCBiYWNrIGFuZCBjbGVhciBGSUZPICovCj4gKwkJaXQ2NTA1X3NldF9iaXRzKGl0
+NjUwNSwgUkVHX0FVWF9DVFJMLAo+ICsJCQkJQVVYX0VOX0ZJRk9fUkVBRCB8IENMUl9FRElEX0ZJ
+Rk8sCj4gKwkJCQlBVVhfRU5fRklGT19SRUFEIHwgQ0xSX0VESURfRklGTyk7Cj4gKwo+ICsJCWl0
+NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19BVVhfQ1RSTCwKPiArCQkJCUFVWF9FTl9GSUZPX1JF
+QUQgfCBDTFJfRURJRF9GSUZPLAo+ICsJCQkJQVVYX0VOX0ZJRk9fUkVBRCk7Cj4gKwl9IGVsc2Ug
+ewo+ICsJCS8qIFRoZSBEUCBBVVggdHJhbnNtaXQgYnVmZmVyIGhhcyA0IGJ5dGVzLiAqLwo+ICsJ
+CXNpemUgPSBtaW5fdChzaXplX3QsIHNpemUsIDQpOwo+ICsJCWl0NjUwNV9zZXRfYml0cyhpdDY1
+MDUsIFJFR19BVVhfQ1RSTCwgQVVYX05PX1NFR01FTlRfV1IsCj4gKwkJCQlBVVhfTk9fU0VHTUVO
+VF9XUik7Cj4gKwl9Cj4gKwo+ICsJLyogU3RhcnQgQWRkcmVzc1s3OjBdICovCj4gKwlpdDY1MDVf
+d3JpdGUoaXQ2NTA1LCBSRUdfQVVYX0FEUl8wXzcsIChhZGRyZXNzID4+IDApICYgMHhGRik7Cj4g
+KwkvKiBTdGFydCBBZGRyZXNzWzE1OjhdICovCj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdf
+QVVYX0FEUl84XzE1LCAoYWRkcmVzcyA+PiA4KSAmIDB4RkYpOwo+ICsJLyogV3JpdGVOdW1bMzow
+XStTdGFydEFkclsxOToxNl0gKi8KPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVVhfQURS
+XzE2XzE5LAo+ICsJCSAgICAgKChhZGRyZXNzID4+IDE2KSAmIDB4MEYpIHwgKChzaXplIC0gMSkg
+PDwgNCkpOwo+ICsKPiArCWlmIChjbWQgPT0gQ01EX0FVWF9OQVRJVkVfV1JJVEUpCj4gKwkJcmVn
+bWFwX2J1bGtfd3JpdGUoaXQ2NTA1LT5yZWdtYXAsIFJFR19BVVhfT1VUX0RBVEEwLCBidWZmZXIs
+Cj4gKwkJCQkgIHNpemUpOwo+ICsKPiArCS8qIEF1eCBGaXJlICovCj4gKwlpdDY1MDVfd3JpdGUo
+aXQ2NTA1LCBSRUdfQVVYX0NNRF9SRVEsIGNtZCk7Cj4gKwo+ICsJcmV0ID0gaXQ2NTA1X2F1eF93
+YWl0KGl0NjUwNSk7Cj4gKwlpZiAocmV0IDwgMCkKPiArCQlnb3RvIGF1eF9vcF9lcnI7Cj4gKwo+
+ICsJcmV0ID0gaXQ2NTA1X3JlYWQoaXQ2NTA1LCBSRUdfQVVYX0VSUk9SX1NUUyk7Cj4gKwlpZiAo
+cmV0IDwgMCkKPiArCQlnb3RvIGF1eF9vcF9lcnI7Cj4gKwo+ICsJc3dpdGNoICgocmV0ID4+IDYp
+ICYgMHgzKSB7Cj4gKwljYXNlIDA6Cj4gKwkJKnJlcGx5ID0gUkVQTFlfQUNLOwo+ICsJCWJyZWFr
+Owo+ICsJY2FzZSAxOgo+ICsJCSpyZXBseSA9IFJFUExZX0RFRkVSOwo+ICsJCXJldCA9IC1FQUdB
+SU47Cj4gKwkJZ290byBhdXhfb3BfZXJyOwo+ICsJY2FzZSAyOgo+ICsJCSpyZXBseSA9IFJFUExZ
+X05BQ0s7Cj4gKwkJcmV0ID0gLUVJTzsKPiArCQlnb3RvIGF1eF9vcF9lcnI7Cj4gKwljYXNlIDM6
+Cj4gKwkJcmV0ID0gLUVUSU1FRE9VVDsKPiArCQlnb3RvIGF1eF9vcF9lcnI7Cj4gKwl9Cj4gKwo+
+ICsJLyogUmVhZCBiYWNrIE5hdGl2ZSBXcml0ZSBkYXRhICovCj4gKwlpZiAoY21kID09IENNRF9B
+VVhfTkFUSVZFX1dSSVRFKSB7Cj4gKwkJYXV4X3dyaXRlX2NoZWNrID0gdHJ1ZTsKPiArCQljbWQg
+PSBDTURfQVVYX05BVElWRV9SRUFEOwo+ICsJCWdvdG8gYXV4X29wX3N0YXJ0Owo+ICsJfQo+ICsK
+PiArCWlmIChjbWQgPT0gQ01EX0FVWF9JMkNfRURJRF9SRUFEKSB7Cj4gKwkJZm9yIChpID0gMDsg
+aSA8IHNpemU7IGkrKykgewo+ICsJCQlyZXQgPSBpdDY1MDVfcmVhZChpdDY1MDUsIFJFR19BVVhf
+REFUQV9GSUZPKTsKPiArCQkJaWYgKHJldCA8IDApCj4gKwkJCQlnb3RvIGF1eF9vcF9lcnI7Cj4g
+KwkJCWJ1ZmZlcltpXSA9IHJldDsKPiArCQl9Cj4gKwl9IGVsc2Ugewo+ICsJCWZvciAoaSA9IDA7
+IGkgPCBzaXplOyBpKyspIHsKPiArCQkJcmV0ID0gaXQ2NTA1X3JlYWQoaXQ2NTA1LCBSRUdfQVVY
+X0RBVEFfMF83ICsgaSk7Cj4gKwkJCWlmIChyZXQgPCAwKQo+ICsJCQkJZ290byBhdXhfb3BfZXJy
+Owo+ICsKPiArCQkJaWYgKGF1eF93cml0ZV9jaGVjayAmJiBidWZmZXJbc2l6ZSAtIDEgLSBpXSAh
+PSByZXQpIHsKPiArCQkJCXJldCA9IC1FSU5WQUw7Cj4gKwkJCQlnb3RvIGF1eF9vcF9lcnI7Cj4g
+KwkJCX0KPiArCj4gKwkJCWJ1ZmZlcltzaXplIC0gMSAtIGldID0gcmV0Owo+ICsJCX0KPiArCX0K
+PiArCj4gKwlyZXQgPSBpOwo+ICsKPiArYXV4X29wX2VycjoKPiArCWlmIChjbWQgPT0gQ01EX0FV
+WF9JMkNfRURJRF9SRUFEKSB7Cj4gKwkJLyogY2xlYXIgQVVYIEZJRk8gKi8KPiArCQlpdDY1MDVf
+c2V0X2JpdHMoaXQ2NTA1LCBSRUdfQVVYX0NUUkwsCj4gKwkJCQlBVVhfRU5fRklGT19SRUFEIHwg
+Q0xSX0VESURfRklGTywKPiArCQkJCUFVWF9FTl9GSUZPX1JFQUQgfCBDTFJfRURJRF9GSUZPKTsK
+PiArCQlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfQVVYX0NUUkwsCj4gKwkJCQlBVVhfRU5f
+RklGT19SRUFEIHwgQ0xSX0VESURfRklGTywgMHgwMCk7Cj4gKwl9Cj4gKwo+ICsJLyogTGVhdmUg
+QVVYIHVzZXIgbW9kZSAqLwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0FVWF9DVFJM
+LCBBVVhfVVNFUl9NT0RFLCAwKTsKPiArCj4gKwlyZXR1cm4gcmV0Owo+ICt9Cj4gKwo+ICtzdGF0
+aWMgc3NpemVfdCBpdDY1MDVfYXV4X2RvX3RyYW5zZmVyKHN0cnVjdCBpdDY1MDUgKml0NjUwNSwK
+PiArCQkJCSAgICAgIGVudW0gYXV4X2NtZF90eXBlIGNtZCwKPiArCQkJCSAgICAgIHVuc2lnbmVk
+IGludCBhZGRyZXNzLCB1OCAqYnVmZmVyLAo+ICsJCQkJICAgICAgc2l6ZV90IHNpemUsIGVudW0g
+YXV4X2NtZF9yZXBseSAqcmVwbHkpCj4gK3sKPiArCWludCBpLCByZXRfc2l6ZSwgcmV0ID0gMCwg
+cmVxdWVzdF9zaXplOwo+ICsKPiArCW11dGV4X2xvY2soJml0NjUwNS0+YXV4X2xvY2spOwo+ICsJ
+Zm9yIChpID0gMDsgaSA8IHNpemU7IGkgKz0gNCkgewo+ICsJCXJlcXVlc3Rfc2l6ZSA9IG1pbigo
+aW50KXNpemUgLSBpLCA0KTsKPiArCQlyZXRfc2l6ZSA9IGl0NjUwNV9hdXhfb3BlcmF0aW9uKGl0
+NjUwNSwgY21kLCBhZGRyZXNzICsgaSwKPiArCQkJCQkJYnVmZmVyICsgaSwgcmVxdWVzdF9zaXpl
+LAo+ICsJCQkJCQlyZXBseSk7Cj4gKwkJaWYgKHJldF9zaXplIDwgMCkgewo+ICsJCQlyZXQgPSBy
+ZXRfc2l6ZTsKPiArCQkJZ290byBhdXhfb3BfZXJyOwo+ICsJCX0KPiArCj4gKwkJcmV0ICs9IHJl
+dF9zaXplOwo+ICsJfQo+ICsKPiArYXV4X29wX2VycjoKPiArCW11dGV4X3VubG9jaygmaXQ2NTA1
+LT5hdXhfbG9jayk7Cj4gKwlyZXR1cm4gcmV0Owo+ICt9Cj4gKwo+ICtzdGF0aWMgc3NpemVfdCBp
+dDY1MDVfYXV4X3RyYW5zZmVyKHN0cnVjdCBkcm1fZHBfYXV4ICphdXgsCj4gKwkJCQkgICBzdHJ1
+Y3QgZHJtX2RwX2F1eF9tc2cgKm1zZykKPiArewo+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0g
+Y29udGFpbmVyX29mKGF1eCwgc3RydWN0IGl0NjUwNSwgYXV4KTsKPiArCXU4IGNtZDsKPiArCWJv
+b2wgaXNfaTJjID0gIShtc2ctPnJlcXVlc3QgJiBEUF9BVVhfTkFUSVZFX1dSSVRFKTsKPiArCWlu
+dCByZXQ7Cj4gKwllbnVtIGF1eF9jbWRfcmVwbHkgcmVwbHk7Cj4gKwo+ICsJLyogSVQ2NTA1IGRv
+ZXNuJ3Qgc3VwcG9ydCBhcmJpdHJhcnkgSTJDIHJlYWQgLyB3cml0ZS4gKi8KPiArCWlmIChpc19p
+MmMpCj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwo+ICsJc3dpdGNoIChtc2ctPnJlcXVlc3QpIHsK
+PiArCWNhc2UgRFBfQVVYX05BVElWRV9SRUFEOgo+ICsJCWNtZCA9IENNRF9BVVhfTkFUSVZFX1JF
+QUQ7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIERQX0FVWF9OQVRJVkVfV1JJVEU6Cj4gKwkJY21kID0g
+Q01EX0FVWF9OQVRJVkVfV1JJVEU7Cj4gKwkJYnJlYWs7Cj4gKwlkZWZhdWx0Ogo+ICsJCXJldHVy
+biAtRUlOVkFMOwo+ICsJfQo+ICsKPiArCXJldCA9IGl0NjUwNV9hdXhfZG9fdHJhbnNmZXIoaXQ2
+NTA1LCBjbWQsIG1zZy0+YWRkcmVzcywgbXNnLT5idWZmZXIsCj4gKwkJCQkgICAgIG1zZy0+c2l6
+ZSwgJnJlcGx5KTsKPiArCWlmIChyZXQgPCAwKQo+ICsJCXJldHVybiByZXQ7Cj4gKwo+ICsJc3dp
+dGNoIChyZXBseSkgewo+ICsJY2FzZSBSRVBMWV9BQ0s6Cj4gKwkJbXNnLT5yZXBseSA9IERQX0FV
+WF9OQVRJVkVfUkVQTFlfQUNLOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBSRVBMWV9OQUNLOgo+ICsJ
+CW1zZy0+cmVwbHkgPSBEUF9BVVhfTkFUSVZFX1JFUExZX05BQ0s7Cj4gKwkJYnJlYWs7Cj4gKwlj
+YXNlIFJFUExZX0RFRkVSOgo+ICsJCW1zZy0+cmVwbHkgPSBEUF9BVVhfTkFUSVZFX1JFUExZX0RF
+RkVSOwo+ICsJCWJyZWFrOwo+ICsJfQo+ICsKPiArCXJldHVybiByZXQ7Cj4gK30KPiArCj4gK3N0
+YXRpYyBpbnQgaXQ2NTA1X2dldF9lZGlkX2Jsb2NrKHZvaWQgKmRhdGEsIHU4ICpidWYsIHVuc2ln
+bmVkIGludCBibG9jaywKPiArCQkJCSBzaXplX3QgbGVuKQo+ICt7Cj4gKwlzdHJ1Y3QgaXQ2NTA1
+ICppdDY1MDUgPSBkYXRhOwo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50
+LT5kZXY7Cj4gKwllbnVtIGF1eF9jbWRfcmVwbHkgcmVwbHk7Cj4gKwlpbnQgb2Zmc2V0LCByZXQs
+IGF1eF9yZXRyeSA9IDEwMDsKPiArCj4gKwlpdDY1MDVfYXV4X3Jlc2V0KGl0NjUwNSk7Cj4gKwlE
+Uk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJibG9jayBudW1iZXIgPSAlZCIsIGJsb2NrKTsKPiAr
+Cj4gKwlmb3IgKG9mZnNldCA9IDA7IG9mZnNldCA8IEVESURfTEVOR1RIOykgewo+ICsJCXJldCA9
+IGl0NjUwNV9hdXhfZG9fdHJhbnNmZXIoaXQ2NTA1LCBDTURfQVVYX0kyQ19FRElEX1JFQUQsCj4g
+KwkJCQkJICAgICBibG9jayAqIEVESURfTEVOR1RIICsgb2Zmc2V0LAo+ICsJCQkJCSAgICAgYnVm
+ICsgb2Zmc2V0LCA4LCAmcmVwbHkpOwo+ICsKPiArCQlpZiAocmV0IDwgMCAmJiByZXQgIT0gLUVB
+R0FJTikKPiArCQkJcmV0dXJuIHJldDsKPiArCj4gKwkJc3dpdGNoIChyZXBseSkgewo+ICsJCWNh
+c2UgUkVQTFlfQUNLOgo+ICsJCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJbMHglMDJ4XTog
+JThwaCIsIG9mZnNldCwKPiArCQkJCQkgICAgIGJ1ZiArIG9mZnNldCk7Cj4gKwkJCW9mZnNldCAr
+PSA4Owo+ICsJCQlhdXhfcmV0cnkgPSAxMDA7Cj4gKwkJCWJyZWFrOwo+ICsJCWNhc2UgUkVQTFlf
+TkFDSzoKPiArCQkJcmV0dXJuIC1FSU87Cj4gKwkJY2FzZSBSRVBMWV9ERUZFUjoKPiArCQkJbXNs
+ZWVwKDIwKTsKPiArCQkJaWYgKCEoLS1hdXhfcmV0cnkpKQo+ICsJCQkJcmV0dXJuIC1FSU87Cj4g
+KwkJfQo+ICsJfQo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1
+MDVfdmFyaWFibGVfY29uZmlnKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaXQ2NTA1
+LT5saW5rX3JhdGVfYndfY29kZSA9IEhCUjsKPiArCWl0NjUwNS0+bGFuZV9jb3VudCA9IE1BWF9M
+QU5FX0NPVU5UOwo+ICsJaXQ2NTA1LT5saW5rX3N0YXRlID0gTElOS19JRExFOwo+ICsJaXQ2NTA1
+LT5oZGNwX2Rlc2lyZWQgPSBIRENQX0RFU0lSRUQ7Cj4gKwlpdDY1MDUtPmF1dG9fdHJhaW5fcmV0
+cnkgPSBBVVRPX1RSQUlOX1JFVFJZOwo+ICsJaXQ2NTA1LT5hdWRpby5zZWxlY3QgPSBBVURJT19T
+RUxFQ1Q7Cj4gKwlpdDY1MDUtPmF1ZGlvLnNhbXBsZV9yYXRlID0gQVVESU9fU0FNUExFX1JBVEU7
+Cj4gKwlpdDY1MDUtPmF1ZGlvLmNoYW5uZWxfY291bnQgPSBBVURJT19DSEFOTkVMX0NPVU5UOwo+
+ICsJaXQ2NTA1LT5hdWRpby50eXBlID0gQVVESU9fVFlQRTsKPiArCWl0NjUwNS0+YXVkaW8uaTJz
+X2lucHV0X2Zvcm1hdCA9IEkyU19JTlBVVF9GT1JNQVQ7Cj4gKwlpdDY1MDUtPmF1ZGlvLmkyc19q
+dXN0aWZpZWQgPSBJMlNfSlVTVElGSUVEOwo+ICsJaXQ2NTA1LT5hdWRpby5pMnNfZGF0YV9kZWxh
+eSA9IEkyU19EQVRBX0RFTEFZOwo+ICsJaXQ2NTA1LT5hdWRpby5pMnNfd3NfY2hhbm5lbCA9IEky
+U19XU19DSEFOTkVMOwo+ICsJaXQ2NTA1LT5hdWRpby5pMnNfZGF0YV9zZXF1ZW5jZSA9IEkyU19E
+QVRBX1NFUVVFTkNFOwo+ICsJaXQ2NTA1LT5hdWRpby53b3JkX2xlbmd0aCA9IEFVRElPX1dPUkRf
+TEVOR1RIOwo+ICsJbWVtc2V0KGl0NjUwNS0+c2hhMV9pbnB1dCwgMCwgc2l6ZW9mKGl0NjUwNS0+
+c2hhMV9pbnB1dCkpOwo+ICsJbWVtc2V0KGl0NjUwNS0+YmtzdnMsIDAsIHNpemVvZihpdDY1MDUt
+PmJrc3ZzKSk7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgaXQ2NTA1X3NlbmRfdmlkZW9faW5mb2Zy
+YW1lKHN0cnVjdCBpdDY1MDUgKml0NjUwNSwKPiArCQkJCSAgICAgICBzdHJ1Y3QgaGRtaV9hdmlf
+aW5mb2ZyYW1lICpmcmFtZSkKPiArewo+ICsJdTggYnVmZmVyW0hETUlfSU5GT0ZSQU1FX0hFQURF
+Ul9TSVpFICsgSERNSV9BVklfSU5GT0ZSQU1FX1NJWkVdOwo+ICsJaW50IGVycjsKPiArCXN0cnVj
+dCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsKPiArCWVyciA9IGhkbWlf
+YXZpX2luZm9mcmFtZV9wYWNrKGZyYW1lLCBidWZmZXIsIHNpemVvZihidWZmZXIpKTsKPiArCWlm
+IChlcnIgPCAwKSB7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsICJGYWlsZWQgdG8gcGFjayBBVkkg
+aW5mb2ZyYW1lOiAlZCIsIGVycik7Cj4gKwkJcmV0dXJuIGVycjsKPiArCX0KPiArCj4gKwllcnIg
+PSBpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfSU5GT0ZSQU1FX0NUUkwsIEVOX0FWSV9QS1Qs
+IDB4MDApOwo+ICsJaWYgKGVycikKPiArCQlyZXR1cm4gZXJyOwo+ICsKPiArCWVyciA9IHJlZ21h
+cF9idWxrX3dyaXRlKGl0NjUwNS0+cmVnbWFwLCBSRUdfQVZJX0lORk9fREIxLAo+ICsJCQkJYnVm
+ZmVyICsgSERNSV9JTkZPRlJBTUVfSEVBREVSX1NJWkUsCj4gKwkJCQlmcmFtZS0+bGVuZ3RoKTsK
+PiArCWlmIChlcnIpCj4gKwkJcmV0dXJuIGVycjsKPiArCj4gKwllcnIgPSBpdDY1MDVfc2V0X2Jp
+dHMoaXQ2NTA1LCBSRUdfSU5GT0ZSQU1FX0NUUkwsIEVOX0FWSV9QS1QsCj4gKwkJCSAgICAgIEVO
+X0FWSV9QS1QpOwo+ICsJaWYgKGVycikKPiArCQlyZXR1cm4gZXJyOwo+ICsKPiArCXJldHVybiAw
+Owo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfZ2V0X2V4dGNvbl9wcm9wZXJ0eShzdHJ1
+Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCWludCBlcnI7Cj4gKwl1bmlvbiBleHRjb25fcHJv
+cGVydHlfdmFsdWUgcHJvcGVydHk7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2NTA1LT5j
+bGllbnQtPmRldjsKPiArCj4gKwlpZiAoaXQ2NTA1LT5leHRjb24gJiYgIWl0NjUwNS0+bGFuZV9z
+d2FwX2Rpc2FibGVkKSB7Cj4gKwkJZXJyID0gZXh0Y29uX2dldF9wcm9wZXJ0eShpdDY1MDUtPmV4
+dGNvbiwgRVhUQ09OX0RJU1BfRFAsCj4gKwkJCQkJICBFWFRDT05fUFJPUF9VU0JfVFlQRUNfUE9M
+QVJJVFksCj4gKwkJCQkJICAmcHJvcGVydHkpOwo+ICsJCWlmIChlcnIpIHsKPiArCQkJRFJNX0RF
+Vl9FUlJPUihkZXYsICJnZXQgcHJvcGVydHkgZmFpbCEiKTsKPiArCQkJcmV0dXJuOwo+ICsJCX0K
+PiArCQlpdDY1MDUtPmxhbmVfc3dhcCA9IHByb3BlcnR5LmludHZhbDsKPiArCX0KPiArfQo+ICsK
+PiArc3RhdGljIHZvaWQgaXQ2NTA1X2Nsa19waGFzZV9hZGp1c3RtZW50KHN0cnVjdCBpdDY1MDUg
+Kml0NjUwNSwKPiArCQkJCQljb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKPiAr
+ewo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0NMS19DVFJMMCwgTV9QQ0xLX0RFTEFZ
+LAo+ICsJCW1vZGUtPmNsb2NrIDwgQURKVVNUX1BIQVNFX1RIUkVTSE9MRCA/IFBJWEVMX0NMS19E
+RUxBWSA6IDApOwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0RBVEFfQ1RSTDAsIFZJ
+REVPX0xBVENIX0VER0UsCj4gKwkJCVBJWEVMX0NMS19JTlZFUlNFIDw8IDQpOwo+ICt9Cj4gKwo+
+ICtzdGF0aWMgdm9pZCBpdDY1MDVfaW5pdChzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiAr
+CWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19CQU5LX1NFTCwgMHgwMCk7Cj4gKwlpdDY1MDVfd3Jp
+dGUoaXQ2NTA1LCBSRUdfQVVYX09QVCwgQVVYX0FVVE9fUlNUIHwgQVVYX0ZJWF9GUkVRKTsKPiAr
+CWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVVhfQ1RSTCwgQVVYX05PX1NFR01FTlRfV1IpOwo+
+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX0hEQ1BfQ1RSTDIsIEhEQ1BfQU5fU0VMIHwgSERD
+UF9IV19IUERJUlFfQUNUKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19WSURfQlVTX0NU
+UkwwLCBJTl9ERFIgfCBERFJfQ0QpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX1ZJRF9C
+VVNfQ1RSTDEsIDB4MDEpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX0FVRElPX0NUUkww
+LCBBVURJT18xNkJfQk9VTkQpOwo+ICsKPiArCS8qIGNoaXAgaW50ZXJuYWwgc2V0dGluZywgZG9u
+J3QgbW9kaWZ5ICovCj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfSFBEX0lSUV9USU1FLCAw
+eEY1KTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVVhfREVCVUdfTU9ERSwgMHg0RCk7
+Cj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfQVVYX09QVDIsIDB4MTcpOwo+ICsJaXQ2NTA1
+X3dyaXRlKGl0NjUwNSwgUkVHX0hEQ1BfT1BULCAweDYwKTsKPiArCWl0NjUwNV93cml0ZShpdDY1
+MDUsIFJFR19EQVRBX01VVEVfQ1RSTCwKPiArCQkgICAgIEVOX1ZJRF9NVVRFIHwgRU5fQVVEX01V
+VEUgfCBFTkFCTEVfQVVUT19WSURFT19GSUZPX1JFU0VUKTsKPiArCWl0NjUwNV93cml0ZShpdDY1
+MDUsIFJFR19USU1FX1NUTVBfQ1RSTCwKPiArCQkgICAgIEVOX1NTQ19HQVQgfCBFTl9FTkhBTkNF
+X1ZJRF9TVE1QIHwgRU5fRU5IQU5DRV9BVURfU1RNUCk7Cj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1
+LCBSRUdfSU5GT0ZSQU1FX0NUUkwsIDB4MDApOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVH
+X0JBTktfU0VMLCAweDAxKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19EUlZfMF9EQl84
+MDBfTVYsCj4gKwkJICAgICBhZmVfc2V0dGluZ190YWJsZVtpdDY1MDUtPmFmZV9zZXR0aW5nXVsw
+XSk7Cj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfUFJFXzBfREJfODAwX01WLAo+ICsJCSAg
+ICAgYWZlX3NldHRpbmdfdGFibGVbaXQ2NTA1LT5hZmVfc2V0dGluZ11bMV0pOwo+ICsJaXQ2NTA1
+X3dyaXRlKGl0NjUwNSwgUkVHX1BSRV8zUDVfREJfODAwX01WLAo+ICsJCSAgICAgYWZlX3NldHRp
+bmdfdGFibGVbaXQ2NTA1LT5hZmVfc2V0dGluZ11bMl0pOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUw
+NSwgUkVHX1NTQ19DVFJMMCwgMHg5RSk7Cj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfU1ND
+X0NUUkwxLCAweDFDKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19TU0NfQ1RSTDIsIDB4
+NDIpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX0JBTktfU0VMLCAweDAwKTsKPiArfQo+
+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X3ZpZGVvX2Rpc2FibGUoc3RydWN0IGl0NjUwNSAqaXQ2
+NTA1KQo+ICt7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfREFUQV9NVVRFX0NUUkws
+IEVOX1ZJRF9NVVRFLCBFTl9WSURfTVVURSk7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBS
+RUdfSU5GT0ZSQU1FX0NUUkwsIEVOX1ZJRF9DVFJMX1BLVCwgMHgwMCk7Cj4gKwlpdDY1MDVfc2V0
+X2JpdHMoaXQ2NTA1LCBSRUdfUkVTRVRfQ1RSTCwgVklERU9fUkVTRVQsIFZJREVPX1JFU0VUKTsK
+PiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X3ZpZGVvX3Jlc2V0KHN0cnVjdCBpdDY1MDUg
+Kml0NjUwNSkKPiArewo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0RBVEFfTVVURV9D
+VFJMLCBFTl9WSURfTVVURSwgRU5fVklEX01VVEUpOwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUw
+NSwgUkVHX0lORk9GUkFNRV9DVFJMLCBFTl9WSURfQ1RSTF9QS1QsIDB4MDApOwo+ICsJaXQ2NTA1
+X3NldF9iaXRzKGl0NjUwNSwgUkVHX1JFU0VUX0NUUkwsIFZJREVPX1JFU0VULCBWSURFT19SRVNF
+VCk7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfNTAxX0ZJRk9fQ1RSTCwgUlNUXzUw
+MV9GSUZPLCBSU1RfNTAxX0ZJRk8pOwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHXzUw
+MV9GSUZPX0NUUkwsIFJTVF81MDFfRklGTywgMHgwMCk7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2
+NTA1LCBSRUdfUkVTRVRfQ1RSTCwgVklERU9fUkVTRVQsIDB4MDApOwo+ICt9Cj4gKwo+ICtzdGF0
+aWMgdm9pZCBpdDY1MDVfdXBkYXRlX3ZpZGVvX3BhcmFtZXRlcihzdHJ1Y3QgaXQ2NTA1ICppdDY1
+MDUsCj4gKwkJCQkJICBjb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKPiArewo+
+ICsJaXQ2NTA1X2Nsa19waGFzZV9hZGp1c3RtZW50KGl0NjUwNSwgbW9kZSk7Cj4gKwlpdDY1MDVf
+dmlkZW9fZGlzYWJsZShpdDY1MDUpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgYm9vbCBpdDY1MDVfYXVk
+aW9faW5wdXQoc3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlpbnQgcmVnMDUsIHJlZ2Jl
+Owo+ICsKPiArCXJlZzA1ID0gaXQ2NTA1X3JlYWQoaXQ2NTA1LCBSRUdfUkVTRVRfQ1RSTCk7Cj4g
+KwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfUkVTRVRfQ1RSTCwgQVVESU9fUkVTRVQsIDB4
+MDApOwo+ICsJdXNsZWVwX3JhbmdlKDMwMDAsIDQwMDApOwo+ICsJcmVnYmUgPSBpdDY1MDVfcmVh
+ZChpdDY1MDUsIFJFR19BVURJT19JTlBVVF9GUkVRKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUs
+IFJFR19SRVNFVF9DVFJMLCByZWcwNSk7Cj4gKwo+ICsJcmV0dXJuIHJlZ2JlICE9IDB4RkY7Cj4g
+K30KPiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9zZXR1cF9hdWRpb19jaGFubmVsX3N0YXR1cyhz
+dHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCWVudW0gaXQ2NTA1X2F1ZGlvX3NhbXBsZV9y
+YXRlIHNhbXBsZV9yYXRlID0gaXQ2NTA1LT5hdWRpby5zYW1wbGVfcmF0ZTsKPiArCXU4IGF1ZGlv
+X3dvcmRfbGVuZ3RoX21hcFtdID0geyAweDAyLCAweDA0LCAweDAzLCAweDBCIH07Cj4gKwo+ICsJ
+LyogQ2hhbm5lbCBTdGF0dXMgKi8KPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19JRUM5NThf
+U1RTMCwgaXQ2NTA1LT5hdWRpby50eXBlIDw8IDEpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwg
+UkVHX0lFQzk1OF9TVFMxLCAweDAwKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19JRUM5
+NThfU1RTMiwgMHgwMCk7Cj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfSUVDOTU4X1NUUzMs
+IHNhbXBsZV9yYXRlKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19JRUM5NThfU1RTNCwg
+KH5zYW1wbGVfcmF0ZSA8PCA0KSB8Cj4gKwkJICAgICBhdWRpb193b3JkX2xlbmd0aF9tYXBbaXQ2
+NTA1LT5hdWRpby53b3JkX2xlbmd0aF0pOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVf
+c2V0dXBfYXVkaW9fZm9ybWF0KHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJLyogSTJT
+IE1PREUgKi8KPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVURJT19GTVQsCj4gKwkJICAg
+ICAoaXQ2NTA1LT5hdWRpby53b3JkX2xlbmd0aCA8PCA1KSB8Cj4gKwkJICAgICAoaXQ2NTA1LT5h
+dWRpby5pMnNfZGF0YV9zZXF1ZW5jZSA8PCA0KSB8Cj4gKwkJICAgICAoaXQ2NTA1LT5hdWRpby5p
+MnNfd3NfY2hhbm5lbCA8PCAzKSB8Cj4gKwkJICAgICAoaXQ2NTA1LT5hdWRpby5pMnNfZGF0YV9k
+ZWxheSA8PCAyKSB8Cj4gKwkJICAgICAoaXQ2NTA1LT5hdWRpby5pMnNfanVzdGlmaWVkIDw8IDEp
+IHwKPiArCQkgICAgIGl0NjUwNS0+YXVkaW8uaTJzX2lucHV0X2Zvcm1hdCk7Cj4gKwlpZiAoaXQ2
+NTA1LT5hdWRpby5zZWxlY3QgPT0gU1BESUYpIHsKPiArCQlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBS
+RUdfQVVESU9fRklGT19TRUwsIDB4MDApOwo+ICsJCS8qIDB4MzAgPSAxMjgqRlMgKi8KPiArCQlp
+dDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfQVVYX09QVCwgMHhGMCwgMHgzMCk7Cj4gKwl9IGVs
+c2Ugewo+ICsJCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVURJT19GSUZPX1NFTCwgMHhFNCk7
+Cj4gKwl9Cj4gKwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX0FVRElPX0NUUkwwLCAweDIw
+KTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVURJT19DVFJMMSwgMHgwMCk7Cj4gK30K
+PiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9lbmFibGVfYXVkaW9fc291cmNlKHN0cnVjdCBpdDY1
+MDUgKml0NjUwNSkKPiArewo+ICsJdW5zaWduZWQgaW50IGF1ZGlvX3NvdXJjZV9jb3VudDsKPiAr
+Cj4gKwlhdWRpb19zb3VyY2VfY291bnQgPSBCSVQoRElWX1JPVU5EX1VQKGl0NjUwNS0+YXVkaW8u
+Y2hhbm5lbF9jb3VudCwgMikpCj4gKwkJCQkgLSAxOwo+ICsKPiArCWF1ZGlvX3NvdXJjZV9jb3Vu
+dCB8PSBpdDY1MDUtPmF1ZGlvLnNlbGVjdCA8PCA0Owo+ICsKPiArCWl0NjUwNV93cml0ZShpdDY1
+MDUsIFJFR19BVURJT19TUkNfQ1RSTCwgYXVkaW9fc291cmNlX2NvdW50KTsKPiArfQo+ICsKPiAr
+c3RhdGljIHZvaWQgaXQ2NTA1X2VuYWJsZV9hdWRpb19pbmZvZnJhbWUoc3RydWN0IGl0NjUwNSAq
+aXQ2NTA1KQo+ICt7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2NTA1LT5jbGllbnQtPmRl
+djsKPiArCXU4IGF1ZGlvX2luZm9fY2FbXSA9IHsgMHgwMCwgMHgwMCwgMHgwMSwgMHgwMywgMHgw
+NywgMHgwQiwgMHgwRiwgMHgxRiB9Owo+ICsKPiArCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwg
+ImluZm9mcmFtZSBjaGFubmVsX2FsbG9jYXRpb246MHglMDJ4IiwKPiArCQkJICAgICBhdWRpb19p
+bmZvX2NhW2l0NjUwNS0+YXVkaW8uY2hhbm5lbF9jb3VudCAtIDFdKTsKPiArCj4gKwlpdDY1MDVf
+d3JpdGUoaXQ2NTA1LCBSRUdfQVVEX0lORk9GUkFNX0RCMSwgaXQ2NTA1LT5hdWRpby5jaGFubmVs
+X2NvdW50Cj4gKwkJICAgICAtIDEpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX0FVRF9J
+TkZPRlJBTV9EQjIsIDB4MDApOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX0FVRF9JTkZP
+RlJBTV9EQjMsCj4gKwkJICAgICBhdWRpb19pbmZvX2NhW2l0NjUwNS0+YXVkaW8uY2hhbm5lbF9j
+b3VudCAtIDFdKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVURfSU5GT0ZSQU1fREI0
+LCAweDAwKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJFR19BVURfSU5GT0ZSQU1fU1VNLCAw
+eDAwKTsKPiArCj4gKwkvKiBFbmFibGUgQXVkaW8gSW5mb0ZyYW1lICovCj4gKwlpdDY1MDVfc2V0
+X2JpdHMoaXQ2NTA1LCBSRUdfSU5GT0ZSQU1FX0NUUkwsIEVOX0FVRF9DVFJMX1BLVCwKPiArCQkJ
+RU5fQVVEX0NUUkxfUEtUKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2Rpc2FibGVf
+YXVkaW8oc3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2
+NTA1LCBSRUdfREFUQV9NVVRFX0NUUkwsIEVOX0FVRF9NVVRFLCBFTl9BVURfTVVURSk7Cj4gKwlp
+dDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfQVVESU9fU1JDX0NUUkwsIE1fQVVESU9fSTJTX0VO
+LCAweDAwKTsKPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19JTkZPRlJBTUVfQ1RSTCwg
+RU5fQVVEX0NUUkxfUEtULCAweDAwKTsKPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19S
+RVNFVF9DVFJMLCBBVURJT19SRVNFVCwgQVVESU9fUkVTRVQpOwo+ICt9Cj4gKwo+ICtzdGF0aWMg
+dm9pZCBpdDY1MDVfZW5hYmxlX2F1ZGlvKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJ
+c3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwlpbnQgcmVnYmU7
+Cj4gKwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAic3RhcnQiKTsKPiArCWl0NjUwNV9k
+aXNhYmxlX2F1ZGlvKGl0NjUwNSk7Cj4gKwo+ICsJaXQ2NTA1X3NldHVwX2F1ZGlvX2NoYW5uZWxf
+c3RhdHVzKGl0NjUwNSk7Cj4gKwlpdDY1MDVfc2V0dXBfYXVkaW9fZm9ybWF0KGl0NjUwNSk7Cj4g
+KwlpdDY1MDVfZW5hYmxlX2F1ZGlvX3NvdXJjZShpdDY1MDUpOwo+ICsJaXQ2NTA1X2VuYWJsZV9h
+dWRpb19pbmZvZnJhbWUoaXQ2NTA1KTsKPiArCj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdf
+QVVESU9fTl8wXzcsIDB4MDApOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgUkVHX0FVRElPX05f
+OF8xNSwgMHg4MCk7Cj4gKwlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfQVVESU9fTl8xNl8yMywg
+MHgwMCk7Cj4gKwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0FVRElPX1NSQ19DVFJM
+LCBBVURJT19GSUZPX1JFU0VULAo+ICsJCQlBVURJT19GSUZPX1JFU0VUKTsKPiArCWl0NjUwNV9z
+ZXRfYml0cyhpdDY1MDUsIFJFR19BVURJT19TUkNfQ1RSTCwgQVVESU9fRklGT19SRVNFVCwgMHgw
+MCk7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfUkVTRVRfQ1RSTCwgQVVESU9fUkVT
+RVQsIDB4MDApOwo+ICsJcmVnYmUgPSBpdDY1MDVfcmVhZChpdDY1MDUsIFJFR19BVURJT19JTlBV
+VF9GUkVRKTsKPiArCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgInJlZ2JlOjB4JTAyeCBhdWRp
+byBpbnB1dCBmczogJWQuJWQga0h6IiwKPiArCQkJICAgICByZWdiZSwgNjc1MCAvIHJlZ2JlLCAo
+Njc1MCAlIHJlZ2JlKSAqIDEwIC8gcmVnYmUpOwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwg
+UkVHX0RBVEFfTVVURV9DVFJMLCBFTl9BVURfTVVURSwgMHgwMCk7Cj4gK30KPiArCj4gK3N0YXRp
+YyBib29sIGl0NjUwNV91c2Vfc3RlcF90cmFpbl9jaGVjayhzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUp
+Cj4gK3sKPiArCWlmIChpdDY1MDUtPmxpbmsucmV2aXNpb24gPj0gMHgxMikKPiArCQlyZXR1cm4g
+aXQ2NTA1LT5kcGNkW0RQX1RSQUlOSU5HX0FVWF9SRF9JTlRFUlZBTF0gPj0gMHgwMTsKPiArCj4g
+KwlyZXR1cm4gdHJ1ZTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X3BhcnNlX2xpbmtf
+Y2FwYWJpbGl0aWVzKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJc3RydWN0IGRldmlj
+ZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwlzdHJ1Y3QgaXQ2NTA1X2RybV9kcF9s
+aW5rICpsaW5rID0gJml0NjUwNS0+bGluazsKPiArCWludCBiY2FwczsKPiArCj4gKwlpZiAoaXQ2
+NTA1LT5kcGNkWzBdID09IDApIHsKPiArCQlpdDY1MDVfYXV4X29uKGl0NjUwNSk7Cj4gKwkJaXQ2
+NTA1X2dldF9kcGNkKGl0NjUwNSwgRFBfRFBDRF9SRVYsIGl0NjUwNS0+ZHBjZCwKPiArCQkJCUFS
+UkFZX1NJWkUoaXQ2NTA1LT5kcGNkKSk7Cj4gKwl9Cj4gKwo+ICsJRFJNX0RFVl9ERUJVR19EUklW
+RVIoZGV2LCAiRFBDRCBSZXYuOiAlZC4lZCIsCj4gKwkJCSAgICAgbGluay0+cmV2aXNpb24gPj4g
+NCwgbGluay0+cmV2aXNpb24gJiAweDBGKTsKPiArCj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihk
+ZXYsICJTaW5rIG1heCBsaW5rIHJhdGU6ICVkLiUwMmQgR2JwcyBwZXIgbGFuZSIsCj4gKwkJCSAg
+ICAgbGluay0+cmF0ZSAvIDEwMDAwMCwgbGluay0+cmF0ZSAvIDEwMDAgJSAxMDApOwo+ICsKPiAr
+CWl0NjUwNS0+bGlua19yYXRlX2J3X2NvZGUgPSBkcm1fZHBfbGlua19yYXRlX3RvX2J3X2NvZGUo
+bGluay0+cmF0ZSk7Cj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJsaW5rIHJhdGUgYncg
+Y29kZToweCUwMngiLAo+ICsJCQkgICAgIGl0NjUwNS0+bGlua19yYXRlX2J3X2NvZGUpOwo+ICsJ
+aXQ2NTA1LT5saW5rX3JhdGVfYndfY29kZSA9IG1pbigoaW50KWl0NjUwNS0+bGlua19yYXRlX2J3
+X2NvZGUsCj4gKwkJCQkJTUFYX0xJTktfUkFURSk7Cj4gKwo+ICsJaXQ2NTA1LT5sYW5lX2NvdW50
+ID0gbGluay0+bnVtX2xhbmVzOwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiU2luayBz
+dXBwb3J0ICVkIGxhbmVzIHRyYWluaW5nIiwKPiArCQkJICAgICBpdDY1MDUtPmxhbmVfY291bnQp
+Owo+ICsJaXQ2NTA1LT5sYW5lX2NvdW50ID0gbWluKChpbnQpaXQ2NTA1LT5sYW5lX2NvdW50LCBN
+QVhfTEFORV9DT1VOVCk7Cj4gKwo+ICsJaXQ2NTA1LT5icmFuY2hfZGV2aWNlID0gZHJtX2RwX2lz
+X2JyYW5jaChpdDY1MDUtPmRwY2QpOwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiU2lu
+ayAlc2JyYW5jaCBkZXZpY2UiLAo+ICsJCQkgICAgIGl0NjUwNS0+YnJhbmNoX2RldmljZSA/ICIi
+IDogIk5vdCAiKTsKPiArCj4gKwlpdDY1MDUtPmVuYWJsZV9lbmhhbmNlZF9mcmFtZSA9ICEhbGlu
+ay0+Y2FwYWJpbGl0aWVzOwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiU2luayAlc1N1
+cHBvcnQgRW5oYW5jZWQgRnJhbWluZyIsCj4gKwkJCSAgICAgaXQ2NTA1LT5lbmFibGVfZW5oYW5j
+ZWRfZnJhbWUgPyAiIiA6ICJOb3QgIik7Cj4gKwo+ICsJaXQ2NTA1LT5lbmFibGVfc3NjID0gISEo
+aXQ2NTA1LT5kcGNkW0RQX01BWF9ET1dOU1BSRUFEXSAmCj4gKwkJCQlEUF9NQVhfRE9XTlNQUkVB
+RF8wXzUpOwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiTWF4aW11bSBEb3duLVNwcmVh
+ZDogJXMsICVzc3VwcG9ydCBTU0MhIiwKPiArCQkJICAgICBpdDY1MDUtPmVuYWJsZV9zc2MgPyAi
+MC41IiA6ICIwIiwKPiArCQkJICAgICBpdDY1MDUtPmVuYWJsZV9zc2MgPyAiIiA6ICJOb3QgIik7
+Cj4gKwo+ICsJaXQ2NTA1LT5zdGVwX3RyYWluID0gaXQ2NTA1X3VzZV9zdGVwX3RyYWluX2NoZWNr
+KGl0NjUwNSk7Cj4gKwlpZiAoaXQ2NTA1LT5zdGVwX3RyYWluKQo+ICsJCURSTV9ERVZfREVCVUdf
+RFJJVkVSKGRldiwgImF1dG8gdHJhaW4gZmFpbCwgd2lsbCBzdGVwIHRyYWluIik7Cj4gKwo+ICsJ
+YmNhcHMgPSBpdDY1MDVfZHBjZF9yZWFkKGl0NjUwNSwgRFBfQVVYX0hEQ1BfQkNBUFMpOwo+ICsJ
+RFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiYmNhcHM6MHglMDJ4IiwgYmNhcHMpOwo+ICsJaWYg
+KGJjYXBzICYgRFBfQkNBUFNfSERDUF9DQVBBQkxFKSB7Cj4gKwkJaXQ2NTA1LT5pc19yZXBlYXRl
+ciA9ICEhKGJjYXBzICYgRFBfQkNBUFNfUkVQRUFURVJfUFJFU0VOVCk7Cj4gKwkJRFJNX0RFVl9E
+RUJVR19EUklWRVIoZGV2LCAiU3VwcG9ydCBIRENQISBEb3duc3RyZWFtIGlzICVzISIsCj4gKwkJ
+CQkgICAgIGl0NjUwNS0+aXNfcmVwZWF0ZXIgPyAicmVwZWF0ZXIiIDoKPiArCQkJCSAgICAgInJl
+Y2VpdmVyIik7Cj4gKwl9IGVsc2Ugewo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgIlNp
+bmsgbm90IHN1cHBvcnQgSERDUCEiKTsKPiArCQlpdDY1MDUtPmhkY3BfZGVzaXJlZCA9IGZhbHNl
+Owo+ICsJfQo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiSERDUCAlcyIsCj4gKwkJCSAg
+ICAgaXQ2NTA1LT5oZGNwX2Rlc2lyZWQgPyAiZGVzaXJlZCIgOiAidW5kZXNpcmVkIik7Cj4gK30K
+PiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9zZXR1cF9zc2Moc3RydWN0IGl0NjUwNSAqaXQ2NTA1
+KQo+ICt7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfVFJBSU5fQ1RSTDAsIFNQUkVB
+RF9BTVBfNSwKPiArCQkJaXQ2NTA1LT5lbmFibGVfc3NjID8gU1BSRUFEX0FNUF81IDogMHgwMCk7
+Cj4gKwlpZiAoaXQ2NTA1LT5lbmFibGVfc3NjKSB7Cj4gKwkJaXQ2NTA1X3dyaXRlKGl0NjUwNSwg
+UkVHX0JBTktfU0VMLCAweDAxKTsKPiArCQlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfU1NDX0NU
+UkwwLCAweDlFKTsKPiArCQlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfU1NDX0NUUkwxLCAweDFD
+KTsKPiArCQlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfU1NDX0NUUkwyLCAweDQyKTsKPiArCQlp
+dDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfQkFOS19TRUwsIDB4MDApOwo+ICsJCWl0NjUwNV93cml0
+ZShpdDY1MDUsIFJFR19TUF9DVFJMMCwgMHgwNyk7Cj4gKwkJaXQ2NTA1X3dyaXRlKGl0NjUwNSwg
+UkVHX0lQX0NUUkwxLCAweDI5KTsKPiArCQlpdDY1MDVfd3JpdGUoaXQ2NTA1LCBSRUdfSVBfQ1RS
+TDIsIDB4MDMpOwo+ICsJCS8qIFN0YW1wIEludGVycnVwdCBTdGVwICovCj4gKwkJaXQ2NTA1X3Nl
+dF9iaXRzKGl0NjUwNSwgUkVHX1RJTUVfU1RNUF9DVFJMLCBNX1NUQU1QX1NURVAsCj4gKwkJCQkw
+eDEwKTsKPiArCQlpdDY1MDVfZHBjZF93cml0ZShpdDY1MDUsIERQX0RPV05TUFJFQURfQ1RSTCwK
+PiArCQkJCSAgRFBfU1BSRUFEX0FNUF8wXzUpOwo+ICsJfSBlbHNlIHsKPiArCQlpdDY1MDVfZHBj
+ZF93cml0ZShpdDY1MDUsIERQX0RPV05TUFJFQURfQ1RSTCwgMHgwMCk7Cj4gKwkJaXQ2NTA1X3Nl
+dF9iaXRzKGl0NjUwNSwgUkVHX1RJTUVfU1RNUF9DVFJMLCBNX1NUQU1QX1NURVAsCj4gKwkJCQkw
+eDAwKTsKPiArCX0KPiArfQo+ICsKPiArc3RhdGljIGlubGluZSB2b2lkIGl0NjUwNV9saW5rX3Jh
+dGVfc2V0dXAoc3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlpdDY1MDVfc2V0X2JpdHMo
+aXQ2NTA1LCBSRUdfVFJBSU5fQ1RSTDAsIEZPUkNFX0xCUiwKPiArCQkJKGl0NjUwNS0+bGlua19y
+YXRlX2J3X2NvZGUgPT0gUkJSKSA/IEZPUkNFX0xCUiA6IDB4MDApOwo+ICsJaXQ2NTA1X3NldF9i
+aXRzKGl0NjUwNSwgUkVHX0xJTktfRFJWLCBEUlZfSFMsCj4gKwkJCShpdDY1MDUtPmxpbmtfcmF0
+ZV9id19jb2RlID09IFJCUikgPyAweDAwIDogRFJWX0hTKTsKPiArfQo+ICsKPiArc3RhdGljIHZv
+aWQgaXQ2NTA1X2xhbmVfY291bnRfc2V0dXAoc3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4g
+KwlpdDY1MDVfZ2V0X2V4dGNvbl9wcm9wZXJ0eShpdDY1MDUpOwo+ICsJaXQ2NTA1X3NldF9iaXRz
+KGl0NjUwNSwgUkVHX1RSQUlOX0NUUkwwLCBMQU5FX1NXQVAsCj4gKwkJCWl0NjUwNS0+bGFuZV9z
+d2FwID8gTEFORV9TV0FQIDogMHgwMCk7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdf
+VFJBSU5fQ1RSTDAsIExBTkVfQ09VTlRfTUFTSywKPiArCQkJKGl0NjUwNS0+bGFuZV9jb3VudCAt
+IDEpIDw8IDEpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfbGlua190cmFpbmluZ19z
+ZXR1cChzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9
+ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsKPiArCWlmIChpdDY1MDUtPmVuYWJsZV9lbmhhbmNl
+ZF9mcmFtZSkKPiArCQlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1LCBSRUdfREFUQV9NVVRFX0NUUkws
+Cj4gKwkJCQlFTkFCTEVfRU5IQU5DRURfRlJBTUUsIEVOQUJMRV9FTkhBTkNFRF9GUkFNRSk7Cj4g
+Kwo+ICsJaXQ2NTA1X2xpbmtfcmF0ZV9zZXR1cChpdDY1MDUpOwo+ICsJaXQ2NTA1X2xhbmVfY291
+bnRfc2V0dXAoaXQ2NTA1KTsKPiArCWl0NjUwNV9zZXR1cF9zc2MoaXQ2NTA1KTsKPiArCURSTV9E
+RVZfREVCVUdfRFJJVkVSKGRldiwKPiArCQkJICAgICAiJXMsICVkIGxhbmVzLCAlc2FibGUgc3Nj
+LCAlc2FibGUgZW5oYW5jZWQgZnJhbWUiLAo+ICsJCQkgICAgIGl0NjUwNS0+bGlua19yYXRlX2J3
+X2NvZGUgIT0gUkJSID8gIkhCUiIgOiAiUkJSIiwKPiArCQkJICAgICBpdDY1MDUtPmxhbmVfY291
+bnQsCj4gKwkJCSAgICAgaXQ2NTA1LT5lbmFibGVfc3NjID8gImVuIiA6ICJkaXMiLAo+ICsJCQkg
+ICAgIGl0NjUwNS0+ZW5hYmxlX2VuaGFuY2VkX2ZyYW1lID8gImVuIiA6ICJkaXMiKTsKPiArfQo+
+ICsKPiArc3RhdGljIGJvb2wgaXQ2NTA1X2xpbmtfc3RhcnRfYXV0b190cmFpbihzdHJ1Y3QgaXQ2
+NTA1ICppdDY1MDUpCj4gK3sKPiArCWludCB0aW1lb3V0ID0gNTAwLCBsaW5rX3RyYWluaW5nX3N0
+YXRlOwo+ICsJYm9vbCBzdGF0ZSA9IGZhbHNlOwo+ICsKPiArCW11dGV4X2xvY2soJml0NjUwNS0+
+YXV4X2xvY2spOwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX1RSQUlOX0NUUkwwLAo+
+ICsJCQkJRk9SQ0VfQ1JfRE9ORSB8IEZPUkNFX0VRX0RPTkUsIDB4MDApOwo+ICsJaXQ2NTA1X3dy
+aXRlKGl0NjUwNSwgUkVHX1RSQUlOX0NUUkwxLCBGT1JDRV9SRVRSQUlOKTsKPiArCWl0NjUwNV93
+cml0ZShpdDY1MDUsIFJFR19UUkFJTl9DVFJMMSwgQVVUT19UUkFJTik7Cj4gKwo+ICsJd2hpbGUg
+KHRpbWVvdXQgPiAwKSB7Cj4gKwkJdXNsZWVwX3JhbmdlKDEwMDAsIDIwMDApOwo+ICsJCWxpbmtf
+dHJhaW5pbmdfc3RhdGUgPSBpdDY1MDVfcmVhZChpdDY1MDUsIFJFR19MSU5LX1RSQUlOX1NUUyk7
+Cj4gKwo+ICsJCWlmICgobGlua190cmFpbmluZ19zdGF0ZSA+IDApICYmCj4gKwkJICAgIChsaW5r
+X3RyYWluaW5nX3N0YXRlICYgTElOS19TVEFURV9OT1JQKSkgewo+ICsJCQlzdGF0ZSA9IHRydWU7
+Cj4gKwkJCWdvdG8gdW5sb2NrOwo+ICsJCX0KPiArCj4gKwkJdGltZW91dC0tOwo+ICsJfQo+ICt1
+bmxvY2s6Cj4gKwltdXRleF91bmxvY2soJml0NjUwNS0+YXV4X2xvY2spOwo+ICsKPiArCXJldHVy
+biBzdGF0ZTsKPiArfQo+ICsKPiArc3RhdGljIGludCBpdDY1MDVfZHJtX2RwX2xpbmtfY29uZmln
+dXJlKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJdTggdmFsdWVzWzJdOwo+ICsJaW50
+IGVycjsKPiArCXN0cnVjdCBkcm1fZHBfYXV4ICphdXggPSAmaXQ2NTA1LT5hdXg7Cj4gKwo+ICsJ
+dmFsdWVzWzBdID0gaXQ2NTA1LT5saW5rX3JhdGVfYndfY29kZTsKPiArCXZhbHVlc1sxXSA9IGl0
+NjUwNS0+bGFuZV9jb3VudDsKPiArCj4gKwlpZiAoaXQ2NTA1LT5lbmFibGVfZW5oYW5jZWRfZnJh
+bWUpCj4gKwkJdmFsdWVzWzFdIHw9IERQX0xBTkVfQ09VTlRfRU5IQU5DRURfRlJBTUVfRU47Cj4g
+Kwo+ICsJZXJyID0gZHJtX2RwX2RwY2Rfd3JpdGUoYXV4LCBEUF9MSU5LX0JXX1NFVCwgdmFsdWVz
+LCBzaXplb2YodmFsdWVzKSk7Cj4gKwlpZiAoZXJyIDwgMCkKPiArCQlyZXR1cm4gZXJyOwo+ICsK
+PiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgYm9vbCBpdDY1MDVfY2hlY2tfdm9sdGFn
+ZV9zd2luZ19tYXgodTggbGFuZV92b2x0YWdlX3N3aW5nX3ByZV9lbXBoYXNpcykKPiArewo+ICsJ
+cmV0dXJuICgobGFuZV92b2x0YWdlX3N3aW5nX3ByZV9lbXBoYXNpcyAmIDB4MDMpID09IE1BWF9D
+Ul9MRVZFTCk7Cj4gK30KPiArCj4gK3N0YXRpYyBib29sIGl0NjUwNV9jaGVja19wcmVfZW1waGFz
+aXNfbWF4KHU4IGxhbmVfdm9sdGFnZV9zd2luZ19wcmVfZW1waGFzaXMpCj4gK3sKPiArCXJldHVy
+biAoKGxhbmVfdm9sdGFnZV9zd2luZ19wcmVfZW1waGFzaXMgJiAweDAzKSA9PSBNQVhfRVFfTEVW
+RUwpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgYm9vbCBpdDY1MDVfY2hlY2tfbWF4X3ZvbHRhZ2Vfc3dp
+bmdfcmVhY2hlZCh1OCAqbGFuZV92b2x0YWdlX3N3aW5nLAo+ICsJCQkJCQkgICB1OCBsYW5lX2Nv
+dW50KQo+ICt7Cj4gKwl1OCBpOwo+ICsKPiArCWZvciAoaSA9IDA7IGkgPCBsYW5lX2NvdW50OyBp
+KyspIHsKPiArCQlpZiAobGFuZV92b2x0YWdlX3N3aW5nW2ldICYgRFBfVFJBSU5fTUFYX1NXSU5H
+X1JFQUNIRUQpCj4gKwkJCXJldHVybiB0cnVlOwo+ICsJfQo+ICsKPiArCXJldHVybiBmYWxzZTsK
+PiArfQo+ICsKPiArc3RhdGljIGJvb2wgaXQ2NTA1X3N0ZXBfdHJhaW5fbGFuZV92b2x0YWdlX3By
+ZV9lbXBoYXNpc19zZXQoCj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUsCj4gKwlzdHJ1Y3QgaXQ2
+NTA1X3N0ZXBfdHJhaW5fcGFyYSAqbGFuZV92b2x0YWdlX3ByZV9lbXBoYXNpcywKPiArCXU4ICps
+YW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzX3NldCkKPiArewo+ICsJdTggaTsKPiArCj4gKwlmb3Ig
+KGkgPSAwOyBpIDwgaXQ2NTA1LT5sYW5lX2NvdW50OyBpKyspIHsKPiArCQlsYW5lX3ZvbHRhZ2Vf
+cHJlX2VtcGhhc2lzLT52b2x0YWdlX3N3aW5nW2ldICY9IDB4MDM7Cj4gKwkJbGFuZV92b2x0YWdl
+X3ByZV9lbXBoYXNpc19zZXRbaV0gPQo+ICsJCQlsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzLT52
+b2x0YWdlX3N3aW5nW2ldOwo+ICsJCWlmIChpdDY1MDVfY2hlY2tfdm9sdGFnZV9zd2luZ19tYXgo
+Cj4gKwkJCSAgICBsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzLT52b2x0YWdlX3N3aW5nW2ldKSkK
+PiArCQkJbGFuZV92b2x0YWdlX3ByZV9lbXBoYXNpc19zZXRbaV0gfD0KPiArCQkJCURQX1RSQUlO
+X01BWF9TV0lOR19SRUFDSEVEOwo+ICsKPiArCQlsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzLT5w
+cmVfZW1waGFzaXNbaV0gJj0gMHgwMzsKPiArCQlsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzX3Nl
+dFtpXSB8PQo+ICsJCQlsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzLT5wcmVfZW1waGFzaXNbaV0K
+PiArCQkJPDwgRFBfVFJBSU5fUFJFX0VNUEhBU0lTX1NISUZUOwo+ICsJCWlmIChpdDY1MDVfY2hl
+Y2tfcHJlX2VtcGhhc2lzX21heCgKPiArCQkJICAgIGxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMt
+PnByZV9lbXBoYXNpc1tpXSkpCj4gKwkJCWxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXNfc2V0W2ld
+IHw9Cj4gKwkJCQlEUF9UUkFJTl9NQVhfUFJFX0VNUEhBU0lTX1JFQUNIRUQ7Cj4gKwkJaXQ2NTA1
+X2RwY2Rfd3JpdGUoaXQ2NTA1LCBEUF9UUkFJTklOR19MQU5FMF9TRVQgKyBpLAo+ICsJCQkJICBs
+YW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzX3NldFtpXSk7Cj4gKwo+ICsJCWlmIChsYW5lX3ZvbHRh
+Z2VfcHJlX2VtcGhhc2lzX3NldFtpXSAhPQo+ICsJCSAgICBpdDY1MDVfZHBjZF9yZWFkKGl0NjUw
+NSwgRFBfVFJBSU5JTkdfTEFORTBfU0VUICsgaSkpCj4gKwkJCXJldHVybiBmYWxzZTsKPiArCX0K
+PiArCj4gKwlyZXR1cm4gdHJ1ZTsKPiArfQo+ICsKPiArc3RhdGljIGJvb2wKPiAraXQ2NTA1X3N0
+ZXBfY3JfdHJhaW4oc3RydWN0IGl0NjUwNSAqaXQ2NTA1LAo+ICsJCSAgICAgc3RydWN0IGl0NjUw
+NV9zdGVwX3RyYWluX3BhcmEgKmxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMpCj4gK3sKPiArCXU4
+IGxvb3BfY291bnQgPSAwLCBpID0gMCwgajsKPiArCXU4IGxpbmtfc3RhdHVzW0RQX0xJTktfU1RB
+VFVTX1NJWkVdID0geyAwIH07Cj4gKwl1OCBsYW5lX2xldmVsX2NvbmZpZ1tNQVhfTEFORV9DT1VO
+VF0gPSB7IDAgfTsKPiArCWludCBwcmVfZW1waGFzaXNfYWRqdXN0ID0gLTEsIHZvbHRhZ2Vfc3dp
+bmdfYWRqdXN0ID0gLTE7Cj4gKwo+ICsJaXQ2NTA1X2RwY2Rfd3JpdGUoaXQ2NTA1LCBEUF9ET1dO
+U1BSRUFEX0NUUkwsCj4gKwkJCSAgaXQ2NTA1LT5lbmFibGVfc3NjID8gRFBfU1BSRUFEX0FNUF8w
+XzUgOiAweDAwKTsKPiArCWl0NjUwNV9kcGNkX3dyaXRlKGl0NjUwNSwgRFBfVFJBSU5JTkdfUEFU
+VEVSTl9TRVQsCj4gKwkJCSAgRFBfVFJBSU5JTkdfUEFUVEVSTl8xKTsKPiArCj4gKwl3aGlsZSAo
+bG9vcF9jb3VudCA8IDUgJiYgaSA8IDEwKSB7Cj4gKwkJaSsrOwo+ICsJCWlmICghaXQ2NTA1X3N0
+ZXBfdHJhaW5fbGFuZV92b2x0YWdlX3ByZV9lbXBoYXNpc19zZXQoCj4gKwkJCSAgICBpdDY1MDUs
+IGxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMsCj4gKwkJCSAgICBsYW5lX2xldmVsX2NvbmZpZykp
+Cj4gKwkJCWNvbnRpbnVlOwo+ICsJCWRybV9kcF9saW5rX3RyYWluX2Nsb2NrX3JlY292ZXJ5X2Rl
+bGF5KGl0NjUwNS0+ZHBjZCk7Cj4gKwkJZHJtX2RwX2RwY2RfcmVhZF9saW5rX3N0YXR1cygmaXQ2
+NTA1LT5hdXgsIGxpbmtfc3RhdHVzKTsKPiArCj4gKwkJaWYgKGRybV9kcF9jbG9ja19yZWNvdmVy
+eV9vayhsaW5rX3N0YXR1cywgaXQ2NTA1LT5sYW5lX2NvdW50KSkgewo+ICsJCQlpdDY1MDVfc2V0
+X2JpdHMoaXQ2NTA1LCBSRUdfVFJBSU5fQ1RSTDAsIEZPUkNFX0NSX0RPTkUsCj4gKwkJCQkJRk9S
+Q0VfQ1JfRE9ORSk7Cj4gKwkJCXJldHVybiB0cnVlOwo+ICsJCX0KPiArCQlEUk1fREVWX0RFQlVH
+X0RSSVZFUigmaXQ2NTA1LT5jbGllbnQtPmRldiwgImNyIG5vdCBkb25lIik7Cj4gKwo+ICsJCWlm
+IChpdDY1MDVfY2hlY2tfbWF4X3ZvbHRhZ2Vfc3dpbmdfcmVhY2hlZChsYW5lX2xldmVsX2NvbmZp
+ZywKPiArCQkJCQkJCSAgIGl0NjUwNS0+bGFuZV9jb3VudCkpCj4gKwkJCWdvdG8gY3JfdHJhaW5f
+ZmFpbDsKPiArCj4gKwkJZm9yIChqID0gMDsgaiA8IGl0NjUwNS0+bGFuZV9jb3VudDsgaisrKSB7
+Cj4gKwkJCWxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMtPnZvbHRhZ2Vfc3dpbmdbal0gPQo+ICsJ
+CQkJZHJtX2RwX2dldF9hZGp1c3RfcmVxdWVzdF92b2x0YWdlKGxpbmtfc3RhdHVzLAo+ICsJCQkJ
+CQkJCSAgaikgPj4KPiArCQkJCURQX1RSQUlOX1ZPTFRBR0VfU1dJTkdfU0hJRlQ7Cj4gKwkJCWxh
+bmVfdm9sdGFnZV9wcmVfZW1waGFzaXMtPnByZV9lbXBoYXNpc1tqXSA9Cj4gKwkJCQlkcm1fZHBf
+Z2V0X2FkanVzdF9yZXF1ZXN0X3ByZV9lbXBoYXNpcygKPiArCQkJCQlsaW5rX3N0YXR1cywgaikg
+Pj4KPiArCQkJCURQX1RSQUlOX1BSRV9FTVBIQVNJU19TSElGVDsKPiArCQkJaWYgKCh2b2x0YWdl
+X3N3aW5nX2FkanVzdCA9PQo+ICsJCQkgICAgIGxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMtPnZv
+bHRhZ2Vfc3dpbmdbal0pICYmCj4gKwkJCSAgICAocHJlX2VtcGhhc2lzX2FkanVzdCA9PQo+ICsJ
+CQkgICAgIGxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMtPnByZV9lbXBoYXNpc1tqXSkpIHsKPiAr
+CQkJCWxvb3BfY291bnQrKzsKPiArCQkJCWNvbnRpbnVlOwo+ICsJCQl9Cj4gKwo+ICsJCQl2b2x0
+YWdlX3N3aW5nX2FkanVzdCA9Cj4gKwkJCQlsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzLT52b2x0
+YWdlX3N3aW5nW2pdOwo+ICsJCQlwcmVfZW1waGFzaXNfYWRqdXN0ID0KPiArCQkJCWxhbmVfdm9s
+dGFnZV9wcmVfZW1waGFzaXMtPnByZV9lbXBoYXNpc1tqXTsKPiArCQkJbG9vcF9jb3VudCA9IDA7
+Cj4gKwo+ICsJCQlpZiAodm9sdGFnZV9zd2luZ19hZGp1c3QgKyBwcmVfZW1waGFzaXNfYWRqdXN0
+ID4KPiArCQkJICAgIE1BWF9FUV9MRVZFTCkKPiArCQkJCWxhbmVfdm9sdGFnZV9wcmVfZW1waGFz
+aXMtPnZvbHRhZ2Vfc3dpbmdbal0gPQo+ICsJCQkJCU1BWF9FUV9MRVZFTCAtCj4gKwkJCQkJbGFu
+ZV92b2x0YWdlX3ByZV9lbXBoYXNpcwo+ICsJCQkJCQktPnByZV9lbXBoYXNpc1tqXTsKPiArCQl9
+Cj4gKwl9Cj4gKwo+ICtjcl90cmFpbl9mYWlsOgo+ICsJaXQ2NTA1X2RwY2Rfd3JpdGUoaXQ2NTA1
+LCBEUF9UUkFJTklOR19QQVRURVJOX1NFVCwKPiArCQkJICBEUF9UUkFJTklOR19QQVRURVJOX0RJ
+U0FCTEUpOwo+ICsKPiArCXJldHVybiBmYWxzZTsKPiArfQo+ICsKPiArc3RhdGljIGJvb2wKPiAr
+aXQ2NTA1X3N0ZXBfZXFfdHJhaW4oc3RydWN0IGl0NjUwNSAqaXQ2NTA1LAo+ICsJCSAgICAgc3Ry
+dWN0IGl0NjUwNV9zdGVwX3RyYWluX3BhcmEgKmxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMpCj4g
+K3sKPiArCXU4IGxvb3BfY291bnQgPSAwLCBpLCBsaW5rX3N0YXR1c1tEUF9MSU5LX1NUQVRVU19T
+SVpFXSA9IHsgMCB9Owo+ICsJdTggbGFuZV9sZXZlbF9jb25maWdbTUFYX0xBTkVfQ09VTlRdID0g
+eyAwIH07Cj4gKwo+ICsJaXQ2NTA1X2RwY2Rfd3JpdGUoaXQ2NTA1LCBEUF9UUkFJTklOR19QQVRU
+RVJOX1NFVCwKPiArCQkJICBEUF9UUkFJTklOR19QQVRURVJOXzIpOwo+ICsKPiArCXdoaWxlIChs
+b29wX2NvdW50IDwgNikgewo+ICsJCWxvb3BfY291bnQrKzsKPiArCj4gKwkJaWYgKCFpdDY1MDVf
+c3RlcF90cmFpbl9sYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzX3NldCgKPiArCQkJICAgIGl0NjUw
+NSwgbGFuZV92b2x0YWdlX3ByZV9lbXBoYXNpcywKPiArCQkJICAgIGxhbmVfbGV2ZWxfY29uZmln
+KSkKPiArCQkJY29udGludWU7Cj4gKwo+ICsJCWRybV9kcF9saW5rX3RyYWluX2NoYW5uZWxfZXFf
+ZGVsYXkoaXQ2NTA1LT5kcGNkKTsKPiArCQlkcm1fZHBfZHBjZF9yZWFkX2xpbmtfc3RhdHVzKCZp
+dDY1MDUtPmF1eCwgbGlua19zdGF0dXMpOwo+ICsKPiArCQlpZiAoIWRybV9kcF9jbG9ja19yZWNv
+dmVyeV9vayhsaW5rX3N0YXR1cywgaXQ2NTA1LT5sYW5lX2NvdW50KSkKPiArCQkJZ290byBlcV90
+cmFpbl9mYWlsOwo+ICsKPiArCQlpZiAoZHJtX2RwX2NoYW5uZWxfZXFfb2sobGlua19zdGF0dXMs
+IGl0NjUwNS0+bGFuZV9jb3VudCkpIHsKPiArCQkJaXQ2NTA1X2RwY2Rfd3JpdGUoaXQ2NTA1LCBE
+UF9UUkFJTklOR19QQVRURVJOX1NFVCwKPiArCQkJCQkgIERQX1RSQUlOSU5HX1BBVFRFUk5fRElT
+QUJMRSk7Cj4gKwkJCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19UUkFJTl9DVFJMMCwgRk9S
+Q0VfRVFfRE9ORSwKPiArCQkJCQlGT1JDRV9FUV9ET05FKTsKPiArCQkJcmV0dXJuIHRydWU7Cj4g
+KwkJfQo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKCZpdDY1MDUtPmNsaWVudC0+ZGV2LCAiZXEg
+bm90IGRvbmUiKTsKPiArCj4gKwkJZm9yIChpID0gMDsgaSA8IGl0NjUwNS0+bGFuZV9jb3VudDsg
+aSsrKSB7Cj4gKwkJCWxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMtPnZvbHRhZ2Vfc3dpbmdbaV0g
+PQo+ICsJCQkJZHJtX2RwX2dldF9hZGp1c3RfcmVxdWVzdF92b2x0YWdlKGxpbmtfc3RhdHVzLAo+
+ICsJCQkJCQkJCSAgaSkgPj4KPiArCQkJCURQX1RSQUlOX1ZPTFRBR0VfU1dJTkdfU0hJRlQ7Cj4g
+KwkJCWxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMtPnByZV9lbXBoYXNpc1tpXSA9Cj4gKwkJCQlk
+cm1fZHBfZ2V0X2FkanVzdF9yZXF1ZXN0X3ByZV9lbXBoYXNpcygKPiArCQkJCQlsaW5rX3N0YXR1
+cywgaSkgPj4KPiArCQkJCURQX1RSQUlOX1BSRV9FTVBIQVNJU19TSElGVDsKPiArCj4gKwkJCWlm
+IChsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzLT52b2x0YWdlX3N3aW5nW2ldICsKPiArCQkJCSAg
+ICBsYW5lX3ZvbHRhZ2VfcHJlX2VtcGhhc2lzLT5wcmVfZW1waGFzaXNbaV0gPgo+ICsJCQkgICAg
+TUFYX0VRX0xFVkVMKQo+ICsJCQkJbGFuZV92b2x0YWdlX3ByZV9lbXBoYXNpcy0+dm9sdGFnZV9z
+d2luZ1tpXSA9Cj4gKwkJCQkJMHgwMyAtIGxhbmVfdm9sdGFnZV9wcmVfZW1waGFzaXMKPiArCQkJ
+CQkJICAgICAgIC0+cHJlX2VtcGhhc2lzW2ldOwo+ICsJCX0KPiArCX0KPiArCj4gK2VxX3RyYWlu
+X2ZhaWw6Cj4gKwlpdDY1MDVfZHBjZF93cml0ZShpdDY1MDUsIERQX1RSQUlOSU5HX1BBVFRFUk5f
+U0VULAo+ICsJCQkgIERQX1RSQUlOSU5HX1BBVFRFUk5fRElTQUJMRSk7Cj4gKwlyZXR1cm4gZmFs
+c2U7Cj4gK30KPiArCj4gK3N0YXRpYyBib29sIGl0NjUwNV9saW5rX3N0YXJ0X3N0ZXBfdHJhaW4o
+c3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlpbnQgZXJyOwo+ICsJc3RydWN0IGl0NjUw
+NV9zdGVwX3RyYWluX3BhcmEgbGFuZV92b2x0YWdlX3ByZV9lbXBoYXNpcyA9IHsKPiArCQkudm9s
+dGFnZV9zd2luZyA9IHsgMCB9LAo+ICsJCS5wcmVfZW1waGFzaXMgPSB7IDAgfSwKPiArCX07Cj4g
+Kwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoJml0NjUwNS0+Y2xpZW50LT5kZXYsICJzdGFydCIp
+Owo+ICsJZXJyID0gaXQ2NTA1X2RybV9kcF9saW5rX2NvbmZpZ3VyZShpdDY1MDUpOwo+ICsKPiAr
+CWlmIChlcnIgPCAwKQo+ICsJCXJldHVybiBmYWxzZTsKPiArCWlmICghaXQ2NTA1X3N0ZXBfY3Jf
+dHJhaW4oaXQ2NTA1LCAmbGFuZV92b2x0YWdlX3ByZV9lbXBoYXNpcykpCj4gKwkJcmV0dXJuIGZh
+bHNlOwo+ICsJaWYgKCFpdDY1MDVfc3RlcF9lcV90cmFpbihpdDY1MDUsICZsYW5lX3ZvbHRhZ2Vf
+cHJlX2VtcGhhc2lzKSkKPiArCQlyZXR1cm4gZmFsc2U7Cj4gKwlyZXR1cm4gdHJ1ZTsKPiArfQo+
+ICsKPiArc3RhdGljIGJvb2wgaXQ2NTA1X2dldF92aWRlb19zdGF0dXMoc3RydWN0IGl0NjUwNSAq
+aXQ2NTA1KQo+ICt7Cj4gKwlpbnQgcmVnXzBkOwo+ICsKPiArCXJlZ18wZCA9IGl0NjUwNV9yZWFk
+KGl0NjUwNSwgUkVHX1NZU1RFTV9TVFMpOwo+ICsKPiArCWlmIChyZWdfMGQgPCAwKQo+ICsJCXJl
+dHVybiBmYWxzZTsKPiArCj4gKwlyZXR1cm4gISEocmVnXzBkICYgVklERU9fU1RCKTsKPiArfQo+
+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X3Jlc2V0X2hkY3Aoc3RydWN0IGl0NjUwNSAqaXQ2NTA1
+KQo+ICt7Cj4gKwlpdDY1MDUtPmhkY3Bfc3RhdHVzID0gSERDUF9BVVRIX0lETEU7Cj4gKwkvKiBE
+aXNhYmxlIENQX0Rlc2lyZWQgKi8KPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19IRENQ
+X0NUUkwxLCBIRENQX0NQX0VOQUJMRSwgMHgwMCk7Cj4gKwlpdDY1MDVfc2V0X2JpdHMoaXQ2NTA1
+LCBSRUdfUkVTRVRfQ1RSTCwgSERDUF9SRVNFVCwgSERDUF9SRVNFVCk7Cj4gK30KPiArCj4gK3N0
+YXRpYyB2b2lkIGl0NjUwNV9zdGFydF9oZGNwKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+
+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+ICsJRFJN
+X0RFVl9ERUJVR19EUklWRVIoZGV2LCAic3RhcnQiKTsKPiArCWl0NjUwNV9yZXNldF9oZGNwKGl0
+NjUwNSk7Cj4gKwlxdWV1ZV9kZWxheWVkX3dvcmsoc3lzdGVtX3dxLCAmaXQ2NTA1LT5oZGNwX3dv
+cmssCj4gKwkJCSAgIG1zZWNzX3RvX2ppZmZpZXMoMjQwMCkpOwo+ICt9Cj4gKwo+ICtzdGF0aWMg
+dm9pZCBpdDY1MDVfc3RvcF9oZGNwKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJaXQ2
+NTA1X3Jlc2V0X2hkY3AoaXQ2NTA1KTsKPiArCWNhbmNlbF9kZWxheWVkX3dvcmsoJml0NjUwNS0+
+aGRjcF93b3JrKTsKPiArfQo+ICsKPiArc3RhdGljIGJvb2wgaXQ2NTA1X2hkY3BfaXNfa3N2X3Zh
+bGlkKHU4ICprc3YpCj4gK3sKPiArCWludCBpLCBvbmVzID0gMDsKPiArCj4gKwkvKiBLU1YgaGFz
+IDIwIDEncyBhbmQgMjAgMCdzICovCj4gKwlmb3IgKGkgPSAwOyBpIDwgRFJNX0hEQ1BfS1NWX0xF
+TjsgaSsrKQo+ICsJCW9uZXMgKz0gaHdlaWdodDgoa3N2W2ldKTsKPiArCWlmIChvbmVzICE9IDIw
+KQo+ICsJCXJldHVybiBmYWxzZTsKPiArCXJldHVybiB0cnVlOwo+ICt9Cj4gKwo+ICtzdGF0aWMg
+dm9pZCBpdDY1MDVfaGRjcF9wYXJ0MV9hdXRoKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+
+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwl1OCBoZGNw
+X2JjYXBzOwo+ICsKPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19SRVNFVF9DVFJMLCBI
+RENQX1JFU0VULCAweDAwKTsKPiArCS8qIERpc2FibGUgQ1BfRGVzaXJlZCAqLwo+ICsJaXQ2NTA1
+X3NldF9iaXRzKGl0NjUwNSwgUkVHX0hEQ1BfQ1RSTDEsIEhEQ1BfQ1BfRU5BQkxFLCAweDAwKTsK
+PiArCj4gKwl1c2xlZXBfcmFuZ2UoMTAwMCwgMTUwMCk7Cj4gKwloZGNwX2JjYXBzID0gaXQ2NTA1
+X2RwY2RfcmVhZChpdDY1MDUsIERQX0FVWF9IRENQX0JDQVBTKTsKPiArCURSTV9ERVZfREVCVUdf
+RFJJVkVSKGRldiwgIkRQQ0RbMHg2ODAyOF06IDB4JTAyeCIsCj4gKwkJCSAgICAgaGRjcF9iY2Fw
+cyk7Cj4gKwo+ICsJaWYgKCFoZGNwX2JjYXBzKQo+ICsJCXJldHVybjsKPiArCj4gKwkvKiBjbGVh
+ciB0aGUgcmVwZWF0ZXIgTGlzdCBDaGsgRG9uZSBhbmQgZmFpbCBiaXQgKi8KPiArCWl0NjUwNV9z
+ZXRfYml0cyhpdDY1MDUsIFJFR19IRENQX1RSSUdHRVIsCj4gKwkJCUhEQ1BfVFJJR0dFUl9LU1Zf
+RE9ORSB8IEhEQ1BfVFJJR0dFUl9LU1ZfRkFJTCwKPiArCQkJMHgwMCk7Cj4gKwo+ICsJLyogRW5h
+YmxlIEFuIEdlbmVyYXRvciAqLwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0hEQ1Bf
+Q1RSTDIsIEhEQ1BfQU5fR0VOLCBIRENQX0FOX0dFTik7Cj4gKwkvKiBkZWxheTFtcygxMCk7Ki8K
+PiArCXVzbGVlcF9yYW5nZSgxMDAwMCwgMTUwMDApOwo+ICsJLyogU3RvcCBBbiBHZW5lcmF0b3Ig
+Ki8KPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19IRENQX0NUUkwyLCBIRENQX0FOX0dF
+TiwgMHgwMCk7Cj4gKwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0hEQ1BfQ1RSTDEs
+IEhEQ1BfQ1BfRU5BQkxFLCBIRENQX0NQX0VOQUJMRSk7Cj4gKwo+ICsJaXQ2NTA1X3NldF9iaXRz
+KGl0NjUwNSwgUkVHX0hEQ1BfVFJJR0dFUiwgSERDUF9UUklHR0VSX1NUQVJULAo+ICsJCQlIRENQ
+X1RSSUdHRVJfU1RBUlQpOwo+ICsKPiArCWl0NjUwNS0+aGRjcF9zdGF0dXMgPSBIRENQX0FVVEhf
+R09JTkc7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgaXQ2NTA1X3NoYTFfZGlnZXN0KHN0cnVjdCBp
+dDY1MDUgKml0NjUwNSwgdTggKnNoYTFfaW5wdXQsCj4gKwkJCSAgICAgIHVuc2lnbmVkIGludCBz
+aXplLCB1OCAqb3V0cHV0X2F2KQo+ICt7Cj4gKwlzdHJ1Y3Qgc2hhc2hfZGVzYyAqZGVzYzsKPiAr
+CXN0cnVjdCBjcnlwdG9fc2hhc2ggKnRmbTsKPiArCWludCBlcnI7Cj4gKwlzdHJ1Y3QgZGV2aWNl
+ICpkZXYgPSAmaXQ2NTA1LT5jbGllbnQtPmRldjsKPiArCj4gKwl0Zm0gPSBjcnlwdG9fYWxsb2Nf
+c2hhc2goInNoYTEiLCAwLCAwKTsKPiArCWlmIChJU19FUlIodGZtKSkgewo+ICsJCURSTV9ERVZf
+RVJST1IoZGV2LCAiY3J5cHRvX2FsbG9jX3NoYXNoIHNoYTEgZmFpbGVkIik7Cj4gKwkJcmV0dXJu
+IFBUUl9FUlIodGZtKTsKPiArCX0KPiArCWRlc2MgPSBremFsbG9jKHNpemVvZigqZGVzYykgKyBj
+cnlwdG9fc2hhc2hfZGVzY3NpemUodGZtKSwgR0ZQX0tFUk5FTCk7Cj4gKwlpZiAoIWRlc2MpIHsK
+PiArCQljcnlwdG9fZnJlZV9zaGFzaCh0Zm0pOwo+ICsJCXJldHVybiAtRU5PTUVNOwo+ICsJfQo+
+ICsKPiArCWRlc2MtPnRmbSA9IHRmbTsKPiArCWVyciA9IGNyeXB0b19zaGFzaF9kaWdlc3QoZGVz
+Yywgc2hhMV9pbnB1dCwgc2l6ZSwgb3V0cHV0X2F2KTsKPiArCWlmIChlcnIpCj4gKwkJRFJNX0RF
+Vl9FUlJPUihkZXYsICJjcnlwdG9fc2hhc2hfZGlnZXN0IHNoYTEgZmFpbGVkIik7Cj4gKwo+ICsJ
+Y3J5cHRvX2ZyZWVfc2hhc2godGZtKTsKPiArCWtmcmVlKGRlc2MpOwo+ICsJcmV0dXJuIGVycjsK
+PiArfQo+ICsKPiArc3RhdGljIGludCBpdDY1MDVfc2V0dXBfc2hhMV9pbnB1dChzdHJ1Y3QgaXQ2
+NTA1ICppdDY1MDUsIHU4ICpzaGExX2lucHV0KQo+ICt7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYg
+PSAmaXQ2NTA1LT5jbGllbnQtPmRldjsKPiArCXU4IGJpbmZvWzJdOwo+ICsJaW50IGRvd25fc3Ry
+ZWFtX2NvdW50LCBpLCBlcnIsIG1zZ19jb3VudCA9IDA7Cj4gKwo+ICsJZXJyID0gaXQ2NTA1X2dl
+dF9kcGNkKGl0NjUwNSwgRFBfQVVYX0hEQ1BfQklORk8sIGJpbmZvLAo+ICsJCQkgICAgICBBUlJB
+WV9TSVpFKGJpbmZvKSk7Cj4gKwo+ICsJaWYgKGVyciA8IDApIHsKPiArCQlEUk1fREVWX0VSUk9S
+KGRldiwgIlJlYWQgYmluZm8gdmFsdWUgRmFpbCIpOwo+ICsJCXJldHVybiBlcnI7Cj4gKwl9Cj4g
+Kwo+ICsJZG93bl9zdHJlYW1fY291bnQgPSBiaW5mb1swXSAmIDB4N0Y7Cj4gKwlEUk1fREVWX0RF
+QlVHX0RSSVZFUihkZXYsICJiaW5mbzoweCUqcGgiLCAoaW50KUFSUkFZX1NJWkUoYmluZm8pLAo+
+ICsJCQkgICAgIGJpbmZvKTsKPiArCj4gKwlpZiAoKGJpbmZvWzBdICYgQklUKDcpKSB8fCAoYmlu
+Zm9bMV0gJiBCSVQoMykpKSB7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsICJIRENQIG1heCBjYXNj
+YWRlIGRldmljZSBleGNlZWQiKTsKPiArCQlyZXR1cm4gMDsKPiArCX0KPiArCj4gKwlpZiAoIWRv
+d25fc3RyZWFtX2NvdW50IHx8Cj4gKwkgICAgKGRvd25fc3RyZWFtX2NvdW50ID4gTUFYX0hEQ1Bf
+RE9XTl9TVFJFQU1fQ09VTlQpKSB7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsICJIRENQIGRvd24g
+c3RyZWFtIGNvdW50IEVycm9yICVkIiwKPiArCQkJICAgICAgZG93bl9zdHJlYW1fY291bnQpOwo+
+ICsJCXJldHVybiAwOwo+ICsJfQo+ICsKPiArCWZvciAoaSA9IDA7IGkgPCBkb3duX3N0cmVhbV9j
+b3VudDsgaSsrKSB7Cj4gKwkJZXJyID0gaXQ2NTA1X2dldF9kcGNkKGl0NjUwNSwgRFBfQVVYX0hE
+Q1BfS1NWX0ZJRk8gKwo+ICsJCQkJICAgICAgKGkgJSAzKSAqIERSTV9IRENQX0tTVl9MRU4sCj4g
+KwkJCQkgICAgICBzaGExX2lucHV0ICsgbXNnX2NvdW50LAo+ICsJCQkJICAgICAgRFJNX0hEQ1Bf
+S1NWX0xFTik7Cj4gKwo+ICsJCWlmIChlcnIgPCAwKQo+ICsJCQlyZXR1cm4gZXJyOwo+ICsKPiAr
+CQltc2dfY291bnQgKz0gNTsKPiArCX0KPiArCj4gKwlpdDY1MDUtPmhkY3BfZG93bl9zdHJlYW1f
+Y291bnQgPSBkb3duX3N0cmVhbV9jb3VudDsKPiArCXNoYTFfaW5wdXRbbXNnX2NvdW50KytdID0g
+YmluZm9bMF07Cj4gKwlzaGExX2lucHV0W21zZ19jb3VudCsrXSA9IGJpbmZvWzFdOwo+ICsKPiAr
+CWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19IRENQX0NUUkwyLCBIRENQX0VOX00wX1JFQUQs
+Cj4gKwkJCUhEQ1BfRU5fTTBfUkVBRCk7Cj4gKwo+ICsJZXJyID0gcmVnbWFwX2J1bGtfcmVhZChp
+dDY1MDUtPnJlZ21hcCwgUkVHX00wXzBfNywKPiArCQkJICAgICAgIHNoYTFfaW5wdXQgKyBtc2df
+Y291bnQsIDgpOwo+ICsKPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19IRENQX0NUUkwy
+LCBIRENQX0VOX00wX1JFQUQsIDB4MDApOwo+ICsKPiArCWlmIChlcnIgPCAwKSB7Cj4gKwkJRFJN
+X0RFVl9FUlJPUihkZXYsICIgV2FybmluZywgUmVhZCBNIHZhbHVlIEZhaWwiKTsKPiArCQlyZXR1
+cm4gZXJyOwo+ICsJfQo+ICsKPiArCW1zZ19jb3VudCArPSA4Owo+ICsKPiArCXJldHVybiBtc2df
+Y291bnQ7Cj4gK30KPiArCj4gK3N0YXRpYyBib29sIGl0NjUwNV9oZGNwX3BhcnQyX2tzdmxpc3Rf
+Y2hlY2soc3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYg
+PSAmaXQ2NTA1LT5jbGllbnQtPmRldjsKPiArCXU4IGF2WzVdWzRdLCBidls1XVs0XTsKPiArCWlu
+dCBpLCBlcnI7Cj4gKwo+ICsJaSA9IGl0NjUwNV9zZXR1cF9zaGExX2lucHV0KGl0NjUwNSwgaXQ2
+NTA1LT5zaGExX2lucHV0KTsKPiArCWlmIChpIDw9IDApIHsKPiArCQlEUk1fREVWX0VSUk9SKGRl
+diwgIlNIQS0xIElucHV0IGxlbmd0aCBlcnJvciAlZCIsIGkpOwo+ICsJCXJldHVybiBmYWxzZTsK
+PiArCX0KPiArCj4gKwlpdDY1MDVfc2hhMV9kaWdlc3QoaXQ2NTA1LCBpdDY1MDUtPnNoYTFfaW5w
+dXQsIGksICh1OCAqKWF2KTsKPiArCj4gKwllcnIgPSBpdDY1MDVfZ2V0X2RwY2QoaXQ2NTA1LCBE
+UF9BVVhfSERDUF9WX1BSSU1FKDApLCAodTggKilidiwKPiArCQkJICAgICAgc2l6ZW9mKGJ2KSk7
+Cj4gKwo+ICsJaWYgKGVyciA8IDApIHsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIlJlYWQgVicg
+dmFsdWUgRmFpbCIpOwo+ICsJCXJldHVybiBmYWxzZTsKPiArCX0KPiArCj4gKwlmb3IgKGkgPSAw
+OyBpIDwgNTsgaSsrKQo+ICsJCWlmICgoYnZbaV1bM10gIT0gYXZbaV1bMF0pIHx8IChidltpXVsy
+XSAhPSBhdltpXVsxXSkgfHwKPiArCQkgICAgKGJ2W2ldWzFdICE9IGF2W2ldWzJdKSB8fCAoYnZb
+aV1bMF0gIT0gYXZbaV1bM10pKQo+ICsJCQlyZXR1cm4gZmFsc2U7Cj4gKwo+ICsJRFJNX0RFVl9E
+RUJVR19EUklWRVIoZGV2LCAiVicgYWxsIG1hdGNoISEiKTsKPiArCXJldHVybiB0cnVlOwo+ICt9
+Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfaGRjcF93YWl0X2tzdl9saXN0KHN0cnVjdCB3b3Jr
+X3N0cnVjdCAqd29yaykKPiArewo+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0gY29udGFpbmVy
+X29mKHdvcmssIHN0cnVjdCBpdDY1MDUsCj4gKwkJCQkJICAgICBoZGNwX3dhaXRfa3N2X2xpc3Qp
+Owo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwl1bnNp
+Z25lZCBpbnQgdGltZW91dCA9IDUwMDA7Cj4gKwl1OCBic3RhdHVzID0gMDsKPiArCWJvb2wga3N2
+X2xpc3RfY2hlY2s7Cj4gKwo+ICsJdGltZW91dCAvPSAyMDsKPiArCXdoaWxlICh0aW1lb3V0ID4g
+MCkgewo+ICsJCWlmICghaXQ2NTA1X2dldF9zaW5rX2hwZF9zdGF0dXMoaXQ2NTA1KSkKPiArCQkJ
+cmV0dXJuOwo+ICsKPiArCQlic3RhdHVzID0gaXQ2NTA1X2RwY2RfcmVhZChpdDY1MDUsIERQX0FV
+WF9IRENQX0JTVEFUVVMpOwo+ICsKPiArCQlpZiAoYnN0YXR1cyAmIERQX0JTVEFUVVNfUkVBRFkp
+Cj4gKwkJCWJyZWFrOwo+ICsKPiArCQltc2xlZXAoMjApOwo+ICsJCXRpbWVvdXQtLTsKPiArCX0K
+PiArCj4gKwlpZiAodGltZW91dCA9PSAwKSB7Cj4gKwkJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2
+LCAidGltZW91dCBhbmQga3N2IGxpc3Qgd2FpdCBmYWlsZWQiKTsKPiArCQlnb3RvIHRpbWVvdXQ7
+Cj4gKwl9Cj4gKwo+ICsJa3N2X2xpc3RfY2hlY2sgPSBpdDY1MDVfaGRjcF9wYXJ0Ml9rc3ZsaXN0
+X2NoZWNrKGl0NjUwNSk7Cj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJrc3YgbGlzdCBy
+ZWFkeSwga3N2IGxpc3QgY2hlY2sgJXMiLAo+ICsJCQkgICAgIGtzdl9saXN0X2NoZWNrID8gInBh
+c3MiIDogImZhaWwiKTsKPiArCWlmIChrc3ZfbGlzdF9jaGVjaykgewo+ICsJCWl0NjUwNV9zZXRf
+Yml0cyhpdDY1MDUsIFJFR19IRENQX1RSSUdHRVIsCj4gKwkJCQlIRENQX1RSSUdHRVJfS1NWX0RP
+TkUsIEhEQ1BfVFJJR0dFUl9LU1ZfRE9ORSk7Cj4gKwkJcmV0dXJuOwo+ICsJfQo+ICt0aW1lb3V0
+Ogo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0hEQ1BfVFJJR0dFUiwKPiArCQkJSERD
+UF9UUklHR0VSX0tTVl9ET05FIHwgSERDUF9UUklHR0VSX0tTVl9GQUlMLAo+ICsJCQlIRENQX1RS
+SUdHRVJfS1NWX0RPTkUgfCBIRENQX1RSSUdHRVJfS1NWX0ZBSUwpOwo+ICt9Cj4gKwo+ICtzdGF0
+aWMgdm9pZCBpdDY1MDVfaGRjcF93b3JrKHN0cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKPiArewo+
+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0gY29udGFpbmVyX29mKHdvcmssIHN0cnVjdCBpdDY1
+MDUsCj4gKwkJCQkJICAgICBoZGNwX3dvcmsud29yayk7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYg
+PSAmaXQ2NTA1LT5jbGllbnQtPmRldjsKPiArCWludCByZXQ7Cj4gKwl1OCBsaW5rX3N0YXR1c1tE
+UF9MSU5LX1NUQVRVU19TSVpFXSA9IHsgMCB9Owo+ICsKPiArCURSTV9ERVZfREVCVUdfRFJJVkVS
+KGRldiwgInN0YXJ0Iik7Cj4gKwo+ICsJaWYgKCFpdDY1MDVfZ2V0X3NpbmtfaHBkX3N0YXR1cyhp
+dDY1MDUpKQo+ICsJCXJldHVybjsKPiArCj4gKwlyZXQgPSBkcm1fZHBfZHBjZF9yZWFkX2xpbmtf
+c3RhdHVzKCZpdDY1MDUtPmF1eCwgbGlua19zdGF0dXMpOwo+ICsJRFJNX0RFVl9ERUJVR19EUklW
+RVIoZGV2LCAicmV0OiAlZCBsaW5rX3N0YXR1czogJSpwaCIsIHJldCwKPiArCQkJICAgICAoaW50
+KXNpemVvZihsaW5rX3N0YXR1cyksIGxpbmtfc3RhdHVzKTsKPiArCj4gKwlpZiAoKHJldCA8IDAp
+IHx8ICFkcm1fZHBfY2hhbm5lbF9lcV9vayhsaW5rX3N0YXR1cywgaXQ2NTA1LT5sYW5lX2NvdW50
+KQo+ICsJICAgIHx8ICFpdDY1MDVfZ2V0X3ZpZGVvX3N0YXR1cyhpdDY1MDUpKSB7Cj4gKwkJRFJN
+X0RFVl9ERUJVR19EUklWRVIoZGV2LCAibGluayB0cmFpbiBub3QgZG9uZSBvciBubyB2aWRlbyIp
+Owo+ICsJCXJldHVybjsKPiArCX0KPiArCj4gKwlyZXQgPSBpdDY1MDVfZ2V0X2RwY2QoaXQ2NTA1
+LCBEUF9BVVhfSERDUF9CS1NWLCBpdDY1MDUtPmJrc3ZzLAo+ICsJCQkgICAgICBBUlJBWV9TSVpF
+KGl0NjUwNS0+YmtzdnMpKTsKPiArCWlmIChyZXQgPCAwKSB7Cj4gKwkJRFJNX0RFVl9FUlJPUihk
+ZXYsICJmYWlsIHRvIGdldCBia3N2ICByZXQ6ICVkIiwgcmV0KTsKPiArCQlpdDY1MDVfc2V0X2Jp
+dHMoaXQ2NTA1LCBSRUdfSERDUF9UUklHR0VSLAo+ICsJCQkJSERDUF9UUklHR0VSX0tTVl9GQUlM
+LCBIRENQX1RSSUdHRVJfS1NWX0ZBSUwpOwo+ICsJfQo+ICsKPiArCURSTV9ERVZfREVCVUdfRFJJ
+VkVSKGRldiwgImJrc3YgPSAweCUqcGgiLAo+ICsJCQkgICAgIChpbnQpQVJSQVlfU0laRShpdDY1
+MDUtPmJrc3ZzKSwgaXQ2NTA1LT5ia3N2cyk7Cj4gKwo+ICsJaWYgKCFpdDY1MDVfaGRjcF9pc19r
+c3ZfdmFsaWQoaXQ2NTA1LT5ia3N2cykpIHsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIkRpc3Bs
+YXkgUG9ydCBia3N2IG5vdCB2YWxpZCIpOwo+ICsJCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJF
+R19IRENQX1RSSUdHRVIsCj4gKwkJCQlIRENQX1RSSUdHRVJfS1NWX0ZBSUwsIEhEQ1BfVFJJR0dF
+Ul9LU1ZfRkFJTCk7Cj4gKwl9Cj4gKwo+ICsJaXQ2NTA1X2hkY3BfcGFydDFfYXV0aChpdDY1MDUp
+Owo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfc2hvd19oZGNwX2luZm8oc3RydWN0IGl0
+NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2NTA1LT5jbGll
+bnQtPmRldjsKPiArCWludCBpOwo+ICsJdTggKnNoYTEgPSBpdDY1MDUtPnNoYTFfaW5wdXQ7Cj4g
+Kwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiaGRjcF9zdGF0dXM6ICVkIGlzX3JlcGVh
+dGVyOiAlZCIsCj4gKwkJCSAgICAgaXQ2NTA1LT5oZGNwX3N0YXR1cywgaXQ2NTA1LT5pc19yZXBl
+YXRlcik7Cj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJia3N2ID0gMHglKnBoIiwKPiAr
+CQkJICAgICAoaW50KUFSUkFZX1NJWkUoaXQ2NTA1LT5ia3N2cyksIGl0NjUwNS0+YmtzdnMpOwo+
+ICsKPiArCWlmIChpdDY1MDUtPmlzX3JlcGVhdGVyKSB7Cj4gKwkJRFJNX0RFVl9ERUJVR19EUklW
+RVIoZGV2LCAiaGRjcF9kb3duX3N0cmVhbV9jb3VudDogJWQiLAo+ICsJCQkJICAgICBpdDY1MDUt
+PmhkY3BfZG93bl9zdHJlYW1fY291bnQpOwo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwg
+InNoYTFfaW5wdXQ6IDB4JSpwaCIsCj4gKwkJCQkgICAgIChpbnQpQVJSQVlfU0laRShpdDY1MDUt
+PnNoYTFfaW5wdXQpLAo+ICsJCQkJICAgICBpdDY1MDUtPnNoYTFfaW5wdXQpOwo+ICsJCWZvciAo
+aSA9IDA7IGkgPCBpdDY1MDUtPmhkY3BfZG93bl9zdHJlYW1fY291bnQ7IGkrKykgewo+ICsJCQlE
+Uk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJLU1ZfJWQgPSAweCUqcGgiLCBpLAo+ICsJCQkJCSAg
+ICAgRFJNX0hEQ1BfS1NWX0xFTiwgc2hhMSk7Cj4gKwkJCXNoYTEgKz0gRFJNX0hEQ1BfS1NWX0xF
+TjsKPiArCQl9Cj4gKwkJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiYmluZm86IDB4JTJwaCBN
+MDogMHglOHBoIiwKPiArCQkJCSAgICAgc2hhMSwgc2hhMSArIDIpOwo+ICsJfQo+ICt9Cj4gKwo+
+ICtzdGF0aWMgdm9pZCBpdDY1MDVfc3RvcF9saW5rX3RyYWluKHN0cnVjdCBpdDY1MDUgKml0NjUw
+NSkKPiArewo+ICsJaXQ2NTA1LT5saW5rX3N0YXRlID0gTElOS19JRExFOwo+ICsJY2FuY2VsX3dv
+cmtfc3luYygmaXQ2NTA1LT5saW5rX3dvcmtzKTsKPiArCWl0NjUwNV93cml0ZShpdDY1MDUsIFJF
+R19UUkFJTl9DVFJMMSwgRk9SQ0VfUkVUUkFJTik7Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIGl0
+NjUwNV9saW5rX3RyYWluX29rKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJc3RydWN0
+IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+ICsJaXQ2NTA1LT5saW5r
+X3N0YXRlID0gTElOS19PSzsKPiArCS8qIGRpc2FsYmUgbXV0ZSBlbmFibGUgYXZpIGluZm8gZnJh
+bWUgKi8KPiArCWl0NjUwNV9zZXRfYml0cyhpdDY1MDUsIFJFR19EQVRBX01VVEVfQ1RSTCwgRU5f
+VklEX01VVEUsIDB4MDApOwo+ICsJaXQ2NTA1X3NldF9iaXRzKGl0NjUwNSwgUkVHX0lORk9GUkFN
+RV9DVFJMLAo+ICsJCQlFTl9WSURfQ1RSTF9QS1QsIEVOX1ZJRF9DVFJMX1BLVCk7Cj4gKwo+ICsJ
+aWYgKGl0NjUwNV9hdWRpb19pbnB1dChpdDY1MDUpKSB7Cj4gKwkJRFJNX0RFVl9ERUJVR19EUklW
+RVIoZGV2LCAiRW5hYmxlIGF1ZGlvISIpOwo+ICsJCWl0NjUwNV9lbmFibGVfYXVkaW8oaXQ2NTA1
+KTsKPiArCX0KPiArCj4gKwlpZiAoaXQ2NTA1LT5oZGNwX2Rlc2lyZWQpCj4gKwkJaXQ2NTA1X3N0
+YXJ0X2hkY3AoaXQ2NTA1KTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2xpbmtfc3Rl
+cF90cmFpbl9wcm9jZXNzKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJc3RydWN0IGRl
+dmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwlpbnQgcmV0LCBpLCBzdGVwX3Jl
+dHJ5ID0gMzsKPiArCj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJTdGFydCBzdGVwIHRy
+YWluIik7Cj4gKwo+ICsJaWYgKGl0NjUwNS0+c2lua19jb3VudCA9PSAwKSB7Cj4gKwkJRFJNX0RF
+Vl9ERUJVR19EUklWRVIoZGV2LCAiaXQ2NTA1LT5zaW5rX2NvdW50OiVkLCBmb3JjZSBlcSIsCj4g
+KwkJCQkgICAgIGl0NjUwNS0+c2lua19jb3VudCk7Cj4gKwkJaXQ2NTA1X3NldF9iaXRzKGl0NjUw
+NSwJUkVHX1RSQUlOX0NUUkwwLCBGT1JDRV9FUV9ET05FLAo+ICsJCQkJRk9SQ0VfRVFfRE9ORSk7
+Cj4gKwkJcmV0dXJuOwo+ICsJfQo+ICsKPiArCWlmICghaXQ2NTA1LT5zdGVwX3RyYWluKSB7Cj4g
+KwkJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAibm90IHN1cHBvcnQgc3RlcCB0cmFpbiIpOwo+
+ICsJCXJldHVybjsKPiArCX0KPiArCj4gKwkvKiBzZXRwIHRyYWluaW5nIHN0YXJ0IGhlcmUgKi8K
+PiArCWZvciAoaSA9IDA7IGkgPCBzdGVwX3JldHJ5OyBpKyspIHsKPiArCQlpdDY1MDVfc2V0X2Jp
+dHMoaXQ2NTA1LCBSRUdfVFJBSU5fQ1RSTDAsCj4gKwkJCQlGT1JDRV9DUl9ET05FIHwgRk9SQ0Vf
+RVFfRE9ORSwgMHgwMCk7Cj4gKwkJaXQ2NTA1X2RwY2Rfd3JpdGUoaXQ2NTA1LCBEUF9UUkFJTklO
+R19QQVRURVJOX1NFVCwKPiArCQkJCSAgRFBfVFJBSU5JTkdfUEFUVEVSTl9ESVNBQkxFKTsKPiAr
+CQlyZXQgPSBpdDY1MDVfbGlua19zdGFydF9zdGVwX3RyYWluKGl0NjUwNSk7Cj4gKwkJRFJNX0RF
+Vl9ERUJVR19EUklWRVIoZGV2LCAic3RlcCB0cmFpbiAlcywgcmV0cnk6JWQgdGltZXMiLAo+ICsJ
+CQkJICAgICByZXQgPyAicGFzcyIgOiAiZmFpbGVkIiwgaSArIDEpOwo+ICsJCWlmIChyZXQpIHsK
+PiArCQkJaXQ2NTA1X2xpbmtfdHJhaW5fb2soaXQ2NTA1KTsKPiArCQkJcmV0dXJuOwo+ICsJCX0K
+PiArCX0KPiArCj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJ0cmFpbmluZyBmYWlsIik7
+Cj4gKwlpdDY1MDUtPmxpbmtfc3RhdGUgPSBMSU5LX0lETEU7Cj4gKwlpdDY1MDVfdmlkZW9fcmVz
+ZXQoaXQ2NTA1KTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2xpbmtfdHJhaW5pbmdf
+d29yayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCj4gK3sKPiArCXN0cnVjdCBpdDY1MDUgKml0
+NjUwNSA9IGNvbnRhaW5lcl9vZih3b3JrLCBzdHJ1Y3QgaXQ2NTA1LCBsaW5rX3dvcmtzKTsKPiAr
+CXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsJaW50IHJldDsK
+PiArCj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJpdDY1MDUtPnNpbmtfY291bnQ6ICVk
+IiwKPiArCQkJICAgICBpdDY1MDUtPnNpbmtfY291bnQpOwo+ICsKPiArCWlmICghaXQ2NTA1X2dl
+dF9zaW5rX2hwZF9zdGF0dXMoaXQ2NTA1KSkKPiArCQlyZXR1cm47Cj4gKwo+ICsJaXQ2NTA1X2xp
+bmtfdHJhaW5pbmdfc2V0dXAoaXQ2NTA1KTsKPiArCWl0NjUwNV9yZXNldF9oZGNwKGl0NjUwNSk7
+Cj4gKwlpdDY1MDVfYXV4X3Jlc2V0KGl0NjUwNSk7Cj4gKwo+ICsJaWYgKGl0NjUwNS0+YXV0b190
+cmFpbl9yZXRyeSA8IDEpIHsKPiArCQlpdDY1MDVfbGlua19zdGVwX3RyYWluX3Byb2Nlc3MoaXQ2
+NTA1KTsKPiArCQlyZXR1cm47Cj4gKwl9Cj4gKwo+ICsJcmV0ID0gaXQ2NTA1X2xpbmtfc3RhcnRf
+YXV0b190cmFpbihpdDY1MDUpOwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiYXV0byB0
+cmFpbiAlcywgYXV0b190cmFpbl9yZXRyeTogJWQiLAo+ICsJCQkgICAgIHJldCA/ICJwYXNzIiA6
+ICJmYWlsZWQiLCBpdDY1MDUtPmF1dG9fdHJhaW5fcmV0cnkpOwo+ICsJaXQ2NTA1LT5hdXRvX3Ry
+YWluX3JldHJ5LS07Cj4gKwo+ICsJaWYgKHJldCkgewo+ICsJCWl0NjUwNV9saW5rX3RyYWluX29r
+KGl0NjUwNSk7Cj4gKwkJcmV0dXJuOwo+ICsJfQo+ICsKPiArCWl0NjUwNV9kdW1wKGl0NjUwNSk7
+Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9wbHVnZ2VkX3N0YXR1c190b19jb2RlYyhz
+dHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCWVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMg
+c3RhdHVzID0gaXQ2NTA1LT5jb25uZWN0b3Jfc3RhdHVzOwo+ICsKPiArCWlmIChpdDY1MDUtPnBs
+dWdnZWRfY2IgJiYgaXQ2NTA1LT5jb2RlY19kZXYpCj4gKwkJaXQ2NTA1LT5wbHVnZ2VkX2NiKGl0
+NjUwNS0+Y29kZWNfZGV2LAo+ICsJCQkJICAgc3RhdHVzID09IGNvbm5lY3Rvcl9zdGF0dXNfY29u
+bmVjdGVkKTsKPiArfQo+ICsKPiArc3RhdGljIGludCBpdDY1MDVfcHJvY2Vzc19ocGRfaXJxKHN0
+cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUw
+NS0+Y2xpZW50LT5kZXY7Cj4gKwlpbnQgcmV0LCBkcGNkX3NpbmtfY291bnQsIGRwX2lycV92ZWN0
+b3IsIGJzdGF0dXM7Cj4gKwl1OCBsaW5rX3N0YXR1c1tEUF9MSU5LX1NUQVRVU19TSVpFXTsKPiAr
+Cj4gKwlpZiAoIWl0NjUwNV9nZXRfc2lua19ocGRfc3RhdHVzKGl0NjUwNSkpIHsKPiArCQlEUk1f
+REVWX0RFQlVHX0RSSVZFUihkZXYsICJIUERfSVJRIEhQRCBsb3ciKTsKPiArCQlpdDY1MDUtPnNp
+bmtfY291bnQgPSAwOwo+ICsJCXJldHVybiAwOwo+ICsJfQo+ICsKPiArCXJldCA9IGl0NjUwNV9k
+cGNkX3JlYWQoaXQ2NTA1LCBEUF9TSU5LX0NPVU5UKTsKPiArCWlmIChyZXQgPCAwKQo+ICsJCXJl
+dHVybiByZXQ7Cj4gKwo+ICsJZHBjZF9zaW5rX2NvdW50ID0gRFBfR0VUX1NJTktfQ09VTlQocmV0
+KTsKPiArCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgImRwY2Rfc2lua19jb3VudDogJWQgaXQ2
+NTA1LT5zaW5rX2NvdW50OiVkIiwKPiArCQkJICAgICBkcGNkX3NpbmtfY291bnQsIGl0NjUwNS0+
+c2lua19jb3VudCk7Cj4gKwo+ICsJaWYgKGl0NjUwNS0+YnJhbmNoX2RldmljZSAmJiBkcGNkX3Np
+bmtfY291bnQgIT0gaXQ2NTA1LT5zaW5rX2NvdW50KSB7Cj4gKwkJbWVtc2V0KGl0NjUwNS0+ZHBj
+ZCwgMCwgc2l6ZW9mKGl0NjUwNS0+ZHBjZCkpOwo+ICsJCWl0NjUwNS0+c2lua19jb3VudCA9IGRw
+Y2Rfc2lua19jb3VudDsKPiArCQlrZnJlZShpdDY1MDUtPmVkaWQpOwo+ICsJCWl0NjUwNS0+ZWRp
+ZCA9IE5VTEw7Cj4gKwkJaXQ2NTA1X3Jlc2V0X2xvZ2ljKGl0NjUwNSk7Cj4gKwkJaXQ2NTA1X2lu
+dF9tYXNrX2VuYWJsZShpdDY1MDUpOwo+ICsJCWl0NjUwNV9pbml0KGl0NjUwNSk7Cj4gKwkJcmV0
+dXJuIDA7Cj4gKwl9Cj4gKwo+ICsJZHBfaXJxX3ZlY3RvciA9IGl0NjUwNV9kcGNkX3JlYWQoaXQ2
+NTA1LCBEUF9ERVZJQ0VfU0VSVklDRV9JUlFfVkVDVE9SKTsKPiArCWlmIChkcF9pcnFfdmVjdG9y
+IDwgMCkKPiArCQlyZXR1cm4gZHBfaXJxX3ZlY3RvcjsKPiArCj4gKwlEUk1fREVWX0RFQlVHX0RS
+SVZFUihkZXYsICJkcF9pcnFfdmVjdG9yID0gMHglMDJ4IiwgZHBfaXJxX3ZlY3Rvcik7Cj4gKwo+
+ICsJaWYgKGRwX2lycV92ZWN0b3IgJiBEUF9DUF9JUlEpIHsKPiArCQlpdDY1MDVfc2V0X2JpdHMo
+aXQ2NTA1LCBSRUdfSERDUF9UUklHR0VSLCBIRENQX1RSSUdHRVJfQ1BJUlEsCj4gKwkJCQlIRENQ
+X1RSSUdHRVJfQ1BJUlEpOwo+ICsKPiArCQlic3RhdHVzID0gaXQ2NTA1X2RwY2RfcmVhZChpdDY1
+MDUsIERQX0FVWF9IRENQX0JTVEFUVVMpOwo+ICsJCWlmIChic3RhdHVzIDwgMCkKPiArCQkJcmV0
+dXJuIGJzdGF0dXM7Cj4gKwo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgIkJzdGF0dXMg
+PSAweCUwMngiLCBic3RhdHVzKTsKPiArCX0KPiArCj4gKwlyZXQgPSBkcm1fZHBfZHBjZF9yZWFk
+X2xpbmtfc3RhdHVzKCZpdDY1MDUtPmF1eCwgbGlua19zdGF0dXMpOwo+ICsJaWYgKHJldCA8IDAp
+IHsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWwgdG8gcmVhZCBsaW5rIHN0YXR1cyByZXQ6
+ICVkIiwKPiArCQkJICAgICAgcmV0KTsKPiArCQlyZXR1cm4gcmV0Owo+ICsJfQo+ICsKPiArCURS
+TV9ERVZfREVCVUdfRFJJVkVSKGRldiwgImxpbmsgc3RhdHVzID0gMHglKnBoIiwKPiArCQkJICAg
+ICAoaW50KUFSUkFZX1NJWkUobGlua19zdGF0dXMpLCBsaW5rX3N0YXR1cyk7Cj4gKwo+ICsJaWYg
+KCFkcm1fZHBfY2hhbm5lbF9lcV9vayhsaW5rX3N0YXR1cywgaXQ2NTA1LT5sYW5lX2NvdW50KSkg
+ewo+ICsJCWl0NjUwNS0+YXV0b190cmFpbl9yZXRyeSA9IEFVVE9fVFJBSU5fUkVUUlk7Cj4gKwkJ
+aXQ2NTA1X3ZpZGVvX3Jlc2V0KGl0NjUwNSk7Cj4gKwl9Cj4gKwo+ICsJcmV0dXJuIDA7Cj4gK30K
+PiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9jaGVja19yZWcwNihzdHJ1Y3QgaXQ2NTA1ICppdDY1
+MDUsIHVuc2lnbmVkIGludCByZWcwNikKPiArewo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0
+NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwlib29sIGRhdGE7Cj4gKwo+ICsJaWYgKHJlZzA2ICYgSU5U
+X0hQRF9DSEFOR0UpIHsKPiArCQlkYXRhID0gaXQ2NTA1X2dldF9zaW5rX2hwZF9zdGF0dXMoaXQ2
+NTA1KTsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJocGQgY2hhbmdlIGludGVycnVw
+dCwgY2hhbmdlIHRvICVzIiwKPiArCQkJCSAgICAgZGF0YSA/ICJoaWdoIiA6ICJsb3ciKTsKPiAr
+CQlpZiAoaXQ2NTA1LT5jb25uZWN0b3IuZGV2KQo+ICsJCQlkcm1faGVscGVyX2hwZF9pcnFfZXZl
+bnQoaXQ2NTA1LT5jb25uZWN0b3IuZGV2KTsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYs
+ICJpdDY1MDUtPnNpbmtfY291bnQ6ICVkIiwKPiArCQkJCSAgICAgaXQ2NTA1LT5zaW5rX2NvdW50
+KTsKPiArCj4gKwkJaWYgKGRhdGEpIHsKPiArCQkJd2FpdF9mb3JfY29tcGxldGlvbl90aW1lb3V0
+KCZpdDY1MDUtPndhaXRfZWRpZF9jb21wbGV0ZSwKPiArCQkJCQkJICAgIG1zZWNzX3RvX2ppZmZp
+ZXMoNjAwMCkpOwo+ICsJCQlpdDY1MDVfbGFuZV90ZXJtaW5hdGlvbl9vbihpdDY1MDUpOwo+ICsJ
+CQlpdDY1MDVfbGFuZV9wb3dlcl9vbihpdDY1MDUpOwo+ICsKPiArCQkJLyoKPiArCQkJICogZm9y
+IHNvbWUgZG9uZ2xlIHdoaWNoIGlzc3VlIEhQRF9pcnEKPiArCQkJICogd2hlbiBzaW5rIGNvdW50
+IGNoYW5nZSBmcm9tICAwLT4xCj4gKwkJCSAqIGl0NjUwNSBub3QgYWJsZSB0byByZWNlaXZlIEhQ
+RF9JUlEKPiArCQkJICogaWYgSFcgbmV2ZXIgZ28gaW50byB0cmFpbmlnIGRvbmUKPiArCQkJICov
+Cj4gKwo+ICsJCQlpZiAoaXQ2NTA1LT5icmFuY2hfZGV2aWNlICYmIGl0NjUwNS0+c2lua19jb3Vu
+dCA9PSAwKQo+ICsJCQkJc2NoZWR1bGVfd29yaygmaXQ2NTA1LT5saW5rX3dvcmtzKTsKPiArCj4g
+KwkJCWlmICghaXQ2NTA1X2dldF92aWRlb19zdGF0dXMoaXQ2NTA1KSkKPiArCQkJCWl0NjUwNV92
+aWRlb19yZXNldChpdDY1MDUpOwo+ICsKPiArCQkJaXQ2NTA1X2NhbGNfdmlkZW9faW5mbyhpdDY1
+MDUpOwo+ICsJCX0gZWxzZSB7Cj4gKwkJCWtmcmVlKGl0NjUwNS0+ZWRpZCk7Cj4gKwkJCWl0NjUw
+NS0+ZWRpZCA9IE5VTEw7Cj4gKwkJCW1lbXNldChpdDY1MDUtPmRwY2QsIDAsIHNpemVvZihpdDY1
+MDUtPmRwY2QpKTsKPiArCj4gKwkJCWlmIChpdDY1MDUtPmhkY3BfZGVzaXJlZCkKPiArCQkJCWl0
+NjUwNV9zdG9wX2hkY3AoaXQ2NTA1KTsKPiArCj4gKwkJCWl0NjUwNV92aWRlb19kaXNhYmxlKGl0
+NjUwNSk7Cj4gKwkJCWl0NjUwNV9kaXNhYmxlX2F1ZGlvKGl0NjUwNSk7Cj4gKwkJCWl0NjUwNV9z
+dG9wX2xpbmtfdHJhaW4oaXQ2NTA1KTsKPiArCQkJaXQ2NTA1X2xhbmVfb2ZmKGl0NjUwNSk7Cj4g
+KwkJCXJldHVybjsKPiArCQl9Cj4gKwl9Cj4gKwo+ICsJaWYgKHJlZzA2ICYgSU5UX1JFQ0VJVkVf
+SFBEX0lSUSkgewo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgImhwZF9pcnEgaW50ZXJy
+dXB0Iik7Cj4gKwo+ICsJCWlmIChpdDY1MDVfcHJvY2Vzc19ocGRfaXJxKGl0NjUwNSkgPCAwKQo+
+ICsJCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJwcm9jZXNzIGhwZF9pcnEgZmFpbCEiKTsK
+PiArCX0KPiArCj4gKwlpZiAocmVnMDYgJiBJTlRfU0NEVF9DSEFOR0UpIHsKPiArCQlkYXRhID0g
+aXQ2NTA1X2dldF92aWRlb19zdGF0dXMoaXQ2NTA1KTsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZF
+UihkZXYsICJ2aWRlbyBzdGFibGUgY2hhbmdlIGludGVycnVwdCwgJXMiLAo+ICsJCQkJICAgICBk
+YXRhID8gInN0YWJsZSIgOiAidW5zdGFibGUiKTsKPiArCQlpdDY1MDVfY2FsY192aWRlb19pbmZv
+KGl0NjUwNSk7Cj4gKwo+ICsJCWlmIChkYXRhKQo+ICsJCQlzY2hlZHVsZV93b3JrKCZpdDY1MDUt
+Pmxpbmtfd29ya3MpOwo+ICsJfQo+ICsKPiArCWlmIChyZWcwNiAmIElOVF9IRENQX0RPTkUpIHsK
+PiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJoZGNwIGRvbmUgaW50ZXJydXB0Iik7Cj4g
+KwkJaXQ2NTA1LT5oZGNwX3N0YXR1cyA9IEhEQ1BfQVVUSF9ET05FOwo+ICsJCWl0NjUwNV9zaG93
+X2hkY3BfaW5mbyhpdDY1MDUpOwo+ICsJfQo+ICsKPiArCWlmIChyZWcwNiAmIElOVF9IRENQX0ZB
+SUwpIHsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJoZGNwIGZhaWwgaW50ZXJydXB0
+Iik7Cj4gKwkJaXQ2NTA1LT5oZGNwX3N0YXR1cyA9IEhEQ1BfQVVUSF9JRExFOwo+ICsJCWl0NjUw
+NV9zaG93X2hkY3BfaW5mbyhpdDY1MDUpOwo+ICsJCWl0NjUwNV9zdGFydF9oZGNwKGl0NjUwNSk7
+Cj4gKwl9Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIGl0NjUwNV9jaGVja19yZWcwNyhzdHJ1Y3Qg
+aXQ2NTA1ICppdDY1MDUsIHVuc2lnbmVkIGludCByZWcwNykKPiArewo+ICsJc3RydWN0IGRldmlj
+ZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+ICsJaWYgKHJlZzA3ICYgSU5UX0FV
+WF9DTURfRkFJTCkKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJBVVggUEMgUmVxdWVz
+dCBGYWlsIEludGVycnVwdCIpOwo+ICsKPiArCWlmIChyZWcwNyAmIElOVF9IRENQX0tTVl9DSEVD
+Sykgewo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgIkhEQ1AgZXZlbnQgSW50ZXJydXB0
+Iik7Cj4gKwkJc2NoZWR1bGVfd29yaygmaXQ2NTA1LT5oZGNwX3dhaXRfa3N2X2xpc3QpOwo+ICsJ
+fQo+ICsKPiArCWlmIChyZWcwNyAmIElOVF9BVURJT19GSUZPX0VSUk9SKSB7Cj4gKwkJRFJNX0RF
+Vl9ERUJVR19EUklWRVIoZGV2LCAiYXVkaW8gZmlmbyBlcnJvciBJbnRlcnJ1cHQiKTsKPiArCj4g
+KwkJaWYgKGl0NjUwNV9hdWRpb19pbnB1dChpdDY1MDUpKQo+ICsJCQlpdDY1MDVfZW5hYmxlX2F1
+ZGlvKGl0NjUwNSk7Cj4gKwl9Cj4gKwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfY2hl
+Y2tfcmVnMDgoc3RydWN0IGl0NjUwNSAqaXQ2NTA1LCB1bnNpZ25lZCBpbnQgcmVnMDgpCj4gK3sK
+PiArCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsKPiArCWlm
+IChyZWcwOCAmIElOVF9MSU5LX1RSQUlOX0ZBSUwpIHsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZF
+UihkZXYsICJsaW5rIHRyYWluaW5nIGZhaWwgaW50ZXJydXB0Iik7Cj4gKwkJc2NoZWR1bGVfd29y
+aygmaXQ2NTA1LT5saW5rX3dvcmtzKTsKPiArCX0KPiArCj4gKwlpZiAocmVnMDggJiBJTlRfVklE
+X0ZJRk9fRVJST1IpIHsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJ2aWRlbyBmaWZv
+IG92ZXJmbG93IGludGVycnVwdCIpOwo+ICsJCWl0NjUwNS0+YXV0b190cmFpbl9yZXRyeSA9IEFV
+VE9fVFJBSU5fUkVUUlk7Cj4gKwkJZmx1c2hfd29yaygmaXQ2NTA1LT5saW5rX3dvcmtzKTsKPiAr
+CQlpdDY1MDVfc3RvcF9oZGNwKGl0NjUwNSk7Cj4gKwkJaXQ2NTA1X3ZpZGVvX3Jlc2V0KGl0NjUw
+NSk7Cj4gKwl9Cj4gKwo+ICsJaWYgKHJlZzA4ICYgSU5UX0lPX0xBVENIX0ZJRk9fT1ZFUkZMT1cp
+IHsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJJTyBsYXRjaCBmaWZvIG92ZXJmbG93
+IGludGVycnVwdCIpOwo+ICsJCWl0NjUwNS0+YXV0b190cmFpbl9yZXRyeSA9IEFVVE9fVFJBSU5f
+UkVUUlk7Cj4gKwkJZmx1c2hfd29yaygmaXQ2NTA1LT5saW5rX3dvcmtzKTsKPiArCQlpdDY1MDVf
+c3RvcF9oZGNwKGl0NjUwNSk7Cj4gKwkJaXQ2NTA1X3ZpZGVvX3Jlc2V0KGl0NjUwNSk7Cj4gKwl9
+Cj4gK30KPiArCj4gK3N0YXRpYyBpcnFyZXR1cm5fdCBpdDY1MDVfaW50X3RocmVhZGVkX2hhbmRs
+ZXIoaW50IHVudXNlZCwgdm9pZCAqZGF0YSkKPiArewo+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1
+ID0gZGF0YTsKPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+
+ICsJaW50IHJlZzA2LCByZWcwNywgcmVnMDg7Cj4gKwo+ICsJbXNsZWVwKDEwMCk7Cj4gKwltdXRl
+eF9sb2NrKCZpdDY1MDUtPmV4dGNvbl9sb2NrKTsKPiArCj4gKwlpZiAoaXQ2NTA1LT5lbmFibGVf
+ZHJ2X2hvbGQgfHwgIWl0NjUwNS0+cG93ZXJlZCkKPiArCQlnb3RvIHVubG9jazsKPiArCj4gKwly
+ZWcwNiA9IGl0NjUwNV9yZWFkKGl0NjUwNSwgSU5UX1NUQVRVU18wMSk7Cj4gKwlyZWcwNyA9IGl0
+NjUwNV9yZWFkKGl0NjUwNSwgSU5UX1NUQVRVU18wMik7Cj4gKwlyZWcwOCA9IGl0NjUwNV9yZWFk
+KGl0NjUwNSwgSU5UX1NUQVRVU18wMyk7Cj4gKwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgSU5U
+X1NUQVRVU18wMSwgcmVnMDYpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgSU5UX1NUQVRVU18w
+MiwgcmVnMDcpOwo+ICsJaXQ2NTA1X3dyaXRlKGl0NjUwNSwgSU5UX1NUQVRVU18wMywgcmVnMDgp
+Owo+ICsKPiArCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgInJlZzA2ID0gMHglMDJ4IiwgcmVn
+MDYpOwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAicmVnMDcgPSAweCUwMngiLCByZWcw
+Nyk7Cj4gKwlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJyZWcwOCA9IDB4JTAyeCIsIHJlZzA4
+KTsKPiArCWl0NjUwNV9kZWJ1Z19wcmludChpdDY1MDUsIFJFR19TWVNURU1fU1RTLCAiIik7Cj4g
+Kwo+ICsJaWYgKHJlZzA2ICE9IDApCj4gKwkJaXQ2NTA1X2NoZWNrX3JlZzA2KGl0NjUwNSwgcmVn
+MDYpOwo+ICsKPiArCWlmIChyZWcwNyAhPSAwKQo+ICsJCWl0NjUwNV9jaGVja19yZWcwNyhpdDY1
+MDUsIHJlZzA3KTsKPiArCj4gKwlpZiAocmVnMDggIT0gMCkKPiArCQlpdDY1MDVfY2hlY2tfcmVn
+MDgoaXQ2NTA1LCByZWcwOCk7Cj4gKwo+ICt1bmxvY2s6Cj4gKwltdXRleF91bmxvY2soJml0NjUw
+NS0+ZXh0Y29uX2xvY2spOwo+ICsKPiArCXJldHVybiBJUlFfSEFORExFRDsKPiArfQo+ICsKPiAr
+c3RhdGljIGludCBpdDY1MDVfcG93ZXJvbihzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiAr
+CXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsJc3RydWN0IGl0
+NjUwNV9wbGF0Zm9ybV9kYXRhICpwZGF0YSA9ICZpdDY1MDUtPnBkYXRhOwo+ICsJaW50IGVycjsK
+PiArCj4gKwlpZiAoaXQ2NTA1LT5wb3dlcmVkKSB7Cj4gKwkJRFJNX0RFVl9ERUJVR19EUklWRVIo
+ZGV2LCAiaXQ2NTA1IGFscmVhZHkgcG93ZXJlZCBvbiIpOwo+ICsJCXJldHVybiAwOwo+ICsJfQo+
+ICsKPiArCWlmIChwZGF0YS0+cHdyMTgpIHsKPiArCQllcnIgPSByZWd1bGF0b3JfZW5hYmxlKHBk
+YXRhLT5wd3IxOCk7Cj4gKwkJaWYgKGVycikgewo+ICsJCQlEUk1fREVWX0RFQlVHX0RSSVZFUihk
+ZXYsICJGYWlsZWQgdG8gZW5hYmxlIFZERDE4OiAlZCIsCj4gKwkJCQkJICAgICBlcnIpOwo+ICsJ
+CQlyZXR1cm4gZXJyOwo+ICsJCX0KPiArCX0KPiArCj4gKwlpZiAocGRhdGEtPm92ZGQpIHsKPiAr
+CQkvKiB0aW1lIGludGVydmFsIGJldHdlZW4gSVZERCBhbmQgT1ZERCBhdCBsZWFzdCBiZSAxbXMg
+Ki8KPiArCQl1c2xlZXBfcmFuZ2UoMTAwMCwgMjAwMCk7Cj4gKwkJZXJyID0gcmVndWxhdG9yX2Vu
+YWJsZShwZGF0YS0+b3ZkZCk7Cj4gKwkJaWYgKGVycikgewo+ICsJCQlyZWd1bGF0b3JfZGlzYWJs
+ZShwZGF0YS0+cHdyMTgpOwo+ICsJCQlyZXR1cm4gZXJyOwo+ICsJCX0KPiArCX0KPiArCS8qIHRp
+bWUgaW50ZXJ2YWwgYmV0d2VlbiBPVkREIGFuZCBTWVNSU1ROIGF0IGxlYXN0IGJlIDEwbXMgKi8K
+PiArCWlmIChwZGF0YS0+Z3Bpb2RfcmVzZXQpIHsKPiArCQl1c2xlZXBfcmFuZ2UoMTAwMDAsIDIw
+MDAwKTsKPiArCQlncGlvZF9zZXRfdmFsdWVfY2Fuc2xlZXAocGRhdGEtPmdwaW9kX3Jlc2V0LCAw
+KTsKPiArCQl1c2xlZXBfcmFuZ2UoMTAwMCwgMjAwMCk7Cj4gKwkJZ3Bpb2Rfc2V0X3ZhbHVlX2Nh
+bnNsZWVwKHBkYXRhLT5ncGlvZF9yZXNldCwgMSk7Cj4gKwkJdXNsZWVwX3JhbmdlKDEwMDAwLCAy
+MDAwMCk7Cj4gKwl9Cj4gKwo+ICsJaXQ2NTA1X3Jlc2V0X2xvZ2ljKGl0NjUwNSk7Cj4gKwlpdDY1
+MDVfaW50X21hc2tfZW5hYmxlKGl0NjUwNSk7Cj4gKwlpdDY1MDVfaW5pdChpdDY1MDUpOwo+ICsJ
+aXQ2NTA1X2xhbmVfb2ZmKGl0NjUwNSk7Cj4gKwo+ICsJaXQ2NTA1LT5wb3dlcmVkID0gdHJ1ZTsK
+PiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIGludCBpdDY1MDVfcG93ZXJvZmYo
+c3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2
+NTA1LT5jbGllbnQtPmRldjsKPiArCXN0cnVjdCBpdDY1MDVfcGxhdGZvcm1fZGF0YSAqcGRhdGEg
+PSAmaXQ2NTA1LT5wZGF0YTsKPiArCWludCBlcnI7Cj4gKwo+ICsJaWYgKCFpdDY1MDUtPnBvd2Vy
+ZWQpIHsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJwb3dlciBoYWQgYmVlbiBhbHJl
+YWR5IG9mZiIpOwo+ICsJCXJldHVybiAwOwo+ICsJfQo+ICsKPiArCWlmIChwZGF0YS0+Z3Bpb2Rf
+cmVzZXQpCj4gKwkJZ3Bpb2Rfc2V0X3ZhbHVlX2NhbnNsZWVwKHBkYXRhLT5ncGlvZF9yZXNldCwg
+MCk7Cj4gKwo+ICsJaWYgKHBkYXRhLT5wd3IxOCkgewo+ICsJCWVyciA9IHJlZ3VsYXRvcl9kaXNh
+YmxlKHBkYXRhLT5wd3IxOCk7Cj4gKwkJaWYgKGVycikKPiArCQkJcmV0dXJuIGVycjsKPiArCX0K
+PiArCj4gKwlpZiAocGRhdGEtPm92ZGQpIHsKPiArCQllcnIgPSByZWd1bGF0b3JfZGlzYWJsZShw
+ZGF0YS0+b3ZkZCk7Cj4gKwkJaWYgKGVycikKPiArCQkJcmV0dXJuIGVycjsKPiArCX0KPiArCj4g
+KwlpdDY1MDUtPnBvd2VyZWQgPSBmYWxzZTsKPiArCWtmcmVlKGl0NjUwNS0+ZWRpZCk7Cj4gKwlp
+dDY1MDUtPmVkaWQgPSBOVUxMOwo+ICsJaXQ2NTA1LT5zaW5rX2NvdW50ID0gMDsKPiArCj4gKwly
+ZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIGlubGluZSBzdHJ1Y3QgaXQ2NTA1ICpjb25uZWN0
+b3JfdG9faXQ2NTA1KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjKQo+ICt7Cj4gKwlyZXR1cm4gY29u
+dGFpbmVyX29mKGMsIHN0cnVjdCBpdDY1MDUsIGNvbm5lY3Rvcik7Cj4gK30KPiArCj4gK3N0YXRp
+YyBpbnQgaXQ2NTA1X2dldF9tb2RlcyhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+
+ICt7Cj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUgPSBjb25uZWN0b3JfdG9faXQ2NTA1KGNvbm5l
+Y3Rvcik7Cj4gKwlpbnQgZXJyLCBudW1fbW9kZXMgPSAwLCBpOwo+ICsJc3RydWN0IGRldmljZSAq
+ZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+ICsJaWYgKGl0NjUwNS0+ZWRpZCkKPiAr
+CQlyZXR1cm4gZHJtX2FkZF9lZGlkX21vZGVzKGNvbm5lY3RvciwgaXQ2NTA1LT5lZGlkKTsKPiAr
+Cj4gKwltdXRleF9sb2NrKCZpdDY1MDUtPm1vZGVfbG9jayk7Cj4gKwlyZWluaXRfY29tcGxldGlv
+bigmaXQ2NTA1LT53YWl0X2VkaWRfY29tcGxldGUpOwo+ICsKPiArCWZvciAoaSA9IDA7IGkgPCAz
+OyBpKyspIHsKPiArCQlpZiAoIWl0NjUwNV9nZXRfc2lua19ocGRfc3RhdHVzKGl0NjUwNSkpCj4g
+KwkJCWdvdG8gdW5sb2NrOwo+ICsKPiArCQlpdDY1MDUtPmVkaWQgPSBkcm1fZG9fZ2V0X2VkaWQo
+Jml0NjUwNS0+Y29ubmVjdG9yLAo+ICsJCQkJCSAgICAgICBpdDY1MDVfZ2V0X2VkaWRfYmxvY2ss
+IGl0NjUwNSk7Cj4gKwo+ICsJCWlmIChpdDY1MDUtPmVkaWQpCj4gKwkJCWJyZWFrOwo+ICsJfQo+
+ICsJaWYgKCFpdDY1MDUtPmVkaWQpIHsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgIkZhaWxlZCB0
+byByZWFkIEVESUQiKTsKPiArCQludW1fbW9kZXMgPSAtRUlPOwo+ICsJCWdvdG8gdW5sb2NrOwo+
+ICsJfQo+ICsKPiArCWVyciA9IGRybV9jb25uZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoY29u
+bmVjdG9yLCBpdDY1MDUtPmVkaWQpOwo+ICsJaWYgKGVycikgewo+ICsJCURSTV9ERVZfRVJST1Io
+ZGV2LCAiRmFpbGVkIHRvIHVwZGF0ZSBFRElEIHByb3BlcnR5OiAlZCIsIGVycik7Cj4gKwkJbnVt
+X21vZGVzID0gZXJyOwo+ICsJCWdvdG8gdW5sb2NrOwo+ICsJfQo+ICsKPiArCW51bV9tb2RlcyA9
+IGRybV9hZGRfZWRpZF9tb2Rlcyhjb25uZWN0b3IsIGl0NjUwNS0+ZWRpZCk7Cj4gKwo+ICt1bmxv
+Y2s6Cj4gKwljb21wbGV0ZSgmaXQ2NTA1LT53YWl0X2VkaWRfY29tcGxldGUpOwo+ICsJbXV0ZXhf
+dW5sb2NrKCZpdDY1MDUtPm1vZGVfbG9jayk7Cj4gKwo+ICsJcmV0dXJuIG51bV9tb2RlczsKPiAr
+fQo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY29ubmVjdG9yX2hlbHBlcl9mdW5jcyBp
+dDY1MDVfY29ubmVjdG9yX2hlbHBlcl9mdW5jcyA9IHsKPiArCS5nZXRfbW9kZXMgPSBpdDY1MDVf
+Z2V0X21vZGVzLAo+ICt9Owo+ICsKPiArc3RhdGljIGVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMg
+aXQ2NTA1X2RldGVjdChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAo+ICsJCQkJCSAg
+ICAgICBib29sIGZvcmNlKQo+ICt7Cj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUgPSBjb25uZWN0
+b3JfdG9faXQ2NTA1KGNvbm5lY3Rvcik7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmaXQ2NTA1
+LT5jbGllbnQtPmRldjsKPiArCWVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMgc3RhdHVzID0gY29u
+bmVjdG9yX3N0YXR1c19kaXNjb25uZWN0ZWQ7Cj4gKwo+ICsJRFJNX0RFVl9ERUJVR19EUklWRVIo
+ZGV2LCAiaXQ2NTA1LT5zaW5rX2NvdW50OiVkIHBvd2VyZWQ6JWQiLAo+ICsJCQkgICAgIGl0NjUw
+NS0+c2lua19jb3VudCwgaXQ2NTA1LT5wb3dlcmVkKTsKPiArCj4gKwltdXRleF9sb2NrKCZpdDY1
+MDUtPm1vZGVfbG9jayk7Cj4gKwo+ICsJaWYgKCFpdDY1MDUtPnBvd2VyZWQpCj4gKwkJZ290byB1
+bmxvY2s7Cj4gKwo+ICsJaWYgKGl0NjUwNS0+ZW5hYmxlX2Rydl9ob2xkKSB7Cj4gKwkJc3RhdHVz
+ID0gaXQ2NTA1X2dldF9zaW5rX2hwZF9zdGF0dXMoaXQ2NTA1KSA/Cj4gKwkJCQkJY29ubmVjdG9y
+X3N0YXR1c19jb25uZWN0ZWQgOgo+ICsJCQkJCWNvbm5lY3Rvcl9zdGF0dXNfZGlzY29ubmVjdGVk
+Owo+ICsJCWdvdG8gdW5sb2NrOwo+ICsJfQo+ICsKPiArCWlmIChpdDY1MDVfZ2V0X3NpbmtfaHBk
+X3N0YXR1cyhpdDY1MDUpKSB7Cj4gKwkJaXQ2NTA1X2F1eF9vbihpdDY1MDUpOwo+ICsJCWl0NjUw
+NV9kcm1fZHBfbGlua19wcm9iZSgmaXQ2NTA1LT5hdXgsICZpdDY1MDUtPmxpbmspOwo+ICsJCWl0
+NjUwNV9kcm1fZHBfbGlua19wb3dlcl91cCgmaXQ2NTA1LT5hdXgsICZpdDY1MDUtPmxpbmspOwo+
+ICsJCWl0NjUwNS0+YXV0b190cmFpbl9yZXRyeSA9IEFVVE9fVFJBSU5fUkVUUlk7Cj4gKwo+ICsJ
+CWlmIChpdDY1MDUtPmRwY2RbMF0gPT0gMCkgewo+ICsJCQlpdDY1MDVfZ2V0X2RwY2QoaXQ2NTA1
+LCBEUF9EUENEX1JFViwgaXQ2NTA1LT5kcGNkLAo+ICsJCQkJCUFSUkFZX1NJWkUoaXQ2NTA1LT5k
+cGNkKSk7Cj4gKwkJCWl0NjUwNV92YXJpYWJsZV9jb25maWcoaXQ2NTA1KTsKPiArCQkJaXQ2NTA1
+X3BhcnNlX2xpbmtfY2FwYWJpbGl0aWVzKGl0NjUwNSk7Cj4gKwkJfQo+ICsKPiArCQlpdDY1MDUt
+PnNpbmtfY291bnQgPSBEUF9HRVRfU0lOS19DT1VOVChpdDY1MDVfZHBjZF9yZWFkKGl0NjUwNSwK
+PiArCQkJCQkJICAgICAgIERQX1NJTktfQ09VTlQpKTsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZF
+UihkZXYsICJpdDY1MDUtPnNpbmtfY291bnQ6JWQgYnJhbmNoOiVkIiwKPiArCQkJCSAgICAgaXQ2
+NTA1LT5zaW5rX2NvdW50LCBpdDY1MDUtPmJyYW5jaF9kZXZpY2UpOwo+ICsKPiArCQlpZiAoaXQ2
+NTA1LT5icmFuY2hfZGV2aWNlKSB7Cj4gKwkJCXN0YXR1cyA9IChpdDY1MDUtPnNpbmtfY291bnQg
+IT0gMCkgPwo+ICsJCQkJIGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkIDoKPiArCQkJCSBjb25u
+ZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5lY3RlZDsKPiArCQl9IGVsc2Ugewo+ICsJCQlzdGF0dXMgPSBj
+b25uZWN0b3Jfc3RhdHVzX2Nvbm5lY3RlZDsKPiArCQl9Cj4gKwl9IGVsc2Ugewo+ICsJCWl0NjUw
+NS0+c2lua19jb3VudCA9IDA7Cj4gKwkJbWVtc2V0KGl0NjUwNS0+ZHBjZCwgMCwgc2l6ZW9mKGl0
+NjUwNS0+ZHBjZCkpOwo+ICsJfQo+ICsKPiArdW5sb2NrOgo+ICsJaWYgKGl0NjUwNS0+Y29ubmVj
+dG9yX3N0YXR1cyAhPSBzdGF0dXMpIHsKPiArCQlpdDY1MDUtPmNvbm5lY3Rvcl9zdGF0dXMgPSBz
+dGF0dXM7Cj4gKwkJaXQ2NTA1X3BsdWdnZWRfc3RhdHVzX3RvX2NvZGVjKGl0NjUwNSk7Cj4gKwl9
+Cj4gKwo+ICsJbXV0ZXhfdW5sb2NrKCZpdDY1MDUtPm1vZGVfbG9jayk7Cj4gKwo+ICsJcmV0dXJu
+IHN0YXR1czsKPiArfQo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY29ubmVjdG9yX2Z1
+bmNzIGl0NjUwNV9jb25uZWN0b3JfZnVuY3MgPSB7Cj4gKwkuZmlsbF9tb2RlcyA9IGRybV9oZWxw
+ZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2RlcywKPiArCS5kZXRlY3QgPSBpdDY1MDVfZGV0
+ZWN0LAo+ICsJLmRlc3Ryb3kgPSBkcm1fY29ubmVjdG9yX2NsZWFudXAsCj4gKwkucmVzZXQgPSBk
+cm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfcmVzZXQsCj4gKwkuYXRvbWljX2R1cGxpY2F0ZV9z
+dGF0ZSA9IGRybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9kdXBsaWNhdGVfc3RhdGUsCj4gKwku
+YXRvbWljX2Rlc3Ryb3lfc3RhdGUgPSBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfZGVzdHJv
+eV9zdGF0ZSwKPiArfTsKPiArCj4gK3N0YXRpYyBpbnQgaXQ2NTA1X2V4dGNvbl9ub3RpZmllcihz
+dHJ1Y3Qgbm90aWZpZXJfYmxvY2sgKnNlbGYsCj4gKwkJCQkgIHVuc2lnbmVkIGxvbmcgZXZlbnQs
+IHZvaWQgKnB0cikKPiArewo+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0gY29udGFpbmVyX29m
+KHNlbGYsIHN0cnVjdCBpdDY1MDUsIGV2ZW50X25iKTsKPiArCj4gKwlzY2hlZHVsZV93b3JrKCZp
+dDY1MDUtPmV4dGNvbl93cSk7Cj4gKwlyZXR1cm4gTk9USUZZX0RPTkU7Cj4gK30KPiArCj4gK3N0
+YXRpYyB2b2lkIGl0NjUwNV9leHRjb25fd29yayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCj4g
+K3sKPiArCXN0cnVjdCBpdDY1MDUgKml0NjUwNSA9IGNvbnRhaW5lcl9vZih3b3JrLCBzdHJ1Y3Qg
+aXQ2NTA1LCBleHRjb25fd3EpOwo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0NjUwNS0+Y2xp
+ZW50LT5kZXY7Cj4gKwlpbnQgc3RhdGUgPSBleHRjb25fZ2V0X3N0YXRlKGl0NjUwNS0+ZXh0Y29u
+LCBFWFRDT05fRElTUF9EUCk7Cj4gKwl1bnNpZ25lZCBpbnQgcHdyb2ZmcmV0cnkgPSAwOwo+ICsK
+PiArCWlmIChpdDY1MDUtPmVuYWJsZV9kcnZfaG9sZCkKPiArCQlyZXR1cm47Cj4gKwo+ICsJbXV0
+ZXhfbG9jaygmaXQ2NTA1LT5leHRjb25fbG9jayk7Cj4gKwo+ICsJRFJNX0RFVl9ERUJVR19EUklW
+RVIoZGV2LCAiRVhUQ09OX0RJU1BfRFAgPSAweCUwMngiLCBzdGF0ZSk7Cj4gKwlpZiAoc3RhdGUg
+PiAwKSB7Cj4gKwkJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAic3RhcnQgdG8gcG93ZXIgb24i
+KTsKPiArCQltc2xlZXAoMTAwKTsKPiArCQlpdDY1MDVfcG93ZXJvbihpdDY1MDUpOwo+ICsJfSBl
+bHNlIHsKPiArCQlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJzdGFydCB0byBwb3dlciBvZmYi
+KTsKPiArCQl3aGlsZSAoaXQ2NTA1X3Bvd2Vyb2ZmKGl0NjUwNSkgJiYgcHdyb2ZmcmV0cnkrKyA8
+IDUpIHsKPiArCQkJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAicG93ZXIgb2ZmIGZhaWwgJWQg
+dGltZXMiLAo+ICsJCQkJCSAgICAgcHdyb2ZmcmV0cnkpOwo+ICsJCX0KPiArCj4gKwkJZHJtX2hl
+bHBlcl9ocGRfaXJxX2V2ZW50KGl0NjUwNS0+Y29ubmVjdG9yLmRldik7Cj4gKwkJbWVtc2V0KGl0
+NjUwNS0+ZHBjZCwgMCwgc2l6ZW9mKGl0NjUwNS0+ZHBjZCkpOwo+ICsJCURSTV9ERVZfREVCVUdf
+RFJJVkVSKGRldiwgInBvd2VyIG9mZiBpdDY1MDUgc3VjY2VzcyEiKTsKPiArCX0KPiArCj4gKwlt
+dXRleF91bmxvY2soJml0NjUwNS0+ZXh0Y29uX2xvY2spOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50
+IGl0NjUwNV91c2Vfbm90aWZpZXJfbW9kdWxlKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+
+ICsJaW50IHJldDsKPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2
+Owo+ICsKPiArCWl0NjUwNS0+ZXZlbnRfbmIubm90aWZpZXJfY2FsbCA9IGl0NjUwNV9leHRjb25f
+bm90aWZpZXI7Cj4gKwlJTklUX1dPUksoJml0NjUwNS0+ZXh0Y29uX3dxLCBpdDY1MDVfZXh0Y29u
+X3dvcmspOwo+ICsJcmV0ID0gZGV2bV9leHRjb25fcmVnaXN0ZXJfbm90aWZpZXIoJml0NjUwNS0+
+Y2xpZW50LT5kZXYsCj4gKwkJCQkJICAgIGl0NjUwNS0+ZXh0Y29uLCBFWFRDT05fRElTUF9EUCwK
+PiArCQkJCQkgICAgJml0NjUwNS0+ZXZlbnRfbmIpOwo+ICsJaWYgKHJldCkgewo+ICsJCURSTV9E
+RVZfRVJST1IoZGV2LCAiZmFpbGVkIHRvIHJlZ2lzdGVyIG5vdGlmaWVyIGZvciBEUCIpOwo+ICsJ
+CXJldHVybiByZXQ7Cj4gKwl9Cj4gKwo+ICsJc2NoZWR1bGVfd29yaygmaXQ2NTA1LT5leHRjb25f
+d3EpOwo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfcmVt
+b3ZlX25vdGlmaWVyX21vZHVsZShzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpCj4gK3sKPiArCWlmIChp
+dDY1MDUtPmV4dGNvbikgewo+ICsJCWRldm1fZXh0Y29uX3VucmVnaXN0ZXJfbm90aWZpZXIoJml0
+NjUwNS0+Y2xpZW50LT5kZXYsCj4gKwkJCQkJCWl0NjUwNS0+ZXh0Y29uLAlFWFRDT05fRElTUF9E
+UCwKPiArCQkJCQkJJml0NjUwNS0+ZXZlbnRfbmIpOwo+ICsKPiArCQlmbHVzaF93b3JrKCZpdDY1
+MDUtPmV4dGNvbl93cSk7Cj4gKwl9Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIF9fbWF5YmVfdW51
+c2VkIGl0NjUwNV9kZWxheWVkX2F1ZGlvKHN0cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKPiArewo+
+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0gY29udGFpbmVyX29mKHdvcmssIHN0cnVjdCBpdDY1
+MDUsCj4gKwkJCQkJICAgICBkZWxheWVkX2F1ZGlvLndvcmspOwo+ICsKPiArCURSTV9ERVZfREVC
+VUdfRFJJVkVSKCZpdDY1MDUtPmNsaWVudC0+ZGV2LCAic3RhcnQiKTsKPiArCj4gKwlpZiAoIWl0
+NjUwNS0+cG93ZXJlZCkKPiArCQlyZXR1cm47Cj4gKwo+ICsJaWYgKCFpdDY1MDUtPmVuYWJsZV9k
+cnZfaG9sZCkKPiArCQlpdDY1MDVfZW5hYmxlX2F1ZGlvKGl0NjUwNSk7Cj4gK30KPiArCj4gK3N0
+YXRpYyBpbnQgX19tYXliZV91bnVzZWQgaXQ2NTA1X2F1ZGlvX3NldHVwX2h3X3BhcmFtcyhzdHJ1
+Y3QgaXQ2NTA1ICppdDY1MDUsCj4gKwkJCQkJc3RydWN0IGhkbWlfY29kZWNfcGFyYW1zICpwYXJh
+bXMpCj4gK3sKPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+
+ICsJaW50IGkgPSAwOwo+ICsKPiArCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgIiVzICVkIEh6
+LCAlZCBiaXQsICVkIGNoYW5uZWxzXG4iLCBfX2Z1bmNfXywKPiArCQkJICAgICBwYXJhbXMtPnNh
+bXBsZV9yYXRlLCBwYXJhbXMtPnNhbXBsZV93aWR0aCwKPiArCQkJICAgICBwYXJhbXMtPmNlYS5j
+aGFubmVscyk7Cj4gKwo+ICsJaWYgKCFpdDY1MDUtPmJyaWRnZS5lbmNvZGVyKQo+ICsJCXJldHVy
+biAtRU5PREVWOwo+ICsKPiArCWlmIChwYXJhbXMtPmNlYS5jaGFubmVscyA8PSAxIHx8IHBhcmFt
+cy0+Y2VhLmNoYW5uZWxzID4gOCkgewo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVSKGRldiwgImNo
+YW5uZWwgbnVtYmVyOiAlZCBub3Qgc3VwcG9ydCIsCj4gKwkJCQkgICAgIGl0NjUwNS0+YXVkaW8u
+Y2hhbm5lbF9jb3VudCk7Cj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwl9Cj4gKwo+ICsJaXQ2NTA1
+LT5hdWRpby5jaGFubmVsX2NvdW50ID0gcGFyYW1zLT5jZWEuY2hhbm5lbHM7Cj4gKwo+ICsJd2hp
+bGUgKGkgPCBBUlJBWV9TSVpFKGF1ZGlvX3NhbXBsZV9yYXRlX21hcCkgJiYKPiArCSAgICAgICBw
+YXJhbXMtPnNhbXBsZV9yYXRlICE9Cj4gKwkJICAgICAgIGF1ZGlvX3NhbXBsZV9yYXRlX21hcFtp
+XS5zYW1wbGVfcmF0ZV92YWx1ZSkgewo+ICsJCWkrKzsKPiArCX0KPiArCWlmIChpID09IEFSUkFZ
+X1NJWkUoYXVkaW9fc2FtcGxlX3JhdGVfbWFwKSkgewo+ICsJCURSTV9ERVZfREVCVUdfRFJJVkVS
+KGRldiwgInNhbXBsZSByYXRlOiAlZCBIeiBub3Qgc3VwcG9ydCIsCj4gKwkJCQkgICAgIHBhcmFt
+cy0+c2FtcGxlX3JhdGUpOwo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsJfQo+ICsJaXQ2NTA1LT5h
+dWRpby5zYW1wbGVfcmF0ZSA9IGF1ZGlvX3NhbXBsZV9yYXRlX21hcFtpXS5yYXRlOwo+ICsKPiAr
+CXN3aXRjaCAocGFyYW1zLT5zYW1wbGVfd2lkdGgpIHsKPiArCWNhc2UgMTY6Cj4gKwkJaXQ2NTA1
+LT5hdWRpby53b3JkX2xlbmd0aCA9IFdPUkRfTEVOR1RIXzE2QklUOwo+ICsJCWJyZWFrOwo+ICsJ
+Y2FzZSAxODoKPiArCQlpdDY1MDUtPmF1ZGlvLndvcmRfbGVuZ3RoID0gV09SRF9MRU5HVEhfMThC
+SVQ7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIDIwOgo+ICsJCWl0NjUwNS0+YXVkaW8ud29yZF9sZW5n
+dGggPSBXT1JEX0xFTkdUSF8yMEJJVDsKPiArCQlicmVhazsKPiArCWNhc2UgMjQ6Cj4gKwljYXNl
+IDMyOgo+ICsJCWl0NjUwNS0+YXVkaW8ud29yZF9sZW5ndGggPSBXT1JEX0xFTkdUSF8yNEJJVDsK
+PiArCQlicmVhazsKPiArCWRlZmF1bHQ6Cj4gKwkJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAi
+d29yZGxlbmd0aDogJWQgYml0IG5vdCBzdXBwb3J0IiwKPiArCQkJCSAgICAgcGFyYW1zLT5zYW1w
+bGVfd2lkdGgpOwo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsJfQo+ICsKPiArCXJldHVybiAwOwo+
+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBfX21heWJlX3VudXNlZCBpdDY1MDVfYXVkaW9fc2h1dGRv
+d24oc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpkYXRhKQo+ICt7Cj4gKwlzdHJ1Y3QgaXQ2NTA1
+ICppdDY1MDUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCj4gKwlpZiAoaXQ2NTA1LT5wb3dl
+cmVkKQo+ICsJCWl0NjUwNV9kaXNhYmxlX2F1ZGlvKGl0NjUwNSk7Cj4gK30KPiArCj4gK3N0YXRp
+YyBpbnQgX19tYXliZV91bnVzZWQgaXQ2NTA1X2F1ZGlvX2hvb2tfcGx1Z2dlZF9jYihzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsCj4gKwkJCQkJCSAgICAgICB2b2lkICpkYXRhLAo+ICsJCQkJCQkgICAgICAg
+aGRtaV9jb2RlY19wbHVnZ2VkX2NiIGZuLAo+ICsJCQkJCQkgICAgICAgc3RydWN0IGRldmljZSAq
+Y29kZWNfZGV2KQo+ICt7Cj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUgPSBkYXRhOwo+ICsKPiAr
+CWl0NjUwNS0+cGx1Z2dlZF9jYiA9IGZuOwo+ICsJaXQ2NTA1LT5jb2RlY19kZXYgPSBjb2RlY19k
+ZXY7Cj4gKwlpdDY1MDVfcGx1Z2dlZF9zdGF0dXNfdG9fY29kZWMoaXQ2NTA1KTsKPiArCj4gKwly
+ZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIGlubGluZSBzdHJ1Y3QgaXQ2NTA1ICpicmlkZ2Vf
+dG9faXQ2NTA1KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gK3sKPiArCXJldHVybiBjb250
+YWluZXJfb2YoYnJpZGdlLCBzdHJ1Y3QgaXQ2NTA1LCBicmlkZ2UpOwo+ICt9Cj4gKwo+ICtzdGF0
+aWMgdm9pZCBpdDY1MDVfYnJpZGdlX21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2Us
+Cj4gKwkJCQkgICBjb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwKPiArCQkJCSAg
+IGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICphZGp1c3RlZF9tb2RlKQo+ICt7Cj4gKwlz
+dHJ1Y3QgaXQ2NTA1ICppdDY1MDUgPSBicmlkZ2VfdG9faXQ2NTA1KGJyaWRnZSk7Cj4gKwlzdHJ1
+Y3QgaGRtaV9hdmlfaW5mb2ZyYW1lIGZyYW1lOwo+ICsJaW50IGVycjsKPiArCXN0cnVjdCBkZXZp
+Y2UgKmRldiA9ICZpdDY1MDUtPmNsaWVudC0+ZGV2Owo+ICsKPiArCWlmIChXQVJOX09OKCFpdDY1
+MDUtPnBvd2VyZWQpKQo+ICsJCXJldHVybjsKPiArCj4gKwltdXRleF9sb2NrKCZpdDY1MDUtPm1v
+ZGVfbG9jayk7Cj4gKwo+ICsJZXJyID0gZHJtX2hkbWlfYXZpX2luZm9mcmFtZV9mcm9tX2Rpc3Bs
+YXlfbW9kZSgmZnJhbWUsCj4gKwkJCQkJCSAgICAgICAmaXQ2NTA1LT5jb25uZWN0b3IsCj4gKwkJ
+CQkJCSAgICAgICBhZGp1c3RlZF9tb2RlKTsKPiArCWlmIChlcnIpIHsKPiArCQlEUk1fREVWX0VS
+Uk9SKGRldiwgIkZhaWxlZCB0byBzZXR1cCBBVkkgaW5mb2ZyYW1lOiAlZCIsIGVycik7Cj4gKwkJ
+Z290byB1bmxvY2s7Cj4gKwl9Cj4gKwo+ICsJaXQ2NTA1X3VwZGF0ZV92aWRlb19wYXJhbWV0ZXIo
+aXQ2NTA1LCBhZGp1c3RlZF9tb2RlKTsKPiArCj4gKwllcnIgPSBpdDY1MDVfc2VuZF92aWRlb19p
+bmZvZnJhbWUoaXQ2NTA1LCAmZnJhbWUpOwo+ICsJaWYgKGVycikKPiArCQlEUk1fREVWX0VSUk9S
+KGRldiwgIkZhaWxlZCB0byBzZW5kIEFWSSBpbmZvZnJhbWU6ICVkIiwgZXJyKTsKPiArCj4gK3Vu
+bG9jazoKPiArCW11dGV4X3VubG9jaygmaXQ2NTA1LT5tb2RlX2xvY2spOwo+ICt9Cj4gKwo+ICtz
+dGF0aWMgaW50IGl0NjUwNV9icmlkZ2VfYXR0YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2Us
+Cj4gKwkJCQllbnVtIGRybV9icmlkZ2VfYXR0YWNoX2ZsYWdzIGZsYWdzKQo+ICt7Cj4gKwlzdHJ1
+Y3QgaXQ2NTA1ICppdDY1MDUgPSBicmlkZ2VfdG9faXQ2NTA1KGJyaWRnZSk7Cj4gKwlzdHJ1Y3Qg
+ZGV2aWNlICpkZXYgPSAmaXQ2NTA1LT5jbGllbnQtPmRldjsKPiArCWludCBlcnI7Cj4gKwo+ICsJ
+aWYgKGZsYWdzICYgRFJNX0JSSURHRV9BVFRBQ0hfTk9fQ09OTkVDVE9SKSB7Cj4gKwkJRFJNX0VS
+Uk9SKCJGaXggYnJpZGdlIGRyaXZlciB0byBtYWtlIGNvbm5lY3RvciBvcHRpb25hbCEiKTsKPiAr
+CQlyZXR1cm4gMDsKPiArCX0KPiArCj4gKwlpZiAoIWJyaWRnZS0+ZW5jb2Rlcikgewo+ICsJCURS
+TV9ERVZfRVJST1IoZGV2LCAiUGFyZW50IGVuY29kZXIgb2JqZWN0IG5vdCBmb3VuZCIpOwo+ICsJ
+CXJldHVybiAtRU5PREVWOwo+ICsJfQo+ICsKPiArCWVyciA9IGRybV9jb25uZWN0b3JfaW5pdChi
+cmlkZ2UtPmRldiwgJml0NjUwNS0+Y29ubmVjdG9yLAo+ICsJCQkJICZpdDY1MDVfY29ubmVjdG9y
+X2Z1bmNzLAo+ICsJCQkJIERSTV9NT0RFX0NPTk5FQ1RPUl9EaXNwbGF5UG9ydCk7Cj4gKwlpZiAo
+ZXJyIDwgMCkgewo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUg
+Y29ubmVjdG9yOiAlZCIsIGVycik7Cj4gKwkJcmV0dXJuIGVycjsKPiArCX0KPiArCj4gKwlkcm1f
+Y29ubmVjdG9yX2hlbHBlcl9hZGQoJml0NjUwNS0+Y29ubmVjdG9yLAo+ICsJCQkJICZpdDY1MDVf
+Y29ubmVjdG9yX2hlbHBlcl9mdW5jcyk7Cj4gKwo+ICsJaXQ2NTA1LT5jb25uZWN0b3IucG9sbGVk
+ID0gRFJNX0NPTk5FQ1RPUl9QT0xMX0hQRDsKPiArCj4gKwllcnIgPSBkcm1fY29ubmVjdG9yX2F0
+dGFjaF9lbmNvZGVyKCZpdDY1MDUtPmNvbm5lY3RvciwgYnJpZGdlLT5lbmNvZGVyKTsKPiArCWlm
+IChlcnIgPCAwKSB7Cj4gKwkJRFJNX0RFVl9FUlJPUihkZXYsICJGYWlsZWQgdG8gbGluayB1cCBj
+b25uZWN0b3IgdG8gZW5jb2RlcjogJWQiLAo+ICsJCQkgICAgICBlcnIpOwo+ICsJCWdvdG8gY2xl
+YW51cF9jb25uZWN0b3I7Cj4gKwl9Cj4gKwo+ICsJZXJyID0gZHJtX2Nvbm5lY3Rvcl9yZWdpc3Rl
+cigmaXQ2NTA1LT5jb25uZWN0b3IpOwo+ICsJaWYgKGVyciA8IDApIHsKPiArCQlEUk1fREVWX0VS
+Uk9SKGRldiwgIkZhaWxlZCB0byByZWdpc3RlciBjb25uZWN0b3I6ICVkIiwgZXJyKTsKPiArCQln
+b3RvIGNsZWFudXBfY29ubmVjdG9yOwo+ICsJfQo+ICsKPiArCWlmIChpdDY1MDUtPmV4dGNvbikg
+ewo+ICsJCWVyciA9IGl0NjUwNV91c2Vfbm90aWZpZXJfbW9kdWxlKGl0NjUwNSk7Cj4gKwkJaWYg
+KGVyciA8IDApIHsKPiArCQkJZHJtX2Nvbm5lY3Rvcl91bnJlZ2lzdGVyKCZpdDY1MDUtPmNvbm5l
+Y3Rvcik7Cj4gKwkJCWdvdG8gY2xlYW51cF9jb25uZWN0b3I7Cj4gKwkJfQo+ICsJfQo+ICsKPiAr
+CXJldHVybiAwOwo+ICsKPiArY2xlYW51cF9jb25uZWN0b3I6Cj4gKwlkcm1fY29ubmVjdG9yX2Ns
+ZWFudXAoJml0NjUwNS0+Y29ubmVjdG9yKTsKPiArCXJldHVybiBlcnI7Cj4gK30KPiArCj4gK3N0
+YXRpYyB2b2lkIGl0NjUwNV9icmlkZ2VfZGV0YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2Up
+Cj4gK3sKPiArCXN0cnVjdCBpdDY1MDUgKml0NjUwNSA9IGJyaWRnZV90b19pdDY1MDUoYnJpZGdl
+KTsKPiArCj4gKwlmbHVzaF93b3JrKCZpdDY1MDUtPmxpbmtfd29ya3MpOwo+ICsJaXQ2NTA1X3Jl
+bW92ZV9ub3RpZmllcl9tb2R1bGUoaXQ2NTA1KTsKPiArCWRybV9jb25uZWN0b3JfdW5yZWdpc3Rl
+cigmaXQ2NTA1LT5jb25uZWN0b3IpOwo+ICsJZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKCZpdDY1MDUt
+PmNvbm5lY3Rvcik7Cj4gK30KPiArCj4gK3N0YXRpYyBlbnVtIGRybV9tb2RlX3N0YXR1cwo+ICtp
+dDY1MDVfYnJpZGdlX21vZGVfdmFsaWQoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSwKPiArCQkJ
+IGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9pbmZvICppbmZvLAo+ICsJCQkgY29uc3Qgc3RydWN0
+IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gK3sKPiArCXN0cnVjdCBpdDY1MDUgKml0NjUwNSA9
+IGJyaWRnZV90b19pdDY1MDUoYnJpZGdlKTsKPiArCj4gKwlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1f
+TU9ERV9GTEFHX0lOVEVSTEFDRSkKPiArCQlyZXR1cm4gTU9ERV9OT19JTlRFUkxBQ0U7Cj4gKwo+
+ICsJaWYgKG1vZGUtPmNsb2NrID4gRFBJX1BJWEVMX0NMS19NQVgpCj4gKwkJcmV0dXJuIE1PREVf
+Q0xPQ0tfSElHSDsKPiArCj4gKwlpdDY1MDUtPnZpZGVvX2luZm8uY2xvY2sgPSBtb2RlLT5jbG9j
+azsKPiArCj4gKwlyZXR1cm4gTU9ERV9PSzsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1
+X2JyaWRnZV9lbmFibGUoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKPiArewo+ICsJc3RydWN0
+IGl0NjUwNSAqaXQ2NTA1ID0gYnJpZGdlX3RvX2l0NjUwNShicmlkZ2UpOwo+ICsKPiArCWl0NjUw
+NV9pbnRfbWFza19lbmFibGUoaXQ2NTA1KTsKPiArCWl0NjUwNV92aWRlb19yZXNldChpdDY1MDUp
+Owo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBpdDY1MDVfYnJpZGdlX2Rpc2FibGUoc3RydWN0IGRy
+bV9icmlkZ2UgKmJyaWRnZSkKPiArewo+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0gYnJpZGdl
+X3RvX2l0NjUwNShicmlkZ2UpOwo+ICsKPiArCWlmIChpdDY1MDUtPnBvd2VyZWQpCj4gKwkJaXQ2
+NTA1X3ZpZGVvX2Rpc2FibGUoaXQ2NTA1KTsKPiArfQo+ICsKPiArc3RhdGljIGVudW0gZHJtX2Nv
+bm5lY3Rvcl9zdGF0dXMKPiAraXQ2NTA1X2JyaWRnZV9kZXRlY3Qoc3RydWN0IGRybV9icmlkZ2Ug
+KmJyaWRnZSkKPiArewo+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0gYnJpZGdlX3RvX2l0NjUw
+NShicmlkZ2UpOwo+ICsKPiArCXJldHVybiBpdDY1MDVfZGV0ZWN0KCZpdDY1MDUtPmNvbm5lY3Rv
+ciwgMCk7Cj4gK30KPiArCj4gK3N0YXRpYyBzdHJ1Y3QgZWRpZCAqaXQ2NTA1X2JyaWRnZV9nZXRf
+ZWRpZChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICsJCQkJCSAgIHN0cnVjdCBkcm1fY29u
+bmVjdG9yICpjb25uZWN0b3IpCj4gK3sKPiArCXN0cnVjdCBpdDY1MDUgKml0NjUwNSA9IGJyaWRn
+ZV90b19pdDY1MDUoYnJpZGdlKTsKPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZpdDY1MDUtPmNs
+aWVudC0+ZGV2Owo+ICsJc3RydWN0IGVkaWQgKmVkaWQ7Cj4gKwo+ICsJZWRpZCA9IGRybV9kb19n
+ZXRfZWRpZCgmaXQ2NTA1LT5jb25uZWN0b3IsIGl0NjUwNV9nZXRfZWRpZF9ibG9jaywKPiArCQkJ
+ICAgICAgIGl0NjUwNSk7Cj4gKwo+ICsJaWYgKCFlZGlkKSB7Cj4gKwkJRFJNX0RFVl9ERUJVR19E
+UklWRVIoZGV2LCAiZmFpbGVkIHRvIGdldCBlZGlkISIpOwo+ICsJCXJldHVybiBOVUxMOwo+ICsJ
+fQo+ICsKPiArCXJldHVybiBlZGlkOwo+ICt9Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGRy
+bV9icmlkZ2VfZnVuY3MgaXQ2NTA1X2JyaWRnZV9mdW5jcyA9IHsKPiArCS5hdHRhY2ggPSBpdDY1
+MDVfYnJpZGdlX2F0dGFjaCwKPiArCS5kZXRhY2ggPSBpdDY1MDVfYnJpZGdlX2RldGFjaCwKPiAr
+CS5tb2RlX3ZhbGlkID0gaXQ2NTA1X2JyaWRnZV9tb2RlX3ZhbGlkLAo+ICsJLm1vZGVfc2V0ID0g
+aXQ2NTA1X2JyaWRnZV9tb2RlX3NldCwKPiArCS5lbmFibGUgPSBpdDY1MDVfYnJpZGdlX2VuYWJs
+ZSwKPiArCS5kaXNhYmxlID0gaXQ2NTA1X2JyaWRnZV9kaXNhYmxlLAo+ICsJLmRldGVjdCA9IGl0
+NjUwNV9icmlkZ2VfZGV0ZWN0LAo+ICsJLmdldF9lZGlkID0gaXQ2NTA1X2JyaWRnZV9nZXRfZWRp
+ZCwKPiArfTsKPiArCj4gKyNpZmRlZiBDT05GSUdfUE1fU0xFRVAKPiArCj4gK3N0YXRpYyBpbnQg
+aXQ2NTA1X2JyaWRnZV9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQo+ICt7Cj4gKwlzdHJ1Y3Qg
+aXQ2NTA1ICppdDY1MDUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCj4gKwlyZXR1cm4gaXQ2
+NTA1X3Bvd2Vyb24oaXQ2NTA1KTsKPiArfQo+ICsKPiArc3RhdGljIGludCBpdDY1MDVfYnJpZGdl
+X3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+ICt7Cj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1
+MDUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCj4gKwlyZXR1cm4gaXQ2NTA1X3Bvd2Vyb2Zm
+KGl0NjUwNSk7Cj4gK30KPiArCj4gK3N0YXRpYyBTSU1QTEVfREVWX1BNX09QUyhpdDY1MDVfYnJp
+ZGdlX3BtX29wcywgaXQ2NTA1X2JyaWRnZV9zdXNwZW5kLAo+ICsJCQkgaXQ2NTA1X2JyaWRnZV9y
+ZXN1bWUpOwo+ICsKPiArI2VuZGlmCj4gKwo+ICtzdGF0aWMgaW50IGl0NjUwNV9pbml0X3BkYXRh
+KHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJc3RydWN0IGl0NjUwNV9wbGF0Zm9ybV9k
+YXRhICpwZGF0YSA9ICZpdDY1MDUtPnBkYXRhOwo+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJml0
+NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwo+ICsJLyogMS4wViBkaWdpdGFsIGNvcmUgcG93ZXIgcmVn
+dWxhdG9yICAqLwo+ICsJcGRhdGEtPnB3cjE4ID0gZGV2bV9yZWd1bGF0b3JfZ2V0KGRldiwgInB3
+cjE4Iik7Cj4gKwlpZiAoSVNfRVJSKHBkYXRhLT5wd3IxOCkpIHsKPiArCQlEUk1fREVWX0VSUk9S
+KGRldiwgInB3cjE4IHJlZ3VsYXRvciBub3QgZm91bmQiKTsKPiArCQlyZXR1cm4gUFRSX0VSUihw
+ZGF0YS0+cHdyMTgpOwo+ICsJfQo+ICsKPiArCXBkYXRhLT5vdmRkID0gZGV2bV9yZWd1bGF0b3Jf
+Z2V0KGRldiwgIm92ZGQiKTsKPiArCWlmIChJU19FUlIocGRhdGEtPm92ZGQpKSB7Cj4gKwkJRFJN
+X0RFVl9FUlJPUihkZXYsICJvdmRkIHJlZ3VsYXRvciBub3QgZm91bmQiKTsKPiArCQlyZXR1cm4g
+UFRSX0VSUihwZGF0YS0+b3ZkZCk7Cj4gKwl9Cj4gKwo+ICsJcGRhdGEtPmdwaW9kX3Jlc2V0ID0g
+ZGV2bV9ncGlvZF9nZXQoZGV2LCAicmVzZXQiLCBHUElPRF9PVVRfSElHSCk7Cj4gKwlpZiAoSVNf
+RVJSKHBkYXRhLT5ncGlvZF9yZXNldCkpIHsKPiArCQlEUk1fREVWX0VSUk9SKGRldiwgImdwaW9k
+X3Jlc2V0IGdwaW8gbm90IGZvdW5kIik7Cj4gKwkJcmV0dXJuIFBUUl9FUlIocGRhdGEtPmdwaW9k
+X3Jlc2V0KTsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQg
+aXQ2NTA1X3BhcnNlX2R0KHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiArewo+ICsJc3RydWN0IGRl
+dmljZSAqZGV2ID0gJml0NjUwNS0+Y2xpZW50LT5kZXY7Cj4gKwl1MzIgKmFmZV9zZXR0aW5nID0g
+Jml0NjUwNS0+YWZlX3NldHRpbmc7Cj4gKwo+ICsJaXQ2NTA1LT5sYW5lX3N3YXBfZGlzYWJsZWQg
+PQo+ICsJCWRldmljZV9wcm9wZXJ0eV9yZWFkX2Jvb2woZGV2LCAibm8tbGFuZXN3YXAiKTsKPiAr
+Cj4gKwlpZiAoaXQ2NTA1LT5sYW5lX3N3YXBfZGlzYWJsZWQpCj4gKwkJaXQ2NTA1LT5sYW5lX3N3
+YXAgPSBmYWxzZTsKPiArCj4gKwlpZiAoZGV2aWNlX3Byb3BlcnR5X3JlYWRfdTMyKGRldiwgImFm
+ZS1zZXR0aW5nIiwgYWZlX3NldHRpbmcpID09IDApIHsKPiArCQlpZiAoKmFmZV9zZXR0aW5nID49
+IEFSUkFZX1NJWkUoYWZlX3NldHRpbmdfdGFibGUpKSB7Cj4gKwkJCURSTV9ERVZfRVJST1IoZGV2
+LCAiYWZlIHNldHRpbmcgZXJyb3IsIHVzZSBkZWZhdWx0Iik7Cj4gKwkJCSphZmVfc2V0dGluZyA9
+IDA7Cj4gKwkJfQo+ICsJfSBlbHNlIHsKPiArCQkqYWZlX3NldHRpbmcgPSAwOwo+ICsJfQo+ICsJ
+RFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAidXNpbmcgYWZlX3NldHRpbmc6ICVkIiwgKmFmZV9z
+ZXR0aW5nKTsKPiArfQo+ICsKPiArc3RhdGljIHNzaXplX3QgcHJpbnRfdGltaW5nX3Nob3coc3Ry
+dWN0IGRldmljZSAqZGV2LAo+ICsJCQkJIHN0cnVjdCBkZXZpY2VfYXR0cmlidXRlICphdHRyLCBj
+aGFyICpidWYpCj4gK3sKPiArCXN0cnVjdCBpdDY1MDUgKml0NjUwNSA9IGRldl9nZXRfZHJ2ZGF0
+YShkZXYpOwo+ICsJc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKnZpZCA9ICZpdDY1MDUtPnZpZGVv
+X2luZm87Cj4gKwljaGFyICpzdHIgPSBidWYsICplbmQgPSBidWYgKyBQQUdFX1NJWkU7Cj4gKwo+
+ICsJaXQ2NTA1X2NhbGNfdmlkZW9faW5mbyhpdDY1MDUpOwo+ICsJc3RyICs9IHNjbnByaW50Zihz
+dHIsIGVuZCAtIHN0ciwgIi0tLXZpZGVvIHRpbWluZy0tLVxuIik7Cj4gKwlzdHIgKz0gc2NucHJp
+bnRmKHN0ciwgZW5kIC0gc3RyLCAiUENMSzolZC4lMDNkTUh6XG4iLAo+ICsJCQkgdmlkLT5jbG9j
+ayAvIDEwMDAsIHZpZC0+Y2xvY2sgJSAxMDAwKTsKPiArCXN0ciArPSBzY25wcmludGYoc3RyLCBl
+bmQgLSBzdHIsICJIVG90YWw6JWRcbiIsIHZpZC0+aHRvdGFsKTsKPiArCXN0ciArPSBzY25wcmlu
+dGYoc3RyLCBlbmQgLSBzdHIsICJIQWN0aXZlOiVkXG4iLCB2aWQtPmhkaXNwbGF5KTsKPiArCXN0
+ciArPSBzY25wcmludGYoc3RyLCBlbmQgLSBzdHIsICJIRnJvbnRQb3JjaDolZFxuIiwKPiArCQkJ
+IHZpZC0+aHN5bmNfc3RhcnQgLSB2aWQtPmhkaXNwbGF5KTsKPiArCXN0ciArPSBzY25wcmludGYo
+c3RyLCBlbmQgLSBzdHIsICJIU3luY1dpZHRoOiVkXG4iLAo+ICsJCQkgdmlkLT5oc3luY19lbmQg
+LSB2aWQtPmhzeW5jX3N0YXJ0KTsKPiArCXN0ciArPSBzY25wcmludGYoc3RyLCBlbmQgLSBzdHIs
+ICJIQmFja1BvcmNoOiVkXG4iLAo+ICsJCQkgdmlkLT5odG90YWwgLSB2aWQtPmhzeW5jX2VuZCk7
+Cj4gKwlzdHIgKz0gc2NucHJpbnRmKHN0ciwgZW5kIC0gc3RyLCAiVlRvdGFsOiVkXG4iLCB2aWQt
+PnZ0b3RhbCk7Cj4gKwlzdHIgKz0gc2NucHJpbnRmKHN0ciwgZW5kIC0gc3RyLCAiVkFjdGl2ZTol
+ZFxuIiwgdmlkLT52ZGlzcGxheSk7Cj4gKwlzdHIgKz0gc2NucHJpbnRmKHN0ciwgZW5kIC0gc3Ry
+LCAiVkZyb250UG9yY2g6JWRcbiIsCj4gKwkJCSB2aWQtPnZzeW5jX3N0YXJ0IC0gdmlkLT52ZGlz
+cGxheSk7Cj4gKwlzdHIgKz0gc2NucHJpbnRmKHN0ciwgZW5kIC0gc3RyLCAiVlN5bmNXaWR0aDol
+ZFxuIiwKPiArCQkJIHZpZC0+dnN5bmNfZW5kIC0gdmlkLT52c3luY19zdGFydCk7Cj4gKwlzdHIg
+Kz0gc2NucHJpbnRmKHN0ciwgZW5kIC0gc3RyLCAiVkJhY2tQb3JjaDolZFxuIiwKPiArCQkJIHZp
+ZC0+dnRvdGFsIC0gdmlkLT52c3luY19lbmQpOwo+ICsKPiArCXJldHVybiBzdHIgLSBidWY7Cj4g
+K30KPiArCj4gK3N0YXRpYyBzc2l6ZV90IGZvcmNlX3B3cm9ub2ZmX3N0b3JlKHN0cnVjdCBkZXZp
+Y2UgKmRldiwKPiArCQkJCSAgICBzdHJ1Y3QgZGV2aWNlX2F0dHJpYnV0ZSAqYXR0ciwKPiArCQkJ
+CSAgICBjb25zdCBjaGFyICpidWYsIHNpemVfdCBjb3VudCkKPiArewo+ICsJc3RydWN0IGl0NjUw
+NSAqaXQ2NTA1ID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gKwlpbnQgcHdyOwo+ICsKPiArCWlm
+IChrc3RydG9pbnQoYnVmLCAxMCwgJnB3cikgPCAwKQo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsK
+PiArCWlmIChwd3IpCj4gKwkJaXQ2NTA1X3Bvd2Vyb24oaXQ2NTA1KTsKPiArCWVsc2UKPiArCQlp
+dDY1MDVfcG93ZXJvZmYoaXQ2NTA1KTsKPiArCj4gKwlyZXR1cm4gY291bnQ7Cj4gK30KPiArCj4g
+K3N0YXRpYyBzc2l6ZV90IGVuYWJsZV9kcnZfaG9sZF9zaG93KHN0cnVjdCBkZXZpY2UgKmRldiwK
+PiArCQkJCSAgICBzdHJ1Y3QgZGV2aWNlX2F0dHJpYnV0ZSAqYXR0ciwgY2hhciAqYnVmKQo+ICt7
+Cj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCj4g
+KwlyZXR1cm4gc2NucHJpbnRmKGJ1ZiwgUEFHRV9TSVpFLCAiJWRcbiIsIGl0NjUwNS0+ZW5hYmxl
+X2Rydl9ob2xkKTsKPiArfQo+ICsKPiArc3RhdGljIHNzaXplX3QgZW5hYmxlX2Rydl9ob2xkX3N0
+b3JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPiArCQkJCSAgICAgc3RydWN0IGRldmljZV9hdHRyaWJ1
+dGUgKmF0dHIsCj4gKwkJCQkgICAgIGNvbnN0IGNoYXIgKmJ1Ziwgc2l6ZV90IGNvdW50KQo+ICt7
+Cj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCXVu
+c2lnbmVkIGludCBkcnZfaG9sZDsKPiArCj4gKwlpZiAoa3N0cnRvaW50KGJ1ZiwgMTAsICZkcnZf
+aG9sZCkgPCAwKQo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsKPiArCWl0NjUwNS0+ZW5hYmxlX2Ry
+dl9ob2xkID0gISFkcnZfaG9sZDsKPiArCj4gKwlpZiAoaXQ2NTA1LT5lbmFibGVfZHJ2X2hvbGQp
+IHsKPiArCQlpdDY1MDVfaW50X21hc2tfZGlzYWJsZShpdDY1MDUpOwo+ICsJfSBlbHNlIHsKPiAr
+CQlpdDY1MDVfY2xlYXJfaW50KGl0NjUwNSk7Cj4gKwkJaXQ2NTA1X2ludF9tYXNrX2VuYWJsZShp
+dDY1MDUpOwo+ICsKPiArCQlpZiAoaXQ2NTA1LT5wb3dlcmVkKSB7Cj4gKwkJCWl0NjUwNS0+Y29u
+bmVjdG9yX3N0YXR1cyA9Cj4gKwkJCQkJaXQ2NTA1X2dldF9zaW5rX2hwZF9zdGF0dXMoaXQ2NTA1
+KSA/Cj4gKwkJCQkJY29ubmVjdG9yX3N0YXR1c19jb25uZWN0ZWQgOgo+ICsJCQkJCWNvbm5lY3Rv
+cl9zdGF0dXNfZGlzY29ubmVjdGVkOwo+ICsJCX0gZWxzZSB7Cj4gKwkJCWl0NjUwNS0+Y29ubmVj
+dG9yX3N0YXR1cyA9Cj4gKwkJCQkJY29ubmVjdG9yX3N0YXR1c19kaXNjb25uZWN0ZWQ7Cj4gKwkJ
+fQo+ICsJfQo+ICsJcmV0dXJuIGNvdW50Owo+ICt9Cj4gKwo+ICtzdGF0aWMgREVWSUNFX0FUVFJf
+Uk8ocHJpbnRfdGltaW5nKTsKPiArc3RhdGljIERFVklDRV9BVFRSX1dPKGZvcmNlX3B3cm9ub2Zm
+KTsKPiArc3RhdGljIERFVklDRV9BVFRSX1JXKGVuYWJsZV9kcnZfaG9sZCk7Cj4gKwo+ICtzdGF0
+aWMgY29uc3Qgc3RydWN0IGF0dHJpYnV0ZSAqaXQ2NTA1X2F0dHJzW10gPSB7Cj4gKwkmZGV2X2F0
+dHJfcHJpbnRfdGltaW5nLmF0dHIsCj4gKwkmZGV2X2F0dHJfZm9yY2VfcHdyb25vZmYuYXR0ciwK
+PiArCSZkZXZfYXR0cl9lbmFibGVfZHJ2X2hvbGQuYXR0ciwKPiArCU5VTEwsCj4gK307Cj4gKwo+
+ICtzdGF0aWMgdm9pZCBpdDY1MDVfc2h1dGRvd24oc3RydWN0IGkyY19jbGllbnQgKmNsaWVudCkK
+PiArewo+ICsJc3RydWN0IGl0NjUwNSAqaXQ2NTA1ID0gZGV2X2dldF9kcnZkYXRhKCZjbGllbnQt
+PmRldik7Cj4gKwo+ICsJa2ZyZWUoaXQ2NTA1LT5lZGlkKTsKPiArCWl0NjUwNS0+ZWRpZCA9IE5V
+TEw7Cj4gKwo+ICsJaWYgKGl0NjUwNS0+cG93ZXJlZCkKPiArCQlpdDY1MDVfbGFuZV9vZmYoaXQ2
+NTA1KTsKPiArfQo+ICsKPiArc3RhdGljIGludCBpdDY1MDVfaTJjX3Byb2JlKHN0cnVjdCBpMmNf
+Y2xpZW50ICpjbGllbnQsCj4gKwkJCSAgICBjb25zdCBzdHJ1Y3QgaTJjX2RldmljZV9pZCAqaWQp
+Cj4gK3sKPiArCXN0cnVjdCBpdDY1MDUgKml0NjUwNTsKPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9
+ICZjbGllbnQtPmRldjsKPiArCXN0cnVjdCBleHRjb25fZGV2ICpleHRjb247Cj4gKwlpbnQgZXJy
+LCBpbnRwX2lycTsKPiArCj4gKwlpdDY1MDUgPSBkZXZtX2t6YWxsb2MoJmNsaWVudC0+ZGV2LCBz
+aXplb2YoKml0NjUwNSksIEdGUF9LRVJORUwpOwo+ICsJaWYgKCFpdDY1MDUpCj4gKwkJcmV0dXJu
+IC1FTk9NRU07Cj4gKwo+ICsJbXV0ZXhfaW5pdCgmaXQ2NTA1LT5leHRjb25fbG9jayk7Cj4gKwlt
+dXRleF9pbml0KCZpdDY1MDUtPm1vZGVfbG9jayk7Cj4gKwltdXRleF9pbml0KCZpdDY1MDUtPmF1
+eF9sb2NrKTsKPiArCj4gKwlpdDY1MDUtPmJyaWRnZS5vZl9ub2RlID0gY2xpZW50LT5kZXYub2Zf
+bm9kZTsKPiArCWl0NjUwNS0+Y29ubmVjdG9yX3N0YXR1cyA9IGNvbm5lY3Rvcl9zdGF0dXNfZGlz
+Y29ubmVjdGVkOwo+ICsJaXQ2NTA1LT5jbGllbnQgPSBjbGllbnQ7Cj4gKwlpMmNfc2V0X2NsaWVu
+dGRhdGEoY2xpZW50LCBpdDY1MDUpOwo+ICsKPiArCS8qIGdldCBleHRjb24gZGV2aWNlIGZyb20g
+RFRTICovCj4gKwlleHRjb24gPSBleHRjb25fZ2V0X2VkZXZfYnlfcGhhbmRsZShkZXYsIDApOwo+
+ICsJaWYgKFBUUl9FUlIoZXh0Y29uKSA9PSAtRVBST0JFX0RFRkVSKQo+ICsJCXJldHVybiAtRVBS
+T0JFX0RFRkVSOwo+ICsJaWYgKElTX0VSUihleHRjb24pKSB7Cj4gKwkJRFJNX0RFVl9FUlJPUihk
+ZXYsICJjYW4gbm90IGdldCBleHRjb24gZGV2aWNlISIpOwo+ICsJCXJldHVybiBQVFJfRVJSKGV4
+dGNvbik7Cj4gKwl9Cj4gKwo+ICsJaXQ2NTA1LT5leHRjb24gPSBleHRjb247Cj4gKwo+ICsJaXQ2
+NTA1LT5yZWdtYXAgPSBkZXZtX3JlZ21hcF9pbml0X2kyYyhjbGllbnQsICZpdDY1MDVfcmVnbWFw
+X2NvbmZpZyk7Cj4gKwlpZiAoSVNfRVJSKGl0NjUwNS0+cmVnbWFwKSkgewo+ICsJCURSTV9ERVZf
+RVJST1IoZGV2LCAicmVnbWFwIGkyYyBpbml0IGZhaWxlZCIpOwo+ICsJCWVyciA9IFBUUl9FUlIo
+aXQ2NTA1LT5yZWdtYXApOwo+ICsJCXJldHVybiBlcnI7Cj4gKwl9Cj4gKwo+ICsJZXJyID0gaXQ2
+NTA1X2luaXRfcGRhdGEoaXQ2NTA1KTsKPiArCWlmIChlcnIpIHsKPiArCQlEUk1fREVWX0VSUk9S
+KGRldiwgIkZhaWxlZCB0byBpbml0aWFsaXplIHBkYXRhOiAlZCIsIGVycik7Cj4gKwkJcmV0dXJu
+IGVycjsKPiArCX0KPiArCj4gKwlpdDY1MDVfcGFyc2VfZHQoaXQ2NTA1KTsKPiArCj4gKwlpbnRw
+X2lycSA9IGNsaWVudC0+aXJxOwo+ICsKPiArCWlmICghaW50cF9pcnEpIHsKPiArCQlEUk1fREVW
+X0VSUk9SKGRldiwgIkZhaWxlZCB0byBnZXQgSU5UUCBJUlEiKTsKPiArCQllcnIgPSAtRU5PREVW
+Owo+ICsJCXJldHVybiBlcnI7Cj4gKwl9Cj4gKwo+ICsJZXJyID0gZGV2bV9yZXF1ZXN0X3RocmVh
+ZGVkX2lycSgmY2xpZW50LT5kZXYsIGludHBfaXJxLCBOVUxMLAo+ICsJCQkJCWl0NjUwNV9pbnRf
+dGhyZWFkZWRfaGFuZGxlciwKPiArCQkJCQlJUlFGX1RSSUdHRVJfTE9XIHwgSVJRRl9PTkVTSE9U
+LAo+ICsJCQkJCSJpdDY1MDUtaW50cCIsIGl0NjUwNSk7Cj4gKwlpZiAoZXJyKSB7Cj4gKwkJRFJN
+X0RFVl9FUlJPUihkZXYsICJGYWlsZWQgdG8gcmVxdWVzdCBJTlRQIHRocmVhZGVkIElSUTogJWQi
+LAo+ICsJCQkgICAgICBlcnIpOwo+ICsJCXJldHVybiBlcnI7Cj4gKwl9Cj4gKwo+ICsJLyogUmVn
+aXN0ZXIgYXV4IGNoYW5uZWwgKi8KPiArCWl0NjUwNS0+YXV4Lm5hbWUgPSAiRFAtQVVYIjsKPiAr
+CWl0NjUwNS0+YXV4LmRldiA9IGRldjsKPiArCWl0NjUwNS0+YXV4LnRyYW5zZmVyID0gaXQ2NTA1
+X2F1eF90cmFuc2ZlcjsKPiArCj4gKwllcnIgPSBkcm1fZHBfYXV4X3JlZ2lzdGVyKCZpdDY1MDUt
+PmF1eCk7Cj4gKwlpZiAoZXJyIDwgMCkgewo+ICsJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVk
+IHRvIHJlZ2lzdGVyIGF1eDogJWQiLCBlcnIpOwo+ICsJCXJldHVybiBlcnI7Cj4gKwl9Cj4gKwo+
+ICsJSU5JVF9XT1JLKCZpdDY1MDUtPmxpbmtfd29ya3MsIGl0NjUwNV9saW5rX3RyYWluaW5nX3dv
+cmspOwo+ICsJSU5JVF9XT1JLKCZpdDY1MDUtPmhkY3Bfd2FpdF9rc3ZfbGlzdCwgaXQ2NTA1X2hk
+Y3Bfd2FpdF9rc3ZfbGlzdCk7Cj4gKwlJTklUX0RFTEFZRURfV09SSygmaXQ2NTA1LT5oZGNwX3dv
+cmssIGl0NjUwNV9oZGNwX3dvcmspOwo+ICsJaW5pdF9jb21wbGV0aW9uKCZpdDY1MDUtPndhaXRf
+ZWRpZF9jb21wbGV0ZSk7Cj4gKwltZW1zZXQoaXQ2NTA1LT5kcGNkLCAwLCBzaXplb2YoaXQ2NTA1
+LT5kcGNkKSk7Cj4gKwlpdDY1MDUtPnBvd2VyZWQgPSBmYWxzZTsKPiArCWl0NjUwNS0+ZW5hYmxl
+X2Rydl9ob2xkID0gREVGQVVMVF9EUlZfSE9MRDsKPiArCj4gKwlpZiAoREVGQVVMVF9QV1JfT04p
+Cj4gKwkJaXQ2NTA1X3Bvd2Vyb24oaXQ2NTA1KTsKPiArCj4gKwllcnIgPSBzeXNmc19jcmVhdGVf
+ZmlsZXMoJmNsaWVudC0+ZGV2LmtvYmosIGl0NjUwNV9hdHRycyk7Cj4gKwlpZiAoZXJyKSB7Cj4g
+KwkJZHJtX2RwX2F1eF91bnJlZ2lzdGVyKCZpdDY1MDUtPmF1eCk7Cj4gKwkJcmV0dXJuIGVycjsK
+PiArCX0KPiArCj4gKwlpdDY1MDUtPmJyaWRnZS5mdW5jcyA9ICZpdDY1MDVfYnJpZGdlX2Z1bmNz
+Owo+ICsJZHJtX2JyaWRnZV9hZGQoJml0NjUwNS0+YnJpZGdlKTsKPiArCj4gKwlyZXR1cm4gMDsK
+PiArfQo+ICsKPiArc3RhdGljIGludCBpdDY1MDVfaTJjX3JlbW92ZShzdHJ1Y3QgaTJjX2NsaWVu
+dCAqY2xpZW50KQo+ICt7Cj4gKwlzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUgPSBpMmNfZ2V0X2NsaWVu
+dGRhdGEoY2xpZW50KTsKPiArCj4gKwlkcm1fY29ubmVjdG9yX3VucmVnaXN0ZXIoJml0NjUwNS0+
+Y29ubmVjdG9yKTsKPiArCWRybV9jb25uZWN0b3JfY2xlYW51cCgmaXQ2NTA1LT5jb25uZWN0b3Ip
+Owo+ICsJZHJtX2JyaWRnZV9yZW1vdmUoJml0NjUwNS0+YnJpZGdlKTsKPiArCWRybV9kcF9hdXhf
+dW5yZWdpc3RlcigmaXQ2NTA1LT5hdXgpOwo+ICsJc3lzZnNfcmVtb3ZlX2ZpbGVzKCZjbGllbnQt
+PmRldi5rb2JqLCBpdDY1MDVfYXR0cnMpOwo+ICsJaXQ2NTA1X3Bvd2Vyb2ZmKGl0NjUwNSk7Cj4g
+Kwo+ICsJcmV0dXJuIDA7Cj4gK30KPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgaTJjX2Rldmlj
+ZV9pZCBpdDY1MDVfaWRbXSA9IHsKPiArCXsgIml0NjUwNSIsIDAgfSwKPiArCXsgfQo+ICt9Owo+
+ICsKPiArTU9EVUxFX0RFVklDRV9UQUJMRShpMmMsIGl0NjUwNV9pZCk7Cj4gKwo+ICtzdGF0aWMg
+Y29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBpdDY1MDVfb2ZfbWF0Y2hbXSA9IHsKPiArCXsgLmNv
+bXBhdGlibGUgPSAiaXRlLGl0NjUwNSIgfSwKPiArCXsgfQo+ICt9Owo+ICsKPiArc3RhdGljIHN0
+cnVjdCBpMmNfZHJpdmVyIGl0NjUwNV9pMmNfZHJpdmVyID0gewo+ICsJLmRyaXZlciA9IHsKPiAr
+CQkubmFtZSA9ICJpdDY1MDUiLAo+ICsJCS5vZl9tYXRjaF90YWJsZSA9IGl0NjUwNV9vZl9tYXRj
+aCwKPiArI2lmZGVmIENPTkZJR19QTV9TTEVFUAo+ICsJCS5wbSA9ICZpdDY1MDVfYnJpZGdlX3Bt
+X29wcywKPiArI2VuZGlmCj4gKwl9LAo+ICsJLnByb2JlID0gaXQ2NTA1X2kyY19wcm9iZSwKPiAr
+CS5yZW1vdmUgPSBpdDY1MDVfaTJjX3JlbW92ZSwKPiArCS5zaHV0ZG93biA9IGl0NjUwNV9zaHV0
+ZG93biwKPiArCS5pZF90YWJsZSA9IGl0NjUwNV9pZCwKPiArfTsKPiArCj4gK21vZHVsZV9pMmNf
+ZHJpdmVyKGl0NjUwNV9pMmNfZHJpdmVyKTsKPiArCj4gK01PRFVMRV9BVVRIT1IoIkFsbGVuIENo
+ZW4gPGFsbGVuLmNoZW5AaXRlLmNvbS50dz4iKTsKPiArTU9EVUxFX0RFU0NSSVBUSU9OKCJJVDY1
+MDUgRGlzcGxheVBvcnQgVHJhbnNtaXR0ZXIgZHJpdmVyIik7Cj4gK01PRFVMRV9MSUNFTlNFKCJH
+UEwgdjIiKTsKCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBs
+aXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
