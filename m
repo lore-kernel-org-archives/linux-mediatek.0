@@ -2,61 +2,72 @@ Return-Path: <SRS0=m1jb=F2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C48D4C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:50:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B0E1C433E6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 14:00:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7978023105
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 13:50:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7978023105
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3649023124
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Dec 2020 14:00:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3649023124
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BmP31tYYrxOyHhznHPTGrMnRoV3BYDxUOmcTAZUL5Zs=; b=uo6ZJ4JGylSlhK/jKspE/8T5+t
-	ie0uyIJ3HUbfTROH4SZPrWqB2tOUMf+njaVgdbxdW7hZlo8/M9XlCU9ARH6odHrSkyi1EJcKetJ9y
-	ZjDHgr7lfeOwSZ5hDP97DbqLWPZrKJOFt55jK2V/X1o8Tp74UyAxCPYb0s4NkV5iJsTFW2ESZbqNF
-	xy5sWzFBxsfBP8BBXtd00afPI90tPeUFEF35ZU+9ZCGAeRL8890ig3a0ROZ42Fnq89TwFQxBMSuNt
-	4c5yyJ44rKXL5L81Nuzdsg6o8/ydRRGEIT0E2TNZhI8/KI0zQUUMQynRDPZ3tN/35ERcZdfKLgb8O
-	Fa0v8E0w==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=210mjNulaxH0oSziyZutMQWFUPYwkRvSuPlh0yJiL+k=; b=R8Vz/sRrzQjEtzlCq/Bhhjq23A
+	WRsdqUuCj4RXa4UbLKAvE1vXeuIt1k+NLFT8S0741kSPLMuHi+bH04cVH5iurxGlK2PI3AiEmSSS0
+	Ac9qsnuezHlp8Drz6lwZVXI6L+I74p2ixCiEYLIUpuZbum4coNEYmgGu6ppSvMbjtPEjUkh/vKZ80
+	uluFnBXka/2aARXP/ab8Uy/+yvl4Y5orKNc0OQuareWBMFyP5NNU7QDZArj5tEgPbBmRmfQO0fLhK
+	0yqObBwWVEcuKWZTBa8h8Kty+8A5gALR1Hdzf5Rjr48C1rlHhriWT0c8VxU/GswlDQ0SYpKt1DWbr
+	bUASn/Dw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kri3Y-0002dP-U7; Tue, 22 Dec 2020 13:50:28 +0000
-Received: from alexa-out-tai-02.qualcomm.com ([103.229.16.227])
+	id 1kriD0-00046s-EJ; Tue, 22 Dec 2020 14:00:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kri3S-0002bm-OB; Tue, 22 Dec 2020 13:50:24 +0000
-Received: from ironmsg03-tai.qualcomm.com ([10.249.140.8])
- by alexa-out-tai-02.qualcomm.com with ESMTP; 22 Dec 2020 21:50:16 +0800
-X-QCInternal: smtphost
-Received: from cbsp-sh-gv.ap.qualcomm.com (HELO cbsp-sh-gv.qualcomm.com)
- ([10.231.249.68])
- by ironmsg03-tai.qualcomm.com with ESMTP; 22 Dec 2020 21:49:44 +0800
-Received: by cbsp-sh-gv.qualcomm.com (Postfix, from userid 393357)
- id 85939276B; Tue, 22 Dec 2020 21:49:43 +0800 (CST)
-From: Ziqi Chen <ziqichen@codeaurora.org>
-To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, cang@codeaurora.org,
- hongwus@codeaurora.org, rnayak@codeaurora.org, vinholikatti@gmail.com,
- jejb@linux.vnet.ibm.com, martin.petersen@oracle.com,
- linux-scsi@vger.kernel.org, kernel-team@android.com, saravanak@google.com,
- salyzyn@google.com, ziqichen@codeaurora.org, kwmad.kim@samsung.com,
- stanley.chu@mediatek.com
-Subject: [PATCH RFC v4 1/1] scsi: ufs: Fix ufs power down/on specs violation
-Date: Tue, 22 Dec 2020 21:49:33 +0800
-Message-Id: <1608644981-46267-1-git-send-email-ziqichen@codeaurora.org>
-X-Mailer: git-send-email 2.7.4
+ id 1kriCx-00045y-Fs; Tue, 22 Dec 2020 14:00:12 +0000
+X-UUID: be79fec613324a2989af86860fb44cd3-20201222
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=lNzXqdDHvnk0jq31hjyYGZF9osqyFjWfz9umxbrJpBE=; 
+ b=ahlwusu3Zsl+T7zQfcPnUonchqlJ5l0/8eJYK/KUSi+Jit7Z6/caPG8enPUyXsv32YjXjLFJ0LYeKWH6vgsQzy979T0LQ47SPHoyqNlIX18iNqYkF3ZC+fT44XAd6y60J4vfDitGCGuAmH5v1h6RGDqFP5z+GK28Da2ibXO7vM8=;
+X-UUID: be79fec613324a2989af86860fb44cd3-20201222
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 288528129; Tue, 22 Dec 2020 06:00:07 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 06:00:05 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Dec 2020 22:00:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 22 Dec 2020 22:00:00 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
+ Herring" <robh@kernel.org>
+Subject: [PATCH v4] arm64: dts: mediatek: Add mt8192 power domains controller
+Date: Tue, 22 Dec 2020 21:59:54 +0800
+Message-ID: <1608645594-18809-1-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201222_085023_279726_59AE9506 
-X-CRM114-Status: GOOD (  19.74  )
+X-CRM114-CacheID: sfid-20201222_090011_759972_F80A8DA8 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,289 +79,252 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- open list <linux-kernel@vger.kernel.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Avri Altman <avri.altman@wdc.com>, Andy Gross <agross@kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Satya Tangirala <satyat@google.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
-MIME-Version: 1.0
+Cc: devicetree@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As per specs, e.g, JESD220E chapter 7.2, while powering
-off/on the ufs device, RST_N signal and REF_CLK signal
-should be between VSS(Ground) and VCCQ/VCCQ2.
+Add power domains controller node for SoC mt8192
 
-To flexibly control device reset line, refactor the function
-ufschd_vops_device_reset(sturct ufs_hba *hba) to ufshcd_
-vops_device_reset(sturct ufs_hba *hba, bool asserted). The
-new parameter "bool asserted" is used to separate device reset
-line pulling down from pulling up.
-
-Cc: Kiwoong Kim <kwmad.kim@samsung.com>
-Cc: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Ziqi Chen <ziqichen@codeaurora.org>
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 32 ++++++++++++++++----------------
- drivers/scsi/ufs/ufs-qcom.c     | 24 +++++++++++++++---------
- drivers/scsi/ufs/ufshcd.c       | 36 +++++++++++++++++++++++++-----------
- drivers/scsi/ufs/ufshcd.h       |  8 ++++----
- 4 files changed, 60 insertions(+), 40 deletions(-)
+This patch is base on v5.10-rc1,
+series "Add new driver for SCPSYS power domains controller"[1]
+and series "Add MediaTek MT8192 clock provider device nodes"[2]
 
-diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 80618af..072f4db 100644
---- a/drivers/scsi/ufs/ufs-mediatek.c
-+++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -841,27 +841,27 @@ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
- 	return ret;
- }
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=374013
+[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405329
+
+change since v4: correct the power domain node names
+
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 201 +++++++++++++++++++++++++++++++
+ 1 file changed, 201 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index ac5dca6..9958a64 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
++#include <dt-bindings/power/mt8192-power.h>
  
--static int ufs_mtk_device_reset(struct ufs_hba *hba)
-+static int ufs_mtk_device_reset(struct ufs_hba *hba, bool asserted)
- {
- 	struct arm_smccc_res res;
+ / {
+ 	compatible = "mediatek,mt8192";
+@@ -257,6 +258,206 @@
+ 			#interrupt-cells = <2>;
+ 		};
  
--	ufs_mtk_device_reset_ctrl(0, res);
-+	if (asserted) {
-+		ufs_mtk_device_reset_ctrl(0, res);
- 
--	/*
--	 * The reset signal is active low. UFS devices shall detect
--	 * more than or equal to 1us of positive or negative RST_n
--	 * pulse width.
--	 *
--	 * To be on safe side, keep the reset low for at least 10us.
--	 */
--	usleep_range(10, 15);
--
--	ufs_mtk_device_reset_ctrl(1, res);
--
--	/* Some devices may need time to respond to rst_n */
--	usleep_range(10000, 15000);
-+		/*
-+		 * The reset signal is active low. UFS devices shall detect
-+		 * more than or equal to 1us of positive or negative RST_n
-+		 * pulse width.
-+		 *
-+		 * To be on safe side, keep the reset low for at least 10us.
-+		 */
-+		usleep_range(10, 15);
-+	} else {
-+		ufs_mtk_device_reset_ctrl(1, res);
- 
--	dev_info(hba->dev, "device reset done\n");
-+		/* Some devices may need time to respond to rst_n */
-+		usleep_range(10000, 15000);
-+	}
- 
- 	return 0;
- }
-diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
-index 2206b1e..fed10e5 100644
---- a/drivers/scsi/ufs/ufs-qcom.c
-+++ b/drivers/scsi/ufs/ufs-qcom.c
-@@ -1406,10 +1406,11 @@ static void ufs_qcom_dump_dbg_regs(struct ufs_hba *hba)
- /**
-  * ufs_qcom_device_reset() - toggle the (optional) device reset line
-  * @hba: per-adapter instance
-+ * @asserted: assert or deassert device reset line
-  *
-  * Toggles the (optional) reset line to reset the attached device.
-  */
--static int ufs_qcom_device_reset(struct ufs_hba *hba)
-+static int ufs_qcom_device_reset(struct ufs_hba *hba, bool asserted)
- {
- 	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
- 
-@@ -1417,15 +1418,20 @@ static int ufs_qcom_device_reset(struct ufs_hba *hba)
- 	if (!host->device_reset)
- 		return -EOPNOTSUPP;
- 
--	/*
--	 * The UFS device shall detect reset pulses of 1us, sleep for 10us to
--	 * be on the safe side.
--	 */
--	gpiod_set_value_cansleep(host->device_reset, 1);
--	usleep_range(10, 15);
-+	if (asserted) {
-+		gpiod_set_value_cansleep(host->device_reset, 1);
- 
--	gpiod_set_value_cansleep(host->device_reset, 0);
--	usleep_range(10, 15);
-+		/*
-+		 * The UFS device shall detect reset pulses of 1us, sleep for 10us to
-+		 * be on the safe side.
-+		 */
-+		usleep_range(10, 15);
-+	} else {
-+		gpiod_set_value_cansleep(host->device_reset, 0);
++		scpsys: syscon@10006000 {
++			compatible = "syscon", "simple-mfd";
++			reg = <0 0x10006000 0 0x1000>;
++			#power-domain-cells = <1>;
 +
-+		 /* Some devices may need time to respond to rst_n */
-+		usleep_range(10, 15);
-+	}
- 
- 	return 0;
- }
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index e221add..f2daac2 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -585,7 +585,13 @@ static void ufshcd_device_reset(struct ufs_hba *hba)
- {
- 	int err;
- 
--	err = ufshcd_vops_device_reset(hba);
-+	err = ufshcd_vops_device_reset(hba, true);
-+	if (err) {
-+		dev_err(hba->dev, "asserting device reset failed: %d\n", err);
-+		return;
-+	}
++			/* System Power Manager */
++			spm: power-controller {
++				compatible = "mediatek,mt8192-power-controller";
++				#address-cells = <1>;
++				#size-cells = <0>;
++				#power-domain-cells = <1>;
 +
-+	err = ufshcd_vops_device_reset(hba, false);
- 
- 	if (!err) {
- 		ufshcd_set_ufs_dev_active(hba);
-@@ -593,7 +599,11 @@ static void ufshcd_device_reset(struct ufs_hba *hba)
- 			hba->wb_enabled = false;
- 			hba->wb_buf_flush_enabled = false;
- 		}
-+		dev_dbg(hba->dev, "device reset done\n");
-+	} else {
-+		dev_err(hba->dev, "deasserting device reset failed: %d\n", err);
- 	}
++				/* power domain of the SoC */
++				power-domain@MT8192_POWER_DOMAIN_AUDIO {
++					reg = <MT8192_POWER_DOMAIN_AUDIO>;
++					clocks = <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
++						 <&infracfg CLK_INFRA_AUDIO_26M_B>,
++						 <&infracfg CLK_INFRA_AUDIO>;
++					clock-names = "audio", "audio1", "audio2";
++					mediatek,infracfg = <&infracfg>;
++					#power-domain-cells = <0>;
++				};
 +
- 	if (err != -EOPNOTSUPP)
- 		ufshcd_update_evt_hist(hba, UFS_EVT_DEV_RESET, err);
- }
-@@ -8686,8 +8696,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	if (ret)
- 		goto set_dev_active;
- 
--	ufshcd_vreg_set_lpm(hba);
--
- disable_clks:
- 	/*
- 	 * Call vendor specific suspend callback. As these callbacks may access
-@@ -8703,6 +8711,9 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	 */
- 	ufshcd_disable_irq(hba);
- 
-+	if (ufshcd_is_link_off(hba))
-+		ufshcd_vops_device_reset(hba, true);
++				power-domain@MT8192_POWER_DOMAIN_CONN {
++					reg = <MT8192_POWER_DOMAIN_CONN>;
++					clocks = <&infracfg CLK_INFRA_PMIC_CONN>;
++					clock-names = "conn";
++					mediatek,infracfg = <&infracfg>;
++					#power-domain-cells = <0>;
++				};
 +
- 	ufshcd_setup_clocks(hba, false);
- 
- 	if (ufshcd_is_clkgating_allowed(hba)) {
-@@ -8711,6 +8722,8 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 					hba->clk_gating.state);
- 	}
- 
-+	ufshcd_vreg_set_lpm(hba);
++				power-domain@MT8192_POWER_DOMAIN_MFG0 {
++					reg = <MT8192_POWER_DOMAIN_MFG0>;
++					clocks = <&topckgen CLK_TOP_MFG_PLL_SEL>;
++					clock-names = "mfg";
++					#address-cells = <1>;
++					#size-cells = <0>;
++					#power-domain-cells = <1>;
 +
- 	/* Put the host controller in low power mode if possible */
- 	ufshcd_hba_vreg_set_lpm(hba);
- 	goto out;
-@@ -8778,18 +8791,19 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	old_link_state = hba->uic_link_state;
- 
- 	ufshcd_hba_vreg_set_hpm(hba);
++					power-domain@MT8192_POWER_DOMAIN_MFG1 {
++						reg = <MT8192_POWER_DOMAIN_MFG1>;
++						mediatek,infracfg = <&infracfg>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++						#power-domain-cells = <1>;
 +
-+	ret = ufshcd_vreg_set_hpm(hba);
-+	if (ret)
-+		goto out;
++						power-domain@MT8192_POWER_DOMAIN_MFG2 {
++							reg = <MT8192_POWER_DOMAIN_MFG2>;
++							#power-domain-cells = <0>;
++						};
 +
- 	/* Make sure clocks are enabled before accessing controller */
- 	ret = ufshcd_setup_clocks(hba, true);
- 	if (ret)
--		goto out;
-+		goto disable_vreg;
- 
- 	/* enable the host irq as host controller would be active soon */
- 	ufshcd_enable_irq(hba);
- 
--	ret = ufshcd_vreg_set_hpm(hba);
--	if (ret)
--		goto disable_irq_and_vops_clks;
--
- 	/*
- 	 * Call vendor specific resume callback. As these callbacks may access
- 	 * vendor specific host controller register space call them when the
-@@ -8797,7 +8811,7 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	 */
- 	ret = ufshcd_vops_resume(hba, pm_op);
- 	if (ret)
--		goto disable_vreg;
-+		goto disable_irq_and_vops_clks;
- 
- 	/* For DeepSleep, the only supported option is to have the link off */
- 	WARN_ON(ufshcd_is_ufs_dev_deepsleep(hba) && !ufshcd_is_link_off(hba));
-@@ -8864,8 +8878,6 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	ufshcd_link_state_transition(hba, old_link_state, 0);
- vendor_suspend:
- 	ufshcd_vops_suspend(hba, pm_op);
--disable_vreg:
--	ufshcd_vreg_set_lpm(hba);
- disable_irq_and_vops_clks:
- 	ufshcd_disable_irq(hba);
- 	if (hba->clk_scaling.is_allowed)
-@@ -8876,6 +8888,8 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 		trace_ufshcd_clk_gating(dev_name(hba->dev),
- 					hba->clk_gating.state);
- 	}
-+disable_vreg:
-+	ufshcd_vreg_set_lpm(hba);
- out:
- 	hba->pm_op_in_progress = 0;
- 	if (ret)
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 9bb5f0e..d5fbaba 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -319,7 +319,7 @@ struct ufs_pwr_mode_info {
-  * @resume: called during host controller PM callback
-  * @dbg_register_dump: used to dump controller debug information
-  * @phy_initialization: used to initialize phys
-- * @device_reset: called to issue a reset pulse on the UFS device
-+ * @device_reset: called to assert or deassert device reset line
-  * @program_key: program or evict an inline encryption key
-  * @event_notify: called to notify important events
-  */
-@@ -350,7 +350,7 @@ struct ufs_hba_variant_ops {
- 	int     (*resume)(struct ufs_hba *, enum ufs_pm_op);
- 	void	(*dbg_register_dump)(struct ufs_hba *hba);
- 	int	(*phy_initialization)(struct ufs_hba *);
--	int	(*device_reset)(struct ufs_hba *hba);
-+	int	(*device_reset)(struct ufs_hba *hba, bool asserted);
- 	void	(*config_scaling_param)(struct ufs_hba *hba,
- 					struct devfreq_dev_profile *profile,
- 					void *data);
-@@ -1216,10 +1216,10 @@ static inline void ufshcd_vops_dbg_register_dump(struct ufs_hba *hba)
- 		hba->vops->dbg_register_dump(hba);
- }
- 
--static inline int ufshcd_vops_device_reset(struct ufs_hba *hba)
-+static inline int ufshcd_vops_device_reset(struct ufs_hba *hba, bool asserted)
- {
- 	if (hba->vops && hba->vops->device_reset)
--		return hba->vops->device_reset(hba);
-+		return hba->vops->device_reset(hba, asserted);
- 
- 	return -EOPNOTSUPP;
- }
++						power-domain@MT8192_POWER_DOMAIN_MFG3 {
++							reg = <MT8192_POWER_DOMAIN_MFG3>;
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8192_POWER_DOMAIN_MFG4 {
++							reg = <MT8192_POWER_DOMAIN_MFG4>;
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8192_POWER_DOMAIN_MFG5 {
++							reg = <MT8192_POWER_DOMAIN_MFG5>;
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8192_POWER_DOMAIN_MFG6 {
++							reg = <MT8192_POWER_DOMAIN_MFG6>;
++							#power-domain-cells = <0>;
++						};
++					};
++				};
++
++				power-domain@MT8192_POWER_DOMAIN_DISP {
++					reg = <MT8192_POWER_DOMAIN_DISP>;
++					clocks = <&topckgen CLK_TOP_DISP_SEL>,
++						 <&mmsys CLK_MM_SMI_INFRA>,
++						 <&mmsys CLK_MM_SMI_COMMON>,
++						 <&mmsys CLK_MM_SMI_GALS>,
++						 <&mmsys CLK_MM_SMI_IOMMU>;
++					clock-names = "disp", "disp-0", "disp-1", "disp-2",
++						      "disp-3";
++					mediatek,infracfg = <&infracfg>;
++					#address-cells = <1>;
++					#size-cells = <0>;
++					#power-domain-cells = <1>;
++
++					power-domain@MT8192_POWER_DOMAIN_IPE {
++						reg = <MT8192_POWER_DOMAIN_IPE>;
++						clocks = <&topckgen CLK_TOP_IPE_SEL>,
++							 <&ipesys CLK_IPE_LARB19>,
++							 <&ipesys CLK_IPE_LARB20>,
++							 <&ipesys CLK_IPE_SMI_SUBCOM>,
++							 <&ipesys CLK_IPE_GALS>;
++						clock-names = "ipe", "ipe-0", "ipe-1", "ipe-2",
++							      "ipe-3";
++						mediatek,infracfg = <&infracfg>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8192_POWER_DOMAIN_ISP {
++						reg = <MT8192_POWER_DOMAIN_ISP>;
++						clocks = <&topckgen CLK_TOP_IMG1_SEL>,
++							 <&imgsys CLK_IMG_LARB9>,
++							 <&imgsys CLK_IMG_GALS>;
++						clock-names = "isp", "isp-0", "isp-1";
++						mediatek,infracfg = <&infracfg>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8192_POWER_DOMAIN_ISP2 {
++						reg = <MT8192_POWER_DOMAIN_ISP2>;
++						clocks = <&topckgen CLK_TOP_IMG2_SEL>,
++							 <&imgsys2 CLK_IMG2_LARB11>,
++							 <&imgsys2 CLK_IMG2_GALS>;
++						clock-names = "isp2", "isp2-0", "isp2-1";
++						mediatek,infracfg = <&infracfg>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8192_POWER_DOMAIN_MDP {
++						reg = <MT8192_POWER_DOMAIN_MDP>;
++						clocks = <&topckgen CLK_TOP_MDP_SEL>,
++							 <&mdpsys CLK_MDP_SMI0>;
++						clock-names = "mdp", "mdp-0";
++						mediatek,infracfg = <&infracfg>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8192_POWER_DOMAIN_VENC {
++						reg = <MT8192_POWER_DOMAIN_VENC>;
++						clocks = <&topckgen CLK_TOP_VENC_SEL>,
++							 <&vencsys CLK_VENC_SET1_VENC>;
++						clock-names = "venc", "venc-0";
++						mediatek,infracfg = <&infracfg>;
++						#power-domain-cells = <0>;
++					};
++
++					power-domain@MT8192_POWER_DOMAIN_VDEC {
++						reg = <MT8192_POWER_DOMAIN_VDEC>;
++						clocks = <&topckgen CLK_TOP_VDEC_SEL>,
++							 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
++							 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
++							 <&vdecsys_soc CLK_VDEC_SOC_LARB1>;
++						clock-names = "vdec", "vdec-0", "vdec-1", "vdec-2";
++						mediatek,infracfg = <&infracfg>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++						#power-domain-cells = <1>;
++
++						power-domain@MT8192_POWER_DOMAIN_VDEC2 {
++							reg = <MT8192_POWER_DOMAIN_VDEC2>;
++							clocks = <&vdecsys CLK_VDEC_VDEC>,
++								 <&vdecsys CLK_VDEC_LAT>,
++								 <&vdecsys CLK_VDEC_LARB1>;
++							clock-names = "vdec2-0", "vdec2-1",
++								      "vdec2-2";
++							#power-domain-cells = <0>;
++						};
++					};
++
++					power-domain@MT8192_POWER_DOMAIN_CAM {
++						reg = <MT8192_POWER_DOMAIN_CAM>;
++						clocks = <&topckgen CLK_TOP_CAM_SEL>,
++							 <&camsys CLK_CAM_LARB13>,
++							 <&camsys CLK_CAM_LARB14>,
++							 <&camsys CLK_CAM_CCU_GALS>,
++							 <&camsys CLK_CAM_CAM2MM_GALS>;
++						clock-names = "cam", "cam-0", "cam-1", "cam-2",
++							      "cam-3";
++						mediatek,infracfg = <&infracfg>;
++						#address-cells = <1>;
++						#size-cells = <0>;
++						#power-domain-cells = <1>;
++
++						power-domain@MT8192_POWER_DOMAIN_CAM_RAWA {
++							reg = <MT8192_POWER_DOMAIN_CAM_RAWA>;
++							clocks = <&camsys_rawa CLK_CAM_RAWA_LARBX>;
++							clock-names = "cam_rawa-0";
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8192_POWER_DOMAIN_CAM_RAWB {
++							reg = <MT8192_POWER_DOMAIN_CAM_RAWB>;
++							clocks = <&camsys_rawb CLK_CAM_RAWB_LARBX>;
++							clock-names = "cam_rawb-0";
++							#power-domain-cells = <0>;
++						};
++
++						power-domain@MT8192_POWER_DOMAIN_CAM_RAWC {
++							reg = <MT8192_POWER_DOMAIN_CAM_RAWC>;
++							clocks = <&camsys_rawc CLK_CAM_RAWC_LARBX>;
++							clock-names = "cam_rawc-0";
++							#power-domain-cells = <0>;
++						};
++					};
++				};
++			};
++		};
++
+ 		apmixedsys: syscon@1000c000 {
+ 			compatible = "mediatek,mt8192-apmixedsys", "syscon";
+ 			reg = <0 0x1000c000 0 0x1000>;
 -- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-a Linux Foundation Collaborative Project
-
-
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
