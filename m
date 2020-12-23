@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B25CC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:25:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CD12C433E6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:29:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF22420857
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:25:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF22420857
+	by mail.kernel.org (Postfix) with ESMTPS id 0BB2820E65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:29:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BB2820E65
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y1BqKZbKaRT3hQLXaNLFxb4LEsGJN6HByzhwddWKxoU=; b=S2IcIAk7j9vy18wiGSrxMiPXx
-	5VBgk9sZrHFi28V5JqQDeABbcC2CKNNjt2qi+JZrYb9bdXeNLlCbhQ2TyMqvrbsnahKQCdcAEqZPI
-	zGHOWTjfqTeUWvnOOB2JUNdwJHV3z7wOJGxd8QFReccx6rufg7tpHx4m0kR8HCThe4eNSx78/yJ12
-	wpweDletCPAYgu7heg77QwKC0G4LFiTkJ85lM/DKJS3oCti2PYJCrc1iCBTMkzA5VBVvf/Ilzt+9l
-	S0lqifUOUdoP6UTTuXa47/Cs6qqgUrESCfhjxzm9Y3mYGwaGZppO6KkpIkXoyKZUU7/IHMmqGZe6p
-	5seaftTcw==;
+	 bh=Z09Cdp2E9XOceBnD69f+MjeS8/NaxBXChM0w38j1dAk=; b=P/ALa1dU7iDyvjP2bZ87hVbz8
+	S77bdDWVzkVMgvMCFjQIF68Du/DX37Ja4hCtpZea7g0Jg//RHtAdED7yQPBIYVrIKBaj8II8s5wZz
+	C7MujHpOZ3LeQBVthixt3Zz0PW/c10hJq8lEsfX4ESinD24GIrHZNME2/ElVT3yxY4nIYFRAYz5h+
+	nbJDD3FZ3/fbhuAojy88uXfP1VvKcttI4J8PZf2yr+YU8Z9DdJlTpamC0MURc9HQWbvGIRkdXxIZs
+	Rk2VY3rVlTmVh4lxLInT6WcaERJuTJYJcwJm3fgokw61RdI3TKUkFxbTHo+YQuoS7by460+NVYY1Q
+	9Ea4nesbg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krzSs-00038F-1Q; Wed, 23 Dec 2020 08:25:46 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1krzWG-0004FL-ET; Wed, 23 Dec 2020 08:29:16 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krzSh-00033H-LO
- for linux-mediatek@lists.infradead.org; Wed, 23 Dec 2020 08:25:36 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 15so10158887pgx.7
- for <linux-mediatek@lists.infradead.org>; Wed, 23 Dec 2020 00:25:35 -0800 (PST)
+ id 1krzWC-0004DC-M5
+ for linux-mediatek@lists.infradead.org; Wed, 23 Dec 2020 08:29:14 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id b5so2816810pjl.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 23 Dec 2020 00:29:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=WThy4tT62F3b3zf0PgQRiQWDvTgvmZESA9P7XUtvIQc=;
- b=lm/gAASMc8UZvLfJCPhTrygCJnvjXm/AgIJtR846gqbmtV/Z9xMScDs4z2klDYCZXa
- xitLyUpJQ7GhOJ4B/3K9Bn/OGgr46nwQda0iPJyr/MPDZ/E4Jlfcgu5f3ieDmOgniDjp
- VYvE8Ofugj7cXljMRJQzCHIZhclSCNeJ4ktpY=
+ bh=MtRevYqK8sqR14rLsfzjE387SZOyOC0INohDVQpnu/o=;
+ b=eniRj4JCG7HSOxKs+Xv2XOqjiq/o9XyHjwzWVHjAT3jWwP+ldVc0+eWag0AsvRdgC0
+ gKt/Phk8yoX6YxQFXZMQfH1IOhgrBGo6PcH7enCXeYyfCdjyr6uDtBLoNshhAEf5stpk
+ DtCpy9+9pzrpuXJidDrgorvS03FVLv3M7FSto=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=WThy4tT62F3b3zf0PgQRiQWDvTgvmZESA9P7XUtvIQc=;
- b=oWh647KXf4IClgPkUfVwi36QyI/+krsd7DMY93uAVkW/0sEzev9516SCTTBPFJNg4o
- 7HsxmBsnFFzWSEJS89Mvmvf5PXMIgHwWYsyjkV3sBjH17L4lCyZ4IT83DRjaEDklAYgt
- T1gtgsUNn80fZymzuuAs6Pwr9SfJHQGWKPQCyiz9FKs/5tvWhKZ5r5Hhbc1LskvHZqmg
- RpfP+hVN5VTNLbLuCXiNHwI1hlcGP+VB7TdObLYjksVKMAsNvHLd6KRW164BJK3rTYL/
- 7xFKLYpi47Xa+5VbEAHmMdb5FpyG7QHQ8vMXNZx/Uty+mJMdL3TI7r5k70Mc+3xzUg5J
- 1MXw==
-X-Gm-Message-State: AOAM5308WH8qcQ6cIbzIwki5tPnhBEsHAZCRCTpHnCHVZRL8e44H50P0
- HDPqFMjERiqCTXECFvtM0Xjpxg==
-X-Google-Smtp-Source: ABdhPJypg4hGOlyNgx6/zOot9YXwUix2EbRuZvx1p0wnv9B3ytcx7t9ecSD2W9nXEkM/rMgQwZKs4w==
-X-Received: by 2002:a05:6a00:1392:b029:1a3:c284:521f with SMTP id
- t18-20020a056a001392b02901a3c284521fmr23329507pfg.81.1608711933463; 
- Wed, 23 Dec 2020 00:25:33 -0800 (PST)
+ bh=MtRevYqK8sqR14rLsfzjE387SZOyOC0INohDVQpnu/o=;
+ b=CKF7zjYFSgEEEEQ2Klx/5+DIPYVvirY5O66GW4OrNzzrsNh6QwWD9QHceLGluqZ9Pe
+ Pi7SKCZbo1xR3kyR1JDivR34k/q4sgI1RWIoH7fCTR6bOa/9kyIYDIovH9DB56YoTe34
+ vcg3fOzdCBTa0RertDjmoY35HU2VoBCOHrhzwr4nO1MMbBaqO45pMkkwniHWoOBTTLkJ
+ 3eLSkEogd4RarU4YIiZvbdSvNuI8a6RxcmY2iNNAkv3JIA0+pGOOQgV2nz80Lzy6kmCg
+ 8cCUORTzs9VkJ1SLv3gXpWfnE28TwkSaGT+z7vHrKtByK8087fHuupqp2s9dLWWH/DQq
+ L8jQ==
+X-Gm-Message-State: AOAM531vaKaxKVddOsaNSk+AM7kAp6XVTKmP0i867Egndb/nTfgmv6XD
+ eepCfDasgtAkPWdrOHMobXZMKw==
+X-Google-Smtp-Source: ABdhPJxwhDWa65ztRldJLKunkdsaTgTcsOr8hUNnOAXF3Z/ppin9ltztXhGaIKLe03R/ZD2nPu+1vw==
+X-Received: by 2002:a17:90b:90f:: with SMTP id
+ bo15mr25095694pjb.148.1608712150675; 
+ Wed, 23 Dec 2020 00:29:10 -0800 (PST)
 Received: from chromium.org ([2401:fa00:8f:2:a28c:fdff:fef0:43bf])
- by smtp.gmail.com with ESMTPSA id p9sm22298444pjb.3.2020.12.23.00.25.28
+ by smtp.gmail.com with ESMTPSA id p17sm11910519pfn.52.2020.12.23.00.29.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Dec 2020 00:25:32 -0800 (PST)
-Date: Wed, 23 Dec 2020 17:25:27 +0900
+ Wed, 23 Dec 2020 00:29:09 -0800 (PST)
+Date: Wed, 23 Dec 2020 17:29:04 +0900
 From: Tomasz Figa <tfiga@chromium.org>
 To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v5 15/27] iommu/mediatek: Add fail handle for sysfs_add
- and device_register
-Message-ID: <X+L+97OBxC6I5pUv@chromium.org>
+Subject: Re: [PATCH v5 16/27] iommu/mediatek: Add device link for smi-common
+ and m4u
+Message-ID: <X+L/0E6p9t+a/l5w@chromium.org>
 References: <20201209080102.26626-1-yong.wu@mediatek.com>
- <20201209080102.26626-16-yong.wu@mediatek.com>
+ <20201209080102.26626-17-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201209080102.26626-16-yong.wu@mediatek.com>
+In-Reply-To: <20201209080102.26626-17-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_032535_764955_77069EDA 
-X-CRM114-Status: GOOD (  20.60  )
+X-CRM114-CacheID: sfid-20201223_032912_787357_815C36A6 
+X-CRM114-Status: GOOD (  28.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,50 +105,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 09, 2020 at 04:00:50PM +0800, Yong Wu wrote:
-> Add fail handle for iommu_device_sysfs_add and iommu_device_register.
+On Wed, Dec 09, 2020 at 04:00:51PM +0800, Yong Wu wrote:
+> In the lastest SoC, M4U has its special power domain. thus, If the engine
+> begin to work, it should help enable the power for M4U firstly.
+> Currently if the engine work, it always enable the power/clocks for
+> smi-larbs/smi-common. This patch adds device_link for smi-common and M4U.
+> then, if smi-common power is enabled, the M4U power also is powered on
+> automatically.
 > 
-> Fixes: b16c0170b53c ("iommu/mediatek: Make use of iommu_device_register interface")
+> Normally M4U connect with several smi-larbs and their smi-common always
+> are the same, In this patch it get smi-common dev from the first smi-larb
+> device(i==0), then add the device_link only while m4u has power-domain.
+> 
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->  drivers/iommu/mtk_iommu.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
+>  drivers/iommu/mtk_iommu.c | 30 ++++++++++++++++++++++++++++--
+>  drivers/iommu/mtk_iommu.h |  1 +
+>  2 files changed, 29 insertions(+), 2 deletions(-)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 39478cfbe0f1..09c8c58feb78 100644
+> index 09c8c58feb78..5614015e5b96 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -746,7 +746,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+> @@ -20,6 +20,7 @@
+>  #include <linux/of_irq.h>
+>  #include <linux/of_platform.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+>  #include <linux/regmap.h>
+>  #include <linux/slab.h>
+>  #include <linux/spinlock.h>
+> @@ -706,7 +707,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  		return larb_nr;
 >  
->  	ret = iommu_device_register(&data->iommu);
+>  	for (i = 0; i < larb_nr; i++) {
+> -		struct device_node *larbnode;
+> +		struct device_node *larbnode, *smicomm_node;
+>  		struct platform_device *plarbdev;
+>  		u32 id;
+>  
+> @@ -732,6 +733,26 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  
+>  		component_match_add_release(dev, &match, release_of,
+>  					    compare_of, larbnode);
+> +		if (i != 0)
+> +			continue;
+
+How about using the last larb instead and moving the code below outside
+of the loop?
+
+> +		smicomm_node = of_parse_phandle(larbnode, "mediatek,smi", 0);
+> +		if (!smicomm_node)
+> +			return -EINVAL;
+> +
+> +		plarbdev = of_find_device_by_node(smicomm_node);
+> +		of_node_put(smicomm_node);
+> +		data->smicomm_dev = &plarbdev->dev;
+> +	}
+> +
+> +	if (dev->pm_domain) {
+> +		struct device_link *link;
+> +
+> +		link = device_link_add(data->smicomm_dev, dev,
+> +				       DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
+> +		if (!link) {
+> +			dev_err(dev, "Unable link %s.\n", dev_name(data->smicomm_dev));
+> +			return -EINVAL;
+> +		}
+>  	}
+>  
+>  	platform_set_drvdata(pdev, data);
+> @@ -739,7 +760,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  	ret = iommu_device_sysfs_add(&data->iommu, dev, NULL,
+>  				     "mtk-iommu.%pa", &ioaddr);
 >  	if (ret)
 > -		return ret;
-> +		goto out_sysfs_remove;
+> +		goto out_link_remove;
 >  
->  	spin_lock_init(&data->tlb_lock);
->  	list_add_tail(&data->list, &m4ulist);
-> @@ -754,7 +754,16 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  	if (!iommu_present(&platform_bus_type))
->  		bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
->  
-> -	return component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
-> +	ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
-> +	if (ret)
-> +		goto out_dev_unreg;
-> +	return ret;
-> +
-> +out_dev_unreg:
-
-Shouldn't other operations be undone as well? I can see that above
-bus_set_iommu() is set and an entry is added to m4ulist.
-
-> +	iommu_device_unregister(&data->iommu);
-> +out_sysfs_remove:
-> +	iommu_device_sysfs_remove(&data->iommu);
-> +	return ret;
+>  	iommu_device_set_ops(&data->iommu, &mtk_iommu_ops);
+>  	iommu_device_set_fwnode(&data->iommu, &pdev->dev.of_node->fwnode);
+> @@ -763,6 +784,9 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  	iommu_device_unregister(&data->iommu);
+>  out_sysfs_remove:
+>  	iommu_device_sysfs_remove(&data->iommu);
+> +out_link_remove:
+> +	if (dev->pm_domain)
+> +		device_link_remove(data->smicomm_dev, dev);
+>  	return ret;
 >  }
 >  
->  static int mtk_iommu_remove(struct platform_device *pdev)
+> @@ -777,6 +801,8 @@ static int mtk_iommu_remove(struct platform_device *pdev)
+>  		bus_set_iommu(&platform_bus_type, NULL);
+>  
+>  	clk_disable_unprepare(data->bclk);
+> +	if (pdev->dev.pm_domain)
+> +		device_link_remove(data->smicomm_dev, &pdev->dev);
+>  	devm_free_irq(&pdev->dev, data->irq, data);
+>  	component_master_del(&pdev->dev, &mtk_iommu_com_ops);
+>  	return 0;
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index d0c93652bdbe..5e03a029c4dc 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -68,6 +68,7 @@ struct mtk_iommu_data {
+>  
+>  	struct iommu_device		iommu;
+>  	const struct mtk_iommu_plat_data *plat_data;
+> +	struct device			*smicomm_dev;
+>  
+>  	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
+>  
 > -- 
 > 2.18.0
 > 
