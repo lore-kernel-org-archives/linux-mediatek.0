@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78547C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:21:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B25CC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:25:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39A0C207B6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:21:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39A0C207B6
+	by mail.kernel.org (Postfix) with ESMTPS id EF22420857
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:25:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF22420857
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=a/NxJQI2i1sk7A08cXN5oTh/5DVXs4e6QDlkZcly+nQ=; b=bKjac8nx9jBUNSlQlhQjN8SKJ
-	GGvoPUIZJ/6KUV1QvOpwC2RCs9qqrHEYYlLaO/klgVW2A++ANML9R14wa9mpUx6qK2co89mW9nz6w
-	pNDe60MF8OIkojlnEWzLl3yPI0IeuZTbLPWaVQORq4Rac4ij3FMPNhpuufLJR6yvCxDSWuRq3AoPW
-	6EWCLq/SThDB+mOhNUCg95C37wKA+m1o4lziahf6oUtfjA3KopbKfOHoLFTxgUFaA+46CeCw74JAN
-	GqfwgwwVaIdg8fToeGLYW3+/5ckdBbLucaRoM+vR/c2I1bM73EnyMQ1W7M7YIiyWelA3SnPrKza4L
-	dccqSFOfA==;
+	 bh=Y1BqKZbKaRT3hQLXaNLFxb4LEsGJN6HByzhwddWKxoU=; b=S2IcIAk7j9vy18wiGSrxMiPXx
+	5VBgk9sZrHFi28V5JqQDeABbcC2CKNNjt2qi+JZrYb9bdXeNLlCbhQ2TyMqvrbsnahKQCdcAEqZPI
+	zGHOWTjfqTeUWvnOOB2JUNdwJHV3z7wOJGxd8QFReccx6rufg7tpHx4m0kR8HCThe4eNSx78/yJ12
+	wpweDletCPAYgu7heg77QwKC0G4LFiTkJ85lM/DKJS3oCti2PYJCrc1iCBTMkzA5VBVvf/Ilzt+9l
+	S0lqifUOUdoP6UTTuXa47/Cs6qqgUrESCfhjxzm9Y3mYGwaGZppO6KkpIkXoyKZUU7/IHMmqGZe6p
+	5seaftTcw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krzOU-0001ji-If; Wed, 23 Dec 2020 08:21:14 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1krzSs-00038F-1Q; Wed, 23 Dec 2020 08:25:46 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krzOO-0001gc-4e
- for linux-mediatek@lists.infradead.org; Wed, 23 Dec 2020 08:21:09 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2so9941132pfq.5
- for <linux-mediatek@lists.infradead.org>; Wed, 23 Dec 2020 00:21:07 -0800 (PST)
+ id 1krzSh-00033H-LO
+ for linux-mediatek@lists.infradead.org; Wed, 23 Dec 2020 08:25:36 +0000
+Received: by mail-pg1-x534.google.com with SMTP id 15so10158887pgx.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 23 Dec 2020 00:25:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=yCs+PY9Jy4cJoFYJpIvFxqIHuHMCQdFNyYUz6uJ1sAQ=;
- b=d/9+nZaV1qO/0LfciBy5aYtvWgjbBI/NXmbljXsW42Yuo0HoyAAN+f7JEXSaxp/DYD
- JgGpEkBJYVZVLRYpbowwg3x0k9d+eowvXvHIkRU7X6kNcKJF1t2aoaPAlvcKEDoG1nYw
- RNgJnKSuqF8euK21HV5k+yUKAeNycY7f61my8=
+ bh=WThy4tT62F3b3zf0PgQRiQWDvTgvmZESA9P7XUtvIQc=;
+ b=lm/gAASMc8UZvLfJCPhTrygCJnvjXm/AgIJtR846gqbmtV/Z9xMScDs4z2klDYCZXa
+ xitLyUpJQ7GhOJ4B/3K9Bn/OGgr46nwQda0iPJyr/MPDZ/E4Jlfcgu5f3ieDmOgniDjp
+ VYvE8Ofugj7cXljMRJQzCHIZhclSCNeJ4ktpY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=yCs+PY9Jy4cJoFYJpIvFxqIHuHMCQdFNyYUz6uJ1sAQ=;
- b=r0AWAG442kZzci1EtFp9ju7KPw8XjjVACHaC+sokWRr29IGnZ3e9F/bLf2I3LBntbG
- QZjn57okbHK86JnYJ9k9EBLBKpAnXGT3vx6JHkMuKkfchdfwfUFNHbRw7CGEsi9GXaNY
- u7yJP6yNfgLOXVCDR2NRH+T8oS6yT+1hDNZ9k8EGXB0tI58A8GdEmdcSY3eNfMcVY5eZ
- xsmtPiwfTARBv3TD4pPalTSSPxPbU0YYes5HTNxrOBBmu7XyvrRW5vZ41ZkGuFI/8Mx2
- 9nX+Sd5F+ZsuD4FzCWAUIqMhk3OXbUnsBO0wtOI8XnhfpsWwubl7ZVr3RaBBr+bkLbAY
- +NMQ==
-X-Gm-Message-State: AOAM532rao/vjHKgL79TrRLbsxDzv4hHrou85Nq1KMpv66431UUswGNi
- hJBolnc0c81wnk3CmpJqIIprWQ==
-X-Google-Smtp-Source: ABdhPJxiFDxtXVQfHOA/peW0Rqkubb2VRH7OvGhUiOyyazKhYhYGQY/mwvl4Aox+RLd0Y+RD2ZEmHA==
-X-Received: by 2002:a62:fc4f:0:b029:19d:d060:27ca with SMTP id
- e76-20020a62fc4f0000b029019dd06027camr22818371pfh.66.1608711665713; 
- Wed, 23 Dec 2020 00:21:05 -0800 (PST)
+ bh=WThy4tT62F3b3zf0PgQRiQWDvTgvmZESA9P7XUtvIQc=;
+ b=oWh647KXf4IClgPkUfVwi36QyI/+krsd7DMY93uAVkW/0sEzev9516SCTTBPFJNg4o
+ 7HsxmBsnFFzWSEJS89Mvmvf5PXMIgHwWYsyjkV3sBjH17L4lCyZ4IT83DRjaEDklAYgt
+ T1gtgsUNn80fZymzuuAs6Pwr9SfJHQGWKPQCyiz9FKs/5tvWhKZ5r5Hhbc1LskvHZqmg
+ RpfP+hVN5VTNLbLuCXiNHwI1hlcGP+VB7TdObLYjksVKMAsNvHLd6KRW164BJK3rTYL/
+ 7xFKLYpi47Xa+5VbEAHmMdb5FpyG7QHQ8vMXNZx/Uty+mJMdL3TI7r5k70Mc+3xzUg5J
+ 1MXw==
+X-Gm-Message-State: AOAM5308WH8qcQ6cIbzIwki5tPnhBEsHAZCRCTpHnCHVZRL8e44H50P0
+ HDPqFMjERiqCTXECFvtM0Xjpxg==
+X-Google-Smtp-Source: ABdhPJypg4hGOlyNgx6/zOot9YXwUix2EbRuZvx1p0wnv9B3ytcx7t9ecSD2W9nXEkM/rMgQwZKs4w==
+X-Received: by 2002:a05:6a00:1392:b029:1a3:c284:521f with SMTP id
+ t18-20020a056a001392b02901a3c284521fmr23329507pfg.81.1608711933463; 
+ Wed, 23 Dec 2020 00:25:33 -0800 (PST)
 Received: from chromium.org ([2401:fa00:8f:2:a28c:fdff:fef0:43bf])
- by smtp.gmail.com with ESMTPSA id gb9sm7480288pjb.40.2020.12.23.00.21.00
+ by smtp.gmail.com with ESMTPSA id p9sm22298444pjb.3.2020.12.23.00.25.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Dec 2020 00:21:05 -0800 (PST)
-Date: Wed, 23 Dec 2020 17:20:58 +0900
+ Wed, 23 Dec 2020 00:25:32 -0800 (PST)
+Date: Wed, 23 Dec 2020 17:25:27 +0900
 From: Tomasz Figa <tfiga@chromium.org>
 To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v5 09/27] iommu/io-pgtable-arm-v7s: Extend PA34 for
- MediaTek
-Message-ID: <X+L96uZU2aZWfjSP@chromium.org>
+Subject: Re: [PATCH v5 15/27] iommu/mediatek: Add fail handle for sysfs_add
+ and device_register
+Message-ID: <X+L+97OBxC6I5pUv@chromium.org>
 References: <20201209080102.26626-1-yong.wu@mediatek.com>
- <20201209080102.26626-10-yong.wu@mediatek.com>
+ <20201209080102.26626-16-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201209080102.26626-10-yong.wu@mediatek.com>
+In-Reply-To: <20201209080102.26626-16-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_032108_203412_A1CA26A1 
-X-CRM114-Status: GOOD (  25.10  )
+X-CRM114-CacheID: sfid-20201223_032535_764955_77069EDA 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,96 +105,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 09, 2020 at 04:00:44PM +0800, Yong Wu wrote:
-> MediaTek extend the bit5 in lvl1 and lvl2 descriptor as PA34.
+On Wed, Dec 09, 2020 at 04:00:50PM +0800, Yong Wu wrote:
+> Add fail handle for iommu_device_sysfs_add and iommu_device_register.
 > 
+> Fixes: b16c0170b53c ("iommu/mediatek: Make use of iommu_device_register interface")
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Acked-by: Will Deacon <will@kernel.org>
-> Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 > ---
->  drivers/iommu/io-pgtable-arm-v7s.c | 9 +++++++--
->  drivers/iommu/mtk_iommu.c          | 2 +-
->  include/linux/io-pgtable.h         | 4 ++--
->  3 files changed, 10 insertions(+), 5 deletions(-)
+>  drivers/iommu/mtk_iommu.c | 13 +++++++++++--
+>  1 file changed, 11 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-> index e880745ab1e8..4d0aa079470f 100644
-> --- a/drivers/iommu/io-pgtable-arm-v7s.c
-> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-> @@ -112,9 +112,10 @@
->  #define ARM_V7S_TEX_MASK		0x7
->  #define ARM_V7S_ATTR_TEX(val)		(((val) & ARM_V7S_TEX_MASK) << ARM_V7S_TEX_SHIFT)
->  
-> -/* MediaTek extend the two bits for PA 32bit/33bit */
-> +/* MediaTek extend the bits below for PA 32bit/33bit/34bit */
->  #define ARM_V7S_ATTR_MTK_PA_BIT32	BIT(9)
->  #define ARM_V7S_ATTR_MTK_PA_BIT33	BIT(4)
-> +#define ARM_V7S_ATTR_MTK_PA_BIT34	BIT(5)
->  
->  /* *well, except for TEX on level 2 large pages, of course :( */
->  #define ARM_V7S_CONT_PAGE_TEX_SHIFT	6
-> @@ -194,6 +195,8 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
->  		pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
->  	if (paddr & BIT_ULL(33))
->  		pte |= ARM_V7S_ATTR_MTK_PA_BIT33;
-> +	if (paddr & BIT_ULL(34))
-> +		pte |= ARM_V7S_ATTR_MTK_PA_BIT34;
->  	return pte;
->  }
->  
-> @@ -218,6 +221,8 @@ static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
->  		paddr |= BIT_ULL(32);
->  	if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
->  		paddr |= BIT_ULL(33);
-> +	if (pte & ARM_V7S_ATTR_MTK_PA_BIT34)
-> +		paddr |= BIT_ULL(34);
->  	return paddr;
->  }
->  
-> @@ -754,7 +759,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
->  	if (cfg->ias > ARM_V7S_ADDR_BITS)
->  		return NULL;
->  
-> -	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
-> +	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
->  		return NULL;
->  
->  	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 6451d83753e1..ec3c87d4b172 100644
+> index 39478cfbe0f1..09c8c58feb78 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -320,7 +320,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
->  			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
->  		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
->  		.ias = 32,
-> -		.oas = 34,
-> +		.oas = 35,
+> @@ -746,7 +746,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  
+>  	ret = iommu_device_register(&data->iommu);
+>  	if (ret)
+> -		return ret;
+> +		goto out_sysfs_remove;
+>  
+>  	spin_lock_init(&data->tlb_lock);
+>  	list_add_tail(&data->list, &m4ulist);
+> @@ -754,7 +754,16 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  	if (!iommu_present(&platform_bus_type))
+>  		bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
+>  
+> -	return component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
+> +	ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
+> +	if (ret)
+> +		goto out_dev_unreg;
+> +	return ret;
+> +
+> +out_dev_unreg:
 
-Shouldn't this be set according to the real hardware capabilities,
-instead of always setting it to 35?
+Shouldn't other operations be undone as well? I can see that above
+bus_set_iommu() is set and an entry is added to m4ulist.
 
-Best regards,
-Tomasz
-
->  		.tlb = &mtk_iommu_flush_ops,
->  		.iommu_dev = data->dev,
->  	};
-> diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
-> index 4cde111e425b..1ae0757f4f94 100644
-> --- a/include/linux/io-pgtable.h
-> +++ b/include/linux/io-pgtable.h
-> @@ -77,8 +77,8 @@ struct io_pgtable_cfg {
->  	 *	TLB maintenance when mapping as well as when unmapping.
->  	 *
->  	 * IO_PGTABLE_QUIRK_ARM_MTK_EXT: (ARM v7s format) MediaTek IOMMUs extend
-> -	 *	to support up to 34 bits PA where the bit32 and bit33 are
-> -	 *	encoded in the bit9 and bit4 of the PTE respectively.
-> +	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
-> +	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
->  	 *
->  	 * IO_PGTABLE_QUIRK_NON_STRICT: Skip issuing synchronous leaf TLBIs
->  	 *	on unmap, for DMA domains using the flush queue mechanism for
+> +	iommu_device_unregister(&data->iommu);
+> +out_sysfs_remove:
+> +	iommu_device_sysfs_remove(&data->iommu);
+> +	return ret;
+>  }
+>  
+>  static int mtk_iommu_remove(struct platform_device *pdev)
 > -- 
 > 2.18.0
 > 
