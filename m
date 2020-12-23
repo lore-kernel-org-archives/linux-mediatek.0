@@ -2,83 +2,73 @@ Return-Path: <SRS0=SIUT=F3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B778EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E47E1C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:35:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5275920C56
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:32:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5275920C56
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8123222248
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:35:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8123222248
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wp5Um5y/vD9eC/z3JupA/kroxL1e4kIsZO2k7Z7N9pM=; b=0ihqXAfZpv5G5vnToAiaQM9tJ
-	YJ4ssEQ92eQocthwGq7TWQlpXTUmwNFkVZA/MIN+8Jvu4fVSUMZiW8Jn+MRrDU3QTW90+JdMvLNmu
-	gvtp5Fwved8l2+0J5AWuPSfpFNYBq1APVzrsdqK26FKvZYORucLtYEyb0t8HPW74+SeTMeJbMiwer
-	LwZgDB0hp7Bw5xNpUdEpHhmesNw5WKn6+rgHdD5IItTN/9QuPmSBqRcDJB8RlYE91YEpYgQldnHgK
-	OGNvIVoiEzNd6sWoGMoUsR2psuqyQ+S969HyEtDL0rVXYMexZoIY4/PB8krHYsg0G2ue9Rl1hlqkz
-	PDYWqXS/Q==;
+	 bh=QwULeVlt/Qo89sw+taUurJiNSsq983P16lPmvOPHDbw=; b=OBKEHcR1sjF0yw5QFP9wXRoms
+	UFpVPrpQWfsSxvKq6VV9J7ZTMplOymeAQ0xkE6YjG8oHOPFQSYqQvYj3KKQID5GH7yDyz8t4uLcF0
+	Hz6GmrY91NRYj3P7xjdH3xm4Y+kK92SjvpqnFXRU3pej9NgiFS145oFRi5MbpQIsGp9VkqRce9Mn+
+	svJuTlNiI5qwwuAu6lwZlhddRkUSUGT4Dl+qNhQiz4BjyH2t2zuwdG1xjAf/5YnXbQkBE6nCTdxF4
+	Tfoc2xi59Fv5siMzmrZW0rGVfdK8NEwgh/1Gk0QcAcf7L9cNN1sdx1Ii/Q0hjnyJx8t6dyWcGFouf
+	K1cE4Vc7g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krzZD-0004yV-HP; Wed, 23 Dec 2020 08:32:19 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1krzc3-0005ke-97; Wed, 23 Dec 2020 08:35:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krzZA-0004x7-NA
- for linux-mediatek@lists.infradead.org; Wed, 23 Dec 2020 08:32:17 +0000
-Received: by mail-pg1-x531.google.com with SMTP id z21so10174762pgj.4
- for <linux-mediatek@lists.infradead.org>; Wed, 23 Dec 2020 00:32:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=f6z2jHWOUsdwvkW1sMAfQ+uPvAPsBSWtcQYM5UeGKOQ=;
- b=R1Dtuprupk5qqiUMugbruG8tuTkprsynKgHI6FENUZDJPwteKI/RPbhP1u7CXwuf4u
- L2eZUc5xoe1egZtRKXhxLNCysC2nfWPgQ798UT68SUdKJM28lGqsh3znYrwyyn9m3a/x
- 4vpCIEXdsq/TxF/e/vNFR3MLDzRxVnPS19Kls=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=f6z2jHWOUsdwvkW1sMAfQ+uPvAPsBSWtcQYM5UeGKOQ=;
- b=S3GL6aIvyINBFX+rL/XoEuSbwv6vqQmFaOvjTorEfUA8aCgc06+kYcQEtu0AuBR7W4
- 7G3Tvfp2TTuhKLc8LRRfW0ypbDsA1UEJOFr6t5gj5EtMc9NBQKrZt2GDstX47I1t9nEP
- DaT7WO427HLCFKdjEhZzjFVfgsHo/CRpDPQ6zHI+5X+ES7Bjb5wF11TVr25ob1vkssir
- MEcoti8nSfeEC/iXZTbGfn5riBVrQinA3L+URFVhH5nSL/bWtgfSXamRNDokYlTUaTY9
- 4LZST1fsI8/rFt5GGLCUIqGdMLXPUKnHBWQA3JXDqrqsIZpbwGUvgqDZYiR1TxWXzuld
- NFUQ==
-X-Gm-Message-State: AOAM5327K2UTMi5AJFcH1NLU7gE31xrQ+iUb0vwcPb0FBtJYhrJKxVCY
- P4K/KS38T6DCIWd/LIMu+0nLDw==
-X-Google-Smtp-Source: ABdhPJxRY0t2ecrt0qdbX6wNZyK5FMit7yNVCixLg3SFVanvhZuz5z5iGFCyfF9mG3ZV++F089pKQw==
-X-Received: by 2002:a62:9208:0:b029:19e:a15f:169e with SMTP id
- o8-20020a6292080000b029019ea15f169emr23179186pfd.71.1608712334434; 
- Wed, 23 Dec 2020 00:32:14 -0800 (PST)
-Received: from chromium.org ([2401:fa00:8f:2:a28c:fdff:fef0:43bf])
- by smtp.gmail.com with ESMTPSA id p187sm21556047pfp.60.2020.12.23.00.32.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Dec 2020 00:32:13 -0800 (PST)
-Date: Wed, 23 Dec 2020 17:32:07 +0900
-From: Tomasz Figa <tfiga@chromium.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v5 17/27] iommu/mediatek: Add pm runtime callback
-Message-ID: <X+MAh87dFsY2p8vF@chromium.org>
-References: <20201209080102.26626-1-yong.wu@mediatek.com>
- <20201209080102.26626-18-yong.wu@mediatek.com>
+ id 1krzc0-0005i6-41; Wed, 23 Dec 2020 08:35:13 +0000
+X-UUID: 646e98053cd04b638ed4d927464e1702-20201223
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=v3Sqv/B/2tois8dlNFyjPHT7X53lAYuum+yWO3a/2CI=; 
+ b=D+CyWieUxNXylXY5VTCP2a5qlMGlQgT2PTuVXDGSWWyfzRxPAibPsuTDDW9OvUQ/4Z8ZttJNxHs7v0u+ru/O1UzcwQ3O3cThGP3rpcblQVIB3j5ITmJ+3r6wIbYaTTbLCE3SB2d9dTDLTXHXaggJCNN63jy1/1Ke6dPtISfcjfQ=;
+X-UUID: 646e98053cd04b638ed4d927464e1702-20201223
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1857331629; Wed, 23 Dec 2020 00:35:06 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Dec 2020 00:35:04 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Dec 2020 16:35:01 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 23 Dec 2020 16:35:01 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
+ Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2] soc: mediatek: cmdq: add address shift in jump
+Date: Wed, 23 Dec 2020 16:34:59 +0800
+Message-ID: <1608712499-24956-2-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1608712499-24956-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1608712499-24956-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201209080102.26626-18-yong.wu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_033216_801631_E636F534 
-X-CRM114-Status: GOOD (  26.56  )
+X-CRM114-CacheID: sfid-20201223_033512_368470_5A80F37C 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,106 +80,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- Tomasz Figa <tfiga@google.com>, Will Deacon <will@kernel.org>,
- Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org,
- Evan Green <evgreen@chromium.org>, chao.hao@mediatek.com,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 09, 2020 at 04:00:52PM +0800, Yong Wu wrote:
-> This patch adds pm runtime callback.
-> 
-> In pm runtime case, all the registers backup/restore and bclk are
-> controlled in the pm_runtime callback, then pm_suspend is not needed in
-> this case.
-> 
-> runtime PM is disabled when suspend, thus we call
-> pm_runtime_status_suspended instead of pm_runtime_suspended.
-> 
-> And, m4u doesn't have its special pm runtime domain in previous SoC, in
-> this case dev->power.runtime_status is RPM_SUSPENDED defaultly,
+Add address shift when compose jump instruction
+to compatible with 35bit format.
 
-This sounds wrong and could lead to hard to debug errors when the driver
-is changed in the future. Would it be possible to make the behavior
-consistent across the SoCs instead, so that runtime PM status is ACTIVE
-when needed, even on SoCs without an IOMMU PM domain?
+Fixes: 0858fde496f8 ("mailbox: cmdq: variablize address shift in platform")
 
-> thus add
-> a "dev->pm_domain" checking for the SoC that has pm runtime domain.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->  drivers/iommu/mtk_iommu.c | 22 ++++++++++++++++++++--
->  1 file changed, 20 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 5614015e5b96..6fe3ee2b2bf5 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -808,7 +808,7 @@ static int mtk_iommu_remove(struct platform_device *pdev)
->  	return 0;
->  }
->  
-> -static int __maybe_unused mtk_iommu_suspend(struct device *dev)
-> +static int __maybe_unused mtk_iommu_runtime_suspend(struct device *dev)
->  {
->  	struct mtk_iommu_data *data = dev_get_drvdata(dev);
->  	struct mtk_iommu_suspend_reg *reg = &data->reg;
-> @@ -826,7 +826,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
->  	return 0;
->  }
->  
-> -static int __maybe_unused mtk_iommu_resume(struct device *dev)
-> +static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
->  {
->  	struct mtk_iommu_data *data = dev_get_drvdata(dev);
->  	struct mtk_iommu_suspend_reg *reg = &data->reg;
-> @@ -853,7 +853,25 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
->  	return 0;
->  }
->  
-> +static int __maybe_unused mtk_iommu_suspend(struct device *dev)
-> +{
-> +	/* runtime PM is disabled when suspend in pm_runtime case. */
-> +	if (dev->pm_domain && pm_runtime_status_suspended(dev))
-> +		return 0;
-> +
-> +	return mtk_iommu_runtime_suspend(dev);
-> +}
-> +
-> +static int __maybe_unused mtk_iommu_resume(struct device *dev)
-> +{
-> +	if (dev->pm_domain && pm_runtime_status_suspended(dev))
-> +		return 0;
-> +
-> +	return mtk_iommu_runtime_resume(dev);
-> +}
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Wouldn't it be enough to just use pm_runtime_force_suspend() and
-pm_runtime_force_resume() as system sleep ops?
-
-> +
->  static const struct dev_pm_ops mtk_iommu_pm_ops = {
-> +	SET_RUNTIME_PM_OPS(mtk_iommu_runtime_suspend, mtk_iommu_runtime_resume, NULL)
->  	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
->  };
->  
-> -- 
-> 2.18.0
-> 
-> _______________________________________________
-> iommu mailing list
-> iommu@lists.linux-foundation.org
-> https://lists.linuxfoundation.org/mailman/listinfo/iommu
-
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 5665b6e..75378e3 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -168,7 +168,8 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
+ 	dma_sync_single_for_cpu(dev, prev_task->pa_base,
+ 				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
+-		(u64)CMDQ_JUMP_BY_PA << 32 | task->pa_base;
++		(u64)CMDQ_JUMP_BY_PA << 32 |
++		(task->pa_base >> task->cmdq->shift_pa);
+ 	dma_sync_single_for_device(dev, prev_task->pa_base,
+ 				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
