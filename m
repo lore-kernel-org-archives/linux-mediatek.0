@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01F26C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:45:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0C9DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:45:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6963A22475
+	by mail.kernel.org (Postfix) with ESMTPS id 4B59E207CD
 	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:45:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6963A22475
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B59E207CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,50 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=K+aA9zG36G04IK8LFCBaWsw0kaRsmiXTrVVHCwFUTW0=; b=dViBE6ittHmMUwSg/opdKF2/bQ
-	U0/+4YetemQwzvbQ1s8Ro89Su8dpqdOB46pjNKbUS2s6GhAwUBW1fsnmSHiJYUosn6f4wZz4rO7WW
-	pu2UPgfKFoRygix+3D8EcPtn8lWMFbv8xncV2FGhPUaX/UWocJ+t805f7M8/hywR/me9MBv0/U0aE
-	t53KX+4FsgF8QbdnRbBhAr/TRy2y5+YE1fAd7QDLLa+RUoOAcmcQJfoBrSyAYXwdnGkF8b9sm5GVH
-	Kfycd4qBdbRh3vVuCE5kaczjbo54Ko9bLwzRXz+0KvkG/Tf+N+ZtrpFZnniMQ9kVq13SORTYNvjrd
-	o7uFcezQ==;
+	bh=dO3q6/CbiPYAr8O/05sWZz2qisvzYODOJ8K14hcuAo4=; b=0uCnbL7siBhCaHP1sgDILjexS8
+	JPBtXKxocEi4DzUsDHNlAG9c68nmkFCkHJFClUi4TxNmB7EUwkgcDRRX5C2dhV1YBDNyZpgrBQYg6
+	hD90nMBjt/YOqNxNBNAS1ZyYBYM/rvlEAfXvJje9c3LH0XZNWrYK07hQjLwj8FzZ+y9W4x5bC5ZpM
+	wi7RewvhCRqjpBpOJvP6yhTkSe+Q2uWoiZtgTyLxcThYbbCJrdULU87ThQOtwzPDt7nm7kGI5PjkO
+	2FVX5l4kwbW06eknzSboB1sG1iq3CgqQGufIdbdedHzgnPtl9e4bHDVGFfI1w2BFFhP5RMGnuQ/UG
+	hpIVVIqQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krzlm-0007be-Vl; Wed, 23 Dec 2020 08:45:19 +0000
+	id 1krzlm-0007bK-5f; Wed, 23 Dec 2020 08:45:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krzlg-0007YC-F8; Wed, 23 Dec 2020 08:45:13 +0000
-X-UUID: 96fb870e058744f7b81f9eb2d34fa666-20201223
+ id 1krzle-0007YC-SX; Wed, 23 Dec 2020 08:45:12 +0000
+X-UUID: 38cfc93734774d23a4000277a4bc5a37-20201223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=X3L0IOYEf8IaD8MHHJlYOpdqqdvhr7Ie7m0ql9b626g=; 
- b=Y7B1Lhcm1Hzwd44x0n9x6zVmWx537XL8LkBJs891IXcNJB4ljrYZgng7j1b8EvdueqyJUPvrxNVYpjzPpQAbvxFOSHVZt8TKK27cvFOMbhoftOlKjUHWfvmPyEcqSz6Kwl5gABTnTvwUIEfWJywiopMjkUX/SKwIgXbArg2curA=;
-X-UUID: 96fb870e058744f7b81f9eb2d34fa666-20201223
+ bh=XLVKnpMwscYuHI8mI53QgPLHfAb8fqR5J8W8uFGW9IQ=; 
+ b=XQh3ZMYNWw4haZCNE39ib8e44/xK8pSkbfDDrt0S2E+LOFN1/YkvFF/7hvXnLple1JBU9vIktLWFjNPmkg98Udu4SZSn5qe0uTbSI/UQ01is7PzPMOt3lRLAHKjE3EDttdS7vpW5tM9tfd9wWqYRP+si3L/jeE/OhOb6FcZotmo=;
+X-UUID: 38cfc93734774d23a4000277a4bc5a37-20201223
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 466795917; Wed, 23 Dec 2020 00:45:05 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1701819798; Wed, 23 Dec 2020 00:45:05 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Dec 2020 00:35:03 -0800
+ 15.0.1497.2; Wed, 23 Dec 2020 00:45:01 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Dec 2020 16:35:01 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Dec 2020 16:35:01 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: soc: mediatek: cmdq: add address shift in jump
-Date: Wed, 23 Dec 2020 16:34:58 +0800
-Message-ID: <1608712499-24956-1-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Dec 2020 16:44:59 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 23 Dec 2020 16:44:59 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, "Will
+ Deacon" <will@kernel.org>
+Subject: [PATCH v1 0/2] arm64: Support devapc on MediaTek MT6779 platform
+Date: Wed, 23 Dec 2020 16:44:50 +0800
+Message-ID: <1608713092-26952-1-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E55EF3BCC1D3543E29E3A994920BF510B092B2B41B1AD44441134DE25061BF842000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_034512_672787_01C88EF1 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20201223_034511_182712_FA0132E4 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,28 +81,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ Hanks Chen <Hanks.Chen@mediatek.com>, lkml <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, Neal Liu <neal.liu@mediatek.com>,
+ Jackson-kt Chang <Jackson-kt.Chang@mediatek.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change since v1:
--move out from mt8192 seri series
+This series adds DEVAPC (Device Access Permission Control) support on MediaTek MT6779 SoC platform.
 
-Yongqiang Niu (1):
-  soc: mediatek: cmdq: add address shift in jump
+*** BLURB HERE ***
 
- drivers/mailbox/mtk-cmdq-mailbox.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Neal Liu (2):
+  arm64: dts: mt6779: Support devapc
+  arm64: configs: Support DEVAPC on MediaTek platforms
+
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 8 ++++++++
+ arch/arm64/configs/defconfig             | 1 +
+ 2 files changed, 9 insertions(+)
 
 -- 
-1.8.1.1.dirty
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
