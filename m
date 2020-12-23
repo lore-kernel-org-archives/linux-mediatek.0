@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68AF3C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 15:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C2308C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 17:48:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C72B2220B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 15:48:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C72B2220B
+	by mail.kernel.org (Postfix) with ESMTPS id 6AA84207D2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 17:48:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AA84207D2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=u1pG/rFeMUem2y4Gr5kWMpHyOjF4DLYEOEZLERigJq4=; b=WK1UlkZQRuXSwfJs1asslLqIE
-	h6eHNLjBNkUoEmyZWUdP2gbj7YPzvtmMUKKEs1NztgVJYRKvB/KYD/3HxIx6xFAPt3YPJxXLiLprH
-	QrFDp35d5dSvT/DcopNEa/BF+HPjpjfurn6raANqC8n5qrPb1c66HBp5eSaHKI0dWSdmoZYpFRuID
-	arD7VwPqe39kNA4JSzcjlYtUbrZKmfByNr4ZWK39aX9VEXD/2iPb/7UMX2moJygXB0o2ReCwaetg1
-	VKUSUJV3WhCsn3BvSNoEdqiOCr8OkivrR9m3IF8/wLr/tey7JU2PEQNDSpLj5Z3DP+qibXcJ/jTrs
-	XupQeZkFQ==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:References:In-Reply-To:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Awu4bIKKLw3ntCYkIbA06SimqlBHaYiO3x7lhIVo9lg=; b=b5FgR8fRACEAPDWv31QVrD6D3Z
+	XngT5+Y3QAqUEpRg3+f/LKRCu+BPYveIdW0ezlN2ymNnhTppcewNR1JNgBfrGawrLlBNi8Ecwfar0
+	MiLOlDMSfn8nXE5z09sPTog3VHgOOpfhKNMDuTUzGQcbFSoCZpGyGtSPMzXBmOqoDeizobNtPXOlR
+	mSSXZuPaiEGj502VvgIsXICV1WmsUPDx+4oV1IBl1L+AzFx31u9r0V2bBq5u5l+wb6hQxoxo5jeUG
+	LyMQrnS+0KqqjwILb2d8VwmMTb9y8iVkUOB7VKrAkBv/yBW/bmRKONVvm1t3JBiQwBLGW+uAbjjpl
+	+9YKislw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ks6NR-0001P9-W1; Wed, 23 Dec 2020 15:48:38 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1ks8F6-0003jd-VH; Wed, 23 Dec 2020 17:48:09 +0000
+Received: from mail-ot1-f44.google.com ([209.85.210.44])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ks6NO-0001O6-ES; Wed, 23 Dec 2020 15:48:35 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 922BC2220B;
- Wed, 23 Dec 2020 15:48:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1608738511;
- bh=gFOktdnZlZmvTlgAN2h803xCQHcUKcooY0lSAj9WxE4=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=Jg6eGQ1BXWTirJh/jh5f7JZi+5mMmKWbGV+nupvVevih8T1c1pZ1m5AkfCZu+vPZ9
- OI0KLmPBhOU2csvypopsBnocUtGTcebLj878fL9EC5cZ0FGN370D6xSMeWfnP/N0d+
- XaZwLd98NUXyoZLkx3bZwRyeVhZCWCTppjGqyihs3/Y6a8AzxrIFM1QULF6ucFfe7m
- 3J/roxj0GzSR87LOYwwrfR+sLeDD9pQQWUl7B7vFJ0zw3f9Lh1E2RNedRP7WZ/kJko
- acpgoUTeMxBz8vtFgGubiyVHdCE99a1ILLYP+JrI4O6XgOyIUjE7PIgp9TKDUF4+3t
- k4pwdX3a7tgXg==
-Received: by mail-ed1-f49.google.com with SMTP id g24so16609962edw.9;
- Wed, 23 Dec 2020 07:48:31 -0800 (PST)
-X-Gm-Message-State: AOAM530f6cE6SLr0DQrl/V8CNq7TdNjbETdSENta1Xq4ZuXjYoS3m8fk
- KJ2/G/T82lyg6lfBI96JzaHcFtr8rUCea4Rmqw==
-X-Google-Smtp-Source: ABdhPJwb5w2chHm2EqxPnyCoI9LEydqAoLEm1aIKXtYZ+vl4PEgEEDKf4mkp5MzyZv81GXD9gbxVNqMMg+4+cPbvMq4=
-X-Received: by 2002:a50:fc83:: with SMTP id f3mr25508730edq.219.1608738510218; 
- Wed, 23 Dec 2020 07:48:30 -0800 (PST)
-MIME-Version: 1.0
-References: <1607746317-4696-1-git-send-email-yongqiang.niu@mediatek.com>
- <1607746317-4696-13-git-send-email-yongqiang.niu@mediatek.com>
- <CAAOTY_9gzncFEFe8uyhNSO0Mr9SnQ0b5oCC31_4QSdMtwOx0Mw@mail.gmail.com>
- <1608687471.18252.10.camel@mhfsdcap03>
-In-Reply-To: <1608687471.18252.10.camel@mhfsdcap03>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 23 Dec 2020 23:48:17 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9=QuVvyrFiUP=8-EMNPmgTK9TZr_ZmuJ=SbHZEjNnxyw@mail.gmail.com>
-Message-ID: <CAAOTY_9=QuVvyrFiUP=8-EMNPmgTK9TZr_ZmuJ=SbHZEjNnxyw@mail.gmail.com>
-Subject: Re: [PATCH v2, 12/17] drm/mediatek: fix gamma size config
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+ id 1ks8F4-0003i3-GN; Wed, 23 Dec 2020 17:48:07 +0000
+Received: by mail-ot1-f44.google.com with SMTP id b24so15723360otj.0;
+ Wed, 23 Dec 2020 09:48:04 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=K5Yix/37ki3dCZFopkSSkjKG5evvMj86JkeiVkAJ78g=;
+ b=OPL5Y3c0r68dBaRY39mdFgMITJI4O+0iUFnboGeSHc35QXDNE1XvaeysO3jQWIj/IP
+ yAZM0e55nnU3HxBa1zTB59p9tH7B7gSdYtRFntfnoglRo/z/GCgvaxwtkuuYBl0V8zjC
+ gG280eQwJ582gwZmzwIcrvIy9dhu15LzQFhYw2llHPRSsiKHBT7u9wJTk9A736O2REXY
+ H3s1mjdhQ1QJCVsnB/4mUemiDSgUMOUW13KGovB/wktDaBHxRCvnP2ckmFx8ZwA+ptX4
+ M+8twZdPAqiHvsxXUo5aKbSG3yAeXU3mcooBGqIg+HnQRb5MZaVfA4pd5IB5Ck/2mham
+ Ussg==
+X-Gm-Message-State: AOAM533qtfHVmYHbZP49uiOGonZv8BxPp6yv++0LyIu7vyRAnCpJycu9
+ UIByvmqhz/WEE36j0NNN1Q==
+X-Google-Smtp-Source: ABdhPJwwkIwBeMc0P36eD46ujc2g7Yxv3OUhQoIQbvvQcZl95unXLd2lLce2YlPC5c6HviQS6uif0g==
+X-Received: by 2002:a9d:640b:: with SMTP id h11mr8626511otl.224.1608745683770; 
+ Wed, 23 Dec 2020 09:48:03 -0800 (PST)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id j10sm5938165otn.63.2020.12.23.09.48.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Dec 2020 09:48:03 -0800 (PST)
+Received: (nullmailer pid 762424 invoked by uid 1000);
+ Wed, 23 Dec 2020 17:47:58 -0000
+From: Rob Herring <robh@kernel.org>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <1608691469-20919-2-git-send-email-hsin-hsiung.wang@mediatek.com>
+References: <1608691469-20919-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1608691469-20919-2-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH v5 1/4] dt-bindings: spmi: modify the constraint
+ 'maxItems' to 'minItems'
+Date: Wed, 23 Dec 2020 10:47:58 -0700
+Message-Id: <1608745678.788845.762423.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_104834_636388_31EA30C2 
-X-CRM114-Status: GOOD (  24.84  )
+X-CRM114-CacheID: sfid-20201223_124806_552011_6164B880 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,58 +82,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- DTML <devicetree@vger.kernel.org>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, srv_heupstream@mediatek.com,
+ Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
-PiDmlrwgMjAyMOW5tDEy5pyIMjPml6Ug6YCx5LiJIOS4iuWNiDk6Mzflr6vpgZPvvJoKPgo+IE9u
-IFR1ZSwgMjAyMC0xMi0xNSBhdCAwNzo0MCArMDgwMCwgQ2h1bi1LdWFuZyBIdSB3cm90ZToKPiA+
-IEhpLCBZb25ncWlhbmc6Cj4gPgo+ID4gWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRp
-YXRlay5jb20+IOaWvCAyMDIw5bm0MTLmnIgxMuaXpSDpgLHlha0g5LiL5Y2IMTI6MTPlr6vpgZPv
-vJoKPiA+ID4KPiA+ID4gZml4IGdhbW1hIHNpemUgY29uZmlnCj4gPgo+ID4gSSB3b3VsZCBsaWtl
-IHlvdSB0byBwcm92aWRlIG1vcmUgaW5mb3JtYXRpb24uIFRoZSBvcmlnaW5hbCBjb2RlIHdvcmtz
-Cj4gPiBpbiBtdDgxNzMsIHdoeSBkbyB5b3UgbW9kaWZ5IHRoaXM/IFRoZSBkZXNjcmlwdGlvbiBt
-YXkgYmUgc29tZXRoaW5nCj4gPiBsaWtlIHRoaXM6Cj4gPgo+ID4gQWNjb3JkaW5nIHRvIGRhdGEg
-c2hlZXQsIHRoZSB3aWR0aCBpcyBpbiBiaXRzIFszMSwgMTZdIGFuZCBoZWlnaHQgaXMKPiA+IGlu
-IGJpdHMgWzE1LCAwXS4gRXZlbiB0aG91Z2ggd3Jvbmcgc2V0dGluZyBtYXkgd29ya3MgaW4gc29t
-ZSBTb0Mgc3VjaAo+ID4gYXMgbXQ4MTczLCBidXQgaXQgZG9lcyBub3Qgd29yayBpbiBtdDgxOTIu
-Cj4gPgo+ID4gUmVnYXJkcywKPiA+IENodW4tS3VhbmcuCj4KPiBpdCBzdGlsbCB3b3JrcyBpbiBt
-dDgxOTIuCj4ganVzdCBtb2RpZnkgdGhpcyBmb2xsb3cgZGF0YSBzaGVldAoKVGhpcyBwYXRjaCBp
-cyBub3Qgc3Ryb25nbHkgcmVsYXRlZCB0byBNVDgxOTIsIHNvIG1vdmUgdGhpcyBwYXRjaCBvdXQK
-b2YgdGhpcyBzZXJpZXMuCgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPgo+ID4KPiA+ID4KPiA+ID4g
-Rml4ZXM6IGUwYTVkMzM3MDI0NSAoZHJtL21lZGlhdGVrOiBBZGQgR0FNTUEgZW5naW5lIGJhc2lj
-IGZ1bmN0aW9uKQo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBZb25ncWlhbmcgTml1IDx5b25ncWlhbmcu
-bml1QG1lZGlhdGVrLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kZHBfY29tcC5jIHwgMiArLQo+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5z
-ZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gPiA+Cj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+ID4gPiBpbmRleCAwMGQ1Njg3Li41MmI2ZmM3IDEw
-MDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21w
-LmMKPiA+ID4gQEAgLTI5Nyw3ICsyOTcsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZ2FtbWFfY29uZmln
-KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCB3LAo+ID4gPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCBoLCB1bnNpZ25lZCBpbnQgdnJlZnJl
-c2gsCj4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5zaWduZWQgaW50IGJwYywg
-c3RydWN0IGNtZHFfcGt0ICpjbWRxX3BrdCkKPiA+ID4gIHsKPiA+ID4gLSAgICAgICBtdGtfZGRw
-X3dyaXRlKGNtZHFfcGt0LCBoIDw8IDE2IHwgdywgY29tcCwgRElTUF9HQU1NQV9TSVpFKTsKPiA+
-ID4gKyAgICAgICBtdGtfZGRwX3dyaXRlKGNtZHFfcGt0LCB3IDw8IDE2IHwgaCwgY29tcCwgRElT
-UF9HQU1NQV9TSVpFKTsKPiA+ID4gICAgICAgICBtdGtfZGl0aGVyX3NldChjb21wLCBicGMsIERJ
-U1BfR0FNTUFfQ0ZHLCBjbWRxX3BrdCk7Cj4gPiA+ICB9Cj4gPiA+Cj4gPiA+IC0tCj4gPiA+IDEu
-OC4xLjEuZGlydHkKPiA+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KPiA+ID4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gPiA+IExpbnV4LW1l
-ZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo+CgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
-TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Wed, 23 Dec 2020 10:44:26 +0800, Hsin-Hsiung Wang wrote:
+> The constraint of 'maxItem: 1' might be larger than 1, so we modify it
+> to 'minItem: 0'.
+> 
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/spmi/spmi.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spmi/spmi.yaml: properties:reg: 'anyOf' conditional failed, one must be fixed:
+	'maxItems' is a required property
+	/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spmi/spmi.yaml: properties:reg: 'oneOf' conditional failed, one must be fixed:
+		'minItems' is not one of ['maxItems']
+		'minItems' is not one of ['description', 'deprecated', 'const', 'enum', 'minimum', 'maximum', 'default', '$ref']
+	0 is less than the minimum of 1
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spmi/spmi.yaml: ignoring, error in schema: properties: reg
+warning: no schema found in file: ./Documentation/devicetree/bindings/spmi/spmi.yaml
+
+See https://patchwork.ozlabs.org/patch/1419575
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
