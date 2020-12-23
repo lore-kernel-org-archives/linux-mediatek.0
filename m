@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4FFAC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 02:28:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15057C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 02:33:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31CFA22273
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 02:28:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31CFA22273
+	by mail.kernel.org (Postfix) with ESMTPS id D3C70221F0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 02:33:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3C70221F0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,45 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ligeuOKjvXkRh0g4SFGWVIw+j0/3IPUOzIGaoruU68g=; b=xyahtdg2/0DmCKzy2WTeKX8xW
-	DN61A6jCi/6z+r5Yh2w2GuzxHtIK+zygIvFKDH1VaTU9jlwlyajOlkQNk2AKyrdjZcq3K3VC+Of4k
-	Vq44pr0/CnAYJ3nLu97nfJgwDRRR7WCPJWazwnM8xUoqW9wtjr7MUhkU/4WZhkQwyr6qZwhEtZfie
-	qHgMsu/tSazyi9J0hsHFsLzm90SPqN9jMFPCN311fg0NoAc3Mn4AQQOTal6e4rjqYXwY3LmJb9the
-	lnjco5hhzRTBhHQyOHTD4MT53zAS50J49WJvFXHs/hyleZOkVWq9+N6qMrhl00NFbL+BAUW6hHEzs
-	2LsC/OtOg==;
+	 bh=uZXhC6L3XAmGAKULbYU+U3nFs68PVnqjn4nzw7ojXuo=; b=Yifzy5i4O/oDqUFaHP+JGrhYC
+	s0DZcQmHB1DM0XzNAdJ3YTKgUbuax0O7wTgx2lS7I4s+1koNpYBZC6z6lsfknhuTnQ+XvmG5ENg0z
+	ocyiYG7p+68wmjaK/h+QM7dhwq/QveyqJ1oReDh2rioZ0PvKhsXwjk+2qBb80pWa0LY8y3l13Dd4A
+	R70GWdPOMR1tB/Q5ejIHm4mERLDXKbwiH9sPle67hR4kfdbgFP5N5W11lHMiEZUSIaSHKQod8ZZgU
+	t2GYAzVTyqNbyOttBTmCIQSJI/XSG3zMDuF9MvTgjD7gO2Cd+NMF3WnGhPQiHuJPvNLLYElZZCR4J
+	+h52TlyRA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krtss-0004ac-Mn; Wed, 23 Dec 2020 02:28:15 +0000
+	id 1krtxM-0006uO-2R; Wed, 23 Dec 2020 02:32:52 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krtnD-0001YM-SH; Wed, 23 Dec 2020 02:22:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id CDB1A2312E;
- Wed, 23 Dec 2020 02:22:20 +0000 (UTC)
+ id 1krtom-0002QZ-CS; Wed, 23 Dec 2020 02:24:02 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 69523233EF;
+ Wed, 23 Dec 2020 02:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1608690141;
- bh=X9kGNPC/uquO0NuoTTHGigG2uPGOTanUbGBEW4NI0RQ=;
+ s=k20201202; t=1608690237;
+ bh=AdvCUUjEWCB+AlSRRlpc+0q1mOiMyNlVANWERmSuMF4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=XafFF0MZCVIKw94Jw8h06JqWUoKppNVwItAmNXPpFr1i0cHknoDZzXqhfZMss/LSj
- H4JBwcluspG93oQKqV/dKjDrcjsgzhnpZmjCbLYBur71K5Os/YVJq1MPJE9aJcAg6k
- TMdJL60iRQVzLALAWzgLEIRrL9ylPtqML/dEC7rgAp0LRElsPtNYRZkMM2nICWbKbt
- 3APjodKNvT57rnzoPHb6gUTc4R7npBil0kAT0h+xAVx+LMiPoxs3O6vMgChrUBfRO8
- 8jo0UqprxgYF10T+LgBex5JRcIyjKsJEjZOol3cL1OlW6IiSusYIhQbHZe+ZLXH6In
- SNSabgTERRNpQ==
+ b=QRGRL2gTGfkpSPQI37Vy79+iENPDhYDOC1lts95BXld+nJpS8C72wxlQo8V2Bo4aY
+ 4O8q7ikhCfcD4a+jMJeWfEymB6jE071coRZbvVbuOk+Cca58uAz89QjTT76jT0Hxgy
+ KWKVDfZr4L/K1JFgeFDI024DlbNo3oVd9xjTNBUN4qPg2JqHcdGfuhQYyBDJ3EQph8
+ 0a2usMOZqvTg/+Q9REdP5/S0XrSIK40lOo7EImJA5vqhd6gMsNvoyJXv8B0ZUog8FA
+ 97vgXGQHU81vxm6DguoRKq9XbOqsroym5nGtFb6V+b1UCRbIPi6W0orklwGG7ouP9o
+ Ki4OGeMnnmyLQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 63/87] cpufreq: mediatek: add missing
+Subject: [PATCH AUTOSEL 4.14 51/66] cpufreq: mediatek: add missing
  platform_driver_unregister() on error in mtk_cpufreq_driver_init
-Date: Tue, 22 Dec 2020 21:20:39 -0500
-Message-Id: <20201223022103.2792705-63-sashal@kernel.org>
+Date: Tue, 22 Dec 2020 21:22:37 -0500
+Message-Id: <20201223022253.2793452-51-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201223022103.2792705-1-sashal@kernel.org>
-References: <20201223022103.2792705-1-sashal@kernel.org>
+In-Reply-To: <20201223022253.2793452-1-sashal@kernel.org>
+References: <20201223022253.2793452-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201222_212224_125702_42E161FD 
+X-CRM114-CacheID: sfid-20201222_212400_774336_4F05639E 
 X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -99,10 +99,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index eb8920d398181..83c0c078d3048 100644
+index 18c4bd9a5c656..30af84b921130 100644
 --- a/drivers/cpufreq/mediatek-cpufreq.c
 +++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -586,6 +586,7 @@ static int __init mtk_cpufreq_driver_init(void)
+@@ -614,6 +614,7 @@ static int __init mtk_cpufreq_driver_init(void)
  	pdev = platform_device_register_simple("mtk-cpufreq", -1, NULL, 0);
  	if (IS_ERR(pdev)) {
  		pr_err("failed to register mtk-cpufreq platform device\n");
