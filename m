@@ -2,74 +2,83 @@ Return-Path: <SRS0=SIUT=F3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A72F0C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 07:57:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AA32C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:16:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E36020729
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 07:57:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E36020729
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4CE392070B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 08:16:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CE392070B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CYTr8JWtzZdrih1PDR6nbaGhExApDzE3LY0QeYd+dRk=; b=3MlISv9NK7xqyBH8h9Y8DlyuTI
-	5xQ7GNH7H+obJxSuN8d0ZrTs/dBzqoIvIEWSdNGAle6Rc8ZT4HhgnUpi9tAcmcP7bHQGdM8L+x+pE
-	+fpN9EwrTtoo+Z2JpXdPXBuJZSVjPOka2WccutbRdiYZ6NzfnSray1TuWKVlo5A5963QBBA94xeli
-	A0WZDj2A/FgkTIdH2IygU0IQMnFsvD1e7tWjzmuedBYtEfOWAXu21L9+nPjgcw2QEkcXrpfyT2OXf
-	ipFuoFNt92wE09U90bMiA0ivaPphaF+nZFhCPPJOQk7MqvJcb6dZ2FSb36oh0H6B6oSSEOAkBQyPJ
-	hogIr4Nw==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=dVeP2uBVHKbz1RLgBTOXbdxctN98PwA0vsbdGX97Gso=; b=Tve9dlmHZ2Myn412COFiLF2f7
+	OqbRlC4OmYjUAHlBlL14JD2mx1ZaxTX4nj6pqG7LHF236Xe7J5Sv/RzYP2HUjSzCQ6bRiJDuychqd
+	3VwKzK+b1a0P7LuWn7wOAUOidsTXT2N6eyhZkkB0sEK12sTvWR9U/ex+KyrrmNEziTjAOs+I8KdU1
+	t0gekmwFsCmMGYT77goWf+bnZZZdikdrZssFfaEaYWuD3I6mA7QEptDLWk2VhyxNsXMShZT2ePDR3
+	eEXlnCKRLCXZoSao+vKOyRXKHrGOJTETMfRctiEqEirLxSyXYlE1KA8EJpPTVPM9vi77hq/gjH6uq
+	HOQ7CQf7A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1krz17-0005P5-W3; Wed, 23 Dec 2020 07:57:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1krzJo-0000Bf-50; Wed, 23 Dec 2020 08:16:24 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1krz12-0005Mc-Pc; Wed, 23 Dec 2020 07:57:02 +0000
-X-UUID: 840fceab9f394a8fa1ae8779718a621f-20201222
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=Xi4wjkVhq3ejkfNz6gloxlzoMvw0OFWRiGtFCfpWyNY=; 
- b=ONgPQEFVORCFzHdlsn4fiHfV2TUESdp+esAyskfrKtVcK1bXVmEEFL9J/h1YEyAe6Bz+y9W5zxFwiCAnvIEyMpi6k821U7DnvvKBBTexlN167yoJYrNneqPsHkajmlPRG4BU2indiwGn3dNZVLCGNt2auZalD/vfT7tKKfNxhYQ=;
-X-UUID: 840fceab9f394a8fa1ae8779718a621f-20201222
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <michael.kao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1890765539; Tue, 22 Dec 2020 23:51:40 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Dec 2020 23:49:52 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Dec 2020 15:49:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 23 Dec 2020 15:49:44 +0800
-From: Michael Kao <michael.kao@mediatek.com>
-To: <michael.kao@mediatek.com>, <fan.chen@mediatek.com>, Zhang Rui
- <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- <linux-pm@vger.kernel.org>, <srv_heupstream@mediatek.com>
-Subject: [PATCH] arm64: dts: mt8192: add thermal zones, cooling map and trips
-Date: Wed, 23 Dec 2020 15:49:44 +0800
-Message-ID: <20201223074944.2061-1-michael.kao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1krzJG-0008JP-CT
+ for linux-mediatek@lists.infradead.org; Wed, 23 Dec 2020 08:15:56 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id p18so10136757pgm.11
+ for <linux-mediatek@lists.infradead.org>; Wed, 23 Dec 2020 00:15:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=XucMaRIeMybHCwI/S50c0P9P/PzyTr/MY7GdCt6gQ/Q=;
+ b=aZzdXz0SBtVFnO7PRB2b7RV7mkqwrJBV3MhQ+S6S1rTiukgrEzwXVuVmBglEF6tyx7
+ sUMj4R7PThczRRpPOGxwzIDDnG8jhFuhzW11Y/PwPYVvWY8B1h6o1bjgby2jsWczSAK/
+ SrYuIgiezft8tCl9+en1fO6d6CqE4ft75I0eg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=XucMaRIeMybHCwI/S50c0P9P/PzyTr/MY7GdCt6gQ/Q=;
+ b=gVm5t09T4ricEAiUm8hsOcVVVMGbz3UjDV3ZaDHI/x30vBvtN9+eSoWo5cCk2ELkfL
+ Vzwrgif2Mj/ZhhlIoUdNMPzfaYH6TKd8guJnDoXjKzsCj/qQVoUokErkG8gdiOHW9a2K
+ E8DNlA4cPqTOtaAOWh0HcO4OWQpOG9tR+KdW+a9H7/rBU/mpXXUTicoio8xaGwVW7//v
+ kXK8zvBCYgoHLRflUkfWh7Xwr2C/YZrnmx7qt16yCIraDPomAMRGCPDLb0mS0PKNS6Ps
+ EaysIPDUi/9+p6nDU2UqhLIv+lU+MbNSSQ1k/Trgi1EnRnO1b+QJami02WtsONr3ZQ7r
+ CuPA==
+X-Gm-Message-State: AOAM530byuASfPyX0dDVJl0zzzzKLSPwxDJ8ngRjLbfj7ogPYSNq1Wqk
+ C/SBmb+OHPJZXZFUMKN/bMxeOA==
+X-Google-Smtp-Source: ABdhPJyifhZqLvN5ckPbaOURCHzmY+l/YaYK8cbQmz0WktjwzfkVze0lIG/pGDQESzamQk6LNGPbAA==
+X-Received: by 2002:a63:f12:: with SMTP id e18mr23981690pgl.101.1608711345895; 
+ Wed, 23 Dec 2020 00:15:45 -0800 (PST)
+Received: from chromium.org ([2401:fa00:8f:2:a28c:fdff:fef0:43bf])
+ by smtp.gmail.com with ESMTPSA id z11sm21421970pjn.5.2020.12.23.00.15.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Dec 2020 00:15:45 -0800 (PST)
+Date: Wed, 23 Dec 2020 17:15:38 +0900
+From: Tomasz Figa <tfiga@chromium.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v5 04/27] dt-bindings: memory: mediatek: Add domain
+ definition
+Message-ID: <X+L8qpO+T7+U2s5r@chromium.org>
+References: <20201209080102.26626-1-yong.wu@mediatek.com>
+ <20201209080102.26626-5-yong.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8E7BA1A4355ECF794BD325262EBA2101F308FC3C1D5B35C546490E00817293EF2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20201209080102.26626-5-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_025701_121125_726EB5C0 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20201223_031550_522244_9943305A 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,295 +90,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ Tomasz Figa <tfiga@google.com>, Will Deacon <will@kernel.org>,
+ Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, chao.hao@mediatek.com,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add thermal zone node to support mt8192 read temperature.
-Thermal throttle will start at 68C and the
-target temperature is 85C.
+Hi Yong,
 
-This patch depends on [1].
+On Wed, Dec 09, 2020 at 04:00:39PM +0800, Yong Wu wrote:
+> In the latest SoC, there are several HW IP require a sepecial iova
+> range, mainly CCU and VPU has this requirement. Take CCU as a example,
+> CCU require its iova locate in the range(0x4000_0000 ~ 0x43ff_ffff).
 
-[1]https://patchwork.kernel.org/project/linux-mediatek/patch/20201221061018.18503-3-Yz.Wu@mediatek.com/
+Is this really a domain? Does the address range come from the design of
+the IOMMU?
 
-Signed-off-by: Michael Kao <michael.kao@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 169 +++++++++++++++++++++++
- 1 file changed, 169 insertions(+)
+Best regards,
+Tomasz
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 4a0d941aec30..4020e40a092a 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -9,6 +9,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-+#include <dt-bindings/thermal/thermal.h>
- 
- / {
- 	compatible = "mediatek,mt8192";
-@@ -42,6 +43,7 @@
- 			clock-frequency = <1701000000>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu1: cpu@100 {
-@@ -52,6 +54,7 @@
- 			clock-frequency = <1701000000>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu2: cpu@200 {
-@@ -62,6 +65,7 @@
- 			clock-frequency = <1701000000>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu3: cpu@300 {
-@@ -72,6 +76,7 @@
- 			clock-frequency = <1701000000>;
- 			next-level-cache = <&l2_0>;
- 			capacity-dmips-mhz = <530>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu4: cpu@400 {
-@@ -82,6 +87,7 @@
- 			clock-frequency = <2171000000>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu5: cpu@500 {
-@@ -92,6 +98,7 @@
- 			clock-frequency = <2171000000>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu6: cpu@600 {
-@@ -102,6 +109,7 @@
- 			clock-frequency = <2171000000>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu7: cpu@700 {
-@@ -112,6 +120,7 @@
- 			clock-frequency = <2171000000>;
- 			next-level-cache = <&l2_1>;
- 			capacity-dmips-mhz = <1024>;
-+			#cooling-cells = <2>;
- 		};
- 
- 		cpu-map {
-@@ -178,6 +187,140 @@
- 		method = "smc";
- 	};
- 
-+	thermal-zones {
-+		soc_max {
-+			polling-delay = <1000>; /* milliseconds */
-+			polling-delay-passive = <1000>; /* milliseconds */
-+			thermal-sensors = <&lvts 0>;
-+			sustainable-power = <1500>;
-+
-+			trips {
-+				threshold: trip-point@0 {
-+					temperature = <68000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				target: target@1 {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
-+				soc_max_crit: soc_max_crit@0 {
-+					temperature = <115000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&target>;
-+					cooling-device = <&cpu0
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>,
-+							 <&cpu1
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>,
-+							 <&cpu2
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>,
-+							 <&cpu3
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>;
-+					contribution = <3072>;
-+				};
-+				map1 {
-+					trip = <&target>;
-+					cooling-device = <&cpu4
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>,
-+							 <&cpu5
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>,
-+							 <&cpu6
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>,
-+							 <&cpu7
-+						THERMAL_NO_LIMIT
-+						THERMAL_NO_LIMIT>;
-+					contribution = <1024>;
-+				};
-+			};
-+		};
-+		cpu_big1 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 1>;
-+		};
-+		cpu_big2 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 2>;
-+		};
-+		cpu_big3 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 3>;
-+		};
-+		cpu_big4 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 4>;
-+		};
-+		cci1 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 5>;
-+		};
-+		cci2 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 6>;
-+		};
-+		cpu_little1 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 7>;
-+		};
-+		cpu_little2 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 8>;
-+		};
-+		apu {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 9>;
-+		};
-+		mlda {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 10>;
-+		};
-+		gpu1 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 11>;
-+		};
-+		gpu2 {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 12>;
-+		};
-+		infra {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 13>;
-+		};
-+		camsys {
-+			polling-delay = <0>; /* milliseconds */
-+			polling-delay-passive = <0>; /* milliseconds */
-+			thermal-sensors = <&lvts 14>;
-+		};
-+	};
-+
- 	timer: timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
-@@ -224,6 +367,10 @@
- 			compatible = "mediatek,mt8192-infracfg", "syscon";
- 			reg = <0 0x10001000 0 0x1000>;
- 			#clock-cells = <1>;
-+			ti,reset-bits = <
-+				0x120 0 0x124 0 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE)
-+				0x730 12 0x734 12 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE)
-+			>;
- 		};
- 
- 		pericfg: syscon@10003000 {
-@@ -318,6 +465,24 @@
- 			status = "disabled";
- 		};
- 
-+		lvts: lvts@1100b000 {
-+			compatible = "mediatek,mt6873-lvts";
-+			#thermal-sensor-cells = <1>;
-+			reg = <0 0x1100b000 0 0x1000>,
-+			      <0 0x11278000 0 0x1000>;
-+			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
-+
-+			clocks = <&infracfg CLK_INFRA_THERM>;
-+			clock-names = "lvts_clk";
-+
-+			resets = <&infracfg_rst 0>,
-+				 <&infracfg_rst 1>;
-+
-+			nvmem-cells = <&lvts_e_data1>;
-+			nvmem-cell-names = "e_data1";
-+		};
-+
- 		spi1: spi@11010000 {
- 			compatible = "mediatek,mt8192-spi",
- 				     "mediatek,mt6765-spi";
-@@ -425,6 +590,10 @@
- 		efuse: efuse@11c10000 {
- 			compatible = "mediatek,mt8192-efuse",
- 				     "mediatek,efuse";
-+
-+			lvts_e_data1: data1 {
-+				reg = <0x1C0 0x58>;
-+			};
- 		};
- 
- 		i2c3: i2c3@11cb0000 {
--- 
-2.18.0
+> 
+> In this patch we add a domain definition for the special port. In the
+> example of CCU, If we preassign CCU port in domain1, then iommu driver
+> will prepare a independent iommu domain of the special iova range for it,
+> then the iova got from dma_alloc_attrs(ccu-dev) will locate in its special
+> range.
+> 
+> This is a preparing patch for multi-domain support.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+> Acked-by: Rob Herring <robh@kernel.org>
+> ---
+>  include/dt-bindings/memory/mtk-smi-larb-port.h | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/dt-bindings/memory/mtk-smi-larb-port.h b/include/dt-bindings/memory/mtk-smi-larb-port.h
+> index 7d64103209af..2d4c973c174f 100644
+> --- a/include/dt-bindings/memory/mtk-smi-larb-port.h
+> +++ b/include/dt-bindings/memory/mtk-smi-larb-port.h
+> @@ -7,9 +7,16 @@
+>  #define __DT_BINDINGS_MEMORY_MTK_MEMORY_PORT_H_
+>  
+>  #define MTK_LARB_NR_MAX			32
+> +#define MTK_M4U_DOM_NR_MAX		8
+> +
+> +#define MTK_M4U_DOM_ID(domid, larb, port)	\
+> +	(((domid) & 0x7) << 16 | (((larb) & 0x1f) << 5) | ((port) & 0x1f))
+> +
+> +/* The default dom id is 0. */
+> +#define MTK_M4U_ID(larb, port)		MTK_M4U_DOM_ID(0, larb, port)
+>  
+> -#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
+>  #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
+>  #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
+> +#define MTK_M4U_TO_DOM(id)		(((id) >> 16) & 0x7)
+>  
+>  #endif
+> -- 
+> 2.18.0
+> 
+> _______________________________________________
+> iommu mailing list
+> iommu@lists.linux-foundation.org
+> https://lists.linuxfoundation.org/mailman/listinfo/iommu
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
