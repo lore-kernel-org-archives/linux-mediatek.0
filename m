@@ -2,81 +2,76 @@ Return-Path: <SRS0=bfHw=F4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2D2CC433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 03:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 38506C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:09:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 32179224DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 03:20:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32179224DF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id AE7C72253D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:09:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE7C72253D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AUOOuSbUb3u56G/CAOBBg0rPFTEL9PHlNzS9k4CcMUE=; b=Snvu+7qPC1JgO6TmS9awN7IA2n
-	Qh5C5roKiz7OJKBHJPtJ/MxfZyfjdE/EaTYB/G5YEvKevsFs6gC2cfoS85UwhSFDLgEPZLpbNYeND
-	0BpoXD2VnKHFYg5e7ZlnaJW8SHBAppVOSRK1MZ3FT0HFJKoFOqz/c2zrcL7bC/NvF2ZztsZXMGNIb
-	/NJ5UotW65HKMAW5QTArWolFhPUepcNJ/YrhV+Ci4KFAtdEDi5AnggMKirebJ7lPAoBmmByeWqFxF
-	rFDAkUKgdqifQYgeq5NWzYvLuWFE+n24mn7jWHZ7XawCGUnNDA3fWTLIgpQ2mi0dUv3kOm1Mem26t
-	OnZgrvGw==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=sDn7nV05XvqjRs60qCi7VZV67P3UgVxSbit0tUvHHMY=; b=q8plkrA1IDu5DKGSsvQQqxypw
+	ctMpMQmRBSIDpov+6qcu0vdNOjVi87jD/VOosTlNg0OBSIkaJlHwEGNeq96ikspsxSfsD4svwQCV7
+	BGWmZV7SHiYuiOBwYk68omQWuyrQYIMG6hjEtiKA4Ii59xKwfVe4F3LQhi03PuFNY6rC/yKaZF2Fx
+	YZgXuzhCxADxDLdW/dHRRps6lJ6Qty67wvyZMhXr+Ku84CUdZgGdAjHrVLFUjrKJmZ2SS/iG004fL
+	yarFZ/lfCc4o24j9X1nfPwvL7PYuC70/DaRqXc5WghheTsI9Hh65lvaIj+dYgKsDe2gWQg/oS+peD
+	hhxl1RK/Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksHAY-0006AN-9F; Thu, 24 Dec 2020 03:20:02 +0000
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+	id 1ksJoD-0005Wp-LH; Thu, 24 Dec 2020 06:09:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksHAT-00069c-LO; Thu, 24 Dec 2020 03:19:58 +0000
-Received: by mail-pg1-x52f.google.com with SMTP id c22so761177pgg.13;
- Wed, 23 Dec 2020 19:19:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=bY2URhtHpp2ViDApeX+WMIac4xic2Nz10mLXPafWH1I=;
- b=fHyv89jHI3dvjcUjJ5lDVSRFWiq7bg4lXHOZaHco8FGPSzoysvYMsH5QN46IE07wN6
- N1VBz6eO1Z88HabORkNJIAk9uC4BrVvoRvWsb/U+63cEU6c2Q/cKcxKDba//TwXhsZ6c
- RMhfriyb8HXJSZcCJsBrIUo4FZjrsvdIjcuRSWBkCaozQdwJ12I8bswaW+9ZjUzVu/vN
- yGppvjevALg4k/zpy5VLsGqgz3p5vbmAYeNOimNbVFQRBe7JdLIRVwWW2hRLyhK3jPfs
- phURXB7SZtpfgLz4C0AdnGL/kf00r2Jx0WNjNXJ2AG8iujqx/fNGTrlRk/iRX9CpcVrM
- ZdDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=bY2URhtHpp2ViDApeX+WMIac4xic2Nz10mLXPafWH1I=;
- b=jY5Y57z3yPFQjTLYZpog3K6QaW5aumvKn5m8vDJt2HpgTwCISD05JFnrczwE+ya3Yo
- 1MReQ9IAfvOCF0UN3yubC9HFG/A+IBBv4veApNonA8Ele496HlCJse3cu/ivurjHUYQa
- gyfUjrCgKjXwVsaZdnfIkNo4ETyeCBMAiZcgfbATpF0D8KbzlRlILwwJGfqTbj+EdaL/
- 2+cW0D2bV7+5zDTPJCl48Ks7rENsp8Ln2u3/0mLxao7wHZHhrPjrEGcbJhfOayD9ur2X
- b6QchVStMhw4xEjpIhn4Ou5PK9+qM8Gf+z0WOQQeQ0fta5ZAJl8KRKP40O2/shgSuJ9Q
- BEwQ==
-X-Gm-Message-State: AOAM532tzyn1ogk2MCSR7bGEHkpYx3eVMnnZBh5VXUybJfM2TwWSB1q1
- pS3qlt3PslG+w49GVYmuVRs=
-X-Google-Smtp-Source: ABdhPJzOHu37HvEexERhFvYlu0dNsAb8MQw+8bVf1KJVfFh+HzHPTgXC/j3Bixig7v1Mb5gHdfYpsw==
-X-Received: by 2002:a63:480f:: with SMTP id v15mr13457906pga.341.1608779995916; 
- Wed, 23 Dec 2020 19:19:55 -0800 (PST)
-Received: from localhost.localdomain ([2402:7500:492:86cf:7e4a:b265:b394:eefd])
- by smtp.gmail.com with ESMTPSA id b19sm23842540pfo.24.2020.12.23.19.19.53
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 23 Dec 2020 19:19:55 -0800 (PST)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: matthias.bgg@gmail.com,
-	robh+dt@kernel.org
-Subject: [PATCH resend] dt-bindings: mfd: mediatek: Add bindings for MT6360
- PMIC
-Date: Thu, 24 Dec 2020 11:19:49 +0800
-Message-Id: <1608779989-9641-1-git-send-email-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ id 1ksJo8-0005VK-J3; Thu, 24 Dec 2020 06:09:05 +0000
+X-UUID: 022c538aebec454d8e9f22b41431cda3-20201223
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=GncW5WmL7YTEy0enm/2/bjTokfoOlBYztHclpSCbM/k=; 
+ b=nA20hm96OZBcmuFCr6nivbrI6t4ZjIKZTxPrE8ZF9FqNA8e4uDVyUmn5jsYrqSNbA+XW3lc0Nxa0mbrV33L2Lj0t03Rpk4DHK/h1WlXdYfaNyIchBfp7ViF4kDK5yiCyLRvwsygHfvV9Yjcfetysl6lc8bJtKiKrgeyvdtOgkT4=;
+X-UUID: 022c538aebec454d8e9f22b41431cda3-20201223
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <henryc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2041272465; Wed, 23 Dec 2020 22:09:00 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Dec 2020 22:08:58 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Dec 2020 14:08:56 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 24 Dec 2020 14:08:57 +0800
+From: Henry Chen <henryc.chen@mediatek.com>
+To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>, Mark Brown
+ <broonie@kernel.org>
+Subject: [PATCH V6 05/13] arm64: dts: mt8192: add dvfsrc related nodes
+Date: Thu, 24 Dec 2020 14:08:46 +0800
+Message-ID: <1608790134-27425-6-git-send-email-henryc.chen@mediatek.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
+References: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: 45ECB77B35D501667FE255AB47DEF45B76D9AD1465F8575F009FA9A8347FDC5E2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_221957_769416_2E670DAA 
-X-CRM114-Status: GOOD (  14.60  )
+X-CRM114-CacheID: sfid-20201224_010904_823009_1C434FF2 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,105 +83,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, Wilma.Wu@mediatek.com, linux-kernel@vger.kernel.org,
- cy_huang@richtek.com, benjamin.chao@mediatek.com,
- linux-mediatek@lists.infradead.org, lee.jones@linaro.org,
- linux-arm-kernel@lists.infradead.org, shufan_lee@richtek.com
-MIME-Version: 1.0
+Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
+ devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "henryc.chen" <henryc.chen@mediatek.com>,
+ Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Arvin Wang <arvin.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
+From: "henryc.chen" <henryc.chen@mediatek.com>
 
-Add bindings for MT6360 PMIC
+Enable dvfsrc on mt8192 platform.
 
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
+Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 ---
- Documentation/devicetree/bindings/mfd/mt6360.yaml | 69 +++++++++++++++++++++++
- 1 file changed, 69 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mfd/mt6360.yaml
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mfd/mt6360.yaml b/Documentation/devicetree/bindings/mfd/mt6360.yaml
-new file mode 100644
-index 0000000..2781c31
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mfd/mt6360.yaml
-@@ -0,0 +1,69 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mfd/mt6360.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 69d45c7..1e5d506 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -263,6 +263,11 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		ddr_emi: dvfsrc@10012000 {
++			compatible = "mediatek,mt8192-dvfsrc";
++			reg = <0 0x10012000 0 0x1000>;
++		};
 +
-+title: MT6360 PMIC from MediaTek Integrated
-+
-+maintainers:
-+  - Gene Chen <gene_chen@richtek.com>
-+
-+description: |
-+  MT6360 is a PMIC device with the following sub modules.
-+  It is interfaced to host controller using I2C interface.
-+
-+  This document describes the binding for PMIC device and its sub module.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6360
-+
-+  reg:
-+    description:
-+      I2C device address.
-+    maxItems: 1
-+
-+  wakeup-source: true
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-names:
-+      enum:
-+        - IRQB
-+
-+  interrupt-controller: true
-+
-+  "#interrupt-cells":
-+    const: 1
-+    description:
-+      The first cell is the IRQ number.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - interrupt-controller
-+  - "#interrupt-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        mt6360@34 {
-+            compatible = "mediatek,mt6360";
-+            reg = <0x34>;
-+            wakeup-source;
-+            interrupts-extended = <&gpio26 0 IRQ_TYPE_LEVEL_LOW>;
-+            interrupt-names = "IRQB";
-+            interrupt-controller;
-+            #interrupt-cells = <1>;
-+        };
-+    };
+ 		systimer: timer@10017000 {
+ 			compatible = "mediatek,mt8192-timer",
+ 				     "mediatek,mt6765-timer";
 -- 
-2.7.4
-
-
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
