@@ -2,72 +2,81 @@ Return-Path: <SRS0=bfHw=F4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3220C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 12:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D594C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 13:58:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B589B2168B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 12:37:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B589B2168B
+	by mail.kernel.org (Postfix) with ESMTPS id D5DC622287
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 13:58:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5DC622287
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+n43mHhgzNBXggjHZSF3yqnYNBR623ouc5SbNQxj/WQ=; b=iyHQz/7yEyXerhgj0bmcNM9y9
-	SZzac+rXc5/pyx0BWAZQSJR6InEB8UGqavVyiW+ELJj7ThUaqXt1fx59TIiFHr5n3ZJ2EIaJQawCV
-	VlJtlf3Jphfr70SLz89uoTlX09Z9fDpnLf9F1CI9iTi4WHy2Lbw6RTvhf4z84Fkn+NxtjN2Y95BP9
-	trjDJQqjhaea7zGCTynUCtZ5UgnQEwd9eR9GjWhHrLUap7KiuM646wKxRqq4OkixuZSXavkuHoYaq
-	QFkyo5mLMtfmvWDHVnuiLNtmEEScpdPRz9xMF4ahhjHPWdVGqFq2QRW44awmyuDtrcMeBxiYpEWa5
-	Tyf8vhx7w==;
+	 bh=BLSGWrwvi9TR0fPbKizGfTpFh1E7b1CZMXM4+77KQkM=; b=P20/L1wxCkYQhCK9Bm9kQ0v7e
+	ISa9LmjWqKXHGDWVpQzOsllSfq4hl84K1SPnARq+TYc4G2J0LQVRtp+J4QqAhUkdIvs3iRqv0xh21
+	qfyNYjPRMty151P2ywdibrDknQekK4XyKaD9U0DJaDHBS1XBEtCxw1RPOjKxMNyMD+AxgXbrk5pBv
+	quswj0PlnIWFFn2yIhPcHi+En3y1ehJrOkL91+AUpG9TkevO/K+BaQ9XRrimrdho+BGGmz8GeS52g
+	+OFipwRnJSIqNTU2PavZCSp16Ic9tnQNOYiHfZCyp2aPKce9Nj/6ofMk8wP0wmecJG/uK8VoDS8Os
+	iLdSFO8bw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksPsB-0006B3-6T; Thu, 24 Dec 2020 12:37:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ksR7x-00026u-Ef; Thu, 24 Dec 2020 13:58:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksPs2-00067y-S9; Thu, 24 Dec 2020 12:37:32 +0000
-X-UUID: d72a231c98a04ca38e5af8ca83edde94-20201224
+ id 1ksR7t-000261-GO; Thu, 24 Dec 2020 13:57:58 +0000
+X-UUID: 1643330dbfc74742b634adfdb1a4bfff-20201224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=dbxXAkGcQH13U3OiaROGSKRNlptEYQSiuXKgQKvUzcM=; 
- b=PHBowcu/2g5WG3b1d72kfzJ0hOB11lta+NGRLd1UF9yu3JYt2piMDKz+PSnExnV7XgEld5zmCQzNb4nH6z726ZnE2dTWTRG5Ywp2D+wL6HEMWJJ9ZdW9k7TOD/0N1QZTi0qTqQj6xO9V4/XPAHxdKZoEpVVsTHaoXp4eXH/2q74=;
-X-UUID: d72a231c98a04ca38e5af8ca83edde94-20201224
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <nick.fan@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Z5h5EwYy/XrQnTmDEIGcQxTHLr/QiYtC7dM7hPx7/cQ=; 
+ b=bACbrIL5btHj0ikmpw8hM6JT3CkZRns+pV5M7rlP0ZVXGieDjmTzia4SjovNA4dE/iMIdNAyCNXQE1erSMncdBJYanBImHeyRfFsfKL5uMLwNO+UiTNHVr1+CIxHAM+9WyN2iNKoGT4Afrr+5sHt6L5e7IhEEa9fPlUYGk4LwTw=;
+X-UUID: 1643330dbfc74742b634adfdb1a4bfff-20201224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 485225123; Thu, 24 Dec 2020 04:32:14 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Dec 2020 04:32:12 -0800
+ with ESMTP id 1606107664; Thu, 24 Dec 2020 05:57:48 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Dec 2020 05:47:45 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Dec 2020 20:32:09 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 24 Dec 2020 20:32:08 +0800
-From: Nick Fan <Nick.Fan@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 2/2] arm64: dts: mt8192: Add node for the Mali GPU
-Date: Thu, 24 Dec 2020 20:31:19 +0800
-Message-ID: <20201224123119.26504-2-Nick.Fan@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20201224123119.26504-1-Nick.Fan@mediatek.com>
-References: <20201224123119.26504-1-Nick.Fan@mediatek.com>
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Dec 2020 21:47:35 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Dec 2020 21:47:35 +0800
+Message-ID: <1608817657.14045.30.camel@mtkswgap22>
+Subject: Re: [PATCH v1] scsi: ufs-mediatek: Enable
+ UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: Bean Huo <huobean@gmail.com>
+Date: Thu, 24 Dec 2020 21:47:37 +0800
+In-Reply-To: <5eb12622222bd9ba5e705801a204f3160ba3966b.camel@gmail.com>
+References: <20201222072928.32328-1-stanley.chu@mediatek.com>
+ <c862866ec97516a7ffb891e5de3d132d@codeaurora.org>
+ <1608697172.14045.5.camel@mtkswgap22>
+ <c83d34ca8b0338526f6440f1c4ee43dd@codeaurora.org>
+ <ff8efda608e6f95737a675ee03fa3ca2@codeaurora.org>
+ <1608796334.14045.21.camel@mtkswgap22>
+ <DM6PR04MB6575D0DD2C04692AEF771494FCDD0@DM6PR04MB6575.namprd04.prod.outlook.com>
+ <5eb12622222bd9ba5e705801a204f3160ba3966b.camel@gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E5D6A4B292CE8157DB5E053A6579C29FC5F9632B357D9219E59E6662DB493D8A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201224_073731_092962_D5C4236E 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20201224_085757_761843_4094E178 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,253 +88,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Nick Fan <Nick.Fan@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: "jiajie.hao@mediatek.com" <jiajie.hao@mediatek.com>,
+ "alice.chao@mediatek.com" <alice.chao@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cc.chou@mediatek.com" <cc.chou@mediatek.com>,
+ Avri Altman <Avri.Altman@wdc.com>, Can Guo <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
+ "chaotian.jing@mediatek.com" <chaotian.jing@mediatek.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "beanhuo@micron.com" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a basic GPU node for mt8192.
+Hi Avri, Bean,
 
-Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
----
-This patch depends on Mediatek power and regulator support.
+On Thu, 2020-12-24 at 13:01 +0100, Bean Huo wrote:
+> On Thu, 2020-12-24 at 11:03 +0000, Avri Altman wrote:
+> > > > Do you see any substantial benefit of having
+> > > > fWriteBoosterBufferFlushEn
+> > > > disabled?
+> > > 
+> > > 1. The definition of fWriteBoosterBufferFlushEn is that host allows
+> > > device to do flush in anytime after fWriteBoosterBufferFlushEn is
+> > > set as
+> > > on. This is not what we want.
+> > > 
+> > > Just Like BKOP, We do not want flush happening beyond host's
+> > > expected
+> > > timing that device performance may be "randomly" dropped.
+> > 
+> > Explicit flush takes place only when the device is idle:
+> > if fWriteBoosterBufferFlushEn is set, the device is idle, and before
+> > h8 received.
+> > If a request arrives, the flush operation should be halted.
+> > So no performance degradation is expected. 
+> 
+> Hi Stanley
+> 
+> Avri's comment is correct, fWriteBoosterBufferFlushEn==1, device will
+> flush only when it is in idle, once there is new incoming request, the
+> flush will be suspended. You should be very careful when you want to
+> skip this stetting of this flag.
 
-Listed as following.
+Very appreciate your the clarification.
 
-[1]https://lore.kernel.org/patchwork/patch/1336293/
-[2]https://patchwork.kernel.org/project/linux-mediatek/list/?series=374013
-[3]https://lore.kernel.org/patchwork/patch/1356037/
-[4]https://patchwork.kernel.org/project/linux-mediatek/list/?series=405777
-[5]https://lore.kernel.org/patchwork/patch/1356175/
-[6]https://patchwork.kernel.org/project/linux-mediatek/patch/1605700894-32699-6-git-send-email-hsin-hsiung.wang@mediatek.com/
-[7]https://patchwork.kernel.org/project/linux-mediatek/patch/1608104827-7937-10-git-send-email-hsin-hsiung.wang@mediatek.com/
----
+However similar to "Background Operations Termination Latency", while
+the next request comes, device may need some time to suspend on-going
+flush operations. This delay may "randomly" degrade the performance
+right?
 
----
- arch/arm64/boot/dts/mediatek/mt8192-evb.dts |   7 +
- arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 176 ++++++++++++++++++++
- 2 files changed, 183 insertions(+)
+Since the configuration, i.e., enable
+fWriteBoosterBufferFlushDuringHibernate only with
+fWriteBoosterBufferFlushEn disabled, has been applied in many of our
+mass-produced products these yeas, we would like to keep it unless the
+new setting has obvious benefits.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-index 6c1e2b3e8a60..48c0e240dd92 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-@@ -5,6 +5,7 @@
-  */
- /dts-v1/;
- #include "mt8192.dtsi"
-+#include "mt6359.dtsi"
- 
- / {
- 	model = "MediaTek MT8192 evaluation board";
-@@ -70,6 +71,12 @@
- 	};
- };
- 
-+&gpu {
-+	supply-names = "mali","sram";
-+	mali-supply = <&mt6315_7_vbuck1>;
-+	sram-supply = <&mt6359_vsram_others_ldo_reg>;
-+};
-+
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index d6a4ad242a33..de166ea750af 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -822,6 +822,182 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		gpu: mali@13000000 {
-+			compatible = "mediatek,mt8192-mali", "arm,mali-valhall";
-+			reg = <0 0x13000000 0 0x4000>;
-+			interrupts =
-+				<GIC_SPI 363 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 364 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 365 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 366 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 367 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names =
-+				"GPU",
-+				"MMU",
-+				"JOB",
-+				"EVENT",
-+				"PWR";
-+
-+			clocks =
-+				<&apmixedsys CLK_APMIXED_MFGPLL>,
-+				<&topckgen CLK_TOP_MFG_PLL_SEL>,
-+				<&topckgen CLK_TOP_MFG_REF_SEL>,
-+				<&mfgcfg CLK_MFG_BG3D>;
-+			clock-names =
-+				"clk_main_parent",
-+				"clk_mux",
-+				"clk_sub_parent",
-+				"subsys_mfg_cg";
-+
-+			power-domains =
-+				<&scpsys MT8192_POWER_DOMAIN_MFG2>,
-+				<&scpsys MT8192_POWER_DOMAIN_MFG3>,
-+				<&scpsys MT8192_POWER_DOMAIN_MFG4>,
-+				<&scpsys MT8192_POWER_DOMAIN_MFG5>,
-+				<&scpsys MT8192_POWER_DOMAIN_MFG6>;
-+			power-domain-names = "core0",
-+					     "core1",
-+					     "core2",
-+					     "core3",
-+					     "core4";
-+
-+			operating-points-v2 = <&gpu_opp_table>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		gpu_opp_table: opp_table0 {
-+			compatible = "operating-points-v2";
-+			opp-shared;
-+
-+			opp-358000000 {
-+				opp-hz = /bits/ 64 <358000000>;
-+				opp-hz-real = /bits/ 64 <358000000>,
-+					      /bits/ 64 <358000000>;
-+				opp-microvolt = <606250>,
-+						<750000>;
-+			};
-+
-+			opp-399000000 {
-+				opp-hz = /bits/ 64 <399000000>;
-+				opp-hz-real = /bits/ 64 <399000000>,
-+					      /bits/ 64 <399000000>;
-+				opp-microvolt = <618750>,
-+						<750000>;
-+			};
-+
-+			opp-440000000 {
-+				opp-hz = /bits/ 64 <440000000>;
-+				opp-hz-real = /bits/ 64 <440000000>,
-+					      /bits/ 64 <440000000>;
-+				opp-microvolt = <631250>,
-+						<750000>;
-+			};
-+
-+			opp-482000000 {
-+				opp-hz = /bits/ 64 <482000000>;
-+				opp-hz-real = /bits/ 64 <482000000>,
-+					      /bits/ 64 <482000000>;
-+				opp-microvolt = <643750>,
-+						<750000>;
-+			};
-+
-+			opp-523000000 {
-+				opp-hz = /bits/ 64 <523000000>;
-+				opp-hz-real = /bits/ 64 <523000000>,
-+					      /bits/ 64 <523000000>;
-+				opp-microvolt = <656250>,
-+						<750000>;
-+			};
-+
-+			opp-564000000 {
-+				opp-hz = /bits/ 64 <564000000>;
-+				opp-hz-real = /bits/ 64 <564000000>,
-+					      /bits/ 64 <564000000>;
-+				opp-microvolt = <668750>,
-+						<750000>;
-+			};
-+
-+			opp-605000000 {
-+				opp-hz = /bits/ 64 <605000000>;
-+				opp-hz-real = /bits/ 64 <605000000>,
-+					      /bits/ 64 <605000000>;
-+				opp-microvolt = <681250>,
-+						<750000>;
-+			};
-+
-+			opp-647000000 {
-+				opp-hz = /bits/ 64 <647000000>;
-+				opp-hz-real = /bits/ 64 <647000000>,
-+					      /bits/ 64 <647000000>;
-+				opp-microvolt = <693750>,
-+						<750000>;
-+			};
-+
-+			opp-688000000 {
-+				opp-hz = /bits/ 64 <688000000>;
-+				opp-hz-real = /bits/ 64 <688000000>,
-+					      /bits/ 64 <688000000>;
-+				opp-microvolt = <706250>,
-+						<750000>;
-+			};
-+
-+			opp-724000000 {
-+				opp-hz = /bits/ 64 <724000000>;
-+				opp-hz-real = /bits/ 64 <724000000>,
-+					      /bits/ 64 <724000000>;
-+				opp-microvolt = <725000>,
-+						<750000>;
-+			};
-+
-+			opp-760000000 {
-+				opp-hz = /bits/ 64 <760000000>;
-+				opp-hz-real = /bits/ 64 <760000000>,
-+					      /bits/ 64 <760000000>;
-+				opp-microvolt = <743750>,
-+						<750000>;
-+			};
-+
-+			opp-795000000 {
-+				opp-hz = /bits/ 64 <795000000>;
-+				opp-hz-real = /bits/ 64 <795000000>,
-+					      /bits/ 64 <795000000>;
-+				opp-microvolt = <762500>,
-+						<762500>;
-+			};
-+
-+			opp-831000000 {
-+				opp-hz = /bits/ 64 <831000000>;
-+				opp-hz-real = /bits/ 64 <831000000>,
-+					      /bits/ 64 <831000000>;
-+				opp-microvolt = <781250>,
-+						<781250>;
-+			};
-+
-+			opp-855000000 {
-+				opp-hz = /bits/ 64 <855000000>;
-+				opp-hz-real = /bits/ 64 <855000000>,
-+					      /bits/ 64 <855000000>;
-+				opp-microvolt = <793750>,
-+						<793750>;
-+			};
-+
-+			opp-902000000 {
-+				opp-hz = /bits/ 64 <902000000>;
-+				opp-hz-real = /bits/ 64 <902000000>,
-+					      /bits/ 64 <902000000>;
-+				opp-microvolt = <818750>,
-+						<818750>;
-+			};
-+
-+			opp-950000000 {
-+				opp-hz = /bits/ 64 <950000000>;
-+				opp-hz-real = /bits/ 64 <950000000>,
-+					      /bits/ 64 <950000000>;
-+				opp-microvolt = <843750>,
-+						<843750>;
-+			};
-+		};
-+
- 		mfgcfg: syscon@13fbf000 {
- 			compatible = "mediatek,mt8192-mfgcfg", "syscon";
- 			reg = <0 0x13fbf000 0 0x1000>;
--- 
-2.18.0
+Thanks,
+Stanley Chu
+
+> 
+> Bean
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
