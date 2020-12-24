@@ -1,160 +1,72 @@
-Return-Path: <SRS0=SIUT=F3=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=bfHw=F4=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0557C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 20:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01522C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 00:24:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A1480221F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Dec 2020 20:45:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A1480221F5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	by mail.kernel.org (Postfix) with ESMTPS id 880AB22512
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 00:24:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 880AB22512
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+74SFO4jvmY79KPl3bQDlByK7v9t7sfZoVK0XL0nU2Q=; b=CPAMpGLIzyrBHShX6j96OZDSA
-	sysvcLXOWOCAvZLm23bSK5Vpy27o5ejjFYz4T5VGUBfmk3BTSP8TnZMkSHnSs5/J66jH49bi1nKZH
-	piilTgYLg0brcLJL5fvfn2eLQWxcyh5QlDPI0L8gbLaJH6w4L0j4vu/fQjvRJkO+c0FP7ep3psGtV
-	BakK15lBd3rV8ZW13k2lTVmoQLji7aNFqCCLJ+3gRo+fBj7cSvhHACA50l4H678Nh7/Ke+fEpSM5z
-	kzzZ7rsFrywOy76VZNjavRA0m1/84PaZQWkOws59oziMKsrey9NC7Fgw/sJsg02f7/crWyFZ4vxzu
-	TV5yLWw2g==;
+	 bh=NQp/uJHyHyoJQUFlFyopHwhrMSyx6CQKL8z9+J+EUOo=; b=TKNLUVNaFOr8PdaSheIGOVTZO
+	XT6O182tr79ePnNIy+72SFv0qRnbCkRRO9wJInS2yhXBVpCmPREhPlcKMwiCgazwkWfNRjTrFzyyf
+	WPN/q/9JRAerjhiXEY6YacrUysF5rOQQMkfpvBTJsF62Dgxoklg2M5uhv+wes1xab33y5/oKbR+ch
+	f7lPBhWhua20ujtxmqxTkrvp8RhZKkVUoOTdp/rNM/LVgcPJ+j/OuF6iuDNmK66J4CG+6jo+SzAEs
+	w+5CpzU6kp2Y252JFXD3ykTcheIjyZwwkFKVnrVZ2BDMOmWGiceyIWDGLVF1/X3SydJHXE0eUC820
+	Z9jhCGh3A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksB0n-0001Iv-10; Wed, 23 Dec 2020 20:45:33 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1ksEQl-00072m-Rt; Thu, 24 Dec 2020 00:24:35 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksB0j-0001IR-MN; Wed, 23 Dec 2020 20:45:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1608757384; x=1640293384;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=c5ysDp16XvIuu0wrLafp4DwyicttBpnJAOjfIFbV22w=;
- b=GW+ewXSzTs+2aZjQ8u2J0UUALCROz0L77mEJ94e4hPD8P2wW1FJ/AO+J
- pxaI4Hu3wI0VxA5IJet7M0WXi/U+e62r6ZEy+MQ7B1XfZ2v8HRwX7onGi
- JhjkjRB26D7wNlPVX2CPq7fjh3KL+8cvhuYDMewcCRe1GF/LFcw421kWJ
- zTYNhzUwivWg1XoCeQswdpKhd7tivkTJo+wbVU7tPdYFcNqcRKtuQ1mSj
- agog0a1USito6Ssm02zTMuGUFO4i4/g5JyrUQPLGwvQ9QYl1VF1V2gijh
- 5p8/Rt+RDF7gp/NcQ07iwGm76JHBSMPreyTG9jiwVCz93QZuVrZVdOWIH w==;
-IronPort-SDR: CHB/a6m0uEvFeflEVKq6ttsgV/QaqBQ61BQNXWJ/rp9EM6WUkIsWJB+gmndivwdLpn8f73VyjY
- 3Ht2VfMadbR4ZuMHN3KtBth/yBZrdIAUpUOU3/ZMH9JE3Yx5vpUC/6xVCQWn6TK30sgrjumK+O
- cQyHT569SY4XVUT/yM1y/R7+KP1Fozl4fUs6bbXE6refOH7BAb7RoWqzWJ8kGmH+mCZRGsji/y
- 9qClmC8RG8xVuQhWedqyHHyuYYYPb7ZLlavNgvOGcNT+va4gkmQDViV4Q4dBf6XWAIfiqgNl4T
- uLo=
-X-IronPort-AV: E=Sophos;i="5.78,442,1599494400"; d="scan'208";a="259740260"
-Received: from mail-co1nam11lp2176.outbound.protection.outlook.com (HELO
- NAM11-CO1-obe.outbound.protection.outlook.com) ([104.47.56.176])
- by ob1.hgst.iphmx.com with ESMTP; 24 Dec 2020 05:02:56 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GqD8vcLiYE+tYS9gT+lMOyJgtUlsC8tAtgilS4qq/DNLWuUOk786Gg9uxin/RSnvJrkyn2OMph6K3AeFz7xeom+MyGQJmU4jDyx0JHCyEo42V4gyAWL/4H8b93e3++F+RDirH92Gmq6DdM4zzcrGaQkUMNWkyqSRvG4I9cfuXfDE86Y9aIxdmKacHfs8zSamg0OeEwNUckgKvruxNMWI6/D68BtuCreRuxigW1T0k+p2Lx2uLWSoJGQ9jSsItkplT9RmxqmhR7WtXTIbhL0Ppvc0ylOqsiZnKNxTyXwmKcco5iuZFy60YCN4wjC+vIZVBqkFyvoQRtiXQn+3u9qppg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iQvK9FKTlz2tMJu93E50dsEbzwNkqYmItw4Zd7S2LI4=;
- b=YnEw/Kj6nO/7jc8gPJd4hGNOF4pfIZqriO0Dqry7TXERNfzRxGDo8WQGe3vCZeHq1+rst4YVAhC81AYBm82z+hX7HT8MGLMdidpQvVDYSZ+XWV3tJVOLodDAwNCwmwOQJ70VGLXFDKV+JWiyuTAMuXCfeRBr8mzyv5exkPjRdMMkAuRik1pLvVnunmg0V+Me7XJCQfzTY+quk29W4KMp6UxwKkzmp5i51+z/8w6LMjVBdAjq0gMku/dWMrEXTAmZs4ntsobzBM13Gstb6xIks0/MgO9RUZBb1GhU+hhpgLPZEbns+OQ0uiud+/9aUv0S8eDcUmdXcOyET7/DvhyzYg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iQvK9FKTlz2tMJu93E50dsEbzwNkqYmItw4Zd7S2LI4=;
- b=coRLVxnnLbWdPSEe/pxkm1fq6jyZsOckzzmL5ZlDl10FTEVTMh130SFO/STEjW18hthVoAWATGtw8+3mCD+ozqJ4nMKz4IM6sFrddHdiSy+Bho0NKztnSdFRlPipXQ50DjWxDEYzBIp1SwmFihZWsU6v/OcdHyXV8RvOLNz6xZg=
-Received: from DM6PR04MB6575.namprd04.prod.outlook.com (2603:10b6:5:1b7::7) by
- DM6PR04MB5673.namprd04.prod.outlook.com (2603:10b6:5:16a::25) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3700.27; Wed, 23 Dec 2020 20:45:22 +0000
-Received: from DM6PR04MB6575.namprd04.prod.outlook.com
- ([fe80::a564:c676:b866:34f6]) by DM6PR04MB6575.namprd04.prod.outlook.com
- ([fe80::a564:c676:b866:34f6%8]) with mapi id 15.20.3700.026; Wed, 23 Dec 2020
- 20:45:22 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Ziqi Chen <ziqichen@codeaurora.org>, "asutoshd@codeaurora.org"
- <asutoshd@codeaurora.org>, "nguyenb@codeaurora.org" <nguyenb@codeaurora.org>, 
- "cang@codeaurora.org" <cang@codeaurora.org>, "hongwus@codeaurora.org"
- <hongwus@codeaurora.org>, "rnayak@codeaurora.org" <rnayak@codeaurora.org>,
- "vinholikatti@gmail.com" <vinholikatti@gmail.com>, "jejb@linux.vnet.ibm.com"
- <jejb@linux.vnet.ibm.com>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "kernel-team@android.com"
- <kernel-team@android.com>, "saravanak@google.com" <saravanak@google.com>,
- "salyzyn@google.com" <salyzyn@google.com>, "kwmad.kim@samsung.com"
- <kwmad.kim@samsung.com>, "stanley.chu@mediatek.com"
- <stanley.chu@mediatek.com>
-Subject: RE: [PATCH RFC v4 1/1] scsi: ufs: Fix ufs power down/on specs
- violation
-Thread-Topic: [PATCH RFC v4 1/1] scsi: ufs: Fix ufs power down/on specs
- violation
-Thread-Index: AQHW2Gllg/EWmEMBPEKOS0xlcLh5tqoFIwog
-Date: Wed, 23 Dec 2020 20:45:22 +0000
-Message-ID: <DM6PR04MB65751FC6D1ED61E569AC095EFCDE0@DM6PR04MB6575.namprd04.prod.outlook.com>
-References: <1608644981-46267-1-git-send-email-ziqichen@codeaurora.org>
-In-Reply-To: <1608644981-46267-1-git-send-email-ziqichen@codeaurora.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: codeaurora.org; dkim=none (message not signed)
- header.d=none;codeaurora.org; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 69ce4840-7535-4a82-36b6-08d8a783ab06
-x-ms-traffictypediagnostic: DM6PR04MB5673:
-x-microsoft-antispam-prvs: <DM6PR04MB5673B22EDC66D17A69F68246FCDE0@DM6PR04MB5673.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: RtHsLbcB55IA7wYhrshXFv7C22Fdpty6nP7uZBgGWnUtR2Y6/83x87PzjSjzMSDyuVJ5NhjCNVEzXXEDPtinWJ69dcIvv6NU9cjOE6oACnv7O6fovgignvuvzuW4INQB7GEv0Nx+SUkpRvrGE264CCKRmXmoVT7a/B3u4tQkGRr/YJH2yUj6Q5ASnWaW1CND5BHtsgfe8kh1mr5tGMUx5Wm65SFRRTsOrl66paKNj1DLOJkGh+jWIa4N9RtIXSK9o6Vy4lOuN2/9RIFFCr4qE1YD0RkOInt/w6HORC5WqDOe/DGZcHohasmQ3TvpT/PsqAEChondf/rPoKpsvLLFpMHjrI0sWk+fUtSwtlxoRn4S7RZDyCSkGa+5rJFpXno7HXWqIdRftOS3RgFgYJFO/EaKlT2j0lU0WpRlX6Cw5a/58xbBynY5OICOHba33Dmy
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR04MB6575.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(136003)(39860400002)(346002)(366004)(376002)(396003)(110136005)(54906003)(26005)(186003)(4326008)(71200400001)(55016002)(83380400001)(66556008)(66476007)(64756008)(66446008)(7416002)(8676002)(33656002)(5660300002)(52536014)(478600001)(316002)(8936002)(921005)(76116006)(9686003)(66946007)(86362001)(6506007)(2906002)(7696005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?mcYF6HAlLYk6HxJ6SYdztvjVUqKdIRogmUaR45r+x2sVqBNEOGvQRVuWRHOl?=
- =?us-ascii?Q?rKq6mJy3zCaTGbOh2FhTCuzNpY3w+8kgAU3WDcHfI/zMA796QvHo0YlzSSCV?=
- =?us-ascii?Q?ZDvNP/O3JGNhE/mUsYp6vQPYT7j1FfJiR3nB1/uCjmYVO7YwjhOkPxDRzAHl?=
- =?us-ascii?Q?RwLExBawx/A1XF/dvgMuCxHT0OMjiEc4CyAXDtzPGX3kOAx+tSHTp1/cDTm7?=
- =?us-ascii?Q?pORpFneVTa3H+e9ohAbKq+CZIxlhZThbZ/bJqC7roGUF+R5NjymVbc2Dz1X+?=
- =?us-ascii?Q?xYUGqDC8pJJKpTNFi/+mRyKZxfvLr1pFaUrNC37iBTjmQNUNVWcxOwo2DdHT?=
- =?us-ascii?Q?O+GIAUf1AoRW8/se0zhzeaNS1kiZFFSISr0r4LcO82HFIwfkZAKhg/DsNSRm?=
- =?us-ascii?Q?Msfu+DBTdu5z0n2akuUBWaHYkbxp6P5BDfJ1+HR9ER/Oj4ILxPAdmykkzNeA?=
- =?us-ascii?Q?4a4rDtxtL27+6sADPy1AgRP4we+/0WAMjSzKpi8elm7cpWvHCGx8GHyH3s1j?=
- =?us-ascii?Q?YlvswkXd8bp3d8zlQ1OeisiNlobP0YysDz0bJI7tlOFO6L9+5WmjuE4WdNt1?=
- =?us-ascii?Q?B7BzXSGAf2AOVbqJk97JfKNEWrNGQ5GcjkhgC+qtNl8sIBdk16NgmAbjrsts?=
- =?us-ascii?Q?SoNmGPVBosjCxETU9+VeswUXUzZXsZrXh5vbQkbLgtWBPbt+YB/vAULfxw2j?=
- =?us-ascii?Q?BZ7SNLUTkQc073XQwjuqtgu2UpxIpavBty4S8p6IQlvEzaBmSdRd7GpiC0bH?=
- =?us-ascii?Q?9Te6FWJZbzWrKYXv6NxHJlwkCVRMi+fsw847YJFj9vjgvTOMHXsIr8Qa6c+d?=
- =?us-ascii?Q?hFl+erm88TmS665muE1oVDCME1+cGociHEFqZqZtD0+M8k4huV4U9/W6IexD?=
- =?us-ascii?Q?6yEkjm9pxg31hy1Wg8Y0UVxOvyKaD+CECZssWSYaHyRZn+0cZwdfCZmxwDrD?=
- =?us-ascii?Q?ZxQ+nc/Qsh0OxQy+9JW+f2hhCKiBEr5jFNkCAn5JQyY=3D?=
-x-ms-exchange-transport-forked: True
+ id 1ksEQh-00071u-Hi; Thu, 24 Dec 2020 00:24:32 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 174C622512;
+ Thu, 24 Dec 2020 00:24:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1608769469;
+ bh=MAsDchMb2B74mJi8EaNjq+4grUjgglbCI5Og/aOCfHw=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=glfM9ALiy6As29lszRSEsIdXFhLF7NWzsdtNFpezi+PC60dONOBMBjdJa6/PFUXts
+ pqpu1bONYwC1XbfrIOHua4+/Asw/2hyGn5/u4Z/oy4nk/uusZluQFj1oV7xdhQAUGN
+ GGEDHcJJj2HXZKTGiia/nNx/Zrr07Oc8gS7IzOlsfveNIzPr3vyEF+ifD/7nsSwKSJ
+ 7O16oq0NUY55BAejL5otoc9pohkczbIz4gZGKCNwf5GyBWpZoXIusdpcj1EfuRgYe4
+ wj5Rnn9wjhqy3TGi3bkvksEBRdMZqYHCHq8fhpm/SdnN3nLz9IJftTDBYbesCzRr0d
+ 2bOMpJzEF6Qng==
+Received: by mail-ed1-f44.google.com with SMTP id g24so784849edw.9;
+ Wed, 23 Dec 2020 16:24:29 -0800 (PST)
+X-Gm-Message-State: AOAM531rmhFuvFz9SOnyQ6MxQgvZf4jQupv4Wof3zC/y4W7qEX6OKArd
+ LXrn+/NAD8vkW/PRU0u0LLgTMx/PQwVk8MPgbA==
+X-Google-Smtp-Source: ABdhPJxwMzB1b8GV696GPbWzwCEc7NZBMdplOpz9ygAuC+GiK+meDOeYsKDV8XtMfGzxeZ2UDAmh3mivvs2WSMlbbgk=
+X-Received: by 2002:a50:c3c5:: with SMTP id i5mr26815360edf.166.1608769467652; 
+ Wed, 23 Dec 2020 16:24:27 -0800 (PST)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR04MB6575.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 69ce4840-7535-4a82-36b6-08d8a783ab06
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Dec 2020 20:45:22.3108 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: /C7ke7H/I9VY+Rlv80w/QFNd5D4XcXLKzp8raDYyi2y+oYWeyO24c2uVoBg8Zc4JAsSCdrCw7YaEJkresWCVAw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB5673
+References: <20201216093012.24406-1-chunfeng.yun@mediatek.com>
+ <20201216093012.24406-6-chunfeng.yun@mediatek.com>
+In-Reply-To: <20201216093012.24406-6-chunfeng.yun@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 24 Dec 2020 08:24:16 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9PHEsTa7Vf9ZyQ-JwFYnSi3pBrpOcKE7hBxN=8KWQkeQ@mail.gmail.com>
+Message-ID: <CAAOTY_9PHEsTa7Vf9ZyQ-JwFYnSi3pBrpOcKE7hBxN=8KWQkeQ@mail.gmail.com>
+Subject: Re: [PATCH v4 06/11] dt-bindings: phy: convert HDMI PHY binding to
+ YAML schema
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_154530_160572_D38557C0 
-X-CRM114-Status: GOOD (  26.81  )
+X-CRM114-CacheID: sfid-20201223_192431_832499_8073E4F0 
+X-CRM114-Status: GOOD (  18.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -166,218 +78,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- open list <linux-kernel@vger.kernel.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Andy Gross <agross@kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Satya Tangirala <satyat@google.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Min Guo <min.guo@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, DTML <devicetree@vger.kernel.org>,
+ David Airlie <airlied@linux.ie>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, netdev@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-> 
-> As per specs, e.g, JESD220E chapter 7.2, while powering
-> off/on the ufs device, RST_N signal and REF_CLK signal
-> should be between VSS(Ground) and VCCQ/VCCQ2.
-> 
-> To flexibly control device reset line, refactor the function
-> ufschd_vops_device_reset(sturct ufs_hba *hba) to ufshcd_
-> vops_device_reset(sturct ufs_hba *hba, bool asserted). The
-> new parameter "bool asserted" is used to separate device reset
-> line pulling down from pulling up.
-Sorry for my late response.
-Please allow few more days to consult internally about this. 
-
-> 
-> Cc: Kiwoong Kim <kwmad.kim@samsung.com>
-> Cc: Stanley Chu <stanley.chu@mediatek.com>
-> Signed-off-by: Ziqi Chen <ziqichen@codeaurora.org>
-
-
-> -static int ufs_qcom_device_reset(struct ufs_hba *hba)
-> +static int ufs_qcom_device_reset(struct ufs_hba *hba, bool asserted)
->  {
->         struct ufs_qcom_host *host = ufshcd_get_variant(hba);
-> 
-> @@ -1417,15 +1418,20 @@ static int ufs_qcom_device_reset(struct ufs_hba
-> *hba)
->         if (!host->device_reset)
->                 return -EOPNOTSUPP;
-> 
-> -       /*
-> -        * The UFS device shall detect reset pulses of 1us, sleep for 10us to
-> -        * be on the safe side.
-> -        */
-> -       gpiod_set_value_cansleep(host->device_reset, 1);
-> -       usleep_range(10, 15);
-> +       if (asserted) {
-> +               gpiod_set_value_cansleep(host->device_reset, 1);
-> 
-> -       gpiod_set_value_cansleep(host->device_reset, 0);
-> -       usleep_range(10, 15);
-> +               /*
-> +                * The UFS device shall detect reset pulses of 1us, sleep for 10us to
-> +                * be on the safe side.
-> +                */
-> +               usleep_range(10, 15);
-> +       } else {
-> +               gpiod_set_value_cansleep(host->device_reset, 0);
-> +
-> +                /* Some devices may need time to respond to rst_n */
-> +               usleep_range(10, 15);
-Since sleep the same on assert/de-assert can move it outside the if-else clause? 
-
-> +       }
-> 
->         return 0;
->  }
-
-All the below changes, in suspend/resume, deserves some references in your commit log,
-And probably a separate patch.
-
-Thanks,
-Avri
-
-> @@ -8686,8 +8696,6 @@ static int ufshcd_suspend(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->         if (ret)
->                 goto set_dev_active;
-> 
-> -       ufshcd_vreg_set_lpm(hba);
-> -
->  disable_clks:
->         /*
->          * Call vendor specific suspend callback. As these callbacks may access
-> @@ -8703,6 +8711,9 @@ static int ufshcd_suspend(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->          */
->         ufshcd_disable_irq(hba);
-> 
-> +       if (ufshcd_is_link_off(hba))
-> +               ufshcd_vops_device_reset(hba, true);
-> +
->         ufshcd_setup_clocks(hba, false);
-> 
->         if (ufshcd_is_clkgating_allowed(hba)) {
-> @@ -8711,6 +8722,8 @@ static int ufshcd_suspend(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->                                         hba->clk_gating.state);
->         }
-> 
-> +       ufshcd_vreg_set_lpm(hba);
-> +
->         /* Put the host controller in low power mode if possible */
->         ufshcd_hba_vreg_set_lpm(hba);
->         goto out;
-> @@ -8778,18 +8791,19 @@ static int ufshcd_resume(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->         old_link_state = hba->uic_link_state;
-> 
->         ufshcd_hba_vreg_set_hpm(hba);
-> +
-> +       ret = ufshcd_vreg_set_hpm(hba);
-> +       if (ret)
-> +               goto out;
-> +
->         /* Make sure clocks are enabled before accessing controller */
->         ret = ufshcd_setup_clocks(hba, true);
->         if (ret)
-> -               goto out;
-> +               goto disable_vreg;
-> 
->         /* enable the host irq as host controller would be active soon */
->         ufshcd_enable_irq(hba);
-> 
-> -       ret = ufshcd_vreg_set_hpm(hba);
-> -       if (ret)
-> -               goto disable_irq_and_vops_clks;
-> -
->         /*
->          * Call vendor specific resume callback. As these callbacks may access
->          * vendor specific host controller register space call them when the
-> @@ -8797,7 +8811,7 @@ static int ufshcd_resume(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->          */
->         ret = ufshcd_vops_resume(hba, pm_op);
->         if (ret)
-> -               goto disable_vreg;
-> +               goto disable_irq_and_vops_clks;
-> 
->         /* For DeepSleep, the only supported option is to have the link off */
->         WARN_ON(ufshcd_is_ufs_dev_deepsleep(hba) &&
-> !ufshcd_is_link_off(hba));
-> @@ -8864,8 +8878,6 @@ static int ufshcd_resume(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->         ufshcd_link_state_transition(hba, old_link_state, 0);
->  vendor_suspend:
->         ufshcd_vops_suspend(hba, pm_op);
-> -disable_vreg:
-> -       ufshcd_vreg_set_lpm(hba);
->  disable_irq_and_vops_clks:
->         ufshcd_disable_irq(hba);
->         if (hba->clk_scaling.is_allowed)
-> @@ -8876,6 +8888,8 @@ static int ufshcd_resume(struct ufs_hba *hba,
-> enum ufs_pm_op pm_op)
->                 trace_ufshcd_clk_gating(dev_name(hba->dev),
->                                         hba->clk_gating.state);
->         }
-> +disable_vreg:
-> +       ufshcd_vreg_set_lpm(hba);
->  out:
->         hba->pm_op_in_progress = 0;
->         if (ret)
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index 9bb5f0e..d5fbaba 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -319,7 +319,7 @@ struct ufs_pwr_mode_info {
->   * @resume: called during host controller PM callback
->   * @dbg_register_dump: used to dump controller debug information
->   * @phy_initialization: used to initialize phys
-> - * @device_reset: called to issue a reset pulse on the UFS device
-> + * @device_reset: called to assert or deassert device reset line
->   * @program_key: program or evict an inline encryption key
->   * @event_notify: called to notify important events
->   */
-> @@ -350,7 +350,7 @@ struct ufs_hba_variant_ops {
->         int     (*resume)(struct ufs_hba *, enum ufs_pm_op);
->         void    (*dbg_register_dump)(struct ufs_hba *hba);
->         int     (*phy_initialization)(struct ufs_hba *);
-> -       int     (*device_reset)(struct ufs_hba *hba);
-> +       int     (*device_reset)(struct ufs_hba *hba, bool asserted);
->         void    (*config_scaling_param)(struct ufs_hba *hba,
->                                         struct devfreq_dev_profile *profile,
->                                         void *data);
-> @@ -1216,10 +1216,10 @@ static inline void
-> ufshcd_vops_dbg_register_dump(struct ufs_hba *hba)
->                 hba->vops->dbg_register_dump(hba);
->  }
-> 
-> -static inline int ufshcd_vops_device_reset(struct ufs_hba *hba)
-> +static inline int ufshcd_vops_device_reset(struct ufs_hba *hba, bool
-> asserted)
->  {
->         if (hba->vops && hba->vops->device_reset)
-> -               return hba->vops->device_reset(hba);
-> +               return hba->vops->device_reset(hba, asserted);
-> 
->         return -EOPNOTSUPP;
->  }
-> --
-> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora
-> Forum,
-> a Linux Foundation Collaborative Project
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIENodW5mZW5nOgoKQ2h1bmZlbmcgWXVuIDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29tPiDm
+lrwgMjAyMOW5tDEy5pyIMTbml6Ug6YCx5LiJIOS4i+WNiDU6MzDlr6vpgZPvvJoKPgo+IENvbnZl
+cnQgSERNSSBQSFkgYmluZGluZyB0byBZQU1MIHNjaGVtYSBtZWRpYXRlayxoZG1pLXBoeS55YW1s
+Cj4KClJldmlld2VkLWJ5OiBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4K
+Cj4gQ2M6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+IENjOiBQaGls
+aXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IFNpZ25lZC1vZmYtYnk6IENodW5m
+ZW5nIFl1biA8Y2h1bmZlbmcueXVuQG1lZGlhdGVrLmNvbT4KPiBSZXZpZXdlZC1ieTogUm9iIEhl
+cnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiAtLS0KPiB2NDogYWRkIG1haW50YWluZXIgUGhpbGlw
+cAo+IHYzOiBhZGQgUmV2aWV3ZWQtYnkgUm9iCj4gdjI6IGZpeCBiaW5kaW5nIGNoZWNrIHdhcm5p
+bmcgb2YgcmVnIGluIGV4YW1wbGUKPiAtLS0KPiAgLi4uL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0
+ZWssaGRtaS50eHQgICAgICAgIHwgMTggKy0tLQo+ICAuLi4vYmluZGluZ3MvcGh5L21lZGlhdGVr
+LGhkbWktcGh5LnlhbWwgICAgICAgfCA5MiArKysrKysrKysrKysrKysrKysrCj4gIDIgZmlsZXMg
+Y2hhbmdlZCwgOTMgaW5zZXJ0aW9ucygrKSwgMTcgZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L21lZGlhdGVrLGhk
+bWktcGh5LnlhbWwKPgo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dCBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0Cj4g
+aW5kZXggNmIxYzU4NjQwM2U0Li5iMjg0Y2E1MWI5MTMgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssaGRtaS50
+eHQKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRp
+YXRlay9tZWRpYXRlayxoZG1pLnR4dAo+IEBAIC01MywyMyArNTMsNyBAQCBSZXF1aXJlZCBwcm9w
+ZXJ0aWVzOgo+Cj4gIEhETUkgUEhZCj4gID09PT09PT09Cj4gLQo+IC1UaGUgSERNSSBQSFkgc2Vy
+aWFsaXplcyB0aGUgSERNSSBlbmNvZGVyJ3MgdGhyZWUgY2hhbm5lbCAxMC1iaXQgcGFyYWxsZWwK
+PiAtb3V0cHV0IGFuZCBkcml2ZXMgdGhlIEhETUkgcGFkcy4KPiAtCj4gLVJlcXVpcmVkIHByb3Bl
+cnRpZXM6Cj4gLS0gY29tcGF0aWJsZTogIm1lZGlhdGVrLDxjaGlwPi1oZG1pLXBoeSIKPiAtLSB0
+aGUgc3VwcG9ydGVkIGNoaXBzIGFyZSBtdDI3MDEsIG10NzYyMyBhbmQgbXQ4MTczCj4gLS0gcmVn
+OiBQaHlzaWNhbCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBvZiB0aGUgbW9kdWxlJ3MgcmVnaXN0
+ZXJzCj4gLS0gY2xvY2tzOiBQTEwgcmVmZXJlbmNlIGNsb2NrCj4gLS0gY2xvY2stbmFtZXM6IG11
+c3QgY29udGFpbiAicGxsX3JlZiIKPiAtLSBjbG9jay1vdXRwdXQtbmFtZXM6IG11c3QgYmUgImhk
+bWl0eF9kaWdfY3RzIiBvbiBtdDgxNzMKPiAtLSAjcGh5LWNlbGxzOiBtdXN0IGJlIDwwPgo+IC0t
+ICNjbG9jay1jZWxsczogbXVzdCBiZSA8MD4KPiAtCj4gLU9wdGlvbmFsIHByb3BlcnRpZXM6Cj4g
+LS0gbWVkaWF0ZWssaWJpYXM6IFRYIERSViBiaWFzIGN1cnJlbnQgZm9yIDwxLjY1R2JwcywgZGVm
+YXVsdHMgdG8gMHhhCj4gLS0gbWVkaWF0ZWssaWJpYXNfdXA6IFRYIERSViBiaWFzIGN1cnJlbnQg
+Zm9yID4xLjY1R2JwcywgZGVmYXVsdHMgdG8gMHgxYwo+ICtTZWUgcGh5L21lZGlhdGVrLGhkbWkt
+cGh5LnlhbWwKPgo+ICBFeGFtcGxlOgo+Cj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9waHkvbWVkaWF0ZWssaGRtaS1waHkueWFtbCBiL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvbWVkaWF0ZWssaGRtaS1waHkueWFtbAo+IG5ldyBm
+aWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMDAwLi40NzUyNTE3YTE0NDYKPiAtLS0g
+L2Rldi9udWxsCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9t
+ZWRpYXRlayxoZG1pLXBoeS55YW1sCj4gQEAgLTAsMCArMSw5MiBAQAo+ICsjIFNQRFgtTGljZW5z
+ZS1JZGVudGlmaWVyOiAoR1BMLTIuMC1vbmx5IE9SIEJTRC0yLUNsYXVzZSkKPiArIyBDb3B5cmln
+aHQgKGMpIDIwMjAgTWVkaWFUZWsKPiArJVlBTUwgMS4yCj4gKy0tLQo+ICskaWQ6IGh0dHA6Ly9k
+ZXZpY2V0cmVlLm9yZy9zY2hlbWFzL3BoeS9tZWRpYXRlayxoZG1pLXBoeS55YW1sIwo+ICskc2No
+ZW1hOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvbWV0YS1zY2hlbWFzL2NvcmUueWFtbCMKPiArCj4g
+K3RpdGxlOiBNZWRpYVRlayBIaWdoIERlZmluaXRpb24gTXVsdGltZWRpYSBJbnRlcmZhY2UgKEhE
+TUkpIFBIWSBiaW5kaW5nCj4gKwo+ICttYWludGFpbmVyczoKPiArICAtIENodW4tS3VhbmcgSHUg
+PGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+ICsgIC0gUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBw
+ZW5ndXRyb25peC5kZT4KPiArICAtIENodW5mZW5nIFl1biA8Y2h1bmZlbmcueXVuQG1lZGlhdGVr
+LmNvbT4KPiArCj4gK2Rlc2NyaXB0aW9uOiB8Cj4gKyAgVGhlIEhETUkgUEhZIHNlcmlhbGl6ZXMg
+dGhlIEhETUkgZW5jb2RlcidzIHRocmVlIGNoYW5uZWwgMTAtYml0IHBhcmFsbGVsCj4gKyAgb3V0
+cHV0IGFuZCBkcml2ZXMgdGhlIEhETUkgcGFkcy4KPiArCj4gK3Byb3BlcnRpZXM6Cj4gKyAgJG5v
+ZGVuYW1lOgo+ICsgICAgcGF0dGVybjogIl5oZG1pLXBoeUBbMC05YS1mXSskIgo+ICsKPiArICBj
+b21wYXRpYmxlOgo+ICsgICAgZW51bToKPiArICAgICAgLSBtZWRpYXRlayxtdDI3MDEtaGRtaS1w
+aHkKPiArICAgICAgLSBtZWRpYXRlayxtdDc2MjMtaGRtaS1waHkKPiArICAgICAgLSBtZWRpYXRl
+ayxtdDgxNzMtaGRtaS1waHkKPiArCj4gKyAgcmVnOgo+ICsgICAgbWF4SXRlbXM6IDEKPiArCj4g
+KyAgY2xvY2tzOgo+ICsgICAgaXRlbXM6Cj4gKyAgICAgIC0gZGVzY3JpcHRpb246IFBMTCByZWZl
+cmVuY2UgY2xvY2sKPiArCj4gKyAgY2xvY2stbmFtZXM6Cj4gKyAgICBpdGVtczoKPiArICAgICAg
+LSBjb25zdDogcGxsX3JlZgo+ICsKPiArICBjbG9jay1vdXRwdXQtbmFtZXM6Cj4gKyAgICBpdGVt
+czoKPiArICAgICAgLSBjb25zdDogaGRtaXR4X2RpZ19jdHMKPiArCj4gKyAgIiNwaHktY2VsbHMi
+Ogo+ICsgICAgY29uc3Q6IDAKPiArCj4gKyAgIiNjbG9jay1jZWxscyI6Cj4gKyAgICBjb25zdDog
+MAo+ICsKPiArICBtZWRpYXRlayxpYmlhczoKPiArICAgIGRlc2NyaXB0aW9uOgo+ICsgICAgICBU
+WCBEUlYgYmlhcyBjdXJyZW50IGZvciA8IDEuNjVHYnBzCj4gKyAgICAkcmVmOiAvc2NoZW1hcy90
+eXBlcy55YW1sIy9kZWZpbml0aW9ucy91aW50MzIKPiArICAgIG1pbmltdW06IDAKPiArICAgIG1h
+eGltdW06IDYzCj4gKyAgICBkZWZhdWx0OiAweGEKPiArCj4gKyAgbWVkaWF0ZWssaWJpYXNfdXA6
+Cj4gKyAgICBkZXNjcmlwdGlvbjoKPiArICAgICAgVFggRFJWIGJpYXMgY3VycmVudCBmb3IgPj0g
+MS42NUdicHMKPiArICAgICRyZWY6IC9zY2hlbWFzL3R5cGVzLnlhbWwjL2RlZmluaXRpb25zL3Vp
+bnQzMgo+ICsgICAgbWluaW11bTogMAo+ICsgICAgbWF4aW11bTogNjMKPiArICAgIGRlZmF1bHQ6
+IDB4MWMKPiArCj4gK3JlcXVpcmVkOgo+ICsgIC0gY29tcGF0aWJsZQo+ICsgIC0gcmVnCj4gKyAg
+LSBjbG9ja3MKPiArICAtIGNsb2NrLW5hbWVzCj4gKyAgLSBjbG9jay1vdXRwdXQtbmFtZXMKPiAr
+ICAtICIjcGh5LWNlbGxzIgo+ICsgIC0gIiNjbG9jay1jZWxscyIKPiArCj4gK2FkZGl0aW9uYWxQ
+cm9wZXJ0aWVzOiBmYWxzZQo+ICsKPiArZXhhbXBsZXM6Cj4gKyAgLSB8Cj4gKyAgICAjaW5jbHVk
+ZSA8ZHQtYmluZGluZ3MvY2xvY2svbXQ4MTczLWNsay5oPgo+ICsgICAgaGRtaV9waHk6IGhkbWkt
+cGh5QDEwMjA5MTAwIHsKPiArICAgICAgICBjb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1o
+ZG1pLXBoeSI7Cj4gKyAgICAgICAgcmVnID0gPDB4MTAyMDkxMDAgMHgyND47Cj4gKyAgICAgICAg
+Y2xvY2tzID0gPCZhcG1peGVkc3lzIENMS19BUE1JWEVEX0hETUlfUkVGPjsKPiArICAgICAgICBj
+bG9jay1uYW1lcyA9ICJwbGxfcmVmIjsKPiArICAgICAgICBjbG9jay1vdXRwdXQtbmFtZXMgPSAi
+aGRtaXR4X2RpZ19jdHMiOwo+ICsgICAgICAgIG1lZGlhdGVrLGliaWFzID0gPDB4YT47Cj4gKyAg
+ICAgICAgbWVkaWF0ZWssaWJpYXNfdXAgPSA8MHgxYz47Cj4gKyAgICAgICAgI2Nsb2NrLWNlbGxz
+ID0gPDA+Owo+ICsgICAgICAgICNwaHktY2VsbHMgPSA8MD47Cj4gKyAgICB9Owo+ICsKPiArLi4u
+Cj4gLS0KPiAyLjE4LjAKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1tZWRpYXRlawo=
