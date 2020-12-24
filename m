@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6D17C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C2640C433E6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:09:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6ECBE2253D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:09:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6ECBE2253D
+	by mail.kernel.org (Postfix) with ESMTPS id 5AE362253D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:09:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AE362253D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YxG+urgK+oKAq00/dyJyLZilLND1dlZ2OmbfXx3NVf8=; b=WVQ4r073KR+nBJtWdu3US7UJH
-	Zaqf3q+4bxssVhiiQ98zBTszoBRfOICrqXGKh8Oo6OF6mxzJNSrdbbkrsiMVqbG3egrpNJymhv0vu
-	jTFLNgTdJ7lA3Jmwwbgp42LyAz/8V63qfCx4KmEbTJuQmhBQa+3JT3lTd8ZeKGx04iD8kgbhMs3I8
-	7v5NXf4jGifpnAoSgBagVNS2M6aZd02IvY6cvnyK33+3QiSbXicKmdhlyZ4Qahy23aEtrQKm81Tji
-	ZUGSbeanxjx/gLQBsRQk78U6bZAzqUiQsHJW9FSJuo/+2CTihTxp8G4aahJypWpIiG7WBjHUbh7NI
-	+l1T4kSsQ==;
+	 bh=qlcFIFtXEb8GFGVIRwhvVcjBqHEegISXMQ8sAkpkLJc=; b=crpwSAr404uXkIHwNaUAHRjms
+	y+hplzSTedRJ5nA3OVJhtZBkcNL1OjzHCgjP/AwoiWZRlR81tIWLdtpu07nmj+FXcwq4K54v+Z/W3
+	XfvzAAk+RCYuIEaMBZXYq5fnqj1GNKBp9dIwrRtGSEkt0ft+MpqBKsZchiE4GK2VF6p0eDCRV8esz
+	+RqKUw6iearTo1QqoMnXJLGcUupBDl6veKyHMsmkWjcVisU5kJ4meydicjn0QorJs0DzT0VFlHyLb
+	tPXOL1m0p7EhhuGHdNqzWUjjvG1QRpYPdVBUTdJWnyzIfuXl47qehcdhWJPPL7YebNoEU4fGy53OF
+	2W6dDOueA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksJoY-0005bA-5i; Thu, 24 Dec 2020 06:09:30 +0000
+	id 1ksJoc-0005cB-Sz; Thu, 24 Dec 2020 06:09:34 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksJoG-0005Wj-76; Thu, 24 Dec 2020 06:09:14 +0000
-X-UUID: 1a68296e8f364913a3e120b181202b77-20201223
+ id 1ksJoG-0005Wr-75; Thu, 24 Dec 2020 06:09:15 +0000
+X-UUID: 22684762bf8d49e99dab2bfd61b23ace-20201223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=EfW/Sse+6MFF3l/RbcpboWOHAL7JVJW7JeGs+rRzfw8=; 
- b=VSoPtlK3lLSvIun39kIsab7vyaaCzrr+IxGT9TUcXC1xlsTySPpuYlIb7sOuhycBpsqu8BvI1HfUeAx9GqyWgwuag8N3JnPn/QncmTMMSLQp8dhtdpfJl53BDNz4DDlubWohBXTuORcrJ6wL6Vcy/2h9DmajHreAtvKinLyV3C8=;
-X-UUID: 1a68296e8f364913a3e120b181202b77-20201223
+ bh=XEr+I9ZgOaCoFD9q4gJRZyRWuvl22RggIMzJC/JTckA=; 
+ b=KAsJyrL6nbDn7AFN2PRf94peafJUrWcl/FHak0PXILH0YSJXykmPSzJK3f9fo26KkZJFRmjWGE3EBi4jImrYFKKRtv59THzpG2oVCUsuEtUfhjNRNgvFkAXj5AmHRfSprMAXSLFqIIwqgxsUQWACbQqlAGsMrWF0p1CyhToSJBU=;
+X-UUID: 22684762bf8d49e99dab2bfd61b23ace-20201223
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1364123144; Wed, 23 Dec 2020 22:09:07 -0800
+ with ESMTP id 907766765; Wed, 23 Dec 2020 22:09:07 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Dec 2020 22:09:05 -0800
+ 15.0.1497.2; Wed, 23 Dec 2020 22:09:04 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 24 Dec 2020 14:08:57 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 24 Dec 2020 14:08:58 +0800
+ Frontend Transport; Thu, 24 Dec 2020 14:08:57 +0800
 From: Henry Chen <henryc.chen@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>, Mark Brown
  <broonie@kernel.org>
-Subject: [PATCH V6 06/13] dt-bindings: interconnect: add MT8183 interconnect
- dt-bindings
-Date: Thu, 24 Dec 2020 14:08:47 +0800
-Message-ID: <1608790134-27425-7-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V6 03/13] soc: mediatek: add driver for dvfsrc support
+Date: Thu, 24 Dec 2020 14:08:44 +0800
+Message-ID: <1608790134-27425-4-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
 References: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201224_010912_497020_CF12A288 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20201224_010912_582656_1EE1F4E2 
+X-CRM114-Status: GOOD (  24.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,39 +93,635 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add interconnect provider dt-bindings for MT8183.
+Add dvfsrc driver for MT6873/MT8183/MT8192
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 ---
- include/dt-bindings/interconnect/mtk,mt8183-emi.h | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
- create mode 100644 include/dt-bindings/interconnect/mtk,mt8183-emi.h
+ drivers/soc/mediatek/Kconfig            |  12 +
+ drivers/soc/mediatek/Makefile           |   1 +
+ drivers/soc/mediatek/mtk-dvfsrc.c       | 538 ++++++++++++++++++++++++++++++++
+ include/linux/soc/mediatek/mtk_dvfsrc.h |  35 +++
+ 4 files changed, 586 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
+ create mode 100644 include/linux/soc/mediatek/mtk_dvfsrc.h
 
-diff --git a/include/dt-bindings/interconnect/mtk,mt8183-emi.h b/include/dt-bindings/interconnect/mtk,mt8183-emi.h
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index 59a56cd..0150a6b 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -17,6 +17,18 @@ config MTK_CMDQ
+ 	  time limitation, such as updating display configuration during the
+ 	  vblank.
+ 
++config MTK_DVFSRC
++	tristate "MediaTek DVFSRC Support"
++	depends on ARCH_MEDIATEK
++	depends on MTK_SCPSYS
++	help
++	  Say yes here to add support for the MediaTek DVFSRC (dynamic voltage
++	  and frequency scaling resource collector) found
++	  on different MediaTek SoCs. The DVFSRC is a proprietary
++	  hardware which is used to collect all the requests from
++	  system and turn into the decision of minimum Vcore voltage
++	  and minimum DRAM frequency to fulfill those requests.
++
+ config MTK_INFRACFG
+ 	bool "MediaTek INFRACFG Support"
+ 	select REGMAP
+diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+index 01f9f87..d55b473 100644
+--- a/drivers/soc/mediatek/Makefile
++++ b/drivers/soc/mediatek/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
++obj-$(CONFIG_MTK_DVFSRC) += mtk-dvfsrc.o
+ obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
+ obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
+ obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
 new file mode 100644
-index 0000000..f921961
+index 0000000..536ced7
 --- /dev/null
-+++ b/include/dt-bindings/interconnect/mtk,mt8183-emi.h
-@@ -0,0 +1,21 @@
++++ b/drivers/soc/mediatek/mtk-dvfsrc.c
+@@ -0,0 +1,538 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2020 MediaTek Inc.
++ */
++
++#include <linux/arm-smccc.h>
++#include <linux/io.h>
++#include <linux/iopoll.h>
++#include <linux/module.h>
++#include <linux/notifier.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk_dvfsrc.h>
++#include <linux/soc/mediatek/mtk_sip_svc.h>
++
++#define DVFSRC_IDLE     0x00
++#define DVFSRC_GET_TARGET_LEVEL(x)  (((x) >> 0) & 0x0000ffff)
++#define DVFSRC_GET_CURRENT_LEVEL(x) (((x) >> 16) & 0x0000ffff)
++#define kbps_to_mbps(x) ((x) / 1000)
++
++#define POLL_TIMEOUT        1000
++#define STARTUP_TIME        1
++
++#define MTK_SIP_DVFSRC_INIT		0x00
++
++#define DVFSRC_OPP_DESC(_opp_table)	\
++{	\
++	.opps = _opp_table,	\
++	.num_opp = ARRAY_SIZE(_opp_table),	\
++}
++
++struct dvfsrc_opp {
++	u32 vcore_opp;
++	u32 dram_opp;
++};
++
++struct dvfsrc_opp_desc {
++	const struct dvfsrc_opp *opps;
++	u32 num_opp;
++};
++
++struct mtk_dvfsrc;
++struct dvfsrc_soc_data {
++	const int *regs;
++	const struct dvfsrc_opp_desc *opps_desc;
++	int (*get_target_level)(struct mtk_dvfsrc *dvfsrc);
++	int (*get_current_level)(struct mtk_dvfsrc *dvfsrc);
++	u32 (*get_vcore_level)(struct mtk_dvfsrc *dvfsrc);
++	u32 (*get_vcp_level)(struct mtk_dvfsrc *dvfsrc);
++	void (*set_dram_bw)(struct mtk_dvfsrc *dvfsrc, u64 bw);
++	void (*set_dram_peak_bw)(struct mtk_dvfsrc *dvfsrc, u64 bw);
++	void (*set_dram_hrtbw)(struct mtk_dvfsrc *dvfsrc, u64 bw);
++	void (*set_opp_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
++	void (*set_vcore_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
++	void (*set_vscp_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
++	int (*wait_for_opp_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
++	int (*wait_for_vcore_level)(struct mtk_dvfsrc *dvfsrc, u32 level);
++};
++
++struct mtk_dvfsrc {
++	struct device *dev;
++	struct platform_device *icc;
++	struct platform_device *regulator;
++	const struct dvfsrc_soc_data *dvd;
++	int dram_type;
++	const struct dvfsrc_opp_desc *curr_opps;
++	void __iomem *regs;
++	spinlock_t req_lock;
++	struct mutex pstate_lock;
++	struct notifier_block scpsys_notifier;
++};
++
++static u32 dvfsrc_read(struct mtk_dvfsrc *dvfs, u32 offset)
++{
++	return readl(dvfs->regs + dvfs->dvd->regs[offset]);
++}
++
++static void dvfsrc_write(struct mtk_dvfsrc *dvfs, u32 offset, u32 val)
++{
++	writel(val, dvfs->regs + dvfs->dvd->regs[offset]);
++}
++
++#define dvfsrc_rmw(dvfs, offset, val, mask, shift) \
++	dvfsrc_write(dvfs, offset, \
++		(dvfsrc_read(dvfs, offset) & ~(mask << shift)) | (val << shift))
++
++enum dvfsrc_regs {
++	DVFSRC_SW_REQ,
++	DVFSRC_SW_REQ2,
++	DVFSRC_LEVEL,
++	DVFSRC_TARGET_LEVEL,
++	DVFSRC_SW_BW,
++	DVFSRC_SW_PEAK_BW,
++	DVFSRC_SW_HRT_BW,
++	DVFSRC_VCORE_REQUEST,
++};
++
++static const int mt8183_regs[] = {
++	[DVFSRC_SW_REQ] =	0x4,
++	[DVFSRC_SW_REQ2] =	0x8,
++	[DVFSRC_LEVEL] =	0xDC,
++	[DVFSRC_SW_BW] =	0x160,
++};
++
++static const int mt6873_regs[] = {
++	[DVFSRC_SW_REQ] =		0xC,
++	[DVFSRC_LEVEL] =		0xD44,
++	[DVFSRC_SW_PEAK_BW] =		0x278,
++	[DVFSRC_SW_BW] =		0x26C,
++	[DVFSRC_SW_HRT_BW] =		0x290,
++	[DVFSRC_TARGET_LEVEL] =		0xD48,
++	[DVFSRC_VCORE_REQUEST] =	0x6C,
++};
++
++static const struct dvfsrc_opp *get_current_opp(struct mtk_dvfsrc *dvfsrc)
++{
++	int level;
++
++	level = dvfsrc->dvd->get_current_level(dvfsrc);
++	return &dvfsrc->curr_opps->opps[level];
++}
++
++static int dvfsrc_is_idle(struct mtk_dvfsrc *dvfsrc)
++{
++	if (!dvfsrc->dvd->get_target_level)
++		return true;
++
++	return dvfsrc->dvd->get_target_level(dvfsrc);
++}
++
++static int dvfsrc_wait_for_vcore_level(struct mtk_dvfsrc *dvfsrc, u32 level)
++{
++	const struct dvfsrc_opp *curr;
++
++	return readx_poll_timeout_atomic(get_current_opp, dvfsrc, curr,
++					 curr->vcore_opp >= level, STARTUP_TIME,
++					 POLL_TIMEOUT);
++}
++
++static int mt6873_get_target_level(struct mtk_dvfsrc *dvfsrc)
++{
++	return dvfsrc_read(dvfsrc, DVFSRC_TARGET_LEVEL);
++}
++
++static int mt6873_get_current_level(struct mtk_dvfsrc *dvfsrc)
++{
++	u32 curr_level;
++
++	/* HW level 0 is begin from 0x1, and max opp is 0x1*/
++	curr_level = ffs(dvfsrc_read(dvfsrc, DVFSRC_LEVEL));
++	if (curr_level > dvfsrc->curr_opps->num_opp)
++		curr_level = 0;
++	else
++		curr_level = dvfsrc->curr_opps->num_opp - curr_level;
++
++	return curr_level;
++}
++
++static int mt6873_wait_for_opp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
++{
++	const struct dvfsrc_opp *target, *curr;
++
++	target = &dvfsrc->curr_opps->opps[level];
++	return readx_poll_timeout_atomic(get_current_opp, dvfsrc, curr,
++		curr->dram_opp >= target->dram_opp,
++		STARTUP_TIME, POLL_TIMEOUT);
++}
++
++static u32 mt6873_get_vcore_level(struct mtk_dvfsrc *dvfsrc)
++{
++	return (dvfsrc_read(dvfsrc, DVFSRC_SW_REQ) >> 4) & 0x7;
++}
++
++static u32 mt6873_get_vcp_level(struct mtk_dvfsrc *dvfsrc)
++{
++	return (dvfsrc_read(dvfsrc, DVFSRC_VCORE_REQUEST) >> 12) & 0x7;
++}
++
++static void mt6873_set_dram_bw(struct mtk_dvfsrc *dvfsrc, u64 bw)
++{
++	bw = div_u64(kbps_to_mbps(bw), 100);
++	bw = min_t(u64, bw, 0xFF);
++	dvfsrc_write(dvfsrc, DVFSRC_SW_BW, bw);
++}
++
++static void mt6873_set_dram_peak_bw(struct mtk_dvfsrc *dvfsrc, u64 bw)
++{
++	bw = div_u64(kbps_to_mbps(bw), 100);
++	bw = min_t(u64, bw, 0xFF);
++	dvfsrc_write(dvfsrc, DVFSRC_SW_PEAK_BW, bw);
++}
++
++static void mt6873_set_dram_hrtbw(struct mtk_dvfsrc *dvfsrc, u64 bw)
++{
++	bw = div_u64((kbps_to_mbps(bw) + 29), 30);
++	bw = min_t(u64, bw, 0x3FF);
++	dvfsrc_write(dvfsrc, DVFSRC_SW_HRT_BW, bw);
++}
++
++static void mt6873_set_vcore_level(struct mtk_dvfsrc *dvfsrc, u32 level)
++{
++	spin_lock(&dvfsrc->req_lock);
++	dvfsrc_rmw(dvfsrc, DVFSRC_SW_REQ, level, 0x7, 4);
++	spin_unlock(&dvfsrc->req_lock);
++}
++
++static void mt6873_set_vscp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
++{
++	dvfsrc_rmw(dvfsrc, DVFSRC_VCORE_REQUEST, level, 0x7, 12);
++}
++
++static int mt8183_wait_for_opp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
++{
++	const struct dvfsrc_opp *target, *curr;
++	int ret;
++
++	target = &dvfsrc->curr_opps->opps[level];
++	ret = readx_poll_timeout(get_current_opp, dvfsrc, curr,
++				 curr->dram_opp >= target->dram_opp &&
++				 curr->vcore_opp >= target->vcore_opp,
++				 STARTUP_TIME, POLL_TIMEOUT);
++	if (ret < 0) {
++		dev_warn(dvfsrc->dev,
++			 "timeout, target: %u, dram: %d, vcore: %d\n", level,
++			 curr->dram_opp, curr->vcore_opp);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int mt8183_get_target_level(struct mtk_dvfsrc *dvfsrc)
++{
++	return DVFSRC_GET_TARGET_LEVEL(dvfsrc_read(dvfsrc, DVFSRC_LEVEL));
++}
++
++static int mt8183_get_current_level(struct mtk_dvfsrc *dvfsrc)
++{
++	int level;
++
++	/* HW level 0 is begin from 0x10000 */
++	level = DVFSRC_GET_CURRENT_LEVEL(dvfsrc_read(dvfsrc, DVFSRC_LEVEL));
++	/* Array index start from 0 */
++	return ffs(level) - 1;
++}
++
++static u32 mt8183_get_vcore_level(struct mtk_dvfsrc *dvfsrc)
++{
++	return (dvfsrc_read(dvfsrc, DVFSRC_SW_REQ2) >> 2) & 0x3;
++}
++
++static void mt8183_set_dram_bw(struct mtk_dvfsrc *dvfsrc, u64 bw)
++{
++	dvfsrc_write(dvfsrc, DVFSRC_SW_BW, div_u64(kbps_to_mbps(bw), 100));
++}
++
++static void mt8183_set_opp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
++{
++	int vcore_opp, dram_opp;
++	const struct dvfsrc_opp *opp;
++
++	/* translate pstate to dvfsrc level, and set it to DVFSRC HW */
++	opp = &dvfsrc->curr_opps->opps[level];
++	vcore_opp = opp->vcore_opp;
++	dram_opp = opp->dram_opp;
++
++	dev_dbg(dvfsrc->dev, "vcore_opp: %d, dram_opp: %d\n",
++		vcore_opp, dram_opp);
++	dvfsrc_write(dvfsrc, DVFSRC_SW_REQ, dram_opp | vcore_opp << 2);
++}
++
++static void mt8183_set_vcore_level(struct mtk_dvfsrc *dvfsrc, u32 level)
++{
++	dvfsrc_write(dvfsrc, DVFSRC_SW_REQ2, level << 2);
++}
++
++void mtk_dvfsrc_send_request(const struct device *dev, u32 cmd, u64 data)
++{
++	int ret, state;
++	struct mtk_dvfsrc *dvfsrc = dev_get_drvdata(dev);
++
++	dev_dbg(dvfsrc->dev, "cmd: %d, data: %llu\n", cmd, data);
++
++	switch (cmd) {
++	case MTK_DVFSRC_CMD_BW_REQUEST:
++		dvfsrc->dvd->set_dram_bw(dvfsrc, data);
++		return;
++	case MTK_DVFSRC_CMD_PEAK_BW_REQUEST:
++		if (dvfsrc->dvd->set_dram_peak_bw)
++			dvfsrc->dvd->set_dram_peak_bw(dvfsrc, data);
++		return;
++	case MTK_DVFSRC_CMD_OPP_REQUEST:
++		if (dvfsrc->dvd->set_opp_level)
++			dvfsrc->dvd->set_opp_level(dvfsrc, data);
++		break;
++	case MTK_DVFSRC_CMD_VCORE_REQUEST:
++		dvfsrc->dvd->set_vcore_level(dvfsrc, data);
++		break;
++	case MTK_DVFSRC_CMD_HRTBW_REQUEST:
++		if (dvfsrc->dvd->set_dram_hrtbw)
++			dvfsrc->dvd->set_dram_hrtbw(dvfsrc, data);
++		else
++			return;
++		break;
++	case MTK_DVFSRC_CMD_VSCP_REQUEST:
++		dvfsrc->dvd->set_vscp_level(dvfsrc, data);
++		break;
++	default:
++		dev_err(dvfsrc->dev, "unknown command: %d\n", cmd);
++		return;
++	}
++
++	/* DVFSRC need to wait at least 2T(~196ns) to handle request
++	 * after recieving command
++	 */
++	udelay(STARTUP_TIME);
++
++	ret = readx_poll_timeout(dvfsrc_is_idle, dvfsrc,
++				 state, state == DVFSRC_IDLE,
++				 STARTUP_TIME, POLL_TIMEOUT);
++
++	if (ret < 0) {
++		dev_warn(dvfsrc->dev,
++			 "%d: idle timeout, data: %llu, last: %d -> %d\n",
++			 cmd, data,
++			 dvfsrc->dvd->get_current_level(dvfsrc),
++			 dvfsrc->dvd->get_target_level(dvfsrc));
++		return;
++	}
++
++	/* The previous change may be requested by previous request.
++	 * So we delay 1us, then start checking opp is reached enough.
++	 */
++	udelay(STARTUP_TIME);
++
++	if (cmd == MTK_DVFSRC_CMD_OPP_REQUEST)
++		ret = dvfsrc->dvd->wait_for_opp_level(dvfsrc, data);
++	else
++		ret = dvfsrc->dvd->wait_for_vcore_level(dvfsrc, data);
++
++	if (ret < 0) {
++		dev_warn(dvfsrc->dev,
++			 "%d: wait timeout, data: %llu, last: %d -> %d\n",
++			 cmd, data,
++			 dvfsrc->dvd->get_current_level(dvfsrc),
++			 dvfsrc->dvd->get_target_level(dvfsrc));
++	}
++
++}
++EXPORT_SYMBOL(mtk_dvfsrc_send_request);
++
++int mtk_dvfsrc_query_info(const struct device *dev, u32 cmd, int *data)
++{
++	struct mtk_dvfsrc *dvfsrc = dev_get_drvdata(dev);
++
++	switch (cmd) {
++	case MTK_DVFSRC_CMD_VCORE_LEVEL_QUERY:
++		*data = dvfsrc->dvd->get_vcore_level(dvfsrc);
++		break;
++	case MTK_DVFSRC_CMD_VSCP_LEVEL_QUERY:
++		*data = dvfsrc->dvd->get_vcp_level(dvfsrc);
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL(mtk_dvfsrc_query_info);
++
++static int mtk_dvfsrc_probe(struct platform_device *pdev)
++{
++	struct arm_smccc_res ares;
++	struct resource *res;
++	struct mtk_dvfsrc *dvfsrc;
++	int ret;
++
++	dvfsrc = devm_kzalloc(&pdev->dev, sizeof(*dvfsrc), GFP_KERNEL);
++	if (!dvfsrc)
++		return -ENOMEM;
++
++	dvfsrc->dvd = of_device_get_match_data(&pdev->dev);
++	dvfsrc->dev = &pdev->dev;
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	dvfsrc->regs = devm_ioremap_resource(&pdev->dev, res);
++	if (IS_ERR(dvfsrc->regs))
++		return PTR_ERR(dvfsrc->regs);
++
++	spin_lock_init(&dvfsrc->req_lock);
++	mutex_init(&dvfsrc->pstate_lock);
++
++	arm_smccc_smc(MTK_SIP_VCOREFS_CONTROL, MTK_SIP_DVFSRC_INIT, 0, 0, 0,
++		0, 0, 0, &ares);
++
++	if (!ares.a0) {
++		dvfsrc->dram_type = ares.a1;
++		dev_info(dvfsrc->dev, "dram_type: %d\n", dvfsrc->dram_type);
++	} else {
++		dev_err(dvfsrc->dev, "init fails: %lu\n", ares.a0);
++		return ares.a0;
++	}
++
++	dvfsrc->curr_opps = &dvfsrc->dvd->opps_desc[dvfsrc->dram_type];
++	platform_set_drvdata(pdev, dvfsrc);
++
++	dvfsrc->regulator = platform_device_register_data(dvfsrc->dev,
++			"mtk-dvfsrc-regulator", -1, NULL, 0);
++	if (IS_ERR(dvfsrc->regulator)) {
++		dev_err(dvfsrc->dev, "Failed create regulator device\n");
++		ret = PTR_ERR(dvfsrc->regulator);
++		goto err;
++	}
++
++	dvfsrc->icc = platform_device_register_data(dvfsrc->dev,
++			"mediatek-emi-icc", -1, NULL, 0);
++	if (IS_ERR(dvfsrc->icc)) {
++		dev_err(dvfsrc->dev, "Failed create icc device\n");
++		ret = PTR_ERR(dvfsrc->icc);
++		goto unregister_regulator;
++	}
++
++	ret = devm_of_platform_populate(&pdev->dev);
++	if (ret)
++		platform_device_unregister(dvfsrc->icc);
++
++	return 0;
++
++unregister_regulator:
++	platform_device_unregister(dvfsrc->regulator);
++err:
++	return ret;
++}
++
++static const struct dvfsrc_opp dvfsrc_opp_mt8183_lp4[] = {
++	{0, 0}, {0, 1}, {0, 2}, {1, 2},
++};
++
++static const struct dvfsrc_opp dvfsrc_opp_mt8183_lp3[] = {
++	{0, 0}, {0, 1}, {1, 1}, {1, 2},
++};
++
++static const struct dvfsrc_opp_desc dvfsrc_opp_mt8183_desc[] = {
++	DVFSRC_OPP_DESC(dvfsrc_opp_mt8183_lp4),
++	DVFSRC_OPP_DESC(dvfsrc_opp_mt8183_lp3),
++	DVFSRC_OPP_DESC(dvfsrc_opp_mt8183_lp3),
++};
++
++static const struct dvfsrc_soc_data mt8183_data = {
++	.opps_desc = dvfsrc_opp_mt8183_desc,
++	.regs = mt8183_regs,
++	.get_target_level = mt8183_get_target_level,
++	.get_current_level = mt8183_get_current_level,
++	.get_vcore_level = mt8183_get_vcore_level,
++	.set_dram_bw = mt8183_set_dram_bw,
++	.set_opp_level = mt8183_set_opp_level,
++	.set_vcore_level = mt8183_set_vcore_level,
++	.wait_for_opp_level = mt8183_wait_for_opp_level,
++	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level,
++};
++
++static const struct dvfsrc_opp dvfsrc_opp_mt6873_lp4[] = {
++	{0, 0}, {1, 0}, {2, 0}, {3, 0},
++	{0, 1}, {1, 1}, {2, 1}, {3, 1},
++	{0, 2}, {1, 2}, {2, 2}, {3, 2},
++	{1, 3}, {2, 3}, {3, 3}, {1, 4},
++	{2, 4}, {3, 4}, {2, 5}, {3, 5},
++	{3, 6},
++};
++
++static const struct dvfsrc_opp_desc dvfsrc_opp_mt6873_desc[] = {
++	DVFSRC_OPP_DESC(dvfsrc_opp_mt6873_lp4),
++};
++
++static const struct dvfsrc_soc_data mt6873_data = {
++	.opps_desc = dvfsrc_opp_mt6873_desc,
++	.regs = mt6873_regs,
++	.get_target_level = mt6873_get_target_level,
++	.get_current_level = mt6873_get_current_level,
++	.get_vcore_level = mt6873_get_vcore_level,
++	.get_vcp_level = mt6873_get_vcp_level,
++	.set_dram_bw = mt6873_set_dram_bw,
++	.set_dram_peak_bw = mt6873_set_dram_peak_bw,
++	.set_dram_hrtbw = mt6873_set_dram_hrtbw,
++	.set_vcore_level = mt6873_set_vcore_level,
++	.set_vscp_level = mt6873_set_vscp_level,
++	.wait_for_opp_level = mt6873_wait_for_opp_level,
++	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level,
++};
++
++static int mtk_dvfsrc_remove(struct platform_device *pdev)
++{
++	struct mtk_dvfsrc *dvfsrc = platform_get_drvdata(pdev);
++
++	platform_device_unregister(dvfsrc->regulator);
++	platform_device_unregister(dvfsrc->icc);
++
++	return 0;
++}
++
++static const struct of_device_id mtk_dvfsrc_of_match[] = {
++	{
++		.compatible = "mediatek,mt8183-dvfsrc",
++		.data = &mt8183_data,
++	}, {
++		.compatible = "mediatek,mt8192-dvfsrc",
++		.data = &mt6873_data,
++	}, {
++		.compatible = "mediatek,mt6873-dvfsrc",
++		.data = &mt6873_data,
++	}, {
++		/* sentinel */
++	},
++};
++
++static struct platform_driver mtk_dvfsrc_driver = {
++	.probe	= mtk_dvfsrc_probe,
++	.remove	= mtk_dvfsrc_remove,
++	.driver = {
++		.name = "mtk-dvfsrc",
++		.of_match_table = of_match_ptr(mtk_dvfsrc_of_match),
++	},
++};
++
++static int __init mtk_dvfsrc_init(void)
++{
++	return platform_driver_register(&mtk_dvfsrc_driver);
++}
++subsys_initcall(mtk_dvfsrc_init);
++
++static void __exit mtk_dvfsrc_exit(void)
++{
++	platform_driver_unregister(&mtk_dvfsrc_driver);
++}
++module_exit(mtk_dvfsrc_exit);
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MTK DVFSRC driver");
+diff --git a/include/linux/soc/mediatek/mtk_dvfsrc.h b/include/linux/soc/mediatek/mtk_dvfsrc.h
+new file mode 100644
+index 0000000..0a49f93c
+--- /dev/null
++++ b/include/linux/soc/mediatek/mtk_dvfsrc.h
+@@ -0,0 +1,35 @@
 +/* SPDX-License-Identifier: GPL-2.0
 + *
 + * Copyright (c) 2020 MediaTek Inc.
 + */
 +
-+#ifndef __DT_BINDINGS_INTERCONNECT_MTK_MT8183_EMI_H
-+#define __DT_BINDINGS_INTERCONNECT_MTK_MT8183_EMI_H
++#ifndef __SOC_MTK_DVFSRC_H
++#define __SOC_MTK_DVFSRC_H
 +
-+#define MT8183_SLAVE_DDR_EMI			0
-+#define MT8183_MASTER_MCUSYS			1
-+#define MT8183_MASTER_GPU			2
-+#define MT8183_MASTER_MMSYS			3
-+#define MT8183_MASTER_MM_VPU			4
-+#define MT8183_MASTER_MM_DISP			5
-+#define MT8183_MASTER_MM_VDEC			6
-+#define MT8183_MASTER_MM_VENC			7
-+#define MT8183_MASTER_MM_CAM			8
-+#define MT8183_MASTER_MM_IMG			9
-+#define MT8183_MASTER_MM_MDP			10
++#define MTK_DVFSRC_CMD_BW_REQUEST		0
++#define MTK_DVFSRC_CMD_OPP_REQUEST		1
++#define MTK_DVFSRC_CMD_VCORE_REQUEST		2
++#define MTK_DVFSRC_CMD_HRTBW_REQUEST		3
++#define MTK_DVFSRC_CMD_VSCP_REQUEST		4
++#define MTK_DVFSRC_CMD_PEAK_BW_REQUEST		5
++
++#define MTK_DVFSRC_CMD_VCORE_LEVEL_QUERY	0
++#define MTK_DVFSRC_CMD_VSCP_LEVEL_QUERY		1
++
++#if IS_ENABLED(CONFIG_MTK_DVFSRC)
++void mtk_dvfsrc_send_request(const struct device *dev, u32 cmd, u64 data);
++int mtk_dvfsrc_query_info(const struct device *dev, u32 cmd, int *data);
++
++#else
++
++static inline void mtk_dvfsrc_send_request(const struct device *dev, u32 cmd,
++					   u64 data)
++{ return -ENODEV; }
++
++static inline int mtk_dvfsrc_query_info(const struct device *dev, u32 cmd,
++					int *data);
++{ return -ENODEV; }
++
++#endif /* CONFIG_MTK_DVFSRC */
 +
 +#endif
 -- 
