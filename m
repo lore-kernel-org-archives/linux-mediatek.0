@@ -2,75 +2,78 @@ Return-Path: <SRS0=bfHw=F4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7621EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C1E3EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 07:18:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 276D522571
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 06:20:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 276D522571
+	by mail.kernel.org (Postfix) with ESMTPS id EF7782251F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 07:18:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF7782251F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zWQQC8QjkbTRy6pgMSpju81OvpuHHNedE6Cn37sv3ek=; b=vLXxk0ghKjcqrdNAwfEhkiv7Y
-	MpdIr6szU2bnWYFr0x+BR0AfHI2zEjjCy39idwWUw9DuBIZaoCs8H4KJeOxf6Xsj2NH8tPMwhudg+
-	vU/pyO5Ia+QjixmLqxTerYQl2/6Fsj8lvE9/1QkSHUE0k79QuSSMovItFMsw5PVdxSo/iRC0gPdIN
-	MPpGBrlSIZHxppEUnE/vFo3l0V6dZDaW0nUk/mC2u9yOsCnY5AOqPutRlTpm+CIH2wdQS7EVFXG23
-	HcmMsYzMLDsXVnOcvDJnkHZTJkexXlBN2P7t51XHFKIjCy59Sr2FUW+Pioz4rHJGUtTJEKStIJEHM
-	mbVV6O5Vw==;
+	 bh=CsnAsUVg807ed4QuExkr4FUvMgfywfDmP/iXa3UqIsY=; b=i5MV9Pqml4x9Eoy+mPo4NOxls
+	INPTgdY1qKQyTGvKVAn2qMZp1D2WVkP/wns1yx6VQoD9hkGJ3Ay6EIWrEcUThpfspe5cAZs8yGEYQ
+	LRIkjIL7AyT+7/H/3czAU0WjcNOeY9KC138whtaL8gx49DoZPyghNi0SexYD7r5VevrEqwaUsPhUa
+	KrvGkBp4Llcfg1HKdePEDgCSc+UoG43WHX2hRZPrs9GZw+OERwhBqDhWzYfcb83Kh3NuT26S/eZFj
+	NF/H06oEfwzIRX7Ddkv4DikmoERROzh9iIh9ZlCov29pe9KvIlW4DDmmzDP3lPTMQrTw+XmYq54Ub
+	UH141GdSw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksJyg-0008D3-Al; Thu, 24 Dec 2020 06:19:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ksKtC-0005e2-3N; Thu, 24 Dec 2020 07:18:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksJxy-0007kU-Kv; Thu, 24 Dec 2020 06:19:16 +0000
-X-UUID: 663cfc91c7ee4001a047bd655944a053-20201223
+ id 1ksKt8-0005dM-Gn; Thu, 24 Dec 2020 07:18:20 +0000
+X-UUID: c3003ed3a7de4798a614d04997211e5a-20201223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=0kbw/iH+hJVJZgtO539P7eZ44ImON5hhbqy9c5eOMro=; 
- b=p63gvXC0GtOKKaPX4DQ0MiuDbMXng+QwZvJqMvZ5qZ7GhTdwCgkEDY7maIYZpiac6nlMnIMzbaNV5pHv2w5po8h/kBIeQt4ZhutqVHA0p2ckXdGygp3oxNfwozQYWO/8Q56oatRSt01NkUtYb9d/WWCyQAEcwPSlgkS0FgP8oUg=;
-X-UUID: 663cfc91c7ee4001a047bd655944a053-20201223
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <henryc.chen@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Mi1mCEIU36uks+SRhET60de/V1o2twi7lWkb9sYvoBw=; 
+ b=iDTOVMqKRYY/QWsaOR1sFS6/usBvO4fgE6j32WA9Aco9nbP14tgDYOtL6JeH8RJOy20K9B7tQu3LsV9regVhqopOv6PZEGNElhialrNV+q5g9BIXDPem32YIR/zzEvNaD/OEFM0UhctMSbivsfAYdP/vUOyvjGo1Mb278ekw94o=;
+X-UUID: c3003ed3a7de4798a614d04997211e5a-20201223
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 883203248; Wed, 23 Dec 2020 22:19:09 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Dec 2020 22:09:07 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Dec 2020 14:08:58 +0800
-Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 24 Dec 2020 14:08:58 +0800
-From: Henry Chen <henryc.chen@mediatek.com>
-To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>, Mark Brown
- <broonie@kernel.org>
-Subject: [PATCH V6 11/13] regulator: Regulator driver for the Mediatek DVFSRC
-Date: Thu, 24 Dec 2020 14:08:52 +0800
-Message-ID: <1608790134-27425-12-git-send-email-henryc.chen@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
-References: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
+ with ESMTP id 1076610322; Wed, 23 Dec 2020 23:18:11 -0800
+Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Dec 2020 23:18:09 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
+ (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 24 Dec 2020 15:18:05 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Dec 2020 15:18:04 +0800
+Message-ID: <1608794285.23328.79.camel@mhfsdcap03>
+Subject: Re: [PATCH 2/3] usb: xhci-mtk: fix UAS issue by XHCI_BROKEN_STREAMS
+ quirk
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rosen Penev <rosenp@gmail.com>
+Date: Thu, 24 Dec 2020 15:18:05 +0800
+In-Reply-To: <CAKxU2N8q1XjDbWbv5ksqYr7RMEedV7fng7OUccVggsT89Oyf5w@mail.gmail.com>
+References: <20201216115125.5886-1-chunfeng.yun@mediatek.com>
+ <20201216115125.5886-2-chunfeng.yun@mediatek.com>
+ <CANMq1KDBmuoBNeizm9+f1yJgqF9oMqU5k26KfZrSdjrPQm_LwA@mail.gmail.com>
+ <1608171557.23328.53.camel@mhfsdcap03>
+ <CAKxU2N8q1XjDbWbv5ksqYr7RMEedV7fng7OUccVggsT89Oyf5w@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 789013F5892AA70359C8E0AD768F3F63F5C84F45D63E14F2459F4B4C630AC0A42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201224_011914_953185_1ECC33B8 
-X-CRM114-Status: GOOD (  25.96  )
+X-CRM114-CacheID: sfid-20201224_021819_341427_942B11C4 
+X-CRM114-Status: GOOD (  37.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,287 +85,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
- devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, "henryc.chen" <henryc.chen@mediatek.com>,
- Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
- Arvin Wang <arvin.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Devicetree List <devicetree@vger.kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Mathias Nyman <mathias.nyman@intel.com>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Ikjoon Jang <ikjn@chromium.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "henryc.chen" <henryc.chen@mediatek.com>
+On Wed, 2020-12-16 at 19:43 -0800, Rosen Penev wrote:
+> On Wed, Dec 16, 2020 at 6:29 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> >
+> > On Wed, 2020-12-16 at 20:28 +0800, Nicolas Boichat wrote:
+> > > On Wed, Dec 16, 2020 at 7:53 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> > > >
+> > > > The 0.96 xHCI controller on some platforms does not support
+> > > > bulk stream even HCCPARAMS says supporting, due to MaxPSASize
+> > > > is set a non-zero default value by mistake, here use
+> > > > XHCI_BROKEN_STREAMS quirk to fix it.
+> > > >
+> > > > Fixes: 94a631d91ad3 ("usb: xhci-mtk: check hcc_params after adding primary hcd")
+> > > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > > > ---
+> > > >  drivers/usb/host/xhci-mtk.c | 7 ++++++-
+> > > >  drivers/usb/host/xhci-mtk.h | 1 +
+> > > >  2 files changed, 7 insertions(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> > > > index 8f321f39ab96..08dab974d847 100644
+> > > > --- a/drivers/usb/host/xhci-mtk.c
+> > > > +++ b/drivers/usb/host/xhci-mtk.c
+> > > > @@ -395,6 +395,9 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+> > > >         xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
+> > > >         if (mtk->lpm_support)
+> > > >                 xhci->quirks |= XHCI_LPM_SUPPORT;
+> > > > +
+> > > > +       if (mtk->broken_streams)
+> > > > +               xhci->quirks |= XHCI_BROKEN_STREAMS;
+> > > >  }
+> > > >
+> > > >  /* called during probe() after chip reset completes */
+> > > > @@ -460,6 +463,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+> > > >                 return ret;
+> > > >
+> > > >         mtk->lpm_support = of_property_read_bool(node, "usb3-lpm-capable");
+> > > > +       mtk->broken_streams =
+> > > > +               of_property_read_bool(node, "mediatek,broken_streams_quirk");
+> > >
+> > > Would it be better to add a data field to struct of_device_id
+> > > mtk_xhci_of_match, and enable this quirk on mediatek,mt8173-xhci only?
+> > This is the common issue for all SoCs (before 2016.06) with 0.96 xHCI
+> > when the controller don't support bulk stream. If enable this quirk only
+> > for mt8173, then for other SoCs, the compatible need include
+> > "mediatek,mt8173-xhci" in dts, this may be not flexible for some cases,
+> > e.g. a new SoC has the broken stream as mt8173, but also has another
+> > different quirk, the way you suggested will not handle it.
+> > And I plan to remove "mediatek,mt8173-xhci" in mtk_xhci_of_match after
+> > converting the binding to YMAL.
+> I'm guessing this also applies to mt7621?
+Yes, mt7621 doesn't support bulk stream
 
-Driver for regulators exposed by the DVFSRC (dynamic voltage and
-frequency scaling resource collector) found in devices based on
-mt8183 and newer platforms.
+> >
+> > >
+> > > (IMHO usb3-lpm-capable detection should also be done in the same way)
+> > I prefer to provide a property for common issues, and use the way you
+> > suggested for the issue only happened at a specific SoC.
+> >
+> > Thank you
+> >
+> > >
+> > > Thanks,
+> > >
+> > > >         /* optional property, ignore the error if it does not exist */
+> > > >         of_property_read_u32(node, "mediatek,u3p-dis-msk",
+> > > >                              &mtk->u3p_dis_msk);
+> > > > @@ -546,7 +551,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+> > > >         if (ret)
+> > > >                 goto put_usb3_hcd;
+> > > >
+> > > > -       if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
+> > > > +       if (!mtk->broken_streams && HCC_MAX_PSA(xhci->hcc_params) >= 4)
+> > > >                 xhci->shared_hcd->can_do_streams = 1;
+> > > >
+> > > >         ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
+> > > > diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+> > > > index a93cfe817904..86aa4978915e 100644
+> > > > --- a/drivers/usb/host/xhci-mtk.h
+> > > > +++ b/drivers/usb/host/xhci-mtk.h
+> > > > @@ -147,6 +147,7 @@ struct xhci_hcd_mtk {
+> > > >         struct phy **phys;
+> > > >         int num_phys;
+> > > >         bool lpm_support;
+> > > > +       bool broken_streams;
+> > > >         /* usb remote wakeup */
+> > > >         bool uwk_en;
+> > > >         struct regmap *uwk;
+> > > > --
+> > > > 2.18.0
+> >
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- drivers/regulator/Kconfig                |  10 ++
- drivers/regulator/Makefile               |   1 +
- drivers/regulator/mtk-dvfsrc-regulator.c | 215 +++++++++++++++++++++++++++++++
- 3 files changed, 226 insertions(+)
- create mode 100644 drivers/regulator/mtk-dvfsrc-regulator.c
-
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index 020a00d..dd91e62 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -748,6 +748,16 @@ config REGULATOR_MT6397
- 	  This driver supports the control of different power rails of device
- 	  through regulator interface.
- 
-+config REGULATOR_MTK_DVFSRC
-+	tristate "MediaTek DVFSRC regulator driver"
-+	depends on MTK_DVFSRC
-+	help
-+	  Say y here to control regulator by DVFSRC (dynamic voltage
-+	  and frequency scaling resource collector).
-+	  This driver supports to control regulators via the DVFSRC
-+	  of Mediatek. It allows for voting on regulator state
-+	  between multiple users.
-+
- config REGULATOR_PALMAS
- 	tristate "TI Palmas PMIC Regulators"
- 	depends on MFD_PALMAS
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 6ebae51..7375961b 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -92,6 +92,7 @@ obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
- obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
- obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
- obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
-+obj-$(CONFIG_REGULATOR_MTK_DVFSRC) += mtk-dvfsrc-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_LABIBB) += qcom-labibb-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_RPMH) += qcom-rpmh-regulator.o
-diff --git a/drivers/regulator/mtk-dvfsrc-regulator.c b/drivers/regulator/mtk-dvfsrc-regulator.c
-new file mode 100644
-index 0000000..d3d8761
---- /dev/null
-+++ b/drivers/regulator/mtk-dvfsrc-regulator.c
-@@ -0,0 +1,215 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2020 MediaTek Inc.
-+
-+#include <linux/err.h>
-+#include <linux/init.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/of_device.h>
-+#include <linux/of_platform.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/of_regulator.h>
-+#include <linux/soc/mediatek/mtk_dvfsrc.h>
-+
-+#define DVFSRC_ID_VCORE		0
-+#define DVFSRC_ID_VSCP		1
-+
-+#define MT_DVFSRC_REGULAR(match, _name,	_volt_table)	\
-+[DVFSRC_ID_##_name] = {					\
-+	.desc = {					\
-+		.name = match,				\
-+		.of_match = of_match_ptr(match),	\
-+		.ops = &dvfsrc_vcore_ops,		\
-+		.type = REGULATOR_VOLTAGE,		\
-+		.id = DVFSRC_ID_##_name,		\
-+		.owner = THIS_MODULE,			\
-+		.n_voltages = ARRAY_SIZE(_volt_table),	\
-+		.volt_table = _volt_table,		\
-+	},	\
-+}
-+
-+/*
-+ * DVFSRC regulators' information
-+ *
-+ * @desc: standard fields of regulator description.
-+ * @voltage_selector:  Selector used for get_voltage_sel() and
-+ *			   set_voltage_sel() callbacks
-+ */
-+
-+struct dvfsrc_regulator {
-+	struct regulator_desc	desc;
-+};
-+
-+/*
-+ * MTK DVFSRC regulators' init data
-+ *
-+ * @size: num of regulators
-+ * @regulator_info: regulator info.
-+ */
-+struct dvfsrc_regulator_init_data {
-+	u32 size;
-+	struct dvfsrc_regulator *regulator_info;
-+};
-+
-+static inline struct device *to_dvfsrc_dev(struct regulator_dev *rdev)
-+{
-+	return rdev_get_dev(rdev)->parent;
-+}
-+
-+static int dvfsrc_set_voltage_sel(struct regulator_dev *rdev,
-+				  unsigned int selector)
-+{
-+	struct device *dvfsrc_dev = to_dvfsrc_dev(rdev);
-+	int id = rdev_get_id(rdev);
-+
-+	if (id == DVFSRC_ID_VCORE)
-+		mtk_dvfsrc_send_request(dvfsrc_dev,
-+					MTK_DVFSRC_CMD_VCORE_REQUEST,
-+					selector);
-+	else if (id == DVFSRC_ID_VSCP)
-+		mtk_dvfsrc_send_request(dvfsrc_dev,
-+					MTK_DVFSRC_CMD_VSCP_REQUEST,
-+					selector);
-+	else
-+		return -EINVAL;
-+
-+	return 0;
-+}
-+
-+static int dvfsrc_get_voltage_sel(struct regulator_dev *rdev)
-+{
-+	struct device *dvfsrc_dev = to_dvfsrc_dev(rdev);
-+	int id = rdev_get_id(rdev);
-+	int val, ret;
-+
-+	if (id == DVFSRC_ID_VCORE)
-+		ret = mtk_dvfsrc_query_info(dvfsrc_dev,
-+					    MTK_DVFSRC_CMD_VCORE_LEVEL_QUERY,
-+					    &val);
-+	else if (id == DVFSRC_ID_VSCP)
-+		ret = mtk_dvfsrc_query_info(dvfsrc_dev,
-+					    MTK_DVFSRC_CMD_VSCP_LEVEL_QUERY,
-+					    &val);
-+	else
-+		return -EINVAL;
-+
-+	if (ret != 0)
-+		return ret;
-+
-+	return val;
-+}
-+
-+static const struct regulator_ops dvfsrc_vcore_ops = {
-+	.list_voltage = regulator_list_voltage_table,
-+	.get_voltage_sel = dvfsrc_get_voltage_sel,
-+	.set_voltage_sel = dvfsrc_set_voltage_sel,
-+};
-+
-+static const unsigned int mt8183_voltages[] = {
-+	725000,
-+	800000,
-+};
-+
-+static struct dvfsrc_regulator mt8183_regulators[] = {
-+	MT_DVFSRC_REGULAR("dvfsrc-vcore", VCORE,
-+			  mt8183_voltages),
-+};
-+
-+static const struct dvfsrc_regulator_init_data regulator_mt8183_data = {
-+	.size = ARRAY_SIZE(mt8183_regulators),
-+	.regulator_info = &mt8183_regulators[0],
-+};
-+
-+static const unsigned int mt6873_voltages[] = {
-+	575000,
-+	600000,
-+	650000,
-+	725000,
-+};
-+
-+static struct dvfsrc_regulator mt6873_regulators[] = {
-+	MT_DVFSRC_REGULAR("dvfsrc-vcore", VCORE,
-+			  mt6873_voltages),
-+	MT_DVFSRC_REGULAR("dvfsrc-vscp", VSCP,
-+			  mt6873_voltages),
-+};
-+
-+static const struct dvfsrc_regulator_init_data regulator_mt6873_data = {
-+	.size = ARRAY_SIZE(mt6873_regulators),
-+	.regulator_info = &mt6873_regulators[0],
-+};
-+
-+static const struct of_device_id mtk_dvfsrc_regulator_match[] = {
-+	{
-+		.compatible = "mediatek,mt8183-dvfsrc",
-+		.data = &regulator_mt8183_data,
-+	}, {
-+		.compatible = "mediatek,mt8192-dvfsrc",
-+		.data = &regulator_mt6873_data,
-+	}, {
-+		.compatible = "mediatek,mt6873-dvfsrc",
-+		.data = &regulator_mt6873_data,
-+	}, {
-+		/* sentinel */
-+	},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_dvfsrc_regulator_match);
-+
-+static int dvfsrc_vcore_regulator_probe(struct platform_device *pdev)
-+{
-+	const struct of_device_id *match;
-+	struct device *dev = &pdev->dev;
-+	struct regulator_config config = { };
-+	struct regulator_dev *rdev;
-+	const struct dvfsrc_regulator_init_data *regulator_init_data;
-+	struct dvfsrc_regulator *mt_regulators;
-+	int i;
-+
-+	match = of_match_node(mtk_dvfsrc_regulator_match, dev->parent->of_node);
-+
-+	if (!match) {
-+		dev_err(dev, "invalid compatible string\n");
-+		return -ENODEV;
-+	}
-+
-+	regulator_init_data = match->data;
-+
-+	mt_regulators = regulator_init_data->regulator_info;
-+	for (i = 0; i < regulator_init_data->size; i++) {
-+		config.dev = dev->parent;
-+		config.driver_data = (mt_regulators + i);
-+		rdev = devm_regulator_register(dev->parent,
-+					       &(mt_regulators + i)->desc,
-+					       &config);
-+		if (IS_ERR(rdev)) {
-+			dev_err(dev, "failed to register %s\n",
-+				(mt_regulators + i)->desc.name);
-+			return PTR_ERR(rdev);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static struct platform_driver mtk_dvfsrc_regulator_driver = {
-+	.driver = {
-+		.name  = "mtk-dvfsrc-regulator",
-+	},
-+	.probe = dvfsrc_vcore_regulator_probe,
-+};
-+
-+static int __init mtk_dvfsrc_regulator_init(void)
-+{
-+	return platform_driver_register(&mtk_dvfsrc_regulator_driver);
-+}
-+subsys_initcall(mtk_dvfsrc_regulator_init);
-+
-+static void __exit mtk_dvfsrc_regulator_exit(void)
-+{
-+	platform_driver_unregister(&mtk_dvfsrc_regulator_driver);
-+}
-+module_exit(mtk_dvfsrc_regulator_exit);
-+
-+MODULE_AUTHOR("Arvin wang <arvin.wang@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
--- 
-1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
