@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F113C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 11:38:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80546C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 11:38:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 56B6F221F2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 11:38:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56B6F221F2
+	by mail.kernel.org (Postfix) with ESMTPS id 4008C221F2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Dec 2020 11:38:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4008C221F2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Vq0d0QtppJCGQC3Ul5p5d0+NMvSpg7IE3uH6rmtgOI4=; b=u8iI8x4eG1dD9PAzxILg1sJep
-	mx1lbKn4xWAXOiYQOOIXZT9CflWYLC/aDTnjGjMHzuqQ50iaLu44ukswDpqVT/05EYCmHfHGFkCvU
-	eAgjRxTrBKxbFOX+d4R4jyVtf24Hbpf2INPRMQ96nhp9izHzaKcguk4uk4c7PnJRCKyFEQgdEkgeL
-	sLIbEU1PGnpPKgCGCJKC0CEm4NLgpn5lW1xIaCiRt2Pi/4WnnYBPy7mqkVJJT5KC4+wXaIZVi7zRt
-	nT5vSFObnU2sAAwrD3qFtob7tZGJKgPAEfKX9OqPf1j2tjQJCzp0Kflt4SeS1szJ+X3aH/NqljfaF
-	c8y1/dOZw==;
+	 bh=ovqRlfyYyijkCC5AfCTLyaXEfYbq+y3y3GFlWoNnf4E=; b=m8ZgGbtm7orYm5IY6qbmsDIsE
+	092DY8xHyFWnOwM3gDl92nTfsqN2Bjp21/+hpDFx8j67Yg40cQyoREWiCuyhGY98U4z2Cy5A9Gl1i
+	hlyehsxATOvMXKxvJ+2lf4D8l1gfoEhNSPy8Q4cuZX1D2OIfeuvjgDyCVtJS8XgIar7ENzpZPKCtM
+	5WaAVQxNx+i48CfVf9FAnvWb1J+YNwzN5ITesybdIYT/2ErXPKoFIH2yVa/ZN60VFJzqgPxpb5J0R
+	ucqxQ3PEfH8Y3FHmxDz6QhH9fSon9pF88+M5dnzdZIaDQ7Rcv6hOBUAPznGGgNYb8FZ0PmUhemoiX
+	arjc14aJA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksOwn-00081U-LL; Thu, 24 Dec 2020 11:38:21 +0000
+	id 1ksOwt-00083S-W3; Thu, 24 Dec 2020 11:38:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksOwm-00080k-3s; Thu, 24 Dec 2020 11:38:21 +0000
-X-UUID: f10387b365c14a428f609c3869a93e2f-20201224
+ id 1ksOwr-00082F-0x; Thu, 24 Dec 2020 11:38:26 +0000
+X-UUID: 5018a2e947364917884017feaba8b512-20201224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=x+vmTzBVFEHCrm2Yqn8M1lXv0V4BMO6yO0ekQRSMMRw=; 
- b=LB8VV34NfFVtRSsk+u3AuDXMh74YXy4jA7YhsO8wMkdkOtMi+Jcthvu9mJ9vQm+S/3J/F6quBnp05iVMUlJnP5V0MEYqpi7gZQPhOI5eSWdSK029Kgo5PdKyUxS1CcH5yqOBXwWpFnZbnOk3E0ixq4PUsrpbV/WJomdUb69PCDw=;
-X-UUID: f10387b365c14a428f609c3869a93e2f-20201224
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=SB6oEobDBkSXNK3qQS8llstfz4w4FiszNJyh08p/o70=; 
+ b=rduz8VdBw7YcxQ5ZaLo9VzqJaTpF1vt9dN49RZsTIYzwDcNA4hrZtDAH1d2GOPB4FKFKwGhuI5/c4mbDyuAm8BFu8g0EEKtpWybO6AyXQ/Fu0tLBwZDp/VkTa6qpU3V/FmXaEpfYw5CDQfZzFV+9id8qzR3+QmltqioRtxD9Ayw=;
+X-UUID: 5018a2e947364917884017feaba8b512-20201224
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1433562267; Thu, 24 Dec 2020 03:26:58 -0800
-Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Dec 2020 03:26:55 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
- (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 24 Dec 2020 19:26:51 +0800
+ with ESMTP id 673404555; Thu, 24 Dec 2020 03:35:18 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Dec 2020 03:35:16 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 24 Dec 2020 19:35:12 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 24 Dec 2020 19:26:51 +0800
-Message-ID: <1608809212.26323.258.camel@mhfsdcap03>
-Subject: Re: [PATCH v5 04/27] dt-bindings: memory: mediatek: Add domain
- definition
+ Transport; Thu, 24 Dec 2020 19:35:12 +0800
+Message-ID: <1608809713.26323.262.camel@mhfsdcap03>
+Subject: Re: [PATCH v5 06/27] dt-bindings: mediatek: Add binding for mt8192
+ IOMMU
 From: Yong Wu <yong.wu@mediatek.com>
 To: Tomasz Figa <tfiga@chromium.org>
-Date: Thu, 24 Dec 2020 19:26:52 +0800
-In-Reply-To: <X+L8qpO+T7+U2s5r@chromium.org>
+Date: Thu, 24 Dec 2020 19:35:13 +0800
+In-Reply-To: <X+L9XpkoII7tw/tX@chromium.org>
 References: <20201209080102.26626-1-yong.wu@mediatek.com>
- <20201209080102.26626-5-yong.wu@mediatek.com>
- <X+L8qpO+T7+U2s5r@chromium.org>
+ <20201209080102.26626-7-yong.wu@mediatek.com>
+ <X+L9XpkoII7tw/tX@chromium.org>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8C474D3B2374B83E77D4A8D2415ADFF8FAC79803632363B2F7FCFDD373A9DCFD2000:8
+X-TM-SNTS-SMTP: 43E145A43742A33FB0F432294A8D8B05C5B400A4B9E3095EC85B6369A76296B42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201224_063820_308406_28910F84 
-X-CRM114-Status: GOOD (  26.20  )
+X-CRM114-CacheID: sfid-20201224_063825_278403_314D1F40 
+X-CRM114-Status: GOOD (  23.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,71 +97,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-12-23 at 17:15 +0900, Tomasz Figa wrote:
-> Hi Yong,
+On Wed, 2020-12-23 at 17:18 +0900, Tomasz Figa wrote:
+> On Wed, Dec 09, 2020 at 04:00:41PM +0800, Yong Wu wrote:
+> > This patch adds decriptions for mt8192 IOMMU and SMI.
+> > 
+> > mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> > table format. The M4U-SMI HW diagram is as below:
+> > 
+> >                           EMI
+> >                            |
+> >                           M4U
+> >                            |
+> >                       ------------
+> >                        SMI Common
+> >                       ------------
+> >                            |
+> >   +-------+------+------+----------------------+-------+
+> >   |       |      |      |       ......         |       |
+> >   |       |      |      |                      |       |
+> > larb0   larb1  larb2  larb4     ......      larb19   larb20
+> > disp0   disp1   mdp    vdec                   IPE      IPE
+> > 
+> > All the connections are HW fixed, SW can NOT adjust it.
+> > 
+> > mt8192 M4U support 0~16GB iova range. we preassign different engines
+> > into different iova ranges:
+> > 
+> > domain-id  module     iova-range                  larbs
+> >    0       disp        0 ~ 4G                      larb0/1
+> >    1       vcodec      4G ~ 8G                     larb4/5/7
+> >    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
 > 
-> On Wed, Dec 09, 2020 at 04:00:39PM +0800, Yong Wu wrote:
-> > In the latest SoC, there are several HW IP require a sepecial iova
-> > range, mainly CCU and VPU has this requirement. Take CCU as a example,
-> > CCU require its iova locate in the range(0x4000_0000 ~ 0x43ff_ffff).
-> 
-> Is this really a domain? Does the address range come from the design of
-> the IOMMU?
+> Why do we preassign these addresses in DT? Shouldn't it be a user's or
+> integrator's decision to split the 16 GB address range into sub-ranges
+> and define which larbs those sub-ranges are shared with?
 
-It is not a really a domain. The address range comes from CCU HW
-requirement. That HW can only access this iova range. thus I create a
-special iommu domain for it.
+The problem is that we can't split the 16GB range with the larb as unit.
+The example is the below ccu0(larb13 port9/10) is a independent
+range(domain), the others ports in larb13 is in another domain.
 
+disp/vcodec/cam/mdp don't have special iova requirement, they could
+access any range. vcodec also can locate 8G~12G. it don't care about
+where its iova locate. here I preassign like this following with our
+internal project setting.
+
+Why set this in DT?, this is only for simplifying the code. Assume we
+put it in the platform data. We have up to 32 larbs, each larb has up to
+32 ports, each port may be in different iommu domains. we should have a
+big array for this..however we only use a macro to get the domain in the
+DT method.
+
+When replying this mail, I happen to see there is a "dev->dev_range_map"
+which has "dma-range" information, I think I could use this value to get
+which domain the device belong to. then no need put domid in DT. I will
+test this.
+
+Thanks.
 > 
 > Best regards,
 > Tomasz
 > 
+> >    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
+> >    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
 > > 
-> > In this patch we add a domain definition for the special port. In the
-> > example of CCU, If we preassign CCU port in domain1, then iommu driver
-> > will prepare a independent iommu domain of the special iova range for it,
-> > then the iova got from dma_alloc_attrs(ccu-dev) will locate in its special
-> > range.
-> > 
-> > This is a preparing patch for multi-domain support.
+> > The iova range for CCU0/1(camera control unit) is HW requirement.
 > > 
 > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
-> > Acked-by: Rob Herring <robh@kernel.org>
+> > Reviewed-by: Rob Herring <robh@kernel.org>
 > > ---
-> >  include/dt-bindings/memory/mtk-smi-larb-port.h | 9 ++++++++-
-> >  1 file changed, 8 insertions(+), 1 deletion(-)
+> >  .../bindings/iommu/mediatek,iommu.yaml        |  18 +-
+> >  include/dt-bindings/memory/mt8192-larb-port.h | 240 ++++++++++++++++++
+> >  2 files changed, 257 insertions(+), 1 deletion(-)
+> >  create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
 > > 
-> > diff --git a/include/dt-bindings/memory/mtk-smi-larb-port.h b/include/dt-bindings/memory/mtk-smi-larb-port.h
-> > index 7d64103209af..2d4c973c174f 100644
-> > --- a/include/dt-bindings/memory/mtk-smi-larb-port.h
-> > +++ b/include/dt-bindings/memory/mtk-smi-larb-port.h
-> > @@ -7,9 +7,16 @@
-> >  #define __DT_BINDINGS_MEMORY_MTK_MEMORY_PORT_H_
-> >  
-> >  #define MTK_LARB_NR_MAX			32
-> > +#define MTK_M4U_DOM_NR_MAX		8
-> > +
-> > +#define MTK_M4U_DOM_ID(domid, larb, port)	\
-> > +	(((domid) & 0x7) << 16 | (((larb) & 0x1f) << 5) | ((port) & 0x1f))
-> > +
-> > +/* The default dom id is 0. */
-> > +#define MTK_M4U_ID(larb, port)		MTK_M4U_DOM_ID(0, larb, port)
-> >  
-> > -#define MTK_M4U_ID(larb, port)		(((larb) << 5) | (port))
-> >  #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
-> >  #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
-> > +#define MTK_M4U_TO_DOM(id)		(((id) >> 16) & 0x7)
-> >  
-> >  #endif
-> > -- 
-> > 2.18.0
-> > 
-> > _______________________________________________
-> > iommu mailing list
-> > iommu@lists.linux-foundation.org
-> > https://lists.linuxfoundation.org/mailman/listinfo/iommu
-
+[snip]
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
