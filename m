@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DAD45C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 07:41:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43541C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 07:53:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6E48923129
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 07:41:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E48923129
+	by mail.kernel.org (Postfix) with ESMTPS id BD7BF206FB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 07:53:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD7BF206FB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,57 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oO25Dn72bR4zi3bceBUiKMd5vlh+/ja8Ik0Q6VUsoFE=; b=Gtg/uMzklZjgr2aU54R/kGecl
-	NTQzDIWDmOCYdvnVPzF58SngIidMOIc9Sm8yIfS28ad3JJyDkgQMi68bFxtPNxbCF3i6U4/YAwxG1
-	86ZcR+4C0YZWq1bbmbDPsLmZg9ATV7BcBfD9wlSqyvamFfNUrN/7pg0TiKf1pjmMAA190xudoQQqm
-	x6pykqkGyqPzXNVl2eRJLZGQlUcJy/dhp0YlYgRqtVS38388AOadfdXNgXNj24dc0MPemL5KCMfYo
-	V6lW7uEwpMthf9iaDOomx253q3wyGBnxDqGTscLwL8i9xZmwy+axU2AJRlnYmXVodjhAXmt3j0ar6
-	cuoleLwNg==;
+	 bh=ht3E7Tc6ZBnBbWl8p9f8Cq1ZcRPXDOJWi3bIvCTuhmY=; b=gNrEWlL4TX/BWLpPC3YwHlfb3
+	gTDucN0Yecun0RD3lPkl14AiCpwwufN972yn9JVHXZxyPKGRaiOjRdeRVjmu1NVKkTM1dk4FsED/x
+	aWolQjRwZJVO76alAyFHAyskNw5Wsvz3r/0Up8BZ6C2x1VmZYiqEvl6DMtcWY1or24cMIPoFV6Y7L
+	OmIv5eirHsE07O7NaAW5rLrhrehqODf1JoZKe45wgr3tGiPmVBOp/YLlrJiR8Ekbt2t7oX45fl+uF
+	GiZNrf2YEUW5kh4ZxvhLpoT61jhWInRfJAmHA967qjr5nAgoc1sjS1qtOjpQm5K7Ji2xH13OQGGWs
+	wtzKcJglw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kshii-0003tZ-Iz; Fri, 25 Dec 2020 07:41:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kshuQ-0004qg-G5; Fri, 25 Dec 2020 07:53:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kshig-0003sx-5K; Fri, 25 Dec 2020 07:41:03 +0000
-X-UUID: 2e0ef5c73991480ebc97e7cacc350be0-20201224
+ id 1kshuN-0004ob-75; Fri, 25 Dec 2020 07:53:08 +0000
+X-UUID: 1b97d5f342144180b42c727b5f8f1255-20201224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=/ausyUfMbA7lDSuGLc9l/vhz4qqudyH1aLtoHAVlRKo=; 
- b=phVu78247hzHjfkN3fP4qy5RlQzYYuwuOJ7JXRd5TmFjSgu4DzrF+QLst7nieKqosnP00IsWbX87OcM1czeGSsImHVNMV92RS0F5wPMp7t0zfQWoqVUDL/k+zNy+PVqfrZ9J9znTSsC+B9vASZlV3+fAUbbr5Bd1+G9M3elAlcQ=;
-X-UUID: 2e0ef5c73991480ebc97e7cacc350be0-20201224
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <freddy.hsin@mediatek.com>)
+ bh=W8NFfVpNX21fWsYJY0/xHdB3KTRIUWLvsDkOZN/9Epo=; 
+ b=VB6LQICc3h3Qaw9vUsiU4ydo1PLKPOuerfAAS7cuNcDjsnrULPSnCWJPFCT4+qYTjqcRf3sWI5RwhkAjLBh2qdQcATWeBrnBjvS/A52K6Z7V+cH1E/xs3uFPW/yZdkV0foxc+BwYEuihjCrXk9BqhoEi54wRPGfHep7vfiimxLw=;
+X-UUID: 1b97d5f342144180b42c727b5f8f1255-20201224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1547197313; Thu, 24 Dec 2020 23:40:59 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 620027205; Thu, 24 Dec 2020 23:53:02 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Dec 2020 23:31:08 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Dec 2020 15:30:54 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Thu, 24 Dec 2020 23:53:00 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Dec 2020 15:52:57 +0800
+Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 25 Dec 2020 15:30:54 +0800
-From: Freddy Hsin <freddy.hsin@mediatek.com>
-To: Freddy Hsin <freddy.hsin@mediatek.com>, Wim Van Sebroeck
- <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, <linux-watchdog@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v1 1/1] driver: watchdog: Remove mtk_wdt_stop() in probe() to
- prevent the system freeze and it doesn't reboot by watchdog problem
-Date: Fri, 25 Dec 2020 15:30:50 +0800
-Message-ID: <1608881450-11081-2-git-send-email-freddy.hsin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1608881450-11081-1-git-send-email-freddy.hsin@mediatek.com>
-References: <1608881450-11081-1-git-send-email-freddy.hsin@mediatek.com>
+ Frontend Transport; Fri, 25 Dec 2020 15:52:57 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v5 02/11] dt-bindings: net: btusb: change reference file name
+Date: Fri, 25 Dec 2020 15:52:49 +0800
+Message-ID: <20201225075258.33352-2-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20201225075258.33352-1-chunfeng.yun@mediatek.com>
+References: <20201225075258.33352-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A4B3F1B6E95CA1EB95FC167E9FE4AF7EBF151ABF247412294ED76832304A93C02000:8
+X-TM-SNTS-SMTP: DB73294F650BE3F3080021D528EF3CAAB2F899F55DB70EA660E2B17F9D417E6F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201225_024102_478706_4032B8BC 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20201225_025307_444039_E8E26D5D 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,80 +80,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kuohong.wang@mediatek.com, chang-an.chen@mediatek.com,
- wsd_upstream@mediatek.com
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Min Guo <min.guo@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org,
+ David Airlie <airlied@linux.ie>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kishon Vijay
+ Abraham I <kishon@ti.com>, Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Jakub Kicinski <kuba@kernel.org>, Stanley Chu <stanley.chu@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "freddy.hsin" <freddy.hsin@mediatek.com>
+Due to usb-device.txt is converted into usb-device.yaml,
+so modify reference file names at the same time.
 
-Before user space daemon start to access the watchdog device,
-there is a time interval that watchdog is disabled in the
-original flow. If the system freezing at this interval, it
-cannot be rebooted by watchdog hardware automatically.
-
-In order to solve this problem, the watchdog hardware should be
-kept working, and start hrtimer in framework to ping it by
-setting max_hw_heartbeat_ms and HW_RUNNING used in
-watchdog_need_worker to determine whether the worker should be
-started or not
-
-Change-Id: I6a041b0922888a90011d7538ee804d80bc8d15ea
-Signed-off-by: freddy.hsin <freddy.hsin@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/watchdog/mtk_wdt.c |   22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
+v5: add Acked-by Rob
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index d6a6393..62f08cd 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -195,6 +195,19 @@ static int mtk_wdt_set_timeout(struct watchdog_device *wdt_dev,
- 	return 0;
- }
+v2~v4: no changes
+---
+ Documentation/devicetree/bindings/net/btusb.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/net/btusb.txt b/Documentation/devicetree/bindings/net/btusb.txt
+index b1ad6ee68e90..a9c3f4277f69 100644
+--- a/Documentation/devicetree/bindings/net/btusb.txt
++++ b/Documentation/devicetree/bindings/net/btusb.txt
+@@ -4,7 +4,7 @@ Generic Bluetooth controller over USB (btusb driver)
+ Required properties:
  
-+static void mtk_wdt_init(struct watchdog_device *wdt_dev)
-+{
-+	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
-+	void __iomem *wdt_base;
-+
-+	wdt_base = mtk_wdt->wdt_base;
-+
-+	if (readl(wdt_base + WDT_MODE) & WDT_MODE_EN) {
-+		set_bit(WDOG_HW_RUNNING, &wdt_dev->status);
-+		mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout);
-+	}
-+}
-+
- static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
- {
- 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
-@@ -266,16 +279,17 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
- 	mtk_wdt->wdt_dev.max_timeout = WDT_MAX_TIMEOUT;
- 	mtk_wdt->wdt_dev.min_timeout = WDT_MIN_TIMEOUT;
-+	mtk_wdt->wdt_dev.max_hw_heartbeat_ms = (WDT_MAX_TIMEOUT - 1) * 1000;
- 	mtk_wdt->wdt_dev.parent = dev;
+   - compatible : should comply with the format "usbVID,PID" specified in
+-		 Documentation/devicetree/bindings/usb/usb-device.txt
++		 Documentation/devicetree/bindings/usb/usb-device.yaml
+ 		 At the time of writing, the only OF supported devices
+ 		 (more may be added later) are:
  
-+	watchdog_set_drvdata(&mtk_wdt->wdt_dev, mtk_wdt);
-+
-+	mtk_wdt_init(&mtk_wdt->wdt_dev);
-+
- 	watchdog_init_timeout(&mtk_wdt->wdt_dev, timeout, dev);
- 	watchdog_set_nowayout(&mtk_wdt->wdt_dev, nowayout);
- 	watchdog_set_restart_priority(&mtk_wdt->wdt_dev, 128);
- 
--	watchdog_set_drvdata(&mtk_wdt->wdt_dev, mtk_wdt);
--
--	mtk_wdt_stop(&mtk_wdt->wdt_dev);
--
- 	watchdog_stop_on_reboot(&mtk_wdt->wdt_dev);
- 	err = devm_watchdog_register_device(dev, &mtk_wdt->wdt_dev);
- 	if (unlikely(err))
 -- 
-1.7.9.5
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
