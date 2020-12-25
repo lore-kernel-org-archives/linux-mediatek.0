@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BACCBC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 03:06:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 61BE9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 05:23:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 479EF22D57
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 03:06:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 479EF22D57
+	by mail.kernel.org (Postfix) with ESMTPS id C7F2C22AAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 05:23:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7F2C22AAA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mI3TCSPu8550iv+7+Mr9SCeMgFhKGdz3iZrKm8iQVrw=; b=cteZAtUIW6p1wPDxqSnPXtpmw
-	GH+Kpmc6OORG3I7CXhfbUJTdwro8CH18G/pPOeqpakCSkH7lfJXhmFd+bPApf81j8xXyvVrao4K4A
-	3Z5esls/UtoYFsd/u7BjEXkhyQX1+Ll9zJwS2PL3GN9vHhmCaA1kqhQKdPaPal67a9KCzz/Npjl5y
-	CHbAyPKqijQuFncoCHVF1Uu/gA+vVKkQ34fi0wqFmLgn6VKT8Z2BFpqUF5QzV6LNBz34LpBfI0oBP
-	CA1fbNr8oZyXPwnZ3N2iwMeDBtNIe4cmymvsMbNzTMSxS58g9z4XJHbQfkZxiKERje46zw5owFLZi
-	K8dQzxvNQ==;
+	 bh=Kph5pJMba8Gu/l0PdENtPQ6KFRBzq3Qt13IDcN3fy9s=; b=ikpv1Me9eqXvPmpDK5naUvDux
+	Ngb+BoNQ34o8w3kHx96FiXm0MmNhjBdj8IoVcaX2jarPMrNhyHs+6zU0PWmAjpZVo4oTG/d3gBeIT
+	Xq6PZ62A2avdZNQT/6mkdennCFW0lMscWhUmHbF9RfgxUTmya/4kvFJqKwD8jItKWhu+Sp0eQy48U
+	7guT13mN3hHAAERCiHyo8h2e0X+zy/PmCvrFmajwdx96+0jvXyI8fngGcuFEYr5P9KH1y5VIwLYtJ
+	vj3S6Ue+s5+hGNkEQbU82zBE6huid0/n8bjZkwa1huN7J+XPHXgvYbLpSflA2OaVB+qlv4shKVvhl
+	SB7kB4DOA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksdQj-0004At-UH; Fri, 25 Dec 2020 03:06:13 +0000
+	id 1ksfZT-0004CW-4D; Fri, 25 Dec 2020 05:23:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksdQf-0004AM-Tk
- for linux-mediatek@lists.infradead.org; Fri, 25 Dec 2020 03:06:11 +0000
-X-UUID: b40c5950a5e24eddaf90a4667b9b93ae-20201224
+ id 1ksfZO-0004B8-CJ; Fri, 25 Dec 2020 05:23:20 +0000
+X-UUID: 1b2469429eba4899a2cdc5f3006d9750-20201224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=e6d/ZDiJzN/PkyONx34VeYu401D2YFYejNJdKEUj+M8=; 
- b=rGV4kVVbuRihJ66sD7/ZRky2URSc0stGY+sBnXmscc150r6Eib1miZHR853pk+gWHP1rAC/ApB8fDqvBwr733xsLhuvBKwvyBcs7HDefVkd2Kwxg7UHpTtBHUgAnildg9IUQUo1gWbaSQxjCD/DC9LHEV3ZpQG6/xNNgWNUN6SU=;
-X-UUID: b40c5950a5e24eddaf90a4667b9b93ae-20201224
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ bh=NymtaQsb4oZZm5gLdklbpuzTSWgSwEAEXv7tkNvz7xM=; 
+ b=TqQ+SgiXml4sw71/XWcR4uXdxL3vM6+p8U6UCql75bng6YthtVu1pLcqyeQRb/JluRDET/c1pqu2V8InEft5FcGtRW7dH3RLq7hLyL1TyQbwIxhohIbS/19f1Cp+SHirVRom5EljTjjy1Z5e3sCejryonEAuuWYYRMnk7yt3OLg=;
+X-UUID: 1b2469429eba4899a2cdc5f3006d9750-20201224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 781221825; Thu, 24 Dec 2020 18:55:46 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 860268315; Thu, 24 Dec 2020 21:23:10 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Dec 2020 18:55:44 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Dec 2020 10:55:44 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Thu, 24 Dec 2020 21:13:07 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Dec 2020 13:12:57 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Dec 2020 10:55:44 +0800
-Message-ID: <1608864944.19292.3.camel@mtksdaap41>
-Subject: Re: [PATCH] drm/mediatek: dsi: Use IRQF_TRIGGER_NONE for dsi irq
- trigger type
-From: CK Hu <ck.hu@mediatek.com>
-To: Huijuan Xie <huijuan.xie@mediatek.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Date: Fri, 25 Dec 2020 10:55:44 +0800
-In-Reply-To: <1608803643-7351-1-git-send-email-huijuan.xie@mediatek.com>
-References: <1608803643-7351-1-git-send-email-huijuan.xie@mediatek.com>
+ Transport; Fri, 25 Dec 2020 13:12:58 +0800
+Message-ID: <1608873179.24775.1.camel@mtksdaap41>
+Subject: Re: [PATCH V6 01/13] dt-bindings: soc: Add dvfsrc driver bindings
+From: Henry Chen <henryc.chen@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Fri, 25 Dec 2020 13:12:59 +0800
+In-Reply-To: <1608829305.386312.2966452.nullmailer@robh.at.kernel.org>
+References: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
+ <1608790134-27425-2-git-send-email-henryc.chen@mediatek.com>
+ <1608829305.386312.2966452.nullmailer@robh.at.kernel.org>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 2C62C8F5D17C2CB4C8FC8497F9967A51166F542B6D7A0761DDE0458A8C93F1922000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201224_220610_156353_BA4487A2 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20201225_002318_654404_46F4E3F8 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,53 +82,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bibby.hsieh@mediatek.com, srv_heupstream@mediatek.com,
- David Airlie <airlied@linux.ie>, stonea168@163.com, cawa.cheng@mediatek.com,
- dri-devel@lists.freedesktop.org, sj.huang@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Stephen Boyd <swboyd@chromium.org>,
+ Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Arvin Wang <arvin.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>,
+ Ryan Case <ryandcase@chromium.org>, Georgi
+ Djakov <georgi.djakov@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+ Chun-Kuang, Philipp:
-
-
-This mail has been sent to dri devel and linux mediatek, but why it does
-not exist in mail lists?
-
-Regards,
-CK
-
-
-On Thu, 2020-12-24 at 17:54 +0800, Huijuan Xie wrote:
-> The interrupt trigger is already set by OF. When do devm_request_irq()
-> in driver, please use IRQF_TRIGGER_NONE and don't specify trigger type
-> again.
+On Thu, 2020-12-24 at 10:01 -0700, Rob Herring wrote:
+> On Thu, 24 Dec 2020 14:08:42 +0800, Henry Chen wrote:
+> > Document the binding for enabling dvfsrc on MediaTek SoC.
+> > 
+> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/soc/mediatek/dvfsrc.yaml   | 68 ++++++++++++++++++++++
+> >  1 file changed, 68 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+> > 
 > 
-> Signed-off-by: Huijuan Xie <huijuan.xie@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+> My bot found errors running 'make dt_binding_check' on your patch:
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 4a188a9..1d62489 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -1128,9 +1128,8 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->  		goto err_unregister_host;
->  	}
->  
-> -	irq_set_status_flags(irq_num, IRQ_TYPE_LEVEL_LOW);
->  	ret = devm_request_irq(&pdev->dev, irq_num, mtk_dsi_irq,
-> -			       IRQF_TRIGGER_LOW, dev_name(&pdev->dev), dsi);
-> +			       IRQF_TRIGGER_NONE, dev_name(&pdev->dev), dsi);
->  	if (ret) {
->  		dev_err(&pdev->dev, "failed to request mediatek dsi irq\n");
->  		goto err_unregister_host;
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> Documentation/devicetree/bindings/soc/mediatek/dvfsrc.example.dts:19:18: fatal error: dt-bindings/soc/mtk,dvfsrc.h: No such file or directory
+>    19 |         #include <dt-bindings/soc/mtk,dvfsrc.h>
+>       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> compilation terminated.
+> make[1]: *** [scripts/Makefile.lib:342: Documentation/devicetree/bindings/soc/mediatek/dvfsrc.example.dt.yaml] Error 1
+> make: *** [Makefile:1370: dt_binding_check] Error 2
+> 
+> See https://patchwork.ozlabs.org/patch/1420382
+> 
+> This check can fail if there are any dependencies. The base for a patch
+> series is generally the most recent rc1.
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up to
+> date:
+> 
+> pip3 install dtschema --upgrade
+> 
+> Please check and re-submit.
+> 
+Hi Rob,
 
+Sorry for the check error, I will re-check and submit again.
+
+Thanks,
+Henry
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
