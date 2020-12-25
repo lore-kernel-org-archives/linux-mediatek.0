@@ -2,19 +2,19 @@ Return-Path: <SRS0=56RK=F5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D305C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 14:27:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4400BC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 14:28:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FDA72137B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 14:27:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FDA72137B
+	by mail.kernel.org (Postfix) with ESMTPS id D206620575
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 14:28:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D206620575
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,62 +23,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Fag6UuUjZsQoNZrbfA7SW4r+Vf9x71A6Rw9Il+UE4Hs=; b=WNDk7Cp5Nb6UNCyYLb7EtH1uX
-	9IEa/fPdfO6AJKBuTweWRW7Ju9LL1vl1gtVZiYicdTK8lijxTBXdHV4bGHIskG7yrhLOF3yaEQSTG
-	4RTL0T/+Izix8b8ddkd5VWOUQ6a0B0da4LR9Leo4DePzAPqjWRxC9f0NVpzD7XC/KFLXMVDHiipK1
-	u+WMelMEpNOQxjaTDW3PYczB4mcJ8iepbnZliaQwJP+FEQwii5YsrtFiPeVJaNSYNWqC5LgDiBDaW
-	xt5Fq88+fTDNodYUYEzDGIYD+qRywA0xEr6/+owwK/sEkKHz2BsPbICgifqZ0uFjCgZop5yGz3+fa
-	Ri1gGKrUg==;
+	 bh=stT/wC6Lui/iMZSrKsO2WxThMF9hTgu6CKCSc+ArbCQ=; b=tHifYq8xMxXRPbSIpmOMGtYBg
+	V4548E9bJ5Wj7KBfC+k6UBLRqkVqnJzY5ztHRoNSKa6ZC3laL0S49VrjH8AE/bqEfkh7Pl/+X9CXH
+	BQO2VqfsbgDYeslw851OjWPSXG0W+8iWDnaOVLeRMhQ8NMCHkbqbwVGGtqeJpHmlXlJ3z8KmiC6ZG
+	zx8x/RxqoDNLvSedHmnaCIWdeNZXMy5AII7YHzr267bGUyjU4er388/K2XlGlI1+I6ujFCpBffu7Q
+	pTLNxlw6cCSGAE8zq4znW0wuqAxokEP19o0wWyXmrBrL1sGwGbAKr81cayYJBR32JT+eTGVJk1JQS
+	vatZZv+MQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kso44-0006C4-5t; Fri, 25 Dec 2020 14:27:32 +0000
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+	id 1kso4W-0006IN-BF; Fri, 25 Dec 2020 14:28:00 +0000
+Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kso41-0006BT-Tm; Fri, 25 Dec 2020 14:27:31 +0000
-Received: by mail-ot1-x329.google.com with SMTP id w3so3894266otp.13;
- Fri, 25 Dec 2020 06:27:28 -0800 (PST)
+ id 1kso4U-0006H7-HC; Fri, 25 Dec 2020 14:27:59 +0000
+Received: by mail-oi1-x22d.google.com with SMTP id d203so4978090oia.0;
+ Fri, 25 Dec 2020 06:27:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:autocrypt:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=oZZqS652feFDi+rDpYp850LeakI/uYF7nzQQb/ytiY4=;
- b=tKOA3jN9ygj2IK5lvshj2chue+gRtH7ZpWpoH1uLlUjOsKt/fKjRu/FzANZbirdtOb
- 83/U7BjM543o//tQCca4X/MN9UuGDwr4ft1sOpd70UaGRlow1wIPXgXCx0XhnSM92jPm
- cmsbcf3Sc34lBNlEygt0zZ4nGpSpsgTCd7HHoqDXOou7EXPhFKJZLBEMuggDTFCOknsI
- O6X4zojtLW1JLNFqlKpWyHoxpnchc1KARLceSSHpx7YB6yvVv8csGWp8iz0nrPE12t+K
- E8un8QA40Tnf9+HVV/32o90k8RIJLX2Gw2rjbZufd6VivX3KcOC9ikqHOwGfZnCWu/2p
- MXKg==
+ bh=/m7U8FJQxEkhlwV8E6zPapT9PAVzZwEMCME67yMXEa8=;
+ b=GZjPx5P5NbzS3oC+L7CFf959DscKQyOFyM6be3NQzkL6YzuGRvMefsAelnyFNF8TWD
+ 6DqFqm9hqAZuk9DuS3Qg0OEau+uX1V+h642LcsavV0gh36Gu8IcW8ofyByFylTfWwXiO
+ CSkWBwcb/qOfnNzhGPUCqLll7/f1M4F+SzWgcbFvbzvWl8CLCDB+cZ23Wzrfm/6Rgvvi
+ Myi7rQZvRqsypmep49dqrjTTp8TT4/DKLmh1E2tbPi9vPgyyrkG5rkiw4Wl9sNCHdBeD
+ 6i8wLyNzpEWzqY6M1UA4INWOEsIz5xXY0Vzid0teLIEqwgWvbVrBnWTahmW/V6orOuW1
+ owAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=oZZqS652feFDi+rDpYp850LeakI/uYF7nzQQb/ytiY4=;
- b=KUJ2s1iIJJ4BphT4jZ76/La7gleXOr7C2DBu4ZqABVoHyWNMd5Opn0Cxj0jWTHR2FW
- kO8bnQVX1KtOJy4+aWgcvUa7L8dX6JYuE+HXdLCUXqEyI3nzurde8antw0KLTyOX0y6+
- falmAaJiqFGPrKYVonVjPn1yIolOwMJ06w8ucQ1HWpYaR/yNFQmIBy4dac6pk+X8si3w
- rHUhUcpdD8pK6DAKCf6hyvAi2Cd5wxKz002OpJM/W8AhjagWRBwk2kJ2KA/Rr+GWzAGx
- 6FdYhsOqnOTLMiG8aMYcymFhKOdQZKzV+9e7EnAgpzzoilaE7YurCDh6kvmS1XRYNjZn
- kSkQ==
-X-Gm-Message-State: AOAM5304U+EgM9NeQyOIkJ9gF7p6k232lnXq8KQHPO/mMifccCN8V1S7
- 4uJg15A14XyaZzrpo/81kBA=
-X-Google-Smtp-Source: ABdhPJx+pPHZ/3fpiVHbPVHaJVZxmxdJIdS2DFc3rym4Y4YIe0Zb6yX28+8oVcrjGJ+8+OvO8o40DA==
-X-Received: by 2002:a9d:650e:: with SMTP id i14mr24447576otl.19.1608906446984; 
- Fri, 25 Dec 2020 06:27:26 -0800 (PST)
+ bh=/m7U8FJQxEkhlwV8E6zPapT9PAVzZwEMCME67yMXEa8=;
+ b=rB5AmQuKkm3+sOpqAm2/CMpGAGl1vqeGIDqGBKmivrOO5bvPB1WQgbRg0W4B/KcRM9
+ ly5FcbZplMxwpbPRXsPJZ+CtTaUUuBNEJwRLMLk2ngHeALcRkBdPvdUmNxAxLvSlO6/u
+ bFgPJbgngmH5hJBPsc4rhd8qm01F3EPD3dqWSRgCd6ynDYrlJlaIdbv0LZz3lAylyOND
+ UPxO35rFYkYIwoeeqCsdUz3O5gQRQwhb/cpP/UmGky51t/78Q0m9DBPuStdJcpZIzi73
+ OYSxnghmRkUCVcweT8f6WjM2kcbBVH1ERybp7YiiPmJNv9EIWbip1oYfQCoVPU96Mr6e
+ Xqdw==
+X-Gm-Message-State: AOAM533j3zkcp1BNmjG3nt0pUlQrPh0njtNPW7EbaZUZzL234T0fk4Sg
+ 70ZIjCzEp1S1u5X+Ypi/0HE=
+X-Google-Smtp-Source: ABdhPJx3JO3AtBWpdjD/Vx3X0fZul2O/rmIj/dEr9agQIUXmg++3oGbgif6D4Qge8YQEBCxds7zvmw==
+X-Received: by 2002:a05:6808:3bc:: with SMTP id
+ n28mr5555130oie.118.1608906476716; 
+ Fri, 25 Dec 2020 06:27:56 -0800 (PST)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- 31sm7446010otd.24.2020.12.25.06.27.25
+ h2sm7056312ooa.25.2020.12.25.06.27.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Dec 2020 06:27:26 -0800 (PST)
-Subject: Re: [PATCH v1 1/1] driver: watchdog: Remove mtk_wdt_stop() in probe()
- to prevent the system freeze and it doesn't reboot by watchdog problem
+ Fri, 25 Dec 2020 06:27:56 -0800 (PST)
+Subject: Re: driver: watchdog: Remove mtk_wdt_stop() in probe() to prevent the
+ system freeze and it doesn't reboot by watchdog problem
 To: Freddy Hsin <freddy.hsin@mediatek.com>,
  Wim Van Sebroeck <wim@linux-watchdog.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <1608881450-11081-1-git-send-email-freddy.hsin@mediatek.com>
- <1608881450-11081-2-git-send-email-freddy.hsin@mediatek.com>
 From: Guenter Roeck <linux@roeck-us.net>
 Autocrypt: addr=linux@roeck-us.net; keydata=
  xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
@@ -123,16 +123,16 @@ Autocrypt: addr=linux@roeck-us.net; keydata=
  WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
  HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
  mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <a3851099-128a-1305-0f76-66af3c9c6e63@roeck-us.net>
-Date: Fri, 25 Dec 2020 06:27:24 -0800
+Message-ID: <4b88a313-4184-5bf6-a0a7-db608558a9ed@roeck-us.net>
+Date: Fri, 25 Dec 2020 06:27:54 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <1608881450-11081-2-git-send-email-freddy.hsin@mediatek.com>
+In-Reply-To: <1608881450-11081-1-git-send-email-freddy.hsin@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201225_092729_985815_43DB2D10 
-X-CRM114-Status: GOOD (  25.04  )
+X-CRM114-CacheID: sfid-20201225_092758_606815_7C53C807 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -152,8 +152,6 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/24/20 11:30 PM, Freddy Hsin wrote:
-> From: "freddy.hsin" <freddy.hsin@mediatek.com>
-> 
 > Before user space daemon start to access the watchdog device,
 > there is a time interval that watchdog is disabled in the
 > original flow. If the system freezing at this interval, it
@@ -165,72 +163,9 @@ On 12/24/20 11:30 PM, Freddy Hsin wrote:
 > watchdog_need_worker to determine whether the worker should be
 > started or not
 > 
-> Change-Id: I6a041b0922888a90011d7538ee804d80bc8d15ea
-> Signed-off-by: freddy.hsin <freddy.hsin@mediatek.com>
-> ---
->  drivers/watchdog/mtk_wdt.c |   22 ++++++++++++++++++----
->  1 file changed, 18 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index d6a6393..62f08cd 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -195,6 +195,19 @@ static int mtk_wdt_set_timeout(struct watchdog_device *wdt_dev,
->  	return 0;
->  }
->  
-> +static void mtk_wdt_init(struct watchdog_device *wdt_dev)
-> +{
-> +	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
-> +	void __iomem *wdt_base;
-> +
-> +	wdt_base = mtk_wdt->wdt_base;
-> +
-> +	if (readl(wdt_base + WDT_MODE) & WDT_MODE_EN) {
-> +		set_bit(WDOG_HW_RUNNING, &wdt_dev->status);
-> +		mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout);
-> +	}
-> +}
-> +
->  static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
->  {
->  	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
-> @@ -266,16 +279,17 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->  	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
->  	mtk_wdt->wdt_dev.max_timeout = WDT_MAX_TIMEOUT;
+This intro email is unnecessary.
 
-No longer needed if max_hw_heartbeat_ms is set.
-
->  	mtk_wdt->wdt_dev.min_timeout = WDT_MIN_TIMEOUT;
-> +	mtk_wdt->wdt_dev.max_hw_heartbeat_ms = (WDT_MAX_TIMEOUT - 1) * 1000;
-
-This needs explanation. Why WDT_MAX_TIMEOUT - 1 ?
-
->  	mtk_wdt->wdt_dev.parent = dev;
->  
-> +	watchdog_set_drvdata(&mtk_wdt->wdt_dev, mtk_wdt);
-> +
-> +	mtk_wdt_init(&mtk_wdt->wdt_dev);
-> +
-
-Setting the chip (with the maximum timeout) ...
-
->  	watchdog_init_timeout(&mtk_wdt->wdt_dev, timeout, dev);
-
-just before initializing/setting the real timeout doesn't really make sense.
-
->  	watchdog_set_nowayout(&mtk_wdt->wdt_dev, nowayout);
->  	watchdog_set_restart_priority(&mtk_wdt->wdt_dev, 128);
->  
-> -	watchdog_set_drvdata(&mtk_wdt->wdt_dev, mtk_wdt);
-> -
-> -	mtk_wdt_stop(&mtk_wdt->wdt_dev);
-> -
->  	watchdog_stop_on_reboot(&mtk_wdt->wdt_dev);
->  	err = devm_watchdog_register_device(dev, &mtk_wdt->wdt_dev);
->  	if (unlikely(err))
-> 
-
+Guenter
 
 _______________________________________________
 Linux-mediatek mailing list
