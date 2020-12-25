@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61BE9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 05:23:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57686C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 05:23:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7F2C22AAA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 05:23:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7F2C22AAA
+	by mail.kernel.org (Postfix) with ESMTPS id CD6F222AAA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Dec 2020 05:23:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD6F222AAA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Kph5pJMba8Gu/l0PdENtPQ6KFRBzq3Qt13IDcN3fy9s=; b=ikpv1Me9eqXvPmpDK5naUvDux
-	Ngb+BoNQ34o8w3kHx96FiXm0MmNhjBdj8IoVcaX2jarPMrNhyHs+6zU0PWmAjpZVo4oTG/d3gBeIT
-	Xq6PZ62A2avdZNQT/6mkdennCFW0lMscWhUmHbF9RfgxUTmya/4kvFJqKwD8jItKWhu+Sp0eQy48U
-	7guT13mN3hHAAERCiHyo8h2e0X+zy/PmCvrFmajwdx96+0jvXyI8fngGcuFEYr5P9KH1y5VIwLYtJ
-	vj3S6Ue+s5+hGNkEQbU82zBE6huid0/n8bjZkwa1huN7J+XPHXgvYbLpSflA2OaVB+qlv4shKVvhl
-	SB7kB4DOA==;
+	 bh=N0DcyTEhR7Seox2LRRlsZiPoVztoiFK7D1mRW+/CCpY=; b=Zc78HWLS3T+nNRUUOMA+5/kbM
+	lM0fPNiLL/SyNZL9x6rGIOeXYvBhjVFLLukOz5zz4asa2NF0Zkywq29wFoPBSAUhw00nkwXrUbJNT
+	NI8DcrfxsRak9nqcmtn6j6bDXDMnWtuhgU2bIRx2CmSxx4L1J78/GeOArhpRzZxDftvCEQfYC0wHo
+	ZWDUsGUAhGPg6E6pLvtILDeu0Bi678ougYnzteJkZgZeWNn8fzMcTEZHTP1ZtTx2jvCmmdFZo5zyK
+	Hht+XjS30AK132H1MDNcnHTHu2i3oMhPhDddj5rRKpn58JyhR+OPc8tuOh1aVU1avS6/G0HM6cQGj
+	4lUC0pUqA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ksfZT-0004CW-4D; Fri, 25 Dec 2020 05:23:23 +0000
+	id 1ksfZS-0004CN-KB; Fri, 25 Dec 2020 05:23:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ksfZO-0004B8-CJ; Fri, 25 Dec 2020 05:23:20 +0000
-X-UUID: 1b2469429eba4899a2cdc5f3006d9750-20201224
+ id 1ksfZO-0004BA-CD; Fri, 25 Dec 2020 05:23:19 +0000
+X-UUID: 91f59820c3354e17b18e3b61f863f85b-20201224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=NymtaQsb4oZZm5gLdklbpuzTSWgSwEAEXv7tkNvz7xM=; 
- b=TqQ+SgiXml4sw71/XWcR4uXdxL3vM6+p8U6UCql75bng6YthtVu1pLcqyeQRb/JluRDET/c1pqu2V8InEft5FcGtRW7dH3RLq7hLyL1TyQbwIxhohIbS/19f1Cp+SHirVRom5EljTjjy1Z5e3sCejryonEAuuWYYRMnk7yt3OLg=;
-X-UUID: 1b2469429eba4899a2cdc5f3006d9750-20201224
+ bh=KgeZmFxf9ZEZvqNx6WjQdn790TCyZKDbfVixiX7OE0Q=; 
+ b=r48Sr84TREdx1GVg9DtFCzW2dS5AIEd6OsYrjToU+ncMYWegwIdPCshccYvsGSW4EtCVjKNYicB3w4V1wojpQ0jRfADWMCkNBybYCkP+3mT9citywl+p2ljYXz2puaXdYJKwAD4jQP8ArI9DbzrPWJipSauNlf63EAIvPtPQtR8=;
+X-UUID: 91f59820c3354e17b18e3b61f863f85b-20201224
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 860268315; Thu, 24 Dec 2020 21:23:10 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 901886118; Thu, 24 Dec 2020 21:23:10 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Dec 2020 21:13:07 -0800
+ 15.0.1497.2; Thu, 24 Dec 2020 21:14:06 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Dec 2020 13:12:57 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Dec 2020 13:14:04 +0800
 Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 25 Dec 2020 13:12:58 +0800
-Message-ID: <1608873179.24775.1.camel@mtksdaap41>
-Subject: Re: [PATCH V6 01/13] dt-bindings: soc: Add dvfsrc driver bindings
+ Transport; Fri, 25 Dec 2020 13:14:04 +0800
+Message-ID: <1608873245.24775.2.camel@mtksdaap41>
+Subject: Re: [PATCH V6 03/13] soc: mediatek: add driver for dvfsrc support
 From: Henry Chen <henryc.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Fri, 25 Dec 2020 13:12:59 +0800
-In-Reply-To: <1608829305.386312.2966452.nullmailer@robh.at.kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 25 Dec 2020 13:14:05 +0800
+In-Reply-To: <CAAOTY__whne=DuaSv4rOv8f1qTebjqDOVjD5YGYw6eBkkWKmUw@mail.gmail.com>
 References: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
- <1608790134-27425-2-git-send-email-henryc.chen@mediatek.com>
- <1608829305.386312.2966452.nullmailer@robh.at.kernel.org>
+ <1608790134-27425-4-git-send-email-henryc.chen@mediatek.com>
+ <CAAOTY__whne=DuaSv4rOv8f1qTebjqDOVjD5YGYw6eBkkWKmUw@mail.gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2C62C8F5D17C2CB4C8FC8497F9967A51166F542B6D7A0761DDE0458A8C93F1922000:8
+X-TM-SNTS-SMTP: F345F721F12B5EE58BF45EC2F3987B08119EA1B5D0B332A9788DD00BA98585C62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201225_002318_654404_46F4E3F8 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20201225_002318_667500_8D2DD29B 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,62 +83,35 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Stephen Boyd <swboyd@chromium.org>,
- Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Arvin Wang <arvin.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>,
- Ryan Case <ryandcase@chromium.org>, Georgi
- Djakov <georgi.djakov@linaro.org>, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ DTML <devicetree@vger.kernel.org>, James Liao <jamesjj.liao@mediatek.com>,
+ linux-pm@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Fan
+ Chen <fan.chen@mediatek.com>, Mark Brown <broonie@kernel.org>,
+ Ryan Case <ryandcase@chromium.org>, Arvin Wang <arvin.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Georgi Djakov <georgi.djakov@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-12-24 at 10:01 -0700, Rob Herring wrote:
-> On Thu, 24 Dec 2020 14:08:42 +0800, Henry Chen wrote:
-> > Document the binding for enabling dvfsrc on MediaTek SoC.
-> > 
-> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/soc/mediatek/dvfsrc.yaml   | 68 ++++++++++++++++++++++
-> >  1 file changed, 68 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
-> > 
-> 
-> My bot found errors running 'make dt_binding_check' on your patch:
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> Documentation/devicetree/bindings/soc/mediatek/dvfsrc.example.dts:19:18: fatal error: dt-bindings/soc/mtk,dvfsrc.h: No such file or directory
->    19 |         #include <dt-bindings/soc/mtk,dvfsrc.h>
->       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> compilation terminated.
-> make[1]: *** [scripts/Makefile.lib:342: Documentation/devicetree/bindings/soc/mediatek/dvfsrc.example.dt.yaml] Error 1
-> make: *** [Makefile:1370: dt_binding_check] Error 2
-> 
-> See https://patchwork.ozlabs.org/patch/1420382
-> 
-> This check can fail if there are any dependencies. The base for a patch
-> series is generally the most recent rc1.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit.
-> 
-Hi Rob,
-
-Sorry for the check error, I will re-check and submit again.
-
-Thanks,
-Henry
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAyMDIwLTEyLTI0IGF0IDIyOjMzICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
+SGkgQ0ssDQo+IEhpLCBIZW5yeToNCj4gDQo+IEhlbnJ5IENoZW4gPGhlbnJ5Yy5jaGVuQG1lZGlh
+dGVrLmNvbT4g5pa8IDIwMjDlubQxMuaciDI05pelIOmAseWbmyDkuIvljYgyOjA55a+r6YGT77ya
+DQo+ID4NCj4gPiBBZGQgZHZmc3JjIGRyaXZlciBmb3IgTVQ2ODczL01UODE4My9NVDgxOTINCj4g
+DQo+IFNlcGFyYXRlIHRoaXMgcGF0Y2ggZm9yIGVhY2ggU29DLg0KT0ssIHRoYW5rcy4NCkhlbnJ5
+DQo+IA0KPiBSZWdhcmRzLA0KPiBDaHVuLUt1YW5nLg0KPiANCj4gPg0KPiA+IFNpZ25lZC1vZmYt
+Ynk6IEhlbnJ5IENoZW4gPGhlbnJ5Yy5jaGVuQG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiAg
+ZHJpdmVycy9zb2MvbWVkaWF0ZWsvS2NvbmZpZyAgICAgICAgICAgIHwgIDEyICsNCj4gPiAgZHJp
+dmVycy9zb2MvbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAgICAgIHwgICAxICsNCj4gPiAgZHJpdmVy
+cy9zb2MvbWVkaWF0ZWsvbXRrLWR2ZnNyYy5jICAgICAgIHwgNTM4ICsrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrDQo+ID4gIGluY2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210a19kdmZz
+cmMuaCB8ICAzNSArKysNCj4gPiAgNCBmaWxlcyBjaGFuZ2VkLCA1ODYgaW5zZXJ0aW9ucygrKQ0K
+PiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLWR2ZnNyYy5j
+DQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRlay9tdGtf
+ZHZmc3JjLmgNCj4gPg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LW1lZGlhdGVrCg==
