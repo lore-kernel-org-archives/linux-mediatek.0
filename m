@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B972CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Dec 2020 08:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6654EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Dec 2020 09:07:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C4D4221E9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Dec 2020 08:56:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C4D4221E9
+	by mail.kernel.org (Postfix) with ESMTPS id 17F0D221E9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Dec 2020 09:07:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 17F0D221E9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Q2QDECRyv73ccf8GKtmplj3gPXYKTYiQeXSHVb8f8cI=; b=H7sU1JExUjkpOPCdQpiRpOQy+
-	6FxJDAtMB5EzH5Qc1N4of72vKAc7oeejjZzPf+IgFEB6j55e1EGMZm8we3vAdPVG0D86tJAhNHixO
-	sUGfp4jRfRXipprLpmpvSQ125KH24sUCGyEa355lQeeA/yy5RmQZzX9/ReF1/9RvMe8gPKaEoMhkD
-	/8LsLN+ctMogZdr7IY3iEjVzrjDp3FykmP2rqNSYG6tu149gaI1eOt8Q6Gnt5Ks5DU1SHvAu/OXzW
-	QXJWHlNZxh/8++SKN+3YTRgKzuAby7tyPEw0/O1jHgwSZNya2fG3+1VraMj2kQHPSuW1RrzXm+H+g
-	aMbqOKk1g==;
+	 bh=m623FBI+e2tc4m0yUKA9EbtjTI2h8tR5KOXIBqzoDW4=; b=bPtorLjyuAB63W+ZHrkL3xuNC
+	Zd/ysW0z2x74MWTOspofLYTMk3GiWbVLQ34ukv16Ixxbqqr6UN9Fr5+hyIAs/aGyW9C3/o1EzfUsi
+	Jsbui3qu8mtewxo9g8zrF2wb/p9t3kQlPCUobCOKGB7IbnlDWcKClTD+H1ktdSg3RrunkDuRiCs82
+	s1Zvbzr2h+2NjlYRYGDC9VMnfcpHnnQcu3aKEuKVZ8V9b6Ck/iKwdGpw3B7zcFvinBi9nETF7NjjI
+	3PVJW8GwLXg+SlXzZqNH/bxpJyVKeDFU/68xnyqcRwe/n2cwhs1bkkVCCUu7+azHdYaG5XwkY1WEM
+	LaaaRUGyw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kt5My-00036o-BL; Sat, 26 Dec 2020 08:56:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kt5Xn-0003bp-UF; Sat, 26 Dec 2020 09:07:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kt5Mo-000364-Qf; Sat, 26 Dec 2020 08:56:05 +0000
-X-UUID: 45ed466f9b3445adb8ddda7a7db57b91-20201226
+ id 1kt5Xj-0003av-Ro; Sat, 26 Dec 2020 09:07:21 +0000
+X-UUID: abd5fcd1914146d3b7e4d54ab5e9ac79-20201226
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=O8MvIzbgoKP0EJFUCZCWVgh+fi1X2o9IdCQSOOz75XU=; 
- b=mfoIGD3BMNLAhuX0tVP+8pCUbuybGmEgiboapJzSh9WU6cxfhGqDudx5hgyZVH9D7n/4geVwKVRPqqDTTE3l1KD9ZmLEP0zttT19xbmL4IczcWepvK5HNMKCHdpPvFeaPLsz6E679QOTtX9kj4yImRB7zsvOYgV3F6T3djeCAg0=;
-X-UUID: 45ed466f9b3445adb8ddda7a7db57b91-20201226
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=SlEDBqr6pqTI7qWfhu/ALj97BCMwtKpquEMZ16ReOls=; 
+ b=k76dwY/LHyP9BagZ4RTbOVoLM8aX/37q5B+gZz4PeaTwf4ku+YUyQ9M0gxDWlNV1+IFXYFcQP2qO/niQMgXD4Xu21iG+SOdFF5Yr6HGEtXyacnCYR3dy6IfBuqItWrZJxTgb0SDakQQoWK9Nd4TnxyeynFBcEkXPlISH616Sccs=;
+X-UUID: abd5fcd1914146d3b7e4d54ab5e9ac79-20201226
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <crystal.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2085782467; Sat, 26 Dec 2020 00:55:51 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1376261238; Sat, 26 Dec 2020 01:07:12 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 26 Dec 2020 00:55:49 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs07n2.mediatek.inc
- (172.21.101.141) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 26 Dec 2020 16:55:43 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ 15.0.1497.2; Sat, 26 Dec 2020 01:07:10 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 26 Dec 2020 17:06:52 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 26 Dec 2020 16:55:42 +0800
-Message-ID: <1608972946.14806.75.camel@mhfsdcap03>
-Subject: Re: [v6,2/4] dt-binding: mediatek: mt8192: update mtk-wdt document
+ Transport; Sat, 26 Dec 2020 17:06:53 +0800
+Message-ID: <1608973616.14806.79.camel@mhfsdcap03>
+Subject: Re: [v6,1/3] dt-binding: reset-controller: mediatek: add YAML schemas
 From: Crystal Guo <crystal.guo@mediatek.com>
-To: Nicolas Boichat <drinkcat@chromium.org>, "wim@linux-watchdog.org"
- <wim@linux-watchdog.org>, "linux@roeck-us.net" <linux@roeck-us.net>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>, "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>
-Date: Sat, 26 Dec 2020 16:55:46 +0800
-In-Reply-To: <CANMq1KDB5W9ON0+ormDjFy=9oJUnAq4A41zNTUMHcWsAJ449Zg@mail.gmail.com>
-References: <20201014131936.20584-1-crystal.guo@mediatek.com>
- <20201014131936.20584-3-crystal.guo@mediatek.com>
- <1605529631.14806.57.camel@mhfsdcap03>
- <CANMq1KDB5W9ON0+ormDjFy=9oJUnAq4A41zNTUMHcWsAJ449Zg@mail.gmail.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>, "robh+dt@kernel.org"
+ <robh+dt@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Date: Sat, 26 Dec 2020 17:06:56 +0800
+In-Reply-To: <230c34e8a973140ebb7f155f5527050408f0c438.camel@pengutronix.de>
+References: <20200930022159.5559-1-crystal.guo@mediatek.com>
+ <20200930022159.5559-2-crystal.guo@mediatek.com>
+ <230c34e8a973140ebb7f155f5527050408f0c438.camel@pengutronix.de>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: CC6C40D32C38A3E17A270A2E49EE5F45BF57B0C9132D9BE69FA5F9432ABFB6882000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201226_035603_063564_5DFE029E 
-X-CRM114-Status: GOOD (  20.44  )
+X-CRM114-CacheID: sfid-20201226_040720_106626_69F79D12 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,73 +83,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Yong
+ Liang =?UTF-8?Q?=28=E6=A2=81=E5=8B=87=29?= <Yong.Liang@mediatek.com>,
+ Stanley Chu =?UTF-8?Q?=28=E6=9C=B1=E5=8E=9F=E9=99=9E=29?=
+ <stanley.chu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>,
  Seiya Wang =?UTF-8?Q?=28=E7=8E=8B=E8=BF=BA=E5=90=9B=29?=
  <seiya.wang@mediatek.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
  "robh+dt@kernel.org" <robh+dt@kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
- "linux@roeck-us.net" <linux@roeck-us.net>
+ Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
+ <Yingjoe.Chen@mediatek.com>, "s-anna@ti.com" <s-anna@ti.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2020-12-21 at 08:59 +0800, Nicolas Boichat wrote:
-> On Mon, Nov 16, 2020 at 8:27 PM Crystal Guo <crystal.guo@mediatek.com> wrote:
-> >
-> > Hi Maintainers,
-> >
-> > Gentle pin for this patch.
-> >
-> > Thanks
-> >
-> > On Wed, 2020-10-14 at 21:19 +0800, Crystal Guo wrote:
-> > > update mtk-wdt document for MT8192 platform
+On Thu, 2020-12-03 at 15:41 +0800, Philipp Zabel wrote:
+> Hi,
 > 
-> Rob: I assume your input is required here? Any chance we could have
-> your ack/review on this trivial patch? It seems like the series is
-> blocked pending on a review of this patch -- and I don't think it has
-> been reviewed before.
+> On Wed, 2020-09-30 at 10:21 +0800, Crystal Guo wrote:
+> > Add a YAML documentation for Mediatek, which uses ti reset-controller
+> > driver directly. The TI reset controller provides a common reset
+> > management, and is suitable for Mediatek SoCs.
+> > 
+> > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+> > ---
+> >  .../bindings/reset/mediatek-syscon-reset.yaml | 51 +++++++++++++++++++
+> >  1 file changed, 51 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/reset/mediatek-syscon-reset.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/reset/mediatek-syscon-reset.yaml b/Documentation/devicetree/bindings/reset/mediatek-syscon-reset.yaml
+> > new file mode 100644
+> > index 000000000000..7871550c3c69
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/reset/mediatek-syscon-reset.yaml
+> > @@ -0,0 +1,51 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/reset/mediatek-syscon-reset.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Mediatek Reset Controller
+> > +
+> > +maintainers:
+> > +  - Crystal Guo <crystal.guo@mediatek.com>
+> > +
+> > +description:
+> > +  The bindings describe the reset-controller for Mediatek SoCs,
+> > +  which is based on TI reset controller. For more detail, please
+> > +  visit Documentation/devicetree/bindings/reset/ti-syscon-reset.txt.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,syscon-reset
+> > +
+> > +  '#reset-cells':
+> > +    const: 1
+> > +
+> > +  mediatek,reset-bits:
+> > +    description: >
+> > +      Contains the reset control register information, please refer to
+> > +      Documentation/devicetree/bindings/reset/ti-syscon-reset.txt.
 > 
-> Thanks,
+> I would really like some input from Rob on this, in v4 he asked not to
+> repeat 'ti,reset-bits'.
 > 
-> 
+> regards
+> Philipp
 
-Hi Maintainers,
 
-Just a gentle ping, can you help to review or give some suggestions
-about this patch set?
+Hi Rob,
 
-Many thanks.
+Can you give some suggestions on this document
+"mediatek-syscon-reset.yaml", many thanks~
 
-> > >
-> > > Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> > > ---
-> > >  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
-> > >  1 file changed, 1 insertion(+)
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > > index 45eedc2c3141..e36ba60de829 100644
-> > > --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > > +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > > @@ -12,6 +12,7 @@ Required properties:
-> > >       "mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
-> > >       "mediatek,mt8183-wdt": for MT8183
-> > >       "mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
-> > > +     "mediatek,mt8192-wdt": for MT8192
-> > >
-> > >  - reg : Specifies base physical address and size of the registers.
-> > >
-> >
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+regards
+Crystal Guo
 
 _______________________________________________
 Linux-mediatek mailing list
