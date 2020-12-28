@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D32A9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25F2BC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:37:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D54321D94
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:37:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D54321D94
+	by mail.kernel.org (Postfix) with ESMTPS id C462F208BA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:37:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C462F208BA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Od7LK2P0lsweLiVNIuJMP7kya1GZR/UwVbD7mFvsUEE=; b=M/iR5nL7l13hIJBMXsPt5HPDa
-	iuTNcqMQein+wlBP3ejaZc69/4IPDtE6C4ne8cw1aCu65KkUZNiA5VGdh5ZLJCClTYDQAP2Rt4kdu
-	YEaI9wWmsdtykSH41uB3M4NSaGo9PviKpLGFDfkKE0nI3Is50KkTAde9RtCazXWrXn7H+mXH5nKpM
-	0EzmAxiAd6Lii/cDSy1KpUJm+gYzGYQu8ipjVhO0L7rKNGGd7MJOE2ghaGl4k6D5ZzgTNiF7pQL+a
-	bdww670WNsxqIUY6010FTnpk1vxtftxNwhjdZMa7KGxTMWAj5YTgJO5aEHeYRHqiV9g8zPH3MT/MX
-	n72AeJUTA==;
+	 bh=DkrzF52IpMmyQsefHAN3qNLpH7gYzatCTQf1D4aLXm0=; b=aiGXqnWHLVcf0q593V4h7HzO2
+	4VHvjRUjWR1S7riYncIV+r21aK7xB0WVNmflErAgmnZZFxDUnVzViupJzIkjOYwDcqsjfo/E2NZYW
+	O432yGfav3chq3epDdiRnELlYX8WIy2djHWPfHeZunD0dq4PE+YdO69Kb8UE3NMoH7jilkQFUACRv
+	gDH6fYl51+ZfIrPcPf3Wm4gXSJWKqgJv5t0E/ggANTmnfjYXFGoZ0D9o5Ih0aLpbiDbjkM3jkFxMU
+	VfmXsWl5TygktRK43aZzdQ93rPG07YEFCrbrKmSIzgHPIvob+cLoZeuE3XbMhrzOggLCT7j9IHlBa
+	2LaUt/IUw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kto1w-00027i-4M; Mon, 28 Dec 2020 08:37:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kto2C-0002Bs-4h; Mon, 28 Dec 2020 08:37:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kto1r-000241-Em; Mon, 28 Dec 2020 08:37:24 +0000
-X-UUID: dc8180de81114e2dbc3a1f82c393ed60-20201228
+ id 1kto1s-00023v-Kf; Mon, 28 Dec 2020 08:37:26 +0000
+X-UUID: 672486fa7cdb4deaa0ccc3b8e72055ca-20201228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=LBjr0511zBiCRnQ7qzUfRKBoIlLPwR16MQ+q5PA1qm8=; 
- b=mbzQunuGREYudRYqBseuBwbLf1WBuwjFmcRq0o65raTjR079S6HAZ6ZHVM30Qe/FuXeX+vwPKGZZyAZuKDJHQVi/lOtFZ/kUE3VWtYqVtxCg4BQmugBqMLOAo1p6BC/MKsRANH0LAd3juZc/fDm/K5c4SuNG+fAvw7Lo3sWX3fs=;
-X-UUID: dc8180de81114e2dbc3a1f82c393ed60-20201228
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=KPf6QTU57vdQ7Chg9HJfsQN+Uy3+dsHqJTwEgPbV3y0=; 
+ b=hF2YemLUc0N8l5eQsfRERS5LKzoElIZvvhBE3cDjq2/5eVCTvyOzNBKsJQFZAzfLREsz2gSfMSHgKxiub6WjtzB+ochTdPTaervahUlHUmldANgu2zkBjHdYu1d0IG7FWy2PS2mqOdsw7m7DC9ifx7H8iTYrDNAnVQEh1eRWOok=;
+X-UUID: 672486fa7cdb4deaa0ccc3b8e72055ca-20201228
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1439522483; Mon, 28 Dec 2020 00:37:18 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1075880761; Mon, 28 Dec 2020 00:37:21 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Dec 2020 00:38:25 -0800
+ 15.0.1497.2; Mon, 28 Dec 2020 00:38:26 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Dec 2020 16:38:24 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Dec 2020 16:38:27 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 28 Dec 2020 16:38:23 +0800
+ Transport; Mon, 28 Dec 2020 16:38:24 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3, 4/8] soc: mediatek: mmsys: add component OVL_2L2
-Date: Mon, 28 Dec 2020 16:37:06 +0800
-Message-ID: <1609144630-14721-5-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v3, 5/8] soc: mediatek: mmsys: add component POSTMASK
+Date: Mon, 28 Dec 2020 16:37:07 +0800
+Message-ID: <1609144630-14721-6-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1609144630-14721-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1609144630-14721-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201228_033723_691029_DAEA5542 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20201228_033724_835112_0CE080AD 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,7 +91,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add component OVL_2L2
+This patch add component POSTMASK
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 ---
@@ -99,17 +99,17 @@ Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 4b6c514..42476c2 100644
+index 42476c2..09ee424 100644
 --- a/include/linux/soc/mediatek/mtk-mmsys.h
 +++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -29,6 +29,7 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_OVL0,
- 	DDP_COMPONENT_OVL_2L0,
+@@ -31,6 +31,7 @@ enum mtk_ddp_comp_id {
  	DDP_COMPONENT_OVL_2L1,
-+	DDP_COMPONENT_OVL_2L2,
+ 	DDP_COMPONENT_OVL_2L2,
  	DDP_COMPONENT_OVL1,
++	DDP_COMPONENT_POSTMASK0,
  	DDP_COMPONENT_PWM0,
  	DDP_COMPONENT_PWM1,
+ 	DDP_COMPONENT_PWM2,
 -- 
 1.8.1.1.dirty
 _______________________________________________
