@@ -2,19 +2,19 @@ Return-Path: <SRS0=fEyP=GA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_RED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42752C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:01:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A3B7C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:37:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00D00207B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:01:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00D00207B6
+	by mail.kernel.org (Postfix) with ESMTPS id A905321D94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 08:37:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A905321D94
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,51 +23,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v4R1Ujn9NLkY/5iEGPM3YJDhVXDBdntgHa3QR8v0OXs=; b=tRKgnw6nKgshnTW8a8j8+9wUM4
-	pM9awjPkKvwKU91I1SWLzXulBcj2C269mH7WSNjIMOCuCm2dXpnYpR+IZBj6Azl6bSDo73dfNUwKs
-	SkYmICWNqba+35aqYt+Tc2jDAkLP0quo1cEZDLZNtJSsErOoRQPgjRT+EkYxp6NMfigcfQvRjUank
-	x8E0fZdWq9lpZchUoPXZiQrXdMw6UvjvgiEpWKdNfChrJPUhUX0RQ599UPdyMx/QLAYKST+Vo38sP
-	NzTBqKPQzjZ9U10xsr41ux21bj4sgiU+CGhqoKV6Xr+M5IXduAFWaUAQ5f/JOG8y/18F1A6bR3Jqc
-	DUihgSFA==;
+	bh=P1qHLz2FV4PYxr7uckW0rfXJM3JiwPJf9KdCQpUx7uA=; b=fRGZfmdurqqwcUXTTmcHLSjk9Y
+	qGNmd0TcFpTTJmRiBejp+9Jq2waIYUxQXQkuECCnAvj56TJaXy4nWmwHrTgPo4Gnfdt2sU/ZrWo5Q
+	wCJdPJQCUg2MFxyQr4R4l5TICmHMdiCAlK0pT4c36u6CQcDzwsjL9F42Xv6DsH+8ZLAYP9rsU1B+b
+	AxUhTHxeThreRFUuxm3l7Vh9IMpQDpz50T4jlzUlNFfFoESEtfMdmgXNqcRvjrntmKsWj7KPDgyDQ
+	HtCxc3/lae6Z/8G8E6C2HyEEiGJ9rx+j5ScumdAozIiicazDA01cPkYTnNHPAi2piQKsV1oUi+Xhl
+	vKEBbq5A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ktnSj-0007Vc-Dd; Mon, 28 Dec 2020 08:01:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kto1t-00026b-Q4; Mon, 28 Dec 2020 08:37:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ktnSd-0007Tr-Uu; Mon, 28 Dec 2020 08:01:01 +0000
-X-UUID: 538f36eb31c543ecb964e5495ecc1942-20201228
+ id 1kto1q-00023v-9N; Mon, 28 Dec 2020 08:37:24 +0000
+X-UUID: 46fba2acb4294df39625b37ddba25477-20201228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=TqPxmbmBeRbhvkrtHyDdI48v03vc6BbWxFyiZqFWTG4=; 
- b=XApQUdplowgrTmy8uBiBYPZjTxOHFjKhE26Ul9HiJKAGBcvOI5jPGSBS4RyAUHqEnS+AmGzDB/AbsyouJTIllBrim4L6Blau14ezpy5bctnx3Svh6J9HwNBi4OotFyGeYUTMlrPcf06LqvaCcC6kwGtDgc7ZzbZ2G5BMc9JOJV8=;
-X-UUID: 538f36eb31c543ecb964e5495ecc1942-20201228
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
+ bh=boK7l8YU127E0Sg9EiwAFE14OeM5ch2Z0kY8/oLLEos=; 
+ b=rkDd8ioYFr3hugaV5VnD9HibuWmld0icigLYcTGkOWCl+4Vfl27t5qfqfRnHm1guRZ0masRARv8pQARH52knGu3/brkX4kqbFHmlenytMkdFCdabz9E09LQDqjhyOwES7InlOHYFGAl0hNWfJUfteX1dkE865A8LsT82cyiu4vQ=;
+X-UUID: 46fba2acb4294df39625b37ddba25477-20201228
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1224929219; Mon, 28 Dec 2020 00:00:48 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Dec 2020 00:01:54 -0800
+ with ESMTP id 511210927; Mon, 28 Dec 2020 00:37:16 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Dec 2020 00:38:22 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Dec 2020 16:01:53 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 28 Dec 2020 16:01:53 +0800
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
- <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Andrey Konovalov
- <andreyknvl@google.com>, Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH] kasan: fix null pointer dereference in kasan_record_aux_stack
-Date: Mon, 28 Dec 2020 16:00:18 +0800
-Message-ID: <20201228080018.23041-1-walter-zh.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Dec 2020 16:38:20 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 28 Dec 2020 16:38:20 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
+ Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: soc: mediatek: Prepare MMSYS for DDP routing using function call
+Date: Mon, 28 Dec 2020 16:37:02 +0800
+Message-ID: <1609144630-14721-1-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201228_030100_206161_6037082B 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20201228_033723_117183_DE14C973 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,58 +79,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Walter Wu <walter-zh.wu@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Syzbot reported the following [1]:
+The following series are intended to prepare the mtk-mmsys driver to
+allow different DDP (Data Display Path) function call per SoC.
 
- BUG: kernel NULL pointer dereference, address: 0000000000000008
- #PF: supervisor read access in kernel mode
- #PF: error_code(0x0000) - not-present page
- PGD 2d993067 P4D 2d993067 PUD 19a3c067 PMD 0
- Oops: 0000 [#1] PREEMPT SMP KASAN
- CPU: 1 PID: 3852 Comm: kworker/1:2 Not tainted 5.10.0-syzkaller #0
- Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
- Workqueue: events free_ipc
- RIP: 0010:kasan_record_aux_stack+0x77/0xb0
+base change:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20201006193320.405529-4-enric.balletbo@collabora.com/
 
-Add null checking slab object from kasan_get_alloc_meta()
-in order to avoid null pointer dereference.
-
-[1] https://syzkaller.appspot.com/x/log.txt?x=10a82a50d00000
-
-Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-CC: Dmitry Vyukov <dvyukov@google.com>
-CC: Andrey Konovalov <andreyknvl@google.com>
-Cc: Alexander Potapenko <glider@google.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>
----
- mm/kasan/generic.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-index 1dd5a0f99372..5106b84b07d4 100644
---- a/mm/kasan/generic.c
-+++ b/mm/kasan/generic.c
-@@ -337,6 +337,8 @@ void kasan_record_aux_stack(void *addr)
- 	cache = page->slab_cache;
- 	object = nearest_obj(cache, page, addr);
- 	alloc_meta = kasan_get_alloc_meta(cache, object);
-+	if (!alloc_meta)
-+		return;
- 
- 	alloc_meta->aux_stack[1] = alloc_meta->aux_stack[0];
- 	alloc_meta->aux_stack[0] = kasan_save_stack(GFP_NOWAIT);
--- 
-2.18.0
+Change since v2:
+- fix review issue in v2
+- add 8183 mmsys function call
+- add 8192 new component
+- add 8192 mmsys function call
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
