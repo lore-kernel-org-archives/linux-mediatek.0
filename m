@@ -2,68 +2,75 @@ Return-Path: <SRS0=fEyP=GA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 047B2C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 11:09:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D3A5AC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 12:02:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9FCE222583
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 11:09:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9FCE222583
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8214320739
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Dec 2020 12:02:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8214320739
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GHG8Mz+83ylCkjCCOGdz+MfRNhMRVKskSSBngf1oJEI=; b=ilVoRqixOkh9uwiZTozpDI8D5x
-	TFm7FjT/HArawSS3YCj4J+vXAGYKxS/0Gm2OzkRN7aeTiG7256hry3kXW4HrZffMTyEikq4SopPQo
-	0vYS7Y8Sc2ufgpt6YOtuGrhykGbYH10TRyIuAspRtH752vm7WimM+G4+cJlJMpAfiOYvROjfE3Lvd
-	l0PUMuDNgrH9UkXqTk+zVEkWTZvYiXGzoMAD4W719FpmaCie2p/2s3wWLRXl/5B3TTHXHF+HIiy0G
-	4fOQCdvyf0ajPY9S/fIyuuztW/N979f2CK0xn5BYaIlj/YV7qBuZBNY92GWDIwI/svV3sOCQ4eRXG
-	9xSjc9TQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=/E9OsUIk7YohCxjnhUl2QK8JHctJfKmBq8lNETzCa1o=; b=GOmD4iuxp7ywpcXI2rzqBbslV
+	1K7gJ7JwhyBTetCWNBo0gKSqr4o6LT9yptyC8MqEw3PFJNM6ryVjB3k67Iqp148PhvEp7CQiHZMV6
+	wV0sTcGjXkZjp0nrWv2q/TYyrrZavp6r0fX8iUW39Si4a38ZSqkpdtg0WvRvNry2FRE8xKcETH3b6
+	Ix4+JktmgD4JU8LkXW3rOmuSrrepaKk0i2g+X1Zn4WqIVkPcb5BxUEhtmKBapsH3DV7Y/Sw6le/X+
+	J3WmxRgO8cdzxZ6KQYEmEPSMt+EKkCUmJ/xLdScgQMb2//mREl0gdE9AlljlCmkK+BvOWHjBivZHP
+	ur40fPK+g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ktqOS-0007aZ-Tl; Mon, 28 Dec 2020 11:08:52 +0000
-Received: from labrats.qualcomm.com ([199.106.110.90])
+	id 1ktrEA-00071w-Sw; Mon, 28 Dec 2020 12:02:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ktqOL-0007Yo-Nt; Mon, 28 Dec 2020 11:08:47 +0000
-IronPort-SDR: zNcOnE0+Fnn/IITjlOcHGT3HE+nFFcEskOQciAJziWDaKUsveSAMN7Vn1ZdS3rS7LSyeXXjMDR
- 4RG2MTXd9nvvhEF0+H3jtnuBE39Gey+b3bP8YKN00b8puWGHx8FKBERiVr2qty2KbuBUfjWDBP
- wA0FT6xtoJroQEuD8vm3lj5nOIqXKV9bSCh+Z6yuVUtDB/6AZCz3gPjj6jxy7W1LNdrHRgS9HB
- amW0mlCOYKvLGVWDx2phrmU/jAu2GKoSkjKhcqP/7QvxItt0AKsdzrk173SnN6tbn4vu15LHJD
- FF8=
-X-IronPort-AV: E=Sophos;i="5.78,455,1599548400"; d="scan'208";a="47624325"
-Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
- by labrats.qualcomm.com with ESMTP; 28 Dec 2020 03:08:39 -0800
-X-QCInternal: smtphost
-Received: from wsp769891wss.qualcomm.com (HELO stor-presley.qualcomm.com)
- ([192.168.140.85])
- by ironmsg04-sd.qualcomm.com with ESMTP; 28 Dec 2020 03:08:30 -0800
-Received: by stor-presley.qualcomm.com (Postfix, from userid 359480)
- id 848182188E; Mon, 28 Dec 2020 03:08:29 -0800 (PST)
-From: Can Guo <cang@codeaurora.org>
-To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
- ziqichen@codeaurora.org, rnayak@codeaurora.org, linux-scsi@vger.kernel.org,
- kernel-team@android.com, saravanak@google.com, salyzyn@google.com,
- cang@codeaurora.org
-Subject: [PATCH v7 1/3] scsi: ufs: Protect some contexts from unexpected clock
- scaling
-Date: Mon, 28 Dec 2020 03:08:16 -0800
-Message-Id: <1609153700-25703-2-git-send-email-cang@codeaurora.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1609153700-25703-1-git-send-email-cang@codeaurora.org>
-References: <1609153700-25703-1-git-send-email-cang@codeaurora.org>
+ id 1ktrE6-00070I-FM; Mon, 28 Dec 2020 12:02:17 +0000
+X-UUID: b8a950cf46d74f31aeb071fe16028e0a-20201228
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=TfST3R27FJlb9Hz+DQmqZ6QIGbdZweQBWleGs81uymM=; 
+ b=BQApaFF8PyQ6amm7Ec9vxdJc4G0drVv2zAbZhsWD+IS10/Xg3nwh8lQKFe9C2Agc++gE95t6tmDtDFAYQpqJe2XIH51QwZetRFwZobNkDUoSbMGrTyxB7nuQsr/ssSHa8ma37U2B7Sa56Ld03gtZklkrE99tW0xiS71kx9QvlK4=;
+X-UUID: b8a950cf46d74f31aeb071fe16028e0a-20201228
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 351615936; Mon, 28 Dec 2020 04:02:06 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Dec 2020 04:03:12 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 28 Dec 2020 20:03:06 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 28 Dec 2020 20:03:05 +0800
+Message-ID: <1609156917.14736.171.camel@mhfsdcap03>
+Subject: Re: [v6,3/4] PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Marc Zyngier <maz@kernel.org>
+Date: Mon, 28 Dec 2020 20:01:57 +0800
+In-Reply-To: <87ft3tpu67.wl-maz@kernel.org>
+References: <20201225100308.27052-1-jianjun.wang@mediatek.com>
+ <20201225100308.27052-4-jianjun.wang@mediatek.com>
+ <87ft3tpu67.wl-maz@kernel.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: B47E9DBE2CC96E2B73D24D5E63C2E3FFC97B81AE5F5B3DC724F34721FFC29D142000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201228_060845_941232_9C785DAC 
-X-CRM114-Status: GOOD (  20.35  )
+X-CRM114-CacheID: sfid-20201228_070215_416756_EFCB84AD 
+X-CRM114-Status: GOOD (  33.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,314 +82,1015 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- open list <linux-kernel@vger.kernel.org>, Satya Tangirala <satyat@google.com>,
- Avri Altman <avri.altman@wdc.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
-MIME-Version: 1.0
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, qizhong.cheng@mediatek.com,
+ chuanjia.liu@mediatek.com, linux-pci@vger.kernel.org,
+ Ryder Lee <ryder.lee@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, sin_jieyang@mediatek.com,
+ Sj Huang <sj.huang@mediatek.com>, drinkcat@chromium.org,
+ linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In contexts like suspend, shutdown and error handling, we need to suspend
-devfreq to make sure these contexts won't be disturbed by clock scaling.
-However, suspending devfreq is not enough since users can still trigger a
-clock scaling by manipulating the sysfs node clkscale_enable and devfreq
-sysfs nodes like min/max_freq and governor. Add one more flag in struct
-clk_scaling such that these contexts can prevent clock scaling from being
-invoked through above sysfs nodes.
+On Fri, 2020-12-25 at 19:22 +0000, Marc Zyngier wrote:
+> Hi Jianjun,
+> 
+> On Fri, 25 Dec 2020 10:03:07 +0000,
+> Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+> > 
+> > MediaTek's PCIe host controller has three generation HWs, the new
+> > generation HW is an individual bridge, it supports Gen3 speed and
+> > up to 256 MSI interrupt numbers for multi-function devices.
+> > 
+> > Add support for new Gen3 controller which can be found on MT8192.
+> > 
+> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> > ---
+> >  drivers/pci/controller/Kconfig              |   13 +
+> >  drivers/pci/controller/Makefile             |    1 +
+> >  drivers/pci/controller/pcie-mediatek-gen3.c | 1084 +++++++++++++++++++
+> >  3 files changed, 1098 insertions(+)
+> >  create mode 100644 drivers/pci/controller/pcie-mediatek-gen3.c
+> 
+> This is a pretty large patch, and it'd be great if you would split it
+> into at least 4 parts (core PCIe, PM, MSI, INTx).
 
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
-Signed-off-by: Can Guo <cang@codeaurora.org>
----
- drivers/scsi/ufs/ufshcd.c | 81 +++++++++++++++++++++++++++++++----------------
- drivers/scsi/ufs/ufshcd.h |  6 +++-
- 2 files changed, 58 insertions(+), 29 deletions(-)
+Hi Marc,
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 0c148fc..972e119 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1147,12 +1147,22 @@ static int ufshcd_clock_scaling_prepare(struct ufs_hba *hba)
- 	 */
- 	ufshcd_scsi_block_requests(hba);
- 	down_write(&hba->clk_scaling_lock);
--	if (ufshcd_wait_for_doorbell_clr(hba, DOORBELL_CLR_TOUT_US)) {
-+
-+	if (!hba->clk_scaling.is_allowed)
-+		ret = -EAGAIN;
-+	else if (ufshcd_wait_for_doorbell_clr(hba, DOORBELL_CLR_TOUT_US))
- 		ret = -EBUSY;
-+
-+	if (ret) {
- 		up_write(&hba->clk_scaling_lock);
- 		ufshcd_scsi_unblock_requests(hba);
-+		goto out;
- 	}
- 
-+	/* let's not get into low power until clock scaling is completed */
-+	ufshcd_hold(hba, false);
-+
-+out:
- 	return ret;
- }
- 
-@@ -1160,6 +1170,7 @@ static void ufshcd_clock_scaling_unprepare(struct ufs_hba *hba)
- {
- 	up_write(&hba->clk_scaling_lock);
- 	ufshcd_scsi_unblock_requests(hba);
-+	ufshcd_release(hba);
- }
- 
- /**
-@@ -1175,12 +1186,9 @@ static int ufshcd_devfreq_scale(struct ufs_hba *hba, bool scale_up)
- {
- 	int ret = 0;
- 
--	/* let's not get into low power until clock scaling is completed */
--	ufshcd_hold(hba, false);
--
- 	ret = ufshcd_clock_scaling_prepare(hba);
- 	if (ret)
--		goto out;
-+		return ret;
- 
- 	/* scale down the gear before scaling down clocks */
- 	if (!scale_up) {
-@@ -1212,8 +1220,6 @@ static int ufshcd_devfreq_scale(struct ufs_hba *hba, bool scale_up)
- 
- out_unprepare:
- 	ufshcd_clock_scaling_unprepare(hba);
--out:
--	ufshcd_release(hba);
- 	return ret;
- }
- 
-@@ -1487,7 +1493,7 @@ static ssize_t ufshcd_clkscale_enable_show(struct device *dev,
- {
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
- 
--	return snprintf(buf, PAGE_SIZE, "%d\n", hba->clk_scaling.is_allowed);
-+	return snprintf(buf, PAGE_SIZE, "%d\n", hba->clk_scaling.is_enabled);
- }
- 
- static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
-@@ -1496,12 +1502,20 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
- 	u32 value;
- 	int err;
-+	unsigned long flags;
-+	bool update = true;
- 
- 	if (kstrtou32(buf, 0, &value))
- 		return -EINVAL;
- 
- 	value = !!value;
--	if (value == hba->clk_scaling.is_allowed)
-+	spin_lock_irqsave(hba->host->host_lock, flags);
-+	if (value == hba->clk_scaling.is_enabled)
-+		update = false;
-+	else
-+		hba->clk_scaling.is_enabled = value;
-+	spin_unlock_irqrestore(hba->host->host_lock, flags);
-+	if (!update)
- 		goto out;
- 
- 	pm_runtime_get_sync(hba->dev);
-@@ -1510,8 +1524,6 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
- 	cancel_work_sync(&hba->clk_scaling.suspend_work);
- 	cancel_work_sync(&hba->clk_scaling.resume_work);
- 
--	hba->clk_scaling.is_allowed = value;
--
- 	if (value) {
- 		ufshcd_resume_clkscaling(hba);
- 	} else {
-@@ -1845,8 +1857,6 @@ static void ufshcd_init_clk_scaling(struct ufs_hba *hba)
- 	snprintf(wq_name, sizeof(wq_name), "ufs_clkscaling_%d",
- 		 hba->host->host_no);
- 	hba->clk_scaling.workq = create_singlethread_workqueue(wq_name);
--
--	ufshcd_clkscaling_init_sysfs(hba);
- }
- 
- static void ufshcd_exit_clk_scaling(struct ufs_hba *hba)
-@@ -1854,6 +1864,8 @@ static void ufshcd_exit_clk_scaling(struct ufs_hba *hba)
- 	if (!ufshcd_is_clkscaling_supported(hba))
- 		return;
- 
-+	if (hba->clk_scaling.enable_attr.attr.name)
-+		device_remove_file(hba->dev, &hba->clk_scaling.enable_attr);
- 	destroy_workqueue(hba->clk_scaling.workq);
- 	ufshcd_devfreq_remove(hba);
- }
-@@ -1918,7 +1930,7 @@ static void ufshcd_clk_scaling_start_busy(struct ufs_hba *hba)
- 	if (!hba->clk_scaling.active_reqs++)
- 		queue_resume_work = true;
- 
--	if (!hba->clk_scaling.is_allowed || hba->pm_op_in_progress)
-+	if (!hba->clk_scaling.is_enabled || hba->pm_op_in_progress)
- 		return;
- 
- 	if (queue_resume_work)
-@@ -4987,7 +4999,8 @@ static void __ufshcd_transfer_req_compl(struct ufs_hba *hba,
- 				complete(hba->dev_cmd.complete);
- 			}
- 		}
--		if (ufshcd_is_clkscaling_supported(hba))
-+		if (ufshcd_is_clkscaling_supported(hba) &&
-+		    hba->clk_scaling.active_reqs > 0)
- 			hba->clk_scaling.active_reqs--;
- 	}
- 
-@@ -5650,18 +5663,25 @@ static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
- 		ufshcd_vops_resume(hba, UFS_RUNTIME_PM);
- 	} else {
- 		ufshcd_hold(hba, false);
--		if (hba->clk_scaling.is_allowed) {
-+		if (hba->clk_scaling.is_enabled) {
- 			cancel_work_sync(&hba->clk_scaling.suspend_work);
- 			cancel_work_sync(&hba->clk_scaling.resume_work);
- 			ufshcd_suspend_clkscaling(hba);
- 		}
- 	}
-+	down_write(&hba->clk_scaling_lock);
-+	hba->clk_scaling.is_allowed = false;
-+	up_write(&hba->clk_scaling_lock);
- }
- 
- static void ufshcd_err_handling_unprepare(struct ufs_hba *hba)
- {
- 	ufshcd_release(hba);
--	if (hba->clk_scaling.is_allowed)
-+
-+	down_write(&hba->clk_scaling_lock);
-+	hba->clk_scaling.is_allowed = true;
-+	up_write(&hba->clk_scaling_lock);
-+	if (hba->clk_scaling.is_enabled)
- 		ufshcd_resume_clkscaling(hba);
- 	pm_runtime_put(hba->dev);
- }
-@@ -7620,12 +7640,14 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
- 			sizeof(struct ufs_pa_layer_attr));
- 		hba->clk_scaling.saved_pwr_info.is_valid = true;
- 		if (!hba->devfreq) {
-+			hba->clk_scaling.is_allowed = true;
- 			ret = ufshcd_devfreq_init(hba);
- 			if (ret)
- 				goto out;
--		}
- 
--		hba->clk_scaling.is_allowed = true;
-+			hba->clk_scaling.is_enabled = true;
-+			ufshcd_clkscaling_init_sysfs(hba);
-+		}
- 	}
- 
- 	ufs_bsg_probe(hba);
-@@ -8491,11 +8513,14 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	ufshcd_hold(hba, false);
- 	hba->clk_gating.is_suspended = true;
- 
--	if (hba->clk_scaling.is_allowed) {
-+	if (hba->clk_scaling.is_enabled) {
- 		cancel_work_sync(&hba->clk_scaling.suspend_work);
- 		cancel_work_sync(&hba->clk_scaling.resume_work);
- 		ufshcd_suspend_clkscaling(hba);
- 	}
-+	down_write(&hba->clk_scaling_lock);
-+	hba->clk_scaling.is_allowed = false;
-+	up_write(&hba->clk_scaling_lock);
- 
- 	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
- 			req_link_state == UIC_LINK_ACTIVE_STATE) {
-@@ -8592,8 +8617,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	goto out;
- 
- set_link_active:
--	if (hba->clk_scaling.is_allowed)
--		ufshcd_resume_clkscaling(hba);
- 	ufshcd_vreg_set_hpm(hba);
- 	if (ufshcd_is_link_hibern8(hba) && !ufshcd_uic_hibern8_exit(hba))
- 		ufshcd_set_link_active(hba);
-@@ -8603,7 +8626,10 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	if (!ufshcd_set_dev_pwr_mode(hba, UFS_ACTIVE_PWR_MODE))
- 		ufshcd_disable_auto_bkops(hba);
- enable_gating:
--	if (hba->clk_scaling.is_allowed)
-+	down_write(&hba->clk_scaling_lock);
-+	hba->clk_scaling.is_allowed = true;
-+	up_write(&hba->clk_scaling_lock);
-+	if (hba->clk_scaling.is_enabled)
- 		ufshcd_resume_clkscaling(hba);
- 	hba->clk_gating.is_suspended = false;
- 	hba->dev_info.b_rpm_dev_flush_capable = false;
-@@ -8701,7 +8727,10 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 
- 	hba->clk_gating.is_suspended = false;
- 
--	if (hba->clk_scaling.is_allowed)
-+	down_write(&hba->clk_scaling_lock);
-+	hba->clk_scaling.is_allowed = true;
-+	up_write(&hba->clk_scaling_lock);
-+	if (hba->clk_scaling.is_enabled)
- 		ufshcd_resume_clkscaling(hba);
- 
- 	/* Enable Auto-Hibernate if configured */
-@@ -8725,8 +8754,6 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	ufshcd_vreg_set_lpm(hba);
- disable_irq_and_vops_clks:
- 	ufshcd_disable_irq(hba);
--	if (hba->clk_scaling.is_allowed)
--		ufshcd_suspend_clkscaling(hba);
- 	ufshcd_setup_clocks(hba, false);
- 	if (ufshcd_is_clkgating_allowed(hba)) {
- 		hba->clk_gating.state = CLKS_OFF;
-@@ -8944,8 +8971,6 @@ void ufshcd_remove(struct ufs_hba *hba)
- 
- 	ufshcd_exit_clk_scaling(hba);
- 	ufshcd_exit_clk_gating(hba);
--	if (ufshcd_is_clkscaling_supported(hba))
--		device_remove_file(hba->dev, &hba->clk_scaling.enable_attr);
- 	ufshcd_hba_exit(hba);
- }
- EXPORT_SYMBOL_GPL(ufshcd_remove);
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index e0f00a4..5737679 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -382,7 +382,10 @@ struct ufs_saved_pwr_info {
-  * @workq: workqueue to schedule devfreq suspend/resume work
-  * @suspend_work: worker to suspend devfreq
-  * @resume_work: worker to resume devfreq
-- * @is_allowed: tracks if scaling is currently allowed or not
-+ * @is_enabled: tracks if scaling is currently enabled or not, controlled by
-+		clkscale_enable sysfs node
-+ * @is_allowed: tracks if scaling is currently allowed or not, used to block
-+		clock scaling which is not invoked from devfreq governor
-  * @is_busy_started: tracks if busy period has started or not
-  * @is_suspended: tracks if devfreq is suspended or not
-  */
-@@ -396,6 +399,7 @@ struct ufs_clk_scaling {
- 	struct workqueue_struct *workq;
- 	struct work_struct suspend_work;
- 	struct work_struct resume_work;
-+	bool is_enabled;
- 	bool is_allowed;
- 	bool is_busy_started;
- 	bool is_suspended;
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+Thanks for your review, I will try to split it to those parts in the
+next version.
+> 
+> > 
+> > diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+> > index 64e2f5e379aa..b242b17025b3 100644
+> > --- a/drivers/pci/controller/Kconfig
+> > +++ b/drivers/pci/controller/Kconfig
+> > @@ -242,6 +242,19 @@ config PCIE_MEDIATEK
+> >  	  Say Y here if you want to enable PCIe controller support on
+> >  	  MediaTek SoCs.
+> >  
+> > +config PCIE_MEDIATEK_GEN3
+> > +	tristate "MediaTek Gen3 PCIe controller"
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	depends on PCI_MSI_IRQ_DOMAIN
+> > +	help
+> > +	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
+> > +	  This PCIe controller is compatible with Gen3, Gen2 and Gen1 speed,
+> > +	  and support up to 256 MSI interrupt numbers for
+> > +	  multi-function devices.
+> > +
+> > +	  Say Y here if you want to enable Gen3 PCIe controller support on
+> > +	  MediaTek SoCs.
+> > +
+> >  config PCIE_TANGO_SMP8759
+> >  	bool "Tango SMP8759 PCIe controller (DANGEROUS)"
+> >  	depends on ARCH_TANGO && PCI_MSI && OF
+> > diff --git a/drivers/pci/controller/Makefile b/drivers/pci/controller/Makefile
+> > index 04c6edc285c5..df5d77d72a9d 100644
+> > --- a/drivers/pci/controller/Makefile
+> > +++ b/drivers/pci/controller/Makefile
+> > @@ -27,6 +27,7 @@ obj-$(CONFIG_PCIE_ROCKCHIP) += pcie-rockchip.o
+> >  obj-$(CONFIG_PCIE_ROCKCHIP_EP) += pcie-rockchip-ep.o
+> >  obj-$(CONFIG_PCIE_ROCKCHIP_HOST) += pcie-rockchip-host.o
+> >  obj-$(CONFIG_PCIE_MEDIATEK) += pcie-mediatek.o
+> > +obj-$(CONFIG_PCIE_MEDIATEK_GEN3) += pcie-mediatek-gen3.o
+> >  obj-$(CONFIG_PCIE_TANGO_SMP8759) += pcie-tango.o
+> >  obj-$(CONFIG_VMD) += vmd.o
+> >  obj-$(CONFIG_PCIE_BRCMSTB) += pcie-brcmstb.o
+> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > new file mode 100644
+> > index 000000000000..00cdb598a9f5
+> > --- /dev/null
+> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > @@ -0,0 +1,1084 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * MediaTek PCIe host controller driver.
+> > + *
+> > + * Copyright (c) 2020 MediaTek Inc.
+> > + * Author: Jianjun Wang <jianjun.wang@mediatek.com>
+> > + */
+> > +
+> > +#include <linux/clk.h>
+> > +#include <linux/delay.h>
+> > +#include <linux/iopoll.h>
+> > +#include <linux/irq.h>
+> > +#include <linux/irqchip/chained_irq.h>
+> > +#include <linux/irqdomain.h>
+> > +#include <linux/kernel.h>
+> > +#include <linux/module.h>
+> > +#include <linux/msi.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/of_clk.h>
+> > +#include <linux/of_pci.h>
+> > +#include <linux/of_platform.h>
+> > +#include <linux/pci.h>
+> > +#include <linux/phy/phy.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/pm_domain.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include <linux/reset.h>
+> > +
+> > +#include "../pci.h"
+> > +
+> > +#define PCIE_SETTING_REG		0x80
+> > +#define PCIE_PCI_IDS_1			0x9c
+> > +#define PCI_CLASS(class)		(class << 8)
+> > +#define PCIE_RC_MODE			BIT(0)
+> > +
+> > +#define PCIE_CFGNUM_REG			0x140
+> > +#define PCIE_CFG_DEVFN(devfn)		((devfn) & GENMASK(7, 0))
+> > +#define PCIE_CFG_BUS(bus)		(((bus) << 8) & GENMASK(15, 8))
+> > +#define PCIE_CFG_BYTE_EN(bytes)		(((bytes) << 16) & GENMASK(19, 16))
+> > +#define PCIE_CFG_FORCE_BYTE_EN		BIT(20)
+> > +#define PCIE_CFG_OFFSET_ADDR		0x1000
+> > +#define PCIE_CFG_HEADER(bus, devfn) \
+> > +	(PCIE_CFG_BUS(bus) | PCIE_CFG_DEVFN(devfn))
+> > +
+> > +#define PCIE_RST_CTRL_REG		0x148
+> > +#define PCIE_MAC_RSTB			BIT(0)
+> > +#define PCIE_PHY_RSTB			BIT(1)
+> > +#define PCIE_BRG_RSTB			BIT(2)
+> > +#define PCIE_PE_RSTB			BIT(3)
+> > +
+> > +#define PCIE_LTSSM_STATUS_REG		0x150
+> > +#define PCIE_LTSSM_STATE_MASK		GENMASK(28, 24)
+> > +#define PCIE_LTSSM_STATE(val)		((val & PCIE_LTSSM_STATE_MASK) >> 24)
+> > +#define PCIE_LTSSM_STATE_L2_IDLE	0x14
+> > +
+> > +#define PCIE_LINK_STATUS_REG		0x154
+> > +#define PCIE_PORT_LINKUP		BIT(8)
+> > +
+> > +#define PCIE_MSI_SET_NUM		8
+> > +#define PCIE_MSI_IRQS_PER_SET		32
+> > +#define PCIE_MSI_IRQS_NUM \
+> > +	(PCIE_MSI_IRQS_PER_SET * (PCIE_MSI_SET_NUM))
+> > +
+> > +#define PCIE_INT_ENABLE_REG		0x180
+> > +#define PCIE_MSI_MASK			GENMASK(PCIE_MSI_SET_NUM + 8 - 1, 8)
+> > +#define PCIE_MSI_SHIFT			8
+> > +#define PCIE_INTX_SHIFT			24
+> > +#define PCIE_INTX_MASK			GENMASK(27, 24)
+> > +
+> > +#define PCIE_INT_STATUS_REG		0x184
+> > +#define PCIE_MSI_SET_ENABLE_REG		0x190
+> > +
+> > +#define PCIE_ICMD_PM_REG		0x198
+> > +#define PCIE_TURN_OFF_LINK		BIT(4)
+> > +
+> > +#define PCIE_MSI_ADDR_BASE_REG		0xc00
+> > +#define PCIE_MSI_SET_OFFSET		0x10
+> > +#define PCIE_MSI_STATUS_OFFSET		0x04
+> > +#define PCIE_MSI_ENABLE_OFFSET		0x08
+> > +
+> > +#define PCIE_TRANS_TABLE_BASE_REG	0x800
+> > +#define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
+> > +#define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
+> > +#define PCIE_ATR_TRSL_ADDR_MSB_OFFSET	0xc
+> > +#define PCIE_ATR_TRSL_PARAM_OFFSET	0x10
+> > +#define PCIE_ATR_TLB_SET_OFFSET		0x20
+> > +
+> > +#define PCIE_MAX_TRANS_TABLES		8
+> > +#define PCIE_ATR_EN			BIT(0)
+> > +#define PCIE_ATR_SIZE(size) \
+> > +	(((((size) - 1) << 1) & GENMASK(6, 1)) | PCIE_ATR_EN)
+> > +#define PCIE_ATR_ID(id)			((id) & GENMASK(3, 0))
+> > +#define PCIE_ATR_TYPE_MEM		PCIE_ATR_ID(0)
+> > +#define PCIE_ATR_TYPE_IO		PCIE_ATR_ID(1)
+> > +#define PCIE_ATR_TLP_TYPE(type)		(((type) << 16) & GENMASK(18, 16))
+> > +#define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
+> > +#define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
+> > +
+> > +/**
+> > + * struct mtk_pcie_msi - MSI information for each set
+> > + * @base: IO mapped register base
+> > + * @irq: MSI set Interrupt number
+> > + * @index: MSI set number
+> > + * @msg_addr: MSI message address
+> > + * @domain: IRQ domain
+> > + */
+> > +struct mtk_pcie_msi {
+> > +	void __iomem *base;
+> > +	unsigned int irq;
+> > +	int index;
+> > +	phys_addr_t msg_addr;
+> > +	struct irq_domain *domain;
+> > +};
+> 
+> This looks odd. You seem to say that this covers a set if MSIs, and
+> yet the irq field here clearly isn't part of a set. Is that per MSI
+> instead? Either way, something is not quite as it should be.
+> 
 
+Appreciate all these comments, please allow me to explain the MSI
+interrupt design in this HW.
+
+The HW design of MSI interrupts will be like the following:
+
+                  +-----+
+                  | GIC |
+                  +-----+
+                     ^
+                     |
+                     |[port->irq]
+                     |
+             +-+-+-+-+-+-+-+-+
+             |0|1|2|3|4|5|6|7|[PCIe intc]
+             +-+-+-+-+-+-+-+-+
+              ^ ^           ^
+              | |    ...    |[msi_info->irq]
+      +-------+ +------+    +-----------+
+      |                |                |
++-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+|0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31|[MSI sets]
++-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+ ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
+ | |      |  |    | |      |  |    | |      |  | [MSI irq]
+ | |      |  |    | |      |  |    | |      |  |
+
+  (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
+
+
+In software parts, the port->msi_top_domain is created to maintains 8
+MSI IRQs from the PCIe intc layer, its hardware IRQ will be mapped to
+msi_info->irq by irq_create_mapping.
+
+The port->msi_domain contains 256 MSI IRQs in total, it consist of 8 MSI
+sets, and each MSI set contains 32 MSI IRQs.
+
+The structure of mtk_pcie_msi is used to describe the MSI set, I think
+it will be more convenient and comply with the HW design when use this
+structure, we can get the information of MSI set directly, instead of
+calculated by port->base.
+
+When a MSI interrupt is received, the interrupt handle flow will be like
+the following:
+
+              mtk_pcie_irq_handler (port->irq)
+                        |
+                        |(find mapping in msi_top_domain)
+                        |
+                        v
+                mtk_pcie_msi_handler (msi_info->irq)
+                        |
+                        |(find mapping in msi_domain)
+                        |
+                        v
+                 handle_edge_irq  (MSI irq)
+                        |
+                        |
+                        v
+            (dispatch to device handler)
+
+Yes, I had to admit that it's not a quite good solution of irqdomains,
+since the local irq domain is partial coupled with the standard PCI MSI
+irqdomain.
+
+Should I need to create another irqdomain to maintain the MSI sets
+layer, and set it as the parent domain of PCI MSI domain? I really need
+your suggestions, thanks a lot.
+
+> > +
+> > +/**
+> > + * struct mtk_pcie_port - PCIe port information
+> > + * @dev: PCIe device
+> > + * @base: IO mapped register base
+> > + * @reg_base: Physical register base
+> > + * @mac_reset: mac reset control
+> > + * @phy_reset: phy reset control
+> > + * @phy: PHY controller block
+> > + * @clks: PCIe clocks
+> > + * @num_clks: PCIe clocks count for this port
+> > + * @irq: PCIe controller interrupt number
+> > + * @intx_domain: legacy INTx IRQ domain
+> > + * @msi_domain: MSI IRQ domain
+> > + * @msi_top_domain: MSI IRQ top domain
+> > + * @msi_info: MSI sets information
+> > + * @lock: lock protecting IRQ bit map
+> > + * @msi_irq_in_use: bit map for assigned MSI IRQ
+> > + */
+> > +struct mtk_pcie_port {
+> > +	struct device *dev;
+> > +	void __iomem *base;
+> > +	phys_addr_t reg_base;
+> > +	struct reset_control *mac_reset;
+> > +	struct reset_control *phy_reset;
+> > +	struct phy *phy;
+> > +	struct clk_bulk_data *clks;
+> > +	int num_clks;
+> > +
+> > +	int irq;
+> > +	struct irq_domain *intx_domain;
+> > +	struct irq_domain *msi_domain;
+> > +	struct irq_domain *msi_top_domain;
+> > +	struct mtk_pcie_msi **msi_info;
+> > +	struct mutex lock;
+> > +	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
+> > +};
+> > +
+> > +/**
+> > + * mtk_pcie_config_tlp_header
+> > + * @bus: PCI bus to query
+> > + * @devfn: device/function number
+> > + * @where: offset in config space
+> > + * @size: data size in TLP header
+> > + *
+> > + * Set byte enable field and device information in configuration TLP header.
+> > + */
+> > +static void mtk_pcie_config_tlp_header(struct pci_bus *bus, unsigned int devfn,
+> > +					int where, int size)
+> > +{
+> > +	struct mtk_pcie_port *port = bus->sysdata;
+> > +	int bytes;
+> > +	u32 val;
+> > +
+> > +	bytes = (GENMASK(size - 1, 0) & 0xf) << (where & 0x3);
+> > +
+> > +	val = PCIE_CFG_FORCE_BYTE_EN | PCIE_CFG_BYTE_EN(bytes) |
+> > +	      PCIE_CFG_HEADER(bus->number, devfn);
+> > +
+> > +	writel(val, port->base + PCIE_CFGNUM_REG);
+> 
+> Please convert all instances of writel/readl to their relaxed version,
+> unless you can show that you need the extra memory ordering
+> enforcement. This is specially valuable on an arm64 system (which
+> MT8192 seems to be).
+
+Sure, I will fix it in the next version.
+> 
+> > +}
+> > +
+> > +static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus, unsigned int devfn,
+> > +				      int where)
+> > +{
+> > +	struct mtk_pcie_port *port = bus->sysdata;
+> > +
+> > +	return port->base + PCIE_CFG_OFFSET_ADDR + where;
+> > +}
+> > +
+> > +static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
+> > +				int where, int size, u32 *val)
+> > +{
+> > +	mtk_pcie_config_tlp_header(bus, devfn, where, size);
+> > +
+> > +	return pci_generic_config_read32(bus, devfn, where, size, val);
+> > +}
+> > +
+> > +static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
+> > +				 int where, int size, u32 val)
+> > +{
+> > +	mtk_pcie_config_tlp_header(bus, devfn, where, size);
+> > +
+> > +	if (size <= 2)
+> > +		val <<= (where & 0x3) * 8;
+> > +
+> > +	return pci_generic_config_write32(bus, devfn, where, 4, val);
+> > +}
+> > +
+> > +static struct pci_ops mtk_pcie_ops = {
+> > +	.map_bus = mtk_pcie_map_bus,
+> > +	.read  = mtk_pcie_config_read,
+> > +	.write = mtk_pcie_config_write,
+> > +};
+> > +
+> > +static int mtk_pcie_set_trans_table(struct mtk_pcie_port *port,
+> > +				    resource_size_t cpu_addr,
+> > +				    resource_size_t pci_addr,
+> > +				    resource_size_t size,
+> > +				    unsigned long type, int num)
+> > +{
+> > +	void __iomem *table;
+> > +	u32 val;
+> > +
+> > +	if (num >= PCIE_MAX_TRANS_TABLES) {
+> > +		dev_err(port->dev, "not enough translate table[%d] for addr: %#llx, limited to [%d]\n",
+> > +			num, (unsigned long long) cpu_addr,
+> > +			PCIE_MAX_TRANS_TABLES);
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	table = port->base + PCIE_TRANS_TABLE_BASE_REG +
+> > +		num * PCIE_ATR_TLB_SET_OFFSET;
+> > +
+> > +	writel(lower_32_bits(cpu_addr) | PCIE_ATR_SIZE(fls(size) - 1), table);
+> > +	writel(upper_32_bits(cpu_addr), table + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
+> > +	writel(lower_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
+> > +	writel(upper_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
+> > +
+> > +	if (type == IORESOURCE_IO)
+> > +		val = PCIE_ATR_TYPE_IO | PCIE_ATR_TLP_TYPE_IO;
+> > +	else
+> > +		val = PCIE_ATR_TYPE_MEM | PCIE_ATR_TLP_TYPE_MEM;
+> > +
+> > +	writel(val, table + PCIE_ATR_TRSL_PARAM_OFFSET);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+> > +{
+> > +	struct resource_entry *entry;
+> > +	struct pci_host_bridge *host = pci_host_bridge_from_priv(port);
+> > +	unsigned int table_index = 0;
+> > +	int err;
+> > +	u32 val;
+> > +
+> > +	/* Set as RC mode */
+> > +	val = readl(port->base + PCIE_SETTING_REG);
+> > +	val |= PCIE_RC_MODE;
+> > +	writel(val, port->base + PCIE_SETTING_REG);
+> > +
+> > +	/* Set class code */
+> > +	val = readl(port->base + PCIE_PCI_IDS_1);
+> > +	val &= ~GENMASK(31, 8);
+> > +	val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
+> > +	writel(val, port->base + PCIE_PCI_IDS_1);
+> > +
+> > +	/* Assert all reset signals */
+> > +	val = readl(port->base + PCIE_RST_CTRL_REG);
+> > +	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> > +	writel(val, port->base + PCIE_RST_CTRL_REG);
+> > +
+> > +	/* De-assert reset signals */
+> > +	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
+> > +	writel(val, port->base + PCIE_RST_CTRL_REG);
+> > +
+> > +	/* Delay 100ms to wait the reference clocks become stable */
+> > +	msleep(100);
+> > +
+> > +	/* De-assert PERST# signal */
+> > +	val &= ~PCIE_PE_RSTB;
+> > +	writel(val, port->base + PCIE_RST_CTRL_REG);
+> > +
+> > +	/* Check if the link is up or not */
+> > +	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_REG, val,
+> > +			!!(val & PCIE_PORT_LINKUP), 20,
+> > +			50 * USEC_PER_MSEC);
+> > +	if (err) {
+> > +		val = readl(port->base + PCIE_LTSSM_STATUS_REG);
+> > +		dev_err(port->dev, "PCIe link down, ltssm reg val: %#x\n", val);
+> > +		return err;
+> > +	}
+> > +
+> > +	/* Set PCIe translation windows */
+> > +	resource_list_for_each_entry(entry, &host->windows) {
+> > +		struct resource *res = entry->res;
+> > +		unsigned long type = resource_type(res);
+> > +		resource_size_t cpu_addr;
+> > +		resource_size_t pci_addr;
+> > +		resource_size_t size;
+> > +		const char *range_type;
+> > +
+> > +		if (type == IORESOURCE_IO) {
+> > +			cpu_addr = pci_pio_to_address(res->start);
+> > +			range_type = "IO";
+> > +		} else if (type == IORESOURCE_MEM) {
+> > +			cpu_addr = res->start;
+> > +			range_type = "MEM";
+> > +		} else {
+> > +			continue;
+> > +		}
+> > +
+> > +		pci_addr = res->start - entry->offset;
+> > +		size = resource_size(res);
+> > +		err = mtk_pcie_set_trans_table(port, cpu_addr, pci_addr, size,
+> > +					       type, table_index);
+> > +		if (err)
+> > +			return err;
+> > +
+> > +		dev_dbg(port->dev, "set %s trans window[%d]: cpu_addr = %#llx, pci_addr = %#llx, size = %#llx\n",
+> > +			range_type, table_index, (unsigned long long) cpu_addr,
+> > +			(unsigned long long) pci_addr,
+> > +			(unsigned long long) size);
+> > +
+> > +		table_index++;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static inline struct mtk_pcie_msi *mtk_get_msi_info(struct mtk_pcie_port *port,
+> > +						    unsigned long hwirq)
+> > +{
+> > +	return port->msi_info[hwirq / PCIE_MSI_IRQS_PER_SET];
+> > +}
+> > +
+> > +static int mtk_pcie_set_affinity(struct irq_data *data,
+> > +				 const struct cpumask *mask, bool force)
+> > +{
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	struct irq_data *port_data = irq_get_irq_data(port->irq);
+> 
+> NAK. Either you are resolving an irqdata that is the same as the one
+> as the one passed as a parameter (and it is thus pointless), or you
+> are poking into some other interrupt, and it is a terrible layering
+> violation. Either way, this must go.
+> 
+> > +	struct irq_chip *port_chip = irq_data_get_irq_chip(port_data);
+> > +	int ret;
+> > +
+> > +	if (!port_chip || !port_chip->irq_set_affinity)
+> > +		return -EINVAL;
+> 
+> In what circumstances can this fail?
+> 
+> > +
+> > +	ret = port_chip->irq_set_affinity(port_data, mask, force);
+> 
+> You really have to explain this indirection, and possibly remove it.
+
+As the MSI HW designs described before, port->irq is the only interrupt
+which connected with GIC, so the only way to set irq affinity is that to
+use the irq_set_affinity callback of port_chip.
+
+It seems there is no chance to implement this callback, I will replace
+to "return -EINVAL" in the next version.
+> 
+> > +
+> > +	irq_data_update_effective_affinity(data, mask);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+> > +{
+> > +	struct mtk_pcie_msi *msi_info;
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	unsigned long hwirq;
+> > +
+> > +	msi_info = mtk_get_msi_info(port, data->hwirq);
+> 
+> So msi_info *is* per interrupt, and yet contains information that is
+> seemingly global. Please address this.
+
+I will fix it in the next version.
+
+> 
+> > +	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
+> > +
+> > +	msg->address_hi = 0;
+> 
+> What guarantees this?
+
+It should not be set to 0 directly, I will replace to
+upper_32_bits(msi_info->msi_addr) in the next version.
+> 
+> > +	msg->address_lo = lower_32_bits(msi_info->msg_addr);
+> > +	msg->data = hwirq;
+> > +	dev_dbg(port->dev, "msi#%#lx address_hi %#x address_lo %#x data %d\n",
+> > +		hwirq, msg->address_hi, msg->address_lo, msg->data);
+> 
+> If address_hi is always 0, what is the point of printing it?
+> 
+> > +}
+> > +
+> > +static void mtk_msi_irq_ack(struct irq_data *data)
+> > +{
+> > +	struct mtk_pcie_msi *msi_info;
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	unsigned long hwirq;
+> > +
+> > +	msi_info = mtk_get_msi_info(port, data->hwirq);
+> > +	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
+> > +
+> > +	writel(BIT(hwirq), msi_info->base + PCIE_MSI_STATUS_OFFSET);
+> > +}
+> > +
+> > +static void mtk_msi_irq_mask(struct irq_data *data)
+> > +{
+> > +	struct mtk_pcie_msi *msi_info;
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	unsigned long hwirq;
+> > +	u32 val;
+> > +
+> > +	msi_info = mtk_get_msi_info(port, data->hwirq);
+> > +	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
+> > +
+> > +	val = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
+> > +	val &= ~BIT(hwirq);
+> > +	writel(val, msi_info->base + PCIE_MSI_ENABLE_OFFSET);
+> > +
+> > +	pci_msi_mask_irq(data);
+> 
+> This is at the wrong location. The common idiom is to split PCI and
+> generic MSI. Please follow the same idiom in order to keep the code
+> maintainable.
+> 
+> > +}
+> > +
+> > +static void mtk_msi_irq_unmask(struct irq_data *data)
+> > +{
+> > +	struct mtk_pcie_msi *msi_info;
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	unsigned long hwirq;
+> > +	u32 val;
+> > +
+> > +	msi_info = mtk_get_msi_info(port, data->hwirq);
+> > +	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
+> > +
+> > +	val = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
+> > +	val |= BIT(hwirq);
+> > +	writel(val, msi_info->base + PCIE_MSI_ENABLE_OFFSET);
+> > +
+> > +	pci_msi_unmask_irq(data);
+> 
+> Same thing here.
+> 
+> > +}
+> > +
+> > +static struct irq_chip mtk_msi_irq_chip = {
+> > +	.irq_ack		= mtk_msi_irq_ack,
+> > +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
+> > +	.irq_mask		= mtk_msi_irq_mask,
+> > +	.irq_unmask		= mtk_msi_irq_unmask,
+> > +	.irq_set_affinity	= mtk_pcie_set_affinity,
+> > +	.name			= "PCIe",
+> > +};
+> > +
+> > +static irq_hw_number_t mtk_pcie_get_hwirq(struct msi_domain_info *info,
+> > +					  msi_alloc_info_t *arg)
+> > +{
+> > +	struct msi_desc *desc = arg->desc;
+> > +	irq_hw_number_t hwirq = arg->hwirq;
+> > +
+> > +	arg->hwirq += desc->nvec_used;
+> > +
+> > +	return hwirq;
+> > +}
+> 
+> Please follow the common MSI flow. There is absolutely no need to
+> reinvent the wheel.
+> 
+> > +
+> > +static void mtk_pcie_msi_free(struct irq_domain *domain,
+> > +			      struct msi_domain_info *info, unsigned int virq)
+> > +{
+> > +	struct irq_data *data = irq_domain_get_irq_data(domain, virq);
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +
+> > +	mutex_lock(&port->lock);
+> > +
+> > +	bitmap_clear(port->msi_irq_in_use, data->hwirq, 1);
+> > +
+> > +	mutex_unlock(&port->lock);
+> > +}
+> > +
+> > +static int mtk_pcie_msi_prepare(struct irq_domain *domain, struct device *dev,
+> > +				int nvec, msi_alloc_info_t *arg)
+> > +{
+> > +	struct msi_domain_info *info = domain->host_data;
+> > +	struct mtk_pcie_port *port = info->chip_data;
+> > +	struct msi_desc *desc = first_pci_msi_entry(to_pci_dev(dev));
+> > +	int hwirq, ret = 0;
+> > +
+> > +	mutex_lock(&port->lock);
+> > +
+> > +	if (desc->msi_attrib.is_msix) {
+> > +		int i;
+> > +		unsigned long bit;
+> > +
+> > +		for (i = 0; i < nvec; i++) {
+> > +			bit = find_first_zero_bit(port->msi_irq_in_use,
+> > +						  PCIE_MSI_IRQS_NUM);
+> > +			if (bit >= PCIE_MSI_IRQS_NUM) {
+> > +				ret = -ENOSPC;
+> > +				goto msi_prepare_out;
+> > +			} else {
+> > +				set_bit(bit, port->msi_irq_in_use);
+> > +			}
+> > +		}
+> > +
+> > +		hwirq = bit - nvec;
+> > +	} else {
+> > +		hwirq = bitmap_find_free_region(port->msi_irq_in_use,
+> > +						PCIE_MSI_IRQS_NUM,
+> > +						order_base_2(nvec));
+> > +		if (hwirq < 0)
+> > +			ret = -ENOSPC;
+> > +	}
+> > +
+> > +msi_prepare_out:
+> > +	mutex_unlock(&port->lock);
+> > +
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	memset(arg, 0, sizeof(*arg));
+> > +	arg->hwirq = hwirq;
+> > +
+> > +	return 0;
+> > +}
+> 
+> NAK. This should take place in the irqdomain alloc path. .prepare is
+> reserved for HW that require per-device setup, and this doesn't
+> interact with the HW at all.
+> 
+> Your distinction between MSI-X and non-MSI-X also becomes moot once
+> you place the allocator at the place where allocations take place.
+> 
+> > +
+> > +static void mtk_pcie_msi_set_desc(msi_alloc_info_t *arg, struct msi_desc *desc)
+> > +{
+> > +	arg->desc = desc;
+> > +}
+> 
+> NAK. Please use the common PCI flow.
+> 
+> > +
+> > +static struct msi_domain_ops mtk_msi_domain_ops = {
+> > +	.get_hwirq	= mtk_pcie_get_hwirq,
+> > +	.msi_free	= mtk_pcie_msi_free,
+> > +	.msi_prepare	= mtk_pcie_msi_prepare,
+> > +	.set_desc	= mtk_pcie_msi_set_desc,
+> > +};
+> > +
+> > +static struct msi_domain_info mtk_msi_domain_info = {
+> > +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_PCI_MSIX |
+> > +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_MULTI_PCI_MSI),
+> > +	.chip		= &mtk_msi_irq_chip,
+> > +	.ops		= &mtk_msi_domain_ops,
+> > +	.handler	= handle_edge_irq,
+> > +	.handler_name	= "MSI",
+> > +};
+> > +
+> > +static void mtk_msi_top_irq_eoi(struct irq_data *data)
+> > +{
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	unsigned long msi_irq = data->hwirq + PCIE_MSI_SHIFT;
+> > +
+> > +	writel(BIT(msi_irq), port->base + PCIE_INT_STATUS_REG);
+> > +}
+> > +
+> > +static struct irq_chip mtk_msi_top_irq_chip = {
+> > +	.irq_eoi	= mtk_msi_top_irq_eoi,
+> > +	.name		= "PCIe",
+> > +};
+> > +
+> > +static void mtk_pcie_msi_handler(struct irq_desc *desc)
+> > +{
+> > +	struct mtk_pcie_msi *msi_info = irq_desc_get_handler_data(desc);
+> > +	struct irq_chip *irqchip = irq_desc_get_chip(desc);
+> > +	unsigned long msi_enable, msi_status;
+> > +	unsigned int virq;
+> > +	irq_hw_number_t bit, hwirq;
+> > +
+> > +	chained_irq_enter(irqchip, desc);
+> > +
+> > +	msi_enable = readl(msi_info->base + PCIE_MSI_ENABLE_OFFSET);
+> > +	while ((msi_status = readl(msi_info->base + PCIE_MSI_STATUS_OFFSET) &
+> > +	       msi_enable)) {
+> > +		for_each_set_bit(bit, &msi_status, PCIE_MSI_IRQS_PER_SET) {
+> > +			hwirq = bit + msi_info->index * PCIE_MSI_IRQS_PER_SET;
+> > +			virq = irq_find_mapping(msi_info->domain, hwirq);
+> > +			generic_handle_irq(virq);
+> > +		}
+> > +	}
+> > +
+> > +	chained_irq_exit(irqchip, desc);
+> 
+> If your MSIs are behind a muxing interrupt you *cannot* implement an
+> affinity setting callback, as this changes the affinity of *all* MSIs
+> in one go, which is a userspace ABI violation. I can't believe that
+> this is almost 2021, and people are still shipping HW that is that
+> broken :-(.
+
+Sorry, I haven't noticed the potential risk of userspace ABI violation,
+thanks for pointing out.
+> 
+> > +}
+> > +
+> > +static int mtk_msi_top_domain_map(struct irq_domain *domain,
+> > +				    unsigned int virq, irq_hw_number_t hwirq)
+> > +{
+> > +	struct mtk_pcie_port *port = domain->host_data;
+> > +	struct mtk_pcie_msi *msi_info = port->msi_info[hwirq];
+> > +
+> > +	irq_domain_set_info(domain, virq, hwirq,
+> > +			    &mtk_msi_top_irq_chip, domain->host_data,
+> > +			    mtk_pcie_msi_handler, msi_info, NULL);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct irq_domain_ops mtk_msi_top_domain_ops = {
+> > +	.map = mtk_msi_top_domain_map,
+> 
+> NAK. MSIs do not need a mapping callback. This belongs to the
+> irqdomain alloc callback, which you don't implement.
+> 
+> > +};
+> > +
+> > +static void mtk_intx_mask(struct irq_data *data)
+> > +{
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	u32 val;
+> > +
+> > +	val = readl(port->base + PCIE_INT_ENABLE_REG);
+> > +	val &= ~BIT(data->hwirq + PCIE_INTX_SHIFT);
+> > +	writel(val, port->base + PCIE_INT_ENABLE_REG);
+> > +}
+> > +
+> > +static void mtk_intx_unmask(struct irq_data *data)
+> > +{
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	u32 val;
+> > +
+> > +	val = readl(port->base + PCIE_INT_ENABLE_REG);
+> > +	val |= BIT(data->hwirq + PCIE_INTX_SHIFT);
+> > +	writel(val, port->base + PCIE_INT_ENABLE_REG);
+> > +}
+> > +
+> > +static void mtk_intx_eoi(struct irq_data *data)
+> > +{
+> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> > +	unsigned long hwirq;
+> > +
+> > +	/**
+> > +	 * As an emulated level IRQ, its interrupt status will remain
+> > +	 * until the corresponding de-assert message is received; hence that
+> > +	 * the status can only be cleared when the interrupt has been serviced.
+> > +	 */
+> > +	hwirq = data->hwirq + PCIE_INTX_SHIFT;
+> > +	writel(BIT(hwirq), port->base + PCIE_INT_STATUS_REG);
+> 
+> All of this is the description of a level interrupt, so this is pretty
+> much devoid of any information as to *why* you need to write to clear
+> this bit. What happens if the interrupt is still asserted because
+> nothing has handled it? Without any further information, this looks
+> terribly wrong.
+
+Sorry, this comment should be used to describe the mtk_intx_eoi
+function, it cause misunderstandings at this place. I just want to add
+the comment to explain that why this interrupt needs to be acked at the
+end of interrupt. I will move it to the front of mtk_intx_eoi in the
+next version.
+> 
+> > +}
+> > +
+> > +static struct irq_chip mtk_intx_irq_chip = {
+> > +	.irq_mask		= mtk_intx_mask,
+> > +	.irq_unmask		= mtk_intx_unmask,
+> > +	.irq_eoi		= mtk_intx_eoi,
+> > +	.irq_set_affinity	= mtk_pcie_set_affinity,
+> > +	.name			= "PCIe",
+> > +};
+> > +
+> > +static int mtk_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
+> > +			     irq_hw_number_t hwirq)
+> > +{
+> > +	irq_set_chip_and_handler_name(irq, &mtk_intx_irq_chip,
+> > +				      handle_fasteoi_irq, "INTx");
+> > +	irq_set_chip_data(irq, domain->host_data);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct irq_domain_ops intx_domain_ops = {
+> > +	.map = mtk_pcie_intx_map,
+> > +};
+> > +
+> > +static int mtk_pcie_init_irq_domains(struct mtk_pcie_port *port,
+> > +				     struct device_node *node)
+> > +{
+> > +	struct device *dev = port->dev;
+> > +	struct device_node *intc_node;
+> > +	struct fwnode_handle *fwnode = of_node_to_fwnode(node);
+> > +	struct mtk_pcie_msi *msi_info;
+> > +	struct msi_domain_info *info;
+> > +	int i, ret;
+> > +
+> > +	/* Setup INTx */
+> > +	intc_node = of_get_child_by_name(node, "interrupt-controller");
+> > +	if (!intc_node) {
+> > +		dev_err(dev, "missing PCIe Intc node\n");
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	port->intx_domain = irq_domain_add_linear(intc_node, PCI_NUM_INTX,
+> > +						  &intx_domain_ops, port);
+> > +	if (!port->intx_domain) {
+> > +		dev_err(dev, "failed to get INTx IRQ domain\n");
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	/* Setup MSI */
+> > +	mutex_init(&port->lock);
+> > +
+> > +	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+> > +	if (!info)
+> > +		return -ENOMEM;
+> > +
+> > +	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
+> > +	info->chip_data = port;
+> > +
+> > +	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
+> > +	if (!port->msi_domain) {
+> > +		dev_info(dev, "failed to create MSI domain\n");
+> > +		ret = -ENODEV;
+> > +		goto err_msi_domain;
+> > +	}
+> > +
+> > +	/* Enable MSI and setup PCIe domains */
+> > +	port->msi_top_domain = irq_domain_add_hierarchy(NULL, 0, 0, node,
+> > +							&mtk_msi_top_domain_ops,
+> > +							port);
+> > +	if (!port->msi_top_domain) {
+> > +		dev_info(dev, "failed to create MSI top domain\n");
+> > +		ret = -ENODEV;
+> > +		goto err_msi_top_domain;
+> > +	}
+> > +
+> > +	port->msi_info = devm_kzalloc(dev, PCIE_MSI_SET_NUM, GFP_KERNEL);
+> > +	if (!port->msi_info) {
+> > +		ret = -ENOMEM;
+> > +		goto err_msi_info;
+> > +	}
+> > +
+> > +	for (i = 0; i < PCIE_MSI_SET_NUM; i++) {
+> > +		int offset = i * PCIE_MSI_SET_OFFSET;
+> > +		u32 val;
+> > +
+> > +		msi_info = devm_kzalloc(dev, sizeof(*msi_info), GFP_KERNEL);
+> > +		if (!msi_info) {
+> > +			ret = -ENOMEM;
+> > +			goto err_msi_set;
+> > +		}
+> > +
+> > +		msi_info->base = port->base + PCIE_MSI_ADDR_BASE_REG + offset;
+> > +		msi_info->msg_addr = port->reg_base + PCIE_MSI_ADDR_BASE_REG +
+> > +				     offset;
+> 
+> All of this can be derived from i (and this hwirq) at runtime. Why do
+> we need to cache this information?
+
+I try to use msi_info structure to describe the MSI set, I think this
+will be more comply with the HW design and more easier to understand the
+interrupt handle flow.
+> 
+> > +
+> > +		writel(lower_32_bits(msi_info->msg_addr), msi_info->base);
+> > +
+> > +		msi_info->index = i;
+> > +		msi_info->domain = port->msi_domain;
+> 
+> If this is common to all sets, why isn't it global?
+
+I will fix it in the next version.
+> 
+> > +
+> > +		port->msi_info[i] = msi_info;
+> > +
+> > +		/* Alloc IRQ for each MSI set */
+> > +		msi_info->irq = irq_create_mapping(port->msi_top_domain, i);
+> > +		if (!msi_info->irq) {
+> > +			dev_info(dev, "allocate MSI top IRQ failed\n");
+> > +			ret = -ENOSPC;
+> > +			goto err_msi_set;
+> > +		}
+> > +
+> > +		val = readl(port->base + PCIE_INT_ENABLE_REG);
+> > +		val |= BIT(i + PCIE_MSI_SHIFT);
+> > +		writel(val, port->base + PCIE_INT_ENABLE_REG);
+> > +
+> > +		val = readl(port->base + PCIE_MSI_SET_ENABLE_REG);
+> > +		val |= BIT(i);
+> > +		writel(val, port->base + PCIE_MSI_SET_ENABLE_REG);
+> > +	}
+> > +
+> > +	return 0;
+> > +
+> > +err_msi_set:
+> > +	while (i-- > 0) {
+> > +		msi_info = port->msi_info[i];
+> > +		irq_dispose_mapping(msi_info->irq);
+> > +	}
+> > +err_msi_info:
+> > +	irq_domain_remove(port->msi_top_domain);
+> > +err_msi_top_domain:
+> > +	irq_domain_remove(port->msi_domain);
+> > +err_msi_domain:
+> > +	irq_domain_remove(port->intx_domain);
+> > +
+> > +	return ret;
+> > +}
+> 
+> At this stage, I stopped, because there is really a lot to change in
+> this driver before it is in an acceptable shape. Please use the common
+> idioms established for existing MSI implementations.
+> 
+> I'd appreciate if you kept me posted on the following versions of this
+> driver.
+> 
+> Thanks,
+> 
+> 	M.
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
