@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4235C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 15:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51A65C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 15:25:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41F7C21D1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 15:23:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41F7C21D1B
+	by mail.kernel.org (Postfix) with ESMTPS id 0F021207BD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 15:25:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F021207BD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OoarOHOWdjezEmPFPrhKhiE4E0kFLpNwGYB6r96mfPs=; b=wY7H8uqQLFn7R2jFJYFntN2L1
-	s3OLMm+PP9G9xj/J8qSWhvigK+mM9PVqB5CoaEwtkO5SmpWJNMuv5+FZOn7+u6h4U4tVc72lZrFNE
-	JqqJ9pn2umO3aAmXYTg/3unz1CoFuZNZa0O4CNQrlPMpFgFZSmFGzHINaQFfp89GIHeqvR/CCetjK
-	A5zb/8byHuEEM4s2EYEhqjT8ix+BIkPfGYZaMJZmHVqfu4aGizMv3Kbp+Eh2W3r8ns9RP3/eSbZUc
-	tiI6CNh92MrlQUPGapJ+BibveICSktqUaYNkYKzGeUE198Vbqyc7MVgLmJga01u0Bn7miADq7TIFi
-	1ZdrxQxMg==;
+	 bh=jzRr/7JBqE1XDo56RqggSDoIrl4PzGdR82axo03FIPw=; b=Ja4x8MfiXdnJlrrvEE6TucA/O
+	h9eeiIZxnhTwjzRI9kfihYlkUg3htyqB51VMQ/iMI3Plq1tiplYHs5yvTFfa5at065YUZS/m8YYKS
+	WX+Mprlgpyyz0aGXV8HgGHOYhxWqxRxJ/OPui+GMqxvdkgyUAZCMGT2xgYYTSif35kj3+6/mhKW3S
+	aoTA1yqk9XgaVPft3CtTSZbEWzRmvZioxxxjobcrhIrtQZ5aXA5qGfug10E7BdGZP32RCW89JIbZS
+	ucExjedzxrbX1bplLwsMNaucDEpEbSmytZdCvjXxRFd2yDLXrMCr8mEHQzIaT7n1ijPpEqk7JN28a
+	bU703OTXg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kuGqh-0006AL-Nw; Tue, 29 Dec 2020 15:23:47 +0000
+	id 1kuGrr-0006Un-3x; Tue, 29 Dec 2020 15:24:59 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kuGqc-000680-10; Tue, 29 Dec 2020 15:23:42 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0266F21D1B;
- Tue, 29 Dec 2020 15:23:41 +0000 (UTC)
+ id 1kuGri-0006RU-Pi; Tue, 29 Dec 2020 15:24:52 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CD46921D1B;
+ Tue, 29 Dec 2020 15:24:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609255421;
- bh=X6TWp8dtmGsNefHM5i1nqwfEHyC2PBReZvmW2bXfzjs=;
+ s=k20201202; t=1609255490;
+ bh=eilapBpeoN7sFfsn0ggyc6cG1SRv9g+vbu+jGX2ZpLA=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=YiK96+qPYqPeQfZbYUCC5myl9I5msotfpsB1XpSD0MI3yAeOItyLc1a5So/p06XLw
- kZ1YsdWfBEOra1Q9hlC9D5BgTeYrox5JqgXx9iw6iF7uULCPEFQE5TPC+6FAFKK0jC
- lDxtiPcDu5rkv2zFo1TRIt1nQ4PhU9Pkg25Oj4MW6ZSN1yJe/yvxlyTuhgSxFqpHwV
- /+PqbfhSUOCGFXKXQh4XOv6RYJ/u7+KPX8eGhIWWGdO9T5xXTZlL8Tvc87aRVV5kYq
- pM9w49egp49Lr0BxicP+ofmhSLy+rD0ocGxjFpZ6f92653v8iMSOKzAfVHFN2QGgzk
- Z4+X63LZTOIHA==
-Received: by mail-wm1-f51.google.com with SMTP id 3so2504992wmg.4;
- Tue, 29 Dec 2020 07:23:40 -0800 (PST)
-X-Gm-Message-State: AOAM532MGr4h9v7OWSZ95pE6SW6qqeSXKmCewKpRfhk7ETHdEOMlPEvl
- wP0VP4GXJTJmoUc0WaM1Gz1BlDFqQAD5qvsMxA==
-X-Google-Smtp-Source: ABdhPJzqoSYiS8eONYJzh10hdAnaMFldS8v6+IVw1T9bzfQwd+ZdVmWEddSO/Y3HQ64cIJxjddzsuEn54GHCRRPwA2w=
-X-Received: by 2002:a1c:790f:: with SMTP id l15mr3965420wme.188.1609255419668; 
- Tue, 29 Dec 2020 07:23:39 -0800 (PST)
+ b=ZuE4S5P8hITqz1X0escxosAV3o1TcBsgoMQeesxCNTHHQe/plvD7FZCCTDiLIcLPE
+ M7e05HXO+CUT6e9Zff8a3+X20r4zbjxf9KiwqenvAwvk33wV6ALdsIms9sLlVdGmXk
+ wKIm59mqBicAYE6HeMrLt25t6akFJyCSSC/9/5braxafr3QejL9ZRxfkyeAbczYOEm
+ qKKy5AYZLr0MtZmYvZwxrDuOBZTHMj7lnCAcxD9+/QrnlhHgcwBxC4DKfk/WnxUnBy
+ L4k732YoW7feYNMHf8FXVjHhUD05rVVwtC5tpm68hyzs1KiJc4wX/zoZe+E40WpW/k
+ syBd7vI0wl4Pg==
+Received: by mail-wr1-f52.google.com with SMTP id q18so14989772wrn.1;
+ Tue, 29 Dec 2020 07:24:49 -0800 (PST)
+X-Gm-Message-State: AOAM531f0IEUxCok9vXWM3zmkMaQPy1i0d6AhyA8VmXyMXlDrc+NO8Yp
+ BSaN6uOgbIV+Vxo2/12L/ZXTXyF5FAAz8Ro1Cg==
+X-Google-Smtp-Source: ABdhPJwfw4rYEsYu8nEniPGc6G6JHID1nl4QlJyDYtZF/WHawvurk6lDHUtip9QnXX+NOG2EV9QTm0HD335QYsb/xq8=
+X-Received: by 2002:adf:e60f:: with SMTP id p15mr55674939wrm.60.1609255488542; 
+ Tue, 29 Dec 2020 07:24:48 -0800 (PST)
 MIME-Version: 1.0
 References: <1609144630-14721-1-git-send-email-yongqiang.niu@mediatek.com>
- <1609144630-14721-5-git-send-email-yongqiang.niu@mediatek.com>
-In-Reply-To: <1609144630-14721-5-git-send-email-yongqiang.niu@mediatek.com>
+ <1609144630-14721-7-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1609144630-14721-7-git-send-email-yongqiang.niu@mediatek.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 29 Dec 2020 23:23:27 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_98vrwQrefD9KwvsM+9+tDpNcUwbLoVwu_mXRf17imuTA@mail.gmail.com>
-Message-ID: <CAAOTY_98vrwQrefD9KwvsM+9+tDpNcUwbLoVwu_mXRf17imuTA@mail.gmail.com>
-Subject: Re: [PATCH v3, 4/8] soc: mediatek: mmsys: add component OVL_2L2
+Date: Tue, 29 Dec 2020 23:24:36 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9ZL9FEMKT_3xARh51hxK6_AbYJHci9ENXDwzCwNGo8Fg@mail.gmail.com>
+Message-ID: <CAAOTY_9ZL9FEMKT_3xARh51hxK6_AbYJHci9ENXDwzCwNGo8Fg@mail.gmail.com>
+Subject: Re: [PATCH v3, 6/8] soc: mediatek: mmsys: add component RDMA4
 To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201229_102342_171851_5C6584F7 
+X-CRM114-CacheID: sfid-20201229_102451_179305_EBCF0797 
 X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -94,23 +94,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
 PiDmlrwgMjAyMOW5tDEy5pyIMjjml6Ug6YCx5LiAIOS4i+WNiDQ6Mzflr6vpgZPvvJoKPgo+IFRo
-aXMgcGF0Y2ggYWRkIGNvbXBvbmVudCBPVkxfMkwyCgpSZXZpZXdlZC1ieTogQ2h1bi1LdWFuZyBI
-dSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cgo+Cj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5n
-IE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGluY2x1ZGUvbGludXgv
-c29jL21lZGlhdGVrL210ay1tbXN5cy5oIHwgMSArCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
-dGlvbigrKQo+Cj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1t
-bXN5cy5oIGIvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmgKPiBpbmRleCA0
-YjZjNTE0Li40MjQ3NmMyIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvbGludXgvc29jL21lZGlhdGVr
-L210ay1tbXN5cy5oCj4gKysrIGIvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lz
-LmgKPiBAQCAtMjksNiArMjksNyBAQCBlbnVtIG10a19kZHBfY29tcF9pZCB7Cj4gICAgICAgICBE
-RFBfQ09NUE9ORU5UX09WTDAsCj4gICAgICAgICBERFBfQ09NUE9ORU5UX09WTF8yTDAsCj4gICAg
-ICAgICBERFBfQ09NUE9ORU5UX09WTF8yTDEsCj4gKyAgICAgICBERFBfQ09NUE9ORU5UX09WTF8y
-TDIsCj4gICAgICAgICBERFBfQ09NUE9ORU5UX09WTDEsCj4gICAgICAgICBERFBfQ09NUE9ORU5U
-X1BXTTAsCj4gICAgICAgICBERFBfQ09NUE9ORU5UX1BXTTEsCj4gLS0KPiAxLjguMS4xLmRpcnR5
-Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51
-eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
-b3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+aXMgcGF0Y2ggYWRkIGNvbXBvbmVudCBSRE1BNAoKUmV2aWV3ZWQtYnk6IENodW4tS3VhbmcgSHUg
+PGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPgo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBO
+aXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBpbmNsdWRlL2xpbnV4L3Nv
+Yy9tZWRpYXRlay9tdGstbW1zeXMuaCB8IDEgKwo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRp
+b24oKykKPgo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRlay9tdGstbW1z
+eXMuaCBiL2luY2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1tbXN5cy5oCj4gaW5kZXggMDll
+ZTQyNC4uYWE0ZjYwZSAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRlay9t
+dGstbW1zeXMuaAo+ICsrKyBiL2luY2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1tbXN5cy5o
+Cj4gQEAgLTM4LDYgKzM4LDcgQEAgZW51bSBtdGtfZGRwX2NvbXBfaWQgewo+ICAgICAgICAgRERQ
+X0NPTVBPTkVOVF9SRE1BMCwKPiAgICAgICAgIEREUF9DT01QT05FTlRfUkRNQTEsCj4gICAgICAg
+ICBERFBfQ09NUE9ORU5UX1JETUEyLAo+ICsgICAgICAgRERQX0NPTVBPTkVOVF9SRE1BNCwKPiAg
+ICAgICAgIEREUF9DT01QT05FTlRfVUZPRSwKPiAgICAgICAgIEREUF9DT01QT05FTlRfV0RNQTAs
+Cj4gICAgICAgICBERFBfQ09NUE9ORU5UX1dETUExLAo+IC0tCj4gMS44LjEuMS5kaXJ0eQo+IF9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0Cj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+
+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsK
