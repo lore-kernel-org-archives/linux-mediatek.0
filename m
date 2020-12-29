@@ -2,78 +2,74 @@ Return-Path: <SRS0=bnG6=GB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 252EFC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 06:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73164C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 06:34:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C4CE9207AE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 06:27:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4CE9207AE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2D932207D1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Dec 2020 06:34:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D932207D1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5sVx3IPA8PJ1Xh6Fl002iYir/4FrHpZ9MWrA3w9IbvI=; b=T0xAy/WYGF2Wni1bciYAEQ2ve
-	o/k7Vi76eNPLTAu6HYP05gxxw5JZq/6EhHVB7uplwXO5GE1QvFMXXb9+LG4EQBrhKDfY3YKgC2BBP
-	rNh2hws7CRgHCJXKwCGBpJODs6KEr1jMw1D5qon3vv8SUdMFZ4zmtwtMoLjWQY1uB+avtzSDmBkpG
-	69VmgaE/WzRVqo0HT5Zbe9yBK4ZPJENH75Sa1PkUs8AtBgEgx4BDf8FzBckBgo9ySiloDkG5SR/ka
-	PKcKrEdMd4i1B2MkbyoD8FBQo3IMhs+0nat0mgCkWPEZYMtRYbBuRY0gOHi+s5fVnDhWo6ikGM2kv
-	lizA80G8Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UASH3dy88b5260Qp8cfw5H9kKek5mHKulChYNA/TzRg=; b=UycXqJ1X/m9ODcXoiMN5v0majC
+	A8E53NjVMFk+D1/ws6E7QXSLnVy9zXXkghrlo7H6cMw3Pym+FFqCGTHKiqk5wEwkpY2m8INxB4udl
+	E+YrmbubTAZ+3/koDLbj0YO0R0MgnI3EeR+ukKMr4y+x0rJJX443jyoYCnVcRdzvpaarhRaLwwMl1
+	sUSEP6MjsXGTqZ/oRgieYNoM0qrDRRKc8SJ2cw8qoq6IXJUA566N9W0w4W527d/n/Anvk69ehzNil
+	Jf9BN0tIHIsWTARdZTGz0VDmKKImQ0Hp9b62ZcUf92uzEzwUSczyOH00gH+y1pDRYhVkuV7ckJ0wQ
+	00xOwftQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ku8Te-0000d7-ED; Tue, 29 Dec 2020 06:27:26 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1ku8aD-0001v5-1N; Tue, 29 Dec 2020 06:34:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ku8Tb-0000bn-Dl
- for linux-mediatek@lists.infradead.org; Tue, 29 Dec 2020 06:27:24 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id v1so965907pjr.2
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Dec 2020 22:27:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GgdE70V3wvBcQA9RrpEicG3Yu8LjbkyE0wwy+vna/fc=;
- b=Hy1pUncbifpEXVsZ1rsp7zn/GHtS/pfJxMXLP7gCdNqoS60q+g86Q+kirTATC7Hpu5
- 74SRiPMwZYMyG2XLA7t6/dFFbP6mJslDrTM3Sl29r8GPdFbYyAQT4nvNid7acab/2/oc
- /OaeMPAHeYduzH616k6Piw74wCmANekupEIY8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GgdE70V3wvBcQA9RrpEicG3Yu8LjbkyE0wwy+vna/fc=;
- b=nyErZDN/TkQMFjAidv5rdj2bgi952gt7I1z5KS9CLlxDkrJIHiTWdISM36RkZ8/IDI
- pzyifhMI4NN4enHDnAUaE3uiwlgPT5bq1BhGNvoVZVsToB9pBtUd7TtGz59LBJvOpF3+
- KzHB18gEBWpSsJqdlhnPC8qRFyjiyms7kk1sBn1k0zdZBnB6p8TM7928hkY38ZA0MlbS
- 8lqF4FbMSyJKGcFjrWDNj6oulkVl9bWoCF5C2L1G7p1RmT+IbKxvvS+fLmaT0iIVvOQj
- O74CZpI7Rw+QkWcXbTsiK6PWDvj+w6KpNqTzBgx/re4GOBVejQ2P6yXv2r+dOzDQFm4y
- NJcQ==
-X-Gm-Message-State: AOAM533bHOIrhCIrzf49N2dL8wt66TJWNLVUZssLIyG7DztKB8OayRao
- 8NPgaMPdalar+SFjs3z1mzZBPrttiTiH6c6BCgzmzw==
-X-Google-Smtp-Source: ABdhPJy0ZjRbXZDk7+wJsqBfIMAP2iVJqXvigcqHG4DG+JiHMg1BQBc5Tv77Mxs3mV3iqOK48E46qGkeIllmeRqI7kE=
-X-Received: by 2002:a17:90b:1c10:: with SMTP id
- oc16mr2628210pjb.144.1609223241122; 
- Mon, 28 Dec 2020 22:27:21 -0800 (PST)
+ id 1ku8ZZ-0001ff-Ez; Tue, 29 Dec 2020 06:33:34 +0000
+X-UUID: b5991c684d054db6b6b95386f5dcc12b-20201228
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=HwKWlBH5uNDCkk+f6bJEmiCk5kXu2xtSEEczEUs2zx8=; 
+ b=jUBb3CE4t3ug8PEPAxe5lbA0PaEPvk7p3b8jdZlj0y2/qK/vP9wn0+ZQDwW7Y7VZqWbfwDRx35x5ccACPG+pKdvPbWxbaOVNae4FbEl7Ns9AnBphlN3BjFzY6rkfkIuViMPl3GzxheGV9rW/E0jRBN8dP69ftQf9xLjRIzXc/50=;
+X-UUID: b5991c684d054db6b6b95386f5dcc12b-20201228
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <andrew-sh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 259548506; Mon, 28 Dec 2020 22:31:16 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Dec 2020 22:31:14 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Dec 2020 14:31:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 29 Dec 2020 14:31:12 +0800
+From: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2] arm64: dts: mediatek: Add Mediatek mt8192 cpufreq device
+ nodes
+Date: Tue, 29 Dec 2020 14:31:11 +0800
+Message-ID: <1609223471-24325-1-git-send-email-andrew-sh.cheng@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
-References: <20201214131640.v3.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
- <20201214163945.v4.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
- <X+nr65vhINCw8fCL@kroah.com>
-In-Reply-To: <X+nr65vhINCw8fCL@kroah.com>
-From: Ikjoon Jang <ikjn@chromium.org>
-Date: Tue, 29 Dec 2020 14:27:10 +0800
-Message-ID: <CAATdQgAv_M6-xf1XhQoEnyAwMuXTo-GZ6xog4X1Qu4MtBnncTA@mail.gmail.com>
-Subject: Re: [PATCH v4] usb: xhci-mtk: fix unreleased bandwidth data
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201229_012723_508399_06AAEB5E 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20201229_013333_789648_44FB3869 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,43 +81,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>,
- Tianping Fang <tianping.fang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>,
+ srv_heupstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 28, 2020 at 10:34 PM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
->
-> On Mon, Dec 14, 2020 at 04:39:53PM +0800, Ikjoon Jang wrote:
-> > xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
-> > to handle its own sw bandwidth managements and stores bandwidth data
-> > into internal table every time add_endpoint() is called,
-> > so when bandwidth allocation fails at one endpoint, all earlier
-> > allocation from the same interface could still remain at the table.
-> >
-> > This patch adds two more hooks from check_bandwidth() and
-> > reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
-> > from reset_bandwidth().
-> >
-> > Fixes: 4b0f7a77fb3c ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
->
-> This is not a git commit id that is in Linus's tree :(
->
+From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 
-Oops, I apologize, I sent a new v5 patch with
-Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling
-with multi-TT")
+Correct dts node name in patch v1: performance-domain
+This patch depends on [1] and [2].
 
+[1]http://lists.infradead.org/pipermail/linux-mediatek/2020-November/019378.html
+[2]https://patchwork.kernel.org/project/linux-mediatek/patch/1607586516-6547-3-git-send-email-hector.yuan@mediatek.com/
+
+Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 69d45c7b31f1..a907ee7e650a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -39,6 +39,7 @@
+ 			compatible = "arm,cortex-a55";
+ 			reg = <0x000>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+@@ -49,6 +50,7 @@
+ 			compatible = "arm,cortex-a55";
+ 			reg = <0x100>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+@@ -59,6 +61,7 @@
+ 			compatible = "arm,cortex-a55";
+ 			reg = <0x200>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+@@ -69,6 +72,7 @@
+ 			compatible = "arm,cortex-a55";
+ 			reg = <0x300>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 0>;
+ 			clock-frequency = <1701000000>;
+ 			next-level-cache = <&l2_0>;
+ 			capacity-dmips-mhz = <530>;
+@@ -79,6 +83,7 @@
+ 			compatible = "arm,cortex-a76";
+ 			reg = <0x400>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 1>;
+ 			clock-frequency = <2171000000>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+@@ -89,6 +94,7 @@
+ 			compatible = "arm,cortex-a76";
+ 			reg = <0x500>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 1>;
+ 			clock-frequency = <2171000000>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+@@ -99,6 +105,7 @@
+ 			compatible = "arm,cortex-a76";
+ 			reg = <0x600>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 1>;
+ 			clock-frequency = <2171000000>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+@@ -109,6 +116,7 @@
+ 			compatible = "arm,cortex-a76";
+ 			reg = <0x700>;
+ 			enable-method = "psci";
++			performance-domains = <&performance 1>;
+ 			clock-frequency = <2171000000>;
+ 			next-level-cache = <&l2_1>;
+ 			capacity-dmips-mhz = <1024>;
+@@ -194,6 +202,12 @@
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
++		performance: performance-controller@0011bc00 {
++			compatible = "mediatek,cpufreq-hw";
++			reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
++			#performance-domain-cells = <1>;
++		};
++
+ 		gic: interrupt-controller@c000000 {
+ 			compatible = "arm,gic-v3";
+ 			#interrupt-cells = <4>;
+-- 
+2.12.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
