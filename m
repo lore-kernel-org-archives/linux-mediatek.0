@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6521DC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 08:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39D52C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 11:30:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EB32421973
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 08:16:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EB32421973
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id DD30F207B1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 11:30:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD30F207B1
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z9kd1H7pt0PozoGD1YvLbZHJqYfPqBcsvQIjJrafQQE=; b=HeoJ46VnrnPL+IhukYtcsCIfZW
-	bIZa+VhHmhcW4pQmTL3TPRNNp1/22R7RUmtY0bhGC5xkI59qy/3x8U/DsN+BjHBG6rtzJIk1fW16m
-	M0dpgVsFYQoDogtHzpnpndByDQVNFJvZKVxPpSQRzToiAvl+Nqq5lJuzIXWjkL6mpmJ6hQnLmZqnt
-	2mfEr27HV3dobX/MtGi2EfJNBE7xKQ8dw8+zG+D9WzxfIYGVtHJbjxl017lMoSZEKJ9hPrjyTd3/U
-	n5jyKADkI/J54RMk8SIss5/KQ4IC014hR096tNRGTNsX2isKZNifxO3O66K1hNRjzeXRAsdBliZ7s
-	Dv3BSKNQ==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WlqjyTd2BI7FEJCzd0KUhXNuWNOe4p94jm5/gVowo/s=; b=KtSAROvUSJQphhlaBDrg5JKUv9
+	XkCzm/NfnCgCwmUF0Xrn+9F55qPqqvjkRGUIV3V2zyR1wG9GMyvZK80WFDq1oo8Q369wzNoeqvELy
+	t1S2FXX9q7WTXGZ4H5Stl8a6rEOdnJ2VLUu7JLL0ropyYG9GL0keMaaxiEB+Mw3WUb3zxxdvRkTxP
+	iI2YEmuAm3wAHTYjQoFvKpbWuvAbQ0Iu7GvCvZvn2Piymv00xifHWAKVI+OZXDdBV/ANGMKP6zenx
+	oVbb2ILBDpSoB48SbSgoCwZqeTHpgcfrwgAOnUebtczXY/IiyHmz+1vINumYUnNctG6ojFYyU08mz
+	m32YM98A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kuWeR-0007sJ-Sl; Wed, 30 Dec 2020 08:16:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kuZg5-0003Mq-2X; Wed, 30 Dec 2020 11:30:05 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kuWeN-0007rf-Kg; Wed, 30 Dec 2020 08:16:10 +0000
-X-UUID: a3542b71724c4e29aa5cea5887c889f2-20201230
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=WsI1mRW7iFZMxLKu32soFCqdJRbkOXAw73m+ygbVIMo=; 
- b=g5KNewTtWPnb1/XPnhTb18bQjDqDxUslqO23gQTAAHadW2rrSPcDuRusP5gICsrQtr/TDknx7zyiDbV+f2wRvq3nUScieMToahxS4J8S31lAwtYG89CD/toxK4nZG3NEXDpaAv/sOLA+64Dy1vUknLjWFK6YZGfZ4XzN0x3bTy4=;
-X-UUID: a3542b71724c4e29aa5cea5887c889f2-20201230
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <freddy.hsin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1439848455; Wed, 30 Dec 2020 00:16:02 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Dec 2020 00:16:01 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Dec 2020 16:15:58 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 30 Dec 2020 16:15:59 +0800
-From: Freddy Hsin <freddy.hsin@mediatek.com>
-To: Freddy Hsin <freddy.hsin@mediatek.com>, Wim Van Sebroeck
- <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, <linux-watchdog@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 1/1] watchdog: mtk_wdt: Remove mtk_wdt_stop() in probe() to
- prevent the system freeze and it doesn't reboot by watchdog problem
-Date: Wed, 30 Dec 2020 16:15:57 +0800
-Message-ID: <1609316157-3748-1-git-send-email-freddy.hsin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-MIME-Version: 1.0
-X-TM-SNTS-SMTP: D94B9C579622140CEE92807ED8F0662EE7B3DEE939D9028A2890F17DB13BB2692000:8
-X-MTK: N
+ id 1kuZfy-0003LM-Fe; Wed, 30 Dec 2020 11:29:59 +0000
+IronPort-SDR: lX/PxRJtxM0F7wUBkBixagPIg0o2XPk2kuSl8bMOGzn6LJ0QCqyu/98ZmK9yr7+dRZnlI48TZx
+ Pgb79QtUVik0QD6nY+NZqQRRMHj6098VV3yuHBwFTTpeXWnoeqqf/uvOTPva9Bnc5xIas2PRHZ
+ 1PtsHachaXTrTY7Y/OCn+ZW1qT6r3FX2TwDVicB4zpxl8dNiaLbzTOp5eBW3GVrDnLPw5NRWCC
+ 3QilKIDwat/mDh0CfE2h6EdTA9K0CZfYc2MM3pHX7eaFM4DX13CqrODBjS7uL6hwg1OQ6WFB7O
+ pCk=
+X-IronPort-AV: E=Sophos;i="5.78,461,1599548400"; d="scan'208";a="29463362"
+Received: from unknown (HELO ironmsg05-sd.qualcomm.com) ([10.53.140.145])
+ by labrats.qualcomm.com with ESMTP; 30 Dec 2020 03:29:56 -0800
+X-QCInternal: smtphost
+Received: from stor-presley.qualcomm.com ([192.168.140.85])
+ by ironmsg05-sd.qualcomm.com with ESMTP; 30 Dec 2020 03:29:54 -0800
+Received: by stor-presley.qualcomm.com (Postfix, from userid 359480)
+ id 4FA7521868; Wed, 30 Dec 2020 03:29:54 -0800 (PST)
+From: Can Guo <cang@codeaurora.org>
+To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ ziqichen@codeaurora.org, rnayak@codeaurora.org, linux-scsi@vger.kernel.org,
+ kernel-team@android.com, saravanak@google.com, salyzyn@google.com,
+ cang@codeaurora.org
+Subject: [PATCH v8 3/3] scsi: ufs: Revert "Make sure clk scaling happens only
+ when HBA is runtime ACTIVE"
+Date: Wed, 30 Dec 2020 03:29:36 -0800
+Message-Id: <1609327777-20520-4-git-send-email-cang@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1609327777-20520-1-git-send-email-cang@codeaurora.org>
+References: <1609327777-20520-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201230_031608_433961_FBF3DE6F 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20201230_062958_673092_9C22EC1C 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,76 +75,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kuohong.wang@mediatek.com, chang-an.chen@mediatek.com,
- wsd_upstream@mediatek.com
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "freddy.hsin" <freddy.hsin@mediatek.com>
+Commit 73cc291c27024 ("Make sure clk scaling happens only when HBA is
+runtime ACTIVE") is no longer needed since commit f7a42540928a8 ("scsi:
+ufs: Protect some contexts from unexpected clock scaling") is a more
+mature fix to protect UFS LLD stability from clock scaling invoked through
+sysfs nodes by users.
 
-Before user space daemon start to access the watchdog device,
-there is a time interval that watchdog is disabled in the
-original flow. If the system freezing at this interval, it
-cannot be rebooted by watchdog hardware automatically.
-
-In order to solve this problem, the watchdog hardware should be
-kept working, and start hrtimer in framework to ping it by
-setting max_hw_heartbeat_ms and HW_RUNNING used in
-watchdog_need_worker to determine whether the worker should be
-started or not. Besides the redundant setting of max_timeout is
-also removed.
-
-Signed-off-by: freddy.hsin <freddy.hsin@mediatek.com>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
 ---
- drivers/watchdog/mtk_wdt.c |   17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index d6a6393..0c869b7 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -195,6 +195,19 @@ static int mtk_wdt_set_timeout(struct watchdog_device *wdt_dev,
- 	return 0;
- }
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index b7840ef..3487c56 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1304,15 +1304,8 @@ static int ufshcd_devfreq_target(struct device *dev,
+ 	}
+ 	spin_unlock_irqrestore(hba->host->host_lock, irq_flags);
  
-+static void mtk_wdt_init(struct watchdog_device *wdt_dev)
-+{
-+	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
-+	void __iomem *wdt_base;
-+
-+	wdt_base = mtk_wdt->wdt_base;
-+
-+	if (readl(wdt_base + WDT_MODE) & WDT_MODE_EN) {
-+		set_bit(WDOG_HW_RUNNING, &wdt_dev->status);
-+		mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout);
-+	}
-+}
-+
- static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
- {
- 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
-@@ -264,7 +277,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	mtk_wdt->wdt_dev.info = &mtk_wdt_info;
- 	mtk_wdt->wdt_dev.ops = &mtk_wdt_ops;
- 	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
--	mtk_wdt->wdt_dev.max_timeout = WDT_MAX_TIMEOUT;
-+	mtk_wdt->wdt_dev.max_hw_heartbeat_ms = WDT_MAX_TIMEOUT * 1000;
- 	mtk_wdt->wdt_dev.min_timeout = WDT_MIN_TIMEOUT;
- 	mtk_wdt->wdt_dev.parent = dev;
+-	pm_runtime_get_noresume(hba->dev);
+-	if (!pm_runtime_active(hba->dev)) {
+-		pm_runtime_put_noidle(hba->dev);
+-		ret = -EAGAIN;
+-		goto out;
+-	}
+ 	start = ktime_get();
+ 	ret = ufshcd_devfreq_scale(hba, scale_up);
+-	pm_runtime_put(hba->dev);
  
-@@ -274,7 +287,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 
- 	watchdog_set_drvdata(&mtk_wdt->wdt_dev, mtk_wdt);
- 
--	mtk_wdt_stop(&mtk_wdt->wdt_dev);
-+	mtk_wdt_init(&mtk_wdt->wdt_dev);
- 
- 	watchdog_stop_on_reboot(&mtk_wdt->wdt_dev);
- 	err = devm_watchdog_register_device(dev, &mtk_wdt->wdt_dev);
+ 	trace_ufshcd_profile_clk_scaling(dev_name(hba->dev),
+ 		(scale_up ? "up" : "down"),
 -- 
-1.7.9.5
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
