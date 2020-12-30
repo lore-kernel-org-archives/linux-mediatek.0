@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86F6BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 18:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 928B0C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 18:27:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E8602222A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 18:27:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E8602222A
+	by mail.kernel.org (Postfix) with ESMTPS id 479932222A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 18:27:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 479932222A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3kM4HsxqqIo3RTyepI6PosvV1UXN9/rM+dpPdtyqe1o=; b=Tn/d8s1uqScOEAyrjLEVEa2nr
-	AKs7obPEgJIcp/kN211zbLQ10LeGog0fQxSWRqEJvNaLcEyv3KJ3A4ZQOMvwCKtHW/wW6EIWXIwal
-	dIkXm5P3O/n3JbzcziUgdy8r+WWoesy8hOs0i5cV+hXn2KSUHIPMnE/I/BLMjxWfRo122S3ZIrXi+
-	0RI50Z5kGUn2xJuwQ2GRo7cLhLubu2ThY0l7aAtiEouX2PYl18pTDIFeL92eiYaTC5JiihkZGcYN5
-	k1HWgf17k1exFzUJ3EY84/FST05OWYzoG3y1cCuuU55X/KUIQDj+Ma9wqYb8uQn7RKUPNRIlGLEdt
-	yrzMpugRg==;
+	 bh=HA1mmTwnjaOU5avPWl7ctHFS/d+GElrXZZcN7dLL4H4=; b=hVtPjVxJv2MJclGPjnErP8EmG
+	RjOVKjsbTNTeJeqpAJczU+pOjtyyYGtF8IlWgnujAX7JKFG8vqjEojJJELZMQ331rhrSN8AtffFwl
+	fl+jljzfXG+Zc8rT11zHolghY9nS4Z/xWhAlHGBR0royBE8K6FnrwDHA7NrOVwTTgAASq1Uq4ItAh
+	q4ZZZsdvh9YgHQOlVW5nMk3ABGukYC60biXJVhiREOa2QoaSh9mMeiAPAgXYtkf07JdWM+ez7LiLW
+	LatNYZbGCBt/Lu85slHwI7KShbJYuHoE5M3Ghpr/cxjWx0dJiAbhTOZacs27Jo02CZKJilwfyRg2q
+	WloVeOd1w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kugBV-0008GA-Hz; Wed, 30 Dec 2020 18:26:57 +0000
-Received: from mailgw02.mediatek.com ([66.171.122.166])
+	id 1kugBX-0008Go-IL; Wed, 30 Dec 2020 18:26:59 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kugBK-00087u-CA
- for linux-mediatek@lists.infradead.org; Wed, 30 Dec 2020 18:26:49 +0000
-X-UUID: 4837dca857434243b461f24cef33bf81-20201230
+ id 1kugBN-00087x-4r
+ for linux-mediatek@lists.infradead.org; Wed, 30 Dec 2020 18:26:51 +0000
+X-UUID: 2a9af45d25834643a8122b752c156026-20201230
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=nabkFO/Qpjdo49+LJjLniJrgBRCKZfBDTQk065IoeM4=; 
- b=G8LhWs6zRUdByXsuURxW1ZHJuoJxt7W8Gbse8Vq0F9BBMiP8jSz87XniuHsxDE8Ch7W6sDmGrzIV/Qr/JTyIZx4B9GyDgyj/mLn9aoxq/TxjOSOpS+tvk1WmJRk7T0wWaPOYfKupzYfWgVNX/+aw0kRXoajQIlcx560eNirSaaQ=;
-X-UUID: 4837dca857434243b461f24cef33bf81-20201230
+ bh=zg9dOdHt4ZYQGwMZw2zoAh9dy4cKTH7i+YRrEM9FJKY=; 
+ b=R5Dw3d/b1ZEbAQz61W4vR1wxFOUs3B/WFpPUB+mwgu7sj+Buf9wZqrN/Ya/3fZvS/dJJM4lc89S6wKh5t7eamFxjZpY9gtwHNQNhqhQzfjt5cy8Y3RdpLEdckFy9woRA9uaZQd0DwAMQ0rKdk4fFoTqHTYJ6/7ld39hjvGxJijs=;
+X-UUID: 2a9af45d25834643a8122b752c156026-20201230
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 654797907; Wed, 30 Dec 2020 10:25:02 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 470163375; Wed, 30 Dec 2020 10:25:02 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Dec 2020 10:06:45 -0800
+ 15.0.1497.2; Wed, 30 Dec 2020 10:07:27 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 31 Dec 2020 02:06:31 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 31 Dec 2020 02:06:32 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 31 Dec 2020 02:06:30 +0800
+ Frontend Transport; Thu, 31 Dec 2020 02:06:32 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH -next v4 04/13] mt76: mt7921: add DMA support
-Date: Thu, 31 Dec 2020 02:06:15 +0800
-Message-ID: <86eeac88ac65330924bb13008f3d6c2dce740d1e.1609347310.git.objelf@gmail.com>
+Subject: [PATCH -next v4 11/13] mt76: mt7921: introduce support for hardware
+ beacon filter
+Date: Thu, 31 Dec 2020 02:06:22 +0800
+Message-ID: <8aece035e2bfb61b09bd49292c786b187506cba3.1609347310.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1609347310.git.objelf@gmail.com>
 References: <cover.1609347310.git.objelf@gmail.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 4F6523CFE82393BC3B5DEC6A89BFE20EC683E763E3075E276B05A70E2B1A606B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201230_132646_734727_214A3E2E 
-X-CRM114-Status: GOOD (  22.28  )
+X-CRM114-CacheID: sfid-20201230_132649_381897_526EBFD2 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,9 +94,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add DMA and register access support to MT7921e driver to set up the link
-for the data movement between the host and MT7921 MAC, or the host and
-MT7921 MCU.
+Introduce support for hw beacon filter available in the mt7921 firmware.
 
 Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
@@ -102,398 +102,69 @@ Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7921/Makefile    |   2 +-
- .../net/wireless/mediatek/mt76/mt7921/dma.c   | 356 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |   3 +
- 3 files changed, 360 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/dma.c
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 40 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
+ 2 files changed, 42 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-index c3399166c46d..13721f4cdd43 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-@@ -2,4 +2,4 @@
- 
- obj-$(CONFIG_MT7921E) += mt7921e.o
- 
--mt7921e-y := pci.o mcu.o mac.o
-+mt7921e-y := pci.o mcu.o mac.o dma.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-new file mode 100644
-index 000000000000..cd9665610284
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-@@ -0,0 +1,356 @@
-+// SPDX-License-Identifier: ISC
-+/* Copyright (C) 2020 MediaTek Inc. */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index edad763cf194..11550be87402 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -2540,3 +2540,43 @@ int mt7921_mcu_set_vif_ps(struct mt7921_dev *dev, struct ieee80211_vif *vif)
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_PS_PROFILE, &req,
+ 				 sizeof(req), false);
+ }
 +
-+#include "mt7921.h"
-+#include "../dma.h"
-+#include "mac.h"
-+
-+int mt7921_init_tx_queues(struct mt7921_phy *phy, int idx, int n_desc)
++int mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
++			  bool enable)
 +{
-+	int i, err;
++	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
++	struct {
++		u8 bss_idx;
++		u8 dtim_period;
++		__le16 aid;
++		__le16 bcn_interval;
++		__le16 atim_window;
++		u8 uapsd;
++		u8 bmc_delivered_ac;
++		u8 bmc_triggered_ac;
++		u8 pad;
++	} req = {
++		.bss_idx = mvif->idx,
++		.aid = cpu_to_le16(vif->bss_conf.aid),
++		.dtim_period = vif->bss_conf.dtim_period,
++		.bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int),
++	};
++	struct {
++		u8 bss_idx;
++		u8 pad[3];
++	} req_hdr = {
++		.bss_idx = mvif->idx,
++	};
++	int err;
 +
-+	err = mt76_init_tx_queue(phy->mt76, 0, idx, n_desc, MT_TX_RING_BASE);
-+	if (err < 0)
++	if (vif->type != NL80211_IFTYPE_STATION)
++		return 0;
++
++	err = mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_BSS_ABORT, &req_hdr,
++				sizeof(req_hdr), false);
++	if (err < 0 || !enable)
 +		return err;
 +
-+	for (i = 0; i <= MT_TXQ_PSD; i++)
-+		phy->mt76->q_tx[i] = phy->mt76->q_tx[0];
-+
-+	return 0;
++	return mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_BSS_CONNECTED, &req,
++				 sizeof(req), false);
 +}
-+
-+void mt7921_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
-+			 struct sk_buff *skb)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	__le32 *rxd = (__le32 *)skb->data;
-+	enum rx_pkt_type type;
-+	u16 flag;
-+
-+	type = FIELD_GET(MT_RXD0_PKT_TYPE, le32_to_cpu(rxd[0]));
-+	flag = FIELD_GET(MT_RXD0_PKT_FLAG, le32_to_cpu(rxd[0]));
-+
-+	if (type == PKT_TYPE_RX_EVENT && flag == 0x1)
-+		type = PKT_TYPE_NORMAL_MCU;
-+
-+	switch (type) {
-+	case PKT_TYPE_TXRX_NOTIFY:
-+		mt7921_mac_tx_free(dev, skb);
-+		break;
-+	case PKT_TYPE_RX_EVENT:
-+		mt7921_mcu_rx_event(dev, skb);
-+		break;
-+	case PKT_TYPE_NORMAL_MCU:
-+	case PKT_TYPE_NORMAL:
-+		if (!mt7921_mac_fill_rx(dev, skb)) {
-+			mt76_rx(&dev->mt76, q, skb);
-+			return;
-+		}
-+		fallthrough;
-+	default:
-+		dev_kfree_skb(skb);
-+		break;
-+	}
-+}
-+
-+static void
-+mt7921_tx_cleanup(struct mt7921_dev *dev)
-+{
-+	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_WM], false);
-+	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_WA], false);
-+}
-+
-+static int mt7921_poll_tx(struct napi_struct *napi, int budget)
-+{
-+	struct mt7921_dev *dev;
-+
-+	dev = container_of(napi, struct mt7921_dev, mt76.tx_napi);
-+
-+	mt7921_tx_cleanup(dev);
-+
-+	if (napi_complete_done(napi, 0))
-+		mt7921_irq_enable(dev, MT_INT_TX_DONE_ALL);
-+
-+	return 0;
-+}
-+
-+void mt7921_dma_prefetch(struct mt7921_dev *dev)
-+{
-+#define PREFETCH(base, depth)	((base) << 16 | (depth))
-+
-+	mt76_wr(dev, MT_WFDMA0_RX_RING0_EXT_CTRL, PREFETCH(0x0, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING2_EXT_CTRL, PREFETCH(0x40, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING3_EXT_CTRL, PREFETCH(0x80, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING4_EXT_CTRL, PREFETCH(0xc0, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_RX_RING5_EXT_CTRL, PREFETCH(0x100, 0x4));
-+
-+	mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, PREFETCH(0x140, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING1_EXT_CTRL, PREFETCH(0x180, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING2_EXT_CTRL, PREFETCH(0x1c0, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING3_EXT_CTRL, PREFETCH(0x200, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING4_EXT_CTRL, PREFETCH(0x240, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING5_EXT_CTRL, PREFETCH(0x280, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING6_EXT_CTRL, PREFETCH(0x2c0, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING16_EXT_CTRL, PREFETCH(0x340, 0x4));
-+	mt76_wr(dev, MT_WFDMA0_TX_RING17_EXT_CTRL, PREFETCH(0x380, 0x4));
-+}
-+
-+static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
-+{
-+	static const struct {
-+		u32 phys;
-+		u32 mapped;
-+		u32 size;
-+	} fixed_map[] = {
-+		{ 0x00400000, 0x80000, 0x10000}, /* WF_MCU_SYSRAM */
-+		{ 0x00410000, 0x90000, 0x10000}, /* WF_MCU_SYSRAM (configure register) */
-+		{ 0x40000000, 0x70000, 0x10000}, /* WF_UMAC_SYSRAM */
-+		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
-+		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
-+		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
-+		{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
-+		{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
-+		{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
-+		{ 0x7c060000, 0xe0000, 0x10000}, /* CONN_INFRA, conn_host_csr_top */
-+		{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
-+		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
-+		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
-+		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
-+		{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
-+		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
-+		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
-+		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
-+		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
-+		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
-+		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
-+		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
-+		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
-+		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
-+		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
-+		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
-+		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
-+		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
-+		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
-+		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
-+		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
-+		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
-+		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
-+		{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
-+		{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
-+		{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
-+		{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
-+		{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
-+		{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
-+		{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
-+		{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
-+		{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
-+	};
-+	int i;
-+
-+	if (addr < 0x100000)
-+		return addr;
-+
-+	for (i = 0; i < ARRAY_SIZE(fixed_map); i++) {
-+		u32 ofs;
-+
-+		if (addr < fixed_map[i].phys)
-+			continue;
-+
-+		ofs = addr - fixed_map[i].phys;
-+		if (ofs > fixed_map[i].size)
-+			continue;
-+
-+		return fixed_map[i].mapped + ofs;
-+	}
-+
-+	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
-+	    (addr >= 0x70000000 && addr < 0x78000000) ||
-+	    (addr >= 0x7c000000 && addr < 0x7c400000))
-+		return mt7921_reg_map_l1(dev, addr);
-+
-+	dev_err(dev->mt76.dev, "Access currently unsupported address %08x\n",
-+		addr);
-+
-+	return 0;
-+}
-+
-+static u32 mt7921_rr(struct mt76_dev *mdev, u32 offset)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	u32 addr = __mt7921_reg_addr(dev, offset);
-+
-+	return dev->bus_ops->rr(mdev, addr);
-+}
-+
-+static void mt7921_wr(struct mt76_dev *mdev, u32 offset, u32 val)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	u32 addr = __mt7921_reg_addr(dev, offset);
-+
-+	dev->bus_ops->wr(mdev, addr, val);
-+}
-+
-+static u32 mt7921_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	u32 addr = __mt7921_reg_addr(dev, offset);
-+
-+	return dev->bus_ops->rmw(mdev, addr, mask, val);
-+}
-+
-+static int mt7921_dmashdl_disabled(struct mt7921_dev *dev)
-+{
-+	mt76_clear(dev, MT_WFDMA0_GLO_CFG_EXT0, MT_WFDMA0_CSR_TX_DMASHDL_ENABLE);
-+	mt76_set(dev, MT_DMASHDL_SW_CONTROL, MT_DMASHDL_DMASHDL_BYPASS);
-+
-+	return 0;
-+}
-+
-+int mt7921_dma_init(struct mt7921_dev *dev)
-+{
-+	/* Increase buffer size to receive large VHT/HE MPDUs */
-+	struct mt76_bus_ops *bus_ops;
-+	int rx_buf_size = MT_RX_BUF_SIZE * 2;
-+	int ret;
-+
-+	dev->bus_ops = dev->mt76.bus;
-+	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
-+			       GFP_KERNEL);
-+	if (!bus_ops)
-+		return -ENOMEM;
-+
-+	bus_ops->rr = mt7921_rr;
-+	bus_ops->wr = mt7921_wr;
-+	bus_ops->rmw = mt7921_rmw;
-+	dev->mt76.bus = bus_ops;
-+
-+	mt76_dma_attach(&dev->mt76);
-+
-+	/* reset */
-+	mt76_clear(dev, MT_WFDMA0_RST,
-+		   MT_WFDMA0_RST_DMASHDL_ALL_RST |
-+		   MT_WFDMA0_RST_LOGIC_RST);
-+
-+	mt76_set(dev, MT_WFDMA0_RST,
-+		 MT_WFDMA0_RST_DMASHDL_ALL_RST |
-+		 MT_WFDMA0_RST_LOGIC_RST);
-+
-+	ret = mt7921_dmashdl_disabled(dev);
-+	if (ret)
-+		return ret;
-+
-+	/* disable WFDMA0 */
-+	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
-+		   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
-+		   MT_WFDMA0_GLO_CFG_RX_DMA_EN |
-+		   MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
-+		   MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
-+		   MT_WFDMA0_GLO_CFG_OMIT_RX_INFO |
-+		   MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
-+
-+	mt76_poll(dev, MT_WFDMA0_GLO_CFG,
-+		  MT_WFDMA0_GLO_CFG_TX_DMA_BUSY |
-+		  MT_WFDMA0_GLO_CFG_RX_DMA_BUSY, 0, 1000);
-+
-+	/* init tx queue */
-+	ret = mt7921_init_tx_queues(&dev->phy, MT7921_TXQ_BAND0,
-+				    MT7921_TX_RING_SIZE);
-+	if (ret)
-+		return ret;
-+
-+	mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, 0x4);
-+
-+	/* command to WM */
-+	ret = mt76_init_mcu_queue(&dev->mt76, MT_MCUQ_WM, MT7921_TXQ_MCU_WM,
-+				  MT7921_TX_MCU_RING_SIZE, MT_TX_RING_BASE);
-+	if (ret)
-+		return ret;
-+
-+	/* firmware download */
-+	ret = mt76_init_mcu_queue(&dev->mt76, MT_MCUQ_FWDL, MT7921_TXQ_FWDL,
-+				  MT7921_TX_FWDL_RING_SIZE, MT_TX_RING_BASE);
-+	if (ret)
-+		return ret;
-+
-+	/* event from WM before firmware download */
-+	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MCU],
-+			       MT7921_RXQ_MCU_WM,
-+			       MT7921_RX_MCU_RING_SIZE,
-+			       rx_buf_size, MT_RX_EVENT_RING_BASE);
-+	if (ret)
-+		return ret;
-+
-+	/* Change mcu queue after firmware download */
-+	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MCU_WA],
-+			       MT7921_RXQ_MCU_WM,
-+			       MT7921_RX_MCU_RING_SIZE,
-+			       rx_buf_size, MT_WFDMA0(0x540));
-+	if (ret)
-+		return ret;
-+
-+	/* rx data */
-+	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MAIN],
-+			       MT7921_RXQ_BAND0, MT7921_RX_RING_SIZE,
-+			       rx_buf_size, MT_RX_DATA_RING_BASE);
-+	if (ret)
-+		return ret;
-+
-+	ret = mt76_init_queues(dev);
-+	if (ret < 0)
-+		return ret;
-+
-+	netif_tx_napi_add(&dev->mt76.napi_dev, &dev->mt76.tx_napi,
-+			  mt7921_poll_tx, NAPI_POLL_WEIGHT);
-+	napi_enable(&dev->mt76.tx_napi);
-+
-+	/* configure perfetch settings */
-+	mt7921_dma_prefetch(dev);
-+
-+	/* reset dma idx */
-+	mt76_wr(dev, MT_WFDMA0_RST_DTX_PTR, ~0);
-+
-+	/* configure delay interrupt */
-+	mt76_wr(dev, MT_WFDMA0_PRI_DLY_INT_CFG0, 0);
-+
-+	mt76_set(dev, MT_WFDMA0_GLO_CFG,
-+		 MT_WFDMA0_GLO_CFG_TX_WB_DDONE |
-+		 MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN |
-+		 MT_WFDMA0_GLO_CFG_CLK_GAT_DIS |
-+		 MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
-+		 MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
-+		 MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
-+
-+	mt76_set(dev, MT_WFDMA0_GLO_CFG,
-+		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
-+
-+	mt76_set(dev, 0x54000120, BIT(1));
-+
-+	/* enable interrupts for TX/RX rings */
-+	mt7921_irq_enable(dev, MT_INT_RX_DONE_ALL | MT_INT_TX_DONE_ALL |
-+			  MT_INT_MCU_CMD);
-+
-+	return 0;
-+}
-+
-+void mt7921_dma_cleanup(struct mt7921_dev *dev)
-+{
-+	/* disable */
-+	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
-+		   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
-+		   MT_WFDMA0_GLO_CFG_RX_DMA_EN |
-+		   MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
-+		   MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
-+		   MT_WFDMA0_GLO_CFG_OMIT_RX_INFO |
-+		   MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
-+
-+	/* reset */
-+	mt76_clear(dev, MT_WFDMA0_RST,
-+		   MT_WFDMA0_RST_DMASHDL_ALL_RST |
-+		   MT_WFDMA0_RST_LOGIC_RST);
-+
-+	mt76_set(dev, MT_WFDMA0_RST,
-+		 MT_WFDMA0_RST_DMASHDL_ALL_RST |
-+		 MT_WFDMA0_RST_LOGIC_RST);
-+
-+	mt76_dma_cleanup(&dev->mt76);
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index b55323be3823..8a29fd9ad9cd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -1201,6 +1201,9 @@ mt7921_dma_reset(struct mt7921_phy *phy)
- 		mt76_queue_rx_reset(dev, i);
- 	}
- 
-+	/* re-init prefetch settings after reset */
-+	mt7921_dma_prefetch(dev);
-+
- 	mt76_set(dev, MT_WFDMA0_GLO_CFG,
- 		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index b8bd99894f11..879bf8172fb7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -360,4 +360,6 @@ int mt7921_mcu_cancel_hw_scan(struct mt7921_phy *phy,
+ 			      struct ieee80211_vif *vif);
+ u32 mt7921_get_wtbl_info(struct mt7921_dev *dev, u16 wlan_idx);
+ int mt7921_mcu_set_vif_ps(struct mt7921_dev *dev, struct ieee80211_vif *vif);
++int mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
++			  bool enable);
+ #endif
 -- 
 2.25.1
 _______________________________________________
