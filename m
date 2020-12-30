@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94ADFC433E6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 13:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CFA98C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 13:05:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A49422519
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 13:03:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A49422519
+	by mail.kernel.org (Postfix) with ESMTPS id 8A82822473
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Dec 2020 13:05:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A82822473
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,45 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7eBPmXzBggjQydTRU95UBAnepyyCFTQuxOdcu3Ro90g=; b=Y9vZTIr5HagZcsLUeVcxFUo7A
-	sT7cUIvhcWAurD+se68MIIaJ8JEvby3+LwdbDjwUu1F0mJyaScRKRtr/hHIA2yZBUV1m8FU1XzTio
-	albiqtqTQ/WX3e0sx+NVshi/R+dxWW76Bfm/kacJjyN8bN50tJr3Liek5lP+5wUPIwoKUxkgoP0Ob
-	SPaYv8iyKa2WeXfUjKFfc2JgqSog3rJcYTv4BzH6vWzu7ZFXc1GCPjir9yGPftK+jGV4fR9nc7khA
-	TAZUdSAkzERCMlA2+G6Jo2LsZkkIH0tDWMnlopaztDFyakK4iVhBzOIV6jhPdOZAln+RucsXQeVMn
-	MvYtleFMw==;
+	 bh=R1yn8V2MLoPameLzp9tf//CG5+wCVW67gZbpSshR4FA=; b=bNxCDPY9wkfgz50XojzutbjXQ
+	RUeYdZD8x6ScUulQyvrIExlyO5dBnRGoma6e9Lf4+3wEAflX69B5hOuUjo9CijJkQIcoxwRXxI2CW
+	VXCYgiZjT8TjQp4SjDQgxUMOAkrh69EWWMeclHROVvIRmX0sEkwoLvN1S6lKMttIuRmw3dyTfQDdT
+	PdQieVccxAEjnECFRFNxpuYlEOftm2nKVdJaHXNhdw9cOBnWX/zUtWJl/rTheZiQw7mGDrAmT/Ylv
+	ABrJynJuwMcKwjmdcIFIqacRy2YGXd5+XvgijhrbDEw2VqzgJdexukZ5707zG4HmayiWydwh9Stsh
+	R+Ljn/ayA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kub8e-00088e-Dr; Wed, 30 Dec 2020 13:03:40 +0000
+	id 1kub9k-00005Q-0i; Wed, 30 Dec 2020 13:04:48 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kub8U-00086r-IX; Wed, 30 Dec 2020 13:03:31 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D9009221FA;
- Wed, 30 Dec 2020 13:03:28 +0000 (UTC)
+ id 1kub9B-0008J5-8Y; Wed, 30 Dec 2020 13:04:15 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 411A52251E;
+ Wed, 30 Dec 2020 13:04:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609333409;
- bh=0SjBP3+GzRFxEt358YyMBe3kVIQvi+Ph4Y2ZXuQyn2M=;
+ s=k20201202; t=1609333452;
+ bh=W+Vc45MUrKdrvxQ64QJS/mCrmgrrq1KOiiAdgNhRAcI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ANKUXEx30gnW/JCByd68AxCv9TWocv5zyBNgq47KGiTIQEqoHVwxkdobuPmo6eCw9
- TF76U5jBHYTn4WvD+WivMqdfEc0E70uC+Xz77qpJ4OrztCaI+754ybet6JlDcQ6GiE
- 21kIit2XSDZnLFgid0s4TnEyPqqPYOL3dP3p97XezmS0gSuc3gcKl1Smknt5SLdfrU
- 0+mq+SZxqd3odo/t8B5VYiP/l3YE5LwHnECKrfsiPlrtvfrAAtfKvGcCYA8p0ZFkgh
- d/0/9M5JtpyYL+H/DCSSwvAhDRWLKTm2s7ph8M/6vcFbO2nEILhZoTSWSpbp2/vFdM
- oBqSIfiaqq38Q==
+ b=NPqqq1WFf/qF18zLCVdiBVl7iIdw8qAMcUqwZHqBAiHqjnsaat33W9YHb4PHHuNIU
+ jgArdsb4GHgerWDBftT7UcL4bLjjWDTC5NvPEJoA62zFqrkWAL5dlwXvHFrlOVac7z
+ KAhyKiHaTWOMCWjMp68KDgpbMJqDte6pyObtN7dMSiS4Qk8cJqhlC99YM3ktBDzaNf
+ wEaaNVa4SmVXJWaARPbXWuKwPx0aa2+P/RFnMHO5un7c/jkOuGNEp2YY6qw/w15C/T
+ 27injA5OdfgUYBMCptJV4JoNLGupafHx1snmFWacpFXByMWJGs6kDInMrZcBz3ruy4
+ MZEeycs5pzNiQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.10 11/31] f2fs: avoid race condition for shrinker
+Subject: [PATCH AUTOSEL 5.4 10/17] f2fs: avoid race condition for shrinker
  count
-Date: Wed, 30 Dec 2020 08:02:53 -0500
-Message-Id: <20201230130314.3636961-11-sashal@kernel.org>
+Date: Wed, 30 Dec 2020 08:03:50 -0500
+Message-Id: <20201230130357.3637261-10-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201230130314.3636961-1-sashal@kernel.org>
-References: <20201230130314.3636961-1-sashal@kernel.org>
+In-Reply-To: <20201230130357.3637261-1-sashal@kernel.org>
+References: <20201230130357.3637261-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201230_080330_752570_5E96CD24 
+X-CRM114-CacheID: sfid-20201230_080413_448191_6E585F19 
 X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -105,10 +105,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  6 files changed, 36 insertions(+), 24 deletions(-)
 
 diff --git a/fs/f2fs/checkpoint.c b/fs/f2fs/checkpoint.c
-index 023462e80e58d..b39bf416d5114 100644
+index c966ccc44c157..a57219c51c01a 100644
 --- a/fs/f2fs/checkpoint.c
 +++ b/fs/f2fs/checkpoint.c
-@@ -1600,7 +1600,7 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
+@@ -1596,7 +1596,7 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
  			goto out;
  		}
  
@@ -118,10 +118,10 @@ index 023462e80e58d..b39bf416d5114 100644
  				prefree_segments(sbi) == 0) {
  			f2fs_flush_sit_entries(sbi, cpc);
 diff --git a/fs/f2fs/debug.c b/fs/f2fs/debug.c
-index a8357fd4f5fab..197c914119da8 100644
+index 9b0bedd82581b..d8d64447bc947 100644
 --- a/fs/f2fs/debug.c
 +++ b/fs/f2fs/debug.c
-@@ -145,8 +145,8 @@ static void update_general_status(struct f2fs_sb_info *sbi)
+@@ -107,8 +107,8 @@ static void update_general_status(struct f2fs_sb_info *sbi)
  		si->node_pages = NODE_MAPPING(sbi)->nrpages;
  	if (sbi->meta_inode)
  		si->meta_pages = META_MAPPING(sbi)->nrpages;
@@ -132,7 +132,7 @@ index a8357fd4f5fab..197c914119da8 100644
  	si->sits = MAIN_SEGS(sbi);
  	si->dirty_sits = SIT_I(sbi)->dirty_sentries;
  	si->free_nids = NM_I(sbi)->nid_cnt[FREE_NID];
-@@ -278,9 +278,10 @@ static void update_mem_info(struct f2fs_sb_info *sbi)
+@@ -254,9 +254,10 @@ static void update_mem_info(struct f2fs_sb_info *sbi)
  	si->cache_mem += (NM_I(sbi)->nid_cnt[FREE_NID] +
  				NM_I(sbi)->nid_cnt[PREALLOC_NID]) *
  				sizeof(struct free_nid);
@@ -147,10 +147,10 @@ index a8357fd4f5fab..197c914119da8 100644
  	for (i = 0; i < MAX_INO_ENTRY; i++)
  		si->cache_mem += sbi->im[i].ino_num * sizeof(struct ino_entry);
 diff --git a/fs/f2fs/f2fs.h b/fs/f2fs/f2fs.h
-index 8cba43eb0b24a..14ace0e21d389 100644
+index 63440abe58c42..604fc2391f9f2 100644
 --- a/fs/f2fs/f2fs.h
 +++ b/fs/f2fs/f2fs.h
-@@ -896,6 +896,13 @@ enum nid_state {
+@@ -797,6 +797,13 @@ enum nid_state {
  	MAX_NID_STATE,
  };
  
@@ -164,7 +164,7 @@ index 8cba43eb0b24a..14ace0e21d389 100644
  struct f2fs_nm_info {
  	block_t nat_blkaddr;		/* base disk address of NAT */
  	nid_t max_nid;			/* maximum possible node ids */
-@@ -911,8 +918,7 @@ struct f2fs_nm_info {
+@@ -812,8 +819,7 @@ struct f2fs_nm_info {
  	struct rw_semaphore nat_tree_lock;	/* protect nat_tree_lock */
  	struct list_head nat_entries;	/* cached nat entry list (clean) */
  	spinlock_t nat_list_lock;	/* protect clean nat entry list */
@@ -175,7 +175,7 @@ index 8cba43eb0b24a..14ace0e21d389 100644
  
  	/* free node ids management */
 diff --git a/fs/f2fs/node.c b/fs/f2fs/node.c
-index d5d8ce077f295..56505b8e2b8d3 100644
+index 2a4a382f28fed..7c34e49363f40 100644
 --- a/fs/f2fs/node.c
 +++ b/fs/f2fs/node.c
 @@ -62,8 +62,8 @@ bool f2fs_available_free_memory(struct f2fs_sb_info *sbi, int type)
@@ -229,7 +229,7 @@ index d5d8ce077f295..56505b8e2b8d3 100644
  }
  
  static unsigned int __gang_lookup_nat_set(struct f2fs_nm_info *nm_i,
-@@ -2944,14 +2948,17 @@ int f2fs_flush_nat_entries(struct f2fs_sb_info *sbi, struct cp_control *cpc)
+@@ -2881,14 +2885,17 @@ int f2fs_flush_nat_entries(struct f2fs_sb_info *sbi, struct cp_control *cpc)
  	LIST_HEAD(sets);
  	int err = 0;
  
@@ -249,7 +249,7 @@ index d5d8ce077f295..56505b8e2b8d3 100644
  		return 0;
  
  	down_write(&nm_i->nat_tree_lock);
-@@ -2962,7 +2969,8 @@ int f2fs_flush_nat_entries(struct f2fs_sb_info *sbi, struct cp_control *cpc)
+@@ -2899,7 +2906,8 @@ int f2fs_flush_nat_entries(struct f2fs_sb_info *sbi, struct cp_control *cpc)
  	 * into nat entry set.
  	 */
  	if (enabled_nat_bits(sbi, cpc) ||
@@ -259,7 +259,7 @@ index d5d8ce077f295..56505b8e2b8d3 100644
  		remove_nats_in_journal(sbi);
  
  	while ((found = __gang_lookup_nat_set(nm_i,
-@@ -3086,7 +3094,6 @@ static int init_node_manager(struct f2fs_sb_info *sbi)
+@@ -3023,7 +3031,6 @@ static int init_node_manager(struct f2fs_sb_info *sbi)
  						F2FS_RESERVED_NODE_NUM;
  	nm_i->nid_cnt[FREE_NID] = 0;
  	nm_i->nid_cnt[PREALLOC_NID] = 0;
@@ -267,7 +267,7 @@ index d5d8ce077f295..56505b8e2b8d3 100644
  	nm_i->ram_thresh = DEF_RAM_THRESHOLD;
  	nm_i->ra_nid_pages = DEF_RA_NID_PAGES;
  	nm_i->dirty_nats_ratio = DEF_DIRTY_NAT_RATIO_THRESHOLD;
-@@ -3220,7 +3227,7 @@ void f2fs_destroy_node_manager(struct f2fs_sb_info *sbi)
+@@ -3160,7 +3167,7 @@ void f2fs_destroy_node_manager(struct f2fs_sb_info *sbi)
  			__del_from_nat_cache(nm_i, natvec[idx]);
  		}
  	}
@@ -277,10 +277,10 @@ index d5d8ce077f295..56505b8e2b8d3 100644
  	/* destroy nat set cache */
  	nid = 0;
 diff --git a/fs/f2fs/node.h b/fs/f2fs/node.h
-index 69e5859e993cf..f84541b57acbb 100644
+index e05af5df56485..4a2e7eaf2b028 100644
 --- a/fs/f2fs/node.h
 +++ b/fs/f2fs/node.h
-@@ -126,13 +126,13 @@ static inline void raw_nat_from_node_info(struct f2fs_nat_entry *raw_ne,
+@@ -123,13 +123,13 @@ static inline void raw_nat_from_node_info(struct f2fs_nat_entry *raw_ne,
  
  static inline bool excess_dirty_nats(struct f2fs_sb_info *sbi)
  {
@@ -297,7 +297,7 @@ index 69e5859e993cf..f84541b57acbb 100644
  
  static inline bool excess_dirty_nodes(struct f2fs_sb_info *sbi)
 diff --git a/fs/f2fs/shrinker.c b/fs/f2fs/shrinker.c
-index d66de5999a26d..dd3c3c7a90ec8 100644
+index a467aca29cfef..3ceebaaee3840 100644
 --- a/fs/f2fs/shrinker.c
 +++ b/fs/f2fs/shrinker.c
 @@ -18,9 +18,7 @@ static unsigned int shrinker_run_no;
