@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 90EE5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 15:39:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1295C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 15:42:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 416B5223DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 15:39:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 416B5223DB
+	by mail.kernel.org (Postfix) with ESMTPS id A5F66223DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 15:42:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5F66223DB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oZFq2G51AoUHa8Dsj6Ic2n4uH827Q69X5ZxoBVcS1s8=; b=oCuRwI1TyhOtFeLRHp0je9lEV
-	jwNqvQ5O6krdpHbfrU8jwOqPTmnLb4Io4xkKEixSMI4Rsf7W0svz3b7LbAtVOV0yi02ccK+V2f75+
-	WMhczlVPwuT6Bjr6RbaU1apBFSmXzGu/Q6YMj6t6zD9gGXZ6Nbq4qL5aEWfvqC5j6zGTDAcs4HnPM
-	Ty3QtLcOdV1sHkIRDsbyVbgIjCQmqOgaKZnVvE5zhackFAVz+Bxja19dlUXbt3b9Y1OlC9JvUsMyl
-	FQ1R13Nagd8FILdnzoRx+Ps9KuJzKughrqMH3n85CbtMtDkVB06k1f1+mYOZj52roNWZTKCVkeGo6
-	yzPGq9jkQ==;
+	 bh=78siBEvxcl+Tyy2dsi6iN9X9obqZYNUXF5oJAQ5Q340=; b=KCijr2drwHx8Fby1b9JARacBM
+	+z66hxZnY14wDob9c7yat32o0HtmO7rrCRnBB0lk+LMIB6qSiQNp0tWKsYNwx9IP4OFS9P7AI/K8h
+	eUAmDJ3JdGcDGmiZYaqfKDL4gBT7YnUMNXtb4d7mFK4rDzDYOcqMjql2sQJDMGkb/1VzH93OnKtXr
+	TlG9dmLZU+fPqYkyAt9kyBEqQO5fT1er7R+X53ZGJWh6NAktaOQePwaUM3w3xf2+vWaDfk/3bDobX
+	iO0hTtw9wWtK0PbgREjDWIqxDpKD66mfxN2TxVEgbBwX539KBeIsYQmlw2Dtk7T81CRZi66e9AaOj
+	ea/kBG7Hw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kv03A-0000pY-SD; Thu, 31 Dec 2020 15:39:40 +0000
-Received: from mail-oo1-f52.google.com ([209.85.161.52])
+	id 1kv05Q-0001Dw-2y; Thu, 31 Dec 2020 15:42:00 +0000
+Received: from mail-oi1-f181.google.com ([209.85.167.181])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kv035-0000o8-To; Thu, 31 Dec 2020 15:39:36 +0000
-Received: by mail-oo1-f52.google.com with SMTP id k9so4377854oop.6;
- Thu, 31 Dec 2020 07:39:35 -0800 (PST)
+ id 1kv05N-0001D7-6f; Thu, 31 Dec 2020 15:41:57 +0000
+Received: by mail-oi1-f181.google.com with SMTP id q25so22143126oij.10;
+ Thu, 31 Dec 2020 07:41:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=aqRUTrB98zq19oUfqeTfRGQXti0Kp3OgPKPcu5cHQTM=;
- b=j3Smx6QQ/JrhzImn38MaXdpDLzpq/KqrPD2V0X7Q4G66x52/0iljs+ucMNGEcBwGYy
- fZ1JN7xevKBIl3Dsfc/b9f2lczIoHDPnQjakKVLEOlX8xr/gc2W3OZ1PyzUDe1ey50CP
- aNfqwjM8iVcGiz9SsyxA0gt8S9QZDW9Hppr97rdE+9fKuarxWl/BUmrA28rw8fvMiV0Q
- XfSc/vx4u017jfGulSiFUCNoSlvF66evraYl9weXfXi7e3U1JEdsMAZNvMZ57v6LSH8i
- bRbE5872MsqvWuQfXhE/uDzoMK8HT3+BUF0ahDiUYLsbWMEIexNR0l/kBcqpGyof0YX1
- 8Ggw==
-X-Gm-Message-State: AOAM5315uAYDBG1N74nU3uTFI0oew57UW10U8NGzi3J7ltRxTZr8iP7l
- 6U0nH0WoaHqMGENJAR5Tuw==
-X-Google-Smtp-Source: ABdhPJx1uK9oxb1Sht+XTOoCn6qCnv276YFq7AbTWO1nihXVsG+83XjUs8P2ZFTe9vA3Jk0ICL3Vjg==
-X-Received: by 2002:a4a:e1b5:: with SMTP id 21mr39831446ooy.64.1609429175023; 
- Thu, 31 Dec 2020 07:39:35 -0800 (PST)
+ bh=7ZRD6+gK6uV7qY4ayTDAh6QuqyD8TOAxjhUKABzcOrc=;
+ b=UCzpwHxCkY8zZ3ttnEL9oP32kSOi5q7DoK+WDbA0qzTKRuYs2zmqWel6CdhoRzjljJ
+ Tv0eFgbcn7TDM1lfz9y8ltIxJSFzgOUiYcTKmg6MRSvCf+itg+9laR0ypVC4TFChnROf
+ kzDaTvJHn1qpV726TsS+gcaAjNgs9cH122lo1j3SvYQMJt5KmEXLnvb3HBmmphUkoZ31
+ g35BDxhuoOEl+pgsCSPkZyS9G7dowrrVL8n4QLQL8wWZEGuOOSj5+GvXH2L7HYwhGUpI
+ KeYXt1BBdM4LWgsLpPWOEKEK7A+/tD967HfsgiOTRbbCOH4AcZjfSVwpwXbpD25V/CzK
+ GHkg==
+X-Gm-Message-State: AOAM530Mr/Bd8/NNCYdHUL9bcGvwuiN4IH7LlTYpL7oEisbuy4z/ofon
+ LMlioOr7hsPwzH5dRgnkPQ==
+X-Google-Smtp-Source: ABdhPJwqbag5+xGVSjUpUqGq4vOhtTuK2v8OIDRkh/Bn9LulVKav7Xx4HrzHXxyRkpHx2BgxYHBqkQ==
+X-Received: by 2002:aca:4dc3:: with SMTP id a186mr8038426oib.107.1609429316278; 
+ Thu, 31 Dec 2020 07:41:56 -0800 (PST)
 Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id f201sm10955753oig.21.2020.12.31.07.39.32
+ by smtp.gmail.com with ESMTPSA id 11sm11234456oty.65.2020.12.31.07.41.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Dec 2020 07:39:33 -0800 (PST)
-Received: (nullmailer pid 1836008 invoked by uid 1000);
- Thu, 31 Dec 2020 15:39:31 -0000
-Date: Thu, 31 Dec 2020 08:39:31 -0700
+ Thu, 31 Dec 2020 07:41:55 -0800 (PST)
+Received: (nullmailer pid 1839736 invoked by uid 1000);
+ Thu, 31 Dec 2020 15:41:53 -0000
+Date: Thu, 31 Dec 2020 08:41:53 -0700
 From: Rob Herring <robh@kernel.org>
 To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v5 1/4] dt-bindings: spmi: modify the constraint
- 'maxItems' to 'minItems'
-Message-ID: <20201231153931.GA1833986@robh.at.kernel.org>
+Subject: Re: [PATCH v5 2/4] dt-bindings: spmi: document binding for the
+ Mediatek SPMI controller
+Message-ID: <20201231154153.GA1839701@robh.at.kernel.org>
 References: <1608691469-20919-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1608691469-20919-2-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1608691469-20919-3-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1608691469-20919-2-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <1608691469-20919-3-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201231_103935_970819_325AF9A8 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20201231_104157_253995_CC6F9149 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,9 +85,9 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>,
- srv_heupstream@mediatek.com, Geert Uytterhoeven <geert+renesas@glider.be>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, srv_heupstream@mediatek.com,
  Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
@@ -98,34 +98,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 23, 2020 at 10:44:26AM +0800, Hsin-Hsiung Wang wrote:
-> The constraint of 'maxItem: 1' might be larger than 1, so we modify it
-> to 'minItem: 0'.
+On Wed, 23 Dec 2020 10:44:27 +0800, Hsin-Hsiung Wang wrote:
+> This adds documentation for the SPMI controller found on Mediatek SoCs.
 > 
 > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/spmi/spmi.yaml | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      | 74 +++++++++++++++++++
+>  1 file changed, 74 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/spmi/spmi.yaml b/Documentation/devicetree/bindings/spmi/spmi.yaml
-> index 173940930719..f1a26391ffde 100644
-> --- a/Documentation/devicetree/bindings/spmi/spmi.yaml
-> +++ b/Documentation/devicetree/bindings/spmi/spmi.yaml
-> @@ -25,7 +25,7 @@ properties:
->      pattern: "^spmi@.*"
->  
->    reg:
-> -    maxItems: 1
-> +    minItems: 0
 
-0 is never right. That's 'reg' not present.
-
->  
->    "#address-cells":
->      const: 2
-> -- 
-> 2.18.0
-> 
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
