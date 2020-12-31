@@ -2,75 +2,63 @@ Return-Path: <SRS0=2t6o=GD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-19.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 141F0C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 09:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77352C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 10:09:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 66CFE223C8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 09:02:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66CFE223C8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id EDB2E2158C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Dec 2020 10:09:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDB2E2158C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lvOhBy3O9LXG9MvSLaD85LXc4TlPzQ1rEbfBVlfPT4M=; b=Bbp2KE6b6X8sKFOY5HojwQNAn
-	kxSxz5ORN5nVszRrR77elw8pjqW9UhmuvwMwSjFgGq7PbxbcL1fTKmWaU4WdxxkO7YZ+HacMF9l4f
-	x87z8YbCJb90kIdcbiLZAc/R3NEaNS57C87PCDXYyvuD7KeknD4S1CAymu1GYK/MmK2GLOVD3IdMu
-	ywSx0FxuvIjwZT5B35Tr07io4kUBa+P3HCU3iFVHUHMClVmCXErtTfMTRXYU/1Q1eJ3rw9MEnGuB6
-	Ln6f8+L0DqVape2lZpr439pUlkePKo7XiuVF8NjCu+zBiX8ymiorgiQGaqHMpfjdXy+6NSGzcGEuH
-	2uE74GttQ==;
+	 bh=xJWnLRDN/51QepS7CBLXMFX8F+gI+2lbtdcjwOFfSsM=; b=qpIVNcYnSW/JfeVNrGqK0xbXb
+	I1NqPR0WXfD/RFjZ/38T5ZNQQ+TCsB59jZoggWMh94koVYKE9D1FbkJ6nSXbUN5XJHPCZlMVg85Cp
+	Z7p9eOmUXhi3I0hN1qy7n+esbEw+9CyqpAwlKqj2eIjc5ttWOpl2qc0d0asyFaaBAxsmBCVP9eGyF
+	4wn4NnSExjIbSKB4mChtUsCKSZqrnGW+kPiwIzaLnRkW1ruks/IuBl+w7ETfB+4WMOfZB9VKvk6mS
+	pqZOpTJ9E60m9IizcLuhhIjVaYbuUA2FaqwOmP95aqrSEIt8YeGjwRZ5cgcoTJrDra+M2n5cM3dZl
+	+HA2koTLw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kutqJ-00039p-5B; Thu, 31 Dec 2020 09:01:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kuutM-00061K-L6; Thu, 31 Dec 2020 10:09:12 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kutqF-000396-O5
- for linux-mediatek@lists.infradead.org; Thu, 31 Dec 2020 09:01:57 +0000
-X-UUID: 2472907951494085ac56ae1e3ef8bc3a-20201231
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=+l0F3UfPINeuQQDthlZCRT/biWv4vrO3YtRXXQfQwck=; 
- b=S7N8NI3Xg189PNdurdRvFAoVpT3UKa2gNkHcWbxk3bFKlvXqKw5ZLytfMWOvo4rq8a88sT59lL1+XeZPFUHvN/+E6k2oy0qcsgfHdysCF0XTpef0MDs/S2MMxDh4qDoeimAbnXKXy4T+LL1TWs+PitVVGaj2dCfpgVSLrMsLQ+Y=;
-X-UUID: 2472907951494085ac56ae1e3ef8bc3a-20201231
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1595380984; Thu, 31 Dec 2020 01:01:51 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 31 Dec 2020 00:55:48 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 31 Dec 2020 16:55:46 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 31 Dec 2020 16:55:46 +0800
-Message-ID: <1609404946.23449.15.camel@mtkswgap22>
-Subject: Re: [PATCH -next v4 02/13] mt76: mt7921: add MCU support
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: <sean.wang@mediatek.com>
-Date: Thu, 31 Dec 2020 16:55:46 +0800
-In-Reply-To: <38dc730fe632525472456816dd51620d9b3ba547.1609347310.git.objelf@gmail.com>
-References: <cover.1609347310.git.objelf@gmail.com>
- <38dc730fe632525472456816dd51620d9b3ba547.1609347310.git.objelf@gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kuutJ-00060v-Rw
+ for linux-mediatek@lists.infradead.org; Thu, 31 Dec 2020 10:09:11 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 58F4A207A3;
+ Thu, 31 Dec 2020 10:09:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1609409347;
+ bh=d7t6jUuuirI4aZvjNFGRK+ftezBCarKE5fHOLdqpTcI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Q5lnce7m3LK9x6Tbzp3a3PzmmpN9FUxvSNv7PYPQVCUtHqvVkP+GEgxdiNyVE3zWI
+ fRILM57WCz9PBAcabFcvUaWmHul0ksNf+3rmhVd0xFbJkc/pvzXxtJCdkmSOdVCvL7
+ xQUHgCtuA1ew2D/nPk78WOmwez7Se0o+RAZiycdSHTFn47XpolP76ybRjnbV0OWLCd
+ n3uwugb4cGy/Et4JsCmARIP3x3YH8lqDyLbu2wBfY1yAcz4Pm3iNnlFUowFZVtnzPO
+ eDJFzKYYDowvO9P8IGQwtZwaTBAgso3cx4V1Nes/K14FrfvOHZT0Zz2cB2OKbyoGSV
+ yLOd60RWO/9dA==
+Date: Thu, 31 Dec 2020 11:09:18 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Nathan Chancellor <natechancellor@gmail.com>
+Subject: Re: [PATCH] mt76: Fix queue ID variable types after mcu queue split
+Message-ID: <20201231100918.GA1819773@computer-5.station>
+References: <20201229211548.1348077-1-natechancellor@gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 349190E50DED03C0D3D922A6AEB26916EB510F5C7EE67374E4672B8003FCD22F2000:8
-X-MTK: N
+In-Reply-To: <20201229211548.1348077-1-natechancellor@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201231_040156_553077_0FF48448 
-X-CRM114-Status: GOOD (  18.10  )
+X-CRM114-CacheID: sfid-20201231_050910_299700_C6351F41 
+X-CRM114-Status: GOOD (  19.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,130 +70,166 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robin.chiu@mediatek.com, ch.yeh@mediatek.com, Eric.Liang@mediatek.com,
- linux-wireless@vger.kernel.org, posh.sun@mediatek.com, YN.Chen@mediatek.com,
- linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, Soul.Huang@mediatek.com, nbd@nbd.name
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Kalle Valo <kvalo@codeaurora.org>, Felix Fietkau <nbd@nbd.name>
+Content-Type: multipart/mixed; boundary="===============7968982627562550029=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2020-12-31 at 02:06 +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> MT7921 contains a microprocessor with which the host can use command/event
-> to communicate to implement offload features such as establish connection,
-> hardware scan and so on. The host has to download the ROM patch, RAM
-> firmware and finally activate the MCU to complete the MT7921
-> initialization.
-> 
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
-> Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+
+--===============7968982627562550029==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mYCpIKhGyMATD0i+"
+Content-Disposition: inline
+
+
+--mYCpIKhGyMATD0i+
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Clang warns in both mt7615 and mt7915:
+>=20
+> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:271:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 txq =3D MT_MCUQ_FWDL;
+>                     ~ ^~~~~~~~~~~~
+> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:278:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 txq =3D MT_MCUQ_WA;
+>                     ~ ^~~~~~~~~~
+> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:282:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 txq =3D MT_MCUQ_WM;
+>                     ~ ^~~~~~~~~~
+> 3 warnings generated.
+>=20
+> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:238:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 qid =3D MT_MCUQ_WM;
+>                     ~ ^~~~~~~~~~
+> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:240:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 qid =3D MT_MCUQ_FWDL;
+>                     ~ ^~~~~~~~~~~~
+> 2 warnings generated.
+>=20
+> Use the proper type for the queue ID variables to fix these warnings.
+> Additionally, rename the txq variable in mt7915_mcu_send_message to be
+> more neutral like mt7615_mcu_send_message.
+>=20
+> Fixes: e637763b606b ("mt76: move mcu queues to mt76_dev q_mcu array")
+> Link: https://github.com/ClangBuiltLinux/linux/issues/1229
+> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
 > ---
->  .../wireless/mediatek/mt76/mt7921/Makefile    |    2 +-
->  .../net/wireless/mediatek/mt76/mt7921/mac.h   |  333 +++
->  .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 2438 +++++++++++++++++
->  .../net/wireless/mediatek/mt76/mt7921/mcu.h   | 1050 +++++++
->  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  353 +++
->  .../net/wireless/mediatek/mt76/mt7921/regs.h  |  413 +++
->  6 files changed, 4588 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mac.h
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
->  create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+>  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c |  2 +-
+>  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 10 +++++-----
+>  2 files changed, 6 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/mcu.c
+> index a44b7766dec6..c13547841a4e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> @@ -231,7 +231,7 @@ mt7615_mcu_send_message(struct mt76_dev *mdev, struct=
+ sk_buff *skb,
+>  			int cmd, int *seq)
+>  {
+>  	struct mt7615_dev *dev =3D container_of(mdev, struct mt7615_dev, mt76);
+> -	enum mt76_txq_id qid;
+> +	enum mt76_mcuq_id qid;
+> =20
+>  	mt7615_mcu_fill_msg(dev, skb, cmd, seq);
+>  	if (test_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state))
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7915/mcu.c
+> index 5fdd1a6d32ee..e211a2bd4d3c 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> @@ -256,7 +256,7 @@ mt7915_mcu_send_message(struct mt76_dev *mdev, struct=
+ sk_buff *skb,
+>  	struct mt7915_dev *dev =3D container_of(mdev, struct mt7915_dev, mt76);
+>  	struct mt7915_mcu_txd *mcu_txd;
+>  	u8 seq, pkt_fmt, qidx;
+> -	enum mt76_txq_id txq;
+> +	enum mt76_mcuq_id qid;
+>  	__le32 *txd;
+>  	u32 val;
+> =20
+> @@ -268,18 +268,18 @@ mt7915_mcu_send_message(struct mt76_dev *mdev, stru=
+ct sk_buff *skb,
+>  		seq =3D ++dev->mt76.mcu.msg_seq & 0xf;
+> =20
+>  	if (cmd =3D=3D -MCU_CMD_FW_SCATTER) {
+> -		txq =3D MT_MCUQ_FWDL;
+> +		qid =3D MT_MCUQ_FWDL;
+>  		goto exit;
+>  	}
+> =20
+>  	mcu_txd =3D (struct mt7915_mcu_txd *)skb_push(skb, sizeof(*mcu_txd));
+> =20
+>  	if (test_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state)) {
+> -		txq =3D MT_MCUQ_WA;
+> +		qid =3D MT_MCUQ_WA;
+>  		qidx =3D MT_TX_MCU_PORT_RX_Q0;
+>  		pkt_fmt =3D MT_TX_TYPE_CMD;
+>  	} else {
+> -		txq =3D MT_MCUQ_WM;
+> +		qid =3D MT_MCUQ_WM;
+>  		qidx =3D MT_TX_MCU_PORT_RX_Q0;
+>  		pkt_fmt =3D MT_TX_TYPE_CMD;
+>  	}
+> @@ -326,7 +326,7 @@ mt7915_mcu_send_message(struct mt76_dev *mdev, struct=
+ sk_buff *skb,
+>  	if (wait_seq)
+>  		*wait_seq =3D seq;
+> =20
+> -	return mt76_tx_queue_skb_raw(dev, mdev->q_mcu[txq], skb, 0);
+> +	return mt76_tx_queue_skb_raw(dev, mdev->q_mcu[qid], skb, 0);
+>  }
+> =20
+>  static void
+>=20
+> base-commit: 5c8fe583cce542aa0b84adc939ce85293de36e5e
+> --=20
+> 2.30.0
+>=20
+
+--mYCpIKhGyMATD0i+
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCX+2jTAAKCRA6cBh0uS2t
+rAxYAP0f0XgVE5eJY2f4tP7MT5fX7WJ8MmFaiXKtkd+0UVZsLQD+JJVnlAsbv2g0
+9j+j5nl0uK4wtbnOauzQykFDergmVAY=
+=7ZmF
+-----END PGP SIGNATURE-----
+
+--mYCpIKhGyMATD0i+--
 
 
-> +static int
-> +mt7921_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
-> +			int cmd, int *wait_seq)
-> +{
-> +	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> +	int txd_len, mcu_cmd = cmd & MCU_CMD_MASK;
-> +	enum mt76_txq_id txq = MT_MCUQ_WM;
-
-Implicit conversion from enumeration type 'enum mt76_mcuq_id' to
-different enumeration type 'enum mt76_txq_id' 
-
-Should be enum mt76_mcuq_id
-
-
-> +static int
-> +mt7921_mcu_sta_key_tlv(struct sk_buff *skb, struct ieee80211_key_conf *key,
-> +		       enum set_key_cmd cmd)
-> +{
-> +	struct sta_rec_sec *sec;
-> +	struct tlv *tlv;
-> +	u32 len = sizeof(*sec);
-> +
-> +	tlv = mt7921_mcu_add_tlv(skb, STA_REC_KEY_V2, sizeof(*sec));
-> +
-> +	sec = (struct sta_rec_sec *)tlv;
-> +	sec->add = cmd;
-> +
-> +	if (cmd == SET_KEY) {
-> +		struct sec_key *sec_key;
-> +		u8 cipher;
-> +
-> +		cipher = mt7921_mcu_get_cipher(key->cipher);
-> +		if (cipher == MT_CIPHER_NONE)
-> +			return -EOPNOTSUPP;
-> +
-> +		sec_key = &sec->key[0];
-> +		sec_key->cipher_len = sizeof(*sec_key);
-> +		sec_key->key_id = key->keyidx;
-> +
-> +		if (cipher == MT_CIPHER_BIP_CMAC_128) {
-
-This was copied/pasted my wrong flow from mt7915 so I guess BIP_CMAC_128
-cannot work. I've fixed this recently for mt7915. You may take a look at
-https://patchwork.kernel.org/project/linux-wireless/patch/fc6abcd810a74bb4e8568b0f46bfc851fdcfd800.1607445161.git.ryder.lee@mediatek.com/
-
-Or, fallback to sw version
-
-> +extern const struct ieee80211_ops mt7921_ops;
-> +extern struct pci_driver mt7921_pci_driver;
-> +
-> +u32 mt7921_reg_map(struct mt7921_dev *dev, u32 addr);
-> +
-> +int mt7921_register_device(struct mt7921_dev *dev);
-> +void mt7921_unregister_device(struct mt7921_dev *dev);
-> +int mt7921_eeprom_init(struct mt7921_dev *dev);
-> +void mt7921_eeprom_parse_band_config(struct mt7921_phy *phy);
-> +int mt7921_eeprom_get_target_power(struct mt7921_dev *dev,
-> +				   struct ieee80211_channel *chan,
-> +				   u8 chain_idx);
-> +void mt7921_eeprom_init_sku(struct mt7921_dev *dev);
-> +int mt7921_dma_init(struct mt7921_dev *dev);
-> +void mt7921_dma_prefetch(struct mt7921_dev *dev);
-> +void mt7921_dma_cleanup(struct mt7921_dev *dev);
-> +int mt7921_mcu_init(struct mt7921_dev *dev);
-> +int mt7921_mcu_add_bss_info(struct mt7921_phy *phy,
-> +			    struct ieee80211_vif *vif, int enable);
-> +int mt7921_mcu_sta_update_hdr_trans(struct mt7921_dev *dev,
-> +				    struct ieee80211_vif *vif,
-> +				    struct ieee80211_sta *sta);
-> +int mt7921_mcu_add_key(struct mt7921_dev *dev, struct ieee80211_vif *vif,
-> +		       struct mt7921_sta *msta, struct ieee80211_key_conf *key,
-> +		       enum set_key_cmd cmd);
-> +int mt7921_set_channel(struct mt7921_phy *phy);
-> +int mt7921_mcu_set_chan_info(struct mt7921_phy *phy, int cmd);
-> +int mt7921_mcu_set_tx(struct mt7921_dev *dev, struct ieee80211_vif *vif);
-> +int mt7921_mcu_set_eeprom(struct mt7921_dev *dev);
-> +int mt7921_mcu_get_eeprom(struct mt7921_dev *dev, u32 offset);
-> +int mt7921_mcu_set_mac(struct mt7921_dev *dev, int band, bool enable,
-> +		       bool hdr_trans);
-> +int mt7921_mcu_set_rts_thresh(struct mt7921_phy *phy, u32 val);
-> +int mt7921_mcu_get_rx_rate(struct mt7921_phy *phy, struct ieee80211_vif *vif,
-> +			   struct ieee80211_sta *sta, struct rate_info *rate);
-Just a quick look. Seem some unused functions (used by mt7915) are
-exported here. e.g. mt7921_mcu_get_rx_rate()
+--===============7968982627562550029==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7968982627562550029==--
+
