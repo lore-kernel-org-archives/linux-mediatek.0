@@ -8,80 +8,82 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB28AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 17:12:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A35BEC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 17:13:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 85CE2206F4
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 17:12:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 85CE2206F4
+	by mail.kernel.org (Postfix) with ESMTPS id 6DBCF206F4
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 17:13:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DBCF206F4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=04ULTlT0+tC1mlmSHRWf8kBo5hFMa5sJfyQYpk3ElCo=; b=UQJ81jV5WEc70z4D2QvlCFgSa6
-	xJ0le+a6qz8CQGdxFJfZuE1xT/LqDW+8ZTaepHMyQXTl/hp3vSXMoq17/hvGlZRYs3TEpnxr8Rv8w
-	AaK7fzBDlafI05UCiJLMdpThRg0emDWDRY+vU9e7se9w9Er4TsStn11ATHjMeZSuEG9IHeGRZXgaR
-	VuHO+fREUwlStpXjoAEWMrWYMKQXafHiOFEckDhydOXPMRWA2ZMwNwmZ+q21z4CkV5c0Lmsc3PoAA
-	zKc3PRv+aCdilM1FqCPxEtpTSJP00V9fuGO4QNSb09Mim7td4mZqADi9wRzyIZHvy/DtM/gSb4Xs1
-	EfoP7lJQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ad7lutE9Bq/NUFJk1J67j9iKS5lyutK9vBv/awwfMCw=; b=SLe65dDSKEyXpZ5z578ul2atp
+	2+nuduBb0UfZDUymIP2BK/zaAL3JtlHFcRJByeRVIQiiE4uG9XwidMmNZ6GaHx8kEtTUeEho07GQ2
+	ONYqtL+Sm6X0uNPrbajEINv5j4nvJHLc9rxR4g2lFU2fqZ6I3xs7FZ70GR4JWrfTlriOtg/m+sCWv
+	JA8I6ANBFL0Wthq4LXfUSytsXvQdSEpTwwmuvh27GVCwxUDlEHBTeTl94Dh1geSrJPMSJS2T5fhVI
+	wTIw22VV2JnaQJiCz3TJLomqMVLa42KQB/XrjtUd2fYSr7UR280qF41ODLDzo+2XUZ3djfvt3XOIx
+	lzkX7saFA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kw6vm-0003NN-1w; Sun, 03 Jan 2021 17:12:38 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1kw6w3-0003UD-JF; Sun, 03 Jan 2021 17:12:55 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kw6vh-0003LF-Tb; Sun, 03 Jan 2021 17:12:34 +0000
-Received: by mail-pf1-x436.google.com with SMTP id c12so14893830pfo.10;
- Sun, 03 Jan 2021 09:12:33 -0800 (PST)
+ id 1kw6vx-0003RL-Ic; Sun, 03 Jan 2021 17:12:50 +0000
+Received: by mail-pl1-x633.google.com with SMTP id e2so13137878plt.12;
+ Sun, 03 Jan 2021 09:12:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=P/GeiIxcJ64ZQ6SmObKp07RN0gB/xHVcCELrAtFy6J8=;
- b=j9nC8spDRsbKIqITtcFVK5qfNVqGd72bWGhC3L39q82R8010SlWb58g4xtF50sisUa
- CfMxfvTnGgeJKwMLbxYvaE5kCZi0IvGeR3BidI8+fAl8OE1m9ex3PjGA7l5UqpCdsT8S
- CClk/1SFkcl8k97Jxq7SWRUVMGeCADSH2ApMpuinr1XvsQiYSvwvzasCmOh+FDJUp0Om
- TodXjnTwaBrW6MTUzvvXn9BG1fUoJ7hC0QKUOPOOXCdJtwB3gmstUWRzTpxCBS6Pdftp
- tj0cJiWF3qGNKeBorCQmV3YLO1jiIhCt7sTf6RH4bjvwmI5zU4UBNxMvwPLlw0T5wOYt
- PsUg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+qF0SijNFO/T+7vPigxBwLWfcVu8oPsZO7isaPG+ku8=;
+ b=OMdVh9zxiZv9azAo9+0yvKEkkHlQiRNekWETEHuEwCBvQ/iy+NnfWuO6Su8nvxl4TR
+ sVszfeEmM3v6ig7Bfge2C/f8TMwms22mkgt/r+S1gm5pQD30UUMNB1ccdgcJe+m94I5t
+ J15E8JULz9YMpwuHH0YoR8QOJTPyYKmqYBUcuJIUOFiTqlTiqFCwcJhW5+bclo1I1bHh
+ xSrS1+tkxQklhB+96h6QdMKFDflPTJ8CCmoRsXLd3RrPWQf+NVhZwQFHDjjueJLgPXkC
+ s6/eYfDfshOnGDGGwAocvHfl7zfhoVnfeXVVnTl77GfSS2IZjeyhhVx+kDPivmTfxEFY
+ NCow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=P/GeiIxcJ64ZQ6SmObKp07RN0gB/xHVcCELrAtFy6J8=;
- b=b7TfYN4Q60PSf94fd6d1fUUKM3e9JRSuDovDndoMaMFKQDtkCiyTio/O1YiV/IoLS8
- 2Lq6Bc7ik8NyuFAD4Ba8cqVg3+ifjudtvNGYNa7uMh5gx9SYJEaf6hA3kGVy2Zj2dfa+
- A4wQSc2n2nnOoagUPEqhA8H4us7WPKKqjiRKMJoeoVT7ZVsWAcASsrIicA/IeRN/a1vI
- J/E5dTVcBL/cMGuhLyW7jV2kmSh56XsQDFeQhXBwvyh5QkMtl2MRREUh/ac3NyM/QMq0
- nopmo5iNtK+wU4GUFpzA/T1COehPEjvcMXW0Fv9JIM/9tHMDNKDbZIt1+zB+HutPKQR1
- O1Qw==
-X-Gm-Message-State: AOAM533XYzI4zDKwlTR3IKNWbsyuesD/ZnZRYJerIn9oTb24+C4nYUnT
- oqujWCyeAKHoFJ5c9lDF+n4=
-X-Google-Smtp-Source: ABdhPJwVkKI1/s0n073MJPATBjaxsZ36JasEetjbvlDaf7VaG92vb5iUjgmHPzD5NvQlqz5H++LpZA==
-X-Received: by 2002:aa7:9619:0:b029:1ae:33b2:780f with SMTP id
- q25-20020aa796190000b02901ae33b2780fmr7380595pfg.26.1609693951614; 
- Sun, 03 Jan 2021 09:12:31 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=+qF0SijNFO/T+7vPigxBwLWfcVu8oPsZO7isaPG+ku8=;
+ b=nrzFpM2btKXeqyuruqrdFlAqF9lnKhQS3H6XOxgtiv3ByeZctNkWk5kAkHI0yAnsIE
+ 3L+hE82GcpB/VvmgaTkwm8rcIqdts5sU5LyLqFCpz9UxUEDng/RQafpi1eOMFIK4e1XV
+ K0GpYxFOs6b3/yBU5GREcxkw2Yl75OEetIApFU7fi3RYcHHXIYrdDHgTlDcjwMdwcMjA
+ jPP3kZgtbaFUBKPIwhvh5oVLwrHyCPhmGuzwRmJ2BkFrueoYyZ+85AXeJirO7rmZQwye
+ XxDJLons/vQqOBs8huBpZbXTM+mwbCdLVuYo+LqJXanir/6PLsFoPxHpDIQ6WzohL1CO
+ a9WQ==
+X-Gm-Message-State: AOAM530L4M2J/ZmdifnaiOZH9+YGeJuo9W99JXVwYnLLO56Jb6bkulUF
+ 1aRFkfVo8/3/Clbvlm4b+vM=
+X-Google-Smtp-Source: ABdhPJw3OQwhq9OxHmMcioQgHt+p48eMqxA1ZNlpDr311WozdKIFyTrL8TttCW0PNA95g+ifOua7dw==
+X-Received: by 2002:a17:902:7207:b029:da:fd0c:521a with SMTP id
+ ba7-20020a1709027207b02900dafd0c521amr68665365plb.45.1609693967387; 
+ Sun, 03 Jan 2021 09:12:47 -0800 (PST)
 Received: from localhost.localdomain (61-230-37-4.dynamic-ip.hinet.net.
  [61.230.37.4])
- by smtp.gmail.com with ESMTPSA id y3sm19771657pjb.18.2021.01.03.09.12.27
+ by smtp.gmail.com with ESMTPSA id y3sm19771657pjb.18.2021.01.03.09.12.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Jan 2021 09:12:31 -0800 (PST)
+ Sun, 03 Jan 2021 09:12:46 -0800 (PST)
 From: Lecopzer Chen <lecopzer@gmail.com>
 To: linux-kernel@vger.kernel.org, linux-mm@kvack.org,
  kasan-dev@googlegroups.com, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 0/3] arm64: kasan: support CONFIG_KASAN_VMALLOC
-Date: Mon,  4 Jan 2021 01:11:34 +0800
-Message-Id: <20210103171137.153834-1-lecopzer@gmail.com>
+Subject: [PATCH 1/3] arm64: kasan: don't populate vmalloc area for
+ CONFIG_KASAN_VMALLOC
+Date: Mon,  4 Jan 2021 01:11:35 +0800
+Message-Id: <20210103171137.153834-2-lecopzer@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210103171137.153834-1-lecopzer@gmail.com>
+References: <20210103171137.153834-1-lecopzer@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210103_121234_036971_10CE2FF8 
-X-CRM114-Status: UNSURE (   7.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210103_121249_651003_6A140E96 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,38 +105,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Linux supports KAsan for VMALLOC since commit 3c5c3cfb9ef4da9
+Linux support KAsan for VMALLOC since commit 3c5c3cfb9ef4da9
 ("kasan: support backing vmalloc space with real shadow memory")
 
-Acroding to how x86 ported it [1], they early allocated p4d and pgd,
-but in arm64 I just simulate how KAsan supports MODULES_VADDR in arm64
-by not to populate the vmalloc area except for kimg address.
-
-Test environment:
-    4G and 8G Qemu virt, 
-    39-bit VA + 4k PAGE_SIZE with 3-level page table,
-    test by lib/test_kasan.ko and lib/test_kasan_module.ko
-
-It also works in Kaslr with CONFIG_RANDOMIZE_MODULE_REGION_FULL,
-but not test for HW_TAG(I have no proper device), thus keep
-HW_TAG and KASAN_VMALLOC mutual exclusion until confirming
-the functionality.
-
-
-[1]: commit 0609ae011deb41c ("x86/kasan: support KASAN_VMALLOC")
+Like how the MODULES_VADDR does now, just not to early populate
+the VMALLOC_START between VMALLOC_END.
+similarly, the kernel code mapping is now in the VMALLOC area and
+should keep these area populated.
 
 Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+---
+ arch/arm64/mm/kasan_init.c | 23 ++++++++++++++++++-----
+ 1 file changed, 18 insertions(+), 5 deletions(-)
 
-
-Lecopzer Chen (3):
-  arm64: kasan: don't populate vmalloc area for CONFIG_KASAN_VMALLOC
-  arm64: kasan: abstract _text and _end to KERNEL_START/END
-  arm64: Kconfig: support CONFIG_KASAN_VMALLOC
-
- arch/arm64/Kconfig         |  1 +
- arch/arm64/mm/kasan_init.c | 29 +++++++++++++++++++++--------
- 2 files changed, 22 insertions(+), 8 deletions(-)
-
+diff --git a/arch/arm64/mm/kasan_init.c b/arch/arm64/mm/kasan_init.c
+index d8e66c78440e..d7ad3f1e9c4d 100644
+--- a/arch/arm64/mm/kasan_init.c
++++ b/arch/arm64/mm/kasan_init.c
+@@ -214,6 +214,7 @@ static void __init kasan_init_shadow(void)
+ {
+ 	u64 kimg_shadow_start, kimg_shadow_end;
+ 	u64 mod_shadow_start, mod_shadow_end;
++	u64 vmalloc_shadow_start, vmalloc_shadow_end;
+ 	phys_addr_t pa_start, pa_end;
+ 	u64 i;
+ 
+@@ -223,6 +224,9 @@ static void __init kasan_init_shadow(void)
+ 	mod_shadow_start = (u64)kasan_mem_to_shadow((void *)MODULES_VADDR);
+ 	mod_shadow_end = (u64)kasan_mem_to_shadow((void *)MODULES_END);
+ 
++	vmalloc_shadow_start = (u64)kasan_mem_to_shadow((void *)VMALLOC_START);
++	vmalloc_shadow_end = (u64)kasan_mem_to_shadow((void *)VMALLOC_END);
++
+ 	/*
+ 	 * We are going to perform proper setup of shadow memory.
+ 	 * At first we should unmap early shadow (clear_pgds() call below).
+@@ -241,12 +245,21 @@ static void __init kasan_init_shadow(void)
+ 
+ 	kasan_populate_early_shadow(kasan_mem_to_shadow((void *)PAGE_END),
+ 				   (void *)mod_shadow_start);
+-	kasan_populate_early_shadow((void *)kimg_shadow_end,
+-				   (void *)KASAN_SHADOW_END);
++	if (IS_ENABLED(CONFIG_KASAN_VMALLOC)) {
++		kasan_populate_early_shadow((void *)vmalloc_shadow_end,
++					   (void *)KASAN_SHADOW_END);
++		if (vmalloc_shadow_start > mod_shadow_end)
++			kasan_populate_early_shadow((void *)mod_shadow_end,
++						    (void *)vmalloc_shadow_start);
++
++	}	else {
++		kasan_populate_early_shadow((void *)kimg_shadow_end,
++					   (void *)KASAN_SHADOW_END);
++		if (kimg_shadow_start > mod_shadow_end)
++			kasan_populate_early_shadow((void *)mod_shadow_end,
++						    (void *)kimg_shadow_start);
++	}
+ 
+-	if (kimg_shadow_start > mod_shadow_end)
+-		kasan_populate_early_shadow((void *)mod_shadow_end,
+-					    (void *)kimg_shadow_start);
+ 
+ 	for_each_mem_range(i, &pa_start, &pa_end) {
+ 		void *start = (void *)__phys_to_virt(pa_start);
 -- 
 2.25.1
 
