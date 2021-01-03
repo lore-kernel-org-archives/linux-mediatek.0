@@ -2,77 +2,86 @@ Return-Path: <SRS0=/oW/=GG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 81636C433DB
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 16:59:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CB28AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 17:12:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F5D1208BA
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 16:59:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F5D1208BA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 85CE2206F4
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jan 2021 17:12:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 85CE2206F4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zcUVRqj+iU0KRyEwg53KQ6/zxT+B+1TF84XI/8InQHM=; b=Xj7ryjgnUjWCancDFbDOicmYy
-	2gt+otEvxjZ7faqCidKTXtR323uqk6GPBOeLmREFf+PgFZfcHc2rTO7ks+734/IxEyjksW/UiLEFx
-	fQvb0BdyQG4ZRkjR2xF5mW1xoKhzUpmxHp0+4mXzQgrKVLT6o+r/jvTJ//KemIxLhZRNXg7bmYq03
-	8M52LpY1Lowon3tKOcVPly2kBRTwdPF2sTyVzaqx5e13jnfiVHftidF4DmscGXN7V118Ud8wfgWwR
-	VbPQOlZPdwnu8P/LfdNKLNFj1mmXp7xGcsbE5yvKAPy6PuHBzf/XklOn4ZBAPTYqiSNabSsazzYJT
-	m2A7rIEDg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=04ULTlT0+tC1mlmSHRWf8kBo5hFMa5sJfyQYpk3ElCo=; b=UQJ81jV5WEc70z4D2QvlCFgSa6
+	xJ0le+a6qz8CQGdxFJfZuE1xT/LqDW+8ZTaepHMyQXTl/hp3vSXMoq17/hvGlZRYs3TEpnxr8Rv8w
+	AaK7fzBDlafI05UCiJLMdpThRg0emDWDRY+vU9e7se9w9Er4TsStn11ATHjMeZSuEG9IHeGRZXgaR
+	VuHO+fREUwlStpXjoAEWMrWYMKQXafHiOFEckDhydOXPMRWA2ZMwNwmZ+q21z4CkV5c0Lmsc3PoAA
+	zKc3PRv+aCdilM1FqCPxEtpTSJP00V9fuGO4QNSb09Mim7td4mZqADi9wRzyIZHvy/DtM/gSb4Xs1
+	EfoP7lJQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kw6iR-00083w-MX; Sun, 03 Jan 2021 16:58:51 +0000
-Received: from mail-il1-f177.google.com ([209.85.166.177])
+	id 1kw6vm-0003NN-1w; Sun, 03 Jan 2021 17:12:38 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kw6iM-00082L-D2; Sun, 03 Jan 2021 16:58:47 +0000
-Received: by mail-il1-f177.google.com with SMTP id n9so23216054ili.0;
- Sun, 03 Jan 2021 08:58:46 -0800 (PST)
+ id 1kw6vh-0003LF-Tb; Sun, 03 Jan 2021 17:12:34 +0000
+Received: by mail-pf1-x436.google.com with SMTP id c12so14893830pfo.10;
+ Sun, 03 Jan 2021 09:12:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P/GeiIxcJ64ZQ6SmObKp07RN0gB/xHVcCELrAtFy6J8=;
+ b=j9nC8spDRsbKIqITtcFVK5qfNVqGd72bWGhC3L39q82R8010SlWb58g4xtF50sisUa
+ CfMxfvTnGgeJKwMLbxYvaE5kCZi0IvGeR3BidI8+fAl8OE1m9ex3PjGA7l5UqpCdsT8S
+ CClk/1SFkcl8k97Jxq7SWRUVMGeCADSH2ApMpuinr1XvsQiYSvwvzasCmOh+FDJUp0Om
+ TodXjnTwaBrW6MTUzvvXn9BG1fUoJ7hC0QKUOPOOXCdJtwB3gmstUWRzTpxCBS6Pdftp
+ tj0cJiWF3qGNKeBorCQmV3YLO1jiIhCt7sTf6RH4bjvwmI5zU4UBNxMvwPLlw0T5wOYt
+ PsUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=J8WEkyhenkl8kYp/bvB9MXeFoGWEOBF4fz0r9rccQxI=;
- b=jjL6czXTz8tIvObes1ytQesEFOlwVhch9Mx3t0l41mpq+hK3fcXp7cMNvUGIYlvN/c
- YTM7jkbGP3vbE8xSjFPRSUOE0/BaL0ou6VYcIqy0noMvSG8iSYfnnkwwl3ZCFvR7NcrY
- BbuUXRJk34pLLTlcJO4w3psfUEy3h6iOWn5gHLFrdD3oYBgWhmgnxyn63e++gwNIi3qk
- eRMq7v6SdvTPDdPRFl7ioBC5PPORtlcg85JwgCqvwApBx0pbnnDUQL4wBZ0N2Q+oPlmD
- 48eltoUmsFLhM65+w/7BIFA2qqYr4U70dhdAX+0LqxqkhO23uut7TUAKnDKhN23xOVMS
- fNSA==
-X-Gm-Message-State: AOAM530WZAr8XONqSNMHpVYM2yHKDPdDanY9OmhmXhPyTFaNEwVT/iru
- C7xyJA1iUmyynwtq/5IKXA==
-X-Google-Smtp-Source: ABdhPJyS+VI5YSOn0FBVtRBwA0IsJCJFN4Xr13kqCrchuR9n5xvQZZih3qMOLRBS/P13N6oiBbZtLg==
-X-Received: by 2002:a05:6e02:1b8a:: with SMTP id
- h10mr68652565ili.141.1609693125817; 
- Sun, 03 Jan 2021 08:58:45 -0800 (PST)
-Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id r10sm39086113ilo.34.2021.01.03.08.58.43
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P/GeiIxcJ64ZQ6SmObKp07RN0gB/xHVcCELrAtFy6J8=;
+ b=b7TfYN4Q60PSf94fd6d1fUUKM3e9JRSuDovDndoMaMFKQDtkCiyTio/O1YiV/IoLS8
+ 2Lq6Bc7ik8NyuFAD4Ba8cqVg3+ifjudtvNGYNa7uMh5gx9SYJEaf6hA3kGVy2Zj2dfa+
+ A4wQSc2n2nnOoagUPEqhA8H4us7WPKKqjiRKMJoeoVT7ZVsWAcASsrIicA/IeRN/a1vI
+ J/E5dTVcBL/cMGuhLyW7jV2kmSh56XsQDFeQhXBwvyh5QkMtl2MRREUh/ac3NyM/QMq0
+ nopmo5iNtK+wU4GUFpzA/T1COehPEjvcMXW0Fv9JIM/9tHMDNKDbZIt1+zB+HutPKQR1
+ O1Qw==
+X-Gm-Message-State: AOAM533XYzI4zDKwlTR3IKNWbsyuesD/ZnZRYJerIn9oTb24+C4nYUnT
+ oqujWCyeAKHoFJ5c9lDF+n4=
+X-Google-Smtp-Source: ABdhPJwVkKI1/s0n073MJPATBjaxsZ36JasEetjbvlDaf7VaG92vb5iUjgmHPzD5NvQlqz5H++LpZA==
+X-Received: by 2002:aa7:9619:0:b029:1ae:33b2:780f with SMTP id
+ q25-20020aa796190000b02901ae33b2780fmr7380595pfg.26.1609693951614; 
+ Sun, 03 Jan 2021 09:12:31 -0800 (PST)
+Received: from localhost.localdomain (61-230-37-4.dynamic-ip.hinet.net.
+ [61.230.37.4])
+ by smtp.gmail.com with ESMTPSA id y3sm19771657pjb.18.2021.01.03.09.12.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Jan 2021 08:58:44 -0800 (PST)
-Received: (nullmailer pid 4046180 invoked by uid 1000);
- Sun, 03 Jan 2021 16:58:42 -0000
-Date: Sun, 3 Jan 2021 09:58:42 -0700
-From: Rob Herring <robh@kernel.org>
-To: EastL Lee <EastL.Lee@mediatek.com>
-Subject: Re: [PATCH v8 1/4] dt-bindings: dmaengine: Add MediaTek
- Command-Queue DMA controller bindings
-Message-ID: <20210103165842.GA4024251@robh.at.kernel.org>
-References: <1608715847-28956-1-git-send-email-EastL.Lee@mediatek.com>
- <1608715847-28956-2-git-send-email-EastL.Lee@mediatek.com>
+ Sun, 03 Jan 2021 09:12:31 -0800 (PST)
+From: Lecopzer Chen <lecopzer@gmail.com>
+To: linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ kasan-dev@googlegroups.com, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 0/3] arm64: kasan: support CONFIG_KASAN_VMALLOC
+Date: Mon,  4 Jan 2021 01:11:34 +0800
+Message-Id: <20210103171137.153834-1-lecopzer@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1608715847-28956-2-git-send-email-EastL.Lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210103_115846_528998_3296F9F3 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20210103_121234_036971_10CE2FF8 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,172 +93,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, cc.hwang@mediatek.com,
- wsd_upstream@mediatek.com, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org, vkoul@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>, glider@google.com,
+ yj.chiang@mediatek.com, Lecopzer Chen <lecopzer@gmail.com>,
+ linux-mediatek@lists.infradead.org, catalin.marinas@arm.com,
+ aryabinin@virtuozzo.com, dan.j.williams@intel.com, will@kernel.org,
+ akpm@linux-foundation.org, dvyukov@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 23, 2020 at 05:30:44PM +0800, EastL Lee wrote:
-> Document the devicetree bindings for MediaTek Command-Queue DMA controller
-> which could be found on MT6779 SoC or other similar Mediatek SoCs.
-> 
-> Signed-off-by: EastL Lee <EastL.Lee@mediatek.com>
-> ---
->  .../devicetree/bindings/dma/mtk-cqdma.yaml         | 104 +++++++++++++++++++++
+Linux supports KAsan for VMALLOC since commit 3c5c3cfb9ef4da9
+("kasan: support backing vmalloc space with real shadow memory")
 
-Use compatible string for filename:
+Acroding to how x86 ported it [1], they early allocated p4d and pgd,
+but in arm64 I just simulate how KAsan supports MODULES_VADDR in arm64
+by not to populate the vmalloc area except for kimg address.
 
-mediatek,cqdma.yaml
+Test environment:
+    4G and 8G Qemu virt, 
+    39-bit VA + 4k PAGE_SIZE with 3-level page table,
+    test by lib/test_kasan.ko and lib/test_kasan_module.ko
 
->  1 file changed, 104 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> new file mode 100644
-> index 0000000..a76a263
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> @@ -0,0 +1,104 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/dma/mtk-cqdma.yaml#
+It also works in Kaslr with CONFIG_RANDOMIZE_MODULE_REGION_FULL,
+but not test for HW_TAG(I have no proper device), thus keep
+HW_TAG and KASAN_VMALLOC mutual exclusion until confirming
+the functionality.
 
-Don't forget to update this.
 
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Command-Queue DMA controller Device Tree Binding
-> +
-> +maintainers:
-> +  - EastL Lee <EastL.Lee@mediatek.com>
-> +
-> +description:
-> +  MediaTek Command-Queue DMA controller (CQDMA) on Mediatek SoC
-> +  is dedicated to memory-to-memory transfer through queue based
-> +  descriptor management.
-> +
-> +allOf:
-> +  - $ref: "dma-controller.yaml#"
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mediatek,mt6765-cqdma
-> +          - mediatek,mt6779-cqdma
-> +      - const: mediatek,cqdma
-> +
-> +  reg:
-> +    minItems: 1
-> +    maxItems: 5
-> +    description:
-> +        A base address of MediaTek Command-Queue DMA controller,
-> +        a channel will have a set of base address.
-> +
-> +  interrupts:
-> +    minItems: 1
-> +    maxItems: 5
-> +    description:
-> +        A interrupt number of MediaTek Command-Queue DMA controller,
-> +        one interrupt number per dma-channels.
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    const: cqdma
-> +
-> +  dma-channel-mask:
-> +    description:
-> +       For DMA capability, We will know the addressing capability of
-> +       MediaTek Command-Queue DMA controller through dma-channel-mask.
-> +      minimum: 1
-> +      maximum: 63
+[1]: commit 0609ae011deb41c ("x86/kasan: support KASAN_VMALLOC")
 
-Indentation is wrong here so this has no effect.
+Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
 
-A mask of 63 is 6 channels...
 
-> +
-> +  dma-channels:
-> +    description:
-> +      Number of DMA channels supported by MediaTek Command-Queue DMA
-> +      controller, support up to five.
-> +      minimum: 1
-> +      maximum: 5
+Lecopzer Chen (3):
+  arm64: kasan: don't populate vmalloc area for CONFIG_KASAN_VMALLOC
+  arm64: kasan: abstract _text and _end to KERNEL_START/END
+  arm64: Kconfig: support CONFIG_KASAN_VMALLOC
 
-Same here.
+ arch/arm64/Kconfig         |  1 +
+ arch/arm64/mm/kasan_init.c | 29 +++++++++++++++++++++--------
+ 2 files changed, 22 insertions(+), 8 deletions(-)
 
-Do you really need both dma-channels and dma-channel-mask? You should be 
-able to get one from the other.
+-- 
+2.25.1
 
-> +
-> +  dma-requests:
-> +    description:
-> +      Number of DMA request (virtual channel) supported by MediaTek
-> +      Command-Queue DMA controller, support up to 32.
-> +      minimum: 1
-> +      maximum: 32
-
-And here.
-
-You are missing '#dma-cells' also.
-
-> +
-> +required:
-> +  - "#dma-cells"
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - dma-channel-mask
-> +  - dma-channels
-> +  - dma-requests
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt6779-clk.h>
-> +    cqdma: dma-controller@10212000 {
-> +        compatible = "mediatek,mt6779-cqdma";
-
-This should fail validation because it doesn't match the schema. You ran 
-'make dt_binding_check', right?
-
-> +        reg = <0x10212000 0x80>,
-> +            <0x10212080 0x80>,
-> +            <0x10212100 0x80>;
-> +        interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>,
-> +            <GIC_SPI 140 IRQ_TYPE_LEVEL_LOW>,
-> +            <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
-> +        clocks = <&infracfg_ao CLK_INFRA_CQ_DMA>;
-> +        clock-names = "cqdma";
-> +        dma-channel-mask = <63>;
-
-6 channels or...
-
-> +        dma-channels = <3>;
-
-3?
-
-> +        dma-requests = <32>;
-> +        #dma-cells = <1>;
-> +    };
-> +
-> +...
-> -- 
-> 1.9.1
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
