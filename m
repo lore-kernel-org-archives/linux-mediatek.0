@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73ADCC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1F99C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:00:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 36FA420784
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:00:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36FA420784
+	by mail.kernel.org (Postfix) with ESMTPS id 6C7C620784
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:00:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C7C620784
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hWkrOavl3h57DZ4HQa4ctKwIKnQ1X6kuU4frdfyhrk4=; b=VEtW4mwc1MP+3kkbbzeZ7+NgI
-	jK+8WxvcO0BwX8AwOG2OqCu8vAu16+unHSC8Wn843mHn20nkkaGXmqacXODXxj7E6ZX7BZDTTZ4OO
-	3VJaGgRmTSFBY77K3mK2s7lQB0c1FC8bVLDTt0/cd3VnnV9RESeB3HgW+huTHKaQZy8O55l+8aZFI
-	PdoU2vRmyiQufBAOY5DVwT8mh9qB2lRKsia9y/9IeozrEpkFz9TlZwYWqOQjETkoYLV7uTB/0LYhe
-	py3dXFXYVmWbfB+tUdONAdOKSCPOh+bZ+7PvV6AX/DrAf9EdVo5Oy0mqg1G74oCF2/0STLXGxDv7Z
-	CFKurBpBQ==;
+	 bh=prAJDpCLXKsSQ23U3QZWTqfsOPOADQD5QwIUu2XdNwQ=; b=V9LOqBy8jKDH/XtuusCU2sPFq
+	b3ORiphRVuiDnZLMb0NlaIppUE4V9GH3oRtFVy4QCNUhK6cU35fumoWjht2eqPIT3DyCJXB/BKC7D
+	MNAXhht4LVRoatvy6L4xNAJaEpHaKoL2Yqhw76xW/WMW55uIeXB+qmZSpnIsvOFRh+bkfjnm5wfpX
+	tRP2VIF++6iq9BKLhzhbSw5Uc4ZRjlmDu311+qPi5Qu7RdC7QmWgmnbQHc3GpxbUFLjPLSL/t4fiI
+	GUm+ckfLYsEkIiiHeFVUoEMdS4lv60dhdkrehvSQTOlIJ1OIZ016g08yOOT6OQwRUK7Q6c7w8RnX4
+	sLR0OhNkg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwU9k-0000aG-T1; Mon, 04 Jan 2021 18:00:36 +0000
+	id 1kwU9r-0000dC-Uw; Mon, 04 Jan 2021 18:00:44 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwU9h-0000S3-Js
- for linux-mediatek@lists.infradead.org; Mon, 04 Jan 2021 18:00:34 +0000
-X-UUID: 6bf2998a2a3244f99c30e1a76099df08-20210104
+ id 1kwU9p-0000bU-AF
+ for linux-mediatek@lists.infradead.org; Mon, 04 Jan 2021 18:00:42 +0000
+X-UUID: aef81cf167214eca88ff9247d098646d-20210104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=PiXEsKpl8yqASOUA7jMTl9StRieF3q2ha1Lq6hgX+3M=; 
- b=osLfr5q7aHoBYWj5Iv7IFY4GfiPYx8+XK2k+4CcxIj/BTBnCBtRkcGi3IuAQPZ+jkbdtapRBBcpaD4iyBWyaZue6OCV8vviFRRGb/pqA08fJYf3dh6kzkPXZ1soCRCSOpKtRKsn5kSjig3AQ1/Vp+PWTrcLTAOWk+6O5qhP00jo=;
-X-UUID: 6bf2998a2a3244f99c30e1a76099df08-20210104
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=zgJq50BLsFDn4TY3PTPZR8bIx3Tsm1Qn7n28H9w3JV8=; 
+ b=BtI19CFNRCAPLVOEq33mw+Kg4EXXtV7duSIbfd83w/lzFmUFb/F06bLSiH8gVQq4cWCVnvZV6RByPXvaIWNs1/tKXrk6YOVpf/BljlTaA574t7Z82ZzNrAhApEIiJf5U43kqm0eu8xnXTzOZzntWWk8x36I9DkIHv/yZBIMTtWo=;
+X-UUID: aef81cf167214eca88ff9247d098646d-20210104
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2093463248; Mon, 04 Jan 2021 10:00:23 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 631066755; Mon, 04 Jan 2021 10:00:38 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 4 Jan 2021 10:00:22 -0800
+ 15.0.1497.2; Mon, 4 Jan 2021 10:00:37 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 5 Jan 2021 02:00:22 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 5 Jan 2021 02:00:22 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH -next v5 10/15] mt76: mt7921: add module support
-Date: Tue, 5 Jan 2021 02:00:14 +0800
-Message-ID: <3b0bbd318d1507dc747a37cef57ef2207ec72cc0.1609781247.git.objelf@gmail.com>
+Subject: [PATCH -next v5 14/15] mt76: mt7921: introduce beacon_loss mcu event
+Date: Tue, 5 Jan 2021 02:00:18 +0800
+Message-ID: <c92b241dba911998ef13b249122a4ed1cfb61860.1609781247.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1609781247.git.objelf@gmail.com>
 References: <cover.1609781247.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210104_130033_901389_40AC2A1F 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20210104_130041_540297_94FC9FFF 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,10 +92,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add mt7921 as the pci driver module.
-
-The purpose of the patch is to check about if the following patches are
-able to compile properly.
+If device has enabled beacon hw filter rx beacons are not reported to
+the host. Introduce beacon_loss mcu event to trigger mac80211 mlme
+connection state machine in this configuration.
+IEEE80211_VIF_BEACON_FILTER has not set in vif flags since hw beacon
+filter is not enabled yet
 
 Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
@@ -103,59 +104,80 @@ Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/Kconfig         |  1 +
- drivers/net/wireless/mediatek/mt76/Makefile        |  1 +
- drivers/net/wireless/mediatek/mt76/mt7921/Kconfig  | 10 ++++++++++
- drivers/net/wireless/mediatek/mt76/mt7921/Makefile |  5 +++++
- 4 files changed, 17 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/Makefile
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 35 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.h   |  6 ++++
+ 2 files changed, 41 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
-index 31015d2a8e7d..5f42ce3267cb 100644
---- a/drivers/net/wireless/mediatek/mt76/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/Kconfig
-@@ -29,3 +29,4 @@ source "drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig"
- source "drivers/net/wireless/mediatek/mt76/mt7603/Kconfig"
- source "drivers/net/wireless/mediatek/mt76/mt7615/Kconfig"
- source "drivers/net/wireless/mediatek/mt76/mt7915/Kconfig"
-+source "drivers/net/wireless/mediatek/mt76/mt7921/Kconfig"
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index e53584db0756..1d72093b61a3 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -31,3 +31,4 @@ obj-$(CONFIG_MT76x2_COMMON) += mt76x2/
- obj-$(CONFIG_MT7603E) += mt7603/
- obj-$(CONFIG_MT7615_COMMON) += mt7615/
- obj-$(CONFIG_MT7915E) += mt7915/
-+obj-$(CONFIG_MT7921E) += mt7921/
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-new file mode 100644
-index 000000000000..24932d2e8dee
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: ISC
-+config MT7921E
-+	tristate "MediaTek MT7921E (PCIe) support"
-+	select MT76_CORE
-+	depends on MAC80211
-+	depends on PCI
-+	help
-+	  This adds support for MT7921E 802.11ax 2x2:2SS wireless devices.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 1ea209852ef9..57f8b7b770dc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -543,6 +543,40 @@ mt7921_mcu_scan_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 				     MT7921_HW_SCAN_TIMEOUT);
+ }
+ 
++static void
++mt7921_mcu_beacon_loss_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
++{
++	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
++	struct mt7921_beacon_loss_event *event = priv;
 +
-+	  To compile this driver as a module, choose M here.
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-new file mode 100644
-index 000000000000..09d1446ad933
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-@@ -0,0 +1,5 @@
-+#SPDX-License-Identifier: ISC
++	if (mvif->idx != event->bss_idx)
++		return;
 +
-+obj-$(CONFIG_MT7921E) += mt7921e.o
++	if (!(vif->driver_flags & IEEE80211_VIF_BEACON_FILTER))
++		return;
 +
-+mt7921e-y := pci.o mac.o mcu.o dma.o eeprom.o main.o init.o debugfs.o
++	ieee80211_beacon_loss(vif);
++}
++
++static void
++mt7921_mcu_beacon_loss_event(struct mt7921_dev *dev, struct sk_buff *skb)
++{
++	struct mt7921_beacon_loss_event *event;
++	struct mt76_phy *mphy;
++	u8 band_idx = 0; /* DBDC support */
++
++	skb_pull(skb, sizeof(struct mt7921_mcu_rxd));
++	event = (struct mt7921_beacon_loss_event *)skb->data;
++	if (band_idx && dev->mt76.phy2)
++		mphy = dev->mt76.phy2;
++	else
++		mphy = &dev->mt76.phy;
++
++	ieee80211_iterate_active_interfaces_atomic(mphy->hw,
++					IEEE80211_IFACE_ITER_RESUME_ALL,
++					mt7921_mcu_beacon_loss_iter, event);
++}
++
+ static void
+ mt7921_mcu_bss_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ {
+@@ -593,6 +627,7 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 
+ 	switch (rxd->eid) {
+ 	case MCU_EVENT_BSS_BEACON_LOSS:
++		mt7921_mcu_beacon_loss_event(dev, skb);
+ 		break;
+ 	case MCU_EVENT_SCHED_SCAN_DONE:
+ 	case MCU_EVENT_SCAN_DONE:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+index 6894b44ff62d..d6cb062619db 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+@@ -783,6 +783,12 @@ struct mt7921_bss_qos_tlv {
+ 	u8 pad[3];
+ } __packed;
+ 
++struct mt7921_beacon_loss_event {
++	u8 bss_idx;
++	u8 reason;
++	u8 pad[2];
++} __packed;
++
+ struct mt7921_mcu_scan_ssid {
+ 	__le32 ssid_len;
+ 	u8 ssid[IEEE80211_MAX_SSID_LEN];
 -- 
 2.25.1
 _______________________________________________
