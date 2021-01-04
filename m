@@ -2,54 +2,89 @@ Return-Path: <SRS0=ylaU=GH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1351BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5FBDC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:34:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BB64E21D94
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:32:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB64E21D94
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	by mail.kernel.org (Postfix) with ESMTPS id 8EE3021D94
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:34:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EE3021D94
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:Subject:
+	From:References:To:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FZ0H6eFKUujpSIjXqLiO8+LcnKfJlgItf9rxzAFTJAM=; b=gtKM5Iuvl3S6WjgCPxiOWWxV3
-	xLzLB8IGtyvg0iPqCjswbI4nWAgZdBnLToMuIXi9gParIwoDKm39l/7X+sQ67D3BFqRU7EIKJjDuu
-	xfT1onc/w/pz+R5qnB4RbCEIn7YrrSZROOuWDtMoRglD7JtblAmjpelhc9f8P/7TQo+Cwo8fysQ58
-	ugk2vuoNBJffiyy5+H9GTcZu+0NwsKnD6dFP1I9wQrokqOkq7eU+5BMrnCuGFwuseosBE6bRDbU+2
-	9dniz26NCen/yRuydXLI9aXpGuU8hW4jEmepM2bXXt5SiwVHD151Q9BFFaYHPuud5n5Qj6Szim3Qc
-	Pq0KDvyKA==;
+	 bh=h0SCUqzLFVNxAaC3MR9bSSMyrrVzQj2eCNVOMMkrLUY=; b=aHRbvCtvYuFGAut+eBVJ2bNyP
+	6+pVCJrmwCyPbOVP5AETtYhDuWz6U4KbfeNPrCmoAvd2BkFH8TQYVwhCE5DGwi6rahbfLkS3WWLHd
+	HWVEc3berKV4gPKWx43ljYmFErMV1fAt7aOlpGMkY1J74USaE/nwzUf88FraIjdic3KJTJWgk45wx
+	H7Qe19S/0C4a6S6lh8NzhBtzIg1Hu+4Hh12xudmu8bdyypuRF81g9M3EkeRHs9Y3qKV8UYCw/tF2h
+	NiXLDdP74aMF5FuNG12Yu0aa9M0buiaqaTJOJ2d7wjNh/m+9X95Ufo9b2YZU4aiReZ3fmvofJSZ2H
+	oMK0YtrVQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwUeG-0006dP-Ja; Mon, 04 Jan 2021 18:32:08 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwUeB-0006XU-9f; Mon, 04 Jan 2021 18:32:04 +0000
-Received: from localhost (p54b33105.dip0.t-ipconnect.de [84.179.49.5])
- by pokefinder.org (Postfix) with ESMTPSA id ACDC52C04DF;
- Mon,  4 Jan 2021 19:32:02 +0100 (CET)
-Date: Mon, 4 Jan 2021 19:32:02 +0100
-From: Wolfram Sang <wsa@the-dreams.de>
-To: qii.wang@mediatek.com
-Subject: Re: i2c: mediatek: Fix apdma and i2c hand-shake timeout
-Message-ID: <20210104183202.GD935@ninjato>
-References: <1608812767-3254-1-git-send-email-qii.wang@mediatek.com>
- <20210104182959.GC935@ninjato>
+	id 1kwUgd-0007xv-4y; Mon, 04 Jan 2021 18:34:35 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kwUgY-0007vi-FR
+ for linux-mediatek@lists.infradead.org; Mon, 04 Jan 2021 18:34:31 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 190so178272wmz.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 04 Jan 2021 10:34:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=to:cc:references:from:subject:message-id:date:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=b3mdNXCCr+viQUHC/DPnqNgJo78Ga5nEbT7QXKoyiHA=;
+ b=mJcGrH+CF7e3JLUi/6XdtHgMYZ05xDT4uKvH8qP6GKld3KbbCxzzrTReJoHQX0RRos
+ z6he8w1AD7bgKoP7w1Ou9GEfIcM0qI50PfzdklX1exifUgOoJxcl+my40jj0NFyHuRr+
+ eOO+6Ct4bbkEaXnW34IgnPcRJt2lDp+vcPG9v04pIcmIVVRHd4V37jm/5+e/LruGkdDs
+ DbnUK+4AvSXaTxqpQm9HTsNR7FcIOn/uAKi+rnqPum2lVyXnZx1liZpKrLuYc5I9QCUZ
+ vBCczjPJT8huRzKIvQC6Imx/iPGtTS7Z2tvxDigfcl0bbjGHA39H3hqnTJTf3Pm36iK1
+ 2cpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:references:from:subject:message-id:date
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=b3mdNXCCr+viQUHC/DPnqNgJo78Ga5nEbT7QXKoyiHA=;
+ b=Lf3HJ3ufQzlURLwhi6+6ho+EMEA9+bDJKThwtrd4HLUZSpu8AoZq+tUHD5JefAbDr6
+ u23x5mOHiD95YdIRZPd9+Zv/XK8YoHGCvnD9OJJBQnUNxEzO2TEobnw2JwZmP+VjOTjj
+ vf3s7ZRT+Ex8SqeO5AHFKQr4xZ0M9ROTtHs0wO9DSxPGpVP1/HVTvBspDn+jE8ZCVr0t
+ GaC5PgiYMHJklimAfgtJQxWyR6wt4QakM6DwSF0cryu/DPrG3hwyUY5wHUYP1P2qL2rR
+ 7wW/2FZcjoOM/ID/R+yKxF+osvCXDS1iOkQDcp13CiA/fgANBIxg8vPD9jYaTFr2ieXz
+ K2aQ==
+X-Gm-Message-State: AOAM5312nwU95o2piYNpJwSmpHlLYsyp9p/VJwcJui3Zvy/mhjug5X48
+ l6F7YB3VYbYRlE3D5H6WBhFB9Q==
+X-Google-Smtp-Source: ABdhPJwJYzGSd/ZPw+WDOq9k3YHFJGpNwRYCt7btmT6zdcFteWIZPoxAoFgw/VGVvxy40x8V6O0Sdg==
+X-Received: by 2002:a1c:6144:: with SMTP id v65mr164151wmb.125.1609785269279; 
+ Mon, 04 Jan 2021 10:34:29 -0800 (PST)
+Received: from [10.44.66.8] ([212.45.67.2])
+ by smtp.googlemail.com with ESMTPSA id g78sm245217wme.33.2021.01.04.10.34.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 04 Jan 2021 10:34:28 -0800 (PST)
+To: Henry Chen <henryc.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>,
+ Mark Brown <broonie@kernel.org>
+References: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
+ <1608790134-27425-8-git-send-email-henryc.chen@mediatek.com>
+From: Georgi Djakov <georgi.djakov@linaro.org>
+Subject: Re: [PATCH V6 07/13] dt-bindings: interconnect: add MT6873
+ interconnect dt-bindings
+Message-ID: <f8951237-e236-aa99-5dbb-e92415752aa8@linaro.org>
+Date: Mon, 4 Jan 2021 20:34:30 +0200
 MIME-Version: 1.0
-In-Reply-To: <20210104182959.GC935@ninjato>
+In-Reply-To: <1608790134-27425-8-git-send-email-henryc.chen@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210104_133203_506746_E3746E56 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20210104_133430_663012_0E57FB9E 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,74 +96,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-i2c@vger.kernel.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============3944673356373471357=="
+Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
+ devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Arvin Wang <arvin.wang@mediatek.com>,
+ James Liao <jamesjj.liao@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 12/24/20 08:08, Henry Chen wrote:
+> From: "henryc.chen" <henryc.chen@mediatek.com>
+> 
+> Add interconnect provider dt-bindings for MT6873.
+> 
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 
---===============3944673356373471357==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tEFtbjk+mNEviIIX"
-Content-Disposition: inline
+checkpatch complains:
 
+From:/Signed-off-by: email name mismatch:
+'From: "henryc.chen" <henryc.chen@mediatek.com>' != 'Signed-off-by: Henry Chen 
+<henryc.chen@mediatek.com>'
 
---tEFtbjk+mNEviIIX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks,
+Georgi
 
-On Mon, Jan 04, 2021 at 07:29:59PM +0100, Wolfram Sang wrote:
-> On Thu, Dec 24, 2020 at 08:26:07PM +0800, qii.wang@mediatek.com wrote:
-> > From: Qii Wang <qii.wang@mediatek.com>
-> >=20
-> > With the apdma remove hand-shake signal, it requirs special
-> > operation timing to reset i2c manually, otherwise the interrupt
-> > will not be triggered, i2c transmission will be timeout.
-> >=20
-> > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
->=20
-> Applied to for-current, thanks!
-
-Any Fixes:-Tag we could add?
-
-
---tEFtbjk+mNEviIIX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl/zXyIACgkQFA3kzBSg
-KbZdEA/+P3rD8ApQef9W5LjRrab8KDgGqnMXQu09AfuzyQBnshelxTMu8B4MZqjI
-NhfB/xNdPXXc/FsG4tr+48/KERJh/QtQG8t+WvWzbHjNASse1qwKjAHX2iP0Wf5x
-PWj3Y63EVSX13vLLCqMnF1B1Cwn5LXgyAqoR1gPbt8SuT2TSyiE0/UMIEEkJE6AV
-4Ta+16BLmuYsi8F6e5gp6Gn+YjNbbJqzzUJ0OSWM/vjsLHyajYlvORwHgjMnVy3R
-GDMM3OEuFWEyFf1dZZqM6Ex7jq1huehNQH+9r/04XGHLatrw3J5nhcxgI8uVgkPw
-5DVzj8m8vGs9R8UgCFE49sFTZfqjyxThRKzeWOInwambhKfBwj+1PNcEQvTgDOLs
-ePpVhlBpbw3UxeV2ieit3PeEMiq2ULYMtdA7LxWHp2yFBjuY07nd/Nb3bu9lmtnH
-K0RED212ymkP1g+D6zc6LQvH+A+IvX9fXPNWFpHnllbrnqSwHuwAL+2sKaFXdPdl
-ok0rCMGRggqAEtorg2y/4ihytL/xtrmAkuNSc5NoandtWdHTMXT9nSOZvw/fQxEN
-NwEnhX9GmHa6DR7BoK81Pz0Gpn//d5w0FIQxS+8Xp8JXneNvyL40WC0+6rHVRCey
-QMCzjbg7igEfYR8J1x8mcHSIZyGVjdAQZ2236sG5OKVg8j6LnDU=
-=DbV2
------END PGP SIGNATURE-----
-
---tEFtbjk+mNEviIIX--
-
-
---===============3944673356373471357==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> ---
+>   include/dt-bindings/interconnect/mtk,mt6873-emi.h | 41 +++++++++++++++++++++++
+>   1 file changed, 41 insertions(+)
+>   create mode 100644 include/dt-bindings/interconnect/mtk,mt6873-emi.h
+> 
+> diff --git a/include/dt-bindings/interconnect/mtk,mt6873-emi.h b/include/dt-bindings/interconnect/mtk,mt6873-emi.h
+> new file mode 100644
+> index 0000000..7a0bbfb
+> --- /dev/null
+> +++ b/include/dt-bindings/interconnect/mtk,mt6873-emi.h
+> @@ -0,0 +1,41 @@
+> +/* SPDX-License-Identifier: GPL-2.0
+> + *
+> + * Copyright (c) 2020 MediaTek Inc.
+> + */
+> +
+> +#ifndef __DT_BINDINGS_INTERCONNECT_MTK_MT6873_EMI_H
+> +#define __DT_BINDINGS_INTERCONNECT_MTK_MT6873_EMI_H
+> +
+> +#define MT6873_SLAVE_DDR_EMI		0
+> +#define MT6873_MASTER_MCUSYS		1
+> +#define MT6873_MASTER_GPUSYS		2
+> +#define MT6873_MASTER_MMSYS		3
+> +#define MT6873_MASTER_MM_VPU		4
+> +#define MT6873_MASTER_MM_DISP		5
+> +#define MT6873_MASTER_MM_VDEC		6
+> +#define MT6873_MASTER_MM_VENC		7
+> +#define MT6873_MASTER_MM_CAM		8
+> +#define MT6873_MASTER_MM_IMG		9
+> +#define MT6873_MASTER_MM_MDP		10
+> +#define MT6873_MASTER_VPUSYS		11
+> +#define MT6873_MASTER_VPU_0		12
+> +#define MT6873_MASTER_VPU_1		13
+> +#define MT6873_MASTER_MDLASYS		14
+> +#define MT6873_MASTER_MDLA_0		15
+> +#define MT6873_MASTER_UFS		16
+> +#define MT6873_MASTER_PCIE		17
+> +#define MT6873_MASTER_USB		18
+> +#define MT6873_MASTER_DBGIF		19
+> +#define MT6873_SLAVE_HRT_DDR_EMI	20
+> +#define MT6873_MASTER_HRT_MMSYS		21
+> +#define MT6873_MASTER_HRT_MM_DISP	22
+> +#define MT6873_MASTER_HRT_MM_VDEC	23
+> +#define MT6873_MASTER_HRT_MM_VENC	24
+> +#define MT6873_MASTER_HRT_MM_CAM	25
+> +#define MT6873_MASTER_HRT_MM_IMG	26
+> +#define MT6873_MASTER_HRT_MM_MDP	27
+> +#define MT6873_MASTER_HRT_DBGIF		28
+> +#define MT6873_MASTER_WIFI		29
+> +#define MT6873_MASTER_BT		30
+> +#define MT6873_MASTER_NETSYS		31
+> +#endif
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3944673356373471357==--
-
