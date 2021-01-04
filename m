@@ -2,75 +2,73 @@ Return-Path: <SRS0=ylaU=GH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55CA3C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 08:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25317C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 08:15:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3B4820702
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 08:10:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3B4820702
+	by mail.kernel.org (Postfix) with ESMTPS id BFC6C20758
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 08:15:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFC6C20758
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PoUX3jTnNY1sQDZrewT+f8EUuNhp8qXd5tbOD2Rc3Bg=; b=gLNKlrleY5sh82gzkqUJqTukR
-	o/b6Wjd01LrvMn1Cm2Qpvlxbsjw+K0WTfz14Xz1CwlsDEL8FyvEdp99cdXd0WGbYddAzbCNOqPrhH
-	EZMux8mqbkq8gCReRrXs4qS0nI8uQUOFFt9qn78yOw+LEgARDCPK3WBPh7dBelB+dBe4hV9wjZh24
-	8Nr+Drql4HslXhSqpuGOKUFDuoK7xdZU71aDGkyUiv5AAxz7z0pZip5ctTSh9nji5E3/gLCpAhEKz
-	M0yfBcpIFNe+Vcerx52/3rOC1159c/ocyYdCQR30/K6DoYl2aTkbkbPbJc/lTij8spsrSfq3JCUQp
-	KOCs6xXhg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EZa4jvZ9x+ruUi8LhI0Lz9+bbD6ssLEtc8glNKBOXyE=; b=Wr0RAZSxXMX1pOIu2XQDiFRBhc
+	nRsvJT8CXT2snWaOcxyOUJ6Yud9B8LTSOjZG4FnuH/jgbuFJAsAJNEUVO8ZRHdQf+KXv3PVN5galc
+	I91jMl5/b/h6owCufzgZIFkrv3KzfmCrQ1+v8tQ6eWi2mawZ6Scmtneh9A/bioVmnl5VHNsJhd4lh
+	dTHFKp/lxtsZyQhSQr8IsU3SpOEqIAnkHgsAV22llsO8lSzFT5R6Xj5z16u//8jk2EugT/tAX0/m4
+	EnbEejI2+zYppibhLohMYvmeTAU5rNvzUyXKfX7tSC+hGMxG/CFMT/6XbQFbD42FVFJ4JFORLVt/j
+	68VkN5xw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwKwG-0006PU-VR; Mon, 04 Jan 2021 08:10:05 +0000
+	id 1kwL1k-0007Wq-D0; Mon, 04 Jan 2021 08:15:44 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwKwD-0006Nd-7y; Mon, 04 Jan 2021 08:10:02 +0000
-X-UUID: be0367bfc5ed426f804800360d94c6fb-20210104
+ id 1kwL1f-0007Ua-JM; Mon, 04 Jan 2021 08:15:40 +0000
+X-UUID: f592a99deb5143c285d50767a20f3152-20210104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=+X9H0CSZyO6a6nvs5b8pZMjbsAGVRAJssVAfwhACuSA=; 
- b=hrp9y/fB51KkOFahT48FKjPkzWeT2xgZjqRLLezcBksXANVyXHZZzwsOyBBEqmXgvccJQDaVESjw331J/EZp50/tWWOZX0s7KWnOcAZTPrROdqqZBojLSZNZszyuKCXoH+05iEYtqErJ6bibYsrrR+/WPPSBx03oOVKDpCQ+HpQ=;
-X-UUID: be0367bfc5ed426f804800360d94c6fb-20210104
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=4hf/qXSWcl4930bgfEywF/5zjPfWeRpQ/DzX3+/HeqU=; 
+ b=f9fOWK9ONPMvny+AHYZgJyxtAQmfDUu4/w8Op4fuWTbyBGC89TaS9aeSy6ygnkInp9QuDGdl7W4KznaS0YztyDZ+OXD2zlEkdpNLzLBsxB4zgSASjcDnNouZBL/hFdzFDjl384TDDS2FPbTxWpRKJhSZgXil5RCQxiCvv5cXDo8=;
+X-UUID: f592a99deb5143c285d50767a20f3152-20210104
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <argus.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2086621; Mon, 04 Jan 2021 00:09:49 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 4 Jan 2021 00:08:30 -0800
+ with ESMTP id 1827427168; Mon, 04 Jan 2021 00:15:33 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 4 Jan 2021 00:08:27 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 4 Jan 2021 16:08:28 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 4 Jan 2021 16:08:25 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 4 Jan 2021 16:08:28 +0800
+ Frontend Transport; Mon, 4 Jan 2021 16:08:26 +0800
 From: Argus Lin <argus.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, "Will
  Deacon" <will.deacon@arm.com>
-Subject: [PATCH 2/2] arm64: configs: Support pwrap on Mediatek MT6779 platform
-Date: Mon, 4 Jan 2021 16:08:23 +0800
-Message-ID: <1609747703-27207-3-git-send-email-argus.lin@mediatek.com>
+Subject: [PATCH 0/2] arm64: Support pwrap on MediaTek MT6779 platform
+Date: Mon, 4 Jan 2021 16:08:21 +0800
+Message-ID: <1609747703-27207-1-git-send-email-argus.lin@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1609747703-27207-1-git-send-email-argus.lin@mediatek.com>
-References: <1609747703-27207-1-git-send-email-argus.lin@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3DCB31C1B1B77694DC1B2B165066C09602E2E195E18C46C67D4FBD0BB5C939062000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210104_031001_500922_42B92E2E 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20210104_031539_867246_0B4C66F5 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,25 +93,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support pwrap on Mediatek MT6779 platform by enabling CONFIG_MTK_PMIC_WRAP.
+This adds pwrap on Mediatek MT6779 platform.
 
-Signed-off-by: Argus Lin <argus.lin@mediatek.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+change since v1:
+  - adds pwrap node at mt6779.dtsi
+  - set CONFIG_MTK_PMIC_WRAP at defconfig
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 8383016..a2c926f 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -479,6 +479,7 @@ CONFIG_SPI_S3C64XX=y
- CONFIG_SPI_SH_MSIOF=m
- CONFIG_SPI_SUN6I=y
- CONFIG_SPI_SPIDEV=m
-+CONFIG_MTK_PMIC_WRAP=m
- CONFIG_SPMI=y
- CONFIG_PINCTRL_SINGLE=y
- CONFIG_PINCTRL_MAX77620=y
+Argus Lin (2):
+  arm64: dts: mt6779: Support pwrap on MT6779 platform
+  arm64: configs: Support pwrap on MT6779 platform
+
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 9 +++++++++
+ arch/arm64/configs/defconfig             | 1 +
+ 2 files changed, 10 insertions(+)
+
 --
 1.8.1.1.dirty
 _______________________________________________
