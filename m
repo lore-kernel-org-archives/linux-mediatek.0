@@ -2,72 +2,71 @@ Return-Path: <SRS0=ylaU=GH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E41FC43331
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 16:00:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78765C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:00:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21836207AE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 16:00:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21836207AE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 38536207BC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 18:00:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38536207BC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+tXBSPFCSY6TV7b00vcd81ioEzdaThqAK3juKzsNLG0=; b=rvnObEVP8f7D322J4wcYUfYuB
-	gnWcQN+YFtfLkSiXYqqt1W4W2JmUTDFbqXcR35HiWExFswG0TjMpNz7tKe1XSh6NXoLYsKZRT5stS
-	5GtOCzCwKflJAIp00ZBFTs0RL0a5HaqvfooPyBz2eicEeQfzMiTkzYscvzhBNyvC/TLQKAVogLr7D
-	PwC4zHGakKozo7TROCimL2C8964ctMVBP8vHB1g5oNz3UkefeRbW1aeQDtL9AIzWH0kU7LA+8yleR
-	N5ffD7h+FHDek7Fia/7rA0Mbf4UAcG9VHSsU+Pj2hSMEDmf9lLLpvdwInDQTcmIXiGJ/6kbzkxZ3v
-	EpzQlqmhg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wAdN6MekEM6+/C2g6fR3XY+0hOQA6DewrOfrumXlMwY=; b=iIAq8Mctrqaot6wlQ7DXrOH2EP
+	SdrW+/2o3SGUkB+/yLWRQYsakssh7jBnxa6oRlTF5gFUiLFLS3gq0pzWfM5zUu5CTLQzgUoFQF1E/
+	6WjJbhrSkXjGZC9w8vyQAGBAgxmS3gs1UD+gELoZefgSBLKmLz2IHNfAE3PRCB+dIoOMOnF/+aIlA
+	PLfvcpAQ1iwFZ36HNIev7DZAN0FUX+0GbraVCa8olAIC/4+httUISrQUKlq17MUOkY4lCYClKtzv1
+	XymUUcyZL6zORY9XsvB+cHrlbc8JvIrB2s3l8UAImVaZXdQdd2pg6J9lW4TEXeZH6sPKXSooUWxbk
+	l/HG707w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwSHP-0003YK-Pt; Mon, 04 Jan 2021 16:00:23 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kwU9l-0000aP-Cj; Mon, 04 Jan 2021 18:00:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwSHK-0003Sk-Ve; Mon, 04 Jan 2021 16:00:20 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6D1722253D;
- Mon,  4 Jan 2021 16:00:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609776017;
- bh=AIuEZ3LHAXEEk/KvPhHnhOfNMQh/X1KomltrocF0mlU=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=pRJ8tSyb1fB8SAcpwXg+RNw05ab70tAJgrwk41A8nPKQSHOnaJIUj2dhVFSX7pTTt
- VsCo6DBteQcEwZdJC5mvr8L+0wUu3tGBPie6WRWl/yWFc4vUhbi/qCqbpIIYIhdFbI
- MYhLb0UU1paqzyl6fdx1e048kaW7HGIKkr4RC+gkxr97S7HF3fkYeqKs0cb4gYuS2a
- nP/QCq98XFI1+nbsHjM7vr+2t3nJRXCtdY+m+yI/6aCkvDzsg9wXxaxIKzQWsKAW4y
- LWzHP+MQVFkeS79yyKi6DNtdt6WPfpQXC9cZYmij7aIed/OWxTcU+6WJJED93Mc7gP
- KmQ1taAebDxZg==
-Received: by mail-ed1-f50.google.com with SMTP id u19so27861952edx.2;
- Mon, 04 Jan 2021 08:00:17 -0800 (PST)
-X-Gm-Message-State: AOAM530U2RbwJEgduumxz4o9tbNwKDqXi4LCOmja5QJp6r+LFkzUWgLI
- v4jOJnJ3CWVXwwWYOR07JLr/axDIF+yAbOFDGg==
-X-Google-Smtp-Source: ABdhPJz09bY6nrB961xN80l+39gUo+ZFgThja3sbx0kYfIMB3BU4C9ORV1WMuUDWx/iDN3uaOw6cOlCUml1MpR4z0oA=
-X-Received: by 2002:a05:6402:352:: with SMTP id
- r18mr70216121edw.373.1609776014373; 
- Mon, 04 Jan 2021 08:00:14 -0800 (PST)
+ id 1kwU9i-0000S4-Bh
+ for linux-mediatek@lists.infradead.org; Mon, 04 Jan 2021 18:00:35 +0000
+X-UUID: 608e37890efa4c4598af2772928924a1-20210104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=SieptIMo2qaGJdqgHq882WFoHqSh/9wPyqfsPEwvB34=; 
+ b=n6Q3IRD55yzvHNe1AwWigtzVjIO2k4MpHzYjDrdyte31wQoUw6JMcdzwMsy2Ez5NR+p/4BTk6f/NGUq7JprYorydBuE+P1JO5B7o56Az8VISR/Z7OyGWokt6xjkgT8p38AIDd+nB8/gClYHthb38TmYgrZpIJiL98rjweLQenBM=;
+X-UUID: 608e37890efa4c4598af2772928924a1-20210104
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 615164288; Mon, 04 Jan 2021 10:00:23 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 4 Jan 2021 10:00:21 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 5 Jan 2021 02:00:20 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 5 Jan 2021 02:00:20 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+Subject: [PATCH -next v5 00/15]  introduce mt7921e support
+Date: Tue, 5 Jan 2021 02:00:04 +0800
+Message-ID: <cover.1609781247.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-References: <20210104071114.23657-1-Nick.Fan@mediatek.com>
-In-Reply-To: <20210104071114.23657-1-Nick.Fan@mediatek.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Mon, 4 Jan 2021 09:00:02 -0700
-X-Gmail-Original-Message-ID: <CAL_JsqLBCWNqkQZWNXABLffVCPPW0FQ_8G8dXP+yrzw2Xf0dUw@mail.gmail.com>
-Message-ID: <CAL_JsqLBCWNqkQZWNXABLffVCPPW0FQ_8G8dXP+yrzw2Xf0dUw@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] dt-bindings: Convert Arm Mali Valhall GPU to DT
- schema
-To: Nick Fan <Nick.Fan@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210104_110019_158937_9834B7AF 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20210104_130034_608390_2FD5D39E 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,297 +78,148 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>,
- David Airlie <airlied@linux.ie>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: ryder.lee@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
+ Eric.Liang@mediatek.com, sean.wang@mediatek.com,
+ linux-wireless@vger.kernel.org, posh.sun@mediatek.com, YN.Chen@mediatek.com,
+ linux-mediatek@lists.infradead.org, Sean
+ Wang <objelf@gmail.com>, Soul.Huang@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 4, 2021 at 12:11 AM Nick Fan <Nick.Fan@mediatek.com> wrote:
->
-> Convert the Arm Valhall GPU binding to DT schema format.
+From: Sean Wang <objelf@gmail.com>
 
-This is the 2nd v1 you've sent. Please address my comments on the 1st v1.
+Introduce support for mt7921e 802.11ax (Wi-Fi 6) 2x2:2SS chipset.
 
->
-> Define a compatible string for the Mali Valhall GPU
-> for Mediatek's SoC platform.
->
-> Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
-> ---
->  .../bindings/gpu/arm,mali-valhall.yaml        | 252 ++++++++++++++++++
->  1 file changed, 252 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
->
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
-> new file mode 100644
-> index 000000000000..436294c032ff
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
-> @@ -0,0 +1,252 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2020 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/gpu/arm,mali-valhall.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: ARM Mali Valhall GPU
-> +
-> +maintainers:
-> +  - Rob Herring <robh@kernel.org>
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: '^gpu@[a-f0-9]+$'
-> +
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mediatek,mt8192-mali
-> +      - const: arm,mali-valhall
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    items:
-> +      - description: GPU interrupt
-> +      - description: MMU interrupt
-> +      - description: Job interrupt
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: gpu
-> +      - const: mmu
-> +      - const: job
-> +
-> +  clocks:
-> +    minItems: 1
-> +
-> +  power-domains:
-> +    minItems: 1
-> +    maxItems: 5
-> +
-> +  mali-supply: true
-> +  sram-supply: true
-> +
-> +  operating-points-v2: true
-> +
-> +  "#cooling-cells":
-> +    const: 2
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - interrupt-names
-> +  - clocks
-> +
-> +additionalProperties: false
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8192-mali
-> +    then:
-> +      properties:
-> +        sram-supply: true
-> +        power-domains:
-> +          description:
-> +            List of phandle and PM domain specifier as documented in
-> +            Documentation/devicetree/bindings/power/power_domain.txt
-> +          minItems: 5
-> +          maxItems: 5
-> +        power-domain-names:
-> +          items:
-> +            - const: core0
-> +            - const: core1
-> +            - const: core2
-> +            - const: core3
-> +            - const: core4
-> +
-> +      required:
-> +        - sram-supply
-> +        - power-domains
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    gpu@13000000 {
-> +           compatible = "mediatek,mt8192-mali", "arm,mali-valhall";
-> +           reg = <0x13000000 0x4000>;
-> +           interrupts =
-> +                   <GIC_SPI 363 IRQ_TYPE_LEVEL_HIGH 0>,
-> +                   <GIC_SPI 364 IRQ_TYPE_LEVEL_HIGH 0>,
-> +                   <GIC_SPI 365 IRQ_TYPE_LEVEL_HIGH 0>;
-> +           interrupt-names =
-> +                   "gpu",
-> +                   "mmu",
-> +                   "job";
-> +
-> +           clocks = <&mfgcfg 0>;
-> +
-> +           power-domains =
-> +                   <&scpsys 4>,
-> +                   <&scpsys 5>,
-> +                   <&scpsys 6>,
-> +                   <&scpsys 7>,
-> +                   <&scpsys 8>;
-> +
-> +           operating-points-v2 = <&gpu_opp_table>;
-> +           mali-supply = <&mt6315_7_vbuck1>;
-> +           sram-supply = <&mt6359_vsram_others_ldo_reg>;
-> +    };
-> +
-> +    gpu_opp_table: opp_table0 {
-> +      compatible = "operating-points-v2";
-> +      opp-shared;
-> +
-> +      opp-358000000 {
-> +              opp-hz = /bits/ 64 <358000000>;
-> +              opp-hz-real = /bits/ 64 <358000000>,
-> +                            /bits/ 64 <358000000>;
-> +              opp-microvolt = <606250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-399000000 {
-> +              opp-hz = /bits/ 64 <399000000>;
-> +              opp-hz-real = /bits/ 64 <399000000>,
-> +                            /bits/ 64 <399000000>;
-> +              opp-microvolt = <618750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-440000000 {
-> +              opp-hz = /bits/ 64 <440000000>;
-> +              opp-hz-real = /bits/ 64 <440000000>,
-> +                            /bits/ 64 <440000000>;
-> +              opp-microvolt = <631250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-482000000 {
-> +              opp-hz = /bits/ 64 <482000000>;
-> +              opp-hz-real = /bits/ 64 <482000000>,
-> +                            /bits/ 64 <482000000>;
-> +              opp-microvolt = <643750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-523000000 {
-> +              opp-hz = /bits/ 64 <523000000>;
-> +              opp-hz-real = /bits/ 64 <523000000>,
-> +                            /bits/ 64 <523000000>;
-> +              opp-microvolt = <656250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-564000000 {
-> +              opp-hz = /bits/ 64 <564000000>;
-> +              opp-hz-real = /bits/ 64 <564000000>,
-> +                            /bits/ 64 <564000000>;
-> +              opp-microvolt = <668750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-605000000 {
-> +              opp-hz = /bits/ 64 <605000000>;
-> +              opp-hz-real = /bits/ 64 <605000000>,
-> +                            /bits/ 64 <605000000>;
-> +              opp-microvolt = <681250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-647000000 {
-> +              opp-hz = /bits/ 64 <647000000>;
-> +              opp-hz-real = /bits/ 64 <647000000>,
-> +                            /bits/ 64 <647000000>;
-> +              opp-microvolt = <693750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-688000000 {
-> +              opp-hz = /bits/ 64 <688000000>;
-> +              opp-hz-real = /bits/ 64 <688000000>,
-> +                            /bits/ 64 <688000000>;
-> +              opp-microvolt = <706250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-724000000 {
-> +              opp-hz = /bits/ 64 <724000000>;
-> +              opp-hz-real = /bits/ 64 <724000000>,
-> +                            /bits/ 64 <724000000>;
-> +              opp-microvolt = <725000>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-760000000 {
-> +              opp-hz = /bits/ 64 <760000000>;
-> +              opp-hz-real = /bits/ 64 <760000000>,
-> +                            /bits/ 64 <760000000>;
-> +              opp-microvolt = <743750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-795000000 {
-> +              opp-hz = /bits/ 64 <795000000>;
-> +              opp-hz-real = /bits/ 64 <795000000>,
-> +                            /bits/ 64 <795000000>;
-> +              opp-microvolt = <762500>,
-> +                              <762500>;
-> +      };
-> +
-> +      opp-831000000 {
-> +              opp-hz = /bits/ 64 <831000000>;
-> +              opp-hz-real = /bits/ 64 <831000000>,
-> +                            /bits/ 64 <831000000>;
-> +              opp-microvolt = <781250>,
-> +                              <781250>;
-> +      };
-> +
-> +      opp-855000000 {
-> +              opp-hz = /bits/ 64 <855000000>;
-> +              opp-hz-real = /bits/ 64 <855000000>,
-> +                            /bits/ 64 <855000000>;
-> +              opp-microvolt = <793750>,
-> +                              <793750>;
-> +      };
-> +
-> +      opp-902000000 {
-> +              opp-hz = /bits/ 64 <902000000>;
-> +              opp-hz-real = /bits/ 64 <902000000>,
-> +                            /bits/ 64 <902000000>;
-> +              opp-microvolt = <818750>,
-> +                              <818750>;
-> +      };
-> +
-> +      opp-950000000 {
-> +              opp-hz = /bits/ 64 <950000000>;
-> +              opp-hz-real = /bits/ 64 <950000000>,
-> +                            /bits/ 64 <950000000>;
-> +              opp-microvolt = <843750>,
-> +                              <843750>;
-> +      };
-> +    };
-> +...
-> --
-> 2.18.0
->
+v2:
+- Mark the patch as -next
 
+v3:
+- Remove sw scan support
+- Get rid of dbdc code
+- Run mt7921_configure_filter hodling mt76 mutex
+- Correct Txp programming in Txd
+- Correct fw log to host command
+- Correct eeprom offset definition
+- Update rate adaption info report
+- Remove unused code and fields in struture
+- Split the previous driver into several patches for easy review
+
+v4:
+- introduce sched scan support
+- introduce 802.11 PS support in sta mode
+- introduce support for hardware beacon filter
+- introduce beacon_loss mcu event
+- introduce PM support
+- refine sta_rec_phy and add sta_rec_ra_info
+- remove incorrect mt7921_mcu_tx_config member
+- fix erroneous endianness conversion in mt7921_tx_complete_skb()
+- fix endianness warning in mt7921_get_wtbl_info()
+- fix endianness warnings in mt7921_mcu_sta_tlv()
+- remove unused code in mt7921_mcu_send_message
+- remove scan with random mac until fw is ready
+- channel domain is added for hw scan
+
+v5:
+- fix implicit conversion from enumeration type
+- remove unused function declaration
+- drop zero-length packet to avoid Tx hang
+- fix MT_CIPHER_BIP_CMAC_128 setkey
+- reset token when mac_reset happens
+- create mac.h when mac support is added
+- reorder the patch of adding module support
+- move mac_work in mt76_core module
+- move chainmask in mt76_phy
+- rebase per moving mac_work in mt76_core module
+- rebase per moving chainmask in mt76_phy
+
+Lorenzo Bianconi (2):
+  mt76: move mac_work in mt76_core module
+  mt76: move chainmask in mt76_phy
+
+Sean Wang (13):
+  mt76: mt7921: add MAC support
+  mt76: mt7921: add MCU support
+  mt76: mt7921: add DMA support
+  mt76: mt7921: add EEPROM support
+  mt76: mt7921: add ieee80211_ops
+  mt76: mt7921: introduce mt7921e support
+  mt76: mt7921: add debugfs support
+  mt76: mt7921: add module support
+  mt76: mt7921: introduce schedule scan support
+  mt76: mt7921: introduce 802.11 PS support in sta mode
+  mt76: mt7921: introduce support for hardware beacon filter
+  mt76: mt7921: introduce beacon_loss mcu event
+  mt76: mt7921: introduce PM support
+
+ drivers/net/wireless/mediatek/mt76/Kconfig    |    1 +
+ drivers/net/wireless/mediatek/mt76/Makefile   |    1 +
+ drivers/net/wireless/mediatek/mt76/mt76.h     |    5 +-
+ .../net/wireless/mediatek/mt76/mt7603/init.c  |    2 +-
+ .../net/wireless/mediatek/mt76/mt7603/mac.c   |   14 +-
+ .../net/wireless/mediatek/mt76/mt7603/main.c  |   10 +-
+ .../wireless/mediatek/mt76/mt7603/mt7603.h    |    2 -
+ .../wireless/mediatek/mt76/mt7615/eeprom.c    |    2 +-
+ .../net/wireless/mediatek/mt76/mt7615/init.c  |   16 +-
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   |   27 +-
+ .../net/wireless/mediatek/mt76/mt7615/main.c  |   15 +-
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   |    4 +-
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |    5 -
+ .../wireless/mediatek/mt76/mt7615/testmode.c  |    4 +-
+ .../net/wireless/mediatek/mt76/mt7615/usb.c   |    2 +-
+ .../net/wireless/mediatek/mt76/mt76x0/pci.c   |    4 +-
+ .../net/wireless/mediatek/mt76/mt76x0/usb.c   |    4 +-
+ drivers/net/wireless/mediatek/mt76/mt76x02.h  |    2 -
+ .../net/wireless/mediatek/mt76/mt76x02_mac.c  |   10 +-
+ .../net/wireless/mediatek/mt76/mt76x02_phy.c  |    4 +-
+ .../net/wireless/mediatek/mt76/mt76x02_util.c |    6 +-
+ .../net/wireless/mediatek/mt76/mt76x2/mcu.c   |    2 +-
+ .../wireless/mediatek/mt76/mt76x2/pci_init.c  |    2 +-
+ .../wireless/mediatek/mt76/mt76x2/pci_main.c  |    4 +-
+ .../wireless/mediatek/mt76/mt76x2/usb_init.c  |    2 +-
+ .../wireless/mediatek/mt76/mt76x2/usb_main.c  |    2 +-
+ .../wireless/mediatek/mt76/mt7915/eeprom.c    |    2 +-
+ .../net/wireless/mediatek/mt76/mt7915/init.c  |   17 +-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   |   31 +-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |   11 +-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   |    8 +-
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |    3 -
+ .../wireless/mediatek/mt76/mt7915/testmode.c  |    2 +-
+ .../net/wireless/mediatek/mt76/mt7921/Kconfig |   10 +
+ .../wireless/mediatek/mt76/mt7921/Makefile    |    5 +
+ .../wireless/mediatek/mt76/mt7921/debugfs.c   |  178 +
+ .../net/wireless/mediatek/mt76/mt7921/dma.c   |  356 ++
+ .../wireless/mediatek/mt76/mt7921/eeprom.c    |  101 +
+ .../wireless/mediatek/mt76/mt7921/eeprom.h    |   27 +
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  254 ++
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 1393 ++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mac.h   |  333 ++
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 1051 ++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 2932 +++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.h   | 1175 +++++++
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  377 +++
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |  279 ++
+ .../net/wireless/mediatek/mt76/mt7921/regs.h  |  413 +++
+ 48 files changed, 8995 insertions(+), 115 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/Makefile
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/dma.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/eeprom.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/init.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mac.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/main.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+
+--
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
