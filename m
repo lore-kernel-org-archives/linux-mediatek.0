@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 127F4C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 10:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30FBFC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 10:54:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C94CD21D93
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 10:49:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C94CD21D93
+	by mail.kernel.org (Postfix) with ESMTPS id D8229207BC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jan 2021 10:54:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8229207BC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,34 +24,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GAQxPhAdP8rTmcrfova+mCk48ZYuhOoWpnlx7JWrY28=; b=HiPtd7L2HkOms++At/HLmEKYd
-	sxvMgAuKd56saJ6LI+cCAu/2J8tO2I6h/i3DT+6Jm6wfwac/uKPrfWwJfhAx4C78BxtKzYLvbHFYG
-	XKgWt1Jenx8SDWWXiYnhXDHqmQG8baYVhuZkl3658TyrS4C8u+ZJFdvkCgAVR/swNaUw8Jv/cC7h2
-	TIMl3p3bBohIzHXPzFiTiiAnlV8rECRU26hy1D1LiY+E9teqBXM5V+R+bh2ja7HBWOmeUHV9DFWTe
-	pUgrn3gybxWoj60yJv2RMgQQ90iJjbC2cAOy3Tk0PKtG65svxuASQwUzpdkSfG+ZW9joxEvvvqd0+
-	LjMXg7iHA==;
+	 bh=kJr+klRKkdYGfr9Pj/SSwkC7vTlFpEV5DTPYDHEF/XE=; b=ddRBmreDXG4TDpR2vQ/oAJK7p
+	Z3QNDyR66kUPKcwD9xVqpfnCEApVR1Y11JCz3r+4F/zVzVKeQF1cvTChPqPXNfL3S9AqD9MZPgV6S
+	iTpV6Isk0ulTg716goUHOgg/EfrmFUWkFVo7h5u2K/2JKBK4ZFeJciiz0UnXbTmEnBTD51zSXyXiu
+	Jywx0AWil8HCvtFNXckzH5ykJtFqaBb4kToguyYr/l0yrUsLTBg7uTWcMydA+N3kumkyZoPJWlhar
+	vg3yKfETR3/NZaA1o4LelAQs03e2hX8v2T9jO9VHh17ZNSq2ysk5ZfXlzE6uHn/puLCpdmcE6aFNS
+	udihLEiWw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwNPq-0001Zv-SO; Mon, 04 Jan 2021 10:48:46 +0000
+	id 1kwNUk-0003b1-Ip; Mon, 04 Jan 2021 10:53:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwNPc-0001T1-QH; Mon, 04 Jan 2021 10:48:36 +0000
-X-UUID: 3b79b46024624085aa3648857583a265-20210104
+ id 1kwNUe-0003YR-M2; Mon, 04 Jan 2021 10:53:48 +0000
+X-UUID: 5d072c06aef440abbed8b24333fc7ce5-20210104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=rxYBjZorzbswLY9/cPMvClnq4GXFkFCM2mg4f5zQdJU=; 
- b=QIWk5h+mY4yQHtpcJnoLGTl36J2yUAh6KUW0teJ2+aqggLhpIQF5zpeaL/kLR+cUYlIKDOyfTirfl1iVd8KnBXGfUvImOatZEeDV/9c9pGKc0Y+DHUYOSt24z/jZBA/AQ1kp9B2kyuNzsqGXQuUU5ietpHoCFJHSIUTk4ZQBbcw=;
-X-UUID: 3b79b46024624085aa3648857583a265-20210104
+ bh=JvYUF7ZzLbQPYhGDlYmTLQu8VDxRcjudg9C8RnwEN8E=; 
+ b=hpvofumnqINTf+F1R4d2P2XqhLs2ITx0pgIdA2IsTXFrRCBgYkSu44RD1YwgobkKiNVoYsBGYIgXPjt9J4SREZoA0pdqoTrIxpCj6RZ9JGavPXDhkHKs6BDyWT9ReWnWKpkNJ5QtuKj9SxLo2rlYNgNH/njEWdhdms/jniv+x94=;
+X-UUID: 5d072c06aef440abbed8b24333fc7ce5-20210104
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1365480780; Mon, 04 Jan 2021 02:48:25 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 4 Jan 2021 02:45:00 -0800
+ with ESMTP id 1907826376; Mon, 04 Jan 2021 02:53:41 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 4 Jan 2021 02:44:59 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 4 Jan 2021 18:44:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -59,17 +59,18 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 2/2] soc: mediatek: Fix the clock prepared issue
-Date: Mon, 4 Jan 2021 18:44:53 +0800
-Message-ID: <1609757093-30618-3-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH 1/2] soc: mediatek: Add regulator control for MT8192 MFG power
+ domain
+Date: Mon, 4 Jan 2021 18:44:52 +0800
+Message-ID: <1609757093-30618-2-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1609757093-30618-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1609757093-30618-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210104_054833_106984_F40CDF5F 
-X-CRM114-Status: GOOD (  16.57  )
+X-CRM114-CacheID: sfid-20210104_055344_975848_42EAE7A4 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,142 +91,160 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In this new power domain driver, when adding one power domain
-it will prepare the depenedent clocks at the same.
-So we only do clk_bulk_enable/disable control during power ON/OFF.
-When system suspend, the pm runtime framework will forcely power off
-power domains. However, the dependent clocks are disabled but kept
-preapred.
-
-In MediaTek clock drivers, PLL would be turned ON when we do
-clk_bulk_prepare control.
-
-Clock hierarchy:
-PLL -->
-       DIV_CK -->
-                 CLK_MUX
-                 (may be dependent clocks)
-                         -->
-                             SUBSYS_CG
-                             (may be dependent clocks)
-
-It will lead some unexpected clock states during system suspend.
-This patch will fix by doing prepare_enable/disable_unprepare on
-dependent clocks at the same time while we are going to power on/off
-any power domain.
+Add regulator control support and specific power domain name of
+MT8192 MFG power domain for regulator lookup.
+Also power domain name can fix the debugfs warning.
+(e.g. debugfs: Directory 'power-domain' with parent 'pm_genpd'
+already present!)
+However, not every domain with name need to get the regulator,
+if we just want to fix the debugfs warning log by adding names to
+power domains. Considering this case, lookup regulator by
+regulator_get_optional() instead of getting a dummy regulator from
+regulator_get() to operate.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-pm-domains.c | 31 ++++++++-----------------------
- 1 file changed, 8 insertions(+), 23 deletions(-)
+ drivers/soc/mediatek/mt8192-pm-domains.h |  1 +
+ drivers/soc/mediatek/mtk-pm-domains.c    | 42 ++++++++++++++++++++++++++++++--
+ drivers/soc/mediatek/mtk-pm-domains.h    |  2 ++
+ 3 files changed, 43 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/soc/mediatek/mt8192-pm-domains.h
+index 0fdf6dc..7db0ad3 100644
+--- a/drivers/soc/mediatek/mt8192-pm-domains.h
++++ b/drivers/soc/mediatek/mt8192-pm-domains.h
+@@ -49,6 +49,7 @@
+ 		.ctl_offs = 0x0308,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.name = "mfg",
+ 	},
+ 	[MT8192_POWER_DOMAIN_MFG1] = {
+ 		.sta_mask = BIT(3),
 diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index a160800..f0bcc84 100644
+index fb70cb3..a160800 100644
 --- a/drivers/soc/mediatek/mtk-pm-domains.c
 +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -216,7 +216,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		return ret;
+@@ -13,6 +13,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
+ #include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
+ #include <linux/soc/mediatek/infracfg.h>
  
--	ret = clk_bulk_enable(pd->num_clks, pd->clks);
-+	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
- 	if (ret)
- 		goto err_disable_regulator;
+ #include "mt8173-pm-domains.h"
+@@ -40,6 +41,7 @@ struct scpsys_domain {
+ 	struct clk_bulk_data *subsys_clks;
+ 	struct regmap *infracfg;
+ 	struct regmap *smi;
++	struct regulator *supply;
+ };
  
-@@ -234,7 +234,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
- 	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
- 
--	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
-+	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
- 	if (ret)
- 		goto err_pwr_ack;
- 
-@@ -251,9 +251,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- err_disable_sram:
- 	scpsys_sram_disable(pd);
- err_disable_subsys_clks:
--	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
- err_pwr_ack:
--	clk_bulk_disable(pd->num_clks, pd->clks);
-+	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
- err_disable_regulator:
- 	scpsys_regulator_disable(pd);
- 	return ret;
-@@ -274,7 +274,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		return ret;
- 
--	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
- 
- 	/* subsys power off */
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
-@@ -289,7 +289,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		return ret;
- 
--	clk_bulk_disable(pd->num_clks, pd->clks);
-+	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
- 
- 	ret = scpsys_regulator_disable(pd);
- 	if (ret < 0)
-@@ -402,14 +402,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 		pd->subsys_clks[i].clk = clk;
- 	}
- 
--	ret = clk_bulk_prepare(pd->num_clks, pd->clks);
--	if (ret)
--		goto err_put_subsys_clocks;
--
--	ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
--	if (ret)
--		goto err_unprepare_clocks;
--
- 	/*
- 	 * Initially turn on all domains to make the domains usable
- 	 * with !CONFIG_PM and to get the hardware in sync with the
-@@ -424,7 +416,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 		ret = scpsys_power_on(&pd->genpd);
- 		if (ret < 0) {
- 			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
--			goto err_unprepare_clocks;
-+			goto err_put_subsys_clocks;
- 		}
- 	}
- 
-@@ -432,7 +424,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 		ret = -EINVAL;
- 		dev_err(scpsys->dev,
- 			"power domain with id %d already exists, check your device-tree\n", id);
--		goto err_unprepare_subsys_clocks;
-+		goto err_put_subsys_clocks;
- 	}
- 
- 	pd->genpd.name = pd->data->name ?: node->name;
-@@ -448,10 +440,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 
- 	return scpsys->pd_data.domains[id];
- 
--err_unprepare_subsys_clocks:
--	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
--err_unprepare_clocks:
--	clk_bulk_unprepare(pd->num_clks, pd->clks);
- err_put_subsys_clocks:
- 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
- err_put_clocks:
-@@ -529,10 +517,7 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
- 			"failed to remove domain '%s' : %d - state may be inconsistent\n",
- 			pd->genpd.name, ret);
- 
--	clk_bulk_unprepare(pd->num_clks, pd->clks);
- 	clk_bulk_put(pd->num_clks, pd->clks);
--
--	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
- 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+ struct scpsys {
+@@ -187,6 +189,22 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+ 	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
  }
  
++static int scpsys_regulator_enable(struct scpsys_domain *pd)
++{
++	if (!pd->supply)
++		return 0;
++
++	return regulator_enable(pd->supply);
++}
++
++static int scpsys_regulator_disable(struct scpsys_domain *pd)
++{
++	if (!pd->supply)
++		return 0;
++
++	return regulator_disable(pd->supply);
++}
++
+ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ {
+ 	struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
+@@ -194,9 +212,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	bool tmp;
+ 	int ret;
+ 
++	ret = scpsys_regulator_enable(pd);
++	if (ret < 0)
++		return ret;
++
+ 	ret = clk_bulk_enable(pd->num_clks, pd->clks);
+ 	if (ret)
+-		return ret;
++		goto err_disable_regulator;
+ 
+ 	/* subsys power on */
+ 	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
+@@ -232,6 +254,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
+ err_pwr_ack:
+ 	clk_bulk_disable(pd->num_clks, pd->clks);
++err_disable_regulator:
++	scpsys_regulator_disable(pd);
+ 	return ret;
+ }
+ 
+@@ -267,6 +291,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 
+ 	clk_bulk_disable(pd->num_clks, pd->clks);
+ 
++	ret = scpsys_regulator_disable(pd);
++	if (ret < 0)
++		return ret;
++
+ 	return 0;
+ }
+ 
+@@ -315,6 +343,16 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 	if (IS_ERR(pd->smi))
+ 		return ERR_CAST(pd->smi);
+ 
++	if (pd->data->name) {
++		pd->supply = devm_regulator_get_optional(scpsys->dev, pd->data->name);
++		if (IS_ERR(pd->supply)) {
++			if (PTR_ERR(pd->supply) == -ENODEV)
++				pd->supply = NULL;
++			else
++				return ERR_CAST(pd->supply);
++		}
++	}
++
+ 	num_clks = of_clk_get_parent_count(node);
+ 	if (num_clks > 0) {
+ 		/* Calculate number of subsys_clks */
+@@ -397,7 +435,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 		goto err_unprepare_subsys_clocks;
+ 	}
+ 
+-	pd->genpd.name = node->name;
++	pd->genpd.name = pd->data->name ?: node->name;
+ 	pd->genpd.power_off = scpsys_power_off;
+ 	pd->genpd.power_on = scpsys_power_on;
+ 
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+index a2f4d8f..58d72fb 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.h
++++ b/drivers/soc/mediatek/mtk-pm-domains.h
+@@ -81,6 +81,7 @@ struct scpsys_bus_prot_data {
+  * @caps: The flag for active wake-up action.
+  * @bp_infracfg: bus protection for infracfg subsystem
+  * @bp_smi: bus protection for smi subsystem
++ * @name: specific power domain name for regulator lookup and debugfs
+  */
+ struct scpsys_domain_data {
+ 	u32 sta_mask;
+@@ -90,6 +91,7 @@ struct scpsys_domain_data {
+ 	u8 caps;
+ 	const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
+ 	const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
++	char *name;
+ };
+ 
+ struct scpsys_soc_data {
 -- 
 1.8.1.1.dirty
 _______________________________________________
