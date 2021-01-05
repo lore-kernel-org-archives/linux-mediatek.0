@@ -7,67 +7,66 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A23AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 08:37:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94B96C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 09:02:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3FBD2065D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 08:37:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3FBD2065D
+	by mail.kernel.org (Postfix) with ESMTPS id 34032225AB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 09:02:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 34032225AB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=//Tv/GTH8Lue1gbuSZxfZ+MX6L07NRXbgoJ0zqGhC3U=; b=sybIhWWF/ZrynE2MbZbX0rhdg
-	lVQSSXhLA3K1B04iadkTR6iykqYu7tZ/RyKufenMLHmBWxkI3YpYhtX1NxTLhw2VJv1wR/6l+BUHP
-	u3Bnd+bLrPGxcNvdQTJOmqxOGCAcj5ZoiFLvbxSRa0AZz5iHsbvJoaEmHjlQZuv7+ONhKHt5N9TwL
-	qa2jU7SEUnwxrZUrVYykiK1Ky8KDPXRzl68h6AG0dgM4DMLf42Twb+pbulYdAJptbwsmY/fc0THUq
-	VlAohhSIZevI31hO8tCATmrr2fEzj6voQd3PrgQ73GujgDl41WDSP+fz/osRPmzktSfHx1DsEK8xm
-	wvRNE3JYw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8oundEsV1dhi/d6Ai3fZJLZK/4PRSdlhZgHjaFXJCsE=; b=g+GMtGfYtELk/v5CiomZpLMmrw
+	kml3jnHa1pqPSX3NAPCH99lT6hO9hibYgviFw2NWZg/Wt7gUTVrMDjqlS75ZPw/NxQlnVNcfjVaBW
+	VWPCMmB5cOwSTVH4AuWLUBPWwV+7t5nkCo0x8Mty/li/hGsQ/Jg1iJCjFpeD0Unp0AJL0g5Fqp1c+
+	6F27qFNk3bkkV96LAjkwjswEKTPN5BsaZ6l3v7dkhDjDaGsgm7cWqilKY1rHUA5zUcOhZlicQcYfS
+	PdmvQs592r0H7Ttku8jsTmwN6D8ykeunxJ4hj0VPBLSvk+4Mz30Un/marbhWRiEh6JsdMy5aC3JB6
+	+soZMF/Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwhqN-0001Kz-Hf; Tue, 05 Jan 2021 08:37:31 +0000
+	id 1kwiDs-0003xt-Dj; Tue, 05 Jan 2021 09:01:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwhqK-0001KR-W3; Tue, 05 Jan 2021 08:37:30 +0000
-X-UUID: ed7681c7b135400ab594f078a329a213-20210105
+ id 1kwiDo-0003uo-St
+ for linux-mediatek@lists.infradead.org; Tue, 05 Jan 2021 09:01:47 +0000
+X-UUID: ad522f472e98498ba4be8242031ae8d4-20210105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=F02jlhNmewJ4G1POiKQJeOMEyzCl0jslK7CsBa5Pfis=; 
- b=sPbL2ukbAyHZUtmnD/ii8teBN6ZkCz0q9mdN1f6zZhoZ44ZOawk76tjDFJLGoZeVMh+9I2hHI1u1/cxGxaJRExmu5QD7+oCGyrJJlpdt5t+dEMgogWSnHrrVXB3zfVKXv/jIo1lXzjGPGNJMUqssmp40BKM/4ciw64MCzEJuIeg=;
-X-UUID: ed7681c7b135400ab594f078a329a213-20210105
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=O3iVQZSaf0YXP74ljhxcy73T+hXmmdBemadN+fEeLVs=; 
+ b=LuzoNd/VtXkVZ+Wx3yq4SVsDqCmP0jda8hTeFa1uu/ZLI5BTQ0hEPH0f0MKrT7eMw3S+6ml7uy8AYZzGDxZhAjO79tqty5Nhn5QKCntFqqCZ0WWK049jsoEudbgosDoj+n1EbUftQyHWV3nJkZyE8qzdOQtyRM1niv1Il/EYURg=;
+X-UUID: ad522f472e98498ba4be8242031ae8d4-20210105
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <nick.fan@mediatek.com>)
+ (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1952386196; Tue, 05 Jan 2021 00:37:25 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 5 Jan 2021 00:34:18 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 5 Jan 2021 16:34:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 1897514618; Tue, 05 Jan 2021 01:01:38 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 5 Jan 2021 00:56:07 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 5 Jan 2021 16:56:06 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 5 Jan 2021 16:34:16 +0800
-From: Nick Fan <Nick.Fan@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 2/2] arm64: dts: mt8192: Add node for the Mali GPU
-Date: Tue, 5 Jan 2021 16:34:06 +0800
-Message-ID: <20210105083406.14025-2-Nick.Fan@mediatek.com>
+ Frontend Transport; Tue, 5 Jan 2021 16:56:06 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: [PATCH 1/6] mt76: testmode: add attributes for ipg related parameters
+Date: Tue, 5 Jan 2021 16:55:24 +0800
+Message-ID: <20210105085529.14206-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210105083406.14025-1-Nick.Fan@mediatek.com>
-References: <20210105083406.14025-1-Nick.Fan@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210105_033729_191936_4D83F6EC 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20210105_040145_128281_E141AFD5 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,252 +78,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Nick Fan <Nick.Fan@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a basic GPU node for mt8192.
+Add attributes for setting tx inter-packet gap (ipg), duty cycle, and
+transmission time in testmode.
 
-Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
-This patch depends on Mediatek power and regulator support.
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  4 ++++
+ drivers/net/wireless/mediatek/mt76/testmode.c | 17 +++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/testmode.h |  8 ++++++++
+ 3 files changed, 29 insertions(+)
 
-Listed as following.
-
-[1]https://lore.kernel.org/patchwork/patch/1336293/
-[2]https://patchwork.kernel.org/project/linux-mediatek/list/?series=374013
-[3]https://lore.kernel.org/patchwork/patch/1356037/
-[4]https://patchwork.kernel.org/project/linux-mediatek/list/?series=405777
-[5]https://lore.kernel.org/patchwork/patch/1356175/
-[6]https://patchwork.kernel.org/project/linux-mediatek/patch/1605700894-32699-6-git-send-email-hsin-hsiung.wang@mediatek.com/
-[7]https://patchwork.kernel.org/project/linux-mediatek/patch/1608104827-7937-10-git-send-email-hsin-hsiung.wang@mediatek.com/
----
----
- arch/arm64/boot/dts/mediatek/mt8192-evb.dts |   7 +
- arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 176 ++++++++++++++++++++
- 2 files changed, 183 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-index 6c1e2b3e8a60..48c0e240dd92 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-@@ -5,6 +5,7 @@
-  */
- /dts-v1/;
- #include "mt8192.dtsi"
-+#include "mt6359.dtsi"
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 245a7197b017..cbe9689dc2ca 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -541,6 +541,10 @@ struct mt76_testmode_data {
+ 	u8 tx_antenna_mask;
+ 	u8 tx_spe_idx;
  
- / {
- 	model = "MediaTek MT8192 evaluation board";
-@@ -70,6 +71,12 @@
- 	};
++	u8 tx_duty_cycle;
++	u32 tx_time;
++	u32 tx_ipg;
++
+ 	u32 freq_offset;
+ 
+ 	u8 tx_power[4];
+diff --git a/drivers/net/wireless/mediatek/mt76/testmode.c b/drivers/net/wireless/mediatek/mt76/testmode.c
+index ad8edf137b36..74cadf51df55 100644
+--- a/drivers/net/wireless/mediatek/mt76/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/testmode.c
+@@ -17,6 +17,9 @@ static const struct nla_policy mt76_tm_policy[NUM_MT76_TM_ATTRS] = {
+ 	[MT76_TM_ATTR_TX_SPE_IDX] = { .type = NLA_U8 },
+ 	[MT76_TM_ATTR_TX_POWER_CONTROL] = { .type = NLA_U8 },
+ 	[MT76_TM_ATTR_TX_POWER] = { .type = NLA_NESTED },
++	[MT76_TM_ATTR_TX_DUTY_CYCLE] = { .type = NLA_U8 },
++	[MT76_TM_ATTR_TX_IPG] = { .type = NLA_U32 },
++	[MT76_TM_ATTR_TX_TIME] = { .type = NLA_U32 },
+ 	[MT76_TM_ATTR_FREQ_OFFSET] = { .type = NLA_U32 },
  };
  
-+&gpu {
-+	supply-names = "mali","sram";
-+	mali-supply = <&mt6315_7_vbuck1>;
-+	sram-supply = <&mt6359_vsram_others_ldo_reg>;
-+};
-+
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index d6a4ad242a33..725c5976d17d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -822,6 +822,182 @@
- 			#clock-cells = <1>;
- 		};
+@@ -361,10 +364,18 @@ int mt76_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_ANTENNA], &td->tx_antenna_mask,
+ 			   1 << (ext_phy * 2), phy->antenna_mask << (ext_phy * 2)) ||
+ 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_SPE_IDX], &td->tx_spe_idx, 0, 27) ||
++	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_DUTY_CYCLE],
++			   &td->tx_duty_cycle, 0, 99) ||
+ 	    mt76_tm_get_u8(tb[MT76_TM_ATTR_TX_POWER_CONTROL],
+ 			   &td->tx_power_control, 0, 1))
+ 		goto out;
  
-+		gpu: mali@13000000 {
-+			compatible = "mediatek,mt8192-mali", "arm,mali-valhall";
-+			reg = <0 0x13000000 0 0x4000>;
-+			interrupts =
-+				<GIC_SPI 363 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 364 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 365 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 366 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_SPI 367 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names =
-+				"GPU",
-+				"MMU",
-+				"JOB",
-+				"EVENT",
-+				"PWR";
++	if (tb[MT76_TM_ATTR_TX_IPG])
++		td->tx_ipg = nla_get_u32(tb[MT76_TM_ATTR_TX_IPG]);
 +
-+			clocks =
-+				<&apmixedsys CLK_APMIXED_MFGPLL>,
-+				<&topckgen CLK_TOP_MFG_PLL_SEL>,
-+				<&topckgen CLK_TOP_MFG_REF_SEL>,
-+				<&mfgcfg CLK_MFG_BG3D>;
-+			clock-names =
-+				"clk_main_parent",
-+				"clk_mux",
-+				"clk_sub_parent",
-+				"subsys_mfg_cg";
++	if (tb[MT76_TM_ATTR_TX_TIME])
++		td->tx_time = nla_get_u32(tb[MT76_TM_ATTR_TX_TIME]);
 +
-+			power-domains =
-+				<&spm MT8192_POWER_DOMAIN_MFG2>,
-+				<&spm MT8192_POWER_DOMAIN_MFG3>,
-+				<&spm MT8192_POWER_DOMAIN_MFG4>,
-+				<&spm MT8192_POWER_DOMAIN_MFG5>,
-+				<&spm MT8192_POWER_DOMAIN_MFG6>;
-+			power-domain-names = "core0",
-+					     "core1",
-+					     "core2",
-+					     "core3",
-+					     "core4";
+ 	if (tb[MT76_TM_ATTR_FREQ_OFFSET])
+ 		td->freq_offset = nla_get_u32(tb[MT76_TM_ATTR_FREQ_OFFSET]);
+ 
+@@ -503,6 +514,12 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *msg,
+ 	     nla_put_u8(msg, MT76_TM_ATTR_TX_ANTENNA, td->tx_antenna_mask)) ||
+ 	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_SPE_IDX) &&
+ 	     nla_put_u8(msg, MT76_TM_ATTR_TX_SPE_IDX, td->tx_spe_idx)) ||
++	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_DUTY_CYCLE) &&
++	     nla_put_u8(msg, MT76_TM_ATTR_TX_DUTY_CYCLE, td->tx_duty_cycle)) ||
++	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_IPG) &&
++	     nla_put_u32(msg, MT76_TM_ATTR_TX_IPG, td->tx_ipg)) ||
++	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_TIME) &&
++	     nla_put_u32(msg, MT76_TM_ATTR_TX_TIME, td->tx_time)) ||
+ 	    (mt76_testmode_param_present(td, MT76_TM_ATTR_TX_POWER_CONTROL) &&
+ 	     nla_put_u8(msg, MT76_TM_ATTR_TX_POWER_CONTROL, td->tx_power_control)) ||
+ 	    (mt76_testmode_param_present(td, MT76_TM_ATTR_FREQ_OFFSET) &&
+diff --git a/drivers/net/wireless/mediatek/mt76/testmode.h b/drivers/net/wireless/mediatek/mt76/testmode.h
+index f215b377d7fb..cecdf358aa44 100644
+--- a/drivers/net/wireless/mediatek/mt76/testmode.h
++++ b/drivers/net/wireless/mediatek/mt76/testmode.h
+@@ -33,6 +33,10 @@
+  * @MT76_TM_ATTR_TX_POWER_CONTROL: enable tx power control (u8)
+  * @MT76_TM_ATTR_TX_POWER: per-antenna tx power array (nested, u8 attrs)
+  *
++ * @MT76_TM_ATTR_TX_DUTY_CYCLE: packet tx duty cycle (u8)
++ * @MT76_TM_ATTR_TX_IPG: tx inter-packet gap, in unit of us (u32)
++ * @MT76_TM_ATTR_TX_TIME: packet transmission time, in unit of us (u32)
++ *
+  * @MT76_TM_ATTR_FREQ_OFFSET: RF frequency offset (u32)
+  *
+  * @MT76_TM_ATTR_STATS: statistics (nested, see &enum mt76_testmode_stats_attr)
+@@ -61,6 +65,10 @@ enum mt76_testmode_attr {
+ 	MT76_TM_ATTR_TX_POWER_CONTROL,
+ 	MT76_TM_ATTR_TX_POWER,
+ 
++	MT76_TM_ATTR_TX_DUTY_CYCLE,
++	MT76_TM_ATTR_TX_IPG,
++	MT76_TM_ATTR_TX_TIME,
 +
-+			operating-points-v2 = <&gpu_opp_table>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		gpu_opp_table: opp_table0 {
-+			compatible = "operating-points-v2";
-+			opp-shared;
-+
-+			opp-358000000 {
-+				opp-hz = /bits/ 64 <358000000>;
-+				opp-hz-real = /bits/ 64 <358000000>,
-+					      /bits/ 64 <358000000>;
-+				opp-microvolt = <606250>,
-+						<750000>;
-+			};
-+
-+			opp-399000000 {
-+				opp-hz = /bits/ 64 <399000000>;
-+				opp-hz-real = /bits/ 64 <399000000>,
-+					      /bits/ 64 <399000000>;
-+				opp-microvolt = <618750>,
-+						<750000>;
-+			};
-+
-+			opp-440000000 {
-+				opp-hz = /bits/ 64 <440000000>;
-+				opp-hz-real = /bits/ 64 <440000000>,
-+					      /bits/ 64 <440000000>;
-+				opp-microvolt = <631250>,
-+						<750000>;
-+			};
-+
-+			opp-482000000 {
-+				opp-hz = /bits/ 64 <482000000>;
-+				opp-hz-real = /bits/ 64 <482000000>,
-+					      /bits/ 64 <482000000>;
-+				opp-microvolt = <643750>,
-+						<750000>;
-+			};
-+
-+			opp-523000000 {
-+				opp-hz = /bits/ 64 <523000000>;
-+				opp-hz-real = /bits/ 64 <523000000>,
-+					      /bits/ 64 <523000000>;
-+				opp-microvolt = <656250>,
-+						<750000>;
-+			};
-+
-+			opp-564000000 {
-+				opp-hz = /bits/ 64 <564000000>;
-+				opp-hz-real = /bits/ 64 <564000000>,
-+					      /bits/ 64 <564000000>;
-+				opp-microvolt = <668750>,
-+						<750000>;
-+			};
-+
-+			opp-605000000 {
-+				opp-hz = /bits/ 64 <605000000>;
-+				opp-hz-real = /bits/ 64 <605000000>,
-+					      /bits/ 64 <605000000>;
-+				opp-microvolt = <681250>,
-+						<750000>;
-+			};
-+
-+			opp-647000000 {
-+				opp-hz = /bits/ 64 <647000000>;
-+				opp-hz-real = /bits/ 64 <647000000>,
-+					      /bits/ 64 <647000000>;
-+				opp-microvolt = <693750>,
-+						<750000>;
-+			};
-+
-+			opp-688000000 {
-+				opp-hz = /bits/ 64 <688000000>;
-+				opp-hz-real = /bits/ 64 <688000000>,
-+					      /bits/ 64 <688000000>;
-+				opp-microvolt = <706250>,
-+						<750000>;
-+			};
-+
-+			opp-724000000 {
-+				opp-hz = /bits/ 64 <724000000>;
-+				opp-hz-real = /bits/ 64 <724000000>,
-+					      /bits/ 64 <724000000>;
-+				opp-microvolt = <725000>,
-+						<750000>;
-+			};
-+
-+			opp-760000000 {
-+				opp-hz = /bits/ 64 <760000000>;
-+				opp-hz-real = /bits/ 64 <760000000>,
-+					      /bits/ 64 <760000000>;
-+				opp-microvolt = <743750>,
-+						<750000>;
-+			};
-+
-+			opp-795000000 {
-+				opp-hz = /bits/ 64 <795000000>;
-+				opp-hz-real = /bits/ 64 <795000000>,
-+					      /bits/ 64 <795000000>;
-+				opp-microvolt = <762500>,
-+						<762500>;
-+			};
-+
-+			opp-831000000 {
-+				opp-hz = /bits/ 64 <831000000>;
-+				opp-hz-real = /bits/ 64 <831000000>,
-+					      /bits/ 64 <831000000>;
-+				opp-microvolt = <781250>,
-+						<781250>;
-+			};
-+
-+			opp-855000000 {
-+				opp-hz = /bits/ 64 <855000000>;
-+				opp-hz-real = /bits/ 64 <855000000>,
-+					      /bits/ 64 <855000000>;
-+				opp-microvolt = <793750>,
-+						<793750>;
-+			};
-+
-+			opp-902000000 {
-+				opp-hz = /bits/ 64 <902000000>;
-+				opp-hz-real = /bits/ 64 <902000000>,
-+					      /bits/ 64 <902000000>;
-+				opp-microvolt = <818750>,
-+						<818750>;
-+			};
-+
-+			opp-950000000 {
-+				opp-hz = /bits/ 64 <950000000>;
-+				opp-hz-real = /bits/ 64 <950000000>,
-+					      /bits/ 64 <950000000>;
-+				opp-microvolt = <843750>,
-+						<843750>;
-+			};
-+		};
-+
- 		mfgcfg: syscon@13fbf000 {
- 			compatible = "mediatek,mt8192-mfgcfg", "syscon";
- 			reg = <0 0x13fbf000 0 0x1000>;
+ 	MT76_TM_ATTR_FREQ_OFFSET,
+ 
+ 	MT76_TM_ATTR_STATS,
 -- 
-2.18.0
+2.29.2
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
