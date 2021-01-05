@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5630CC433E6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 09:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 340DFC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 09:02:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EC7CE22525
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 09:02:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC7CE22525
+	by mail.kernel.org (Postfix) with ESMTPS id 858F122525
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 09:02:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 858F122525
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AosZXiNNbyPzN/F8ewtxqfLcGkknVPsWWl9We8h+Dc4=; b=Xn35P0LX4UjUpVLmV2k3XxnGF
-	F+tH0hlZd8drZewpMMOKqomiqPzJS7lRh6Vu2cfQgF7wtP2dY4/7sybvGa0Q7CKp7i/kaWS4zfcJv
-	GEtZswvEbh9dR1QrcLCHL6YTu6hlt2OsKEwU5VzlmtSeyUuqzJPsNiNzjWFRRdXocxy6jbx0Lt3sw
-	/7Gtn35pThMA1BtbodXqpgHjgHPlb8FoM1HijvxGeGdT6m57NH1bSEzciFUHAQbW31XQG7zmMZr0L
-	HDqMv4itQX2sYLrFxhQChuTxym3KJSM0atMgED/N5Rq5dSA1KSqz+T1iiui0JiBQB8ETn5g23t/ZB
-	t1dZDS21Q==;
+	 bh=+hUwdX/NqQpNo0qeIjdT437clG+jxmrXMipyo6Li/Lg=; b=aJsS9aRJ3WyatvhrS9af/rEAn
+	LN6f2XwBjEl7zrDQfr4Ucbo7gBx6LctW+n5wS1uNudlXBAECVxHYWIVYJti0yki9nC48Z8QOVdKxJ
+	S48Erl2KuqBwrOl1DMDVwEKbC8g4h/t/Jz3BYRUO6L8XWSLpSkJJmvCbyDC+vpa2/KM4QBnJreSUW
+	eKzbvFZpQR5mSrPOs3iW5tDWmS7Llvre5HRESfqt4oJ93AwO7jDvuLgPzjrUN+KwF3oU5YO2OxpnJ
+	bewUDERezrLhskV23eMwAeuDRuaIARpiu/aC5INXdjnReFSDwXCIreVA3rOnKXqCcXUSHbUAtDlnY
+	n6PYuEMcw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwiDq-0003wx-Jr; Tue, 05 Jan 2021 09:01:46 +0000
+	id 1kwiDr-0003xC-21; Tue, 05 Jan 2021 09:01:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwiDm-0003un-FL
- for linux-mediatek@lists.infradead.org; Tue, 05 Jan 2021 09:01:43 +0000
-X-UUID: 70b5ad7194014645a2fff63173067db6-20210105
+ id 1kwiDo-0003un-4i
+ for linux-mediatek@lists.infradead.org; Tue, 05 Jan 2021 09:01:45 +0000
+X-UUID: 59ff2744401b49d48b51d9ae50a5dbcf-20210105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=3iqDxJPj3c6neIGlORe+DCwRMtB3bhWRXIlFPTDjV7Y=; 
- b=EE0cf4ZKz10mGYNluHCxwiLbrQHqYimrzeNu6OQiQhT7PYE1qL8V1LHl0omVL6X4ewnEzE7dUysaVz9et4PAsrpdHLVmhynmjGEIzFxX2nuSdAhm0PTTzOBv+UF03Hzn5Uv6WRDzfGXz37wdincwbRzELwzkRIS75FY8WDnfS+Y=;
-X-UUID: 70b5ad7194014645a2fff63173067db6-20210105
+ bh=2LT30ue7EWISpEYfCW0ztnc78OMOPtnTmutTrYt1uyI=; 
+ b=X5Uk6kwR6hEzqrj6wqnnwqSe7b1m9Qep6fp2v3bIgdgF5nobeXS9/gD/7piJD7JITQFpoFmS/BpECepFjyCZkoimICU0Fb32ColLS0kOSliFCzDbNsXs9S64GRT87vfaJmaFQxAZ3dtH0rqbIUrVVcYDXZjWK8x+94OCRvU9XEU=;
+X-UUID: 59ff2744401b49d48b51d9ae50a5dbcf-20210105
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 768208760; Tue, 05 Jan 2021 01:01:38 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 269713326; Tue, 05 Jan 2021 01:01:38 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 5 Jan 2021 00:56:14 -0800
+ 15.0.1497.2; Tue, 5 Jan 2021 00:56:13 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 5 Jan 2021 16:56:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 5 Jan 2021 16:56:06 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH 5/6] mt76: mt7915: calculate new packet length when tx_time is
- set in testmode
-Date: Tue, 5 Jan 2021 16:55:28 +0800
-Message-ID: <20210105085529.14206-5-shayne.chen@mediatek.com>
+Subject: [PATCH 2/6] mt76: testmode: make tx queued limit adjustable
+Date: Tue, 5 Jan 2021 16:55:25 +0800
+Message-ID: <20210105085529.14206-2-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210105085529.14206-1-shayne.chen@mediatek.com>
 References: <20210105085529.14206-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210105_040142_754204_488EB03B 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20210105_040144_590289_8D01F74B 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,141 +90,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If tx_time is set, calculate a new packet length based on tx time and
-tx rate.
+Originally, tx queued limit is set to 1000 to prevent from running out
+of tx token. If a new testmode tx is triggered while the previous one
+hasn't finished yet, we'll wait a period of time until tx_done equals to
+tx_queued. Normally, current queued limit can finish in 10 seconds.
+
+However, if ipg is configured to a larger value, less than 1000 packets
+can be done in the default timeout period, which may lead to a crash
+when a new testmode tx triggered.
+
+To deal with this, make tx queued limit dynamically adjusted according
+to ipg value.
 
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7915/testmode.c  | 96 ++++++++++++++++++-
- 1 file changed, 93 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h     | 1 +
+ drivers/net/wireless/mediatek/mt76/testmode.c | 9 +++++++--
+ drivers/net/wireless/mediatek/mt76/testmode.h | 2 ++
+ 3 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-index 748c9b55e498..a8e639ffe6de 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-@@ -237,6 +237,96 @@ mt7915_tm_set_ipg_params(struct mt7915_phy *phy, u32 ipg, u8 mode)
- 				     aifsn, cw, cw, 0);
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index cbe9689dc2ca..9de9a3b842d0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -552,6 +552,7 @@ struct mt76_testmode_data {
  
-+static int
-+mt7915_tm_set_tx_len(struct mt7915_phy *phy, u32 tx_time)
-+{
-+	struct mt76_phy *mphy = phy->mt76;
-+	struct mt76_testmode_data *td = &mphy->test;
-+	struct sk_buff *old = td->tx_skb, *new;
-+	struct ieee80211_supported_band *sband;
-+	struct rate_info rate = {};
-+	u16 flags = 0, tx_len;
-+	u32 bitrate;
-+
-+	if (!tx_time || !old)
-+		return 0;
-+
-+	rate.mcs = td->tx_rate_idx;
-+	rate.nss = td->tx_rate_nss;
-+
-+	switch (td->tx_rate_mode) {
-+	case MT76_TM_TX_MODE_CCK:
-+	case MT76_TM_TX_MODE_OFDM:
-+		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
-+			sband = &mphy->sband_5g.sband;
-+		else
-+			sband = &mphy->sband_2g.sband;
-+
-+		rate.legacy = sband->bitrates[rate.mcs].bitrate;
-+		break;
-+	case MT76_TM_TX_MODE_HT:
-+		rate.mcs += rate.nss * 8;
-+		flags |= RATE_INFO_FLAGS_MCS;
-+
-+		if (td->tx_rate_sgi)
-+			flags |= RATE_INFO_FLAGS_SHORT_GI;
-+		break;
-+	case MT76_TM_TX_MODE_VHT:
-+		flags |= RATE_INFO_FLAGS_VHT_MCS;
-+
-+		if (td->tx_rate_sgi)
-+			flags |= RATE_INFO_FLAGS_SHORT_GI;
-+		break;
-+	case MT76_TM_TX_MODE_HE_SU:
-+	case MT76_TM_TX_MODE_HE_EXT_SU:
-+	case MT76_TM_TX_MODE_HE_TB:
-+	case MT76_TM_TX_MODE_HE_MU:
-+		rate.he_gi = td->tx_rate_sgi;
-+		flags |= RATE_INFO_FLAGS_HE_MCS;
-+		break;
-+	default:
-+		break;
-+	}
-+	rate.flags = flags;
-+
-+	switch (mphy->chandef.width) {
-+	case NL80211_CHAN_WIDTH_160:
-+	case NL80211_CHAN_WIDTH_80P80:
-+		rate.bw = RATE_INFO_BW_160;
-+		break;
-+	case NL80211_CHAN_WIDTH_80:
-+		rate.bw = RATE_INFO_BW_80;
-+		break;
-+	case NL80211_CHAN_WIDTH_40:
-+		rate.bw = RATE_INFO_BW_40;
-+		break;
-+	default:
-+		rate.bw = RATE_INFO_BW_20;
-+		break;
-+	}
-+
-+	bitrate = cfg80211_calculate_bitrate(&rate);
-+	tx_len = bitrate * tx_time / 10 / 8;
-+
-+	if (tx_len < sizeof(struct ieee80211_hdr))
-+		tx_len = sizeof(struct ieee80211_hdr);
-+	else if (tx_len > IEEE80211_MAX_FRAME_LEN)
-+		tx_len = IEEE80211_MAX_FRAME_LEN;
-+
-+	new = alloc_skb(tx_len, GFP_KERNEL);
-+	if (!new)
-+		return -ENOMEM;
-+
-+	skb_copy_header(new, old);
-+	__skb_put_zero(new, tx_len);
-+	memcpy(new->data, old->data, sizeof(struct ieee80211_hdr));
-+
-+	dev_kfree_skb(old);
-+	td->tx_skb = new;
-+
-+	return 0;
-+}
-+
- static void
- mt7915_tm_reg_backup_restore(struct mt7915_phy *phy)
- {
-@@ -312,7 +402,6 @@ mt7915_tm_set_tx_frames(struct mt7915_phy *phy, bool en)
- 					 9, 8, 6, 10, 16, 12, 18, 0};
- 	struct mt76_testmode_data *td = &phy->mt76->test;
- 	struct mt7915_dev *dev = phy->dev;
--	struct sk_buff *skb = td->tx_skb;
- 	struct ieee80211_tx_info *info;
- 	u8 duty_cycle = td->tx_duty_cycle;
- 	u32 tx_time = td->tx_time;
-@@ -347,14 +436,15 @@ mt7915_tm_set_tx_frames(struct mt7915_phy *phy, bool en)
- 	}
+ 	u32 tx_pending;
+ 	u32 tx_queued;
++	u16 tx_queued_limit;
+ 	u32 tx_done;
+ 	struct {
+ 		u64 packets[__MT_RXQ_MAX];
+diff --git a/drivers/net/wireless/mediatek/mt76/testmode.c b/drivers/net/wireless/mediatek/mt76/testmode.c
+index 74cadf51df55..cc769645afa5 100644
+--- a/drivers/net/wireless/mediatek/mt76/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/testmode.c
+@@ -30,6 +30,7 @@ void mt76_testmode_tx_pending(struct mt76_phy *phy)
+ 	struct mt76_wcid *wcid = &dev->global_wcid;
+ 	struct sk_buff *skb = td->tx_skb;
+ 	struct mt76_queue *q;
++	u16 tx_queued_limit;
+ 	int qid;
  
- 	mt7915_tm_set_ipg_params(phy, ipg, td->tx_rate_mode);
-+	mt7915_tm_set_tx_len(phy, tx_time);
+ 	if (!skb || !td->tx_pending)
+@@ -38,9 +39,12 @@ void mt76_testmode_tx_pending(struct mt76_phy *phy)
+ 	qid = skb_get_queue_mapping(skb);
+ 	q = phy->q_tx[qid];
  
- 	if (ipg)
- 		td->tx_queued_limit = MT76_TM_TIMEOUT * 1000000 / ipg / 2;
++	tx_queued_limit = td->tx_queued_limit ? td->tx_queued_limit : 1000;
++
+ 	spin_lock_bh(&q->lock);
  
--	if (!en || !skb)
-+	if (!en || !td->tx_skb)
- 		return;
+-	while (td->tx_pending > 0 && td->tx_queued - td->tx_done < 1000 &&
++	while (td->tx_pending > 0 &&
++	       td->tx_queued - td->tx_done < tx_queued_limit &&
+ 	       q->queued < q->ndesc / 2) {
+ 		int ret;
  
--	info = IEEE80211_SKB_CB(skb);
-+	info = IEEE80211_SKB_CB(td->tx_skb);
- 	info->control.vif = phy->monitor_vif;
+@@ -196,7 +200,8 @@ mt76_testmode_tx_stop(struct mt76_phy *phy)
  
- 	mt7915_tm_set_trx(phy, TM_MAC_TX, en);
+ 	mt76_worker_enable(&dev->tx_worker);
+ 
+-	wait_event_timeout(dev->tx_wait, td->tx_done == td->tx_queued, 10 * HZ);
++	wait_event_timeout(dev->tx_wait, td->tx_done == td->tx_queued,
++			   MT76_TM_TIMEOUT * HZ);
+ 
+ 	dev_kfree_skb(td->tx_skb);
+ 	td->tx_skb = NULL;
+diff --git a/drivers/net/wireless/mediatek/mt76/testmode.h b/drivers/net/wireless/mediatek/mt76/testmode.h
+index cecdf358aa44..e4849946f180 100644
+--- a/drivers/net/wireless/mediatek/mt76/testmode.h
++++ b/drivers/net/wireless/mediatek/mt76/testmode.h
+@@ -5,6 +5,8 @@
+ #ifndef __MT76_TESTMODE_H
+ #define __MT76_TESTMODE_H
+ 
++#define MT76_TM_TIMEOUT	10
++
+ /**
+  * enum mt76_testmode_attr - testmode attributes inside NL80211_ATTR_TESTDATA
+  *
 -- 
 2.29.2
 _______________________________________________
