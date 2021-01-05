@@ -2,76 +2,72 @@ Return-Path: <SRS0=qO9d=GI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 46219C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 06:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9385DC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 07:17:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AB23B22838
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 06:46:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB23B22838
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 112F5224F9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 07:17:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 112F5224F9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wscQwwULRoTNq3jAfjqQ2da4oCXl4dObIlOZz96nud4=; b=rZX3ivizwVK4756gLRKkTjOOzX
-	eeWcZbCl4fgm51oo9QWJLV3upagsHE+dh+ZuTRQmGkFwa2ypDlp7RQk8outku832nXPtpXiQ1eFxM
-	WhCNAHnvFJpPL96vHvVWmoH5ZOmL7voVi6RppE8XoC8dkZdRh5V8yVn65tr26c6InK6tKSCC8/lly
-	uUbc9kv1D1H2SIseJrAOICO4CjuLMfNBqB6P7ney0u20OjdayezBxWgPGigLD4Dg6bYaplRy00Tt9
-	yqNiMpNTNYaSZuy/2psk3a9ny/ql++WOuFvNi0Q7u3MZD7GhB5v3wow1fe4voN2UeIktEMFsLj1qt
-	OuDm2Dxg==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=6K8mBQ4bLcaLpII7gdpVwQAEPC1k0NuR7I9ROdFY200=; b=oY4CetkHcMG97Ww4o7sxr+VkZ
+	aswgLOvDNMdWk0PLVq90ZvqNZBlqq+dFtLJH/LT+yKyNYZ3tdozoNKe/hGWLuqOmEU05auMNKC+jQ
+	0e8QMyuPGqq8oStmf7TMjoRMfwzxV71kNsy32D396zNAGYpXwxLCSI0kKmvQefWBimCq9VeYprjwN
+	E75O+tm1U5zdb4TALdZoYocfD5NPtIt6ZG5jNpxnz3l0c7rWVzTo2j8qzJ5wYaoolRqz8vyB7Yy4G
+	ynbsKAwQNtfQ2Tl2gwuar+bfI5tTrRQjMi36pVr6xh/oM2Vro0zvRNeXD2T1ecM67n5MEF2wgCcS5
+	1AcXxMwYg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwg6z-0003sy-2s; Tue, 05 Jan 2021 06:46:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kwgas-0006Yb-4x; Tue, 05 Jan 2021 07:17:26 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwg6v-0003rr-Bc; Tue, 05 Jan 2021 06:46:30 +0000
-X-UUID: d9b76b84f9284c12a012c1ecff6899ef-20210104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:Reply-To:From:Subject:Message-ID;
- bh=uOuUrNyJqVyw+bf7rxjNIRMo6y7sN/EKdL9L1mBNcBM=; 
- b=Dsm7tE5WYgtwk/A0DKeC10JG19MeF1DPvYHW5zG4IpeDdWXBpNdYC/BA04AGyJkWd27fRPSgW9t+Of2moK2rolsXEdweN0nM811xk3kceP9mHNsVZnVQeOjz1Myt3HUsoY6t/bDKCVMv8W9F7GKPJ7OE+hFuP01eyNGi21vOVFg=;
-X-UUID: d9b76b84f9284c12a012c1ecff6899ef-20210104
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1279024349; Mon, 04 Jan 2021 22:46:22 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 4 Jan 2021 22:36:20 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n2.mediatek.inc
- (172.21.101.140) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 5 Jan 2021 14:36:17 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 5 Jan 2021 14:36:17 +0800
-Message-ID: <1609828577.1574.5.camel@mhfsdcap03>
-Subject: Re: [PATCH v8, 5/6] drm/mediatek: add RDMA fifo size error handle
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 5 Jan 2021 14:36:17 +0800
-In-Reply-To: <CAAOTY__HA95WLNppOKainvsZCxA6Wv3edLyvOW6FxAjUos=afQ@mail.gmail.com>
-References: <1607591262-21736-1-git-send-email-yongqiang.niu@mediatek.com>
- <1607591262-21736-6-git-send-email-yongqiang.niu@mediatek.com>
- <CAAOTY_-aYFz1Xg6r2ur+BF_k_35F3qNLLb16_2c0MaMsYre-+w@mail.gmail.com>
- <1607647514.12750.5.camel@mhfsdcap03>
- <CAAOTY__HA95WLNppOKainvsZCxA6Wv3edLyvOW6FxAjUos=afQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kwgao-0006Xt-6k; Tue, 05 Jan 2021 07:17:23 +0000
+IronPort-SDR: DbzXzqMuOsYtdIuPHLNt31jCbAAG1d+Nz1byJVs0TcGflLlTPcDkmv5uB7m47SzLP4bfukukA0
+ ewizK83r8O5g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9854"; a="195593504"
+X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="195593504"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jan 2021 23:17:17 -0800
+IronPort-SDR: HLSXPmG/ebpymc5Cm5QUhu0Wx8yLFzlA89q0sMQI7czP2tHmZe4zZ//NvWy5o34vKgqefzg161
+ uinHppj4AHOA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="462210163"
+Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.94])
+ ([10.237.72.94])
+ by fmsmga001.fm.intel.com with ESMTP; 04 Jan 2021 23:17:09 -0800
+Subject: Re: [PATCH RFC v4 1/1] scsi: ufs: Fix ufs power down/on specs
+ violation
+To: Bjorn Andersson <bjorn.andersson@linaro.org>
+References: <1608644981-46267-1-git-send-email-ziqichen@codeaurora.org>
+ <e8980753-fa48-7862-e5ce-0d756d5d97a6@intel.com>
+ <X/NkktFnWI48XNcp@builder.lan>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+Message-ID: <b82dd5f1-179c-6834-9d8f-88005b74ce51@intel.com>
+Date: Tue, 5 Jan 2021 09:16:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <X/NkktFnWI48XNcp@builder.lan>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210105_014629_597006_083C3BFC 
-X-CRM114-Status: GOOD (  29.19  )
+X-CRM114-CacheID: sfid-20210105_021722_444620_036FC417 
+X-CRM114-Status: GOOD (  27.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,72 +79,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob
- Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: open list <linux-kernel@vger.kernel.org>, cang@codeaurora.org,
+ Alim Akhtar <alim.akhtar@samsung.com>, kwmad.kim@samsung.com,
+ Bean Huo <beanhuo@micron.com>, Satya Tangirala <satyat@google.com>,
+ vinholikatti@gmail.com, jejb@linux.vnet.ibm.com,
+ Bart Van Assche <bvanassche@acm.org>, linux-scsi@vger.kernel.org,
+ Ziqi Chen <ziqichen@codeaurora.org>, Andy Gross <agross@kernel.org>,
+ kernel-team@android.com, salyzyn@google.com,
+ "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>, Avri Altman <avri.altman@wdc.com>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, stanley.chu@mediatek.com,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, rnayak@codeaurora.org,
+ saravanak@google.com, martin.petersen@oracle.com, nguyenb@codeaurora.org,
+ hongwus@codeaurora.org, asutoshd@codeaurora.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIwLTEyLTE0IGF0IDIyOjU0ICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
-PiBIaSwgWW9uZ3FpYW5nOg0KPiANCj4gWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRp
-YXRlay5jb20+IOaWvCAyMDIw5bm0MTLmnIgxMeaXpSDpgLHkupQg5LiK5Y2IODo0NeWvq+mBk++8
-mg0KPiA+DQo+ID4gT24gVGh1LCAyMDIwLTEyLTEwIGF0IDIzOjUwICswODAwLCBDaHVuLUt1YW5n
-IEh1IHdyb3RlOg0KPiA+ID4gSGksIFlvbmdxaWFuZzoNCj4gPiA+DQo+ID4gPiBZb25ncWlhbmcg
-Tml1IDx5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4g5pa8IDIwMjDlubQxMuaciDEw5pelIOmA
-seWbmyDkuIvljYg1OjA45a+r6YGT77yaDQo+ID4gPiA+DQo+ID4gPiA+IFRoaXMgcGF0Y2ggYWRk
-IFJETUEgZmlmbyBzaXplIGVycm9yIGhhbmRsZQ0KPiA+ID4gPiByZG1hIGZpZm8gc2l6ZSB3aWxs
-IG5vdCBhbHdheXMgYmlnZ2VyIHRoYW4gdGhlIGNhbGN1bGF0ZWQgdGhyZXNob2xkDQo+ID4gPiA+
-IGlmIHRoYXQgY2FzZSBoYXBwZW5lZCwgd2UgbmVlZCBzZXQgZmlmbyBzaXplIGFzIHRoZSB0aHJl
-c2hvbGQNCj4gPiA+ID4NCj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9u
-Z3FpYW5nLm5pdUBtZWRpYXRlay5jb20+DQo+ID4gPiA+IC0tLQ0KPiA+ID4gPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyB8IDQgKysrKw0KPiA+ID4gPiAgMSBmaWxl
-IGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQ0KPiA+ID4gPg0KPiA+ID4gPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMNCj4gPiA+ID4gaW5kZXggNzk0YWNjNS4uMDUwODM5
-MiAxMDA2NDQNCj4gPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
-X3JkbWEuYw0KPiA+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bf
-cmRtYS5jDQo+ID4gPiA+IEBAIC0xNTEsNiArMTUxLDEwIEBAIHN0YXRpYyB2b2lkIG10a19yZG1h
-X2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBpbnQgd2lkdGgsDQo+
-ID4gPiA+ICAgICAgICAgICogYWNjb3VudCBmb3IgYmxhbmtpbmcsIGFuZCB3aXRoIGEgcGl4ZWwg
-ZGVwdGggb2YgNCBieXRlczoNCj4gPiA+ID4gICAgICAgICAgKi8NCj4gPiA+ID4gICAgICAgICB0
-aHJlc2hvbGQgPSB3aWR0aCAqIGhlaWdodCAqIHZyZWZyZXNoICogNCAqIDcgLyAxMDAwMDAwOw0K
-PiA+ID4gPiArDQo+ID4gPiA+ICsgICAgICAgaWYgKHRocmVzaG9sZCA+IHJkbWFfZmlmb19zaXpl
-KQ0KPiA+ID4gPiArICAgICAgICAgICAgICAgdGhyZXNob2xkID0gcmRtYV9maWZvX3NpemU7DQo+
-ID4gPg0KPiA+ID4gSWYgdGhlIGZvcm11bGEgaXMgbm90IGNvcnJlY3QsIHlvdSBzaG91bGQgZml4
-IHRoZSBmb3JtdWxhIG5vdCB3b3JrIGFyb3VuZC4NCj4gPiA+DQo+ID4gPiBSZWdhcmRzLA0KPiA+
-ID4gQ2h1bi1LdWFuZy4NCj4gPg0KPiA+IGhvdyBhYm91dCB0aGlzOg0KPiA+IHRocmVzaG9sZCA9
-IG1heCh3aWR0aCAqIGhlaWdodCAqIHZyZWZyZXNoICogNCAqIDcgLyAxMDAwMDAwLA0KPiA+IHJk
-bWFfZmlmb19zaXplKTsNCj4gDQo+IFdoZW4gSSB1c2Ugd2lkdGggPSAxOTIwLCBoZWlnaHQgPSAx
-MDgwLCB2cmVmcmVzaCA9IDYwIHRvIGNhbGN1bGF0ZSwgSQ0KPiBnZXQgdGhyZXNob2xkID0gMjk4
-NS4NCj4gU28gSSB0aGluayBzZXQgdGhyZXNob2xkIHRvIGhhbGYgb2YgZmlmbyBzaXplIGlzIE9L
-IGZvciBNQVhfV0lEVEgsDQo+IE1BWF9IRUlHSFQsIE1BWF9WUkVGUkVTSCAodGhlc2UgdGhyZWUg
-bWF5IGJlIGRpZmZlcmVudCBpbiBlYWNoIFNvQykNCj4gDQo+IHRocmVzaG9sZCA9IFJETUFfRklG
-T19QU0VVRE9fU0laRShyZG1hX2ZpZm9fc2l6ZSkgLyAyOw0KPiANCj4gQnV0IEkgd29ycnkgaGFs
-ZiBmaWZvIHNpemUgaXMgdG9vIGJpZyBmb3Igc21hbGwgcmVzb2x1dGlvbiBhbmQgbGV0DQo+IHNt
-YWxsIHJlc29sdXRpb24gdG9vIGVhc3kgdG8gdHJpZ2dlciBidXJzdCByZWFkIERSQU0uIFNvIGxl
-dCB0aGUNCj4gZm9ybXVsYSB0byBiZSB0aGlzOg0KPiANCj4gdGhyZXNob2xkID0gUkRNQV9GSUZP
-X1BTRVVET19TSVpFKHJkbWFfZmlmb19zaXplKSAqIHdpZHRoICogaGVpZ2h0ICoNCj4gdnJlZnJl
-c2ggLyAyIC8gTUFYX1dJRFRIIC8gTUFYX0hFSUdIVCAvIE1BWF9WUkVGUkVTSDsNCj4gDQo+IEhv
-dyBkbyB5b3UgdGhpbmsgYWJvdXQgdGhpcz8NCj4gDQo+IFJlZ2FyZHMsDQo+IENodW4tS3Vhbmcu
-DQoNCmhvdyBhYm91dCByZW1vdmUgdGhpcyBmb3JtdWxhLCBhbmQgc2V0IHRocmVzaG9sZCA9IHJk
-bWFfZmlmb19zaXplDQo+IA0KPiA+ID4NCj4gPiA+ID4gKw0KPiA+ID4gPiAgICAgICAgIHJlZyA9
-IFJETUFfRklGT19VTkRFUkZMT1dfRU4gfA0KPiA+ID4gPiAgICAgICAgICAgICAgIFJETUFfRklG
-T19QU0VVRE9fU0laRShyZG1hX2ZpZm9fc2l6ZSkgfA0KPiA+ID4gPiAgICAgICAgICAgICAgIFJE
-TUFfT1VUUFVUX1ZBTElEX0ZJRk9fVEhSRVNIT0xEKHRocmVzaG9sZCk7DQo+ID4gPiA+IC0tDQo+
-ID4gPiA+IDEuOC4xLjEuZGlydHkNCj4gPiA+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18NCj4gPiA+ID4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
-DQo+ID4gPiA+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4gPiA+ID4gaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlaw0K
-PiA+DQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
-aWF0ZWsK
+On 4/01/21 8:55 pm, Bjorn Andersson wrote:
+> On Mon 04 Jan 03:15 CST 2021, Adrian Hunter wrote:
+> 
+>> On 22/12/20 3:49 pm, Ziqi Chen wrote:
+>>> As per specs, e.g, JESD220E chapter 7.2, while powering
+>>> off/on the ufs device, RST_N signal and REF_CLK signal
+>>> should be between VSS(Ground) and VCCQ/VCCQ2.
+>>>
+>>> To flexibly control device reset line, refactor the function
+>>> ufschd_vops_device_reset(sturct ufs_hba *hba) to ufshcd_
+>>> vops_device_reset(sturct ufs_hba *hba, bool asserted). The
+>>> new parameter "bool asserted" is used to separate device reset
+>>> line pulling down from pulling up.
+>>
+>> This patch assumes the power is controlled by voltage regulators, but for us
+>> it is controlled by firmware (ACPI), so it is not correct to change RST_n
+>> for all host controllers as you are doing.
+>>
+>> Also we might need to use a firmware interface for device reset, in which
+>> case the 'asserted' value doe not make sense.
+>>
+> 
+> Are you saying that the entire flip-flop-the-reset is a single firmware
+> operation in your case?
+
+Yes
+
+>                         If you look at the Mediatek driver, the
+> implementation of ufs_mtk_device_reset_ctrl() is a jump to firmware.
+> 
+> 
+> But perhaps "asserted" isn't the appropriate English word for saying
+> "the reset is in the resetting state"?
+> 
+> I just wanted to avoid the use of "high"/"lo" as if you look at the
+> Mediatek code they pass the expected line-level to the firmware, while
+> in the Qualcomm code we pass the logical state to the GPIO code which is
+> setup up as "active low" and thereby flip the meaning before hitting the
+> pad.
+> 
+>> Can we leave the device reset callback alone, and instead introduce a new
+>> variant operation for setting RST_n to match voltage regulator power changes?
+> 
+> Wouldn't this new function just have to look like the proposed patches?
+> In which case for existing platforms we'd have both?
+> 
+> How would you implement this, or would you simply skip implementing
+> this?
+
+Functionally, doing a device reset is not the same as adjusting signal
+levels to meet power up/off ramp requirements.  However, the issue is that
+we do not use regulators, so the power is not necessarily being changed at
+those points, and we definitely do not want to reset instead of entering
+DeepSleep for example.
+
+Off the top of my head, I imagine something like a callback called
+ufshcd_vops_prepare_power_ramp(hba, bool on) which is called only if
+hba->vreg_info->vcc is not NULL.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
