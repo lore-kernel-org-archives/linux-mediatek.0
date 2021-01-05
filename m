@@ -2,65 +2,79 @@ Return-Path: <SRS0=qO9d=GI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 67F60C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 16:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36A6DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 22:41:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA8AA22CA0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 16:08:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA8AA22CA0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id CE37922D6E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 22:41:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE37922D6E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:References:
-	In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JnqmuR4+wBmxBxYTimFwXQitUCcnQj3B9fR27nRYIUE=; b=xNK9v3m1EDkw4r/Zu/daX1zA3
-	GSikAZNVmdvYAFEiLGpanzl6FzcRhEOD14v8v+Jp9bAis4leHl+9eaT+DRAkrdM4LIf07H5e0nfb6
-	QhlyZLxXSY0JXwLQn0y5oJkmyQC1wEGqcVsy7FKL7ErhyKWGL4nhYgT1AIrrriYBsi1YtHfD6l7W5
-	ha7e8NoTkr5b4XdTuQlXBaaErRVpmJIY/FIPZOmJDtQqyFq3CaHw2dLcdfV12k1jZpdGcwfzIiJhi
-	6xBaNNNYxBhe44tID2Ptcz6bKZOqJeEqnFZsp2lZ3RERdotOWxxClL+01JIONsKNOoeaTBzkzv3XS
-	eioeXnFbg==;
+	 bh=rukVmrLEJtBLKXDVMm8vNI0JOT6fBuf3wgsT2ktTTb0=; b=CnkO7MRLwCNiGs0NO336vEpCA
+	wbdigwLdISAyCqsiVv1kmhtfnULL78Tni/j497s3LIJBPla1l0yalBn+qRTH7xQPr9EmmVPTzX8ZB
+	v5OgRXJI4AJksKqxDUi0IFP2gtoHFfixzunn1GHnagNo0VNQj1uQ/lxK16Xc5Xc5FC7H44FFtMT0L
+	IW7xljIdlURoyuXTX2V/3GjvWgDvqOBmHC9sMRskiu9HiNGidsfz951vpO/XjxfpVR54COfQ05kEz
+	rRpZJuzmi4wV9IEcarmDfnD626bMTUZ+KajKYco4Oagz1J4XYhQuBOPiC++FvKUdW5fFL4R8HT/6c
+	fFFGT2wSA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwosX-0006rz-Q6; Tue, 05 Jan 2021 16:08:13 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kwv0W-0000of-L5; Tue, 05 Jan 2021 22:40:52 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwosT-0006r8-K7; Tue, 05 Jan 2021 16:08:10 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 66B0D2226A;
- Tue,  5 Jan 2021 16:08:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609862887;
- bh=Ds7Ux3fJB9sk2PXSEPGwymkvlgIP6rNtPGxUUwGxUIM=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=AFf8NLyHept3vbYB1LddoUXr4lqxxjVYXbLVU5DW8tGVcMihq5l+IjE0Qvs1FPLKk
- sl+EljIfLj69mBD2KqpQuEr5uTsEWHEeyVkNCS41vA3uQIXTUOT8HWJbH02aKJTnAx
- yMjmoAhAcywlc7qAG06s8Dp0ow+w9bOCR+lwEIviij5YB2fYHQKJNM/itvF23GszZs
- NVKZNCdVHun88PlknuY83o1uKGoEOdTcvzB87+SQYxYgF4y6Ou9TiVM7GWPk20hVen
- tGw28VoLWKrxI4dPxZWzYBezQqwXyH4j8BM7bTKQ8/U4Ma5YxEtwugA3tjEGpn9bhS
- FbvAVLpCWBZJA==
-From: Mark Brown <broonie@kernel.org>
-To: Ryan Case <ryandcase@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Georgi Djakov <georgi.djakov@linaro.org>, Stephen Boyd <swboyd@chromium.org>,
- Henry Chen <henryc.chen@mediatek.com>
-In-Reply-To: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
-References: <1608790134-27425-1-git-send-email-henryc.chen@mediatek.com>
-Subject: Re: (subset) [PATCH V6 00/13] Add driver for dvfsrc,
- support for active state of scpsys
-Message-Id: <160986286072.50149.16225204986666610767.b4-ty@kernel.org>
-Date: Tue, 05 Jan 2021 16:07:40 +0000
+ id 1kwv0U-0000nf-8M
+ for linux-mediatek@lists.infradead.org; Tue, 05 Jan 2021 22:40:51 +0000
+Received: by mail-lf1-x134.google.com with SMTP id a12so2257486lfl.6
+ for <linux-mediatek@lists.infradead.org>; Tue, 05 Jan 2021 14:40:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=A9uJ+mRMwMNCjTDA7H/Mm7rI4bw9j4iKv8gt3pZkI1A=;
+ b=Iox6T65sT6cbzUPZGs6r2WT1UcGm50nonReKeZ1J9nPB9NCFRrTteX4vpPI+xFbO5l
+ DyJRrwiNFFCbY2XIBy3K9qn3WvApzDXm1+kiDGRu5h/EGoadlZzUNz3BD/CFOc8WTXEz
+ vPdh6UWNFEgHmXg4bZNO3U9Ka3Nq2kFEdazHzEGZywA0RGy1DE5NVGloXaV3mAg2Ci0y
+ WT6ZnmvP8TLpc5Aqr8jJWsz0EkjwjZGg1azMyix5WFrmrIoyomnN14DFpNfvrk+APLTw
+ DLLRg6m2/zNcpCXLQYOZrTiBQ91ZhMLBFoYQnf7H2al5YY6LENFsEZFLDFTQ+mOq3eqr
+ 6i1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=A9uJ+mRMwMNCjTDA7H/Mm7rI4bw9j4iKv8gt3pZkI1A=;
+ b=VZFHwzzS9vTQviAR5Fvq4GLbYXYjjhaJ3Siv8kx1obDvH3Ei2dYw6g7TdS0SaEvXFU
+ H8UK2e/rw549BjCrgMhU1uu5RJeGP1z7A0s8RyiDc+9ZnTg99+0h8M3/HLnsuiFszxIK
+ R985Xpibpuc7lkQILdPd2wtU7p5ACneF9ukfinCXJGOuWFPea0GaZx6MuErGmxv1YBw0
+ JplI5qhbG/wRIEF37rpfdBE7SfUPr5aoOAK8cksNnS4TnKJjHL7H4Xyo+N5HthzzW2Z3
+ Zhi52et3/UVC0YQXilvxo8oMdj/lP6PYulD255zoehci62pFk3E4VbCOjlHgj+t0D2JI
+ oJyg==
+X-Gm-Message-State: AOAM532xGy9eoXvgrtjEHMzC9VkVo2Pl7VJXVm9QMW3f0Xgo/vScpci1
+ fkzd9oQeC7ZyX51Xz+Qgpvf+kQkSL3VU8qGw8hToDw==
+X-Google-Smtp-Source: ABdhPJyrC7fldffb5OLrFw01LwrgpdXzjc/LW2OSxOLTM/0TxS5i8SQmbP+5jZ1/YeIQPTX3gsunWenkiAOIokiJrt4=
+X-Received: by 2002:ac2:5597:: with SMTP id v23mr563643lfg.649.1609886448380; 
+ Tue, 05 Jan 2021 14:40:48 -0800 (PST)
 MIME-Version: 1.0
+References: <20201228090425.2130569-1-hsinyi@chromium.org>
+In-Reply-To: <20201228090425.2130569-1-hsinyi@chromium.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 5 Jan 2021 23:40:37 +0100
+Message-ID: <CACRpkdZpGd0qVLk1y7y01K8-rrRhNFSYuCzs-GGnN5_tRzKfOQ@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: Fix fallback call path
+To: Hsin-Yi Wang <hsinyi@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210105_110809_936912_367B31DF 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20210105_174050_337195_2F1CBEDC 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,54 +86,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>,
- devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, Arvin Wang <arvin.wang@mediatek.com>,
- Nicolas Boichat <drinkcat@google.com>, linux-arm-kernel@lists.infradead.org
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Sean Wang <sean.wang@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Light Hsieh <light.hsieh@mediatek.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Dec 2020 14:08:41 +0800, Henry Chen wrote:
-> This series is based on v5.10-rc1.
-> 
-> The patchsets add support for MediaTek hardware module named DVFSRC
-> (dynamic voltage and frequency scaling resource collector). The DVFSRC is
-> a HW module which is used to collect all the requests from both software
-> and hardware and turn into the decision of minimum operating voltage and
-> minimum DRAM frequency to fulfill those requests.
-> 
-> [...]
+On Mon, Dec 28, 2020 at 10:04 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
 
-Applied to
+> Some SoCs, eg. mt8183, are using a pinconfig operation bias_set_combo.
+> The fallback path in mtk_pinconf_adv_pull_set() should also try this
+> operation.
+>
+> Fixes: cafe19db7751 ("pinctrl: mediatek: Backward compatible to previous Mediatek's bias-pull usage")
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Patch applied for fixes!
 
-Thanks!
-
-[11/13] regulator: Regulator driver for the Mediatek DVFSRC
-        commit: a0db6b0aa670ba040f959a000ef24dd4238e016b
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
