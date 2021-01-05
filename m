@@ -5,70 +5,67 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A679C433E6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 03:17:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8332C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 05:37:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 423A922573
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 03:17:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 423A922573
+	by mail.kernel.org (Postfix) with ESMTPS id 728BA22482
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 05:37:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 728BA22482
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aq37hoyKcGKPjqi7vSStLUbUsSMrxPiUktApP2bKDog=; b=Bs0lL9e2Ijm12C0rwZChX3rj8
-	Z4aZ5ljTz6BMPWbe9Mbyr9Z2yOGrfFZHm//4tz+2UjWheZeaBmIbl0q0r6uaYP4Ked30ECW0OpAjl
-	MVtlGIPnIWabN97adrCzgng8Zpk9jAWoZC3Fo7KV1CqQVcHxGFutbzEvQ06f5lnEp3FL5Ofr7asJZ
-	QiT1b4uIdNwL9PXQY+vjK6zxK7Ovs77tEbhZr2VvsxeOXWCz9usVYCrArQzBnXSuRle0HUsHfoqgH
-	Du5qRz86tSq0Is53a+GiJuxtBfkDciPToEpN5G+px/m/xeq8L1HMBHMLvkFMtlnZA0rSwWRufOOHi
-	pPIvPVh8g==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5eEMo3wLVmZ0L4tEoT7lUag4mhZZibxOChdXdLr05IQ=; b=XKpAXDN3eiJm9vse79yTV+GS1C
+	SmGjGTLmBihvF8VTCJB4WkWuGw8cODO/mRPW2HVByp0ibFc6h+xNNXmliUDUhi1asuks69yBYsQE8
+	Nu5UsMoVGGo/q+8nCsCBa/YiLFTuVK5NRxUh07l+HsYbXDJ1K4V1I40jqYXI4s5WLCveKyelMZo5E
+	sJKyhPHF06F/CnWv6PAdO2AtJaHHMlQDwzKdsw8L+aYma5U3QBe6Sj3jycgDjNgnnypO6S1Bh6m44
+	FyqzlRNqbvCiyJqhgkkqK/MjoATDv2DpM/hsu9UEx6T2HMMZa7ELGwz+syaFrJmdwAbc/zVOnuZgc
+	SV6OM+LQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwcqF-0002lr-4f; Tue, 05 Jan 2021 03:17:03 +0000
+	id 1kwf1W-0003zI-Gu; Tue, 05 Jan 2021 05:36:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwcqA-0002jf-4z; Tue, 05 Jan 2021 03:16:59 +0000
-X-UUID: 1ec2a99fcf4f47a184aca9aa11d3da74-20210104
+ id 1kwf1R-0003yV-05; Tue, 05 Jan 2021 05:36:46 +0000
+X-UUID: 7b040aed894b43f49dd1b10aa23f01d3-20210104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=e0B9zVJPQw4TvdYAFfp7I9qH+l0H5M+n4XKyJUS4U48=; 
- b=S8cxXdb5auci0nO2T2fkP1P1y52vXgmle7i+Hax4Mr4mBZA0AXXY/lPOJNJORkldwMC/F1ZfdIBRZg+MsWO/Isas4N/YLcvB0XdQS4QE58dTS5g22tj/5pgJgUcQvqjgy+L+JNgyMawhBFQMpsDhbu2Oc/RW+dHkGupmCDdsUck=;
-X-UUID: 1ec2a99fcf4f47a184aca9aa11d3da74-20210104
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=OYnbuzNt8GTG2Ot97VNKoEMIUzBn10AvcLLZC+TH4E8=; 
+ b=JC72mZfUmO2Kh/nHtN1Y9Hp8oTv5MCD7qzF/Lvh6oC8LjhO+MaxY80NKAfSXT2CVm/mu/ERm/h0jVvo23tEXdohoQdZuQgIJ0Y5N9FZBN5FZLdgRwSy0RNyuS0RPbrCj13OPS21F517GbZTNjB27di5TppY+SwylxyM9NN82LNI=;
+X-UUID: 7b040aed894b43f49dd1b10aa23f01d3-20210104
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <nick.fan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 450036193; Mon, 04 Jan 2021 19:16:55 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 4 Jan 2021 19:06:52 -0800
+ with ESMTP id 811912672; Mon, 04 Jan 2021 21:36:37 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 4 Jan 2021 21:36:35 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 5 Jan 2021 11:06:50 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 5 Jan 2021 11:06:49 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v4, 10/10] soc: mediatek: mmsys: add mt8192 mmsys support
-Date: Tue, 5 Jan 2021 11:06:33 +0800
-Message-ID: <1609815993-22744-11-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1609815993-22744-1-git-send-email-yongqiang.niu@mediatek.com>
-References: <1609815993-22744-1-git-send-email-yongqiang.niu@mediatek.com>
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 5 Jan 2021 13:36:33 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 5 Jan 2021 13:36:33 +0800
+From: Nick Fan <Nick.Fan@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2 1/2] dt-bindings: Add DT schema for Arm Mali Valhall GPU
+Date: Tue, 5 Jan 2021 13:36:31 +0800
+Message-ID: <20210105053632.5476-1-Nick.Fan@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210104_221658_413803_5498F8E1 
-X-CRM114-Status: GOOD (  23.09  )
+X-CRM114-CacheID: sfid-20210105_003645_312481_F2BBDC75 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,234 +77,288 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- linux-arm-kernel@lists.infradead.org
+ Nick Fan <Nick.Fan@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add mt8192 mmsys support
+Add devicetree schema for Arm Mali Valhall GPU
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Define a compatible string for the Mali Valhall GPU
+for Mediatek's SoC platform.
+
+Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
 ---
- drivers/soc/mediatek/mmsys/Makefile       |   1 +
- drivers/soc/mediatek/mmsys/mt8192-mmsys.c | 149 ++++++++++++++++++++++++++++++
- drivers/soc/mediatek/mmsys/mtk-mmsys.c    |   9 ++
- include/linux/soc/mediatek/mtk-mmsys.h    |   1 +
- 4 files changed, 160 insertions(+)
- create mode 100644 drivers/soc/mediatek/mmsys/mt8192-mmsys.c
+ .../bindings/gpu/arm,mali-valhall.yaml        | 252 ++++++++++++++++++
+ 1 file changed, 252 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
 
-diff --git a/drivers/soc/mediatek/mmsys/Makefile b/drivers/soc/mediatek/mmsys/Makefile
-index 25eeb9e5..7508cd3 100644
---- a/drivers/soc/mediatek/mmsys/Makefile
-+++ b/drivers/soc/mediatek/mmsys/Makefile
-@@ -1,4 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0-only
- obj-$(CONFIG_MTK_MMSYS) += mt2701-mmsys.o
- obj-$(CONFIG_MTK_MMSYS) += mt8183-mmsys.o
-+obj-$(CONFIG_MTK_MMSYS) += mt8192-mmsys.o
- obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
-diff --git a/drivers/soc/mediatek/mmsys/mt8192-mmsys.c b/drivers/soc/mediatek/mmsys/mt8192-mmsys.c
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
 new file mode 100644
-index 0000000..2e350d1
+index 000000000000..436294c032ff
 --- /dev/null
-+++ b/drivers/soc/mediatek/mmsys/mt8192-mmsys.c
-@@ -0,0 +1,149 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2020 MediaTek Inc.
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
+@@ -0,0 +1,252 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2020 MediaTek Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/gpu/arm,mali-valhall.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#include <linux/device.h>
-+#include <linux/io.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/soc/mediatek/mtk-mmsys.h>
++title: ARM Mali Valhall GPU
 +
-+#define MMSYS_OVL_MOUT_EN		0xf04
-+#define DISP_OVL0_GO_BLEND			BIT(0)
-+#define DISP_OVL0_GO_BG				BIT(1)
-+#define DISP_OVL0_2L_GO_BLEND			BIT(2)
-+#define DISP_OVL0_2L_GO_BG			BIT(3)
-+#define DISP_OVL1_2L_MOUT_EN		0xf08
-+#define OVL1_2L_MOUT_EN_RDMA1			BIT(4)
-+#define DISP_OVL0_2L_MOUT_EN		0xf18
-+#define DISP_OVL0_MOUT_EN		0xf1c
-+#define OVL0_MOUT_EN_DISP_RDMA0			BIT(0)
-+#define OVL0_MOUT_EN_OVL0_2L			BIT(4)
-+#define DISP_RDMA0_SEL_IN		0xf2c
-+#define RDMA0_SEL_IN_OVL0_2L			0x3
-+#define DISP_RDMA0_SOUT_SEL		0xf30
-+#define RDMA0_SOUT_COLOR0			0x1
-+#define DISP_CCORR0_SOUT_SEL		0xf34
-+#define CCORR0_SOUT_AAL0			0x1
-+#define DISP_AAL0_SEL_IN		0xf38
-+#define AAL0_SEL_IN_CCORR0			0x1
-+#define DISP_DITHER0_MOUT_EN		0xf3c
-+#define DITHER0_MOUT_DSI0			BIT(0)
-+#define DISP_DSI0_SEL_IN		0xf40
-+#define DSI0_SEL_IN_DITHER0			0x1
-+#define DISP_OVL2_2L_MOUT_EN		0xf4c
-+#define OVL2_2L_MOUT_RDMA4			BIT(0)
++maintainers:
++  - Rob Herring <robh@kernel.org>
 +
-+static void mtk_mmsys_ddp_mout_en(void __iomem *config_regs,
-+				  enum mtk_ddp_comp_id cur,
-+				  enum mtk_ddp_comp_id next,
-+				  bool enable)
-+{
-+	unsigned int addr, value, reg;
++properties:
++  $nodename:
++    pattern: '^gpu@[a-f0-9]+$'
 +
-+	if (cur == DDP_COMPONENT_OVL_2L0 && next == DDP_COMPONENT_RDMA0) {
-+		addr = DISP_OVL0_2L_MOUT_EN;
-+		value = OVL0_MOUT_EN_DISP_RDMA0;
-+	} else if (cur == DDP_COMPONENT_OVL_2L2 && next == DDP_COMPONENT_RDMA4) {
-+		addr = DISP_OVL2_2L_MOUT_EN;
-+		value = OVL2_2L_MOUT_RDMA4;
-+	} else if (cur == DDP_COMPONENT_DITHER && next == DDP_COMPONENT_DSI0) {
-+		addr = DISP_DITHER0_MOUT_EN;
-+		value = DITHER0_MOUT_DSI0;
-+	} else {
-+		value = 0;
-+	}
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-mali
++      - const: arm,mali-valhall
 +
-+	if (value) {
-+		reg = readl_relaxed(config_regs + addr);
++  reg:
++    maxItems: 1
 +
-+		if (enable)
-+			reg |= value;
-+		else
-+			reg &= ~value;
++  interrupts:
++    items:
++      - description: GPU interrupt
++      - description: MMU interrupt
++      - description: Job interrupt
 +
-+		writel_relaxed(reg, config_regs + addr);
-+	}
-+}
++  interrupt-names:
++    items:
++      - const: gpu
++      - const: mmu
++      - const: job
 +
-+static void mtk_mmsys_ddp_sel_in(void __iomem *config_regs,
-+				 enum mtk_ddp_comp_id cur,
-+				 enum mtk_ddp_comp_id next,
-+				 bool enable)
-+{
-+	unsigned int addr, value, reg;
++  clocks:
++    minItems: 1
 +
-+	if (cur == DDP_COMPONENT_OVL_2L0 && next == DDP_COMPONENT_RDMA0) {
-+		addr = DISP_RDMA0_SEL_IN;
-+		value = RDMA0_SEL_IN_OVL0_2L;
-+	} else if (cur == DDP_COMPONENT_CCORR && next == DDP_COMPONENT_AAL0) {
-+		addr = DISP_AAL0_SEL_IN;
-+		value = AAL0_SEL_IN_CCORR0;
-+	} else if (cur == DDP_COMPONENT_DITHER && next == DDP_COMPONENT_DSI0) {
-+		addr = DISP_DSI0_SEL_IN;
-+		value = DSI0_SEL_IN_DITHER0;
-+	} else {
-+		value = 0;
-+	}
++  power-domains:
++    minItems: 1
++    maxItems: 5
 +
-+	if (value) {
-+		reg = readl_relaxed(config_regs + addr);
++  mali-supply: true
++  sram-supply: true
 +
-+		if (enable)
-+			reg |= value;
-+		else
-+			reg &= ~value;
++  operating-points-v2: true
 +
-+		writel_relaxed(reg, config_regs + addr);
-+	}
-+}
++  "#cooling-cells":
++    const: 2
 +
-+static void mtk_mmsys_ddp_sout_sel(void __iomem *config_regs,
-+				   enum mtk_ddp_comp_id cur,
-+				   enum mtk_ddp_comp_id next)
-+{
-+	if (cur == DDP_COMPONENT_RDMA0 && next == DDP_COMPONENT_COLOR0) {
-+		writel_relaxed(RDMA0_SOUT_COLOR0, config_regs + DISP_RDMA0_SOUT_SEL);
-+	} else if (cur == DDP_COMPONENT_CCORR && next == DDP_COMPONENT_AAL0) {
-+		writel_relaxed(CCORR0_SOUT_AAL0, config_regs + DISP_CCORR0_SOUT_SEL);
-+	}
-+}
++required:
++  - compatible
++  - reg
++  - interrupts
++  - interrupt-names
++  - clocks
 +
-+static void mtk_mmsys_ovl_mout_en(void __iomem *config_regs,
-+				  enum mtk_ddp_comp_id cur,
-+				  enum mtk_ddp_comp_id next,
-+				  bool enable)
-+{
-+	unsigned int addr, value, reg;
++additionalProperties: false
 +
-+	addr = MMSYS_OVL_MOUT_EN;
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8192-mali
++    then:
++      properties:
++        sram-supply: true
++        power-domains:
++          description:
++            List of phandle and PM domain specifier as documented in
++            Documentation/devicetree/bindings/power/power_domain.txt
++          minItems: 5
++          maxItems: 5
++        power-domain-names:
++          items:
++            - const: core0
++            - const: core1
++            - const: core2
++            - const: core3
++            - const: core4
 +
-+	if (cur == DDP_COMPONENT_OVL0 && next == DDP_COMPONENT_OVL_2L0)
-+		value = DISP_OVL0_GO_BG;
-+	else if (cur == DDP_COMPONENT_OVL_2L0 && next == DDP_COMPONENT_OVL0)
-+		value = DISP_OVL0_2L_GO_BG;
-+	else if (cur == DDP_COMPONENT_OVL0)
-+		value = DISP_OVL0_GO_BLEND;
-+	else if (cur == DDP_COMPONENT_OVL_2L0)
-+		value = DISP_OVL0_2L_GO_BLEND;
-+	else
-+		value = 0;
++      required:
++        - sram-supply
++        - power-domains
 +
-+	if (value) {
-+		reg = readl_relaxed(config_regs + addr);
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
 +
-+		if (enable)
-+			reg |= value;
-+		else
-+			reg &= ~value;
++    gpu@13000000 {
++           compatible = "mediatek,mt8192-mali", "arm,mali-valhall";
++           reg = <0x13000000 0x4000>;
++           interrupts =
++                   <GIC_SPI 363 IRQ_TYPE_LEVEL_HIGH 0>,
++                   <GIC_SPI 364 IRQ_TYPE_LEVEL_HIGH 0>,
++                   <GIC_SPI 365 IRQ_TYPE_LEVEL_HIGH 0>;
++           interrupt-names =
++                   "gpu",
++                   "mmu",
++                   "job";
 +
-+		writel_relaxed(reg, config_regs + addr);
-+	}
-+}
++           clocks = <&mfgcfg 0>;
 +
-+struct mtk_mmsys_conn_funcs mt8192_mmsys_funcs = {
-+	.mout_en = mtk_mmsys_ddp_mout_en,
-+	.ovl_mout_en = mtk_mmsys_ovl_mout_en,
-+	.sel_in = mtk_mmsys_ddp_sel_in,
-+	.sout_sel = mtk_mmsys_ddp_sout_sel,
-+};
-diff --git a/drivers/soc/mediatek/mmsys/mtk-mmsys.c b/drivers/soc/mediatek/mmsys/mtk-mmsys.c
-index 34728ed..2c72607 100644
---- a/drivers/soc/mediatek/mmsys/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mmsys/mtk-mmsys.c
-@@ -50,6 +50,11 @@ struct mtk_mmsys {
- 	.funcs = &mt8183_mmsys_funcs,
- };
- 
-+static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-+	.clk_driver = "clk-mt8192-mm",
-+	.funcs = &mt8192_mmsys_funcs,
-+};
++           power-domains =
++                   <&scpsys 4>,
++                   <&scpsys 5>,
++                   <&scpsys 6>,
++                   <&scpsys 7>,
++                   <&scpsys 8>;
 +
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
- 			   enum mtk_ddp_comp_id next)
-@@ -157,6 +162,10 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 		.compatible = "mediatek,mt8183-mmsys",
- 		.data = &mt8183_mmsys_driver_data,
- 	},
-+	{
-+		.compatible = "mediatek,mt8192-mmsys",
-+		.data = &mt8192_mmsys_driver_data,
-+	},
- 	{ }
- };
- 
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 19318d2..eeec96a 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -65,6 +65,7 @@ struct mtk_mmsys_conn_funcs {
- 
- extern struct mtk_mmsys_conn_funcs mt2701_mmsys_funcs;
- extern struct mtk_mmsys_conn_funcs mt8183_mmsys_funcs;
-+extern struct mtk_mmsys_conn_funcs mt8192_mmsys_funcs;
- 
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
++           operating-points-v2 = <&gpu_opp_table>;
++           mali-supply = <&mt6315_7_vbuck1>;
++           sram-supply = <&mt6359_vsram_others_ldo_reg>;
++    };
++
++    gpu_opp_table: opp_table0 {
++      compatible = "operating-points-v2";
++      opp-shared;
++
++      opp-358000000 {
++              opp-hz = /bits/ 64 <358000000>;
++              opp-hz-real = /bits/ 64 <358000000>,
++                            /bits/ 64 <358000000>;
++              opp-microvolt = <606250>,
++                              <750000>;
++      };
++
++      opp-399000000 {
++              opp-hz = /bits/ 64 <399000000>;
++              opp-hz-real = /bits/ 64 <399000000>,
++                            /bits/ 64 <399000000>;
++              opp-microvolt = <618750>,
++                              <750000>;
++      };
++
++      opp-440000000 {
++              opp-hz = /bits/ 64 <440000000>;
++              opp-hz-real = /bits/ 64 <440000000>,
++                            /bits/ 64 <440000000>;
++              opp-microvolt = <631250>,
++                              <750000>;
++      };
++
++      opp-482000000 {
++              opp-hz = /bits/ 64 <482000000>;
++              opp-hz-real = /bits/ 64 <482000000>,
++                            /bits/ 64 <482000000>;
++              opp-microvolt = <643750>,
++                              <750000>;
++      };
++
++      opp-523000000 {
++              opp-hz = /bits/ 64 <523000000>;
++              opp-hz-real = /bits/ 64 <523000000>,
++                            /bits/ 64 <523000000>;
++              opp-microvolt = <656250>,
++                              <750000>;
++      };
++
++      opp-564000000 {
++              opp-hz = /bits/ 64 <564000000>;
++              opp-hz-real = /bits/ 64 <564000000>,
++                            /bits/ 64 <564000000>;
++              opp-microvolt = <668750>,
++                              <750000>;
++      };
++
++      opp-605000000 {
++              opp-hz = /bits/ 64 <605000000>;
++              opp-hz-real = /bits/ 64 <605000000>,
++                            /bits/ 64 <605000000>;
++              opp-microvolt = <681250>,
++                              <750000>;
++      };
++
++      opp-647000000 {
++              opp-hz = /bits/ 64 <647000000>;
++              opp-hz-real = /bits/ 64 <647000000>,
++                            /bits/ 64 <647000000>;
++              opp-microvolt = <693750>,
++                              <750000>;
++      };
++
++      opp-688000000 {
++              opp-hz = /bits/ 64 <688000000>;
++              opp-hz-real = /bits/ 64 <688000000>,
++                            /bits/ 64 <688000000>;
++              opp-microvolt = <706250>,
++                              <750000>;
++      };
++
++      opp-724000000 {
++              opp-hz = /bits/ 64 <724000000>;
++              opp-hz-real = /bits/ 64 <724000000>,
++                            /bits/ 64 <724000000>;
++              opp-microvolt = <725000>,
++                              <750000>;
++      };
++
++      opp-760000000 {
++              opp-hz = /bits/ 64 <760000000>;
++              opp-hz-real = /bits/ 64 <760000000>,
++                            /bits/ 64 <760000000>;
++              opp-microvolt = <743750>,
++                              <750000>;
++      };
++
++      opp-795000000 {
++              opp-hz = /bits/ 64 <795000000>;
++              opp-hz-real = /bits/ 64 <795000000>,
++                            /bits/ 64 <795000000>;
++              opp-microvolt = <762500>,
++                              <762500>;
++      };
++
++      opp-831000000 {
++              opp-hz = /bits/ 64 <831000000>;
++              opp-hz-real = /bits/ 64 <831000000>,
++                            /bits/ 64 <831000000>;
++              opp-microvolt = <781250>,
++                              <781250>;
++      };
++
++      opp-855000000 {
++              opp-hz = /bits/ 64 <855000000>;
++              opp-hz-real = /bits/ 64 <855000000>,
++                            /bits/ 64 <855000000>;
++              opp-microvolt = <793750>,
++                              <793750>;
++      };
++
++      opp-902000000 {
++              opp-hz = /bits/ 64 <902000000>;
++              opp-hz-real = /bits/ 64 <902000000>,
++                            /bits/ 64 <902000000>;
++              opp-microvolt = <818750>,
++                              <818750>;
++      };
++
++      opp-950000000 {
++              opp-hz = /bits/ 64 <950000000>;
++              opp-hz-real = /bits/ 64 <950000000>,
++                            /bits/ 64 <950000000>;
++              opp-microvolt = <843750>,
++                              <843750>;
++      };
++    };
++...
 -- 
-1.8.1.1.dirty
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
