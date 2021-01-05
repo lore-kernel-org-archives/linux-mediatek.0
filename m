@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 245D5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 00:59:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3026C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 00:59:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9B732227C3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 00:59:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B732227C3
+	by mail.kernel.org (Postfix) with ESMTPS id AF5C6229CA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jan 2021 00:59:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF5C6229CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,37 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UZpdvfzHJKITVpvjD2i9V8li0EEtclSQnB6NxPoKjJM=; b=sfc5/nGyZ9l6NzIE03VYwOz5V
-	+K70knSxFtw1QoqKzK6LcWbZBTaTIk6gZyiu518PTk014KHTG2ltLO7cwFqXjTP+m6UfEmoMcTHpY
-	q63dN1TC6u03tgMtrfZxgCKoSg3yGagcwCoxnd6y2rsyhNiM3yS1pAtyXLEdF+m8VjITZjZs/ud3r
-	S3/gzjbugdRTgERm7h/BdGTOrW3t7FpP6wqWCOWKTQsqb+djhAonJLmRUH+MOAOtkLDuOYAjAJyk7
-	c5ouVVLhxN4+MDEgWShCfBjajXHFHX81F9bKKIAwNwzU+kwqm3ByFBeOlr2Wsjsatt59zd7lTBxH4
-	o7V7G7ujw==;
+	 bh=arrNfEdIl3EDPc2Im2l/pvBJ56JjBL0NIVDhOeadZds=; b=uOMRtW4DJigZhdDAoNtY5G0uB
+	BFuFA1EZA86bD3lr52eDEds5Qb+ST0Tu5wsV0G9kVGYN8HijKeAjlrkOq2lIxvnrmPHvZMtNJ/0br
+	aUX3i5KWrlqvp1ZRPcUBdSpNdWEphizi2/15sKfNKiNjxqyCiMhSyIRHukKEfILJlOtMupSXwxMMv
+	oQh+Wha7wrsExmUMtUpmJk69wWl/JFk0KS+CpvaAwMaRgMDMMWQwV3lMuaVKH6gq+mUBCU9fXqNyk
+	b+HebCxp+qbDJ7WcssGHWNlqKICECwoY8z0KgHT4SHu0TPJjdjcNNn9QxSVo3hghzgaxHfgzKLLMP
+	bUBf1NFeg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwah3-0005AL-1R; Tue, 05 Jan 2021 00:59:25 +0000
+	id 1kwahB-0005CW-Hi; Tue, 05 Jan 2021 00:59:33 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwagz-00059r-DS; Tue, 05 Jan 2021 00:59:22 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 97AF622581;
- Tue,  5 Jan 2021 00:59:19 +0000 (UTC)
+ id 1kwah6-0005Ao-E4; Tue, 05 Jan 2021 00:59:29 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1C35622597;
+ Tue,  5 Jan 2021 00:59:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609808360;
- bh=p9/ot+8cguDCXR5x0/upe/u3QXAAv78RzEbKzbOalkY=;
+ s=k20201202; t=1609808367;
+ bh=0dOcWsGh9Z/V+w6PU/Ju3OjRV+n9m9dtFHHPjcms3l4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=svheP+Tyk14UERaRZr5m5f8EgIKooDiM3f/1QjdqTZ71wMXiwjJTww/Ed3dAzlpih
- Yvu2CNN382yrF2twrjy8PvntLMBcYJ56g6OBAJZYaHgwGRZ9t8Vcvrq8usI7pTjFaS
- Zsl/dsVnoKCFXshPmEqg253oOOiGcFfdpP4OzeIrkAf2hxeVxPWpyCBpK8dt1ubRYN
- o/zNpOr7nnq0bV7SUQcvG6K13LT29pbfs+FQg3l6eWJSro1mTX4R2bkrejOsfnphpC
- VhZl7MrMjiWwEhAamZDZyYYSCVJzfHOYasWEPE97C3YSpA6u+um+JtpmVYbelX10NW
- h1icjcjHqNHDQ==
+ b=UpvGE2Oom9D6rcDWbzDAqlIlyRHZcwDZRjYF5/eD2kS78z6kZUFRgjBn3D9WlvtV3
+ yTXGFLJI/Sd1vq+IYgH6AMR3ehOW9mZ+nwUVj5s4pp10srj7hGpnChtac7yiFBJo4o
+ ujZCofGLP+2Db2DAccq+uNaN0hyCpS8TyuKX+sSsj5ddZpq0BiRvNIzjseL0wUGAeK
+ 17B9UQoFea6geE2q1QsjKljK7a8KXUQyr8KMnbRQsTNWXGBiYLySEFLaK29N5GoLuz
+ PBKY643BqmhVMuCY3x3bZx3pTNY0v7e/R0neVsgvR+OfeazKZYK2P7z22cM4zRNDmK
+ 1PGZ8QEOmE8hA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.10 03/17] scsi: ufs: Clear UAC for RPMB after ufshcd
- resets
-Date: Mon,  4 Jan 2021 19:59:01 -0500
-Message-Id: <20210105005915.3954208-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 08/17] scsi: block: Introduce BLK_MQ_REQ_PM
+Date: Mon,  4 Jan 2021 19:59:06 -0500
+Message-Id: <20210105005915.3954208-8-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210105005915.3954208-1-sashal@kernel.org>
 References: <20210105005915.3954208-1-sashal@kernel.org>
@@ -61,8 +60,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210104_195921_542135_0E50D8D8 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20210104_195928_611333_09706935 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,82 +73,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Randall Huang <huangrandall@google.com>,
- kernel test robot <lkp@intel.com>,
+Cc: Jens Axboe <axboe@kernel.dk>, Sasha Levin <sashal@kernel.org>,
+ Bart Van Assche <bvanassche@acm.org>,
  "Martin K . Petersen" <martin.petersen@oracle.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-scsi@vger.kernel.org, Leo Liou <leoliou@google.com>,
- Stanley Chu <stanley.chu@mediatek.com>, Jaegeuk Kim <jaegeuk@google.com>
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+ Ming Lei <ming.lei@redhat.com>, linux-block@vger.kernel.org,
+ Can Guo <cang@codeaurora.org>, Alan Stern <stern@rowland.harvard.edu>,
+ Hannes Reinecke <hare@suse.de>, linux-mediatek@lists.infradead.org,
+ Stanley Chu <stanley.chu@mediatek.com>, Christoph Hellwig <hch@lst.de>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Randall Huang <huangrandall@google.com>
+From: Bart Van Assche <bvanassche@acm.org>
 
-[ Upstream commit 1918651f2d7e8d58c9b7c49755c61e41ed655009 ]
+[ Upstream commit 0854bcdcdec26aecdc92c303816f349ee1fba2bc ]
 
-If RPMB is not provisioned, we may see RPMB failure after UFS
-suspend/resume.  Inject request_sense to clear uac in ufshcd reset flow.
+Introduce the BLK_MQ_REQ_PM flag. This flag makes the request allocation
+functions set RQF_PM. This is the first step towards removing
+BLK_MQ_REQ_PREEMPT.
 
-Link: https://lore.kernel.org/r/20201201041402.3860525-1-jaegeuk@kernel.org
-Reported-by: kernel test robot <lkp@intel.com>
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Randall Huang <huangrandall@google.com>
-Signed-off-by: Leo Liou <leoliou@google.com>
-Signed-off-by: Jaegeuk Kim <jaegeuk@google.com>
+Link: https://lore.kernel.org/r/20201209052951.16136-3-bvanassche@acm.org
+Cc: Alan Stern <stern@rowland.harvard.edu>
+Cc: Stanley Chu <stanley.chu@mediatek.com>
+Cc: Ming Lei <ming.lei@redhat.com>
+Cc: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Cc: Can Guo <cang@codeaurora.org>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Hannes Reinecke <hare@suse.de>
+Reviewed-by: Jens Axboe <axboe@kernel.dk>
+Reviewed-by: Can Guo <cang@codeaurora.org>
+Signed-off-by: Bart Van Assche <bvanassche@acm.org>
 Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/scsi/ufs/ufshcd.c | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ block/blk-core.c       | 7 ++++---
+ block/blk-mq.c         | 2 ++
+ include/linux/blk-mq.h | 2 ++
+ 3 files changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index d7e9c4bc80478..ec7005bcf61d8 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -220,6 +220,7 @@ static int ufshcd_reset_and_restore(struct ufs_hba *hba);
- static int ufshcd_eh_host_reset_handler(struct scsi_cmnd *cmd);
- static int ufshcd_clear_tm_cmd(struct ufs_hba *hba, int tag);
- static void ufshcd_hba_exit(struct ufs_hba *hba);
-+static int ufshcd_clear_ua_wluns(struct ufs_hba *hba);
- static int ufshcd_probe_hba(struct ufs_hba *hba, bool async);
- static int __ufshcd_setup_clocks(struct ufs_hba *hba, bool on,
- 				 bool skip_ref_clk);
-@@ -6842,7 +6843,8 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
+diff --git a/block/blk-core.c b/block/blk-core.c
+index 2db8bda43b6e6..10696f9fb6ac6 100644
+--- a/block/blk-core.c
++++ b/block/blk-core.c
+@@ -424,11 +424,11 @@ EXPORT_SYMBOL(blk_cleanup_queue);
+ /**
+  * blk_queue_enter() - try to increase q->q_usage_counter
+  * @q: request queue pointer
+- * @flags: BLK_MQ_REQ_NOWAIT and/or BLK_MQ_REQ_PREEMPT
++ * @flags: BLK_MQ_REQ_NOWAIT, BLK_MQ_REQ_PM and/or BLK_MQ_REQ_PREEMPT
+  */
+ int blk_queue_enter(struct request_queue *q, blk_mq_req_flags_t flags)
+ {
+-	const bool pm = flags & BLK_MQ_REQ_PREEMPT;
++	const bool pm = flags & (BLK_MQ_REQ_PM | BLK_MQ_REQ_PREEMPT);
  
- 	/* Establish the link again and restore the device */
- 	err = ufshcd_probe_hba(hba, false);
--
-+	if (!err)
-+		ufshcd_clear_ua_wluns(hba);
- out:
- 	if (err)
- 		dev_err(hba->dev, "%s: Host init failed %d\n", __func__, err);
-@@ -8274,13 +8276,7 @@ static int ufshcd_set_dev_pwr_mode(struct ufs_hba *hba,
- 	 * handling context.
- 	 */
- 	hba->host->eh_noresume = 1;
--	if (hba->wlun_dev_clr_ua) {
--		ret = ufshcd_send_request_sense(hba, sdp);
--		if (ret)
--			goto out;
--		/* Unit attention condition is cleared now */
--		hba->wlun_dev_clr_ua = false;
--	}
-+	ufshcd_clear_ua_wluns(hba);
+ 	while (true) {
+ 		bool success = false;
+@@ -630,7 +630,8 @@ struct request *blk_get_request(struct request_queue *q, unsigned int op,
+ 	struct request *req;
  
- 	cmd[4] = pwr_mode << 4;
+ 	WARN_ON_ONCE(op & REQ_NOWAIT);
+-	WARN_ON_ONCE(flags & ~(BLK_MQ_REQ_NOWAIT | BLK_MQ_REQ_PREEMPT));
++	WARN_ON_ONCE(flags & ~(BLK_MQ_REQ_NOWAIT | BLK_MQ_REQ_PM |
++			       BLK_MQ_REQ_PREEMPT));
  
-@@ -8301,7 +8297,7 @@ static int ufshcd_set_dev_pwr_mode(struct ufs_hba *hba,
- 
- 	if (!ret)
- 		hba->curr_dev_pwr_mode = pwr_mode;
--out:
-+
- 	scsi_device_put(sdp);
- 	hba->host->eh_noresume = 0;
- 	return ret;
+ 	req = blk_mq_alloc_request(q, op, flags);
+ 	if (!IS_ERR(req) && q->mq_ops->initialize_rq_fn)
+diff --git a/block/blk-mq.c b/block/blk-mq.c
+index 55bcee5dc0320..0072ffa50b46e 100644
+--- a/block/blk-mq.c
++++ b/block/blk-mq.c
+@@ -292,6 +292,8 @@ static struct request *blk_mq_rq_ctx_init(struct blk_mq_alloc_data *data,
+ 	rq->mq_hctx = data->hctx;
+ 	rq->rq_flags = 0;
+ 	rq->cmd_flags = data->cmd_flags;
++	if (data->flags & BLK_MQ_REQ_PM)
++		rq->rq_flags |= RQF_PM;
+ 	if (data->flags & BLK_MQ_REQ_PREEMPT)
+ 		rq->rq_flags |= RQF_PREEMPT;
+ 	if (blk_queue_io_stat(data->q))
+diff --git a/include/linux/blk-mq.h b/include/linux/blk-mq.h
+index 794b2a33a2c36..c9ecfd8b03381 100644
+--- a/include/linux/blk-mq.h
++++ b/include/linux/blk-mq.h
+@@ -446,6 +446,8 @@ enum {
+ 	BLK_MQ_REQ_NOWAIT	= (__force blk_mq_req_flags_t)(1 << 0),
+ 	/* allocate from reserved pool */
+ 	BLK_MQ_REQ_RESERVED	= (__force blk_mq_req_flags_t)(1 << 1),
++	/* set RQF_PM */
++	BLK_MQ_REQ_PM		= (__force blk_mq_req_flags_t)(1 << 2),
+ 	/* set RQF_PREEMPT */
+ 	BLK_MQ_REQ_PREEMPT	= (__force blk_mq_req_flags_t)(1 << 3),
+ };
 -- 
 2.27.0
 
