@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F7B9C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23462C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 117FE22D6F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 117FE22D6F
+	by mail.kernel.org (Postfix) with ESMTPS id E07E322D74
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E07E322D74
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,43 +23,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hAJjx5avhFYjcTcr39qN/agQn58S5DaZL/RAKu5k9jg=; b=TH1DZTHhBuy56b0FHyVEj1vevb
-	dnaeq6iEBVShcLRQ2v8I/FZGImOVDIgxykVIUDUuaSEZl0/2S+xSy57E7Ks+5NjRNEz5dc3z3t6cG
-	xHpTYV3ZcQIsX4Qk0JZSWCH3Pu5ExhHpV5wzsfXoqBMmk8o0yz+/2f2RbIiZAfGb1Xo0JoxC2FM+K
-	BFSkQFtL4AoaZCDG1BrJlJSpafN+OTlBvhZsS73IA8xe0IH/JLjRof7hQ3YDNuD/dQGics66HRZkj
-	PD0FhkDoQWeN8+tBq7J8o6rPPt7fr8OFRFhb9UCd78W8ZAjr/xhx290YM500QRrDXE3ST55bgAJ0K
-	VVOLV5Ag==;
+	bh=/y4xtL8R/WmMuYSpA1D+WnbYTcCHdam/+dyMtdtPPiU=; b=VILVLicMUjNa4F8xvX4y9sQMLS
+	4hm9zC4WYmRubQ3MJRM3ulRxTXtCZzbn/y9/6WVy6IZSiO7rZ9M/e2tb2DdktZ1yy+tufPzZfVntz
+	6rfDC9xYZ3c2mweb4m+z3zTu26pz+rvQBijQZSuWF5F5qOqiop59Oa71MXuIsGeyObrWQpBWJVXyF
+	JEqnn3uG+OdN5M1k77xDrWJ+kv2ApVR5U7hokbOZ76w+uXVgy5vTPcqwxWkPt3fp6dxz10gmL6VO7
+	d8mgJJULaPs19Yuxcp8lP6o+6/qmpXQjvuKNQyzni7YWo0+Ba99Sb/Q0bNWNo4VhmQ2IzqXqacb37
+	UieNOuoA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxI43-0003mX-VF; Wed, 06 Jan 2021 23:18:04 +0000
+	id 1kxI4H-0003sU-Qv; Wed, 06 Jan 2021 23:18:17 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxI3j-0003de-QG; Wed, 06 Jan 2021 23:17:45 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 34A202333B;
- Wed,  6 Jan 2021 23:17:41 +0000 (UTC)
+ id 1kxI3o-0003fv-K9; Wed, 06 Jan 2021 23:17:51 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 00D422333C;
+ Wed,  6 Jan 2021 23:17:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609975063;
- bh=twgw02Taay/sWVg0dngMR1CiRJClXLEXiaSzITlWvoU=;
+ s=k20201202; t=1609975067;
+ bh=r27Vj/voz22uOFt6pt8tkfK5I1iQpalF/T3j5c4SrVA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=m2fQue0iFzGeutPfG564mOyFEGaejgxyOsiMeeNaLIBReCUuux4itudBaaKb0SBKK
- 8hyZHi/gmTcIM/w7wkm+Ixn8chzCILwn9yKb79LijyK0xuOp4Ll4xmD2G/lM3h1xPA
- 0NPS0tUst40i/xdAN8DD5iLVRJ++r6PHx3nnxNc0TWAIce8u+APSfUGkqgHkgoWMmh
- KErT9RCmj7vKjMEOqfHVua5ErfIZBwfA20fT08jqw7y8keIAomjPCNZK5pl+tf5d/h
- 3++Pm/oEi0fPTbhKA85jxcEIoVxg+v62wYL7LvHRP/57evCwd/ooq7O1JejDpqZSDr
- 9bFUOeMujiuUw==
+ b=JYytbgxzXqernG57j5f4LYEqFJCsYllR3munrVz5WuKuZdGqEAHfc7KuwDLpI48Rh
+ CVVU+VjMIOyTlxux6KOhEtNz46hx2e3Dmhmh+zSlTTsF/iRKHuyotYAWdY4r9oUBpx
+ Rv7GomhhJnqBubtaGw1u/0Gf4RaRhh9ul1awcXbjoNHjDQurIOLRUVqKRgo1oPNSto
+ wxOOaIcb4w9k5dYvyglwvzY7pORCqryMmH/rsiIRqLaZJUCY40IyVGhAihoUV9kbNo
+ yjTtYFZ11PaG7LuVR2Mk/BJ5bJyGIEjOrL+8dyT13V85nL7YCppW2SZ7FTBdSJ4TeZ
+ FMiNZFo3iVDuA==
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v2 2/5] drm/mediatek: Rename file mtk_drm_ddp to mtk_mutex
-Date: Thu,  7 Jan 2021 07:17:26 +0800
-Message-Id: <20210106231729.17173-3-chunkuang.hu@kernel.org>
+Subject: [PATCH v2 4/5] drm/mediatek: Automatically search unclaimed mtk mutex
+ in mtk_mutex_get()
+Date: Thu,  7 Jan 2021 07:17:28 +0800
+Message-Id: <20210106231729.17173-5-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210106231729.17173-1-chunkuang.hu@kernel.org>
 References: <20210106231729.17173-1-chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_181744_348957_3B740CBC 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20210106_181749_270006_F30CB9B4 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,97 +83,74 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: CK Hu <ck.hu@mediatek.com>
 
-After mmsys routing function is moved out of mtk_drm_ddp.c, mtk_drm_ddp.c
-has only mtk mutex function, so rename it to match the function in it.
+Moving mutex resource management from client driver to  mutex driver
+could prevent client drivers negotiating for resource management.
 
 Signed-off-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- drivers/gpu/drm/mediatek/Makefile                       | 4 ++--
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c                 | 2 +-
- drivers/gpu/drm/mediatek/{mtk_drm_ddp.c => mtk_mutex.c} | 2 +-
- drivers/gpu/drm/mediatek/{mtk_drm_ddp.h => mtk_mutex.h} | 6 +++---
- 4 files changed, 7 insertions(+), 7 deletions(-)
- rename drivers/gpu/drm/mediatek/{mtk_drm_ddp.c => mtk_mutex.c} (99%)
- rename drivers/gpu/drm/mediatek/{mtk_drm_ddp.h => mtk_mutex.h} (92%)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  2 +-
+ drivers/gpu/drm/mediatek/mtk_mutex.c    | 16 ++++++++--------
+ drivers/gpu/drm/mediatek/mtk_mutex.h    |  2 +-
+ 3 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index a892edec5563..09979c4c340a 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -4,13 +4,13 @@ mediatek-drm-y := mtk_disp_color.o \
- 		  mtk_disp_ovl.o \
- 		  mtk_disp_rdma.o \
- 		  mtk_drm_crtc.o \
--		  mtk_drm_ddp.o \
- 		  mtk_drm_ddp_comp.o \
- 		  mtk_drm_drv.o \
- 		  mtk_drm_gem.o \
- 		  mtk_drm_plane.o \
- 		  mtk_dsi.o \
--		  mtk_dpi.o
-+		  mtk_dpi.o \
-+		  mtk_mutex.o
- 
- obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
- 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index bf44a14ea0b6..fd97b7d195e3 100644
+index bba87a036fa8..1e3a9450680b 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -19,10 +19,10 @@
+@@ -773,7 +773,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 	if (!mtk_crtc->ddp_comp)
+ 		return -ENOMEM;
  
- #include "mtk_drm_drv.h"
- #include "mtk_drm_crtc.h"
--#include "mtk_drm_ddp.h"
- #include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_gem.h"
- #include "mtk_drm_plane.h"
-+#include "mtk_mutex.h"
- 
- /*
-  * struct mtk_drm_crtc - MediaTek specific crtc structure.
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_mutex.c
-similarity index 99%
-rename from drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-rename to drivers/gpu/drm/mediatek/mtk_mutex.c
-index 1f99db6b1a42..1c8a253f4788 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+-	mtk_crtc->mutex = mtk_mutex_get(priv->mutex_dev, pipe);
++	mtk_crtc->mutex = mtk_mutex_get(priv->mutex_dev);
+ 	if (IS_ERR(mtk_crtc->mutex)) {
+ 		ret = PTR_ERR(mtk_crtc->mutex);
+ 		dev_err(dev, "Failed to get mutex: %d\n", ret);
+diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.c b/drivers/gpu/drm/mediatek/mtk_mutex.c
+index 98a060bf225d..66344759e622 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mutex.c
 +++ b/drivers/gpu/drm/mediatek/mtk_mutex.c
-@@ -10,8 +10,8 @@
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
+@@ -228,18 +228,18 @@ static const struct mtk_mutex_data mt8173_mutex_driver_data = {
+ 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
+ };
  
--#include "mtk_drm_ddp.h"
- #include "mtk_drm_ddp_comp.h"
-+#include "mtk_mutex.h"
+-struct mtk_mutex *mtk_mutex_get(struct device *dev, unsigned int id)
++struct mtk_mutex *mtk_mutex_get(struct device *dev)
+ {
+ 	struct mtk_mutex_ctx *mtx = dev_get_drvdata(dev);
++	int i;
  
- #define MT2701_DISP_MUTEX0_MOD0			0x2c
- #define MT2701_DISP_MUTEX0_SOF0			0x30
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.h b/drivers/gpu/drm/mediatek/mtk_mutex.h
-similarity index 92%
-rename from drivers/gpu/drm/mediatek/mtk_drm_ddp.h
-rename to drivers/gpu/drm/mediatek/mtk_mutex.h
-index a1ee21d15334..3abcc20e88fb 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.h
+-	if (id >= 10)
+-		return ERR_PTR(-EINVAL);
+-	if (mtx->mutex[id].claimed)
+-		return ERR_PTR(-EBUSY);
+-
+-	mtx->mutex[id].claimed = true;
++	for (i = 0; i < 10; i++)
++		if (!mtx->mutex[i].claimed) {
++			mtx->mutex[i].claimed = true;
++			return &mtx->mutex[i];
++		}
+ 
+-	return &mtx->mutex[id];
++	return ERR_PTR(-EBUSY);
+ }
+ 
+ void mtk_mutex_put(struct mtk_mutex *mutex)
+diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.h b/drivers/gpu/drm/mediatek/mtk_mutex.h
+index b678e0988a37..6fe4ffbde290 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mutex.h
 +++ b/drivers/gpu/drm/mediatek/mtk_mutex.h
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2015 MediaTek Inc.
-  */
- 
--#ifndef MTK_DRM_DDP_H
--#define MTK_DRM_DDP_H
-+#ifndef MTK_MUTEX_H
-+#define MTK_MUTEX_H
- 
- struct regmap;
+@@ -10,7 +10,7 @@ struct regmap;
  struct device;
-@@ -23,4 +23,4 @@ void mtk_disp_mutex_put(struct mtk_disp_mutex *mutex);
- void mtk_disp_mutex_acquire(struct mtk_disp_mutex *mutex);
- void mtk_disp_mutex_release(struct mtk_disp_mutex *mutex);
+ struct mtk_mutex;
  
--#endif /* MTK_DRM_DDP_H */
-+#endif /* MTK_MUTEX_H */
+-struct mtk_mutex *mtk_mutex_get(struct device *dev, unsigned int id);
++struct mtk_mutex *mtk_mutex_get(struct device *dev);
+ int mtk_mutex_prepare(struct mtk_mutex *mutex);
+ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+ 			enum mtk_ddp_comp_id id);
 -- 
 2.17.1
 
