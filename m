@@ -2,79 +2,83 @@ Return-Path: <SRS0=NOVl=GJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09CA1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 08:44:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 276D3C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 08:46:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 99C5823107
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 08:44:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99C5823107
+	by mail.kernel.org (Postfix) with ESMTPS id B88672310A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 08:46:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B88672310A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=S2j5q7rIo4GPj5otJk0H31XJaralQKg/nVAyHtJMZRQ=; b=jGo4vCVWlfgDGfrhRZBtfb4xt
-	AmSsRU0NHKAQf+0YZnPM1K4LMZZNRrnh8ojln7cLYi+A0vJKsLNUuBW2YOYNSBJ4xffxaHIvrQC2V
-	KlKV2h+tXuTC+jHDfq7aD2QWPm5L/j/EBGED48x+f7+k0NsmfSwAcfbl0UHgc8J5Z+frs3chU+4Q5
-	uMNwsa4KmSJV6ayS/htr2bf1vnj6zhAwQerUZwJo21MU0iJIKTBnynSmwZCHJFU2ahNVsGB5NYjT5
-	Eu/Wz1ZVyKPdV9cGLJYoVOIxWy7sGBYVEOVSP0tgYDbZ99fn4ydlFo06RPObK8vhUNy9mpXdu6wHw
-	GDBByrI3w==;
+	 bh=B03cCxeXQza6QI2pJbdBRTgqVVAA4ekGNHFFb14YmG0=; b=JSFnlDiEKd1x4VsrHRxOaGe7b
+	pOtDszZPIj2Q9q+/nbRVaZR4B/uNAuEiE7NGIKtx3G5cHUlablyss2WSS9X5tsa4yIWNKkud0Ch1T
+	UzyHU8apl+0w3PWPPN4VkTsBU7bgLhdS8SoitRQd2XaAyv+1iZQGESgaydm4BZnCmN1FY9dyn0vLz
+	waG/ZoLRiirAfp5Rf5+EmtJ5NHJ/ZlTo4zX01rFj6A1tW3ldn7dFQtYSse+1SY4n6zPfwvkMXHZXf
+	v+ACIv0GqiN8SRkwiPbNmyNOsw39U9kH9XMyCLp+Zq0lhaoUywm2IJx0fSecWfBpFy+hOfQl+nSYF
+	HyEWY2sAA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kx4Ql-0004LA-Lc; Wed, 06 Jan 2021 08:44:35 +0000
-Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
+	id 1kx4So-0004rn-Ol; Wed, 06 Jan 2021 08:46:42 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kx4Qk-0004Jc-77
- for linux-mediatek@lists.infradead.org; Wed, 06 Jan 2021 08:44:34 +0000
-Received: by mail-vs1-xe33.google.com with SMTP id z16so1413748vsp.5
- for <linux-mediatek@lists.infradead.org>; Wed, 06 Jan 2021 00:44:32 -0800 (PST)
+ id 1kx4Sk-0004pz-Mj
+ for linux-mediatek@lists.infradead.org; Wed, 06 Jan 2021 08:46:40 +0000
+Received: by mail-pg1-x533.google.com with SMTP id n7so1792622pgg.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Jan 2021 00:46:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8BtqrpAZ+ssFRAoqkcqoX+i0pgFKIbpTJROkFhKnB54=;
- b=X6NOAGdSiz/IW64htDr3odCGFCPzWLdw7XHUJBvbZ00IdN6jDKzb1siXxIaPi6D5A4
- 5SY3alIe8rbRH0qev5KIOe0isaJ7wHkYHKpmsWbmKEocFdYPWRLY5uyQIMJum8Q1qUOk
- bfZgrO8BjvLdMl6IN7roLOGRKB7/n15FTRqJg=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=XfqO1B4CXfAktEO4OP7WVNtR8GYAt8b6FfkGFkAlye8=;
+ b=JCMGXnw4hpCIMuCmzITNql8JVCFDO4s3SzbgoCqBvoN7yj3DnBQ3D0meZuqxG2QwOZ
+ wZFU1mUN+DVDRxMvYYSscFVup0s3LwEYoukPjusvi4x9mUxcFhh4XyAEvm6ZzZCBEti2
+ WzVgT2NXayAk80vQaQrdTUwP0qB2NHq9I1qd0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8BtqrpAZ+ssFRAoqkcqoX+i0pgFKIbpTJROkFhKnB54=;
- b=YiA4PJc5/CFwhXs2GkWtz3vRPAhIaHhjlK+DRUtW/c578U589f1NauNAuYbHwGhv5V
- gnOZiRjoB5iLrkam2FSjVhjHm74VUeGSvIsYfFN3iBxWlZjibLSdxzEYpoAP1JsXis0f
- BrFaiHmo0/tUWWpjvlx61E0tTZww4r0HB+2wjAcbNGr9Two0i1xjtgB5NEY1jwu6uNMH
- cL2U8mw1EaMB5C41Sh/6a1kF+tVib92Nc8t3BTv5ZtpfHNlCrzBHqlwWqJfyKs3KJfU7
- 4ecRDkngEH+6/2Br8r/EiE58e5hRNgTVlNG5drELgTPAthLFyi8897nbZNCZgAKtB4oj
- +MHQ==
-X-Gm-Message-State: AOAM530bw2j5pmuVssTK0XXQwtikE/QGKnhzUqqu0xGHMBaZgiNh0jV0
- X2R6hqst+xBPkpMLEiEudSGO01zYb/t9OC4V6pTDQQ==
-X-Google-Smtp-Source: ABdhPJyvWwQuY4TJxmlVoIBqvuScGueMmhttXzbYyJihh6nXvK0B7iBhP8fCeeXeXIPqoFUXoWoASZIehmQdnjNOooo=
-X-Received: by 2002:a67:5c03:: with SMTP id q3mr2298164vsb.47.1609922670668;
- Wed, 06 Jan 2021 00:44:30 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=XfqO1B4CXfAktEO4OP7WVNtR8GYAt8b6FfkGFkAlye8=;
+ b=fTSvgMg2XLe7fhGhMZStinCjladdOFeWL0Da+PUxqsRmgJYDhPce3u9432XLDbVbXd
+ gGQhUoCmnfEBi5GpOig1JiBjeZoJA2CuLEh5W6sfPGGRtMOeG0hVTkiQGdMnGXZK+mmC
+ LCVigHK+YnPI0PzXzbQtqe+i+kCZ8WxH/D7ZVAfoEKZ4VfA2aMsdLnoLOjFkFP25AfFj
+ 6j2LTx4aphAulbYzzyq3V71HIPNvTvtSXQ8xuGJX5O92b87i7euchgDt7uxgVCRsB7/K
+ Vf8QbXYZj5AAfWsyJzIAIgOc3Kiwmsz5mTa6cLYeLfHn7TP+wWBGFcR2oFYR9+0e9LWa
+ MZJg==
+X-Gm-Message-State: AOAM532UocXQdsv3Y49wwqNbM1WUvLKV2QwB2lJyiZY5l/N4l1Vez8mf
+ A3qLV35ss5r+dc7FZ/PiqJVUNw==
+X-Google-Smtp-Source: ABdhPJw1OmoRcuh/NoSGaMxrAs1NAtbcRxJlotuwUZxrxa1f3/MMKUQpUnglVc6EVoPR9IDfvNeYYQ==
+X-Received: by 2002:a63:105e:: with SMTP id 30mr3407174pgq.24.1609922796547;
+ Wed, 06 Jan 2021 00:46:36 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:1a60:24ff:fe89:3e93])
+ by smtp.gmail.com with ESMTPSA id a31sm1913401pgb.93.2021.01.06.00.46.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Jan 2021 00:46:36 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: mt8183: Add krane-sku0 board.
+Date: Wed,  6 Jan 2021 16:46:26 +0800
+Message-Id: <20210106084626.2181286-2-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.29.2.729.g45daf8777d-goog
+In-Reply-To: <20210106084626.2181286-1-hsinyi@chromium.org>
+References: <20210106084626.2181286-1-hsinyi@chromium.org>
 MIME-Version: 1.0
-References: <20201227105449.11452-1-roger.lu@mediatek.com>
- <20201227105449.11452-4-roger.lu@mediatek.com>
- <CANMq1KBNKy708Vz67WOc+n7V7ne4L1EZVkUVGj6abd5voxKjxA@mail.gmail.com>
- <1609750266.20758.40.camel@mtksdaap41> <1609922515.18506.17.camel@mtksdaap41>
-In-Reply-To: <1609922515.18506.17.camel@mtksdaap41>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Wed, 6 Jan 2021 16:44:19 +0800
-Message-ID: <CANMq1KCDPn6vRXMC5piH=Ym+ZGTiF=B4KAJ-5iKSWwVQLWgYNA@mail.gmail.com>
-Subject: Re: [PATCH v10 3/7] [v10,
- 3/7]: soc: mediatek: SVS: introduce MTK SVS engine
-To: Roger Lu <roger.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_034434_303739_22C4EDA5 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20210106_034638_848392_89D3DACC 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,62 +90,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
- Nishanth Menon <nm@ti.com>, "open list:THERMAL" <linux-pm@vger.kernel.org>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>,
- Angus Lin <Angus.Lin@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- HenryC Chen <HenryC.Chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Charles Yang <Charles.Yang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, YT Lee <yt.lee@mediatek.com>,
- Fan Chen <fan.chen@mediatek.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 6, 2021 at 4:41 PM Roger Lu <roger.lu@mediatek.com> wrote:
->
-> Hi Nicolas,
->
-> [snip]
-> > >
-> > > > +
-> > > > +       /* Svs efuse parsing */
-> > > > +       ft_pgm = (svsp->efuse[0] >> 4) & GENMASK(3, 0);
-> > > > +
-> > > > +       for (idx = 0; idx < svsp->bank_num; idx++) {
-> > > > +               svsb = &svsp->banks[idx];
-> > > > +
-> > > > +               if (ft_pgm <= 1)
-> > > > +                       svsb->init01_volt_flag = SVSB_INIT01_VOLT_IGNORE;
-> > > > +
-> > > > +               switch (svsb->sw_id) {
-> > > > +               case SVSB_CPU_LITTLE:
-> > > > +                       svsb->bdes = svsp->efuse[16] & GENMASK(7, 0);
-> > > > +                       svsb->mdes = (svsp->efuse[16] >> 8) & GENMASK(7, 0);
-> > > > +                       svsb->dcbdet = (svsp->efuse[16] >> 16) & GENMASK(7, 0);
-> > > > +                       svsb->dcmdet = (svsp->efuse[16] >> 24) & GENMASK(7, 0);
-> > > > +                       svsb->mtdes  = (svsp->efuse[17] >> 16) & GENMASK(7, 0);
-> > >
-> > > Again, if all of those values were u8, there'd be no need for these GENMASK
-> >
-> > Ok, I'll use u8 instead of GENMASK. Thanks.
->
-> After refining the codes, I think it's much explicit to assign the bits
-> I want by GENMASK() and will remove other GENMASK() that are repetitive
-> like in svs_set_bank_phase() or svs_set_freqs_pct_v2().
+Similar to krane-sku176 but using a different panel source.
 
-I'm not sure what you mean, but, sure, you can go ahead with v11 and
-we'll see how it looks.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ .../devicetree/bindings/arm/mediatek.yaml     |  1 +
+ arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+ .../dts/mediatek/mt8183-kukui-krane-sku0.dts  | 30 +++++++++++++++++++
+ 3 files changed, 32 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
 
-Thanks,
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 53f0d4e3ea982..3276f7a2ce672 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -120,6 +120,7 @@ properties:
+           - const: mediatek,mt8183
+       - description: Google Krane (Lenovo IdeaPad Duet, 10e,...)
+         items:
++          - const: google,krane-sku0
+           - const: google,krane-sku176
+           - const: google,krane
+           - const: mediatek,mt8183
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 18f7b46c4095b..deba27ab76574 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -13,6 +13,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana-rev7.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
+new file mode 100644
+index 0000000000000..4497291889506
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
+@@ -0,0 +1,30 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2019 Google LLC
++ *
++ * Device-tree for Krane sku0.
++ *
++ * SKU is a 8-bit value (0x00 == 0):
++ *  - Bits 7..4: Panel ID: 0x0 (AUO)
++ *  - Bits 3..0: SKU ID:   0x0 (default)
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-krane.dtsi"
++
++/ {
++	model = "MediaTek krane sku0 board";
++	compatible = "google,krane-sku0", "google,krane", "mediatek,mt8183";
++};
++
++&panel {
++	status = "okay";
++	compatible = "auo,kd101n80-45na";
++	reg = <0>;
++	enable-gpios = <&pio 45 0>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&panel_pins_default>;
++	avdd-supply = <&ppvarn_lcd>;
++	avee-supply = <&ppvarp_lcd>;
++	pp1800-supply = <&pp1800_lcd>;
++};
+-- 
+2.29.2.729.g45daf8777d-goog
 
-> [snip]
->
 
 _______________________________________________
 Linux-mediatek mailing list
