@@ -2,73 +2,167 @@ Return-Path: <SRS0=NOVl=GJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CAE37C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 01:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6583AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 02:59:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 80DF322838
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 01:02:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80DF322838
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 07DB0223DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 02:59:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07DB0223DB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KNQw2csOKE7wyFcLuIlQkpCknPgbitcplKabxhK6IyE=; b=Cr3C2eMkqkHFuCnyMhNgbzcWOm
-	yMVLizhr/aAy/yq0FXMHHjQ7VkR/9rpRJmFCNYsk01gmykFnO3Yd6wf96EAfgdoS9prRfWksH/0hK
-	IE8yoammQWe5qhGKJXRQTQBrtxMmjBQV7ot4nzWNDvSzkygqt/Bt+CHlP3yDI95nfZAfN7u1CxhpV
-	Jkvks8oRLn6NzRrkCqnVfEZNrSzcNfO/pWeFJmO+pDRoedfCYpfoVZ5g+haozFEneN5LqPuXVJv5y
-	u5CBpquw/syOlFY2snhm+rmZYtYnDIINZuf3uqgTOOtfcAt1u4QjDaTW7gasoBJQrmoX+rZlJNSTZ
-	0cxoI6ZA==;
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:References:Message-ID:
+	From:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=2OmUFEA4o7pBhAJSZ4AC1IPiXm2OaBXM4a+sLwn9umg=; b=cb7BzUWgfhghCTlBSnKW5kNR5
+	dmFDiY7NVwNVV9KcRyCtO7T7CujmIUALzDTd91qpJwytj9oMPW/MJikX4KEf595Y49XyT6QQ+qFxu
+	bc+jBifGxRLyYAHEKjEJO750lbAIHyKvUab+2BYdXOJz5kCJtu2keQ3MimgIyrQY3BbYY0z3cSPfK
+	/y/TEuxFi7ljALIPaHmLOuDMkWB+d4PXuqVYU0OtM2JJGyyjh32zA0TIhekuOvY54vhaOq0zW1QLt
+	3xHa6jCPs03m1isemFLk0JyuBaBQtwUcvQ5/DsnGS0OuK/OsSzyGnaJ/xxZvvO9LrBqC+EOcKIz8M
+	Zem4VrhiQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kwxDU-0008KG-JW; Wed, 06 Jan 2021 01:02:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kwz2f-0001bk-GJ; Wed, 06 Jan 2021 02:59:21 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kwxDR-0008JR-TR
- for linux-mediatek@lists.infradead.org; Wed, 06 Jan 2021 01:02:23 +0000
-X-UUID: c243c284b0c04a06a25b860a88c43c0c-20210105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=3DDHISUDUwvwwMCwoRAdFxmjVS1YacWHMI6roE/SQ8I=; 
- b=ox9lTFA1DlEWhZ9Lqx/F8HrYZrrfrP9UcLcZ56iaND/orob8uDcl2M9JVpCjBkbQqLjjVGuKhG5ER/caStHMkvYGqQPjy4Zk04pFG8lST5z1trOpkMsS6txsKSyrKHPSqNhjyL+YfhyrTymDG+w/2YXL2EeGiD/p7qjKOmlOVHg=;
-X-UUID: c243c284b0c04a06a25b860a88c43c0c-20210105
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1106274522; Tue, 05 Jan 2021 17:02:17 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 5 Jan 2021 17:02:15 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Jan 2021 09:02:06 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 6 Jan 2021 09:02:06 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>
-Subject: [PATCH] mac80211: check ATF flag in ieee80211_next_txq()
-Date: Wed, 6 Jan 2021 09:01:49 +0800
-Message-ID: <d9aef825d186a91ff91f6a81045d49d375533b14.1609894402.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kwz2b-0001b4-Iz; Wed, 06 Jan 2021 02:59:18 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1062oRX8017997;
+ Wed, 6 Jan 2021 02:59:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : content-type :
+ mime-version; s=corp-2020-01-29;
+ bh=lnDikqmOfHBsnxcAhVpGfPm0A1J34mVCGzfxTDzz6G4=;
+ b=cRa01ndoZBFjjnzuOgIYr8lhCWu2A0VWg3U1U9SztJ2URSq+2V0YmWc68B6jcUP9oju9
+ yYqFJ10IVcAfx5Usg1sWMQQ2VZWsO0mBGDa3nTaqzS9NyjQNyW1HBbz75i0KJhIRS6Z6
+ 5cewxgRB2Wbl3tc9g+wtXtTpn3mMHnuwElFZmCP1Qsfx3l9ZUxphlOPyTk0wmmH72PPr
+ berrixzwwikmg/nSt4LNjU38IkQXOn50me1F4yr6L78euf1vs4zUb26xEQRPHFXtLDB2
+ xuDwur/eRxehNZDtx0glX4h71A92QhQ2kqlAYKyBFqIOAqGwLoMkfFsnko09PSN2ekOW SQ== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 35tg8r3k9r-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 06 Jan 2021 02:59:08 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1062lLtt116431;
+ Wed, 6 Jan 2021 02:47:39 GMT
+Received: from nam02-sn1-obe.outbound.protection.outlook.com
+ (mail-sn1nam02lp2056.outbound.protection.outlook.com [104.47.36.56])
+ by userp3020.oracle.com with ESMTP id 35w3qrafhx-2
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 06 Jan 2021 02:47:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=keIHFLclIKmVrpLlAYLApyD8u7ZNONdnKBQFCQJprkf1AAWbZfnXDwnBjm9Gbp4bLuTw6hTtN/2aXdbeuofkwgXEM0WcgrWhveG5gl3wX/B4v+eNulSYNF+G3NGp/KW8/I8rVCDoKGAGFDP++Sys94NhdmGyqNHZoikcCTiWxYuqxmUpp1mLbuhQ3hzOn+jUp0zSDl/ej3WtcWZ+9kZEJ0cvNYOXuM43bK9c9xw4Tn4FvNyvOx+wL02qzkjZhMMvPD0aBx2pWCAzcBAJpHOj8EuTua9G0MV7PEMruUdc1YAQQpYM3+jKVzpyChKuxAgQvPUvm0wWEb2/gEg3URTEmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lnDikqmOfHBsnxcAhVpGfPm0A1J34mVCGzfxTDzz6G4=;
+ b=IOvmRF3jNSgXAQgcszwbaLhog6b/zcFLAONM72jSG0ovhBDXVX0s9457Y22TTVY3l3cwyUp0zAbKlFcI3oD6XBCfccn3b2qjr54rUhNpxMD9XQVeiGG3/H6dsNCakCtI7q1M6f7544Vz22KnRqjyFU5s/xnTqlsDCYpTblrV9ZI2/iY1BEQ64Ce+avVjHATcaAh1BnRZW6k6tVDSZuJ7V/nSr4HVJh/GYu+O20JPWwfOT5GeaVjGSs/K7zem6jxHhCd9DZq7LKtoWFfJwmgtkHqzZgrgzKr0D6+xyC7QTcSS1jtMSTu3l4Vm1LJQc6u1wGD9eIkHhqk1G/UJ3yR2Gw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lnDikqmOfHBsnxcAhVpGfPm0A1J34mVCGzfxTDzz6G4=;
+ b=IDPCNjiqE5bzgXsUIwxk+A/r2E6k1HKWkyMEghPBXhWEjhl1y2AIY/qWwceNJna250Gm7Olht6bcU1JUZ3gFj0Fve9oS+C0lFAqvssnU0InNDqSv8l//Afx+fD1rBqtEkIqjQMr7/Y9WTG59y4ugFR1aOK/IItM51Kc1J2PaIPY=
+Authentication-Results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=oracle.com;
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
+ by PH0PR10MB4711.namprd10.prod.outlook.com (2603:10b6:510:3c::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3742.6; Wed, 6 Jan
+ 2021 02:47:10 +0000
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::54f3:a8aa:a2cd:a3a4]) by PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::54f3:a8aa:a2cd:a3a4%5]) with mapi id 15.20.3742.006; Wed, 6 Jan 2021
+ 02:47:10 +0000
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v2 0/4] scsi: ufs: Cleanup and refactor clock scaling
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1czyig4vn.fsf@ca-mkp.ca.oracle.com>
+References: <20201216131639.4128-1-stanley.chu@mediatek.com>
+Date: Tue, 05 Jan 2021 21:47:06 -0500
+In-Reply-To: <20201216131639.4128-1-stanley.chu@mediatek.com> (Stanley Chu's
+ message of "Wed, 16 Dec 2020 21:16:35 +0800")
+X-Originating-IP: [138.3.200.58]
+X-ClientProxiedBy: DS7PR03CA0007.namprd03.prod.outlook.com
+ (2603:10b6:5:3b8::12) To PH0PR10MB4759.namprd10.prod.outlook.com
+ (2603:10b6:510:3d::12)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 24C95263E2E9892CB5D0A505E079E5294164C3DCAC765E6AEEA2609BA5AA4CA02000:8
-X-MTK: N
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from ca-mkp.ca.oracle.com (138.3.200.58) by
+ DS7PR03CA0007.namprd03.prod.outlook.com (2603:10b6:5:3b8::12) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3721.23 via Frontend Transport; Wed, 6 Jan 2021 02:47:09 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: cda990ea-8e1e-419a-15ab-08d8b1ed5d6c
+X-MS-TrafficTypeDiagnostic: PH0PR10MB4711:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <PH0PR10MB471152482D4A61EDA36E62658ED00@PH0PR10MB4711.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:5797;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: fmKEEx34GugKwe5y/lPRj8go3PAaRIQWot9SqeAgV5T06l7EGlrZ/EcnCakRnbX1wYe+ccNbHpyQLfp22GWxkjiwpKLIz4lgqXZ1YXsReVHwgTNzhDbVyLWojnpSzN0oUgWZVRSG5yX7Q5EQpDxy6tKJjklmxSNdntRjNRuEhsEQn3bfraY+Z/j9maLTTj65UIuuQq5XsCtBRnQK296w5iF67dt1/rkE24c0848f883SLkJeahGATCACKXkhkmjyx9mmmClMXxOxa+em/z+cpesOdvFBGvfbKy0wvQWEu57b/8IhhPQrMFlXPI3xPyXa9RDor3RR5dUfPMZHHOyawWUITW0mrLlsmdyLiuK71AwDtanXNtYXZNiWgHGJtZGZNCnKweUafBDMyYRFnsPWnA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR10MB4759.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(396003)(366004)(376002)(136003)(39840400004)(346002)(52116002)(316002)(36916002)(7696005)(26005)(2906002)(6666004)(66556008)(478600001)(54906003)(16526019)(956004)(7416002)(6916009)(4326008)(8676002)(4744005)(86362001)(55016002)(8936002)(66476007)(5660300002)(66946007)(186003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?0t8fOZ51w6RMRWwhWe0PGSbcwYImROEtgWI69Pdp+YtKRtrc9h9kpJ3QcnoG?=
+ =?us-ascii?Q?qyh+n0N7/Mc4xKLnNPPv5csTnGTBjDzo/fnVVs/H+cRsmDLohab89ALfnshL?=
+ =?us-ascii?Q?QR72gDVAOQE/qKybg5hhJmO4jqpXgKlN9rXUfPcnG/cA83R0ysck6ATo9znw?=
+ =?us-ascii?Q?S8awCRUX5Ow297p9/xVarriLkaMNcOolgu1sKN9CDRcsCqZxHuZQFRmGhU5c?=
+ =?us-ascii?Q?ED8ljbLFqe1FeUVbhlo8jdH4tV5SubkViU06RBl9DeDDZmjHJpveagMw+Yg2?=
+ =?us-ascii?Q?WhgtKPheWtQMz+6MKaY4wnsuwv8IPfIT0sVMW9jHiNIRVvMEwz3C3tHWN4+Y?=
+ =?us-ascii?Q?vOOXUvY1VgbRZXhVizfv5m/ktMCSfDg6kAbWV3+uSaesxo5fV7MnbGtwReX0?=
+ =?us-ascii?Q?MkCgxdsIjCbPko+VoC1rrNRycFf5bDLogenRgV5BVIgOxdBGkg7ugVTy+LBM?=
+ =?us-ascii?Q?FYtEkXmhqi8z7PeS6qYQt57hTaAitXfS07FyLUs9Dya/o6KNkti4YJFpWfqu?=
+ =?us-ascii?Q?g3pUM4q8e5fKk0rG6eTvOTk+M57aDaG68Y6RKT5rtfqRdotjCMG3bmjvvv3P?=
+ =?us-ascii?Q?hv7PFiMla0Q1mzr//15eyBR41CVf2e/6yocxCDYl8j4mmtYLS2Gej6wK8Dih?=
+ =?us-ascii?Q?MGUPoqTO/smOQfjjoXqAXWWSXRznoy+D3k85HaUK323X2+wCRB9c+fAoi1m7?=
+ =?us-ascii?Q?ib9ERPYcbM2vmgQMffbIlX9360vcHo4J24aS3rIFxB7x8HGPbGN7JFYLI+Ss?=
+ =?us-ascii?Q?fDDmPdT2VLDYABeocuoXlvxM1sE8i2+XDwvXfOn0a+q6b0PdB1LJYPS67kak?=
+ =?us-ascii?Q?Rc9RY6TTaTUbhj2Q6OgoIuy5+hhWngUFAjpQpO+mp5+vdBrEzeeGbp2gMBmb?=
+ =?us-ascii?Q?S+sX7jtk25KcOjK9mNHImji30pY+xOVCUMYYs8BJne6PTIb0LyJGod/g/2QA?=
+ =?us-ascii?Q?D3V1z64JkHiwORG916hy68iDnX1x6tIr6s3Oumt9QTQ=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jan 2021 02:47:10.4759 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-Network-Message-Id: cda990ea-8e1e-419a-15ab-08d8b1ed5d6c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WX9XJcxfYM1cL//w5TA0xrwinX03qZZIQZT5NX+iHCIRV6hEQwZ6pyGX9ra3N/lQczG8CkI1YOCwL3CKURjRwNF4ZQiLJ+U8fZycustzb6w=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB4711
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9855
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ malwarescore=0 mlxscore=0
+ spamscore=0 mlxlogscore=999 phishscore=0 bulkscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2101060015
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9855
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1011
+ phishscore=0 bulkscore=0
+ spamscore=0 impostorscore=0 suspectscore=0 adultscore=0 mlxlogscore=999
+ mlxscore=0 malwarescore=0 lowpriorityscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2101060016
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210105_200222_401435_51C23E46 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210105_215917_775839_F210C7F8 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,57 +174,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>,
- Shayne Chen <shayne.chen@mediatek.com>
+Cc: jiajie.hao@mediatek.com, alice.chao@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, andy.teng@mediatek.com,
+ jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cc.chou@mediatek.com, avri.altman@wdc.com,
+ cang@codeaurora.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ asutoshd@codeaurora.org, chaotian.jing@mediatek.com, bvanassche@acm.org,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The selected txq should be scheduled unconditionally if
-NL80211_EXT_FEATURE_AIRTIME_FAIRNESS is not set by driver.
 
-Also put the sta to the end of the active_txqs list if
-deficit is negative then move on to the next txq.
+Stanley,
 
-Tested-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- net/mac80211/tx.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+> However this series may not be required to be merged to 5.10. The
+> choice of base branch is simply making these patches easy to be
+> reviewed because this series is based on clk-scaling fixes by Can.
 
-diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
-index 6422da6690f7..5640c9428596 100644
---- a/net/mac80211/tx.c
-+++ b/net/mac80211/tx.c
-@@ -3760,14 +3760,19 @@ struct ieee80211_txq *ieee80211_next_txq(struct ieee80211_hw *hw, u8 ac)
- 		struct sta_info *sta = container_of(txqi->txq.sta,
- 						    struct sta_info, sta);
- 		bool aql_check = ieee80211_txq_airtime_check(hw, &txqi->txq);
--		s64 deficit = sta->airtime[txqi->txq.ac].deficit;
-+		s64 deficit = 0;
- 
- 		if (aql_check)
- 			found_eligible_txq = true;
- 
--		if (deficit < 0)
--			sta->airtime[txqi->txq.ac].deficit +=
--				sta->airtime_weight;
-+		if (wiphy_ext_feature_isset(local->hw.wiphy,
-+					    NL80211_EXT_FEATURE_AIRTIME_FAIRNESS)) {
-+			deficit = sta->airtime[txqi->txq.ac].deficit;
-+
-+			if (deficit < 0)
-+				sta->airtime[txqi->txq.ac].deficit +=
-+					sta->airtime_weight;
-+		}
- 
- 		if (deficit < 0 || !aql_check) {
- 			list_move_tail(&txqi->schedule_order,
+Please redo your series on top of 5.12/scsi-queue + Can's changes.
+
+Thanks!
+
 -- 
-2.18.0
+Martin K. Petersen	Oracle Linux Engineering
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
