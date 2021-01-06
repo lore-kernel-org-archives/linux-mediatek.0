@@ -2,65 +2,86 @@ Return-Path: <SRS0=NOVl=GJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7873C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BE680C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 69DD322D6F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69DD322D6F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6280C22D6F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 23:18:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6280C22D6F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KeBHMOl9oInluT9OVCHNZ0joIu6RCkW3O62uJRTY6YM=; b=q6iLCywzhX+W1aO42BFXP7GtZA
-	B+qEWzpklAtx6iC+CVc1CWwWhggoxqxw5sW6y5TaselWOzsNS8ArJSaXIuMc+DV532mIEnTVX/Coj
-	atIOTyMK5qV9YRhblWU7kkMy5WlvzkMkHgtYF4edgbWYrKz/TMCHx6XfjjBX13OYqSt0N298ZByxP
-	52wKS9xOJURzQOeCRUO8EevwkzRpLK78WMP/oZrwcWUFMCmVsttJaAGcCOrY6UeVS28Zeo7yVIK3N
-	yX2f1DQ1NwICm3PZKGvHWDoX7i7o3/ccZyIusSauq0f8UbI2Hv3vrlAGqQDYN0ytw6VwrLxe+9NcK
-	VmzBjAyw==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=UT98beMsMIU8NZLJPnGW14DhCVpsUH0xw66cgiOVl0Q=; b=xrrIRMtcYiltKwzYY1R3TQej5
+	lAPaxjW60zUDsDn1UMt/QXlW9tcREkxOIfrIFg8j7uiomdoxWgnuFBYwdlEbYAqLa6PXSoXpCTIxD
+	/wsCXrSV5eHcrJGbNGRE2UrqsQj1n7+hlZircATDCiKttEF//jtdmU4GbyZVg6hz86md1dQduoiRq
+	O1lG62trBopJeQSxq6PGq9IMyLbABh35IhjyKegho61MlGVW5RBRoEM8VgRYMpSiOy4ulj3NqKwtg
+	+hUhvZSK+KdLBTO1D+UeUa2FeYZ5sqrTNzC8zhr8V9OyrWgQnjn84FsdLvqXi3xjYYzDQw4/opQV/
+	GheY3UtSw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxI4R-0003zE-Vk; Wed, 06 Jan 2021 23:18:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kxI4T-000416-Pf; Wed, 06 Jan 2021 23:18:29 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxI3r-0003hL-6H; Wed, 06 Jan 2021 23:17:53 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5A4AD23333;
- Wed,  6 Jan 2021 23:17:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609975070;
- bh=Fd+RyZtsrklrOszyS1vSPXkxAj2Vt6n1h2msWK4u7cw=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=TNW8Dn1rR03bwJjajUXr7Qg7IvEtcIKCVtjxRw2fJKgfGJ90BWLOwUfYWZTmAhz6B
- VnKqQC/9MEA8X1P4ILHQ5wG9xazMX0UUQ1WoaTnbnomjJfby8c8ZiwLbdjl0e1j5mY
- o/csqSFU9HJiohEKWxMimxpv6CSdjhkQSMyIIWTw6iCyP8VVv/O2tsgy/aPkEeG/JV
- t9J1v2aJy2COGzPzTQLWBRdSCSR6VjQCiuVnVYz4K7EPByIAYZfbN4frlkCm/TQJhg
- rEGg/RHlNv5RxCgbRunW5kHpfbXc+SFYjuZLnyJ7mkVb9XaGJvFhSJy/fExIsMfn0X
- +Q3M8TITO71qQ==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v2 5/5] soc / drm: mediatek: Move mtk mutex driver to soc
- folder
-Date: Thu,  7 Jan 2021 07:17:29 +0800
-Message-Id: <20210106231729.17173-6-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210106231729.17173-1-chunkuang.hu@kernel.org>
-References: <20210106231729.17173-1-chunkuang.hu@kernel.org>
+ id 1kxI4F-0003qq-9M
+ for linux-mediatek@lists.infradead.org; Wed, 06 Jan 2021 23:18:18 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id b5so2435257pjk.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Jan 2021 15:18:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=indQo8BcjWbRXzRZ0T8BngRVCv//mmmu0O844tiaT4g=;
+ b=R8nV230zvQAnflbm4TeJlSDkjzREroj58pd6hDZK7uB7vV6VtYIOaZuv5w38c9QHj7
+ UA4xDdfcDZmIR0xBCSBHV1mtB2xAe80/b6Dg1PjDZEfo9Un4IO+2yPrfErAiIULydpdG
+ Bnq8gZblQhNmbRn2tm8X21MO9nwLo2gZCPM2w+LYhiB7HRixkj2lqx186QmCHAM4Hc6Z
+ RKIdDjqZ+QfTey3SmJKv1MX+CODbYSKRE+LW+NX/6ynEvyJGgc5iRz4+ZEUcARXUQ0zJ
+ 4EnGVigdZEexJfUSkDFMfJN8bNNb894d074MIjiIuIH2+7/nhSgakZ7UeBfhhq7LWqQj
+ tbaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=indQo8BcjWbRXzRZ0T8BngRVCv//mmmu0O844tiaT4g=;
+ b=iE8x2UPtlO34IygpWXzfx2iRaBrFKnj8gxm9pPbxSf3h4jaAAiFeA7PNaRX6NyLXmD
+ DTpeWjCAeMC4cNCQM1whcoqMgqNZotHNyoJCf8H786Lo1ADjkwQ2Lyarj5JjVqo0ouzM
+ Wyb8uAURAQgn8BM05vTXiLpdBlKHTzTtosi0an2s6XqbfK2M8giGZOZOFdICRkjSsRE/
+ 3FnnaKqlJ89dhdC1A4FQYEh9RCgGijypzixPE5NTFz8cH9UliYHp1QQgISCwzcSNrRkt
+ wvX0VO1yUovMPTAVog+SrJmRA6pM4itrlwF/zIWTwPZQmf1++u7dJd3brb4W2Q8PzLvm
+ icnA==
+X-Gm-Message-State: AOAM531pvnLeOD40ayy8FhvI5TKc6B8uKDL2HQ/niTF+k9PJ7J6AXKKd
+ /QPKRYw65j04SAVZmxpRUktxgg==
+X-Google-Smtp-Source: ABdhPJzdPs9nu4RV1o0ddWjYjCwy9pG3y21ZR8W8u9VqtmvdUWGqYr5OjPi8n+0KGl3quDn9wHwdZw==
+X-Received: by 2002:a17:90b:4d07:: with SMTP id
+ mw7mr5008012pjb.172.1609975092947; 
+ Wed, 06 Jan 2021 15:18:12 -0800 (PST)
+Received: from xps15 (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id t25sm3827483pgv.30.2021.01.06.15.18.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Jan 2021 15:18:12 -0800 (PST)
+Date: Wed, 6 Jan 2021 16:18:10 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tzung-Bi Shih <tzungbi@google.com>
+Subject: Re: [PATCH] remoteproc/mediatek: enable MPU for all memory regions
+ in MT8192 SCP
+Message-ID: <20210106231810.GD9149@xps15>
+References: <20201214051047.859110-1-tzungbi@google.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201214051047.859110-1-tzungbi@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_181751_438907_E1265BEF 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20210106_181815_477921_286E2B6B 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,211 +93,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: ohad@wizery.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ linux-remoteproc@vger.kernel.org, bjorn.andersson@linaro.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: CK Hu <ck.hu@mediatek.com>
+On Mon, Dec 14, 2020 at 01:10:47PM +0800, Tzung-Bi Shih wrote:
+> Enables MPU for all memory regions in MT8192 SCP.
 
-mtk mutex is used by DRM and MDP driver, and its function is SoC-specific,
-so move it to soc folder.
+Ok but how was it working before this patch?  Why is this suddently needed?  A
+changelog that explains all this would certainly be appreciated.
 
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/gpu/drm/mediatek/Makefile                 |  3 +--
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c           |  2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c            |  1 -
- drivers/gpu/drm/mediatek/mtk_drm_drv.h            |  1 -
- drivers/soc/mediatek/Makefile                     |  1 +
- .../mtk_mutex.c => soc/mediatek/mtk-mutex.c}      | 15 +++++++++++++--
- .../linux/soc/mediatek/mtk-mutex.h                |  0
- 7 files changed, 16 insertions(+), 7 deletions(-)
- rename drivers/{gpu/drm/mediatek/mtk_mutex.c => soc/mediatek/mtk-mutex.c} (96%)
- rename drivers/gpu/drm/mediatek/mtk_mutex.h => include/linux/soc/mediatek/mtk-mutex.h (100%)
+Thanks,
+Mathieu
 
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index 09979c4c340a..01d06332f767 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -9,8 +9,7 @@ mediatek-drm-y := mtk_disp_color.o \
- 		  mtk_drm_gem.o \
- 		  mtk_drm_plane.o \
- 		  mtk_dsi.o \
--		  mtk_dpi.o \
--		  mtk_mutex.o
-+		  mtk_dpi.o
- 
- obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 1e3a9450680b..e9b6788d52cd 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -7,6 +7,7 @@
- #include <linux/pm_runtime.h>
- #include <linux/soc/mediatek/mtk-cmdq.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
-+#include <linux/soc/mediatek/mtk-mutex.h>
- 
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
-@@ -22,7 +23,6 @@
- #include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_gem.h"
- #include "mtk_drm_plane.h"
--#include "mtk_mutex.h"
- 
- /*
-  * struct mtk_drm_crtc - MediaTek specific crtc structure.
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b99a06e6834e..5d39dd54255d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -588,7 +588,6 @@ static struct platform_driver mtk_drm_platform_driver = {
- };
- 
- static struct platform_driver * const mtk_drm_drivers[] = {
--	&mtk_mutex_driver,
- 	&mtk_disp_color_driver,
- 	&mtk_disp_ovl_driver,
- 	&mtk_disp_rdma_driver,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index ae366868d01a..e8238fa4aa2a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -46,7 +46,6 @@ struct mtk_drm_private {
- 	struct drm_atomic_state *suspend_state;
- };
- 
--extern struct platform_driver mtk_mutex_driver;
- extern struct platform_driver mtk_disp_color_driver;
- extern struct platform_driver mtk_disp_ovl_driver;
- extern struct platform_driver mtk_disp_rdma_driver;
-diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-index b6908db534c2..90270f8114ed 100644
---- a/drivers/soc/mediatek/Makefile
-+++ b/drivers/soc/mediatek/Makefile
-@@ -6,3 +6,4 @@ obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
- obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
- obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
- obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
-+obj-$(CONFIG_MTK_MMSYS) += mtk-mutex.o
-diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-similarity index 96%
-rename from drivers/gpu/drm/mediatek/mtk_mutex.c
-rename to drivers/soc/mediatek/mtk-mutex.c
-index 66344759e622..f531b119da7a 100644
---- a/drivers/gpu/drm/mediatek/mtk_mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -10,8 +10,7 @@
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
--
--#include "mtk_mutex.h"
-+#include <linux/soc/mediatek/mtk-mutex.h>
- 
- #define MT2701_MUTEX0_MOD0			0x2c
- #define MT2701_MUTEX0_SOF0			0x30
-@@ -241,6 +240,7 @@ struct mtk_mutex *mtk_mutex_get(struct device *dev)
- 
- 	return ERR_PTR(-EBUSY);
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_get);
- 
- void mtk_mutex_put(struct mtk_mutex *mutex)
- {
-@@ -251,6 +251,7 @@ void mtk_mutex_put(struct mtk_mutex *mutex)
- 
- 	mutex->claimed = false;
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_put);
- 
- int mtk_mutex_prepare(struct mtk_mutex *mutex)
- {
-@@ -258,6 +259,7 @@ int mtk_mutex_prepare(struct mtk_mutex *mutex)
- 						 mutex[mutex->id]);
- 	return clk_prepare_enable(mtx->clk);
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_prepare);
- 
- void mtk_mutex_unprepare(struct mtk_mutex *mutex)
- {
-@@ -265,6 +267,7 @@ void mtk_mutex_unprepare(struct mtk_mutex *mutex)
- 						 mutex[mutex->id]);
- 	clk_disable_unprepare(mtx->clk);
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_unprepare);
- 
- void mtk_mutex_add_comp(struct mtk_mutex *mutex,
- 			enum mtk_ddp_comp_id id)
-@@ -316,6 +319,7 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
- 		       mtx->regs +
- 		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id));
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_add_comp);
- 
- void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
- 			   enum mtk_ddp_comp_id id)
-@@ -355,6 +359,7 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
- 		break;
- 	}
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
- 
- void mtk_mutex_enable(struct mtk_mutex *mutex)
- {
-@@ -365,6 +370,7 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
- 
- 	writel(1, mtx->regs + DISP_REG_MUTEX_EN(mutex->id));
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_enable);
- 
- void mtk_mutex_disable(struct mtk_mutex *mutex)
- {
-@@ -375,6 +381,7 @@ void mtk_mutex_disable(struct mtk_mutex *mutex)
- 
- 	writel(0, mtx->regs + DISP_REG_MUTEX_EN(mutex->id));
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_disable);
- 
- void mtk_mutex_acquire(struct mtk_mutex *mutex)
- {
-@@ -388,6 +395,7 @@ void mtk_mutex_acquire(struct mtk_mutex *mutex)
- 				      tmp, tmp & INT_MUTEX, 1, 10000))
- 		pr_err("could not acquire mutex %d\n", mutex->id);
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_acquire);
- 
- void mtk_mutex_release(struct mtk_mutex *mutex)
- {
-@@ -396,6 +404,7 @@ void mtk_mutex_release(struct mtk_mutex *mutex)
- 
- 	writel(0, mtx->regs + DISP_REG_MUTEX(mutex->id));
- }
-+EXPORT_SYMBOL_GPL(mtk_mutex_release);
- 
- static int mtk_mutex_probe(struct platform_device *pdev)
- {
-@@ -461,3 +470,5 @@ struct platform_driver mtk_mutex_driver = {
- 		.of_match_table = mutex_driver_dt_match,
- 	},
- };
-+
-+builtin_platform_driver(mtk_mutex_driver);
-diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.h b/include/linux/soc/mediatek/mtk-mutex.h
-similarity index 100%
-rename from drivers/gpu/drm/mediatek/mtk_mutex.h
-rename to include/linux/soc/mediatek/mtk-mutex.h
--- 
-2.17.1
-
+> 
+> Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
+> ---
+>  drivers/remoteproc/mtk_common.h | 1 +
+>  drivers/remoteproc/mtk_scp.c    | 3 +++
+>  2 files changed, 4 insertions(+)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index 94bc54b224ee..5f7cd2336cef 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -47,6 +47,7 @@
+>  
+>  #define MT8192_CORE0_SW_RSTN_CLR	0x10000
+>  #define MT8192_CORE0_SW_RSTN_SET	0x10004
+> +#define MT8192_CORE0_MEM_ATT_PREDEF	0x10008
+>  #define MT8192_CORE0_WDT_CFG		0x10034
+>  
+>  #define SCP_FW_VER_LEN			32
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index f025aba67abc..130c0b9511df 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -369,6 +369,9 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  	mt8192_power_on_sram(scp->reg_base + MT8192_L1TCM_SRAM_PDN);
+>  	mt8192_power_on_sram(scp->reg_base + MT8192_CPU0_SRAM_PD);
+>  
+> +	/* enable MPU for all memory regions */
+> +	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+> +
+>  	return 0;
+>  }
+>  
+> -- 
+> 2.29.2.684.gfbc64c5ab5-goog
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
