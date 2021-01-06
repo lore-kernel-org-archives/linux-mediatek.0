@@ -2,69 +2,58 @@ Return-Path: <SRS0=NOVl=GJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A42AC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 13:31:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 381A5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 13:58:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 957D52311A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 13:31:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 957D52311A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
+	by mail.kernel.org (Postfix) with ESMTPS id CD72D22C9F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 13:58:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD72D22C9F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=true.cz
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LblX+Oovw3D27ig5l7CNQbRu0S1fbiawLz4ubUownhI=; b=S3YIHJVCXcvmPF8P87L9kkS2M
-	aii8FlQZMH+bE/r3wu2ClgYpfr5pJc+IM0ibGgZlx4Fe0UdblfZRyQNoEBYrPiJcYFDhk9v+KFJLd
-	wBE6B9RQ9XsPdT0yht27JSNpYsyZ/pZRneKZV+h+9PJfz9Aw9NKLQO3P53XsNnRSyT0PsElPEsdcm
-	XxAEyXa4lwj21K5q6pe9UgSv9uQUL0vfawOx3QLJvF4mufisrWnvkEnjSLLwBdBO7MBh2eUGyznEt
-	5LyH6XaddSEewLsb2HlaOnhZLC/AdJYrhOpLvZ+EjZtnvgEOz68HFyeAy48EXfMulLrD7JMJgZg7i
-	wT5LtBAoQ==;
+	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f/jc7nKPhjDdM4MXGfu4UrLRrjf1nw+4WlorLKnoiwE=; b=uTvafdOp1f5d0HKzHyNrRJQ3K+
+	nibwCrPOi/HkaUG9m3RqoSHeLBbiMNHZ+hCEGwDdDeW7QbloKKqYzwv7a/hBQ5FiTj0I4LEcqCVcq
+	A5XZIv7CSORECigaegRNBG1XAp0Yzl+Lg6Rk/TCIWP3WPtF/uDyYQ/FPDI/Na8T2/XO1EOHPGD0OW
+	WiZbI+Iz1PVxXgA9b83Zdf4y3J6y4fP0o2/BZwizknFXKzjNTG3gMU7wpx4aEbcbeuuefsT8foO77
+	pfWPgKpPg+5eS1lMwHSzZZm2NeLDiFNm5xxIpwQ5Ta7k90CJ2V+OR1Vs4UndYzIH+mrIja0gO3AAQ
+	v/99rmWA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kx8u5-0006vX-TN; Wed, 06 Jan 2021 13:31:09 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1kx9KK-0003aM-R7; Wed, 06 Jan 2021 13:58:16 +0000
+Received: from smtp-out.xnet.cz ([178.217.244.18])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kx8u0-0006un-Gq
- for linux-mediatek@lists.infradead.org; Wed, 06 Jan 2021 13:31:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=kLEk8p56/LKORuReiIiQpbhmzF1RSMKBphSSZjmMIBA=; b=eCykt8EcsLGRa6LPmX7wPupJ1c
- xDOy5ftJkco60H8gAXNGuy0AbMbcTPYJ8oLPDkzkpiSOTXjJRxfKV8TmhtrQ2j4ynEJVVtC9dz+tC
- 6VNziLka48UYLWOB5I2biNhUoGKup8LP47QeYd/8Lvb1rMkBcUdXdk4vhI2UD+3NJF0Y=;
-Received: from p54ae91f2.dip0.t-ipconnect.de ([84.174.145.242] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1kx8tu-0000EP-Ks; Wed, 06 Jan 2021 14:30:58 +0100
-Subject: Re: [PATCH] mac80211: check ATF flag in ieee80211_next_txq()
-To: =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@toke.dk>,
- Ryder Lee <ryder.lee@mediatek.com>
-References: <d9aef825d186a91ff91f6a81045d49d375533b14.1609894402.git.ryder.lee@mediatek.com>
- <87r1my49us.fsf@toke.dk>
-From: Felix Fietkau <nbd@nbd.name>
-Message-ID: <68ab89bc-70f4-e822-3d96-21ba3bd6511f@nbd.name>
-Date: Wed, 6 Jan 2021 14:30:57 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:78.0)
- Gecko/20100101 Thunderbird/78.6.0
+ id 1kx9KG-0003ZK-Iz; Wed, 06 Jan 2021 13:58:13 +0000
+Received: from meh.true.cz (meh.true.cz [108.61.167.218])
+ (Authenticated sender: petr@true.cz)
+ by smtp-out.xnet.cz (Postfix) with ESMTPSA id 0812A18C68;
+ Wed,  6 Jan 2021 14:58:04 +0100 (CET)
+Received: by meh.true.cz (OpenSMTPD) with ESMTP id 0dfe3687;
+ Wed, 6 Jan 2021 14:57:46 +0100 (CET)
+Date: Wed, 6 Jan 2021 14:58:01 +0100
+From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+To: Arnd Bergmann <arnd@kernel.org>
+Subject: Re: [PATCH] mt76: mt7915: fix misplaced #ifdef
+Message-ID: <20210106135801.GA27377@meh.true.cz>
+References: <20210103135811.3749775-1-arnd@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <87r1my49us.fsf@toke.dk>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210103135811.3749775-1-arnd@kernel.org>
+X-PGP-Key: https://gist.githubusercontent.com/ynezz/477f6d7a1623a591b0806699f9fc8a27/raw/a0878b8ed17e56f36ebf9e06a6b888a2cd66281b/pgp-key.pub
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_083105_590518_61B2AA25 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20210106_085812_743066_C9F8AD67 
+X-CRM114-Status: GOOD (  16.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,29 +65,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, linux-wireless@vger.kernel.org,
- Shayne Chen <shayne.chen@mediatek.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Yiwei Chung <yiwei.chung@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>,
+ Felix Fietkau <nbd@nbd.name>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMS0wMS0wNiAxMTo1MSwgVG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2VuIHdyb3RlOgo+IFJ5
-ZGVyIExlZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4gd3JpdGVzOgo+IAo+PiBUaGUgc2VsZWN0
-ZWQgdHhxIHNob3VsZCBiZSBzY2hlZHVsZWQgdW5jb25kaXRpb25hbGx5IGlmCj4+IE5MODAyMTFf
-RVhUX0ZFQVRVUkVfQUlSVElNRV9GQUlSTkVTUyBpcyBub3Qgc2V0IGJ5IGRyaXZlci4KPj4KPj4g
-QWxzbyBwdXQgdGhlIHN0YSB0byB0aGUgZW5kIG9mIHRoZSBhY3RpdmVfdHhxcyBsaXN0IGlmCj4+
-IGRlZmljaXQgaXMgbmVnYXRpdmUgdGhlbiBtb3ZlIG9uIHRvIHRoZSBuZXh0IHR4cS4KPiAKPiBX
-aHkgaXMgdGhpcyBuZWVkZWQ/IElmIHRoZSBmZWF0dXJlIGlzIG5vdCBzZXQsIG5vIGFpcnRpbWUg
-c2hvdWxkIGV2ZXIgYmUKPiBhY2NvdW50ZWQgdG8gdGhlIHN0YXRpb24sIGFuZCBzbyBzdGEtPmFp
-cnRpbWVbdHhxaS0+dHhxLmFjXS5kZWZpY2l0IHdpbGwKPiBhbHdheXMgYmUgMCAtIHNvIHlvdSdy
-ZSBqdXN0IGFkZGluZyBhbm90aGVyIGNoZWNrIHRoYXQgZG9lc24ndCBhY3R1YWxseQo+IGNoYW5n
-ZSB0aGUgYmVoYXZpb3VyLCBhcmVuJ3QgeW91PwpJIHRoaW5rIGl0IG1pZ2h0IG1ha2Ugc2Vuc2Ug
-dG8ga2VlcCBhaXJ0aW1lIHJlcG9ydGluZyBldmVuIHdoZW4gYWlydGltZQpmYWlybmVzcyBpcyBk
-aXNhYmxlZCBhdCBydW4gdGltZSwgc28gdGhpcyBwYXRjaCBtYWtlcyBzZW5zZSB0byBtZS4KSW5z
-dGVhZCBvZiB0aGlzIHBhdGNoLCB0aGUgcmlnaHQgcGxhY2UgdG8gZGVhbCB3aXRoIHRoaXMgd291
-bGQgcHJvYmFibHkKYmUgaWVlZTgwMjExX3N0YV9yZWdpc3Rlcl9haXJ0aW1lLgoKLSBGZWxpeAoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Arnd Bergmann <arnd@kernel.org> [2021-01-03 14:57:55]:
+
+Hi,
+
+just a small nitpick,
+
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> The lone '|' at the end of a line causes a build failure:
+> 
+> drivers/net/wireless/mediatek/mt76/mt7915/init.c:47:2: error: expected expression before '}' token
+> 
+> Replace the #ifdef with an equivalent IS_ENABLED() check.
+> 
+> Fixes: af901eb4ab80 ("mt76: mt7915: get rid of dbdc debugfs knob")
+
+I think, that the correct fixes tag is following:
+
+ Fixes: 8aa2c6f4714e ("mt76: mt7915: support 32 station interfaces")
+
+I've used the af901eb4ab80 as well first in
+https://github.com/openwrt/mt76/pull/490 but then looked at it once more and
+actually found the probably correct 8aa2c6f4714e.
+
+Cheers,
+
+Petr
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
