@@ -2,58 +2,63 @@ Return-Path: <SRS0=NOVl=GJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-3.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_ALL,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 381A5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 13:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 409C1C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 15:41:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD72D22C9F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 13:58:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD72D22C9F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=true.cz
+	by mail.kernel.org (Postfix) with ESMTPS id 47CCE23125
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 15:41:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47CCE23125
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=toke.dk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f/jc7nKPhjDdM4MXGfu4UrLRrjf1nw+4WlorLKnoiwE=; b=uTvafdOp1f5d0HKzHyNrRJQ3K+
-	nibwCrPOi/HkaUG9m3RqoSHeLBbiMNHZ+hCEGwDdDeW7QbloKKqYzwv7a/hBQ5FiTj0I4LEcqCVcq
-	A5XZIv7CSORECigaegRNBG1XAp0Yzl+Lg6Rk/TCIWP3WPtF/uDyYQ/FPDI/Na8T2/XO1EOHPGD0OW
-	WiZbI+Iz1PVxXgA9b83Zdf4y3J6y4fP0o2/BZwizknFXKzjNTG3gMU7wpx4aEbcbeuuefsT8foO77
-	pfWPgKpPg+5eS1lMwHSzZZm2NeLDiFNm5xxIpwQ5Ta7k90CJ2V+OR1Vs4UndYzIH+mrIja0gO3AAQ
-	v/99rmWA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jDi5fIgFZHC0MsatkhnhQ7bsMzhFuGf0UoOH4ZbwQIM=; b=IX12x0DkyjVMoh1zCphh6EpOy
+	NqQX+rqQTnU0+pw+aupCLxGGEaZWrkGc42yU4jQCY8NWnPblvJMY613dR01wkpeQKVAukN+MYzN07
+	nd9CBzl1dvIXf+N/qXKSZlQeTVbYgLR8QFZvFuw9PpdkBtY9yix7W7mGLGBsTYE81ZSa4bVwqvkU6
+	Tlf0qEDTMSpkkXkjXYePH3X4hOrhIaiCbLCneZXgtLO3l+w3Cb+OqfQMUXhvggfiebqm58hkayGG5
+	jleQgkpPgikxQ8s2upmDZNdpj5Dq0f6w/ATCdFSOkKtGNEWlJ2nhVTCwl1Q4H9mCSDDovQGL6c8yL
+	9DnTt9JlQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kx9KK-0003aM-R7; Wed, 06 Jan 2021 13:58:16 +0000
-Received: from smtp-out.xnet.cz ([178.217.244.18])
+	id 1kxAw5-0002HF-5e; Wed, 06 Jan 2021 15:41:21 +0000
+Received: from mail.toke.dk ([45.145.95.4])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kx9KG-0003ZK-Iz; Wed, 06 Jan 2021 13:58:13 +0000
-Received: from meh.true.cz (meh.true.cz [108.61.167.218])
- (Authenticated sender: petr@true.cz)
- by smtp-out.xnet.cz (Postfix) with ESMTPSA id 0812A18C68;
- Wed,  6 Jan 2021 14:58:04 +0100 (CET)
-Received: by meh.true.cz (OpenSMTPD) with ESMTP id 0dfe3687;
- Wed, 6 Jan 2021 14:57:46 +0100 (CET)
-Date: Wed, 6 Jan 2021 14:58:01 +0100
-From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-To: Arnd Bergmann <arnd@kernel.org>
-Subject: Re: [PATCH] mt76: mt7915: fix misplaced #ifdef
-Message-ID: <20210106135801.GA27377@meh.true.cz>
-References: <20210103135811.3749775-1-arnd@kernel.org>
+ id 1kxAw0-0002F4-NP
+ for linux-mediatek@lists.infradead.org; Wed, 06 Jan 2021 15:41:20 +0000
+From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=toke.dk; s=20161023;
+ t=1609947662; bh=KDGE0W8yzFBpgLufLewOmSfqW6XhZh/N+JY/uG+SGxs=;
+ h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+ b=jchxXj9pRUgpAbrQVb3bTyisE35esffYoIx+XszbaOMk6pmMmPlbFoBJORBNQOdKO
+ 3EsEMYfioracL3mnHogf/kfdxdDNN9FN1Lb9p6jnZXqV2K9ucPOPayLjD+aBbX4OGr
+ SsZ4b8dPFyDQeZSqJZGORG62ZpEoeyHFmBbCMriAKn1iZsMWbP1GAZVxEgFd5F/GkQ
+ F0XYEh+PkorUxe0SzEsyURKWLCjHukxsAS/hktOWthvbuFWKid5eFnbUxDYJ93evb9
+ p1y423XJkWXo9Zd+fXG40bqz+fkSBS7Sg6/whNqRKkDtk3fIbYrj2wWPXN64+iq4S0
+ xeBM+hSgCQ0zQ==
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [PATCH] mac80211: check ATF flag in ieee80211_next_txq()
+In-Reply-To: <68ab89bc-70f4-e822-3d96-21ba3bd6511f@nbd.name>
+References: <d9aef825d186a91ff91f6a81045d49d375533b14.1609894402.git.ryder.lee@mediatek.com>
+ <87r1my49us.fsf@toke.dk> <68ab89bc-70f4-e822-3d96-21ba3bd6511f@nbd.name>
+Date: Wed, 06 Jan 2021 16:41:02 +0100
+X-Clacks-Overhead: GNU Terry Pratchett
+Message-ID: <87k0sq3wfl.fsf@toke.dk>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210103135811.3749775-1-arnd@kernel.org>
-X-PGP-Key: https://gist.githubusercontent.com/ynezz/477f6d7a1623a591b0806699f9fc8a27/raw/a0878b8ed17e56f36ebf9e06a6b888a2cd66281b/pgp-key.pub
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_085812_743066_C9F8AD67 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20210106_104116_910049_9DFABF17 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,50 +70,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Yiwei Chung <yiwei.chung@mediatek.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>,
- Felix Fietkau <nbd@nbd.name>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-mediatek@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, linux-wireless@vger.kernel.org,
+ Shayne Chen <shayne.chen@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Arnd Bergmann <arnd@kernel.org> [2021-01-03 14:57:55]:
-
-Hi,
-
-just a small nitpick,
-
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> The lone '|' at the end of a line causes a build failure:
-> 
-> drivers/net/wireless/mediatek/mt76/mt7915/init.c:47:2: error: expected expression before '}' token
-> 
-> Replace the #ifdef with an equivalent IS_ENABLED() check.
-> 
-> Fixes: af901eb4ab80 ("mt76: mt7915: get rid of dbdc debugfs knob")
-
-I think, that the correct fixes tag is following:
-
- Fixes: 8aa2c6f4714e ("mt76: mt7915: support 32 station interfaces")
-
-I've used the af901eb4ab80 as well first in
-https://github.com/openwrt/mt76/pull/490 but then looked at it once more and
-actually found the probably correct 8aa2c6f4714e.
-
-Cheers,
-
-Petr
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RmVsaXggRmlldGthdSA8bmJkQG5iZC5uYW1lPiB3cml0ZXM6Cgo+IE9uIDIwMjEtMDEtMDYgMTE6
+NTEsIFRva2UgSMO4aWxhbmQtSsO4cmdlbnNlbiB3cm90ZToKPj4gUnlkZXIgTGVlIDxyeWRlci5s
+ZWVAbWVkaWF0ZWsuY29tPiB3cml0ZXM6Cj4+IAo+Pj4gVGhlIHNlbGVjdGVkIHR4cSBzaG91bGQg
+YmUgc2NoZWR1bGVkIHVuY29uZGl0aW9uYWxseSBpZgo+Pj4gTkw4MDIxMV9FWFRfRkVBVFVSRV9B
+SVJUSU1FX0ZBSVJORVNTIGlzIG5vdCBzZXQgYnkgZHJpdmVyLgo+Pj4KPj4+IEFsc28gcHV0IHRo
+ZSBzdGEgdG8gdGhlIGVuZCBvZiB0aGUgYWN0aXZlX3R4cXMgbGlzdCBpZgo+Pj4gZGVmaWNpdCBp
+cyBuZWdhdGl2ZSB0aGVuIG1vdmUgb24gdG8gdGhlIG5leHQgdHhxLgo+PiAKPj4gV2h5IGlzIHRo
+aXMgbmVlZGVkPyBJZiB0aGUgZmVhdHVyZSBpcyBub3Qgc2V0LCBubyBhaXJ0aW1lIHNob3VsZCBl
+dmVyIGJlCj4+IGFjY291bnRlZCB0byB0aGUgc3RhdGlvbiwgYW5kIHNvIHN0YS0+YWlydGltZVt0
+eHFpLT50eHEuYWNdLmRlZmljaXQgd2lsbAo+PiBhbHdheXMgYmUgMCAtIHNvIHlvdSdyZSBqdXN0
+IGFkZGluZyBhbm90aGVyIGNoZWNrIHRoYXQgZG9lc24ndCBhY3R1YWxseQo+PiBjaGFuZ2UgdGhl
+IGJlaGF2aW91ciwgYXJlbid0IHlvdT8KPgo+IEkgdGhpbmsgaXQgbWlnaHQgbWFrZSBzZW5zZSB0
+byBrZWVwIGFpcnRpbWUgcmVwb3J0aW5nIGV2ZW4gd2hlbiBhaXJ0aW1lCj4gZmFpcm5lc3MgaXMg
+ZGlzYWJsZWQgYXQgcnVuIHRpbWUsIHNvIHRoaXMgcGF0Y2ggbWFrZXMgc2Vuc2UgdG8gbWUuCj4g
+SW5zdGVhZCBvZiB0aGlzIHBhdGNoLCB0aGUgcmlnaHQgcGxhY2UgdG8gZGVhbCB3aXRoIHRoaXMg
+d291bGQgcHJvYmFibHkKPiBiZSBpZWVlODAyMTFfc3RhX3JlZ2lzdGVyX2FpcnRpbWUuCgpXaGVu
+IHRoZSBmYWlybmVzcyBtZWNoYW5pc20gaXMgdXNlci1kaXNhYmxlZCBJIGFncmVlIGl0IG1ha2Vz
+IHNlbnNlIHRvCnN0aWxsIGtlZXAgdGhlIGFjY291bnRpbmc7IGFuZCBpbiBmYWN0IHRoYXQncyB3
+aGF0CmllZWU4MDIxMV9zdGFfcmVnaXN0ZXJfYWlydGltZSgpIGFscmVhZHkgZG9lcyB3aGVuIHRo
+ZSBhY2NvdW50aW5nIGlzCnR1cm5lZCBvZmYgYnkgd2F5IG9mIHRoZSBhaXJ0aW1lX2ZsYWdzIGZp
+ZWxkLi4uIFNvIGRvbid0IHRoaW5rIGFueXRoaW5nCmVsc2UgaXMgbmVlZGVkIHRoZXJlIGVpdGhl
+cj8KCi1Ub2tlCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LW1lZGlhdGVrCg==
