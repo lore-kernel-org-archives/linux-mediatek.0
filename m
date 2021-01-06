@@ -2,75 +2,76 @@ Return-Path: <SRS0=NOVl=GJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CEACC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 09:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEE47C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 10:26:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 110592310B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 09:26:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 110592310B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 413CC2310D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jan 2021 10:26:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 413CC2310D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=b/MwaF/nuJ1jwGp2nFihe9oH6js34vQCgKjFeQBRbOk=; b=W5ijOgTKpbvUqGnWpNMD5c+MN
-	uAN0dkkOa5xurcDdTN7gXmm6/ZvdW+WAlIHSnA+XQEN77gT5/GdzZNBTNPFV9oo0S6fkQUh1HwH9m
-	vBHi7y2M6riXmwIsJabS7b8547pOCJfCPxtNe1GWN6ailC0aN8D7x+gkkVml56j7ngeJyHnua8/b9
-	VlVi/Moixxaw3YpFtfb5OVaKrE9SUDj4ya16PhG+F8tF9ptyMuxVlGXueCNySjpivGZFMrBAwHSy7
-	DNNnFy0wcNsQkbwzq0/iv+pojFQZMlq/3U7MNhO5+f2I3OB2iPANVNj+1gFiU4uhpMl6RhnnMeBoR
-	LrKaIXfTw==;
+	 bh=a834zxghc5NSAbQaYosr/ohai1lr8JVPcdPLKyNW3Ds=; b=U1hzU83bnf3Juy1RLXY3845RH
+	gcu+I7bLXTUO1C4qo/eb1Kt+Z4uXX9Lvt8hlSmEjxjA/GvVJJYTCMJ5Amx7SuKjsUahNMFI2KQgCm
+	K3L9cvxWcutqDmtIUGTlQODH5GJFM8mJfREmvUoDAX4eCFS8K/sefq2AfTcN457guw0vS7x00J1Oc
+	QyPpXQOb/LlWTQjSWrhkXr2l8tjMyoUCeDhUj2brMz9jdNc73u72v8MUQgq23CECYHjSgzKRfdM6B
+	y10wyHPt0Jx7YL06ZTXEtjdkjBNQlcL7xeG19N7YRH6HRv9wrZS/r4Rb+53fEw7bFj7gY8sKFsEg6
+	PXtG7yoDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kx54k-0001PS-2W; Wed, 06 Jan 2021 09:25:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kx60m-0008Bb-S3; Wed, 06 Jan 2021 10:25:52 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kx54e-0001O0-Gh; Wed, 06 Jan 2021 09:25:50 +0000
-X-UUID: 8a99c76b29544e2abb8ee21e87238365-20210106
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=zOuLnq2988VcCoJP2KaUOG1UC0p7HGPhxsgATLl5fuU=; 
- b=q1aDPvqbJEz8uedknKGYXsOPVx3xFNpHppP5FHHAOdz7kfe8Qd3WkTCG/zaIeFlr0HH30f8CgWVBQjb5Rv1LAiTXDbo3IsLQM2pe5E07rgfQ+GGcbojW5S9I2kewCYW56Z5W45Aj9nRfE2TRgCRe9b5v10zlrC9ZCTACIxmBkIA=;
-X-UUID: 8a99c76b29544e2abb8ee21e87238365-20210106
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <eastl.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1365285091; Wed, 06 Jan 2021 01:25:43 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Jan 2021 01:25:42 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Jan 2021 17:25:40 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 6 Jan 2021 17:25:40 +0800
-Message-ID: <1609925140.5373.5.camel@mtkswgap22>
-Subject: Re: [PATCH v8 1/4] dt-bindings: dmaengine: Add MediaTek
- Command-Queue DMA controller bindings
-From: EastL <EastL.Lee@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Wed, 6 Jan 2021 17:25:40 +0800
-In-Reply-To: <20210103165842.GA4024251@robh.at.kernel.org>
-References: <1608715847-28956-1-git-send-email-EastL.Lee@mediatek.com>
- <1608715847-28956-2-git-send-email-EastL.Lee@mediatek.com>
- <20210103165842.GA4024251@robh.at.kernel.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kx60k-0008Ab-Sf
+ for linux-mediatek@lists.infradead.org; Wed, 06 Jan 2021 10:25:51 +0000
+Received: by mail-pg1-x531.google.com with SMTP id g15so1927808pgu.9
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Jan 2021 02:25:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UXZIAZqh+xBfL6TUuJ2CLNmbqo4XogXEQ6f21aMa31Y=;
+ b=PvQYGRaylR7ZLMt781fGYH7PAdHnlOlFo5S+lEYXioh2rHtPWzCfHRyIVB+KUg4Uun
+ llL7GxDSh2AbRHH6DbNpOA9f7A+/V9L92awzQOhE+TKdAR3MMgLHjaPIjQ6xUL6X3MVN
+ 2d7Wtvi6gGdp3FR36z7QbJlEGe62xFygXYpO0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UXZIAZqh+xBfL6TUuJ2CLNmbqo4XogXEQ6f21aMa31Y=;
+ b=hkfNhRYnbz1diP4fjkNZtRBoVqQliGJf0/AD59oqA+N1qS46mEMkGRqxLhYlTEqQH3
+ VtqIT7ZWoq45hysg64PvgktMeiDPq8gGwg5F666lxtObY7Q959npWOf/FbR6ofhU19vH
+ Baq27Ncsfud+U20vDzeUXvm+8JBvIgtPyxcnqr0WZidE3vz+FuiMCRsiAhe63ne0xzV8
+ GTvXBwR4kmVe4CO8bt2Z/yETOG8FQsLTLhVggFeK5I9vI5Rzr/5vS1vpb2BdM34hckdX
+ oU9u5bV1S0kowxPNJrrYeRtDpvDdDRF0WSZzcfWe/ra0GBtfMWeOFxYrqNsfVucwZE5B
+ LgEg==
+X-Gm-Message-State: AOAM530oxG0aos/MqPvz0MnKt99K4lJYDIs6tvru00W8DitGhIKgU8EW
+ pIKjcgA34mGqJs67TKG/LKdGi9L96d/q0tilLrsqFw==
+X-Google-Smtp-Source: ABdhPJxY96erNkAHFypfbHgSjjHgHmIdlQRpp9DupO/lBseGLPIpK4TW4GgJIKZxB8lnC4qd4HT1DmjRhCQope01kAI=
+X-Received: by 2002:a63:1a10:: with SMTP id a16mr3708292pga.317.1609928747355; 
+ Wed, 06 Jan 2021 02:25:47 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
+ <1608642587-15634-11-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1608642587-15634-11-git-send-email-weiyi.lu@mediatek.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Wed, 6 Jan 2021 18:25:36 +0800
+Message-ID: <CAATdQgC_BnZywDxaZgmF72VRoAZ-1vFGrPD9GL4uEBhsKQTxnQ@mail.gmail.com>
+Subject: Re: [PATCH v6 10/22] clk: mediatek: Add MT8192 basic clocks support
+To: Weiyi Lu <weiyi.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_042549_323492_0F8CA166 
-X-CRM114-Status: GOOD (  27.65  )
+X-CRM114-CacheID: sfid-20210106_052550_995840_215D1B76 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,182 +83,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, cc.hwang@mediatek.com,
- wsd_upstream@mediatek.com, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org, vkoul@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2021-01-03 at 09:58 -0700, Rob Herring wrote:
-> On Wed, Dec 23, 2020 at 05:30:44PM +0800, EastL Lee wrote:
-> > Document the devicetree bindings for MediaTek Command-Queue DMA controller
-> > which could be found on MT6779 SoC or other similar Mediatek SoCs.
-> > 
-> > Signed-off-by: EastL Lee <EastL.Lee@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/dma/mtk-cqdma.yaml         | 104 +++++++++++++++++++++
-> 
-> Use compatible string for filename:
-OK
-> 
-> mediatek,cqdma.yaml
-> 
-> >  1 file changed, 104 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> > new file mode 100644
-> > index 0000000..a76a263
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> > @@ -0,0 +1,104 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/dma/mtk-cqdma.yaml#
-> 
-> Don't forget to update this.
-OK
-> 
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek Command-Queue DMA controller Device Tree Binding
-> > +
-> > +maintainers:
-> > +  - EastL Lee <EastL.Lee@mediatek.com>
-> > +
-> > +description:
-> > +  MediaTek Command-Queue DMA controller (CQDMA) on Mediatek SoC
-> > +  is dedicated to memory-to-memory transfer through queue based
-> > +  descriptor management.
-> > +
-> > +allOf:
-> > +  - $ref: "dma-controller.yaml#"
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt6765-cqdma
-> > +          - mediatek,mt6779-cqdma
-> > +      - const: mediatek,cqdma
-> > +
-> > +  reg:
-> > +    minItems: 1
-> > +    maxItems: 5
-> > +    description:
-> > +        A base address of MediaTek Command-Queue DMA controller,
-> > +        a channel will have a set of base address.
-> > +
-> > +  interrupts:
-> > +    minItems: 1
-> > +    maxItems: 5
-> > +    description:
-> > +        A interrupt number of MediaTek Command-Queue DMA controller,
-> > +        one interrupt number per dma-channels.
-> > +
-> > +  clocks:
-> > +    maxItems: 1
-> > +
-> > +  clock-names:
-> > +    const: cqdma
-> > +
-> > +  dma-channel-mask:
-> > +    description:
-> > +       For DMA capability, We will know the addressing capability of
-> > +       MediaTek Command-Queue DMA controller through dma-channel-mask.
-> > +      minimum: 1
-> > +      maximum: 63
-> 
-> Indentation is wrong here so this has no effect.
-I'll fix it
-> 
-> A mask of 63 is 6 channels...
-In my opinion, kernel dma mask if for 32/64 bit capability...
-If I don't set dma mask I will get fail on DMATEST.
-> 
-> > +
-> > +  dma-channels:
-> > +    description:
-> > +      Number of DMA channels supported by MediaTek Command-Queue DMA
-> > +      controller, support up to five.
-> > +      minimum: 1
-> > +      maximum: 5
-> 
-> Same here.
-OK
-> 
-> Do you really need both dma-channels and dma-channel-mask? You should be 
-> able to get one from the other.
-> 
-> > +
-> > +  dma-requests:
-> > +    description:
-> > +      Number of DMA request (virtual channel) supported by MediaTek
-> > +      Command-Queue DMA controller, support up to 32.
-> > +      minimum: 1
-> > +      maximum: 32
-> 
-> And here.
-> 
-> You are missing '#dma-cells' also.
-OK I'll fix it.
-> 
-> > +
-> > +required:
-> > +  - "#dma-cells"
-> > +  - compatible
-> > +  - reg
-> > +  - interrupts
-> > +  - clocks
-> > +  - clock-names
-> > +  - dma-channel-mask
-> > +  - dma-channels
-> > +  - dma-requests
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/clock/mt6779-clk.h>
-> > +    cqdma: dma-controller@10212000 {
-> > +        compatible = "mediatek,mt6779-cqdma";
-> 
-> This should fail validation because it doesn't match the schema. You ran 
-> 'make dt_binding_check', right?
-Yes, but I got other fail on kernel-5.10...
-> 
-> > +        reg = <0x10212000 0x80>,
-> > +            <0x10212080 0x80>,
-> > +            <0x10212100 0x80>;
-> > +        interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>,
-> > +            <GIC_SPI 140 IRQ_TYPE_LEVEL_LOW>,
-> > +            <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
-> > +        clocks = <&infracfg_ao CLK_INFRA_CQ_DMA>;
-> > +        clock-names = "cqdma";
-> > +        dma-channel-mask = <63>;
-> 
-> 6 channels or...
-> 
-> > +        dma-channels = <3>;
-> 
-> 3?
-3 channel, the mask is for DMATEST PASS.
-> 
-> > +        dma-requests = <32>;
-> > +        #dma-cells = <1>;
-> > +    };
-> > +
-> > +...
-> > -- 
-> > 1.9.1
-> > 
+On Tue, Dec 22, 2020 at 9:14 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+>
+> Add MT8192 basic clock providers, include topckgen, apmixedsys,
+> infracfg and pericfg.
+>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>  drivers/clk/mediatek/Kconfig      |    8 +
+>  drivers/clk/mediatek/Makefile     |    1 +
+>  drivers/clk/mediatek/clk-mt8192.c | 1326 +++++++++++++++++++++++++++++++++++++
+>  drivers/clk/mediatek/clk-mux.h    |   15 +
+>  4 files changed, 1350 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192.c
+>
+
+<snip>
+
+> diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
+> index f5625f4..afbc7df 100644
+> --- a/drivers/clk/mediatek/clk-mux.h
+> +++ b/drivers/clk/mediatek/clk-mux.h
+> @@ -77,6 +77,21 @@ struct mtk_mux {
+>                         _width, _gate, _upd_ofs, _upd,                  \
+>                         CLK_SET_RATE_PARENT)
+>
+> +#define MUX_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,          \
+> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> +                       _upd_ofs, _upd, _flags)                         \
+> +               GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,  \
+> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> +                       0, _upd_ofs, _upd, _flags,                      \
+> +                       mtk_mux_clr_set_upd_ops)
+> +
+> +#define MUX_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,                        \
+> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
+> +                       _upd_ofs, _upd)                                 \
+> +               MUX_CLR_SET_UPD_FLAGS(_id, _name, _parents,             \
+> +                       _mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift,   \
+> +                       _width, _upd_ofs, _upd, CLK_SET_RATE_PARENT)
+> +
+
+conflicts, these macros are already existed in upstream.
+
+>  struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
+>                                  struct regmap *regmap,
+>                                  spinlock_t *lock);
+> --
+> 1.8.1.1.dirty
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
