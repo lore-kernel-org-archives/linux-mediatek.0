@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C5CDC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 06:22:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A23AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 07:57:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9555F22E03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 06:22:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9555F22E03
+	by mail.kernel.org (Postfix) with ESMTPS id C94B523125
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 07:57:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C94B523125
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,51 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NxW4A8iBw6J82oLaXqdX0UakICozMgwJyI4nECrwLVo=; b=2GQAgeIgxBX67ExD6Ydi8pU1xA
-	JJWTZ3KgSJtKfS6IOdIdwnYenmKZlJxe+fCVxikUEpsN+AqsSTjlG1Olb/F8vhFKWqu3gOpK3ca5x
-	HyMoZ5WjqiOu8UnfsNumZFzzK9lMaOUMzpZ/0fG0tPbXkL9FAzDTtpt8Bda2ayJ7W+x+IhRNE1vLK
-	4h0r7l6rRvRzfd7BDG+Zb5oun3bzprH8SGovuley3y46zOCcW/ELgZjFSwZFIwE+kEghQmaHuMn+G
-	kreWtKfqf94/O3JLzkEL771tKhtK+ZKfoyxLGS6h5mXEjvvu45y6nXJhscel1f38GGhqdpUBR69Uo
-	rwSBsiiw==;
+	bh=I0cKdDX9dhhKghcW+QgMjO8usOArSRV9OPUjuu7wMi0=; b=fbSR0MNVsVazDh3zNCDtEVnuCO
+	5tyhn9uWf1Vz87TiZrzoujf2Rok3a2kM0gqGcXXnXLeCGCdjaQM1MGAJspB01qgq7q0VorK2q/ydu
+	Qi/0R2uJ75vYXphZdfi24/jZiWA+6zn8BQrVEHvxN21DcRQFNkk1dc52oChHp7qwbaW66AADqUMOz
+	uVAnsyA/s8lv1lxOx4pdo0cLXjfw6x0RMvfpqDUN8Q/eQowoXWenusFrSq11uAj0elJzxutNl7i0T
+	OvnKQCiqrZvtLc0x+JUKptchGtL7qmpojkIx9jTn8x8GDfb/8inAYIZyVT2TvG5PwrRhXn3vf6oIZ
+	7nMNGrZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxOgY-0006jO-SH; Thu, 07 Jan 2021 06:22:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kxQAE-0004zB-9t; Thu, 07 Jan 2021 07:56:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxOgT-0006iP-E9; Thu, 07 Jan 2021 06:22:11 +0000
-X-UUID: dc33c2cb2560431e91538e603695294c-20210106
+ id 1kxQA8-0004xa-VO; Thu, 07 Jan 2021 07:56:54 +0000
+X-UUID: 9c5f1e8ce93f44e29f80e207bff16aa9-20210106
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=GH1TJYoiag+PvFMcYpXjLRuDzluiF+yVDz7NKQqJ7VA=; 
- b=jZdANrKYyIs19DfGMOhvpOhm4HU7wiTdLP/Q/o817YfGxSVUnvqn6Yo1BsM2RKIORIpv2x9BZIZkI5A7aa4WiaKooz0iOiQKLpJKcXTljZenCrHGPXQaUmIY4iQOXx9pZGLtPnqRRdGsNNWnNyyWRLtfX3C5ZEPxw+Pbq2x/Krk=;
-X-UUID: dc33c2cb2560431e91538e603695294c-20210106
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=7fWiainM3s+8hDe1nHH4p+1JZfPva9R9A/d20rWUkb8=; 
+ b=fPW6eNEgOzAL/2xMswLL85TiQe5Rvd66lhuSzoJrjox+wpZydFS8C1gTYLA0qrozSTqRHFAU+iW+HhRi6cC5DyWmVrWC+s8w8PlEcYfubirA0AOU3XDVK0LdlEnwuEg8JkMni6hTbx+g9/d+2PopCZ3PbW8JZmPdPCgClHHqWiE=;
+X-UUID: 9c5f1e8ce93f44e29f80e207bff16aa9-20210106
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2131167532; Wed, 06 Jan 2021 22:22:03 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 929616338; Wed, 06 Jan 2021 23:56:46 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Jan 2021 22:22:01 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Jan 2021 14:21:53 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Wed, 6 Jan 2021 23:53:19 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Jan 2021 15:53:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 7 Jan 2021 14:21:54 +0800
+ Frontend Transport; Thu, 7 Jan 2021 15:53:16 +0800
 From: Walter Wu <walter-zh.wu@mediatek.com>
 To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko
  <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Andrey Konovalov
  <andreyknvl@google.com>, Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH] kasan: remove redundant config option
-Date: Thu, 7 Jan 2021 14:21:52 +0800
-Message-ID: <20210107062152.2015-1-walter-zh.wu@mediatek.com>
+Subject: [PATCH v2] kasan: remove redundant config option
+Date: Thu, 7 Jan 2021 15:53:15 +0800
+Message-ID: <20210107075315.3482-1-walter-zh.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E78C0B405E861FCE6BCE4616FBB772D33CB9E246196C4D61EC7F1C80699ACF402000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_012210_306152_2BD7D5E4 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20210107_025653_283362_89DEFABB 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,12 +90,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CONFIG_KASAN_STACK and CONFIG_KASAN_STACK_ENABLE both enable KASAN
-stack instrumentation, but we should only need one config option,
-so that we remove CONFIG_KASAN_STACK_ENABLE. see [1].
+CONFIG_KASAN_STACK and CONFIG_KASAN_STACK_ENABLE both enable KASAN stack
+instrumentation, but we should only need one config, so that we remove
+CONFIG_KASAN_STACK_ENABLE and make CONFIG_KASAN_STACK workable. see [1].
 
-For gcc we could do no prompt and default value y, and for clang
-prompt and default value n.
+When enable KASAN stack instrumentation, then for gcc we could do no
+prompt and default value y, and for clang prompt and default value n.
 
 [1]: https://bugzilla.kernel.org/show_bug.cgi?id=210221
 
@@ -104,6 +106,10 @@ Cc: Dmitry Vyukov <dvyukov@google.com>
 Cc: Andrey Konovalov <andreyknvl@google.com>
 Cc: Alexander Potapenko <glider@google.com>
 Cc: Andrew Morton <akpm@linux-foundation.org>
+---
+
+v2: make commit log to be more readable.
+
 ---
  arch/arm64/kernel/sleep.S        |  2 +-
  arch/x86/kernel/acpi/wakeup_64.S |  2 +-
