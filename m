@@ -2,72 +2,83 @@ Return-Path: <SRS0=j7dB=GK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C865C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:09:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A06EBC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9535A23355
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:09:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9535A23355
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2A71F23356
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A71F23356
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UlVN7ch8n5ZyQievsafUs+noZiWCzp25oGo3pIJcepU=; b=paxviyBHIG8GkvelREcooM77c
-	zuLhx+XXgM/9E5VIfpA00X73LqAdResSZeYf2tqD5+FPEGaOLtOQ1efkMHG1Pk3QB1uRwGmsxGGf8
-	slZGyiINpaRD7zoIv0fycJwnpGw9XJ/rRt/83dgocEBgLGERJbai3S7guPeA43HXm+oV9791TYEyS
-	BoQBYuVM5HCnmEkl/jP/wIsXGJJzIiqxJLs2et8xAFrK/4sAlrd8G1sBWJeHtxVgWuxcF2O+wgzVW
-	Z7rHBmD+9IGncaD3dTN0a82RdCDOyag/cfCBAzjfAGkS1GWmS+a5D8OSqviHrqhaauEOF0phXfX8J
-	NHukJON/Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A6V7ihbkUlxcAMA/SeyVvfQghxqAU7YT3VpNCv4yUks=; b=FFHjHgX5zvAcwwnl4ru5Gq6Q1I
+	t66MlveLrbPdj6cisY3lpazKL8uUnuHGtvpwKpxMU5berpGAul6N4c8HttyGEas+wCmchFewaiTgm
+	DZAm0lPZKtf0KyudxlUYZWn3HnyN39j+ffuTBOoYUougIAeHmwDBjXcbSYDEgsKbriaBbfkcvBsWo
+	eG16vK1W+Juq9V2lDpGYrtLNBW+4lvLWGrAIz/tvAxiEUZ9rYgCYvO1qeTOv9KWxCS5NoczDCXI+q
+	z5a29eMR+aIOduf1rjqyd5x1D8rxFHVVL0Okt08iHt44ppRMKzMWOgn4DooiaGCsj835MlyfgEMY8
+	oD/U+Niw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxU6O-00017n-Di; Thu, 07 Jan 2021 12:09:16 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kxUNh-0003ZC-Fi; Thu, 07 Jan 2021 12:27:09 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxU6K-00016x-AF; Thu, 07 Jan 2021 12:09:13 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D198123370;
- Thu,  7 Jan 2021 12:09:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610021350;
- bh=Bax/TD9n3UeF4RLUUYlRxx9HMo70f3ud0l2YLRw3aJY=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=tpCL7OQlHjsN4r7T3Mo2j2HPzP4X0bQVq2Wi4iYFY4q9KzPdReZfolrMuln/P4bIg
- dDlctOUFIa3l4ncVGx2P+H0K6JIykMplib0B+uwY1a88eP3KtsuDj3jVrTJYpIy/up
- 1w0KoP81u3P/iU5j2dEufUwbyyqbBz9xuQfonz7+tz4lqV0XtIvL87J+4hDn4/t7zh
- QQ4jmsf6olG2RZ4e6PmNDPnkxdcQBnepXnry/cXkwhotYBDtcaMyWXa0FAIjPyHEo7
- FK8ZURfkgYnOs5+IVVj/byCkveyw3Owey8kctMopuWkMtM5AXQQQWeLjEgBGFkWkcN
- B8JJSO5h5WrNg==
-Received: by mail-ej1-f47.google.com with SMTP id jx16so9296114ejb.10;
- Thu, 07 Jan 2021 04:09:09 -0800 (PST)
-X-Gm-Message-State: AOAM531m4Ik+8NkrAxon2Q7NcYaiYRhgPJfw5CrviJN4fEZJaK97PKJT
- B8/9eqSYGLVkSTiz6Zvcj2gjw2uEJFknthy/fw==
-X-Google-Smtp-Source: ABdhPJwLWYyQXSkeJmJYkDh2Wp/HMnw+iryfBXBAZeGMzi476416Ju5zo44dK3b7l2wd0kclwctstGJHZkRWEc8NWXM=
-X-Received: by 2002:a17:907:414c:: with SMTP id
- od20mr6066221ejb.75.1610021348232; 
- Thu, 07 Jan 2021 04:09:08 -0800 (PST)
+ id 1kxUNf-0003YI-Io; Thu, 07 Jan 2021 12:27:08 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 15so4723353pgx.7;
+ Thu, 07 Jan 2021 04:27:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rdzhko0OrjkG6Nl0CuymqMX6T8qlz4I52QwBBCGkLMw=;
+ b=QVbfURqlAvyfONwwA1cZ4PfkRS0kE3wlUIR8xdHj4CMNJa71Gj1zjLG/LfGbPyDJRa
+ HG8uckhKBb80dcHlNhm5Z1N4yDdKc2eMnXAOCcprB8DBsGLIeIvTS0RSjFLlhKZQvMPL
+ 3UG40mVcLkOfIcjwdajPfw6sua4j4Uiq3S2iRi5egJsL64awGWaPIbS/OC7C0quILs2b
+ qqOD2oERzYh67vRhLclK6DmRAtemTj8jfB7oF+1WJKL86ueMnGuYmqBF3Ts0J6Wje+4e
+ VwXFU+daciJaQbXeCPo0V0F1wCKjdkEoxnkREMSwxNxonHVd9DrmCX60luxRzN223Zbh
+ t13A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rdzhko0OrjkG6Nl0CuymqMX6T8qlz4I52QwBBCGkLMw=;
+ b=gzuUSOq7ANn+yjiJJbtUF6pEycibuTzKS3BtMEUqclMYdTUjTxQCCLwDYBIrnvT25N
+ Dzc/VLX2XgxlL35v0M6xhaXXU0dOdNuifG4qIERMTTQmRT67m+m636QXakjzqn2IZEfq
+ cr/8Bx6NZDcEcJcYl/zaF61n3r8dTbqgesZbHyk2pwUSnroSheiBzFhu8K6Fsk2JCjY+
+ 4wokvzcJNq3cLHPqDXwBlLS5aSUboT1M2PD/13Wlx/aLaeOimwWI6i2pghEfaSrQ862I
+ gQFnpkZkCSsloeKJBZ7tjrFZ3HgueNbuxT+vW0uIAXfvxtHZg9aNfaLUjn7qikTXxP8C
+ VHjA==
+X-Gm-Message-State: AOAM533FBeosVcQafRf5T+eihxhaM+buuPocdgjyU3/jvyGTr+sOF1uq
+ 6UA/S+yYJq4nc8LCUsWgQsk=
+X-Google-Smtp-Source: ABdhPJxcXn2o1SIoGKUkyjfui4Ui1mGNILmr8LFU3SW1oA5A3jEzGZxheiIYztpJO/oNgHZukM36xw==
+X-Received: by 2002:a63:4923:: with SMTP id w35mr1605236pga.404.1610022423958; 
+ Thu, 07 Jan 2021 04:27:03 -0800 (PST)
+Received: from localhost.localdomain ([49.207.207.140])
+ by smtp.gmail.com with ESMTPSA id x28sm5860403pff.182.2021.01.07.04.26.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Jan 2021 04:27:03 -0800 (PST)
+From: Allen Pais <allen.lkml@gmail.com>
+To: herbert@gondor.apana.org.au
+Subject: [PATCH v2 00/19]crypto: convert tasklets to use new tasklet_setup
+ API()
+Date: Thu,  7 Jan 2021 17:56:27 +0530
+Message-Id: <20210107122646.16055-1-allen.lkml@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <1609989081-29353-1-git-send-email-yongqiang.niu@mediatek.com>
- <1609989081-29353-11-git-send-email-yongqiang.niu@mediatek.com>
-In-Reply-To: <1609989081-29353-11-git-send-email-yongqiang.niu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 7 Jan 2021 20:08:56 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-xZyFXTROVStte_-X0aNGLa0qZDe5AtC7M2RigOB1c3Q@mail.gmail.com>
-Message-ID: <CAAOTY_-xZyFXTROVStte_-X0aNGLa0qZDe5AtC7M2RigOB1c3Q@mail.gmail.com>
-Subject: Re: [PATCH v9, 10/11] drm/mediatek: add DDP support for MT8183
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_070912_565825_D0430466 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20210107_072707_640761_ED595D68 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,111 +90,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
- CK Hu <ck.hu@mediatek.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com,
+ Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
-PiDmlrwgMjAyMeW5tDHmnIg35pelIOmAseWbmyDkuIrljYgxMToxMuWvq+mBk++8mgo+Cj4gQWRk
-IEREUCBzdXBwb3J0IGZvciBNVDgxNjcgU29DLgo+Cj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5n
-IE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIHwgNDggKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNDggaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiBpbmRleCAxZjk5ZGI2Li4xMzA4MDQ2IDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiBAQCAtMTUsNiArMTUsOCBA
-QAo+Cj4gICNkZWZpbmUgTVQyNzAxX0RJU1BfTVVURVgwX01PRDAgICAgICAgICAgICAgICAgICAg
-ICAgICAweDJjCj4gICNkZWZpbmUgTVQyNzAxX0RJU1BfTVVURVgwX1NPRjAgICAgICAgICAgICAg
-ICAgICAgICAgICAweDMwCj4gKyNkZWZpbmUgTVQ4MTgzX0RJU1BfTVVURVgwX01PRDAgICAgICAg
-ICAgICAgICAgICAgICAgICAweDMwCj4gKyNkZWZpbmUgTVQ4MTgzX0RJU1BfTVVURVgwX1NPRjAg
-ICAgICAgICAgICAgICAgICAgICAgICAweDJjCj4KPiAgI2RlZmluZSBESVNQX1JFR19NVVRFWF9F
-TihuKSAgICAgICAgICAgICAgICAgICAoMHgyMCArIDB4MjAgKiAobikpCj4gICNkZWZpbmUgRElT
-UF9SRUdfTVVURVgobikgICAgICAgICAgICAgICAgICAgICAgKDB4MjQgKyAweDIwICogKG4pKQo+
-IEBAIC0zOCw2ICs0MCwxOCBAQAo+ICAjZGVmaW5lIE1UODE2N19NVVRFWF9NT0RfRElTUF9ESVRI
-RVIgICAgICAgICAgIDE1Cj4gICNkZWZpbmUgTVQ4MTY3X01VVEVYX01PRF9ESVNQX1VGT0UgICAg
-ICAgICAgICAgMTYKPgo+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9NT0RfRElTUF9SRE1BMCAgICAg
-ICAgICAgIDAKPiArI2RlZmluZSBNVDgxODNfTVVURVhfTU9EX0RJU1BfUkRNQTEgICAgICAgICAg
-ICAxCj4gKyNkZWZpbmUgTVQ4MTgzX01VVEVYX01PRF9ESVNQX09WTDAgICAgICAgICAgICAgOQo+
-ICsjZGVmaW5lIE1UODE4M19NVVRFWF9NT0RfRElTUF9PVkwwXzJMICAgICAgICAgIDEwCj4gKyNk
-ZWZpbmUgTVQ4MTgzX01VVEVYX01PRF9ESVNQX09WTDFfMkwgICAgICAgICAgMTEKPiArI2RlZmlu
-ZSBNVDgxODNfTVVURVhfTU9EX0RJU1BfV0RNQTAgICAgICAgICAgICAxMgo+ICsjZGVmaW5lIE1U
-ODE4M19NVVRFWF9NT0RfRElTUF9DT0xPUjAgICAgICAgICAgIDEzCj4gKyNkZWZpbmUgTVQ4MTgz
-X01VVEVYX01PRF9ESVNQX0NDT1JSMCAgICAgICAgICAgMTQKPiArI2RlZmluZSBNVDgxODNfTVVU
-RVhfTU9EX0RJU1BfQUFMMCAgICAgICAgICAgICAxNQo+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9N
-T0RfRElTUF9HQU1NQTAgICAgICAgICAgIDE2Cj4gKyNkZWZpbmUgTVQ4MTgzX01VVEVYX01PRF9E
-SVNQX0RJVEhFUjAgICAgICAgICAgMTcKPiArCj4gICNkZWZpbmUgTVQ4MTczX01VVEVYX01PRF9E
-SVNQX09WTDAgICAgICAgICAgICAgMTEKPiAgI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1Bf
-T1ZMMSAgICAgICAgICAgICAxMgo+ICAjZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9SRE1B
-MCAgICAgICAgICAgIDEzCj4gQEAgLTg5LDYgKzEwMywxMCBAQAo+ICAjZGVmaW5lIE1UODE2N19N
-VVRFWF9TT0ZfRFBJMCAgICAgICAgICAyCj4gICNkZWZpbmUgTVQ4MTY3X01VVEVYX1NPRl9EUEkx
-ICAgICAgICAgIDMKPgo+ICsjZGVmaW5lIE1UODE4M19NVVRFWF9TT0ZfRFBJMCAgICAgICAgICAg
-ICAgICAgIDIKPiArI2RlZmluZSBNVDgxODNfTVVURVhfRU9GX0RTSTAgICAgICAgICAgICAgICAg
-ICAoTVVURVhfU09GX0RTSTAgPDwgNikKPiArI2RlZmluZSBNVDgxODNfTVVURVhfRU9GX0RQSTAg
-ICAgICAgICAgICAgICAgICAoTVQ4MTgzX01VVEVYX1NPRl9EUEkwIDw8IDYpCj4gKwo+Cj4gIHN0
-cnVjdCBtdGtfZGlzcF9tdXRleCB7Cj4gICAgICAgICBpbnQgaWQ7Cj4gQEAgLTE4Myw2ICsyMDEs
-MjAgQEAgc3RydWN0IG10a19kZHAgewo+ICAgICAgICAgW0REUF9DT01QT05FTlRfV0RNQTFdID0g
-TVQ4MTczX01VVEVYX01PRF9ESVNQX1dETUExLAo+ICB9Owo+Cj4gK3N0YXRpYyBjb25zdCB1bnNp
-Z25lZCBpbnQgbXQ4MTgzX211dGV4X21vZFtERFBfQ09NUE9ORU5UX0lEX01BWF0gPSB7Cj4gKyAg
-ICAgICBbRERQX0NPTVBPTkVOVF9BQUwwXSA9IE1UODE4M19NVVRFWF9NT0RfRElTUF9BQUwwLAo+
-ICsgICAgICAgW0REUF9DT01QT05FTlRfQ0NPUlJdID0gTVQ4MTgzX01VVEVYX01PRF9ESVNQX0ND
-T1JSMCwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX0NPTE9SMF0gPSBNVDgxODNfTVVURVhfTU9E
-X0RJU1BfQ09MT1IwLAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfRElUSEVSXSA9IE1UODE4M19N
-VVRFWF9NT0RfRElTUF9ESVRIRVIwLAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfR0FNTUFdID0g
-TVQ4MTgzX01VVEVYX01PRF9ESVNQX0dBTU1BMCwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX09W
-TDBdID0gTVQ4MTgzX01VVEVYX01PRF9ESVNQX09WTDAsCj4gKyAgICAgICBbRERQX0NPTVBPTkVO
-VF9PVkxfMkwwXSA9IE1UODE4M19NVVRFWF9NT0RfRElTUF9PVkwwXzJMLAo+ICsgICAgICAgW0RE
-UF9DT01QT05FTlRfT1ZMXzJMMV0gPSBNVDgxODNfTVVURVhfTU9EX0RJU1BfT1ZMMV8yTCwKPiAr
-ICAgICAgIFtERFBfQ09NUE9ORU5UX1JETUEwXSA9IE1UODE4M19NVVRFWF9NT0RfRElTUF9SRE1B
-MCwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX1JETUExXSA9IE1UODE4M19NVVRFWF9NT0RfRElT
-UF9SRE1BMSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX1dETUEwXSA9IE1UODE4M19NVVRFWF9N
-T0RfRElTUF9XRE1BMCwKPiArfTsKPiArCj4gIHN0YXRpYyBjb25zdCB1bnNpZ25lZCBpbnQgbXQy
-NzEyX211dGV4X3NvZltERFBfTVVURVhfU09GX0RTSTMgKyAxXSA9IHsKPiAgICAgICAgIFtERFBf
-TVVURVhfU09GX1NJTkdMRV9NT0RFXSA9IE1VVEVYX1NPRl9TSU5HTEVfTU9ERSwKPiAgICAgICAg
-IFtERFBfTVVURVhfU09GX0RTSTBdID0gTVVURVhfU09GX0RTSTAsCj4gQEAgLTIwMCw2ICsyMzIs
-MTIgQEAgc3RydWN0IG10a19kZHAgewo+ICAgICAgICAgW0REUF9NVVRFWF9TT0ZfRFBJMV0gPSBN
-VDgxNjdfTVVURVhfU09GX0RQSTEsCj4gIH07Cj4KPiArc3RhdGljIGNvbnN0IHVuc2lnbmVkIGlu
-dCBtdDgxODNfbXV0ZXhfc29mW0REUF9NVVRFWF9TT0ZfRFNJMyArIDFdID0gewo+ICsgICAgICAg
-W0REUF9NVVRFWF9TT0ZfU0lOR0xFX01PREVdID0gTVVURVhfU09GX1NJTkdMRV9NT0RFLAo+ICsg
-ICAgICAgW0REUF9NVVRFWF9TT0ZfRFNJMF0gPSBNVVRFWF9TT0ZfRFNJMCB8IE1UODE4M19NVVRF
-WF9FT0ZfRFNJMCwKPiArICAgICAgIFtERFBfTVVURVhfU09GX0RQSTBdID0gTVQ4MTgzX01VVEVY
-X1NPRl9EUEkwIHwgTVQ4MTgzX01VVEVYX0VPRl9EUEkwLAoKQWNjb3JkaW5nIHRvIGRpc2N1c3Np
-b24gaW4gWzFdLCBhZGQgY29tbWVudCBmb3IgdGhlIG9kZCBFT0Ygc2V0dGluZy4KClsxXSBodHRw
-czovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvcGF0Y2gvMTU5
-NTQ2OTc5OC0zODI0LTgtZ2l0LXNlbmQtZW1haWwteW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20v
-CgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPiArfTsKPiArCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
-bXRrX2RkcF9kYXRhIG10MjcwMV9kZHBfZHJpdmVyX2RhdGEgPSB7Cj4gICAgICAgICAubXV0ZXhf
-bW9kID0gbXQyNzAxX211dGV4X21vZCwKPiAgICAgICAgIC5tdXRleF9zb2YgPSBtdDI3MTJfbXV0
-ZXhfc29mLAo+IEBAIC0yMjksNiArMjY3LDE0IEBAIHN0cnVjdCBtdGtfZGRwIHsKPiAgICAgICAg
-IC5tdXRleF9zb2ZfcmVnID0gTVQyNzAxX0RJU1BfTVVURVgwX1NPRjAsCj4gIH07Cj4KPiArc3Rh
-dGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2RhdGEgbXQ4MTgzX2RkcF9kcml2ZXJfZGF0YSA9IHsK
-PiArICAgICAgIC5tdXRleF9tb2QgPSBtdDgxODNfbXV0ZXhfbW9kLAo+ICsgICAgICAgLm11dGV4
-X3NvZiA9IG10ODE4M19tdXRleF9zb2YsCj4gKyAgICAgICAubXV0ZXhfbW9kX3JlZyA9IE1UODE4
-M19ESVNQX01VVEVYMF9NT0QwLAo+ICsgICAgICAgLm11dGV4X3NvZl9yZWcgPSBNVDgxODNfRElT
-UF9NVVRFWDBfU09GMCwKPiArICAgICAgIC5ub19jbGsgPSB0cnVlLAo+ICt9Owo+ICsKPiAgc3Ry
-dWN0IG10a19kaXNwX211dGV4ICptdGtfZGlzcF9tdXRleF9nZXQoc3RydWN0IGRldmljZSAqZGV2
-LCB1bnNpZ25lZCBpbnQgaWQpCj4gIHsKPiAgICAgICAgIHN0cnVjdCBtdGtfZGRwICpkZHAgPSBk
-ZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiBAQCAtNDQ5LDYgKzQ5NSw4IEBAIHN0YXRpYyBpbnQgbXRr
-X2RkcF9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgICAgICAgICAgLmRh
-dGEgPSAmbXQ4MTY3X2RkcF9kcml2ZXJfZGF0YX0sCj4gICAgICAgICB7IC5jb21wYXRpYmxlID0g
-Im1lZGlhdGVrLG10ODE3My1kaXNwLW11dGV4IiwKPiAgICAgICAgICAgLmRhdGEgPSAmbXQ4MTcz
-X2RkcF9kcml2ZXJfZGF0YX0sCj4gKyAgICAgICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10
-ODE4My1kaXNwLW11dGV4IiwKPiArICAgICAgICAgLmRhdGEgPSAmbXQ4MTgzX2RkcF9kcml2ZXJf
-ZGF0YX0sCj4gICAgICAgICB7fSwKPiAgfTsKPiAgTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgZGRw
-X2RyaXZlcl9kdF9tYXRjaCk7Cj4gLS0KPiAxLjguMS4xLmRpcnR5Cj4gX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5n
-IGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFp
-bGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+From: Allen Pais <apais@linux.microsoft.com>
+
+Commit 12cc923f1ccc ("tasklet: Introduce new initialization API")'
+introduced a new tasklet initialization API. This series converts
+all the crypto modules to use the new tasklet_setup() API
+
+The series is based on v5.11-rc2 (e71ba9452f0b)
+
+v2:
+  - added acks
+  - addressed comments [Krzysztof and Gilad]
+
+Allen Pais (19):
+  crypto: amcc: convert tasklets to use new tasklet_setup() API
+  crypto: atmel: convert tasklets to use new tasklet_setup() API
+  crypto: axis: convert tasklets to use new tasklet_setup() API
+  crypto: caam: convert tasklets to use new tasklet_setup() API
+  crypto: cavium: convert tasklets to use new tasklet_setup() API
+  crypto: ccp: convert tasklets to use new tasklet_setup() API
+  crypto: ccree: convert tasklets to use new tasklet_setup() API
+  crypto: hifn_795x: convert tasklets to use new tasklet_setup() API
+  crypto: img-hash: convert tasklets to use new tasklet_setup() API
+  crypto: ixp4xx: convert tasklets to use new tasklet_setup() API
+  crypto: mediatek: convert tasklets to use new tasklet_setup() API
+  crypto: omap: convert tasklets to use new tasklet_setup() API
+  crypto: picoxcell: convert tasklets to use new tasklet_setup() API
+  crypto: qat: convert tasklets to use new tasklet_setup() API
+  crypto: qce: convert tasklets to use new tasklet_setup() API
+  crypto: rockchip: convert tasklets to use new tasklet_setup() API
+  crypto: s5p: convert tasklets to use new tasklet_setup() API
+  crypto: talitos: convert tasklets to use new tasklet_setup() API
+  crypto: octeontx: convert tasklets to use new tasklet_setup() API
+
+ drivers/crypto/amcc/crypto4xx_core.c          |  7 ++--
+ drivers/crypto/atmel-aes.c                    | 14 +++----
+ drivers/crypto/atmel-sha.c                    | 14 +++----
+ drivers/crypto/atmel-tdes.c                   | 14 +++----
+ drivers/crypto/axis/artpec6_crypto.c          |  7 ++--
+ drivers/crypto/caam/jr.c                      |  9 ++--
+ drivers/crypto/cavium/cpt/cptvf_main.c        |  9 ++--
+ drivers/crypto/cavium/nitrox/nitrox_common.h  |  2 +-
+ drivers/crypto/cavium/nitrox/nitrox_isr.c     | 13 +++---
+ drivers/crypto/cavium/nitrox/nitrox_reqmgr.c  |  4 +-
+ drivers/crypto/ccp/ccp-dev-v3.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dev-v5.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dmaengine.c            |  7 ++--
+ drivers/crypto/ccree/cc_fips.c                |  8 ++--
+ drivers/crypto/ccree/cc_request_mgr.c         | 12 +++---
+ drivers/crypto/hifn_795x.c                    |  6 +--
+ drivers/crypto/img-hash.c                     | 12 +++---
+ drivers/crypto/ixp4xx_crypto.c                |  4 +-
+ .../crypto/marvell/octeontx/otx_cptvf_main.c  | 12 +++---
+ drivers/crypto/mediatek/mtk-aes.c             | 14 +++----
+ drivers/crypto/mediatek/mtk-sha.c             | 14 +++----
+ drivers/crypto/omap-aes.c                     |  6 +--
+ drivers/crypto/omap-des.c                     |  6 +--
+ drivers/crypto/omap-sham.c                    |  6 +--
+ drivers/crypto/picoxcell_crypto.c             |  7 ++--
+ drivers/crypto/qat/qat_common/adf_isr.c       |  5 +--
+ drivers/crypto/qat/qat_common/adf_sriov.c     | 10 ++---
+ drivers/crypto/qat/qat_common/adf_transport.c |  4 +-
+ .../qat/qat_common/adf_transport_internal.h   |  2 +-
+ drivers/crypto/qat/qat_common/adf_vf_isr.c    | 11 +++--
+ drivers/crypto/qce/core.c                     |  7 ++--
+ drivers/crypto/rockchip/rk3288_crypto.c       | 14 +++----
+ drivers/crypto/s5p-sss.c                      | 13 +++---
+ drivers/crypto/talitos.c                      | 42 +++++++++----------
+ 34 files changed, 152 insertions(+), 181 deletions(-)
+
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
