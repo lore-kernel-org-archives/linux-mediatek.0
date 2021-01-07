@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93973C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 02:44:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A52FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 02:44:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D33923106
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 02:44:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D33923106
+	by mail.kernel.org (Postfix) with ESMTPS id 235212246B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 02:44:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 235212246B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xn5n49JqP41JBdGDmibmJ50ZA366w1j+dl8VGxtwjD0=; b=BeOzCewwo+Pl0f4RadILzSBuA
-	AG+SD92S3jpU/HXgo5tA5aXmdpFImkp8h7wu2aJ1/HKzN+RskRLFe6dzvfj+NfOZz50fgsJhiEXFP
-	34KWy5mi46iq+88fiUxHuYmokaEdupMhHZr8UFbfz/6D5JXyT3+2q3NFoiNeapXZHCivzqjx1rfXf
-	cIonWYD2ikrX08696HpHkkC19Rg1DzzTQxZJ9ld9Eo7sz5yUe+x2hsPKpcIpGhIElOirDg8JZkzgf
-	+ZuudaI7t2wI2cMgp/GQR4BoJhZSPkpkSPYYGG9Dv4srDoa0zJhjY9BEMfmmbfQHGw9TFVg85mtXd
-	YW+nxpSpw==;
+	 bh=ye8asREGQcv/caBly2dDtM6COSMXBHuBvr6MMqfOw9s=; b=xpr/P1MK4GCIdWfciV4PvIpSZ
+	22UVr8ohuAveaJ4fuD4iesZ2gluedhS5BY7ROgw3qoj0nZdD6v3hyNh3uuXVpqJOmyDWds97Sow08
+	5hXKmjpPT1ODgyMcTaHcL6G39inrondm2dwnYxSM2zChw9i27FwLJMSv7pITOOBquoGXmBU0ZSnBj
+	s1jhH04ZbgPm5WWU+3xid15Mka3pO0WgHSaegxyH30GOQed6BubLRzpoCRTnKoBsetNU3zWZrFLwf
+	0w1EyKplEJVJiyupnj27twEBnjaHTEL3FAfWjeoJ+K7tVGuY/dYGJ3Kr6maWgS2YmqmzJji+jXR/7
+	gk3miEzug==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxLHX-0000CQ-2r; Thu, 07 Jan 2021 02:44:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kxLHh-0000HO-Rv; Thu, 07 Jan 2021 02:44:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxLHT-00009R-2q; Thu, 07 Jan 2021 02:44:08 +0000
-X-UUID: df17cc1f2edc4034b13c470eb8dccbd2-20210106
+ id 1kxLHT-00009S-VX; Thu, 07 Jan 2021 02:44:09 +0000
+X-UUID: e2597cd5d01f4880ad9e9ef75bf61e32-20210106
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=v6nqAQPj2G9nO6gVy7fY+Amk9W9VnLS7FAN7Ct93X9U=; 
- b=aY/m4Dk/BpzQ1SZEGP8vxaRwTWNYYvfUzY2rRWWRuTZGb/ktOeIHkZfsJL4kxYSjZy1wSEpCTAvYjX0ylJI58ZzYe9c1QXoyM3X9Uy2xs7Qjb/YyylnnZUq16Yn0bloIuPpeHq5AaT+Y/i5+juCMSaweuJl62aLJUpYiVWJSmHY=;
-X-UUID: df17cc1f2edc4034b13c470eb8dccbd2-20210106
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=2kHrHPvbOXohPu53yxsTaIc6ucgoUUFXwJCWsijEuG8=; 
+ b=giQpG0K3bbwxdMFcrbXWw3VRavPG2YYLPRwYpnNfdqu+tgyEj5F//JB5oA/DEYC/nnhiYO7fae1p1cMJsfPsvDysBXdpUpjMfN7huozCViOHZnjMV/mGwq9RfADmSx2FgOY/3/sDxEYoLfhP+G6pdPnXwghrln7b84Orsk0Bdbk=;
+X-UUID: e2597cd5d01f4880ad9e9ef75bf61e32-20210106
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1169962155; Wed, 06 Jan 2021 18:44:02 -0800
+ with ESMTP id 117134247; Wed, 06 Jan 2021 18:44:03 -0800
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Jan 2021 18:44:01 -0800
+ 15.0.1497.2; Wed, 6 Jan 2021 18:44:02 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Jan 2021 10:43:59 +0800
+ 15.0.1497.2; Thu, 7 Jan 2021 10:44:00 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 7 Jan 2021 10:43:59 +0800
+ Frontend Transport; Thu, 7 Jan 2021 10:44:00 +0800
 From: Roger Lu <roger.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
  <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
  <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v11 2/7] arm64: dts: mt8183: add svs device information
-Date: Thu, 7 Jan 2021 10:43:51 +0800
-Message-ID: <20210107024356.583-3-roger.lu@mediatek.com>
+Subject: [PATCH v11 6/7] arm64: dts: mt8192: add svs device information
+Date: Thu, 7 Jan 2021 10:43:55 +0800
+Message-ID: <20210107024356.583-7-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210107024356.583-1-roger.lu@mediatek.com>
 References: <20210107024356.583-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_214407_363897_7E7E43A5 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20210106_214408_194627_EE7FFD0F 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,52 +94,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add compitable/reg/irq/clock/efuse setting in svs node
+add compitable/reg/irq/clock/efuse/reset setting in svs node
 
 Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 ++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 5b782a4769e7..4ead8eaca1cc 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -657,6 +657,18 @@
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 92dcfbd5a97f..5f0648730dda 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -224,6 +224,14 @@
+ 			compatible = "mediatek,mt8192-infracfg", "syscon";
+ 			reg = <0 0x10001000 0 0x1000>;
+ 			#clock-cells = <1>;
++
++			infracfg_rst: reset-controller {
++				compatible = "mediatek,infra-reset", "ti,syscon-reset";
++				#reset-cells = <1>;
++				ti,reset-bits = <
++					0x150 5 0x154 5 0 0     (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* 0: svs */
++				>;
++			};
+ 		};
+ 
+ 		pericfg: syscon@10003000 {
+@@ -318,6 +326,20 @@
  			status = "disabled";
  		};
  
 +		svs: svs@1100b000 {
-+			compatible = "mediatek,mt8183-svs";
++			compatible = "mediatek,mt8192-svs";
 +			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
++			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
 +			clocks = <&infracfg CLK_INFRA_THERM>;
 +			clock-names = "main";
 +			nvmem-cells = <&svs_calibration>,
-+				      <&thermal_calibration>;
++				      <&lvts_e_data1>;
 +			nvmem-cell-names = "svs-calibration-data",
 +					   "t-calibration-data";
++			resets = <&infracfg_rst 0>;
++			reset-names = "svs_rst";
 +		};
 +
- 		pwm0: pwm@1100e000 {
- 			compatible = "mediatek,mt8183-disp-pwm";
- 			reg = <0 0x1100e000 0 0x1000>;
-@@ -926,9 +938,15 @@
- 			reg = <0 0x11f10000 0 0x1000>;
- 			#address-cells = <1>;
- 			#size-cells = <1>;
-+			thermal_calibration: calib@180 {
-+				reg = <0x180 0xc>;
-+			};
- 			mipi_tx_calibration: calib@190 {
- 				reg = <0x190 0xc>;
- 			};
-+			svs_calibration: calib@580 {
-+				reg = <0x580 0x64>;
-+			};
+ 		spi1: spi@11010000 {
+ 			compatible = "mediatek,mt8192-spi",
+ 				     "mediatek,mt6765-spi";
+@@ -422,6 +444,18 @@
+ 			#clock-cells = <1>;
  		};
  
- 		u3phy: usb-phy@11f40000 {
++		efuse: efuse@11c10000 {
++			compatible = "mediatek,efuse";
++			reg = <0 0x11c10000 0 0x1000>;
++
++			lvts_e_data1: data1 {
++				reg = <0x1C0 0x58>;
++			};
++			svs_calibration: calib@580 {
++				reg = <0x580 0x68>;
++			};
++		};
++
+ 		i2c3: i2c3@11cb0000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11cb0000 0 0x1000>,
 -- 
 2.18.0
 _______________________________________________
