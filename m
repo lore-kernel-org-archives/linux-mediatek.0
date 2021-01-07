@@ -2,74 +2,88 @@ Return-Path: <SRS0=j7dB=GK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3249C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 14:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1575DC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 17:54:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F6072054F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 14:34:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F6072054F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A8CB223403
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 17:54:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8CB223403
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mRMr8E2uutWJl2riPTK53DfLuajYZh4J3v9kFR+J1qU=; b=O9Adldk1ywamdl10IOefzUymBw
-	UNjoX9VQ7fQoZAMXSio/IgDkF0CpAdbWiHQgVJZ44QkM9p5N41N2ufmtPNqwVSkTDJkF6dgZ3ZrmT
-	C2D5C/yGOPH8XdDV6KiH/yFLCaGbk43mVCHr+s4kQkdfQsgOmnWFRB0xZgug0nqq6Kq8z+7fvYsSe
-	J4CoYL4FRmsBvTF4w1fwHGN18nTCncBv9RseAWAizv4UhVwUM8vunHoHQZWo8E4Ydx2FQ6ppazGk8
-	O/YhOH6ZJ8FznFmfcxLcpNhfJyi9/y2fYy6hygFDpJStJ70iyZVzGy0ZaAJUZDZB9gm9V7qx9MJ25
-	0ZxgKKTA==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=HUXQFYc4a+XKtFbicPyD/LlwleG2G0WOJXRw71/Tjlg=; b=3kpgWBu6peKn4B0GLus0JbTOt
+	D2fmR0/oK+cUQN7AOvw+yzdg5mCOyiEtucqR54lL5sXWih/OC+L8BDjWTiM8z1WeiHWn5J4kNkFka
+	d1oUKlAihG6Kt1CNNS0FjWTUzvLWWAam0pmntyAD22UKTIy38fkvSAWQirEctyKUDsfeNHMoYF/aX
+	3G9TpmXJ8XP80yoB4jI+cZO6yAscHPc0IXV1OKAEIO7xVpWj9M7TRjDQzhqY1/iPKuaRVfEikBmZR
+	ghjmFyrzAVGTvnC89bnAlnohd+uNeGYFF43i6nbYEuQFXIA8i6a8E/UH03ck9THpKiFbIoMLfxlZX
+	IDcnjdhtQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxWMh-0003aG-0d; Thu, 07 Jan 2021 14:34:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kxZUC-0000CJ-0W; Thu, 07 Jan 2021 17:54:12 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxWMe-0003YV-A7; Thu, 07 Jan 2021 14:34:13 +0000
-X-UUID: 0f019511e59a4af290553b222f41d156-20210107
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=3yme2n6hj99TgRI5yAnQj8gNXTYS1bdd9oJBVcgH2/E=; 
- b=fjIQfgMu01NdzkfT99zAdbrEbwGBBSDGhiN5HMadNQOZsJmG08JL9KlQUbj6JQqtMFvuTMvkpUdg8D6obZfzRCVC9yBaemCixqn3jP2APusUFSFUB3MMFCrTWIBNL2HVmSbTW3Hkt/PJeKVdIqhtRE8a7uNedIs+nNqS8SqssaE=;
-X-UUID: 0f019511e59a4af290553b222f41d156-20210107
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 694815303; Thu, 07 Jan 2021 06:34:01 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 Jan 2021 06:34:00 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33DR.mediatek.inc
- (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 7 Jan 2021 22:33:56 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 7 Jan 2021 22:33:55 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH] drm/mediatek: dsi: Fix EoTp flag
-Date: Thu, 7 Jan 2021 22:33:52 +0800
-Message-ID: <20210107143352.50090-1-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ id 1kxZU9-0000Bc-Kc
+ for linux-mediatek@lists.infradead.org; Thu, 07 Jan 2021 17:54:11 +0000
+Received: by mail-pg1-x530.google.com with SMTP id p18so5434147pgm.11
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 Jan 2021 09:54:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=IWDaWvFgIj6PDvmAQcUMKtpRMVpX3sfMWCsGoHCRRMU=;
+ b=zQLv9ng9eOHhK1e/h86+a9yh/LgrUGqObWfOKQ/BUlm1mbjrcEhbhfEibCjnX29o1t
+ ttatKOq6oj/9QocQzsB5mfszuFViFwv1Jntdk6CaNo8ow8jS7r4Ofts2jdkZlddlsw7m
+ 1XF3MEUE0pEOCFwYwfZtWgXTGprOvTMRP5yS+7qRfM9nRFqpQDVW5pdEQJOpvCJX7dBe
+ pjlGfjFc7bBZfGXEZgJYiCER3PT7Y8UatpbnpcCqFTns9aP2AX+u5A0UdpC/i9SZ8k5W
+ m8OaSYPivBJnZLVzEOY4Y0+VadcxU5qOtTUkAhGBsoILN+ZhHeBRFcJYVhKMmILkkCHk
+ cvMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=IWDaWvFgIj6PDvmAQcUMKtpRMVpX3sfMWCsGoHCRRMU=;
+ b=nkYRAfFLVeiWtyvR7oYq20/qQ5m0MQNwW1KIdKZ4dFLpT+UbrF9P9BPZwUjNVKxa0i
+ SGgp1uT6Ur+gdomILnfho1mWx3iU2HtXyC4wUgExJmQgA5YBkqm2Nkfv7ZSKP8994z1a
+ CjUnTzvBxVA7DqzCVJCK9sgFW86F19A74GCUAFeMVkojwrItlO5Xec5pRG13LuKTDcYi
+ 3XuD/th3klbAF9BEiYFZSLsiOeQRwh5yRmJKRRl5XwSSMRTMXQocb8PFGEFB1Tm3OOv6
+ e8R4Rjo2dTSHskkjOtMlHCYdLHESh+gur/m3rfUwLsgsX1czJPTW2cDHb9yUOaAf0THG
+ zrZQ==
+X-Gm-Message-State: AOAM532WSsudDdymo4HCBF7NTRVodVWrZmvtYLGOq0Hou/g3vOOamf7Z
+ ZyodChCD+k6HTmyY1e6ui7R5hA==
+X-Google-Smtp-Source: ABdhPJxCfrjEXiW33j6eEsIDc7kOPI8fuEpZoFk+csDEAoECb4+ggDNJWA6uJddxVoP2HXVARmd61Q==
+X-Received: by 2002:a62:fc4f:0:b029:19d:d060:27ca with SMTP id
+ e76-20020a62fc4f0000b029019dd06027camr9499492pfh.66.1610042046636; 
+ Thu, 07 Jan 2021 09:54:06 -0800 (PST)
+Received: from xps15 (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id b12sm6364417pft.114.2021.01.07.09.54.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Jan 2021 09:54:05 -0800 (PST)
+Date: Thu, 7 Jan 2021 10:54:04 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tzung-Bi Shih <tzungbi@google.com>
+Subject: Re: [PATCH 2/2] remoteproc/mediatek: support L1TCM
+Message-ID: <20210107175404.GA33624@xps15>
+References: <20201214050521.845396-1-tzungbi@google.com>
+ <20201214050521.845396-3-tzungbi@google.com>
+ <20210106231513.GC9149@xps15>
+ <CA+Px+wXEV9GDCMjR8inbQ89tNV9n7RedeAOGJL_yATmeCLjXJw@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A377759D8A87949403261110186934E8B2642D92B1452A4748E1BCD43F073B582000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CA+Px+wXEV9GDCMjR8inbQ89tNV9n7RedeAOGJL_yATmeCLjXJw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_093412_571063_401445AC 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20210107_125410_027498_78C85044 
+X-CRM114-Status: GOOD (  17.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,55 +95,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
- cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Cc: Ohad Ben-Cohen <ohad@wizery.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>,
+ "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
+ <linux-remoteproc@vger.kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SoC will transmit the EoTp (End of Transmission packet) when
-MIPI_DSI_MODE_EOT_PACKET flag is set.
+On Thu, Jan 07, 2021 at 09:50:21AM +0800, Tzung-Bi Shih wrote:
+> On Thu, Jan 7, 2021 at 7:15 AM Mathieu Poirier
+> <mathieu.poirier@linaro.org> wrote:
+> >
+> > >  static void mt8183_scp_stop(struct mtk_scp *scp)
+> > >  {
+> > >       /* Disable SCP watchdog */
+> > > @@ -714,6 +749,19 @@ static int scp_probe(struct platform_device *pdev)
+> > >               goto free_rproc;
+> > >       }
+> > >       scp->sram_size = resource_size(res);
+> > > +     scp->sram_phys = res->start;
+> > > +
+> > > +     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
+> > > +     if (res) {
+> >
+> > As far as I can tell the if() condition isn't needed since
+> > platform_get_resource_byname() returns NULL on error and devm_ioremap_resource()
+> > is capable of handling that condition.  As such the code to parse "l1tcm" can be
+> > the same as what is done for "sram".
+> 
+> The "l1tcm" memory region is optional.  The if() condition is for: if
+> DTS doesn't provide the memory region, kernel can skip the code block.
+> 
 
-Enabling EoTp will make the line time larger, so the hfp and
-hbp should be reduced to keep line time.
+Very well - thanks for the clarification.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+> >
+> > With the above:
+> >
+> > Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+> >
+> > > +             scp->l1tcm_base = devm_ioremap_resource(dev, res);
+> > > +             if (IS_ERR((__force void *)scp->l1tcm_base)) {
+> > > +                     dev_err(dev, "Failed to parse and map l1tcm memory\n");
+> > > +                     ret = PTR_ERR((__force void *)scp->l1tcm_base);
+> > > +                     goto free_rproc;
+> > > +             }
+> > > +             scp->l1tcm_size = resource_size(res);
+> > > +             scp->l1tcm_phys = res->start;
+> > > +     }
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 65fd99c528af..8c70ec39bfe1 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -401,8 +401,11 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
- 		break;
- 	}
- 
--	tmp_reg |= (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS) << 6;
--	tmp_reg |= (dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET) >> 3;
-+	if (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS)
-+		tmp_reg |= HSTX_CKLP_EN;
-+
-+	if (!(dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
-+		tmp_reg |= DIS_EOT;
- 
- 	writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
- }
-@@ -478,6 +481,7 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 			  timing->da_hs_zero + timing->da_hs_exit + 3;
- 
- 	delta = dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST ? 18 : 12;
-+	delta += dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET ? 2 : 0;
- 
- 	horizontal_frontporch_byte = vm->hfront_porch * dsi_tmp_buf_bpp;
- 	horizontal_front_back_byte = horizontal_frontporch_byte + horizontal_backporch_byte;
--- 
-2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
