@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BEFEC433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71AA3C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 259B823356
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 259B823356
+	by mail.kernel.org (Postfix) with ESMTPS id 24E2E23356
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24E2E23356
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,63 +24,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dkwS2nkRhtDgd7va9wmmgEh5uZDQuVExfdwkNpLGewU=; b=M2MC/Fh851i56b2Rk5BqKka5l
-	qlcFaWvseqfwpfev7fvP1RF4e5VS5IavQZlK6h9+ixY7Y8L+nma9cNOEkyngWYbaSzBJAbMeyY/ks
-	XEvsbJzABrkk3U9GAJZ1XOdyNPsGJ4mVm5wsy3V5yxudFOuEBJQ05UVvm3fR4QtE/tdMCecjIHsX3
-	4fCkLhsLZcsev9gULtM+TW1PEnnmFpLa/YFER29P5PYvQARL1jsY/Uo55Qaih5az0Bj8tuzKW2TMK
-	1uYGjT4j9Qg1pULgLwwhR/OCrq2EQ+4GdVZJjT3+a6Vw8oVSmADRN6ovSi9H1/TEIBXAgAricnjps
-	nqwp/xFzA==;
+	 bh=0Cj9qtdhYweGNz/GUy4eZKVS8LAMtcU0X8fFlI+B1S4=; b=N4F/GdYNmooO8NWZiUuoeMPZO
+	puH7sGjrftAHBUnl2WSprxybkst7FcOoBkkPRil21hy7OvvMIGxjSfw+8wXDnYLy1wcj+kJWyQC/y
+	rqYX3ipJKdupR6k/ISusQZh0Z7ZJ37ZKMGYK1/APfHK6V/ma/K3maid+qsc15z10LDehqjHigC8yL
+	qyToKn2d05PJS4b3jXUtE3CeXTFqjrRK5QHzx52KOfOddF0EWdWjBcc6lwNJcOMU6nZlwvU8OBEat
+	elkxsUPNthf1iO7OKp/aCKllYeJU0tBklMLjF+KL5jDxARutirREOhZGHcdAW0HDUS7Konr6/EuXB
+	ZbfGEmayQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxUNt-0003bj-Kd; Thu, 07 Jan 2021 12:27:21 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1kxUO3-0003ek-7Y; Thu, 07 Jan 2021 12:27:31 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxUNq-0003az-R4; Thu, 07 Jan 2021 12:27:19 +0000
-Received: by mail-pf1-x436.google.com with SMTP id m6so3761592pfm.6;
- Thu, 07 Jan 2021 04:27:18 -0800 (PST)
+ id 1kxUO0-0003dm-Ps; Thu, 07 Jan 2021 12:27:29 +0000
+Received: by mail-pl1-x631.google.com with SMTP id t6so3416349plq.1;
+ Thu, 07 Jan 2021 04:27:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qu9jTq4Mhds1PLReGFI6BuQWWjoITkJw1sqRT7XAn7M=;
- b=QC08WxFbW+qIztVxBinWE5vs7IHHEhE3+M6tuDRvQi69LJbJ6fap5aP6NxviDUZ0Fv
- NOYboVzE5XO/yPpV1qHjKJMTd0JsECGmnj14cr6L3G39uy9Pjq5P19dNdg8wMtr8i3pt
- dUkrZB/iH0b2l84GCJyEKnaAJrykR6bRNhJEKV/3MOo1JRovquSz4KiMtuW5pzQT7iSg
- /EDg45nLnuGsvTelzscW1WfpG1eXUsifA/ZD0Hto17AEq4yMv3rQsg1JoSsLiTDLLv2o
- 3JEncImGFvwY3tXhhD1XSHIdxY6+ltkiQ/C/B4njyP41JG5Fk6SINZ5gJTQl88Zi171p
- bwOQ==
+ bh=ChEdTs09dQ0RBgzbeZxLNBVFnUFhvXMwpM6L2ZZDSyQ=;
+ b=kAoid7v3FFbiH7oBR3uCo/5IkT/s0C/4bktioTxr1/loZe/W5KibwOVR52gcw1e5/A
+ 4/d+YGm05IwecPjuh5EMd/RqRZXfjbDWSUqSueab0WaimcV8GlM4wtvcBvEVL0F628e4
+ LvScvGROPJr/WtqXrJFmpUHlu14ZAhR6MyynIKgr6qftmzU1VDZeUbfLP/4rMglys9RZ
+ 9raw70l7X0PJlt4hvT05S50I6+k3GfUJOiNttjxs8G0NEPHfoMj9h/2V2EHBkBBmA6BM
+ IxD9gPR6n63Bt/Fs3LYBjjdBLKExxxPHQjMkCfFIK95n3kg5oR+wcut7W24c22/FAPbX
+ mW8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qu9jTq4Mhds1PLReGFI6BuQWWjoITkJw1sqRT7XAn7M=;
- b=JJFZ2Ao2645RhQfWDUy11IrBUyaoCEx4MAFfcSs19c4VeqUfjkZ6lVYBEh3SiqFDLr
- n2lJw9QekwhNp7LDDVWfY/az0FYOccMTCb8ItB2j/lDgaFOhsJh+7PtsyxdL5uDyBPPG
- 6RQ4dJooPRkKWkAfqsgK3jci92981Nof2TBX/EVr4cYEZQcveXAHIqR7+fTWthGpVH66
- upKUbkYNJj3Ayrends0DcTUzIe8sq3MVn/P3sPLMn78UpFh+V3haroi54gOLnW/qpaI5
- 0/5cdKS7M4qXazggL2ncbbFQTMBxJ0sV4RPiW1xoXRDuBYL6lt5fOC/b2J8Hceot2ofG
- A6tg==
-X-Gm-Message-State: AOAM533tDdqmzdAkEGZfeCmLZPiH83G/hgvmghZl6zCACjwtZ6giTOx/
- /ZyjI2xU/SwUjH4bjwu4x+s=
-X-Google-Smtp-Source: ABdhPJzmtC0ZYYtJdJncyLo9jUcCmBc8rPOUk0rIqkXUz5Z6T+Z47y0DxRXaN43On1iH8mzHPPPjJg==
-X-Received: by 2002:a63:2ccf:: with SMTP id s198mr1638747pgs.30.1610022436883; 
- Thu, 07 Jan 2021 04:27:16 -0800 (PST)
+ bh=ChEdTs09dQ0RBgzbeZxLNBVFnUFhvXMwpM6L2ZZDSyQ=;
+ b=eYfC4jr40myRLoQMeGiQl4UVwG/Pyv/XwJGhS82cL7LTwGOL/pc+5JykQwkxHIIKtx
+ S3v7UogyClpneNusnJGASGUcGDG55w/0LvwOZAcerxAiIra0LwEBB+WAf1kkX38o83J6
+ tqkq6eh6fI86VLNIwKWvxCGFf32zRy75lBcdHEocpYtkZj33fLMs2eCkYjuWdMn8yK01
+ DKlP2u/uj6Y1ubQEdWAQdIqo6S7P47MPDwRRCTi429JNShTxwyKe5LxN1boxCEwoqC3X
+ VWO+5pfVHYJE5aLE4ZzSpSPufJux/Wf1YQESRGSJLz3eJZ9gBMS7rZgxKv88RgNqBPRR
+ ajWg==
+X-Gm-Message-State: AOAM533eXa8O52d/98tgQs7MPvIl3/Gm9E+Ve/Kbs7D2yRYpKJKkMtq+
+ AtSXXaFZWNtWIEidLRdvUf4=
+X-Google-Smtp-Source: ABdhPJydfhet9xlKM8LSiwmiP9ivKiEWjw5v+sep8vL8Nxz74x1JQp9iAk5faH/2yMMCOKbW/KMHWg==
+X-Received: by 2002:a17:90a:7087:: with SMTP id
+ g7mr9055469pjk.200.1610022446738; 
+ Thu, 07 Jan 2021 04:27:26 -0800 (PST)
 Received: from localhost.localdomain ([49.207.207.140])
- by smtp.gmail.com with ESMTPSA id x28sm5860403pff.182.2021.01.07.04.27.06
+ by smtp.gmail.com with ESMTPSA id x28sm5860403pff.182.2021.01.07.04.27.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Jan 2021 04:27:16 -0800 (PST)
+ Thu, 07 Jan 2021 04:27:26 -0800 (PST)
 From: Allen Pais <allen.lkml@gmail.com>
 To: herbert@gondor.apana.org.au
-Subject: [PATCH v2 01/19] crypto: amcc: convert tasklets to use new
+Subject: [PATCH v2 02/19] crypto: atmel: convert tasklets to use new
  tasklet_setup() API
-Date: Thu,  7 Jan 2021 17:56:28 +0530
-Message-Id: <20210107122646.16055-2-allen.lkml@gmail.com>
+Date: Thu,  7 Jan 2021 17:56:29 +0530
+Message-Id: <20210107122646.16055-3-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210107122646.16055-1-allen.lkml@gmail.com>
 References: <20210107122646.16055-1-allen.lkml@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_072718_938940_4D546796 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20210107_072728_855898_54BBD1F3 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,35 +121,128 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 ---
- drivers/crypto/amcc/crypto4xx_core.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/crypto/atmel-aes.c  | 14 ++++++--------
+ drivers/crypto/atmel-sha.c  | 14 ++++++--------
+ drivers/crypto/atmel-tdes.c | 14 ++++++--------
+ 3 files changed, 18 insertions(+), 24 deletions(-)
 
-diff --git a/drivers/crypto/amcc/crypto4xx_core.c b/drivers/crypto/amcc/crypto4xx_core.c
-index 8d1b918a0533..0e13430a5b9b 100644
---- a/drivers/crypto/amcc/crypto4xx_core.c
-+++ b/drivers/crypto/amcc/crypto4xx_core.c
-@@ -1072,9 +1072,9 @@ static void crypto4xx_unregister_alg(struct crypto4xx_device *sec_dev)
- 	}
+diff --git a/drivers/crypto/atmel-aes.c b/drivers/crypto/atmel-aes.c
+index b1d286004295..804e6a5a39d4 100644
+--- a/drivers/crypto/atmel-aes.c
++++ b/drivers/crypto/atmel-aes.c
+@@ -2300,16 +2300,16 @@ static void atmel_aes_dma_cleanup(struct atmel_aes_dev *dd)
+ 	dma_release_channel(dd->src.chan);
  }
  
--static void crypto4xx_bh_tasklet_cb(unsigned long data)
-+static void crypto4xx_bh_tasklet_cb(struct tasklet_struct *t)
+-static void atmel_aes_queue_task(unsigned long data)
++static void atmel_aes_queue_task(struct tasklet_struct *t)
  {
--	struct device *dev = (struct device *)data;
-+	struct device *dev = from_tasklet(dev, t, tasklet);
- 	struct crypto4xx_core_device *core_dev = dev_get_drvdata(dev);
- 	struct pd_uinfo *pd_uinfo;
- 	struct ce_pd *pd;
-@@ -1452,8 +1452,7 @@ static int crypto4xx_probe(struct platform_device *ofdev)
- 		goto err_build_sdr;
+-	struct atmel_aes_dev *dd = (struct atmel_aes_dev *)data;
++	struct atmel_aes_dev *dd = from_tasklet(dd, t, queue_task);
  
- 	/* Init tasklet for bottom half processing */
--	tasklet_init(&core_dev->tasklet, crypto4xx_bh_tasklet_cb,
--		     (unsigned long) dev);
-+	tasklet_setup(&core_dev->tasklet, crypto4xx_bh_tasklet_cb);
+ 	atmel_aes_handle_queue(dd, NULL);
+ }
  
- 	core_dev->dev->ce_base = of_iomap(ofdev->dev.of_node, 0);
- 	if (!core_dev->dev->ce_base) {
+-static void atmel_aes_done_task(unsigned long data)
++static void atmel_aes_done_task(struct tasklet_struct *t)
+ {
+-	struct atmel_aes_dev *dd = (struct atmel_aes_dev *)data;
++	struct atmel_aes_dev *dd = from_tasklet(dd, t, done_task);
+ 
+ 	dd->is_async = true;
+ 	(void)dd->resume(dd);
+@@ -2499,10 +2499,8 @@ static int atmel_aes_probe(struct platform_device *pdev)
+ 	INIT_LIST_HEAD(&aes_dd->list);
+ 	spin_lock_init(&aes_dd->lock);
+ 
+-	tasklet_init(&aes_dd->done_task, atmel_aes_done_task,
+-					(unsigned long)aes_dd);
+-	tasklet_init(&aes_dd->queue_task, atmel_aes_queue_task,
+-					(unsigned long)aes_dd);
++	tasklet_setup(&aes_dd->done_task, atmel_aes_done_task);
++	tasklet_setup(&aes_dd->queue_task, atmel_aes_queue_task);
+ 
+ 	crypto_init_queue(&aes_dd->queue, ATMEL_AES_QUEUE_LENGTH);
+ 
+diff --git a/drivers/crypto/atmel-sha.c b/drivers/crypto/atmel-sha.c
+index 352d80cb5ae9..8ec8a32606e8 100644
+--- a/drivers/crypto/atmel-sha.c
++++ b/drivers/crypto/atmel-sha.c
+@@ -1314,9 +1314,9 @@ static struct ahash_alg sha_384_512_algs[] = {
+ },
+ };
+ 
+-static void atmel_sha_queue_task(unsigned long data)
++static void atmel_sha_queue_task(struct tasklet_struct *t)
+ {
+-	struct atmel_sha_dev *dd = (struct atmel_sha_dev *)data;
++	struct atmel_sha_dev *dd = from_tasklet(dd, t, queue_task);
+ 
+ 	atmel_sha_handle_queue(dd, NULL);
+ }
+@@ -1353,9 +1353,9 @@ static int atmel_sha_done(struct atmel_sha_dev *dd)
+ 	return err;
+ }
+ 
+-static void atmel_sha_done_task(unsigned long data)
++static void atmel_sha_done_task(struct tasklet_struct *t)
+ {
+-	struct atmel_sha_dev *dd = (struct atmel_sha_dev *)data;
++	struct atmel_sha_dev *dd = from_tasklet(dd, t, done_task);
+ 
+ 	dd->is_async = true;
+ 	(void)dd->resume(dd);
+@@ -2570,10 +2570,8 @@ static int atmel_sha_probe(struct platform_device *pdev)
+ 	INIT_LIST_HEAD(&sha_dd->list);
+ 	spin_lock_init(&sha_dd->lock);
+ 
+-	tasklet_init(&sha_dd->done_task, atmel_sha_done_task,
+-					(unsigned long)sha_dd);
+-	tasklet_init(&sha_dd->queue_task, atmel_sha_queue_task,
+-					(unsigned long)sha_dd);
++	tasklet_setup(&sha_dd->done_task, atmel_sha_done_task);
++	tasklet_setup(&sha_dd->queue_task, atmel_sha_queue_task);
+ 
+ 	crypto_init_queue(&sha_dd->queue, ATMEL_SHA_QUEUE_LENGTH);
+ 
+diff --git a/drivers/crypto/atmel-tdes.c b/drivers/crypto/atmel-tdes.c
+index 4d63cb13a54f..b7a734f666ae 100644
+--- a/drivers/crypto/atmel-tdes.c
++++ b/drivers/crypto/atmel-tdes.c
+@@ -1049,16 +1049,16 @@ static struct skcipher_alg tdes_algs[] = {
+ },
+ };
+ 
+-static void atmel_tdes_queue_task(unsigned long data)
++static void atmel_tdes_queue_task(struct tasklet_struct *t)
+ {
+-	struct atmel_tdes_dev *dd = (struct atmel_tdes_dev *)data;
++	struct atmel_tdes_dev *dd = from_tasklet(dd, t, queue_task);
+ 
+ 	atmel_tdes_handle_queue(dd, NULL);
+ }
+ 
+-static void atmel_tdes_done_task(unsigned long data)
++static void atmel_tdes_done_task(struct tasklet_struct *t)
+ {
+-	struct atmel_tdes_dev *dd = (struct atmel_tdes_dev *) data;
++	struct atmel_tdes_dev *dd = from_tasklet(dd, t, done_task);
+ 	int err;
+ 
+ 	if (!(dd->flags & TDES_FLAGS_DMA))
+@@ -1177,10 +1177,8 @@ static int atmel_tdes_probe(struct platform_device *pdev)
+ 	INIT_LIST_HEAD(&tdes_dd->list);
+ 	spin_lock_init(&tdes_dd->lock);
+ 
+-	tasklet_init(&tdes_dd->done_task, atmel_tdes_done_task,
+-					(unsigned long)tdes_dd);
+-	tasklet_init(&tdes_dd->queue_task, atmel_tdes_queue_task,
+-					(unsigned long)tdes_dd);
++	tasklet_setup(&tdes_dd->done_task, atmel_tdes_done_task);
++	tasklet_setup(&tdes_dd->queue_task, atmel_tdes_queue_task);
+ 
+ 	crypto_init_queue(&tdes_dd->queue, ATMEL_TDES_QUEUE_LENGTH);
+ 
 -- 
 2.25.1
 
