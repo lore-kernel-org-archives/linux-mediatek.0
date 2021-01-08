@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 942C9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 09:56:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2AE00C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 10:03:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26E64235FF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 09:56:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26E64235FF
+	by mail.kernel.org (Postfix) with ESMTPS id BAFC32368A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 10:03:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAFC32368A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,69 +23,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dudrymWd/cUfMWH6TFaKUjlez5CxIJx/8RXs4a6I3qA=; b=yKwx3X3LqxoWbVuILE3uwBCqr
-	z6khlByDLrDHW/SPeuHWfQ1BhSrDQBJ8sWI5j/wUN9RhoI3KmEm/Zs3PFY5ZzoexUMKGY05PCaL1u
-	wdYJvcH/s6ryRgvGzNDf1WYO9ryyqtAQzsZXmH1UNRKoVVSy6sMW27cfQWuZevZd1I0Chir0zObN3
-	pO7sURbSdsGNwBlytTaYVTpZIY8r5R/fNrno8otwp+XrefB/vbo0juAimeEbmE0k5X7hYbyJ78FCQ
-	FgKkEsig2fERO18eJtz/H0hwl4Hkofr0xS++8DMrbULZtE6ZwHSAXb5cYhBvY2jra192GvjopwRvV
-	WeqfK5h7w==;
+	 bh=rkYTr/KE0poMbB4zJWbJKLSOulEYaEpt5r6Fm1PBbCM=; b=nPmnw6w5zYKP0nPmI/CdNFUr3
+	Bxhm/O2NiYkiHWn4EtSyv/I3oWFct+TIZQ5daUMlDdhvHhzh5WNP7Em5YTsR0GNUl2ez/P7QeB1cC
+	Tl5BhuoNDPUPvn+GpZfwr9kT489q01IWJnFQp/97mTmeNWoApWGM7NU/+uH2M4aOWrNhHtrNrPVnX
+	NAo6Co3ezGlSAcXjkeKyRPYX9uK42caDv3a2CLSOHWfddnYOPNyQo2BA8Dj8kzqXHsxlNPZT+7tu5
+	kdYZhDtddQPQM68ZtRxBHUipVg82SW7JZwy6KSD6myF+VDyzB6ka6Owjnp9Y0sylB4H+ECA+ycUZF
+	U0/tIf7eg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxoVQ-0001kH-56; Fri, 08 Jan 2021 09:56:28 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1kxobq-0003D3-OR; Fri, 08 Jan 2021 10:03:06 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxoVO-0001jW-Ll
- for linux-mediatek@lists.infradead.org; Fri, 08 Jan 2021 09:56:27 +0000
-Received: by mail-ej1-x635.google.com with SMTP id qw4so13655879ejb.12
- for <linux-mediatek@lists.infradead.org>; Fri, 08 Jan 2021 01:56:26 -0800 (PST)
+ id 1kxobo-0003CM-19
+ for linux-mediatek@lists.infradead.org; Fri, 08 Jan 2021 10:03:05 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id n26so13763574eju.6
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Jan 2021 02:03:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=e8wcnpRjmLqWWPjOlKuS2zxtj825HdJfa315uuBxu+E=;
- b=gwT5kI9b3q1yJSSsmO/r1XGlJqaVWHsjszygBZhjqC7h5N6orJ9UZkWUXXLGVsDCdt
- +tUUsJ/rk4gTyjSeuaNo4p41y92lWxoM0ax4HUNKFNs/mTUR5aZErWWuL2rwygC+0SUL
- uaC5iKH2mNmV2MD9P1s6rwULoDm5+wGLeM9Q8=
+ :cc; bh=OgTTM7Je3NnB3ePQPpNq/vGTpnr56q78wxtK06ISc3c=;
+ b=auNsM5JcUWJCVLKXA76la9K6AOW5WRt5mMh9nWB17XsLu8PpIbAdJk9zeF32+3HQiH
+ qvil5XdWfmIOgNNeKODzZMznVpw193VQY2H5W2SA9n7d29tYL3HuaqkvpQxg8ePgHsNw
+ qv9V9S48Q85O+s27nzn7mIv1ZCkpge7Rqyt4I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=e8wcnpRjmLqWWPjOlKuS2zxtj825HdJfa315uuBxu+E=;
- b=kOAbZqONMwCnCRz5H6DmlxyWo92/DcgzZAhwwz4z87299I8JXuKHXggQdONXLypRYv
- FpvV1VEUt4Yu28LDU1rbZwc5QQymE323CW/xrZIAn+ll7KD2OlcK4hM4pVy+FSl7q0ch
- /CgWjG//9IcqDa8g7lL/dU2PmuQZTkDeA/mPx6TOAdqvTM5Qn/VsX3Ylkt6pDcnzJltC
- RJFhr2PAJvZVt9MQbL53fQXtKU7xRKyUGDN9mkwlXPLo24qZKBE5ou1Xd8axkipNIAhe
- NKyiAclzQjCeYAavzQ23akAMAQxrPKf7x7mijHzZ6N8/rttF/gmOuFnbJlB56rDrQe1j
- cZyQ==
-X-Gm-Message-State: AOAM530C8nn0Ia1hjMjO/XVwPqS2/UDe/5WVCHGXM7Tyf9kN8Oydg+Iw
- Tdqjz/qYIRTTSMRzVd3NS0h4wNdYbFVv4Q==
-X-Google-Smtp-Source: ABdhPJzXSQoQvOhvAcU4IEFIsdcFdfL84EebvehUcHr3A41yZmuwzS6xUTKN0PnWYLLMzvX8f2R3sQ==
-X-Received: by 2002:a17:906:298c:: with SMTP id
- x12mr2163448eje.244.1610099784650; 
- Fri, 08 Jan 2021 01:56:24 -0800 (PST)
-Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com.
- [209.85.221.44])
- by smtp.gmail.com with ESMTPSA id g18sm3591245edt.2.2021.01.08.01.56.23
+ bh=OgTTM7Je3NnB3ePQPpNq/vGTpnr56q78wxtK06ISc3c=;
+ b=YSfUZw3Ub8KQI2/dP6U4DOGSy6zex54IOaDP6q8dZz/fylViOCweVHiKezB+BAhsNa
+ dED8tnAv2HGhv8VOqI/VdAu0hajcEQgENQ8cQUx3b4IOUmJm6XbMbcdGGyEX1/izZF7G
+ Xe2oSxrA8TfsMwvU0toEhEM+5MWbMhp6v7O9hb//dSyh75Tj0LIP4qVqEY13Pf5bj3v5
+ 1QCSiRchuBxWIvLfXQL82asFZ8DI9+1jj3lWnQRBE9aHPyY0ruHy3wrq+12ea0vyo6Ps
+ ktCHymq5dTpn8HI72zWxGFdCUFQMP5T0MX88xGHsWMwEwvK5htGBMdVnkrRUAFT7iVYE
+ gxlA==
+X-Gm-Message-State: AOAM533zM6NnRKe7DCcj+9a87xV+WeEDMkc7noQxWHxOk4CDXzRmwx/3
+ VasQ8AsX4zoHGca1TaKey78zDwBPuVQ/aA==
+X-Google-Smtp-Source: ABdhPJz4Tv0CY4fR6KaNhG72jrXRkVeNjrjpg8G1ZXxYuyxV3pZpgkCOeIigrRS1A1XszciBswKASg==
+X-Received: by 2002:a17:906:941a:: with SMTP id
+ q26mr2161239ejx.227.1610100182494; 
+ Fri, 08 Jan 2021 02:03:02 -0800 (PST)
+Received: from mail-ej1-f41.google.com (mail-ej1-f41.google.com.
+ [209.85.218.41])
+ by smtp.gmail.com with ESMTPSA id d18sm3648360edz.14.2021.01.08.02.03.02
  for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Jan 2021 01:56:23 -0800 (PST)
-Received: by mail-wr1-f44.google.com with SMTP id m5so8363893wrx.9
- for <linux-mediatek@lists.infradead.org>; Fri, 08 Jan 2021 01:56:23 -0800 (PST)
-X-Received: by 2002:adf:bb0e:: with SMTP id r14mr2875978wrg.159.1610099783056; 
- Fri, 08 Jan 2021 01:56:23 -0800 (PST)
+ Fri, 08 Jan 2021 02:03:02 -0800 (PST)
+Received: by mail-ej1-f41.google.com with SMTP id ce23so13749782ejb.8
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Jan 2021 02:03:02 -0800 (PST)
+X-Received: by 2002:adf:ef12:: with SMTP id e18mr2809851wro.192.1610099831526; 
+ Fri, 08 Jan 2021 01:57:11 -0800 (PST)
 MIME-Version: 1.0
 References: <20201216103607.23050-1-yong.wu@mediatek.com>
  <20201216103607.23050-7-yong.wu@mediatek.com>
  <X+MGKBYKdmPNz7VL@chromium.org> <1de76b46-d9c1-4011-c087-1df236f442c3@arm.com>
 In-Reply-To: <1de76b46-d9c1-4011-c087-1df236f442c3@arm.com>
 From: Tomasz Figa <tfiga@chromium.org>
-Date: Fri, 8 Jan 2021 18:56:11 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5C72ejEEioM=fTeE2=36DgRbDR1cCuWqn-7xnWRVzYPGw@mail.gmail.com>
-Message-ID: <CAAFQd5C72ejEEioM=fTeE2=36DgRbDR1cCuWqn-7xnWRVzYPGw@mail.gmail.com>
+Date: Fri, 8 Jan 2021 18:56:59 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5Cwjq2E+jZopcV2SP-6fzOvh=_uisd3JhWdwwp4zwO=zw@mail.gmail.com>
+Message-ID: <CAAFQd5Cwjq2E+jZopcV2SP-6fzOvh=_uisd3JhWdwwp4zwO=zw@mail.gmail.com>
 Subject: Re: [PATCH v3 6/7] iommu/mediatek: Gather iova in iommu_unmap to
  achieve tlb sync once
 To: Robin Murphy <robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210108_045626_733988_6F28787D 
-X-CRM114-Status: GOOD (  32.75  )
+X-CRM114-CacheID: sfid-20210108_050304_102649_726C2104 
+X-CRM114-Status: GOOD (  33.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -186,6 +186,14 @@ On Wed, Dec 23, 2020 at 8:00 PM Robin Murphy <robin.murphy@arm.com> wrote:
 > TLB maintenance back to drivers rather than try to cram yet more
 > special-case complexity into io-pgtable itself. I'm planning to clean up
 > the remains of the TLBI_ON_MAP quirk entirely after this.
+
+(Sorry, I sent an empty email accidentally.)
+
+I see, thanks for clarifying. The patch looks good to me then.
+
+Best regards,
+Tomasz
+
 >
 > Robin.
 >
