@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E1086C433E6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 18:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A675C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 18:26:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 96CF123A79
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 18:25:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96CF123A79
+	by mail.kernel.org (Postfix) with ESMTPS id E9E4823A79
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 18:26:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9E4823A79
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,59 +23,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=v8YDIyiZbEeOOtMfpoYqKyzumYJ6Jn4NdhZ0vkUNokE=; b=HFPmy/57Pz7IYoPE0FI4sXRvH
-	fd5rmt+Q+Yk/gZI+JuzCzhsNAd/VT3uJJcX2X64nC8qSlhQqgtcnwLHfWhsu6aePPWofF+EO06S3I
-	bvuxxGEq+7osvXcLM+AzwlsJsvBbdTDtHjfwrhUWNRo/zl9dVRmxLBRKzTU10FdjxY9a/0lc30A45
-	/gGA4L0LlkRSgqBrTImUNuu+HKjFzbaT+u1rHoGHwDROo8PdnjN2olRbSvoPgHGx+WOUFZ0EICr9C
-	G9zE696JQJLRz/vZtOl2YbA5zs6xGtxs3xXB8nZ7dYc6o7lgJ4w9Q6qnf5qcnqrvE5CWWnmDKrOqx
-	dgr+2PrGA==;
+	 bh=zrsmmPuTVVFnXEARdNwmkq8etqDPuV6wVccKRB7G4U4=; b=GnwyNUpwoyAITanK5Qh737AFs
+	RzAgir5uyrXoWu29/zJxj7sT78MidudxQvgp4ZmHlzOpU/TbrELe3RdFLdg5PN5IU1ddbpgRDoD28
+	DrepPdE+dHvnm29zPDIq6kb+WRIxxlJnYvhz9X8UtpT1ESaMOa1UR/4mmT2olZLZwhkmiHZLmiQko
+	eT9z8UQrK3fRRj9zzlULlgAk4JtwJ0gFqm08rhzRSG9QC3TmBBeHEUNY15jxLvBTwgUW1voVmd/D7
+	KaQosg3s249sEh+5xZGmE6wiwPIkD4p/UOls/aOBxzFS8EJ6nMtgh7HBD6kHaZAm7D7bbwWxvNSQO
+	GZOCWPNpg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxwSH-0005HU-LP; Fri, 08 Jan 2021 18:25:45 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1kxwSU-0005L7-Lq; Fri, 08 Jan 2021 18:25:58 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxwSF-0005Fm-Nj
- for linux-mediatek@lists.infradead.org; Fri, 08 Jan 2021 18:25:45 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id y8so6082635plp.8
- for <linux-mediatek@lists.infradead.org>; Fri, 08 Jan 2021 10:25:41 -0800 (PST)
+ id 1kxwSS-0005JS-9k
+ for linux-mediatek@lists.infradead.org; Fri, 08 Jan 2021 18:25:57 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2so6766392pfq.5
+ for <linux-mediatek@lists.infradead.org>; Fri, 08 Jan 2021 10:25:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TvvXV7bEAAhRZbN5Xzp/cblWdK/NVPGWOn4od85Z6/w=;
- b=d+L+HGQnJ8GkivLJcq4DSA2uJmUEaepv00NVO6HXnXJPKMFc+PtcXC1FqGYoEuOMyT
- s0pXM7/rVZSEDTRSIpT0t7Rd5Ha5ua5EkBbHlDLbrV82y4x5LFvv9+DKrxf2mNewLhOA
- oGwdlDMpLGuBuvDgbAgAeHZWF4BmA3bl/h5vs5xK9x43q3QakNcdeCuV+Edzegzk8S3f
- XLZDkOrFMrItw47dJOMCaGb0qkDDVq8mYsC6UXU0Z9t0t09FLfNAqWiikYHfXz6MSSBq
- 4GKoC01+QiIWSjcxFl8QSUjD9ZlV+xv8AnZlaqcp4j+Jdg9qGFXMYI3dAmqV8mLxDtVQ
- z4pA==
+ :cc; bh=0EAbk42/5hnLn57GbgtjDwqdHR3jfIYT2uMLmHPvJts=;
+ b=GmQA0TK1/fTvWRYlbX8p4NPq4WB22Wg7Ywbvgze/EhfVQshxKbzRchG+vtkcGQuoef
+ R1n3DPD6AwLpB0NZ6vsDh6tsbfOQdqPWqWbwLhZ2z9NFT2R93LSkpRXtt9ixq6WY6ZRM
+ 1WyDPU8zCGq4TLif15/bk4JUs6ujHJ25HFJydxDHv63V+iRTHSRGHeXVCB7uQH8q0+l1
+ sopBNNW0T04cFEroSGKOLkgAjG/QP80skKIH3DiMsBocEd6MmwUik3QEgj51blSfLrw+
+ kxI2d3CDwr0ony4tio4VgC0RbmYV7iTNwGvdKwsTV9hTMcXKx6gvb5g6x3Ne4JR787kN
+ Iunw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=TvvXV7bEAAhRZbN5Xzp/cblWdK/NVPGWOn4od85Z6/w=;
- b=r9uUxZnW8nQsNBcFS14xuVx4y4aqxRNNj5Cspr1k6WMPBsnLFV9flVi/wr3/lKGx6u
- hUxydsAOKuIsUXPrhD0XQ3NujVKDbTztJTv1AqE/ep5j+rplYWmnUEBqnwxc0+ulQM0H
- LyDuMmY6lpK8K7zA/8uKgIRGlNU89ImKi9HvP445Nwi7s+fSLsnO8B/qDXqN/XSmpKxw
- anCxwQ+RrSZxe0Yx3CicdVdI3wWVQoaut58f8ZrgZrMvv64QE6inZ8HdLASZjw8u65ty
- B1l82mOt+GY5zCiuGhJ4DnlfpHiI6v7f/chNCCk9V+LFyO1x23j9K9hMuLOelhJauS/8
- NijA==
-X-Gm-Message-State: AOAM531eTlIrlfDN1LSg8jjnDnM4WRWXErFRc/vDjG37C4cjvhFOWkun
- XUnAvtMTInPuyrAXb8S36j1yy4akP4FSoa3cU9nJ4Q==
-X-Google-Smtp-Source: ABdhPJyeJJzO6h/di2HJL1UmMv07+bcKcaBYuL/EVRKkCR5n8bUJwaYA/emooOx9egKITTXFLdGAXEu23w8IL5O6hTg=
-X-Received: by 2002:a17:902:9009:b029:dc:52a6:575 with SMTP id
- a9-20020a1709029009b02900dc52a60575mr4902482plp.57.1610130339630; Fri, 08 Jan
- 2021 10:25:39 -0800 (PST)
+ bh=0EAbk42/5hnLn57GbgtjDwqdHR3jfIYT2uMLmHPvJts=;
+ b=Lsq9DORT+ms0TzEfQk96elUcEX7KQEoUdvleFe7Oj6IFuVRV/eV5xvgrkZSDqocrzS
+ gFz4lgkFPh6Cr3E6dwRHFrGPtXRogB9YA1SPhLMj//1HreKUawTmxOGffeDNgbEAe++x
+ n/T004HJ/SHPB/hg8uHE0ky623ldY5gSnAhXO5rY4Cv49nVxaCw0c1PZVQuK8slqt4ZV
+ S+wAfo7V62s4OcadWp0AXf1VDfczLiN9G7kuC0ij0GaJXhyqmTlZrqLtUcm+LOdu7Ozf
+ RvjIljPYOO9g0iDadzHn6BWF/eVjPVI1khPNOO/mc8XjAe7GZshteMc0AJ4Ph3rdWEqb
+ jXTg==
+X-Gm-Message-State: AOAM531YxfD8BQu+bF8vkW7HQGoSGWPU44QATP/WZ3q3jJRwsaXZsNti
+ tzoMAO6PEn9nZW5ceTTuTZGhybhWIFcz7MD0kBvJDg==
+X-Google-Smtp-Source: ABdhPJyIbSeQV6YmcwWirU9XjduVAgHbx7V4PDlg5rOhCznobe6ijBKgyvJ9t3YwNnsM4pixotFS5VtXnV7o52yaQTg=
+X-Received: by 2002:a62:2585:0:b029:1ab:7fb7:b965 with SMTP id
+ l127-20020a6225850000b02901ab7fb7b965mr4980449pfl.2.1610130353786; Fri, 08
+ Jan 2021 10:25:53 -0800 (PST)
 MIME-Version: 1.0
-References: <20210103063847.5963-1-lecopzer@gmail.com>
-In-Reply-To: <20210103063847.5963-1-lecopzer@gmail.com>
+References: <20210103135621.83129-1-lecopzer@gmail.com>
+In-Reply-To: <20210103135621.83129-1-lecopzer@gmail.com>
 From: Andrey Konovalov <andreyknvl@google.com>
-Date: Fri, 8 Jan 2021 19:25:28 +0100
-Message-ID: <CAAeHK+z_+sgoJbi8ULJYKdcNoB9WET8pRbkD7MvK+yp6k5sk4A@mail.gmail.com>
-Subject: Re: [PATCH] kasan: fix incorrect arguments passing in
- kasan_add_zero_shadow
-To: Lecopzer Chen <lecopzer@gmail.com>
+Date: Fri, 8 Jan 2021 19:25:42 +0100
+Message-ID: <CAAeHK+z0+hWBFha8Upu7JN-_ruBopzUkNKgBoihUPt1w6k8auA@mail.gmail.com>
+Subject: Re: [PATCH] kasan: fix unaligned address is unhandled in
+ kasan_remove_zero_shadow
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210108_132543_832765_A100BD0E 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20210108_132556_419796_8D74BB75 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,12 +87,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>, yj.chiang@mediatek.com,
- linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
- kasan-dev <kasan-dev@googlegroups.com>,
+Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>,
+ Lecopzer Chen <lecopzer@gmail.com>, yj.chiang@mediatek.com,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
  Linux Memory Management List <linux-mm@kvack.org>,
- Alexander Potapenko <glider@google.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Alexander Potapenko <glider@google.com>, linux-mediatek@lists.infradead.org,
  Dan Williams <dan.j.williams@intel.com>,
  Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -100,34 +99,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 3, 2021 at 7:39 AM Lecopzer Chen <lecopzer@gmail.com> wrote:
+On Sun, Jan 3, 2021 at 2:56 PM Lecopzer Chen <lecopzer@gmail.com> wrote:
 >
-> kasan_remove_zero_shadow() shall use original virtual address, start
-> and size, instead of shadow address.
+> During testing kasan_populate_early_shadow and kasan_remove_zero_shadow,
+> if the shadow start and end address in kasan_remove_zero_shadow() is
+> not aligned to PMD_SIZE, the remain unaligned PTE won't be removed.
+>
+> In the test case for kasan_remove_zero_shadow():
+>     shadow_start: 0xffffffb802000000, shadow end: 0xffffffbfbe000000
+>     3-level page table:
+>       PUD_SIZE: 0x40000000 PMD_SIZE: 0x200000 PAGE_SIZE: 4K
+> 0xffffffbf80000000 ~ 0xffffffbfbdf80000 will not be removed because
+> in kasan_remove_pud_table(), kasan_pmd_table(*pud) is true but the
+> next address is 0xffffffbfbdf80000 which is not aligned to PUD_SIZE.
+>
+> In the correct condition, this should fallback to the next level
+> kasan_remove_pmd_table() but the condition flow always continue to skip
+> the unaligned part.
+>
+> Fix by correcting the condition when next and addr are neither aligned.
 >
 > Fixes: 0207df4fa1a86 ("kernel/memremap, kasan: make ZONE_DEVICE with work with KASAN")
 > Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
 > ---
->  mm/kasan/init.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  mm/kasan/init.c | 20 ++++++++++++--------
+>  1 file changed, 12 insertions(+), 8 deletions(-)
 >
 > diff --git a/mm/kasan/init.c b/mm/kasan/init.c
-> index bc0ad208b3a7..67051cfae41c 100644
+> index 67051cfae41c..ae9158f7501f 100644
 > --- a/mm/kasan/init.c
 > +++ b/mm/kasan/init.c
-> @@ -481,7 +481,6 @@ int kasan_add_zero_shadow(void *start, unsigned long size)
+> @@ -372,9 +372,10 @@ static void kasan_remove_pmd_table(pmd_t *pmd, unsigned long addr,
 >
->         ret = kasan_populate_early_shadow(shadow_start, shadow_end);
->         if (ret)
-> -               kasan_remove_zero_shadow(shadow_start,
-> -                                       size >> KASAN_SHADOW_SCALE_SHIFT);
-> +               kasan_remove_zero_shadow(start, size);
->         return ret;
->  }
+>                 if (kasan_pte_table(*pmd)) {
+>                         if (IS_ALIGNED(addr, PMD_SIZE) &&
+> -                           IS_ALIGNED(next, PMD_SIZE))
+> +                           IS_ALIGNED(next, PMD_SIZE)) {
+>                                 pmd_clear(pmd);
+> -                       continue;
+> +                               continue;
+> +                       }
+>                 }
+>                 pte = pte_offset_kernel(pmd, addr);
+>                 kasan_remove_pte_table(pte, addr, next);
+> @@ -397,9 +398,10 @@ static void kasan_remove_pud_table(pud_t *pud, unsigned long addr,
+>
+>                 if (kasan_pmd_table(*pud)) {
+>                         if (IS_ALIGNED(addr, PUD_SIZE) &&
+> -                           IS_ALIGNED(next, PUD_SIZE))
+> +                           IS_ALIGNED(next, PUD_SIZE)) {
+>                                 pud_clear(pud);
+> -                       continue;
+> +                               continue;
+> +                       }
+>                 }
+>                 pmd = pmd_offset(pud, addr);
+>                 pmd_base = pmd_offset(pud, 0);
+> @@ -423,9 +425,10 @@ static void kasan_remove_p4d_table(p4d_t *p4d, unsigned long addr,
+>
+>                 if (kasan_pud_table(*p4d)) {
+>                         if (IS_ALIGNED(addr, P4D_SIZE) &&
+> -                           IS_ALIGNED(next, P4D_SIZE))
+> +                           IS_ALIGNED(next, P4D_SIZE)) {
+>                                 p4d_clear(p4d);
+> -                       continue;
+> +                               continue;
+> +                       }
+>                 }
+>                 pud = pud_offset(p4d, addr);
+>                 kasan_remove_pud_table(pud, addr, next);
+> @@ -456,9 +459,10 @@ void kasan_remove_zero_shadow(void *start, unsigned long size)
+>
+>                 if (kasan_p4d_table(*pgd)) {
+>                         if (IS_ALIGNED(addr, PGDIR_SIZE) &&
+> -                           IS_ALIGNED(next, PGDIR_SIZE))
+> +                           IS_ALIGNED(next, PGDIR_SIZE)) {
+>                                 pgd_clear(pgd);
+> -                       continue;
+> +                               continue;
+> +                       }
+>                 }
+>
+>                 p4d = p4d_offset(pgd, addr);
 > --
 > 2.25.1
 
-Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
+Andrey, could you please take a look at this change?
+
+Thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
