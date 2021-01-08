@@ -2,89 +2,77 @@ Return-Path: <SRS0=tvhu=GL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CAD4C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 02:52:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79153C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 02:52:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E3EB23603
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 02:52:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E3EB23603
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3E5BE2368A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 02:52:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E5BE2368A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IMWCI1swu4sPYGhRG7N5aaIhoqgjmjCPBnI3+VHy4WE=; b=dO8S5Re94E0/vmZ5r047FA97m/
-	quOhFNBkEO6XHh1+64bbMDe93A09m9sWsI3duDC2htmmufx8YC35OY4EgGws5MbQuRD0LNxtlFXBT
-	CQ5h4RdbJIemq1z2dfd9sdA4gjG1eAHY4h16NNUezkl9B3Iilb+zcM2QlruLk6SsyObk4u53mlifb
-	i8ac8WBqEZ7PTJgiCYvK2RGjOJw2fJ0p21qRB38nevxdlujV6oCz/+44zOB/qoq/i7O8rORDQtkWr
-	VymtsV3bgZQcgIZsGr+LUBucnlKncLJNnpyksUOYQKIcZdrngNahujC3r5JpunPo7aMCK9ruk1Fl1
-	WslDaKfQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=2/LYV9Fc5KOuJWl9+NUzoZwpFBkIKSRuI8AtZoFZkd8=; b=Eyje0tZ+O+Ptg1hIPzLsS1zPn
+	S/I/zzwcz0rADV8CaF2AHq/HhiWefFTeh504PJ5S9/KoVmS7ROowoPMvuGFxH5TJvTpBa4lGXE+r6
+	vs1dfPERthkaGWcf37KnU9YAKrqH8sWJ8WX+K6W13KCN0MDgADz5zn8OZgKRB/+7AwQV0UXPBDVPZ
+	pNeiI3d2hIZ5ZAfgveZMQ+vNZ8adZtGpvPnCsRk+ZRkRQJjtSYAGACqmneoBXGGNsM88Z5YAyZeSd
+	vZhJIpWNYFVhJd4YU2/jzGCVcuoI2dbLQSCWXQlMPmSJj25T9+VFB9QlCUTer+XIgK3rzHmEr6r76
+	5CFkhFKQA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxhsu-0007TS-Rf; Fri, 08 Jan 2021 02:52:16 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1kxhtF-0007Wo-GO; Fri, 08 Jan 2021 02:52:37 +0000
+Received: from mail-io1-f48.google.com ([209.85.166.48])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxhsq-0007Rv-MA; Fri, 08 Jan 2021 02:52:13 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2so5325274pfq.5;
- Thu, 07 Jan 2021 18:52:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=PQO8vJwSx7HHkUDB54L3o6TvWNWFoO4uiodcnxSDlcQ=;
- b=X/AAyuJPU+5BF0P70BENerkQ7fsoiQwBujnVb/DQLxNbz1PPtMezpk5ReCf/OJKQQy
- f4bPc1u3OHv/y4tYs6HpwW77XZvz3oaL8PpNPggwD9t7QroceJRn6aAT0DlpL3fKmt9m
- Kc2eEwKEnuIJFw8ojiF0UiZqJeFc277BnZZPvWXczvmiW79m1x2MqcGq6I8lWYpS91L8
- s3gZtJOUZD/CET29z2o6rPTikBdhxrk+Z3p2zjjQClk91guj9+5j2Oq7QEGLXsVaIwXK
- uVznU6511s/FXwBle7HhugF3yj6NOEB2U6jJRJV8N4XJqnJW4oR7E/hb/gvJy4gDt+8R
- WXvQ==
+ id 1kxhtD-0007W7-5t; Fri, 08 Jan 2021 02:52:36 +0000
+Received: by mail-io1-f48.google.com with SMTP id d9so8361938iob.6;
+ Thu, 07 Jan 2021 18:52:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=PQO8vJwSx7HHkUDB54L3o6TvWNWFoO4uiodcnxSDlcQ=;
- b=O/TgkMhhebQZLdK1m8PHp0p9r0vb9xB7iL1dc7VtnHI0yNK26wtRU91xfHakmGCUlN
- vX68yjXLG6ZXYme8361mra/Br9BdV+xoIRZWDOBNnyTULid+QwAFJannw90UkbCogIY0
- QzcYW7yrS5SoCRVAYsD3HhQNbnQlpst8bKXY3K8oEv8fMxGDVl8iRgDUBcjsivHPEzhZ
- 0mgOcZWZzYYs54MadczwrfQ1dNC7Fxp673tX3OmU8zhg+LOhJYziJKU1Gikncv/w2pWE
- l4X49Z0ljSADefoDgT/9lGNuhrL35zDNaWlTWq/7ADVjspQdaj4hhhTglU1lGzZvLLYW
- Ca9w==
-X-Gm-Message-State: AOAM533+tjKGq3GbW2rX9exDHTTEvldc1esQrSMBCFVj0wrn1a7Qagv+
- P0pIrP0I+m5ncPHg9Ph1QDM=
-X-Google-Smtp-Source: ABdhPJyh26fX5mM3v76uqsyxr5vX4CHgh1u6pP0ycZZyqGqjd0a30WyALlIup4JtQsrUxrFORhFF2g==
-X-Received: by 2002:a63:3049:: with SMTP id w70mr4782475pgw.224.1610074326364; 
- Thu, 07 Jan 2021 18:52:06 -0800 (PST)
-Received: from container-ubuntu.lan ([171.211.28.197])
- by smtp.gmail.com with ESMTPSA id z2sm7641230pgl.49.2021.01.07.18.51.59
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=j9BJOm6Gyl9YhJRZvOpzUQv+7D7nE5zdeZRpcSuRRBI=;
+ b=RLXuwOFlk0i2mZqYt3mdSqZYpqCFgZ858PuIFFzkKVJOFEuuaV2Nf7FMNW7VaGdvod
+ GdXKubBmUrY+vP+ypY/2rntMOw/PVgKvUhNB082A7lA+zavoq5lax5VrkL17Sc1Ql326
+ qoJOz8yt4IBuIF8nGYvLaOP7IZBmXBT+2zh/fW7oRd4jHWljXkJTJ+AbiXQSDylVrnaN
+ qNivxQWMe+LEJWV23yzTSW2zYNUaVJjaZnwFQ01XwrQTaWFlHqI4wWh424le7DMFQiC1
+ uRmz4SBwBAX9Hlq2kKO5Q0eRvsvcEQdoeXbSQ8QsBY17PAzGaUYpKvG7RjuvtzOoBUcl
+ UETA==
+X-Gm-Message-State: AOAM531Rmx9lVPBhRh5fiujkgIKlcAv0GXxZaWew7ljoiEAfRuu8BqmT
+ E2FnkrUFhPdXISMK+aN0fxFtagR6aA==
+X-Google-Smtp-Source: ABdhPJxSj3GS6b8u4lJrqSge/6GnqMxaAVuJHdUXCdgq9UGMMZClQFUGQc3VppY2A5kzN6A5IQaUGQ==
+X-Received: by 2002:a05:6638:1a:: with SMTP id
+ z26mr1500734jao.52.1610074354559; 
+ Thu, 07 Jan 2021 18:52:34 -0800 (PST)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id b13sm4525239ils.54.2021.01.07.18.52.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Jan 2021 18:52:05 -0800 (PST)
-From: DENG Qingfang <dqfext@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Chuanhong Guo <gch981213@gmail.com>, NeilBrown <neil@brown.name>,
- devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: mt7621-dts: remove obsolete switch node
-Date: Fri,  8 Jan 2021 10:51:55 +0800
-Message-Id: <20210108025155.31556-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ Thu, 07 Jan 2021 18:52:33 -0800 (PST)
+Received: (nullmailer pid 1782876 invoked by uid 1000);
+ Fri, 08 Jan 2021 02:52:31 -0000
+Date: Thu, 7 Jan 2021 19:52:31 -0700
+From: Rob Herring <robh@kernel.org>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Subject: Re: [PATCH v2, 1/3] dt-binding: gce: add gce header file for mt8192
+Message-ID: <20210108025231.GA1782839@robh.at.kernel.org>
+References: <1608770889-9403-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1608770889-9403-2-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1608770889-9403-2-git-send-email-yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_215212_736225_4AE2E629 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210107_215235_355513_E56259E0 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,40 +84,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rosen Penev <rosenp@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, CK Hu <ck.hu@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This was for OpenWrt's swconfig driver, which never made it upstream,
-and was also superseded by MT7530 DSA driver.
+On Thu, 24 Dec 2020 08:48:07 +0800, Yongqiang Niu wrote:
+> Add documentation for the mt8192 gce.
+> 
+> Add gce header file defined the gce hardware event,
+> subsys number and constant for mt8192.
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  .../devicetree/bindings/mailbox/mtk-gce.txt        |   7 +-
+>  include/dt-bindings/gce/mt8192-gce.h               | 419 +++++++++++++++++++++
+>  2 files changed, 423 insertions(+), 3 deletions(-)
+>  create mode 100644 include/dt-bindings/gce/mt8192-gce.h
+> 
 
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
----
- drivers/staging/mt7621-dts/mt7621.dtsi | 7 -------
- 1 file changed, 7 deletions(-)
-
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index 5b9d3bf82cb1..42e8ec72c3cd 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -497,13 +497,6 @@ fixed-link {
- 		};
- 	};
- 
--	gsw: gsw@1e110000 {
--		compatible = "mediatek,mt7621-gsw";
--		reg = <0x1e110000 0x8000>;
--		interrupt-parent = <&gic>;
--		interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
--	};
--
- 	pcie: pcie@1e140000 {
- 		compatible = "mediatek,mt7621-pci";
- 		reg = <0x1e140000 0x100     /* host-pci bridge registers */
--- 
-2.25.1
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
