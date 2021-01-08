@@ -2,77 +2,72 @@ Return-Path: <SRS0=tvhu=GL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7509C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 10:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2ED56C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 10:58:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C4A1238E2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 10:51:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C4A1238E2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7E87F23976
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jan 2021 10:58:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E87F23976
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3pjnbTpchb1qnS05PI9ilyIE/ykQKViR+0wirUjzgb8=; b=yY9O2wiqKWsAaoiyPuJeNZTyC
-	ylyxJJe1moxqIr25hEz4q5LI3KIybz6THSFIAHLl3LfBOpdcV4c50wybVmb5xeGGAMqiVMYA67yyl
-	2ZAbiPUDy0VeaCVy+sQGZXkl/1fNpg2VXgUBwyyJjs7XZ5VSz4RhxtjKbD9hacmEV8WtYE9HL/bdf
-	eDxDSmPoF8FHPdHUTG8EidrQYdezfytOQdpQhcwTxtOAcIQ6PypIz+GDME8oC12MFQ8e+nfdzjaM+
-	2O/M0pRuofHYPD45amwVKu0njyFcVbneIuMNEUzjsBAgoE1A80WVik2f+Q4hT/h8zzVyUeRyRaxxr
-	zwz1HwYVw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IA8CX8Mad9TGceiU5Aw/W7YamlUrC1xQsF4eB/fUmmA=; b=lH5SJCCN75ncrhrStBm6jaqKos
+	inH8YmkYuXdM/uwuwIl5URNlA6FMrhReuKiAoVf9LZ0Zp8m6+TQGhWyeUMeewN/jVa8zlB5Csp8we
+	E24ibdnJXxUo7aGJsy/Ws4s0CoxFVcOiqLPNhmtUYUNnjy82hgsItSe6R10DKkC29xHs9LEqB+wrI
+	Gt1LyUGAHX/+a42Ep+ZoBbnTiVr9X+3tFmE/QJoJpHHnSm5ibWJ2CJh9dyi0IjmfubiYJvOr0yqAR
+	Z9gugRk6Fqq7o1pEMazeJJzRjxKMCC2/ANQN8gVH4NmixjPJBg7rwUtPUZ8hIhWb0tRY8xqLMBfdC
+	hijLiRkQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxpM2-0006bM-KN; Fri, 08 Jan 2021 10:50:50 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1kxpTC-00005J-IH; Fri, 08 Jan 2021 10:58:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxpLu-0006X3-3Z
- for linux-mediatek@lists.infradead.org; Fri, 08 Jan 2021 10:50:44 +0000
-Received: by mail-pf1-x433.google.com with SMTP id m6so437284pfk.1
- for <linux-mediatek@lists.infradead.org>; Fri, 08 Jan 2021 02:50:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hUYexvGQkq4ls/OimwsO5Jd0RZqGFOW3s7MoFq9zFTo=;
- b=YJkyuQWXhbFLgxwObjUfAmF83zKljdj7aMi/D0QeB/d+QLVbsGCvwyase5VS/GWSpg
- Es1unRr4cp3Fvy24ZBffOLz0Lfh11nBkmofiM2flPrgjewamfaSpMXKulclYD2Pltylo
- jrH2DnIwA96hZC5n+910xx3mFFG4aCgPnl1+Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hUYexvGQkq4ls/OimwsO5Jd0RZqGFOW3s7MoFq9zFTo=;
- b=JzoJYM6vf8BU7+li+LjYtkcq1MOW42cvMw5GAczyovNqobuM8A39CCQXGxZfwU4jpT
- 3Iwxbop30F60ul09hbLAcdn80LdiI/cB2FT4wa1gWvvhLesr/tfs9jN6j/XywUIlTaOE
- HAO35lGw0XOo3RN9S7MPiavUtujPdQXE6tPgHbU0OMOGrEklj8Gnav7KYstNJ75I4QZ5
- jpWyCRp1hoETPR+lc3x1xRmVQcgjOj05LIJ2Wjd/x4eyQCljNWNQ5DAYDvfYRCSZdo1S
- 5U9J1GIDfQL+/iEp8le/T6s1UdxsLUrzFkCkxb1Y4Qlqz88QuMWzYI6cUvWu4jYuwtCR
- YWrw==
-X-Gm-Message-State: AOAM5302fQ8izSP9nIUbTTEIm9JvVwboejkcPvACpTGnoEixgiZktgQm
- HYZkSOeJASlkekbUjkjeGoPuSXeXrBfONQD26Ae7Dw==
-X-Google-Smtp-Source: ABdhPJznWhv1cTUN3HY6O/t1DpDD7sg3cxH33OEwBKtFZhXYshd0vUiYpemVN8VSwVvSOQqG6eW9FQ92uaiCom4uJ+4=
-X-Received: by 2002:aa7:8813:0:b029:19d:cd3b:6f89 with SMTP id
- c19-20020aa788130000b029019dcd3b6f89mr3048408pfo.42.1610103039797; Fri, 08
- Jan 2021 02:50:39 -0800 (PST)
+ id 1kxpT8-0008WC-F5
+ for linux-mediatek@lists.infradead.org; Fri, 08 Jan 2021 10:58:12 +0000
+X-UUID: 89d0b53255a8416797d81cfcc2c5c04a-20210108
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=rUJBJT+zx98Ar3xyQeJrOSPV3QhmPClwKunaB5bjYjQ=; 
+ b=kKdMhLP2/1IgUIK2dmYzBUhecI7RSchyTtA6k0345lOrMGS3eYzfdxTT6jYcBE26wa2WRbAslh7wMBbpk4acZD+7G/8XTGKFR+d8SzKnrXKD+Q2Cgo3Tvv2Hjzq7pTuE0e6yJjL/Qf6AVNasqFXLXFxJq9P63sXh8SUmTF7jKek=;
+X-UUID: 89d0b53255a8416797d81cfcc2c5c04a-20210108
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1057529178; Fri, 08 Jan 2021 02:58:05 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Jan 2021 02:58:04 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Jan 2021 18:58:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 8 Jan 2021 18:58:01 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: linux-wireless <linux-wireless@vger.kernel.org>
+Subject: [PATCH] mac80211: fix incorrect strlen of .write in debugfs
+Date: Fri, 8 Jan 2021 18:56:43 +0800
+Message-ID: <20210108105643.10834-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20201229142406.v5.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
- <1610087648.24856.41.camel@mhfsdcap03>
-In-Reply-To: <1610087648.24856.41.camel@mhfsdcap03>
-From: Ikjoon Jang <ikjn@chromium.org>
-Date: Fri, 8 Jan 2021 18:50:29 +0800
-Message-ID: <CAATdQgAfRTxbzG4tJ-ftX7M6wrYFR6v+ji+-nSk_dTRTMXzXwQ@mail.gmail.com>
-Subject: Re: [PATCH v5] usb: xhci-mtk: fix unreleased bandwidth data
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+X-TM-SNTS-SMTP: ABABAB4B14836EBA9C6DBD0A2BFFC1237D0049382AC8F90DB79B7B7F41F177EA2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210108_055042_203311_9C1F13ED 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20210108_055811_510043_7BB7E19D 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,48 +79,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>,
- Tianping Fang <tianping.fang@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+ =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Sujuan Chen <sujuan.chen@mediatek.com>,
+ Johannes Berg <johannes@sipsolutions.net>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 8, 2021 at 2:34 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> On Tue, 2020-12-29 at 14:24 +0800, Ikjoon Jang wrote:
-> > xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
-> > to handle its own sw bandwidth managements and stores bandwidth data
-> > into internal table every time add_endpoint() is called,
-> > so when bandwidth allocation fails at one endpoint, all earlier
-> > allocation from the same interface could still remain at the table.
-> If failed to add an endpoint, will cause failure of its interface
-> config, then the other endpoints in the same interface will be dropped
-> later? you mean some endpoints in an interface may fail but without
-> affecting its function?
+This fixes strlen mismatch problems happening in some .write callbacks
+of debugfs.
 
-Yes, drop_endpoint() is called for a failed interface when set_interface()
-fails to switch alt settings, but set_configuration() does not call
-drop_endpoint().
-TT data seems to remain allocated until a device gets removed.
+When trying to configure airtime_flags in debugfs, an error appeared:
+# echo 0 > /sys/kernel/debug/ieee80211/phy0/airtime_flags
+ash: write error: Invalid argument
 
->
-> >
-> > This patch adds two more hooks from check_bandwidth() and
-> > reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
-> > from reset_bandwidth().
-> >
-> > Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
-> > Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
->
+The error is returned from kstrtou16() since a wrong length makes it
+miss the real end of input string.  To fix this, use count as the string
+length, and set proper end of string for a char buffer.
 
+The debug print is shown - airtime_flags_write: count = 2, len = 8,
+where the actual length is 2, but "len = strlen(buf)" gets 8.
+
+Also cleanup the other similar cases for the sake of consistency.
+
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+This patch is based on the discussion from
+https://patchwork.kernel.org/project/linux-wireless/list/?series=409693
+---
+ net/mac80211/debugfs.c | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+diff --git a/net/mac80211/debugfs.c b/net/mac80211/debugfs.c
+index 9135b6f..9991a6a 100644
+--- a/net/mac80211/debugfs.c
++++ b/net/mac80211/debugfs.c
+@@ -120,7 +120,6 @@ static ssize_t aqm_write(struct file *file,
+ {
+ 	struct ieee80211_local *local = file->private_data;
+ 	char buf[100];
+-	size_t len;
+ 
+ 	if (count > sizeof(buf))
+ 		return -EINVAL;
+@@ -128,10 +127,10 @@ static ssize_t aqm_write(struct file *file,
+ 	if (copy_from_user(buf, user_buf, count))
+ 		return -EFAULT;
+ 
+-	buf[sizeof(buf) - 1] = '\0';
+-	len = strlen(buf);
+-	if (len > 0 && buf[len-1] == '\n')
+-		buf[len-1] = 0;
++	if (count && buf[count - 1] == '\n')
++		buf[count - 1] = '\0';
++
++	buf[count] = '\0';
+ 
+ 	if (sscanf(buf, "fq_limit %u", &local->fq.limit) == 1)
+ 		return count;
+@@ -177,7 +176,6 @@ static ssize_t airtime_flags_write(struct file *file,
+ {
+ 	struct ieee80211_local *local = file->private_data;
+ 	char buf[16];
+-	size_t len;
+ 
+ 	if (count > sizeof(buf))
+ 		return -EINVAL;
+@@ -185,10 +183,10 @@ static ssize_t airtime_flags_write(struct file *file,
+ 	if (copy_from_user(buf, user_buf, count))
+ 		return -EFAULT;
+ 
+-	buf[sizeof(buf) - 1] = 0;
+-	len = strlen(buf);
+-	if (len > 0 && buf[len - 1] == '\n')
+-		buf[len - 1] = 0;
++	if (count && buf[count - 1] == '\n')
++		buf[count - 1] = '\0';
++
++	buf[count] = '\0';
+ 
+ 	if (kstrtou16(buf, 0, &local->airtime_flags))
+ 		return -EINVAL;
+@@ -237,7 +235,6 @@ static ssize_t aql_txq_limit_write(struct file *file,
+ {
+ 	struct ieee80211_local *local = file->private_data;
+ 	char buf[100];
+-	size_t len;
+ 	u32 ac, q_limit_low, q_limit_high, q_limit_low_old, q_limit_high_old;
+ 	struct sta_info *sta;
+ 
+@@ -247,10 +244,10 @@ static ssize_t aql_txq_limit_write(struct file *file,
+ 	if (copy_from_user(buf, user_buf, count))
+ 		return -EFAULT;
+ 
+-	buf[sizeof(buf) - 1] = 0;
+-	len = strlen(buf);
+-	if (len > 0 && buf[len - 1] == '\n')
+-		buf[len - 1] = 0;
++	if (count && buf[count - 1] == '\n')
++		buf[count - 1] = '\0';
++
++	buf[count] = '\0';
+ 
+ 	if (sscanf(buf, "%u %u %u", &ac, &q_limit_low, &q_limit_high) != 3)
+ 		return -EINVAL;
+@@ -306,7 +303,6 @@ static ssize_t force_tx_status_write(struct file *file,
+ {
+ 	struct ieee80211_local *local = file->private_data;
+ 	char buf[3];
+-	size_t len;
+ 
+ 	if (count > sizeof(buf))
+ 		return -EINVAL;
+@@ -314,10 +310,10 @@ static ssize_t force_tx_status_write(struct file *file,
+ 	if (copy_from_user(buf, user_buf, count))
+ 		return -EFAULT;
+ 
+-	buf[sizeof(buf) - 1] = '\0';
+-	len = strlen(buf);
+-	if (len > 0 && buf[len - 1] == '\n')
+-		buf[len - 1] = 0;
++	if (count && buf[count - 1] == '\n')
++		buf[count - 1] = '\0';
++
++	buf[count] = '\0';
+ 
+ 	if (buf[0] == '0' && buf[1] == '\0')
+ 		local->force_tx_status = 0;
+-- 
+2.29.2
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
