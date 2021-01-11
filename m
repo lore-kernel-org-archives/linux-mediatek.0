@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 717C7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6B3EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:35:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E680224B8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:34:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E680224B8
+	by mail.kernel.org (Postfix) with ESMTPS id 765A5224D2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:35:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 765A5224D2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sgeZBbepPiAeFjTjaQazlGkE51O3r/a3LUIBVMUIxmo=; b=RRJySDXoyTwYwQXYS1cZpj9au
-	5MvGOnc0dybZEE2BVe9v/H+OG9oZmIammMGNj+Ooe/Zhd/Rff7K3IZbC9mbeTKFyRXP0pFLHgshiR
-	qARYF+fOQBl6ku/1uHooDKYOXoz073LXkBsJIvRgmAYWiEzttouf+YFhgcOxumG+USaxlLYhsmz++
-	bW8c1vKqgSj2QgZ1b0ml0naQqIanM0mJKyIeKKnDKFsAQH4GsF5ZVEELnodeUv8Ry0oIrz2B9wdgM
-	RLFw5nsojsB+QpSRkp9SBTJ5f/t4EDwaVWRuzlu6PTHvPSsqRpMVyH7Bx2H+03FH85zlS7/IeEcpE
-	vsy5zd0wA==;
+	 bh=lXzL5gY33ysEnem3/qyTS3H0gu7fdc2Mb/zbVuKdY/0=; b=Tlr78CMJCAfjG9AVf5BpzymlX
+	Jrocc+BPNcBj/3abIc85DyNWhwQFIhkVDHCxcFSKAQJ/1cAYxe2bejpXS/HP5UDE/HO3lqDy90fjC
+	PjsmduhA79wjF4GdYCoKJZTHjkB3pZxlR8lcaS9ikVwcE9+Wcc8QurL6bOt3KegoEXpT4yCpXh+eL
+	qVgZvet8HDB+L3w25V8R3eaoAuCvHRTC4EON4MUVezDPttGRdTpaZdqU6gpxDPo38C1FJucbBnY66
+	VJVu718XTlwchp/1Vt+TF5/NTGHCLoMns9fD36RNLW+PynjEqvV2j63pajKhiZ1lG0beplI+JEapR
+	UAB7d7m4g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyvSg-0007On-Mh; Mon, 11 Jan 2021 11:34:14 +0000
+	id 1kyvTZ-00082H-NY; Mon, 11 Jan 2021 11:35:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyvPD-0005FG-OM; Mon, 11 Jan 2021 11:30:48 +0000
-X-UUID: 8f9bfb04085f46aca2560b85f5eb71b4-20210111
+ id 1kyvPM-0005FG-Ud; Mon, 11 Jan 2021 11:30:53 +0000
+X-UUID: d7184e0432854e87821c5146a9e167c1-20210111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=aKJlbr1QdyXbymf5NGgqfcZqucuDuPEax7ZLLQGu+Mo=; 
- b=KMeC8fSWkfBkI72MuH7VqsOC0kgBDOF/8nAVXZWeghixcE2V3DcWYPCw47NQib8pqjeLTkLRaBJomYsHeCSHxcBWvbZZDfp7VgvVSGGP+ul7gOGsQlGstX/O0oxDTQI/ul28hRKZd6V/8I3b5dZt/1ui55H0vfYS0wvGN1dxgmQ=;
-X-UUID: 8f9bfb04085f46aca2560b85f5eb71b4-20210111
+ bh=Z7Oid5xYAbHHwRM9Oy+G1dVeE4FZOkm9xzwc63jDwaI=; 
+ b=bYyEOPPMyTGc6qNx9xtGuRNPjHHbFhFkbRoUr+kDF82X5CCL+OyICe/7akTKi/dX8W6N/NBsrbjs3CGfHW48LL+ZLBpj/1VQoAP5vntWdSHS9e3TaGiMbGrOeP7E7RGYp/mdI1rvojsPntf4qqha7SLmShC986LX3n2j0AbhPyQ=;
+X-UUID: d7184e0432854e87821c5146a9e167c1-20210111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 510139603; Mon, 11 Jan 2021 03:30:34 -0800
+ with ESMTP id 323653026; Mon, 11 Jan 2021 03:30:34 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 03:23:31 -0800
+ 15.0.1497.2; Mon, 11 Jan 2021 03:21:42 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 19:23:30 +0800
+ 15.0.1497.2; Mon, 11 Jan 2021 19:21:40 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 19:23:29 +0800
+ Transport; Mon, 11 Jan 2021 19:21:39 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v6 26/33] iommu/mediatek: Add iova_region structure
-Date: Mon, 11 Jan 2021 19:19:07 +0800
-Message-ID: <20210111111914.22211-27-yong.wu@mediatek.com>
+Subject: [PATCH v6 13/33] iommu/io-pgtable-arm-v7s: Quad lvl1 pgtable for
+ MediaTek
+Date: Mon, 11 Jan 2021 19:18:54 +0800
+Message-ID: <20210111111914.22211-14-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210111111914.22211-1-yong.wu@mediatek.com>
 References: <20210111111914.22211-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_063040_085512_8B1F56B9 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20210111_063049_189120_D3A15559 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,103 +94,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new structure for the iova_region. Each a region will be a
-independent iommu domain.
-
-For the previous SoC, there is single iova region(0~4G). For the SoC
-that need support multi-domains, there will be several regions.
+The standard input iova bits is 32. MediaTek quad the lvl1 pagetable
+(4 * lvl1). No change for lvl2 pagetable. Then the iova bits can reach
+34bit.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/iommu/mtk_iommu.c | 19 +++++++++++++++++++
- drivers/iommu/mtk_iommu.h |  5 +++++
- 2 files changed, 24 insertions(+)
+ drivers/iommu/io-pgtable-arm-v7s.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 309b06d5e1f9..6875ca1225f0 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -167,6 +167,15 @@ static LIST_HEAD(m4ulist);	/* List all the M4U HWs */
- 
- #define for_each_m4u(data)	list_for_each_entry(data, &m4ulist, list)
- 
-+struct mtk_iommu_iova_region {
-+	dma_addr_t		iova_base;
-+	unsigned long long	size;
-+};
-+
-+static const struct mtk_iommu_iova_region single_domain[] = {
-+	{.iova_base = 0,		.size = SZ_4G},
-+};
-+
+diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+index 243476fdad9e..697dee76f6cb 100644
+--- a/drivers/iommu/io-pgtable-arm-v7s.c
++++ b/drivers/iommu/io-pgtable-arm-v7s.c
+@@ -45,9 +45,10 @@
  /*
-  * There may be 1 or 2 M4U HWs, But we always expect they are in the same domain
-  * for the performance.
-@@ -901,6 +910,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
- 	.m4u_plat     = M4U_MT2712,
- 	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
- };
+  * We have 32 bits total; 12 bits resolved at level 1, 8 bits at level 2,
+  * and 12 bits in a page.
++ * MediaTek extend 2 bits to reach 34bits, 14 bits at lvl1 and 8 bits at lvl2.
+  */
+ #define ARM_V7S_ADDR_BITS		32
+-#define _ARM_V7S_LVL_BITS(lvl, cfg)	((lvl) == 1 ? 12 : 8)
++#define _ARM_V7S_LVL_BITS(lvl, cfg)	((lvl) == 1 ? ((cfg)->ias - 20) : 8)
+ #define ARM_V7S_LVL_SHIFT(lvl)		((lvl) == 1 ? 20 : 12)
+ #define ARM_V7S_TABLE_SHIFT		10
  
-@@ -908,6 +919,8 @@ static const struct mtk_iommu_plat_data mt6779_data = {
- 	.m4u_plat      = M4U_MT6779,
- 	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN,
- 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
-+	.iova_region   = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
- };
+@@ -61,7 +62,7 @@
+ #define _ARM_V7S_IDX_MASK(lvl, cfg)	(ARM_V7S_PTES_PER_LVL(lvl, cfg) - 1)
+ #define ARM_V7S_LVL_IDX(addr, lvl, cfg)	({				\
+ 	int _l = lvl;							\
+-	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
++	((addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
+ })
  
-@@ -915,6 +928,8 @@ static const struct mtk_iommu_plat_data mt8167_data = {
- 	.m4u_plat     = M4U_MT8167,
- 	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {1}, {2}}, /* Linear mapping. */
- };
+ /*
+@@ -754,7 +755,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ {
+ 	struct arm_v7s_io_pgtable *data;
  
-@@ -923,6 +938,8 @@ static const struct mtk_iommu_plat_data mt8173_data = {
- 	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
- 			HAS_LEGACY_IVRP_PADDR,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
- };
+-	if (cfg->ias > ARM_V7S_ADDR_BITS)
++	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
+ 		return NULL;
  
-@@ -930,6 +947,8 @@ static const struct mtk_iommu_plat_data mt8183_data = {
- 	.m4u_plat     = M4U_MT8183,
- 	.flags        = RESET_AXI,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
- 	.larbid_remap = {{0}, {4}, {5}, {6}, {7}, {2}, {3}, {1}},
- };
- 
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index a9b79e118f02..118170af1974 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -45,10 +45,15 @@ enum mtk_iommu_plat {
- 	M4U_MT8183,
- };
- 
-+struct mtk_iommu_iova_region;
-+
- struct mtk_iommu_plat_data {
- 	enum mtk_iommu_plat m4u_plat;
- 	u32                 flags;
- 	u32                 inv_sel_reg;
-+
-+	unsigned int				iova_region_nr;
-+	const struct mtk_iommu_iova_region	*iova_region;
- 	unsigned char       larbid_remap[MTK_LARB_COM_MAX][MTK_LARB_SUBCOM_MAX];
- };
- 
+ 	if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
 -- 
 2.18.0
 _______________________________________________
