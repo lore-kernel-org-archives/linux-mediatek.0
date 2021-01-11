@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B0078C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B3A2C433E9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:32:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C82222482
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:32:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C82222482
+	by mail.kernel.org (Postfix) with ESMTPS id 2DCED2250F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:32:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2DCED2250F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,54 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HgKQCJixuqS12ZoOMuuI8eHrqBPZx/zNcGNrnsWBjJY=; b=BbMUno6ejqWARg+ipSaeGzgM/
-	GbzXMOOluBUOiXwXWt92bwzhfuHAxs600LYdLfh3xnyH7D49O8vnXe/+gaNHBy93kKE3zfkSCHWSh
-	kaAqYzMZOEUSSxcKrSc24rGxHbC7RLn31rr20mDqOMIpZaIiCv0ti/tyTaYZ2XGde5ZAoAxVQHgP8
-	ytBZwoKzXLTD2DYfi4e/zovkCLqusiJuesoXF2v+yQOaJztVVgNXi3ZBdZEEk7svg27tKlwv8ZhIn
-	kePe8vSK7TZRSgWq+M/l2YTou4PLAfEatAuCo/l9v8KY8WpBqIc1idSWf5212MDa515y5aZW70tNz
-	frsSbh3pQ==;
+	 bh=BaiqiWA7bfOlHjtEbHSenSLIlp08+luizQz2BF3F3gY=; b=hBtm9wbLZXNG4eXmJMLsBgHeJ
+	vwb2XhtA1Je0ICUZYBEVwTXpSQkj3jVYi9hf9zhZqoZTpgNRUTnnfgkfIIVxrr2Axw2/qguvipeYB
+	/W/FHNgE0biK2/ABVsKDii1tJ5KGjZySzotnBBb3gyg2cDNvypPv8K0WybnGHue2x7OwWsHh5QycE
+	0E1P/GAOn27StCfUdXksRaStM+Xn1bfO0WAZii0AVIgQ3edlfZ6YXPS11PXvFZEdMdoW5EZoVVIV+
+	yqlCZRfqxu62fz6zqiPKLTt10OZTu/YfTO0aDNQ40x2I4qc1NIdz/bcXQfs4Mc/bMJgGXuMXyYa3m
+	/oIQAe/SA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyvQo-000648-6c; Mon, 11 Jan 2021 11:32:18 +0000
+	id 1kyvR6-0006JD-KD; Mon, 11 Jan 2021 11:32:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyvP6-000558-7D; Mon, 11 Jan 2021 11:30:34 +0000
-X-UUID: 803d4ac1a4bf44eab94749bbc1334d1c-20210111
+ id 1kyvP8-000551-TX; Mon, 11 Jan 2021 11:30:37 +0000
+X-UUID: 5107a29c8c2940ec9d04345dc0f644e3-20210111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=8B6qLmklPHTGx/iJkeO2F2kDgdIlwkorKRpXlqlYCTw=; 
- b=QBhBDXw3qMmNkKsjInIg1NLivcfMF79pRrTA58P4+QmILiahYRDIEHaHR6Z6NJOciU2QHPbXM75fN0v6FHaZlRYHbhFbcVQ4RFv5MHqLkzKrZbRyIBlugRfM9u90xnoI50hu4GhaOPZisOADqgoX+Qf8SJ1uTGgGf/6g3zAlaGQ=;
-X-UUID: 803d4ac1a4bf44eab94749bbc1334d1c-20210111
+ bh=SrEyVAAH66V5VFHWMi74Dokpatou55NxAvhKt0uy/sY=; 
+ b=YOIEExToLcPKEri5/UD1nheydHOkl8AsGCNx1R24tj8lAExqnUzYpDVsmw111kT4PxrPAZJOAZ9g9E2cVxNxDm0WKzgRrP3vXTU6o/tCo5qmObhjB5HLTL7IFQ4QuyXz/cc9tdG+XXdakAoKnSAwcHvx+puH1N3623LvKN6xCX4=;
+X-UUID: 5107a29c8c2940ec9d04345dc0f644e3-20210111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 122517530; Mon, 11 Jan 2021 03:30:24 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1958204525; Mon, 11 Jan 2021 03:30:24 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 03:21:32 -0800
+ 15.0.1497.2; Mon, 11 Jan 2021 03:21:55 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 19:21:31 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Jan 2021 19:21:53 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 19:21:30 +0800
+ Transport; Mon, 11 Jan 2021 19:21:53 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v6 12/33] iommu/io-pgtable-arm-v7s: Add cfg as a param in some
- macros
-Date: Mon, 11 Jan 2021 19:18:53 +0800
-Message-ID: <20210111111914.22211-13-yong.wu@mediatek.com>
+Subject: [PATCH v6 15/33] iommu/mediatek: Update oas for v7s
+Date: Mon, 11 Jan 2021 19:18:56 +0800
+Message-ID: <20210111111914.22211-16-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210111111914.22211-1-yong.wu@mediatek.com>
 References: <20210111111914.22211-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_063032_455236_AA61B146 
-X-CRM114-Status: GOOD (  15.88  )
+X-CRM114-CacheID: sfid-20210111_063035_607879_B9B15B40 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,135 +93,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add "cfg" as a parameter for some macros. This is a preparing patch for
-mediatek extend the lvl1 pgtable. No functional change.
+This patch only updates oas in different SoCs.
+
+If the SoC supports 4GB-mode and current dram size is 4GB, the oas is 33.
+otherwise, it's still 32. In the lastest SoC, the oas is 35bits.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Acked-by: Will Deacon <will@kernel.org>
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/iommu/io-pgtable-arm-v7s.c | 36 +++++++++++++++---------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+ drivers/iommu/mtk_iommu.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index 0ce9a14300e9..243476fdad9e 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -47,21 +47,21 @@
-  * and 12 bits in a page.
-  */
- #define ARM_V7S_ADDR_BITS		32
--#define _ARM_V7S_LVL_BITS(lvl)		((lvl) == 1 ? 12 : 8)
-+#define _ARM_V7S_LVL_BITS(lvl, cfg)	((lvl) == 1 ? 12 : 8)
- #define ARM_V7S_LVL_SHIFT(lvl)		((lvl) == 1 ? 20 : 12)
- #define ARM_V7S_TABLE_SHIFT		10
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index bf1277d58121..1c4af574f5f7 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -301,10 +301,14 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+ 			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
+ 		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
+ 		.ias = MTK_IOMMU_HAS_FLAG(data->plat_data, IOVA_34_EN) ? 34 : 32,
+-		.oas = 35,
+ 		.iommu_dev = data->dev,
+ 	};
  
--#define ARM_V7S_PTES_PER_LVL(lvl)	(1 << _ARM_V7S_LVL_BITS(lvl))
--#define ARM_V7S_TABLE_SIZE(lvl)						\
--	(ARM_V7S_PTES_PER_LVL(lvl) * sizeof(arm_v7s_iopte))
-+#define ARM_V7S_PTES_PER_LVL(lvl, cfg)	(1 << _ARM_V7S_LVL_BITS(lvl, cfg))
-+#define ARM_V7S_TABLE_SIZE(lvl, cfg)						\
-+	(ARM_V7S_PTES_PER_LVL(lvl, cfg) * sizeof(arm_v7s_iopte))
- 
- #define ARM_V7S_BLOCK_SIZE(lvl)		(1UL << ARM_V7S_LVL_SHIFT(lvl))
- #define ARM_V7S_LVL_MASK(lvl)		((u32)(~0U << ARM_V7S_LVL_SHIFT(lvl)))
- #define ARM_V7S_TABLE_MASK		((u32)(~0U << ARM_V7S_TABLE_SHIFT))
--#define _ARM_V7S_IDX_MASK(lvl)		(ARM_V7S_PTES_PER_LVL(lvl) - 1)
--#define ARM_V7S_LVL_IDX(addr, lvl)	({				\
-+#define _ARM_V7S_IDX_MASK(lvl, cfg)	(ARM_V7S_PTES_PER_LVL(lvl, cfg) - 1)
-+#define ARM_V7S_LVL_IDX(addr, lvl, cfg)	({				\
- 	int _l = lvl;							\
--	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l); \
-+	((u32)(addr) >> ARM_V7S_LVL_SHIFT(_l)) & _ARM_V7S_IDX_MASK(_l, cfg); \
- })
- 
- /*
-@@ -237,7 +237,7 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
- 	struct device *dev = cfg->iommu_dev;
- 	phys_addr_t phys;
- 	dma_addr_t dma;
--	size_t size = ARM_V7S_TABLE_SIZE(lvl);
-+	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
- 	void *table = NULL;
- 
- 	if (lvl == 1)
-@@ -283,7 +283,7 @@ static void __arm_v7s_free_table(void *table, int lvl,
- {
- 	struct io_pgtable_cfg *cfg = &data->iop.cfg;
- 	struct device *dev = cfg->iommu_dev;
--	size_t size = ARM_V7S_TABLE_SIZE(lvl);
-+	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
- 
- 	if (!cfg->coherent_walk)
- 		dma_unmap_single(dev, __arm_v7s_dma_addr(table), size,
-@@ -427,7 +427,7 @@ static int arm_v7s_init_pte(struct arm_v7s_io_pgtable *data,
- 			arm_v7s_iopte *tblp;
- 			size_t sz = ARM_V7S_BLOCK_SIZE(lvl);
- 
--			tblp = ptep - ARM_V7S_LVL_IDX(iova, lvl);
-+			tblp = ptep - ARM_V7S_LVL_IDX(iova, lvl, cfg);
- 			if (WARN_ON(__arm_v7s_unmap(data, NULL, iova + i * sz,
- 						    sz, lvl, tblp) != sz))
- 				return -EINVAL;
-@@ -480,7 +480,7 @@ static int __arm_v7s_map(struct arm_v7s_io_pgtable *data, unsigned long iova,
- 	int num_entries = size >> ARM_V7S_LVL_SHIFT(lvl);
- 
- 	/* Find our entry at the current level */
--	ptep += ARM_V7S_LVL_IDX(iova, lvl);
-+	ptep += ARM_V7S_LVL_IDX(iova, lvl, cfg);
- 
- 	/* If we can install a leaf entry at this level, then do so */
- 	if (num_entries)
-@@ -553,7 +553,7 @@ static void arm_v7s_free_pgtable(struct io_pgtable *iop)
- 	struct arm_v7s_io_pgtable *data = io_pgtable_to_data(iop);
- 	int i;
- 
--	for (i = 0; i < ARM_V7S_PTES_PER_LVL(1); i++) {
-+	for (i = 0; i < ARM_V7S_PTES_PER_LVL(1, &data->iop.cfg); i++) {
- 		arm_v7s_iopte pte = data->pgd[i];
- 
- 		if (ARM_V7S_PTE_IS_TABLE(pte, 1))
-@@ -605,9 +605,9 @@ static size_t arm_v7s_split_blk_unmap(struct arm_v7s_io_pgtable *data,
- 	if (!tablep)
- 		return 0; /* Bytes unmapped */
- 
--	num_ptes = ARM_V7S_PTES_PER_LVL(2);
-+	num_ptes = ARM_V7S_PTES_PER_LVL(2, cfg);
- 	num_entries = size >> ARM_V7S_LVL_SHIFT(2);
--	unmap_idx = ARM_V7S_LVL_IDX(iova, 2);
-+	unmap_idx = ARM_V7S_LVL_IDX(iova, 2, cfg);
- 
- 	pte = arm_v7s_prot_to_pte(arm_v7s_pte_to_prot(blk_pte, 1), 2, cfg);
- 	if (num_entries > 1)
-@@ -649,7 +649,7 @@ static size_t __arm_v7s_unmap(struct arm_v7s_io_pgtable *data,
- 	if (WARN_ON(lvl > 2))
- 		return 0;
- 
--	idx = ARM_V7S_LVL_IDX(iova, lvl);
-+	idx = ARM_V7S_LVL_IDX(iova, lvl, &iop->cfg);
- 	ptep += idx;
- 	do {
- 		pte[i] = READ_ONCE(ptep[i]);
-@@ -735,7 +735,7 @@ static phys_addr_t arm_v7s_iova_to_phys(struct io_pgtable_ops *ops,
- 	u32 mask;
- 
- 	do {
--		ptep += ARM_V7S_LVL_IDX(iova, ++lvl);
-+		ptep += ARM_V7S_LVL_IDX(iova, ++lvl, &data->iop.cfg);
- 		pte = READ_ONCE(*ptep);
- 		ptep = iopte_deref(pte, lvl, data);
- 	} while (ARM_V7S_PTE_IS_TABLE(pte, lvl));
-@@ -778,8 +778,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 
- 	spin_lock_init(&data->split_lock);
- 	data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
--					    ARM_V7S_TABLE_SIZE(2),
--					    ARM_V7S_TABLE_SIZE(2),
-+					    ARM_V7S_TABLE_SIZE(2, cfg),
-+					    ARM_V7S_TABLE_SIZE(2, cfg),
- 					    ARM_V7S_TABLE_SLAB_FLAGS, NULL);
- 	if (!data->l2_tables)
- 		goto out_free_data;
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
++		dom->cfg.oas = data->enable_4GB ? 33 : 32;
++	else
++		dom->cfg.oas = 35;
++
+ 	dom->iop = alloc_io_pgtable_ops(ARM_V7S, &dom->cfg, data);
+ 	if (!dom->iop) {
+ 		dev_err(data->dev, "Failed to alloc io pgtable\n");
 -- 
 2.18.0
 _______________________________________________
