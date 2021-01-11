@@ -2,82 +2,60 @@ Return-Path: <SRS0=02OB=GO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FBF9C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:44:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E843C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 12:11:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 172F420729
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:44:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 172F420729
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id B71422054F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 12:11:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B71422054F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sipsolutions.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:Date:References:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3OCaW0Fm+4t9dOY6rnixvcBdZ9H9kqKefNkJFU86EPs=; b=07kPp7AcRJs3mUvaxWmPkoNW9
-	1IqLdDaMsk4ZCJu8J7/FslmvVg4SiczBPZdXFZz/nA6IqsICdPllpibfwoifv06W3FLlDwmTSLOzO
-	zExsQmYYDuxa0Nu0B8SsnfwZPOrCLOyL26n8SBsgCHIbYURxFbc9mKQNgq6jA0A9Rx4mavbvdWR47
-	03jzvzgRAPs4qg1+MK2+ef2/oXO1/NFb/qACsk3/sKSsa8Nm5TWAcZ0ADnfeYVAT7BuHonHZOpkMy
-	o//kRyeFu26smf892pzNQJvvee/i3gpvpNg61hnKk1U5wLMIGyCG7yJWFy0RM2kn4A/gqwUvqF1b6
-	4YL68Kb6A==;
+	 bh=Sev2qsh6IMX5Sb+O+1eL37R55GbCDL1irlD7lwOkFfA=; b=qEXuAO0x3WCJzlxsdyXWs2OaQ
+	MaekFSCzcTE/Fa31NcfeX3h9SiKfHsY9uJ+89DreFUAzSlHjXmGOv1/EX1xanokKwOrEklNbWaTjL
+	8HE7DNRTutJayHACW6KB2ScM95gC6DM3CVsiTeHr60u4gSslJOcB4rxb/6U9SBKihxsdFi38heE+4
+	z4sr2Ejo7otXQRT8jFpKQLvVy/7Bnwj4e+49sLsY10WBKGxGOadF6W1Cq4UR+mpVKo8MJfpLdfVj7
+	RAWCjhoxbUHtpwaRwfNEFNViUaOvVd33mjEllPA08UOBPQzEa7+3M9aZUPpOxAQZWVBfcKJezoDfP
+	6DZJyY7vg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyvcY-00040B-Te; Mon, 11 Jan 2021 11:44:26 +0000
-Received: from so254-31.mailgun.net ([198.61.254.31])
+	id 1kyw2M-00086c-QC; Mon, 11 Jan 2021 12:11:06 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2]
+ helo=sipsolutions.net)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyvcW-0003yW-Jb
- for linux-mediatek@lists.infradead.org; Mon, 11 Jan 2021 11:44:25 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1610365464; h=Content-Type: MIME-Version: Message-ID:
- In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=/zAmJ+29rI7Hmfs0HvwvL7kL3/lcUmum7keDkzWEwYk=;
- b=QMPLemOiEVrdjRaTZ5vvUSeSsUr0fr/Dc1e5Xzsatsv3vVzLJCalssWfI3DMUtiPOoWVmrxj
- riuGvK4nCZE1zOHO9EJuXKzH+IzKdFrmLHPWQZtr2qXFC00BIyQPNYciU/kUOz28uBQmjkfA
- KOOvMelWGPLJYxRqoo8negOCe6g=
-X-Mailgun-Sending-Ip: 198.61.254.31
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n06.prod.us-west-2.postgun.com with SMTP id
- 5ffc3a17e53eb5da8c2ccd5e (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 11 Jan 2021 11:44:23
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 45CCBC43464; Mon, 11 Jan 2021 11:44:23 +0000 (UTC)
-Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
- [88.114.240.156])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id A0CD0C433CA;
- Mon, 11 Jan 2021 11:44:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org A0CD0C433CA
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=kvalo@codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: Arnd Bergmann <arnd@kernel.org>
-Subject: Re: [PATCH] mt76: fix enum conversion warning
-References: <20201230145824.3203726-1-arnd@kernel.org>
-Date: Mon, 11 Jan 2021 13:44:16 +0200
-In-Reply-To: <20201230145824.3203726-1-arnd@kernel.org> (Arnd Bergmann's
- message of "Wed, 30 Dec 2020 15:57:55 +0100")
-Message-ID: <878s8zk8a7.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+ id 1kyw2K-00085t-Nm
+ for linux-mediatek@lists.infradead.org; Mon, 11 Jan 2021 12:11:05 +0000
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.94) (envelope-from <johannes@sipsolutions.net>)
+ id 1kyw1Y-004pA1-6H; Mon, 11 Jan 2021 13:10:55 +0100
+Message-ID: <036e334c2a0a2ebaf940d3f7ae03ab0d9f7c45fb.camel@sipsolutions.net>
+Subject: Re: [PATCH] mac80211: fix incorrect strlen of .write in debugfs
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Date: Mon, 11 Jan 2021 13:10:39 +0100
+In-Reply-To: <1610345954.4985.7.camel@mtksdccf07>
+References: <20210108105643.10834-1-shayne.chen@mediatek.com>
+ <0efec65815ff9e26b3da69cb35d503a90086760c.camel@sipsolutions.net>
+ <1610345954.4985.7.camel@mtksdccf07>
+User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
 MIME-Version: 1.0
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_064424_710172_70FCF714 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20210111_071104_806510_1F0C1ABA 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,50 +67,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
- Sean Wang <objelf@gmail.com>, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yiwei Chung <yiwei.chung@mediatek.com>,
- Wan-Feng Jiang <Wan-Feng.Jiang@mediatek.com>, netdev@vger.kernel.org,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
- Felix Fietkau <nbd@nbd.name>
+Cc: Toke =?ISO-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@toke.dk>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Sujuan Chen <sujuan.chen@mediatek.com>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Arnd Bergmann <arnd@kernel.org> writes:
+On Mon, 2021-01-11 at 14:19 +0800, Shayne Chen wrote:
+> 
+> Regarding the case "10\n\0\0\0\0", both count and strlen() fail to get
+> the correct strlen.
 
-> From: Arnd Bergmann <arnd@arndb.de>
->
-> A recent patch changed some enum values, but not the type
-> declaration for the assignment:
->
-> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:238:9: error: implicit conversion from enumeration type 'enum mt76_mcuq_id' to different enumeration type 'enum mt76_txq_id' [-Werror,-Wenum-conversion]
->                 qid = MT_MCUQ_WM;
->                     ~ ^~~~~~~~~~
-> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:240:9: error: implicit conversion from enumeration type 'enum mt76_mcuq_id' to different enumeration type 'enum mt76_txq_id' [-Werror,-Wenum-conversion]
->                 qid = MT_MCUQ_FWDL;
->                     ~ ^~~~~~~~~~~~
->
-> Change the type to match again.
->
-> Fixes: e637763b606b ("mt76: move mcu queues to mt76_dev q_mcu array")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Yeah.
 
-Nathan submitted a similar (but not identical) patch:
+I don't think we need to worry about this case.
 
-https://patchwork.kernel.org/project/linux-wireless/patch/20201229211548.1348077-1-natechancellor@gmail.com/
+> # echo "10\n\0\0\0\0" > /sys/kernel/debug/ieee80211/phy0/airtime_flags
+> airtime_flags_write: count = 13, strlen = 15 
+> > > +	buf[count] = '\0';
+> > 
+> > But if count == sizeof(buf) then this is an out-of-bounds write.
+> > 
+> > Same for all the other copied instances.
+> > 
+> > johannes
+> > 
+> 
+> Should we consider this kind of case here?
 
-As Nathan was first we take that one.
+Sure, we're at the kernel/userspace trust boundary, we can't just read
+out-of-bounds? Or what do you mean?
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+johannes
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
 _______________________________________________
 Linux-mediatek mailing list
