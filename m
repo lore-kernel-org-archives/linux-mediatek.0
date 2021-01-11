@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7C5BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 820EAC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:54:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5CC41229C7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:49:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5CC41229C7
+	by mail.kernel.org (Postfix) with ESMTPS id 181BA22482
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:54:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 181BA22482
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uiPGcuqohCmN70G0qR6c5P9OAM9w/bF/dn/CA3WVh6c=; b=PPv8Zri5CRiKkYxlZ3S5Pd3sn
-	ID+MvDjSsN+LMo0zo68MeUUnWlBY+ZeSNmgtqBuKcKN3ny2ZykUXmaXrKmVQr16yGe4gtTRglUUYq
-	XjhXiTixwIpSZfCV5nsq9z8Dog6Basc6UwEqwkaX8poOkbROEfta0ZnGTOznpJjaTbIyCUvLgGrI0
-	QgmObgQNQMWELxU2x8UGX69Z+FCcdFj3wqAShtMTN157fVIBJBpRmJwezMNR8QgRtZiKTmIzhKWSg
-	71wCVJD+A86IJG566Rb4Gxwm/D2mUYJD1XV66TB6dB8tevsusn6/HX2yCSPcFUG7abhchC0kqSMjU
-	unA8XqQCA==;
+	 bh=IE9Bl+9PcuxnwmPyILm9jQfUcslyJzFc3e+/CNWIMhc=; b=qFEaKpja6pVmFMuwW52Qxw3zk
+	s5f/cmgoimxosg3tNFX4+2aL796Gs2vowvnqQVzf4WcO8tL7ohmw8Gu4tmCk/1fnGoSKj8R2lP5DA
+	1ZUQS6K2U58O6TGZtZfTbC5gI0aMVnsYe8/lC+uKvRUvFaFA9KpTHnK5ypqIVtwiAzRk5TH9u25Et
+	xO5WMnikgw+h6yuanEi0pzqVR/JO/8dVlWp+QIcanLbXPmfOUyPKU/4iwE7tFNLOSeuYOPOhEkXAm
+	gJeQsVCZn+EPrm9A09Bo8RMprRYxEY74SJeK079kwwnN1emqcCavNrXyXKjS93gImcHkn1H1iFsPC
+	eqB2pvfug==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyrx3-0003kN-U9; Mon, 11 Jan 2021 07:49:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kys1r-0006GF-HT; Mon, 11 Jan 2021 07:54:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyrvk-000344-5j; Mon, 11 Jan 2021 07:48:01 +0000
-X-UUID: 4732816213f041e8b7b4da945f86c272-20210110
+ id 1kys1m-0006D5-6N; Mon, 11 Jan 2021 07:54:15 +0000
+X-UUID: 59828f52461b4cd392d9dbe09613f30f-20210110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jYwW0y7GtFhiPHkhRhIBuln6OW9nWTN9DEj3TYu09Ew=; 
- b=IG7ocrpdVkiLASPWxcf0NdMPmy6kbODf+h9kqKU8uuaBueq6Y7GDJyu3BrfnYLPnBarZ9Yc3lsFtVq7yqL2bFcf+RjwAacHa6GVdlw/qHBV7WtmJysTc+PYdLoUgnfWXpYsde3R7g3/O8xWXYESaglm5m8YRVXEwSfEZVjysMWc=;
-X-UUID: 4732816213f041e8b7b4da945f86c272-20210110
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=r8XPrDWZfqe8SKxxqs5Kjw10tX+uHMezTIaLXjpSOBQ=; 
+ b=Th02fxAj1sHCzA80ZmqE0kChzFn8NiXiGNT0vnXei9lE5uD9DywPllf0Su26Xew7P0xoOFO/OlfM4jwiKmToFaTyGPDDm7VqnhdNsl9I7AKcMf6M2GGy+NfOGZf93bCR4XzREsNrHNr3IZ2PKu08hdG5Dmo4O3DG7qKb/NdyeA4=;
+X-UUID: 59828f52461b4cd392d9dbe09613f30f-20210110
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1776512069; Sun, 10 Jan 2021 23:47:54 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 10 Jan 2021 23:44:06 -0800
+ with ESMTP id 1673125498; Sun, 10 Jan 2021 23:54:11 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 10 Jan 2021 23:44:09 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 15:44:04 +0800
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Jan 2021 15:44:07 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 15:44:04 +0800
+ Transport; Mon, 11 Jan 2021 15:44:06 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3, 10/15] drm/mediatek: Add pm runtime support for color
-Date: Mon, 11 Jan 2021 15:43:46 +0800
-Message-ID: <1610351031-21133-11-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v3, 13/15] drm/mediatek: add matrix bits private data for ccorr
+Date: Mon, 11 Jan 2021 15:43:49 +0800
+Message-ID: <1610351031-21133-14-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_024800_419391_E90E8FB5 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20210111_025414_452541_2D7CB7AD 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,51 +85,78 @@ Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Yidi Lin <yidi.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+ Hsin-Yi Wang <hsinyi@chromium.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-color power domain need controled in the device.
+matrix bits of mt8183 is 12
+matrix bits of mt8192 is 13
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Yidi Lin <yidi.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_color.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index 6048cbc..14b9dd3 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -9,6 +9,7 @@
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/soc/mediatek/mtk-cmdq.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+index 63b3ef6..755e75b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+@@ -30,8 +30,10 @@
+ #define DISP_CCORR_COEF_3			0x008C
+ #define DISP_CCORR_COEF_4			0x0090
  
- #include "mtk_drm_crtc.h"
-@@ -132,6 +133,8 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, priv);
- 
-+	pm_runtime_enable(dev);
++#define CCORR_MATRIX_BITS			12
 +
- 	ret = component_add(dev, &mtk_disp_color_component_ops);
- 	if (ret)
- 		dev_err(dev, "Failed to add component: %d\n", ret);
-@@ -141,6 +144,8 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
+ struct mtk_disp_ccorr_data {
+-	u32 reserved;
++	u32 matrix_bits;
+ };
  
- static int mtk_disp_color_remove(struct platform_device *pdev)
- {
-+	pm_runtime_disable(&pdev->dev);
+ /**
+@@ -96,6 +98,8 @@ static void mtk_ccorr_ctm_set(struct mtk_ddp_comp *comp,
+ 	uint16_t coeffs[9] = { 0 };
+ 	int i;
+ 	struct cmdq_pkt *cmdq_pkt = NULL;
++	struct mtk_disp_ccorr *ccorr = comp_to_ccorr(comp);
++	u32 matrix_bits;
+ 
+ 	if (!blob)
+ 		return;
+@@ -103,8 +107,16 @@ static void mtk_ccorr_ctm_set(struct mtk_ddp_comp *comp,
+ 	ctm = (struct drm_color_ctm *)blob->data;
+ 	input = ctm->matrix;
+ 
+-	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
++	if (ccorr->data)
++		matrix_bits = ccorr->data->matrix_bits;
++	else
++		matrix_bits = CCORR_MATRIX_BITS;
 +
- 	component_del(&pdev->dev, &mtk_disp_color_component_ops);
++	for (i = 0; i < ARRAY_SIZE(coeffs); i++) {
+ 		coeffs[i] = mtk_ctm_s31_32_to_s1_10(input[i]);
++		if (matrix_bits > CCORR_MATRIX_BITS)
++			coeffs[i] <<= (matrix_bits - CCORR_MATRIX_BITS);
++	}
  
+ 	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
+ 		      comp, DISP_CCORR_COEF_0);
+@@ -205,8 +217,13 @@ static int mtk_disp_ccorr_remove(struct platform_device *pdev)
  	return 0;
+ }
+ 
++static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
++	.matrix_bits = CCORR_MATRIX_BITS,
++};
++
+ static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
+-	{ .compatible = "mediatek,mt8183-disp-ccorr"},
++	{ .compatible = "mediatek,mt8183-disp-ccorr",
++	  .data = &mt8183_ccorr_driver_data},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
 -- 
 1.8.1.1.dirty
 _______________________________________________
