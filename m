@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 774EEC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:31:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7686C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:31:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1EB60224B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:31:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EB60224B0
+	by mail.kernel.org (Postfix) with ESMTPS id A0AA022482
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:31:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0AA022482
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +24,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IAYPSymL8f6tKrm/3+W55JpLO9cD4lZn5JWcXjpjH8I=; b=Uhryw3HZ+WYlWbnPDGPI70D1R
-	sv4xkJzdOgzArkHOLwjCZDdK1d1EvReqw0J4QEoZWRpOR9miP093ApMGsIM78vzTCiX+MMwn7e770
-	Sc1qtaxT1KTpD2xCqUV+6UeXzFCAG1hOlJ8F+EJPBkPSrIlP07tRmMbQ4ObH+Jzw418daCRDDtw3A
-	emvhQrnEphrPbAO7r3nRlFCIxLKaC/qMqzRTS3V3ByVM4FLDry+QwOlKrJyQck6HjtCzFaQx/ZP4n
-	PZ7+1rHkJGUynXo00AQeFCt+4tobRDxB51D2TFq9JCRYu/U6y5NP0oY4ZLBoeYFyrOkON+Szduxzp
-	u0GiyrH7A==;
+	 bh=uQzreqIxvGci7hv7fCXwma6Yjb4i/ep+EShBV0in2wE=; b=FvrNBxHVjgTOXo8yZSPC7UG1A
+	6rwFfcmBfFor34YfA0Urwm8Hfzob4Ix00ao4hzbQH1HP2/k8z/IVIax8fBxiozAvzGv6peTmL/st3
+	UH46FMRT4YLDXbqOCzPBQkI4SAoE4LOBqhsKtbuwb2QZZocnWRa6Ex31uuIQUknwegbUaPyMC3Tzi
+	ZKuDeqT9jiI/fssoR3Dw30bLwvhpyxJ3Ls/Kwd7HfQ754P/ZnMcknPVLzLh6Ixq7aA0BLxNpqheRU
+	jpCeCzdonqIWjrNYkE8+PcxQv/cgp+5blXIwdHUcMBYz+8YBE28xN0N+OHwFvnTeJQ0HLvnoM6IH6
+	gm6z0xAcg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyvPp-0005UN-Jy; Mon, 11 Jan 2021 11:31:17 +0000
+	id 1kyvQB-0005fi-Sj; Mon, 11 Jan 2021 11:31:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyvOy-000551-2f; Mon, 11 Jan 2021 11:30:27 +0000
-X-UUID: ef2ab82318754f53af693572d4792431-20210111
+ id 1kyvP1-000558-C9; Mon, 11 Jan 2021 11:30:29 +0000
+X-UUID: 2da61852464d4357be1ba0d0b0b003f6-20210111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=hY4A6w6Lrb+2W9Zz0ciOOZX0qvhwM5ohV5jPCe5qO30=; 
- b=MKIXKftNqAhHsxYuuharHikL+bJV1T2H0TBwWo1trNVRidUOxBbaAFP2SvaEOThOWNKzonwKEvVQ3CHAdHqO5DPwgKNAgNo1QB9IsRmeg1if7KweNZzyIfYcCghwtYS+W58uIJjZ2QUSbooas7ixyK88zQTpdZSoesgidh41RnY=;
-X-UUID: ef2ab82318754f53af693572d4792431-20210111
+ bh=xF9E+J6g7hj34Xpg9IgE2lyfuXaL6pO+6UL4gR9GgfQ=; 
+ b=BoaCdvXnCrgyJa8Gz0vygObVdVFVExuYv1sYgFLwFkNzm1/d4Dcm1UJpR/6wLQ/n/I6wxyYxv5YbxohuhpRsGFYPS1e97YNxg19o8zU8JQ1z7Isxohohq1lC58oglqdUEac7sMUMSXnNGpOlt6L19BM/Vn+OR5H9m150C7sx0N4=;
+X-UUID: 2da61852464d4357be1ba0d0b0b003f6-20210111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1314313990; Mon, 11 Jan 2021 03:30:14 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1180452876; Mon, 11 Jan 2021 03:30:14 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 03:22:11 -0800
+ 15.0.1497.2; Mon, 11 Jan 2021 03:20:51 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 19:22:09 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Jan 2021 19:20:50 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 19:22:08 +0800
+ Transport; Mon, 11 Jan 2021 19:20:49 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v6 17/33] iommu/mediatek: Add error handle for mtk_iommu_probe
-Date: Mon, 11 Jan 2021 19:18:58 +0800
-Message-ID: <20210111111914.22211-18-yong.wu@mediatek.com>
+Subject: [PATCH v6 08/33] iommu/mediatek: Use the common mtk-memory-port.h
+Date: Mon, 11 Jan 2021 19:18:49 +0800
+Message-ID: <20210111111914.22211-9-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210111111914.22211-1-yong.wu@mediatek.com>
 References: <20210111111914.22211-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_063024_432864_667D5FD2 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20210111_063027_652220_08140493 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,52 +94,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the original code, we lack the error handle. This patch adds them.
+Use the common memory header(larb-port) in the source code.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/iommu/mtk_iommu.c | 23 +++++++++++++++++++----
- 1 file changed, 19 insertions(+), 4 deletions(-)
+ drivers/iommu/mtk_iommu.c  | 7 -------
+ drivers/iommu/mtk_iommu.h  | 1 +
+ drivers/memory/mtk-smi.c   | 1 +
+ include/soc/mediatek/smi.h | 2 --
+ 4 files changed, 2 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 87c4626c9072..189165e7a2ab 100644
+index 86ab577c9520..f594971dbeb2 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -739,15 +739,30 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+@@ -103,13 +103,6 @@
  
- 	ret = iommu_device_register(&data->iommu);
- 	if (ret)
--		return ret;
-+		goto out_sysfs_remove;
+ #define MTK_PROTECT_PA_ALIGN			256
  
- 	spin_lock_init(&data->tlb_lock);
- 	list_add_tail(&data->list, &m4ulist);
+-/*
+- * Get the local arbiter ID and the portid within the larb arbiter
+- * from mtk_m4u_id which is defined by MTK_M4U_ID.
+- */
+-#define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0xf)
+-#define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
+-
+ #define HAS_4GB_MODE			BIT(0)
+ /* HW will use the EMI clock if there isn't the "bclk". */
+ #define HAS_BCLK			BIT(1)
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index df32b3e3408b..c1584dea66cb 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -17,6 +17,7 @@
+ #include <linux/spinlock.h>
+ #include <linux/dma-mapping.h>
+ #include <soc/mediatek/smi.h>
++#include <dt-bindings/memory/mtk-memory-port.h>
  
--	if (!iommu_present(&platform_bus_type))
--		bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
-+	if (!iommu_present(&platform_bus_type)) {
-+		ret = bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
-+		if (ret)
-+			goto out_list_del;
-+	}
+ #define MTK_LARB_COM_MAX	8
+ #define MTK_LARB_SUBCOM_MAX	4
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index ac350f8d1e20..89f92fa2afa5 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -15,6 +15,7 @@
+ #include <linux/pm_runtime.h>
+ #include <soc/mediatek/smi.h>
+ #include <dt-bindings/memory/mt2701-larb-port.h>
++#include <dt-bindings/memory/mtk-memory-port.h>
  
--	return component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
-+	ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
-+	if (ret)
-+		goto out_bus_set_null;
-+	return ret;
-+
-+out_bus_set_null:
-+	bus_set_iommu(&platform_bus_type, NULL);
-+out_list_del:
-+	list_del(&data->list);
-+	iommu_device_unregister(&data->iommu);
-+out_sysfs_remove:
-+	iommu_device_sysfs_remove(&data->iommu);
-+	return ret;
- }
+ /* mt8173 */
+ #define SMI_LARB_MMU_EN		0xf00
+diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
+index 5a34b87d89e3..9371bf572ab8 100644
+--- a/include/soc/mediatek/smi.h
++++ b/include/soc/mediatek/smi.h
+@@ -11,8 +11,6 @@
  
- static int mtk_iommu_remove(struct platform_device *pdev)
+ #ifdef CONFIG_MTK_SMI
+ 
+-#define MTK_LARB_NR_MAX		16
+-
+ #define MTK_SMI_MMU_EN(port)	BIT(port)
+ 
+ struct mtk_smi_larb_iommu {
 -- 
 2.18.0
 _______________________________________________
