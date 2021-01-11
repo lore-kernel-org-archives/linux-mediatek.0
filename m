@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29D89C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9173C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:33:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BF4FE224B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:33:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF4FE224B0
+	by mail.kernel.org (Postfix) with ESMTPS id 81D4D22482
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:33:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81D4D22482
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +24,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ea6AMLnW+hlndIut02QrIC2v/LM/VorPbg23fQwNCug=; b=tuVsCuQw7rCT8DqhSBmmxYwbh
-	BLG81ICUAAhtPIZQZa9G+VV6R1o9UOr5KsuJ3b3+cqHtsOfwelKWWqtKeqRhIGJ1IIl74+aJTSiAf
-	4jv4oyw8n/E4tMphoNXevIPXBri5a/nRvhpPAQdhtAg7Uq9y0i+/hbxR+HjS6CmY2XcXZBf4eLAbX
-	mgo2fgfHHYPYIfzSbbn6KuYF9CLQYmmdIEd7MC216nX8EsSxAyKYKJj68jZhIokPL29TvFCj8IqaB
-	eRg8443WNFutV/SiyD2lJwGF/JT4YgJ1XA9RCsW5YV4WpGfMD2ZdPT2jpTQ5cDxjxQZbllk24+4kt
-	FgL2xSZ7A==;
+	 bh=+DHzKg3xWk7K2gGL8j6LAgBbWgNGcv8ocSYrkLiWaFA=; b=V7U0GRbYELbZjqAch2ZoFJL7j
+	FXxlPjMIDBMuRIgqlS0DbLZVXLqMjlQmDVaDVL8nXeYaK/D3tW974Tw2yVzX+eeGX/qcopqDQPAjA
+	35vwionpSEqzghWArOYbXWniBejhdpHOLc5VH45x54vf/LUlDaRmL8JVOueJzg5PdJm9tjWTAZvCC
+	N3eXRgoFlBNmMBMgxiw8Ff00m+FFJpCJRGOjjfF32+CskvyPIXAC9saE6rP7TBhXdSB4NmhwBEpzW
+	Ib8wPwX5m5GmFqbNbDNHQsVGNMZNe+TRb7wgV5qZuXnwvsn93U8lSnNZPNbUzfQB2jR/EWr+rRmeL
+	nCe88kj9w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyvRl-0006mP-EK; Mon, 11 Jan 2021 11:33:17 +0000
+	id 1kyvRn-0006nl-TA; Mon, 11 Jan 2021 11:33:19 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyvPD-000558-5L; Mon, 11 Jan 2021 11:30:42 +0000
-X-UUID: 341904fc6a3740f79921262bd9598104-20210111
+ id 1kyvPC-000551-9N; Mon, 11 Jan 2021 11:30:42 +0000
+X-UUID: e6842ff2b7374974893781eaf156346a-20210111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=7H2ak+CO7sJVjVoez/tOeSnzWVd3tqv4/qUfgfh69ek=; 
- b=X1hgAW8NOC8XFi+d+uhFhKMy3qF/bAv4QjgPnIKhUveBwWZnqaNf5mk8U+u+g1R6v2+Z8tTS5CdKq52BP1MjUFK9rED9dMVjBeLFRA4byRGN0d64AbdOspwdhO6fliwzGdwg/4aM5MKL+fflESo/kpxRm8DD9y78W4cQZkHHODs=;
-X-UUID: 341904fc6a3740f79921262bd9598104-20210111
+ bh=S+RkizipCXtDI55vLEbfyyV/C/qIaYumK0WHHr88mjg=; 
+ b=sKG8rKtfBNFeNtlh8Y7iKB60WVri8ONm/CUDJKH1GGLES9TbkzxtnB9Ok0PYTe8hgCirFHM23J5+Td7YlZVdDzQ5407UuPIrNKCAXb9acgt9CDSy6IOn4bz1kMkR3apwYHxgWV0DEMwPcAzZmWGhk8sZ6G6tp7BSTPNWSjHK6Fo=;
+X-UUID: e6842ff2b7374974893781eaf156346a-20210111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1265778793; Mon, 11 Jan 2021 03:30:24 -0800
+ with ESMTP id 2069418934; Mon, 11 Jan 2021 03:30:24 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 03:23:54 -0800
+ 15.0.1497.2; Mon, 11 Jan 2021 03:23:03 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 19:23:52 +0800
+ 15.0.1497.2; Mon, 11 Jan 2021 19:23:02 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 19:23:51 +0800
+ Transport; Mon, 11 Jan 2021 19:23:01 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v6 29/33] iommu/mediatek: Add iova reserved function
-Date: Mon, 11 Jan 2021 19:19:10 +0800
-Message-ID: <20210111111914.22211-30-yong.wu@mediatek.com>
+Subject: [PATCH v6 23/33] iommu/mediatek: Adjust the structure
+Date: Mon, 11 Jan 2021 19:19:04 +0800
+Message-ID: <20210111111914.22211-24-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210111111914.22211-1-yong.wu@mediatek.com>
 References: <20210111111914.22211-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_063039_428337_CE64C1F5 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20210111_063038_554328_D50FE697 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,67 +94,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For multiple iommu_domains, we need to reserve some iova regions. Take a
-example, If the default iova region is 0 ~ 4G, but the 0x4000_0000 ~
-0x43ff_ffff is only for the special CCU0 domain. Thus we should exclude
-this region for the default iova region.
+Add "struct mtk_iommu_data *" in the "struct mtk_iommu_domain",
+reduce the call mtk_iommu_get_m4u_data().
+No functional change.
 
-Signed-off-by: Anan sun <anan.sun@mediatek.com>
-Signed-off-by: Chao Hao <chao.hao@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ drivers/iommu/mtk_iommu.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index b42fd2535b77..764dc0b93477 100644
+index f3666b0d7577..f1941608ccb7 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -626,6 +626,35 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- 	return iommu_fwspec_add_ids(dev, args->args, 1);
- }
+@@ -126,6 +126,7 @@ struct mtk_iommu_domain {
+ 	struct io_pgtable_cfg		cfg;
+ 	struct io_pgtable_ops		*iop;
  
-+static void mtk_iommu_get_resv_regions(struct device *dev,
-+				       struct list_head *head)
-+{
-+	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
-+	unsigned int domid = mtk_iommu_get_domain_id(dev, data->plat_data), i;
-+	const struct mtk_iommu_iova_region *resv, *curdom;
-+	struct iommu_resv_region *region;
-+	int prot = IOMMU_WRITE | IOMMU_READ;
-+
-+	if (domid < 0)
-+		return;
-+	curdom = data->plat_data->iova_region + domid;
-+	for (i = 0; i < data->plat_data->iova_region_nr; i++) {
-+		resv = data->plat_data->iova_region + i;
-+
-+		/* Only reserve when the region is inside the current domain */
-+		if (resv->iova_base <= curdom->iova_base ||
-+		    resv->iova_base + resv->size >= curdom->iova_base + curdom->size)
-+			continue;
-+
-+		region = iommu_alloc_resv_region(resv->iova_base, resv->size,
-+						 prot, IOMMU_RESV_RESERVED);
-+		if (!region)
-+			return;
-+
-+		list_add_tail(&region->list, head);
-+	}
-+}
-+
- static const struct iommu_ops mtk_iommu_ops = {
- 	.domain_alloc	= mtk_iommu_domain_alloc,
- 	.domain_free	= mtk_iommu_domain_free,
-@@ -641,6 +670,8 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.release_device	= mtk_iommu_release_device,
- 	.device_group	= mtk_iommu_device_group,
- 	.of_xlate	= mtk_iommu_of_xlate,
-+	.get_resv_regions = mtk_iommu_get_resv_regions,
-+	.put_resv_regions = generic_iommu_put_resv_regions,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
++	struct mtk_iommu_data		*data;
+ 	struct iommu_domain		domain;
  };
  
+@@ -351,6 +352,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+ 		return -EINVAL;
+ 	}
+ 
++	dom->data = data;
+ 	/* Update our support page sizes bitmap */
+ 	dom->domain.pgsize_bitmap = dom->cfg.pgsize_bitmap;
+ 	return 0;
+@@ -442,10 +444,9 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
+ 			 phys_addr_t paddr, size_t size, int prot, gfp_t gfp)
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+ 
+ 	/* The "4GB mode" M4U physically can not use the lower remap of Dram. */
+-	if (data->enable_4GB)
++	if (dom->data->enable_4GB)
+ 		paddr |= BIT_ULL(32);
+ 
+ 	/* Synchronize with the tlb_lock */
+@@ -468,36 +469,37 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+ 
+ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+ {
+-	mtk_iommu_tlb_flush_all(mtk_iommu_get_m4u_data());
++	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
++
++	mtk_iommu_tlb_flush_all(dom->data);
+ }
+ 
+ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+ 				 struct iommu_iotlb_gather *gather)
+ {
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
++	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	size_t length = gather->end - gather->start + 1;
+ 
+ 	mtk_iommu_tlb_flush_range_sync(gather->start, length, gather->pgsize,
+-				       data);
++				       dom->data);
+ }
+ 
+ static void mtk_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
+ 			       size_t size)
+ {
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
++	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 
+-	mtk_iommu_tlb_flush_range_sync(iova, size, size, data);
++	mtk_iommu_tlb_flush_range_sync(iova, size, size, dom->data);
+ }
+ 
+ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+ 					  dma_addr_t iova)
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+ 	phys_addr_t pa;
+ 
+ 	pa = dom->iop->iova_to_phys(dom->iop, iova);
+-	if (data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
++	if (dom->data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
+ 		pa &= ~BIT_ULL(32);
+ 
+ 	return pa;
 -- 
 2.18.0
 _______________________________________________
