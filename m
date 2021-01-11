@@ -2,78 +2,73 @@ Return-Path: <SRS0=02OB=GO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87E6EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:08:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BED94C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:44:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 10781225A9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:08:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10781225A9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 13B2A206E9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:44:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13B2A206E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rdlEw1ni9RbmVehTy4YlkSBu8msNQaKU9Z+sV/m0dvU=; b=Xfnk8mGM5KySm6iEsW1tsjdYm
-	6A4I4TQDVySQOF05UKSdgq3i3Oxu/bfxkhHYe3M6exan9GyHJcIHw/L8qog81OBWlvJyJqsp+U+e1
-	d2wBib5e/CCg+pWNpHQgBpugZdltt2IJ33lDL2L43Wp0NXzSKtMKNUDi0CbghKQs9+UIs5UaTz+CX
-	Pxc5Ts5K1/RmiowVH2awDZ1RB8K2IFSXON38l+0x6yM133GdPrLso4wEALzPHWsuGjhnX8QCGRUu6
-	m1IbnT1rg1QH2wu0yiJzYc+NX+yJotHJPMmy//7oV1mLrgD/p5qt5Qm2gdZwbQtY4d5XL0xRaallA
-	umsuPxsPQ==;
+	 bh=Kv8gahUVWLw37+1DDsmafXXR+lMBJ188pPEvbC+ZdeA=; b=UgkEdUozk6pK8/v7FQWtI67eN
+	hzqUjHwzU+7cmu4H7H7I7xnYJ3YPXziKzX/dKT2EfsWqUW6WdCSTF3PlhAGXvyh9v1q5tu/lamqYE
+	UcvRVpFyzmo8Es5zdRFK9OZK5q4JSTsUqK7sR9wZcuAlM299YrdfxE+HYEAXLYrHa674Uues1ZZU3
+	Aw15qj3lwcMjKqNwTPq6Q3VRymHszIA5M5Hku1DKfZ5gwOuCIJR35Wys+l/mud3dmFsXD0pqV1flS
+	2XHwB+vKBPC2vhdo2OTtw6nuB1ecEwGkRFsKBkvfTQBUqzOetZ6YN4JZ4U64D5p9hJF4RTnAhRTZt
+	pWfkHGibw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyrJI-0007tP-Uf; Mon, 11 Jan 2021 07:08:17 +0000
-Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
+	id 1kyrs1-0001NX-8z; Mon, 11 Jan 2021 07:44:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyrJ8-0007pF-FZ
- for linux-mediatek@lists.infradead.org; Mon, 11 Jan 2021 07:08:08 +0000
-Received: by mail-il1-x130.google.com with SMTP id v3so17358353ilo.5
- for <linux-mediatek@lists.infradead.org>; Sun, 10 Jan 2021 23:08:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=40oBNgDhCJIenRjP2UaWivQWND3op8oUN0q1ogQZ4H0=;
- b=GLmVBWXOXItcO7uM97k3HHXx8aY/QJNuAxdyD+DgVkMhw0MRGaindsRrVN3/FJdy//
- qZXrTYMigJiX3NPZwFjeedPF1Gbp5OKyv6EVuHxzjrMnObBLv0IqIWp+HtIUHEnYN9Xg
- W4ZeiB5cJlyHBKHH016G28hh5zGwvMuVBgcCg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=40oBNgDhCJIenRjP2UaWivQWND3op8oUN0q1ogQZ4H0=;
- b=K0aoValFLVXhB7O+R6L9xMGAhKxQkkflW0GkYk5aT0Ao61kdBRl1nnED/eNX8LAndb
- A9uZ5f/Cyw1RJpjuZkzCKe+ac/IZGX/sQMX91EdIW2/wj8KdhVWR5feqVhnXjyBgUL7c
- 5MQzYTJXyAbAP1c9SYYIpW6jFoJDFcin71i4avKVYLtTYnPB8+SWIicOObTkRiSSaXPs
- UYGeeu6ZvuBH4nDiOkMSEKyP+qOeVB9OllGUppilUPviPErnAyoigZOi6/w5CsH/GtMs
- MPM/funVOyi6SdHXSrVmmPNa1u0FGPdayssLNSDxNNSBK5DOvWf2PlOJ4F9ra/Crjmk3
- IzJQ==
-X-Gm-Message-State: AOAM530tVhlExm5Kaxo60p46/oHJI24saVpBOGEM8Oa/yjyc9cSg1o1s
- zmWo4D5K3w+8vnU0T8/HB4rqfYiZMM8LyJQKkqMncw==
-X-Google-Smtp-Source: ABdhPJwmQZMxtcu5IkBAJPG1CtXM1CtU5UgOcE7BPBorIBdTTjWxavfJvhfu6+LtlLaYGy/6ZGS59+iVqwsN8RIQ+mY=
-X-Received: by 2002:a05:6e02:1a8e:: with SMTP id
- k14mr4398347ilv.308.1610348881564; 
- Sun, 10 Jan 2021 23:08:01 -0800 (PST)
+ id 1kyrrx-0001Ki-QQ; Mon, 11 Jan 2021 07:44:07 +0000
+X-UUID: 6e1d8154a8b8442a977e3813145ec0b3-20210110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=GRQ6SWOeMh3grQWIYXMcPcAM8le8By1IVqWdMABr5MM=; 
+ b=Ecs7PwxDweISpaetQHy5RPkCfjopzSak2Wu1nIGkQu6ONov2UzVB+iMoUml5bR1QgBemJjHLO0T+49aXBur75H91QObZ5tFfHR59TIgOVw5zJ2CNXCA4AJVu0vKUm5vl8rRlBLoXSSJNkfKI4qSeA1QzEIXRPvN/L8kXHuoqDhg=;
+X-UUID: 6e1d8154a8b8442a977e3813145ec0b3-20210110
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1179907102; Sun, 10 Jan 2021 23:44:00 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 10 Jan 2021 23:43:58 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Jan 2021 15:43:56 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 11 Jan 2021 15:43:56 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
+ Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v3, 01/15] dt-bindings: mediatek: add description for postmask
+Date: Mon, 11 Jan 2021 15:43:37 +0800
+Message-ID: <1610351031-21133-2-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
-References: <1609757093-30618-1-git-send-email-weiyi.lu@mediatek.com>
- <1609757093-30618-2-git-send-email-weiyi.lu@mediatek.com>
-In-Reply-To: <1609757093-30618-2-git-send-email-weiyi.lu@mediatek.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Mon, 11 Jan 2021 15:07:35 +0800
-Message-ID: <CAJMQK-iUaRoYB8C6MmKA-TLD3gFj3XL4eX8MemeEWjh-9ZaTEw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] soc: mediatek: Add regulator control for MT8192 MFG
- power domain
-To: Weiyi Lu <weiyi.lu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_020806_741712_2933D2E1 
-X-CRM114-Status: GOOD (  28.08  )
+X-CRM114-CacheID: sfid-20210111_024406_055979_6DE43C1E 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,186 +80,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- Enric Balletbo Serra <eballetbo@gmail.com>,
- lkml <linux-kernel@vger.kernel.org>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 4, 2021 at 10:44 AM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
->
-> Add regulator control support and specific power domain name of
-> MT8192 MFG power domain for regulator lookup.
-> Also power domain name can fix the debugfs warning.
-> (e.g. debugfs: Directory 'power-domain' with parent 'pm_genpd'
-> already present!)
-> However, not every domain with name need to get the regulator,
-> if we just want to fix the debugfs warning log by adding names to
-> power domains. Considering this case, lookup regulator by
-> regulator_get_optional() instead of getting a dummy regulator from
-> regulator_get() to operate.
->
-Hi,
+add description for postmask
+postmask is used control round corner for display frame
 
-sorry I didn't notice this patch before. I sent out a similar patch
-for this problem here:
-https://patchwork.kernel.org/project/linux-mediatek/cover/20210107104915.2888408-1-hsinyi@chromium.org/
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-The difference is that
-1) we store the requirement for quirks in caps instead of name.
-2) regulators are under power-domain nodes instead of mfg devices in dts.
-
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/soc/mediatek/mt8192-pm-domains.h |  1 +
->  drivers/soc/mediatek/mtk-pm-domains.c    | 42 ++++++++++++++++++++++++++++++--
->  drivers/soc/mediatek/mtk-pm-domains.h    |  2 ++
->  3 files changed, 43 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/soc/mediatek/mt8192-pm-domains.h
-> index 0fdf6dc..7db0ad3 100644
-> --- a/drivers/soc/mediatek/mt8192-pm-domains.h
-> +++ b/drivers/soc/mediatek/mt8192-pm-domains.h
-> @@ -49,6 +49,7 @@
->                 .ctl_offs = 0x0308,
->                 .sram_pdn_bits = GENMASK(8, 8),
->                 .sram_pdn_ack_bits = GENMASK(12, 12),
-> +               .name = "mfg",
->         },
->         [MT8192_POWER_DOMAIN_MFG1] = {
->                 .sta_mask = BIT(3),
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index fb70cb3..a160800 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -13,6 +13,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/pm_domain.h>
->  #include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
->  #include <linux/soc/mediatek/infracfg.h>
->
->  #include "mt8173-pm-domains.h"
-> @@ -40,6 +41,7 @@ struct scpsys_domain {
->         struct clk_bulk_data *subsys_clks;
->         struct regmap *infracfg;
->         struct regmap *smi;
-> +       struct regulator *supply;
->  };
->
->  struct scpsys {
-> @@ -187,6 +189,22 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
->         return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
->  }
->
-> +static int scpsys_regulator_enable(struct scpsys_domain *pd)
-> +{
-> +       if (!pd->supply)
-> +               return 0;
-> +
-> +       return regulator_enable(pd->supply);
-> +}
-> +
-> +static int scpsys_regulator_disable(struct scpsys_domain *pd)
-> +{
-> +       if (!pd->supply)
-> +               return 0;
-> +
-> +       return regulator_disable(pd->supply);
-> +}
-> +
->  static int scpsys_power_on(struct generic_pm_domain *genpd)
->  {
->         struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
-> @@ -194,9 +212,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->         bool tmp;
->         int ret;
->
-> +       ret = scpsys_regulator_enable(pd);
-> +       if (ret < 0)
-> +               return ret;
-> +
->         ret = clk_bulk_enable(pd->num_clks, pd->clks);
->         if (ret)
-> -               return ret;
-> +               goto err_disable_regulator;
->
->         /* subsys power on */
->         regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
-> @@ -232,6 +254,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->         clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
->  err_pwr_ack:
->         clk_bulk_disable(pd->num_clks, pd->clks);
-> +err_disable_regulator:
-> +       scpsys_regulator_disable(pd);
->         return ret;
->  }
->
-> @@ -267,6 +291,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->
->         clk_bulk_disable(pd->num_clks, pd->clks);
->
-> +       ret = scpsys_regulator_disable(pd);
-> +       if (ret < 0)
-> +               return ret;
-> +
->         return 0;
->  }
->
-> @@ -315,6 +343,16 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
->         if (IS_ERR(pd->smi))
->                 return ERR_CAST(pd->smi);
->
-> +       if (pd->data->name) {
-> +               pd->supply = devm_regulator_get_optional(scpsys->dev, pd->data->name);
-> +               if (IS_ERR(pd->supply)) {
-> +                       if (PTR_ERR(pd->supply) == -ENODEV)
-> +                               pd->supply = NULL;
-> +                       else
-> +                               return ERR_CAST(pd->supply);
-> +               }
-> +       }
-> +
->         num_clks = of_clk_get_parent_count(node);
->         if (num_clks > 0) {
->                 /* Calculate number of subsys_clks */
-> @@ -397,7 +435,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
->                 goto err_unprepare_subsys_clocks;
->         }
->
-> -       pd->genpd.name = node->name;
-> +       pd->genpd.name = pd->data->name ?: node->name;
->         pd->genpd.power_off = scpsys_power_off;
->         pd->genpd.power_on = scpsys_power_on;
->
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> index a2f4d8f..58d72fb 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> @@ -81,6 +81,7 @@ struct scpsys_bus_prot_data {
->   * @caps: The flag for active wake-up action.
->   * @bp_infracfg: bus protection for infracfg subsystem
->   * @bp_smi: bus protection for smi subsystem
-> + * @name: specific power domain name for regulator lookup and debugfs
->   */
->  struct scpsys_domain_data {
->         u32 sta_mask;
-> @@ -90,6 +91,7 @@ struct scpsys_domain_data {
->         u8 caps;
->         const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
->         const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
-> +       char *name;
->  };
->
->  struct scpsys_soc_data {
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+index c562cda..9d9ab65 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+@@ -37,6 +37,7 @@ Required properties (all function blocks):
+ 	"mediatek,<chip>-disp-aal"   		- adaptive ambient light controller
+ 	"mediatek,<chip>-disp-gamma" 		- gamma correction
+ 	"mediatek,<chip>-disp-merge" 		- merge streams from two RDMA sources
++	"mediatek,<chip>-disp-postmask" 	- control round corner for display frame
+ 	"mediatek,<chip>-disp-split" 		- split stream to two encoders
+ 	"mediatek,<chip>-disp-ufoe"  		- data compression engine
+ 	"mediatek,<chip>-dsi"        		- DSI controller, see mediatek,dsi.txt
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
