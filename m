@@ -2,74 +2,78 @@ Return-Path: <SRS0=02OB=GO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A06D8C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 06:21:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 87E6EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:08:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2BE5E225AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 06:21:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BE5E225AB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 10781225A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:08:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10781225A9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=P/2XOyJxkxZ86U8EDROgy6hsd4E24iVtm+nJziuDKUY=; b=EeBcWKSAVo0SxXUCv3tWygw2x
-	aNA8iL4pXSOaB5FH1NsWZU5DVC3659eoYGcqlzyqniC/TiNuux38DUrxnCIYiPSZQ3VZ1nxh7ciuF
-	fQRZYehz1GFLDVCMj0rVuMRwMoEIt5d6GRtbOqRv4rvVBhUWJvf3dUn8320j7MGHykPi5Ht7TkhL9
-	a6UHI9YwGENFjzvPPdGGKLM4aKvJgv32B80K+rrSX0YvGxo8JBnJXxNAjIJbx4gBd8UH6iX35VDrX
-	S91yIyYNdWR3OR1YKMrx8vrmfd+XIWunpeOR2gBjltLv95pzucbZ8naFjh8Gg4FCFewkE3bC+PQ4d
-	K6mVxjpjw==;
+	 bh=rdlEw1ni9RbmVehTy4YlkSBu8msNQaKU9Z+sV/m0dvU=; b=Xfnk8mGM5KySm6iEsW1tsjdYm
+	6A4I4TQDVySQOF05UKSdgq3i3Oxu/bfxkhHYe3M6exan9GyHJcIHw/L8qog81OBWlvJyJqsp+U+e1
+	d2wBib5e/CCg+pWNpHQgBpugZdltt2IJ33lDL2L43Wp0NXzSKtMKNUDi0CbghKQs9+UIs5UaTz+CX
+	Pxc5Ts5K1/RmiowVH2awDZ1RB8K2IFSXON38l+0x6yM133GdPrLso4wEALzPHWsuGjhnX8QCGRUu6
+	m1IbnT1rg1QH2wu0yiJzYc+NX+yJotHJPMmy//7oV1mLrgD/p5qt5Qm2gdZwbQtY4d5XL0xRaallA
+	umsuPxsPQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyqa6-0005KZ-PP; Mon, 11 Jan 2021 06:21:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kyrJI-0007tP-Uf; Mon, 11 Jan 2021 07:08:17 +0000
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyqa3-0005Io-8z
- for linux-mediatek@lists.infradead.org; Mon, 11 Jan 2021 06:21:32 +0000
-X-UUID: 6adc1ffbfd0b438e8edcde5a875b07db-20210110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=hbUjx36G0lGh66Y/uyRkKQdmOZUnPTwRubcK5li375o=; 
- b=tUWFAFTrtAgfEAHdnobjcdKW9a2Fsn5m+oS7yx9vBMthTRBwADrqfb2tD+86cng/3wi66ySFWewVCAFqA/ExonB8RaxQ3bgXHTJ96DeOm+UBHlkKKnVij7dX440D5vxY7r3Tjyp1QcuR4EhCvdu5szgYhdiM4gp4Rw+4z7RF8BA=;
-X-UUID: 6adc1ffbfd0b438e8edcde5a875b07db-20210110
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1820118753; Sun, 10 Jan 2021 22:19:23 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 10 Jan 2021 22:19:21 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 14:19:13 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 14:19:14 +0800
-Message-ID: <1610345954.4985.7.camel@mtksdccf07>
-Subject: Re: [PATCH] mac80211: fix incorrect strlen of .write in debugfs
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Johannes Berg <johannes@sipsolutions.net>
-Date: Mon, 11 Jan 2021 14:19:14 +0800
-In-Reply-To: <0efec65815ff9e26b3da69cb35d503a90086760c.camel@sipsolutions.net>
-References: <20210108105643.10834-1-shayne.chen@mediatek.com>
- <0efec65815ff9e26b3da69cb35d503a90086760c.camel@sipsolutions.net>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kyrJ8-0007pF-FZ
+ for linux-mediatek@lists.infradead.org; Mon, 11 Jan 2021 07:08:08 +0000
+Received: by mail-il1-x130.google.com with SMTP id v3so17358353ilo.5
+ for <linux-mediatek@lists.infradead.org>; Sun, 10 Jan 2021 23:08:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=40oBNgDhCJIenRjP2UaWivQWND3op8oUN0q1ogQZ4H0=;
+ b=GLmVBWXOXItcO7uM97k3HHXx8aY/QJNuAxdyD+DgVkMhw0MRGaindsRrVN3/FJdy//
+ qZXrTYMigJiX3NPZwFjeedPF1Gbp5OKyv6EVuHxzjrMnObBLv0IqIWp+HtIUHEnYN9Xg
+ W4ZeiB5cJlyHBKHH016G28hh5zGwvMuVBgcCg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=40oBNgDhCJIenRjP2UaWivQWND3op8oUN0q1ogQZ4H0=;
+ b=K0aoValFLVXhB7O+R6L9xMGAhKxQkkflW0GkYk5aT0Ao61kdBRl1nnED/eNX8LAndb
+ A9uZ5f/Cyw1RJpjuZkzCKe+ac/IZGX/sQMX91EdIW2/wj8KdhVWR5feqVhnXjyBgUL7c
+ 5MQzYTJXyAbAP1c9SYYIpW6jFoJDFcin71i4avKVYLtTYnPB8+SWIicOObTkRiSSaXPs
+ UYGeeu6ZvuBH4nDiOkMSEKyP+qOeVB9OllGUppilUPviPErnAyoigZOi6/w5CsH/GtMs
+ MPM/funVOyi6SdHXSrVmmPNa1u0FGPdayssLNSDxNNSBK5DOvWf2PlOJ4F9ra/Crjmk3
+ IzJQ==
+X-Gm-Message-State: AOAM530tVhlExm5Kaxo60p46/oHJI24saVpBOGEM8Oa/yjyc9cSg1o1s
+ zmWo4D5K3w+8vnU0T8/HB4rqfYiZMM8LyJQKkqMncw==
+X-Google-Smtp-Source: ABdhPJwmQZMxtcu5IkBAJPG1CtXM1CtU5UgOcE7BPBorIBdTTjWxavfJvhfu6+LtlLaYGy/6ZGS59+iVqwsN8RIQ+mY=
+X-Received: by 2002:a05:6e02:1a8e:: with SMTP id
+ k14mr4398347ilv.308.1610348881564; 
+ Sun, 10 Jan 2021 23:08:01 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <1609757093-30618-1-git-send-email-weiyi.lu@mediatek.com>
+ <1609757093-30618-2-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1609757093-30618-2-git-send-email-weiyi.lu@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Mon, 11 Jan 2021 15:07:35 +0800
+Message-ID: <CAJMQK-iUaRoYB8C6MmKA-TLD3gFj3XL4eX8MemeEWjh-9ZaTEw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] soc: mediatek: Add regulator control for MT8192 MFG
+ power domain
+To: Weiyi Lu <weiyi.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_012131_493666_4DAC2649 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20210111_020806_741712_2933D2E1 
+X-CRM114-Status: GOOD (  28.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,82 +85,186 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Toke =?ISO-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@toke.dk>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Sujuan Chen <sujuan.chen@mediatek.com>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ lkml <linux-kernel@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-01-08 at 21:02 +0100, Johannes Berg wrote:
-> This looks wrong to me, am I missing something?
-> 
-> > diff --git a/net/mac80211/debugfs.c b/net/mac80211/debugfs.c
-> > index 9135b6f..9991a6a 100644
-> > --- a/net/mac80211/debugfs.c
-> > +++ b/net/mac80211/debugfs.c
-> > @@ -120,7 +120,6 @@ static ssize_t aqm_write(struct file *file,
-> >  {
-> >  	struct ieee80211_local *local = file->private_data;
-> >  	char buf[100];
-> > -	size_t len;
-> >  
-> >  	if (count > sizeof(buf))
-> >  		return -EINVAL;
-> 
-> This ensures that count <= sizeof(buf)
-> 
-> > @@ -128,10 +127,10 @@ static ssize_t aqm_write(struct file *file,
-> >  	if (copy_from_user(buf, user_buf, count))
-> >  		return -EFAULT;
-> 
-> We copy, that's fine.
->  
-> > -	buf[sizeof(buf) - 1] = '\0';
-> > -	len = strlen(buf);
-> > -	if (len > 0 && buf[len-1] == '\n')
-> > -		buf[len-1] = 0;
-> > +	if (count && buf[count - 1] == '\n')
-> > +		buf[count - 1] = '\0';
-> 
-> This I think really was meant as strlen, because if you write something
-> like
-> 
->  10\n\0\0\0\0
-> 
-> before it would have parsed it as 10 still, now it gets confused?
-> 
-> I guess I'm not worried about that though.
-> 
-Hi Johannes,
+On Mon, Jan 4, 2021 at 10:44 AM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+>
+> Add regulator control support and specific power domain name of
+> MT8192 MFG power domain for regulator lookup.
+> Also power domain name can fix the debugfs warning.
+> (e.g. debugfs: Directory 'power-domain' with parent 'pm_genpd'
+> already present!)
+> However, not every domain with name need to get the regulator,
+> if we just want to fix the debugfs warning log by adding names to
+> power domains. Considering this case, lookup regulator by
+> regulator_get_optional() instead of getting a dummy regulator from
+> regulator_get() to operate.
+>
+Hi,
 
-Regarding the case "10\n\0\0\0\0", both count and strlen() fail to get
-the correct strlen.
-# echo "10\n\0\0\0\0" > /sys/kernel/debug/ieee80211/phy0/airtime_flags
-airtime_flags_write: count = 13, strlen = 15 
-> > +	buf[count] = '\0';
-> 
-> But if count == sizeof(buf) then this is an out-of-bounds write.
-> 
-> Same for all the other copied instances.
-> 
-> johannes
-> 
+sorry I didn't notice this patch before. I sent out a similar patch
+for this problem here:
+https://patchwork.kernel.org/project/linux-mediatek/cover/20210107104915.2888408-1-hsinyi@chromium.org/
 
-Should we consider this kind of case here?
-If yes, maybe we need to use sscanf() as other .write to take care of
-this kind of case, since kstrtou16() will also fail on this case.
+The difference is that
+1) we store the requirement for quirks in caps instead of name.
+2) regulators are under power-domain nodes instead of mfg devices in dts.
 
-Btw, some of strlen in other .write are also incorrect, but they won't
-get the problem due to sscanf().
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mt8192-pm-domains.h |  1 +
+>  drivers/soc/mediatek/mtk-pm-domains.c    | 42 ++++++++++++++++++++++++++++++--
+>  drivers/soc/mediatek/mtk-pm-domains.h    |  2 ++
+>  3 files changed, 43 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/soc/mediatek/mt8192-pm-domains.h
+> index 0fdf6dc..7db0ad3 100644
+> --- a/drivers/soc/mediatek/mt8192-pm-domains.h
+> +++ b/drivers/soc/mediatek/mt8192-pm-domains.h
+> @@ -49,6 +49,7 @@
+>                 .ctl_offs = 0x0308,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
+> +               .name = "mfg",
+>         },
+>         [MT8192_POWER_DOMAIN_MFG1] = {
+>                 .sta_mask = BIT(3),
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index fb70cb3..a160800 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -13,6 +13,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+>  #include <linux/soc/mediatek/infracfg.h>
+>
+>  #include "mt8173-pm-domains.h"
+> @@ -40,6 +41,7 @@ struct scpsys_domain {
+>         struct clk_bulk_data *subsys_clks;
+>         struct regmap *infracfg;
+>         struct regmap *smi;
+> +       struct regulator *supply;
+>  };
+>
+>  struct scpsys {
+> @@ -187,6 +189,22 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+>         return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
+>  }
+>
+> +static int scpsys_regulator_enable(struct scpsys_domain *pd)
+> +{
+> +       if (!pd->supply)
+> +               return 0;
+> +
+> +       return regulator_enable(pd->supply);
+> +}
+> +
+> +static int scpsys_regulator_disable(struct scpsys_domain *pd)
+> +{
+> +       if (!pd->supply)
+> +               return 0;
+> +
+> +       return regulator_disable(pd->supply);
+> +}
+> +
+>  static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  {
+>         struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
+> @@ -194,9 +212,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>         bool tmp;
+>         int ret;
+>
+> +       ret = scpsys_regulator_enable(pd);
+> +       if (ret < 0)
+> +               return ret;
+> +
+>         ret = clk_bulk_enable(pd->num_clks, pd->clks);
+>         if (ret)
+> -               return ret;
+> +               goto err_disable_regulator;
+>
+>         /* subsys power on */
+>         regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
+> @@ -232,6 +254,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>         clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
+>  err_pwr_ack:
+>         clk_bulk_disable(pd->num_clks, pd->clks);
+> +err_disable_regulator:
+> +       scpsys_regulator_disable(pd);
+>         return ret;
+>  }
+>
+> @@ -267,6 +291,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>
+>         clk_bulk_disable(pd->num_clks, pd->clks);
+>
+> +       ret = scpsys_regulator_disable(pd);
+> +       if (ret < 0)
+> +               return ret;
+> +
+>         return 0;
+>  }
+>
+> @@ -315,6 +343,16 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>         if (IS_ERR(pd->smi))
+>                 return ERR_CAST(pd->smi);
+>
+> +       if (pd->data->name) {
+> +               pd->supply = devm_regulator_get_optional(scpsys->dev, pd->data->name);
+> +               if (IS_ERR(pd->supply)) {
+> +                       if (PTR_ERR(pd->supply) == -ENODEV)
+> +                               pd->supply = NULL;
+> +                       else
+> +                               return ERR_CAST(pd->supply);
+> +               }
+> +       }
+> +
+>         num_clks = of_clk_get_parent_count(node);
+>         if (num_clks > 0) {
+>                 /* Calculate number of subsys_clks */
+> @@ -397,7 +435,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>                 goto err_unprepare_subsys_clocks;
+>         }
+>
+> -       pd->genpd.name = node->name;
+> +       pd->genpd.name = pd->data->name ?: node->name;
+>         pd->genpd.power_off = scpsys_power_off;
+>         pd->genpd.power_on = scpsys_power_on;
+>
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+> index a2f4d8f..58d72fb 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> @@ -81,6 +81,7 @@ struct scpsys_bus_prot_data {
+>   * @caps: The flag for active wake-up action.
+>   * @bp_infracfg: bus protection for infracfg subsystem
+>   * @bp_smi: bus protection for smi subsystem
+> + * @name: specific power domain name for regulator lookup and debugfs
+>   */
+>  struct scpsys_domain_data {
+>         u32 sta_mask;
+> @@ -90,6 +91,7 @@ struct scpsys_domain_data {
+>         u8 caps;
+>         const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
+>         const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
+> +       char *name;
+>  };
+>
+>  struct scpsys_soc_data {
 
-Do you prefer that we also use sscanf() in .write of airtime_flags?
-
-Shayne
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
