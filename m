@@ -4,77 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2886CC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 20:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA30BC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 23:30:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0EF122C7B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 20:24:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0EF122C7B
+	by mail.kernel.org (Postfix) with ESMTPS id 4FF6F22D0B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 23:30:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4FF6F22D0B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2OoK2RhPMdLFnGiI62C8f1Bf6jZd4jvHJq7tOD2MLEs=; b=1jtOJhEYaeRf5SWfzS0Ev9W2k
-	cpaEMk8zAxvePt7F2vw9s6dfG76u70wuOmoVni1Njc8wRgBtPlogjLVGiJnBeoCVMEgl2p44BiP45
-	twVORt0R2sSUVHuKsGQSwfwlozf2NqWU0EJ/CBVW7C84kS6pOJwjRJZllJHh1yQi3MfzLdJ8xMCG2
-	1IDR3lbm+l5IKERx4YKVM6RdvLbnHinFEDg04vAVPqglIELh/IpEW1gvtJuixBHI8QcyhtGh71sV6
-	nVbKOOG5Zekw4fn/7zgV6UrnG1fdKklPlX7Nn5cRiz6+dbzqsob87BQXS1HaBdlr49RFBa9pZFwB9
-	vcESUeYbw==;
+	 bh=TVhxfyC0cwBhcWFmyh/WSGUALahTKMQ197Y+W8E8qCg=; b=cZ/HfRtxE+7vREKPW07aXyjgb
+	LESR4hvk1aAST0Tt9byFf2WSt9xqZ7FI5wdwMYAk5AIXWtIacsBm0MVDLMtkI6Qdx27NoF/9XXpHq
+	a4sKXhQclmURSPCveLoOultyiNI28Yk9tZ2JHetRjihAZ+7lOyc+uAUukY4bj4JzBQRyfWNpCalYR
+	CSC3lxLuSXdf4s0NkwUPNCKXyl7PaCkF2T4ZlyfGdwCL7/3zallCLQXEx8wac+Qk5W1a37B0Yu9io
+	x9Xz153KGKgJqXilpX++5Zmbebv70snCQR+wpwUAuWfIVvHgvU3yCkn3G45QvdAkQUtjdzqmqERCU
+	S9odjG7pw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kz3jC-0002KJ-Qr; Mon, 11 Jan 2021 20:23:51 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1kz6e5-0006KK-Hz; Mon, 11 Jan 2021 23:30:45 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kz3j9-0002J4-5U; Mon, 11 Jan 2021 20:23:48 +0000
-Received: by mail-oi1-f173.google.com with SMTP id s2so723351oij.2;
- Mon, 11 Jan 2021 12:23:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=N+l7oEoC2Gtdd3tsUSXfbCD3VNBOdwhPR2for7AGSP0=;
- b=sKF/JTmoofTJpE+ytq/1wO0xt4TM/q100yxvLq5m5Z4SKvkY3uWQNVZBTSnmUm3Gr+
- Cpwv5lAFJOFYztN7n3Y6heIdUYsvLRnqxx7HPGcFjS+eqGh7Upb0xfYRle/poJpjtvVm
- zlVla1ZEOtevwmNGa+wW0Dj8Ok15GBciL1AOhK8MGWt9B/OrgBuuWyP8OULjMxWM5gWP
- DT7QD/Od0Ugu+Sx9yUeHoGiK8QgEgyl/3+sFjfRlcbWi3mwdk7+bybtvQp4vljtHO9JJ
- OIGqoLWSbKh+AmsedRbgXFJsfIFZofoSU2KryU9iQMiRpxzCb26lS2MOdGahEuS+zg1l
- jAJQ==
-X-Gm-Message-State: AOAM5327V6SoKc2ovUKrdZqJiQUS5wulcICB7RV5lKKtcBUWD6W6Wohd
- chbrpyuETOq1divwdXukSm9izUYkUg==
-X-Google-Smtp-Source: ABdhPJwWxknOlQUQyjNGUH3P7COKkSvblU0b4yZxPrYfjVei7f813EPmKrrInAQ0BrcWWGXpSQEl5g==
-X-Received: by 2002:a05:6808:8f0:: with SMTP id
- d16mr344964oic.47.1610396626307; 
- Mon, 11 Jan 2021 12:23:46 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id v4sm171269otk.50.2021.01.11.12.23.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 12:23:45 -0800 (PST)
-Received: (nullmailer pid 3005685 invoked by uid 1000);
- Mon, 11 Jan 2021 20:23:44 -0000
-Date: Mon, 11 Jan 2021 14:23:44 -0600
-From: Rob Herring <robh@kernel.org>
-To: Hector Yuan <hector.yuan@mediatek.com>
-Subject: Re: [PATCH v10 2/2] dt-bindings: cpufreq: add bindings for MediaTek
- cpufreq HW
-Message-ID: <20210111202344.GA2999777@robh.at.kernel.org>
-References: <1609222629-2979-1-git-send-email-hector.yuan@mediatek.com>
- <1609222629-2979-3-git-send-email-hector.yuan@mediatek.com>
+ id 1kz6ds-0006Db-7w; Mon, 11 Jan 2021 23:30:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0E43922D6D;
+ Mon, 11 Jan 2021 23:30:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1610407829;
+ bh=wY6WyJnyn9l1uwrWbWHDhefPmOISumjIE80nS7nbeWw=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Y8T4muPUcBgbTVPe7FTnsA5LKfJuPHHRfgndFWSilgpS0ZTgL/ptC/wZULassWj6C
+ 4j8UKWV2fGSGgERGw9SoY1PeqwbalopJtlD9dPVfdiASi0c20eHH0o/GEc4oPKIBSP
+ JDjPEN6T3MhIMKlxeJiaa+1QuaE09Vs/01xG4u7gz+PWESD9aclM+MqTuLGm22tbkO
+ AesCFZj8KgUyL040eHfiXr2KHrhFYXTUAVv69fe9uQtS8pgwl03f3Tl71em2RdpFqf
+ TwGMv2zOFfqpAyyu1tGdiWoxYpJ/b949IU6vwY7SPoEKYBVMHDNCkE0hJ4KqskE8WD
+ mBArExwmnNqcw==
+Received: by mail-ed1-f47.google.com with SMTP id h16so278355edt.7;
+ Mon, 11 Jan 2021 15:30:28 -0800 (PST)
+X-Gm-Message-State: AOAM532RmRZzNDmZH26q0vnzj7X1QJ0bXb85cZVMfnJsYQVhjrTpVOMS
+ AQkB3PLJUfl69N5ftz1JVpp1MWgCeDH7FMZZjA==
+X-Google-Smtp-Source: ABdhPJw/nqrPwedUsYYELvqmQQV2DVc/qTFoJ6TexxxOKDBI8IG/Cky1sIApLzU+/jMMXRGHkDWXdP+ADAPgZ8NARYQ=
+X-Received: by 2002:a50:fc96:: with SMTP id f22mr1283182edq.162.1610407827487; 
+ Mon, 11 Jan 2021 15:30:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1609222629-2979-3-git-send-email-hector.yuan@mediatek.com>
+References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1610351031-21133-2-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1610351031-21133-2-git-send-email-yongqiang.niu@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 12 Jan 2021 07:30:16 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8aUJQJimDk8gy-Jc8JXtdOmvm_+2eKnYp1p_CDbF_=dQ@mail.gmail.com>
+Message-ID: <CAAOTY_8aUJQJimDk8gy-Jc8JXtdOmvm_+2eKnYp1p_CDbF_=dQ@mail.gmail.com>
+Subject: Re: [PATCH v3,
+ 01/15] dt-bindings: mediatek: add description for postmask
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_152347_283971_B80906CA 
-X-CRM114-Status: GOOD (  19.76  )
+X-CRM114-CacheID: sfid-20210111_183032_446273_4D6A6996 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,160 +79,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- linux-pm@vger.kernel.org, Viresh Kumar <viresh.kumar@linaro.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ CK Hu <ck.hu@mediatek.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 29, 2020 at 02:17:09PM +0800, Hector Yuan wrote:
-> From: "Hector.Yuan" <hector.yuan@mediatek.com>
-> 
-> Add devicetree bindings for MediaTek HW driver.
-> 
-> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
-> ---
->  .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |  116 ++++++++++++++++++++
->  1 file changed, 116 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> new file mode 100644
-> index 0000000..53e0eb3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-> @@ -0,0 +1,116 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/cpufreq/cpufreq-mediatek-hw.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek's CPUFREQ Bindings
-> +
-> +maintainers:
-> +  - Hector Yuan <hector.yuan@mediatek.com>
-> +
-> +description:
-> +  CPUFREQ HW is a hardware engine used by MediaTek
-> +  SoCs to manage frequency in hardware. It is capable of controlling frequency
-> +  for multiple clusters.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,cpufreq-hw
-> +
-> +  reg:
-> +    minItems: 1
-> +    maxItems: 2
-> +    description: |
-> +      Addresses and sizes for the memory of the
-> +      HW bases in each frequency domain.
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +additionalProperties: true
-
-This is only correct on common bindings which are incomplete. You need 
-to define '#performance-domain-cells'.
-
-And this is all dependent on performance-domains binding being accepted.
-
-> +
-> +examples:
-> +  - |
-> +    cpus {
-> +            #address-cells = <1>;
-> +            #size-cells = <0>;
-> +
-> +            cpu0: cpu@0 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a55";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 0>;
-> +                reg = <0x000>;
-> +            };
-> +
-> +            cpu1: cpu@100 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a55";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 0>;
-> +                reg = <0x100>;
-> +            };
-> +
-> +            cpu2: cpu@200 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a55";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 0>;
-> +                reg = <0x200>;
-> +            };
-> +
-> +            cpu3: cpu@300 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a55";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 0>;
-> +                reg = <0x300>;
-> +            };
-> +
-> +            cpu4: cpu@400 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a55";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 1>;
-> +                reg = <0x400>;
-> +            };
-> +
-> +            cpu5: cpu@500 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a55";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 1>;
-> +                reg = <0x500>;
-> +            };
-> +
-> +            cpu6: cpu@600 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a75";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 1>;
-> +                reg = <0x600>;
-> +            };
-> +
-> +            cpu7: cpu@700 {
-> +                device_type = "cpu";
-> +                compatible = "arm,cortex-a75";
-> +                enable-method = "psci";
-> +                performance-domains = <&performance 1>;
-> +                reg = <0x700>;
-> +            };
-> +    };
-> +
-> +    /* ... */
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        performance: performance-controller@11bc00 {
-> +            compatible = "mediatek,cpufreq-hw";
-> +            reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
-> +            #performance-domain-cells = <1>;
-> +        };
-> +    };
-> -- 
-> 1.7.9.5
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+WW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+IOaWvCAyMDIx5bm0Meac
+iDEx5pelIOmAseS4gCDkuIvljYgzOjQ05a+r6YGT77yaCj4KPiBhZGQgZGVzY3JpcHRpb24gZm9y
+IHBvc3RtYXNrCj4gcG9zdG1hc2sgaXMgdXNlZCBjb250cm9sIHJvdW5kIGNvcm5lciBmb3IgZGlz
+cGxheSBmcmFtZQoKQWZ0ZXIgY2hhbmdpbmcgdG8gJ3VzZWQgdG8gY29udHJvbCcsCgpSZXZpZXdl
+ZC1ieTogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cgo+Cj4gU2lnbmVk
+LW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0t
+Cj4gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21l
+ZGlhdGVrLGRpc3AudHh0IHwgMSArCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+
+Cj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKPiBpbmRleCBjNTYyY2Rh
+Li45ZDlhYjY1IDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0Cj4gKysrIGIvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQK
+PiBAQCAtMzcsNiArMzcsNyBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzIChhbGwgZnVuY3Rpb24gYmxv
+Y2tzKToKPiAgICAgICAgICJtZWRpYXRlayw8Y2hpcD4tZGlzcC1hYWwiICAgICAgICAgICAgICAt
+IGFkYXB0aXZlIGFtYmllbnQgbGlnaHQgY29udHJvbGxlcgo+ICAgICAgICAgIm1lZGlhdGVrLDxj
+aGlwPi1kaXNwLWdhbW1hIiAgICAgICAgICAgIC0gZ2FtbWEgY29ycmVjdGlvbgo+ICAgICAgICAg
+Im1lZGlhdGVrLDxjaGlwPi1kaXNwLW1lcmdlIiAgICAgICAgICAgIC0gbWVyZ2Ugc3RyZWFtcyBm
+cm9tIHR3byBSRE1BIHNvdXJjZXMKPiArICAgICAgICJtZWRpYXRlayw8Y2hpcD4tZGlzcC1wb3N0
+bWFzayIgICAgICAgICAtIGNvbnRyb2wgcm91bmQgY29ybmVyIGZvciBkaXNwbGF5IGZyYW1lCj4g
+ICAgICAgICAibWVkaWF0ZWssPGNoaXA+LWRpc3Atc3BsaXQiICAgICAgICAgICAgLSBzcGxpdCBz
+dHJlYW0gdG8gdHdvIGVuY29kZXJzCj4gICAgICAgICAibWVkaWF0ZWssPGNoaXA+LWRpc3AtdWZv
+ZSIgICAgICAgICAgICAgLSBkYXRhIGNvbXByZXNzaW9uIGVuZ2luZQo+ICAgICAgICAgIm1lZGlh
+dGVrLDxjaGlwPi1kc2kiICAgICAgICAgICAgICAgICAgIC0gRFNJIGNvbnRyb2xsZXIsIHNlZSBt
+ZWRpYXRlayxkc2kudHh0Cj4gLS0KPiAxLjguMS4xLmRpcnR5Cj4gX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
+c3QKPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
