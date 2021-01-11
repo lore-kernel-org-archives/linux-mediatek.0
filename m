@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 007BEC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8BA9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:48:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A3BAB22A84
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:48:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3BAB22A84
+	by mail.kernel.org (Postfix) with ESMTPS id 4846F22A84
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:48:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4846F22A84
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dPpgl5Dt7Bx7+ERd42RuxWW9zaxl5alBZ3sWpDyeoIU=; b=iCYxRb4bCubOHecb0uNpUkbha
-	65BFWLnvn5q9vjow0Z4zVVr8hTaWkzFalWSNDiiVLGZ3W3Y7JAKwySmpCBxfUppn5+5bpb6N0e2QY
-	Gdhv+iiy5C3OkWfSUAFTYda/BqG+4FHDNcJ0gL+9oGtqNDiYGg9Md1Rmlu5G9zfso6dp2NZjOUJif
-	YlqS7THLbP3mZbafbD6m39SsfN9N4Kn0Q+wqjB+vUSLnoiqoH0JqYVOB2O3IS4KbTEpHDPJRyXVTw
-	l0zzzwItO6AyAEEP4MGFHtVAoTDVmtYM/S3/edUU5mAQU/EN0EuUs3NRqKeJiecCk4RSNSFH4nYaI
-	Vhy8Xp35w==;
+	 bh=ThKf1myUMdvlodEW4k/IlnqDkvfTYFEkGtQTc9G+EO8=; b=lT1E7fdrBFEWlWSwUb2YjH4zS
+	Jz6jJifh0CQTM1Nbs/eb49ySKNs7ET/GLjwNHnuTa4VIWjxN2FMgqnK8wtk4k6X/kaqrOggecsgGN
+	0nmuV+8uhO+Q/tIDe22DJoWrA/4qKwc9n1wE2PxMPwpqDl8lyFP4Y8S0x9AyD8J8oo1KJAuGDN2Z3
+	C3FCGoe9iOdJuehQUq1vtBMCljVtxP/ag/W1MKEeD69EaqAlomeKOkngtr//tfZF+rVQVwx/ZAW0G
+	KZGs6lrfyW54Rwpx4j5JZK0lD416I52GeDWbibPqv7nzbKUpehiPcPA+Q0dXm2pgbMcxH4rAjQgU0
+	PV+tuD45g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyrw8-0003Fk-8J; Mon, 11 Jan 2021 07:48:24 +0000
+	id 1kyrwA-0003HO-PN; Mon, 11 Jan 2021 07:48:26 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyrvh-00034M-H8; Mon, 11 Jan 2021 07:47:58 +0000
-X-UUID: be0ca74053754d43aea003062567461f-20210110
+ id 1kyrvi-00034M-QZ; Mon, 11 Jan 2021 07:48:00 +0000
+X-UUID: 2d2148f42c1c40769d45dbfeac160058-20210110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=nbYT8Q1R+oiz1h5KNxQbLTc8lAA5AsJEzMJoIIRqsY8=; 
- b=qWo70Sgnp4T0L1TxfW0xJE9TpPXMHDkKA5z99cZ9yhso1N65LLdZeS/YZ/OnIHKwphu0q0zD8U4m7c8atg1kMkSWy+wcRo4lzyhSemRlyltW33ib5+Bt7HBmAw+n4Wks/2BvWBJxeS+H3gNCwwUnkkNr968k9yFHSCfmmT5C7/c=;
-X-UUID: be0ca74053754d43aea003062567461f-20210110
+ bh=g94flgp+Nf/WIG1k/wN4XX7MgLCGfQPxRyWr5XF0B4E=; 
+ b=sq/h63o43tk0fG3WO+RtK255mbdSrEKOLrkvOIi+Z6UnzjVEJyRs10zKcDIBLw61pLg0ElnU5Y+UToB+g1Po8PGDu41XSFaWZjOzM+niSyesID0pUDiK844fk/HVdueZgSeqB3u/sSf/A++0tvZFQ1oxQzpSqjXRmzqxjg+BmTY=;
+X-UUID: 2d2148f42c1c40769d45dbfeac160058-20210110
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 381822000; Sun, 10 Jan 2021 23:47:54 -0800
+ with ESMTP id 1202142046; Sun, 10 Jan 2021 23:47:54 -0800
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 10 Jan 2021 23:44:05 -0800
+ 15.0.1497.2; Sun, 10 Jan 2021 23:44:06 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 15:44:04 +0800
+ 15.0.1497.2; Mon, 11 Jan 2021 15:44:05 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 15:44:03 +0800
+ Transport; Mon, 11 Jan 2021 15:44:05 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3, 09/15] drm/mediatek: Add pm runtime support for gamma
-Date: Mon, 11 Jan 2021 15:43:45 +0800
-Message-ID: <1610351031-21133-10-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v3, 11/15] drm/mediatek: fix aal size config
+Date: Mon, 11 Jan 2021 15:43:47 +0800
+Message-ID: <1610351031-21133-12-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_024757_756003_BE53BE0D 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20210111_024759_027383_5FF8D7DD 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,51 +85,36 @@ Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Yidi Lin <yidi.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+ Hsin-Yi Wang <hsinyi@chromium.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-gamma power domain need controled in the device.
+the orginal setting is not correct, fix it follow hardware data sheet.
+if keep this error setting, mt8173/mt8183 display ok
+but mt8192 display abnormal.
+
+Fixes: 0664d1392c26 (drm/mediatek: Add AAL engine basic function)
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Yidi Lin <yidi.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index 3c1ea07..da93079 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -10,6 +10,7 @@
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_crtc.h"
-@@ -156,6 +157,8 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, priv);
- 
-+	pm_runtime_enable(dev);
-+
- 	ret = component_add(dev, &mtk_disp_gamma_component_ops);
- 	if (ret)
- 		dev_err(dev, "Failed to add component: %d\n", ret);
-@@ -165,6 +168,8 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- 
- static int mtk_disp_gamma_remove(struct platform_device *pdev)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index fc01fea..6081800 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -174,7 +174,7 @@ static void mtk_aal_config(struct mtk_ddp_comp *comp, unsigned int w,
+ 			   unsigned int h, unsigned int vrefresh,
+ 			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
  {
-+	pm_runtime_disable(&pdev->dev);
-+
- 	component_del(&pdev->dev, &mtk_disp_gamma_component_ops);
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_AAL_SIZE);
++	mtk_ddp_write(cmdq_pkt, w << 16 | h, comp, DISP_AAL_SIZE);
+ }
  
- 	return 0;
+ static void mtk_aal_start(struct mtk_ddp_comp *comp)
 -- 
 1.8.1.1.dirty
 _______________________________________________
