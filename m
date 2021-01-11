@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A437CC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:44:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4ACAAC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:44:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1947C206E9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:44:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1947C206E9
+	by mail.kernel.org (Postfix) with ESMTPS id DF81F229CA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 07:44:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF81F229CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/O2M+ayJZ62biDaErWQrK7INAsruUnm5rOQ+flyExWw=; b=eBkJOWjg2sfBMTnsA5WzSkf3p
-	fG1fWgOWnlUBIzAF56GypoRYPLpSlexGIho5E/mhOPY+LKfEQ+FELx3xx17t4dI/lkiWh/70KZpkF
-	+g5lBGQ2dcucy2kWa7nke0YJw2GvwB13cWljHr9VWZGJyVPpl29hC2htlsjoJH2AhmpgopEL20fbd
-	8KnEvVSNHst1My3nsg5DQb8kANIoruE0CoBjuxG5rzwwN3+NP9/hkcp735s2H6UCkDZ5T7VBeJYPR
-	Q/q2pf2+OEvUPmtYEWyiOEZ4oBikyiwXNDHqdpWcw1t+IttS7BIgDjmSPEdQzsHTs3p3UYV46LzT2
-	gfYOiRcVw==;
+	 bh=YQVPO8udHi6fj62AYoO7qpkQXvFqI1khj5NVEwS+Zrk=; b=ssgK+ySm99QzDvkxLe5PRRxQ7
+	tX+llhd7f4acXDe2fUFdJjGgLd51dNeFIPiJ5GX3EYzqmXYyUGjxLzUV9xo1Zr5mNliFljiu1XasS
+	ZamOLR4UBJR0DC7wz6k8QjBjzArdSHXNZbrBydLJrWKCOllIjGOAt6PY8B3lh9V9kWxANVkhF+7eG
+	Oam7UUtd8TKmGcGsBsauNimyT4FDUCKiOGcCReTXt6/Oe6/fmcLT+IrxgVqTEBsqqQmweYVKNfA2Z
+	3SQVGS2Q3RCXXJ2ZFVVu//l47peTqLI7Zo5N6/t1QqBvDmL8AJImcT952nrl43dnThMjLKcvm5TtL
+	5WJjmq+fA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyrs9-0001QB-CH; Mon, 11 Jan 2021 07:44:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kyrsN-0001VR-10; Mon, 11 Jan 2021 07:44:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyrrz-0001LB-IT; Mon, 11 Jan 2021 07:44:09 +0000
-X-UUID: f9af518d969c4b8bb780d8575050b0f9-20210110
+ id 1kyrrz-0001LA-IV; Mon, 11 Jan 2021 07:44:10 +0000
+X-UUID: 7c0961921a0c415abdb87ec0f3595394-20210110
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IMWGp+BRrtCL8WXQ+XUnpC+1U9tfywrhhOxiGtc69bI=; 
- b=RhOIAENBEyc1CfldUWlEhwCnpzQXFt/tol67dq5BF9Qv9fss79na7vnvRMuzt3XaE5OkRcAWhAC861p2iYSkkLZe1PuGXLT7rtN/tTroj8KnTJYKXynKLdEzCozRHtnhA+PRLidNzD5YGFTjg8c4n2PCQZUWHTVZq+ZusfXZE8k=;
-X-UUID: f9af518d969c4b8bb780d8575050b0f9-20210110
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=SOaJshDuYk6drUpK68VXKG9wwCi0nak6FXuAW+DZtwA=; 
+ b=ZefF8YdWlsrUO0CoH+QajoF1kAJIUN/Q08Hhz7dUNtQkAr85kNUfRtEmkK1djyDyifX02ZeP54GNHWtff+IevxA+TQqkTXWoEiiaTJSAp3i/eMAIo5Yxupho+sXqSIHZ0FlqNLK6qrQjg8/lGCOquydO5EvWOhYfqei3SmAFIPQ=;
+X-UUID: 7c0961921a0c415abdb87ec0f3595394-20210110
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 747431088; Sun, 10 Jan 2021 23:44:02 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 10 Jan 2021 23:44:01 -0800
+ with ESMTP id 32022139; Sun, 10 Jan 2021 23:44:03 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 10 Jan 2021 23:44:02 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 15:43:59 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Jan 2021 15:44:01 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 15:43:58 +0800
+ Transport; Mon, 11 Jan 2021 15:44:01 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3, 04/15] drm/mediatek: add component OVL_2L2
-Date: Mon, 11 Jan 2021 15:43:40 +0800
-Message-ID: <1610351031-21133-5-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v3,
+ 07/15] drm/mediatek: enable OVL_LAYER_SMI_ID_EN for multi-layer
+ usecase
+Date: Mon, 11 Jan 2021 15:43:43 +0800
+Message-ID: <1610351031-21133-8-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_024407_917554_D879CDAE 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20210111_024407_932148_2C477FC6 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,25 +93,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add component OVL_2L2
+enable OVL_LAYER_SMI_ID_EN for multi-layer usecase
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 81ed076..a715127 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -383,6 +383,7 @@ struct mtk_ddp_comp_match {
- 	[DDP_COMPONENT_OVL1]	= { MTK_DISP_OVL,	1, NULL },
- 	[DDP_COMPONENT_OVL_2L0]	= { MTK_DISP_OVL_2L,	0, NULL },
- 	[DDP_COMPONENT_OVL_2L1]	= { MTK_DISP_OVL_2L,	1, NULL },
-+	[DDP_COMPONENT_OVL_2L2]	= { MTK_DISP_OVL_2L,	2, NULL },
- 	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
- 	[DDP_COMPONENT_PWM1]	= { MTK_DISP_PWM,	1, NULL },
- 	[DDP_COMPONENT_PWM2]	= { MTK_DISP_PWM,	2, NULL },
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index b47c238..4934bee 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -23,6 +23,7 @@
+ #define DISP_REG_OVL_RST			0x0014
+ #define DISP_REG_OVL_ROI_SIZE			0x0020
+ #define DISP_REG_OVL_DATAPATH_CON		0x0024
++#define OVL_LAYER_SMI_ID_EN				BIT(0)
+ #define OVL_BGCLR_SEL_IN				BIT(2)
+ #define DISP_REG_OVL_ROI_BGCLR			0x0028
+ #define DISP_REG_OVL_SRC_CON			0x002c
+@@ -61,6 +62,7 @@ struct mtk_disp_ovl_data {
+ 	unsigned int gmc_bits;
+ 	unsigned int layer_nr;
+ 	bool fmt_rgb565_is_0;
++	bool smi_id_en;
+ };
+ 
+ /**
+@@ -116,7 +118,17 @@ static void mtk_ovl_disable_vblank(struct mtk_ddp_comp *comp)
+ 
+ static void mtk_ovl_start(struct mtk_ddp_comp *comp)
+ {
++	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
++
+ 	writel_relaxed(0x1, comp->regs + DISP_REG_OVL_EN);
++
++	if(ovl->data->smi_id_en) {
++		unsigned int reg;
++
++		reg = readl(comp->regs + DISP_REG_OVL_DATAPATH_CON);
++		reg = reg | OVL_LAYER_SMI_ID_EN;
++		writel_relaxed(reg, comp->regs + DISP_REG_OVL_DATAPATH_CON);
++	}
+ }
+ 
+ static void mtk_ovl_stop(struct mtk_ddp_comp *comp)
 -- 
 1.8.1.1.dirty
 _______________________________________________
