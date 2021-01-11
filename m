@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2E5DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:30:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4621AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:30:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C2C522482
+	by mail.kernel.org (Postfix) with ESMTPS id E793622482
 	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 11:30:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C2C522482
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E793622482
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mbThSQHeFa/cx/Oe31gPg8+vqNJPH8f/XX5zzAzxCeE=; b=YrfyzDpWxL6ESdAK7QiM8/zDh
-	aMQ01t9CabAFpzTIKEKtr1Xx9Bq1dboEQa+bVlARI0CN8ACvU2VqM9jelYnkcvNUXecII99h0vzZg
-	F9h0xzanE+xsiBHe2jNKN//2r4SjGw9XiLzUvMnF3xXSdEojwm9rgpbTzrja+8AoTEmQyqyLO97Uz
-	wbay/2goV3WkQA9Ncdg5PVAdbZ3NDTiV72J8hoB1F/SdqS0xhdH25gHzMkagsd4sGCe+SNalx1QN7
-	3gjH+gthGfN8riZeFhaNkU7SGJaL1KQkIGPhV9G9zmbHg8zrW3nw17C2gz5iJce4VrgzJpzXSlkCX
-	p3gcM1SMw==;
+	 bh=re3U1lVbPFlwQbhsKc9o011HD43vptOLZ22gKZdRnBY=; b=tShDhj52M0CyeTcsnP2fKZbri
+	DI6jIfxCUEBIrs7e71u8Mc/a1snZ2Tr0CaWOXI1Qfcz3M/wmCxUSOSTDsGVAHlS0HPnuxYIW4d8yU
+	8kRVQLHbFQD4U18Yux+x3x7xkIiohr/AH2OtU8Cc1Udwb60uWEP9/ICQ/bkneICG5/ptFbuDTfrK7
+	sYoRRZ2/dlkEW70neT8U3X7dlH1PlvAQIPttYbgkTELt1nJroUiBaY8+MgB95BUJ6PoPZMwXxGrZT
+	7Bt4zIeTOY7MX2P5JrAT0zAxJZTPRo7ANxTJ4WJAFNQ5J3wiIzKQTRPH6/ibks68Uxst+0ys3gsLh
+	YMfwmE/HQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyvOu-00056U-8R; Mon, 11 Jan 2021 11:30:20 +0000
+	id 1kyvOv-00056r-Ki; Mon, 11 Jan 2021 11:30:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyvOs-000551-Aj; Mon, 11 Jan 2021 11:30:19 +0000
-X-UUID: 876b27c4457842c2ab708e67f42687fb-20210111
+ id 1kyvOs-000558-Ja; Mon, 11 Jan 2021 11:30:19 +0000
+X-UUID: 04a0d34c0c4d4e19a54d9280cd611076-20210111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=5Fcku8kfI1xjwydgYobBi/3A+/uWy94QIc3YyGkDLoE=; 
- b=VxXUBxfOzj/eOrAaDPjIvpEbBjK0rpnqLQL7exaxgq8KyZgXFGKjOMQ2W950x+U2lerKZ2sxcgFnYZnhah0xFqf58GecO59dY0AiPuz5vZArCeeJVvkf6AFkm0uII9kusIA50mm5hcEpbzFde6UoAE7a22H48t6uUvXBKHviUIA=;
-X-UUID: 876b27c4457842c2ab708e67f42687fb-20210111
+ bh=k0Bf2WxuL/HgcZRl3Ti87q0ki+LUDN/2wE7atKZHM7E=; 
+ b=Tt2qTwr4Aqy8vem04zpgc/CZJuXI4gIOYbYYZGWA73eNI3Qt5KjFFSK3zgUkHJduyBX1dXhNPHnS5QZymn05zLDSUU7b5E44sGhyJQnVoA1FoKjFTMdYb+6RQnM5GDhxuOk5IobUK4lP6hEr9NZZ7VadNTNyacZUpKETTxfgBQg=;
+X-UUID: 04a0d34c0c4d4e19a54d9280cd611076-20210111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1857726856; Mon, 11 Jan 2021 03:30:14 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 469694626; Mon, 11 Jan 2021 03:30:14 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 03:21:48 -0800
+ 15.0.1497.2; Mon, 11 Jan 2021 03:22:53 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 19:21:46 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Jan 2021 19:22:51 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Jan 2021 19:21:46 +0800
+ Transport; Mon, 11 Jan 2021 19:22:50 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v6 14/33] iommu/mediatek: Add a flag for iova 34bits case
-Date: Mon, 11 Jan 2021 19:18:55 +0800
-Message-ID: <20210111111914.22211-15-yong.wu@mediatek.com>
+Subject: [PATCH v6 21/33] iommu/mediatek: Support up to 34bit iova in tlb flush
+Date: Mon, 11 Jan 2021 19:19:02 +0800
+Message-ID: <20210111111914.22211-22-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210111111914.22211-1-yong.wu@mediatek.com>
 References: <20210111111914.22211-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_063018_572107_C513B2AE 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20210111_063018_780731_F723EBBB 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,37 +93,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a HW flag for if the HW support 34bit IOVA. the previous SoC
-still use 32bit. normally the lvl1 pgtable size is 16KB when ias == 32.
-if ias == 34, lvl1 pgtable size is 16KB * 4. The purpose of this patch
-is to save 16KB*3 continuous memory for the previous SoC.
+If the iova is 34bit, the iova[32][33] is the bit0/1 in the tlb flush
+register. Add a new macro for this.
+
+In the macro, since (iova + size - 1) may be end with 0xfff, then the
+bit0/1 always is 1, thus add a mask.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/iommu/mtk_iommu.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 485f3b6d1a21..bf1277d58121 100644
+index b9c63c8de33e..468be7ca62e4 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -112,6 +112,7 @@
- #define HAS_SUB_COMM			BIT(5)
- #define WR_THROT_EN			BIT(6)
- #define HAS_LEGACY_IVRP_PADDR		BIT(7)
-+#define IOVA_34_EN			BIT(8)
+@@ -129,6 +129,11 @@ static const struct iommu_ops mtk_iommu_ops;
  
- #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
- 		((((pdata)->flags) & (_x)) == (_x))
-@@ -299,7 +300,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
- 			IO_PGTABLE_QUIRK_NO_PERMS |
- 			IO_PGTABLE_QUIRK_ARM_MTK_EXT,
- 		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
--		.ias = 32,
-+		.ias = MTK_IOMMU_HAS_FLAG(data->plat_data, IOVA_34_EN) ? 34 : 32,
- 		.oas = 35,
- 		.iommu_dev = data->dev,
- 	};
+ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
+ 
++#define MTK_IOMMU_TLB_ADDR(iova) ({					\
++	dma_addr_t _addr = iova;					\
++	((lower_32_bits(_addr) & GENMASK(31, 12)) | upper_32_bits(_addr));\
++})
++
+ /*
+  * In M4U 4GB mode, the physical address is remapped as below:
+  *
+@@ -213,8 +218,9 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+ 			       data->base + data->plat_data->inv_sel_reg);
+ 
+-		writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
+-		writel_relaxed(iova + size - 1,
++		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova),
++			       data->base + REG_MMU_INVLD_START_A);
++		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova + size - 1),
+ 			       data->base + REG_MMU_INVLD_END_A);
+ 		writel_relaxed(F_MMU_INV_RANGE,
+ 			       data->base + REG_MMU_INVALIDATE);
 -- 
 2.18.0
 _______________________________________________
