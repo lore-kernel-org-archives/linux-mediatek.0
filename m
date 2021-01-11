@@ -2,74 +2,63 @@ Return-Path: <SRS0=02OB=GO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56173C433E6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 15:43:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DE3AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 15:46:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6299206A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 15:43:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6299206A4
+	by mail.kernel.org (Postfix) with ESMTPS id 37F63224D2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 15:46:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37F63224D2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qsX/AqI0RLzQQApLMHL4/Ea+hfy9/EOCaow2n88T2ZU=; b=f77s4g4egyy8smWHscvrFHeaH
-	98Wd59/6Yo5m5lFdet9VG7J2rHtxRqGmEMbazfFdpqAOLfV81EJOrcO5DEija7w+3NEyaai9GB8v/
-	HnmsrRFIlLeUgmQ7040uZaB9VhaVDmpwpGowHSnDVLJFaLfdZ+/jWrS+e+W4GSLDdFzjPxvfmabht
-	CzhFmP8ecsENG/bEviyVNfTdc3ZmwQWtfWayPokGsKbmfr7jS4R9ARhuiookArP8Km4nuv0Tf++UD
-	I2xb0hvNFEIQLTxduR7X/aXnd5ozDHJymK9+VzuNkqhW0Isx8g8CuCQxQvufbHUriNiiX6dlJnehI
-	0VcwNO7jQ==;
+	 bh=64mXKW6Ezqg38Ky/trWVjT/QTiSY5p9ydrcBIkeDKLk=; b=GfOgwh1hmfXrJv9qLxo8KhPwz
+	XQJQApL7batvpVbCveC1BjEQp3fN5S9wtDb3L81JeIijd1HOkCeefExxyqZihyg6ZA8B60jfmXZ0l
+	jgIQojQI0o5K1Mz/qP5yY7L9ZxlKciu6XymFqYJfJyhqG6Op34InNc5jTtjNv5PzAiPhAQD2X3ryt
+	V34QKZ4zLxcgJEzaEshmWf/E6+efpedXvpDmeH3ETxRRFFkMWOjztltcBFLQTmGas5StJ6zcdPwCS
+	f3J9YRUGvLxmgN9YBH9BnBwa4ovBfW3cVKS7oPNaxvjFHAsLUKsd1QTneJu63+qUtTIdt6aZ0GPxU
+	2aFL/DVoA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyzLv-0005iu-Nn; Mon, 11 Jan 2021 15:43:31 +0000
+	id 1kyzOp-00073d-Px; Mon, 11 Jan 2021 15:46:31 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyzLb-0005cL-TT; Mon, 11 Jan 2021 15:43:13 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C7B45207B1;
- Mon, 11 Jan 2021 15:43:09 +0000 (UTC)
+ id 1kyzOi-00070h-2R; Mon, 11 Jan 2021 15:46:26 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 69B0A20897;
+ Mon, 11 Jan 2021 15:46:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610379790;
- bh=RonP8ve3WthsTBKKQ/UytIvBztNvyV5RjN0+msXV9nY=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=EgsgZofnCOPBEefh+/TPgHC68i8JC3CVERGqmBI3ncBGYet9Hw0TLEERVXD5wXkFY
- duwV+IlNESa3Ygu7m9Och5ei/39fVUxOP1DGtZZcIocRggogvyMbWDrRCs8qDXDFqF
- ZrpTMQZYIY2OyI59+EGg7GincB9gN4EDdo5dp8Po2xmV8LVY3GCEBZkufC3KXpDH3I
- nP4xQentOyqNwkv75+pbdoYPmDdFoCnA8O3d4B09a8t3lz/Mntl7kXYBSuFl0utk2N
- 3sPoTstRVpQRLjFTajeRCn/9iyiXEV60W6jZy8J88GxPk52xZZz+kMJYLeJUnKgkLd
- TScPvN2llX70Q==
-Received: by mail-ej1-f52.google.com with SMTP id b9so299473ejy.0;
- Mon, 11 Jan 2021 07:43:09 -0800 (PST)
-X-Gm-Message-State: AOAM533LPig+RQw/HPB3X11XqHq/QRJth4luIfmjnIQer1Dm1URwylSq
- jkyna8hRn3JRot9XKWhFdcTZm+skt/4DkedMCw==
-X-Google-Smtp-Source: ABdhPJx/jzAlheiwQjfn7BpiqB02i68e/htTzamuYVsQwpyl2HDp4/Rfdpic2s2pRL+gj/DN5FUyq/zWNIoZo3v0HcY=
-X-Received: by 2002:a17:906:31cb:: with SMTP id
- f11mr58560ejf.468.1610379788269; 
- Mon, 11 Jan 2021 07:43:08 -0800 (PST)
+ s=k20201202; t=1610379983;
+ bh=Vb4EWJGhtPIfUX19jNXMSL+D+Wx8b6XEpNClUK+58ko=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=omf8WyqzAdFiNBENs6FDTp9dRwmDGFd7toldLz8gPhXncb+6VzD6JuWiCmSB63EbX
+ 2hGoxcFQ+P+dgxd43gmBFKm7BzyzYP3WPdiydrAughKwpyHeAwEqRxrLgdbuYv9CF4
+ JAQMCjUr2lv6eCzoXhq8KVh3VwnIdY9FT2H7Ym1c1PwPPQPN3Z5Z9fX6B5NS7atdu8
+ X/8JB8BJTVrsa0o7A7X5RJNbLMvEeLfaomqDHW4x8j/GUuERevKI6LqK4jof5fz5jx
+ GpP8UWC6McyCY+kkqzIGMUuL2umI5S7EpSjyyfpDbmQVKSQkWHZ1y7WVfseDhiQJMr
+ aif/UEIZZHTog==
+Date: Mon, 11 Jan 2021 16:46:16 +0100
+From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
+To: DENG Qingfang <dqfext@gmail.com>
+Subject: Re: [PATCH net-next 0/2] dsa: add MT7530 GPIO support
+Message-ID: <20210111164616.1947d779@kernel.org>
+In-Reply-To: <20210111054428.3273-1-dqfext@gmail.com>
+References: <20210111054428.3273-1-dqfext@gmail.com>
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-References: <1610092095-5113-1-git-send-email-henryc.chen@mediatek.com>
- <1610092095-5113-2-git-send-email-henryc.chen@mediatek.com>
- <1610163019.789930.3762037.nullmailer@robh.at.kernel.org>
- <1610333553.2992.7.camel@mtksdaap41>
-In-Reply-To: <1610333553.2992.7.camel@mtksdaap41>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 11 Jan 2021 09:42:54 -0600
-X-Gmail-Original-Message-ID: <CAL_Jsq+W3UL4-s6ezFJrhUYko2EBPsO9nMOGzGR1nQT3x_VtdQ@mail.gmail.com>
-Message-ID: <CAL_Jsq+W3UL4-s6ezFJrhUYko2EBPsO9nMOGzGR1nQT3x_VtdQ@mail.gmail.com>
-Subject: Re: [PATCH V7 01/13] dt-bindings: soc: Add dvfsrc driver bindings
-To: Henry Chen <henryc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_104312_068020_E021957E 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20210111_104624_274113_D748AA4B 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,53 +70,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>,
- Nicolas Boichat <drinkcat@google.com>,
- "open list:THERMAL" <linux-pm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Stephen Boyd <swboyd@chromium.org>, Fan Chen <fan.chen@mediatek.com>,
- devicetree@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Arvin Wang <arvin.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Ryan Case <ryandcase@chromium.org>,
- Georgi Djakov <georgi.djakov@linaro.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, netdev@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ "David S. Miller" <davem@davemloft.net>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ =?UTF-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Vladimir Oltean <olteanv@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 10, 2021 at 8:52 PM Henry Chen <henryc.chen@mediatek.com> wrote:
->
-> Hi Rob,
->
-> On Fri, 2021-01-08 at 20:30 -0700, Rob Herring wrote:
-> > On Fri, 08 Jan 2021 15:48:03 +0800, Henry Chen wrote:
-> > > Document the binding for enabling dvfsrc on MediaTek SoC.
-> > >
-> > > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> > > ---
-> > >  .../devicetree/bindings/soc/mediatek/dvfsrc.yaml   | 67 ++++++++++++++++++++++
-> > >  1 file changed, 67 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
-> > >
-> >
-> > My bot found errors running 'make dt_binding_check' on your patch:
-> >
-> > yamllint warnings/errors:
-> >
-> > dtschema/dtc warnings/errors:
-> > Documentation/devicetree/bindings/soc/mediatek/dvfsrc.example.dts:19:18: fatal error: dt-bindings/interconnect/mtk,mt8183-emi.h: No such file or directory
-> >    19 |         #include <dt-bindings/interconnect/mtk,mt8183-emi.h>
-> >       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> Sorry, because this header file is added on "[V7,07/13] dt-bindings:
-> interconnect: add MT8183 interconnect dt-bindings".
-> Should I change the order of the patchset (let the yaml pathc behind the
-> header) to fixed that ?
+Qingfang,
 
-DT headers should be part of the binding schema patch. (Or at least come first).
+what modes does the LED support? Does it support blinking on rx/tx?
+What about link status?
+I'd like to know because I am still working on patches which add
+ethernet PHY/switch LEDs, with transparent offloading of netdev trigger.
 
-Rob
+Marek
+
+On Mon, 11 Jan 2021 13:44:26 +0800
+DENG Qingfang <dqfext@gmail.com> wrote:
+
+> MT7530's LED controller can be used as GPIO controller. Add support for
+> it.
+> 
+> DENG Qingfang (2):
+>   dt-bindings: net: dsa: add MT7530 GPIO controller binding
+>   drivers: net: dsa: mt7530: MT7530 optional GPIO support
+> 
+>  .../devicetree/bindings/net/dsa/mt7530.txt    |  6 ++
+>  drivers/net/dsa/mt7530.c                      | 96 +++++++++++++++++++
+>  drivers/net/dsa/mt7530.h                      | 20 ++++
+>  3 files changed, 122 insertions(+)
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
