@@ -2,63 +2,81 @@ Return-Path: <SRS0=02OB=GO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6861C433E9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 16:42:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 775D1C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 17:40:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3321F22AAD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 16:42:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3321F22AAD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2B3AC20738
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jan 2021 17:40:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B3AC20738
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=acYk24SINBpCIPiLdNCoaUVIN2SehMItlpidC2K7ww4=; b=nw48bHL+ut9IjD/X7nCld8AUl
-	JNBFE/aze+AfVCZZyl5nSEG5kXraxEPUF5eujOJ6/bb78H9nx5rXhnvc3rTqdWbHL2Kpi/rLcSO9K
-	PPblK+3CBKgnWP9hl6QBpsFpmJGpYz4A8u7ErIETcyEUEc1NKQFt5cwEw8OjaXHYexwv9b82z61j9
-	GB2fPVMiEwHQ9BQxvHq1/sPGVT15a7j4kYDnczNwMwXDUUgc7C7KMe4EbIoLh1k5e1c1ElOi0XXpi
-	QIwk/zuD41T3ghccQgHoReBrhDB+Fa7NY1ZZiVvXrEIfWaW36zszRoXIkkXhKsWYN24e/GPR1hQpQ
-	NkUz5Eskg==;
+	 bh=zmcAyWQU2mm4YVQTvuBciNXBpLaZxJKcpBVga/iCHFA=; b=A7pgzvhUygunttIyhxXeqLRqQ
+	XmSYEkzWarm16HNPvZhJEoBQC10dvvYJhA4NAQGcvOH4ZLRNYbQoKmJ7OVs2ruUbTvV/PIq20xjAj
+	jfnNP2izN75XzQqEFO1fW3FscoENxfWJie2ewVgn3JZM0lNa0II6RKDqZFbbflXSATTpj/QgAB2HI
+	Ez0lGZ7zsy6rUNYzIXga00MyDQLh47RB/CiJpKvHK54U3gDNb1IaR2Hs/aJOW3pnwxY/ODK8OoSjP
+	qfaicpTtq21++JOw/sJWu9+ibEZjyP/1uvgRInMkPuBiWrlvYYhJawLX94PG2aYSgq0jz9xI26YTs
+	oowQaS+PQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kz0GT-0003yE-0u; Mon, 11 Jan 2021 16:41:57 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kz1B3-0003Kz-W8; Mon, 11 Jan 2021 17:40:27 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kz0GN-0003wX-V3; Mon, 11 Jan 2021 16:41:52 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 33B7820B1F;
- Mon, 11 Jan 2021 16:41:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610383310;
- bh=pHdL6r7FXXGNXM3Ebqp+Wf6OKYp1jUSbChLOvGSj6Vs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Vkwn0fuTvm7Tdoy3qtROvRL14dXnX6MebEsWVEc8u3sIzFAAGtuTcNUkdudrCV38h
- kZGJxZsTBhcVU8jUGrt0IGsa3EZ3kTzV0FpbkXnvK/VuEVQz+gSzP1RuO9TqK3YtKF
- vaV10TEeoZpHnka5OGoymIlillJ7/jCg1BWc7l7u4CO0y04KknnVCfIjkAD2VeeGrt
- UFkoL+ljFOYIKtq4QBn4xrePx3hf0GOzBqIqnwBGzXrgqEYae0OM8+Xgxbq3F7g2E+
- HKaELmSvaVkhkGTAlkbwvypKlTdW6uzyFF7GjUUZa8bH+y7Bk7yu86v1CM/oSTuOdh
- UkjbiYcgej/Vw==
-Date: Mon, 11 Jan 2021 16:41:18 +0000
-From: Mark Brown <broonie@kernel.org>
-To: matthias.bgg@kernel.org
-Subject: Re: [PATCH v2 1/3] regulator: mt6360: Add OF match table
-Message-ID: <20210111164118.GE4728@sirena.org.uk>
-References: <20210109112612.1221-1-matthias.bgg@kernel.org>
+ id 1kz1B0-0003I1-Vv
+ for linux-mediatek@lists.infradead.org; Mon, 11 Jan 2021 17:40:24 +0000
+Received: by mail-pl1-x630.google.com with SMTP id r4so196157pls.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 Jan 2021 09:40:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qjQEnNzMbx9jfPqlYY0N0jYj1R3Q/O+LmSxzsF9dUuI=;
+ b=vMdJQPxBpe62gqG1pM4PczjRnOrPEyBn6OX27rJgh3RoP9Bb8niJeXWnlLtYASKzs1
+ 3tec2zfE91shpqvsoUtUzkG/s3YvNOUBIs6QRIpbj5A2uTZilfmqSgEHCupMdmtcskw3
+ z/0Ho9FHyV3j6J1WTeTJ6ki8j0WWTYpMEMl0kNXESAM7BHsOSEN5BvaVIJrRezTX9O++
+ 54WMwrTMCRPa2hxQD6G+aGtFz3ktlz5+uiSLFgT2YlOhNAAkdL03lR/0nNzjGTsVyTJY
+ FPQNiuvc4oFV+C92Xx1rH933KYdXsTRE6t9fEHQ3WjlZaghphrDKguNdYDsJa+44c0Ob
+ da3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qjQEnNzMbx9jfPqlYY0N0jYj1R3Q/O+LmSxzsF9dUuI=;
+ b=O5Yju6fM9zEdii3rz85zNQQJt3zCOkuu8VuB3jokLLGBIChM0Tc8Lga7nhwhxUb3FR
+ 4TnlBNfLi6H3oCOJKzYUFPjOONi/L4VFjNIk9YDRUZGUlFXY53qBL+uMbT+OFaKCu7J4
+ 1oxeZntflchLM/Ho4OkXcqWV6UKfnipa7wOv0xT9HfcExZ5vTy3S3fG3LA5wBMkyRDCU
+ EUQAXmSpoeSd/sT24RXaYoJehhJDPHLBl4LBLEOc9Em6ZSala9A61BLmtS2GUUsnf0YR
+ TTtQpZoIMTZkkXKRXCIRgipODr85VUQGrS3nNQEerC20Rp8U/m9SAhgpXBhXnw3ciJkR
+ RK8A==
+X-Gm-Message-State: AOAM530B1Z5haoHkyyL4QhExOxr7b/X3d4+TbmjuXoGn8hfMG6KTSmA5
+ AoEVeuo6RUvVHUVi3t+eFe0eHV69mkmGleHEtXu1qw==
+X-Google-Smtp-Source: ABdhPJz90wo+LNABRutfNJ9IAurAbJzzUQp2ytJ+Y6N0wWoqRh/YQRSb/ZBZwZsHxcnBTnLqMoLIoyxfsgW7wTllDmY=
+X-Received: by 2002:a17:90a:f683:: with SMTP id
+ cl3mr383204pjb.136.1610386818720; 
+ Mon, 11 Jan 2021 09:40:18 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210109112612.1221-1-matthias.bgg@kernel.org>
-X-Cookie: Too much is not enough.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20210108040940.1138-1-walter-zh.wu@mediatek.com>
+ <CAAeHK+wW3bTCvk=6v_vDQFYLC6=3kunmprXA-P=tWyXCTMZjhQ@mail.gmail.com>
+ <CAK8P3a3FakV-Y9xkoy_fpYKBNkMvcO7DPOQC8R7ku7yPcgDw3g@mail.gmail.com>
+In-Reply-To: <CAK8P3a3FakV-Y9xkoy_fpYKBNkMvcO7DPOQC8R7ku7yPcgDw3g@mail.gmail.com>
+From: Andrey Konovalov <andreyknvl@google.com>
+Date: Mon, 11 Jan 2021 18:40:07 +0100
+Message-ID: <CAAeHK+zB0=eBgrWTxcUK8GkxmUAn-W44NWDFE4zEB79CxVpwXg@mail.gmail.com>
+Subject: Re: [PATCH v3] kasan: remove redundant config option
+To: Arnd Bergmann <arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_114152_086555_A1895601 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20210111_124023_098841_93636306 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,69 +88,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Gene Chen <gene_chen@richtek.com>, Matthias Brugger <mbrugger@suse.com>,
- Axel Lin <axel.lin@ingics.com>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chen Zhong <chen.zhong@mediatek.com>,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Content-Type: multipart/mixed; boundary="===============4869328643229289714=="
+Cc: Walter Wu <walter-zh.wu@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Alexander Potapenko <glider@google.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Nathan Chancellor <natechancellor@gmail.com>,
+ Dmitry Vyukov <dvyukov@google.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jan 8, 2021 at 9:31 PM Arnd Bergmann <arnd@kernel.org> wrote:
+>
+> On Fri, Jan 8, 2021 at 7:56 PM Andrey Konovalov <andreyknvl@google.com> wrote:
+> > On Fri, Jan 8, 2021 at 5:09 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> > > @@ -2,6 +2,12 @@
+> > >  CFLAGS_KASAN_NOSANITIZE := -fno-builtin
+> > >  KASAN_SHADOW_OFFSET ?= $(CONFIG_KASAN_SHADOW_OFFSET)
+> > >
+> > > +ifdef CONFIG_KASAN_STACK
+> > > +       stack_enable := 1
+> > > +else
+> > > +       stack_enable := 0
+> > > +endif
+> > > +
+> >
+> > AFAIR, Arnd wanted to avoid having KASAN_STACK to be enabled by
+> > default when compiling with Clang, since Clang instrumentation leads
+> > to very large kernel stacks, which, in turn, lead to compile-time
+> > warnings. What I don't remember is why there are two configs.
+> >
+> > Arnd, is that correct? What was the reason behind having two configs?
+>
+> I think I just considered it cleaner than defining the extra variable in the
+> Makefile at the time, as this was the only place that referenced
+> CONFIG_KASAN_STACK.
+>
+> The '#if CONFIG_KASAN_STACK' (rather than #ifdef) that got added
+> later do make my version more confusing though, so I agree that
+> Walter's second patch improves it.
+>
+> Acked-by: Arnd Bergmann <arnd@arndb.de>
 
---===============4869328643229289714==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="47eKBCiAZYFK5l32"
-Content-Disposition: inline
+Got it, thanks!
 
+> On a related note: do you have any hope that clang will ever fix
+> https://bugs.llvm.org/show_bug.cgi?id=38809 and KASAN_STACK
+> can be enabled by default on clang without risking stack
+> overflows?
 
---47eKBCiAZYFK5l32
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Not sure :(
 
-On Sat, Jan 09, 2021 at 12:26:09PM +0100, matthias.bgg@kernel.org wrote:
-> From: Matthias Brugger <mbrugger@suse.com>
->=20
-> Binding documentation mentions that a compatible is required for the
-> MT6360 device node, but the driver doesn't provide a OF match table.
-
-The binding should be fixed to remove the requirement for a compatible
-here, this is both redundant since we already know we have a mt6380 from
-the core MFD and encoding details of how Linux implements things into
-the DT bindings.
-
---47eKBCiAZYFK5l32
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl/8f60ACgkQJNaLcl1U
-h9DuAwf9HMf6KGCC1zeqywtZhlKTB1cStvN7IwhVumnBs7s6MfljXhjvSeg0dwhu
-OuPqKnBkputwxVuLUcxVBeS8gOlcmNigypgGCWi4NgbJWnDtRGBEwbJ6Dz3UNQYN
-tnNzP/Jd5yk+wQlFS4FM0FMX8Q2Bpl/nLbGliTL9xnrfgBGRLevBTChBOahtLFxo
-de12GMYwf5pCOgSknPwmuGKXF1gGAbk3aE3XKO5HaRYgyQY3v4LN9i5kj7Z7Z8f2
-h4pF/HhZRm0EMuc1nhEv8bJgsC4A6TIyLbEA8xHP9SixXREANTyGaRg49kWlaeH5
-4lRvhhOfHOOXtgpMSdBLqK7MLac80g==
-=OgE8
------END PGP SIGNATURE-----
-
---47eKBCiAZYFK5l32--
-
-
---===============4869328643229289714==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+I've filed this on KASAN bugzilla to not forget:
+https://bugzilla.kernel.org/show_bug.cgi?id=211139
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4869328643229289714==--
-
