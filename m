@@ -2,84 +2,86 @@ Return-Path: <SRS0=cYlk=GP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D336C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F24A4C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CB3E422E02
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB3E422E02
+	by mail.kernel.org (Postfix) with ESMTPS id 9709522E02
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9709522E02
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GMpgbc5FsogwANt6ALuGROwqEKGk+dRvjpkWX3taDY8=; b=J3nQ1vn4v+JARSWCs3WarRWAgl
-	yjHlm2c0uGnRQ7hyYSXHnIWQL2FKtXcsVcXPEUpi5sixIQ9Em6As0ZbAHdSmVTWIg3PK+OrhfZrjz
-	H8NJ5QwmX4cemmuRTKk4IhLy1zL0YaUF5+U6zGwLjq9/GjE8kTEYllM5MbdvA223LjfyCG0DdXedR
-	4aBTs7K41InSRSTWca5JVhELbxUIpcRRJgC5fci+poGtpSYYDpjaatTAxZbVMuCr/r96FovGJnA4i
-	gGkPz/IN1iSqPdGAK/oKiUdM0I0oWKhmSIrzuxjtjy0toccNRlRC48twASenZAXAim+76pPoSPHIj
-	BdT4pZCQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=dkwS2nkRhtDgd7va9wmmgEh5uZDQuVExfdwkNpLGewU=; b=0oCv3FrelihOBeobinn6xp/6u
+	0FPuPIhfyjg+m+ihW0HqZH2DB9IqPdGqXGKW772wD6+YMIgC7Km7kqVkaOlA2Y41u1Ko43E3qnjNR
+	6HDCnyn6Hn5PsR0yfMpZ/ivbrDv+LF6G4SVljNog0EE2c+Pq9MTg9gXFC+XjzS9GXOa4aB9x2qiRe
+	lpyzN9y7Vmo3oNMx2IaVyU1TBPihKU3y4vF2S4nUHUQ4hI0dER1ZqlOGcs8fbIgB+31tODnCLzNo/
+	nhshmZQCZgutMpx6CBozDDQpSIJ/2NJ3A0po0x9RapHMmR/MeIc1LytcoTll41EBnYG2T/WpFFZlx
+	RRd/H81dA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kz8mA-0002t7-2C; Tue, 12 Jan 2021 01:47:14 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1kz8mG-0002vL-B5; Tue, 12 Jan 2021 01:47:20 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kz8m8-0002rl-GJ; Tue, 12 Jan 2021 01:47:13 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id iq13so628477pjb.3;
- Mon, 11 Jan 2021 17:47:10 -0800 (PST)
+ id 1kz8mE-0002uA-GF; Tue, 12 Jan 2021 01:47:19 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id j1so529390pld.3;
+ Mon, 11 Jan 2021 17:47:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=zW9C/QxorEMeUx+kFawitRLf1fte/47nwM4QFK+urs8=;
- b=Xw2j31dYa7SMPypEzYJZYF8wY0mLXfYFnRrVxcJlbSxF0zGLpHLPR6T6Bg8zzujGzJ
- zaZiUQXiIkayvjga5aPESuNkqGgWOFFQpJvEybATylzQpZ1xIRuXQptih/ZGWPZzoaPR
- ksMLZwGXjGMwxnDyUNshkicHq9mDWY/odzVyLVRpqHtax39dopg5O5T6oZn4UeIJavJQ
- TuYKiMhudim7g3ptvZWU4FM6sz6hGq1jm8ByHFlPS/ilmXxTkAbVFmJLfnhFkZbemzgV
- VyDxLpCOCcE2sGfaOcuwmcxO4XHau8P9gKSGlganrQfq+Ttb+SvZ3EL4WDtL30hcfyL2
- dRtQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=qu9jTq4Mhds1PLReGFI6BuQWWjoITkJw1sqRT7XAn7M=;
+ b=H63y7TytVzVANKOVA7sdCA6vVgUHNtSjJ0nN8hlQEHDbjOF4g5m8MJRGfQkutbNkX0
+ QqecOfP6JEf05JZm1qT88AeNGR2IleB6D0vIhRITllMtZ44HM5F3SbrJlWL0phqLac3J
+ 3q6Wz5eIKCj5xza64orBo519XLAkn0icn82vDvA/tKr9AfQYigPbbNNTMgDF2Wk38Bjl
+ ZYKEGf+1pjClpaJTY3CbQAb3YW2Lzvc1IXAThCVLdrJ07knO+CP5u9k2ssAFWC95H36o
+ sKJZj3sKgDIvwYyrq9NQR0yx/wUmlS7zN9d0wcjrKifHQDvv+nOMQ2sEJUV+IEIsJQFR
+ Ct4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=zW9C/QxorEMeUx+kFawitRLf1fte/47nwM4QFK+urs8=;
- b=WFfV2pARwX9oRurRihEzNu8EqGA4OyH1i7yAlY9dBm2dZTZimY0FtP+YYy5HG3U4QT
- wNSUU8AnU3RwBqLqPub6/N2t65yYSN1UWVIpu5IwtkrNdiz9AJNeaGXEnW4U10yN6q/e
- OZgBbTNip59ZLeeQzkY7L5zteE6WrshGQoKBcKuxH3fu94UEq7OO6gZCcaIEloWlkqGP
- jOKkV6dAOFoZAKQA4uj/Qh6dHAQAP0AZy/3zCtOaRW6/ExwvzLdMt2PUchz+lgSXw8H0
- b9K1P3A4JFrNknBEBIYTUpak2f0pSgqoe5bomAmOM7ZSAG3M0kTzbv1f03UrBXW/ISa7
- 39wA==
-X-Gm-Message-State: AOAM532hnY5FvfUgzQCmzvuUK5q8zE/k+MrLJg/IqXkVdtv5aZypWPKj
- WaDdDfisf2MJ8Cp8VUbBJz4=
-X-Google-Smtp-Source: ABdhPJyxFPcLuVKER4Bl8+KtGfVHh/4AqA6sL49fG/uOu5r42FeKYv+0+bdSG/fKKm4dJGHuwUnqxw==
-X-Received: by 2002:a17:902:d202:b029:da:d86b:78be with SMTP id
- t2-20020a170902d202b02900dad86b78bemr2264745ply.0.1610416027902; 
- Mon, 11 Jan 2021 17:47:07 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=qu9jTq4Mhds1PLReGFI6BuQWWjoITkJw1sqRT7XAn7M=;
+ b=QX7Qv6TT0Tv4UzHBfbNziZk+HPWTSMSn9K4MHzqd5pJ9vAaufd2rmpt7RkTakmMjN6
+ M7Y++r1SEAKlqUVzAYRqIsxTk01OBwFFh2H9nN8SMFRoZhcu1ZxgCX/a6DLPbUEJSVaO
+ IxTMqq7FCj118JbK/iO1ACs/+6oEQitLmQRxQxtkoQVjOxWzE/Ys/lQXf0Cr1eX+26Du
+ koUgJNf7euSULCUPQWb10TkDAEh/gFEG2+gNtmYLXrPa3kKQ8vLAoBspMUyKAND6HyYT
+ jDvkqhWmk+TjERym7V8XnSOluNPeFIpyL4s0y2YVAcDadQBaUJ0YmA/ImL5QF4kWYFPN
+ ANBw==
+X-Gm-Message-State: AOAM532Zi0IFdgxESuS7NGDXklJ6v7TVXw3o4qRUE2/XSWfKllqMhL+c
+ sXROT1ilU1V5bs0maBCRLOu/gVtEix8=
+X-Google-Smtp-Source: ABdhPJwwk0s1+U0eEIms8qHWr9weNGl7FRq+v0mFtEWayniloff6bmrtW7bVMClYALWDK/at4Reeqw==
+X-Received: by 2002:a17:90b:3907:: with SMTP id
+ ob7mr218173pjb.18.1610416036496; 
+ Mon, 11 Jan 2021 17:47:16 -0800 (PST)
 Received: from localhost.localdomain ([49.207.194.207])
- by smtp.gmail.com with ESMTPSA id 14sm904376pfy.55.2021.01.11.17.46.58
+ by smtp.gmail.com with ESMTPSA id 14sm904376pfy.55.2021.01.11.17.47.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 17:47:07 -0800 (PST)
+ Mon, 11 Jan 2021 17:47:15 -0800 (PST)
 From: Allen Pais <allen.lkml@gmail.com>
 To: herbert@gondor.apana.org.au
-Subject: [PATCH v3 00/19]crypto: convert tasklets to use new tasklet_setup
- API()
-Date: Tue, 12 Jan 2021 07:16:31 +0530
-Message-Id: <20210112014650.10887-1-allen.lkml@gmail.com>
+Subject: [PATCH v3 01/19] crypto: amcc: convert tasklets to use new
+ tasklet_setup() API
+Date: Tue, 12 Jan 2021 07:16:32 +0530
+Message-Id: <20210112014650.10887-2-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210112014650.10887-1-allen.lkml@gmail.com>
+References: <20210112014650.10887-1-allen.lkml@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_204712_600412_EF835798 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20210111_204718_607608_81C10243 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,7 +104,8 @@ Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
  lars.persson@axis.com, matthias.bgg@gmail.com,
  Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
  bbrezillon@kernel.org, nicolas.ferre@microchip.com,
- linux-crypto@vger.kernel.org, davem@davemloft.net
+ linux-crypto@vger.kernel.org, Romain Perier <romain.perier@gmail.com>,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -110,76 +113,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Allen Pais <apais@linux.microsoft.com>
 
-Commit 12cc923f1ccc ("tasklet: Introduce new initialization API")
-introduced a new tasklet initialization API. This series converts
-all the crypto modules to use the new tasklet_setup() API
+In preparation for unconditionally passing the
+struct tasklet_struct pointer to all tasklet
+callbacks, switch to using the new tasklet_setup()
+and from_tasklet() to pass the tasklet pointer explicitly.
 
-The series is based on v5.11-rc2 (e71ba9452f0b)
+Signed-off-by: Romain Perier <romain.perier@gmail.com>
+Signed-off-by: Allen Pais <apais@linux.microsoft.com>
+---
+ drivers/crypto/amcc/crypto4xx_core.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-v3:
-  - fixed rockchip driver(Emil Renner Berthing)
-
-v2:
-  - added acks
-  - addressed comments [Krzysztof and Gilad]
-
-Allen Pais (19):
-  crypto: amcc: convert tasklets to use new tasklet_setup() API
-  crypto: atmel: convert tasklets to use new tasklet_setup() API
-  crypto: axis: convert tasklets to use new tasklet_setup() API
-  crypto: caam: convert tasklets to use new tasklet_setup() API
-  crypto: cavium: convert tasklets to use new tasklet_setup() API
-  crypto: ccp: convert tasklets to use new tasklet_setup() API
-  crypto: ccree: convert tasklets to use new tasklet_setup() API
-  crypto: hifn_795x: convert tasklets to use new tasklet_setup() API
-  crypto: img-hash: convert tasklets to use new tasklet_setup() API
-  crypto: ixp4xx: convert tasklets to use new tasklet_setup() API
-  crypto: mediatek: convert tasklets to use new tasklet_setup() API
-  crypto: omap: convert tasklets to use new tasklet_setup() API
-  crypto: picoxcell: convert tasklets to use new tasklet_setup() API
-  crypto: qat: convert tasklets to use new tasklet_setup() API
-  crypto: qce: convert tasklets to use new tasklet_setup() API
-  crypto: rockchip: convert tasklets to use new tasklet_setup() API
-  crypto: s5p: convert tasklets to use new tasklet_setup() API
-  crypto: talitos: convert tasklets to use new tasklet_setup() API
-  crypto: octeontx: convert tasklets to use new tasklet_setup() API
-
- drivers/crypto/amcc/crypto4xx_core.c          |  7 ++--
- drivers/crypto/atmel-aes.c                    | 14 +++----
- drivers/crypto/atmel-sha.c                    | 14 +++----
- drivers/crypto/atmel-tdes.c                   | 14 +++----
- drivers/crypto/axis/artpec6_crypto.c          |  7 ++--
- drivers/crypto/caam/jr.c                      |  9 ++--
- drivers/crypto/cavium/cpt/cptvf_main.c        |  9 ++--
- drivers/crypto/cavium/nitrox/nitrox_common.h  |  2 +-
- drivers/crypto/cavium/nitrox/nitrox_isr.c     | 13 +++---
- drivers/crypto/cavium/nitrox/nitrox_reqmgr.c  |  4 +-
- drivers/crypto/ccp/ccp-dev-v3.c               |  9 ++--
- drivers/crypto/ccp/ccp-dev-v5.c               |  9 ++--
- drivers/crypto/ccp/ccp-dmaengine.c            |  7 ++--
- drivers/crypto/ccree/cc_fips.c                |  8 ++--
- drivers/crypto/ccree/cc_request_mgr.c         | 12 +++---
- drivers/crypto/hifn_795x.c                    |  6 +--
- drivers/crypto/img-hash.c                     | 12 +++---
- drivers/crypto/ixp4xx_crypto.c                |  4 +-
- .../crypto/marvell/octeontx/otx_cptvf_main.c  | 12 +++---
- drivers/crypto/mediatek/mtk-aes.c             | 14 +++----
- drivers/crypto/mediatek/mtk-sha.c             | 14 +++----
- drivers/crypto/omap-aes.c                     |  6 +--
- drivers/crypto/omap-des.c                     |  6 +--
- drivers/crypto/omap-sham.c                    |  6 +--
- drivers/crypto/picoxcell_crypto.c             |  7 ++--
- drivers/crypto/qat/qat_common/adf_isr.c       |  5 +--
- drivers/crypto/qat/qat_common/adf_sriov.c     | 10 ++---
- drivers/crypto/qat/qat_common/adf_transport.c |  4 +-
- .../qat/qat_common/adf_transport_internal.h   |  2 +-
- drivers/crypto/qat/qat_common/adf_vf_isr.c    | 11 +++--
- drivers/crypto/qce/core.c                     |  7 ++--
- drivers/crypto/rockchip/rk3288_crypto.c       | 14 +++----
- drivers/crypto/s5p-sss.c                      | 13 +++---
- drivers/crypto/talitos.c                      | 42 +++++++++----------
- 34 files changed, 152 insertions(+), 181 deletions(-)
-
+diff --git a/drivers/crypto/amcc/crypto4xx_core.c b/drivers/crypto/amcc/crypto4xx_core.c
+index 8d1b918a0533..0e13430a5b9b 100644
+--- a/drivers/crypto/amcc/crypto4xx_core.c
++++ b/drivers/crypto/amcc/crypto4xx_core.c
+@@ -1072,9 +1072,9 @@ static void crypto4xx_unregister_alg(struct crypto4xx_device *sec_dev)
+ 	}
+ }
+ 
+-static void crypto4xx_bh_tasklet_cb(unsigned long data)
++static void crypto4xx_bh_tasklet_cb(struct tasklet_struct *t)
+ {
+-	struct device *dev = (struct device *)data;
++	struct device *dev = from_tasklet(dev, t, tasklet);
+ 	struct crypto4xx_core_device *core_dev = dev_get_drvdata(dev);
+ 	struct pd_uinfo *pd_uinfo;
+ 	struct ce_pd *pd;
+@@ -1452,8 +1452,7 @@ static int crypto4xx_probe(struct platform_device *ofdev)
+ 		goto err_build_sdr;
+ 
+ 	/* Init tasklet for bottom half processing */
+-	tasklet_init(&core_dev->tasklet, crypto4xx_bh_tasklet_cb,
+-		     (unsigned long) dev);
++	tasklet_setup(&core_dev->tasklet, crypto4xx_bh_tasklet_cb);
+ 
+ 	core_dev->dev->ce_base = of_iomap(ofdev->dev.of_node, 0);
+ 	if (!core_dev->dev->ce_base) {
 -- 
 2.25.1
 
