@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9D97C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:50:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D1B8C433E6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:50:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91B2622E02
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:50:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91B2622E02
+	by mail.kernel.org (Postfix) with ESMTPS id C9F1022E01
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:50:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C9F1022E01
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,64 +24,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4jgdqrOaJqmaVDMJA0oyda160MEZGMSK0iYxrEatOLM=; b=OWTaQ7XxRnz3WK02V4x/SCIdS
-	gYiHaLEEOESRgBzDqnm0blksHsXV75xEUSNp0SZjl6rWRhmoZ2gycnGDpH3lptp2H1sfH1FuCzmNY
-	g0LJCI/Vy/i/D7G0mGodWEF0A6RbVo/kzsCAcWprhl3q93+4/qpl531JGOFWnm+G2Z9Pgb1JDQAdC
-	QxGYdftex2EbzWuCr/5ah4UuX+7w6c72SuuAJ2tQG5oVlmEpHft4aO0rscX1yjEOh7ARWE9KTSN7R
-	7ChJwndi1xUotbCEXpMo2P0yLmUsfkfdLFOCAN21xb9s4C4uI6cde0EFzLcgCt1gc8THG4NeKoKOS
-	w32c7ooiA==;
+	 bh=NHkTi8TLCQ5Bud5Ntiusm1lqGaH5XQrdqZB4eykbafA=; b=FnjLjIrFYC8K+SxAoQEvSRs7P
+	KdSdMEWZEWWCfqPmzVK4MyHrO9odfit60jHg8iLzSEyxR6GBPeISMAfW4150Uc5yNVcURrfbbYuaF
+	tSJAH5xE6ARcKSVg+u/XuRaWidXt7SarpDscgt1yYS3Fu43BzbUZ63zJQVjvTaCp0D0uU9s/m8C/2
+	CJDoV1PdG8TCkShbcMGkWFQSg/Ooki7WXRy3PcbvyihlAUwObloGMJVSE0fi825OaAnkTZI2UHrYZ
+	Rjq6LZqqSHMpgvXicbwxKzOY4gYp7TtBqCrdFHgTQQxDP8Td5knv+eki6HA0UIukO0m+b1I/nkgnM
+	bWiFt8k9A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kz8ok-0004Id-50; Tue, 12 Jan 2021 01:49:54 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1kz8ov-0004Pk-P6; Tue, 12 Jan 2021 01:50:05 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kz8og-0004G3-8f; Tue, 12 Jan 2021 01:49:51 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id n10so363017pgl.10;
- Mon, 11 Jan 2021 17:49:49 -0800 (PST)
+ id 1kz8op-0004Ln-Tx; Tue, 12 Jan 2021 01:50:01 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id 4so525379plk.5;
+ Mon, 11 Jan 2021 17:49:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=hdFxs07OBJ0o+UoENy6opg4NHXCcbJpiwkpmIdQiwws=;
- b=FJdiFANvMr6hPlso1S2evd+zFtXBWgkIeiOXs8YUuvIMeBb0M9j3JNjt6b/T5byEgN
- ygaJTbhQVH19uvceTlN4Yofbl3VjYiq9X6MQ3AEf+J4YQy6YRWN8xxZYc/kZ0s8LiQZ6
- UgYAhKso1lUl1n205tYzvNbDUHnoqdKFgjoSvYWVJjHZCF4UQ//9l8TzmLL5Ege34lvo
- BKXjr9JcVHQ9Z2MTw9DvFfBA2xol34OpzBZ5LuWnSjR1NSLa/AxzNTQ3oKsh+WWvv/lS
- cop6/a44/SDw06dT6B0SThOFN6JuMgeX9DpNzSjO+dB+dSqvDn6K2mIQC6EvASp3H5d5
- c9bA==
+ bh=FGU6XdrM5ip9qPogsEZz38Pcqw7Ofqtd00r2eJGcshk=;
+ b=JFWnMBvoV4KONNmA25ZyYVeBE8Iql7jwtsebx7WlKY/L52r+xcAbQUYfKrSVGw/UcH
+ J2Dy1n3d+DscVP9xAjjnr2z2ghmH7UyaR7mhOeiceOKCOGAtIRBrUGTTeXP6BXxFttiQ
+ yd0ru1wndG8+viHMvqV1xnoROYJDtjlQ8JkbmC+G7YSjpSt50SfrP2wDFDUpnBwY9srh
+ jLj0GdAmiUdpZVeeSaFLXSE3UcvP7OeEQ3nDifZEgoANLTjyGMU/EPuBPBaqYi9PxsX/
+ TnA5jfD+SI7DYnTmyLcYahkZ+X1U46IrgdHd5R0fGgYLf4LktMZAO4UjEPuYc+HPISwE
+ Smqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hdFxs07OBJ0o+UoENy6opg4NHXCcbJpiwkpmIdQiwws=;
- b=hUmDSeV8K9ZdtOX8EXDpvxka/XK7PHTx7aJWleVYYa90y1FKRXk9B+yyTFIBaWgbyH
- euvjD/mn8s+Zrf7KyWCxHh4f3iLYgkcf+4HsBgSHWfcE1QITrm5Zjk21f/NKf+gTPhIM
- /MmDIosoZJ7NL19Hz3i3ctODpqRGUhTmEIpL9r2TWsK7s06npOhsBGXv/DWYEvMBqo4p
- P9ZXsPd7R5XtW5NjTvzmBinpkBPRdaqKwj50U1ZQtT9cjXZ2aNRdaVSvHvsw12gAWKNH
- A+wGh7XM1V64LJ+QdPvsIZAVCgVEZuPBN75nOQ+7X0U7fdoYYDQof0Jf3Tn3iBDM6Z9f
- zcgQ==
-X-Gm-Message-State: AOAM531yb9Xzfijdy+p4mbRQ15J1d/U5Ig8npnHFkOsoe5nt2yYLWWf9
- 1pQxs//1IMZgQajGBhGVDeI=
-X-Google-Smtp-Source: ABdhPJz2PBmKMYU/Dsu4VtrMyiTvF6rhR+M+Fm3V4NTKiKxfPTJd3CpJpe8t5OvauzLVcGA80CqhjQ==
-X-Received: by 2002:aa7:9848:0:b029:19d:c24b:1179 with SMTP id
- n8-20020aa798480000b029019dc24b1179mr2450075pfq.29.1610416188197; 
- Mon, 11 Jan 2021 17:49:48 -0800 (PST)
+ bh=FGU6XdrM5ip9qPogsEZz38Pcqw7Ofqtd00r2eJGcshk=;
+ b=L/K+A9PTC7+ikKM025Xqg0D/nFymXoO46rybBHcFZoEbNILobkA7hTs4kg3vKN24jI
+ plJU+tIGS35/mQXTS/BBE1g6AlVImpKEF21pzXnBv3Uc8XeNRPL1V2RflFQtKqglDm9d
+ c0tk5exEbTyzJLUyoCovYcATMT8XzdtuTaXvjMIprykxxZ1qCjKK4wMMPqblM19FreOU
+ j7QiiKcwm1L39xNg3z0ewe59233FwzVknOLNeSLHVMIbU2lJEJoIHuPqc3SSCxrDPz3s
+ ATImHJSEoN2vwEivk9gQTv1vJ2FMtFFdQtlCG9SleFdLqmptHMsZQ1XjEfMoe8NX3k1m
+ NaCg==
+X-Gm-Message-State: AOAM531o5nNVrvHYhlBsEJpmeoIargpnP2kmtlej1Td/uUQAf0Bw0+lt
+ GfnrTx65DcJbQRIF2lAGuBs=
+X-Google-Smtp-Source: ABdhPJy0bdZeanBUbbWmlcTHHQbnEwK/exVUHRnRT0ardhrmFXFDgfk2NrcxH8xys4HCMVe9G6Encg==
+X-Received: by 2002:a17:90b:3596:: with SMTP id
+ mm22mr1797272pjb.235.1610416197940; 
+ Mon, 11 Jan 2021 17:49:57 -0800 (PST)
 Received: from localhost.localdomain ([49.207.194.207])
- by smtp.gmail.com with ESMTPSA id 14sm904376pfy.55.2021.01.11.17.49.39
+ by smtp.gmail.com with ESMTPSA id 14sm904376pfy.55.2021.01.11.17.49.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 17:49:47 -0800 (PST)
+ Mon, 11 Jan 2021 17:49:57 -0800 (PST)
 From: Allen Pais <allen.lkml@gmail.com>
 To: herbert@gondor.apana.org.au
-Subject: [PATCH v3 17/19] crypto: s5p: convert tasklets to use new
+Subject: [PATCH v3 18/19] crypto: talitos: convert tasklets to use new
  tasklet_setup() API
-Date: Tue, 12 Jan 2021 07:16:48 +0530
-Message-Id: <20210112014650.10887-18-allen.lkml@gmail.com>
+Date: Tue, 12 Jan 2021 07:16:49 +0530
+Message-Id: <20210112014650.10887-19-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210112014650.10887-1-allen.lkml@gmail.com>
 References: <20210112014650.10887-1-allen.lkml@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_204950_347999_F25F0AC6 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20210111_205000_206066_71CC02DA 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,60 +118,93 @@ struct tasklet_struct pointer to all tasklet
 callbacks, switch to using the new tasklet_setup()
 and from_tasklet() to pass the tasklet pointer explicitly.
 
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 ---
- drivers/crypto/s5p-sss.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ drivers/crypto/talitos.c | 42 ++++++++++++++++++----------------------
+ 1 file changed, 19 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/crypto/s5p-sss.c b/drivers/crypto/s5p-sss.c
-index 682c8a450a57..128512a365e1 100644
---- a/drivers/crypto/s5p-sss.c
-+++ b/drivers/crypto/s5p-sss.c
-@@ -1445,9 +1445,9 @@ static int s5p_hash_handle_queue(struct s5p_aes_dev *dd,
-  * s5p_hash_tasklet_cb() - hash tasklet
-  * @data:	ptr to s5p_aes_dev
+diff --git a/drivers/crypto/talitos.c b/drivers/crypto/talitos.c
+index 4fd85f31630a..be4f7dd810fd 100644
+--- a/drivers/crypto/talitos.c
++++ b/drivers/crypto/talitos.c
+@@ -403,10 +403,11 @@ static void flush_channel(struct device *dev, int ch, int error, int reset_ch)
+  * process completed requests for channels that have done status
   */
--static void s5p_hash_tasklet_cb(unsigned long data)
-+static void s5p_hash_tasklet_cb(struct tasklet_struct *t)
- {
--	struct s5p_aes_dev *dd = (struct s5p_aes_dev *)data;
-+	struct s5p_aes_dev *dd = from_tasklet(dd, t, hash_tasklet);
+ #define DEF_TALITOS1_DONE(name, ch_done_mask)				\
+-static void talitos1_done_##name(unsigned long data)			\
++static void talitos1_done_##name(struct tasklet_struct *t)		\
+ {									\
+-	struct device *dev = (struct device *)data;			\
+-	struct talitos_private *priv = dev_get_drvdata(dev);		\
++	struct talitos_private *priv = from_tasklet(priv, t,		\
++		done_task[0]);						\
++	struct device *dev = priv->dev;					\
+ 	unsigned long flags;						\
+ 									\
+ 	if (ch_done_mask & 0x10000000)					\
+@@ -429,11 +430,12 @@ static void talitos1_done_##name(unsigned long data)			\
+ DEF_TALITOS1_DONE(4ch, TALITOS1_ISR_4CHDONE)
+ DEF_TALITOS1_DONE(ch0, TALITOS1_ISR_CH_0_DONE)
  
- 	if (!test_bit(HASH_FLAGS_BUSY, &dd->hash_flags)) {
- 		s5p_hash_handle_queue(dd, NULL);
-@@ -1975,9 +1975,9 @@ static void s5p_aes_crypt_start(struct s5p_aes_dev *dev, unsigned long mode)
- 	s5p_aes_complete(req, err);
+-#define DEF_TALITOS2_DONE(name, ch_done_mask)				\
+-static void talitos2_done_##name(unsigned long data)			\
++#define DEF_TALITOS2_DONE(name, ch_done_mask, tasklet_idx)		\
++static void talitos2_done_##name(struct tasklet_struct *t)		\
+ {									\
+-	struct device *dev = (struct device *)data;			\
+-	struct talitos_private *priv = dev_get_drvdata(dev);		\
++	struct talitos_private *priv = from_tasklet(priv, t,		\
++		done_task[tasklet_idx]);				\
++	struct device *dev = priv->dev;					\
+ 	unsigned long flags;						\
+ 									\
+ 	if (ch_done_mask & 1)						\
+@@ -453,10 +455,10 @@ static void talitos2_done_##name(unsigned long data)			\
+ 	spin_unlock_irqrestore(&priv->reg_lock, flags);			\
  }
  
--static void s5p_tasklet_cb(unsigned long data)
-+static void s5p_tasklet_cb(struct tasklet_struct *t)
- {
--	struct s5p_aes_dev *dev = (struct s5p_aes_dev *)data;
-+	struct s5p_aes_dev *dev = from_tasklet(dev, t, tasklet);
- 	struct crypto_async_request *async_req, *backlog;
- 	struct s5p_aes_reqctx *reqctx;
- 	unsigned long flags;
-@@ -2258,7 +2258,7 @@ static int s5p_aes_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, pdata);
- 	s5p_dev = pdata;
+-DEF_TALITOS2_DONE(4ch, TALITOS2_ISR_4CHDONE)
+-DEF_TALITOS2_DONE(ch0, TALITOS2_ISR_CH_0_DONE)
+-DEF_TALITOS2_DONE(ch0_2, TALITOS2_ISR_CH_0_2_DONE)
+-DEF_TALITOS2_DONE(ch1_3, TALITOS2_ISR_CH_1_3_DONE)
++DEF_TALITOS2_DONE(4ch, TALITOS2_ISR_4CHDONE, 0)
++DEF_TALITOS2_DONE(ch0, TALITOS2_ISR_CH_0_DONE, 0)
++DEF_TALITOS2_DONE(ch0_2, TALITOS2_ISR_CH_0_2_DONE, 0)
++DEF_TALITOS2_DONE(ch1_3, TALITOS2_ISR_CH_1_3_DONE, 1)
  
--	tasklet_init(&pdata->tasklet, s5p_tasklet_cb, (unsigned long)pdata);
-+	tasklet_setup(&pdata->tasklet, s5p_tasklet_cb);
- 	crypto_init_queue(&pdata->queue, CRYPTO_QUEUE_LEN);
+ /*
+  * locate current (offending) descriptor
+@@ -3386,23 +3388,17 @@ static int talitos_probe(struct platform_device *ofdev)
  
- 	for (i = 0; i < ARRAY_SIZE(algs); i++) {
-@@ -2268,8 +2268,7 @@ static int s5p_aes_probe(struct platform_device *pdev)
+ 	if (has_ftr_sec1(priv)) {
+ 		if (priv->num_channels == 1)
+-			tasklet_init(&priv->done_task[0], talitos1_done_ch0,
+-				     (unsigned long)dev);
++			tasklet_setup(&priv->done_task[0], talitos1_done_ch0);
+ 		else
+-			tasklet_init(&priv->done_task[0], talitos1_done_4ch,
+-				     (unsigned long)dev);
++			tasklet_setup(&priv->done_task[0], talitos1_done_4ch);
+ 	} else {
+ 		if (priv->irq[1]) {
+-			tasklet_init(&priv->done_task[0], talitos2_done_ch0_2,
+-				     (unsigned long)dev);
+-			tasklet_init(&priv->done_task[1], talitos2_done_ch1_3,
+-				     (unsigned long)dev);
++			tasklet_setup(&priv->done_task[0], talitos2_done_ch0_2);
++			tasklet_setup(&priv->done_task[1], talitos2_done_ch1_3);
+ 		} else if (priv->num_channels == 1) {
+-			tasklet_init(&priv->done_task[0], talitos2_done_ch0,
+-				     (unsigned long)dev);
++			tasklet_setup(&priv->done_task[0], talitos2_done_ch0);
+ 		} else {
+-			tasklet_init(&priv->done_task[0], talitos2_done_4ch,
+-				     (unsigned long)dev);
++			tasklet_setup(&priv->done_task[0], talitos2_done_4ch);
+ 		}
  	}
  
- 	if (pdata->use_hash) {
--		tasklet_init(&pdata->hash_tasklet, s5p_hash_tasklet_cb,
--			     (unsigned long)pdata);
-+		tasklet_setup(&pdata->hash_tasklet, s5p_hash_tasklet_cb);
- 		crypto_init_queue(&pdata->hash_queue, SSS_HASH_QUEUE_LENGTH);
- 
- 		for (hash_i = 0; hash_i < ARRAY_SIZE(algs_sha1_md5_sha256);
 -- 
 2.25.1
 
