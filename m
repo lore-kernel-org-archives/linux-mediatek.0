@@ -2,71 +2,79 @@ Return-Path: <SRS0=cYlk=GP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 74A5BC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 03:20:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21022C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 05:49:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EC49F22D6D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 03:20:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC49F22D6D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C455E22CB2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 05:49:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C455E22CB2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+EPv/ZSeh3EsNsgkFIj2ZCgR+HcVfBBW1YNNwu02EoI=; b=07/2+lRaGUqSn8OhhCE0+5dZav
-	obgPX2mxjT5rI0F3URAH72XO1w4c+oFCe99yxfg3/dUkGHqfFvu2mDirP6u/XumQ4fvxtgBOBrqE0
-	GZpb2ODERBUcBpvDHcuLFRkuZWqskvGfliiBcTcIJw3f+mnX4R4Iw6ak3TW2izsDx9iwVFr78/ncQ
-	u4WGsghpxyQeISwwsbuY19Jyw8aQwTOKkTRvCxFFcMuF0obAP6NtW8UfDhHc2GnVW+HW9DKogjF6E
-	kmP8dBbUKGkW+CSwZ5Iybab7zqxm3bEbXiOqviZ424cZnNEcs0yzFxcXfs4hvCAemAMNYOB9eut6H
-	b8fQKV1Q==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=xdGGRD58/dlos1I8dkaDpUCCNUnTB6IXe10NTJVpSb8=; b=mEqvteYOYorpbfIKBwT72gZur
+	sFa8Rn+MX8MAphQtm5a9HNKBpiOT4yYvIqNtH3PKelq9mS7Z/Cku93ykHhOxu47h0v3lsV3LZisct
+	yBSYn4ms37aeYccrwU9umRZyzP+L6kbwBCocT+aggW9oYgxd7NokyLHdiyrLYOYvDal99BZJpPDhI
+	H7jhaC8ioZQZC8zz0rWcTb3sPws34+mow1EZbFHhnaLlR7Q9kNM26USIQWE1hdcTkeT8k3/tg89gN
+	FNDLZ+KYnYpZOFtFB/muH1MTPX/7OCHQLMkLvr1NpRmsAO1hnW8vZfhGH8QldpCDQY5WDNWCr7xEX
+	hZ2SVUJIQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzAEf-00022H-CD; Tue, 12 Jan 2021 03:20:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1kzCYD-0005an-Tf; Tue, 12 Jan 2021 05:49:05 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzAEa-0001zz-Sa
- for linux-mediatek@lists.infradead.org; Tue, 12 Jan 2021 03:20:43 +0000
-X-UUID: bbaebf63b4dd472da0d93798be43c467-20210111
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=B19bzf/fhV+41v5NBjkGCoeBcXyytkZuk+GcKSbJ95o=; 
- b=MLVofCCGPoAjeaT9QVf212KCNd2MNAUY8dGIq+ogLmINRwHvun7sOIuHsw/M1t8L/jzEXHVD0wdXPn1xKyqpAI4+SmVfeDoWypKfaZIlnJWwB3SecwR7GKz2xSANr1YViDqw156wOMmdxbNJCMBQ3CJQDaXMKDi0qiz69OYC9Q8=;
-X-UUID: bbaebf63b4dd472da0d93798be43c467-20210111
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1266299775; Mon, 11 Jan 2021 19:20:33 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 19:20:32 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Jan 2021 11:20:30 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 12 Jan 2021 11:20:30 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: linux-wireless <linux-wireless@vger.kernel.org>
-Subject: [PATCH v2] mac80211: fix incorrect strlen of .write in debugfs
-Date: Tue, 12 Jan 2021 11:20:28 +0800
-Message-ID: <20210112032028.7482-1-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1kzCY2-0005Wi-S8
+ for linux-mediatek@lists.infradead.org; Tue, 12 Jan 2021 05:48:56 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id r4so798586pls.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 Jan 2021 21:48:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=z+UuZJMzg7vrix92H8yNvymjWYn4v4tuh1SrKJzSLm8=;
+ b=JQsTmcLPoTaeeli611Tt6mGBNg5TJNkKTfXLDKVEnoX/OOqLNikQE4Ip2Rw6MA9Yuz
+ KemfmMaptOX/ZNgHeDXdIN72y0gMJ44Dj2zLYwZ6eAwiDN9a7SPJjT4Vn3yO4vLV00pL
+ DOY6W8keINeAjRVcriy8igeimSynyNmMITakQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=z+UuZJMzg7vrix92H8yNvymjWYn4v4tuh1SrKJzSLm8=;
+ b=cD2tY1G5ewpa/cx2fWBrSxFqwLV4ybHAbTpdyeU6Vmi58XdR5gjL1HLKFnmjLNgMwm
+ fDa/59IaI8h/OMcH7VJN2ei1cvknoNzwFXmFXUQPFbwBqXh+szVEUrg6z97U5gTvnlpw
+ Q9zLJf4V5XIDsSdbNIruyH3ei7tvgiB4p/yEXxPhNztqOWlytB8C9dx6dnC5oFOsnPOk
+ Du1h8s7OBr3MhW27hLazcCuZQpj62IO3oB1zQY8AL8v7yUhHeUvPxALEwbeDJY5RPZNn
+ 3mXRshFkABKGKQV4+Sxjzq7TDZoFKRP+VubdzwaDvtegQHd7hyQxN1rlCoZwOlpN19qe
+ c4nA==
+X-Gm-Message-State: AOAM532Uf6FWu93YpXNjgQ6zTSTm6WZFQjKjz92s3+69kpcgMjSs9fxh
+ btVfwcWhy2uIEhBRguEDBSIKtvFnLp/tkldvqnw91Q==
+X-Google-Smtp-Source: ABdhPJz9iIQLZymh1Is42qGoVxhqbm83qoS8/tq7zs4AGxjPBu/MVfIrFA556/ppn3JB78x6W6Xh7UezS/ywc0QGduM=
+X-Received: by 2002:a17:902:a501:b029:dc:3e1d:4ddb with SMTP id
+ s1-20020a170902a501b02900dc3e1d4ddbmr3151522plq.60.1610430530661; Mon, 11 Jan
+ 2021 21:48:50 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20201229142406.v5.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+ <2aea44f0-85e7-fd55-2c35-c1d994f20e03@linux.intel.com>
+ <1610086308.24856.30.camel@mhfsdcap03>
+ <e43632e2-08b3-7a1a-8272-1d493e25fc67@linux.intel.com>
+In-Reply-To: <e43632e2-08b3-7a1a-8272-1d493e25fc67@linux.intel.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Tue, 12 Jan 2021 13:48:39 +0800
+Message-ID: <CAATdQgD2OAmf7_NWSVwzyJE7mF0vngzE=QeE79PS7MJsgPhbtA@mail.gmail.com>
+Subject: Re: [PATCH v5] usb: xhci-mtk: fix unreleased bandwidth data
+To: Mathias Nyman <mathias.nyman@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_222041_126402_D5B32E1A 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20210112_004855_285891_E4770AD4 
+X-CRM114-Status: GOOD (  25.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,148 +86,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Sujuan Chen <sujuan.chen@mediatek.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ open list <linux-kernel@vger.kernel.org>,
+ Tianping Fang <tianping.fang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This fixes strlen mismatch problems happening in some .write callbacks
-of debugfs.
+On Fri, Jan 8, 2021 at 10:44 PM Mathias Nyman
+<mathias.nyman@linux.intel.com> wrote:
+>
+> On 8.1.2021 8.11, Chunfeng Yun wrote:
+> > On Thu, 2021-01-07 at 13:09 +0200, Mathias Nyman wrote:
+> >> On 29.12.2020 8.24, Ikjoon Jang wrote:
+> >>> xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
+> >>> to handle its own sw bandwidth managements and stores bandwidth data
+> >>> into internal table every time add_endpoint() is called,
+> >>> so when bandwidth allocation fails at one endpoint, all earlier
+> >>> allocation from the same interface could still remain at the table.
+> >>>
+> >>> This patch adds two more hooks from check_bandwidth() and
+> >>> reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
+> >>> from reset_bandwidth().
+> >>>
+> >>> Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
+> >>> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> >>>
+> >>
+> >> ...
+> >>
+> >>>
+> >>> diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+> >>> index d4a8d0efbbc4..e1fcd3cf723f 100644
+> >>> --- a/drivers/usb/host/xhci.c
+> >>> +++ b/drivers/usb/host/xhci.c
+> >>> @@ -2882,6 +2882,12 @@ static int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+> >>>     xhci_dbg(xhci, "%s called for udev %p\n", __func__, udev);
+> >>>     virt_dev = xhci->devs[udev->slot_id];
+> >>>
+> >>> +   if (xhci->quirks & XHCI_MTK_HOST) {
+> >>> +           ret = xhci_mtk_check_bandwidth(hcd, udev);
+> >>> +           if (ret < 0)
+> >>> +                   return ret;
+> >>> +   }
+> >>> +
+> >>
+> >> Just noticed that XHCI_MTK_HOST quirk is only set in xhci-mtk.c.
+> >> xhci-mtk.c calls xhci_init_driver(..., xhci_mtk_overrides) with a .reset override function.
+> >>
+> >> why not add override functions for .check_bandwidth and .reset_bandwidth to xhci_mtk_overrides instead?
+> >>
+> >> Another patch to add similar overrides for .add_endpoint and .drop_endpoint should probably be
+> >> done so that we can get rid of the xhci_mtk_add/drop_ep_quirk() calls in xhci.c as well
+> > You mean, we can export xhci_add/drop_endpoint()?
+>
+> I think so, unless you have a better idea.
+> I prefer exporting the generic add/drop_endpoint functions rather than the vendor specific quirk functions.
+>
 
-When trying to configure airtime_flags in debugfs, an error appeared:
-ash: write error: Invalid argument
+When moving out all MTK_HOST quirks and unlink xhci-mtk-sch from xhci,
+xhci-mtk-sch still needs to touch the xhci internals, at least struct
+xhci_ep_ctx.
 
-The error is returned from kstrtou16() since a wrong length makes it
-miss the real end of input string.  To fix this, use count as the string
-length, and set proper end of string for a char buffer.
+My naive idea is just let xhci export one more function to expose xhci_ep_ctx.
+But I'm not sure whether this is acceptable:
 
-The debug print is shown - airtime_flags_write: count = 2, len = 8,
-where the actual length is 2, but "len = strlen(buf)" gets 8.
++struct xhci_ep_ctx* xhci_get_ep_contex(struct xhci_hcd *xhci, struct
+usb_host_endpoint *ep)
++{ ... }
++EXPORT_SYMBOL(xhci_get_ep_context);
 
-Also cleanup the other similar cases for the sake of consistency.
+But for v6, I'm going to submit a patch with {check|reset}_bandwidth()
+quirk function
+ switched into xhci_driver_overrides first. (and preserve existing
+MTK_HOST quirk functions).
 
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
-v2:
-- fix r/w buffer OOB
-- put buf[count] = '\0' to an else
----
- net/mac80211/debugfs.c | 44 +++++++++++++++++++-----------------------
- 1 file changed, 20 insertions(+), 24 deletions(-)
+Thanks!
 
-diff --git a/net/mac80211/debugfs.c b/net/mac80211/debugfs.c
-index 48f144f107d5..9e723d943421 100644
---- a/net/mac80211/debugfs.c
-+++ b/net/mac80211/debugfs.c
-@@ -120,18 +120,17 @@ static ssize_t aqm_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[100];
--	size_t len;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = '\0';
--	len = strlen(buf);
--	if (len > 0 && buf[len-1] == '\n')
--		buf[len-1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (sscanf(buf, "fq_limit %u", &local->fq.limit) == 1)
- 		return count;
-@@ -177,18 +176,17 @@ static ssize_t airtime_flags_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[16];
--	size_t len;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = 0;
--	len = strlen(buf);
--	if (len > 0 && buf[len - 1] == '\n')
--		buf[len - 1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (kstrtou16(buf, 0, &local->airtime_flags))
- 		return -EINVAL;
-@@ -237,20 +235,19 @@ static ssize_t aql_txq_limit_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[100];
--	size_t len;
- 	u32 ac, q_limit_low, q_limit_high, q_limit_low_old, q_limit_high_old;
- 	struct sta_info *sta;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = 0;
--	len = strlen(buf);
--	if (len > 0 && buf[len - 1] == '\n')
--		buf[len - 1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (sscanf(buf, "%u %u %u", &ac, &q_limit_low, &q_limit_high) != 3)
- 		return -EINVAL;
-@@ -306,18 +303,17 @@ static ssize_t force_tx_status_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[3];
--	size_t len;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = '\0';
--	len = strlen(buf);
--	if (len > 0 && buf[len - 1] == '\n')
--		buf[len - 1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (buf[0] == '0' && buf[1] == '\0')
- 		local->force_tx_status = 0;
--- 
-2.29.2
+> -Mathias
+>
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
