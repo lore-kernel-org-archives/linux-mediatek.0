@@ -2,59 +2,65 @@ Return-Path: <SRS0=cYlk=GP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 607AEC433E6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 11:53:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BEEA6C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 12:10:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13D0423104
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 11:53:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13D0423104
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4EF1823109
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 12:10:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EF1823109
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dguzRUrCqKwrCZDU8FUk7RvjHegqQKXDDpUvI6Lyz0s=; b=YmxOsewdhU+2L5WFTXJc99lvN
-	lRvckgHiSdRl2/S0l/lk1mTaHKQvxUvk3IQlzpeANyYwDIuKR71zIoHqKOgPbkXN639PyGa4NsMy0
-	EwHSs0Ter4qMgUlOcaK4qywPqnRX+Bg6tb2TX/XeuoCT5aOpmE2AaPLne+PMSjkxhzFScCxQzq7zz
-	gZtvA6tsiIA9Q9l6ZU8o662KjX0DGaCkpdtE4n3kCXjV7XyqIQYjrJuNmDSIMpF240NEcYvPSihra
-	sGyUCNpAxi/5UGorBc7jgE1OMssVSUB+EY63B3eKAVVPhcVVfh7YXQLPeeAi+1svEnaM2NPCUysLW
-	PgFdAh9Eg==;
+	 bh=t7XexLW1CerOxDrT3efl++BToeUxLDh4lp9s59puuJs=; b=WnS0z3BxA6sUUw9zVCRhIWUR1
+	mKgboor1XcccLDpy7KV16INTL1iegwz5mfltCLo6312iaU/QXV5PTHJmginsFrmyTEDcjLJzewSPt
+	07AkeMdGftXiXQftw4pB9LrbyFZJ9jvcYshalsewIs8a9KFTlZULJsi7olz7NLBPCkAWGWBKInh6T
+	kEs87Bgs7s3jDIyQfwp6PbBQJcAQIe51IYKwzgz7paEu0Ov7APNEmzF8LBvtNkYwwBPrqWzpIrnBj
+	bgaju0AYt0lqlxv60P0Yq9Z5xtsZtTE5jJgZmf80w6LT8Xt9Ro/izYOSdtsEii30wERkHA/z/IFAk
+	cWKSiFckw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzIF2-0006c2-CD; Tue, 12 Jan 2021 11:53:40 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kzIVG-0003Xr-7b; Tue, 12 Jan 2021 12:10:26 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzIEz-0006aT-1K
- for linux-mediatek@lists.infradead.org; Tue, 12 Jan 2021 11:53:38 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: gtucker) with ESMTPSA id 91B291F452F6
-Subject: Re: next/master bisection: baseline.bootrr.clk-mt8173-mm-probed on
- mt8173-elm-hana
-To: Saravana Kannan <saravanak@google.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <5ffc97ef.1c69fb81.447c7.037e@mx.google.com>
-From: Guillaume Tucker <guillaume.tucker@collabora.com>
-Message-ID: <429f3c2c-4dbe-39b7-dd93-d73f22425a0f@collabora.com>
-Date: Tue, 12 Jan 2021 11:53:32 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+ id 1kzIUz-0003Q6-UF; Tue, 12 Jan 2021 12:10:11 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9D25023107;
+ Tue, 12 Jan 2021 12:10:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1610453408;
+ bh=2pNNIk6atvLBcepfuS6ijEnKHNIIgxS4CKE9Wj21tpw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=efGHnpCAwMMiTgeQki12eo+4AF8rsla/IGWyP5XiyXblY5iAoSozVQ+LXrBjVcZuV
+ wo3Bma5NMMtuaoasXjpf7ZLbrPIYpsVkBwfu/kjgrZ3LvUEaIZ0mJTpZvyKf5SRG6g
+ Rx7O6EF2CFc0W9tqaiVMcm6nEmoZYeJtSMpNHUQ16L3/5wtV3tEjf+z1MH2w17tFZR
+ QTb3mvY9DjQ0uOj2BSku2MMdrNWPWiSt9dyVhOpnYRcZ8NMCbRBpPS98L3RxzGBYfn
+ TS8of2y+OxhrDl3rPoJP/GI7aEwaieQG2ZwrwqMsCCKzC+CLwNVniAB7RBJFu0v/lE
+ HkuiND6R01AQQ==
+Date: Tue, 12 Jan 2021 17:40:03 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: EastL Lee <EastL.Lee@mediatek.com>
+Subject: Re: [PATCH v8 2/4] dmaengine: mediatek-cqdma: remove redundant queue
+ structure
+Message-ID: <20210112121003.GP2771@vkoul-mobl>
+References: <1608715847-28956-1-git-send-email-EastL.Lee@mediatek.com>
+ <1608715847-28956-3-git-send-email-EastL.Lee@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <5ffc97ef.1c69fb81.447c7.037e@mx.google.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1608715847-28956-3-git-send-email-EastL.Lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210112_065337_294209_0639C5E1 
-X-CRM114-Status: GOOD (  29.51  )
+X-CRM114-CacheID: sfid-20210112_071010_174968_D4B645EB 
+X-CRM114-Status: GOOD (  34.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,181 +72,664 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- "kernelci-results@groups.io" <kernelci-results@groups.io>,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-kernel@vger.kernel.org,
- CK Hu <ck.hu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, cc.hwang@mediatek.com,
+ wsd_upstream@mediatek.com, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Saravana,
+On 23-12-20, 17:30, EastL Lee wrote:
+> This patch introduces active_vdec to indicate the virtual descriptor
+> under processing by the CQDMA dmaengine, and simplify the control logic
+> by removing redundant queue structure, tasklets, and completion
+> management.
 
-Please see the bisection report below about the clk-mt8173-mm and
-mtk-mmsys drivers failing to probe on mt8173-elm-hana with
-next-20210111.
+Can we split these changes up..
 
-Reports aren't automatically sent to the public while we're
-trialing new bisection features on kernelci.org but this one
-looks valid.
-
-Some details can be found here:
-
-  https://kernelci.org/test/plan/id/5ffbeef7f97770d9ccc94cf0/
-
-The bisection was run with CONFIG_ARM64_64K_PAGES=y and only
-against the clk-mt8173-mm test case, but it can be reproduced
-with a plain arm64 defconfig and the mtk-mmsys driver is also
-confirmed to be failing to probe with this patch.
-
-Your commit message acknowledges the fact that it might "break"
-some drivers, or rather that some drivers might need to be fixed:
-
->     If this patch prevents some devices from probing, it's very likely due
->     to the system having one or more device drivers that "probe"/set up a
->     device (DT node with compatible property) without creating a struct
->     device for it. [...]
-
-It sounds like this is what needs to be done here, so I've also
-put some MediaTek maintainers on CC.
-
-Thanks,
-Guillaume
-
-On 11/01/2021 18:24, KernelCI bot wrote:
-> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-> * This automated bisection report was sent to you on the basis  *
-> * that you may be involved with the breaking commit it has      *
-> * found.  No manual investigation has been done to verify it,   *
-> * and the root cause of the problem may be somewhere else.      *
-> *                                                               *
-> * If you do send a fix, please include this trailer:            *
-> *   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
-> *                                                               *
-> * Hope this helps!                                              *
-> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 > 
-> next/master bisection: baseline.bootrr.clk-mt8173-mm-probed on mt8173-elm-hana
+> Signed-off-by: EastL Lee <EastL.Lee@mediatek.com>
+> ---
+>  drivers/dma/mediatek/mtk-cqdma.c | 382 ++++++++++-----------------------------
+>  1 file changed, 93 insertions(+), 289 deletions(-)
 > 
-> Summary:
->   Start:      ef8b014ee4a1 Add linux-next specific files for 20210111
->   Plain log:  https://storage.kernelci.org/next/master/next-20210111/arm64/defconfig+CONFIG_ARM64_64K_PAGES=y/clang-11/lab-collabora/baseline-mt8173-elm-hana.txt
->   HTML log:   https://storage.kernelci.org/next/master/next-20210111/arm64/defconfig+CONFIG_ARM64_64K_PAGES=y/clang-11/lab-collabora/baseline-mt8173-elm-hana.html
->   Result:     e590474768f1 driver core: Set fw_devlink=on by default
-> 
-> Checks:
->   revert:     PASS
->   verify:     PASS
-> 
-> Parameters:
->   Tree:       next
->   URL:        https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
->   Branch:     master
->   Target:     mt8173-elm-hana
->   CPU arch:   arm64
->   Lab:        lab-collabora
->   Compiler:   clang-11
->   Config:     defconfig+CONFIG_ARM64_64K_PAGES=y
->   Test case:  baseline.bootrr.clk-mt8173-mm-probed
-> 
-> Breaking commit found:
-> 
-> -------------------------------------------------------------------------------
-> commit e590474768f1cc04852190b61dec692411b22e2a
-> Author: Saravana Kannan <saravanak@google.com>
-> Date:   Thu Dec 17 19:17:03 2020 -0800
-> 
->     driver core: Set fw_devlink=on by default
->     
->     Cyclic dependencies in some firmware was one of the last remaining
->     reasons fw_devlink=on couldn't be set by default. Now that cyclic
->     dependencies don't block probing, set fw_devlink=on by default.
->     
->     Setting fw_devlink=on by default brings a bunch of benefits (currently,
->     only for systems with device tree firmware):
->     * Significantly cuts down deferred probes.
->     * Device probe is effectively attempted in graph order.
->     * Makes it much easier to load drivers as modules without having to
->       worry about functional dependencies between modules (depmod is still
->       needed for symbol dependencies).
->     
->     If this patch prevents some devices from probing, it's very likely due
->     to the system having one or more device drivers that "probe"/set up a
->     device (DT node with compatible property) without creating a struct
->     device for it.  If we hit such cases, the device drivers need to be
->     fixed so that they populate struct devices and probe them like normal
->     device drivers so that the driver core is aware of the devices and their
->     status. See [1] for an example of such a case.
->     
->     [1] - https://lore.kernel.org/lkml/CAGETcx9PiX==mLxB9PO8Myyk6u2vhPVwTMsA5NkD-ywH5xhusw@mail.gmail.com/
->     Signed-off-by: Saravana Kannan <saravanak@google.com>
->     Link: https://lore.kernel.org/r/20201218031703.3053753-6-saravanak@google.com
->     Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> 
-> diff --git a/drivers/base/core.c b/drivers/base/core.c
-> index 4e15193aafad..e61e62b624ce 100644
-> --- a/drivers/base/core.c
-> +++ b/drivers/base/core.c
-> @@ -1457,7 +1457,7 @@ static void device_links_purge(struct device *dev)
->  #define FW_DEVLINK_FLAGS_RPM		(FW_DEVLINK_FLAGS_ON | \
->  					 DL_FLAG_PM_RUNTIME)
+> diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
+> index 41ef9f1..905bbcb 100644
+> --- a/drivers/dma/mediatek/mtk-cqdma.c
+> +++ b/drivers/dma/mediatek/mtk-cqdma.c
+> @@ -22,6 +22,7 @@
+>  #include <linux/of_dma.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/preempt.h>
+
+why do you need this..?
+
+>  #include <linux/refcount.h>
+>  #include <linux/slab.h>
 >  
-> -static u32 fw_devlink_flags = FW_DEVLINK_FLAGS_PERMISSIVE;
-> +static u32 fw_devlink_flags = FW_DEVLINK_FLAGS_ON;
->  static int __init fw_devlink_setup(char *arg)
+> @@ -47,7 +48,6 @@
+>  #define MTK_CQDMA_SRC			0x1c
+>  #define MTK_CQDMA_DST			0x20
+>  #define MTK_CQDMA_LEN1			0x24
+> -#define MTK_CQDMA_LEN2			0x28
+>  #define MTK_CQDMA_SRC2			0x60
+>  #define MTK_CQDMA_DST2			0x64
+>  
+> @@ -69,45 +69,32 @@
+>   *                         descriptor (CVD)
+>   * @vd:                    An instance for struct virt_dma_desc
+>   * @len:                   The total data size device wants to move
+> - * @residue:               The remaining data size device will move
+>   * @dest:                  The destination address device wants to move to
+>   * @src:                   The source address device wants to move from
+>   * @ch:                    The pointer to the corresponding dma channel
+> - * @node:                  The lise_head struct to build link-list for VDs
+> - * @parent:                The pointer to the parent CVD
+>   */
+>  struct mtk_cqdma_vdesc {
+>  	struct virt_dma_desc vd;
+>  	size_t len;
+> -	size_t residue;
+>  	dma_addr_t dest;
+>  	dma_addr_t src;
+>  	struct dma_chan *ch;
+> -
+> -	struct list_head node;
+> -	struct mtk_cqdma_vdesc *parent;
+>  };
+>  
+>  /**
+>   * struct mtk_cqdma_pchan - The struct holding info describing physical
+>   *                         channel (PC)
+> - * @queue:                 Queue for the PDs issued to this PC
+> + * @active_vdesc:          The pointer to the CVD which is under processing
+>   * @base:                  The mapped register I/O base of this PC
+>   * @irq:                   The IRQ that this PC are using
+>   * @refcnt:                Track how many VCs are using this PC
+> - * @tasklet:               Tasklet for this PC
+>   * @lock:                  Lock protect agaisting multiple VCs access PC
+>   */
+>  struct mtk_cqdma_pchan {
+> -	struct list_head queue;
+> +	struct mtk_cqdma_vdesc *active_vdesc;
+>  	void __iomem *base;
+>  	u32 irq;
+> -
+>  	refcount_t refcnt;
+> -
+> -	struct tasklet_struct tasklet;
+> -
+> -	/* lock to protect PC */
+>  	spinlock_t lock;
+>  };
+>  
+> @@ -116,14 +103,11 @@ struct mtk_cqdma_pchan {
+>   *                         channel (VC)
+>   * @vc:                    An instance for struct virt_dma_chan
+>   * @pc:                    The pointer to the underlying PC
+> - * @issue_completion:	   The wait for all issued descriptors completited
+> - * @issue_synchronize:	   Bool indicating channel synchronization starts
+>   */
+>  struct mtk_cqdma_vchan {
+>  	struct virt_dma_chan vc;
+>  	struct mtk_cqdma_pchan *pc;
+> -	struct completion issue_completion;
+> -	bool issue_synchronize;
+> +	struct completion cmp;
+>  };
+>  
+>  /**
+> @@ -202,22 +186,22 @@ static void mtk_cqdma_vdesc_free(struct virt_dma_desc *vd)
+>  	kfree(to_cqdma_vdesc(vd));
+>  }
+>  
+> -static int mtk_cqdma_poll_engine_done(struct mtk_cqdma_pchan *pc, bool atomic)
+> +static int mtk_cqdma_poll_engine_done(struct mtk_cqdma_pchan *pc)
 >  {
->  	if (!arg)
-> -------------------------------------------------------------------------------
-> 
-> 
-> Git bisection log:
-> 
-> -------------------------------------------------------------------------------
-> git bisect start
-> # good: [5625dcfbbcf892e40e8d60abbb5f56701a1d031c] Documentation: kbuild: Fix section reference
-> git bisect good 5625dcfbbcf892e40e8d60abbb5f56701a1d031c
-> # bad: [ef8b014ee4a1ccd9e751732690a8c7cdeed945e7] Add linux-next specific files for 20210111
-> git bisect bad ef8b014ee4a1ccd9e751732690a8c7cdeed945e7
-> # good: [2233cdbefdf4ba65cd69c80708ee7e6b1c8ab3e5] Merge remote-tracking branch 'v4l-dvb/master'
-> git bisect good 2233cdbefdf4ba65cd69c80708ee7e6b1c8ab3e5
-> # good: [c337ba6fa02b1f2984ab6f97f3a17843313bdb25] Merge remote-tracking branch 'keys/keys-next'
-> git bisect good c337ba6fa02b1f2984ab6f97f3a17843313bdb25
-> # bad: [967973bebd34bffe1426ae93e886cdce1aacfcc2] Merge remote-tracking branch 'tty/tty-next'
-> git bisect bad 967973bebd34bffe1426ae93e886cdce1aacfcc2
-> # good: [ad596f5fbfab93493f928003b297c5e766cf54a2] sched/idle: Fix missing need_resched() check after rcu_idle_enter()
-> git bisect good ad596f5fbfab93493f928003b297c5e766cf54a2
-> # good: [fdf6c4ae933617fc7bbc7db73db297f5f74849f9] Merge remote-tracking branch 'leds/for-next'
-> git bisect good fdf6c4ae933617fc7bbc7db73db297f5f74849f9
-> # bad: [95d0b5d0ceb2e915c22ed4a9b513827309d09b0f] Merge remote-tracking branch 'usb/usb-next'
-> git bisect bad 95d0b5d0ceb2e915c22ed4a9b513827309d09b0f
-> # good: [77adb8bdf4227257e26b7ff67272678e66a0b250] usb: dwc3: gadget: Allow runtime suspend if UDC unbinded
-> git bisect good 77adb8bdf4227257e26b7ff67272678e66a0b250
-> # good: [c13b827927112ba6170bea31c638a8573c127461] driver core: fw_devlink_relax_cycle() can be static
-> git bisect good c13b827927112ba6170bea31c638a8573c127461
-> # good: [841081d89d5adf96759f2df50185de950f5d8694] usb: usbip: Use DEFINE_SPINLOCK() for spinlock
-> git bisect good 841081d89d5adf96759f2df50185de950f5d8694
-> # bad: [0fab972eef49ef8d30eb91d6bd98861122d083d1] drivers: core: Detach device from power domain on shutdown
-> git bisect bad 0fab972eef49ef8d30eb91d6bd98861122d083d1
-> # bad: [e590474768f1cc04852190b61dec692411b22e2a] driver core: Set fw_devlink=on by default
-> git bisect bad e590474768f1cc04852190b61dec692411b22e2a
-> # first bad commit: [e590474768f1cc04852190b61dec692411b22e2a] driver core: Set fw_devlink=on by default
-> -------------------------------------------------------------------------------
-> 
-> 
-> -=-=-=-=-=-=-=-=-=-=-=-
-> Groups.io Links: You receive all messages sent to this group.
-> View/Reply Online (#5341): https://groups.io/g/kernelci-results/message/5341
-> Mute This Topic: https://groups.io/mt/79603430/924702
-> Group Owner: kernelci-results+owner@groups.io
-> Unsubscribe: https://groups.io/g/kernelci-results/unsub [guillaume.tucker@collabora.com]
-> -=-=-=-=-=-=-=-=-=-=-=-
-> 
-> 
+>  	u32 status = 0;
+>  
+> -	if (!atomic)
+> +	if (in_task())
+> +		return readl_poll_timeout_atomic(pc->base + MTK_CQDMA_EN,
+> +						 status,
+> +						 !(status & MTK_CQDMA_EN_BIT),
+> +						 MTK_CQDMA_USEC_POLL,
+> +						 MTK_CQDMA_TIMEOUT_POLL);
+> +	else
+>  		return readl_poll_timeout(pc->base + MTK_CQDMA_EN,
+>  					  status,
+>  					  !(status & MTK_CQDMA_EN_BIT),
+>  					  MTK_CQDMA_USEC_POLL,
+>  					  MTK_CQDMA_TIMEOUT_POLL);
+> -
+> -	return readl_poll_timeout_atomic(pc->base + MTK_CQDMA_EN,
+> -					 status,
+> -					 !(status & MTK_CQDMA_EN_BIT),
+> -					 MTK_CQDMA_USEC_POLL,
+> -					 MTK_CQDMA_TIMEOUT_POLL);
+>  }
+>  
+>  static int mtk_cqdma_hard_reset(struct mtk_cqdma_pchan *pc)
+> @@ -225,20 +209,17 @@ static int mtk_cqdma_hard_reset(struct mtk_cqdma_pchan *pc)
+>  	mtk_dma_set(pc, MTK_CQDMA_RESET, MTK_CQDMA_HARD_RST_BIT);
+>  	mtk_dma_clr(pc, MTK_CQDMA_RESET, MTK_CQDMA_HARD_RST_BIT);
+>  
+> -	return mtk_cqdma_poll_engine_done(pc, true);
+> +	return mtk_cqdma_poll_engine_done(pc);
+>  }
+>  
+>  static void mtk_cqdma_start(struct mtk_cqdma_pchan *pc,
+>  			    struct mtk_cqdma_vdesc *cvd)
+>  {
+> -	/* wait for the previous transaction done */
+> -	if (mtk_cqdma_poll_engine_done(pc, true) < 0)
+> -		dev_err(cqdma2dev(to_cqdma_dev(cvd->ch)), "cqdma wait transaction timeout\n");
+> -
+>  	/* warm reset the dma engine for the new transaction */
+>  	mtk_dma_set(pc, MTK_CQDMA_RESET, MTK_CQDMA_WARM_RST_BIT);
+> -	if (mtk_cqdma_poll_engine_done(pc, true) < 0)
+> -		dev_err(cqdma2dev(to_cqdma_dev(cvd->ch)), "cqdma warm reset timeout\n");
+> +	if (mtk_cqdma_poll_engine_done(pc) < 0)
+> +		dev_err(cqdma2dev(to_cqdma_dev(cvd->ch)),
+> +			"cqdma warm reset timeout\n");
+>  
+>  	/* setup the source */
+>  	mtk_dma_set(pc, MTK_CQDMA_SRC, cvd->src & MTK_CQDMA_ADDR_LIMIT);
+> @@ -257,7 +238,8 @@ static void mtk_cqdma_start(struct mtk_cqdma_pchan *pc,
+>  #endif
+>  
+>  	/* setup the length */
+> -	mtk_dma_set(pc, MTK_CQDMA_LEN1, cvd->len);
+> +	mtk_dma_set(pc, MTK_CQDMA_LEN1, (cvd->len < MTK_CQDMA_MAX_LEN) ?
+> +		    cvd->len : MTK_CQDMA_MAX_LEN);
+>  
+>  	/* start dma engine */
+>  	mtk_dma_set(pc, MTK_CQDMA_EN, MTK_CQDMA_EN_BIT);
+> @@ -265,30 +247,17 @@ static void mtk_cqdma_start(struct mtk_cqdma_pchan *pc,
+>  
+>  static void mtk_cqdma_issue_vchan_pending(struct mtk_cqdma_vchan *cvc)
+>  {
+> -	struct virt_dma_desc *vd, *vd2;
+> +	struct virt_dma_desc *vd;
+>  	struct mtk_cqdma_pchan *pc = cvc->pc;
+> -	struct mtk_cqdma_vdesc *cvd;
+> -	bool trigger_engine = false;
+>  
+>  	lockdep_assert_held(&cvc->vc.lock);
+>  	lockdep_assert_held(&pc->lock);
+>  
+> -	list_for_each_entry_safe(vd, vd2, &cvc->vc.desc_issued, node) {
+> -		/* need to trigger dma engine if PC's queue is empty */
+> -		if (list_empty(&pc->queue))
+> -			trigger_engine = true;
+> -
+> -		cvd = to_cqdma_vdesc(vd);
+> -
+> -		/* add VD into PC's queue */
+> -		list_add_tail(&cvd->node, &pc->queue);
+> -
+> -		/* start the dma engine */
+> -		if (trigger_engine)
+> -			mtk_cqdma_start(pc, cvd);
+> +	vd = vchan_next_desc(&cvc->vc);
+>  
+> -		/* remove VD from list desc_issued */
+> -		list_del(&vd->node);
+> +	if (vd && !pc->active_vdesc) {
+> +		pc->active_vdesc = to_cqdma_vdesc(vd);
+> +		mtk_cqdma_start(pc, pc->active_vdesc);
+>  	}
+>  }
+>  
+> @@ -298,100 +267,55 @@ static void mtk_cqdma_issue_vchan_pending(struct mtk_cqdma_vchan *cvc)
+>   */
+>  static bool mtk_cqdma_is_vchan_active(struct mtk_cqdma_vchan *cvc)
+>  {
+> -	struct mtk_cqdma_vdesc *cvd;
+> -
+> -	list_for_each_entry(cvd, &cvc->pc->queue, node)
+> -		if (cvc == to_cqdma_vchan(cvd->ch))
+> -			return true;
+> -
+> -	return false;
+> +	return (!cvc->pc->active_vdesc) ? false :
+> +	       (cvc == to_cqdma_vchan(cvc->pc->active_vdesc->ch));
+>  }
+>  
+> -/*
+> - * return the pointer of the CVD that is just consumed by the PC
+> - */
+> -static struct mtk_cqdma_vdesc
+> -*mtk_cqdma_consume_work_queue(struct mtk_cqdma_pchan *pc)
+> +static void mtk_cqdma_complete_vdesc(struct mtk_cqdma_pchan *pc)
+>  {
+>  	struct mtk_cqdma_vchan *cvc;
+> -	struct mtk_cqdma_vdesc *cvd, *ret = NULL;
+> -
+> -	/* consume a CVD from PC's queue */
+> -	cvd = list_first_entry_or_null(&pc->queue,
+> -				       struct mtk_cqdma_vdesc, node);
+> -	if (unlikely(!cvd || !cvd->parent))
+> -		return NULL;
+> +	struct mtk_cqdma_vdesc *cvd;
+> +	struct virt_dma_desc *vd;
+> +	size_t tlen;
+>  
+> +	cvd = pc->active_vdesc;
+>  	cvc = to_cqdma_vchan(cvd->ch);
+> -	ret = cvd;
+> -
+> -	/* update residue of the parent CVD */
+> -	cvd->parent->residue -= cvd->len;
+>  
+> -	/* delete CVD from PC's queue */
+> -	list_del(&cvd->node);
+> +	tlen = (cvd->len < MTK_CQDMA_MAX_LEN) ? cvd->len : MTK_CQDMA_MAX_LEN;
+> +	cvd->len -= tlen;
+> +	cvd->src += tlen;
+> +	cvd->dest += tlen;
+>  
+>  	spin_lock(&cvc->vc.lock);
+>  
+> -	/* check whether all the child CVDs completed */
+> -	if (!cvd->parent->residue) {
+> -		/* add the parent VD into list desc_completed */
+> -		vchan_cookie_complete(&cvd->parent->vd);
+> +	/* check whether the VD completed */
+> +	if (!cvd->len) {
+> +		/* delete VD from desc_issued */
+> +		list_del(&cvd->vd.node);
+>  
+> -		/* setup completion if this VC is under synchronization */
+> -		if (cvc->issue_synchronize && !mtk_cqdma_is_vchan_active(cvc)) {
+> -			complete(&cvc->issue_completion);
+> -			cvc->issue_synchronize = false;
+> -		}
+> -	}
+> -
+> -	spin_unlock(&cvc->vc.lock);
+> +		/* add the VD into list desc_completed */
+> +		vchan_cookie_complete(&cvd->vd);
+>  
+> -	/* start transaction for next CVD in the queue */
+> -	cvd = list_first_entry_or_null(&pc->queue,
+> -				       struct mtk_cqdma_vdesc, node);
+> -	if (cvd)
+> -		mtk_cqdma_start(pc, cvd);
+> -
+> -	return ret;
+> -}
+> -
+> -static void mtk_cqdma_tasklet_cb(struct tasklet_struct *t)
+> -{
+> -	struct mtk_cqdma_pchan *pc = from_tasklet(pc, t, tasklet);
+> -	struct mtk_cqdma_vdesc *cvd = NULL;
+> -	unsigned long flags;
+> -
+> -	spin_lock_irqsave(&pc->lock, flags);
+> -	/* consume the queue */
+> -	cvd = mtk_cqdma_consume_work_queue(pc);
+> -	spin_unlock_irqrestore(&pc->lock, flags);
+> -
+> -	/* submit the next CVD */
+> -	if (cvd) {
+> -		dma_run_dependencies(&cvd->vd.tx);
+> -
+> -		/*
+> -		 * free child CVD after completion.
+> -		 * the parent CVD would be freeed with desc_free by user.
+> -		 */
+> -		if (cvd->parent != cvd)
+> -			kfree(cvd);
+> +		/* get the next active VD */
+> +		vd = vchan_next_desc(&cvc->vc);
+> +		pc->active_vdesc = (!vd) ? NULL : to_cqdma_vdesc(vd);
+>  	}
+>  
+> -	/* re-enable interrupt before leaving tasklet */
+> -	enable_irq(pc->irq);
+> +	/* start the next transaction */
+> +	if (pc->active_vdesc)
+> +		mtk_cqdma_start(pc, pc->active_vdesc);
+> +
+> +	spin_unlock(&cvc->vc.lock);
+>  }
+>  
+>  static irqreturn_t mtk_cqdma_irq(int irq, void *devid)
+>  {
+>  	struct mtk_cqdma_device *cqdma = devid;
+>  	irqreturn_t ret = IRQ_NONE;
+> -	bool schedule_tasklet = false;
+>  	u32 i;
+>  
+>  	/* clear interrupt flags for each PC */
+> -	for (i = 0; i < cqdma->dma_channels; ++i, schedule_tasklet = false) {
+> +	for (i = 0; i < cqdma->dma_channels; ++i) {
+>  		spin_lock(&cqdma->pc[i]->lock);
+>  		if (mtk_dma_read(cqdma->pc[i],
+>  				 MTK_CQDMA_INT_FLAG) & MTK_CQDMA_INT_FLAG_BIT) {
+> @@ -399,72 +323,21 @@ static irqreturn_t mtk_cqdma_irq(int irq, void *devid)
+>  			mtk_dma_clr(cqdma->pc[i], MTK_CQDMA_INT_FLAG,
+>  				    MTK_CQDMA_INT_FLAG_BIT);
+>  
+> -			schedule_tasklet = true;
+> +			mtk_cqdma_complete_vdesc(cqdma->pc[i]);
+> +
+>  			ret = IRQ_HANDLED;
+>  		}
+>  		spin_unlock(&cqdma->pc[i]->lock);
+> -
+> -		if (schedule_tasklet) {
+> -			/* disable interrupt */
+> -			disable_irq_nosync(cqdma->pc[i]->irq);
+> -
+> -			/* schedule the tasklet to handle the transactions */
+> -			tasklet_schedule(&cqdma->pc[i]->tasklet);
+> -		}
+>  	}
+>  
+>  	return ret;
+>  }
+>  
+> -static struct virt_dma_desc *mtk_cqdma_find_active_desc(struct dma_chan *c,
+> -							dma_cookie_t cookie)
+> -{
+> -	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
+> -	struct virt_dma_desc *vd;
+> -	unsigned long flags;
+> -
+> -	spin_lock_irqsave(&cvc->pc->lock, flags);
+> -	list_for_each_entry(vd, &cvc->pc->queue, node)
+> -		if (vd->tx.cookie == cookie) {
+> -			spin_unlock_irqrestore(&cvc->pc->lock, flags);
+> -			return vd;
+> -		}
+> -	spin_unlock_irqrestore(&cvc->pc->lock, flags);
+> -
+> -	list_for_each_entry(vd, &cvc->vc.desc_issued, node)
+> -		if (vd->tx.cookie == cookie)
+> -			return vd;
+> -
+> -	return NULL;
+> -}
+> -
+>  static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
+>  					   dma_cookie_t cookie,
+>  					   struct dma_tx_state *txstate)
+>  {
+> -	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
+> -	struct mtk_cqdma_vdesc *cvd;
+> -	struct virt_dma_desc *vd;
+> -	enum dma_status ret;
+> -	unsigned long flags;
+> -	size_t bytes = 0;
+> -
+> -	ret = dma_cookie_status(c, cookie, txstate);
+> -	if (ret == DMA_COMPLETE || !txstate)
+> -		return ret;
+> -
+> -	spin_lock_irqsave(&cvc->vc.lock, flags);
+> -	vd = mtk_cqdma_find_active_desc(c, cookie);
+> -	spin_unlock_irqrestore(&cvc->vc.lock, flags);
+> -
+> -	if (vd) {
+> -		cvd = to_cqdma_vdesc(vd);
+> -		bytes = cvd->residue;
+> -	}
+> -
+> -	dma_set_residue(txstate, bytes);
+> -
+> -	return ret;
+> +	return dma_cookie_status(c, cookie, txstate);
+>  }
+>  
+>  static void mtk_cqdma_issue_pending(struct dma_chan *c)
+> @@ -473,13 +346,17 @@ static void mtk_cqdma_issue_pending(struct dma_chan *c)
+>  	unsigned long pc_flags;
+>  	unsigned long vc_flags;
+>  
+> -	/* acquire PC's lock before VS's lock for lock dependency in tasklet */
+> +	/* acquire PC's lock before VC's lock for lock dependency in ISR */
+>  	spin_lock_irqsave(&cvc->pc->lock, pc_flags);
+>  	spin_lock_irqsave(&cvc->vc.lock, vc_flags);
+>  
+> +	init_completion(&cvc->cmp);
+> +
+>  	if (vchan_issue_pending(&cvc->vc))
+>  		mtk_cqdma_issue_vchan_pending(cvc);
+>  
+> +	complete(&cvc->cmp);
+> +
+>  	spin_unlock_irqrestore(&cvc->vc.lock, vc_flags);
+>  	spin_unlock_irqrestore(&cvc->pc->lock, pc_flags);
+>  }
+> @@ -488,125 +365,50 @@ static void mtk_cqdma_issue_pending(struct dma_chan *c)
+>  mtk_cqdma_prep_dma_memcpy(struct dma_chan *c, dma_addr_t dest,
+>  			  dma_addr_t src, size_t len, unsigned long flags)
+>  {
+> -	struct mtk_cqdma_vdesc **cvd;
+> -	struct dma_async_tx_descriptor *tx = NULL, *prev_tx = NULL;
+> -	size_t i, tlen, nr_vd;
+> -
+> -	/*
+> -	 * In the case that trsanction length is larger than the
+> -	 * DMA engine supports, a single memcpy transaction needs
+> -	 * to be separated into several DMA transactions.
+> -	 * Each DMA transaction would be described by a CVD,
+> -	 * and the first one is referred as the parent CVD,
+> -	 * while the others are child CVDs.
+> -	 * The parent CVD's tx descriptor is the only tx descriptor
+> -	 * returned to the DMA user, and it should not be completed
+> -	 * until all the child CVDs completed.
+> -	 */
+> -	nr_vd = DIV_ROUND_UP(len, MTK_CQDMA_MAX_LEN);
+> -	cvd = kcalloc(nr_vd, sizeof(*cvd), GFP_NOWAIT);
+> +	struct mtk_cqdma_vdesc *cvd;
+> +
+> +	cvd = kzalloc(sizeof(*cvd), GFP_NOWAIT);
+>  	if (!cvd)
+>  		return NULL;
+>  
+> -	for (i = 0; i < nr_vd; ++i) {
+> -		cvd[i] = kzalloc(sizeof(*cvd[i]), GFP_NOWAIT);
+> -		if (!cvd[i]) {
+> -			for (; i > 0; --i)
+> -				kfree(cvd[i - 1]);
+> -			return NULL;
+> -		}
+> -
+> -		/* setup dma channel */
+> -		cvd[i]->ch = c;
+> -
+> -		/* setup sourece, destination, and length */
+> -		tlen = (len > MTK_CQDMA_MAX_LEN) ? MTK_CQDMA_MAX_LEN : len;
+> -		cvd[i]->len = tlen;
+> -		cvd[i]->src = src;
+> -		cvd[i]->dest = dest;
+> -
+> -		/* setup tx descriptor */
+> -		tx = vchan_tx_prep(to_virt_chan(c), &cvd[i]->vd, flags);
+> -		tx->next = NULL;
+> +	/* setup dma channel */
+> +	cvd->ch = c;
+>  
+> -		if (!i) {
+> -			cvd[0]->residue = len;
+> -		} else {
+> -			prev_tx->next = tx;
+> -			cvd[i]->residue = tlen;
+> -		}
+> -
+> -		cvd[i]->parent = cvd[0];
+> -
+> -		/* update the src, dest, len, prev_tx for the next CVD */
+> -		src += tlen;
+> -		dest += tlen;
+> -		len -= tlen;
+> -		prev_tx = tx;
+> -	}
+> +	/* setup sourece, destination, and length */
+> +	cvd->len = len;
+> +	cvd->src = src;
+> +	cvd->dest = dest;
+>  
+> -	return &cvd[0]->vd.tx;
+> +	return vchan_tx_prep(to_virt_chan(c), &cvd->vd, flags);
+>  }
+>  
+> -static void mtk_cqdma_free_inactive_desc(struct dma_chan *c)
+> -{
+> -	struct virt_dma_chan *vc = to_virt_chan(c);
+> -	unsigned long flags;
+> -	LIST_HEAD(head);
+> -
+> -	/*
+> -	 * set desc_allocated, desc_submitted,
+> -	 * and desc_issued as the candicates to be freed
+> -	 */
+> -	spin_lock_irqsave(&vc->lock, flags);
+> -	list_splice_tail_init(&vc->desc_allocated, &head);
+> -	list_splice_tail_init(&vc->desc_submitted, &head);
+> -	list_splice_tail_init(&vc->desc_issued, &head);
+> -	spin_unlock_irqrestore(&vc->lock, flags);
+> -
+> -	/* free descriptor lists */
+> -	vchan_dma_desc_free_list(vc, &head);
+> -}
+> -
+> -static void mtk_cqdma_free_active_desc(struct dma_chan *c)
+> +static int mtk_cqdma_terminate_all(struct dma_chan *c)
+>  {
+>  	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
+> -	bool sync_needed = false;
+> +	struct virt_dma_chan *vc = to_virt_chan(c);
+>  	unsigned long pc_flags;
+>  	unsigned long vc_flags;
+> +	LIST_HEAD(head);
+> +
+> +	/* wait for the VC to be inactive  */
+> +	if (!wait_for_completion_timeout(&cvc->cmp, msecs_to_jiffies(3000)))
+> +		return -EAGAIN;
+>  
+>  	/* acquire PC's lock first due to lock dependency in dma ISR */
+>  	spin_lock_irqsave(&cvc->pc->lock, pc_flags);
+>  	spin_lock_irqsave(&cvc->vc.lock, vc_flags);
+>  
+> -	/* synchronization is required if this VC is active */
+> -	if (mtk_cqdma_is_vchan_active(cvc)) {
+> -		cvc->issue_synchronize = true;
+> -		sync_needed = true;
+> -	}
+> +	/* get VDs from lists */
+> +	vchan_get_all_descriptors(vc, &head);
+> +
+> +	/* free all the VDs */
+> +	vchan_dma_desc_free_list(vc, &head);
+>  
+>  	spin_unlock_irqrestore(&cvc->vc.lock, vc_flags);
+>  	spin_unlock_irqrestore(&cvc->pc->lock, pc_flags);
+>  
+> -	/* waiting for the completion of this VC */
+> -	if (sync_needed)
+> -		wait_for_completion(&cvc->issue_completion);
+> -
+> -	/* free all descriptors in list desc_completed */
+>  	vchan_synchronize(&cvc->vc);
+>  
+> -	WARN_ONCE(!list_empty(&cvc->vc.desc_completed),
+> -		  "Desc pending still in list desc_completed\n");
+> -}
+> -
+> -static int mtk_cqdma_terminate_all(struct dma_chan *c)
+> -{
+> -	/* free descriptors not processed yet by hardware */
+> -	mtk_cqdma_free_inactive_desc(c);
+> -
+> -	/* free descriptors being processed by hardware */
+> -	mtk_cqdma_free_active_desc(c);
+> -
+>  	return 0;
+>  }
+>  
+> @@ -618,7 +420,7 @@ static int mtk_cqdma_alloc_chan_resources(struct dma_chan *c)
+>  	u32 i, min_refcnt = U32_MAX, refcnt;
+>  	unsigned long flags;
+>  
+> -	/* allocate PC with the minimun refcount */
+> +	/* allocate PC with the minimum refcount */
+>  	for (i = 0; i < cqdma->dma_channels; ++i) {
+>  		refcnt = refcount_read(&cqdma->pc[i]->refcnt);
+>  		if (refcnt < min_refcnt) {
+> @@ -671,8 +473,9 @@ static void mtk_cqdma_free_chan_resources(struct dma_chan *c)
+>  		mtk_dma_set(cvc->pc, MTK_CQDMA_FLUSH, MTK_CQDMA_FLUSH_BIT);
+>  
+>  		/* wait for the completion of flush operation */
+> -		if (mtk_cqdma_poll_engine_done(cvc->pc, true) < 0)
+> -			dev_err(cqdma2dev(to_cqdma_dev(c)), "cqdma flush timeout\n");
+> +		if (mtk_cqdma_poll_engine_done(cvc->pc) < 0)
+> +			dev_err(cqdma2dev(to_cqdma_dev(c)),
+> +				"cqdma flush timeout\n");
+>  
+>  		/* clear the flush bit and interrupt flag */
+>  		mtk_dma_clr(cvc->pc, MTK_CQDMA_FLUSH, MTK_CQDMA_FLUSH_BIT);
+> @@ -816,10 +619,18 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+>  		if (!cqdma->pc[i])
+>  			return -ENOMEM;
+>  
+> -		INIT_LIST_HEAD(&cqdma->pc[i]->queue);
+> +		cqdma->pc[i]->active_vdesc = NULL;
+>  		spin_lock_init(&cqdma->pc[i]->lock);
+>  		refcount_set(&cqdma->pc[i]->refcnt, 0);
+> -		cqdma->pc[i]->base = devm_platform_ioremap_resource(pdev, i);
+> +
+> +		res = platform_get_resource(pdev, IORESOURCE_MEM, i);
+> +		if (!res) {
+> +			dev_err(&pdev->dev, "No mem resource for %s\n",
+> +				dev_name(&pdev->dev));
+> +			return -EINVAL;
+> +		}
+> +
+> +		cqdma->pc[i]->base = devm_ioremap_resource(&pdev->dev, res);
+>  		if (IS_ERR(cqdma->pc[i]->base))
+>  			return PTR_ERR(cqdma->pc[i]->base);
+>  
+> @@ -852,7 +663,6 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+>  		vc = &cqdma->vc[i];
+>  		vc->vc.desc_free = mtk_cqdma_vdesc_free;
+>  		vchan_init(&vc->vc, dd);
+> -		init_completion(&vc->issue_completion);
+>  	}
+>  
+>  	err = dma_async_device_register(dd);
+> @@ -876,10 +686,6 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+>  
+>  	platform_set_drvdata(pdev, cqdma);
+>  
+> -	/* initialize tasklet for each PC */
+> -	for (i = 0; i < cqdma->dma_channels; ++i)
+> -		tasklet_setup(&cqdma->pc[i]->tasklet, mtk_cqdma_tasklet_cb);
+> -
+>  	dev_info(&pdev->dev, "MediaTek CQDMA driver registered\n");
+>  
+>  	return 0;
+> @@ -914,8 +720,6 @@ static int mtk_cqdma_remove(struct platform_device *pdev)
+>  
+>  		/* Waits for any pending IRQ handlers to complete */
+>  		synchronize_irq(cqdma->pc[i]->irq);
+> -
+> -		tasklet_kill(&cqdma->pc[i]->tasklet);
+>  	}
+>  
+>  	/* disable hardware */
+> -- 
+> 1.9.1
 
+-- 
+~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
