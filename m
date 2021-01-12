@@ -2,77 +2,84 @@ Return-Path: <SRS0=cYlk=GP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11C8BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:45:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D336C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BDF5922D6D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:45:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDF5922D6D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id CB3E422E02
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB3E422E02
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3/i59YRjTY1JZlbMj/g7EGBGNwgOdl8NUmZwwg8tlsA=; b=dpc9A8ryQC2HCJ0fl664OWHrS
-	qJ3cns8NBNf1JRxYTF7fsHdR2D/dtl4RKdN1nEEC5VDGUMT/Nqf9iGhDLJ8zZwjA7FWYuNQhMYuyf
-	2Y9Fzff30KfTsdE/mhm2gBcn5/gq9wagN5x5IUqcSQ59lHwvPoPXoZJ8R/UyS04q3YKztDUuCeZPQ
-	sHRda0E1DPSm05I/xNjpQqkWMgy9Ldoyl5+HsKJoLZco8+S8l54CBDeDvkv7ygY79ic8fo97FlyC2
-	cHWRV+qvnhnS00E3EacC4kBFlRkg1IvFGdQPibx4nAnSji8suiCivk4Xr9yMjAe/wBbIYA6nRRD57
-	wnRkzwTwQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GMpgbc5FsogwANt6ALuGROwqEKGk+dRvjpkWX3taDY8=; b=J3nQ1vn4v+JARSWCs3WarRWAgl
+	yjHlm2c0uGnRQ7hyYSXHnIWQL2FKtXcsVcXPEUpi5sixIQ9Em6As0ZbAHdSmVTWIg3PK+OrhfZrjz
+	H8NJ5QwmX4cemmuRTKk4IhLy1zL0YaUF5+U6zGwLjq9/GjE8kTEYllM5MbdvA223LjfyCG0DdXedR
+	4aBTs7K41InSRSTWca5JVhELbxUIpcRRJgC5fci+poGtpSYYDpjaatTAxZbVMuCr/r96FovGJnA4i
+	gGkPz/IN1iSqPdGAK/oKiUdM0I0oWKhmSIrzuxjtjy0toccNRlRC48twASenZAXAim+76pPoSPHIj
+	BdT4pZCQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kz8jq-0002O9-4o; Tue, 12 Jan 2021 01:44:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kz8mA-0002t7-2C; Tue, 12 Jan 2021 01:47:14 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kz8jm-0002Mx-G3
- for linux-mediatek@lists.infradead.org; Tue, 12 Jan 2021 01:44:48 +0000
-X-UUID: 2fb55713a72d4b1f8258e047de4c276b-20210111
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ZSNLc9PihXO6nuOHATGPf5myu+2eUyDH8fhV6ZmKRZo=; 
- b=T+F4bi2v1/FRrc6dZtq9W6TfUcWdz7QGspkVCEXJ7BWEIR7VQIM59UvjAy3ybTTeploLEeVfUvNDFg5qB8q0+5lfm6Sx50O3ueS791Ho7mhbIkK7BHniLGfhbc2qz+yQjbe7jrZmIYTIWcOTBwQ9Q9WM45PsKE/da6kZh+q3vAI=;
-X-UUID: 2fb55713a72d4b1f8258e047de4c276b-20210111
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1231426531; Mon, 11 Jan 2021 17:44:43 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Jan 2021 17:42:34 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Jan 2021 09:42:32 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Jan 2021 09:42:32 +0800
-Message-ID: <1610415752.4985.16.camel@mtksdccf07>
-Subject: Re: [PATCH] mac80211: fix incorrect strlen of .write in debugfs
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Johannes Berg <johannes@sipsolutions.net>
-Date: Tue, 12 Jan 2021 09:42:32 +0800
-In-Reply-To: <036e334c2a0a2ebaf940d3f7ae03ab0d9f7c45fb.camel@sipsolutions.net>
-References: <20210108105643.10834-1-shayne.chen@mediatek.com>
- <0efec65815ff9e26b3da69cb35d503a90086760c.camel@sipsolutions.net>
- <1610345954.4985.7.camel@mtksdccf07>
- <036e334c2a0a2ebaf940d3f7ae03ab0d9f7c45fb.camel@sipsolutions.net>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1kz8m8-0002rl-GJ; Tue, 12 Jan 2021 01:47:13 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id iq13so628477pjb.3;
+ Mon, 11 Jan 2021 17:47:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zW9C/QxorEMeUx+kFawitRLf1fte/47nwM4QFK+urs8=;
+ b=Xw2j31dYa7SMPypEzYJZYF8wY0mLXfYFnRrVxcJlbSxF0zGLpHLPR6T6Bg8zzujGzJ
+ zaZiUQXiIkayvjga5aPESuNkqGgWOFFQpJvEybATylzQpZ1xIRuXQptih/ZGWPZzoaPR
+ ksMLZwGXjGMwxnDyUNshkicHq9mDWY/odzVyLVRpqHtax39dopg5O5T6oZn4UeIJavJQ
+ TuYKiMhudim7g3ptvZWU4FM6sz6hGq1jm8ByHFlPS/ilmXxTkAbVFmJLfnhFkZbemzgV
+ VyDxLpCOCcE2sGfaOcuwmcxO4XHau8P9gKSGlganrQfq+Ttb+SvZ3EL4WDtL30hcfyL2
+ dRtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zW9C/QxorEMeUx+kFawitRLf1fte/47nwM4QFK+urs8=;
+ b=WFfV2pARwX9oRurRihEzNu8EqGA4OyH1i7yAlY9dBm2dZTZimY0FtP+YYy5HG3U4QT
+ wNSUU8AnU3RwBqLqPub6/N2t65yYSN1UWVIpu5IwtkrNdiz9AJNeaGXEnW4U10yN6q/e
+ OZgBbTNip59ZLeeQzkY7L5zteE6WrshGQoKBcKuxH3fu94UEq7OO6gZCcaIEloWlkqGP
+ jOKkV6dAOFoZAKQA4uj/Qh6dHAQAP0AZy/3zCtOaRW6/ExwvzLdMt2PUchz+lgSXw8H0
+ b9K1P3A4JFrNknBEBIYTUpak2f0pSgqoe5bomAmOM7ZSAG3M0kTzbv1f03UrBXW/ISa7
+ 39wA==
+X-Gm-Message-State: AOAM532hnY5FvfUgzQCmzvuUK5q8zE/k+MrLJg/IqXkVdtv5aZypWPKj
+ WaDdDfisf2MJ8Cp8VUbBJz4=
+X-Google-Smtp-Source: ABdhPJyxFPcLuVKER4Bl8+KtGfVHh/4AqA6sL49fG/uOu5r42FeKYv+0+bdSG/fKKm4dJGHuwUnqxw==
+X-Received: by 2002:a17:902:d202:b029:da:d86b:78be with SMTP id
+ t2-20020a170902d202b02900dad86b78bemr2264745ply.0.1610416027902; 
+ Mon, 11 Jan 2021 17:47:07 -0800 (PST)
+Received: from localhost.localdomain ([49.207.194.207])
+ by smtp.gmail.com with ESMTPSA id 14sm904376pfy.55.2021.01.11.17.46.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Jan 2021 17:47:07 -0800 (PST)
+From: Allen Pais <allen.lkml@gmail.com>
+To: herbert@gondor.apana.org.au
+Subject: [PATCH v3 00/19]crypto: convert tasklets to use new tasklet_setup
+ API()
+Date: Tue, 12 Jan 2021 07:16:31 +0530
+Message-Id: <20210112014650.10887-1-allen.lkml@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2A3869795AF4D62E00F733F95164FA99692B98361A0380456F173D3EC3EA12832000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_204446_793105_8FFD70B0 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20210111_204712_600412_EF835798 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,54 +91,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Toke =?ISO-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@toke.dk>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Sujuan Chen <sujuan.chen@mediatek.com>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com,
+ Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-01-11 at 13:10 +0100, Johannes Berg wrote:
-> On Mon, 2021-01-11 at 14:19 +0800, Shayne Chen wrote:
-> > 
-> > Regarding the case "10\n\0\0\0\0", both count and strlen() fail to get
-> > the correct strlen.
-> 
-> Yeah.
-> 
-> I don't think we need to worry about this case.
-> 
-Got it.
-> > # echo "10\n\0\0\0\0" > /sys/kernel/debug/ieee80211/phy0/airtime_flags
-> > airtime_flags_write: count = 13, strlen = 15 
-> > > > +	buf[count] = '\0';
-> > > 
-> > > But if count == sizeof(buf) then this is an out-of-bounds write.
-> > > 
-> > > Same for all the other copied instances.
-> > > 
-> > > johannes
-> > > 
-> > 
-> > Should we consider this kind of case here?
-> 
-> Sure, we're at the kernel/userspace trust boundary, we can't just read
-> out-of-bounds? Or what do you mean?
-> 
-> johannes
-> 
-> 
+From: Allen Pais <apais@linux.microsoft.com>
 
-Sorry, I put the reply in a wrong place.
-I meant should we consider the case "10\n\0\0\0\0" here.
+Commit 12cc923f1ccc ("tasklet: Introduce new initialization API")
+introduced a new tasklet initialization API. This series converts
+all the crypto modules to use the new tasklet_setup() API
 
-Will send v2, thank you.
+The series is based on v5.11-rc2 (e71ba9452f0b)
 
-Shayne
+v3:
+  - fixed rockchip driver(Emil Renner Berthing)
+
+v2:
+  - added acks
+  - addressed comments [Krzysztof and Gilad]
+
+Allen Pais (19):
+  crypto: amcc: convert tasklets to use new tasklet_setup() API
+  crypto: atmel: convert tasklets to use new tasklet_setup() API
+  crypto: axis: convert tasklets to use new tasklet_setup() API
+  crypto: caam: convert tasklets to use new tasklet_setup() API
+  crypto: cavium: convert tasklets to use new tasklet_setup() API
+  crypto: ccp: convert tasklets to use new tasklet_setup() API
+  crypto: ccree: convert tasklets to use new tasklet_setup() API
+  crypto: hifn_795x: convert tasklets to use new tasklet_setup() API
+  crypto: img-hash: convert tasklets to use new tasklet_setup() API
+  crypto: ixp4xx: convert tasklets to use new tasklet_setup() API
+  crypto: mediatek: convert tasklets to use new tasklet_setup() API
+  crypto: omap: convert tasklets to use new tasklet_setup() API
+  crypto: picoxcell: convert tasklets to use new tasklet_setup() API
+  crypto: qat: convert tasklets to use new tasklet_setup() API
+  crypto: qce: convert tasklets to use new tasklet_setup() API
+  crypto: rockchip: convert tasklets to use new tasklet_setup() API
+  crypto: s5p: convert tasklets to use new tasklet_setup() API
+  crypto: talitos: convert tasklets to use new tasklet_setup() API
+  crypto: octeontx: convert tasklets to use new tasklet_setup() API
+
+ drivers/crypto/amcc/crypto4xx_core.c          |  7 ++--
+ drivers/crypto/atmel-aes.c                    | 14 +++----
+ drivers/crypto/atmel-sha.c                    | 14 +++----
+ drivers/crypto/atmel-tdes.c                   | 14 +++----
+ drivers/crypto/axis/artpec6_crypto.c          |  7 ++--
+ drivers/crypto/caam/jr.c                      |  9 ++--
+ drivers/crypto/cavium/cpt/cptvf_main.c        |  9 ++--
+ drivers/crypto/cavium/nitrox/nitrox_common.h  |  2 +-
+ drivers/crypto/cavium/nitrox/nitrox_isr.c     | 13 +++---
+ drivers/crypto/cavium/nitrox/nitrox_reqmgr.c  |  4 +-
+ drivers/crypto/ccp/ccp-dev-v3.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dev-v5.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dmaengine.c            |  7 ++--
+ drivers/crypto/ccree/cc_fips.c                |  8 ++--
+ drivers/crypto/ccree/cc_request_mgr.c         | 12 +++---
+ drivers/crypto/hifn_795x.c                    |  6 +--
+ drivers/crypto/img-hash.c                     | 12 +++---
+ drivers/crypto/ixp4xx_crypto.c                |  4 +-
+ .../crypto/marvell/octeontx/otx_cptvf_main.c  | 12 +++---
+ drivers/crypto/mediatek/mtk-aes.c             | 14 +++----
+ drivers/crypto/mediatek/mtk-sha.c             | 14 +++----
+ drivers/crypto/omap-aes.c                     |  6 +--
+ drivers/crypto/omap-des.c                     |  6 +--
+ drivers/crypto/omap-sham.c                    |  6 +--
+ drivers/crypto/picoxcell_crypto.c             |  7 ++--
+ drivers/crypto/qat/qat_common/adf_isr.c       |  5 +--
+ drivers/crypto/qat/qat_common/adf_sriov.c     | 10 ++---
+ drivers/crypto/qat/qat_common/adf_transport.c |  4 +-
+ .../qat/qat_common/adf_transport_internal.h   |  2 +-
+ drivers/crypto/qat/qat_common/adf_vf_isr.c    | 11 +++--
+ drivers/crypto/qce/core.c                     |  7 ++--
+ drivers/crypto/rockchip/rk3288_crypto.c       | 14 +++----
+ drivers/crypto/s5p-sss.c                      | 13 +++---
+ drivers/crypto/talitos.c                      | 42 +++++++++----------
+ 34 files changed, 152 insertions(+), 181 deletions(-)
+
+-- 
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
