@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4A2EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 21:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C0E8C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 23:10:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8174B2311F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 21:37:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8174B2311F
+	by mail.kernel.org (Postfix) with ESMTPS id 5940123123
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 23:10:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5940123123
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=iPKW4pqc5uxqaGu2a82yM2H6tQELmP4F6c/UoI82RC8=; b=cm9NW+PxOIq2QeA/63g7L+Iaf
-	r4C0CbN5XpEAedcD154gB2712VTV3aI2CsnRj1YmH6ZjECa5mXATUwkDT2J7Gwo1NF1Ez7b1ewbuJ
-	e6YLu4wGRsFDm+Qy8004ijzyYFqakD1uhUSR1EPpBk2URKepcabVz+zVYLlXc2BXfi2mj4N+G37ko
-	z1tU3Bpvb8h0aFvNQr8KW3dPTf/M7RyDVujAmbBGUviVeo2Av4Y3xuaowzv2u3A+f/LmyK9VJNgZe
-	xnKeShg66K7ychWuWMFH69wFOJk4/FPbcWD8yYUa/BfCj6Gp/0FZAuY3VhiTceRKJhTD24X1QsI9z
-	0Bp+tmZ3Q==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=I2r6h6E67mJ9CBuk6grS9fAC9IjrzFTpEtriqbpGhD0=; b=kvsgpyCNy9XOlPzWNcPThq7HT
+	/92L40Mq/XZWuXUnORhYUthmXY1MOcD6qzGWHTJPEc45yBL1YymBqA5nijOUXVzqw2CYP4mDEIV4q
+	nXxx/lG4HQj4B0JrkW5w9AhMESCzLjKEQGnuYQcZmY2i6iEUoCoM3jxJO41rg0eKRW3JCWDeMX09A
+	cKDMA7p/qWNPnDs3WFE0xFJeDTr+5adWMVIFX+VTqRN1THNZo4BFNtUH9FFnPK4VOg04fQH7bUHlZ
+	kg6XxnUjTAq285LOa9J76HTVNzPzUNC7paI3zlp9k732TajiblLRbQxel/6Ydl+nanY9VTS+bVrYw
+	8nZB9n0eg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzRLJ-0004ES-IU; Tue, 12 Jan 2021 21:36:45 +0000
+	id 1kzSnb-00041H-OO; Tue, 12 Jan 2021 23:10:03 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzRLC-0004BT-Ee; Tue, 12 Jan 2021 21:36:39 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 730C723102;
- Tue, 12 Jan 2021 21:36:36 +0000 (UTC)
+ id 1kzSnS-0003x5-MZ; Tue, 12 Jan 2021 23:09:55 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6865F23131;
+ Tue, 12 Jan 2021 23:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610487396;
- bh=nkb3u9pf9yQMGIPyswxyCO0Px53gLOaH0dhJ7L6TPkM=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=NcxiiEOfWj9HOVrCBrp9VtkT1NBUCvdlN+dgVvFpPWW9JEqRa347v2mhU/bYXNEPK
- FrxjuQozMo3c8tknVEpGisVTHnEMndS2YwIS4Epj9RZCPea7omsE3sp7U25k5Qaixe
- TN/51ORUcfLwlkBfQhkEcUpkJ5uaPksPjDTWTgB6TavTcEItBqbIGNvJX0mbuvZPjB
- NcJzBN1bj3HW7mRP+VRtf18x9+XAIrJ0TCxqPAV47zCiDOUOvU+xuetqxUTJnnF2vI
- bdGjoxulwev2XK5zlCDYAXoLBCnwhKOz3g2Edjka5fFl4Xwr1Ea6yjxy/Z0nwH0PB/
- 8Lj70ePoqniLA==
-Date: Tue, 12 Jan 2021 15:36:35 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: mingchuang.qiao@mediatek.com
-Subject: Re: [PATCH] pci: avoid unsync of LTR mechanism configuration
-Message-ID: <20210112213635.GA1854447@bjorn-Precision-5520>
+ s=k20201202; t=1610492992;
+ bh=0nyABi1I6IbH4taoMU8LdjyQhHLxaseiMU9/vMX1KR0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=sbovZzbeFJgifUDQV6OfTlsFv8x0Syu8Dw9ldR+eHROYAH3KszT1DYse3BzCKeJsr
+ qWwvJ4VIjMg8HUHrO0AAdrRf+FH9vjPcfdb4HZC46HRKpCMXwNdSlKBA31R6NI2RFo
+ xebqqRHLQkJaOSKXIbCCutgSfCM+9vcHQ8KXdiwtpKYouZSImcEtubsYRR3ytFsRV/
+ M2Hc3yd/tUMbmExxC4tUogz6aNe5nOlsscWpP4/gjsKnR3CwS0+W0RWcbEolWJt6/d
+ 2eokurBSDvsK/xWbxSnpSlaIEjym1JZxskxtgE9K7G2Qtmw3PH4F3PvLwwGlWQxQMt
+ 5raltDROxOfrg==
+Received: by mail-ej1-f44.google.com with SMTP id lt17so386355ejb.3;
+ Tue, 12 Jan 2021 15:09:52 -0800 (PST)
+X-Gm-Message-State: AOAM533vNGzvMZsgTaYG0ffdcRTpDlQ9KvRqqHEnGx144Igk5qVAGNEF
+ ttoxyBFRRASJDP5qReEWm+0GkflTADemyL8ijQ==
+X-Google-Smtp-Source: ABdhPJwP64jmhjn4D+dF85A/6b6TbFHN8xXLISjTvjsyFKbBPrJtBOL7OecdSuy90tRVPSF9pUMEob05jWopgh4yEjg=
+X-Received: by 2002:a17:906:fb1a:: with SMTP id
+ lz26mr791422ejb.194.1610492990879; 
+ Tue, 12 Jan 2021 15:09:50 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210112072739.31624-1-mingchuang.qiao@mediatek.com>
+References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1610351031-21133-10-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1610351031-21133-10-git-send-email-yongqiang.niu@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 13 Jan 2021 07:09:39 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8qDAy=hmbuyxuJTqp3nG_ZqiYHpP0fp4C5Zvs4tKeoNA@mail.gmail.com>
+Message-ID: <CAAOTY_8qDAy=hmbuyxuJTqp3nG_ZqiYHpP0fp4C5Zvs4tKeoNA@mail.gmail.com>
+Subject: Re: [PATCH v3, 09/15] drm/mediatek: Add pm runtime support for gamma
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210112_163638_782817_A031AEE8 
-X-CRM114-Status: GOOD (  23.08  )
+X-CRM114-CacheID: sfid-20210112_180954_960072_394CDBFB 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,102 +79,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kerun.zhu@mediatek.com, linux-pci@vger.kernel.org,
- lambert.wang@mediatek.com, linux-kernel@vger.kernel.org,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- haijun.liu@mediatek.com, bhelgaas@google.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ CK Hu <ck.hu@mediatek.com>, Yidi Lin <yidi.lin@mediatek.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Note subject line tips at https://lore.kernel.org/r/20171026223701.GA25649@bhelgaas-glaptop.roam.corp.google.com
-
-On Tue, Jan 12, 2021 at 03:27:39PM +0800, mingchuang.qiao@mediatek.com wrote:
-> From: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
-> 
-> In pci bus scan flow, the LTR mechanism enable bit of DEVCTL2 register
-> is configured in pci_configure_ltr(). If device and it's bridge both
-> support LTR mechanism, LTR mechanism of device and it's bridge will
-> be enabled in DEVCTL2 register. And the flag pci_dev->ltr_path will
-> be set as 1.
-
-s/it's/its/ twice above.
-It's == It is.
-Its == belonging to 'it'.
-Weird, I know, but that's English for you :)
-
-> For some pcie products, pcie link becomes down when device reset. And then
-> the LTR mechanism enable bit of bridge will become 0 based on description
-> in PCIE r4.0, sec 7.8.16. However, the pci_dev->ltr_path value of bridge
-> is still 1. Remove and rescan flow could be triggered to recover after
-> device reset. In the bus rescan flow, the LTR mechanism of device will be
-> enabled in pci_configure_ltr() due to ltr_path of its bridge is still 1.
-
-s/pcie/PCIe/ twice above.
-s/PCIE/PCIe/; also reference r5.0 instead of r4.0 if possible.
-
-This sounds like a general problem of most device config bits being
-cleared by reset.  Usually these are restored by pci_restore_state().
-Is that function missing a restore for PCI_EXP_DEVCTL2?  I'd rather
-have a general-purpose way of restoring all the config state than
-little pieces scattered all over.
-
-> When device's LTR mechanism is enabled, device will send LTR message to
-> bridge. Bridge receives the device's LTR message and found bridge's LTR
-> mechanism is disabled. Then the bridge will generate unsupported request
-> and other error handling flow will be triggered such as AER Non-Fatal
-> error handling.
-> 
-> This patch is used to avoid this unsupported request and make the bridge's
-> ltr_path value is aligned with DEVCTL2 register value. Check bridge
-> register value if aligned with ltr_path in pci_configure_ltr(). If
-> register value is disable and the ltr_path is 1, we need configure
-> the register value as enable.
-> 
-> Signed-off-by: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
-> ---
->  drivers/pci/probe.c | 18 +++++++++++++++---
->  1 file changed, 15 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> index 953f15abc850..49355cf4af54 100644
-> --- a/drivers/pci/probe.c
-> +++ b/drivers/pci/probe.c
-> @@ -2132,9 +2132,21 @@ static void pci_configure_ltr(struct pci_dev *dev)
->  	 * Complex and all intermediate Switches indicate support for LTR.
->  	 * PCIe r4.0, sec 6.18.
->  	 */
-> -	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT ||
-> -	    ((bridge = pci_upstream_bridge(dev)) &&
-> -	      bridge->ltr_path)) {
-> +	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT) {
-> +		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
-> +					 PCI_EXP_DEVCTL2_LTR_EN);
-> +		dev->ltr_path = 1;
-> +		return;
-> +	}
-> +
-> +	bridge = pci_upstream_bridge(dev);
-> +	if (bridge && bridge->ltr_path) {
-> +		pcie_capability_read_dword(bridge, PCI_EXP_DEVCTL2, &ctl);
-> +		if (!(ctl & PCI_EXP_DEVCTL2_LTR_EN)) {
-> +			pcie_capability_set_word(bridge, PCI_EXP_DEVCTL2,
-> +						 PCI_EXP_DEVCTL2_LTR_EN);
-> +		}
-> +
->  		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
->  					 PCI_EXP_DEVCTL2_LTR_EN);
->  		dev->ltr_path = 1;
-> -- 
-> 2.18.0
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
+PiDmlrwgMjAyMeW5tDHmnIgxMeaXpSDpgLHkuIAg5LiL5Y2IMzo0OOWvq+mBk++8mgoKPgo+IGdh
+bW1hIHBvd2VyIGRvbWFpbiBuZWVkIGNvbnRyb2xlZCBpbiB0aGUgZGV2aWNlLgoKSW4gdGhpcyBz
+ZXJpZXMsIHdoeSBvbmx5IGdhbW1hIGFuZCBjb2xvciBhZGQgcG0gcnVudGltZSBzdXBwb3J0PyBJ
+CnRoaW5rIGFsbCBkZHAgY29tcG9uZW50IG5lZWQgcG0gcnVudGltZSBzdXBwb3J0LiBBbmQgcG0g
+cnVudGltZQpzdXBwb3J0IGlzIG5vdCByZWxhdGVkIHRvIG10ODE5Miwgc28gbW92ZSB0aGVzZSBw
+YXRjaGVzIG91dCBvZiB0aGlzCnNlcmllcy4KClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+Cj4gU2ln
+bmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4g
+U2lnbmVkLW9mZi1ieTogWWlkaSBMaW4gPHlpZGkubGluQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX2dhbW1hLmMgfCA1ICsrKysrCj4gIDEg
+ZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfZ2FtbWEuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZGlzcF9nYW1tYS5jCj4gaW5kZXggM2MxZWEwNy4uZGE5MzA3OSAxMDA2NDQKPiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfZ2FtbWEuYwo+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9nYW1tYS5jCj4gQEAgLTEwLDYgKzEwLDcgQEAK
+PiAgI2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfaXJx
+Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxp
+bnV4L3BtX3J1bnRpbWUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3NvYy9tZWRpYXRlay9tdGstY21k
+cS5oPgo+Cj4gICNpbmNsdWRlICJtdGtfZHJtX2NydGMuaCIKPiBAQCAtMTU2LDYgKzE1Nyw4IEBA
+IHN0YXRpYyBpbnQgbXRrX2Rpc3BfZ2FtbWFfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
+cGRldikKPgo+ICAgICAgICAgcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgcHJpdik7Cj4KPiAr
+ICAgICAgIHBtX3J1bnRpbWVfZW5hYmxlKGRldik7Cj4gKwo+ICAgICAgICAgcmV0ID0gY29tcG9u
+ZW50X2FkZChkZXYsICZtdGtfZGlzcF9nYW1tYV9jb21wb25lbnRfb3BzKTsKPiAgICAgICAgIGlm
+IChyZXQpCj4gICAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGFkZCBjb21w
+b25lbnQ6ICVkXG4iLCByZXQpOwo+IEBAIC0xNjUsNiArMTY4LDggQEAgc3RhdGljIGludCBtdGtf
+ZGlzcF9nYW1tYV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+Cj4gIHN0YXRp
+YyBpbnQgbXRrX2Rpc3BfZ2FtbWFfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYp
+Cj4gIHsKPiArICAgICAgIHBtX3J1bnRpbWVfZGlzYWJsZSgmcGRldi0+ZGV2KTsKPiArCj4gICAg
+ICAgICBjb21wb25lbnRfZGVsKCZwZGV2LT5kZXYsICZtdGtfZGlzcF9nYW1tYV9jb21wb25lbnRf
+b3BzKTsKPgo+ICAgICAgICAgcmV0dXJuIDA7Cj4gLS0KPiAxLjguMS4xLmRpcnR5Cj4gX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
