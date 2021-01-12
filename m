@@ -2,19 +2,18 @@ Return-Path: <SRS0=cYlk=GP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75C48C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 15:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12A63C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 15:08:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 11A9D23134
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 15:08:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11A9D23134
+	by mail.kernel.org (Postfix) with ESMTPS id AC35E23132
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jan 2021 15:08:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC35E23132
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +22,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7Sf1yX55tM1Yvv9p8ziYBvLroR4pNugPlyZbx0TiFz4=; b=c6pKJRNOkkeGiLCTKMPjIfY8I
-	AWxcWDdcF8tlyuD6KNyEJIECFppqvmJPicREKlgCtvSbssRBg+cWsYtA3jIsQY8iICR2mj1BHsbHR
-	3GvF/WqqzcbbJV986Bl4chEWRXh8pXof4VASjWxnSWsLNkSi44c0lZLWJx7KhEk52i406whkwV6Ew
-	+S2UhCt7L1OUiR/ueXU3ldQztEWABE+TSfJGC73XZm9/lFmkAAV3WdiezKOk9ggGDXw6HClIreWRF
-	WQW1vZfxk6LCMRYM7xkD75i+wA1I0F1xiiC2Aeq4C9Vih+bcDdYJvTdHFvDhqVV8j5FzsIWu4kQQs
-	Y1ZacG49g==;
+	 bh=k5fY1R5vMjCRbE+gvSZZ58amo0tpiuraV+eimWavi4o=; b=M9BhU3Fj5LUj/GcbwUP91ixPB
+	4yKyg9j6cMkwqyPCxCtru7rZNkpjVBhaV1Sta8j/hCwHOuRZ5UpQsX/HtBrp1NmRroDZenuWi3uTJ
+	7iRdWvelNzGbbcx09VELkXRfWHW9uirEvCXn8kaVvPq/QpPIjb9WbCfXzu8PPIkmvX6XzYqECItS9
+	bF3pBq6rGxM0UwyUN35thKyh97qUgtHFD3O8Xupz4bU9qzTZzL8mGCtab1b/RRCBqTODl/tkxlKKw
+	B6E+t1YN6HWEkHV5HGdDKwx2RpjMQ8S+xXZWz9Fvs1I+EEZBl2aEJy32VHfpBccI9XLwCMur/0X/+
+	Wmt6eKprg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzLGo-0005R4-Ro; Tue, 12 Jan 2021 15:07:42 +0000
-Received: from mail-oi1-f169.google.com ([209.85.167.169])
+	id 1kzLGz-0005VN-EC; Tue, 12 Jan 2021 15:07:53 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzLGb-0005M6-96; Tue, 12 Jan 2021 15:07:30 +0000
-Received: by mail-oi1-f169.google.com with SMTP id q25so2607193oij.10;
- Tue, 12 Jan 2021 07:07:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=YURvgP9BUjHljOosNLiDIA3f2KWxkQAmrOPayfecXYk=;
- b=Gld5U1CUmef215eb6hxpVtqOlEImihyS+Ok9YRMFgTBK3/aFolW/D/8vwZXNGYwcm0
- kl+YGMKMhn5krssazpW3rtCimn2LoTIQSf/oFZJP7sqInV/LzChQDaOZrEQcs5IgfHjx
- CfO2wSmEiBLjhGZzKWKiHzeGCKnYp/hH6aplf0TS2fSMWuhe7xFwQAkxED/8qTOvTqKr
- 7/Fr9Yc80v0Cs/P6vOgoMkw/uY6fQotXsn0VCdMyN3H2/NX/OiGvvR0o9l17PDMJH9o9
- 7nWYcePPkDbt2Q3TQpBXBIGoal7AaFWDKQwhKFDlMFx7WNjkOQRWKSXy8clGBdHXuOKA
- ZoMg==
-X-Gm-Message-State: AOAM532jcqoYx7qQk7QV3QJecGY0XngItdLwEmlQk9odsvmLdPWY6wZA
- +tX9c0L+1amdop2nHSvkNw==
-X-Google-Smtp-Source: ABdhPJxRuf1QKqeifgfkDYrkLo0q/suBbG48tctoUk5301xqgCa7AnfdCV5cTj3rX+62Im9zvPvjRg==
-X-Received: by 2002:aca:cf03:: with SMTP id f3mr2312654oig.39.1610464048303;
- Tue, 12 Jan 2021 07:07:28 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id p4sm693676oib.24.2021.01.12.07.07.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 07:07:27 -0800 (PST)
-Received: (nullmailer pid 353855 invoked by uid 1000);
- Tue, 12 Jan 2021 15:07:26 -0000
-Date: Tue, 12 Jan 2021 09:07:26 -0600
-From: Rob Herring <robh@kernel.org>
-To: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v9 1/4] dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
-Message-ID: <20210112150726.GA330364@robh.at.kernel.org>
-References: <20210108011011.4061575-1-drinkcat@chromium.org>
- <20210108091005.v9.1.Ie74d3355761aab202d4825ac6f66d990bba0130e@changeid>
+ id 1kzLGp-0005Qx-3V; Tue, 12 Jan 2021 15:07:44 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5D48F23131;
+ Tue, 12 Jan 2021 15:07:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1610464062;
+ bh=vd1ZvXG086RatWV6CsvEAmO8vQlGfdPVOkxQnQY8NCA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=C3QqVR5EoAdqbOzlIDyZliIhO7/xH84JOHD+IAM+0LbD6hb39pR2wt8TOtz0jwSD+
+ v60Lcv3WAJrNt7L3apqeVmnsT15JxBl/cJMHg5O+Nwk2kAElkwJmpWxUdKiSrzeSj2
+ 4FJ/JWUFIjC0/AiTy2Og/NOmU0wth4a2g+qU5yfcmKP9khGAxfApwMEXzH3IrHDFKw
+ h8k3DLu4ZvTM9sbW9937X/FOojeVj/3lHJJ2K3ZkdTKay1xdiBoUZu8Np5BcqvygNQ
+ 9fyavni2FQlNzxNbty7lbiGJauGFeJsI2VaKG5ED4lZQz6E4F/aEPNK7bj8cq0GnHU
+ cCEY/j1eBlL4Q==
+Date: Tue, 12 Jan 2021 15:07:36 +0000
+From: Will Deacon <will@kernel.org>
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Subject: Re: [PATCH v2] arm64: perf: Fix access percpu variables in
+ preemptible context
+Message-ID: <20210112150735.GC9689@willie-the-truck>
+References: <CAFA6WYNepUP=SeHWnDDbxx=ggwPq2jDd5JmrcXD5GoMC5dYH2g@mail.gmail.com>
+ <20210108125527.14175-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210108091005.v9.1.Ie74d3355761aab202d4825ac6f66d990bba0130e@changeid>
+In-Reply-To: <20210108125527.14175-1-lecopzer.chen@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210112_100729_416066_E616387F 
-X-CRM114-Status: GOOD (  19.04  )
+X-CRM114-CacheID: sfid-20210112_100743_274901_3F9222E3 
+X-CRM114-Status: GOOD (  18.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,104 +72,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- fshao@chromium.org, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Steven Price <steven.price@arm.com>, boris.brezillon@collabora.com,
- linux-mediatek@lists.infradead.org,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org,
- Matthias Brugger <matthias.bgg@gmail.com>, hoegsberg@chromium.org,
+Cc: mark.rutland@arm.com, sumit.garg@linaro.org,
+ alexander.shishkin@linux.intel.com, alexandru.elisei@arm.com,
+ yj.chiang@mediatek.com, linux-kernel@vger.kernel.org, acme@kernel.org,
+ oliver.sang@intel.com, peterz@infradead.org, mingo@redhat.com,
+ linux-mediatek@lists.infradead.org, catalin.marinas@arm.com,
+ matthias.bgg@gmail.com, namhyung@kernel.org, jolsa@redhat.com,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 08, 2021 at 09:10:08AM +0800, Nicolas Boichat wrote:
-> Define a compatible string for the Mali Bifrost GPU found in
-> Mediatek's MT8183 SoCs.
+On Fri, Jan 08, 2021 at 08:55:27PM +0800, Lecopzer Chen wrote:
+> > On Mon, 21 Dec 2020 at 21:53, Lecopzer Chen <lecopzer.chen@mediatek.com> wrote:
+> > >
+> > > commit 367c820ef08082 ("arm64: Enable perf events based hard lockup detector")
+> > > reinitilizes lockup detector after arm64 PMU is initialized and open
+> > > a window for accessing smp_processor_id() in preemptible context.
+> > > Since hardlockup_detector_perf_init() always called in init stage
+> > > with a single cpu, but we initialize lockup detector after the init task
+> > > is migratable.
+> > >
+> > > Fix this by utilizing lockup detector reconfiguration which calls
+> > > softlockup_start_all() on each cpu and calls watatchdog_nmi_enable() later.
+> > > Because softlockup_start_all() use IPI call function to make sure
+> > > watatchdog_nmi_enable() will bind on each cpu and fix this issue.
+> > 
+> > IMO, this just creates unnecessary dependency for hardlockup detector
+> > init via softlockup detector (see the alternative definition of
+> > lockup_detector_reconfigure()).
 > 
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> Reviewed-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-> ---
 > 
-> (no changes since v6)
+> The arm64/Kconfig select HAVE_HARDLOCKUP_DETECTOR_PERF if we have NMI:
+> 	select HAVE_HARDLOCKUP_DETECTOR_PERF if PERF_EVENTS && HAVE_PERF_EVENTS_NMI
 > 
-> Changes in v6:
->  - Rebased, actually tested with recent mesa driver.
->  - No change
+> And in lib/Kconfig.debug HARDLOCKUP_DETECTOR select SOFTLOCKUP_DETECTOR automatically.
+> 	config HARDLOCKUP_DETECTOR_PERF
+> 		bool
+> 		select SOFTLOCKUP_DETECTOR
 > 
-> Changes in v5:
->  - Rename "2d" power domain to "core2"
-> 
-> Changes in v4:
->  - Add power-domain-names description
->    (kept Alyssa's reviewed-by as the change is minor)
-> 
-> Changes in v3:
->  - No change
-> 
->  .../bindings/gpu/arm,mali-bifrost.yaml        | 25 +++++++++++++++++++
->  1 file changed, 25 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> index 184492162e7e..71b613ee5bd7 100644
-> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> @@ -17,6 +17,7 @@ properties:
->      items:
->        - enum:
->            - amlogic,meson-g12a-mali
-> +          - mediatek,mt8183-mali
->            - realtek,rtd1619-mali
->            - rockchip,px30-mali
->        - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
-> @@ -87,6 +88,30 @@ allOf:
->      then:
->        required:
->          - resets
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8183-mali
-> +    then:
-> +      properties:
-> +        sram-supply: true
+> So we don't need to explicitly select softlockup.
+> And actually this patch is not a perfect solution like you said
+> (hardlockup depends on softlockup),
+> but the key point is that lockup_detector_init() seems only design for
+> using in early init stage and not for calling in later deffered initial process.
 
-This has to be defined at the top-level or there will be an error when 
-it is present (due to additionalProperties).
+I agree; the current usage in armv8_pmu_driver_init() looks very broken to
+me, and bodging it with raw_smp_processor_id() isn't the right solution.
 
-In this if/then you can do:
+Maybe we should just revert 367c820ef08082, as this looks like a design
+issue rather than something with a simple fix?
 
-else:
-  sram-supply: false
-
-to disallow it if not 'mediatek,mt8183-mali'
-
-> +        power-domains:
-> +          description:
-> +            List of phandle and PM domain specifier as documented in
-> +            Documentation/devicetree/bindings/power/power_domain.txt
-> +          minItems: 3
-> +          maxItems: 3
-> +        power-domain-names:
-> +          items:
-> +            - const: core0
-> +            - const: core1
-> +            - const: core2
-> +
-> +      required:
-> +        - sram-supply
-> +        - power-domains
-> +        - power-domains-names
->  
->  examples:
->    - |
-> -- 
-> 2.29.2.729.g45daf8777d-goog
-> 
+Will
 
 _______________________________________________
 Linux-mediatek mailing list
