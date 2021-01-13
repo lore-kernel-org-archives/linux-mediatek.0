@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F60FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 02:52:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC307C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 02:52:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C9D872311F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 02:52:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C9D872311F
+	by mail.kernel.org (Postfix) with ESMTPS id 9EA4C2311F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 02:52:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9EA4C2311F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +24,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=upmobAs5RdiPfdMeZgCrEJbMSMvO5J1IZaJzQrhnuIc=; b=SvChOlqMVsEmDaXZ1rMUF3FGR
-	fobIoB5evbTbJQn8IOiqLlwMTQg+TAw72MU0sC8C4TCKb8tLxwyeOhBOIexkBhVa/ugyZrD6vPSqN
-	Prz/Z1zeb7vXCsLKhLJDK5NzxqcKQnOYWNS5Ctis7SAvHP2jQVFmZF1A0dAoDB6ldFQN2CzsrDbx3
-	HMfr8jG8PZZVHFI6gouvRyUN5ipnnyi2NP01+qodm7iKYTM4unAYlnL7BJMEQ7jerXMExczKW2o33
-	JjEpHMDAjBRe6gKYeYxE5zMjnhrFbZka/UdRZmQNfpHx9keRWTgOWofGgzvOrbHPBXq+LTfsfV8gt
-	krepUAbVw==;
+	 bh=mdIfsmI/VKOy3Km60+ViU9C9ZvWcjrYOl5ZyzwcU/oU=; b=BoiUnyQUfoNHOxMFnuikW80r9
+	Eoh0eNpSVli5li3FqUTTsfj4InzN/iTL+maxZ+pItf2ABiu73qmLN0o6fxFbqOyaZzzEPN6GmDb+4
+	DVQHljz9sMwjDOy97TquyZ0t2mYnwbeCAYzXOTekXp+kHU6oCt1op8KF04P0Dfkn0/Gj1T4fdl4db
+	5+R3yOprbyD7JEh7JDLAqpM2hWofgaInsmCsmtnWR0oF5kiB8swdfkQfcK2Bl/+DR8rijm64Z/Pgc
+	rUOqPC7oqpH3l2bSVPy0CdzW1v8Bq4fW9L26PgzQiXD6cY4mEGtqbxszYClqOvkTgLHFSuTLN2DyK
+	hxaIBvTpg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzWGc-00085u-J2; Wed, 13 Jan 2021 02:52:14 +0000
+	id 1kzWGa-00085D-Oj; Wed, 13 Jan 2021 02:52:12 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzWGV-00081s-QM; Wed, 13 Jan 2021 02:52:09 +0000
-X-UUID: 2138b89761724dbd8630464959087241-20210112
+ id 1kzWGV-000820-QN; Wed, 13 Jan 2021 02:52:09 +0000
+X-UUID: d1b22aad0a0844fba5367594986ebd50-20210112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=SkO3GXCnftN8I1xD6Q81tdM7crNmUSmBzxdZiDvCvXw=; 
- b=SR8NlfIdKwW0T+NHz3tO8ACHHQL8zckTSTW5vsQ49l7OISKO7dJRbFdfyF9m/d0LtCGtMltO7Ea7w/qhbWJE1oWQmdCZ2J9SMRuEh5E/iTFo83hf6XPBy6zYsxWVYQZoIssuJhxOpcsIqBibs3eQeHjFdftEadZ/MVjW4AiT68M=;
-X-UUID: 2138b89761724dbd8630464959087241-20210112
+ bh=lEFc7p2kFbTb9gYon1igiIMRd0Tg24jV3t3/Z3PUHmw=; 
+ b=TvzVtysh1t2yEy0jKMXbyKbHhEmMMxe4r2bZkgOV+MtbDw3H1Jwoee9J3yvaFUHzMdlt4VxRbOM48jsxSjh8S8QBsafYE8Mz0dJRWKvsu3C8x2DhrFCsnTeZ+vZ8nwII5tkyyAKvvO8jBAzk9PN5kzSnE3GSKb71ierDn/bHqEo=;
+X-UUID: d1b22aad0a0844fba5367594986ebd50-20210112
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1770822750; Tue, 12 Jan 2021 18:52:00 -0800
+ with ESMTP id 1996451372; Tue, 12 Jan 2021 18:52:00 -0800
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Jan 2021 18:42:51 -0800
+ 15.0.1497.2; Tue, 12 Jan 2021 18:42:52 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Jan 2021 10:42:47 +0800
+ 15.0.1497.2; Wed, 13 Jan 2021 10:42:48 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Jan 2021 10:42:46 +0800
+ Transport; Wed, 13 Jan 2021 10:42:47 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Felipe Balbi <balbi@kernel.org>
-Subject: [PATCH RESEND v4 04/11] usb: gadget: bdc: fix warning of embedded
- function name
-Date: Wed, 13 Jan 2021 10:42:21 +0800
-Message-ID: <1610505748-30616-4-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH RESEND v4 05/11] usb: gadget: bdc: fix check warning of block
+ comments alignment
+Date: Wed, 13 Jan 2021 10:42:22 +0800
+Message-ID: <1610505748-30616-5-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1610505748-30616-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1610505748-30616-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5E9C83FEE143F88193865B2179E6816FEDB32C7BF385A469B417806DE17535112000:8
+X-TM-SNTS-SMTP: BCD91CF0E5005D3CE8CAECC4BDB3E6CE2EE9B78D141FBD94DA72A261EC228A0D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210112_215208_032844_F2BF0852 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20210112_215208_058518_2BF0F010 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,7 +94,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use '"%s...", __func__' to replace embedded function name
+fix the warning:
+  WARNING:BLOCK_COMMENT_STYLE:
+  Block comments should align the * on each line
 
 Cc: Florian Fainelli <f.fainelli@gmail.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
@@ -105,51 +107,68 @@ v4: no changes, but rebase on kernel 5.10-rc1
 v3: add acked-by Florian
 v2: add Cc Florian
 ---
- drivers/usb/gadget/udc/bdc/bdc_dbg.c | 2 +-
- drivers/usb/gadget/udc/bdc/bdc_ep.c  | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/usb/gadget/udc/bdc/bdc.h     | 2 +-
+ drivers/usb/gadget/udc/bdc/bdc_ep.c  | 2 +-
+ drivers/usb/gadget/udc/bdc/bdc_udc.c | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/usb/gadget/udc/bdc/bdc_dbg.c b/drivers/usb/gadget/udc/bdc/bdc_dbg.c
-index 7ba7448ad743..9c03e13308ca 100644
---- a/drivers/usb/gadget/udc/bdc/bdc_dbg.c
-+++ b/drivers/usb/gadget/udc/bdc/bdc_dbg.c
-@@ -68,7 +68,7 @@ void bdc_dbg_srr(struct bdc *bdc, u32 srr_num)
- 
- 	sr = bdc->srr.sr_bds;
- 	addr = bdc->srr.dma_addr;
--	dev_vdbg(bdc->dev, "bdc_dbg_srr sr:%p dqp_index:%d\n",
-+	dev_vdbg(bdc->dev, "%s sr:%p dqp_index:%d\n", __func__,
- 						sr, bdc->srr.dqp_index);
- 	for (i = 0; i < NUM_SR_ENTRIES; i++) {
- 		sr = &bdc->srr.sr_bds[i];
+diff --git a/drivers/usb/gadget/udc/bdc/bdc.h b/drivers/usb/gadget/udc/bdc/bdc.h
+index fcba77e42fd1..c0ee735bd887 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc.h
++++ b/drivers/usb/gadget/udc/bdc/bdc.h
+@@ -35,7 +35,7 @@
+ /*
+  * Maximum size of ep0 response buffer for ch9 requests,
+  * the set_sel request uses 6 so far, the max.
+-*/
++ */
+ #define EP0_RESPONSE_BUFF  6
+ /* Start with SS as default */
+ #define EP0_MAX_PKT_SIZE 512
 diff --git a/drivers/usb/gadget/udc/bdc/bdc_ep.c b/drivers/usb/gadget/udc/bdc/bdc_ep.c
-index 76463de75595..44f3a122546d 100644
+index 44f3a122546d..3fb36c8454fc 100644
 --- a/drivers/usb/gadget/udc/bdc/bdc_ep.c
 +++ b/drivers/usb/gadget/udc/bdc/bdc_ep.c
-@@ -756,7 +756,7 @@ static int ep_dequeue(struct bdc_ep *ep, struct bdc_req *req)
- 
- 	dev_dbg(bdc->dev, "%s ep:%s start:%d end:%d\n",
- 					__func__, ep->name, start_bdi, end_bdi);
--	dev_dbg(bdc->dev, "ep_dequeue ep=%p ep->desc=%p\n",
-+	dev_dbg(bdc->dev, "%s ep=%p ep->desc=%p\n", __func__,
- 						ep, (void *)ep->usb_ep.desc);
- 	/* if still connected, stop the ep to see where the HW is ? */
- 	if (!(bdc_readl(bdc->regs, BDC_USPC) & BDC_PST_MASK)) {
-@@ -1858,12 +1858,12 @@ static int bdc_gadget_ep_enable(struct usb_ep *_ep,
- 	int ret;
- 
- 	if (!_ep || !desc || desc->bDescriptorType != USB_DT_ENDPOINT) {
--		pr_debug("bdc_gadget_ep_enable invalid parameters\n");
-+		pr_debug("%s invalid parameters\n", __func__);
- 		return -EINVAL;
- 	}
- 
- 	if (!desc->wMaxPacketSize) {
--		pr_debug("bdc_gadget_ep_enable missing wMaxPacketSize\n");
-+		pr_debug("%s missing wMaxPacketSize\n", __func__);
- 		return -EINVAL;
- 	}
- 
+@@ -68,7 +68,7 @@ static void ep_bd_list_free(struct bdc_ep *ep, u32 num_tabs)
+ 		 * check if the bd_table struct is allocated ?
+ 		 * if yes, then check if bd memory has been allocated, then
+ 		 * free the dma_pool and also the bd_table struct memory
+-		*/
++		 */
+ 		bd_table = bd_list->bd_table_array[index];
+ 		dev_dbg(bdc->dev, "bd_table:%p index:%d\n", bd_table, index);
+ 		if (!bd_table) {
+diff --git a/drivers/usb/gadget/udc/bdc/bdc_udc.c b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+index 248426a3e88a..0c1ab9548786 100644
+--- a/drivers/usb/gadget/udc/bdc/bdc_udc.c
++++ b/drivers/usb/gadget/udc/bdc/bdc_udc.c
+@@ -164,7 +164,7 @@ static void bdc_func_wake_timer(struct work_struct *work)
+ 	/*
+ 	 * Check if host has started transferring on endpoints
+ 	 * FUNC_WAKE_ISSUED is cleared when transfer has started after resume
+-	*/
++	 */
+ 	if (bdc->devstatus & FUNC_WAKE_ISSUED) {
+ 		dev_dbg(bdc->dev, "FUNC_WAKE_ISSUED FLAG IS STILL SET\n");
+ 		/* flag is still set, so again send func wake */
+@@ -205,7 +205,7 @@ static void handle_link_state_change(struct bdc *bdc, u32 uspc)
+ 				 * if not then send function wake again every
+ 				 * TNotification secs until host initiates
+ 				 * transfer to BDC, USB3 spec Table 8.13
+-				*/
++				 */
+ 				schedule_delayed_work(
+ 						&bdc->func_wake_notify,
+ 						msecs_to_jiffies(BDC_TNOTIFY));
+@@ -379,7 +379,7 @@ static int bdc_udc_start(struct usb_gadget *gadget,
+ 	 * Run the controller from here and when BDC is connected to
+ 	 * Host then driver will receive a USPC SR with VBUS present
+ 	 * and then driver will do a softconnect.
+-	*/
++	 */
+ 	ret = bdc_run(bdc);
+ 	if (ret) {
+ 		dev_err(bdc->dev, "%s bdc run fail\n", __func__);
 -- 
 2.18.0
 _______________________________________________
