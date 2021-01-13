@@ -2,72 +2,63 @@ Return-Path: <SRS0=H0vx=GQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CAF95C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 07:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56CFEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 08:41:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5EF6923139
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 07:28:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5EF6923139
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id CC48123340
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 08:41:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC48123340
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=h+gCLKcPP7vf5UmkEohyJ9gLT1YtZmv5U3raxW611I4=; b=qBjeWBAaJ884azetfJxoquq+D
-	l8MNENmH5hH07+kTQ/GlS7PJ83uaqXIWw8Jy+JcszznJyeymwzh0eFZ8fXQOeT2WF+/nzTdAoz/gS
-	Arj1G6/4uI7oEgRaLITZ2MSV9FGJicwQI+IUMc2P5HNikfBYZJdHMaFKoou0WguBPDixJdeP1Ii2K
-	/6UcyHwK/YGas/jQACtmv8WLDZ+OkQpjCrzNwiutTwYj6y2gbVsRjPpxCiJdsebkZ7mhgeuyLD6Fn
-	H2ZJ/63JVXvnPzyeL+unPkOqnQGdlcNOB78L9yaBpmPtoL4NmIHLReOKyWmVMUpm4KwXVtIdtVN70
-	Y849e5wjg==;
+	 bh=4LHa4vlMP8mVksfrrDloIjHuITPyB/P4xxBK4wTMqWI=; b=dSrGqnY0FXxQ2rFo3OkMeMV8U
+	krX9dqYfTx2ea4FnP6fiER+iDKTGZ+HMPurPwdUnlZmlQ2MeOEg+O6cfTwCIVAJHZI1Bu47dhyNMx
+	bU+QDuu+WA4cXWeq0+DL7VyckcuXneOKbWR/b0ocgbsgcNy7+HuqKnYzAqxemgn8soZf+2lwUwBVJ
+	Fwy0Vi6nNv07qwyJNPizUINIZIWW2HHDp1L11DNL+BKDEhjYrFyOl4aJvmgpyvjnZWnYVgaLdjAZn
+	KUqAOTt2DJNxsJoKxsaqL2avGu1LeYLNVMao0MRy6JcWjgyw1eiLU+SPie4RZCpB2FTrXaWafIoEW
+	IxsNhltrw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzaa5-0006QB-U9; Wed, 13 Jan 2021 07:28:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kzbiB-0003E0-9l; Wed, 13 Jan 2021 08:41:03 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzaa2-0006Om-AO; Wed, 13 Jan 2021 07:28:35 +0000
-X-UUID: d9151e5d5b564d89a9a395a31a88e439-20210112
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=V2QY4ISr3FU5R+e8pjEwcvT9G7BlJkDWriZVo+1cfW8=; 
- b=au+cPOGxgv494QqrxMGvCMzB5XIih8xmfZlOKKIVEGDIZeqaEVfBMJBBrMFcWjBk8/zA0BHlMZZqwkSO77JdcdyF2mLtvtUy0ZDSvieFsZGlJWo6yj6RIA13SHKna1BATd+QJaYhOw6jp0+70cJWSnSJzYulKICUcVP9GFgmBko=;
-X-UUID: d9151e5d5b564d89a9a395a31a88e439-20210112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jamesjj.liao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 836134420; Tue, 12 Jan 2021 23:28:28 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Jan 2021 23:18:25 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Jan 2021 15:18:23 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Jan 2021 15:18:23 +0800
-Message-ID: <1610522303.5827.2.camel@mtksdaap41>
-Subject: Re: [PATCH v6 00/22] Mediatek MT8192 clock support
-From: James Liao <jamesjj.liao@mediatek.com>
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Date: Wed, 13 Jan 2021 15:18:23 +0800
-In-Reply-To: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
-References: <1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kzbi7-0003Cw-Jq; Wed, 13 Jan 2021 08:41:00 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A37C920719;
+ Wed, 13 Jan 2021 08:40:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1610527257;
+ bh=dTsZF39Nf+fdYEmRGhq+1JcvfbZkxUZaN7AXNb0cDq8=;
+ h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+ b=BUMPVgEIMWDBzxMgixEtxCeyXcF8mm07/unBODK4XWYvCjkwC+6sLX7eyVMqubxtu
+ YIz+gT+mTIIFvHBCpW64FyoHvm74b5k5UTh8igGAASfXRGQB4GfKFOMG/fSoecZ+zc
+ HIObSvnuv4n+juU+2JeiYkiRqeXLPz5K5etgBi1ONq/2G0PHJoDlT28u0U6k0xdTQq
+ BJbfupr6BfIhwmXsep5T3XhLuPxQcOUPtm7T3/4k4fYOQPXXACgjaRu+E5ePsMSja+
+ ZFr6lAG3W/nR7n5iwuE+dOVGPhMqJrGLKjIHFu86Wb0vo0wOvKdw8yW+HE9NBSOG6z
+ /0zhW1/GJtxSQ==
+From: Felipe Balbi <balbi@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH RESEND v4 01/11] usb: gadget: bdc: fix improper SPDX
+ comment style for header file
+In-Reply-To: <1610505748-30616-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1610505748-30616-1-git-send-email-chunfeng.yun@mediatek.com>
+Date: Wed, 13 Jan 2021 10:40:48 +0200
+Message-ID: <87pn2944bz.fsf@kernel.org>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_022834_645273_25685083 
-X-CRM114-Status: GOOD (  19.32  )
+X-CRM114-CacheID: sfid-20210113_034059_766045_C831EDCF 
+X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,141 +70,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Florian Fainelli <f.fainelli@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Al Cooper <alcooperx@gmail.com>, linux-kernel@vger.kernel.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============2967802985846484918=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-12-22 at 21:09 +0800, Weiyi Lu wrote:
-> This series is based on v5.10-rc1.
-> 
-> change since v5:
-> - remove unused clocks by rolling Tinghan's patches[1][2] into series
-> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=398781
-> [2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405143
-> - remove dts related patches from series
-> 
-> change since v4:
-> - merge some subsystem into same driver
-> - add a generic probe function to reduce duplicated code
-> 
-> changes since v3:
-> - add critical clocks
-> - split large patches into small ones
-> 
-> changes since v2:
-> - update and split dt-binding documents by functionalities
-> - add error checking in probe() function
-> - fix incorrect clock relation and add critical clocks
-> - update license identifier and minor fix of coding style
-> 
-> changes since v1:
-> - fix asymmetrical control of PLL
-> - have en_mask used as divider enable mask on all MediaTek SoC
-> 
-> Weiyi Lu (22):
->   dt-bindings: ARM: Mediatek: Add new document bindings of imp i2c
->     wrapper controller
->   dt-bindings: ARM: Mediatek: Add new document bindings of mdpsys
->     controller
->   dt-bindings: ARM: Mediatek: Add new document bindings of msdc
->     controller
->   dt-bindings: ARM: Mediatek: Add new document bindings of scp adsp
->     controller
->   dt-bindings: ARM: Mediatek: Document bindings of MT8192 clock
->     controllers
->   clk: mediatek: Add dt-bindings of MT8192 clocks
->   clk: mediatek: Fix asymmetrical PLL enable and disable control
->   clk: mediatek: Add configurable enable control to mtk_pll_data
->   clk: mediatek: Add mtk_clk_simple_probe() to simplify clock providers
->   clk: mediatek: Add MT8192 basic clocks support
->   clk: mediatek: Add MT8192 audio clock support
->   clk: mediatek: Add MT8192 camsys clock support
->   clk: mediatek: Add MT8192 imgsys clock support
->   clk: mediatek: Add MT8192 imp i2c wrapper clock support
->   clk: mediatek: Add MT8192 ipesys clock support
->   clk: mediatek: Add MT8192 mdpsys clock support
->   clk: mediatek: Add MT8192 mfgcfg clock support
->   clk: mediatek: Add MT8192 mmsys clock support
->   clk: mediatek: Add MT8192 msdc clock support
->   clk: mediatek: Add MT8192 scp adsp clock support
->   clk: mediatek: Add MT8192 vdecsys clock support
->   clk: mediatek: Add MT8192 vencsys clock support
-> 
->  .../arm/mediatek/mediatek,apmixedsys.txt      |    1 +
->  .../bindings/arm/mediatek/mediatek,audsys.txt |    1 +
->  .../bindings/arm/mediatek/mediatek,camsys.txt |   22 +
->  .../bindings/arm/mediatek/mediatek,imgsys.txt |    2 +
->  .../arm/mediatek/mediatek,imp_iic_wrap.yaml   |   78 +
->  .../arm/mediatek/mediatek,infracfg.txt        |    1 +
->  .../bindings/arm/mediatek/mediatek,ipesys.txt |    1 +
->  .../arm/mediatek/mediatek,mdpsys.yaml         |   38 +
->  .../bindings/arm/mediatek/mediatek,mfgcfg.txt |    1 +
->  .../bindings/arm/mediatek/mediatek,mmsys.txt  |    1 +
->  .../bindings/arm/mediatek/mediatek,msdc.yaml  |   46 +
->  .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
->  .../arm/mediatek/mediatek,scp-adsp.yaml       |   38 +
->  .../arm/mediatek/mediatek,topckgen.txt        |    1 +
->  .../arm/mediatek/mediatek,vdecsys.txt         |    8 +
->  .../arm/mediatek/mediatek,vencsys.txt         |    1 +
->  drivers/clk/mediatek/Kconfig                  |   80 +
->  drivers/clk/mediatek/Makefile                 |   13 +
->  drivers/clk/mediatek/clk-mt8192-aud.c         |  118 ++
->  drivers/clk/mediatek/clk-mt8192-cam.c         |  107 ++
->  drivers/clk/mediatek/clk-mt8192-img.c         |   70 +
->  .../clk/mediatek/clk-mt8192-imp_iic_wrap.c    |  119 ++
->  drivers/clk/mediatek/clk-mt8192-ipe.c         |   57 +
->  drivers/clk/mediatek/clk-mt8192-mdp.c         |   82 +
->  drivers/clk/mediatek/clk-mt8192-mfg.c         |   50 +
->  drivers/clk/mediatek/clk-mt8192-mm.c          |  108 ++
->  drivers/clk/mediatek/clk-mt8192-msdc.c        |   85 ++
->  drivers/clk/mediatek/clk-mt8192-scp_adsp.c    |   50 +
->  drivers/clk/mediatek/clk-mt8192-vdec.c        |   94 ++
->  drivers/clk/mediatek/clk-mt8192-venc.c        |   53 +
->  drivers/clk/mediatek/clk-mt8192.c             | 1326 +++++++++++++++++
->  drivers/clk/mediatek/clk-mtk.c                |   23 +
->  drivers/clk/mediatek/clk-mtk.h                |   10 +
->  drivers/clk/mediatek/clk-mux.h                |   15 +
->  drivers/clk/mediatek/clk-pll.c                |   31 +-
->  include/dt-bindings/clock/mt8192-clk.h        |  585 ++++++++
->  36 files changed, 3310 insertions(+), 7 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-aud.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-cam.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-img.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-ipe.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-mdp.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-mfg.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-mm.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-msdc.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-scp_adsp.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-vdec.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192-venc.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8192.c
->  create mode 100644 include/dt-bindings/clock/mt8192-clk.h
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+--===============2967802985846484918==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
 
-All patches in this series:
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: James Liao <jamesjj.liao@mediatek.com>
+Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
+
+> For C header files Documentation/process/license-rules.rst
+> mandates C-like comments (opposed to C source files where
+> C++ style should be used).
+>
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+
+Acked-by: Felipe Balbi <balbi@kernel.org>
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJFBAEBCAAvFiEElLzh7wn96CXwjh2IzL64meEamQYFAl/+shARHGJhbGJpQGtl
+cm5lbC5vcmcACgkQzL64meEamQavuBAAg30ZpKD5auMw0mLPTT1xg4DL63rJ4KVr
+CW8ln8OQVGoj6mXYlJmALMw0UPGGYMT5RPzL7Cnu8NTl5Ft8UH9rAjmO1kTM1fN/
+RxZXmbuei4n08W0BvkLCIaPk8aBjYHCh853ckseV1yPk1v2ihRga9FVKa67ZbNBd
+OyuYlxjflMdZ1ZAcB1Sda1FQI7sIw2VPxti6NAC/g0jYME6GrQQGyEdo2T7PnKup
+tEl9d2geaIGbgC87du+S9ojB/lqhFoasecZj/p62OF7UMYohyEfwr9H4GSSko6kg
+pWf5DHf8PSFTiH/vWzCiNRIVRSZ3VRbXDp6osacPPEZ2vUAhScI17MZw0r1zFDrS
+xWZn8y1Kzkty5UKOt9S1p/cfsluub+wUIE4pYtik47Swb4iPbpusDKfAMN75QQ/K
+4uiILFoALlZqavJsBpXF0bhct91iG/JvoSiqUpy6TsXHnwTcHy7uTSgh9o6rE5FE
+cQvVARSkGS8GEiDH2mnOutrcCdKKwee2/yk5uYRW/2SsMC5/Wd6mxxzX62Vjx2UM
+l76HxnweYziy1OvT4sDgz3aHd6B0Wk7jyx5gBWVACmwC+QjvP9Woww5wqGlV4iXI
+cARf1BgOXH1v0Hk0bzLjasE9GYpolu8fqlKMQtKYGG7IKM9XUDUk0OUbC0HaGAfV
+rToxNkIfQNA=
+=QIEo
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============2967802985846484918==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2967802985846484918==--
+
