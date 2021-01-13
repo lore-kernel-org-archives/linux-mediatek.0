@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE4B6C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 13:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83FC7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 13:10:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84B3123432
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 13:08:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84B3123432
+	by mail.kernel.org (Postfix) with ESMTPS id 011DD23432
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 13:10:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 011DD23432
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,72 +23,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=flZnNayK08ZZkuxsUeN64ixrHaekEJmzdbErDMFgWFQ=; b=d49fjaBWCS8vk+0SBscx0WIuG
-	Dax5UkmQjonr8W+8Tdvw1cmr4SFUW45bJe3KlyN6mI/6acxicvt0Th0GjIO73MjLxYDZX7+9eiTUY
-	gnw22ZejOeMJ1Q3VCYzwrzMkSruBf4aklgnpffcyxJQ36A5oehRORJFimFeWRNy5T6hwDrRt+ktDL
-	QVc65xRMNC8zO8XnkXlr2CRIDGGjORL0kKBPd9SigDXJCtNuPJwbcfRu5lf0ebX8X4GfAdBdb3NAk
-	3fDWM/Z5EZhDjpha+ze1vN5hsB+on4ooM58X4e/NTkVeEKtQsqLMoMH7Q+wFiDkLN8T1hV6c36r8J
-	y15Y30XBw==;
+	 bh=cHD4QkFsWazNvbo6TiinrkadAdSvDZkvo69k4EvgunY=; b=oY6KCesX6bEZm0ILke5wmil1j
+	GIyZHuZo21XvhA6aoRunMZziDrp3ktxA9yBDlzSjOUnwoLXFSvwK2hFB5LPH3frwHS+KYu6th6fj6
+	1dPuH2kjBuT0pRjPx6NDDjmfBUHbikWnGG07UNSRMQmF8VsKSaaxYqyjevZkn9yUHeiqe3srwbbH7
+	IK5qBK+kI50/H+UiBEFiXnOF1ExiimanzTQ4QLzzH6gn9PQ9OJBB2LGzmJ6b1WQQMVh00zEonGxt8
+	a6qhR1XprLsibPCldjNBmb1Y4Rs79LNvz5Ee6FoxNMWoCl0/UILnTf6XEJmQ9nXD0zz8rjWVeDIvP
+	AjbDm/egw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzfsv-0004fO-DY; Wed, 13 Jan 2021 13:08:25 +0000
+	id 1kzfv0-0005H9-67; Wed, 13 Jan 2021 13:10:34 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzfsr-0004eQ-Bz
- for linux-mediatek@lists.infradead.org; Wed, 13 Jan 2021 13:08:24 +0000
+ id 1kzfuu-0005DI-28
+ for linux-mediatek@lists.infradead.org; Wed, 13 Jan 2021 13:10:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610543300;
+ s=mimecast20190719; t=1610543427;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=aefOhJkCPpYd17uP6u3PfhwTWMjjHF8BVz5rPEhzA0E=;
- b=XdexyNxwJdxn3sE9WfqedKHigJh1S6lxZQDtlDXZL++6+ifIt+5m4MusirVj2k/lBYTeno
- LTTow5tbaWghLP4pUIAWK86A+mHbC4phpq2hhAzgVI/Xiry+Bvx0Kc9xm1DWYEY7dMnBY5
- wvpxyzi0xkRbn5DAzHnJsBFXO2GRvLs=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-246-KwVTXBDVN0STbKqKpSliYg-1; Wed, 13 Jan 2021 08:08:16 -0500
-X-MC-Unique: KwVTXBDVN0STbKqKpSliYg-1
-Received: by mail-wr1-f71.google.com with SMTP id o12so927432wrq.13
- for <linux-mediatek@lists.infradead.org>; Wed, 13 Jan 2021 05:08:15 -0800 (PST)
+ bh=pD0Vo7E4SxuDQ1/fxBJLMY+8QzjjbeMuVjguZBQdfn4=;
+ b=TffG/Kk8JUAHDaqX2upoQmQ/4AEqjAzpAYjZ2P55572yyuwVLi23ztjmWA8bTm1S23eOR/
+ +LuQbMbY/JqRmNDDKNWHvIOC8GvTUWgetcaDzwEBKOYcTgwaX7Hdpe6MBdfy2oL/vwSCA5
+ URKXR652qycgCbEI6k4arGGFjfU9kTc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-530-0oSxH4_4MR2X_lNJqMldqg-1; Wed, 13 Jan 2021 08:10:23 -0500
+X-MC-Unique: 0oSxH4_4MR2X_lNJqMldqg-1
+Received: by mail-wm1-f71.google.com with SMTP id x12so169937wmk.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 13 Jan 2021 05:10:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=ibT6pwlsUyapZ6dqNBnG2IIiRlRe0J3FzEu7eLv3IhU=;
- b=cNZpFW0Q63Aqlqf59gVSZeVP/Y0Kw5uXaqypEc7lDXsxRpeJBZX8oEsB4Q3q9UBSII
- r+7LFh6hO2AYzg+JW3QEQhDt1ev6nHyh998Op17psvhe2dYISR73Una1hEWcNqb4XLNT
- WzlDjFfivV5hyL1CS1cGmu1QGctMf6BF5iIMPcizuVnuCP4fy5b0ohQGXWkI9fDpkVMt
- IAfnvQTCTz+FVsQC+yU7JcqmlwC2qltj2qE1ikbu/xvz+i1CQbtTf3orYlyuQGlRDdnl
- UQL6KkRrtZbrabR3AsseA/oPyqmm+A9Snu0Ur5M7gdGutreUm3/xlNCKRID/PCpl/1/C
- BbdQ==
-X-Gm-Message-State: AOAM532UKK6yO+IS4Mw331PKyShfrJ052hV+kuv1uTnKvDxPMGLADUXq
- XTL53RC46qahX00qctc730IS1UQfVCOkj+eiQgJmEmiZbH1E/k7/kjhS6HreWOy3E8lzFXDTlNR
- XXRMuUXfdw1nh7E6A9vUENLHhgbHL6XLg
-X-Received: by 2002:a5d:5917:: with SMTP id v23mr2660459wrd.308.1610543294949; 
- Wed, 13 Jan 2021 05:08:14 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxcoyULwtxdbEK+dbA10k9oF8zoBvFpcFi32V+g8q8u4j/ybk7G0aerZXf4A82n1iOyaWozgQ==
-X-Received: by 2002:a5d:5917:: with SMTP id v23mr2660447wrd.308.1610543294765; 
- Wed, 13 Jan 2021 05:08:14 -0800 (PST)
+ bh=XgKl9nCaXs5mu0WD1FNtbmTmmv7VZTSRgUqyEAJfU9g=;
+ b=Bs+Apq3vabZRL3BC8IfxbWuiZgktWZyoQuJ5tyMtc8PAh6e/Pt5RifVRRXQ20CAadN
+ rVs9XULTGZV+EPmB2eXsSuhRxJg+yaIYGw77bOQC09lHHbsMOt9StR58n/hA0XaxrvfR
+ jr2mh+bDe8JcqnXQ5KcAfloKhO0KK6+WMvhuFtFgLrjiq7wah7eueXEOPk7c3GqTlrdO
+ ZWPiHTDunJLFJPNRgvlqFieyCNF2Kd2SPc1oYzFuxm6hv/chqZ5HEcu04W2ofmmFWYcw
+ O7engXs0pzbDdbFpl/FHR62rdOn14nuE794+cGkSKYQKb7YReJeGsj9J3TBXGjfQBXQv
+ qCgQ==
+X-Gm-Message-State: AOAM5304ExoZnvKquiw2ZJO+s4tvY7aHUxqJOVRjZn0B+0yUKQqDChDA
+ bUY8ooEs2ufFjkeGU25KMyLD1FrdKOWP2ajmSGDAvkiZ0jbQCy68Dg/X2Uaq157ogiftSyZ6QD6
+ e96RuSPdL4j8h97K3jU/gJbnxcqunL8iN
+X-Received: by 2002:a5d:51d2:: with SMTP id n18mr2625446wrv.92.1610543421843; 
+ Wed, 13 Jan 2021 05:10:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx2QRuut/D/nE4xQvkKPe5sq8qbrjcCeoqEDVcubkyJ4eCuuVXqLpd+RJwZnmRsVRWi+JUGww==
+X-Received: by 2002:a5d:51d2:: with SMTP id n18mr2625433wrv.92.1610543421674; 
+ Wed, 13 Jan 2021 05:10:21 -0800 (PST)
 Received: from localhost ([151.66.42.92])
- by smtp.gmail.com with ESMTPSA id u83sm3009401wmu.12.2021.01.13.05.08.13
+ by smtp.gmail.com with ESMTPSA id b132sm3071303wmh.21.2021.01.13.05.10.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Jan 2021 05:08:13 -0800 (PST)
-Date: Wed, 13 Jan 2021 14:08:10 +0100
+ Wed, 13 Jan 2021 05:10:21 -0800 (PST)
+Date: Wed, 13 Jan 2021 14:10:18 +0100
 From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
 To: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH 1/2] mt76: mt7915: simplify peer's TxBF capability check
-Message-ID: <20210113130810.GA5528@lore-desk>
+Subject: Re: [PATCH 2/2] mt76: mt7915: add implicit Tx beamforming support
+Message-ID: <20210113131018.GB5528@lore-desk>
 References: <287bbdb0193bd74069219b97199ba4ec72127bd8.1610539467.git.ryder.lee@mediatek.com>
+ <8663392490d6b0552aaf0b5b7a8eb36ff38c8bba.1610539467.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <287bbdb0193bd74069219b97199ba4ec72127bd8.1610539467.git.ryder.lee@mediatek.com>
+In-Reply-To: <8663392490d6b0552aaf0b5b7a8eb36ff38c8bba.1610539467.git.ryder.lee@mediatek.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lorenzo.bianconi@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_080821_451523_20392193 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20210113_081028_181965_7022F82B 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,173 +103,353 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: linux-mediatek@lists.infradead.org, Shayne Chen <shayne.chen@mediatek.com>,
  linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>
-Content-Type: multipart/mixed; boundary="===============0508221713259691280=="
+Content-Type: multipart/mixed; boundary="===============3455997891311231930=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============0508221713259691280==
+--===============3455997891311231930==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="k1lZvvs/B4yU6o8G"
+	protocol="application/pgp-signature"; boundary="aVD9QWMuhilNxW9f"
 Content-Disposition: inline
 
---k1lZvvs/B4yU6o8G
+--aVD9QWMuhilNxW9f
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> This is a preliminary patch for implicit beamforming support.
+> Add ht/vht implicit Tx beamforming support and enable it via debugfs.
 >=20
-
-Hi Ryber,
-
-just few nitpicks inline.
-
-Regards,
-Lorenzo
-
+> Tested-by: Shayne Chen <shayne.chen@mediatek.com>
 > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
->  .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 50 +++++++------------
->  1 file changed, 17 insertions(+), 33 deletions(-)
+>  .../wireless/mediatek/mt76/mt7915/debugfs.c   |  28 +++++
+>  .../net/wireless/mediatek/mt76/mt7915/init.c  |   8 +-
+>  .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 104 ++++++++++--------
+>  .../wireless/mediatek/mt76/mt7915/mt7915.h    |   1 +
+>  4 files changed, 89 insertions(+), 52 deletions(-)
 >=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7915/mcu.c
-> index 0baef70fc522..f38bc421ea8e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> @@ -66,9 +66,6 @@ struct mt7915_fw_region {
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/driver=
+s/net/wireless/mediatek/mt76/mt7915/debugfs.c
+> index 7d810fbf2862..340d489993bb 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+> @@ -6,6 +6,32 @@
 > =20
->  #define MCU_PATCH_ADDRESS=09=090x200000
+>  /** global debugfs **/
 > =20
-> -#define MT_STA_BFER=09=09=09BIT(0)
-> -#define MT_STA_BFEE=09=09=09BIT(1)
+> +static int
+> +mt7915_implicit_txbf_set(void *data, u64 val)
+> +{
+> +=09struct mt7915_dev *dev =3D data;
+> +
+> +=09if (test_bit(MT76_STATE_RUNNING, &dev->mphy.state))
+> +=09=09return 0;
+
+Maybe return -EBUSY here?
+
+> +
+> +=09dev->ibf =3D !!val;
+> +
+> +=09return mt7915_mcu_set_txbf_type(dev);
+> +}
+> +
+> +static int
+> +mt7915_implicit_txbf_get(void *data, u64 *val)
+> +{
+> +=09struct mt7915_dev *dev =3D data;
+> +
+> +=09*val =3D dev->ibf;
+> +
+> +=09return 0;
+> +}
+> +
+> +DEFINE_DEBUGFS_ATTRIBUTE(fops_implicit_txbf, mt7915_implicit_txbf_get,
+> +=09=09=09 mt7915_implicit_txbf_set, "%lld\n");
+> +
+>  /* test knob of system layer 1/2 error recovery */
+>  static int mt7915_ser_trigger_set(void *data, u64 val)
+>  {
+> @@ -355,6 +381,8 @@ int mt7915_init_debugfs(struct mt7915_dev *dev)
+>  =09=09=09=09    mt7915_queues_acq);
+>  =09debugfs_create_file("tx_stats", 0400, dir, dev, &fops_tx_stats);
+>  =09debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
+> +=09debugfs_create_file("implicit_txbf", 0600, dir, dev,
+> +=09=09=09    &fops_implicit_txbf);
+>  =09debugfs_create_u32("dfs_hw_pattern", 0400, dir, &dev->hw_pattern);
+>  =09/* test knobs */
+>  =09debugfs_create_file("radar_trigger", 0200, dir, dev,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7915/init.c
+> index 255ccd7e3d27..cb501c5dc1cc 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+> @@ -169,18 +169,12 @@ static int mt7915_txbf_init(struct mt7915_dev *dev)
+>  {
+>  =09int ret;
+> =20
+> -=09/*
+> -=09 * TODO: DBDC & check whether iBF phase calibration data has
+> -=09 * been stored in eeprom offset 0x651~0x7b8, then write down
+> -=09 * 0x1111 into 0x651 and 0x651 to trigger iBF.
+> -=09 */
 > -
->  #define FW_FEATURE_SET_ENCRYPT=09=09BIT(0)
->  #define FW_FEATURE_SET_KEY_IDX=09=09GENMASK(2, 1)
->  #define FW_FEATURE_OVERRIDE_ADDR=09BIT(5)
-> @@ -1948,16 +1945,23 @@ mt7915_mcu_sta_bfee_tlv(struct sk_buff *skb, stru=
-ct ieee80211_sta *sta,
->  =09=09bfee->fb_identity_matrix =3D true;
+>  =09/* trigger sounding packets */
+>  =09ret =3D mt7915_mcu_set_txbf_sounding(dev);
+>  =09if (ret)
+>  =09=09return ret;
+> =20
+> -=09/* enable iBF & eBF */
+> +=09/* enable eBF */
+>  =09return mt7915_mcu_set_txbf_type(dev);
 >  }
 > =20
-> -static u8
-> -mt7915_mcu_sta_txbf_type(struct mt7915_phy *phy, struct ieee80211_vif *v=
-if,
-> -=09=09=09 struct ieee80211_sta *sta)
-> +static int
-> +mt7915_mcu_add_txbf(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-> +=09=09    struct ieee80211_sta *sta, bool enable)
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7915/mcu.c
+> index f38bc421ea8e..2ac780bc2696 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> @@ -1736,13 +1736,14 @@ mt7915_mcu_sta_sounding_rate(struct sta_rec_bf *b=
+f)
+>  }
+> =20
+>  static void
+> -mt7915_mcu_sta_bfer_ht(struct ieee80211_sta *sta, struct sta_rec_bf *bf)
+> +mt7915_mcu_sta_bfer_ht(struct ieee80211_sta *sta, struct mt7915_phy *phy=
+,
+> +=09=09       struct sta_rec_bf *bf)
 >  {
-> -=09u8 type =3D 0;
-> +=09struct mt7915_vif *mvif =3D (struct mt7915_vif *)vif->drv_priv;
-> +=09struct mt7915_sta *msta =3D (struct mt7915_sta *)sta->drv_priv;
-> +=09struct mt7915_phy *phy;
-> +=09struct sk_buff *skb;
-> +=09int r, len;
-> +=09bool ebfee =3D 0, ebf =3D 0;
+>  =09struct ieee80211_mcs_info *mcs =3D &sta->ht_cap.mcs;
+>  =09u8 n =3D 0;
 > =20
->  =09if (vif->type !=3D NL80211_IFTYPE_STATION &&
->  =09    vif->type !=3D NL80211_IFTYPE_AP)
->  =09=09return 0;
+>  =09bf->tx_mode =3D MT_PHY_TYPE_HT;
+> -=09bf->bf_cap |=3D MT_IBF;
+> +=09bf->bf_cap =3D MT_IBF;
 > =20
-> +=09phy =3D mvif->band_idx ? mt7915_ext_phy(dev) : &dev->phy;
+>  =09if (mcs->tx_params & IEEE80211_HT_MCS_TX_RX_DIFF &&
+>  =09    (mcs->tx_params & IEEE80211_HT_MCS_TX_DEFINED))
+> @@ -1755,8 +1756,9 @@ mt7915_mcu_sta_bfer_ht(struct ieee80211_sta *sta, s=
+truct sta_rec_bf *bf)
+>  =09else if (mcs->rx_mask[1])
+>  =09=09n =3D 1;
+> =20
+> +=09bf->nr =3D hweight8(phy->chainmask) - 1;
+>  =09bf->nc =3D min_t(u8, bf->nr, n);
+> -=09bf->ibf_ncol =3D bf->nc;
+> +=09bf->ibf_ncol =3D n;
+> =20
+>  =09if (sta->bandwidth <=3D IEEE80211_STA_RX_BW_40 && !bf->nc)
+>  =09=09bf->ibf_timeout =3D 0x48;
+> @@ -1764,34 +1766,46 @@ mt7915_mcu_sta_bfer_ht(struct ieee80211_sta *sta,=
+ struct sta_rec_bf *bf)
+> =20
+>  static void
+>  mt7915_mcu_sta_bfer_vht(struct ieee80211_sta *sta, struct mt7915_phy *ph=
+y,
+> -=09=09=09struct sta_rec_bf *bf)
+> +=09=09=09struct sta_rec_bf *bf, bool explicit)
+>  {
+>  =09struct ieee80211_sta_vht_cap *pc =3D &sta->vht_cap;
+>  =09struct ieee80211_sta_vht_cap *vc =3D &phy->mt76->sband_5g.sband.vht_c=
+ap;
+> -=09u8 bfee_nr, bfer_nr, n, tx_ant =3D hweight8(phy->chainmask) - 1;
+> -=09u16 mcs_map;
+> +=09u16 mcs_map =3D le16_to_cpu(pc->vht_mcs.rx_mcs_map);
+> +=09u8 nss_mcs =3D mt7915_mcu_get_sta_nss(mcs_map);
+> +=09u8 tx_ant =3D hweight8(phy->chainmask) - 1;
+> =20
+>  =09bf->tx_mode =3D MT_PHY_TYPE_VHT;
+> -=09bf->bf_cap |=3D MT_EBF;
+> =20
+> -=09mt7915_mcu_sta_sounding_rate(bf);
+> +=09if (explicit) {
+> +=09=09u8 n, bfee_nr, bfer_nr;
+> =20
+> -=09bfee_nr =3D FIELD_GET(IEEE80211_VHT_CAP_BEAMFORMEE_STS_MASK,
+> -=09=09=09    pc->cap);
+> -=09bfer_nr =3D FIELD_GET(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK,
+> -=09=09=09    vc->cap);
+> -=09mcs_map =3D le16_to_cpu(pc->vht_mcs.rx_mcs_map);
+> +=09=09bf->bf_cap =3D MT_EBF;
+> =20
+> -=09n =3D min_t(u8, bfer_nr, bfee_nr);
+> -=09bf->nr =3D min_t(u8, n, tx_ant);
+> -=09n =3D mt7915_mcu_get_sta_nss(mcs_map);
+> +=09=09mt7915_mcu_sta_sounding_rate(bf);
+> =20
+> -=09bf->nc =3D min_t(u8, n, bf->nr);
+> -=09bf->ibf_ncol =3D bf->nc;
+> +=09=09bfee_nr =3D FIELD_GET(IEEE80211_VHT_CAP_BEAMFORMEE_STS_MASK,
+> +=09=09=09=09    pc->cap);
+> +=09=09bfer_nr =3D FIELD_GET(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK,
+> +=09=09=09=09    vc->cap);
+> +=09=09n =3D min_t(u8, bfer_nr, bfee_nr);
+> +=09=09bf->nr =3D min_t(u8, n, tx_ant);
+> +=09=09bf->nc =3D min_t(u8, nss_mcs, bf->nr);
+> +=09=09bf->ibf_ncol =3D bf->nc;
 > +
->  =09if (sta->he_cap.has_he) {
->  =09=09struct ieee80211_he_cap_elem *pe;
->  =09=09const struct ieee80211_he_cap_elem *ve;
-> @@ -1970,12 +1974,12 @@ mt7915_mcu_sta_txbf_type(struct mt7915_phy *phy, =
+> +=09=09if (sta->bandwidth =3D=3D IEEE80211_STA_RX_BW_160)
+> +=09=09=09bf->nr =3D 1;
+> +=09} else {
+> +=09=09bf->bf_cap =3D MT_IBF;
+> +=09=09bf->nr =3D tx_ant;
+> +=09=09bf->nc =3D min_t(u8, nss_mcs, bf->nr);
+> +=09=09bf->ibf_ncol =3D nss_mcs;
+> +
+> +=09=09if (sta->bandwidth <=3D IEEE80211_STA_RX_BW_40 && !bf->nc)
+> +=09=09=09bf->ibf_timeout =3D 0x48;
+> =20
+> -=09/* force nr from 4 to 2 */
+> -=09if (sta->bandwidth =3D=3D IEEE80211_STA_RX_BW_160)
+> -=09=09bf->nr =3D 1;
+> +=09=09if (sta->bandwidth =3D=3D IEEE80211_STA_RX_BW_160)
+> +=09=09=09bf->ibf_nrow =3D 1;
+> +=09}
+>  }
+> =20
+>  static void
+> @@ -1800,16 +1814,14 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta,=
+ struct ieee80211_vif *vif,
+>  {
+>  =09struct ieee80211_sta_he_cap *pc =3D &sta->he_cap;
+>  =09struct ieee80211_he_cap_elem *pe =3D &pc->he_cap_elem;
+> -=09const struct ieee80211_he_cap_elem *ve;
+> -=09const struct ieee80211_sta_he_cap *vc;
+> -=09u8 bfee_nr, bfer_nr, nss_mcs;
+> -=09u16 mcs_map;
+> -
+> -=09vc =3D mt7915_get_he_phy_cap(phy, vif);
+> -=09ve =3D &vc->he_cap_elem;
+> +=09const struct ieee80211_sta_he_cap *vc =3D mt7915_get_he_phy_cap(phy, =
+vif);
+> +=09const struct ieee80211_he_cap_elem *ve =3D &vc->he_cap_elem;
+> +=09u16 mcs_map =3D le16_to_cpu(pc->he_mcs_nss_supp.rx_mcs_80);
+> +=09u8 nss_mcs =3D mt7915_mcu_get_sta_nss(mcs_map);
+> +=09u8 bfee_nr, bfer_nr;
+> =20
+>  =09bf->tx_mode =3D MT_PHY_TYPE_HE_SU;
+> -=09bf->bf_cap |=3D MT_EBF;
+> +=09bf->bf_cap =3D MT_EBF;
+> =20
+>  =09mt7915_mcu_sta_sounding_rate(bf);
+> =20
+> @@ -1821,10 +1833,6 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, =
 struct ieee80211_vif *vif,
->  =09=09if ((HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]) ||
->  =09=09     HE_PHY(CAP4_MU_BEAMFORMER, pe->phy_cap_info[4])) &&
->  =09=09    HE_PHY(CAP4_SU_BEAMFORMEE, ve->phy_cap_info[4]))
-> -=09=09=09type |=3D MT_STA_BFEE;
-> +=09=09=09ebfee =3D true;
-> =20
->  =09=09if ((HE_PHY(CAP3_SU_BEAMFORMER, ve->phy_cap_info[3]) ||
->  =09=09     HE_PHY(CAP4_MU_BEAMFORMER, ve->phy_cap_info[4])) &&
->  =09=09    HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]))
-> -=09=09=09type |=3D MT_STA_BFER;
-> +=09=09=09ebf =3D true;
->  =09} else if (sta->vht_cap.vht_supported) {
->  =09=09struct ieee80211_sta_vht_cap *pc;
->  =09=09struct ieee80211_sta_vht_cap *vc;
-> @@ -1989,36 +1993,16 @@ mt7915_mcu_sta_txbf_type(struct mt7915_phy *phy, =
-struct ieee80211_vif *vif,
->  =09=09     IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE;
-> =20
->  =09=09if ((pc->cap & cr) && (vc->cap & ce))
-> -=09=09=09type |=3D MT_STA_BFEE;
-> +=09=09=09ebfee =3D true;
-
-what about:
-=09=09ebfee =3D !!((pc->cap & cr) && (vc->cap & ce))
-
-> =20
->  =09=09if ((vc->cap & cr) && (pc->cap & ce))
-> -=09=09=09type |=3D MT_STA_BFER;
-> -=09} else if (sta->ht_cap.ht_supported) {
-> -=09=09/* TODO: iBF */
-> +=09=09=09ebf =3D true;
-
-=09=09ebfee =3D !!((vc->cap & cr) && (pc->cap & ce))
+>  =09=09=09 ve->phy_cap_info[5]);
+>  =09bfee_nr =3D HE_PHY(CAP4_BEAMFORMEE_MAX_STS_UNDER_80MHZ_MASK,
+>  =09=09=09 pe->phy_cap_info[4]);
+> -
+> -=09mcs_map =3D le16_to_cpu(pc->he_mcs_nss_supp.tx_mcs_80);
+> -=09nss_mcs =3D mt7915_mcu_get_sta_nss(mcs_map);
+> -
+>  =09bf->nr =3D min_t(u8, bfer_nr, bfee_nr);
+>  =09bf->nc =3D min_t(u8, nss_mcs, bf->nr);
+>  =09bf->ibf_ncol =3D bf->nc;
+> @@ -1863,7 +1871,7 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, s=
+truct ieee80211_vif *vif,
+>  static void
+>  mt7915_mcu_sta_bfer_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
+>  =09=09=09struct ieee80211_vif *vif, struct mt7915_phy *phy,
+> -=09=09=09bool enable)
+> +=09=09=09bool enable, bool explicit)
+>  {
+>  =09struct sta_rec_bf *bf;
+>  =09struct tlv *tlv;
+> @@ -1885,19 +1893,25 @@ mt7915_mcu_sta_bfer_tlv(struct sk_buff *skb, stru=
+ct ieee80211_sta *sta,
+>  =09=09return;
 >  =09}
 > =20
-> -=09return type;
-> -}
+> -=09bf->bw =3D sta->bandwidth;
+> -=09bf->ibf_dbw =3D sta->bandwidth;
+> -=09bf->ibf_nrow =3D tx_ant;
+> -=09bf->ibf_timeout =3D 0x18;
 > -
-> -static int
-> -mt7915_mcu_add_txbf(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-> -=09=09    struct ieee80211_sta *sta, bool enable)
-> -{
-> -=09struct mt7915_vif *mvif =3D (struct mt7915_vif *)vif->drv_priv;
-> -=09struct mt7915_sta *msta =3D (struct mt7915_sta *)sta->drv_priv;
-> -=09struct mt7915_phy *phy;
-> -=09struct sk_buff *skb;
-> -=09int r, len;
-> -=09u8 type;
-> -
-> -=09phy =3D mvif->band_idx ? mt7915_ext_phy(dev) : &dev->phy;
-> -
-> -=09type =3D mt7915_mcu_sta_txbf_type(phy, vif, sta);
-> -
+> +=09/* he: eBF only, in accordance with spec
+> +=09 * vht: support eBF and iBF
+> +=09 * ht: iBF only, since mac80211 lacks of eBF support
+> +=09 */
+>  =09if (sta->he_cap.has_he)
+>  =09=09mt7915_mcu_sta_bfer_he(sta, vif, phy, bf);
+>  =09else if (sta->vht_cap.vht_supported)
+> -=09=09mt7915_mcu_sta_bfer_vht(sta, phy, bf);
+> +=09=09mt7915_mcu_sta_bfer_vht(sta, phy, bf, explicit);
+>  =09else if (sta->ht_cap.ht_supported)
+> -=09=09mt7915_mcu_sta_bfer_ht(sta, bf);
+> +=09=09mt7915_mcu_sta_bfer_ht(sta, phy, bf);
+> +=09else
+> +=09=09return;
+> +
+> +=09bf->bw =3D sta->bandwidth;
+> +=09bf->ibf_dbw =3D sta->bandwidth;
+> +=09bf->ibf_nrow =3D tx_ant;
+> +=09bf->ibf_timeout =3D 0x18;
+> =20
+> -=09if (bf->bf_cap & MT_EBF && bf->nr !=3D tx_ant)
+> +=09if (explicit && bf->nr !=3D tx_ant)
+>  =09=09bf->mem_20m =3D matrix[tx_ant][bf->nc];
+>  =09else
+>  =09=09bf->mem_20m =3D matrix[bf->nr][bf->nc];
+> @@ -2002,14 +2016,14 @@ mt7915_mcu_add_txbf(struct mt7915_dev *dev, struc=
+t ieee80211_vif *vif,
 >  =09/* must keep each tag independent */
 > =20
 >  =09/* starec bf */
-> -=09if (type & MT_STA_BFER) {
-> +=09if (ebf) {
+> -=09if (ebf) {
+> +=09if (ebf || dev->ibf) {
 >  =09=09len =3D sizeof(struct sta_req_hdr) + sizeof(struct sta_rec_bf);
 > =20
 >  =09=09skb =3D mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
-> @@ -2034,7 +2018,7 @@ mt7915_mcu_add_txbf(struct mt7915_dev *dev, struct =
-ieee80211_vif *vif,
->  =09}
+>  =09=09if (IS_ERR(skb))
+>  =09=09=09return PTR_ERR(skb);
 > =20
->  =09/* starec bfee */
-> -=09if (type & MT_STA_BFEE) {
-> +=09if (ebfee) {
->  =09=09len =3D sizeof(struct sta_req_hdr) + sizeof(struct sta_rec_bfee);
+> -=09=09mt7915_mcu_sta_bfer_tlv(skb, sta, vif, phy, enable);
+> +=09=09mt7915_mcu_sta_bfer_tlv(skb, sta, vif, phy, enable, ebf);
 > =20
->  =09=09skb =3D mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
+>  =09=09r =3D mt76_mcu_skb_send_msg(&dev->mt76, skb,
+>  =09=09=09=09=09  MCU_EXT_CMD_STA_REC_UPDATE, true);
+> @@ -3442,7 +3456,7 @@ int mt7915_mcu_set_txbf_type(struct mt7915_dev *dev=
+)
+>  =09} __packed req =3D {
+>  =09=09.action =3D MT_BF_TYPE_UPDATE,
+>  =09=09.ebf =3D true,
+> -=09=09.ibf =3D false,
+> +=09=09.ibf =3D dev->ibf,
+>  =09};
+> =20
+>  =09return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_TXBF_ACTION, &req,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers=
+/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> index df7ac2cf052f..63ad1f8199f2 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> @@ -191,6 +191,7 @@ struct mt7915_dev {
+>  =09bool dbdc_support;
+>  =09bool flash_mode;
+>  =09bool fw_debug;
+> +=09bool ibf;
+>  };
+> =20
+>  enum {
 > --=20
 > 2.18.0
 >=20
 
---k1lZvvs/B4yU6o8G
+--aVD9QWMuhilNxW9f
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCX/7wuAAKCRA6cBh0uS2t
-rG5UAQDzdZn08mrPnGeKlMsexdSLFqvhSnaygitAkF+1mW5jiQD9HKymQFg0JQK2
-qx8DbwSzKMbQoZ3T3bqT1ZjBJzrL/AU=
-=BaKt
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCX/7xNwAKCRA6cBh0uS2t
+rA/uAQD+SjXzj8iT92THsyBpqkiTAzPIr4A3emVeWZWk2UGz2wD/R3C+j400jXhg
+gNeJGNdbeXych02kczZ1zC3O7NIm5As=
+=23n3
 -----END PGP SIGNATURE-----
 
---k1lZvvs/B4yU6o8G--
+--aVD9QWMuhilNxW9f--
 
 
 
---===============0508221713259691280==
+--===============3455997891311231930==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -279,6 +460,6 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============0508221713259691280==--
+--===============3455997891311231930==--
 
 
