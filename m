@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBCF8C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 03:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 704E9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 03:21:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 794BD2312E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 03:20:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 794BD2312E
+	by mail.kernel.org (Postfix) with ESMTPS id 090842312E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 03:21:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 090842312E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Je2S1wzWu46RFopvyW4rdM4VtpaN7Q8ULuyf7h6N3L8=; b=IK9oETstXDUWKVU1VzMQ8bYxN
-	8O4k+qE1LEpr1OYwQAXD807Z9oZTA+voJvKi1TFkyDYcyUOAk4brrMe3infa7p6plPyc84gnmU08t
-	OEtGcx3SBEzLic4+We7NOGoM5qm9oBeNKmSCEnps1Swkt1vC/KNLTQNrOlAAbNBeSZ630WyxpL2en
-	M2qNtmlXBM3G/MUAaKaeOyBBgQPaTWdsjwDdqfATjXJDYGqTmXA1ghFuZPmZ8xRviGkwtPG8v7+dk
-	gKfAzfpF3nOnL5P2r33PaD1AEmSnWbs83pjQfqibP4SVIsSNcPWSyz1MRnu/KEphyODjErWy26qYu
-	oeGTJ12sA==;
+	 bh=gfJVkfg89Gsb+pK0dhhOKWXhyF84DuRKDoxremDrp/c=; b=t5ipkDAQWzHpUEAeZzy8k9RXU
+	s+p7bFUi8Qn52OA4VUSO9mYL0OwwWBkluj820cCTdVrHVPks/T/4+4SuxmcybzM3EO8+mJwsftzBq
+	tvc31MhnrS4zEiJCmJADMw58AUNSeu6T45nys4hSrrN1JohVeGtbQ/V+v1AATnVWyCEVmiU0hIDY7
+	a3aJtkxUKXHcJeurADzlKY4y3eUD99ahqkFLVTWI5BzEZ2bPg4mmzOpYSeSr3J169hDTBEfMDDz1w
+	Fndn5l+c0uQ4NYX4wAwu4HBfIzsmndM6xKGKGA9gwg7fkHsCVYGhwcmtoSAuHdlC94a2MztREx2LN
+	fDSEwVWqg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzWi8-00066H-4P; Wed, 13 Jan 2021 03:20:40 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1kzWjA-0006MD-3f; Wed, 13 Jan 2021 03:21:44 +0000
+Received: from mail-oo1-f53.google.com ([209.85.161.53])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzWi2-00064b-P9; Wed, 13 Jan 2021 03:20:35 +0000
-Received: by mail-oi1-f179.google.com with SMTP id 9so685338oiq.3;
- Tue, 12 Jan 2021 19:20:34 -0800 (PST)
+ id 1kzWj8-0006L2-72; Wed, 13 Jan 2021 03:21:43 +0000
+Received: by mail-oo1-f53.google.com with SMTP id i18so181560ooh.5;
+ Tue, 12 Jan 2021 19:21:41 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=8dk16yY6ROEx2ZBdQQaewADnm6C4MWl8oKfBEbYvqAc=;
- b=FlDVWUBCvYfwoA+RtJ71Zk6g34jX4Q4dB1W0WO6LUmLrRYqseAdjU74d0eNsjJA5xl
- /iaGpUeF3NTotUG7MWMgVo/TxBu9Z8tmZsbnBptSeW2OYDZTioiT50yYSTkYuh9CRsPw
- AnhnTBYZuT8GNYbzxEUXj9+Fwms/Ryb3Wy2ICvD3AFrZyFohhwOvAHC9XVSYei8jhvNd
- duyL+LUyqcGtGI7WJ70hT6Qe2xbVkH4wyy0SyJaOFJeoLMFCy9ildyPoKBsUivI9ryVe
- 4mDWPQWY2+1q6hCwBHHgMBcy7d1HBrNZeJDdg0fQMrF0yED2vRc4WDrmrXtfLns9IOrd
- 74gA==
-X-Gm-Message-State: AOAM533inzUJZIxYAvG4x0yb8pQn7in/wXh3j5iwCvA4wuO+/78yJdJT
- ouoSyFZGlvCGqNosEh5L8Q==
-X-Google-Smtp-Source: ABdhPJyO/aeAqrUrw1G7s5ZPVCcMwNt0fZfQ160zpREu2UZ+0rRFizUvDDwYAZGu/mPgjfV5aMpFZw==
-X-Received: by 2002:aca:f15:: with SMTP id 21mr112652oip.109.1610508033749;
- Tue, 12 Jan 2021 19:20:33 -0800 (PST)
+ bh=dCuXFamHqL8Ku2Wo/6BW1bsP8VAIVco/Vi8snebYSdw=;
+ b=oolTHdkKbr8+qUkqLqmoPr+BtuFHzYk491vIw7Y62NcpYLZ0m56MBhI56MNO0O3qBy
+ 3GRnNuKhdXHfGwGkRYcVZwUYqj5c7JMtOL1OYXKB0Toy3jmhw/naw/C1XczEJjH2G33v
+ HWlIKbiQgzsO6x9hz5ubD6DiectUySTEeCimCT465Zox47gYMBw7BoJvV3jlVk72oOrd
+ 8+A3dGleAK6YYJUqHwPYBRNbswTMKVPxbBpO8TC8At85CI7V0T0lhc3mRZP71RPwlbKp
+ WCdRL5NxH/CIVam8awd1od2yGosu/UbpVNsBbCsYafEfGWLqd+Hd+i6r03Qt6MFRz5K+
+ Jscw==
+X-Gm-Message-State: AOAM532LnSDXO9eTkHKLLgNhx2u/E8e16pUcBZxqck0fnN1BSHOxv8+w
+ tXHXUe86zsogMwc2uXZv6A==
+X-Google-Smtp-Source: ABdhPJxvPUHq7F5Yf0LRxZpN5QJmeXPpj175mCAikbYkaUkymgUk6owZoKstb8TsmiK/htdrcW6F2g==
+X-Received: by 2002:a4a:3e42:: with SMTP id t63mr1403771oot.32.1610508100443; 
+ Tue, 12 Jan 2021 19:21:40 -0800 (PST)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id v207sm163066oif.58.2021.01.12.19.20.32
+ by smtp.gmail.com with ESMTPSA id z189sm170866oia.28.2021.01.12.19.21.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 19:20:32 -0800 (PST)
-Received: (nullmailer pid 1464648 invoked by uid 1000);
- Wed, 13 Jan 2021 03:20:31 -0000
-Date: Tue, 12 Jan 2021 21:20:31 -0600
+ Tue, 12 Jan 2021 19:21:39 -0800 (PST)
+Received: (nullmailer pid 1466404 invoked by uid 1000);
+ Wed, 13 Jan 2021 03:21:38 -0000
+Date: Tue, 12 Jan 2021 21:21:38 -0600
 From: Rob Herring <robh@kernel.org>
 To: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH v2 2/2] arm64: dts: mt8183: Add krane-sku0 board.
-Message-ID: <20210113032031.GA1460993@robh.at.kernel.org>
-References: <20210107052206.2599844-1-hsinyi@chromium.org>
- <20210107052206.2599844-2-hsinyi@chromium.org>
+Subject: Re: [PATCH 1/3] dt-bindings: power: Add domain regulator supply
+Message-ID: <20210113032138.GA1466354@robh.at.kernel.org>
+References: <20210107104915.2888408-1-hsinyi@chromium.org>
+ <20210107104915.2888408-2-hsinyi@chromium.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210107052206.2599844-2-hsinyi@chromium.org>
+In-Reply-To: <20210107104915.2888408-2-hsinyi@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210112_222035_023517_1A0DD65E 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20210112_222142_287941_91A90E4D 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,48 +84,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
- linux-kernel@vger.kernel.org,
+Cc: devicetree@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 07, 2021 at 01:22:06PM +0800, Hsin-Yi Wang wrote:
-> Similar to krane-sku176 but using a different panel source.
+On Thu, 07 Jan 2021 18:49:14 +0800, Hsin-Yi Wang wrote:
+> Some power domains (eg. mfg) needs to turn on power supply before power
+> on.
 > 
 > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
-> Change:
-> v2: move compatible to board dts
-> ---
->  .../devicetree/bindings/arm/mediatek.yaml     |  1 +
->  arch/arm64/boot/dts/mediatek/Makefile         |  1 +
->  .../dts/mediatek/mt8183-kukui-krane-sku0.dts  | 23 +++++++++++++++++++
->  3 files changed, 25 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
+>  .../bindings/power/mediatek,power-controller.yaml        | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 53f0d4e3ea982..3276f7a2ce672 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -120,6 +120,7 @@ properties:
->            - const: mediatek,mt8183
->        - description: Google Krane (Lenovo IdeaPad Duet, 10e,...)
->          items:
-> +          - const: google,krane-sku0
->            - const: google,krane-sku176
->            - const: google,krane
->            - const: mediatek,mt8183
 
-This says you must have all 4 compatible strings in the order listed. 
-That doesn't match your dts. I assume you want the first 2 under an 
-'enum' so there's 3 strings with the first one being sku0 or sku176?
-
-Rob
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
