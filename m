@@ -7,77 +7,79 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6CAAC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:29:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3B75C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:29:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FC6A2310F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:29:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FC6A2310F
+	by mail.kernel.org (Postfix) with ESMTPS id 89E482310F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:29:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89E482310F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AMbPs3BIO0+DRmlGIvComHVnYlg5iN/REoPgflfOs9Y=; b=hY9nmvvuMXzMz6nLt/i6U+U0BJ
-	6Y30Uxsb8kdy5Ji64x0ZDGNNstGOK9IQrODEJRxvSZtSoiUhfC9kEyuIysXX60YkXi4JfuxIlQOK9
-	wLuBx7dXfpsFyfV0MwDeSBWBHnQSjG3adcWQsbsIxZCNnMLmA2FOkNZZkZ2dS87AxPFNWJZM3VSaa
-	HgtQfRGhyEMWmnrjQPI/sgkWO/vyJKos9mO/J73swSIKKkLFNvj5cXLvslFCF1qK2PBXmjlT725+g
-	4YPQZgvUxOvHm+tHCj/LPbpPxr3X964YGcYGDR/z6af65sImP16uctOG3KySFmaLNnZbpCy3e9WQQ
-	hnpQ5dAg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=PKaI1BnamaHQKJjOPTodCxoeUr7qWRDrzRay9dsspMA=; b=gdePjdq77UJIlX0RBRg2du8CO
+	OWy3xWiY8c8YYr4mAI3+pX/Rq+a9H4AoNs7+B7UfQ4qEyf7M9b4wBkHeRC1R3B2/i1SHB0ETyij2A
+	A6fhW2AnUuisETgCLq7LigqhC6nhaV5hiddZ/EtWkFle9MH2MUUNT8tMUr0tWNFqB3UExcpDBojL4
+	eo6oEsNhvuvOYYAk9714K9U4jPE5jOoQbVqpkxFUDAYnFpz3lFeO5T4YbHkqbbPYH9DYcVb29KlFY
+	Fb49GkQpAiqEWI9fPh37LmXqbqNQtXwBOMsyT2/Rlm82jQe+L1bcqyKFC1jbQ1gQn5b0Pndpi9cTs
+	gqWWdKAIg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzZeB-0006GC-D8; Wed, 13 Jan 2021 06:28:47 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1kzZeK-0006JD-Sl; Wed, 13 Jan 2021 06:28:56 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzZe8-0006Eq-1l
- for linux-mediatek@lists.infradead.org; Wed, 13 Jan 2021 06:28:44 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id l23so529519pjg.1
- for <linux-mediatek@lists.infradead.org>; Tue, 12 Jan 2021 22:28:43 -0800 (PST)
+ id 1kzZeG-0006H8-EY
+ for linux-mediatek@lists.infradead.org; Wed, 13 Jan 2021 06:28:54 +0000
+Received: by mail-pf1-x432.google.com with SMTP id a188so600191pfa.11
+ for <linux-mediatek@lists.infradead.org>; Tue, 12 Jan 2021 22:28:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7V7mkIm5GVfs9j4oSAoW4YEhPzX9sV7NqtlWsRJcP4g=;
- b=YPfRgekDFzXsDeLSpv6VWJ5Hynq+4zVtn9K8qTzmRCqmi+rMZBb1lm0GHIiyq/Fdrk
- JXuZnDFnfmWdv9ckKziBU51kBoJBQeJy1C48XPoKjXb2uCyDN8U9mvfhnYNtWrUe4Nuw
- yJS10PUaND9hwc2xHCZNf3gux5IarDuDrC5Wo=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=5GY//1hDCz7r9elwCmehdlk7M4LaaS49VMP1WfyWSi4=;
+ b=i/ZJVUE2ai4H5lglCfIZWNqtd43+4jXJz0bXKXEwQmSj5Dy0fa7t2D2OctOEbmE5BZ
+ 9Lkl3+55Xp6UZqW3otHA4RmgQfN3czkM7WlQalhpBC7xxqr2eVc15Pxa+mx0NElWQPxM
+ e87u/elxF+Izecb1IMrNvdc7qjN+2K6ce0IgY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7V7mkIm5GVfs9j4oSAoW4YEhPzX9sV7NqtlWsRJcP4g=;
- b=FYO2u6HV3aB+WlPnk1nYrTDpd60nN1CMZxya1tLW1m9edmAuMZWDIqkySmBAzpYGDe
- xt6Y7EFzge4MlleaWZ8pQPQ/5MK4mx/fIZYShaBSrBrhOBitbzHQFLkdQixyHHPCe0ih
- 8RL0zcqcZ9LeZbmpbLu4gQQpNS/dNe8I1N05QoHoxFvecrddz9R22ySFY78oNOi8bvn7
- Zfbu5g/P+n6ZvziVtRbAvAWoKzvLEYRKn6bntToD49UI9NwePProwbQzO8/hw3hgTOeL
- rTAHZDR13yiP+OJ60BWGDwTDEmmYxl/ztrVR+hlKXOuLRs3R8FsdZQzGgXuPAKOpuXpo
- opPw==
-X-Gm-Message-State: AOAM533LimZhl2Tn7B2W7SrBcZyEZZuMaPMPhm1c5DakqfWAsDwmPgC1
- LF//fk1IbtPFadfqT+IH8VAAiA==
-X-Google-Smtp-Source: ABdhPJyMK/Rd+1yNPiUnAIdOyIjhW7oHubC50XzAO75mm/HZoO572CWxNC5Que1TGnJWB8NwQQAZ1A==
-X-Received: by 2002:a17:902:c583:b029:da:b32c:cf9f with SMTP id
- p3-20020a170902c583b02900dab32ccf9fmr649091plx.44.1610519321917; 
- Tue, 12 Jan 2021 22:28:41 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=5GY//1hDCz7r9elwCmehdlk7M4LaaS49VMP1WfyWSi4=;
+ b=sGi6ZWJoR4YzTdG14qjXgfiZsFvZq/d3J66Di9ze7E+RKwr3cqMZx6kVFfrQnf90zz
+ k6qQDbw7T8IXeXtW4m/EDUIYyhtYSDXYLlVt2/jU56EvMkJgp21ldSZ8Y7DL5yAgGKI2
+ Djv8PSij8gtEChWJPO9vx9v8HpA7BizaH82fjYmYit97GUVGdNsSumKPDPwIc9AubCj4
+ EqNsGJICZ65QOZZRPTjC9PFAwzzb/C5waHH8JubXUto8Zf0VFXC2ZNf/IDznj4/fmm+p
+ 6wwwy9WmvKCYkooD4Rg4WPM6zpeYYXDw1F6Zpp5B2mKWYu2R2UiD7rIZgapbkl6bBzOH
+ 1Pcw==
+X-Gm-Message-State: AOAM530Nx3h42hLjYBAbCA+vPWqUiJoHBb6VFt7fS9vDHfphkiFzInAu
+ YjNiPFEPT2TynCSQGndcq4R5ew==
+X-Google-Smtp-Source: ABdhPJzGhEqt1+rgAie+Q6xs3+GhDzSV6X2vnnUPrZS5qqFx2HiZfydvtgygku2RZ9FaVGhvy9ccYg==
+X-Received: by 2002:aa7:979d:0:b029:1a4:3b76:a559 with SMTP id
+ o29-20020aa7979d0000b02901a43b76a559mr707751pfp.49.1610519330100; 
+ Tue, 12 Jan 2021 22:28:50 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:1a60:24ff:fe89:3e93])
- by smtp.gmail.com with ESMTPSA id d36sm1117473pgm.77.2021.01.12.22.28.39
+ by smtp.gmail.com with ESMTPSA id d36sm1117473pgm.77.2021.01.12.22.28.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 22:28:41 -0800 (PST)
+ Tue, 12 Jan 2021 22:28:49 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: linux-arm-kernel@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 1/2] arm64: dts: mt8183: config dsi node
-Date: Wed, 13 Jan 2021 14:28:33 +0800
-Message-Id: <20210113062834.4043956-1-hsinyi@chromium.org>
+Subject: [PATCH v3 2/2] arm64: dts: mt8183: Add krane-sku0 board.
+Date: Wed, 13 Jan 2021 14:28:35 +0800
+Message-Id: <20210113062834.4043956-2-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.30.0.284.gd98b1dd5eaa7-goog
+In-Reply-To: <20210113062834.4043956-1-hsinyi@chromium.org>
+References: <20210113062834.4043956-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_012844_110177_2046C950 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20210113_012852_744884_0709A806 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,87 +100,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Config dsi node for mt8183 kukui. Set panel and ports.
-
-Several kukui boards share the same panel property and only compatible
-is different. So compatible will be set in board dts for comparison
-convenience.
+Similar to krane-sku176 but using a different panel source.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
 ---
- .../mediatek/mt8183-kukui-krane-sku176.dts    |  5 +++
- .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 37 +++++++++++++++++++
- 2 files changed, 42 insertions(+)
+change:
+v3: fix yaml
+---
+ .../devicetree/bindings/arm/mediatek.yaml     |  4 +++-
+ arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+ .../dts/mediatek/mt8183-kukui-krane-sku0.dts  | 23 +++++++++++++++++++
+ 3 files changed, 27 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
-index 47113e275cb52..721d16f9c3b4f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
-@@ -16,3 +16,8 @@ / {
- 	model = "MediaTek krane sku176 board";
- 	compatible = "google,krane-sku176", "google,krane", "mediatek,mt8183";
- };
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 53f0d4e3ea982..93b3bdf6eaeb7 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -120,7 +120,9 @@ properties:
+           - const: mediatek,mt8183
+       - description: Google Krane (Lenovo IdeaPad Duet, 10e,...)
+         items:
+-          - const: google,krane-sku176
++          - enum:
++              - google,krane-sku0
++              - google,krane-sku176
+           - const: google,krane
+           - const: mediatek,mt8183
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 18f7b46c4095b..deba27ab76574 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -13,6 +13,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana-rev7.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
+new file mode 100644
+index 0000000000000..fb5ee91b6fe0e
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
+@@ -0,0 +1,23 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2019 Google LLC
++ *
++ * Device-tree for Krane sku0.
++ *
++ * SKU is a 8-bit value (0x00 == 0):
++ *  - Bits 7..4: Panel ID: 0x0 (AUO)
++ *  - Bits 3..0: SKU ID:   0x0 (default)
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-krane.dtsi"
++
++/ {
++	model = "MediaTek krane sku0 board";
++	compatible = "google,krane-sku0", "google,krane", "mediatek,mt8183";
++};
 +
 +&panel {
-+        status = "okay";
-+        compatible = "boe,tv101wum-nl6";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index bf2ad1294dd30..c5f41b94f154e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -249,6 +249,35 @@ &cpu7 {
- 	proc-supply = <&mt6358_vproc11_reg>;
- };
- 
-+&dsi0 {
 +	status = "okay";
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	panel: panel@0 {
-+		/* compatible will be set in board dts */
-+		reg = <0>;
-+		enable-gpios = <&pio 45 0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&panel_pins_default>;
-+		avdd-supply = <&ppvarn_lcd>;
-+		avee-supply = <&ppvarp_lcd>;
-+		pp1800-supply = <&pp1800_lcd>;
-+		port {
-+			panel_in: endpoint {
-+				remote-endpoint = <&dsi_out>;
-+			};
-+		};
-+	};
-+
-+	ports {
-+		port {
-+			dsi_out: endpoint {
-+				remote-endpoint = <&panel_in>;
-+			};
-+		};
-+	};
++	compatible = "auo,kd101n80-45na";
 +};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pins>;
-@@ -547,6 +576,14 @@ pins_clk {
- 		};
- 	};
- 
-+	panel_pins_default: panel_pins_default {
-+		panel_reset {
-+			pinmux = <PINMUX_GPIO45__FUNC_GPIO45>;
-+			output-low;
-+			bias-pull-up;
-+		};
-+	};
-+
- 	pwm0_pin_default: pwm0_pin_default {
- 		pins1 {
- 			pinmux = <PINMUX_GPIO176__FUNC_GPIO176>;
 -- 
 2.30.0.284.gd98b1dd5eaa7-goog
 
