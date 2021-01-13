@@ -2,78 +2,58 @@ Return-Path: <SRS0=H0vx=GQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40695C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 10B3EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 07:18:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC19F23132
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:53:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC19F23132
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A09522313C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 07:18:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A09522313C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iOvCp8hGhE7Q4Q+oEE5u5v35MMihyNoj/E3l5Z8PTso=; b=W0h0qhdixi80iwhY3Sk/Jn1HM
-	EC8Frg478gciR+7Z0WW8gIGaF+E2/NAY8IWYqzxBIfoN6lW+kNykRZd3/KpuY3xcHShUBxJdfbcLm
-	o/MjZKwMtpTPsWfij3/oB6eUWVR2ML2G+xjA6m/q8z19txUSIvI9LSGinuQFkW6of3Hiy/Xv7CpC7
-	xzCnvjIVejzv3A8S4HiHB/hi178AzjIgEQ34ZvHiElXj/4Jp5/hMwZ/n5dJnsxwJdI4EPRPiMQkFZ
-	AeYwb4qAMwDQuZgyHQUmSD1sjxToC0+imIcsvwjD7+N9Vm+JPivHqfh4kd2vg69OEzQzAStFNW3Rr
-	SSBXWJqqg==;
+	 bh=S0ru8IYyLVuoyhfJvRmxWX7xxgisYYD2xdUbnbHZcIw=; b=OJWpbsbaU78R9QIQmFOZnl/9k
+	KalgSqwLszRsjJZgL56g1NUbupn9iPDnQdcxF3anlZwjq5nl9Tpj2sGeVMkTiHmavlKfLr2Cr3x7d
+	VAfTjCw4KSzh/u+oCBd3RXzzox09yC2dtYllL6l2ounLqRDGHm6tRq+epI0X1JE3TQyeVoj2f1QyF
+	tzsVvhe77fnNIFROHKchQn6X1jK1wwVbEt17x7Yu+aS6ZbOErSzLCzDDVoFppQ027xiYq9a7oNWia
+	8KAMy5UflVaNDtQVYEHB8R2+Z7HMRt+373N44Sf3u4dszu7Ab+xvs7CRnYBsMmz7Km+gM8kzPNb9u
+	hSuSg3vEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kza1u-0001VU-1n; Wed, 13 Jan 2021 06:53:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1kzaPf-0004sm-7T; Wed, 13 Jan 2021 07:17:51 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kza1o-0001U9-Bb; Wed, 13 Jan 2021 06:53:14 +0000
-X-UUID: 3b4a8d3fe26c419abd5912047eec0e2a-20210112
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=XzZvJXXejeb6vuCxcQ/ZYBYhWXSlgg5if1eYN0e4A+w=; 
- b=W1hGBIY9oFs+oXLjHCMyj9x0racvFR3UFoVUPfnJ32ySrSytxdGEJ0eJAuVffdCXVDMfqXspnKRCfwNprzUUcA83Igbkurt1VrdjddFgB8lItVVDRMLEItaaZ6+RBA+tpKxOxnC6hSi1Nh6UYM63quc3na95mn5uZuwpjJcOHJs=;
-X-UUID: 3b4a8d3fe26c419abd5912047eec0e2a-20210112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 651684953; Tue, 12 Jan 2021 22:53:07 -0800
-Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Jan 2021 22:45:07 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
- (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 13 Jan 2021 14:45:02 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Jan 2021 14:45:01 +0800
-Message-ID: <1610520301.31716.27.camel@mhfsdcap03>
-Subject: Re: [PATCH v5 06/27] dt-bindings: mediatek: Add binding for mt8192
- IOMMU
-From: Yong Wu <yong.wu@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Wed, 13 Jan 2021 14:45:01 +0800
-In-Reply-To: <CAAFQd5CCJv=0q=V45Z7mtq7FSq1c5TcH6vyqfp3MWxaA=ZexJQ@mail.gmail.com>
-References: <20201209080102.26626-1-yong.wu@mediatek.com>
- <20201209080102.26626-7-yong.wu@mediatek.com>
- <X+L9XpkoII7tw/tX@chromium.org> <1608809713.26323.262.camel@mhfsdcap03>
- <CAAFQd5CCJv=0q=V45Z7mtq7FSq1c5TcH6vyqfp3MWxaA=ZexJQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1kzaPZ-0004r8-KW; Wed, 13 Jan 2021 07:17:46 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: tomeu) with ESMTPSA id 5C62D1F455D0
+Subject: Re: [PATCH v10 0/4] drm/panfrost: Add support for mt8183 GPU
+To: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>,
+ Steven Price <steven.price@arm.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+References: <20210113060703.3122661-1-drinkcat@chromium.org>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Message-ID: <3fa8f9c5-5956-73fc-e464-4df68a564b64@collabora.com>
+Date: Wed, 13 Jan 2021 08:17:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F266EF73A8C9243F1CE89A1C9FC11853CFFC4FF9CB30643997D3F962D9E21E3A2000:8
-X-MTK: N
+In-Reply-To: <20210113060703.3122661-1-drinkcat@chromium.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_015313_238325_09362A99 
-X-CRM114-Status: GOOD (  39.57  )
+X-CRM114-CacheID: sfid-20210113_021745_788754_D1DB109C 
+X-CRM114-Status: GOOD (  21.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,144 +65,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, linux-devicetree <devicetree@vger.kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, Will Deacon <will@kernel.org>,
- Joerg Roedel <joro@8bytes.org>, Linux
- Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Evan Green <evgreen@chromium.org>, chao.hao@mediatek.com,
- "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: devicetree@vger.kernel.org, fshao@chromium.org,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, boris.brezillon@collabora.com,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, hoegsberg@chromium.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-01-13 at 14:30 +0900, Tomasz Figa wrote:
-> On Thu, Dec 24, 2020 at 8:35 PM Yong Wu <yong.wu@mediatek.com> wrote:
-> >
-> > On Wed, 2020-12-23 at 17:18 +0900, Tomasz Figa wrote:
-> > > On Wed, Dec 09, 2020 at 04:00:41PM +0800, Yong Wu wrote:
-> > > > This patch adds decriptions for mt8192 IOMMU and SMI.
-> > > >
-> > > > mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
-> > > > table format. The M4U-SMI HW diagram is as below:
-> > > >
-> > > >                           EMI
-> > > >                            |
-> > > >                           M4U
-> > > >                            |
-> > > >                       ------------
-> > > >                        SMI Common
-> > > >                       ------------
-> > > >                            |
-> > > >   +-------+------+------+----------------------+-------+
-> > > >   |       |      |      |       ......         |       |
-> > > >   |       |      |      |                      |       |
-> > > > larb0   larb1  larb2  larb4     ......      larb19   larb20
-> > > > disp0   disp1   mdp    vdec                   IPE      IPE
-> > > >
-> > > > All the connections are HW fixed, SW can NOT adjust it.
-> > > >
-> > > > mt8192 M4U support 0~16GB iova range. we preassign different engines
-> > > > into different iova ranges:
-> > > >
-> > > > domain-id  module     iova-range                  larbs
-> > > >    0       disp        0 ~ 4G                      larb0/1
-> > > >    1       vcodec      4G ~ 8G                     larb4/5/7
-> > > >    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
-> > >
-> > > Why do we preassign these addresses in DT? Shouldn't it be a user's or
-> > > integrator's decision to split the 16 GB address range into sub-ranges
-> > > and define which larbs those sub-ranges are shared with?
-> >
-> > The problem is that we can't split the 16GB range with the larb as unit.
-> > The example is the below ccu0(larb13 port9/10) is a independent
-> > range(domain), the others ports in larb13 is in another domain.
-> >
-> > disp/vcodec/cam/mdp don't have special iova requirement, they could
-> > access any range. vcodec also can locate 8G~12G. it don't care about
-> > where its iova locate. here I preassign like this following with our
-> > internal project setting.
+On 1/13/21 7:06 AM, Nicolas Boichat wrote:
+> Hi!
 > 
-> Let me try to understand this a bit more. Given the split you're
-> proposing, is there actually any isolation enforced between particular
-> domains? For example, if I program vcodec to with a DMA address from
-> the 0-4G range, would the IOMMU actually generate a fault, even if
-> disp had some memory mapped at that address?
-
-In this case. we will get fault in current SW setting.
-
+> Follow-up on the v5 [1], things have gotten significantly
+> better in the last 9 months, thanks to the efforts on Bifrost
+> support by the Collabora team (and probably others I'm not
+> aware of).
 > 
-> >
-> > Why set this in DT?, this is only for simplifying the code. Assume we
-> > put it in the platform data. We have up to 32 larbs, each larb has up to
-> > 32 ports, each port may be in different iommu domains. we should have a
-> > big array for this..however we only use a macro to get the domain in the
-> > DT method.
-> >
-> > When replying this mail, I happen to see there is a "dev->dev_range_map"
-> > which has "dma-range" information, I think I could use this value to get
-> > which domain the device belong to. then no need put domid in DT. I will
-> > test this.
+> I've been testing this series on a MT8183/kukui device, with a
+> chromeos-5.10 kernel [2], and got basic Chromium OS UI up with
+> mesa 20.3.2 (lots of artifacts though).
+
+Btw, don't know if you plan to retest with a newer Mesa, but a recent 
+master should have pretty good ES 3.0 compliance on the Duet.
+
+Cheers,
+
+Tomeu
+
+> devfreq is currently not supported, as we'll need:
+>   - Clock core support for switching the GPU core clock (see 2/4).
+>   - Platform-specific handling of the 2-regulator (see 3/4).
 > 
-> My feeling is that the only part that needs to be enforced statically
-> is the reserved IOVA range for CCUs. The other ranges should be
-> determined dynamically, although I think I need to understand better
-> how the hardware and your proposed design work to tell what would be
-> likely the best choice here.
-
-I have removed the domid patch in v6. and get the domain id in [27/33]
-in v6..
-
-About the other ranges should be dynamical, the commit message [30/33]
-of v6 should be helpful. the problem is that we have a bank_sel setting
-for the iova[32:33]. currently we preassign this value. thus, all the
-ranges are fixed. If you adjust this setting, you can let vcodec access
-0~4G.
-
-Currently we have no interface to adjust this setting. Suppose we add a
-new interface for this. It would be something like:
-
-   int mtk_smi_larb_config_banksel(struct device *larb, int banksel)
-  
-   Then, all the MM drivers should call it before the HW works every
-time, and its implement will be a bit complex since we aren't sure if
-the larb has power at that time. the important thing is that the MM
-devices have already not known which larb it connects with as we plan to
-delete "mediatek,larb" in their dtsi nodes.
-
-   In current design, the MM device don't need care about it and 4GB
-range is enough for them.
-
+> Since the latter is easy to detect, patch 3/4 just disables
+> devfreq if the more than one regulator is specified in the
+> compatible matching table.
 > 
-> Best regards,
-> Tomasz
+> [1] https://patchwork.kernel.org/project/linux-mediatek/cover/20200306041345.259332-1-drinkcat@chromium.org/
+> [2] https://crrev.com/c/2608070
 > 
-> >
-> > Thanks.
-> > >
-> > > Best regards,
-> > > Tomasz
-> > >
-> > > >    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
-> > > >    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
-> > > >
-> > > > The iova range for CCU0/1(camera control unit) is HW requirement.
-> > > >
-> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > Reviewed-by: Rob Herring <robh@kernel.org>
-> > > > ---
-> > > >  .../bindings/iommu/mediatek,iommu.yaml        |  18 +-
-> > > >  include/dt-bindings/memory/mt8192-larb-port.h | 240 ++++++++++++++++++
-> > > >  2 files changed, 257 insertions(+), 1 deletion(-)
-> > > >  create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
-> > > >
-> > [snip]
+> Changes in v10:
+>   - Fix the binding to make sure sram-supply property can be provided.
+> 
+> Changes in v9:
+>   - Explain why devfreq needs to be disabled for GPUs with >1
+>     regulators.
+> 
+> Changes in v8:
+>   - Use DRM_DEV_INFO instead of ERROR
+> 
+> Changes in v7:
+>   - Fix GPU ID in commit message
+>   - Fix GPU ID in commit message
+> 
+> Changes in v6:
+>   - Rebased, actually tested with recent mesa driver.
+> 
+> Nicolas Boichat (4):
+>    dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
+>    arm64: dts: mt8183: Add node for the Mali GPU
+>    drm/panfrost: devfreq: Disable devfreq when num_supplies > 1
+>    drm/panfrost: Add mt8183-mali compatible string
+> 
+>   .../bindings/gpu/arm,mali-bifrost.yaml        |  28 +++++
+>   arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   6 +
+>   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   6 +
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 105 ++++++++++++++++++
+>   drivers/gpu/drm/panfrost/panfrost_devfreq.c   |   9 ++
+>   drivers/gpu/drm/panfrost/panfrost_drv.c       |  10 ++
+>   6 files changed, 164 insertions(+)
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
