@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56CFEC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 08:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D93B1C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 08:42:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC48123340
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 08:41:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC48123340
+	by mail.kernel.org (Postfix) with ESMTPS id 36F1923356
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 08:42:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36F1923356
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,42 +22,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4LHa4vlMP8mVksfrrDloIjHuITPyB/P4xxBK4wTMqWI=; b=dSrGqnY0FXxQ2rFo3OkMeMV8U
-	krX9dqYfTx2ea4FnP6fiER+iDKTGZ+HMPurPwdUnlZmlQ2MeOEg+O6cfTwCIVAJHZI1Bu47dhyNMx
-	bU+QDuu+WA4cXWeq0+DL7VyckcuXneOKbWR/b0ocgbsgcNy7+HuqKnYzAqxemgn8soZf+2lwUwBVJ
-	Fwy0Vi6nNv07qwyJNPizUINIZIWW2HHDp1L11DNL+BKDEhjYrFyOl4aJvmgpyvjnZWnYVgaLdjAZn
-	KUqAOTt2DJNxsJoKxsaqL2avGu1LeYLNVMao0MRy6JcWjgyw1eiLU+SPie4RZCpB2FTrXaWafIoEW
-	IxsNhltrw==;
+	 bh=aq3h6uxxXJFvKtq3CjxzX6Caw93u/dBuA2xy2nn/8Xg=; b=ZQqrZy7u01GdlEqEDi1zShqEl
+	Uu9GkoQ4M+oJ3d5ZUWGA/dyYl6n5ZxuyhreNOq6DfsAWSgepwrrAJt9Cob3H/SV+zC6vDQKe/husF
+	zIgliZECRShm+EoHfaTZj9mWZQVW4/CXJFe1wa9vpxinfmct1svtEkZn5q92wUmwcQvc9bSYj7CE1
+	8R2GYS6kJtC6Zx7JI0GAI8Gvis7borh2Kzj7Udi0aNY/l/mHU4r9X+qv7LxiW9OoVSuFz4bvbbWoE
+	W9aua20IA4u5s0NRTdJTXRGO3IfbDkse7qWHoCZ7gk5j7RxynLIAAwmPZyxyM4KGRho3tsjEW6k3p
+	75SkHMfpQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzbiB-0003E0-9l; Wed, 13 Jan 2021 08:41:03 +0000
+	id 1kzbiw-0003MR-0R; Wed, 13 Jan 2021 08:41:50 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzbi7-0003Cw-Jq; Wed, 13 Jan 2021 08:41:00 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A37C920719;
- Wed, 13 Jan 2021 08:40:54 +0000 (UTC)
+ id 1kzbiq-0003L6-OY; Wed, 13 Jan 2021 08:41:45 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D9B6320719;
+ Wed, 13 Jan 2021 08:41:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610527257;
- bh=dTsZF39Nf+fdYEmRGhq+1JcvfbZkxUZaN7AXNb0cDq8=;
+ s=k20201202; t=1610527303;
+ bh=UBeEHhwjMpwzR8qlGgYmu/wtrE8922DVkLRWwf8BFBs=;
  h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=BUMPVgEIMWDBzxMgixEtxCeyXcF8mm07/unBODK4XWYvCjkwC+6sLX7eyVMqubxtu
- YIz+gT+mTIIFvHBCpW64FyoHvm74b5k5UTh8igGAASfXRGQB4GfKFOMG/fSoecZ+zc
- HIObSvnuv4n+juU+2JeiYkiRqeXLPz5K5etgBi1ONq/2G0PHJoDlT28u0U6k0xdTQq
- BJbfupr6BfIhwmXsep5T3XhLuPxQcOUPtm7T3/4k4fYOQPXXACgjaRu+E5ePsMSja+
- ZFr6lAG3W/nR7n5iwuE+dOVGPhMqJrGLKjIHFu86Wb0vo0wOvKdw8yW+HE9NBSOG6z
- /0zhW1/GJtxSQ==
+ b=q0F7p1MGDgVvK6VWJZdT4LYYAyH6r3/82yBp1wXxsedktWDP7ZMQo6UqW68Smu1AV
+ PRDsrtxja1L+Vb/aZq8pm72UUPA6A2F7jOeuP6N9l/2G9BTq4EZ4BpkLEp7g8hY8TQ
+ 3P2m8zS2YXJh5BGOLZGTehICK+22Y0gRlKILZ7VgNk27t+AV01FXcg11HvBweKWoxj
+ uvtG3UVxuIGnSXAnmt6OZvaSlIjjWgShbjxf51A+g+W0lIAuU3D07we7I83lI7avSv
+ unW+OnDkSNUEGcjxClk6L/Y1ZJ4cSG+OVIkNwkblslWiukkFnj9HbbiCc4TML8wzXG
+ ymg/oo/oNnVdw==
 From: Felipe Balbi <balbi@kernel.org>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH RESEND v4 01/11] usb: gadget: bdc: fix improper SPDX
- comment style for header file
-In-Reply-To: <1610505748-30616-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH RESEND v4 02/11] usb: gadget: bdc: remove
+ bdc_ep_set_halt() declaration
+In-Reply-To: <1610505748-30616-2-git-send-email-chunfeng.yun@mediatek.com>
 References: <1610505748-30616-1-git-send-email-chunfeng.yun@mediatek.com>
-Date: Wed, 13 Jan 2021 10:40:48 +0200
-Message-ID: <87pn2944bz.fsf@kernel.org>
+ <1610505748-30616-2-git-send-email-chunfeng.yun@mediatek.com>
+Date: Wed, 13 Jan 2021 10:41:35 +0200
+Message-ID: <87mtxd44ao.fsf@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_034059_766045_C831EDCF 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20210113_034144_896152_16EE54CC 
+X-CRM114-Status: UNSURE (   6.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -77,11 +78,11 @@ Cc: Florian Fainelli <f.fainelli@gmail.com>,
  bcm-kernel-feedback-list@broadcom.com,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============2967802985846484918=="
+Content-Type: multipart/mixed; boundary="===============5544842809578992888=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============2967802985846484918==
+--===============5544842809578992888==
 Content-Type: multipart/signed; boundary="=-=-=";
 	micalg=pgp-sha256; protocol="application/pgp-signature"
 
@@ -91,9 +92,7 @@ Content-Transfer-Encoding: quoted-printable
 
 Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
 
-> For C header files Documentation/process/license-rules.rst
-> mandates C-like comments (opposed to C source files where
-> C++ style should be used).
+> No definition for bdc_ep_set_halt(), so remove it.
 >
 > Cc: Florian Fainelli <f.fainelli@gmail.com>
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
@@ -109,25 +108,25 @@ Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQJFBAEBCAAvFiEElLzh7wn96CXwjh2IzL64meEamQYFAl/+shARHGJhbGJpQGtl
-cm5lbC5vcmcACgkQzL64meEamQavuBAAg30ZpKD5auMw0mLPTT1xg4DL63rJ4KVr
-CW8ln8OQVGoj6mXYlJmALMw0UPGGYMT5RPzL7Cnu8NTl5Ft8UH9rAjmO1kTM1fN/
-RxZXmbuei4n08W0BvkLCIaPk8aBjYHCh853ckseV1yPk1v2ihRga9FVKa67ZbNBd
-OyuYlxjflMdZ1ZAcB1Sda1FQI7sIw2VPxti6NAC/g0jYME6GrQQGyEdo2T7PnKup
-tEl9d2geaIGbgC87du+S9ojB/lqhFoasecZj/p62OF7UMYohyEfwr9H4GSSko6kg
-pWf5DHf8PSFTiH/vWzCiNRIVRSZ3VRbXDp6osacPPEZ2vUAhScI17MZw0r1zFDrS
-xWZn8y1Kzkty5UKOt9S1p/cfsluub+wUIE4pYtik47Swb4iPbpusDKfAMN75QQ/K
-4uiILFoALlZqavJsBpXF0bhct91iG/JvoSiqUpy6TsXHnwTcHy7uTSgh9o6rE5FE
-cQvVARSkGS8GEiDH2mnOutrcCdKKwee2/yk5uYRW/2SsMC5/Wd6mxxzX62Vjx2UM
-l76HxnweYziy1OvT4sDgz3aHd6B0Wk7jyx5gBWVACmwC+QjvP9Woww5wqGlV4iXI
-cARf1BgOXH1v0Hk0bzLjasE9GYpolu8fqlKMQtKYGG7IKM9XUDUk0OUbC0HaGAfV
-rToxNkIfQNA=
-=QIEo
+iQJFBAEBCAAvFiEElLzh7wn96CXwjh2IzL64meEamQYFAl/+sj8RHGJhbGJpQGtl
+cm5lbC5vcmcACgkQzL64meEamQYMchAAjJXRHz+hDcN8OKrC5mKHu4MzFsCCvMC5
+Hm2JbtVgh3iQyGjTQvxJh+AW9vTxeBv1UNhhSmjZHkvhk/L5pmf5ZNbout9qOa8C
+Dh283lheX1/qi8AwwUE12k27KkBeXSKHO6hS/ycsnYWJsMEd55bhN0U3KpKmCPPr
+UL8hRWcPNZL+O9auzcfHJjJxIqf4Hmgx3X8/7K+i+Qu8wkylQQ8bK83yxixHlrRH
+bqhZf51X7qvigqCfhriIoMaobK7+/VTHfDXkeO2dbVsVbz7/vCLudvGB3nnq9Ubu
+4t5f6pt+dnebBIsWpqsvGpZeJcMWPYQ3RTbzLDjfWkRtDKi66eQQWR5nc1P05in3
+CCx2t/t3cpqOx4T65mfQF6M2NMr5mifKCARfITLC+mpyaN+oovVtwIdTZwOj2pqG
+2oOAGqt4bXJwY//WAfsz6JaYOs6SiW7/BaH0x5HRP0AMZRowd9ajMbs9pPCih+o1
+k/xIGWacB5msXnxrJJC5CSOOEWfGhlD9YFkzkRpPmW33BylgLQesitiUNuQf9QxY
+4mq8+yGTXSBBon3kvF5cNjEDeQ7BtWNIWIjQR9f7Iul+GD0PEl0deUmA4QU0oWhy
+o0pOhbT1LtPFEkjCgkbWPk1FUyq0RxKU/gUFFGIo9zPHgFOmPZKQZpUy3kuuwIwy
+VPfL0dfWLsI=
+=+7SS
 -----END PGP SIGNATURE-----
 --=-=-=--
 
 
---===============2967802985846484918==
+--===============5544842809578992888==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -138,5 +137,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============2967802985846484918==--
+--===============5544842809578992888==--
 
