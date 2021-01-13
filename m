@@ -2,84 +2,78 @@ Return-Path: <SRS0=H0vx=GQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3B75C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40695C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:53:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 89E482310F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:29:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89E482310F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id CC19F23132
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jan 2021 06:53:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC19F23132
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PKaI1BnamaHQKJjOPTodCxoeUr7qWRDrzRay9dsspMA=; b=gdePjdq77UJIlX0RBRg2du8CO
-	OWy3xWiY8c8YYr4mAI3+pX/Rq+a9H4AoNs7+B7UfQ4qEyf7M9b4wBkHeRC1R3B2/i1SHB0ETyij2A
-	A6fhW2AnUuisETgCLq7LigqhC6nhaV5hiddZ/EtWkFle9MH2MUUNT8tMUr0tWNFqB3UExcpDBojL4
-	eo6oEsNhvuvOYYAk9714K9U4jPE5jOoQbVqpkxFUDAYnFpz3lFeO5T4YbHkqbbPYH9DYcVb29KlFY
-	Fb49GkQpAiqEWI9fPh37LmXqbqNQtXwBOMsyT2/Rlm82jQe+L1bcqyKFC1jbQ1gQn5b0Pndpi9cTs
-	gqWWdKAIg==;
+	 bh=iOvCp8hGhE7Q4Q+oEE5u5v35MMihyNoj/E3l5Z8PTso=; b=W0h0qhdixi80iwhY3Sk/Jn1HM
+	EC8Frg478gciR+7Z0WW8gIGaF+E2/NAY8IWYqzxBIfoN6lW+kNykRZd3/KpuY3xcHShUBxJdfbcLm
+	o/MjZKwMtpTPsWfij3/oB6eUWVR2ML2G+xjA6m/q8z19txUSIvI9LSGinuQFkW6of3Hiy/Xv7CpC7
+	xzCnvjIVejzv3A8S4HiHB/hi178AzjIgEQ34ZvHiElXj/4Jp5/hMwZ/n5dJnsxwJdI4EPRPiMQkFZ
+	AeYwb4qAMwDQuZgyHQUmSD1sjxToC0+imIcsvwjD7+N9Vm+JPivHqfh4kd2vg69OEzQzAStFNW3Rr
+	SSBXWJqqg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzZeK-0006JD-Sl; Wed, 13 Jan 2021 06:28:56 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1kza1u-0001VU-1n; Wed, 13 Jan 2021 06:53:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzZeG-0006H8-EY
- for linux-mediatek@lists.infradead.org; Wed, 13 Jan 2021 06:28:54 +0000
-Received: by mail-pf1-x432.google.com with SMTP id a188so600191pfa.11
- for <linux-mediatek@lists.infradead.org>; Tue, 12 Jan 2021 22:28:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5GY//1hDCz7r9elwCmehdlk7M4LaaS49VMP1WfyWSi4=;
- b=i/ZJVUE2ai4H5lglCfIZWNqtd43+4jXJz0bXKXEwQmSj5Dy0fa7t2D2OctOEbmE5BZ
- 9Lkl3+55Xp6UZqW3otHA4RmgQfN3czkM7WlQalhpBC7xxqr2eVc15Pxa+mx0NElWQPxM
- e87u/elxF+Izecb1IMrNvdc7qjN+2K6ce0IgY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5GY//1hDCz7r9elwCmehdlk7M4LaaS49VMP1WfyWSi4=;
- b=sGi6ZWJoR4YzTdG14qjXgfiZsFvZq/d3J66Di9ze7E+RKwr3cqMZx6kVFfrQnf90zz
- k6qQDbw7T8IXeXtW4m/EDUIYyhtYSDXYLlVt2/jU56EvMkJgp21ldSZ8Y7DL5yAgGKI2
- Djv8PSij8gtEChWJPO9vx9v8HpA7BizaH82fjYmYit97GUVGdNsSumKPDPwIc9AubCj4
- EqNsGJICZ65QOZZRPTjC9PFAwzzb/C5waHH8JubXUto8Zf0VFXC2ZNf/IDznj4/fmm+p
- 6wwwy9WmvKCYkooD4Rg4WPM6zpeYYXDw1F6Zpp5B2mKWYu2R2UiD7rIZgapbkl6bBzOH
- 1Pcw==
-X-Gm-Message-State: AOAM530Nx3h42hLjYBAbCA+vPWqUiJoHBb6VFt7fS9vDHfphkiFzInAu
- YjNiPFEPT2TynCSQGndcq4R5ew==
-X-Google-Smtp-Source: ABdhPJzGhEqt1+rgAie+Q6xs3+GhDzSV6X2vnnUPrZS5qqFx2HiZfydvtgygku2RZ9FaVGhvy9ccYg==
-X-Received: by 2002:aa7:979d:0:b029:1a4:3b76:a559 with SMTP id
- o29-20020aa7979d0000b02901a43b76a559mr707751pfp.49.1610519330100; 
- Tue, 12 Jan 2021 22:28:50 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:1a60:24ff:fe89:3e93])
- by smtp.gmail.com with ESMTPSA id d36sm1117473pgm.77.2021.01.12.22.28.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 22:28:49 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 2/2] arm64: dts: mt8183: Add krane-sku0 board.
-Date: Wed, 13 Jan 2021 14:28:35 +0800
-Message-Id: <20210113062834.4043956-2-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.30.0.284.gd98b1dd5eaa7-goog
-In-Reply-To: <20210113062834.4043956-1-hsinyi@chromium.org>
-References: <20210113062834.4043956-1-hsinyi@chromium.org>
+ id 1kza1o-0001U9-Bb; Wed, 13 Jan 2021 06:53:14 +0000
+X-UUID: 3b4a8d3fe26c419abd5912047eec0e2a-20210112
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=XzZvJXXejeb6vuCxcQ/ZYBYhWXSlgg5if1eYN0e4A+w=; 
+ b=W1hGBIY9oFs+oXLjHCMyj9x0racvFR3UFoVUPfnJ32ySrSytxdGEJ0eJAuVffdCXVDMfqXspnKRCfwNprzUUcA83Igbkurt1VrdjddFgB8lItVVDRMLEItaaZ6+RBA+tpKxOxnC6hSi1Nh6UYM63quc3na95mn5uZuwpjJcOHJs=;
+X-UUID: 3b4a8d3fe26c419abd5912047eec0e2a-20210112
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 651684953; Tue, 12 Jan 2021 22:53:07 -0800
+Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 12 Jan 2021 22:45:07 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
+ (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 13 Jan 2021 14:45:02 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 13 Jan 2021 14:45:01 +0800
+Message-ID: <1610520301.31716.27.camel@mhfsdcap03>
+Subject: Re: [PATCH v5 06/27] dt-bindings: mediatek: Add binding for mt8192
+ IOMMU
+From: Yong Wu <yong.wu@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Wed, 13 Jan 2021 14:45:01 +0800
+In-Reply-To: <CAAFQd5CCJv=0q=V45Z7mtq7FSq1c5TcH6vyqfp3MWxaA=ZexJQ@mail.gmail.com>
+References: <20201209080102.26626-1-yong.wu@mediatek.com>
+ <20201209080102.26626-7-yong.wu@mediatek.com>
+ <X+L9XpkoII7tw/tX@chromium.org> <1608809713.26323.262.camel@mhfsdcap03>
+ <CAAFQd5CCJv=0q=V45Z7mtq7FSq1c5TcH6vyqfp3MWxaA=ZexJQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: F266EF73A8C9243F1CE89A1C9FC11853CFFC4FF9CB30643997D3F962D9E21E3A2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_012852_744884_0709A806 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20210113_015313_238325_09362A99 
+X-CRM114-Status: GOOD (  39.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,87 +85,144 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: youlin.pei@mediatek.com, linux-devicetree <devicetree@vger.kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, Will Deacon <will@kernel.org>,
+ Joerg Roedel <joro@8bytes.org>, Linux
+ Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Evan Green <evgreen@chromium.org>, chao.hao@mediatek.com,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to krane-sku176 but using a different panel source.
+On Wed, 2021-01-13 at 14:30 +0900, Tomasz Figa wrote:
+> On Thu, Dec 24, 2020 at 8:35 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >
+> > On Wed, 2020-12-23 at 17:18 +0900, Tomasz Figa wrote:
+> > > On Wed, Dec 09, 2020 at 04:00:41PM +0800, Yong Wu wrote:
+> > > > This patch adds decriptions for mt8192 IOMMU and SMI.
+> > > >
+> > > > mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> > > > table format. The M4U-SMI HW diagram is as below:
+> > > >
+> > > >                           EMI
+> > > >                            |
+> > > >                           M4U
+> > > >                            |
+> > > >                       ------------
+> > > >                        SMI Common
+> > > >                       ------------
+> > > >                            |
+> > > >   +-------+------+------+----------------------+-------+
+> > > >   |       |      |      |       ......         |       |
+> > > >   |       |      |      |                      |       |
+> > > > larb0   larb1  larb2  larb4     ......      larb19   larb20
+> > > > disp0   disp1   mdp    vdec                   IPE      IPE
+> > > >
+> > > > All the connections are HW fixed, SW can NOT adjust it.
+> > > >
+> > > > mt8192 M4U support 0~16GB iova range. we preassign different engines
+> > > > into different iova ranges:
+> > > >
+> > > > domain-id  module     iova-range                  larbs
+> > > >    0       disp        0 ~ 4G                      larb0/1
+> > > >    1       vcodec      4G ~ 8G                     larb4/5/7
+> > > >    2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
+> > >
+> > > Why do we preassign these addresses in DT? Shouldn't it be a user's or
+> > > integrator's decision to split the 16 GB address range into sub-ranges
+> > > and define which larbs those sub-ranges are shared with?
+> >
+> > The problem is that we can't split the 16GB range with the larb as unit.
+> > The example is the below ccu0(larb13 port9/10) is a independent
+> > range(domain), the others ports in larb13 is in another domain.
+> >
+> > disp/vcodec/cam/mdp don't have special iova requirement, they could
+> > access any range. vcodec also can locate 8G~12G. it don't care about
+> > where its iova locate. here I preassign like this following with our
+> > internal project setting.
+> 
+> Let me try to understand this a bit more. Given the split you're
+> proposing, is there actually any isolation enforced between particular
+> domains? For example, if I program vcodec to with a DMA address from
+> the 0-4G range, would the IOMMU actually generate a fault, even if
+> disp had some memory mapped at that address?
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
-change:
-v3: fix yaml
----
- .../devicetree/bindings/arm/mediatek.yaml     |  4 +++-
- arch/arm64/boot/dts/mediatek/Makefile         |  1 +
- .../dts/mediatek/mt8183-kukui-krane-sku0.dts  | 23 +++++++++++++++++++
- 3 files changed, 27 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
+In this case. we will get fault in current SW setting.
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 53f0d4e3ea982..93b3bdf6eaeb7 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -120,7 +120,9 @@ properties:
-           - const: mediatek,mt8183
-       - description: Google Krane (Lenovo IdeaPad Duet, 10e,...)
-         items:
--          - const: google,krane-sku176
-+          - enum:
-+              - google,krane-sku0
-+              - google,krane-sku176
-           - const: google,krane
-           - const: mediatek,mt8183
- 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 18f7b46c4095b..deba27ab76574 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -13,6 +13,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana-rev7.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
-new file mode 100644
-index 0000000000000..fb5ee91b6fe0e
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dts
-@@ -0,0 +1,23 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2019 Google LLC
-+ *
-+ * Device-tree for Krane sku0.
-+ *
-+ * SKU is a 8-bit value (0x00 == 0):
-+ *  - Bits 7..4: Panel ID: 0x0 (AUO)
-+ *  - Bits 3..0: SKU ID:   0x0 (default)
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-krane.dtsi"
-+
-+/ {
-+	model = "MediaTek krane sku0 board";
-+	compatible = "google,krane-sku0", "google,krane", "mediatek,mt8183";
-+};
-+
-+&panel {
-+	status = "okay";
-+	compatible = "auo,kd101n80-45na";
-+};
--- 
-2.30.0.284.gd98b1dd5eaa7-goog
+> 
+> >
+> > Why set this in DT?, this is only for simplifying the code. Assume we
+> > put it in the platform data. We have up to 32 larbs, each larb has up to
+> > 32 ports, each port may be in different iommu domains. we should have a
+> > big array for this..however we only use a macro to get the domain in the
+> > DT method.
+> >
+> > When replying this mail, I happen to see there is a "dev->dev_range_map"
+> > which has "dma-range" information, I think I could use this value to get
+> > which domain the device belong to. then no need put domid in DT. I will
+> > test this.
+> 
+> My feeling is that the only part that needs to be enforced statically
+> is the reserved IOVA range for CCUs. The other ranges should be
+> determined dynamically, although I think I need to understand better
+> how the hardware and your proposed design work to tell what would be
+> likely the best choice here.
 
+I have removed the domid patch in v6. and get the domain id in [27/33]
+in v6..
+
+About the other ranges should be dynamical, the commit message [30/33]
+of v6 should be helpful. the problem is that we have a bank_sel setting
+for the iova[32:33]. currently we preassign this value. thus, all the
+ranges are fixed. If you adjust this setting, you can let vcodec access
+0~4G.
+
+Currently we have no interface to adjust this setting. Suppose we add a
+new interface for this. It would be something like:
+
+   int mtk_smi_larb_config_banksel(struct device *larb, int banksel)
+  
+   Then, all the MM drivers should call it before the HW works every
+time, and its implement will be a bit complex since we aren't sure if
+the larb has power at that time. the important thing is that the MM
+devices have already not known which larb it connects with as we plan to
+delete "mediatek,larb" in their dtsi nodes.
+
+   In current design, the MM device don't need care about it and 4GB
+range is enough for them.
+
+> 
+> Best regards,
+> Tomasz
+> 
+> >
+> > Thanks.
+> > >
+> > > Best regards,
+> > > Tomasz
+> > >
+> > > >    3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
+> > > >    4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
+> > > >
+> > > > The iova range for CCU0/1(camera control unit) is HW requirement.
+> > > >
+> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > > Reviewed-by: Rob Herring <robh@kernel.org>
+> > > > ---
+> > > >  .../bindings/iommu/mediatek,iommu.yaml        |  18 +-
+> > > >  include/dt-bindings/memory/mt8192-larb-port.h | 240 ++++++++++++++++++
+> > > >  2 files changed, 257 insertions(+), 1 deletion(-)
+> > > >  create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
+> > > >
+> > [snip]
 
 _______________________________________________
 Linux-mediatek mailing list
