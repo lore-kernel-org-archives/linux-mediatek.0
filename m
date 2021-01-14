@@ -2,66 +2,77 @@ Return-Path: <SRS0=30Xp=GR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0513C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 03:14:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AF2ECC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 04:01:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F884235FA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 03:14:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F884235FA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id 614152389F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 04:01:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 614152389F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ixAiC6b5LgbdCh3sDpaQAVVjIABrNoIjN+UotQkiJN0=; b=CZqUtaL3HBIJo7no0AOScdRBJN
-	jLKcR5AJFbHfNAmu3xqvl2KbbYlhi7BAPxicnp7tUbrc5kVgq8rDKXbDSEko7ZwlrIEnQp+zqeWDl
-	sSd4Rv35sH3S6boIpBzBxxHEB+MfMuxu4TE0dhWOU3N8QEGT0PdR6paNtJ6DVOC7B+tPOPNqo641y
-	5PMbuyD2iRrQA2mth8cTPdEDoPPZajHWuNpInCcbRO74hUTv7jO4fUvl6XhsBLipwkEVKi7HNWkjl
-	1KC8XwujNai1z5PFRHY1OLE/3AdLdpC4Lyt0YJi7xCDSTLwk8FrQg2KOxbmaTuZzVl+KCsT1/3uSR
-	tQzmv8Qg==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=SqGW9URtkbN8UFoZeJ6DSsXdwsnoGCRFE8uRFkiFrT4=; b=CLhrKmd9vvzMa4FoAF0Q6ypDf
+	th/J48Z6YlQ4wdhDyHoTdtoTrjB6yuS3X2Zg2lnGwzcDwJRjdho94qcgwjTuMBisD5Cu1zmzxvAmi
+	d6omdqhJnxk5BbmWt1cvr7QSzMcKGTDNVLpl7r5MeUvETRcwNhfQsTZdx7kMLY24rcHknAYHM+b8C
+	q6M0wfBTJqSIgIgrkknrqVGIApcUYElYgd0q/0Y99hD6q7LB/6LNdFuv4su2rRL3B3G/Djre1X/Tl
+	6jQhhO/5ZRZEp+dtHg5CMVFYctqZ5XaSr2/jakc3n1vCLVh6NtdLkv2VyxEpDZENR2f2RIiwhIQQN
+	YqiqRn5kA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzt56-0002VG-UO; Thu, 14 Jan 2021 03:13:52 +0000
-Received: from labrats.qualcomm.com ([199.106.110.90])
+	id 1kztoa-0008Cp-D7; Thu, 14 Jan 2021 04:00:52 +0000
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzt52-0002UI-Fo; Thu, 14 Jan 2021 03:13:49 +0000
-IronPort-SDR: NEl23QXxqcawhGERBVRzeKSz86jxJwy04mIE3fJF4nF5OXFMrhsWAxZj8xhoZZRrmTx85bQBcL
- KmJ6xHo3oF4kpz5AHkRLtfEF0ZzzgSg9mlua1O01OIfyK6mUumjEs+79q/9E10OrOLJfPAY3Bg
- eh48NWW4ANlp/Xj7JTJhdzZ1+IsvpgRsj9AR4Wj32NqkmCFOw5GFsK1XKawpF4DVtDvzlyy2p1
- d3/P8eXPPQGaFXCELrdnjD8hPvjxKefvt/5w8LtjrlJKw8nCATgUGNKDW8eTy1iO9mTMS/POCH
- Dhw=
-X-IronPort-AV: E=Sophos;i="5.79,346,1602572400"; d="scan'208";a="47661889"
-Received: from unknown (HELO ironmsg05-sd.qualcomm.com) ([10.53.140.145])
- by labrats.qualcomm.com with ESMTP; 13 Jan 2021 19:13:47 -0800
-X-QCInternal: smtphost
-Received: from stor-presley.qualcomm.com ([192.168.140.85])
- by ironmsg05-sd.qualcomm.com with ESMTP; 13 Jan 2021 19:13:46 -0800
-Received: by stor-presley.qualcomm.com (Postfix, from userid 359480)
- id 2A33D216AD; Wed, 13 Jan 2021 19:13:46 -0800 (PST)
-From: Can Guo <cang@codeaurora.org>
-To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
- rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
- saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH v5 2/2] scsi: ufs: Protect PM ops and err_handler from user
- access through sysfs
-Date: Wed, 13 Jan 2021 19:13:28 -0800
-Message-Id: <1610594010-7254-3-git-send-email-cang@codeaurora.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1610594010-7254-1-git-send-email-cang@codeaurora.org>
-References: <1610594010-7254-1-git-send-email-cang@codeaurora.org>
+ id 1kztoW-00087z-3Y
+ for linux-mediatek@lists.infradead.org; Thu, 14 Jan 2021 04:00:49 +0000
+Received: by mail-io1-xd2d.google.com with SMTP id r9so8680027ioo.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 13 Jan 2021 20:00:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=bUNuOV0lkiudcY9ujl7cqtrWI85/vQQ/w9o9Luh5OXQ=;
+ b=OyQLLjSoCSU30wkyILOqVYSYkdZDAE4iZo8dV3fBtK5svrkgBBBgZmaVaqCebhQSH1
+ cyM55Uf4fD3dLEUbr3bJWJQrGkPjfWhGtJYT2OZ7CkIc0n/jbsRxn88nHoCO96rXe6Gc
+ Tk5/LNCtj5fW3Z+iUC98dk8iw02tynmkneYLo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=bUNuOV0lkiudcY9ujl7cqtrWI85/vQQ/w9o9Luh5OXQ=;
+ b=K2F+ywDgxOSTlXI/yUKuwJyW3Mnzs7n4QyqdSCBNdrRr78bN6kxnYOI4KzTljR3DVw
+ Fdr96C/HQ5q56FabPaG73TIaIVFT9hF71f90vZlDex1sIeY7xhV+v6w/KKpHA4Ts0tcI
+ pcQzdgD3nrwXN3FLh4bifWuVmlTeY2k/6FpWEw2t0QsvVdcJijv+ECxjiiBz56kPYZbN
+ BopOw8/R8pp/IdwDqS+wCnUqlWQPRDxWSM6CTuVO4XUxVj2pLRytE8IPPUSrR5XLDGAu
+ 0T/dwF7dRAl0iVrBW5dX6+JWQPJdFQV3jILFcZ7WGTIy3+8XLYA1EgRG+i5SLXp4gE0N
+ yjlg==
+X-Gm-Message-State: AOAM531NcGx4W6aQfl/+Y1VLrXT6x+2AtC3mNNHS1Mf1N9dsMfTPvVDF
+ sCDqZ78mLjAwrGkN4ytBvvzIWOfWZNVmZ/FxIL7wRg==
+X-Google-Smtp-Source: ABdhPJzS29RiRBDqwb/rarGXe1c4kC+vlN7yf5p4zUPTQq2hFVDngTqGgKMqxe28CgKZvSlbJRyEG4WM0CtLOO2tzMc=
+X-Received: by 2002:a05:6638:138e:: with SMTP id
+ w14mr4937766jad.98.1610596844255; 
+ Wed, 13 Jan 2021 20:00:44 -0800 (PST)
+MIME-Version: 1.0
+References: <20210113213012.67643-1-enric.balletbo@collabora.com>
+In-Reply-To: <20210113213012.67643-1-enric.balletbo@collabora.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Thu, 14 Jan 2021 12:00:18 +0800
+Message-ID: <CAJMQK-gvKaiHNWxzq3+NDnoN8kd2u26e6WKZqX=R9dc+aB5xFw@mail.gmail.com>
+Subject: Re: [PATCH] soc: mediatek: pm-domains: Don't print an error if child
+ domain is deferred
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_221348_726890_63D4168C 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20210113_230048_320739_5EE9E051 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,441 +84,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>,
- Nitin Rawat <nitirawa@codeaurora.org>,
- open list <linux-kernel@vger.kernel.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Adrian Hunter <adrian.hunter@intel.com>, Satya Tangirala <satyat@google.com>,
- Avri Altman <avri.altman@wdc.com>,
+Cc: Nicolas Boichat <drinkcat@chromium.org>,
+ lkml <linux-kernel@vger.kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
-MIME-Version: 1.0
+ Collabora Kernel ML <kernel@collabora.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-User layer may access sysfs nodes when system PM ops or error handling
-is running, which can cause various problems. Rename eh_sem to host_sem
-and use it to protect PM ops and error handling from user layer intervene.
-
-Acked-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Can Guo <cang@codeaurora.org>
----
- drivers/scsi/ufs/ufs-sysfs.c | 106 ++++++++++++++++++++++++++++++++++++-------
- drivers/scsi/ufs/ufshcd.c    |  42 ++++++++++-------
- drivers/scsi/ufs/ufshcd.h    |  10 +++-
- 3 files changed, 125 insertions(+), 33 deletions(-)
-
-diff --git a/drivers/scsi/ufs/ufs-sysfs.c b/drivers/scsi/ufs/ufs-sysfs.c
-index 0e14384..76f101b 100644
---- a/drivers/scsi/ufs/ufs-sysfs.c
-+++ b/drivers/scsi/ufs/ufs-sysfs.c
-@@ -154,18 +154,29 @@ static ssize_t auto_hibern8_show(struct device *dev,
- 				 struct device_attribute *attr, char *buf)
- {
- 	u32 ahit;
-+	int ret;
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
- 
- 	if (!ufshcd_is_auto_hibern8_supported(hba))
- 		return -EOPNOTSUPP;
- 
-+	down(&hba->host_sem);
-+	if (!ufshcd_is_user_access_allowed(hba)) {
-+		ret = -EBUSY;
-+		goto out;
-+	}
-+
- 	pm_runtime_get_sync(hba->dev);
- 	ufshcd_hold(hba, false);
- 	ahit = ufshcd_readl(hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
- 	ufshcd_release(hba);
- 	pm_runtime_put_sync(hba->dev);
- 
--	return sysfs_emit(buf, "%d\n", ufshcd_ahit_to_us(ahit));
-+	ret = sysfs_emit(buf, "%d\n", ufshcd_ahit_to_us(ahit));
-+
-+out:
-+	up(&hba->host_sem);
-+	return ret;
- }
- 
- static ssize_t auto_hibern8_store(struct device *dev,
-@@ -174,6 +185,7 @@ static ssize_t auto_hibern8_store(struct device *dev,
- {
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
- 	unsigned int timer;
-+	int ret = 0;
- 
- 	if (!ufshcd_is_auto_hibern8_supported(hba))
- 		return -EOPNOTSUPP;
-@@ -184,9 +196,17 @@ static ssize_t auto_hibern8_store(struct device *dev,
- 	if (timer > UFSHCI_AHIBERN8_MAX)
- 		return -EINVAL;
- 
-+	down(&hba->host_sem);
-+	if (!ufshcd_is_user_access_allowed(hba)) {
-+		ret = -EBUSY;
-+		goto out;
-+	}
-+
- 	ufshcd_auto_hibern8_update(hba, ufshcd_us_to_ahit(timer));
- 
--	return count;
-+out:
-+	up(&hba->host_sem);
-+	return ret ? ret : count;
- }
- 
- static DEVICE_ATTR_RW(rpm_lvl);
-@@ -225,12 +245,21 @@ static ssize_t ufs_sysfs_read_desc_param(struct ufs_hba *hba,
- 	if (param_size > 8)
- 		return -EINVAL;
- 
-+	down(&hba->host_sem);
-+	if (!ufshcd_is_user_access_allowed(hba)) {
-+		ret = -EBUSY;
-+		goto out;
-+	}
-+
- 	pm_runtime_get_sync(hba->dev);
- 	ret = ufshcd_read_desc_param(hba, desc_id, desc_index,
- 				param_offset, desc_buf, param_size);
- 	pm_runtime_put_sync(hba->dev);
--	if (ret)
--		return -EINVAL;
-+	if (ret) {
-+		ret = -EINVAL;
-+		goto out;
-+	}
-+
- 	switch (param_size) {
- 	case 1:
- 		ret = sysfs_emit(sysfs_buf, "0x%02X\n", *desc_buf);
-@@ -249,6 +278,8 @@ static ssize_t ufs_sysfs_read_desc_param(struct ufs_hba *hba,
- 		break;
- 	}
- 
-+out:
-+	up(&hba->host_sem);
- 	return ret;
- }
- 
-@@ -591,9 +622,16 @@ static ssize_t _name##_show(struct device *dev,				\
- 	int desc_len = QUERY_DESC_MAX_SIZE;				\
- 	u8 *desc_buf;							\
- 									\
-+	down(&hba->host_sem);						\
-+	if (!ufshcd_is_user_access_allowed(hba)) {			\
-+		up(&hba->host_sem);					\
-+		return -EBUSY;						\
-+	}								\
- 	desc_buf = kzalloc(QUERY_DESC_MAX_SIZE, GFP_ATOMIC);		\
--	if (!desc_buf)                                                  \
--		return -ENOMEM;                                         \
-+	if (!desc_buf) {						\
-+		up(&hba->host_sem);					\
-+		return -ENOMEM;						\
-+	}								\
- 	pm_runtime_get_sync(hba->dev);					\
- 	ret = ufshcd_query_descriptor_retry(hba,			\
- 		UPIU_QUERY_OPCODE_READ_DESC, QUERY_DESC_IDN_DEVICE,	\
-@@ -609,10 +647,11 @@ static ssize_t _name##_show(struct device *dev,				\
- 				      SD_ASCII_STD);			\
- 	if (ret < 0)							\
- 		goto out;						\
--	ret = sysfs_emit(buf, "%s\n", desc_buf);		\
-+	ret = sysfs_emit(buf, "%s\n", desc_buf);			\
- out:									\
- 	pm_runtime_put_sync(hba->dev);					\
- 	kfree(desc_buf);						\
-+	up(&hba->host_sem);						\
- 	return ret;							\
- }									\
- static DEVICE_ATTR_RO(_name)
-@@ -651,15 +690,26 @@ static ssize_t _name##_show(struct device *dev,				\
- 	u8 index = 0;							\
- 	int ret;							\
- 	struct ufs_hba *hba = dev_get_drvdata(dev);			\
-+									\
-+	down(&hba->host_sem);						\
-+	if (!ufshcd_is_user_access_allowed(hba)) {			\
-+		up(&hba->host_sem);					\
-+		return -EBUSY;						\
-+	}								\
- 	if (ufshcd_is_wb_flags(QUERY_FLAG_IDN##_uname))			\
- 		index = ufshcd_wb_get_query_index(hba);			\
- 	pm_runtime_get_sync(hba->dev);					\
- 	ret = ufshcd_query_flag(hba, UPIU_QUERY_OPCODE_READ_FLAG,	\
- 		QUERY_FLAG_IDN##_uname, index, &flag);			\
- 	pm_runtime_put_sync(hba->dev);					\
--	if (ret)							\
--		return -EINVAL;						\
--	return sysfs_emit(buf, "%s\n", flag ? "true" : "false");	\
-+	if (ret) {							\
-+		ret = -EINVAL;						\
-+		goto out;						\
-+	}								\
-+	ret = sysfs_emit(buf, "%s\n", flag ? "true" : "false");		\
-+out:									\
-+	up(&hba->host_sem);						\
-+	return ret;							\
- }									\
- static DEVICE_ATTR_RO(_name)
- 
-@@ -709,15 +759,26 @@ static ssize_t _name##_show(struct device *dev,				\
- 	u32 value;							\
- 	int ret;							\
- 	u8 index = 0;							\
-+									\
-+	down(&hba->host_sem);						\
-+	if (!ufshcd_is_user_access_allowed(hba)) {			\
-+		up(&hba->host_sem);					\
-+		return -EBUSY;						\
-+	}								\
- 	if (ufshcd_is_wb_attrs(QUERY_ATTR_IDN##_uname))			\
- 		index = ufshcd_wb_get_query_index(hba);			\
- 	pm_runtime_get_sync(hba->dev);					\
- 	ret = ufshcd_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,	\
- 		QUERY_ATTR_IDN##_uname, index, 0, &value);		\
- 	pm_runtime_put_sync(hba->dev);					\
--	if (ret)							\
--		return -EINVAL;						\
--	return sysfs_emit(buf, "0x%08X\n", value);			\
-+	if (ret) {							\
-+		ret = -EINVAL;						\
-+		goto out;						\
-+	}								\
-+	ret = sysfs_emit(buf, "0x%08X\n", value);			\
-+out:									\
-+	up(&hba->host_sem);						\
-+	return ret;							\
- }									\
- static DEVICE_ATTR_RO(_name)
- 
-@@ -850,13 +911,26 @@ static ssize_t dyn_cap_needed_attribute_show(struct device *dev,
- 	u8 lun = ufshcd_scsi_to_upiu_lun(sdev->lun);
- 	int ret;
- 
-+	down(&hba->host_sem);
-+	if (!ufshcd_is_user_access_allowed(hba)) {
-+		ret = -EBUSY;
-+		goto out;
-+	}
-+
- 	pm_runtime_get_sync(hba->dev);
- 	ret = ufshcd_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
- 		QUERY_ATTR_IDN_DYN_CAP_NEEDED, lun, 0, &value);
- 	pm_runtime_put_sync(hba->dev);
--	if (ret)
--		return -EINVAL;
--	return sysfs_emit(buf, "0x%08X\n", value);
-+	if (ret) {
-+		ret = -EINVAL;
-+		goto out;
-+	}
-+
-+	ret = sysfs_emit(buf, "0x%08X\n", value);
-+
-+out:
-+	up(&hba->host_sem);
-+	return ret;
- }
- static DEVICE_ATTR_RO(dyn_cap_needed_attribute);
- 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 969aed9..f122a25 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1551,11 +1551,17 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
- {
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
- 	u32 value;
--	int err;
-+	int err = 0;
- 
- 	if (kstrtou32(buf, 0, &value))
- 		return -EINVAL;
- 
-+	down(&hba->host_sem);
-+	if (!ufshcd_is_user_access_allowed(hba)) {
-+		err = -EBUSY;
-+		goto out;
-+	}
-+
- 	value = !!value;
- 	if (value == hba->clk_scaling.is_allowed)
- 		goto out;
-@@ -1581,7 +1587,8 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
- 	ufshcd_release(hba);
- 	pm_runtime_put_sync(hba->dev);
- out:
--	return count;
-+	up(&hba->host_sem);
-+	return err ? err : count;
- }
- 
- static void ufshcd_clkscaling_init_sysfs(struct ufs_hba *hba)
-@@ -5779,9 +5786,10 @@ static void ufshcd_err_handling_unprepare(struct ufs_hba *hba)
- 
- static inline bool ufshcd_err_handling_should_stop(struct ufs_hba *hba)
- {
--	return (!hba->is_powered || hba->ufshcd_state == UFSHCD_STATE_ERROR ||
-+	return (!hba->is_powered || hba->shutting_down ||
-+		hba->ufshcd_state == UFSHCD_STATE_ERROR ||
- 		(!(hba->saved_err || hba->saved_uic_err || hba->force_reset ||
--			ufshcd_is_link_broken(hba))));
-+		   ufshcd_is_link_broken(hba))));
- }
- 
- #ifdef CONFIG_PM
-@@ -5851,13 +5859,13 @@ static void ufshcd_err_handler(struct work_struct *work)
- 
- 	hba = container_of(work, struct ufs_hba, eh_work);
- 
--	down(&hba->eh_sem);
-+	down(&hba->host_sem);
- 	spin_lock_irqsave(hba->host->host_lock, flags);
- 	if (ufshcd_err_handling_should_stop(hba)) {
- 		if (hba->ufshcd_state != UFSHCD_STATE_ERROR)
- 			hba->ufshcd_state = UFSHCD_STATE_OPERATIONAL;
- 		spin_unlock_irqrestore(hba->host->host_lock, flags);
--		up(&hba->eh_sem);
-+		up(&hba->host_sem);
- 		return;
- 	}
- 	ufshcd_set_eh_in_progress(hba);
-@@ -6026,7 +6034,7 @@ static void ufshcd_err_handler(struct work_struct *work)
- 	spin_unlock_irqrestore(hba->host->host_lock, flags);
- 	ufshcd_scsi_unblock_requests(hba);
- 	ufshcd_err_handling_unprepare(hba);
--	up(&hba->eh_sem);
-+	up(&hba->host_sem);
- }
- 
- /**
-@@ -7928,10 +7936,10 @@ static void ufshcd_async_scan(void *data, async_cookie_t cookie)
- 	struct ufs_hba *hba = (struct ufs_hba *)data;
- 	int ret;
- 
--	down(&hba->eh_sem);
-+	down(&hba->host_sem);
- 	/* Initialize hba, detect and initialize UFS device */
- 	ret = ufshcd_probe_hba(hba, true);
--	up(&hba->eh_sem);
-+	up(&hba->host_sem);
- 	if (ret)
- 		goto out;
- 
-@@ -8960,7 +8968,7 @@ int ufshcd_system_suspend(struct ufs_hba *hba)
- 		return 0;
- 	}
- 
--	down(&hba->eh_sem);
-+	down(&hba->host_sem);
- 
- 	if (!hba->is_powered)
- 		return 0;
-@@ -8993,7 +9001,7 @@ int ufshcd_system_suspend(struct ufs_hba *hba)
- 	if (!ret)
- 		hba->is_sys_suspended = true;
- 	else
--		up(&hba->eh_sem);
-+		up(&hba->host_sem);
- 	return ret;
- }
- EXPORT_SYMBOL(ufshcd_system_suspend);
-@@ -9015,7 +9023,7 @@ int ufshcd_system_resume(struct ufs_hba *hba)
- 
- 	if (unlikely(early_suspend)) {
- 		early_suspend = false;
--		down(&hba->eh_sem);
-+		down(&hba->host_sem);
- 	}
- 
- 	if (!hba->is_powered || pm_runtime_suspended(hba->dev))
-@@ -9032,7 +9040,7 @@ int ufshcd_system_resume(struct ufs_hba *hba)
- 		hba->curr_dev_pwr_mode, hba->uic_link_state);
- 	if (!ret)
- 		hba->is_sys_suspended = false;
--	up(&hba->eh_sem);
-+	up(&hba->host_sem);
- 	return ret;
- }
- EXPORT_SYMBOL(ufshcd_system_resume);
-@@ -9124,7 +9132,10 @@ int ufshcd_shutdown(struct ufs_hba *hba)
- {
- 	int ret = 0;
- 
--	down(&hba->eh_sem);
-+	down(&hba->host_sem);
-+	hba->shutting_down = true;
-+	up(&hba->host_sem);
-+
- 	if (!hba->is_powered)
- 		goto out;
- 
-@@ -9138,7 +9149,6 @@ int ufshcd_shutdown(struct ufs_hba *hba)
- 	if (ret)
- 		dev_err(hba->dev, "%s failed, err %d\n", __func__, ret);
- 	hba->is_powered = false;
--	up(&hba->eh_sem);
- 	/* allow force shutdown even in case of errors */
- 	return 0;
- }
-@@ -9334,7 +9344,7 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 	INIT_WORK(&hba->eh_work, ufshcd_err_handler);
- 	INIT_WORK(&hba->eeh_work, ufshcd_exception_event_handler);
- 
--	sema_init(&hba->eh_sem, 1);
-+	sema_init(&hba->host_sem, 1);
- 
- 	/* Initialize UIC command mutex */
- 	mutex_init(&hba->uic_cmd_mutex);
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 85f9d0f..d9b7549 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -663,6 +663,8 @@ struct ufs_hba_variant_params {
-  * @intr_mask: Interrupt Mask Bits
-  * @ee_ctrl_mask: Exception event control mask
-  * @is_powered: flag to check if HBA is powered
-+ * @shutting_down: flag to check if shutdown has been invoked
-+ * @host_sem: semaphore used to serialize concurrent contexts
-  * @eh_wq: Workqueue that eh_work works on
-  * @eh_work: Worker to handle UFS errors that require s/w attention
-  * @eeh_work: Worker to handle exception events
-@@ -759,7 +761,8 @@ struct ufs_hba {
- 	u32 intr_mask;
- 	u16 ee_ctrl_mask;
- 	bool is_powered;
--	struct semaphore eh_sem;
-+	bool shutting_down;
-+	struct semaphore host_sem;
- 
- 	/* Work Queues */
- 	struct workqueue_struct *eh_wq;
-@@ -883,6 +886,11 @@ static inline bool ufshcd_is_wb_allowed(struct ufs_hba *hba)
- 	return hba->caps & UFSHCD_CAP_WB_EN;
- }
- 
-+static inline bool ufshcd_is_user_access_allowed(struct ufs_hba *hba)
-+{
-+	return !hba->shutting_down;
-+}
-+
- #define ufshcd_writel(hba, val, reg)	\
- 	writel((val), (hba)->mmio_base + (reg))
- #define ufshcd_readl(hba, reg)	\
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
-
+On Thu, Jan 14, 2021 at 5:30 AM Enric Balletbo i Serra
+<enric.balletbo@collabora.com> wrote:
+>
+> Child domains can be deferred by the core because one of its resources
+> is not available yet, in such case, it will print an error, but
+> later it will succeed to probe. Fix that using the dev_err_probe()
+> function so it only prints an error on a real error.
+>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+>
+>  drivers/soc/mediatek/mtk-pm-domains.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index ae255aa7b1a9..8055fb019ba6 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -480,8 +480,8 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
+>
+>                 child_pd = scpsys_add_one_domain(scpsys, child);
+>                 if (IS_ERR(child_pd)) {
+> -                       ret = PTR_ERR(child_pd);
+> -                       dev_err(scpsys->dev, "%pOF: failed to get child domain id\n", child);
+> +                       dev_err_probe(scpsys->dev, PTR_ERR(child_pd),
+> +                                     "%pOF: failed to get child domain id\n", child);
+>                         goto err_put_node;
+>                 }
+>
+> --
+> 2.29.2
+>
 
 _______________________________________________
 Linux-mediatek mailing list
