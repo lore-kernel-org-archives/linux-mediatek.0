@@ -2,19 +2,19 @@ Return-Path: <SRS0=30Xp=GR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60224C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 10:42:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 67826C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 10:45:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 05F6123A3B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 10:42:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 05F6123A3B
+	by mail.kernel.org (Postfix) with ESMTPS id DBF2B23A50
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 10:45:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DBF2B23A50
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,64 +23,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:Date:References:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dMwypEeXbZhfIqpemtUwmrQ4Ipz99j5k7arkSG/12JU=; b=BnG7fs1uQyTOQtNn7JDhIRZ0J
-	ovl3gAedxsFNyKLeB98vfqZv/eDi0era6YXxOIRf2z3omtYc4iK20LoB2DKOtkby3yILaSpUyejrA
-	lGH2E4ek0Ua3dsuv5sewoILCpY4PmW20UayNAELmPo80JuDlxqDHBEntAQ4hNVt3COuUDLP5tUpCN
-	vHYpVp9abRpcS8+DYULZsp9THVwy/kGG1BW1oN5hb0U7b0JwxEDXKUQ3JGWV18wN4GG3nj99h9qsn
-	OYQdCWjamx01Da+kC9nTnBelDu/3wa+cupewT+OSOBjaXGhXIPW1HsxWDegm8qdZKvRnrsIDI+VyH
-	SbWnE55nA==;
+	 bh=69GWDDgXNArQQ1zuqyTKh9e06w2AWAPXGHu6XvJobDA=; b=S+GjgKcgo+jN3kHgkWTlRyERP
+	pcQf0pe5kE+hTa4Lew0793tAbi5wRiSN9MS1OQbM/25nLn2uZK6FBW1EsMJ3nnyOSUZ1ODstDdrqA
+	cHCMj8WMDmFwXTIOtGjhrwhhnJz9/6EibNFrWkSTC+K/HXC/vC46fwRz1xHkktQn6H2DHm9XYFLLt
+	iwak514OK785Oz3oTlogBWs00AprZflodtuhMze0ceJj9GpGisQRe3j7siCfx//1TW9nMjmHi/Hpb
+	/iWnCdc57Iw1CpDwZkzmEUbP4MYiLF7H30KSxLQ+HbepZkHHR6LuG+OXf7oiLuL+ar6s7UsyD/oPB
+	+V3pQeglQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l004t-0001hF-Gd; Thu, 14 Jan 2021 10:42:07 +0000
-Received: from so254-31.mailgun.net ([198.61.254.31])
+	id 1l007c-00023Z-Jo; Thu, 14 Jan 2021 10:44:56 +0000
+Received: from m43-15.mailgun.net ([69.72.43.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l004p-0001eN-Rl
- for linux-mediatek@lists.infradead.org; Thu, 14 Jan 2021 10:42:05 +0000
+ id 1l007W-00021z-4p
+ for linux-mediatek@lists.infradead.org; Thu, 14 Jan 2021 10:44:55 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1610620922; h=Content-Type: MIME-Version: Message-ID:
- In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=Ewr4qiPEPbjem+/JZM1UEucGnjWoLnUoMQkWOHKR93M=;
- b=mvs3q7058oG8Df7jq3kWqbvRIVVCNlAjG+N7uhMid1+Lq85ecthHeDhB1nuGtg7ImO56D5/4
- qhu9otAlzfpIn2niC2Cxl8kziz+pLWOlPv71L3zn/y2LTcMjOVHyd3ZAsWnTnA7X+L5kbEXW
- awXTqo1tENuDf+E7e5V9K/FGHCQ=
-X-Mailgun-Sending-Ip: 198.61.254.31
+ s=smtp; t=1610621092; h=Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Message-ID: In-Reply-To: Date: References: Subject: Cc:
+ To: From: Sender; bh=OjjfXZal6B47GNRAOFXmbhnpHD2u3Oq2qC6Px4eVK1Q=;
+ b=mp2879zdzumyyz1NVPMisd7QVOkJsbc3B219d2Osgl5jAZhpB1yS8t/B9qqSbWuabcm0C1gE
+ YQ3qh7Ek7wt1Iktrhgvjix7h1AINbAXRTCNYoUNWQm/g2/vTebtFG3XB7gSCqucOQrYolOT8
+ OTlmSDkstFdLNhIqzVcORE4hCJ0=
+X-Mailgun-Sending-Ip: 69.72.43.15
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n03.prod.us-west-2.postgun.com with SMTP id
- 60001ff44104d9478d4ac04c (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 14 Jan 2021 10:41:56
+ smtp-out-n07.prod.us-west-2.postgun.com with SMTP id
+ 60002096415a6293c53ff05c (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 14 Jan 2021 10:44:38
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 9E8F1C43462; Thu, 14 Jan 2021 10:41:56 +0000 (UTC)
+ id 39090C43462; Thu, 14 Jan 2021 10:44:38 +0000 (UTC)
 Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
  [88.114.240.156])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 55118C433CA;
- Thu, 14 Jan 2021 10:41:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 55118C433CA
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id E11AFC433CA;
+ Thu, 14 Jan 2021 10:44:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org E11AFC433CA
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  spf=fail smtp.mailfrom=kvalo@codeaurora.org
 From: Kalle Valo <kvalo@codeaurora.org>
-To: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH] mt76: Fix queue ID variable types after mcu queue split
-References: <20201229211548.1348077-1-natechancellor@gmail.com>
- <20201231100918.GA1819773@computer-5.station>
- <87k0sjlwyb.fsf@codeaurora.org>
- <9af48c35-c987-7eb4-e3a1-5e54555f988b@nbd.name>
-Date: Thu, 14 Jan 2021 12:41:51 +0200
-In-Reply-To: <9af48c35-c987-7eb4-e3a1-5e54555f988b@nbd.name> (Felix Fietkau's
- message of "Thu, 14 Jan 2021 10:24:30 +0100")
-Message-ID: <87v9bzhkb4.fsf@codeaurora.org>
+To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Subject: Re: [PATCH] mt76: mt7915: fix misplaced #ifdef
+References: <20210103135811.3749775-1-arnd@kernel.org>
+ <20210106135801.GA27377@meh.true.cz>
+Date: Thu, 14 Jan 2021 12:44:31 +0200
+In-Reply-To: <20210106135801.GA27377@meh.true.cz> ("Petr
+ \=\?utf-8\?Q\?\=C5\=A0t\?\=
+ \=\?utf-8\?Q\?etiar\=22's\?\= message of
+ "Wed, 6 Jan 2021 14:58:01 +0100")
+Message-ID: <87r1mnhk6o.fsf@codeaurora.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_054203_939581_C51546C3 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20210114_054452_575077_2264EB47 
+X-CRM114-Status: GOOD (  15.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,79 +92,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
+Cc: Arnd Bergmann <arnd@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Arnd Bergmann <arnd@arndb.de>, netdev@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yiwei Chung <yiwei.chung@mediatek.com>, linux-mediatek@lists.infradead.org,
  Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Nathan Chancellor <natechancellor@gmail.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Felix Fietkau <nbd@nbd.name> writes:
-
-> On 2021-01-11 09:06, Kalle Valo wrote:
->> Lorenzo Bianconi <lorenzo@kernel.org> writes:
->> 
->>>> Clang warns in both mt7615 and mt7915:
->>>> 
->>>> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:271:9: warning: implicit
->>>> conversion from enumeration type 'enum mt76_mcuq_id' to different
->>>> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->>>>                 txq = MT_MCUQ_FWDL;
->>>>                     ~ ^~~~~~~~~~~~
->>>> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:278:9: warning: implicit
->>>> conversion from enumeration type 'enum mt76_mcuq_id' to different
->>>> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->>>>                 txq = MT_MCUQ_WA;
->>>>                     ~ ^~~~~~~~~~
->>>> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:282:9: warning: implicit
->>>> conversion from enumeration type 'enum mt76_mcuq_id' to different
->>>> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->>>>                 txq = MT_MCUQ_WM;
->>>>                     ~ ^~~~~~~~~~
->>>> 3 warnings generated.
->>>> 
->>>> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:238:9: warning: implicit
->>>> conversion from enumeration type 'enum mt76_mcuq_id' to different
->>>> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->>>>                 qid = MT_MCUQ_WM;
->>>>                     ~ ^~~~~~~~~~
->>>> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:240:9: warning: implicit
->>>> conversion from enumeration type 'enum mt76_mcuq_id' to different
->>>> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->>>>                 qid = MT_MCUQ_FWDL;
->>>>                     ~ ^~~~~~~~~~~~
->>>> 2 warnings generated.
->>>> 
->>>> Use the proper type for the queue ID variables to fix these warnings.
->>>> Additionally, rename the txq variable in mt7915_mcu_send_message to be
->>>> more neutral like mt7615_mcu_send_message.
->>>> 
->>>> Fixes: e637763b606b ("mt76: move mcu queues to mt76_dev q_mcu array")
->>>> Link: https://github.com/ClangBuiltLinux/linux/issues/1229
->>>> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
->>>
->>> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
->> 
->> I see that Felix already applied this, but as this is a regression
->> starting from v5.11-rc1 I think it should be applied to
->> wireless-drivers. Felix, can you drop this from your tree so that I
->> could apply it to wireless-drivers?
->
-> Sure, will do.
-
-Thanks. I now assigned to me in patchwork and will apply to
-wireless-drivers soon.
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+UGV0ciDFoHRldGlhciA8eW5lenpAdHJ1ZS5jej4gd3JpdGVzOgoKPiBBcm5kIEJlcmdtYW5uIDxh
+cm5kQGtlcm5lbC5vcmc+IFsyMDIxLTAxLTAzIDE0OjU3OjU1XToKPgo+IEhpLAo+Cj4ganVzdCBh
+IHNtYWxsIG5pdHBpY2ssCj4KPj4gRnJvbTogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4K
+Pj4gCj4+IFRoZSBsb25lICd8JyBhdCB0aGUgZW5kIG9mIGEgbGluZSBjYXVzZXMgYSBidWlsZCBm
+YWlsdXJlOgo+PiAKPj4gZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MTUv
+aW5pdC5jOjQ3OjI6IGVycm9yOgo+PiBleHBlY3RlZCBleHByZXNzaW9uIGJlZm9yZSAnfScgdG9r
+ZW4KPj4gCj4+IFJlcGxhY2UgdGhlICNpZmRlZiB3aXRoIGFuIGVxdWl2YWxlbnQgSVNfRU5BQkxF
+RCgpIGNoZWNrLgo+PiAKPj4gRml4ZXM6IGFmOTAxZWI0YWI4MCAoIm10NzY6IG10NzkxNTogZ2V0
+IHJpZCBvZiBkYmRjIGRlYnVnZnMga25vYiIpCj4KPiBJIHRoaW5rLCB0aGF0IHRoZSBjb3JyZWN0
+IGZpeGVzIHRhZyBpcyBmb2xsb3dpbmc6Cj4KPiAgRml4ZXM6IDhhYTJjNmY0NzE0ZSAoIm10NzY6
+IG10NzkxNTogc3VwcG9ydCAzMiBzdGF0aW9uIGludGVyZmFjZXMiKQo+Cj4gSSd2ZSB1c2VkIHRo
+ZSBhZjkwMWViNGFiODAgYXMgd2VsbCBmaXJzdCBpbgo+IGh0dHBzOi8vZ2l0aHViLmNvbS9vcGVu
+d3J0L210NzYvcHVsbC80OTAgYnV0IHRoZW4gbG9va2VkIGF0IGl0IG9uY2UgbW9yZSBhbmQKPiBh
+Y3R1YWxseSBmb3VuZCB0aGUgcHJvYmFibHkgY29ycmVjdCA4YWEyYzZmNDcxNGUuCgpPaywgSSds
+bCBjaGFuZ2UgdGhhdCBkdXJpbmcgY29tbWl0LgoKRmVsaXgsIEknbSBwbGFubmluZyB0byBhcHBs
+eSB0aGlzIHRvIHdpcmVsZXNzLWRyaXZlcnMgYW5kIGFzc2lnbmVkIHRoaXMKdG8gbWUgaW4gcGF0
+Y2h3b3JrLgoKLS0gCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC13
+aXJlbGVzcy9saXN0LwoKaHR0cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxv
+cGVycy9kb2N1bWVudGF0aW9uL3N1Ym1pdHRpbmdwYXRjaGVzCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
