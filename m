@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79399C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 19:11:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 554ECC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 19:27:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1A40F23B3E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 19:11:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A40F23B3E
+	by mail.kernel.org (Postfix) with ESMTPS id B19DB23B46
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 19:27:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B19DB23B46
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cnKiZbtC52WRjEIU1oDmxYYTdENJiMZLwvB0/5GUu50=; b=2DezR/kJDhPC6URRAbEaRuA+x
-	LKd41EI4SdZc+tZGDLD6Ooh5fjypKFCIsGhEmlKmJiS63XLsPDPQbaPbXEhM7Rv70nbtpcUCag9dc
-	s3DsJEhZFrqlMYeU8sPuHio7vOa3i9fxnWl3wrSEyW1ehUmgSJSFRQxp1eopmyZ84GFtV9M5m90v7
-	LxuYEmqBKtCfiHdAQjMrILkCTvtOuzm0Qpa2g3f5wXTXswE4/9UeiMTAdn9xU9fk68m7QF1HY+5jD
-	UtCyFaV7Fvxc7qEUjiVbJYd31LgwQN3SC5fLxAAp2p7yc5K4naSo/KWC8rqk20fz6MVpkyAc8A+fc
-	Gz+UwqO7g==;
+	 bh=Oz+tOyiqnCET2g1H83QYWwjulOyDY5uyRDbBXmId9ks=; b=skDJG/+vkx4s5rdpxu+2HmTL9
+	v6uazHgZL1NYasvPPyQ7Gwr0bt8spBisWNfo+Jv22A2bojPQ9V4EeVR0rxdOSVyCiW3ImSxpwKVJa
+	JeN5uengkAc7lJUMKHjOwFTNU9XE47txL0t6FVKSH/rxkN8w7tdM+DsVG4p32kxncFIRAjFC6mWhg
+	ESzVfTSXGufA8EbJ/dYAUhmylMg9/kB9Ym3d+CdJLjGpY1l+RAjFvT8IDZdU4+f0mymB0KVDxe7UF
+	fRyZwuIcfoMj9vX571qNa0FHQtT8DAh/FgIKWG3IocXPqzooiYu3rjQOmAYaDRKGq67p2O13ksdB6
+	jzuQJ38FA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l081s-00083l-75; Thu, 14 Jan 2021 19:11:32 +0000
-Received: from mail-ot1-f44.google.com ([209.85.210.44])
+	id 1l08HR-0001k9-Rb; Thu, 14 Jan 2021 19:27:37 +0000
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l081l-00080R-B9; Thu, 14 Jan 2021 19:11:26 +0000
-Received: by mail-ot1-f44.google.com with SMTP id j12so6207942ota.7;
- Thu, 14 Jan 2021 11:11:24 -0800 (PST)
+ id 1l08HP-0001jW-EX; Thu, 14 Jan 2021 19:27:36 +0000
+Received: by mail-ot1-f52.google.com with SMTP id r9so6232222otk.11;
+ Thu, 14 Jan 2021 11:27:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=WJH+/RP8cD+cn+XHnaVewTvw/PKu6pAE6tZBSia24UE=;
- b=DiUHnTM2t0IuwQQ/uEsTidQAysJsUUeJNTwHwgJWOajwTV0NmVloWMWVMnAjGm1JlZ
- 8/vMiVLTGoFrX1hXWsQOHbeCoAtDCvgE6M4xcIdido1i5xMl74/3sZY6gl5OVx1si0MZ
- jbNjbBMJSGxok9mNJjVWB5wa+XipSYV4YbaPQ7eX10FAeXA7aWO+7fAuwcu4yFNOL6b/
- PtJEw0GoGtmVdCk0gcjdG/vmrbKfSwMkqMcWBXBF/vWyUJG4J/W2QPN51mBfAPXbwYdX
- IT2jZo5AqFAJpWVYRWssL4q4LMCFIJQPfxeUCO65zkQJQgF2r+MmJzqcMYCgFJgsg6Kg
- 5qfg==
-X-Gm-Message-State: AOAM532eme/tdnOHJySEGZc+yKwDzgAj3nny3ejMEF1Io23I06oZ6nYt
- phQtgm081E1sPmoWgQIl1Q==
-X-Google-Smtp-Source: ABdhPJyzqW5jSgIwdHBBZZDHiZ6CkCOObxHInv5OjKe74ArGH+HMT7Poink2jRgipIR7enRQx+r5Fw==
-X-Received: by 2002:a9d:4c8b:: with SMTP id m11mr396885otf.319.1610651484287; 
- Thu, 14 Jan 2021 11:11:24 -0800 (PST)
+ bh=VEeqdZkDifn0VyJEJKrWR4ztWRK6vfNBUVg/0z1SB/E=;
+ b=sceyzlufrk8y99eA6kXdeyYRLM2RN0L/qUoUrcczCleGzJviG8QtlDW3p6ER07JePy
+ fd0akFVHv+VMZxiUKAyijzPFP5WWOfxksIhzVzIkkOwTaRz22zCEGaqvsdhoq8UZToFL
+ cmh+rHURLjLSylatQEhBozC7feaX8c+Y0R17/Z+3gJxVGNqzpcNdhEj0aFfBxNz2N/ia
+ mwuI81c8pk/PXgmJisuyLNCn+R3JiVlGWQ4q1Vs33OuUoDmlzNLtbN5UpyFXi+VFSw7D
+ h8DksS90xHNGjvMP2bylPBye4awltnHAAY7qq5q+ecAz3gxiuJ8QoXbHAGXqHoZrrluO
+ 56vQ==
+X-Gm-Message-State: AOAM533Aqo+AAMk4wZ14th4kPwhueqKRA/OizQX2w+uXAJ9yUOfRdfbx
+ dpKEtIfV9un5AR7wR6V7iw==
+X-Google-Smtp-Source: ABdhPJyYwiGGmezeN+wyEHvNPOPyKigxB7dYEfZtRaxnNgEofQKzxycwX+PBMxfL7z5b0J6I8OHScA==
+X-Received: by 2002:a05:6830:19da:: with SMTP id
+ p26mr5479965otp.80.1610652454370; 
+ Thu, 14 Jan 2021 11:27:34 -0800 (PST)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id v17sm1241102oou.41.2021.01.14.11.11.22
+ by smtp.gmail.com with ESMTPSA id z189sm1222803oia.28.2021.01.14.11.27.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Jan 2021 11:11:23 -0800 (PST)
-Received: (nullmailer pid 3394232 invoked by uid 1000);
- Thu, 14 Jan 2021 19:11:22 -0000
-Date: Thu, 14 Jan 2021 13:11:22 -0600
+ Thu, 14 Jan 2021 11:27:33 -0800 (PST)
+Received: (nullmailer pid 3425359 invoked by uid 1000);
+ Thu, 14 Jan 2021 19:27:32 -0000
+Date: Thu, 14 Jan 2021 13:27:32 -0600
 From: Rob Herring <robh@kernel.org>
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: Re: [PATCH v3, 01/15] dt-bindings: mediatek: add description for
- postmask
-Message-ID: <20210114191122.GA3394181@robh.at.kernel.org>
-References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
- <1610351031-21133-2-git-send-email-yongqiang.niu@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v6 06/33] of/device: Move dma_range_map before
+ of_iommu_configure
+Message-ID: <20210114192732.GA3401278@robh.at.kernel.org>
+References: <20210111111914.22211-1-yong.wu@mediatek.com>
+ <20210111111914.22211-7-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1610351031-21133-2-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <20210111111914.22211-7-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_141125_397328_78C09C3E 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20210114_142735_509907_62421D98 
+X-CRM114-Status: GOOD (  17.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,30 +86,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Hsin-Yi Wang <hsinyi@chromium.org>, CK Hu <ck.hu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, Will Deacon <will@kernel.org>,
+ Joerg Roedel <joro@8bytes.org>, Frank Rowand <frowand.list@gmail.com>,
+ linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 11 Jan 2021 15:43:37 +0800, Yongqiang Niu wrote:
-> add description for postmask
-> postmask is used control round corner for display frame
+On Mon, Jan 11, 2021 at 07:18:47PM +0800, Yong Wu wrote:
+> "dev->dma_range_map" contains the devices' dma_ranges information,
+> This patch moves dma_range_map before of_iommu_configure. The iommu
+> driver may need to know the dma_address requirements of its iommu
+> consumer devices.
 > 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> CC: Rob Herring <robh+dt@kernel.org>
+> CC: Frank Rowand <frowand.list@gmail.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/of/device.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
+> diff --git a/drivers/of/device.c b/drivers/of/device.c
+> index aedfaaafd3e7..1d84636149df 100644
+> --- a/drivers/of/device.c
+> +++ b/drivers/of/device.c
+> @@ -170,9 +170,11 @@ int of_dma_configure_id(struct device *dev, struct device_node *np,
+>  	dev_dbg(dev, "device is%sdma coherent\n",
+>  		coherent ? " " : " not ");
+>  
+> +	dev->dma_range_map = map;
+>  	iommu = of_iommu_configure(dev, np, id);
+>  	if (PTR_ERR(iommu) == -EPROBE_DEFER) {
+>  		kfree(map);
+> +		dev->dma_range_map = NULL;
 
-Acked-by: Rob Herring <robh@kernel.org>
+Not really going to matter, but you should probably clear dma_range_map 
+before what it points to is freed.
+
+With that,
+
+Reviewed-by: Rob Herring <robh@kernel.org>
+
+>  		return -EPROBE_DEFER;
+>  	}
+>  
+> @@ -181,7 +183,6 @@ int of_dma_configure_id(struct device *dev, struct device_node *np,
+>  
+>  	arch_setup_dma_ops(dev, dma_start, size, iommu, coherent);
+>  
+> -	dev->dma_range_map = map;
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(of_dma_configure_id);
+> -- 
+> 2.18.0
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
