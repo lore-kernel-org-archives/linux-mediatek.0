@@ -2,62 +2,81 @@ Return-Path: <SRS0=30Xp=GR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8FC0C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 15:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AAFEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 16:49:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 851B923A5F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 15:10:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 851B923A5F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0080323B4B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 16:49:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0080323B4B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Date:Message-Id:To:References:In-Reply-To:From:
+	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=q6KFelOr6cil5Q9wfB/OpEomrfWZNrL0wYHSGHOX2zo=; b=GY9/TvfciHSkEELXZKcOCch+4
-	9MfmhnI5gNOcKVlK29yNWy8bM9WHYZp+puPDsO7byce9eVvtTBmhUZJIMg45sxqxGwCGY0+Yy/WAc
-	O9lrQsxfI0yNMPzmid9kklaXdSmkkswsfzEUMoIGZuCaMDdciaUHyfehORpSdkdEupk6KbOOQKYVD
-	mXXGL1/wOmm1txf1RIVvT2RjqH/ZHyiVJOSm++uK74FawtZXrWLxoP1Zdu/jhcL4yHSbu759rh9jy
-	RIGNsHe7kgJMH/MChejQ24qLhKQBgGUg4vHtJqIwvEsRDV69efFYltbKs4G+pW3yMmiC99MBWqXMJ
-	7w99H9o1g==;
+	 bh=WM20ZdhoQwFroThDMWVdGCvBaQipnvNpO0c10wfROVo=; b=nnkzbQ+u08l3HC5WUjXC0tVGa
+	/Y9Mdybx0qk6csrgH5MhOc1Wh4d3HCs+v4T9yW88BDi38tV3TQXoDApxGIB269QaQkK/3EJbH65W7
+	puhI3N8t8IeVKAUfVzPgKfxZAEbmVJu2Mn5SwMZiaYtvVDK2i7/frqOCsf1Y3L9YOFyTRHBjceacP
+	zfEdTyLZXxZAotcB6H1TYIFWPZKg8FJvPNV0AcsV+NdZvGCiUMEo2Hh8P7gs3Y67svQL9ACMzh8dv
+	XW/dYqHdhM/CFXXRlJqFcCvTVxDq6VgRVSsVe1wuiMbWPE6v1ZOo/UC1owOvDP0/CFw+RvX7URrdi
+	vi4gp4PYw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l04Gl-0000f0-V3; Thu, 14 Jan 2021 15:10:40 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l04Gi-0000dp-7t; Thu, 14 Jan 2021 15:10:37 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6C5641042;
- Thu, 14 Jan 2021 07:10:33 -0800 (PST)
-Received: from [192.168.1.179] (unknown [172.31.20.19])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5CF6A3F70D;
- Thu, 14 Jan 2021 07:10:31 -0800 (PST)
-Subject: Re: [PATCH v10 4/4] drm/panfrost: Add mt8183-mali compatible string
-To: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-References: <20210113060703.3122661-1-drinkcat@chromium.org>
- <20210113140546.v10.4.I5f6b04431828ec9c3e41e65f3337cec6a127480d@changeid>
-From: Steven Price <steven.price@arm.com>
-Message-ID: <6e2a6e89-1b5b-eb75-df91-d0f243ab7ec5@arm.com>
-Date: Thu, 14 Jan 2021 15:10:30 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+	id 1l05oI-00041o-8K; Thu, 14 Jan 2021 16:49:22 +0000
+Received: from so254-31.mailgun.net ([198.61.254.31])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l05oD-00040a-Va
+ for linux-mediatek@lists.infradead.org; Thu, 14 Jan 2021 16:49:21 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1610642959; h=Date: Message-Id: Cc: To: References:
+ In-Reply-To: From: Subject: Content-Transfer-Encoding: MIME-Version:
+ Content-Type: Sender; bh=pTOhOFjKTSVZKN1D0SJ1Pg5lWOEdKXufF+sYmOfnZOw=;
+ b=Jb5iHUspK94KGXmj8Tpr3+sVMq2t7poLZYma6JfYe/KUtl0RBtl08At96KrpNN+O49kruVN3
+ O0FZjlg1hU2kRobIGr7ETfIrUyqRUT+s5nSlBebzyaFPZWqfv/BY2hNtjNZ3OAMHDnQbrGcn
+ WOWs9AD0yx76lv2cW2bIRID2WOU=
+X-Mailgun-Sending-Ip: 198.61.254.31
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n08.prod.us-west-2.postgun.com with SMTP id
+ 600075ea2a47972bccbeacdb (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 14 Jan 2021 16:48:42
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id BB69AC43463; Thu, 14 Jan 2021 16:48:42 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id D370BC433C6;
+ Thu, 14 Jan 2021 16:48:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org D370BC433C6
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
 MIME-Version: 1.0
-In-Reply-To: <20210113140546.v10.4.I5f6b04431828ec9c3e41e65f3337cec6a127480d@changeid>
-Content-Language: en-GB
+Subject: Re: [PATCH] mt76: Fix queue ID variable types after mcu queue split
+From: Kalle Valo <kvalo@codeaurora.org>
+In-Reply-To: <20201229211548.1348077-1-natechancellor@gmail.com>
+References: <20201229211548.1348077-1-natechancellor@gmail.com>
+To: Nathan Chancellor <natechancellor@gmail.com>
+User-Agent: pwcli/0.1.0-git (https://github.com/kvalo/pwcli/) Python/3.5.2
+Message-Id: <20210114164842.BB69AC43463@smtp.codeaurora.org>
+Date: Thu, 14 Jan 2021 16:48:42 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_101036_359233_D3F698AF 
-X-CRM114-Status: GOOD (  21.12  )
+X-CRM114-CacheID: sfid-20210114_114920_081018_81733ED2 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,80 +88,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, fshao@chromium.org,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, boris.brezillon@collabora.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
- hoegsberg@chromium.org, linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Nathan Chancellor <natechancellor@gmail.com>, Felix Fietkau <nbd@nbd.name>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/01/2021 06:07, Nicolas Boichat wrote:
-> Add support for MT8183's G72 Bifrost.
-> 
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> Reviewed-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Nathan Chancellor <natechancellor@gmail.com> wrote:
 
-LGTM
+> Clang warns in both mt7615 and mt7915:
+> 
+> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:271:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 txq = MT_MCUQ_FWDL;
+>                     ~ ^~~~~~~~~~~~
+> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:278:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 txq = MT_MCUQ_WA;
+>                     ~ ^~~~~~~~~~
+> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:282:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 txq = MT_MCUQ_WM;
+>                     ~ ^~~~~~~~~~
+> 3 warnings generated.
+> 
+> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:238:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 qid = MT_MCUQ_WM;
+>                     ~ ^~~~~~~~~~
+> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:240:9: warning: implicit
+> conversion from enumeration type 'enum mt76_mcuq_id' to different
+> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
+>                 qid = MT_MCUQ_FWDL;
+>                     ~ ^~~~~~~~~~~~
+> 2 warnings generated.
+> 
+> Use the proper type for the queue ID variables to fix these warnings.
+> Additionally, rename the txq variable in mt7915_mcu_send_message to be
+> more neutral like mt7615_mcu_send_message.
+> 
+> Fixes: e637763b606b ("mt76: move mcu queues to mt76_dev q_mcu array")
+> Link: https://github.com/ClangBuiltLinux/linux/issues/1229
+> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Reviewed-by: Steven Price <steven.price@arm.com>
+Patch applied to wireless-drivers.git, thanks.
 
-> ---
-> 
-> (no changes since v7)
-> 
-> Changes in v7:
->   - Fix GPU ID in commit message
-> 
-> Changes in v6:
->   - Context conflicts, reflow the code.
->   - Use ARRAY_SIZE for power domains too.
-> 
-> Changes in v5:
->   - Change power domain name from 2d to core2.
-> 
-> Changes in v4:
->   - Add power domain names.
-> 
-> Changes in v3:
->   - Match mt8183-mali instead of bifrost, as we require special
->     handling for the 2 regulators and 3 power domains.
-> 
->   drivers/gpu/drm/panfrost/panfrost_drv.c | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index 83a461bdeea8..ca07098a6141 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -665,6 +665,15 @@ static const struct panfrost_compatible amlogic_data = {
->   	.vendor_quirk = panfrost_gpu_amlogic_quirk,
->   };
->   
-> +const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
-> +const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
-> +static const struct panfrost_compatible mediatek_mt8183_data = {
-> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies),
-> +	.supply_names = mediatek_mt8183_supplies,
-> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
-> +	.pm_domain_names = mediatek_mt8183_pm_domains,
-> +};
-> +
->   static const struct of_device_id dt_match[] = {
->   	/* Set first to probe before the generic compatibles */
->   	{ .compatible = "amlogic,meson-gxm-mali",
-> @@ -681,6 +690,7 @@ static const struct of_device_id dt_match[] = {
->   	{ .compatible = "arm,mali-t860", .data = &default_data, },
->   	{ .compatible = "arm,mali-t880", .data = &default_data, },
->   	{ .compatible = "arm,mali-bifrost", .data = &default_data, },
-> +	{ .compatible = "mediatek,mt8183-mali", .data = &mediatek_mt8183_data },
->   	{}
->   };
->   MODULE_DEVICE_TABLE(of, dt_match);
-> 
+b7c568752ef3 mt76: Fix queue ID variable types after mcu queue split
+
+-- 
+https://patchwork.kernel.org/project/linux-wireless/patch/20201229211548.1348077-1-natechancellor@gmail.com/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 
 _______________________________________________
