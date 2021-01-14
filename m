@@ -2,76 +2,74 @@ Return-Path: <SRS0=30Xp=GR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_NONE,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 228F2C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 20:15:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA297C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 22:30:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE45A23976
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 20:15:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE45A23976
+	by mail.kernel.org (Postfix) with ESMTPS id 6C15D23A79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 22:30:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C15D23A79
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UZW3kGmofZAJffJiQdJCMMn6zGM3+oRlsOIIyKkiu4M=; b=nCMW3P1c16o0hdrdkO/5gSVD2
-	Wq8BetCQmg8zfvBhdrFluraeFm88mtLInQOvco0QKYPpznBx9BUlWMPL26enJGmCzIWOX+trmYk2d
-	25xqK8ZH5B2UlCBibxgbmEBk3YSDfkkN1ch5SYK0RuxHwTQd9bNWgAtN9/zwShQ270zlfJP2shcZO
-	2TEcXJNiUYmh8wLAn8xwKrqZ5cCld/mV3a/6DHckW286bf8SHnH1FlF614Cbg65gMVSAb4irZ/i+I
-	wZGwbn8XIDaLfKt/CFGn9idYyzGOYYGOunqx+tS2TdR1gpQn2JQPuEXJN1nGHntVNtIVKnRd7Z6WO
-	nGHCYhjTQ==;
+	 bh=RfU4OjWkA8OJHJ/IO29IbqGRoJZioeu5X7n2m3IzSzw=; b=qcTpMeCC8Pe70cara8+bVRQvw
+	p1WTz1VleLx/lfBDQraqPM3GeHwqhPKxnqmdWyeEblvWc9y+q6fmAztRVwJ+8CzgKXBUGfuTXp63W
+	hIeMIJzjveF8pp9L8MKSsCQF4rJuYm4y7S8nrUYSAmmbQuG/SCl64NBk9f7/3HN5XD6Pxs42jbmjt
+	zzMMRKe9QI6pF9kAiFj5rFTNGExSfNzfGYkT5+ib1W212fMoNA1LxOomuBBiH/iCv1nByNON7jy2X
+	vw7bwPF2kFxupwVoA/v/RmfSyA64O2286nZm/bifAnasIhBnAAuesxyxaDnZjr4subXySeMO33Ui2
+	t+QLYdVzA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l0915-00048I-NG; Thu, 14 Jan 2021 20:14:47 +0000
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+	id 1l0B7g-0001jf-Aw; Thu, 14 Jan 2021 22:29:44 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l0912-00047L-Al; Thu, 14 Jan 2021 20:14:45 +0000
-Received: by mail-ot1-f50.google.com with SMTP id j20so6391843otq.5;
- Thu, 14 Jan 2021 12:14:43 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=mhouMjNkCaF9CWhf0l9RnVYSQE5T0c+RJ3SWWCrRIT8=;
- b=kOtyM5qBpAGoyvhNqYiJAL3ct1fpLPWbi2Z0KOXDPe6kfxYnru/xLV3h7pOrfAGKxO
- MbxhjBYdprhLiDHXjWeqbaulb61NVIQV4niIyCQAiGbdbuZkOTx4zPO1SAdb3jmEzWYp
- 4RD5eu2E2gQKbmZo4fKoOrFE+P02ExbSecuq3RBFS4Ex4udFIkfh+LV68dPnNf5dq8Vr
- OrwV3iGX0Hrb6BaFqf9Oa1baGFkUj/ToDX+FyCJ3uxOhrFTF6vpfxwwvDK6dNaaMQ1XP
- TQJX+l5ZCg37YNJoSWywCmHRNG2OZAOyxTvWvwJl3hsIKhDxb4hp4GopkPCbYTKi1mHH
- FiUg==
-X-Gm-Message-State: AOAM5327zJQxQ/JxwTU41tHMQWGeQpPWZURZPO0l5I/Y2sRe0OY8akeb
- mXb/C3xAYzcyp9z7PcfeJf284Kb3Fw==
-X-Google-Smtp-Source: ABdhPJzq6mF+Q3lGzEPm5wH++9BNibn6XXQls/kyl3A1COzRB3pAeuey66JxeInPzKqltEFrCUXK8w==
-X-Received: by 2002:a9d:2021:: with SMTP id n30mr5850280ota.350.1610655283208; 
- Thu, 14 Jan 2021 12:14:43 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id v17sm1260325ott.7.2021.01.14.12.14.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Jan 2021 12:14:42 -0800 (PST)
-Received: (nullmailer pid 3515403 invoked by uid 1000);
- Thu, 14 Jan 2021 20:14:41 -0000
-Date: Thu, 14 Jan 2021 14:14:41 -0600
-From: Rob Herring <robh@kernel.org>
-To: Nick Fan <Nick.Fan@mediatek.com>
-Subject: Re: [PATCH v4 1/2] dt-bindings: Add DT schema for Arm Mali Valhall GPU
-Message-ID: <20210114201441.GA3509434@robh.at.kernel.org>
-References: <20210112064933.12951-1-Nick.Fan@mediatek.com>
+ id 1l0B7c-0001ix-HG; Thu, 14 Jan 2021 22:29:41 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9577A22CBE;
+ Thu, 14 Jan 2021 22:29:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1610663378;
+ bh=hfhWqcDtTP7IYqbullRyMrTJ4FwI6nFHntuaG+R5yWM=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=FHpNKtw/tUvzI7bPgkJsDyeuR3eL0aD6jZN+X7Gjn7lvnN22N6TP35oKv9rZYX6iX
+ 4lx2e8hXwnhSEtgOmi+LRj0omTE8Te5twsNjEMvTS+WTPqxxbM/GMl+1A1c4JhUxJK
+ xnb4ZYVndERrSFaAPmTatWz2MYKRnafcelc72dCox0YCvqMb45Df2AUfK09lJbOAzz
+ yv04Fx9LAabwNWij47SZ2t6vQHlLEBhaNLc15m8sJFjl87hJ36vetsj6QA0SUYpFCw
+ WopBKEAasQ2L15xLlVGrlQIegFFQBNNvG2fu9cZdrY1zgYL9fackb8bOmob4AmPfcd
+ g0EAXAnuPIBUg==
+Received: by mail-ej1-f52.google.com with SMTP id q22so10580394eja.2;
+ Thu, 14 Jan 2021 14:29:38 -0800 (PST)
+X-Gm-Message-State: AOAM531JFxXqQew5wbmdY1troV3HUc4HZQBlZErKYGR6hDUpJbfos/sY
+ I7F/QSF8WQcnTDaQeZGX+6ZXlu2+z/puecF65w==
+X-Google-Smtp-Source: ABdhPJxHUpNkN+T/hx5/nLUs2NhEXsLPGFPYkhav/uwL0W2GV8AyJyfJEsMZKL7rtqY1deaxIhopqVVyoecIA3WaRgE=
+X-Received: by 2002:a17:906:3753:: with SMTP id
+ e19mr6800550ejc.267.1610663377179; 
+ Thu, 14 Jan 2021 14:29:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210112064933.12951-1-Nick.Fan@mediatek.com>
+References: <1610351031-21133-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1610351031-21133-2-git-send-email-yongqiang.niu@mediatek.com>
+ <20210114191122.GA3394181@robh.at.kernel.org>
+In-Reply-To: <20210114191122.GA3394181@robh.at.kernel.org>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 15 Jan 2021 06:29:26 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_96hj0SGzSJCzGU7Z0DOFoituLpVOP_UW05E21Pt9QjfA@mail.gmail.com>
+Message-ID: <CAAOTY_96hj0SGzSJCzGU7Z0DOFoituLpVOP_UW05E21Pt9QjfA@mail.gmail.com>
+Subject: Re: [PATCH v3,
+ 01/15] dt-bindings: mediatek: add description for postmask
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_151444_420064_28D0C3EA 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20210114_172940_635032_B7FC0A68 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,301 +81,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org,
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 12, 2021 at 02:49:32PM +0800, Nick Fan wrote:
-> Add devicetree schema for Arm Mali Valhall GPU
-> 
-> Define a compatible string for the Mali Valhall GPU
-> for Mediatek's SoC platform.
-> 
-> Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
-> ---
->  .../bindings/gpu/arm,mali-valhall.yaml        | 252 ++++++++++++++++++
->  1 file changed, 252 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
-> new file mode 100644
-> index 000000000000..ecf249a58435
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall.yaml
-> @@ -0,0 +1,252 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2020 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/gpu/arm,mali-valhall.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: ARM Mali Valhall GPU
-> +
-> +maintainers:
-> +  - Rob Herring <robh@kernel.org>
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: '^gpu@[a-f0-9]+$'
-> +
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mediatek,mt8192-mali
-> +      - const: arm,mali-valhall
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    items:
-> +      - description: GPU interrupt
-> +      - description: MMU interrupt
-> +      - description: Job interrupt
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: gpu
-> +      - const: mmu
-> +      - const: job
-> +
-> +  clocks:
-> +    minItems: 1
-> +
-> +  power-domains:
-> +    minItems: 1
-> +    maxItems: 5
-> +
-> +  mali-supply: true
-> +  sram-supply: true
-> +
-> +  operating-points-v2: true
-> +
-> +  "#cooling-cells":
-> +    const: 2
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - interrupt-names
-> +  - clocks
-> +
-> +additionalProperties: false
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8192-mali
-> +    then:
-> +      properties:
-> +        sram-supply: true
-> +        power-domains:
-> +          description:
-> +            List of phandle and PM domain specifier as documented in
-> +            Documentation/devicetree/bindings/power/power_domain.txt
-> +          minItems: 5
-> +          maxItems: 5
-> +        power-domain-names:
-> +          items:
-> +            - const: core0
-> +            - const: core1
-> +            - const: core2
-> +            - const: core3
-> +            - const: core4
-> +
-> +      required:
-> +        - sram-supply
-> +        - power-domains
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    gpu@13000000 {
-> +           compatible = "mediatek,mt8192-mali", "arm,mali-valhall";
-> +           reg = <0x13000000 0x4000>;
-> +           interrupts =
-> +                   <GIC_SPI 363 IRQ_TYPE_LEVEL_HIGH 0>,
-> +                   <GIC_SPI 364 IRQ_TYPE_LEVEL_HIGH 0>,
-> +                   <GIC_SPI 365 IRQ_TYPE_LEVEL_HIGH 0>;
-> +           interrupt-names =
-> +                   "gpu",
-> +                   "mmu",
-> +                   "job";
-> +
-> +           clocks = <&mfgcfg 0>;
-> +
-> +           power-domains =
-> +                   <&spm 4>,
-> +                   <&spm 5>,
-> +                   <&spm 6>,
-> +                   <&spm 7>,
-> +                   <&spm 8>;
-> +
-> +           operating-points-v2 = <&gpu_opp_table>;
-> +           mali-supply = <&mt6315_7_vbuck1>;
-> +           sram-supply = <&mt6359_vsram_others_ldo_reg>;
-> +    };
-> +
-> +    gpu_opp_table: opp_table0 {
-
-Make this a child node of the gpu node.
-
-> +      compatible = "operating-points-v2";
-> +      opp-shared;
-> +
-> +      opp-358000000 {
-> +              opp-hz = /bits/ 64 <358000000>;
-> +              opp-hz-real = /bits/ 64 <358000000>,
-> +                            /bits/ 64 <358000000>;
-
-This is not part of the OPP binding. It's not clear what it's purpose 
-would be given the values are always the same as opp-hz.
-
-
-> +              opp-microvolt = <606250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-399000000 {
-> +              opp-hz = /bits/ 64 <399000000>;
-> +              opp-hz-real = /bits/ 64 <399000000>,
-> +                            /bits/ 64 <399000000>;
-> +              opp-microvolt = <618750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-440000000 {
-> +              opp-hz = /bits/ 64 <440000000>;
-> +              opp-hz-real = /bits/ 64 <440000000>,
-> +                            /bits/ 64 <440000000>;
-> +              opp-microvolt = <631250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-482000000 {
-> +              opp-hz = /bits/ 64 <482000000>;
-> +              opp-hz-real = /bits/ 64 <482000000>,
-> +                            /bits/ 64 <482000000>;
-> +              opp-microvolt = <643750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-523000000 {
-> +              opp-hz = /bits/ 64 <523000000>;
-> +              opp-hz-real = /bits/ 64 <523000000>,
-> +                            /bits/ 64 <523000000>;
-> +              opp-microvolt = <656250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-564000000 {
-> +              opp-hz = /bits/ 64 <564000000>;
-> +              opp-hz-real = /bits/ 64 <564000000>,
-> +                            /bits/ 64 <564000000>;
-> +              opp-microvolt = <668750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-605000000 {
-> +              opp-hz = /bits/ 64 <605000000>;
-> +              opp-hz-real = /bits/ 64 <605000000>,
-> +                            /bits/ 64 <605000000>;
-> +              opp-microvolt = <681250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-647000000 {
-> +              opp-hz = /bits/ 64 <647000000>;
-> +              opp-hz-real = /bits/ 64 <647000000>,
-> +                            /bits/ 64 <647000000>;
-> +              opp-microvolt = <693750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-688000000 {
-> +              opp-hz = /bits/ 64 <688000000>;
-> +              opp-hz-real = /bits/ 64 <688000000>,
-> +                            /bits/ 64 <688000000>;
-> +              opp-microvolt = <706250>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-724000000 {
-> +              opp-hz = /bits/ 64 <724000000>;
-> +              opp-hz-real = /bits/ 64 <724000000>,
-> +                            /bits/ 64 <724000000>;
-> +              opp-microvolt = <725000>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-760000000 {
-> +              opp-hz = /bits/ 64 <760000000>;
-> +              opp-hz-real = /bits/ 64 <760000000>,
-> +                            /bits/ 64 <760000000>;
-> +              opp-microvolt = <743750>,
-> +                              <750000>;
-> +      };
-> +
-> +      opp-795000000 {
-> +              opp-hz = /bits/ 64 <795000000>;
-> +              opp-hz-real = /bits/ 64 <795000000>,
-> +                            /bits/ 64 <795000000>;
-> +              opp-microvolt = <762500>,
-> +                              <762500>;
-> +      };
-> +
-> +      opp-831000000 {
-> +              opp-hz = /bits/ 64 <831000000>;
-> +              opp-hz-real = /bits/ 64 <831000000>,
-> +                            /bits/ 64 <831000000>;
-> +              opp-microvolt = <781250>,
-> +                              <781250>;
-> +      };
-> +
-> +      opp-855000000 {
-> +              opp-hz = /bits/ 64 <855000000>;
-> +              opp-hz-real = /bits/ 64 <855000000>,
-> +                            /bits/ 64 <855000000>;
-> +              opp-microvolt = <793750>,
-> +                              <793750>;
-> +      };
-> +
-> +      opp-902000000 {
-> +              opp-hz = /bits/ 64 <902000000>;
-> +              opp-hz-real = /bits/ 64 <902000000>,
-> +                            /bits/ 64 <902000000>;
-> +              opp-microvolt = <818750>,
-> +                              <818750>;
-> +      };
-> +
-> +      opp-950000000 {
-> +              opp-hz = /bits/ 64 <950000000>;
-> +              opp-hz-real = /bits/ 64 <950000000>,
-> +                            /bits/ 64 <950000000>;
-> +              opp-microvolt = <843750>,
-> +                              <843750>;
-> +      };
-> +    };
-> +...
-> -- 
-> 2.18.0
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4g5pa8IDIwMjHlubQx5pyIMTXml6Ug6YCx5LqU
+IOS4iuWNiDM6MTHlr6vpgZPvvJoKPgo+IE9uIE1vbiwgMTEgSmFuIDIwMjEgMTU6NDM6MzcgKzA4
+MDAsIFlvbmdxaWFuZyBOaXUgd3JvdGU6Cj4gPiBhZGQgZGVzY3JpcHRpb24gZm9yIHBvc3RtYXNr
+Cj4gPiBwb3N0bWFzayBpcyB1c2VkIGNvbnRyb2wgcm91bmQgY29ybmVyIGZvciBkaXNwbGF5IGZy
+YW1lCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBt
+ZWRpYXRlay5jb20+Cj4gPiAtLS0KPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dCB8IDEgKwo+ID4gIDEgZmlsZSBj
+aGFuZ2VkLCAxIGluc2VydGlvbigrKQo+ID4KPgo+IEFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9i
+aEBrZXJuZWwub3JnPgoKQXBwbGllZCB0byBtZWRpYXRlay1kcm0tbmV4dCBbMV0sIHRoYW5rcy4K
+ClsxXSBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9jaHVu
+a3VhbmcuaHUvbGludXguZ2l0L2xvZy8/aD1tZWRpYXRlay1kcm0tbmV4dAoKUmVnYXJkcywKQ2h1
+bi1LdWFuZy4KCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
+ZGlhdGVrCg==
