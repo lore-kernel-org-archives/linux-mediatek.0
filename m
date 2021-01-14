@@ -2,19 +2,19 @@ Return-Path: <SRS0=30Xp=GR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AAFEC433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 16:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E2E0C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 16:54:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0080323B4B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 16:49:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0080323B4B
+	by mail.kernel.org (Postfix) with ESMTPS id F38C0205F4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 16:54:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F38C0205F4
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,60 +23,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Date:Message-Id:To:References:In-Reply-To:From:
 	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WM20ZdhoQwFroThDMWVdGCvBaQipnvNpO0c10wfROVo=; b=nnkzbQ+u08l3HC5WUjXC0tVGa
-	/Y9Mdybx0qk6csrgH5MhOc1Wh4d3HCs+v4T9yW88BDi38tV3TQXoDApxGIB269QaQkK/3EJbH65W7
-	puhI3N8t8IeVKAUfVzPgKfxZAEbmVJu2Mn5SwMZiaYtvVDK2i7/frqOCsf1Y3L9YOFyTRHBjceacP
-	zfEdTyLZXxZAotcB6H1TYIFWPZKg8FJvPNV0AcsV+NdZvGCiUMEo2Hh8P7gs3Y67svQL9ACMzh8dv
-	XW/dYqHdhM/CFXXRlJqFcCvTVxDq6VgRVSsVe1wuiMbWPE6v1ZOo/UC1owOvDP0/CFw+RvX7URrdi
-	vi4gp4PYw==;
+	 bh=xsIgdx/CJT33N14AhM1H9zHRVH5edLp47RcVYm2+SDA=; b=XXN4qgAmPoz8GhOIKyOMMXnDx
+	vjn/a8as9viX+VR4I1YvDXDu0RX46yHNrq1zB5rF3NcWQ0Sp15M76F2juDjKDphdq0abE1/rJUpvc
+	/CEjBgye2+BsyJjEce7Mp2qZFn4UBUYomMbUY+bv8hTmy4R194Wvmj91nXLXnW6dRWC4sNE4pbYU+
+	tA8c5r+yqGaIyquTE23tZFrRXKEQLjMvoeuzuvEYR9lGlw7XYmucjwBbEGS6wwVLGTqP7eqX6CR4P
+	bYJe8e8a1oZmO+8SZhkC2eEexXuPyuJonCk0lj6gR8KaioTzxrrRfVc3Oo6kXqR8WPrg8N7BiXevq
+	IKOQqdodA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l05oI-00041o-8K; Thu, 14 Jan 2021 16:49:22 +0000
+	id 1l05sz-0004TC-Iz; Thu, 14 Jan 2021 16:54:13 +0000
 Received: from so254-31.mailgun.net ([198.61.254.31])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l05oD-00040a-Va
- for linux-mediatek@lists.infradead.org; Thu, 14 Jan 2021 16:49:21 +0000
+ id 1l05sv-0004Sm-BY
+ for linux-mediatek@lists.infradead.org; Thu, 14 Jan 2021 16:54:11 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1610642959; h=Date: Message-Id: Cc: To: References:
+ s=smtp; t=1610643250; h=Date: Message-Id: Cc: To: References:
  In-Reply-To: From: Subject: Content-Transfer-Encoding: MIME-Version:
- Content-Type: Sender; bh=pTOhOFjKTSVZKN1D0SJ1Pg5lWOEdKXufF+sYmOfnZOw=;
- b=Jb5iHUspK94KGXmj8Tpr3+sVMq2t7poLZYma6JfYe/KUtl0RBtl08At96KrpNN+O49kruVN3
- O0FZjlg1hU2kRobIGr7ETfIrUyqRUT+s5nSlBebzyaFPZWqfv/BY2hNtjNZ3OAMHDnQbrGcn
- WOWs9AD0yx76lv2cW2bIRID2WOU=
+ Content-Type: Sender; bh=2dDSdRh9UZ/2znGwAyp9VyErRlya3vyr5Lu5YMhcqbE=;
+ b=Vh5RUlaPT6jQPzgKIVLF3iJU1WyLWzhh+rBozQaCoBHHRsMp2zw1MBP83/PYHBw2Iz805Zro
+ wG9qeQc0gwJ0NH9P7of3MezVAeGVxsLiXpb+tSSC1DZ1AYqNWlB3ZJKBP/LMH82dkpFCk6n4
+ vpWGh8ObK1klIRuwZcANEN3Nn4c=
 X-Mailgun-Sending-Ip: 198.61.254.31
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n08.prod.us-west-2.postgun.com with SMTP id
- 600075ea2a47972bccbeacdb (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 14 Jan 2021 16:48:42
+ smtp-out-n05.prod.us-east-1.postgun.com with SMTP id
+ 6000772d8fb3cda82f8368b6 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 14 Jan 2021 16:54:05
  GMT
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id BB69AC43463; Thu, 14 Jan 2021 16:48:42 +0000 (UTC)
+ id 394DAC433ED; Thu, 14 Jan 2021 16:54:04 +0000 (UTC)
 Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
  [88.114.240.156])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id D370BC433C6;
- Thu, 14 Jan 2021 16:48:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org D370BC433C6
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 8E295C43461;
+ Thu, 14 Jan 2021 16:54:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 8E295C43461
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  spf=fail smtp.mailfrom=kvalo@codeaurora.org
 MIME-Version: 1.0
-Subject: Re: [PATCH] mt76: Fix queue ID variable types after mcu queue split
+Subject: Re: [PATCH] mt76: mt7915: fix misplaced #ifdef
 From: Kalle Valo <kvalo@codeaurora.org>
-In-Reply-To: <20201229211548.1348077-1-natechancellor@gmail.com>
-References: <20201229211548.1348077-1-natechancellor@gmail.com>
-To: Nathan Chancellor <natechancellor@gmail.com>
+In-Reply-To: <20210103135811.3749775-1-arnd@kernel.org>
+References: <20210103135811.3749775-1-arnd@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
 User-Agent: pwcli/0.1.0-git (https://github.com/kvalo/pwcli/) Python/3.5.2
-Message-Id: <20210114164842.BB69AC43463@smtp.codeaurora.org>
-Date: Thu, 14 Jan 2021 16:48:42 +0000 (UTC)
+Message-Id: <20210114165404.394DAC433ED@smtp.codeaurora.org>
+Date: Thu, 14 Jan 2021 16:54:04 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_114920_081018_81733ED2 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20210114_115410_946994_97E6A664 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,64 +88,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Yiwei Chung <yiwei.chung@mediatek.com>, linux-mediatek@lists.infradead.org,
  Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Nathan Chancellor <natechancellor@gmail.com>, Felix Fietkau <nbd@nbd.name>
+ Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Nathan Chancellor <natechancellor@gmail.com> wrote:
+Arnd Bergmann <arnd@kernel.org> wrote:
 
-> Clang warns in both mt7615 and mt7915:
+> From: Arnd Bergmann <arnd@arndb.de>
 > 
-> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:271:9: warning: implicit
-> conversion from enumeration type 'enum mt76_mcuq_id' to different
-> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->                 txq = MT_MCUQ_FWDL;
->                     ~ ^~~~~~~~~~~~
-> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:278:9: warning: implicit
-> conversion from enumeration type 'enum mt76_mcuq_id' to different
-> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->                 txq = MT_MCUQ_WA;
->                     ~ ^~~~~~~~~~
-> drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:282:9: warning: implicit
-> conversion from enumeration type 'enum mt76_mcuq_id' to different
-> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->                 txq = MT_MCUQ_WM;
->                     ~ ^~~~~~~~~~
-> 3 warnings generated.
+> The lone '|' at the end of a line causes a build failure:
 > 
-> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:238:9: warning: implicit
-> conversion from enumeration type 'enum mt76_mcuq_id' to different
-> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->                 qid = MT_MCUQ_WM;
->                     ~ ^~~~~~~~~~
-> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:240:9: warning: implicit
-> conversion from enumeration type 'enum mt76_mcuq_id' to different
-> enumeration type 'enum mt76_txq_id' [-Wenum-conversion]
->                 qid = MT_MCUQ_FWDL;
->                     ~ ^~~~~~~~~~~~
-> 2 warnings generated.
+> drivers/net/wireless/mediatek/mt76/mt7915/init.c:47:2: error: expected expression before '}' token
 > 
-> Use the proper type for the queue ID variables to fix these warnings.
-> Additionally, rename the txq variable in mt7915_mcu_send_message to be
-> more neutral like mt7615_mcu_send_message.
+> Replace the #ifdef with an equivalent IS_ENABLED() check.
 > 
-> Fixes: e637763b606b ("mt76: move mcu queues to mt76_dev q_mcu array")
-> Link: https://github.com/ClangBuiltLinux/linux/issues/1229
-> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
-> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Fixes: af901eb4ab80 ("mt76: mt7915: get rid of dbdc debugfs knob")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Patch applied to wireless-drivers.git, thanks.
+This was already fixed by:
 
-b7c568752ef3 mt76: Fix queue ID variable types after mcu queue split
+0bd157fa2aaa mt76: mt7915: fix MESH ifdef block
+
+Recorded preimage for 'drivers/net/wireless/mediatek/mt76/mt7915/init.c'
+error: Failed to merge in the changes.
+Applying: mt76: mt7915: fix misplaced #ifdef
+Using index info to reconstruct a base tree...
+M	drivers/net/wireless/mediatek/mt76/mt7915/init.c
+Falling back to patching base and 3-way merge...
+Auto-merging drivers/net/wireless/mediatek/mt76/mt7915/init.c
+CONFLICT (content): Merge conflict in drivers/net/wireless/mediatek/mt76/mt7915/init.c
+Patch failed at 0001 mt76: mt7915: fix misplaced #ifdef
+The copy of the patch that failed is found in: .git/rebase-apply/patch
+
+Patch set to Superseded.
 
 -- 
-https://patchwork.kernel.org/project/linux-wireless/patch/20201229211548.1348077-1-natechancellor@gmail.com/
+https://patchwork.kernel.org/project/linux-wireless/patch/20210103135811.3749775-1-arnd@kernel.org/
 
 https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
