@@ -2,86 +2,96 @@ Return-Path: <SRS0=P2Ib=GS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4ECAAC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jan 2021 14:14:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00A20C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jan 2021 14:14:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 04D0123772
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jan 2021 14:14:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 04D0123772
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id BD5D222248
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jan 2021 14:14:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD5D222248
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cerno.tech
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B3ckBe2r0lgEF3yf8YkmZzc7F86GNzF8+TMKdUphVzU=; b=OCRZnapAeFnKlKi3vxfSeYRCs+
-	JdHxukmOsQ1r20oTrGjJqHyrUP+2QqEKupgvni08LC4p/zzpMLezS+UGNmbb8hPcTG/uhnwm5ZrKe
-	Fj44GunCi5vWriRDUEFKrYbvWX+oC5VC1SI6qCFVkwCM+cxiTUrw+1bYpKxLSG9NKbLiAiL3HsLhM
-	VLDqaKsLXiT/Do3xjb+7hWBlLpOEuDImYPUgNkefaGt2LxaPRBOGdvKpv6gtC4maIPAsVE6Qp7Vvj
-	2ZCMMM0+fDoXPIs6eZCFljafpkpXfSiqe7/5a6p781/Q5LyK2dIkZ2tk2C72cxD5H3LvRhpcbfhH/
-	LaSRqDpQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ly2QXz262zsRxIilOOczFEBEZPZKwNt5EoQHJ9mqQwE=; b=JQzy6iXZRRiBqVwXWHNsycxw2
+	gz56dxeCB+sS3ZsouU5zKMT/43EOYbTuzBUFsLau/zftoEmL00NKMIIDhQqtpo5kRmv3+UEHf3MBn
+	wrFfyhVDU7FgB9r10iwE98bHSpg8ZxyOqiT60eu9UcLunUkJ7re1tqkBOWGyZ9HQ+IWxOUPU280XO
+	EdMC5cxaQz/XxNGtdRBTOr/lhWWhv3jE/+haq9d1QJJxAHZQD5UMxk+OXGon1gJHz7cHJK1+KBa2i
+	Zl+JSM8o2P5G3QxmXnOzmK6eJvBpsQsn+iCfwEC6K8vbmm2PkV08PhY+Ge/L2SG7nx5EQepd4qc1H
+	9K+KdulJQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l0PrJ-0005M6-Og; Fri, 15 Jan 2021 14:13:49 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1l0Pra-0005TF-DB; Fri, 15 Jan 2021 14:14:06 +0000
+Received: from new4-smtp.messagingengine.com ([66.111.4.230])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l0PrC-0005Jr-IF; Fri, 15 Jan 2021 14:13:43 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id be12so4768227plb.4;
- Fri, 15 Jan 2021 06:13:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=pEukWvtuwh82TDEPEZ3woLLJLq853GtFGRDGVW376W0=;
- b=d56nTDt327VgF/XuYROfVX7Ku4gbnv881jVJBzfwSdhMsqCb8W3xDas4Ii4WP+3rym
- y1jbl0OHSy2yL2Qfm6Xatbk4PvpjuiIjVbeLpGibFMYI2unQT2LA3qpK4ZrfXMTdSeo7
- d9WQ8asbVfBdxxwbrSVMxgt+VI4r3jLDbyYjFsxx6bzqZ4j/cUnSHlklmYfQOGE2BwF/
- cugv4B7yy40HyQWJFkunnBqNZL9l40c0l3U+YEtmducQgtcrKQpgMh/4dhD/Ipf6pxgj
- vJTdIrhLFXNTYs1G13vxi7AOZEB6fG7h1X1n9cCowKokdjfDRXDuERCE5kO1o0CFLHW3
- 6YCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=pEukWvtuwh82TDEPEZ3woLLJLq853GtFGRDGVW376W0=;
- b=kUDxgp3AKwb6g+NPIZSFyGLohRMc1fX3WXACuP7s+lv7gJwHf5PyqABI4mQUtmbX2V
- SPLfjNmcUQcl1HYF+dLx+JFx8j9pfhRN+FkfVKUlyoqnQuIY2IQU1Jcy9gwVcWxKpZVg
- lY1LQhuvc85P4nNSPyw/AJxAJ9uv+D5aWE1vgrxUUMmCGWU2TQCpwu/wO3/7xixNdsfH
- 47ArOQ+o2hYHnPJAoaVnm93QjIpzxV2QVw4gJzYta/S69Zs06YDvO2yg97gfMCZedl2w
- CFOSRJ/cx/wnWHrhsdKn+WgAEVr8AQC1T1vntrYn12K/DqTtP6wbA+ws17Gs+txU6l/M
- qhvQ==
-X-Gm-Message-State: AOAM530vcZWUmwY8+1y5gXANEhnAwPkxLWxT23sr5NqXJSI7GOF6e+VT
- vF08EJpz2Mk5sOsv1TSUw2Q=
-X-Google-Smtp-Source: ABdhPJwLvlOK7S6tSYllr+OMNyZgyloJTKWhIZLiNjcdhjGKjeEWhTc0QmEW8fZcY9NCzKk9a2u6Jg==
-X-Received: by 2002:a17:902:9896:b029:dc:3306:8aa7 with SMTP id
- s22-20020a1709029896b02900dc33068aa7mr12972171plp.6.1610720019995; 
- Fri, 15 Jan 2021 06:13:39 -0800 (PST)
-Received: from localhost.localdomain (1-171-15-80.dynamic-ip.hinet.net.
- [1.171.15.80])
- by smtp.gmail.com with ESMTPSA id h5sm8898408pgl.86.2021.01.15.06.13.36
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 15 Jan 2021 06:13:39 -0800 (PST)
-From: cy_huang <u0084500@gmail.com>
-To: linux@roeck-us.net, heikki.krogerus@linux.intel.com,
- matthias.bgg@gmail.com, robh+dt@kernel.org
-Subject: [PATCH 2/2] usb typec: tcpci: mt6360: Add vbus supply into dt-binding
- description
-Date: Fri, 15 Jan 2021 22:13:21 +0800
-Message-Id: <1610720001-15300-2-git-send-email-u0084500@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1610720001-15300-1-git-send-email-u0084500@gmail.com>
-References: <1610720001-15300-1-git-send-email-u0084500@gmail.com>
+ id 1l0PrT-0005Oq-0e; Fri, 15 Jan 2021 14:14:01 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id CDECC580732;
+ Fri, 15 Jan 2021 09:13:55 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute6.internal (MEProxy); Fri, 15 Jan 2021 09:13:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=tj2SxXoSa96FfDtLrh9IpSrjSWA
+ c9uYGz+Dn9iyVoAo=; b=B7b719RQYKeJsatdvoMfftPaZ7yza1XeB2tdCt+EfXJ
+ lyEobF8ynRrdN7pxtUoPCNN3dfilyUknC7aTjyaF4oJihyfecKY12lq6IgiU5Cz1
+ Vra/Uwe7W13TjbG6KqN24oHHPrC1/88iYYfOg2wCPjrXLB0GDaNS3PDyATP1pXej
+ 5HHLRWc0r29gZRdE1uLJv6pc5aMOPi8ZjLC6JAnQxX87d99PTR+kZ/k9Z6nQNm9V
+ x0WGFJchuLQni4XDfFsGtGRZ9mYyCjTdEq5nOBG8T+RIbswMnhUDy8bhLPUdPJvI
+ Ni7wAgdzO3zMr5uZO/F7sboexu5D3QU0T8Ed3vI5MfA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=tj2SxX
+ oSa96FfDtLrh9IpSrjSWAc9uYGz+Dn9iyVoAo=; b=kkT3T4zeweqWXIX/CZ1B6z
+ DqGsjahZcO/cZPAU9BLCMla6ymzdiSZ7ZJ35RgoZIA7tkknGLbm7K6HkmmyEtuM9
+ m7U9NkEy3eA3CEOyqx8bRrsvRBhizLBqsv+hShK8YQ8uMeerxHTPnHWmrZT6W0es
+ FCpGNCGdJWhmmOt1yxhfqpCXhhbQS7V+qp+UB1aKlqBuwhXYiNCI8VJ5DguNziG3
+ sV4dimLDsXpkSnoUlQhIt7Z0//+muuUO0gvpOjviJZQXUhsCiK2Npriy+Aj61tE8
+ 4BgkQVmB0W+Y7dCtAftP+KRmtIM2szcqlPcQnNOYCpPvzfL+Flf5dJQZ2A0g6cMw
+ ==
+X-ME-Sender: <xms:H6MBYD0GSlkzCPJVYGpbR_ZNI06sWvUNPMDdZ6_eJm43rVMA2MrEXQ>
+ <xme:H6MBYCGSUXTu3NWdcNYsemiQeKDPcqwh30OHx6Fp4t9vJ_J6k4zoRtURvSopDsY2K
+ kZ4YOo4yGkimvhGq54>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrtddvgdefjecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihimhgv
+ ucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrghtth
+ gvrhhnpeelkeeghefhuddtleejgfeljeffheffgfeijefhgfeufefhtdevteegheeiheeg
+ udenucfkphepledtrdekledrieekrdejieenucevlhhushhtvghrufhiiigvpedtnecurf
+ grrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:IKMBYD420Ru-_AznpbGVzQ0jU5qBuPPsrrNPdOFYs-JrU-4D9wCSAQ>
+ <xmx:IKMBYI0429guPeHHyjc0jgU-OS7U10edc0et5onZ_6Las_n_TZYJYQ>
+ <xmx:IKMBYGGGZe6Wkc688GCwHAOskyhRtgv4uvUdI5qJ4DXevueC4Uhobw>
+ <xmx:I6MBYFbypYhb5YdRA0eaNNYJaUXLGsvZhXSUB8usLISCNOSUVzP1ug>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 869AA1080059;
+ Fri, 15 Jan 2021 09:13:51 -0500 (EST)
+Date: Fri, 15 Jan 2021 15:13:49 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH 02/10] drm: Rename plane atomic_check state names
+Message-ID: <20210115141349.7oq5hwsj37qcpk5j@gilmour>
+References: <20210115125703.1315064-1-maxime@cerno.tech>
+ <20210115125703.1315064-2-maxime@cerno.tech>
+ <221e5626-d97c-9d4e-07cc-e696c92ceb65@suse.de>
+MIME-Version: 1.0
+In-Reply-To: <221e5626-d97c-9d4e-07cc-e696c92ceb65@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210115_091342_657754_04828476 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20210115_091359_405493_C498E22F 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,62 +103,134 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
- gregkh@linuxfoundation.org, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+ Xinliang Liu <xinliang.liu@linaro.org>, dri-devel@lists.freedesktop.org,
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+ linux-stm32@st-md-mailman.stormreply.com, Jerome Brunet <jbrunet@baylibre.com>,
+ linux-samsung-soc@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>,
+ Michal Simek <michal.simek@xilinx.com>, NXP Linux Team <linux-imx@nxp.com>,
+ VMware Graphics <linux-graphics-maintainer@vmware.com>,
+ Leo Li <sunpeng.li@amd.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Roland Scheidegger <sroland@vmware.com>, Inki Dae <inki.dae@samsung.com>,
+ Sean Paul <sean@poorly.run>, Hyun Kwon <hyun.kwon@xilinx.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Alex Deucher <alexander.deucher@amd.com>, freedreno@lists.freedesktop.org,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ David Airlie <airlied@linux.ie>, nouveau@lists.freedesktop.org,
+ Edmund Dea <edmund.j.dea@intel.com>, virtualization@lists.linux-foundation.org,
+ Eric Anholt <eric@anholt.net>, Thierry Reding <thierry.reding@gmail.com>,
+ Daniel Vetter <daniel.vetter@intel.com>,
+ Mihail Atanassov <mihail.atanassov@arm.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org,
+ "James \(Qian\) Wang" <james.qian.wang@arm.com>,
+ Ben Skeggs <bskeggs@redhat.com>, Dave Airlie <airlied@redhat.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ linux-arm-msm@vger.kernel.org, John Stultz <john.stultz@linaro.org>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>, Yannick Fertre <yannick.fertre@st.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Brian Starkey <brian.starkey@arm.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, Stefan Agner <stefan@agner.ch>,
+ Melissa Wen <melissa.srw@gmail.com>, linux-tegra@vger.kernel.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Fabio Estevam <festevam@gmail.com>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>, amd-gfx@lists.freedesktop.org,
+ Chen-Yu Tsai <wens@csie.org>, Harry Wentland <harry.wentland@amd.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
+ Alison Wang <alison.wang@nxp.com>, spice-devel@lists.freedesktop.org,
+ Tomi Valkeinen <tomba@kernel.org>, Philippe Cornu <philippe.cornu@st.com>,
+ Vincent Abriou <vincent.abriou@st.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Tian Tao <tiantao6@hisilicon.com>, Shawn Guo <shawnguo@kernel.org>,
+ Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, Paul Cercueil <paul@crapouillou.net>,
+ linux-renesas-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>,
+ Russell King <linux@armlinux.org.uk>, Daniel Vetter <daniel@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ linux-mediatek@lists.infradead.org,
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, Rob Clark <robdclark@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Jyri Sarha <jyri.sarha@iki.fi>,
+ Lucas Stach <l.stach@pengutronix.de>
+Content-Type: multipart/mixed; boundary="===============7945096708455462525=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
 
-Add external vbus source into dt-binding description.
+--===============7945096708455462525==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="pc7g53zcvckyysz5"
+Content-Disposition: inline
 
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
----
- Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-index 1e8e1c2..b8d842b 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mt6360-tcpc.yaml
-@@ -26,6 +26,11 @@ properties:
-     items:
-       - const: PD_IRQB
- 
-+  vbus-supply:
-+    description:
-+      Vbus source supply regulator.
-+    maxItems: 1
-+
-   connector:
-     type: object
-     $ref: ../connector/usb-connector.yaml#
-@@ -38,6 +43,7 @@ required:
-   - compatible
-   - interrupts
-   - interrupt-names
-+  - vbus-supply
- 
- examples:
-   - |
-@@ -54,6 +60,7 @@ examples:
-           compatible = "mediatek,mt6360-tcpc";
-           interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
-           interrupt-names = "PD_IRQB";
-+          vbus-supply = <&otg_vbus>;
- 
-           connector {
-             compatible = "usb-c-connector";
--- 
-2.7.4
+--pc7g53zcvckyysz5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+Hi,
+
+On Fri, Jan 15, 2021 at 02:46:36PM +0100, Thomas Zimmermann wrote:
+> Hi
+>=20
+> Am 15.01.21 um 13:56 schrieb Maxime Ripard:
+> > diff --git a/drivers/gpu/drm/imx/ipuv3-plane.c b/drivers/gpu/drm/imx/ip=
+uv3-plane.c
+> > index 8a4235d9d9f1..2cb09e9d9306 100644
+> > --- a/drivers/gpu/drm/imx/ipuv3-plane.c
+> > +++ b/drivers/gpu/drm/imx/ipuv3-plane.c
+> > @@ -344,12 +344,12 @@ static const struct drm_plane_funcs ipu_plane_fun=
+cs =3D {
+> >   };
+> >   static int ipu_plane_atomic_check(struct drm_plane *plane,
+> > -				  struct drm_plane_state *state)
+> > +				  struct drm_plane_state *new_state)
+>=20
+> It's not 'new_plane_state' ?
+
+That function is using old_state for plane->state:
+
+> >   {
+> >   	struct drm_plane_state *old_state =3D plane->state;
+
+Here ^
+
+So it felt more natural to keep the convention in use in that driver
+
+Maxime
+
+--pc7g53zcvckyysz5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCYAGjHQAKCRDj7w1vZxhR
+xRyQAP9z6jgYoVLN5O08Gfa2bipU5kwBoAnOqoWm5tZt0atb8QEA9iY4poTgz6cv
+u2lw2ErmnQLG6Rt10lvZcTmjIdOF5QI=
+=AOj1
+-----END PGP SIGNATURE-----
+
+--pc7g53zcvckyysz5--
+
+
+--===============7945096708455462525==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7945096708455462525==--
+
