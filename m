@@ -1,21 +1,21 @@
-Return-Path: <SRS0=30Xp=GR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=P2Ib=GS=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3816C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 23:27:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40205C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jan 2021 02:51:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 24A6423A5E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jan 2021 23:27:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24A6423A5E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id ABE2723AC8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jan 2021 02:51:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ABE2723AC8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,53 +23,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qcx5eYTI/ArdrX7TXJQrAK0cdrQDshAY6OrZTdc5cNU=; b=CulEQtP9CBnqQN7zXDtVG7Ve+
-	P2Nm248fmD81xNSpKWAM1u3iq1/f21FlIkXv81DyWwTvLQsYb1H398le/n/ifHMCteDzCX0e+7ZQL
-	/4fatYK9iwQxS3M5ucNx/v1lwGqSy4oOi26pR1bioYu3WxFrF1uwxmZibiCnOZjqAv55JUkTFRYZY
-	bH5N881VfEU66H7r91tE/khVpVaccV3GC/tX5tGKP2fjrTCqAQ1R8TjeBHRIQEoKzXZHWLnPWEmDg
-	gHm9vgbGi2JzdV4J3gNArUoGDMIJpyDC1QIisZ3zI7cIuzneiNugKuaGsA7L3DIruxs6fwvinTAXa
-	VK//qVp7Q==;
+	 bh=vYfutYpE0G8avaANxYsUsCVb7sVpwqFwm4MnO7WR8do=; b=iLUSNs7ic5/O8XlAcvgn+RxDV
+	LP0vgWgc5xqAPnox85h6E2hz9PB/BBnzbdtVv73g2yXy/UL6iEdd8GIHeWNouteXR03cOaI4kduBt
+	vtmTspm5D82ocyeTpJPhBtLYICX/wYUMd8+V3lEAzbvzZCJ/G/rU55rzvqM31NwebBVChBqQHAFP3
+	OkAKnlILZ8M8gCEyGMik4KoMgdYoQcBNaNGqHk4XNH/lEP2IAQ6ey3NTFgTE9eXpr5/W6UzePgsx3
+	Zryw8IYqGxtTMlIW2Dd8gdyhJQzfKXrzqPzjbX1/a36CMXO7uFRSO5621jyaVJnVdKs2u5So0oyf1
+	57JbC291g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l0C1W-0005Yi-3m; Thu, 14 Jan 2021 23:27:26 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l0FCs-0001np-OE; Fri, 15 Jan 2021 02:51:22 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l0C1R-0005Xv-Gj; Thu, 14 Jan 2021 23:27:22 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6053823AA9;
- Thu, 14 Jan 2021 23:27:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610666840;
- bh=4Zj3Wl9MmezHCv26E0/LT5ibGDbwFsMqnirwMOVtjqE=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=aBLoFuP9S4Nc3XrlPFcxpWS2vWovEqXQd9fxBf6JZfHE2hegibJmRABAh+PPF7RLr
- 73MX39xJBmv973lJK2GoCa78CI7e7G04MIaff7ut6UhF0nf7DXAlQp6HjQtzcLRfPf
- qcKkvU09liZCmxbEsjeFf/3FIG+og4y4FNILMH6O3Azz0G2n6fx34/CS4Ifp+IRf8P
- GlSwRBKhSCKwj6xECjsMMrWT7dC3mTU2EJcd+cX61/zSv/Bf6Jedjx7HfcjCJeaHMw
- qHg4v4Gty8N54mrBohg1Eb9qnSlVTgZ9PnbsE1nflAsGuiMaKbYb5ZnqU4rge2ElDP
- RpGeHwhRWfojA==
-Received: by mail-ej1-f46.google.com with SMTP id ga15so10756220ejb.4;
- Thu, 14 Jan 2021 15:27:20 -0800 (PST)
-X-Gm-Message-State: AOAM531eeinBUv+d5NeCCE8BZGEJ3fUpw4l5LlRdBz4ka/VFSC33usEh
- LDc33gDZFQpesmdYo1xn06d2fLxEOOe8RTEBGA==
-X-Google-Smtp-Source: ABdhPJwT7znQYQKLZ+6Sn6y2n9e+stArAY5GAuMtoUClRK/SPi6pP38lZV6DIyg4QRGopg8Iq3NUruuIGHT/VFxhO+Y=
-X-Received: by 2002:a17:906:fb1a:: with SMTP id
- lz26mr6911340ejb.194.1610666838951; 
- Thu, 14 Jan 2021 15:27:18 -0800 (PST)
+ id 1l0FCq-0001n1-80
+ for linux-mediatek@lists.infradead.org; Fri, 15 Jan 2021 02:51:21 +0000
+Received: by mail-pf1-x430.google.com with SMTP id h10so4574998pfo.9
+ for <linux-mediatek@lists.infradead.org>; Thu, 14 Jan 2021 18:51:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JC7oohfALujgMdyPvPz4HUk+eyvN9WaqpC/oTBTunFI=;
+ b=PrktYQGnOhf6EonDJAl8crgFkgsS7LCIJaR7PlQ1E+Uy0kyhg5qSosGhtYPiiq7b6V
+ 5xz5WW/SyAckeqPvTvrSqmIrAy51BY6+mPjJn45FCtc7F53DB5wiDx/DJjJHzHeQm65j
+ FyZsL2UAupewpdTXTuV65l3UjDbXMI1QzA7kQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JC7oohfALujgMdyPvPz4HUk+eyvN9WaqpC/oTBTunFI=;
+ b=GZH4CAwIFSjLD9a0GMdcDh3kC9U64N4waS11in+uzt86ux+Eaxk98vXd1neT2aGVAs
+ +U7TCeBx3CcuhJpM0VfwfMs2S7P8cJ8Jejy1khqOLt3e0U/zygDz2N3FV5NOM13hMzFf
+ hdM2MVLNazaILWS12/grgSuIiMoaze+rdZdueZUfIpkjSCj0CScKSA3zUD2GJ31nD4k4
+ F1WCCxKQMemtFeKyWbYWefHN6Q9odYfn7c1m851qxD5TPbvsTlmeSjBy293PkrvzvviF
+ wynd5Yrd9QvaHag+rrQix4f6uN1SQ4LBl+o4eyd/zfrBGJuAWT1muHlp1UrQLDcL6+41
+ Wj5g==
+X-Gm-Message-State: AOAM530787xVrRMg/S7ZCLQ2zChW7OhVomv1gYD2J0s4IdTzW4DajMje
+ jBZlj0/dKVbTp5Idf6RAJ4jbIG7E4mxk7HJjTff0/g==
+X-Google-Smtp-Source: ABdhPJwEr7vgyC+XwBFfX12iNXroO8R+0dGE9jOmm8CmOWVFx0OdWCdNJ4jSrTu1mfkC1rQ3Zt0rCf+jrGnngfKGlzg=
+X-Received: by 2002:a63:1a10:: with SMTP id a16mr10165921pga.317.1610679074288; 
+ Thu, 14 Jan 2021 18:51:14 -0800 (PST)
 MIME-Version: 1.0
-References: <1609989081-29353-1-git-send-email-yongqiang.niu@mediatek.com>
- <1609989081-29353-6-git-send-email-yongqiang.niu@mediatek.com>
- <CAAOTY__Ox7jxLxQvm_mvAqEedj48=grH0Mao7xZ5bLuABZNeMQ@mail.gmail.com>
-In-Reply-To: <CAAOTY__Ox7jxLxQvm_mvAqEedj48=grH0Mao7xZ5bLuABZNeMQ@mail.gmail.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 15 Jan 2021 07:27:07 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8psXwmWqKidGKZN05jcNqhq4igNmbbXX2xePYDgwHDDg@mail.gmail.com>
-Message-ID: <CAAOTY_8psXwmWqKidGKZN05jcNqhq4igNmbbXX2xePYDgwHDDg@mail.gmail.com>
-Subject: Re: [PATCH v9,
- 05/11] drm/mediatek: add fifo_size into rdma private data
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+References: <20201229142406.v5.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+ <2aea44f0-85e7-fd55-2c35-c1d994f20e03@linux.intel.com>
+ <1610086308.24856.30.camel@mhfsdcap03>
+ <e43632e2-08b3-7a1a-8272-1d493e25fc67@linux.intel.com>
+ <CAATdQgD2OAmf7_NWSVwzyJE7mF0vngzE=QeE79PS7MJsgPhbtA@mail.gmail.com>
+ <1610612988.30053.15.camel@mhfsdcap03>
+In-Reply-To: <1610612988.30053.15.camel@mhfsdcap03>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Fri, 15 Jan 2021 10:51:03 +0800
+Message-ID: <CAATdQgCb254YJ2tpiqWZ0RDHRiN59NuuHBuhavoYQT3STh=jkg@mail.gmail.com>
+Subject: Re: [PATCH v5] usb: xhci-mtk: fix unreleased bandwidth data
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_182721_695318_34E03F4D 
-X-CRM114-Status: GOOD (  22.80  )
+X-CRM114-CacheID: sfid-20210114_215120_438787_5A28574A 
+X-CRM114-Status: GOOD (  32.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,86 +87,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ open list <linux-kernel@vger.kernel.org>,
+ Tianping Fang <tianping.fang@mediatek.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
- CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mathias Nyman <mathias.nyman@linux.intel.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCkNodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPiDm
-lrwgMjAyMeW5tDHmnIg35pelIOmAseWbmyDkuIvljYg2OjA15a+r6YGT77yaCj4KPiBIaSwgWW9u
-Z3FpYW5nOgo+Cj4gWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+IOaW
-vCAyMDIx5bm0MeaciDfml6Ug6YCx5ZubIOS4iuWNiDExOjEy5a+r6YGT77yaCj4gPgo+ID4gR2V0
-IHRoZSBmaWZvIHNpemUgZnJvbSBkZXZpY2UgdHJlZQo+ID4gYmVjYXVzZSBlYWNoIHJkbWEgaW4g
-dGhlIHNhbWUgU29DIG1heSBoYXZlIGRpZmZlcmVudCBmaWZvIHNpemUKPgo+IFJldmlld2VkLWJ5
-OiBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4KCkFwcGxpZWQgdG8gbWVk
-aWF0ZWstZHJtLW5leHQgWzFdLCB0aGFua3MuCgpbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9w
-dWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xpbnV4LmdpdC9sb2cvP2g9bWVk
-aWF0ZWstZHJtLW5leHQKClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+Cj4gPgo+ID4gU2lnbmVkLW9m
-Zi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gPiAtLS0K
-PiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIHwgMTkgKysrKysr
-KysrKysrKysrKysrLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspLCAxIGRl
-bGV0aW9uKC0pCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZGlzcF9yZG1hLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5j
-Cj4gPiBpbmRleCBkNDZiOGFlLi44YzY0ZDVjIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kaXNwX3JkbWEuYwo+ID4gQEAgLTY0LDYgKzY0LDcgQEAgc3RydWN0IG10a19k
-aXNwX3JkbWEgewo+ID4gICAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21wICAgICAgICAgICAgIGRk
-cF9jb21wOwo+ID4gICAgICAgICBzdHJ1Y3QgZHJtX2NydGMgICAgICAgICAgICAgICAgICpjcnRj
-Owo+ID4gICAgICAgICBjb25zdCBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYV9kYXRhICpkYXRhOwo+ID4g
-KyAgICAgICB1MzIgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZpZm9fc2l6ZTsKPiA+ICB9
-Owo+ID4KPiA+ICBzdGF0aWMgaW5saW5lIHN0cnVjdCBtdGtfZGlzcF9yZG1hICpjb21wX3RvX3Jk
-bWEoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKPiA+IEBAIC0xMzIsMTIgKzEzMywxOCBAQCBz
-dGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5z
-aWduZWQgaW50IHdpZHRoLAo+ID4gICAgICAgICB1bnNpZ25lZCBpbnQgdGhyZXNob2xkOwo+ID4g
-ICAgICAgICB1bnNpZ25lZCBpbnQgcmVnOwo+ID4gICAgICAgICBzdHJ1Y3QgbXRrX2Rpc3BfcmRt
-YSAqcmRtYSA9IGNvbXBfdG9fcmRtYShjb21wKTsKPiA+ICsgICAgICAgdTMyIHJkbWFfZmlmb19z
-aXplOwo+ID4KPiA+ICAgICAgICAgbXRrX2RkcF93cml0ZV9tYXNrKGNtZHFfcGt0LCB3aWR0aCwg
-Y29tcCwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIERJU1BfUkVHX1JETUFfU0laRV9D
-T05fMCwgMHhmZmYpOwo+ID4gICAgICAgICBtdGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3QsIGhl
-aWdodCwgY29tcCwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIERJU1BfUkVHX1JETUFf
-U0laRV9DT05fMSwgMHhmZmZmZik7Cj4gPgo+ID4gKyAgICAgICBpZiAocmRtYS0+Zmlmb19zaXpl
-KQo+ID4gKyAgICAgICAgICAgICAgIHJkbWFfZmlmb19zaXplID0gcmRtYS0+Zmlmb19zaXplOwo+
-ID4gKyAgICAgICBlbHNlCj4gPiArICAgICAgICAgICAgICAgcmRtYV9maWZvX3NpemUgPSBSRE1B
-X0ZJRk9fU0laRShyZG1hKTsKPiA+ICsKPiA+ICAgICAgICAgLyoKPiA+ICAgICAgICAgICogRW5h
-YmxlIEZJRk8gdW5kZXJmbG93IHNpbmNlIERTSSBhbmQgRFBJIGNhbid0IGJlIGJsb2NrZWQuCj4g
-PiAgICAgICAgICAqIEtlZXAgdGhlIEZJRk8gcHNldWRvIHNpemUgcmVzZXQgZGVmYXVsdCBvZiA4
-IEtpQi4gU2V0IHRoZQo+ID4gQEAgLTE0Niw3ICsxNTMsNyBAQCBzdGF0aWMgdm9pZCBtdGtfcmRt
-YV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLAo+
-ID4gICAgICAgICAgKi8KPiA+ICAgICAgICAgdGhyZXNob2xkID0gd2lkdGggKiBoZWlnaHQgKiB2
-cmVmcmVzaCAqIDQgKiA3IC8gMTAwMDAwMDsKPiA+ICAgICAgICAgcmVnID0gUkRNQV9GSUZPX1VO
-REVSRkxPV19FTiB8Cj4gPiAtICAgICAgICAgICAgIFJETUFfRklGT19QU0VVRE9fU0laRShSRE1B
-X0ZJRk9fU0laRShyZG1hKSkgfAo+ID4gKyAgICAgICAgICAgICBSRE1BX0ZJRk9fUFNFVURPX1NJ
-WkUocmRtYV9maWZvX3NpemUpIHwKPiA+ICAgICAgICAgICAgICAgUkRNQV9PVVRQVVRfVkFMSURf
-RklGT19USFJFU0hPTEQodGhyZXNob2xkKTsKPiA+ICAgICAgICAgbXRrX2RkcF93cml0ZShjbWRx
-X3BrdCwgcmVnLCBjb21wLCBESVNQX1JFR19SRE1BX0ZJRk9fQ09OKTsKPiA+ICB9Cj4gPiBAQCAt
-MjkyLDYgKzI5OSwxNiBAQCBzdGF0aWMgaW50IG10a19kaXNwX3JkbWFfcHJvYmUoc3RydWN0IHBs
-YXRmb3JtX2RldmljZSAqcGRldikKPiA+ICAgICAgICAgICAgICAgICByZXR1cm4gY29tcF9pZDsK
-PiA+ICAgICAgICAgfQo+ID4KPiA+ICsgICAgICAgaWYgKG9mX2ZpbmRfcHJvcGVydHkoZGV2LT5v
-Zl9ub2RlLCAibWVkaWF0ZWsscmRtYS1maWZvLXNpemUiLCAmcmV0KSkgewo+ID4gKyAgICAgICAg
-ICAgICAgIHJldCA9IG9mX3Byb3BlcnR5X3JlYWRfdTMyKGRldi0+b2Zfbm9kZSwKPiA+ICsgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAibWVkaWF0ZWsscmRtYS1maWZv
-LXNpemUiLAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZw
-cml2LT5maWZvX3NpemUpOwo+ID4gKyAgICAgICAgICAgICAgIGlmIChyZXQpIHsKPiA+ICsgICAg
-ICAgICAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCByZG1hIGZpZm8g
-c2l6ZVxuIik7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gcmV0Owo+ID4gKyAg
-ICAgICAgICAgICAgIH0KPiA+ICsgICAgICAgfQo+ID4gKwo+ID4gICAgICAgICByZXQgPSBtdGtf
-ZGRwX2NvbXBfaW5pdChkZXYsIGRldi0+b2Zfbm9kZSwgJnByaXYtPmRkcF9jb21wLCBjb21wX2lk
-LAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmbXRrX2Rpc3BfcmRtYV9mdW5j
-cyk7Cj4gPiAgICAgICAgIGlmIChyZXQpIHsKPiA+IC0tCj4gPiAxLjguMS4xLmRpcnR5Cj4gPiBf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4gTGludXgt
-bWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
-b3JnCj4gPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW1lZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW1lZGlhdGVrCg==
+On Thu, Jan 14, 2021 at 4:30 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+> Hi Ikjoon,
+>
+> On Tue, 2021-01-12 at 13:48 +0800, Ikjoon Jang wrote:
+> > On Fri, Jan 8, 2021 at 10:44 PM Mathias Nyman
+> > <mathias.nyman@linux.intel.com> wrote:
+> > >
+> > > On 8.1.2021 8.11, Chunfeng Yun wrote:
+> > > > On Thu, 2021-01-07 at 13:09 +0200, Mathias Nyman wrote:
+> > > >> On 29.12.2020 8.24, Ikjoon Jang wrote:
+> > > >>> xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
+> > > >>> to handle its own sw bandwidth managements and stores bandwidth data
+> > > >>> into internal table every time add_endpoint() is called,
+> > > >>> so when bandwidth allocation fails at one endpoint, all earlier
+> > > >>> allocation from the same interface could still remain at the table.
+> > > >>>
+> > > >>> This patch adds two more hooks from check_bandwidth() and
+> > > >>> reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
+> > > >>> from reset_bandwidth().
+> > > >>>
+> > > >>> Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
+> > > >>> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> > > >>>
+> > > >>
+> > > >> ...
+> > > >>
+> > > >>>
+> > > >>> diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+> > > >>> index d4a8d0efbbc4..e1fcd3cf723f 100644
+> > > >>> --- a/drivers/usb/host/xhci.c
+> > > >>> +++ b/drivers/usb/host/xhci.c
+> > > >>> @@ -2882,6 +2882,12 @@ static int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+> > > >>>     xhci_dbg(xhci, "%s called for udev %p\n", __func__, udev);
+> > > >>>     virt_dev = xhci->devs[udev->slot_id];
+> > > >>>
+> > > >>> +   if (xhci->quirks & XHCI_MTK_HOST) {
+> > > >>> +           ret = xhci_mtk_check_bandwidth(hcd, udev);
+> > > >>> +           if (ret < 0)
+> > > >>> +                   return ret;
+> > > >>> +   }
+> > > >>> +
+> > > >>
+> > > >> Just noticed that XHCI_MTK_HOST quirk is only set in xhci-mtk.c.
+> > > >> xhci-mtk.c calls xhci_init_driver(..., xhci_mtk_overrides) with a .reset override function.
+> > > >>
+> > > >> why not add override functions for .check_bandwidth and .reset_bandwidth to xhci_mtk_overrides instead?
+> > > >>
+> > > >> Another patch to add similar overrides for .add_endpoint and .drop_endpoint should probably be
+> > > >> done so that we can get rid of the xhci_mtk_add/drop_ep_quirk() calls in xhci.c as well
+> > > > You mean, we can export xhci_add/drop_endpoint()?
+> > >
+> > > I think so, unless you have a better idea.
+> > > I prefer exporting the generic add/drop_endpoint functions rather than the vendor specific quirk functions.
+> > >
+> >
+> > When moving out all MTK_HOST quirks and unlink xhci-mtk-sch from xhci,
+> > xhci-mtk-sch still needs to touch the xhci internals, at least struct
+> > xhci_ep_ctx.
+> >
+> > My naive idea is just let xhci export one more function to expose xhci_ep_ctx.
+> > But I'm not sure whether this is acceptable:
+> I find that xhci_add_endpoint() ignores some errors with return 0, for
+> these cases we needn't call xhci_mtk_add_ep-quirk(), so may be not a
+> good way to just export xhci_add_endpoint().
+
+yeah, maybe that's from ep0 case?
+
+And I've thought that we could also unlink xhci-mtk-sch from the xhci module
+if MTK_HOST quirk functions are moved out to mtk platform driver's overrides.
+I guess I've gone too far.
+
+If we keep xhci-mtk-sch being built with the xhci module,
+xhci-mtk-sch can directly access input control context and its drop/add flags,
+so I think we can simply remove {add|drop}_endpoint() quirks and just handle
+them all in {check|reset}_bandwidth() overrides.
+
+>
+> >
+> > +struct xhci_ep_ctx* xhci_get_ep_contex(struct xhci_hcd *xhci, struct
+> > usb_host_endpoint *ep)
+> > +{ ... }
+> > +EXPORT_SYMBOL(xhci_get_ep_context);
+> >
+> > But for v6, I'm going to submit a patch with {check|reset}_bandwidth()
+> > quirk function
+> >  switched into xhci_driver_overrides first. (and preserve existing
+> > MTK_HOST quirk functions).
+> >
+> > Thanks!
+> >
+> > > -Mathias
+> > >
+>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
