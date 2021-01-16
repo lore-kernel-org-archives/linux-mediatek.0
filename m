@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50A21C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jan 2021 09:07:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C51EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jan 2021 09:07:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 046FA23A56
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jan 2021 09:07:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 046FA23A56
+	by mail.kernel.org (Postfix) with ESMTPS id A4B2D23A56
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jan 2021 09:07:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A4B2D23A56
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RDqTr5T6Z8CvvbeyOOBa1+j+9FBLNEy5eLAZaiEfL3E=; b=DYycH+HKKnGzEGemQ76dnrhKT
-	j7Dc5ma/k/JZ1d7gttgCP1P3myqZcwWBYuNxnnEwUyAb7nUhm5p62M+6yuUvXxWvkCfwKxSmvzuPo
-	Hooewq5qgMTVjl/XC2jsYlQ/oQuYKHWg9eCKybYvSFNE1m+oHDh6YqOU379DaM5tF7oqepKbpTpte
-	mBAvudjCqjpnK8vIyyA8xRi/2rX4yF7qYGCF648I2qKV086jhk+WmsFzgkBAHwwoZs9tW731YZso/
-	Q3on5eX/HVykboE+f5fW7Nfoks9LeeHLnhlwmQwDGr904O4loIJgCihQrTgpS1VYnax7ARF5dF1iL
-	vlK7Zu/Gw==;
+	 bh=KOTL71kbH5F9AJJJNfMnOSZwErT2VpEXEl/5VDAdPCk=; b=h7GTlTf/IJ8ujGWs3KTgubFCh
+	nqq7tnChNrM1aHH4rRqYwOPgdAMQggBAkOcwymfvMe37MjcFgHCKmjCFSS/nJnGqkBhuQPJHRCY0M
+	0oXRS6FguUThM4SBz6EKDdvXV9wAt+78jP1vxBurUk1Hi0cZRJzPrdzhu0HwG/WfFh0YhWH30FZMM
+	prLn0wfbgMnhHnOKvpVK2lFs1JcnJ2YsqBypOUJ3xxy9/pUyCmKHkVFkJOi+NW8NHhrMZfzC7jAjD
+	pjKGZXzT1ctTLukhBodhJlo5j2gTqCwf9XIvJtj/damRoNGGSsHEVHxXw9dnDgI02K39GSnj33fpu
+	O5XJwVSrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l0hYH-0007z8-Bq; Sat, 16 Jan 2021 09:07:21 +0000
+	id 1l0hYI-0007zX-JC; Sat, 16 Jan 2021 09:07:22 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l0hY8-0007v7-PU; Sat, 16 Jan 2021 09:07:14 +0000
-X-UUID: d1fe694714e64fe2af0a4fe7ab5837d4-20210116
+ id 1l0hY8-0007v6-Q3; Sat, 16 Jan 2021 09:07:14 +0000
+X-UUID: f0b9771a6fed453f9277ad422f63f79f-20210116
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=GB0vtQkEwWei9wzY+9h3r46wLRGJpP/EuhOhHmCWvRU=; 
- b=sTt+8dLHST/yoHKCrRhIVjcKnGtAAs5CbWM8QCC5o0CPoYuYDLjTf91zbPqe44pzHRAR+/6C7HmACF/Jm8sd6yYU00b3CRfrF3wlapH7K172T/Cj/F9DbY66rGGhWOWYbrr9nuD7LGMvJt5brE6QgWhrs1WkHsMxjvZ4Ulve6sE=;
-X-UUID: d1fe694714e64fe2af0a4fe7ab5837d4-20210116
+ bh=1NGzGRnCR+w17RCentVNvfjPyjrgOicWDwDStm/Ppnk=; 
+ b=TFZskg+eHrUz73rdh8EHYwzBtU0fO1Er8wLaBIqN9yMY4UZWtImESZt0ldBzVrctE4YEn2MMupG76ikLxHfPjRoZP8ifmIH9z6g6l3UglmJFsnakP/W0FPXBrBCpM6PkBRjW0y7c1bF9c03+FWQU2AxWPlHFtDPt+zbzWutd95w=;
+X-UUID: f0b9771a6fed453f9277ad422f63f79f-20210116
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 361810085; Sat, 16 Jan 2021 01:07:07 -0800
+ with ESMTP id 235234322; Sat, 16 Jan 2021 01:07:07 -0800
 Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 16 Jan 2021 01:07:05 -0800
+ 15.0.1497.2; Sat, 16 Jan 2021 01:07:06 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 16 Jan 2021 17:07:02 +0800
+ 15.0.1497.2; Sat, 16 Jan 2021 17:07:01 +0800
 Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 16 Jan 2021 17:07:02 +0800
+ Frontend Transport; Sat, 16 Jan 2021 17:07:01 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Greg
  Kroah-Hartman" <gregkh@linuxfoundation.org>, Matthias Brugger
  <matthias.bgg@gmail.com>
-Subject: [PATCH next 12/15] arm64: dts: mediatek: mt8183: fix dtbs_check
- warning
-Date: Sat, 16 Jan 2021 17:06:53 +0800
-Message-ID: <20210116090656.11752-12-chunfeng.yun@mediatek.com>
+Subject: [PATCH next 09/15] arm64: dts: mediatek: mt2712: harmonize node names
+Date: Sat, 16 Jan 2021 17:06:50 +0800
+Message-ID: <20210116090656.11752-9-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210116090656.11752-1-chunfeng.yun@mediatek.com>
 References: <20210116090656.11752-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 642A46D8C21FEDB3D30977DFECD18F391399E364FD2873F15A35EB1082F3ED5E2000:8
+X-TM-SNTS-SMTP: FA97D7232DB38159C8903CA725EFE3F987503E76C0F654681B44D61DEA36C8872000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210116_040713_056564_79FE1F42 
-X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-CacheID: sfid-20210116_040713_070582_5491059A 
+X-CRM114-Status: UNSURE (   9.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,53 +94,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Harmonize node names, compatibles and properties.
+This is used to fix dtbs_check warning.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 5b782a4769e7..a69a033a68ac 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -865,7 +865,7 @@
- 			ranges;
- 			status = "disabled";
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index db17d0a4ed57..a9cca9c146fd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -805,7 +805,7 @@
+ 		ranges;
+ 		status = "disabled";
  
--			usb_host: xhci@11200000 {
-+			usb_host: usb@11200000 {
- 				compatible = "mediatek,mt8183-xhci",
- 					     "mediatek,mtk-xhci";
- 				reg = <0 0x11200000 0 0x1000>;
-@@ -908,11 +908,11 @@
- 			status = "disabled";
+-		usb_host0: xhci@11270000 {
++		usb_host0: usb@11270000 {
+ 			compatible = "mediatek,mt2712-xhci",
+ 				     "mediatek,mtk-xhci";
+ 			reg = <0 0x11270000 0 0x1000>;
+@@ -818,7 +818,7 @@
  		};
+ 	};
  
--		mipi_tx0: mipi-dphy@11e50000 {
-+		mipi_tx0: dsi-phy@11e50000 {
- 			compatible = "mediatek,mt8183-mipi-tx";
- 			reg = <0 0x11e50000 0 0x1000>;
- 			clocks = <&apmixedsys CLK_APMIXED_MIPID0_26M>;
--			clock-names = "ref_clk";
-+			clock-names = "ref";
- 			#clock-cells = <0>;
- 			#phy-cells = <0>;
- 			clock-output-names = "mipi_tx0_pll";
-@@ -931,11 +931,10 @@
- 			};
+-	u3phy0: usb-phy@11290000 {
++	u3phy0: t-phy@11290000 {
+ 		compatible = "mediatek,mt2712-tphy",
+ 			     "mediatek,generic-tphy-v2";
+ 		#address-cells = <1>;
+@@ -869,7 +869,7 @@
+ 		ranges;
+ 		status = "disabled";
+ 
+-		usb_host1: xhci@112c0000 {
++		usb_host1: usb@112c0000 {
+ 			compatible = "mediatek,mt2712-xhci",
+ 				     "mediatek,mtk-xhci";
+ 			reg = <0 0x112c0000 0 0x1000>;
+@@ -882,7 +882,7 @@
  		};
+ 	};
  
--		u3phy: usb-phy@11f40000 {
-+		u3phy: t-phy@11f40000 {
- 			compatible = "mediatek,mt8183-tphy",
- 				     "mediatek,generic-tphy-v2";
- 			#address-cells = <1>;
--			#phy-cells = <1>;
- 			#size-cells = <1>;
- 			ranges = <0 0 0x11f40000 0x1000>;
- 			status = "okay";
+-	u3phy1: usb-phy@112e0000 {
++	u3phy1: t-phy@112e0000 {
+ 		compatible = "mediatek,mt2712-tphy",
+ 			     "mediatek,generic-tphy-v2";
+ 		#address-cells = <1>;
 -- 
 2.18.0
 _______________________________________________
