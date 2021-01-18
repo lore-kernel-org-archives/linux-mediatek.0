@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68179C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jan 2021 18:41:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E577C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jan 2021 18:42:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2822E2225E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jan 2021 18:41:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2822E2225E
+	by mail.kernel.org (Postfix) with ESMTPS id 55E4D2225E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jan 2021 18:42:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55E4D2225E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,40 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=K3eLj3Ssc2SMwcGdYwKtV1IFXa1YP244QayVmn/Hxs4=; b=MGzGP1r7tKGtEZdcZK4sGE/Kd
-	/06t1dKHi+Vbrc1/Tf8GiBga2comv8kUV3GUq8HCPNCbvtFFc/HyRxrJ2bSjzmHd/7aEpVGvk63bu
-	yrUj96Ty860SbmcOUcGVabz68sMPevQZ7lifG5OaIH9QmjB71kvSTOqN9CjhQvCXzwKE+aNUdut6O
-	G8Jzb2ST6Yz/tpxX00lTusQ/DkLX3AlU7jp8etp38mhnryLCpG138Z+T3EARJ7QNu8zs7MAs4vnJY
-	AewsQSVxzMFLTFyJWYYZgobaUtS9S7e+9YM9FXaLE1NLq+lnmhSPtX7Bivyt0THFr6BSd1jv8S7UH
-	eku70j6CQ==;
+	 bh=+4nZk5tSLWorGY4qd541xMeF+cts3yU4NVplJ+E6YxM=; b=eY2mziYzowI7vOlQpuRLv2ppt
+	kaeKnwvTBTTT79nvJb+WPpiA0LVnS0pz0BrDB4CeLBGaeI1/A/l2BBQhkDegtDCa5YD6/Q8DbHW28
+	Sw1ywbGsn65Q6N4/QM17A2NQUGC5Lf3ldU0a6JujAhajgO3l6gdAIlj3bng7YLLt3z6bqpornWu1M
+	/bM6H4dNzuEVtcKxMlElzOC6gu0P3yZ9o153oKVsSG/O94IrspbV6jelw84/JYsmDyqnTiyY8dZ8x
+	cyjT9SC32fchR+CbFlnpDmKJpGBF0v3HeJlT09stp9JpO3gUW4HhmprWU+O2YPsutjyDmbEZsMGSu
+	ojwmHW5lw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1ZT7-0003LQ-FD; Mon, 18 Jan 2021 18:41:37 +0000
+	id 1l1ZUI-0003XU-9P; Mon, 18 Jan 2021 18:42:50 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1ZT3-0003KZ-FV; Mon, 18 Jan 2021 18:41:34 +0000
+ id 1l1ZUE-0003WM-J0; Mon, 18 Jan 2021 18:42:47 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5894131B;
- Mon, 18 Jan 2021 10:41:32 -0800 (PST)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A6A17D6E;
+ Mon, 18 Jan 2021 10:42:45 -0800 (PST)
 Received: from [10.57.39.58] (unknown [10.57.39.58])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 77F8E3F719;
- Mon, 18 Jan 2021 10:41:29 -0800 (PST)
-Subject: Re: [PATCH v4 4/7] iommu: Switch gather->end to the inclusive end
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3AF993F719;
+ Mon, 18 Jan 2021 10:42:42 -0800 (PST)
+Subject: Re: [PATCH v4 5/7] iommu/io-pgtable: Allow io_pgtable_tlb ops optional
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
  Will Deacon <will@kernel.org>
 References: <20210107122909.16317-1-yong.wu@mediatek.com>
- <20210107122909.16317-5-yong.wu@mediatek.com>
+ <20210107122909.16317-6-yong.wu@mediatek.com>
 From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <9e49206b-0762-9451-a5ab-9cd7ad5959e0@arm.com>
-Date: Mon, 18 Jan 2021 18:41:29 +0000
+Message-ID: <9b51058a-f636-e2b3-b5ee-0b48e4bccfc9@arm.com>
+Date: Mon, 18 Jan 2021 18:42:42 +0000
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
  Thunderbird/78.6.1
 MIME-Version: 1.0
-In-Reply-To: <20210107122909.16317-5-yong.wu@mediatek.com>
+In-Reply-To: <20210107122909.16317-6-yong.wu@mediatek.com>
 Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_134133_614413_B74805FD 
-X-CRM114-Status: GOOD (  25.80  )
+X-CRM114-CacheID: sfid-20210118_134246_695864_9F2E5021 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,95 +83,50 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2021-01-07 12:29, Yong Wu wrote:
-> Currently gather->end is "unsigned long" which may be overflow in
-> arch32 in the corner case: 0xfff00000 + 0x100000(iova + size).
-> Although it doesn't affect the size(end - start), it affects the checking
-> "gather->end < end"
-> 
-> This patch changes this "end" to the real end address
-> (end = start + size - 1). Correspondingly, update the length to
-> "end - start + 1".
-> 
-> Fixes: a7d20dc19d9e ("iommu: Introduce struct iommu_iotlb_gather for batching TLB flushes")
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->   drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 2 +-
->   drivers/iommu/mtk_iommu.c                   | 2 +-
->   drivers/iommu/tegra-gart.c                  | 2 +-
->   include/linux/iommu.h                       | 4 ++--
->   4 files changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> index 8ca7415d785d..c70d6e79f534 100644
-> --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> @@ -2280,7 +2280,7 @@ static void arm_smmu_iotlb_sync(struct iommu_domain *domain,
->   {
->   	struct arm_smmu_domain *smmu_domain = to_smmu_domain(domain);
->   
-> -	arm_smmu_tlb_inv_range(gather->start, gather->end - gather->start,
-> +	arm_smmu_tlb_inv_range(gather->start, gather->end - gather->start + 1,
->   			       gather->pgsize, true, smmu_domain);
->   }
->   
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index f579fc21971e..66a00a2cb445 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -443,7 +443,7 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
->   				 struct iommu_iotlb_gather *gather)
->   {
->   	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-> -	size_t length = gather->end - gather->start;
-> +	size_t length = gather->end - gather->start + 1;
->   
->   	if (gather->start == ULONG_MAX)
->   		return;
-> diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
-> index 05e8e19b8269..6f130e51f072 100644
-> --- a/drivers/iommu/tegra-gart.c
-> +++ b/drivers/iommu/tegra-gart.c
-> @@ -270,7 +270,7 @@ static void gart_iommu_sync_map(struct iommu_domain *domain, unsigned long iova,
->   static void gart_iommu_sync(struct iommu_domain *domain,
->   			    struct iommu_iotlb_gather *gather)
->   {
-> -	size_t length = gather->end - gather->start;
-> +	size_t length = gather->end - gather->start + 1;
+> This patch allows io_pgtable_tlb ops could be null since the IOMMU drivers
+> may use the tlb ops from iommu framework.
 
-TBH I don't think there's any need to bother doing precise calculations 
-on effectively-uninitialised data (this driver doesn't even do 
-address-based invalidation, let alone use the gather mechanism). In fact 
-it might make sense to flip things around and define gart_iommu_sync_map 
-in terms of gart_iommu_sync now just so there's one less unused argument 
-to make up. However we can always do cleanup on top, and right now I'm 
-more interested in getting these changes landed, so either way,
+For the reasons I gave on v3,
 
 Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 
->   	gart_iommu_sync_map(domain, gather->start, length);
->   }
-> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-> index 9ce0aa9e236b..ae8eddd4621b 100644
-> --- a/include/linux/iommu.h
-> +++ b/include/linux/iommu.h
-> @@ -170,7 +170,7 @@ enum iommu_dev_features {
->    * struct iommu_iotlb_gather - Range information for a pending IOTLB flush
->    *
->    * @start: IOVA representing the start of the range to be flushed
-> - * @end: IOVA representing the end of the range to be flushed (exclusive)
-> + * @end: IOVA representing the end of the range to be flushed (inclusive)
->    * @pgsize: The interval at which to perform the flush
->    *
->    * This structure is intended to be updated by multiple calls to the
-> @@ -539,7 +539,7 @@ static inline void iommu_iotlb_gather_add_page(struct iommu_domain *domain,
->   					       struct iommu_iotlb_gather *gather,
->   					       unsigned long iova, size_t size)
->   {
-> -	unsigned long start = iova, end = start + size;
-> +	unsigned long start = iova, end = start + size - 1;
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   include/linux/io-pgtable.h | 8 +++++---
+>   1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
+> index ea727eb1a1a9..2a5686ca2ba3 100644
+> --- a/include/linux/io-pgtable.h
+> +++ b/include/linux/io-pgtable.h
+> @@ -214,14 +214,16 @@ struct io_pgtable_domain_attr {
 >   
->   	/*
->   	 * If the new page is disjoint from the current range or is mapped at
+>   static inline void io_pgtable_tlb_flush_all(struct io_pgtable *iop)
+>   {
+> -	iop->cfg.tlb->tlb_flush_all(iop->cookie);
+> +	if (iop->cfg.tlb && iop->cfg.tlb->tlb_flush_all)
+> +		iop->cfg.tlb->tlb_flush_all(iop->cookie);
+>   }
+>   
+>   static inline void
+>   io_pgtable_tlb_flush_walk(struct io_pgtable *iop, unsigned long iova,
+>   			  size_t size, size_t granule)
+>   {
+> -	iop->cfg.tlb->tlb_flush_walk(iova, size, granule, iop->cookie);
+> +	if (iop->cfg.tlb && iop->cfg.tlb->tlb_flush_walk)
+> +		iop->cfg.tlb->tlb_flush_walk(iova, size, granule, iop->cookie);
+>   }
+>   
+>   static inline void
+> @@ -229,7 +231,7 @@ io_pgtable_tlb_add_page(struct io_pgtable *iop,
+>   			struct iommu_iotlb_gather * gather, unsigned long iova,
+>   			size_t granule)
+>   {
+> -	if (iop->cfg.tlb->tlb_add_page)
+> +	if (iop->cfg.tlb && iop->cfg.tlb->tlb_add_page)
+>   		iop->cfg.tlb->tlb_add_page(gather, iova, granule, iop->cookie);
+>   }
+>   
 > 
 
 _______________________________________________
