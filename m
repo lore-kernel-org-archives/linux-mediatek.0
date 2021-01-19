@@ -2,73 +2,80 @@ Return-Path: <SRS0=YRwc=GW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BEFCFC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 03:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 806FEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 03:21:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8169F206F1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 03:01:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8169F206F1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 06C6B2184D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 03:21:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 06C6B2184D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DWGWV2wcdsSXaSb4ttdaVTMT9VICRAIKMA6xEJ2jakQ=; b=Z97+saqUy7gEYl4akfsjNWSmbd
-	GaQzMbs1RmaUFWkGC/uQ9TEzcxRCG7RJ4lQPas39649wCeM/CttpBSIqDCyUWACfcwlIjDxuPZDGQ
-	seqOUgrwqAGgMX9pHQXF3MNybJ5ih8NRIIo07Eh16tO+JOz7HUGqlUMWmZL7nErjtTvVyU2xIv2E2
-	x8dxWBYHHaOhnCi2zxyJE2AdpnNuogVB8J3rXLZk1XGHSFFi6sneWmwfYqdtyv963331Yy0HBin6A
-	JYfOQnCJUt3HlIFkpLztK32nlYjWySPcSMbXaKLIeGe94ld0F47MmXGOBHsqmsEHsF2IbEgWUGa5g
-	qZNlnDFg==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=MdyxJ4Y3317fzyBGoHZh3/3Lchybcv8r+JuFAazyz7s=; b=qiTREgKKrgB+2iHhTrw682IGy
+	T4YxtOgOczQdgG3CgY0/z/sp/cER/W/K1Mf7EhwnxQ+l24LdfXCoLyMAj5qdKfp7S6j+OSRc49Y4H
+	/1J57dCfy/eAUfjaHOKJxgijttyIAxvPPypHJAbOCWR66Wq4qlSB74LVvt5d/UTiGgdcWV8X6tRS8
+	MaxLijNcgQFRukkaHmLdrZj3XYX91jFZVeeMdjZwflAJnciVk53Dz+h7BrcCxos9baM01BFCNtqMR
+	tO+qxjI92+dqa2GCR75XwpWKbuEv00CwhryLQKRBj8EF2iS9WJFAQh3/Vj7BMQNuQvOnRUcjDHTwM
+	2+nPOy9eQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1hH0-0007Jv-0a; Tue, 19 Jan 2021 03:01:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l1hZm-0008Fn-6f; Tue, 19 Jan 2021 03:21:02 +0000
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1hGx-0007Ip-Qf
- for linux-mediatek@lists.infradead.org; Tue, 19 Jan 2021 03:01:36 +0000
-X-UUID: f621859c78384c3eaf87c21045e44767-20210118
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=+pMJXSfggRp6QMPMTv6oSVpOlZCFHVbD5L2c0hXPRog=; 
- b=PHb+mkKI3sK4ldm8UhBgSKLmmU2vzNpo7mqWGcCpWNNYoYHC10XobCxLGvDf9myZaJFGTEnNmNcIEG8brRaLit/7AV+V2LuS1wc9tH+sQw7XSUKHwUAXyV9I5f4kytlDQlWT9TvqWtNzvhm/el7FA0AU4oVZgbpGCBovdNetp8w=;
-X-UUID: f621859c78384c3eaf87c21045e44767-20210118
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 167512599; Mon, 18 Jan 2021 19:01:30 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Jan 2021 19:01:28 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 19 Jan 2021 11:01:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 19 Jan 2021 11:01:26 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v2] mt76: mt7915: support TxBF for DBDC
-Date: Tue, 19 Jan 2021 11:01:25 +0800
-Message-ID: <55d4370379796672abd12baacb82ace52d594b9d.1610938153.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1l1hZh-0008FE-RZ; Tue, 19 Jan 2021 03:20:58 +0000
+Received: by mail-io1-xd31.google.com with SMTP id p72so12141809iod.12;
+ Mon, 18 Jan 2021 19:20:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7MVhaKG7Tn8dwOvNkpJZ6mk5gJu3V7+tsTKQ2lqUNQE=;
+ b=HD4yG7uJzVIXhW4l5LOOY2Wtb78VGKVvgrBOKpEg8/e3WTdk/g2b3OD5zky4NY7qNP
+ 0qlAkuB3YWZQtvgm0E4njzDLwumPfzddC5mGulQB28NbWUPw+fPt32WMgONtkQergNDr
+ hWeu0gHhFCSUcKSQ1XncMb1xgIC4NwsBxa1dbqAXJP8fv/+3Kzg3h1kxtVFJR2m0duxn
+ 5kXzMgWqSjS6POeLMRCi2OGi6kxSqkkXzjSBxRul3ZKyTclzcthyiN3RJbUCowWibEAZ
+ NT1i5Yo7Ee9UXgpB8jaNZHyfWUNWaM2DMKTezjdSYJnD2Q3fY/igFFyHboIpu/M68fPl
+ KEHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7MVhaKG7Tn8dwOvNkpJZ6mk5gJu3V7+tsTKQ2lqUNQE=;
+ b=UCUkHZ0VM1+EzPM3VxuEZpzQgzrUnJDmQd6FEaXx90WNeL44KWpTcQl41IFdBRBlfE
+ CMwEJHL0CxrjGINgWj6d4Lz8j3wGqWSicDhAe7CzPN4c/ht/wFT8lA8O16PSeoKOYOEo
+ snylWU8/eyS5O5R+7uofqvQ5uip3GSM37a4w7WHkwUdjCO6c8p/hal0ctHLvostICPWm
+ 27/WsbGVd/ljz+qq83aX2dR23Y2NWX/kKMw++4iRNn8zhLHZA0JWc4zqXa1LFZIecHyl
+ ufQtn8lRRh3Fra+WZU/vK7I7vGkuRhffJNPkougElxfneEzUUX9PqEnOACCTDfOd6fV3
+ 5qpA==
+X-Gm-Message-State: AOAM532d2CW+RPTNXIIvRi0gP5665FBH/HJhhrmsDVkVWmWkPhFlkArR
+ BCqCWZ62Ngw4OxEixhk9qDXnT21f2FgQXVMox40=
+X-Google-Smtp-Source: ABdhPJzXnPvDBsNuLIJ/wPJ3uimKTNwNlnlHCUgeghHJPjwTzbvrIJD6a+WMcDB8AkkPzw0EUhbbpeUYS71kvSYdUJw=
+X-Received: by 2002:a6b:c7c5:: with SMTP id x188mr1480858iof.39.1611026455198; 
+ Mon, 18 Jan 2021 19:20:55 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 84CABABC773B09E7EBDFBA5094A23FF14B3DA54BCB7ADC49741A0C36F91E371B2000:8
-X-MTK: N
+References: <20210111054428.3273-1-dqfext@gmail.com>
+ <20210111054428.3273-3-dqfext@gmail.com>
+ <CACRpkdYA2fWF_1K+2aYoZnBAsm9H3=VHpeT4ZDU5sCdrOUWx=w@mail.gmail.com>
+In-Reply-To: <CACRpkdYA2fWF_1K+2aYoZnBAsm9H3=VHpeT4ZDU5sCdrOUWx=w@mail.gmail.com>
+From: DENG Qingfang <dqfext@gmail.com>
+Date: Tue, 19 Jan 2021 11:20:48 +0800
+Message-ID: <CALW65jbJ2DFqLw-i91y7oRfRhcukHSAS3A0XMuy4kA+1AtLtLQ@mail.gmail.com>
+Subject: Re: [PATCH net-next 2/2] drivers: net: dsa: mt7530: MT7530 optional
+ GPIO support
+To: Linus Walleij <linus.walleij@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_220136_046841_5E593B13 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20210118_222057_934910_80809364 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,84 +87,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
- linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, netdev <netdev@vger.kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ "David S. Miller" <davem@davemloft.net>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Vladimir Oltean <olteanv@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With this patch, TxBF can be run on both bands simultaneously.
+Hi Linus,
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/init.c  |  7 +++++++
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 19 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
- 3 files changed, 27 insertions(+)
+On Mon, Jan 18, 2021 at 10:55 PM Linus Walleij <linus.walleij@linaro.org> wrote:
+>
+> So for offset 0..14 this becomes bits
+> 0, 1, 2, 4, 5, 6, 8, 9, 10, 12  ... 18
+>
+> What is the logic in this and is it what you intend?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 5e21646865a6..ad4e5b95158b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -169,6 +169,13 @@ static int mt7915_txbf_init(struct mt7915_dev *dev)
- {
- 	int ret;
- 
-+
-+	if (dev->dbdc_support) {
-+		ret = mt7915_mcu_set_txbf_module(dev);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	/* trigger sounding packets */
- 	ret = mt7915_mcu_set_txbf_sounding(dev);
- 	if (ret)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 6d4c5b7dfd56..b8fe34da9c77 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3422,6 +3422,25 @@ int mt7915_mcu_set_ser(struct mt7915_dev *dev, u8 action, u8 set, u8 band)
- 				 &req, sizeof(req), false);
- }
- 
-+int mt7915_mcu_set_txbf_module(struct mt7915_dev *dev)
-+{
-+#define MT_BF_MODULE_UPDATE               25
-+	struct {
-+		u8 action;
-+		u8 bf_num;
-+		u8 bf_bitmap;
-+		u8 bf_sel[8];
-+		u8 rsv[8];
-+	} __packed req = {
-+		.action = MT_BF_MODULE_UPDATE,
-+		.bf_num = 2,
-+		.bf_bitmap = GENMASK(1, 0),
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_TXBF_ACTION, &req,
-+				 sizeof(req), true);
-+}
-+
- int mt7915_mcu_set_txbf_type(struct mt7915_dev *dev)
- {
- #define MT_BF_TYPE_UPDATE		20
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index b5954bae139b..f45e88bf2626 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -341,6 +341,7 @@ int mt7915_mcu_set_pm(struct mt7915_dev *dev, int band, int enter);
- int mt7915_mcu_set_sku_en(struct mt7915_phy *phy, bool enable);
- int mt7915_mcu_set_sku(struct mt7915_phy *phy);
- int mt7915_mcu_set_txbf_type(struct mt7915_dev *dev);
-+int mt7915_mcu_set_txbf_module(struct mt7915_dev *dev);
- int mt7915_mcu_set_txbf_sounding(struct mt7915_dev *dev);
- int mt7915_mcu_set_fcc5_lpn(struct mt7915_dev *dev, int val);
- int mt7915_mcu_set_pulse_th(struct mt7915_dev *dev,
--- 
-2.18.0
+Yes. Bit 0..2 are phy 0's LED 0..2, bit 4..6 are phy 1's LED 0..2, etc.
+
+> Please add a comment explaining what the offset is supposed
+> to become for offsets 0..14 and why.
+
+I already added to mt7530.h, perhaps I should copy it here?
+
+>
+> > +       gc->ngpio = 15;
+>
+> And it really IS 15 not 16? Not that I know network equipment
+> very well...
+
+Yes, 3 LEDs for each phy.
+
+>
+> Yours,
+> Linus Walleij
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
