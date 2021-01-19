@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51A72C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B3AEC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:44:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BEA6422CB1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:38:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BEA6422CB1
+	by mail.kernel.org (Postfix) with ESMTPS id EDED623131
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:44:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDED623131
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=P9m0lL2MEAdzb6LNj68tJwQLR3CN4uctgbJAPUBQhWc=; b=tRI927IBSGosHr7iAF3yPf4cJ
-	IDB+7ftVN9DRAuMGawup4DdbUiXTMPDI5ozzGvYs2OYgVoCQvf+56kNNJ57UX2OFa0DpRNqZI4VfI
-	9w6i6yc2gwh/t6OmofTVonOS+LGEZXVIp9m72aA0gwkHsSjCQLtbYOXBxPJKzLTwPmKEils+Q3deL
-	vAL0PH+JIi+LCkEkMYOJDVJRhixd0WzWpBjeYfvYQVin0yAz8ePeuljc0PegXfJ3CaqS81mnwvBAa
-	lXSUTrDX0cTy/CZJUIM80rKegov25KjAJp3Tuc1ED3zGjQnY5PtsaBMdmrdtMztW4t+q7gd76Ulgq
-	pUx4E3HPw==;
+	 bh=uDUHq20EuDb54v5wH8afdotIOZxECbd015DdslL071w=; b=m878cw+tt5DZgWfuyFMHH5cYc
+	PNssl3JVkkbWs5X3AnEPWcZrqrsrP+OTh3R7p3Ir40cbhCeyrZ/kwoMotb+7HPoLh87LTxkKOIxn/
+	CoYhYxAo8DubyMcjQ2fLysf8WOtMOPBGneVOAfBOGsVTm2jVdjx3VUjvV47Mq7Fg9xANNz+fJ+//v
+	SkeF6FCxMezz79wYW5AtndOsYuGyv9UjsjkVP9Bl75NQpzlJKzqrFCX166ialPUnsh5KzdYNiFfcp
+	E8tA3di/Pu4P58L7b1ck7qL+HZ3Qb9j8sFL2FqjfWgmQCYz67VYFBY3yilBMU6P6nQt77wMxA4dwC
+	JLTJbgcrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1lab-0004a1-MN; Tue, 19 Jan 2021 07:38:09 +0000
+	id 1l1lg0-00055V-V9; Tue, 19 Jan 2021 07:43:45 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1laZ-0004ZX-9Z; Tue, 19 Jan 2021 07:38:08 +0000
-X-UUID: c9b518e1adc14fa9b94c83c3907b7b7e-20210118
+ id 1l1lfy-000544-MP; Tue, 19 Jan 2021 07:43:43 +0000
+X-UUID: 4b7356199eba4a46adac2a06017c9a65-20210118
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=umF0/4THUCkSbBZUhmq56lfHoNBXzIPnzphItGv/KMI=; 
- b=uoiTEcHxGC64lJXUJBfDRQNPGziRFltn+5ywxrdNMuiHtk5nfOGoPW34Cl3XfMkZHILw5Y4IcbiF5HnqUi4qVpKGbN6fZ57Vn9a55Wp4oipVxygjcvT7df7nn4jX3EDw7skviLs7ipm2c2yI0RhBqsCrVGtK2ZaC86ItRguHUiE=;
-X-UUID: c9b518e1adc14fa9b94c83c3907b7b7e-20210118
+ bh=ozSZxzeJfhdjy2ScWm8VmcjVBqWPRVRu2nraPSlGiUk=; 
+ b=GdHdxpLGzdPF8aKZs7EAtd6Fa6nHk3A47YIa1kxpdgXJ8v+3PGwyh4OALpNZ1qjEQFENEZIJ8TAVbnT68B25gXJlwIiJI+zpMFj5D8naYdU3yKqLR/EAYAnIMYqGJ6AVFsW13ZwkIuVF+p+Yl7v5zmcZv4uSrkkubPtMcp6oHNk=;
+X-UUID: 4b7356199eba4a46adac2a06017c9a65-20210118
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 655962305; Mon, 18 Jan 2021 23:37:59 -0800
-Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Jan 2021 23:37:57 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
- (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 19 Jan 2021 15:37:55 +0800
+ with ESMTP id 130330222; Mon, 18 Jan 2021 23:43:40 -0800
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Jan 2021 23:33:37 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 19 Jan 2021 15:33:33 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 19 Jan 2021 15:37:54 +0800
-Message-ID: <1611041874.12761.13.camel@mhfsdcap03>
+ Transport; Tue, 19 Jan 2021 15:33:32 +0800
+Message-ID: <1611041612.12761.9.camel@mhfsdcap03>
 Subject: Re: [PATCH 1/2] usb typec: tcpci: mt6360: Add vsafe0v support and
  external vbus supply control
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: ChiYuan Huang <u0084500@gmail.com>
-Date: Tue, 19 Jan 2021 15:37:54 +0800
-In-Reply-To: <CADiBU38g_E+iH4jTwQfPvJh4=WRH4vzQ12oubGg47gj+CpTU0A@mail.gmail.com>
+To: Guenter Roeck <linux@roeck-us.net>
+Date: Tue, 19 Jan 2021 15:33:32 +0800
+In-Reply-To: <3a4a88a9-f0e3-2b65-9df4-6c1d4e3f1c14@roeck-us.net>
 References: <1610720001-15300-1-git-send-email-u0084500@gmail.com>
  <3a4a88a9-f0e3-2b65-9df4-6c1d4e3f1c14@roeck-us.net>
- <CADiBU38g_E+iH4jTwQfPvJh4=WRH4vzQ12oubGg47gj+CpTU0A@mail.gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 6EE5827DE37D4448BF61698E731BEF2DC0EBC05DC3114276BD0A92C72F7ECB172000:8
+X-TM-SNTS-SMTP: 583FC9A2C187E83C1BC85024308FDD8A9E0CF797AFAB7AE22F1756187A572C6B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210119_023807_481360_00BE1996 
-X-CRM114-Status: GOOD (  37.88  )
+X-CRM114-CacheID: sfid-20210119_024342_920228_80A60C0B 
+X-CRM114-Status: GOOD (  29.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,103 +82,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, "open list:OPEN
- FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Greg KH <gregkh@linuxfoundation.org>,
- Linux USB List <linux-usb@vger.kernel.org>,
- lkml <linux-kernel@vger.kernel.org>, cy_huang <cy_huang@richtek.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: gene_chen@richtek.com, devicetree@vger.kernel.org,
+ heikki.krogerus@linux.intel.com, cy_huang <u0084500@gmail.com>,
+ gregkh@linuxfoundation.org, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, cy_huang@richtek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIxLTAxLTE4IGF0IDE2OjI4ICswODAwLCBDaGlZdWFuIEh1YW5nIHdyb3RlOg0K
-PiBHdWVudGVyIFJvZWNrIDxsaW51eEByb2Vjay11cy5uZXQ+IOaWvCAyMDIx5bm0MeaciDE45pel
-IOmAseS4gCDkuIrljYgxOjQz5a+r6YGT77yaDQo+ID4NCj4gPiBPbiAxLzE1LzIxIDY6MTMgQU0s
-IGN5X2h1YW5nIHdyb3RlOg0KPiA+ID4gRnJvbTogQ2hpWXVhbiBIdWFuZyA8Y3lfaHVhbmdAcmlj
-aHRlay5jb20+DQo+ID4gPg0KPiA+ID4gTVQ2MzYwIG5vdCBzdXBwb3J0IGZvciBUQ1BDIGNvbW1h
-bmQgdG8gY29udHJvbCBzb3VyY2UgYW5kIHNpbmsuDQo+ID4NCj4gPiBkb2VzIG5vdA0KPiA+DQo+
-IEFjaw0KPiA+ID4gVXNlcyBleHRlcm5hbCA1ViB2YnVzIHJlZ3VsYXRvciBhcyB0aGUgdmJ1cyBz
-b3VyY2UgY29udHJvbC4NCj4gPiA+DQo+ID4gVXNlDQo+ID4NCj4gQWNrDQo+ID4gPiBBbHNvIGFk
-ZHMgdGhlIGNhcGFiaWxpdHkgdG8gcmVwb3J0IHZzYWZlMHYuDQo+ID4gPg0KPiA+IGFkZA0KPiA+
-DQo+IEFjaw0KPiA+IFNvIGZhciB0aGlzIGRyaXZlciB3b3JrcyB3aXRob3V0IHJlZ3VsYXRvci4g
-VW5sZXNzIEkgYW0gbWlzc2luZyBzb21ldGhpbmcsDQo+ID4gdGhpcyBwYXRjaCBtYWtlcyByZWd1
-bGF0b3Igc3VwcG9ydCBtYW5kYXRvcnksIG1lYW5pbmcgZXhpc3RpbmcgY29kZSB3aWxsIGZhaWwu
-DQo+ID4gSSBhbSBub3Qgc3VyZSBpZiB0aGF0IGlzIGFwcHJvcHJpYXRlL2FjY2VwdGFibGUuIENh
-biB3ZSBiZSBzdXJlIHRoYXQgdGhpcyB3aWxsDQo+ID4gd29yayBmb3IgZXhpc3RpbmcgdXNlcnMg
-b2YgdGhpcyBkcml2ZXIgPw0KPiA+DQo+IFllcywgSSBhbHJlYWR5IGNoZWNrZWQgYWxsIHRoZSBz
-cmMvc25rIGZ1bmN0aW9uYWxpdHkgYmFzZWQgb24gIHRoZQ0KPiBsYXRlc3QgdHlwZWMgY29kZS4N
-Cj4gSXQnbGwgYmUgY29tbW9uIGZvciBvdXIgVENQQy4gSXQgZGlkbid0IHN1cHBvcnQgZm9yIFRD
-UEMgY29tbWFuZC4NCj4gRnJvbSB0aGUgcmVjZW50IHBhdGNoZXMsIGFjdHVhbGx5LCBJIGhhdmUg
-dGhlIGxvY2FsIGNoYW5nZSB0byB0ZXN0IHRoZQ0KPiBzcmMgY2FwYWJpbGl0eS4NCj4gQnV0IEkg
-ZGlkbid0IHN1Ym1pdCBpdC4gSXQncyBhbG1vc3QgdGhlIHNhbWUgdG8gYWRkIHNldF92YnVzIGNh
-bGxiYWNrLg0KPiBUaGF0J3Mgd2h5IEkgc3VibWl0IHRoaXMgY2hhbmdlIGFmdGVyIHRjcGNpICdz
-ZXRfdmJ1cyBjYWxsYmFjaycgaXMgYWRkZWQuDQo+IA0KPiA+IFRoYW5rcywNCj4gPiBHdWVudGVy
-DQo+ID4NCj4gPiA+IFNpZ25lZC1vZmYtYnk6IENoaVl1YW4gSHVhbmcgPGN5X2h1YW5nQHJpY2h0
-ZWsuY29tPg0KPiA+ID4gLS0tDQo+ID4gPiAgZHJpdmVycy91c2IvdHlwZWMvdGNwbS90Y3BjaV9t
-dDYzNjAuYyB8IDI5ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gPiAgMSBmaWxl
-IGNoYW5nZWQsIDI5IGluc2VydGlvbnMoKykNCj4gPiA+DQo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy91c2IvdHlwZWMvdGNwbS90Y3BjaV9tdDYzNjAuYyBiL2RyaXZlcnMvdXNiL3R5cGVjL3Rj
-cG0vdGNwY2lfbXQ2MzYwLmMNCj4gPiA+IGluZGV4IGYxYmQ5ZTAuLjBlZGY0YjYgMTAwNjQ0DQo+
-ID4gPiAtLS0gYS9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jDQo+ID4gPiAr
-KysgYi9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jDQo+ID4gPiBAQCAtMTEs
-NiArMTEsNyBAQA0KPiA+ID4gICNpbmNsdWRlIDxsaW51eC9vZi5oPg0KPiA+ID4gICNpbmNsdWRl
-IDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4NCj4gPiA+ICAjaW5jbHVkZSA8bGludXgvcmVnbWFw
-Lmg+DQo+ID4gPiArI2luY2x1ZGUgPGxpbnV4L3JlZ3VsYXRvci9jb25zdW1lci5oPg0KPiA+ID4g
-ICNpbmNsdWRlIDxsaW51eC91c2IvdGNwbS5oPg0KPiA+ID4NCj4gPiA+ICAjaW5jbHVkZSAidGNw
-Y2kuaCINCj4gPiA+IEBAIC0zNiw2ICszNyw3IEBAIHN0cnVjdCBtdDYzNjBfdGNwY19pbmZvIHsN
-Cj4gPiA+ICAgICAgIHN0cnVjdCB0Y3BjaV9kYXRhIHRkYXRhOw0KPiA+ID4gICAgICAgc3RydWN0
-IHRjcGNpICp0Y3BjaTsNCj4gPiA+ICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldjsNCj4gPiA+ICsg
-ICAgIHN0cnVjdCByZWd1bGF0b3IgKnZidXM7DQo+ID4gPiAgICAgICBpbnQgaXJxOw0KPiA+ID4g
-IH07DQo+ID4gPg0KPiA+ID4gQEAgLTUxLDYgKzUzLDI3IEBAIHN0YXRpYyBpbmxpbmUgaW50IG10
-NjM2MF90Y3BjX3dyaXRlMTYoc3RydWN0IHJlZ21hcCAqcmVnbWFwLA0KPiA+ID4gICAgICAgcmV0
-dXJuIHJlZ21hcF9yYXdfd3JpdGUocmVnbWFwLCByZWcsICZ2YWwsIHNpemVvZih1MTYpKTsNCj4g
-PiA+ICB9DQo+ID4gPg0KPiA+ID4gK3N0YXRpYyBpbnQgbXQ2MzYwX3RjcGNfc2V0X3ZidXMoc3Ry
-dWN0IHRjcGNpICp0Y3BjaSwgc3RydWN0IHRjcGNpX2RhdGEgKmRhdGEsIGJvb2wgc3JjLCBib29s
-IHNuaykNCj4gPiA+ICt7DQo+ID4gPiArICAgICBzdHJ1Y3QgbXQ2MzYwX3RjcGNfaW5mbyAqbXRp
-ID0gY29udGFpbmVyX29mKGRhdGEsIHN0cnVjdCBtdDYzNjBfdGNwY19pbmZvLCB0ZGF0YSk7DQo+
-ID4gPiArICAgICBpbnQgcmV0Ow0KPiA+ID4gKw0KPiA+ID4gKyAgICAgLyogVG8gY29ycmVjdGx5
-IGhhbmRsZSB0aGUgYWxyZWFkeSBlbmFibGVkIHZidXMgYW5kIGRpc2FibGUgaXRzIHN1cHBseSBm
-aXJzdCAqLw0KPiA+ID4gKyAgICAgaWYgKHJlZ3VsYXRvcl9pc19lbmFibGVkKG10aS0+dmJ1cykp
-IHsNCj4gPiA+ICsgICAgICAgICAgICAgcmV0ID0gcmVndWxhdG9yX2Rpc2FibGUobXRpLT52YnVz
-KTsNCj4gPiA+ICsgICAgICAgICAgICAgaWYgKHJldCkNCj4gPiA+ICsgICAgICAgICAgICAgICAg
-ICAgICByZXR1cm4gcmV0Ow0KPiA+ID4gKyAgICAgfQ0KPiA+DQo+ID4gSXMgaXQgcmVhbGx5IGEg
-Z29vZCBpZGVhIHRvIGRpc2FibGUgdmJ1cyBpZiBpdCBoYXBwZW5zIHRvIGJlIGFscmVhZHkgZW5h
-YmxlZA0KPiA+IGFuZCB0aGVyZSBpcyAoYW5vdGhlciA/KSByZXF1ZXN0IHRvIGVuYWJsZSBpdCA/
-DQo+ID4NCj4gWWVzLCBmb3IgIHRoZSBzdGF0ZSBjaGFuZ2UgZnJvbSBzcmNfYXR0YWNoX3dhaXQg
-dG8gc3JjX2F0dGFjaCwNCj4gSXQgbmVlZCB0byBtZWV0IHRoZSByZXF1aXJlbWVudCB0aGF0ICB0
-aGUgdmJ1cyBpcyBhdCB2c2FmZTB2Lg0KPiBTbyB0byBkaXNhYmxlIGl0IGZpcnN0IGlzIG5lZWRl
-ZC4NCj4gQW5kIHRvIHByZXZlbnQgb3RoZXIgdXNlcnMgZnJvbSBlbmFibGluZy9kaXNhYmxpbmcg
-ZXh0ZXJuYWwgdmJ1cw0KPiByZWd1bGF0b3IgaW4gYW55IGNhc2UuDQo+IEkgdGhpbmsgd2UgbWF5
-IGNoYW5nZSByZWd1bGF0b3JfZ2V0ICB0byAncmVndWxhdG9yX2dldF9leGNsdXNpdmUnLg0KPiBG
-cm9tIHRoZSBkZXNpZ24sIDV2IHJlZ3VsYXRvciBvbmx5IGNhbiBiZSBjb250cm9sbGVkIHZpYSB0
-eXBlYyBmcmFtZXdvcmsuDQo+IElmIG90aGVyIHVzZXIgdG91Y2ggaXQsIGl0J2xsIGFmZmVjdCB0
-aGUgdHlwZWMgc3RhdGUgdHJhbnNpdGlvbi4NCkhvdyBhYm91dCB0byBwcm9jZXNzIHRoZSBjYXNl
-IHRoYXQgZXZlbiBzd2l0Y2ggdXNiIGNvbnRyb2xsZXIgdG8gZGV2aWNlDQptb2RlLCBwbGF0Zm9y
-bSBhbHNvIG5lZWQgdG8ga2VlcCB2YnVzIG9uPyBlLmcuIElwaG9uZSBDYXJwbGF5DQoNCg0KPiA+
-ID4gKw0KPiA+ID4gKyAgICAgaWYgKHNyYykgew0KPiA+ID4gKyAgICAgICAgICAgICByZXQgPSBy
-ZWd1bGF0b3JfZW5hYmxlKG10aS0+dmJ1cyk7DQo+ID4gPiArICAgICAgICAgICAgIGlmIChyZXQp
-DQo+ID4gPiArICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsNCj4gPiA+ICsgICAgIH0N
-Cj4gPiA+ICsNCj4gPiA+ICsgICAgIHJldHVybiAwOw0KPiA+ID4gK30NCj4gPiA+ICsNCj4gPiA+
-ICBzdGF0aWMgaW50IG10NjM2MF90Y3BjX2luaXQoc3RydWN0IHRjcGNpICp0Y3BjaSwgc3RydWN0
-IHRjcGNpX2RhdGEgKnRkYXRhKQ0KPiA+ID4gIHsNCj4gPiA+ICAgICAgIHN0cnVjdCByZWdtYXAg
-KnJlZ21hcCA9IHRkYXRhLT5yZWdtYXA7DQo+ID4gPiBAQCAtMTM4LDcgKzE2MSwxMyBAQCBzdGF0
-aWMgaW50IG10NjM2MF90Y3BjX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+
-ID4gPiAgICAgICBpZiAobXRpLT5pcnEgPCAwKQ0KPiA+ID4gICAgICAgICAgICAgICByZXR1cm4g
-bXRpLT5pcnE7DQo+ID4gPg0KPiA+ID4gKyAgICAgbXRpLT52YnVzID0gZGV2bV9yZWd1bGF0b3Jf
-Z2V0KCZwZGV2LT5kZXYsICJ2YnVzIik7DQo+ID4gPiArICAgICBpZiAoSVNfRVJSKG10aS0+dmJ1
-cykpDQo+ID4gPiArICAgICAgICAgICAgIHJldHVybiBQVFJfRVJSKG10aS0+dmJ1cyk7DQo+ID4g
-PiArDQo+ID4gPiAgICAgICBtdGktPnRkYXRhLmluaXQgPSBtdDYzNjBfdGNwY19pbml0Ow0KPiA+
-ID4gKyAgICAgbXRpLT50ZGF0YS5zZXRfdmJ1cyA9IG10NjM2MF90Y3BjX3NldF92YnVzOw0KPiA+
-ID4gKyAgICAgbXRpLT50ZGF0YS52YnVzX3ZzYWZlMHYgPSAxOw0KPiA+ID4gICAgICAgbXRpLT50
-Y3BjaSA9IHRjcGNpX3JlZ2lzdGVyX3BvcnQoJnBkZXYtPmRldiwgJm10aS0+dGRhdGEpOw0KPiA+
-ID4gICAgICAgaWYgKElTX0VSUihtdGktPnRjcGNpKSkgew0KPiA+ID4gICAgICAgICAgICAgICBk
-ZXZfZXJyKCZwZGV2LT5kZXYsICJGYWlsZWQgdG8gcmVnaXN0ZXIgdGNwY2kgcG9ydFxuIik7DQo+
-ID4gPg0KPiA+DQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtbWVkaWF0ZWsK
+On Sun, 2021-01-17 at 09:43 -0800, Guenter Roeck wrote:
+> On 1/15/21 6:13 AM, cy_huang wrote:
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> > 
+> > MT6360 not support for TCPC command to control source and sink.
+> 
+> does not
+> 
+> > Uses external 5V vbus regulator as the vbus source control.
+> > 
+> Use
+> 
+> > Also adds the capability to report vsafe0v.
+> > 
+> add
+> 
+> So far this driver works without regulator. Unless I am missing something,
+> this patch makes regulator support mandatory, meaning existing code will fail.
+If don't provide vbus-supply in DTS, regulator framework will provide a
+dummy regulator, so the code will not fail.
+> I am not sure if that is appropriate/acceptable. Can we be sure that this will
+> work for existing users of this driver ?
+
+> 
+> Thanks,
+> Guenter
+> 
+> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> > ---
+> >  drivers/usb/typec/tcpm/tcpci_mt6360.c | 29 +++++++++++++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
+> > 
+> > diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> > index f1bd9e0..0edf4b6 100644
+> > --- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> > +++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> > @@ -11,6 +11,7 @@
+> >  #include <linux/of.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/regmap.h>
+> > +#include <linux/regulator/consumer.h>
+> >  #include <linux/usb/tcpm.h>
+> >  
+> >  #include "tcpci.h"
+> > @@ -36,6 +37,7 @@ struct mt6360_tcpc_info {
+> >  	struct tcpci_data tdata;
+> >  	struct tcpci *tcpci;
+> >  	struct device *dev;
+> > +	struct regulator *vbus;
+> >  	int irq;
+> >  };
+> >  
+> > @@ -51,6 +53,27 @@ static inline int mt6360_tcpc_write16(struct regmap *regmap,
+> >  	return regmap_raw_write(regmap, reg, &val, sizeof(u16));
+> >  }
+> >  
+> > +static int mt6360_tcpc_set_vbus(struct tcpci *tcpci, struct tcpci_data *data, bool src, bool snk)
+> > +{
+> > +	struct mt6360_tcpc_info *mti = container_of(data, struct mt6360_tcpc_info, tdata);
+> > +	int ret;
+> > +
+> > +	/* To correctly handle the already enabled vbus and disable its supply first */
+> > +	if (regulator_is_enabled(mti->vbus)) {
+> > +		ret = regulator_disable(mti->vbus);
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> 
+> Is it really a good idea to disable vbus if it happens to be already enabled
+> and there is (another ?) request to enable it ?
+> 
+> > +
+> > +	if (src) {
+> > +		ret = regulator_enable(mti->vbus);
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static int mt6360_tcpc_init(struct tcpci *tcpci, struct tcpci_data *tdata)
+> >  {
+> >  	struct regmap *regmap = tdata->regmap;
+> > @@ -138,7 +161,13 @@ static int mt6360_tcpc_probe(struct platform_device *pdev)
+> >  	if (mti->irq < 0)
+> >  		return mti->irq;
+> >  
+> > +	mti->vbus = devm_regulator_get(&pdev->dev, "vbus");
+> > +	if (IS_ERR(mti->vbus))
+> > +		return PTR_ERR(mti->vbus);
+> > +
+> >  	mti->tdata.init = mt6360_tcpc_init;
+> > +	mti->tdata.set_vbus = mt6360_tcpc_set_vbus;
+> > +	mti->tdata.vbus_vsafe0v = 1;
+> >  	mti->tcpci = tcpci_register_port(&pdev->dev, &mti->tdata);
+> >  	if (IS_ERR(mti->tcpci)) {
+> >  		dev_err(&pdev->dev, "Failed to register tcpci port\n");
+> > 
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
