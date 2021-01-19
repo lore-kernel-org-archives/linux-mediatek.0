@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EA37C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 02:42:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A40E7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 02:55:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 113AF22DFB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 02:42:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 113AF22DFB
+	by mail.kernel.org (Postfix) with ESMTPS id 4A376206C0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 02:55:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A376206C0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OcCrZ57Rdsg5Io5ZZMjshJ5GcNxaDJMnbgzRhVAZ9rw=; b=ELoXintCf+2PEfBrI26Sm8lYy
-	GfnYMlZNNjMEjh5K1ZPk959shir9LhuZcP7jnQGhAF6Ge0+t30HKkHZZOmm1xOtHH0uhlLgjKEok1
-	r/Lba7U4rw6w89d3391MTvaqUC6RvxhiK6akscqEQEGPIYH88ZNkRDTkdKzyhugCW/timiWdKaUof
-	GqfkbEf0l5TVZPqrQqOYnoztz1BeRVd3F8IThClHYMSiLA4c50GDfkS3ebdxEOHiiTZ8VGpuev0OV
-	GOjAba2Ruc/ie5VozZsFwTvXby7hODpRuOoAhWLjO1vnWwWJb3B84axnMyHAZICunAMAW/9K3SAcM
-	8CCid+R4g==;
+	 bh=IEb7VDwMmi84vdR28sEUTS4N8fmsonhDNQQxVrI3xIg=; b=nmuZqZ8bArOTSa8a7u5MuGz2o
+	9hioflXKj4ctGZVRlkyrni+yPE7YGVuPLL/AFGwHXg8KMc+vBPjQGUlBlWuv4ZaY8CUNsng11Lr9F
+	vOAkhKFuCdUJ+Sy3lIz1Ype+31vFEEWvWiPXeWVTAav0ikoijVH3KokJxgNHtJkEdOFG5AJei4DIO
+	+r9Br3EhCQ/giR3DDEXsu50tNsT0mjXuq0oWSk6J3VVCo1WC8JJn6frtUTLBKSk38Bqf3VQaDbVRg
+	JnnFlSvNRzRII9t4uc4g7I4FAj2uNmQfoKWlPC6TMYBPmY/FLXuPJILqDEbsD13zjmXfzs8JVebIJ
+	NqHZT8kYA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1gxr-00053t-CP; Tue, 19 Jan 2021 02:41:51 +0000
+	id 1l1hB7-0005eR-4i; Tue, 19 Jan 2021 02:55:33 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1gxm-000535-Tn; Tue, 19 Jan 2021 02:41:48 +0000
-X-UUID: 8860af115ba34abfbf3c34a9b2ca5d76-20210118
+ id 1l1hB4-0005dz-SM; Tue, 19 Jan 2021 02:55:32 +0000
+X-UUID: b17a88bbcf0741689be7add4a37adefa-20210118
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=4kexQ2hHpQDh0WXQE4QqbROz+eLRj3yLnugH4alvgz4=; 
- b=OLXAV9xEQ4eaEFkpPwAsAn1JPspckHz2lyq0rV3acNRhp+jeiBGURdkphgAddRr85Mvc5Zxagjkfc34dN3oogxQ7c12cHPq2isO0CDt1dR0pXHE6+ZM1rsxXo6q02VubM6agu3PkYrFuNiKKiCil3MttuNHyFzB6tulEivoPtQ8=;
-X-UUID: 8860af115ba34abfbf3c34a9b2ca5d76-20210118
+ bh=CiMAZ2leCHm8XOrAzh8HVdtQ7ukYUItVC28TwVzwG88=; 
+ b=dhAsHzcHl8mZ5U0l4WOdks9aZOQTaIZtMNwFXbTFaIg/ZAcDxxs5U/gm+eouvSlJz1PHonRcgDVhlUg54MORcebc9cJC97MwZr5/0zR7A2XizsBrhDNzQ/cujbai5EcEyWQoNSJYEFj6pcBOUukWK401fFy2rbM+0lyhKXyoVEE=;
+X-UUID: b17a88bbcf0741689be7add4a37adefa-20210118
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 68215041; Mon, 18 Jan 2021 18:41:34 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Jan 2021 18:33:18 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 19 Jan 2021 10:33:15 +0800
+ with ESMTP id 363248484; Mon, 18 Jan 2021 18:55:27 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Jan 2021 18:55:25 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 19 Jan 2021 10:55:23 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 19 Jan 2021 10:33:14 +0800
-Message-ID: <1611023594.11995.4.camel@mhfsdcap03>
-Subject: Re: [PATCH v5] usb: xhci-mtk: fix unreleased bandwidth data
+ Transport; Tue, 19 Jan 2021 10:55:22 +0800
+Message-ID: <1611024922.11995.18.camel@mhfsdcap03>
+Subject: Re: [PATCH next 12/15] arm64: dts: mediatek: mt8183: fix dtbs_check
+ warning
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Ikjoon Jang <ikjn@chromium.org>
-Date: Tue, 19 Jan 2021 10:33:14 +0800
-In-Reply-To: <CAATdQgCb254YJ2tpiqWZ0RDHRiN59NuuHBuhavoYQT3STh=jkg@mail.gmail.com>
-References: <20201229142406.v5.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
- <2aea44f0-85e7-fd55-2c35-c1d994f20e03@linux.intel.com>
- <1610086308.24856.30.camel@mhfsdcap03>
- <e43632e2-08b3-7a1a-8272-1d493e25fc67@linux.intel.com>
- <CAATdQgD2OAmf7_NWSVwzyJE7mF0vngzE=QeE79PS7MJsgPhbtA@mail.gmail.com>
- <1610612988.30053.15.camel@mhfsdcap03>
- <CAATdQgCb254YJ2tpiqWZ0RDHRiN59NuuHBuhavoYQT3STh=jkg@mail.gmail.com>
+To: Sergei Shtylyov <sergei.shtylyov@gmail.com>
+Date: Tue, 19 Jan 2021 10:55:22 +0800
+In-Reply-To: <8973d175-441d-0b03-6763-6eeed8595b17@gmail.com>
+References: <20210116090656.11752-1-chunfeng.yun@mediatek.com>
+ <20210116090656.11752-12-chunfeng.yun@mediatek.com>
+ <8973d175-441d-0b03-6763-6eeed8595b17@gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A6115A169AEB976A4B832476D0D8D2120FA2368B9779F77F46ED1A7ED5A498A62000:8
+X-TM-SNTS-SMTP: 95197C9BA3827A74B5B4DCC86214B786907A7F334A130892260E4361115999232000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_214147_159563_D79B5463 
-X-CRM114-Status: GOOD (  36.03  )
+X-CRM114-CacheID: sfid-20210118_215531_275677_70C6D9C5 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,122 +83,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>,
- Tianping Fang <tianping.fang@mediatek.com>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Min Guo <min.guo@mediatek.com>,
+ devicetree@vger.kernel.org, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Mathias Nyman <mathias.nyman@linux.intel.com>,
- "moderated list:ARM/Mediatek SoC
- support" <linux-arm-kernel@lists.infradead.org>
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-01-15 at 10:51 +0800, Ikjoon Jang wrote:
-> On Thu, Jan 14, 2021 at 4:30 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> >
-> > Hi Ikjoon,
-> >
-> > On Tue, 2021-01-12 at 13:48 +0800, Ikjoon Jang wrote:
-> > > On Fri, Jan 8, 2021 at 10:44 PM Mathias Nyman
-> > > <mathias.nyman@linux.intel.com> wrote:
-> > > >
-> > > > On 8.1.2021 8.11, Chunfeng Yun wrote:
-> > > > > On Thu, 2021-01-07 at 13:09 +0200, Mathias Nyman wrote:
-> > > > >> On 29.12.2020 8.24, Ikjoon Jang wrote:
-> > > > >>> xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
-> > > > >>> to handle its own sw bandwidth managements and stores bandwidth data
-> > > > >>> into internal table every time add_endpoint() is called,
-> > > > >>> so when bandwidth allocation fails at one endpoint, all earlier
-> > > > >>> allocation from the same interface could still remain at the table.
-> > > > >>>
-> > > > >>> This patch adds two more hooks from check_bandwidth() and
-> > > > >>> reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
-> > > > >>> from reset_bandwidth().
-> > > > >>>
-> > > > >>> Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
-> > > > >>> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
-> > > > >>>
-> > > > >>
-> > > > >> ...
-> > > > >>
-> > > > >>>
-> > > > >>> diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
-> > > > >>> index d4a8d0efbbc4..e1fcd3cf723f 100644
-> > > > >>> --- a/drivers/usb/host/xhci.c
-> > > > >>> +++ b/drivers/usb/host/xhci.c
-> > > > >>> @@ -2882,6 +2882,12 @@ static int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
-> > > > >>>     xhci_dbg(xhci, "%s called for udev %p\n", __func__, udev);
-> > > > >>>     virt_dev = xhci->devs[udev->slot_id];
-> > > > >>>
-> > > > >>> +   if (xhci->quirks & XHCI_MTK_HOST) {
-> > > > >>> +           ret = xhci_mtk_check_bandwidth(hcd, udev);
-> > > > >>> +           if (ret < 0)
-> > > > >>> +                   return ret;
-> > > > >>> +   }
-> > > > >>> +
-> > > > >>
-> > > > >> Just noticed that XHCI_MTK_HOST quirk is only set in xhci-mtk.c.
-> > > > >> xhci-mtk.c calls xhci_init_driver(..., xhci_mtk_overrides) with a .reset override function.
-> > > > >>
-> > > > >> why not add override functions for .check_bandwidth and .reset_bandwidth to xhci_mtk_overrides instead?
-> > > > >>
-> > > > >> Another patch to add similar overrides for .add_endpoint and .drop_endpoint should probably be
-> > > > >> done so that we can get rid of the xhci_mtk_add/drop_ep_quirk() calls in xhci.c as well
-> > > > > You mean, we can export xhci_add/drop_endpoint()?
-> > > >
-> > > > I think so, unless you have a better idea.
-> > > > I prefer exporting the generic add/drop_endpoint functions rather than the vendor specific quirk functions.
-> > > >
-> > >
-> > > When moving out all MTK_HOST quirks and unlink xhci-mtk-sch from xhci,
-> > > xhci-mtk-sch still needs to touch the xhci internals, at least struct
-> > > xhci_ep_ctx.
-> > >
-> > > My naive idea is just let xhci export one more function to expose xhci_ep_ctx.
-> > > But I'm not sure whether this is acceptable:
-> > I find that xhci_add_endpoint() ignores some errors with return 0, for
-> > these cases we needn't call xhci_mtk_add_ep-quirk(), so may be not a
-> > good way to just export xhci_add_endpoint().
+On Sat, 2021-01-16 at 12:43 +0300, Sergei Shtylyov wrote:
+> On 16.01.2021 12:06, Chunfeng Yun wrote:
 > 
-> yeah, maybe that's from ep0 case?
+> > Harmonize node names, compatibles and properties.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 9 ++++-----
+> >   1 file changed, 4 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index 5b782a4769e7..a69a033a68ac 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> [...]
+> > @@ -908,11 +908,11 @@
+> >   			status = "disabled";
+> >   		};
+> >   
+> > -		mipi_tx0: mipi-dphy@11e50000 {
+> > +		mipi_tx0: dsi-phy@11e50000 {
 > 
-> And I've thought that we could also unlink xhci-mtk-sch from the xhci module
-> if MTK_HOST quirk functions are moved out to mtk platform driver's overrides.
-> I guess I've gone too far.
-> 
-> If we keep xhci-mtk-sch being built with the xhci module,
-> xhci-mtk-sch can directly access input control context and its drop/add flags,
-> so I think we can simply remove {add|drop}_endpoint() quirks and just handle
-> them all in {check|reset}_bandwidth() overrides.
-It's ok if check_bandwidth() could get added ep and update context.
-
-I'll spend some time to look at the code and test it.
-
-Thank you
+>     Again, why not just "phy@..."?
+This following the style as usb-phy, pcie-phy etc.
+but is not yet a standard prefix for Display serial interface PHY
 
 > 
-> >
-> > >
-> > > +struct xhci_ep_ctx* xhci_get_ep_contex(struct xhci_hcd *xhci, struct
-> > > usb_host_endpoint *ep)
-> > > +{ ... }
-> > > +EXPORT_SYMBOL(xhci_get_ep_context);
-> > >
-> > > But for v6, I'm going to submit a patch with {check|reset}_bandwidth()
-> > > quirk function
-> > >  switched into xhci_driver_overrides first. (and preserve existing
-> > > MTK_HOST quirk functions).
-> > >
-> > > Thanks!
-> > >
-> > > > -Mathias
-> > > >
-> >
+> [...]
+> > @@ -931,11 +931,10 @@
+> >   			};
+> >   		};
+> >   
+> > -		u3phy: usb-phy@11f40000 {
+> > +		u3phy: t-phy@11f40000 {
+> 
+>     Here as well...
+Already explain it in [11/15]
+> 
+> [...]
+> 
+> MBR, Sergei
 
 _______________________________________________
 Linux-mediatek mailing list
