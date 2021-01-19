@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14EC9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51A72C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:38:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A110523131
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:02:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A110523131
+	by mail.kernel.org (Postfix) with ESMTPS id BEA6422CB1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 07:38:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BEA6422CB1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9cRaUa3VGy1eLsNXGfl9VM/KzmTU8STF12pQn1qa3xo=; b=O1fQovfO43UZY/gIgDeYIHEC/
-	BqOLuOKz2TzMnwiDLX+J6de3e1Yf+a0fbYT/tKgWww4N9mFMxddmUlkv6jswI2WR1O/YpapIEyvAR
-	UKxHGkYpsrwb9ja/dsoojL//Kn7xEk6+grnpwixUZfKSY9LjUeXG+N7HA5Pml8bODkQ3RoeXCFVSK
-	0YsTs+S2Qyoy828jlBLRn85Fkd941glzC65UFFvyAnD7+qs5nlXVZZxB9zSH2vYyj9Xl1E8G0pI1e
-	N03aDN3YglG1dBYy20l5zmiVNyNNOgf0omH9hmhg3rxRCF4MSqmEZj2I9yO1yJgYrBNsAB4F76Uuu
-	tatYZb/sw==;
+	 bh=P9m0lL2MEAdzb6LNj68tJwQLR3CN4uctgbJAPUBQhWc=; b=tRI927IBSGosHr7iAF3yPf4cJ
+	IDB+7ftVN9DRAuMGawup4DdbUiXTMPDI5ozzGvYs2OYgVoCQvf+56kNNJ57UX2OFa0DpRNqZI4VfI
+	9w6i6yc2gwh/t6OmofTVonOS+LGEZXVIp9m72aA0gwkHsSjCQLtbYOXBxPJKzLTwPmKEils+Q3deL
+	vAL0PH+JIi+LCkEkMYOJDVJRhixd0WzWpBjeYfvYQVin0yAz8ePeuljc0PegXfJ3CaqS81mnwvBAa
+	lXSUTrDX0cTy/CZJUIM80rKegov25KjAJp3Tuc1ED3zGjQnY5PtsaBMdmrdtMztW4t+q7gd76Ulgq
+	pUx4E3HPw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1l1b-0007oD-4c; Tue, 19 Jan 2021 07:01:59 +0000
+	id 1l1lab-0004a1-MN; Tue, 19 Jan 2021 07:38:09 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1l1X-0007n4-F1
- for linux-mediatek@lists.infradead.org; Tue, 19 Jan 2021 07:01:57 +0000
-X-UUID: 15b36021292e43afb9e0ae2811427f67-20210118
+ id 1l1laZ-0004ZX-9Z; Tue, 19 Jan 2021 07:38:08 +0000
+X-UUID: c9b518e1adc14fa9b94c83c3907b7b7e-20210118
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=6V5zD/iXHA0wDTMuAHf0jHgOG6fsknw3TmnvLpL2RoM=; 
- b=Y7Gu0PfWeFqEUIrgeLvQNNslCffta/OHQMQifHC7q4cLgkSV/sZyvboGkcB5NRQnZR/MrIbkhr2RSW8WB817I6N3FdGrN6PEwKMY/nPNJ4MrDawdq1ShNL9TJy3xM7oI/3BjuEkv3p8EvBkVPRnojh/j53jUTYXPEqvD2DpDlCo=;
-X-UUID: 15b36021292e43afb9e0ae2811427f67-20210118
+ bh=umF0/4THUCkSbBZUhmq56lfHoNBXzIPnzphItGv/KMI=; 
+ b=uoiTEcHxGC64lJXUJBfDRQNPGziRFltn+5ywxrdNMuiHtk5nfOGoPW34Cl3XfMkZHILw5Y4IcbiF5HnqUi4qVpKGbN6fZ57Vn9a55Wp4oipVxygjcvT7df7nn4jX3EDw7skviLs7ipm2c2yI0RhBqsCrVGtK2ZaC86ItRguHUiE=;
+X-UUID: c9b518e1adc14fa9b94c83c3907b7b7e-20210118
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 675608031; Mon, 18 Jan 2021 23:01:53 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Jan 2021 22:57:08 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 19 Jan 2021 14:57:05 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ with ESMTP id 655962305; Mon, 18 Jan 2021 23:37:59 -0800
+Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Jan 2021 23:37:57 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
+ (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 19 Jan 2021 15:37:55 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 19 Jan 2021 14:57:04 +0800
-Message-ID: <1611039425.12761.2.camel@mhfsdcap03>
-Subject: Re: [RFC PATCH v3 1/5] usb: xhci-mtk: improve bandwidth scheduling
- with multi-TT
+ Transport; Tue, 19 Jan 2021 15:37:54 +0800
+Message-ID: <1611041874.12761.13.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/2] usb typec: tcpci: mt6360: Add vsafe0v support and
+ external vbus supply control
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Ikjoon Jang <ikjn@chromium.org>
-Date: Tue, 19 Jan 2021 14:57:05 +0800
-In-Reply-To: <CAATdQgAx_3X6=HXa78P_UNumCyrt9ejyuVu_y5YZc4cPsJ6=ww@mail.gmail.com>
-References: <1608629682-8535-1-git-send-email-chunfeng.yun@mediatek.com>
- <CAATdQgAx_3X6=HXa78P_UNumCyrt9ejyuVu_y5YZc4cPsJ6=ww@mail.gmail.com>
+To: ChiYuan Huang <u0084500@gmail.com>
+Date: Tue, 19 Jan 2021 15:37:54 +0800
+In-Reply-To: <CADiBU38g_E+iH4jTwQfPvJh4=WRH4vzQ12oubGg47gj+CpTU0A@mail.gmail.com>
+References: <1610720001-15300-1-git-send-email-u0084500@gmail.com>
+ <3a4a88a9-f0e3-2b65-9df4-6c1d4e3f1c14@roeck-us.net>
+ <CADiBU38g_E+iH4jTwQfPvJh4=WRH4vzQ12oubGg47gj+CpTU0A@mail.gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F9F112484B25E67B7DA334E6D5373F16DB43BB880BF7764171F09A6E318CC0E52000:8
+X-TM-SNTS-SMTP: 6EE5827DE37D4448BF61698E731BEF2DC0EBC05DC3114276BD0A92C72F7ECB172000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210119_020155_808890_1950CA73 
-X-CRM114-Status: GOOD (  27.06  )
+X-CRM114-CacheID: sfid-20210119_023807_481360_00BE1996 
+X-CRM114-Status: GOOD (  37.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,294 +83,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Yaqii Wu <yaqii.wu@mediatek.com>,
- Zhanyong Wang <zhanyong.wang@mediatek.com>,
- Zhanyong Wang <zhangyong.wang@mediatek.com>, linux-usb@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>,
- Tianping Fang <tianping.fang@mediatek.com>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: gene_chen@richtek.com, "open list:OPEN
+ FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg KH <gregkh@linuxfoundation.org>,
+ Linux USB List <linux-usb@vger.kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>, cy_huang <cy_huang@richtek.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+ Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-01-13 at 17:43 +0800, Ikjoon Jang wrote:
-> On Tue, Dec 22, 2020 at 5:35 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> >
-> > From: Zhanyong Wang <zhanyong.wang@mediatek.com>
-> >
-> > After inserted the usb type-c 3.5mm dongle with headset, dmesg showed:
-> > usb 1-1.1: new full-speed USB device number 5 using xhci-mtk
-> > usb 1-1.1: New USB device found, idVendor=05ac, idProduct=110a, bcdDevice=26.11
-> > usb 1-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-> > usb 1-1.1: Product: USB-C to 3.5mm Headphone Jack Adapter
-> > usb 1-1.1: Manufacturer: Apple, Inc.
-> > usb 1-1.1: SerialNumber: DWH915501TFJKLTAM
-> > xhci-mtk 11200000.xhci: Not enough bandwidth!
-> > usb 1-1.1: can't set config #2, error -28
-> >
-> > improve low-speed/full-speed INT/ISOC bandwidth scheduling with USB
-> > muli-TT.
-> >
-> > Signed-off-by: Yaqii Wu <yaqii.wu@mediatek.com>
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> > v2~v3: no changes
-> > ---
-> >  drivers/usb/host/xhci-mtk-sch.c | 91 ++++++++++++++++++++++++++++-----
-> >  drivers/usb/host/xhci-mtk.h     |  8 ++-
-> >  2 files changed, 84 insertions(+), 15 deletions(-)
-> >  mode change 100644 => 100755 drivers/usb/host/xhci-mtk-sch.c
-> >
-> > diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-> > old mode 100644
-> > new mode 100755
-> > index 45c54d56ecbd..94292b9bbc63
-> > --- a/drivers/usb/host/xhci-mtk-sch.c
-> > +++ b/drivers/usb/host/xhci-mtk-sch.c
-> > @@ -383,7 +383,9 @@ static int check_sch_tt(struct usb_device *udev,
-> >         u32 fs_budget_start;
-> >         u32 start_ss, last_ss;
-> >         u32 start_cs, last_cs;
-> > -       int i;
-> > +       u32 num_esit, base;
-> > +       int i, j;
-> > +       u32 tmp;
-> >
-> >         start_ss = offset % 8;
-> >         fs_budget_start = (start_ss + 1) % 8;
-> > @@ -398,10 +400,13 @@ static int check_sch_tt(struct usb_device *udev,
-> >                 if (!(start_ss == 7 || last_ss < 6))
-> >                         return -ERANGE;
-> >
-> > -               for (i = 0; i < sch_ep->cs_count; i++)
-> > -                       if (test_bit(offset + i, tt->split_bit_map))
-> > +               for (i = 0; i < sch_ep->cs_count; i++) {
-> > +                       if (test_bit(offset + i, tt->ss_bit_map))
-> >                                 return -ERANGE;
-> >
-> > +                       if (test_bit(offset + i, tt->cs_bit_map))
-> > +                               return -ERANGE;
-> > +               }
-> 
-> Are there any reasons for doing this?
-> Why can only one split packet be scheduled in a u-frame for isochronous out?
-> This looks like overkill.
-[From DR]: We will calculate the number of uframes based on the isoc out
-ep maxp. Except for the last uframe, all other consumed bandwidth is
-188. But to be safe, we also count the bandwidth consumed by the last SS
-as 188.
-
-> 
-> >         } else {
-> >                 u32 cs_count = DIV_ROUND_UP(sch_ep->maxpkt, FS_PAYLOAD_MAX);
-> >
-> > @@ -428,8 +433,10 @@ static int check_sch_tt(struct usb_device *udev,
-> >                 if (cs_count > 7)
-> >                         cs_count = 7; /* HW limit */
-> >
-> > -               for (i = 0; i < cs_count + 2; i++) {
-> > -                       if (test_bit(offset + i, tt->split_bit_map))
-> > +               if (test_bit(offset, tt->ss_bit_map))
-> > +                       return -ERANGE;
-> > +               for (i = 0; i < cs_count; i++) {
-> > +                       if (test_bit(offset + 2 + i, tt->cs_bit_map))
-> >                                 return -ERANGE;
-> >                 }
-> >
-> 
-> same here. It would be much better to understand
-> if you can provide some counterexamples of schedule
-> that can happen when this bitmap checking logic is omitted.
-[From DR] Maybe you are right, it will indeed double check. I will
-delete the bandwidth check, and then perform a regression test.
-
-> 
-> > @@ -445,11 +452,22 @@ static int check_sch_tt(struct usb_device *udev,
-> >                         sch_ep->num_budget_microframes = sch_ep->esit;
-> >         }
-> >
-> > +       num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
-> > +       for (i = 0; i < num_esit; i++) {
-> > +               base = sch_ep->offset + i * sch_ep->esit;
-> > +               for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-> > +                       tmp = tt->fs_bus_bw[base + j]
-> > +                             + sch_ep->bw_cost_per_microframe;
-> > +                       if (tmp > FS_PAYLOAD_MAX)
-> > +                               return -ERANGE;
-> > +               }
-> > +       }
-> 
-> I guess this is enough to check the bandwidth limit of the
-> lower speed bus without a bitmap.
-[From DR]As explained in issue tracker that ss cannot be overlapped.
-This is a hub compatibility issue. Therefore we need bitmap to prevent
-ss overlap.
-
-Thanks
-> 
-> > +
-> >         return 0;
-> >  }
-> >
-> >  static void update_sch_tt(struct usb_device *udev,
-> > -       struct mu3h_sch_ep_info *sch_ep)
-> > +       struct mu3h_sch_ep_info *sch_ep, bool used)
-> >  {
-> >         struct mu3h_sch_tt *tt = sch_ep->sch_tt;
-> >         u32 base, num_esit;
-> > @@ -458,11 +476,52 @@ static void update_sch_tt(struct usb_device *udev,
-> >         num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
-> >         for (i = 0; i < num_esit; i++) {
-> >                 base = sch_ep->offset + i * sch_ep->esit;
-> > -               for (j = 0; j < sch_ep->num_budget_microframes; j++)
-> > -                       set_bit(base + j, tt->split_bit_map);
-> > +               for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-> > +                       if (used)
-> > +                               set_bit(base + j, tt->split_bit_map);
-> > +                       else
-> > +                               clear_bit(base + j, tt->split_bit_map);
-> > +               }
-> > +
-> > +               if (sch_ep->ep_type == ISOC_OUT_EP) {
-> > +                       for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-> > +                               if (used) {
-> > +                                       set_bit(base + j, tt->ss_bit_map);
-> > +                                       set_bit(base + j, tt->cs_bit_map);
-> > +                                       tt->fs_bus_bw[base + j] +=
-> > +                                               sch_ep->bw_cost_per_microframe;
-> > +                               } else {
-> > +                                       clear_bit(base + j, tt->ss_bit_map);
-> > +                                       clear_bit(base + j, tt->cs_bit_map);
-> > +                                       tt->fs_bus_bw[base + j] -=
-> > +                                               sch_ep->bw_cost_per_microframe;
-> > +                               }
-> > +                       }
-> > +               } else {
-> > +                       if (used)
-> > +                               set_bit(base, tt->ss_bit_map);
-> > +                       else
-> > +                               clear_bit(base, tt->ss_bit_map);
-> > +
-> > +                       for (j = 0; j < sch_ep->cs_count; j++) {
-> > +                               if (used) {
-> > +                                       set_bit(base + 2 + j, tt->cs_bit_map);
-> > +
-> > +                                       tt->fs_bus_bw[base + 2 + j] +=
-> > +                                               sch_ep->bw_cost_per_microframe;
-> > +                               } else {
-> > +                                       clear_bit(base + 2 + j, tt->cs_bit_map);
-> > +                                       tt->fs_bus_bw[base + 2 + j] -=
-> > +                                               sch_ep->bw_cost_per_microframe;
-> > +                               }
-> > +                       }
-> > +               }
-> >         }
-> >
-> > -       list_add_tail(&sch_ep->tt_endpoint, &tt->ep_list);
-> > +       if (used)
-> > +               list_add_tail(&sch_ep->tt_endpoint, &tt->ep_list);
-> > +       else
-> > +               list_del(&sch_ep->tt_endpoint);
-> >  }
-> >
-> >  static int check_sch_bw(struct usb_device *udev,
-> > @@ -470,6 +529,7 @@ static int check_sch_bw(struct usb_device *udev,
-> >  {
-> >         u32 offset;
-> >         u32 esit;
-> > +       u32 boundary;
-> >         u32 min_bw;
-> >         u32 min_index;
-> >         u32 worst_bw;
-> > @@ -487,10 +547,13 @@ static int check_sch_bw(struct usb_device *udev,
-> >          */
-> >         min_bw = ~0;
-> >         min_index = 0;
-> > +       boundary = esit;
-> >         min_cs_count = sch_ep->cs_count;
-> >         min_num_budget = sch_ep->num_budget_microframes;
-> >         for (offset = 0; offset < esit; offset++) {
-> >                 if (is_fs_or_ls(udev->speed)) {
-> > +                       if (sch_ep->ep_type != ISOC_OUT_EP)
-> > +                               boundary = esit + 1;
-> >                         ret = check_sch_tt(udev, sch_ep, offset);
-> >                         if (ret)
-> >                                 continue;
-> > @@ -498,7 +561,7 @@ static int check_sch_bw(struct usb_device *udev,
-> >                                 tt_offset_ok = true;
-> >                 }
-> >
-> > -               if ((offset + sch_ep->num_budget_microframes) > sch_ep->esit)
-> > +               if ((offset + sch_ep->num_budget_microframes) > boundary)
-> >                         break;
-> >
-> >                 worst_bw = get_max_bw(sch_bw, sch_ep, offset);
-> > @@ -532,7 +595,7 @@ static int check_sch_bw(struct usb_device *udev,
-> >                 if (!tt_offset_ok)
-> >                         return -ERANGE;
-> >
-> > -               update_sch_tt(udev, sch_ep);
-> > +               update_sch_tt(udev, sch_ep, 1);
-> >         }
-> >
-> >         /* update bus bandwidth info */
-> > @@ -696,12 +759,12 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
-> >
-> >         list_for_each_entry(sch_ep, &sch_bw->bw_ep_list, endpoint) {
-> >                 if (sch_ep->ep == ep) {
-> > -                       update_bus_bw(sch_bw, sch_ep, 0);
-> > -                       list_del(&sch_ep->endpoint);
-> >                         if (is_fs_or_ls(udev->speed)) {
-> > -                               list_del(&sch_ep->tt_endpoint);
-> > +                               update_sch_tt(udev, sch_ep, 0);
-> >                                 drop_tt(udev);
-> >                         }
-> > +                       update_bus_bw(sch_bw, sch_ep, 0);
-> > +                       list_del(&sch_ep->endpoint);
-> >                         kfree(sch_ep);
-> >                         break;
-> >                 }
-> > diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-> > index a93cfe817904..323b281933b9 100644
-> > --- a/drivers/usb/host/xhci-mtk.h
-> > +++ b/drivers/usb/host/xhci-mtk.h
-> > @@ -21,12 +21,18 @@
-> >
-> >  /**
-> >   * @split_bit_map: used to avoid split microframes overlay
-> > + * @ss_bit_map: used to avoid start split microframes overlay
-> > + * @cs_bit_map: used to avoid complete split microframes overlay
-> > + * @fs_bus_bw: array to keep track of bandwidth already used at full speed
-> >   * @ep_list: Endpoints using this TT
-> >   * @usb_tt: usb TT related
-> >   * @tt_port: TT port number
-> >   */
-> >  struct mu3h_sch_tt {
-> >         DECLARE_BITMAP(split_bit_map, XHCI_MTK_MAX_ESIT);
-> > +       DECLARE_BITMAP(ss_bit_map, XHCI_MTK_MAX_ESIT);
-> > +       DECLARE_BITMAP(cs_bit_map, XHCI_MTK_MAX_ESIT + 1);
-> > +       u32 fs_bus_bw[XHCI_MTK_MAX_ESIT];
-> >         struct list_head ep_list;
-> >         struct usb_tt *usb_tt;
-> >         int tt_port;
-> > @@ -42,7 +48,7 @@ struct mu3h_sch_tt {
-> >   * two bandwidth domains, one for IN eps and another for OUT eps.
-> >   */
-> >  struct mu3h_sch_bw_info {
-> > -       u32 bus_bw[XHCI_MTK_MAX_ESIT];
-> > +       u32 bus_bw[XHCI_MTK_MAX_ESIT + 1];
-> >         struct list_head bw_ep_list;
-> >  };
-> >
-> > --
-> > 2.18.0
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gTW9uLCAyMDIxLTAxLTE4IGF0IDE2OjI4ICswODAwLCBDaGlZdWFuIEh1YW5nIHdyb3RlOg0K
+PiBHdWVudGVyIFJvZWNrIDxsaW51eEByb2Vjay11cy5uZXQ+IOaWvCAyMDIx5bm0MeaciDE45pel
+IOmAseS4gCDkuIrljYgxOjQz5a+r6YGT77yaDQo+ID4NCj4gPiBPbiAxLzE1LzIxIDY6MTMgQU0s
+IGN5X2h1YW5nIHdyb3RlOg0KPiA+ID4gRnJvbTogQ2hpWXVhbiBIdWFuZyA8Y3lfaHVhbmdAcmlj
+aHRlay5jb20+DQo+ID4gPg0KPiA+ID4gTVQ2MzYwIG5vdCBzdXBwb3J0IGZvciBUQ1BDIGNvbW1h
+bmQgdG8gY29udHJvbCBzb3VyY2UgYW5kIHNpbmsuDQo+ID4NCj4gPiBkb2VzIG5vdA0KPiA+DQo+
+IEFjaw0KPiA+ID4gVXNlcyBleHRlcm5hbCA1ViB2YnVzIHJlZ3VsYXRvciBhcyB0aGUgdmJ1cyBz
+b3VyY2UgY29udHJvbC4NCj4gPiA+DQo+ID4gVXNlDQo+ID4NCj4gQWNrDQo+ID4gPiBBbHNvIGFk
+ZHMgdGhlIGNhcGFiaWxpdHkgdG8gcmVwb3J0IHZzYWZlMHYuDQo+ID4gPg0KPiA+IGFkZA0KPiA+
+DQo+IEFjaw0KPiA+IFNvIGZhciB0aGlzIGRyaXZlciB3b3JrcyB3aXRob3V0IHJlZ3VsYXRvci4g
+VW5sZXNzIEkgYW0gbWlzc2luZyBzb21ldGhpbmcsDQo+ID4gdGhpcyBwYXRjaCBtYWtlcyByZWd1
+bGF0b3Igc3VwcG9ydCBtYW5kYXRvcnksIG1lYW5pbmcgZXhpc3RpbmcgY29kZSB3aWxsIGZhaWwu
+DQo+ID4gSSBhbSBub3Qgc3VyZSBpZiB0aGF0IGlzIGFwcHJvcHJpYXRlL2FjY2VwdGFibGUuIENh
+biB3ZSBiZSBzdXJlIHRoYXQgdGhpcyB3aWxsDQo+ID4gd29yayBmb3IgZXhpc3RpbmcgdXNlcnMg
+b2YgdGhpcyBkcml2ZXIgPw0KPiA+DQo+IFllcywgSSBhbHJlYWR5IGNoZWNrZWQgYWxsIHRoZSBz
+cmMvc25rIGZ1bmN0aW9uYWxpdHkgYmFzZWQgb24gIHRoZQ0KPiBsYXRlc3QgdHlwZWMgY29kZS4N
+Cj4gSXQnbGwgYmUgY29tbW9uIGZvciBvdXIgVENQQy4gSXQgZGlkbid0IHN1cHBvcnQgZm9yIFRD
+UEMgY29tbWFuZC4NCj4gRnJvbSB0aGUgcmVjZW50IHBhdGNoZXMsIGFjdHVhbGx5LCBJIGhhdmUg
+dGhlIGxvY2FsIGNoYW5nZSB0byB0ZXN0IHRoZQ0KPiBzcmMgY2FwYWJpbGl0eS4NCj4gQnV0IEkg
+ZGlkbid0IHN1Ym1pdCBpdC4gSXQncyBhbG1vc3QgdGhlIHNhbWUgdG8gYWRkIHNldF92YnVzIGNh
+bGxiYWNrLg0KPiBUaGF0J3Mgd2h5IEkgc3VibWl0IHRoaXMgY2hhbmdlIGFmdGVyIHRjcGNpICdz
+ZXRfdmJ1cyBjYWxsYmFjaycgaXMgYWRkZWQuDQo+IA0KPiA+IFRoYW5rcywNCj4gPiBHdWVudGVy
+DQo+ID4NCj4gPiA+IFNpZ25lZC1vZmYtYnk6IENoaVl1YW4gSHVhbmcgPGN5X2h1YW5nQHJpY2h0
+ZWsuY29tPg0KPiA+ID4gLS0tDQo+ID4gPiAgZHJpdmVycy91c2IvdHlwZWMvdGNwbS90Y3BjaV9t
+dDYzNjAuYyB8IDI5ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gPiAgMSBmaWxl
+IGNoYW5nZWQsIDI5IGluc2VydGlvbnMoKykNCj4gPiA+DQo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy91c2IvdHlwZWMvdGNwbS90Y3BjaV9tdDYzNjAuYyBiL2RyaXZlcnMvdXNiL3R5cGVjL3Rj
+cG0vdGNwY2lfbXQ2MzYwLmMNCj4gPiA+IGluZGV4IGYxYmQ5ZTAuLjBlZGY0YjYgMTAwNjQ0DQo+
+ID4gPiAtLS0gYS9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jDQo+ID4gPiAr
+KysgYi9kcml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jDQo+ID4gPiBAQCAtMTEs
+NiArMTEsNyBAQA0KPiA+ID4gICNpbmNsdWRlIDxsaW51eC9vZi5oPg0KPiA+ID4gICNpbmNsdWRl
+IDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4NCj4gPiA+ICAjaW5jbHVkZSA8bGludXgvcmVnbWFw
+Lmg+DQo+ID4gPiArI2luY2x1ZGUgPGxpbnV4L3JlZ3VsYXRvci9jb25zdW1lci5oPg0KPiA+ID4g
+ICNpbmNsdWRlIDxsaW51eC91c2IvdGNwbS5oPg0KPiA+ID4NCj4gPiA+ICAjaW5jbHVkZSAidGNw
+Y2kuaCINCj4gPiA+IEBAIC0zNiw2ICszNyw3IEBAIHN0cnVjdCBtdDYzNjBfdGNwY19pbmZvIHsN
+Cj4gPiA+ICAgICAgIHN0cnVjdCB0Y3BjaV9kYXRhIHRkYXRhOw0KPiA+ID4gICAgICAgc3RydWN0
+IHRjcGNpICp0Y3BjaTsNCj4gPiA+ICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldjsNCj4gPiA+ICsg
+ICAgIHN0cnVjdCByZWd1bGF0b3IgKnZidXM7DQo+ID4gPiAgICAgICBpbnQgaXJxOw0KPiA+ID4g
+IH07DQo+ID4gPg0KPiA+ID4gQEAgLTUxLDYgKzUzLDI3IEBAIHN0YXRpYyBpbmxpbmUgaW50IG10
+NjM2MF90Y3BjX3dyaXRlMTYoc3RydWN0IHJlZ21hcCAqcmVnbWFwLA0KPiA+ID4gICAgICAgcmV0
+dXJuIHJlZ21hcF9yYXdfd3JpdGUocmVnbWFwLCByZWcsICZ2YWwsIHNpemVvZih1MTYpKTsNCj4g
+PiA+ICB9DQo+ID4gPg0KPiA+ID4gK3N0YXRpYyBpbnQgbXQ2MzYwX3RjcGNfc2V0X3ZidXMoc3Ry
+dWN0IHRjcGNpICp0Y3BjaSwgc3RydWN0IHRjcGNpX2RhdGEgKmRhdGEsIGJvb2wgc3JjLCBib29s
+IHNuaykNCj4gPiA+ICt7DQo+ID4gPiArICAgICBzdHJ1Y3QgbXQ2MzYwX3RjcGNfaW5mbyAqbXRp
+ID0gY29udGFpbmVyX29mKGRhdGEsIHN0cnVjdCBtdDYzNjBfdGNwY19pbmZvLCB0ZGF0YSk7DQo+
+ID4gPiArICAgICBpbnQgcmV0Ow0KPiA+ID4gKw0KPiA+ID4gKyAgICAgLyogVG8gY29ycmVjdGx5
+IGhhbmRsZSB0aGUgYWxyZWFkeSBlbmFibGVkIHZidXMgYW5kIGRpc2FibGUgaXRzIHN1cHBseSBm
+aXJzdCAqLw0KPiA+ID4gKyAgICAgaWYgKHJlZ3VsYXRvcl9pc19lbmFibGVkKG10aS0+dmJ1cykp
+IHsNCj4gPiA+ICsgICAgICAgICAgICAgcmV0ID0gcmVndWxhdG9yX2Rpc2FibGUobXRpLT52YnVz
+KTsNCj4gPiA+ICsgICAgICAgICAgICAgaWYgKHJldCkNCj4gPiA+ICsgICAgICAgICAgICAgICAg
+ICAgICByZXR1cm4gcmV0Ow0KPiA+ID4gKyAgICAgfQ0KPiA+DQo+ID4gSXMgaXQgcmVhbGx5IGEg
+Z29vZCBpZGVhIHRvIGRpc2FibGUgdmJ1cyBpZiBpdCBoYXBwZW5zIHRvIGJlIGFscmVhZHkgZW5h
+YmxlZA0KPiA+IGFuZCB0aGVyZSBpcyAoYW5vdGhlciA/KSByZXF1ZXN0IHRvIGVuYWJsZSBpdCA/
+DQo+ID4NCj4gWWVzLCBmb3IgIHRoZSBzdGF0ZSBjaGFuZ2UgZnJvbSBzcmNfYXR0YWNoX3dhaXQg
+dG8gc3JjX2F0dGFjaCwNCj4gSXQgbmVlZCB0byBtZWV0IHRoZSByZXF1aXJlbWVudCB0aGF0ICB0
+aGUgdmJ1cyBpcyBhdCB2c2FmZTB2Lg0KPiBTbyB0byBkaXNhYmxlIGl0IGZpcnN0IGlzIG5lZWRl
+ZC4NCj4gQW5kIHRvIHByZXZlbnQgb3RoZXIgdXNlcnMgZnJvbSBlbmFibGluZy9kaXNhYmxpbmcg
+ZXh0ZXJuYWwgdmJ1cw0KPiByZWd1bGF0b3IgaW4gYW55IGNhc2UuDQo+IEkgdGhpbmsgd2UgbWF5
+IGNoYW5nZSByZWd1bGF0b3JfZ2V0ICB0byAncmVndWxhdG9yX2dldF9leGNsdXNpdmUnLg0KPiBG
+cm9tIHRoZSBkZXNpZ24sIDV2IHJlZ3VsYXRvciBvbmx5IGNhbiBiZSBjb250cm9sbGVkIHZpYSB0
+eXBlYyBmcmFtZXdvcmsuDQo+IElmIG90aGVyIHVzZXIgdG91Y2ggaXQsIGl0J2xsIGFmZmVjdCB0
+aGUgdHlwZWMgc3RhdGUgdHJhbnNpdGlvbi4NCkhvdyBhYm91dCB0byBwcm9jZXNzIHRoZSBjYXNl
+IHRoYXQgZXZlbiBzd2l0Y2ggdXNiIGNvbnRyb2xsZXIgdG8gZGV2aWNlDQptb2RlLCBwbGF0Zm9y
+bSBhbHNvIG5lZWQgdG8ga2VlcCB2YnVzIG9uPyBlLmcuIElwaG9uZSBDYXJwbGF5DQoNCg0KPiA+
+ID4gKw0KPiA+ID4gKyAgICAgaWYgKHNyYykgew0KPiA+ID4gKyAgICAgICAgICAgICByZXQgPSBy
+ZWd1bGF0b3JfZW5hYmxlKG10aS0+dmJ1cyk7DQo+ID4gPiArICAgICAgICAgICAgIGlmIChyZXQp
+DQo+ID4gPiArICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsNCj4gPiA+ICsgICAgIH0N
+Cj4gPiA+ICsNCj4gPiA+ICsgICAgIHJldHVybiAwOw0KPiA+ID4gK30NCj4gPiA+ICsNCj4gPiA+
+ICBzdGF0aWMgaW50IG10NjM2MF90Y3BjX2luaXQoc3RydWN0IHRjcGNpICp0Y3BjaSwgc3RydWN0
+IHRjcGNpX2RhdGEgKnRkYXRhKQ0KPiA+ID4gIHsNCj4gPiA+ICAgICAgIHN0cnVjdCByZWdtYXAg
+KnJlZ21hcCA9IHRkYXRhLT5yZWdtYXA7DQo+ID4gPiBAQCAtMTM4LDcgKzE2MSwxMyBAQCBzdGF0
+aWMgaW50IG10NjM2MF90Y3BjX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+
+ID4gPiAgICAgICBpZiAobXRpLT5pcnEgPCAwKQ0KPiA+ID4gICAgICAgICAgICAgICByZXR1cm4g
+bXRpLT5pcnE7DQo+ID4gPg0KPiA+ID4gKyAgICAgbXRpLT52YnVzID0gZGV2bV9yZWd1bGF0b3Jf
+Z2V0KCZwZGV2LT5kZXYsICJ2YnVzIik7DQo+ID4gPiArICAgICBpZiAoSVNfRVJSKG10aS0+dmJ1
+cykpDQo+ID4gPiArICAgICAgICAgICAgIHJldHVybiBQVFJfRVJSKG10aS0+dmJ1cyk7DQo+ID4g
+PiArDQo+ID4gPiAgICAgICBtdGktPnRkYXRhLmluaXQgPSBtdDYzNjBfdGNwY19pbml0Ow0KPiA+
+ID4gKyAgICAgbXRpLT50ZGF0YS5zZXRfdmJ1cyA9IG10NjM2MF90Y3BjX3NldF92YnVzOw0KPiA+
+ID4gKyAgICAgbXRpLT50ZGF0YS52YnVzX3ZzYWZlMHYgPSAxOw0KPiA+ID4gICAgICAgbXRpLT50
+Y3BjaSA9IHRjcGNpX3JlZ2lzdGVyX3BvcnQoJnBkZXYtPmRldiwgJm10aS0+dGRhdGEpOw0KPiA+
+ID4gICAgICAgaWYgKElTX0VSUihtdGktPnRjcGNpKSkgew0KPiA+ID4gICAgICAgICAgICAgICBk
+ZXZfZXJyKCZwZGV2LT5kZXYsICJGYWlsZWQgdG8gcmVnaXN0ZXIgdGNwY2kgcG9ydFxuIik7DQo+
+ID4gPg0KPiA+DQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtbWVkaWF0ZWsK
