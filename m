@@ -2,61 +2,73 @@ Return-Path: <SRS0=YRwc=GW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_RED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42076C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 09:37:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E024C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 10:52:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C399223137
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 09:37:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C399223137
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
+	by mail.kernel.org (Postfix) with ESMTPS id 96E492311C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 10:52:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96E492311C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=daesdSTsWNhS8dustmpAgTQAJvVvqDnFUGlqum5XXgk=; b=3hg0v4FTc9mSBsNqxjlCY0KMj
-	5K1d3EcYxKSpgdfkIcRimUrM8pmSpAsFEzvtRZRbytRFwE1wugH+s4OywakU8HGS6f6j8o6AgPoPG
-	RBQ+McQWdWo2uwg2pmJSEIyG0sVbfFTDJRzHtQgjSFnUPNlVvAUgBJff65VMGJNi/UFRCd+BhNwDZ
-	5Zc/9wgwGlOfK6r+l8jeyFMepnscu/bUypGqCRnd06O/6EvWuLkgJs27IeV+MVQBI+B7YhyrPEcVf
-	xggIOC1mFEA5Ti55g1fGBt+9mOyTW3lNDhR3qdNB3o53p1+Vis6BWF/gKMswGQ9/LtHj5ROUHEaRn
-	KMxRPuYUg==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NFWhOEsDvXOtvDI88JdJIZhKl2ws4OhTOdGq5X9+jYo=; b=vowh8VufuPEMrTuYZiY6L4HWHS
+	A7TnFW/gB9ife/oPMJSOOw3CmZG22wjhCFPVLctK5omRfJZrEfkCECleY2BNMfEvjxunHvpKCpNW6
+	zjR2DioAXKKw4TuCg1Yb7yTe5T2gYmy1HCETy2rXapSlhbROCLba/63NPhs2TSD42Cfftf7xHSP1U
+	wRGOPCl6nOyN3IC/x1lxHQHIbVYZjb56zbpxoPa+BsTdD47a0FjjS0LdyMWHmG6ae92YNp59faj1O
+	rm3ITNEP8ZCieFg7kUdKLllSteH1aFhoyTlnKwL08n2VzXoViwe80q1JdW4MI86W81yLAfbgklNfD
+	b23Nq0pw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1nS9-0000on-RA; Tue, 19 Jan 2021 09:37:33 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1l1oce-0008Qa-Er; Tue, 19 Jan 2021 10:52:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1nS4-0000oH-Rj; Tue, 19 Jan 2021 09:37:29 +0000
-X-Originating-IP: 93.29.109.196
-Received: from aptenodytes (196.109.29.93.rev.sfr.net [93.29.109.196])
- (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 807B6C0015;
- Tue, 19 Jan 2021 09:37:25 +0000 (UTC)
-Date: Tue, 19 Jan 2021 10:37:25 +0100
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v6 06/33] of/device: Move dma_range_map before
- of_iommu_configure
-Message-ID: <YAaoVTlCjriJt+iY@aptenodytes>
-References: <20210111111914.22211-1-yong.wu@mediatek.com>
- <20210111111914.22211-7-yong.wu@mediatek.com>
- <20210114192732.GA3401278@robh.at.kernel.org>
- <1610688626.4578.1.camel@mhfsdcap03>
- <1853732d-0efd-171e-9e1f-7ee7ed72a98f@arm.com>
- <1611048011.14702.6.camel@mhfsdcap03>
+ id 1l1ocX-0008P1-MG; Tue, 19 Jan 2021 10:52:23 +0000
+X-UUID: a10f69e5face444c989ca7984972ec38-20210119
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=wAVcEKzPGHhkI3MnOEhG0SLUgRwrrhLtDLfqfPU228c=; 
+ b=L217qxejxXaLApKqAedO4zqX0qHjMvGM9qws9yVwU8YE4SJdtd29NxFOpPfF53Ee++ssUiHl4cZ6Rk6k2jpYOlp9rJqjIQPxz4+4J/75v97+MHVm16iVs4eO2q/FAAcT2h+VZNqN1tfIXCebY/y1uTjgGIxsOZ6mzvWzvRFTJAY=;
+X-UUID: a10f69e5face444c989ca7984972ec38-20210119
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 675313510; Tue, 19 Jan 2021 02:52:17 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 19 Jan 2021 02:52:15 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 19 Jan 2021 18:52:13 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 19 Jan 2021 18:52:13 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH v2] of/device: Update dma_range_map only when dev has valid
+ dma-ranges
+Date: Tue, 19 Jan 2021 18:52:03 +0800
+Message-ID: <20210119105203.15530-1-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <1611048011.14702.6.camel@mhfsdcap03>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210119_043729_089875_76EF64ED 
-X-CRM114-Status: GOOD (  32.83  )
+X-CRM114-CacheID: sfid-20210119_055222_332837_893E6FC0 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,207 +80,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, Rob Herring <robh@kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, Will Deacon <will@kernel.org>,
- Frank Rowand <frowand.list@gmail.com>, Evan Green <evgreen@chromium.org>,
- linux-kernel@vger.kernel.org, chao.hao@mediatek.com,
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
  Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============0017743568132470437=="
+ linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>,
+ Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The commit e0d072782c73 ("dma-mapping: introduce DMA range map,
+supplanting dma_pfn_offset") always update dma_range_map even though it was
+already set, like in the sunxi_mbus driver. the issue is reported at [1].
+This patch avoid this(Updating it only when dev has valid dma-ranges).
 
---===============0017743568132470437==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ZpZRInV+koQDOukd"
-Content-Disposition: inline
+Meanwhile, dma_range_map contains the devices' dma_ranges information,
+This patch moves dma_range_map before of_iommu_configure. The iommu
+driver may need to know the dma_address requirements of its iommu
+consumer devices.
 
+[1] https://lore.kernel.org/linux-arm-kernel/5c7946f3-b56e-da00-a750-be097c7ceb32@arm.com/
 
---ZpZRInV+koQDOukd
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+CC: Rob Herring <robh+dt@kernel.org>
+CC: Frank Rowand <frowand.list@gmail.com>
+Fixes: e0d072782c73 ("dma-mapping: introduce DMA range map, supplanting dma_pfn_offset"),
+Suggested-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ drivers/of/device.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-Hi,
-
-On Tue 19 Jan 21, 17:20, Yong Wu wrote:
-> On Mon, 2021-01-18 at 15:49 +0000, Robin Murphy wrote:
-> > On 2021-01-15 05:30, Yong Wu wrote:
-> > > On Thu, 2021-01-14 at 13:27 -0600, Rob Herring wrote:
-> > >> On Mon, Jan 11, 2021 at 07:18:47PM +0800, Yong Wu wrote:
-> > >>> "dev->dma_range_map" contains the devices' dma_ranges information,
-> > >>> This patch moves dma_range_map before of_iommu_configure. The iommu
-> > >>> driver may need to know the dma_address requirements of its iommu
-> > >>> consumer devices.
-> > >>>
-> > >>> CC: Rob Herring <robh+dt@kernel.org>
-> > >>> CC: Frank Rowand <frowand.list@gmail.com>
-> > >>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > >>> ---
-> > >>>   drivers/of/device.c | 3 ++-
-> > >>>   1 file changed, 2 insertions(+), 1 deletion(-)
-> > >>>
-> > >>> diff --git a/drivers/of/device.c b/drivers/of/device.c
-> > >>> index aedfaaafd3e7..1d84636149df 100644
-> > >>> --- a/drivers/of/device.c
-> > >>> +++ b/drivers/of/device.c
-> > >>> @@ -170,9 +170,11 @@ int of_dma_configure_id(struct device *dev, st=
-ruct device_node *np,
-> > >>>   	dev_dbg(dev, "device is%sdma coherent\n",
-> > >>>   		coherent ? " " : " not ");
-> > >>>  =20
-> > >>> +	dev->dma_range_map =3D map;
-> > >>>   	iommu =3D of_iommu_configure(dev, np, id);
-> > >>>   	if (PTR_ERR(iommu) =3D=3D -EPROBE_DEFER) {
-> > >>>   		kfree(map);
-> > >>> +		dev->dma_range_map =3D NULL;
-> > >>
-> > >> Not really going to matter, but you should probably clear dma_range_=
-map
-> > >> before what it points to is freed.
-> > >>
-> > >> With that,
-> > >>
-> > >> Reviewed-by: Rob Herring <robh@kernel.org>
-> > >=20
-> > > Thanks for the review. I will move it before "kfree(map)" in next
-> > > version.
-> >=20
-> > Paul noticed that we already have a bug in assigning to this=20
-> > unconditionally[1] - I'd totally forgotten about this series when I=20
-> > theorised about IOMMU drivers wanting the information earlier, but=20
-> > sweeping my inbox now only goes to show I was right to think of it :)
-> >=20
-> > We should really get something in as a fix independent of this series,=
-=20
-> > taking both angles into account.
->=20
-> Thanks this info. Following your suggestion, Move this into the "if (!
-> ret)". Then it is like this:
-
-Thanks for preparing the change :)
-
->=20
-> --- a/drivers/of/device.c
-> +++ b/drivers/of/device.c
-> @@ -163,8 +163,10 @@ int of_dma_configure_id(struct device *dev, struct
-> device_node *np,
->  	dev->coherent_dma_mask &=3D mask;
->  	*dev->dma_mask &=3D mask;
->  	/* ...but only set bus limit if we found valid dma-ranges earlier */
-
-Maybe the comment would need some update too, like:
-/* ...but only set bus limit and map if we found valid dma-ranges earlier */
-
-> -	if (!ret)
-> +	if (!ret) {
->  		dev->bus_dma_limit =3D end;
-> +		dev->dma_range_map =3D map;
-> +	}
-> =20
->  	coherent =3D of_dma_is_coherent(np);
->  	dev_dbg(dev, "device is%sdma coherent\n",
-> @@ -172,6 +174,8 @@ int of_dma_configure_id(struct device *dev, struct
-> device_node *np,
-> =20
->  	iommu =3D of_iommu_configure(dev, np, id);
->  	if (PTR_ERR(iommu) =3D=3D -EPROBE_DEFER) {
-
-And maybe one here, something like:
-/* don't touch range map if it wasn't set from a valid dma-ranges */
-
-> +		if (!ret)
-> +			dev->dma_range_map =3D NULL;
->  		kfree(map);
->  		return -EPROBE_DEFER;
->  	}
-> @@ -181,7 +185,6 @@ int of_dma_configure_id(struct device *dev, struct
-> device_node *np,
-> =20
->  	arch_setup_dma_ops(dev, dma_start, size, iommu, coherent);
-> =20
-> -	dev->dma_range_map =3D map;
->  	return 0;
->  }
->  EXPORT_SYMBOL_GPL(of_dma_configure_id);
->=20
->=20
-> If this is ok, I will send this as a independent patch.
-
-With the suggested changes, this looks good to me!
-
-Thanks,
-
-Paul
-
-> >=20
-> > Robin.
-> >=20
-> > [1]=20
-> > https://lore.kernel.org/linux-arm-kernel/5c7946f3-b56e-da00-a750-be097c=
-7ceb32@arm.com/
-> >=20
-> > >>
-> > >>>   		return -EPROBE_DEFER;
-> > >>>   	}
-> > >>>  =20
-> > >>> @@ -181,7 +183,6 @@ int of_dma_configure_id(struct device *dev, str=
-uct device_node *np,
-> > >>>  =20
-> > >>>   	arch_setup_dma_ops(dev, dma_start, size, iommu, coherent);
-> > >>>  =20
-> > >>> -	dev->dma_range_map =3D map;
-> > >>>   	return 0;
-> > >>>   }
-> > >>>   EXPORT_SYMBOL_GPL(of_dma_configure_id);
-> > >>> --=20
-> > >>> 2.18.0
-> > >>>
-> > >=20
-> > > _______________________________________________
-> > > iommu mailing list
-> > > iommu@lists.linux-foundation.org
-> > > https://lists.linuxfoundation.org/mailman/listinfo/iommu
-> > >=20
->=20
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---ZpZRInV+koQDOukd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmAGqFQACgkQ3cLmz3+f
-v9E3gwf8CT7hHXO41OxQvi2MFcgYFzwhZZyobCae68dTmEbC4OQjOxfwex0hT0Fc
-fSqWrI33YU977JQ5MA+ZDZKJ9LenssabEikucOUfCCaiTxjy+EK7Sn83ub51okw+
-IHa+n83H1G5nwTHPP1fn40z97Lyvk9wgOGRGtkqOuzADCoQ1ouQ6j0m+/nN0xJme
-ORP/0J4qvKaZJznz7yDSPNP6QQ4UHXmg8e9CU9Oo9L6IaqH75jOJ0EtZDTrvqetL
-Y2AzrZSrGESdcqXGAgO0sPICDorDbvP9dFGTsCeZwuM2lpCyWFRhE4sCQAA86NtG
-JsLC4pzVbtkIepjP8eXSMmJf93G32g==
-=pOip
------END PGP SIGNATURE-----
-
---ZpZRInV+koQDOukd--
-
-
---===============0017743568132470437==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+diff --git a/drivers/of/device.c b/drivers/of/device.c
+index aedfaaafd3e7..1122daa8e273 100644
+--- a/drivers/of/device.c
++++ b/drivers/of/device.c
+@@ -162,9 +162,11 @@ int of_dma_configure_id(struct device *dev, struct device_node *np,
+ 	mask = DMA_BIT_MASK(ilog2(end) + 1);
+ 	dev->coherent_dma_mask &= mask;
+ 	*dev->dma_mask &= mask;
+-	/* ...but only set bus limit if we found valid dma-ranges earlier */
+-	if (!ret)
++	/* ...but only set bus limit and range map if we found valid dma-ranges earlier */
++	if (!ret) {
+ 		dev->bus_dma_limit = end;
++		dev->dma_range_map = map;
++	}
+ 
+ 	coherent = of_dma_is_coherent(np);
+ 	dev_dbg(dev, "device is%sdma coherent\n",
+@@ -172,6 +174,9 @@ int of_dma_configure_id(struct device *dev, struct device_node *np,
+ 
+ 	iommu = of_iommu_configure(dev, np, id);
+ 	if (PTR_ERR(iommu) == -EPROBE_DEFER) {
++		/* Don't touch range map if it wasn't set from a valid dma-ranges */
++		if (!ret)
++			dev->dma_range_map = NULL;
+ 		kfree(map);
+ 		return -EPROBE_DEFER;
+ 	}
+@@ -181,7 +186,6 @@ int of_dma_configure_id(struct device *dev, struct device_node *np,
+ 
+ 	arch_setup_dma_ops(dev, dma_start, size, iommu, coherent);
+ 
+-	dev->dma_range_map = map;
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(of_dma_configure_id);
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0017743568132470437==--
-
