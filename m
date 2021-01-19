@@ -1,63 +1,80 @@
-Return-Path: <SRS0=/Mgn=GV=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=YRwc=GW=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41386C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jan 2021 18:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EA37C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 02:42:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0361C22CA2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jan 2021 18:47:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0361C22CA2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 113AF22DFB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jan 2021 02:42:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 113AF22DFB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wjJnIA6fiRbSUhkwHwQKvF9aFXgMGlCYLTDr7DZQbAY=; b=zycPebSECAzIm7DDH9B+cTjLg
-	K2XX8TrmW6bAT+4Dq7IwyDn91vItgEJEe8jC3MrG6zRzyhq2Kx/JcjYKSmT1PAozfXeQQ83J7K6gk
-	phEzAk1aneSV8KXRjoHiwXyBRNm+Tltwi8x0ua9t8gyfujGJPwbcXSEcZ1K20PVU0WxuVQlN5/eau
-	bDYIrh1LFRiNWz9lhg/7p4Ve7y0JjWAbfjay0FFZnizsHNhvizzY+ZWBd/hePnsZkW4jZDgheCwCb
-	FV89rSfm+9SEBYa9/gaj1gARqpa1nl5Ni/uCUdraEhqMrtSGwXn8/LO7t1cVP3W9OCl0MwN5ysm2r
-	WJyAb5AMQ==;
+	 bh=OcCrZ57Rdsg5Io5ZZMjshJ5GcNxaDJMnbgzRhVAZ9rw=; b=ELoXintCf+2PEfBrI26Sm8lYy
+	GfnYMlZNNjMEjh5K1ZPk959shir9LhuZcP7jnQGhAF6Ge0+t30HKkHZZOmm1xOtHH0uhlLgjKEok1
+	r/Lba7U4rw6w89d3391MTvaqUC6RvxhiK6akscqEQEGPIYH88ZNkRDTkdKzyhugCW/timiWdKaUof
+	GqfkbEf0l5TVZPqrQqOYnoztz1BeRVd3F8IThClHYMSiLA4c50GDfkS3ebdxEOHiiTZ8VGpuev0OV
+	GOjAba2Ruc/ie5VozZsFwTvXby7hODpRuOoAhWLjO1vnWwWJb3B84axnMyHAZICunAMAW/9K3SAcM
+	8CCid+R4g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1ZYC-000451-Tb; Mon, 18 Jan 2021 18:46:52 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1ZY8-00043r-WE; Mon, 18 Jan 2021 18:46:49 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 857F331B;
- Mon, 18 Jan 2021 10:46:47 -0800 (PST)
-Received: from [10.57.39.58] (unknown [10.57.39.58])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2C90F3F719;
- Mon, 18 Jan 2021 10:46:42 -0800 (PST)
-Subject: Re: [PATCH v4 7/7] iommu/mediatek: Remove the tlb-ops for v7s
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>
-References: <20210107122909.16317-1-yong.wu@mediatek.com>
- <20210107122909.16317-8-yong.wu@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <520e2eab-7ee8-6bfd-4b98-f89ec2f9aaea@arm.com>
-Date: Mon, 18 Jan 2021 18:46:42 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+	id 1l1gxr-00053t-CP; Tue, 19 Jan 2021 02:41:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l1gxm-000535-Tn; Tue, 19 Jan 2021 02:41:48 +0000
+X-UUID: 8860af115ba34abfbf3c34a9b2ca5d76-20210118
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=4kexQ2hHpQDh0WXQE4QqbROz+eLRj3yLnugH4alvgz4=; 
+ b=OLXAV9xEQ4eaEFkpPwAsAn1JPspckHz2lyq0rV3acNRhp+jeiBGURdkphgAddRr85Mvc5Zxagjkfc34dN3oogxQ7c12cHPq2isO0CDt1dR0pXHE6+ZM1rsxXo6q02VubM6agu3PkYrFuNiKKiCil3MttuNHyFzB6tulEivoPtQ8=;
+X-UUID: 8860af115ba34abfbf3c34a9b2ca5d76-20210118
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 68215041; Mon, 18 Jan 2021 18:41:34 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Jan 2021 18:33:18 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 19 Jan 2021 10:33:15 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 19 Jan 2021 10:33:14 +0800
+Message-ID: <1611023594.11995.4.camel@mhfsdcap03>
+Subject: Re: [PATCH v5] usb: xhci-mtk: fix unreleased bandwidth data
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Ikjoon Jang <ikjn@chromium.org>
+Date: Tue, 19 Jan 2021 10:33:14 +0800
+In-Reply-To: <CAATdQgCb254YJ2tpiqWZ0RDHRiN59NuuHBuhavoYQT3STh=jkg@mail.gmail.com>
+References: <20201229142406.v5.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+ <2aea44f0-85e7-fd55-2c35-c1d994f20e03@linux.intel.com>
+ <1610086308.24856.30.camel@mhfsdcap03>
+ <e43632e2-08b3-7a1a-8272-1d493e25fc67@linux.intel.com>
+ <CAATdQgD2OAmf7_NWSVwzyJE7mF0vngzE=QeE79PS7MJsgPhbtA@mail.gmail.com>
+ <1610612988.30053.15.camel@mhfsdcap03>
+ <CAATdQgCb254YJ2tpiqWZ0RDHRiN59NuuHBuhavoYQT3STh=jkg@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <20210107122909.16317-8-yong.wu@mediatek.com>
-Content-Language: en-GB
+X-TM-SNTS-SMTP: A6115A169AEB976A4B832476D0D8D2120FA2368B9779F77F46ED1A7ED5A498A62000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_134649_145913_FA968213 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20210118_214147_159563_D79B5463 
+X-CRM114-Status: GOOD (  36.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,102 +86,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- Tomasz Figa <tfiga@google.com>, linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzk@kernel.org>, Christoph Hellwig <hch@infradead.org>,
- chao.hao@mediatek.com, iommu@lists.linux-foundation.org,
- David Laight <David.Laight@ACULAB.COM>, linux-mediatek@lists.infradead.org,
+Cc: Zhanyong Wang <zhanyong.wang@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ open list <linux-kernel@vger.kernel.org>,
+ Tianping Fang <tianping.fang@mediatek.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Greg Kroah-Hartman <gregkh@google.com>, kernel-team@android.com,
- linux-arm-kernel@lists.infradead.org
+ Mathias Nyman <mathias.nyman@linux.intel.com>,
+ "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2021-01-07 12:29, Yong Wu wrote:
-> Until now, we have already used the tlb operations from iommu framework,
-> then the tlb operations for v7s can be removed.
+On Fri, 2021-01-15 at 10:51 +0800, Ikjoon Jang wrote:
+> On Thu, Jan 14, 2021 at 4:30 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> >
+> > Hi Ikjoon,
+> >
+> > On Tue, 2021-01-12 at 13:48 +0800, Ikjoon Jang wrote:
+> > > On Fri, Jan 8, 2021 at 10:44 PM Mathias Nyman
+> > > <mathias.nyman@linux.intel.com> wrote:
+> > > >
+> > > > On 8.1.2021 8.11, Chunfeng Yun wrote:
+> > > > > On Thu, 2021-01-07 at 13:09 +0200, Mathias Nyman wrote:
+> > > > >> On 29.12.2020 8.24, Ikjoon Jang wrote:
+> > > > >>> xhci-mtk has hooks on add_endpoint() and drop_endpoint() from xhci
+> > > > >>> to handle its own sw bandwidth managements and stores bandwidth data
+> > > > >>> into internal table every time add_endpoint() is called,
+> > > > >>> so when bandwidth allocation fails at one endpoint, all earlier
+> > > > >>> allocation from the same interface could still remain at the table.
+> > > > >>>
+> > > > >>> This patch adds two more hooks from check_bandwidth() and
+> > > > >>> reset_bandwidth(), and make mtk-xhci to releases all failed endpoints
+> > > > >>> from reset_bandwidth().
+> > > > >>>
+> > > > >>> Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
+> > > > >>> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> > > > >>>
+> > > > >>
+> > > > >> ...
+> > > > >>
+> > > > >>>
+> > > > >>> diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+> > > > >>> index d4a8d0efbbc4..e1fcd3cf723f 100644
+> > > > >>> --- a/drivers/usb/host/xhci.c
+> > > > >>> +++ b/drivers/usb/host/xhci.c
+> > > > >>> @@ -2882,6 +2882,12 @@ static int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+> > > > >>>     xhci_dbg(xhci, "%s called for udev %p\n", __func__, udev);
+> > > > >>>     virt_dev = xhci->devs[udev->slot_id];
+> > > > >>>
+> > > > >>> +   if (xhci->quirks & XHCI_MTK_HOST) {
+> > > > >>> +           ret = xhci_mtk_check_bandwidth(hcd, udev);
+> > > > >>> +           if (ret < 0)
+> > > > >>> +                   return ret;
+> > > > >>> +   }
+> > > > >>> +
+> > > > >>
+> > > > >> Just noticed that XHCI_MTK_HOST quirk is only set in xhci-mtk.c.
+> > > > >> xhci-mtk.c calls xhci_init_driver(..., xhci_mtk_overrides) with a .reset override function.
+> > > > >>
+> > > > >> why not add override functions for .check_bandwidth and .reset_bandwidth to xhci_mtk_overrides instead?
+> > > > >>
+> > > > >> Another patch to add similar overrides for .add_endpoint and .drop_endpoint should probably be
+> > > > >> done so that we can get rid of the xhci_mtk_add/drop_ep_quirk() calls in xhci.c as well
+> > > > > You mean, we can export xhci_add/drop_endpoint()?
+> > > >
+> > > > I think so, unless you have a better idea.
+> > > > I prefer exporting the generic add/drop_endpoint functions rather than the vendor specific quirk functions.
+> > > >
+> > >
+> > > When moving out all MTK_HOST quirks and unlink xhci-mtk-sch from xhci,
+> > > xhci-mtk-sch still needs to touch the xhci internals, at least struct
+> > > xhci_ep_ctx.
+> > >
+> > > My naive idea is just let xhci export one more function to expose xhci_ep_ctx.
+> > > But I'm not sure whether this is acceptable:
+> > I find that xhci_add_endpoint() ignores some errors with return 0, for
+> > these cases we needn't call xhci_mtk_add_ep-quirk(), so may be not a
+> > good way to just export xhci_add_endpoint().
 > 
-> Correspondingly, Switch the paramenter "cookie" to the internal structure.
+> yeah, maybe that's from ep0 case?
+> 
+> And I've thought that we could also unlink xhci-mtk-sch from the xhci module
+> if MTK_HOST quirk functions are moved out to mtk platform driver's overrides.
+> I guess I've gone too far.
+> 
+> If we keep xhci-mtk-sch being built with the xhci module,
+> xhci-mtk-sch can directly access input control context and its drop/add flags,
+> so I think we can simply remove {add|drop}_endpoint() quirks and just handle
+> them all in {check|reset}_bandwidth() overrides.
+It's ok if check_bandwidth() could get added ep and update context.
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+I'll spend some time to look at the code and test it.
 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->   drivers/iommu/mtk_iommu.c | 27 ++++-----------------------
->   1 file changed, 4 insertions(+), 23 deletions(-)
+Thank you
+
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index d3b8a1649093..86ab577c9520 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -182,10 +182,8 @@ static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
->   	return container_of(dom, struct mtk_iommu_domain, domain);
->   }
->   
-> -static void mtk_iommu_tlb_flush_all(void *cookie)
-> +static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
->   {
-> -	struct mtk_iommu_data *data = cookie;
-> -
->   	for_each_m4u(data) {
->   		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
->   			       data->base + data->plat_data->inv_sel_reg);
-> @@ -195,9 +193,9 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
->   }
->   
->   static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
-> -					   size_t granule, void *cookie)
-> +					   size_t granule,
-> +					   struct mtk_iommu_data *data)
->   {
-> -	struct mtk_iommu_data *data = cookie;
->   	unsigned long flags;
->   	int ret;
->   	u32 tmp;
-> @@ -219,7 +217,7 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
->   		if (ret) {
->   			dev_warn(data->dev,
->   				 "Partial TLB flush timed out, falling back to full flush\n");
-> -			mtk_iommu_tlb_flush_all(cookie);
-> +			mtk_iommu_tlb_flush_all(data);
->   		}
->   		/* Clear the CPE status */
->   		writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
-> @@ -227,22 +225,6 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
->   	}
->   }
->   
-> -static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
-> -					    unsigned long iova, size_t granule,
-> -					    void *cookie)
-> -{
-> -	struct mtk_iommu_data *data = cookie;
-> -	struct iommu_domain *domain = &data->m4u_dom->domain;
-> -
-> -	iommu_iotlb_gather_add_page(domain, gather, iova, granule);
-> -}
-> -
-> -static const struct iommu_flush_ops mtk_iommu_flush_ops = {
-> -	.tlb_flush_all = mtk_iommu_tlb_flush_all,
-> -	.tlb_flush_walk = mtk_iommu_tlb_flush_range_sync,
-> -	.tlb_add_page = mtk_iommu_tlb_flush_page_nosync,
-> -};
-> -
->   static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
->   {
->   	struct mtk_iommu_data *data = dev_id;
-> @@ -326,7 +308,6 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
->   		.pgsize_bitmap = mtk_iommu_ops.pgsize_bitmap,
->   		.ias = 32,
->   		.oas = 34,
-> -		.tlb = &mtk_iommu_flush_ops,
->   		.iommu_dev = data->dev,
->   	};
->   
-> 
+> >
+> > >
+> > > +struct xhci_ep_ctx* xhci_get_ep_contex(struct xhci_hcd *xhci, struct
+> > > usb_host_endpoint *ep)
+> > > +{ ... }
+> > > +EXPORT_SYMBOL(xhci_get_ep_context);
+> > >
+> > > But for v6, I'm going to submit a patch with {check|reset}_bandwidth()
+> > > quirk function
+> > >  switched into xhci_driver_overrides first. (and preserve existing
+> > > MTK_HOST quirk functions).
+> > >
+> > > Thanks!
+> > >
+> > > > -Mathias
+> > > >
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
