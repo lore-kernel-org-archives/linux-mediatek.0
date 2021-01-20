@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 54165C433E6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 01:31:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27D19C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 01:32:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F11E20449
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 01:31:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F11E20449
+	by mail.kernel.org (Postfix) with ESMTPS id C5F5B20449
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 01:32:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5F5B20449
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,45 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HomhNl1sf9c0eeQnTDIJV6qHUcP5RSIzka9JMZpE66E=; b=G8IM9rgfNCVnl6x0lXLBWzRi3
-	eDJBAgzmjYY1I7ElwWv/Yhj5BJN6oIxowtyITI4MaLVaQbmAewFna9PFleu7V8sM9xHNs94IkSg5B
-	7lqkJMMc+2uQNWcWl44zCtCgqbQ7yfGKhKCIKx191HtmWl4+EygpXBCAG+X/w7lgdkd7nxqV+WQXK
-	+C1VI6djB15ZdWJ22dPWHZR4Wr9gfK5jcjK847B1d0EAAv2PkXRluyHmiKGY3gh46yiOKZOWv3jHB
-	BrSRwGsXtE3hdSFK8irJ1TO/587qgT9t/3VfmrQU2U7PQNxIwlzPfLR/RqTF9VzfBDLEiQ/78aS3g
-	Qwufo0Fyw==;
+	 bh=Ije64kr0w3H8XbCh/BYz303Kwi2wfqjkKR3OhWovFnU=; b=TiaBiq8CjU0fE4BNqZZVP2oxj
+	f8yFDR6gExbZEC9Q7GgwuAEsEx1FF/+4wgyVOMONM8yQXv+DBVp8Tfxa96jqQKkD8I9sO7AnXiNbX
+	2PGRwiV0A8QqhCS5OuY52XuHOaONvA2rte8/udUWzSz8sDNbVCabxo4smVcYeVG8i86GrfjTTG9SA
+	AZiOdu5cbKuZRB3OThFo4SXT4X3vkhK3eea+61w+RzJj+eDjbQmOi7Dsx5dXslSZss06Kf6MdoYdZ
+	7Mgx9ScWMHeAgukJN/9tk+rJOTbrmbiyiIrdRv3DZK94YQPGPq2u7ssEnCyjplFo89mu8+OwMqdZJ
+	NgZiQgRZQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l22Kg-0005Qn-I7; Wed, 20 Jan 2021 01:30:50 +0000
+	id 1l22Lr-000679-7X; Wed, 20 Jan 2021 01:32:03 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l22I5-0003j7-AU; Wed, 20 Jan 2021 01:28:11 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5633523718;
- Wed, 20 Jan 2021 01:28:06 +0000 (UTC)
+ id 1l22IH-0003qd-Gz; Wed, 20 Jan 2021 01:28:26 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E7A282332A;
+ Wed, 20 Jan 2021 01:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611106087;
- bh=BBY9OQcl7jlbZXYBgYkN24kB9pwOUGb0NtCq3VWpy3E=;
+ s=k20201202; t=1611106100;
+ bh=6s/Zt7W+Wkg1fAW8F+7rxzIrH/88u0za87HrNngqBCU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=HTEGikyl+X8HmEDuMrpTterHDcPmXyXyyjO69zceZg3ASkLw98tRNA5TlOVUGYmTc
- fH/q/TPGgK1SnSNGDknOr0bgXjuDOMlx/X8rgevodUO7Hz/3OUXK4McZ8YGRhp/VRI
- DJ4jsYW4s6oq5LmIRpJo0w+/IIcyZgosZ9QapNsbWEZyi7RQl/K8CZF9Nx5Gcf6H5F
- GrBtPJFCm2QK7EMiFGVBYfpiPvxPt5nHX3r8a8N72VIgIkbkkFklyZY1fRUgrGBrny
- gA821QY4Cp0d9Q0sKWkd+Xp2Aa69yg79wMTww73W+xBma99+BK0o5MgXQ5Qk55w6JT
- ByRWg/GTEcaCw==
+ b=Xjay960n1aYnj1AFVw8xaK8sJmgQeJgO5vbQjDKnWWsgUt3pfOO6ZvReEc5mls34X
+ fTxv4BZYrkz+oj/2//MiaJeVAtllJxe1wx75TPvVBHzXg5BiO6pz4/cODedT0nJ/3t
+ 9WTujEWEb+YrPbv/qnkIUF+mBWoxMFwDFs973rs15CnpWHRge+Ja/sF6MEL2qv8R1G
+ tOL727xHpieZ8NiNshikFbhRk1k5COGxqBw56y+tcomkyBGMGerSOj2lk8WSbDhSd0
+ 9vIbFxinpk7iQUh4pvec/VLXDIIZaW1Z4at0YNBi2OvrwNhJbF+7jCtwbFICiBHT05
+ SWKAK0zC1EJ4g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 3/9] scsi: ufs: Correct the LUN used in
+Subject: [PATCH AUTOSEL 4.9 2/4] scsi: ufs: Correct the LUN used in
  eh_device_reset_handler() callback
-Date: Tue, 19 Jan 2021 20:27:56 -0500
-Message-Id: <20210120012802.770525-3-sashal@kernel.org>
+Date: Tue, 19 Jan 2021 20:28:14 -0500
+Message-Id: <20210120012816.770648-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210120012802.770525-1-sashal@kernel.org>
-References: <20210120012802.770525-1-sashal@kernel.org>
+In-Reply-To: <20210120012816.770648-1-sashal@kernel.org>
+References: <20210120012816.770648-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210119_202809_630429_54F491A3 
+X-CRM114-CacheID: sfid-20210119_202821_705784_E14E748D 
 X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -106,10 +106,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 4 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 342e086e41991..f46fa8a2f6585 100644
+index ad80e4223c2d3..a767d942bfca5 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5536,19 +5536,16 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
+@@ -4552,19 +4552,16 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
  {
  	struct Scsi_Host *host;
  	struct ufs_hba *hba;
@@ -132,7 +132,7 @@ index 342e086e41991..f46fa8a2f6585 100644
  	if (err || resp != UPIU_TASK_MANAGEMENT_FUNC_COMPL) {
  		if (!err)
  			err = resp;
-@@ -5557,7 +5554,7 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
+@@ -4573,7 +4570,7 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
  
  	/* clear the commands that were pending for corresponding LUN */
  	for_each_set_bit(pos, &hba->outstanding_reqs, hba->nutrs) {
