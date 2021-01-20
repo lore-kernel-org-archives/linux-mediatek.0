@@ -2,55 +2,55 @@ Return-Path: <SRS0=1cO+=GX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B458C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 15:02:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E13E6C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 15:02:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C8BD723356
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 15:02:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8BD723356
+	by mail.kernel.org (Postfix) with ESMTPS id 6F0D323356
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 15:02:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F0D323356
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Q38ajuka9qehlT65VqTd36+BR2hxUGioiVY6yvpU3IY=; b=tC+YW81XRm56jHJr+dHy239F2Q
-	16FmLAPRSwQzTib3qMFdUwGVuKdvgiuoe+275mbRkzY4KyRlBPbnfb/qFSqyKPCM15k+YvShyhQGf
-	JNgrFDWq9goglaOkl5WuIaVEASfYT0zerSt7HqvXfTu3B3ZyFYH1Hb+rl8b0UvyNhs6DOq6eQ7E5i
-	LEc2IIdb6iqeCydQEL+7/r04kyL1aKLDHS8z8UofdnySoHPUE2WfEpukyOxa8wO8otGfCmHWV9EMj
-	v2E4w79zIE6lRy7TlNoLNKiZlhmHWWq/a8pENRSP3fh5tplEOgeBiqvrBATSdMUUdnR0xeeXZJ/jw
-	hmw8fX3A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=uVQbP4W2VPJYh1uwbIPVuLm+r5TAMkRPh9b//uxmhtI=; b=fXziTdL6uEsAEsHzi3mfVC5Xg
+	MJp8hZ8RoUazfiIBnfli2A1MUhR3o1CEUWJUqka1ZhAn3ftAqLuiIDMcHRdZh50z6RWVQULStGdLe
+	vP3PlFyUoi0ODY7Yo9msdCpyFJz/oIsq9KWnPyGEHS5okfMMQTnCq8/XpRWqU8lF7eSUETb60pKRD
+	cmDPM58r6XaWBZ8rZ2GaHgnYKJPLdWZBsotf3oMgiSi7Hpdu4/EaSiO3FZpqx26SClQIooKZHQcj9
+	uJIaBDy4h/S/xgOUl0sJhB1uIyfxBHZwI3guY4tZ1rWowSiyIAHNlurvoDkshh4FVDNR4jW+dEMhA
+	QDUbRnnZw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2F00-0002Hz-Ps; Wed, 20 Jan 2021 15:02:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l2F04-0002J3-6j; Wed, 20 Jan 2021 15:02:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2Ezr-0002Er-Vf; Wed, 20 Jan 2021 15:02:12 +0000
-X-UUID: 31e2724dd5034da6be2c2511f5b2142f-20210120
+ id 1l2Ezs-0002Eq-AU; Wed, 20 Jan 2021 15:02:13 +0000
+X-UUID: bd2e16f53d06424f9c924c394202d2b5-20210120
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=j4XhcCqYZ8I5QXpMom60si+5QKh3VmxLm0hcEKpcOhE=; 
- b=KlEcvDs0zWL3nToYXu+fmhlGVEzXfk1IVXnQUmPKEFLOsAzrk+cPFq1/hJjqvKlWPcrYGIBKdzAUSgz0ZVoTuqDdY3HDaMNe3huBYT27nsWgEhEE+mOYFar0+mpjbwkkJt6jhvXQd/BDEgXjwIBunxml69Gu4vCPKGLKJ+g0TEk=;
-X-UUID: 31e2724dd5034da6be2c2511f5b2142f-20210120
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=TrzG6rijurgKzvAQn+c+8UAVCHamTfk+6oKc71LR6Nw=; 
+ b=cWIu7A+Khw4U4ejZZkoQxSzNDXJYfbOwkfpsemSS5cyt8ul14rAZXgM2Eh9nkDT90zNPXMC90b0EIn0BUHjaDoFMn9ZyZ5IZzWdMjIRftH2XWGtRVS7DolQqpzrq1kwxdHpG2jx94FZRryKT0L0KGX34Po4JHxAZe5kkk5fwbi4=;
+X-UUID: bd2e16f53d06424f9c924c394202d2b5-20210120
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 793778967; Wed, 20 Jan 2021 07:02:08 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Jan 2021 07:02:07 -0800
+ with ESMTP id 1163706765; Wed, 20 Jan 2021 07:02:08 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Jan 2021 07:02:06 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 20 Jan 2021 23:01:52 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -58,17 +58,17 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v3 0/3] scsi: ufs: Cleanup and refactor clock scaling
-Date: Wed, 20 Jan 2021 23:01:39 +0800
-Message-ID: <20210120150142.5049-1-stanley.chu@mediatek.com>
+Subject: [PATCH v3 1/3] scsi: ufs: Refactor cancelling clkscaling works
+Date: Wed, 20 Jan 2021 23:01:40 +0800
+Message-ID: <20210120150142.5049-2-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210120150142.5049-1-stanley.chu@mediatek.com>
+References: <20210120150142.5049-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 4813510C0F2570B68E6DFB194355F03012662DC6A73A47E8BF304A594C14F6CA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_100212_165740_FAE1C11D 
-X-CRM114-Status: UNSURE (   7.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210120_100212_498247_C2ACFD35 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,29 +92,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-This series cleans up and refactors clk-scaling feature, and shall not change any functionality.
+Cancelling suspend_work and resume_work is only required while
+suspending clk-scaling. Thus moving these two invokes into
+ufshcd_suspend_clkscaling() function.
 
-This series is based on Can's series "Three changes related with UFS clock scaling" in 5.12/scsi-queue branch in Martin's tree.
+Reviewed-by: Can Guo <cang@codeaurora.org>
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
 
-Changes since v2:
-  - Remove patch 4
-  - Rebase to Can's series: [v11] Three changes related with UFS clock scaling
-
-Changes since v1:
-  - Refactor ufshcd_clk_scaling_suspend() in patch [3/4]
-  - Change function name from ufshcd_clk_scaling_pm() to ufshcd_clk_scaling_suspend() in patch [3/4]
-  - Refine patch titles
-
-
-Stanley Chu (3):
-  scsi: ufs: Refactor cancelling clkscaling works
-  scsi: ufs: Remove redundant null checking of devfreq instance
-  scsi: ufs: Cleanup and refactor clk-scaling feature
-
- drivers/scsi/ufs/ufshcd.c | 87 ++++++++++++++++++---------------------
- 1 file changed, 41 insertions(+), 46 deletions(-)
-
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 5450e049d1a9..226504d05c14 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -1503,6 +1503,9 @@ static void ufshcd_suspend_clkscaling(struct ufs_hba *hba)
+ 	if (!ufshcd_is_clkscaling_supported(hba))
+ 		return;
+ 
++	cancel_work_sync(&hba->clk_scaling.suspend_work);
++	cancel_work_sync(&hba->clk_scaling.resume_work);
++
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+ 	if (!hba->clk_scaling.is_suspended) {
+ 		suspend = true;
+@@ -1564,9 +1567,6 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
+ 	pm_runtime_get_sync(hba->dev);
+ 	ufshcd_hold(hba, false);
+ 
+-	cancel_work_sync(&hba->clk_scaling.suspend_work);
+-	cancel_work_sync(&hba->clk_scaling.resume_work);
+-
+ 	hba->clk_scaling.is_enabled = value;
+ 
+ 	if (value) {
+@@ -5783,11 +5783,8 @@ static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
+ 		ufshcd_vops_resume(hba, pm_op);
+ 	} else {
+ 		ufshcd_hold(hba, false);
+-		if (hba->clk_scaling.is_enabled) {
+-			cancel_work_sync(&hba->clk_scaling.suspend_work);
+-			cancel_work_sync(&hba->clk_scaling.resume_work);
++		if (hba->clk_scaling.is_enabled)
+ 			ufshcd_suspend_clkscaling(hba);
+-		}
+ 		down_write(&hba->clk_scaling_lock);
+ 		hba->clk_scaling.is_allowed = false;
+ 		up_write(&hba->clk_scaling_lock);
+@@ -8707,11 +8704,9 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	ufshcd_hold(hba, false);
+ 	hba->clk_gating.is_suspended = true;
+ 
+-	if (hba->clk_scaling.is_enabled) {
+-		cancel_work_sync(&hba->clk_scaling.suspend_work);
+-		cancel_work_sync(&hba->clk_scaling.resume_work);
++	if (hba->clk_scaling.is_enabled)
+ 		ufshcd_suspend_clkscaling(hba);
+-	}
++
+ 	down_write(&hba->clk_scaling_lock);
+ 	hba->clk_scaling.is_allowed = false;
+ 	up_write(&hba->clk_scaling_lock);
 -- 
 2.18.0
 _______________________________________________
