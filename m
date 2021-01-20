@@ -2,75 +2,65 @@ Return-Path: <SRS0=1cO+=GX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 198A3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 15:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E984FC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 18:28:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC14823356
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 15:02:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC14823356
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 847A4233FA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 18:28:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 847A4233FA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/7siF5S94yNdV5lUWavq0g0u2EL/ZODgjpVo5MiLggI=; b=soNqP2FyaieM/dfs1GadvJclu
-	OFW54G35ZnLbAjIXZIoOf32lw7jALkoVx6TTFkh4bRwGqFfSTajU1rCSBh8iMqD7ogB7X058NAxKP
-	8myQ/MKy0GiJlV19ugvHLR1YL3duPFBZdHCwrl2v7qZglmCk9xFxEJXTzJmT+SrxrCe3BiAZrmwfz
-	P3asrqKpN++WIeRoejRV2CVO/ZpEYS2fjJkzsKxExvBWzBSXdobEipNgjW4IIg+qaMN34U9ER550e
-	49WQEOTvEyePTE1Y13rn1ak98r4EzYn6zD7pd8zol2w/de+GszwnYu351C0Ut/u2ZRY5b6f/sLHJR
-	PqN//mVfQ==;
+	 bh=Rb7A9mdUyZIrOjHaE+hVr6NLwG4UcMU4SjtgLDqYbdw=; b=Mae8IOxBOYclfuqb3rp71edW+
+	pNqkKpPYuXT1gY8w62ffTRjUFuJ5JHj2S91ZM6+1k5Nd/LQ0Z7h8/0Wx2mg5rIF8C+SwPP894TRtd
+	jl4YIeichE539xZFA4q1G8y6XACZOUPcCQVFGFgH1l6ZpuCR0A6POGHV0o3odYcv51JrnPAHFVPZJ
+	32VSYcKTz0zTh4LZR90BEUtZ3D2K0renJ6rxPDNGrYzhlUBIArZNfidgNDij7c3TzwHLV8UJsFNZR
+	+buBW//sh8LhIW/FKvDHdO0/rBCqRGAKWps4hh0C/7Uqi7AsRB52RADxUnXZIuTX1loFF69V9eUew
+	bAca09GSQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2F0A-0002Kp-3B; Wed, 20 Jan 2021 15:02:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l2ID2-0001XT-K1; Wed, 20 Jan 2021 18:28:00 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2Ezs-0002En-AW; Wed, 20 Jan 2021 15:02:13 +0000
-X-UUID: ab74317b27644bb6bf327b64af07d5e9-20210120
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ILtdS5MSgU/R9VAXP8+6ClPfPiBDAVmP6iZT4fIBKcU=; 
- b=kmf+nq3MZCK0vCcgJSd1ytGzi62QfdUDaUs1iQCtZpy+CqOGp5tqz7uJ2wK7/g6zIHCDMGKe6VnnC1Z8DGFbHmktOZzGeT/aEDDzNUwdttlNVqLNYssg76H2Oy6w+WopqO0H1QC/Do0ECLpUlgZre4u9LqdwPEGhwasZ5rujCj4=;
-X-UUID: ab74317b27644bb6bf327b64af07d5e9-20210120
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 399587265; Wed, 20 Jan 2021 07:02:09 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Jan 2021 07:02:07 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Jan 2021 23:01:52 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 20 Jan 2021 23:01:52 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v3 2/3] scsi: ufs: Remove redundant null checking of devfreq
- instance
-Date: Wed, 20 Jan 2021 23:01:41 +0800
-Message-ID: <20210120150142.5049-3-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210120150142.5049-1-stanley.chu@mediatek.com>
-References: <20210120150142.5049-1-stanley.chu@mediatek.com>
+ id 1l2ICy-0001WW-PM; Wed, 20 Jan 2021 18:27:57 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 37755233FC;
+ Wed, 20 Jan 2021 18:27:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1611167274;
+ bh=vjunBYcfmoEhuHi9C00Jr/Jy+8HJAFrvRPfYznGtIKg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=gOl9shjTzknM9YiyVLg9dZpn6FPVTXhF3re+4Dh0axFEclqb8yWnyEHrKdOmMjR+i
+ vkKu30xXDhQ9/ZOu/EdxM6Bf2LDygaMhNq7CQY/0OXxeucuA+89zc0gZj6YG+fo/L8
+ KpT/C8dtakbHF3pKeFXKDqoR0IsE1XjLCZTkq62DlAHw+jyn+Ej0FmY+Qdrn99+Tun
+ eq/Btp6HnjeAEmzuy+B8SAPWVnLsN7I9X0/dIoN9Qfa8CBrY9E3LV5nElSVNjTtvl4
+ J0vx02VldRiUZgcLrRTbpNUmYeUgqkgFHbFdi6DdhGiXHAgktbfNxMb6xj7JoxhAwh
+ q4DXrejRfHD/w==
+Date: Wed, 20 Jan 2021 19:27:48 +0100
+From: Matthias Brugger <matthias.bgg@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: Re: [PATCH v2 3/5] drm/mediatek: Change disp/ddp term to mutex in
+ mtk mutex driver
+Message-ID: <YAh2JGUUpMcgyke0@ziggy.stardust>
+References: <20210106231729.17173-1-chunkuang.hu@kernel.org>
+ <20210106231729.17173-4-chunkuang.hu@kernel.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C5A84FA892E3D92BCD69FD2DE6C606591BAE42D86A4743273246598E464558032000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210106231729.17173-4-chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_100212_525828_3E5F0F0C 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20210120_132756_907482_FD6417F9 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,57 +72,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, alice.chao@mediatek.com,
- bvanassche@acm.org, andy.teng@mediatek.com, cc.chou@mediatek.com,
- chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, jiajie.hao@mediatek.com, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com, chaotian.jing@mediatek.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ CK Hu <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-hba->devfreq is zero-initialized thus it is not required
-to check its existence in ufshcd_add_lus() function which
-is invoked during initialization only.
+On Thu, Jan 07, 2021 at 07:17:27AM +0800, Chun-Kuang Hu wrote:
+> From: CK Hu <ck.hu@mediatek.com>
+> 
+> mtk mutex is used by both drm and mdp driver, so change disp/ddp term to
+> mutex to show that it's a common driver for drm and mdp.
+> 
+> Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  30 +--
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c  |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h  |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_mutex.c    | 305 ++++++++++++------------
+>  drivers/gpu/drm/mediatek/mtk_mutex.h    |  26 +-
+>  5 files changed, 182 insertions(+), 183 deletions(-)
+> 
+[...]
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mutex.c b/drivers/gpu/drm/mediatek/mtk_mutex.c
+> index 1c8a253f4788..98a060bf225d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mutex.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mutex.c
+[...]
+>  
+> -static const struct of_device_id ddp_driver_dt_match[] = {
+> +static const struct of_device_id mutex_driver_dt_match[] = {
+>  	{ .compatible = "mediatek,mt2701-disp-mutex",
+> -	  .data = &mt2701_ddp_driver_data},
+> +	  .data = &mt2701_mutex_driver_data},
+>  	{ .compatible = "mediatek,mt2712-disp-mutex",
+> -	  .data = &mt2712_ddp_driver_data},
+> +	  .data = &mt2712_mutex_driver_data},
+>  	{ .compatible = "mediatek,mt8167-disp-mutex",
+> -	  .data = &mt8167_ddp_driver_data},
+> +	  .data = &mt8167_mutex_driver_data},
+>  	{ .compatible = "mediatek,mt8173-disp-mutex",
+> -	  .data = &mt8173_ddp_driver_data},
+> +	  .data = &mt8173_mutex_driver_data},
+>  	{},
+>  };
+> -MODULE_DEVICE_TABLE(of, ddp_driver_dt_match);
+> +MODULE_DEVICE_TABLE(of, mutex_driver_dt_match);
 
-Reviewed-by: Can Guo <cang@codeaurora.org>
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+I think it would make sense in a follow-up patch to update the binding
+to use "mediatek,mt2701-mutex" to reflect that mutex is used for drm and
+mdp driver. Make sense?
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 226504d05c14..f707234580ea 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -7777,15 +7777,14 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
- 			&hba->pwr_info,
- 			sizeof(struct ufs_pa_layer_attr));
- 		hba->clk_scaling.saved_pwr_info.is_valid = true;
--		if (!hba->devfreq) {
--			hba->clk_scaling.is_allowed = true;
--			ret = ufshcd_devfreq_init(hba);
--			if (ret)
--				goto out;
-+		hba->clk_scaling.is_allowed = true;
- 
--			hba->clk_scaling.is_enabled = true;
--			ufshcd_init_clk_scaling_sysfs(hba);
--		}
-+		ret = ufshcd_devfreq_init(hba);
-+		if (ret)
-+			goto out;
-+
-+		hba->clk_scaling.is_enabled = true;
-+		ufshcd_init_clk_scaling_sysfs(hba);
- 	}
- 
- 	ufs_bsg_probe(hba);
--- 
-2.18.0
+Regards,
+Matthias
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
