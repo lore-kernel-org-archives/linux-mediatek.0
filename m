@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0E5CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 19:34:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68F98C43381
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 19:34:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61BB323432
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 19:34:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61BB323432
+	by mail.kernel.org (Postfix) with ESMTPS id D29A423432
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jan 2021 19:34:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D29A423432
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ftdDJz7isldRDxSJzMycio5R8gv51tLpb/WVbnlVnig=; b=pDF/nelmwIfrwXmT1sei9cFNT
-	KSbTsVmMEVMXUyqPs9FJ2CF6Irclc12F89D4e1qTzfuRJe7eUO4ZfM5sg+HWq+O3BwUxE14/YOqcm
-	aGL4VHStGoWOAhZ0grdQFjrR4JOCvQlq/IqFhLo/GmuZyGZg+d69s/ICAtV76Srde16+Wz2bZmMKL
-	r/+vZvUisQLWdRYxV9xeg+Tmaz9vU7yQ+/kBZBNxjXyEhRsy92C+ZofIwA8phiF1RuS7nGMxlb3pT
-	rxaKsbWJGgc9rpF4nJ5yaRtwgsyAEClZSFdd7YBY5U1ct4hLuzd74abJ7heifbI1jbhsWKzM4SwOb
-	1VNRxNLNA==;
+	 bh=7a2+6jQl4zXy7FoD4pXsh4GSH22cpTo3jpc8j5VRoPU=; b=Ij5Otr+d1ZPHZhUDSZR6H9yyk
+	CBRXpE4qEEv8IMnGFa5vz4ztcOWpKDolXqboQ/ZhcQi4St4vreYx/K7xEBbvqj2wdDvDxSdXU2wTF
+	rI99wL14WcfOsr8Lk7tESiKEUsTsFZNYxLNGQv0bAmUG9rk3DTGw25iVHyzMtQUXMooHQkR0WVUPh
+	K1eCHZ2c2cQQtF2KD0ENZq52cxrD9LTbu0Tkaaqfot7z6ShBLMkSWf77wA54WRkwNoixR/vi3Vric
+	nhlsqB3nI5st9xJ+26zotVgfhFQ0xFVvgbd65+xrNvbEU5K3MnjQ4esfmtWOL7qKexYSyiL72we9y
+	3rbsUOuvQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2JF5-0005Of-Ht; Wed, 20 Jan 2021 19:34:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l2JF9-0005Pc-GF; Wed, 20 Jan 2021 19:34:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2JEy-0005Ln-GL
- for linux-mediatek@lists.infradead.org; Wed, 20 Jan 2021 19:34:07 +0000
-X-UUID: b1dc4df6919a4b0f87da4ef7bbb90ef9-20210120
+ id 1l2JF2-0005MF-SH
+ for linux-mediatek@lists.infradead.org; Wed, 20 Jan 2021 19:34:11 +0000
+X-UUID: b0f253443818439bb58293f62ab3e023-20210120
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=hoAml00CFFdTz9EHpEYc2TGywJVf38xJ01RTx4I7+nE=; 
- b=lO3coyk7u2iuy4XI72QKz68qU8kweFI15i+X5uBYFZT22dJ1sORR2KHPTa6xiybkuWyGnUeL+e2kdk8QQmnj9z8eGt0Zj+0qmBhKsWvU5UM5kILE088xxRMkDF4CbzwsOD2W0DKDhW3wLrPyH0ULGg4ozasx2V6PLTHeDQlPtRo=;
-X-UUID: b1dc4df6919a4b0f87da4ef7bbb90ef9-20210120
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=lWmZaD5DNnLA7vd20Bm59bd93GjqaTt7UBuopPfoOb4=; 
+ b=Kj0WG8Cg+lJxSesm6J2uoheoJSIp3U5PTTQPfNShJ+khnfdMjAyTvaS7P3latb/pEy5CXlTjupjM7Ed2cGoUr3R+zTq97WmjYjU9AlRAD+dxTVtHGlhf/4FJgdXTGd520G8iKzzUNe9iUNdCT342LcwAgu8B7BylZQqKN4ZEH2w=;
+X-UUID: b0f253443818439bb58293f62ab3e023-20210120
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 351870505; Wed, 20 Jan 2021 11:33:57 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Jan 2021 11:33:57 -0800
+ with ESMTP id 609242903; Wed, 20 Jan 2021 11:34:04 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Jan 2021 11:34:03 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Jan 2021 03:33:56 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Jan 2021 03:33:55 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 21 Jan 2021 03:33:56 +0800
+ Frontend Transport; Thu, 21 Jan 2021 03:33:55 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH -next v6 15/15] mt76: mt7921: introduce PM support
-Date: Thu, 21 Jan 2021 03:33:51 +0800
-Message-ID: <1dd1cf6b75c3344749aa648e2cfe81488b008b44.1611060302.git.objelf@gmail.com>
+Subject: [PATCH -next v6 12/15] mt76: mt7921: introduce 802.11 PS support in
+ sta mode
+Date: Thu, 21 Jan 2021 03:33:48 +0800
+Message-ID: <10f91ffe7c2c8cc35ccf4e174cd46208430c8fc6.1611060302.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1611060302.git.objelf@gmail.com>
 References: <cover.1611060302.git.objelf@gmail.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: D8CFF33BBDA2CC56C3BE57B94E486E651C03C70CA0A9C9A0DB2CFAD37C4770BA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_143405_331374_7E8DD788 
-X-CRM114-Status: GOOD (  18.51  )
+X-CRM114-CacheID: sfid-20210120_143409_089418_1F1F6CDF 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,8 +94,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Introduce suspend/resume and WoW (Wake-on-WoWLAN) support to mt7921
-driver to allow remote wakeu-up from the suspend state.
+Enable 802.11 power-save support available in mt7921 firmware
 
 Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
@@ -101,676 +102,130 @@ Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7921/main.c  |  79 +++++
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 307 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7921/mcu.h   |  99 ++++++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |   9 +
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  95 ++++++
- 5 files changed, 589 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  2 +
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |  3 +-
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |  3 ++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 37 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.h   |  2 +-
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
+ 6 files changed, 45 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 9aa110f6562b..039f9c206b05 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -83,6 +83,8 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	ieee80211_hw_set(hw, HAS_RATE_CONTROL);
+ 	ieee80211_hw_set(hw, SUPPORTS_TX_ENCAP_OFFLOAD);
+ 	ieee80211_hw_set(hw, WANT_MONITOR_VIF);
++	ieee80211_hw_set(hw, SUPPORTS_PS);
++	ieee80211_hw_set(hw, SUPPORTS_DYNAMIC_PS);
+ 
+ 	hw->max_tx_fragments = 4;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index a5d3f5023ea4..ca059dc245a7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -690,8 +690,7 @@ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
+ 	txwi[1] = cpu_to_le32(val);
+ 	txwi[2] = 0;
+ 
+-	val = MT_TXD3_SW_POWER_MGMT |
+-	      FIELD_PREP(MT_TXD3_REM_TX_COUNT, tx_count);
++	val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, tx_count);
+ 	if (key)
+ 		val |= MT_TXD3_PROTECT_FRAME;
+ 	if (info->flags & IEEE80211_TX_CTL_NO_ACK)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index f0dda1531899..eaebbbda426f 100644
+index 2147bcc53148..f0dda1531899 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -938,6 +938,79 @@ mt7921_sta_rc_update(struct ieee80211_hw *hw,
- {
+@@ -560,6 +560,9 @@ static void mt7921_bss_info_changed(struct ieee80211_hw *hw,
+ 	if (changed & (BSS_CHANGED_QOS | BSS_CHANGED_BEACON_ENABLED))
+ 		mt7921_mcu_set_tx(dev, vif);
+ 
++	if (changed & BSS_CHANGED_PS)
++		mt7921_mcu_uni_bss_ps(dev, vif);
++
+ 	mutex_unlock(&dev->mt76.mutex);
  }
  
-+#ifdef CONFIG_PM
-+static int mt7921_suspend(struct ieee80211_hw *hw,
-+			  struct cfg80211_wowlan *wowlan)
-+{
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	struct mt7921_phy *phy = mt7921_hw_phy(hw);
-+	int err;
-+
-+	cancel_delayed_work_sync(&phy->scan_work);
-+	cancel_delayed_work_sync(&phy->mt76->mac_work);
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
-+
-+	set_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
-+	ieee80211_iterate_active_interfaces(hw,
-+					    IEEE80211_IFACE_ITER_RESUME_ALL,
-+					    mt7921_mcu_set_suspend_iter, phy);
-+
-+	err = mt7921_mcu_set_hif_suspend(dev, true);
-+
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	return err;
-+}
-+
-+static int mt7921_resume(struct ieee80211_hw *hw)
-+{
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	struct mt7921_phy *phy = mt7921_hw_phy(hw);
-+	int err;
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	err = mt7921_mcu_set_hif_suspend(dev, false);
-+	if (err < 0)
-+		goto out;
-+
-+	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
-+	clear_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
-+	ieee80211_iterate_active_interfaces(hw,
-+					    IEEE80211_IFACE_ITER_RESUME_ALL,
-+					    mt7921_mcu_set_suspend_iter, phy);
-+
-+	ieee80211_queue_delayed_work(hw, &phy->mt76->mac_work,
-+				     MT7921_WATCHDOG_TIME);
-+out:
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	return err;
-+}
-+
-+static void mt7921_set_wakeup(struct ieee80211_hw *hw, bool enabled)
-+{
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	struct mt76_dev *mdev = &dev->mt76;
-+
-+	device_set_wakeup_enable(mdev->dev, enabled);
-+}
-+
-+static void mt7921_set_rekey_data(struct ieee80211_hw *hw,
-+				  struct ieee80211_vif *vif,
-+				  struct cfg80211_gtk_rekey_data *data)
-+{
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mutex_lock(&dev->mt76.mutex);
-+	mt7921_mcu_update_gtk_rekey(hw, vif, data);
-+	mutex_unlock(&dev->mt76.mutex);
-+}
-+#endif /* CONFIG_PM */
-+
- const struct ieee80211_ops mt7921_ops = {
- 	.tx = mt7921_tx,
- 	.start = mt7921_start,
-@@ -969,4 +1042,10 @@ const struct ieee80211_ops mt7921_ops = {
- 	.cancel_hw_scan = mt7921_cancel_hw_scan,
- 	.sched_scan_start = mt7921_start_sched_scan,
- 	.sched_scan_stop = mt7921_stop_sched_scan,
-+#ifdef CONFIG_PM
-+	.suspend = mt7921_suspend,
-+	.resume = mt7921_resume,
-+	.set_wakeup = mt7921_set_wakeup,
-+	.set_rekey_data = mt7921_set_rekey_data,
-+#endif /* CONFIG_PM */
- };
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 3b8e5de63db8..0a0a1b37acd9 100644
+index 99fa49a69ae5..1e7be1d58850 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -1704,6 +1704,15 @@ static int mt7921_load_ram(struct mt7921_dev *dev)
- 	return ret;
- }
- 
-+static const struct wiphy_wowlan_support mt7921_wowlan_support = {
-+	.flags = WIPHY_WOWLAN_MAGIC_PKT | WIPHY_WOWLAN_DISCONNECT |
-+		 WIPHY_WOWLAN_SUPPORTS_GTK_REKEY | WIPHY_WOWLAN_NET_DETECT,
-+	.n_patterns = 1,
-+	.pattern_min_len = 1,
-+	.pattern_max_len = MT7921_WOW_PATTEN_MAX_LEN,
-+	.max_nd_match_sets = 10,
-+};
-+
- static int mt7921_load_firmware(struct mt7921_dev *dev)
- {
- 	int ret;
-@@ -1731,6 +1740,10 @@ static int mt7921_load_firmware(struct mt7921_dev *dev)
- 
- 	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_FWDL], false);
- 
-+#ifdef CONFIG_PM
-+	dev->mt76.hw->wiphy->wowlan = &mt7921_wowlan_support;
-+#endif /* CONFIG_PM */
-+
- 	dev_err(dev->mt76.dev, "Firmware init done\n");
+@@ -2527,3 +2527,40 @@ u32 mt7921_get_wtbl_info(struct mt7921_dev *dev, u16 wlan_idx)
  
  	return 0;
-@@ -2674,3 +2687,297 @@ int mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_BSS_CONNECTED, &req,
- 				 sizeof(req), false);
  }
 +
-+#ifdef CONFIG_PM
-+int mt7921_mcu_set_hif_suspend(struct mt7921_dev *dev, bool suspend)
++int mt7921_mcu_uni_bss_ps(struct mt7921_dev *dev, struct ieee80211_vif *vif)
 +{
++	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
 +	struct {
 +		struct {
-+			u8 hif_type; /* 0x0: HIF_SDIO
-+				      * 0x1: HIF_USB
-+				      * 0x2: HIF_PCIE
-+				      */
++			u8 bss_idx;
 +			u8 pad[3];
 +		} __packed hdr;
-+		struct hif_suspend_tlv {
++		struct ps_tlv {
 +			__le16 tag;
 +			__le16 len;
-+			u8 suspend;
-+		} __packed hif_suspend;
-+	} req = {
-+		.hif_suspend = {
-+			.tag = cpu_to_le16(0), /* 0: UNI_HIF_CTRL_BASIC */
-+			.len = cpu_to_le16(sizeof(struct hif_suspend_tlv)),
-+			.suspend = suspend,
-+		},
-+	};
-+
-+	if (mt76_is_mmio(&dev->mt76))
-+		req.hdr.hif_type = 2;
-+	else if (mt76_is_usb(&dev->mt76))
-+		req.hdr.hif_type = 1;
-+	else if (mt76_is_sdio(&dev->mt76))
-+		req.hdr.hif_type = 0;
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_HIF_CTRL, &req,
-+				 sizeof(req), true);
-+}
-+EXPORT_SYMBOL_GPL(mt7921_mcu_set_hif_suspend);
-+
-+static int
-+mt7921_mcu_set_wow_ctrl(struct mt7921_phy *phy, struct ieee80211_vif *vif,
-+			bool suspend, struct cfg80211_wowlan *wowlan)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = phy->dev;
-+	struct {
-+		struct {
-+			u8 bss_idx;
++			u8 ps_state; /* 0: device awake
++				      * 1: static power save
++				      * 2: dynamic power saving
++				      * 3: inter TWT power saving
++				      * 4: leave TWT power saving
++				      */
 +			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7921_wow_ctrl_tlv wow_ctrl_tlv;
-+		struct mt7921_wow_gpio_param_tlv gpio_tlv;
-+	} req = {
++		} __packed ps;
++	} __packed ps_req = {
 +		.hdr = {
 +			.bss_idx = mvif->idx,
 +		},
-+		.wow_ctrl_tlv = {
-+			.tag = cpu_to_le16(UNI_SUSPEND_WOW_CTRL),
-+			.len = cpu_to_le16(sizeof(struct mt7921_wow_ctrl_tlv)),
-+			.cmd = suspend ? 1 : 2,
-+		},
-+		.gpio_tlv = {
-+			.tag = cpu_to_le16(UNI_SUSPEND_WOW_GPIO_PARAM),
-+			.len = cpu_to_le16(sizeof(struct mt7921_wow_gpio_param_tlv)),
-+			.gpio_pin = 0xff, /* follow fw about GPIO pin */
++		.ps = {
++			.tag = cpu_to_le16(UNI_BSS_INFO_PS),
++			.len = cpu_to_le16(sizeof(struct ps_tlv)),
++			.ps_state = vif->bss_conf.ps ? 2 : 0,
 +		},
 +	};
 +
-+	if (wowlan->magic_pkt)
-+		req.wow_ctrl_tlv.trigger |= BIT(0);
-+	if (wowlan->disconnect)
-+		req.wow_ctrl_tlv.trigger |= BIT(2);
-+	if (wowlan->nd_config) {
-+		mt7921_mcu_sched_scan_req(phy, vif, wowlan->nd_config);
-+		req.wow_ctrl_tlv.trigger |= BIT(5);
-+		mt7921_mcu_sched_scan_enable(phy, vif, suspend);
-+	}
++	if (vif->type != NL80211_IFTYPE_STATION)
++		return -EOPNOTSUPP;
 +
-+	if (mt76_is_mmio(&dev->mt76))
-+		req.wow_ctrl_tlv.wakeup_hif = WOW_PCIE;
-+	else if (mt76_is_usb(&dev->mt76))
-+		req.wow_ctrl_tlv.wakeup_hif = WOW_USB;
-+	else if (mt76_is_sdio(&dev->mt76))
-+		req.wow_ctrl_tlv.wakeup_hif = WOW_GPIO;
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_SUSPEND, &req,
-+				 sizeof(req), true);
++	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_BSS_INFO_UPDATE,
++				 &ps_req, sizeof(ps_req), true);
 +}
-+
-+static int
-+mt7921_mcu_set_wow_pattern(struct mt7921_dev *dev,
-+			   struct ieee80211_vif *vif,
-+			   u8 index, bool enable,
-+			   struct cfg80211_pkt_pattern *pattern)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_wow_pattern_tlv *ptlv;
-+	struct sk_buff *skb;
-+	struct req_hdr {
-+		u8 bss_idx;
-+		u8 pad[3];
-+	} __packed hdr = {
-+		.bss_idx = mvif->idx,
-+	};
-+
-+	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL,
-+				 sizeof(hdr) + sizeof(*ptlv));
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	skb_put_data(skb, &hdr, sizeof(hdr));
-+	ptlv = (struct mt7921_wow_pattern_tlv *)skb_put(skb, sizeof(*ptlv));
-+	ptlv->tag = cpu_to_le16(UNI_SUSPEND_WOW_PATTERN);
-+	ptlv->len = cpu_to_le16(sizeof(*ptlv));
-+	ptlv->data_len = pattern->pattern_len;
-+	ptlv->enable = enable;
-+	ptlv->index = index;
-+
-+	memcpy(ptlv->pattern, pattern->pattern, pattern->pattern_len);
-+	memcpy(ptlv->mask, pattern->mask, pattern->pattern_len / 8);
-+
-+	return mt76_mcu_skb_send_msg(&dev->mt76, skb, MCU_UNI_CMD_SUSPEND,
-+				     true);
-+}
-+
-+static int
-+mt7921_mcu_set_suspend_mode(struct mt7921_dev *dev,
-+			    struct ieee80211_vif *vif,
-+			    bool enable, u8 mdtim, bool wow_suspend)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7921_suspend_tlv suspend_tlv;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.suspend_tlv = {
-+			.tag = cpu_to_le16(UNI_SUSPEND_MODE_SETTING),
-+			.len = cpu_to_le16(sizeof(struct mt7921_suspend_tlv)),
-+			.enable = enable,
-+			.mdtim = mdtim,
-+			.wow_suspend = wow_suspend,
-+		},
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_SUSPEND, &req,
-+				 sizeof(req), true);
-+}
-+
-+static int
-+mt7921_mcu_set_gtk_rekey(struct mt7921_dev *dev,
-+			 struct ieee80211_vif *vif,
-+			 bool suspend)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7921_gtk_rekey_tlv gtk_tlv;
-+	} __packed req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.gtk_tlv = {
-+			.tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_GTK_REKEY),
-+			.len = cpu_to_le16(sizeof(struct mt7921_gtk_rekey_tlv)),
-+			.rekey_mode = !suspend,
-+		},
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_OFFLOAD, &req,
-+				 sizeof(req), true);
-+}
-+
-+static int
-+mt7921_mcu_set_arp_filter(struct mt7921_dev *dev, struct ieee80211_vif *vif,
-+			  bool suspend)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7921_arpns_tlv arpns;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.arpns = {
-+			.tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_ARP),
-+			.len = cpu_to_le16(sizeof(struct mt7921_arpns_tlv)),
-+			.mode = suspend,
-+		},
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_OFFLOAD, &req,
-+				 sizeof(req), true);
-+}
-+
-+void mt7921_mcu_set_suspend_iter(void *priv, u8 *mac,
-+				 struct ieee80211_vif *vif)
-+{
-+	struct mt7921_phy *phy = priv;
-+	bool suspend = test_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
-+	struct ieee80211_hw *hw = phy->mt76->hw;
-+	struct cfg80211_wowlan *wowlan = hw->wiphy->wowlan_config;
-+	int i;
-+
-+	mt7921_mcu_set_gtk_rekey(phy->dev, vif, suspend);
-+	mt7921_mcu_set_arp_filter(phy->dev, vif, suspend);
-+
-+	mt7921_mcu_set_suspend_mode(phy->dev, vif, suspend, 1, true);
-+
-+	for (i = 0; i < wowlan->n_patterns; i++)
-+		mt7921_mcu_set_wow_pattern(phy->dev, vif, i, suspend,
-+					   &wowlan->patterns[i]);
-+	mt7921_mcu_set_wow_ctrl(phy, vif, suspend, wowlan);
-+}
-+
-+static void
-+mt7921_mcu_key_iter(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+		    struct ieee80211_sta *sta, struct ieee80211_key_conf *key,
-+		    void *data)
-+{
-+	struct mt7921_gtk_rekey_tlv *gtk_tlv = data;
-+	u32 cipher;
-+
-+	if (key->cipher != WLAN_CIPHER_SUITE_AES_CMAC &&
-+	    key->cipher != WLAN_CIPHER_SUITE_CCMP &&
-+	    key->cipher != WLAN_CIPHER_SUITE_TKIP)
-+		return;
-+
-+	if (key->cipher == WLAN_CIPHER_SUITE_TKIP) {
-+		gtk_tlv->proto = cpu_to_le32(NL80211_WPA_VERSION_1);
-+		cipher = BIT(3);
-+	} else {
-+		gtk_tlv->proto = cpu_to_le32(NL80211_WPA_VERSION_2);
-+		cipher = BIT(4);
-+	}
-+
-+	/* we are assuming here to have a single pairwise key */
-+	if (key->flags & IEEE80211_KEY_FLAG_PAIRWISE) {
-+		gtk_tlv->pairwise_cipher = cpu_to_le32(cipher);
-+		gtk_tlv->group_cipher = cpu_to_le32(cipher);
-+		gtk_tlv->keyid = key->keyidx;
-+	}
-+}
-+
-+int mt7921_mcu_update_gtk_rekey(struct ieee80211_hw *hw,
-+				struct ieee80211_vif *vif,
-+				struct cfg80211_gtk_rekey_data *key)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	struct mt7921_gtk_rekey_tlv *gtk_tlv;
-+	struct sk_buff *skb;
-+	struct {
-+		u8 bss_idx;
-+		u8 pad[3];
-+	} __packed hdr = {
-+		.bss_idx = mvif->idx,
-+	};
-+
-+	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL,
-+				 sizeof(hdr) + sizeof(*gtk_tlv));
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	skb_put_data(skb, &hdr, sizeof(hdr));
-+	gtk_tlv = (struct mt7921_gtk_rekey_tlv *)skb_put(skb,
-+							 sizeof(*gtk_tlv));
-+	gtk_tlv->tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_GTK_REKEY);
-+	gtk_tlv->len = cpu_to_le16(sizeof(*gtk_tlv));
-+	gtk_tlv->rekey_mode = 2;
-+	gtk_tlv->option = 1;
-+
-+	rcu_read_lock();
-+	ieee80211_iter_keys_rcu(hw, vif, mt7921_mcu_key_iter, gtk_tlv);
-+	rcu_read_unlock();
-+
-+	memcpy(gtk_tlv->kek, key->kek, NL80211_KEK_LEN);
-+	memcpy(gtk_tlv->kck, key->kck, NL80211_KCK_LEN);
-+	memcpy(gtk_tlv->replay_ctr, key->replay_ctr, NL80211_REPLAY_CTR_LEN);
-+
-+	return mt76_mcu_skb_send_msg(&dev->mt76, skb, MCU_UNI_CMD_OFFLOAD,
-+				     true);
-+}
-+#endif /* CONFIG_PM */
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-index bf2e643cd870..6b3877959bd3 100644
+index 6894b44ff62d..2103e1d3ac94 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-@@ -182,6 +182,105 @@ struct mt7921_mcu_uni_event {
- 	__le32 status; /* 0: success, others: fail */
- } __packed;
- 
-+enum {
-+	WOW_USB = 1,
-+	WOW_PCIE = 2,
-+	WOW_GPIO = 3,
-+};
-+
-+struct mt7921_wow_ctrl_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 cmd; /* 0x1: PM_WOWLAN_REQ_START
-+		 * 0x2: PM_WOWLAN_REQ_STOP
-+		 * 0x3: PM_WOWLAN_PARAM_CLEAR
-+		 */
-+	u8 trigger; /* 0: NONE
-+		     * BIT(0): NL80211_WOWLAN_TRIG_MAGIC_PKT
-+		     * BIT(1): NL80211_WOWLAN_TRIG_ANY
-+		     * BIT(2): NL80211_WOWLAN_TRIG_DISCONNECT
-+		     * BIT(3): NL80211_WOWLAN_TRIG_GTK_REKEY_FAILURE
-+		     * BIT(4): BEACON_LOST
-+		     * BIT(5): NL80211_WOWLAN_TRIG_NET_DETECT
-+		     */
-+	u8 wakeup_hif; /* 0x0: HIF_SDIO
-+			* 0x1: HIF_USB
-+			* 0x2: HIF_PCIE
-+			* 0x3: HIF_GPIO
-+			*/
-+	u8 pad;
-+	u8 rsv[4];
-+} __packed;
-+
-+struct mt7921_wow_gpio_param_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 gpio_pin;
-+	u8 trigger_lvl;
-+	u8 pad[2];
-+	__le32 gpio_interval;
-+	u8 rsv[4];
-+} __packed;
-+
-+#define MT7921_WOW_MASK_MAX_LEN		16
-+#define MT7921_WOW_PATTEN_MAX_LEN	128
-+struct mt7921_wow_pattern_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 index; /* pattern index */
-+	u8 enable; /* 0: disable
-+		    * 1: enable
-+		    */
-+	u8 data_len; /* pattern length */
-+	u8 pad;
-+	u8 mask[MT7921_WOW_MASK_MAX_LEN];
-+	u8 pattern[MT7921_WOW_PATTEN_MAX_LEN];
-+	u8 rsv[4];
-+} __packed;
-+
-+struct mt7921_suspend_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 enable; /* 0: suspend mode disabled
-+		    * 1: suspend mode enabled
-+		    */
-+	u8 mdtim; /* LP parameter */
-+	u8 wow_suspend; /* 0: update by origin policy
-+			 * 1: update by wow dtim
-+			 */
-+	u8 pad[5];
-+} __packed;
-+
-+struct mt7921_gtk_rekey_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 kek[NL80211_KEK_LEN];
-+	u8 kck[NL80211_KCK_LEN];
-+	u8 replay_ctr[NL80211_REPLAY_CTR_LEN];
-+	u8 rekey_mode; /* 0: rekey offload enable
-+			* 1: rekey offload disable
-+			* 2: rekey update
-+			*/
-+	u8 keyid;
-+	u8 pad[2];
-+	__le32 proto; /* WPA-RSN-WAPI-OPSN */
-+	__le32 pairwise_cipher;
-+	__le32 group_cipher;
-+	__le32 key_mgmt; /* NONE-PSK-IEEE802.1X */
-+	__le32 mgmt_group_cipher;
-+	u8 option; /* 1: rekey data update without enabling offload */
-+	u8 reserverd[3];
-+} __packed;
-+
-+struct mt7921_arpns_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 mode;
-+	u8 ips_num;
-+	u8 option;
-+	u8 pad[1];
-+} __packed;
-+
+@@ -185,7 +185,6 @@ struct mt7921_mcu_uni_event {
  /* offload mcu commands */
  enum {
  	MCU_CMD_START_HW_SCAN = MCU_CE_PREFIX | 0x03,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index d5f443f99ee3..58b739229800 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -367,4 +367,13 @@ int mt7921_mcu_uni_bss_bcnft(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 			     bool enable);
- int mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 			  bool enable);
-+int mt7921_mcu_set_hif_suspend(struct mt7921_dev *dev, bool suspend);
-+void mt7921_mcu_set_suspend_iter(void *priv, u8 *mac,
-+				 struct ieee80211_vif *vif);
-+int mt7921_mcu_update_gtk_rekey(struct ieee80211_hw *hw,
-+				struct ieee80211_vif *vif,
-+				struct cfg80211_gtk_rekey_data *key);
-+int mt7921_mcu_update_arp_filter(struct ieee80211_hw *hw,
-+				 struct ieee80211_vif *vif,
-+				 struct ieee80211_bss_conf *info);
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 6808bc749583..202cde1b6289 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -167,11 +167,106 @@ static void mt7921_pci_remove(struct pci_dev *pdev)
- 	pci_free_irq_vectors(pdev);
- }
- 
-+#ifdef CONFIG_PM
-+static int mt7921_pci_suspend(struct pci_dev *pdev, pm_message_t state)
-+{
-+	struct mt76_dev *mdev = pci_get_drvdata(pdev);
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	bool hif_suspend;
-+	int i, err;
-+
-+	hif_suspend = !test_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
-+	if (hif_suspend) {
-+		err = mt7921_mcu_set_hif_suspend(dev, true);
-+		if (err)
-+			return err;
-+	}
-+
-+	napi_disable(&mdev->tx_napi);
-+	mt76_worker_disable(&mdev->tx_worker);
-+
-+	mt76_for_each_q_rx(mdev, i) {
-+		napi_disable(&mdev->napi[i]);
-+	}
-+	tasklet_kill(&dev->irq_tasklet);
-+
-+	pci_enable_wake(pdev, pci_choose_state(pdev, state), true);
-+
-+	/* wait until dma is idle  */
-+	mt76_poll(dev, MT_WFDMA0_GLO_CFG,
-+		  MT_WFDMA0_GLO_CFG_TX_DMA_BUSY |
-+		  MT_WFDMA0_GLO_CFG_RX_DMA_BUSY, 0, 1000);
-+
-+	/* put dma disabled */
-+	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
-+		   MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
-+
-+	/* disable interrupt */
-+	mt76_wr(dev, MT_WFDMA0_HOST_INT_ENA, 0);
-+
-+	pci_save_state(pdev);
-+	err = pci_set_power_state(pdev, pci_choose_state(pdev, state));
-+	if (err)
-+		goto restore;
-+
-+	return 0;
-+
-+restore:
-+	mt76_for_each_q_rx(mdev, i) {
-+		napi_enable(&mdev->napi[i]);
-+	}
-+	napi_enable(&mdev->tx_napi);
-+	if (hif_suspend)
-+		mt7921_mcu_set_hif_suspend(dev, false);
-+
-+	return err;
-+}
-+
-+static int mt7921_pci_resume(struct pci_dev *pdev)
-+{
-+	struct mt76_dev *mdev = pci_get_drvdata(pdev);
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	int i, err;
-+
-+	err = pci_set_power_state(pdev, PCI_D0);
-+	if (err)
-+		return err;
-+
-+	pci_restore_state(pdev);
-+
-+	/* enable interrupt */
-+	mt7921_l1_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-+	mt7921_irq_enable(dev, MT_INT_RX_DONE_ALL | MT_INT_TX_DONE_ALL |
-+			  MT_INT_MCU_CMD);
-+
-+	/* put dma enabled */
-+	mt76_set(dev, MT_WFDMA0_GLO_CFG,
-+		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
-+
-+	mt76_worker_enable(&mdev->tx_worker);
-+	mt76_for_each_q_rx(mdev, i) {
-+		napi_enable(&mdev->napi[i]);
-+		napi_schedule(&mdev->napi[i]);
-+	}
-+	napi_enable(&mdev->tx_napi);
-+	napi_schedule(&mdev->tx_napi);
-+
-+	if (!test_bit(MT76_STATE_SUSPEND, &dev->mphy.state))
-+		err = mt7921_mcu_set_hif_suspend(dev, false);
-+
-+	return err;
-+}
-+#endif /* CONFIG_PM */
-+
- struct pci_driver mt7921_pci_driver = {
- 	.name		= KBUILD_MODNAME,
- 	.id_table	= mt7921_pci_device_table,
- 	.probe		= mt7921_pci_probe,
- 	.remove		= mt7921_pci_remove,
-+#ifdef CONFIG_PM
-+	.suspend	= mt7921_pci_suspend,
-+	.resume		= mt7921_pci_resume,
-+#endif /* CONFIG_PM */
+-	MCU_CMD_SET_PS_PROFILE = MCU_CE_PREFIX | 0x05,
+ 	MCU_CMD_SET_CHAN_DOMAIN = MCU_CE_PREFIX | 0x0f,
+ 	MCU_CMD_SET_BSS_CONNECTED = MCU_CE_PREFIX | 0x16,
+ 	MCU_CMD_SET_BSS_ABORT = MCU_CE_PREFIX | 0x17,
+@@ -211,6 +210,7 @@ enum {
+ 	UNI_BSS_INFO_BCN_CONTENT = 7,
+ 	UNI_BSS_INFO_QBSS = 15,
+ 	UNI_BSS_INFO_UAPSD = 19,
++	UNI_BSS_INFO_PS = 21,
  };
  
- module_pci_driver(mt7921_pci_driver);
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index dc6064100f53..2e617e85670d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -362,4 +362,5 @@ int mt7921_mcu_sched_scan_enable(struct mt7921_phy *phy,
+ int mt7921_mcu_cancel_hw_scan(struct mt7921_phy *phy,
+ 			      struct ieee80211_vif *vif);
+ u32 mt7921_get_wtbl_info(struct mt7921_dev *dev, u16 wlan_idx);
++int mt7921_mcu_uni_bss_ps(struct mt7921_dev *dev, struct ieee80211_vif *vif);
+ #endif
 -- 
 2.25.1
 _______________________________________________
