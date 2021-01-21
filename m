@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0DCAC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 06:35:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 389D0C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 06:35:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78313238EE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 06:35:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78313238EE
+	by mail.kernel.org (Postfix) with ESMTPS id ECB29238EE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 06:35:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ECB29238EE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lozA2GfphzYk7fWBPnc36OQK89hpVybX5A6sbvp6oTA=; b=kd0dkJoboS1NbwFpqccadQ/60
-	z2H8TAq8/jd006Y7cQBCiy5qXz8V42l9petn3fyOK+7r5213B0wYxBmvf+daKBKQXH6FAwdQajCBw
-	CSZ9cgs9WuqIpuDavPxtuXV4tjQNCzEUgVg1fEtpUezy7PChVRhf4Cyph4p+66SG3SDFvY33/4NKe
-	E76cLknDByBpMz5Oaqu5qQBAZgTsrdBUKEBiy1o+RQs7ct5Zkpku69Cmk9/3pLXXZgOwxPIH3AWcj
-	f/jKB++rULgrj2PHgIHQ8ZeOGiVayHkWAujhVwes3duSLuw40OQeHzbkam8+m/PnpSyAyHu3omhW3
-	u1Ms6/J3A==;
+	 bh=l1NVJPRBAvogBzgc2NO/rFG5CMz/mNqTI9mFwG0GnKA=; b=IraG2U3iwncMiEN21PVw+2s3A
+	dXLKqoea7Z1ro6WVtMPM9JAEOn4SuoFzhGp2y4T5A7HcuFgPDz7AYuNEeysIpiuKiNrhEt7nN1bbt
+	qoEVVSW4Y5ZeYnYc+YBkd/uLhq5sqGmn89j/CEPIqRyg4m9SrVWiYJIHeUprPjAA4AuOSTRjzd29g
+	w7+mYZMhLD/rLrgEtvoKaH5IoGolBNU4X7Thv4t/ONmRvpEc50BK9M14dhKJIpahJItLTWKJkNDuG
+	816Dmt62GGs1vocTCcAqxthK7PjbtjawosgIzkB52s/RZbQy6UUm4MFC38nYEzOmHy965WUcMOWcy
+	V91FZheCA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2TYj-0003qo-OG; Thu, 21 Jan 2021 06:35:09 +0000
+	id 1l2TYx-0003wW-Kl; Thu, 21 Jan 2021 06:35:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2TYe-0003nx-HG; Thu, 21 Jan 2021 06:35:05 +0000
-X-UUID: 0b8e6f76bdc04955b6f3bc97e5551cd7-20210120
+ id 1l2TYf-0003nx-KB; Thu, 21 Jan 2021 06:35:06 +0000
+X-UUID: ce2c9bbed3944685924fdabcf3fcb6c0-20210120
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=PHxeX2kIyIgfx1H8asHkYdsyBC/XtlxANKaYFjVy2Xw=; 
- b=OUGN8h9QYBGQcYjxDSv+KUCF2+bnAG/v2LaVIAlerWJHx6OittDUOKz4X7B39TECWZJ4SRU+mT+rdEjL5boP7nuck7u3RGm04Xmkp9Ir2oM4kJwsWZ2kTOJ7ygBHNGi9inhqRKwwDx+2sh8tVFJW+o/83scOCKJK1jR7kuDtXk0=;
-X-UUID: 0b8e6f76bdc04955b6f3bc97e5551cd7-20210120
+ bh=X5y9BHRQuKG0gK1kzm7WGmKfMrZdt3f0a6gX5csBgVE=; 
+ b=te8SzNJ29SHk7GfsFTqGrqWfpmoRb/gOWsk0Sw138hg1dUTliPWNqLWsDnkl+pZvILhpulyIDA917qR3U4Z5bdMs445SOEj27FokysptpnGJXr+in9ybUoy/TdmfBHCfrVIQOmsXBegmlv0i9EtuO3VmwYGmiV0YsD9/RmYopjY=;
+X-UUID: ce2c9bbed3944685924fdabcf3fcb6c0-20210120
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 468179361; Wed, 20 Jan 2021 22:35:01 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 1198826836; Wed, 20 Jan 2021 22:35:01 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Jan 2021 22:25:12 -0800
+ 15.0.1497.2; Wed, 20 Jan 2021 22:25:35 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Jan 2021 14:25:10 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Jan 2021 14:25:22 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Jan 2021 14:25:09 +0800
+ Transport; Thu, 21 Jan 2021 14:25:21 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>
-Subject: [PATCH 1/3] memory: mtk-smi: Use platform_register_drivers
-Date: Thu, 21 Jan 2021 14:24:27 +0800
-Message-ID: <20210121062429.26504-2-yong.wu@mediatek.com>
+Subject: [PATCH 2/3] memory: mtk-smi: Add module_exit and module_license
+Date: Thu, 21 Jan 2021 14:24:28 +0800
+Message-ID: <20210121062429.26504-3-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210121062429.26504-1-yong.wu@mediatek.com>
 References: <20210121062429.26504-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 24476291C01264CB107719D7F0A11F842FC2D47325FB94F0AD32DB898B4DCD9F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210121_013504_711914_047E839C 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20210121_013505_819576_E3E0B0C7 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,51 +93,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In this file, we have 2 drivers, smi-common and smi-larb.
-Use platform_register_drivers.
+The config MTK_SMI always depends on MTK_IOMMU which is built-in
+currently. Thus we don't have module_exit before. This patch adds
+module_exit and module_license. It is a preparing patch for supporting
+MTK_SMI could been built as a module.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/memory/mtk-smi.c | 25 ++++++-------------------
- 1 file changed, 6 insertions(+), 19 deletions(-)
+ drivers/memory/mtk-smi.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index ac350f8d1e20..e2aebd2bfa8e 100644
+index e2aebd2bfa8e..aa2a25abf04f 100644
 --- a/drivers/memory/mtk-smi.c
 +++ b/drivers/memory/mtk-smi.c
-@@ -587,26 +587,13 @@ static struct platform_driver mtk_smi_common_driver = {
- 	}
- };
- 
-+static struct platform_driver * const smidrivers[] = {
-+	&mtk_smi_common_driver,
-+	&mtk_smi_larb_driver,
-+};
-+
- static int __init mtk_smi_init(void)
- {
--	int ret;
--
--	ret = platform_driver_register(&mtk_smi_common_driver);
--	if (ret != 0) {
--		pr_err("Failed to register SMI driver\n");
--		return ret;
--	}
--
--	ret = platform_driver_register(&mtk_smi_larb_driver);
--	if (ret != 0) {
--		pr_err("Failed to register SMI-LARB driver\n");
--		goto err_unreg_smi;
--	}
--	return ret;
--
--err_unreg_smi:
--	platform_driver_unregister(&mtk_smi_common_driver);
--	return ret;
-+	return platform_register_drivers(smidrivers, ARRAY_SIZE(smidrivers));
+@@ -597,3 +597,13 @@ static int __init mtk_smi_init(void)
+ 	return platform_register_drivers(smidrivers, ARRAY_SIZE(smidrivers));
  }
--
  module_init(mtk_smi_init);
++
++static void __exit mtk_smi_exit(void)
++{
++	platform_unregister_drivers(smidrivers, ARRAY_SIZE(smidrivers));
++}
++module_exit(mtk_smi_exit);
++
++MODULE_DESCRIPTION("MediaTek SMI driver");
++MODULE_ALIAS("platform:MediaTek-SMI");
++MODULE_LICENSE("GPL v2");
 -- 
 2.18.0
 _______________________________________________
