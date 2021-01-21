@@ -2,168 +2,84 @@ Return-Path: <SRS0=ytEc=GY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC720C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 03:33:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8BFBC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 04:42:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 89EA023888
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 03:33:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89EA023888
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9DFA4206FA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 04:42:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DFA4206FA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:References:Message-ID:
-	From:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tpy47zJ5rWPzKT0sYKIEr7hoLqyMLSflID0cra9Usag=; b=XeLfXZrTRDLCdgXHEGAo7MFJf
-	LOLjuT8dHumgnfOQfG+vSUdyCypvxF95nUEJ0OSXdUzndRsit4mCMYlurUzf0hJYaiEpcjYjHzNbJ
-	Ddy6nxHkXKsrMyQglQRK0+bdKr9bvRSKE19BDZhsFpv/sxVGsskZWEf7VUXUcSJcKfGpkTdK4O7Ul
-	ImFGtZ4UAz8QGAsdP2LCSAhULsuIG2K4tiEqA4RwM+ALWrevzLkkEbm1IOzt1/BZ96Yyxy+ScSbfN
-	+muDZQlkW5SPlJ1lb/KpocWNgKrmEko4BADnGEOkiojpJS1xXuGjsCGqm5/+VyYP3TIrZXSEctQYU
-	tQ4cbvY9A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=teWmkdc94heZZYG4s47JMCUcjEX6HlujvlrP1c+/nA8=; b=PJSGvREIFeUqFF5D+1QEiPxYXk
+	r+FUR0JJuFtYPr+Q0F9RdIZM71A+LGGRqO6b7CzVK9axQ3vsZl0hr7OiEaCkQ3827Xc6hgucMibcr
+	UFvsKg9UERrq0x6nQN12r4IAvCkba+seqB78cYBUcpGhRflO9z9Vq3xCMmADXsvx9bQ9NlV8sG/tV
+	4VXpvDy/nxjd1mdfVKIM5UwZTJSnyi/FqCNQlylVBBrN0lKejfJu2alRlkXBZqxHa98RGzmDn5cb5
+	OZgUWZE07bQUSNkkA+P1tZBwS/S8IYEdtq+U1RjaCQlsr6mmw0OO5ABMYsShubQHAKkIliPdTjXjW
+	zYFfcPew==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2Qis-000453-4h; Thu, 21 Jan 2021 03:33:26 +0000
-Received: from userp2130.oracle.com ([156.151.31.86])
+	id 1l2RnF-0007N5-B8; Thu, 21 Jan 2021 04:42:01 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2Qin-00042E-Cs; Thu, 21 Jan 2021 03:33:22 +0000
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 10L3TYOM018652;
- Thu, 21 Jan 2021 03:32:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : message-id : references : date : in-reply-to : content-type :
- mime-version; s=corp-2020-01-29;
- bh=MY/aJQJXPOpKk7ezNJRgPboN93+ijNO53q2Z/8WBzSU=;
- b=BBtE3lL1R/mv2aEx0DkbT6B47060w6kce8FadsfI0a1DzrJSRoQDSmnrO4YM/llgvEAa
- u6urxAEcrsRe5d0pVj9799A+qOzfyolPe+JUqaVUZUiguqANRdiLp1tbQ7v8BSb9TMAB
- cnaZ3MqV7JWb2rfC64B4iuaXA0vgYrIfoKKcC3+krLA+GQsEMayT6NrgvMklj2aBU6Yy
- r0/kOsBFuo/va24+9JaLOjKPU32NBP4GMTLFPMs4W9/jFWmr3aknnICH2Tgs3r5Jl4Ca
- SnDYg5j24yIkPTdSB7bzkXZYthN3VXIDOUwOAcn+kaQFCqAcKvgjvE8k6023dtkGvqVC cg== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 3668qadcju-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 21 Jan 2021 03:32:01 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 10L3AfxE112209;
- Thu, 21 Jan 2021 03:30:00 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam10lp2103.outbound.protection.outlook.com [104.47.58.103])
- by aserp3030.oracle.com with ESMTP id 3668qwabnn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 21 Jan 2021 03:30:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=amuFoa07apHYvr3cKe1yBSeCrdIyuEeM0qHjGK3g+GoRPGZu+/sYAm+ssp7HvjsyKTbX7WKXfaRCOA1h6guGs/jS0GgF5sSyoDFLWGiIfHYZJiq4Rl6wQXhl8Ozs4BP4w0j4XwhuqinYrk5PPnh84Lmde83xpxkyRoLq3+ZmZqovShCwG7fdQx5LM2OBsQ42Gb/vLdqHMvzcr7Ccxz5OhrAEmTeK2kBxd8pIFXduHf+N0gUJkLjVaU0009rNvPk0KPv7YncV33iIjjBKoBjQsDc7Stn4f5Rib30h2H09s5mqxH2TGH2+1R/t+SpV2z96iynecXHyp4vZ1zmoDGyJ3A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MY/aJQJXPOpKk7ezNJRgPboN93+ijNO53q2Z/8WBzSU=;
- b=j+H3rp+3zM4zFgbOYGFVsmOJ0afHUWuh/Bgsv6EblAmvHD0hAxkvA9Oe3YODct6Kb5ToJ34Q31v1h9a0GcTK/xccnqErKBzfG8zFjdkSpBbTVXEcOmSOR7rI7C82dH/0azo3f0uOXxKqnwJ/9lVcnGi28sbDOYOh2KGTqmeKAYGY17EjpatQZLR/sOMLNQd5qpBKzP1Nv/hqjQXEWrfL7EurUwQjHABDo/DOGYg3felXy0IDFNcBNOUdZI2cfTh2auz27HDr7MLHkipsUmNEh/gwL4+dTCZNS+v6xlCxgLPu/m98NZp1Xm6XSQA4JdsyLSJSb9F0tMqe8zHf4BXcxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MY/aJQJXPOpKk7ezNJRgPboN93+ijNO53q2Z/8WBzSU=;
- b=TYswQ3K0DayH+5wdnz4eCv6KxsBmou80wKu0y1rvhLR17dMuCAu4rL5pwThZwyg9KDhM4UdtD3IiNQM0yfPVRNqAKPjkey8tztELufo7bsvFDDLfUI13WTNKbk7AFBcGe8Xs+lCAgwnc5U/1/mFqZR9ROOicERkH7Se/d30gj6c=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=oracle.com;
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
- by PH0PR10MB4440.namprd10.prod.outlook.com (2603:10b6:510:35::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.13; Thu, 21 Jan
- 2021 03:29:58 +0000
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::54f3:a8aa:a2cd:a3a4]) by PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::54f3:a8aa:a2cd:a3a4%5]) with mapi id 15.20.3784.013; Thu, 21 Jan 2021
- 03:29:58 +0000
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v3 0/3] scsi: ufs: Cleanup and refactor clock scaling
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-Message-ID: <yq1mtx3ezmd.fsf@ca-mkp.ca.oracle.com>
-References: <20210120150142.5049-1-stanley.chu@mediatek.com>
-Date: Wed, 20 Jan 2021 22:29:54 -0500
-In-Reply-To: <20210120150142.5049-1-stanley.chu@mediatek.com> (Stanley Chu's
- message of "Wed, 20 Jan 2021 23:01:39 +0800")
-X-Originating-IP: [138.3.200.58]
-X-ClientProxiedBy: CH2PR16CA0029.namprd16.prod.outlook.com
- (2603:10b6:610:50::39) To PH0PR10MB4759.namprd10.prod.outlook.com
- (2603:10b6:510:3d::12)
+ id 1l2RnB-0007LF-5q; Thu, 21 Jan 2021 04:41:58 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id e9so600081plh.3;
+ Wed, 20 Jan 2021 20:41:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=G6oushXlU8/JCreEqr43J1ZyQ49iIsjnXql3SR0zTgQ=;
+ b=V4HmS+pH+pLJFk26hyU66R+rmnP2beqGFGjqdPk9FuWtDmlJDWr4kZH98+KgHhv7Ga
+ RPA7Mr2b3Nijoh13iOBPH9ro83W5pkA7ZlLMsPBNE8S8zTHhBhijZzCLCRNvLVRiSTxw
+ jcg7IZQ9ng670NwwC94FORu2Z9248Zky+xIV/Dmm5nah8Dq9CNY777NldJlsRiFJdvBE
+ MRcZ1sciB9airBCKh480cCWUg9vvQ/aesoYCNey5/0dZ68byYdgEcjpAtCfA0Vs59v5Q
+ /YFN7Me1W/MJ7PbfaoEByS8H7wu/X7IubsM2b1yVsble0T92RSA+swdomsE7WMLuY5vd
+ SO6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=G6oushXlU8/JCreEqr43J1ZyQ49iIsjnXql3SR0zTgQ=;
+ b=dgF3/Ke1F/aXXiK6zGhLBQqJVN58Yc9zG8zv9xW9e5y0XeFONovBqs2tOPolmDlwIu
+ dBHy0KhZZnBLqFEYrWrybSmWsktlWSeRwH2LJOhWl565k+H2FU8vHRC+FaJ69KvSdn5a
+ p0q6pUYxuW3Jy9gy2/ThlGNxIWELdeyq/zPFtxDh/x8+8+46oeGKLFRAqxfcUW46ANlI
+ Rn6n0Tz3ZahibLnIy+gyaqLYmEnq2C3UX51mvNXvHSVEjjaXV0CLg+N5WCX/l46bc4Cc
+ XxX9oqKf62yZj6MPonebuORU05IChHNu4SnMyev8iLcb/SzM/EUR/zFBZZyXe1gQsEbV
+ SHGg==
+X-Gm-Message-State: AOAM5322NlXURHF5fNYmo7irq5nDCmn5GNF0YrK5uROEK8Tht121D7zC
+ tZ7eIgL5a+WOS74RHaI+xXM3Ubeclu8=
+X-Google-Smtp-Source: ABdhPJyFD6wnC1KYu+9K6XpUwh/1p7UXubKQt0iWRFV1Dfffo1znTuF53UVoEutnmzvIJRV+LiSs/g==
+X-Received: by 2002:a17:902:a501:b029:dc:3e1d:4ddb with SMTP id
+ s1-20020a170902a501b02900dc3e1d4ddbmr13233027plq.60.1611204114069; 
+ Wed, 20 Jan 2021 20:41:54 -0800 (PST)
+Received: from localhost.localdomain ([49.207.210.174])
+ by smtp.gmail.com with ESMTPSA id jx15sm3916014pjb.17.2021.01.20.20.41.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 Jan 2021 20:41:53 -0800 (PST)
+From: Allen Pais <allen.lkml@gmail.com>
+To: herbert@gondor.apana.org.au
+Subject: [PATCH v4 00/19]crypto: convert tasklets to use new tasklet_setup
+ API()
+Date: Thu, 21 Jan 2021 10:11:07 +0530
+Message-Id: <20210121044126.152274-1-allen.lkml@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from ca-mkp.ca.oracle.com (138.3.200.58) by
- CH2PR16CA0029.namprd16.prod.outlook.com (2603:10b6:610:50::39) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3784.12 via Frontend Transport; Thu, 21 Jan 2021 03:29:57 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 1bd9c62d-d4a4-4d1d-1f66-08d8bdbcd435
-X-MS-TrafficTypeDiagnostic: PH0PR10MB4440:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <PH0PR10MB4440C132B079C696A37145818EA19@PH0PR10MB4440.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3968;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: lvqd3vk07T9HJfGOpUxAqzZernPQgrFWBswOYTZmGAQH8ZbXNkE7yKSXBPKQNg+xXoAcaaf+FbMp+fwtg0eghFRuMEhWHBtpziz2ZcHbq+iMO9MGdXAYwkVQxY3IXc6YieOysquL/xhU0Gyd5YNAjI5nwFmJ43sR4fNDef3fR5WAy8/auQJ/pqkkwiT36/b9iJ5Xu06OOUQ52ydOETsgpkk3MXdicsl/P5dO2Nlze5U2VQchM6MitOYJuoiDo8zD+kd7QekIjMjBIbQNAMvu1fM5qLJhh3V3c7VZfAglhV1PI/SdsSYVu1W9AEGYGkCFeUXe3R3/9C1ZIpHXUWjte0t2eutJ6eyvRFDpzyV/42J280TeOl9wUuHThVJD9ixVoZjWsWQFYIjRPWvIe9L/rA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR10MB4759.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(136003)(366004)(39860400002)(346002)(376002)(396003)(8676002)(508600001)(7696005)(52116002)(36916002)(956004)(8936002)(6666004)(4326008)(316002)(6916009)(54906003)(7416002)(26005)(558084003)(16526019)(186003)(55016002)(66476007)(66556008)(86362001)(2906002)(66946007)(5660300002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?CK3JYwf6mHFiJ5MYLwVnME+rFqlQgu91q+6Fk33LQqfbvtCvTUgBBv7YxJnT?=
- =?us-ascii?Q?oKFKLhxKtf+jeVp1n+u8QLBES+Q+P0FRM2r0JItTsBj4izEErnxhsTHuWuvS?=
- =?us-ascii?Q?3KwFx56guH8ZK2ffzKc3RN5YLD1o1orluzhdI7f/jHFadl5SQzKRQhX4MsWI?=
- =?us-ascii?Q?o7h8hQLAxHfQpQD6MwlYhD/jACRBPqxtqoenmde5gGZGZTIfQrXf0lolej/K?=
- =?us-ascii?Q?qMGnSoP8nfIw1maVDuvr60SzZchh87WcM54EkAddjv6SqJdVbDl8Wf9Qy5dU?=
- =?us-ascii?Q?ePBss3awasFtnEpDRAqD5UW9VpmJ36aysDAg8Ry1hCSvy9oacnghrY3SuMrG?=
- =?us-ascii?Q?67Brx/MsHvzNxpcmPPEEQJCg5tytfQc8MU1DwEFocCEMHREOvF00qA1uRZ52?=
- =?us-ascii?Q?x6pYtkJS8kRPesWkEFSrRFiiRuucHGAVKUDypYm/DlgKGHtDtEGuRGtM31gL?=
- =?us-ascii?Q?sEgWZHDpTZaMrW1FnzkoJocFPANhpwqzhRlc9d0u1zYyguz4XFSaJfQ5kPGJ?=
- =?us-ascii?Q?pAWGaQH5lmPOLmcOPClS/N4cnOotFeCRBz0NCUR03/HW0UP0De3FXwvAiHv/?=
- =?us-ascii?Q?VVraRKkFP69DcHjB/5YcaRANvzwBbtwwDpJqmKl8IZutpNEQK9F0wrItAr8e?=
- =?us-ascii?Q?ymI9P8L5C8r/IZO2zwuQwLeYvUTMjLvYHyfC3+7VBlAKzqJhvF3/sP8BuGwn?=
- =?us-ascii?Q?7wvffAY6IFPXfImqfJZzjCmQQoQew1h3+23X8w31vhz/kJZ6Dw+BEyZ1xbBl?=
- =?us-ascii?Q?WkfwyxJkn1AXuwanjULRyagKYLlnMVvuEZt/mVPMULlsObEs0XY8OcimrKrA?=
- =?us-ascii?Q?MBRAiCXIuOxchL3QlYtQ+ohif5sj61+l0S/CpjrRjGobDOe7NtNn25zktqSi?=
- =?us-ascii?Q?ZOQ/BWuDKknXJnzU95+t0TlkPhos56iY3IY7/i34A6fcE5NNrfT7f9Flzu9F?=
- =?us-ascii?Q?EYeyE/g2qP7jSpZlFhvBZgLacDgrENRCO5DarO3vySa2d1Elyl6noOn/IkPl?=
- =?us-ascii?Q?GTHO?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1bd9c62d-d4a4-4d1d-1f66-08d8bdbcd435
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jan 2021 03:29:58.5812 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ceo8OR4dHZWkmZoNOAkqeiyauP3N780CwS7vmMFQ6fqx8fbOWIYFKbLQLH7pNvvBRmNqXM5ejYkum0U6ZwxWA/OG3oDY2UJYSNlrUmeqIzQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB4440
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9870
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0 bulkscore=0
- mlxlogscore=999 spamscore=0 suspectscore=0 malwarescore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2101210014
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9870
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0
- impostorscore=0 mlxscore=0 priorityscore=1501 phishscore=0 mlxlogscore=999
- lowpriorityscore=0 malwarescore=0 adultscore=0 clxscore=1015 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2101210015
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_223321_602068_088832A2 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20210120_234157_310198_B93747B5 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,29 +91,100 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: jiajie.hao@mediatek.com, alice.chao@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, andy.teng@mediatek.com,
- jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cc.chou@mediatek.com, avri.altman@wdc.com,
- cang@codeaurora.org, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- asutoshd@codeaurora.org, chaotian.jing@mediatek.com, bvanassche@acm.org,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com,
+ Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Allen Pais <apais@linux.microsoft.com>
 
-Stanley,
+Commit 12cc923f1ccc ("tasklet: Introduce new initialization API")
+introduced a new tasklet initialization API. This series converts
+all the crypto modules to use the new tasklet_setup() API
 
-> This series cleans up and refactors clk-scaling feature, and shall not
-> change any functionality.
+The series is based on v5.11-rc4 (19c329f68089)
+v4:
+  - added acks
+  - fixed checkpatch errors(Giovanni Cabiddu)
+v3:
+  - fixed rockchip driver(Emil Renner Berthing)
 
-Applied to 5.12/scsi-staging, thanks!
+v2:
+  - added acks
+  - addressed comments [Krzysztof and Gilad]
+
+Allen Pais (19):
+  crypto: amcc: convert tasklets to use new tasklet_setup() API
+  crypto: atmel: convert tasklets to use new tasklet_setup() API
+  crypto: axis: convert tasklets to use new tasklet_setup() API
+  crypto: caam: convert tasklets to use new tasklet_setup() API
+  crypto: cavium: convert tasklets to use new tasklet_setup() API
+  crypto: ccp: convert tasklets to use new tasklet_setup() API
+  crypto: ccree: convert tasklets to use new tasklet_setup() API
+  crypto: hifn_795x: convert tasklets to use new tasklet_setup() API
+  crypto: img-hash: convert tasklets to use new tasklet_setup() API
+  crypto: ixp4xx: convert tasklets to use new tasklet_setup() API
+  crypto: mediatek: convert tasklets to use new tasklet_setup() API
+  crypto: omap: convert tasklets to use new tasklet_setup() API
+  crypto: picoxcell: convert tasklets to use new tasklet_setup() API
+  crypto: qat: convert tasklets to use new tasklet_setup() API
+  crypto: qce: convert tasklets to use new tasklet_setup() API
+  crypto: rockchip: convert tasklets to use new tasklet_setup() API
+  crypto: s5p: convert tasklets to use new tasklet_setup() API
+  crypto: talitos: convert tasklets to use new tasklet_setup() API
+  crypto: octeontx: convert tasklets to use new tasklet_setup() API
+
+ drivers/crypto/amcc/crypto4xx_core.c          |  7 ++--
+ drivers/crypto/atmel-aes.c                    | 14 +++----
+ drivers/crypto/atmel-sha.c                    | 14 +++----
+ drivers/crypto/atmel-tdes.c                   | 14 +++----
+ drivers/crypto/axis/artpec6_crypto.c          |  7 ++--
+ drivers/crypto/caam/jr.c                      |  9 ++--
+ drivers/crypto/cavium/cpt/cptvf_main.c        |  9 ++--
+ drivers/crypto/cavium/nitrox/nitrox_common.h  |  2 +-
+ drivers/crypto/cavium/nitrox/nitrox_isr.c     | 13 +++---
+ drivers/crypto/cavium/nitrox/nitrox_reqmgr.c  |  4 +-
+ drivers/crypto/ccp/ccp-dev-v3.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dev-v5.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dmaengine.c            |  7 ++--
+ drivers/crypto/ccree/cc_fips.c                |  8 ++--
+ drivers/crypto/ccree/cc_request_mgr.c         | 12 +++---
+ drivers/crypto/hifn_795x.c                    |  6 +--
+ drivers/crypto/img-hash.c                     | 12 +++---
+ drivers/crypto/ixp4xx_crypto.c                |  4 +-
+ .../crypto/marvell/octeontx/otx_cptvf_main.c  | 12 +++---
+ drivers/crypto/mediatek/mtk-aes.c             | 14 +++----
+ drivers/crypto/mediatek/mtk-sha.c             | 14 +++----
+ drivers/crypto/omap-aes.c                     |  6 +--
+ drivers/crypto/omap-des.c                     |  6 +--
+ drivers/crypto/omap-sham.c                    |  6 +--
+ drivers/crypto/picoxcell_crypto.c             |  7 ++--
+ drivers/crypto/qat/qat_common/adf_isr.c       |  5 +--
+ drivers/crypto/qat/qat_common/adf_sriov.c     | 10 ++---
+ drivers/crypto/qat/qat_common/adf_transport.c |  4 +-
+ .../qat/qat_common/adf_transport_internal.h   |  2 +-
+ drivers/crypto/qat/qat_common/adf_vf_isr.c    | 11 +++--
+ drivers/crypto/qce/core.c                     |  7 ++--
+ drivers/crypto/rockchip/rk3288_crypto.c       | 14 +++----
+ drivers/crypto/s5p-sss.c                      | 13 +++---
+ drivers/crypto/talitos.c                      | 42 +++++++++----------
+ 34 files changed, 152 insertions(+), 181 deletions(-)
 
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
