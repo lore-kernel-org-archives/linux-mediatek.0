@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E1494C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 04:44:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE539C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 04:44:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9763B206FA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 04:44:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9763B206FA
+	by mail.kernel.org (Postfix) with ESMTPS id 8B0F7206FA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 04:44:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B0F7206FA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,64 +24,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cDVXssKcVGrz5Ux5CJ3jqS7skXAh6mJGKWwlJy9xgj4=; b=IDuWSiR+7jZhtulLX5ko5X6+A
-	sDCQ7+96ZIND4SQHv60bXjQO4nnec5F516TXcQ2z0qqad/1TWp7efXcyZV7muLOuRO8HItbkXAGYJ
-	Ffm7erPQakPlO7gEqyNk/d10XOOtUrvi5z3VP/iTT7pQIWUS/C1Eh6xKylJexMPuTr0Ko0iiYi69P
-	cAFmJuJUfZKPfscPQQ1kPPAfMokMDW+MxBcuxT0CjTMtoHoAUnS1+kJKRekVXtY3vWPHH7wx9xEmD
-	UgDp+0MVxLsTdBqtDfaWPQd6UnwatgCqY2Ab5JnyO2fjJBDsznG26Y1Ueph+xbxD9NxUbyQDKgcAL
-	XutjQttOA==;
+	 bh=UQisMRn3vGrrvcxh7hNt4vDBD92AfVR2d84yIhCQduE=; b=0us6blKSwsU7YrOvG7WA7BGQM
+	cjoByDiXNVbXLDHCsd06eulsgVBcYE+1siLiI4ayFzl79IBjujxoKtff1DL7UCbhjVzKCdzrwwrd9
+	cdowbk4GYp1NbdgqjhTjlbZyJzlTK0Q7wriF5Hgf6HCYiNqCeOimjUcTGWRd0qgo8EMF/IMyiQHuv
+	Zxgo4Cap2x7pqvdOjR2smzka9ZB/pHCoeU6GIXvwYPpvHhCgh/2+rPHmZ6YbJCm5kYrFM8n4CCz/t
+	4DX515BNzPnape3hR3lCPN1AgaBBrVpylldwMuAhYP3VizBX0UfHC6E4QdraNLV+EnpCEedP3cSQ2
+	13RxedRKg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2RpU-0008WD-Ry; Thu, 21 Jan 2021 04:44:20 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1l2Rpb-00008U-MA; Thu, 21 Jan 2021 04:44:27 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2RpQ-0008TP-4p; Thu, 21 Jan 2021 04:44:18 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id kx7so807894pjb.2;
- Wed, 20 Jan 2021 20:44:15 -0800 (PST)
+ id 1l2RpZ-00006b-Iq; Thu, 21 Jan 2021 04:44:26 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id u11so559393plg.13;
+ Wed, 20 Jan 2021 20:44:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=gQh2IwNxftbR34HfI9l3nT7vPGQ8lmvW4dX0b9EAc7Y=;
- b=BupZcrXhhNK8Ef6ojLlQM42EwDg3c1oTSVd8H+/oHXiemqGl5WEzw5ar1WiOZx+iC1
- jvVMgDVDYdxjTtfxYu78QrlC0iD6CqYMsHQO14d3u/k/FzKXX6SQP2XOINno1iXJgCld
- 4rZ5ayp0ch64tHhDbqoBufiU0rftkrB4lzOgJvHfBiRYnwclH042wfAC1IOVo8or3EvO
- JrX4jA2FS/PZ0Oi6MEceS+MYxaga4gy2lmJSbASRPTx+WtxyunTISoxeVi7oSbv5GNe+
- oHPTQXwPGwEWVuhWPI9AHbUS2BYxMiz7KP0iypNrPDePZi/GniAt/ru7X3bHn5ZdOkwi
- 5zVw==
+ bh=YEPwpL8tIwFQ2pgUdTDSsmDRSKgoB9OQrqIbywK9g6k=;
+ b=dU9WU1E48oj1RRxS0YgvTzPsbpnhRc/jNgYXGzORXZK2kmMTbQmjpzN1uNz+lKkiNU
+ TOaLwOEAb4HlD3elA0CfbOZHOh+b4SKjf3/GELVuSnpAbZ9Y2PkjdN26sSERD6ONqgfM
+ FLZd77ZV9iyiG8iRIWR+DzFJQjg3BlPmsjRbU+d45KuBV/dnWMeZVA5cX0g7GhT5QoX/
+ Dj6KU3poUouCZqom9b7QhEh8xnGdXPOyBp4QlFHXgTlE7yvoyoEKa2amj7F8wyTgsFvD
+ KQuM21l9P5n+zlHdJqhWTFYCUsvpn2ac53gsWGoY0//kn3tKW0q/ddvcrB0QBDV7AdQR
+ t8Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=gQh2IwNxftbR34HfI9l3nT7vPGQ8lmvW4dX0b9EAc7Y=;
- b=o1enQQq65cItHgEEVkdMEanZ8E0PF1x8I48tstnPQq0aVrjha0s0rGu+Pqj3iUO0Me
- Ja00CpvryxSIUP6PlGtIsA2sje2Zhz+uxRhZITJNTRpbklGFccmu9HghL4/G0PQDNafk
- ulYNGntIfuuc9MkcNHHM47uggLn2e1cbJ/Yo5TsIdKWWxsXl0X/CZj60FzyLwha5mFyQ
- J1YlDWobcQbbY1I5U7rLENLq0pXnGA17Qeiz+LqpjLIV5yJWHndWlZc4oJRcXBFKvlDR
- jv9gRWYqComsQ9zYqYMViLMh85wh0k/qf2u1YYvlJ9FUaos++onRh1eyTOloAc3sosFl
- Wycw==
-X-Gm-Message-State: AOAM532AGKP0MTEPT067L7y4r2cn/5v28WW2tGrou0o5tZ6c0EXQnmVb
- oGst9EK7VSJSko6Ues9wAWg=
-X-Google-Smtp-Source: ABdhPJxihhD7rtz9KUgJnDNb27lJMLl+Qqb3jgEHtXH3KDbu2VD5PkvZTpN9Xi673Iz88wL6BF/1ZA==
-X-Received: by 2002:a17:902:a501:b029:dc:3e1d:4ddb with SMTP id
- s1-20020a170902a501b02900dc3e1d4ddbmr13240061plq.60.1611204254054; 
- Wed, 20 Jan 2021 20:44:14 -0800 (PST)
+ bh=YEPwpL8tIwFQ2pgUdTDSsmDRSKgoB9OQrqIbywK9g6k=;
+ b=PFd5m2+tCkLc6mkUcl+bnycZaXjfkqtFBvagxe9LR/0Pl1Cif5EYQkrVD5l+6yngFQ
+ W/N07u6cNbTG9avEzvZ8lXli1O7tmnXOdBC4GgTGlo9NYogRPB4u9wRgg2C8wDnM25s5
+ 4xEmztoI7LOnRkNrC9GLPKxDgmMJiTgZ9JcOjBlLM+jL6c3b1i9UR/HoGfgQosaj5+7i
+ 7o6vY12XRo+k49/2jtCPmWtjmz0ovkgLPXBBFyeeAtFV2Y3FTReB3gEfe8t3UJaNc43r
+ cjaLECUM7rn4e14D7lwEa7Yhgqg7JtCifzGpNYYBGt/A5WdmjGBMj4d3bKp8X/UD9H2y
+ eE5Q==
+X-Gm-Message-State: AOAM530A2y1Dc4eMax+K+6HZK2trRZhD5BTm7TwV4J8rUXJPXB/fWOCN
+ kkPocHSLqoy85Lzs7PzoQXs=
+X-Google-Smtp-Source: ABdhPJwJ9hGf8pbMPGeEG6z5iRCJqmXre9McNlr8vNJHe99q8dg0/KYxRa6Y2rusHu50LojxQn4eEw==
+X-Received: by 2002:a17:90a:1913:: with SMTP id
+ 19mr4557392pjg.183.1611204263868; 
+ Wed, 20 Jan 2021 20:44:23 -0800 (PST)
 Received: from localhost.localdomain ([49.207.210.174])
- by smtp.gmail.com with ESMTPSA id jx15sm3916014pjb.17.2021.01.20.20.44.05
+ by smtp.gmail.com with ESMTPSA id jx15sm3916014pjb.17.2021.01.20.20.44.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Jan 2021 20:44:13 -0800 (PST)
+ Wed, 20 Jan 2021 20:44:23 -0800 (PST)
 From: Allen Pais <allen.lkml@gmail.com>
 To: herbert@gondor.apana.org.au
-Subject: [PATCH v4 15/19] crypto: qce: convert tasklets to use new
+Subject: [PATCH v4 16/19] crypto: rockchip: convert tasklets to use new
  tasklet_setup() API
-Date: Thu, 21 Jan 2021 10:11:22 +0530
-Message-Id: <20210121044126.152274-16-allen.lkml@gmail.com>
+Date: Thu, 21 Jan 2021 10:11:23 +0530
+Message-Id: <20210121044126.152274-17-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210121044126.152274-1-allen.lkml@gmail.com>
 References: <20210121044126.152274-1-allen.lkml@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_234416_227977_D0297B71 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20210120_234425_690408_22D6B29D 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,35 +121,50 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 ---
- drivers/crypto/qce/core.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/crypto/rockchip/rk3288_crypto.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/crypto/qce/core.c b/drivers/crypto/qce/core.c
-index 80b75085c265..374281e9d6b9 100644
---- a/drivers/crypto/qce/core.c
-+++ b/drivers/crypto/qce/core.c
-@@ -116,9 +116,9 @@ static int qce_handle_queue(struct qce_device *qce,
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index 35d73061d156..85f314c79734 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -201,9 +201,9 @@ static int rk_crypto_enqueue(struct rk_crypto_info *dev,
  	return ret;
  }
  
--static void qce_tasklet_req_done(unsigned long data)
-+static void qce_tasklet_req_done(struct tasklet_struct *t)
+-static void rk_crypto_queue_task_cb(unsigned long data)
++static void rk_crypto_queue_task_cb(struct tasklet_struct *t)
  {
--	struct qce_device *qce = (struct qce_device *)data;
-+	struct qce_device *qce = from_tasklet(qce, t, done_tasklet);
- 	struct crypto_async_request *req;
+-	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
++	struct rk_crypto_info *dev = from_tasklet(dev, t, queue_task);
+ 	struct crypto_async_request *async_req, *backlog;
  	unsigned long flags;
+ 	int err = 0;
+@@ -231,9 +231,9 @@ static void rk_crypto_queue_task_cb(unsigned long data)
+ 		dev->complete(dev->async_req, err);
+ }
  
-@@ -235,8 +235,7 @@ static int qce_crypto_probe(struct platform_device *pdev)
- 		goto err_clks;
+-static void rk_crypto_done_task_cb(unsigned long data)
++static void rk_crypto_done_task_cb(struct tasklet_struct *t)
+ {
+-	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
++	struct rk_crypto_info *dev = from_tasklet(dev, t, done_task);
  
- 	spin_lock_init(&qce->lock);
--	tasklet_init(&qce->done_tasklet, qce_tasklet_req_done,
--		     (unsigned long)qce);
-+	tasklet_setup(&qce->done_tasklet, qce_tasklet_req_done);
- 	crypto_init_queue(&qce->queue, QCE_QUEUE_LENGTH);
+ 	if (dev->err) {
+ 		dev->complete(dev->async_req, dev->err);
+@@ -389,10 +389,8 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 	crypto_info->dev = &pdev->dev;
+ 	platform_set_drvdata(pdev, crypto_info);
  
- 	qce->async_req_enqueue = qce_async_request_enqueue;
+-	tasklet_init(&crypto_info->queue_task,
+-		     rk_crypto_queue_task_cb, (unsigned long)crypto_info);
+-	tasklet_init(&crypto_info->done_task,
+-		     rk_crypto_done_task_cb, (unsigned long)crypto_info);
++	tasklet_setup(&crypto_info->queue_task, rk_crypto_queue_task_cb);
++	tasklet_setup(&crypto_info->done_task, rk_crypto_done_task_cb);
+ 	crypto_init_queue(&crypto_info->queue, 50);
+ 
+ 	crypto_info->enable_clk = rk_crypto_enable_clk;
 -- 
 2.25.1
 
