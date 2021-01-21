@@ -2,77 +2,73 @@ Return-Path: <SRS0=ytEc=GY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7A8DC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 08:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44BE1C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 10:20:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 315CD239A1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 08:56:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 315CD239A1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id C51BC221F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 10:19:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C51BC221F8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=by7ItAKHvUjX7OKAtsXU/Lgbdglb5R3ruZ3QM4cmceU=; b=ld8jId36EFnxQb5KuMnQY8kXf
-	l0IZ2TsaMcQDspEIJxZwXikjrGiA50oxa6KfeOADw/r8NcvYjvZ/gCTveiSy+OyEiY7o59H/1SJbW
-	16cql7UfboXD0Vd+T+b3YGAa7MaFda2bhhS1Y5fiGQYgGRQdUeAqfrKPTGfQ095m2O/xYTTdfTkRp
-	O3zK8AuMt5Id/LRUS3YbN9bVrkjci51U86+itwZz9/X2hVRVY//LlIyueqfuisZGm/UYF0wbAUYyF
-	Aau7510TsyLngV3+yoTm6o8E4aSAqRrJGyW9ps7QPY0GsLKAY8bTyg+0SE+cA2FJoTanKcHbL1mo/
-	8HJJ9SBeg==;
+	 bh=9+F2ZisUxjAKiTsdd6Kv0kwPFqDNC9qphuvObDs0DNg=; b=c/xpMo+iDPluL35a4xgrob1Ig
+	DDx10EJiJBdT8a8kslDv9r/eZKoG3Gfv7eu9EZ2s3/yVSmzmDxJJMrfX6upRlsoaJ8PAols2iwCkt
+	z/Ss8PuTvZtwthkU0A+lzlNJ27gWDvu81Iw5zSW6s1dGXWKENB7FOCn6VJpBxumQjFizPq5HHIRo9
+	ZSbdo9VsTAytns8HfoWWb739JkzKTErrc4ZGRbo/9Q4SagqzEqyd/WAxbSgRIX9PwO47i/kNz2Rvl
+	19NrVaHX7sNDUEiFnCX48pHXUdpIbp8Gy1a4St1YpX5QyLE7s5rZhAdvcvAJFdGkNkQg7fz/WvvoU
+	VKd441DyA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2Vko-00014g-Cd; Thu, 21 Jan 2021 08:55:46 +0000
-Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
+	id 1l2X41-00035X-NB; Thu, 21 Jan 2021 10:19:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2Vki-00012Z-PZ
- for linux-mediatek@lists.infradead.org; Thu, 21 Jan 2021 08:55:42 +0000
-Received: by mail-vs1-xe2a.google.com with SMTP id v19so216277vsf.9
- for <linux-mediatek@lists.infradead.org>; Thu, 21 Jan 2021 00:55:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ePsu1N7aD3BdUwzr3RcjhQbXEG8+bIemaO7C4xKDs2A=;
- b=Dmmxrw/ElDqEXAM9Qtq+V/hu48fzs4rvxkyHyBHsg45ozoS55ZMz39ndyE2rKMYvAP
- N07ZymUbewZ7oqS+k4b1OKgosrOcBt5tUvJmz3bGXcij1HIswjtnsx4oy9gj5F+oG+uf
- 45qKAXJvn/b6l6sI7xXAItrPqGrSYDURu7VYc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ePsu1N7aD3BdUwzr3RcjhQbXEG8+bIemaO7C4xKDs2A=;
- b=Hv/i/r+FCz7SdLF+9J4b51EUUlfxtYmU8REtYaLiN0YEvzOXlPAxgJB9Zksx8dLjIG
- gVPw4hFPoFLfweynndKtqB/oxcfU0R6wUjEJB98P25EtxpLzoJlr097FBXa4SXggsSzF
- QDZkzkjIYASf8PNVNrlzZHYFgxKcr916vPpwr1QObVw3PztD5OeYGMSMG6KekEzZnI+X
- OzV1n3bMLWZHht96ssJA07cvEpFRhEhhqn6Ro0nSuAkJLoOfd9iVrfU9pkxLCqo0PRNw
- BMRzcxfaBjmseygd7BtD8r424mRlOvrqrExlXPA1WXPnn0a/tucS7IpifmqNWVUglyzU
- rdcA==
-X-Gm-Message-State: AOAM533VSFv4ifGxL9Va3mkZ0uesPHtjlkLTLlLc3jqqKfyGk9gvlOtO
- 69gsUJUK275q7WJmi3YnxgNx9A1F0Cqt3Nj82xptiQ==
-X-Google-Smtp-Source: ABdhPJwxrDWSJlmr6JsdKTRj7/1M3Ec382ozhg9FjxGukN5mtPevGUwKoeEIFrQhHTvT1P4bO5GUAfKiwlkreLAWmv4=
-X-Received: by 2002:a05:6102:34f:: with SMTP id
- e15mr9659982vsa.21.1611219336958; 
- Thu, 21 Jan 2021 00:55:36 -0800 (PST)
+ id 1l2X3w-00033H-13; Thu, 21 Jan 2021 10:19:37 +0000
+X-UUID: 886cdf4a701d48d1a1753d6f6ffed373-20210121
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=AOsDJALpi9b496LtnQHVB5k1qDm8SBMFm1Bv0iE5gpc=; 
+ b=Wcm6SUPV4E/dGI+SJFHEHzZnT/8QCYxAP+ngsDhQwZzLey8dje0YXrk4rTFtdgHbzpq6YTXqR3OD2GHd1DUbgoQk4WT0wugNphqXTehVeU6i5PdsSAxwxoMBMxeur8FkgEdp7f32XOXMrW1vZNdjgjKlcBUtq6S661kDdaeg988=;
+X-UUID: 886cdf4a701d48d1a1753d6f6ffed373-20210121
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <lecopzer.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2129335116; Thu, 21 Jan 2021 02:19:31 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Jan 2021 02:19:30 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Jan 2021 18:19:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 21 Jan 2021 18:19:28 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <lecopzer@gmail.com>
+Subject: Re: [PATCH v2 0/4] arm64: kasan: support CONFIG_KASAN_VMALLOC
+Date: Thu, 21 Jan 2021 18:19:18 +0800
+Message-ID: <20210121101918.11423-1-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210109103252.812517-1-lecopzer@gmail.com>
+References: <20210109103252.812517-1-lecopzer@gmail.com>
 MIME-Version: 1.0
-References: <20210121075149.1310-1-hailong.fan@mediatek.com>
-In-Reply-To: <20210121075149.1310-1-hailong.fan@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Thu, 21 Jan 2021 16:55:25 +0800
-Message-ID: <CANMq1KBqKUofLaM+OEaTq6PSeYomNSLvn65c+Wyi1cKsLDNboQ@mail.gmail.com>
-Subject: Re: [PATCH RESEND] pinctrl: mediatek: Fix trigger type setting follow
- for unexpected interrupt
-To: Hailong Fan <hailong.fan@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210121_035540_888401_05A6F543 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20210121_051936_828133_33B45ED6 
+X-CRM114-Status: UNSURE (   6.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,86 +80,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, Hanks Chen <hanks.chen@mediatek.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Chen-Tsung Hsieh <chentsung@chromium.org>,
- Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>,
- lkml <linux-kernel@vger.kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- gtk_pangao@mediatek.com
+Cc: lecopzer.chen@mediatek.com, catalin.marinas@arm.com,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org, tyhicks@linux.microsoft.com,
+ glider@google.com, vincenzo.frascino@arm.com, will@kernel.org, ardb@kernel.org,
+ yj.chiang@mediatek.com, kasan-dev@googlegroups.com, dvyukov@google.com,
+ aryabinin@virtuozzo.com, linux@roeck-us.net, andreyknvl@google.com,
+ broonie@kernel.org, linux-mediatek@lists.infradead.org,
+ dan.j.williams@intel.com, linux-arm-kernel@lists.infradead.org,
+ gustavoars@kernel.org, akpm@linux-foundation.org, robin.murphy@arm.com,
+ rppt@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 21, 2021 at 3:52 PM Hailong Fan <hailong.fan@mediatek.com> wrote:
->
-> When flipping the polarity will be generated interrupt under certain
-> circumstances, but GPIO external signal has not changed.
-> Then, mask the interrupt before polarity setting, and clear the
-> unexpected interrupt after trigger type setting completed.
->
-> Signed-off-by: Hailong Fan <hailong.fan@mediatek.com>
-> ---
-> Resend since some server reject.
-> ---
->  drivers/pinctrl/mediatek/mtk-eint.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-> index 22736f60c16c..3acda6bb401e 100644
-> --- a/drivers/pinctrl/mediatek/mtk-eint.c
-> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
-> @@ -157,6 +157,7 @@ static void mtk_eint_ack(struct irq_data *d)
->  static int mtk_eint_set_type(struct irq_data *d, unsigned int type)
->  {
->         struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
-> +       unsigned int unmask;
+Dear reviewers and maintainers,
 
-bool?
 
->         u32 mask = BIT(d->hwirq & 0x1f);
->         void __iomem *reg;
->
-> @@ -173,6 +174,13 @@ static int mtk_eint_set_type(struct irq_data *d, unsigned int type)
->         else
->                 eint->dual_edge[d->hwirq] = 0;
->
-> +       if (!mtk_eint_get_mask(eint, d->hwirq)) {
-> +               mtk_eint_mask(d);
-> +               unmask = 1;
-> +       } else {
-> +               unmask = 0;
-> +       }
-> +
->         if (type & (IRQ_TYPE_LEVEL_LOW | IRQ_TYPE_EDGE_FALLING)) {
->                 reg = mtk_eint_get_offset(eint, d->hwirq, eint->regs->pol_clr);
->                 writel(mask, reg);
-> @@ -189,8 +197,9 @@ static int mtk_eint_set_type(struct irq_data *d, unsigned int type)
->                 writel(mask, reg);
->         }
->
-> -       if (eint->dual_edge[d->hwirq])
-> -               mtk_eint_flip_edge(eint, d->hwirq);
+Could we have chance to upstream this in 5.12-rc?
 
-Why are you dropping this? Aren't we at risk to miss the first edge
-after mtk_eint_set_type is called?
+So if these patches have any problem I can fix as soon as possible before
+next -rc comming.
 
-> +       mtk_eint_ack(d);
-> +       if (unmask == 1)
 
-Just `if (unmask)`
+thanks!
 
-> +               mtk_eint_unmask(d);
->
->         return 0;
->  }
-> --
-> 2.18.0
-
+BRs,
+Lecopzer
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
