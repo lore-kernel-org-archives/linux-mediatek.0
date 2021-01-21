@@ -2,63 +2,65 @@ Return-Path: <SRS0=ytEc=GY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 337ECC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 22:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B3AEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 23:04:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E862A23A5F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 22:32:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E862A23A5F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id ADA4C23A3A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jan 2021 23:04:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ADA4C23A3A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=K8J5rKR1gdeWTlyH+zedfNHqjOnq3Z68WLKlWf7WYoM=; b=ZO20GasC097cGkVQht4W+572A
-	XxUkGqLxjGm+mjyGqL+2775uxjgO6D6gSupy6VxEByDHmrU1l5A/oga6+V0MwGHSonxPRqbIUUDKF
-	ICwY5nAsWj6pYwgb6q33lCnytUOKa7USo6rky1duq5g1pqvk/knUjFKBTyBD/G2xetiA5hFxrjMfw
-	OvcpJVcpIsat74CBz05g/Ug3EA83tJSv7gaVx7Me/JBaMMeg12xaWSNJyheTi7Hprb94rr4nlMZSw
-	k478NcnrboLaw/OKqhJeG2tJyw0ML7C3nyou+j+DAoDmpOdxFLeWGZBxWQ9w6u+WQvT35TGqx4/Y/
-	RW3J0sLkw==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=2OxSyw0VbQ0DlMZ2HDVIdcoCSNiZihnQbtGhVb/NnV8=; b=etaBXSqvXmQq/otyzrXTjAPap
+	DRKRMAlVspVbbG5bdWL39M+euk7fgzUTm1+T9sFFGfjxBUaWj6yG4u1bxJW+cyh++cvTMb337S7Ic
+	UhXePKf5O1u8m47yAaxjTRP/3422zS77ibe0MnopYI0oGzeaSi+yMg6yoQhKtgl/6dKMKZ6Upp89Y
+	MKgcFIUrF1IUwzRuJTBOUPkYXKLx2+VRW8zFFa3GZEq+dbORcHqrUqYN7bMkozYHJiTE1Phr0m5ff
+	VKou9DQamYNHUSeJ1M2yYCi+xxb2yc1TRMJ/kZa8qgdvig+iXhFui2yc9enaHU1jfM7asHQyQxCkX
+	2FbU1RJjQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2iUX-0007aU-CN; Thu, 21 Jan 2021 22:31:49 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l2izn-0001PQ-HN; Thu, 21 Jan 2021 23:04:07 +0000
+Received: from perceval.ideasonboard.com
+ ([2001:4b98:dc2:55:216:3eff:fef7:d647])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2iUS-0007Yj-FZ; Thu, 21 Jan 2021 22:31:45 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 248C8239EF;
- Thu, 21 Jan 2021 22:31:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611268301;
- bh=EEf8rabDeI15xaIquULAh8d9pPh9A++4exLQ0e/ACdM=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=byN+jFdhb7bSBDjr2iwxHKQVRmnDYUmTvXjhAtxBXtU69FjhISlVnP4oNAYtj97cj
- NXzfaCIQmuADYionFEpJq0GgE//3I0lCbuaGUjhkzolNhA0DOLeb6e5ljwC/0sGnzD
- 97bmLd+bNkXSsErv9j7P1uVSHhxKOaiye6hb9rGcZR2i4HWQhyHsOAA/ifLMElysbY
- ecWPlg3IDRo3xF6JZQ0069/lN7oNjDOeU7p6csPluvEcdVdAHRODGEU65IezLghgjW
- Goe6G83GUVziPEWEzHkr/KwTj7p251a8CF8jy0XhqxVkHO7n8Uq95xhxlO03QWbDcK
- 7pn+rHxWhNJEA==
-Date: Thu, 21 Jan 2021 16:31:39 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Mika Westerberg <mika.westerberg@linux.intel.com>
-Subject: Re: [PATCH v2] PCI: Re-enable downstream port LTR if it was
- previously enabled
-Message-ID: <20210121223139.GA2698934@bjorn-Precision-5520>
+ id 1l2izj-0001Nh-GX; Thu, 21 Jan 2021 23:04:04 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2451050E;
+ Fri, 22 Jan 2021 00:04:01 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1611270241;
+ bh=T5NVDr46xcwrXL27T8VCCkqqocibkcaVgjkVgGiO8ZY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Y8cyClLX8kCaKU5wMc7DQBaagAtpgNWmTZ3+p386BcnpRP0PMgaNeQ9iuSFglc0Sw
+ yxD8mSPCVAnyIXOWj5xsNFm7Htaoj3caG3DKUBN0MGRlEjztlQ48iKJbFja/DHFBKL
+ ztANltlmDf+im+ixzdUmFqsBKC+TOLRQSVr+juDg=
+Date: Fri, 22 Jan 2021 01:03:42 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH v2 09/11] drm/atomic: Pass the full state to planes
+ atomic disable and update
+Message-ID: <YAoITqHbG1UeiAHV@pendragon.ideasonboard.com>
+References: <20210121163537.1466118-1-maxime@cerno.tech>
+ <20210121163537.1466118-9-maxime@cerno.tech>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210119131410.27528-1-mika.westerberg@linux.intel.com>
+In-Reply-To: <20210121163537.1466118-9-maxime@cerno.tech>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210121_173144_645271_15AC4A76 
-X-CRM114-Status: GOOD (  26.99  )
+X-CRM114-CacheID: sfid-20210121_180403_670068_4D82D0F1 
+X-CRM114-Status: GOOD (  22.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,108 +72,256 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, lambert.wang@mediatek.com,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- matthias.bgg@gmail.com, Alex Williamson <alex.williamson@redhat.com>,
- linux-mediatek@lists.infradead.org,
- Utkarsh H Patel <utkarsh.h.patel@intel.com>, haijun.liu@mediatek.com,
- Bjorn Helgaas <bhelgaas@google.com>, mingchuang.qiao@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+ Xinliang Liu <xinliang.liu@linaro.org>, dri-devel@lists.freedesktop.org,
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+ linux-stm32@st-md-mailman.stormreply.com, Jerome Brunet <jbrunet@baylibre.com>,
+ linux-samsung-soc@vger.kernel.org, Vincent Abriou <vincent.abriou@st.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ VMware Graphics <linux-graphics-maintainer@vmware.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Roland Scheidegger <sroland@vmware.com>,
+ Inki Dae <inki.dae@samsung.com>, Sean Paul <sean@poorly.run>,
+ Hyun Kwon <hyun.kwon@xilinx.com>, Seung-Woo Kim <sw0312.kim@samsung.com>,
+ linux-kernel@vger.kernel.org, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ freedreno@lists.freedesktop.org, Zack Rusin <zackr@vmware.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ David Airlie <airlied@linux.ie>, Edmund Dea <edmund.j.dea@intel.com>,
+ virtualization@lists.linux-foundation.org, Eric Anholt <eric@anholt.net>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Daniel Vetter <daniel.vetter@intel.com>,
+ Mihail Atanassov <mihail.atanassov@arm.com>,
+ Fabio Estevam <festevam@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org,
+ "James \(Qian\) Wang" <james.qian.wang@arm.com>,
+ Dave Airlie <airlied@redhat.com>, Alexandre Torgue <alexandre.torgue@st.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ linux-arm-msm@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
+ John Stultz <john.stultz@linaro.org>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>,
+ Boris Brezillon <bbrezillon@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Yannick Fertre <yannick.fertre@st.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Kevin Hilman <khilman@baylibre.com>, Brian Starkey <brian.starkey@arm.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, Stefan Agner <stefan@agner.ch>,
+ Melissa Wen <melissa.srw@gmail.com>, linux-tegra@vger.kernel.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
+ Alison Wang <alison.wang@nxp.com>, spice-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Tomi Valkeinen <tomba@kernel.org>,
+ Philippe Cornu <philippe.cornu@st.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Tian Tao <tiantao6@hisilicon.com>, Shawn Guo <shawnguo@kernel.org>,
+ Liviu Dudau <liviu.dudau@arm.com>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Paul Cercueil <paul@crapouillou.net>, Marek Vasut <marex@denx.de>,
+ linux-renesas-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>,
+ Russell King <linux@armlinux.org.uk>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Hans de Goede <hdegoede@redhat.com>, linux-mediatek@lists.infradead.org,
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, linux-mips@vger.kernel.org,
+ Rob Clark <robdclark@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Jyri Sarha <jyri.sarha@iki.fi>, Lucas Stach <l.stach@pengutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[+cc Alex and Mingchuang et al from
-https://lore.kernel.org/r/20210112072739.31624-1-mingchuang.qiao@mediatek.com]
+Hi Maxime,
 
-On Tue, Jan 19, 2021 at 04:14:10PM +0300, Mika Westerberg wrote:
-> PCIe r5.0, sec 7.5.3.16 says that the downstream ports must reset the
-> LTR enable bit if the link goes down (port goes DL_Down status). Now, if
-> we had LTR previously enabled and the PCIe endpoint gets hot-removed and
-> then hot-added back the ->ltr_path of the downstream port is still set
-> but the port now does not have the LTR enable bit set anymore.
-> 
-> For this reason check if the bridge upstream had LTR enabled previously
-> and re-enable it before enabling LTR for the endpoint.
-> 
-> Reported-by: Utkarsh H Patel <utkarsh.h.patel@intel.com>
-> Signed-off-by: Mika Westerberg <mika.westerberg@linux.intel.com>
+Thank you for the patch.
 
-I think this and Mingchuang's patch, which is essentially identical,
-are right and solves the problem for hot-remove/hot-add.  In that
-scenario we call pci_configure_ltr() on the hot-added device, and
-with this patch, we'll re-enable LTR on the bridge leading to the new
-device before enabling LTR on the new device itself.
-
-But don't we have a similar problem if we simply do a Fundamental
-Reset on a device?  I think the reset path will restore the device's
-state, including PCI_EXP_DEVCTL2, but it doesn't do anything with the
-upstream bridge, does it?
-
-So if a bridge and a device below it both have LTR enabled, can't we
-have the following:
-
-  - bridge LTR enabled
-  - device LTR enabled
-  - reset device, e.g., via Secondary Bus Reset
-  - link goes down, bridge disables LTR
-  - link comes back up, LTR disabled in both bridge and device
-  - restore device state, including LTR enable
-  - device sends LTR message
-  - bridge reports Unsupported Request
-
-> ---
-> Previous version can be found here:
+On Thu, Jan 21, 2021 at 05:35:34PM +0100, Maxime Ripard wrote:
+> The current atomic helpers have either their object state being passed as
+> an argument or the full atomic state.
 > 
->   https://lore.kernel.org/linux-pci/20210114134724.79511-1-mika.westerberg@linux.intel.com/
+> The former is the pattern that was done at first, before switching to the
+> latter for new hooks or when it was needed.
 > 
-> Changes from the previous version:
+> Let's convert the remaining helpers to provide a consistent interface,
+> this time with the planes atomic_update and atomic_disable.
 > 
->   * Corrected typos in the commit message
->   * No need to call pcie_downstream_port()
+> The conversion was done using the coccinelle script below, built tested on
+> all the drivers.
 > 
->  drivers/pci/probe.c | 17 ++++++++++++++++-
->  1 file changed, 16 insertions(+), 1 deletion(-)
+> @@
+> identifier plane, plane_state;
+> symbol state;
+> @@
 > 
-> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> index 0eb68b47354f..a4a8c0305fb9 100644
-> --- a/drivers/pci/probe.c
-> +++ b/drivers/pci/probe.c
-> @@ -2153,7 +2153,7 @@ static void pci_configure_ltr(struct pci_dev *dev)
+>  struct drm_plane_helper_funcs {
+>  	...
+> 	void (*atomic_update)(struct drm_plane *plane,
+> -			      struct drm_plane_state *plane_state);
+> +			      struct drm_atomic_state *state);
+>  	...
+>  }
+> 
+> @@
+> identifier plane, plane_state;
+> symbol state;
+> @@
+> 
+>  struct drm_plane_helper_funcs {
+> 	...
+> 	void (*atomic_disable)(struct drm_plane *plane,
+> -			       struct drm_plane_state *plane_state);
+> +			       struct drm_atomic_state *state);
+> 	...
+>  }
+> 
+> @ plane_atomic_func @
+> identifier helpers;
+> identifier func;
+> @@
+> 
+> (
+>  static const struct drm_plane_helper_funcs helpers = {
+>  	...,
+>  	.atomic_update = func,
+> 	...,
+>  };
+> |
+>  static const struct drm_plane_helper_funcs helpers = {
+>  	...,
+>  	.atomic_disable = func,
+> 	...,
+>  };
+> )
+> 
+> @@
+> struct drm_plane_helper_funcs *FUNCS;
+> identifier f;
+> identifier crtc_state;
+> identifier plane, plane_state, state;
+> expression e;
+> @@
+> 
+>  f(struct drm_crtc_state *crtc_state)
 >  {
->  #ifdef CONFIG_PCIEASPM
->  	struct pci_host_bridge *host = pci_find_host_bridge(dev->bus);
-> -	struct pci_dev *bridge;
-> +	struct pci_dev *bridge = NULL;
->  	u32 cap, ctl;
->  
->  	if (!pci_is_pcie(dev))
-> @@ -2191,6 +2191,21 @@ static void pci_configure_ltr(struct pci_dev *dev)
->  	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT ||
->  	    ((bridge = pci_upstream_bridge(dev)) &&
->  	      bridge->ltr_path)) {
-> +		/*
-> +		 * Downstream ports reset the LTR enable bit when the
-> +		 * link goes down (e.g on hot-remove) so re-enable the
-> +		 * bit here if not set anymore.
-> +		 * PCIe r5.0, sec 7.5.3.16.
-> +		 */
-> +		if (bridge) {
-> +			pcie_capability_read_dword(bridge, PCI_EXP_DEVCTL2, &ctl);
-> +			if (!(ctl & PCI_EXP_DEVCTL2_LTR_EN)) {
-> +				pci_dbg(bridge, "re-enabling LTR\n");
-> +				pcie_capability_set_word(bridge, PCI_EXP_DEVCTL2,
-> +							 PCI_EXP_DEVCTL2_LTR_EN);
-> +			}
-> +		}
-> +		pci_dbg(dev, "enabling LTR\n");
->  		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
->  					 PCI_EXP_DEVCTL2_LTR_EN);
->  		dev->ltr_path = 1;
-> -- 
-> 2.29.2
+>  	...
+>  	struct drm_atomic_state *state = e;
+>  	<+...
+> (
+> -	FUNCS->atomic_disable(plane, plane_state)
+> +	FUNCS->atomic_disable(plane, state)
+> |
+> -	FUNCS->atomic_update(plane, plane_state)
+> +	FUNCS->atomic_update(plane, state)
+> )
+>  	...+>
+>  }
 > 
+> @@
+> identifier plane_atomic_func.func;
+> identifier plane;
+> symbol state;
+> @@
+> 
+>  func(struct drm_plane *plane,
+> -    struct drm_plane_state *state)
+> +    struct drm_plane_state *old_plane_state)
+>  {
+> 	<...
+> -	state
+> +	old_plane_state
+> 	...>
+>  }
+> 
+> @ ignores_old_state @
+> identifier plane_atomic_func.func;
+> identifier plane, old_state;
+> @@
+> 
+>  func(struct drm_plane *plane, struct drm_plane_state *old_state)
+>  {
+> 	... when != old_state
+>  }
+> 
+> @ adds_old_state depends on plane_atomic_func && !ignores_old_state @
+> identifier plane_atomic_func.func;
+> identifier plane, plane_state;
+> @@
+> 
+>  func(struct drm_plane *plane, struct drm_plane_state *plane_state)
+>  {
+> +	struct drm_plane_state *plane_state = drm_atomic_get_old_plane_state(state, plane);
+>  	...
+>  }
+> 
+> @ depends on plane_atomic_func @
+> identifier plane_atomic_func.func;
+> identifier plane, plane_state;
+> @@
+> 
+>  func(struct drm_plane *plane,
+> -     struct drm_plane_state *plane_state
+> +     struct drm_atomic_state *state
+>      )
+>  { ... }
+> 
+> @ include depends on adds_old_state @
+> @@
+> 
+>  #include <drm/drm_atomic.h>
+> 
+> @ no_include depends on !include && adds_old_state @
+> @@
+> 
+> + #include <drm/drm_atomic.h>
+>   #include <drm/...>
+> 
+> @@
+> identifier plane_atomic_func.func;
+> identifier plane, state;
+> identifier plane_state;
+> @@
+> 
+>  func(struct drm_plane *plane, struct drm_atomic_state *state) {
+>  	...
+>  	struct drm_plane_state *plane_state = drm_atomic_get_old_plane_state(state, plane);
+>  	<+...
+> -	plane_state->state
+> +	state
+>  	...+>
+>  }
+> 
+> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+> 
+> ---
+> 
+> Changes from v1:
+>   - Reintroduce the old_plane_state check in zynqmp_disp_crtc_atomic_disable
+> ---
+>  drivers/gpu/drm/drm_atomic_helper.c               |  8 ++++----
+>  drivers/gpu/drm/drm_simple_kms_helper.c           |  4 +++-
+>  drivers/gpu/drm/mxsfb/mxsfb_kms.c                 |  6 ++++--
+>  drivers/gpu/drm/omapdrm/omap_plane.c              |  4 ++--
+>  drivers/gpu/drm/rcar-du/rcar_du_plane.c           |  4 +++-
+>  drivers/gpu/drm/rcar-du/rcar_du_vsp.c             |  4 +++-
+>  drivers/gpu/drm/tidss/tidss_plane.c               |  4 ++--
+>  drivers/gpu/drm/tilcdc/tilcdc_plane.c             |  2 +-
+>  drivers/gpu/drm/xlnx/zynqmp_disp.c                | 15 ++++++++-------
+>  include/drm/drm_modeset_helper_vtables.h          |  4 ++--
+
+For these,
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+>  58 files changed, 211 insertions(+), 123 deletions(-)
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-mediatek mailing list
