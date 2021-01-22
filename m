@@ -2,69 +2,63 @@ Return-Path: <SRS0=vrrm=GZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B57C1C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:15:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1D69C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 13:20:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A21E23437
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:15:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A21E23437
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9F29223428
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 13:20:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F29223428
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jb+kNNZO7kyRyBO4AB8ivGxPH4Q6EXeM1gZt2Jc3azU=; b=wUErZSIQe9vqg13i1EQxORin0
-	4uIrxEMcSBch3rZLDFwQt51NJSEMOw3iqA6KL3cM3s/34dqed6CqYMqfqKKI/OkYBoIu3OOZzk9mY
-	BBv85JMj/6OYjtBXWodEpcxnF8tZ2wvhtiaIMwoR7n6fgqSNAm61hZzMWZ5hRgc0jqyizqJ3R3WsX
-	kvMSwbn7Bmjc0MYUo475SMnRh4nmhNWSIINthS8S6+AaUTWgxENMseePJEKx9QKpSrQ5SypOrnf4E
-	eBOM33kKDIxlJdfsoGoQW8j6pIxNpOpKYyVQa62GlgSXSf1iHyGnse6vnEJJpV7ZxPLhUHP3SjWV/
-	T+QSeKriA==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=L4d39F8vvRijQK4zUdK/jsm6LMymZHjXgcp4Var9c84=; b=mqbqf7HfQEeHtsFRLuWCtoKes
+	VoChYYZhInZEBqsIHxcjNon70Ee+1AqXPvbhy7Z6VbbU3PUeo6299LS87+YQ8IXPiB/BEK7fe6FUn
+	g+WmfK1Gcp5fLvUEZXQCOCzh/8WNmV8yXrcfL8QCeigD2gEBRZZW44Pp7VZ01oPmWe9s4XbNgdA51
+	hPEV+yzwTt1+/t9l8Vj4JaC+vemPuJu1db/2mC/hfillUbIe4A7BhPUBHE0TnFkKJ6CR90h0nz9EN
+	1ZtZO/89tBYeaCSaI+v4NnVLpu4FTPUrkyIhZcM7a2vDr2TINaDf6QzVhMxHVIjOiRyvClMZ2ahsD
+	g15lB2Yig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2vLh-0008Vc-Os; Fri, 22 Jan 2021 12:15:33 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1l2wMK-0003Pq-NQ; Fri, 22 Jan 2021 13:20:16 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2vLa-0008PI-BI; Fri, 22 Jan 2021 12:15:27 +0000
-IronPort-SDR: h0WCbHDDq4QmpmWPy/SMFfX82jk5fy6K2M9GOqwzF2BjKXvvlTuMXZFsbVRMsmyFP0BBFOId5I
- 3DfxuPpaar1Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9871"; a="198192075"
-X-IronPort-AV: E=Sophos;i="5.79,366,1602572400"; d="scan'208";a="198192075"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2021 04:15:19 -0800
-IronPort-SDR: vxhEFHoBM4hXws2Gfq3XVEXWbVHJjZt+mKNZqWwfpNFtZ+x/7C1X0hk8QBjs48BMnxsKHMbW17
- KXS9hV06ZNpw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,366,1602572400"; d="scan'208";a="467909062"
-Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.174])
- by fmsmga001.fm.intel.com with SMTP; 22 Jan 2021 04:15:08 -0800
-Received: by stinkbox (sSMTP sendmail emulation);
- Fri, 22 Jan 2021 14:15:07 +0200
-Date: Fri, 22 Jan 2021 14:15:07 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH v2 08/11] drm: Rename plane->state variables in atomic
- update and disable
-Message-ID: <YArBy2DKdCct5cYW@intel.com>
-References: <20210121163537.1466118-1-maxime@cerno.tech>
- <20210121163537.1466118-8-maxime@cerno.tech>
+ id 1l2wMD-0003Nw-Gg; Fri, 22 Jan 2021 13:20:10 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6858B23433;
+ Fri, 22 Jan 2021 13:20:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1611321608;
+ bh=O9MqbwWkZQVEKSZV70MYpGzV+y0qpRzN3NtjYGn6pw8=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=oPd+slE0x2yNRgReSDZHNkcwAg71ssAwdsjzilyPYXS0sFRTHxM4VwYhet5Nuev8P
+ k8XdkM//tJ8iF4NfdJqbuFJv7aNTZHMb05ERqojUrODUiTLVEzoz8K7ewaVQYVTB+r
+ ONkhgh848WVWMm9OHiXJW0fijh33BEfZNBOPnA+QsJg3WsU3SBuL5KzHTELiWp9ZTX
+ Ts1QXKsua0ZLoaawuwtgHmZt6oQYKiEiwMYmCWZQosMeCIUTnR1dzRB91xuIKX4agl
+ bSRLv4Uz+J7YsgqyM3OFtYhdtpZmyVtMxBCXoPfhX9eYFBRDc38/5e+WvJG6oU2N39
+ dpMPef5mfv9ww==
+Date: Fri, 22 Jan 2021 07:20:06 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
+Subject: Re: [PATCH v2] PCI: Re-enable downstream port LTR if it was
+ previously enabled
+Message-ID: <20210122132006.GA2749050@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210121163537.1466118-8-maxime@cerno.tech>
-X-Patchwork-Hint: comment
+In-Reply-To: <1611298991.5980.42.camel@mcddlt001>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210122_071526_625808_46FE96C4 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20210122_082009_724305_66737B98 
+X-CRM114-Status: GOOD (  36.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,127 +70,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: , Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org,
- linux-mips@vger.kernel.org, Paul Cercueil <paul@crapouillou.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Daniel Vetter <daniel.vetter@intel.com>,
- linux-stm32@st-md-mailman.stormreply.com, Jerome Brunet <jbrunet@baylibre.com>,
- Marek Vasut <marex@denx.de>, linux-samsung-soc@vger.kernel.org,
- Joonyoung Shim <jy0922.shim@samsung.com>, linux-rockchip@lists.infradead.org,
- Kevin Hilman <khilman@baylibre.com>, Russell King <linux@armlinux.org.uk>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>, Sandy Huang <hjc@rock-chips.com>,
- NXP Linux Team <linux-imx@nxp.com>, Chen Feng <puck.chen@hisilicon.com>,
- Dave Airlie <airlied@redhat.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
- Alison Wang <alison.wang@nxp.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-mediatek@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, Sean Paul <sean@poorly.run>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Tomi Valkeinen <tomba@kernel.org>,
- Jyri Sarha <jyri.sarha@iki.fi>, Seung-Woo Kim <sw0312.kim@samsung.com>,
- Philippe Cornu <philippe.cornu@st.com>, linux-kernel@vger.kernel.org,
- Yannick Fertre <yannick.fertre@st.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Tian Tao <tiantao6@hisilicon.com>,
- freedreno@lists.freedesktop.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: linux-pci@vger.kernel.org, lambert.wang@mediatek.com,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
+ matthias.bgg@gmail.com, Alex Williamson <alex.williamson@redhat.com>,
+ linux-mediatek@lists.infradead.org,
+ Utkarsh H Patel <utkarsh.h.patel@intel.com>, haijun.liu@mediatek.com,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Mika Westerberg <mika.westerberg@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 21, 2021 at 05:35:33PM +0100, Maxime Ripard wrote:
-> Some drivers are storing the plane->state pointer in atomic_update and
-> atomic_disable in a variable simply called state, while the state passed
-> as an argument is called old_state.
-> =
-
-> In order to ease subsequent reworks and to avoid confusing or
-> inconsistent names, let's rename those variables to new_state.
-> =
-
-> This was done using the following coccinelle script, plus some manual
-> changes for mtk and tegra.
-> =
-
-> @ plane_atomic_func @
-> identifier helpers;
-> identifier func;
-> @@
-> =
-
-> (
->  static const struct drm_plane_helper_funcs helpers =3D {
->  	...,
->  	.atomic_disable =3D func,
-> 	...,
->  };
-> |
->  static const struct drm_plane_helper_funcs helpers =3D {
->  	...,
->  	.atomic_update =3D func,
-> 	...,
->  };
-> )
-> =
-
-> @ moves_new_state_old_state @
-> identifier plane_atomic_func.func;
-> identifier plane;
-> symbol old_state;
-> symbol state;
-> @@
-> =
-
->  func(struct drm_plane *plane, struct drm_plane_state *old_state)
->  {
->  	...
-> -	struct drm_plane_state *state =3D plane->state;
-> +	struct drm_plane_state *new_state =3D plane->state;
-> 	...
->  }
-> =
-
-> @ depends on moves_new_state_old_state @
-> identifier plane_atomic_func.func;
-> identifier plane;
-> identifier old_state;
-> symbol state;
-> @@
-> =
-
->  func(struct drm_plane *plane, struct drm_plane_state *old_state)
->  {
->  	<...
-> -	state
-> +	new_state
-> 	...>
-
-Was going to say that this migh eat something else, but I guess
-the dependency prevents that?
-
-Another way to avoid that I suppose would be to declare 'state'
-as
-symbol moves_new_state_old_state.state;
-
-That would probably make the intent a bit more obvious, even with
-the dependency. Or does a dependency somehow automagically imply
-that?
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCBKYW4gMjIsIDIwMjEgYXQgMDM6MDM6MTFQTSArMDgwMCwgTWluZ2NodWFuZyBRaWFv
+IHdyb3RlOgo+IE9uIFRodSwgMjAyMS0wMS0yMSBhdCAxNjozMSAtMDYwMCwgQmpvcm4gSGVsZ2Fh
+cyB3cm90ZToKPiA+IFsrY2MgQWxleCBhbmQgTWluZ2NodWFuZyBldCBhbCBmcm9tCj4gPiBodHRw
+czovL2xvcmUua2VybmVsLm9yZy9yLzIwMjEwMTEyMDcyNzM5LjMxNjI0LTEtbWluZ2NodWFuZy5x
+aWFvQG1lZGlhdGVrLmNvbV0KPiA+IAo+ID4gT24gVHVlLCBKYW4gMTksIDIwMjEgYXQgMDQ6MTQ6
+MTBQTSArMDMwMCwgTWlrYSBXZXN0ZXJiZXJnIHdyb3RlOgo+ID4gPiBQQ0llIHI1LjAsIHNlYyA3
+LjUuMy4xNiBzYXlzIHRoYXQgdGhlIGRvd25zdHJlYW0gcG9ydHMgbXVzdCByZXNldCB0aGUKPiA+
+ID4gTFRSIGVuYWJsZSBiaXQgaWYgdGhlIGxpbmsgZ29lcyBkb3duIChwb3J0IGdvZXMgRExfRG93
+biBzdGF0dXMpLiBOb3csIGlmCj4gPiA+IHdlIGhhZCBMVFIgcHJldmlvdXNseSBlbmFibGVkIGFu
+ZCB0aGUgUENJZSBlbmRwb2ludCBnZXRzIGhvdC1yZW1vdmVkIGFuZAo+ID4gPiB0aGVuIGhvdC1h
+ZGRlZCBiYWNrIHRoZSAtPmx0cl9wYXRoIG9mIHRoZSBkb3duc3RyZWFtIHBvcnQgaXMgc3RpbGwg
+c2V0Cj4gPiA+IGJ1dCB0aGUgcG9ydCBub3cgZG9lcyBub3QgaGF2ZSB0aGUgTFRSIGVuYWJsZSBi
+aXQgc2V0IGFueW1vcmUuCj4gPiA+IAo+ID4gPiBGb3IgdGhpcyByZWFzb24gY2hlY2sgaWYgdGhl
+IGJyaWRnZSB1cHN0cmVhbSBoYWQgTFRSIGVuYWJsZWQgcHJldmlvdXNseQo+ID4gPiBhbmQgcmUt
+ZW5hYmxlIGl0IGJlZm9yZSBlbmFibGluZyBMVFIgZm9yIHRoZSBlbmRwb2ludC4KPiA+ID4gCj4g
+PiA+IFJlcG9ydGVkLWJ5OiBVdGthcnNoIEggUGF0ZWwgPHV0a2Fyc2guaC5wYXRlbEBpbnRlbC5j
+b20+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IE1pa2EgV2VzdGVyYmVyZyA8bWlrYS53ZXN0ZXJiZXJn
+QGxpbnV4LmludGVsLmNvbT4KPiA+IAo+ID4gSSB0aGluayB0aGlzIGFuZCBNaW5nY2h1YW5nJ3Mg
+cGF0Y2gsIHdoaWNoIGlzIGVzc2VudGlhbGx5IGlkZW50aWNhbCwKPiA+IGFyZSByaWdodCBhbmQg
+c29sdmVzIHRoZSBwcm9ibGVtIGZvciBob3QtcmVtb3ZlL2hvdC1hZGQuICBJbiB0aGF0Cj4gPiBz
+Y2VuYXJpbyB3ZSBjYWxsIHBjaV9jb25maWd1cmVfbHRyKCkgb24gdGhlIGhvdC1hZGRlZCBkZXZp
+Y2UsIGFuZAo+ID4gd2l0aCB0aGlzIHBhdGNoLCB3ZSdsbCByZS1lbmFibGUgTFRSIG9uIHRoZSBi
+cmlkZ2UgbGVhZGluZyB0byB0aGUgbmV3Cj4gPiBkZXZpY2UgYmVmb3JlIGVuYWJsaW5nIExUUiBv
+biB0aGUgbmV3IGRldmljZSBpdHNlbGYuCj4gPiAKPiA+IEJ1dCBkb24ndCB3ZSBoYXZlIGEgc2lt
+aWxhciBwcm9ibGVtIGlmIHdlIHNpbXBseSBkbyBhIEZ1bmRhbWVudGFsCj4gPiBSZXNldCBvbiBh
+IGRldmljZT8gIEkgdGhpbmsgdGhlIHJlc2V0IHBhdGggd2lsbCByZXN0b3JlIHRoZSBkZXZpY2Un
+cwo+ID4gc3RhdGUsIGluY2x1ZGluZyBQQ0lfRVhQX0RFVkNUTDIsIGJ1dCBpdCBkb2Vzbid0IGRv
+IGFueXRoaW5nIHdpdGggdGhlCj4gPiB1cHN0cmVhbSBicmlkZ2UsIGRvZXMgaXQ/Cj4gCj4gWWVz
+LiBJIHRoaW5rIHRoZSBzYW1lIHByb2JsZW0gZXhpc3RzIHVuZGVyIHN1Y2ggc2NlbmFyaW8sIGFu
+ZCB0aGF04oCZcyB0aGUKPiBpc3N1ZSBteSBwYXRjaCBpbnRlbmRzIHRvIHJlc29sdmUuCj4gSSBh
+bHNvIHByZXBhcmVkIGEgdjIgcGF0Y2ggZm9yIHJldmlldyh1cGRhdGUgdGhlIHBhdGNoIGRlc2Ny
+aXB0aW9uKS4KPiBTaGFsbCBJIHN1Ym1pdCB0aGUgdjIgcGF0Y2ggZm9yIHJldmlldz8KCkhvdyBk
+b2VzIHlvdXIgcGF0Y2ggc29sdmUgdGhpcyBmb3IgdGhlIHJlc2V0IHBhdGg/ICBJIGRvbid0IHRo
+aW5rIHdlCmNhbGwgcGNpX2NvbmZpZ3VyZV9sdHIoKSB3aGVuIHdlIHJlc2V0IGEgZGV2aWNlLgoK
+PiA+IFNvIGlmIGEgYnJpZGdlIGFuZCBhIGRldmljZSBiZWxvdyBpdCBib3RoIGhhdmUgTFRSIGVu
+YWJsZWQsIGNhbid0IHdlCj4gPiBoYXZlIHRoZSBmb2xsb3dpbmc6Cj4gPiAKPiA+ICAgLSBicmlk
+Z2UgTFRSIGVuYWJsZWQKPiA+ICAgLSBkZXZpY2UgTFRSIGVuYWJsZWQKPiA+ICAgLSByZXNldCBk
+ZXZpY2UsIGUuZy4sIHZpYSBTZWNvbmRhcnkgQnVzIFJlc2V0Cj4gPiAgIC0gbGluayBnb2VzIGRv
+d24sIGJyaWRnZSBkaXNhYmxlcyBMVFIKPiA+ICAgLSBsaW5rIGNvbWVzIGJhY2sgdXAsIExUUiBk
+aXNhYmxlZCBpbiBib3RoIGJyaWRnZSBhbmQgZGV2aWNlCj4gPiAgIC0gcmVzdG9yZSBkZXZpY2Ug
+c3RhdGUsIGluY2x1ZGluZyBMVFIgZW5hYmxlCj4gPiAgIC0gZGV2aWNlIHNlbmRzIExUUiBtZXNz
+YWdlCj4gPiAgIC0gYnJpZGdlIHJlcG9ydHMgVW5zdXBwb3J0ZWQgUmVxdWVzdAo+ID4gCj4gPiA+
+IC0tLQo+ID4gPiBQcmV2aW91cyB2ZXJzaW9uIGNhbiBiZSBmb3VuZCBoZXJlOgo+ID4gPiAKPiA+
+ID4gICBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1wY2kvMjAyMTAxMTQxMzQ3MjQuNzk1
+MTEtMS1taWthLndlc3RlcmJlcmdAbGludXguaW50ZWwuY29tLwo+ID4gPiAKPiA+ID4gQ2hhbmdl
+cyBmcm9tIHRoZSBwcmV2aW91cyB2ZXJzaW9uOgo+ID4gPiAKPiA+ID4gICAqIENvcnJlY3RlZCB0
+eXBvcyBpbiB0aGUgY29tbWl0IG1lc3NhZ2UKPiA+ID4gICAqIE5vIG5lZWQgdG8gY2FsbCBwY2ll
+X2Rvd25zdHJlYW1fcG9ydCgpCj4gPiA+IAo+ID4gPiAgZHJpdmVycy9wY2kvcHJvYmUuYyB8IDE3
+ICsrKysrKysrKysrKysrKystCj4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMTYgaW5zZXJ0aW9ucygr
+KSwgMSBkZWxldGlvbigtKQo+ID4gPiAKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL3By
+b2JlLmMgYi9kcml2ZXJzL3BjaS9wcm9iZS5jCj4gPiA+IGluZGV4IDBlYjY4YjQ3MzU0Zi4uYTRh
+OGMwMzA1ZmI5IDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL3BjaS9wcm9iZS5jCj4gPiA+ICsr
+KyBiL2RyaXZlcnMvcGNpL3Byb2JlLmMKPiA+ID4gQEAgLTIxNTMsNyArMjE1Myw3IEBAIHN0YXRp
+YyB2b2lkIHBjaV9jb25maWd1cmVfbHRyKHN0cnVjdCBwY2lfZGV2ICpkZXYpCj4gPiA+ICB7Cj4g
+PiA+ICAjaWZkZWYgQ09ORklHX1BDSUVBU1BNCj4gPiA+ICAJc3RydWN0IHBjaV9ob3N0X2JyaWRn
+ZSAqaG9zdCA9IHBjaV9maW5kX2hvc3RfYnJpZGdlKGRldi0+YnVzKTsKPiA+ID4gLQlzdHJ1Y3Qg
+cGNpX2RldiAqYnJpZGdlOwo+ID4gPiArCXN0cnVjdCBwY2lfZGV2ICpicmlkZ2UgPSBOVUxMOwo+
+ID4gPiAgCXUzMiBjYXAsIGN0bDsKPiA+ID4gIAo+ID4gPiAgCWlmICghcGNpX2lzX3BjaWUoZGV2
+KSkKPiA+ID4gQEAgLTIxOTEsNiArMjE5MSwyMSBAQCBzdGF0aWMgdm9pZCBwY2lfY29uZmlndXJl
+X2x0cihzdHJ1Y3QgcGNpX2RldiAqZGV2KQo+ID4gPiAgCWlmIChwY2lfcGNpZV90eXBlKGRldikg
+PT0gUENJX0VYUF9UWVBFX1JPT1RfUE9SVCB8fAo+ID4gPiAgCSAgICAoKGJyaWRnZSA9IHBjaV91
+cHN0cmVhbV9icmlkZ2UoZGV2KSkgJiYKPiA+ID4gIAkgICAgICBicmlkZ2UtPmx0cl9wYXRoKSkg
+ewo+ID4gPiArCQkvKgo+ID4gPiArCQkgKiBEb3duc3RyZWFtIHBvcnRzIHJlc2V0IHRoZSBMVFIg
+ZW5hYmxlIGJpdCB3aGVuIHRoZQo+ID4gPiArCQkgKiBsaW5rIGdvZXMgZG93biAoZS5nIG9uIGhv
+dC1yZW1vdmUpIHNvIHJlLWVuYWJsZSB0aGUKPiA+ID4gKwkJICogYml0IGhlcmUgaWYgbm90IHNl
+dCBhbnltb3JlLgo+ID4gPiArCQkgKiBQQ0llIHI1LjAsIHNlYyA3LjUuMy4xNi4KPiA+ID4gKwkJ
+ICovCj4gPiA+ICsJCWlmIChicmlkZ2UpIHsKPiA+ID4gKwkJCXBjaWVfY2FwYWJpbGl0eV9yZWFk
+X2R3b3JkKGJyaWRnZSwgUENJX0VYUF9ERVZDVEwyLCAmY3RsKTsKPiA+ID4gKwkJCWlmICghKGN0
+bCAmIFBDSV9FWFBfREVWQ1RMMl9MVFJfRU4pKSB7Cj4gPiA+ICsJCQkJcGNpX2RiZyhicmlkZ2Us
+ICJyZS1lbmFibGluZyBMVFJcbiIpOwo+ID4gPiArCQkJCXBjaWVfY2FwYWJpbGl0eV9zZXRfd29y
+ZChicmlkZ2UsIFBDSV9FWFBfREVWQ1RMMiwKPiA+ID4gKwkJCQkJCQkgUENJX0VYUF9ERVZDVEwy
+X0xUUl9FTik7Cj4gPiA+ICsJCQl9Cj4gPiA+ICsJCX0KPiA+ID4gKwkJcGNpX2RiZyhkZXYsICJl
+bmFibGluZyBMVFJcbiIpOwo+ID4gPiAgCQlwY2llX2NhcGFiaWxpdHlfc2V0X3dvcmQoZGV2LCBQ
+Q0lfRVhQX0RFVkNUTDIsCj4gPiA+ICAJCQkJCSBQQ0lfRVhQX0RFVkNUTDJfTFRSX0VOKTsKPiA+
+ID4gIAkJZGV2LT5sdHJfcGF0aCA9IDE7Cj4gPiA+IC0tIAo+ID4gPiAyLjI5LjIKPiA+ID4gCj4g
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1t
+ZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
+Cg==
