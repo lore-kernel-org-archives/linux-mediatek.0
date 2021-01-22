@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 769E3C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28392C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1740E2343E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1740E2343E
+	by mail.kernel.org (Postfix) with ESMTPS id 9FEC62343E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9FEC62343E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qzU0j6yUePBWvxOCVGlEI9CxIu8k+7zXfZLCpcy4s7Q=; b=dDabDXdinOWBGoysM5PuOELmU
-	tBSeIxiYQrURC5bULcimSHQyu7Lk7EsbW69fCrStN2TqjaCK7yY6h7A4KeDD6d2EAYbzUamaM+8MA
-	E+DarI3SwU5d0L28v5B+6c2a5DsOEujQ0VEHg/KOn7y4xCtjkU+DYxN8EqsaXQW35SmiDhLNwMOlJ
-	RaXIfVkG70IQvl1u34xBGzKyte13pIwEuwnHDKpQmK9QjhB4oWpgQXQ5ISqVqvwLcnckMNGKJtOcS
-	nHJbH0bvFC0Y61EEvYkm2g8fxeIzppK/BtUtijEhdcE8EFTX8ca/6d9reITt7D4vL2tRzn3+vzhgG
-	eKg2cjNGA==;
+	 bh=34MAcfr0X+iFZafhYUA8MVzyDRkhV6eTwIRcMZiDp+g=; b=CKJKUVS8R76UEnXU05NFKbV4c
+	TlnPoK9Lm3uOl8ZI0FRzfBFv9rPCa8ydj04k+4YRp7peBISNP57/03KGARp/zpKJGXSQS2QWGRW+4
+	dd8wIJ+upU5ow8Atymd3yQIBLP1PgqgUcyfP04jcFtP9PcXCJS95d25EGvwu6zUGXJ7BPKOvCw5XW
+	i7xVR6wjP3wsmKPXkOh6HQWqth6vAESEqdfYtAhwcoHdxwgAbAnGeWZeQZTGBIBX30Z3qXIjecYXf
+	AfgK/J1pKuBwase7lVJRyrCnUuqupje9bCiFJUughM2YgHz+XBdQjIEQYKUGWNT6wyPp89nL90owT
+	7uD9ESLMA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2vK5-0007ZE-TB; Fri, 22 Jan 2021 12:13:54 +0000
+	id 1l2vK4-0007Z0-Sl; Fri, 22 Jan 2021 12:13:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2vK3-0007XW-0J; Fri, 22 Jan 2021 12:13:51 +0000
-X-UUID: 2ae2cd44f93640a5abd3855d015f4819-20210122
+ id 1l2vK2-0007XC-Ik; Fri, 22 Jan 2021 12:13:51 +0000
+X-UUID: 2a0ba8ef46924156af8ecd502c9859fe-20210122
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=an2jSo4YgJ+xfkHd5FkDFJC3tnxxFgP78rYeROc9HKk=; 
- b=jC6xKrCMVPxF1s0hQjeG8qkF7Tjwk3WIUXM4mlGG8qAxnxvUmaPZ6Sh/NF0kopOXq9fTNn2SN7FCRvu/dMFqMQcYQYWsw/nfZPMlid9XzzHlKMODsjkJRKOwKoKsqCDwJ1HaVXWkrWlSonUjWiMIeVlW3YJ1n15O9Ed3xAtxORU=;
-X-UUID: 2ae2cd44f93640a5abd3855d015f4819-20210122
+ bh=NaVzE9cIz0mqzcYeID0kGbsmkZXY4JmtDNTBmt623ys=; 
+ b=UIhUrMtIDBdQ0W6aWpUBMZps/OfyVaHAJV/VeViraGXh3JGPNK2BDlL6ytyZMDW5A3/dDZP7L8iYXUNyTFRZTTf+7kamIDEqRhWLGD42A0DRVH+nnkCVmxZeNnfQG55UzioGtd/t/WQAIL+LV7cUGwo7ItP0IxKlDhxrBl1I3eQ=;
+X-UUID: 2a0ba8ef46924156af8ecd502c9859fe-20210122
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1542387244; Fri, 22 Jan 2021 04:13:47 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 1367789959; Fri, 22 Jan 2021 04:13:47 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Jan 2021 04:03:45 -0800
+ 15.0.1497.2; Fri, 22 Jan 2021 04:03:46 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Jan 2021 20:03:42 +0800
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Jan 2021 20:03:43 +0800
 Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 22 Jan 2021 20:03:42 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Greg
  Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [PATCH next v2 11/17] arm64: dts: mediatek: mt2712: harmonize node
- names
-Date: Fri, 22 Jan 2021 20:03:17 +0800
-Message-ID: <20210122120323.4337-11-chunfeng.yun@mediatek.com>
+Subject: [PATCH next v2 12/17] arm64: dts: mediatek: mt8516: harmonize node
+ names and compatibles
+Date: Fri, 22 Jan 2021 20:03:18 +0800
+Message-ID: <20210122120323.4337-12-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210122120323.4337-1-chunfeng.yun@mediatek.com>
 References: <20210122120323.4337-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FC158DB311D5CDC339B388E6DFFAA0D93065E424956087F9196ED5F0F39C37E32000:8
+X-TM-SNTS-SMTP: 567D863AB8022F41CB8B44A4AE735647B85D90B255D8360C9A798BA4EBDAF3B52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210122_071351_181281_900BA13C 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20210122_071350_793716_72F118B6 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,55 +94,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is used to fix dtbs_check warning.
+This is used to fix dtbs_check warning:
+  harmonize node names and compatibles;
+  add property "usb-role-switch" for connector dependence.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2: no changes
 ---
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi         | 9 +++++----
+ arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 1 +
+ 2 files changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index db17d0a4ed57..a9cca9c146fd 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -805,7 +805,7 @@
- 		ranges;
- 		status = "disabled";
- 
--		usb_host0: xhci@11270000 {
-+		usb_host0: usb@11270000 {
- 			compatible = "mediatek,mt2712-xhci",
- 				     "mediatek,mtk-xhci";
- 			reg = <0 0x11270000 0 0x1000>;
-@@ -818,7 +818,7 @@
+diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+index e6e4d9d60094..70c9c7423bd4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+@@ -450,7 +450,7 @@
  		};
- 	};
  
--	u3phy0: usb-phy@11290000 {
-+	u3phy0: t-phy@11290000 {
- 		compatible = "mediatek,mt2712-tphy",
- 			     "mediatek,generic-tphy-v2";
- 		#address-cells = <1>;
-@@ -869,7 +869,7 @@
- 		ranges;
- 		status = "disabled";
- 
--		usb_host1: xhci@112c0000 {
-+		usb_host1: usb@112c0000 {
- 			compatible = "mediatek,mt2712-xhci",
- 				     "mediatek,mtk-xhci";
- 			reg = <0 0x112c0000 0 0x1000>;
-@@ -882,7 +882,7 @@
+ 		usb0: usb@11100000 {
+-			compatible = "mediatek,mtk-musb";
++			compatible = "mediatek,mt8516-musb", "mediatek,mtk-musb";
+ 			reg = <0 0x11100000 0 0x1000>;
+ 			interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
+ 			interrupt-names = "mc";
+@@ -463,7 +463,7 @@
  		};
- 	};
  
--	u3phy1: usb-phy@112e0000 {
-+	u3phy1: t-phy@112e0000 {
- 		compatible = "mediatek,mt2712-tphy",
- 			     "mediatek,generic-tphy-v2";
- 		#address-cells = <1>;
+ 		usb1: usb@11190000 {
+-			compatible = "mediatek,mtk-musb";
++			compatible = "mediatek,mt8516-musb", "mediatek,mtk-musb";
+ 			reg = <0 0x11190000 0 0x1000>;
+ 			interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
+ 			interrupt-names = "mc";
+@@ -476,8 +476,9 @@
+ 			status = "disabled";
+ 		};
+ 
+-		usb_phy: usb@11110000 {
+-			compatible = "mediatek,generic-tphy-v1";
++		usb_phy: t-phy@11110000 {
++			compatible = "mediatek,mt8516-tphy",
++				     "mediatek,generic-tphy-v1";
+ 			reg = <0 0x11110000 0 0x800>;
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+index 63fd70086bb8..7d738f01cf8d 100644
+--- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+@@ -188,6 +188,7 @@
+ &usb0 {
+ 	status = "okay";
+ 	dr_mode = "peripheral";
++	usb-role-switch;
+ 
+ 	usb_con: connector {
+ 		compatible = "usb-c-connector";
 -- 
 2.18.0
 _______________________________________________
