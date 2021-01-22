@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4EE66C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 11:26:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54A6AC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 11:26:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0EE3122DBF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 11:26:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EE3122DBF
+	by mail.kernel.org (Postfix) with ESMTPS id 0CC4422DBF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 11:26:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CC4422DBF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,35 +24,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QUvWHzzzpLKleECjBWJNlYXzKoZRRsDDJlebZQLhk/g=; b=rfACUzKamaOV/BNPU2AYtwsjf
-	I11iq/sIY4ZnYuxNQJ/mPMUum63qOudsKQro3DLhcwoQBalhJdNbx5rLGCfdnXWG5CKTJ4vZ7yXNC
-	NnFUuNpRNO+4P1T+JWzp2+/j2LBKmpWBQ8EwFBWx0YBdhT8do1LquNFVYtDhRJSVrlyg9V91fnVgK
-	HVoiQJX6ti4ZGX08whFxDvhb1sDq6kdGlOXcQJ58+g3TrrosycUFxlDaRXVdcpGbyR79kwQZK4BAu
-	EZEnOuvTA/f1CyCfWLWFso5xfkJYbBHBE8jCIrrU1eOzgK0hOVGLVJB6P0+yvWQOJ6+BMcjjw35tr
-	ZMSLAM/vg==;
+	 bh=3WANTN22ImExYr2GK4lOpYMWsCeedvk9+qf990FT2Kw=; b=aTZ2jfHWZCbPDA8L9tywF6EXQ
+	sLZcsPOEkLH+ks/TUY24Ko3Q31e2yyzL2C+VLGuJQqUAZnlYxcHz54GoRMW0eWD+Pnl1a+uT9TbnZ
+	d5cvAkln51/sxANyilcQss0BaR6x80iOIUvLXB20ljryepM1sDlLYFNq0xwTsTxO7WAlntMvMqpKZ
+	Sf0Q3la3nefycccsoqdt8MjmHOer2lQ75xw8XUauDt1r3TuJEioPV6lAs5BBLeZIJ23E6C0sP9vyA
+	/0L4v/0JsodvPGVo28qPQXV07oPonbaKsuNruuXr6KjEGeG6tfXGmD4RJgD4KfEkRjIdVRGCIzKnT
+	YFyqTq+Jw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2ua2-00069g-0f; Fri, 22 Jan 2021 11:26:18 +0000
+	id 1l2ua8-0006BX-6a; Fri, 22 Jan 2021 11:26:24 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2uZv-00063h-Ac; Fri, 22 Jan 2021 11:26:12 +0000
-X-UUID: 4d31c54928c0495aac3dabb768c14a92-20210122
+ id 1l2uZv-00063W-Ac; Fri, 22 Jan 2021 11:26:12 +0000
+X-UUID: 7019e96896ce4efba133832d952ed8c7-20210122
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jPVjl/dRVgqxgqFZ8qNNr58tUGPPKgx6IxBf5xVSbjA=; 
- b=XLGogYASUNA/7n4Is2WHv0FAZEL0vSiHvcXCrd9+94seU67rpiHuzMSwvmVQUfGA8dJr/7DzEOvdqJ3utMt4O+84AMSEbe35qgSohwVEfj4wyUNWuhn3ewpOMuzpPbR8QI7+uoOGB4LMa39q3Djat4wPAI4NmAWfDwNtUwHPc/k=;
-X-UUID: 4d31c54928c0495aac3dabb768c14a92-20210122
+ bh=SBtSVUq9JdVru4k+vG0eCPakzJybXYA8T4jl0BMdNiE=; 
+ b=BcAQUX3A5bLpd28MeIKydrPvgtWujUY0b1UBdmmjt7+JpKy13z5NgUmug8jxq1SYV+/00+ohJuqx/fdV4pcqYF/Ys7upbyxv55ZgGKyS3pwkH+AS5tghoF8PYUTP+oxJYkcuflz+X8MKlza8jAoEFMDbIM53QEL6MOmOxCry/mU=;
+X-UUID: 7019e96896ce4efba133832d952ed8c7-20210122
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1757762023; Fri, 22 Jan 2021 03:26:02 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ with ESMTP id 1563351325; Fri, 22 Jan 2021 03:26:02 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 22 Jan 2021 03:19:45 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Jan 2021 19:19:42 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Jan 2021 19:19:43 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 22 Jan 2021 19:19:42 +0800
@@ -62,18 +62,18 @@ To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Alessandro Zummo
  <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Fei Shao <fshao@chromium.org>
-Subject: [PATCH v5 1/8] mfd: mt6358: refine interrupt code
-Date: Fri, 22 Jan 2021 19:19:34 +0800
-Message-ID: <1611314381-19517-2-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH v5 4/8] dt-bindings: regulator: Add document for MT6359
+ regulator
+Date: Fri, 22 Jan 2021 19:19:37 +0800
+Message-ID: <1611314381-19517-5-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1611314381-19517-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 References: <1611314381-19517-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C49D4A332B6F9C76F4817D0CB326B24AB8E312374152EEA6F696E363638EE1F52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210122_062611_582582_2B61623C 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20210122_062611_575571_043B346D 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,197 +99,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch refines the interrupt related code to support new chips.
+add dt-binding document for MediaTek MT6359 PMIC
 
 Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
 ---
-changes since v4: no changes
+changes since v4: fix yamllint errors in dt-binding document.
 ---
- drivers/mfd/mt6358-irq.c        | 65 +++++++++++++++++++--------------
- include/linux/mfd/mt6358/core.h |  8 ++--
- 2 files changed, 41 insertions(+), 32 deletions(-)
+ .../bindings/regulator/mt6359-regulator.yaml  | 169 ++++++++++++++++++
+ 1 file changed, 169 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
 
-diff --git a/drivers/mfd/mt6358-irq.c b/drivers/mfd/mt6358-irq.c
-index db734f2831ff..4b094e5e51cc 100644
---- a/drivers/mfd/mt6358-irq.c
-+++ b/drivers/mfd/mt6358-irq.c
-@@ -13,7 +13,9 @@
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- 
--static struct irq_top_t mt6358_ints[] = {
-+#define MTK_PMIC_REG_WIDTH 16
+diff --git a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+new file mode 100644
+index 000000000000..62ff93eefd39
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+@@ -0,0 +1,169 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mt6359-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+static const struct irq_top_t mt6358_ints[] = {
- 	MT6358_TOP_GEN(BUCK),
- 	MT6358_TOP_GEN(LDO),
- 	MT6358_TOP_GEN(PSC),
-@@ -24,6 +26,13 @@ static struct irq_top_t mt6358_ints[] = {
- 	MT6358_TOP_GEN(MISC),
- };
- 
-+static struct pmic_irq_data mt6358_irqd = {
-+	.num_top = ARRAY_SIZE(mt6358_ints),
-+	.num_pmic_irqs = MT6358_IRQ_NR,
-+	.top_int_status_reg = MT6358_TOP_INT_STATUS0,
-+	.pmic_ints = mt6358_ints,
-+};
++title: MT6359 Regulator from MediaTek Integrated
 +
- static void pmic_irq_enable(struct irq_data *data)
- {
- 	unsigned int hwirq = irqd_to_hwirq(data);
-@@ -62,15 +71,15 @@ static void pmic_irq_sync_unlock(struct irq_data *data)
- 		/* Find out the IRQ group */
- 		top_gp = 0;
- 		while ((top_gp + 1) < irqd->num_top &&
--		       i >= mt6358_ints[top_gp + 1].hwirq_base)
-+		       i >= irqd->pmic_ints[top_gp + 1].hwirq_base)
- 			top_gp++;
- 
- 		/* Find the IRQ registers */
--		gp_offset = i - mt6358_ints[top_gp].hwirq_base;
--		int_regs = gp_offset / MT6358_REG_WIDTH;
--		shift = gp_offset % MT6358_REG_WIDTH;
--		en_reg = mt6358_ints[top_gp].en_reg +
--			 (mt6358_ints[top_gp].en_reg_shift * int_regs);
-+		gp_offset = i - irqd->pmic_ints[top_gp].hwirq_base;
-+		int_regs = gp_offset / MTK_PMIC_REG_WIDTH;
-+		shift = gp_offset % MTK_PMIC_REG_WIDTH;
-+		en_reg = irqd->pmic_ints[top_gp].en_reg +
-+			 (irqd->pmic_ints[top_gp].en_reg_shift * int_regs);
- 
- 		regmap_update_bits(chip->regmap, en_reg, BIT(shift),
- 				   irqd->enable_hwirq[i] << shift);
-@@ -95,10 +104,11 @@ static void mt6358_irq_sp_handler(struct mt6397_chip *chip,
- 	unsigned int irq_status, sta_reg, status;
- 	unsigned int hwirq, virq;
- 	int i, j, ret;
-+	struct pmic_irq_data *irqd = chip->irq_data;
- 
--	for (i = 0; i < mt6358_ints[top_gp].num_int_regs; i++) {
--		sta_reg = mt6358_ints[top_gp].sta_reg +
--			mt6358_ints[top_gp].sta_reg_shift * i;
-+	for (i = 0; i < irqd->pmic_ints[top_gp].num_int_regs; i++) {
-+		sta_reg = irqd->pmic_ints[top_gp].sta_reg +
-+			irqd->pmic_ints[top_gp].sta_reg_shift * i;
- 
- 		ret = regmap_read(chip->regmap, sta_reg, &irq_status);
- 		if (ret) {
-@@ -114,8 +124,8 @@ static void mt6358_irq_sp_handler(struct mt6397_chip *chip,
- 		do {
- 			j = __ffs(status);
- 
--			hwirq = mt6358_ints[top_gp].hwirq_base +
--				MT6358_REG_WIDTH * i + j;
-+			hwirq = irqd->pmic_ints[top_gp].hwirq_base +
-+				MTK_PMIC_REG_WIDTH * i + j;
- 
- 			virq = irq_find_mapping(chip->irq_domain, hwirq);
- 			if (virq)
-@@ -131,12 +141,12 @@ static void mt6358_irq_sp_handler(struct mt6397_chip *chip,
- static irqreturn_t mt6358_irq_handler(int irq, void *data)
- {
- 	struct mt6397_chip *chip = data;
--	struct pmic_irq_data *mt6358_irq_data = chip->irq_data;
-+	struct pmic_irq_data *irqd = chip->irq_data;
- 	unsigned int bit, i, top_irq_status = 0;
- 	int ret;
- 
- 	ret = regmap_read(chip->regmap,
--			  mt6358_irq_data->top_int_status_reg,
-+			  irqd->top_int_status_reg,
- 			  &top_irq_status);
- 	if (ret) {
- 		dev_err(chip->dev,
-@@ -144,8 +154,8 @@ static irqreturn_t mt6358_irq_handler(int irq, void *data)
- 		return IRQ_NONE;
- 	}
- 
--	for (i = 0; i < mt6358_irq_data->num_top; i++) {
--		bit = BIT(mt6358_ints[i].top_offset);
-+	for (i = 0; i < irqd->num_top; i++) {
-+		bit = BIT(irqd->pmic_ints[i].top_offset);
- 		if (top_irq_status & bit) {
- 			mt6358_irq_sp_handler(chip, i);
- 			top_irq_status &= ~bit;
-@@ -180,17 +190,18 @@ int mt6358_irq_init(struct mt6397_chip *chip)
- 	int i, j, ret;
- 	struct pmic_irq_data *irqd;
- 
--	irqd = devm_kzalloc(chip->dev, sizeof(*irqd), GFP_KERNEL);
--	if (!irqd)
--		return -ENOMEM;
-+	switch (chip->chip_id) {
-+	case MT6358_CHIP_ID:
-+		chip->irq_data = &mt6358_irqd;
-+		break;
- 
--	chip->irq_data = irqd;
-+	default:
-+		dev_err(chip->dev, "unsupported chip: 0x%x\n", chip->chip_id);
-+		return -ENODEV;
-+	}
- 
- 	mutex_init(&chip->irqlock);
--	irqd->top_int_status_reg = MT6358_TOP_INT_STATUS0;
--	irqd->num_pmic_irqs = MT6358_IRQ_NR;
--	irqd->num_top = ARRAY_SIZE(mt6358_ints);
--
-+	irqd = chip->irq_data;
- 	irqd->enable_hwirq = devm_kcalloc(chip->dev,
- 					  irqd->num_pmic_irqs,
- 					  sizeof(*irqd->enable_hwirq),
-@@ -207,10 +218,10 @@ int mt6358_irq_init(struct mt6397_chip *chip)
- 
- 	/* Disable all interrupts for initializing */
- 	for (i = 0; i < irqd->num_top; i++) {
--		for (j = 0; j < mt6358_ints[i].num_int_regs; j++)
-+		for (j = 0; j < irqd->pmic_ints[i].num_int_regs; j++)
- 			regmap_write(chip->regmap,
--				     mt6358_ints[i].en_reg +
--				     mt6358_ints[i].en_reg_shift * j, 0);
-+				     irqd->pmic_ints[i].en_reg +
-+				     irqd->pmic_ints[i].en_reg_shift * j, 0);
- 	}
- 
- 	chip->irq_domain = irq_domain_add_linear(chip->dev->of_node,
-diff --git a/include/linux/mfd/mt6358/core.h b/include/linux/mfd/mt6358/core.h
-index c5a11b7458d4..68578e2019b0 100644
---- a/include/linux/mfd/mt6358/core.h
-+++ b/include/linux/mfd/mt6358/core.h
-@@ -6,12 +6,9 @@
- #ifndef __MFD_MT6358_CORE_H__
- #define __MFD_MT6358_CORE_H__
- 
--#define MT6358_REG_WIDTH 16
--
- struct irq_top_t {
- 	int hwirq_base;
- 	unsigned int num_int_regs;
--	unsigned int num_int_bits;
- 	unsigned int en_reg;
- 	unsigned int en_reg_shift;
- 	unsigned int sta_reg;
-@@ -25,6 +22,7 @@ struct pmic_irq_data {
- 	unsigned short top_int_status_reg;
- 	bool *enable_hwirq;
- 	bool *cache_hwirq;
-+	const struct irq_top_t *pmic_ints;
- };
- 
- enum mt6358_irq_top_status_shift {
-@@ -146,8 +144,8 @@ enum mt6358_irq_numbers {
- {	\
- 	.hwirq_base = MT6358_IRQ_##sp##_BASE,	\
- 	.num_int_regs =	\
--		((MT6358_IRQ_##sp##_BITS - 1) / MT6358_REG_WIDTH) + 1,	\
--	.num_int_bits = MT6358_IRQ_##sp##_BITS, \
-+		((MT6358_IRQ_##sp##_BITS - 1) /	\
-+		MTK_PMIC_REG_WIDTH) + 1,	\
- 	.en_reg = MT6358_##sp##_TOP_INT_CON0,	\
- 	.en_reg_shift = 0x6,	\
- 	.sta_reg = MT6358_##sp##_TOP_INT_STATUS0,	\
++maintainers:
++  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
++
++description: |
++  List of regulators provided by this controller. It is named
++  according to its regulator type, buck_<name> and ldo_<name>.
++  MT6359 regulators node should be sub node of the MT6397 MFD node.
++
++properties:
++  $nodename:
++    pattern: "^pmic$"
++
++  mt6359regulator:
++    type: object
++    description:
++      list of regulators provided by this controller.
++
++    patternProperties:
++      "^buck_v(s1|gpu11|modem|pu|core|s2|pa|proc2|proc1|core_sshub)$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(s1|gpu11|modem|pu|core|s2|pa|proc2|proc1|core_sshub)$"
++
++        unevaluatedProperties: false
++
++      "^ldo_v(ibr|rf12|usb|camio|efuse|xo22)$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(ibr|rf12|usb|camio|efuse|xo22)$"
++
++        unevaluatedProperties: false
++
++      "^ldo_v(rfck|emc|a12|a09|ufs|bbck)$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(rfck|emc|a12|a09|ufs|bbck)$"
++
++        unevaluatedProperties: false
++
++      "^ldo_vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$"
++
++        unevaluatedProperties: false
++
++      "^ldo_vsram_(proc2|others|md|proc1|others_sshub)$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^vsram_(proc2|others|md|proc1|others_sshub)$"
++
++        unevaluatedProperties: false
++
++      "^ldo_v(fe|bif|io)28$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(fe|bif|io)28$"
++
++        unevaluatedProperties: false
++
++      "^ldo_v(aud|io|aux|rf|m)18$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(aud|io|aux|rf|m)18$"
++
++        unevaluatedProperties: false
++
++      "^ldo_vsim[12]$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^vsim[12]$"
++
++        required:
++          - regulator-name
++
++        unevaluatedProperties: false
++
++additionalProperties: false
++
++examples:
++  - |
++    pmic {
++      mt6359regulator {
++        mt6359_vgpu11_buck_reg: buck_vgpu11 {
++          regulator-name = "vgpu11";
++          regulator-min-microvolt = <400000>;
++          regulator-max-microvolt = <1193750>;
++          regulator-enable-ramp-delay = <200>;
++          regulator-always-on;
++          regulator-allowed-modes = <0 1 2>;
++        };
++
++        mt6359_vcamio_ldo_reg: ldo_vcamio {
++          regulator-name = "vcamio";
++          regulator-min-microvolt = <1700000>;
++          regulator-max-microvolt = <1900000>;
++        };
++
++        mt6359_vcn18_ldo_reg: ldo_vcn18 {
++          regulator-name = "vcn18";
++          regulator-min-microvolt = <1800000>;
++          regulator-max-microvolt = <1800000>;
++          regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6359_vsram_proc2_ldo_reg: ldo_vsram_proc2 {
++          regulator-name = "vsram_proc2";
++          regulator-min-microvolt = <500000>;
++          regulator-max-microvolt = <1293750>;
++          regulator-ramp-delay = <7500>;
++          regulator-enable-ramp-delay = <240>;
++          regulator-always-on;
++        };
++
++        mt6359_vfe28_ldo_reg: ldo_vfe28 {
++          regulator-name = "vfe28";
++          regulator-min-microvolt = <2800000>;
++          regulator-max-microvolt = <2800000>;
++          regulator-enable-ramp-delay = <120>;
++        };
++
++        mt6359_vaud18_ldo_reg: ldo_vaud18 {
++          regulator-name = "vaud18";
++          regulator-min-microvolt = <1800000>;
++          regulator-max-microvolt = <1800000>;
++          regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6359_vsim1_ldo_reg: ldo_vsim1 {
++          regulator-name = "vsim1";
++          regulator-min-microvolt = <1700000>;
++          regulator-max-microvolt = <3100000>;
++          regulator-enable-ramp-delay = <480>;
++        };
++      };
++    };
++...
 -- 
 2.18.0
 _______________________________________________
