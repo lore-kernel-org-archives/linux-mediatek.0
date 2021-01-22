@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 67C73C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B97D1C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 07C1D23444
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07C1D23444
+	by mail.kernel.org (Postfix) with ESMTPS id 364B22343E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jan 2021 12:14:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 364B22343E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jcdPnWSWiW8QLVe4F7/s/ncJ3IHJVJ0I8K66LeKJ24I=; b=sO05jSSE/p4nQuThTHnZDWKpO
-	bKAsa5GIHHx8ppXENRlasLef1oE6AaOIbnnJm62bKLj767RvK8AmoxCfDDuxOM3r4jjNlX9MWwjCw
-	6DjNmguKp4AK2M3Hfv12OmSEHJNUmIm1+lvIG5rdCj2XfjexHKXjB5UCY2nHhcNaLMvLAsZEHTC+r
-	UNfgIZaPqopph3h4PN28FIKfdQGTLsZL7WtHXfyeVi6q4CM6tLnp6vuiSM4nWMaf2Mf+uaLxaj7Bx
-	mFX8fYo5J4GfYT6rsgwZo1EZoj7B2de31MCP+Ns+YRP/VZJMX5NOY/Y9SDEW7VzAwGhrO7WCHHmiC
-	tzQjNf8wg==;
+	 bh=EUDrtx0/vFiDjOu6CkmMaqS63hItaAtJRV8DqIHzDmM=; b=K4vVXvUYSZhAmxiYp0WF6an4B
+	Zzfc3KD8geQHhz2Ov0EftEowLqFQbQeCjrGx8aTeo+0eXlbeqOXMbl1vRxa/DcLsInLacAk6rkSZe
+	3F/qgEFVti3eNlwOsJe5tY6i/MUJrNKyw4yjyF+3O5+boR36iZzOFejI5UZhuOUtDWi/2AkRZuH/t
+	GSA9RsIagLfe/X/6dzxgbk0cfAw/t01Iy//2yC05MTmVLIt0kVTTU85qXxqKtCenCNR1C/H4+eR8r
+	p229ZCuPncfYe2hM0AJkbC1OY+A7/UGm1iP7R6rYOQehYuOC8XE1F3sU6qNCF3n+T5rYjAbnNuawE
+	lHg2M2fRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2vKG-0007eB-93; Fri, 22 Jan 2021 12:14:04 +0000
+	id 1l2vKW-0007lC-UF; Fri, 22 Jan 2021 12:14:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2vK4-0007XW-8B; Fri, 22 Jan 2021 12:13:53 +0000
-X-UUID: 85ab111e3fd145d9b0bffae36413ae78-20210122
+ id 1l2vK5-0007XW-TW; Fri, 22 Jan 2021 12:13:55 +0000
+X-UUID: bf9118ecdb0b4461964bb6b9d75d2909-20210122
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=XDvTsXbuhgAelgKMHjzRvnXct3BR07oS2COt6QieGF4=; 
- b=bQAdTghWB8ypbpv932hqmWNL4DmOVEec2yRVO+F50tXMYJRmwwDZepafCv/gdwFvO9v1sf/IwpChgnmXZ32FpjIjxW9jxTC2LnQtQo6HE8wwwICKXWWp1RY2i3yp0pxj+7bEG/QjNqGX0EFAESV0l9gEEQcpM2eJkAPkCtS4QRo=;
-X-UUID: 85ab111e3fd145d9b0bffae36413ae78-20210122
+ bh=b+rliD6ErsjGBCKe2PRtGQm4JfHKXa4sKe26dZmcvbg=; 
+ b=iL1p4vrRhBFOQ6uXCqVOnpnCDxq7pQMLCkQlPTVi78QZivby1rvEHr4zqpNDrFgqO366pAXjEED8deyP4QF/nir9afOhrsYM+fW2kZhDsqhPehK3p6RTLP782ouF4K8iP5gxOAPp5SaoprGG/ku9Qfe97SooGqiZsBpvftWKtjM=;
+X-UUID: bf9118ecdb0b4461964bb6b9d75d2909-20210122
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 43304082; Fri, 22 Jan 2021 04:13:47 -0800
+ with ESMTP id 124391228; Fri, 22 Jan 2021 04:13:47 -0800
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Jan 2021 04:03:48 -0800
+ 15.0.1497.2; Fri, 22 Jan 2021 04:03:46 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Jan 2021 20:03:45 +0800
+ 15.0.1497.2; Fri, 22 Jan 2021 20:03:43 +0800
 Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Jan 2021 20:03:45 +0800
+ Frontend Transport; Fri, 22 Jan 2021 20:03:43 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Greg
  Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [PATCH next v2 17/17] arm: dts: mt2701: harmonize node names and
- compatibles
-Date: Fri, 22 Jan 2021 20:03:23 +0800
-Message-ID: <20210122120323.4337-17-chunfeng.yun@mediatek.com>
+Subject: [PATCH next v2 13/17] arm64: dts: mediatek: mt7622: harmonize node
+ names and compatibles
+Date: Fri, 22 Jan 2021 20:03:19 +0800
+Message-ID: <20210122120323.4337-13-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210122120323.4337-1-chunfeng.yun@mediatek.com>
 References: <20210122120323.4337-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 280F7A1B7EA74A8FC42AB585FAF740E35CD9B1063BB1B081ECBA46D9393448FC2000:8
+X-TM-SNTS-SMTP: B95AC027A0D275005B58A25D611D752AEAADF4C3D5CD6FDC82CC045DEAA1639F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210122_071352_466860_16A08C9D 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20210122_071354_137329_16CA542C 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,67 +100,36 @@ Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2: no changes
 ---
- arch/arm/boot/dts/mt2701.dtsi | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index fade14284017..4776f85d6d5b 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -607,7 +607,7 @@
- 	};
- 
- 	usb0: usb@1a1c0000 {
--		compatible = "mediatek,mt8173-xhci";
-+		compatible = "mediatek,mt2701-xhci", "mediatek,mtk-xhci";
- 		reg = <0 0x1a1c0000 0 0x1000>,
- 		      <0 0x1a1c4700 0 0x0100>;
- 		reg-names = "mac", "ippc";
-@@ -620,8 +620,9 @@
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 5b9ec032ce8d..4cfa09b0ca3c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -740,8 +740,8 @@
  		status = "disabled";
  	};
  
--	u3phy0: usb-phy@1a1c4000 {
--		compatible = "mediatek,mt2701-u3phy";
-+	u3phy0: t-phy@1a1c4000 {
-+		compatible = "mediatek,mt2701-tphy",
-+			     "mediatek,generic-tphy-v1";
- 		reg = <0 0x1a1c4000 0 0x0700>;
+-	u3phy: usb-phy@1a0c4000 {
+-		compatible = "mediatek,mt7622-u3phy",
++	u3phy: t-phy@1a0c4000 {
++		compatible = "mediatek,mt7622-tphy",
+ 			     "mediatek,generic-tphy-v1";
+ 		reg = <0 0x1a0c4000 0 0x700>;
  		#address-cells = <2>;
- 		#size-cells = <2>;
-@@ -646,7 +647,7 @@
- 	};
- 
- 	usb1: usb@1a240000 {
--		compatible = "mediatek,mt8173-xhci";
-+		compatible = "mediatek,mt2701-xhci", "mediatek,mtk-xhci";
- 		reg = <0 0x1a240000 0 0x1000>,
- 		      <0 0x1a244700 0 0x0100>;
- 		reg-names = "mac", "ippc";
-@@ -659,8 +660,9 @@
+@@ -875,8 +875,9 @@
  		status = "disabled";
  	};
  
--	u3phy1: usb-phy@1a244000 {
--		compatible = "mediatek,mt2701-u3phy";
-+	u3phy1: t-phy@1a244000 {
-+		compatible = "mediatek,mt2701-tphy",
-+			     "mediatek,generic-tphy-v1";
- 		reg = <0 0x1a244000 0 0x0700>;
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-@@ -700,8 +702,9 @@
- 		status = "disabled";
- 	};
- 
--	u2phy0: usb-phy@11210000 {
+-	sata_phy: sata-phy@1a243000 {
 -		compatible = "mediatek,generic-tphy-v1";
-+	u2phy0: t-phy@11210000 {
-+		compatible = "mediatek,mt2701-tphy",
++	sata_phy: t-phy@1a243000 {
++		compatible = "mediatek,mt7622-tphy",
 +			     "mediatek,generic-tphy-v1";
- 		reg = <0 0x11210000 0 0x0800>;
  		#address-cells = <2>;
  		#size-cells = <2>;
+ 		ranges;
 -- 
 2.18.0
 _______________________________________________
