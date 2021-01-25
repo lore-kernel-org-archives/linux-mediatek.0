@@ -2,20 +2,19 @@ Return-Path: <SRS0=y96F=G4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16896C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 09:28:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5580EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 10:11:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B475522472
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 09:28:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B475522472
+	by mail.kernel.org (Postfix) with ESMTPS id BD6AB2251D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 10:11:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD6AB2251D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,56 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ddvMwwv9wIfScKramyTLHXoFYSHJSJqTBm9U9c18wEM=; b=ooH3of2p8Z9ymdDBd8buXDgUh
-	47AdiraNtzHS2J7r/9cFmdgXJ0aC5AzaMztAzNb2YyQbNRgtaCdfhztpWyM4T62UUBL+d8HQRnHHt
-	SFr4PGAjRq9v+p0NgpQGqA1MOIr7HJlAEETirRrqyVt/kth2pES9O4BZkvJLj4TgfIX+Ejo6r4Dlx
-	/65MgX45rQcUR39EP2+18l/85locMefsZTEhJiVsRUSFw1jzxTQg6SntOFlSHzsQ67/vhprrROkpq
-	DQRmxDCZLAdAnzpw2oxXzzoquTeJOeZpK0ArMPPm2fLjvUVjho/Mxc0w2Csq6bLc4r6tWQMgzsanV
-	G01iTfA5w==;
+	 bh=nSLct0BXdLSoAxUD/9UtWPqaAQrmrF1yTwgDgSx+OUU=; b=zyrKqstL05yr5Sm8oxILlDWV2
+	Xn9+u7iQoSW1FI+Dr6brzboCxz1XprUr1y0Eazq+O83b36skrg0GHXf7Uv9tj1We/Fw2CIwAuATy9
+	NwezdyJ1qTLWqRZmtb34nnAvD/5epi/bM1YKAdwaWdlvUFQUU5ztKaxQ+e4OkHikKQpsxMQXoYno8
+	FnmNYWlN4BL8KU7Y5tpNCFeRhYtA11i6uenZNizwaS4zt+YcUQcpCp23JkZ77ihgNudkk0oIWknTm
+	kq1X/Jo1U0dKhJV6b37vZq7F4ksq9mHbJSy1QKGqNLDJDWqN4k+uKmudPkteFEZh12ROv/Qm7SLYB
+	2pVdfVd6w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l3yAY-0001Ka-SB; Mon, 25 Jan 2021 09:28:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l3yq5-0005Sm-Df; Mon, 25 Jan 2021 10:11:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l3yAS-0001J5-KO; Mon, 25 Jan 2021 09:28:18 +0000
-X-UUID: 087abb3927e34c82af1da3cb1723e661-20210125
+ id 1l3yq1-0005Rs-FA; Mon, 25 Jan 2021 10:11:15 +0000
+X-UUID: 7e81d18e5513463b8c62713e1d6d697f-20210125
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=lhVwgct1qLRIqISTHiQUau/q2BPFUpBPawwGht04g0o=; 
- b=RwR1V1RqOveP8POX8YO8ywuUu3IaAhVQNmHeWdNErZayhycocdVhppF5T9p+rU7FGEbeCFkNFDwumjuzHBhgToC+506Qog7xTF8yehibAEB5QKvaAm177+c6YpV+hViOotcWvS2lLXh4AAZTWGp3tRbTrpdc9sDjWb2iwBIrW1E=;
-X-UUID: 087abb3927e34c82af1da3cb1723e661-20210125
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=y2RDQNIxeBbr5oP9MQDxQ2RnX+SiaVSuN0aKLK4cDXM=; 
+ b=HKy/z3QRR0Wjcufb5w99kxxWx6fSz7r7S8LzPd8xoHDtMxHEj7q6AGwPvLdnPooKz38EeEQsbe0Auyp5hQmtGBHEifBjMG3HUqKdraktAZfyUdGkT57/9IGLrebMC0uoxW5C8SScnb922cyaEXWxg6z9upMJq76+GNpsz/rM33o=;
+X-UUID: 7e81d18e5513463b8c62713e1d6d697f-20210125
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 314269313; Mon, 25 Jan 2021 01:28:11 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Jan 2021 01:28:10 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 25 Jan 2021 17:28:05 +0800
+ with ESMTP id 1200495664; Mon, 25 Jan 2021 02:11:08 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Jan 2021 02:11:06 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 25 Jan 2021 18:11:00 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Jan 2021 17:28:05 +0800
-Message-ID: <1611566885.5302.4.camel@mhfsdcap03>
-Subject: Re: [PATCH 2/3] memory: mtk-smi: Add module_exit and module_license
+ Transport; Mon, 25 Jan 2021 18:11:00 +0800
+Message-ID: <1611569460.5302.7.camel@mhfsdcap03>
+Subject: Re: [PATCH 3/3] memory: mtk-smi: Switch MTK_SMI to tristate
 From: Yong Wu <yong.wu@mediatek.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Mon, 25 Jan 2021 17:28:05 +0800
-In-Reply-To: <20210125084051.ipgeu2ksucdag2u4@kozik-lap>
+Date: Mon, 25 Jan 2021 18:11:00 +0800
+In-Reply-To: <20210125084450.wurwhi2hbbuueapy@kozik-lap>
 References: <20210121062429.26504-1-yong.wu@mediatek.com>
- <20210121062429.26504-3-yong.wu@mediatek.com>
- <20210122213427.mwjyjn2wsgnko7mk@kozik-lap>
- <1611557381.3184.21.camel@mhfsdcap03>
- <20210125084051.ipgeu2ksucdag2u4@kozik-lap>
+ <20210121062429.26504-4-yong.wu@mediatek.com>
+ <20210122213558.qnboqc4obdmipxs4@kozik-lap>
+ <1611557384.3184.22.camel@mhfsdcap03>
+ <20210125084450.wurwhi2hbbuueapy@kozik-lap>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CC098342C3475A3A19CA0E3E9BC4E530FBE4967BF1BA6A79FDA7BE926AEE12612000:8
+X-TM-SNTS-SMTP: C65905790A739B480B6FC175A3CD459FDCB438FD07C4250FE662618E0D5C5FF12000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_042816_901985_F85D0063 
-X-CRM114-Status: GOOD (  30.80  )
+X-CRM114-CacheID: sfid-20210125_051114_250336_B42995B7 
+X-CRM114-Status: GOOD (  26.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,73 +96,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-01-25 at 09:40 +0100, Krzysztof Kozlowski wrote:
-> On Mon, Jan 25, 2021 at 02:49:41PM +0800, Yong Wu wrote:
-> > On Fri, 2021-01-22 at 22:34 +0100, Krzysztof Kozlowski wrote:
-> > > On Thu, Jan 21, 2021 at 02:24:28PM +0800, Yong Wu wrote:
-> > > > The config MTK_SMI always depends on MTK_IOMMU which is built-in
-> > > > currently. Thus we don't have module_exit before. This patch adds
-> > > > module_exit and module_license. It is a preparing patch for supporting
-> > > > MTK_SMI could been built as a module.
+On Mon, 2021-01-25 at 09:44 +0100, Krzysztof Kozlowski wrote:
+> On Mon, Jan 25, 2021 at 02:49:44PM +0800, Yong Wu wrote:
+> > On Fri, 2021-01-22 at 22:35 +0100, Krzysztof Kozlowski wrote:
+> > > On Thu, Jan 21, 2021 at 02:24:29PM +0800, Yong Wu wrote:
+> > > > This patch switches MTK_SMI to tristate. Support it could be 'm'.
 > > > > 
-> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > ---
-> > > >  drivers/memory/mtk-smi.c | 10 ++++++++++
-> > > >  1 file changed, 10 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> > > > index e2aebd2bfa8e..aa2a25abf04f 100644
-> > > > --- a/drivers/memory/mtk-smi.c
-> > > > +++ b/drivers/memory/mtk-smi.c
-> > > > @@ -597,3 +597,13 @@ static int __init mtk_smi_init(void)
-> > > >  	return platform_register_drivers(smidrivers, ARRAY_SIZE(smidrivers));
-> > > >  }
-> > > >  module_init(mtk_smi_init);
-> > > > +
-> > > > +static void __exit mtk_smi_exit(void)
-> > > > +{
-> > > > +	platform_unregister_drivers(smidrivers, ARRAY_SIZE(smidrivers));
-> > > > +}
-> > > > +module_exit(mtk_smi_exit);
-> > > > +
-> > > > +MODULE_DESCRIPTION("MediaTek SMI driver");
-> > > > +MODULE_ALIAS("platform:MediaTek-SMI");
+> > > > Meanwhile, Fix a build issue while MTK_SMI is built as module.
 > > > 
-> > > Drivers do not use capital letters, so I have doubts whether this alias
-> > > is correct.
-> > 
-> > I didn't care the upper/lower-case. I will change to lower case in next
-> > time.
-> 
-> Then why do you need the alias? The name does not match driver name, so
-> what's the purpose of this alias/
-
-I think it is not so necessary for us. I will delete this line in next
-version.
-
-Only curious what's alias is fit in our case? normally it should be the
-file name: mtk-smi?
-
-> 
-> > 
-> > MODULE_ALIAS("platform:MediaTek-smi")
-> > 
+> > > s/Fix/fix.
 > > > 
-> > > Adding all these should be squashed with changing Kconfig into tristate.
-> > > It does not have sense on its own.
+> > > What error is being fixed here? How can I reproduce it? Aren't you just
+> > > adjusting it to being buildable by module?
 > > 
-> > Thanks  very much for review.
+> > Sorry, I didn't copy the fail log here. This is the build log:
 > > 
-> > Only confirm: Squash whole this patch or only squash the MODULE_x into
-> > the next patch?
+> > In file included from .../drivers/iommu/mtk_iommu.c:34:0:
+> > .../drivers/iommu/mtk_iommu.h:84:28: error: array type has incomplete
+> > element type 'struct mtk_smi_larb_iommu'
+> >   struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
+> > 
+> > Our iommu driver will use this structure. but it was contained by
+> > "#ifdef CONFIG_MTK_SMI". thus I change it to "#if
+> > IS_ENABLED(CONFIG_MTK_SMI)"
+> > 
+> > If reproducing it, we should change mtk-iommu to module_init[1]. and
+> > switch kconfig MTK_IOMMU to tristate, then change the CONFIG_MTK_IOMMU
+> > to m. we could get the fail log.
+> > 
+> > In this case, Should I squash this change into this patch? I though this
+> > is a preparing patch and the fail is caused by MTK_SMI. thus I squash
+> > that into this patch. or change it as a independent patch and send when
+> > I change MTK_IOMMU to tristate?
 > 
-> This entire patch 2/3 should be with 3/3.
+> If I understand correctly, there is no error before this patch. In such
+> case just don't mention the error to fix, because it is simply part of
+> making things modular.
 
-Thanks for the confirm.
+Yes. No error before this patch.
+
+Appreciate for your help. I will remove this in the comment message in
+the next version.
 
 > 
 > Best regards,
 > Krzysztof
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
