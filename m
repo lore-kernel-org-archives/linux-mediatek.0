@@ -2,98 +2,77 @@ Return-Path: <SRS0=y96F=G4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07E0BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 04:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D48CFC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 06:28:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF8EA22C9C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 04:44:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF8EA22C9C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5B97D206B7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 06:28:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B97D206B7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QiO4V7s+64NsYZhINFmdKrOtoQRze7BX67fwfgH9DnA=; b=od3Clp7HsnDppao0MFc9MsBnj
-	GaRf5c4b7/ZRUfH2hpdY2gEigZRFWTj+mW2RaxSkoMC41g7DZfjxjhxMbtr/NS2yFIKYNfKXwBYGy
-	+Tkdc8v3Vybo1nFloLF4GAPV3PgMPI9hUFbRSv4ltlkq9zcTvf3MvyME3+fpvFl5wJwSruQe2opRs
-	UN0wA8OpWNPcjkxhxU8PeQFWdGnNX/gAkEGbfWZ6kfxlq6KjMO5HIM8ROSgQzjTw20Jfz73lHAG/Y
-	klkr2VKC5QgSGZOpksZESID3GkigkxsVU0HIxr7XEPaunspGsuUc8jS/doTS/S/iXCpOdMkhFYakC
-	K8+Y8Xc0A==;
+	 bh=M+U2G2nd56pUlurmxORdenKikPJbGdfACF5U+x8lwjo=; b=sSc/J/rAnniZtS2QCGJa/2wkk
+	kDexHL3X7wLO7S102VoebXBbaOLg4hSnL/F1WfyvKyK86AZ21RbcSjeRHBKGOm/aWqQqIZlkxN/Rh
+	AS+fkULKlHlAi1e9EhKESPTzCX2qeFnyanHhJrcqMrx7EWEAk/G7Cys6gdyJ2aGO6CU5J/VRGeV6j
+	/GijxJnzmcspzINO4LpDMdHXidTdzlHTawEcGlp57BqpGWGD5Mx+qbZTUQqy0/NdO1Un/a6iMXcXk
+	FYBYQaADT/BiGVBDuzg05qFANKSu+C7XNQk3WrVJvpxmp0z6U+L/Kp6maOOR7lWB66IvScsS7Jdiu
+	bv6+8gvVA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l3tjM-0003Mu-MJ; Mon, 25 Jan 2021 04:44:00 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1l3vM7-0001L3-Er; Mon, 25 Jan 2021 06:28:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l3tjI-0003Le-50; Mon, 25 Jan 2021 04:43:56 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id md11so7614698pjb.0;
- Sun, 24 Jan 2021 20:43:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=v1/Q3zp3Vfmt/fjpAsCkjIhac3E9OrOmSYmVgqEy+nY=;
- b=DjTeAYy8+nMI8Nbot17ykSSuLqiNFKKXdoybG+PBjldm9uG1b4as6dK9WagdqVChb9
- 76GJ7GcDt1rR1lPPX8v3s8N/A5V1NsOtocyoJ3jX7Lx2DkyRUDKX1jDCRGcFf5NMzANn
- hbB7DfqHW0psss6uiBJKqQB1Lne/DbAGQNGtONLcmb9lhV1jETUX1Hx422Z6pq4Tj1ja
- yixIoFnivlWZKU7ulKffFWU8L0hUei1zJV1lwphT68LP9DtwC0c2NQxjsSWZk+wG3+Li
- X2AjfSePJNIrd4/7weiC3291tFkkbeONUqEsU43F3MGnw+kOVgVyujkCsPvviZ67undV
- Pw+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=v1/Q3zp3Vfmt/fjpAsCkjIhac3E9OrOmSYmVgqEy+nY=;
- b=c9z9CmRQLl5EFXAtjktyolSDBEdfjYy2m4Yjcmm46JP3HVaFPczp754mMJIKR7cdvJ
- Hi8hr4Nesuzv/xTxj6BcbhiDK+MojMWlL5TB0YNkbUheW4M0m7EdIa9e4/lSDFT0VzEg
- pzXfe2eDRHDrVfmT4BktzG5o0hBfWIyN+dJKaXMX7ylRxDQ7aZ5Hzn//vgFBRo2P+VBk
- 6wtEsqI47RuKjkY/O365LqStftLkoBkhEQ/6ogSwwN3Sl2q0v4Kmnof0VYuYxDLGDsr1
- F0tAPqRV11BqXCslVQG608cA1T8vNWQTpB9VZEDcnDr6ja45xJchUMopNBWnsd+CBSXL
- BK6Q==
-X-Gm-Message-State: AOAM53028v0aRadtrxkHG9oAZUKeVX8qnMRwcxSJhdF3Qqq29Enbu7kO
- MXy36vaKA6/lPr+xRMV2ZZ8=
-X-Google-Smtp-Source: ABdhPJyb+2sRlqhupesds+M5P26CjfYD4TSxkgTlYi/Lto8weoiFIg6Er55myXt/U4ASyEXwLSXJ2w==
-X-Received: by 2002:a17:90b:2352:: with SMTP id
- ms18mr4380214pjb.138.1611549834379; 
- Sun, 24 Jan 2021 20:43:54 -0800 (PST)
-Received: from container-ubuntu.lan ([171.211.26.203])
- by smtp.gmail.com with ESMTPSA id h4sm11913369pfo.187.2021.01.24.20.43.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 Jan 2021 20:43:53 -0800 (PST)
-From: DENG Qingfang <dqfext@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Russell King <linux@armlinux.org.uk>,
- Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH net-next v2 2/2] net: dsa: mt7530: MT7530 optional GPIO support
-Date: Mon, 25 Jan 2021 12:43:22 +0800
-Message-Id: <20210125044322.6280-3-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210125044322.6280-1-dqfext@gmail.com>
-References: <20210125044322.6280-1-dqfext@gmail.com>
+ id 1l3vM2-0001KH-K2; Mon, 25 Jan 2021 06:28:03 +0000
+X-UUID: 8927c62826224bc8bb406cc62884146c-20210124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=BTFnfX9tvYF+UTisfH0CClcEuPKpZzWlTghgpfHyzAE=; 
+ b=WcJYyQ1C9QghVaMAGv3CgBsyHvJI8ysSc6dw/T/gx6d/RnT9gfFHMCDjpelP1apwY8Bwx+8YereNI1KjqMfQ3FpeuzUusAe5uJROyxahquX9g+g/YWoX0XaeUI6YzUKVPV8GaQdp+GzUPMrab9H0VWikNmXWFbdGpooGrE3G9Yo=;
+X-UUID: 8927c62826224bc8bb406cc62884146c-20210124
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 933113031; Sun, 24 Jan 2021 22:27:56 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Jan 2021 22:19:30 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 25 Jan 2021 14:19:19 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 25 Jan 2021 14:19:18 +0800
+Message-ID: <1611555559.3905.2.camel@mhfsdcap03>
+Subject: Re: [PATCH next v2 04/17] dt-bindings: phy: mediatek: dsi-phy: add
+ optional clock-names
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 25 Jan 2021 14:19:19 +0800
+In-Reply-To: <CAAOTY_84OF71QK6M5JT1M5YAFKED_xWVpx8B8t859OsVxE0cfQ@mail.gmail.com>
+References: <20210122120323.4337-1-chunfeng.yun@mediatek.com>
+ <20210122120323.4337-4-chunfeng.yun@mediatek.com>
+ <CAAOTY_84OF71QK6M5JT1M5YAFKED_xWVpx8B8t859OsVxE0cfQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 3A0FC78E41D0B8BD472C347915E9404CB40430474059A1083A147199EE7783B72000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210124_234356_199852_19E3B8F1 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20210125_012802_887992_510753A5 
+X-CRM114-Status: GOOD (  20.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,201 +84,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
- Frank Wunderlich <frank-w@public-files.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: DTML <devicetree@vger.kernel.org>, Min Guo <min.guo@mediatek.com>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Linux
+ ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7530's LED controller can drive up to 15 LED/GPIOs.
-
-Add support for GPIO control and allow users to use its GPIOs by
-setting gpio-controller property in device tree.
-
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
----
-Changes v1 -> v2:
-
-Set Output Enable after changing direction to output to avoid signal
-glitch.
-Comment mt7530_gpio_to_bit function.
-
- drivers/net/dsa/mt7530.c | 110 +++++++++++++++++++++++++++++++++++++++
- drivers/net/dsa/mt7530.h |  20 +++++++
- 2 files changed, 130 insertions(+)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index d2196197d920..eb13ba79dd01 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -18,6 +18,7 @@
- #include <linux/regulator/consumer.h>
- #include <linux/reset.h>
- #include <linux/gpio/consumer.h>
-+#include <linux/gpio/driver.h>
- #include <net/dsa.h>
- 
- #include "mt7530.h"
-@@ -1622,6 +1623,109 @@ mtk_get_tag_protocol(struct dsa_switch *ds, int port,
- 	}
- }
- 
-+static inline u32
-+mt7530_gpio_to_bit(unsigned int offset)
-+{
-+	/* Map GPIO offset to register bit
-+	 * [ 2: 0]  port 0 LED 0..2 as GPIO 0..2
-+	 * [ 6: 4]  port 1 LED 0..2 as GPIO 3..5
-+	 * [10: 8]  port 2 LED 0..2 as GPIO 6..8
-+	 * [14:12]  port 3 LED 0..2 as GPIO 9..11
-+	 * [18:16]  port 4 LED 0..2 as GPIO 12..14
-+	 */
-+	return BIT(offset + offset / 3);
-+}
-+
-+static int
-+mt7530_gpio_get(struct gpio_chip *gc, unsigned int offset)
-+{
-+	struct mt7530_priv *priv = gpiochip_get_data(gc);
-+	u32 bit = mt7530_gpio_to_bit(offset);
-+
-+	return !!(mt7530_read(priv, MT7530_LED_GPIO_DATA) & bit);
-+}
-+
-+static void
-+mt7530_gpio_set(struct gpio_chip *gc, unsigned int offset, int value)
-+{
-+	struct mt7530_priv *priv = gpiochip_get_data(gc);
-+	u32 bit = mt7530_gpio_to_bit(offset);
-+
-+	if (value)
-+		mt7530_set(priv, MT7530_LED_GPIO_DATA, bit);
-+	else
-+		mt7530_clear(priv, MT7530_LED_GPIO_DATA, bit);
-+}
-+
-+static int
-+mt7530_gpio_get_direction(struct gpio_chip *gc, unsigned int offset)
-+{
-+	struct mt7530_priv *priv = gpiochip_get_data(gc);
-+	u32 bit = mt7530_gpio_to_bit(offset);
-+
-+	return (mt7530_read(priv, MT7530_LED_GPIO_DIR) & bit) ?
-+		GPIO_LINE_DIRECTION_OUT : GPIO_LINE_DIRECTION_IN;
-+}
-+
-+static int
-+mt7530_gpio_direction_input(struct gpio_chip *gc, unsigned int offset)
-+{
-+	struct mt7530_priv *priv = gpiochip_get_data(gc);
-+	u32 bit = mt7530_gpio_to_bit(offset);
-+
-+	mt7530_clear(priv, MT7530_LED_GPIO_OE, bit);
-+	mt7530_clear(priv, MT7530_LED_GPIO_DIR, bit);
-+
-+	return 0;
-+}
-+
-+static int
-+mt7530_gpio_direction_output(struct gpio_chip *gc, unsigned int offset, int value)
-+{
-+	struct mt7530_priv *priv = gpiochip_get_data(gc);
-+	u32 bit = mt7530_gpio_to_bit(offset);
-+
-+	mt7530_set(priv, MT7530_LED_GPIO_DIR, bit);
-+
-+	if (value)
-+		mt7530_set(priv, MT7530_LED_GPIO_DATA, bit);
-+	else
-+		mt7530_clear(priv, MT7530_LED_GPIO_DATA, bit);
-+
-+	mt7530_set(priv, MT7530_LED_GPIO_OE, bit);
-+
-+	return 0;
-+}
-+
-+static int
-+mt7530_setup_gpio(struct mt7530_priv *priv)
-+{
-+	struct device *dev = priv->dev;
-+	struct gpio_chip *gc;
-+
-+	gc = devm_kzalloc(dev, sizeof(*gc), GFP_KERNEL);
-+	if (!gc)
-+		return -ENOMEM;
-+
-+	mt7530_write(priv, MT7530_LED_GPIO_OE, 0);
-+	mt7530_write(priv, MT7530_LED_GPIO_DIR, 0);
-+	mt7530_write(priv, MT7530_LED_IO_MODE, 0);
-+
-+	gc->label = "mt7530";
-+	gc->parent = dev;
-+	gc->owner = THIS_MODULE;
-+	gc->get_direction = mt7530_gpio_get_direction;
-+	gc->direction_input = mt7530_gpio_direction_input;
-+	gc->direction_output = mt7530_gpio_direction_output;
-+	gc->get = mt7530_gpio_get;
-+	gc->set = mt7530_gpio_set;
-+	gc->base = -1;
-+	gc->ngpio = 15;
-+	gc->can_sleep = true;
-+
-+	return devm_gpiochip_add_data(dev, gc, priv);
-+}
-+
- static int
- mt7530_setup(struct dsa_switch *ds)
- {
-@@ -1763,6 +1867,12 @@ mt7530_setup(struct dsa_switch *ds)
- 		}
- 	}
- 
-+	if (of_property_read_bool(priv->dev->of_node, "gpio-controller")) {
-+		ret = mt7530_setup_gpio(priv);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	mt7530_setup_port5(ds, interface);
- 
- 	/* Flush the FDB table */
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 32d8969b3ace..64a9bb377e15 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -554,6 +554,26 @@ enum mt7531_clk_skew {
- #define  MT7531_GPIO12_RG_RXD3_MASK	GENMASK(19, 16)
- #define  MT7531_EXT_P_MDIO_12		(2 << 16)
- 
-+/* Registers for LED GPIO control (MT7530 only)
-+ * All registers follow this pattern:
-+ * [ 2: 0]  port 0
-+ * [ 6: 4]  port 1
-+ * [10: 8]  port 2
-+ * [14:12]  port 3
-+ * [18:16]  port 4
-+ */
-+
-+/* LED enable, 0: Disable, 1: Enable (Default) */
-+#define MT7530_LED_EN			0x7d00
-+/* LED mode, 0: GPIO mode, 1: PHY mode (Default) */
-+#define MT7530_LED_IO_MODE		0x7d04
-+/* GPIO direction, 0: Input, 1: Output */
-+#define MT7530_LED_GPIO_DIR		0x7d10
-+/* GPIO output enable, 0: Disable, 1: Enable */
-+#define MT7530_LED_GPIO_OE		0x7d14
-+/* GPIO value, 0: Low, 1: High */
-+#define MT7530_LED_GPIO_DATA		0x7d18
-+
- #define MT7530_CREV			0x7ffc
- #define  CHIP_NAME_SHIFT		16
- #define  MT7530_ID			0x7530
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gU2F0LCAyMDIxLTAxLTIzIGF0IDA4OjE4ICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
+PiBIaSwgQ2h1bmZlbmc6DQo+IA0KPiBDaHVuZmVuZyBZdW4gPGNodW5mZW5nLnl1bkBtZWRpYXRl
+ay5jb20+IOaWvCAyMDIx5bm0MeaciDIy5pelIOmAseS6lCDkuIvljYg4OjA05a+r6YGT77yaDQo+
+ID4NCj4gPiBBZGQgYW4gb3B0aW9uYWwgImNsb2NrLW5hbWVzIiBwcm9wZXJ0eSwgaXQncyBub3Qg
+dXNlZCB0byBnZXQgdGhlIGNsb2NrLA0KPiA+IGJ1dCBzb21lIERUUyBmaWxlcyAoZS5nLiBtdDgx
+ODMpIHByb3ZpZGUgaXQuDQo+IA0KPiBJIHRoaW5rIHRoZSBsb2dpYyBpcyB0aGF0IHdlIGRlZmlu
+ZSBwcm9wZXJ0eSBpbiBiaW5kaW5nIGRvY3VtZW50DQo+IGZpcnN0LCBhbmQgdGhlbiB3cml0ZSBp
+dCBpbiBkZXZpY2UgdHJlZS4gSWYgYSBwcm9wZXJ0eSBkb2VzIG5vdCBleGlzdA0KPiBpbiBiaW5k
+aW5nIGRvY3VtZW50LCB3ZSBzaG91bGQgbm90IHdyaXRlIGl0IGluIGRldmljZSB0cmVlLiBTbyBs
+ZXQncw0KPiBkcm9wIHRoaXMgcGF0Y2ggYW5kIHJlbW92ZSBjbG9jay1uYW1lcyBpbiBtdDgxODMu
+ZHRzaS4NCk9rLCBJdCdzIGJldHRlciB0byByZW1vdmUgdW5uZWNlc3NhcnkgcHJvcGVydHkuDQoN
+Cj4gDQo+IFJlZ2FyZHMsDQo+IENodW4tS3VhbmcuDQo+IA0KPiA+DQo+ID4gQ2M6IENodW4tS3Vh
+bmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPg0KPiA+IENjOiBQaGlsaXBwIFphYmVsIDxw
+LnphYmVsQHBlbmd1dHJvbml4LmRlPg0KPiA+IFNpZ25lZC1vZmYtYnk6IENodW5mZW5nIFl1biA8
+Y2h1bmZlbmcueXVuQG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiB2MjogbmV3IHBhdGNoIHNl
+cGFyYXRlZCBmcm9tIFszLzE1XSBzdWdnZXN0ZWQgYnkgQ0sNCj4gPiAtLS0NCj4gPiAgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9tZWRpYXRlayxkc2ktcGh5LnlhbWwgfCA0
+ICsrKysNCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQ0KPiA+DQo+ID4gZGlm
+ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvbWVkaWF0ZWss
+ZHNpLXBoeS55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9tZWRp
+YXRlayxkc2ktcGh5LnlhbWwNCj4gPiBpbmRleCA2ZTRkNzk1ZjliMDIuLmFmNmU1NTRjNWI2OSAx
+MDA2NDQNCj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L21l
+ZGlhdGVrLGRzaS1waHkueWFtbA0KPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9waHkvbWVkaWF0ZWssZHNpLXBoeS55YW1sDQo+ID4gQEAgLTM1LDYgKzM1LDEwIEBA
+IHByb3BlcnRpZXM6DQo+ID4gICAgICBpdGVtczoNCj4gPiAgICAgICAgLSBkZXNjcmlwdGlvbjog
+UExMIHJlZmVyZW5jZSBjbG9jaw0KPiA+DQo+ID4gKyAgY2xvY2stbmFtZXM6DQo+ID4gKyAgICBp
+dGVtczoNCj4gPiArICAgICAgLSBjb25zdDogcmVmDQo+ID4gKw0KPiA+ICAgIGNsb2NrLW91dHB1
+dC1uYW1lczoNCj4gPiAgICAgIG1heEl0ZW1zOiAxDQo+ID4NCj4gPiAtLQ0KPiA+IDIuMTguMA0K
+PiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQo+ID4g
+TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0DQo+ID4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
+cmFkZWFkLm9yZw0KPiA+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtbWVkaWF0ZWsNCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawo=
