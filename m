@@ -2,60 +2,56 @@ Return-Path: <SRS0=y96F=G4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EADA9C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 17:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70EE5C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 18:33:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9677B22B3F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 17:35:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9677B22B3F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 11A9522B3F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jan 2021 18:33:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11A9522B3F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dvDWWcQ8/VUoKglh7NK75Qu3PC67Amm169MeKpx5DuA=; b=NcHp/TwTIWb6Hzu5ZlJsW+Kri
-	m3dXaeb43ZZPDijs2YaIb1G+TsvZrUcRJ69vL4NsU41R8Vx+8w2gjdUYY06eochdpvT4wpeffo9sk
-	Gd145w5rQhPHfpdKm1AJUELi2boL+JG8jDA2VeCFMOHHx010lTYUfP1M25mHEQmGkQBuhPFDL3PKh
-	U0O2rqhdI1u1T06L7V3XlrxVwcRuPePbY7eTxb8tTCVJ02BRWJf5FnfMlvxlnq3tsK2SbewNUs0y2
-	EJx2Qe1VwoNpFULQFohwWq5tTiJLjfXzy2+AnyVn+USJ/chO3+zq0W3zwlXnPG4mBc0ozYj38suqG
-	OcLJe1IXw==;
+	 bh=YX50FoHtrrn3kF1M+cmF7JmWBfs2gS2xomMdyx5PQlk=; b=QzyHCO5YjbuUxeP/KC+OjK0U8
+	SxqxX0isofJJZPd/6OpgiLiV4e6EZoNzdO/jGzRTUuKo904WTxVN0I9fuwCUvaM1CptEE4qvJTEBJ
+	0GXqXyapryprUAlxLHR8wi7wDnwg4wNP0eonlu4Gb1YkCQ0tTlHIsfA1Ft5KGm0xDP4C8+IoKESyG
+	ssAGv2fCPomF7xh2Dh4/1a7OTXpc82j+WUcSbrUzVU/1ljRQXKcjvKrFfj4i6vRo1FmuM1O5yluBi
+	w+xEkenQMd3pWQr43LsTpNGj8AEVbPmWGe95/L98oNR2lHnO7L8J8g+YCnNEKdXXeewBOufpNj+NI
+	muA4vgQ0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l45lK-0000FZ-2t; Mon, 25 Jan 2021 17:34:50 +0000
-Received: from foss.arm.com ([217.140.110.172])
+	id 1l46fM-0005jb-Q1; Mon, 25 Jan 2021 18:32:44 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l45lG-0000EK-3c; Mon, 25 Jan 2021 17:34:46 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D5CCD1063;
- Mon, 25 Jan 2021 09:34:40 -0800 (PST)
-Received: from e123427-lin.arm.com (unknown [10.57.45.18])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 93B723F68F;
- Mon, 25 Jan 2021 09:34:38 -0800 (PST)
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] PCI: mediatek: Add missing of_node_put() to fix reference
- leak
-Date: Mon, 25 Jan 2021 17:34:33 +0000
-Message-Id: <161159605117.9561.12692669940945121604.b4-ty@arm.com>
-X-Mailer: git-send-email 2.26.1
-In-Reply-To: <20210120184810.3068794-1-kw@linux.com>
-References: <20210120184810.3068794-1-kw@linux.com>
-MIME-Version: 1.0
+ id 1l46fI-0005hq-1a; Mon, 25 Jan 2021 18:32:41 +0000
+Received: from marcel-macbook.holtmann.net (p4ff9f11c.dip0.t-ipconnect.de
+ [79.249.241.28])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 78BB2CECCA;
+ Mon, 25 Jan 2021 19:39:56 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.40.0.2.32\))
+Subject: Re: [PATCH] Bluetooth: btusb: Add a Kconfig option to disable USB
+ wakeup by default
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <20201230065441.1179-1-max.chou@realtek.com>
+Date: Mon, 25 Jan 2021 19:32:31 +0100
+Message-Id: <D8DB0325-437C-453B-86CC-55B4F255B335@holtmann.org>
+References: <20201230065441.1179-1-max.chou@realtek.com>
+To: Max Chou <max.chou@realtek.com>
+X-Mailer: Apple Mail (2.3654.40.0.2.32)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_123446_223720_2B4E6F9B 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210125_133240_216522_64DC49B7 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,28 +63,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org,
- Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
- Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, kidman@realtek.com,
+ Hilda Wu <hildawu@realtek.com>, LKML <linux-kernel@vger.kernel.org>,
+ Bluetooth Kernel Mailing List <linux-bluetooth@vger.kernel.org>,
+ Alex Lu <alex_lu@realsil.com.cn>, linux-mediatek@lists.infradead.org,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMCBKYW4gMjAyMSAxODo0ODoxMCArMDAwMCwgS3J6eXN6dG9mIFdpbGN6ecWEc2tp
-IHdyb3RlOgo+IFRoZSBmb3JfZWFjaF9hdmFpbGFibGVfY2hpbGRfb2Zfbm9kZSBoZWxwZXIgaW50
-ZXJuYWxseSBtYWtlcyB1c2Ugb2YgdGhlCj4gb2ZfZ2V0X25leHRfYXZhaWxhYmxlX2NoaWxkKCkg
-d2hpY2ggcGVyZm9ybXMgYW4gb2Zfbm9kZV9nZXQoKSBvbiBlYWNoCj4gaXRlcmF0aW9uIHdoZW4g
-c2VhcmNoaW5nIGZvciBuZXh0IGF2YWlsYWJsZSBjaGlsZCBub2RlLgo+IAo+IFNob3VsZCBhbiBh
-dmFpbGFibGUgY2hpbGQgbm9kZSBiZSBmb3VuZCwgdGhlbiBpdCB3b3VsZCByZXR1cm4gYSBkZXZp
-Y2UKPiBub2RlIHBvaW50ZXIgd2l0aCByZWZlcmVuY2UgY291bnQgaW5jcmVtZW50ZWQsIHRodXMg
-ZWFybHkgcmV0dXJuIGZyb20KPiB0aGUgbWlkZGxlIG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIGV4
-cGxpY2l0IG9mX25vZGVfcHV0KCkgdG8gcHJldmVudAo+IHJlZmVyZW5jZSBjb3VudCBsZWFrLgo+
-IAo+IFsuLi5dCgpBcHBsaWVkIHRvIHBjaS9tZWRpYXRlaywgdGhhbmtzIQoKWzEvMV0gUENJOiBt
-ZWRpYXRlazogQWRkIG1pc3Npbmcgb2Zfbm9kZV9wdXQoKSB0byBmaXggcmVmZXJlbmNlIGxlYWsK
-ICAgICAgaHR0cHM6Ly9naXQua2VybmVsLm9yZy9scGllcmFsaXNpL3BjaS9jLzQyODE0YzQzOGEK
-ClRoYW5rcywKTG9yZW56bwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+Hi Max,
+
+> For the original commit of 9e45524a011107a73bc2cdde8370c61e82e93a4d,
+> wakeup is always disabled for Realtek Bluetooth devices.
+> However, there's the capability for Realtek Bluetooth devices to
+> apply USB wakeup. Otherwise, there's the better power consumption
+> without USB wakeup during suspending.
+> In this commit, divide the original commit into two parts.
+> 1. Redefine the feature that Realtek devices should be enabled wakeup on
+> auto-suspend as BTUSB_WAKEUP_AUTOSUSPEND.
+> 2. Add a Kconfig option to switch disable_wakeup for Bluetooth
+> USB devices by default as CONFIG_BT_HCIBTUSB_DISABLEWAKEUP.
+
+lets not make this so complicated. Lets just make this work. So define this based on the Realtek hardware that supports it and not just a generic option. If your hardware is broken or works different from revision to revision, then quirk it inside the driver.
+
+Regards
+
+Marcel
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
