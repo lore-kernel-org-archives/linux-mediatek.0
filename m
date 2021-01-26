@@ -2,81 +2,74 @@ Return-Path: <SRS0=aDjs=G5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A851C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 15:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 657D7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 19:50:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D7E922D58
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 15:00:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D7E922D58
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1D98322B2C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 19:50:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D98322B2C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dAVTsh8+Jj1OMEK+jWV7+G/9gDKloX1LOMM//LAY0Iw=; b=l8Lycvvrdj2tfJbEC+Gkqd8/W
-	mrjZUfuBfdMOxlBb1PytNdSrFBLW5lEpfZKTzfdLVuRwl/uYjyS7jUI2zGmziVPVjm3IMH3goxOBQ
-	nWQpLmTwZ5/13+rMwZMA14fDgm69kARHoMenjo/glcaDtgaYkmcGZZ3vRVVWrwiQgUf6UCt4kDyvH
-	YvfH/PAm8fBV4xv2Ek+QXA1QHW3m2RdnLLK1mJSFFbmPnr7ZvKI6NPVZiucRoVgVleqb2VPZHUUC/
-	4JWLMl8XhaJ7JeSNHrn5JnaXdBjjWHR6msUqNZhgF4CU9Xd1y6QV3zgT13p7E2slRqDXzm8Xrl94M
-	ZR09Cu3uA==;
+	 bh=z8p+4teeyFVN9P1rqetXgHYhnRAQXRNu/wl+RQ6E2XY=; b=FlpHeW+f6J3SPUJIKdOulVLTw
+	j/LAsxohgrIkymMIR4Csk3rg+gK97f5q9NkstzfVkvpIPK9V7H6rPtuQbn1QnmB9rSLdG+2EkOsUU
+	uSJncReCtEyFd5/EVO//58JIfwCFTm3T0rWq7WA2X9nOmFFiQp8ZF79zs2x02V7pJi8qD1P3qscWL
+	abBjeJAozjvcf4rQP2ozGiHWCsJXp2eUoCrd7tkH9tEkEVlF+1UBHPiAF7a0oDbwQYG+fuKSoE6kz
+	Cv2HieE8qY4cqd7nN2hM7wNHZQRgKHwm2v0V62seKLtcZageYGrTZIn+qRv0JNFgUgyEYXm46JqGy
+	+XFRwf/2A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4PpQ-0007MO-PP; Tue, 26 Jan 2021 15:00:24 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1l4ULY-0005Cu-7J; Tue, 26 Jan 2021 19:49:52 +0000
+Received: from mail-ej1-f54.google.com ([209.85.218.54])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4PpN-0007LE-Qb
- for linux-mediatek@lists.infradead.org; Tue, 26 Jan 2021 15:00:22 +0000
-Received: by mail-lf1-x130.google.com with SMTP id a8so23101719lfi.8
- for <linux-mediatek@lists.infradead.org>; Tue, 26 Jan 2021 07:00:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=oou4JBBLNg89AoflcEwukaUQeMGozONrAI+ykd68abc=;
- b=CMa6kBvpR7r2i7zpxtIhNACZ2ViuaRO16BBxLI8B05cp9KOHqdEStU7xvCXZWY74SX
- 9lqFxZaRm4aqr+c9UZoLdzO0SOMIUuiYyxAeIJJGdPM/fiZR4aDiStE89i/QvkPTJ04r
- UajsbqVlBJyRziIRZGuKOojtOnzJ5Q4KD2yRDbzkXpaQtXrh1M9quvjUl/9uy5spVVb5
- GO92t8QxJaHe3M7H82gYGbZA9hX7M29967sScvq3sc6d0cfSQmE9sZiJQiLeevmZHPqx
- RurYYDJ0RzvHiUwdCy41fLjd6IqcaiDE2XMbg2avVyrkBgog0Qghh8I/VRVS9XJ7SVPY
- wkdg==
+ id 1l4ULV-0005CU-MF; Tue, 26 Jan 2021 19:49:50 +0000
+Received: by mail-ej1-f54.google.com with SMTP id a10so24740795ejg.10;
+ Tue, 26 Jan 2021 11:49:47 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=oou4JBBLNg89AoflcEwukaUQeMGozONrAI+ykd68abc=;
- b=XfSyeMEYWUewGhlDFQ5mp12dqVJc7hTZ2hXUxFsYG8fq21wCwpjj0UxCoIBpqYONUc
- gVBlqAuTcLLHKiJnqRjoJH4bXFpjbDoTp9xHL3hntxpKWxKHrpBhWytAhI9LjEyRsLLM
- WIn7pSx/IUS0njcuqeF0/mB6PFBDh9sxQ/+7yo94Zzm4G3hz4/xbJ9HnJiLRarAnSKBV
- Q8G3xedANfkLGtGc9u/1YXWMsqIJXtzefKieXmFxUziEm7nKkMsRp7tM+MM5lH5avlhN
- mpsn1BVr1rjUMzYTR6tP48xAKzfGmmQvCvW1udHKrmFYCT6edOMBERYCjWbUivaQ/b+M
- EYJw==
-X-Gm-Message-State: AOAM5314IBAZp10NjnAxCNQn26rdkoz5eI3HkuGEBp4PJ9Qmld7D+OOK
- U6bwAHZS/bWRrs2iB8iqY7ZN3REcKu1JXppjfU2rjA==
-X-Google-Smtp-Source: ABdhPJzrV9fkzjpZBwQ0mQ9Fy53MLqpTRDv/TPUMKddMWfeRpgkK8NEwID8Bpzlme642rYr1YhFm4FNjevHCdUpgQwY=
-X-Received: by 2002:ac2:4285:: with SMTP id m5mr2664496lfh.649.1611673219946; 
- Tue, 26 Jan 2021 07:00:19 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=o/xNlPfGwnBKxfph+ywxuqzSguELReNCQiSKkwp5El8=;
+ b=F2LUaR+MGKnmKXOczF3UkxN2aIw83AwU5dU2aai/v6S0ema/8t2FvB5aTvPZznqmEQ
+ vxdI2Vw/C2ZHAEfrLsD4TW2z2vds1qr4X21ug67MgfgDf/g6muSfQ3JnZi0HsH2sTkdA
+ cCNEC6QMTtUitDrb5Ynx/0MgyQXZaieedAmDEf0KepJmIKt0EqwONmLsbgZhV1yDVcA3
+ z2yCCg0Crs6g7QFo+lTZP/rnWlVbqbkS5tjO+FtvNNZMbZIwaECcVX0m1si9VQp4MKvR
+ J8lOmaiGzsU4TeqwMmzyPY2LcQsPvYXXRP3Ptq+3BbGxw7lMJ0NSaZ63gTlHPFiLDTBv
+ 3APw==
+X-Gm-Message-State: AOAM5330xuKdY34UnZjtuer1Z2e0XugHhQtuaDyb3B+f/LUMPnzbiW3R
+ 7c+bUt+F649PR/Q9AtWJ6Zw=
+X-Google-Smtp-Source: ABdhPJxK7hEpk5TYCend9Ub0Pc+g5IwKSV+LIkJ84QXUrE7AdhDzU/Qs2jCac4uMCvi4wSJ7Mt+SmQ==
+X-Received: by 2002:a17:906:2e0d:: with SMTP id
+ n13mr4302953eji.554.1611690586670; 
+ Tue, 26 Jan 2021 11:49:46 -0800 (PST)
+Received: from kozik-lap (adsl-84-226-167-205.adslplus.ch. [84.226.167.205])
+ by smtp.googlemail.com with ESMTPSA id dj25sm12801834edb.5.2021.01.26.11.49.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Jan 2021 11:49:45 -0800 (PST)
+Date: Tue, 26 Jan 2021 20:49:43 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v2] memory: mtk-smi: Support SMI modular
+Message-ID: <20210126194943.n7xtgoa5axd2zajz@kozik-lap>
+References: <20210126060055.11050-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-References: <20210126132531.2084711-1-robert.foss@linaro.org>
- <20210126132531.2084711-2-robert.foss@linaro.org>
-In-Reply-To: <20210126132531.2084711-2-robert.foss@linaro.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 26 Jan 2021 16:00:09 +0100
-Message-ID: <CACRpkda4pChqJoR-RH_QGMq0NBgyWFsyhzQHthFWPZkm62qC8A@mail.gmail.com>
-Subject: Re: [PATCH v1 2/2] dt-bindings: mediatek: mt8192: Fix
- dt_binding_check warning
-To: Robert Foss <robert.foss@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <20210126060055.11050-1-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210126_100021_885900_0D41AD44 
-X-CRM114-Status: UNSURE (   8.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210126_144949_732755_FE49D59E 
+X-CRM114-Status: GOOD (  14.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,40 +81,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Liam Girdwood <lgirdwood@gmail.com>, jiaxin.yu@mediatek.com,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- shane.chien@mediatek.com, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Lars Povlsen <lars.povlsen@microchip.com>
+Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, yi.kuo@mediatek.com,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 26, 2021 at 2:26 PM Robert Foss <robert.foss@linaro.org> wrote:
+On Tue, Jan 26, 2021 at 02:00:55PM +0800, Yong Wu wrote:
+> This patch mainly support SMI modular. Switch MTK_SMI to tristate,
+> and add module_exit/module_license.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+> This patch rebase on the clean v5.11-rc1.
+> and this one: memory: mtk-smi: Use platform_register_drivers
+> https://lore.kernel.org/linux-arm-kernel/20210121062429.26504-2-yong.wu@mediatek.com/
+> 
+> change note:
+> a) squash the last two of v1 into one patch.
+> b) Remove module_alias
+> ---
+>  drivers/memory/Kconfig     | 2 +-
+>  drivers/memory/mtk-smi.c   | 9 +++++++++
+>  include/soc/mediatek/smi.h | 2 +-
+>  3 files changed, 11 insertions(+), 2 deletions(-)
 
-> Silence indentation level warning reported by dt_binding_check in
-> order to reduce noise during routine checks.
->
-> $ make dt_binding_check
-> mt8192-mt6359-rt1015-rt5682.yaml:10:4: [warning] wrong indentation:
-> expected 2 but found 3 (indentation)
->
-> Signed-off-by: Robert Foss <robert.foss@linaro.org>
+Thanks, applied with slightly adjusted commit msg and subject.
 
-Patch applied!
+Best regards,
+Krzysztof
 
-Yours,
-Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
