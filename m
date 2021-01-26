@@ -2,61 +2,69 @@ Return-Path: <SRS0=aDjs=G5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4961EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 14:14:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7614C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 14:25:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 12A0922B3B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 14:14:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12A0922B3B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 29754206CA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 14:25:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29754206CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vPTHrUo8pbcNfu5v61yOTmao5h+4cqkzBP10rptcOyA=; b=M2s76jmGxnFvoqwbDlKEhKjk7
-	b2gSPdNpEkhKNPhLnksQzQU/yMUGE8IogKLl0thdgWeJEYMxZs7zynpoqPNpNNMJgr8PSBV6GTKiw
-	SMf/OfIAAmdHR4SIGYfesaxh6ZXTPn78CYQbNNWF4qp3RG7Zb+p7IYUvkAJdE32v9gkeRDl2biWfi
-	ssK767qFGsGRRRj7FLJvYQmNgBbiHg/6R1Hf4ilAdURMFGhPoTi3u/cb6zRX614XaPhyyzTfe5Pss
-	mDNKG1bLCzqzZgNXRaARQ5JSHZs0F3JKRvf73iRRrEb97OezxR+P1ZzpZtv8Zwkea3f32nh0lNgw3
-	CbUPf6ceQ==;
+	 bh=GOzXMFHVYXccOx0FiBKMp1EfJcuQ4Q4GuM0OUvl2OZI=; b=2uL4Rh8Eo0iYz15o4N//zWf3o
+	NxHmmnA1OCShEYnG+Wp3KG8yFmt9UFfrh1FPx8vqTWNMYuUi32/C3MVvxM1w+Y/MCCOFeU/IwSxgZ
+	TmyP6KfSOxe1Y9hc26zDnrVP92WBaZ/Y9ksPBPtsXKHQPwheStxwYfzaeoWtYTuH44+hEMH/tOzDZ
+	s4UvMMfCHYOmptTAclciFa+sOUpX1xQqkW+uztM6pASzaDP6L8n8WI8T+Fd4I5oHwxVK3ZmlGzUss
+	4riCdBVKM9cBDjihTAc5gXcbVvhu/JgBxnsAuLyNqlUkbNI2EgyDAftonkU9lOaBI1ZsOTXGEVwvw
+	qx5XCzz7g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4P6J-0000rF-9i; Tue, 26 Jan 2021 14:13:47 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l4PHr-0002vo-L7; Tue, 26 Jan 2021 14:25:43 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4P69-0000oD-Ue; Tue, 26 Jan 2021 14:13:39 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 803C122B2C;
- Tue, 26 Jan 2021 14:13:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1611670417;
- bh=YSv766COdRK+Q4CGhJ/sDz3wlp4qOX56jT9mW35921o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=F7FCjZJHnZTBPMEB26msNAJ7TxSzFLjs5ERZ9VKkLxzMgTsOLNAZbLAKa1//mQdOB
- PQLMbwLKOY97s3i0PyVSnNweYooJXxoPsJ/oKlJViVAbBSMpLcteifgaXeZY/qV1XB
- /2aac8JLw5Pp+o/knr8B8TwoifBK26ZyT1XolYMc=
-Date: Tue, 26 Jan 2021 15:13:34 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Ikjoon Jang <ikjn@chromium.org>,
-	Mathias Nyman <mathias.nyman@intel.com>
+ id 1l4PHm-0002uV-IS; Tue, 26 Jan 2021 14:25:39 +0000
+IronPort-SDR: Akk/X9EsZduF02ZR9++tq93/PeETkCjmjdvHtpUeP2CIU/yXKjlBnLUBW+/9I2c/DlslRh95Hz
+ siRgqxac28EA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9875"; a="167578077"
+X-IronPort-AV: E=Sophos;i="5.79,375,1602572400"; d="scan'208";a="167578077"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jan 2021 06:25:28 -0800
+IronPort-SDR: vvt6Adz2BKcGwpgcWYcH6FKlCUOcTI7rq0u1VcZGFWVx6poy2y1ywqfBOwaSS9FpY9mYHyZd7I
+ ONPGlqgmDVAg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,375,1602572400"; d="scan'208";a="350679839"
+Received: from mattu-haswell.fi.intel.com (HELO [10.237.72.170])
+ ([10.237.72.170])
+ by fmsmga007.fm.intel.com with ESMTP; 26 Jan 2021 06:25:26 -0800
 Subject: Re: [PATCH v6] usb: xhci-mtk: fix unreleased bandwidth data
-Message-ID: <YBAjjmpc4yPrpmgQ@kroah.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ikjoon Jang <ikjn@chromium.org>
 References: <20210113180444.v6.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+ <YBAjjmpc4yPrpmgQ@kroah.com>
+From: Mathias Nyman <mathias.nyman@intel.com>
+Message-ID: <b8a2cd47-ff32-2251-4431-da05a0f038f7@intel.com>
+Date: Tue, 26 Jan 2021 16:27:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210113180444.v6.1.Id0d31b5f3ddf5e734d2ab11161ac5821921b1e1e@changeid>
+In-Reply-To: <YBAjjmpc4yPrpmgQ@kroah.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210126_091338_088575_5BF40E5C 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20210126_092538_788981_5AB4EDE5 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,29 +85,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 13, 2021 at 06:05:11PM +0800, Ikjoon Jang wrote:
-> xhci-mtk needs XHCI_MTK_HOST quirk functions in add_endpoint() and
-> drop_endpoint() to handle its own sw bandwidth management.
+On 26.1.2021 16.13, Greg Kroah-Hartman wrote:
+> On Wed, Jan 13, 2021 at 06:05:11PM +0800, Ikjoon Jang wrote:
+>> xhci-mtk needs XHCI_MTK_HOST quirk functions in add_endpoint() and
+>> drop_endpoint() to handle its own sw bandwidth management.
+>>
+>> It stores bandwidth data into an internal table every time
+>> add_endpoint() is called, and drops those in drop_endpoint().
+>> But when bandwidth allocation fails at one endpoint, all earlier
+>> allocation from the same interface could still remain at the table.
+>>
+>> This patch moves bandwidth management codes to check_bandwidth() and
+>> reset_bandwidth() path. To do so, this patch also adds those functions
+>> to xhci_driver_overrides and lets mtk-xhci to release all failed
+>> endpoints in reset_bandwidth() path.
+>>
+>> Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
+>> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
 > 
-> It stores bandwidth data into an internal table every time
-> add_endpoint() is called, and drops those in drop_endpoint().
-> But when bandwidth allocation fails at one endpoint, all earlier
-> allocation from the same interface could still remain at the table.
+> Mathias, any objection to me taking this patch, or do you have others
+> being queued up for 5.11-final?
 > 
-> This patch moves bandwidth management codes to check_bandwidth() and
-> reset_bandwidth() path. To do so, this patch also adds those functions
-> to xhci_driver_overrides and lets mtk-xhci to release all failed
-> endpoints in reset_bandwidth() path.
-> 
-> Fixes: 08e469de87a2 ("usb: xhci-mtk: supports bandwidth scheduling with multi-TT")
-> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
 
-Mathias, any objection to me taking this patch, or do you have others
-being queued up for 5.11-final?
+No objections, haven't tried it out but it looks good to me.
 
-thanks,
+If I finish some additional small fix for 5.11-final I can make it on top of this
 
-greg k-h
+-Mathias 
 
 _______________________________________________
 Linux-mediatek mailing list
