@@ -2,77 +2,82 @@ Return-Path: <SRS0=aDjs=G5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E63AC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 01:03:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 08C7FC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 01:18:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BD2922E03
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 01:03:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BD2922E03
+	by mail.kernel.org (Postfix) with ESMTPS id AFE2C23104
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 01:18:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFE2C23104
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/Hi6aTw08J27IbU+kNq1bQKRQJZZ/vjYyh0k1M55/k0=; b=VJRuQv2G2WXVsyS5FCCeZJZ/s
-	2eTQxfaR+iqi75kJ7lfRFdu55nM+DJNUQYJPpMEB2Eta48PiRy21LUHrDp/1rB4xu6SKNAtQjaozB
-	23mFDf3S8T0gBHtUPpxRBknGdfdqQCLg86Z+awckfxy2ZpnPG7GKZv5g6dmG9MSsx08dFlXRfi0V9
-	6xGBSCmqtf+wHeccm57tZkeJBRF1Qn3rRVZl57N/m8WCV0De2JU+mX5S+DPYXxcD78MhpvHLawVPW
-	RVLLnx0y/bB4uXGAf7UJy7NGaaEKoKXrNDCBgdCy4dz28eS4hk0hIZV6AxiuwguTqmOq1AD1CgJLD
-	ayA8tN4gQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=f9vfuLuVa7bWGSUo2aC9wjYFJ00GcnYRkOtRi+JZesg=; b=bv+XmZxmxj5i3GdHlfgLvQcO/Z
+	wnLaGvjOlVtd7D/8DTjcNjH2JLqbU6vMVdhHGq/9cDveKOzASSjt/C5GWQG+Tde1K5ElMz7g6eJu3
+	lHyg7OM6p9Y2Jtw0b+IaReAne3aKOUKwl7ILJigQP2ss7QY7tl54ss1jhggNzOWj4brR1dI2kiZ/7
+	VmbF3UGT/wl5GcqoPNO5A8ykRpTC1C8QAg2wHi29xl0pqujDDB2sbzY3fmstb0FDmLkq5ykiHF4Av
+	D0EStZmEPgZaC+o1si99vlfkHDrrBIGEHh1yTaMPusxUunmSJj7ghLV6RaO7wKr0YNBR1ugExo9k5
+	HkOGh0Ng==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4ClT-00071R-Sz; Tue, 26 Jan 2021 01:03:28 +0000
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+	id 1l4Czn-0007qx-Jh; Tue, 26 Jan 2021 01:18:15 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4ClR-00070a-EO
- for linux-mediatek@lists.infradead.org; Tue, 26 Jan 2021 01:03:26 +0000
-Received: by mail-ua1-x936.google.com with SMTP id u27so5069459uaa.13
- for <linux-mediatek@lists.infradead.org>; Mon, 25 Jan 2021 17:03:23 -0800 (PST)
+ id 1l4Czk-0007pg-K9
+ for linux-mediatek@lists.infradead.org; Tue, 26 Jan 2021 01:18:13 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id b17so2224428plz.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 25 Jan 2021 17:18:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Vqg6bv6YX+UaRhVsv9trHQtX0ur2NbtvGMYILmAZAUM=;
- b=P1l4NPK1mg6P+cMqArKZZ6FOU2bUnkug0c0wiDxi8esJ1qNqlZ3Av8QbDtH3XtmBcH
- WWj2fRqK6jXXpp1LfZvMsxakWaQD2KL3193fxXG1tya7r5Ks1Cf+/sLSkxLCxuMGGHLw
- ZtmMx8T9UA0Fr/mvIqw0o3Yn6tUyNGjH4LTfo=
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iWbVQO5R0FpQjPeleTL5ZQxXMwOKE8gz64YVQB09gIE=;
+ b=M8/QV0mlc2v2R8DUyzcSmv2ah8W3t/Zyct7N54o+QNG5dYc72k3Goi4nwckpZUxBKY
+ OLzUjzQ069Xg0Mwox3AdKaNd2sH8efxb8MswfwAeVssIrhd+5npraQUBmohEdUUtPBi+
+ tnkK7aKAGBIFCJRX+MW31GV68uGwQMAPlaYME=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Vqg6bv6YX+UaRhVsv9trHQtX0ur2NbtvGMYILmAZAUM=;
- b=Y8cHJsxBE0Cg2tj7Paepz/FHN2OSWP6MvWapcmGsE6dR8MHZi/ZvMB1NmDJEx+2091
- nDm5kXEEBn0XDY/bZ1jsfeLLu3L+doGKrB9SsF2uc5lGtyXBCiNwj89WUif3Ge1yPCir
- ulYzSQ0+UQ5rbIuiZVNlFPDpgo8C7NdvRsUzMD/HQCRKeXzyQDJdTARUoouxWiyReQuI
- o68ZRTvXazWCETsAH9V7aTdteqnKd1Qdnv4HYE46sLO0g+7srnlIIqoLRdWKuh6cP2wX
- /EFGbkvkA+OY/8m5ukkGLA0qu3HqiQZQmeOUMyHYJjAnYu0yJMkc+0x0oohYsbEID8yH
- t1Wg==
-X-Gm-Message-State: AOAM532AeV87h/d4I1aipDLkG8tQXnYrhqB1m20maJP6/Op/iVTMd7W8
- mMVqT/9J/EhHFuzwh7cGfQ4dras5oqGqs7ZdnLAOag==
-X-Google-Smtp-Source: ABdhPJypAk1MRy9xAVulpTwXcpPdyH5UZC9neTdCesmTbQDgAfb7Ug9ZhO6Fi+/A0gtEIjD8oDzmrbw8YTyBtpr/oRs=
-X-Received: by 2002:ab0:3043:: with SMTP id x3mr2487551ual.88.1611623002329;
- Mon, 25 Jan 2021 17:03:22 -0800 (PST)
-MIME-Version: 1.0
-References: <20210113060703.3122661-1-drinkcat@chromium.org>
- <20210113140546.v10.2.I9f45f5c1f975422d58b5904d11546349e9ccdc94@changeid>
- <20210125192658.GA806742@robh.at.kernel.org>
-In-Reply-To: <20210125192658.GA806742@robh.at.kernel.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iWbVQO5R0FpQjPeleTL5ZQxXMwOKE8gz64YVQB09gIE=;
+ b=uZKq1QtU/keRyunLIFgxPlcdkHUI9zYClXZMQZf51xSh6DF3R4+c6c0W3yLY+8pE7T
+ 3kNCFEqqMVjyXAjBMDnY1Ng4r2TNn1xIv3BBiNpOX6Od6Ih9/KpVyNzAjrqyMNN6lC56
+ +hQWC4ILifCNyN+v/GmgnNrUnczSm/jmU5MBcBBsXIzxu3Ui1jrVGB/o632qhOhu8IHT
+ yUXGsIUuhJ4zRsAlIfGtPVIijrqak7vyhYQAYGM97t5vJVJvEPoOwIuTR6hlR05QCM1u
+ My/78r5yU2KN1OSQN9mN1xRqO6QpbT8P4HRY8J9CtORHTHl1cPJDFwc0ehxouWqIvteL
+ D2dw==
+X-Gm-Message-State: AOAM533tinJH80f8TIkU5VtEIKIinv8Kn1PA8M7ndbwU7DStixf95Rq8
+ I/FFVZBmoVIuqfThxPnRh33/Uw==
+X-Google-Smtp-Source: ABdhPJyjPaSweKNxNtO2gkziAaXPMrY4Rp0Kuls26ijdkAvAyf1Ku0oC++DgRuy/WatKIEzuLxGMZA==
+X-Received: by 2002:a17:90a:d255:: with SMTP id
+ o21mr3117952pjw.151.1611623889956; 
+ Mon, 25 Jan 2021 17:18:09 -0800 (PST)
+Received: from drinkcat2.tpe.corp.google.com
+ ([2401:fa00:1:b:50cc:9282:4fdd:3979])
+ by smtp.gmail.com with ESMTPSA id k9sm522248pji.8.2021.01.25.17.18.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Jan 2021 17:18:09 -0800 (PST)
 From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Tue, 26 Jan 2021 09:03:10 +0800
-Message-ID: <CANMq1KCdCurhB0S_a4qRtNbOUWMZa9=ObZkz0VSGLgCnfV-k9Q@mail.gmail.com>
-Subject: Re: [PATCH v10 2/4] arm64: dts: mt8183: Add node for the Mali GPU
-To: Rob Herring <robh@kernel.org>
+To: Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+Subject: [PATCH v11 0/4] drm/panfrost: Add support for mt8183 GPU
+Date: Tue, 26 Jan 2021 09:17:55 +0800
+Message-Id: <20210126011759.1605641-1-drinkcat@chromium.org>
+X-Mailer: git-send-email 2.30.0.280.ga3ce27912f-goog
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_200325_568559_3AF8EDE2 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20210125_201812_739778_A1391560 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,45 +89,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Devicetree List <devicetree@vger.kernel.org>,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>, Fei Shao <fshao@chromium.org>,
- lkml <linux-kernel@vger.kernel.org>, Steven Price <steven.price@arm.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Kristian Kristensen <hoegsberg@chromium.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, fshao@chromium.org,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, boris.brezillon@collabora.com,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, hoegsberg@chromium.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 26, 2021 at 3:27 AM Rob Herring <robh@kernel.org> wrote:
->
-[...]
-> > +&gpu {
-> > +     supply-names = "mali", "sram";
->
-> Not a documented property, nor should it be.
->
-> Did you run this against dtbs_check with your schema changes?
+Hi!
 
-I did not, for some reasons I hit a strange issue (kernel build system
-wouldn't pick up dt-* tools from ~/.local/bin... solved with a bunch
-of symlinks to ~/bin). Gave up too quickly ,-(
+Follow-up on the v5 [1], things have gotten significantly
+better in the last 9 months, thanks to the efforts on Bifrost
+support by the Collabora team (and probably others I'm not
+aware of).
 
-Anyway, v11 coming with clean make dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml.
+I've been testing this series on a MT8183/kukui device, with a
+chromeos-5.10 kernel [2], and got basic Chromium OS UI up with
+mesa 20.3.2 (lots of artifacts though).
 
->
-> > +     mali-supply = <&mt6358_vgpu_reg>;
-> > +     sram-supply = <&mt6358_vsram_gpu_reg>;
-> > +};
-> > +
-> >  &i2c0 {
-> >       pinctrl-names = "default";
-> >       pinctrl-0 = <&i2c_pins_0>;
+devfreq is currently not supported, as we'll need:
+ - Clock core support for switching the GPU core clock (see 2/4).
+ - Platform-specific handling of the 2-regulator (see 3/4).
+
+Since the latter is easy to detect, patch 3/4 just disables
+devfreq if the more than one regulator is specified in the
+compatible matching table.
+
+[1] https://patchwork.kernel.org/project/linux-mediatek/cover/20200306041345.259332-1-drinkcat@chromium.org/
+[2] https://crrev.com/c/2608070
+
+Changes in v11:
+ - binding: power-domain-names not power-domainS-names
+ - mt8183*.dts: remove incorrect supply-names
+
+Changes in v10:
+ - Fix the binding to make sure sram-supply property can be provided.
+
+Changes in v9:
+ - Explain why devfreq needs to be disabled for GPUs with >1
+   regulators.
+
+Changes in v8:
+ - Use DRM_DEV_INFO instead of ERROR
+
+Changes in v7:
+ - Fix GPU ID in commit message
+ - Fix GPU ID in commit message
+
+Changes in v6:
+ - Rebased, actually tested with recent mesa driver.
+ - Add gpu regulators to kukui dtsi as well.
+ - Power domains are now attached to spm, not scpsys
+ - Drop R-B.
+ - devfreq: New change
+ - Context conflicts, reflow the code.
+ - Use ARRAY_SIZE for power domains too.
+
+Changes in v5:
+ - Rename "2d" power domain to "core2"
+ - Rename "2d" power domain to "core2" (keep R-B again).
+ - Change power domain name from 2d to core2.
+
+Changes in v4:
+ - Add power-domain-names description
+   (kept Alyssa's reviewed-by as the change is minor)
+ - Add power-domain-names to describe the 3 domains.
+   (kept Alyssa's reviewed-by as the change is minor)
+ - Add power domain names.
+
+Changes in v3:
+ - Match mt8183-mali instead of bifrost, as we require special
+   handling for the 2 regulators and 3 power domains.
+
+Changes in v2:
+ - Use sram instead of mali_sram as SRAM supply name.
+ - Rename mali@ to gpu@.
+
+Nicolas Boichat (4):
+  dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
+  arm64: dts: mt8183: Add node for the Mali GPU
+  drm/panfrost: devfreq: Disable devfreq when num_supplies > 1
+  drm/panfrost: Add mt8183-mali compatible string
+
+ .../bindings/gpu/arm,mali-bifrost.yaml        |  28 +++++
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   5 +
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   5 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 105 ++++++++++++++++++
+ drivers/gpu/drm/panfrost/panfrost_devfreq.c   |   9 ++
+ drivers/gpu/drm/panfrost/panfrost_drv.c       |  10 ++
+ 6 files changed, 162 insertions(+)
+
+-- 
+2.30.0.280.ga3ce27912f-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
