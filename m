@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25028C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 15:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A851C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 15:00:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D97AC22D58
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 15:00:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D97AC22D58
+	by mail.kernel.org (Postfix) with ESMTPS id 5D7E922D58
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 15:00:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D7E922D58
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Z+j/z1CE9V/bRtj7btNQt5F6+x86sPX3Mqp+ahLlz/Y=; b=WE4fKEtFRDB++4fUANocpQGfL
-	SoqkBRjJd3vHnip8FYka57hWGY5f/qbL/BX8qAfaWyZpd4xk9zRuQThAzi5UcmMpzqQwcwT4xVHIh
-	V6Dm6DL2OqqfVL8EAzu41xE/tBr9oge69bHwWTpfYCnjoKjCOXXbl4kfsN6Sq3/H7S8/aDQj+yL/v
-	2ceTlJEbTo1UdpdySHR1DjFyiZj4uGTxxpfk1/PiWz6SY70hS9otENQoZH/OpW7HIDmg3LSdOw8Q6
-	nkBanMiweaLJBhSX4az4eshurkVtwaqSIv36j9FPwmmGVVV7XmubOl1o3Haj9hcSJZaH3nvyVRgjN
-	VDphdZBfA==;
+	 bh=dAVTsh8+Jj1OMEK+jWV7+G/9gDKloX1LOMM//LAY0Iw=; b=l8Lycvvrdj2tfJbEC+Gkqd8/W
+	mrjZUfuBfdMOxlBb1PytNdSrFBLW5lEpfZKTzfdLVuRwl/uYjyS7jUI2zGmziVPVjm3IMH3goxOBQ
+	nWQpLmTwZ5/13+rMwZMA14fDgm69kARHoMenjo/glcaDtgaYkmcGZZ3vRVVWrwiQgUf6UCt4kDyvH
+	YvfH/PAm8fBV4xv2Ek+QXA1QHW3m2RdnLLK1mJSFFbmPnr7ZvKI6NPVZiucRoVgVleqb2VPZHUUC/
+	4JWLMl8XhaJ7JeSNHrn5JnaXdBjjWHR6msUqNZhgF4CU9Xd1y6QV3zgT13p7E2slRqDXzm8Xrl94M
+	ZR09Cu3uA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4Pp2-0007Gf-Nh; Tue, 26 Jan 2021 15:00:00 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1l4PpQ-0007MO-PP; Tue, 26 Jan 2021 15:00:24 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4Pp1-0007Fp-1L
- for linux-mediatek@lists.infradead.org; Tue, 26 Jan 2021 15:00:00 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id f1so13266807lfu.3
- for <linux-mediatek@lists.infradead.org>; Tue, 26 Jan 2021 06:59:58 -0800 (PST)
+ id 1l4PpN-0007LE-Qb
+ for linux-mediatek@lists.infradead.org; Tue, 26 Jan 2021 15:00:22 +0000
+Received: by mail-lf1-x130.google.com with SMTP id a8so23101719lfi.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Jan 2021 07:00:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5PPoqIyCpJtL/ek+tU9+EyocWfpZVKR5Q6N/JZNTSoc=;
- b=CJW5k+g5rrW0iG7J1Vqjf7EeICvtVMaqQr4Mrssy80eRmciKqXrKNu2x10XtIpUMjd
- 2Q9fD9jJF+Yiw/QHFgpLarnnoC9HGqb7+JqNxEgSc6ULWHrPbJmfwNrJC6HhunyJagtg
- X99euSfrluWSS5ypVzSO5NDMQXTO+CUmJuikTOK8ZdbxbZzpn8/jxBjqRW7InmA6noQy
- kVpakp5prj7msQgdbf5j7iuW6hQhykXGedscqJrv+7qvBclJSxgfLk7uWbofhgk5yXoC
- HYVsH6NmMWQ2xYCfoGIVnVCnWAy7NrLg+zu14JIFrJsRVJ3PouFzyRQeh8veAj9pmYVy
- LVrQ==
+ :cc; bh=oou4JBBLNg89AoflcEwukaUQeMGozONrAI+ykd68abc=;
+ b=CMa6kBvpR7r2i7zpxtIhNACZ2ViuaRO16BBxLI8B05cp9KOHqdEStU7xvCXZWY74SX
+ 9lqFxZaRm4aqr+c9UZoLdzO0SOMIUuiYyxAeIJJGdPM/fiZR4aDiStE89i/QvkPTJ04r
+ UajsbqVlBJyRziIRZGuKOojtOnzJ5Q4KD2yRDbzkXpaQtXrh1M9quvjUl/9uy5spVVb5
+ GO92t8QxJaHe3M7H82gYGbZA9hX7M29967sScvq3sc6d0cfSQmE9sZiJQiLeevmZHPqx
+ RurYYDJ0RzvHiUwdCy41fLjd6IqcaiDE2XMbg2avVyrkBgog0Qghh8I/VRVS9XJ7SVPY
+ wkdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=5PPoqIyCpJtL/ek+tU9+EyocWfpZVKR5Q6N/JZNTSoc=;
- b=tghYoh8cHzAigzmLcqWgWRwIWCuzbK+a/L519ybbpzdKEvRLbags5aZ9OwZCtxXbzZ
- hXZzCSMIFlinS/YynUpnV0W7gVFJcuw1fzQsJ77ksYZgL/qRpSLCIPwwS94zFh9Tuwl/
- UxI0ecnRfpT4oL7aap9oGSAX7Dr7ZSvm7zml5CnRqU2gtK+qtc4MPE3a5BvEKVBrZbtK
- /pnExaV7cQ26SWM/FM4372kgSTimDIZPGiyulXcjwk15VXi235d5XK5NbTQyoo3QkUXv
- 92H+rc7xpy6UWxuln4FTVuzLFnM8iuhYn5MpJ8dpuu93InAqTJnwPfTxu/LnDVkeaL1K
- +ItQ==
-X-Gm-Message-State: AOAM5319kvtXY/BwDGo5kIahefhennbvdo+GTwrVykT167WwDise7QVa
- dm7QpvAnsfwCx7usNjC5uO3bosVcizuu+ydD0N+5/g==
-X-Google-Smtp-Source: ABdhPJw+UEQhd8vKQIGL6NeYSPSicxlz7dsriKTU3lH8LHsu7n43H+WLi/pKgx8+e/k/qqhhJKe1LW7Bfg9MZUXVmL8=
-X-Received: by 2002:a19:495d:: with SMTP id l29mr2785470lfj.465.1611673197037; 
- Tue, 26 Jan 2021 06:59:57 -0800 (PST)
+ bh=oou4JBBLNg89AoflcEwukaUQeMGozONrAI+ykd68abc=;
+ b=XfSyeMEYWUewGhlDFQ5mp12dqVJc7hTZ2hXUxFsYG8fq21wCwpjj0UxCoIBpqYONUc
+ gVBlqAuTcLLHKiJnqRjoJH4bXFpjbDoTp9xHL3hntxpKWxKHrpBhWytAhI9LjEyRsLLM
+ WIn7pSx/IUS0njcuqeF0/mB6PFBDh9sxQ/+7yo94Zzm4G3hz4/xbJ9HnJiLRarAnSKBV
+ Q8G3xedANfkLGtGc9u/1YXWMsqIJXtzefKieXmFxUziEm7nKkMsRp7tM+MM5lH5avlhN
+ mpsn1BVr1rjUMzYTR6tP48xAKzfGmmQvCvW1udHKrmFYCT6edOMBERYCjWbUivaQ/b+M
+ EYJw==
+X-Gm-Message-State: AOAM5314IBAZp10NjnAxCNQn26rdkoz5eI3HkuGEBp4PJ9Qmld7D+OOK
+ U6bwAHZS/bWRrs2iB8iqY7ZN3REcKu1JXppjfU2rjA==
+X-Google-Smtp-Source: ABdhPJzrV9fkzjpZBwQ0mQ9Fy53MLqpTRDv/TPUMKddMWfeRpgkK8NEwID8Bpzlme642rYr1YhFm4FNjevHCdUpgQwY=
+X-Received: by 2002:ac2:4285:: with SMTP id m5mr2664496lfh.649.1611673219946; 
+ Tue, 26 Jan 2021 07:00:19 -0800 (PST)
 MIME-Version: 1.0
 References: <20210126132531.2084711-1-robert.foss@linaro.org>
-In-Reply-To: <20210126132531.2084711-1-robert.foss@linaro.org>
+ <20210126132531.2084711-2-robert.foss@linaro.org>
+In-Reply-To: <20210126132531.2084711-2-robert.foss@linaro.org>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 26 Jan 2021 15:59:46 +0100
-Message-ID: <CACRpkdYPY3HxpWHMp08477z62PBYEjCKWpw3Uf0SQ7VHVB3jdw@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] dt-bindings: pinctrl: pinctrl-microchip-sgpio: Fix
+Date: Tue, 26 Jan 2021 16:00:09 +0100
+Message-ID: <CACRpkda4pChqJoR-RH_QGMq0NBgyWFsyhzQHthFWPZkm62qC8A@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] dt-bindings: mediatek: mt8192: Fix
  dt_binding_check warning
 To: Robert Foss <robert.foss@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210126_095959_091350_6F2FF486 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20210126_100021_885900_0D41AD44 
+X-CRM114-Status: UNSURE (   8.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -117,7 +118,7 @@ On Tue, Jan 26, 2021 at 2:26 PM Robert Foss <robert.foss@linaro.org> wrote:
 >
 > Signed-off-by: Robert Foss <robert.foss@linaro.org>
 
-I already have a fix for this in my tree, thanks anyway!
+Patch applied!
 
 Yours,
 Linus Walleij
