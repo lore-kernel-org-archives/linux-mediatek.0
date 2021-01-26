@@ -2,18 +2,18 @@ Return-Path: <SRS0=aDjs=G5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2AA38C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 02:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B4C4C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 02:35:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE2FE22EBD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 02:33:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE2FE22EBD
+	by mail.kernel.org (Postfix) with ESMTPS id 04A3F22EBF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 02:35:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 04A3F22EBF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,41 +22,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rKoITctY7JAyozufr8RYY3r4/BrIQBW/rJtUaGmsSG0=; b=trSd13O567cdBthBy5LPFfTjO
-	b967SHjBvy5YYhGAYfKOfayYK1twSj6jbgmlMu1edt7wRf18oQGNnNPDaJfOYCbNyt2IrxDTqcW2X
-	AZkZyHMM5d4fX2k4f75OMI/UNq53U7+erOaoCMcSzWmZV+Ub1CWrO8QMlTBIWvC137a0sjJqOYDlT
-	Rg9QIx+wd/XvILEwRYoKQZ62+IYvB5cWXJfEXltBbI2vvII5FbWJx3LbAGfy22IYByPFrKwP/k9q6
-	XXRUmH1yki7BSH7L4/8CCNgApOv6+S0bXoPA/xc31wQoX1KZPVfJ2gkiIay6Jgo2mayzoeMbBc8xJ
-	Ccwxb8Otg==;
+	 bh=ZAH1ltMwVPBmzjITuj1mWNyzE135JLniOQxWvIj4QvE=; b=htZ0ZM0hOYvfo8y8xCJZy7LuS
+	WfcETGX8J88itJM9xG2OA18Tlwto77sQWwdX3yw8iQIlvIQIv37Q/T+qi21xyMlamen/YqltHtTnN
+	knUSiUhUr+AeBzpjU5d1SBvnQECoilqV8ffyr/7Mh1cC3dMvJtpYWGyJHq4OzSh5B/F6T5b5zcZQ4
+	UiCh6i/Dwd2CkWBUiIAfLrH6RCRhuOqMPw5mw6cH2I/2QzS8KFju17ykAnkcsPC1nroXhkGTlwicH
+	dp3Eg49h7QnaNZuGFWhtxZzQvvHpgoObZDNgqtV/IzmzuksvueJN4FCkzFscNu64lfu457IpsfOBO
+	1BhO7+HFg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4EAn-0005FK-Gp; Tue, 26 Jan 2021 02:33:41 +0000
+	id 1l4EBw-0005MK-Rr; Tue, 26 Jan 2021 02:34:52 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4EAi-0005EW-I0; Tue, 26 Jan 2021 02:33:37 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2368522E03;
- Tue, 26 Jan 2021 02:33:35 +0000 (UTC)
+ id 1l4EBs-0005L1-NS; Tue, 26 Jan 2021 02:34:49 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E997922597;
+ Tue, 26 Jan 2021 02:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611628415;
- bh=CXSDmasxYWoFE33utykb2dQIYbJuGpoyGl2Cl9gp4Uo=;
+ s=k20201202; t=1611628488;
+ bh=h/E3TukMgw6yPHxLONt2DoWslLEkA9x2ERLKq9CpXQQ=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=ZAUeJ0v1ugUS/fH6cXmUKDukqYBofneog+ZPN2jI2C+TiCICvl40Si+V61jGJLgaT
- kKh40TW8UP6Mfy7Gtx3yXSJUR04OYenEKkOe7Wicl7MzB9ONv8d9vKHjLd3eDjO3/E
- OISnHJX5nb70f8SQtLYqCYuSDQe7hLO/Ki5rM8qU7tfgNKDNbZ9E2R76AVnE+33IbC
- OrodICqTBXi5iKAW7I0e9Nrgy9Uxi0BMsnCxLz9PvTjEegYAESopf3PXIWacws0RkC
- zveeBIak+CSkQzBE39JcpNeMBflKnrujy8QnlI9h/q6Uy6E52NVPrNpqPHi5SD+/o+
- KNxjzDKgJCYLg==
-Date: Mon, 25 Jan 2021 18:33:34 -0800
+ b=usUg3mKQ9NtxwIsGY5jdjQ6eG4MhJHnnLGnNyaIHgrnLgoWVMUj7X69chvYxdtr2x
+ v9vT6Z2496cmpk34OB3qeFTUAT+LDfy9FGh389gLGSOtB/lsvD8jI5aCv14fszMERI
+ neVSYKPikcJkceAX1cVAfotdjxzmTbWRrnkOzz5NWbo3WWarqnqPyCQtZuHb8Ey2Cv
+ 5mvXm1s5jwueXNLe/g367tm8hGQe5D9zeXPCVTr+5oy4yFl4NuRTn7owpkpX5Urzv0
+ P8rOSr/fCq+Fz1s8tLTuOrRWYEHeqVWluL0e9O0aRdWgGpiLyDctxE28op5HIZ6VwZ
+ OQCt8ez9j4/Uw==
+Date: Mon, 25 Jan 2021 18:34:46 -0800
 From: Jakub Kicinski <kuba@kernel.org>
-To: Andrew Lunn <andrew@lunn.ch>, DENG Qingfang <dqfext@gmail.com>
-Subject: Re: [PATCH net-next v2] net: ethernet: mediatek: support setting MTU
-Message-ID: <20210125183334.7ad8ca00@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <YA7BERdgmzKcAYus@lunn.ch>
-References: <20210125042046.5599-1-dqfext@gmail.com> <YA7BERdgmzKcAYus@lunn.ch>
+To: DENG Qingfang <dqfext@gmail.com>
+Subject: Re: [PATCH net-next v2 0/2] dsa: add MT7530 GPIO support
+Message-ID: <20210125183446.1d6243a8@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210125044322.6280-1-dqfext@gmail.com>
+References: <20210125044322.6280-1-dqfext@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_213336_679943_D90E6A05 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20210125_213448_822128_A05DE635 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,31 +69,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, netdev@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@mediatek.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
  =?UTF-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- David Woodhouse <dwmw2@infradead.org>, "David S. Miller" <davem@davemloft.net>,
- linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-gpio@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 Jan 2021 14:01:05 +0100 Andrew Lunn wrote:
-> On Mon, Jan 25, 2021 at 12:20:46PM +0800, DENG Qingfang wrote:
-> > MT762x HW, except for MT7628, supports frame length up to 2048
-> > (maximum length on GDM), so allow setting MTU up to 2030.
-> > 
-> > Also set the default frame length to the hardware default 1518.
-> > 
-> > Signed-off-by: DENG Qingfang <dqfext@gmail.com>  
-> 
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+On Mon, 25 Jan 2021 12:43:20 +0800 DENG Qingfang wrote:
+> MT7530's LED controller can be used as GPIO controller. Add support for
+> it.
 
-Applied, thanks!
+I added back Rob's tag and all the missing tags which patchwork 
+did not register. Damn thing is really flaky right now. Anyway..
+
+Applied, thanks everyone!
 
 _______________________________________________
 Linux-mediatek mailing list
