@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BCA38C433E6
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBD97C433DB
 	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 08:05:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AB2022228
+	by mail.kernel.org (Postfix) with ESMTPS id 6E4652251D
 	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jan 2021 08:05:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AB2022228
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E4652251D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BuRzHjFwmspDgUAfj0xNFMwVp8XJVXGQxQflbV5hx6E=; b=NpcYBCdIvHCx0WZVNbQDkia5z
-	opZ72CHI8L2tKM+Jx5686xcgiVeRMc7DzCenNo7jmHeA7MzbKoneKvBzkRuo2z9Q1WDyAJP7jFKRF
-	v05ImaYfomHy3VYMHa1EHOV9Mx1FJHktn9M6EQq7mttMrPnqCIIjGU5ACUCU01VRGxmJ9nHgZ+TWS
-	RhF0DnptGkUAnYodWdruWr9VOviu7e6JSZuyVG3qxdB+paRPPvVoOZhOHFOiQrAde1YIv7naUhrWo
-	Z9O6nYVM2viAihz/uOtB8B6goosPJCs/3tHsv5iHaGn3v1JYLZWQPCFYXaqVHWiDKfCfX/uOGk3gA
-	SS1YnLPpw==;
+	 bh=G6ARuiWTMB/K+307OrVW2LO8z/9tIY/VvXdLx6n08kI=; b=lj+V7VS+lhGp9W9YZe5OvqMlf
+	NppNY8b2O6meYOYGrY3ppeMvjtDQBELNOIEAidmF+JwjzljHsmhbLoF3EZrybnbi11yswkoPWuiVz
+	fz6WCeeeTaaG3WXezPO4GTSC0TsfWs6pyZBGhi4WNEN+W9veYHEIiO3dL+nmIavWbMqUSYPKEzcSU
+	RNZOyVuXCARs/s+wcL7qQIPNQsG+/TCzX8XJSvaJXtwmX6C/nz1IyFH61N4c1ciHpzJ/+VOTtEFFy
+	DhNhPwMWEC+xI+9ZQkFHNbMsVfsqAOtR73KPMLnplDas5ms4EiJa8HX5U1HXhImgOhVJL3MD9ANLH
+	803n27v/Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4JLt-0006sM-P5; Tue, 26 Jan 2021 08:05:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l4JLt-0006s8-7K; Tue, 26 Jan 2021 08:05:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4JKb-0006L4-Bl; Tue, 26 Jan 2021 08:04:10 +0000
-X-UUID: b987841858cc41208b7390d7e8f6bb6a-20210126
+ id 1l4JKd-0006L7-4f; Tue, 26 Jan 2021 08:04:14 +0000
+X-UUID: 5369370a57e2463c836beb9103f47d5b-20210126
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NM68SegG2VjO83bPTebXAyJcmQkJbXMLHEBMqCY4Bf0=; 
- b=OXvqtZ0ytYDPoezCWLfrZdhOZQT6z4kqMKiq1+1t0QKzM+3c/f+ouHstqw/fS77e+Tt4YBB/kesC5827vJH0Qief9X87nqVehdUy4W6zB6J/RMSvheyafrjJuyLni2hHMPs7WyPtscSgvstf8J5Tk1uKrFr4dVqLKWf/jzkZZzY=;
-X-UUID: b987841858cc41208b7390d7e8f6bb6a-20210126
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=eSM2PlyCjXgb8wCHu4wB8DNTFEp6ZWYs9ugiWL5S8ts=; 
+ b=ezJshE6LUMn5X98x4wMYvGOIab7uCippJhO55YRfhNcIMWBBYelfxw09exhsNdEFnflZ5uNzLx8PPP1bJlH9P+aPTkadh+/mXx2q1a2JZysiijwwxwohn/WvzioxENzC/AXbwzmvTr3FDEMBPx5N5O76IDR7fKQDjzwvgmvTdNM=;
+X-UUID: 5369370a57e2463c836beb9103f47d5b-20210126
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1671847707; Tue, 26 Jan 2021 00:04:04 -0800
+ with ESMTP id 360327665; Tue, 26 Jan 2021 00:04:05 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 26 Jan 2021 00:04:03 -0800
@@ -59,17 +59,17 @@ From: Henry Chen <henryc.chen@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>
-Subject: [PATCH V8 09/12] arm64: dts: mt8183: add dvfsrc related nodes
-Date: Tue, 26 Jan 2021 16:03:51 +0800
-Message-ID: <1611648234-15043-10-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V8 11/12] arm64: dts: mt8183: add dvfsrc regulator nodes
+Date: Tue, 26 Jan 2021 16:03:53 +0800
+Message-ID: <1611648234-15043-12-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1611648234-15043-1-git-send-email-henryc.chen@mediatek.com>
 References: <1611648234-15043-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210126_030409_702413_FF039F30 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20210126_030411_365253_23774103 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,31 +92,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add DDR EMI provider dictating dram interconnect bus performance found on
-MT8192-based platforms
+Add dvfsrc regulator nodes which is for MT8183-based platforms
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 062afe8..e862078 100644
+index e862078..9fefc5e 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -7,6 +7,7 @@
- 
- #include <dt-bindings/clock/mt8183-clk.h>
- #include <dt-bindings/gce/mt8173-gce.h>
-+#include <dt-bindings/interconnect/mtk,mt8183-emi.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/memory/mt8183-larb-port.h>
-@@ -500,6 +501,7 @@
- 		ddr_emi: dvfsrc@10012000 {
+@@ -502,6 +502,12 @@
  			compatible = "mediatek,mt8183-dvfsrc";
  			reg = <0 0x10012000 0 0x1000>;
-+			#interconnect-cells = <1>;
+ 			#interconnect-cells = <1>;
++			dvfsrc_vcore: dvfsrc-vcore {
++				regulator-name = "dvfsrc-vcore";
++				regulator-min-microvolt = <725000>;
++				regulator-max-microvolt = <800000>;
++				regulator-always-on;
++			};
  		};
  
  		pwrap: pwrap@1000d000 {
