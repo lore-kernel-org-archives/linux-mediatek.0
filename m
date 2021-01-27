@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AF80FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 08:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1555C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 08:33:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 501292073C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 08:32:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 501292073C
+	by mail.kernel.org (Postfix) with ESMTPS id 79FBE20644
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 08:33:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79FBE20644
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,60 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:From:Subject:References:Mime-Version:Message-Id:
 	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6/h2QBqzNZjRII9BkKTZIyWSxXOr6bvOkN6wCk5IE1A=; b=1TEuKwRegwHSKzfMKM6z92RJr
-	x6mVr+ydlSuKkbKCQ6IXoBRgJeXdTM5VMp0UEDqwXBgAqBsWXZ1K36NEFlipsxqqNvROpVL/a0iwS
-	KpS2MkGDYuueNFxbUbSEZJpouIY0Dvs1Q7eePCpDJ75XffSfqlTypwSreEZV2GYrp6uuYAhl5mNhs
-	8U3joYqHtTonc6akVswWr1q7dwgDapkb8reCgUgB8UXx3xdxi9bZOvLqW3R96PV8GYCuV9xNxgM92
-	5NeHATwWLcZ4j4uenF7O3qnP3Hd5yjmPhgyGYRP1TsE66qe6aK7NnV1FYqodCWPMsPY+kgqeQPjCS
-	V2JUNna5A==;
+	 bh=z9ij5mBGeTjLXJ74Sn4z1WYhF1/qoQuOyEYFEIg+zOo=; b=khlsiSYSj4twlkhh0x4k2VfWB
+	iFKhE5/v29dQ/v30XJOmTftIvhE4yjFulv2w0QNCDelKbrIS8x8WepjRrE+JQK6GgQhgrquw1Hv6h
+	vwc4zhSVr42eEO5sL91jkaRTeowZVthk4Fr+x8sP94Gmz1sbvuVO9k7fQU+itltYRqOiqcPL2JmOh
+	kgA2wK2JjACIC//umnTCcXhObjfNNIxTKTHEUe8tpSkMMtFi9xs+wn6e+MghEUYuoo5SNm3QRyNwU
+	GmP+dtuAWGZBpr/KGyHbGmCJ1usyD82gwBZmbRMd0+PHTRrAwmAO/kSDYwI8GCaEuVIt0sfZuQAnt
+	4lc5iFmzA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4gFp-0005r4-Sl; Wed, 27 Jan 2021 08:32:45 +0000
-Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749])
+	id 1l4gFn-0005qJ-Gq; Wed, 27 Jan 2021 08:32:43 +0000
+Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4gFo-0005ps-C5
- for linux-mediatek@lists.infradead.org; Wed, 27 Jan 2021 08:32:45 +0000
-Received: by mail-qk1-x749.google.com with SMTP id d194so941760qke.3
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Jan 2021 00:32:41 -0800 (PST)
+ id 1l4gFk-0005oz-Mr
+ for linux-mediatek@lists.infradead.org; Wed, 27 Jan 2021 08:32:41 +0000
+Received: by mail-pg1-x549.google.com with SMTP id 18so1053891pgp.22
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 Jan 2021 00:32:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=RaHwNMHy6Q38UiSowCFhrFgySXI51I5XcIPwGHCFzHA=;
- b=gt9CAJsB4pywidn35l9GS7kegoCleTTUcDZQcAThNVCvSLsL96zDlM02lHQsGfKQ4c
- nsHoKonjbw5h9LIEPq4EboL2a1/SsfYSAUu/BUE/cwZnBWXda+GTE9VNTxAl1MQ9ztOQ
- 6gc8/U7UN3d21+aj9xiGZGioe1yftTZmpYLKQN9YWg+z/TRqfPjgCc+2macCjkKVx28A
- qHAjRc8Qs0f8MmcSNqAu9+fZnYQ5UW0EQT8ibFMEem5CnFSMe5v62wxmy9417Kk0613z
- 8zigCiHr9ge6GEe+D6moVsmhYHXFMeVM4b0IJnK/ECA6/6A/j6higCoRvB91xZxYNpkB
- lwgg==
+ :from:to:cc; bh=LGZTxpAXqFWtECT4mU7eGwfUfjYEwbaGaOmL3s+WPHY=;
+ b=Mk8UO9d9k5Z55wJIilDYOJbDVrADuEvo1RU1iq6uOFWQ2fpZhKzOBeUq40bTXbRUhW
+ H9Nd9XfdYWaApv8HgACBsOSQIMZ9Q/3vTbecNY/Qps4GTc5lhFlAGQWsX9ovK/wsGDh5
+ 0UWExHtK6vDsOFjf/kVISrSdNxBzzWdmNJmnZmUd5HnK+Ek75aatKN7s4buu1pQ/uCKo
+ TdxneGiJN2fv9e7ZRAi9kYTlCnRSyFrrcjcJNtBR7kUjRwvWFO3mHbo/bMHOMRnk86tx
+ oMIO8+9hrYWPcva2sgwg+r4M/1tpmOF1ANT3UzZ0ZwtgXaNrcJQ1mn2bTF3FO74hBpHO
+ dGmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=RaHwNMHy6Q38UiSowCFhrFgySXI51I5XcIPwGHCFzHA=;
- b=b7Rr4ZPkAoLApihJiRbloQX9mzNbeeFzxb7qHUjKouUY52xJ9AF89NUG8zrrGIftoB
- ZAiLfJ7RI9Ik6r3d6nlPkCGXP0stF1eRdDMLNYyZ5e2kB2Cidexg7knjZ2usIFrAuG6L
- x0Rdey4tBguJnG0axHh9+pJVq77CXaqEUV6xpTwLs1IsbO0ggJdhvL781vYSjOWqBAPa
- dtD4xgJoWSGeUnmqp3GPVTtzznMyjUVYcZY8nAXYK0vUqTQbcAh2+0pXekaGJx9iTbPp
- 7ECQn9xna2npDJBUIykst4A6WitrzB0F2zaRgyUmAorEPbgvsQKcpizIxhrKKdv621o+
- y6/A==
-X-Gm-Message-State: AOAM531yYblls1+YH6n1xOscHTKMxXE5At3u9U5L02RrtxNftUuvGgIx
- N9LSWKPN/eS745EiJnNGNl1jacyFQhMs
-X-Google-Smtp-Source: ABdhPJxPwHBmIFY24IEnCMNSrpm1zBwNilXq7JcimT+k2/ombKudG+h8PD0tqcATpEqofEfIQ5a7TWoIaljj
+ bh=LGZTxpAXqFWtECT4mU7eGwfUfjYEwbaGaOmL3s+WPHY=;
+ b=fWcOYmfk28S9yCpmvdcTLhVpFwqii48x7Kt5V+GDjCgfgzRrIwul2SOP7VVUe3T6pr
+ 0Mj2/jILmrndiwJIKhHtxwEVOyQtCyi1GHq9pVOvrbj+Dz53lj4hAXydJo7A33zt+wHO
+ uCfRE1A31rWqjpRQdxbRjEvP3ZiHOTWdlzqav0OWjPA5ldYBhoafCRwFCYO9FsnjMYsc
+ ZdrP5aC7bR9sisNdMAok6RUzd7ccd4myno+PEKz1yK3FxQ41ATptbMVlDSSXmDEqiwh1
+ WcvEAvS9CcRGHJRm0iXAKBTVfq/A/twjIXZS31PExyScorh3vPFC7yMw1Sqx552/Z+Xv
+ LR5w==
+X-Gm-Message-State: AOAM531uywCUAQMI8hNU2YHDMsfQvNyXAPFBW/bfGdyKa9lJCfjNFLBT
+ oGXW766rc1loDLOz2/+Yk213IjtS8wTz
+X-Google-Smtp-Source: ABdhPJy8uOr6FzvmT069kx+Pz1AfQycAO6RoKVfv9FAjkZesiSjZw9ppOmVHAroDlr7jOix3x2+itbb2+XU4
 X-Received: from tzungbi-z840.tpe.corp.google.com
  ([2401:fa00:1:b:d17d:c7bb:69a2:7e2f])
- (user=tzungbi job=sendgmr) by 2002:ad4:4cd0:: with SMTP id
- i16mr2727580qvz.49.1611736360511; Wed, 27 Jan 2021 00:32:40 -0800 (PST)
-Date: Wed, 27 Jan 2021 16:31:36 +0800
+ (user=tzungbi job=sendgmr) by 2002:a62:ce8b:0:b029:1bc:39bd:13ad with SMTP id
+ y133-20020a62ce8b0000b02901bc39bd13admr9563175pfg.24.1611736356753; Wed, 27
+ Jan 2021 00:32:36 -0800 (PST)
+Date: Wed, 27 Jan 2021 16:31:35 +0800
 In-Reply-To: <20210127083136.3745652-1-tzungbi@google.com>
-Message-Id: <20210127083136.3745652-5-tzungbi@google.com>
+Message-Id: <20210127083136.3745652-4-tzungbi@google.com>
 Mime-Version: 1.0
 References: <20210127083136.3745652-1-tzungbi@google.com>
 X-Mailer: git-send-email 2.30.0.280.ga3ce27912f-goog
-Subject: [PATCH v3 4/4] remoteproc/mediatek: support L1TCM
+Subject: [PATCH v3 3/4] dt-bindings: remoteproc: mediatek: add L1TCM memory
+ region
 From: Tzung-Bi Shih <tzungbi@google.com>
 To: ohad@wizery.com, bjorn.andersson@linaro.org, robh+dt@kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210127_033244_417871_2DB0840E 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20210127_033240_759921_F67586D3 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,159 +92,41 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, mathieu.poirier@linaro.org,
- linux-remoteproc@vger.kernel.org, tzungbi@google.com,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
+ Rob Herring <robh@kernel.org>, linux-remoteproc@vger.kernel.org,
+ tzungbi@google.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-L1TCM is a high performance memory region in MT8192 SCP.
+Adds L1TCM memory region.  The reg-name is "l1tcm".
 
-Reads L1TCM memory region from DTS to determine if the machine supports.
-Loads L1TCM memory region to SCP sys if the firmware provides.
-
-Starts from MT8192 SCP, the firmware contains physical addresses for
-each memory region, for instance:
-
-Program Headers:
-  Type   Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
-  LOAD   0xXXXXXX 0xXXXXXXXX 0x10500000 0xXXXXX 0xXXXXX XXX 0xXXXX
-  LOAD   0xXXXXXX 0xXXXXXXXX 0x10700000 0xXXXXX 0xXXXXX XXX 0xXXXX
-  LOAD   0xXXXXXX 0xXXXXXXXX 0x50000000 0xXXXXX 0xXXXXX XXX 0xXXXX
-
-Kernel driver can use the "PhysAddr" (i.e. da in the da_to_va callbacks)
-to know the ELF segment belongs to which region.
-
-To backward compatible to MT8183 SCP, separates the da_to_va callbacks
-for new and legacy version.
-
+Acked-by: Rob Herring <robh@kernel.org>
 Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
 ---
- drivers/remoteproc/mtk_common.h |  5 +++
- drivers/remoteproc/mtk_scp.c    | 56 +++++++++++++++++++++++++++++++--
- 2 files changed, 59 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/remoteproc/mtk,scp.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 204691138677..61901f5efa05 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -77,6 +77,7 @@ struct mtk_scp_of_data {
- 	void (*scp_reset_assert)(struct mtk_scp *scp);
- 	void (*scp_reset_deassert)(struct mtk_scp *scp);
- 	void (*scp_stop)(struct mtk_scp *scp);
-+	void *(*scp_da_to_va)(struct mtk_scp *scp, u64 da, size_t len);
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+index 3ba668bab14b..3f5f78764b60 100644
+--- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+@@ -6,10 +6,10 @@ Mediatek SoCs.
  
- 	u32 host_to_scp_reg;
- 	u32 host_to_scp_int_bit;
-@@ -91,6 +92,10 @@ struct mtk_scp {
- 	void __iomem *reg_base;
- 	void __iomem *sram_base;
- 	size_t sram_size;
-+	phys_addr_t sram_phys;
-+	void __iomem *l1tcm_base;
-+	size_t l1tcm_size;
-+	phys_addr_t l1tcm_phys;
- 
- 	const struct mtk_scp_of_data *data;
- 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 05b157689121..ce727598c41c 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -463,9 +463,8 @@ static int scp_start(struct rproc *rproc)
- 	return ret;
- }
- 
--static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len)
-+static void *mt8183_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
- {
--	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
- 	int offset;
- 
- 	if (da < scp->sram_size) {
-@@ -481,6 +480,42 @@ static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len)
- 	return NULL;
- }
- 
-+static void *mt8192_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
-+{
-+	int offset;
-+
-+	if (da >= scp->sram_phys &&
-+	    (da + len) <= scp->sram_phys + scp->sram_size) {
-+		offset = da - scp->sram_phys;
-+		return (void __force *)scp->sram_base + offset;
-+	}
-+
-+	/* optional memory region */
-+	if (scp->l1tcm_size &&
-+	    da >= scp->l1tcm_phys &&
-+	    (da + len) <= scp->l1tcm_phys + scp->l1tcm_size) {
-+		offset = da - scp->l1tcm_phys;
-+		return (void __force *)scp->l1tcm_base + offset;
-+	}
-+
-+	/* optional memory region */
-+	if (scp->dram_size &&
-+	    da >= scp->dma_addr &&
-+	    (da + len) <= scp->dma_addr + scp->dram_size) {
-+		offset = da - scp->dma_addr;
-+		return scp->cpu_addr + offset;
-+	}
-+
-+	return NULL;
-+}
-+
-+static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len)
-+{
-+	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
-+
-+	return scp->data->scp_da_to_va(scp, da, len);
-+}
-+
- static void mt8183_scp_stop(struct mtk_scp *scp)
- {
- 	/* Disable SCP watchdog */
-@@ -719,6 +754,21 @@ static int scp_probe(struct platform_device *pdev)
- 		goto free_rproc;
- 	}
- 	scp->sram_size = resource_size(res);
-+	scp->sram_phys = res->start;
-+
-+	/* l1tcm is an optional memory region */
-+	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
-+	scp->l1tcm_base = devm_ioremap_resource(dev, res);
-+	if (IS_ERR((__force void *)scp->l1tcm_base)) {
-+		ret = PTR_ERR((__force void *)scp->l1tcm_base);
-+		if (ret != -EINVAL) {
-+			dev_err(dev, "Failed to map l1tcm memory\n");
-+			goto free_rproc;
-+		}
-+	} else {
-+		scp->l1tcm_size = resource_size(res);
-+		scp->l1tcm_phys = res->start;
-+	}
- 
- 	mutex_init(&scp->send_lock);
- 	for (i = 0; i < SCP_IPI_MAX; i++)
-@@ -807,6 +857,7 @@ static const struct mtk_scp_of_data mt8183_of_data = {
- 	.scp_reset_assert = mt8183_scp_reset_assert,
- 	.scp_reset_deassert = mt8183_scp_reset_deassert,
- 	.scp_stop = mt8183_scp_stop,
-+	.scp_da_to_va = mt8183_scp_da_to_va,
- 	.host_to_scp_reg = MT8183_HOST_TO_SCP,
- 	.host_to_scp_int_bit = MT8183_HOST_IPC_INT_BIT,
- 	.ipi_buf_offset = 0x7bdb0,
-@@ -818,6 +869,7 @@ static const struct mtk_scp_of_data mt8192_of_data = {
- 	.scp_reset_assert = mt8192_scp_reset_assert,
- 	.scp_reset_deassert = mt8192_scp_reset_deassert,
- 	.scp_stop = mt8192_scp_stop,
-+	.scp_da_to_va = mt8192_scp_da_to_va,
- 	.host_to_scp_reg = MT8192_GIPC_IN_SET,
- 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
- };
+ Required properties:
+ - compatible		Should be "mediatek,mt8183-scp"
+-- reg			Should contain the address ranges for the two memory
+-			regions, SRAM and CFG.
+-- reg-names		Contains the corresponding names for the two memory
+-			regions. These should be named "sram" & "cfg".
++- reg			Should contain the address ranges for memory regions:
++			SRAM, CFG, and L1TCM.
++- reg-names		Contains the corresponding names for the memory regions:
++			"sram", "cfg", and "l1tcm".
+ - clocks		Clock for co-processor (See: ../clock/clock-bindings.txt)
+ - clock-names		Contains the corresponding name for the clock. This
+ 			should be named "main".
 -- 
 2.30.0.280.ga3ce27912f-goog
 
