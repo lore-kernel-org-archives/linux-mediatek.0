@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 061F5C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 11:29:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A368C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 11:29:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE6FE2076D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 11:29:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE6FE2076D
+	by mail.kernel.org (Postfix) with ESMTPS id 011182076D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 11:29:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 011182076D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1PxDaXfhJk+jNY9WVScvk7U6LLZ03oqGh/yJ/FQKB3I=; b=xvMQ0tXwfPme9++SQa9zWmc1U
-	QqFLZ7bhZO5bBxFFtjpCq9vtcYHcqznF2M4iZb5DMc6YpACo/lfItdazajBCkHqn2P+6gGk1rWY+L
-	n3c7+BlK/ZvR23nLFUz29MLUmp+skhLwpRnMQ3bl9viWhB+3GHfveYeuoWV2yEc0K267Lj/F9tNd9
-	I+6V8EaGRc8UFZpvBGs4gGfvEGyBqMcSzgAiOsBxXlyyz/jn/RTOv2SJs3dfSYehqHdhKFy/kFfiv
-	v95k1t8rtEuyOeAIKhqMr6hd+8QMdo43fGKzrTNtWwdyePlJwHaXz4f6ngtyvr1FVWi3EUrU7WQoz
-	1gI0uBZQA==;
+	 bh=wSepq+89mkz0gXYP8l7cl+D0mkx14M9wuT2iv+dz2J8=; b=0Cp+SqNkGuZ4DehnwH1CKoz6l
+	VK5jxkABDODVdFDliNJVWIuskdnfhuMfKkylzw5kmbQMEYikQ2jH47wrM2C/8YF3K6GDzL9znqgkq
+	2NkUu4DyoONf3Z1QCF2NzZlOvlBWAGKib2iP20FGSrkFHfAzfp6UhgGYEl0G2JPQYsvSvMSd+nPdV
+	kcaIYP71ECfZ7VxV20xdpMBjeM/2ig0T3T0MBBSpm+cmgGBfEPtWV3RNeLXUJmBwbFYwqnUDjDmvz
+	ErkTHfF2IwQBSVErCEE9c9uKR2+e5nUuYyPDCj8fOkKfKHP+/ZnCJKD+AU+vJoSi+fKX625csU8t4
+	MjdjDzY2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4j0V-0007ND-H6; Wed, 27 Jan 2021 11:29:07 +0000
+	id 1l4j0j-0007RH-1t; Wed, 27 Jan 2021 11:29:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4j0S-0007JN-42; Wed, 27 Jan 2021 11:29:05 +0000
-X-UUID: ffe91ee017904c59af834e9136dad2f5-20210127
+ id 1l4j0U-0007Lo-G5; Wed, 27 Jan 2021 11:29:08 +0000
+X-UUID: e0eb2c13203f4a7d8061fb7d8218e99a-20210127
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Z2D5Jx9uHvZi85W2+rxka1Kpt+qXmLajmzt3iryc/Lk=; 
- b=rza/fx5TD2zdl5jE8Tqg0loNqgyJAcQlGrqqRpfuaJSLd6IZZqMFL+fD2exp0zq8j36kJ+XDNQb8b6tnCvcMy9FBFMXFroB7r9/aNksAZwcUEYIeCc+15n7hQB5hfL8UV6im35PtiCYGSm6mqZj0ff3xGKjwLGWbyH9KAZBoyjs=;
-X-UUID: ffe91ee017904c59af834e9136dad2f5-20210127
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=vBX7wOF5hYwfoQ5iImx0Cq6u9nrg95L11st//pLahzw=; 
+ b=D3djRkb05wZNcHsKwW0iiX1wijtCanzKTUjvaripcDvyb/dACXcYLISx8B+OFBO6+DhVPNtciaKkFl+RME36CC4E8myTSVYc5SGvBYvkOHU6AgJ/TpGA7rvunJlYF9nNQtFtsVM4JQpOEmy/rnpYR5Pdv0SB6qbDYiqnsTp6xXc=;
+X-UUID: e0eb2c13203f4a7d8061fb7d8218e99a-20210127
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <eastl.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 687807188; Wed, 27 Jan 2021 03:28:54 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Jan 2021 03:28:52 -0800
+ with ESMTP id 1100244356; Wed, 27 Jan 2021 03:29:02 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Jan 2021 03:29:02 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Jan 2021 19:28:50 +0800
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Jan 2021 19:28:51 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 27 Jan 2021 19:28:50 +0800
+ Frontend Transport; Wed, 27 Jan 2021 19:28:51 +0800
 From: EastL Lee <EastL.Lee@mediatek.com>
 To: Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v1 2/3] arm64: dts: mt6779: add emi node
-Date: Wed, 27 Jan 2021 19:28:43 +0800
-Message-ID: <1611746924-12287-3-git-send-email-EastL.Lee@mediatek.com>
+Subject: [PATCH v1 3/3] arm64: configs: mt6779: enable HAVE_MTK_MC config
+Date: Wed, 27 Jan 2021 19:28:44 +0800
+Message-ID: <1611746924-12287-4-git-send-email-EastL.Lee@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1611746924-12287-1-git-send-email-EastL.Lee@mediatek.com>
 References: <1611746924-12287-1-git-send-email-EastL.Lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C8BF7FB8F1D466F43B7C63376E1CD6C4A3A421856A34155B634B138D7946A9032000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210127_062904_806109_17C52ED2 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20210127_062906_670229_6B1EAEFE 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,57 +90,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add emicen & emichn & emimpu node
+enable HAVE_MTK_MC config
 
 Signed-off-by: EastL Lee <EastL.Lee@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6779.dtsi | 34 ++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-index 370f309..bb34537 100644
---- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-@@ -267,5 +267,39 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		emichn: emichn@10235000 {
-+			compatible = "mediatek,mt6779-emichn",
-+				"mediatek,common-emichn";
-+			reg = <0 0x10235000 0 0x1000>,
-+				<0 0x10245000 0 0x1000>;
-+		};
-+
-+		emicen: emicen@10219000 {
-+			compatible = "mediatek,mt6779-emicen",
-+				"mediatek,common-emicen";
-+			reg = <0 0x10219000 0 0x1000>;
-+			mediatek,emi-reg = <&emichn>;
-+		};
-+
-+		emimpu:emimpu@10226000 {
-+			compatible = "mediatek,mt6779-emimpu",
-+				"mediatek,common-emimpu";
-+			reg = <0 0x10226000 0 0x1000>;
-+			mediatek,emi-reg = <&emicen>;
-+			interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_HIGH 0>;
-+			region_cnt = <32>;
-+			domain_cnt = <16>;
-+			addr_align = <16>;
-+			ap_region = <31>;
-+			ap_apc = <0 5 5 5 0 0 6 5>,
-+				<0 0 5 0 0 1 5 5>;
-+			dump = <0x1f0 0x1f8 0x1fc>;
-+			clear = <0x160 0xffffffff 16>,
-+				<0x200 0x00000003 16>,
-+				<0x1f0 0x80000000 1>;
-+			clear_md = <0x1fc 0x80000000 1>;
-+			ctrl_intf = <1>;
-+			slverr = <0>;
-+		};
- 	};
- };
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 17a2df6..f4de260 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -1091,3 +1091,4 @@ CONFIG_DEBUG_KERNEL=y
+ # CONFIG_DEBUG_PREEMPT is not set
+ # CONFIG_FTRACE is not set
+ CONFIG_MEMTEST=y
++CONFIG_HAVE_MTK_MC=y
 -- 
 1.9.1
 _______________________________________________
