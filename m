@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 642BBC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 04:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E41E3C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 04:55:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5437205CA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 04:55:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5437205CA
+	by mail.kernel.org (Postfix) with ESMTPS id 9A627205CA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 04:55:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A627205CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9WNS0rk2eVVJL6W9jo+iQf93ErW3UfiRjcTfX8l7+eU=; b=scnfC+W7pDWyhDkBs7hqEBFBI
-	9tlpVvRfktjCkSkc4kRrGn404SgF8Dnm1pZjasnGweWTTDOYql447pd5fvjsuvus5f0P73R3PHcu8
-	q8OJpN0VNypVsTCzVG3BkHsC3XTktQJjAP9tfWZlzV7787wgETwoTtsaUu8rVRw9734JRQvcK+qGK
-	dpds+4NGA01mquATWLdhGUIIs+j6/EQsGrAROJG7Ezgyd6G1KPSOFTQNAIPw5T3oFqYIFsxMFLQmX
-	msIshxl3ooA1YGNr3sOVAvLGwH9TEEPSMe/3oJ5amqSRJqLkgmB6nA9nshkduauClC20wbBQ4tjF5
-	zoBcBprIg==;
+	 bh=EJewEI+FwBfi9HojJz7haxd4XIAGFMrxIOv65MpJ3SM=; b=a074lpaYs1wXjXmWl1y+7amEV
+	cPsLRuGNhvLOVxHKw4IQWgb3iHQkoLRw7mvtp7ItwPEM5XBo/VwXb5Jb832+BYGF8Qb15fUDQSELG
+	p2sdv9awCOtWUlXHE169/jdD1wZKnOQo7nMbv7YTgLX8eBgaaasHzfJpahckUwusuFQZDNXxCdVol
+	UslQ0wZRrAJ54Q/VPHyOfT4sAHjjCoQ/WNTJxvdM0DJM+TmcE2Z+F2DDuk/jI3GlIofZps6OKDnNm
+	QVAbF5CPtUNPXMqidAKNqTIW2D42/m6lAAxquQaoxeAbwEHN2bVByzDmKzmyzj69eLKDotI7uR1Ph
+	X2JKd43Mw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4cqy-0003hA-Ed; Wed, 27 Jan 2021 04:54:52 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1l4crB-0003mS-5c; Wed, 27 Jan 2021 04:55:05 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4cqm-0003c7-H0
- for linux-mediatek@lists.infradead.org; Wed, 27 Jan 2021 04:54:41 +0000
-Received: by mail-pl1-x630.google.com with SMTP id b8so352453plh.12
- for <linux-mediatek@lists.infradead.org>; Tue, 26 Jan 2021 20:54:39 -0800 (PST)
+ id 1l4cqo-0003d8-LW
+ for linux-mediatek@lists.infradead.org; Wed, 27 Jan 2021 04:54:43 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id s24so534422pjp.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Jan 2021 20:54:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=XcNzJ3Y1xaPDuXcAllHAfyiKBSKXPgrFbgqPU858HRE=;
- b=c63/2D4Bgx2Pjk09crfuNIuRwe5/wMbu0Ar0zyQsmCvjMtnTas7y/GZBYlWxRjh3Cu
- Nb1V3mC3i2fY9O+EVE8ljfGG/yIlqdt7A80tCikJGekU3DA6bwVdJV2EpvcTM4Bl2Ejs
- w1Y6GR1JZE4dTINAqovV9VIiAh/wsO0SgoYf0=
+ bh=HSBHxC6BVq05Sqe74BC637dMAggq9obPvY1bN+IbxX8=;
+ b=QLrYujKWg6brD9Dn4569hiEZyanZ/c1eZlO9Y8Xkr3ZSqZ1GIkkMBWnx2iweqHKFzN
+ 98LgtgS7J1HKyPBfvqi3D+M21Balppe5d6zFiEFpyw+/iVnP8zFYOM+lB8LdHlVKjcOr
+ XiAKpeDyKeqCp9VkmeyO3GpLbsopCwWYpXvAE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=XcNzJ3Y1xaPDuXcAllHAfyiKBSKXPgrFbgqPU858HRE=;
- b=CyZLRpSHc/0m4uhBRS6OzoI27tKceMfuOf13SYHQ04yU8huFauomsUAT6gZX1thbgB
- msEUMqa/doQMQd2wb0hLSmH9PP0XGXWpbJ5GYr+fwPOsoj7CHMjcZvi8LM+tpOpqbRhr
- agrDMW/etMawIP0rcqXUM2iIdQ/0S22tGQ2OgvmRaHTbIBA8TocqmKkzSb2OG+VmBBh+
- oiyXKpPat/53KShT2g82fFzGsPXYux2hn/D5sVTx9OJ2+cXp2uCQJZZFolhp7+paF4dz
- M8WBsjq4CxR7YoNWDyL41f6M/3CDay9E0SvU/cARjHG1Kqs4Ck8234p8FUISEfJFmcV+
- RBdA==
-X-Gm-Message-State: AOAM531WRM4iLFVsDVibkQTuO8p+v+3+8e6VNgAcHZnP/SC91CPsjK2M
- h6iktAv9whUi3kRFXRRubzulAA==
-X-Google-Smtp-Source: ABdhPJyCyyCu7ohSjPbSyt1lJg9XiT+gg2+ohCN2CtKu56w6RhygO1w9flQc9+fGYUeBaJfTm6dUew==
-X-Received: by 2002:a17:902:7148:b029:df:f45d:41c9 with SMTP id
- u8-20020a1709027148b02900dff45d41c9mr9676516plm.3.1611723277218; 
- Tue, 26 Jan 2021 20:54:37 -0800 (PST)
+ bh=HSBHxC6BVq05Sqe74BC637dMAggq9obPvY1bN+IbxX8=;
+ b=PKqV3KmtDegjdyE71VB6zbg3oSgllasRRV4imeo3IrD17Rod3Vxmqky0emmLgVZlB1
+ 7f7G5BjHVnjSj1mjjUgeLm2SdtXcQtFsapp6pJj1fJfwsHP4rf1oGehlzlCIXOKkpFCF
+ 2N0yOy7xuUwkCUf268sOt9889u9buJYRMiO6OmawrXvlvBaJyCqQ3p1lsEUUTJ+gi7X8
+ uxEhm0NtItBK4kNR5fF8mKgA3IuKzcCOXfialFl0qMsRD0XjoAG/9qiectYC8gH2QYdd
+ fXwCm7uBsbZ5Tf2m9MgPcJKlWnmXN4cw90BHNB24jcHqG8HUnnmRO5a0coKM3O1Uk8cz
+ KaXA==
+X-Gm-Message-State: AOAM532ArlLC9n5n5yH9sdrrTrblAnQ4Fwtr1B73bcnC3zFK6cVoxewj
+ X+nHEpHVHweehrPUMz/tpTDNxw==
+X-Google-Smtp-Source: ABdhPJy/lxAmlDmjnchY5j6fyQaiGPSUiu+V7cni9mncc8A/hA+9bzzULC0varJkx+Ggb//BqKRJVQ==
+X-Received: by 2002:a17:902:70c6:b029:df:d62a:8c69 with SMTP id
+ l6-20020a17090270c6b02900dfd62a8c69mr9586813plt.20.1611723280370; 
+ Tue, 26 Jan 2021 20:54:40 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:e0a5:d2fc:aaad:1e4a])
- by smtp.gmail.com with ESMTPSA id a141sm684484pfa.189.2021.01.26.20.54.34
+ by smtp.gmail.com with ESMTPSA id a141sm684484pfa.189.2021.01.26.20.54.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Jan 2021 20:54:36 -0800 (PST)
+ Tue, 26 Jan 2021 20:54:39 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v10 2/9] arm64: dts: mt8183: refine gamma compatible name
-Date: Wed, 27 Jan 2021 12:54:15 +0800
-Message-Id: <20210127045422.2418917-3-hsinyi@chromium.org>
+Subject: [PATCH v10 3/9] drm/mediatek: add RDMA fifo size error handle
+Date: Wed, 27 Jan 2021 12:54:16 +0800
+Message-Id: <20210127045422.2418917-4-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.30.0.280.ga3ce27912f-goog
 In-Reply-To: <20210127045422.2418917-1-hsinyi@chromium.org>
 References: <20210127045422.2418917-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210126_235440_600484_E71E086F 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20210126_235442_746897_2ADB9358 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,29 +104,31 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
-mt8183 gamma is different with mt8173
-remove mt8173 compatible name for mt8183 gamma
+This patch add RDMA fifo size error handle
+rdma fifo size will not always bigger than the calculated threshold
+if that case happened, we need set fifo size as the threshold
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 6c84ccb709af6..9c0073cfad452 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1055,8 +1055,7 @@ aal0: aal@14010000 {
- 		};
- 
- 		gamma0: gamma@14011000 {
--			compatible = "mediatek,mt8183-disp-gamma",
--				     "mediatek,mt8173-disp-gamma";
-+			compatible = "mediatek,mt8183-disp-gamma";
- 			reg = <0 0x14011000 0 0x1000>;
- 			interrupts = <GIC_SPI 234 IRQ_TYPE_LEVEL_LOW>;
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index b84004394970f..04b9542010b00 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -168,6 +168,10 @@ void mtk_rdma_config(struct device *dev, unsigned int width,
+ 	 * account for blanking, and with a pixel depth of 4 bytes:
+ 	 */
+ 	threshold = width * height * vrefresh * 4 * 7 / 1000000;
++
++	if (threshold > rdma_fifo_size)
++		threshold = rdma_fifo_size;
++
+ 	reg = RDMA_FIFO_UNDERFLOW_EN |
+ 	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
+ 	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
 -- 
 2.30.0.280.ga3ce27912f-goog
 
