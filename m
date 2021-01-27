@@ -2,20 +2,19 @@ Return-Path: <SRS0=2T+p=G6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D2BFC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41ACFC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A24B264D9E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A24B264D9E
+	by mail.kernel.org (Postfix) with ESMTPS id BBDD164DA0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBDD164DA0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TNPEJbKe2digAM01kGqeJ0LLMm0/rIC5s6VPDVDKXhc=; b=lwiM8a9w/dgzH0jqsU9Jo33l+
-	yhXFn26Dv5P7is5ljRF5NkK4mH7XWPiRVAMvk7NKhouKis4EjhLYwqzpGQbIJFx13rPwJq/8Zi2Eo
-	zpexX3p/9ez976ggo2P7hoCUsl8f+OAzqM0TtVdVk7hDCyVFr+Iih1rs/mVR3JHrvvnvpB4vNdl61
-	mj+070P4L1vOZjGa7XRmALW0KVNrexCh6cPTn2VBgTwEA5NiLO3JQ1wdEBq5DInMTg7ReAeAyV8OK
-	Fks9MeX75OohaEOQReQl094i7UsmMgXWEOiAMrcbhKnUyJsGEgUDS9oTmlaBgoz5PA/sWLm1gQJ3Y
-	MMmTR68qw==;
+	 bh=MNH7fSR1j5sc7Vi6i0Ol81w85eHV8M+ZKsVlqVm7Nxw=; b=1Yo4duRTvx7T/Ctzme25LL4rU
+	QVUdDlh6TaMxTNXONn3kaRqRHA+2Eb2263na73CCyptgtmeWbotx4ULf0H3Qv5BTU4Ng7749gT1i9
+	WIzdKd2OCFWXJgyo/WPnkbAVStyZSlf5loTvt06fw4n3nPUuJ46cWQU1P1Amn9Ror3O/tJGz5s7vf
+	1DyCZ7BQxdoDSvNOSF+mvtntTBkoLTtcdSpaJCPdTz51FHZP5eZlVSzanVzLa1aMy/0hCxCJmLHgN
+	8o/FToipLHYnIICi7j1iYGYUebmrh4vP6glVuY8qByT8+oNOEjbw1E+Nw/GM/9Cj37k261zDRpQ01
+	O/Bvp2mhg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4qa6-00024s-Gy; Wed, 27 Jan 2021 19:34:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l4qa9-00025M-98; Wed, 27 Jan 2021 19:34:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4qZu-0001z3-Ob
+ id 1l4qZw-0001yQ-6c
  for linux-mediatek@lists.infradead.org; Wed, 27 Jan 2021 19:34:16 +0000
-X-UUID: 0774fdef43e5471fa6a6a5c13d364a76-20210127
+X-UUID: f7493ef00e4c4a598d1e08fb6a3772fd-20210127
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=QvDOiNZ0574JH/eD6uGEtCBo65zDIlHxycXd+88Iwlw=; 
- b=NEOXwbrcbxCRVW53EOBRRNGTAB/YdBvTTGoZTH8KYJCTTYA7155uwsgoXX7SIiEwW4LCA19YU08Gmj/CmckOFaTnNx1wUZ+oIond8LnDkOe6+IdzcsPqUzZHWKeEvlbUn5LzQ7EEI/a0mfTjrRzyryX5BqlCh3dL3e1SnTOJp/k=;
-X-UUID: 0774fdef43e5471fa6a6a5c13d364a76-20210127
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=JdkX1qMJonrJgBnCct7coJll20uHcmN0R5gLrjSwn7o=; 
+ b=uChNWdCGUKNlfzXyUGUw9KFoclPYln/TOgkilSUNq4NUU+y1IskingNpeQByoVUOK9FN57OdKBH9CNDo4vYV/yC+/mBit24SqAaMdOp1/X8jsFX06HU4mFPAli56DbEmZrGPjsmXpbAIBB72G8Vyk12B+TK+VEbEcA1mUauGlh4=;
+X-UUID: f7493ef00e4c4a598d1e08fb6a3772fd-20210127
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 910225163; Wed, 27 Jan 2021 11:34:02 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Jan 2021 11:34:01 -0800
+ with ESMTP id 1172763540; Wed, 27 Jan 2021 11:34:08 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Jan 2021 11:34:06 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 28 Jan 2021 03:33:59 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Thu, 28 Jan 2021 03:33:59 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH -next v8 07/20] mt76: mt7921: add debugfs support
-Date: Thu, 28 Jan 2021 03:33:44 +0800
-Message-ID: <12d9288963156467e17e498345bdd4172e4f6d84.1611774181.git.objelf@gmail.com>
+Subject: [PATCH -next v8 04/20] mt76: mt7921: add EEPROM support
+Date: Thu, 28 Jan 2021 03:33:41 +0800
+Message-ID: <feeda1b273d6200a4e5cf085c9c3c4db1f72ff85.1611774181.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1611774181.git.objelf@gmail.com>
 References: <cover.1611774181.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210127_143411_031757_56ECFE01 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20210127_143412_503266_2439FB7A 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,7 +92,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add debugfs support to dump driver statistics and hardware details.
+Add EEPROM support to MT7921 to determine the capability the card has
+such as indentificaiton, MAC address, the band and antenna number the
+card able to support.
 
 Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
@@ -101,208 +102,151 @@ Co-developed-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Soul Huang <Soul.Huang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7921/debugfs.c   | 178 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7921/init.c  |   2 +-
- 2 files changed, 179 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
+ .../wireless/mediatek/mt76/mt7921/eeprom.c    | 100 ++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/eeprom.h    |  27 +++++
+ 2 files changed, 127 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/eeprom.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.c
 new file mode 100644
-index 000000000000..9cdeb14cc933
+index 000000000000..691d14a1a7bf
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-@@ -0,0 +1,178 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.c
+@@ -0,0 +1,100 @@
 +// SPDX-License-Identifier: ISC
 +/* Copyright (C) 2020 MediaTek Inc. */
 +
 +#include "mt7921.h"
 +#include "eeprom.h"
 +
-+static int
-+mt7921_fw_debug_set(void *data, u64 val)
++static u32 mt7921_eeprom_read(struct mt7921_dev *dev, u32 offset)
 +{
-+	struct mt7921_dev *dev = data;
++	u8 *data = dev->mt76.eeprom.data;
 +
-+	dev->fw_debug = (u8)val;
++	if (data[offset] == 0xff)
++		mt7921_mcu_get_eeprom(dev, offset);
 +
-+	mt7921_mcu_fw_log_2_host(dev, dev->fw_debug);
++	return data[offset];
++}
++
++static int mt7921_eeprom_load(struct mt7921_dev *dev)
++{
++	int ret;
++
++	ret = mt76_eeprom_init(&dev->mt76, MT7921_EEPROM_SIZE);
++	if (ret < 0)
++		return ret;
++
++	memset(dev->mt76.eeprom.data, -1, MT7921_EEPROM_SIZE);
 +
 +	return 0;
 +}
 +
-+static int
-+mt7921_fw_debug_get(void *data, u64 *val)
++static int mt7921_check_eeprom(struct mt7921_dev *dev)
 +{
-+	struct mt7921_dev *dev = data;
++	u8 *eeprom = dev->mt76.eeprom.data;
++	u16 val;
 +
-+	*val = dev->fw_debug;
++	mt7921_eeprom_read(dev, MT_EE_CHIP_ID);
++	val = get_unaligned_le16(eeprom);
 +
-+	return 0;
-+}
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug, mt7921_fw_debug_get,
-+			 mt7921_fw_debug_set, "%lld\n");
-+
-+static void
-+mt7921_ampdu_stat_read_phy(struct mt7921_phy *phy,
-+			   struct seq_file *file)
-+{
-+	struct mt7921_dev *dev = file->private;
-+	int bound[15], range[4], i;
-+
-+	if (!phy)
-+		return;
-+
-+	/* Tx ampdu stat */
-+	for (i = 0; i < ARRAY_SIZE(range); i++)
-+		range[i] = mt76_rr(dev, MT_MIB_ARNG(0, i));
-+
-+	for (i = 0; i < ARRAY_SIZE(bound); i++)
-+		bound[i] = MT_MIB_ARNCR_RANGE(range[i / 4], i) + 1;
-+
-+	seq_printf(file, "\nPhy0\n");
-+
-+	seq_printf(file, "Length: %8d | ", bound[0]);
-+	for (i = 0; i < ARRAY_SIZE(bound) - 1; i++)
-+		seq_printf(file, "%3d -%3d | ",
-+			   bound[i] + 1, bound[i + 1]);
-+
-+	seq_puts(file, "\nCount:  ");
-+	for (i = 0; i < ARRAY_SIZE(bound); i++)
-+		seq_printf(file, "%8d | ", dev->mt76.aggr_stats[i]);
-+	seq_puts(file, "\n");
-+
-+	seq_printf(file, "BA miss count: %d\n", phy->mib.ba_miss_cnt);
-+}
-+
-+static int
-+mt7921_tx_stats_read(struct seq_file *file, void *data)
-+{
-+	struct mt7921_dev *dev = file->private;
-+	int stat[8], i, n;
-+
-+	mt7921_ampdu_stat_read_phy(&dev->phy, file);
-+
-+	/* Tx amsdu info */
-+	seq_puts(file, "Tx MSDU stat:\n");
-+	for (i = 0, n = 0; i < ARRAY_SIZE(stat); i++) {
-+		stat[i] = mt76_rr(dev,  MT_PLE_AMSDU_PACK_MSDU_CNT(i));
-+		n += stat[i];
++	switch (val) {
++	case 0x7961:
++		return 0;
++	default:
++		return -EINVAL;
 +	}
++}
 +
-+	for (i = 0; i < ARRAY_SIZE(stat); i++) {
-+		seq_printf(file, "AMSDU pack count of %d MSDU in TXD: 0x%x ",
-+			   i + 1, stat[i]);
-+		if (n != 0)
-+			seq_printf(file, "(%d%%)\n", stat[i] * 100 / n);
-+		else
-+			seq_puts(file, "\n");
++void mt7921_eeprom_parse_band_config(struct mt7921_phy *phy)
++{
++	struct mt7921_dev *dev = phy->dev;
++	u32 val;
++
++	val = mt7921_eeprom_read(dev, MT_EE_WIFI_CONF);
++	val = FIELD_GET(MT_EE_WIFI_CONF_BAND_SEL, val);
++
++	switch (val) {
++	case MT_EE_5GHZ:
++		phy->mt76->cap.has_5ghz = true;
++		break;
++	case MT_EE_2GHZ:
++		phy->mt76->cap.has_2ghz = true;
++		break;
++	default:
++		phy->mt76->cap.has_2ghz = true;
++		phy->mt76->cap.has_5ghz = true;
++		break;
 +	}
++}
++
++static void mt7921_eeprom_parse_hw_cap(struct mt7921_dev *dev)
++{
++	u8 tx_mask;
++
++	mt7921_eeprom_parse_band_config(&dev->phy);
++
++	/* TODO: read NSS with MCU_CMD_NIC_CAPV2 */
++	tx_mask = 2;
++	dev->chainmask = BIT(tx_mask) - 1;
++	dev->mphy.antenna_mask = dev->chainmask;
++	dev->mphy.chainmask = dev->mphy.antenna_mask;
++}
++
++int mt7921_eeprom_init(struct mt7921_dev *dev)
++{
++	int ret;
++
++	ret = mt7921_eeprom_load(dev);
++	if (ret < 0)
++		return ret;
++
++	ret = mt7921_check_eeprom(dev);
++	if (ret)
++		return ret;
++
++	mt7921_eeprom_parse_hw_cap(dev);
++	memcpy(dev->mphy.macaddr, dev->mt76.eeprom.data + MT_EE_MAC_ADDR,
++	       ETH_ALEN);
++
++	mt76_eeprom_override(&dev->mphy);
 +
 +	return 0;
 +}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
+new file mode 100644
+index 000000000000..54f30401343c
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
+@@ -0,0 +1,27 @@
++/* SPDX-License-Identifier: ISC */
++/* Copyright (C) 2020 MediaTek Inc. */
 +
-+static int
-+mt7921_tx_stats_open(struct inode *inode, struct file *f)
-+{
-+	return single_open(f, mt7921_tx_stats_read, inode->i_private);
-+}
++#ifndef __MT7921_EEPROM_H
++#define __MT7921_EEPROM_H
 +
-+static const struct file_operations fops_tx_stats = {
-+	.open = mt7921_tx_stats_open,
-+	.read = seq_read,
-+	.llseek = seq_lseek,
-+	.release = single_release,
-+	.owner = THIS_MODULE,
++#include "mt7921.h"
++
++enum mt7921_eeprom_field {
++	MT_EE_CHIP_ID =		0x000,
++	MT_EE_VERSION =		0x002,
++	MT_EE_MAC_ADDR =	0x004,
++	MT_EE_WIFI_CONF =	0x07c,
++	__MT_EE_MAX =		0x3bf
 +};
 +
-+static int
-+mt7921_queues_acq(struct seq_file *s, void *data)
-+{
-+	struct mt7921_dev *dev = dev_get_drvdata(s->private);
-+	int i;
++#define MT_EE_WIFI_CONF_TX_MASK			BIT(0)
++#define MT_EE_WIFI_CONF_BAND_SEL		GENMASK(3, 2)
 +
-+	for (i = 0; i < 16; i++) {
-+		int j, acs = i / 4, index = i % 4;
-+		u32 ctrl, val, qlen = 0;
++enum mt7921_eeprom_band {
++	MT_EE_NA,
++	MT_EE_5GHZ,
++	MT_EE_2GHZ,
++	MT_EE_DUAL_BAND,
++};
 +
-+		val = mt76_rr(dev, MT_PLE_AC_QEMPTY(acs, index));
-+		ctrl = BIT(31) | BIT(15) | (acs << 8);
-+
-+		for (j = 0; j < 32; j++) {
-+			if (val & BIT(j))
-+				continue;
-+
-+			mt76_wr(dev, MT_PLE_FL_Q0_CTRL,
-+				ctrl | (j + (index << 5)));
-+			qlen += mt76_get_field(dev, MT_PLE_FL_Q3_CTRL,
-+					       GENMASK(11, 0));
-+		}
-+		seq_printf(s, "AC%d%d: queued=%d\n", acs, index, qlen);
-+	}
-+
-+	return 0;
-+}
-+
-+static int
-+mt7921_queues_read(struct seq_file *s, void *data)
-+{
-+	struct mt7921_dev *dev = dev_get_drvdata(s->private);
-+	struct {
-+		struct mt76_queue *q;
-+		char *queue;
-+	} queue_map[] = {
-+		{ dev->mphy.q_tx[MT_TXQ_BE],	 "WFDMA0" },
-+		{ dev->mt76.q_mcu[MT_MCUQ_WM],	 "MCUWM"  },
-+		{ dev->mt76.q_mcu[MT_MCUQ_FWDL], "MCUFWQ" },
-+	};
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(queue_map); i++) {
-+		struct mt76_queue *q = queue_map[i].q;
-+
-+		if (!q)
-+			continue;
-+
-+		seq_printf(s,
-+			   "%s:	queued=%d head=%d tail=%d\n",
-+			   queue_map[i].queue, q->queued, q->head,
-+			   q->tail);
-+	}
-+
-+	return 0;
-+}
-+
-+int mt7921_init_debugfs(struct mt7921_dev *dev)
-+{
-+	struct dentry *dir;
-+
-+	dir = mt76_register_debugfs(&dev->mt76);
-+	if (!dir)
-+		return -ENOMEM;
-+
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "queues", dir,
-+				    mt7921_queues_read);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "acq", dir,
-+				    mt7921_queues_acq);
-+	debugfs_create_file("tx_stats", 0400, dir, dev, &fops_tx_stats);
-+	debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
-+
-+	return 0;
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 33acc089eb6a..1ce87a4bfdd9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -232,7 +232,7 @@ int mt7921_register_device(struct mt7921_dev *dev)
- 
- 	ieee80211_queue_work(mt76_hw(dev), &dev->init_work);
- 
--	return 0;
-+	return mt7921_init_debugfs(dev);
- }
- 
- void mt7921_unregister_device(struct mt7921_dev *dev)
++#endif
 -- 
 2.25.1
 _______________________________________________
