@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B76E7C433E6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 89DB6C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4F85564DA3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F85564DA3
+	by mail.kernel.org (Postfix) with ESMTPS id 3ECFB64D9E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jan 2021 19:34:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3ECFB64D9E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MDZDbHkLawK4f1DVUK0Gkyfe10uVExPutx2og5s5+Lc=; b=mxA6OmmKendA/qbU9GXdELET7
-	WAQ5CR2rYRjE+5xucCFP85cmFzSmhc0lTEctSiKELeZNhBEaOe4OL+18SXleIF/uw8Vbe3V6hh5wJ
-	/LmNOPw2CywGte53EcTV1bGEVzs54kwh1dHMAxKdjz7F6q6BGLSBjdQ1Et2Z9oYUHIFzL+TAmNMFA
-	w4/2fFO9APNiaZwecJc/JyvozAdtla30s4X3O0yFxfD0fKVN1oVFmFp+lI+npoUrIsL9SjSjuD5aH
-	qLLOesgBwnEfDuWevvl9Y+0kxO3RoAGV5mw8aeLWc+Uf0KD29fyTEDuVBRe73uE9WW48Us17nLlvm
-	Ouu+HqPiw==;
+	 bh=d8LsbZ+trA1CYd2iWCRG/upBr0yrajsD0pGfYL2qSv0=; b=VzRntfqZQk5uOX3CXWhi8JAoo
+	z+4WvE1oUWf6Z4OPAWh0JNv5gGym47aL2RHdEy3/pQXnaSg2xvYRoutxYeFNT+pGwVA9/6DmbOBC1
+	MCaR7AUJeD8gmYOPGAjAdScH9tk4EUbMs1gWADaBCpN74muDCPfxryIzw0+Ymb3rICjV07AdEZs5r
+	s5YTa3c7Lmhvspgq1lvcX02NJUV3tu7FCTLmds6C6XILMaFlHD4ylVHfOQkJ43QYbbrf1JCNYQqJP
+	0XQuRn1dpWy7WS135EXXPUdvcEbtrMbM4hdgn3LTJsLimjljByWS+wgJv19jyNkDWH8BAi77dEn7k
+	WqwDG6l+g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4qaB-00026d-JK; Wed, 27 Jan 2021 19:34:27 +0000
+	id 1l4qaE-00027v-Bo; Wed, 27 Jan 2021 19:34:30 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4qZw-0001zM-1b
- for linux-mediatek@lists.infradead.org; Wed, 27 Jan 2021 19:34:17 +0000
-X-UUID: 1aacfc85ad5f4064b3431ce0a0c6fcb8-20210127
+ id 1l4qa1-0001z3-Qw
+ for linux-mediatek@lists.infradead.org; Wed, 27 Jan 2021 19:34:20 +0000
+X-UUID: 73fc55d921864337881a8ef5ef151d1d-20210127
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=5bzNvC0B8u8OwDYezI+8TWWQ5a0UPZZIQYJ6nZ1rRZU=; 
- b=Hv7RwyHasYFTI+DntSoVupO1pfbUqYkOp+lry7RmLHF1nmb0vZrNmktaA2geVakXB2NfrHGIyoQfqDveEIYqwJJcV0GPucccZdDI3why76KgSf9xnMItXXesTOE1CQ4Sc4/Qo3Yd7vv2OCV/56KVIZeDYp/W++/8M8REkNRH2EE=;
-X-UUID: 1aacfc85ad5f4064b3431ce0a0c6fcb8-20210127
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=Dc7/fux/V2iBhc0xPrOwNGs90Pq/vpwcxqN34ZmVoSQ=; 
+ b=gjcgrPT6Zwn6kIQaaqOyA9dkbvCg9g5zRtAYX5Z8peIgsXE720pS5E5M4WaQ+LXUdqr34nFfVWObhVdARR8eue/Q02GQ/YwWUwZoShRaXneMUWgKr7EZ+za3kwjWTt7HsMIGbtmAmerwAPBhIAdHr71zGVSYlbWYZMcidysO6/E=;
+X-UUID: 73fc55d921864337881a8ef5ef151d1d-20210127
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1925181835; Wed, 27 Jan 2021 11:34:05 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 725318261; Wed, 27 Jan 2021 11:34:09 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Jan 2021 11:34:03 -0800
+ 15.0.1497.2; Wed, 27 Jan 2021 11:34:08 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Jan 2021 03:34:02 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Jan 2021 03:34:01 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 28 Jan 2021 03:34:02 +0800
+ Frontend Transport; Thu, 28 Jan 2021 03:34:01 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH -next v8 19/20] mt76: mt7921: add coredump support
-Date: Thu, 28 Jan 2021 03:33:56 +0800
-Message-ID: <4c415c27694208ebc46d606b0bdb92cdf8a3d1a0.1611774181.git.objelf@gmail.com>
+Subject: [PATCH -next v8 17/20] mt76: mt7921: introduce regdomain notifier
+ support
+Date: Thu, 28 Jan 2021 03:33:54 +0800
+Message-ID: <1d5a5f1016e77522cdfc392ddd73bc733503a0f9.1611774181.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1611774181.git.objelf@gmail.com>
 References: <cover.1611774181.git.objelf@gmail.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 137CED65C0CED4A29AFD344D7B73D5A3A1B78EB94A31FE5FD13E17A17D2072182000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210127_143412_363711_6256164B 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20210127_143418_208277_6AA04D5F 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,305 +93,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Introduce coredump support to mt7921 driver.
+Register regdomain notifier to determine the channel domain the hw scan
+should rely on.
 
-The coredump would be produced when MCU met the fatal error or driver
-sent out the specific cmd to force trigger it.
-
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt76_connac.h  |  9 ++++
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 34 +++++++++++++++
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  4 ++
- .../net/wireless/mediatek/mt76/mt7921/Kconfig |  1 +
- .../wireless/mediatek/mt76/mt7921/debugfs.c   | 15 +++++++
- .../net/wireless/mediatek/mt76/mt7921/init.c  |  2 +
- .../net/wireless/mediatek/mt76/mt7921/mac.c   | 43 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  5 +++
- .../net/wireless/mediatek/mt76/mt7921/mcu.h   |  1 +
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  4 +-
- 10 files changed, 117 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index ff244d4758ab..0d58606391b0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -11,6 +11,9 @@
- #define MT76_CONNAC_MAX_SCHED_SCAN_SSID		10
- #define MT76_CONNAC_MAX_SCAN_MATCH		16
- 
-+#define MT76_CONNAC_COREDUMP_TIMEOUT		(HZ / 20)
-+#define MT76_CONNAC_COREDUMP_SZ			(128 * 1024)
-+
- enum {
- 	CMD_CBW_20MHZ = IEEE80211_STA_RX_BW_20,
- 	CMD_CBW_40MHZ = IEEE80211_STA_RX_BW_40,
-@@ -57,6 +60,12 @@ struct mt76_connac_pm {
- 	unsigned long idle_timeout;
- };
- 
-+struct mt76_connac_coredump {
-+	struct sk_buff_head msg_list;
-+	struct delayed_work work;
-+	unsigned long last_activity;
-+};
-+
- extern const struct wiphy_wowlan_support mt76_connac_wowlan_support;
- 
- static inline bool is_mt7921(struct mt76_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 40c10510b32a..6cbccfb05f8b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1497,6 +1497,40 @@ int mt76_connac_mcu_sched_scan_enable(struct mt76_phy *phy,
- }
- EXPORT_SYMBOL_GPL(mt76_connac_mcu_sched_scan_enable);
- 
-+int mt76_connac_mcu_chip_config(struct mt76_dev *dev)
-+{
-+	struct {
-+		__le16 id;
-+		u8 type;
-+		u8 resp_type;
-+		__le16 data_size;
-+		__le16 resv;
-+		u8 data[320];
-+	} req = {
-+		.resp_type = 0,
-+	};
-+
-+	memcpy(req.data, "assert", 7);
-+
-+	return mt76_mcu_send_msg(dev, MCU_CMD_CHIP_CONFIG, &req, sizeof(req),
-+				 false);
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_mcu_chip_config);
-+
-+void mt76_connac_mcu_coredump_event(struct mt76_dev *dev, struct sk_buff *skb,
-+				    struct mt76_connac_coredump *coredump)
-+{
-+	spin_lock_bh(&dev->lock);
-+	__skb_queue_tail(&coredump->msg_list, skb);
-+	spin_unlock_bh(&dev->lock);
-+
-+	coredump->last_activity = jiffies;
-+
-+	queue_delayed_work(dev->wq, &coredump->work,
-+			   MT76_CONNAC_COREDUMP_TIMEOUT);
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_mcu_coredump_event);
-+
- #ifdef CONFIG_PM
- 
- const struct wiphy_wowlan_support mt76_connac_wowlan_support = {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 60aac6f2d16c..c1e1df5f7cd7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -561,6 +561,7 @@ enum {
- 	MCU_CMD_SCHED_SCAN_REQ = MCU_CE_PREFIX | 0x62,
- 	MCU_CMD_REG_WRITE = MCU_CE_PREFIX | 0xc0,
- 	MCU_CMD_REG_READ = MCU_CE_PREFIX | MCU_QUERY_MASK | 0xc0,
-+	MCU_CMD_CHIP_CONFIG = MCU_CE_PREFIX | 0xca,
- 	MCU_CMD_FWLOG_2_HOST = MCU_CE_PREFIX | 0xc5,
- 	MCU_CMD_GET_WTBL = MCU_CE_PREFIX | 0xcd,
- };
-@@ -972,4 +973,7 @@ int mt76_connac_mcu_update_gtk_rekey(struct ieee80211_hw *hw,
- int mt76_connac_mcu_set_hif_suspend(struct mt76_dev *dev, bool suspend);
- void mt76_connac_mcu_set_suspend_iter(void *priv, u8 *mac,
- 				      struct ieee80211_vif *vif);
-+int mt76_connac_mcu_chip_config(struct mt76_dev *dev);
-+void mt76_connac_mcu_coredump_event(struct mt76_dev *dev, struct sk_buff *skb,
-+				    struct mt76_connac_coredump *coredump);
- #endif /* __MT76_CONNAC_MCU_H */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-index 92db70d11c36..001f2b9cec26 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
-@@ -2,6 +2,7 @@
- config MT7921E
- 	tristate "MediaTek MT7921E (PCIe) support"
- 	select MT76_CONNAC_LIB
-+	select WANT_DEV_COREDUMP
- 	depends on MAC80211
- 	depends on PCI
- 	help
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-index 390e0e49724d..0dc8e25e18e4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-@@ -213,6 +213,20 @@ mt7921_pm_idle_timeout_get(void *data, u64 *val)
- DEFINE_DEBUGFS_ATTRIBUTE(fops_pm_idle_timeout, mt7921_pm_idle_timeout_get,
- 			 mt7921_pm_idle_timeout_set, "%lld\n");
- 
-+static int mt7921_config(void *data, u64 val)
-+{
-+	struct mt7921_dev *dev = data;
-+	int ret;
-+
-+	mt7921_mutex_acquire(dev);
-+	ret = mt76_connac_mcu_chip_config(&dev->mt76);
-+	mt7921_mutex_release(dev);
-+
-+	return ret;
-+}
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_config, NULL, mt7921_config, "%lld\n");
-+
- int mt7921_init_debugfs(struct mt7921_dev *dev)
- {
- 	struct dentry *dir;
-@@ -230,6 +244,7 @@ int mt7921_init_debugfs(struct mt7921_dev *dev)
- 	debugfs_create_file("runtime-pm", 0600, dir, dev, &fops_pm);
- 	debugfs_create_file("idle-timeout", 0600, dir, dev,
- 			    &fops_pm_idle_timeout);
-+	debugfs_create_file("chip_config", 0600, dir, dev, &fops_config);
- 
- 	return 0;
- }
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 2a80b68a588a..89a13b4a74a4 100644
+index efc3e94f89d5..2a80b68a588a 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -226,7 +226,9 @@ int mt7921_register_device(struct mt7921_dev *dev)
- 	INIT_LIST_HEAD(&dev->phy.stats_list);
- 	INIT_DELAYED_WORK(&dev->mphy.mac_work, mt7921_mac_work);
- 	INIT_DELAYED_WORK(&dev->phy.scan_work, mt7921_scan_work);
-+	INIT_DELAYED_WORK(&dev->coredump.work, mt7921_coredump_work);
- 	skb_queue_head_init(&dev->phy.scan_event_list);
-+	skb_queue_head_init(&dev->coredump.msg_list);
- 	INIT_LIST_HEAD(&dev->sta_poll_list);
- 	spin_lock_init(&dev->sta_poll_lock);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 006cf7fe1bff..3f9097481a5e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -1,11 +1,13 @@
- // SPDX-License-Identifier: ISC
- /* Copyright (C) 2020 MediaTek Inc. */
- 
-+#include <linux/devcoredump.h>
- #include <linux/etherdevice.h>
- #include <linux/timekeeping.h>
- #include "mt7921.h"
- #include "../dma.h"
- #include "mac.h"
-+#include "mcu.h"
- 
- #define to_rssi(field, rxv)	((FIELD_GET(field, rxv) - 220) / 2)
- 
-@@ -1471,3 +1473,44 @@ int mt7921_mac_set_beacon_filter(struct mt7921_phy *phy,
- 
- 	return 0;
- }
-+
-+void mt7921_coredump_work(struct work_struct *work)
-+{
-+	struct mt7921_dev *dev;
-+	char *dump, *data;
-+
-+	dev = (struct mt7921_dev *)container_of(work, struct mt7921_dev,
-+						coredump.work.work);
-+
-+	if (time_is_after_jiffies(dev->coredump.last_activity +
-+				  4 * MT76_CONNAC_COREDUMP_TIMEOUT)) {
-+		queue_delayed_work(dev->mt76.wq, &dev->coredump.work,
-+				   MT76_CONNAC_COREDUMP_TIMEOUT);
-+		return;
-+	}
-+
-+	dump = vzalloc(MT76_CONNAC_COREDUMP_SZ);
-+	data = dump;
-+
-+	while (true) {
-+		struct sk_buff *skb;
-+
-+		spin_lock_bh(&dev->mt76.lock);
-+		skb = __skb_dequeue(&dev->coredump.msg_list);
-+		spin_unlock_bh(&dev->mt76.lock);
-+
-+		if (!skb)
-+			break;
-+
-+		skb_pull(skb, sizeof(struct mt7921_mcu_rxd));
-+		if (data + skb->len - dump > MT76_CONNAC_COREDUMP_SZ)
-+			break;
-+
-+		memcpy(data, skb->data, skb->len);
-+		data += skb->len;
-+
-+		dev_kfree_skb(skb);
-+	}
-+	dev_coredumpv(dev->mt76.dev, dump, MT76_CONNAC_COREDUMP_SZ,
-+		      GFP_KERNEL);
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 6ad313fd398e..db125cd22b91 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -513,6 +513,10 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
- 	case MCU_EVENT_DBG_MSG:
- 		mt7921_mcu_debug_msg_event(dev, skb);
- 		break;
-+	case MCU_EVENT_COREDUMP:
-+		mt76_connac_mcu_coredump_event(&dev->mt76, skb,
-+					       &dev->coredump);
-+		return;
- 	default:
- 		break;
+@@ -52,6 +52,21 @@ static const struct ieee80211_iface_combination if_comb[] = {
  	}
-@@ -534,6 +538,7 @@ void mt7921_mcu_rx_event(struct mt7921_dev *dev, struct sk_buff *skb)
- 	    rxd->eid == MCU_EVENT_BSS_ABSENCE ||
- 	    rxd->eid == MCU_EVENT_SCAN_DONE ||
- 	    rxd->eid == MCU_EVENT_DBG_MSG ||
-+	    rxd->eid == MCU_EVENT_COREDUMP ||
- 	    !rxd->seq)
- 		mt7921_mcu_rx_unsolicited_event(dev, skb);
- 	else
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-index 52f9e5102727..2fdc62367b3f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-@@ -85,6 +85,7 @@ enum {
- 	MCU_EVENT_CH_PRIVILEGE = 0x18,
- 	MCU_EVENT_SCHED_SCAN_DONE = 0x23,
- 	MCU_EVENT_DBG_MSG = 0x27,
-+	MCU_EVENT_COREDUMP = 0xf0,
  };
  
- /* ext event table */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index c0f26eaa269e..46e6aeec35ae 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -6,7 +6,7 @@
++static void
++mt7921_regd_notifier(struct wiphy *wiphy,
++		     struct regulatory_request *request)
++{
++	struct ieee80211_hw *hw = wiphy_to_ieee80211_hw(wiphy);
++	struct mt7921_dev *dev = mt7921_hw_dev(hw);
++
++	memcpy(dev->mt76.alpha2, request->alpha2, sizeof(dev->mt76.alpha2));
++	dev->mt76.region = request->dfs_region;
++
++	mt7921_mutex_acquire(dev);
++	mt76_connac_mcu_set_channel_domain(hw->priv);
++	mt7921_mutex_release(dev);
++}
++
+ static void
+ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ {
+@@ -78,6 +93,7 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->max_match_sets = MT76_CONNAC_MAX_SCAN_MATCH;
+ 	wiphy->max_sched_scan_reqs = 1;
+ 	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH;
++	wiphy->reg_notifier = mt7921_regd_notifier;
  
- #include <linux/interrupt.h>
- #include <linux/ktime.h>
--#include "../mt76_connac.h"
-+#include "../mt76_connac_mcu.h"
- #include "regs.h"
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_SET_SCAN_DWELL);
  
- #define MT7921_MAX_INTERFACES		4
-@@ -164,6 +164,7 @@ struct mt7921_dev {
- 	u8 fw_debug;
- 
- 	struct mt76_connac_pm pm;
-+	struct mt76_connac_coredump coredump;
- };
- 
- enum {
-@@ -337,4 +338,5 @@ int mt7921_mac_set_beacon_filter(struct mt7921_phy *phy,
- 				 struct ieee80211_vif *vif,
- 				 bool enable);
- void mt7921_pm_interface_iter(void *priv, u8 *mac, struct ieee80211_vif *vif);
-+void mt7921_coredump_work(struct work_struct *work);
- #endif
 -- 
 2.25.1
 _______________________________________________
