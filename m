@@ -2,71 +2,79 @@ Return-Path: <SRS0=CkUm=G7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60939C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 10:10:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3993C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 10:24:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6B8364DBD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 10:10:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6B8364DBD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3222660235
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 10:24:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3222660235
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=833IVITdA/PZ41s+eJVuCOhy0sn942N7gqtZYywEoO0=; b=U/43qmxJzH/0YFFDI6i3t31usn
-	264EU05gpY+/318Hpbnwi+ymdDtciDCvuka6QeMSaml3iz/QrBqn9YRFvrm4RbTNrC3V9yxEOX7iY
-	BbihOjPoAl1NWpt7lRM7Y2h/E3se8my93m7DXExXiWggsXVnegwti+ErcO4+7APfkLkBu3tKOKR8M
-	k7BquMpyIuTZSIztHIfylWoRtK81ETFxQkT0gr6HaK1Oo32GteHUhgJdWsG+y1YSwUOGUWFB4Gw6g
-	qe/Oez2qALxlb9t+6QIUF0EtpIYeKlZnqyN0s8joviaOeuknJMRKGminLybylLciiAoSZHKRjFVXl
-	/90WORUw==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=WlufXsAfD8UmXbhiTlfUQbmTlJvKVSeh739jQPgeTvQ=; b=nzN59bT30+A/1MIBiHfTVdpHQ
+	/eEnYQsYwkmllrMtpow67lLwCM4yDfPpyNazM6dUKV4oKqKMiu1p/Rw41aDOlHpuIRRbJbSMv4IB7
+	DkXZHM96ajZNvqcm4GCQIlG4yv/SVR1GR9NpbcugBCV1NPBzGrx3lKc4QhpbeYH16IFcdrfAf701N
+	HwcQYSWkVyzIyr0so6vS+IGFU6AWFakByMHczo5b52wa0eRSMcsNkT4QqkZzhdShsgnhCkUGMS4uF
+	rtN65i3o9CJqa6a3x43SQ/V0E0bTiAdAc4I3ICSVnoh7Dk3r2wcWzyBIeeB8x+Ptzy/GnQYY0boLu
+	6wppTZj6w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l54Ft-0000EZ-HV; Thu, 28 Jan 2021 10:10:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l54Tl-0001xX-SD; Thu, 28 Jan 2021 10:24:45 +0000
+Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l54Fr-0000DX-Nz; Thu, 28 Jan 2021 10:10:24 +0000
-X-UUID: 5fcd537c32124c51a51b1e50c1803f77-20210128
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=4IK9jdUP/+9o12Q2Z2gnHGjv+cdCrjUnCtGVYV+uXkI=; 
- b=LRz9ZM4eyki9WUACnrozgwOfzqkb5E6qeQ+gmDRn6gOSDw62FGMncd7Vq3ZxsCRpTCN8kJzvdJcl57L7drNjJuW1Wrg31zWn2PcsLTu2Gc1oWqW0Vm3fkLrM2bB7CipCiSbiKhGioB/xz09wLGJsC9z4DYUp0OtKsJmo/2TaET8=;
-X-UUID: 5fcd537c32124c51a51b1e50c1803f77-20210128
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mingchuang.qiao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 18467090; Thu, 28 Jan 2021 02:06:09 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Jan 2021 02:05:46 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 28 Jan 2021 18:05:34 +0800
-Received: from mcddlt001.mediatek.inc (10.19.240.15) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 Jan 2021 18:05:34 +0800
-From: <mingchuang.qiao@mediatek.com>
-To: <bhelgaas@google.com>, <matthias.bgg@gmail.com>
-Subject: [v2] PCI: Avoid unsync of LTR mechanism configuration
-Date: Thu, 28 Jan 2021 18:05:31 +0800
-Message-ID: <20210128100531.2694-1-mingchuang.qiao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1l54Tj-0001wd-BN; Thu, 28 Jan 2021 10:24:44 +0000
+Received: by mail-oo1-xc2c.google.com with SMTP id y72so1288573ooa.5;
+ Thu, 28 Jan 2021 02:24:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=m1z+Yu2fiQlavDIbv9fPx1NNOziGtX2cOyoTwpCpWQI=;
+ b=MHD1CdFnmK00kxSnxryGxN7EuOz28GXa8gDugIWWKqB4bu29sYsgdBEO20Ik3ibTu6
+ gy+vUfGHbC5IPeFzxq7DYJ8L1D4135+ZURvRtmdhllV/LSUxYO8kh4jZ5frnnFLBLS6z
+ xXWAHil0XKu/RsMmMkRt0t+pRJoBfNe8/AyGWL8gHgBkrVFF4y8Rqkgd/KP9OAnZT1d4
+ 0j7oJi4cy74V4OhUvokWxX2xCM8RLtCnwwr3JdEecW//Vk56o3L3qFbRrLT1zAOjSlxY
+ giq687DnX05W3NvZAbdLwIkAEPoClsexV3FsvPdT06rY/N5FU87xDPBL08j1o2G3Yk98
+ A3UA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=m1z+Yu2fiQlavDIbv9fPx1NNOziGtX2cOyoTwpCpWQI=;
+ b=Zm9mlePF0Lt1XnpiW+opWFY+SFtbpsGsWgEqb4nv+WSeJBZE21MWnT8f6SrLht8ox6
+ pyNp6LV36D3icShbiPXRI6pfl+LGhrj9Jd9VLbptFSs2tdkPNQKaycs4AgoZe2rhqqBn
+ UzkrRzfNpiDhvuMY8UcmUZCgjsQT3GGCggfPckKaATBWcSaQN8jNtmTbRFFJK+XlCFcE
+ LE+jlwy/vVWNH9MlpVjAC3vRmBvcpob0DuiNLZaee/k4hd4qKXdSy834b5xx0teyxNDP
+ +Eq5cHOavlyFqChu1A/sXxtKs4KWWGZFOxqFf5N1+5awfdGux0THarlNVTWbtjzN5uim
+ pJ4Q==
+X-Gm-Message-State: AOAM533Srbold00F/9ZUNPF1d2nO53bjI8BJqiCHqc+VckXly538qPkj
+ HkKUGsQswUuGKvJNV+oSw6vxmafrt3LvcZQa8i0=
+X-Google-Smtp-Source: ABdhPJwUsgdluUwC0izmBpnoRmX0hPl6NAxZbuWCF3shpvrYsv4fn9VmR+tzaw+Uf6ovgJbADeSOCErOYZJGoRFA9H8=
+X-Received: by 2002:a4a:9c01:: with SMTP id y1mr10870225ooj.15.1611829481208; 
+ Thu, 28 Jan 2021 02:24:41 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F6A356DF7791F0854E1DE6CABFFA9C33DDDF10543AF8572B337683DD4611E8382000:8
-X-MTK: N
+References: <20210128072802.830971-1-hsinyi@chromium.org>
+ <20210128072802.830971-2-hsinyi@chromium.org>
+In-Reply-To: <20210128072802.830971-2-hsinyi@chromium.org>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Thu, 28 Jan 2021 11:24:29 +0100
+Message-ID: <CAFqH_52xmsSsxqxkBO8d93Jezy4YZFxtpJ0BX9TVrCy6qao02A@mail.gmail.com>
+Subject: Re: [PATCH v11 1/9] arm64: dts: mt8183: rename rdma fifo size
+To: Hsin-Yi Wang <hsinyi@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210128_051023_952972_FD8F530F 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20210128_052443_422227_0C3BE21F 
+X-CRM114-Status: GOOD (  18.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,118 +86,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mika.westerberg@linux.intel.com, kerun.zhu@mediatek.com,
- linux-pci@vger.kernel.org, lambert.wang@mediatek.com, rjw@rjwysocki.net,
- linux-kernel@vger.kernel.org, alex.williamson@redhat.com,
- linux-mediatek@lists.infradead.org, utkarsh.h.patel@intel.com,
- haijun.liu@mediatek.com, mingchuang.qiao@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
+Hi Hsin-Yi,
 
-In bus scan flow, the "LTR Mechanism Enable" bit of DEVCTL2 register is
-configured in pci_configure_ltr(). If device and bridge both support LTR
-mechanism, the "LTR Mechanism Enable" bit of device and bridge will be
-enabled in DEVCTL2 register. And pci_dev->ltr_path will be set as 1.
+Thank you for the patch.
 
-If PCIe link goes down when device resets, the "LTR Mechanism Enable" bit
-of bridge will change to 0 according to PCIe r5.0, sec 7.5.3.16. However,
-the pci_dev->ltr_path value of bridge is still 1.
+Missatge de Hsin-Yi Wang <hsinyi@chromium.org> del dia dj., 28 de gen.
+2021 a les 8:28:
+>
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+>
+> property name must include only lowercase and '-'
+>
 
-For following conditions, check and re-configure "LTR Mechanism Enable" bit
-of bridge to make "LTR Mechanism Enable" bit mtach ltr_path value.
-   -before configuring device's LTR for hot-remove/hot-add
-   -before restoring device's DEVCTL2 register when restore device state
+This is a leftover while I forward ported the patch, the
+rdma_fifo_size only existed on the downstream kernels, in mainline it
+is with '-', so we should probably add the fixes tag here.
 
-Signed-off-by: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
----
-changes of v2
- -modify patch description
- -reconfigure bridge's LTR before restoring device DEVCTL2 register
----
- drivers/pci/pci.c   | 25 +++++++++++++++++++++++++
- drivers/pci/probe.c | 19 ++++++++++++++++---
- 2 files changed, 41 insertions(+), 3 deletions(-)
+Fixes: 91f9c963ce79 ("arm64: dts: mt8183: Add display nodes for MT8183")
 
-diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index b9fecc25d213..88b4eb70c252 100644
---- a/drivers/pci/pci.c
-+++ b/drivers/pci/pci.c
-@@ -1437,6 +1437,24 @@ static int pci_save_pcie_state(struct pci_dev *dev)
- 	return 0;
- }
- 
-+static void pci_reconfigure_bridge_ltr(struct pci_dev *dev)
-+{
-+#ifdef CONFIG_PCIEASPM
-+	struct pci_dev *bridge;
-+	u32 ctl;
-+
-+	bridge = pci_upstream_bridge(dev);
-+	if (bridge && bridge->ltr_path) {
-+		pcie_capability_read_dword(bridge, PCI_EXP_DEVCTL2, &ctl);
-+		if (!(ctl & PCI_EXP_DEVCTL2_LTR_EN)) {
-+			pci_dbg(bridge, "re-enabling LTR\n");
-+			pcie_capability_set_word(bridge, PCI_EXP_DEVCTL2,
-+						 PCI_EXP_DEVCTL2_LTR_EN);
-+		}
-+	}
-+#endif
-+}
-+
- static void pci_restore_pcie_state(struct pci_dev *dev)
- {
- 	int i = 0;
-@@ -1447,6 +1465,13 @@ static void pci_restore_pcie_state(struct pci_dev *dev)
- 	if (!save_state)
- 		return;
- 
-+	/*
-+	 * Downstream ports reset the LTR enable bit when link goes down.
-+	 * Check and re-configure the bit here before restoring device.
-+	 * PCIe r5.0, sec 7.5.3.16.
-+	 */
-+	pci_reconfigure_bridge_ltr(dev);
-+
- 	cap = (u16 *)&save_state->cap.data[0];
- 	pcie_capability_write_word(dev, PCI_EXP_DEVCTL, cap[i++]);
- 	pcie_capability_write_word(dev, PCI_EXP_LNKCTL, cap[i++]);
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index 953f15abc850..4ad172517fd2 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -2132,9 +2132,22 @@ static void pci_configure_ltr(struct pci_dev *dev)
- 	 * Complex and all intermediate Switches indicate support for LTR.
- 	 * PCIe r4.0, sec 6.18.
- 	 */
--	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT ||
--	    ((bridge = pci_upstream_bridge(dev)) &&
--	      bridge->ltr_path)) {
-+	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT) {
-+		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
-+					 PCI_EXP_DEVCTL2_LTR_EN);
-+		dev->ltr_path = 1;
-+		return;
-+	}
-+
-+	bridge = pci_upstream_bridge(dev);
-+	if (bridge && bridge->ltr_path) {
-+		pcie_capability_read_dword(bridge, PCI_EXP_DEVCTL2, &ctl);
-+		if (!(ctl & PCI_EXP_DEVCTL2_LTR_EN)) {
-+			pci_dbg(bridge, "re-enabling LTR\n");
-+			pcie_capability_set_word(bridge, PCI_EXP_DEVCTL2,
-+						 PCI_EXP_DEVCTL2_LTR_EN);
-+		}
-+
- 		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
- 					 PCI_EXP_DEVCTL2_LTR_EN);
- 		dev->ltr_path = 1;
--- 
-2.18.0
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 5b782a4769e7e..6c84ccb709af6 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -1011,7 +1011,7 @@ rdma0: rdma@1400b000 {
+>                         clocks = <&mmsys CLK_MM_DISP_RDMA0>;
+>                         iommus = <&iommu M4U_PORT_DISP_RDMA0>;
+>                         mediatek,larb = <&larb0>;
+> -                       mediatek,rdma_fifo_size = <5120>;
+> +                       mediatek,rdma-fifo-size = <5120>;
+>                         mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
+>                 };
+>
+> @@ -1023,7 +1023,7 @@ rdma1: rdma@1400c000 {
+>                         clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+>                         iommus = <&iommu M4U_PORT_DISP_RDMA1>;
+>                         mediatek,larb = <&larb0>;
+> -                       mediatek,rdma_fifo_size = <2048>;
+> +                       mediatek,rdma-fifo-size = <2048>;
+>                         mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
+>                 };
+>
+> --
+> 2.30.0.280.ga3ce27912f-goog
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
