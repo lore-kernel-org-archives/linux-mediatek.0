@@ -2,19 +2,20 @@ Return-Path: <SRS0=CkUm=G7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42676C43381
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1730C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E1876024A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E1876024A
+	by mail.kernel.org (Postfix) with ESMTPS id 86DE86024A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 86DE86024A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +24,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MsbGvR7qkL3Ahe0+MXXNBDKutA2/FZK9T/8n6q9myWM=; b=Fxhf6oy4+HQ/pvzqhm6HID8bq
-	Ozhcy7PoYP+2KJ7ZoAzpCyUfFNjQIM28YF3ZQn3XJh/nSFzIWK4By58M20rSXlsThEMTOHbbl2Ql5
-	0AFJYz3PVzLegr+y6z0lEWY68DXMM6BWFMbwMV3BpwNbis+t3Cu5r46vRyE8YPFogoU9ao64SwTzx
-	pv6tNAV/QoYbKU/bi0A0xux1rCvwn19qSeRWilNXdsp4HQD9mqfz/SnVFC19dH1YtAoyB8pM2XOsI
-	mMxEIGt9ppAKMWVAO5xV7tfeqIY6yrC0crRYyMekO4qdl0M4vMrJ4NLugYa+YlVb0F2b39mnTJq2j
-	hLMPZ7hGw==;
+	 bh=eJ6Dus0QteFkNrbM4exsCzy/HUq77a5VZivAAMPRaww=; b=PF0Kzv7v94qHNGYijYB4RJTDq
+	p5+9ufAEnIvfZ1MzXue5mefwysd21S0bwpjFQqFgxoLP7MBMwEqDQloS5cPIbbtkXP5PgaoglBLoR
+	mU1ETSB4Va1tOk5iXMC/hh+Js1xwpAUlqSIt4RCEwVYcW7V0Tllr/Tkr7F1TFU7Ttl4NIQ2QX9EwM
+	PsapnPBhYmQubnbb6j0ytPJqVl4LJlcQ4Jn5b3Ba7T6cMXlyzfld/mv+gZg4qWKpj3KIhHGTl+N+6
+	mGRKOauE9BWXfi7Gzsq7KaxYJBv/T9gkM5vazNO6NDrTJJETG0J6CeWjCQsZpcU2ZTI40HVy6HdKO
+	w5hd+zFrg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l51jO-000842-7w; Thu, 28 Jan 2021 07:28:42 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1l51jU-00086c-N2; Thu, 28 Jan 2021 07:28:48 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l51j4-0007w0-Cu
- for linux-mediatek@lists.infradead.org; Thu, 28 Jan 2021 07:28:24 +0000
-Received: by mail-pl1-x634.google.com with SMTP id g3so2856676plp.2
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Jan 2021 23:28:21 -0800 (PST)
+ id 1l51j7-0007xR-Mz
+ for linux-mediatek@lists.infradead.org; Thu, 28 Jan 2021 07:28:28 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id y205so3437015pfc.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 Jan 2021 23:28:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=G31vjpM8WBRWttqyZvjvdCi3VTGe2Uph77OFHlYX5Uk=;
- b=Q4N2njjbJ1UKHVuRdoWQ84sLLTGbbOlZ0JXegKRO1DhM2DXHmDSWWIz8Yte1Yy43pG
- 7gN7b5V4jFdU5wAQmN2KcQB3Hcdm5rEqgPVhnQTtt6DSGgK/Ph0jWfTs5rCsBnfbOj0d
- IRstgAIb5C28NY4FXyQVMQaOM1K78Nl3UUuu4=
+ bh=eYjT5ToKNf0BcGsPTT/zXSzdcUW6skKls5id4x7Mx5A=;
+ b=hfuFr/sbyn5zOHmWwbM7Y7na5bes06UqTrSckCh/+87Pnw9MXE33dYXfhRv1UMmbty
+ 1cCmncLzdy9O0F3XTr4NioufFpV/JrQO87tSkvtHmz8JKZCdOXa4jDghIAVMFda9iLCr
+ qmTCzVzcyWYeblVBYyycVfHJm4pOsLUTgzTLM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=G31vjpM8WBRWttqyZvjvdCi3VTGe2Uph77OFHlYX5Uk=;
- b=UdMX7F3jnt8jjhoe+ySKla4TOVbp01BLNzx9Wn8Rw+ZItdUQmqGnatZkz+KqJMjtWh
- JIGHjZd7tzZBROS1yvqa9Ivhdu8f+ruye+RGK8w2KvMtXkrVDtzZ7NrkoBia2lGtPjvm
- 4T9WMOYPQlphjXAhwBTT0bP1sJO/976p3pw4tlnAi2FWqmrhARMnZFkWl9KrQ0m4wFk8
- nALw5rVDFiHWPKH5O6b0+sKWKtgs3Sd2cp70OQkTJTHMUz9O4Hv43J80llhk9padqTK5
- ZuB1BYfGRktQ995thgRSUjjkiUyBXJFUSx0pO2ILWBKC2AAoTTaM25QHpE+pMcX9854U
- 2VgQ==
-X-Gm-Message-State: AOAM532XSF7VkmnCqeld/F1Q0Oh/8BrUo9V1qh3bUYdQYSKbOgeAtCi8
- 5FEHWpjyCbXqLM14RdYxGXN8cw==
-X-Google-Smtp-Source: ABdhPJxCO5RNPS09Rk++g0onUP6XO/dzb3g0XD9uECXFIo0Ck7Osh1U+KkhzVR6eHCoR3t3H6ogD1g==
-X-Received: by 2002:a17:902:16b:b029:dc:4ca1:f5fc with SMTP id
- 98-20020a170902016bb02900dc4ca1f5fcmr15131823plb.26.1611818900072; 
- Wed, 27 Jan 2021 23:28:20 -0800 (PST)
+ bh=eYjT5ToKNf0BcGsPTT/zXSzdcUW6skKls5id4x7Mx5A=;
+ b=J+ZGh+6gqH8W68zly7Gim3P/L6YFe1O1VQJmszodNRXhwgjcXBjSCl8JGzfyLIqrH3
+ QRwso8nxdXmfpjRVvKQIggMSfD1EXRfO18zgIo3kfEb9mC+OEBIXbz6/wBWLu0q685QV
+ L8Qb8dDvzC97mS8AGtMEvUsLvNNOtuLqIo1+2CauJG7wuOh9i532wzcpgfXeSk5VDquY
+ KKN0fKN7o6eP4mz6K4sPlipFj+xq2m4uWH0YRS/juhjDNt4Pz/q8i53+vT1B1YAePjkT
+ 3jxCHP2UWJrDgtO/FQgTnZvO7PnZ9S0E7U9tTUIsFKuSaWXeBDtOZdRdkOfzIIVQ5l8O
+ PStw==
+X-Gm-Message-State: AOAM530iHsm//qAwtLLdi2iemjuVelQCQ/yR9p6LU3sujGPN+w0lu41Q
+ uUJZ1pOnJK6SXcZpNWdbXllVGw==
+X-Google-Smtp-Source: ABdhPJwjWfWo1SdKefj5tFTz+Exst40AhseE8qxchyFUQKIoeYdouf+q3ljA5AOOi/RgekiXvKLvKw==
+X-Received: by 2002:a05:6a00:15d2:b029:1b7:30c1:8495 with SMTP id
+ o18-20020a056a0015d2b02901b730c18495mr14427050pfu.32.1611818903083; 
+ Wed, 27 Jan 2021 23:28:23 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:e0a5:d2fc:aaad:1e4a])
- by smtp.gmail.com with ESMTPSA id h2sm4800304pfk.4.2021.01.27.23.28.17
+ by smtp.gmail.com with ESMTPSA id h2sm4800304pfk.4.2021.01.27.23.28.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Jan 2021 23:28:19 -0800 (PST)
+ Wed, 27 Jan 2021 23:28:22 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v11 4/9] drm/mediatek: add mtk_dither_set_common() function
-Date: Thu, 28 Jan 2021 15:27:57 +0800
-Message-Id: <20210128072802.830971-5-hsinyi@chromium.org>
+Subject: [PATCH v11 5/9] drm/mediatek: separate gamma module
+Date: Thu, 28 Jan 2021 15:27:58 +0800
+Message-Id: <20210128072802.830971-6-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.30.0.280.ga3ce27912f-goog
 In-Reply-To: <20210128072802.830971-1-hsinyi@chromium.org>
 References: <20210128072802.830971-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210128_022822_541790_A7B8C351 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20210128_022825_941360_0DE1A3F2 
+X-CRM114-Status: GOOD (  27.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,88 +102,417 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Current implementation of mtk_dither_set() cast dev data to
-struct mtk_ddp_comp_dev. But other devices with different dev data
-would also call this function.
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
-Separate necessary parameters out so other device components (dither,
-gamma) can call this function.
+mt8183 gamma module will different with mt8173
+separate gamma for add private data
 
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  4 ++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 25 +++++++++++++--------
- 2 files changed, 20 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/mediatek/Makefile           |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  10 ++
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 189 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  71 ++------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+ 6 files changed, 215 insertions(+), 61 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
 
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index 01d06332f7679..b64674b944860 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -1,6 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ 
+ mediatek-drm-y := mtk_disp_color.o \
++		  mtk_disp_gamma.o \
+ 		  mtk_disp_ovl.o \
+ 		  mtk_disp_rdma.o \
+ 		  mtk_drm_crtc.o \
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 46d199b7b4a29..c50d5fc9fd349 100644
+index c50d5fc9fd349..c1e658b490b6c 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -17,6 +17,10 @@ void mtk_color_config(struct device *dev, unsigned int w,
- 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
- void mtk_color_start(struct device *dev);
+@@ -27,6 +27,16 @@ void mtk_dpi_stop(struct device *dev);
+ void mtk_dsi_ddp_start(struct device *dev);
+ void mtk_dsi_ddp_stop(struct device *dev);
  
-+void mtk_dither_set_common(void __iomem *regs, struct cmdq_client_reg *cmdq_reg,
-+			   unsigned int bpc, unsigned int CFG,
-+			   struct cmdq_pkt *cmdq_pkt);
++int mtk_gamma_clk_enable(struct device *dev);
++void mtk_gamma_clk_disable(struct device *dev);
++void mtk_gamma_config(struct device *dev, unsigned int w,
++                      unsigned int h, unsigned int vrefresh,
++                      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state);
++void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
++void mtk_gamma_start(struct device *dev);
++void mtk_gamma_stop(struct device *dev);
 +
- void mtk_dpi_start(struct device *dev);
- void mtk_dpi_stop(struct device *dev);
- 
+ void mtk_ovl_bgclr_in_on(struct device *dev);
+ void mtk_ovl_bgclr_in_off(struct device *dev);
+ void mtk_ovl_bypass_shadow(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+new file mode 100644
+index 0000000000000..a7e2e326b2183
+--- /dev/null
++++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+@@ -0,0 +1,189 @@
++/*
++ * SPDX-License-Identifier:
++ *
++ * Copyright (c) 2020 MediaTek Inc.
++ */
++
++#include <linux/clk.h>
++#include <linux/component.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/of_irq.h>
++#include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
++
++#include "mtk_disp_drv.h"
++#include "mtk_drm_crtc.h"
++#include "mtk_drm_ddp_comp.h"
++
++#define DISP_GAMMA_EN				0x0000
++#define GAMMA_EN					BIT(0)
++#define DISP_GAMMA_CFG				0x0020
++#define GAMMA_LUT_EN					BIT(1)
++#define DISP_GAMMA_SIZE				0x0030
++#define DISP_GAMMA_LUT				0x0700
++
++#define LUT_10BIT_MASK				0x03ff
++
++struct mtk_disp_gamma_data {
++	u32 reserved;
++};
++
++/**
++ * struct mtk_disp_gamma - DISP_GAMMA driver structure
++ * @ddp_comp - structure containing type enum and hardware resources
++ * @crtc - associated crtc to report irq events to
++ */
++struct mtk_disp_gamma {
++	struct clk *clk;
++	void __iomem *regs;
++	struct cmdq_client_reg cmdq_reg;
++	const struct mtk_disp_gamma_data *data;
++};
++
++int mtk_gamma_clk_enable(struct device *dev)
++{
++	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++
++	return clk_prepare_enable(gamma->clk);
++}
++
++void mtk_gamma_clk_disable(struct device *dev)
++{
++	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++
++	clk_disable_unprepare(gamma->clk);
++}
++
++void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state)
++{
++	unsigned int i, reg;
++	struct drm_color_lut *lut;
++	void __iomem *lut_base;
++	u32 word;
++
++	if (state->gamma_lut) {
++		reg = readl(regs + DISP_GAMMA_CFG);
++		reg = reg | GAMMA_LUT_EN;
++		writel(reg, regs + DISP_GAMMA_CFG);
++		lut_base = regs + DISP_GAMMA_LUT;
++		lut = (struct drm_color_lut *)state->gamma_lut->data;
++		for (i = 0; i < MTK_LUT_SIZE; i++) {
++			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
++				(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
++				((lut[i].blue >> 6) & LUT_10BIT_MASK);
++			writel(word, (lut_base + i * 4));
++		}
++	}
++}
++
++void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
++{
++	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++
++	mtk_gamma_set_common(gamma->regs, state);
++}
++
++void mtk_gamma_config(struct device *dev, unsigned int w,
++		      unsigned int h, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++
++	mtk_ddp_write(cmdq_pkt, h << 16 | w, &gamma->cmdq_reg, gamma->regs,
++		      DISP_GAMMA_SIZE);
++	mtk_dither_set_common(gamma->regs, &gamma->cmdq_reg, bpc, DISP_GAMMA_CFG, cmdq_pkt);
++}
++
++void mtk_gamma_start(struct device *dev)
++{
++	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++
++	writel(GAMMA_EN, gamma->regs + DISP_GAMMA_EN);
++}
++
++void mtk_gamma_stop(struct device *dev)
++{
++	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++
++	writel_relaxed(0x0, gamma->regs + DISP_GAMMA_EN);
++}
++
++static int mtk_disp_gamma_bind(struct device *dev, struct device *master,
++			       void *data)
++{
++	return 0;
++}
++
++static void mtk_disp_gamma_unbind(struct device *dev, struct device *master,
++				  void *data)
++{
++}
++
++static const struct component_ops mtk_disp_gamma_component_ops = {
++	.bind	= mtk_disp_gamma_bind,
++	.unbind = mtk_disp_gamma_unbind,
++};
++
++static int mtk_disp_gamma_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct mtk_disp_gamma *priv;
++	struct resource *res;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->clk = devm_clk_get(dev, NULL);
++	if (IS_ERR(priv->clk)) {
++		dev_err(dev, "failed to get gamma clk\n");
++		return PTR_ERR(priv->clk);
++	}
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	priv->regs = devm_ioremap_resource(dev, res);
++	if (IS_ERR(priv->regs)) {
++		dev_err(dev, "failed to ioremap gamma\n");
++		return PTR_ERR(priv->regs);
++	}
++
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
++	if (ret)
++		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++#endif
++
++	priv->data = of_device_get_match_data(dev);
++	platform_set_drvdata(pdev, priv);
++
++	ret = component_add(dev, &mtk_disp_gamma_component_ops);
++	if (ret)
++		dev_err(dev, "Failed to add component: %d\n", ret);
++
++	return ret;
++}
++
++static int mtk_disp_gamma_remove(struct platform_device *pdev)
++{
++	component_del(&pdev->dev, &mtk_disp_gamma_component_ops);
++
++	return 0;
++}
++
++static const struct of_device_id mtk_disp_gamma_driver_dt_match[] = {
++	{ .compatible = "mediatek,mt8173-disp-gamma"},
++	{},
++};
++MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
++
++struct platform_driver mtk_disp_gamma_driver = {
++	.probe		= mtk_disp_gamma_probe,
++	.remove		= mtk_disp_gamma_remove,
++	.driver		= {
++		.name	= "mediatek-disp-gamma",
++		.owner	= THIS_MODULE,
++		.of_match_table = mtk_disp_gamma_driver_dt_match,
++	},
++};
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 7b5293429426d..53d25823a37cc 100644
+index 53d25823a37cc..8173f709272be 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -151,33 +151,40 @@ static void mtk_ddp_clk_disable(struct device *dev)
+@@ -55,11 +55,6 @@
+ #define DITHER_RELAY_MODE			BIT(0)
+ #define DISP_DITHER_SIZE			0x0030
+ 
+-#define DISP_GAMMA_EN				0x0000
+-#define DISP_GAMMA_CFG				0x0020
+-#define DISP_GAMMA_SIZE				0x0030
+-#define DISP_GAMMA_LUT				0x0700
+-
+ #define LUT_10BIT_MASK				0x03ff
+ 
+ #define OD_RELAYMODE				BIT(0)
+@@ -68,9 +63,6 @@
+ 
+ #define AAL_EN					BIT(0)
+ 
+-#define GAMMA_EN				BIT(0)
+-#define GAMMA_LUT_EN				BIT(1)
+-
+ #define DISP_DITHERING				BIT(2)
+ #define DITHER_LSB_ERR_SHIFT_R(x)		(((x) & 0x7) << 28)
+ #define DITHER_OVFLW_BIT_R(x)			(((x) & 0x7) << 24)
+@@ -151,7 +143,6 @@ static void mtk_ddp_clk_disable(struct device *dev)
  	clk_disable_unprepare(priv->clk);
  }
  
--static void mtk_dither_set(struct device *dev, unsigned int bpc,
--		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt)
--{
--	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
- 
-+void mtk_dither_set_common(void __iomem *regs, struct cmdq_client_reg *cmdq_reg,
-+			   unsigned int bpc, unsigned int CFG, struct cmdq_pkt *cmdq_pkt)
-+{
- 	/* If bpc equal to 0, the dithering function didn't be enabled */
- 	if (bpc == 0)
- 		return;
- 
- 	if (bpc >= MTK_MIN_BPC) {
--		mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs, DISP_DITHER_5);
--		mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs, DISP_DITHER_7);
-+		mtk_ddp_write(cmdq_pkt, 0, cmdq_reg, regs, DISP_DITHER_5);
-+		mtk_ddp_write(cmdq_pkt, 0, cmdq_reg, regs, DISP_DITHER_7);
- 		mtk_ddp_write(cmdq_pkt,
- 			      DITHER_LSB_ERR_SHIFT_R(MTK_MAX_BPC - bpc) |
- 			      DITHER_ADD_LSHIFT_R(MTK_MAX_BPC - bpc) |
- 			      DITHER_NEW_BIT_MODE,
--			      &priv->cmdq_reg, priv->regs, DISP_DITHER_15);
-+			      cmdq_reg, regs, DISP_DITHER_15);
- 		mtk_ddp_write(cmdq_pkt,
- 			      DITHER_LSB_ERR_SHIFT_B(MTK_MAX_BPC - bpc) |
- 			      DITHER_ADD_LSHIFT_B(MTK_MAX_BPC - bpc) |
- 			      DITHER_LSB_ERR_SHIFT_G(MTK_MAX_BPC - bpc) |
- 			      DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
--			      &priv->cmdq_reg, priv->regs, DISP_DITHER_16);
--		mtk_ddp_write(cmdq_pkt, DISP_DITHERING, &priv->cmdq_reg, priv->regs, CFG);
-+			      cmdq_reg, regs, DISP_DITHER_16);
-+		mtk_ddp_write(cmdq_pkt, DISP_DITHERING, cmdq_reg, regs, CFG);
- 	}
+-
+ void mtk_dither_set_common(void __iomem *regs, struct cmdq_client_reg *cmdq_reg,
+ 			   unsigned int bpc, unsigned int CFG, struct cmdq_pkt *cmdq_pkt)
+ {
+@@ -219,6 +210,13 @@ static void mtk_aal_config(struct device *dev, unsigned int w,
+ 	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs, DISP_AAL_SIZE);
  }
  
-+static void mtk_dither_set(struct device *dev, unsigned int bpc,
-+		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt)
++static void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
 +{
 +	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
 +
-+	mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc, CFG, cmdq_pkt);
++        mtk_gamma_set_common(priv->regs, state);
 +}
 +
- static void mtk_od_config(struct device *dev, unsigned int w,
- 			  unsigned int h, unsigned int vrefresh,
- 			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+ static void mtk_aal_start(struct device *dev)
+ {
+ 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+@@ -333,58 +331,10 @@ static void mtk_dither_stop(struct device *dev)
+ 	writel_relaxed(0x0, priv->regs + DISP_DITHER_EN);
+ }
+ 
+-static void mtk_gamma_config(struct device *dev, unsigned int w,
+-			     unsigned int h, unsigned int vrefresh,
+-			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs, DISP_GAMMA_SIZE);
+-	mtk_dither_set(dev, bpc, DISP_GAMMA_CFG, cmdq_pkt);
+-}
+-
+-static void mtk_gamma_start(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel(GAMMA_EN, priv->regs  + DISP_GAMMA_EN);
+-}
+-
+-static void mtk_gamma_stop(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel_relaxed(0x0, priv->regs  + DISP_GAMMA_EN);
+-}
+-
+-static void mtk_gamma_set(struct device *dev,
+-			  struct drm_crtc_state *state)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-	unsigned int i, reg;
+-	struct drm_color_lut *lut;
+-	void __iomem *lut_base;
+-	u32 word;
+-
+-	if (state->gamma_lut) {
+-		reg = readl(priv->regs + DISP_GAMMA_CFG);
+-		reg = reg | GAMMA_LUT_EN;
+-		writel(reg, priv->regs + DISP_GAMMA_CFG);
+-		lut_base = priv->regs + DISP_GAMMA_LUT;
+-		lut = (struct drm_color_lut *)state->gamma_lut->data;
+-		for (i = 0; i < MTK_LUT_SIZE; i++) {
+-			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
+-				(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
+-				((lut[i].blue >> 6) & LUT_10BIT_MASK);
+-			writel(word, (lut_base + i * 4));
+-		}
+-	}
+-}
+-
+ static const struct mtk_ddp_comp_funcs ddp_aal = {
+ 	.clk_enable = mtk_ddp_clk_enable,
+ 	.clk_disable = mtk_ddp_clk_disable,
+-	.gamma_set = mtk_gamma_set,
++	.gamma_set = mtk_aal_gamma_set,
+ 	.config = mtk_aal_config,
+ 	.start = mtk_aal_start,
+ 	.stop = mtk_aal_stop,
+@@ -425,8 +375,8 @@ static const struct mtk_ddp_comp_funcs ddp_dsi = {
+ };
+ 
+ static const struct mtk_ddp_comp_funcs ddp_gamma = {
+-	.clk_enable = mtk_ddp_clk_enable,
+-	.clk_disable = mtk_ddp_clk_disable,
++	.clk_enable = mtk_gamma_clk_enable,
++	.clk_disable = mtk_gamma_clk_disable,
+ 	.gamma_set = mtk_gamma_set,
+ 	.config = mtk_gamma_config,
+ 	.start = mtk_gamma_start,
+@@ -642,6 +592,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 
+ 	if (type == MTK_DISP_BLS ||
+ 	    type == MTK_DISP_COLOR ||
++	    type == MTK_DISP_GAMMA ||
+ 	    type == MTK_DPI ||
+ 	    type == MTK_DSI ||
+ 	    type == MTK_DISP_OVL ||
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 5d39dd54255d1..279d3e6f11563 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -486,11 +486,12 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		private->comp_node[comp_id] = of_node_get(node);
+ 
+ 		/*
+-		 * Currently only the COLOR, OVL, RDMA, DSI, and DPI blocks have
++		 * Currently only the COLOR, GAMMA, OVL, RDMA, DSI, and DPI blocks have
+ 		 * separate component platform drivers and initialize their own
+ 		 * DDP component structure. The others are initialized here.
+ 		 */
+ 		if (comp_type == MTK_DISP_COLOR ||
++		    comp_type == MTK_DISP_GAMMA ||
+ 		    comp_type == MTK_DISP_OVL ||
+ 		    comp_type == MTK_DISP_OVL_2L ||
+ 		    comp_type == MTK_DISP_RDMA ||
+@@ -589,6 +590,7 @@ static struct platform_driver mtk_drm_platform_driver = {
+ 
+ static struct platform_driver * const mtk_drm_drivers[] = {
+ 	&mtk_disp_color_driver,
++	&mtk_disp_gamma_driver,
+ 	&mtk_disp_ovl_driver,
+ 	&mtk_disp_rdma_driver,
+ 	&mtk_dpi_driver,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index e8238fa4aa2ac..0e54e3d51014a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -47,6 +47,7 @@ struct mtk_drm_private {
+ };
+ 
+ extern struct platform_driver mtk_disp_color_driver;
++extern struct platform_driver mtk_disp_gamma_driver;
+ extern struct platform_driver mtk_disp_ovl_driver;
+ extern struct platform_driver mtk_disp_rdma_driver;
+ extern struct platform_driver mtk_dpi_driver;
 -- 
 2.30.0.280.ga3ce27912f-goog
 
