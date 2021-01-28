@@ -5,61 +5,62 @@ X-Spam-Level:
 X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30023C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 08:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 47CF0C43381
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 08:29:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9702564DA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 08:29:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9702564DA1
+	by mail.kernel.org (Postfix) with ESMTPS id 7B40864DD1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 08:29:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B40864DD1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j15VuJ41aXmUQffZQ/C7nVbWn7lrENvrgl1tldXyFyQ=; b=sWs29sv7G8v8yacumwSTEn5ynG
-	3NXDKLIJfF6Kac2KOgnjCYRar52p1ovA7g5W6TM8isEahc9edjw8ayGB2ftapLF4Ub9fCqeKcb4Jz
-	O5JKXbTZ4kvSW2BN8yEd+cf2kk3z8hW63vyRTiaPg9yr4Dc593Hn2Ilm4unwcrTgHOEyCwDlzeDTJ
-	q9EBMy9+1agxMvYieJ+rcYwRXv39YbgvsCQTXSXyNUkZxQ4LiNAUbenX8Dg3PjcoDIsGO0siRi+vn
-	NiQpoAvhPH3m3eL28z6k2vbdSfn2PCL3n88Oj45bC9DJNtjfj3e9AbRl8nONVlC2jBN4buX8QTHFX
-	qYd1v+lg==;
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=i/0/unzPb8hZ7TFVO61u5Jjr4Raf24my7s0+d8nbfH0=; b=TbHERrhYVRRZqd3N9LejLaxqK
+	hdZFtO6ZMNd6SFyHxwcEFgYdmpgnP6ucFALK41r/yvCP+RHvOVC5Pgqs2cwMkNc9qBRreb8P+zWnA
+	238POn7BwNFZ6GxFdyLQDygt5w8AHfCqYVwM0s+PgW0AtKgkIvR/y8HO+Ot8XAB3QLL2zW46nMXTj
+	hGTR8S9sh5zZTDDOWt+i31i+8/QNzvL//uthsMip9WUikpoRGdOnjZwnfv+/vaNvVZpV0q7ZWat3E
+	RizvAxmw9Etyvcvei/9tLyyvbrfCqG81h3PrclSAerRtcVAyTgb1PCL4OpcYPZ4tgP9iTrmc3TxiX
+	sORNwbdfw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l52fe-0002RL-Fw; Thu, 28 Jan 2021 08:28:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l52fh-0002SD-V0; Thu, 28 Jan 2021 08:28:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l52fb-0002Qt-8P; Thu, 28 Jan 2021 08:28:52 +0000
-X-UUID: 51deaffb798744b48055767b26ff29b9-20210128
+ id 1l52ff-0002RK-6T; Thu, 28 Jan 2021 08:28:56 +0000
+X-UUID: c025ea9db8f8494997fb3fa56d64ba32-20210128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:Reply-To:From:Subject:Message-ID;
- bh=xuMAXwo6AmkpKMd7GIWUbcpQOz0B7oib5M57arUVcdY=; 
- b=ODT4aWplJCcUN+8IAk/DRmMTo3FCEb8CmoBGmeHhorpfjRPMe5K8ClwTdqKTvtxDbtHhoVl023FebbqAb6lyTKKMFl6oTiXFQx9BbtE4oonwhwOvGgCKNJW8wfI7Fbof2DMmxncui0Gkcofa8gw4TSrroQBO6bPxdyt9+qOTAJ8=;
-X-UUID: 51deaffb798744b48055767b26ff29b9-20210128
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=xXCb6L2ZXCrCP94s27k1hE1RsAxmrD2LYXcFbF5uA0E=; 
+ b=RiyGXxxpZEBLKoq9ur0bn2LeFudUXgsHBCNRK+Lk6nZ9IUh9+8lTPzaIKrrNTaSdj7hfGjEVMb0aLX9W3I7Vx+KfDDdjh+hJuKqIxCEMYYZBcF+wNGhoPFRR8XA1TwLqFs7huugE14N1BOpLDqJYRH7QTxR7QpU+ILMZPxGKFpw=;
+X-UUID: c025ea9db8f8494997fb3fa56d64ba32-20210128
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1534673603; Thu, 28 Jan 2021 00:28:46 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Jan 2021 00:28:44 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs05n2.mediatek.inc
- (172.21.101.140) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 28 Jan 2021 16:28:43 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 Jan 2021 16:28:42 +0800
-Message-ID: <1611822522.1947.12.camel@mhfsdcap03>
+ with ESMTP id 536777459; Thu, 28 Jan 2021 00:28:52 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Jan 2021 00:28:50 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Jan 2021 16:28:45 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 28 Jan 2021 16:28:44 +0800
+Message-ID: <1611822524.23925.4.camel@mtksdaap41>
 Subject: Re: [PATCH v11 7/9] drm/mediatek: enable dither function
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
 To: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Thu, 28 Jan 2021 16:28:42 +0800
+Date: Thu, 28 Jan 2021 16:28:44 +0800
 In-Reply-To: <CAJMQK-h1_d1+SpxMC8LGPJK=X9HHoJ_ueFzV2Sq44buCiaXFUA@mail.gmail.com>
 References: <20210128072802.830971-1-hsinyi@chromium.org>
  <20210128072802.830971-8-hsinyi@chromium.org>
@@ -68,10 +69,11 @@ References: <20210128072802.830971-1-hsinyi@chromium.org>
  <CAJMQK-h1_d1+SpxMC8LGPJK=X9HHoJ_ueFzV2Sq44buCiaXFUA@mail.gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 16FFF3C473B8505D6216BE76A3CFAA9D7D5ECBF80795522F50D2FF9FE06560AF2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210128_032851_592858_0849A470 
-X-CRM114-Status: GOOD (  32.76  )
+X-CRM114-CacheID: sfid-20210128_032855_486980_1728A8ED 
+X-CRM114-Status: GOOD (  34.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,17 +85,16 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 Cc: Mark Rutland <mark.rutland@arm.com>,
  Devicetree List <devicetree@vger.kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- lkml <linux-kernel@vger.kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David
+ Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>,
  dri-devel <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>,
- CK Hu <ck.hu@mediatek.com>, "moderated
- list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM
+ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -207,7 +208,14 @@ On Thu, 2021-01-28 at 16:18 +0800, Hsin-Yi Wang wrote:
 > 
 > Is this reasonable?
 
-the result is ok.
+Looks weird. Maybe pass some information into mtk_dither_set() to set
+DISP_DITHERING correctly. 
+
+I find one thing need to be fixed. CFG should be lower case.
+
+Regards,
+CK
+
 > 
 > > > Regards,
 > > > CK
