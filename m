@@ -3,80 +3,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4B7BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 47910C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7DE7264DD8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7DE7264DD8
+	by mail.kernel.org (Postfix) with ESMTPS id E333F64DD8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jan 2021 07:28:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E333F64DD8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+OpG0PcUW7ELRlNYNp7fvhtyWLyPhLiDQ8mqxcRMF4w=; b=T1YIGHWAb7QTCvxPuNr5uMatcS
-	EHtt802lUvtCCPkWa2QP4MNqtw+GrgUyQQgY0YiZa8q7sz94eFxnNtubz6JJARGc/IIUUgTFJcJ01
-	NkzjzL1wasTVSaP52HwS88ijvODxGhTNvO0qvfybFAwgBKCCBnpeouZViiYcbzqPhXnzq5iuMcP+Z
-	yJ+bwFnrsTeiDFpO/Ah4MJK792u1Tm/qGghJKXXgteWNRLElCtln1jYCRT8wZ2IpmgAQNLOywflk+
-	/fsLmdVuf+k4xu/n9DGVCeZuhfaoyFU1lyAnndR7HN9uAB0erqXHnrbMxNlgCbXsPrAvAWJCgKoOV
-	Iycspp3w==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9WNS0rk2eVVJL6W9jo+iQf93ErW3UfiRjcTfX8l7+eU=; b=hR7HX95ieP5ww4uTGfWJyAJ8z
+	B7pCu6AW9RwWPeoW+fgFL1meHuL8TdV3qSP77gyOFjmQDvVDReqJ6TkEO/xJ0Mj9hxm/BBZCdBkfW
+	RUcr7WapK0/2HmYMGctbmA+6aVwjqjngny080g6YW3Gily1SLfpM9B4dYr6dMoQdkWyPni2a7uzYP
+	372tfEM0KdL6e0hOxbOvSmU9qU5EKVtUsMlIdiBkpQlkS2c8Fz/BeK0EPGx+eiMkhq2b/9kc5s+FL
+	LnyuFJfGD4yK/LD5N3u2AsIPlb1gx6YVqr2LI3TrhzL2Wx2T4oFsCd4cWqUrBwVihJ/O3+L8Nc0zd
+	FAZUyiiVA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l51iv-0007ty-Nj; Thu, 28 Jan 2021 07:28:13 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1l51j6-0007xX-Cc; Thu, 28 Jan 2021 07:28:24 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l51is-0007sb-1Y
- for linux-mediatek@lists.infradead.org; Thu, 28 Jan 2021 07:28:11 +0000
-Received: by mail-pf1-x436.google.com with SMTP id q131so3425108pfq.10
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Jan 2021 23:28:09 -0800 (PST)
+ id 1l51iz-0007uM-0H
+ for linux-mediatek@lists.infradead.org; Thu, 28 Jan 2021 07:28:18 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id j12so3423125pfj.12
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 Jan 2021 23:28:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=RZz3ceioh1U58Fbl8S/hu4ZpgE/t+XyWasxorJvZsE0=;
- b=fSa3rYF+HYRmksYTnNnBF7iGLrcWblljS8mseahPbcqq8DhIvFNoh7Ydw+gpq01OC2
- 9LKee+XfbDxx9WMW625TsChm2sa7K9XmD4uM8jZBWkKuIDqg20+LvB1GlV5pHIYN9cf7
- RkIJUUwjHD4uvVywJSaBE0Y0f3uzGWechNtQw=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=XcNzJ3Y1xaPDuXcAllHAfyiKBSKXPgrFbgqPU858HRE=;
+ b=bmxOK+fJooGfsi1izamRIsN0nqeSv63ef+oEkbVp1glFlLrQvZ71goAnFNQsXR0ldr
+ bwGyOzNYDkhdnEsJK49o/gs3Up6t1KlcUtli8//Gu4ogsMsFAOIUeBG0CJasgI3DCC5U
+ 1mRlK0KeM3yJ+80Sg7Lv60SXRIGdKN3OcNUyc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=RZz3ceioh1U58Fbl8S/hu4ZpgE/t+XyWasxorJvZsE0=;
- b=Jhk0eOAye8VJpJ1UkR/F73qfT5c/hxUu9LDaSCAjJhI13xxHT+6HzaCZ0OlC9XrGSt
- co0qRk5A239lkICJQmUQPSSHA8tyLw0MSxhpOoZN4AJZzIPm6CJSUd7zEpIatw5jeGFR
- 2q9hxdCLAdkx41ZArHHzkwlqoioKv/AXK3sNkja8aDeYETJrPO8Wzm8w4Mvfi390jgzK
- rN8RY5q9yfYKPpD2n6QY2VCvZW30ReUrKWFTBfaBFenq+fWuydYmXiJoSUdJcEvJNQe1
- 8nF0OvHfZUU3SCSZSCW+Y7VEUKVbd+VV9Z7/DwxxUl2UqQ9MUfmCutlNAFOpYUsnZK0j
- Q8Yg==
-X-Gm-Message-State: AOAM530f7H9P0gkadGmCh6QfOxr9qPWuOiX3kB22KFiEXKHahJq9zxwc
- T8efypjr3dzQsNWXvq1GBWwNmA==
-X-Google-Smtp-Source: ABdhPJxuD2BvG0tK7AzWVRdSCRGTeJ9On+LJVVlKCLl4Uvo8BSo7+t7v+Wgh1kMaETX/DUQ3YbM6yQ==
-X-Received: by 2002:a63:5c61:: with SMTP id n33mr15533253pgm.153.1611818887431; 
- Wed, 27 Jan 2021 23:28:07 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=XcNzJ3Y1xaPDuXcAllHAfyiKBSKXPgrFbgqPU858HRE=;
+ b=FXRSFaf28+nkyqCTgD9c3mgkczOSHnVbTc1CD7n0SQ8MWa6GxZUOzoJD8lp3vkSGbk
+ 2wmKgdswJo3qLCn1ajyaXm/ryOs2hIYUStBt7xfAtMCW+Syv6z8IIaWJ/Ig9rSdynXeF
+ Nrh7MSXEUnorNF1Fb9Q52k0R+ngw+OhwRNRwWKchvG+R+gITApCmiVBgqDTiEcmscPk6
+ b84IrC1ypj3COaFjctS3D50JwqAq04ih49EcFULjSdUxHJjmWo/AgbXL8JKvPZOkWCXh
+ unOg5vGR9/re9WxibAheG6n/bsu5jdFIgY7xEFXQxV1MJCqjWmnflZlEPfNOi24ndyxH
+ Fb6A==
+X-Gm-Message-State: AOAM533+L/SRvzjfZYKJFe2zs4IzIKdPRkGwHzGI8vLdBqmWHP+pz7wd
+ 7svgqmeXo10rWYM6s3PdE2sUYQ==
+X-Google-Smtp-Source: ABdhPJxfvkOtpAtVlA4WoWPSHf48aGiRf3y51TDlCjt1Wf4BDlyuknkFk7E3OdmCdQkhwKxFf7BKNA==
+X-Received: by 2002:a63:4e5f:: with SMTP id o31mr15143945pgl.55.1611818893892; 
+ Wed, 27 Jan 2021 23:28:13 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:e0a5:d2fc:aaad:1e4a])
- by smtp.gmail.com with ESMTPSA id h2sm4800304pfk.4.2021.01.27.23.28.05
+ by smtp.gmail.com with ESMTPSA id h2sm4800304pfk.4.2021.01.27.23.28.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Jan 2021 23:28:06 -0800 (PST)
+ Wed, 27 Jan 2021 23:28:13 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v11 0/9] drm/mediatek: add support for mediatek SOC MT8183
-Date: Thu, 28 Jan 2021 15:27:53 +0800
-Message-Id: <20210128072802.830971-1-hsinyi@chromium.org>
+Subject: [PATCH v11 2/9] arm64: dts: mt8183: refine gamma compatible name
+Date: Thu, 28 Jan 2021 15:27:55 +0800
+Message-Id: <20210128072802.830971-3-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.30.0.280.ga3ce27912f-goog
+In-Reply-To: <20210128072802.830971-1-hsinyi@chromium.org>
+References: <20210128072802.830971-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210128_022810_180396_D34666A4 
-X-CRM114-Status: GOOD (  14.86  )
+X-CRM114-CacheID: sfid-20210128_022817_126871_58241B09 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,87 +100,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series is based on kernel/git/chunkuang.hu/linux.git mediatek-drm-next
-The series is tested on a mt8183 krane device.
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
-Change since v10
-- fix review comments in v9
+mt8183 gamma is different with mt8173
+remove mt8173 compatible name for mt8183 gamma
 
-Change since v9
-- change several function to rebase to mediatek-drm-next
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Change since v8
-- fix some review comment in v8
-- separate gamma module for mt8183 has no dither function in gamma
-- enable dither function for 5 or 6 bpc panel display
-- separate ddp mutex patch from the whole Soc patch
-
-Change since v7
-- add dt-binding for mt8183 display
-- base mmsys patch
-https://patchwork.kernel.org/project/linux-mediatek/cover/1607506379-10998-1-git-send-email-yongqiang.niu@mediatek.com/
-- base dts patch
-https://patchwork.kernel.org/project/linux-mediatek/cover/20201127104930.1981497-1-enric.balletbo@collabora.com/
-- add mt8183 function call for setting the routing registers
-- add RDMA fifo size error handle
-
-Change since v6
-- move ddp component define into mtk_mmsys.h
-- add mmsys private data to support different ic path connection
-- add mt8183-mmsys.c to support 8183 path connection
-- fix reviewed issue in v6
-
-Change since v5
-- fix reviewed issue in v5
-base https://patchwork.kernel.org/project/linux-mediatek/list/?series=213219
-
-Change since v4
-- fix reviewed issue in v4
-
-Change since v3
-- fix reviewed issue in v3
-- fix type error in v3
-- fix conflict with iommu patch
-
-Change since v2
-- fix reviewed issue in v2
-- add mutex node into dts file
-
-Changes since v1:
-- fix reviewed issue in v1
-- add dts for mt8183 display nodes
-- adjust display clock control flow in patch 22
-- add vmap support for mediatek drm in patch 23
-- fix page offset issue for mmap function in patch 24
-- enable allow_fb_modifiers for mediatek drm in patch 25
-
-
-Hsin-Yi Wang (1):
-  drm/mediatek: add mtk_dither_set_common() function
-
-Yongqiang Niu (8):
-  arm64: dts: mt8183: rename rdma fifo size
-  arm64: dts: mt8183: refine gamma compatible name
-  drm/mediatek: add RDMA fifo size error handle
-  drm/mediatek: separate gamma module
-  drm/mediatek: add has_dither private data for gamma
-  drm/mediatek: enable dither function
-  soc: mediatek: add mtk mutex support for MT8183
-  drm/mediatek: add support for mediatek SOC MT8183
-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi    |   7 +-
- drivers/gpu/drm/mediatek/Makefile           |   1 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  14 ++
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 196 ++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  18 ++
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  10 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 138 +++++++-------
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  49 ++++-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
- drivers/soc/mediatek/mtk-mutex.c            |  50 +++++
- 10 files changed, 410 insertions(+), 74 deletions(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 6c84ccb709af6..9c0073cfad452 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1055,8 +1055,7 @@ aal0: aal@14010000 {
+ 		};
+ 
+ 		gamma0: gamma@14011000 {
+-			compatible = "mediatek,mt8183-disp-gamma",
+-				     "mediatek,mt8173-disp-gamma";
++			compatible = "mediatek,mt8183-disp-gamma";
+ 			reg = <0 0x14011000 0 0x1000>;
+ 			interrupts = <GIC_SPI 234 IRQ_TYPE_LEVEL_LOW>;
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
 -- 
 2.30.0.280.ga3ce27912f-goog
 
