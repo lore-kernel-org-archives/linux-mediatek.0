@@ -2,80 +2,76 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41A5DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 01:53:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A303CC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 03:51:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C5B8864DFD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 01:53:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5B8864DFD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0D31764DBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 03:51:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D31764DBD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Xh5W3wpXqwb+KGYNYHHDJy4SZqNU+Rpnl4WKq0h37c4=; b=UaUHNmjwwdgk+nxnQte0GCLw8
-	2bF2/waPYaI2i3XhmAV7v+xv/7QfnXJXl9mrrX/tEd/+/V8SFROgSM2oPlsemxjfwGbwjqleUznD+
-	CcBG/vd0ai93KCK4N0uY1G8N94COPCH2fy0tQTEstd2dBaGFrYEJ6Id4VQ3TrtBrRwr/CKwWmtf/Y
-	2kKEmV0fLrOemo7k1lUaSaPruZcCCWw7eDGRz/LjS/S8yEjQT/TKwv26fYeMNcZqeszi6fujt/JxJ
-	4aUIz6EdNrkHDPsarcOxRwhLt/hAZq5WLZmm/QuQ9qKPTcY3/3+Bvc2OlBJdgEbIUVWnPwq3onSA1
-	tctYj8N0w==;
+	 bh=Z3fnxKLlSPK4BpB6+p2p7wX0S9rTOokXEWgBAJo4xxU=; b=lc9r+RweNsoa3paiQFb5ZOChh
+	m2FMETF4sEltVoP9k8cgnCpr6Y2QkfvAH+Fr++h8gtWrw6sJNm1pttlH1jeBvUGRm+DJLF//gUUTI
+	dnWKUj0/LFn8XpUKuoyjCvYflqfIcrbjeBz7+kFyiJPpmYkwHiKtubO5S0aD0CFJnSur0CQl2RfSC
+	hA0maRCrRi1rcJdguS/3Rvij4qncGe1NpFKDEgL3l3gIVQPG+JzA1on/xG6EUC8EaGBI9rSku+U4S
+	8auQeVme4y+EvTE6tg/hTRhZL2goYzobzbKWnrUHzySmkCk4n6YKCEW5ejF4+tX9K2za0BQ3Pjler
+	tdFHIJDcw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5Iy2-0002Pf-NT; Fri, 29 Jan 2021 01:52:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l5Kow-0003FS-GT; Fri, 29 Jan 2021 03:51:42 +0000
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5Ixy-0002OR-VA; Fri, 29 Jan 2021 01:52:56 +0000
-X-UUID: 245d6c360f834635ad7e0722a1ddd6fa-20210128
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=fdRmt55p+MQD3S1Cu81aNjjrFDffurU5HWdEwTLBEdQ=; 
- b=P2dBk1xhxdAuw0p8msPEn/u4j9Z18pkgL/R9C/hu+toA6KHci5roQo0j/1jvtkxhw8PdSaERh0SK2FI0+ko0Ew7IkwTCtug210fmN4mZ0Uk6UhPXzXng+riN0xXvJLSfZ03t380O4WoDTPADfd8Sgc7BRxWB8+scZLsfzBoMgIQ=;
-X-UUID: 245d6c360f834635ad7e0722a1ddd6fa-20210128
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 393215045; Thu, 28 Jan 2021 17:52:47 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Jan 2021 17:52:45 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 29 Jan 2021 09:52:42 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 29 Jan 2021 09:52:41 +0800
-Message-ID: <1611885162.5302.19.camel@mhfsdcap03>
-Subject: Re: [PATCH v6 07/33] iommu: Avoid reallocate default domain for a
- group
-From: Yong Wu <yong.wu@mediatek.com>
-To: Will Deacon <will@kernel.org>
-Date: Fri, 29 Jan 2021 09:52:42 +0800
-In-Reply-To: <20210128211442.GB3531@willie-the-truck>
-References: <20210111111914.22211-1-yong.wu@mediatek.com>
- <20210111111914.22211-8-yong.wu@mediatek.com>
- <20210126222305.GB30460@willie-the-truck>
- <1611740356.5302.14.camel@mhfsdcap03>
- <20210128211020.GA3531@willie-the-truck>
- <20210128211442.GB3531@willie-the-truck>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1l5Kop-0003Cz-9w
+ for linux-mediatek@lists.infradead.org; Fri, 29 Jan 2021 03:51:38 +0000
+Received: by mail-vs1-xe2d.google.com with SMTP id o186so4220404vso.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 28 Jan 2021 19:51:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Jnk1h+Zm6n/okb5cHmLykkrJZohbNZPfoHPOBcykkQs=;
+ b=EPerR1sUvTgueO5i3ZL5veSEQxRiqidYCwlCtMXdymJZFv/4wOGX3bJ+YpBrykLm83
+ TiZ0aQR4xJdQokVBcc8zGsaUY2yHJk4HC12IIGvJ8NsAXE3Dn/mRER3oBgPrfewtGdVi
+ +yvqYhHusXB91BB6wRqLGam6ZYjGhlJDUyRNY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Jnk1h+Zm6n/okb5cHmLykkrJZohbNZPfoHPOBcykkQs=;
+ b=Aznr7SdAMrtbuW8qh8faWCJ4+WQgyLWy4o8/npLM4Sa/dB/kj0RNs8E12gFQhjmKc0
+ gweLQWnX+/4E9T6AojxWzKHTHuq8yRgcmwUAVJ930qjqDRiPFwke/+RFDgPuFIHug6Yy
+ xYP++X+SqK30ycc7oFoamVROBmnBo8aB0B+NisKcGVPtowqmU/oyJq9tCJ3EL0itkeq3
+ dpxh3mRnB0vbnzfWxhGXV9J2CScefpTdS/v50YIPfXDR3UPsvVHQx2ga7a2nOULYPYao
+ Z0hyy7/P4+3B4Ery+tWZdhdpQu94M3i5GPsSOmeLdhcRkx6bzZMbCgAi5iHNdi6fSa4a
+ B74w==
+X-Gm-Message-State: AOAM5337EgXnNqL1EXZrPgSkBRmOlPGkPhU886Z4VjIBWcPKxaTHtJ3M
+ cNgpKyJUsn0M3UBKEhP1EZFYa+vjUTv1XuCJ035Wnw==
+X-Google-Smtp-Source: ABdhPJz1S0Q9ijxKCsprTFXXrokE0AtPeYZFD8kd0gdJkXUmfBjCwQ0j0zCQ3r/c4+iTeuCCbpUpE+NI5D+wNmlB0Iw=
+X-Received: by 2002:a67:8945:: with SMTP id l66mr1502828vsd.48.1611892291939; 
+ Thu, 28 Jan 2021 19:51:31 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C7FA721F47A35587783A8CC9CE434783D2147DE2CF3728D62F7C900CF55A2C7A2000:8
-X-MTK: N
+References: <1611314381-19517-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1611314381-19517-7-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <1611314381-19517-7-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Fri, 29 Jan 2021 11:51:20 +0800
+Message-ID: <CANMq1KC3rXfKx=4w2tLKRC2=VE8xfTGY47y3f9w_GiEAKvvUFw@mail.gmail.com>
+Subject: Re: [PATCH v5 6/8] regulator: mt6359: Add support for MT6359 regulator
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210128_205255_216190_1F4BC22B 
-X-CRM114-Status: GOOD (  33.41  )
+X-CRM114-CacheID: sfid-20210128_225135_453826_D5982177 
+X-CRM114-Status: GOOD (  25.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,84 +83,306 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>, Wen Su <wen.su@mediatek.com>,
+ Fei Shao <fshao@chromium.org>, Ran Bi <ran.bi@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, lkml <linux-kernel@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Devicetree List <devicetree@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>,
+ Yuchen Huang <yuchen.huang@mediatek.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-01-28 at 21:14 +0000, Will Deacon wrote:
-> On Thu, Jan 28, 2021 at 09:10:20PM +0000, Will Deacon wrote:
-> > On Wed, Jan 27, 2021 at 05:39:16PM +0800, Yong Wu wrote:
-> > > On Tue, 2021-01-26 at 22:23 +0000, Will Deacon wrote:
-> > > > On Mon, Jan 11, 2021 at 07:18:48PM +0800, Yong Wu wrote:
-> > > > > If group->default_domain exists, avoid reallocate it.
-> > > > > 
-> > > > > In some iommu drivers, there may be several devices share a group. Avoid
-> > > > > realloc the default domain for this case.
-> > > > > 
-> > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > > ---
-> > > > >  drivers/iommu/iommu.c | 3 ++-
-> > > > >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > > > > 
-> > > > > diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> > > > > index 3d099a31ddca..f4b87e6abe80 100644
-> > > > > --- a/drivers/iommu/iommu.c
-> > > > > +++ b/drivers/iommu/iommu.c
-> > > > > @@ -266,7 +266,8 @@ int iommu_probe_device(struct device *dev)
-> > > > >  	 * support default domains, so the return value is not yet
-> > > > >  	 * checked.
-> > > > >  	 */
-> > > > > -	iommu_alloc_default_domain(group, dev);
-> > > > > +	if (!group->default_domain)
-> > > > > +		iommu_alloc_default_domain(group, dev);
-> > > > 
-> > > > I don't really get what this achieves, since iommu_alloc_default_domain()
-> > > > looks like this:
-> > > > 
-> > > > static int iommu_alloc_default_domain(struct iommu_group *group,
-> > > > 				      struct device *dev)
-> > > > {
-> > > > 	unsigned int type;
-> > > > 
-> > > > 	if (group->default_domain)
-> > > > 		return 0;
-> > > > 
-> > > > 	...
-> > > > 
-> > > > in which case, it should be fine?
-> > > 
-> > > oh. sorry, I overlooked this. the current code is enough.
-> > > I will remove this patch. and send the next version in this week.
-> > > Thanks very much.
-> > 
-> > Actually, looking at this again, if we're dropping this patch and patch 6
-> > just needs the kfree() moving about, then there's no need to repost. The
-> > issue that Robin and Paul are discussing can be handled separately.
-> 
-> Argh, except that this version of the patches doesn't apply :)
-> 
-> So after all that, please go ahead and post a v7 ASAP based on this branch:
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/will/linux.git/log/?h=for-joerg/mtk
+On Fri, Jan 22, 2021 at 7:27 PM Hsin-Hsiung Wang
+<hsin-hsiung.wang@mediatek.com> wrote:
+>
+> From: Wen Su <wen.su@mediatek.com>
+>
+> The MT6359 is a regulator found on boards based on MediaTek MT6779 and
+> probably other SoCs. It is a so called pmic and connects as a slave to
+> SoC using SPI, wrapped inside the pmic-wrapper.
+>
+> Signed-off-by: Wen Su <wen.su@mediatek.com>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+> changes since v4:
+> - add enable time of ldo.
+> - use the device of mfd driver for the regulator_config.
+> - add the regulators_node support.
 
-After confirm with Tomasz, He still need some time to take a look at v6.
+This doesn't build at all, please at least compile test before sending
+new revisions.
 
-thus I need wait some time to send v7 after his feedback.
+> ---
+>  drivers/regulator/Kconfig                  |   9 +
+>  drivers/regulator/Makefile                 |   1 +
+>  drivers/regulator/mt6359-regulator.c       | 669 +++++++++++++++++++++
+>  include/linux/regulator/mt6359-regulator.h |  58 ++
+>  4 files changed, 737 insertions(+)
+>  create mode 100644 drivers/regulator/mt6359-regulator.c
+>  create mode 100644 include/linux/regulator/mt6359-regulator.h
+>
+> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+> index 53fa84f4d1e1..3de7bb5be8ac 100644
+> --- a/drivers/regulator/Kconfig
+> +++ b/drivers/regulator/Kconfig
+> @@ -750,6 +750,15 @@ config REGULATOR_MT6358
+>           This driver supports the control of different power rails of device
+>           through regulator interface.
+>
+> +config REGULATOR_MT6359
+> +       tristate "MediaTek MT6359 PMIC"
+> +       depends on MFD_MT6397
+> +       help
+> +         Say y here to select this option to enable the power regulator of
+> +         MediaTek MT6359 PMIC.
+> +         This driver supports the control of different power rails of device
+> +         through regulator interface.
+> +
+>  config REGULATOR_MT6360
+>         tristate "MT6360 SubPMIC Regulator"
+>         depends on MFD_MT6360
+> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+> index 680e539f6579..4f65eaead82d 100644
+> --- a/drivers/regulator/Makefile
+> +++ b/drivers/regulator/Makefile
+> @@ -91,6 +91,7 @@ obj-$(CONFIG_REGULATOR_MPQ7920) += mpq7920.o
+>  obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6323) += mt6323-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6358) += mt6358-regulator.o
+> +obj-$(CONFIG_REGULATOR_MT6359) += mt6359-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6380) += mt6380-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6397) += mt6397-regulator.o
+> diff --git a/drivers/regulator/mt6359-regulator.c b/drivers/regulator/mt6359-regulator.c
+> new file mode 100644
+> index 000000000000..fabc3f57f334
+> --- /dev/null
+> +++ b/drivers/regulator/mt6359-regulator.c
+> @@ -0,0 +1,669 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2020 MediaTek Inc.
+> +
+> +#include <linux/platform_device.h>
+> +#include <linux/mfd/mt6359/registers.h>
+> +#include <linux/mfd/mt6397/core.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/regmap.h>
+> +#include <linux/regulator/driver.h>
+> +#include <linux/regulator/machine.h>
+> +#include <linux/regulator/mt6359-regulator.h>
+> +#include <linux/regulator/of_regulator.h>
+> +
+> +#define MT6359_BUCK_MODE_AUTO          0
+> +#define MT6359_BUCK_MODE_FORCE_PWM     1
+> +#define MT6359_BUCK_MODE_NORMAL                0
+> +#define MT6359_BUCK_MODE_LP            2
+> +
+> +/*
+> + * MT6359 regulators' information
+> + *
+> + * @desc: standard fields of regulator description.
+> + * @status_reg: for query status of regulators.
+> + * @qi: Mask for query enable signal status of regulators.
+> + * @modeset_reg: for operating AUTO/PWM mode register.
+> + * @modeset_mask: MASK for operating modeset register.
+> + * @modeset_shift: SHIFT for operating modeset register.
+> + */
+> +struct mt6359_regulator_info {
+> +       struct regulator_desc desc;
+> +       u32 status_reg;
+> +       u32 qi;
+> +       u32 modeset_reg;
+> +       u32 modeset_mask;
+> +       u32 modeset_shift;
+> +       u32 lp_mode_reg;
+> +       u32 lp_mode_mask;
+> +       u32 lp_mode_shift;
+> +};
+> +
+> +#define MT6359_BUCK(match, _name, min, max, step, min_sel,     \
+> +       volt_ranges, _enable_reg, _status_reg,                  \
+> +       _vsel_reg, _vsel_mask,                                  \
+> +       _lp_mode_reg, _lp_mode_shift,                           \
+> +       _modeset_reg, _modeset_shift)                           \
+> +[MT6359_ID_##_name] = {                                                \
+> +       .desc = {                                               \
+> +               .name = #_name,                                 \
+> +               .of_match = of_match_ptr(match),                \
+> +               .regulators_node = of_match_ptr("regulators"),  \
+> +               .ops = &mt6359_volt_range_ops,                  \
+> +               .type = REGULATOR_VOLTAGE,                      \
+> +               .id = MT6359_ID_##_name,                        \
+> +               .owner = THIS_MODULE,                           \
+> +               .uV_step = (step),                              \
+> +               .linear_min_sel = (min_sel),                    \
+> +               .linear_min_sel = (min_sel),                    \
+> +               .n_voltages = ((max) - (min)) / (step) + 1,     \
+> +               .linear_min_sel = (min_sel),                    \
+> +               .n_voltages = ((max) - (min)) / (step) + 1,     \
+> +               .min_uV = (min),                                \
+> +               .linear_ranges = volt_ranges,                   \
+> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
+> +               .vsel_reg = _vsel_reg,                          \
+> +               .vsel_mask = _vsel_mask,                        \
+> +               .enable_reg = _enable_reg,                      \
+> +               .enable_mask = BIT(0),                          \
+> +               .of_map_mode = mt6359_map_mode,                 \
+> +               .of_map_mode = mt6359_map_mode,                 \
+> +       },                                                      \
+> +       .status_reg = _status_reg,                              \
+> +       .qi = BIT(0),                                           \
+> +       .lp_mode_reg = _lp_mode_reg,                            \
+> +       .lp_mode_reg = _lp_mode_reg,                            \
+> +       .lp_mode_mask = BIT(_lp_mode_shift),                    \
+> +       .lp_mode_reg = _lp_mode_reg,                            \
 
-Thanks for your comment. and Thanks Tomasz for the review.
+Repeated 3 times.
 
-> 
-> Will
+> +       .lp_mode_mask = BIT(_lp_mode_shift),                    \
+
+Repeated twice.
+
+> +       .lp_mode_shift = _lp_mode_shift,                        \
+> +       .modeset_reg = _modeset_reg,                            \
+> +       .modeset_mask = BIT(_modeset_shift),                    \
+> +       .modeset_shift = _modeset_shift                         \
+> +}
+> +
+> +#define MT6359_LDO_LINEAR(match, _name, min, max, step, min_sel,\
+> +#define MT6359_LDO_LINEAR(match, _name, min, max, step, min_sel,\
+
+Repeated twice
+
+> +       volt_ranges, _enable_reg, _status_reg,                  \
+> +       _vsel_reg, _vsel_mask)                                  \
+> +       _vsel_reg, _vsel_mask)                                  \
+> +[MT6359_ID_##_name] = {                                                \
+> +       .desc = {                                               \
+> +       .desc = {                                               \
+> +               .name = #_name,                                 \
+> +               .of_match = of_match_ptr(match),                \
+> +               .of_match = of_match_ptr(match),                \
+> +               .regulators_node = of_match_ptr("regulators"),  \
+> +               .ops = &mt6359_volt_range_ops,                  \
+> +               .type = REGULATOR_VOLTAGE,                      \
+> +               .id = MT6359_ID_##_name,                        \
+> +               .owner = THIS_MODULE,                           \
+> +               .owner = THIS_MODULE,                           \
+> +               .uV_step = (step),                              \
+> +               .linear_min_sel = (min_sel),                    \
+> +               .n_voltages = ((max) - (min)) / (step) + 1,     \
+> +               .min_uV = (min),                                \
+> +               .linear_ranges = volt_ranges,                   \
+> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
+> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
+> +               .vsel_reg = _vsel_reg,                          \
+> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
+> +               .vsel_reg = _vsel_reg,                          \
+> +               .vsel_mask = _vsel_mask,                        \
+> +               .enable_reg = _enable_reg,                      \
+> +               .enable_mask = BIT(0),                          \
+> +       },                                                      \
+> +       .status_reg = _status_reg,                              \
+> +       .status_reg = _status_reg,                              \
+> +       .qi = BIT(0),                                           \
+> +       .status_reg = _status_reg,                              \
+> +       .qi = BIT(0),                                           \
+> +}
+> +
+> +#define MT6359_LDO(match, _name, _volt_table,                  \
+> +       _enable_reg, _enable_mask, _status_reg,                 \
+> +       _vsel_reg, _vsel_mask, _en_delay)                       \
+> +[MT6359_ID_##_name] = {                                                \
+> +[MT6359_ID_##_name] = {                                                \
+
+Repeated twice
+
+> +       .desc = {                                               \
+> +               .name = #_name,                                 \
+> +               .of_match = of_match_ptr(match),                \
+> +               .of_match = of_match_ptr(match),                \
+> +               .regulators_node = of_match_ptr("regulators"),  \
+> +               .ops = &mt6359_volt_table_ops,                  \
+> +               .type = REGULATOR_VOLTAGE,                      \
+> +               .id = MT6359_ID_##_name,                        \
+> +               .owner = THIS_MODULE,                           \
+> +               .n_voltages = ARRAY_SIZE(_volt_table),          \
+> +               .n_voltages = ARRAY_SIZE(_volt_table),          \
+> +               .volt_table = _volt_table,                      \
+> +               .n_voltages = ARRAY_SIZE(_volt_table),          \
+> +               .volt_table = _volt_table,                      \
+> +               .vsel_reg = _vsel_reg,                          \
+> +               .vsel_mask = _vsel_mask,                        \
+> +               .enable_reg = _enable_reg,                      \
+> +               .enable_mask = BIT(_enable_mask),               \
+> +               .enable_time = _en_delay,                       \
+> +       },                                                      \
+> +       .status_reg = _status_reg,                              \
+> +       .qi = BIT(0),                                           \
+> +}
+> +
+> +#define MT6359_REG_FIXED(match, _name, _enable_reg,    \
+> +       _status_reg, _fixed_volt)                       \
+> +[MT6359_ID_##_name] = {                                        \
+> +[MT6359_ID_##_name] = {                                        \
+> +       .desc = {                                       \
+> +               .name = #_name,                         \
+> +               .name = #_name,                         \
+> +               .of_match = of_match_ptr(match),        \
+> +               .regulators_node = of_match_ptr("regulators"),  \
+> +               .ops = &mt6359_volt_fixed_ops,          \
+> +               .type = REGULATOR_VOLTAGE,              \
+> +               .id = MT6359_ID_##_name,                \
+> +               .id = MT6359_ID_##_name,                \
+> +               .owner = THIS_MODULE,                   \
+> +               .n_voltages = 1,                        \
+> +               .enable_reg = _enable_reg,              \
+> +               .enable_mask = BIT(0),                  \
+> +               .fixed_uV = (_fixed_volt),              \
+> +       },                                              \
+> +       .status_reg = _status_reg,                      \
+> +       .status_reg = _status_reg,                      \
+> +       .qi = BIT(0),                                   \
+> +}
+> +
+> +static const struct linear_range mt_volt_range1[] = {
+> +       REGULATOR_LINEAR_RANGE(800000, 0, 0x70, 12500),
+> +};
+> +};
+> +
+> +static const struct linear_range mt_volt_range2[] = {
+> +       REGULATOR_LINEAR_RANGE(400000, 0, 0x7f, 6250),
+> +};
+> +
+> +static const struct linear_range mt_volt_range3[] = {
+> +       REGULATOR_LINEAR_RANGE(400000, 0, 0x70, 6250),
+> +};
+> +
+> +static const struct linear_range mt_volt_range4[] = {
+> +       REGULATOR_LINEAR_RANGE(800000, 0, 0x40, 12500),
+> +};
+> +
+> +static const struct linear_range mt_volt_range5[] = {
+> +static const struct linear_range mt_volt_range5[] = {
+
+This is repeated twice.
+
+> +       REGULATOR_LINEAR_RANGE(500000, 0, 0x3F, 50000),
+> +};
+> +
+> [snip]
 
 _______________________________________________
 Linux-mediatek mailing list
