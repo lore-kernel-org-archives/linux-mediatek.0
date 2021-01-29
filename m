@@ -2,67 +2,87 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1180C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 15:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D493BC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 16:12:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 529A664E1B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 15:37:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 529A664E1B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 796CA64DF1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 16:12:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 796CA64DF1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=y+SMK5ClWQex3XNWuo1xvx4VixAwKb7NSqi4H/B3oHg=; b=W/Vgf3sSPxjPLv9zOze/6gT7/
-	S1y8dJH/WwbdPejatdPXds54TQIDdp+k4wAP39CwAD2ThdCtXRvtJ/U60xfeKhRVQMqzziwNfNdeZ
-	KODwxuEjax6JaAI/4ln8/WbfCfR53taMmSbqryRAf0VrJ+CETZMiFXXjnG6VSoPGZAvkMeDmHXzwx
-	sifx0tm9Mv/gvXnR5ZeopCrIVuVyyz6SIBR0PXtea5tOx1USiF3RXDt/quFNqkSqtuDsX1B8hJJ9g
-	Zq8wfpSSBBHAso9bvSGHPjdN69QB8ZtUbEsZXQ58r0YeN+Fr+dHamFunhYa14uZ7uq22rYTooXicu
-	pGnL9MyLQ==;
+	 bh=UBTrSysKlE7DvbPx5qUBcdvrg9jHHRnjEakyW0kj478=; b=bqFVp0lqPaVRLn4sP61YnJQi0
+	KC0cSA/h0DmiM0yXKxUzCwBJOvaldE+81pPlohVmxV4gkJMKO0F1W3Bwe4I9cHcCy4cTlJTOgjlPt
+	+v2g55hqDI9Wl0zlnsX2z8j5MoRHVn9c3jstZ2+yTs4Xn71PS1LM7GEIM57TxmQ4iExJAzlwrGWOo
+	lLu2w+tru5ElwOp8GUjYx6fUkmZcJsCGYrJ3QGpKPIc9bUhBxDMJos9kT/gOLAc/+9RWQVKreE7Sk
+	/H/fh4igsAmKLJzbtCZYC20NML1f+fOUFSsvM9pQGUY0OrpUim3UWsMaMEoze888sFhKBiqaa4aBZ
+	I6pG37cXQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5Vq3-0006Om-Tu; Fri, 29 Jan 2021 15:37:35 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l5WNu-00030z-P2; Fri, 29 Jan 2021 16:12:34 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5Vq0-0006Nu-R8; Fri, 29 Jan 2021 15:37:33 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 17E1064E13;
- Fri, 29 Jan 2021 15:37:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611934652;
- bh=qMW7ue19Uwp7HdV1n3mt6+nPLKC9zLXPVm9Mhou7CTo=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uZpCNNK/gpA5NiqgqnYd+aiRpazHJcy6fPT0Vfokl+jvqvp1tIVNBFUq5uJJBsAbv
- vAHRko76R6GW2Rjq6NIoKhWNqSDXq47ztf9V2cuqtCc8hUNTpc754Ktgf4hZElgHP7
- ZkwN6aLs1/fr3/14c42yqpjhZzU6fdIaBRbHzMf4bQlwGmVfOV5J/dn81axu9pklZG
- mERAywvA3uAuXB/mkM22ZeUPYX51i2/MaLYvfR3s03romVsjTQO2CgubJNnJNnWk81
- sGIDSjGgEG1+zLa4dTi/B9KvPtNDDllq8/OrrtW29MGgMxxa4vDD6PfRvCldd1LUso
- IUhczYo4fWm9g==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.10 15/41] mac80211: fix incorrect strlen of .write
- in debugfs
-Date: Fri, 29 Jan 2021 10:36:46 -0500
-Message-Id: <20210129153713.1592185-15-sashal@kernel.org>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210129153713.1592185-1-sashal@kernel.org>
-References: <20210129153713.1592185-1-sashal@kernel.org>
+ id 1l5WNr-000302-RD; Fri, 29 Jan 2021 16:12:33 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id l12so9407204wry.2;
+ Fri, 29 Jan 2021 08:12:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ST7WdW4AHMNwNKW4LPK5UDb5h0XM0Wouc3DTcnCaFsw=;
+ b=o4cMsn5fUlqQFg1SsaMNgyb2WrAgCI4eXiys0l/OBn+Le5zRaE3mAu5d7HntVtgzKC
+ wEQjMjOoXwhOBAiEbIOR+yajPwwuH1AJOJlJkiO3DZh1MxwcA3uHocJthtej2v9jsikR
+ 4/+aZzcWkLhXfD79k85hd1/Q/JbAHOPStif/ey33ikMxSoyscn55k1XD3lYdgHgPnpT+
+ 9vCFrlqZE43prthHuoRL9uZOvFXeTM8bts8hWgJC+hgk/c3GAM//KO5kCLHMeulRzeiS
+ 6JOWQAx3SumXwZ79GQaZjG8xzQI+D/+nrxDsQem6C+Ve2zxjNcwapWmJGJdbVDewUulH
+ Q4YQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ST7WdW4AHMNwNKW4LPK5UDb5h0XM0Wouc3DTcnCaFsw=;
+ b=Zw1/rziUyKQO+zxKhbn/dLvY7VDMZkXnTJvk1kBb+tJK2YvpkO9Tmn4tZgz26SwJ+4
+ 5OokH4CWpQ1+unKIaPN4rW2R0KGZzzrGJmDj3p30XZ5OLEP5RIDJk9lK/RIJc14yTWXn
+ WVNTrQPcIaXqDKhwdO+nl+iDp3MxUNUHkEnbdKNMh5UUlRloczj46OfF7Nr/NF3Js/8t
+ xn493UUL+Rt13AxFJJF4m7MMOBCNryCv3HvWp8YBa+73lHTTkfoM0GPueanVEvyYfJ9S
+ y3QyNZftAy1EzFTgnb+7FwYruwrTcDUG08d16fz9/huX9/iqFTTFk67uIW+/iEAFWag/
+ KvYg==
+X-Gm-Message-State: AOAM530Do7qsdNrIF5xpiU1+r5B/zfmCwJoU+yNmAztmprqUtux6R4gh
+ fjZdsVLCOi33kphzUMI6V8UVNdqJ7Bo=
+X-Google-Smtp-Source: ABdhPJwZm9/wuYgszu439FbMT2Qol8n6NhEfnm0e4FNm/uAOa1Jden148CgRpOWPWqy+WheOS4ewhg==
+X-Received: by 2002:a5d:47a2:: with SMTP id 2mr5340921wrb.393.1611936750230;
+ Fri, 29 Jan 2021 08:12:30 -0800 (PST)
+Received: from ziggy.stardust ([213.195.126.134])
+ by smtp.gmail.com with ESMTPSA id 9sm2446960wra.80.2021.01.29.08.12.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Jan 2021 08:12:29 -0800 (PST)
+Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: mt8183: add pwm node
+To: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>
+References: <20201209120322.137610-1-fparent@baylibre.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <06a08867-9e54-3591-dc73-7ac88d2b806a@gmail.com>
+Date: Fri, 29 Jan 2021 17:12:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+In-Reply-To: <20201209120322.137610-1-fparent@baylibre.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_103733_033356_B3A45FAE 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20210129_111232_065409_8B66FF41 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,150 +94,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Johannes Berg <johannes.berg@intel.com>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Sujuan Chen <sujuan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- Shayne Chen <shayne.chen@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shayne Chen <shayne.chen@mediatek.com>
 
-[ Upstream commit 6020d534fa012b80c6d13811dc4d2dfedca2e403 ]
 
-This fixes strlen mismatch problems happening in some .write callbacks
-of debugfs.
+On 09/12/2020 13:03, Fabien Parent wrote:
+> MT8183 SoC has 4 PWMs. Add the pwm node in order to support them.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-When trying to configure airtime_flags in debugfs, an error appeared:
-ash: write error: Invalid argument
+Applied to v5.11-next/dts64
 
-The error is returned from kstrtou16() since a wrong length makes it
-miss the real end of input string.  To fix this, use count as the string
-length, and set proper end of string for a char buffer.
+Thanks
 
-The debug print is shown - airtime_flags_write: count = 2, len = 8,
-where the actual length is 2, but "len = strlen(buf)" gets 8.
-
-Also cleanup the other similar cases for the sake of consistency.
-
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-Link: https://lore.kernel.org/r/20210112032028.7482-1-shayne.chen@mediatek.com
-Signed-off-by: Johannes Berg <johannes.berg@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- net/mac80211/debugfs.c | 44 +++++++++++++++++++-----------------------
- 1 file changed, 20 insertions(+), 24 deletions(-)
-
-diff --git a/net/mac80211/debugfs.c b/net/mac80211/debugfs.c
-index 90470392fdaa7..de5cd3818690c 100644
---- a/net/mac80211/debugfs.c
-+++ b/net/mac80211/debugfs.c
-@@ -120,18 +120,17 @@ static ssize_t aqm_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[100];
--	size_t len;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = '\0';
--	len = strlen(buf);
--	if (len > 0 && buf[len-1] == '\n')
--		buf[len-1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (sscanf(buf, "fq_limit %u", &local->fq.limit) == 1)
- 		return count;
-@@ -177,18 +176,17 @@ static ssize_t airtime_flags_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[16];
--	size_t len;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = 0;
--	len = strlen(buf);
--	if (len > 0 && buf[len - 1] == '\n')
--		buf[len - 1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (kstrtou16(buf, 0, &local->airtime_flags))
- 		return -EINVAL;
-@@ -237,20 +235,19 @@ static ssize_t aql_txq_limit_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[100];
--	size_t len;
- 	u32 ac, q_limit_low, q_limit_high, q_limit_low_old, q_limit_high_old;
- 	struct sta_info *sta;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = 0;
--	len = strlen(buf);
--	if (len > 0 && buf[len - 1] == '\n')
--		buf[len - 1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (sscanf(buf, "%u %u %u", &ac, &q_limit_low, &q_limit_high) != 3)
- 		return -EINVAL;
-@@ -306,18 +303,17 @@ static ssize_t force_tx_status_write(struct file *file,
- {
- 	struct ieee80211_local *local = file->private_data;
- 	char buf[3];
--	size_t len;
- 
--	if (count > sizeof(buf))
-+	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
- 	if (copy_from_user(buf, user_buf, count))
- 		return -EFAULT;
- 
--	buf[sizeof(buf) - 1] = '\0';
--	len = strlen(buf);
--	if (len > 0 && buf[len - 1] == '\n')
--		buf[len - 1] = 0;
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
- 
- 	if (buf[0] == '0' && buf[1] == '\0')
- 		local->force_tx_status = 0;
--- 
-2.27.0
-
+> ---
+> 
+> V2: rename pwm0 to pwm1 since disp-pwm has been merged in v5.11 as pwm0
+> 
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 5b782a4769e7..a0004bd9f9c2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -667,6 +667,20 @@ pwm0: pwm@1100e000 {
+>  			clock-names = "main", "mm";
+>  		};
+>  
+> +		pwm1: pwm@11006000 {
+> +			compatible = "mediatek,mt8183-pwm";
+> +			reg = <0 0x11006000 0 0x1000>;
+> +			#pwm-cells = <2>;
+> +			clocks = <&infracfg CLK_INFRA_PWM>,
+> +				 <&infracfg CLK_INFRA_PWM_HCLK>,
+> +				 <&infracfg CLK_INFRA_PWM1>,
+> +				 <&infracfg CLK_INFRA_PWM2>,
+> +				 <&infracfg CLK_INFRA_PWM3>,
+> +				 <&infracfg CLK_INFRA_PWM4>;
+> +			clock-names = "top", "main", "pwm1", "pwm2", "pwm3",
+> +				      "pwm4";
+> +		};
+> +
+>  		i2c3: i2c@1100f000 {
+>  			compatible = "mediatek,mt8183-i2c";
+>  			reg = <0 0x1100f000 0 0x1000>,
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
