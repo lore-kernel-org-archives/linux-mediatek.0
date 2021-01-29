@@ -2,20 +2,20 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51F41C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 01:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41A5DC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 01:53:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D92DE64DF1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 01:33:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D92DE64DF1
+	by mail.kernel.org (Postfix) with ESMTPS id C5B8864DFD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 01:53:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5B8864DFD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +24,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Kvl4lRh8UpWHeBC4++AkxqePTeuzYVRBwXInHV9uHFM=; b=niRXkCZ7wEUlPcM8bv1bpDQP8
-	B4UPPH0s8lfCp1ZJJOhGE21JyDm99c/z9giYzPsafe8l3nqwiOmggBXKgclFdBTtjMol2L99CjjGN
-	Wfm3ESTL3eETshb9fyYNJah2a77y0pF+f+g0JY+C0pnIfI7QgBlxtGHqMys5dM53Um5dAXLUBF5Lp
-	7KwrMN7vPm9IZXCCW55zOreDdxUpFIQz9EPMBFB/tCWBSAAp4TwCLUfGJUFuF2ByjRE3LxVy9ktfW
-	TeKJa0kLN9ONLXPjZxxEO2WkdMu/madUK8tvs8hU4VBIzbHZGIn5x09Lz/ZykywTgizur4EV2q9Ag
-	pzqOYse0w==;
+	 bh=Xh5W3wpXqwb+KGYNYHHDJy4SZqNU+Rpnl4WKq0h37c4=; b=UaUHNmjwwdgk+nxnQte0GCLw8
+	2bF2/waPYaI2i3XhmAV7v+xv/7QfnXJXl9mrrX/tEd/+/V8SFROgSM2oPlsemxjfwGbwjqleUznD+
+	CcBG/vd0ai93KCK4N0uY1G8N94COPCH2fy0tQTEstd2dBaGFrYEJ6Id4VQ3TrtBrRwr/CKwWmtf/Y
+	2kKEmV0fLrOemo7k1lUaSaPruZcCCWw7eDGRz/LjS/S8yEjQT/TKwv26fYeMNcZqeszi6fujt/JxJ
+	4aUIz6EdNrkHDPsarcOxRwhLt/hAZq5WLZmm/QuQ9qKPTcY3/3+Bvc2OlBJdgEbIUVWnPwq3onSA1
+	tctYj8N0w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5Iez-0000ri-FW; Fri, 29 Jan 2021 01:33:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l5Iy2-0002Pf-NT; Fri, 29 Jan 2021 01:52:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5Iev-0000qK-JL; Fri, 29 Jan 2021 01:33:15 +0000
-X-UUID: 6b59f50a48a74faeb6ee08f2ab5cc7e1-20210128
+ id 1l5Ixy-0002OR-VA; Fri, 29 Jan 2021 01:52:56 +0000
+X-UUID: 245d6c360f834635ad7e0722a1ddd6fa-20210128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=osPAg0K5Yd7X9cjShUvPGC/GtiMhGLI3vpW3QQq8WXs=; 
- b=SVbp7fctsNo7VFTjJqTqn78oe51H5KAUusyw1m52NIs+N/2N9YjYM/NQqd0jfwnBv67qgdLa1Blkzbt70bLt8z8HRpZjfndb0/kSaIdqHBYRwTFEAk3z/boc52W5XqumjhhYghTm+4Ysx3djUOVCzYS9rEm/N9GT9loVjV+HEH4=;
-X-UUID: 6b59f50a48a74faeb6ee08f2ab5cc7e1-20210128
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ bh=fdRmt55p+MQD3S1Cu81aNjjrFDffurU5HWdEwTLBEdQ=; 
+ b=P2dBk1xhxdAuw0p8msPEn/u4j9Z18pkgL/R9C/hu+toA6KHci5roQo0j/1jvtkxhw8PdSaERh0SK2FI0+ko0Ew7IkwTCtug210fmN4mZ0Uk6UhPXzXng+riN0xXvJLSfZ03t380O4WoDTPADfd8Sgc7BRxWB8+scZLsfzBoMgIQ=;
+X-UUID: 245d6c360f834635ad7e0722a1ddd6fa-20210128
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 769493977; Thu, 28 Jan 2021 17:33:09 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 393215045; Thu, 28 Jan 2021 17:52:47 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Jan 2021 17:33:07 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Jan 2021 09:33:02 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 29 Jan 2021 09:33:02 +0800
-Message-ID: <1611883982.5226.12.camel@mtksdaap41>
-Subject: Re: [PATCH v12 6/8] drm/mediatek: enable dither function
-From: CK Hu <ck.hu@mediatek.com>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Fri, 29 Jan 2021 09:33:02 +0800
-In-Reply-To: <20210128112314.1304160-7-hsinyi@chromium.org>
-References: <20210128112314.1304160-1-hsinyi@chromium.org>
- <20210128112314.1304160-7-hsinyi@chromium.org>
+ 15.0.1497.2; Thu, 28 Jan 2021 17:52:45 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 29 Jan 2021 09:52:42 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 29 Jan 2021 09:52:41 +0800
+Message-ID: <1611885162.5302.19.camel@mhfsdcap03>
+Subject: Re: [PATCH v6 07/33] iommu: Avoid reallocate default domain for a
+ group
+From: Yong Wu <yong.wu@mediatek.com>
+To: Will Deacon <will@kernel.org>
+Date: Fri, 29 Jan 2021 09:52:42 +0800
+In-Reply-To: <20210128211442.GB3531@willie-the-truck>
+References: <20210111111914.22211-1-yong.wu@mediatek.com>
+ <20210111111914.22211-8-yong.wu@mediatek.com>
+ <20210126222305.GB30460@willie-the-truck>
+ <1611740356.5302.14.camel@mhfsdcap03>
+ <20210128211020.GA3531@willie-the-truck>
+ <20210128211442.GB3531@willie-the-truck>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 61173972B03CFC5DDB5831DC8F9D30A79FD4418A4F9F31FD79A0881E77BA28132000:8
+X-TM-SNTS-SMTP: C7FA721F47A35587783A8CC9CE434783D2147DE2CF3728D62F7C900CF55A2C7A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210128_203313_841241_8306F98B 
-X-CRM114-Status: GOOD (  19.69  )
+X-CRM114-CacheID: sfid-20210128_205255_216190_1F4BC22B 
+X-CRM114-Status: GOOD (  33.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,81 +87,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Hsin-Yi:
-
-On Thu, 2021-01-28 at 19:23 +0800, Hsin-Yi Wang wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+On Thu, 2021-01-28 at 21:14 +0000, Will Deacon wrote:
+> On Thu, Jan 28, 2021 at 09:10:20PM +0000, Will Deacon wrote:
+> > On Wed, Jan 27, 2021 at 05:39:16PM +0800, Yong Wu wrote:
+> > > On Tue, 2021-01-26 at 22:23 +0000, Will Deacon wrote:
+> > > > On Mon, Jan 11, 2021 at 07:18:48PM +0800, Yong Wu wrote:
+> > > > > If group->default_domain exists, avoid reallocate it.
+> > > > > 
+> > > > > In some iommu drivers, there may be several devices share a group. Avoid
+> > > > > realloc the default domain for this case.
+> > > > > 
+> > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > > > ---
+> > > > >  drivers/iommu/iommu.c | 3 ++-
+> > > > >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> > > > > index 3d099a31ddca..f4b87e6abe80 100644
+> > > > > --- a/drivers/iommu/iommu.c
+> > > > > +++ b/drivers/iommu/iommu.c
+> > > > > @@ -266,7 +266,8 @@ int iommu_probe_device(struct device *dev)
+> > > > >  	 * support default domains, so the return value is not yet
+> > > > >  	 * checked.
+> > > > >  	 */
+> > > > > -	iommu_alloc_default_domain(group, dev);
+> > > > > +	if (!group->default_domain)
+> > > > > +		iommu_alloc_default_domain(group, dev);
+> > > > 
+> > > > I don't really get what this achieves, since iommu_alloc_default_domain()
+> > > > looks like this:
+> > > > 
+> > > > static int iommu_alloc_default_domain(struct iommu_group *group,
+> > > > 				      struct device *dev)
+> > > > {
+> > > > 	unsigned int type;
+> > > > 
+> > > > 	if (group->default_domain)
+> > > > 		return 0;
+> > > > 
+> > > > 	...
+> > > > 
+> > > > in which case, it should be fine?
+> > > 
+> > > oh. sorry, I overlooked this. the current code is enough.
+> > > I will remove this patch. and send the next version in this week.
+> > > Thanks very much.
+> > 
+> > Actually, looking at this again, if we're dropping this patch and patch 6
+> > just needs the kfree() moving about, then there's no need to repost. The
+> > issue that Robin and Paul are discussing can be handled separately.
 > 
-> for 5 or 6 bpc panel, we need enable dither function
-> to improve the display quality
+> Argh, except that this version of the patches doesn't apply :)
 > 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 15 +++++++++++++--
->  1 file changed, 13 insertions(+), 2 deletions(-)
+> So after all that, please go ahead and post a v7 ASAP based on this branch:
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index ac2cb25620357..6c8f246380a74 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -53,6 +53,7 @@
->  #define DITHER_EN				BIT(0)
->  #define DISP_DITHER_CFG				0x0020
->  #define DITHER_RELAY_MODE			BIT(0)
-> +#define DITHER_ENGINE_EN			BIT(1)
->  #define DISP_DITHER_SIZE			0x0030
->  
->  #define LUT_10BIT_MASK				0x03ff
-> @@ -314,9 +315,19 @@ static void mtk_dither_config(struct device *dev, unsigned int w,
->  			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
->  {
->  	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-> +	bool enable = (bpc == 5 || bpc == 6);
+> https://git.kernel.org/pub/scm/linux/kernel/git/will/linux.git/log/?h=for-joerg/mtk
 
-I strongly believe that dither function in dither is identical to the
-one in gamma and od, and in mtk_dither_set_common(), 'bpc >=
-MTK_MIN_BPC' is valid, so I believe we need not to limit bpc to 5 or 6.
-But we should consider the case that bpc is invalid in
-mtk_dither_set_common(). Invalid case in gamma and od use different way
-to process. For gamma, dither is default relay mode, so invalid bpc
-would do nothing in mtk_dither_set_common() and result in relay mode.
-For od, it set to relay mode first, them invalid bpc would do nothing in
-mtk_dither_set_common() and result in relay mode. I would like dither,
-gamma and od to process invalid bpc in the same way. One solution is to
-set relay mode in mtk_dither_set_common() for invalid bpc.
+After confirm with Tomasz, He still need some time to take a look at v6.
 
-Regards,
-CK
+thus I need wait some time to send v7 after his feedback.
 
->  
-> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs, DISP_DITHER_SIZE);
-> -	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg, priv->regs, DISP_DITHER_CFG);
-> +	if (enable) {
-> +		mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc,
-> +				      DISP_DITHER_CFG, DITHER_ENGINE_EN,
-> +				      cmdq_pkt);
-> +	} else {
-> +		mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg,
-> +			      priv->regs, DISP_DITHER_CFG);
-> +	}
-> +
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-> +		      DISP_DITHER_SIZE);
->  }
->  
->  static void mtk_dither_start(struct device *dev)
+Thanks for your comment. and Thanks Tomasz for the review.
+
+> 
+> Will
 
 _______________________________________________
 Linux-mediatek mailing list
