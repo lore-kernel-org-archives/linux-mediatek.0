@@ -2,71 +2,76 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-20.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BBA1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EBA6C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:50:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3871C64E15
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:47:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3871C64E15
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0758764E12
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:50:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0758764E12
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JOiLrn1GYM/rQrmO8O9GKK4VSn8Vt0rYidnvNaTSFSw=; b=FcXvZXO9UUYGHGG2TJcimQekY
-	K71ZUEZfIVg1WzWEAxvw83FjDFrcI+JpZ4SNuZKl31V6Lfihal6LAtJg+3BKnJ36wembfG1SOrtEL
-	0Uz+2LzME0xhz6GELw3BAIKBTYB0X8zWTh9dzTQ6DsEJK6mquEt+hFzC9hQOInMehzxDxK4Fgt4kV
-	CLpbaJ1/JdxlkfYXMJ9HSUyEMj+JIPwUwBMVssTZqXUJQ3U5fst9v5QzXTjoz7Ix5DVdG3PwHei0x
-	GuBzCpVncRpLGimyc0sWAPphJuSElaHTzduz1Qj34DDRMWjhC3YwKAWM5Uf0fSraW1Xr1xyIVECx/
-	qAX1jHgtw==;
+	 bh=0YqVqmvWD8O3SKpjNp/SdX4B16zVT2eGni9jHeQ8JF4=; b=Uxr4sk5EuK3/R+ebMHrVkA6Lu
+	cA/9omnFVBFDGql4RIvh2mpJiiLxk0NrITwcBd8YHOpJhWgpKstjbcz/OCSYuga5Wgp50DOO7L6yM
+	oGhG4yagsRnQGeb3dTeOpcXtjFkL9xoBnzMfARAp8xbjdXti6OWZfro1lP3ji6coeWq3mJfGVgpbm
+	MD0VkJpuQYG1JnFKTGahcHem1a+mbmWe5apL/Mof9vlDK1bFUEpCUr5LeVzoQC42lnLPp0iefZA67
+	7b+9D6cxKcusDCMMi2f2x4/FL7ok1zTQKnvtY7gblyaDFjQoN7l9pDWYkzLvuXbpQeCPdNWE86aKE
+	HtGIXsfjw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5PRO-0007VV-Pg; Fri, 29 Jan 2021 08:47:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l5PTR-0007wc-WC; Fri, 29 Jan 2021 08:49:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5PRK-0007UL-VS; Fri, 29 Jan 2021 08:47:39 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D58F761492;
- Fri, 29 Jan 2021 08:47:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611910058;
- bh=2J8dyqGe56FVBKVAoj8OIvA0xFcY1qnYHpxqTDxTUeY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=OqQPz3isVbHuFqDs7x5wPcvJLM9H7F81OcEkKFSAbfrk/Q1Cw8wv2VaIT2fgF2pHu
- NrxCc2cjWy3JRB3Drx0UcEmvEUlmjJ96NnIFGq7+dQ8XMdG5AqQJF7F541K+ZQ0aXa
- XMRqzdsMAmp1s1/lwfwFZHm81D1qqh274H3aRMIw/vy/0FkXzVduto0rPs1Q5umOLv
- INek5jTh1tR3YGF4WXQZ0zhpZ7ABx65Md9+zA7UNp/csBwfecR7cFpST71ZXrQi1vC
- vEtHSToOSX3G+jaoONbUPMqeGJlVkN6KFfIoSI8Te+yAIK3If6/BHIZshGqu8pyNBa
- 7SNKqMza9MMFw==
-Date: Fri, 29 Jan 2021 08:47:31 +0000
-From: Will Deacon <will@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v6 07/33] iommu: Avoid reallocate default domain for a
- group
-Message-ID: <20210129084731.GA3998@willie-the-truck>
-References: <20210111111914.22211-1-yong.wu@mediatek.com>
- <20210111111914.22211-8-yong.wu@mediatek.com>
- <20210126222305.GB30460@willie-the-truck>
- <1611740356.5302.14.camel@mhfsdcap03>
- <20210128211020.GA3531@willie-the-truck>
- <20210128211442.GB3531@willie-the-truck>
- <1611885162.5302.19.camel@mhfsdcap03>
+ id 1l5PTL-0007tN-U1; Fri, 29 Jan 2021 08:49:48 +0000
+X-UUID: 563f580406ee4eb69ceacb6d29e8e2d1-20210129
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8LYed4Zwn/R7cvhFdVGZBG69vf/8TYNuvrg1e6/NGJE=; 
+ b=H0w+TWDOLlnmcXQSWA/mRNVYrDNSlHttXLmT1oql1kljcW1+p+nn1GE355XvEyhaqdOZ4KxhGQ4znCpQQkD/wRVXWTI5G12T8exLLyY8Uge8h35Tuuy/KO8TL8jvkgKze9l+L3UpyMQ+y0U7XXvxg087y4a5p5jzwOLYQULxfiE=;
+X-UUID: 563f580406ee4eb69ceacb6d29e8e2d1-20210129
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 259093050; Fri, 29 Jan 2021 00:49:41 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 Jan 2021 00:40:46 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 Jan 2021 16:40:42 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 29 Jan 2021 16:40:42 +0800
+Message-ID: <1611909641.31184.11.camel@mtksdaap41>
+Subject: Re: [PATCH v4 6/8] drm/mediatek: add matrix bits private data for
+ ccorr
+From: CK Hu <ck.hu@mediatek.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Fri, 29 Jan 2021 16:40:41 +0800
+In-Reply-To: <20210129073436.2429834-7-hsinyi@chromium.org>
+References: <20210129073436.2429834-1-hsinyi@chromium.org>
+ <20210129073436.2429834-7-hsinyi@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1611885162.5302.19.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TM-SNTS-SMTP: 07838E2DF8FE698C3E994C67D0C67BE09B3C9FAC28E56910A68D922798B518752000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_034739_190203_7CE610F8 
-X-CRM114-Status: GOOD (  35.27  )
+X-CRM114-CacheID: sfid-20210129_034945_015621_4DC701F6 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,87 +83,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 29, 2021 at 09:52:42AM +0800, Yong Wu wrote:
-> On Thu, 2021-01-28 at 21:14 +0000, Will Deacon wrote:
-> > On Thu, Jan 28, 2021 at 09:10:20PM +0000, Will Deacon wrote:
-> > > On Wed, Jan 27, 2021 at 05:39:16PM +0800, Yong Wu wrote:
-> > > > On Tue, 2021-01-26 at 22:23 +0000, Will Deacon wrote:
-> > > > > On Mon, Jan 11, 2021 at 07:18:48PM +0800, Yong Wu wrote:
-> > > > > > If group->default_domain exists, avoid reallocate it.
-> > > > > > 
-> > > > > > In some iommu drivers, there may be several devices share a group. Avoid
-> > > > > > realloc the default domain for this case.
-> > > > > > 
-> > > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > > > ---
-> > > > > >  drivers/iommu/iommu.c | 3 ++-
-> > > > > >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > > > > > 
-> > > > > > diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> > > > > > index 3d099a31ddca..f4b87e6abe80 100644
-> > > > > > --- a/drivers/iommu/iommu.c
-> > > > > > +++ b/drivers/iommu/iommu.c
-> > > > > > @@ -266,7 +266,8 @@ int iommu_probe_device(struct device *dev)
-> > > > > >  	 * support default domains, so the return value is not yet
-> > > > > >  	 * checked.
-> > > > > >  	 */
-> > > > > > -	iommu_alloc_default_domain(group, dev);
-> > > > > > +	if (!group->default_domain)
-> > > > > > +		iommu_alloc_default_domain(group, dev);
-> > > > > 
-> > > > > I don't really get what this achieves, since iommu_alloc_default_domain()
-> > > > > looks like this:
-> > > > > 
-> > > > > static int iommu_alloc_default_domain(struct iommu_group *group,
-> > > > > 				      struct device *dev)
-> > > > > {
-> > > > > 	unsigned int type;
-> > > > > 
-> > > > > 	if (group->default_domain)
-> > > > > 		return 0;
-> > > > > 
-> > > > > 	...
-> > > > > 
-> > > > > in which case, it should be fine?
-> > > > 
-> > > > oh. sorry, I overlooked this. the current code is enough.
-> > > > I will remove this patch. and send the next version in this week.
-> > > > Thanks very much.
-> > > 
-> > > Actually, looking at this again, if we're dropping this patch and patch 6
-> > > just needs the kfree() moving about, then there's no need to repost. The
-> > > issue that Robin and Paul are discussing can be handled separately.
-> > 
-> > Argh, except that this version of the patches doesn't apply :)
-> > 
-> > So after all that, please go ahead and post a v7 ASAP based on this branch:
-> > 
-> > https://git.kernel.org/pub/scm/linux/kernel/git/will/linux.git/log/?h=for-joerg/mtk
-> 
-> After confirm with Tomasz, He still need some time to take a look at v6.
-> 
-> thus I need wait some time to send v7 after his feedback.
-> 
-> Thanks for your comment. and Thanks Tomasz for the review.
+Hi, Hsin-Yi:
 
-Ok, but please be aware that I'm planning to send my queue to Joerg on
-Monday, so if it doesn't show up today then it will miss 5.12.
+On Fri, 2021-01-29 at 15:34 +0800, Hsin-Yi Wang wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> matrix bits of mt8183 is 12
+> matrix bits of mt8192 is 13
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 22 +++++++++++++++++++---
+>  1 file changed, 19 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> index 0c68090eb1e92..1c7163a12f3b1 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+> @@ -31,8 +31,10 @@
+>  #define DISP_CCORR_COEF_3			0x008C
+>  #define DISP_CCORR_COEF_4			0x0090
+>  
+> +#define CCORR_MATRIX_BITS			12
+> +
+>  struct mtk_disp_ccorr_data {
+> -	u32 reserved;
+> +	u32 matrix_bits;
+>  };
+>  
+>  /**
+> @@ -116,6 +118,7 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
+>  	uint16_t coeffs[9] = { 0 };
+>  	int i;
+>  	struct cmdq_pkt *cmdq_pkt = NULL;
+> +	u32 matrix_bits;
+>  
+>  	if (!blob)
+>  		return;
+> @@ -123,8 +126,16 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
+>  	ctm = (struct drm_color_ctm *)blob->data;
+>  	input = ctm->matrix;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
+> +	if (ccorr->data)
+> +		matrix_bits = ccorr->data->matrix_bits;
+> +	else
+> +		matrix_bits = CCORR_MATRIX_BITS;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(coeffs); i++) {
+>  		coeffs[i] = mtk_ctm_s31_32_to_s1_10(input[i]);
+> +		if (matrix_bits > CCORR_MATRIX_BITS)
+> +			coeffs[i] <<= (matrix_bits - CCORR_MATRIX_BITS);
 
-Will
+I think format of MT8192 ccorr coeffs is s1.11, after
+mtk_ctm_s31_32_to_s1_10(), you lose one bit precision. So modify
+mtk_ctm_s31_32_to_s1_10() to get maximum precision.
+
+Regards,
+CK
+
+> +	}
+>  
+>  	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
+>  		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_0);
+> @@ -205,8 +216,13 @@ static int mtk_disp_ccorr_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> +static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
+> +	.matrix_bits = CCORR_MATRIX_BITS,
+> +};
+> +
+>  static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
+> -	{ .compatible = "mediatek,mt8183-disp-ccorr"},
+> +	{ .compatible = "mediatek,mt8183-disp-ccorr",
+> +	  .data = &mt8183_ccorr_driver_data},
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
 
 _______________________________________________
 Linux-mediatek mailing list
