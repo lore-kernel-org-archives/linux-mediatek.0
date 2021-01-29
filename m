@@ -2,84 +2,77 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EF93C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 07:36:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD373C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 07:45:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFC2364E05
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 07:36:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFC2364E05
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8876A64DDB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 07:45:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8876A64DDB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ex5fCWSp27qnP12ikjLhu5RUxQPcLwSwzNZZYjxNdEk=; b=mtDynu9KQYbEIiYwSiiSNGT3J
-	sfiYDmM5W/mKCtLCdNCVnqLscDmsAEXoJ/6NJ/Dc1veSDISCQwE8J5x3DKHdGrzHmRVEd/+HF/dzm
-	9nYt1WQWI99A3d5Thy58CCVGHpqDxOHow3nHLgxes5sY9hhcWM2HegsZtvBIpAjvSGSwB3M2DOsjA
-	OL6TiJDAG8c1ZcGBB/RDDX93Hd2Uyz+Sdl6plZYlZQKX4Y+X5L4VoZRlNSZ5CK3qECnsTgVEw3Ijj
-	DEXGGpBToDaTdG1B6e/BZVrBITUh74bd01eUXM9Isp4Vzl1T03f/u7uXlSdEgkE2212O7f6HpWW3D
-	Jyt7uRYwQ==;
+	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZvJUpPVy7RoJgZSiy7AH8nSATLnTjRrJQ+pbK/wzkkw=; b=MAAfElhGLDrUqWKhnGq09OwKt7
+	J26wiIhFU/K2r2Zjqki1REtpdwnRvIOpRWM88VEpHTwkb15LIEn2pqUHBDKSfRLyrn0LFcpVawVzY
+	jN88miCMbjwkf8TyBio/UM/9JkC97Y8oeZTOEZnubMbrmcW4Myj1x+SUoCzFPCJTM2GO8TyCy6EZg
+	87SLkqvX3BrvSnxKF6+KzCXMaVkfWdLS1MTFYVXDJictrhX8q1Oc6g3zWQ0zkx8XxzoltWTdZRmfx
+	0y2US02hJRwlmH4V+R8setiSKtjNa30Metk/q2cYGcsePjesLzuPoHtuBK/wunliPgTPWpS+cMhRf
+	NXdOO8eQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5OKK-00034E-7v; Fri, 29 Jan 2021 07:36:20 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1l5OT3-00069y-Oz; Fri, 29 Jan 2021 07:45:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5OJ6-0002V8-IO
- for linux-mediatek@lists.infradead.org; Fri, 29 Jan 2021 07:35:11 +0000
-Received: by mail-pl1-x630.google.com with SMTP id 31so4772160plb.10
- for <linux-mediatek@lists.infradead.org>; Thu, 28 Jan 2021 23:35:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=9cKSq4M37GTCoySHMSLIVfX3mkNW7xzlO8kkQIsDByQ=;
- b=ZqrHOFSFM1pVOjBroZvoAf2cy5rVH6bPS1hsaQqiDaAZiqDsma1c6Kq0+NQo46EAGe
- PSvOzCHKda6xTD/pOBZXyn1kI2oVQU7busx+a86Qbqv/RUFKAqovrt0Yr0sEf3yl4/Vs
- 5pWt7hjDZOJjmYntZfCVIj1nl6eohuyf48VLM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=9cKSq4M37GTCoySHMSLIVfX3mkNW7xzlO8kkQIsDByQ=;
- b=P/HmuUNrFvxaL+mnITmKfZwPMlTfo61a8q5+UO4mCyp6eDLri/exLDb+RApXbft2gI
- 7v3/nr8GHAjc0uaHPlN83VXbKAFIE22NLDbqWNuy1TMK6CqjhbaKk7geUSGnloAYpTur
- n/u1osC5Cu4C6GKJH/gg9oC56+2Op1UKEKAmtqD/5UDhwYpIZCFdnFSBDx1SRlED/MpE
- r3I/twdmA/8ijO902c5itbx698GIzbCLRymRuKHXSCs1RHbcs2UgPVCBnYHSGundbSdM
- KqOae9vKbPt0JHHSHjnHhuStd0/hz2bBGPVc8FaBUlf4ALLVhzQFrRP9CWBFIw5GASGc
- AJuQ==
-X-Gm-Message-State: AOAM532YfnNZVImmfUbNEPbvli2OGlT/6OnoTOpau3J/2Ms4tOYZynku
- zcSEQPDlbRbIv4xte88Sj75AQg==
-X-Google-Smtp-Source: ABdhPJyw8Us0GHeBfi740BMHJA6gLNtD4bLW0ZBWB10Hp5AHYeElwrXD/7dvKPXqw3cAUENlue4TWg==
-X-Received: by 2002:a17:902:242:b029:dc:3baf:2033 with SMTP id
- 60-20020a1709020242b02900dc3baf2033mr3087391plc.36.1611905701848; 
- Thu, 28 Jan 2021 23:35:01 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:51f1:c468:a70b:7c09])
- by smtp.gmail.com with ESMTPSA id p1sm7689980pfn.21.2021.01.28.23.34.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jan 2021 23:35:01 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v4 8/8] drm/mediatek: add support for mediatek SOC MT8192
-Date: Fri, 29 Jan 2021 15:34:36 +0800
-Message-Id: <20210129073436.2429834-9-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.30.0.365.g02bc693789-goog
-In-Reply-To: <20210129073436.2429834-1-hsinyi@chromium.org>
-References: <20210129073436.2429834-1-hsinyi@chromium.org>
+ id 1l5OT0-00068m-LM; Fri, 29 Jan 2021 07:45:20 +0000
+X-UUID: 73ddb4d92fc6475c82d6455364720711-20210128
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:Reply-To:From:Subject:Message-ID;
+ bh=r2EgZakFk2zVv4JxdHuJL0gzurAODYWI+bsdmfCnS4k=; 
+ b=EE574tJw0UjHDfz8TOAMVXEPXmmHUw0yzBU2OjVizLoUE/GLpcnDVscKO5/JuLNk2uGyYK2BOGzOC2Qbj+2eh2l1VKtzGy3oxiH+nXIPoo2Az0kbteq9aJb9CB1IfjhovM0ugeadqjmsfR4WTmiWDasXuYBuPbLL99jlU2o6rDs=;
+X-UUID: 73ddb4d92fc6475c82d6455364720711-20210128
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1161260018; Thu, 28 Jan 2021 23:45:14 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Jan 2021 23:42:07 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs05n1.mediatek.inc
+ (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 29 Jan 2021 15:42:05 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 29 Jan 2021 15:42:04 +0800
+Message-ID: <1611906124.1947.22.camel@mhfsdcap03>
+Subject: Re: [PATCH v12 6/8] drm/mediatek: enable dither function
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Fri, 29 Jan 2021 15:42:04 +0800
+In-Reply-To: <CAJMQK-hLf6f0mofWMF6eEKtTRTmK4Pm-mkYjAAGzD80uTpZLug@mail.gmail.com>
+References: <20210128112314.1304160-1-hsinyi@chromium.org>
+ <20210128112314.1304160-7-hsinyi@chromium.org>
+ <1611883982.5226.12.camel@mtksdaap41>
+ <CAJMQK-gKKjLJ5xOAKOx5BM5dL2MxgFq72FVCfGTfzK4ZXzRJfA@mail.gmail.com>
+ <1611901808.1947.16.camel@mhfsdcap03>
+ <CAJMQK-hLf6f0mofWMF6eEKtTRTmK4Pm-mkYjAAGzD80uTpZLug@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_023504_775018_176B701C 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20210129_024518_926328_EAD6732A 
+X-CRM114-Status: GOOD (  34.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,230 +84,197 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- linux-arm-kernel@lists.infradead.org
+Reply-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ lkml <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>,
+ CK Hu <ck.hu@mediatek.com>, "moderated
+ list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+On Fri, 2021-01-29 at 14:46 +0800, Hsin-Yi Wang wrote:
+> On Fri, Jan 29, 2021 at 2:30 PM Yongqiang Niu
+> <yongqiang.niu@mediatek.com> wrote:
+> >
+> > On Fri, 2021-01-29 at 14:24 +0800, Hsin-Yi Wang wrote:
+> > > On Fri, Jan 29, 2021 at 9:33 AM CK Hu <ck.hu@mediatek.com> wrote:
+> > > >
+> > > > Hi, Hsin-Yi:
+> > > >
+> > > > On Thu, 2021-01-28 at 19:23 +0800, Hsin-Yi Wang wrote:
+> > > > > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > > > >
+> > > > > for 5 or 6 bpc panel, we need enable dither function
+> > > > > to improve the display quality
+> > > > >
+> > > > > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > > > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > > > > ---
+> > > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 15 +++++++++++++--
+> > > > >  1 file changed, 13 insertions(+), 2 deletions(-)
+> > > > >
+> > > > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > > > index ac2cb25620357..6c8f246380a74 100644
+> > > > > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > > > @@ -53,6 +53,7 @@
+> > > > >  #define DITHER_EN                            BIT(0)
+> > > > >  #define DISP_DITHER_CFG                              0x0020
+> > > > >  #define DITHER_RELAY_MODE                    BIT(0)
+> > > > > +#define DITHER_ENGINE_EN                     BIT(1)
+> > > > >  #define DISP_DITHER_SIZE                     0x0030
+> > > > >
+> > > > >  #define LUT_10BIT_MASK                               0x03ff
+> > > > > @@ -314,9 +315,19 @@ static void mtk_dither_config(struct device *dev, unsigned int w,
+> > > > >                             unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+> > > > >  {
+> > > > >       struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+> > > > > +     bool enable = (bpc == 5 || bpc == 6);
+> > > >
+> > > > I strongly believe that dither function in dither is identical to the
+> > > > one in gamma and od, and in mtk_dither_set_common(), 'bpc >=
+> > > > MTK_MIN_BPC' is valid, so I believe we need not to limit bpc to 5 or 6.
+> > > > But we should consider the case that bpc is invalid in
+> > > > mtk_dither_set_common(). Invalid case in gamma and od use different way
+> > > > to process. For gamma, dither is default relay mode, so invalid bpc
+> > > > would do nothing in mtk_dither_set_common() and result in relay mode.
+> > > > For od, it set to relay mode first, them invalid bpc would do nothing in
+> > > > mtk_dither_set_common() and result in relay mode. I would like dither,
+> > > > gamma and od to process invalid bpc in the same way. One solution is to
+> > > > set relay mode in mtk_dither_set_common() for invalid bpc.
+> > > >
+> > > > Regards,
+> > > > CK
+> > > >
+> > >
+> > > I modify the mtk_dither_config() to follow:
+> > >
+> > >
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > index ac2cb25620357..5b7fcedb9f9a8 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > @@ -53,6 +53,7 @@
+> > >  #define DITHER_EN                              BIT(0)
+> > >  #define DISP_DITHER_CFG                                0x0020
+> > >  #define DITHER_RELAY_MODE                      BIT(0)
+> > > +#define DITHER_ENGINE_EN                       BIT(1)
+> > >  #define DISP_DITHER_SIZE                       0x0030
+> > >
+> > >  #define LUT_10BIT_MASK                         0x03ff
+> > > @@ -166,6 +167,8 @@ void mtk_dither_set_common(void __iomem *regs,
+> > > struct cmdq_client_reg *cmdq_reg,
+> > >                               DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
+> > >                               cmdq_reg, regs, DISP_DITHER_16);
+> > >                 mtk_ddp_write(cmdq_pkt, dither_en, cmdq_reg, regs, cfg);
+> > > +       } else {
+> > > +               mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, cmdq_reg, regs, cfg);
+> > >         }
+> > >  }
+> > >
+> > > @@ -315,8 +318,12 @@ static void mtk_dither_config(struct device *dev,
+> > > unsigned int w,
+> > >  {
+> > >         struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+> > >
+> > > -       mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg,
+> > > priv->regs, DISP_DITHER_SIZE);
+> > > -       mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg,
+> > > priv->regs, DISP_DITHER_CFG);
+> > > +       mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+> > > +                     DISP_DITHER_SIZE);
+> > > +       mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg, priv->regs,
+> > > +                     DISP_DITHER_CFG);
+> > > +       mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc, DISP_DITHER_CFG,
+> > > +                              DITHER_ENGINE_EN, cmdq_pkt);
+> > >  }
+> > >
+> > > So now, not only bpc==5 or 6, but all valid bpc, dither config will
+> > > call mtk_dither_set_common() with the flag DITHER_ENGINE_EN(BIT(1)).
+> > > od config will call mtk_dither_set_common() with the flag
+> > > DISP_DITHERING(BIT(2)).
+> > > Additionally for 8173, gamma config will call mtk_dither_set_common()
+> > > with the flag DISP_DITHERING (BIT(2))
+> > >
+> > > For invalid mode all of them will be DITHER_RELAY_MODE.
+> > >
+> > > Just to make sure that this follows the spec? thanks
+> > >
+> >
+> > for mt8173 gamma, there is no relay mode, only dither enable or not(bit
+> > 2).
+> > for mt8183 dither, there is dither enable bit 1, and relay mode bit 0
+> >
+> CK suggested to set relay mode for invalid cases. Or should I just set
+> invalid case in mtk_dither_config()? So that invalid case for gamma
+> and od would remain its default mode?
+> 
+od and gamma has no relay mode
+set relay mode in  mtk_dither_config is better
 
-add support for mediatek SOC MT8192
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c    |  6 +++
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c      | 20 ++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_postmask.c |  1 +
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c     |  6 +++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c       | 42 ++++++++++++++++++++
- 5 files changed, 75 insertions(+)
+> Besides that, the major difference of this patch and original version
+> is that not only bpc ==5 or 6 will set dither enable bit 1. Does this
+> looks good to you?
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 1c7163a12f3b1..43794192e82b1 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -220,9 +220,15 @@ static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
- 	.matrix_bits = CCORR_MATRIX_BITS,
- };
- 
-+static const struct mtk_disp_ccorr_data mt8192_ccorr_driver_data = {
-+	.matrix_bits = 13,
-+};
-+
- static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt8183-disp-ccorr",
- 	  .data = &mt8183_ccorr_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ccorr",
-+	  .data = &mt8192_ccorr_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 961f87f8d4d15..e266baae586c4 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -455,6 +455,22 @@ static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
- 	.fmt_rgb565_is_0 = true,
- };
- 
-+static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 4,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+};
-+
-+static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 2,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+};
-+
- static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
- 	  .data = &mt2701_ovl_driver_data},
-@@ -464,6 +480,10 @@ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	  .data = &mt8183_ovl_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
- 	  .data = &mt8183_ovl_2l_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ovl",
-+	  .data = &mt8192_ovl_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
-+	  .data = &mt8192_ovl_2l_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_postmask.c b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-index d640cef9c15a4..62c8431a09605 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-@@ -146,6 +146,7 @@ static int mtk_disp_postmask_remove(struct platform_device *pdev)
- }
- 
- static const struct of_device_id mtk_disp_postmask_driver_dt_match[] = {
-+	{ .compatible = "mediatek,mt8192-disp-postmask"},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_postmask_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 728aaadfea8cf..f123fc00a3935 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -355,6 +355,10 @@ static const struct mtk_disp_rdma_data mt8183_rdma_driver_data = {
- 	.fifo_size = 5 * SZ_1K,
- };
- 
-+static const struct mtk_disp_rdma_data mt8192_rdma_driver_data = {
-+	.fifo_size = 5 * SZ_1K,
-+};
-+
- static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = &mt2701_rdma_driver_data},
-@@ -362,6 +366,8 @@ static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	  .data = &mt8173_rdma_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-rdma",
- 	  .data = &mt8183_rdma_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-rdma",
-+	  .data = &mt8192_rdma_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 3da8996438dbc..6261d6bbe863e 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -147,6 +147,25 @@ static const enum mtk_ddp_comp_id mt8183_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_DPI0,
- };
- 
-+static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_OVL_2L0,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_POSTMASK0,
-+	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DSI0,
-+};
-+
-+static const enum mtk_ddp_comp_id mt8192_mtk_ddp_ext[] = {
-+	DDP_COMPONENT_OVL_2L2,
-+	DDP_COMPONENT_RDMA4,
-+	DDP_COMPONENT_DPI0,
-+};
-+
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.main_path = mt2701_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-@@ -186,6 +205,13 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-+	.main_path = mt8192_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
-+	.ext_path = mt8192_mtk_ddp_ext,
-+	.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
-+};
-+
- static int mtk_drm_kms_init(struct drm_device *drm)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
-@@ -404,22 +430,32 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
- 	  .data = (void *)MTK_DISP_OVL_2L },
-+	{ .compatible = "mediatek,mt8192-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
-+	  .data = (void *)MTK_DISP_OVL_2L },
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8183-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8192-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
- 	  .data = (void *)MTK_DISP_WDMA },
- 	{ .compatible = "mediatek,mt8183-disp-ccorr",
- 	  .data = (void *)MTK_DISP_CCORR },
-+	{ .compatible = "mediatek,mt8192-disp-ccorr",
-+	  .data = (void *)MTK_DISP_CCORR },
- 	{ .compatible = "mediatek,mt2701-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-aal",
- 	  .data = (void *)MTK_DISP_AAL},
-+	{ .compatible = "mediatek,mt8192-disp-aal",
-+	  .data = (void *)MTK_DISP_AAL},
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
-@@ -448,12 +484,16 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8183-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8192-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2701-disp-pwm",
- 	  .data = (void *)MTK_DISP_BLS },
- 	{ .compatible = "mediatek,mt8173-disp-pwm",
- 	  .data = (void *)MTK_DISP_PWM },
- 	{ .compatible = "mediatek,mt8173-disp-od",
- 	  .data = (void *)MTK_DISP_OD },
-+	{ .compatible = "mediatek,mt8192-disp-postmask",
-+	  .data = (void *)MTK_DISP_POSTMASK },
- 	{ }
- };
- 
-@@ -468,6 +508,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8173_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8183-mmsys",
- 	  .data = &mt8183_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8192-mmsys",
-+	 .data = &mt8192_mmsys_driver_data},
- 	{ }
- };
- 
--- 
-2.30.0.365.g02bc693789-goog
+dither only support  bpc 4 6 8 , there is no bpc 5 use case,
+please modify this error.
 
+and drm only has these bpc
+switch (edid->input & DRM_EDID_DIGITAL_DEPTH_MASK) {
+	case DRM_EDID_DIGITAL_DEPTH_6:
+		info->bpc = 6;
+		break;
+	case DRM_EDID_DIGITAL_DEPTH_8:
+		info->bpc = 8;
+		break;
+	case DRM_EDID_DIGITAL_DEPTH_10:
+		info->bpc = 10;
+		break;
+	case DRM_EDID_DIGITAL_DEPTH_12:
+		info->bpc = 12;
+		break;
+	case DRM_EDID_DIGITAL_DEPTH_14:
+		info->bpc = 14;
+		break;
+	case DRM_EDID_DIGITAL_DEPTH_16:
+		info->bpc = 16;
+		break;
+	case DRM_EDID_DIGITAL_DEPTH_UNDEF:
+	default:
+		info->bpc = 0;
+		break;
+	}
+
+> >
+> > > > >
+> > > > > -     mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs, DISP_DITHER_SIZE);
+> > > > > -     mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg, priv->regs, DISP_DITHER_CFG);
+> > > > > +     if (enable) {
+> > > > > +             mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc,
+> > > > > +                                   DISP_DITHER_CFG, DITHER_ENGINE_EN,
+> > > > > +                                   cmdq_pkt);
+> > > > > +     } else {
+> > > > > +             mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg,
+> > > > > +                           priv->regs, DISP_DITHER_CFG);
+> > > > > +     }
+> > > > > +
+> > > > > +     mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+> > > > > +                   DISP_DITHER_SIZE);
+> > > > >  }
+> > > > >
+> > > > >  static void mtk_dither_start(struct device *dev)
+> > > >
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
