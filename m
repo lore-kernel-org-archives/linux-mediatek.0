@@ -2,75 +2,67 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FFC6C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:59:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53399C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:09:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B180964E20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:59:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B180964E20
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id CE43264E25
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:09:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE43264E25
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.microsoft.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=18g4k7qZfh7oU/sRwTBuwz2rEuapbGPQ/YYielRyRd4=; b=efQYMgeucqnDDEpwZtTkE4ZR2C
-	bLSXt33Oemg7ZpzyUaK2qa/SSUo5pa+PHAKtO1FlXttlNnUQYm3qLHLSN2ZMKEzEyw/i2ijQQPv/t
-	bt7vVcmB2dwaZ6Y6PvXWHbD8sMi8PHhrfcUkKU20/W99vx/pjm1tfnPn49F2s35+1TbUIQfj2jEr+
-	V2ZwAFn7L6dHZDtiehNm9vywUhtJl8bjM1zDgck2OkG+NDYEKu2aUyqyHuNRT+tD4g3oZ2smmrXLJ
-	nYSqm4bhDvNO4CjL2mRy9O88JLR99zmzdCj+e49+BKeG1u394CtSIwWihncF1ib3Fp8OukiTaEtl0
-	YytALZgA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=yt8Plwqd1KGVdjSQMBabItWhRnLCsQ6Ulm55xHLxFcI=; b=HZH0hJXqeqS+0DJiJ24awAerc
+	mnZFHKYCXxL+wNR4FfQOsUTjrIbv7ZrwSJe0jOwLrCm7wlT47DodudT7+l5CYzzC8jVg7U7/9GVMT
+	NeOVkkrVhM0bj64GCI0l1PoKQoPTNs+NotjBq3OLUFe9kkGN+h1e5IxXBsF6asDVGsW5XC4RmgDvZ
+	aE8sRpViJ/eP9vglNH8fy3zlnCsOcNFodT2bgJeENuHoematV/MBMEThRdrVb1CFoxspiwB+kyMkI
+	eYnv30IfAaPjVhQCZHDGSxMPkxGeng6/THGuo5xAZmHcpimAUObVH+0zapGbmc66kPuLbNy8jdl9g
+	m506JeUpw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5PcZ-0001zF-88; Fri, 29 Jan 2021 08:59:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5PcT-0001xD-U2; Fri, 29 Jan 2021 08:59:10 +0000
-X-UUID: e4a3b739b1b241aaaf9678c77c1a9e3e-20210129
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:Reply-To:From:Subject:Message-ID;
- bh=O6IOBaAxQfjWwIu5XGkj6uilpVZbfJZL9rj3WI2ksQo=; 
- b=JAkdATioTyv8NTkJq10He3r2NhFs4Fhdz/P10dKvS6L1df2RzAZH4y4/xenvMoDoolN49ugVSlTlJ0LRsLn2OMVVm5AUgnVa/T2Gm9sml74cE4JD8uZYymJKJJzdNGUuG6duRrV1lK6UlFDCYqmiLKu53Nw2R+YxVslVjBwsTTU=;
-X-UUID: e4a3b739b1b241aaaf9678c77c1a9e3e-20210129
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1093305133; Fri, 29 Jan 2021 00:59:07 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Jan 2021 00:59:06 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs05n1.mediatek.inc
- (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 29 Jan 2021 16:59:04 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 29 Jan 2021 16:59:03 +0800
-Message-ID: <1611910743.24406.3.camel@mhfsdcap03>
-Subject: Re: [PATCH v4 6/8] drm/mediatek: add matrix bits private data for
- ccorr
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>
-Date: Fri, 29 Jan 2021 16:59:03 +0800
-In-Reply-To: <1611909641.31184.11.camel@mtksdaap41>
-References: <20210129073436.2429834-1-hsinyi@chromium.org>
- <20210129073436.2429834-7-hsinyi@chromium.org>
- <1611909641.31184.11.camel@mtksdaap41>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1l5Pm1-0003Ep-TY; Fri, 29 Jan 2021 09:09:01 +0000
+Received: from linux.microsoft.com ([13.77.154.182])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l5Plz-0003EB-EB; Fri, 29 Jan 2021 09:09:00 +0000
+Received: from [192.168.0.114] (unknown [49.207.221.54])
+ by linux.microsoft.com (Postfix) with ESMTPSA id A73BA20B7192;
+ Fri, 29 Jan 2021 01:08:47 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com A73BA20B7192
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1611911336;
+ bh=zEbtQ5rEHy/dS0FS/n4EtAIZMIOqSB2/eyGBwQkBC6s=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=Eq8xcESnyCbqMfMvOqeuQg+phUUz+UpfTyhwg01ftz2e7Mb50KG9NphUbI7d1izz9
+ HuJfJ8GwgE+r3YgZ5LwfMT9EqiN98IhG+4JepvvHLXMKoUwHdKYyOsIEgEISD1q4s2
+ DjHw8ZOHwqVqLInSLZ97zhz51QeGQAbZLwGwGmPU=
+Subject: Re: [PATCH v4 01/19] crypto: amcc: convert tasklets to use new
+ tasklet_setup() API
+To: Herbert Xu <herbert@gondor.apana.org.au>, Allen Pais <allen.lkml@gmail.com>
+References: <20210121044126.152274-1-allen.lkml@gmail.com>
+ <20210121044126.152274-2-allen.lkml@gmail.com>
+ <20210129050551.GA5586@gondor.apana.org.au>
+From: Allen Pais <apais@linux.microsoft.com>
+Message-ID: <0440823c-39f9-670b-aa1f-a6804e83e99a@linux.microsoft.com>
+Date: Fri, 29 Jan 2021 14:38:41 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210129050551.GA5586@gondor.apana.org.au>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_035910_159551_B2EE5BEE 
-X-CRM114-Status: GOOD (  20.79  )
+X-CRM114-CacheID: sfid-20210129_040859_760651_97CB192C 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,106 +74,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David
- Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, Romain Perier <romain.perier@gmail.com>,
+ davem@davemloft.net
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-01-29 at 16:40 +0800, CK Hu wrote:
-> Hi, Hsin-Yi:
-> 
-> On Fri, 2021-01-29 at 15:34 +0800, Hsin-Yi Wang wrote:
-> > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > 
-> > matrix bits of mt8183 is 12
-> > matrix bits of mt8192 is 13
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 22 +++++++++++++++++++---
-> >  1 file changed, 19 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> > index 0c68090eb1e92..1c7163a12f3b1 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> > @@ -31,8 +31,10 @@
-> >  #define DISP_CCORR_COEF_3			0x008C
-> >  #define DISP_CCORR_COEF_4			0x0090
-> >  
-> > +#define CCORR_MATRIX_BITS			12
-> > +
-> >  struct mtk_disp_ccorr_data {
-> > -	u32 reserved;
-> > +	u32 matrix_bits;
-> >  };
-> >  
-> >  /**
-> > @@ -116,6 +118,7 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
-> >  	uint16_t coeffs[9] = { 0 };
-> >  	int i;
-> >  	struct cmdq_pkt *cmdq_pkt = NULL;
-> > +	u32 matrix_bits;
-> >  
-> >  	if (!blob)
-> >  		return;
-> > @@ -123,8 +126,16 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
-> >  	ctm = (struct drm_color_ctm *)blob->data;
-> >  	input = ctm->matrix;
-> >  
-> > -	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
-> > +	if (ccorr->data)
-> > +		matrix_bits = ccorr->data->matrix_bits;
-> > +	else
-> > +		matrix_bits = CCORR_MATRIX_BITS;
-> > +
-> > +	for (i = 0; i < ARRAY_SIZE(coeffs); i++) {
-> >  		coeffs[i] = mtk_ctm_s31_32_to_s1_10(input[i]);
-> > +		if (matrix_bits > CCORR_MATRIX_BITS)
-> > +			coeffs[i] <<= (matrix_bits - CCORR_MATRIX_BITS);
-> 
-> I think format of MT8192 ccorr coeffs is s1.11, after
-> mtk_ctm_s31_32_to_s1_10(), you lose one bit precision. So modify
-> mtk_ctm_s31_32_to_s1_10() to get maximum precision.
-> 
-> Regards,
-> CK
-
-mt8183 s2.10, default value 1024
-mt8192 s2.11, default value 2048
-> 
-> > +	}
-> >  
-> >  	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
-> >  		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_0);
-> > @@ -205,8 +216,13 @@ static int mtk_disp_ccorr_remove(struct platform_device *pdev)
-> >  	return 0;
-> >  }
-> >  
-> > +static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
-> > +	.matrix_bits = CCORR_MATRIX_BITS,
-> > +};
-> > +
-> >  static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
-> > -	{ .compatible = "mediatek,mt8183-disp-ccorr"},
-> > +	{ .compatible = "mediatek,mt8183-disp-ccorr",
-> > +	  .data = &mt8183_ccorr_driver_data},
-> >  	{},
-> >  };
-> >  MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
-> 
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYyB8IDcgKysr
+LS0tLQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0p
+Cj4gCj4gVGhpcyBkb2Vzbid0IGV2ZW4gY29tcGlsZToKPiAKPiAgICBDQyBbTV0gIGRyaXZlcnMv
+Y3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUubwo+ICAgIENDIFtNXSAgZHJpdmVycy9jcnlwdG8v
+YW1jYy9jcnlwdG80eHhfYWxnLm8KPiAgICBDQyBbTV0gIGRyaXZlcnMvY3J5cHRvL2FtY2MvY3J5
+cHRvNHh4X3Rybmcubwo+ICAgIENIRUNLICAgLi4vZHJpdmVycy9jcnlwdG8vYW1jYy9jcnlwdG80
+eHhfdHJuZy5jCj4gLi4vZHJpdmVycy9jcnlwdG8vYW1jYy9jcnlwdG80eHhfY29yZS5jOiBJbiBm
+dW5jdGlvbiDigJhjcnlwdG80eHhfY2lwaGVyX2RvbmXigJk6Cj4gLi4vZHJpdmVycy9jcnlwdG8v
+YW1jYy9jcnlwdG80eHhfY29yZS5jOjUyNjoxMzogd2FybmluZzogdmFyaWFibGUg4oCYYWRkcuKA
+mSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQo+ICAgIGRtYV9h
+ZGRyX3QgYWRkcjsKPiAgICAgICAgICAgICAgIF5+fn4KPiAuLi9kcml2ZXJzL2NyeXB0by9hbWNj
+L2NyeXB0bzR4eF9jb3JlLmM6IEluIGZ1bmN0aW9uIOKAmGNyeXB0bzR4eF9haGFzaF9kb25l4oCZ
+Ogo+IC4uL2RyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYzo1NTc6MjQ6IHdhcm5p
+bmc6IHZhcmlhYmxlIOKAmGN0eOKAmSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0
+LXZhcmlhYmxlXQo+ICAgIHN0cnVjdCBjcnlwdG80eHhfY3R4ICpjdHg7Cj4gICAgICAgICAgICAg
+ICAgICAgICAgICAgIF5+fgo+IEluIGZpbGUgaW5jbHVkZWQgZnJvbSA8Y29tbWFuZC1saW5lPjoK
+PiAuLi9kcml2ZXJzL2NyeXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLmM6IEluIGZ1bmN0aW9uIOKA
+mGNyeXB0bzR4eF9iaF90YXNrbGV0X2Ni4oCZOgo+IC4uL2luY2x1ZGUvbGludXgva2VybmVsLmg6
+Njk0OjUxOiBlcnJvcjog4oCYc3RydWN0IGRldmljZeKAmSBoYXMgbm8gbWVtYmVyIG5hbWVkIOKA
+mHRhc2tsZXTigJkKPiAgICBCVUlMRF9CVUdfT05fTVNHKCFfX3NhbWVfdHlwZSgqKHB0ciksICgo
+dHlwZSAqKTApLT5tZW1iZXIpICYmIFwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgXn4KClRoYW5rcy4gSXQgc2hvdWxkIGhhdmUgYmVlbgoKCi0t
+LSBhL2RyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYworKysgYi9kcml2ZXJzL2Ny
+eXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLmMKQEAgLTEwNzIsMTAgKzEwNzIsMTEgQEAgc3RhdGlj
+IHZvaWQgY3J5cHRvNHh4X3VucmVnaXN0ZXJfYWxnKHN0cnVjdCAKY3J5cHRvNHh4X2RldmljZSAq
+c2VjX2RldikKICAgICAgICAgfQogIH0KCi1zdGF0aWMgdm9pZCBjcnlwdG80eHhfYmhfdGFza2xl
+dF9jYih1bnNpZ25lZCBsb25nIGRhdGEpCitzdGF0aWMgdm9pZCBjcnlwdG80eHhfYmhfdGFza2xl
+dF9jYihzdHJ1Y3QgdGFza2xldF9zdHJ1Y3QgKnQpCiAgewotICAgICAgIHN0cnVjdCBkZXZpY2Ug
+KmRldiA9IChzdHJ1Y3QgZGV2aWNlICopZGF0YTsKLSAgICAgICBzdHJ1Y3QgY3J5cHRvNHh4X2Nv
+cmVfZGV2aWNlICpjb3JlX2RldiA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOworICAgICAgIHN0cnVj
+dCBjcnlwdG80eHhfY29yZV9kZXZpY2UgKmNvcmVfZGV2ID0gZnJvbV90YXNrbGV0KGNvcmVfZGV2
+LCB0LAorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIHRhc2tsZXQpOworICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9IGNvcmVfZGV2
+LT5kZXZpY2U7CiAgICAgICAgIHN0cnVjdCBwZF91aW5mbyAqcGRfdWluZm87CiAgICAgICAgIHN0
+cnVjdCBjZV9wZCAqcGQ7CiAgICAgICAgIHUzMiB0YWlsID0gY29yZV9kZXYtPmRldi0+cGRyX3Rh
+aWw7CkBAIC0xNDUyLDggKzE0NTMsNyBAQCBzdGF0aWMgaW50IGNyeXB0bzR4eF9wcm9iZShzdHJ1
+Y3QgcGxhdGZvcm1fZGV2aWNlIAoqb2ZkZXYpCiAgICAgICAgICAgICAgICAgZ290byBlcnJfYnVp
+bGRfc2RyOwoKICAgICAgICAgLyogSW5pdCB0YXNrbGV0IGZvciBib3R0b20gaGFsZiBwcm9jZXNz
+aW5nICovCi0gICAgICAgdGFza2xldF9pbml0KCZjb3JlX2Rldi0+dGFza2xldCwgY3J5cHRvNHh4
+X2JoX3Rhc2tsZXRfY2IsCi0gICAgICAgICAgICAgICAgICAgICh1bnNpZ25lZCBsb25nKSBkZXYp
+OworICAgICAgIHRhc2tsZXRfc2V0dXAoJmNvcmVfZGV2LT50YXNrbGV0LCBjcnlwdG80eHhfYmhf
+dGFza2xldF9jYik7CgogICAgICAgICBjb3JlX2Rldi0+ZGV2LT5jZV9iYXNlID0gb2ZfaW9tYXAo
+b2ZkZXYtPmRldi5vZl9ub2RlLCAwKTsKICAgICAgICAgaWYgKCFjb3JlX2Rldi0+ZGV2LT5jZV9i
+YXNlKSB7CgoKV2lsbCBmaXggaXQgdXAgYW5kIHJlLXNlbmQuCgpUaGFua3MuCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
