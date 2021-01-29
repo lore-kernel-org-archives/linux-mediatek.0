@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 12717C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A9C3C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:55:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E81864E28
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:54:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E81864E28
+	by mail.kernel.org (Postfix) with ESMTPS id 93B1064E28
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:55:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93B1064E28
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QUvWHzzzpLKleECjBWJNlYXzKoZRRsDDJlebZQLhk/g=; b=q3yKacpx1iQbaqFURFn4TGo06
-	khgnLFgPqATOC76kppN9Gctjh3HeeO8q2fgyN5+Q829ERL80dhVfND75qTfujN01MCPOTN7+pg25t
-	jWAJZSyMWskWRkV2ohfLiwomm96FfgAb9NN1PJm+LNGClk9rVDEEtK9JbOrlLB0i9QcjBtvxSTyYS
-	a5HX2t9pLsbXcpUJP73GKxjWK2i2bf916k7W6FFhJRAu3B2nWElqpIvYggfdzBiWq++NGEpkbIhzo
-	mVwTrfmGwynHUxtaifTDtOnGCIy5xySF9YFGFyzlcQij2T7eB62AKPzQWVnI24Ps4RgpYZVbELDwE
-	Q4EPfopdw==;
+	 bh=5hCJcszjT5uy9kTAyLWnp5qxjKpqw9bJETRaKktS/o0=; b=uhljOmqPQ4XlyV67AGwqbQhSB
+	6WrZ1XUOwCZtROIWL1lNTenVeheQEilPO0qttOeoAV5y0i2bxAhyqFmGOc17Lt7co0RBYvT4SGxeN
+	dhTZlWqPARirjxDahPu38AntlRCFxENeZGpnoCDjW7IINSWV82jiydVlqFtDOxsLsKIDP8l2wnrzG
+	HtFK6IzPfzo3QJafT9w9czlhQzphqo0fpElVeTaJaPQgNCry4ICYnUH35PARSokiNMc3hNaBdATCL
+	R8BJr4J3s4WxneVsttGK6BO66RLl07TF6eDg21pSES47zxWuoOlavITNxJ7kDSBn20G09ZrJTUdLs
+	xDTyufwlQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5QTd-0004G5-1l; Fri, 29 Jan 2021 09:54:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l5QUP-0004SM-Rb; Fri, 29 Jan 2021 09:54:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5QTa-0004EA-9q
- for linux-mediatek@lists.infradead.org; Fri, 29 Jan 2021 09:54:03 +0000
-X-UUID: 96feb485d06e48f083959f0a6906ff4f-20210129
+ id 1l5QUG-0004Om-Pm; Fri, 29 Jan 2021 09:54:45 +0000
+X-UUID: 6e1c7f55ad6c475caec87dd6c8ba11f7-20210129
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jPVjl/dRVgqxgqFZ8qNNr58tUGPPKgx6IxBf5xVSbjA=; 
- b=NJCUGYwLGOu9Pdpup9+e+Kn+uXJbh/s37LSpJf5bXBjpRKNZAVhRC54rMA6D+BZ5cnGiCzCT5UNN+WNb7sO5svY2OUgQiQ4ZnTrDe1kdflnuN35VrumlSQaQNKlt6elb3KRcAxjEqGwNPPyZIcyxLYJ+9MuAyv6VTDeyA/2HmY4=;
-X-UUID: 96feb485d06e48f083959f0a6906ff4f-20210129
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=TOmUGz1SCoM7puYFMatjIB1pWLT2VCULCIHbB3o/vYg=; 
+ b=hKwpq66W6judUsR/x5i6cwUPbHAcbfggNJZ6xtLQImeUGiJ3J0zZUmHfxTZw1ifM01ESYtO4C6j9z7gGFyVZpXAI658n4AKCQjDzDzciN9UvQzxIDhw3fm9kDZ5fxtUZlGWrlBZXjMSKDrZ4kZXW3L4XvwW6EDtrCi26l5xpEeM=;
+X-UUID: 6e1c7f55ad6c475caec87dd6c8ba11f7-20210129
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1995363909; Fri, 29 Jan 2021 01:50:32 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Jan 2021 01:50:30 -0800
+ with ESMTP id 805474759; Fri, 29 Jan 2021 01:50:32 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 Jan 2021 01:50:31 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 29 Jan 2021 17:50:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -62,17 +61,19 @@ To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Alessandro Zummo
  <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Fei Shao <fshao@chromium.org>
-Subject: [PATCH RESEND v5 1/8] mfd: mt6358: refine interrupt code
-Date: Fri, 29 Jan 2021 17:49:34 +0800
-Message-ID: <1611913781-23460-2-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH RESEND v5 3/8] dt-bindings: mfd: Add compatible for the
+ MediaTek MT6359 PMIC
+Date: Fri, 29 Jan 2021 17:49:36 +0800
+Message-ID: <1611913781-23460-4-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1611913781-23460-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 References: <1611913781-23460-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 7D5DF2707CF22F82BE72AB7CD170395493EA572365FE54926165080D27EB16352000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_045402_561169_9CBF745B 
-X-CRM114-Status: GOOD (  20.76  )
+X-CRM114-CacheID: sfid-20210129_045444_969311_C270E6C7 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,197 +98,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch refines the interrupt related code to support new chips.
+This adds compatible for the MediaTek MT6359 PMIC.
 
 Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
 ---
-changes since v4: no changes
+changes since v4:
+- remove unused compatible name.
 ---
- drivers/mfd/mt6358-irq.c        | 65 +++++++++++++++++++--------------
- include/linux/mfd/mt6358/core.h |  8 ++--
- 2 files changed, 41 insertions(+), 32 deletions(-)
+ Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/mfd/mt6358-irq.c b/drivers/mfd/mt6358-irq.c
-index db734f2831ff..4b094e5e51cc 100644
---- a/drivers/mfd/mt6358-irq.c
-+++ b/drivers/mfd/mt6358-irq.c
-@@ -13,7 +13,9 @@
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
+diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+index 2661775a3825..99a84b69a29f 100644
+--- a/Documentation/devicetree/bindings/mfd/mt6397.txt
++++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+@@ -21,6 +21,7 @@ Required properties:
+ compatible:
+ 	"mediatek,mt6323" for PMIC MT6323
+ 	"mediatek,mt6358" for PMIC MT6358
++	"mediatek,mt6359" for PMIC MT6359
+ 	"mediatek,mt6397" for PMIC MT6397
  
--static struct irq_top_t mt6358_ints[] = {
-+#define MTK_PMIC_REG_WIDTH 16
-+
-+static const struct irq_top_t mt6358_ints[] = {
- 	MT6358_TOP_GEN(BUCK),
- 	MT6358_TOP_GEN(LDO),
- 	MT6358_TOP_GEN(PSC),
-@@ -24,6 +26,13 @@ static struct irq_top_t mt6358_ints[] = {
- 	MT6358_TOP_GEN(MISC),
- };
- 
-+static struct pmic_irq_data mt6358_irqd = {
-+	.num_top = ARRAY_SIZE(mt6358_ints),
-+	.num_pmic_irqs = MT6358_IRQ_NR,
-+	.top_int_status_reg = MT6358_TOP_INT_STATUS0,
-+	.pmic_ints = mt6358_ints,
-+};
-+
- static void pmic_irq_enable(struct irq_data *data)
- {
- 	unsigned int hwirq = irqd_to_hwirq(data);
-@@ -62,15 +71,15 @@ static void pmic_irq_sync_unlock(struct irq_data *data)
- 		/* Find out the IRQ group */
- 		top_gp = 0;
- 		while ((top_gp + 1) < irqd->num_top &&
--		       i >= mt6358_ints[top_gp + 1].hwirq_base)
-+		       i >= irqd->pmic_ints[top_gp + 1].hwirq_base)
- 			top_gp++;
- 
- 		/* Find the IRQ registers */
--		gp_offset = i - mt6358_ints[top_gp].hwirq_base;
--		int_regs = gp_offset / MT6358_REG_WIDTH;
--		shift = gp_offset % MT6358_REG_WIDTH;
--		en_reg = mt6358_ints[top_gp].en_reg +
--			 (mt6358_ints[top_gp].en_reg_shift * int_regs);
-+		gp_offset = i - irqd->pmic_ints[top_gp].hwirq_base;
-+		int_regs = gp_offset / MTK_PMIC_REG_WIDTH;
-+		shift = gp_offset % MTK_PMIC_REG_WIDTH;
-+		en_reg = irqd->pmic_ints[top_gp].en_reg +
-+			 (irqd->pmic_ints[top_gp].en_reg_shift * int_regs);
- 
- 		regmap_update_bits(chip->regmap, en_reg, BIT(shift),
- 				   irqd->enable_hwirq[i] << shift);
-@@ -95,10 +104,11 @@ static void mt6358_irq_sp_handler(struct mt6397_chip *chip,
- 	unsigned int irq_status, sta_reg, status;
- 	unsigned int hwirq, virq;
- 	int i, j, ret;
-+	struct pmic_irq_data *irqd = chip->irq_data;
- 
--	for (i = 0; i < mt6358_ints[top_gp].num_int_regs; i++) {
--		sta_reg = mt6358_ints[top_gp].sta_reg +
--			mt6358_ints[top_gp].sta_reg_shift * i;
-+	for (i = 0; i < irqd->pmic_ints[top_gp].num_int_regs; i++) {
-+		sta_reg = irqd->pmic_ints[top_gp].sta_reg +
-+			irqd->pmic_ints[top_gp].sta_reg_shift * i;
- 
- 		ret = regmap_read(chip->regmap, sta_reg, &irq_status);
- 		if (ret) {
-@@ -114,8 +124,8 @@ static void mt6358_irq_sp_handler(struct mt6397_chip *chip,
- 		do {
- 			j = __ffs(status);
- 
--			hwirq = mt6358_ints[top_gp].hwirq_base +
--				MT6358_REG_WIDTH * i + j;
-+			hwirq = irqd->pmic_ints[top_gp].hwirq_base +
-+				MTK_PMIC_REG_WIDTH * i + j;
- 
- 			virq = irq_find_mapping(chip->irq_domain, hwirq);
- 			if (virq)
-@@ -131,12 +141,12 @@ static void mt6358_irq_sp_handler(struct mt6397_chip *chip,
- static irqreturn_t mt6358_irq_handler(int irq, void *data)
- {
- 	struct mt6397_chip *chip = data;
--	struct pmic_irq_data *mt6358_irq_data = chip->irq_data;
-+	struct pmic_irq_data *irqd = chip->irq_data;
- 	unsigned int bit, i, top_irq_status = 0;
- 	int ret;
- 
- 	ret = regmap_read(chip->regmap,
--			  mt6358_irq_data->top_int_status_reg,
-+			  irqd->top_int_status_reg,
- 			  &top_irq_status);
- 	if (ret) {
- 		dev_err(chip->dev,
-@@ -144,8 +154,8 @@ static irqreturn_t mt6358_irq_handler(int irq, void *data)
- 		return IRQ_NONE;
- 	}
- 
--	for (i = 0; i < mt6358_irq_data->num_top; i++) {
--		bit = BIT(mt6358_ints[i].top_offset);
-+	for (i = 0; i < irqd->num_top; i++) {
-+		bit = BIT(irqd->pmic_ints[i].top_offset);
- 		if (top_irq_status & bit) {
- 			mt6358_irq_sp_handler(chip, i);
- 			top_irq_status &= ~bit;
-@@ -180,17 +190,18 @@ int mt6358_irq_init(struct mt6397_chip *chip)
- 	int i, j, ret;
- 	struct pmic_irq_data *irqd;
- 
--	irqd = devm_kzalloc(chip->dev, sizeof(*irqd), GFP_KERNEL);
--	if (!irqd)
--		return -ENOMEM;
-+	switch (chip->chip_id) {
-+	case MT6358_CHIP_ID:
-+		chip->irq_data = &mt6358_irqd;
-+		break;
- 
--	chip->irq_data = irqd;
-+	default:
-+		dev_err(chip->dev, "unsupported chip: 0x%x\n", chip->chip_id);
-+		return -ENODEV;
-+	}
- 
- 	mutex_init(&chip->irqlock);
--	irqd->top_int_status_reg = MT6358_TOP_INT_STATUS0;
--	irqd->num_pmic_irqs = MT6358_IRQ_NR;
--	irqd->num_top = ARRAY_SIZE(mt6358_ints);
--
-+	irqd = chip->irq_data;
- 	irqd->enable_hwirq = devm_kcalloc(chip->dev,
- 					  irqd->num_pmic_irqs,
- 					  sizeof(*irqd->enable_hwirq),
-@@ -207,10 +218,10 @@ int mt6358_irq_init(struct mt6397_chip *chip)
- 
- 	/* Disable all interrupts for initializing */
- 	for (i = 0; i < irqd->num_top; i++) {
--		for (j = 0; j < mt6358_ints[i].num_int_regs; j++)
-+		for (j = 0; j < irqd->pmic_ints[i].num_int_regs; j++)
- 			regmap_write(chip->regmap,
--				     mt6358_ints[i].en_reg +
--				     mt6358_ints[i].en_reg_shift * j, 0);
-+				     irqd->pmic_ints[i].en_reg +
-+				     irqd->pmic_ints[i].en_reg_shift * j, 0);
- 	}
- 
- 	chip->irq_domain = irq_domain_add_linear(chip->dev->of_node,
-diff --git a/include/linux/mfd/mt6358/core.h b/include/linux/mfd/mt6358/core.h
-index c5a11b7458d4..68578e2019b0 100644
---- a/include/linux/mfd/mt6358/core.h
-+++ b/include/linux/mfd/mt6358/core.h
-@@ -6,12 +6,9 @@
- #ifndef __MFD_MT6358_CORE_H__
- #define __MFD_MT6358_CORE_H__
- 
--#define MT6358_REG_WIDTH 16
--
- struct irq_top_t {
- 	int hwirq_base;
- 	unsigned int num_int_regs;
--	unsigned int num_int_bits;
- 	unsigned int en_reg;
- 	unsigned int en_reg_shift;
- 	unsigned int sta_reg;
-@@ -25,6 +22,7 @@ struct pmic_irq_data {
- 	unsigned short top_int_status_reg;
- 	bool *enable_hwirq;
- 	bool *cache_hwirq;
-+	const struct irq_top_t *pmic_ints;
- };
- 
- enum mt6358_irq_top_status_shift {
-@@ -146,8 +144,8 @@ enum mt6358_irq_numbers {
- {	\
- 	.hwirq_base = MT6358_IRQ_##sp##_BASE,	\
- 	.num_int_regs =	\
--		((MT6358_IRQ_##sp##_BITS - 1) / MT6358_REG_WIDTH) + 1,	\
--	.num_int_bits = MT6358_IRQ_##sp##_BITS, \
-+		((MT6358_IRQ_##sp##_BITS - 1) /	\
-+		MTK_PMIC_REG_WIDTH) + 1,	\
- 	.en_reg = MT6358_##sp##_TOP_INT_CON0,	\
- 	.en_reg_shift = 0x6,	\
- 	.sta_reg = MT6358_##sp##_TOP_INT_STATUS0,	\
+ Optional subnodes:
 -- 
 2.18.0
 _______________________________________________
