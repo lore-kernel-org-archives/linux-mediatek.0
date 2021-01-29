@@ -2,67 +2,82 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53399C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 829AEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:22:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CE43264E25
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:09:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE43264E25
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.microsoft.com
+	by mail.kernel.org (Postfix) with ESMTPS id 268C764E16
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:22:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 268C764E16
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yt8Plwqd1KGVdjSQMBabItWhRnLCsQ6Ulm55xHLxFcI=; b=HZH0hJXqeqS+0DJiJ24awAerc
-	mnZFHKYCXxL+wNR4FfQOsUTjrIbv7ZrwSJe0jOwLrCm7wlT47DodudT7+l5CYzzC8jVg7U7/9GVMT
-	NeOVkkrVhM0bj64GCI0l1PoKQoPTNs+NotjBq3OLUFe9kkGN+h1e5IxXBsF6asDVGsW5XC4RmgDvZ
-	aE8sRpViJ/eP9vglNH8fy3zlnCsOcNFodT2bgJeENuHoematV/MBMEThRdrVb1CFoxspiwB+kyMkI
-	eYnv30IfAaPjVhQCZHDGSxMPkxGeng6/THGuo5xAZmHcpimAUObVH+0zapGbmc66kPuLbNy8jdl9g
-	m506JeUpw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BPy04HLYlFHuLCMkXEi5V26oHVPN848c3glnjFFOH5E=; b=f0yLA0Uj9cRGVN0avp8ruy95u4
+	FUXOjJtsNI0ZgEwnaWSRthf8khOryzd8nJSPFct14GPI9OjuC6Gysi2c13UzZ/u7NaLbvKXDS0P43
+	502Hr2TinKB0jmD0TJ11XuNZXuR+p3cit20lJ0k0UDSpOvNTqyqDtqzVAq49qjID8NbndE25PPO+O
+	yfYa3d/wYxZREIGaJJ2oAddf/5UPlBgFwWXbDKCm9fnpBTuUp00jNpN71Em1ci4LTqH8kk1SqwBrL
+	yaUQRA6ieI9wDw4EoVs0dEU4F53pNDMWQoHudhTrxrBYPxnmLj0d2YmJJMUvIayPrmt+pVrkrtixx
+	+RtHUpJA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5Pm1-0003Ep-TY; Fri, 29 Jan 2021 09:09:01 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5Plz-0003EB-EB; Fri, 29 Jan 2021 09:09:00 +0000
-Received: from [192.168.0.114] (unknown [49.207.221.54])
- by linux.microsoft.com (Postfix) with ESMTPSA id A73BA20B7192;
- Fri, 29 Jan 2021 01:08:47 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com A73BA20B7192
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1611911336;
- bh=zEbtQ5rEHy/dS0FS/n4EtAIZMIOqSB2/eyGBwQkBC6s=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=Eq8xcESnyCbqMfMvOqeuQg+phUUz+UpfTyhwg01ftz2e7Mb50KG9NphUbI7d1izz9
- HuJfJ8GwgE+r3YgZ5LwfMT9EqiN98IhG+4JepvvHLXMKoUwHdKYyOsIEgEISD1q4s2
- DjHw8ZOHwqVqLInSLZ97zhz51QeGQAbZLwGwGmPU=
-Subject: Re: [PATCH v4 01/19] crypto: amcc: convert tasklets to use new
- tasklet_setup() API
-To: Herbert Xu <herbert@gondor.apana.org.au>, Allen Pais <allen.lkml@gmail.com>
-References: <20210121044126.152274-1-allen.lkml@gmail.com>
- <20210121044126.152274-2-allen.lkml@gmail.com>
- <20210129050551.GA5586@gondor.apana.org.au>
-From: Allen Pais <apais@linux.microsoft.com>
-Message-ID: <0440823c-39f9-670b-aa1f-a6804e83e99a@linux.microsoft.com>
-Date: Fri, 29 Jan 2021 14:38:41 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+	id 1l5Pyx-0005Dp-8w; Fri, 29 Jan 2021 09:22:23 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l5Pyr-0005Bb-Dd
+ for linux-mediatek@lists.infradead.org; Fri, 29 Jan 2021 09:22:19 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id my11so6177297pjb.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 29 Jan 2021 01:22:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9H0VWPz8wiYo1vl+Zp0v9mb/8mhCfmwT8QuSRQSj+a4=;
+ b=ZL6ApXf1MJHPcruREJZRL6mdB9TndAo2tMo4Btp7v0ajKQc2vN/aTOM0MaWUwL1qC1
+ cvGLC42n0bfWlpXKwspCfCVrnSxGl0WyVAdDrfTm+537tjKKObNs47sFN9bfPxhW6+aa
+ RRxAg4wTdC27yI3gjX/KiK8Y353GzyN1q6tvA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9H0VWPz8wiYo1vl+Zp0v9mb/8mhCfmwT8QuSRQSj+a4=;
+ b=naSWYROKlhZ4uZ0iSsZ6mVn/K8e8CygenJJeUO8p3yvx2Dk0wCL65jaGJBzSOX29pr
+ +24UzRqylOR2r9exnt8ximVSaTTr9h1/+5iRGx3CFaETV3VZul17ratckeIcDNxgLRUd
+ J2nGmc8RDIWWg2ShRbj+N0XParIhs/EKkOtWyZrzx0aBfqlpukI7l2mxxvPrRFsDvo/e
+ y1tj+q/RC5XXjMuju1oTYelHdM1dwHlZcbiJ8CX6/hsyTFIyI6pDLBlOsxmCvLKo71s6
+ ksYygR1G6i8CoDKpX8sKpxa4munzU5GeDMiWLFwc1J2ZV5Cyo1EHYnPkGUtoWT/BZ+Pd
+ 64Og==
+X-Gm-Message-State: AOAM530z5tmGv9Nig4NJub2IG2UySOnkjWiWkq9Ajz48I7cM0CBEqnoW
+ oNY4qQW74QwI0iSYyuO6YFkITQ==
+X-Google-Smtp-Source: ABdhPJzUtOvC8THdM1G12ENdxz/rSprng43n5BBvPsTEcCImVXomsJQr1Ml/rZ0yQTi1o7FmIV3qaA==
+X-Received: by 2002:a17:90b:30d4:: with SMTP id
+ hi20mr3649162pjb.41.1611912134871; 
+ Fri, 29 Jan 2021 01:22:14 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:51f1:c468:a70b:7c09])
+ by smtp.gmail.com with ESMTPSA id p7sm8032776pfn.52.2021.01.29.01.22.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Jan 2021 01:22:14 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v13 0/8] drm/mediatek: add support for mediatek SOC MT8183
+Date: Fri, 29 Jan 2021 17:22:01 +0800
+Message-Id: <20210129092209.2584718-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.30.0.365.g02bc693789-goog
 MIME-Version: 1.0
-In-Reply-To: <20210129050551.GA5586@gondor.apana.org.au>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_040859_760651_97CB192C 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20210129_042217_606520_E0720AA9 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,67 +89,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
- aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
- jamie@jamieiles.com, jesper.nilsson@axis.com,
- linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
- k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
- linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
- thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
- gcherian@marvell.com, linux-mediatek@lists.infradead.org,
- lars.persson@axis.com, matthias.bgg@gmail.com, john.allen@amd.com,
- bbrezillon@kernel.org, nicolas.ferre@microchip.com,
- linux-crypto@vger.kernel.org, Romain Perier <romain.perier@gmail.com>,
- davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cj4+IC0tLQo+PiAgIGRyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYyB8IDcgKysr
-LS0tLQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0p
-Cj4gCj4gVGhpcyBkb2Vzbid0IGV2ZW4gY29tcGlsZToKPiAKPiAgICBDQyBbTV0gIGRyaXZlcnMv
-Y3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUubwo+ICAgIENDIFtNXSAgZHJpdmVycy9jcnlwdG8v
-YW1jYy9jcnlwdG80eHhfYWxnLm8KPiAgICBDQyBbTV0gIGRyaXZlcnMvY3J5cHRvL2FtY2MvY3J5
-cHRvNHh4X3Rybmcubwo+ICAgIENIRUNLICAgLi4vZHJpdmVycy9jcnlwdG8vYW1jYy9jcnlwdG80
-eHhfdHJuZy5jCj4gLi4vZHJpdmVycy9jcnlwdG8vYW1jYy9jcnlwdG80eHhfY29yZS5jOiBJbiBm
-dW5jdGlvbiDigJhjcnlwdG80eHhfY2lwaGVyX2RvbmXigJk6Cj4gLi4vZHJpdmVycy9jcnlwdG8v
-YW1jYy9jcnlwdG80eHhfY29yZS5jOjUyNjoxMzogd2FybmluZzogdmFyaWFibGUg4oCYYWRkcuKA
-mSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQo+ICAgIGRtYV9h
-ZGRyX3QgYWRkcjsKPiAgICAgICAgICAgICAgIF5+fn4KPiAuLi9kcml2ZXJzL2NyeXB0by9hbWNj
-L2NyeXB0bzR4eF9jb3JlLmM6IEluIGZ1bmN0aW9uIOKAmGNyeXB0bzR4eF9haGFzaF9kb25l4oCZ
-Ogo+IC4uL2RyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYzo1NTc6MjQ6IHdhcm5p
-bmc6IHZhcmlhYmxlIOKAmGN0eOKAmSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0
-LXZhcmlhYmxlXQo+ICAgIHN0cnVjdCBjcnlwdG80eHhfY3R4ICpjdHg7Cj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgIF5+fgo+IEluIGZpbGUgaW5jbHVkZWQgZnJvbSA8Y29tbWFuZC1saW5lPjoK
-PiAuLi9kcml2ZXJzL2NyeXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLmM6IEluIGZ1bmN0aW9uIOKA
-mGNyeXB0bzR4eF9iaF90YXNrbGV0X2Ni4oCZOgo+IC4uL2luY2x1ZGUvbGludXgva2VybmVsLmg6
-Njk0OjUxOiBlcnJvcjog4oCYc3RydWN0IGRldmljZeKAmSBoYXMgbm8gbWVtYmVyIG5hbWVkIOKA
-mHRhc2tsZXTigJkKPiAgICBCVUlMRF9CVUdfT05fTVNHKCFfX3NhbWVfdHlwZSgqKHB0ciksICgo
-dHlwZSAqKTApLT5tZW1iZXIpICYmIFwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgXn4KClRoYW5rcy4gSXQgc2hvdWxkIGhhdmUgYmVlbgoKCi0t
-LSBhL2RyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYworKysgYi9kcml2ZXJzL2Ny
-eXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLmMKQEAgLTEwNzIsMTAgKzEwNzIsMTEgQEAgc3RhdGlj
-IHZvaWQgY3J5cHRvNHh4X3VucmVnaXN0ZXJfYWxnKHN0cnVjdCAKY3J5cHRvNHh4X2RldmljZSAq
-c2VjX2RldikKICAgICAgICAgfQogIH0KCi1zdGF0aWMgdm9pZCBjcnlwdG80eHhfYmhfdGFza2xl
-dF9jYih1bnNpZ25lZCBsb25nIGRhdGEpCitzdGF0aWMgdm9pZCBjcnlwdG80eHhfYmhfdGFza2xl
-dF9jYihzdHJ1Y3QgdGFza2xldF9zdHJ1Y3QgKnQpCiAgewotICAgICAgIHN0cnVjdCBkZXZpY2Ug
-KmRldiA9IChzdHJ1Y3QgZGV2aWNlICopZGF0YTsKLSAgICAgICBzdHJ1Y3QgY3J5cHRvNHh4X2Nv
-cmVfZGV2aWNlICpjb3JlX2RldiA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOworICAgICAgIHN0cnVj
-dCBjcnlwdG80eHhfY29yZV9kZXZpY2UgKmNvcmVfZGV2ID0gZnJvbV90YXNrbGV0KGNvcmVfZGV2
-LCB0LAorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHRhc2tsZXQpOworICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9IGNvcmVfZGV2
-LT5kZXZpY2U7CiAgICAgICAgIHN0cnVjdCBwZF91aW5mbyAqcGRfdWluZm87CiAgICAgICAgIHN0
-cnVjdCBjZV9wZCAqcGQ7CiAgICAgICAgIHUzMiB0YWlsID0gY29yZV9kZXYtPmRldi0+cGRyX3Rh
-aWw7CkBAIC0xNDUyLDggKzE0NTMsNyBAQCBzdGF0aWMgaW50IGNyeXB0bzR4eF9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlIAoqb2ZkZXYpCiAgICAgICAgICAgICAgICAgZ290byBlcnJfYnVp
-bGRfc2RyOwoKICAgICAgICAgLyogSW5pdCB0YXNrbGV0IGZvciBib3R0b20gaGFsZiBwcm9jZXNz
-aW5nICovCi0gICAgICAgdGFza2xldF9pbml0KCZjb3JlX2Rldi0+dGFza2xldCwgY3J5cHRvNHh4
-X2JoX3Rhc2tsZXRfY2IsCi0gICAgICAgICAgICAgICAgICAgICh1bnNpZ25lZCBsb25nKSBkZXYp
-OworICAgICAgIHRhc2tsZXRfc2V0dXAoJmNvcmVfZGV2LT50YXNrbGV0LCBjcnlwdG80eHhfYmhf
-dGFza2xldF9jYik7CgogICAgICAgICBjb3JlX2Rldi0+ZGV2LT5jZV9iYXNlID0gb2ZfaW9tYXAo
-b2ZkZXYtPmRldi5vZl9ub2RlLCAwKTsKICAgICAgICAgaWYgKCFjb3JlX2Rldi0+ZGV2LT5jZV9i
-YXNlKSB7CgoKV2lsbCBmaXggaXQgdXAgYW5kIHJlLXNlbmQuCgpUaGFua3MuCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+This series is based on kernel/git/chunkuang.hu/linux.git mediatek-drm-next
+The series is tested on a mt8183 krane device.
+
+Change since v12
+- fix mtk_dither_config
+
+Change since v10, v11
+- fix review comments in v9
+
+Change since v9
+- change several function to rebase to mediatek-drm-next
+
+Change since v8
+- fix some review comment in v8
+- separate gamma module for mt8183 has no dither function in gamma
+- enable dither function for 5 or 6 bpc panel display
+- separate ddp mutex patch from the whole Soc patch
+
+Change since v7
+- add dt-binding for mt8183 display
+- base mmsys patch
+https://patchwork.kernel.org/project/linux-mediatek/cover/1607506379-10998-1-git-send-email-yongqiang.niu@mediatek.com/
+- base dts patch
+https://patchwork.kernel.org/project/linux-mediatek/cover/20201127104930.1981497-1-enric.balletbo@collabora.com/
+- add mt8183 function call for setting the routing registers
+- add RDMA fifo size error handle
+
+Change since v6
+- move ddp component define into mtk_mmsys.h
+- add mmsys private data to support different ic path connection
+- add mt8183-mmsys.c to support 8183 path connection
+- fix reviewed issue in v6
+
+Change since v5
+- fix reviewed issue in v5
+base https://patchwork.kernel.org/project/linux-mediatek/list/?series=213219
+
+Change since v4
+- fix reviewed issue in v4
+
+Change since v3
+- fix reviewed issue in v3
+- fix type error in v3
+- fix conflict with iommu patch
+
+Change since v2
+- fix reviewed issue in v2
+- add mutex node into dts file
+
+Changes since v1:
+- fix reviewed issue in v1
+- add dts for mt8183 display nodes
+- adjust display clock control flow in patch 22
+- add vmap support for mediatek drm in patch 23
+- fix page offset issue for mmap function in patch 24
+- enable allow_fb_modifiers for mediatek drm in patch 25
+
+Hsin-Yi Wang (1):
+  drm/mediatek: add mtk_dither_set_common() function
+
+Yongqiang Niu (7):
+  arm64: dts: mt8183: rename rdma fifo size
+  arm64: dts: mt8183: refine gamma compatible name
+  drm/mediatek: separate gamma module
+  drm/mediatek: add has_dither private data for gamma
+  drm/mediatek: enable dither function
+  soc: mediatek: add mtk mutex support for MT8183
+  drm/mediatek: add support for mediatek SOC MT8183
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi    |   7 +-
+ drivers/gpu/drm/mediatek/Makefile           |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  14 ++
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 198 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  18 ++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 111 ++++-------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  49 ++++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+ drivers/soc/mediatek/mtk-mutex.c            |  50 +++++
+ 10 files changed, 379 insertions(+), 76 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+
+-- 
+2.30.0.365.g02bc693789-goog
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
