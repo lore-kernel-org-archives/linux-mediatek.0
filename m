@@ -2,78 +2,71 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-20.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FC00C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BBA1C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:47:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFCC564E13
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:36:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFCC564E13
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3871C64E15
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 08:47:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3871C64E15
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Subject:
-	Message-ID:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SBHv/S8MneVUm7r0sfSC4APk5ofTJaXIfNVhfVA25W4=; b=KmOyLgAJbGXT9Wssc8n+Q4dZQ
-	7cN4HR7biWi2jFmonJv/Rkh//3ZI+ltxhmY6PbgHA2miuG/vdxyn7jWQ1pLp7dMSfCafvOYWlNMCS
-	4a/ilO13WAAn8THfIgET7ukTDeX1vk0KOHXaFMEwv9ztFoeBg/fZzk9QZt+tN/nJK3y3eNHXZOHAL
-	FRuphkm01Z6VPCx53/H4YOSPXGShrcuV1bFG3NHCytxCLTBjohTJmG0CpADTDf/SlPngYbvxIbcww
-	dqyjUzwfc1IcSWLZR8gfCvenFXIJyGOjlQgwgpI20n0QSb79QHI8plnc73zPbS5l+Btcx/YLfTtM6
-	gwOH64Gag==;
+	 bh=JOiLrn1GYM/rQrmO8O9GKK4VSn8Vt0rYidnvNaTSFSw=; b=FcXvZXO9UUYGHGG2TJcimQekY
+	K71ZUEZfIVg1WzWEAxvw83FjDFrcI+JpZ4SNuZKl31V6Lfihal6LAtJg+3BKnJ36wembfG1SOrtEL
+	0Uz+2LzME0xhz6GELw3BAIKBTYB0X8zWTh9dzTQ6DsEJK6mquEt+hFzC9hQOInMehzxDxK4Fgt4kV
+	CLpbaJ1/JdxlkfYXMJ9HSUyEMj+JIPwUwBMVssTZqXUJQ3U5fst9v5QzXTjoz7Ix5DVdG3PwHei0x
+	GuBzCpVncRpLGimyc0sWAPphJuSElaHTzduz1Qj34DDRMWjhC3YwKAWM5Uf0fSraW1Xr1xyIVECx/
+	qAX1jHgtw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5PGG-000655-Cl; Fri, 29 Jan 2021 08:36:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l5PRO-0007VV-Pg; Fri, 29 Jan 2021 08:47:42 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5PG9-000630-PQ; Fri, 29 Jan 2021 08:36:07 +0000
-X-UUID: 773b23ca59c643a0901091b7bae2243f-20210129
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:Subject:Message-ID:To:From;
- bh=upyddKGQI8S+wLAHUMo0eWn54i8MfSrDZ5RbGyZ35/E=; 
- b=W1nB4QGPYpI3QDKV6h/quwh03wKiWuelKXKYa6TSiXjHpPvyYL4OHWD88JtRVEDBTt5V+dYrLk7Fjs4zyIcWq8iqAq0obDjkGjO/dItjzTOi3SqwkNop/iUUWYLtUc8SUTAu5bpARNi28VTEdNE7Myh9TL1wKhjPNHpmmBHAEoI=;
-X-UUID: 773b23ca59c643a0901091b7bae2243f-20210129
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 592243143; Fri, 29 Jan 2021 00:36:01 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Jan 2021 00:35:59 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Jan 2021 16:35:56 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 29 Jan 2021 16:35:56 +0800
-From: CK Hu <ck.hu@mediatek.com>, CK Hu <ck.hu@mediatek.com>, CK Hu
- <ck.hu@mediatek.com>
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>
-Message-ID: <1611909356.31184.8.camel@mtksdaap41>
-Subject: Re: [PATCH v4 2/8] drm/mediatek: add component POSTMASK
-Date: Fri, 29 Jan 2021 16:35:56 +0800
-In-Reply-To: <1611909161.24406.1.camel@mhfsdcap03>
-References: <20210129073436.2429834-1-hsinyi@chromium.org>
- <20210129073436.2429834-3-hsinyi@chromium.org>
- <1611908296.31184.5.camel@mtksdaap41> <1611909161.24406.1.camel@mhfsdcap03>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1l5PRK-0007UL-VS; Fri, 29 Jan 2021 08:47:39 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D58F761492;
+ Fri, 29 Jan 2021 08:47:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1611910058;
+ bh=2J8dyqGe56FVBKVAoj8OIvA0xFcY1qnYHpxqTDxTUeY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=OqQPz3isVbHuFqDs7x5wPcvJLM9H7F81OcEkKFSAbfrk/Q1Cw8wv2VaIT2fgF2pHu
+ NrxCc2cjWy3JRB3Drx0UcEmvEUlmjJ96NnIFGq7+dQ8XMdG5AqQJF7F541K+ZQ0aXa
+ XMRqzdsMAmp1s1/lwfwFZHm81D1qqh274H3aRMIw/vy/0FkXzVduto0rPs1Q5umOLv
+ INek5jTh1tR3YGF4WXQZ0zhpZ7ABx65Md9+zA7UNp/csBwfecR7cFpST71ZXrQi1vC
+ vEtHSToOSX3G+jaoONbUPMqeGJlVkN6KFfIoSI8Te+yAIK3If6/BHIZshGqu8pyNBa
+ 7SNKqMza9MMFw==
+Date: Fri, 29 Jan 2021 08:47:31 +0000
+From: Will Deacon <will@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v6 07/33] iommu: Avoid reallocate default domain for a
+ group
+Message-ID: <20210129084731.GA3998@willie-the-truck>
+References: <20210111111914.22211-1-yong.wu@mediatek.com>
+ <20210111111914.22211-8-yong.wu@mediatek.com>
+ <20210126222305.GB30460@willie-the-truck>
+ <1611740356.5302.14.camel@mhfsdcap03>
+ <20210128211020.GA3531@willie-the-truck>
+ <20210128211442.GB3531@willie-the-truck>
+ <1611885162.5302.19.camel@mhfsdcap03>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E82C161BDD60CF69B9209C511BA1F1BA4958E6534660DFA71BF554CC6A0C62322000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1611885162.5302.19.camel@mhfsdcap03>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_033606_057437_287CF778 
-X-CRM114-Status: GOOD (  28.94  )
+X-CRM114-CacheID: sfid-20210129_034739_190203_7CE610F8 
+X-CRM114-Status: GOOD (  35.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,360 +78,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David
- Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-01-29 at 16:32 +0800, Yongqiang Niu wrote:
-> On Fri, 2021-01-29 at 16:18 +0800, CK Hu wrote:
-> > Hi, Hsin-Yi:
-> > 
-> > On Fri, 2021-01-29 at 15:34 +0800, Hsin-Yi Wang wrote:
-> > > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+On Fri, Jan 29, 2021 at 09:52:42AM +0800, Yong Wu wrote:
+> On Thu, 2021-01-28 at 21:14 +0000, Will Deacon wrote:
+> > On Thu, Jan 28, 2021 at 09:10:20PM +0000, Will Deacon wrote:
+> > > On Wed, Jan 27, 2021 at 05:39:16PM +0800, Yong Wu wrote:
+> > > > On Tue, 2021-01-26 at 22:23 +0000, Will Deacon wrote:
+> > > > > On Mon, Jan 11, 2021 at 07:18:48PM +0800, Yong Wu wrote:
+> > > > > > If group->default_domain exists, avoid reallocate it.
+> > > > > > 
+> > > > > > In some iommu drivers, there may be several devices share a group. Avoid
+> > > > > > realloc the default domain for this case.
+> > > > > > 
+> > > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > > > > ---
+> > > > > >  drivers/iommu/iommu.c | 3 ++-
+> > > > > >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > > > > > 
+> > > > > > diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> > > > > > index 3d099a31ddca..f4b87e6abe80 100644
+> > > > > > --- a/drivers/iommu/iommu.c
+> > > > > > +++ b/drivers/iommu/iommu.c
+> > > > > > @@ -266,7 +266,8 @@ int iommu_probe_device(struct device *dev)
+> > > > > >  	 * support default domains, so the return value is not yet
+> > > > > >  	 * checked.
+> > > > > >  	 */
+> > > > > > -	iommu_alloc_default_domain(group, dev);
+> > > > > > +	if (!group->default_domain)
+> > > > > > +		iommu_alloc_default_domain(group, dev);
+> > > > > 
+> > > > > I don't really get what this achieves, since iommu_alloc_default_domain()
+> > > > > looks like this:
+> > > > > 
+> > > > > static int iommu_alloc_default_domain(struct iommu_group *group,
+> > > > > 				      struct device *dev)
+> > > > > {
+> > > > > 	unsigned int type;
+> > > > > 
+> > > > > 	if (group->default_domain)
+> > > > > 		return 0;
+> > > > > 
+> > > > > 	...
+> > > > > 
+> > > > > in which case, it should be fine?
+> > > > 
+> > > > oh. sorry, I overlooked this. the current code is enough.
+> > > > I will remove this patch. and send the next version in this week.
+> > > > Thanks very much.
 > > > 
-> > > This patch add component POSTMASK,
-> > > 
-> > > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/Makefile            |   1 +
-> > >  drivers/gpu/drm/mediatek/mtk_disp_drv.h      |   8 +
-> > >  drivers/gpu/drm/mediatek/mtk_disp_postmask.c | 161 +++++++++++++++++++
-> > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c  |  11 ++
-> > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h  |   1 +
-> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c       |   4 +-
-> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.h       |   1 +
-> > >  7 files changed, 186 insertions(+), 1 deletion(-)
-> > >  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-> > > index b64674b944860..13a0eafabf9c0 100644
-> > > --- a/drivers/gpu/drm/mediatek/Makefile
-> > > +++ b/drivers/gpu/drm/mediatek/Makefile
-> > > @@ -3,6 +3,7 @@
-> > >  mediatek-drm-y := mtk_disp_color.o \
-> > >  		  mtk_disp_gamma.o \
-> > >  		  mtk_disp_ovl.o \
-> > > +		  mtk_disp_postmask.o \
-> > >  		  mtk_disp_rdma.o \
-> > >  		  mtk_drm_crtc.o \
-> > >  		  mtk_drm_ddp_comp.o \
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > > index 02191010699f8..d74e85db3fcdf 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > > @@ -37,6 +37,14 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
-> > >  void mtk_gamma_start(struct device *dev);
-> > >  void mtk_gamma_stop(struct device *dev);
-> > >  
-> > > +int mtk_postmask_clk_enable(struct device *dev);
-> > > +void mtk_postmask_clk_disable(struct device *dev);
-> > > +void mtk_postmask_config(struct device *dev, unsigned int w,
-> > > +                      unsigned int h, unsigned int vrefresh,
-> > > +                      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-> > > +void mtk_postmask_start(struct device *dev);
-> > > +void mtk_postmask_stop(struct device *dev);
-> > > +
-> > >  void mtk_ovl_bgclr_in_on(struct device *dev);
-> > >  void mtk_ovl_bgclr_in_off(struct device *dev);
-> > >  void mtk_ovl_bypass_shadow(struct device *dev);
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_postmask.c b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-> > > new file mode 100644
-> > > index 0000000000000..d640cef9c15a4
-> > > --- /dev/null
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
-> > > @@ -0,0 +1,161 @@
-> > > +/*
-> > > + * SPDX-License-Identifier:
-> > > + *
-> > > + * Copyright (c) 2020 MediaTek Inc.
+> > > Actually, looking at this again, if we're dropping this patch and patch 6
+> > > just needs the kfree() moving about, then there's no need to repost. The
+> > > issue that Robin and Paul are discussing can be handled separately.
 > > 
-> > 2021
+> > Argh, except that this version of the patches doesn't apply :)
 > > 
-> > > + */
-> > > +
-> > > +#include <linux/clk.h>
-> > > +#include <linux/component.h>
-> > > +#include <linux/module.h>
-> > > +#include <linux/of_device.h>
-> > > +#include <linux/pm_runtime.h>
-> > > +#include <linux/of_irq.h>
-> > > +#include <linux/platform_device.h>
-> > > +#include <linux/soc/mediatek/mtk-cmdq.h>
-> > > +
-> > > +#include "mtk_disp_drv.h"
-> > > +#include "mtk_drm_crtc.h"
-> > > +#include "mtk_drm_ddp_comp.h"
-> > > +
-> > > +#define DISP_POSTMASK_EN			0x0000
-> > > +#define POSTMASK_EN				BIT(0)
-> > > +#define DISP_POSTMASK_CFG			0x0020
-> > > +#define POSTMASK_RELAY_MODE			BIT(0)
-> > > +#define DISP_POSTMASK_SIZE			0x0030
-> > > +
-> > > +struct mtk_disp_postmask_data {
-> > > +	u32 reserved;
-> > > +};
+> > So after all that, please go ahead and post a v7 ASAP based on this branch:
 > > 
-> > Useless, so remove.
-> > 
-> > > +
-> > > +/**
-> > > + * struct mtk_disp_postmask - DISP_postmask driver structure
-> > > + * @ddp_comp - structure containing type enum and hardware resources
-> > > + * @crtc - associated crtc to report irq events to
-> > > + */
-> > > +struct mtk_disp_postmask {
-> > > +	struct clk *clk;
-> > > +	void __iomem *regs;
-> > > +	struct cmdq_client_reg cmdq_reg;
-> > > +	const struct mtk_disp_postmask_data *data;
-> > > +};
-> > > +
-> > > +int mtk_postmask_clk_enable(struct device *dev)
-> > > +{
-> > > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > > +
-> > > +	return clk_prepare_enable(postmask->clk);
-> > > +}
-> > > +
-> > > +void mtk_postmask_clk_disable(struct device *dev)
-> > > +{
-> > > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > > +
-> > > +	clk_disable_unprepare(postmask->clk);
-> > > +}
-> > > +
-> > > +void mtk_postmask_config(struct device *dev, unsigned int w,
-> > > +			 unsigned int h, unsigned int vrefresh,
-> > > +			 unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-> > > +{
-> > > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > > +
-> > > +	mtk_ddp_write(cmdq_pkt, w << 16 | h, &postmask->cmdq_reg, postmask->regs,
-> > > +		      DISP_POSTMASK_SIZE);
-> > > +	mtk_ddp_write(cmdq_pkt, POSTMASK_RELAY_MODE, &postmask->cmdq_reg,
-> > > +		      postmask->regs, DISP_POSTMASK_CFG);
-> > > +}
-> > > +
-> > > +void mtk_postmask_start(struct device *dev)
-> > > +{
-> > > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > > +
-> > > +	writel(POSTMASK_EN, postmask->regs + DISP_POSTMASK_EN);
-> > > +}
-> > > +
-> > > +void mtk_postmask_stop(struct device *dev)
-> > > +{
-> > > +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
-> > > +
-> > > +	writel_relaxed(0x0, postmask->regs + DISP_POSTMASK_EN);
-> > > +}
-> > > +
-> > > +static int mtk_disp_postmask_bind(struct device *dev, struct device *master, void *data)
-> > > +{
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static void mtk_disp_postmask_unbind(struct device *dev, struct device *master,
-> > > +				  void *data)
-> > > +{
-> > > +}
-> > > +
-> > > +static const struct component_ops mtk_disp_postmask_component_ops = {
-> > > +	.bind	= mtk_disp_postmask_bind,
-> > > +	.unbind = mtk_disp_postmask_unbind,
-> > > +};
-> > > +
-> > > +static int mtk_disp_postmask_probe(struct platform_device *pdev)
-> > > +{
-> > > +	struct device *dev = &pdev->dev;
-> > > +	struct mtk_disp_postmask *priv;
-> > > +	struct resource *res;
-> > > +	int ret;
-> > > +
-> > > +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> > > +	if (!priv)
-> > > +		return -ENOMEM;
-> > > +
-> > > +	priv->clk = devm_clk_get(dev, NULL);
-> > > +	if (IS_ERR(priv->clk)) {
-> > > +		dev_err(dev, "failed to get postmask clk\n");
-> > > +		return PTR_ERR(priv->clk);
-> > > +	}
-> > > +
-> > > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > > +	priv->regs = devm_ioremap_resource(dev, res);
-> > > +	if (IS_ERR(priv->regs)) {
-> > > +		dev_err(dev, "failed to ioremap postmask\n");
-> > > +		return PTR_ERR(priv->regs);
-> > > +	}
-> > > +
-> > > +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> > > +	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
-> > > +	if (ret)
-> > > +		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
-> > > +#endif
-> > > +
-> > > +	priv->data = of_device_get_match_data(dev);
-> > > +	platform_set_drvdata(pdev, priv);
-> > > +
-> > > +	pm_runtime_enable(dev);
-> > 
-> > Why this?
+> > https://git.kernel.org/pub/scm/linux/kernel/git/will/linux.git/log/?h=for-joerg/mtk
 > 
-> if add power domain information in dts, we need this to make sure
-> display power domain will be off after module clock off.
+> After confirm with Tomasz, He still need some time to take a look at v6.
+> 
+> thus I need wait some time to send v7 after his feedback.
+> 
+> Thanks for your comment. and Thanks Tomasz for the review.
 
-Please align all sub driver. All do or all not do.
+Ok, but please be aware that I'm planning to send my queue to Joerg on
+Monday, so if it doesn't show up today then it will miss 5.12.
 
-> 
-> > 
-> > > +
-> > > +	ret = component_add(dev, &mtk_disp_postmask_component_ops);
-> > > +	if (ret)
-> > > +		dev_err(dev, "Failed to add component: %d\n", ret);
-> > > +
-> > > +	return ret;
-> > > +}
-> > > +
-> > > +static int mtk_disp_postmask_remove(struct platform_device *pdev)
-> > > +{
-> > > +	component_del(&pdev->dev, &mtk_disp_postmask_component_ops);
-> > > +
-> > > +	pm_runtime_disable(&pdev->dev);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static const struct of_device_id mtk_disp_postmask_driver_dt_match[] = {
-> > > +	{},
-> > > +};
-> > > +MODULE_DEVICE_TABLE(of, mtk_disp_postmask_driver_dt_match);
-> > > +
-> > > +struct platform_driver mtk_disp_postmask_driver = {
-> > > +	.probe		= mtk_disp_postmask_probe,
-> > > +	.remove		= mtk_disp_postmask_remove,
-> > > +	.driver		= {
-> > > +		.name	= "mediatek-disp-postmask",
-> > > +		.owner	= THIS_MODULE,
-> > > +		.of_match_table = mtk_disp_postmask_driver_dt_match,
-> > > +	},
-> > > +};
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > > index ccfaada998cf5..6c539783118dd 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > > @@ -415,6 +415,14 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
-> > >  	.bgclr_in_off = mtk_ovl_bgclr_in_off,
-> > >  };
-> > >  
-> > > +static const struct mtk_ddp_comp_funcs ddp_postmask = {
-> > > +	.clk_enable = mtk_postmask_clk_enable,
-> > > +        .clk_disable = mtk_postmask_clk_disable,
-> > 
-> > tab.
-> > 
-> > > +	.config = mtk_postmask_config,
-> > > +	.start = mtk_postmask_start,
-> > > +	.stop = mtk_postmask_stop,
-> > > +};
-> > > +
-> > >  static const struct mtk_ddp_comp_funcs ddp_rdma = {
-> > >  	.clk_enable = mtk_rdma_clk_enable,
-> > >  	.clk_disable = mtk_rdma_clk_disable,
-> > > @@ -450,6 +458,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
-> > >  	[MTK_DISP_MUTEX] = "mutex",
-> > >  	[MTK_DISP_OD] = "od",
-> > >  	[MTK_DISP_BLS] = "bls",
-> > > +	[MTK_DISP_POSTMASK] = "postmask",
-> > >  };
-> > >  
-> > >  struct mtk_ddp_comp_match {
-> > > @@ -480,6 +489,7 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
-> > >  	[DDP_COMPONENT_OVL_2L0]	= { MTK_DISP_OVL_2L,	0, &ddp_ovl },
-> > >  	[DDP_COMPONENT_OVL_2L1]	= { MTK_DISP_OVL_2L,	1, &ddp_ovl },
-> > >  	[DDP_COMPONENT_OVL_2L2] = { MTK_DISP_OVL_2L,    2, &ddp_ovl },
-> > > +	[DDP_COMPONENT_POSTMASK0]	= { MTK_DISP_POSTMASK,	0, &ddp_postmask },
-> > 
-> > Make other row the same indent.
-> > 
-> > >  	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
-> > >  	[DDP_COMPONENT_PWM1]	= { MTK_DISP_PWM,	1, NULL },
-> > >  	[DDP_COMPONENT_PWM2]	= { MTK_DISP_PWM,	2, NULL },
-> > > @@ -603,6 +613,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
-> > >  	if (type == MTK_DISP_BLS ||
-> > >  	    type == MTK_DISP_COLOR ||
-> > >  	    type == MTK_DISP_GAMMA ||
-> > > +	    type == MTK_DISP_POSTMASK ||
-> > >  	    type == MTK_DPI ||
-> > >  	    type == MTK_DSI ||
-> > >  	    type == MTK_DISP_OVL ||
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > > index bb914d976cf5d..cd1dec6b4cdf2 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > > @@ -30,6 +30,7 @@ enum mtk_ddp_comp_type {
-> > >  	MTK_DISP_UFOE,
-> > >  	MTK_DSI,
-> > >  	MTK_DPI,
-> > > +	MTK_DISP_POSTMASK,
-> > >  	MTK_DISP_PWM,
-> > >  	MTK_DISP_MUTEX,
-> > >  	MTK_DISP_OD,
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > index 486e73e675ad5..d99afc8528684 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > @@ -531,7 +531,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
-> > >  		private->comp_node[comp_id] = of_node_get(node);
-> > >  
-> > >  		/*
-> > > -		 * Currently only the COLOR, GAMMA, OVL, RDMA, DSI, and DPI blocks have
-> > > +		 * Currently only the COLOR, GAMMA, OVL, POSTMASK, RDMA, DSI, and DPI blocks have
-> > >  		 * separate component platform drivers and initialize their own
-> > >  		 * DDP component structure. The others are initialized here.
-> > >  		 */
-> > > @@ -539,6 +539,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
-> > >  		    comp_type == MTK_DISP_GAMMA ||
-> > >  		    comp_type == MTK_DISP_OVL ||
-> > >  		    comp_type == MTK_DISP_OVL_2L ||
-> > > +		    comp_type == MTK_DISP_POSTMASK ||
-> > >  		    comp_type == MTK_DISP_RDMA ||
-> > >  		    comp_type == MTK_DSI ||
-> > >  		    comp_type == MTK_DPI) {
-> > > @@ -637,6 +638,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
-> > >  	&mtk_disp_color_driver,
-> > >  	&mtk_disp_gamma_driver,
-> > >  	&mtk_disp_ovl_driver,
-> > > +	&mtk_disp_postmask_driver,
-> > >  	&mtk_disp_rdma_driver,
-> > >  	&mtk_dpi_driver,
-> > >  	&mtk_drm_platform_driver,
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > > index 0e54e3d51014a..7e7b28e32aa2f 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> > > @@ -49,6 +49,7 @@ struct mtk_drm_private {
-> > >  extern struct platform_driver mtk_disp_color_driver;
-> > >  extern struct platform_driver mtk_disp_gamma_driver;
-> > >  extern struct platform_driver mtk_disp_ovl_driver;
-> > > +extern struct platform_driver mtk_disp_postmask_driver;
-> > >  extern struct platform_driver mtk_disp_rdma_driver;
-> > >  extern struct platform_driver mtk_dpi_driver;
-> > >  extern struct platform_driver mtk_dsi_driver;
-> > 
-> > 
-> 
-> 
+Will
 
 _______________________________________________
 Linux-mediatek mailing list
