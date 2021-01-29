@@ -2,50 +2,50 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BC2DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 10:19:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1502C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 10:19:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D0F7564E28
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 10:19:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0F7564E28
+	by mail.kernel.org (Postfix) with ESMTPS id 6C4F464E28
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 10:19:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C4F464E28
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MSBH90dPyHpzLTjaAs/pMV3Ze03GxJMiJLENN3XORZQ=; b=DstCMi7AQXphe/ED/ujL+ezR0i
-	vRQUkTBO8EZWo+xwX163GkZuetH8QBV60TYdGWnkqDDM/bTsLKI7KBijL7MkMnbyEOjDgdxNliWTi
-	MuiA6teyzsV43RFm8A1jIlmmko7YaafSTsC1GMk+AXoL38Rp8Wi8jsYhAQwFvX95AjMCHFoX9Wvbi
-	Kx5IazAX5Jprm57BmzSIk14K7WYTBir2ofuejOZQdgs1p1XytC5sGH+Vu8muCeUoaUJ19vzBLFD1r
-	OmzTqja6iuGuoOUL1sLalPVN+QVTMMcO5LsijFIhc34O17TzDEcgyWTyR4wXZQMETrY3Tld5SeIHi
-	L6mq/pYA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=b7YqIg017np95EjvEPnUsjpZq2N3SS1pFgx1W1AE9Fw=; b=aDZGIKfqY0aGPWpoPhBFIZjHo
+	X1KwDvlkto5N4AL8RFkMggbO5X+ZrsMp9+obOQhIdp0y8V6bAZW1i8QiJK1Jng49+UWk+/VPhnWjd
+	2feZaJxQ4FXWUro8uVY3ggBl3oVlgh3erssKWClMKJUtnSPIUn1kXRNdzlNWkctXD0+09MxHvYmWI
+	+0GmqE3RVTpgsQhVLKhFwoRUo099TZRCSSXmG8rOvpz2sHcjWH/syTxfpPe1Ls1XTwa074iwH3M7d
+	6qZDwFJ0ysWZeviaCKnCgkt5Uq1XHgnjepSve1uHn0PzxQmTjQwrt7yvKmKmbjjq2PhrZHeNDDOVa
+	9r5DJbj7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5Qrk-00028x-VC; Fri, 29 Jan 2021 10:19:01 +0000
+	id 1l5Qrp-0002An-SJ; Fri, 29 Jan 2021 10:19:05 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5Qrj-00027k-Dp; Fri, 29 Jan 2021 10:19:00 +0000
-X-UUID: 5cf45de29d9b4cf2ab2af385210410a1-20210129
+ id 1l5Qrk-00028B-7A; Fri, 29 Jan 2021 10:19:01 +0000
+X-UUID: 54032a008eae484b9eb02fe130a01421-20210129
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=uPPGwNDWj8mVXZjA0YLqnstNF6ujD5k712YP2OPhDN4=; 
- b=pY3UwsN7h551ZTqEz+3Xwg5oGykmnCBH8MOY236GVEYFCjwUp6BvSItXpS9itOb2pHFret7kup6GkoFUOFq6JYUPHlMgeXDfTH53bffeqdxSE0BBKswtrQ3oLU5/NmvLSPjBQ9Bympwl6iz+UF5bp+FfkcN77BlaMrJbjpq3iFI=;
-X-UUID: 5cf45de29d9b4cf2ab2af385210410a1-20210129
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=V+Ewp9/pDoC6BMoC3Kju5U8V8S16A0mf05oKNWfY4RQ=; 
+ b=XvT/PQ8ietAzFIkIDjFRn6ffiZ5S5kPAak2r/ZUF0d5OAQj3rBoRBqMIc9bDdhlUgo9U6VArx5+p9JrRMnM6dd73M6JUlfguXRKMhkvErvSOkT2V+3WTpujEtfimt+HRDyP4J87LSktAJCe/JAz589mZpbDK76hITnBhGwNrtrI=;
+X-UUID: 54032a008eae484b9eb02fe130a01421-20210129
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <michael.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1273234991; Fri, 29 Jan 2021 02:18:55 -0800
+ with ESMTP id 248873528; Fri, 29 Jan 2021 02:18:55 -0800
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 29 Jan 2021 02:10:14 -0800
@@ -59,15 +59,17 @@ From: Michael Kao <michael.kao@mediatek.com>
 To: <michael.kao@mediatek.com>, <fan.chen@mediatek.com>, Zhang Rui
  <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
  <linux-pm@vger.kernel.org>, <srv_heupstream@mediatek.com>
-Subject: [v6,0/3] mt8183: Add Mediatek thermal driver and dtsi
-Date: Fri, 29 Jan 2021 18:10:09 +0800
-Message-ID: <20210129101012.25180-1-michael.kao@mediatek.com>
+Subject: [v6,2/3] arm64: dts: mt8183: Configure CPU cooling
+Date: Fri, 29 Jan 2021 18:10:11 +0800
+Message-ID: <20210129101012.25180-3-michael.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210129101012.25180-1-michael.kao@mediatek.com>
+References: <20210129101012.25180-1-michael.kao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_051859_596605_000FB39E 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20210129_051900_422279_2C998866 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,85 +85,52 @@ Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>,
  Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
  hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset supports for MT8183 chip to mtk_thermal.c.
-Add thermal zone of all the thermal sensor in SoC for
-another get temperatrue. They don't need to thermal throttle.
-And we bind coolers for thermal zone nodes of cpu_thermal.
-
-Changes in v6:
-    - Rebase to kernel-5.11-rc1.
-    - [1/3]
-	- add interrupts property.
-    - [2/3]
-	- add the Tested-by in the commit message.
-    - [3/3]
-	- use the mt->conf->msr[id] instead of conf->msr[id] in the
-	  _get_sensor_temp and mtk_thermal_bank_temperature.
-	- remove the redundant space in _get_sensor_temp and
-	  mtk_read_sensor_temp.
-	- change kmalloc to dev_kmalloc in mtk_thermal_probe.
-
-Changes in v5:
-    - Rebase to kernel-5.9-rc1.
-    - Revise the title of cover letter.
-    - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
-    - [2/2]
-        -  Add the judgement to the version of raw_to_mcelsius.
-
-Changes in v4:
-    - Rebase to kernel-5.6-rc1.
-    - [1/7]
-        - Squash thermal zone settings in the dtsi from [v3,5/8]
-          arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
-        - Remove the property of interrupts and mediatek,hw-reset-temp.
-    - [2/7]
-        - Correct commit message.
-    - [4/7]
-        - Change the target temperature to the 80C and change the commit message.
-    - [6/7]
-        - Adjust newline alignment.
-        - Fix the judgement on the return value of registering thermal zone.
-
-Changes in v3:
-    - Rebase to kernel-5.5-rc1.
-    - [1/8]
-        - Update sustainable power of cpu, tzts1~5 and tztsABB.
-    - [7/8]
-        - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
-          in dts, which is normal for mt8173, so prompt a warning here instead of
-          failing.
-
-        Return -EAGAIN instead of -EACCESS on the first read of sensor that
-        often are bogus values. This can avoid following warning on boot:
-
-          thermal thermal_zone6: failed to read out thermal zone (-13)
-
-Changes in v2:
-    - [1/8]
-        - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
-    - [4/8]
-        - Add the min opp of cpu throttle.
-
-Matthias Kaehlcke (1):
-  arm64: dts: mt8183: Configure CPU cooling
-
-Michael Kao (2):
-  thermal: mediatek: add another get_temp ops for thermal sensors
-  arm64: dts: mt8183: add thermal zone node
-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 140 +++++++++++++++++++++++
- drivers/thermal/mtk_thermal.c            | 100 ++++++++++++----
- 2 files changed, 215 insertions(+), 25 deletions(-)
-
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogTWF0dGhpYXMgS2FlaGxja2UgPG1rYUBjaHJvbWl1bS5vcmc+DQoNCkFkZCB0d28gcGFz
+c2l2ZSB0cmlwIHBvaW50cyBhdCA2OMKwQyBhbmQgODDCsEMgZm9yIHRoZSBDUFUgdGVtcGVyYXR1
+cmUuDQoNClNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEthZWhsY2tlIDxta2FAY2hyb21pdW0ub3Jn
+Pg0KU2lnbmVkLW9mZi1ieTogTWljaGFlbCBLYW8gPG1pY2hhZWwua2FvQG1lZGlhdGVrLmNvbT4N
+ClRlc3RlZC1ieTogSHNpbi1ZaSBXYW5nIDxoc2lueWlAY2hyb21pdW0ub3JnPg0KLS0tDQogYXJj
+aC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMuZHRzaSB8IDU2ICsrKysrKysrKysrKysr
+KysrKysrKysrKw0KIDEgZmlsZSBjaGFuZ2VkLCA1NiBpbnNlcnRpb25zKCspDQoNCmRpZmYgLS1n
+aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5kdHNpIGIvYXJjaC9hcm02
+NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMuZHRzaQ0KaW5kZXggMGFhMzFkMzM4ZmIwLi42NGI5
+YmY2ZDVkMWEgMTAwNjQ0DQotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4
+My5kdHNpDQorKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5kdHNpDQpA
+QCAtMTMsNiArMTMsNyBAQA0KICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9wb3dlci9tdDgxODMtcG93
+ZXIuaD4NCiAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcmVzZXQtY29udHJvbGxlci9tdDgxODMtcmVz
+ZXRzLmg+DQogI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3BoeS9waHkuaD4NCisjaW5jbHVkZSA8ZHQt
+YmluZGluZ3MvdGhlcm1hbC90aGVybWFsLmg+DQogI2luY2x1ZGUgIm10ODE4My1waW5mdW5jLmgi
+DQogDQogLyB7DQpAQCAtNjc4LDYgKzY3OSw2MSBAQA0KIAkJCQlwb2xsaW5nLWRlbGF5ID0gPDUw
+MD47DQogCQkJCXRoZXJtYWwtc2Vuc29ycyA9IDwmdGhlcm1hbCAwPjsNCiAJCQkJc3VzdGFpbmFi
+bGUtcG93ZXIgPSA8NTAwMD47DQorDQorCQkJCXRyaXBzIHsNCisJCQkJCXRocmVzaG9sZDogdHJp
+cC1wb2ludEAwIHsNCisJCQkJCQl0ZW1wZXJhdHVyZSA9IDw2ODAwMD47DQorCQkJCQkJaHlzdGVy
+ZXNpcyA9IDwyMDAwPjsNCisJCQkJCQl0eXBlID0gInBhc3NpdmUiOw0KKwkJCQkJfTsNCisNCisJ
+CQkJCXRhcmdldDogdHJpcC1wb2ludEAxIHsNCisJCQkJCQl0ZW1wZXJhdHVyZSA9IDw4MDAwMD47
+DQorCQkJCQkJaHlzdGVyZXNpcyA9IDwyMDAwPjsNCisJCQkJCQl0eXBlID0gInBhc3NpdmUiOw0K
+KwkJCQkJfTsNCisNCisJCQkJCWNwdV9jcml0OiBjcHUtY3JpdCB7DQorCQkJCQkJdGVtcGVyYXR1
+cmUgPSA8MTE1MDAwPjsNCisJCQkJCQloeXN0ZXJlc2lzID0gPDIwMDA+Ow0KKwkJCQkJCXR5cGUg
+PSAiY3JpdGljYWwiOw0KKwkJCQkJfTsNCisJCQkJfTsNCisNCisJCQkJY29vbGluZy1tYXBzIHsN
+CisJCQkJCW1hcDAgew0KKwkJCQkJCXRyaXAgPSA8JnRhcmdldD47DQorCQkJCQkJY29vbGluZy1k
+ZXZpY2UgPSA8JmNwdTANCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVA0KKwkJCQkJCQlUSEVSTUFM
+X05PX0xJTUlUPiwNCisJCQkJCQkJCSA8JmNwdTENCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVA0K
+KwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPiwNCisJCQkJCQkJCSA8JmNwdTINCisJCQkJCQkJVEhF
+Uk1BTF9OT19MSU1JVA0KKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPiwNCisJCQkJCQkJCSA8JmNw
+dTMNCisJCQkJCQkJVEhFUk1BTF9OT19MSU1JVA0KKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPjsN
+CisJCQkJCQljb250cmlidXRpb24gPSA8MzA3Mj47DQorCQkJCQl9Ow0KKwkJCQkJbWFwMSB7DQor
+CQkJCQkJdHJpcCA9IDwmdGFyZ2V0PjsNCisJCQkJCQljb29saW5nLWRldmljZSA9IDwmY3B1NA0K
+KwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUDQorCQkJCQkJCVRIRVJNQUxfTk9fTElNSVQ+LA0KKwkJ
+CQkJCQkJIDwmY3B1NQ0KKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUDQorCQkJCQkJCVRIRVJNQUxf
+Tk9fTElNSVQ+LA0KKwkJCQkJCQkJIDwmY3B1Ng0KKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUDQor
+CQkJCQkJCVRIRVJNQUxfTk9fTElNSVQ+LA0KKwkJCQkJCQkJIDwmY3B1Nw0KKwkJCQkJCQlUSEVS
+TUFMX05PX0xJTUlUDQorCQkJCQkJCVRIRVJNQUxfTk9fTElNSVQ+Ow0KKwkJCQkJCWNvbnRyaWJ1
+dGlvbiA9IDwxMDI0PjsNCisJCQkJCX07DQorCQkJCX07DQogCQkJfTsNCiANCiAJCQkvKiBUaGUg
+dHp0czEgfiB0enRzNiBkb24ndCBuZWVkIHRvIHBvbGxpbmcgKi8NCi0tIA0KMi4xOC4wDQpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
