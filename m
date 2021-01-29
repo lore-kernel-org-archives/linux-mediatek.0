@@ -2,76 +2,72 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA609C433E0
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CD566C433E6
 	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:39:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C04C64E09
+	by mail.kernel.org (Postfix) with ESMTPS id 7579864DE2
 	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 09:39:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C04C64E09
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7579864DE2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bKl1oSbXvZyE3kOCzXg9DQsZnQ31NmZG0Jqv4EkpRVw=; b=WZPsGjU9hZH/Apx8r/hMNzORl
-	YLnvjE01CFFfXe1tlovhF9Bo1Vylzvz1LqvVyokExxN4QFftSHgkGFDahZPiLf7i0IxkTKkYV4LzF
-	QjHw5b5diakuAt41ShT3q7RsMWsi087AEinA+7XCtGdKwic2mtSwCZmPE+7q3RYas+GToZMjFN3Ur
-	xqKmw4sNDHcFFo7wkK+gVu2LKv0dM0gSGecJwmTAO5kaT+tdAegnnD1V07m4KDDZONy0B+KFqCQP0
-	2+UIs+fbKDtEQZ3QHFRN829Ing1R+YztF11O0gxWbW6hJMIfOMB34uw2sPXhM02w3XiPPqKTTWw7H
-	T25nq9LQQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MTU/OLuimGQPwMueCyz4n55ma3wCn3m0N2Opq6a52qo=; b=MnC7NGnZn9mM3rBhijzyX3RXAr
+	P2T2P01j90zSLECbq/hdeWbwSIDvnVIcMQh5fQMSRqhuc89pf5LromdLwTKPlW7Vpclkyl1Txibsa
+	iPv0i+EELyEAl0lhGML7nOHz/i7uA2NB5ELhRQNoF+iRieRvHB7PRtUFphefTE7ul2gKovjmtT4Qa
+	k5kMcKj2KojL3NjqARvwZVeJ4DP4DXzVBcQuH86JtGuage0z+2ZVswGnV4QjK1jYYFQU+CtPcZ4lA
+	Mg6dOvTHQPPoY2Yfoa5Y8jwix1M56yxGjURx3BqZ8R/VGefwMM8LEJd/Fc6qWgX6r7r0YqMplQzO/
+	WGjM/eWA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5QEw-00007N-TW; Fri, 29 Jan 2021 09:38:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l5QEy-00007j-0e; Fri, 29 Jan 2021 09:38:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5QEr-0008WD-4d; Fri, 29 Jan 2021 09:38:50 +0000
-X-UUID: b0f39069230242b5838d6fe1ffb2ea8d-20210129
+ id 1l5QEs-00005N-PK; Fri, 29 Jan 2021 09:38:52 +0000
+X-UUID: e67dbcc04422434893db440392e168f6-20210129
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=pCzM/GOgM4KUu63ra9u8AvkatdIJ0/r0zd4ORl1Ec9M=; 
- b=YVy8zrbxx6JfottB1cg03jIz94xUmjLYalxKZ9e3+GDyRmEGNop4YCW7b2kAi5lBl6dG4o8zVcVxBbAtAVvrwe4h/EhrUreyYxJP3INPUKhNdbPX3Sv0Zgn5Tu5mDfIAETe/8KUyVMlkpZGWHVBkTJ6hbwUNIDvwPQgY3E0ZnD8=;
-X-UUID: b0f39069230242b5838d6fe1ffb2ea8d-20210129
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=pf9BXUpUQK+MTTReR8TWl1mvrtCfPLvLn2DEgC61880=; 
+ b=BohYoZORq/MxWaK7Ed1P2/JKqlZZsdC90rnD4kZDN5LNftm8QKpeF6qiIFmRwnxEyd3bgNa+QrEqWilmQzz+ScN6IbDeVZ7mA485uBtX59TreWNb/HluTwSgpF0kq4WEGwFIfb8aZRJyERnySSFlbhq0WlTHndRTkQDWYttHEio=;
+X-UUID: e67dbcc04422434893db440392e168f6-20210129
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <michael.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1819145361; Fri, 29 Jan 2021 01:30:14 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1636490406; Fri, 29 Jan 2021 01:30:13 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 29 Jan 2021 01:30:12 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Jan 2021 17:30:11 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 Jan 2021 17:30:10 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 29 Jan 2021 17:30:11 +0800
+ Frontend Transport; Fri, 29 Jan 2021 17:30:10 +0800
 From: Michael Kao <michael.kao@mediatek.com>
 To: <michael.kao@mediatek.com>, <fan.chen@mediatek.com>, Zhang Rui
  <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
  <linux-pm@vger.kernel.org>, <srv_heupstream@mediatek.com>
-Subject: [v2,
- 3/3] dt-bindings: thermal: Add binding document for mt6873 thermal
- controller
-Date: Fri, 29 Jan 2021 17:30:10 +0800
-Message-ID: <20210129093010.22909-4-michael.kao@mediatek.com>
+Subject: [v2,0/3] Add LVTS architecture thermal controller
+Date: Fri, 29 Jan 2021 17:30:07 +0800
+Message-ID: <20210129093010.22909-1-michael.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210129093010.22909-1-michael.kao@mediatek.com>
-References: <20210129093010.22909-1-michael.kao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_043849_592894_72A297DF 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20210129_043851_027301_1B35DF34 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,105 +89,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds binding document for mt6873 thermal controller.
+This patch move thermal files related to Mediatek to the mediatek folder.
+And introduce the new architecture LVTS (low pressure thermal sensor) driver to report
+the highest temperature in the SoC and record the highest temperature sensor,
+each sensor as a hot zone.
+The LVTS body is divided into two parts, the LVTS controller and the LVTS device.
+The LVTS controller can connect up to 4 LVTS devices, and each LVTS device
+can connect up to 7 TSMCUs.
 
-Signed-off-by: Michael Kao <michael.kao@mediatek.com>
----
+The architecture will be the first to be used on mt6873 and mt8192.
+
+Change in v2:
+	- Rebase to kernel-5.11-rc1.
+	- [2/3]
+	  - sort headers
+	  - remove initial value 0 of msr_raw in the lvts_temp_to_raw.
+	  - disconstruct the api of lvts_read_tc_msr_raw.
+	  - add the initial value max_temp = 0 and compare e.q.
+	    in the lvts_read_all_tc_temperature.
+	  - add the return with invalid number in the lvts_init.
+
 This patch depends on [1].
 
 [1]https://patchwork.kernel.org/project/linux-mediatek/cover/1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com/
----
- .../thermal/mediatek-thermal-lvts.yaml        | 81 +++++++++++++++++++
- 1 file changed, 81 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
 
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml b/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
-new file mode 100644
-index 000000000000..0c6535abeb81
---- /dev/null
-+++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
-@@ -0,0 +1,81 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/thermal/mediatek-thermal-lvts.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek SoC LVTS thermal controller (DTS) binding
-+
-+maintainers:
-+  - Yu-Chia Chang <ethan.chang@mediatek.com>
-+  - Michael Kao <michael.kao@mediatek.com>
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6873-lvts
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: lvts_clk
-+
-+  "#thermal-sensor-cells":
-+    const: 0
-+
-+required:
-+  - "#thermal-sensor-cells"
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/thermal/thermal.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8192-clk.h>
-+    dts: lvts@1100b000 {
-+        compatible = "mediatek,mt6873-lvts";
-+        reg = <0x1100b000 0x1000>;
-+        clocks = <&infracfg CLK_INFRA_THERM>;
-+        clock-names = "lvts_clk";
-+        #thermal-sensor-cells = <0>;
-+        interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-+    };
-+
-+    thermal-zones {
-+        cpu_thermal: cpu-thermal {
-+            polling-delay-passive = <0>;
-+            polling-delay = <0>;
-+
-+            thermal-sensors = <&dts>;
-+            trips {
-+                cpu_alert1: cpu-alert1 {
-+                    temperature = <85000>;
-+                    hysteresis = <0>;
-+                    type = "passive";
-+                };
-+
-+                cpu_crit: cpu-crit {
-+                    temperature = <120000>;
-+                    hysteresis = <0>;
-+                    type = "critical";
-+                };
-+            };
-+
-+            cooling-maps {
-+            };
-+        };
-+    };
-+...
+Michael Kao (3):
+  thermal: mediatek: Relocate driver to mediatek folder
+  thermal: mediatek: Add LVTS drivers for SoC theraml zones
+  dt-bindings: thermal: Add binding document for mt6873 thermal
+    controller
+
+ .../thermal/mediatek-thermal-lvts.yaml        |   81 ++
+ drivers/thermal/Kconfig                       |   14 +-
+ drivers/thermal/Makefile                      |    2 +-
+ drivers/thermal/mediatek/Kconfig              |   33 +
+ drivers/thermal/mediatek/Makefile             |    2 +
+ .../{mtk_thermal.c => mediatek/soc_temp.c}    |    0
+ drivers/thermal/mediatek/soc_temp_lvts.c      | 1287 +++++++++++++++++
+ drivers/thermal/mediatek/soc_temp_lvts.h      |  312 ++++
+ 8 files changed, 1720 insertions(+), 11 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
+ create mode 100644 drivers/thermal/mediatek/Kconfig
+ create mode 100644 drivers/thermal/mediatek/Makefile
+ rename drivers/thermal/{mtk_thermal.c => mediatek/soc_temp.c} (100%)
+ create mode 100644 drivers/thermal/mediatek/soc_temp_lvts.c
+ create mode 100644 drivers/thermal/mediatek/soc_temp_lvts.h
+
 -- 
 2.18.0
 _______________________________________________
