@@ -2,76 +2,59 @@ Return-Path: <SRS0=ALEk=HA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A303CC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 03:51:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23CFEC433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 05:07:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D31764DBD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 03:51:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D31764DBD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id AB19264DFF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jan 2021 05:07:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB19264DFF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gondor.apana.org.au
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Z3fnxKLlSPK4BpB6+p2p7wX0S9rTOokXEWgBAJo4xxU=; b=lc9r+RweNsoa3paiQFb5ZOChh
-	m2FMETF4sEltVoP9k8cgnCpr6Y2QkfvAH+Fr++h8gtWrw6sJNm1pttlH1jeBvUGRm+DJLF//gUUTI
-	dnWKUj0/LFn8XpUKuoyjCvYflqfIcrbjeBz7+kFyiJPpmYkwHiKtubO5S0aD0CFJnSur0CQl2RfSC
-	hA0maRCrRi1rcJdguS/3Rvij4qncGe1NpFKDEgL3l3gIVQPG+JzA1on/xG6EUC8EaGBI9rSku+U4S
-	8auQeVme4y+EvTE6tg/hTRhZL2goYzobzbKWnrUHzySmkCk4n6YKCEW5ejF4+tX9K2za0BQ3Pjler
-	tdFHIJDcw==;
+	 bh=RJFfysnWO2BokI2pFQt+ZwMk6Zdi1cxLyhn1feCfL4k=; b=OwGk/Byrtes4ea5OeOI3Y7uPb
+	wVaTqIHycRTEpZzCjtZSmyXDgi8hucCaTYFSq771EaQLnn468s9FCvVmCkflU0jQ3ZKFNBvVCwAs2
+	f4o8jUq/MP/nb95Fwu+Eu/r1zYWZuAUCCWKbObm4FHUBTtUk89Ln9TdpJO7ZV9Y93ep1ffr8WMjWu
+	upMXjSY8ujv0lHgOQYQ5R0IrrnGh26AhNhBMMZtDg99t7tvkYlMzvxWwswiLmTJ1MeVvn65Bd72Qd
+	CIYbk+Q1pnfIRKHL7ZRJlcbICGvAOvzcOMCdXTGkZjrS+k2BvKZtP5rrSRwtYP8h8AXbt6nD9Kxkk
+	XyPD2csSw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5Kow-0003FS-GT; Fri, 29 Jan 2021 03:51:42 +0000
-Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
+	id 1l5Lzy-0007IB-3q; Fri, 29 Jan 2021 05:07:10 +0000
+Received: from helcar.hmeau.com ([216.24.177.18] helo=fornost.hmeau.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5Kop-0003Cz-9w
- for linux-mediatek@lists.infradead.org; Fri, 29 Jan 2021 03:51:38 +0000
-Received: by mail-vs1-xe2d.google.com with SMTP id o186so4220404vso.1
- for <linux-mediatek@lists.infradead.org>; Thu, 28 Jan 2021 19:51:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Jnk1h+Zm6n/okb5cHmLykkrJZohbNZPfoHPOBcykkQs=;
- b=EPerR1sUvTgueO5i3ZL5veSEQxRiqidYCwlCtMXdymJZFv/4wOGX3bJ+YpBrykLm83
- TiZ0aQR4xJdQokVBcc8zGsaUY2yHJk4HC12IIGvJ8NsAXE3Dn/mRER3oBgPrfewtGdVi
- +yvqYhHusXB91BB6wRqLGam6ZYjGhlJDUyRNY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Jnk1h+Zm6n/okb5cHmLykkrJZohbNZPfoHPOBcykkQs=;
- b=Aznr7SdAMrtbuW8qh8faWCJ4+WQgyLWy4o8/npLM4Sa/dB/kj0RNs8E12gFQhjmKc0
- gweLQWnX+/4E9T6AojxWzKHTHuq8yRgcmwUAVJ930qjqDRiPFwke/+RFDgPuFIHug6Yy
- xYP++X+SqK30ycc7oFoamVROBmnBo8aB0B+NisKcGVPtowqmU/oyJq9tCJ3EL0itkeq3
- dpxh3mRnB0vbnzfWxhGXV9J2CScefpTdS/v50YIPfXDR3UPsvVHQx2ga7a2nOULYPYao
- Z0hyy7/P4+3B4Ery+tWZdhdpQu94M3i5GPsSOmeLdhcRkx6bzZMbCgAi5iHNdi6fSa4a
- B74w==
-X-Gm-Message-State: AOAM5337EgXnNqL1EXZrPgSkBRmOlPGkPhU886Z4VjIBWcPKxaTHtJ3M
- cNgpKyJUsn0M3UBKEhP1EZFYa+vjUTv1XuCJ035Wnw==
-X-Google-Smtp-Source: ABdhPJz1S0Q9ijxKCsprTFXXrokE0AtPeYZFD8kd0gdJkXUmfBjCwQ0j0zCQ3r/c4+iTeuCCbpUpE+NI5D+wNmlB0Iw=
-X-Received: by 2002:a67:8945:: with SMTP id l66mr1502828vsd.48.1611892291939; 
- Thu, 28 Jan 2021 19:51:31 -0800 (PST)
+ id 1l5Lzv-0007H9-Np; Fri, 29 Jan 2021 05:07:09 +0000
+Received: from gwarestrin.arnor.me.apana.org.au ([192.168.103.7])
+ by fornost.hmeau.com with smtp (Exim 4.92 #5 (Debian))
+ id 1l5Lyi-00027x-FU; Fri, 29 Jan 2021 16:05:53 +1100
+Received: by gwarestrin.arnor.me.apana.org.au (sSMTP sendmail emulation);
+ Fri, 29 Jan 2021 16:05:52 +1100
+Date: Fri, 29 Jan 2021 16:05:52 +1100
+From: Herbert Xu <herbert@gondor.apana.org.au>
+To: Allen Pais <allen.lkml@gmail.com>
+Subject: Re: [PATCH v4 01/19] crypto: amcc: convert tasklets to use new
+ tasklet_setup() API
+Message-ID: <20210129050551.GA5586@gondor.apana.org.au>
+References: <20210121044126.152274-1-allen.lkml@gmail.com>
+ <20210121044126.152274-2-allen.lkml@gmail.com>
 MIME-Version: 1.0
-References: <1611314381-19517-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1611314381-19517-7-git-send-email-hsin-hsiung.wang@mediatek.com>
-In-Reply-To: <1611314381-19517-7-git-send-email-hsin-hsiung.wang@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Fri, 29 Jan 2021 11:51:20 +0800
-Message-ID: <CANMq1KC3rXfKx=4w2tLKRC2=VE8xfTGY47y3f9w_GiEAKvvUFw@mail.gmail.com>
-Subject: Re: [PATCH v5 6/8] regulator: mt6359: Add support for MT6359 regulator
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20210121044126.152274-2-allen.lkml@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210128_225135_453826_D5982177 
-X-CRM114-Status: GOOD (  25.11  )
+X-CRM114-CacheID: sfid-20210129_000707_793846_288F90C6 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,308 +66,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- srv_heupstream <srv_heupstream@mediatek.com>, Wen Su <wen.su@mediatek.com>,
- Fei Shao <fshao@chromium.org>, Ran Bi <ran.bi@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, lkml <linux-kernel@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Devicetree List <devicetree@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>,
- Yuchen Huang <yuchen.huang@mediatek.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com,
+ Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, Romain Perier <romain.perier@gmail.com>,
+ davem@davemloft.net
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 22, 2021 at 7:27 PM Hsin-Hsiung Wang
-<hsin-hsiung.wang@mediatek.com> wrote:
->
-> From: Wen Su <wen.su@mediatek.com>
->
-> The MT6359 is a regulator found on boards based on MediaTek MT6779 and
-> probably other SoCs. It is a so called pmic and connects as a slave to
-> SoC using SPI, wrapped inside the pmic-wrapper.
->
-> Signed-off-by: Wen Su <wen.su@mediatek.com>
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
-> changes since v4:
-> - add enable time of ldo.
-> - use the device of mfd driver for the regulator_config.
-> - add the regulators_node support.
-
-This doesn't build at all, please at least compile test before sending
-new revisions.
-
-> ---
->  drivers/regulator/Kconfig                  |   9 +
->  drivers/regulator/Makefile                 |   1 +
->  drivers/regulator/mt6359-regulator.c       | 669 +++++++++++++++++++++
->  include/linux/regulator/mt6359-regulator.h |  58 ++
->  4 files changed, 737 insertions(+)
->  create mode 100644 drivers/regulator/mt6359-regulator.c
->  create mode 100644 include/linux/regulator/mt6359-regulator.h
->
-> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-> index 53fa84f4d1e1..3de7bb5be8ac 100644
-> --- a/drivers/regulator/Kconfig
-> +++ b/drivers/regulator/Kconfig
-> @@ -750,6 +750,15 @@ config REGULATOR_MT6358
->           This driver supports the control of different power rails of device
->           through regulator interface.
->
-> +config REGULATOR_MT6359
-> +       tristate "MediaTek MT6359 PMIC"
-> +       depends on MFD_MT6397
-> +       help
-> +         Say y here to select this option to enable the power regulator of
-> +         MediaTek MT6359 PMIC.
-> +         This driver supports the control of different power rails of device
-> +         through regulator interface.
-> +
->  config REGULATOR_MT6360
->         tristate "MT6360 SubPMIC Regulator"
->         depends on MFD_MT6360
-> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-> index 680e539f6579..4f65eaead82d 100644
-> --- a/drivers/regulator/Makefile
-> +++ b/drivers/regulator/Makefile
-> @@ -91,6 +91,7 @@ obj-$(CONFIG_REGULATOR_MPQ7920) += mpq7920.o
->  obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6323) += mt6323-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6358) += mt6358-regulator.o
-> +obj-$(CONFIG_REGULATOR_MT6359) += mt6359-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6380) += mt6380-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6397) += mt6397-regulator.o
-> diff --git a/drivers/regulator/mt6359-regulator.c b/drivers/regulator/mt6359-regulator.c
-> new file mode 100644
-> index 000000000000..fabc3f57f334
-> --- /dev/null
-> +++ b/drivers/regulator/mt6359-regulator.c
-> @@ -0,0 +1,669 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +//
-> +// Copyright (c) 2020 MediaTek Inc.
-> +
-> +#include <linux/platform_device.h>
-> +#include <linux/mfd/mt6359/registers.h>
-> +#include <linux/mfd/mt6397/core.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/machine.h>
-> +#include <linux/regulator/mt6359-regulator.h>
-> +#include <linux/regulator/of_regulator.h>
-> +
-> +#define MT6359_BUCK_MODE_AUTO          0
-> +#define MT6359_BUCK_MODE_FORCE_PWM     1
-> +#define MT6359_BUCK_MODE_NORMAL                0
-> +#define MT6359_BUCK_MODE_LP            2
-> +
-> +/*
-> + * MT6359 regulators' information
-> + *
-> + * @desc: standard fields of regulator description.
-> + * @status_reg: for query status of regulators.
-> + * @qi: Mask for query enable signal status of regulators.
-> + * @modeset_reg: for operating AUTO/PWM mode register.
-> + * @modeset_mask: MASK for operating modeset register.
-> + * @modeset_shift: SHIFT for operating modeset register.
-> + */
-> +struct mt6359_regulator_info {
-> +       struct regulator_desc desc;
-> +       u32 status_reg;
-> +       u32 qi;
-> +       u32 modeset_reg;
-> +       u32 modeset_mask;
-> +       u32 modeset_shift;
-> +       u32 lp_mode_reg;
-> +       u32 lp_mode_mask;
-> +       u32 lp_mode_shift;
-> +};
-> +
-> +#define MT6359_BUCK(match, _name, min, max, step, min_sel,     \
-> +       volt_ranges, _enable_reg, _status_reg,                  \
-> +       _vsel_reg, _vsel_mask,                                  \
-> +       _lp_mode_reg, _lp_mode_shift,                           \
-> +       _modeset_reg, _modeset_shift)                           \
-> +[MT6359_ID_##_name] = {                                                \
-> +       .desc = {                                               \
-> +               .name = #_name,                                 \
-> +               .of_match = of_match_ptr(match),                \
-> +               .regulators_node = of_match_ptr("regulators"),  \
-> +               .ops = &mt6359_volt_range_ops,                  \
-> +               .type = REGULATOR_VOLTAGE,                      \
-> +               .id = MT6359_ID_##_name,                        \
-> +               .owner = THIS_MODULE,                           \
-> +               .uV_step = (step),                              \
-> +               .linear_min_sel = (min_sel),                    \
-> +               .linear_min_sel = (min_sel),                    \
-> +               .n_voltages = ((max) - (min)) / (step) + 1,     \
-> +               .linear_min_sel = (min_sel),                    \
-> +               .n_voltages = ((max) - (min)) / (step) + 1,     \
-> +               .min_uV = (min),                                \
-> +               .linear_ranges = volt_ranges,                   \
-> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
-> +               .vsel_reg = _vsel_reg,                          \
-> +               .vsel_mask = _vsel_mask,                        \
-> +               .enable_reg = _enable_reg,                      \
-> +               .enable_mask = BIT(0),                          \
-> +               .of_map_mode = mt6359_map_mode,                 \
-> +               .of_map_mode = mt6359_map_mode,                 \
-> +       },                                                      \
-> +       .status_reg = _status_reg,                              \
-> +       .qi = BIT(0),                                           \
-> +       .lp_mode_reg = _lp_mode_reg,                            \
-> +       .lp_mode_reg = _lp_mode_reg,                            \
-> +       .lp_mode_mask = BIT(_lp_mode_shift),                    \
-> +       .lp_mode_reg = _lp_mode_reg,                            \
-
-Repeated 3 times.
-
-> +       .lp_mode_mask = BIT(_lp_mode_shift),                    \
-
-Repeated twice.
-
-> +       .lp_mode_shift = _lp_mode_shift,                        \
-> +       .modeset_reg = _modeset_reg,                            \
-> +       .modeset_mask = BIT(_modeset_shift),                    \
-> +       .modeset_shift = _modeset_shift                         \
-> +}
-> +
-> +#define MT6359_LDO_LINEAR(match, _name, min, max, step, min_sel,\
-> +#define MT6359_LDO_LINEAR(match, _name, min, max, step, min_sel,\
-
-Repeated twice
-
-> +       volt_ranges, _enable_reg, _status_reg,                  \
-> +       _vsel_reg, _vsel_mask)                                  \
-> +       _vsel_reg, _vsel_mask)                                  \
-> +[MT6359_ID_##_name] = {                                                \
-> +       .desc = {                                               \
-> +       .desc = {                                               \
-> +               .name = #_name,                                 \
-> +               .of_match = of_match_ptr(match),                \
-> +               .of_match = of_match_ptr(match),                \
-> +               .regulators_node = of_match_ptr("regulators"),  \
-> +               .ops = &mt6359_volt_range_ops,                  \
-> +               .type = REGULATOR_VOLTAGE,                      \
-> +               .id = MT6359_ID_##_name,                        \
-> +               .owner = THIS_MODULE,                           \
-> +               .owner = THIS_MODULE,                           \
-> +               .uV_step = (step),                              \
-> +               .linear_min_sel = (min_sel),                    \
-> +               .n_voltages = ((max) - (min)) / (step) + 1,     \
-> +               .min_uV = (min),                                \
-> +               .linear_ranges = volt_ranges,                   \
-> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
-> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
-> +               .vsel_reg = _vsel_reg,                          \
-> +               .n_linear_ranges = ARRAY_SIZE(volt_ranges),     \
-> +               .vsel_reg = _vsel_reg,                          \
-> +               .vsel_mask = _vsel_mask,                        \
-> +               .enable_reg = _enable_reg,                      \
-> +               .enable_mask = BIT(0),                          \
-> +       },                                                      \
-> +       .status_reg = _status_reg,                              \
-> +       .status_reg = _status_reg,                              \
-> +       .qi = BIT(0),                                           \
-> +       .status_reg = _status_reg,                              \
-> +       .qi = BIT(0),                                           \
-> +}
-> +
-> +#define MT6359_LDO(match, _name, _volt_table,                  \
-> +       _enable_reg, _enable_mask, _status_reg,                 \
-> +       _vsel_reg, _vsel_mask, _en_delay)                       \
-> +[MT6359_ID_##_name] = {                                                \
-> +[MT6359_ID_##_name] = {                                                \
-
-Repeated twice
-
-> +       .desc = {                                               \
-> +               .name = #_name,                                 \
-> +               .of_match = of_match_ptr(match),                \
-> +               .of_match = of_match_ptr(match),                \
-> +               .regulators_node = of_match_ptr("regulators"),  \
-> +               .ops = &mt6359_volt_table_ops,                  \
-> +               .type = REGULATOR_VOLTAGE,                      \
-> +               .id = MT6359_ID_##_name,                        \
-> +               .owner = THIS_MODULE,                           \
-> +               .n_voltages = ARRAY_SIZE(_volt_table),          \
-> +               .n_voltages = ARRAY_SIZE(_volt_table),          \
-> +               .volt_table = _volt_table,                      \
-> +               .n_voltages = ARRAY_SIZE(_volt_table),          \
-> +               .volt_table = _volt_table,                      \
-> +               .vsel_reg = _vsel_reg,                          \
-> +               .vsel_mask = _vsel_mask,                        \
-> +               .enable_reg = _enable_reg,                      \
-> +               .enable_mask = BIT(_enable_mask),               \
-> +               .enable_time = _en_delay,                       \
-> +       },                                                      \
-> +       .status_reg = _status_reg,                              \
-> +       .qi = BIT(0),                                           \
-> +}
-> +
-> +#define MT6359_REG_FIXED(match, _name, _enable_reg,    \
-> +       _status_reg, _fixed_volt)                       \
-> +[MT6359_ID_##_name] = {                                        \
-> +[MT6359_ID_##_name] = {                                        \
-> +       .desc = {                                       \
-> +               .name = #_name,                         \
-> +               .name = #_name,                         \
-> +               .of_match = of_match_ptr(match),        \
-> +               .regulators_node = of_match_ptr("regulators"),  \
-> +               .ops = &mt6359_volt_fixed_ops,          \
-> +               .type = REGULATOR_VOLTAGE,              \
-> +               .id = MT6359_ID_##_name,                \
-> +               .id = MT6359_ID_##_name,                \
-> +               .owner = THIS_MODULE,                   \
-> +               .n_voltages = 1,                        \
-> +               .enable_reg = _enable_reg,              \
-> +               .enable_mask = BIT(0),                  \
-> +               .fixed_uV = (_fixed_volt),              \
-> +       },                                              \
-> +       .status_reg = _status_reg,                      \
-> +       .status_reg = _status_reg,                      \
-> +       .qi = BIT(0),                                   \
-> +}
-> +
-> +static const struct linear_range mt_volt_range1[] = {
-> +       REGULATOR_LINEAR_RANGE(800000, 0, 0x70, 12500),
-> +};
-> +};
-> +
-> +static const struct linear_range mt_volt_range2[] = {
-> +       REGULATOR_LINEAR_RANGE(400000, 0, 0x7f, 6250),
-> +};
-> +
-> +static const struct linear_range mt_volt_range3[] = {
-> +       REGULATOR_LINEAR_RANGE(400000, 0, 0x70, 6250),
-> +};
-> +
-> +static const struct linear_range mt_volt_range4[] = {
-> +       REGULATOR_LINEAR_RANGE(800000, 0, 0x40, 12500),
-> +};
-> +
-> +static const struct linear_range mt_volt_range5[] = {
-> +static const struct linear_range mt_volt_range5[] = {
-
-This is repeated twice.
-
-> +       REGULATOR_LINEAR_RANGE(500000, 0, 0x3F, 50000),
-> +};
-> +
-> [snip]
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCBKYW4gMjEsIDIwMjEgYXQgMTA6MTE6MDhBTSArMDUzMCwgQWxsZW4gUGFpcyB3cm90
+ZToKPiBGcm9tOiBBbGxlbiBQYWlzIDxhcGFpc0BsaW51eC5taWNyb3NvZnQuY29tPgo+IAo+IElu
+IHByZXBhcmF0aW9uIGZvciB1bmNvbmRpdGlvbmFsbHkgcGFzc2luZyB0aGUKPiBzdHJ1Y3QgdGFz
+a2xldF9zdHJ1Y3QgcG9pbnRlciB0byBhbGwgdGFza2xldAo+IGNhbGxiYWNrcywgc3dpdGNoIHRv
+IHVzaW5nIHRoZSBuZXcgdGFza2xldF9zZXR1cCgpCj4gYW5kIGZyb21fdGFza2xldCgpIHRvIHBh
+c3MgdGhlIHRhc2tsZXQgcG9pbnRlciBleHBsaWNpdGx5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IFJv
+bWFpbiBQZXJpZXIgPHJvbWFpbi5wZXJpZXJAZ21haWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEFs
+bGVuIFBhaXMgPGFwYWlzQGxpbnV4Lm1pY3Jvc29mdC5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvY3J5
+cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYyB8IDcgKysrLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwg
+MyBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQoKVGhpcyBkb2Vzbid0IGV2ZW4gY29tcGls
+ZToKCiAgQ0MgW01dICBkcml2ZXJzL2NyeXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLm8KICBDQyBb
+TV0gIGRyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2FsZy5vCiAgQ0MgW01dICBkcml2ZXJz
+L2NyeXB0by9hbWNjL2NyeXB0bzR4eF90cm5nLm8KICBDSEVDSyAgIC4uL2RyaXZlcnMvY3J5cHRv
+L2FtY2MvY3J5cHRvNHh4X3RybmcuYwouLi9kcml2ZXJzL2NyeXB0by9hbWNjL2NyeXB0bzR4eF9j
+b3JlLmM6IEluIGZ1bmN0aW9uIOKAmGNyeXB0bzR4eF9jaXBoZXJfZG9uZeKAmToKLi4vZHJpdmVy
+cy9jcnlwdG8vYW1jYy9jcnlwdG80eHhfY29yZS5jOjUyNjoxMzogd2FybmluZzogdmFyaWFibGUg
+4oCYYWRkcuKAmSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQog
+IGRtYV9hZGRyX3QgYWRkcjsKICAgICAgICAgICAgIF5+fn4KLi4vZHJpdmVycy9jcnlwdG8vYW1j
+Yy9jcnlwdG80eHhfY29yZS5jOiBJbiBmdW5jdGlvbiDigJhjcnlwdG80eHhfYWhhc2hfZG9uZeKA
+mToKLi4vZHJpdmVycy9jcnlwdG8vYW1jYy9jcnlwdG80eHhfY29yZS5jOjU1NzoyNDogd2Fybmlu
+ZzogdmFyaWFibGUg4oCYY3R44oCZIHNldCBidXQgbm90IHVzZWQgWy1XdW51c2VkLWJ1dC1zZXQt
+dmFyaWFibGVdCiAgc3RydWN0IGNyeXB0bzR4eF9jdHggKmN0eDsKICAgICAgICAgICAgICAgICAg
+ICAgICAgXn5+CkluIGZpbGUgaW5jbHVkZWQgZnJvbSA8Y29tbWFuZC1saW5lPjoKLi4vZHJpdmVy
+cy9jcnlwdG8vYW1jYy9jcnlwdG80eHhfY29yZS5jOiBJbiBmdW5jdGlvbiDigJhjcnlwdG80eHhf
+YmhfdGFza2xldF9jYuKAmToKLi4vaW5jbHVkZS9saW51eC9rZXJuZWwuaDo2OTQ6NTE6IGVycm9y
+OiDigJhzdHJ1Y3QgZGV2aWNl4oCZIGhhcyBubyBtZW1iZXIgbmFtZWQg4oCYdGFza2xldOKAmQog
+IEJVSUxEX0JVR19PTl9NU0coIV9fc2FtZV90eXBlKCoocHRyKSwgKCh0eXBlICopMCktPm1lbWJl
+cikgJiYgXAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBefgouLy4uL2luY2x1ZGUvbGludXgvY29tcGlsZXJfdHlwZXMuaDozMDY6OTogbm90ZTogaW4g
+ZGVmaW5pdGlvbiBvZiBtYWNybyDigJhfX2NvbXBpbGV0aW1lX2Fzc2VydOKAmQogICBpZiAoIShj
+b25kaXRpb24pKSAgICAgXAogICAgICAgICBefn5+fn5+fn4KLi8uLi9pbmNsdWRlL2xpbnV4L2Nv
+bXBpbGVyX3R5cGVzLmg6MzI2OjI6IG5vdGU6IGluIGV4cGFuc2lvbiBvZiBtYWNybyDigJhfY29t
+cGlsZXRpbWVfYXNzZXJ04oCZCiAgX2NvbXBpbGV0aW1lX2Fzc2VydChjb25kaXRpb24sIG1zZywg
+X19jb21waWxldGltZV9hc3NlcnRfLCBfX0NPVU5URVJfXykKICBefn5+fn5+fn5+fn5+fn5+fn5+
+Ci4uL2luY2x1ZGUvbGludXgvYnVpbGRfYnVnLmg6Mzk6Mzc6IG5vdGU6IGluIGV4cGFuc2lvbiBv
+ZiBtYWNybyDigJhjb21waWxldGltZV9hc3NlcnTigJkKICNkZWZpbmUgQlVJTERfQlVHX09OX01T
+Ryhjb25kLCBtc2cpIGNvbXBpbGV0aW1lX2Fzc2VydCghKGNvbmQpLCBtc2cpCiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn4KLi4vaW5jbHVkZS9s
+aW51eC9rZXJuZWwuaDo2OTQ6Mjogbm90ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3JvIOKAmEJVSUxE
+X0JVR19PTl9NU0figJkKICBCVUlMRF9CVUdfT05fTVNHKCFfX3NhbWVfdHlwZSgqKHB0ciksICgo
+dHlwZSAqKTApLT5tZW1iZXIpICYmIFwKICBefn5+fn5+fn5+fn5+fn5+Ci4uL2luY2x1ZGUvbGlu
+dXgva2VybmVsLmg6Njk0OjIwOiBub3RlOiBpbiBleHBhbnNpb24gb2YgbWFjcm8g4oCYX19zYW1l
+X3R5cGXigJkKICBCVUlMRF9CVUdfT05fTVNHKCFfX3NhbWVfdHlwZSgqKHB0ciksICgodHlwZSAq
+KTApLT5tZW1iZXIpICYmIFwKICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fgouLi9pbmNs
+dWRlL2xpbnV4L2ludGVycnVwdC5oOjY0NjoyOiBub3RlOiBpbiBleHBhbnNpb24gb2YgbWFjcm8g
+4oCYY29udGFpbmVyX29m4oCZCiAgY29udGFpbmVyX29mKGNhbGxiYWNrX3Rhc2tsZXQsIHR5cGVv
+ZigqdmFyKSwgdGFza2xldF9maWVsZG5hbWUpCiAgXn5+fn5+fn5+fn5+Ci4uL2RyaXZlcnMvY3J5
+cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYzoxMDc4OjIzOiBub3RlOiBpbiBleHBhbnNpb24gb2Yg
+bWFjcm8g4oCYZnJvbV90YXNrbGV04oCZCiAgc3RydWN0IGRldmljZSAqZGV2ID0gZnJvbV90YXNr
+bGV0KGRldiwgdCwgdGFza2xldCk7CiAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+
+Ci4vLi4vaW5jbHVkZS9saW51eC9jb21waWxlcl90eXBlcy5oOjE0NjozNTogZXJyb3I6IOKAmHN0
+cnVjdCBkZXZpY2XigJkgaGFzIG5vIG1lbWJlciBuYW1lZCDigJh0YXNrbGV04oCZCiAjZGVmaW5l
+IF9fY29tcGlsZXJfb2Zmc2V0b2YoYSwgYikgX19idWlsdGluX29mZnNldG9mKGEsIGIpCiAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+Ci4uL2luY2x1
+ZGUvbGludXgvc3RkZGVmLmg6MTc6MzI6IG5vdGU6IGluIGV4cGFuc2lvbiBvZiBtYWNybyDigJhf
+X2NvbXBpbGVyX29mZnNldG9m4oCZCiAjZGVmaW5lIG9mZnNldG9mKFRZUEUsIE1FTUJFUikgX19j
+b21waWxlcl9vZmZzZXRvZihUWVBFLCBNRU1CRVIpCiAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fgouLi9pbmNsdWRlL2xpbnV4L2tlcm5lbC5oOjY5Nzoy
+MTogbm90ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3JvIOKAmG9mZnNldG9m4oCZCiAgKCh0eXBlICop
+KF9fbXB0ciAtIG9mZnNldG9mKHR5cGUsIG1lbWJlcikpKTsgfSkKICAgICAgICAgICAgICAgICAg
+ICAgXn5+fn5+fn4KLi4vaW5jbHVkZS9saW51eC9pbnRlcnJ1cHQuaDo2NDY6Mjogbm90ZTogaW4g
+ZXhwYW5zaW9uIG9mIG1hY3JvIOKAmGNvbnRhaW5lcl9vZuKAmQogIGNvbnRhaW5lcl9vZihjYWxs
+YmFja190YXNrbGV0LCB0eXBlb2YoKnZhciksIHRhc2tsZXRfZmllbGRuYW1lKQogIF5+fn5+fn5+
+fn5+fgouLi9kcml2ZXJzL2NyeXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLmM6MTA3ODoyMzogbm90
+ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3JvIOKAmGZyb21fdGFza2xldOKAmQogIHN0cnVjdCBkZXZp
+Y2UgKmRldiA9IGZyb21fdGFza2xldChkZXYsIHQsIHRhc2tsZXQpOwogICAgICAgICAgICAgICAg
+ICAgICAgIF5+fn5+fn5+fn5+fgoKVGhhbmtzLAotLSAKRW1haWw6IEhlcmJlcnQgWHUgPGhlcmJl
+cnRAZ29uZG9yLmFwYW5hLm9yZy5hdT4KSG9tZSBQYWdlOiBodHRwOi8vZ29uZG9yLmFwYW5hLm9y
+Zy5hdS9+aGVyYmVydC8KUEdQIEtleTogaHR0cDovL2dvbmRvci5hcGFuYS5vcmcuYXUvfmhlcmJl
+cnQvcHVia2V5LnR4dAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1tZWRpYXRlawo=
