@@ -2,74 +2,73 @@ Return-Path: <SRS0=EsFa=HB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A83FC433E0
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 76BCAC433DB
 	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Jan 2021 14:13:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0443264DDF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Jan 2021 14:13:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0443264DDF
+	by mail.kernel.org (Postfix) with ESMTPS id 35F7664E09
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Jan 2021 14:13:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35F7664E09
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kTc6JDUCGts9cNaxqxMoXcC/BBf5+uHG6TS715jThcE=; b=PRe93GB4PA/sAj2S+QsSAFgc2
-	zt12G89y3mSakddHuOGg1Zk7z130wyBdhxprhMnuYzIaOtDxESWLJO5cwxcs7UDvpuYUhiW0UGd8K
-	aoWatZGi0egtVgjsjhG84LAly2Vf3U/b/5ETX5AjCqN+1UnObOYIRkRuM8z5f7J/Mthw/jSeSSeBJ
-	nhe9btUktYGjCtJAeT5UfVHWMVS/dc/OptrkD/vECGgy7Pok559Sqb0Plnfi+5LFTYs8mGayKZNqm
-	Q2EUnHlSq7fZeLVwnMg1kBH2thbeMwjgzDurovtVZm4cPCKVZxzFoKgFncsEidJDhdhdSyYVfI1Pm
-	5GGxAytgw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HDvFpl1XI8zXAu1GhMOAxapSC95gcmlto5A0Yl/7IbA=; b=VT56jjUd0C2x8BY0rJOIp27pDR
+	F9NfFUJUrfwEBVnaCdqfI12YEPzZ7iLyNNrAQXKU/RooTGn38rACpmLRAGuEbXoQY6hc32YcOeHwN
+	EUTUwPlXyhz2Dj8kQoeEVNskflbkaC6LMS2qR1JQstr3cUrOl8FithA8JcvPaaxGqF/bXIwHlydkE
+	QU0bgXZu/NQgNyRolmraoe/65tsrCL+Fn9XEvd6nVEX6mCMCsa+ggAtIN4j63LZhXZ4ulVYaieW8A
+	qI5r37tXjoqZyXVSyNNz1cW7IGVTpSBWCjSLtlVv3YMX6IjjcXmExtpy4K6ZlQGp8JFTAFo+azD1W
+	Z1Ccr8Kg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5qzY-0002fy-CT; Sat, 30 Jan 2021 14:12:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l5qzW-0002fc-Cm; Sat, 30 Jan 2021 14:12:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5qzU-0002eX-T6; Sat, 30 Jan 2021 14:12:45 +0000
-X-UUID: d9ef97674b734c4da630a2f4f757ae98-20210130
+ id 1l5qzS-0002eT-JE; Sat, 30 Jan 2021 14:12:44 +0000
+X-UUID: b8ee4a5d7ec34c3186defe0cbea5af48-20210130
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=DyzlMt+ZRsFBAamZ/P7DPnw9Tzbiso9sA1OiSGy7Xek=; 
- b=aQMk6qXDKIs6a9p3jtmaMOjMed+bTH1nJqB5brc5CQHQOuZct5GNvMlBay5qtgLmiOJgMhT24DurCbFGMGRo3RiBccstrePAp2IZEcw7u9NEsUNFuS7Y9iFaQKW/Ko/iUevzEJ8Nhrjr9ou0SdtXe5NzyXqk9QSXXrrMATKNNVg=;
-X-UUID: d9ef97674b734c4da630a2f4f757ae98-20210130
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=0EHa8G4GCy+novOwU6OJI2yK0pPjlAP1l0rYdaET5P8=; 
+ b=nDuaPGHO4GWeEuj2PdzZBdm7FNHBK3giCGoW3DGn6O5Kq0HicZ71sUMKw/P8BTPjotsM5ZAUAzHi/7VtQLqOggidoC3RdGMHDB0MlR6qojXeHbCgI8hVZ1tAL4221JTls8GMkv76HzdskX3YxQk1hobuwbCBGaWrzx1irXDHNQU=;
+X-UUID: b8ee4a5d7ec34c3186defe0cbea5af48-20210130
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1368492662; Sat, 30 Jan 2021 06:12:37 -0800
+ with ESMTP id 634109457; Sat, 30 Jan 2021 06:12:34 -0800
 Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 30 Jan 2021 06:12:36 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 30 Jan 2021 06:12:32 -0800
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N1.mediatek.inc
  (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 30 Jan 2021 22:12:33 +0800
+ Sat, 30 Jan 2021 22:12:29 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sat, 30 Jan 2021 22:12:32 +0800
+ 15.0.1497.2 via Frontend Transport; Sat, 30 Jan 2021 22:12:29 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger
  <matthias.bgg@gmail.com>
-Subject: [PATCH v2 3/3] pwm: mtk_disp: implement .get_state()
-Date: Sat, 30 Jan 2021 22:12:26 +0800
-Message-ID: <20210130141226.25357-4-jitao.shi@mediatek.com>
+Subject: [PATCH v2 0/3] Convert the mtk_disp driver to aotmic API
+Date: Sat, 30 Jan 2021 22:12:23 +0800
+Message-ID: <20210130141226.25357-1-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.12.5
-In-Reply-To: <20210130141226.25357-1-jitao.shi@mediatek.com>
-References: <20210130141226.25357-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 05FF14DABF24935074C7B5A197E4A8FAE17711D2C7A914C6F6F525F957A904C82000:8
+X-TM-SNTS-SMTP: ACFC5FED0B4CBE8DE67FFFBAE3EE08092F9D118AD2DF692C187DF2B2441CBB4A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210130_091245_085449_9470D4CB 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20210130_091243_480356_BA4607CE 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,70 +91,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/pwm/pwm-mtk-disp.c | 46 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 46 insertions(+)
+Changes since v1:
+ - Seperate clock operation as single patch.
+ - Seperate apply() as single patch.
+ - Seperate get_state() operation as single patch.
 
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 502228adf718..166e0a8ca703 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -179,8 +179,54 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return mtk_disp_pwm_enable(chip, state);
- }
- 
-+static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
-+				   struct pwm_device *pwm,
-+				   struct pwm_state *state)
-+{
-+	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
-+	u32 clk_div, period, high_width, con0, con1;
-+	u64 rate;
-+	int err;
-+
-+	err = clk_prepare_enable(mdp->clk_main);
-+	if (err < 0) {
-+		dev_err(chip->dev, "Can't enable mdp->clk_main: %d\n", err);
-+		return;
-+	}
-+	err = clk_prepare_enable(mdp->clk_mm);
-+	if (err < 0) {
-+		dev_err(chip->dev, "Can't enable mdp->clk_mm: %d\n", err);
-+		clk_disable_unprepare(mdp->clk_main);
-+		return;
-+	}
-+
-+	rate = clk_get_rate(mdp->clk_main);
-+
-+	con0 = readl(mdp->base + mdp->data->con0);
-+	con1 = readl(mdp->base + mdp->data->con1);
-+
-+	state->polarity = con0 & PWM_POLARITY ?
-+			  PWM_POLARITY_INVERSED : PWM_POLARITY_NORMAL;
-+	state->enabled = !!(con0 & BIT(0));
-+
-+	clk_div = (con0 & PWM_CLKDIV_MASK) >> PWM_CLKDIV_SHIFT;
-+	period = con1 & PWM_PERIOD_MASK;
-+	state->period = div_u64(period * (clk_div + 1) * NSEC_PER_SEC, rate);
-+	high_width = (con1 & PWM_HIGH_WIDTH_MASK) >> PWM_HIGH_WIDTH_SHIFT;
-+	state->duty_cycle = div_u64(high_width * (clk_div + 1) * NSEC_PER_SEC,
-+				    rate);
-+
-+	if (!state->enabled) {
-+		clk_disable_unprepare(mdp->clk_mm);
-+		clk_disable_unprepare(mdp->clk_main);
-+	}
-+
-+	mdp->enabled = state->enabled;
-+}
-+
- static const struct pwm_ops mtk_disp_pwm_ops = {
- 	.apply = mtk_disp_pwm_apply,
-+	.get_state = mtk_disp_pwm_get_state,
- 	.owner = THIS_MODULE,
- };
- 
+Jitao Shi (3):
+  pwm: mtk_disp: clear the clock operations
+  pwm: mtk_disp: convert the driver to atomic API
+  pwm: mtk_disp: implement .get_state()
+
+ drivers/pwm/pwm-mtk-disp.c | 179 ++++++++++++++++++++++++++-------------------
+ 1 file changed, 104 insertions(+), 75 deletions(-)
+
 -- 
 2.12.5
 _______________________________________________
