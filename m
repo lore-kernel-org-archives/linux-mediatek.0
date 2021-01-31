@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B9FEEC433DB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 31 Jan 2021 11:29:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73D76C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 Jan 2021 14:54:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5990564E2C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 31 Jan 2021 11:29:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5990564E2C
+	by mail.kernel.org (Postfix) with ESMTPS id F0F3B64E27
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 Jan 2021 14:54:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0F3B64E27
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,68 +24,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vhZPxlOtt9vkANXaOye/I/nyptBRG4w03DbKasQswcs=; b=n+kLaQsbmHG7lO2R2oSR2N6fl
-	J6owBsbhRh3xeNZe8GHn1NFPMB5BZZqoXUWwXicnxla/C2HfRYj0MLcpenShwRDNfHoE0k+Rghcpb
-	dhYpLXUF03jOGjEmgLK9vvbni2a+qY/bV5VpLsAPYPVonevBnNQOrYufnVc4PljUrZFX5N7WE2h18
-	BMcKZH+Ci/2Z8FZUJ8+TVgBj4CHcs0z0C+nb030cj7vPbZFbFOHZEqrA3kO1fZx+P8G8sRgwwKzYv
-	Soatv+GFu2Ju4uyYEz3yu7sQ2xu+0jvgh8mDr1Zhn7m8NAtHvnqMBD7ZWu7BHShRHtEIgQY+0X4y8
-	xgNZ+GGIw==;
+	 bh=0Pqtw8r27KqC7lHLZtSkuCcizvLguTpEmLtriSDzNsA=; b=j898xkxZuTFMvJsqH3FSakStM
+	Te2NIujb4LgeJM+SvVunlBLv4mzDNIoCsALIcdFdjjbZSQp5HxtQHi+p8LoQONSrBzT07Pj6nSPQU
+	y2T+y/O7u8gZuDoGs1+UJwUadAohVkYHNghUk5D8HH7hJKWniQ42V7zcfNU+0YqJPQnoN1RlO6Uyb
+	vaHYP0tVSctwNR5Vk44aZh5BXt4GQJwYR4qo3Q/jX730ysdT95fsIy62I5eKaPslNcDm0L2dUGOlt
+	c3FnZHXmVLyajIop8eLA4tJElklGoxYUVmEutpu2QuUASDP1k9uDt0oJjMXoSGFm73qTuWF6Xu4nD
+	gN3JJMtfQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6AvJ-0000Et-7p; Sun, 31 Jan 2021 11:29:45 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1l6E7V-00016S-KB; Sun, 31 Jan 2021 14:54:33 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6AvH-0000EF-AM; Sun, 31 Jan 2021 11:29:43 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id s24so9618622wmj.0;
- Sun, 31 Jan 2021 03:29:42 -0800 (PST)
+ id 1l6E7T-000165-TZ; Sun, 31 Jan 2021 14:54:32 +0000
+Received: by mail-wr1-x436.google.com with SMTP id 6so13805546wri.3;
+ Sun, 31 Jan 2021 06:54:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=XHb9cnox9HkjfJVutQn1daYnX6lfpuc7jeu45/QEfeI=;
- b=EQeHdvxEhoyJe9zcUUy/4MUJFr7xk942ZePSW3M+m4/sZqotS29RG3HdBcEcP1JOnz
- wQ4Ya6LxkaogoTRIFPlBQ3EuyVVEuvnfD2d2pNE3LB8kuITs9n5zz4i/qbxTI47/MC3J
- O5ZwA3QvAGZzaPJ3UmgGVagq/DwjwPMQjz+whLq7tTbDcOHT2JxvrBcNmsCw1ZMXag3h
- xdvh9Nlslmy1Iu6NpKqdj8r17O1lMsb5PoeaylQ7VMLm+dXzQi8nsd7GeHoQ1zDIeqpa
- IQQ4kySEJZLafR7+bzuz6rDegIID4bF9hyEegbodxfMtUeC9SnDbMWomOmFOdiOaF40C
- Fkrg==
+ bh=WkJeFPw2kQQYHxR9X8QVdj9OOIogYHSGaWROQp6d23w=;
+ b=qAwxHB4OJZlkt7/CPjTCYo6CtGO7S/7mZXEp2zMkfCcGo6xRAAB+laUFvPRmVamoJ3
+ 0IPPFq0o6NNSlu96vVQh6i1Nkjj3I06oTrz0OlBjCsMkn2tCdv9OTmlL+iYtyyd7zYm0
+ syjj1KcONDNeS6HJWFbqh56V+UpM1ygGP9yd2v5bIhuA0FDwbCWUXNs5/RQ4EPKyyWeN
+ IoFQfBJsWE3psQkQZBgVkwGP5jTSyGGNbR6EVfK1gsjMiZ/rJx3WxK2ViAGL7Znrg2OU
+ rIbQmrGFwxHUn5qOXt0IZIA46U/AfHeLwIZVCOTMKNloO4XzMlk5EmjHnaB/d08ynQkt
+ 3D9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=XHb9cnox9HkjfJVutQn1daYnX6lfpuc7jeu45/QEfeI=;
- b=IRNRqKcU+GqFCb4oCFy6TEa8qHvLeGS4Mmh+4AAO4mC913FM3I+ZvUm1tDlNPdrUBH
- I1+ysLFVCykgmeCR3lHnDpELBF4iOgfeLAEV0eLVec1mUy+XnHO9L0lZt/nnIESd9CEq
- +Xg8kXEVXnQV5kugJAQH+nF3sM6XXALgn0fjVftEYFSmc97YoeZIsbDcqjK4p6nIGfbF
- Umj7svLEE3M8YW3V+DnjIn7orakvekcZHGBYMOldHqZsVOA7HOoetzwWD1UCT+Cs7JhP
- GEQyBc1ZL+qW4j2sanyAVCro08c8+C6jr4g3oFnacGnq0xnL4G+3Ishg/WKsIk2V9Kku
- ptUg==
-X-Gm-Message-State: AOAM532lO0Hbpovm+R944HNc7f+6vrNiIz5/9SWjmbaFr9/HNJANreDM
- 7YIh4kyH/30bEOflal5A8S0=
-X-Google-Smtp-Source: ABdhPJxldbS+DBTdSmlDy0S9DQbm5EfFn+7dzBMcUpRAq1/jcgUEDxeOgVOPME7rz9Liocj4zeWn8g==
-X-Received: by 2002:a05:600c:3510:: with SMTP id
- h16mr10719171wmq.156.1612092582086; 
- Sun, 31 Jan 2021 03:29:42 -0800 (PST)
+ bh=WkJeFPw2kQQYHxR9X8QVdj9OOIogYHSGaWROQp6d23w=;
+ b=njrBfoKnQ+ebIVjFATfHnoV9ZfTZCOzFOHyLQ6AkxX+5nh6LFUGOX03+n9EF4J9Y3n
+ c+30qEhGnlXqnpMIFtipi7szOt5ZXExM9JT4s3qsTDQcF7TvKWJARf5EpJSGTJJa9INf
+ GcSZAscykp9P7dSl0mg17HHR8byZLaw4PKgk3A7IHq2JTCy+PEGcrhJMWrdXdk8uIL9X
+ oidbHy5F0sJAA0m/RjZ+s+HFWLpmmS2D6k1upe8DVuPg2OYLXxI0lFLzysVhsiBDwC7f
+ nid8tbZsUu9ZjIKcqAY33MUTvpBo+Utd2p6WDrgJLIG4BqIvmJ+PdUejrq/8k3kqhXZl
+ tZ8w==
+X-Gm-Message-State: AOAM533N6BVV66EfbGZd+U5vgAS6niQ/tAwEqU/M1NIGYKSBpBEG9aGU
+ Smb8pvUdkDAXcp/EGF8noOU=
+X-Google-Smtp-Source: ABdhPJyPJoHnFnU9o8NjgJCD2yBaBGx2MRUsaYHuoUq3BmTa4p8Vbt9wj2k3kE4ie+qGvWgXRchg2A==
+X-Received: by 2002:adf:fc8a:: with SMTP id g10mr14323248wrr.189.1612104870716; 
+ Sun, 31 Jan 2021 06:54:30 -0800 (PST)
 Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id z18sm22061538wro.91.2021.01.31.03.29.40
+ by smtp.gmail.com with ESMTPSA id s25sm17872026wmj.24.2021.01.31.06.54.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 31 Jan 2021 03:29:41 -0800 (PST)
-Subject: Re: [PATCH v13 1/8] arm64: dts: mt8183: rename rdma fifo size
-To: Hsin-Yi Wang <hsinyi@chromium.org>, CK Hu <ck.hu@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-References: <20210129092209.2584718-1-hsinyi@chromium.org>
- <20210129092209.2584718-2-hsinyi@chromium.org>
+ Sun, 31 Jan 2021 06:54:30 -0800 (PST)
+Subject: Re: [PATCH v4 1/3] arm64: dts: mt8183: config dsi node
+To: Hsin-Yi Wang <hsinyi@chromium.org>, linux-arm-kernel@lists.infradead.org
+References: <20210113110400.616319-1-hsinyi@chromium.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <72ebe1a7-a54b-fafc-c58b-05b06d63e210@gmail.com>
-Date: Sun, 31 Jan 2021 12:29:40 +0100
+Message-ID: <5c30dc00-2d0e-8538-fe55-c57e70d46b70@gmail.com>
+Date: Sun, 31 Jan 2021 15:54:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.1
 MIME-Version: 1.0
-In-Reply-To: <20210129092209.2584718-2-hsinyi@chromium.org>
+In-Reply-To: <20210113110400.616319-1-hsinyi@chromium.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210131_062943_413012_5ACB422E 
-X-CRM114-Status: GOOD (  17.99  )
+X-CRM114-CacheID: sfid-20210131_095432_034673_E9655B7E 
+X-CRM114-Status: GOOD (  18.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,60 +94,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hsin-Yi,
 
-On 29/01/2021 10:22, Hsin-Yi Wang wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+
+On 13/01/2021 12:03, Hsin-Yi Wang wrote:
+> Config dsi node for mt8183 kukui. Set panel and ports.
 > 
-> property name must include only lowercase and '-'
+> Several kukui boards share the same panel property and only compatible
+> is different. So compatible will be set in board dts for comparison
+> convenience.
 > 
-> Fixes: 91f9c963ce79 ("arm64: dts: mt8183: Add display nodes for MT8183")
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
 > ---
 
-I applied 1/8 and 2/8 already, so please drop them for v14.
+Whole series applied to v5.11-next/dts64
 
-Thanks,
-Matthias
+Thanks!
 
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> change:
+> v4: add backlight and enable mipi_tx0
+> ---
+>  .../mediatek/mt8183-kukui-krane-sku176.dts    |  5 +++
+>  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 42 +++++++++++++++++++
+>  2 files changed, 47 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 5b782a4769e7e..6c84ccb709af6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1011,7 +1011,7 @@ rdma0: rdma@1400b000 {
->  			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
->  			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
->  			mediatek,larb = <&larb0>;
-> -			mediatek,rdma_fifo_size = <5120>;
-> +			mediatek,rdma-fifo-size = <5120>;
->  			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
->  		};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
+> index 47113e275cb52..721d16f9c3b4f 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts
+> @@ -16,3 +16,8 @@ / {
+>  	model = "MediaTek krane sku176 board";
+>  	compatible = "google,krane-sku176", "google,krane", "mediatek,mt8183";
+>  };
+> +
+> +&panel {
+> +        status = "okay";
+> +        compatible = "boe,tv101wum-nl6";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index bf2ad1294dd30..da1e947587074 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -249,6 +249,36 @@ &cpu7 {
+>  	proc-supply = <&mt6358_vproc11_reg>;
+>  };
 >  
-> @@ -1023,7 +1023,7 @@ rdma1: rdma@1400c000 {
->  			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
->  			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
->  			mediatek,larb = <&larb0>;
-> -			mediatek,rdma_fifo_size = <2048>;
-> +			mediatek,rdma-fifo-size = <2048>;
->  			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
->  		};
+> +&dsi0 {
+> +	status = "okay";
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	panel: panel@0 {
+> +		/* compatible will be set in board dts */
+> +		reg = <0>;
+> +		enable-gpios = <&pio 45 0>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&panel_pins_default>;
+> +		avdd-supply = <&ppvarn_lcd>;
+> +		avee-supply = <&ppvarp_lcd>;
+> +		pp1800-supply = <&pp1800_lcd>;
+> +		backlight = <&backlight_lcd0>;
+> +		port {
+> +			panel_in: endpoint {
+> +				remote-endpoint = <&dsi_out>;
+> +			};
+> +		};
+> +	};
+> +
+> +	ports {
+> +		port {
+> +			dsi_out: endpoint {
+> +				remote-endpoint = <&panel_in>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+>  &i2c0 {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&i2c0_pins>;
+> @@ -290,6 +320,10 @@ &i2c6 {
+>  	clock-frequency = <100000>;
+>  };
 >  
+> +&mipi_tx0 {
+> +	status = "okay";
+> +};
+> +
+>  &mmc0 {
+>  	status = "okay";
+>  	pinctrl-names = "default", "state_uhs";
+> @@ -547,6 +581,14 @@ pins_clk {
+>  		};
+>  	};
+>  
+> +	panel_pins_default: panel_pins_default {
+> +		panel_reset {
+> +			pinmux = <PINMUX_GPIO45__FUNC_GPIO45>;
+> +			output-low;
+> +			bias-pull-up;
+> +		};
+> +	};
+> +
+>  	pwm0_pin_default: pwm0_pin_default {
+>  		pins1 {
+>  			pinmux = <PINMUX_GPIO176__FUNC_GPIO176>;
 > 
 
 _______________________________________________
