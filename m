@@ -2,19 +2,18 @@ Return-Path: <SRS0=VX5C=HD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27762C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 13:37:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E51FC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 14:02:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B06B764EA2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 13:37:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B06B764EA2
+	by mail.kernel.org (Postfix) with ESMTPS id 33E9B64EA2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 14:02:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33E9B64EA2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,50 +22,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ofPAGawgrIkBevb3VRtC236FF93GFflO6/gAM3S+qo4=; b=oxkzDjtLwAo5J7gYMU2fjOs+d
-	FeEvusPM/dlz9sSwJ1ldvipDrf51wqdgQ7qCQmqFNvHpOIlNTZmTbk5PHK6gNpYCSogXp4eiKZhXv
-	6o2kqJ9epBcYBVXGLnrj+ixsHIqNNMCjU9e/SDfwfE5VJOTGy5ZY9vTK5nDjFIY3B+TlzITf786XI
-	HPKj/aMfou8qnaia9/3Fvh38rWevY3Puser3/u1GwnBfC3+E7DJZRGM/h0RGGzzvtFr1sKK8Ycpy8
-	UtDzwBFBBxR5TF4PBOIu3qynl6577EntlJQa0+7McoGC3sgydzWmKx36rrFSGAvKk4S/hc2gdFfun
-	/eJfIW88g==;
+	 bh=JcCjdTdYBQ8g87xrCzSNfesYgDjjYnvwEp/41ElDXqQ=; b=xmgze78wv3vu/2VPU1opiqIEg
+	97bjSDuhoGFd+ceK1/g47KrjiRDf5VE40pZW6pkF3at6YhGLLmE6WKgtszmXo/xL88lWKmil9IrCy
+	MuvnzwnFCw5cys1vM1xffok2wOnL/f3sO9DlIj3oZ0DlQLwFnBXNqJQHJDm8JrEYLkhvsQlHPkcGQ
+	qdTn6XejkPD8sV0njC1lShJTUZjZdq821B9dYvNWpVdxNOI4cxin6Dxt7j8rzBSjc+vn+UerjFg+c
+	PFzwlmN2TFFc4nGqabDkHHYgP7b2oOxIiSvEEUv7pfOKPy0R0M7gwHUBvxgiR1d4Q5Pen+vJ44E5P
+	9ll299+Vg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6ZOD-0001Kv-0D; Mon, 01 Feb 2021 13:37:13 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l6Zma-0003qM-BM; Mon, 01 Feb 2021 14:02:24 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6ZO8-0001Jm-Js; Mon, 01 Feb 2021 13:37:09 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9F6D864EA2;
- Mon,  1 Feb 2021 13:37:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612186626;
- bh=Ca6sILXG4fwyLv608fCB+3JeQwCE0JDKDmcvJPplyMU=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=DJoURk34n0YciPkLBEB/HLl5teASMw3/8D5guNHy2/4AWTlRPsPlbOyTtTxqv/JQI
- twGh8K3UyvJa0iw/r0pIgWUupPGnhwUP8nGitTMcE1OqDklYy84WpCVCWzObD875bQ
- UoRbNKcb1Jlg/SPR84N582sptjrkRFOfJDRDi3cTiM7FW4PSJG2qYxdSenzVuSconV
- tIILhKfBvno9HpNFkk16OMqhzD9EbfOdfkvD51sln8ypurLxLY+Ny++oKjZCqmY0NS
- DF4ag/f3zMNl0zQW2aq2jhAk6VPEq0yoHl4tqda8kd1j+htoCbmn4ln5FBndAZlNiB
- aEfA0R62VVZig==
-Received: by mail-wr1-f43.google.com with SMTP id 6so16595151wri.3;
- Mon, 01 Feb 2021 05:37:06 -0800 (PST)
-X-Gm-Message-State: AOAM531fN/rod5cHdOe5pTeIkq5043y5G2yo4Z6/JLmvFDqGrROhfYyq
- m4cQNvmS66T/V7vDCy6AY0XhvhokFhlKUnDcVg==
-X-Google-Smtp-Source: ABdhPJwGbLbPXA9ztMTVXLGo0SWhr8NHgerLg6mdo4pyBi7dlYyviEPBb6aW4ApZKN9NnopTRVp50+8iSm8fx35JTCw=
-X-Received: by 2002:a5d:524a:: with SMTP id k10mr18325193wrc.394.1612186625106; 
- Mon, 01 Feb 2021 05:37:05 -0800 (PST)
+ id 1l6ZmW-0003ou-9J; Mon, 01 Feb 2021 14:02:21 +0000
+Received: by mail-oi1-f174.google.com with SMTP id k25so18840317oik.13;
+ Mon, 01 Feb 2021 06:02:18 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PjQ2aAipDSaq5oC4lmBya+0Rk1klXjpSSVN7GA5y3Ng=;
+ b=ftkzc4L/WNGU4Fp90MRDviIzuE0yVpnrGptaTsX9AP6OMcHb3jToAS0uPfcHlioxgm
+ eySRc7xF0mLVkqC9szF4ftFld6UNqvKWbu8fS1FvCVTvHlrNuvo9LVtt/vdQiiwYOj5t
+ vvCgtlW7lt59RHIGBVzOIsvZz0OnoRuiUf33S3P/FuoUQ/NkFFSaLzVh68UkiQUY56DX
+ rONiAb3Ufwwl6Camhslj/HcsFtnB2KxXuuz54vRpxum2mv6IC+0TSWtoSos3KbOa7/gD
+ qpDnILLRsCIXseF6k3jF3tV3bSM8uJ0aG0R9JoGRrqw6oazMlsYPZPpjJoPfwiA9OuWY
+ 8bug==
+X-Gm-Message-State: AOAM5333nxILkUsy2fLzqK2jhBotJJcvtI+wbZvMY3KMNxRtsnGZfbSC
+ 8xYqFJh0DOpQqL/M3VaWyJugYmpY+OyJiPVAg6s=
+X-Google-Smtp-Source: ABdhPJw1DQOtXQiOfLob/rMGpYwphh6HqBDyeQVpm2HarfCzjirlfFQpNkL8KnEPZ6WvYaJWPQuOJUtbJQHKhwp2iUI=
+X-Received: by 2002:aca:fc84:: with SMTP id a126mr11038406oii.71.1612188138028; 
+ Mon, 01 Feb 2021 06:02:18 -0800 (PST)
 MIME-Version: 1.0
-References: <20210131051058.3407985-1-hsinyi@chromium.org>
- <CAAOTY_9kOnYDs=_22qBV7kOM74zcfKaobN0wBZaXzx31KsrG5Q@mail.gmail.com>
-In-Reply-To: <CAAOTY_9kOnYDs=_22qBV7kOM74zcfKaobN0wBZaXzx31KsrG5Q@mail.gmail.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 1 Feb 2021 21:36:51 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__VKeP0Z-Up5gpaB9SwcCbwQdB5cHXfssQB77s_G1U63w@mail.gmail.com>
-Message-ID: <CAAOTY__VKeP0Z-Up5gpaB9SwcCbwQdB5cHXfssQB77s_G1U63w@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: enable dither function
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+References: <377d2e2d328276070ae2f26c65daa1497bb3c3cf.1612166647.git.viresh.kumar@linaro.org>
+ <YBfNb91psVcf3TAS@light.dominikbrodowski.net>
+ <20210201100502.xluaj5rpqosqsq7b@vireshk-i7>
+In-Reply-To: <20210201100502.xluaj5rpqosqsq7b@vireshk-i7>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Mon, 1 Feb 2021 15:02:06 +0100
+Message-ID: <CAJZ5v0iowSHeie2HLPjHUftBDVBQXi30O1Kfk3Kxchc0K=gYag@mail.gmail.com>
+Subject: Re: [PATCH] cpufreq: Remove CPUFREQ_STICKY flag
+To: Viresh Kumar <viresh.kumar@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_083708_824205_03CF4A7A 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20210201_090220_336600_5AB9BE4B 
+X-CRM114-Status: GOOD (  19.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,67 +76,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
+Cc: Linux OMAP Mailing List <linux-omap@vger.kernel.org>,
+ Vincent Guittot <vincent.guittot@linaro.org>,
+ Kevin Hilman <khilman@kernel.org>, linux-tegra <linux-tegra@vger.kernel.org>,
+ linux-mips@vger.kernel.org, linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Linux PM <linux-pm@vger.kernel.org>, Rafael Wysocki <rjw@rjwysocki.net>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Dominik Brodowski <linux@dominikbrodowski.net>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Linux Samsung SoC <linux-samsung-soc@vger.kernel.org>,
+ Andy Gross <agross@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
- CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Keguang Zhang <keguang.zhang@gmail.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEhzaW4tWWk6CgpDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4g5pa8
-IDIwMjHlubQy5pyIMeaXpSDpgLHkuIAg5LiK5Y2IMTI6MjDlr6vpgZPvvJoKPgo+IEhpLCBIc2lu
-LVlpOgo+Cj4gSHNpbi1ZaSBXYW5nIDxoc2lueWlAY2hyb21pdW0ub3JnPiDmlrwgMjAyMeW5tDHm
-nIgzMeaXpSDpgLHml6Ug5LiL5Y2IMToxMeWvq+mBk++8mgo+ID4KPiA+IEZyb206IFlvbmdxaWFu
-ZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+ID4KPiA+IEVuYWJsZSBkaXRoZXIg
-ZnVuY3Rpb24gdG8gaW1wcm92ZSB0aGUgZGlzcGxheSBxdWFsaXR5Lgo+Cj4gUmV2aWV3ZWQtYnk6
-IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+CgpBcHBsaWVkIHRvIG1l
-ZGlhdGVrLWRybS1uZXh0IFsxXSwgdGhhbmtzLgoKWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcv
-cHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9saW51eC5naXQvbG9nLz9oPW1l
-ZGlhdGVrLWRybS1uZXh0Cgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlv
-bmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogSHNpbi1ZaSBXYW5n
-IDxoc2lueWlAY2hyb21pdW0ub3JnPgo+ID4gLS0tCj4gPiBQcmV2aW91cyB2ZXJzaW9uOgo+ID4g
-aHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhdGVrL3BhdGNo
-LzIwMjEwMTI5MDkyMjA5LjI1ODQ3MTgtNy1oc2lueWlAY2hyb21pdW0ub3JnLwo+ID4gLS0tCj4g
-PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyB8IDkgKysrKysr
-Ky0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkK
-PiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
-X2NvbXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMKPiA+
-IGluZGV4IGM3MzAwMjlhYzhmYzcuLjA0NDRiNDI5ZGFmMDAgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gPiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gPiBAQCAtNTMsNiArNTMsNyBA
-QAo+ID4gICNkZWZpbmUgRElUSEVSX0VOICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQklU
-KDApCj4gPiAgI2RlZmluZSBESVNQX0RJVEhFUl9DRkcgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIDB4MDAyMAo+ID4gICNkZWZpbmUgRElUSEVSX1JFTEFZX01PREUgICAgICAgICAgICAg
-ICAgICAgICAgQklUKDApCj4gPiArI2RlZmluZSBESVRIRVJfRU5HSU5FX0VOICAgICAgICAgICAg
-ICAgICAgICAgICBCSVQoMSkKPiA+ICAjZGVmaW5lIERJU1BfRElUSEVSX1NJWkUgICAgICAgICAg
-ICAgICAgICAgICAgIDB4MDAzMAo+ID4KPiA+ICAjZGVmaW5lIExVVF8xMEJJVF9NQVNLICAgICAg
-ICAgICAgICAgICAgICAgICAgIDB4MDNmZgo+ID4gQEAgLTMxNSw4ICszMTYsMTIgQEAgc3RhdGlj
-IHZvaWQgbXRrX2RpdGhlcl9jb25maWcoc3RydWN0IGRldmljZSAqZGV2LCB1bnNpZ25lZCBpbnQg
-dywKPiA+ICB7Cj4gPiAgICAgICAgIHN0cnVjdCBtdGtfZGRwX2NvbXBfZGV2ICpwcml2ID0gZGV2
-X2dldF9kcnZkYXRhKGRldik7Cj4gPgo+ID4gLSAgICAgICBtdGtfZGRwX3dyaXRlKGNtZHFfcGt0
-LCBoIDw8IDE2IHwgdywgJnByaXYtPmNtZHFfcmVnLCBwcml2LT5yZWdzLCBESVNQX0RJVEhFUl9T
-SVpFKTsKPiA+IC0gICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwgRElUSEVSX1JFTEFZX01P
-REUsICZwcml2LT5jbWRxX3JlZywgcHJpdi0+cmVncywgRElTUF9ESVRIRVJfQ0ZHKTsKPiA+ICsg
-ICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwgaCA8PCAxNiB8IHcsICZwcml2LT5jbWRxX3Jl
-ZywgcHJpdi0+cmVncywKPiA+ICsgICAgICAgICAgICAgICAgICAgICBESVNQX0RJVEhFUl9TSVpF
-KTsKPiA+ICsgICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwgRElUSEVSX1JFTEFZX01PREUs
-ICZwcml2LT5jbWRxX3JlZywgcHJpdi0+cmVncywKPiA+ICsgICAgICAgICAgICAgICAgICAgICBE
-SVNQX0RJVEhFUl9DRkcpOwo+ID4gKyAgICAgICBtdGtfZGl0aGVyX3NldF9jb21tb24ocHJpdi0+
-cmVncywgJnByaXYtPmNtZHFfcmVnLCBicGMsIERJU1BfRElUSEVSX0NGRywKPiA+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIERJVEhFUl9FTkdJTkVfRU4sIGNtZHFfcGt0KTsKPiA+ICB9
-Cj4gPgo+ID4gIHN0YXRpYyB2b2lkIG10a19kaXRoZXJfc3RhcnQoc3RydWN0IGRldmljZSAqZGV2
-KQo+ID4gLS0KPiA+IDIuMzAuMC4zNjUuZzAyYmM2OTM3ODktZ29vZwo+ID4KPiA+Cj4gPiBfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4gTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0Cj4gPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
-Cj4gPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
-ZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
-ZGlhdGVrCg==
+On Mon, Feb 1, 2021 at 11:06 AM Viresh Kumar <viresh.kumar@linaro.org> wrote:
+>
+> On 01-02-21, 10:44, Dominik Brodowski wrote:
+> > IIRC, it was required on various ARM systems,[*] as CPUs were registered as
+> > subsys_initcall(), while cpufreq used to be initialized only later, as an
+>
+> s/later/earlier ? arch happens before subsys not at least and that is
+> the only way we can break cpufreq here, i.e. when the driver comes up
+> before the CPUs are registered.
+>
+> > arch_initcall(). If the ordering is opposite now on all architectures (it
+> > wasn't on ARM back then), we should be fine.
+> >
+> > [*] https://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git/commit/arch/arm/mach-sa1100/cpu-sa1100.c?id=f59d3bbe35f6268d729f51be82af8325d62f20f5
+>
+> Thanks for your reply, it made me look at that aspect in some more
+> detail to confirm I don't end up breaking anything. Unless I am making
+> a mistake in reading the code, this is the code flow that we have
+> right now:
+>
+> start_kernel()
+> -> kernel_init()
+>    -> kernel_init_freeable()
+>       -> do_basic_setup()
+>          -> driver_init()
+>             -> cpu_dev_init()
+>                -> subsys_system_register(for-CPUs)
+>
+>          -> do_initcalls()
+>             -> register-cpufreq-driver from any level
+>
+> And so CPUs should always be there for a cpufreq driver.
+>
+> Makes sense ?
+
+It does to me, but can you update the changelog, please?
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
