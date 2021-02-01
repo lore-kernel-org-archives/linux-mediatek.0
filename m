@@ -2,86 +2,87 @@ Return-Path: <SRS0=VX5C=HD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C7B4C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 09:54:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C20A1C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 10:14:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E276E64EA6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 09:54:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E276E64EA6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5CADC64DDD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 10:14:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5CADC64DDD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:From:To:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=29iwnmlxx1nJzN4xrTMadJiWPXdeAszql2U6W6VNxxY=; b=zNjXYGMXZcoK/UoOra0bP0l1xd
-	r005vxKkuLzwtnHBOp8jo0ieSFZ4xheQMD9Kkjw/kLbc2+HC9nnNxxGekccYcNeKl1rHGxriQRn3r
-	DTOQ1KqTIZS+wo6Nsab2zrBAOVcFhCvQry8/0df9UdtsFC6sDOgYKNSYaYqTeDKNrhp9DaZdYJG2Z
-	URXow4ImOvMuA+E+SxK4cAEsBHvoaNgpWDNDtINxtJMg41lkCDTmoUO+44KOdYzVKah+s6nQfGQY9
-	kUstd5YJNz8qJXyw6DqQxVVUmELSbRtZ6Y3j0FvVsDPB8iEC26OtoIgSGH9mMJZq/3567HZ41za1F
-	V2+n74wA==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=acyX+mLouylL9g9MvoSbPZODGsQOLMey9JVuxIz06c8=; b=FaOYDQj58kUZ2yeRIcpYCVBNA
+	is6kI/ggpbx6OeqC8DJo8cyy4S590sBEgAaLxNzrGwxeO8qkPrCNPRmDBoTFpLmSkAMdNwRXJQaLs
+	q1mCvCr73KF7snVT5jtohesUHQ+F8tB0+6+jaAfSBR0FxIAvRzloAPaSDHWzM3OzOD/tV0kkfAFyX
+	axBuCMPbI8i8FYHObWcFUMYkm2MwcuTluayoUjGaNBegI/LPd7w77i68w8J44RF4KfyWMah0tmpRN
+	MUbNx96BTycBqEASIAzjN8vyr1aMDCbCHGAdioj92dHEFX0nCUdx7r8RnafAeuE1gr8+VCyVOq8hM
+	dP+k3ISsA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6VuG-0001yR-9r; Mon, 01 Feb 2021 09:54:04 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1l6WDW-0007Yt-De; Mon, 01 Feb 2021 10:13:58 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6VuE-0001xx-Bh; Mon, 01 Feb 2021 09:54:03 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id l12so15860597wry.2;
- Mon, 01 Feb 2021 01:54:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=d30/WqC5Sr8iUYYqfq19zQKJNZP17PGn+43sKEWUOrs=;
- b=pAJu87KNgZ/rko5hpxYAYXP6pIDxuv7dayJ4dxt8Cy0jqob30WTeRO39Oq2nt9cQpZ
- 5VGDieD5mSuCkUclZu79RiBTVYfr/7WqqlnLmQEJvFFpG2EAF376UGosWKyFX1vqg9BF
- FlcZDYMnlw2KDhl8huT17Bj0rIllIlkSynRkPdOAPC1yhocCVGLiwCBtA4XyFXlfPIi+
- +IRHk/kDGXJagQFTcwGT1i7/2Ll+Tog9qT769Gwxyvlx5LV4YZhp+2umDfVaNLzY/pQG
- /5/ywA1kyxG0aiN517UmvN4prhDNrHxpuZ9qZz8pLdL8bkNe1ORtZnRWdhba1TFmyUIw
- 7byA==
+ id 1l6W4x-0003xv-I5
+ for linux-mediatek@lists.infradead.org; Mon, 01 Feb 2021 10:05:09 +0000
+Received: by mail-pf1-x434.google.com with SMTP id o20so11263735pfu.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 01 Feb 2021 02:05:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=frVr/xCUvbYcgOOMMYBu0rOoutvXVeUOoguRH3Tfir4=;
+ b=KwK6870QDpRjaQinp8V2YB7qTqptw0NUC4QQzI6GlaPFwXhH4XhywUDn/dr3sbz6Gy
+ OC4dJlWbmACnp5g0iaHf7r2ef2MJMzVA4SX9JzX0tQzX3dH9LjJrJmtGptQfM2hAb75z
+ UwUleW6xFmNJZ+WzH6n/lRLf7noLT5jz5vNrR3OyxLR8GSEIHs3YpR9lunUV5AVQaJ5e
+ xUsgx/9Q29q66NefdOejr8sBM9dmVUXClEIPnF5lvzGZDfQAj90Vfg6rzlDhsmHnyaIj
+ BgQ6zroUKfsLkQfJtGCrRgiUkguq9n6eaDLq/9bX4KdNIES/ladpVGwk5SF3htHMTj4K
+ ukHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=d30/WqC5Sr8iUYYqfq19zQKJNZP17PGn+43sKEWUOrs=;
- b=hspYALuVOeGaGtSjF8J1t2jwqxv4UxSQnWXVQtikLAwIjt1HCknIVyyih0KN79zlkC
- iI06s2H1r3sFALzNDEzL3SGXd7PY1VgsSssC9sBOu7vlOjmGxcfN4zErxZCIxvVy6fxB
- NHJNHtLSqy4UlhBQV0LKl856+1XJ5B/EpimlqDGhVdB7RnPKtKzAWLqSFkFD0XhJq2yW
- JOI2AGshOfjaRwDmMInU5inypHiLWncyA7a/efbfFlq881XG0ACmHimGEvImgnr4p2tR
- PkbibXfDaF822o79joT1aOhkzlNGbCzmtR00VIjBMBZBLUKWISLsz9KX58CpACcXybqN
- Gdfw==
-X-Gm-Message-State: AOAM532t/qUnBSYQqN0Rg9L/xGl+5bDmbIlSS8XXuOVHkl/tEL1iWCyZ
- FWsDeKd2cvdW0ySTBtpfhBg=
-X-Google-Smtp-Source: ABdhPJzx6z8Sox35xoBAgnXigMReq9/U391Zebk6MofU2hDdrRQ1+NkEbHV3m69ux9L1udtsw1L50w==
-X-Received: by 2002:a5d:4574:: with SMTP id a20mr16892144wrc.201.1612173241221; 
- Mon, 01 Feb 2021 01:54:01 -0800 (PST)
-Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id t17sm9190627wmi.46.2021.02.01.01.54.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Feb 2021 01:54:00 -0800 (PST)
-List-Id: <soc.lore.kernel.org>
-To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] soc: mediatek: updates for v5.12
-Message-ID: <5faa52c2-0ddb-b809-7444-ce6f6ff6d8ad@gmail.com>
-Date: Mon, 1 Feb 2021 10:53:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=frVr/xCUvbYcgOOMMYBu0rOoutvXVeUOoguRH3Tfir4=;
+ b=j1HO6WvpegtnFhODSj44mAlVRjPGg8uKGfLsSG6bQsK1pz/JKC1yi/2iQ/3nCUTajL
+ /6AqfPP9K48cUS+QPHPv+vkfVhOQPhyFjxPNbQ0+wINpR+bEAk+TLiwz+w3W+HpYF9Ig
+ qSd5tZQY/kImMh/IxIljEScE2L9yos3RT6zv17p8bsAz8/+KO1bEmdYKfBZKXkafVk0y
+ icr0INzAw5aULJkqTBfTwWdM8TmO1F5WG3XJcnB466A1cA51PEqPJhrMxGW2LTxyMyFf
+ Zn29Flhn303MSVhN4V1unaZKK1XD0IwluA0zIYI0qUgZ14Z1JfTe4C+Douvca7en6ZWz
+ HDsg==
+X-Gm-Message-State: AOAM533Qfx96HfwSF/OMX9wpNTUUsYdp93T7gJPHlo/scp/KzlfZmFrA
+ xlRkR4SlH1jvWuZnO1IGXal53Q==
+X-Google-Smtp-Source: ABdhPJyxP1XDmrI0MqAUO7EnoKcwJKb1624sQpyrFq75F363UpbEny2r9jczdiB/yEeu8ohEE5Gqfw==
+X-Received: by 2002:aa7:8698:0:b029:1be:aef7:449d with SMTP id
+ d24-20020aa786980000b02901beaef7449dmr15532020pfo.60.1612173905191; 
+ Mon, 01 Feb 2021 02:05:05 -0800 (PST)
+Received: from localhost ([122.172.59.240])
+ by smtp.gmail.com with ESMTPSA id c11sm15454066pfl.185.2021.02.01.02.05.03
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 01 Feb 2021 02:05:04 -0800 (PST)
+Date: Mon, 1 Feb 2021 15:35:02 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Dominik Brodowski <linux@dominikbrodowski.net>
+Subject: Re: [PATCH] cpufreq: Remove CPUFREQ_STICKY flag
+Message-ID: <20210201100502.xluaj5rpqosqsq7b@vireshk-i7>
+References: <377d2e2d328276070ae2f26c65daa1497bb3c3cf.1612166647.git.viresh.kumar@linaro.org>
+ <YBfNb91psVcf3TAS@light.dominikbrodowski.net>
 MIME-Version: 1.0
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <YBfNb91psVcf3TAS@light.dominikbrodowski.net>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_045402_478458_EB33B577 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20210201_050507_926203_7F787BDC 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,76 +94,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Fabien Parent <fparent@baylibre.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: linux-omap@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
+ Kevin Hilman <khilman@kernel.org>, linux-tegra@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-pm@vger.kernel.org, Rafael Wysocki <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Andy Gross <agross@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Keguang Zhang <keguang.zhang@gmail.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd and Olof,
+On 01-02-21, 10:44, Dominik Brodowski wrote:
+> IIRC, it was required on various ARM systems,[*] as CPUs were registered as
+> subsys_initcall(), while cpufreq used to be initialized only later, as an
 
-Please find below the updates for the mediatek SoC drivers. The most outstanding
-thing is, that we now support also the MT8167 power domains.
+s/later/earlier ? arch happens before subsys not at least and that is
+the only way we can break cpufreq here, i.e. when the driver comes up
+before the CPUs are registered.
 
-Regards,
-Matthias
+> arch_initcall(). If the ordering is opposite now on all architectures (it
+> wasn't on ARM back then), we should be fine.
+> 
+> [*] https://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git/commit/arch/arm/mach-sa1100/cpu-sa1100.c?id=f59d3bbe35f6268d729f51be82af8325d62f20f5
 
----
-The following changes since commit 5c8fe583cce542aa0b84adc939ce85293de36e5e:
+Thanks for your reply, it made me look at that aspect in some more
+detail to confirm I don't end up breaking anything. Unless I am making
+a mistake in reading the code, this is the code flow that we have
+right now:
 
-  Linux 5.11-rc1 (2020-12-27 15:30:22 -0800)
+start_kernel()
+-> kernel_init()
+   -> kernel_init_freeable()
+      -> do_basic_setup()
+         -> driver_init()
+            -> cpu_dev_init()
+               -> subsys_system_register(for-CPUs)
+ 
+         -> do_initcalls()
+            -> register-cpufreq-driver from any level
 
-are available in the Git repository at:
+And so CPUs should always be there for a cpufreq driver.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v5.11-next-soc
+Makes sense ?
 
-for you to fetch changes up to dd65030295e20338bbb8238454c2e9546b6e5e17:
-
-  soc: mediatek: pm-domains: Don't print an error if child domain is deferred
-(2021-01-31 15:59:16 +0100)
-
-----------------------------------------------------------------
-pm-domains:
-- add support for MT8167
-- add support for regulator needed by a PM domain
-- make error message in deferred probe case better
-
-cmdq-helper:
-- remove arch specific flush function, use mailbox rx_callback instead
-
-----------------------------------------------------------------
-Chun-Kuang Hu (1):
-      soc: mediatek: cmdq: Remove cmdq_pkt_flush()
-
-Enric Balletbo i Serra (1):
-      soc: mediatek: pm-domains: Don't print an error if child domain is deferred
-
-Fabien Parent (2):
-      dt-bindings: power: Add MT8167 power domains
-      soc: mediatek: pm-domains: Add support for mt8167
-
-Hsin-Yi Wang (2):
-      dt-bindings: power: Add domain regulator supply
-      soc: mediatek: pm-domains: Add domain regulator supply
-
- .../bindings/power/mediatek,power-controller.yaml  | 11 +++
- drivers/soc/mediatek/mt8167-pm-domains.h           | 86 ++++++++++++++++++++++
- drivers/soc/mediatek/mt8183-pm-domains.h           |  1 +
- drivers/soc/mediatek/mtk-cmdq-helper.c             | 32 --------
- drivers/soc/mediatek/mtk-pm-domains.c              | 51 ++++++++++++-
- drivers/soc/mediatek/mtk-pm-domains.h              |  2 +
- include/dt-bindings/power/mt8167-power.h           | 17 +++++
- include/linux/soc/mediatek/infracfg.h              |  8 ++
- include/linux/soc/mediatek/mtk-cmdq.h              | 12 ---
- 9 files changed, 173 insertions(+), 47 deletions(-)
- create mode 100644 drivers/soc/mediatek/mt8167-pm-domains.h
- create mode 100644 include/dt-bindings/power/mt8167-power.h
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
