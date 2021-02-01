@@ -2,69 +2,63 @@ Return-Path: <SRS0=VX5C=HD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E51FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 14:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC1D0C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 14:54:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33E9B64EA2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 14:02:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33E9B64EA2
+	by mail.kernel.org (Postfix) with ESMTPS id 97C7764E9A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 14:54:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97C7764E9A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JcCjdTdYBQ8g87xrCzSNfesYgDjjYnvwEp/41ElDXqQ=; b=xmgze78wv3vu/2VPU1opiqIEg
-	97bjSDuhoGFd+ceK1/g47KrjiRDf5VE40pZW6pkF3at6YhGLLmE6WKgtszmXo/xL88lWKmil9IrCy
-	MuvnzwnFCw5cys1vM1xffok2wOnL/f3sO9DlIj3oZ0DlQLwFnBXNqJQHJDm8JrEYLkhvsQlHPkcGQ
-	qdTn6XejkPD8sV0njC1lShJTUZjZdq821B9dYvNWpVdxNOI4cxin6Dxt7j8rzBSjc+vn+UerjFg+c
-	PFzwlmN2TFFc4nGqabDkHHYgP7b2oOxIiSvEEUv7pfOKPy0R0M7gwHUBvxgiR1d4Q5Pen+vJ44E5P
-	9ll299+Vg==;
+	 bh=f6UzqHbXCWUEHPk1yNvyTOP/nnuyfMIv+lYB9GE5Hzc=; b=QhJszR+qEp5zOrr5FIASEsS5x
+	rwqoQZpbhhg7Wr5C+yd3zJSUle47PCC30MkyY7Ul+0HRSFmOdUl+tsvBM/qN43e1eDoSEpwGQvuYN
+	6PT7kkYWd1dyNsPsLK/OByFzQnCOMjFMtkS/C/RApOrQvjsI7tOkP2pIfawTjijUXNfr6e4wHQr7m
+	1IubqT3JzGsx+TuA+UL/A5LyUlHlUoVGSjE22YVte8rMYHIYmT3L4in4Dm+qQOiQ0WwnEiNwVH2SD
+	lks8hUxwyRspPoE+hAbJcF1urygLR7EfZVrWomyJRWr6rpxDg3oPPnpDy8o6HCKVJzflWMWCbNiH0
+	YG7Z1H10A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6Zma-0003qM-BM; Mon, 01 Feb 2021 14:02:24 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1l6ab4-0000bj-7y; Mon, 01 Feb 2021 14:54:34 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6ZmW-0003ou-9J; Mon, 01 Feb 2021 14:02:21 +0000
-Received: by mail-oi1-f174.google.com with SMTP id k25so18840317oik.13;
- Mon, 01 Feb 2021 06:02:18 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PjQ2aAipDSaq5oC4lmBya+0Rk1klXjpSSVN7GA5y3Ng=;
- b=ftkzc4L/WNGU4Fp90MRDviIzuE0yVpnrGptaTsX9AP6OMcHb3jToAS0uPfcHlioxgm
- eySRc7xF0mLVkqC9szF4ftFld6UNqvKWbu8fS1FvCVTvHlrNuvo9LVtt/vdQiiwYOj5t
- vvCgtlW7lt59RHIGBVzOIsvZz0OnoRuiUf33S3P/FuoUQ/NkFFSaLzVh68UkiQUY56DX
- rONiAb3Ufwwl6Camhslj/HcsFtnB2KxXuuz54vRpxum2mv6IC+0TSWtoSos3KbOa7/gD
- qpDnILLRsCIXseF6k3jF3tV3bSM8uJ0aG0R9JoGRrqw6oazMlsYPZPpjJoPfwiA9OuWY
- 8bug==
-X-Gm-Message-State: AOAM5333nxILkUsy2fLzqK2jhBotJJcvtI+wbZvMY3KMNxRtsnGZfbSC
- 8xYqFJh0DOpQqL/M3VaWyJugYmpY+OyJiPVAg6s=
-X-Google-Smtp-Source: ABdhPJw1DQOtXQiOfLob/rMGpYwphh6HqBDyeQVpm2HarfCzjirlfFQpNkL8KnEPZ6WvYaJWPQuOJUtbJQHKhwp2iUI=
-X-Received: by 2002:aca:fc84:: with SMTP id a126mr11038406oii.71.1612188138028; 
- Mon, 01 Feb 2021 06:02:18 -0800 (PST)
+ id 1l6ab0-0000as-Ob; Mon, 01 Feb 2021 14:54:31 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 80B7F64E08;
+ Mon,  1 Feb 2021 14:54:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612191269;
+ bh=UfY3ArU2Ba52g7BMgBfvsVQ2y0huUNSig9ApYXP8TIU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Ulg+rsdevXRtCjtTFGOizv2sb4y2ls4EABbPyo9gn2WsK0n6vSp6Na2wilJ5T5C0m
+ hK8/LsVRjMUQ+Aa+l+vRce00wC3jqhrVTXlZUgaMHnxcgp/kH+mC0fj/JXC+InheOY
+ y7UjHKCM553yfX5RjpOE6MnP8Gz/jLjFS8YLb4RkzK8r4RQv+/6W0uJiBsZB4BaOjz
+ BFJDSELZCG/g5ezyx7N4LFcjaaXXvRHoLCyO4SKbB67p1jOrG7dvwUBmGGuhT9NwiT
+ +pvv1lmrEIC2y1CrJsa7PUN3NzkH77p+147UW3/uy5+jPO4ZHz2gkWwxlXCxRWDio1
+ AwGMEZD4oK6Mg==
+Date: Mon, 1 Feb 2021 14:54:23 +0000
+From: Will Deacon <will@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v6 00/33] MT8192 IOMMU support
+Message-ID: <20210201145422.GA15263@willie-the-truck>
+References: <20210111111914.22211-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-References: <377d2e2d328276070ae2f26c65daa1497bb3c3cf.1612166647.git.viresh.kumar@linaro.org>
- <YBfNb91psVcf3TAS@light.dominikbrodowski.net>
- <20210201100502.xluaj5rpqosqsq7b@vireshk-i7>
-In-Reply-To: <20210201100502.xluaj5rpqosqsq7b@vireshk-i7>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Mon, 1 Feb 2021 15:02:06 +0100
-Message-ID: <CAJZ5v0iowSHeie2HLPjHUftBDVBQXi30O1Kfk3Kxchc0K=gYag@mail.gmail.com>
-Subject: Re: [PATCH] cpufreq: Remove CPUFREQ_STICKY flag
-To: Viresh Kumar <viresh.kumar@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <20210111111914.22211-1-yong.wu@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_090220_336600_5AB9BE4B 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20210201_095430_890443_63586CDB 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,63 +70,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Linux OMAP Mailing List <linux-omap@vger.kernel.org>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Kevin Hilman <khilman@kernel.org>, linux-tegra <linux-tegra@vger.kernel.org>,
- linux-mips@vger.kernel.org, linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Linux PM <linux-pm@vger.kernel.org>, Rafael Wysocki <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Dominik Brodowski <linux@dominikbrodowski.net>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux Samsung SoC <linux-samsung-soc@vger.kernel.org>,
- Andy Gross <agross@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Keguang Zhang <keguang.zhang@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
+ chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
+ Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 1, 2021 at 11:06 AM Viresh Kumar <viresh.kumar@linaro.org> wrote:
->
-> On 01-02-21, 10:44, Dominik Brodowski wrote:
-> > IIRC, it was required on various ARM systems,[*] as CPUs were registered as
-> > subsys_initcall(), while cpufreq used to be initialized only later, as an
->
-> s/later/earlier ? arch happens before subsys not at least and that is
-> the only way we can break cpufreq here, i.e. when the driver comes up
-> before the CPUs are registered.
->
-> > arch_initcall(). If the ordering is opposite now on all architectures (it
-> > wasn't on ARM back then), we should be fine.
-> >
-> > [*] https://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git/commit/arch/arm/mach-sa1100/cpu-sa1100.c?id=f59d3bbe35f6268d729f51be82af8325d62f20f5
->
-> Thanks for your reply, it made me look at that aspect in some more
-> detail to confirm I don't end up breaking anything. Unless I am making
-> a mistake in reading the code, this is the code flow that we have
-> right now:
->
-> start_kernel()
-> -> kernel_init()
->    -> kernel_init_freeable()
->       -> do_basic_setup()
->          -> driver_init()
->             -> cpu_dev_init()
->                -> subsys_system_register(for-CPUs)
->
->          -> do_initcalls()
->             -> register-cpufreq-driver from any level
->
-> And so CPUs should always be there for a cpufreq driver.
->
-> Makes sense ?
+On Mon, Jan 11, 2021 at 07:18:41PM +0800, Yong Wu wrote:
+> This patch mainly adds support for mt8192 Multimedia IOMMU and SMI.
+> 
+> mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> table format. The M4U-SMI HW diagram is as below:
+> 
+>                           EMI
+>                            |
+>                           M4U
+>                            |
+>                       ------------
+>                        SMI Common
+>                       ------------
+>                            |
+>   +-------+------+------+----------------------+-------+
+>   |       |      |      |       ......         |       |
+>   |       |      |      |                      |       |
+> larb0   larb1  larb2  larb4     ......      larb19   larb20
+> disp0   disp1   mdp    vdec                   IPE      IPE
+> 
+> All the connections are HW fixed, SW can NOT adjust it.
+> 
+> Comparing with the preview SoC, this patchset mainly adds two new functions:
+> a) add iova 34 bits support.
+> b) add multi domains support since several HW has the special iova
+> region requirement.
+> 
+> change note:
+> v6:a) base on v5.11-rc1. and tlb v4:
+>       https://lore.kernel.org/linux-mediatek/20210107122909.16317-1-yong.wu@mediatek.com/T/#t 
 
-It does to me, but can you update the changelog, please?
+I've queued this up apart from patches 6 and 7.
+
+Thanks,
+
+Will
 
 _______________________________________________
 Linux-mediatek mailing list
