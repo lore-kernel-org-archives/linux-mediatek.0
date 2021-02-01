@@ -2,88 +2,86 @@ Return-Path: <SRS0=VX5C=HD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2FCDC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 11:45:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90B68C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 12:14:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 598EB64E8F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 11:45:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 598EB64E8F
+	by mail.kernel.org (Postfix) with ESMTPS id 3166464E8F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Feb 2021 12:14:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3166464E8F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dUOtyDfsWxmYkLBPBcsz/Yzq9CRM+aXJD1b3q33vaOQ=; b=tvGipCZyGz1pv5J5CipOTNFIJ
-	eXZ5BxFMJce6HJIJ0SkNjZgzU+xyoXPcnSVvJiF+9pznHc5LfSLBekSeBXOhMEtnHZGvh7Uyyf/4G
-	aFs+Y3QdD8Ci8nWRD3/x+eX6iXf3uRILYMgoqz0AIbG6DhNERASoW+vuEEcAES4RcmqZNUNFyym3E
-	FxA+J3/aP28DLqeqtqLtlMv87BOI7gbGRwy1ftsisG+R4+AF5XEFRtXjXJtd/T85tCYIWC0lvUYBc
-	z0rUkeMqRPqDvtYVxNG+nYOQu0WXrnVo5Wyk4bKw8vZe6KZ7hdxAkt+CxAIE6+5wl7hM7oq31JdWW
-	8Lxs78Stg==;
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zk07XB5i04MrSZKQPY9OVPYDdD1gfjs6sXElR2ccTIs=; b=nyCQ3HOW1zX06bc/XLBvzkmGnl
+	hNDaNCM18A3ZxOvtoNl3pNn/9rrRplYy9D/pOUeC/VD759Nk6uPlM/lCKEWbmnmEKRY/0sOfCZ4nc
+	8INl0vdedOCMLNqT7j8GJ6/ooNQBHP6iY5ur5AhoziqZtj5LDQlCbvFtDWQmFq8qSlGmce5jwwnY5
+	z42NKwXctw2cZzaLefgJu+1NsjaXd1SqwyNxKiQR/nnmxg4GNl/6SqKi+IIAt3nkPk9cCNM9WqiC1
+	qQ+tOyrZIe30+4S4BwmfSKKhBgB6E5pTdhM2sFFPEuuFhrkMT/ghAvzMtPa8gMazN0vYQDXGnESW2
+	rRJ5QwDw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6Xe1-0002CY-VM; Mon, 01 Feb 2021 11:45:26 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1l6Y61-00012p-SX; Mon, 01 Feb 2021 12:14:21 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6Xe0-0002Bm-6w; Mon, 01 Feb 2021 11:45:25 +0000
-Received: by mail-wm1-x333.google.com with SMTP id u14so12358603wml.4;
- Mon, 01 Feb 2021 03:45:22 -0800 (PST)
+ id 1l6Y5z-00011f-1A; Mon, 01 Feb 2021 12:14:19 +0000
+Received: by mail-wr1-x436.google.com with SMTP id c12so16322822wrc.7;
+ Mon, 01 Feb 2021 04:14:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LTeob63vsmUobXodqAiG8SpUrpS7C8Uwp52f74LCJJg=;
- b=jUu/9QXaLfBlcx+CWhhnlNjanILpEbvu51VrRb8r/IgseXxg8nfWo26Yk4VZzUQSG+
- zNzBW5aT9qBfENRRyTBCHjCbpQv2xoD9emBMD6Z6LB32epHyhZd3v08a1ahO2fIc7Z5I
- cw2yW52UbhU+GzghNd4kGEl8xqbbwWZ8HCyADMlKFz0w+oETTs3gRllw6NQkCBqmnkKg
- 2zXyu/gMoAONlCFSdI55iIZGfFlkpEZbVxejaJ/QaUb2EcZ1BkyKcdzOku9k22KYBFmm
- SprXDDg2yD+5d6tYTevrAoeROYTyKKmFueSJy6HsZ9O0meDge5nDOqOFgSqwmJnC7qHD
- eciQ==
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XZqqSEikuKoZ7t9f3u+RFTxn353pYpN9LldSfi3Rr3M=;
+ b=Yw/EY5THxQYott8yUhDX9m0QAA4mX1UaLLa8cq8HCrgwIHknjmi0839RWs5hojWvfA
+ ZiKXGollAHVxbrsrQDo922lKgEjEfOgNx5EnN6VW+j+jClNQfLxrsm9zIpNUlYobVJQR
+ GwKhkRZpId3tVXDQJnWb3AYYU3ZMqGglq2K0fK4m1pusRffzFLte4SX/poLoTbV5xkDG
+ jbTRX6pEpqBo0IpCGR9JoHS0kZ3hwRZNT7BoQODWUTwfbMoG6UKYOdYVji/DMXC0Hx9P
+ gVAx/DWULDNdvshc/2FxWMtuEBUCCnJZbXb8G51Ye+/wC4+KPHXGJwKn+4E6iUfZKWb+
+ SHFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=LTeob63vsmUobXodqAiG8SpUrpS7C8Uwp52f74LCJJg=;
- b=NR/IZARt1atoWGJdZk0AeRtESu4c6sunnMEbV4V0UHfN2I6u6sXPwYx2KMvsbvNWiN
- grbWh4B8jN5cknUA41up9mld0FyRf7xrehHrZ1sT2D67MPkzsyUni9c+RFUPE0bWa3dH
- wicW4gdD6hEvOkk3DuWmgm9oAMlbRHFlA7dw/OG9P1ag0wEWhVf99kuelZl7OYN7q5va
- 4ZwCr2gNDxvDnKLmS0TvbFTF6bySGP3nPe1kBzj9AIgsbz3z3qSG8bm3ElUPagKC35gu
- 7mMkpUCguKh5PmnofVKyHE+kLBTEYLd0iW8mYYlCuiDoM6aTIFQ84XfX2lABeTGsWOeU
- CG8A==
-X-Gm-Message-State: AOAM532l8abxW7ORWuZqilBXyDKy3QKgQ6WhUDJZG/mkHaeKzYKHwRWH
- nt8RaBK85m5ut7+946X8ii0=
-X-Google-Smtp-Source: ABdhPJw6h2jWNnS4CMbNkwoBh5AfdOqqkEXCADAuVE+E1t5Yd3scYb5jIl9WCOkFDGBgnEYEW6K80w==
-X-Received: by 2002:a1c:c904:: with SMTP id f4mr14939397wmb.14.1612179921358; 
- Mon, 01 Feb 2021 03:45:21 -0800 (PST)
-Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id b18sm26360198wrm.57.2021.02.01.03.45.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Feb 2021 03:45:20 -0800 (PST)
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: evb: Add domain supply for
- mfg
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20210201093049.87285-1-hsinyi@chromium.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <7c76c776-5bd5-d35f-1003-8b1741555ac4@gmail.com>
-Date: Mon, 1 Feb 2021 12:45:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+ bh=XZqqSEikuKoZ7t9f3u+RFTxn353pYpN9LldSfi3Rr3M=;
+ b=sSwHiTDl7G3VVCfo2zrUtHrSdVJ+6n/PD8IjETztADdQe8hDU1Fp+j/yde40UyLqxl
+ ysaMlCtUHmVeVUAJ/erbBy/k/0W67XwdDupded3yjt7hw16jitjPVOu2CmXAGILl+luf
+ OtOC9TX5oCr3UCu1/Fk7ruaODa8ZuiWOAFJTDRiWphHxUUE4+xYVsWBS5fyyaM7BwDTk
+ lYP9kyMT2JxS5QN90pmiEa+CyFYKz6YTDDfMX+ZlbemJ4BUgHbKhp7UMlGtzrmdK2fWR
+ /chRI1b4ibR0xkdmkUoTbHuZ6aD9Yw/L6CJq5EoLP2bE75lqyHOInBlHAXXSVG2wbDYe
+ YuKA==
+X-Gm-Message-State: AOAM533pxRjlBvoAG4IiBfrAInbvV02TzvzV/Qpm41dIvQzZ5mmerqea
+ ZaTPMztr/smi3Ap2neZ7wm+8kEJFddNZP8UU
+X-Google-Smtp-Source: ABdhPJzCm8JqwFovXlYiyJrS9Y8DqOHhf8sUnkwsefp/4vulBLEBvyjuiQd8jg7dMnspNvPLQVMm0g==
+X-Received: by 2002:adf:8464:: with SMTP id 91mr17345253wrf.188.1612181657697; 
+ Mon, 01 Feb 2021 04:14:17 -0800 (PST)
+Received: from localhost.localdomain
+ (cpc141888-watf13-2-0-cust663.15-2.cable.virginm.net. [86.14.42.152])
+ by smtp.googlemail.com with ESMTPSA id j13sm20698332wmi.24.2021.02.01.04.14.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Feb 2021 04:14:17 -0800 (PST)
+From: Bilal Wasim <bilalwasim676@gmail.com>
+X-Google-Original-From: Bilal Wasim <Bilal.Wasim@imgtec.com>
+To: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
+ enric.balletbo@collabora.com, hsinyi@chromium.org, weiyi.lu@mediatek.com
+Subject: [PATCH v2 0/3] Misc bug fixes in mtk power domain driver
+Date: Mon,  1 Feb 2021 17:14:13 +0500
+Message-Id: <20210201121416.1488439-1-Bilal.Wasim@imgtec.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210201093049.87285-1-hsinyi@chromium.org>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_064524_293811_95D3F4C7 
-X-CRM114-Status: GOOD (  15.82  )
+X-CRM114-CacheID: sfid-20210201_071419_136117_01496862 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,44 +93,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Incorrect mask for the "bus_prot_clr" field meant that imgtec
+gpu power domain (mfg_async) was not powered up correctly, causing
+failure in driver booting. Fixing this and also adding "domain_suuply"
+capability to "mfg_async" power domain (for mt8173) as imgtec gpu
+needs da9211 regulator to be enabled before enabling this subdomain.
 
+Tested with mt8173 elm chromebook.
 
-On 01/02/2021 10:30, Hsin-Yi Wang wrote:
-> Add domain supply node for mt8183-evb
-> 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Bilal Wasim (3):
+  soc: mediatek: pm-domains: Use correct mask for bus_prot_clr
+  soc: mediatek: pm-domains: Add domain_supply cap for mfg_async PD
+  arm64: dts: mediatek: mt8173: Add domain supply for mfg_async
 
-Queued in v5.12-tmp/dts64
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 4 ++++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts  | 4 ++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi     | 2 +-
+ drivers/soc/mediatek/mt8173-pm-domains.h     | 1 +
+ drivers/soc/mediatek/mtk-pm-domains.h        | 2 +-
+ 5 files changed, 11 insertions(+), 2 deletions(-)
 
-Thanks
+-- 
+2.25.1
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> index 3249c959f76fc..edff1e03e6fee 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> @@ -352,6 +352,10 @@ pins_pwm {
->  	};
->  };
->  
-> +&mfg {
-> +	domain-supply = <&mt6358_vgpu_reg>;
-> +};
-> +
->  &spi0 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&spi_pins_0>;
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
