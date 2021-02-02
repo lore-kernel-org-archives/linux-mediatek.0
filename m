@@ -2,58 +2,64 @@ Return-Path: <SRS0=G+wW=HE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B541DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 16:23:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C381C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 17:10:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4439A64F72
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 16:23:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4439A64F72
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1D6FC64E40
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 17:10:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D6FC64E40
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
-	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qIoUYlWYiFRNjDNO2vC7/ReDdy2SX/YvSf/kNaZv38I=; b=T7HQ5rmgIlui4mfpHQRPGSXhH
-	AOajPHRxj2zc40FTz6+WpuEgnqa8HVIYCyfbbUBS3qFCMdfVSjKWqKNrzy2bkzf5jjnFp9Rh13WZk
-	MvizVCvPn7DHpo0i/B+x/YjYIyd/DrSC3RGBMkUb8WHn5DEgsGMS20rdTRDWQopN3F+mpSrFBAWpw
-	CGq3tWdJIuWOZMvHpiZArAm1kMZ4p+7rd/Text9ue8J4FoUV+VRC0rA0BbZrZ2ZGxF1hdjlmPSQ6F
-	6Oe2jI7kM7l8V18UGkFQ8b9Nr6Y6Gnd08WXAlXRrI3Crm1MerLJ6b3u8rd4yppziWaBph42lL065K
-	A/sd0BJoQ==;
+	 bh=2MBkQXrtKcRqV+nM5MoDqtrNCu4nnM1skGAC+ku90bA=; b=hn5AQVerAlxnKhyxsmflLdVvY
+	0cfyfQ46yWNIZa8TV08GGFR8ByPBDqDlzrE4m2RnKy/IEsyslCE9hMikltzz+5mJhh9PNGkg6y1Ay
+	m1KWBxXqZ6I6eb16cyuzTzE31LRm53D1s2E3jxo20lRLapA5FBkU5HSiXYVbxZ4jwigIs01ZR7jMO
+	NV6Lu92q3xxiqOvLHxgaF8C+A29QZeWLD41tICyAm0w9rLNWM8F9weU18HiIIJeu71adpJFN/5boD
+	V5WO9NuXwS6EQCyHj05goxZ7yX9rf9c3fLCXx/VtRHxi0zyWTlaFBoa5AjmQN1uWZNpu4mTI0aw35
+	HHwPH9FTQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6ySG-0004Mm-9L; Tue, 02 Feb 2021 16:23:04 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6ySD-0004Lm-UI
- for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 16:23:02 +0000
-Received: from marcel-macbook.holtmann.net (p4fefcdd8.dip0.t-ipconnect.de
- [79.239.205.216])
- by mail.holtmann.org (Postfix) with ESMTPSA id 3631DCECDE;
- Tue,  2 Feb 2021 17:30:19 +0100 (CET)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.40.0.2.32\))
-Subject: Re: [PATCH v4 0/2] Bluetooth: btusb: Add protocol for MediaTek
- bluetooth devices
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <20210202102618.27640-1-mark-yw.chen@mediatek.com>
-Date: Tue, 2 Feb 2021 17:22:52 +0100
-Message-Id: <F933AA60-A9AA-48FC-8F59-4338891C50B6@holtmann.org>
-References: <20210202102618.27640-1-mark-yw.chen@mediatek.com>
-To: Mark-YW.Chen@mediatek.com
-X-Mailer: Apple Mail (2.3654.40.0.2.32)
+	id 1l6zCQ-0003DP-Dp; Tue, 02 Feb 2021 17:10:46 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l6zCG-00038c-2K; Tue, 02 Feb 2021 17:10:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 61F1864F90;
+ Tue,  2 Feb 2021 17:10:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612285835;
+ bh=lB/MY/hwqaGFkU+ADnUf+L9HD2CW5JsTy/vaikCTH7E=;
+ h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=kSdJZOokFLSjHNkGgMVfmTdaziDOY7jQIqaQkDOM+cqthvhjZOXyUgltj+o8Rivtn
+ HXT3rvU+1Ca3lWlj/KrdWzXtgfmj2akLpeHMmTtTm6wehsQjJTyHmtRXlavdK3OBIB
+ XY55fTf4ezJzrjHwCcTdiv3tiytKEDYm/l4HnfuP5EJ5F1S8AfBxL3y8e9W/cyUux4
+ SbiTIt2nf3kgMk73d4XgipN3KJE5JEr//atYVw7Y0M6XrBfUyAVldQ16hCs7vy8nn0
+ LBR5Ak9EH9f+z+gZKYZxBDgl3VsjTWpu82fev7xFslCiDcv/wBmBmREAhepELatLz0
+ Lz7NriaQWctSg==
+From: Arnd Bergmann <arnd@kernel.org>
+List-Id: <soc.lore.kernel.org>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [GIT PULL] arm64: dts: mediatek: updates for v5.12
+Date: Tue,  2 Feb 2021 18:10:12 +0100
+Message-Id: <161228552305.1852435.3470546880273148615.b4-ty@arndb.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <565be0cc-460a-7d0b-47da-09bf0401e8fe@gmail.com>
+References: <565be0cc-460a-7d0b-47da-09bf0401e8fe@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210202_112302_145722_7B3B7BD6 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210202_121036_231487_1EBA94D8 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,35 +71,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Johan Hedberg <johan.hedberg@gmail.com>, Eric.liang@mediatek.com,
- Sean.Wang@mediatek.com, LKML <linux-kernel@vger.kernel.org>,
- Bluetooth Kernel Mailing List <linux-bluetooth@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, robin.chiu@mediatek.com
+Cc: James Liao <jamesjj.liao@mediatek.com>, Argus Lin <argus.lin@mediatek.com>,
+ Arnd Bergmann <arnd@arndb.de>, Frank Wunderlich <frank-w@public-files.de>,
+ Bayi Cheng <bayi.cheng@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Neal Liu <neal.liu@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+From: Arnd Bergmann <arnd@arndb.de>
 
-> v4:
-> 1. add read chip info. from MediaTek bluetooth devices.
-> 2. support download firmware for MT7921U.
+On Mon, 1 Feb 2021 11:12:26 +0100, Matthias Brugger wrote:
+> Please find below the updates for the MediaTek dts64.
+> Lots of work is done in the MT8183 SoC which can be found in some newer
+> Chromebooks, especially around grafics support. Not so much is happening on the
+> shiny new MT8192, as we still lack some core drivers, which provide a lots of
+> dependencies.
 > 
-> mark-yw.chen (2):
->  Bluetooth: btusb: Fine-tune mt7663 mechanism.
->  Bluetooth: btusb: Add protocol support for MediaTek MT7921U USB
->    devices
+> Apart from that we support two new devices for the MT6779 from the mobile chip
+> line. One is a SoC specific device called DEVAPC. It provides a kind of bus
+> firewall which will pass information on potentially malicious bus accesses from
+> TF-A to the SoC. It had been a long journey for the driver and I'm happy that it
+> is now supported by the device.
 > 
-> drivers/bluetooth/btusb.c | 211 +++++++++++++++++++++++++++++++++++++-
-> 1 file changed, 206 insertions(+), 5 deletions(-)
+> [...]
 
-both patches have been applied to bluetooth-next tree.
+Merged into arm/dt, thanks!
 
-Regards
+merge commit: 542b9f11e5643d165d43e45675993e040cf32e5f
 
-Marcel
-
+       Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
