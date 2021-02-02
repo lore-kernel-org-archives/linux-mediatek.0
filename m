@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92ED1C4332B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 08:13:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4ACA3C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 08:13:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5260E64EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 08:13:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5260E64EE9
+	by mail.kernel.org (Postfix) with ESMTPS id E1E2364EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 08:13:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1E2364EE9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ogmZ/1eB+SYFS5Hp3Ln3TuN2/xHnhEwADY+1yEPxDIs=; b=ge2EUGC+RtZPdN9QMc2y336Si
-	xJdz9Sgw2b4IboaifkPyInzL/8h69n5Z7lUZNM3AGpFwQeWerc1Loxcarfz53d1Bq7dMp6MumquKE
-	b6kyC/QAkZsjLQj/yCbsMRRN6jHKtSXv+nWbV010rsFtKjgD8AP7D82z1vcI2RtLaGF2FEsXDKbji
-	2exnYnwxgy+fflHilU2vxqtNANb0gYSGP6ULf7mTpCm5TZIrprqdmdkXL9KlbVmzgGL+4CZM6lY2M
-	lgCD84HD9s4Kkv6MOtUQa6rfRmAq0jr+jEpuAv89Eg7S2CF8wyMsTO2eLervx2wcNXVIrWAz6wtyP
-	D+0WFGWpA==;
+	 bh=5io0lS6tyMeSx2RNsHLD+K07xewg66SL5T7YfxwjuRY=; b=sRWPGHFnQ3iYWEELJrW1pZXyr
+	36R3Joekba59eGjl3vq0eH3ma2lzv47N3FKNmswWrxuAbAftOnAQYUb+uZsEZ12X+Ykgn1TyZfxN1
+	v/7AwS9VhKZDcTogoXg8dRDzaOl7vKkTU5pGU0hHQcsAYlanbhkkqME9eLLqxAnTdAhQmjajWJ470
+	sL3aeiMdiPdq3FM1tVB2PKR6TtAPyKZiy+5A1/eaALqEMO9Gut4Bpco/TLau0lXN9ROG8536+IWvO
+	NQ7v2UTth9+nrJbzipPmsSDIHN9JGp+74+3kZ4buemMhO96Fg0g7hydfQ9yEGeMNigSbRID1pU7O3
+	HfXAG1uKw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6qoR-0000e4-5b; Tue, 02 Feb 2021 08:13:27 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1l6qoW-0000i7-5k; Tue, 02 Feb 2021 08:13:32 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6qo5-0000Rv-Gg
- for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 08:13:07 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id d2so1867776pjs.4
- for <linux-mediatek@lists.infradead.org>; Tue, 02 Feb 2021 00:13:04 -0800 (PST)
+ id 1l6qo6-0000M6-4N
+ for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 08:13:12 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id cl8so504831pjb.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 02 Feb 2021 00:12:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TNy35bTG+U0bsBdbmfAF9pdnMZteN4kSNXW/T/HMRVs=;
- b=OLx3jKiIICcF98xvHcClR/2NaaDVDl8fI/gZOHQOgVJdjPWi2LASuHzCOk4l8Dj7nl
- 03a9iddEkk4bljXQMpaSphKKn95czqPr+fvcIDGNTx/01HxPEtAS5Q1GJ5gR/aOqvHM2
- Qn3KWLvxhWwDfWldPT7MEqLoEk1EgDCtsdlu0=
+ bh=rjkiW+XLW06vCU5h8uhk5dbdlk9RBhNk59h0o+CGoEM=;
+ b=ZuWPNbeDw480yQyQP3umt7xA8md0itCAkGSGUvJ62NxVCVnlQitV+rvjlMECy49vOO
+ SLzVlIOrfZkOfJtYS+wXSmAwKhniY1ZIIR85+nXhz0Ln5q3p9FZ03Ck9l9hyAzXDuxqG
+ hDDg7L57lDi4W7c0uxtwPguCnQN7vgIopPvZE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TNy35bTG+U0bsBdbmfAF9pdnMZteN4kSNXW/T/HMRVs=;
- b=kuWErvQDQTHK+sStoEjNnZZxxJPo/UYQrAUxf6kX/rTq78tWqIBuIqAP+rx7iNEBK/
- 7wJ+6vV+UrZ6LxCwEFZfDTUVL3RSE4Lqp2Bvoy2EaqfCmJ4dzfeDGB5H+inSCV2ttd8P
- 8Cxx8a8vOX661mnU0XOoitYOmiAEShr7Vosz227adIneS3aiPJa4/iPpxep4cuAeUAPj
- afHngrjRGdDZ35417JZGxFmYgLVDDUNzRSsO568/+FAYq7nDaytYVsSsUdcqbiNANzMa
- 3ng9DBIe2kuHPQXRVj9FLQNR+kN6yZnsHEfrkvnZBfRTMgupb+J+OQA+WjJCg5IeU5Gg
- Ikfw==
-X-Gm-Message-State: AOAM533a8DeDZsilpolCDX061ZhRxrLFA9JQj2aTKJdmm959F1QfspBF
- FvJhY02mwXcG2qfeH+gBOGjPIw==
-X-Google-Smtp-Source: ABdhPJz2cRRqOcq8giQW++hgvQXhwY45c78+LuBZtwxBi1HYIMt5ev9bnctru52eW0nkEtCg3o04sg==
-X-Received: by 2002:a17:902:e98d:b029:de:9a3a:1b8d with SMTP id
- f13-20020a170902e98db02900de9a3a1b8dmr21649134plb.3.1612253582867; 
- Tue, 02 Feb 2021 00:13:02 -0800 (PST)
+ bh=rjkiW+XLW06vCU5h8uhk5dbdlk9RBhNk59h0o+CGoEM=;
+ b=nHMeH69XOfH5QGU9YxnvYsTusx5oin/fHF+QP7sy+gN49CRCVwGVoHtgviUYrtaAvH
+ +7+RnXfkBDNZJli7b3EIKiLSpUJqeQPmL4PcqGaHY2wa6476gUhmbCtjxZXzzk/yXWs3
+ gQVkhNunrPimul81PmiMDMsPKAuVPLYRUdigL3nqfGMRSLZnj3uGMB9JhERpJ3UI8tKw
+ jv1J3K8WekJJhhCfEWmmDnxKjK1cAvqUW89rMRnh4W9jzUg+slXxhgFq9EkASBQO3y24
+ gFvirDeXPXco6k3erv4b+wembEUzcQD/FA8VUzhcUypFcKBtTdAWF6RXvNVtaf3o318F
+ znSw==
+X-Gm-Message-State: AOAM532bMcwaWedmEjPaWelzDeFyXnwu/HDh0Y6LBtO+7bewZW4dNylP
+ PqnDecALtK6nwCzqjg5byukwDg==
+X-Google-Smtp-Source: ABdhPJygjx/kvPGFD0rmfbQlJZ27a+UNM8xqhYv8IQ9UVMZD+uMUHoui2zAVP55fDlyjYkkAdzdlIg==
+X-Received: by 2002:a17:902:6b43:b029:df:fb48:aecf with SMTP id
+ g3-20020a1709026b43b02900dffb48aecfmr21050949plt.67.1612253567755; 
+ Tue, 02 Feb 2021 00:12:47 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:743e:7944:50c8:ff72])
- by smtp.gmail.com with ESMTPSA id c8sm21343325pfo.148.2021.02.02.00.13.00
+ by smtp.gmail.com with ESMTPSA id c8sm21343325pfo.148.2021.02.02.00.12.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Feb 2021 00:13:02 -0800 (PST)
+ Tue, 02 Feb 2021 00:12:47 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v6 8/8] drm/mediatek: add support for mediatek SOC MT8192
-Date: Tue,  2 Feb 2021 16:12:37 +0800
-Message-Id: <20210202081237.774442-9-hsinyi@chromium.org>
+Subject: [PATCH v6 2/8] drm/mediatek: add component POSTMASK
+Date: Tue,  2 Feb 2021 16:12:31 +0800
+Message-Id: <20210202081237.774442-3-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.30.0.365.g02bc693789-goog
 In-Reply-To: <20210202081237.774442-1-hsinyi@chromium.org>
 References: <20210202081237.774442-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210202_031305_714130_D2EE7E8D 
-X-CRM114-Status: GOOD (  14.33  )
+X-CRM114-CacheID: sfid-20210202_031306_446737_C529DE6E 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,202 +103,168 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
-add support for mediatek SOC MT8192
+This patch add component POSTMASK.
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c |  6 ++++
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 20 +++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c  |  6 ++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c    | 42 +++++++++++++++++++++++
- 4 files changed, 74 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 102 ++++++++++++++------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
+ 2 files changed, 73 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 141cb36b9c07b..3a53ebc4e1724 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -205,9 +205,15 @@ static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
- 	.matrix_bits = 10,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index b6c4e73031ca6..0a84ae53eb72a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -64,6 +64,12 @@
+ 
+ #define AAL_EN					BIT(0)
+ 
++#define DISP_POSTMASK_EN			0x0000
++#define POSTMASK_EN				BIT(0)
++#define DISP_POSTMASK_CFG			0x0020
++#define POSTMASK_RELAY_MODE			BIT(0)
++#define DISP_POSTMASK_SIZE			0x0030
++
+ #define DISP_DITHERING				BIT(2)
+ #define DITHER_LSB_ERR_SHIFT_R(x)		(((x) & 0x7) << 28)
+ #define DITHER_OVFLW_BIT_R(x)			(((x) & 0x7) << 24)
+@@ -204,6 +210,32 @@ static void mtk_ufoe_start(struct device *dev)
+ 	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
+ }
+ 
++void mtk_postmask_config(struct device *dev, unsigned int w,
++			unsigned int h, unsigned int vrefresh,
++			unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs,
++		      DISP_POSTMASK_SIZE);
++	mtk_ddp_write(cmdq_pkt, POSTMASK_RELAY_MODE, &priv->cmdq_reg,
++		      priv->regs, DISP_POSTMASK_CFG);
++}
++
++void mtk_postmask_start(struct device *dev)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	writel(POSTMASK_EN, priv->regs + DISP_POSTMASK_EN);
++}
++
++void mtk_postmask_stop(struct device *dev)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	writel_relaxed(0x0, priv->regs + DISP_POSTMASK_EN);
++}
++
+ static void mtk_aal_config(struct device *dev, unsigned int w,
+ 			   unsigned int h, unsigned int vrefresh,
+ 			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -413,6 +445,14 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
+ 	.bgclr_in_off = mtk_ovl_bgclr_in_off,
  };
  
-+static const struct mtk_disp_ccorr_data mt8192_ccorr_driver_data = {
-+	.matrix_bits = 11,
++static const struct mtk_ddp_comp_funcs ddp_postmask = {
++	.clk_enable = mtk_ddp_clk_enable,
++	.clk_disable = mtk_ddp_clk_disable,
++	.config = mtk_postmask_config,
++	.start = mtk_postmask_start,
++	.stop = mtk_postmask_stop,
 +};
 +
- static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt8183-disp-ccorr",
- 	  .data = &mt8183_ccorr_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ccorr",
-+	  .data = &mt8192_ccorr_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 961f87f8d4d15..e266baae586c4 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -455,6 +455,22 @@ static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
- 	.fmt_rgb565_is_0 = true,
+ static const struct mtk_ddp_comp_funcs ddp_rdma = {
+ 	.clk_enable = mtk_rdma_clk_enable,
+ 	.clk_disable = mtk_rdma_clk_disable,
+@@ -448,6 +488,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
+ 	[MTK_DISP_BLS] = "bls",
++	[MTK_DISP_POSTMASK] = "postmask",
  };
  
-+static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 4,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+};
-+
-+static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 2,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+};
-+
- static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
- 	  .data = &mt2701_ovl_driver_data},
-@@ -464,6 +480,10 @@ static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	  .data = &mt8183_ovl_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
- 	  .data = &mt8183_ovl_2l_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ovl",
-+	  .data = &mt8192_ovl_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
-+	  .data = &mt8192_ovl_2l_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 728aaadfea8cf..f123fc00a3935 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -355,6 +355,10 @@ static const struct mtk_disp_rdma_data mt8183_rdma_driver_data = {
- 	.fifo_size = 5 * SZ_1K,
+ struct mtk_ddp_comp_match {
+@@ -457,36 +498,37 @@ struct mtk_ddp_comp_match {
  };
  
-+static const struct mtk_disp_rdma_data mt8192_rdma_driver_data = {
-+	.fifo_size = 5 * SZ_1K,
-+};
-+
- static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = &mt2701_rdma_driver_data},
-@@ -362,6 +366,8 @@ static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	  .data = &mt8173_rdma_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-rdma",
- 	  .data = &mt8183_rdma_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-rdma",
-+	  .data = &mt8192_rdma_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b013d56d27773..6df551055630c 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -147,6 +147,25 @@ static const enum mtk_ddp_comp_id mt8183_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_DPI0,
- };
- 
-+static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_OVL_2L0,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_POSTMASK0,
-+	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DSI0,
-+};
-+
-+static const enum mtk_ddp_comp_id mt8192_mtk_ddp_ext[] = {
-+	DDP_COMPONENT_OVL_2L2,
-+	DDP_COMPONENT_RDMA4,
-+	DDP_COMPONENT_DPI0,
-+};
-+
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.main_path = mt2701_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-@@ -186,6 +205,13 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-+	.main_path = mt8192_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
-+	.ext_path = mt8192_mtk_ddp_ext,
-+	.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
-+};
-+
- static int mtk_drm_kms_init(struct drm_device *drm)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
-@@ -404,22 +430,32 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
- 	  .data = (void *)MTK_DISP_OVL_2L },
-+	{ .compatible = "mediatek,mt8192-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
-+	  .data = (void *)MTK_DISP_OVL_2L },
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8183-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8192-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
- 	  .data = (void *)MTK_DISP_WDMA },
- 	{ .compatible = "mediatek,mt8183-disp-ccorr",
- 	  .data = (void *)MTK_DISP_CCORR },
-+	{ .compatible = "mediatek,mt8192-disp-ccorr",
-+	  .data = (void *)MTK_DISP_CCORR },
- 	{ .compatible = "mediatek,mt2701-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-aal",
- 	  .data = (void *)MTK_DISP_AAL},
-+	{ .compatible = "mediatek,mt8192-disp-aal",
-+	  .data = (void *)MTK_DISP_AAL},
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
-@@ -448,12 +484,16 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8183-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8192-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2701-disp-pwm",
- 	  .data = (void *)MTK_DISP_BLS },
- 	{ .compatible = "mediatek,mt8173-disp-pwm",
- 	  .data = (void *)MTK_DISP_PWM },
- 	{ .compatible = "mediatek,mt8173-disp-od",
- 	  .data = (void *)MTK_DISP_OD },
-+	{ .compatible = "mediatek,mt8192-disp-postmask",
-+	  .data = (void *)MTK_DISP_POSTMASK },
- 	{ }
+ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+-	[DDP_COMPONENT_AAL0]	= { MTK_DISP_AAL,	0, &ddp_aal },
+-	[DDP_COMPONENT_AAL1]	= { MTK_DISP_AAL,	1, &ddp_aal },
+-	[DDP_COMPONENT_BLS]	= { MTK_DISP_BLS,	0, NULL },
+-	[DDP_COMPONENT_CCORR]	= { MTK_DISP_CCORR,	0, &ddp_ccorr },
+-	[DDP_COMPONENT_COLOR0]	= { MTK_DISP_COLOR,	0, &ddp_color },
+-	[DDP_COMPONENT_COLOR1]	= { MTK_DISP_COLOR,	1, &ddp_color },
+-	[DDP_COMPONENT_DITHER]	= { MTK_DISP_DITHER,	0, &ddp_dither },
+-	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, &ddp_dpi },
+-	[DDP_COMPONENT_DPI1]	= { MTK_DPI,		1, &ddp_dpi },
+-	[DDP_COMPONENT_DSI0]	= { MTK_DSI,		0, &ddp_dsi },
+-	[DDP_COMPONENT_DSI1]	= { MTK_DSI,		1, &ddp_dsi },
+-	[DDP_COMPONENT_DSI2]	= { MTK_DSI,		2, &ddp_dsi },
+-	[DDP_COMPONENT_DSI3]	= { MTK_DSI,		3, &ddp_dsi },
+-	[DDP_COMPONENT_GAMMA]	= { MTK_DISP_GAMMA,	0, &ddp_gamma },
+-	[DDP_COMPONENT_OD0]	= { MTK_DISP_OD,	0, &ddp_od },
+-	[DDP_COMPONENT_OD1]	= { MTK_DISP_OD,	1, &ddp_od },
+-	[DDP_COMPONENT_OVL0]	= { MTK_DISP_OVL,	0, &ddp_ovl },
+-	[DDP_COMPONENT_OVL1]	= { MTK_DISP_OVL,	1, &ddp_ovl },
+-	[DDP_COMPONENT_OVL_2L0]	= { MTK_DISP_OVL_2L,	0, &ddp_ovl },
+-	[DDP_COMPONENT_OVL_2L1]	= { MTK_DISP_OVL_2L,	1, &ddp_ovl },
+-	[DDP_COMPONENT_OVL_2L2] = { MTK_DISP_OVL_2L,    2, &ddp_ovl },
+-	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
+-	[DDP_COMPONENT_PWM1]	= { MTK_DISP_PWM,	1, NULL },
+-	[DDP_COMPONENT_PWM2]	= { MTK_DISP_PWM,	2, NULL },
+-	[DDP_COMPONENT_RDMA0]	= { MTK_DISP_RDMA,	0, &ddp_rdma },
+-	[DDP_COMPONENT_RDMA1]	= { MTK_DISP_RDMA,	1, &ddp_rdma },
+-	[DDP_COMPONENT_RDMA2]	= { MTK_DISP_RDMA,	2, &ddp_rdma },
+-	[DDP_COMPONENT_UFOE]	= { MTK_DISP_UFOE,	0, &ddp_ufoe },
+-	[DDP_COMPONENT_WDMA0]	= { MTK_DISP_WDMA,	0, NULL },
+-	[DDP_COMPONENT_WDMA1]	= { MTK_DISP_WDMA,	1, NULL },
++	[DDP_COMPONENT_AAL0]		= { MTK_DISP_AAL,	0, &ddp_aal },
++	[DDP_COMPONENT_AAL1]		= { MTK_DISP_AAL,	1, &ddp_aal },
++	[DDP_COMPONENT_BLS]		= { MTK_DISP_BLS,	0, NULL },
++	[DDP_COMPONENT_CCORR]		= { MTK_DISP_CCORR,	0, &ddp_ccorr },
++	[DDP_COMPONENT_COLOR0]		= { MTK_DISP_COLOR,	0, &ddp_color },
++	[DDP_COMPONENT_COLOR1]		= { MTK_DISP_COLOR,	1, &ddp_color },
++	[DDP_COMPONENT_DITHER]		= { MTK_DISP_DITHER,	0, &ddp_dither },
++	[DDP_COMPONENT_DPI0]		= { MTK_DPI,		0, &ddp_dpi },
++	[DDP_COMPONENT_DPI1]		= { MTK_DPI,		1, &ddp_dpi },
++	[DDP_COMPONENT_DSI0]		= { MTK_DSI,		0, &ddp_dsi },
++	[DDP_COMPONENT_DSI1]		= { MTK_DSI,		1, &ddp_dsi },
++	[DDP_COMPONENT_DSI2]		= { MTK_DSI,		2, &ddp_dsi },
++	[DDP_COMPONENT_DSI3]		= { MTK_DSI,		3, &ddp_dsi },
++	[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,	0, &ddp_gamma },
++	[DDP_COMPONENT_OD0]		= { MTK_DISP_OD,	0, &ddp_od },
++	[DDP_COMPONENT_OD1]		= { MTK_DISP_OD,	1, &ddp_od },
++	[DDP_COMPONENT_OVL0]		= { MTK_DISP_OVL,	0, &ddp_ovl },
++	[DDP_COMPONENT_OVL1]		= { MTK_DISP_OVL,	1, &ddp_ovl },
++	[DDP_COMPONENT_OVL_2L0]		= { MTK_DISP_OVL_2L,	0, &ddp_ovl },
++	[DDP_COMPONENT_OVL_2L1]		= { MTK_DISP_OVL_2L,	1, &ddp_ovl },
++	[DDP_COMPONENT_OVL_2L2]		= { MTK_DISP_OVL_2L,    2, &ddp_ovl },
++	[DDP_COMPONENT_POSTMASK0]	= { MTK_DISP_POSTMASK,	0, &ddp_postmask },
++	[DDP_COMPONENT_PWM0]		= { MTK_DISP_PWM,	0, NULL },
++	[DDP_COMPONENT_PWM1]		= { MTK_DISP_PWM,	1, NULL },
++	[DDP_COMPONENT_PWM2]		= { MTK_DISP_PWM,	2, NULL },
++	[DDP_COMPONENT_RDMA0]		= { MTK_DISP_RDMA,	0, &ddp_rdma },
++	[DDP_COMPONENT_RDMA1]		= { MTK_DISP_RDMA,	1, &ddp_rdma },
++	[DDP_COMPONENT_RDMA2]		= { MTK_DISP_RDMA,	2, &ddp_rdma },
++	[DDP_COMPONENT_UFOE]		= { MTK_DISP_UFOE,	0, &ddp_ufoe },
++	[DDP_COMPONENT_WDMA0]		= { MTK_DISP_WDMA,	0, NULL },
++	[DDP_COMPONENT_WDMA1]		= { MTK_DISP_WDMA,	1, NULL },
  };
  
-@@ -468,6 +508,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8173_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8183-mmsys",
- 	  .data = &mt8183_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8192-mmsys",
-+	 .data = &mt8192_mmsys_driver_data},
- 	{ }
- };
- 
+ static bool mtk_drm_find_comp_in_ddp(struct device *dev,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index bb914d976cf5d..cd1dec6b4cdf2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -30,6 +30,7 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_UFOE,
+ 	MTK_DSI,
+ 	MTK_DPI,
++	MTK_DISP_POSTMASK,
+ 	MTK_DISP_PWM,
+ 	MTK_DISP_MUTEX,
+ 	MTK_DISP_OD,
 -- 
 2.30.0.365.g02bc693789-goog
 
