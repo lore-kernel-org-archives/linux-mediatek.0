@@ -2,76 +2,73 @@ Return-Path: <SRS0=G+wW=HE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 67E5BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:31:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E100C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:34:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DEE7A64E46
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:31:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DEE7A64E46
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id EA44E64ECB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:34:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA44E64ECB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=mail.ee
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BP49kEOSMvy1uHKU83hjFHmpNSq/JP3lQjKd/PXt5qU=; b=hGJwXXOKmOy9cDecs0ryweda6
-	KIIi6benHHj+XavlLYkyejBcSwpC2hhF3gE5IFWQ7J4vjF/N5zdW2jvgSc1m2RpMttZw+OujqJ6hG
-	f0Soe3HBx6MC71i6DYaod1H3AcdWv00uPnrXg56X5MIY7tBtqRTmci8H5IMEYPjG162P66cvJdIoa
-	TAGCx+oc52kHkjTN97Zyw8WFCdOQ8bAvRWt3rn+kNIlZPC1FyS44jfP7k/t+92xkZO/hhnEy6uLfn
-	ltAPo8aPS8ETkoAdDRwOWhPoHlhFpSd8HFu7vQc6xxGUz4fbLwqC/YU78F4hhqN3+yqp1iu8vUXBb
-	HW7ButvUQ==;
+	 bh=nvgx1plinfzjS3am8pZE2e34NQbNPIULHWVtDfWytpM=; b=CY+sp9EhNSe1D2UanLVvT5Aiz
+	BMf7hS5BQuLKN7WnVzsZuOlfWdzJYUsnY+yS81B22ohTEQ55qwpr/TZFwUyQyxuryKUrk4GGidgCu
+	FBwqrLzI5jOPTSbRZBdy3hZqBYPuEEA3j592YQASnla5n6bV3r5CC3xmkVGR4Xy4AgXSK3AmFfiOL
+	l407WqQVT8OsEmLPyrqnH/8l3APccgl7eK41LsmVDwtcpvzSd5uw6gzu9WqzLrbDXGFER9ABDI6ZP
+	NRsXsCkPkGXIs0oht9diBc6RceljhPWRyja7suOr31lpITGXUcWZXfotkhM1ffOIq5gNYU+OZiwEI
+	N8o+oBarA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6kX4-00027z-U5; Tue, 02 Feb 2021 01:31:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l6ka1-0002EP-5z; Tue, 02 Feb 2021 01:34:09 +0000
+Received: from eu-shark2.inbox.eu ([195.216.236.82])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6kX1-00027L-5u
- for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 01:31:05 +0000
-X-UUID: 0f5fe3cf4d964484ba0fa957138cdc54-20210201
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=J3x52rLYllyw6VRGlPTtdTLgRiZI9s1w8kgapGIcpuo=; 
- b=b2t9H/HD7MO/64tenkUKzflw/fYrhq6naszlpBRPwLHbySkw4sGKW71GiLwn6YH0hnUi/y4+LhYe+iF2cpfp918y6G1LVvwVUF0Kl7zfEJFocU0KCzgel0gbTIn+7ZBUTkMb/HLiH/UW4gd9jTZl3/zbPMlQSNalDPx6gB94Y+Y=;
-X-UUID: 0f5fe3cf4d964484ba0fa957138cdc54-20210201
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1036612661; Mon, 01 Feb 2021 17:30:59 -0800
-Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 1 Feb 2021 17:30:58 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS32N1.mediatek.inc
- (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 2 Feb 2021 09:30:50 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 2 Feb 2021 09:30:49 +0800
-Message-ID: <1612229449.2524.2.camel@mhfsdcap03>
-Subject: Re: [PATCH] iommu: Properly pass gfp_t in _iommu_map() to avoid
- atomic sleeping
-From: Yong Wu <yong.wu@mediatek.com>
-To: Douglas Anderson <dianders@chromium.org>
-Date: Tue, 2 Feb 2021 09:30:49 +0800
-In-Reply-To: <20210201170611.1.I64a7b62579287d668d7c89e105dcedf45d641063@changeid>
-References: <20210201170611.1.I64a7b62579287d668d7c89e105dcedf45d641063@changeid>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1l6kZw-0002E1-NV
+ for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 01:34:06 +0000
+Received: from eu-shark2.inbox.eu (localhost [127.0.0.1])
+ by eu-shark2-out.inbox.eu (Postfix) with ESMTP id 8CB7C42C85E;
+ Tue,  2 Feb 2021 03:34:01 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mail.ee; s=20150108;
+ t=1612229641; bh=JSdLbx9dJF1SOeriTAvfNbXrmgWVUy1I+Tq81M+VDB4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References;
+ b=EWh8TKCZQaAdQK2Q36dGLJss3mrxmuaqnLucnTi5Ojr1y58XNbVrb+nrOdESXJc+A
+ Y/42X6qhsPG0wtAX1FGCghwbaOTZA+6GjXdRYjBMLkzyh9XaOYf7AFtIkQyoH79G9D
+ GCAIoLDEOnyYaKVS3vsZm/BZk2nujlohss0vwSbg=
+Received: from mail.inbox.eu (eu-pop1 [127.0.0.1])
+ by eu-shark2-in.inbox.eu (Postfix) with ESMTP id 696E93E03E8;
+ Tue,  2 Feb 2021 03:34:01 +0200 (EET)
+Received: from pc (unknown [165.231.161.4])
+ (Authenticated sender: arzamas-16@mail.ee)
+ by mail.inbox.eu (Postfix) with ESMTPA id 6B49D1BE0095;
+ Tue,  2 Feb 2021 03:34:00 +0200 (EET)
+Date: Tue, 2 Feb 2021 04:33:55 +0300
+From: Boris Lysov <arzamas-16@mail.ee>
+To: Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org
+Subject: Re: [PATCH 2/3] watchdog: mtk_wdt: add support for 16-bit control
+ registers
+Message-ID: <20210202043355.18080818@pc>
+In-Reply-To: <050f2f8e-9c3c-10e3-05ef-cd84e949b98f@roeck-us.net>
+References: <20210131234425.9773-1-arzamas-16@mail.ee>
+ <20210131234425.9773-3-arzamas-16@mail.ee>
+ <050f2f8e-9c3c-10e3-05ef-cd84e949b98f@roeck-us.net>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D4D6B793B12B73E0D43EA4A0C2B613719A984C7639A6230D7A507072D26ECEAC2000:8
-X-MTK: N
+X-Virus-Scanned: OK
+X-ESPOL: 6NpmlY9HHDysjlqlQGenZQs2qS9XXu7k5ea80QNdgAiJPFvxYip+XRWr7hJ7DSP4og==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_203103_443154_C0D2EFA0 
-X-CRM114-Status: GOOD (  18.56  )
+X-CRM114-CacheID: sfid-20210201_203404_984042_E50098F9 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,70 +80,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Will Deacon <will@kernel.org>, joro@8bytes.org,
- linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-02-01 at 17:06 -0800, Douglas Anderson wrote:
-> Sleeping while atomic = bad.  Let's fix an obvious typo to try to avoid it.
-> 
-> The warning that was seen (on a downstream kernel with the problematic
-> patch backported):
-> 
->  BUG: sleeping function called from invalid context at mm/page_alloc.c:4726
->  in_atomic(): 1, irqs_disabled(): 0, non_block: 0, pid: 9, name: ksoftirqd/0
->  CPU: 0 PID: 9 Comm: ksoftirqd/0 Not tainted 5.4.93-12508-gc10c93e28e39 #1
->  Call trace:
->   dump_backtrace+0x0/0x154
->   show_stack+0x20/0x2c
->   dump_stack+0xa0/0xfc
->   ___might_sleep+0x11c/0x12c
->   __might_sleep+0x50/0x84
->   __alloc_pages_nodemask+0xf8/0x2bc
->   __arm_lpae_alloc_pages+0x48/0x1b4
->   __arm_lpae_map+0x124/0x274
->   __arm_lpae_map+0x1cc/0x274
->   arm_lpae_map+0x140/0x170
->   arm_smmu_map+0x78/0xbc
->   __iommu_map+0xd4/0x210
->   _iommu_map+0x4c/0x84
->   iommu_map_atomic+0x44/0x58
->   __iommu_dma_map+0x8c/0xc4
->   iommu_dma_map_page+0xac/0xf0
-> 
-> Fixes: d8c1df02ac7f ("iommu: Move iotlb_sync_map out from __iommu_map")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-oh. This is my fault. Thanks for the fix.
-
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-
-> ---
-> I haven't done any serious testing on this.  I saw a report of the
-> warning and the fix seemed obvious so I'm shooting it out.
-> 
->  drivers/iommu/iommu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index 3d099a31ddca..2b06b01850d5 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -2441,7 +2441,7 @@ static int _iommu_map(struct iommu_domain *domain, unsigned long iova,
->  	const struct iommu_ops *ops = domain->ops;
->  	int ret;
->  
-> -	ret = __iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
-> +	ret = __iommu_map(domain, iova, paddr, size, prot, gfp);
->  	if (ret == 0 && ops->iotlb_sync_map)
->  		ops->iotlb_sync_map(domain, iova, size);
->  
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+0JIgU3VuLCAzMSBKYW4gMjAyMSAxNjozMTowOSAtMDgwMApHdWVudGVyIFJvZWNrIDxsaW51eEBy
+b2Vjay11cy5uZXQ+INC/0LjRiNC10YI6Cgo+IFdlIGNhbid0IGRvIHRoaXMuIFdpdGggdGhpcyBm
+bGFnIGVuYWJsZWQsIHRoZSB3YXRjaGRvZyB3b24ndAo+IHN1cHBvcnQgb3RoZXIgU29DcywgYW5k
+IHRoZXJlIGlzIG5vdGhpbmcgdGhhdCBwcmV2ZW50cyB0aGUgZmxhZwo+IGZyb20gYmVpbmcgc2V0
+IGZvciB0aG9zZSBTb0NzLgo+IAo+IFRoaXMgaGFzIHRvIGJlIGhhbmRsZWQgZGlmZmVyZW50bHks
+IHdpdGhvdXQgY29uZmlndXJhdGlvbgo+IGZsYWcuIE1heWJlIHVzZSByZWdtYXAgZm9yIHJlZ2lz
+dGVyIGFkZHJlc3NlcywgW3NuaXBdLAo+IG9yIHVzZSBhY2Nlc3NvciBmdW5jdGlvbnMgaW4gbXRr
+X3dkdF9kZXYuCgpUaGFuayB5b3UgZm9yIHJldmlld2luZyBteSBwYXRjaCEKCkkgd2lsbCBjb25z
+aWRlciBzdWdnZXN0ZWQgZml4ZXMsIGFuZCBJIHdpbGwgY29tZSB1cCB3aXRoIGJldHRlciBzb2x1
+dGlvbgppbiBWMi4gSSdtIGJlZ2lubmVyIGRldmVsb3BlciwgYW5kIGFtIHN0aWxsIGxlYXJuaW5n
+LgoKPiB1c2UgdGhlIGNvbXBhdGlibGUgc3RyaW5nIHRvIGRldGVybWluZSB3aGljaCByZWdtYXAg
+c2V0dGluZ3MgdG8gdXNlCgpJIHRoaW5rIHJlbHlpbmcgb24gaGFyZGNvZGVkICJjb21wYXRpYmxl
+IHN0cmluZyAtIHNldHRpbmdzIiBwYWlycyBpbgpkcml2ZXIgaXMgbm90IGdvb2QuIFdoaWxzdCBt
+b3N0IE1lZGlhdGVrIHdhdGNoZG9ncyBJJ3ZlIHNlZW4gdXNlCnNpbWlsYXIgZHJpdmVycywgbm8g
+b25lIChleGNlcHQgTWVkaWF0ZWsgaXRzZWxmLCBvZiBjb3Vyc2UpIGtub3dzIGZvcgpzdXJlIGhv
+dyBtYW55IGRldmljZXMgdXNlIDE2LWJpdCBtb2RlLCBhbmQgc3BlY2lmeWluZyBlYWNoIG9uZSBp
+biBDCmNvZGUgbWF5IF90aGVvcmV0aWNhbGx5XyBibG9hdCBpdC4gKHdlbGwsIG9uIHRoZSBvdGhl
+ciBoYW5kLCBJJ3ZlIHNlZW4Kb3RoZXIgd2F0Y2hkb2cgZHJpdmVycyB3aXRoIG1hbnkgY29tcGF0
+aWJsZSBkZXZpY2VzIGxpc3RlZCBpbiBDIGNvZGUsCmFuZCB0aGV5IGRpZG4ndCBzZWVtIGJsb2F0
+ZWQgYXQgYWxsKQoKV2hhdCBkbyB5b3UgdGhpbmsgYWJvdXQgaW1wbGVtZW50aW5nIGEgc2ltcGxl
+IGJvb2xlYW4gZmxhZyBpbgpkdC1iaW5kaW5nIGZvciBlbmFibGluZyB0aGUgMTYtYml0IG9wZXJh
+dGlvbiBtb2RlPyBTb21ldGhpbmcgbGlrZQoibWVkaWF0ZWssd2F0Y2hkb2ctMTZiaXRzIiBbMV0g
+LCB3aGljaCB0aGUgZHJpdmVyIHdvdWxkIGNoZWNrIGZvciBpbgp0aGUgYG10a193ZHRfcHJvYmVg
+IGFuZCBzZXQgY29ycmVzcG9uZGluZyByZWdtYXBzLiBBcyByZXN1bHQsIHRoZXJlCndvbid0IGJl
+IGEgbmVlZCBmb3Iga2VybmVsIGNvbmZpZ3VyYXRpb24gZmxhZywgYW5kIG90aGVyIHdhdGNoZG9n
+cwp3b3VsZCBiZSBzdXBwb3J0ZWQuCgpNb3N0IGxpa2VseSB0aGlzIGlkZWEgZG9lc24ndCBzb3Vu
+ZCBnb29kIGFzIEkgcG9ydHJheSBpdCwgYnV0IEkgd291bGQKc3RpbGwgbGlrZSB0byBoZWFyIHlv
+dXIgb3BpbmlvbiBhYm91dCBpdC4gVGhhbmtzLgoKUmVmZXJlbmNlczoKWzFdIE1lZGlhdGVrIFVB
+UlQgQVBETUEgZHJpdmVyIHVzZXMgc2ltaWxhciBmbGFnCmNhbGxlZCBgbWVkaWF0ZWssZG1hLTMz
+Yml0c2AKRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RtYS9tdGstdWFydC1hcGRt
+YS50eHQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
+aWF0ZWsK
