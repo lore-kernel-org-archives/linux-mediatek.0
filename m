@@ -2,91 +2,75 @@ Return-Path: <SRS0=G+wW=HE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-22.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	TVD_PH_BODY_ACCOUNTS_PRE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A35F0C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 04:55:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DFC1C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 05:44:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2928D61494
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 04:55:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2928D61494
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1973F64EDE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 05:44:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1973F64EDE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=o7NMj1gazqQcY9Lzo3xJUSFoKAeTMQw/KvcoTgET+1M=; b=EDVJ4GRxgQRczZdRAE1s2U/SJF
-	wF9P3wDeAjIa63xFCAOGP0KCzuIgVY0ed5q6GLiYPgZzNulBt9NlUJu0Jin0qVr2JxsRnV19VRUdj
-	5QhwVm/SO77Hbp5wxF2UszdQrlWP89jdCznoNuhgCoNhyHjtNdBCsis6mqPXMjA5Cs8mZXEcE1X05
-	wcL6Td/9Nr3tCRzoxsINOAaXOUHdLZk6qquNs109GFHSyJyFplcifBfkVhC4Ys63SjzUBBiuVsuqU
-	v/U/POEVwgOGPpDY1BcghBgjXU+/XeH2tSgurUIoAhd4YPGSV/VnhY6de5ncC8XCYtA0ojAh4K+oK
-	Zj8tZbjg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=HU7/5JIz6HpaK3VEjPMLbVyYIHF9fcOmOb1JjXbPtlc=; b=Gk8o/U5ZoEJCpwWza5zn7iy38
+	T8ZEPxRa/PHOg7pyOoQ9ebLG84J4JZb67mPA/wEbHrqYIvinW7Q2g9+x+UqYJtBO5mk7Aij9QMSWP
+	DelTG9vAX/ONHvcmJTvsGWkfFybW6XaSSEljQ4/cr4JhUM6JGlPo2M+LL+5Lwmvw0/RUM8/Bmnu+7
+	Ufr2GtX67iPeJFbLVCTD1hqP7T+mvvhI3XNANO8uABh0VjJHa4q1Xk41Ci4ImTP5ZZo6TnHNFF0r8
+	R2MQFUaQvszS+3ELIZ4YQauYOKJSqwwRtI9mJGpCEUe6/y1SjLX4QQjZ2osPdFsW+o/kfvPF+PgBa
+	sUX48qu7A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6nis-0004o4-MM; Tue, 02 Feb 2021 04:55:30 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1l6oTk-0006kA-V2; Tue, 02 Feb 2021 05:43:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6nin-0004n0-I9
- for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 04:55:27 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id q72so99018pjq.2
- for <linux-mediatek@lists.infradead.org>; Mon, 01 Feb 2021 20:55:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KnjYJhpsvi+EI6uh+V9emtTk5rRYy/hy1WxcaaGRj88=;
- b=jMCQvOrib39iuufOoGnShhg7/M0QlLhgoR/DzvJuyYtnVlkdshCDsPRDtE/0jgK5k5
- 8aMyNcmbhs8BDR+1UNY05IUJIYrCvtXEVFL/6HNtEQlTwpxRbWt88F1EtwOZ9MxLQfyb
- DTNRKEzt4tnv9/2gVzxaMgFW+eo6yqLUy2gm6ZI8O7r1C+HdaJy0zFMT1s9WTtQtJYU2
- 1P3i1Ab8BqjM566cK4qfFZdO69Xb4RzEMAHOIGIz36rUvN0mBoX/UyA4W5qvitshuPCr
- BmfUrJDFbatH0Zfvc/D/1ftB2GWy9u/W70MmT6r5Owh7rLlxipN4VEyMXLt5CZbl8hj8
- DQxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KnjYJhpsvi+EI6uh+V9emtTk5rRYy/hy1WxcaaGRj88=;
- b=ryg6WfzXKPWz51XWnxKRwlCDtgacifSdFFU1jNDjnX2MV7JfXHTzTQkTxv1xM84/N4
- OEbvZS2PTw/5usN2QsCxKjN94J1rvmCxpK1FOA0WTZrQ/3TI9XhRv3ZMcehq5v4G0wmH
- VijqjahLG3bPQc7HEKBkgK79Z9Y0StWyUDIjWfpanvZ/0D9IH0dM5ULftvobLdakACPn
- WJmRfYa5z3MjMnLONu/Ziu3gqKRMjpl/vOl819Dfq/OEzffgEcll5p6BUtetBxFfKism
- 6HThUnyA8Yi1H7sg0HLMCvGPvBI0v74NgY3ISFhs2IYRw/9CEcREIQiaHNCPifbsLAU2
- gdag==
-X-Gm-Message-State: AOAM533PQVpOwIAHa9eby3uWryZEW+kmWsHgjRjtVNV/sZRKRul0z/Kf
- lJGaGQOglC7yGhFriYlR4u/XVQ==
-X-Google-Smtp-Source: ABdhPJwS93fNsUH31dYgXN8xBzZ5bkht/DGUPiwXokd8KJoRuC/YLfOQ67hcBaOskP59AiVUpErNJg==
-X-Received: by 2002:a17:903:22c2:b029:de:45c0:69f2 with SMTP id
- y2-20020a17090322c2b02900de45c069f2mr20804008plg.26.1612241719095; 
- Mon, 01 Feb 2021 20:55:19 -0800 (PST)
-Received: from localhost ([122.172.59.240])
- by smtp.gmail.com with ESMTPSA id i3sm20044312pfq.194.2021.02.01.20.55.17
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 01 Feb 2021 20:55:18 -0800 (PST)
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Rafael Wysocki <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>,
- Keguang Zhang <keguang.zhang@gmail.com>, Kevin Hilman <khilman@kernel.org>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH V2] cpufreq: Remove CPUFREQ_STICKY flag
-Date: Tue,  2 Feb 2021 10:25:11 +0530
-Message-Id: <a59bb322b22c247d570b70a8e94067804287623b.1612241683.git.viresh.kumar@linaro.org>
-X-Mailer: git-send-email 2.25.0.rc1.19.g042ed3e048af
+ id 1l6oTh-0006ip-SN; Tue, 02 Feb 2021 05:43:55 +0000
+X-UUID: 2d73814a8442447f8c79449b16bd9255-20210201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=cJfW6YZrdRXzbOKONI8Uvf4KAxexd/34rJKPGoc/EmI=; 
+ b=EXwTacFGp08cLupHvRljPyOrYkDT3h94L/pf+aRc9/iAWCptYheIR8VTWhangTAxGfQ1Lz7v/LXCnP5sXPPRNKkAcW/5gfcGj/yVPawQu1cAQXAcuwuaiyiWB9lFbLwuvcfQL7EZ1CXX5fPCf6sy115I4CW00t2LScel3vuZmUo=;
+X-UUID: 2d73814a8442447f8c79449b16bd9255-20210201
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1541001647; Mon, 01 Feb 2021 21:43:46 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 1 Feb 2021 21:43:27 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Feb 2021 13:43:17 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 2 Feb 2021 13:43:17 +0800
+Message-ID: <1612244597.5495.1.camel@mtksdaap41>
+Subject: Re: [PATCH v5 2/8] drm/mediatek: add component POSTMASK
+From: CK Hu <ck.hu@mediatek.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Tue, 2 Feb 2021 13:43:17 +0800
+In-Reply-To: <20210201103727.376721-3-hsinyi@chromium.org>
+References: <20210201103727.376721-1-hsinyi@chromium.org>
+ <20210201103727.376721-3-hsinyi@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 279E678B9FAC54269C18FB7F3383F7F0B137905EBD748A4B2B8826E5987033C92000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_235526_002258_5DD42D4D 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20210202_004354_115913_D4C40DCD 
+X-CRM114-Status: GOOD (  28.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,339 +82,385 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org,
- Vincent Guittot <vincent.guittot@linaro.org>, linux-pm@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During cpufreq driver's registration, if the ->init() callback for all
-the CPUs fail then there is not much point in keeping the driver around
-as it will only account for more of unnecessary noise, for example
-cpufreq core will try to suspend/resume the driver which never got
-registered properly.
+Hi, Hsin-Yi:
 
-The removal of such a driver is avoided if the driver carries the
-CPUFREQ_STICKY flag. This was added way back [1] in 2004 and perhaps no
-one should ever need it now. A lot of drivers do set this flag, probably
-because they just copied it from other drivers.
+It looks like that postmask driver could be placed in mtk_drm_ddp_comp.c
+and this patch would much smaller.
 
-This was added earlier for some platforms [2] because their cpufreq
-drivers were getting registered before the CPUs were registered with
-subsys framework. And hence they used to fail.
+Regards,
+CK
 
-The same isn't true anymore though. The current code flow in the kernel
-is:
-
-start_kernel()
--> kernel_init()
-   -> kernel_init_freeable()
-      -> do_basic_setup()
-         -> driver_init()
-            -> cpu_dev_init()
-               -> subsys_system_register() //For CPUs
-
-         -> do_initcalls()
-            -> cpufreq_register_driver()
-
-Clearly, the CPUs will always get registered with subsys framework
-before any cpufreq driver can get probed. Remove the flag and update the
-relevant drivers.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git/commit/include/linux/cpufreq.h?id=7cc9f0d9a1ab04cedc60d64fd8dcf7df224a3b4d
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git/commit/arch/arm/mach-sa1100/cpu-sa1100.c?id=f59d3bbe35f6268d729f51be82af8325d62f20f5
-
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
-V2: Detailed commit log.
-
- drivers/cpufreq/cpufreq-dt.c           |  2 +-
- drivers/cpufreq/cpufreq.c              |  3 +--
- drivers/cpufreq/davinci-cpufreq.c      |  2 +-
- drivers/cpufreq/loongson1-cpufreq.c    |  2 +-
- drivers/cpufreq/mediatek-cpufreq.c     |  2 +-
- drivers/cpufreq/omap-cpufreq.c         |  2 +-
- drivers/cpufreq/qcom-cpufreq-hw.c      |  2 +-
- drivers/cpufreq/s3c24xx-cpufreq.c      |  2 +-
- drivers/cpufreq/s5pv210-cpufreq.c      |  2 +-
- drivers/cpufreq/sa1100-cpufreq.c       |  2 +-
- drivers/cpufreq/sa1110-cpufreq.c       |  2 +-
- drivers/cpufreq/scmi-cpufreq.c         |  2 +-
- drivers/cpufreq/scpi-cpufreq.c         |  2 +-
- drivers/cpufreq/spear-cpufreq.c        |  2 +-
- drivers/cpufreq/tegra186-cpufreq.c     |  2 +-
- drivers/cpufreq/tegra194-cpufreq.c     |  3 +--
- drivers/cpufreq/vexpress-spc-cpufreq.c |  3 +--
- include/linux/cpufreq.h                | 17 +++++++----------
- 18 files changed, 24 insertions(+), 30 deletions(-)
-
-diff --git a/drivers/cpufreq/cpufreq-dt.c b/drivers/cpufreq/cpufreq-dt.c
-index ad4234518ef6..b1e1bdc63b01 100644
---- a/drivers/cpufreq/cpufreq-dt.c
-+++ b/drivers/cpufreq/cpufreq-dt.c
-@@ -175,7 +175,7 @@ static int cpufreq_exit(struct cpufreq_policy *policy)
- }
- 
- static struct cpufreq_driver dt_cpufreq_driver = {
--	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
-+	.flags = CPUFREQ_NEED_INITIAL_FREQ_CHECK |
- 		 CPUFREQ_IS_COOLING_DEV,
- 	.verify = cpufreq_generic_frequency_table_verify,
- 	.target_index = set_target,
-diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
-index d0a3525ce27f..7d0ae968def7 100644
---- a/drivers/cpufreq/cpufreq.c
-+++ b/drivers/cpufreq/cpufreq.c
-@@ -2810,8 +2810,7 @@ int cpufreq_register_driver(struct cpufreq_driver *driver_data)
- 	if (ret)
- 		goto err_boost_unreg;
- 
--	if (!(cpufreq_driver->flags & CPUFREQ_STICKY) &&
--	    list_empty(&cpufreq_policy_list)) {
-+	if (unlikely(list_empty(&cpufreq_policy_list))) {
- 		/* if all ->init() calls failed, unregister */
- 		ret = -ENODEV;
- 		pr_debug("%s: No CPU initialized for driver %s\n", __func__,
-diff --git a/drivers/cpufreq/davinci-cpufreq.c b/drivers/cpufreq/davinci-cpufreq.c
-index 91f477a6cbc4..9e97f60f8199 100644
---- a/drivers/cpufreq/davinci-cpufreq.c
-+++ b/drivers/cpufreq/davinci-cpufreq.c
-@@ -95,7 +95,7 @@ static int davinci_cpu_init(struct cpufreq_policy *policy)
- }
- 
- static struct cpufreq_driver davinci_driver = {
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.verify		= cpufreq_generic_frequency_table_verify,
- 	.target_index	= davinci_target,
- 	.get		= cpufreq_generic_get,
-diff --git a/drivers/cpufreq/loongson1-cpufreq.c b/drivers/cpufreq/loongson1-cpufreq.c
-index 86f612593e49..fb72d709db56 100644
---- a/drivers/cpufreq/loongson1-cpufreq.c
-+++ b/drivers/cpufreq/loongson1-cpufreq.c
-@@ -116,7 +116,7 @@ static int ls1x_cpufreq_exit(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver ls1x_cpufreq_driver = {
- 	.name		= "cpufreq-ls1x",
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.verify		= cpufreq_generic_frequency_table_verify,
- 	.target_index	= ls1x_cpufreq_target,
- 	.get		= cpufreq_generic_get,
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 022e3e966e71..f2e491b25b07 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -463,7 +463,7 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- }
- 
- static struct cpufreq_driver mtk_cpufreq_driver = {
--	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
-+	.flags = CPUFREQ_NEED_INITIAL_FREQ_CHECK |
- 		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
- 		 CPUFREQ_IS_COOLING_DEV,
- 	.verify = cpufreq_generic_frequency_table_verify,
-diff --git a/drivers/cpufreq/omap-cpufreq.c b/drivers/cpufreq/omap-cpufreq.c
-index 3694bb030df3..e035ee216b0f 100644
---- a/drivers/cpufreq/omap-cpufreq.c
-+++ b/drivers/cpufreq/omap-cpufreq.c
-@@ -144,7 +144,7 @@ static int omap_cpu_exit(struct cpufreq_policy *policy)
- }
- 
- static struct cpufreq_driver omap_driver = {
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.verify		= cpufreq_generic_frequency_table_verify,
- 	.target_index	= omap_target,
- 	.get		= cpufreq_generic_get,
-diff --git a/drivers/cpufreq/qcom-cpufreq-hw.c b/drivers/cpufreq/qcom-cpufreq-hw.c
-index 9ed5341dc515..2a3b4f44488b 100644
---- a/drivers/cpufreq/qcom-cpufreq-hw.c
-+++ b/drivers/cpufreq/qcom-cpufreq-hw.c
-@@ -374,7 +374,7 @@ static struct freq_attr *qcom_cpufreq_hw_attr[] = {
- };
- 
- static struct cpufreq_driver cpufreq_qcom_hw_driver = {
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK |
- 			  CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
- 			  CPUFREQ_IS_COOLING_DEV,
- 	.verify		= cpufreq_generic_frequency_table_verify,
-diff --git a/drivers/cpufreq/s3c24xx-cpufreq.c b/drivers/cpufreq/s3c24xx-cpufreq.c
-index 37efc0dc3f91..7380c32b238e 100644
---- a/drivers/cpufreq/s3c24xx-cpufreq.c
-+++ b/drivers/cpufreq/s3c24xx-cpufreq.c
-@@ -420,7 +420,7 @@ static int s3c_cpufreq_resume(struct cpufreq_policy *policy)
- #endif
- 
- static struct cpufreq_driver s3c24xx_driver = {
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.target		= s3c_cpufreq_target,
- 	.get		= cpufreq_generic_get,
- 	.init		= s3c_cpufreq_init,
-diff --git a/drivers/cpufreq/s5pv210-cpufreq.c b/drivers/cpufreq/s5pv210-cpufreq.c
-index bed496cf8d24..69786e5bbf05 100644
---- a/drivers/cpufreq/s5pv210-cpufreq.c
-+++ b/drivers/cpufreq/s5pv210-cpufreq.c
-@@ -574,7 +574,7 @@ static int s5pv210_cpufreq_reboot_notifier_event(struct notifier_block *this,
- }
- 
- static struct cpufreq_driver s5pv210_driver = {
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.verify		= cpufreq_generic_frequency_table_verify,
- 	.target_index	= s5pv210_target,
- 	.get		= cpufreq_generic_get,
-diff --git a/drivers/cpufreq/sa1100-cpufreq.c b/drivers/cpufreq/sa1100-cpufreq.c
-index 5c075ef6adc0..252b9fc26124 100644
---- a/drivers/cpufreq/sa1100-cpufreq.c
-+++ b/drivers/cpufreq/sa1100-cpufreq.c
-@@ -186,7 +186,7 @@ static int __init sa1100_cpu_init(struct cpufreq_policy *policy)
- }
- 
- static struct cpufreq_driver sa1100_driver __refdata = {
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK |
- 			  CPUFREQ_NO_AUTO_DYNAMIC_SWITCHING,
- 	.verify		= cpufreq_generic_frequency_table_verify,
- 	.target_index	= sa1100_target,
-diff --git a/drivers/cpufreq/sa1110-cpufreq.c b/drivers/cpufreq/sa1110-cpufreq.c
-index d9d04d935b3a..1a83c8678a63 100644
---- a/drivers/cpufreq/sa1110-cpufreq.c
-+++ b/drivers/cpufreq/sa1110-cpufreq.c
-@@ -310,7 +310,7 @@ static int __init sa1110_cpu_init(struct cpufreq_policy *policy)
- /* sa1110_driver needs __refdata because it must remain after init registers
-  * it with cpufreq_register_driver() */
- static struct cpufreq_driver sa1110_driver __refdata = {
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK |
- 			  CPUFREQ_NO_AUTO_DYNAMIC_SWITCHING,
- 	.verify		= cpufreq_generic_frequency_table_verify,
- 	.target_index	= sa1110_target,
-diff --git a/drivers/cpufreq/scmi-cpufreq.c b/drivers/cpufreq/scmi-cpufreq.c
-index 491a0a24fb1e..5bd03b59887f 100644
---- a/drivers/cpufreq/scmi-cpufreq.c
-+++ b/drivers/cpufreq/scmi-cpufreq.c
-@@ -217,7 +217,7 @@ static int scmi_cpufreq_exit(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver scmi_cpufreq_driver = {
- 	.name	= "scmi",
--	.flags	= CPUFREQ_STICKY | CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-+	.flags	= CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
- 		  CPUFREQ_NEED_INITIAL_FREQ_CHECK |
- 		  CPUFREQ_IS_COOLING_DEV,
- 	.verify	= cpufreq_generic_frequency_table_verify,
-diff --git a/drivers/cpufreq/scpi-cpufreq.c b/drivers/cpufreq/scpi-cpufreq.c
-index e5140ad63db8..d6a698a1b5d1 100644
---- a/drivers/cpufreq/scpi-cpufreq.c
-+++ b/drivers/cpufreq/scpi-cpufreq.c
-@@ -191,7 +191,7 @@ static int scpi_cpufreq_exit(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver scpi_cpufreq_driver = {
- 	.name	= "scpi-cpufreq",
--	.flags	= CPUFREQ_STICKY | CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-+	.flags	= CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
- 		  CPUFREQ_NEED_INITIAL_FREQ_CHECK |
- 		  CPUFREQ_IS_COOLING_DEV,
- 	.verify	= cpufreq_generic_frequency_table_verify,
-diff --git a/drivers/cpufreq/spear-cpufreq.c b/drivers/cpufreq/spear-cpufreq.c
-index 73bd8dc47074..7d0d62a06bf3 100644
---- a/drivers/cpufreq/spear-cpufreq.c
-+++ b/drivers/cpufreq/spear-cpufreq.c
-@@ -160,7 +160,7 @@ static int spear_cpufreq_init(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver spear_cpufreq_driver = {
- 	.name		= "cpufreq-spear",
--	.flags		= CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
-+	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.verify		= cpufreq_generic_frequency_table_verify,
- 	.target_index	= spear_cpufreq_target,
- 	.get		= cpufreq_generic_get,
-diff --git a/drivers/cpufreq/tegra186-cpufreq.c b/drivers/cpufreq/tegra186-cpufreq.c
-index e566ea298b59..5d1943e787b0 100644
---- a/drivers/cpufreq/tegra186-cpufreq.c
-+++ b/drivers/cpufreq/tegra186-cpufreq.c
-@@ -117,7 +117,7 @@ static unsigned int tegra186_cpufreq_get(unsigned int cpu)
- 
- static struct cpufreq_driver tegra186_cpufreq_driver = {
- 	.name = "tegra186",
--	.flags = CPUFREQ_STICKY | CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-+	.flags = CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
- 			CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.get = tegra186_cpufreq_get,
- 	.verify = cpufreq_generic_frequency_table_verify,
-diff --git a/drivers/cpufreq/tegra194-cpufreq.c b/drivers/cpufreq/tegra194-cpufreq.c
-index 6a67f36f3b80..a9620e4489ae 100644
---- a/drivers/cpufreq/tegra194-cpufreq.c
-+++ b/drivers/cpufreq/tegra194-cpufreq.c
-@@ -272,8 +272,7 @@ static int tegra194_cpufreq_set_target(struct cpufreq_policy *policy,
- 
- static struct cpufreq_driver tegra194_cpufreq_driver = {
- 	.name = "tegra194",
--	.flags = CPUFREQ_STICKY | CPUFREQ_CONST_LOOPS |
--		CPUFREQ_NEED_INITIAL_FREQ_CHECK,
-+	.flags = CPUFREQ_CONST_LOOPS | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.verify = cpufreq_generic_frequency_table_verify,
- 	.target_index = tegra194_cpufreq_set_target,
- 	.get = tegra194_get_speed,
-diff --git a/drivers/cpufreq/vexpress-spc-cpufreq.c b/drivers/cpufreq/vexpress-spc-cpufreq.c
-index f711d8eaea6a..51dfa9ae6cf5 100644
---- a/drivers/cpufreq/vexpress-spc-cpufreq.c
-+++ b/drivers/cpufreq/vexpress-spc-cpufreq.c
-@@ -486,8 +486,7 @@ static void ve_spc_cpufreq_ready(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver ve_spc_cpufreq_driver = {
- 	.name			= "vexpress-spc",
--	.flags			= CPUFREQ_STICKY |
--					CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-+	.flags			= CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
- 					CPUFREQ_NEED_INITIAL_FREQ_CHECK,
- 	.verify			= cpufreq_generic_frequency_table_verify,
- 	.target_index		= ve_spc_cpufreq_set_target,
-diff --git a/include/linux/cpufreq.h b/include/linux/cpufreq.h
-index 9c8b7437b6cd..c8e40e91fe9b 100644
---- a/include/linux/cpufreq.h
-+++ b/include/linux/cpufreq.h
-@@ -387,8 +387,13 @@ struct cpufreq_driver {
- 
- /* flags */
- 
--/* driver isn't removed even if all ->init() calls failed */
--#define CPUFREQ_STICKY				BIT(0)
-+/*
-+ * Set by drivers that need to update internale upper and lower boundaries along
-+ * with the target frequency and so the core and governors should also invoke
-+ * the diver if the target frequency does not change, but the policy min or max
-+ * may have changed.
-+ */
-+#define CPUFREQ_NEED_UPDATE_LIMITS		BIT(0)
- 
- /* loops_per_jiffy or other kernel "constants" aren't affected by frequency transitions */
- #define CPUFREQ_CONST_LOOPS			BIT(1)
-@@ -432,14 +437,6 @@ struct cpufreq_driver {
-  */
- #define CPUFREQ_IS_COOLING_DEV			BIT(7)
- 
--/*
-- * Set by drivers that need to update internale upper and lower boundaries along
-- * with the target frequency and so the core and governors should also invoke
-- * the diver if the target frequency does not change, but the policy min or max
-- * may have changed.
-- */
--#define CPUFREQ_NEED_UPDATE_LIMITS		BIT(8)
--
- int cpufreq_register_driver(struct cpufreq_driver *driver_data);
- int cpufreq_unregister_driver(struct cpufreq_driver *driver_data);
- 
--- 
-2.25.0.rc1.19.g042ed3e048af
-
+On Mon, 2021-02-01 at 18:37 +0800, Hsin-Yi Wang wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> This patch add component POSTMASK.
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+>  drivers/gpu/drm/mediatek/Makefile            |   1 +
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h      |   8 +
+>  drivers/gpu/drm/mediatek/mtk_disp_postmask.c | 149 +++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c  |  71 +++++----
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h  |   1 +
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c       |   4 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h       |   1 +
+>  7 files changed, 204 insertions(+), 31 deletions(-)
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_postmask.c
+> 
+> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+> index b64674b944860..13a0eafabf9c0 100644
+> --- a/drivers/gpu/drm/mediatek/Makefile
+> +++ b/drivers/gpu/drm/mediatek/Makefile
+> @@ -3,6 +3,7 @@
+>  mediatek-drm-y := mtk_disp_color.o \
+>  		  mtk_disp_gamma.o \
+>  		  mtk_disp_ovl.o \
+> +		  mtk_disp_postmask.o \
+>  		  mtk_disp_rdma.o \
+>  		  mtk_drm_crtc.o \
+>  		  mtk_drm_ddp_comp.o \
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index cdb0383f99061..06d4d4e1c0d05 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -37,6 +37,14 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
+>  void mtk_gamma_start(struct device *dev);
+>  void mtk_gamma_stop(struct device *dev);
+>  
+> +int mtk_postmask_clk_enable(struct device *dev);
+> +void mtk_postmask_clk_disable(struct device *dev);
+> +void mtk_postmask_config(struct device *dev, unsigned int w,
+> +			 unsigned int h, unsigned int vrefresh,
+> +			 unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> +void mtk_postmask_start(struct device *dev);
+> +void mtk_postmask_stop(struct device *dev);
+> +
+>  void mtk_ovl_bgclr_in_on(struct device *dev);
+>  void mtk_ovl_bgclr_in_off(struct device *dev);
+>  void mtk_ovl_bypass_shadow(struct device *dev);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_postmask.c b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
+> new file mode 100644
+> index 0000000000000..5a109fee6b238
+> --- /dev/null
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_postmask.c
+> @@ -0,0 +1,149 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/component.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/soc/mediatek/mtk-cmdq.h>
+> +
+> +#include "mtk_disp_drv.h"
+> +#include "mtk_drm_crtc.h"
+> +#include "mtk_drm_ddp_comp.h"
+> +
+> +#define DISP_POSTMASK_EN			0x0000
+> +#define POSTMASK_EN				BIT(0)
+> +#define DISP_POSTMASK_CFG			0x0020
+> +#define POSTMASK_RELAY_MODE			BIT(0)
+> +#define DISP_POSTMASK_SIZE			0x0030
+> +
+> +/**
+> + * struct mtk_disp_postmask - DISP_postmask driver structure
+> + * @ddp_comp - structure containing type enum and hardware resources
+> + * @crtc - associated crtc to report irq events to
+> + */
+> +struct mtk_disp_postmask {
+> +	struct clk *clk;
+> +	void __iomem *regs;
+> +	struct cmdq_client_reg cmdq_reg;
+> +};
+> +
+> +int mtk_postmask_clk_enable(struct device *dev)
+> +{
+> +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
+> +
+> +	return clk_prepare_enable(postmask->clk);
+> +}
+> +
+> +void mtk_postmask_clk_disable(struct device *dev)
+> +{
+> +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
+> +
+> +	clk_disable_unprepare(postmask->clk);
+> +}
+> +
+> +void mtk_postmask_config(struct device *dev, unsigned int w,
+> +			 unsigned int h, unsigned int vrefresh,
+> +			 unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+> +{
+> +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
+> +
+> +	mtk_ddp_write(cmdq_pkt, w << 16 | h, &postmask->cmdq_reg, postmask->regs,
+> +		      DISP_POSTMASK_SIZE);
+> +	mtk_ddp_write(cmdq_pkt, POSTMASK_RELAY_MODE, &postmask->cmdq_reg,
+> +		      postmask->regs, DISP_POSTMASK_CFG);
+> +}
+> +
+> +void mtk_postmask_start(struct device *dev)
+> +{
+> +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
+> +
+> +	writel(POSTMASK_EN, postmask->regs + DISP_POSTMASK_EN);
+> +}
+> +
+> +void mtk_postmask_stop(struct device *dev)
+> +{
+> +	struct mtk_disp_postmask *postmask = dev_get_drvdata(dev);
+> +
+> +	writel_relaxed(0x0, postmask->regs + DISP_POSTMASK_EN);
+> +}
+> +
+> +static int mtk_disp_postmask_bind(struct device *dev, struct device *master, void *data)
+> +{
+> +	return 0;
+> +}
+> +
+> +static void mtk_disp_postmask_unbind(struct device *dev, struct device *master,
+> +				  void *data)
+> +{
+> +}
+> +
+> +static const struct component_ops mtk_disp_postmask_component_ops = {
+> +	.bind	= mtk_disp_postmask_bind,
+> +	.unbind = mtk_disp_postmask_unbind,
+> +};
+> +
+> +static int mtk_disp_postmask_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_disp_postmask *priv;
+> +	struct resource *res;
+> +	int ret;
+> +
+> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	priv->clk = devm_clk_get(dev, NULL);
+> +	if (IS_ERR(priv->clk)) {
+> +		dev_err(dev, "failed to get postmask clk\n");
+> +		return PTR_ERR(priv->clk);
+> +	}
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	priv->regs = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(priv->regs)) {
+> +		dev_err(dev, "failed to ioremap postmask\n");
+> +		return PTR_ERR(priv->regs);
+> +	}
+> +
+> +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> +	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
+> +	if (ret)
+> +		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
+> +#endif
+> +
+> +	platform_set_drvdata(pdev, priv);
+> +
+> +	ret = component_add(dev, &mtk_disp_postmask_component_ops);
+> +	if (ret)
+> +		dev_err(dev, "Failed to add component: %d\n", ret);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mtk_disp_postmask_remove(struct platform_device *pdev)
+> +{
+> +	component_del(&pdev->dev, &mtk_disp_postmask_component_ops);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mtk_disp_postmask_driver_dt_match[] = {
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_disp_postmask_driver_dt_match);
+> +
+> +struct platform_driver mtk_disp_postmask_driver = {
+> +	.probe		= mtk_disp_postmask_probe,
+> +	.remove		= mtk_disp_postmask_remove,
+> +	.driver		= {
+> +		.name	= "mediatek-disp-postmask",
+> +		.owner	= THIS_MODULE,
+> +		.of_match_table = mtk_disp_postmask_driver_dt_match,
+> +	},
+> +};
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> index b6c4e73031ca6..7a6efc849694b 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -413,6 +413,14 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
+>  	.bgclr_in_off = mtk_ovl_bgclr_in_off,
+>  };
+>  
+> +static const struct mtk_ddp_comp_funcs ddp_postmask = {
+> +	.clk_enable = mtk_postmask_clk_enable,
+> +	.clk_disable = mtk_postmask_clk_disable,
+> +	.config = mtk_postmask_config,
+> +	.start = mtk_postmask_start,
+> +	.stop = mtk_postmask_stop,
+> +};
+> +
+>  static const struct mtk_ddp_comp_funcs ddp_rdma = {
+>  	.clk_enable = mtk_rdma_clk_enable,
+>  	.clk_disable = mtk_rdma_clk_disable,
+> @@ -448,6 +456,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+>  	[MTK_DISP_MUTEX] = "mutex",
+>  	[MTK_DISP_OD] = "od",
+>  	[MTK_DISP_BLS] = "bls",
+> +	[MTK_DISP_POSTMASK] = "postmask",
+>  };
+>  
+>  struct mtk_ddp_comp_match {
+> @@ -457,36 +466,37 @@ struct mtk_ddp_comp_match {
+>  };
+>  
+>  static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+> -	[DDP_COMPONENT_AAL0]	= { MTK_DISP_AAL,	0, &ddp_aal },
+> -	[DDP_COMPONENT_AAL1]	= { MTK_DISP_AAL,	1, &ddp_aal },
+> -	[DDP_COMPONENT_BLS]	= { MTK_DISP_BLS,	0, NULL },
+> -	[DDP_COMPONENT_CCORR]	= { MTK_DISP_CCORR,	0, &ddp_ccorr },
+> -	[DDP_COMPONENT_COLOR0]	= { MTK_DISP_COLOR,	0, &ddp_color },
+> -	[DDP_COMPONENT_COLOR1]	= { MTK_DISP_COLOR,	1, &ddp_color },
+> -	[DDP_COMPONENT_DITHER]	= { MTK_DISP_DITHER,	0, &ddp_dither },
+> -	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, &ddp_dpi },
+> -	[DDP_COMPONENT_DPI1]	= { MTK_DPI,		1, &ddp_dpi },
+> -	[DDP_COMPONENT_DSI0]	= { MTK_DSI,		0, &ddp_dsi },
+> -	[DDP_COMPONENT_DSI1]	= { MTK_DSI,		1, &ddp_dsi },
+> -	[DDP_COMPONENT_DSI2]	= { MTK_DSI,		2, &ddp_dsi },
+> -	[DDP_COMPONENT_DSI3]	= { MTK_DSI,		3, &ddp_dsi },
+> -	[DDP_COMPONENT_GAMMA]	= { MTK_DISP_GAMMA,	0, &ddp_gamma },
+> -	[DDP_COMPONENT_OD0]	= { MTK_DISP_OD,	0, &ddp_od },
+> -	[DDP_COMPONENT_OD1]	= { MTK_DISP_OD,	1, &ddp_od },
+> -	[DDP_COMPONENT_OVL0]	= { MTK_DISP_OVL,	0, &ddp_ovl },
+> -	[DDP_COMPONENT_OVL1]	= { MTK_DISP_OVL,	1, &ddp_ovl },
+> -	[DDP_COMPONENT_OVL_2L0]	= { MTK_DISP_OVL_2L,	0, &ddp_ovl },
+> -	[DDP_COMPONENT_OVL_2L1]	= { MTK_DISP_OVL_2L,	1, &ddp_ovl },
+> -	[DDP_COMPONENT_OVL_2L2] = { MTK_DISP_OVL_2L,    2, &ddp_ovl },
+> -	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
+> -	[DDP_COMPONENT_PWM1]	= { MTK_DISP_PWM,	1, NULL },
+> -	[DDP_COMPONENT_PWM2]	= { MTK_DISP_PWM,	2, NULL },
+> -	[DDP_COMPONENT_RDMA0]	= { MTK_DISP_RDMA,	0, &ddp_rdma },
+> -	[DDP_COMPONENT_RDMA1]	= { MTK_DISP_RDMA,	1, &ddp_rdma },
+> -	[DDP_COMPONENT_RDMA2]	= { MTK_DISP_RDMA,	2, &ddp_rdma },
+> -	[DDP_COMPONENT_UFOE]	= { MTK_DISP_UFOE,	0, &ddp_ufoe },
+> -	[DDP_COMPONENT_WDMA0]	= { MTK_DISP_WDMA,	0, NULL },
+> -	[DDP_COMPONENT_WDMA1]	= { MTK_DISP_WDMA,	1, NULL },
+> +	[DDP_COMPONENT_AAL0]		= { MTK_DISP_AAL,	0, &ddp_aal },
+> +	[DDP_COMPONENT_AAL1]		= { MTK_DISP_AAL,	1, &ddp_aal },
+> +	[DDP_COMPONENT_BLS]		= { MTK_DISP_BLS,	0, NULL },
+> +	[DDP_COMPONENT_CCORR]		= { MTK_DISP_CCORR,	0, &ddp_ccorr },
+> +	[DDP_COMPONENT_COLOR0]		= { MTK_DISP_COLOR,	0, &ddp_color },
+> +	[DDP_COMPONENT_COLOR1]		= { MTK_DISP_COLOR,	1, &ddp_color },
+> +	[DDP_COMPONENT_DITHER]		= { MTK_DISP_DITHER,	0, &ddp_dither },
+> +	[DDP_COMPONENT_DPI0]		= { MTK_DPI,		0, &ddp_dpi },
+> +	[DDP_COMPONENT_DPI1]		= { MTK_DPI,		1, &ddp_dpi },
+> +	[DDP_COMPONENT_DSI0]		= { MTK_DSI,		0, &ddp_dsi },
+> +	[DDP_COMPONENT_DSI1]		= { MTK_DSI,		1, &ddp_dsi },
+> +	[DDP_COMPONENT_DSI2]		= { MTK_DSI,		2, &ddp_dsi },
+> +	[DDP_COMPONENT_DSI3]		= { MTK_DSI,		3, &ddp_dsi },
+> +	[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,	0, &ddp_gamma },
+> +	[DDP_COMPONENT_OD0]		= { MTK_DISP_OD,	0, &ddp_od },
+> +	[DDP_COMPONENT_OD1]		= { MTK_DISP_OD,	1, &ddp_od },
+> +	[DDP_COMPONENT_OVL0]		= { MTK_DISP_OVL,	0, &ddp_ovl },
+> +	[DDP_COMPONENT_OVL1]		= { MTK_DISP_OVL,	1, &ddp_ovl },
+> +	[DDP_COMPONENT_OVL_2L0]		= { MTK_DISP_OVL_2L,	0, &ddp_ovl },
+> +	[DDP_COMPONENT_OVL_2L1]		= { MTK_DISP_OVL_2L,	1, &ddp_ovl },
+> +	[DDP_COMPONENT_OVL_2L2]		= { MTK_DISP_OVL_2L,    2, &ddp_ovl },
+> +	[DDP_COMPONENT_POSTMASK0]	= { MTK_DISP_POSTMASK,	0, &ddp_postmask },
+> +	[DDP_COMPONENT_PWM0]		= { MTK_DISP_PWM,	0, NULL },
+> +	[DDP_COMPONENT_PWM1]		= { MTK_DISP_PWM,	1, NULL },
+> +	[DDP_COMPONENT_PWM2]		= { MTK_DISP_PWM,	2, NULL },
+> +	[DDP_COMPONENT_RDMA0]		= { MTK_DISP_RDMA,	0, &ddp_rdma },
+> +	[DDP_COMPONENT_RDMA1]		= { MTK_DISP_RDMA,	1, &ddp_rdma },
+> +	[DDP_COMPONENT_RDMA2]		= { MTK_DISP_RDMA,	2, &ddp_rdma },
+> +	[DDP_COMPONENT_UFOE]		= { MTK_DISP_UFOE,	0, &ddp_ufoe },
+> +	[DDP_COMPONENT_WDMA0]		= { MTK_DISP_WDMA,	0, NULL },
+> +	[DDP_COMPONENT_WDMA1]		= { MTK_DISP_WDMA,	1, NULL },
+>  };
+>  
+>  static bool mtk_drm_find_comp_in_ddp(struct device *dev,
+> @@ -601,6 +611,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+>  	if (type == MTK_DISP_BLS ||
+>  	    type == MTK_DISP_COLOR ||
+>  	    type == MTK_DISP_GAMMA ||
+> +	    type == MTK_DISP_POSTMASK ||
+>  	    type == MTK_DPI ||
+>  	    type == MTK_DSI ||
+>  	    type == MTK_DISP_OVL ||
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> index bb914d976cf5d..cd1dec6b4cdf2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> @@ -30,6 +30,7 @@ enum mtk_ddp_comp_type {
+>  	MTK_DISP_UFOE,
+>  	MTK_DSI,
+>  	MTK_DPI,
+> +	MTK_DISP_POSTMASK,
+>  	MTK_DISP_PWM,
+>  	MTK_DISP_MUTEX,
+>  	MTK_DISP_OD,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 486e73e675ad5..d99afc8528684 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -531,7 +531,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>  		private->comp_node[comp_id] = of_node_get(node);
+>  
+>  		/*
+> -		 * Currently only the COLOR, GAMMA, OVL, RDMA, DSI, and DPI blocks have
+> +		 * Currently only the COLOR, GAMMA, OVL, POSTMASK, RDMA, DSI, and DPI blocks have
+>  		 * separate component platform drivers and initialize their own
+>  		 * DDP component structure. The others are initialized here.
+>  		 */
+> @@ -539,6 +539,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>  		    comp_type == MTK_DISP_GAMMA ||
+>  		    comp_type == MTK_DISP_OVL ||
+>  		    comp_type == MTK_DISP_OVL_2L ||
+> +		    comp_type == MTK_DISP_POSTMASK ||
+>  		    comp_type == MTK_DISP_RDMA ||
+>  		    comp_type == MTK_DSI ||
+>  		    comp_type == MTK_DPI) {
+> @@ -637,6 +638,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
+>  	&mtk_disp_color_driver,
+>  	&mtk_disp_gamma_driver,
+>  	&mtk_disp_ovl_driver,
+> +	&mtk_disp_postmask_driver,
+>  	&mtk_disp_rdma_driver,
+>  	&mtk_dpi_driver,
+>  	&mtk_drm_platform_driver,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> index 0e54e3d51014a..7e7b28e32aa2f 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> @@ -49,6 +49,7 @@ struct mtk_drm_private {
+>  extern struct platform_driver mtk_disp_color_driver;
+>  extern struct platform_driver mtk_disp_gamma_driver;
+>  extern struct platform_driver mtk_disp_ovl_driver;
+> +extern struct platform_driver mtk_disp_postmask_driver;
+>  extern struct platform_driver mtk_disp_rdma_driver;
+>  extern struct platform_driver mtk_dpi_driver;
+>  extern struct platform_driver mtk_dsi_driver;
 
 _______________________________________________
 Linux-mediatek mailing list
