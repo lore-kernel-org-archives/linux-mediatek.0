@@ -3,80 +3,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60B03C433DB
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DB36BC433E9
 	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 08:13:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F395D64EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 08:13:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F395D64EE9
+	by mail.kernel.org (Postfix) with ESMTPS id 4248764EEE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 08:13:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4248764EEE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9OE7145K25XDq+l9cFdIndKzEp7HaFZfuEDs03Pbm64=; b=sbhcUlDnOp1vJMvfqhzPINvR7v
-	qdMAgBFn8Tek7WJeyC8HF6YAskmLTm/uikWtDkmFgvqt7quoBooWJu1HM7v+fQR88c2X8ReWce2bG
-	+wr5W7tADSAcrkMSsFmtAJ9Hp8RMNCN0XKUzn/ujS6mF+6mJ6VLXaKl4lXcsgrph0vQ8zuESM+KGg
-	fMfWtA7rkAoozZD7eOsQ6gWQlPrAUPa4q/ntgEncMQUy1msFXyWFDXdKqSCLRSsCsGtfrBWWqf0Od
-	2PkiXkDTpTHf4IEkLTLIAMjOZuQkw6WSV9IJ6YExjgTUYi0COujST54wY0k9MMOG9x9sLY/OlQk4c
-	t/nNjz7Q==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ekqGkuPE2SFUAlgZLQRvw1G6hv2e197/2Q4GV95BSpU=; b=ZzSzcyElKIdltGh2fUh6RNMXf
+	1AUOc4m21mOieKDNsMcBh+trUNj3hOCLJpPCF9L7yUUH0nlaH4ryAUpOqECqz1vq1SoD3dDS9eAvo
+	Go7Rsis2ai9NUIM7ueXtXUbqMYjKzvn/kUeWk8fvbKxiokZAOBvXMLFN2sJkDi2mD9o688UsEiObj
+	OENiu6fffAE38Yxe72ipgSrVtqAH7A7i7SGo35sunxsMEoFhpBwnTy6i/4pZsEUYxOS3daulZKbp5
+	TeyYBUCb4YIc2EESK1BKxvbtCFQkdG9ZrW8FJ/Sy6xlCUCktGp64nbwoLeNgS9oYzIzun7zmw/aZj
+	kLGi/fpQA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6qny-0000PS-DH; Tue, 02 Feb 2021 08:12:58 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1l6qnz-0000Pu-SK; Tue, 02 Feb 2021 08:12:59 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6qnq-0000KB-W6
- for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 08:12:54 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id y205so13816322pfc.5
- for <linux-mediatek@lists.infradead.org>; Tue, 02 Feb 2021 00:12:44 -0800 (PST)
+ id 1l6qnu-0000Nb-MB
+ for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 08:12:57 +0000
+Received: by mail-pg1-x534.google.com with SMTP id g15so14393442pgu.9
+ for <linux-mediatek@lists.infradead.org>; Tue, 02 Feb 2021 00:12:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y+cMOXMiJhmN+BhMWGOCZ1mGQnNvZ1HLYwA10LUk+qs=;
- b=BE7+LLk41j5m1eELGRoOKzZpOyZhdKiTFcK4TJIWMv79mn6AOaVvhj5IrKMgLIoNO2
- Yo/GV8+n5rFxI6xgYlyjq1XC3z5pn/8bj3GSO8hFplB6ElygbiKiT5A0Efb6BbLVfHgQ
- XNxFBpDG5Xpv/852PpyOFg8QXk4fymYm7pA0o=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=EyuJhE3m0RvoTs1Y/tclsjWa6rbBwJjTpolrTxu3hUM=;
+ b=Cnh7gWRtw7+GYhf88HZrgusC3y8uLHCw+PxBR+6vztY9YE5mJSgNpP7OQz0BbuLddj
+ Fk3pUNB4o+8GO+Se/IQTq8KyvY435TyBm3+RrcRvk1uCokck82oaYO2CFgziz8RFKrQa
+ M5xAft6bZgYsFajJqQ3jmVsC2kNk+/cYjxSuA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y+cMOXMiJhmN+BhMWGOCZ1mGQnNvZ1HLYwA10LUk+qs=;
- b=TVqVkuamJVIB7cE4T7NupjNGz8DU8EdkcdK/iynBBiI7ONjHzrwFRJGECSgRms72c+
- uSmzXFQ+PfEN+sFug6DHJWDMvzl3Q7aL+7xOP45xnTtZbSgaqBvsC/bSzoHSwrbWYSj9
- OhP5uS7Hkq1JNeGmQCoPIVtUuHP1F7sHn0fyeGMz2NnttTSJRmWSc9FVIUKmcJHHhyvk
- Y8LttDYmCX3d+BsnAIJPcbnfrUbOz2epHpDGzGbGgfL3RnkG6Nz5mOi9VGYvuHoWi9St
- Vjrg2CO25L+Ri/uvTYzZsq9t7G3KohR4IGcjtnDAEqCRyBShAdSQ6xy4jqem4ADxew5f
- su7w==
-X-Gm-Message-State: AOAM533KI7KDxTecwy+qtstb5HvimG33W+kBExUhpD7i+XpPdOxlaNer
- 0bpKAlpOArV6dahc2ZKCd1RCKw==
-X-Google-Smtp-Source: ABdhPJw76yjiccRfuMor3XXLd3rnpk4IlwGPyv9gDv0sKW+2j5Rjt4voUr1UMcCID3auXrXGcyIIpg==
-X-Received: by 2002:a63:c743:: with SMTP id v3mr20558822pgg.316.1612253562732; 
- Tue, 02 Feb 2021 00:12:42 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=EyuJhE3m0RvoTs1Y/tclsjWa6rbBwJjTpolrTxu3hUM=;
+ b=nMVcPwGlE2+1FBkYgEGo2+4pKIQS6NkLlpAnI9XHDGNNVXJMrwG5HzoC8OayZacDyx
+ Dm7vVa1dAvsuLZNre+VDFoM/9dBoT4uunCBdQCGEX7YFXiiIE56fu9JhZ+PoCZnnTW7u
+ 1pWSB6Bgil3cu+tE7MM5jAy3GolgHjUzFD25qVy/ZH1D/k7pZbjzAAuqazkic/MaWD86
+ gANd991LaLN/lmrRTIMiTrDsVMVp9g78IFtcbPZ4dmtkyxo8YlQ4RWhCXNKBLzDF26hU
+ Y26cVezX/gNxcvVu2Y6lZeL1HEt7nSqKJo9kpxPti5IbDnHT09qqGrOgmTlvjOe44lX1
+ EQ/w==
+X-Gm-Message-State: AOAM533tG+x27zZ2sPPW1Kocw0fy+ldIz8RN5nAW4mYRsGfbuf6XSSBs
+ +y6JrcWxhrHJm235LVZGFFebXA==
+X-Google-Smtp-Source: ABdhPJwnmZ0WLYIkAygMNNPt4lcnpO4ioqRdr4DKz2PtcMVfzdS7LSpWWm3yFr6KyMbnmnXLUFWCTA==
+X-Received: by 2002:aa7:98c4:0:b029:1b9:5e73:5ead with SMTP id
+ e4-20020aa798c40000b02901b95e735eadmr20084473pfm.31.1612253572751; 
+ Tue, 02 Feb 2021 00:12:52 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:743e:7944:50c8:ff72])
- by smtp.gmail.com with ESMTPSA id c8sm21343325pfo.148.2021.02.02.00.12.40
+ by smtp.gmail.com with ESMTPSA id c8sm21343325pfo.148.2021.02.02.00.12.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Feb 2021 00:12:42 -0800 (PST)
+ Tue, 02 Feb 2021 00:12:52 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v6 0/8] drm/mediatek: add support for mediatek SOC MT8192
-Date: Tue,  2 Feb 2021 16:12:29 +0800
-Message-Id: <20210202081237.774442-1-hsinyi@chromium.org>
+Subject: [PATCH v6 4/8] drm/mediatek: separate ccorr module
+Date: Tue,  2 Feb 2021 16:12:33 +0800
+Message-Id: <20210202081237.774442-5-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.30.0.365.g02bc693789-goog
+In-Reply-To: <20210202081237.774442-1-hsinyi@chromium.org>
+References: <20210202081237.774442-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210202_031251_081716_DA3BD518 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20210202_031254_922835_B7A95446 
+X-CRM114-Status: GOOD (  29.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,59 +101,445 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series are based on kernel/git/chunkuang.hu/linux.git mediatek-drm-next
-and following patch:
-("soc: mediatek: add mtk mutex support for MT8183")
-https://patchwork.kernel.org/project/linux-mediatek/patch/20210129092209.2584718-8-hsinyi@chromium.org/
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
-This series also depends on component support in mmsys[1]:
-- [v4,06/10] soc: mediatek: mmsys: add component OVL_2L2
-- [v4,07/10] soc: mediatek: mmsys: add component POSTMASK
-- [v4,08/10] soc: mediatek: mmsys: add component RDMA4
+ccorr ctm matrix bits will be different in mt8192
 
-[1] https://patchwork.kernel.org/project/linux-mediatek/patch/1609815993-22744-7-git-send-email-yongqiang.niu@mediatek.com/
-
-Change since v5:
-- move postmask driver into mtk_drm_ddp_comp
-- fix review comments
-
-Change since v4:
-- fix review comments
-
-Change since v3:
-- change several function to rebase to mediatek-drm-next
-- drop pm runtime patches due to it's not related to mt8192 support
-- fix review comments in v3
-
-Changes since v2:
-- fix review comment in v2
-- add pm runtime for gamma and color
-- move ddp path select patch to mmsys series
-- remove some useless patch
-
-Yongqiang Niu (8):
-  drm/mediatek: add component OVL_2L2
-  drm/mediatek: add component POSTMASK
-  drm/mediatek: add component RDMA4
-  drm/mediatek: separate ccorr module
-  drm/mediatek: Fix ccorr size config
-  drm/mediatek: add matrix_bits private data for ccorr
-  soc: mediatek: add mtk mutex support for MT8192
-  drm/mediatek: add support for mediatek SOC MT8192
-
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
  drivers/gpu/drm/mediatek/Makefile           |   3 +-
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c   | 229 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c   | 216 ++++++++++++++++++++
  drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   9 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  20 ++
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 187 ++++++----------
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  50 ++++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  95 +--------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   8 +-
  drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
- drivers/soc/mediatek/mtk-mutex.c            |  35 +++
- 10 files changed, 421 insertions(+), 120 deletions(-)
+ 6 files changed, 236 insertions(+), 96 deletions(-)
  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
 
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index b64674b944860..dc54a7a690054 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -1,6 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ 
+-mediatek-drm-y := mtk_disp_color.o \
++mediatek-drm-y := mtk_disp_ccorr.o \
++		  mtk_disp_color.o \
+ 		  mtk_disp_gamma.o \
+ 		  mtk_disp_ovl.o \
+ 		  mtk_disp_rdma.o \
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+new file mode 100644
+index 0000000000000..6ee2431e6b843
+--- /dev/null
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+@@ -0,0 +1,216 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#include <linux/clk.h>
++#include <linux/component.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/of_irq.h>
++#include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
++
++#include "mtk_disp_drv.h"
++#include "mtk_drm_crtc.h"
++#include "mtk_drm_ddp_comp.h"
++
++#define DISP_CCORR_EN				0x0000
++#define CCORR_EN					BIT(0)
++#define DISP_CCORR_CFG				0x0020
++#define CCORR_RELAY_MODE				BIT(0)
++#define CCORR_ENGINE_EN					BIT(1)
++#define CCORR_GAMMA_OFF					BIT(2)
++#define CCORR_WGAMUT_SRC_CLIP				BIT(3)
++#define DISP_CCORR_SIZE				0x0030
++#define DISP_CCORR_COEF_0			0x0080
++#define DISP_CCORR_COEF_1			0x0084
++#define DISP_CCORR_COEF_2			0x0088
++#define DISP_CCORR_COEF_3			0x008C
++#define DISP_CCORR_COEF_4			0x0090
++
++struct mtk_disp_ccorr_data {
++	u32 reserved;
++};
++
++/**
++ * struct mtk_disp_ccorr - DISP_CCORR driver structure
++ * @ddp_comp - structure containing type enum and hardware resources
++ * @crtc - associated crtc to report irq events to
++ */
++struct mtk_disp_ccorr {
++	struct clk *clk;
++	void __iomem *regs;
++	struct cmdq_client_reg cmdq_reg;
++	const struct mtk_disp_ccorr_data	*data;
++};
++
++int mtk_ccorr_clk_enable(struct device *dev)
++{
++	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
++
++	return clk_prepare_enable(ccorr->clk);
++}
++
++void mtk_ccorr_clk_disable(struct device *dev)
++{
++	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
++
++	clk_disable_unprepare(ccorr->clk);
++}
++
++void mtk_ccorr_config(struct device *dev, unsigned int w,
++			     unsigned int h, unsigned int vrefresh,
++			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
++
++	mtk_ddp_write(cmdq_pkt, h << 16 | w, &ccorr->cmdq_reg, ccorr->regs,
++		      DISP_CCORR_SIZE);
++	mtk_ddp_write(cmdq_pkt, CCORR_ENGINE_EN, &ccorr->cmdq_reg, ccorr->regs,
++		      DISP_CCORR_CFG);
++}
++
++void mtk_ccorr_start(struct device *dev)
++{
++	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
++
++	writel(CCORR_EN, ccorr->regs + DISP_CCORR_EN);
++}
++
++void mtk_ccorr_stop(struct device *dev)
++{
++	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
++
++	writel_relaxed(0x0, ccorr->regs + DISP_CCORR_EN);
++}
++
++/* Converts a DRM S31.32 value to the HW S1.10 format. */
++static u16 mtk_ctm_s31_32_to_s1_10(u64 in)
++{
++	u16 r;
++
++	/* Sign bit. */
++	r = in & BIT_ULL(63) ? BIT(11) : 0;
++
++	if ((in & GENMASK_ULL(62, 33)) > 0) {
++		/* identity value 0x100000000 -> 0x400, */
++		/* if bigger this, set it to max 0x7ff. */
++		r |= GENMASK(10, 0);
++	} else {
++		/* take the 11 most important bits. */
++		r |= (in >> 22) & GENMASK(10, 0);
++	}
++
++	return r;
++}
++
++void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
++{
++	struct mtk_disp_ccorr *ccorr = dev_get_drvdata(dev);
++	struct drm_property_blob *blob = state->ctm;
++	struct drm_color_ctm *ctm;
++	const u64 *input;
++	uint16_t coeffs[9] = { 0 };
++	int i;
++	struct cmdq_pkt *cmdq_pkt = NULL;
++
++	if (!blob)
++		return;
++
++	ctm = (struct drm_color_ctm *)blob->data;
++	input = ctm->matrix;
++
++	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
++		coeffs[i] = mtk_ctm_s31_32_to_s1_10(input[i]);
++
++	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
++		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_0);
++	mtk_ddp_write(cmdq_pkt, coeffs[2] << 16 | coeffs[3],
++		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_1);
++	mtk_ddp_write(cmdq_pkt, coeffs[4] << 16 | coeffs[5],
++		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_2);
++	mtk_ddp_write(cmdq_pkt, coeffs[6] << 16 | coeffs[7],
++		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_3);
++	mtk_ddp_write(cmdq_pkt, coeffs[8] << 16,
++		      &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_4);
++}
++
++static int mtk_disp_ccorr_bind(struct device *dev, struct device *master,
++			       void *data)
++{
++	return 0;
++}
++
++static void mtk_disp_ccorr_unbind(struct device *dev, struct device *master,
++				  void *data)
++{
++}
++
++static const struct component_ops mtk_disp_ccorr_component_ops = {
++	.bind	= mtk_disp_ccorr_bind,
++	.unbind	= mtk_disp_ccorr_unbind,
++};
++
++static int mtk_disp_ccorr_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct mtk_disp_ccorr *priv;
++	struct resource *res;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->clk = devm_clk_get(dev, NULL);
++	if (IS_ERR(priv->clk)) {
++		dev_err(dev, "failed to get ccorr clk\n");
++		return PTR_ERR(priv->clk);
++	}
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	priv->regs = devm_ioremap_resource(dev, res);
++	if (IS_ERR(priv->regs)) {
++		dev_err(dev, "failed to ioremap ccorr\n");
++		return PTR_ERR(priv->regs);
++	}
++
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
++	if (ret)
++		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++#endif
++
++	priv->data = of_device_get_match_data(dev);
++	platform_set_drvdata(pdev, priv);
++
++	ret = component_add(dev, &mtk_disp_ccorr_component_ops);
++	if (ret)
++		dev_err(dev, "Failed to add component: %d\n", ret);
++
++	return ret;
++}
++
++static int mtk_disp_ccorr_remove(struct platform_device *pdev)
++{
++	component_del(&pdev->dev, &mtk_disp_ccorr_component_ops);
++
++	return 0;
++}
++
++static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
++	{ .compatible = "mediatek,mt8183-disp-ccorr"},
++	{},
++};
++MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
++
++struct platform_driver mtk_disp_ccorr_driver = {
++	.probe		= mtk_disp_ccorr_probe,
++	.remove		= mtk_disp_ccorr_remove,
++	.driver		= {
++		.name	= "mediatek-disp-ccorr",
++		.owner	= THIS_MODULE,
++		.of_match_table = mtk_disp_ccorr_driver_dt_match,
++	},
++};
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index cdb0383f99061..cafd9df2d63bb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -9,6 +9,15 @@
+ #include <linux/soc/mediatek/mtk-cmdq.h>
+ #include "mtk_drm_plane.h"
+ 
++void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state);
++int mtk_ccorr_clk_enable(struct device *dev);
++void mtk_ccorr_clk_disable(struct device *dev);
++void mtk_ccorr_config(struct device *dev, unsigned int w,
++		      unsigned int h, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++void mtk_ccorr_start(struct device *dev);
++void mtk_ccorr_stop(struct device *dev);
++
+ void mtk_color_bypass_shadow(struct device *dev);
+ int mtk_color_clk_enable(struct device *dev);
+ void mtk_color_clk_disable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 7f5614a6faab8..445ea805d43f3 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -35,20 +35,6 @@
+ #define DISP_AAL_EN				0x0000
+ #define DISP_AAL_SIZE				0x0030
+ 
+-#define DISP_CCORR_EN				0x0000
+-#define CCORR_EN				BIT(0)
+-#define DISP_CCORR_CFG				0x0020
+-#define CCORR_RELAY_MODE			BIT(0)
+-#define CCORR_ENGINE_EN				BIT(1)
+-#define CCORR_GAMMA_OFF				BIT(2)
+-#define CCORR_WGAMUT_SRC_CLIP			BIT(3)
+-#define DISP_CCORR_SIZE				0x0030
+-#define DISP_CCORR_COEF_0			0x0080
+-#define DISP_CCORR_COEF_1			0x0084
+-#define DISP_CCORR_COEF_2			0x0088
+-#define DISP_CCORR_COEF_3			0x008C
+-#define DISP_CCORR_COEF_4			0x0090
+-
+ #define DISP_DITHER_EN				0x0000
+ #define DITHER_EN				BIT(0)
+ #define DISP_DITHER_CFG				0x0020
+@@ -266,82 +252,6 @@ static void mtk_aal_stop(struct device *dev)
+ 	writel_relaxed(0x0, priv->regs + DISP_AAL_EN);
+ }
+ 
+-static void mtk_ccorr_config(struct device *dev, unsigned int w,
+-			     unsigned int h, unsigned int vrefresh,
+-			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs, DISP_CCORR_SIZE);
+-	mtk_ddp_write(cmdq_pkt, CCORR_ENGINE_EN, &priv->cmdq_reg, priv->regs, DISP_CCORR_CFG);
+-}
+-
+-static void mtk_ccorr_start(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel(CCORR_EN, priv->regs + DISP_CCORR_EN);
+-}
+-
+-static void mtk_ccorr_stop(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel_relaxed(0x0, priv->regs + DISP_CCORR_EN);
+-}
+-
+-/* Converts a DRM S31.32 value to the HW S1.10 format. */
+-static u16 mtk_ctm_s31_32_to_s1_10(u64 in)
+-{
+-	u16 r;
+-
+-	/* Sign bit. */
+-	r = in & BIT_ULL(63) ? BIT(11) : 0;
+-
+-	if ((in & GENMASK_ULL(62, 33)) > 0) {
+-		/* identity value 0x100000000 -> 0x400, */
+-		/* if bigger this, set it to max 0x7ff. */
+-		r |= GENMASK(10, 0);
+-	} else {
+-		/* take the 11 most important bits. */
+-		r |= (in >> 22) & GENMASK(10, 0);
+-	}
+-
+-	return r;
+-}
+-
+-static void mtk_ccorr_ctm_set(struct device *dev,
+-			      struct drm_crtc_state *state)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-	struct drm_property_blob *blob = state->ctm;
+-	struct drm_color_ctm *ctm;
+-	const u64 *input;
+-	uint16_t coeffs[9] = { 0 };
+-	int i;
+-	struct cmdq_pkt *cmdq_pkt = NULL;
+-
+-	if (!blob)
+-		return;
+-
+-	ctm = (struct drm_color_ctm *)blob->data;
+-	input = ctm->matrix;
+-
+-	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
+-		coeffs[i] = mtk_ctm_s31_32_to_s1_10(input[i]);
+-
+-	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
+-		      &priv->cmdq_reg, priv->regs, DISP_CCORR_COEF_0);
+-	mtk_ddp_write(cmdq_pkt, coeffs[2] << 16 | coeffs[3],
+-		      &priv->cmdq_reg, priv->regs, DISP_CCORR_COEF_1);
+-	mtk_ddp_write(cmdq_pkt, coeffs[4] << 16 | coeffs[5],
+-		      &priv->cmdq_reg, priv->regs, DISP_CCORR_COEF_2);
+-	mtk_ddp_write(cmdq_pkt, coeffs[6] << 16 | coeffs[7],
+-		      &priv->cmdq_reg, priv->regs, DISP_CCORR_COEF_3);
+-	mtk_ddp_write(cmdq_pkt, coeffs[8] << 16,
+-		      &priv->cmdq_reg, priv->regs, DISP_CCORR_COEF_4);
+-}
+-
+ static void mtk_dither_config(struct device *dev, unsigned int w,
+ 			      unsigned int h, unsigned int vrefresh,
+ 			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -380,8 +290,8 @@ static const struct mtk_ddp_comp_funcs ddp_aal = {
+ };
+ 
+ static const struct mtk_ddp_comp_funcs ddp_ccorr = {
+-	.clk_enable = mtk_ddp_clk_enable,
+-	.clk_disable = mtk_ddp_clk_disable,
++	.clk_enable = mtk_ccorr_clk_enable,
++	.clk_disable = mtk_ccorr_clk_disable,
+ 	.config = mtk_ccorr_config,
+ 	.start = mtk_ccorr_start,
+ 	.stop = mtk_ccorr_stop,
+@@ -642,6 +552,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 	}
+ 
+ 	if (type == MTK_DISP_BLS ||
++	    type == MTK_DISP_CCORR ||
+ 	    type == MTK_DISP_COLOR ||
+ 	    type == MTK_DISP_GAMMA ||
+ 	    type == MTK_DPI ||
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 486e73e675ad5..b013d56d27773 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -531,11 +531,12 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		private->comp_node[comp_id] = of_node_get(node);
+ 
+ 		/*
+-		 * Currently only the COLOR, GAMMA, OVL, RDMA, DSI, and DPI blocks have
+-		 * separate component platform drivers and initialize their own
++		 * Currently only the CCORR, COLOR, GAMMA, OVL, RDMA, DSI, and DPI
++		 * blocks have separate component platform drivers and initialize their own
+ 		 * DDP component structure. The others are initialized here.
+ 		 */
+-		if (comp_type == MTK_DISP_COLOR ||
++		if (comp_type == MTK_DISP_CCORR ||
++		    comp_type == MTK_DISP_COLOR ||
+ 		    comp_type == MTK_DISP_GAMMA ||
+ 		    comp_type == MTK_DISP_OVL ||
+ 		    comp_type == MTK_DISP_OVL_2L ||
+@@ -634,6 +635,7 @@ static struct platform_driver mtk_drm_platform_driver = {
+ };
+ 
+ static struct platform_driver * const mtk_drm_drivers[] = {
++	&mtk_disp_ccorr_driver,
+ 	&mtk_disp_color_driver,
+ 	&mtk_disp_gamma_driver,
+ 	&mtk_disp_ovl_driver,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index 0e54e3d51014a..637f5669e8954 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -46,6 +46,7 @@ struct mtk_drm_private {
+ 	struct drm_atomic_state *suspend_state;
+ };
+ 
++extern struct platform_driver mtk_disp_ccorr_driver;
+ extern struct platform_driver mtk_disp_color_driver;
+ extern struct platform_driver mtk_disp_gamma_driver;
+ extern struct platform_driver mtk_disp_ovl_driver;
 -- 
 2.30.0.365.g02bc693789-goog
 
