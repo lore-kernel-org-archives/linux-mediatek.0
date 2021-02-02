@@ -2,87 +2,76 @@ Return-Path: <SRS0=G+wW=HE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 095A6C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:07:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 67E5BC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:31:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A443764ED6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:07:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A443764ED6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id DEE7A64E46
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 01:31:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DEE7A64E46
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nL0IOeJtjqRdhxEqCfAchI65iweCChAGHCEIr8/HSrw=; b=XG9d1x8B9iCoaK9J3ZssWuIoa
-	vJwgj489mRrh89ugpZ7QLxT4C+aU2ZQJMy2tVfGR6Nf1BDOGIAQvJRJfY/JKhY9WN8yecPy15GTIx
-	+XohaiDQR3vtY4IsUKUpSB6QPzdagV1Odkrl8xGSzexIFQhlnhcrNtt2ADR91HuAcq3V0q/kuPsgi
-	262wc1FTeAzExdSGSR6B1u8aQ70PuRqfo/kt1oyz42Qo5Ex6H3zGfNsMxpQYGFgXQJQrLcE9ApqkH
-	Xvxz+BpJaswBhlUyWKdchRyFuwoar7mgm7SwOyVuUnw9NVfVapVlJX7RFGLNjCzoXlwGo9EoyM9wS
-	WuZofmG/Q==;
+	 bh=BP49kEOSMvy1uHKU83hjFHmpNSq/JP3lQjKd/PXt5qU=; b=hGJwXXOKmOy9cDecs0ryweda6
+	KIIi6benHHj+XavlLYkyejBcSwpC2hhF3gE5IFWQ7J4vjF/N5zdW2jvgSc1m2RpMttZw+OujqJ6hG
+	f0Soe3HBx6MC71i6DYaod1H3AcdWv00uPnrXg56X5MIY7tBtqRTmci8H5IMEYPjG162P66cvJdIoa
+	TAGCx+oc52kHkjTN97Zyw8WFCdOQ8bAvRWt3rn+kNIlZPC1FyS44jfP7k/t+92xkZO/hhnEy6uLfn
+	ltAPo8aPS8ETkoAdDRwOWhPoHlhFpSd8HFu7vQc6xxGUz4fbLwqC/YU78F4hhqN3+yqp1iu8vUXBb
+	HW7ButvUQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6kAP-0000xC-K7; Tue, 02 Feb 2021 01:07:41 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1l6kX4-00027z-U5; Tue, 02 Feb 2021 01:31:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6kAL-0000w2-Kb
- for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 01:07:39 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id c1so13867875qtc.1
- for <linux-mediatek@lists.infradead.org>; Mon, 01 Feb 2021 17:07:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NszN4D5jzxy6frT0PN3aEj0vwxxqCzqxTFC21xlKA2c=;
- b=mzPpODks3Hz/c3k7qugw9y9nTN+2ETWrIEmwpYHyI23BXj3J6N2CmbedBCmDvne9e2
- uWBUZXHVTmVsGahn5gvR3D5CEcMo2U8XoFLapZ7aC00EzXj/poCNx4CLsMN4pKHclSGK
- JVb6OfBikmgd2t++YwljcC1c0B6Oz0kJHd01E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NszN4D5jzxy6frT0PN3aEj0vwxxqCzqxTFC21xlKA2c=;
- b=J0PjIHu4xrD5SvFli46gUCgvAGV7hOdwso2m8iNXQPMKsmADLb+lZ1sYD74+NLrXne
- gk/6xrxjarYCpmnlLhlLsQIS1wp+0Va1z8EnzE/KRCvwmjdZ3mcb0hWHzmeyQJ6qWYnW
- e/p6rjAWjhcoiuXV7Q95irocKK0dzPlPsucBTcFCW2ph1C7NSX4ziSsHV8jL1/GnGO81
- SSD5tetKIswOE6uB/Q5h0EAYXMxUoXbjGZhQrYFtw4C02GdTczky/0asw3a9x7vWKNAb
- CColbkl5H7PWJtrPfmtOjpMexf9SizmZsblPVa6jEJhf+AheKgvDxp74BVK4j2GXHb23
- YnUw==
-X-Gm-Message-State: AOAM532GgHOwVkf7AlSt6760RuIcxD6ByAK0jfkDat0DtjTRA+jtneSJ
- 8BdgzBTgCZCV0WYOlldviZNwTfkeorS71w==
-X-Google-Smtp-Source: ABdhPJwPKVK7KSVgsSff2JcdX/qjL/G3Ao9izSRwxx8bdJ3ye70rQL4VBbRdEbvojazhuCbdGML9HQ==
-X-Received: by 2002:ac8:46d4:: with SMTP id h20mr16277884qto.256.1612228054396; 
- Mon, 01 Feb 2021 17:07:34 -0800 (PST)
-Received: from mail-yb1-f180.google.com (mail-yb1-f180.google.com.
- [209.85.219.180])
- by smtp.gmail.com with ESMTPSA id o45sm15096796qto.91.2021.02.01.17.07.31
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Feb 2021 17:07:33 -0800 (PST)
-Received: by mail-yb1-f180.google.com with SMTP id e67so18769791ybc.12
- for <linux-mediatek@lists.infradead.org>; Mon, 01 Feb 2021 17:07:31 -0800 (PST)
-X-Received: by 2002:a25:c683:: with SMTP id k125mr30638749ybf.32.1612228051259; 
- Mon, 01 Feb 2021 17:07:31 -0800 (PST)
+ id 1l6kX1-00027L-5u
+ for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 01:31:05 +0000
+X-UUID: 0f5fe3cf4d964484ba0fa957138cdc54-20210201
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=J3x52rLYllyw6VRGlPTtdTLgRiZI9s1w8kgapGIcpuo=; 
+ b=b2t9H/HD7MO/64tenkUKzflw/fYrhq6naszlpBRPwLHbySkw4sGKW71GiLwn6YH0hnUi/y4+LhYe+iF2cpfp918y6G1LVvwVUF0Kl7zfEJFocU0KCzgel0gbTIn+7ZBUTkMb/HLiH/UW4gd9jTZl3/zbPMlQSNalDPx6gB94Y+Y=;
+X-UUID: 0f5fe3cf4d964484ba0fa957138cdc54-20210201
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1036612661; Mon, 01 Feb 2021 17:30:59 -0800
+Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 1 Feb 2021 17:30:58 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS32N1.mediatek.inc
+ (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 2 Feb 2021 09:30:50 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 2 Feb 2021 09:30:49 +0800
+Message-ID: <1612229449.2524.2.camel@mhfsdcap03>
+Subject: Re: [PATCH] iommu: Properly pass gfp_t in _iommu_map() to avoid
+ atomic sleeping
+From: Yong Wu <yong.wu@mediatek.com>
+To: Douglas Anderson <dianders@chromium.org>
+Date: Tue, 2 Feb 2021 09:30:49 +0800
+In-Reply-To: <20210201170611.1.I64a7b62579287d668d7c89e105dcedf45d641063@changeid>
+References: <20210201170611.1.I64a7b62579287d668d7c89e105dcedf45d641063@changeid>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20210107122909.16317-1-yong.wu@mediatek.com>
- <20210107122909.16317-2-yong.wu@mediatek.com>
-In-Reply-To: <20210107122909.16317-2-yong.wu@mediatek.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 1 Feb 2021 17:07:19 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=Xkn0pVGP5R7-xKjrDUTsrWRcy3L-D_qg8_hgV=noRhxA@mail.gmail.com>
-Message-ID: <CAD=FV=Xkn0pVGP5R7-xKjrDUTsrWRcy3L-D_qg8_hgV=noRhxA@mail.gmail.com>
-Subject: Re: [PATCH v4 1/7] iommu: Move iotlb_sync_map out from __iommu_map
-To: Yong Wu <yong.wu@mediatek.com>
+X-TM-SNTS-SMTP: D4D6B793B12B73E0D43EA4A0C2B613719A984C7639A6230D7A507072D26ECEAC2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_200737_681522_2D04FEB5 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20210201_203103_443154_C0D2EFA0 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,98 +83,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Will Deacon <will@kernel.org>,
- Joerg Roedel <joro@8bytes.org>, LKML <linux-kernel@vger.kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Christoph Hellwig <hch@infradead.org>,
- Tomasz Figa <tfiga@google.com>,
- "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <iommu@lists.linux-foundation.org>,
- David Laight <David.Laight@aculab.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, kernel-team@android.com,
- Greg Kroah-Hartman <gregkh@google.com>, Robin Murphy <robin.murphy@arm.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Will Deacon <will@kernel.org>, joro@8bytes.org,
+ linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, 2021-02-01 at 17:06 -0800, Douglas Anderson wrote:
+> Sleeping while atomic = bad.  Let's fix an obvious typo to try to avoid it.
+> 
+> The warning that was seen (on a downstream kernel with the problematic
+> patch backported):
+> 
+>  BUG: sleeping function called from invalid context at mm/page_alloc.c:4726
+>  in_atomic(): 1, irqs_disabled(): 0, non_block: 0, pid: 9, name: ksoftirqd/0
+>  CPU: 0 PID: 9 Comm: ksoftirqd/0 Not tainted 5.4.93-12508-gc10c93e28e39 #1
+>  Call trace:
+>   dump_backtrace+0x0/0x154
+>   show_stack+0x20/0x2c
+>   dump_stack+0xa0/0xfc
+>   ___might_sleep+0x11c/0x12c
+>   __might_sleep+0x50/0x84
+>   __alloc_pages_nodemask+0xf8/0x2bc
+>   __arm_lpae_alloc_pages+0x48/0x1b4
+>   __arm_lpae_map+0x124/0x274
+>   __arm_lpae_map+0x1cc/0x274
+>   arm_lpae_map+0x140/0x170
+>   arm_smmu_map+0x78/0xbc
+>   __iommu_map+0xd4/0x210
+>   _iommu_map+0x4c/0x84
+>   iommu_map_atomic+0x44/0x58
+>   __iommu_dma_map+0x8c/0xc4
+>   iommu_dma_map_page+0xac/0xf0
+> 
+> Fixes: d8c1df02ac7f ("iommu: Move iotlb_sync_map out from __iommu_map")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-On Thu, Jan 7, 2021 at 4:31 AM Yong Wu <yong.wu@mediatek.com> wrote:
->
-> @@ -2438,18 +2435,31 @@ static int __iommu_map(struct iommu_domain *domain, unsigned long iova,
->         return ret;
->  }
->
-> +static int _iommu_map(struct iommu_domain *domain, unsigned long iova,
-> +                     phys_addr_t paddr, size_t size, int prot, gfp_t gfp)
-> +{
-> +       const struct iommu_ops *ops = domain->ops;
-> +       int ret;
-> +
-> +       ret = __iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
+oh. This is my fault. Thanks for the fix.
 
-The above is broken.  Instead of GFP_KERNEL it should be passing "gfp".
+Reviewed-by: Yong Wu <yong.wu@mediatek.com>
 
-
-> +       if (ret == 0 && ops->iotlb_sync_map)
-> +               ops->iotlb_sync_map(domain);
-> +
-> +       return ret;
-> +}
-> +
->  int iommu_map(struct iommu_domain *domain, unsigned long iova,
->               phys_addr_t paddr, size_t size, int prot)
->  {
->         might_sleep();
-> -       return __iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
-> +       return _iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
->  }
->  EXPORT_SYMBOL_GPL(iommu_map);
->
->  int iommu_map_atomic(struct iommu_domain *domain, unsigned long iova,
->               phys_addr_t paddr, size_t size, int prot)
->  {
-> -       return __iommu_map(domain, iova, paddr, size, prot, GFP_ATOMIC);
-> +       return _iommu_map(domain, iova, paddr, size, prot, GFP_ATOMIC);
-
-Specifically the above bug means we drop the "GFP_ATOMIC" here.
-
-It means we trigger a warning, like this (on a downstream kernel with
-the patch backported):
-
- BUG: sleeping function called from invalid context at mm/page_alloc.c:4726
- in_atomic(): 1, irqs_disabled(): 0, non_block: 0, pid: 9, name: ksoftirqd/0
- CPU: 0 PID: 9 Comm: ksoftirqd/0 Not tainted 5.4.93-12508-gc10c93e28e39 #1
- Call trace:
-  dump_backtrace+0x0/0x154
-  show_stack+0x20/0x2c
-  dump_stack+0xa0/0xfc
-  ___might_sleep+0x11c/0x12c
-  __might_sleep+0x50/0x84
-  __alloc_pages_nodemask+0xf8/0x2bc
-  __arm_lpae_alloc_pages+0x48/0x1b4
-  __arm_lpae_map+0x124/0x274
-  __arm_lpae_map+0x1cc/0x274
-  arm_lpae_map+0x140/0x170
-  arm_smmu_map+0x78/0xbc
-  __iommu_map+0xd4/0x210
-  _iommu_map+0x4c/0x84
-  iommu_map_atomic+0x44/0x58
-  __iommu_dma_map+0x8c/0xc4
-  iommu_dma_map_page+0xac/0xf0
-
----
-
-A quick (but not very tested) fix at:
-
-https://lore.kernel.org/r/20210201170611.1.I64a7b62579287d668d7c89e105dcedf45d641063@changeid/
-
-
--Doug
+> ---
+> I haven't done any serious testing on this.  I saw a report of the
+> warning and the fix seemed obvious so I'm shooting it out.
+> 
+>  drivers/iommu/iommu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 3d099a31ddca..2b06b01850d5 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -2441,7 +2441,7 @@ static int _iommu_map(struct iommu_domain *domain, unsigned long iova,
+>  	const struct iommu_ops *ops = domain->ops;
+>  	int ret;
+>  
+> -	ret = __iommu_map(domain, iova, paddr, size, prot, GFP_KERNEL);
+> +	ret = __iommu_map(domain, iova, paddr, size, prot, gfp);
+>  	if (ret == 0 && ops->iotlb_sync_map)
+>  		ops->iotlb_sync_map(domain, iova, size);
+>  
 
 _______________________________________________
 Linux-mediatek mailing list
