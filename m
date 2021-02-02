@@ -2,66 +2,75 @@ Return-Path: <SRS0=G+wW=HE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 302ABC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 13:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99916C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 14:05:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DFFB664F5E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 13:34:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFFB664F5E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id D240264E7B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 14:05:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D240264E7B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bzPYfVPkJshb3YL3Ai3W8OCSm+jtO9ODZj5TayZ7ZkA=; b=ArcMm240mGHBgFiAZADTbCp1y
-	cXbwLWUWH4WmMf3JmZ4R9msEZ8/CNdeqqI6KvJIHQlh7cobT90u4NpRTmgzyJOEM2SgJlecDJLUqZ
-	P5s19Ek3I19+78DzfQh6m8RI3nDRJvAD7eS7M3PeSLfJo8ohWdGytBnfxSQVBS9IBqvQBF85hmUeZ
-	JVs32u1b5VcrI8eJ1IFe4qFQRXam17qrhi1slGojsoht3f7UmpQFJvHFxIci3/+4rxcHT+4/PBwA/
-	DsQkvzgeqEdnIheDroe9PHKk4nZ0ym4fpb2I7wy1PezxhYle7Rrk8Hj0yS6Qop3C1jO8shIsHELt8
-	o5lLQK7RQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vzGa4z0Ss/JAEdI9WvNiL2fpqPvu5yhAh0HlRFDn55Y=; b=UGMq2e6d9K0MM+553rJQsHA/C6
+	sCg+5o0q+yqhD+napGEGT2SkdFoT2A1wrpooWMQVZ6FTMUUo9/KobkjcV0JrmtOeaQSuH7pUFxKE0
+	2itNGSi0JO5yL7dy4rWV8FxuWJXjtWne9hEXRKTPGmALE+H+pyE8jEWW8fKk1jUtds5Z+KtTdZntr
+	sowto/ysNWCTrxq5qSJ0yzE0deeEWRk2JPmuwTEVjkBK/0Bq69glilvWX1XPVOLEeBWMB6c+SRlqD
+	bbh5v3cwQx0PU204fnNcBOUCCIDOw0dF3KEDHogSix93eHwTKzaxPL9GnS+J69dQGA7DQvz7yXyBE
+	xL6qe+cQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6voo-0001rK-MY; Tue, 02 Feb 2021 13:34:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l6wIq-00060p-KQ; Tue, 02 Feb 2021 14:05:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6voj-0001pX-Ru; Tue, 02 Feb 2021 13:34:06 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 521FC64F51;
- Tue,  2 Feb 2021 13:34:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612272845;
- bh=Qc82Rs1BO/kqAuHM5fqbYivehM9Zpe/q/Rk+nnanzSg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Rq0QnvC6dVMTqTSjlBcM3j0Fae/zpps7YBL8rDHFtXiYCHsNkpgUTppGN6K4hqIrb
- edDS1gAiPwbetu6tWSl9Vta07jbjBtsbXymdYJVMz0BAFERuwrWqOoE8JEWlITWUym
- kSBu1Hvj7++Q3KhFAOn7GYFAJRobhWTnQzDhPpgPkDJBb2+vmwtgNEI1rTZfcDLk34
- uH8V0g7QGutVlEEhLHM96YbjM0IeXlx42/IDhP1pbBV96U0TPX8TeQz8BzqVldtr7O
- 8bOnNEZUbb1tqrf/yES4UgRiBbNfflqqdQt3ypOMeBlaUFdtPWOuacG/CjCSQXYwjZ
- s0ZTqM/4rso+w==
-Date: Tue, 2 Feb 2021 13:33:58 +0000
-From: Will Deacon <will@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v6 00/33] MT8192 IOMMU support
-Message-ID: <20210202133358.GA17070@willie-the-truck>
-References: <20210111111914.22211-1-yong.wu@mediatek.com>
- <20210201145422.GA15263@willie-the-truck>
- <1612231425.2524.12.camel@mhfsdcap03>
+ id 1l6wIo-0005zo-Dr
+ for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 14:05:11 +0000
+X-UUID: 023200eb6815428eb85d1735c7f16f5b-20210202
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ml/3SSiKgk1ZdU4cg0QysWS8Fqe8Dd4tgIdI8g/9AZ4=; 
+ b=FyyMfIHPWe95oQJ2Uh1K55Oken9OJcguXa3peAqnA7qXeiv1S8EMMnFOJ0UDkTY3A0ROB7R9nkwwwJ5rTdhZ+eaAaXuscp2Zq0HIcl3eC3mQaM8SZRy5Yykx7oT8KSTeyZ8G+UEXJ+w4iR513vYZBPVUDqEwVe7moyVoW3Ix2o8=;
+X-UUID: 023200eb6815428eb85d1735c7f16f5b-20210202
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1677514766; Tue, 02 Feb 2021 06:05:01 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Feb 2021 05:58:02 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Feb 2021 21:58:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 2 Feb 2021 21:58:00 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH] mt76: use PCI_VENDOR_ID_MEDIATEK to avoid open coded
+Date: Tue, 2 Feb 2021 21:57:59 +0800
+Message-ID: <404c3c6be07d4c8b2a9a7297c387509b801e62a5.1612274129.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1612231425.2524.12.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TM-SNTS-SMTP: 4055448C08ED3A018B512A6FAED4963B84FC36D2EC8700AC96D435956B21B2082000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210202_083406_042801_3273891E 
-X-CRM114-Status: GOOD (  23.15  )
+X-CRM114-CacheID: sfid-20210202_090510_664331_4797C431 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,80 +82,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com,
- chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 02, 2021 at 10:03:45AM +0800, Yong Wu wrote:
-> On Mon, 2021-02-01 at 14:54 +0000, Will Deacon wrote:
-> > On Mon, Jan 11, 2021 at 07:18:41PM +0800, Yong Wu wrote:
-> > > This patch mainly adds support for mt8192 Multimedia IOMMU and SMI.
-> > > 
-> > > mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
-> > > table format. The M4U-SMI HW diagram is as below:
-> > > 
-> > >                           EMI
-> > >                            |
-> > >                           M4U
-> > >                            |
-> > >                       ------------
-> > >                        SMI Common
-> > >                       ------------
-> > >                            |
-> > >   +-------+------+------+----------------------+-------+
-> > >   |       |      |      |       ......         |       |
-> > >   |       |      |      |                      |       |
-> > > larb0   larb1  larb2  larb4     ......      larb19   larb20
-> > > disp0   disp1   mdp    vdec                   IPE      IPE
-> > > 
-> > > All the connections are HW fixed, SW can NOT adjust it.
-> > > 
-> > > Comparing with the preview SoC, this patchset mainly adds two new functions:
-> > > a) add iova 34 bits support.
-> > > b) add multi domains support since several HW has the special iova
-> > > region requirement.
-> > > 
-> > > change note:
-> > > v6:a) base on v5.11-rc1. and tlb v4:
-> > >       https://lore.kernel.org/linux-mediatek/20210107122909.16317-1-yong.wu@mediatek.com/T/#t 
-> > 
-> > I've queued this up apart from patches 6 and 7.
-> 
-> Thanks very much for the applying. I'd like to show there is a little
-> conflict with a smi change[1] in /include/soc/mediatek/smi.h.
-> 
-> This is the detailed conflict:
-> 
-> --- a/include/soc/mediatek/smi.h
-> +++ b/include/soc/mediatek/smi.h
-> @@ -9,7 +9,7 @@
->  #include <linux/bitops.h>
->  #include <linux/device.h>
->  
-> -#ifdef CONFIG_MTK_SMI
-> +#if IS_ENABLED(CONFIG_MTK_SMI)   <---The smi patch change here.
->  
->  #define MTK_LARB_NR_MAX   16  <---This iommu patchset delete this line.
-> 
-> 
-> This code is simple. Please feel free to tell me how to do this if this
-> is not convenient to merge.
+Use PCI standard defines.
 
-Thanks, but this should be trivial to resolve, so I don't think we need to
-worry about it.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7603/pci.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7615/pci.c | 6 +++---
+ drivers/net/wireless/mediatek/mt76/mt76x0/pci.c | 6 +++---
+ drivers/net/wireless/mediatek/mt76/mt76x2/pci.c | 6 +++---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 +-
+ 5 files changed, 11 insertions(+), 11 deletions(-)
 
-Will
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/pci.c b/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
+index 06fa28f645f2..aa6cb668b012 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
+@@ -7,7 +7,7 @@
+ #include "mt7603.h"
+ 
+ static const struct pci_device_id mt76pci_device_table[] = {
+-	{ PCI_DEVICE(0x14c3, 0x7603) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7603) },
+ 	{ },
+ };
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+index 71487f532f36..11f169cdd603 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+@@ -13,9 +13,9 @@
+ #include "mcu.h"
+ 
+ static const struct pci_device_id mt7615_pci_device_table[] = {
+-	{ PCI_DEVICE(0x14c3, 0x7615) },
+-	{ PCI_DEVICE(0x14c3, 0x7663) },
+-	{ PCI_DEVICE(0x14c3, 0x7611) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7615) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7663) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7611) },
+ 	{ },
+ };
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+index 02d0aa0b815e..5847f943e8da 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+@@ -221,9 +221,9 @@ mt76x0e_remove(struct pci_dev *pdev)
+ }
+ 
+ static const struct pci_device_id mt76x0e_device_table[] = {
+-	{ PCI_DEVICE(0x14c3, 0x7610) },
+-	{ PCI_DEVICE(0x14c3, 0x7630) },
+-	{ PCI_DEVICE(0x14c3, 0x7650) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7610) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7630) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7650) },
+ 	{ },
+ };
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+index ecaf85b483ac..adf288e50e21 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+@@ -10,9 +10,9 @@
+ #include "mt76x2.h"
+ 
+ static const struct pci_device_id mt76x2e_device_table[] = {
+-	{ PCI_DEVICE(0x14c3, 0x7662) },
+-	{ PCI_DEVICE(0x14c3, 0x7612) },
+-	{ PCI_DEVICE(0x14c3, 0x7602) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7662) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7612) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7602) },
+ 	{ },
+ };
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 5570b4a50531..33ed952d7f4c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -13,7 +13,7 @@
+ #include "../trace.h"
+ 
+ static const struct pci_device_id mt7921_pci_device_table[] = {
+-	{ PCI_DEVICE(0x14c3, 0x7961) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7961) },
+ 	{ },
+ };
+ 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
