@@ -2,94 +2,57 @@ Return-Path: <SRS0=G+wW=HE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2B33C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 16:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B541DC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 16:23:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30E9F64F72
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 16:21:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30E9F64F72
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	by mail.kernel.org (Postfix) with ESMTPS id 4439A64F72
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Feb 2021 16:23:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4439A64F72
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
-	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QVsAD1q/xKqb7dgnGkBXtN9tgtgwJhitIbEgGZwb/cw=; b=RqCJjDhQPTR8Bzf/3SYDEHPum
-	xKd1hTRuS3vJnt4B5DWr6Z1UxGr5HBeCmEc90ShAx8TDE1WcKqrzv/y9ZckJHPJit339bWSnd8Coz
-	s/o4GFVF09w7mGkF2U7Yz3UoA2WP/m2m+jn5YB/aagZ16j385UsMauCWY1WPbaHW+//ANtyHNDzun
-	YD5UkoeVqBFEdOvBOhs/tzHDNlrYiaMKIdu3UyvAJi90SOZFhOYiU3LYri0XkipvAOUFgDXzu6xZY
-	5wbdH5TOkpeCvAYNaUkIFDRV53T05UUAYGJGtMgGUdZObp62pnEcODOly79q0QcRNKQ3DZ3IXRIdP
-	vH3PB4Uow==;
+	 bh=qIoUYlWYiFRNjDNO2vC7/ReDdy2SX/YvSf/kNaZv38I=; b=T7HQ5rmgIlui4mfpHQRPGSXhH
+	AOajPHRxj2zc40FTz6+WpuEgnqa8HVIYCyfbbUBS3qFCMdfVSjKWqKNrzy2bkzf5jjnFp9Rh13WZk
+	MvizVCvPn7DHpo0i/B+x/YjYIyd/DrSC3RGBMkUb8WHn5DEgsGMS20rdTRDWQopN3F+mpSrFBAWpw
+	CGq3tWdJIuWOZMvHpiZArAm1kMZ4p+7rd/Text9ue8J4FoUV+VRC0rA0BbZrZ2ZGxF1hdjlmPSQ6F
+	6Oe2jI7kM7l8V18UGkFQ8b9Nr6Y6Gnd08WXAlXRrI3Crm1MerLJ6b3u8rd4yppziWaBph42lL065K
+	A/sd0BJoQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6yQl-0004D3-LY; Tue, 02 Feb 2021 16:21:31 +0000
-Received: from mout.gmx.net ([212.227.15.15])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6yQi-0004CP-Oi
- for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 16:21:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1612282862;
- bh=j7MqdTeRJ2CWeYhU/BJJVscXmV0af2mzaUyfN5RfAW0=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=SuXGNdGWi9JtCysGxjPI2Z3K4MA44C3FSkk8lyksyx668b1rVZp+3TJg7ueWsPovL
- bzVGqiANrOCu/bIJrD5lhFV7BFBFTViszkulxhYhtIHZRoaaTA6FT3xnhqpfDnh6XR
- rt9ML7UEEDkx9TFvJi+EGGzRG20jFfh4126YSUEk=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.149.138] ([217.61.149.138]) by web-mail.gmx.net
- (3c-app-gmx-bs53.server.lan [172.19.170.137]) (via HTTP); Tue, 2 Feb 2021
- 17:21:02 +0100
-MIME-Version: 1.0
-Message-ID: <trinity-0ead36a9-4583-40d1-8b47-146be8ae8533-1612282862443@3c-app-gmx-bs53>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Marc Zyngier <maz@kernel.org>
-Subject: Aw: Re:  Re:  Re: [PATCH] pci: mediatek: fix warning in msi.h
-Date: Tue, 2 Feb 2021 17:21:02 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <c63d8d7d966c1dda82884f361d4691c3@kernel.org>
-References: <20201031140330.83768-1-linux@fw-web.de>
- <1604253261.22363.0.camel@mtkswgap22>
- <trinity-9eb2a213-f877-4af3-87df-f76a9c093073-1604255233122@3c-app-gmx-bap08>
- <87k0v4u4uq.wl-maz@kernel.org> <87pn4w90hm.fsf@nanos.tec.linutronix.de>
- <df5565a2f1e821041c7c531ad52a3344@kernel.org>
- <87h7q791j8.fsf@nanos.tec.linutronix.de>
- <877dr38kt8.fsf@nanos.tec.linutronix.de>
- <901c5eb8bbaa3fe53ddc8f65917e48ef@kernel.org>
- <87o8ke7njb.fsf@nanos.tec.linutronix.de>
- <trinity-1d7f8900-10db-40c0-a0aa-47bb99ed84cd-1604508571909@3c-app-gmx-bs02>
- <87h7q4lnoz.fsf@nanos.tec.linutronix.de>
- <074d057910c3e834f4bd58821e8583b1@kernel.org>
- <87blgbl887.fsf@nanos.tec.linutronix.de>
- <c63d8d7d966c1dda82884f361d4691c3@kernel.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:u3SIc85K08OE7DKGZvTGXOsAnmBdfTSXT9sG/woR+q++Yox4oBwPqjdX/Z6uHwHmIaCz9
- xtoVLE6VhiyeYHWnScTDNyxEkUGTOJd7tylKctqrRlGSEA+owGrs7nyr1NZxGWbgIV+z159lUGym
- /zmcTpTSQLJ5RyWeJYJvG+K1n3k1agV04JCFP0MglDPbVPTeumrlJYzkHAvTKhOg0dV1BPu+HcGy
- EEuP6iojtiTqbE5BBj/s6s2+7/hhLLjo2SP4WotNM4ugp9hrQPPBpBsMhj6rtagoWlYfMXzQ78Cg
- w8=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:k/Dr0NOy/1k=:UIeRd3EBwGoX18LylrsoZW
- bNHoK2iWsEigwQNdjNgdfNyjpIGewc6CdfmAyzSRjhk8J4W+8p1Eyg8AKANXDqKy6jrkNWTn6
- 9Gd65OejMRWCmrlS/RtSmH6gIBExjnyZ1PjiSf4TvubbsWifzgnSt9YXQwBqWGi0hccLjWGMp
- tRq2hBW6rz+MgYlmdVq7gN0t86FaK79esvt9mlSrNVmV0+YjjtFVga0gUnDAl6FyPGuCJqeTX
- nIZV1cizRaOyGEKg5zVUcOoCa4orCUIiWMZi25lZwUXgX8vrptvb6kS0s5Lx6ypZCoLmq2TMy
- /NKErKz3wQFG2atbjOZBxXraIfCSgRYKddmllYDfwQ6vD6WOV7KILNyVNnqk2xmbO8lRIlpH1
- TjCn03mzIzrV02oT+A/3I6IlKqdXhJaj32TYXpQIACiXoiKy9PCiehiD5iU6pAhIr7M2cgYtd
- B0E2op19XSYNfcxpZHrafgtqawMxUY3AIyS4QbuyMfy+/8OkN7jitcK1tw2pWbE9hpHG/Q/Uw
- WQX7UrRSM7UX+j4jFfveeA5VO6N760iiAFTdZD4BQETytd4STgm3DtjFhyEwb8ZoYaSUX682U
- qKFPvvPb3yJ0o=
+	id 1l6ySG-0004Mm-9L; Tue, 02 Feb 2021 16:23:04 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l6ySD-0004Lm-UI
+ for linux-mediatek@lists.infradead.org; Tue, 02 Feb 2021 16:23:02 +0000
+Received: from marcel-macbook.holtmann.net (p4fefcdd8.dip0.t-ipconnect.de
+ [79.239.205.216])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 3631DCECDE;
+ Tue,  2 Feb 2021 17:30:19 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.40.0.2.32\))
+Subject: Re: [PATCH v4 0/2] Bluetooth: btusb: Add protocol for MediaTek
+ bluetooth devices
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <20210202102618.27640-1-mark-yw.chen@mediatek.com>
+Date: Tue, 2 Feb 2021 17:22:52 +0100
+Message-Id: <F933AA60-A9AA-48FC-8F59-4338891C50B6@holtmann.org>
+References: <20210202102618.27640-1-mark-yw.chen@mediatek.com>
+To: Mark-YW.Chen@mediatek.com
+X-Mailer: Apple Mail (2.3654.40.0.2.32)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210202_112129_257342_3DB3EF12 
-X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-CacheID: sfid-20210202_112302_145722_7B3B7BD6 
+X-CRM114-Status: UNSURE (   9.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -102,32 +65,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Frank Wunderlich <linux@fw-web.de>
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, Eric.liang@mediatek.com,
+ Sean.Wang@mediatek.com, LKML <linux-kernel@vger.kernel.org>,
+ Bluetooth Kernel Mailing List <linux-bluetooth@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, robin.chiu@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Mark,
 
-is there any new state?
+> v4:
+> 1. add read chip info. from MediaTek bluetooth devices.
+> 2. support download firmware for MT7921U.
+> 
+> mark-yw.chen (2):
+>  Bluetooth: btusb: Fine-tune mt7663 mechanism.
+>  Bluetooth: btusb: Add protocol support for MediaTek MT7921U USB
+>    devices
+> 
+> drivers/bluetooth/btusb.c | 211 +++++++++++++++++++++++++++++++++++++-
+> 1 file changed, 206 insertions(+), 5 deletions(-)
 
-kernel test robot reports the following problem (i do not see it when compiling for my arm/arm64 devices):
+both patches have been applied to bluetooth-next tree.
 
-ARCH=i386
+Regards
 
-drivers/pci/probe.c: In function 'pci_register_host_bridge':
->> drivers/pci/probe.c:930:39: error: 'struct device' has no member named 'msi_domain'; did you mean 'pm_domain'?
-930 | (bridge->msi_domain && !bus->dev.msi_domain))
+Marcel
 
-and yes...msi_domain is only member of pci_host_bridge (include/linux/pci.h)
-
-why do you check for msi_domain in pci_bus->dev
-
-regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
