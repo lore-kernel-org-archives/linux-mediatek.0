@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0210FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 02:22:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58233C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 02:41:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 742AC64F59
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 02:22:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 742AC64F59
+	by mail.kernel.org (Postfix) with ESMTPS id 134E964E3D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 02:41:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 134E964E3D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.alibaba.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TR9p/w8CGI9xI9GTtm692049TFzanitCSN+RQq2ToQs=; b=agV6KuqU4mqtmtzYLT1X9Ky7RW
-	xcKe0V2wYVVH7zJ38zDQz7xD4KWlfRP0b8Db1RO61nIgutCBt/rySTvQ/z4Eu+dW10p5OGfJAEuW3
-	dyrSqUIl6Y8kv2W0JsPHNeCKo1TffeYZxnOgERZloTha6+wYB/Hp59VasVI8sCmyTzgHRbWPj38Hh
-	+jv/eQlNM15hvNUoYhGNZhArs6Jsg+8AIn5J9vkwWImcE19cTMzEk/uIoJNoqwxFdVdOTGZU0cQkQ
-	0Xm8geWZc/nwj8lOFE2qPTaYL/Y/sEUjNrsDk+KEUmHt4zqOCOrY+eS/CIHytLDubExRDsDXcHFKV
-	OlcPz6nw==;
+	bh=MXo97K2OClpnq28lcm/FcXGCg4MZfdeaFUQx2fPBb1Q=; b=V/wmd2A1MA/UYt0OmRqBiOs3jX
+	CFm7ZdREKEqaQyc1c9JkdiGv+txoIRyyZhhGqBn/npYv+l/IA8GvOAQ+6m6gCvpeBvwcJ7g73iGLD
+	GmxsJk2bVTA0oT8z3XBOfH0KVekLGqgOW3YB+wn2OO+Szuz+91NftMaaAM/jD/+rB5IiYNgmHg+75
+	jLTzvpDTfT6M+9bxEVkQ9w8eXS6XQ6L2web/88j8V+4B1JfVmK5JlYhsvn5ozaMZSoIfJ5HbMBXGk
+	DaRbCdW5YCfsfNXUiHUx765AxRFbbKEUPaapqxgYSIPkCFB10h5lHm0jAvrHdaQz6O0ZO4422hROL
+	iEV9/5og==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l77o9-0004Tz-J8; Wed, 03 Feb 2021 02:22:17 +0000
-Received: from out30-131.freemail.mail.aliyun.com ([115.124.30.131])
+	id 1l786m-00063T-Pj; Wed, 03 Feb 2021 02:41:32 +0000
+Received: from out30-130.freemail.mail.aliyun.com ([115.124.30.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l77o5-0004TL-2V; Wed, 03 Feb 2021 02:22:14 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R781e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04420; MF=yang.lee@linux.alibaba.com;
- NM=1; PH=DS; RN=8; SR=0; TI=SMTPD_---0UNj9G-w_1612318926; 
+ id 1l786h-00062M-R4; Wed, 03 Feb 2021 02:41:29 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R191e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=alimailimapcm10staff010182156082;
+ MF=yang.lee@linux.alibaba.com; NM=1; PH=DS; RN=13; SR=0;
+ TI=SMTPD_---0UNjXycJ_1612320082; 
 Received: from
  j63c13417.sqa.eu95.tbsite.net(mailfrom:yang.lee@linux.alibaba.com
- fp:SMTPD_---0UNj9G-w_1612318926) by smtp.aliyun-inc.com(127.0.0.1);
- Wed, 03 Feb 2021 10:22:06 +0800
+ fp:SMTPD_---0UNjXycJ_1612320082) by smtp.aliyun-inc.com(127.0.0.1);
+ Wed, 03 Feb 2021 10:41:22 +0800
 From: Yang Li <yang.lee@linux.alibaba.com>
-To: dongchun.zhu@mediatek.com
-Subject: [PATCH] media: i2c: remove unneeded semicolon
-Date: Wed,  3 Feb 2021 10:22:01 +0800
-Message-Id: <1612318921-106894-1-git-send-email-yang.lee@linux.alibaba.com>
+To: nbd@nbd.name
+Subject: [PATCH] mt76: mt7915: remove unneeded semicolon
+Date: Wed,  3 Feb 2021 10:41:20 +0800
+Message-Id: <1612320080-126736-1-git-send-email-yang.lee@linux.alibaba.com>
 X-Mailer: git-send-email 1.8.3.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210202_212213_400401_88ED8EDC 
-X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-CacheID: sfid-20210202_214128_629250_90D3D7C2 
+X-CRM114-Status: UNSURE (   8.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -63,10 +64,12 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, Yang Li <yang.lee@linux.alibaba.com>,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: ryder.lee@mediatek.com, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+ kuba@kernel.org, Yang Li <yang.lee@linux.alibaba.com>, davem@davemloft.net,
+ kvalo@codeaurora.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -74,26 +77,27 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Eliminate the following coccicheck warning:
-./drivers/media/i2c/ov02a10.c:703:2-3: Unneeded semicolon
+./drivers/net/wireless/mediatek/mt76/mt7915/mac.c:1694:2-3: Unneeded
+semicolon
 
 Reported-by: Abaci Robot <abaci@linux.alibaba.com>
 Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
 ---
- drivers/media/i2c/ov02a10.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
-index 8683ffd..e0f7d69 100644
---- a/drivers/media/i2c/ov02a10.c
-+++ b/drivers/media/i2c/ov02a10.c
-@@ -700,7 +700,7 @@ static int ov02a10_set_ctrl(struct v4l2_ctrl *ctrl)
- 	default:
- 		ret = -EINVAL;
- 		break;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index f504eeb..a24d5b7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1691,7 +1691,7 @@ void mt7915_mac_work(struct work_struct *work)
+ 	if (++phy->sta_work_count == 10) {
+ 		phy->sta_work_count = 0;
+ 		mt7915_mac_sta_stats_work(phy);
 -	};
 +	}
  
- 	pm_runtime_put(&client->dev);
+ 	mutex_unlock(&mdev->mutex);
  
 -- 
 1.8.3.1
