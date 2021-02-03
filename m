@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB065C4332D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 08:38:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CC55C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 08:48:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 65A8F64F78
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 08:38:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65A8F64F78
+	by mail.kernel.org (Postfix) with ESMTPS id BD2FA64F6C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 08:48:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD2FA64F6C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pKKsSuJJxzD491ej2rFecli4xOLAjGdnjw142a4QyP0=; b=kzVNugXcuiuuk//l/VpQrApMd
-	uMW54+5phsuIW3/Y7Qvs06LyDmMGAlKldz/dg+m+ld7Hy/ImpK5s+n8ET98vczZErVrr441GvZsSE
-	YnKAJf2eQnGW8lTGD8HA38c0+MuO/Yqjs4anNACPMy5qpPsowOgeaZ+Y0Sb9xXPQ7gPplhW7mqqQy
-	KjMyIKBIz6uV8wNg/clAaRdhMmrfdWTXxWBfB2ee4KcROkh512lejCw0nyfH6nXvKnIomUXTfp9eI
-	ia7MD+8ZigeI1jreLJ6TtZEwuKZmB+KsVIpakW88vYNYKTW1vTdI9Bw65o3Sms3ZwBOKmLMh+wYUo
-	m50lUA2Eg==;
+	 bh=lSQEqGr4lXTtDs4c8FLcqdslfrtiv4tX+O3aw6NGGd0=; b=vlBQlyV/eEZVdTFA4yn450NJ/
+	SNY5LnbADsKCiAO/lxBxrS4jme5vj7lacMovvafL4aczVY6FqkVl+nb0lwojTOm075UPPqSqe+Rpx
+	Z5oh5v5Ei3uJmhqT3o4UjVkz3wJ0ijTq5XP56qBhBgDSNiabrbcbgW5UXI8r1OgjwfDU7D2rZlNZ+
+	8sA5z6083eULqO5TClafTy2G/yOsrKlUomz51YVycMng9iKDWZg1h+fTl7SK8PbYTtW2xgvZTlp0L
+	7+PNCbCHr+McM73umlZh/x7P0Fl7lVB80MFsE9+G7pvfDgqBbDB3E57pLVsYkP0RbhXmfotEOFJcD
+	9QiMmizdg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7DgI-0006Pv-LE; Wed, 03 Feb 2021 08:38:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1l7Dpf-0007r9-Fo; Wed, 03 Feb 2021 08:48:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7Dg7-0006KN-Vo; Wed, 03 Feb 2021 08:38:25 +0000
-X-UUID: 124b80bcdb2d44c6818b458c2a0c638a-20210203
+ id 1l7Dpd-0007qZ-PJ; Wed, 03 Feb 2021 08:48:14 +0000
+X-UUID: d599a5c83bd148a7a9d510142ecf64b3-20210203
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1UJ/jqCfozISMWRwRq0YM+IwVNGT624APGx+x4FtP7k=; 
- b=roPlwqGU2uT1S4Atf6WbI0MFI9W3sslDM5N9c/c2LTkS/ME946o6i6oUJJyqcdG6QeVqddTtuXXPG2ZLwk6VUyJTTXYfAi1x+NXsB59GoSp2q147HmHn65IdFohrjoh5yP27Ntd1ucfGhVTgAXszJc8aH7XDdk9ftNdx3U/vshw=;
-X-UUID: 124b80bcdb2d44c6818b458c2a0c638a-20210203
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=k+b2oxQakaQQPMDGLzL/7wJD2olR10j/ORYJj3OKdjQ=; 
+ b=MyNXWDskBFTuVFSpQGnwXMKS3ctx/70uUThWUlG1doGzaMVKy+LLsVlrHeC6z4gpscKpoG0iXWrWxnYIpQwxzuBx7TMyTjeO/YWDFiVYxgLsOJDmCjJBh5IUXoXpMPEDi0tatrKPH3mA5vgGvx6TxVM4X1OEmlZKpl1uqiVxUqE=;
+X-UUID: d599a5c83bd148a7a9d510142ecf64b3-20210203
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1645335292; Wed, 03 Feb 2021 00:38:17 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Feb 2021 00:38:03 -0800
+ with ESMTP id 728802354; Wed, 03 Feb 2021 00:48:09 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Feb 2021 00:38:01 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Feb 2021 16:38:01 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Feb 2021 16:37:59 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 3 Feb 2021 16:38:01 +0800
+ Transport; Wed, 3 Feb 2021 16:37:58 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
  <hverkuil-cisco@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -62,18 +62,17 @@ To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
  <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Fritz Koenig <frkoenig@chromium.org>, Tzung-Bi Shih
  <tzungbi@chromium.org>
-Subject: [PATCH 2/5] media: mtk-vcodec: Support 4GB~8GB range iova space for
- venc
-Date: Wed, 3 Feb 2021 16:37:49 +0800
-Message-ID: <20210203083752.12586-3-irui.wang@mediatek.com>
+Subject: [PATCH 1/5] dt-bindings: media: mtk-vcodec: Add dma-ranges property
+Date: Wed, 3 Feb 2021 16:37:48 +0800
+Message-ID: <20210203083752.12586-2-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210203083752.12586-1-irui.wang@mediatek.com>
 References: <20210203083752.12586-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210203_033824_394196_37CF58D9 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20210203_034814_021065_B14C15F9 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,28 +95,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Uses the dma_set_mask_and_coherent helper to set venc
-DMA bit mask to support 4GB~8GB range iova space.
+Adds dma-ranges property for DMA addresses translation.
 
 Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 3 +++
- 1 file changed, 3 insertions(+)
+ Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 4bee42454253..e8552673bbc7 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -361,6 +361,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		goto err_event_workq;
- 	}
- 
-+	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
-+		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
-+
- 	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, 1);
- 	if (ret) {
- 		mtk_v4l2_err("Failed to register video device");
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+index f85276e629bf..e4644f8caee9 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+@@ -23,6 +23,8 @@ Required properties:
+ - iommus : should point to the respective IOMMU block with master port as
+   argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+   for details.
++- dma-ranges : describes how the physical address space of the IOMMU maps
++  to memory.
+ One of the two following nodes:
+ - mediatek,vpu : the node of the video processor unit, if using VPU.
+ - mediatek,scp : the node of the SCP unit, if using SCP.
 -- 
 2.25.1
 _______________________________________________
