@@ -2,66 +2,63 @@ Return-Path: <SRS0=mu4u=HG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-22.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,INCLUDES_PULL_REQUEST,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 52DD7C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 15:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C98C0C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 15:18:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 07F1E64DE7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 15:01:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07F1E64DE7
+	by mail.kernel.org (Postfix) with ESMTPS id 6365B64DDA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 15:18:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6365B64DDA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OYJo364QxiQUPjMyK/9Obso89xxXdpZz1TGF6qYF3t4=; b=m+G7H/lJw3RMzSdrUneEu80X7
-	OSpJ+XrSWlpId7JmFvtxwcj9VrvY4DoxFOPAhggef0akN8D2r84zKOMToqgFnDFIH7t2V7CysIdmW
-	dy+CPby3vVF6pIvBlOwn5EvO+li6LKUlI2m3vmk/GQ54O4csZNVarjyUPCqjO1JbxzGozC/39TRo6
-	nSSawLDKjmEQENXxsTWW0g5i+6N4QVFXEvjIgX/tQl4MWxqHxTZEt/GY0jjAX1+iN1c0ZT2SkvRcU
-	YaoReb8lG+wwJqVuNPOMIC3VuM4kTQRgl85sA7br9L7G+ivAw8Ob0kfLEFol6ST37ET4P6CmLHv9n
-	vR5WdNQ3A==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XGjwE3QtHF60dwCmBMTnlNevHKM4hmAlhwif9a0j738=; b=HFCHjesVkkuhMMcrW3RGtfIk3j
+	fGPmdCvJitY8FHVMvp9ZKYpE+dDBm018UQq8MKZHENHe4fz4gv2qQXzc8mTvRCzrCqaROAOl18kIZ
+	5bACyUt0TGimuc69Bj/HJDL3P8zBni2AhLO8WrSJ9Ip61hYwUQ21A2vr/zGQp7wT9+hhUM0j0Wzsw
+	OMlGEoWXGzjRGbOttNrLYhV3au23xcH+FnLEsK4SLvRH5T9jPwPQdQqJuaYqX1knDL6AhYYcO/YnV
+	ogB2Vw28WSnFS4ou0HPMMTPbjd406eBpMLBGfD/PFXhTornqQfD61aQnprPLjKCRFliBQT70wlrmw
+	Y1H4El0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7g89-0006a9-2K; Thu, 04 Feb 2021 15:01:13 +0000
+	id 1l7gOM-0007z5-28; Thu, 04 Feb 2021 15:17:58 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7g84-0006Yn-Ru; Thu, 04 Feb 2021 15:01:09 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 4F1F364DBA;
- Thu,  4 Feb 2021 15:01:04 +0000 (UTC)
+ id 1l7gOJ-0007yb-K3
+ for linux-mediatek@lists.infradead.org; Thu, 04 Feb 2021 15:17:56 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 3BA7F64E31;
+ Thu,  4 Feb 2021 15:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612450867;
- bh=X3nDmJLqqvOAm1bXasPKKjZSRX+UA/YVvHhs0nTd4PE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Mg4bHqG1JiGD+kFpfyB7KEAJYbxncHFMReA4zfD++ymeCwsVKBWNIfoI4buqLZUoJ
- ohLIbTf2EidP0Mxo2YG6rqVGliuVwtlOAoRbQK4nJPtXk7zg7q0166rsx3lGydAqoC
- U2UoZ6WXgGwJ+HYL/oAmzNDtkyryGVFypiM5sGtafFhTCpok9WYOn4IA1VKGyI46W9
- WO8/IItQpXGt02EujFUGVoU3orj4aRW/ERrrwvCuDWssqzDE/5/DK/Ba99eunJbxnC
- DINnx62rYn9eMMFfhELFw+UDZgfcz5J4l3i1Lm8sTdjnLkMGnaYoWpFMOSfcoFjunr
- Xx4S47isXTL2w==
-Date: Thu, 4 Feb 2021 15:01:01 +0000
-From: Will Deacon <will@kernel.org>
-To: Lecopzer Chen <lecopzer@gmail.com>
-Subject: Re: [PATCH v2 1/4] arm64: kasan: don't populate vmalloc area for
- CONFIG_KASAN_VMALLOC
-Message-ID: <20210204150100.GE20815@willie-the-truck>
-References: <20210204124543.GA20468@willie-the-truck>
- <20210204144612.75582-1-lecopzer@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210204144612.75582-1-lecopzer@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ s=k20201202; t=1612451874;
+ bh=zNK209Gl4uZunzJzQ3WYCdDVLRby+xZhZaHIDYojS4Y=;
+ h=From:To:Cc:Subject:Date:From;
+ b=kBCQcYXmwfxn7ym0KuwRG6mfnPhiP9tpxuA8pxVERcCjWZFsiASgKFyTaoFYly9TF
+ K1PKTb4MHLNN3Sh3RUo9XQckgkS02vcDXIC/abV7ap8gBoOS8GaREEeq6JDhCv/Npo
+ HAJM4JqOD+kQmDDBeyVbJye71LzgDTsVKexYYjQ1zXJ+zzUYEQamI17j9/tcDbGUTr
+ k3GNNaZXEg6AYLiEkNJ0PL8Amkvyhx70jcL0xRj5k8E+b2hPCINeZxtC+NL1XajYUi
+ Z5EDRyxAzM3UcAF9II7ONafO/3j8jH1OLBwWSW8pQNIRaQr3zPZFQ2Vdu5sSDg1Pfi
+ KYpvq8HsecBig==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>
+Subject: [GIT PULL v2] mediatek drm next for 5.12
+Date: Thu,  4 Feb 2021 23:17:50 +0800
+Message-Id: <20210204151750.7550-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210204_100109_035568_9D66A00B 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20210204_101755_828170_F22096FE 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,85 +70,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: lecopzer.chen@mediatek.com, catalin.marinas@arm.com,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org, tyhicks@linux.microsoft.com,
- glider@google.com, vincenzo.frascino@arm.com, ardb@kernel.org,
- yj.chiang@mediatek.com, kasan-dev@googlegroups.com, dvyukov@google.com,
- aryabinin@virtuozzo.com, linux@roeck-us.net, andreyknvl@google.com,
- broonie@kernel.org, linux-mediatek@lists.infradead.org,
- dan.j.williams@intel.com, linux-arm-kernel@lists.infradead.org,
- gustavoars@kernel.org, akpm@linux-foundation.org, robin.murphy@arm.com,
- rppt@kernel.org
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 04, 2021 at 10:46:12PM +0800, Lecopzer Chen wrote:
-> > On Sat, Jan 09, 2021 at 06:32:49PM +0800, Lecopzer Chen wrote:
-> > > Linux support KAsan for VMALLOC since commit 3c5c3cfb9ef4da9
-> > > ("kasan: support backing vmalloc space with real shadow memory")
-> > > 
-> > > Like how the MODULES_VADDR does now, just not to early populate
-> > > the VMALLOC_START between VMALLOC_END.
-> > > similarly, the kernel code mapping is now in the VMALLOC area and
-> > > should keep these area populated.
-> > > 
-> > > Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> > > ---
-> > >  arch/arm64/mm/kasan_init.c | 23 ++++++++++++++++++-----
-> > >  1 file changed, 18 insertions(+), 5 deletions(-)
-> > > 
-> > > diff --git a/arch/arm64/mm/kasan_init.c b/arch/arm64/mm/kasan_init.c
-> > > index d8e66c78440e..39b218a64279 100644
-> > > --- a/arch/arm64/mm/kasan_init.c
-> > > +++ b/arch/arm64/mm/kasan_init.c
-> > > @@ -214,6 +214,7 @@ static void __init kasan_init_shadow(void)
-> > >  {
-> > >  	u64 kimg_shadow_start, kimg_shadow_end;
-> > >  	u64 mod_shadow_start, mod_shadow_end;
-> > > +	u64 vmalloc_shadow_start, vmalloc_shadow_end;
-> > >  	phys_addr_t pa_start, pa_end;
-> > >  	u64 i;
-> > >  
-> > > @@ -223,6 +224,9 @@ static void __init kasan_init_shadow(void)
-> > >  	mod_shadow_start = (u64)kasan_mem_to_shadow((void *)MODULES_VADDR);
-> > >  	mod_shadow_end = (u64)kasan_mem_to_shadow((void *)MODULES_END);
-> > >  
-> > > +	vmalloc_shadow_start = (u64)kasan_mem_to_shadow((void *)VMALLOC_START);
-> > > +	vmalloc_shadow_end = (u64)kasan_mem_to_shadow((void *)VMALLOC_END);
-> > > +
-> > >  	/*
-> > >  	 * We are going to perform proper setup of shadow memory.
-> > >  	 * At first we should unmap early shadow (clear_pgds() call below).
-> > > @@ -241,12 +245,21 @@ static void __init kasan_init_shadow(void)
-> > >  
-> > >  	kasan_populate_early_shadow(kasan_mem_to_shadow((void *)PAGE_END),
-> > >  				   (void *)mod_shadow_start);
-> > > -	kasan_populate_early_shadow((void *)kimg_shadow_end,
-> > > -				   (void *)KASAN_SHADOW_END);
-> > > +	if (IS_ENABLED(CONFIG_KASAN_VMALLOC)) {
-> > 
-> > Do we really need yet another CONFIG option for KASAN? What's the use-case
-> > for *not* enabling this if you're already enabling one of the KASAN
-> > backends?
-> 
-> As I know, KASAN_VMALLOC now only supports KASAN_GENERIC and also
-> KASAN_VMALLOC uses more memory to map real shadow memory (1/8 of vmalloc va).
+Hi, Dave & Daniel:
 
-The shadow is allocated dynamically though, isn't it?
+This version fix fixes tag quotation missing.
+This includes:
 
-> There should be someone can enable KASAN_GENERIC but can't use VMALLOC
-> due to memory issue.
+1. Decouple Mediatek DRM sub driver
+2. Share mtk mutex driver for both DRM and MDP
+3. Add support for SoC MT8183
 
-That doesn't sound particularly realistic to me. The reason I'm pushing here
-is because I would _really_ like to move to VMAP stack unconditionally, and
-that would effectively force KASAN_VMALLOC to be set if KASAN is in use.
+Regards,
+Chun-Kuang.
 
-So unless there's a really good reason not to do that, please can we make
-this unconditional for arm64? Pretty please?
+The following changes since commit 5c8fe583cce542aa0b84adc939ce85293de36e5e:
 
-Will
+  Linux 5.11-rc1 (2020-12-27 15:30:22 -0800)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-5.12
+
+for you to fetch changes up to 738ed4156fbac6f6eb84c23b95cf25aa57707332:
+
+  drm/mediatek: Add matrix_bits private data for ccorr (2021-02-04 22:55:46 +0800)
+
+----------------------------------------------------------------
+Mediatek DRM Next for Linux 5.12
+
+1. Decouple Mediatek DRM sub driver
+2. Share mtk mutex driver for both DRM and MDP
+3. Add support for SoC MT8183
+
+----------------------------------------------------------------
+CK Hu (15):
+      drm/mediatek: Separate getting larb device to a function
+      drm/mediatek: Move clk info from struct mtk_ddp_comp to sub driver private data
+      drm/mediatek: Move regs info from struct mtk_ddp_comp to sub driver private data
+      drm/mediatek: Remove irq in struct mtk_ddp_comp
+      drm/mediatek: Use struct cmdq_client_reg to gather cmdq variable
+      drm/mediatek: Move cmdq_reg info from struct mtk_ddp_comp to sub driver private data
+      drm/mediatek: Change sub driver interface from mtk_ddp_comp to device
+      drm/mediatek: Register vblank callback function
+      drm/mediatek: DRM driver directly refer to sub driver's function
+      drm/mediatek: Move mtk_ddp_comp_init() from sub driver to DRM driver
+      drm/mediatek: Remove redundant file including
+      drm/mediatek: Rename file mtk_drm_ddp to mtk_mutex
+      drm/mediatek: Change disp/ddp term to mutex in mtk mutex driver
+      drm/mediatek: Automatically search unclaimed mtk mutex in mtk_mutex_get()
+      soc / drm: mediatek: Move mtk mutex driver to soc folder
+
+Chun-Kuang Hu (2):
+      drm/mediatek: Get CMDQ client register for all ddp component
+      drm/mediatek: Use correct device pointer to get CMDQ client register
+
+Hsin-Yi Wang (2):
+      drm/mediatek: mtk_dpi: Create connector for bridges
+      drm/mediatek: Add mtk_dither_set_common() function
+
+Jitao Shi (1):
+      drm/mediatek: dsi: Use IRQF_TRIGGER_NONE for dsi irq trigger type
+
+Yongqiang Niu (15):
+      dt-bindings: mediatek: add description for mt8183 display
+      dt-bindings: mediatek: add description for mt8192 display
+      drm/mediatek: Check if fb is null
+      dt-bindings: mediatek: add rdma-fifo-size description for mt8183 display
+      dt-bindings: mediatek: add description for postmask
+      drm/mediatek: Fix aal size config
+      drm/mediatek: Add fifo_size into rdma private data
+      drm/mediatek: Separate gamma module
+      drm/mediatek: Add has_dither private data for gamma
+      drm/mediatek: Add support for SoC MT8183
+      drm/mediatek: Enable OVL_LAYER_SMI_ID_EN for multi-layer usecase
+      drm/mediatek: Enable dither function
+      drm/mediatek: Separate ccorr module
+      drm/mediatek: Fix ccorr size config
+      drm/mediatek: Add matrix_bits private data for ccorr
+
+ .../bindings/display/mediatek/mediatek,disp.txt    |  12 +-
+ drivers/gpu/drm/mediatek/Makefile                  |   5 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c          | 223 +++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_color.c          |  89 ++--
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h            |  92 ++++
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c          | 197 ++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            | 254 ++++++-----
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c           | 194 ++++----
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 |  57 +--
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c            | 107 ++---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h            |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h             |  28 --
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        | 503 ++++++++++-----------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        | 100 ++--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  88 ++--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   5 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c                 |  50 +-
+ drivers/soc/mediatek/Makefile                      |   1 +
+ .../mtk_drm_ddp.c => soc/mediatek/mtk-mutex.c}     | 328 +++++++-------
+ include/linux/soc/mediatek/mtk-mutex.h             |  26 ++
+ 20 files changed, 1446 insertions(+), 914 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_drv.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_ddp.h
+ rename drivers/{gpu/drm/mediatek/mtk_drm_ddp.c => soc/mediatek/mtk-mutex.c} (53%)
+ create mode 100644 include/linux/soc/mediatek/mtk-mutex.h
 
 _______________________________________________
 Linux-mediatek mailing list
