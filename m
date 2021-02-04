@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 600B3C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 13:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BFE3C433E6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 13:05:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0CCD64F58
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 13:04:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0CCD64F58
+	by mail.kernel.org (Postfix) with ESMTPS id 3705664E34
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 13:05:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3705664E34
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=116n+nNCZ1lvDgEHHh8hDer1OqcXRzNyanRaDsr68lo=; b=2NsyH3V3WuXMw0JINx8BdltTS
-	oTQXUS7B63ssprJEw7H1DC6qvDKqn8zKo5fPjzTxcUmbDx++2t3TsZknJDkOS5SuH9S1Lq9GOHJx9
-	klPpEcbQRI7Zvu1djVOXYk1DgHK6jVNcAtFGKHwyafDDEMVdwFkDZ/4vHkl88vxzlK4xsqlfcKgcz
-	VFQZS+FhTRACpAOGDK3xHpG4KddbIZA11xc8OQlWgCI9sr0yyZ5khUWm3nDiuBT2ixRU43xQFz6P7
-	+f0EiLioat6OkVyOodE0p89otTxQ2U2tWyijdy9aEq0ARWYFNOGSd6Ggu/kEKH/Uj/lvd/mDoPIY6
-	p8zHGVfPw==;
+	 bh=WDzUqLvmzDmK4+kGfLv/hTCkKnZN07Myg1U6TczBIyk=; b=t0ICyEtxZRXDUB8iuUiSMooxz
+	PmbmjWxPu6Z0QSIFrkAJXOppaGO6ubbFWC2b8BtgmU+qSs+ZVfuWEKLrDKx5ACHxymtd+OMzvZ1VQ
+	WHH3E5WTAbd9eyhfF896NjUmQSc/kVUuzaSAyu5Vww5Yc6Ma/buxomR7rViNwp3H+bInqZzG0ZDNM
+	aAr1n8Vx0W1Rs3I2Elcpmzo+ODM2L06pe/ebPz5Hs2BBaqIt+lIH5n+ipQCIW7a8+P9POZMQSqq5I
+	6it/f0u41zorBuSujaD3LyzY7ZKJFPrAbdzdhWEcJlwIeWaTgxiOJpv/zYUIrvzFvucpfdwYWG12D
+	jl+cxs3IQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7eJ5-0004R1-6o; Thu, 04 Feb 2021 13:04:23 +0000
+	id 1l7eKJ-0004h6-1q; Thu, 04 Feb 2021 13:05:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7eJ0-0004On-SS; Thu, 04 Feb 2021 13:04:20 +0000
-X-UUID: d0dff800573d42e895f39f7d001837e9-20210204
+ id 1l7eKE-0004fl-Oe; Thu, 04 Feb 2021 13:05:36 +0000
+X-UUID: f9452441fa3b40b8aa52074271c78708-20210204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=SpRqj/dknGv3nf1Y9M0DZAALgLAblS1eViDhlZGJTg4=; 
- b=rYrJ28mgUeE2ohBPZzHotCkVm9SPupNttQ3bouX/Y2Rzfuzlw0L4XZvYOnxMaJXaTEIHJ4IjDeVhmDnj3U9WsrVy196MaO7A24wEuzT1OyRyPp3386l1jindZlcS/XSWcgUgGMjfGQFP2J4Ztq2QjY08JWlX2udfzY0uvoIxd00=;
-X-UUID: d0dff800573d42e895f39f7d001837e9-20210204
+ bh=xjPlZsUgJ8zWKx32syTlMFFWZeRIUmfEgX2pBjQv40w=; 
+ b=afrLmZvNlDKffq4yrhcTZuJ9N84I3H93yxx8Vsj1JwuOAZ0KXVuiskN0QoyHRmf4Ov5t/J32K/Txy67eaZgZ7xy9UhGOOni/zP7IB9+TE/LiY8d2DncqN0oxqRDE69VpjEH5NjeWtiyW1c5vIbqoicp4vvi7t8g8M68GxnaQKsw=;
+X-UUID: f9452441fa3b40b8aa52074271c78708-20210204
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1163042676; Thu, 04 Feb 2021 05:04:10 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Feb 2021 05:04:09 -0800
+ with ESMTP id 1507283195; Thu, 04 Feb 2021 05:05:30 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Feb 2021 05:05:23 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Feb 2021 21:04:07 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Feb 2021 21:05:22 +0800
 Received: from [172.21.77.4] (172.21.77.4) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 4 Feb 2021 21:04:07 +0800
-Message-ID: <1612443847.32298.2.camel@mtksdaap41>
-Subject: Re: [PATCH v4 2/5] soc: mediatek: pwrap: add arbiter capability
+ Transport; Thu, 4 Feb 2021 21:05:22 +0800
+Message-ID: <1612443922.32298.3.camel@mtksdaap41>
+Subject: Re: [PATCH v4 4/5] soc: mediatek: pwrap: add pwrap driver for
+ MT6873/8192 SoCs
 From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Nicolas Boichat <drinkcat@chromium.org>
-Date: Thu, 4 Feb 2021 21:04:07 +0800
-In-Reply-To: <CANMq1KDsNRk0FWDO3bnbhLrXPhW7O_OVD_a7Q01+ZvuGWL3dhA@mail.gmail.com>
+Date: Thu, 4 Feb 2021 21:05:22 +0800
+In-Reply-To: <CANMq1KBXKQOj=qUMULeJsqy8bvsJLgRniuF2kqzhxpKTWCVq1w@mail.gmail.com>
 References: <1605700894-32699-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1605700894-32699-3-git-send-email-hsin-hsiung.wang@mediatek.com>
- <CANMq1KDsNRk0FWDO3bnbhLrXPhW7O_OVD_a7Q01+ZvuGWL3dhA@mail.gmail.com>
+ <1605700894-32699-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <CANMq1KBXKQOj=qUMULeJsqy8bvsJLgRniuF2kqzhxpKTWCVq1w@mail.gmail.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210204_080419_110083_D7FD10FB 
-X-CRM114-Status: GOOD (  34.86  )
+X-CRM114-CacheID: sfid-20210204_080534_997977_7F8DA02D 
+X-CRM114-Status: GOOD (  24.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,212 +96,103 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Mon, 2020-12-21 at 10:33 +0800, Nicolas Boichat wrote:
+On Mon, 2020-12-21 at 10:42 +0800, Nicolas Boichat wrote:
 > On Wed, Nov 18, 2020 at 8:08 PM Hsin-Hsiung Wang
 > <hsin-hsiung.wang@mediatek.com> wrote:
 > >
-> > Add arbiter capability for pwrap driver.
-> > The arbiter capability uses new design to judge the priority and latency
-> > for multi-channel.
-> > This patch is preparing for adding mt6873/8192 pwrap support.
+> > MT6873/8192 are highly integrated SoCs and use PMIC_MT6359 for
+> > power management. This patch adds pwrap master driver to
+> > access PMIC_MT6359.
 > >
 > > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 > > ---
-> >  drivers/soc/mediatek/mtk-pmic-wrap.c | 57 ++++++++++++++++++++++++++++++------
-> >  1 file changed, 48 insertions(+), 9 deletions(-)
+> >  drivers/soc/mediatek/mtk-pmic-wrap.c | 29 +++++++++++++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
 > >
 > > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > index c897205..5678f46 100644
+> > index 5678f46..d1cd050 100644
 > > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 > > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > @@ -25,10 +25,12 @@
+> > @@ -632,6 +632,17 @@ static int mt6797_regs[] = {
+> >         [PWRAP_DCM_DBC_PRD] =           0x1D4,
+> >  };
 > >
-> >  /* macro for wrapper status */
-> >  #define PWRAP_GET_WACS_RDATA(x)                (((x) >> 0) & 0x0000ffff)
-> > +#define PWRAP_GET_WACS_ARB_FSM(x)      (((x) >> 1) & 0x00000007)
-> >  #define PWRAP_GET_WACS_FSM(x)          (((x) >> 16) & 0x00000007)
-> >  #define PWRAP_GET_WACS_REQ(x)          (((x) >> 19) & 0x00000001)
-> >  #define PWRAP_STATE_SYNC_IDLE0         BIT(20)
-> >  #define PWRAP_STATE_INIT_DONE0         BIT(21)
-> > +#define PWRAP_STATE_INIT_DONE1         BIT(15)
-> >
-> >  /* macro for WACS FSM */
-> >  #define PWRAP_WACS_FSM_IDLE            0x00
-> > @@ -74,6 +76,7 @@
-> >  #define PWRAP_CAP_DCM          BIT(2)
-> >  #define PWRAP_CAP_INT1_EN      BIT(3)
-> >  #define PWRAP_CAP_WDT_SRC1     BIT(4)
-> > +#define PWRAP_CAP_ARB          BIT(5)
-> >
-> >  /* defines for slave device wrapper registers */
-> >  enum dew_regs {
-> > @@ -340,6 +343,8 @@ enum pwrap_regs {
-> >         PWRAP_DCM_DBC_PRD,
-> >         PWRAP_EINT_STA0_ADR,
-> >         PWRAP_EINT_STA1_ADR,
-> > +       PWRAP_SWINF_2_WDATA_31_0,
-> > +       PWRAP_SWINF_2_RDATA_31_0,
-> >
-> >         /* MT2701 only regs */
-> >         PWRAP_ADC_CMD_ADDR,
-> > @@ -1108,14 +1113,22 @@ static void pwrap_writel(struct pmic_wrapper *wrp, u32 val, enum pwrap_regs reg)
-> >
-> >  static bool pwrap_is_fsm_idle(struct pmic_wrapper *wrp)
-> >  {
-> > -       u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> > +       u32 val;
-> > +
-> > +       val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> > +       if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> > +               return PWRAP_GET_WACS_ARB_FSM(val) == PWRAP_WACS_FSM_IDLE;
-> >
-> >         return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_IDLE;
-> >  }
-> >
-> >  static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
-> >  {
-> > -       u32 val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> > +       u32 val;
-> > +
-> > +       val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> > +       if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> > +               return PWRAP_GET_WACS_ARB_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
+> > +static int mt6873_regs[] = {
+> > +       [PWRAP_INIT_DONE2] =            0x0,
 > 
-> This code is now copied twice. Do you think it'd be better to create a
-> new function?
+> I don't have the datasheet for the PWRAP interface, is this register
+> at offset 0x0 real?
 > 
-> static u32 pwrap_get_fsm_state(struct pmic_wrapper *wrp) {
->    if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
->       return PWRAP_GET_WACS_ARB_FSM(val);
->    else
->       return PWRAP_GET_WACS_FSM(val);
-> }
+> If so, I'm concerned that mt6873_regs only defines very few registers
+> offsets, so the init code will do a _lot_ writes at register address
+> 0x0 (e.g. for all the undefined values in this array: PWRAP_WACS0_EN,
+> PWRAP_WACS1_EN, PWRAP_WACS2_EN, etc, etc.)
 > 
 
-Thanks for the review. I will update it in the next patch.
+The register for the init_done is 0x0.
+However, the pwrap driver of mt6873 only checks this register in the
+beginning and wouldn't check it again.
+In other words, the  register is the first register we check, so I think
+there is no problem for it.
 
-> >
-> >         return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
-> >  }
-> > @@ -1165,6 +1178,7 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
-> >  static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
-> >  {
-> >         int ret;
-> > +       u32 val;
-> >
-> >         ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
-> >         if (ret) {
-> > @@ -1172,13 +1186,21 @@ static int pwrap_read16(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
-> >                 return ret;
+> > +       [PWRAP_TIMER_EN] =              0x3E0,
+> > +       [PWRAP_INT_EN] =                0x448,
+> > +       [PWRAP_WACS2_CMD] =             0xC80,
+> > +       [PWRAP_SWINF_2_WDATA_31_0] =    0xC84,
+> > +       [PWRAP_SWINF_2_RDATA_31_0] =    0xC94,
+> > +       [PWRAP_WACS2_VLDCLR] =          0xCA4,
+> > +       [PWRAP_WACS2_RDATA] =           0xCA8,
+> > +};
+> > +
+> >  static int mt7622_regs[] = {
+> >         [PWRAP_MUX_SEL] =               0x0,
+> >         [PWRAP_WRAP_EN] =               0x4,
+> > @@ -1050,6 +1061,7 @@ enum pwrap_type {
+> >         PWRAP_MT6765,
+> >         PWRAP_MT6779,
+> >         PWRAP_MT6797,
+> > +       PWRAP_MT6873,
+> >         PWRAP_MT7622,
+> >         PWRAP_MT8135,
+> >         PWRAP_MT8173,
+> > @@ -1512,6 +1524,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+> >         case PWRAP_MT7622:
+> >                 pwrap_writel(wrp, 0, PWRAP_CIPHER_EN);
+> >                 break;
+> > +       case PWRAP_MT6873:
+> >         case PWRAP_MT8183:
+> >                 break;
 > >         }
+> > @@ -1948,6 +1961,19 @@ static const struct pmic_wrapper_type pwrap_mt6797 = {
+> >         .init_soc_specific = NULL,
+> >  };
 > >
-> > -       pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
-> > +       if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> > +               val = adr;
-> > +       else
-> > +               val = (adr >> 1) << 16;
-> > +       pwrap_writel(wrp, val, PWRAP_WACS2_CMD);
-> >
-> >         ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_vldclr);
-> >         if (ret)
-> >                 return ret;
-> >
-> > -       *rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp, PWRAP_WACS2_RDATA));
-> > +       if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> > +               val = pwrap_readl(wrp, PWRAP_SWINF_2_RDATA_31_0);
-> > +       else
-> > +               val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> > +       *rdata = PWRAP_GET_WACS_RDATA(val);
-> >
-> >         pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
-> >
-> > @@ -1228,8 +1250,13 @@ static int pwrap_write16(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
-> >                 return ret;
-> >         }
-> >
-> > -       pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
-> > -                    PWRAP_WACS2_CMD);
-> > +       if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB)) {
-> > +               pwrap_writel(wrp, wdata, PWRAP_SWINF_2_WDATA_31_0);
-> > +               pwrap_writel(wrp, BIT(29) | adr, PWRAP_WACS2_CMD);
-> > +       } else {
-> > +               pwrap_writel(wrp, BIT(31) | ((adr >> 1) << 16) | wdata,
-> > +                            PWRAP_WACS2_CMD);
-> > +       }
-> >
-> >         return 0;
-> >  }
-> > @@ -2022,6 +2049,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
-> >  static int pwrap_probe(struct platform_device *pdev)
-> >  {
-> >         int ret, irq;
-> > +       u32 mask_done;
-> >         struct pmic_wrapper *wrp;
-> >         struct device_node *np = pdev->dev.of_node;
-> >         const struct of_device_id *of_slave_id = NULL;
-> > @@ -2116,14 +2144,21 @@ static int pwrap_probe(struct platform_device *pdev)
-> >                 }
-> >         }
-> >
-> > -       if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_INIT_DONE0)) {
-> > +       if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> > +               mask_done = PWRAP_STATE_INIT_DONE1;
-> > +       else
-> > +               mask_done = PWRAP_STATE_INIT_DONE0;
+> > +static const struct pmic_wrapper_type pwrap_mt6873 = {
+> > +       .regs = mt6873_regs,
+> > +       .type = PWRAP_MT6873,
+> > +       .arb_en_all = 0x777f,
+> > +       .int_en_all = BIT(4) | BIT(5),
+> > +       .int1_en_all = 0,
+> > +       .spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+> > +       .wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+> > +       .caps = PWRAP_CAP_ARB,
+> > +       .init_reg_clock = pwrap_common_init_reg_clock,
+> > +       .init_soc_specific = NULL,
+> > +};
 > > +
-> > +       if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done)) {
-> >                 dev_dbg(wrp->dev, "initialization isn't finished\n");
-> >                 ret = -ENODEV;
-> >                 goto err_out2;
-> >         }
-> >
-> >         /* Initialize watchdog, may not be done by the bootloader */
-> > -       pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> > +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> > +               pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> > +
-> 
-> To expand on Matthias' question on v3
-> (https://patchwork.kernel.org/project/linux-mediatek/patch/1600686235-27979-3-git-send-email-hsin-hsiung.wang@mediatek.com/):
-> is there any PWRAP implementation where a design with an arbiter is
-> still able to control the watchdog?
-> 
-> If not, at the very least, it'd be good to expand the comment above
-> (e.g. "designs with arbiter support cannot change the watchdog
-> timer").
-> 
-
-No, there is no other wrap design with an arbiter to control the
-watchdog.
-Thanks for the comment, I will update the comment in next patch.
-
-> >         /*
-> >          * Since STAUPD was not used on mt8173 platform,
-> >          * so STAUPD of WDT_SRC which should be turned off
-> > @@ -2132,7 +2167,11 @@ static int pwrap_probe(struct platform_device *pdev)
-> >         if (HAS_CAP(wrp->master->caps, PWRAP_CAP_WDT_SRC1))
-> >                 pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN_1);
-> >
-> > -       pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-> > +       if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
-> 
-> Please invert this if test:
-> 
-> if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
->    ... 0x3 ...
-> else
->    ... 0x1 ...
-> 
-
-Thanks for the review. I will update it in the next patch.
-
-> > +               pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-> > +       else
-> > +               pwrap_writel(wrp, 0x3, PWRAP_TIMER_EN);
-> > +
-> >         pwrap_writel(wrp, wrp->master->int_en_all, PWRAP_INT_EN);
-> >         /*
-> >          * We add INT1 interrupt to handle starvation and request exception
+> >  static const struct pmic_wrapper_type pwrap_mt7622 = {
+> >         .regs = mt7622_regs,
+> >         .type = PWRAP_MT7622,
+> > @@ -2026,6 +2052,9 @@ static const struct of_device_id of_pwrap_match_tbl[] = {
+> >                 .compatible = "mediatek,mt6797-pwrap",
+> >                 .data = &pwrap_mt6797,
+> >         }, {
+> > +               .compatible = "mediatek,mt6873-pwrap",
+> > +               .data = &pwrap_mt6873,
+> > +       }, {
+> >                 .compatible = "mediatek,mt7622-pwrap",
+> >                 .data = &pwrap_mt7622,
+> >         }, {
 > > --
 > > 2.6.4
 > > _______________________________________________
