@@ -1,63 +1,75 @@
-Return-Path: <SRS0=J04E=HF=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=mu4u=HG=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-22.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA3B5C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 23:23:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 604A3C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 01:11:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3BA0264F43
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Feb 2021 23:23:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BA0264F43
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id D052F64F41
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Feb 2021 01:11:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D052F64F41
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=p3YJXgm2MKiOwj8vlMOEEM0MGmcDq0UzPDIqxaJNAOo=; b=swBlh/TdeuDqPD5mTDZ6yRi8Bp
-	onoeSXAVgvGDM6Kazw0QSlGvz5ErERHcDfqoXYLdavV9zi43m2Dza2SaVIVGNAFnx9DrMebVtzswH
-	0U6Nqo/VVmwhPxJBHxL9lr+trjSUn+bQrc0iMORqi3v9wQVzd9uc46/4fd0pcVaz2KmwwSzeEUkBS
-	Pt3AgvvtfkH7DTwjEKl8dqIVKQqm5Cs13xMRubr5IILiMaCMp9zyYv02e1r0/cGfwp2INMMOLjhHP
-	23Mi+6hu0ZCLaMxOYeEhqs4h9+ZhpgdrhKw0Az4YtKmtvnO/Y/QFN+Bp83ApmfCtDSA4QEdFkdgNx
-	JxQKiQbA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Rr6lgRFi3dNwnF8vg46EMcFlFBHrlbHOBNbMBrKhtPA=; b=Tgp3qnOC/MIJ21VeuKSQlSwnv
+	TUheE5V73p63TKuYoMW6GyGF3P9lv0Zjnn963YV1TNTmfspDem5U10UTg1bW4mL+s31WiOTGuTQbA
+	7uDKjRICeVnavMyhtvqbxgTpRqtk1vjW4Ezo874hfbAM0p/JN0nCHGks3JfDROf9q7Lc1CxTo0vyT
+	nNy2YUBXCtW8XX6SCTQ7SKF5aK4SK1f8oIEmWcnCEkXcCNwcBfOgLUnoklkjU5WDkJpW8Sm/p4eb3
+	t/aBMqbzKBoRh7b/OC0UZLbK/vtuT/HhcIWLV+BhJYskao4pOQAHzWj9mJWjbkoGUvVaU14sI+LLC
+	hVwnQUSaw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7RU7-0007KV-Qa; Wed, 03 Feb 2021 23:22:55 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l7TBK-0005qT-0q; Thu, 04 Feb 2021 01:11:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7RU4-0007JM-MV
- for linux-mediatek@lists.infradead.org; Wed, 03 Feb 2021 23:22:53 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E296F64F43;
- Wed,  3 Feb 2021 23:22:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612394571;
- bh=sdoU4o/jrWCqj5M7F6adRorLtNSuMIzkqhUyKON7ydM=;
- h=From:To:Cc:Subject:Date:From;
- b=GW7I1MRfHATifZCy4VzzMhELkaROQOy3lvoyNiJxv0r2V2Ezp4cCz2nTQ/vA5cAUK
- SwPtAV3iyMn0jX/bmzGI4QfIrWB43NASnF80WjrN4Q7isS6qpuIHcDjO7hFpZ7IIZj
- hu9fGvvxC8Mm/Id2UNtg/v80YhGJsquoFlxqEHMGfSEchVRQoKVkh19QZd8tDccSuN
- lnjbY+YQNv1HNMf5al2qOYCxaDx7rbBP6MsaLK6M10Ko9swgbgY0/z69y9DrOM9TQG
- HzEHl/Tdy7UMNn6FDZzzDxoULgHWxGA6RQ+YQyEnMWteYhAnDOAF/52NzuVEcL4YXq
- e9O5IPXS8HC5Q==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Subject: [GIT PULL] mediatek drm next for 5.12
-Date: Thu,  4 Feb 2021 07:22:47 +0800
-Message-Id: <20210203232247.30902-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.17.1
+ id 1l7TBF-0005ps-Hs; Thu, 04 Feb 2021 01:11:35 +0000
+X-UUID: 463d7b42f4a34ef58aa16e6941433732-20210203
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Mn/ebbC9LsmEJbQuuUcinkZOL/S9ftYROo8U9Oj+0Po=; 
+ b=tHb7ekMh+g+dP+Jk60pyz+yKaHk3fCc56qBeBQK9Da1JyPSbOzrjhqg3Ti7O/7tSdxnOEMgN5T1p6/JKGJikRsLYaEEc/Zw010MdHidryOcfdXdyroDscCemy3gPxzd0MKx2wrFinRxCtvbW1ZY8LNagR46skC519oC4OS2keUw=;
+X-UUID: 463d7b42f4a34ef58aa16e6941433732-20210203
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1740164396; Wed, 03 Feb 2021 17:11:23 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Feb 2021 17:11:20 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 4 Feb 2021 09:11:10 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 4 Feb 2021 09:11:09 +0800
+Message-ID: <1612401069.2524.14.camel@mhfsdcap03>
+Subject: Re: [PATCH][next] iommu/mediatek: Fix unsigned domid comparison
+ with less than zero
+From: Yong Wu <yong.wu@mediatek.com>
+To: Colin King <colin.king@canonical.com>
+Date: Thu, 4 Feb 2021 09:11:09 +0800
+In-Reply-To: <20210203135936.23016-1-colin.king@canonical.com>
+References: <20210203135936.23016-1-colin.king@canonical.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: 9BDBFE8346E958A37D1A2EE99CA3980372E31BF52999FC51717954E6E3C6FFB92000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210203_182252_906802_AC83884B 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20210203_201133_793603_C7EA6E41 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,117 +81,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jitao Shi <jitao.shi@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>
-MIME-Version: 1.0
+Cc: Anan sun <anan.sun@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, Chao
+ Hao <chao.hao@mediatek.com>, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, Matthias
+ Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+On Wed, 2021-02-03 at 13:59 +0000, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> Currently the check for domid < 0 is always false because domid
+> is unsigned.  Fix this by making it signed.
+> 
+> Addresses-CoverityL ("Unsigned comparison against 0")
+> Fixes: ab1d5281a62b ("iommu/mediatek: Add iova reserved function")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
 
-This includes:
+Thanks for the fix.
 
-1. Decouple Mediatek DRM sub driver
-2. Share mtk mutex driver for both DRM and MDP
-3. Add support for SoC MT8183
+Reviewed-by: Yong Wu <yong.wu@mediatek.com>
 
-Regards,
-Chun-Kuang.
-
-The following changes since commit 5c8fe583cce542aa0b84adc939ce85293de36e5e:
-
-  Linux 5.11-rc1 (2020-12-27 15:30:22 -0800)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-5.12
-
-for you to fetch changes up to f289eb1db7d7e6132c3ecf5049435ace2967b0fc:
-
-  drm/mediatek: Add matrix_bits private data for ccorr (2021-02-03 23:54:07 +0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 5.12
-
-1. Decouple Mediatek DRM sub driver
-2. Share mtk mutex driver for both DRM and MDP
-3. Add support for SoC MT8183
-
-----------------------------------------------------------------
-CK Hu (15):
-      drm/mediatek: Separate getting larb device to a function
-      drm/mediatek: Move clk info from struct mtk_ddp_comp to sub driver private data
-      drm/mediatek: Move regs info from struct mtk_ddp_comp to sub driver private data
-      drm/mediatek: Remove irq in struct mtk_ddp_comp
-      drm/mediatek: Use struct cmdq_client_reg to gather cmdq variable
-      drm/mediatek: Move cmdq_reg info from struct mtk_ddp_comp to sub driver private data
-      drm/mediatek: Change sub driver interface from mtk_ddp_comp to device
-      drm/mediatek: Register vblank callback function
-      drm/mediatek: DRM driver directly refer to sub driver's function
-      drm/mediatek: Move mtk_ddp_comp_init() from sub driver to DRM driver
-      drm/mediatek: Remove redundant file including
-      drm/mediatek: Rename file mtk_drm_ddp to mtk_mutex
-      drm/mediatek: Change disp/ddp term to mutex in mtk mutex driver
-      drm/mediatek: Automatically search unclaimed mtk mutex in mtk_mutex_get()
-      soc / drm: mediatek: Move mtk mutex driver to soc folder
-
-Chun-Kuang Hu (2):
-      drm/mediatek: Get CMDQ client register for all ddp component
-      drm/mediatek: Use correct device pointer to get CMDQ client register
-
-Hsin-Yi Wang (2):
-      drm/mediatek: mtk_dpi: Create connector for bridges
-      drm/mediatek: Add mtk_dither_set_common() function
-
-Jitao Shi (1):
-      drm/mediatek: dsi: Use IRQF_TRIGGER_NONE for dsi irq trigger type
-
-Yongqiang Niu (15):
-      dt-bindings: mediatek: add description for mt8183 display
-      dt-bindings: mediatek: add description for mt8192 display
-      drm/mediatek: Check if fb is null
-      dt-bindings: mediatek: add rdma-fifo-size description for mt8183 display
-      dt-bindings: mediatek: add description for postmask
-      drm/mediatek: Fix aal size config
-      drm/mediatek: Add fifo_size into rdma private data
-      drm/mediatek: Separate gamma module
-      drm/mediatek: Add has_dither private data for gamma
-      drm/mediatek: Add support for SoC MT8183
-      drm/mediatek: Enable OVL_LAYER_SMI_ID_EN for multi-layer usecase
-      drm/mediatek: Enable dither function
-      drm/mediatek: Separate ccorr module
-      drm/mediatek: Fix ccorr size config
-      drm/mediatek: Add matrix_bits private data for ccorr
-
- .../bindings/display/mediatek/mediatek,disp.txt    |  12 +-
- drivers/gpu/drm/mediatek/Makefile                  |   5 +-
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c          | 223 +++++++++
- drivers/gpu/drm/mediatek/mtk_disp_color.c          |  89 ++--
- drivers/gpu/drm/mediatek/mtk_disp_drv.h            |  92 ++++
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c          | 197 ++++++++
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            | 254 ++++++-----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c           | 194 ++++----
- drivers/gpu/drm/mediatek/mtk_dpi.c                 |  57 +--
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c            | 107 ++---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h            |   1 -
- drivers/gpu/drm/mediatek/mtk_drm_ddp.h             |  28 --
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        | 503 ++++++++++-----------
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        | 100 ++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  88 ++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   5 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c                 |  50 +-
- drivers/soc/mediatek/Makefile                      |   1 +
- .../mtk_drm_ddp.c => soc/mediatek/mtk-mutex.c}     | 328 +++++++-------
- include/linux/soc/mediatek/mtk-mutex.h             |  26 ++
- 20 files changed, 1446 insertions(+), 914 deletions(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_drv.h
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_gamma.c
- delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_ddp.h
- rename drivers/{gpu/drm/mediatek/mtk_drm_ddp.c => soc/mediatek/mtk-mutex.c} (53%)
- create mode 100644 include/linux/soc/mediatek/mtk-mutex.h
+> ---
+>  drivers/iommu/mtk_iommu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 0ad14a7604b1..823d719945b2 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -640,7 +640,7 @@ static void mtk_iommu_get_resv_regions(struct device *dev,
+>  				       struct list_head *head)
+>  {
+>  	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+> -	unsigned int domid = mtk_iommu_get_domain_id(dev, data->plat_data), i;
+> +	int domid = mtk_iommu_get_domain_id(dev, data->plat_data), i;
+>  	const struct mtk_iommu_iova_region *resv, *curdom;
+>  	struct iommu_resv_region *region;
+>  	int prot = IOMMU_WRITE | IOMMU_READ;
 
 _______________________________________________
 Linux-mediatek mailing list
