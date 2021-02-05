@@ -2,75 +2,73 @@ Return-Path: <SRS0=sOPI=HH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 139F6C433E6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Feb 2021 01:28:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39E92C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Feb 2021 01:28:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9B25064F4A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Feb 2021 01:28:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B25064F4A
+	by mail.kernel.org (Postfix) with ESMTPS id AFE2A64FB0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Feb 2021 01:28:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFE2A64FB0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=L2X629/Em5bwoQqg2aGBeCWz3JASCnPjoYPPfVAinoQ=; b=AhjZMHYY1WeyQBumokyCHZNrE
-	eOz4sWx630N5CJ3+uLeD/lUL5MS1bLWBC/lcLI/RSkLOp7coAxNz4fE0ovTNDN6BiOle4dK1aDiiE
-	kKxJM+q4awgP/q42UsCwbJRSHt/8oyolKl3cbxj0LXfsXhI3UKf7qPVDUwBBBBrHJTgAI+irVinKI
-	H4qAKZv3dBjFZMgad22LDB0Q2/ES9L7HUvYUeWNtmskbV/2AYOCwmKZFKJI9/i9A27jlj7LyMJwLd
-	H/lmJ9nibrZE3psaneBUfG0ERKAuh3sB3qedvCuKKfh5md0CSyY+/O1Id+KiGiXFv3ehVJwQdb89j
-	DJT8/aeKQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CnjOA+6Tk1kkK6GXYJTMxAU9hTggz1zV7v29bKlIDy4=; b=D9ulY/LnV30JRJFcdpcv9xIbXP
+	woAvioc1saixU0Eq1QCxtGAUtC2fIpTUcHoVdRZo8HVNkEYjuLzmG/SjocMYBA/SvJ3OPuOoGNtE7
+	VxYr1Xu09mDc1fSKPjDQJdWMRJNtG/GyfySmNRpdHRFtfZDSPg15/FS8X8pLa0W48U6I9x2IAmRPV
+	CZ9kCAj6yexAkZgTM7K2mrfysiA9SYJA3wVga9K3pnD70G7ctzdbD9rKAVOeATbzbcrQqBIAQKY9B
+	LnHAL4lXpABeuAFmQhXJVh7zJ/+KJ00vwPbJZAhM98fb8fqJeeuhqlF9efHlm2GmsUUTUDzot0GWG
+	vpdU1HsA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7pvL-0003zl-BC; Fri, 05 Feb 2021 01:28:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1l7pvI-0003z9-LC; Fri, 05 Feb 2021 01:28:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7pv9-0003vi-DH; Fri, 05 Feb 2021 01:28:28 +0000
-X-UUID: 3cef121820ba4484a2651c446d9d80f2-20210204
+ id 1l7pv6-0003vj-Eo; Fri, 05 Feb 2021 01:28:27 +0000
+X-UUID: 3384097c05bb468889249e4e96383753-20210204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=80RkZM/1tEXbpA/y69wQT1gRsOu2BrgVBVj3TNXnSzQ=; 
- b=ZmR9HQtAf8RZoWzUcNAbHE19FH8TtrY9fOM2mRbgduPUTi9XyYfCusYVBLeVqWa8NEjpRVW1ch6PPL4jYOp4jNbx8QR7omdCCykywHPuYS+eh/GLeH4eesljPwQs5oZkKJJrkXRi0Z4MLBawYKi5kutsGYV9Jl3tKD/DRnp79e0=;
-X-UUID: 3cef121820ba4484a2651c446d9d80f2-20210204
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=OxFj7RCDhSyOfN/nFIfc6z3XRfwJpdtzhDOY8q9FU6o=; 
+ b=FK46S2uMqSWss/FhZv7FmsYXcivZFRhsVC6/PjlzgAz3rSqebJ/gjW1DVvf/qVcZhWjgM5rw0mCmOVOlyqjd9FWr5RLXpN3fa0cNFnnJJB0BSXmitB1FDd07SQehu/Jbz8Mwgm/JT2aU4H+pplKioDa1mjnTH8QA+peMtzmPZdE=;
+X-UUID: 3384097c05bb468889249e4e96383753-20210204
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 943914445; Thu, 04 Feb 2021 17:28:17 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1078365446; Thu, 04 Feb 2021 17:28:16 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 4 Feb 2021 17:28:15 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 5 Feb 2021 09:28:14 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Feb 2021 09:28:13 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 5 Feb 2021 09:28:14 +0800
+ Frontend Transport; Fri, 5 Feb 2021 09:28:13 +0800
 From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, <drinkcat@chromium.org>, Argus Lin
  <argus.lin@mediatek.com>
-Subject: [PATCH v5 3/5] dt-bindings: mediatek: add compatible for MT6873/8192
- pwrap
-Date: Fri, 5 Feb 2021 09:28:09 +0800
-Message-ID: <1612488491-6149-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH v5 0/5] Add PMIC wrapper support for Mediatek MT6873/8192 SoC
+ IC
+Date: Fri, 5 Feb 2021 09:28:06 +0800
+Message-ID: <1612488491-6149-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1612488491-6149-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1612488491-6149-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210204_202827_599035_837F0E47 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20210204_202825_290814_B9E359A5 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,29 +91,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds dt-binding documentation of pwrap for Mediatek MT6873/8192
-SoCs Platform.
+This series adds support for new SoC MT6873/8192 to the pmic-wrap driver.
 
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
-changes since v4: no changes
----
- Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
- 1 file changed, 1 insertion(+)
+changes since v4:
+- refine code about PWRAP_CAP_ARB capacity for better code quality.
+- update correct pwrap node in the Mediatek MT8192 dtsi.
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-index ecac2bbeae45..8051c17e640e 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-@@ -22,6 +22,7 @@ Required properties in pwrap device node.
- 	"mediatek,mt6765-pwrap" for MT6765 SoCs
- 	"mediatek,mt6779-pwrap" for MT6779 SoCs
- 	"mediatek,mt6797-pwrap" for MT6797 SoCs
-+	"mediatek,mt6873-pwrap" for MT6873/8192 SoCs
- 	"mediatek,mt7622-pwrap" for MT7622 SoCs
- 	"mediatek,mt8135-pwrap" for MT8135 SoCs
- 	"mediatek,mt8173-pwrap" for MT8173 SoCs
+Hsin-Hsiung Wang (5):
+  soc: mediatek: pwrap: use BIT() macro
+  soc: mediatek: pwrap: add arbiter capability
+  dt-bindings: mediatek: add compatible for MT6873/8192 pwrap
+  soc: mediatek: pwrap: add pwrap driver for MT6873/8192 SoCs
+  arm64: dts: mt8192: add pwrap node
+
+ .../bindings/soc/mediatek/pwrap.txt           |  1 +
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 12 +++
+ drivers/soc/mediatek/mtk-pmic-wrap.c          | 97 ++++++++++++++++---
+ 3 files changed, 95 insertions(+), 15 deletions(-)
+
 -- 
 2.18.0
 _______________________________________________
