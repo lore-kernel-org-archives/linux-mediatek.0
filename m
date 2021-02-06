@@ -1,80 +1,79 @@
-Return-Path: <SRS0=sOPI=HH=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=qWQ0=HI=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B043EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Feb 2021 22:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41257C433E6
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Feb 2021 03:02:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4700A64EEC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Feb 2021 22:04:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4700A64EEC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id C52AF64FAE
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Feb 2021 03:02:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C52AF64FAE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GhgydMJ2QJMlDAKu/D4VJWg875DjNkmk0kwunQHaXJo=; b=nA07huFAd0xe2Xp3xYIFnSh8F
-	maw02vrK7K0kGijSe7fCt9zYvjXsSkM8/Aq26HE4pcmTmEP9BFwtdKlRnRaopnUfISPnDgLMR4kFU
-	EdAf+7v90mOhA/cx4lQ+0DgzmIsQyY4F5BVHMqi5clzVmGL6NAHJ3EdRJhhMGZ1XXXu7vu9aaqduT
-	iwQiEjWl+X+2om0ZCCtEt6zZhwUkhg/lmCcCTkttrm0wu/mfi16O4DKLL481zzPEXxDktRlc8fOar
-	R4KOccVe+wvit4rCXFLXqMgPoDs1+OY8+kdM/NMykRtlbz4xE8sls1YaAqo+GevK7LGaezDa1iF//
-	Xiyn8CmLA==;
+	 bh=Mjpg/IJWxMmiM8QzXcIJ8lSJt8j50w5bsLso1jrxALY=; b=FXbhXVCqLln3tQVu9+q+DTQfF
+	mOaMjoD650ZaOhYEYtLXCrVFaR/Mn/HA8+QwFz/laVNayYrzJqlHIuC5NTPBYoKIp967jMbY/ckb3
+	NTymH6iAGxeRlmEIE3/qYhuG7mms/oJla3UAXcRHyFZprnNLFdMuyZ1zW0RZoZ+Ixt60JweE3JGCl
+	e80yNVm0OT7MhC5uVyVKFbgxCdiP80Zu9Xx6BoSwrcAsm24gWR92B0wqf2sjfXKrcNmN28rFvkK3o
+	iZn+C5Czndwz9N+mhmq2gf4RIsFNN40ZK8NQn4Z82BFb/GE9hKrEXMJOe+cy62Wr+6d9QxGN5jliP
+	mrOPCkfKQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l89DU-00037B-VQ; Fri, 05 Feb 2021 22:04:41 +0000
-Received: from mail-oi1-f171.google.com ([209.85.167.171])
+	id 1l8DrV-0008Ms-QX; Sat, 06 Feb 2021 03:02:17 +0000
+Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l89DS-00036f-P7; Fri, 05 Feb 2021 22:04:39 +0000
-Received: by mail-oi1-f171.google.com with SMTP id h6so9127752oie.5;
- Fri, 05 Feb 2021 14:04:38 -0800 (PST)
+ id 1l8DrR-0008LU-2G
+ for linux-mediatek@lists.infradead.org; Sat, 06 Feb 2021 03:02:14 +0000
+Received: by mail-ua1-x92d.google.com with SMTP id c8so2773325uae.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 05 Feb 2021 19:02:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vuPLugpx3nVqN901hZhHAJ68fe+2jLjEwlOR0tJDXYA=;
+ b=F6opSYqv6jZOIDMw2g1ehsjaiUwtHudjb08fDacbv/EDpLlwSpy4IMI9fFhh8IsrUR
+ 6z2eJKGywevwZfoGwCPGT5Nm9kzq//cAUkMjmj4ttLr0H4RuMnf0xAHFZ3WXDK2CX4Jv
+ kxl/y2itpTtbDt2HwFVoyjCBpFYEnW27WBFeQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=oYX3STVGOutn/ODTJ1Chx6wd1ikGLIpdQAWlo27fcnA=;
- b=GUZNLJHB4OqHPDqPK201lrQsdAKbgnATIs21nlgqg7i2Vb3CPJaSAChjNX3sg4qMen
- o9HbVXAG/RADlWh4grnfiwQME8L3iLR3hh905ocr73/vgOgyWkRemYHxcNI7ffxmTejQ
- TwPB03oJHmLd97rzBuipOTKikO7ZLUa1DZAbfREOmZ4m2y3wOrs+BlSwcu4jCGBjCmpY
- T9cJwLN+AjCjpVOQlFED4pdyQlWz0+J+d5HsKQkIuGMB/hGyo2AgxPhs68A8ptivztZE
- 0VxjrxZZreH8WePKzwzpFf549zTZlSxBGXY5uOXJY9ZwnlgPLPN5jjVxGsak9v1YvV68
- MXhw==
-X-Gm-Message-State: AOAM530P/cPeguybToiYvpYvLQM329zXWE+KXWYl0JPtyoHEC9wmVhCk
- +VxHN7aAur4Z6pO5sSXvPw==
-X-Google-Smtp-Source: ABdhPJx7yvm1O6oqJ0lLXbtfmYGfoeVWzvCVL9cCxLieYLbGmE6b1ddW84xEXKVGBDviVnEhIIsV6Q==
-X-Received: by 2002:a05:6808:918:: with SMTP id
- w24mr4534554oih.20.1612562677933; 
- Fri, 05 Feb 2021 14:04:37 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id u15sm1970378oiu.28.2021.02.05.14.04.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 14:04:36 -0800 (PST)
-Received: (nullmailer pid 3833547 invoked by uid 1000);
- Fri, 05 Feb 2021 22:04:34 -0000
-Date: Fri, 5 Feb 2021 16:04:34 -0600
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH RESEND v5 3/8] dt-bindings: mfd: Add compatible for the
- MediaTek MT6359 PMIC
-Message-ID: <20210205220434.GA3833495@robh.at.kernel.org>
-References: <1611913781-23460-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1611913781-23460-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vuPLugpx3nVqN901hZhHAJ68fe+2jLjEwlOR0tJDXYA=;
+ b=E+5GepO7rQrK3YbRs1QUYun1t5KLb/jceGUz8QdIsmP/KQb3kKuJhrw9LGtmQjtxOY
+ dKm9Mp/vH/x2ZtJNZTmN+U4lroBldZznGWe83bwffJ3rDNGwaPD4fdLSKjdd5crykmsh
+ GcPr4aRFloGRRq6m3y6sjysUjsn5IpmJqtyavDr+mV8Lq6DX1iFFZOB89wGeFW2bAVVd
+ LV0s5nVctgf8X/PAFgNfS+A4zs5CaL9gaxgASBDAyxm6CDvaiqon38ajJK5K5xuFtBgQ
+ /FiiYtIoLz1fluOa6JlHBBQt0AfwkmPMAiCSBOGsLt7h3nr+TV99EzQTACHwQrBM6DaZ
+ kn1A==
+X-Gm-Message-State: AOAM530+PgdtbYUazZzlhIZQL/lJC6xArTB4NZPb6aL5FIbpVhN32N+b
+ l2FdXzInhtQIAgnuy3mwKyAbx0DqSh1aSDTe30nCyg==
+X-Google-Smtp-Source: ABdhPJx8dqL+kHCdeyZ4DlETrA6syQ9QDsjU5KGZ5QnyvgeCk+5tYIv9ZfqZvBXd6LQikBo/7yMyvzQGpgRlw96uTRc=
+X-Received: by 2002:ab0:20d:: with SMTP id 13mr2631762uas.27.1612580529357;
+ Fri, 05 Feb 2021 19:02:09 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1611913781-23460-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+References: <20210126011759.1605641-1-drinkcat@chromium.org>
+ <20210126091747.v11.1.Ie74d3355761aab202d4825ac6f66d990bba0130e@changeid>
+ <20210205175543.GA3363048@robh.at.kernel.org>
+In-Reply-To: <20210205175543.GA3363048@robh.at.kernel.org>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Sat, 6 Feb 2021 11:01:57 +0800
+Message-ID: <CANMq1KAshVgWPp=4KpjkwfAD=N4ZOw0xBCZHkfGob-TY0RCGew@mail.gmail.com>
+Subject: Re: [PATCH v11 1/4] dt-bindings: gpu: mali-bifrost: Add Mediatek
+ MT8183
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210205_170438_859644_BE936DDB 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20210205_220213_125160_868BE037 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,35 +85,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Sean Wang <sean.wang@mediatek.com>, srv_heupstream@mediatek.com,
- Alessandro Zummo <a.zummo@towertech.it>, Ran Bi <ran.bi@mediatek.com>,
- Fei Shao <fshao@chromium.org>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>,
- Yuchen Huang <yuchen.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Devicetree List <devicetree@vger.kernel.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, Fei Shao <fshao@chromium.org>,
+ David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Kristian Kristensen <hoegsberg@chromium.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 29 Jan 2021 17:49:36 +0800, Hsin-Hsiung Wang wrote:
-> This adds compatible for the MediaTek MT6359 PMIC.
-> 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
-> changes since v4:
-> - remove unused compatible name.
-> ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
+On Sat, Feb 6, 2021 at 1:55 AM Rob Herring <robh@kernel.org> wrote:
+>
+> On Tue, 26 Jan 2021 09:17:56 +0800, Nicolas Boichat wrote:
+> > Define a compatible string for the Mali Bifrost GPU found in
+> > Mediatek's MT8183 SoCs.
+> >
+> > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> > ---
+> >
+> > Changes in v11:
+> >  - binding: power-domain-names not power-domainS-names
+> >
+> > Changes in v10:
+> >  - Fix the binding to make sure sram-supply property can be provided.
+> >
+> > Changes in v9: None
+> > Changes in v8: None
+> > Changes in v7: None
+> > Changes in v6:
+> >  - Rebased, actually tested with recent mesa driver.
+> >
+> > Changes in v5:
+> >  - Rename "2d" power domain to "core2"
+> >
+> > Changes in v4:
+> >  - Add power-domain-names description
+> >    (kept Alyssa's reviewed-by as the change is minor)
+> >
+> > Changes in v3: None
+> > Changes in v2: None
+> >
+> >  .../bindings/gpu/arm,mali-bifrost.yaml        | 28 +++++++++++++++++++
+> >  1 file changed, 28 insertions(+)
+> >
+>
+>
+> Please add Acked-by/Reviewed-by tags when posting new versions. However,
+> there's no need to repost patches *only* to add the tags. The upstream
+> maintainer will do that for acks received on the version they apply.
+>
+> If a tag was not added on purpose, please state why and what changed.
 
-Acked-by: Rob Herring <robh@kernel.org>
+There were changes in v11, I thought you'd want to review again?
+
+Anyway, I can resend a v12 with all the Rb/Ab if that works better for you.
+
+>
 
 _______________________________________________
 Linux-mediatek mailing list
