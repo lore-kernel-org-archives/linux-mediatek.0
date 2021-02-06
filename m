@@ -5,73 +5,71 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A300C433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Feb 2021 08:47:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CEECC433DB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Feb 2021 08:47:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0CE9D64E75
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Feb 2021 08:47:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CE9D64E75
+	by mail.kernel.org (Postfix) with ESMTPS id 1B38564FCA
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Feb 2021 08:47:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B38564FCA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nBrdGqehwXWkBlheA0fEKFPQA4eC8zHmt5q7vyXPJIk=; b=zd+Ax4Jkk1meQE/vxMg9Jg9tZ
-	+zqSVG/Kag4PnD7uFyImzPyywNnvhgb4ZmTHvpT3lVpFx8VbSD2jjlkFFH4XHMVBkoFqU9InXkNs3
-	x/OVXyWIRDun7TaYyF6SFCSTgRXlJ/XUwnLOA1Qla23C/RMN1Xo5oP+xeK31qrLwtzy9rG2It0cTe
-	CKQ/o2BMnbTXvABz5IXiWC8SWlxYx3oR+R7/sawvSJZmIOn/yY23q5HanFo+kCSXJNh+N7ldNjBdd
-	F0nxzdgbhW5IS51sYbQz0pe9AVvysDvug+n3JuVT5+JN37liGKzvAN6hbGFMTZ3amwRk2ZG2S0S6n
-	CJf/i7XHg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hgpKEuqxfItZut3rmu/RNmKuRVlw/V+L5PPm9NPbiWw=; b=jix79YQkrOcFtFGVDwHEr/J9Nn
+	8V+GSWFGQJ1fWEdhTbGlO8wTAbqc/3hUVmNKBrEdUv83bh+uq5c+sKE2ezkrokgLFn9FtIkFN962W
+	aJLRfknG9eLKP226cpKA9PK7xoWkrLHhqMPYPcD9zs58RaAfNoLeEI8vsH9CUbh/+zMY8gTXhXsvK
+	nUj5toKTPHxNj+LL8FoTPrXv0mIicP4RNkDikNVx6zcHcNE8vConqRqLtZmbd0wUbrTiRCmfnTfU+
+	DhP20d+EgIWJ/Q1gH5fDAeNFubCb0BqNShN/bgcCz+/XghQrf64BrNXlvGt2uBFzD+tPFHDc67x4y
+	gNz6MNOg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l8JF7-0003Ld-1F; Sat, 06 Feb 2021 08:47:01 +0000
+	id 1l8JF7-0003Lq-Rk; Sat, 06 Feb 2021 08:47:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l8JEk-0003CJ-97; Sat, 06 Feb 2021 08:46:42 +0000
-X-UUID: 6ea7862059b44ddc9bc4750c2a8ba54c-20210206
+ id 1l8JEk-0003CK-97; Sat, 06 Feb 2021 08:46:43 +0000
+X-UUID: c2688788d9f240f99586bf8a714d24e1-20210206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IPc0iVOpVcmSALexHBM0WreR8NOA87BRabYlmIKgKMY=; 
- b=su8VRUAFnMq4KcGot2J5SQmQl854NlzBCuI7Ev607e43n7pihIEmE3JDjyblBFNF0plKYdgKu8c4eSBzrtyC9jl9j9vF1chWPnX1MYBgujJMnW1RX9eklCFOIofRDWYeS+va8Ojn0lxy6DH32DSI0IROPBcjcCjFY1hBMTaZKUA=;
-X-UUID: 6ea7862059b44ddc9bc4750c2a8ba54c-20210206
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=GNL5TnXZWao9h2DFDrcMnQF6C7i6wQ7dc36keENPRnY=; 
+ b=nNqpwDIwpnh2fRLXJhhW8KaVxFhNZxk3qtq4g86tqgvgkoTOmAL2EU7Be2rRXUAzot6QQ2d10Ui4ROFoLo1XFi0zlf7VpRFhThLb0CzUldDMpCu2UHl/SrxkMDtsLTduJJfzGAZLEVBXeVfYXX6/9yxrf9fheVU/+MFAciL+ei8=;
+X-UUID: c2688788d9f240f99586bf8a714d24e1-20210206
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <lecopzer.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1861260640; Sat, 06 Feb 2021 00:46:21 -0800
+ with ESMTP id 337313232; Sat, 06 Feb 2021 00:46:21 -0800
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 6 Feb 2021 00:36:19 -0800
+ 15.0.1497.2; Sat, 6 Feb 2021 00:36:18 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 6 Feb 2021 16:36:06 +0800
+ 15.0.1497.2; Sat, 6 Feb 2021 16:36:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 6 Feb 2021 16:36:06 +0800
+ Frontend Transport; Sat, 6 Feb 2021 16:36:04 +0800
 From: Lecopzer Chen <lecopzer.chen@mediatek.com>
 To: <linux-kernel@vger.kernel.org>, <linux-mm@kvack.org>,
  <kasan-dev@googlegroups.com>, <linux-arm-kernel@lists.infradead.org>,
  <will@kernel.org>
-Subject: [PATCH v3 2/5] arm64: kasan: abstract _text and _end to
- KERNEL_START/END
-Date: Sat, 6 Feb 2021 16:35:49 +0800
-Message-ID: <20210206083552.24394-3-lecopzer.chen@mediatek.com>
+Subject: [PATCH v3 0/5] arm64: kasan: support CONFIG_KASAN_VMALLOC
+Date: Sat, 6 Feb 2021 16:35:47 +0800
+Message-ID: <20210206083552.24394-1-lecopzer.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210206083552.24394-1-lecopzer.chen@mediatek.com>
-References: <20210206083552.24394-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CF0202CE0B8FA8FEB182A1174645C4228FB0989FBF8CEF182189BA36F623AC222000:8
+X-TM-SNTS-SMTP: 48ED01F9EB92388DB50C25F6565B6744F8836A662E8B2C774BE4F94EFBD8AA522000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210206_034638_719104_23D3FB18 
-X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-CacheID: sfid-20210206_034638_752460_D8BE32BB 
+X-CRM114-Status: UNSURE (   6.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,38 +94,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Arm64 provides defined macro for KERNEL_START and KERNEL_END,
-thus replace them by the abstration instead of using _text and _end.
+
+Linux supports KAsan for VMALLOC since commit 3c5c3cfb9ef4da9
+("kasan: support backing vmalloc space with real shadow memory")
+
+Acroding to how x86 ported it [1], they early allocated p4d and pgd,
+but in arm64 I just simulate how KAsan supports MODULES_VADDR in arm64
+by not to populate the vmalloc area except for kimg address.
+
+  -----------  vmalloc_shadow_start
+ |           |
+ |           | 
+ |           | <= non-mapping
+ |           |
+ |           |
+ |-----------|
+ |///////////|<- kimage shadow with page table mapping.
+ |-----------|
+ |           |
+ |           | <= non-mapping
+ |           |
+ ------------- vmalloc_shadow_end
+ |00000000000|
+ |00000000000| <= Zero shadow
+ |00000000000|
+ ------------- KASAN_SHADOW_END
+
+
+Test environment:
+    4G and 8G Qemu virt, 
+    39-bit VA + 4k PAGE_SIZE with 3-level page table,
+    test by lib/test_kasan.ko and lib/test_kasan_module.ko
+
+It works in Kaslr with CONFIG_RANDOMIZE_MODULE_REGION_FULL
+and randomize module region inside vmalloc area.
+
+Also work with VMAP_STACK, thanks Ard for testing it.
+
+
+[1]: commit 0609ae011deb41c ("x86/kasan: support KASAN_VMALLOC")
+
 
 Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
----
- arch/arm64/mm/kasan_init.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Acked-by: Andrey Konovalov <andreyknvl@google.com>
+Tested-by: Andrey Konovalov <andreyknvl@google.com>
+Tested-by: Ard Biesheuvel <ardb@kernel.org>
 
-diff --git a/arch/arm64/mm/kasan_init.c b/arch/arm64/mm/kasan_init.c
-index 20d06008785f..cd2653b7b174 100644
---- a/arch/arm64/mm/kasan_init.c
-+++ b/arch/arm64/mm/kasan_init.c
-@@ -218,8 +218,8 @@ static void __init kasan_init_shadow(void)
- 	phys_addr_t pa_start, pa_end;
- 	u64 i;
- 
--	kimg_shadow_start = (u64)kasan_mem_to_shadow(_text) & PAGE_MASK;
--	kimg_shadow_end = PAGE_ALIGN((u64)kasan_mem_to_shadow(_end));
-+	kimg_shadow_start = (u64)kasan_mem_to_shadow(KERNEL_START) & PAGE_MASK;
-+	kimg_shadow_end = PAGE_ALIGN((u64)kasan_mem_to_shadow(KERNEL_END));
- 
- 	mod_shadow_start = (u64)kasan_mem_to_shadow((void *)MODULES_VADDR);
- 	mod_shadow_end = (u64)kasan_mem_to_shadow((void *)MODULES_END);
-@@ -240,7 +240,7 @@ static void __init kasan_init_shadow(void)
- 	clear_pgds(KASAN_SHADOW_START, KASAN_SHADOW_END);
- 
- 	kasan_map_populate(kimg_shadow_start, kimg_shadow_end,
--			   early_pfn_to_nid(virt_to_pfn(lm_alias(_text))));
-+			   early_pfn_to_nid(virt_to_pfn(lm_alias(KERNEL_START))));
- 
- 	kasan_populate_early_shadow(kasan_mem_to_shadow((void *)PAGE_END),
- 				   (void *)mod_shadow_start);
+---
+Thanks Will Deacon, Ard Biesheuvel and Andrey Konovalov
+for reviewing and suggestion.
+
+v3 -> v2
+rebase on 5.11-rc6
+	1. remove always true condition in kasan_init() and remove unsed
+	   vmalloc_shadow_start.
+	2. select KASAN_VMALLOC if KANSAN_GENERIC is enabled
+	   for VMAP_STACK.
+	3. tweak commit message
+
+v2 -> v1
+	1. kasan_init.c tweak indent
+	2. change Kconfig depends only on HAVE_ARCH_KASAN
+	3. support randomized module region.
+
+
+v2:
+https://lkml.org/lkml/2021/1/9/49
+v1:
+https://lore.kernel.org/lkml/20210103171137.153834-1-lecopzer@gmail.com/
+---
+Lecopzer Chen (5):
+  arm64: kasan: don't populate vmalloc area for CONFIG_KASAN_VMALLOC
+  arm64: kasan: abstract _text and _end to KERNEL_START/END
+  arm64: Kconfig: support CONFIG_KASAN_VMALLOC
+  arm64: kaslr: support randomized module area with KASAN_VMALLOC
+  arm64: Kconfig: select KASAN_VMALLOC if KANSAN_GENERIC is enabled
+
+ arch/arm64/Kconfig         |  2 ++
+ arch/arm64/kernel/kaslr.c  | 18 ++++++++++--------
+ arch/arm64/kernel/module.c | 16 +++++++++-------
+ arch/arm64/mm/kasan_init.c | 24 ++++++++++++++++--------
+ 4 files changed, 37 insertions(+), 23 deletions(-)
+
 -- 
 2.25.1
 _______________________________________________
