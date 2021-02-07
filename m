@@ -2,71 +2,60 @@ Return-Path: <SRS0=0SFh=HJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C36BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Feb 2021 09:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02268C433DB
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Feb 2021 09:34:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E17D064E43
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Feb 2021 09:23:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E17D064E43
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=loongson.cn
+	by mail.kernel.org (Postfix) with ESMTPS id B4A7864DFD
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Feb 2021 09:34:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4A7864DFD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fKIBAIaEqqP48sWbnhoUV9JZ2FkrWw3sCd3gN0xmA3U=; b=xKn5DGw2J3nIaFeIEVgEYfDPwX
-	tVugBW1Y+5mCPCBrpirgd5CfMfX128ztttC3xyCglhbSQ8kt1clUOPb2xKyi6B6AeyK9GNrL+z+Z5
-	R/Mqv7qDolxyG3XDZpCRpXqTFdafVhAWoM4HRJh3ZVcFISPmtJ/GZWAWzUskmccXSd4f5ulZsg1zG
-	Ms6VllooxG9dfcCWeQLO0kTv1EeBDg7jLuvTLTlDuGWUY896zkgxC3Fk7uNnqa1Dc94eu01IN04B3
-	vQsm1UWw2KJWDHx4jvKtdWyKfUoDxn+ZsIDsX0akExJ5dDDAhleCeZQ2ZOWfw8/+dfC2NyoMlXBl1
-	KgPwzhqg==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0+UmF+Va5vkWU+rG85PsMEiDE/6H6V60EreSmHc9XeM=; b=YT/S3UaZvkHeiSBIhKRMKvshc
+	l/xBnwnslgDXn8mHQMj92IghcMfq6Aj+E0WukUYX9O4xc1Kybe9rzcl6msfIq/FpQ1ARVV4c+doUQ
+	SiOt4wW0gVO7wTexj2ovXr6Zpy3bfCdCA8s0sEnUkXKLK9hxTdl7oLxaXLh/hNBVlsc9AIGeus0Q3
+	VUOjwXD03taEdpwam8nt8lFzGEWpx8YnWEUq8e752MmBDv4Rnob8rlOZP8L6K7iE1YFKpN9blmU1A
+	q9emX5qTld87dARwfW1Qb2f3hCZ+1DTkQin/DAIPkCSwq2RwWoQeKCC3jCMxssJcyCDxilI3H8SMI
+	cbyrZGOEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l8gIF-0004Sl-Ka; Sun, 07 Feb 2021 09:23:47 +0000
-Received: from mail.loongson.cn ([114.242.206.163] helo=loongson.cn)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l8gIA-0004Qp-Tu; Sun, 07 Feb 2021 09:23:44 +0000
-Received: from bogon.localdomain (unknown [113.200.148.30])
- by mail.loongson.cn (Coremail) with SMTP id AQAAf9Dxf_KRsR9gYrgHAA--.10006S2; 
- Sun, 07 Feb 2021 17:23:29 +0800 (CST)
-From: Youling Tang <tangyouling@loongson.cn>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] staging: fix ignoring return value warning
-Date: Sun,  7 Feb 2021 17:23:28 +0800
-Message-Id: <1612689808-30985-1-git-send-email-tangyouling@loongson.cn>
-X-Mailer: git-send-email 2.1.0
-X-CM-TRANSID: AQAAf9Dxf_KRsR9gYrgHAA--.10006S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7KF4kKw4DZw4DKw1DGFyfZwb_yoW8CF4fpa
- yxAa4Ykry2yF4Uu3yUAF1xZ3Z8ua4xK3y8Cayqyw1F9ryrJa4Svry5tFyUKr4rJr93KF4r
- tFW7ZF4UZay8WrDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUkl14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
- JVWxJr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v26r
- xl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
- 6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr
- 0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkIecxEwVAFwVW8
- uwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r
- 1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_JF0_Jw1lIxkGc2Ij
- 64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr
- 0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6rW3Jr0E3s1lIxAIcVC2z280aVAFwI0_Jr0_Gr1l
- IxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUjwSdDUUUU
- U==
-X-CM-SenderInfo: 5wdqw5prxox03j6o00pqjv00gofq/
+	id 1l8gSZ-0005L9-Q9; Sun, 07 Feb 2021 09:34:27 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l8gSW-0005KY-Jc; Sun, 07 Feb 2021 09:34:25 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0D72364E2A;
+ Sun,  7 Feb 2021 09:34:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1612690462;
+ bh=vHdplIXe2RStxmKLVaI73uahI+H48WMD9Z6xwvPREOM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=GA/UugZBRdxo19A6s+kxnmLYt1SAraTqqy+qtZGDoDGBadsBnv9WRNv/5kN2nKcNH
+ ZG6VqjBDUysIN8Z+S7aj6UwU7ES0p+Icio6RJ/+5COw0I6i8uTq+s2Njpe6vtvY1QN
+ G9dHiZBV26PMMg8Nv6cmeNwIrGuQdj7mjAQNhL20=
+Date: Sun, 7 Feb 2021 10:34:18 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Youling Tang <tangyouling@loongson.cn>
+Subject: Re: [PATCH] staging: fix ignoring return value warning
+Message-ID: <YB+0GmywKAQVBIjG@kroah.com>
+References: <1612689808-30985-1-git-send-email-tangyouling@loongson.cn>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1612689808-30985-1-git-send-email-tangyouling@loongson.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210207_042344_040126_536DF2CC 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210207_043424_824287_797E3377 
+X-CRM114-Status: GOOD (  23.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,69 +67,100 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, tangyouling@loongson.cn,
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devel@driverdev.osuosl.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the below ignoring return value warning for device_reset.
+On Sun, Feb 07, 2021 at 05:23:28PM +0800, Youling Tang wrote:
+> Fix the below ignoring return value warning for device_reset.
+> 
+> drivers/staging/mt7621-dma/mtk-hsdma.c:685:2: warning: ignoring return value
+> of function declared with 'warn_unused_result' attribute [-Wunused-result]
+>         device_reset(&pdev->dev);
+>         ^~~~~~~~~~~~ ~~~~~~~~~~
+> drivers/staging/ralink-gdma/ralink-gdma.c:836:2: warning: ignoring return value
+> of function declared with 'warn_unused_result' attribute [-Wunused-result]
+>         device_reset(&pdev->dev);
+>         ^~~~~~~~~~~~ ~~~~~~~~~~
+> 
+> Signed-off-by: Youling Tang <tangyouling@loongson.cn>
+> ---
+>  drivers/staging/mt7621-dma/mtk-hsdma.c    | 6 +++++-
+>  drivers/staging/ralink-gdma/ralink-gdma.c | 6 +++++-
+>  2 files changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> index bc4bb43..d4ffa52 100644
+> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
+> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> @@ -682,7 +682,11 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> -	device_reset(&pdev->dev);
+> +	ret = device_reset(&pdev->dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "failed to reset device\n");
+> +		return ret;
+> +	}
+>  
+>  	dd = &hsdma->ddev;
+>  	dma_cap_set(DMA_MEMCPY, dd->cap_mask);
+> diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
+> index 655df31..df99c47 100644
+> --- a/drivers/staging/ralink-gdma/ralink-gdma.c
+> +++ b/drivers/staging/ralink-gdma/ralink-gdma.c
+> @@ -833,7 +833,11 @@ static int gdma_dma_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> -	device_reset(&pdev->dev);
+> +	ret = device_reset(&pdev->dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "failed to reset device\n");
+> +		return ret;
+> +	}
+>  
+>  	dd = &dma_dev->ddev;
+>  	dma_cap_set(DMA_MEMCPY, dd->cap_mask);
+> -- 
+> 2.1.0
+> 
 
-drivers/staging/mt7621-dma/mtk-hsdma.c:685:2: warning: ignoring return value
-of function declared with 'warn_unused_result' attribute [-Wunused-result]
-        device_reset(&pdev->dev);
-        ^~~~~~~~~~~~ ~~~~~~~~~~
-drivers/staging/ralink-gdma/ralink-gdma.c:836:2: warning: ignoring return value
-of function declared with 'warn_unused_result' attribute [-Wunused-result]
-        device_reset(&pdev->dev);
-        ^~~~~~~~~~~~ ~~~~~~~~~~
 
-Signed-off-by: Youling Tang <tangyouling@loongson.cn>
----
- drivers/staging/mt7621-dma/mtk-hsdma.c    | 6 +++++-
- drivers/staging/ralink-gdma/ralink-gdma.c | 6 +++++-
- 2 files changed, 10 insertions(+), 2 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index bc4bb43..d4ffa52 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -682,7 +682,11 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	device_reset(&pdev->dev);
-+	ret = device_reset(&pdev->dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to reset device\n");
-+		return ret;
-+	}
- 
- 	dd = &hsdma->ddev;
- 	dma_cap_set(DMA_MEMCPY, dd->cap_mask);
-diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
-index 655df31..df99c47 100644
---- a/drivers/staging/ralink-gdma/ralink-gdma.c
-+++ b/drivers/staging/ralink-gdma/ralink-gdma.c
-@@ -833,7 +833,11 @@ static int gdma_dma_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	device_reset(&pdev->dev);
-+	ret = device_reset(&pdev->dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to reset device\n");
-+		return ret;
-+	}
- 
- 	dd = &dma_dev->ddev;
- 	dma_cap_set(DMA_MEMCPY, dd->cap_mask);
--- 
-2.1.0
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- Your patch did not apply to any known trees that Greg is in control
+  of.  Possibly this is because you made it against Linus's tree, not
+  the linux-next tree, which is where all of the development for the
+  next version of the kernel is at.  Please refresh your patch against
+  the linux-next tree, or even better yet, the development tree
+  specified in the MAINTAINERS file for the subsystem you are submitting
+  a patch for, and resend it.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 
 _______________________________________________
 Linux-mediatek mailing list
