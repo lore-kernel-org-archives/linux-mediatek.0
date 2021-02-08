@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3473EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 09:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ECA30C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 09:45:09 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D0A8D64E7E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 09:44:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0A8D64E7E
+	by mail.kernel.org (Postfix) with ESMTPS id 9774564E8B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 09:45:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9774564E8B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,64 +24,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=a1ikyffmIxAmYHW9jTJhkJ4tnx9WBK8cxJi17hHH+WQ=; b=lkBLVJQQxkDC+QHYURp6aWBPY
-	8PFxgUI2xqpnla6ZuKkwWQF2FQmWfCIlqxp27WKwil8Xb1x3BDNESCCn+RTsjF+P7tOjmDTFjTZ4J
-	TfBPVjto86kCnjfcOyHveJe9pSDx+YjHgFZj9tZh0W47vL9os32QSYa96LODjKDgO78IkqSZNZZNY
-	2a5iI/G+GSa33ISZv5WPlDci+udZ4PHTBKTYXE5MmR5orlWMpX5l1B94sEnvq4meZweJvIsCkuMlQ
-	9JmcYPcLW+TSKw5KGhV9LpwNYlhwqyO605An+XdseP7/IEaOv0cS2au2JzVrzhk8Q9kHWfgm6GZib
-	p9fxddhGQ==;
+	 bh=MQRqxZiR+9jUkWavPiWaO+m7wFqR00wRwYuYQkD/+Js=; b=QfNZgBUguPOYq2/sy0rznupN1
+	H5U4oEDuwd56C5j/2oOvIbN/NsQYghpnTtYDzY8RdCsWrRy/cM9l4pyaxIzJj7hdxjKOPcolCmlnM
+	YdoVcJWU1GW4CIXcxuOrv3ofvWZ1OlZuNkEoVCR+KwQ1GMt5MAk41OPMgch/bBUTtLBPCDteLDEad
+	EoyQwmcsRkkn47XNZaOOfuKXqlVEmENaw0oKSuoLtEb4pG27MpGY/Gb2C4jcG15QCKnYY/Nanbdzm
+	GyTJ/AlZmZR5jHaSDZwzCNDkBAicGPOpyu6Dl0nLMnv3dKVAo/j2t+h+cXu7APbdeMEbYrdoOoAwb
+	//bZI2gPg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l936A-0006vf-R7; Mon, 08 Feb 2021 09:44:50 +0000
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+	id 1l936K-00070L-Bo; Mon, 08 Feb 2021 09:45:00 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9368-0006uC-BS; Mon, 08 Feb 2021 09:44:49 +0000
-Received: by mail-qv1-xf35.google.com with SMTP id es14so6637704qvb.3;
- Mon, 08 Feb 2021 01:44:47 -0800 (PST)
+ id 1l936H-0006yM-4Z; Mon, 08 Feb 2021 09:44:58 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id d2so8464053pjs.4;
+ Mon, 08 Feb 2021 01:44:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=gZKtlD6nuAorTKG2PqNJjMaym8CBQGfY80Jr0aK5tbM=;
- b=sncZSedkGPp3KI68xMMM9IyFrnpLjoz+D0gMdTtAY//NojejIBYLdKPDZtirAWGQA1
- hal0exLPTGlamwQRa1w5G7QS3+fin0sC+rpr/LqpArJG8R3m/ED/21u/qVM14yizM2oB
- QAhiMxqBhAu+fO/Hr6j8gsUSWcRnxFx93o+SN/FGUtYeYyU7q6aADg1qdCHUnTJ3XgoN
- m97kE5OvqWE+H7AJnY7QoB2aRY45O3+KY5cv8lmnGzjM2GQKrF1fgE4j77kczSoHwXSQ
- IPRfcAl/8xSyzTFwGvTLOfEuCLU9tJFPK7oxWzGSVtz/XxS4ZYF/Nglea3J8p533cL1k
- d8dA==
+ bh=+2LJpncxdzSbb/JP/0XuErEHxZj6Pmh4iBBisr0kOG4=;
+ b=eoSVQ2muaJ+pVqkGqzBxIZzDgrgGsyDiXRCZmFV9L9n7+pkSgroRWyhD2jV+0AcVLG
+ AOFKjQz+ap1lp+ggCTG9kFc8MQdOzIb9m6sgX39vmHE4PKikVhCQ0HDTZAYbQB0n64vt
+ Wz3w343UiEsoVch4MDpixI6lJKewQfhF70VjnjNXia4F5WPcsURnhmyeKHgSB5YtB1Ru
+ Y62qxIFWrBKnOxd3KzTOV3y21Xdy3+3GlwNt7uwen1+d/lzFuVPPePXor/9vdyjBhNgn
+ Y0MK3QQp42rfQpaPyTDWliFzjGOx9iQuKGypiHL2CMfDlrpRmNGYQWGhD7o/4BHHBYoU
+ LyKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=gZKtlD6nuAorTKG2PqNJjMaym8CBQGfY80Jr0aK5tbM=;
- b=WihCyZyXLwEGhf4jIXtexMIot3tC/2IWP3/bUCoamJG+Q5R2Yd15SOKVhS3W9etyoc
- R/Ohl32Isj+9N1hbmIwplnuV+A73dIjhHKc5y8bcqw7laTpeFSWEmIO8kWwyjZ9qn/Zt
- mn0v2aVTpkKg51iRR9k9NqlG2wbCs27fp9Gzt+yxcshOze2PdA7DOeu41OKmGHOhNLEa
- UY4p4xnKgDxZwpNN3/ghDJWDeK3GUFPHv4dh6oEx05E9q4padN7Waeazyrmi2b8biBsi
- AlRmnC/s+B064DTk4Ue6/T9+m1C65xaQwU99AwsmHR+v2pVfOT/5X6bhAblf8jzMlohY
- cV3g==
-X-Gm-Message-State: AOAM530ZMCtwux/zSPaFev3pyLAt+5do8YObgbmM6Yn7oC0slwdlplbr
- UGxoIVBwqRFbwzwXm0PB8qxXVXAXIgI=
-X-Google-Smtp-Source: ABdhPJx2Y1Nr368OsPVno1TmPMUHQDDOeTBV59p1sw6VoCH9O2r2Ojchl/dH+HRALw658hHuHRaNyw==
-X-Received: by 2002:a05:6a00:15d2:b029:1b7:30c1:8495 with SMTP id
- o18-20020a056a0015d2b02901b730c18495mr16867681pfu.32.1612777485801; 
- Mon, 08 Feb 2021 01:44:45 -0800 (PST)
+ bh=+2LJpncxdzSbb/JP/0XuErEHxZj6Pmh4iBBisr0kOG4=;
+ b=qSpuBcl+nttn69rHB2773/w0gFRvo/S9jQA6Xxtm/0fwylXS9NyAuFtjwfRnEq7jAY
+ X47PmbJOpuJjAXbn6lhEyQV4y+xO0drTy+bbiB/qhMlOoaQ5kLj6xY1FEOFIekduh/n9
+ qAn0UkeHenSXvzrG3RKipB/REwldw3hu2beH06s++44/yp+UT1c0WizBRjt15ae1yY4O
+ azu2jjuP0hpjKGfBK4h86I1JslMuva1kSAFelfLe7L3bCHOoReFvdf12QWle+JpSYGzC
+ bH0t0UD+PynZOx8uSs5NxeeugKGJzSVZDSc5p90G8x2mOfJFZInFN3z/FyfCv09kEMbZ
+ mDJw==
+X-Gm-Message-State: AOAM532zzWqWMjHxsAC6y2ZtEhbPRRYV8A6pNPrCUFii+3K1L+qJ2fZl
+ tqnjb4GcQQ6iCH2yqjxY0Kc=
+X-Google-Smtp-Source: ABdhPJwpx+dpvv/Q7w/Knh/uslH+r/BOdF/3tWinThbnEoQ6gwUo3UPqohe7rKxVFh3iypYbua1d7Q==
+X-Received: by 2002:a17:90a:28c6:: with SMTP id
+ f64mr4703663pjd.50.1612777495161; 
+ Mon, 08 Feb 2021 01:44:55 -0800 (PST)
 Received: from localhost.localdomain ([49.207.205.214])
- by smtp.gmail.com with ESMTPSA id k69sm12208958pfd.4.2021.02.08.01.44.36
+ by smtp.gmail.com with ESMTPSA id k69sm12208958pfd.4.2021.02.08.01.44.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Feb 2021 01:44:45 -0800 (PST)
+ Mon, 08 Feb 2021 01:44:54 -0800 (PST)
 From: Allen Pais <allen.lkml@gmail.com>
 To: herbert@gondor.apana.org.au
-Subject: [PATCH v5 11/19] crypto: mediatek: convert tasklets to use new
+Subject: [PATCH v5 12/19] crypto: omap: convert tasklets to use new
  tasklet_setup() API
-Date: Mon,  8 Feb 2021 15:12:30 +0530
-Message-Id: <20210208094238.571015-12-allen.lkml@gmail.com>
+Date: Mon,  8 Feb 2021 15:12:31 +0530
+Message-Id: <20210208094238.571015-13-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210208094238.571015-1-allen.lkml@gmail.com>
 References: <20210208094238.571015-1-allen.lkml@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_044448_415179_52B471BA 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20210208_044457_203817_FBE42854 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,86 +121,86 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <apais@linux.microsoft.com>
 ---
- drivers/crypto/mediatek/mtk-aes.c | 14 ++++++--------
- drivers/crypto/mediatek/mtk-sha.c | 14 ++++++--------
- 2 files changed, 12 insertions(+), 16 deletions(-)
+ drivers/crypto/omap-aes.c  | 6 +++---
+ drivers/crypto/omap-des.c  | 6 +++---
+ drivers/crypto/omap-sham.c | 6 +++---
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
-index 7323066724c3..fa49bb5b043b 100644
---- a/drivers/crypto/mediatek/mtk-aes.c
-+++ b/drivers/crypto/mediatek/mtk-aes.c
-@@ -1080,16 +1080,16 @@ static struct aead_alg aes_gcm_alg = {
- 	},
- };
- 
--static void mtk_aes_queue_task(unsigned long data)
-+static void mtk_aes_queue_task(struct tasklet_struct *t)
- {
--	struct mtk_aes_rec *aes = (struct mtk_aes_rec *)data;
-+	struct mtk_aes_rec *aes = from_tasklet(aes, t, queue_task);
- 
- 	mtk_aes_handle_queue(aes->cryp, aes->id, NULL);
+diff --git a/drivers/crypto/omap-aes.c b/drivers/crypto/omap-aes.c
+index a45bdcf3026d..7e4223716620 100644
+--- a/drivers/crypto/omap-aes.c
++++ b/drivers/crypto/omap-aes.c
+@@ -503,9 +503,9 @@ static void omap_aes_copy_ivout(struct omap_aes_dev *dd, u8 *ivbuf)
+ 		((u32 *)ivbuf)[i] = omap_aes_read(dd, AES_REG_IV(dd, i));
  }
  
--static void mtk_aes_done_task(unsigned long data)
-+static void mtk_aes_done_task(struct tasklet_struct *t)
+-static void omap_aes_done_task(unsigned long data)
++static void omap_aes_done_task(struct tasklet_struct *t)
  {
--	struct mtk_aes_rec *aes = (struct mtk_aes_rec *)data;
-+	struct mtk_aes_rec *aes = from_tasklet(aes, t, done_task);
- 	struct mtk_cryp *cryp = aes->cryp;
+-	struct omap_aes_dev *dd = (struct omap_aes_dev *)data;
++	struct omap_aes_dev *dd = from_tasklet(dd, t, done_task);
  
- 	mtk_aes_unmap(cryp, aes);
-@@ -1142,10 +1142,8 @@ static int mtk_aes_record_init(struct mtk_cryp *cryp)
- 		spin_lock_init(&aes[i]->lock);
- 		crypto_init_queue(&aes[i]->queue, AES_QUEUE_SIZE);
+ 	pr_debug("enter done_task\n");
  
--		tasklet_init(&aes[i]->queue_task, mtk_aes_queue_task,
--			     (unsigned long)aes[i]);
--		tasklet_init(&aes[i]->done_task, mtk_aes_done_task,
--			     (unsigned long)aes[i]);
-+		tasklet_setup(&aes[i]->queue_task, mtk_aes_queue_task);
-+		tasklet_setup(&aes[i]->done_task, mtk_aes_done_task);
- 	}
+@@ -1151,7 +1151,7 @@ static int omap_aes_probe(struct platform_device *pdev)
+ 		 (reg & dd->pdata->major_mask) >> dd->pdata->major_shift,
+ 		 (reg & dd->pdata->minor_mask) >> dd->pdata->minor_shift);
  
- 	/* Link to ring0 and ring1 respectively */
-diff --git a/drivers/crypto/mediatek/mtk-sha.c b/drivers/crypto/mediatek/mtk-sha.c
-index f55aacdafbef..c241762aa23b 100644
---- a/drivers/crypto/mediatek/mtk-sha.c
-+++ b/drivers/crypto/mediatek/mtk-sha.c
-@@ -1164,16 +1164,16 @@ static struct ahash_alg algs_sha384_sha512[] = {
+-	tasklet_init(&dd->done_task, omap_aes_done_task, (unsigned long)dd);
++	tasklet_setup(&dd->done_task, omap_aes_done_task);
+ 
+ 	err = omap_aes_dma_init(dd);
+ 	if (err == -EPROBE_DEFER) {
+diff --git a/drivers/crypto/omap-des.c b/drivers/crypto/omap-des.c
+index c9d38bcfd1c7..fddcfc3ba57b 100644
+--- a/drivers/crypto/omap-des.c
++++ b/drivers/crypto/omap-des.c
+@@ -594,9 +594,9 @@ static int omap_des_crypt_req(struct crypto_engine *engine,
+ 	return omap_des_crypt_dma_start(dd);
+ }
+ 
+-static void omap_des_done_task(unsigned long data)
++static void omap_des_done_task(struct tasklet_struct *t)
+ {
+-	struct omap_des_dev *dd = (struct omap_des_dev *)data;
++	struct omap_des_dev *dd = from_tasklet(dd, t, done_task);
+ 	int i;
+ 
+ 	pr_debug("enter done_task\n");
+@@ -1011,7 +1011,7 @@ static int omap_des_probe(struct platform_device *pdev)
+ 		 (reg & dd->pdata->major_mask) >> dd->pdata->major_shift,
+ 		 (reg & dd->pdata->minor_mask) >> dd->pdata->minor_shift);
+ 
+-	tasklet_init(&dd->done_task, omap_des_done_task, (unsigned long)dd);
++	tasklet_setup(&dd->done_task, omap_des_done_task);
+ 
+ 	err = omap_des_dma_init(dd);
+ 	if (err == -EPROBE_DEFER) {
+diff --git a/drivers/crypto/omap-sham.c b/drivers/crypto/omap-sham.c
+index ae0d320d3c60..5dc7e23879a5 100644
+--- a/drivers/crypto/omap-sham.c
++++ b/drivers/crypto/omap-sham.c
+@@ -1725,9 +1725,9 @@ static struct ahash_alg algs_sha384_sha512[] = {
  },
  };
  
--static void mtk_sha_queue_task(unsigned long data)
-+static void mtk_sha_queue_task(struct tasklet_struct *t)
+-static void omap_sham_done_task(unsigned long data)
++static void omap_sham_done_task(struct tasklet_struct *t)
  {
--	struct mtk_sha_rec *sha = (struct mtk_sha_rec *)data;
-+	struct mtk_sha_rec *sha = from_tasklet(sha, t, queue_task);
+-	struct omap_sham_dev *dd = (struct omap_sham_dev *)data;
++	struct omap_sham_dev *dd = from_tasklet(dd, t, done_task);
+ 	int err = 0;
  
- 	mtk_sha_handle_queue(sha->cryp, sha->id - MTK_RING2, NULL);
- }
+ 	dev_dbg(dd->dev, "%s: flags=%lx\n", __func__, dd->flags);
+@@ -2084,7 +2084,7 @@ static int omap_sham_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, dd);
  
--static void mtk_sha_done_task(unsigned long data)
-+static void mtk_sha_done_task(struct tasklet_struct *t)
- {
--	struct mtk_sha_rec *sha = (struct mtk_sha_rec *)data;
-+	struct mtk_sha_rec *sha = from_tasklet(sha, t, done_task);
- 	struct mtk_cryp *cryp = sha->cryp;
+ 	INIT_LIST_HEAD(&dd->list);
+-	tasklet_init(&dd->done_task, omap_sham_done_task, (unsigned long)dd);
++	tasklet_setup(&dd->done_task, omap_sham_done_task);
+ 	crypto_init_queue(&dd->queue, OMAP_SHAM_QUEUE_LENGTH);
  
- 	mtk_sha_unmap(cryp, sha);
-@@ -1219,10 +1219,8 @@ static int mtk_sha_record_init(struct mtk_cryp *cryp)
- 		spin_lock_init(&sha[i]->lock);
- 		crypto_init_queue(&sha[i]->queue, SHA_QUEUE_SIZE);
- 
--		tasklet_init(&sha[i]->queue_task, mtk_sha_queue_task,
--			     (unsigned long)sha[i]);
--		tasklet_init(&sha[i]->done_task, mtk_sha_done_task,
--			     (unsigned long)sha[i]);
-+		tasklet_setup(&sha[i]->queue_task, mtk_sha_queue_task);
-+		tasklet_setup(&sha[i]->done_task, mtk_sha_done_task);
- 	}
- 
- 	/* Link to ring2 and ring3 respectively */
+ 	err = (dev->of_node) ? omap_sham_get_res_of(dd, dev, &res) :
 -- 
 2.25.1
 
