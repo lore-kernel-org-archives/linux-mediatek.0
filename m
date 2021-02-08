@@ -3,18 +3,18 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BE3DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 08:11:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AA3DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 08:13:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F086764E7E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 08:11:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F086764E7E
+	by mail.kernel.org (Postfix) with ESMTPS id 37F0C64E6E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 08:13:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37F0C64E6E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ohtRKk+T4h3hVZJbC1aKPmOM1jp0sjqNe4cT/UL8UQA=; b=hEGkpUnCX6AVMFAd2BGdWANh+
-	kTe6Oygpwk+s8D4YjI56cMhny75QJdWjiOw2AxsdWnr9a/qZic2GTesftwKbjEcHyyha/YGltL/pR
-	UzV8aURozcbYncjPhn0eqq/XpQaG8f3PvNx2TtAw3p2CbWMwuNhHQ5p3yD1KLdCLAZ1ALaDkQk8de
-	iDD6MVkO7+bbAcuJ/npb0fYlLkxX/5JUEQxZKxvSfR/ERZv5X4w38vcLy2s04NU1rJWGzZjQmfZeM
-	qmLyJ+7WPbubJIQf3qWUhMWQzuFAa+MRPC0JWWPmcv0egsC005AhGv0bqo21X7GgSbkdqDUTzo+Bl
-	5OgFt4OOw==;
+	 bh=oDAgkoit3zkN8P/7dKE2qJJOCcbTEzqNIk6EtK6wQB8=; b=LGkJca85zYS3IDO/DaVJKfxST
+	uAuus81/1x4qY1zZ3KAEGeLDulErPEJjqz03ry5bjNtR8RWLZhBcWcQqRHnKG+kVoByMFhGi/6aH2
+	7R4agI7jCDfv9NsDuHymGpL55+pl37UwbFJDOioV1MuWHR6iB+UmIsxUIhpIMR062kbB27o06wnOt
+	LxjU/Cd0HmDDfIPsHpWWdbVDItNO9mZCJr9VqwrzX/e6TrCFy3BXb5XF4riQW6hicCzFOn1vWHK39
+	JItxBDGlzYUl+ep8PiwYqrBknq1agHSFD54xNqKZXhhdJmsqLOPRVUMSacPcFOf1wgX6xwe2ez2QM
+	R8BIB6zWw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l91e7-0007BY-SG; Mon, 08 Feb 2021 08:11:47 +0000
+	id 1l91fO-0007LZ-44; Mon, 08 Feb 2021 08:13:06 +0000
 Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
  helo=theia.8bytes.org)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l91e2-00079o-Ep; Mon, 08 Feb 2021 08:11:43 +0000
+ id 1l91fM-0007L4-BJ
+ for linux-mediatek@lists.infradead.org; Mon, 08 Feb 2021 08:13:05 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id E6CDD3A7; Mon,  8 Feb 2021 09:11:33 +0100 (CET)
-Date: Mon, 8 Feb 2021 09:11:30 +0100
+ id 596013A7; Mon,  8 Feb 2021 09:13:03 +0100 (CET)
+Date: Mon, 8 Feb 2021 09:13:01 +0100
 From: Joerg Roedel <joro@8bytes.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] iommu/mediatek: Fix error code in probe()
-Message-ID: <20210208081130.GA7302@8bytes.org>
-References: <YB0+GU5akSdu29Vu@mwanda>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH] MAINTAINERS: repair file pattern in MEDIATEK IOMMU DRIVER
+Message-ID: <20210208081301.GB7302@8bytes.org>
+References: <20210208061025.29198-1-lukas.bulwahn@gmail.com>
+ <1612766125.19482.3.camel@mhfsdcap03>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YB0+GU5akSdu29Vu@mwanda>
+In-Reply-To: <1612766125.19482.3.camel@mhfsdcap03>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_031142_623896_05085A04 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20210208_031304_505774_287C9480 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,19 +64,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org,
+ Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>,
  Tomasz Figa <tfiga@chromium.org>, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
- linux-arm-kernel@lists.infradead.org
+ linux-mediatek@lists.infradead.org, Joe Perches <joe@perches.com>,
+ Lukas Bulwahn <lukas.bulwahn@gmail.com>,
+ Pia Eichinger <pia.eichinger@st.oth-regensburg.de>,
+ Will Deacon <will@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 05, 2021 at 03:46:17PM +0300, Dan Carpenter wrote:
->  drivers/iommu/mtk_iommu.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+On Mon, Feb 08, 2021 at 02:35:25PM +0800, Yong Wu wrote:
+> On Mon, 2021-02-08 at 07:10 +0100, Lukas Bulwahn wrote:
+> > Commit 6af4873852c4 ("MAINTAINERS: Add entry for MediaTek IOMMU") mentions
+> > the pattern 'drivers/iommu/mtk-iommu*', but the files are actually named
+> > with an underscore, not with a hyphen.
+> > 
+> > Hence, ./scripts/get_maintainer.pl --self-test=patterns complains:
+> > 
+> >   warning: no file matches  F:    drivers/iommu/mtk-iommu*
+> > 
+> > Repair this minor typo in the file pattern.
+> > 
+> > Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
+> > ---
+> > applies cleanly on next-20210205
+> > 
+> > Yong, please ack.
+> 
+> +Joerg.
+> 
+> sorry for the typo.
+> 
+> Acked-by: Yong Wu <yong.wu@mediatek.com>
 
 Applied, thanks.
 
