@@ -2,64 +2,63 @@ Return-Path: <SRS0=Odcq=HK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_ALL,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9086C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 15:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5543BC433E6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 18:40:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3116864E50
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 15:54:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3116864E50
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=toke.dk
+	by mail.kernel.org (Postfix) with ESMTPS id F306D64E60
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 18:40:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F306D64E60
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:References:
+	In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=j6x/RXaahpKDhAdscDuPnEYcgQY/eXzrk6hlmm0+lCg=; b=2pRbK778Pc0W6989ynhyuvtGl
-	Selt+JHugw7o9J37LIrF76RcSgvXrvoQrIRAa4JfEr8ipiAkCq8aacgg0FUkULvhg3EiacbYdQz26
-	FHYpM/yh5lfSGc9oRrhlZLLrs5ECK1mrPD9qqXdJLVgLPkswhcP2RKoaJw65WpYU1fMhM0riWiskd
-	db3ZRO2hQS2S9y4PyO1RYdLI9q/wesB4RZrv+/W5MS5ONwkTmCYUqxfVqAFmhn7/Tk3i4ic8Tj86Z
-	yGKaCOGdzwWTAKlkyBBpuwMZ9sZw3CAOVVLc0PxM+ktoJi2k2XDEt0B/M9XVA2ABIyGVLsxGI2YKW
-	hvBE6rElA==;
+	 bh=rA0P5AthPK1GrDGfRJM1J1bslAl7Ug7TqrkyNJuDkjw=; b=HFxURH1w+hARpWkq+uTopRSzt
+	ZrpPSH93PBsHDIY6m/2mPUcLy4ABOJa3kktkbhKWMpbQdsnSe1SV/pbXjZdWjXyUBPpjjsRG+rjM1
+	1TR4hEsi8ON3n9d89NnxL9VaJvvkzVKKjX0Bi+IiawSTpllqnxmTYM7RWiW2t/90htflHrMyZ+5b9
+	9BTFeXCIzsGSMTXZvRoJtUJGQr83xYj4rdi7qcGN2XqCCnbMiGLQU4SD0Qvt9TjoigXUTOtvEa8N8
+	HWAvuPv31M95ob0nVhrIlr0ZmFduDdQx0Spw7X37a+T7O5HQ9cqtPr7cxtSEQ9se1oIivMtgyDOfb
+	iNrsbSkwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l98rX-00054d-LU; Mon, 08 Feb 2021 15:54:07 +0000
-Received: from mail.toke.dk ([45.145.95.4])
+	id 1l9BSj-0007Rt-JG; Mon, 08 Feb 2021 18:40:41 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l98rV-000544-4H
- for linux-mediatek@lists.infradead.org; Mon, 08 Feb 2021 15:54:06 +0000
-From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=toke.dk; s=20161023;
- t=1612799630; bh=cUXTygvQBSe9tf+PWQFop4Z2psD8Qa1X0wGFrUmgGKU=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=P5q5p6XCF6P7GVC5+IpntTLeQRF7hPtwUIjrmVy/XaAFw2WyJIuwXTlnY1UKQnb7w
- 6P6gYsgNZBw6iMHseFz+fk5trBAJUWWDY1qucN6+JNkZrUhalPGOk9XVavKaDbc/c4
- Z28te0JnDWpn/jBgLUjzZup0glTmyuemWSWWoRsaYnLgCw63LH80cX/QTlyfoLt41Z
- KYmbcnBPBC6SeKeMB4DlGSNeixfriFYHobHPWzr5Si5PR7rjyF046QnWwjtKlPx+So
- RbE9i3GK5Hsth0RavgD38gPnyIJhuPRVn8weH4A7YNtVptMO4XF2RKq6sA2SZ7Nejt
- ppTSvuZ7ROKdw==
-To: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH] mac80211: only schedule TXQ when reasonable airtime
- reporting
-In-Reply-To: <1612796033.13185.5.camel@mtkswgap22>
-References: <c48c3555ab2261d6b6674ac7de8203359b80b127.1612529311.git.ryder.lee@mediatek.com>
- <878s82ve1c.fsf@toke.dk> <1612665675.2364.43.camel@mtkswgap22>
- <1612796033.13185.5.camel@mtkswgap22>
-Date: Mon, 08 Feb 2021 16:53:50 +0100
-X-Clacks-Overhead: GNU Terry Pratchett
-Message-ID: <878s7ytv1t.fsf@toke.dk>
+ id 1l9BSe-0007Qb-TU; Mon, 08 Feb 2021 18:40:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C1F2F64E6F;
+ Mon,  8 Feb 2021 18:40:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612809635;
+ bh=7ALs6mqpwEmsTP800ZCsUHPGdJfs/sIf4APkcqdnOxw=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=AgbQiKd/TXtpeuqqQeXJTMbG2BcWztR5Lz+nbm5VE/ohurr8g3laR2xPMm7ui9EHn
+ vM8LcwSS29oGzQa0PLVIGfb+GHhZS5RwNG9W+TK1ihAekdtQ0YsY16Yq24nHir19kq
+ A4jnSoIxHLEU7FI558re9r5KMGkr80j3FNCN5lzbwf/izRLHKjGikaIpVoIzGRf0n6
+ lTdUIEBqE506kcLYvzCUvdnZl23vpXJqTgT4U5kVd1dc+6u+2bdFhJUCgqbdl8ZpcL
+ NKZG064snD0sbNu5kfYT3ICGw9sD7c96q6g8CYjT2FEuIp98zuBY4r+uAGl0iXZai4
+ 7JeJdhCXwhzUQ==
+From: Mark Brown <broonie@kernel.org>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, drinkcat@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>
+In-Reply-To: <1612678457-11548-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+References: <1612678457-11548-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: Re: (subset) [PATCH v4 0/3] Add support for MT6315 regulator
+Message-Id: <161280958330.10970.11171389385513802451.b4-ty@kernel.org>
+Date: Mon, 08 Feb 2021 18:39:43 +0000
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_105405_407133_F77BDEB9 
-X-CRM114-Status: GOOD (  22.07  )
+X-CRM114-CacheID: sfid-20210208_134037_060538_61183B87 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,116 +70,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org,
- Felix Fietkau <nbd@nbd.name>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-UnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPiB3cml0ZXM6Cgo+IE9uIFN1biwgMjAy
-MS0wMi0wNyBhdCAxMDo0MSArMDgwMCwgUnlkZXIgTGVlIHdyb3RlOgo+PiBPbiBGcmksIDIwMjEt
-MDItMDUgYXQgMTQ6MjkgKzAxMDAsIFRva2UgSMO4aWxhbmQtSsO4cmdlbnNlbiB3cm90ZToKPgo+
-PiA+ID4gQEAgLTM3NzAsNiArMzc3MCwxMCBAQCBzdHJ1Y3QgaWVlZTgwMjExX3R4cSAqaWVlZTgw
-MjExX25leHRfdHhxKHN0cnVjdCBpZWVlODAyMTFfaHcgKmh3LCB1OCBhYykKPj4gPiA+ICAJCQkJ
-c3RhLT5haXJ0aW1lX3dlaWdodDsKPj4gPiA+ICAKPj4gPiA+ICAJCWlmIChkZWZpY2l0IDwgMCB8
-fCAhYXFsX2NoZWNrKSB7Cj4+ID4gPiArCQkJaWYgKHR4cWktPnNjaGVkdWxlX3JvdW5kID09IGxv
-Y2FsLT5zY2hlZHVsZV9yb3VuZFthY10pCj4+ID4gPiArCQkJCWdvdG8gb3V0Owo+PiA+ID4gKwo+
-PiA+ID4gKwkJCXR4cWktPnNjaGVkdWxlX3JvdW5kID0gbG9jYWwtPnNjaGVkdWxlX3JvdW5kW2Fj
-XTsKPj4gPiAKPj4gPiBJIHRoaW5rIHRoaXMgY2hhbmdlIG1heSBiZSB3b3J0aCBtYWtpbmcgYW55
-d2F5LCBidXQgZm9yIGEgZGlmZmVyZW50Cj4+ID4gcmVhc29uOiBXaXRob3V0IGl0LCBhIHN0YXRp
-b24gdGhhdCBmYWlscyBhcWxfY2hlY2sgd2lsbCBrZWVwIGdldHRpbmcKPj4gPiByZWN5Y2xlZCB0
-aHJvdWdoIHRoZSBsaXN0LCBhZHZhbmNpbmcgaXRzIGRlZmljaXQuIFdoaWNoIGNvdWxkIGFjdHVh
-bGx5Cj4+ID4gYmUgdGhlIHJlYXNvbiBBUUwgYnJlYWtzIGFpcnRpbWUgZmFpcm5lc3M7IGRpZCB5
-b3Ugb2JzZXJ2ZSBhbnkKPj4gPiBkaWZmZXJlbmNlIGluIGZhaXJuZXNzIHdpdGggdGhpcyBjaGFu
-Z2U/Cj4+IAo+PiBPdXIgY2FzZSBpczogbXQ3OTE1IHByb3ZpZGVzIHBlci1wZWVyIGFpcnRpbWUg
-Y291bnRlcnMuIEhvd2V2ZXIsIHNvbWUgb2YKPj4gdGhlbSB3ZXJlIG5vdCBwcm9wZXJseSBjb25m
-aWd1cmVkLCBzbyBjZXJ0YWluIHN0YXRpb25zIHJlcG9ydGVkIGxhcmdlCj4+IGFtb3VudCBvZiBh
-aXJ0aW1lIHdoaWNoIGxlZCB0byBkZWZpY2l0IDwgMCwgYW5kIGFzIHlvdSBzYWlkLCBlbmRpbmcg
-dXAKPj4gd2l0aCByZWN5Y2xlICsgdmVyeSBsb25nZXIgbG9jayBob2xkIHRpbWUgKDAuOXMgaW4g
-b3VyIHRlc3RzKSBhbmQKPj4gYnJlYWtpbmcgZmFpcm5lc3MuCgpGaXJzdCBvZiBhbGwsIGlmIHRo
-ZSBkcml2ZXIgcmVwb3J0cyB3cm9uZyBhaXJ0aW1lIHZhbHVlcywgb2YgY291cnNlIGl0CmlzIGdv
-aW5nIHRvIGFmZmVjdCBmYWlybmVzcy4gVGhlIHJpZ2h0IHRoaW5nIGluIHRoYXQgY2FzZSBpcyB0
-byBmaXggdGhlCmRyaXZlciwgb3IgdHVybiBvZmYgcmVwb3J0aW5nIGlmIGl0IGNhbid0IGJlIGZp
-eGVkLgoKPiBGb3VuZCBhIHByb2JsZW0gd2hlbiB3ZSBhcmUgaW4gbG93IHRyYWZmaWMgd2l0aCB0
-aGlzIHBhdGNoLlRoaXMgd2lsbAo+IGluY3JlYXNlIGxhdGVuY3kgKGkuZSBwaW5nKQo+Cj4KPiBT
-bywgd2UgaGF2ZSB0bwo+Cj4gCWlmIChkZWZpY2l0IDwgMCB8fCAhYXFsX2NoZWNrKSB7Cj4gCQlp
-ZiAodHhxaS0+c2NoZWR1bGVfcm91bmQgPT0gbG9jYWwtPnNjaGVkdWxlX3JvdW5kW2FjXSkKPiAJ
-CQkvLyByZS1zY2hlZHVsZQoKWW91IG1lYW4sIHNpZ25hbCB0aGUgZHJpdmVyIHRvIHN0YXJ0IG92
-ZXI/IEJ1dCB0aGVuIHlvdSdyZSBqdXN0IHVuZG9pbmcKdGhlIGNoZWNrIHlvdSBqdXN0IGluc2Vy
-dGVkIGhlcmUuLi4KCgouLi5hbmQgdGhpbmtpbmcgYWJvdXQgaXQgYSBiaXQgbW9yZSwgSSBkb24n
-dCBhY3R1YWxseSB0aGluayBhZGRpbmcgdGhpcwpjaGVjayBpcyB0aGUgcmlnaHQgdGhpbmcgdG8g
-ZG8uIEFzIHlvdSd2ZSBqdXN0IGRpc2NvdmVyZWQsIHRoZSBkZWZpY2l0CnNjaGVkdWxlciByZWxp
-ZXMgb24gdGhlICJnb3RvIGJlZ2luIiBiZWxvdyAoYW5kIHRodXMgYmVpbmcgYWJsZSB0bwprZWVw
-IHNwaW5uaW5nIGFuZCBpbmNyZWFzaW5nIHRoZSBkZWZpY2l0KSB0byBtYWtlIHByb2dyZXNzLiBT
-byBpZiB5b3UKc2hvcnQtY2lyY3VpdCB0aGF0LCB5b3UnbGwgZ2V0IGJsb2NraW5nLCBidXQgaWYg
-eW91IGtlZXAgcm90YXRpbmcgdGhlCnF1ZXVlcyBmb3Igb3RoZXIgcmVhc29ucyAobGlrZSBBUUwg
-ZG9lcykgeW91IG5vIGxvbmdlciBnZXQgZmFpcm5lc3MuCgpVbHRpbWF0ZWx5IHRoaXMgY29tZXMg
-ZnJvbSB1c2luZyB0d28gZGlmZmVyZW50IHNvdXJjZXMgb2YgYWlydGltZToKcHJlZGljdGVkIHZh
-bHVlcyAoaW4gQVFMKSBhbmQgYWZ0ZXItdGhlLWZhY3QgcmVwb3J0aW5nIChpbiB0aGUgZmFpcm5l
-c3MKc2NoZWR1bGVyKS4gVGhlcmUncyBhIHRpbWUgbGFnIGJldHdlZW4gd2hlbiB0aGVzZSB0d28g
-dmFsdWVzIGFyZQphcHBsaWVkLCB3aGljaCBsZWFkcyB0byB0aGUgZmFpcm5lc3Mgc2NoZWR1bGVy
-IGluc2lzdGluZyB0aGF0IGEgc3RhdGlvbgpzaG91bGQgYmUgdGhlIG5leHQgb25lIHRvIHRyYW5z
-bWl0IGV2ZW4gdGhvdWdoIEFRTCBpcyBibG9ja2luZyBpdC4KCkhtbSwgSSB3b25kZXIgd2hhdCB3
-b3VsZCBoYXBwZW4gaWYgd2UganVzdCBhY2NvdW50ZWQgdGhlIEFRTCBiYWxhbmNlIGluCnRoZSBm
-YWlybmVzcyBkZWZpY2l0IGFzIHdlbGw/IFNvbWV0aGluZyBsaWtlIHRoZSBwYXRjaCBiZWxvdwoo
-Y29tcGlsZS10ZXN0ZWQgb25seSkuIEknbSBub3Qgc3VyZSB3aGF0IHRoZSBlZmZlY3Qgb2YgcnVu
-bmluZyB0aGUKZGVmaWNpdCBiYWNrd2FyZHMgbGlrZSB0aGlzIGlzOyB3ZSBtYXkgZ2V0IHdlaXJk
-IG9zY2lsbGF0aW5nIHZhbHVlcyB3aGVuCndlIHN1YnRyYWN0IHRoZSBBUUwgdmFsdWUgYW5kIHRo
-ZSAicmVhbCIgdmFsdWUgaGFzbid0IGJlZW4gYWNjb3VudGVkCnlldC4gQnV0IGl0IG1heSBhbHNv
-IHR1cm4gb3V0IHRvIG5vdCBiZSBhIGJpZyBpc3N1ZTsgd29ydGggdGVzdGluZywKbWF5YmU/CgpU
-aGUgYWx0ZXJuYXRpdmUgd291bGQgYmUgdG8gc3dpdGNoIHRvIHVzaW5nIG9ubHkgdGhlIEFRTCB2
-YWx1ZXMgZm9yCmZhaXJuZXNzIGFzIHdlbGw7IGlmIHRoZSBBUUwgcHJlZGljdGlvbnMgYXJlIHJl
-YXNvbmFibHkgYWNjdXJhdGUgdGhpcwp3b3VsZCBsaWtlbHkgd29yayB3ZWxsIGVub3VnaC4gR290
-IGFueSBpZGVhIGhvdyBtdWNoIHRoZXkgYXJlIG9mZj8KCi1Ub2tlCgpkaWZmIC0tZ2l0IGEvbmV0
-L21hYzgwMjExL3N0YV9pbmZvLmMgYi9uZXQvbWFjODAyMTEvc3RhX2luZm8uYwppbmRleCBlYzY5
-NzNlZTg4ZWYuLjg2NzE4YTY0MjllNiAxMDA2NDQKLS0tIGEvbmV0L21hYzgwMjExL3N0YV9pbmZv
-LmMKKysrIGIvbmV0L21hYzgwMjExL3N0YV9pbmZvLmMKQEAgLTE4OTMsMTIgKzE4OTMsMTAgQEAg
-dm9pZCBpZWVlODAyMTFfc3RhX3NldF9idWZmZXJlZChzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqcHVi
-c3RhLAogfQogRVhQT1JUX1NZTUJPTChpZWVlODAyMTFfc3RhX3NldF9idWZmZXJlZCk7CiAKLXZv
-aWQgaWVlZTgwMjExX3N0YV9yZWdpc3Rlcl9haXJ0aW1lKHN0cnVjdCBpZWVlODAyMTFfc3RhICpw
-dWJzdGEsIHU4IHRpZCwKLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdTMyIHR4
-X2FpcnRpbWUsIHUzMiByeF9haXJ0aW1lKQorc3RhdGljIHZvaWQgX19pZWVlODAyMTFfc3RhX3Jl
-Z2lzdGVyX2FpcnRpbWUoc3RydWN0IGllZWU4MDIxMV9sb2NhbCAqbG9jYWwsCisgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBzdGFfaW5mbyAqc3RhLCB1
-OCBhYywKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdTMyIHR4
-X2FpcnRpbWUsIHUzMiByeF9haXJ0aW1lKQogewotICAgICAgIHN0cnVjdCBzdGFfaW5mbyAqc3Rh
-ID0gY29udGFpbmVyX29mKHB1YnN0YSwgc3RydWN0IHN0YV9pbmZvLCBzdGEpOwotICAgICAgIHN0
-cnVjdCBpZWVlODAyMTFfbG9jYWwgKmxvY2FsID0gc3RhLT5zZGF0YS0+bG9jYWw7Ci0gICAgICAg
-dTggYWMgPSBpZWVlODAyMTFfYWNfZnJvbV90aWQodGlkKTsKICAgICAgICB1MzIgYWlydGltZSA9
-IDA7CiAKICAgICAgICBpZiAoc3RhLT5sb2NhbC0+YWlydGltZV9mbGFncyAmIEFJUlRJTUVfVVNF
-X1RYKQpAQCAtMTkxMiw2ICsxOTEwLDE2IEBAIHZvaWQgaWVlZTgwMjExX3N0YV9yZWdpc3Rlcl9h
-aXJ0aW1lKHN0cnVjdCBpZWVlODAyMTFfc3RhICpwdWJzdGEsIHU4IHRpZCwKICAgICAgICBzdGEt
-PmFpcnRpbWVbYWNdLmRlZmljaXQgLT0gYWlydGltZTsKICAgICAgICBzcGluX3VubG9ja19iaCgm
-bG9jYWwtPmFjdGl2ZV90eHFfbG9ja1thY10pOwogfQorCit2b2lkIGllZWU4MDIxMV9zdGFfcmVn
-aXN0ZXJfYWlydGltZShzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqcHVic3RhLCB1OCB0aWQsCisgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHUzMiB0eF9haXJ0aW1lLCB1MzIgcnhfYWly
-dGltZSkKK3sKKyAgICAgICBzdHJ1Y3Qgc3RhX2luZm8gKnN0YSA9IGNvbnRhaW5lcl9vZihwdWJz
-dGEsIHN0cnVjdCBzdGFfaW5mbywgc3RhKTsKKyAgICAgICBzdHJ1Y3QgaWVlZTgwMjExX2xvY2Fs
-ICpsb2NhbCA9IHN0YS0+c2RhdGEtPmxvY2FsOworICAgICAgIHU4IGFjID0gaWVlZTgwMjExX2Fj
-X2Zyb21fdGlkKHRpZCk7CisKKyAgICAgICBfX2llZWU4MDIxMV9zdGFfcmVnaXN0ZXJfYWlydGlt
-ZShsb2NhbCwgc3RhLCBhYywgdHhfYWlydGltZSwgcnhfYWlydGltZSk7Cit9CiBFWFBPUlRfU1lN
-Qk9MKGllZWU4MDIxMV9zdGFfcmVnaXN0ZXJfYWlydGltZSk7CiAKIHZvaWQgaWVlZTgwMjExX3N0
-YV91cGRhdGVfcGVuZGluZ19haXJ0aW1lKHN0cnVjdCBpZWVlODAyMTFfbG9jYWwgKmxvY2FsLApA
-QCAtMTkyNCw5ICsxOTMyLDExIEBAIHZvaWQgaWVlZTgwMjExX3N0YV91cGRhdGVfcGVuZGluZ19h
-aXJ0aW1lKHN0cnVjdCBpZWVlODAyMTFfbG9jYWwgKmxvY2FsLAogICAgICAgICAgICAgICAgcmV0
-dXJuOwogCiAgICAgICAgaWYgKCF0eF9jb21wbGV0ZWQpIHsKLSAgICAgICAgICAgICAgIGlmIChz
-dGEpCisgICAgICAgICAgICAgICBpZiAoc3RhKSB7CiAgICAgICAgICAgICAgICAgICAgICAgIGF0
-b21pY19hZGQodHhfYWlydGltZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAm
-c3RhLT5haXJ0aW1lW2FjXS5hcWxfdHhfcGVuZGluZyk7CisgICAgICAgICAgICAgICAgICAgICAg
-IF9faWVlZTgwMjExX3N0YV9yZWdpc3Rlcl9haXJ0aW1lKGxvY2FsLCBzdGEsIGFjLCB0eF9haXJ0
-aW1lLCAwKTsKKyAgICAgICAgICAgICAgIH0KIAogICAgICAgICAgICAgICAgYXRvbWljX2FkZCh0
-eF9haXJ0aW1lLCAmbG9jYWwtPmFxbF90b3RhbF9wZW5kaW5nX2FpcnRpbWUpOwogICAgICAgICAg
-ICAgICAgcmV0dXJuOwpAQCAtMTkzOCw2ICsxOTQ4LDcgQEAgdm9pZCBpZWVlODAyMTFfc3RhX3Vw
-ZGF0ZV9wZW5kaW5nX2FpcnRpbWUoc3RydWN0IGllZWU4MDIxMV9sb2NhbCAqbG9jYWwsCiAgICAg
-ICAgICAgICAgICBpZiAodHhfcGVuZGluZyA8IDApCiAgICAgICAgICAgICAgICAgICAgICAgIGF0
-b21pY19jbXB4Y2hnKCZzdGEtPmFpcnRpbWVbYWNdLmFxbF90eF9wZW5kaW5nLAogICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eF9wZW5kaW5nLCAwKTsKKyAgICAgICAgICAg
-ICAgIF9faWVlZTgwMjExX3N0YV9yZWdpc3Rlcl9haXJ0aW1lKGxvY2FsLCBzdGEsIGFjLCAtdHhf
-YWlydGltZSwgMCk7CiAgICAgICAgfQogCiAgICAgICAgdHhfcGVuZGluZyA9IGF0b21pY19zdWJf
-cmV0dXJuKHR4X2FpcnRpbWUsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Sun, 7 Feb 2021 14:14:14 +0800, Hsin-Hsiung Wang wrote:
+> This patch series adds support for MediaTek PMIC MT6315 regulator driver,
+> which adds MT6315 related buck voltage data to the driver.
+> This series is based on below patch[1].
+> 
+> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=429385
+> 
+> changes since v3:
+> - fix the error of binding document.
+> - refine the mt6315 regulator for better code quality.
+> - update mt6315 regulator node in the mt8192-evb.dts.
+> 
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+
+Thanks!
+
+[1/3] dt-bindings: regulator: document binding for MT6315 regulator
+      commit: 977fb5b58469c1367aa075e7e913c03cba7d466f
+[2/3] regulator: mt6315: Add support for MT6315 regulator
+      commit: 7aa382cfe714f61b0c29f02c31d389c506b4e2ae
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
