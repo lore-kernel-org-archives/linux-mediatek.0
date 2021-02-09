@@ -7,106 +7,93 @@ X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65ED8C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 10:58:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DCA6BC4332B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 11:14:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 03CF460232
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 10:57:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03CF460232
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bfs.de
+	by mail.kernel.org (Postfix) with ESMTPS id 6909364E79
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 11:14:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6909364E79
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Izl/ZqvdKHTs4bhRBBibLE4RIwNL31IG/Hn2FrmlX8Y=; b=pzPY8BKe6s41avMecp5GKPc4S
-	MrD22RyYEAX07e2gkbo9MncY5+OK398QIGnPpU3aO5UNk7A8YAjvgbOr6qnb5B7z0o5XtYpr6eu7m
-	wYMhVcHPVGwMDtAwc77WCekDa5MDNNBBhQJIAnji76YuuuJQAvB/hGVkntebV8PYrh5N7G0Ws7c9N
-	xkRebpbAzQp9JaiF4wHeBsj5yxTIsuFEQhK3PjOWovtoEPu96Q9HCdMgAtsmU5cwmsnJyPf+h8Eaz
-	sRhVEzvmZg6Qo1xu0mI3Oo3gn2O4iuGaV7XCoouz5AFKdT78zLJNsT0HU7JLfVPvCvkKY7XDQNILD
-	YviindDIQ==;
+	 bh=wmKKKfHbjGXdGRco4ZdBgpYt1PxGYuRYaWs3Oo9uoFQ=; b=jKQNcVEOI2bmwYW66TPq0WCSm
+	F+x0v9ka4ObzxQSr6PPBVv3ZW5n5Xeg3/3SBLDcd8i6VMtfLBPfpNM48aqBmwvfk7oAW4UIBdB5hd
+	IQRXz4xQL9T6cu5Vsbr8Y/XGlbOl40qQLlcDp760Moe/5A2rDyzPMEQuw2+lMleFb5aaAmU53GFBW
+	izVkxf/3VK1xBEKn6PyeaRfFC9t+dFZqEvLzQCp4a/PWf+DmwMQID+6IvxN3AxWte8KMSSq0G3Zuz
+	baiZQc0REFEDrzTUZSsG0+i86poYUadvEgfBMzzJ6PJvv74pYGbB4BIergTQWZExdpaCFEXyQaV+R
+	7fwWh1zmQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9QiM-0005RB-8z; Tue, 09 Feb 2021 10:57:50 +0000
-Received: from mx01-sz.bfs.de ([194.94.69.67])
+	id 1l9Qxx-0007wN-8A; Tue, 09 Feb 2021 11:13:57 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9QiC-0005LV-21; Tue, 09 Feb 2021 10:57:41 +0000
-Received: from SRVEX01-SZ.bfs.intern (exchange-sz.bfs.de [10.129.90.31])
- by mx01-sz.bfs.de (Postfix) with ESMTPS id DABFE2076E;
- Tue,  9 Feb 2021 11:57:32 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bfs.de; s=dkim201901; 
- t=1612868252;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=F1DfsCqs88iiQXx9DWuj57ZejBv/iB8OwGlMzxeON1g=;
- b=L+XB+9cKSQKPGfxZSR9SZuyPfdtlbofqolBjxsYSYkQtzW0FtR5MScz8D3qZ3c2xRn/0sV
- +Ej7sWzVqYbx+Qc/bHWjYvIKEozDvX6Sm9kIQ1u43f/Noc2sATXR09ggbiSnDsZ8EADFm+
- Tcn5Rsec2RYzMpPYc1gduwH6C5LyRb9PowHLp26kqTTv49t2ACE3UoyB/PdljEC6QevGff
- FxT5qN+DSAtEwUfgWW+IKU7eiE/GWXik59pkL0zsEazLhb+2dyWpkKlxlTPKHusnOu/1CZ
- 3MZQFWfi+SWgvmG6Mv75oKtr4QHuocgfg+6B8zCkbTZf6ENFBVHyP1AKVZhLyg==
-Received: from SRVEX01-SZ.bfs.intern (10.129.90.31) by SRVEX01-SZ.bfs.intern
- (10.129.90.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2176.2; Tue, 9 Feb 2021
- 11:57:32 +0100
-Received: from SRVEX01-SZ.bfs.intern ([fe80::7d2d:f9cb:2761:d24a]) by
- SRVEX01-SZ.bfs.intern ([fe80::7d2d:f9cb:2761:d24a%13]) with mapi id
- 15.01.2176.002; Tue, 9 Feb 2021 11:57:32 +0100
-From: Walter Harms <wharms@bfs.de>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Will Deacon <will@kernel.org>
-Subject: AW: [PATCH][next] iommu/mediatek: Fix unsigned domid comparison with
- less than zero
-Thread-Topic: [PATCH][next] iommu/mediatek: Fix unsigned domid comparison with
- less than zero
-Thread-Index: AQHW+jVw6vQF7iLM7kGMzk6JKLJ0oqpHqk8AgAfZ0YCAACsEgg==
-Date: Tue, 9 Feb 2021 10:57:32 +0000
-Message-ID: <c6b3b6beeb1e439f881bc3ff4d39f27a@bfs.de>
-References: <20210203135936.23016-1-colin.king@canonical.com>
- <20210204092558.GA20244@willie-the-truck>,<20210209091923.GO2696@kadam>
-In-Reply-To: <20210209091923.GO2696@kadam>
-Accept-Language: de-DE, en-US
-Content-Language: de-DE
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.137.16.39]
-x-tm-as-product-ver: SMEX-14.0.0.3080-8.6.1012-25962.007
-x-tm-as-result: No-10--7.431600-5.000000
-x-tmase-matchedrid: qqoVTVjx6YDRubRCcrbc5grcxrzwsv5u3dCmvEa6IiHgYNP0+4v1nizy
- bVqWyY2NjrJzIoPQuMw+otRoIV3vSHVgBjkrax/H52zh+cq/0JuQBbTqDF++CmOMyb1Ixq8VUDG
- dbyXu/ma30GP8pin5GSKkzMT7+4ooN9rojbjxBkzXA3LnlKuVLMqFE6gRdROb+nlefiwGml8hlG
- 9iTcYtaqNIXC+Evb2D1qIE4CfpJ4zBm5Pnp+5TT/SG/+sPtZVkJih/yo+OvlXk6Qbi+9i6D0MmJ
- 6dGmSIy2JDeaNwtlNBVVkf0bJfBjyxppiUy9o4cGjzBgnFZvQ4vV5f7P0HVDETqq9Xa45y5XJvT
- MgAKYypb2hQcAFTn3WnsfYyMrTTf6Ne/nacGH0HM0ihsfYPMYdFTR6mnbN4LvGAx/1ATZ5sJetz
- 2R9zIsefqkkwronku/Sj/WnCM/LO/WXZS/HqJ2gtuKBGekqUpbGVEmIfjf3vt19sHZWTQhkfEDy
- E6wbBxQsEUiq7rfWGPfhLI9kH4wx7PLpUeWnT+
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--7.431600-5.000000
-x-tmase-version: SMEX-14.0.0.3080-8.6.1012-25962.007
-x-tm-snts-smtp: 8C502E7B3B6532B6AC707D8C4AE56DFF89CE4B2F07035BEC56FE6C2324B7857A2000:9
+ id 1l9Qxt-0007vn-Vx
+ for linux-mediatek@lists.infradead.org; Tue, 09 Feb 2021 11:13:55 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id f14so30593235ejc.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 09 Feb 2021 03:13:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=56T1maiY9H+VnzgKdQgdUT3CY3VmDkb6dauNYhW4sNM=;
+ b=FZu13FqRuqszUc3y3vbe0mXC336zKcsQI4gNbiLJ4VWJOlUpbDLtwrPTlK2bdXM9gl
+ 3KYXXV8x2HYD7G4HKNAJaMtJRSQuuXRFiWwM6c4ongQOGTeEdvOtenvXsy8mnGnQw9cW
+ KjLblkuE1V68aKXeMOTrvhXDmCaN2O3RnViYw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=56T1maiY9H+VnzgKdQgdUT3CY3VmDkb6dauNYhW4sNM=;
+ b=ugMu7Z6toZn+sbla7cl/h+EizgedS/f3WiSuBZxcs7qxl+HNIW9y4DUmZ/7oTthx59
+ 6Os+0vmxh/PTogw61dn+aztmgt7vnhg+ATf9y1vAWOAab2O7Q38RFkgYxSkRDZByK0rS
+ WkpynNXWc/A0eMHa605XfAupSrcPsCyz89i7KTpTgwZ/ystS8DWXgGJble7RL2zHl8AG
+ KzLd/ovI5Idzc99WsPpjfNhWQM75GhxRhsQhcG31WdkHBPcOIwD2fG5CJmjS4HUOV+hj
+ Z7/vitqOyxcqXlVbIDosO3l3jlWRJQyGubCjxwmnwM9tE3N88OZR4FVcFYunisTW3T9H
+ f1cQ==
+X-Gm-Message-State: AOAM531Ll/bVmAsdbOrVJk6cMs6vQ9YR1eVM/PAb42yjryehm8Z+C8aa
+ vyz/nobQ8/BYvz69X2a5Hv9JB4dADpcx/g==
+X-Google-Smtp-Source: ABdhPJx8cMZ5H8QE9ai477hurnuSBRmeF7je6uz0WDxSS89kYOj7gkeNWliVcECb/FdX1PQx7jolcQ==
+X-Received: by 2002:a17:907:728b:: with SMTP id
+ dt11mr21620791ejc.321.1612869232359; 
+ Tue, 09 Feb 2021 03:13:52 -0800 (PST)
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com.
+ [209.85.128.53])
+ by smtp.gmail.com with ESMTPSA id u17sm10500795ejr.59.2021.02.09.03.13.51
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Feb 2021 03:13:51 -0800 (PST)
+Received: by mail-wm1-f53.google.com with SMTP id w4so2709978wmi.4
+ for <linux-mediatek@lists.infradead.org>; Tue, 09 Feb 2021 03:13:51 -0800 (PST)
+X-Received: by 2002:a1c:39d5:: with SMTP id g204mr2819072wma.127.1612868761379; 
+ Tue, 09 Feb 2021 03:06:01 -0800 (PST)
 MIME-Version: 1.0
-X-Spamd-Result: default: False [0.82 / 7.00]; ARC_NA(0.00)[];
- TO_DN_EQ_ADDR_SOME(0.00)[]; HAS_XOIP(0.00)[];
- FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
- FREEMAIL_ENVRCPT(0.00)[gmail.com];
- TO_MATCH_ENVRCPT_ALL(0.00)[]; TAGGED_RCPT(0.00)[];
- MIME_GOOD(-0.10)[text/plain]; MID_RHS_MATCH_FROM(0.00)[];
- DKIM_SIGNED(0.00)[bfs.de:s=dkim201901];
- BAYES_HAM(-0.68)[83.00%]; RCPT_COUNT_TWELVE(0.00)[14];
- NEURAL_HAM(-0.00)[-1.000]; RCVD_NO_TLS_LAST(0.10)[];
- FROM_EQ_ENVFROM(0.00)[]; MIME_TRACE(0.00)[0:+];
- FREEMAIL_CC(0.00)[canonical.com,8bytes.org,gmail.com,mediatek.com,chromium.org,lists.linux-foundation.org,lists.infradead.org,vger.kernel.org];
- RCVD_COUNT_TWO(0.00)[2]; SUSPICIOUS_RECIPS(1.50)[]
-Authentication-Results: mx01-sz.bfs.de;
-	none
+References: <20201209080102.26626-1-yong.wu@mediatek.com>
+ <20201209080102.26626-7-yong.wu@mediatek.com>
+ <X+L9XpkoII7tw/tX@chromium.org> <1608809713.26323.262.camel@mhfsdcap03>
+ <CAAFQd5CCJv=0q=V45Z7mtq7FSq1c5TcH6vyqfp3MWxaA=ZexJQ@mail.gmail.com>
+ <1610520301.31716.27.camel@mhfsdcap03>
+ <CAAFQd5A26tZo3gpsmqbRSa3x7a1KThzt9Jw74jWsqQGrBsabhw@mail.gmail.com>
+ <1611126445.19055.34.camel@mhfsdcap03>
+ <CAAFQd5C3G=eE+dwOK0Vg=tcSR8LFWWG1YDta3=9nZ1G0Bv7dcA@mail.gmail.com>
+ <1611560007.3184.39.camel@mhfsdcap03>
+ <CAAFQd5A6rAL5iLt0iSDxNPQq5TgZ9=ZJQSkGG3GKwv+FPk9p3g@mail.gmail.com>
+ <bf443749-8627-5d1d-d52f-64553391d1ed@arm.com>
+In-Reply-To: <bf443749-8627-5d1d-d52f-64553391d1ed@arm.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Tue, 9 Feb 2021 20:05:50 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5AwvY6QeQFTzx577FAdQwrmWoLEWVQx=VAWD5rF6Ywqqw@mail.gmail.com>
+Message-ID: <CAAFQd5AwvY6QeQFTzx577FAdQwrmWoLEWVQx=VAWD5rF6Ywqqw@mail.gmail.com>
+Subject: Re: [PATCH v5 06/27] dt-bindings: mediatek: Add binding for mt8192
+ IOMMU
+To: Robin Murphy <robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210209_055740_452408_CBBE6258 
-X-CRM114-Status: GOOD (  20.95  )
+X-CRM114-CacheID: sfid-20210209_061354_171290_8A31EBB8 
+X-CRM114-Status: GOOD (  66.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,80 +105,377 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Anan sun <anan.sun@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Tomasz Figa <tfiga@chromium.org>, Chao Hao <chao.hao@mediatek.com>,
- "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Colin King <colin.king@canonical.com>, Yong Wu <yong.wu@mediatek.com>
+Cc: youlin.pei@mediatek.com, linux-devicetree <devicetree@vger.kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Evan Green <evgreen@chromium.org>, chao.hao@mediatek.com,
+ "list@263.net:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, anan.sun@mediatek.com,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I second that ...
-
-Having i unsigned violates the rule of "least surprise".
-If you need it unsigned make it clearly visible, also adding
-a simple comment may help.
-
-jm2c,
- wh
-________________________________________
-Von: Dan Carpenter <dan.carpenter@oracle.com>
-Gesendet: Dienstag, 9. Februar 2021 10:19:23
-An: Will Deacon
-Cc: Colin King; Joerg Roedel; Matthias Brugger; Anan sun; Yong Wu; Chao Hao; Tomasz Figa; iommu@lists.linux-foundation.org; linux-arm-kernel@lists.infradead.org; linux-mediatek@lists.infradead.org; kernel-janitors@vger.kernel.org; linux-kernel@vger.kernel.org
-Betreff: Re: [PATCH][next] iommu/mediatek: Fix unsigned domid comparison with less than zero
-
-On Thu, Feb 04, 2021 at 09:25:58AM +0000, Will Deacon wrote:
-> On Wed, Feb 03, 2021 at 01:59:36PM +0000, Colin King wrote:
-> > From: Colin Ian King <colin.king@canonical.com>
-> >
-> > Currently the check for domid < 0 is always false because domid
-> > is unsigned.  Fix this by making it signed.
-> >
-> > Addresses-CoverityL ("Unsigned comparison against 0")
+On Mon, Feb 1, 2021 at 7:44 PM Robin Murphy <robin.murphy@arm.com> wrote:
 >
-> Typo here ('L' instead of ':')
->
-> > Fixes: ab1d5281a62b ("iommu/mediatek: Add iova reserved function")
-> > Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> > ---
-> >  drivers/iommu/mtk_iommu.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> On 2021-01-29 11:45, Tomasz Figa wrote:
+> > On Mon, Jan 25, 2021 at 4:34 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >>
+> >> On Mon, 2021-01-25 at 13:18 +0900, Tomasz Figa wrote:
+> >>> On Wed, Jan 20, 2021 at 4:08 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >>>>
+> >>>> On Wed, 2021-01-20 at 13:15 +0900, Tomasz Figa wrote:
+> >>>>> On Wed, Jan 13, 2021 at 3:45 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >>>>>>
+> >>>>>> On Wed, 2021-01-13 at 14:30 +0900, Tomasz Figa wrote:
+> >>>>>>> On Thu, Dec 24, 2020 at 8:35 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >>>>>>>>
+> >>>>>>>> On Wed, 2020-12-23 at 17:18 +0900, Tomasz Figa wrote:
+> >>>>>>>>> On Wed, Dec 09, 2020 at 04:00:41PM +0800, Yong Wu wrote:
+> >>>>>>>>>> This patch adds decriptions for mt8192 IOMMU and SMI.
+> >>>>>>>>>>
+> >>>>>>>>>> mt8192 also is MTK IOMMU gen2 which uses ARM Short-Descriptor translation
+> >>>>>>>>>> table format. The M4U-SMI HW diagram is as below:
+> >>>>>>>>>>
+> >>>>>>>>>>                            EMI
+> >>>>>>>>>>                             |
+> >>>>>>>>>>                            M4U
+> >>>>>>>>>>                             |
+> >>>>>>>>>>                        ------------
+> >>>>>>>>>>                         SMI Common
+> >>>>>>>>>>                        ------------
+> >>>>>>>>>>                             |
+> >>>>>>>>>>    +-------+------+------+----------------------+-------+
+> >>>>>>>>>>    |       |      |      |       ......         |       |
+> >>>>>>>>>>    |       |      |      |                      |       |
+> >>>>>>>>>> larb0   larb1  larb2  larb4     ......      larb19   larb20
+> >>>>>>>>>> disp0   disp1   mdp    vdec                   IPE      IPE
+> >>>>>>>>>>
+> >>>>>>>>>> All the connections are HW fixed, SW can NOT adjust it.
+> >>>>>>>>>>
+> >>>>>>>>>> mt8192 M4U support 0~16GB iova range. we preassign different engines
+> >>>>>>>>>> into different iova ranges:
+> >>>>>>>>>>
+> >>>>>>>>>> domain-id  module     iova-range                  larbs
+> >>>>>>>>>>     0       disp        0 ~ 4G                      larb0/1
+> >>>>>>>>>>     1       vcodec      4G ~ 8G                     larb4/5/7
+> >>>>>>>>>>     2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
+> >>>>>>>>>
+> >>>>>>>>> Why do we preassign these addresses in DT? Shouldn't it be a user's or
+> >>>>>>>>> integrator's decision to split the 16 GB address range into sub-ranges
+> >>>>>>>>> and define which larbs those sub-ranges are shared with?
+> >>>>>>>>
+> >>>>>>>> The problem is that we can't split the 16GB range with the larb as unit.
+> >>>>>>>> The example is the below ccu0(larb13 port9/10) is a independent
+> >>>>>>>> range(domain), the others ports in larb13 is in another domain.
+> >>>>>>>>
+> >>>>>>>> disp/vcodec/cam/mdp don't have special iova requirement, they could
+> >>>>>>>> access any range. vcodec also can locate 8G~12G. it don't care about
+> >>>>>>>> where its iova locate. here I preassign like this following with our
+> >>>>>>>> internal project setting.
+> >>>>>>>
+> >>>>>>> Let me try to understand this a bit more. Given the split you're
+> >>>>>>> proposing, is there actually any isolation enforced between particular
+> >>>>>>> domains? For example, if I program vcodec to with a DMA address from
+> >>>>>>> the 0-4G range, would the IOMMU actually generate a fault, even if
+> >>>>>>> disp had some memory mapped at that address?
+> >>>>>>
+> >>>>>> In this case. we will get fault in current SW setting.
+> >>>>>>
+> >>>>>
+> >>>>> Okay, thanks.
+> >>>>>
+> >>>>>>>
+> >>>>>>>>
+> >>>>>>>> Why set this in DT?, this is only for simplifying the code. Assume we
+> >>>>>>>> put it in the platform data. We have up to 32 larbs, each larb has up to
+> >>>>>>>> 32 ports, each port may be in different iommu domains. we should have a
+> >>>>>>>> big array for this..however we only use a macro to get the domain in the
+> >>>>>>>> DT method.
+> >>>>>>>>
+> >>>>>>>> When replying this mail, I happen to see there is a "dev->dev_range_map"
+> >>>>>>>> which has "dma-range" information, I think I could use this value to get
+> >>>>>>>> which domain the device belong to. then no need put domid in DT. I will
+> >>>>>>>> test this.
+> >>>>>>>
+> >>>>>>> My feeling is that the only part that needs to be enforced statically
+> >>>>>>> is the reserved IOVA range for CCUs. The other ranges should be
+> >>>>>>> determined dynamically, although I think I need to understand better
+> >>>>>>> how the hardware and your proposed design work to tell what would be
+> >>>>>>> likely the best choice here.
+> >>>>>>
+> >>>>>> I have removed the domid patch in v6. and get the domain id in [27/33]
+> >>>>>> in v6..
+> >>>>>>
+> >>>>>> About the other ranges should be dynamical, the commit message [30/33]
+> >>>>>> of v6 should be helpful. the problem is that we have a bank_sel setting
+> >>>>>> for the iova[32:33]. currently we preassign this value. thus, all the
+> >>>>>> ranges are fixed. If you adjust this setting, you can let vcodec access
+> >>>>>> 0~4G.
+> >>>>>
+> >>>>> Okay, so it sounds like we effectively have four 4G address spaces and
+> >>>>> we can assign the master devices to them. I guess each of these
+> >>>>> address spaces makes for an IOMMU group.
+> >>>>
+> >>>> Yes. Each a address spaces is an IOMMU group.
+> >>>>
+> >>>>>
+> >>>>> It's fine to pre-assign the devices to those groups for now, but it
+> >>>>> definitely shouldn't be hardcoded in DT, because it depends on the use
+> >>>>> case of the device. I'll take a look at v6, but it sounds like it
+> >>>>> should be fine if it doesn't take the address space assignment from DT
+> >>>>> anymore.
+> >>>>
+> >>>> Thanks very much for your review.
+> >>>>
+> >>>
+> >>> Hmm, I had a look at v6 and it still has the address spaces hardcoded
+> >>> in the DTS.
+> >>
+> >> sorry. I didn't get here. where do you mean. or help reply in v6.
+> >>
+> >> I only added the preassign list as comment in the file
+> >> (dt-binding/memory/mt8192-larb-port.h). I thought our iommu consumer may
+> >> need it when they use these ports. they need add dma-ranges property if
+> >> its iova is over 4GB.
 > >
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 0ad14a7604b1..823d719945b2 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -640,7 +640,7 @@ static void mtk_iommu_get_resv_regions(struct device *dev,
-> >                                    struct list_head *head)
-> >  {
-> >     struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
-> > -   unsigned int domid = mtk_iommu_get_domain_id(dev, data->plat_data), i;
-> > +   int domid = mtk_iommu_get_domain_id(dev, data->plat_data), i;
+> > That's exactly the problem. v6 simply replaced one way to describe the
+> > policy (domain ID) with another (dma-ranges). However, DT is not the
+> > right place to describe policies, because it's the place to describe
+> > hardware in a way agnostic from policies and use cases. In other
+> > words, DT must not impose using the hardware in one way or another.
+> >
+> > For example, we have two different companies that want to ship
+> > products based on this SoC - A and B. Company A may want to put MDP
+> > and camera in the same address space, but company B instead would
+> > prefer MDP to be in the same address space as video. Because this
+> > decision is stored in DT, one of them will have to change and rebuild
+> > their kernel and maintain a downstream patch.
 >
-> Not sure if it's intentional, but this also makes 'i' signed. It probably
-> should remain 'unsigned' to match 'iova_region_nr' in
-> 'struct mtk_iommu_plat_data'.
+> Well, in most cases Company A and Company B will be building their own
+> products around the SoC, so will each have their own downstream DTS
+> anyway. Even if they're buying complete hardware from an OEM and just
+> shipping it with custom software configurations, it's still quite likely
+> that they'd have their own DTS tweaks for branding and possibly other
+> firmware-related things.
 
+Isn't this exactly the opposite of what we aim for with upstreaming
+the code to mainline? Sure, that is how things look in practice, but
+that's not because people want it to be this way, but rather because
+it's impossible to do things without changing mainline in a way that
+possibly breaks others. The example of this IOMMU configuration is
+exactly this.
 
-iova_region_nr is either 1 or 5 so unsigned doesn't matter.
+>
+> Also note that expected use-cases frequently *are* reflected in DT -
+> pretty much every use of the "linux,shared-dma-pool" reserved-memory
+> binding, for instance. In fact memory carveouts in general are usually
+> just software policy rather than any kind of hardware or firmware
+> description.
 
-I once almost introduced a bug where the iterator was supposed to be
-size_t.  I fixed a bug by making it signed but I ended up introducing a
-new bug.  But generally that's pretty rare.  The more common case is
-that making iterators unsigned introduces bugs.
+Arguably those shouldn't be described in DT either, unless they are
+implied by actual reservations done in the hardware and/or firmware.
 
-It's better to default to "int i;" and if more complicated types are
-required that should stand out.  "size_t pg_idx;" or whatever.
+> There are also plenty of DT properties for actual hardware
+> that imply "this is how you need to configure me" rather than just "this
+> is what I can do", so the distinction between "describing the platform"
+> and "telling software what to do" isn't as clear-cut as we'd like it to be.
 
-regards,
-dan carpenter
+That's again not how things should be done and prevents others from
+using the hardware the way they want without downstreaming things.
+
+>
+> While I'm also not entirely convinced that "dma-ranges" is the perfect
+> tool for the job - as opposed to less abstraction via a larb property or
+> extra IOMMU specifier cell - it is at least descriptive to the DMA and
+> IOMMU subsystems as well as the driver, and can draw a direct parallel
+> to how some PCI host bridge drivers handle inbound windows. In many
+> cases those just need to be programmed *somehow*, so "dma-ranges" is set
+> in the DTS or inserted by the bootloader, and the kernel driver parses
+> that then programs the hardware to match. It seems like we're doing a
+> directly comparable thing here.
+
+Well, ultimately it's up to the subsystem maintainer to decide, so
+feel free to ignore my grumbling, but I'd say that the fact that one
+thing is not done right doesn't imply that it's okay for new things to
+be done wrong. I agree that technically the current approach is not
+incorrect, but I feel like practically it's a yet another small step
+making us farther from being able to use mainline in production.
+
+Best regards,
+Tomasz
+
+>
+> Robin.
+>
+> > My suggestion to follow here would be to:
+> >   - stop using dma-ranges for this purpose,
+> >   - add an array in the MTK IOMMU driver that has a default map between
+> > larbs and domains, e.g.
+> >
+> > static u8 mt8192_domain_map[NUM_DOMAINS][NUM_LARBS] = {
+> >     [0] = { 0 , 1, 0xff },
+> >     [1] = { 4, 5, 7, 0xff },
+> >     [2] = { 2, 9, 11, 13, 14, 16, 17, 18, 19, 20, 0xff },
+> > };
+> >
+> >   - add a kernel command line parameter that allows overriding of this map, e.g.
+> >
+> > mtk_iommu.domain_map="0:0,1:1:4,5,7:2:2,9,11,13,14,16,17,18,19,20"
+> >
+> > would be equivalent to the array above. Same could be also given by a
+> > Kconfig entry if one can't or doesn't want to add extra command line
+> > parameters.
+> >
+> > Would something like this work?
+> >
+> >>
+> >>> Could we move the fixed assignment to the MTK IOMMU driver code instead,
+> >>> so that it can be easily adjusted as the kernel code
+> >>> evolves without the need to update the DTS?
+> >>>
+> >>>>>
+> >>>>>>
+> >>>>>> Currently we have no interface to adjust this setting. Suppose we add a
+> >>>>>> new interface for this. It would be something like:
+> >>>>>>
+> >>>>>>     int mtk_smi_larb_config_banksel(struct device *larb, int banksel)
+> >>>>>>
+> >>>>>>     Then, all the MM drivers should call it before the HW works every
+> >>>>>> time, and its implement will be a bit complex since we aren't sure if
+> >>>>>> the larb has power at that time. the important thing is that the MM
+> >>>>>> devices have already not known which larb it connects with as we plan to
+> >>>>>> delete "mediatek,larb" in their dtsi nodes.
+> >>>>>
+> >>>>>  From the practical point of view, it doesn't look like setting this on
+> >>>>> a per-larb basis would make much sense. The reason to switch the
+> >>>>> bank_sel would be to decide which MM devices can share the same
+> >>>>> address space. This is a security aspect, because it effectively
+> >>>>> determines which devices are isolated from each other.
+> >>>>>
+> >>>>> That said, I agree that for now we can just start with a fixed
+> >>>>> assignment. We can think of the API if there is a need to adjust the
+> >>>>> assignment.
+> >>>>
+> >>>> Sorry for here. I forgot a thing here. that interface above still will
+> >>>> not be helpful. If we don't divide the whole 16GB ranges into 4
+> >>>> regions(let all the other ranges be dynamical), It won't work since we
+> >>>> can only adjust bank_sel with the larb as unit. This is a problem. there
+> >>>> are many ports in a larb. Take a example, the address for vcodec read
+> >>>> port is 32bits while the address for vcodec write port is 33bit, then it
+> >>>> will fail since we only have one bank_sel setting for one larb.
+> >>>
+> >>> That's exactly why I proposed to have the API operate based on the
+> >>> struct device, rather than individual DMA ports. Although I guess the
+> >>> CCU case is different, because it's the same larb as the camera.
+> >>>
+> >>> Anyway, I agree that we don't have to come up with such an API right now.
+> >>
+> >> Thanks for the confirm.
+> >>
+> >>>
+> >>>> Thus we
+> >>>> have to use current design.
+> >>>>
+> >>>>>
+> >>>>>>
+> >>>>>>     In current design, the MM device don't need care about it and 4GB
+> >>>>>> range is enough for them.
+> >>>>>>
+> >>>>>
+> >>>>> Actually, is the current assignment correct?
+> >>>>
+> >>>> Oh. In the code (patch [32/33] of v6), I put CCU0/1 in the cam/mdp
+> >>>> region which start at 8G since CCU0/1 is a module of camera.
+> >>>>
+> >>>>>
+> >>>>> domain-id  module     iova-range                  larbs
+> >>>>>     0       disp        0 ~ 4G                      larb0/1
+> >>>>>     1       vcodec      4G ~ 8G                     larb4/5/7
+> >>>>>     2       cam/mdp     8G ~ 12G             larb2/9/11/13/14/16/17/18/19/20
+> >>>>>     3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
+> >>>>>     4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
+> >>>>>
+> >>>>> Wouldn't CCU0 and CCU1 conflict with disp?
+> >>>>
+> >>>> About the conflict, I use patch [29/33] of v6 for this. I will reserve
+> >>>> this special iova region when the full domain(0-4G in this example)
+> >>>> initialize.
+> >>>>
+> >>>>> Should perhaps disp be assigned 12G ~ 16G instead?
+> >>>>
+> >>>> I think no need put it to 12G-16G, In previous SoC, we have only 4GB
+> >>>> ranges for whole MM engines. currently only cam/mdp domain exclude 128M
+> >>>> for CCU. it should be something wrong if this is not enough.
+> >>>>
+> >>>
+> >>> Indeed, space is not a problem, but from the security point of view
+> >>> it's undesirable. I believe CCU would be running proprietary firmware,
+> >>> so it should be isolated as much as possible from other components.
+> >>
+> >> CCU are in the same larb with camera. Thus, it also need locate the same
+> >> iova range with camera.
+> >
+> > What are larb13 and larb14 used by besides CCU? Is it possible to put
+> > them in a separate address space from other camera larbs?
+> >
+> > Best regards,
+> > Tomasz
+> >
+> >>
+> >>> And, after all, why waste the remaining 4G of address space?
+> >>>
+> >>> Best regards,
+> >>> Tomasz
+> >>>
+> >>>>>
+> >>>>> Best regards,
+> >>>>> Tomasz
+> >>>>>
+> >>>>>>>
+> >>>>>>> Best regards,
+> >>>>>>> Tomasz
+> >>>>>>>
+> >>>>>>>>
+> >>>>>>>> Thanks.
+> >>>>>>>>>
+> >>>>>>>>> Best regards,
+> >>>>>>>>> Tomasz
+> >>>>>>>>>
+> >>>>>>>>>>     3       CCU0    0x4000_0000 ~ 0x43ff_ffff     larb13: port 9/10
+> >>>>>>>>>>     4       CCU1    0x4400_0000 ~ 0x47ff_ffff     larb14: port 4/5
+> >>>>>>>>>>
+> >>>>>>>>>> The iova range for CCU0/1(camera control unit) is HW requirement.
+> >>>>>>>>>>
+> >>>>>>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> >>>>>>>>>> Reviewed-by: Rob Herring <robh@kernel.org>
+> >>>>>>>>>> ---
+> >>>>>>>>>>   .../bindings/iommu/mediatek,iommu.yaml        |  18 +-
+> >>>>>>>>>>   include/dt-bindings/memory/mt8192-larb-port.h | 240 ++++++++++++++++++
+> >>>>>>>>>>   2 files changed, 257 insertions(+), 1 deletion(-)
+> >>>>>>>>>>   create mode 100644 include/dt-bindings/memory/mt8192-larb-port.h
+> >>>>>>>>>>
+> >>>>>>>> [snip]
+> >>>>>>
+> >>>>
+> >>>
+> >>> _______________________________________________
+> >>> Linux-mediatek mailing list
+> >>> Linux-mediatek@lists.infradead.org
+> >>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> >>
+> > _______________________________________________
+> > iommu mailing list
+> > iommu@lists.linux-foundation.org
+> > https://lists.linuxfoundation.org/mailman/listinfo/iommu
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
