@@ -1,66 +1,74 @@
-Return-Path: <SRS0=Odcq=HK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ZAsA=HL=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 64543C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 22:21:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1F29C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 00:09:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DBB7F64E77
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Feb 2021 22:21:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DBB7F64E77
+	by mail.kernel.org (Postfix) with ESMTPS id 8602F64E9A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 00:09:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8602F64E9A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
-	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A3n0S4Ms29eZ9fXk2PvxOOQP+qfyb0r1UrY5bWW3Tu0=; b=dQbAz+rxIajj5z/7rd69g9jLm
-	iz3Y3P8VN4WdiODZhprbI1wLN3/I8Ne5So7JTCACNnwYc0lJ7f3nWmoXOSSWJfyS49t4cHqZurJUx
-	lKrtuZtmrBLowMr88skatNUKMgXKjfjnsAAKv5xUTIZLJvo0c6v/XemsQt+9aTGoytEJotcCPGvaj
-	w9ru+J/g/dTFKh6C0VRnkQmCe+gdNJaDsyhm2UeUkXzCHEv9uwVeUU2f78FZigPi9qmhUIYCtFnQr
-	NN44pEIi3xeG33oUKsA/HUw62RHMroyGL9wlp8UX062MTGZvojy1dIubFzeHGaeEWxkNKw0vpIqYD
-	3JjfHZ+Vg==;
+	 bh=hbEoBQnDCtpOFTwncJOham+exMd8eXg4+aN2uMl5FQU=; b=VI73PlKQw8kVMpm1UUVAl+yDz
+	TZpekcvGGoPrP/INisue6FFtuYwvyLktfXys7cLWcAnM+7B3Ve6hdGUNR6liK/9arzmyx2aNNd/VB
+	QiBw+Aqlc73qQ4gGAOq8fOqXp90TiOp8qzbX570X2u5RCUCVi/jIC8AvNUt3iGkWOeYW1Zy42UPrI
+	hEYKeEk7g7Y/yl1ZqLC4R0DnDZ8blxzC6Ashsjv9B0f25wE9tvjFW8GEEVY+hJ07syIGGnV17+9/+
+	zt7ld/7zfDOvIhtPE3SG/uNXkq9Kv21WIeocSwX5n2KYlrKFtfl4knsDCDbxEds1qVEJ+asB/LohZ
+	l9UfgZqdg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9Eu4-0005Ut-1C; Mon, 08 Feb 2021 22:21:08 +0000
+	id 1l9GaU-0006Sw-AG; Tue, 09 Feb 2021 00:09:02 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9Etz-0005UD-US; Mon, 08 Feb 2021 22:21:05 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E36BA64E50;
- Mon,  8 Feb 2021 22:21:02 +0000 (UTC)
+ id 1l9GaR-0006SD-1r; Tue, 09 Feb 2021 00:08:59 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id DA6D064EB4;
+ Tue,  9 Feb 2021 00:08:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612822863;
- bh=cCcse22k3F5hwlh+xLYbIavpMoccTElGkl+EA0oSb1s=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=kNbs6KxKn/eGC6SqxaFvK62sb9uIcNSNT5rZJD3AD99C4ZhxFEn9SYt2q3zkHzLPP
- CrrzQ0omw4w5ugc6/Hln0fBc3pYgqE8QkIXUbNWlXsRFRzVf8KofJHcG0jNiehPDNp
- GM5I9TZNVWl6MPMM6Tm7S4teuRGLWtWO7Nt6h4tueoHMMQmXLE5K9r3Sm3zCLke54F
- 1klSXF2lhIjY0xSdih0WG4DoNCylbdOEQt9teWfOPorF26FpYuuXSFwlKUVhEna4bm
- s6iWjxRjpfMjfULHz/7ywjj2z61Q00ZFruPBCLc/NXluazQG1PcblFiZ2bpti1bory
- QpAjm3Ts9B64Q==
+ s=k20201202; t=1612829337;
+ bh=BIx3eGSYs9bP+3OswyB3XhNzfUFRBY2kgxghItTuskE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=opBunexJL58nGbpC8oGnOZvEL9CH7dTCEutJETDFyqqk8OqRVYhu33yw1KZEUz5cX
+ KhDYoY2040yNEc0HU9kiCkCl6pD7nbK+Y1eZEEVcKgb247l/JesoZILG9qOD83FPOR
+ ZYXEQyfsA/lX1sS09fsOniXXt/ksqBH/3QJQxosF45ncce1mgg3FcdoDvBHS5ZB/J/
+ f6QCfLr+ywhCiwahmEA1elvZKxNlt/DD4CDe5Km9BcBXLyoEykuY+/nlWKjeY+60NM
+ U8KcjKlY9oOb2C6noew90FZvJffP2yv2esgMZInXOcUiZeVoJ7LjGMBlHwYjmBU7Tg
+ jCrOFvl3PHVXA==
+Received: by mail-ej1-f52.google.com with SMTP id a9so28541590ejr.2;
+ Mon, 08 Feb 2021 16:08:56 -0800 (PST)
+X-Gm-Message-State: AOAM531GTSPBtNSzct3Gy3bjVem33WdyzNagSCsutItKMQ2pZTbWsI5o
+ gvBmrwbieMu32sOjl4H8bH6tbkALprd9mG9zhA==
+X-Google-Smtp-Source: ABdhPJzpLqbujyvxL39zTOTeUscDS/tYzRbxuOzriw8VhEGNKVWX8nbXtvNGzdKFO2JaeBLgzu8Et0m/dH+2P6MVock=
+X-Received: by 2002:a17:906:708f:: with SMTP id
+ b15mr19813910ejk.267.1612829335422; 
+ Mon, 08 Feb 2021 16:08:55 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1612675154-2747-4-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1612675154-2747-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1612675154-2747-4-git-send-email-hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v6 3/4] spmi: mediatek: Add support for MT6873/8192
-From: Stephen Boyd <sboyd@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- drinkcat@chromium.org
-Date: Mon, 08 Feb 2021 14:21:01 -0800
-Message-ID: <161282286152.4172033.2089037988542209363@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
+References: <20210208014221.196584-1-jitao.shi@mediatek.com>
+ <20210208014221.196584-4-jitao.shi@mediatek.com>
+In-Reply-To: <20210208014221.196584-4-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 9 Feb 2021 08:08:44 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-WZRUgSBNTe2-Xu1+pkK2RAEScacYZTcHkSUuqXDU5Mg@mail.gmail.com>
+Message-ID: <CAAOTY_-WZRUgSBNTe2-Xu1+pkK2RAEScacYZTcHkSUuqXDU5Mg@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] dt-bindings: mediatek, dpi: add mt8192 to mediatek,
+ dpi
+To: Jitao Shi <jitao.shi@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_172104_170862_CA2CD567 
-X-CRM114-Status: GOOD (  28.31  )
+X-CRM114-CacheID: sfid-20210208_190859_187738_8E25A3A4 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,434 +80,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ DTML <devicetree@vger.kernel.org>, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>, CK Hu <ck.hu@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, shuijing.li@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Hsin-Hsiung Wang (2021-02-06 21:19:13)
-> diff --git a/drivers/spmi/Kconfig b/drivers/spmi/Kconfig
-> index a53bad541f1a..418848840999 100644
-> --- a/drivers/spmi/Kconfig
-> +++ b/drivers/spmi/Kconfig
-> @@ -25,4 +25,13 @@ config SPMI_MSM_PMIC_ARB
->           This is required for communicating with Qualcomm PMICs and
->           other devices that have the SPMI interface.
->  
-> +config SPMI_MTK_PMIF
-> +       tristate "Mediatek SPMI Controller (PMIC Arbiter)"
-> +       help
-> +         If you say yes to this option, support will be included for the
-> +         built-in SPMI PMIC Arbiter interface on Mediatek family
-> +         processors.
-> +
-> +         This is required for communicating with Mediatek PMICs and
-> +         other devices that have the SPMI interface.
-
-Preferably add another newline here to unstick the 'endif'
-
->  endif
-> diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
-> new file mode 100644
-> index 000000000000..4ac4643f89f3
-> --- /dev/null
-> +++ b/drivers/spmi/spmi-mtk-pmif.c
-> @@ -0,0 +1,488 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +//
-> +// Copyright (c) 2021 MediaTek Inc.
-> +
-> +#include <linux/clk.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
-> +#include <linux/spmi.h>
-> +
-> +#define SWINF_IDLE     0x00
-> +#define SWINF_WFVLDCLR 0x06
-> +
-> +#define GET_SWINF(x)   (((x) >> 1) & 0x7)
-> +
-> +#define PMIF_CMD_REG_0         0
-> +#define PMIF_CMD_REG           1
-> +#define PMIF_CMD_EXT_REG       2
-> +#define PMIF_CMD_EXT_REG_LONG  3
-> +
-> +#define PMIF_DELAY_US   10
-> +#define PMIF_TIMEOUT_US (10 * 1000)
-> +
-> +#define PMIF_CHAN_OFFSET 0x5
-> +
-> +#define PMIF_MAX_CLKS  3
-> +
-> +#define SPMI_OP_ST_BUSY 1
-> +
-> +struct ch_reg {
-> +       u32 ch_sta;
-> +       u32 wdata;
-> +       u32 rdata;
-> +       u32 ch_send;
-> +       u32 ch_rdy;
-> +};
-> +
-> +struct pmif_data {
-> +       const u32       *regs;
-> +       const u32       *spmimst_regs;
-> +       u32     soc_chan;
-
-Is this used?
-
-> +};
-> +
-> +struct pmif {
-> +       void __iomem    *base;
-> +       void __iomem    *spmimst_base;
-> +       raw_spinlock_t  lock;
-
-Why is the spinlock raw? Is it used in hard irq handling?
-
-> +       struct ch_reg   chan;
-> +       struct clk_bulk_data clks[PMIF_MAX_CLKS];
-> +       u32 nclks;
-> +       const struct pmif_data *data;
-> +};
-> +
-> +static const char * const pmif_clock_names[] = {
-> +       "pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
-> +};
-> +
-> +enum pmif_regs {
-> +       PMIF_INIT_DONE,
-> +       PMIF_INF_EN,
-> +       PMIF_ARB_EN,
-> +       PMIF_CMDISSUE_EN,
-> +       PMIF_TIMER_CTRL,
-> +       PMIF_SPI_MODE_CTRL,
-> +       PMIF_IRQ_EVENT_EN_0,
-> +       PMIF_IRQ_FLAG_0,
-> +       PMIF_IRQ_CLR_0,
-> +       PMIF_IRQ_EVENT_EN_1,
-> +       PMIF_IRQ_FLAG_1,
-> +       PMIF_IRQ_CLR_1,
-> +       PMIF_IRQ_EVENT_EN_2,
-> +       PMIF_IRQ_FLAG_2,
-> +       PMIF_IRQ_CLR_2,
-> +       PMIF_IRQ_EVENT_EN_3,
-> +       PMIF_IRQ_FLAG_3,
-> +       PMIF_IRQ_CLR_3,
-> +       PMIF_IRQ_EVENT_EN_4,
-> +       PMIF_IRQ_FLAG_4,
-> +       PMIF_IRQ_CLR_4,
-> +       PMIF_WDT_EVENT_EN_0,
-> +       PMIF_WDT_FLAG_0,
-> +       PMIF_WDT_EVENT_EN_1,
-> +       PMIF_WDT_FLAG_1,
-> +       PMIF_SWINF_0_STA,
-> +       PMIF_SWINF_0_WDATA_31_0,
-> +       PMIF_SWINF_0_RDATA_31_0,
-> +       PMIF_SWINF_0_ACC,
-> +       PMIF_SWINF_0_VLD_CLR,
-> +       PMIF_SWINF_1_STA,
-> +       PMIF_SWINF_1_WDATA_31_0,
-> +       PMIF_SWINF_1_RDATA_31_0,
-> +       PMIF_SWINF_1_ACC,
-> +       PMIF_SWINF_1_VLD_CLR,
-> +       PMIF_SWINF_2_STA,
-> +       PMIF_SWINF_2_WDATA_31_0,
-> +       PMIF_SWINF_2_RDATA_31_0,
-> +       PMIF_SWINF_2_ACC,
-> +       PMIF_SWINF_2_VLD_CLR,
-> +       PMIF_SWINF_3_STA,
-> +       PMIF_SWINF_3_WDATA_31_0,
-> +       PMIF_SWINF_3_RDATA_31_0,
-> +       PMIF_SWINF_3_ACC,
-> +       PMIF_SWINF_3_VLD_CLR,
-> +};
-> +
-> +static const u32 mt6873_regs[] = {
-> +       [PMIF_INIT_DONE] =      0x0000,
-> +       [PMIF_INF_EN] =         0x0024,
-> +       [PMIF_ARB_EN] =         0x0150,
-> +       [PMIF_CMDISSUE_EN] =    0x03B4,
-> +       [PMIF_TIMER_CTRL] =     0x03E0,
-> +       [PMIF_SPI_MODE_CTRL] =  0x0400,
-> +       [PMIF_IRQ_EVENT_EN_0] = 0x0418,
-> +       [PMIF_IRQ_FLAG_0] =     0x0420,
-> +       [PMIF_IRQ_CLR_0] =      0x0424,
-> +       [PMIF_IRQ_EVENT_EN_1] = 0x0428,
-> +       [PMIF_IRQ_FLAG_1] =     0x0430,
-> +       [PMIF_IRQ_CLR_1] =      0x0434,
-> +       [PMIF_IRQ_EVENT_EN_2] = 0x0438,
-> +       [PMIF_IRQ_FLAG_2] =     0x0440,
-> +       [PMIF_IRQ_CLR_2] =      0x0444,
-> +       [PMIF_IRQ_EVENT_EN_3] = 0x0448,
-> +       [PMIF_IRQ_FLAG_3] =     0x0450,
-> +       [PMIF_IRQ_CLR_3] =      0x0454,
-> +       [PMIF_IRQ_EVENT_EN_4] = 0x0458,
-> +       [PMIF_IRQ_FLAG_4] =     0x0460,
-> +       [PMIF_IRQ_CLR_4] =      0x0464,
-> +       [PMIF_WDT_EVENT_EN_0] = 0x046C,
-> +       [PMIF_WDT_FLAG_0] =     0x0470,
-> +       [PMIF_WDT_EVENT_EN_1] = 0x0474,
-> +       [PMIF_WDT_FLAG_1] =     0x0478,
-> +       [PMIF_SWINF_0_ACC] =    0x0C00,
-> +       [PMIF_SWINF_0_WDATA_31_0] =     0x0C04,
-> +       [PMIF_SWINF_0_RDATA_31_0] =     0x0C14,
-> +       [PMIF_SWINF_0_VLD_CLR] =        0x0C24,
-> +       [PMIF_SWINF_0_STA] =    0x0C28,
-> +       [PMIF_SWINF_1_ACC] =    0x0C40,
-> +       [PMIF_SWINF_1_WDATA_31_0] =     0x0C44,
-> +       [PMIF_SWINF_1_RDATA_31_0] =     0x0C54,
-> +       [PMIF_SWINF_1_VLD_CLR] =        0x0C64,
-> +       [PMIF_SWINF_1_STA] =    0x0C68,
-> +       [PMIF_SWINF_2_ACC] =    0x0C80,
-> +       [PMIF_SWINF_2_WDATA_31_0] =     0x0C84,
-> +       [PMIF_SWINF_2_RDATA_31_0] =     0x0C94,
-> +       [PMIF_SWINF_2_VLD_CLR] =        0x0CA4,
-> +       [PMIF_SWINF_2_STA] =    0x0CA8,
-> +       [PMIF_SWINF_3_ACC] =    0x0CC0,
-> +       [PMIF_SWINF_3_WDATA_31_0] =     0x0CC4,
-> +       [PMIF_SWINF_3_RDATA_31_0] =     0x0CD4,
-> +       [PMIF_SWINF_3_VLD_CLR] =        0x0CE4,
-> +       [PMIF_SWINF_3_STA] =    0x0CE8,
-> +};
-> +
-> +enum spmi_regs {
-> +       SPMI_OP_ST_CTRL,
-> +       SPMI_GRP_ID_EN,
-> +       SPMI_OP_ST_STA,
-> +       SPMI_MST_SAMPL,
-> +       SPMI_MST_REQ_EN,
-> +       SPMI_REC_CTRL,
-> +       SPMI_REC0,
-> +       SPMI_REC1,
-> +       SPMI_REC2,
-> +       SPMI_REC3,
-> +       SPMI_REC4,
-> +       SPMI_MST_DBG,
-> +};
-> +
-> +static const u32 mt6873_spmi_regs[] = {
-
-There's only one of these so far. Is there going to be a different
-register layout in the future? If we can avoid the indirection it would
-be ideal.
-
-> +       [SPMI_OP_ST_CTRL] =     0x0000,
-> +       [SPMI_GRP_ID_EN] =      0x0004,
-> +       [SPMI_OP_ST_STA] =      0x0008,
-> +       [SPMI_MST_SAMPL] =      0x000c,
-> +       [SPMI_MST_REQ_EN] =     0x0010,
-> +       [SPMI_REC_CTRL] =       0x0040,
-> +       [SPMI_REC0] =           0x0044,
-> +       [SPMI_REC1] =           0x0048,
-> +       [SPMI_REC2] =           0x004c,
-> +       [SPMI_REC3] =           0x0050,
-> +       [SPMI_REC4] =           0x0054,
-> +       [SPMI_MST_DBG] =        0x00fc,
-> +};
-> +
-> +static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
-> +{
-> +       return readl(arb->base + arb->data->regs[reg]);
-> +}
-> +
-> +static void pmif_writel(struct pmif *arb, u32 val, enum pmif_regs reg)
-> +{
-> +       writel(val, arb->base + arb->data->regs[reg]);
-> +}
-> +
-> +static void mtk_spmi_writel(struct pmif *arb, u32 val, enum spmi_regs reg)
-> +{
-> +       writel(val, arb->spmimst_base + arb->data->spmimst_regs[reg]);
-> +}
-> +
-> +static bool pmif_is_fsm_vldclr(struct pmif *arb)
-> +{
-> +       u32 reg_rdata;
-> +
-> +       reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
-> +       return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
-> +}
-> +
-> +static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
-> +{
-> +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-> +       u32 rdata, cmd;
-> +       int ret;
-> +
-> +       /* Check for argument validation. */
-> +       if (sid & ~0xf) {
-> +               dev_err(&ctrl->dev, "exceed the max slv id\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       /* Check the opcode */
-> +       if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
-> +               return -EINVAL;
-> +
-> +       cmd = opc - SPMI_CMD_RESET;
-> +
-> +       mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
-> +       ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
-> +                                       rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
-> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> +       if (ret < 0)
-> +               dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
-> +
-> +       return ret;
-> +}
-> +
-> +static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-> +                             u16 addr, u8 *buf, size_t len)
-> +{
-> +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-> +       struct ch_reg *inf_reg;
-> +       int ret;
-> +       u32 data, cmd;
-> +       unsigned long flags;
-> +
-> +       /* Check for argument validation. */
-> +       if (sid & ~0xf) {
-> +               dev_err(&ctrl->dev, "exceed the max slv id\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       if (len > 4) {
-> +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
-> +               return -EINVAL;
-> +       }
-> +
-> +       if (opc >= 0x60 && opc <= 0x7f)
-> +               opc = PMIF_CMD_REG;
-> +       else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
-> +               opc = PMIF_CMD_EXT_REG_LONG;
-> +       else
-> +               return -EINVAL;
-> +
-> +       raw_spin_lock_irqsave(&arb->lock, flags);
-> +
-> +       /* Wait for Software Interface FSM state to be IDLE. */
-> +       inf_reg = &arb->chan;
-> +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-> +                                       data, GET_SWINF(data) == SWINF_IDLE,
-> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> +       if (ret < 0) {
-> +               /* set channel ready if the data has transferred */
-> +               if (pmif_is_fsm_vldclr(arb))
-> +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
-> +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-> +               goto out;
-> +       }
-> +
-> +       /* Send the command. */
-> +       cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
-> +       pmif_writel(arb, cmd, inf_reg->ch_send);
-> +
-> +       /*
-> +        * Wait for Software Interface FSM state to be WFVLDCLR,
-> +        * read the data and clear the valid flag.
-> +        */
-> +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-> +                                       data, GET_SWINF(data) == SWINF_WFVLDCLR,
-> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> +       if (ret < 0) {
-> +               dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
-> +               goto out;
-> +       }
-> +
-> +       data = pmif_readl(arb, inf_reg->rdata);
-> +       memcpy(buf, &data, len);
-> +       pmif_writel(arb, 1, inf_reg->ch_rdy);
-> +
-> +out:
-> +       raw_spin_unlock_irqrestore(&arb->lock, flags);
-> +       if (ret < 0)
-> +               return ret;
-> +
-> +       return 0;
-> +}
-> +
-> +static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-> +                              u16 addr, const u8 *buf, size_t len)
-> +{
-> +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-> +       struct ch_reg *inf_reg;
-> +       int ret;
-> +       u32 data, cmd;
-> +       unsigned long flags;
-> +
-> +       /* Check for argument validation. */
-> +       if (sid & ~0xf) {
-> +               dev_err(&ctrl->dev, "exceed the max slv id\n");
-
-Feels like something we should push up into the core framework instead
-of having each driver figure out.
-
-> +               return -EINVAL;
-> +       }
-> +
-> +       if (len > 4) {
-> +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
-
-Feels like something we should push up into the core framework instead
-of having each driver figure out.
-
-> +               return -EINVAL;
-> +       }
-> +
-> +       /* Check the opcode */
-> +       if (opc >= 0x40 && opc <= 0x5F)
-> +               opc = PMIF_CMD_REG;
-> +       else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
-> +               opc = PMIF_CMD_EXT_REG_LONG;
-> +       else if (opc >= 0x80)
-> +               opc = PMIF_CMD_REG_0;
-> +       else
-> +               return -EINVAL;
-> +
-> +       raw_spin_lock_irqsave(&arb->lock, flags);
-> +
-> +       /* Wait for Software Interface FSM state to be IDLE. */
-> +       inf_reg = &arb->chan;
-> +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-> +                                       data, GET_SWINF(data) == SWINF_IDLE,
-> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> +       if (ret < 0) {
-> +               /* set channel ready if the data has transferred */
-> +               if (pmif_is_fsm_vldclr(arb))
-> +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
-> +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-> +               goto out;
-> +       }
-> +
-> +       /* Set the write data. */
-> +       memcpy(&data, buf, len);
-> +       pmif_writel(arb, data, inf_reg->wdata);
-> +
-> +       /* Send the command. */
-> +       cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
-> +       pmif_writel(arb, cmd, inf_reg->ch_send);
-
-What is BIT 29? Is that special somehow?
-
-> +
-> +out:
-> +       raw_spin_unlock_irqrestore(&arb->lock, flags);
-> +       if (ret < 0)
-> +               return ret;
-> +
-> +       return 0;
-> +}
-> +
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
+tDLmnIg45pelIOmAseS4gCDkuIrljYg5OjQy5a+r6YGT77yaCj4KPiBBZGQgY29tcGF0aWJsZSAi
+bWVkaWF0ZWssbXQ4MTkyLWRwaSIgZm9yIHRoZSBtdDgxOTIgZHBpLgo+CgpSZXZpZXdlZC1ieTog
+Q2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cgo+IFNpZ25lZC1vZmYtYnk6
+IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgLi4uL2RldmljZXRy
+ZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkcGkueWFtbCAgICAgICB8IDEg
+Kwo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPgo+IGRpZmYgLS1naXQgYS9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxk
+cGkueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
+dGVrL21lZGlhdGVrLGRwaS55YW1sCj4gaW5kZXggNmNkYjczNGM5MWE5Li4yZjU2NmYxOWU2ZTAg
+MTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
+bWVkaWF0ZWsvbWVkaWF0ZWssZHBpLnlhbWwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkcGkueWFtbAo+IEBAIC0yMiw2
+ICsyMiw3IEBAIHByb3BlcnRpZXM6Cj4gICAgICAgIC0gbWVkaWF0ZWssbXQ3NjIzLWRwaQo+ICAg
+ICAgICAtIG1lZGlhdGVrLG10ODE3My1kcGkKPiAgICAgICAgLSBtZWRpYXRlayxtdDgxODMtZHBp
+Cj4gKyAgICAgIC0gbWVkaWF0ZWssbXQ4MTkyLWRwaQo+Cj4gICAgcmVnOgo+ICAgICAgbWF4SXRl
+bXM6IDEKPiAtLQo+IDIuMjUuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawo=
