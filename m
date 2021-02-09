@@ -2,19 +2,19 @@ Return-Path: <SRS0=ZAsA=HL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5199DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 08:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ACB55C433E6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 09:20:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 109E864E3B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 08:07:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 109E864E3B
+	by mail.kernel.org (Postfix) with ESMTPS id 5EFC464EB4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 09:20:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5EFC464EB4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,80 +23,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=w9qSSzZy5dCUrMKH/XQX4pB41qb+XPFzFT1uXp13sHw=; b=vy9YWhv9/B1GBUnZAgIuboxk+
-	+sop988V6dMbciFOU+Vjtjc1b1n0SeL4jakj4FuxZoozyi/I5eyCk/zLgyEY720CR735aCCSwnr+C
-	leB5ZxuIdw+gPloYC0yLsxScPtQxxoludeBqzgg29v1cNyb+VhhmcIA1iH6DG9+WZ9OUMxzfTeQdr
-	FLOTjX1+jfe3jeonCGH6F53UlamVipJ1qI8mbtGk+YufetnNtuFANNIrqKyBRn3Nw07h5HioSE/+J
-	t+AQXvmDr3V0R1YZgvPNkHhx86lFHu/CbgQPGL9z7VI2JFqZU88SDiHZQukRAXit90zWsGH0gv/gR
-	FT7TG+j7A==;
+	 bh=d+uTiKdD7C3k8TPxPVW/mUCn+FFxLlAuWSoT7OkWSgY=; b=tJXq4QZng5zV7TbuwfBchH2iv
+	/nOxAp82cB82uRLjIXq1QgxYMX7+iP1MjKJrEf9haBd7LBH4nVKv7QHGKn6vYeIh99fJEMjsaoSKh
+	X+FeeKpBbJxaeTYhmHv/e5ciqNrXRf8mw8dt/E2W9QiHpRVGyBbGoRbwFyBsPdXQymVNpWDR78xsj
+	CkZdK55xeg1LJl1NMVQ2fzhICIJSHkdGCuuCPIuv7eizHDgGVWjRizNgT0DpFDU0vublbbgGlqRa9
+	TJMrDZGxar3rPUO0EztlIe52QQajQYog7tldkeajnHA/GDIUND2O87ZkeNnopbAbrH+rSAKef86Oo
+	o1sJBf5JQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9O2y-0007tP-Qs; Tue, 09 Feb 2021 08:06:57 +0000
-Received: from aserp2120.oracle.com ([141.146.126.78])
+	id 1l9PBa-000461-IA; Tue, 09 Feb 2021 09:19:54 +0000
+Received: from aserp2130.oracle.com ([141.146.126.79])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9O2w-0007sq-7d; Tue, 09 Feb 2021 08:06:55 +0000
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1197xF1W185136;
- Tue, 9 Feb 2021 08:06:49 GMT
+ id 1l9PBX-00044i-HS; Tue, 09 Feb 2021 09:19:52 +0000
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1199ALen133205;
+ Tue, 9 Feb 2021 09:19:38 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=corp-2020-01-29;
- bh=FgbAm48IzN4NjhMcfVudFiqdSoE9vqOSbrnwPBxudIU=;
- b=DtIerUdiuipSsIr9VodYqA4p5BBzwPJ86kX+shahaqZ+CsGdSgchtLz+G/hHX3QYxYIQ
- 2Bl57p0VNckurTBjzJUFBLlOGFNPpV21aNF/EaioCoFsgJdRGCbEwSHuYlUyqOrhYpoR
- SDlimMJl8n9WHMIeYgPTEpv1seUzcqmOrKjHcVarpw/TK6txsCSNwmpUzWhzpaTvUAvG
- z2ZMQNI6AyR8SALtap5aV9XHVbKiEgCiPioxhpRyG/Wi0xWsY7p4R3LuEBQxH5BHeuNK
- Gixb6ClXAZNgxb0CF3iQ7Ltfi8EhQsuuft3H1uVrgzxYHXWNs+ffF3tq0vcrmQ1THRxl eA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 36hk2kek7j-1
+ bh=eAlfirjFPihoK/mVAVic9Bz9nKfTspoU2b002Thx3AM=;
+ b=YEOpzUrNhfU54eiph6icmJICKD5YX/bSS/aQx2vG2VNy/Y+oGw8692bvsVrFesi/cNBJ
+ +ZfQStgtjYGtYbatqd1sydNzQ+bLgb46Dh1rmrvaQVtS+nE+VQwe3ncX6V6UK6ENz/S1
+ +KVR7R3hhXwVqXXup+VRoZXYNBdqtBOL4I13sQ1u8wGjViH0WDLWZ18AfMC+02K3L9KK
+ PpJgHCxY2su25D9Hgqb5zIUueQOS5z1JqFLUeyaKwbQrLxrQKKiIAvQpeRJUA+nk+r0e
+ IXCDbMH+di0ydphrfDjmOFL3IePLO6QyaaDth4STzDLTr1fGEAeW1nqXcmkLw7E6VeGG MA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2130.oracle.com with ESMTP id 36hgmaeweh-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 09 Feb 2021 08:06:49 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1197xsuM167532;
- Tue, 9 Feb 2021 08:06:47 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 36j4pncj41-1
+ Tue, 09 Feb 2021 09:19:38 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1199BNCv091397;
+ Tue, 9 Feb 2021 09:19:36 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 36j510y9wm-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 09 Feb 2021 08:06:47 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 11986jig021903;
- Tue, 9 Feb 2021 08:06:45 GMT
+ Tue, 09 Feb 2021 09:19:36 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 1199JXkl007635;
+ Tue, 9 Feb 2021 09:19:34 GMT
 Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 09 Feb 2021 00:06:44 -0800
-Date: Tue, 9 Feb 2021 11:06:34 +0300
+ with ESMTP ; Tue, 09 Feb 2021 01:19:33 -0800
+Date: Tue, 9 Feb 2021 12:19:23 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Youling Tang <tangyouling@loongson.cn>
-Subject: Re: [PATCH] staging: fix ignoring return value warning
-Message-ID: <20210209080633.GO20820@kadam>
-References: <1612689808-30985-1-git-send-email-tangyouling@loongson.cn>
- <20210208134517.GG2696@kadam>
- <20210208150618.GI8233@pengutronix.de>
- <20210208190237.GN20820@kadam>
- <13779748-ab8e-c7c3-11e4-5232836f5ae6@loongson.cn>
+To: Will Deacon <will@kernel.org>
+Subject: Re: [PATCH][next] iommu/mediatek: Fix unsigned domid comparison with
+ less than zero
+Message-ID: <20210209091923.GO2696@kadam>
+References: <20210203135936.23016-1-colin.king@canonical.com>
+ <20210204092558.GA20244@willie-the-truck>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <13779748-ab8e-c7c3-11e4-5232836f5ae6@loongson.cn>
+In-Reply-To: <20210204092558.GA20244@willie-the-truck>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-Proofpoint-IMR: 1
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9889
  signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- adultscore=0
- mlxlogscore=999 malwarescore=0 bulkscore=0 phishscore=0 spamscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102090037
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ bulkscore=0 adultscore=0
+ mlxlogscore=999 phishscore=0 spamscore=0 suspectscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102090045
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9889
  signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- malwarescore=0
- priorityscore=1501 clxscore=1015 impostorscore=0 lowpriorityscore=0
- bulkscore=0 suspectscore=0 spamscore=0 mlxlogscore=999 adultscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2102090037
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ spamscore=0 lowpriorityscore=0 phishscore=0 adultscore=0 impostorscore=0
+ suspectscore=0 mlxscore=0 clxscore=1011 mlxlogscore=999 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102090045
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210209_030654_472153_09E02F17 
-X-CRM114-Status: GOOD (  32.09  )
+X-CRM114-CacheID: sfid-20210209_041951_757295_F5365C5C 
+X-CRM114-Status: GOOD (  27.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,64 +106,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+Cc: Anan sun <anan.sun@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, Chao Hao <chao.hao@mediatek.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <sha@pengutronix.de>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Colin King <colin.king@canonical.com>, Yong Wu <yong.wu@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 09, 2021 at 09:18:02AM +0800, Youling Tang wrote:
-> Hi, Dan
-> 
-> 
-> On 02/09/2021 03:02 AM, Dan Carpenter wrote:
-> > On Mon, Feb 08, 2021 at 04:06:18PM +0100, Sascha Hauer wrote:
-> > > Hi Dan,
-> > > 
-> > > On Mon, Feb 08, 2021 at 04:45:17PM +0300, Dan Carpenter wrote:
-> > > > On Sun, Feb 07, 2021 at 05:23:28PM +0800, Youling Tang wrote:
-> > > > > Fix the below ignoring return value warning for device_reset.
-> > > > > 
-> > > > > drivers/staging/mt7621-dma/mtk-hsdma.c:685:2: warning: ignoring return value
-> > > > > of function declared with 'warn_unused_result' attribute [-Wunused-result]
-> > > > >          device_reset(&pdev->dev);
-> > > > >          ^~~~~~~~~~~~ ~~~~~~~~~~
-> > > > > drivers/staging/ralink-gdma/ralink-gdma.c:836:2: warning: ignoring return value
-> > > > > of function declared with 'warn_unused_result' attribute [-Wunused-result]
-> > > > >          device_reset(&pdev->dev);
-> > > > >          ^~~~~~~~~~~~ ~~~~~~~~~~
-> > > > > 
-> > > > We can't really do this sort of fix without the hardware to test it.
-> > > > This could be the correct fix or perhaps switching to device_reset_optional()
-> > > > is the correct fix.  We can't know unless we have the hardware to test.
-> > > When device_reset() is the wrong function then adding a return value
-> > > check will turn this into a runtime error for those who have the
-> > > hardware which will hopefully trigger them to tell us why reset_device
-> > > is wrong for them.
-> > > At least for a staging driver I find this procedure opportune.
-> > > 
-> > That seems like sort of a jerk move...  What's the rush?  Someone will
-> > eventually be able to test this if we just wait around for a bit.
-> > Otherwise if no one has the hardware then eventually the driver will be
-> > deleted.
+On Thu, Feb 04, 2021 at 09:25:58AM +0000, Will Deacon wrote:
+> On Wed, Feb 03, 2021 at 01:59:36PM +0000, Colin King wrote:
+> > From: Colin Ian King <colin.king@canonical.com>
 > > 
-> > regards,
-> > dan carpenter
-> We do not have the relevant hardware to test, this is just to solve a
-> compile-time warning.
+> > Currently the check for domid < 0 is always false because domid
+> > is unsigned.  Fix this by making it signed.
+> > 
+> > Addresses-CoverityL ("Unsigned comparison against 0")
+> 
+> Typo here ('L' instead of ':')
+> 
+> > Fixes: ab1d5281a62b ("iommu/mediatek: Add iova reserved function")
+> > Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> > ---
+> >  drivers/iommu/mtk_iommu.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index 0ad14a7604b1..823d719945b2 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -640,7 +640,7 @@ static void mtk_iommu_get_resv_regions(struct device *dev,
+> >  				       struct list_head *head)
+> >  {
+> >  	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+> > -	unsigned int domid = mtk_iommu_get_domain_id(dev, data->plat_data), i;
+> > +	int domid = mtk_iommu_get_domain_id(dev, data->plat_data), i;
+> 
+> Not sure if it's intentional, but this also makes 'i' signed. It probably
+> should remain 'unsigned' to match 'iova_region_nr' in
+> 'struct mtk_iommu_plat_data'.
 
-Yeah, I know.  Wait for someone who can test it on this.  Normally we
-don't require testing for staging patches.  But in this case, it's
-impossible to know which is the proper fix without testing so we should
-wait.  It's rude to test by breaking people's systems and hope they
-report the bug.
+
+iova_region_nr is either 1 or 5 so unsigned doesn't matter.
+
+I once almost introduced a bug where the iterator was supposed to be
+size_t.  I fixed a bug by making it signed but I ended up introducing a
+new bug.  But generally that's pretty rare.  The more common case is
+that making iterators unsigned introduces bugs.
+
+It's better to default to "int i;" and if more complicated types are
+required that should stand out.  "size_t pg_idx;" or whatever.
 
 regards,
 dan carpenter
-
 
 _______________________________________________
 Linux-mediatek mailing list
