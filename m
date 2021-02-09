@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6E94C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 15:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F247AC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 20:41:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 212BE64E70
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 15:54:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 212BE64E70
+	by mail.kernel.org (Postfix) with ESMTPS id 5AD3A64E6F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Feb 2021 20:41:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AD3A64E6F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tReXyYLB/KgCmn96AnLyEsol3xRPAV4hM9on8rqCg0U=; b=a6QVZ6rLCcDE/bFAqPNcDMHV3
-	LlrJQRXVLMMG9+mhETDEWibMr+rEVXuQ4NZySvOU/HHRHg1WbTg1RyYFBXBpAKnC3XSQO0/SIZGwW
-	6Ecpjod1a7RwRKtT08CAUNK9MzZlcSG/u9k0egPtt5MlAvDO7O9xBpsBkRN/gWokQBoUFRtPlChTB
-	FL7i/3C+GI3pXME3XUXA54AkFHdhVpvjSfn2GiFI0C8jkkwpsv9qu6Q5n/avdFvpseK1SJ817AyiM
-	t4Xtf3WWiTPrgWc60sKXH0zsVM5Dorlbc+ksnkekVTsIIckS+7CWowrS7w3WuL9LOBtaSZg1cIfVi
-	/1pryCx5A==;
+	 bh=zoo8FXxQP0PSRIz6prlrytLRWEJ+5r2gdHWPXb5SXgo=; b=BZ/90gLRM83IKvxVTnlPBP8rX
+	PjQLRkHpqoDy8equjvIv+N0QaOT7N/Yqk5sDOTXGneAE6s9e/0dbKawdgT+zsQURbp6m3NSHSzb9U
+	wiLEMTE0jaP5VtbHpVEapIupATSo7MTPJCKLnOJD6YRIk1OZdvY6fZ9GdlGK5EmgHw/iFkUC77jqW
+	kIFn/aVdglIIQFJ9M1r8nMsFj8ZkTMJF9R5ZeYCPCWdZvrKLmFFyQqDcwT5m/qDFJLfoPeLGwzqnd
+	VEYtt9lC+7HGqZlNQzWF3v+co5QEiVPTawST5s76T2mA2NXw5cxz8gQscrixDD8hXQHYJXnrJezb9
+	VW41vh+hw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9VKv-00038S-Uk; Tue, 09 Feb 2021 15:53:57 +0000
-Received: from mail-oi1-f178.google.com ([209.85.167.178])
+	id 1l9ZpO-0004gg-5q; Tue, 09 Feb 2021 20:41:42 +0000
+Received: from mail-oi1-f170.google.com ([209.85.167.170])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9VKs-000379-AX; Tue, 09 Feb 2021 15:53:55 +0000
-Received: by mail-oi1-f178.google.com with SMTP id v193so14440277oie.8;
- Tue, 09 Feb 2021 07:53:53 -0800 (PST)
+ id 1l9ZpL-0004fj-Fm
+ for linux-mediatek@lists.infradead.org; Tue, 09 Feb 2021 20:41:40 +0000
+Received: by mail-oi1-f170.google.com with SMTP id m7so20852001oiw.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 09 Feb 2021 12:41:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=n8RGtZJUggLSCRq7qMrNt9PC2BllhIR7lzoDCBdYMa8=;
- b=ileQx/Nv64WRwDml3uQ3WJauVUZBGuyNfa+kHJ6xkpTvQKDD1ayEKqUKXFEK5rhzNh
- 0MtQ+Iuw+ryaaMo8diksqQjXuDsLoxEEx1L/YBERpN3NmbSUChPfg0xJz69/1HKPYr7I
- HMUXOJ6/jAsXxlpE11eiCNOzgzyprN/+yMogfIRme4zPW6BYBpb2wfl69hf4EhVjT95R
- T1VnMx9mVBeSLSCNDM+hNacArTQs7cA80VbVFs7l7wqBjXDOCPNUCUfp4jmgoz8zdKdy
- MR5KhC+hXYtqjRqaMVRZ+T0hqfSqmHK3Cw4vrA52jfsq03fmVeaoXOC9HEvfKM8zRko6
- ELgQ==
-X-Gm-Message-State: AOAM531fzTs1atiUSqa6806koJC7AYCwh4xOFVXKFWARik000xaITxAI
- bk2dZW13QrlN+91zgRGz+Q==
-X-Google-Smtp-Source: ABdhPJymQc7IHN4pNsxzcoYtAeiTFpG1/W/MbAoJvQPnwIAXU6moHoTqEDDFHzxQJeoydepWxYwURg==
-X-Received: by 2002:aca:cfd0:: with SMTP id f199mr2909983oig.64.1612886032958; 
- Tue, 09 Feb 2021 07:53:52 -0800 (PST)
+ bh=s+u3vz6e9KCuVkOaGOVf97bYpuYJLb9GDgnFze0FbFo=;
+ b=cCjCJXv+k+HPBFgdN+Fvgt4n7Zl3EoSj2w9UjEFtd9E/ThLXFQUtrN19MjA/uoGFR0
+ kyPdz+1N6dmd5skBVEf9VnjfOTIgNHh29hQD5T91VqPCwYNAG02dgkSGMEN4Q3lVnr8t
+ CzXsWtjv2dl0gX85TmkJEhGvhJQ74K/wKYbQ9qzoPA/x9WY3oxUmWIHNI1z3larJOOaS
+ ktHPC/qZV1eVW7mRHqmlhUzJIFDaEt2YJEQKSAhNcfw57vVZrWRrGMu6l+bJF6USEByj
+ x09di0BnLs3c0OhmNuFO1jm4CfarsHYzO1ggNtUGyuZgJOG3RwbpA930yB6eiXS2RkOj
+ Jnzg==
+X-Gm-Message-State: AOAM531bfqJHOJgFkq9uTfeW/50yywoNHZbmvwMnMrPtYb2pZXEUurs3
+ 43Om6FPHHbwSENYYymNO+Q==
+X-Google-Smtp-Source: ABdhPJyAk84Z8pz9qQ8lkrDwHztnBDDvhCtnoOD99hW+BNnArmdOX0zcB04Down2wini/oEjkxgXOA==
+X-Received: by 2002:aca:fdd0:: with SMTP id b199mr3634977oii.10.1612903298729; 
+ Tue, 09 Feb 2021 12:41:38 -0800 (PST)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id c20sm4384328oiw.18.2021.02.09.07.53.50
+ by smtp.gmail.com with ESMTPSA id a63sm4590099otc.75.2021.02.09.12.41.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Feb 2021 07:53:51 -0800 (PST)
-Received: (nullmailer pid 3832812 invoked by uid 1000);
- Tue, 09 Feb 2021 15:53:50 -0000
-Date: Tue, 9 Feb 2021 09:53:50 -0600
+ Tue, 09 Feb 2021 12:41:37 -0800 (PST)
+Received: (nullmailer pid 138393 invoked by uid 1000);
+ Tue, 09 Feb 2021 20:41:36 -0000
+Date: Tue, 9 Feb 2021 14:41:36 -0600
 From: Rob Herring <robh@kernel.org>
-To: Irui Wang <irui.wang@mediatek.com>
-Subject: Re: [PATCH 1/3] dt-bindings: media: mtk-vcodec: Separating mtk
- vcodec encoder node
-Message-ID: <20210209155350.GA3827709@robh.at.kernel.org>
-References: <20210121061804.26423-1-irui.wang@mediatek.com>
+To: Boris Lysov <arzamas-16@mail.ee>
+Subject: Re: [PATCH 1/3] dt-bindings: watchdog: mediatek: add support for
+ mt6577 SoC
+Message-ID: <20210209204136.GA138342@robh.at.kernel.org>
+References: <20210131234425.9773-1-arzamas-16@mail.ee>
+ <20210131234425.9773-2-arzamas-16@mail.ee>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210121061804.26423-1-irui.wang@mediatek.com>
+In-Reply-To: <20210131234425.9773-2-arzamas-16@mail.ee>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210209_105354_387428_1A2952BF 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20210209_154139_555657_B0C1A9C2 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,137 +86,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>, srv_heupstream@mediatek.com,
- Alexandre Courbot <acourbot@chromium.org>, Tomasz Figa <tfiga@google.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- Maoguang Meng <maoguang.meng@mediatek.com>, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, linux@roeck-us.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 21, 2021 at 02:18:02PM +0800, Irui Wang wrote:
-> Updates binding document since the avc and vp8 hardware encoder in
-> MT8173 are now separated. Separate "mediatek,mt8173-vcodec-enc" to
-> "mediatek,mt8173-vcodec-vp8-enc" and "mediatek,mt8173-vcodec-avc-enc".
-
-This is not a compatible change. You need to detail that and why that's 
-okay (assuming it is).
-
+On Mon, 01 Feb 2021 02:44:23 +0300, Boris Lysov wrote:
+> Add support for Mediatek mt6577 SoC to device tree binding
+> documentation.
 > 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> 
+> Signed-off-by: Boris Lysov <arzamas-16@mail.ee>
 > ---
->  .../bindings/media/mediatek-vcodec.txt        | 58 ++++++++++---------
->  1 file changed, 31 insertions(+), 27 deletions(-)
+>  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> index 8217424fd4bd..f85276e629bf 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> @@ -4,7 +4,9 @@ Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
->  supports high resolution encoding and decoding functionalities.
->  
->  Required properties:
-> -- compatible : "mediatek,mt8173-vcodec-enc" for MT8173 encoder
-> +- compatible : must be one of the following string:
-> +  "mediatek,mt8173-vcodec-vp8-enc" for mt8173 vp8 encoder.
-> +  "mediatek,mt8173-vcodec-avc-enc" for mt8173 avc encoder.
->    "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
->    "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
->  - reg : Physical base address of the video codec registers and length of
-> @@ -13,10 +15,11 @@ Required properties:
->  - mediatek,larb : must contain the local arbiters in the current Socs.
->  - clocks : list of clock specifiers, corresponding to entries in
->    the clock-names property.
-> -- clock-names: encoder must contain "venc_sel_src", "venc_sel",,
-> -  "venc_lt_sel_src", "venc_lt_sel", decoder must contain "vcodecpll",
-> -  "univpll_d2", "clk_cci400_sel", "vdec_sel", "vdecpll", "vencpll",
-> -  "venc_lt_sel", "vdec_bus_clk_src".
-> +- clock-names:
-> +   avc venc must contain "venc_sel";
-> +   vp8 venc must contain "venc_lt_sel";
-> +   decoder  must contain "vcodecpll", "univpll_d2", "clk_cci400_sel",
-> +   "vdec_sel", "vdecpll", "vencpll", "venc_lt_sel", "vdec_bus_clk_src".
->  - iommus : should point to the respective IOMMU block with master port as
->    argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
->    for details.
-> @@ -80,14 +83,10 @@ vcodec_dec: vcodec@16000000 {
->      assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
->    };
->  
-> -  vcodec_enc: vcodec@18002000 {
-> -    compatible = "mediatek,mt8173-vcodec-enc";
-> -    reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
-> -          <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
-> -    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
-> -		 <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
-> -    mediatek,larb = <&larb3>,
-> -		    <&larb5>;
-> +vcodec_enc: vcodec@18002000 {
-> +    compatible = "mediatek,mt8173-vcodec-avc-enc";
-> +    reg = <0 0x18002000 0 0x1000>;
-> +    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
->      iommus = <&iommu M4U_PORT_VENC_RCPU>,
->               <&iommu M4U_PORT_VENC_REC>,
->               <&iommu M4U_PORT_VENC_BSDMA>,
-> @@ -98,8 +97,20 @@ vcodec_dec: vcodec@16000000 {
->               <&iommu M4U_PORT_VENC_REF_LUMA>,
->               <&iommu M4U_PORT_VENC_REF_CHROMA>,
->               <&iommu M4U_PORT_VENC_NBM_RDMA>,
-> -             <&iommu M4U_PORT_VENC_NBM_WDMA>,
-> -             <&iommu M4U_PORT_VENC_RCPU_SET2>,
-> +             <&iommu M4U_PORT_VENC_NBM_WDMA>;
-> +    mediatek,larb = <&larb3>;
-> +    mediatek,vpu = <&vpu>;
-> +    clocks = <&topckgen CLK_TOP_VENC_SEL>;
-> +    clock-names = "venc_sel";
-> +    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
-> +    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
-> +  };
-> +
-> +vcodec_enc_lt: vcodec@19002000 {
-> +    compatible = "mediatek,mt8173-vcodec-vp8-enc";
-> +    reg =  <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
-> +    interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
-> +    iommus = <&iommu M4U_PORT_VENC_RCPU_SET2>,
->               <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
->               <&iommu M4U_PORT_VENC_BSDMA_SET2>,
->               <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
-> @@ -108,17 +119,10 @@ vcodec_dec: vcodec@16000000 {
->               <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
->               <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
->               <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
-> +    mediatek,larb = <&larb5>;
->      mediatek,vpu = <&vpu>;
-> -    clocks = <&topckgen CLK_TOP_VENCPLL_D2>,
-> -             <&topckgen CLK_TOP_VENC_SEL>,
-> -             <&topckgen CLK_TOP_UNIVPLL1_D2>,
-> -             <&topckgen CLK_TOP_VENC_LT_SEL>;
-> -    clock-names = "venc_sel_src",
-> -                  "venc_sel",
-> -                  "venc_lt_sel_src",
-> -                  "venc_lt_sel";
-> -    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
-> -                      <&topckgen CLK_TOP_VENC_LT_SEL>;
-> -    assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
-> -                             <&topckgen CLK_TOP_UNIVPLL1_D2>;
-> +    clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-> +    clock-names = "venc_lt_sel";
-> +    assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-> +    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>;
->    };
-> -- 
-> 2.18.0
-> 
+
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
