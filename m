@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CE40C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Feb 2021 20:19:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8130C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Feb 2021 21:58:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1F1AE64EDA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Feb 2021 20:19:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F1AE64EDA
+	by mail.kernel.org (Postfix) with ESMTPS id 529B864E26
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Feb 2021 21:58:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 529B864E26
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0vkk/R4j4to9LWMwFvhLwiEZaeFEAziTlv68bw9Oq7s=; b=hoEHLAFzaJfOUIrN52M3/wafB
-	USm+I8uR+6vhqXqie6AQwbAjXj8JpMxsZzXwDrATKwGZeKREKjnFFQEfOQCTZGBk/o1NtFlpSXCDK
-	w7iYlCd31Ml6X8bNuGvWELxPI9aqv//1ab2a62is63+cYbeTSO1ThoCrKgIWuhtKcqI49WU47R7Jp
-	GpfIuqCEyis9ju8WLk3a3Qpi3SulXR/1pQlpfEd7Y55kzWVCLxiXv2rsCsdTsG/di6RaYc+Zugsof
-	os+gjhiYQvjWxO15V731J8xSrQpU25L8CJJZOxlygW/thoMSuHuZSxsXa2C3y4Hzj4IWXk+I+G1xO
-	9T5HQ0PwA==;
+	 bh=uNIpSSMpxGXk3CqL0HIam/515PNJ+ibs3w1LiixOSrk=; b=E9DpQmbEgUbuPmhPDjner09KS
+	PnjKJ2JycEzxLt0MuvvxJJ3vro5ZjdtLNKEBQH18LG4+OgBAU/B6awtQUESTqoWrlkvn1dvbjGSY7
+	uFRkGc3ioXM8q2mmSpp2X8g/XT4HyXKaf3ObbFnID+WmzzE2/a/rr0gXD/RpxI4fwMMpdEZtZDXCZ
+	L1KodoFsFDtinOEboLws0qv7gI5v2qMlYjdLCzfLnFFNl2VtQ9Tk143y7uNh5JWrs3SW0aKQv6uHh
+	Qfm5WR8PF98wZPYs/+YPFlOzYM7SFVlGCnMCLLgLkxwk2cmXSeNYrLHny70j8+E769UQLHKgLH+Tm
+	suGgFBrwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9vwz-000134-IX; Wed, 10 Feb 2021 20:19:01 +0000
-Received: from mail-oi1-f172.google.com ([209.85.167.172])
+	id 1l9xVL-0001En-3I; Wed, 10 Feb 2021 21:58:35 +0000
+Received: from mail-ot1-f50.google.com ([209.85.210.50])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9vwx-00012Z-Mb; Wed, 10 Feb 2021 20:19:00 +0000
-Received: by mail-oi1-f172.google.com with SMTP id r75so3482097oie.11;
- Wed, 10 Feb 2021 12:18:59 -0800 (PST)
+ id 1l9xVI-0001EC-U9; Wed, 10 Feb 2021 21:58:33 +0000
+Received: by mail-ot1-f50.google.com with SMTP id i20so3329496otl.7;
+ Wed, 10 Feb 2021 13:58:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=1V8t5Prsyy8S7mj+k1iwfG7SFJZpLRdBoSrJSVmZLDo=;
- b=be+loU96chEXqrQSOM0+yWaf6c1X/dpIhFGg8fomUJ4T66AZB8TcLB3VPP9toVZBli
- SMnJxo4P2IF8JcE4eQZM3hHGFWeForBoBt08VTLf3dDZRTKOKGetEEgPwm3slVdpSO5V
- 3MWgzcaDLntRko2pW2Y00/nSpZQyPMCOWIBt5vuAY2MaaueQp4UAu9vCSUuwLnI3uvxc
- hCGl0G2pP6s4VThxkCMSRdbAT9k4UueSdV1AmlrMp3tGcThnjWZBbBLSJwGGkKwJzh4X
- ENidrNnnUsWenJkBru24DJUkEhK+Yl9rX4zEWlXdtCjZupRlUG7RCpP3mplxMNQarVR8
- 0JAQ==
-X-Gm-Message-State: AOAM532GzRNRJ5TvxTriZeAMsWE2WGNPELBd0M5OymbM8EmETo7vFKXc
- 9P/xCgpfUNPtYqfZ7v9YKg==
-X-Google-Smtp-Source: ABdhPJyuS7VjbrxGJVv3iJ/xTI1HQADlXtLQ4n+iMb/j+EHT3Wlzn5vWyImtbs3aFTQgWbK0PwMUGw==
-X-Received: by 2002:aca:c545:: with SMTP id v66mr532401oif.116.1612988338560; 
- Wed, 10 Feb 2021 12:18:58 -0800 (PST)
+ bh=uzz9hxfNfUAHoY/3tRRT+kBu3++kIrVwo6Tu0JjVTOA=;
+ b=r+3jFxgCU5vLhud2kXLyQUQxMbbKuxhySLfhGtnL+ON56yMzFKuO71MPOeLOJz328J
+ f8p7gty6tIQtBb025UVe6tlQ6UDuqeo8hYhSFM4/t9kuGqQPFOFUYwUbCXq8yjTLAdkY
+ 3Qc1IsVs3rRODNVLQZEaCQd+F3TC4nls59ucsRS/QB7TMilt3gu/e4ACXgL+HEB0c4D0
+ q+qdbamIrLLvi8P1qRVX8tFAk36NdTes2mHanjSoCIaUFLPKYqikXYhj548pca+Dro8a
+ +ESdtrEVWpLR8fdy+65fr+bPuJ83eZVIXIxBwiFN9TsHRCmxT6COToRMkP8ioo51zBwT
+ UYrw==
+X-Gm-Message-State: AOAM530SpPnaMzaxphOlFm6VPE8Npy6OCGLKWHi8et8CYEu/dl1oujcj
+ uQdR6DapQ2ta15foLeLPdw==
+X-Google-Smtp-Source: ABdhPJxrVr6ixP0bO6YSUh9lvjgUA5Iqr/sRXpCaKJSQpamuci/ExTOUwsJzIsx7P+OBLu+LBfKdWw==
+X-Received: by 2002:a9d:7997:: with SMTP id h23mr3754841otm.296.1612994312037; 
+ Wed, 10 Feb 2021 13:58:32 -0800 (PST)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id l133sm654257oia.37.2021.02.10.12.18.56
+ by smtp.gmail.com with ESMTPSA id o20sm608285oor.14.2021.02.10.13.58.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 12:18:57 -0800 (PST)
-Received: (nullmailer pid 2690216 invoked by uid 1000);
- Wed, 10 Feb 2021 20:18:56 -0000
-Date: Wed, 10 Feb 2021 14:18:56 -0600
+ Wed, 10 Feb 2021 13:58:31 -0800 (PST)
+Received: (nullmailer pid 2868209 invoked by uid 1000);
+ Wed, 10 Feb 2021 21:58:29 -0000
+Date: Wed, 10 Feb 2021 15:58:29 -0600
 From: Rob Herring <robh@kernel.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH v3 3/3] dt-bindings: mediatek,dpi: add mt8192 to
- mediatek,dpi
-Message-ID: <20210210201856.GA2690160@robh.at.kernel.org>
-References: <20210208014221.196584-1-jitao.shi@mediatek.com>
- <20210208014221.196584-4-jitao.shi@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [RFC PATCH v2 1/3] dt-bindings: usb: mtk-xhci: add compatible
+ for mt8195
+Message-ID: <20210210215829.GA2868150@robh.at.kernel.org>
+References: <20210203102642.7353-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210208014221.196584-4-jitao.shi@mediatek.com>
+In-Reply-To: <20210203102642.7353-1-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210210_151859_774363_DBA27FAE 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20210210_165833_004973_90B23598 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,24 +84,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, airlied@linux.ie,
- huijuan.xie@mediatek.com, stonea168@163.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, shuijing.li@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- matthias.bgg@gmail.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Ikjoon Jang <ikjn@chromium.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 08 Feb 2021 09:42:21 +0800, Jitao Shi wrote:
-> Add compatible "mediatek,mt8192-dpi" for the mt8192 dpi.
+On Wed, 03 Feb 2021 18:26:40 +0800, Chunfeng Yun wrote:
+> There are 4 USB controllers on MT8195, the controllers (IP1~IP3,
+> exclude IP0) have a wrong default SOF/ITP interval which is
+> calculated from the frame counter clock 24Mhz by default, but
+> in fact, the frame counter clock is 48Mhz, so we should set
+> the accurate interval according to 48Mhz. Here add a new compatible
+> for MT8195, it's also supported in driver. But the first controller
+> (IP0) has no such issue, we prefer to use generic compatible,
+> e.g. mt8192's compatible.
 > 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
+> v2: no changes
+> ---
+>  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt | 1 +
 >  1 file changed, 1 insertion(+)
 > 
 
