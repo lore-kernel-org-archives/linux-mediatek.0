@@ -1,21 +1,22 @@
-Return-Path: <SRS0=7fQF=HQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=c1Sc=HR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A8F16C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Feb 2021 01:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B00F2C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Feb 2021 05:16:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 45AF464E46
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Feb 2021 01:59:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45AF464E46
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5A6F66023B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Feb 2021 05:16:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A6F66023B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,56 +24,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3wR6Dj77QFZXwaNgbvtx+FJ4Hx5s16HksnJUjZVxqog=; b=VoUjmvCUlKVmsPGGun/jykHVf
-	S8470C8n64DegOQh84lVl0uK40p/0WlY5QkvqWxK8BcF0c6B1ef6CcljihHyaet6Eo5lD/5uNjOyo
-	O/nRGjKDo7Y7ctADtoOBIEwt+tX6othwzi+js3Ud6Wq7Z03hCETP5Yx9jdDuOLxBhsjszskEVE8J8
-	3S+2foPRw9u+wTQtdahmmdwrG8PMgEH2r+a7DdClOcWSfynhR5YkzDsGh4Eytq1yRiW4anxoULCUZ
-	SGugMSsuJwp42iWAAmzWS+qTMThqgOQdkl94cbnA2GvATD37OAsSB/oRmZGQehc6RTsydVLqqiBJT
-	AXUY6t9pw==;
+	 bh=9NzPxl0nRfXNm/SOrR9LDkXUphk+ogpVlzR7eetk7nY=; b=UQ7VLgFyCv1QZcMFmbqiHljPY
+	a4X7PADGiiBEdxeK7FYKo2DUNsmrsdJuFuX7let2jtpfX4zn4ed88lyT2P/I/iAj7YlZLY3sBvCBJ
+	Sk1wMb3eY/ACM58kWTP+h7IUtTq2H5yBMmbfH3X9re8WqlKOe0XQllyKBcNsmxBUT+Re8Y3GAj3TR
+	np5qhts5j9lCle9dPzIbfhLT7m3jpjpZaLCtI+RMzkuJavS//JYdBGYpYQdV6asZpzHcMDcHmx+nU
+	8pW/weYbs5ViRKE/qBoNlikp0Mu6ixcxkKEupchbJfI2W4m8IBA7O65U7L8ERYiU91HHIjzbBmJK5
+	rc62M034A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lB6gm-0004WL-5P; Sun, 14 Feb 2021 01:59:08 +0000
-Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
+	id 1lBWFO-0003fu-7T; Mon, 15 Feb 2021 05:16:34 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lB6gh-0004VA-KA
- for linux-mediatek@lists.infradead.org; Sun, 14 Feb 2021 01:59:05 +0000
-Received: by mail-ua1-x92a.google.com with SMTP id f10so1263766uaa.8
- for <linux-mediatek@lists.infradead.org>; Sat, 13 Feb 2021 17:59:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1lBWFH-0003e3-Bs; Mon, 15 Feb 2021 05:16:28 +0000
+Received: by mail-pf1-x429.google.com with SMTP id z15so3495311pfc.3;
+ Sun, 14 Feb 2021 21:16:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1ixeWtkGZms2jqEPuipL0eImgJeTeZ0ddYDeZic7MgQ=;
- b=FncMT/GvGAc/EsdPfqvKoM9XNHSxs+pjuWH41t8zU5Kg0ah1J4kXkiQfKFmtCiwtNh
- aaZuIMeVc3qALvPLqyg1iedXNqMds7nnIHMAHaAHtmfWZVW+BPtKXnNL8Vz1XIfa6Abk
- 56EQYlBSF42HXLn5XpStNIxJAknDvUZtB/D6k=
+ :cc; bh=TBkqrZBLcfDTB0/M+9n3lElFVq72Vy5NJAtkuckTGN4=;
+ b=pm4fNvBwXWCxUC5cgUyImGLfR4w/yKZ/pflBxno08azXdHVjNAF7N/TiLY6z306gz/
+ NwT40nkx/FTz+vU0BOctZuzk/kvqILDE4t19NPsl6Ny9Z7uIyTkIR9JcQevyZX/WlPso
+ dlOleXIZSuXw82L96wMXWZUd9NvG8+qzzVBYdpFCPzJJflFd0uJaRuMlVBMGJ2JebX/G
+ Qsu5+rhqLnv3pDiAVLF/86KcPk5OFYdMSGyqseOouuZHe0XxiFsKO9rjFl3bxkFJfC1R
+ Lvh4o7KXBD+YBQLwSczpEhhLc1c0oP1BcrnMlNQ4x2yYjMZybNxD8GuFAaL3mTPjkB2Z
+ oOxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=1ixeWtkGZms2jqEPuipL0eImgJeTeZ0ddYDeZic7MgQ=;
- b=Ra0ARWOr7AX/AIi9w+WiSFqhR58I8zNTTqH0dYZk0koC8MDCWWfsxeb8MbO78UTUPh
- VE6T+BEJ9F+9PcjtXHfeoBks08o0BowDjI/amBpLs3PpeRjq7LtWePHepuN93NoRzSth
- nSxY+VDCnMZTdpjXTlffOvKUFtqAE2oVgFm0QC6rI8lk82fi3dORa2rFMDqmd1frz80c
- ggtT0V3iPeolrco8W7QDsRJ1ZBe8i9S9CwlJbSj5CVo/HtWK+LB4Ieldonyr2jYLx8eM
- mh5tEZvEZ3+R9hXm0XOo7pPb9OZ2QAch1rfkXz2Sg1U6/KckEKnrOIMU9yeILdvWRCDG
- nBog==
-X-Gm-Message-State: AOAM532RT9AkbjjDZmBsjDVJyERXXXiDxIkHL1CTnrwoD9HpPl3LJVdc
- i74dGhYtBGS6jK33evN1f5VnOH3EQNEv/YUceLoqZA==
-X-Google-Smtp-Source: ABdhPJyoBmJ7jwKAGqVcrzAOq50zvV6KWZm+xllaqflJaAKZU8l5lkgyKY/T9PH8CRPdqVqIBQm9Ix+HOUvSzxYHOr8=
-X-Received: by 2002:ab0:2e9b:: with SMTP id f27mr1582267uaa.74.1613267939297; 
- Sat, 13 Feb 2021 17:58:59 -0800 (PST)
+ bh=TBkqrZBLcfDTB0/M+9n3lElFVq72Vy5NJAtkuckTGN4=;
+ b=W+sKQJXw7gXfsI1721alneUr8hcVlkGuXR8g/j7zFHiwWy2p4zdbrG1W2N0y7OKHQY
+ PNEAWUUGi5ZiJt4d65YSu2xiCxW2tXd9e/5wuh6CgbHji95kz+I+sYPwz3T0CHt9feb8
+ PBzUDc7ePQVkj/pOIXh50Yc0BPwezYKSRItTw6UoFFgg/COUxQNAvw46AWbROo6WPKXG
+ WWnbac1oFDDoOfG13dr6WolhNcoMdiG6A6H/rFGFSGfYiT+zmdILZKtJOjGghJmW7vGT
+ x0ntRclslIVdmg1S8k6xWz4y57Hov7rc9mD8KjKWDuFsVQBoZHk0DWhtVjF3z5i7RnUX
+ pzQA==
+X-Gm-Message-State: AOAM533k6bKOR2XlI2/LHE8z2Ln1tp5olStLNDMMCCn4jU7wDoS1MDc2
+ 7v9pkeQYEaiOEYjec/2JNjXtQ0/vW7PpJbwOzNY=
+X-Google-Smtp-Source: ABdhPJwOiZw4Qqqmjkha2m3NiVtY90y2KGeUq38HkrELdAMi1GmyuchWJQIojbLcrd0WcqkoeEZZMy7VUEb0HVASvmM=
+X-Received: by 2002:a63:1519:: with SMTP id v25mr13584867pgl.217.1613366183592; 
+ Sun, 14 Feb 2021 21:16:23 -0800 (PST)
 MIME-Version: 1.0
-References: <20210129093010.22909-1-michael.kao@mediatek.com>
- <20210129093010.22909-3-michael.kao@mediatek.com>
-In-Reply-To: <20210129093010.22909-3-michael.kao@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Sun, 14 Feb 2021 09:58:48 +0800
-Message-ID: <CANMq1KA-a1RQ=85w=sxJP8PfVfovx6Tscsuxf_vZpFqdxGc0=g@mail.gmail.com>
-Subject: Re: [v2,
- 2/3] thermal: mediatek: Add LVTS drivers for SoC theraml zones
-To: Michael Kao <michael.kao@mediatek.com>
+References: <1608712499-24956-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1608712499-24956-2-git-send-email-yongqiang.niu@mediatek.com>
+ <1610070485.1574.10.camel@mhfsdcap03>
+In-Reply-To: <1610070485.1574.10.camel@mhfsdcap03>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Sun, 14 Feb 2021 23:16:13 -0600
+Message-ID: <CABb+yY3JQUYf8b-mU_01eYR-4nswFRbBE42WS9fS8aSmk2rjmw@mail.gmail.com>
+Subject: Re: [PATCH v2] soc: mediatek: cmdq: add address shift in jump
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210213_205904_574118_7EF0E1A9 
-X-CRM114-Status: GOOD (  17.58  )
+X-CRM114-CacheID: sfid-20210215_001627_428958_9AC08D35 
+X-CRM114-Status: GOOD (  20.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,71 +89,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>,
  Devicetree List <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- "open list:THERMAL" <linux-pm@vger.kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- lkml <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>,
- Fan Chen <fan.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Zhang Rui <rui.zhang@intel.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@linux.ie>,
+ Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ CK Hu <ck.hu@mediatek.com>, Damon Chu <damon.chu@mediatek.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 29, 2021 at 5:40 PM Michael Kao <michael.kao@mediatek.com> wrote:
+On Thu, Jan 7, 2021 at 7:48 PM Yongqiang Niu <yongqiang.niu@mediatek.com> wrote:
 >
-> Add a LVTS (Low voltage thermal sensor) driver to report junction
-> temperatures in Mediatek SoC and register the maximum temperature
-> of sensors and each sensor as a thermal zone.
+> On Wed, 2020-12-23 at 16:34 +0800, Yongqiang Niu wrote:
+> > Add address shift when compose jump instruction
+> > to compatible with 35bit format.
+> >
+> > Fixes: 0858fde496f8 ("mailbox: cmdq: variablize address shift in platform")
+> >
+> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+> > ---
+> >  drivers/mailbox/mtk-cmdq-mailbox.c | 3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > index 5665b6e..75378e3 100644
+> > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > @@ -168,7 +168,8 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
+> >       dma_sync_single_for_cpu(dev, prev_task->pa_base,
+> >                               prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+> >       prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
+> > -             (u64)CMDQ_JUMP_BY_PA << 32 | task->pa_base;
+> > +             (u64)CMDQ_JUMP_BY_PA << 32 |
+> > +             (task->pa_base >> task->cmdq->shift_pa);
+> >       dma_sync_single_for_device(dev, prev_task->pa_base,
+> >                                  prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+> >
 >
-> Signed-off-by: Yu-Chia Chang <ethan.chang@mediatek.com>
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> ---
->  drivers/thermal/mediatek/Kconfig         |   10 +
->  drivers/thermal/mediatek/Makefile        |    1 +
->  drivers/thermal/mediatek/soc_temp_lvts.c | 1287 ++++++++++++++++++++++
->  drivers/thermal/mediatek/soc_temp_lvts.h |  312 ++++++
->  4 files changed, 1610 insertions(+)
->  create mode 100644 drivers/thermal/mediatek/soc_temp_lvts.c
->  create mode 100644 drivers/thermal/mediatek/soc_temp_lvts.h
+> hi jassi
 >
-> [snip]
-> diff --git a/drivers/thermal/mediatek/Makefile b/drivers/thermal/mediatek/Makefile
-> index f75313ddce5e..16ce166e5916 100644
-> --- a/drivers/thermal/mediatek/Makefile
-> +++ b/drivers/thermal/mediatek/Makefile
-> @@ -1 +1,2 @@
->  obj-$(CONFIG_MTK_SOC_THERMAL)  += soc_temp.o
-> +obj-$(CONFIG_MTK_SOC_THERMAL_LVTS)     += soc_temp_lvts.o
-> diff --git a/drivers/thermal/mediatek/soc_temp_lvts.c b/drivers/thermal/mediatek/soc_temp_lvts.c
-> new file mode 100644
-> index 000000000000..b56c2cd3cb39
-> --- /dev/null
-> +++ b/drivers/thermal/mediatek/soc_temp_lvts.c
-> @@ -0,0 +1,1287 @@
-> [snip]
-> +
-> +static unsigned int lvts_temp_to_raw(struct formula_coeff *co, int temp)
-> +{
-> +       unsigned int msr_raw;
-> +
-> +       msr_raw = ((long long)((co->golden_temp * 500 + co->b - temp)) << 14)
-> +               / (-1 * co->a);
+> please confirm is there any question about this patch.
+> if not, please apply this into next version, tks
+>
+I can't locate this patch in my inbox. And I can't fwd it from lkml to
+myself. Please resend.
 
-This fails to build test on arm (32-bit):
-ERROR: "__aeabi_ldivmod" [drivers/thermal/mediatek/soc_temp_lvts.ko] undefined!
-
-Recommend using div_s64:
-   msr_raw = div_s64((s64)((co->golden_temp * 500 + co->b - temp)) << 14,
-                     -1 * co->a);
-
-> +
-> +       return msr_raw;
-> +}
-> [snip]
+thnks.
 
 _______________________________________________
 Linux-mediatek mailing list
