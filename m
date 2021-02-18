@@ -5,71 +5,71 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D70D4C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Feb 2021 01:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1293C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Feb 2021 01:38:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A89064E2E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Feb 2021 01:35:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A89064E2E
+	by mail.kernel.org (Postfix) with ESMTPS id 1123864E45
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Feb 2021 01:38:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1123864E45
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4XqAgiiiVnN3v3mH2C9mBqkb7zEfuZEBwYnb6TWJZ1k=; b=JKWJAjhhT+fT5qR1Drf0924DK
-	DaUw4sjSdAQ+9qrIkv3l4qhYMTN9EYRTRK9ZA8NH/FwTXw5S7qdGDm0yZ1lMcSiwgUgbTwtfEGUut
-	+QDYyZ/JoxlfE7ihZjbvJqdvHzdgWDcUh5ohoSx5ncFbabgTHyA8WLCsXkK0Ej6SGTH76dyfuy9Ih
-	z9J5D2IGVmKSTJOHsIPEkWJNNkQfQp+JxGJnxAB3N+TDytNhup7kg3ygarryzS6niaVZXWCcivHom
-	9AuPZq0bQ7SoL7oJxL94INAWBMxbAKnNYN7wnLjZzPFQ+S1Vp3Ts/rroUFy/xL8w+6SR+ClhPuGsA
-	yTFNVzsHg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8/+/h7fHwbbaCNyBy0BdY42ERvY1zcmMd2GUJdIajDE=; b=0ErXKeUMb0imXM8u6Oqz0cTfWY
+	XisTJEQnYqNvrx/Dqq9Kj6DdDrJtYoLHUGbYXArOL3+EktgdaUV49FD2wE4AA3az7fV63kXwzqyVS
+	tXZBNYZlPIlxaUHy3Bbh0IoKpw00nh0pZ2tNPft5oaiGwM4GtVZKx0zrwzd89PS+czhcujVioT+6/
+	Vt+0qVvTv0VHY0MtcxOo0mjCkEukgaNxFL0fzy22vv7f2lFThVKw0tL75uYZT4ZJysW2OzVHXCWpo
+	3hE3OyCqiSDBrnhAXkLZ1cV2pkyoDw4CbTf5f3CnDCXxGUAbDIQCL9c/1oX+FFaGIhV1xDpgxS/Pg
+	dR27lZig==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lCYDV-0003wy-1B; Thu, 18 Feb 2021 01:34:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lCYGe-0004ci-I2; Thu, 18 Feb 2021 01:38:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lCYDS-0003wL-0y
- for linux-mediatek@lists.infradead.org; Thu, 18 Feb 2021 01:34:51 +0000
-X-UUID: 3037ced0bd1b4fb1b8e818e84653fe3e-20210217
+ id 1lCYGB-0004Ot-EQ
+ for linux-mediatek@lists.infradead.org; Thu, 18 Feb 2021 01:37:41 +0000
+X-UUID: 21cc53374fb64571bf1295368621270f-20210217
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Wo1UJYSZONfNTDr6j741divuMJW9WcSjX1yV4ekWG98=; 
- b=SCDB+YDR5mO0QS45h1weqmWt/zB+p+z+krXFTpRMeEzD9/Egc4CYIVZrPSO1vaOiYImM8DNqvO5iNYkdZV4suhBqzXXlLo4yN7IL/1+pcgDtkYCuRsc8DuU0kLEV+n35wYcGtxQOOAeQ9eJGeM4o5uj21G3/32D8fcT4Os4ga3Y=;
-X-UUID: 3037ced0bd1b4fb1b8e818e84653fe3e-20210217
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=KDn259VOE2LEFNsTRaXY5b/trdHosSOo/yKB6qKBdkw=; 
+ b=DXNNK8VxWpZcBB9SpuB3DwtU88ITcBMCaNL4gbmXitkutcDXO2OSb4fkdzWTIn/XlP1eJ4vbew87jrZsxPLjkhNtAnc+sMOfQZFaqny0G/PtE1mCOiVfYXvm3lJGt2Xv0Kw3fX0Nn2zBtbKcKyE4U2UlsIVnQd2wDtFM2sGuAtE=;
+X-UUID: 21cc53374fb64571bf1295368621270f-20210217
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 564695984; Wed, 17 Feb 2021 17:34:46 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Feb 2021 17:34:44 -0800
+ with ESMTP id 1988645996; Wed, 17 Feb 2021 17:37:35 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Feb 2021 17:34:45 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Feb 2021 09:34:43 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Feb 2021 09:34:42 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 18 Feb 2021 09:34:43 +0800
+ Frontend Transport; Thu, 18 Feb 2021 09:34:42 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 2/3] mt76: mt7615: add rx checksum offload support
-Date: Thu, 18 Feb 2021 09:34:39 +0800
-Message-ID: <5986dbd65f23d49aaf7656e0a4b4750985188f36.1613603857.git.ryder.lee@mediatek.com>
+Subject: [PATCH 1/3] mt76: mt7615: enable hw rx-amsdu de-aggregation
+Date: Thu, 18 Feb 2021 09:34:38 +0800
+Message-ID: <b7883f5ee09d13f7cbdf5ab1d5fef61ebc79dcc4.1613603857.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <b7883f5ee09d13f7cbdf5ab1d5fef61ebc79dcc4.1613603857.git.ryder.lee@mediatek.com>
-References: <b7883f5ee09d13f7cbdf5ab1d5fef61ebc79dcc4.1613603857.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 8C5240DE6316DEE306FD2BCACADC91B690D6D2DEDA363B2D5279E379E4E592D02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210217_203450_334159_189FC08F 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20210217_203739_695310_9C63AA92 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,49 +88,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set skb->ip_summed to CHECKSUM_UNNECESSARY if the hardware has validated
-the IP and TCP/UDP checksum
+Enable hw rx-amsdu de-aggregation support.
+This is a preliminary patch to enable rx checksum offload.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/init.c | 1 +
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c  | 4 ++++
- 2 files changed, 5 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/init.c |  3 +--
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c  | 15 ++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.h  |  3 +++
+ drivers/net/wireless/mediatek/mt76/mt7615/regs.h |  1 +
+ 4 files changed, 19 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index a97cc723094c..fd38737a27bd 100644
+index 571390fa4de7..a97cc723094c 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -329,6 +329,7 @@ mt7615_init_wiphy(struct ieee80211_hw *hw)
- 	hw->max_rates = 3;
- 	hw->max_report_rates = 7;
- 	hw->max_rate_tries = 11;
-+	hw->netdev_features = NETIF_F_RXCSUM;
+@@ -116,10 +116,9 @@ mt7615_mac_init(struct mt7615_dev *dev)
+ 	mt76_set(dev, MT_WF_RMAC_MIB_TIME0, MT_WF_RMAC_MIB_RXTIME_EN);
+ 	mt76_set(dev, MT_WF_RMAC_MIB_AIRTIME0, MT_WF_RMAC_MIB_RXTIME_EN);
  
- 	phy->slottime = 9;
- 
+-	/* disable hdr translation and hw AMSDU */
+ 	mt76_wr(dev, MT_DMA_DCR0,
+ 		FIELD_PREP(MT_DMA_DCR0_MAX_RX_LEN, 3072) |
+-		MT_DMA_DCR0_RX_VEC_DROP);
++		MT_DMA_DCR0_RX_VEC_DROP | MT_DMA_DCR0_DAMSDU_EN);
+ 	/* disable TDLS filtering */
+ 	mt76_clear(dev, MT_WF_PFCR, MT_WF_PFCR_TDLS_EN);
+ 	mt76_set(dev, MT_WF_MIB_SCR0, MT_MIB_SCR0_AGG_CNT_RANGE_EN);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 928edd158f64..340beff0e121 100644
+index 9bae2f66e1ce..928edd158f64 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -234,6 +234,7 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
- 	u32 rxd0 = le32_to_cpu(rxd[0]);
- 	u32 rxd1 = le32_to_cpu(rxd[1]);
- 	u32 rxd2 = le32_to_cpu(rxd[2]);
-+	u32 csum_mask = MT_RXD0_NORMAL_IP_SUM | MT_RXD0_NORMAL_UDP_TCP_SUM;
- 	__le32 rxd12 = rxd[12];
+@@ -238,7 +238,7 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
  	bool unicast, remove_pad, insert_ccmp_hdr = false;
  	int phy_idx;
-@@ -271,6 +272,9 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
- 		spin_unlock_bh(&dev->sta_poll_lock);
- 	}
+ 	int i, idx;
+-	u8 chfreq;
++	u8 chfreq, amsdu_info;
  
-+	if ((rxd0 & csum_mask) == csum_mask)
-+		skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 	memset(status, 0, sizeof(*status));
+ 
+@@ -254,6 +254,9 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	else
+ 		phy_idx = -1;
+ 
++	if (rxd2 & MT_RXD2_NORMAL_AMSDU_ERR)
++		return -EINVAL;
 +
- 	if (rxd2 & MT_RXD2_NORMAL_FCS_ERR)
- 		status->flag |= RX_FLAG_FAILED_FCS_CRC;
+ 	unicast = (rxd1 & MT_RXD1_NORMAL_ADDR_TYPE) == MT_RXD1_NORMAL_U2M;
+ 	idx = FIELD_GET(MT_RXD2_NORMAL_WLAN_IDX, rxd2);
+ 	status->wcid = mt7615_rx_get_wcid(dev, idx, unicast);
+@@ -446,6 +449,16 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
  
+ 	skb_pull(skb, (u8 *)rxd - skb->data + 2 * remove_pad);
+ 
++	amsdu_info = FIELD_GET(MT_RXD1_NORMAL_PAYLOAD_FORMAT, rxd1);
++	status->amsdu = !!amsdu_info;
++	if (status->amsdu) {
++		status->first_amsdu = amsdu_info == MT_RXD1_FIRST_AMSDU_FRAME;
++		status->last_amsdu = amsdu_info == MT_RXD1_LAST_AMSDU_FRAME;
++		memmove(skb->data + 2, skb->data,
++			ieee80211_get_hdrlen_from_skb(skb));
++		skb_pull(skb, 2);
++	}
++
+ 	if (insert_ccmp_hdr) {
+ 		u8 key_id = FIELD_GET(MT_RXD1_NORMAL_KEY_ID, rxd1);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+index 169f4e17b5b4..ed009d085a53 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+@@ -33,6 +33,9 @@ enum rx_pkt_type {
+ 
+ #define MT_RXD1_NORMAL_BSSID		GENMASK(31, 26)
+ #define MT_RXD1_NORMAL_PAYLOAD_FORMAT	GENMASK(25, 24)
++#define MT_RXD1_FIRST_AMSDU_FRAME	GENMASK(1, 0)
++#define MT_RXD1_MID_AMSDU_FRAME		BIT(1)
++#define MT_RXD1_LAST_AMSDU_FRAME	BIT(0)
+ #define MT_RXD1_NORMAL_HDR_TRANS	BIT(23)
+ #define MT_RXD1_NORMAL_HDR_OFFSET	BIT(22)
+ #define MT_RXD1_NORMAL_MAC_HDR_LEN	GENMASK(21, 16)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+index 6e5db015b32c..4ebffe52cb8e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+@@ -368,6 +368,7 @@ enum mt7615_reg_base {
+ 
+ #define MT_DMA_DCR0			MT_WF_DMA(0x000)
+ #define MT_DMA_DCR0_MAX_RX_LEN		GENMASK(15, 2)
++#define MT_DMA_DCR0_DAMSDU_EN		BIT(16)
+ #define MT_DMA_DCR0_RX_VEC_DROP		BIT(17)
+ 
+ #define MT_DMA_RCFR0(_band)		MT_WF_DMA(0x070 + (_band) * 0x40)
 -- 
 2.18.0
 _______________________________________________
