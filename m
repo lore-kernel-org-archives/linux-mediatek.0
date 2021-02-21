@@ -1,76 +1,63 @@
-Return-Path: <SRS0=RVxU=HW=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=8HwV=HX=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B58D2C433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Feb 2021 07:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B7C2C433E0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Feb 2021 19:09:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 665DF614A5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Feb 2021 07:05:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 665DF614A5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2F0AB614A7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Feb 2021 19:09:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F0AB614A7
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c7rt3gpNvl3t8wQ6u+pBffjChDEGQC6ee2CQ6KNp1tQ=; b=VV7M6V6a03O5dyW5930eL/DPX
-	f9Vb9TitccluzOMR/4siWHhtfEdmMsD5oR9AWDqZ7RgYbrmNtgc8BVNyEm6kAxUIZM/t7Am1Hf8rJ
-	ornQfNWnYpLRbHjyNJOPnMNL34z8qVZrCuzQaCILiSMTdPvGZAV16KcO0x7Z9Pp/bXr780KX9pwjW
-	rD4anJNrPjgmyerXepYEYBrBSzGWU0b67owHyh5cjL+4nuREDrpL0HqYtoJyAOHqArMxMrQieWvf9
-	v8CVYGqAxFqs48IMopJK0paD9IEZ/gwAxrm2fQtzOvwczyAZ1aYSEAIbZW+oVpNeI4HNcKG2TnliB
-	DrIQFyXmQ==;
+	 bh=q91asxBCMki8jjf2bnyOB3bxoLg8YgU8pQ6djWv3tcs=; b=RKf2050uV+B9T+Z2vjEwG5tDL
+	fHa1aAtAUuES1egIjz1Hyxl6DhvbYycnVwugJd2kZFtPhGfGM3octQO4DrsEAC6YAxcHHvBobMJw0
+	fYOzq1c61oyWn0WY6qA0gy5HzTHEuijt7xifbrEYcd7wAFdWJa6nvNPfwRX6Q/razwBorwRPSyEYr
+	RG6KAaGzNrJnoIicmZS2UFak5e8ZB8lIBTMZ94kDhOLjk4YvgOYnt+espNXWn6V6KDZEeDYpz7ltl
+	yrHNWyOhpjKChDOPuvTiW+WXqOxoJ63vOqwQnFdBJUD4JSwfqn7P8gEWSsnIl2KHfD4VMoNCJb3CF
+	dYSbe9Ugw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lDMKN-0007Z5-5H; Sat, 20 Feb 2021 07:05:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lDu62-0003Ud-U6; Sun, 21 Feb 2021 19:08:47 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lDMKJ-0007YQ-H2; Sat, 20 Feb 2021 07:05:18 +0000
-X-UUID: df851c679f2f4b6e95003c072bbe47a4-20210219
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=hAZDiRAmYt2G40BRz3/BtTMPTlJgARIAZXKPubz3q+8=; 
- b=bRfvL76owAgZhsP8oBe3fIrH+WRVCNgxyh7KnJHTyPSFMv9Vx74i+Ifo1yWy3oAVPG03n3wS8bJVCu6tgKl4sa9XEzKShOf4KG/8AkzJ+OOM7c2X0e0khjIEED9UQxYCVZJI+DHU+SYBp9fLVRoGQrdMmJDvsyNJ7dBlUFOWI68=;
-X-UUID: df851c679f2f4b6e95003c072bbe47a4-20210219
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <irui.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2034513551; Fri, 19 Feb 2021 23:05:11 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 19 Feb 2021 22:55:08 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 20 Feb 2021 14:55:05 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 20 Feb 2021 14:55:03 +0800
-Message-ID: <1613804103.896.27.camel@mhfsdcap03>
-Subject: Re: [PATCH 3/3] media: mtk-vcodec: Separating mtk encoder driver
-From: Irui Wang <irui.wang@mediatek.com>
-To: Alexandre Courbot <acourbot@chromium.org>
-Date: Sat, 20 Feb 2021 14:55:03 +0800
-In-Reply-To: <CAPBb6MXqFU+-f4C=BaW9d_KyEUwZVTiBj-dqqxnGP-Zd7YkMVw@mail.gmail.com>
-References: <20210121061804.26423-1-irui.wang@mediatek.com>
- <20210121061804.26423-3-irui.wang@mediatek.com>
- <CAPBb6MXqFU+-f4C=BaW9d_KyEUwZVTiBj-dqqxnGP-Zd7YkMVw@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lDu5w-0003Tb-Rt; Sun, 21 Feb 2021 19:08:42 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id DCF1EEF;
+ Sun, 21 Feb 2021 20:08:37 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1613934518;
+ bh=3XmyzxGwzCd8W8K+XsKRw4jMy6r2jo1Zwca1NaO6OoI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=rU/0UczNJb8ek+bqoP2wG/+erPunX3E0WsJAn/5u5zh4kO0nbOrlVzxBeb86MQ9nq
+ 2HWsnutcV1vvxluEATl5D3BLotKGqrxdDEDslPvR3hy8lFtyd+61M4zJeoqE8YCewe
+ WUUvD/doI5P3nO9nSZnuSGW4unEacqXPxtDNrunw=
+Date: Sun, 21 Feb 2021 21:08:11 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH] drm/dsi: Add _NO_ to MIPI_DSI_* flags disabling features
+Message-ID: <YDKvm1QmdJtJbaN6@pendragon.ideasonboard.com>
+References: <20210211113309.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 34E6E76D8BDC8C16416B248E75577A4E96B58E5EBD7A9EEA7AAD2FD602A66A092000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210211113309.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210220_020515_886285_C1A05376 
-X-CRM114-Status: GOOD (  40.43  )
+X-CRM114-CacheID: sfid-20210221_140841_251958_21BA48A2 
+X-CRM114-Status: GOOD (  21.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,578 +69,480 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Maoguang Meng <maoguang.meng@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>, srv_heupstream@mediatek.com,
- Tomasz Figa <tfiga@google.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org,
+ Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Sam Ravnborg <sam@ravnborg.org>, Emil Velikov <emil.velikov@collabora.com>,
+ linux-samsung-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>,
+ Rob Clark <robdclark@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
+ linux-arm-msm@vger.kernel.org,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Inki Dae <inki.dae@samsung.com>,
+ Jordan Crouse <jcrouse@codeaurora.org>, linux-mediatek@lists.infradead.org,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>,
+ Xin Ji <xji@analogixsemi.com>, linux-arm-kernel@lists.infradead.org,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Rajendra Nayak <rnayak@codeaurora.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org,
+ Robert Foss <robert.foss@linaro.org>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Daniel Vetter <daniel@ffwll.ch>,
+ freedreno@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-02-03 at 19:44 +0900, Alexandre Courbot wrote:
-> Hi Irui,
-> 
-> Thanks for pushing this forward. I had two small conflicts when
-> applying this patch to the media tree, so you may want to rebase
-> before sending the next version. Please see the comments inline.
-> 
-> On Thu, Jan 21, 2021 at 3:18 PM Irui Wang <irui.wang@mediatek.com> wrote:
-> >
-> > MTK H264 Encoder(VENC_SYS) and VP8 Encoder(VENC_LT_SYS) are two
-> > independent hardware instance. They have their owner interrupt,
-> > register mapping, and special clocks.
-> >
-> > This patch seperates them into two drivers:
-> 
-> seperates -> separates
-> 
-> Also the patch does not result in two drivers, but two devices.
-> 
-> > User Call "VIDIOC_QUERYCAP":
-> > H264 Encoder return driver name "mtk-vcodec-enc";
-> > VP8 Encoder return driver name "mtk-venc-vp8.
-> 
-> I wonder if we need to use two different names? The driver is the
-> same, so it makes sense to me that both devices return
-> "mtk-vcodec-enc". Userspace can then list the formats on the CAPTURE
-> queue in order to query the supported codecs.
-> 
-I'm afraid we can't, there is a symlink when chrome use the
-encoder(50-media.rules):
-ATTR{name} == "mtk-vcodec-enc", SYMLINK+="video-enc"
-ATTR{name} == "mtk-venc-vp8", SYMLINK+="video-enc0"
-if we use the same name,how userspace access the encoder? maybe there
-will be some modifications are needed in VEA(for example)? 
-> >
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-> > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> >
-> > ---
-> >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  10 +-
-> >  .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  23 +++-
-> >  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 121 +++++++-----------
-> >  .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |  40 +-----
-> >  .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   4 +-
-> >  5 files changed, 82 insertions(+), 116 deletions(-)
-> >
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > index 3dd010cba23e..1594edcc706d 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > @@ -19,6 +19,7 @@
-> >  #define MTK_VCODEC_DRV_NAME    "mtk_vcodec_drv"
-> >  #define MTK_VCODEC_DEC_NAME    "mtk-vcodec-dec"
-> >  #define MTK_VCODEC_ENC_NAME    "mtk-vcodec-enc"
-> > +#define MTK_VENC_VP8_NAME      "mtk-venc-vp8"
-> >  #define MTK_PLATFORM_STR       "platform:mt8173"
-> >
-> >  #define MTK_VCODEC_MAX_PLANES  3
-> > @@ -193,7 +194,6 @@ struct mtk_vcodec_pm {
-> >
-> >         struct mtk_vcodec_clk   venc_clk;
-> >         struct device   *larbvenc;
-> > -       struct device   *larbvenclt;
-> >         struct device   *dev;
-> >         struct mtk_vcodec_dev   *mtkdev;
-> >  };
-> > @@ -311,25 +311,27 @@ enum mtk_chip {
-> >   * @chip: chip this encoder is compatible with
-> >   *
-> >   * @uses_ext: whether the encoder uses the extended firmware messaging format
-> > - * @has_lt_irq: whether the encoder uses the LT irq
-> > + * @name: whether the encoder core is vp8
-> >   * @min_birate: minimum supported encoding bitrate
-> >   * @max_bitrate: maximum supported encoding bitrate
-> >   * @capture_formats: array of supported capture formats
-> >   * @num_capture_formats: number of entries in capture_formats
-> >   * @output_formats: array of supported output formats
-> >   * @num_output_formats: number of entries in output_formats
-> > + * @core_id: stand for h264 or vp8 encode index
-> >   */
-> >  struct mtk_vcodec_enc_pdata {
-> >         enum mtk_chip chip;
-> >
-> >         bool uses_ext;
-> > -       bool has_lt_irq;
-> > +       const char *name;
-> 
-> This new member can be removed if we use the same name for both devices.
-> 
-> >         unsigned long min_bitrate;
-> >         unsigned long max_bitrate;
-> >         const struct mtk_video_fmt *capture_formats;
-> >         size_t num_capture_formats;
-> >         const struct mtk_video_fmt *output_formats;
-> >         size_t num_output_formats;
-> > +       int core_id;
-> >  };
-> >
-> >  #define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
-> > @@ -361,7 +363,6 @@ struct mtk_vcodec_enc_pdata {
-> >   *
-> >   * @dec_irq: decoder irq resource
-> >   * @enc_irq: h264 encoder irq resource
-> > - * @enc_lt_irq: vp8 encoder irq resource
-> >   *
-> >   * @dec_mutex: decoder hardware lock
-> >   * @enc_mutex: encoder hardware lock.
-> > @@ -397,7 +398,6 @@ struct mtk_vcodec_dev {
-> >
-> >         int dec_irq;
-> >         int enc_irq;
-> > -       int enc_lt_irq;
-> >
-> >         struct mutex dec_mutex;
-> >         struct mutex enc_mutex;
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > index 21de1431cfcb..0da6871b4b39 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > @@ -9,6 +9,7 @@
-> >  #include <media/v4l2-mem2mem.h>
-> >  #include <media/videobuf2-dma-contig.h>
-> >  #include <soc/mediatek/smi.h>
-> > +#include <linux/pm_runtime.h>
-> >
-> >  #include "mtk_vcodec_drv.h"
-> >  #include "mtk_vcodec_enc.h"
-> > @@ -189,7 +190,10 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
-> >  static int vidioc_venc_querycap(struct file *file, void *priv,
-> >                                 struct v4l2_capability *cap)
-> >  {
-> > -       strscpy(cap->driver, MTK_VCODEC_ENC_NAME, sizeof(cap->driver));
-> > +       const struct mtk_vcodec_enc_pdata *pdata =
-> > +               fh_to_ctx(priv)->dev->venc_pdata;
-> > +
-> > +       strscpy(cap->driver, pdata->name, sizeof(cap->driver));
-> >         strscpy(cap->bus_info, MTK_PLATFORM_STR, sizeof(cap->bus_info));
-> >         strscpy(cap->card, MTK_PLATFORM_STR, sizeof(cap->card));
-> >
-> > @@ -797,7 +801,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
-> >           */
-> >         if ((ctx->state == MTK_STATE_ABORT) || (ctx->state == MTK_STATE_FREE)) {
-> >                 ret = -EIO;
-> > -               goto err_set_param;
-> > +               goto err_start_stream;
-> >         }
-> >
-> >         /* Do the initialization when both start_streaming have been called */
-> > @@ -809,6 +813,12 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
-> >                         return 0;
-> >         }
-> >
-> > +       ret = pm_runtime_get_sync(&ctx->dev->plat_dev->dev);
-> > +       if (ret < 0) {
-> > +               mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
-> > +               goto err_start_stream;
-> > +       }
-> 
-> This does not seem to be related to the split ; why is this necessary?
-It's a prepare patch for the larbs, after separating, we need call
-pm_runtime_ API additionally.
-> 
-> > +
-> >         mtk_venc_set_param(ctx, &param);
-> >         ret = venc_if_set_param(ctx, VENC_SET_PARAM_ENC, &param);
-> >         if (ret) {
-> > @@ -835,6 +845,11 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
-> >         return 0;
-> >
-> >  err_set_param:
-> > +       ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
-> > +       if (ret < 0)
-> > +               mtk_v4l2_err("pm_runtime_put fail %d", ret);
-> > +
-> > +err_start_stream:
-> >         for (i = 0; i < q->num_buffers; ++i) {
-> >                 struct vb2_buffer *buf = vb2_get_buffer(q, i);
-> >
-> > @@ -888,6 +903,10 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
-> >         if (ret)
-> >                 mtk_v4l2_err("venc_if_deinit failed=%d", ret);
-> >
-> > +       ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
-> > +       if (ret < 0)
-> > +               mtk_v4l2_err("pm_runtime_put fail %d", ret);
-> > +
-> >         ctx->state = MTK_STATE_FREE;
-> >  }
-> >
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> > index dfb42e19bf81..4bee42454253 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> > @@ -49,12 +49,15 @@ static const struct mtk_video_fmt mtk_video_formats_output_mt8173[] = {
-> >         },
-> >  };
-> >
-> > -static const struct mtk_video_fmt mtk_video_formats_capture_mt8173[] =  {
-> > +static const struct mtk_video_fmt mtk_video_formats_capture_mt8173_h264[] =  {
-> >         {
-> >                 .fourcc = V4L2_PIX_FMT_H264,
-> >                 .type = MTK_FMT_ENC,
-> >                 .num_planes = 1,
-> >         },
-> > +};
-> > +
-> > +static const struct mtk_video_fmt mtk_video_formats_capture_mt8173_vp8[] =  {
-> >         {
-> >                 .fourcc = V4L2_PIX_FMT_VP8,
-> >                 .type = MTK_FMT_ENC,
-> > @@ -110,35 +113,13 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
-> >         ctx = dev->curr_ctx;
-> >         spin_unlock_irqrestore(&dev->irqlock, flags);
-> >
-> > -       mtk_v4l2_debug(1, "id=%d", ctx->id);
-> > -       addr = dev->reg_base[VENC_SYS] + MTK_VENC_IRQ_ACK_OFFSET;
-> > -
-> > -       ctx->irq_status = readl(dev->reg_base[VENC_SYS] +
-> > -                               (MTK_VENC_IRQ_STATUS_OFFSET));
-> > -
-> > -       clean_irq_status(ctx->irq_status, addr);
-> > -
-> > -       wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-> > -       return IRQ_HANDLED;
-> > -}
-> > -
-> > -static irqreturn_t mtk_vcodec_enc_lt_irq_handler(int irq, void *priv)
-> > -{
-> > -       struct mtk_vcodec_dev *dev = priv;
-> > -       struct mtk_vcodec_ctx *ctx;
-> > -       unsigned long flags;
-> > -       void __iomem *addr;
-> > -
-> > -       spin_lock_irqsave(&dev->irqlock, flags);
-> > -       ctx = dev->curr_ctx;
-> > -       spin_unlock_irqrestore(&dev->irqlock, flags);
-> > +       mtk_v4l2_debug(1, "id=%d coreid:%d", ctx->id, dev->venc_pdata->core_id);
-> > +       addr = dev->reg_base[dev->venc_pdata->core_id] +
-> > +                               MTK_VENC_IRQ_ACK_OFFSET;
-> >
-> > -       mtk_v4l2_debug(1, "id=%d", ctx->id);
-> > -       ctx->irq_status = readl(dev->reg_base[VENC_LT_SYS] +
-> > +       ctx->irq_status = readl(dev->reg_base[dev->venc_pdata->core_id] +
-> >                                 (MTK_VENC_IRQ_STATUS_OFFSET));
-> >
-> > -       addr = dev->reg_base[VENC_LT_SYS] + MTK_VENC_IRQ_ACK_OFFSET;
-> > -
-> >         clean_irq_status(ctx->irq_status, addr);
-> >
-> >         wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-> > @@ -293,17 +274,21 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> >         dev->venc_pdata = of_device_get_match_data(&pdev->dev);
-> >         ret = mtk_vcodec_init_enc_pm(dev);
-> >         if (ret < 0) {
-> > -               dev_err(&pdev->dev, "Failed to get mt vcodec clock source!");
-> > +               dev_err(&pdev->dev, "Failed to get mtk vcodec clock source!");
-> >                 goto err_enc_pm;
-> >         }
-> >
-> > -       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > -       dev->reg_base[VENC_SYS] = devm_ioremap_resource(&pdev->dev, res);
-> > -       if (IS_ERR((__force void *)dev->reg_base[VENC_SYS])) {
-> > -               ret = PTR_ERR((__force void *)dev->reg_base[VENC_SYS]);
-> > +       pm_runtime_enable(&pdev->dev);
-> > +
-> > +       snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
-> > +                dev->venc_pdata->name);
-> > +
-> > +       dev->reg_base[dev->venc_pdata->core_id] =
-> > +               devm_platform_ioremap_resource(pdev, 0);
-> > +       if (IS_ERR(dev->reg_base[dev->venc_pdata->core_id])) {
-> > +               ret = PTR_ERR(dev->reg_base[dev->venc_pdata->core_id]);
-> >                 goto err_res;
-> >         }
-> > -       mtk_v4l2_debug(2, "reg[%d] base=0x%p", i, dev->reg_base[VENC_SYS]);
-> >
-> >         res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
-> >         if (res == NULL) {
-> > @@ -318,44 +303,17 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> >                                mtk_vcodec_enc_irq_handler,
-> >                                0, pdev->name, dev);
-> >         if (ret) {
-> > -               dev_err(&pdev->dev, "Failed to install dev->enc_irq %d (%d)",
-> > -                       dev->enc_irq,
-> > -                       ret);
-> > +               dev_err(&pdev->dev,
-> > +                       "Failed to install dev->enc_irq %d (%d) core_id:%d",
-> > +                       dev->enc_irq, ret, dev->venc_pdata->core_id);
-> >                 ret = -EINVAL;
-> >                 goto err_res;
-> >         }
-> >
-> > -       if (dev->venc_pdata->has_lt_irq) {
-> > -               res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> > -               dev->reg_base[VENC_LT_SYS] = devm_ioremap_resource(&pdev->dev, res);
-> > -               if (IS_ERR((__force void *)dev->reg_base[VENC_LT_SYS])) {
-> > -                       ret = PTR_ERR((__force void *)dev->reg_base[VENC_LT_SYS]);
-> > -                       goto err_res;
-> > -               }
-> > -               mtk_v4l2_debug(2, "reg[%d] base=0x%p", i, dev->reg_base[VENC_LT_SYS]);
-> > -
-> > -               dev->enc_lt_irq = platform_get_irq(pdev, 1);
-> > -               irq_set_status_flags(dev->enc_lt_irq, IRQ_NOAUTOEN);
-> > -               ret = devm_request_irq(&pdev->dev,
-> > -                                      dev->enc_lt_irq,
-> > -                                      mtk_vcodec_enc_lt_irq_handler,
-> > -                                      0, pdev->name, dev);
-> > -               if (ret) {
-> > -                       dev_err(&pdev->dev,
-> > -                               "Failed to install dev->enc_lt_irq %d (%d)",
-> > -                               dev->enc_lt_irq, ret);
-> > -                       ret = -EINVAL;
-> > -                       goto err_res;
-> > -               }
-> > -       }
-> > -
-> >         mutex_init(&dev->enc_mutex);
-> >         mutex_init(&dev->dev_mutex);
-> >         spin_lock_init(&dev->irqlock);
-> >
-> > -       snprintf(dev->v4l2_dev.name, sizeof(dev->v4l2_dev.name), "%s",
-> > -                "[MTK_V4L2_VENC]");
-> > -
-> >         ret = v4l2_device_register(&pdev->dev, &dev->v4l2_dev);
-> >         if (ret) {
-> >                 mtk_v4l2_err("v4l2_device_register err=%d", ret);
-> > @@ -381,7 +339,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> >                                         V4L2_CAP_STREAMING;
-> >
-> >         snprintf(vfd_enc->name, sizeof(vfd_enc->name), "%s",
-> > -                MTK_VCODEC_ENC_NAME);
-> > +                       dev->venc_pdata->name);
-> 
-> Let's keep the indendation at the same level as before (if we use the
-> same driver name for both devices this change is unnecessary though).
-> 
-Need to confirm before send the next version.
+Hi Nicolas,
 
-> >         video_set_drvdata(vfd_enc, dev);
-> >         dev->vfd_enc = vfd_enc;
-> >         platform_set_drvdata(pdev, dev);
-> > @@ -409,8 +367,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> >                 goto err_enc_reg;
-> >         }
-> >
-> > -       mtk_v4l2_debug(0, "encoder registered as /dev/video%d",
-> > -                       vfd_enc->num);
-> > +       mtk_v4l2_debug(0, "encoder %d registered as /dev/video%d",
-> > +                      dev->venc_pdata->core_id, vfd_enc->num);
-> >
-> >         return 0;
-> >
-> > @@ -429,20 +387,33 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-> >         return ret;
-> >  }
-> >
-> > -static const struct mtk_vcodec_enc_pdata mt8173_pdata = {
-> > +static const struct mtk_vcodec_enc_pdata mt8173_avc_pdata = {
-> >         .chip = MTK_MT8173,
-> > -       .has_lt_irq = true,
-> > -       .capture_formats = mtk_video_formats_capture_mt8173,
-> > -       .num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_mt8173),
-> > +       .name = MTK_VCODEC_ENC_NAME,
-> > +       .capture_formats = mtk_video_formats_capture_mt8173_h264,
-> > +       .num_capture_formats = 1,
+Thank you for the patch.
+
+On Thu, Feb 11, 2021 at 11:33:55AM +0800, Nicolas Boichat wrote:
+> Many of the DSI flags have names opposite to their actual effects,
+> e.g. MIPI_DSI_MODE_EOT_PACKET means that EoT packets will actually
+> be disabled. Fix this by including _NO_ in the flag names, e.g.
+> MIPI_DSI_MODE_NO_EOT_PACKET.
 > 
-> Can't this be ARRAY_SIZE(mtk_video_formats_capture_mt8173_h264)
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+
+This looks good to me, it increases readability.
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+Please however see the end of the mail for a comment.
+
+> ---
+> I considered adding _DISABLE_ instead, but that'd make the
+> flag names a big too long.
 > 
-> >         .output_formats = mtk_video_formats_output_mt8173,
-> >         .num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
-> > -       .min_bitrate = 1,
-> > +       .min_bitrate = 64,
+> Generated with:
+> flag=MIPI_DSI_MODE_VIDEO_HFP; git grep $flag | cut -f1 -d':' | \
+>   xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HFP/" {}
+> flag=MIPI_DSI_MODE_VIDEO_HBP; git grep $flag | cut -f1 -d':' | \
+>   xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HBP/" {}
+> flag=MIPI_DSI_MODE_VIDEO_HSA; git grep $flag | cut -f1 -d':' | \
+>   xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HSA/" {}
+> flag=MIPI_DSI_MODE_EOT_PACKET; git grep $flag | cut -f1 -d':' | \
+>   xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_NO_EOT_PACKET/" {}
+> (then minor format changes)
+
+Ever tried coccinelle ? :-)
+
+>  drivers/gpu/drm/bridge/adv7511/adv7533.c             | 2 +-
+>  drivers/gpu/drm/bridge/analogix/anx7625.c            | 2 +-
+>  drivers/gpu/drm/bridge/cdns-dsi.c                    | 4 ++--
+>  drivers/gpu/drm/bridge/tc358768.c                    | 2 +-
+>  drivers/gpu/drm/exynos/exynos_drm_dsi.c              | 8 ++++----
+>  drivers/gpu/drm/mcde/mcde_dsi.c                      | 2 +-
+>  drivers/gpu/drm/mediatek/mtk_dsi.c                   | 2 +-
+>  drivers/gpu/drm/msm/dsi/dsi_host.c                   | 8 ++++----
+>  drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c | 2 +-
+>  drivers/gpu/drm/panel/panel-dsi-cm.c                 | 2 +-
+>  drivers/gpu/drm/panel/panel-elida-kd35t133.c         | 2 +-
+>  drivers/gpu/drm/panel/panel-khadas-ts050.c           | 2 +-
+>  drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c   | 2 +-
+>  drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c   | 2 +-
+>  drivers/gpu/drm/panel/panel-novatek-nt35510.c        | 2 +-
+>  drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c   | 2 +-
+>  drivers/gpu/drm/panel/panel-samsung-s6d16d0.c        | 2 +-
+>  drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c     | 2 +-
+>  drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c    | 2 +-
+>  drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c        | 4 ++--
+>  drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c      | 2 +-
+>  drivers/gpu/drm/panel/panel-simple.c                 | 2 +-
+>  drivers/gpu/drm/panel/panel-sony-acx424akp.c         | 2 +-
+>  drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c     | 2 +-
+>  include/drm/drm_mipi_dsi.h                           | 8 ++++----
+>  25 files changed, 36 insertions(+), 36 deletions(-)
 > 
-> I'm fine with changing the value of min_bitrate, but this should be a
-> separate patch.
-> 
-> > +       .max_bitrate = 4000000,
-> > +       .core_id = VENC_SYS,
-> > +};
-> > +
-> > +static const struct mtk_vcodec_enc_pdata mt8173_vp8_pdata = {
-> > +       .chip = MTK_MT8173,
-> > +       .name = MTK_VENC_VP8_NAME,
-> > +       .capture_formats = mtk_video_formats_capture_mt8173_vp8,
-> > +       .num_capture_formats = 1,
-> 
-> Same here, ARRAY_SIZE(mtk_video_formats_capture_mt8173_vp8)
-> 
-> > +       .output_formats = mtk_video_formats_output_mt8173,
-> > +       .num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
-> > +       .min_bitrate = 64,
-> >         .max_bitrate = 4000000,
-> > +       .core_id = VENC_LT_SYS,
-> >  };
-> >
-> >  static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
-> >         .chip = MTK_MT8183,
-> > -       .has_lt_irq = false,
-> > +       .name = MTK_VCODEC_ENC_NAME,
-> >         .uses_ext = true,
-> >         .capture_formats = mtk_video_formats_capture_mt8183,
-> >         .num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_mt8183),
-> > @@ -451,10 +422,14 @@ static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
-> >         .num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
-> >         .min_bitrate = 64,
-> >         .max_bitrate = 40000000,
-> > +       .core_id = VENC_SYS,
-> >  };
-> >
-> >  static const struct of_device_id mtk_vcodec_enc_match[] = {
-> > -       {.compatible = "mediatek,mt8173-vcodec-enc", .data = &mt8173_pdata},
-> > +       {.compatible = "mediatek,mt8173-vcodec-avc-enc",
-> > +                       .data = &mt8173_avc_pdata},
-> 
-> For backward compatibility let's also match
-> "mediatek,mt8173-vcodec-enc" against this platform data.
-> 
-> 
-> > +       {.compatible = "mediatek,mt8173-vcodec-vp8-enc",
-> > +                       .data = &mt8173_vp8_pdata},
-> >         {.compatible = "mediatek,mt8183-vcodec-enc", .data = &mt8183_pdata},
-> >         {},
-> >  };
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> > index 3b7c54d6aa8f..1b2e4930ed27 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> > @@ -43,23 +43,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
-> >                 return -ENODEV;
-> >         }
-> >         pm->larbvenc = &pdev->dev;
-> > -
-> > -       node = of_parse_phandle(dev->of_node, "mediatek,larb", 1);
-> > -       if (!node) {
-> > -               mtk_v4l2_err("no mediatek,larb found");
-> > -               ret = -ENODEV;
-> > -               goto put_larbvenc;
-> > -       }
-> > -
-> > -       pdev = of_find_device_by_node(node);
-> > -       of_node_put(node);
-> > -       if (!pdev) {
-> > -               mtk_v4l2_err("no mediatek,larb device found");
-> > -               ret = -ENODEV;
-> > -               goto put_larbvenc;
-> > -       }
-> > -
-> > -       pm->larbvenclt = &pdev->dev;
-> >         pdev = mtkdev->plat_dev;
-> >         pm->dev = &pdev->dev;
-> >
-> > @@ -71,12 +54,12 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
-> >                         GFP_KERNEL);
-> >                 if (!enc_clk->clk_info) {
-> >                         ret = -ENOMEM;
-> > -                       goto put_larbvenclt;
-> > +                       goto put_larbvenc;
-> >                 }
-> >         } else {
-> >                 mtk_v4l2_err("Failed to get venc clock count");
-> >                 ret = -EINVAL;
-> > -               goto put_larbvenclt;
-> > +               goto put_larbvenc;
-> >         }
-> >
-> >         for (i = 0; i < enc_clk->clk_num; i++) {
-> > @@ -85,7 +68,7 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
-> >                         "clock-names", i, &clk_info->clk_name);
-> >                 if (ret) {
-> >                         mtk_v4l2_err("venc failed to get clk name %d", i);
-> > -                       goto put_larbvenclt;
-> > +                       goto put_larbvenc;
-> >                 }
-> >                 clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
-> >                         clk_info->clk_name);
-> > @@ -93,14 +76,12 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
-> >                         mtk_v4l2_err("venc devm_clk_get (%d)%s fail", i,
-> >                                 clk_info->clk_name);
-> >                         ret = PTR_ERR(clk_info->vcodec_clk);
-> > -                       goto put_larbvenclt;
-> > +                       goto put_larbvenc;
-> >                 }
-> >         }
-> >
-> >         return 0;
-> >
-> > -put_larbvenclt:
-> > -       put_device(pm->larbvenclt);
-> >  put_larbvenc:
-> >         put_device(pm->larbvenc);
-> >         return ret;
-> > @@ -108,7 +89,7 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
-> >
-> >  void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
-> >  {
-> > -       put_device(mtkdev->pm.larbvenclt);
-> > +       pm_runtime_disable(mtkdev->pm.dev);
-> >         put_device(mtkdev->pm.larbvenc);
-> >  }
-> >
-> > @@ -130,18 +111,10 @@ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
-> >         ret = mtk_smi_larb_get(pm->larbvenc);
-> >         if (ret) {
-> >                 mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
-> > -               goto larbvencerr;
-> > -       }
-> > -       ret = mtk_smi_larb_get(pm->larbvenclt);
-> > -       if (ret) {
-> > -               mtk_v4l2_err("mtk_smi_larb_get larb4 fail %d", ret);
-> > -               goto larbvenclterr;
-> > +               goto clkerr;
-> >         }
-> >         return;
-> >
-> > -larbvenclterr:
-> > -       mtk_smi_larb_put(pm->larbvenc);
-> > -larbvencerr:
-> >  clkerr:
-> >         for (i -= 1; i >= 0; i--)
-> >                 clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
-> > @@ -153,7 +126,6 @@ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm)
-> >         int i = 0;
-> >
-> >         mtk_smi_larb_put(pm->larbvenc);
-> > -       mtk_smi_larb_put(pm->larbvenclt);
-> >         for (i = enc_clk->clk_num - 1; i >= 0; i--)
-> >                 clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
-> >  }
-> > diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> > index 11abb191ada5..8267a9c4fd25 100644
-> > --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> > +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> > @@ -367,7 +367,7 @@ static int vp8_enc_encode(void *handle,
-> >
-> >         mtk_vcodec_debug_enter(inst);
-> >
-> > -       enable_irq(ctx->dev->enc_lt_irq);
-> > +       enable_irq(ctx->dev->enc_irq);
-> >
-> >         switch (opt) {
-> >         case VENC_START_OPT_ENCODE_FRAME:
-> > @@ -386,7 +386,7 @@ static int vp8_enc_encode(void *handle,
-> >
-> >  encode_err:
-> >
-> > -       disable_irq(ctx->dev->enc_lt_irq);
-> > +       disable_irq(ctx->dev->enc_irq);
-> >         mtk_vcodec_debug_leave(inst);
-> >
-> >         return ret;
-> > --
-> > 2.18.0
-> >
+> diff --git a/drivers/gpu/drm/bridge/adv7511/adv7533.c b/drivers/gpu/drm/bridge/adv7511/adv7533.c
+> index aa19d5a40e31..59d718bde8c4 100644
+> --- a/drivers/gpu/drm/bridge/adv7511/adv7533.c
+> +++ b/drivers/gpu/drm/bridge/adv7511/adv7533.c
+> @@ -165,7 +165,7 @@ int adv7533_attach_dsi(struct adv7511 *adv)
+>  	dsi->lanes = adv->num_dsi_lanes;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
+> -			  MIPI_DSI_MODE_EOT_PACKET | MIPI_DSI_MODE_VIDEO_HSE;
+> +			  MIPI_DSI_MODE_NO_EOT_PACKET | MIPI_DSI_MODE_VIDEO_HSE;
+>  
+>  	ret = mipi_dsi_attach(dsi);
+>  	if (ret < 0) {
+> diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> index 65cc05982f82..beecfe6bf359 100644
+> --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
+> +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> @@ -1334,7 +1334,7 @@ static int anx7625_attach_dsi(struct anx7625_data *ctx)
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO	|
+>  		MIPI_DSI_MODE_VIDEO_SYNC_PULSE	|
+> -		MIPI_DSI_MODE_EOT_PACKET	|
+> +		MIPI_DSI_MODE_NO_EOT_PACKET	|
+>  		MIPI_DSI_MODE_VIDEO_HSE;
+>  
+>  	if (mipi_dsi_attach(dsi) < 0) {
+> diff --git a/drivers/gpu/drm/bridge/cdns-dsi.c b/drivers/gpu/drm/bridge/cdns-dsi.c
+> index 76373e31df92..34aa24269a57 100644
+> --- a/drivers/gpu/drm/bridge/cdns-dsi.c
+> +++ b/drivers/gpu/drm/bridge/cdns-dsi.c
+> @@ -829,7 +829,7 @@ static void cdns_dsi_bridge_enable(struct drm_bridge *bridge)
+>  	tmp = DIV_ROUND_UP(dsi_cfg.htotal, nlanes) -
+>  	      DIV_ROUND_UP(dsi_cfg.hsa, nlanes);
+>  
+> -	if (!(output->dev->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
+> +	if (!(output->dev->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
+>  		tmp -= DIV_ROUND_UP(DSI_EOT_PKT_SIZE, nlanes);
+>  
+>  	tx_byte_period = DIV_ROUND_DOWN_ULL((u64)NSEC_PER_SEC * 8,
+> @@ -902,7 +902,7 @@ static void cdns_dsi_bridge_enable(struct drm_bridge *bridge)
+>  	tmp = readl(dsi->regs + MCTL_MAIN_DATA_CTL);
+>  	tmp &= ~(IF_VID_SELECT_MASK | HOST_EOT_GEN | IF_VID_MODE);
+>  
+> -	if (!(output->dev->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
+> +	if (!(output->dev->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
+>  		tmp |= HOST_EOT_GEN;
+>  
+>  	if (output->dev->mode_flags & MIPI_DSI_MODE_VIDEO)
+> diff --git a/drivers/gpu/drm/bridge/tc358768.c b/drivers/gpu/drm/bridge/tc358768.c
+> index 8ed8302d6bbb..320f95ae6077 100644
+> --- a/drivers/gpu/drm/bridge/tc358768.c
+> +++ b/drivers/gpu/drm/bridge/tc358768.c
+> @@ -825,7 +825,7 @@ static void tc358768_bridge_pre_enable(struct drm_bridge *bridge)
+>  	if (!(dsi_dev->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS))
+>  		val |= TC358768_DSI_CONTROL_HSCKMD;
+>  
+> -	if (dsi_dev->mode_flags & MIPI_DSI_MODE_EOT_PACKET)
+> +	if (dsi_dev->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
+>  		val |= TC358768_DSI_CONTROL_EOTDIS;
+>  
+>  	tc358768_write(priv, TC358768_DSI_CONFW, val);
+> diff --git a/drivers/gpu/drm/exynos/exynos_drm_dsi.c b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+> index 83ab6b343f51..99249d0da330 100644
+> --- a/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+> +++ b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+> @@ -809,15 +809,15 @@ static int exynos_dsi_init_link(struct exynos_dsi *dsi)
+>  			reg |= DSIM_AUTO_MODE;
+>  		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HSE)
+>  			reg |= DSIM_HSE_MODE;
+> -		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HFP))
+> +		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HFP))
+>  			reg |= DSIM_HFP_MODE;
+> -		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HBP))
+> +		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HBP))
+>  			reg |= DSIM_HBP_MODE;
+> -		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HSA))
+> +		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HSA))
+>  			reg |= DSIM_HSA_MODE;
+>  	}
+>  
+> -	if (!(dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
+> +	if (!(dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
+>  		reg |= DSIM_EOT_DISABLE;
+>  
+>  	switch (dsi->format) {
+> diff --git a/drivers/gpu/drm/mcde/mcde_dsi.c b/drivers/gpu/drm/mcde/mcde_dsi.c
+> index 2314c8122992..f4cdc3cfd7d0 100644
+> --- a/drivers/gpu/drm/mcde/mcde_dsi.c
+> +++ b/drivers/gpu/drm/mcde/mcde_dsi.c
+> @@ -760,7 +760,7 @@ static void mcde_dsi_start(struct mcde_dsi *d)
+>  		DSI_MCTL_MAIN_DATA_CTL_BTA_EN |
+>  		DSI_MCTL_MAIN_DATA_CTL_READ_EN |
+>  		DSI_MCTL_MAIN_DATA_CTL_REG_TE_EN;
+> -	if (d->mdsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET)
+> +	if (d->mdsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
+>  		val |= DSI_MCTL_MAIN_DATA_CTL_HOST_EOT_GEN;
+>  	writel(val, d->regs + DSI_MCTL_MAIN_DATA_CTL);
+>  
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index a1ff152ef468..5c0c9180273a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -402,7 +402,7 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+>  	}
+>  
+>  	tmp_reg |= (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS) << 6;
+> -	tmp_reg |= (dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET) >> 3;
+> +	tmp_reg |= (dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET) >> 3;
+>  
+>  	writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
+>  }
+> diff --git a/drivers/gpu/drm/msm/dsi/dsi_host.c b/drivers/gpu/drm/msm/dsi/dsi_host.c
+> index ab281cba0f08..a97a7822e596 100644
+> --- a/drivers/gpu/drm/msm/dsi/dsi_host.c
+> +++ b/drivers/gpu/drm/msm/dsi/dsi_host.c
+> @@ -850,11 +850,11 @@ static void dsi_ctrl_config(struct msm_dsi_host *msm_host, bool enable,
+>  	if (flags & MIPI_DSI_MODE_VIDEO) {
+>  		if (flags & MIPI_DSI_MODE_VIDEO_HSE)
+>  			data |= DSI_VID_CFG0_PULSE_MODE_HSA_HE;
+> -		if (flags & MIPI_DSI_MODE_VIDEO_HFP)
+> +		if (flags & MIPI_DSI_MODE_VIDEO_NO_HFP)
+>  			data |= DSI_VID_CFG0_HFP_POWER_STOP;
+> -		if (flags & MIPI_DSI_MODE_VIDEO_HBP)
+> +		if (flags & MIPI_DSI_MODE_VIDEO_NO_HBP)
+>  			data |= DSI_VID_CFG0_HBP_POWER_STOP;
+> -		if (flags & MIPI_DSI_MODE_VIDEO_HSA)
+> +		if (flags & MIPI_DSI_MODE_VIDEO_NO_HSA)
+>  			data |= DSI_VID_CFG0_HSA_POWER_STOP;
+>  		/* Always set low power stop mode for BLLP
+>  		 * to let command engine send packets
+> @@ -909,7 +909,7 @@ static void dsi_ctrl_config(struct msm_dsi_host *msm_host, bool enable,
+>  			  DSI_T_CLK_PRE_EXTEND_INC_BY_2_BYTECLK);
+>  
+>  	data = 0;
+> -	if (!(flags & MIPI_DSI_MODE_EOT_PACKET))
+> +	if (!(flags & MIPI_DSI_MODE_NO_EOT_PACKET))
+>  		data |= DSI_EOT_PACKET_CTRL_TX_EOT_APPEND;
+>  	dsi_write(msm_host, REG_DSI_EOT_PACKET_CTRL, data);
+>  
+> diff --git a/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c b/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c
+> index e95bc9f60b3f..44674ebedf59 100644
+> --- a/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c
+> +++ b/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c
+> @@ -302,7 +302,7 @@ static int tm5p5_nt35596_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 4;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_VIDEO_HSE | MIPI_DSI_MODE_EOT_PACKET |
+> +			  MIPI_DSI_MODE_VIDEO_HSE | MIPI_DSI_MODE_NO_EOT_PACKET |
+>  			  MIPI_DSI_CLOCK_NON_CONTINUOUS | MIPI_DSI_MODE_LPM;
+>  
+>  	drm_panel_init(&ctx->panel, dev, &tm5p5_nt35596_panel_funcs,
+> diff --git a/drivers/gpu/drm/panel/panel-dsi-cm.c b/drivers/gpu/drm/panel/panel-dsi-cm.c
+> index af381d756ac1..178abfb1737c 100644
+> --- a/drivers/gpu/drm/panel/panel-dsi-cm.c
+> +++ b/drivers/gpu/drm/panel/panel-dsi-cm.c
+> @@ -571,7 +571,7 @@ static int dsicm_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 2;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> -			  MIPI_DSI_MODE_EOT_PACKET;
+> +			  MIPI_DSI_MODE_NO_EOT_PACKET;
+>  	dsi->hs_rate = ddata->panel_data->max_hs_rate;
+>  	dsi->lp_rate = ddata->panel_data->max_lp_rate;
+>  
+> diff --git a/drivers/gpu/drm/panel/panel-elida-kd35t133.c b/drivers/gpu/drm/panel/panel-elida-kd35t133.c
+> index bc36aa3c1123..ae3361ccccd5 100644
+> --- a/drivers/gpu/drm/panel/panel-elida-kd35t133.c
+> +++ b/drivers/gpu/drm/panel/panel-elida-kd35t133.c
+> @@ -265,7 +265,7 @@ static int kd35t133_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 1;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
+> +			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	drm_panel_init(&ctx->panel, &dsi->dev, &kd35t133_funcs,
+>  		       DRM_MODE_CONNECTOR_DSI);
+> diff --git a/drivers/gpu/drm/panel/panel-khadas-ts050.c b/drivers/gpu/drm/panel/panel-khadas-ts050.c
+> index 8f6ac1a40c31..a3ec4cbdbf7a 100644
+> --- a/drivers/gpu/drm/panel/panel-khadas-ts050.c
+> +++ b/drivers/gpu/drm/panel/panel-khadas-ts050.c
+> @@ -809,7 +809,7 @@ static int khadas_ts050_panel_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 4;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
+> +			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	khadas_ts050 = devm_kzalloc(&dsi->dev, sizeof(*khadas_ts050),
+>  				    GFP_KERNEL);
+> diff --git a/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c b/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c
+> index ed0d5f959037..a5a414920430 100644
+> --- a/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c
+> +++ b/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c
+> @@ -593,7 +593,7 @@ static int ltk050h3146w_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 4;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
+> +			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	drm_panel_init(&ctx->panel, &dsi->dev, &ltk050h3146w_funcs,
+>  		       DRM_MODE_CONNECTOR_DSI);
+> diff --git a/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c b/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c
+> index 3c00e4f8f803..21e48923836d 100644
+> --- a/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c
+> +++ b/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c
+> @@ -442,7 +442,7 @@ static int ltk500hd1829_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 4;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
+> +			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	drm_panel_init(&ctx->panel, &dsi->dev, &ltk500hd1829_funcs,
+>  		       DRM_MODE_CONNECTOR_DSI);
+> diff --git a/drivers/gpu/drm/panel/panel-novatek-nt35510.c b/drivers/gpu/drm/panel/panel-novatek-nt35510.c
+> index b9a0e56f33e2..9d9334656803 100644
+> --- a/drivers/gpu/drm/panel/panel-novatek-nt35510.c
+> +++ b/drivers/gpu/drm/panel/panel-novatek-nt35510.c
+> @@ -899,7 +899,7 @@ static int nt35510_probe(struct mipi_dsi_device *dsi)
+>  	dsi->hs_rate = 349440000;
+>  	dsi->lp_rate = 9600000;
+>  	dsi->mode_flags = MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> -		MIPI_DSI_MODE_EOT_PACKET;
+> +		MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	/*
+>  	 * Every new incarnation of this display must have a unique
+> diff --git a/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c b/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c
+> index 45b975dee587..198493a6eb6a 100644
+> --- a/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c
+> +++ b/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c
+> @@ -184,7 +184,7 @@ static int osd101t2587_panel_probe(struct mipi_dsi_device *dsi)
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
+>  			  MIPI_DSI_MODE_VIDEO_BURST |
+>  			  MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
+> -			  MIPI_DSI_MODE_EOT_PACKET;
+> +			  MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	osd101t2587 = devm_kzalloc(&dsi->dev, sizeof(*osd101t2587), GFP_KERNEL);
+>  	if (!osd101t2587)
+> diff --git a/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c b/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
+> index 4aac0d1573dd..b04b9975e9b2 100644
+> --- a/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
+> +++ b/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
+> @@ -186,7 +186,7 @@ static int s6d16d0_probe(struct mipi_dsi_device *dsi)
+>  	 */
+>  	dsi->mode_flags =
+>  		MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> -		MIPI_DSI_MODE_EOT_PACKET;
+> +		MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	s6->supply = devm_regulator_get(dev, "vdd1");
+>  	if (IS_ERR(s6->supply))
+> diff --git a/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c b/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c
+> index b962c817fb30..ccc8ed6fe3ae 100644
+> --- a/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c
+> +++ b/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c
+> @@ -446,7 +446,7 @@ static int s6e63j0x03_probe(struct mipi_dsi_device *dsi)
+>  
+>  	dsi->lanes = 1;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+> -	dsi->mode_flags = MIPI_DSI_MODE_EOT_PACKET;
+> +	dsi->mode_flags = MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	ctx->supplies[0].supply = "vdd3";
+>  	ctx->supplies[1].supply = "vci";
+> diff --git a/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c b/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c
+> index eec74c10ddda..77289967d3e5 100644
+> --- a/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c
+> +++ b/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c
+> @@ -97,7 +97,7 @@ static int s6e63m0_dsi_probe(struct mipi_dsi_device *dsi)
+>  	dsi->hs_rate = 349440000;
+>  	dsi->lp_rate = 9600000;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
+> -		MIPI_DSI_MODE_EOT_PACKET |
+> +		MIPI_DSI_MODE_NO_EOT_PACKET |
+>  		MIPI_DSI_MODE_VIDEO_BURST;
+>  
+>  	ret = s6e63m0_probe(dev, s6e63m0_dsi_dcs_read, s6e63m0_dsi_dcs_write,
+> diff --git a/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c b/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c
+> index 527371120266..9b3599d6d2de 100644
+> --- a/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c
+> +++ b/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c
+> @@ -990,8 +990,8 @@ static int s6e8aa0_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 4;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST
+> -		| MIPI_DSI_MODE_VIDEO_HFP | MIPI_DSI_MODE_VIDEO_HBP
+> -		| MIPI_DSI_MODE_VIDEO_HSA | MIPI_DSI_MODE_EOT_PACKET
+> +		| MIPI_DSI_MODE_VIDEO_NO_HFP | MIPI_DSI_MODE_VIDEO_NO_HBP
+> +		| MIPI_DSI_MODE_VIDEO_NO_HSA | MIPI_DSI_MODE_NO_EOT_PACKET
+>  		| MIPI_DSI_MODE_VSYNC_FLUSH | MIPI_DSI_MODE_VIDEO_AUTO_VERT;
+>  
+>  	ret = s6e8aa0_parse_dt(ctx);
+> diff --git a/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c b/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c
+> index 16dbf0f353ed..b937e24dac8e 100644
+> --- a/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c
+> +++ b/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c
+> @@ -282,7 +282,7 @@ static int sharp_nt_panel_probe(struct mipi_dsi_device *dsi)
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
+>  			MIPI_DSI_MODE_VIDEO_HSE |
+>  			MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> -			MIPI_DSI_MODE_EOT_PACKET;
+> +			MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	sharp_nt = devm_kzalloc(&dsi->dev, sizeof(*sharp_nt), GFP_KERNEL);
+>  	if (!sharp_nt)
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
+> index 4e2dad314c79..babc7a7f6844 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -4745,7 +4745,7 @@ static const struct panel_desc_dsi osd101t2045_53ts = {
+>  	},
+>  	.flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+>  		 MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
+> -		 MIPI_DSI_MODE_EOT_PACKET,
+> +		 MIPI_DSI_MODE_NO_EOT_PACKET,
+>  	.format = MIPI_DSI_FMT_RGB888,
+>  	.lanes = 4,
+>  };
+> diff --git a/drivers/gpu/drm/panel/panel-sony-acx424akp.c b/drivers/gpu/drm/panel/panel-sony-acx424akp.c
+> index 065efae213f5..6b706cbf2f9c 100644
+> --- a/drivers/gpu/drm/panel/panel-sony-acx424akp.c
+> +++ b/drivers/gpu/drm/panel/panel-sony-acx424akp.c
+> @@ -450,7 +450,7 @@ static int acx424akp_probe(struct mipi_dsi_device *dsi)
+>  	else
+>  		dsi->mode_flags =
+>  			MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> -			MIPI_DSI_MODE_EOT_PACKET;
+> +			MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	acx->supply = devm_regulator_get(dev, "vddi");
+>  	if (IS_ERR(acx->supply))
+> diff --git a/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c b/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c
+> index 55172d63a922..d17aae8b71d7 100644
+> --- a/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c
+> +++ b/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c
+> @@ -311,7 +311,7 @@ static int xpp055c272_probe(struct mipi_dsi_device *dsi)
+>  	dsi->lanes = 4;
+>  	dsi->format = MIPI_DSI_FMT_RGB888;
+>  	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
+> +			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
+>  
+>  	drm_panel_init(&ctx->panel, &dsi->dev, &xpp055c272_funcs,
+>  		       DRM_MODE_CONNECTOR_DSI);
+> diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+> index 360e6377e84b..ba91cf22af51 100644
+> --- a/include/drm/drm_mipi_dsi.h
+> +++ b/include/drm/drm_mipi_dsi.h
+> @@ -119,15 +119,15 @@ struct mipi_dsi_host *of_find_mipi_dsi_host_by_node(struct device_node *node);
+>  /* enable hsync-end packets in vsync-pulse and v-porch area */
+>  #define MIPI_DSI_MODE_VIDEO_HSE		BIT(4)
+
+We're mixing bits that enable a feature and bits that disable a feature.
+Are these bits defined in the DSI spec, or internal to DRM ? In the
+latter case, would it make sense to standardize on one "polarity" ? That
+would be a more intrusive change in drivers though.
+
+>  /* disable hfront-porch area */
+> -#define MIPI_DSI_MODE_VIDEO_HFP		BIT(5)
+> +#define MIPI_DSI_MODE_VIDEO_NO_HFP	BIT(5)
+>  /* disable hback-porch area */
+> -#define MIPI_DSI_MODE_VIDEO_HBP		BIT(6)
+> +#define MIPI_DSI_MODE_VIDEO_NO_HBP	BIT(6)
+>  /* disable hsync-active area */
+> -#define MIPI_DSI_MODE_VIDEO_HSA		BIT(7)
+> +#define MIPI_DSI_MODE_VIDEO_NO_HSA	BIT(7)
+>  /* flush display FIFO on vsync pulse */
+>  #define MIPI_DSI_MODE_VSYNC_FLUSH	BIT(8)
+>  /* disable EoT packets in HS mode */
+> -#define MIPI_DSI_MODE_EOT_PACKET	BIT(9)
+> +#define MIPI_DSI_MODE_NO_EOT_PACKET	BIT(9)
+>  /* device supports non-continuous clock behavior (DSI spec 5.6.1) */
+>  #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
+>  /* transmit data in low power */
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-mediatek mailing list
