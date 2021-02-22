@@ -2,59 +2,57 @@ Return-Path: <SRS0=FZAz=HY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B279C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 09:02:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41A18C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 09:04:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 14F6464E77
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 09:02:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 14F6464E77
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id DABF464E77
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 09:04:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DABF464E77
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.alibaba.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Eo3ygGfIC4VkeqYYmWn37gOTMwm7fVtAWL3VZSjZ/k0=; b=pYBnTP/TxaBbjoLNLGgLbtwRK
-	wK1zSIPgHG8jb6IYLmxEgqk10tOyhLs5KBGsw6PfbLfda2UJkFU3TB5k4WAeOqenvfYyztgmFSm7h
-	YrEjt7uahg3+wnD1ctp055pMIDJaX/pBG9rHtLUw+LGtsCDjVfeY06BUYsRsE0FeYRhJ+LRFNmTD8
-	PuEI7KDvc9JIgfACcA/JRZuVFWdZXcwNem0FtzGrjqRSS7EWQ5Dhy0E7lQUCmGmXpUHvHYcLpYPKD
-	mhO71l7/VbFl/wAOplW6d3MEROh+Ci0RZnSzZQWosxkIWcko68lWlZoOVungwVfZ3545/qK0aS9cp
-	EFfSNx2Gg==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=p67NIKjoTRVUDwXloNOHY2LEHyxdKhJWvv9YS2dhNdU=; b=sSmPsBBG2xVTQA33x9/FnHSkEo
+	bRwx6MUYZZ8I3BrXKr/Shy35UIS9O+YdHk2vBhum8PqQgG6sKyil0Nyt4LDAkWMst8uPZ4JL/AG3l
+	4wa06s+cQ0hrb9PQmTTX7O+u3P7QwR22CmHe83vVBnB6gP3j8P5mvVuyo5abUnVtXQ/p4p98+Thxn
+	DROBu3i6c1FCNLNfpNaF1AlkMLCjnVjYiwq5NnK3FIN1u9JriA2ADdX6m0uZtVtMJ72J/6b5XSVw4
+	djjRJ/r5vfsauUojzSlgliTAF56UorvEa/sMC2pcV02t0No7cS5aBXK28oRy+iVHx11Y13SLgLd8p
+	YZE+qHjw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lE76V-0005jJ-JU; Mon, 22 Feb 2021 09:02:07 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1lE78H-0006OM-R3; Mon, 22 Feb 2021 09:03:57 +0000
+Received: from out30-56.freemail.mail.aliyun.com ([115.124.30.56])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lE76R-0005gZ-79; Mon, 22 Feb 2021 09:02:04 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id E218DAF99;
- Mon, 22 Feb 2021 09:02:01 +0000 (UTC)
-Subject: Re: [PATCH v3 02/11] drm: Rename plane atomic_check state names
-To: Maxime Ripard <maxime@cerno.tech>
-References: <20210219120032.260676-1-maxime@cerno.tech>
- <20210219120032.260676-2-maxime@cerno.tech>
- <51bb5aaf-f771-020b-9a48-77d8679de6a2@suse.de>
- <20210219151235.dsv4mujqyrzndhsn@gilmour>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <2abb00b3-23d2-e652-4194-a10fbf171b88@suse.de>
-Date: Mon, 22 Feb 2021 10:01:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
-MIME-Version: 1.0
-In-Reply-To: <20210219151235.dsv4mujqyrzndhsn@gilmour>
+ id 1lE78D-0006L7-Fz; Mon, 22 Feb 2021 09:03:54 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R801e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04426;
+ MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=13; SR=0;
+ TI=SMTPD_---0UPBkFG5_1613984612; 
+Received: from
+ j63c13417.sqa.eu95.tbsite.net(mailfrom:jiapeng.chong@linux.alibaba.com
+ fp:SMTPD_---0UPBkFG5_1613984612) by smtp.aliyun-inc.com(127.0.0.1);
+ Mon, 22 Feb 2021 17:03:39 +0800
+From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+To: nbd@nbd.name
+Subject: [PATCH] mt76: mt7921: remove unneeded semicolon
+Date: Mon, 22 Feb 2021 17:03:31 +0800
+Message-Id: <1613984611-116179-1-git-send-email-jiapeng.chong@linux.alibaba.com>
+X-Mailer: git-send-email 1.8.3.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210222_040203_659532_D9B8A115 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20210222_040353_801829_CFA60C52 
+X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,244 +64,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Xinliang Liu <xinliang.liu@linaro.org>, dri-devel@lists.freedesktop.org,
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
- linux-stm32@st-md-mailman.stormreply.com, Jerome Brunet <jbrunet@baylibre.com>,
- linux-samsung-soc@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>,
- Michal Simek <michal.simek@xilinx.com>, NXP Linux Team <linux-imx@nxp.com>,
- VMware Graphics <linux-graphics-maintainer@vmware.com>,
- Leo Li <sunpeng.li@amd.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Roland Scheidegger <sroland@vmware.com>, Inki Dae <inki.dae@samsung.com>,
- Sean Paul <sean@poorly.run>, Hyun Kwon <hyun.kwon@xilinx.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Alex Deucher <alexander.deucher@amd.com>, freedreno@lists.freedesktop.org,
- Zack Rusin <zackr@vmware.com>, Gerd Hoffmann <kraxel@redhat.com>,
- David Airlie <airlied@linux.ie>, nouveau@lists.freedesktop.org,
- Edmund Dea <edmund.j.dea@intel.com>, virtualization@lists.linux-foundation.org,
- Eric Anholt <eric@anholt.net>, Thierry Reding <thierry.reding@gmail.com>,
- Daniel Vetter <daniel.vetter@intel.com>,
- Mihail Atanassov <mihail.atanassov@arm.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org,
- "James \(Qian\) Wang" <james.qian.wang@arm.com>,
- Ben Skeggs <bskeggs@redhat.com>, Dave Airlie <airlied@redhat.com>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, John Stultz <john.stultz@linaro.org>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>, Yannick Fertre <yannick.fertre@st.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Brian Starkey <brian.starkey@arm.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- Neil Armstrong <narmstrong@baylibre.com>, Stefan Agner <stefan@agner.ch>,
- Melissa Wen <melissa.srw@gmail.com>, linux-tegra@vger.kernel.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Fabio Estevam <festevam@gmail.com>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>, amd-gfx@lists.freedesktop.org,
- Chen-Yu Tsai <wens@csie.org>, Harry Wentland <harry.wentland@amd.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Chen Feng <puck.chen@hisilicon.com>,
- Alison Wang <alison.wang@nxp.com>, spice-devel@lists.freedesktop.org,
- Tomi Valkeinen <tomba@kernel.org>, Philippe Cornu <philippe.cornu@st.com>,
- Vincent Abriou <vincent.abriou@st.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Tian Tao <tiantao6@hisilicon.com>, Shawn Guo <shawnguo@kernel.org>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- Liviu Dudau <liviu.dudau@arm.com>, Paul Cercueil <paul@crapouillou.net>,
- linux-renesas-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>,
- Russell King <linux@armlinux.org.uk>, Daniel Vetter <daniel@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-mediatek@lists.infradead.org,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>, linux-mips@vger.kernel.org,
- Rob Clark <robdclark@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Jyri Sarha <jyri.sarha@iki.fi>, Lucas Stach <l.stach@pengutronix.de>
-Content-Type: multipart/mixed; boundary="===============5179391096024536857=="
+Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, ryder.lee@mediatek.com,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ lorenzo.bianconi83@gmail.com, kuba@kernel.org, davem@davemloft.net,
+ kvalo@codeaurora.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============5179391096024536857==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="w1lSYWSR69EiDDUmRFseCwFhMSFWd2baX"
+Fix the following coccicheck warnings:
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---w1lSYWSR69EiDDUmRFseCwFhMSFWd2baX
-Content-Type: multipart/mixed; boundary="sEqTb7DLvEQPgunNTOiF1zujXM8e72iqO";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- Daniel Vetter <daniel@ffwll.ch>, "James (Qian) Wang"
- <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Mihail Atanassov <mihail.atanassov@arm.com>,
- Brian Starkey <brian.starkey@arm.com>, Russell King <linux@armlinux.org.uk>,
- Dave Airlie <airlied@redhat.com>, Inki Dae <inki.dae@samsung.com>,
- Joonyoung Shim <jy0922.shim@samsung.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Stefan Agner <stefan@agner.ch>,
- Alison Wang <alison.wang@nxp.com>, Xinliang Liu <xinliang.liu@linaro.org>,
- Tian Tao <tiantao6@hisilicon.com>, John Stultz <john.stultz@linaro.org>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Chen Feng <puck.chen@hisilicon.com>,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
- Lucas Stach <l.stach@pengutronix.de>, Philipp Zabel
- <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Paul Cercueil <paul@crapouillou.net>,
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
- Edmund Dea <edmund.j.dea@intel.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Neil Armstrong <narmstrong@baylibre.com>, Kevin Hilman
- <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>,
- Ben Skeggs <bskeggs@redhat.com>, Tomi Valkeinen <tomba@kernel.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
- <heiko@sntech.de>, Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Vincent Abriou <vincent.abriou@st.com>,
- Yannick Fertre <yannick.fertre@st.com>,
- Philippe Cornu <philippe.cornu@st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@st.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Jyri Sarha <jyri.sarha@iki.fi>,
- Eric Anholt <eric@anholt.net>,
- Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>,
- Melissa Wen <melissa.srw@gmail.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- VMware Graphics <linux-graphics-maintainer@vmware.com>,
- Roland Scheidegger <sroland@vmware.com>, Zack Rusin <zackr@vmware.com>,
- Hyun Kwon <hyun.kwon@xilinx.com>, Michal Simek <michal.simek@xilinx.com>,
- amd-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
-Message-ID: <2abb00b3-23d2-e652-4194-a10fbf171b88@suse.de>
-Subject: Re: [PATCH v3 02/11] drm: Rename plane atomic_check state names
-References: <20210219120032.260676-1-maxime@cerno.tech>
- <20210219120032.260676-2-maxime@cerno.tech>
- <51bb5aaf-f771-020b-9a48-77d8679de6a2@suse.de>
- <20210219151235.dsv4mujqyrzndhsn@gilmour>
-In-Reply-To: <20210219151235.dsv4mujqyrzndhsn@gilmour>
+./drivers/net/wireless/mediatek/mt76/mt7921/mac.c:1402:2-3: Unneeded
+semicolon.
 
---sEqTb7DLvEQPgunNTOiF1zujXM8e72iqO
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 3f90974..e56cde3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -1399,7 +1399,7 @@ void mt7921_mac_work(struct work_struct *work)
+ 	if (++phy->sta_work_count == 10) {
+ 		phy->sta_work_count = 0;
+ 		mt7921_mac_sta_stats_work(phy);
+-	};
++	}
+ 
+ 	mt7921_mutex_release(phy->dev);
+ 
+-- 
+1.8.3.1
 
-
-Am 19.02.21 um 16:12 schrieb Maxime Ripard:
-> Hi Thomas,
->=20
-> Thanks for your review!
->=20
-> On Fri, Feb 19, 2021 at 03:49:22PM +0100, Thomas Zimmermann wrote:
->>> diff --git a/drivers/gpu/drm/imx/ipuv3-plane.c b/drivers/gpu/drm/imx/=
-ipuv3-plane.c
->>> index 075508051b5f..1873a155bb26 100644
->>> --- a/drivers/gpu/drm/imx/ipuv3-plane.c
->>> +++ b/drivers/gpu/drm/imx/ipuv3-plane.c
->>> @@ -337,12 +337,12 @@ static const struct drm_plane_funcs ipu_plane_f=
-uncs =3D {
->>>    };
->>>    static int ipu_plane_atomic_check(struct drm_plane *plane,
->>> -				  struct drm_plane_state *state)
->>> +				  struct drm_plane_state *new_state)
->>
->> This function uses a different naming convention then the others?
->>
->>>    {
->>>    	struct drm_plane_state *old_state =3D plane->state;
->=20
-> So, the function already had a variable named old_state, so I was
-> actually trying to make the drivers consistent here: having one variabl=
-e
-> with old_state and new_plane_state felt weird.
->=20
-> The heuristic is thus to use the convention of the driver if one exists=
-
-> already, and if there's none pick new_plane_state.
->=20
-> It makes it indeed inconsistent across drivers, but it felt more natura=
-l
-> to be consistent within a single driver.
-
-Makes sense.
-
->=20
-> Maxime
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-(HRB 36809, AG N=FCrnberg)
-Gesch=E4ftsf=FChrer: Felix Imend=F6rffer
-
-
---sEqTb7DLvEQPgunNTOiF1zujXM8e72iqO--
-
---w1lSYWSR69EiDDUmRFseCwFhMSFWd2baX
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmAzcwQFAwAAAAAACgkQlh/E3EQov+BQ
-PRAApEdNgQ+vqv+VzwVCbZGvaYSJtb908qPub+x6G/TOtgTxy8nU/+4qswCNV1TRb47fJcScii5P
-muJ5755oRh4YUO4NVEtX8GKHOgjfCwpAUXuwlWMs7HX4yxmi5IlBj1w5nsFNF88DhVuB+2AEFXkd
-ata8+bV5tpBKfULJcNvMYIG/sYzusZAf2m8hmCGpNKXC5Y1MkdVAaNzoZDmjOMdvyC8YVmiyuQYm
-XH6RqvBNEdrVf8QpbecMX946GtVx/ZYhheMzeojAjs6BSN56nkEbFyeDTDZy5Dj2exfMb7r4c2Md
-yXh3NGjtYAZc9AYFG5Gm23hEioOh1NeLQm5V2YA7FxtDqonl3w1pTvIBSdb/6tBAPFUWfiMOZIkI
-FgBteGCFHY7zTITnY+R0RGDY6oFZApyVwiXtxj2bybCEyBG7dHBAJ7ga+tRvT7fG5T94Q6y1cyKj
-v86blGFaPEZYZfeRbwrKbmwq/fbT6/OFH7eZLxzn5fLH1NJora6NM5gDXssJ77KwbVhbra2uzHuB
-uzpM8wC0JU7YFsd8boCIoxlST7QHttvFX8pSd///+Hub0U1/QXZPfQ4t0J1AheysqA/onDRoyd8U
-k3hPMvUtSmZwZSAGSO/6jzkR1Tki5qIgqmKJ6VDh8w7gpWSnDWkXcPiQlrNo4sWJnQQgDrL11BMb
-e3E=
-=cO2r
------END PGP SIGNATURE-----
-
---w1lSYWSR69EiDDUmRFseCwFhMSFWd2baX--
-
-
---===============5179391096024536857==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5179391096024536857==--
-
