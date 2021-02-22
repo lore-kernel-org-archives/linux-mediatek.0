@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83814C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 10:02:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8274C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 10:07:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2F036614A5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 10:02:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F036614A5
+	by mail.kernel.org (Postfix) with ESMTPS id 6CBC464E20
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 10:07:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CBC464E20
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,50 +24,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LjPhCJWI/2LtDwHdxzolov/g9rKvyBuvNtY+fun72rU=; b=bFhpzkvbcnT+xHQ19dSnEv8v83
-	TGubD79ssCCY5mim2wek0D4W/xdJVfQ8O7ti4Uf80pH1lEByhmIzzmKeMHYtlHruwzfOlGCKFyChi
-	a9Jevr5WegeIO7WzRP7rxQs+STjdcak/m15cD6QQ+IuPLqQkppuRXlYCIAfXT+q51erFDmJearV2G
-	UNYmLjFOU7Eb5bpTKLxEBU21KrrDJWZ8/y9eo+azaNTCqLeExhH8iRcbviDfUsKfn+VZvp9qBAXV3
-	Qq/oRyARW8u2CSAg5Aqno3Hz0GjjZufTulSydf+pRWtlzUy8g4o2tnVQKa2CUmBb+Fq+gIjXDY/u6
-	j9i3CcGA==;
+	bh=3S2H9VwHczm0Yn6X3n7P929ezvYl4R2LxkYsW9IN9pc=; b=QAe5P3Ta5Ei9VvNe3QPqrJaobm
+	tPVHuy2/DyUfXCILapPD5FquuMWnAlMdk+92PstideqKs5IK72B2Bxk8agVP2mBdxbZXS+KuHV8MD
+	dRni/6AG1CDqPrfyH3RY4z5SNKZCnV3Lb0pVY2t4/nMVJpX8HyOo075G0szk5150wbL2knvsGzM+P
+	GLmWHk6KrkTXOHKg+IIZsGUyKcLe4m11NKUMqCqFiQAmlP6rSOOeyOxUYH4g0LtcFYrz0N+Sy14Td
+	Eaq/XCcSP447/x8RnPXKt/z5HXDLFakTvW2JARTb+HeIQrmSWPfm+UIokxXLOQdWCWE1qsqcOXLL8
+	otVl7VxA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lE82f-0004Fs-Bm; Mon, 22 Feb 2021 10:02:13 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1lE87u-0004lN-5Q; Mon, 22 Feb 2021 10:07:38 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lE82b-0004EJ-9h; Mon, 22 Feb 2021 10:02:10 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id c11so6259170pfp.10;
- Mon, 22 Feb 2021 02:02:08 -0800 (PST)
+ id 1lE87p-0004kS-At; Mon, 22 Feb 2021 10:07:34 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id ba1so7438206plb.1;
+ Mon, 22 Feb 2021 02:07:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=W8DgW6oECOiwuHvyIv6eHEM1u1Xu5AIuzuKgMGxRQOc=;
- b=MiEZXuXs6i/aKscHT4ECjnJa3i/ukmy5gJSH2dC5aL/hj2Q1xiVdd8QOaW8xYoClRK
- Kya1/nCvRVaKylUcDSGRidbNOBTKh+uY9HdOgpjLGtq7EthmgyxczTVhopoV8RyODVt1
- kX0Bv2ZcK5vVJ3NIJFSkqUDaAe75ZS+mM51BH824LG/BKjJwDM8ENAPqbd9exuGnvl9R
- jOcbMRGkVjvBGzoiGKXOBcfYHp89IOzJdPhKfpiWWg4q7OZkP5jpWIpNCfZ9fNnM9mTR
- WGevu1vdZvvjaMS9WOPQqED01LvfPCI0UqP+c5J9FH6sK11sCQ+WUTLSzL7usZkAEoU3
- LEQQ==
+ bh=Udsk+z6S+lmul3ghhLaA1MmOuPDaJpmhE/2DZlIxpH4=;
+ b=TEF49KVVMWNsLlswBqRlelynbivwsoSQOJvdti1iBz7y6wQSK+YDDUw6N4qTsngxyt
+ aFvJY+ZF5jdgwGyL+J3+jbU02AS2rhGBMNhh7gqN4bKz+Ich0CxQfhA1FzTueW4I5SdH
+ pVxLvRZL6iXiYSXhIWmJ2VdvZ7dAPACvaCK8TvhgwM8aeScdsFZSJ/ij9e1nF6k/y6X/
+ YguC69OdU9rEMwAzGU17PaiiJCODVTzNu5HJ7SkbZpP1DrKil3WaH4Y62fK29Hvg2iGV
+ kBNAm4xvTucYXOClAerpJg4T4ah3fuMktt8PlS0uv+0hhCKaYgDUmlMfHUkf6mguLsUr
+ MR3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=W8DgW6oECOiwuHvyIv6eHEM1u1Xu5AIuzuKgMGxRQOc=;
- b=Snh1M1rG99maulfI0MFbk9S7QOJsWzViKj9J6LY1idH/5xgKOxE/6p1uXnu/JJOO8G
- Ta+xYjKXLvYYUUvrLsgJKKetI4+EoH6YfvBQDIAPBuWO4pdZJm6I813L7xElYOzQv4zt
- lfkUWU4aNBdbVaJd+D1KS0Glf+cr75jJxNmd4psxwT7RIdAnWJyReE0c7i4rH6TySdrh
- SkjluXLCgZecG0ZD9iUKba7teDwCwKfATJM82JOKMHByv0Q9Af1Y+Hj1U4KlbhLmj0g5
- fhSMRvBrhnVQtSMcywglboCznBHzzzwaft8+Kc4oU7SWZ8ZMyzzgUNBegjndKmG5Ypd6
- 4byw==
-X-Gm-Message-State: AOAM532ydO/lbbUiL4HINcdBxomMx3XGG1y4S8g1HNZDaynse9LFGlan
- 8yutL2/dSJyOisvGWtoANic=
-X-Google-Smtp-Source: ABdhPJxPbX8kcc0YRwDKsYkpBpFhUH5DXAs4YwwcgTB6ayWfqqx01TcOv3b+jjft8RhXAPa8KJOYjg==
-X-Received: by 2002:a63:4602:: with SMTP id t2mr19186801pga.214.1613988126938; 
- Mon, 22 Feb 2021 02:02:06 -0800 (PST)
+ bh=Udsk+z6S+lmul3ghhLaA1MmOuPDaJpmhE/2DZlIxpH4=;
+ b=lz66QMCul3qiwrj3D0pfd/3ocB1bVuShShKWE6rRpMTDgDdDMfccCHLDgqzMOP6fnt
+ 12GbLw21Erp7H/a5u+/sYeV+0moD/dZTJ5VjefGyHNq2oHFQ3hpYnzu902Ojvjw4WU8V
+ ounwGLAB1D3lz9pvK6Pnk5n0XasxF3YnGeU2Xv1/ERIp8UdnRZykGf1Bw6Riu7eCpIZc
+ 8P7z05Ony5R1i+8REpu/fxvzA6dpZj0krgJc1sY0+BRiX+cYEbtapXoYjaZhe/SITmdg
+ cwLhaBct9zUbJM4NaojfqAoApN1zYOSS+KTyK/pfLQ8Eq6zRta8PlCAH4FTKvvYQHQps
+ aMeA==
+X-Gm-Message-State: AOAM533ZoTiLj6zJx4SZY7w8qFGtAyNC8jL4/J6tbjh7UCyTOA6Kxnsc
+ qhDjEIXNiOvuReFVeGUI90g=
+X-Google-Smtp-Source: ABdhPJyrTvPPv2k+hYwKfxlUJ73L09piHJhfK1M3zTlfpoK9V1u1YJefTgwbbsb+YFs9kfD1kV94qQ==
+X-Received: by 2002:a17:902:ba91:b029:e3:fe6d:505c with SMTP id
+ k17-20020a170902ba91b02900e3fe6d505cmr2630491pls.7.1613988451310; 
+ Mon, 22 Feb 2021 02:07:31 -0800 (PST)
 Received: from container-ubuntu.lan ([171.211.28.185])
- by smtp.gmail.com with ESMTPSA id t16sm3605213pfe.165.2021.02.22.02.01.59
+ by smtp.gmail.com with ESMTPSA id ch14sm9317902pjb.22.2021.02.22.02.07.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Feb 2021 02:02:06 -0800 (PST)
+ Mon, 22 Feb 2021 02:07:30 -0800 (PST)
 From: DENG Qingfang <dqfext@gmail.com>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -79,14 +80,14 @@ To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH net-next] net: dsa: mt7530: support MDB operations
-Date: Mon, 22 Feb 2021 18:01:56 +0800
-Message-Id: <20210222100156.32652-1-dqfext@gmail.com>
+Subject: [PATCH net-next v2] net: dsa: mt7530: support MDB operations
+Date: Mon, 22 Feb 2021 18:07:17 +0800
+Message-Id: <20210222100717.451-1-dqfext@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210222_050209_359843_15163D35 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20210222_050733_418421_6800B70E 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,11 +106,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Support port MDB add to/delete from MT7530 ARL.
+
 As the hardware can manage multicast forwarding itself, trapping
 multicast traffic to the CPU is no longer required.
 
 Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 ---
+v1 -> v2: fix commit message
+
  drivers/net/dsa/mt7530.c | 58 +++++++++++++++++++++++++++++++++++++---
  net/dsa/tag_mtk.c        | 14 +---------
  2 files changed, 56 insertions(+), 16 deletions(-)
