@@ -2,92 +2,79 @@ Return-Path: <SRS0=FZAz=HY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8274C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 10:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 047BDC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 11:01:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CBC464E20
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 10:07:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CBC464E20
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7B30E64E00
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Feb 2021 11:01:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B30E64E00
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3S2H9VwHczm0Yn6X3n7P929ezvYl4R2LxkYsW9IN9pc=; b=QAe5P3Ta5Ei9VvNe3QPqrJaobm
-	tPVHuy2/DyUfXCILapPD5FquuMWnAlMdk+92PstideqKs5IK72B2Bxk8agVP2mBdxbZXS+KuHV8MD
-	dRni/6AG1CDqPrfyH3RY4z5SNKZCnV3Lb0pVY2t4/nMVJpX8HyOo075G0szk5150wbL2knvsGzM+P
-	GLmWHk6KrkTXOHKg+IIZsGUyKcLe4m11NKUMqCqFiQAmlP6rSOOeyOxUYH4g0LtcFYrz0N+Sy14Td
-	Eaq/XCcSP447/x8RnPXKt/z5HXDLFakTvW2JARTb+HeIQrmSWPfm+UIokxXLOQdWCWE1qsqcOXLL8
-	otVl7VxA==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=FvSFa6ENR8kQ1U5AiukJCzOQdgjYvQtxFVKayDg93OU=; b=X5pxb2x/h0nHdcnGxiz63Nhd4
+	fYT3DHQlcVcy75A8FJWh27bOIJjyGUBT49BtFe2B02ByX4mxE1wjPIG25Msm8vsSS4rVyudZV8oTW
+	9mHKE2HOc5C7AW2Iz5iKiEwYYWt2zrXLnqybtVIGmw8WLwSemj0IWunSq9+q0nu4v/A/iLtmh2eHU
+	9j5tC0r4aQW9Jvomiu5JfXwFsLD3prutIHbw1oa261nD3eCAc8EfyniBa5aH5b9Nq/sCUn7naw6rP
+	rTM9SH1HtGYxNgR4HkQK5rlfrrAzhOiibyn8TcPK9hPW9hFb2MLeonpfaawvIo+IMBtPboWCZkh8n
+	t/mi8xKRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lE87u-0004lN-5Q; Mon, 22 Feb 2021 10:07:38 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1lE8xc-0002Fa-W2; Mon, 22 Feb 2021 11:01:05 +0000
+Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lE87p-0004kS-At; Mon, 22 Feb 2021 10:07:34 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id ba1so7438206plb.1;
- Mon, 22 Feb 2021 02:07:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Udsk+z6S+lmul3ghhLaA1MmOuPDaJpmhE/2DZlIxpH4=;
- b=TEF49KVVMWNsLlswBqRlelynbivwsoSQOJvdti1iBz7y6wQSK+YDDUw6N4qTsngxyt
- aFvJY+ZF5jdgwGyL+J3+jbU02AS2rhGBMNhh7gqN4bKz+Ich0CxQfhA1FzTueW4I5SdH
- pVxLvRZL6iXiYSXhIWmJ2VdvZ7dAPACvaCK8TvhgwM8aeScdsFZSJ/ij9e1nF6k/y6X/
- YguC69OdU9rEMwAzGU17PaiiJCODVTzNu5HJ7SkbZpP1DrKil3WaH4Y62fK29Hvg2iGV
- kBNAm4xvTucYXOClAerpJg4T4ah3fuMktt8PlS0uv+0hhCKaYgDUmlMfHUkf6mguLsUr
- MR3Q==
+ id 1lE8xZ-0002EO-Gk
+ for linux-mediatek@lists.infradead.org; Mon, 22 Feb 2021 11:01:03 +0000
+Received: by mail-vs1-xe2b.google.com with SMTP id l15so2401702vsq.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 22 Feb 2021 03:01:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=bgFHY4hV1gsz8pgEmyxYxqT5LdN1M6Rn37TYsGGZMr0=;
+ b=QGOfC1OxJtyzhn/Dqh9x46vUR0wedl0F6e2YLebzF7a2LSj9jBLLI0PtMzqfOTNvY2
+ 1zISBI7qQJRWsEByoOWAsCA5uT/NmuX1iJutbxhkjBxxCMp5FaU1olopGZcY/zpbiVb7
+ 5aTe64cskNMRi/sSIcu/D8s1yj6PVS08su5Es=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Udsk+z6S+lmul3ghhLaA1MmOuPDaJpmhE/2DZlIxpH4=;
- b=lz66QMCul3qiwrj3D0pfd/3ocB1bVuShShKWE6rRpMTDgDdDMfccCHLDgqzMOP6fnt
- 12GbLw21Erp7H/a5u+/sYeV+0moD/dZTJ5VjefGyHNq2oHFQ3hpYnzu902Ojvjw4WU8V
- ounwGLAB1D3lz9pvK6Pnk5n0XasxF3YnGeU2Xv1/ERIp8UdnRZykGf1Bw6Riu7eCpIZc
- 8P7z05Ony5R1i+8REpu/fxvzA6dpZj0krgJc1sY0+BRiX+cYEbtapXoYjaZhe/SITmdg
- cwLhaBct9zUbJM4NaojfqAoApN1zYOSS+KTyK/pfLQ8Eq6zRta8PlCAH4FTKvvYQHQps
- aMeA==
-X-Gm-Message-State: AOAM533ZoTiLj6zJx4SZY7w8qFGtAyNC8jL4/J6tbjh7UCyTOA6Kxnsc
- qhDjEIXNiOvuReFVeGUI90g=
-X-Google-Smtp-Source: ABdhPJyrTvPPv2k+hYwKfxlUJ73L09piHJhfK1M3zTlfpoK9V1u1YJefTgwbbsb+YFs9kfD1kV94qQ==
-X-Received: by 2002:a17:902:ba91:b029:e3:fe6d:505c with SMTP id
- k17-20020a170902ba91b02900e3fe6d505cmr2630491pls.7.1613988451310; 
- Mon, 22 Feb 2021 02:07:31 -0800 (PST)
-Received: from container-ubuntu.lan ([171.211.28.185])
- by smtp.gmail.com with ESMTPSA id ch14sm9317902pjb.22.2021.02.22.02.07.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Feb 2021 02:07:30 -0800 (PST)
-From: DENG Qingfang <dqfext@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH net-next v2] net: dsa: mt7530: support MDB operations
-Date: Mon, 22 Feb 2021 18:07:17 +0800
-Message-Id: <20210222100717.451-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=bgFHY4hV1gsz8pgEmyxYxqT5LdN1M6Rn37TYsGGZMr0=;
+ b=e1LoElRZbhqz6+nfWpn9aTWCSRyxLkfO6oULkS0XS2uKDQAK7h5EZipnoatr799BdT
+ HWt7spZwzHdjbRNDDojCp/yKaKnJUPgMT488F91/Il0X9vsD0D4+RdScTZlmUvvu/ILq
+ RHYUsluaEw+zDMzmR/DtIR4zpLlwTASweVyFo6BR0+2XbSCkAZaZwGZp5r7pO3TfrwcG
+ bZSy6zM7lZ7TTVq5+Gs0N4SB4NidJuZGejJU+CH8blxlPP6fo5EQN//MZ0v0Ero3FJWo
+ qnq8rerlwioDlhpcfNJrRipiXpNMmGii1Oz2OT0R8Q948TcgfUM9Y5H6Iu+m9KrN3D2u
+ Wrqw==
+X-Gm-Message-State: AOAM531q3buEqELXMRNbTE+wKag5DGshiJRJ75c91113dYGRJp2c0ljh
+ oM6O/ABKmfuz8dwFaGbqeUA6Hope02WwXP2fCzcTjg==
+X-Google-Smtp-Source: ABdhPJxtvbO7yc7JIxcXC+vdsfZmlOTELtCIG4dyQr0KPt0s8Qz9jqkc/ShnqA459sEHTxSt78vabRBPoAMMyMx2ZKQ=
+X-Received: by 2002:a67:8945:: with SMTP id l66mr12716289vsd.48.1613991659266; 
+ Mon, 22 Feb 2021 03:00:59 -0800 (PST)
 MIME-Version: 1.0
+References: <20210211113309.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid>
+ <YDKvm1QmdJtJbaN6@pendragon.ideasonboard.com>
+ <CGME20210222053139eucas1p2661f94e218ae4c553e031ffa2e7b0cb3@eucas1p2.samsung.com>
+ <CANMq1KALq+C2GD2uRohKpwvkDC05-fHyo=_WoHwnsKNjgcSfEQ@mail.gmail.com>
+ <a804b8eb-3c79-4753-670c-cd5c2dfbc3a4@samsung.com>
+In-Reply-To: <a804b8eb-3c79-4753-670c-cd5c2dfbc3a4@samsung.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Mon, 22 Feb 2021 19:00:48 +0800
+Message-ID: <CANMq1KCUX-8FXb+3WH=dHOU6C0YAMPsMCsH3DLGdiJKdvpHShQ@mail.gmail.com>
+Subject: Re: [PATCH] drm/dsi: Add _NO_ to MIPI_DSI_* flags disabling features
+To: Andrzej Hajda <a.hajda@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210222_050733_418421_6800B70E 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20210222_060101_697929_88D0AC4C 
+X-CRM114-Status: GOOD (  32.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,158 +86,203 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
- Frank Wunderlich <frank-w@public-files.de>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Sam Ravnborg <sam@ravnborg.org>, Emil Velikov <emil.velikov@collabora.com>,
+ linux-samsung-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>,
+ Xin Ji <xji@analogixsemi.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Rajendra Nayak <rnayak@codeaurora.org>, Seung-Woo Kim <sw0312.kim@samsung.com>,
+ lkml <linux-kernel@vger.kernel.org>, Robert Foss <robert.foss@linaro.org>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, freedreno@lists.freedesktop.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support port MDB add to/delete from MT7530 ARL.
+On Mon, Feb 22, 2021 at 3:21 PM Andrzej Hajda <a.hajda@samsung.com> wrote:
+>
+> Hi Nicolas,
+>
+> W dniu 22.02.2021 o 06:31, Nicolas Boichat pisze:
+> > On Mon, Feb 22, 2021 at 3:08 AM Laurent Pinchart
+> > <laurent.pinchart@ideasonboard.com> wrote:
+> >> Hi Nicolas,
+> >>
+> >> Thank you for the patch.
+> >>
+> >> On Thu, Feb 11, 2021 at 11:33:55AM +0800, Nicolas Boichat wrote:
+> >>> Many of the DSI flags have names opposite to their actual effects,
+> >>> e.g. MIPI_DSI_MODE_EOT_PACKET means that EoT packets will actually
+> >>> be disabled. Fix this by including _NO_ in the flag names, e.g.
+> >>> MIPI_DSI_MODE_NO_EOT_PACKET.
+> >>>
+> >>> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> >> This looks good to me, it increases readability.
+> >>
+> >> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> >>
+> >> Please however see the end of the mail for a comment.
+>
+>
+> Reviewed-by: Andrzej Hajda <andrzej.hajda@samsung.com>
+>
+> And comment at the end.
+>
+> >>
+> >>> ---
+> >>> I considered adding _DISABLE_ instead, but that'd make the
+> >>> flag names a big too long.
+> >>>
+> >>> Generated with:
+> >>> flag=MIPI_DSI_MODE_VIDEO_HFP; git grep $flag | cut -f1 -d':' | \
+> >>>    xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HFP/" {}
+> >>> flag=MIPI_DSI_MODE_VIDEO_HBP; git grep $flag | cut -f1 -d':' | \
+> >>>    xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HBP/" {}
+> >>> flag=MIPI_DSI_MODE_VIDEO_HSA; git grep $flag | cut -f1 -d':' | \
+> >>>    xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HSA/" {}
+> >>> flag=MIPI_DSI_MODE_EOT_PACKET; git grep $flag | cut -f1 -d':' | \
+> >>>    xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_NO_EOT_PACKET/" {}
+> >>> (then minor format changes)
+> >> Ever tried coccinelle ? :-)
+> > Fun project for next time ,-)
+> >
+> >>>   drivers/gpu/drm/bridge/adv7511/adv7533.c             | 2 +-
+> >>>   drivers/gpu/drm/bridge/analogix/anx7625.c            | 2 +-
+> >>>   drivers/gpu/drm/bridge/cdns-dsi.c                    | 4 ++--
+> >>>   drivers/gpu/drm/bridge/tc358768.c                    | 2 +-
+> >>>   drivers/gpu/drm/exynos/exynos_drm_dsi.c              | 8 ++++----
+> >>>   drivers/gpu/drm/mcde/mcde_dsi.c                      | 2 +-
+> >>>   drivers/gpu/drm/mediatek/mtk_dsi.c                   | 2 +-
+> >>>   drivers/gpu/drm/msm/dsi/dsi_host.c                   | 8 ++++----
+> >>>   drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-dsi-cm.c                 | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-elida-kd35t133.c         | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-khadas-ts050.c           | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c   | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c   | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-novatek-nt35510.c        | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c   | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-samsung-s6d16d0.c        | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c     | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c    | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c        | 4 ++--
+> >>>   drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c      | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-simple.c                 | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-sony-acx424akp.c         | 2 +-
+> >>>   drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c     | 2 +-
+> >>>   include/drm/drm_mipi_dsi.h                           | 8 ++++----
+> >>>   25 files changed, 36 insertions(+), 36 deletions(-)
+> >>>
+> >>> []
+> >>> diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+> >>> index 360e6377e84b..ba91cf22af51 100644
+> >>> --- a/include/drm/drm_mipi_dsi.h
+> >>> +++ b/include/drm/drm_mipi_dsi.h
+> >>> @@ -119,15 +119,15 @@ struct mipi_dsi_host *of_find_mipi_dsi_host_by_node(struct device_node *node);
+> >>>   /* enable hsync-end packets in vsync-pulse and v-porch area */
+> >>>   #define MIPI_DSI_MODE_VIDEO_HSE              BIT(4)
+> >> We're mixing bits that enable a feature and bits that disable a feature.
+> >> Are these bits defined in the DSI spec, or internal to DRM ? In the
+> >> latter case, would it make sense to standardize on one "polarity" ? That
+> >> would be a more intrusive change in drivers though.
+> > Yes, that'd require auditing every single code path and reverse the
+> > logic as needed. I'm not volunteering for that ,-P (hopefully the
+> > current change is still an improvement).
+> >
+> > Hopefully real DSI experts can comment (Andrzej?), I think the default
+> > are sensible settings?
+>
+> Hehe, "real DSI expert" :), ok I've read spec few times :)
+>
+> If I remember correctly the spec did not prioritizes these modes, specs
+> are publicly available if somebody want to check it feel free.
+>
+> These values were taken from defaults for Exynos DSI, as nobody at the
+> time has better idea.
+>
+> We could try to optimize it by looking for example in different dsi
+> hosts defaults, or maybe dsi devices, but I am not sure if it is worth time.
 
-As the hardware can manage multicast forwarding itself, trapping
-multicast traffic to the CPU is no longer required.
+Little git grep experiment:
+# git grep compatible -- drivers/gpu/drm/panel | wc -l
+219 panels in total
 
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
----
-v1 -> v2: fix commit message
+# sed -n 's/.*\(MIPI_DSI[^ \t]*\).*/\1/p' include/drm/drm_mipi_dsi.h |
+xargs -I{} sh -c 'echo -n {}:; git grep {} | wc -l'
+MIPI_DSI_MODE_VIDEO:68
+MIPI_DSI_MODE_VIDEO_BURST:23
+MIPI_DSI_MODE_VIDEO_SYNC_PULSE:20
+MIPI_DSI_MODE_VIDEO_AUTO_VERT:1
+MIPI_DSI_MODE_VIDEO_HSE:6
+MIPI_DSI_MODE_VIDEO_NO_HFP:1
+MIPI_DSI_MODE_VIDEO_NO_HBP:1
+MIPI_DSI_MODE_VIDEO_NO_HSA:1
+MIPI_DSI_MODE_VSYNC_FLUSH:1
+MIPI_DSI_MODE_NO_EOT_PACKET:16
+MIPI_DSI_CLOCK_NON_CONTINUOUS:19
+MIPI_DSI_MODE_LPM:54
 
- drivers/net/dsa/mt7530.c | 58 +++++++++++++++++++++++++++++++++++++---
- net/dsa/tag_mtk.c        | 14 +---------
- 2 files changed, 56 insertions(+), 16 deletions(-)
+At least, there is no regret flipping the polarity for
+MIPI_DSI_MODE_VIDEO_NO_HFP/HBP/HSA.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 28aab0ff6e7d..20e66cf13485 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -1000,9 +1000,6 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
- 	mt7530_write(priv, MT7530_PVC_P(port),
- 		     PORT_SPEC_TAG);
- 
--	/* Unknown multicast frame forwarding to the cpu port */
--	mt7530_rmw(priv, MT7530_MFC, UNM_FFP_MASK, UNM_FFP(BIT(port)));
--
- 	/* Set CPU port number */
- 	if (priv->id == ID_MT7621)
- 		mt7530_rmw(priv, MT7530_MFC, CPU_MASK, CPU_EN | CPU_PORT(port));
-@@ -1365,6 +1362,59 @@ mt7530_port_fdb_dump(struct dsa_switch *ds, int port,
- 	return 0;
- }
- 
-+static int
-+mt7530_port_mdb_add(struct dsa_switch *ds, int port,
-+		    const struct switchdev_obj_port_mdb *mdb)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	const u8 *addr = mdb->addr;
-+	u16 vid = mdb->vid;
-+	u8 port_mask = 0;
-+	int ret;
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	mt7530_fdb_write(priv, vid, 0, addr, 0, STATIC_EMP);
-+	if (!mt7530_fdb_cmd(priv, MT7530_FDB_READ, NULL))
-+		port_mask = (mt7530_read(priv, MT7530_ATRD) >> PORT_MAP)
-+			    & PORT_MAP_MASK;
-+
-+	port_mask |= BIT(port);
-+	mt7530_fdb_write(priv, vid, port_mask, addr, -1, STATIC_ENT);
-+	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, NULL);
-+
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	return ret;
-+}
-+
-+static int
-+mt7530_port_mdb_del(struct dsa_switch *ds, int port,
-+		    const struct switchdev_obj_port_mdb *mdb)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	const u8 *addr = mdb->addr;
-+	u16 vid = mdb->vid;
-+	u8 port_mask = 0;
-+	int ret;
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	mt7530_fdb_write(priv, vid, 0, addr, 0, STATIC_EMP);
-+	if (!mt7530_fdb_cmd(priv, MT7530_FDB_READ, NULL))
-+		port_mask = (mt7530_read(priv, MT7530_ATRD) >> PORT_MAP)
-+			    & PORT_MAP_MASK;
-+
-+	port_mask &= ~BIT(port);
-+	mt7530_fdb_write(priv, vid, port_mask, addr, -1,
-+			 port_mask ? STATIC_ENT : STATIC_EMP);
-+	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, NULL);
-+
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	return ret;
-+}
-+
- static int
- mt7530_vlan_cmd(struct mt7530_priv *priv, enum mt7530_vlan_cmd cmd, u16 vid)
- {
-@@ -3403,6 +3453,8 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.port_fdb_add		= mt7530_port_fdb_add,
- 	.port_fdb_del		= mt7530_port_fdb_del,
- 	.port_fdb_dump		= mt7530_port_fdb_dump,
-+	.port_mdb_add		= mt7530_port_mdb_add,
-+	.port_mdb_del		= mt7530_port_mdb_del,
- 	.port_vlan_filtering	= mt7530_port_vlan_filtering,
- 	.port_vlan_add		= mt7530_port_vlan_add,
- 	.port_vlan_del		= mt7530_port_vlan_del,
-diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
-index 38dcdded74c0..53b620e177ad 100644
---- a/net/dsa/tag_mtk.c
-+++ b/net/dsa/tag_mtk.c
-@@ -23,9 +23,6 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
- 	struct dsa_port *dp = dsa_slave_to_port(dev);
- 	u8 *mtk_tag;
- 	bool is_vlan_skb = true;
--	unsigned char *dest = eth_hdr(skb)->h_dest;
--	bool is_multicast_skb = is_multicast_ether_addr(dest) &&
--				!is_broadcast_ether_addr(dest);
- 
- 	/* Build the special tag after the MAC Source Address. If VLAN header
- 	 * is present, it's required that VLAN header and special tag is
-@@ -48,10 +45,6 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
- 		     MTK_HDR_XMIT_UNTAGGED;
- 	mtk_tag[1] = (1 << dp->index) & MTK_HDR_XMIT_DP_BIT_MASK;
- 
--	/* Disable SA learning for multicast frames */
--	if (unlikely(is_multicast_skb))
--		mtk_tag[1] |= MTK_HDR_XMIT_SA_DIS;
--
- 	/* Tag control information is kept for 802.1Q */
- 	if (!is_vlan_skb) {
- 		mtk_tag[2] = 0;
-@@ -67,9 +60,6 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
- 	u16 hdr;
- 	int port;
- 	__be16 *phdr;
--	unsigned char *dest = eth_hdr(skb)->h_dest;
--	bool is_multicast_skb = is_multicast_ether_addr(dest) &&
--				!is_broadcast_ether_addr(dest);
- 
- 	if (unlikely(!pskb_may_pull(skb, MTK_HDR_LEN)))
- 		return NULL;
-@@ -95,9 +85,7 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
- 	if (!skb->dev)
- 		return NULL;
- 
--	/* Only unicast or broadcast frames are offloaded */
--	if (likely(!is_multicast_skb))
--		skb->offload_fwd_mark = 1;
-+	skb->offload_fwd_mark = 1;
- 
- 	return skb;
- }
--- 
-2.25.1
+I guess we could consider flipping the default for MIPI_DSI_MODE_VIDEO
+and MIPI_DSI_MODE_LPM (some drivers set the flags in code, instead of
+a structure, so I think MIPI_DSI_MODE_VIDEO is almost always set).
 
+Still not volunteering ,-P
+
+>
+> This solution is good for me.
+>
+>
+> Regards
+>
+> Andrzej
+>
+>
+> >
+> >
+> >>>   /* disable hfront-porch area */
+> >>> -#define MIPI_DSI_MODE_VIDEO_HFP              BIT(5)
+> >>> +#define MIPI_DSI_MODE_VIDEO_NO_HFP   BIT(5)
+> >>>   /* disable hback-porch area */
+> >>> -#define MIPI_DSI_MODE_VIDEO_HBP              BIT(6)
+> >>> +#define MIPI_DSI_MODE_VIDEO_NO_HBP   BIT(6)
+> >>>   /* disable hsync-active area */
+> >>> -#define MIPI_DSI_MODE_VIDEO_HSA              BIT(7)
+> >>> +#define MIPI_DSI_MODE_VIDEO_NO_HSA   BIT(7)
+> >>>   /* flush display FIFO on vsync pulse */
+> >>>   #define MIPI_DSI_MODE_VSYNC_FLUSH    BIT(8)
+> >>>   /* disable EoT packets in HS mode */
+> >>> -#define MIPI_DSI_MODE_EOT_PACKET     BIT(9)
+> >>> +#define MIPI_DSI_MODE_NO_EOT_PACKET  BIT(9)
+> >>>   /* device supports non-continuous clock behavior (DSI spec 5.6.1) */
+> >>>   #define MIPI_DSI_CLOCK_NON_CONTINUOUS        BIT(10)
+> >>>   /* transmit data in low power */
+> >> --
+> >> Regards,
+> >>
+> >> Laurent Pinchart
+> > _______________________________________________
+> > dri-devel mailing list
+> > dri-devel@lists.freedesktop.org
+> > https://protect2.fireeye.com/v1/url?k=e6f0d6d2-b96befef-e6f15d9d-0cc47a31309a-f4be6a0935319c2d&q=1&e=5e175166-1972-4f28-a483-e9a65c07e25f&u=https%3A%2F%2Flists.freedesktop.org%2Fmailman%2Flistinfo%2Fdri-devel
+> >
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
 _______________________________________________
 Linux-mediatek mailing list
