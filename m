@@ -2,20 +2,20 @@ Return-Path: <SRS0=l1Zb=H2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B905C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 06:22:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B62CCC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 06:23:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 27E9E60201
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 06:22:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27E9E60201
+	by mail.kernel.org (Postfix) with ESMTPS id 5606364DF5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 06:23:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5606364DF5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,53 +24,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7aIcS9vdaU4aJm06+rMVU53oY9JNhsJFkX4rDmwPbTE=; b=YXf7lPm3ePi0mOt6Gvf2pyClq
-	Tk/GcfMXiIL2faxR29TGBdKQw/OoKWShDR+8kCblvfzpu56T0w+KeYexhkBJw33E67T+NTEpgm6CK
-	X3dNU+pHkrrgRN/tppxom2U6coFUZraDx/qCAc96LdrsdqPqw1CaUqpInnTzoAlR9AADm24Lphu0o
-	7DvTV+Bk9gs3KV4ccbzpv/qzIWDarnFNlsi08vQO2tPrQO21EFM5dYEoDxUH3j0zAVEKdog3oOoJX
-	K6GZT3oQOvj5n6e8yrs/Irj2rf+1zcL1QjPztDrhwYLAJZtH5G0vqO+8oWFhcDT3Hz+GFD0Igrnpn
-	J1nIXp4qg==;
+	 bh=YE/isBHL4+LFyHnlQVGjbgTPmhO+gSdJBmRhj3mHbWc=; b=HDw7mth7u+JX+7yMFAk5E7Eu3
+	FKyJXpSaIBX+Yr2eiz0f855S8qfPR1Y5tYR19KfcZMDtPX4C7e4FUS5uKLlB2Kd/qM9K2RVd8KbId
+	JXyp+LlWPQJLos/IFcH19yMaGCmAChz80uxm/fryJhH3I4Ln5D1MdegvljdHKjXdK8pj1v79/M2vk
+	weI67vSWuPqebVo/if6nS0Fs+7M7oyDcUo9FDdXaIchpwap/b5ykzZ1nVLRpBV9rHvJ1C7zt1CuOb
+	cpLHGqi0Uvd6Pywfq2ayozxMHb4rymnhGcOiBar5wM1X3jVqcN59IfgKvVmKSFmxqQNk5STOYwuTF
+	U/g5ijofA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEnZG-0002SY-Hd; Wed, 24 Feb 2021 06:22:38 +0000
+	id 1lEnZM-0002UW-GL; Wed, 24 Feb 2021 06:22:44 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEnZA-0002Px-Qu; Wed, 24 Feb 2021 06:22:34 +0000
-X-UUID: 42dfda1af0b4469985b88aaa46ba382c-20210223
+ id 1lEnZB-0002Pt-RP; Wed, 24 Feb 2021 06:22:35 +0000
+X-UUID: e3a70bda1dda48668a529a2ccc1a8bdf-20210223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=7kyI17phQM9fYW6PA3dWblVqOM4Q0UWDwcugM8ZPb4s=; 
- b=QSQ0uiwXaq92wdiaUjGVN+KpPDOja8nMlebTiqLY4O7/eH5lnmmEUepusTZr5CgurhF1NYwNNtmN7KhJiVRVlGa4BANEEaN3J+dhU/WMrZQH5aojIx1P2lTAkK7TGaDuCOOWuIym1Hynf8zDh/VIihBZCGXsboHe4KR5OzgZXfU=;
-X-UUID: 42dfda1af0b4469985b88aaa46ba382c-20210223
+ bh=Zn3Gy9UCTHzzlBlQWaQL4bMj+VdylTRtnLZAnoS8aWE=; 
+ b=icWjRsat43ULl3F8IDGQs31HbGR+zC3c8s8C70uxIxclfcHKWfj7rWjCEKusGLO2Y0esxP/wJ6llZTcThApcTruSx0LeVT6oQLoWF+0Mdc1EkDDU6nfL2G0WDTDtX3J6emWC1u0B7g66EiImRiwvY/VAN1Ia8CnlrhiawO5mPEI=;
+X-UUID: e3a70bda1dda48668a529a2ccc1a8bdf-20210223
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 20236074; Tue, 23 Feb 2021 22:22:29 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 429682271; Tue, 23 Feb 2021 22:22:29 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Feb 2021 22:12:27 -0800
+ 15.0.1497.2; Tue, 23 Feb 2021 22:12:34 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 24 Feb 2021 14:12:25 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 24 Feb 2021 14:12:31 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 24 Feb 2021 14:12:25 +0800
+ Transport; Wed, 24 Feb 2021 14:12:30 +0800
 From: Jianjun Wang <jianjun.wang@mediatek.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  <maz@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
  <ryder.lee@mediatek.com>
-Subject: [v8,1/7] dt-bindings: PCI: mediatek-gen3: Add YAML schema
-Date: Wed, 24 Feb 2021 14:11:26 +0800
-Message-ID: <20210224061132.26526-2-jianjun.wang@mediatek.com>
+Subject: [v8,5/7] PCI: mediatek-gen3: Add MSI support
+Date: Wed, 24 Feb 2021 14:11:30 +0800
+Message-ID: <20210224061132.26526-6-jianjun.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210224061132.26526-1-jianjun.wang@mediatek.com>
 References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 6E9964958EFEC5B4C82C958689EF9C1FD65DDDC13CD3D46ADB9C85213E29B6A12000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_012233_037317_3776B94A 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20210224_012234_184111_0C1CB8E4 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,203 +97,419 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add YAML schemas documentation for Gen3 PCIe controller on
-MediaTek SoCs.
+Add MSI support for MediaTek Gen3 PCIe controller.
+
+This PCIe controller supports up to 256 MSI vectors, the MSI hardware
+block diagram is as follows:
+
+                  +-----+
+                  | GIC |
+                  +-----+
+                     ^
+                     |
+                 port->irq
+                     |
+             +-+-+-+-+-+-+-+-+
+             |0|1|2|3|4|5|6|7| (PCIe intc)
+             +-+-+-+-+-+-+-+-+
+              ^ ^           ^
+              | |    ...    |
+      +-------+ +------+    +-----------+
+      |                |                |
++-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+|0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31| (MSI sets)
++-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+ ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
+ | |      |  |    | |      |  |    | |      |  |  (MSI vectors)
+ | |      |  |    | |      |  |    | |      |  |
+
+  (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
+
+With 256 MSI vectors supported, the MSI vectors are composed of 8 sets,
+each set has its own address for MSI message, and supports 32 MSI vectors
+to generate interrupt.
 
 Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 Acked-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../bindings/pci/mediatek-pcie-gen3.yaml      | 181 ++++++++++++++++++
- 1 file changed, 181 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+ drivers/pci/controller/pcie-mediatek-gen3.c | 277 ++++++++++++++++++++
+ 1 file changed, 277 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-new file mode 100644
-index 000000000000..e7b1f9892da4
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -0,0 +1,181 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/mediatek-pcie-gen3.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 8b3b5f838b69..3cbec22ece0c 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -14,6 +14,7 @@
+ #include <linux/irqdomain.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
++#include <linux/msi.h>
+ #include <linux/pci.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+@@ -48,12 +49,29 @@
+ #define PCIE_LINK_STATUS_REG		0x154
+ #define PCIE_PORT_LINKUP		BIT(8)
+ 
++#define PCIE_MSI_SET_NUM		8
++#define PCIE_MSI_IRQS_PER_SET		32
++#define PCIE_MSI_IRQS_NUM \
++	(PCIE_MSI_IRQS_PER_SET * PCIE_MSI_SET_NUM)
 +
-+title: Gen3 PCIe controller on MediaTek SoCs
+ #define PCIE_INT_ENABLE_REG		0x180
++#define PCIE_MSI_ENABLE			GENMASK(PCIE_MSI_SET_NUM + 8 - 1, 8)
++#define PCIE_MSI_SHIFT			8
+ #define PCIE_INTX_SHIFT			24
+ #define PCIE_INTX_ENABLE \
+ 	GENMASK(PCIE_INTX_SHIFT + PCI_NUM_INTX - 1, PCIE_INTX_SHIFT)
+ 
+ #define PCIE_INT_STATUS_REG		0x184
++#define PCIE_MSI_SET_ENABLE_REG		0x190
++#define PCIE_MSI_SET_ENABLE		GENMASK(PCIE_MSI_SET_NUM - 1, 0)
 +
-+maintainers:
-+  - Jianjun Wang <jianjun.wang@mediatek.com>
++#define PCIE_MSI_SET_BASE_REG		0xc00
++#define PCIE_MSI_SET_OFFSET		0x10
++#define PCIE_MSI_SET_STATUS_OFFSET	0x04
++#define PCIE_MSI_SET_ENABLE_OFFSET	0x08
 +
-+description: |+
-+  PCIe Gen3 MAC controller for MediaTek SoCs, it supports Gen3 speed
-+  and compatible with Gen2, Gen1 speed.
++#define PCIE_MSI_SET_ADDR_HI_BASE	0xc80
++#define PCIE_MSI_SET_ADDR_HI_OFFSET	0x04
+ 
+ #define PCIE_TRANS_TABLE_BASE_REG	0x800
+ #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
+@@ -73,6 +91,16 @@
+ #define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
+ #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
+ 
++/**
++ * struct mtk_pcie_msi - MSI information for each set
++ * @base: IO mapped register base
++ * @msg_addr: MSI message address
++ */
++struct mtk_msi_set {
++	void __iomem *base;
++	phys_addr_t msg_addr;
++};
 +
-+  This PCIe controller supports up to 256 MSI vectors, the MSI hardware
-+  block diagram is as follows:
+ /**
+  * struct mtk_pcie_port - PCIe port information
+  * @dev: pointer to PCIe device
+@@ -86,6 +114,11 @@
+  * @irq: PCIe controller interrupt number
+  * @irq_lock: lock protecting IRQ register access
+  * @intx_domain: legacy INTx IRQ domain
++ * @msi_domain: MSI IRQ domain
++ * @msi_bottom_domain: MSI IRQ bottom domain
++ * @msi_sets: MSI sets information
++ * @lock: lock protecting IRQ bit map
++ * @msi_irq_in_use: bit map for assigned MSI IRQ
+  */
+ struct mtk_pcie_port {
+ 	struct device *dev;
+@@ -100,6 +133,11 @@ struct mtk_pcie_port {
+ 	int irq;
+ 	raw_spinlock_t irq_lock;
+ 	struct irq_domain *intx_domain;
++	struct irq_domain *msi_domain;
++	struct irq_domain *msi_bottom_domain;
++	struct mtk_msi_set msi_sets[PCIE_MSI_SET_NUM];
++	struct mutex lock;
++	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
+ };
+ 
+ /**
+@@ -197,6 +235,35 @@ static int mtk_pcie_set_trans_table(struct mtk_pcie_port *port,
+ 	return 0;
+ }
+ 
++static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
++{
++	int i;
++	u32 val;
 +
-+                    +-----+
-+                    | GIC |
-+                    +-----+
-+                       ^
-+                       |
-+                   port->irq
-+                       |
-+               +-+-+-+-+-+-+-+-+
-+               |0|1|2|3|4|5|6|7| (PCIe intc)
-+               +-+-+-+-+-+-+-+-+
-+                ^ ^           ^
-+                | |    ...    |
-+        +-------+ +------+    +-----------+
-+        |                |                |
-+  +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
-+  |0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31| (MSI sets)
-+  +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
-+   ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
-+   | |      |  |    | |      |  |    | |      |  |  (MSI vectors)
-+   | |      |  |    | |      |  |    | |      |  |
++	val = readl_relaxed(port->base + PCIE_MSI_SET_ENABLE_REG);
++	val |= PCIE_MSI_SET_ENABLE;
++	writel_relaxed(val, port->base + PCIE_MSI_SET_ENABLE_REG);
 +
-+    (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
++	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
++	val |= PCIE_MSI_ENABLE;
++	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
 +
-+  With 256 MSI vectors supported, the MSI vectors are composed of 8 sets,
-+  each set has its own address for MSI message, and supports 32 MSI vectors
-+  to generate interrupt.
++	for (i = 0; i < PCIE_MSI_SET_NUM; i++) {
++		struct mtk_msi_set *msi_set = &port->msi_sets[i];
 +
-+allOf:
-+  - $ref: /schemas/pci/pci-bus.yaml#
++		msi_set->base = port->base + PCIE_MSI_SET_BASE_REG +
++				i * PCIE_MSI_SET_OFFSET;
++		msi_set->msg_addr = port->reg_base + PCIE_MSI_SET_BASE_REG +
++				    i * PCIE_MSI_SET_OFFSET;
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt8192-pcie
++		/* Configure the MSI capture address */
++		writel_relaxed(lower_32_bits(msi_set->msg_addr), msi_set->base);
++		writel_relaxed(upper_32_bits(msi_set->msg_addr),
++			       port->base + PCIE_MSI_SET_ADDR_HI_BASE +
++			       i * PCIE_MSI_SET_ADDR_HI_OFFSET);
++	}
++}
 +
-+  reg:
-+    maxItems: 1
+ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+ {
+ 	struct resource_entry *entry;
+@@ -247,6 +314,8 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+ 		return err;
+ 	}
+ 
++	mtk_pcie_enable_msi(port);
 +
-+  reg-names:
-+    items:
-+      - const: pcie-mac
+ 	/* Set PCIe translation windows */
+ 	resource_list_for_each_entry(entry, &host->windows) {
+ 		struct resource *res = entry->res;
+@@ -290,6 +359,148 @@ static int mtk_pcie_set_affinity(struct irq_data *data,
+ 	return -EINVAL;
+ }
+ 
++static void mtk_pcie_irq_mask(struct irq_data *data)
++{
++	pci_msi_mask_irq(data);
++	irq_chip_mask_parent(data);
++}
 +
-+  interrupts:
-+    maxItems: 1
++static void mtk_pcie_irq_unmask(struct irq_data *data)
++{
++	pci_msi_unmask_irq(data);
++	irq_chip_unmask_parent(data);
++}
 +
-+  ranges:
-+    minItems: 1
-+    maxItems: 8
++static struct irq_chip mtk_msi_irq_chip = {
++	.name = "MSI",
++	.irq_enable = mtk_pcie_irq_unmask,
++	.irq_disable = mtk_pcie_irq_mask,
++	.irq_ack = irq_chip_ack_parent,
++	.irq_mask = mtk_pcie_irq_mask,
++	.irq_unmask = mtk_pcie_irq_unmask,
++};
 +
-+  resets:
-+    minItems: 1
-+    maxItems: 2
++static struct msi_domain_info mtk_msi_domain_info = {
++	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_PCI_MSIX |
++		   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_MULTI_PCI_MSI),
++	.chip	= &mtk_msi_irq_chip,
++};
 +
-+  reset-names:
-+    minItems: 1
-+    maxItems: 2
-+    items:
-+      - const: phy
-+      - const: mac
++static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
++{
++	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
++	struct mtk_pcie_port *port = data->domain->host_data;
++	unsigned long hwirq;
 +
-+  clocks:
-+    maxItems: 6
++	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
 +
-+  clock-names:
-+    items:
-+      - const: pl_250m
-+      - const: tl_26m
-+      - const: tl_96m
-+      - const: tl_32k
-+      - const: peri_26m
-+      - const: top_133m
++	msg->address_hi = upper_32_bits(msi_set->msg_addr);
++	msg->address_lo = lower_32_bits(msi_set->msg_addr);
++	msg->data = hwirq;
++	dev_dbg(port->dev, "msi#%#lx address_hi %#x address_lo %#x data %d\n",
++		hwirq, msg->address_hi, msg->address_lo, msg->data);
++}
 +
-+  assigned-clocks:
-+    maxItems: 1
++static void mtk_msi_bottom_irq_ack(struct irq_data *data)
++{
++	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
++	unsigned long hwirq;
 +
-+  assigned-clock-parents:
-+    maxItems: 1
++	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
 +
-+  phys:
-+    maxItems: 1
++	writel_relaxed(BIT(hwirq), msi_set->base + PCIE_MSI_SET_STATUS_OFFSET);
++}
 +
-+  '#interrupt-cells':
-+    const: 1
++static void mtk_msi_bottom_irq_mask(struct irq_data *data)
++{
++	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
++	struct mtk_pcie_port *port = data->domain->host_data;
++	unsigned long hwirq, flags;
++	u32 val;
 +
-+  interrupt-controller:
-+    description: Interrupt controller node for handling legacy PCI interrupts.
-+    type: object
-+    properties:
-+      '#address-cells':
-+        const: 0
-+      '#interrupt-cells':
-+        const: 1
-+      interrupt-controller: true
++	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
 +
-+    required:
-+      - '#address-cells'
-+      - '#interrupt-cells'
-+      - interrupt-controller
++	raw_spin_lock_irqsave(&port->irq_lock, flags);
++	val = readl_relaxed(msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
++	val &= ~BIT(hwirq);
++	writel_relaxed(val, msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
++	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
++}
 +
-+    additionalProperties: false
++static void mtk_msi_bottom_irq_unmask(struct irq_data *data)
++{
++	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
++	struct mtk_pcie_port *port = data->domain->host_data;
++	unsigned long hwirq, flags;
++	u32 val;
 +
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - interrupts
-+  - ranges
-+  - clocks
-+  - '#interrupt-cells'
-+  - interrupt-controller
++	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
 +
-+unevaluatedProperties: false
++	raw_spin_lock_irqsave(&port->irq_lock, flags);
++	val = readl_relaxed(msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
++	val |= BIT(hwirq);
++	writel_relaxed(val, msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
++	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
++}
 +
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
++static struct irq_chip mtk_msi_bottom_irq_chip = {
++	.irq_ack		= mtk_msi_bottom_irq_ack,
++	.irq_mask		= mtk_msi_bottom_irq_mask,
++	.irq_unmask		= mtk_msi_bottom_irq_unmask,
++	.irq_compose_msi_msg	= mtk_compose_msi_msg,
++	.irq_set_affinity	= mtk_pcie_set_affinity,
++	.name			= "MSI",
++};
 +
-+    bus {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
++static int mtk_msi_bottom_domain_alloc(struct irq_domain *domain,
++				       unsigned int virq, unsigned int nr_irqs,
++				       void *arg)
++{
++	struct mtk_pcie_port *port = domain->host_data;
++	struct mtk_msi_set *msi_set;
++	int i, hwirq, set_idx;
 +
-+        pcie: pcie@11230000 {
-+            compatible = "mediatek,mt8192-pcie";
-+            device_type = "pci";
-+            #address-cells = <3>;
-+            #size-cells = <2>;
-+            reg = <0x00 0x11230000 0x00 0x4000>;
-+            reg-names = "pcie-mac";
-+            interrupts = <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>;
-+            bus-range = <0x00 0xff>;
-+            ranges = <0x82000000 0x00 0x12000000 0x00
-+                      0x12000000 0x00 0x1000000>;
-+            clocks = <&infracfg 44>,
-+                     <&infracfg 40>,
-+                     <&infracfg 43>,
-+                     <&infracfg 97>,
-+                     <&infracfg 99>,
-+                     <&infracfg 111>;
-+            clock-names = "pl_250m", "tl_26m", "tl_96m",
-+                          "tl_32k", "peri_26m", "top_133m";
-+            assigned-clocks = <&topckgen 50>;
-+            assigned-clock-parents = <&topckgen 91>;
++	mutex_lock(&port->lock);
 +
-+            phys = <&pciephy>;
-+            phy-names = "pcie-phy";
++	hwirq = bitmap_find_free_region(port->msi_irq_in_use, PCIE_MSI_IRQS_NUM,
++					order_base_2(nr_irqs));
 +
-+            resets = <&infracfg_rst 2>,
-+                     <&infracfg_rst 3>;
-+            reset-names = "phy", "mac";
++	mutex_unlock(&port->lock);
 +
-+            #interrupt-cells = <1>;
-+            interrupt-map-mask = <0 0 0 0x7>;
-+            interrupt-map = <0 0 0 1 &pcie_intc 0>,
-+                            <0 0 0 2 &pcie_intc 1>,
-+                            <0 0 0 3 &pcie_intc 2>,
-+                            <0 0 0 4 &pcie_intc 3>;
-+            pcie_intc: interrupt-controller {
-+                      #address-cells = <0>;
-+                      #interrupt-cells = <1>;
-+                      interrupt-controller;
-+            };
-+        };
-+    };
++	if (hwirq < 0)
++		return -ENOSPC;
++
++	set_idx = hwirq / PCIE_MSI_IRQS_PER_SET;
++	msi_set = &port->msi_sets[set_idx];
++
++	for (i = 0; i < nr_irqs; i++)
++		irq_domain_set_info(domain, virq + i, hwirq + i,
++				    &mtk_msi_bottom_irq_chip, msi_set,
++				    handle_edge_irq, NULL, NULL);
++
++	return 0;
++}
++
++static void mtk_msi_bottom_domain_free(struct irq_domain *domain,
++				       unsigned int virq, unsigned int nr_irqs)
++{
++	struct mtk_pcie_port *port = domain->host_data;
++	struct irq_data *data = irq_domain_get_irq_data(domain, virq);
++
++	mutex_lock(&port->lock);
++
++	bitmap_clear(port->msi_irq_in_use, data->hwirq, nr_irqs);
++
++	mutex_unlock(&port->lock);
++
++	irq_domain_free_irqs_common(domain, virq, nr_irqs);
++}
++
++static const struct irq_domain_ops mtk_msi_bottom_domain_ops = {
++	.alloc = mtk_msi_bottom_domain_alloc,
++	.free = mtk_msi_bottom_domain_free,
++};
++
+ static void mtk_intx_mask(struct irq_data *data)
+ {
+ 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+@@ -360,6 +571,7 @@ static int mtk_pcie_init_irq_domains(struct mtk_pcie_port *port)
+ {
+ 	struct device *dev = port->dev;
+ 	struct device_node *intc_node, *node = dev->of_node;
++	int ret;
+ 
+ 	raw_spin_lock_init(&port->irq_lock);
+ 
+@@ -377,7 +589,34 @@ static int mtk_pcie_init_irq_domains(struct mtk_pcie_port *port)
+ 		return -ENODEV;
+ 	}
+ 
++	/* Setup MSI */
++	mutex_init(&port->lock);
++
++	port->msi_bottom_domain = irq_domain_add_linear(node, PCIE_MSI_IRQS_NUM,
++				  &mtk_msi_bottom_domain_ops, port);
++	if (!port->msi_bottom_domain) {
++		dev_info(dev, "failed to create MSI bottom domain\n");
++		ret = -ENODEV;
++		goto err_msi_bottom_domain;
++	}
++
++	port->msi_domain = pci_msi_create_irq_domain(dev->fwnode,
++						     &mtk_msi_domain_info,
++						     port->msi_bottom_domain);
++	if (!port->msi_domain) {
++		dev_info(dev, "failed to create MSI domain\n");
++		ret = -ENODEV;
++		goto err_msi_domain;
++	}
++
+ 	return 0;
++
++err_msi_domain:
++	irq_domain_remove(port->msi_bottom_domain);
++err_msi_bottom_domain:
++	irq_domain_remove(port->intx_domain);
++
++	return ret;
+ }
+ 
+ static void mtk_pcie_irq_teardown(struct mtk_pcie_port *port)
+@@ -387,9 +626,39 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie_port *port)
+ 	if (port->intx_domain)
+ 		irq_domain_remove(port->intx_domain);
+ 
++	if (port->msi_domain)
++		irq_domain_remove(port->msi_domain);
++
++	if (port->msi_bottom_domain)
++		irq_domain_remove(port->msi_bottom_domain);
++
+ 	irq_dispose_mapping(port->irq);
+ }
+ 
++static void mtk_pcie_msi_handler(struct mtk_pcie_port *port, int set_idx)
++{
++	struct mtk_msi_set *msi_set = &port->msi_sets[set_idx];
++	unsigned long msi_enable, msi_status;
++	unsigned int virq;
++	irq_hw_number_t bit, hwirq;
++
++	msi_enable = readl_relaxed(msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
++
++	do {
++		msi_status = readl_relaxed(msi_set->base +
++					   PCIE_MSI_SET_STATUS_OFFSET);
++		msi_status &= msi_enable;
++		if (!msi_status)
++			break;
++
++		for_each_set_bit(bit, &msi_status, PCIE_MSI_IRQS_PER_SET) {
++			hwirq = bit + set_idx * PCIE_MSI_IRQS_PER_SET;
++			virq = irq_find_mapping(port->msi_bottom_domain, hwirq);
++			generic_handle_irq(virq);
++		}
++	} while (true);
++}
++
+ static void mtk_pcie_irq_handler(struct irq_desc *desc)
+ {
+ 	struct mtk_pcie_port *port = irq_desc_get_handler_data(desc);
+@@ -408,6 +677,14 @@ static void mtk_pcie_irq_handler(struct irq_desc *desc)
+ 		generic_handle_irq(virq);
+ 	}
+ 
++	irq_bit = PCIE_MSI_SHIFT;
++	for_each_set_bit_from(irq_bit, &status, PCIE_MSI_SET_NUM +
++			      PCIE_MSI_SHIFT) {
++		mtk_pcie_msi_handler(port, irq_bit - PCIE_MSI_SHIFT);
++
++		writel_relaxed(BIT(irq_bit), port->base + PCIE_INT_STATUS_REG);
++	}
++
+ 	chained_irq_exit(irqchip, desc);
+ }
+ 
 -- 
 2.25.1
 _______________________________________________
