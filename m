@@ -2,59 +2,67 @@ Return-Path: <SRS0=l1Zb=H2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A842C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 11:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F02F7C433E6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 12:50:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E0F360234
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 11:34:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E0F360234
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 8459964F0E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 12:50:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8459964F0E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Nq+BcbkHjC3VwC4wi6UVHWVW9y8ooJPQt4aGkQ5P+Wo=; b=gVWf2dQ4DVTKi5q1t0tlmoa+4
-	lAPi9/tycKdg4dUwZGSGVukuqH2KkfUY7bvmYQ6N3khuURFpTcfviA0eTOZHfGUqOfvqAZmav1Flm
-	XoNK/y2NDUu+tT1MvBlsLc3+9YpB8NxuL80qId/AHxX1XWXalkJsGvrK0FlZ78qE5x903KmdHSGw8
-	8Qmkj+Hh5nfew1FXRX7FxQ5klGyLbuuWsAXaLSzfFuzVXf5wPwz354eEFjMcrM3TnEAVtznPl5hwJ
-	7j/j4aljisAhTBMwJlnZUvAUtH/hoaQp8oAopiXlAWB7BQnGQTXaHd50W4ckfgqXWiiYUd+nA8uKC
-	11RrN9JGw==;
+	 bh=7w019SLGCCm6yhIDmo/AYRP7gc23sNkemUoSkqe6QAo=; b=QpdpXmsn0yKAPJFNwbFpnlokq
+	HdatsydeHYCAclnyCqVlJz9WOf2by+WHecFzy0ID9jL8xpF4OLIcYRqZa356DAPUG11vKihWg6tfA
+	8lGGYaSacbZYkhoLV2bHcFzXKKvks5yXDWvOvBy0KEPQNu2bFBrz62hqtaDmxOyMPkngqljBC3bss
+	u4kUb7bn2d4sd2qq4nc6O6aKtVFavlXDfBdLUWJmNLab/yNxtXeGxt1EPQiIJCwgQD3xL8AhSeHJW
+	y88HK09DCkE26kK1asCA03kTjoU/9WeE+3ImEPmG09Az1u+6WIcfLpoEbyhqxrbWlNjf544FQ6945
+	SdUSLSIbw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEsQe-0005Kv-17; Wed, 24 Feb 2021 11:34:04 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1lEtcs-0001vj-RT; Wed, 24 Feb 2021 12:50:46 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEsQX-0005Jc-Nj; Wed, 24 Feb 2021 11:34:00 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id B158DADE5;
- Wed, 24 Feb 2021 11:33:47 +0000 (UTC)
-Subject: Re: [PATCH v3 01/11] drm/atomic: Pass the full state to planes async
- atomic check and update
-To: Maxime Ripard <maxime@cerno.tech>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>
-References: <20210219120032.260676-1-maxime@cerno.tech>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <cead3a20-08cf-78a4-88a9-c6b6697bd8b8@suse.de>
-Date: Wed, 24 Feb 2021 12:33:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ id 1lEtco-0001uZ-K5; Wed, 24 Feb 2021 12:50:43 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9C14C64F00;
+ Wed, 24 Feb 2021 12:50:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614171041;
+ bh=pB60cSJi0Ze+knx8uReireMiJFSGZmwLAtf5XiBC5Ho=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=DBm3FVTzbKlE10zv1RyDPkGIY8oGEj4JFXJplMVcRiHaraExwd2GQ+J78+PeR06JT
+ 1NP4yF6z9rxugvDKwPkWET7O8llB5ndj4TduEUu7/W2irN0kqalcwqVHcyoIjyBN5V
+ z6vg/1YBPOHv6KDAW5aDxatPIKaPUvd9S4KOWHmItxz/a2nWku6mN1ytZ1zOglhdZ2
+ fOlBNIQ0+XBzHasQ4olyFPjfKECMWRoSVNT+oQuJ+1zO46YfkJbj6lWGSHKFUx2llN
+ ZjvD/Xg/bWr8PyBiHVG1mCNTDPQUU+v26bqkAskWF0kj7qni/oqMkgj/gn33MBOTga
+ 6iw7RSe/TaIrg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.11 11/67] mt76: mt7915: reset token when mac_reset
+ happens
+Date: Wed, 24 Feb 2021 07:49:29 -0500
+Message-Id: <20210224125026.481804-11-sashal@kernel.org>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210224125026.481804-1-sashal@kernel.org>
+References: <20210224125026.481804-1-sashal@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20210219120032.260676-1-maxime@cerno.tech>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_063358_019613_DB82C9E4 
-X-CRM114-Status: GOOD (  30.44  )
+X-CRM114-CacheID: sfid-20210224_075042_845204_DC75CB9A 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,749 +74,125 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Leo Li <sunpeng.li@amd.com>,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Alex Deucher <alexander.deucher@amd.com>, freedreno@lists.freedesktop.org,
- Sean Paul <sean@poorly.run>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============7773368610258710555=="
+Cc: Sasha Levin <sashal@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ Bo Jiao <bo.jiao@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============7773368610258710555==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d"
+From: Ryder Lee <ryder.lee@mediatek.com>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d
-Content-Type: multipart/mixed; boundary="lNrdpw1gQPFCstc4KRt3YhDetJdJsZ42A";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Maxime Ripard <maxime@cerno.tech>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Leo Li <sunpeng.li@amd.com>,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>,
- linux-arm-kernel@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>,
- Alex Deucher <alexander.deucher@amd.com>, freedreno@lists.freedesktop.org,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <cead3a20-08cf-78a4-88a9-c6b6697bd8b8@suse.de>
-Subject: Re: [PATCH v3 01/11] drm/atomic: Pass the full state to planes async
- atomic check and update
-References: <20210219120032.260676-1-maxime@cerno.tech>
-In-Reply-To: <20210219120032.260676-1-maxime@cerno.tech>
+[ Upstream commit f285dfb98562e8380101095d168910df1d07d8be ]
 
---lNrdpw1gQPFCstc4KRt3YhDetJdJsZ42A
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Reset buffering token in mt7915_mac_reset_work() to avoid possible leakege,
+which leads to Tx stop after mac reset.
 
-Hi Maxime,
+Tested-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ .../net/wireless/mediatek/mt76/mt7915/init.c  | 18 +-------------
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 24 +++++++++++++++++++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
+ 3 files changed, 26 insertions(+), 17 deletions(-)
 
-for the whole series:
-
-Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
-
-Am 19.02.21 um 13:00 schrieb Maxime Ripard:
-> The current atomic helpers have either their object state being passed =
-as
-> an argument or the full atomic state.
->=20
-> The former is the pattern that was done at first, before switching to t=
-he
-> latter for new hooks or when it was needed.
->=20
-> Let's start convert all the remaining helpers to provide a consistent
-> interface, starting with the planes atomic_async_check and
-> atomic_async_update.
->=20
-> The conversion was done using the coccinelle script below, built tested=
- on
-> all the drivers.
->=20
-> @@
-> identifier plane, plane_state;
-> symbol state;
-> @@
->=20
->   struct drm_plane_helper_funcs {
->   	...
-> 	int (*atomic_async_check)(struct drm_plane *plane,
-> -				  struct drm_plane_state *plane_state);
-> +				  struct drm_atomic_state *state);
-> 	...
->   }
->=20
-> @@
-> identifier plane, plane_state;
-> symbol state;
-> @@
->   struct drm_plane_helper_funcs {
->   	...
-> 	void (*atomic_async_update)(struct drm_plane *plane,
-> -				    struct drm_plane_state *plane_state);
-> +				    struct drm_atomic_state *state);
-> 	...
->   }
->=20
-> @ plane_atomic_func @
-> identifier helpers;
-> identifier func;
-> @@
->=20
-> (
->   static const struct drm_plane_helper_funcs helpers =3D {
-> 	...,
->   	.atomic_async_check =3D func,
-> 	...,
->   };
-> |
->   static const struct drm_plane_helper_funcs helpers =3D {
->   	...,
->   	.atomic_async_update =3D func,
->   	...,
->   };
-> )
->=20
-> @@
-> struct drm_plane_helper_funcs *FUNCS;
-> identifier f;
-> identifier dev;
-> identifier plane, plane_state, state;
-> @@
->=20
->   f(struct drm_device *dev, struct drm_atomic_state *state)
->   {
->   	<+...
-> -	FUNCS->atomic_async_check(plane, plane_state)
-> +	FUNCS->atomic_async_check(plane, state)
->   	...+>
->   }
->=20
-> @@
-> struct drm_plane_helper_funcs *FUNCS;
-> identifier f;
-> identifier dev;
-> identifier plane, plane_state, state;
-> @@
->=20
->   f(struct drm_device *dev, struct drm_atomic_state *state)
->   {
->   	<+...
-> -	FUNCS->atomic_async_update(plane, plane_state)
-> +	FUNCS->atomic_async_update(plane, state)
->   	...+>
->   }
->=20
-> @@
-> identifier mtk_plane_atomic_async_update;
-> identifier plane;
-> symbol new_state, state;
-> expression e;
-> @@
->=20
->    void mtk_plane_atomic_async_update(struct drm_plane *plane, struct d=
-rm_plane_state *new_state)
-> {
->    ...
-> - struct mtk_plane_state *state =3D e;
-> + struct mtk_plane_state *new_plane_state =3D e;
->    <+...
-> -       state
-> +       new_plane_state
->    ...+>
->    }
->=20
-> @@
-> identifier plane_atomic_func.func;
-> identifier plane;
-> symbol state;
-> @@
->=20
->   func(struct drm_plane *plane,
-> -    struct drm_plane_state *state)
-> +    struct drm_plane_state *new_plane_state)
->   {
-> 	<...
-> -	state
-> +	new_plane_state
-> 	...>
->   }
->=20
-> @ ignores_new_state @
-> identifier plane_atomic_func.func;
-> identifier plane, new_plane_state;
-> @@
->=20
->   func(struct drm_plane *plane, struct drm_plane_state *new_plane_state=
-)
->   {
-> 	... when !=3D new_plane_state
->   }
->=20
-> @ adds_new_state depends on plane_atomic_func && !ignores_new_state @
-> identifier plane_atomic_func.func;
-> identifier plane, new_plane_state;
-> @@
->=20
->   func(struct drm_plane *plane, struct drm_plane_state *new_plane_state=
-)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state, plane);
->   	...
->   }
->=20
-> @ depends on plane_atomic_func @
-> identifier plane_atomic_func.func;
-> identifier plane, plane_state;
-> @@
->=20
->   func(struct drm_plane *plane,
-> -     struct drm_plane_state *plane_state
-> +     struct drm_atomic_state *state
->       )
->   { ... }
->=20
-> @ include depends on adds_new_state @
-> @@
->=20
->   #include <drm/drm_atomic.h>
->=20
-> @ no_include depends on !include && adds_new_state @
-> @@
->=20
-> + #include <drm/drm_atomic.h>
->    #include <drm/...>
->=20
-> @@
-> identifier plane_atomic_func.func;
-> identifier plane, state;
-> identifier plane_state;
-> @@
->=20
->   func(struct drm_plane *plane, struct drm_atomic_state *state) {
->          ...
->          struct drm_plane_state *plane_state =3D drm_atomic_get_new_pla=
-ne_state(state, plane);
->          <+...
-> -       plane_state->state
-> +       state
->          ...+>
->   }
->=20
-> Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
->=20
-> ---
->=20
-> Changes from v1:
->    - Updated the comment according to Thomas suggestions
-> ---
->   .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |  8 ++-
->   drivers/gpu/drm/drm_atomic_helper.c           |  4 +-
->   drivers/gpu/drm/mediatek/mtk_drm_plane.c      | 26 +++++----
->   drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c    | 33 ++++++-----
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.c   | 16 ++++--
->   drivers/gpu/drm/vc4/vc4_plane.c               | 56 ++++++++++--------=
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 102a8f14c22d4..2ec18aaa82807 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -672,28 +672,12 @@ int mt7915_register_device(struct mt7915_dev *dev)
+ 
+ void mt7915_unregister_device(struct mt7915_dev *dev)
+ {
+-	struct mt76_txwi_cache *txwi;
+-	int id;
 -
->   include/drm/drm_modeset_helper_vtables.h      | 18 +++---
->   7 files changed, 89 insertions(+), 72 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/driver=
-s/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> index 6ed96633425f..63f839679a0a 100644
-> --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> @@ -6468,7 +6468,7 @@ static int dm_plane_atomic_check(struct drm_plane=
- *plane,
->   }
->  =20
->   static int dm_plane_atomic_async_check(struct drm_plane *plane,
-> -				       struct drm_plane_state *new_plane_state)
-> +				       struct drm_atomic_state *state)
->   {
->   	/* Only support async updates on cursor planes. */
->   	if (plane->type !=3D DRM_PLANE_TYPE_CURSOR)
-> @@ -6478,10 +6478,12 @@ static int dm_plane_atomic_async_check(struct d=
-rm_plane *plane,
->   }
->  =20
->   static void dm_plane_atomic_async_update(struct drm_plane *plane,
-> -					 struct drm_plane_state *new_state)
-> +					 struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
->   	struct drm_plane_state *old_state =3D
-> -		drm_atomic_get_old_plane_state(new_state->state, plane);
-> +		drm_atomic_get_old_plane_state(state, plane);
->  =20
->   	trace_amdgpu_dm_atomic_update_cursor(new_state);
->  =20
-> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_=
-atomic_helper.c
-> index 9fa3f97223a1..bd0bb74437c7 100644
-> --- a/drivers/gpu/drm/drm_atomic_helper.c
-> +++ b/drivers/gpu/drm/drm_atomic_helper.c
-> @@ -1742,7 +1742,7 @@ int drm_atomic_helper_async_check(struct drm_devi=
-ce *dev,
->   		return -EBUSY;
->   	}
->  =20
-> -	return funcs->atomic_async_check(plane, new_plane_state);
-> +	return funcs->atomic_async_check(plane, state);
->   }
->   EXPORT_SYMBOL(drm_atomic_helper_async_check);
->  =20
-> @@ -1772,7 +1772,7 @@ void drm_atomic_helper_async_commit(struct drm_de=
-vice *dev,
->   		struct drm_framebuffer *old_fb =3D plane->state->fb;
->  =20
->   		funcs =3D plane->helper_private;
-> -		funcs->atomic_async_update(plane, plane_state);
-> +		funcs->atomic_async_update(plane, state);
->  =20
->   		/*
->   		 * ->atomic_async_update() is supposed to update the
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm=
-/mediatek/mtk_drm_plane.c
-> index 92141a19681b..30ebcfd8832f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -77,12 +77,14 @@ static void mtk_drm_plane_destroy_state(struct drm_=
-plane *plane,
->   }
->  =20
->   static int mtk_plane_atomic_async_check(struct drm_plane *plane,
-> -					struct drm_plane_state *state)
-> +					struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct drm_crtc_state *crtc_state;
->   	int ret;
->  =20
-> -	if (plane !=3D state->crtc->cursor)
-> +	if (plane !=3D new_plane_state->crtc->cursor)
->   		return -EINVAL;
->  =20
->   	if (!plane->state)
-> @@ -91,16 +93,16 @@ static int mtk_plane_atomic_async_check(struct drm_=
-plane *plane,
->   	if (!plane->state->fb)
->   		return -EINVAL;
->  =20
-> -	ret =3D mtk_drm_crtc_plane_check(state->crtc, plane,
-> -				       to_mtk_plane_state(state));
-> +	ret =3D mtk_drm_crtc_plane_check(new_plane_state->crtc, plane,
-> +				       to_mtk_plane_state(new_plane_state));
->   	if (ret)
->   		return ret;
->  =20
-> -	if (state->state)
-> -		crtc_state =3D drm_atomic_get_existing_crtc_state(state->state,
-> -								state->crtc);
-> +	if (state)
-> +		crtc_state =3D drm_atomic_get_existing_crtc_state(state,
-> +								new_plane_state->crtc);
->   	else /* Special case for asynchronous cursor updates. */
-> -		crtc_state =3D state->crtc->state;
-> +		crtc_state =3D new_plane_state->crtc->state;
->  =20
->   	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,=
+ 	mt7915_unregister_ext_phy(dev);
+ 	mt76_unregister_device(&dev->mt76);
+ 	mt7915_mcu_exit(dev);
+ 	mt7915_dma_cleanup(dev);
+ 
+-	spin_lock_bh(&dev->token_lock);
+-	idr_for_each_entry(&dev->token, txwi, id) {
+-		mt7915_txp_skb_unmap(&dev->mt76, txwi);
+-		if (txwi->skb) {
+-			struct ieee80211_hw *hw;
+-
+-			hw = mt76_tx_status_get_hw(&dev->mt76, txwi->skb);
+-			ieee80211_free_txskb(hw, txwi->skb);
+-		}
+-		mt76_put_txwi(&dev->mt76, txwi);
+-		dev->token_count--;
+-	}
+-	spin_unlock_bh(&dev->token_lock);
+-	idr_destroy(&dev->token);
++	mt7915_tx_token_put(dev);
+ 
+ 	mt76_free_device(&dev->mt76);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index f504eeb221f95..1b4d65310b887 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1485,6 +1485,27 @@ mt7915_dma_reset(struct mt7915_phy *phy)
+ 		 MT_WFDMA1_GLO_CFG_TX_DMA_EN | MT_WFDMA1_GLO_CFG_RX_DMA_EN);
+ }
+ 
++void mt7915_tx_token_put(struct mt7915_dev *dev)
++{
++	struct mt76_txwi_cache *txwi;
++	int id;
++
++	spin_lock_bh(&dev->token_lock);
++	idr_for_each_entry(&dev->token, txwi, id) {
++		mt7915_txp_skb_unmap(&dev->mt76, txwi);
++		if (txwi->skb) {
++			struct ieee80211_hw *hw;
++
++			hw = mt76_tx_status_get_hw(&dev->mt76, txwi->skb);
++			ieee80211_free_txskb(hw, txwi->skb);
++		}
++		mt76_put_txwi(&dev->mt76, txwi);
++		dev->token_count--;
++	}
++	spin_unlock_bh(&dev->token_lock);
++	idr_destroy(&dev->token);
++}
++
+ /* system error recovery */
+ void mt7915_mac_reset_work(struct work_struct *work)
+ {
+@@ -1525,6 +1546,9 @@ void mt7915_mac_reset_work(struct work_struct *work)
+ 
+ 	mt76_wr(dev, MT_MCU_INT_EVENT, MT_MCU_INT_EVENT_DMA_STOPPED);
+ 
++	mt7915_tx_token_put(dev);
++	idr_init(&dev->token);
++
+ 	if (mt7915_wait_reset_state(dev, MT_MCU_CMD_RESET_DONE)) {
+ 		mt7915_dma_reset(&dev->phy);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 0339abf360d3f..94bed8a3a050a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -463,6 +463,7 @@ int mt7915_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 			  struct ieee80211_sta *sta,
+ 			  struct mt76_tx_info *tx_info);
+ void mt7915_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue_entry *e);
++void mt7915_tx_token_put(struct mt7915_dev *dev);
+ int mt7915_init_tx_queues(struct mt7915_phy *phy, int idx, int n_desc);
+ void mt7915_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 			 struct sk_buff *skb);
+-- 
+2.27.0
 
->   						   DRM_PLANE_HELPER_NO_SCALING,
-> @@ -109,9 +111,11 @@ static int mtk_plane_atomic_async_check(struct drm=
-_plane *plane,
->   }
->  =20
->   static void mtk_plane_atomic_async_update(struct drm_plane *plane,
-> -					  struct drm_plane_state *new_state)
-> +					  struct drm_atomic_state *state)
->   {
-> -	struct mtk_plane_state *state =3D to_mtk_plane_state(plane->state);
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
-> +	struct mtk_plane_state *new_plane_state =3D to_mtk_plane_state(plane-=
->state);
->  =20
->   	plane->state->crtc_x =3D new_state->crtc_x;
->   	plane->state->crtc_y =3D new_state->crtc_y;
-> @@ -122,7 +126,7 @@ static void mtk_plane_atomic_async_update(struct dr=
-m_plane *plane,
->   	plane->state->src_h =3D new_state->src_h;
->   	plane->state->src_w =3D new_state->src_w;
->   	swap(plane->state->fb, new_state->fb);
-> -	state->pending.async_dirty =3D true;
-> +	new_plane_state->pending.async_dirty =3D true;
->  =20
->   	mtk_drm_crtc_async_update(new_state->crtc, plane, new_state);
->   }
-> diff --git a/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c b/drivers/gpu/d=
-rm/msm/disp/mdp5/mdp5_plane.c
-> index 83423092de2f..05fa8255caeb 100644
-> --- a/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c
-> +++ b/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c
-> @@ -5,6 +5,7 @@
->    * Author: Rob Clark <robdclark@gmail.com>
->    */
->  =20
-> +#include <drm/drm_atomic.h>
->   #include <drm/drm_damage_helper.h>
->   #include <drm/drm_fourcc.h>
->   #include <drm/drm_print.h>
-> @@ -438,41 +439,43 @@ static void mdp5_plane_atomic_update(struct drm_p=
-lane *plane,
->   }
->  =20
->   static int mdp5_plane_atomic_async_check(struct drm_plane *plane,
-> -					 struct drm_plane_state *state)
-> +					 struct drm_atomic_state *state)
->   {
-> -	struct mdp5_plane_state *mdp5_state =3D to_mdp5_plane_state(state);
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
-> +	struct mdp5_plane_state *mdp5_state =3D to_mdp5_plane_state(new_plane=
-_state);
->   	struct drm_crtc_state *crtc_state;
->   	int min_scale, max_scale;
->   	int ret;
->  =20
-> -	crtc_state =3D drm_atomic_get_existing_crtc_state(state->state,
-> -							state->crtc);
-> +	crtc_state =3D drm_atomic_get_existing_crtc_state(state,
-> +							new_plane_state->crtc);
->   	if (WARN_ON(!crtc_state))
->   		return -EINVAL;
->  =20
->   	if (!crtc_state->active)
->   		return -EINVAL;
->  =20
-> -	mdp5_state =3D to_mdp5_plane_state(state);
-> +	mdp5_state =3D to_mdp5_plane_state(new_plane_state);
->  =20
->   	/* don't use fast path if we don't have a hwpipe allocated yet */
->   	if (!mdp5_state->hwpipe)
->   		return -EINVAL;
->  =20
->   	/* only allow changing of position(crtc x/y or src x/y) in fast path=
- */
-> -	if (plane->state->crtc !=3D state->crtc ||
-> -	    plane->state->src_w !=3D state->src_w ||
-> -	    plane->state->src_h !=3D state->src_h ||
-> -	    plane->state->crtc_w !=3D state->crtc_w ||
-> -	    plane->state->crtc_h !=3D state->crtc_h ||
-> +	if (plane->state->crtc !=3D new_plane_state->crtc ||
-> +	    plane->state->src_w !=3D new_plane_state->src_w ||
-> +	    plane->state->src_h !=3D new_plane_state->src_h ||
-> +	    plane->state->crtc_w !=3D new_plane_state->crtc_w ||
-> +	    plane->state->crtc_h !=3D new_plane_state->crtc_h ||
->   	    !plane->state->fb ||
-> -	    plane->state->fb !=3D state->fb)
-> +	    plane->state->fb !=3D new_plane_state->fb)
->   		return -EINVAL;
->  =20
->   	min_scale =3D FRAC_16_16(1, 8);
->   	max_scale =3D FRAC_16_16(8, 1);
->  =20
-> -	ret =3D drm_atomic_helper_check_plane_state(state, crtc_state,
-> +	ret =3D drm_atomic_helper_check_plane_state(new_plane_state, crtc_sta=
-te,
->   						  min_scale, max_scale,
->   						  true, true);
->   	if (ret)
-> @@ -485,15 +488,17 @@ static int mdp5_plane_atomic_async_check(struct d=
-rm_plane *plane,
->   	 * also assign/unassign the hwpipe(s) tied to the plane. We avoid
->   	 * taking the fast path for both these reasons.
->   	 */
-> -	if (state->visible !=3D plane->state->visible)
-> +	if (new_plane_state->visible !=3D plane->state->visible)
->   		return -EINVAL;
->  =20
->   	return 0;
->   }
->  =20
->   static void mdp5_plane_atomic_async_update(struct drm_plane *plane,
-> -					   struct drm_plane_state *new_state)
-> +					   struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
->   	struct drm_framebuffer *old_fb =3D plane->state->fb;
->  =20
->   	plane->state->src_x =3D new_state->src_x;
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/=
-drm/rockchip/rockchip_drm_vop.c
-> index 8d15cabdcb02..fefeab73ca27 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -1021,8 +1021,10 @@ static void vop_plane_atomic_update(struct drm_p=
-lane *plane,
->   }
->  =20
->   static int vop_plane_atomic_async_check(struct drm_plane *plane,
-> -					struct drm_plane_state *state)
-> +					struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct vop_win *vop_win =3D to_vop_win(plane);
->   	const struct vop_win_data *win =3D vop_win->data;
->   	int min_scale =3D win->phy->scl ? FRAC_16_16(1, 8) :
-> @@ -1031,7 +1033,7 @@ static int vop_plane_atomic_async_check(struct dr=
-m_plane *plane,
->   					DRM_PLANE_HELPER_NO_SCALING;
->   	struct drm_crtc_state *crtc_state;
->  =20
-> -	if (plane !=3D state->crtc->cursor)
-> +	if (plane !=3D new_plane_state->crtc->cursor)
->   		return -EINVAL;
->  =20
->   	if (!plane->state)
-> @@ -1040,9 +1042,9 @@ static int vop_plane_atomic_async_check(struct dr=
-m_plane *plane,
->   	if (!plane->state->fb)
->   		return -EINVAL;
->  =20
-> -	if (state->state)
-> -		crtc_state =3D drm_atomic_get_existing_crtc_state(state->state,
-> -								state->crtc);
-> +	if (state)
-> +		crtc_state =3D drm_atomic_get_existing_crtc_state(state,
-> +								new_plane_state->crtc);
->   	else /* Special case for asynchronous cursor updates. */
->   		crtc_state =3D plane->crtc->state;
->  =20
-> @@ -1052,8 +1054,10 @@ static int vop_plane_atomic_async_check(struct d=
-rm_plane *plane,
->   }
->  =20
->   static void vop_plane_atomic_async_update(struct drm_plane *plane,
-> -					  struct drm_plane_state *new_state)
-> +					  struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
->   	struct vop *vop =3D to_vop(plane->state->crtc);
->   	struct drm_framebuffer *old_fb =3D plane->state->fb;
->  =20
-> diff --git a/drivers/gpu/drm/vc4/vc4_plane.c b/drivers/gpu/drm/vc4/vc4_=
-plane.c
-> index 6bd8260aa9f2..ff485e58d271 100644
-> --- a/drivers/gpu/drm/vc4/vc4_plane.c
-> +++ b/drivers/gpu/drm/vc4/vc4_plane.c
-> @@ -1118,32 +1118,34 @@ void vc4_plane_async_set_fb(struct drm_plane *p=
-lane, struct drm_framebuffer *fb)
->   }
->  =20
->   static void vc4_plane_atomic_async_update(struct drm_plane *plane,
-> -					  struct drm_plane_state *state)
-> +					  struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct vc4_plane_state *vc4_state, *new_vc4_state;
->  =20
-> -	swap(plane->state->fb, state->fb);
-> -	plane->state->crtc_x =3D state->crtc_x;
-> -	plane->state->crtc_y =3D state->crtc_y;
-> -	plane->state->crtc_w =3D state->crtc_w;
-> -	plane->state->crtc_h =3D state->crtc_h;
-> -	plane->state->src_x =3D state->src_x;
-> -	plane->state->src_y =3D state->src_y;
-> -	plane->state->src_w =3D state->src_w;
-> -	plane->state->src_h =3D state->src_h;
-> -	plane->state->src_h =3D state->src_h;
-> -	plane->state->alpha =3D state->alpha;
-> -	plane->state->pixel_blend_mode =3D state->pixel_blend_mode;
-> -	plane->state->rotation =3D state->rotation;
-> -	plane->state->zpos =3D state->zpos;
-> -	plane->state->normalized_zpos =3D state->normalized_zpos;
-> -	plane->state->color_encoding =3D state->color_encoding;
-> -	plane->state->color_range =3D state->color_range;
-> -	plane->state->src =3D state->src;
-> -	plane->state->dst =3D state->dst;
-> -	plane->state->visible =3D state->visible;
-> +	swap(plane->state->fb, new_plane_state->fb);
-> +	plane->state->crtc_x =3D new_plane_state->crtc_x;
-> +	plane->state->crtc_y =3D new_plane_state->crtc_y;
-> +	plane->state->crtc_w =3D new_plane_state->crtc_w;
-> +	plane->state->crtc_h =3D new_plane_state->crtc_h;
-> +	plane->state->src_x =3D new_plane_state->src_x;
-> +	plane->state->src_y =3D new_plane_state->src_y;
-> +	plane->state->src_w =3D new_plane_state->src_w;
-> +	plane->state->src_h =3D new_plane_state->src_h;
-> +	plane->state->src_h =3D new_plane_state->src_h;
-> +	plane->state->alpha =3D new_plane_state->alpha;
-> +	plane->state->pixel_blend_mode =3D new_plane_state->pixel_blend_mode;=
-
-> +	plane->state->rotation =3D new_plane_state->rotation;
-> +	plane->state->zpos =3D new_plane_state->zpos;
-> +	plane->state->normalized_zpos =3D new_plane_state->normalized_zpos;
-> +	plane->state->color_encoding =3D new_plane_state->color_encoding;
-> +	plane->state->color_range =3D new_plane_state->color_range;
-> +	plane->state->src =3D new_plane_state->src;
-> +	plane->state->dst =3D new_plane_state->dst;
-> +	plane->state->visible =3D new_plane_state->visible;
->  =20
-> -	new_vc4_state =3D to_vc4_plane_state(state);
-> +	new_vc4_state =3D to_vc4_plane_state(new_plane_state);
->   	vc4_state =3D to_vc4_plane_state(plane->state);
->  =20
->   	vc4_state->crtc_x =3D new_vc4_state->crtc_x;
-> @@ -1187,23 +1189,25 @@ static void vc4_plane_atomic_async_update(struc=
-t drm_plane *plane,
->   }
->  =20
->   static int vc4_plane_atomic_async_check(struct drm_plane *plane,
-> -					struct drm_plane_state *state)
-> +					struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct vc4_plane_state *old_vc4_state, *new_vc4_state;
->   	int ret;
->   	u32 i;
->  =20
-> -	ret =3D vc4_plane_mode_set(plane, state);
-> +	ret =3D vc4_plane_mode_set(plane, new_plane_state);
->   	if (ret)
->   		return ret;
->  =20
->   	old_vc4_state =3D to_vc4_plane_state(plane->state);
-> -	new_vc4_state =3D to_vc4_plane_state(state);
-> +	new_vc4_state =3D to_vc4_plane_state(new_plane_state);
->   	if (old_vc4_state->dlist_count !=3D new_vc4_state->dlist_count ||
->   	    old_vc4_state->pos0_offset !=3D new_vc4_state->pos0_offset ||
->   	    old_vc4_state->pos2_offset !=3D new_vc4_state->pos2_offset ||
->   	    old_vc4_state->ptr0_offset !=3D new_vc4_state->ptr0_offset ||
-> -	    vc4_lbm_size(plane->state) !=3D vc4_lbm_size(state))
-> +	    vc4_lbm_size(plane->state) !=3D vc4_lbm_size(new_plane_state))
->   		return -EINVAL;
->  =20
->   	/* Only pos0, pos2 and ptr0 DWORDS can be updated in an async update=
-
-> diff --git a/include/drm/drm_modeset_helper_vtables.h b/include/drm/drm=
-_modeset_helper_vtables.h
-> index eb706342861d..2b4d085da450 100644
-> --- a/include/drm/drm_modeset_helper_vtables.h
-> +++ b/include/drm/drm_modeset_helper_vtables.h
-> @@ -1292,9 +1292,9 @@ struct drm_plane_helper_funcs {
->   	/**
->   	 * @atomic_async_check:
->   	 *
-> -	 * Drivers should set this function pointer to check if the plane sta=
-te
-> -	 * can be updated in a async fashion. Here async means "not vblank
-> -	 * synchronized".
-> +	 * Drivers should set this function pointer to check if the plane's
-> +	 * atomic state can be updated in a async fashion. Here async means
-> +	 * "not vblank synchronized".
->   	 *
->   	 * This hook is called by drm_atomic_async_check() to establish if a=
-
->   	 * given update can be committed asynchronously, that is, if it can
-> @@ -1306,7 +1306,7 @@ struct drm_plane_helper_funcs {
->   	 * can not be applied in asynchronous manner.
->   	 */
->   	int (*atomic_async_check)(struct drm_plane *plane,
-> -				  struct drm_plane_state *state);
-> +				  struct drm_atomic_state *state);
->  =20
->   	/**
->   	 * @atomic_async_update:
-> @@ -1322,11 +1322,9 @@ struct drm_plane_helper_funcs {
->   	 * update won't happen if there is an outstanding commit modifying
->   	 * the same plane.
->   	 *
-> -	 * Note that unlike &drm_plane_helper_funcs.atomic_update this hook
-> -	 * takes the new &drm_plane_state as parameter. When doing async_upda=
-te
-> -	 * drivers shouldn't replace the &drm_plane_state but update the
-> -	 * current one with the new plane configurations in the new
-> -	 * plane_state.
-> +	 * When doing async_update drivers shouldn't replace the
-> +	 * &drm_plane_state but update the current one with the new plane
-> +	 * configurations in the new plane_state.
->   	 *
->   	 * Drivers should also swap the framebuffers between current plane
->   	 * state (&drm_plane.state) and new_state.
-> @@ -1345,7 +1343,7 @@ struct drm_plane_helper_funcs {
->   	 *    for deferring if needed, until a common solution is created.
->   	 */
->   	void (*atomic_async_update)(struct drm_plane *plane,
-> -				    struct drm_plane_state *new_state);
-> +				    struct drm_atomic_state *state);
->   };
->  =20
->   /**
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---lNrdpw1gQPFCstc4KRt3YhDetJdJsZ42A--
-
---lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmA2OZkFAwAAAAAACgkQlh/E3EQov+AD
-3A//Z1xOfG65Q8IvlGSHx85E17xZXmr5GLJ0UeMXhy/GR4IuaGab4AGd6n/cbz6pBosEWzMRRAZd
-Klatjvlse1LXWSFaTqzaBRGtpe828gHX+tueNmk/3z1lKlJY2UnXkYeTCUH0n3F9mKs4hgH4gtPo
-4a/76kbXjF/NhRwU8gXdvEWYnzX7KNOxyxfKFle2WawuCX1/KuVrNJImIZ5yYAVR7UjsXN0Bpd3t
-XKPqEc4edVZx5/HJAOBCdU/1H+60clkQCL6rM2bWjAU0rjCmJZMtUvqI706gAR18hTY7J7Fq+jBz
-lAhaDNsKEyTcRreXyQNfvWr7wj/Js28y386ljOaqZ+mRIBGKtlVGTn0KuAwFEnjHx9V/DLjtyacA
-VmJyn/5/MZoXTtSPAFMnsv3M5WOxay1kxmPABdj9SRp3cQiMWbuIyX7xwEe/Ajk9CfDWO3SX20rW
-er2lkuTcGnE6NLNYKHdQR+jfUONu3NKaS9LKZLbN+512Lik4ifQLQHyyTwUKMdDSXBNlBFWd6sFI
-I2zrT3AGL08s9MQa4Oz/mPYulDIPLN09/1b/pu3yYxPOWZU5NxG0gu1Eq2fz7lyo3l1sALt558Tl
-h6DXWBhaIaPKZzhaBeFV1tSXOC8IyET8g3IgJ9ryTh5Yh9rFFMyKvcyzAG/Wco0AFnjCywF0r4zk
-sII=
-=+3EL
------END PGP SIGNATURE-----
-
---lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d--
-
-
---===============7773368610258710555==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7773368610258710555==--
-
