@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 54B16C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 13:36:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31A79C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 14:10:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9DB564E6C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 13:36:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9DB564E6C
+	by mail.kernel.org (Postfix) with ESMTPS id B55B5601FB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 14:10:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B55B5601FB
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CYBppsN2ARG9FXl1DsErogvladCVqq3B8wGZD9t0TiA=; b=2gH+/VN3yWVnolHwLk30+5q0m
-	KUeEMU6WAQo0j67WwQyjjkYqeYQ/mlLPnEh6n/Gvjyb1Lh+XYl+Z86IM4p7E9nh7CKHwU4q6WRlFY
-	/cT3MGT/2cMwhA3HXKqc+G1E4JYpUVQSSpTwOCadKRnvABAKflPIHjKsuwaAj620r0vOsaDxGYIX9
-	Q4dDmv7Psgurcf6RK4Y1F8QYesNvzEbI3mhu+KWAOMmbAAc/c9ikIf/YIFRrM9rmOTie0Gqn9B6DB
-	Btmzrqhkkw9AlEvhPjyynDniNmfGMYSMaAVBBAXx+d1H1o+gmsuC5SWxZpR6mf2gEjoutx5+Ez/LA
-	uLKPQSHzg==;
+	 bh=oOyZIoyCs3XhgdlCyp8GS/LVHMKGzjpL4Kgj53UhPqY=; b=06J1OXvyiyp4Tww7ovoIvayPa
+	C7DsaJIk6hz1xcKGHkUVEMASsBkJ9SmJ3TobRI9cGWOvApzlLjJktCnZl18mhuKGBfA5HTadOPY3W
+	ma80z6aKqScTcNOM5cJYj+ZnTc/WqmLDeYQ57h5gALT4vE/JaCvjGXsPivuY1cxhgZwNrcZHH1vXQ
+	iZpExuRF3qSN9xj4+ZZeEixJYO9QwI0A+3v/kEdVssutL5MOsU4d0/BCPtPdEeS3ptAwol5mx5RDS
+	UeZFnKl5fPu1+BkkKNF7Pcdlo49o8sd+TSg9C/1NZzqZJBUuA5gCGuhgjtpcvcrO2nUbD1eeDl6+a
+	6AedxtnaA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEuL4-0008KD-IZ; Wed, 24 Feb 2021 13:36:26 +0000
-Received: from mail-wr1-f49.google.com ([209.85.221.49])
+	id 1lEurv-0001y2-5D; Wed, 24 Feb 2021 14:10:23 +0000
+Received: from mail-lj1-f176.google.com ([209.85.208.176])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEuL1-0008JU-HE; Wed, 24 Feb 2021 13:36:24 +0000
-Received: by mail-wr1-f49.google.com with SMTP id l12so1924712wry.2;
- Wed, 24 Feb 2021 05:36:20 -0800 (PST)
+ id 1lEurt-0001xH-7g; Wed, 24 Feb 2021 14:10:22 +0000
+Received: by mail-lj1-f176.google.com with SMTP id e8so2538065ljj.5;
+ Wed, 24 Feb 2021 06:10:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=dq4qL90OCu8ib/iGkBDTsJu+uvHjzn/c/ym0u/ajUA0=;
- b=Qb2jGMWGQjRqeJ00sOmocFFZFBupccZ0igWByVB/joV/efegLpPtVrUHJwTiUkeX2K
- KCRV0iCzLi5xSDQCw1iUpZxMFtX5Bts/UlXrw8YF8bnVEWZhLkPc3Iwo98Gjr3o7QaYT
- eD5DRgtOQnpr8cQbIUorHQhW2mRK8k35odrup176D2mmmelfzPvi4PoAIw2eseMlota6
- hz2RSfTebiGEgTxkuXi7YkX2eprZDhUeeYHK2ipa0emOK65JzfiqTH0RKRklMb/HQ7b+
- i5WdfXFYK6KYpTU0LPiXvhA5e2EmnQWhqNBNxPfjR1JQLdih6j5jiYldzX4xOJc85pYc
- YMBg==
-X-Gm-Message-State: AOAM530MZt6NJBsjg7FB4olieTIQZheUGdeG7fYagBDK2wldiXsbNv3K
- 5hfEu4rvP8aqbenpOFSqZcU=
-X-Google-Smtp-Source: ABdhPJxhksCAGOk3JAcFq15JrepLPez2XrzSDA7b9WxJVd1Jzq2verZqIaVftogrwqD0KjajojtEsw==
-X-Received: by 2002:a5d:4a09:: with SMTP id m9mr26874209wrq.310.1614173779234; 
- Wed, 24 Feb 2021 05:36:19 -0800 (PST)
+ bh=rp6xFbMVcSNr3U+KePG0/i37RYbSH1lUEiS0Y/RzdOU=;
+ b=Sa6ebU8NESFx4yD2JMYZCc4jc5gJUjy4OlyfP9d44oVKtYKMYqCIbN9Ontxn875Gj5
+ ezOUNbHI1fUV9phIigLZO0MGJzV5jbn6/5La1osFBf9c9dErWA3ByZV1QjmdkV34wdqB
+ b+HWfqYGnGlYpRhftOfFDXP0t6zvSLUKPgjE8ve5Fg+Pojeot3lGsmDIBj5QM9bD8OG1
+ J2ZJd8l1dyaQEQE+F+sLbg1aVLXVybD1KqGjBiLCHwbR9Cz6iwjt0DtPrB05MiNsIJ5N
+ B4Z2pH3H0rUfy8SkkfTG6+dtuAG/68XwYSTyQKOawQ2FveWzFDzM0fcVJDoIPdIRDYRc
+ PPYw==
+X-Gm-Message-State: AOAM533iflTYfuv5PX5FiDm/8rAaWbke7Gk04y4GI7WZOCGKRpJsGoRT
+ DhrSlt3Au8bA+dFPB4WZH/Y=
+X-Google-Smtp-Source: ABdhPJw0MxwBtXUxHE7ZBUDyzNlLM4MxrrjRipAt6fYrgf8jDMdyN1rtiQm3NBCDC0X9YA8LNWW25A==
+X-Received: by 2002:a2e:7409:: with SMTP id p9mr19032678ljc.404.1614175815511; 
+ Wed, 24 Feb 2021 06:10:15 -0800 (PST)
 Received: from rocinante ([95.155.85.46])
- by smtp.gmail.com with ESMTPSA id j125sm3000640wmb.44.2021.02.24.05.36.17
+ by smtp.gmail.com with ESMTPSA id n13sm509705lfu.265.2021.02.24.06.10.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Feb 2021 05:36:18 -0800 (PST)
-Date: Wed, 24 Feb 2021 14:36:16 +0100
+ Wed, 24 Feb 2021 06:10:15 -0800 (PST)
+Date: Wed, 24 Feb 2021 15:10:13 +0100
 From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
 To: Jianjun Wang <jianjun.wang@mediatek.com>
-Subject: Re: [v8,3/7] PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
-Message-ID: <YDZWUGcKet/lNWlF@rocinante>
+Subject: Re: [v8,6/7] PCI: mediatek-gen3: Add system PM support
+Message-ID: <YDZeRc6CHV/WzyCm@rocinante>
 References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
- <20210224061132.26526-4-jianjun.wang@mediatek.com>
+ <20210224061132.26526-7-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210224061132.26526-4-jianjun.wang@mediatek.com>
+In-Reply-To: <20210224061132.26526-7-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_083623_625349_1AC24EAA 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20210224_091021_310580_254A795B 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,87 +98,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Jianjun,
 
-Thank you for all the work here!
+> Add suspend_noirq and resume_noirq callback functions to implement
+> PM system suspend hooks for MediaTek Gen3 PCIe controller.
+
+So, "systems suspend" and "resume" hooks, correct?
+
+> When system suspend, trigger the PCIe link to L2 state and pull down
+
+It probably would be "the system suspends".
 
 [...]
-> + * struct mtk_pcie_port - PCIe port information
-> + * @dev: pointer to PCIe device
-> + * @base: IO mapped register base
-> + * @reg_base: Physical register base
-> + * @mac_reset: mac reset control
-> + * @phy_reset: phy reset control
-> + * @phy: PHY controller block
-> + * @clks: PCIe clocks
-> + * @num_clks: PCIe clocks count for this port
+> When system resum, the PCIe link should be re-established and the
+> related control register values should be restored.
 
-It would be "MAC" and "PHY" in the above.
+Similarly to the above: "the system resumes".
 
 [...]
-> + * mtk_pcie_config_tlp_header
-> + * @bus: PCI bus to query
-> + * @devfn: device/function number
-> + * @where: offset in config space
-> + * @size: data size in TLP header
-> + *
-> + * Set byte enable field and device information in configuration TLP header.
+> +	if (err) {
+> +		dev_err(port->dev, "can not enter L2 state\n");
+> +		return err;
+> +	}
 
-The kernel-doc above might be missing brief function description.  See
-the following for more concrete example:
+Most likely you want "cannot" or "can't" in the above error message.
 
-  https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html#function-documentation
-
-[...]
-> +static int mtk_pcie_set_trans_table(struct mtk_pcie_port *port,
-> +				    resource_size_t cpu_addr,
-> +				    resource_size_t pci_addr,
-> +				    resource_size_t size,
-> +				    unsigned long type, int num)
-> +{
-> +	void __iomem *table;
-> +	u32 val;
+> +	/* Pull down the PERST# pin */
+> +	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
+> +	val |= PCIE_PE_RSTB;
+> +	writel_relaxed(val, port->base + PCIE_RST_CTRL_REG);
 > +
-> +	if (num >= PCIE_MAX_TRANS_TABLES) {
-> +		dev_err(port->dev, "not enough translate table[%d] for addr: %#llx, limited to [%d]\n",
+> +	dev_dbg(port->dev, "enter L2 state success");
 
-The wording of this error message is a little confusing.
-
-> +			num, (unsigned long long) cpu_addr,
-
-No space between the bracket and the variable name.
+Just a nitpick.  What about "entered L2 states successfully"?
 
 [...]
-> +	err = phy_init(port->phy);
 > +	if (err) {
-> +		dev_err(dev, "failed to initialize PCIe phy\n");
-> +		goto err_phy_init;
+> +		dev_err(port->dev, "resume failed\n");
+> +		return err;
 > +	}
-> +
-> +	err = phy_power_on(port->phy);
-> +	if (err) {
-> +		dev_err(dev, "failed to power on PCIe phy\n");
-> +		goto err_phy_on;
-> +	}
-[...]
 
-It would be "PHY" in the error messages above.
+This error message does not quite convey that the mtk_pcie_startup_port()
+was the function that failed, which is only a part of what you have to do
+to successfully resume.
 
-[...]
-> +	if (err) {
-> +		dev_err(dev, "clock init failed\n");
-> +		goto err_clk_init;
-> +	}
-[...]
+> +	dev_dbg(port->dev, "resume done\n");
 
-A nitpick, so feel free to ignore it, of course.  What about "failed to
-initialize clock" to keep the style consistent.
-
-[...]
-> +	err = mtk_pcie_startup_port(port);
-> +	if (err) {
-> +		dev_err(dev, "PCIe startup failed\n");
-[...]
-
-Also a nitpick.  What about "failed to bring PCIe link up"?
+A nitpick.  Probably not needed, as lack of error message would mean
+that the device resumed successfully after being suspended.
 
 Krzysztof
 
