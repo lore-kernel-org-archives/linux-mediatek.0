@@ -2,76 +2,93 @@ Return-Path: <SRS0=l1Zb=H2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2239AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 06:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A9E8C433E6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 08:11:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9DC4264E24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 06:23:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DC4264E24
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1071D64EDB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Feb 2021 08:11:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1071D64EDB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7Bstf8uP3yAjnJ8FmiqSAHg9tUZs+kuDLqvhi2BWyj8=; b=xV0ifTbCQN4ldCl2KbPrpqRGx
-	zxGJRSRBRoy+v+uHU7wnoVRthCcFvn59ty+Aa9xS2/qnX5XtSFpPEhc2QtrepGDQV+pAQZsCEODi/
-	TanlKJ95Zoesg7WQdJsMLG5rjVYlrhTug1AOj/sCHEpYBxxAlGncZ3/8uBhQlNzxE8Fykn0NSRu7Y
-	bQ/B+ykfp7kr3y9edh8X7Q6RfO8g/SsEkSBdAlZfGmhcNPivLPgSLV4Kp5cIA7LhHkp5VY4aBMTCp
-	RLefUZKJ7MhX8RAwipLWCUNF49rpwDxK+AsCvMlDZPIHnWhCXal2VqW0g9R5pAaWLATZl3F3Ms+y6
-	N/zuTEigQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/EOOBU/r7hoSJNpumawocI5StSPtqpxP025UEcadHOY=; b=mBcSJQWA4TzmhH76bzwd6hqhuJ
+	zMjYFD1otWbMyKwV0F+5B3z0ZP/TlJiOBu6WFiItpA7X40TC5bIEqJUvuL2e7cSPEpuiAEi0EeX7i
+	6kWDsg2FlY2q3vmyWMfEPLHBptKF6+biT2asQAtanW0B3PIhuUdWizZiEoiQ6dU/UYpYRoP2c/XDq
+	tmfYOt9CrylnYLt+/b9gVD/QPM7FdE5vDx/Vc8vfiY2TjjPI4bh5B7aSkd4/eGoYPa9bSWocDQjP/
+	jBdO0biTtkPoq9krk3VqERBaLm4OxGfHYNtlVvydwhF/29AFpuXf7KqBmdYikPTNtFsNK4Rlob+as
+	JEAdE0ow==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEnZT-0002Y3-Th; Wed, 24 Feb 2021 06:22:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lEpFq-00038S-Ur; Wed, 24 Feb 2021 08:10:42 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEnZC-0002Px-Be; Wed, 24 Feb 2021 06:22:35 +0000
-X-UUID: db8614e2c39848338276d4c2b5c3ddf5-20210223
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=yOhQeL3GPrUO/3x/RxocOdC2QbDyEcYmRsxdbD4qmXw=; 
- b=svZ8l9qWQvm8K5483YykL8t6PwCFWw42jTSWrkL8+aGZfnEkSvdVWVloW65NIoHO3tBCmquBbi1pBcb645KmxPUVPuTIlMCEIqTEpqdpbjRq27+tFh3N/7QDL5JlOPTxPhoY59jt59GCwbrXdX5CyBBzXwchuqgSuuyy8BPsWYw=;
-X-UUID: db8614e2c39848338276d4c2b5c3ddf5-20210223
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2133957371; Tue, 23 Feb 2021 22:22:29 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Feb 2021 22:12:34 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 24 Feb 2021 14:12:28 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 24 Feb 2021 14:12:27 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- <maz@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
- <ryder.lee@mediatek.com>
-Subject: [v8,3/7] PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
-Date: Wed, 24 Feb 2021 14:11:28 +0800
-Message-ID: <20210224061132.26526-4-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210224061132.26526-1-jianjun.wang@mediatek.com>
-References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
+ id 1lEpFi-00036o-PS; Wed, 24 Feb 2021 08:10:35 +0000
+Received: by mail-pg1-x532.google.com with SMTP id p21so942796pgl.12;
+ Wed, 24 Feb 2021 00:10:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=H7X++sm+Rm3DpXpYKvCcJeEOwCgrKeE5A92SU9+4RS0=;
+ b=J4xIEEYfuDCHBvegZvnnOG6Y/bTrhpSsgKTnK+8iwz8tJwW9lI9P1nZgL5gmzf1qRQ
+ 4X8N2tIamtZQNiPF7XRCxzmjj3OVPWvTw/yvypxEIQs04GagjCH6V7B7lx616+Nua7J0
+ IFgggXxmRgPjo7RYDl9c5gjLdMH6dN/4avUllltAy811omdVuuBKxgnNrvxG4x8vFU2A
+ yK7rctQ1LdkaVxsU5RWZkEeqBe0rt4LJxbWVIThTXnuiRiU9TtXTwkxs8wKGF1LwCvoh
+ 8VUcBmpidA/Z6hACOpZVo7hTuFUknZq7fJqR3OX4ZCDeaeijvrRBi6QBh0P9H7UA1mp6
+ kAkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=H7X++sm+Rm3DpXpYKvCcJeEOwCgrKeE5A92SU9+4RS0=;
+ b=YKUWT7uE6PGv/Z61TvpVsi08nX8Dn20yjw7u3G3mY6oCNK4remJzPDk7/Z8n/j5rwo
+ YDqprvv7xR/5naBLn7/sC+u15O3vHjAv8TcN4eofyGCqnblbc4L3gqs66c2Y72H+0Np+
+ RH8wmPW5NJ/+TU0bfutj/rxUHEfquLscjpYDf7WLs/UiH5Vj6JN6Pw3tiNP5JFjctGGd
+ jFbBWsXKN0kEnOunSMgnaY9Bm0RmiMFT3f1wud2quOxxiwXryiOAGD0qHQpZLBHEmcK4
+ LcXbyImD4/9xjeCtNa7o5Rsxpz2p9E+uVAzqjyXzmgxjLF/802Y0pmSzUBTjUs1nVDEx
+ DYmg==
+X-Gm-Message-State: AOAM533wOvFzauOhoq/tFG2qDELy6xUOVvaFuoIk7pWUBcHudQUl3R/a
+ yMh+lQVqYM8wEQgHRwF5R+g=
+X-Google-Smtp-Source: ABdhPJx9sWZJAFz8Ks8Wx43qrtbdUef55wYvixMgb2Ku/xIBs0ZTjGAxrj7a1VoSzxpk9VrUnZCpHw==
+X-Received: by 2002:aa7:9634:0:b029:1ed:1624:4ccd with SMTP id
+ r20-20020aa796340000b02901ed16244ccdmr6326342pfg.64.1614154230791; 
+ Wed, 24 Feb 2021 00:10:30 -0800 (PST)
+Received: from container-ubuntu.lan ([171.211.28.221])
+ by smtp.gmail.com with ESMTPSA id j2sm1425748pgq.34.2021.02.24.00.10.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Feb 2021 00:10:29 -0800 (PST)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [RFC net-next] net: dsa: mt7530: support MDB and bridge flag
+ operations
+Date: Wed, 24 Feb 2021 16:10:18 +0800
+Message-Id: <20210224081018.24719-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CC1C5FC9F25366E9B39CB8C48F8DAF4CD322519CD47307D35BA329B8DB9CA52F2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_012234_735893_D9AF147C 
-X-CRM114-Status: GOOD (  24.39  )
+X-CRM114-CacheID: sfid-20210224_031034_962773_1231E8A2 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,536 +100,268 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- Rex-BC.Chen@mediatek.com, qizhong.cheng@mediatek.com,
- chuanjia.liu@mediatek.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, anson.chuang@mediatek.com,
- Jianjun Wang <jianjun.wang@mediatek.com>, sin_jieyang@mediatek.com, Sj
- Huang <sj.huang@mediatek.com>, linux-mediatek@lists.infradead.org,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
+ Frank Wunderlich <frank-w@public-files.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek's PCIe host controller has three generation HWs, the new
-generation HW is an individual bridge, it supports Gen3 speed and
-compatible with Gen2, Gen1 speed.
+Support port MDB and bridge flag operations.
 
-Add support for new Gen3 controller which can be found on MT8192.
+As the hardware can manage multicast forwarding itself, offload_fwd_mark
+can be unconditionally set to true.
 
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 ---
- drivers/pci/controller/Kconfig              |  13 +
- drivers/pci/controller/Makefile             |   1 +
- drivers/pci/controller/pcie-mediatek-gen3.c | 457 ++++++++++++++++++++
- 3 files changed, 471 insertions(+)
- create mode 100644 drivers/pci/controller/pcie-mediatek-gen3.c
+Changes:
+Add bridge flag operations and resend as RFC
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 64e2f5e379aa..b242b17025b3 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -242,6 +242,19 @@ config PCIE_MEDIATEK
- 	  Say Y here if you want to enable PCIe controller support on
- 	  MediaTek SoCs.
+ drivers/net/dsa/mt7530.c | 123 +++++++++++++++++++++++++++++++++++++--
+ drivers/net/dsa/mt7530.h |   1 +
+ net/dsa/tag_mtk.c        |  14 +----
+ 3 files changed, 121 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index bca4fc724e45..341a6b3f7ef6 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1000,8 +1000,9 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+ 	mt7530_write(priv, MT7530_PVC_P(port),
+ 		     PORT_SPEC_TAG);
  
-+config PCIE_MEDIATEK_GEN3
-+	tristate "MediaTek Gen3 PCIe controller"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on PCI_MSI_IRQ_DOMAIN
-+	help
-+	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
-+	  This PCIe controller is compatible with Gen3, Gen2 and Gen1 speed,
-+	  and support up to 256 MSI interrupt numbers for
-+	  multi-function devices.
-+
-+	  Say Y here if you want to enable Gen3 PCIe controller support on
-+	  MediaTek SoCs.
-+
- config PCIE_TANGO_SMP8759
- 	bool "Tango SMP8759 PCIe controller (DANGEROUS)"
- 	depends on ARCH_TANGO && PCI_MSI && OF
-diff --git a/drivers/pci/controller/Makefile b/drivers/pci/controller/Makefile
-index 04c6edc285c5..df5d77d72a9d 100644
---- a/drivers/pci/controller/Makefile
-+++ b/drivers/pci/controller/Makefile
-@@ -27,6 +27,7 @@ obj-$(CONFIG_PCIE_ROCKCHIP) += pcie-rockchip.o
- obj-$(CONFIG_PCIE_ROCKCHIP_EP) += pcie-rockchip-ep.o
- obj-$(CONFIG_PCIE_ROCKCHIP_HOST) += pcie-rockchip-host.o
- obj-$(CONFIG_PCIE_MEDIATEK) += pcie-mediatek.o
-+obj-$(CONFIG_PCIE_MEDIATEK_GEN3) += pcie-mediatek-gen3.o
- obj-$(CONFIG_PCIE_TANGO_SMP8759) += pcie-tango.o
- obj-$(CONFIG_VMD) += vmd.o
- obj-$(CONFIG_PCIE_BRCMSTB) += pcie-brcmstb.o
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-new file mode 100644
-index 000000000000..c602beb9afec
---- /dev/null
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -0,0 +1,457 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * MediaTek PCIe host controller driver.
-+ *
-+ * Copyright (c) 2020 MediaTek Inc.
-+ * Author: Jianjun Wang <jianjun.wang@mediatek.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/iopoll.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/pci.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_domain.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/reset.h>
-+
-+#include "../pci.h"
-+
-+#define PCIE_SETTING_REG		0x80
-+#define PCIE_PCI_IDS_1			0x9c
-+#define PCI_CLASS(class)		(class << 8)
-+#define PCIE_RC_MODE			BIT(0)
-+
-+#define PCIE_CFGNUM_REG			0x140
-+#define PCIE_CFG_DEVFN(devfn)		((devfn) & GENMASK(7, 0))
-+#define PCIE_CFG_BUS(bus)		(((bus) << 8) & GENMASK(15, 8))
-+#define PCIE_CFG_BYTE_EN(bytes)		(((bytes) << 16) & GENMASK(19, 16))
-+#define PCIE_CFG_FORCE_BYTE_EN		BIT(20)
-+#define PCIE_CFG_OFFSET_ADDR		0x1000
-+#define PCIE_CFG_HEADER(bus, devfn) \
-+	(PCIE_CFG_BUS(bus) | PCIE_CFG_DEVFN(devfn))
-+
-+#define PCIE_RST_CTRL_REG		0x148
-+#define PCIE_MAC_RSTB			BIT(0)
-+#define PCIE_PHY_RSTB			BIT(1)
-+#define PCIE_BRG_RSTB			BIT(2)
-+#define PCIE_PE_RSTB			BIT(3)
-+
-+#define PCIE_LTSSM_STATUS_REG		0x150
-+
-+#define PCIE_LINK_STATUS_REG		0x154
-+#define PCIE_PORT_LINKUP		BIT(8)
-+
-+#define PCIE_TRANS_TABLE_BASE_REG	0x800
-+#define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
-+#define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
-+#define PCIE_ATR_TRSL_ADDR_MSB_OFFSET	0xc
-+#define PCIE_ATR_TRSL_PARAM_OFFSET	0x10
-+#define PCIE_ATR_TLB_SET_OFFSET		0x20
-+
-+#define PCIE_MAX_TRANS_TABLES		8
-+#define PCIE_ATR_EN			BIT(0)
-+#define PCIE_ATR_SIZE(size) \
-+	(((((size) - 1) << 1) & GENMASK(6, 1)) | PCIE_ATR_EN)
-+#define PCIE_ATR_ID(id)			((id) & GENMASK(3, 0))
-+#define PCIE_ATR_TYPE_MEM		PCIE_ATR_ID(0)
-+#define PCIE_ATR_TYPE_IO		PCIE_ATR_ID(1)
-+#define PCIE_ATR_TLP_TYPE(type)		(((type) << 16) & GENMASK(18, 16))
-+#define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
-+#define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
-+
-+/**
-+ * struct mtk_pcie_port - PCIe port information
-+ * @dev: pointer to PCIe device
-+ * @base: IO mapped register base
-+ * @reg_base: Physical register base
-+ * @mac_reset: mac reset control
-+ * @phy_reset: phy reset control
-+ * @phy: PHY controller block
-+ * @clks: PCIe clocks
-+ * @num_clks: PCIe clocks count for this port
-+ */
-+struct mtk_pcie_port {
-+	struct device *dev;
-+	void __iomem *base;
-+	phys_addr_t reg_base;
-+	struct reset_control *mac_reset;
-+	struct reset_control *phy_reset;
-+	struct phy *phy;
-+	struct clk_bulk_data *clks;
-+	int num_clks;
-+};
-+
-+/**
-+ * mtk_pcie_config_tlp_header
-+ * @bus: PCI bus to query
-+ * @devfn: device/function number
-+ * @where: offset in config space
-+ * @size: data size in TLP header
-+ *
-+ * Set byte enable field and device information in configuration TLP header.
-+ */
-+static void mtk_pcie_config_tlp_header(struct pci_bus *bus, unsigned int devfn,
-+					int where, int size)
+-	/* Unknown multicast frame forwarding to the cpu port */
+-	mt7530_rmw(priv, MT7530_MFC, UNM_FFP_MASK, UNM_FFP(BIT(port)));
++	/* Disable flooding by default */
++	mt7530_rmw(priv, MT7530_MFC, BC_FFP_MASK | UNM_FFP_MASK | UNU_FFP_MASK,
++		   BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) | UNU_FFP(BIT(port)));
+ 
+ 	/* Set CPU port number */
+ 	if (priv->id == ID_MT7621)
+@@ -1138,6 +1139,55 @@ mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
+ 	mt7530_rmw(priv, MT7530_SSP_P(port), FID_PST_MASK, stp_state);
+ }
+ 
++static int
++mt7530_port_pre_bridge_flags(struct dsa_switch *ds, int port,
++			     struct switchdev_brport_flags flags,
++			     struct netlink_ext_ack *extack)
 +{
-+	struct mtk_pcie_port *port = bus->sysdata;
-+	int bytes;
-+	u32 val;
-+
-+	bytes = (GENMASK(size - 1, 0) & 0xf) << (where & 0x3);
-+
-+	val = PCIE_CFG_FORCE_BYTE_EN | PCIE_CFG_BYTE_EN(bytes) |
-+	      PCIE_CFG_HEADER(bus->number, devfn);
-+
-+	writel_relaxed(val, port->base + PCIE_CFGNUM_REG);
-+}
-+
-+static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus, unsigned int devfn,
-+				      int where)
-+{
-+	struct mtk_pcie_port *port = bus->sysdata;
-+
-+	return port->base + PCIE_CFG_OFFSET_ADDR + where;
-+}
-+
-+static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
-+				int where, int size, u32 *val)
-+{
-+	mtk_pcie_config_tlp_header(bus, devfn, where, size);
-+
-+	return pci_generic_config_read32(bus, devfn, where, size, val);
-+}
-+
-+static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
-+				 int where, int size, u32 val)
-+{
-+	mtk_pcie_config_tlp_header(bus, devfn, where, size);
-+
-+	if (size <= 2)
-+		val <<= (where & 0x3) * 8;
-+
-+	return pci_generic_config_write32(bus, devfn, where, 4, val);
-+}
-+
-+static struct pci_ops mtk_pcie_ops = {
-+	.map_bus = mtk_pcie_map_bus,
-+	.read  = mtk_pcie_config_read,
-+	.write = mtk_pcie_config_write,
-+};
-+
-+static int mtk_pcie_set_trans_table(struct mtk_pcie_port *port,
-+				    resource_size_t cpu_addr,
-+				    resource_size_t pci_addr,
-+				    resource_size_t size,
-+				    unsigned long type, int num)
-+{
-+	void __iomem *table;
-+	u32 val;
-+
-+	if (num >= PCIE_MAX_TRANS_TABLES) {
-+		dev_err(port->dev, "not enough translate table[%d] for addr: %#llx, limited to [%d]\n",
-+			num, (unsigned long long) cpu_addr,
-+			PCIE_MAX_TRANS_TABLES);
-+		return -ENODEV;
-+	}
-+
-+	table = port->base + PCIE_TRANS_TABLE_BASE_REG +
-+		num * PCIE_ATR_TLB_SET_OFFSET;
-+
-+	writel_relaxed(lower_32_bits(cpu_addr) | PCIE_ATR_SIZE(fls(size) - 1),
-+		       table);
-+	writel_relaxed(upper_32_bits(cpu_addr),
-+		       table + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
-+	writel_relaxed(lower_32_bits(pci_addr),
-+		       table + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
-+	writel_relaxed(upper_32_bits(pci_addr),
-+		       table + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
-+
-+	if (type == IORESOURCE_IO)
-+		val = PCIE_ATR_TYPE_IO | PCIE_ATR_TLP_TYPE_IO;
-+	else
-+		val = PCIE_ATR_TYPE_MEM | PCIE_ATR_TLP_TYPE_MEM;
-+
-+	writel_relaxed(val, table + PCIE_ATR_TRSL_PARAM_OFFSET);
++	if (flags.mask & ~(BR_AUTO_MASK | BR_MCAST_FLOOD | BR_BCAST_FLOOD))
++		return -EINVAL;
 +
 +	return 0;
 +}
 +
-+static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
++static int
++mt7530_port_bridge_flags(struct dsa_switch *ds, int port,
++			 struct switchdev_brport_flags flags,
++			 struct netlink_ext_ack *extack)
 +{
-+	struct resource_entry *entry;
-+	struct pci_host_bridge *host = pci_host_bridge_from_priv(port);
-+	unsigned int table_index = 0;
-+	int err;
-+	u32 val;
++	struct mt7530_priv *priv = ds->priv;
 +
-+	/* Set as RC mode */
-+	val = readl_relaxed(port->base + PCIE_SETTING_REG);
-+	val |= PCIE_RC_MODE;
-+	writel_relaxed(val, port->base + PCIE_SETTING_REG);
++	if (flags.mask & BR_LEARNING)
++		mt7530_rmw(priv, MT7530_PSC_P(port), SA_DIS,
++			   flags.val & BR_LEARNING ? 0 : SA_DIS);
 +
-+	/* Set class code */
-+	val = readl_relaxed(port->base + PCIE_PCI_IDS_1);
-+	val &= ~GENMASK(31, 8);
-+	val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
-+	writel_relaxed(val, port->base + PCIE_PCI_IDS_1);
++	if (flags.mask & BR_FLOOD)
++		mt7530_rmw(priv, MT7530_MFC, UNU_FFP(BIT(port)),
++			   flags.val & BR_FLOOD ? UNU_FFP(BIT(port)) : 0);
 +
-+	/* Assert all reset signals */
-+	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
-+	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-+	writel_relaxed(val, port->base + PCIE_RST_CTRL_REG);
++	if (flags.mask & BR_MCAST_FLOOD)
++		mt7530_rmw(priv, MT7530_MFC, UNM_FFP(BIT(port)),
++			   flags.val & BR_MCAST_FLOOD ? UNM_FFP(BIT(port)) : 0);
 +
-+	/* De-assert reset signals */
-+	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB);
-+	writel_relaxed(val, port->base + PCIE_RST_CTRL_REG);
-+
-+	/* Delay 100ms to wait the reference clocks become stable */
-+	msleep(100);
-+
-+	/* De-assert PERST# signal */
-+	val &= ~PCIE_PE_RSTB;
-+	writel_relaxed(val, port->base + PCIE_RST_CTRL_REG);
-+
-+	/* Check if the link is up or not */
-+	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_REG, val,
-+				 !!(val & PCIE_PORT_LINKUP), 20,
-+				 50 * USEC_PER_MSEC);
-+	if (err) {
-+		val = readl_relaxed(port->base + PCIE_LTSSM_STATUS_REG);
-+		dev_err(port->dev, "PCIe link down, ltssm reg val: %#x\n", val);
-+		return err;
-+	}
-+
-+	/* Set PCIe translation windows */
-+	resource_list_for_each_entry(entry, &host->windows) {
-+		struct resource *res = entry->res;
-+		unsigned long type = resource_type(res);
-+		resource_size_t cpu_addr;
-+		resource_size_t pci_addr;
-+		resource_size_t size;
-+		const char *range_type;
-+
-+		if (type == IORESOURCE_IO) {
-+			cpu_addr = pci_pio_to_address(res->start);
-+			range_type = "IO";
-+		} else if (type == IORESOURCE_MEM) {
-+			cpu_addr = res->start;
-+			range_type = "MEM";
-+		} else {
-+			continue;
-+		}
-+
-+		pci_addr = res->start - entry->offset;
-+		size = resource_size(res);
-+		err = mtk_pcie_set_trans_table(port, cpu_addr, pci_addr, size,
-+					       type, table_index);
-+		if (err)
-+			return err;
-+
-+		dev_dbg(port->dev, "set %s trans window[%d]: cpu_addr = %#llx, pci_addr = %#llx, size = %#llx\n",
-+			range_type, table_index, (unsigned long long) cpu_addr,
-+			(unsigned long long) pci_addr,
-+			(unsigned long long) size);
-+
-+		table_index++;
-+	}
++	if (flags.mask & BR_BCAST_FLOOD)
++		mt7530_rmw(priv, MT7530_MFC, BC_FFP(BIT(port)),
++			   flags.val & BR_BCAST_FLOOD ? BC_FFP(BIT(port)) : 0);
 +
 +	return 0;
 +}
 +
-+static int mtk_pcie_clk_init(struct mtk_pcie_port *port)
++static int
++mt7530_port_set_mrouter(struct dsa_switch *ds, int port, bool mrouter,
++			struct netlink_ext_ack *extack)
 +{
++	struct mt7530_priv *priv = ds->priv;
++
++	mt7530_rmw(priv, MT7530_MFC, UNM_FFP(BIT(port)),
++		   mrouter ? UNM_FFP(BIT(port)) : 0);
++
++	return 0;
++}
++
+ static int
+ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
+ 			struct net_device *bridge)
+@@ -1349,6 +1399,59 @@ mt7530_port_fdb_dump(struct dsa_switch *ds, int port,
+ 	return 0;
+ }
+ 
++static int
++mt7530_port_mdb_add(struct dsa_switch *ds, int port,
++		    const struct switchdev_obj_port_mdb *mdb)
++{
++	struct mt7530_priv *priv = ds->priv;
++	const u8 *addr = mdb->addr;
++	u16 vid = mdb->vid;
++	u8 port_mask = 0;
 +	int ret;
 +
-+	port->num_clks = devm_clk_bulk_get_all(port->dev, &port->clks);
-+	if (port->num_clks < 0) {
-+		dev_err(port->dev, "failed to get PCIe clock\n");
-+		return port->num_clks;
-+	}
++	mutex_lock(&priv->reg_mutex);
 +
-+	ret = clk_bulk_prepare_enable(port->num_clks, port->clks);
-+	if (ret) {
-+		dev_err(port->dev, "failed to enable PCIe clocks\n");
-+		return ret;
-+	}
++	mt7530_fdb_write(priv, vid, 0, addr, 0, STATIC_EMP);
++	if (!mt7530_fdb_cmd(priv, MT7530_FDB_READ, NULL))
++		port_mask = (mt7530_read(priv, MT7530_ATRD) >> PORT_MAP)
++			    & PORT_MAP_MASK;
 +
-+	return 0;
++	port_mask |= BIT(port);
++	mt7530_fdb_write(priv, vid, port_mask, addr, -1, STATIC_ENT);
++	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, NULL);
++
++	mutex_unlock(&priv->reg_mutex);
++
++	return ret;
 +}
 +
-+static int mtk_pcie_power_up(struct mtk_pcie_port *port)
++static int
++mt7530_port_mdb_del(struct dsa_switch *ds, int port,
++		    const struct switchdev_obj_port_mdb *mdb)
 +{
-+	struct device *dev = port->dev;
-+	int err;
++	struct mt7530_priv *priv = ds->priv;
++	const u8 *addr = mdb->addr;
++	u16 vid = mdb->vid;
++	u8 port_mask = 0;
++	int ret;
 +
-+	port->phy_reset = devm_reset_control_get_optional_exclusive(dev, "phy");
-+	if (IS_ERR(port->phy_reset))
-+		return PTR_ERR(port->phy_reset);
++	mutex_lock(&priv->reg_mutex);
 +
-+	/* PHY power on and enable pipe clock */
-+	port->phy = devm_phy_optional_get(dev, "pcie-phy");
-+	if (IS_ERR(port->phy))
-+		return PTR_ERR(port->phy);
++	mt7530_fdb_write(priv, vid, 0, addr, 0, STATIC_EMP);
++	if (!mt7530_fdb_cmd(priv, MT7530_FDB_READ, NULL))
++		port_mask = (mt7530_read(priv, MT7530_ATRD) >> PORT_MAP)
++			    & PORT_MAP_MASK;
 +
-+	reset_control_deassert(port->phy_reset);
++	port_mask &= ~BIT(port);
++	mt7530_fdb_write(priv, vid, port_mask, addr, -1,
++			 port_mask ? STATIC_ENT : STATIC_EMP);
++	ret = mt7530_fdb_cmd(priv, MT7530_FDB_WRITE, NULL);
 +
-+	err = phy_init(port->phy);
-+	if (err) {
-+		dev_err(dev, "failed to initialize PCIe phy\n");
-+		goto err_phy_init;
-+	}
++	mutex_unlock(&priv->reg_mutex);
 +
-+	err = phy_power_on(port->phy);
-+	if (err) {
-+		dev_err(dev, "failed to power on PCIe phy\n");
-+		goto err_phy_on;
-+	}
-+
-+	port->mac_reset = devm_reset_control_get_optional_exclusive(dev, "mac");
-+	if (IS_ERR(port->mac_reset)) {
-+		err = PTR_ERR(port->mac_reset);
-+		goto err_mac_rst;
-+	}
-+
-+	reset_control_deassert(port->mac_reset);
-+
-+	/* MAC power on and enable transaction layer clocks */
-+	pm_runtime_enable(dev);
-+	pm_runtime_get_sync(dev);
-+
-+	err = mtk_pcie_clk_init(port);
-+	if (err) {
-+		dev_err(dev, "clock init failed\n");
-+		goto err_clk_init;
-+	}
-+
-+	return 0;
-+
-+err_clk_init:
-+	pm_runtime_put_sync(dev);
-+	pm_runtime_disable(dev);
-+	reset_control_assert(port->mac_reset);
-+err_mac_rst:
-+	phy_power_off(port->phy);
-+err_phy_on:
-+	phy_exit(port->phy);
-+err_phy_init:
-+	reset_control_assert(port->phy_reset);
-+
-+	return err;
++	return ret;
 +}
 +
-+static void mtk_pcie_power_down(struct mtk_pcie_port *port)
-+{
-+	clk_bulk_disable_unprepare(port->num_clks, port->clks);
+ static int
+ mt7530_vlan_cmd(struct mt7530_priv *priv, enum mt7530_vlan_cmd cmd, u16 vid)
+ {
+@@ -2490,9 +2593,13 @@ mt7530_setup(struct dsa_switch *ds)
+ 			ret = mt753x_cpu_port_enable(ds, i);
+ 			if (ret)
+ 				return ret;
+-		} else
++		} else {
+ 			mt7530_port_disable(ds, i);
+ 
++			/* Disable learning by default on all user ports */
++			mt7530_set(priv, MT7530_PSC_P(i), SA_DIS);
++		}
 +
-+	pm_runtime_put_sync(port->dev);
-+	pm_runtime_disable(port->dev);
-+	reset_control_assert(port->mac_reset);
-+
-+	phy_power_off(port->phy);
-+	phy_exit(port->phy);
-+	reset_control_assert(port->phy_reset);
-+}
-+
-+static int mtk_pcie_setup(struct mtk_pcie_port *port)
-+{
-+	struct device *dev = port->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
-+	struct resource *regs;
-+	int err;
-+
-+	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
-+	port->base = devm_ioremap_resource(dev, regs);
-+	if (IS_ERR(port->base)) {
-+		dev_err(dev, "failed to map register base\n");
-+		return PTR_ERR(port->base);
-+	}
-+
-+	port->reg_base = regs->start;
-+
-+	/* Don't touch the hardware registers before power up */
-+	err = mtk_pcie_power_up(port);
-+	if (err)
-+		return err;
-+
-+	/* Try link up */
-+	err = mtk_pcie_startup_port(port);
-+	if (err) {
-+		dev_err(dev, "PCIe startup failed\n");
-+		goto err_setup;
-+	}
-+
-+	return 0;
-+
-+err_setup:
-+	mtk_pcie_power_down(port);
-+
-+	return err;
-+}
-+
-+static int mtk_pcie_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_pcie_port *port;
-+	struct pci_host_bridge *host;
-+	int err;
-+
-+	host = devm_pci_alloc_host_bridge(dev, sizeof(*port));
-+	if (!host)
-+		return -ENOMEM;
-+
-+	port = pci_host_bridge_priv(host);
-+
-+	port->dev = dev;
-+	platform_set_drvdata(pdev, port);
-+
-+	err = mtk_pcie_setup(port);
-+	if (err)
-+		return err;
-+
-+	host->ops = &mtk_pcie_ops;
-+	host->sysdata = port;
-+
-+	err = pci_host_probe(host);
-+	if (err) {
-+		mtk_pcie_power_down(port);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_pcie_remove(struct platform_device *pdev)
-+{
-+	struct mtk_pcie_port *port = platform_get_drvdata(pdev);
-+	struct pci_host_bridge *host = pci_host_bridge_from_priv(port);
-+
-+	pci_lock_rescan_remove();
-+	pci_stop_root_bus(host->bus);
-+	pci_remove_root_bus(host->bus);
-+	pci_unlock_rescan_remove();
-+
-+	mtk_pcie_power_down(port);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mtk_pcie_of_match[] = {
-+	{ .compatible = "mediatek,mt8192-pcie" },
-+	{},
-+};
-+
-+static struct platform_driver mtk_pcie_driver = {
-+	.probe = mtk_pcie_probe,
-+	.remove = mtk_pcie_remove,
-+	.driver = {
-+		.name = "mtk-pcie",
-+		.of_match_table = mtk_pcie_of_match,
-+	},
-+};
-+
-+module_platform_driver(mtk_pcie_driver);
-+MODULE_LICENSE("GPL v2");
+ 		/* Enable consistent egress tag */
+ 		mt7530_rmw(priv, MT7530_PVC_P(i), PVC_EG_TAG_MASK,
+ 			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+@@ -2652,9 +2759,12 @@ mt7531_setup(struct dsa_switch *ds)
+ 			ret = mt753x_cpu_port_enable(ds, i);
+ 			if (ret)
+ 				return ret;
+-		} else
++		} else {
+ 			mt7530_port_disable(ds, i);
+ 
++			/* Disable learning by default on all user ports */
++			mt7530_set(priv, MT7530_PSC_P(i), SA_DIS);
++		}
+ 		/* Enable consistent egress tag */
+ 		mt7530_rmw(priv, MT7530_PVC_P(i), PVC_EG_TAG_MASK,
+ 			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+@@ -3381,11 +3491,16 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.port_change_mtu	= mt7530_port_change_mtu,
+ 	.port_max_mtu		= mt7530_port_max_mtu,
+ 	.port_stp_state_set	= mt7530_stp_state_set,
++	.port_pre_bridge_flags	= mt7530_port_pre_bridge_flags,
++	.port_bridge_flags	= mt7530_port_bridge_flags,
++	.port_set_mrouter	= mt7530_port_set_mrouter,
+ 	.port_bridge_join	= mt7530_port_bridge_join,
+ 	.port_bridge_leave	= mt7530_port_bridge_leave,
+ 	.port_fdb_add		= mt7530_port_fdb_add,
+ 	.port_fdb_del		= mt7530_port_fdb_del,
+ 	.port_fdb_dump		= mt7530_port_fdb_dump,
++	.port_mdb_add		= mt7530_port_mdb_add,
++	.port_mdb_del		= mt7530_port_mdb_del,
+ 	.port_vlan_filtering	= mt7530_port_vlan_filtering,
+ 	.port_vlan_add		= mt7530_port_vlan_add,
+ 	.port_vlan_del		= mt7530_port_vlan_del,
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index e4a4c8d1fbc8..fd7b66776c4e 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -34,6 +34,7 @@ enum mt753x_id {
+ /* Registers to mac forward control for unknown frames */
+ #define MT7530_MFC			0x10
+ #define  BC_FFP(x)			(((x) & 0xff) << 24)
++#define  BC_FFP_MASK			BC_FFP(~0)
+ #define  UNM_FFP(x)			(((x) & 0xff) << 16)
+ #define  UNM_FFP_MASK			UNM_FFP(~0)
+ #define  UNU_FFP(x)			(((x) & 0xff) << 8)
+diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
+index 38dcdded74c0..53b620e177ad 100644
+--- a/net/dsa/tag_mtk.c
++++ b/net/dsa/tag_mtk.c
+@@ -23,9 +23,6 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
+ 	struct dsa_port *dp = dsa_slave_to_port(dev);
+ 	u8 *mtk_tag;
+ 	bool is_vlan_skb = true;
+-	unsigned char *dest = eth_hdr(skb)->h_dest;
+-	bool is_multicast_skb = is_multicast_ether_addr(dest) &&
+-				!is_broadcast_ether_addr(dest);
+ 
+ 	/* Build the special tag after the MAC Source Address. If VLAN header
+ 	 * is present, it's required that VLAN header and special tag is
+@@ -48,10 +45,6 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
+ 		     MTK_HDR_XMIT_UNTAGGED;
+ 	mtk_tag[1] = (1 << dp->index) & MTK_HDR_XMIT_DP_BIT_MASK;
+ 
+-	/* Disable SA learning for multicast frames */
+-	if (unlikely(is_multicast_skb))
+-		mtk_tag[1] |= MTK_HDR_XMIT_SA_DIS;
+-
+ 	/* Tag control information is kept for 802.1Q */
+ 	if (!is_vlan_skb) {
+ 		mtk_tag[2] = 0;
+@@ -67,9 +60,6 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
+ 	u16 hdr;
+ 	int port;
+ 	__be16 *phdr;
+-	unsigned char *dest = eth_hdr(skb)->h_dest;
+-	bool is_multicast_skb = is_multicast_ether_addr(dest) &&
+-				!is_broadcast_ether_addr(dest);
+ 
+ 	if (unlikely(!pskb_may_pull(skb, MTK_HDR_LEN)))
+ 		return NULL;
+@@ -95,9 +85,7 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
+ 	if (!skb->dev)
+ 		return NULL;
+ 
+-	/* Only unicast or broadcast frames are offloaded */
+-	if (likely(!is_multicast_skb))
+-		skb->offload_fwd_mark = 1;
++	skb->offload_fwd_mark = 1;
+ 
+ 	return skb;
+ }
 -- 
 2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
