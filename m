@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08400C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 23:37:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79269C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 23:37:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9618464F28
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 23:37:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9618464F28
+	by mail.kernel.org (Postfix) with ESMTPS id 1F75764F26
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 23:37:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F75764F26
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,41 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eJVzLnIXqiHO4l4c8zWecOaW1MYJLpzJkUf/lqDiWIs=; b=FVzBos+UQwaEE8EByggY8NBTKZ
-	jUKmo3W8teKGAy1yrIFTIAvoTNLm5Ys0ozrdN2IxdfGv/l9hLj1eHOEbN+E4i3EtPiAAge3b0BqUv
-	8CTaMdi2wtTmRpF9g7QKW5KZH22CvfyKbFly11tSoQdbdeX2/+3eCg+bcJ5nNqTQMwNhMkHHxUyvE
-	xXjhJnj1aopJhk3yft+zhGxiNfMrzf6cZ1G6Mo+U2ZnKwyDW/IJr0ITE+2GPabIh/2uGNXfvMtFoG
-	L86whQBR/1Ub0qSJyp4TGbf1LLlt8cPS8DVYyTvsOV0TcVtUi0HpCWax4HZjK78XyziQw6dGVfveu
-	SkbVpymA==;
+	bh=eJVzLnIXqiHO4l4c8zWecOaW1MYJLpzJkUf/lqDiWIs=; b=nXp/wkQUKs5sFgErVn83De6+RX
+	kWDcFvAPSuhQ/7+05J9FgSVvaJrqyYIH4oUm0TaykMUuZc94giY33PVrJDnzGYzMwWOWpw1bX0gy8
+	QJigIkmU4v0kwqEu7qSOtMPNbV3UE3rcCZuL7LY6Q103YJFHu4nneFzdthZ+CrDRpy1MEu9j28FmL
+	ieC4+JAYjahF85r7QF9ivu1pMxj7CI7RNeopdpLaR6AFKbU9C0fpoJrL21/y/uEVgX5U31soOCejT
+	5Kgw2GQYrP2dVcskRSdJiZZAzGHosEtXqG5MCEw5m0XQcKEd+/W3Bqw0kZ6T+JZzZSWISM8LfQDqd
+	DOeE43mQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFQBl-0004Qi-N7; Thu, 25 Feb 2021 23:36:57 +0000
+	id 1lFQCV-0004Xm-DE; Thu, 25 Feb 2021 23:37:43 +0000
 Received: from labrats.qualcomm.com ([199.106.110.90])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFQBg-0004PZ-6z; Thu, 25 Feb 2021 23:36:53 +0000
-IronPort-SDR: s6tLHlwsEenhfIMerK/oN/qeKnVgjrYjaEsBvVB9gNIRKJqWBx9oRYHDwZKA6oXW7RuGRi7KjR
- 2KrBvwVm6pGgMWXA8a0U0nXg4+rrKTPIEbcyHHDVAmpmAmtUiwUZ2e0rPa6bk+WTmSgiCQOPT9
- egcHk/wuke4YJ5MLo9+0kgHZDV6zMmYTmOI7jhOG5gYyrqkGJQ1Icyir0akMzySlqemshCeGZc
- fxUTVhF7AdXzdH/3UHX5qDGzmEaD6dNsM039sBPx8LZaBKT46Sqbt3Zo0ox/6v3VuaYCweJ465
- gr0=
-X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="47791152"
-Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
- by labrats.qualcomm.com with ESMTP; 25 Feb 2021 15:36:50 -0800
+ id 1lFQCR-0004WQ-JE; Thu, 25 Feb 2021 23:37:40 +0000
+IronPort-SDR: 8ZKnWHuV6wdP9AY/ZuI0iI39Qz52MGEQXTGWf6cKvsbeMzYyR/GkwpNy4AE4B+FhHLvigkE8P4
+ Y8TG/fq3tWLPGwaHbdNPx0A6sEVC9SQvkopV2PSw2lh2kDqzHPqZcGl88au3UX/7qnQ4N02kUQ
+ dRrnW+CRWlsXNIvGCgk65DNSO8kTUk2jrjhQQa6Xd1tsk7I+oFAtWmG9X1NvhxJMiTaqeLsCSo
+ cvtafwzPQPHhOGJADThOxRfRil0/PS23icqSDYxrCJh7lp1Bs9ilGwqo+bqAPPJ6xImnJu2aCj
+ K7o=
+X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="47791155"
+Received: from unknown (HELO ironmsg01-sd.qualcomm.com) ([10.53.140.141])
+ by labrats.qualcomm.com with ESMTP; 25 Feb 2021 15:37:39 -0800
 X-QCInternal: smtphost
-Received: from stor-presley.qualcomm.com ([192.168.140.85])
- by ironmsg04-sd.qualcomm.com with ESMTP; 25 Feb 2021 15:36:49 -0800
+Received: from wsp769891wss.qualcomm.com (HELO stor-presley.qualcomm.com)
+ ([192.168.140.85])
+ by ironmsg01-sd.qualcomm.com with ESMTP; 25 Feb 2021 15:37:38 -0800
 Received: by stor-presley.qualcomm.com (Postfix, from userid 92687)
- id 153AE21A25; Thu, 25 Feb 2021 15:36:49 -0800 (PST)
+ id 5ABE121A25; Thu, 25 Feb 2021 15:37:38 -0800 (PST)
 From: Asutosh Das <asutoshd@codeaurora.org>
 To: cang@codeaurora.org, martin.petersen@oracle.com, adrian.hunter@intel.com,
  linux-scsi@vger.kernel.org
 Subject: [PATCH v8 0/2] Enable power management for ufs wlun
-Date: Thu, 25 Feb 2021 15:36:45 -0800
-Message-Id: <cover.1614295674.git.asutoshd@codeaurora.org>
+Date: Thu, 25 Feb 2021 15:37:32 -0800
+Message-ID: <cover.1614295674.git.asutoshd@codeaurora.org>
 X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210225_183652_444040_7D9B01FA 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20210225_183739_809373_08E092AF 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,6 +80,7 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20210225233732.jfYs0fkYM6oMDhlnZvgPou1PZlBss76iJ4KcSx6Gm4k@z>
 
 This patch attempts to fix a deadlock in ufs while sending SSU.
 Recently, blk_queue_enter() added a check to not process requests if the
