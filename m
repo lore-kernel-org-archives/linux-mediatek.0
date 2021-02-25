@@ -2,68 +2,79 @@ Return-Path: <SRS0=YoM+=H3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78121C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 18:58:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8101CC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 21:41:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C14564F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 18:58:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C14564F1A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wp.pl
+	by mail.kernel.org (Postfix) with ESMTPS id 30AEE64EDB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 21:41:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30AEE64EDB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6LnHp4mNqeRsx4I9pBQOh0xxIjo4mYu6ouOUxKYRYgU=; b=X3UU4673Icpye1HaoMaVlnJP0
-	XZHRHNN6QwoyZxCj2cg1iTSDhA0jYU8YP3t3XfdW70fa0+7F2TcmmAKbgwp79ei55EHIbRZ9R245M
-	jP7zpFBdLhuSfopbaw9IIomiuw8CLAbZrRzwT3xUwZeY7qbr5rt+KTq/HFyTtXGD/SsBJVskqTA7M
-	pdgnjfwMgHgOUheeGVGjxgK85Ka9cCWWqxY0WNZTJQq5rT3Vv6aoY14dT+lUcBSlsk+06/H+3TGEi
-	bMKo018op+XV6UjM3SRgTrNjECuaZJYXe2vWIKOPZYQ/ghJPRyPTkMyKEbwJzYGOKiU6uzvex4hm8
-	Fz1JJAQcQ==;
+	 bh=/d+CyxgKzkOsawPAf0P+pxGY4IKzxVgJH9DRknO/1xg=; b=quK9O2CbYv9pDY2r83Qi6sZFy
+	XVSxcRWHbkthPL6N9CkwERAYrICA1AETu9cVqi+RAhPyhmWE6gDHfDLuxt/OupZaqGWtDQClCzoRc
+	qNQ1RSDQvQsdcF0aBKu7urzi0vrBLnaIuPsvqqmThd7tjb9mZiaVpqb7LFScj9ofwoAzXZMnld4Bc
+	jkQVreJY+Xuv82SsV0SxOmH5YF7d0mBEu6cmUW6wAVua6o+ID8GF5NAtEPDabyBbk5KkcootDO1wC
+	SrLN7jJqBGd5FCnOGbLXvW5WAvmCDFTNDnPFulc7+SjSpbw82V2ESOsHvNV3OxEM8bXm+2jC703o3
+	EEqHTQrAA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFLqH-0004Eg-2T; Thu, 25 Feb 2021 18:58:29 +0000
-Received: from mx4.wp.pl ([212.77.101.12])
+	id 1lFOO9-0005XB-WD; Thu, 25 Feb 2021 21:41:38 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFLqF-0004Df-0g
- for linux-mediatek@lists.infradead.org; Thu, 25 Feb 2021 18:58:28 +0000
-Received: (wp-smtpd smtp.wp.pl 5472 invoked from network);
- 25 Feb 2021 19:51:42 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
- t=1614279103; bh=Jlr0mJspKRZ4zpFrq4Z9+nbzOH2E12NSX79EmButAiQ=;
- h=From:To:Cc:Subject;
- b=kW6vYXIBFSAG+UNmM40pyfcMd0GNROJzyfDRCJZx3VjGw8H8Hnza6CRyMKf4RThtJ
- DV2fJPgev3NYaR6XY/p3WLY0FmUk06psLEDvnB0pEUgQbUkEdyK00fn9zVKVjZCaTX
- iwFioTDs7sUP1Rnpz37mK644REXZOBAC0O4b34n4=
-Received: from unknown (HELO kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com)
- (kubakici@wp.pl@[163.114.132.7]) (envelope-sender <kubakici@wp.pl>)
- by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
- for <colin.king@canonical.com>; 25 Feb 2021 19:51:42 +0100
-Date: Thu, 25 Feb 2021 10:51:35 -0800
-From: Jakub Kicinski <kubakici@wp.pl>
-To: Colin King <colin.king@canonical.com>
-Subject: Re: [PATCH] mt7601u: fix always true expression
-Message-ID: <20210225105135.6a2e6953@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20210225183241.1002129-1-colin.king@canonical.com>
-References: <20210225183241.1002129-1-colin.king@canonical.com>
+ id 1lFOO7-0005WO-Ra
+ for linux-mediatek@lists.infradead.org; Thu, 25 Feb 2021 21:41:36 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id a17so8252050ljq.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 25 Feb 2021 13:41:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=tMZfr/tKOoxxB+DCAYtgYdWGNraNZZUqKf4iILc1Yu0=;
+ b=GDZvyIneiMg5vDxH2jD1JHrH3AsgaytvfXkjx/E7I71t+eN3GMy6C2KFiywKfz0NKz
+ AQzIhyZH5OAe2QOhWbB/W60IaPoLCcaD+FKmKzNKcT2/u1AOeqt9rPbYtdh3ldiw4sFq
+ WETGM1nenTR3+jU0ji2VJHloz9fHFqWjl++L4ZU39PhZ26P5JJMCoVuquyfTHsG6rvkI
+ s9tEnR2uC1aVRy2DCm2m0Bpht6ctaymSo8/zwnEpZwnOpqf5Ximd2uw4o/LnLafFt8Xk
+ uUVDt8+8IaALaEkLxJYQGM9pg4AAYIV2FzdZyJLbCZEaie90QBighrCdRFQ5+gteilRc
+ e8Eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=tMZfr/tKOoxxB+DCAYtgYdWGNraNZZUqKf4iILc1Yu0=;
+ b=S0H/SZL+ktR0euwwAW7UERM74qyBKHjbtNTwzz7kJpBGf2eUgDMNQ4IBONjN0F5D+E
+ zBdY4xIO6sQVwcjYRqwPCpRsr0GgeCl7Zipl6FhJIHH3qkOXF79Ydos2LoIdQNiXD9SD
+ 6yOL0FHiSc6FX+apl0NRVSmXnkx9ubth7Al/MjFSkTXf47SF2TbQbgah5xpX99OtflAK
+ Mb5gw4PK6lbWDZjjq/h7Qa7NJkbrzv3WihfN3M0gviCMVe0JRig+pC4IMQo02NJPVL4U
+ 73nu03Go+rePkAF+o4R1q6PqXKjZIkbiUrlfFdMkDUCM8Yah/jSZJPO4zSylCn7p9UnU
+ 99bg==
+X-Gm-Message-State: AOAM531gWbOqaqB5DpLryGWCtfzK6WdA+X5YQV6IYtby0uTkC1CncPCA
+ 9bSIw6SwDHqDUz31UrA9iJjEDxvxKMAsVY5vM0XVug==
+X-Google-Smtp-Source: ABdhPJzpaHHG/VqAnvXltFRPkFieUucDnl5K/H4IFKyZGqzVyuPtfN6Hpn7/hf1abbxGUFA9bMGI9AandXX968J7TYw=
+X-Received: by 2002:a2e:b617:: with SMTP id r23mr23499ljn.116.1614289293663;
+ Thu, 25 Feb 2021 13:41:33 -0800 (PST)
 MIME-Version: 1.0
-X-WP-MailID: d4752f3dadd47f61a803e18d0663a885
-X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000001 [0TIT]                               
+References: <20210225145953.404859-1-arnd@kernel.org>
+ <20210225145953.404859-2-arnd@kernel.org>
+In-Reply-To: <20210225145953.404859-2-arnd@kernel.org>
+From: Nick Desaulniers <ndesaulniers@google.com>
+Date: Thu, 25 Feb 2021 13:41:23 -0800
+Message-ID: <CAKwvOd=kk9XhU=jyB3ZZd7bCW+9w6nwXbE48xbtFdBjeTQoj8w@mail.gmail.com>
+Subject: Re: [PATCH 2/2] mt76: mt7921: remove incorrect error handling
+To: Arnd Bergmann <arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210225_135827_220717_0C9E734B 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210225_164135_980349_8D0B9E69 
+X-CRM114-Status: GOOD (  18.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,43 +86,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ clang-built-linux <clang-built-linux@googlegroups.com>,
+ Network Development <netdev@vger.kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, Nathan Chancellor <nathan@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Soul Huang <Soul.Huang@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>,
+ Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 25 Feb 2021 18:32:41 +0000 Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> Currently the expression ~nic_conf1 is always true because nic_conf1
-> is a u16 and according to 6.5.3.3 of the C standard the ~ operator
-> promotes the u16 to an integer before flipping all the bits. Thus
-> the top 16 bits of the integer result are all set so the expression
-> is always true.  If the intention was to flip all the bits of nic_conf1
-> then casting the integer result back to a u16 is a suitabel fix.
-> 
-> Interestingly static analyzers seem to thing a bitwise ! should be
-> used instead of ~ for this scenario
+On Thu, Feb 25, 2021 at 7:00 AM Arnd Bergmann <arnd@kernel.org> wrote:
+>
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> Clang points out a mistake in the error handling in
+> mt7921_mcu_tx_rate_report(), which tries to dereference a pointer that
+> cannot be initialized because of the error that is being handled:
+>
+> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:409:3: warning: variable 'stats' is uninitialized when used here [-Wuninitialized]
+>                 stats->tx_rate = rate;
+>                 ^~~~~
+> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:401:32: note: initialize the variable 'stats' to silence this warning
+>         struct mt7921_sta_stats *stats;
+>                                       ^
+> Just remove the obviously incorrect line.
 
-In what way? The condition is nic_conf1 != 0xffff AFAICT, how would we
-do that with !?
+Yeah, looks like perhaps a small mistake from when the driver was
+introduced. Thanks for the patch!
+Reviewed-by: Nick Desaulniers <ndesaulniers@google.com>
 
-> so I think the original intent
-> of the expression may need some extra consideration.
-> 
-> Addresses-Coverity: ("Logical vs. bitwise operator")
-> Fixes: c869f77d6abb ("add mt7601u driver")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+>
+> Fixes: 1c099ab44727 ("mt76: mt7921: add MCU support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> index db125cd22b91..b5cc72e7e81c 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> @@ -405,10 +405,8 @@ mt7921_mcu_tx_rate_report(struct mt7921_dev *dev, struct sk_buff *skb,
+>         if (wlan_idx >= MT76_N_WCIDS)
+>                 return;
+>         wcid = rcu_dereference(dev->mt76.wcid[wlan_idx]);
+> -       if (!wcid) {
+> -               stats->tx_rate = rate;
+> +       if (!wcid)
+>                 return;
+> -       }
+>
+>         msta = container_of(wcid, struct mt7921_sta, wcid);
+>         stats = &msta->stats;
+> --
+> 2.29.2
+>
 
-Acked-by: Jakub Kicinski <kubakici@wp.pl>
 
-Thanks for the fix!
-
+-- 
+Thanks,
+~Nick Desaulniers
 
 _______________________________________________
 Linux-mediatek mailing list
