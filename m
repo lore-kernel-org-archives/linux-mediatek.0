@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D3B9C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:12:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18D29C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:12:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D1EAB64F11
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:12:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1EAB64F11
+	by mail.kernel.org (Postfix) with ESMTPS id A66D964F10
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:12:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A66D964F10
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Zt6pIBp0wbhBTDrMmiOV3yJOskBP7DReau1OoeKH+Mk=; b=IVNF9N+6CluGLKT+RoN6FYER+
-	a8O1MF8y7AiM5/TKqwOP9ae8mYx7WJjwXbfMpH4Oa0ocZdugIZwuINuYxJjuOrqnasDGyM5OoHL1v
-	ym21nZZoN7MqR3rXRZNAtO2TleqA82wNZJkyUlRa8Ga1kxN+2MZEjeZNORTuKXYFciIb79wJ6BaWg
-	3V7SUoiTkUkAr67UQ/HFqDjt3g9tyNz25DNi5TYeaDJTvgzQVrcXtsI1FxX7noX073A+Wcn39TwcC
-	dgy+KfK+PTta1BfyLb053cRpYuGTzX3RRP/Gr1irHnX2fatPSHJzoLKJjVBwRNFnvewSxi7I/3szX
-	EB2cd/xBw==;
+	 bh=rmDqNnlFXg0xl9eKUiyHH8GHXjU2OJTSScC4Nvf091g=; b=lnrd/TpXLG1PFU8tNcaoyxlWB
+	jYS7CavG+JqotGhgkdcCwAaobkoZR1SNx8/zzn+VO1Xo4Q44vEmBkJ3535C7mTTtp1YLUhS2Aou07
+	J3l13NwsOyLiNWKIydas16P4r2tGK2Pg6MM13KKNiYpuJFzh7rKvdHSFXkzD+W6ceFm01SUhnJcUV
+	5nIug2jFgRjlUZXtqNDziwOlvSYsmuc/N6+RMYt6z39yk09LKu8xoUj5/b2bX/J42w4qwQGyhPPNZ
+	vjvC09ruy7eNpuCn5BKk72L5HWspE+ZDs175zToRcd/5G2yDjw0DSMnWpmVSGrqAx+LHRN02IOC7t
+	Tu9pSXGtw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFIJH-0005Cc-SI; Thu, 25 Feb 2021 15:12:11 +0000
+	id 1lFIJM-0005FP-RD; Thu, 25 Feb 2021 15:12:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFIIF-0004lj-S5; Thu, 25 Feb 2021 15:11:09 +0000
+ id 1lFIIG-0004m6-SV; Thu, 25 Feb 2021 15:11:11 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 011DA64F1B;
- Thu, 25 Feb 2021 15:11:07 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0DCE864F1D;
+ Thu, 25 Feb 2021 15:11:08 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lFIID-00Fscv-5V; Thu, 25 Feb 2021 15:11:05 +0000
+ id 1lFIIE-00Fscv-8c; Thu, 25 Feb 2021 15:11:06 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH 07/13] PCI: MSI: Kill default_teardown_msi_irqs()
-Date: Thu, 25 Feb 2021 15:10:17 +0000
-Message-Id: <20210225151023.3642391-8-maz@kernel.org>
+Subject: [PATCH 08/13] PCI: MSI: Let PCI host bridges declare their lack of
+ MSI handling
+Date: Thu, 25 Feb 2021 15:10:18 +0000
+Message-Id: <20210225151023.3642391-9-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210225151023.3642391-1-maz@kernel.org>
 References: <20210225151023.3642391-1-maz@kernel.org>
@@ -71,8 +72,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210225_101108_243986_40FBDE8F 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20210225_101109_142459_E347C3EC 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,55 +104,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It doesn't have any caller left.
+From: Thomas Gleixner <tglx@linutronix.de>
 
+Some PCI host bridges cannot deal with MSIs at all. This has
+the unfortunate effect of triggering ugly warnings when an end-point
+driver requests MSIs.
+
+Instead, let the bridge advertise such lack of MSIs, so that it
+can be flagged correctly by the core code.
+
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+[maz: commit message]
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/msi.c   | 11 +----------
- include/linux/msi.h |  1 -
- 2 files changed, 1 insertion(+), 11 deletions(-)
+ drivers/pci/probe.c | 2 ++
+ include/linux/pci.h | 1 +
+ 2 files changed, 3 insertions(+)
 
-diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
-index 79b5a995bd02..d9c73c173c14 100644
---- a/drivers/pci/msi.c
-+++ b/drivers/pci/msi.c
-@@ -94,11 +94,7 @@ int __weak arch_setup_msi_irqs(struct pci_dev *dev, int nvec, int type)
- 	return 0;
- }
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index fb04fc81a8bd..146bd85c037e 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -925,6 +925,8 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
+ 	device_enable_async_suspend(bus->bridge);
+ 	pci_set_bus_of_node(bus);
+ 	pci_set_bus_msi_domain(bus);
++	if (bridge->no_msi)
++		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
  
--/*
-- * We have a default implementation available as a separate non-weak
-- * function, as it is used by the Xen x86 PCI code
-- */
--void default_teardown_msi_irqs(struct pci_dev *dev)
-+void __weak arch_teardown_msi_irqs(struct pci_dev *dev)
- {
- 	int i;
- 	struct msi_desc *entry;
-@@ -108,11 +104,6 @@ void default_teardown_msi_irqs(struct pci_dev *dev)
- 			for (i = 0; i < entry->nvec_used; i++)
- 				arch_teardown_msi_irq(entry->irq + i);
- }
--
--void __weak arch_teardown_msi_irqs(struct pci_dev *dev)
--{
--	return default_teardown_msi_irqs(dev);
--}
- #endif /* CONFIG_PCI_MSI_ARCH_FALLBACKS */
+ 	if (!parent)
+ 		set_dev_node(bus->bridge, pcibus_to_node(bus));
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 105ef1a5191e..9db3abf9fd90 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -550,6 +550,7 @@ struct pci_host_bridge {
+ 	unsigned int	native_dpc:1;		/* OS may use PCIe DPC */
+ 	unsigned int	preserve_config:1;	/* Preserve FW resource setup */
+ 	unsigned int	size_windows:1;		/* Enable root bus sizing */
++	unsigned int	no_msi:1;		/* Bridge has no MSI support */
  
- static void default_restore_msi_irq(struct pci_dev *dev, int irq)
-diff --git a/include/linux/msi.h b/include/linux/msi.h
-index 3f21e77b57b7..6aff469e511d 100644
---- a/include/linux/msi.h
-+++ b/include/linux/msi.h
-@@ -250,7 +250,6 @@ int arch_setup_msi_irq(struct pci_dev *dev, struct msi_desc *desc);
- void arch_teardown_msi_irq(unsigned int irq);
- int arch_setup_msi_irqs(struct pci_dev *dev, int nvec, int type);
- void arch_teardown_msi_irqs(struct pci_dev *dev);
--void default_teardown_msi_irqs(struct pci_dev *dev);
- #else
- static inline int arch_setup_msi_irqs(struct pci_dev *dev, int nvec, int type)
- {
+ 	/* Resource alignment requirements */
+ 	resource_size_t (*align_resource)(struct pci_dev *dev,
 -- 
 2.29.2
 
