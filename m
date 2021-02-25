@@ -2,75 +2,76 @@ Return-Path: <SRS0=YoM+=H3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BD9AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 03:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D1A3C433E6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 06:56:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DF04B64ED1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 03:45:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF04B64ED1
+	by mail.kernel.org (Postfix) with ESMTPS id 4D6FB64E85
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 06:56:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D6FB64E85
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=a3Od39DORarDBu07gT3IU0yweFpiRzLZ0oU6J3StyAo=; b=b1hGfq+gqArpv7dfr8Fh4OYId
-	1wGMGl9N0lsDLjKPgk+4NaPBka7H9jTyJuv1bv6cvyN3zrSS9no9tEC/YUVosj0pLzgITS1PiKxUI
-	xML3vKIVCh5oZ+ajCY3z5D/Puf9FM8gjsE/FJhzzovIPCMdvZ3KCdbH/1p8icRUathRxR4zsjzEka
-	LddsKl5NdBn/UaqIArXHbhifnwKi3qViQozMYhsOiRbp3c3AVPOplWemD866y7SYeHVcJMgH/7AZl
-	jbWuMB9abXNyjKFA1SUBLD4QuaMLZ9iGEIK4ZBVXyYhDn3FynRL3NpoPV9LB63qxgOeHRHjFpC05f
-	VFCWnwTAQ==;
+	 bh=Toi2Rr8EFQCc28PJXt5nnXjR7/hES2UpWMTUXEZ/NrM=; b=D3f1GVBvtAjkAh40z+Uku13bI
+	htybfikOm8o9SBoOn9ZCJIaQhmFLJ+gZziMb6oGewT66FBBkAAmeqVMmeewrDyN+H+mBa3jVIVVMi
+	WNaiHEwmjDJlZMY32J6lmhm6KtqmD0+E1ucY+sBAxx7XVFoAzc/5HcS+jJmjaYvwKvSjHElC/vDLl
+	cAEVvhy1gOMIW749PVEI1K/jWR8MlE4EwFtk+FpVhywR4PcEsbRo8X8hRcogptqyExG6NWT1edG5r
+	xDBfZJr5tPuA6WfBj02YW73gyxgOHk5A/39sKklEhNlLWV1bnztO1VNonf1bTW3ECNw9IFsp25jzw
+	OS5fFOCbw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lF7aJ-0008Ax-Ay; Thu, 25 Feb 2021 03:45:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lFAZB-0000Ni-S3; Thu, 25 Feb 2021 06:56:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lF7aG-0008AK-DS; Thu, 25 Feb 2021 03:45:01 +0000
-X-UUID: c99aa27118ef4b96827c81ce4e961313-20210224
+ id 1lFAZ7-0000MY-PL
+ for linux-mediatek@lists.infradead.org; Thu, 25 Feb 2021 06:56:03 +0000
+X-UUID: cd89f5d881e147229cb49a082e158420-20210224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=kjY3YWrArb7e1auQGb2M/I7sB1u1U1g/YZLxN9Rl800=; 
- b=ROu/egn/o8mV6ahwqK0C3xgYpHrYFB0Tx5QVbeuDRlVB7nHzohGoh4kXqve+ZdIn9mLQb15TACgDOqGTsgScq6cDyVXi5sWMyNohnQod3l0WRNlqG/sTFzyA1flbE6BhD3xNFfVchlZYsz+uHdJ5F43ZYFq7arXytwb68URxXb8=;
-X-UUID: c99aa27118ef4b96827c81ce4e961313-20210224
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=nxCy+rQeSq1VSGSPUkBovB8X3k7+eP3dl5uWa+aG0q0=; 
+ b=MQEUtkw1TX7aWgmXuDbJ6XYxv7tC302KzcZEhWFxeG5MiRY0ZWZNoBUj5zs8e40iS1qDvU6rmVMlYRSPIdh8Ndl0TrtJjWAIEHvuWL6GTih2D9sD+yMBd9YMj3NmGwI/F232wK3G4AJ8BYnJ5nyyioTGrBU+TJonp67u792a8v4=;
+X-UUID: cd89f5d881e147229cb49a082e158420-20210224
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 513572246; Wed, 24 Feb 2021 19:44:57 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 24 Feb 2021 19:34:55 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 25 Feb 2021 11:34:50 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 25 Feb 2021 11:34:49 +0800
-Message-ID: <1614224089.25750.14.camel@mhfsdcap03>
-Subject: Re: [v8,6/7] PCI: mediatek-gen3: Add system PM support
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-Date: Thu, 25 Feb 2021 11:34:49 +0800
-In-Reply-To: <YDZeRc6CHV/WzyCm@rocinante>
-References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
- <20210224061132.26526-7-jianjun.wang@mediatek.com>
- <YDZeRc6CHV/WzyCm@rocinante>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 1192329074; Wed, 24 Feb 2021 22:55:53 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 24 Feb 2021 22:55:52 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Feb 2021 14:55:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 25 Feb 2021 14:55:50 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH 2/2] mt76: mt7615: add missing capabilities for DBDC
+Date: Thu, 25 Feb 2021 14:55:48 +0800
+Message-ID: <6db470fc868e6215f969690ce04d50a595d7fe4c.1614235992.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <fe9afbb21ade32aac31f077bb1e741f917bd4596.1614235992.git.ryder.lee@mediatek.com>
+References: <fe9afbb21ade32aac31f077bb1e741f917bd4596.1614235992.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B8240DFBE026559C95C4FF794CAECB89FE75F5E7653980143DBA6B8E787D410D2000:8
+X-TM-SNTS-SMTP: B9272D57C3D5D59240B9C754354933433CC29B38BD304882B8575962BEFA927B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_224500_669021_40FF2B2E 
-X-CRM114-Status: GOOD (  18.93  )
+X-CRM114-CacheID: sfid-20210225_015602_223308_D6A668D0 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,53 +83,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rex-BC.Chen@mediatek.com,
- qizhong.cheng@mediatek.com, chuanjia.liu@mediatek.com, maz@kernel.org,
- drinkcat@chromium.org, Ryder Lee <ryder.lee@mediatek.com>,
- linux-kernel@vger.kernel.org, sin_jieyang@mediatek.com, Sj
- Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Bjorn Helgaas <helgaas@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-pci@vger.kernel.org, Matthias
- Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- anson.chuang@mediatek.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-wireless@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgS3J6eXN6dG9mLA0KDQpUaGFua3MgZm9yIHlvdXIgcmV2aWV3LA0KDQpPbiBXZWQsIDIwMjEt
-MDItMjQgYXQgMTU6MTAgKzAxMDAsIEtyenlzenRvZiBXaWxjennFhHNraSB3cm90ZToNCj4gSGkg
-Smlhbmp1biwNCj4gDQo+ID4gQWRkIHN1c3BlbmRfbm9pcnEgYW5kIHJlc3VtZV9ub2lycSBjYWxs
-YmFjayBmdW5jdGlvbnMgdG8gaW1wbGVtZW50DQo+ID4gUE0gc3lzdGVtIHN1c3BlbmQgaG9va3Mg
-Zm9yIE1lZGlhVGVrIEdlbjMgUENJZSBjb250cm9sbGVyLg0KPiANCj4gU28sICJzeXN0ZW1zIHN1
-c3BlbmQiIGFuZCAicmVzdW1lIiBob29rcywgY29ycmVjdD8NCg0KVGhlIGNhbGxiYWNrIGZ1bmN0
-aW9ucyBpcyBzdXNwZW5kX25vaXJxIGFuZCByZXN1bWVfbm9pcnEsIHNob3VsZCBJIHVzZQ0KInN5
-c3RlbXMgc3VzcGVuZCIgYW5kICJyZXN1bWUiIGluIHRoZSBjb21taXQgbWVzc2FnZT8NCg0KPiAN
-Cj4gPiBXaGVuIHN5c3RlbSBzdXNwZW5kLCB0cmlnZ2VyIHRoZSBQQ0llIGxpbmsgdG8gTDIgc3Rh
-dGUgYW5kIHB1bGwgZG93bg0KPiANCj4gSXQgcHJvYmFibHkgd291bGQgYmUgInRoZSBzeXN0ZW0g
-c3VzcGVuZHMiLg0KPiANCj4gWy4uLl0NCj4gPiBXaGVuIHN5c3RlbSByZXN1bSwgdGhlIFBDSWUg
-bGluayBzaG91bGQgYmUgcmUtZXN0YWJsaXNoZWQgYW5kIHRoZQ0KPiA+IHJlbGF0ZWQgY29udHJv
-bCByZWdpc3RlciB2YWx1ZXMgc2hvdWxkIGJlIHJlc3RvcmVkLg0KPiANCj4gU2ltaWxhcmx5IHRv
-IHRoZSBhYm92ZTogInRoZSBzeXN0ZW0gcmVzdW1lcyIuDQo+IA0KPiBbLi4uXQ0KPiA+ICsJaWYg
-KGVycikgew0KPiA+ICsJCWRldl9lcnIocG9ydC0+ZGV2LCAiY2FuIG5vdCBlbnRlciBMMiBzdGF0
-ZVxuIik7DQo+ID4gKwkJcmV0dXJuIGVycjsNCj4gPiArCX0NCj4gDQo+IE1vc3QgbGlrZWx5IHlv
-dSB3YW50ICJjYW5ub3QiIG9yICJjYW4ndCIgaW4gdGhlIGFib3ZlIGVycm9yIG1lc3NhZ2UuDQo+
-IA0KPiA+ICsJLyogUHVsbCBkb3duIHRoZSBQRVJTVCMgcGluICovDQo+ID4gKwl2YWwgPSByZWFk
-bF9yZWxheGVkKHBvcnQtPmJhc2UgKyBQQ0lFX1JTVF9DVFJMX1JFRyk7DQo+ID4gKwl2YWwgfD0g
-UENJRV9QRV9SU1RCOw0KPiA+ICsJd3JpdGVsX3JlbGF4ZWQodmFsLCBwb3J0LT5iYXNlICsgUENJ
-RV9SU1RfQ1RSTF9SRUcpOw0KPiA+ICsNCj4gPiArCWRldl9kYmcocG9ydC0+ZGV2LCAiZW50ZXIg
-TDIgc3RhdGUgc3VjY2VzcyIpOw0KPiANCj4gSnVzdCBhIG5pdHBpY2suICBXaGF0IGFib3V0ICJl
-bnRlcmVkIEwyIHN0YXRlcyBzdWNjZXNzZnVsbHkiPw0KPiANCj4gWy4uLl0NCj4gPiArCWlmIChl
-cnIpIHsNCj4gPiArCQlkZXZfZXJyKHBvcnQtPmRldiwgInJlc3VtZSBmYWlsZWRcbiIpOw0KPiA+
-ICsJCXJldHVybiBlcnI7DQo+ID4gKwl9DQo+IA0KPiBUaGlzIGVycm9yIG1lc3NhZ2UgZG9lcyBu
-b3QgcXVpdGUgY29udmV5IHRoYXQgdGhlIG10a19wY2llX3N0YXJ0dXBfcG9ydCgpDQo+IHdhcyB0
-aGUgZnVuY3Rpb24gdGhhdCBmYWlsZWQsIHdoaWNoIGlzIG9ubHkgYSBwYXJ0IG9mIHdoYXQgeW91
-IGhhdmUgdG8gZG8NCj4gdG8gc3VjY2Vzc2Z1bGx5IHJlc3VtZS4NCj4gDQo+ID4gKwlkZXZfZGJn
-KHBvcnQtPmRldiwgInJlc3VtZSBkb25lXG4iKTsNCj4gDQo+IEEgbml0cGljay4gIFByb2JhYmx5
-IG5vdCBuZWVkZWQsIGFzIGxhY2sgb2YgZXJyb3IgbWVzc2FnZSB3b3VsZCBtZWFuDQo+IHRoYXQg
-dGhlIGRldmljZSByZXN1bWVkIHN1Y2Nlc3NmdWxseSBhZnRlciBiZWluZyBzdXNwZW5kZWQuDQo+
-IA0KPiBLcnp5c3p0b2YNCg0KVGhhbmtzLg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVk
-aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Same as mt7915, this should improve performance.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/init.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index 88a2ee7e7143..fced902d11bc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -368,6 +368,17 @@ mt7615_init_wiphy(struct ieee80211_hw *hw)
+ 		hw->max_tx_fragments = MT_TXP_MAX_BUF_NUM;
+ 	else
+ 		hw->max_tx_fragments = MT_HW_TXP_MAX_BUF_NUM;
++
++	if (phy->mt76->cap.has_2ghz)
++		phy->mt76->sband_2g.sband.ht_cap.cap |=
++			IEEE80211_HT_CAP_LDPC_CODING;
++
++	if (phy->mt76->cap.has_5ghz) {
++		phy->mt76->sband_5g.sband.ht_cap.cap |=
++			IEEE80211_HT_CAP_LDPC_CODING;
++		phy->mt76->sband_5g.sband.vht_cap.cap |=
++			IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK;
++	}
+ }
+ 
+ static void
+@@ -505,10 +516,6 @@ void mt7615_init_device(struct mt7615_dev *dev)
+ 
+ 	mt7615_init_wiphy(hw);
+ 	dev->pm.idle_timeout = MT7615_PM_TIMEOUT;
+-	dev->mphy.sband_2g.sband.ht_cap.cap |= IEEE80211_HT_CAP_LDPC_CODING;
+-	dev->mphy.sband_5g.sband.ht_cap.cap |= IEEE80211_HT_CAP_LDPC_CODING;
+-	dev->mphy.sband_5g.sband.vht_cap.cap |=
+-			IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK;
+ 	mt7615_cap_dbdc_disable(dev);
+ 	dev->phy.dfs_state = -1;
+ 
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
