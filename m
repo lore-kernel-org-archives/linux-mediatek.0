@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EBD8C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AF54DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:24:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 992DD64F17
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:24:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 992DD64F17
+	by mail.kernel.org (Postfix) with ESMTPS id 3C95B64F16
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 15:24:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C95B64F16
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,36 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zM9+3HXsK3BEkohAd1ozccZExAVkCjmWPr0AWqPnjws=; b=RtCHNZYBYsF2QPeEGe0g78Erl
-	wCTmVZsm5+rkrPlf3s37IFI1mf2Foy3fxLhFUbwT13FoMCuF1pC4GSUIyQbPzXwFoZ88UpY5t+iUl
-	2QwjYomUx0/sEsisXxS5sH/nVzxmFg4sC437wIARfBqasbalBSgSYzxW9/UNP89jC5qLl/FkFgxh3
-	7OzPQBrQUT3q2KyLT/6Evoh/S7pjuTSf3VF3Z08gfHmUgy0A3PeO04hTCzg746EQKfPkAwo8Zq0zx
-	U0x5mqNPR1crB0uA56m1HxJCqfbibAAHc6Y74MdZFl8LeTAiK/sWCLqxNqBnegFWGeXMRQMUH+6yO
-	sTomfMZ7A==;
+	 bh=WdMpTA8aC9E7O6Ab7o3/ssxMIOC4rqWNlWBSyqwpuvQ=; b=tT1qoUxyAsUU7s3h2R58W2jyJ
+	7wSkX8UmXVKziRSjEP+zNUhCnvovVIXt//C8Jhgt+LELv67PUmBGLlvNDO+KoO8QxcKCukIQ0baQP
+	ixODbTYAYVOdIDR5aorP6+Tq9wOpGexDuLZPfdX2HoATTIi8I1hNTMO4n3aSZ85CVzoO8ry86mms+
+	ubgVwgRBYJyzogVyOLALDAEnDvnvKqcdt8UOE3RBc3rUkVpqYXbW+adVD20MCz2JyMcRRZPvC4L8m
+	uZp8ULmXSQVK3SuUDzm/y+QdXNLUjC0CkNSI/eBcqBRRGUzC5q/Qx0RAAjFK0hVj6UTkAcZE20216
+	kdYAcSEHg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFIUb-0007Vs-Ry; Thu, 25 Feb 2021 15:23:53 +0000
+	id 1lFIUd-0007WE-K7; Thu, 25 Feb 2021 15:23:55 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFIUO-0007SW-Fj; Thu, 25 Feb 2021 15:23:42 +0000
+ id 1lFIUO-0007SH-Eo; Thu, 25 Feb 2021 15:23:42 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AD84864F11;
- Thu, 25 Feb 2021 15:23:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id AEE1064ECE;
+ Thu, 25 Feb 2021 15:23:37 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lFIII-00Fscv-RS; Thu, 25 Feb 2021 15:11:11 +0000
+ id 1lFIIK-00Fscv-9e; Thu, 25 Feb 2021 15:11:12 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH 12/13] PCI: MSI: Document the various ways of ending up with
- NO_MSI
-Date: Thu, 25 Feb 2021 15:10:22 +0000
-Message-Id: <20210225151023.3642391-13-maz@kernel.org>
+Subject: [PATCH 13/13] PCI: quirks: Refactor advertising of the NO_MSI flag
+Date: Thu, 25 Feb 2021 15:10:23 +0000
+Message-Id: <20210225151023.3642391-14-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210225151023.3642391-1-maz@kernel.org>
 References: <20210225151023.3642391-1-maz@kernel.org>
@@ -72,8 +71,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210225_102340_740520_6F27610E 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20210225_102340_702550_71FFAC50 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,37 +103,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We have now 4 ways of ending up with NO_MSI being set.
-Document them.
+The few quirks that deal with NO_MSI tend to be copy-paste heavy.
+Refactor them so that the hierarchy of conditions is slightly
+cleaner.
 
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/msi.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ drivers/pci/quirks.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
-index d9c73c173c14..425abcdfcaca 100644
---- a/drivers/pci/msi.c
-+++ b/drivers/pci/msi.c
-@@ -871,8 +871,16 @@ static int pci_msi_supported(struct pci_dev *dev, int nvec)
- 	 * Any bridge which does NOT route MSI transactions from its
- 	 * secondary bus to its primary bus must set NO_MSI flag on
- 	 * the secondary pci_bus.
--	 * We expect only arch-specific PCI host bus controller driver
--	 * or quirks for specific PCI bridges to be setting NO_MSI.
-+	 *
-+	 * The NO_MSI flag can either be set directly by:
-+	 * - arch-specific PCI host bus controller drivers (deprecated)
-+	 * - quirks for specific PCI bridges
-+	 *
-+	 * or indirectly by platform-specific PCI host bridge drivers by:
-+	 * - unconditionally advertising the 'no_msi' property
-+	 * - advertising the 'msi_domain' property, which results in
-+	 *   the NO_MSI flag when no MSI domain is found for this bridge
-+	 *   at probe time.
- 	 */
- 	for (bus = dev->bus; bus; bus = bus->parent)
- 		if (bus->bus_flags & PCI_BUS_FLAGS_NO_MSI)
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 653660e3ba9e..972bb0f9f994 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -2585,10 +2585,8 @@ static int msi_ht_cap_enabled(struct pci_dev *dev)
+ /* Check the HyperTransport MSI mapping to know whether MSI is enabled or not */
+ static void quirk_msi_ht_cap(struct pci_dev *dev)
+ {
+-	if (dev->subordinate && !msi_ht_cap_enabled(dev)) {
+-		pci_warn(dev, "MSI quirk detected; subordinate MSI disabled\n");
+-		dev->subordinate->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
+-	}
++	if (!msi_ht_cap_enabled(dev))
++		quirk_disable_msi(dev);
+ }
+ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_SERVERWORKS, PCI_DEVICE_ID_SERVERWORKS_HT2000_PCIE,
+ 			quirk_msi_ht_cap);
+@@ -2601,9 +2599,6 @@ static void quirk_nvidia_ck804_msi_ht_cap(struct pci_dev *dev)
+ {
+ 	struct pci_dev *pdev;
+ 
+-	if (!dev->subordinate)
+-		return;
+-
+ 	/*
+ 	 * Check HT MSI cap on this chipset and the root one.  A single one
+ 	 * having MSI is enough to be sure that MSI is supported.
+@@ -2611,10 +2606,8 @@ static void quirk_nvidia_ck804_msi_ht_cap(struct pci_dev *dev)
+ 	pdev = pci_get_slot(dev->bus, 0);
+ 	if (!pdev)
+ 		return;
+-	if (!msi_ht_cap_enabled(dev) && !msi_ht_cap_enabled(pdev)) {
+-		pci_warn(dev, "MSI quirk detected; subordinate MSI disabled\n");
+-		dev->subordinate->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
+-	}
++	if (!msi_ht_cap_enabled(pdev))
++		quirk_msi_ht_cap(dev);
+ 	pci_dev_put(pdev);
+ }
+ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, PCI_DEVICE_ID_NVIDIA_CK804_PCIE,
 -- 
 2.29.2
 
