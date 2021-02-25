@@ -2,54 +2,64 @@ Return-Path: <SRS0=YoM+=H3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21100C433E6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 17:50:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C67AC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 17:58:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B553364F3B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 17:50:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B553364F3B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id DE99F64F36
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Feb 2021 17:58:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE99F64F36
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=i1hUu5AEEB+i5SUvmD/mLwFmx9kXk8Z8/56ZJ7sGsAw=; b=VtQ3y9+Ga7iLy9OB9luSHUFP2
-	NOinqATdb4sqBED+FbxZTzKrebR54BNJrx4lEXb4SnS9Hg30sPgrOBNODT+4ddtdhx0GEh23Idc+7
-	wJbaba+DhOAmK0+n2DpxHHRDOc635GK4JMrixOG/mlsXsRxEjTmNHIhZRq8V/Dj5p+bKa2qnEIyOb
-	rY+1TeJ+dXiGOi39Wp3K6SubKAEIX10HUY3oV2B0mlpjhsq26vQKED1OlLe862IvWmC1sGUqMtxHI
-	OR0yGFodAlnqOGBLdIw3nmz4KqmGZu3n0aDTA8msCKDhGrvmlmKkxeyLEf0JQ9DQ5F4CJCSEZCM32
-	g8M4eFjkw==;
+	 bh=SAGfEH88FoLlPxlKB+riZR7VIct+8Vo8TCS4xEL6NgA=; b=c0O9lUKoA4Tw99hBd0HaH45Ll
+	Z88jefJ0VpTSINOWGYEJWu2ZK2cLvXx/d9XNd1VJVUtoKzuccYbZLYZrY/+j+Ry1YEKTZ9QfT1tWv
+	S20MNobeLIKqSnXk6F4p//mmll507XMtZQd+Kv818BgCFJdQWoI2VEr2ILuci48AfWkBMcpYAcpUd
+	f7htDL1+qfqIIYmLJ0W6vI3yKwubLBHS3XjjZgvGczOZnFUcw1thKgNjaATNIk/eL7zOwl5B5pnSY
+	+7X8M5TEapoiVWNZAIlHfmX1PER3JrpWJHg6oAv9rpotJb8RPRtubS4tBTEIur4mQSzHUU95Lkb0+
+	1GPJZ+nzA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFKmW-0005i8-Ox; Thu, 25 Feb 2021 17:50:32 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lFKuQ-0007V2-VV; Thu, 25 Feb 2021 17:58:43 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFKmH-0005e1-Ic; Thu, 25 Feb 2021 17:50:18 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 1A9571F463CC
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH 4/4] soc: mediatek: pm-domains: Add a power domain names for
- mt8167
-Date: Thu, 25 Feb 2021 18:50:00 +0100
-Message-Id: <20210225175000.824661-4-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210225175000.824661-1-enric.balletbo@collabora.com>
-References: <20210225175000.824661-1-enric.balletbo@collabora.com>
+ id 1lFKuN-0007UL-Th; Thu, 25 Feb 2021 17:58:40 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9F73964DE8;
+ Thu, 25 Feb 2021 17:58:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614275918;
+ bh=kkEUBtk21fzvQ+eByMWisdjrqhC+DKiVgrkLgH0ss/M=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ev8I77FFegc2EdWHko9oWR26IKdMF6+y2de4p0n8wL3eoj2h3N3kPlco84vQb4Ua2
+ I/ND8Raybh6OjAgIDKQwYtn4/Rub1R8ufc/dK8Yhrhii8kQVKhbB+YzPyhAYxCALSR
+ EKpalFu3yn6QUgcNqEa/yQAZ4LJQt/nzdNd/6GOnq0xGbP/r06vVf56CG1LtWR8I/n
+ cx3rE5IpLMAQOe+tYk/kI+BcNjTfj50Wolh+y2bxxyIaM+ZQ/tXDyJQfR/yc25JENz
+ +//LzlT/UmhktjLycSIn5K0hWtTI6pq4vw2kQL39hWP/iBJjT4qCw1jmRXDKnK24eR
+ PyUCV6l4hRGzw==
+Date: Thu, 25 Feb 2021 10:58:36 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Subject: Re: [PATCH 1/2] mt76: mt7915: fix unused 'mode' variable
+Message-ID: <20210225175836.GA23011@24bbad8f3778>
+References: <20210225145953.404859-1-arnd@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210225145953.404859-1-arnd@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210225_125017_742990_1E13E437 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20210225_125840_058331_96FCE3DF 
+X-CRM114-Status: GOOD (  19.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,86 +71,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, weiyi.lu@mediatek.com,
- Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ clang-built-linux@googlegroups.com, linux-wireless@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ netdev@vger.kernel.org, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>,
+ Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the power domains names for the mt8167 SoC.
+On Thu, Feb 25, 2021 at 03:59:14PM +0100, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> clang points out a possible corner case in the mt7915_tm_set_tx_cont()
+> function if called with invalid arguments:
+> 
+> drivers/net/wireless/mediatek/mt76/mt7915/testmode.c:593:2: warning: variable 'mode' is used uninitialized whenever switch default is taken [-Wsometimes-uninitialized]
+>         default:
+>         ^~~~~~~
+> drivers/net/wireless/mediatek/mt76/mt7915/testmode.c:597:13: note: uninitialized use occurs here
+>         rateval =  mode << 6 | rate_idx;
+>                    ^~~~
+> drivers/net/wireless/mediatek/mt76/mt7915/testmode.c:506:37: note: initialize the variable 'mode' to silence this warning
+>         u8 rate_idx = td->tx_rate_idx, mode;
+>                                            ^
+> 
+> Change it to return an error instead of continuing with invalid data
+> here.
+> 
+> Fixes: 3f0caa3cbf94 ("mt76: mt7915: add support for continuous tx in testmode")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7915/testmode.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+> index 7fb2170a9561..aa629e1fb420 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+> @@ -543,6 +543,7 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
+>  		tx_cont->bw = CMD_CBW_20MHZ;
+>  		break;
+>  	default:
+> +		return -EINVAL;
 
-Fixes: 207f13b419a6 ("soc: mediatek: pm-domains: Add support for mt8167")
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+Remove the break if we are adding a return?
 
- drivers/soc/mediatek/mt8167-pm-domains.h | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/soc/mediatek/mt8167-pm-domains.h b/drivers/soc/mediatek/mt8167-pm-domains.h
-index ad0b8dfa0527..15559ddf26e4 100644
---- a/drivers/soc/mediatek/mt8167-pm-domains.h
-+++ b/drivers/soc/mediatek/mt8167-pm-domains.h
-@@ -15,6 +15,7 @@
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
- 	[MT8167_POWER_DOMAIN_MM] = {
-+		.name = "mm",
- 		.sta_mask = PWR_STATUS_DISP,
- 		.ctl_offs = SPM_DIS_PWR_CON,
- 		.sram_pdn_bits = GENMASK(11, 8),
-@@ -26,6 +27,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
- 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
- 	},
- 	[MT8167_POWER_DOMAIN_VDEC] = {
-+		.name = "vdec",
- 		.sta_mask = PWR_STATUS_VDEC,
- 		.ctl_offs = SPM_VDE_PWR_CON,
- 		.sram_pdn_bits = GENMASK(8, 8),
-@@ -33,6 +35,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
- 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
- 	},
- 	[MT8167_POWER_DOMAIN_ISP] = {
-+		.name = "isp",
- 		.sta_mask = PWR_STATUS_ISP,
- 		.ctl_offs = SPM_ISP_PWR_CON,
- 		.sram_pdn_bits = GENMASK(11, 8),
-@@ -40,6 +43,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
- 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
- 	},
- 	[MT8167_POWER_DOMAIN_MFG_ASYNC] = {
-+		.name = "mfg_async",
- 		.sta_mask = MT8167_PWR_STATUS_MFG_ASYNC,
- 		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
- 		.sram_pdn_bits = 0,
-@@ -50,18 +54,21 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
- 		},
- 	},
- 	[MT8167_POWER_DOMAIN_MFG_2D] = {
-+		.name = "mfg_2d",
- 		.sta_mask = MT8167_PWR_STATUS_MFG_2D,
- 		.ctl_offs = SPM_MFG_2D_PWR_CON,
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 	},
- 	[MT8167_POWER_DOMAIN_MFG] = {
-+		.name = "mfg",
- 		.sta_mask = PWR_STATUS_MFG,
- 		.ctl_offs = SPM_MFG_PWR_CON,
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 	},
- 	[MT8167_POWER_DOMAIN_CONN] = {
-+		.name = "conn",
- 		.sta_mask = PWR_STATUS_CONN,
- 		.ctl_offs = SPM_CONN_PWR_CON,
- 		.sram_pdn_bits = GENMASK(8, 8),
--- 
-2.30.0
-
+>  		break;
+>  	}
+>  
+> @@ -591,6 +592,7 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
+>  		mode = MT_PHY_TYPE_HE_MU;
+>  		break;
+>  	default:
+> +		return -EINVAL;
+>  		break;
+>  	}
+>  
+> -- 
+> 2.29.2
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
