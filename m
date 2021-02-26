@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CC05C433E6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58E54C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:03:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD44A64EED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:03:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD44A64EED
+	by mail.kernel.org (Postfix) with ESMTPS id D791A64EF0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:03:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D791A64EF0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,64 +23,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9TunSOR0+vMQ9jdM2N4Z+N5uHEqtr5EvxbFqefFrMtI=; b=DzDXBoV+Gbtsmjpk2mJ3Z5vvC
-	McWmr333tmLyLkalKlyO2ddn4AXqHOq2p39P4/yDJv8kUdXMrED4YIklIqAwK0Aj144mzKaAGiZsf
-	TGCAjScKcgczZkpJLtqHMjJper2uy4r4o3v8C8IpYJpK1ypgBGTwlgRmIeEdsRd9ipSmsfjEjTd5D
-	/bUixeAVP4nc+BC94lf5uwP3I2cmM8SxSgVjsLFLMia1jabFkl01o66GcGgIUpGVvepQF4YMQq00L
-	D632nKVf7SVv/eulEaNbXnqlXhDW4ruOKv9yv5sWuC/+j4z6Z86c89r/cHwjaf2UITROQB+Vlp9WJ
-	k2BVKfEIg==;
+	 bh=FM4TH+RmsWUaLM1+S7O5h/rwvVBkEo6wz/XwjYjfOPU=; b=pQzAqP295sTMXh5Jf9FPvyx0V
+	1TwJAPVpIdsKtHh1oeNSF2a+mZHwPXi8GuFavlKYwCF+UI/PLVD5vMiWHIjxl2ZLrTVPRGalv5NOv
+	du5LzUjK1x4OhbD39a9fwuL8KbTphJ0TOrcDq901nAGfeSiEo2ZOB+1pf4vgD1ukoXbdkeK2pBDk5
+	8F+o6OvNKnDHgTLbpMGGDEL/qoFyhbMkW7Ii2Aa9/p8XPvL6d1IfZI3r5Al6wAL53FjC49X3eNd4Z
+	5Ldn4vLT1vl79SLaI/a2cKpWRqRN9EhgG8erYWxn3yqki531mTjEI4Gso3JLQ3dlwmyfk9Ef1nCpA
+	NIL3Sv0GA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFZxO-0008Cn-5R; Fri, 26 Feb 2021 10:02:46 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1lFZxP-0008Dq-Dj; Fri, 26 Feb 2021 10:02:47 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFZxI-00085O-DO
- for linux-mediatek@lists.infradead.org; Fri, 26 Feb 2021 10:02:42 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id p21so5902946pgl.12
- for <linux-mediatek@lists.infradead.org>; Fri, 26 Feb 2021 02:02:39 -0800 (PST)
+ id 1lFZxL-00088A-EM
+ for linux-mediatek@lists.infradead.org; Fri, 26 Feb 2021 10:02:44 +0000
+Received: by mail-pg1-x529.google.com with SMTP id a4so5898379pgc.11
+ for <linux-mediatek@lists.infradead.org>; Fri, 26 Feb 2021 02:02:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=nfYIINXoKZUoitqaaBfvTmVbHkP8UmypLFrLruTJwl0=;
- b=A3edotnD4wiiz+AsyY9fcfd6EDVo3xsfqJozydADAsJk5rVh7NRDVXrgmUqy8jVh4f
- Gg/x7MGB7gqy50TasbmsOye0g1pWmkaBGzuXiqf978n/V9Y26vZ9h8JoSyKJAKhVbGFm
- oGuGbqbk+4TJNYfM/g4KJAQcQMT7AALvC4Aas=
+ bh=RU3m0vnoHc5l7K5s4IBbXI+lLB4VI5TXPJDbkmiuUIQ=;
+ b=muWch6NUQJmt5mo3Y2qo0Skw/PjV9ZDRYVB58BLwQFTaMlpxBL4idvgo2OTfEwpnwx
+ 85+EhVYM3NYncmzxv/fTR5d3CiytfPDsN9sWGwkNHD6uLfcrybgLvRw6TCcW3tmouXeZ
+ vGILIfPc81FO35fIUMkYBxSi8lRPpAjtAicN4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nfYIINXoKZUoitqaaBfvTmVbHkP8UmypLFrLruTJwl0=;
- b=h3OMfTKqobxi2Eil/6wJF8Oivv+eiHgGfCoqeFEOoDsNqBQntGNR+XeA9OTlz/y25+
- Tab1Efe5MMsp3NSONIkBtOjT9PBIsh3pp+Aniyyrh2QUeE4PgCghHohfNO/nHU0uWuJ6
- KKnPFl/w7QrYGa84PZiR54lzZliAC4xZn1CSg8TFM6fcOc7FrUS195kX+63zA3x8E2jo
- G3QoOTTDi7spGgJQ11eA1BI5MErhGdzm5D33/4Od6iUSa3NQI57o247Wvs49TIXYQKOz
- o1t9OtKFD94GiEfW3GihYleXyYLqrHz7ktPR49F58TgPGF7ywUcZFz9+X4v3WRomc87d
- zrCA==
-X-Gm-Message-State: AOAM530dmZYNkldt7b/HWAOFeXh+JkIIvPR+ewytZTtnBEhhvZ0+8d9d
- zDa5ZNNxbTVc3hDOC5GWy6y9Jw==
-X-Google-Smtp-Source: ABdhPJxVhua7C9+wleBKGRNjyjfreahVMKvs8KG6N6ecXUlQh863hvOcLxoqSBcoG55l9muJ20Rl2g==
-X-Received: by 2002:a65:6205:: with SMTP id d5mr2259264pgv.40.1614333757887;
- Fri, 26 Feb 2021 02:02:37 -0800 (PST)
+ bh=RU3m0vnoHc5l7K5s4IBbXI+lLB4VI5TXPJDbkmiuUIQ=;
+ b=MycKo2Hai8ni+kv+0IaxI//DdizViY6vISV0AFUD5XCXzCxl30AYN6wUMmw7VXuB1a
+ mMCkl9rWD2vxsaA90z4WZEE6pfMdzClMxJYqfbeJHMyOk/JwVBFLruOB/fZ7t0E7djHY
+ zHsF7wj+8IxCZX+CA2IpSCUTHP/CzfO0cmGzHTNHWZhATljQLeqI7Xs1shmWlyeWdidJ
+ 3hDsuz3tbkaAJfEQz8uQIRfacIoDkswudhaQXysKcOj9kDVF2Uewt5vJkbgV3f74ceN+
+ MMkq9XxgF5gasjm9XeVXKDii06WI/XJE8I2f6kfkWe5WBr+4CU7n7MvuPci4dTdSkXve
+ +ScA==
+X-Gm-Message-State: AOAM530KdzBmVCapzjfDCAnnfvOw9DLfzyQCwMVG9edL06PeWNC4Njek
+ Q5DuSGIFkvgC2iGxzjIoHyYQSA==
+X-Google-Smtp-Source: ABdhPJzngwQ1GRfBMbKgiBiPRI8gnZebc7LNR7FjDiyutN4aU6f/LgtC3VTd1iFLKF83wkpA3Hdz7Q==
+X-Received: by 2002:a63:5b5d:: with SMTP id l29mr2245348pgm.272.1614333760899; 
+ Fri, 26 Feb 2021 02:02:40 -0800 (PST)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:5c91:233c:dd5b:b1b0])
- by smtp.gmail.com with ESMTPSA id o23sm9201565pfp.89.2021.02.26.02.02.35
+ by smtp.gmail.com with ESMTPSA id o23sm9201565pfp.89.2021.02.26.02.02.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Feb 2021 02:02:37 -0800 (PST)
+ Fri, 26 Feb 2021 02:02:40 -0800 (PST)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>
-Subject: [PATCH v3 13/15] media: mtk-vcodec: make flush buffer reusable by
- encoder
-Date: Fri, 26 Feb 2021 19:01:46 +0900
-Message-Id: <20210226100148.1663389-14-acourbot@chromium.org>
+Subject: [PATCH v3 14/15] media: mtk-vcodec: venc: support START and STOP
+ commands
+Date: Fri, 26 Feb 2021 19:01:47 +0900
+Message-Id: <20210226100148.1663389-15-acourbot@chromium.org>
 X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
 In-Reply-To: <20210226100148.1663389-1-acourbot@chromium.org>
 References: <20210226100148.1663389-1-acourbot@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210226_050240_507979_9AAC562D 
-X-CRM114-Status: GOOD (  19.07  )
+X-CRM114-CacheID: sfid-20210226_050243_533640_506BEBEA 
+X-CRM114-Status: GOOD (  25.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,227 +100,232 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The flush buffer is a special buffer that tells the decoder driver to
-send an empty CAPTURE frame to the client with V4L2_BUF_FLAG_LAST set.
-
-We need similar functionality for the encoder ; however currently the
-flush buffer depends on decoder-specific structures and thus cannot be
-reused with the encoder.
-
-Fix this by testing for this buffer by its VB2 address, and not through
-a dedicated flag stored in a higher-level decoder structure. This also
-allows us to remove said flag and simplify the code a bit.
-
-Since the flush buffer should never be used in the stateless decoder,
-also add safeguards to check against it.
+The V4L2 encoder specification requires encoders to support the
+V4L2_ENC_CMD_START and V4L2_ENC_CMD_STOP commands. Add support for these
+to the mtk-vcodec encoder by reusing the same flush buffer as used by
+the decoder driver.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- .../media/platform/mtk-vcodec/mtk_vcodec_dec.c    |  9 ++-------
- .../media/platform/mtk-vcodec/mtk_vcodec_dec.h    |  2 --
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c      | 12 +-----------
- .../platform/mtk-vcodec/mtk_vcodec_dec_stateful.c | 15 +++++++++------
- .../media/platform/mtk-vcodec/mtk_vcodec_drv.h    |  6 ++++--
- 5 files changed, 16 insertions(+), 28 deletions(-)
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   2 +
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 123 +++++++++++++++++-
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |   4 +
+ 3 files changed, 122 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 209ccf3d2d67..1c86130bb52d 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -86,8 +86,7 @@ static int vidioc_decoder_cmd(struct file *file, void *priv,
- 			mtk_v4l2_debug(1, "Capture stream is off. No need to flush.");
- 			return 0;
- 		}
--		v4l2_m2m_buf_queue(ctx->m2m_ctx,
--				   &ctx->empty_flush_buf->m2m_buf.vb);
-+		v4l2_m2m_buf_queue(ctx->m2m_ctx, &ctx->empty_flush_buf.vb);
- 		v4l2_m2m_try_schedule(ctx->m2m_ctx);
- 		break;
- 
-@@ -779,8 +778,6 @@ int vb2ops_vdec_buf_init(struct vb2_buffer *vb)
- 	if (vb->vb2_queue->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
- 		buf->used = false;
- 		buf->queued_in_v4l2 = false;
--	} else {
--		buf->lastframe = false;
- 	}
- 
- 	return 0;
-@@ -807,9 +804,7 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
- 
- 	if (q->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
- 		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx))) {
--			struct mtk_video_dec_buf *buf_info = container_of(
--				 src_buf, struct mtk_video_dec_buf, m2m_buf.vb);
--			if (!buf_info->lastframe) {
-+			if (src_buf != &ctx->empty_flush_buf.vb) {
- 				struct media_request *req =
- 					src_buf->vb2_buf.req_obj.req;
- 				v4l2_m2m_buf_done(src_buf,
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-index a2949e1bc7fe..a510e74251e6 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-@@ -42,7 +42,6 @@ struct vdec_fb {
-  * @queued_in_vb2:	Capture buffer is queue in vb2
-  * @queued_in_v4l2:	Capture buffer is in v4l2 driver, but not in vb2
-  *			queue yet
-- * @lastframe:		Intput buffer is last buffer - EOS
-  * @error:		An unrecoverable error occurs on this buffer.
-  * @frame_buffer:	Decode status, and buffer information of Capture buffer
-  * @bs_buffer:	Output buffer info
-@@ -55,7 +54,6 @@ struct mtk_video_dec_buf {
- 	bool	used;
- 	bool	queued_in_vb2;
- 	bool	queued_in_v4l2;
--	bool	lastframe;
- 
- 	bool	error;
- 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index e0526c0900c8..4789e669c258 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -82,21 +82,14 @@ static int fops_vcodec_open(struct file *file)
- {
- 	struct mtk_vcodec_dev *dev = video_drvdata(file);
- 	struct mtk_vcodec_ctx *ctx = NULL;
--	struct mtk_video_dec_buf *mtk_buf = NULL;
- 	int ret = 0;
- 	struct vb2_queue *src_vq;
- 
- 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
- 	if (!ctx)
- 		return -ENOMEM;
--	mtk_buf = kzalloc(sizeof(*mtk_buf), GFP_KERNEL);
--	if (!mtk_buf) {
--		kfree(ctx);
--		return -ENOMEM;
--	}
- 
- 	mutex_lock(&dev->dev_mutex);
--	ctx->empty_flush_buf = mtk_buf;
- 	ctx->id = dev->id_counter++;
- 	v4l2_fh_init(&ctx->fh, video_devdata(file));
- 	file->private_data = &ctx->fh;
-@@ -122,8 +115,7 @@ static int fops_vcodec_open(struct file *file)
- 	}
- 	src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
- 				V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
--	ctx->empty_flush_buf->m2m_buf.vb.vb2_buf.vb2_queue = src_vq;
--	ctx->empty_flush_buf->lastframe = true;
-+	ctx->empty_flush_buf.vb.vb2_buf.vb2_queue = src_vq;
- 	mtk_vcodec_dec_set_default_params(ctx);
- 
- 	if (v4l2_fh_is_singular(&ctx->fh)) {
-@@ -161,7 +153,6 @@ static int fops_vcodec_open(struct file *file)
- err_ctrls_setup:
- 	v4l2_fh_del(&ctx->fh);
- 	v4l2_fh_exit(&ctx->fh);
--	kfree(ctx->empty_flush_buf);
- 	kfree(ctx);
- 	mutex_unlock(&dev->dev_mutex);
- 
-@@ -192,7 +183,6 @@ static int fops_vcodec_release(struct file *file)
- 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
- 
- 	list_del_init(&ctx->list);
--	kfree(ctx->empty_flush_buf);
- 	kfree(ctx);
- 	mutex_unlock(&dev->dev_mutex);
- 	return 0;
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-index 3666c7e73bff..8d4ec8c7728b 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-@@ -337,8 +337,6 @@ static void mtk_vdec_worker(struct work_struct *work)
- 		return;
- 	}
- 
--	src_buf_info = container_of(src_buf, struct mtk_video_dec_buf,
--				    m2m_buf.vb);
- 	dst_buf_info = container_of(dst_buf, struct mtk_video_dec_buf,
- 				    m2m_buf.vb);
- 
-@@ -359,7 +357,7 @@ static void mtk_vdec_worker(struct work_struct *work)
- 			pfb->base_y.va, &pfb->base_y.dma_addr,
- 			&pfb->base_c.dma_addr, pfb->base_y.size);
- 
--	if (src_buf_info->lastframe) {
-+	if (src_buf == &ctx->empty_flush_buf.vb) {
- 		mtk_v4l2_debug(1, "Got empty flush input buffer.");
- 		src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
- 
-@@ -380,6 +378,10 @@ static void mtk_vdec_worker(struct work_struct *work)
- 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
- 		return;
- 	}
-+
-+	src_buf_info = container_of(src_buf, struct mtk_video_dec_buf,
-+				    m2m_buf.vb);
-+
- 	buf.va = vb2_plane_vaddr(&src_buf->vb2_buf, 0);
- 	buf.dma_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
- 	buf.size = (size_t)src_buf->vb2_buf.planes[0].bytesused;
-@@ -459,7 +461,6 @@ static void vb2ops_vdec_stateful_buf_queue(struct vb2_buffer *vb)
- 	unsigned int dpbsize = 1, i = 0;
- 	struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
- 	struct vb2_v4l2_buffer *vb2_v4l2 = NULL;
--	struct mtk_video_dec_buf *buf = NULL;
- 	struct mtk_q_data *dst_q_data;
- 
- 	mtk_v4l2_debug(3, "[%d] (%d) id=%d, vb=%p",
-@@ -469,6 +470,8 @@ static void vb2ops_vdec_stateful_buf_queue(struct vb2_buffer *vb)
- 	 * check if this buffer is ready to be used after decode
- 	 */
- 	if (vb->vb2_queue->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-+		struct mtk_video_dec_buf *buf;
-+
- 		vb2_v4l2 = to_vb2_v4l2_buffer(vb);
- 		buf = container_of(vb2_v4l2, struct mtk_video_dec_buf,
- 				   m2m_buf.vb);
-@@ -498,8 +501,8 @@ static void vb2ops_vdec_stateful_buf_queue(struct vb2_buffer *vb)
- 		mtk_v4l2_err("No src buffer");
- 		return;
- 	}
--	buf = container_of(src_buf, struct mtk_video_dec_buf, m2m_buf.vb);
--	if (buf->lastframe) {
-+
-+	if (src_buf == &ctx->empty_flush_buf.vb) {
- 		/* This shouldn't happen. Just in case. */
- 		mtk_v4l2_err("Invalid flush buffer.");
- 		v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 79d6a1e6c916..8dab9f520283 100644
+index 8dab9f520283..73da6c7b69a8 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -13,6 +13,7 @@
- #include <media/v4l2-ctrls.h>
- #include <media/v4l2-device.h>
- #include <media/v4l2-ioctl.h>
-+#include <media/v4l2-mem2mem.h>
- #include <media/videobuf2-core.h>
- #include "mtk_vcodec_util.h"
- 
-@@ -250,7 +251,8 @@ struct vdec_pic_info {
-  * @decode_work: worker for the decoding
-  * @encode_work: worker for the encoding
+@@ -253,6 +253,7 @@ struct vdec_pic_info {
   * @last_decoded_picinfo: pic information get from latest decode
-- * @empty_flush_buf: a fake size-0 capture buffer that indicates flush
-+ * @empty_flush_buf: a fake size-0 capture buffer that indicates flush. Only
-+ *		     to be used with encoder and stateful decoder.
+  * @empty_flush_buf: a fake size-0 capture buffer that indicates flush. Only
+  *		     to be used with encoder and stateful decoder.
++ * @is_flushing: set to true if flushing is in progress.
   * @current_codec: current set input codec, in V4L2 pixel format
   *
   * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
-@@ -289,7 +291,7 @@ struct mtk_vcodec_ctx {
- 	struct work_struct decode_work;
+@@ -292,6 +293,7 @@ struct mtk_vcodec_ctx {
  	struct work_struct encode_work;
  	struct vdec_pic_info last_decoded_picinfo;
--	struct mtk_video_dec_buf *empty_flush_buf;
-+	struct v4l2_m2m_buffer empty_flush_buf;
+ 	struct v4l2_m2m_buffer empty_flush_buf;
++	bool is_flushing;
  
  	u32 current_codec;
  
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index 8c917969c2f1..4de381b522ae 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -658,6 +658,7 @@ static int vidioc_venc_dqbuf(struct file *file, void *priv,
+ 			     struct v4l2_buffer *buf)
+ {
+ 	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	int ret;
+ 
+ 	if (ctx->state == MTK_STATE_ABORT) {
+ 		mtk_v4l2_err("[%d] Call on QBUF after unrecoverable error",
+@@ -665,7 +666,77 @@ static int vidioc_venc_dqbuf(struct file *file, void *priv,
+ 		return -EIO;
+ 	}
+ 
+-	return v4l2_m2m_dqbuf(file, ctx->m2m_ctx, buf);
++	ret = v4l2_m2m_dqbuf(file, ctx->m2m_ctx, buf);
++	if (ret)
++		return ret;
++
++	/*
++	 * Complete flush if the user dequeued the 0-payload LAST buffer.
++	 * We check the payload because a buffer with the LAST flag can also
++	 * be seen during resolution changes. If we happen to be flushing at
++	 * that time, the last buffer before the resolution changes could be
++	 * misinterpreted for the buffer generated by the flush and terminate
++	 * it earlier than we want.
++	 */
++	if (!V4L2_TYPE_IS_OUTPUT(buf->type) &&
++	    buf->flags & V4L2_BUF_FLAG_LAST &&
++	    buf->m.planes[0].bytesused == 0 &&
++	    ctx->is_flushing) {
++		/*
++		 * Last CAPTURE buffer is dequeued, we can allow another flush
++		 * to take place.
++		 */
++		ctx->is_flushing = false;
++	}
++
++	return 0;
++}
++
++static int vidioc_encoder_cmd(struct file *file, void *priv,
++			      struct v4l2_encoder_cmd *cmd)
++{
++	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	struct vb2_queue *src_vq, *dst_vq;
++	int ret;
++
++	ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, cmd);
++	if (ret)
++		return ret;
++
++	/* Calling START or STOP is invalid if a flush is in progress */
++	if (ctx->is_flushing)
++		return -EBUSY;
++
++	mtk_v4l2_debug(1, "encoder cmd=%u", cmd->cmd);
++
++	dst_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
++				V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
++	switch (cmd->cmd) {
++	case V4L2_ENC_CMD_STOP:
++		src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
++				V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
++		if (!vb2_is_streaming(src_vq)) {
++			mtk_v4l2_debug(1, "Output stream is off. No need to flush.");
++			return 0;
++		}
++		if (!vb2_is_streaming(dst_vq)) {
++			mtk_v4l2_debug(1, "Capture stream is off. No need to flush.");
++			return 0;
++		}
++		ctx->is_flushing = true;
++		v4l2_m2m_buf_queue(ctx->m2m_ctx, &ctx->empty_flush_buf.vb);
++		v4l2_m2m_try_schedule(ctx->m2m_ctx);
++		break;
++
++	case V4L2_ENC_CMD_START:
++		vb2_clear_last_buffer_dequeued(dst_vq);
++		break;
++
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
+ }
+ 
+ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+@@ -701,6 +772,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+ 
+ 	.vidioc_g_selection		= vidioc_venc_g_selection,
+ 	.vidioc_s_selection		= vidioc_venc_s_selection,
++
++	.vidioc_encoder_cmd		= vidioc_encoder_cmd,
++	.vidioc_try_encoder_cmd		= v4l2_m2m_ioctl_try_encoder_cmd,
+ };
+ 
+ static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
+@@ -857,9 +931,27 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
+ 			dst_buf->vb2_buf.planes[0].bytesused = 0;
+ 			v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_ERROR);
+ 		}
++		/* STREAMOFF on the CAPTURE queue completes any ongoing flush */
++		if (ctx->is_flushing) {
++			mtk_v4l2_debug(1, "STREAMOFF called while flushing");
++			v4l2_m2m_buf_remove_by_buf(&ctx->m2m_ctx->out_q_ctx,
++						   &ctx->empty_flush_buf.vb);
++			ctx->is_flushing = false;
++		}
+ 	} else {
+-		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx)))
+-			v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
++		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx))) {
++			if (src_buf != &ctx->empty_flush_buf.vb)
++				v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
++		}
++		if (ctx->is_flushing) {
++			/*
++			 * If we are in the middle of a flush, put the flush
++			 * buffer back into the queue so the next CAPTURE
++			 * buffer gets returned with the LAST flag set.
++			 */
++			v4l2_m2m_buf_queue(ctx->m2m_ctx,
++					   &ctx->empty_flush_buf.vb);
++		}
+ 	}
+ 
+ 	if ((q->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE &&
+@@ -955,12 +1047,15 @@ static int mtk_venc_param_change(struct mtk_vcodec_ctx *ctx)
+ {
+ 	struct venc_enc_param enc_prm;
+ 	struct vb2_v4l2_buffer *vb2_v4l2 = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+-	struct mtk_video_enc_buf *mtk_buf =
+-			container_of(vb2_v4l2, struct mtk_video_enc_buf,
+-				     m2m_buf.vb);
+-
++	struct mtk_video_enc_buf *mtk_buf;
+ 	int ret = 0;
+ 
++	/* Don't upcast the empty flush buffer */
++	if (vb2_v4l2 == &ctx->empty_flush_buf.vb)
++		return 0;
++
++	mtk_buf = container_of(vb2_v4l2, struct mtk_video_enc_buf, m2m_buf.vb);
++
+ 	memset(&enc_prm, 0, sizeof(enc_prm));
+ 	if (mtk_buf->param_change == MTK_ENCODE_PARAM_NONE)
+ 		return 0;
+@@ -1046,6 +1141,20 @@ static void mtk_venc_worker(struct work_struct *work)
+ 	}
+ 
+ 	src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
++
++	/*
++	 * If we see the flush buffer, send an empty buffer with the LAST flag
++	 * to the client. is_flushing will be reset at the time the buffer
++	 * is dequeued.
++	 */
++	if (src_buf == &ctx->empty_flush_buf.vb) {
++		vb2_set_plane_payload(&dst_buf->vb2_buf, 0, 0);
++		dst_buf->flags |= V4L2_BUF_FLAG_LAST;
++		v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_DONE);
++		v4l2_m2m_job_finish(ctx->dev->m2m_dev_enc, ctx->m2m_ctx);
++		return;
++	}
++
+ 	memset(&frm_buf, 0, sizeof(frm_buf));
+ 	for (i = 0; i < src_buf->vb2_buf.num_planes ; i++) {
+ 		frm_buf.fb_addr[i].dma_addr =
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index be3842e6ca47..b2ba8db32fea 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -150,6 +150,7 @@ static int fops_vcodec_open(struct file *file)
+ 	struct mtk_vcodec_dev *dev = video_drvdata(file);
+ 	struct mtk_vcodec_ctx *ctx = NULL;
+ 	int ret = 0;
++	struct vb2_queue *src_vq;
+ 
+ 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+ 	if (!ctx)
+@@ -183,6 +184,9 @@ static int fops_vcodec_open(struct file *file)
+ 				ret);
+ 		goto err_m2m_ctx_init;
+ 	}
++	src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
++				V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
++	ctx->empty_flush_buf.vb.vb2_buf.vb2_queue = src_vq;
+ 	mtk_vcodec_enc_set_default_params(ctx);
+ 
+ 	if (v4l2_fh_is_singular(&ctx->fh)) {
 -- 
 2.30.1.766.gb4fecdf3b7-goog
 
