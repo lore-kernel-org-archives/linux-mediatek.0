@@ -2,73 +2,63 @@ Return-Path: <SRS0=c7Bv=H4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4E1EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 11:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA83BC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 14:22:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7334F64EF0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 11:14:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7334F64EF0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8331064DA8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 14:22:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8331064DA8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mCpswCGNK7zEmFNKoTWEg6n57nuQxmOIl2AJGEfSupU=; b=pp3vZHdLBC/i8H8t3uuzlhjHdY
-	H5hQtrlMrko0bKWed8HVkWK3eUHod+GYlGKUw7I+yT4pZTB+5KN9KOwQRXezUwlrkZqW+gNVtsJyK
-	RrVGR+NCFLqUaflXH9vQsVzgyXnXmBKB+oEdSzF/VuXB6FjRj+dN/kvkDuqWH4pYtQnnJ/cOki5cE
-	3ewGXKul+RO9xPzGZi0z2UjmpToNc8IAf3H1HNf0sF6GUvyP1KoF3SB8nbbJ9hsw/WFCq+7uviD6O
-	dt0s2sbi4QbMfm/BqSadLmatpDCt99DQXUE+EHsIUO5Ab+/LiEWEiLQGTSh0sc9pB3Oc+j6uLWSkL
-	VBMgc4gQ==;
+	bh=dbp0iLxT6tYn9Mecta4fNRG20U3CGgu2P14KoTFM4Qc=; b=a8BTNmwkT2b62DWNeob/DES6r9
+	vFjHALhMdFYF+7/OC6VHBlMH76OT44ON7ImSovm6MT6BWj1zJtpyCodse9rVQY0ELaMgR0S3w245Q
+	hpgbhPRmlJThpcn8vB4XfwNe9D7UL2xX/ryRINhDyh8zF+9C+E9S5jjDHvJrAsqMWiW58VrcHNm1I
+	yQjR9UkFwu/FjZVP8eFjPS8Ko3Yj7ScsKjV/9Xzf42qttkXFL9gefmF7rHLDir8CXYMC+N0QW+NWH
+	PNkD3p/Emfh1hdJg8rCPSCIfc8XuQPm2QoWUagTz09VYcDMHzUVfSt+MoXFxi+EbH0H7rplkKWV/U
+	9OrgTW0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFb4j-0007m6-OV; Fri, 26 Feb 2021 11:14:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lFe0w-0007e1-65; Fri, 26 Feb 2021 14:22:42 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFb4g-0007ku-3Y; Fri, 26 Feb 2021 11:14:23 +0000
-X-UUID: bf41966719a04127ad3f0068d5c00619-20210226
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=cGcACxPF7fwDMU36JQTh1+jpmIw5eXYxpDi79pNsb5w=; 
- b=jYGcuWifpvh5OSo+sm3l584vE9dEc6S2EWX1hrXM3Un/frRxqhuReM2DrEsUyikZ5mTAzgQKKmad+gXuy2hZR6hP16H4w5auC9LeWQWhn5pSgRSACHtzqy50fKse1ycZeRz97tzGGCFlowWFFLK8FgVLCR6247bvXofbnJd3AaE=;
-X-UUID: bf41966719a04127ad3f0068d5c00619-20210226
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mason.zhang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 571673092; Fri, 26 Feb 2021 03:14:16 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Feb 2021 03:04:14 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Feb 2021 19:04:12 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 26 Feb 2021 19:04:12 +0800
-From: Mason Zhang <Mason.Zhang@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 1/2] arm64: dts: mediatek: add MT6779 spi master dts node
-Date: Fri, 26 Feb 2021 18:59:19 +0800
-Message-ID: <20210226105918.3057-1-Mason.Zhang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lFe0r-0007cz-Nn; Fri, 26 Feb 2021 14:22:38 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1B93164DE3;
+ Fri, 26 Feb 2021 14:22:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614349356;
+ bh=IscUE33njMPiVfvfUyjcKdZCxN3HpR68Nvvh7cCbHws=;
+ h=From:To:Cc:Subject:Date:From;
+ b=BO8GncTN/3+5/nrOKmXhLN/kayMmjVF8zfxh3Tnyqbm4LTzd/h9Zq7q5NPYgKasJy
+ 3akSDqpje6K0b49u3O9RX5bgUrdH1IsGxQHE3aNu0ZlT2+9dgjRS1cog550IGoUS/R
+ oBI4b1lvqZapmKv3D6yk8sl+ghIdwsWuykj7Pbi5fbX6samUdH+CmonOiD5jgUk3Ae
+ el5aMWCd1bNKWWggvQSyAz5hpvDxs1SB9rjgHFpbkDdgcyqdvsUhrQ7j1Gcj5qKcFo
+ QbtQugKHAxsY8ozewjcp1qWrjTBycHXY9kW0L8jzk1fsYOOqXK+Wvf1HFQ7EwtmPp1
+ HLGTiU3rb1vUw==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Kalle Valo <kvalo@codeaurora.org>
+Subject: [PATCH] [v2] mt76: mt7915: fix unused 'mode' variable
+Date: Fri, 26 Feb 2021 15:21:27 +0100
+Message-Id: <20210226142215.3482168-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1871EBE782D026DD3F96E5E5D4AAD5E26076FF1531DC533642B4AA9181101B2E2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210226_061422_392110_C36E3DE0 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210226_092237_977378_2B21443C 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,131 +70,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Mason Zhang <Mason.Zhang@mediatek.com>,
- wsd_upstream@mediatek.com, hanks.chen@mediateka.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ Nathan Chancellor <nathan@kernel.org>, clang-built-linux@googlegroups.com,
+ linux-mediatek@lists.infradead.org, Jakub Kicinski <kuba@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-this patch add spi master dts node for mt6779 SOC.
+From: Arnd Bergmann <arnd@arndb.de>
 
-Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
+clang points out a possible corner case in the mt7915_tm_set_tx_cont()
+function if called with invalid arguments:
+
+drivers/net/wireless/mediatek/mt76/mt7915/testmode.c:593:2: warning: variable 'mode' is used uninitialized whenever switch default is taken [-Wsometimes-uninitialized]
+        default:
+        ^~~~~~~
+drivers/net/wireless/mediatek/mt76/mt7915/testmode.c:597:13: note: uninitialized use occurs here
+        rateval =  mode << 6 | rate_idx;
+                   ^~~~
+drivers/net/wireless/mediatek/mt76/mt7915/testmode.c:506:37: note: initialize the variable 'mode' to silence this warning
+        u8 rate_idx = td->tx_rate_idx, mode;
+                                           ^
+
+Change it to return an error instead of continuing with invalid data
+here.
+
+Fixes: 3f0caa3cbf94 ("mt76: mt7915: add support for continuous tx in testmode")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- arch/arm64/boot/dts/mediatek/mt6779.dtsi | 96 ++++++++++++++++++++++++
- 1 file changed, 96 insertions(+)
+v2: remove the extra 'break;' after return.
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/testmode.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-index 370f309d32de..ca72eb09cff9 100644
---- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-@@ -219,6 +219,102 @@
- 			status = "disabled";
- 		};
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+index 7fb2170a9561..bd798df748ba 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+@@ -543,7 +543,7 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
+ 		tx_cont->bw = CMD_CBW_20MHZ;
+ 		break;
+ 	default:
+-		break;
++		return -EINVAL;
+ 	}
  
-+		spi0: spi0@1100a000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x1100a000 0 0x1000>;
-+			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				<&topckgen CLK_TOP_SPI>,
-+				<&infracfg_ao CLK_INFRA_SPI0>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
-+		spi1: spi1@11010000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x11010000 0 0x1000>;
-+			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				<&topckgen CLK_TOP_SPI>,
-+				<&infracfg_ao CLK_INFRA_SPI1>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
-+		spi2: spi2@11012000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x11012000 0 0x1000>;
-+			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				 <&topckgen CLK_TOP_SPI>,
-+				<&infracfg_ao CLK_INFRA_SPI2>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
-+		spi3: spi3@11013000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x11013000 0 0x1000>;
-+			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				 <&topckgen CLK_TOP_SPI>,
-+				 <&infracfg_ao CLK_INFRA_SPI3>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
-+		spi4: spi4@11018000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x11018000 0 0x1000>;
-+			interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				 <&topckgen CLK_TOP_SPI>,
-+				 <&infracfg_ao CLK_INFRA_SPI4>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
-+		spi5: spi5@11019000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x11019000 0 0x1000>;
-+			interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				<&topckgen CLK_TOP_SPI>,
-+				<&infracfg_ao CLK_INFRA_SPI5>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
-+		spi6: spi6@1101d000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x1101d000 0 0x1000>;
-+			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				 <&topckgen CLK_TOP_SPI>,
-+				 <&infracfg_ao CLK_INFRA_SPI6>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
-+		spi7: spi7@1101e000 {
-+			compatible = "mediatek,mt6779-spi",
-+				     "mediatek,mt6765-spi";
-+			mediatek,pad-select = <0>;
-+			reg = <0 0x1101e000 0 0x1000>;
-+			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW 0>;
-+			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-+				 <&topckgen CLK_TOP_SPI>,
-+				 <&infracfg_ao CLK_INFRA_SPI7>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+		};
-+
- 		audio: clock-controller@11210000 {
- 			compatible = "mediatek,mt6779-audio", "syscon";
- 			reg = <0 0x11210000 0 0x1000>;
+ 	if (!en) {
+@@ -591,7 +591,7 @@ mt7915_tm_set_tx_cont(struct mt7915_phy *phy, bool en)
+ 		mode = MT_PHY_TYPE_HE_MU;
+ 		break;
+ 	default:
+-		break;
++		return -EINVAL;
+ 	}
+ 
+ 	rateval =  mode << 6 | rate_idx;
 -- 
-2.18.0
+2.29.2
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
