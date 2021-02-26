@@ -2,83 +2,86 @@ Return-Path: <SRS0=c7Bv=H4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E955C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CD264C433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:02:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CDB7D64ED5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:02:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDB7D64ED5
+	by mail.kernel.org (Postfix) with ESMTPS id 8418264ED5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 10:02:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8418264ED5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lr/I4K/+dZDsmAvMcORJfyNQ2rclO8HGGlg1+Eb7J7M=; b=UU8wgXhmKgx1TkVLLJeybvnk3x
-	ycItTFplg9SYysjwAmxXNakkgrDw5/n/9olE/mD/qSWcvKhTJWcZI5UdBjjSIY6P3Pmh3qhy3jWbE
-	87WeuTYZIyps3yQ8JeiVnlyhpoMyFWst0IJDyUBMYaU4sEDOu1NhMQRGLJ0H6TNzvVUQWTfY0xh0f
-	CJqDnAnljMTSbhJ2ebCNiMvlbefaQ2BryZQxnz2Ehwy4DfPfSoVY4NxsK3/yy9EQbts1jDlWXA42w
-	JE22WViEe1H0klHtwryJ8DSVXgGrukTLbaxQmU7Szdw/fqVKG5RZgGeZb2g8KZfBCz3E0PUGdyOrg
-	TCsMalIQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=b95j7UhrjMkpahBuEb8Fw3RFV0Z/ZFV2Expw3bmo4ok=; b=NKyODn0kuRIVCDdNfU2Ztk9A1
+	IT7TeTLOQTXDs3Fcm2HDsNaO7mK+xi35UOmQ/eDeV+55g1icuBjvzqFbm4ROCXoiguEaYRHaHDK4P
+	o4iNNBxrLq4AAa2YSfapolAVLk83h2KPiPxRcQJPTU7gmfDbaUfAzA1B+u4azW8eTYrByqsVJt5k9
+	/hmcUNauYCs2WO3nO74c/NNCB2AG89c4EzIQvrTJ8LiaLkwimHtIf4bkPoRbMDJJCZ6uPVbe6hAZ+
+	H9SPiRkWGyzgeq83dW4+4vSysHL80LjFcpuqPBniOQ4A/1R5bdzvfFcPZBuLtOpYC0PesQUqUHA8T
+	tyOt3Lh2A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFZwj-0007kx-Dc; Fri, 26 Feb 2021 10:02:05 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1lFZwp-0007nc-Pd; Fri, 26 Feb 2021 10:02:11 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFZwg-0007kC-EZ
- for linux-mediatek@lists.infradead.org; Fri, 26 Feb 2021 10:02:03 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id e9so5047477plh.3
- for <linux-mediatek@lists.infradead.org>; Fri, 26 Feb 2021 02:02:01 -0800 (PST)
+ id 1lFZwl-0007lf-S1
+ for linux-mediatek@lists.infradead.org; Fri, 26 Feb 2021 10:02:09 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id w18so5028252plc.12
+ for <linux-mediatek@lists.infradead.org>; Fri, 26 Feb 2021 02:02:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rdHQrIoRBZis59jo/BlYAHJNjsS+NHQ7VVed8ginGb0=;
- b=MsQ/EITikSwmceNc01UidROuZO8i86fefQVWuDj88ZnuaRnex8jZbEqMBSj7xJf3vk
- 4MS4W+RN09mFDHeWU1V+lzeZfBb3IKOUdtA19n09rxA3lFEfiL0bWn0xbd9GXQ0NHTJH
- rCmhueTb2eC3VliCroGN3UeXgb2iCmHbps2jw=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=9HKwgQjpBZBqahiuhWRx8o5sg+XV5RnqZt2TafquTyg=;
+ b=ZKy5mfsnQYAj9sBipMWxryycKQoJhQApdSJsm/0/Ldo9IMGpt9s3HMBijfGXUGm0Xl
+ r50dbF4p3C1SBPHrG4w7tXIp+OJQz2kXr2/YizD+HY/ClDwLR4Z6E7bgxtPvRJoJuDsu
+ dbkoTl55GUdk3GL6ACeiQCitpLLigGhj64jrc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rdHQrIoRBZis59jo/BlYAHJNjsS+NHQ7VVed8ginGb0=;
- b=M9fLnSZ+l7EsQWuPB2YjsHrexIx5XYb3nmiZI1mZOAnCCVGYLjpIiWSTX0N5IV2knk
- CL7LByKf0xRLjMfV4j3aR7BDXRl/tq/cKY2Hac2b+wAQcuuWhAIM2EtK4q0DCnU2kEmp
- toN1HmebkPvaSJFrBv0GfcDxa/Iv2GOBa8KbMPFil/2/B4szmLYr56gc+LZDcyaRi5+S
- nXsX94F3JgIpFpJZms2UuqeoJPVEyUH8VR0sAXDd0tpWO3JDYwnhgS864H3etm2HfV0C
- yS17pGKjclPapl2947ghKyDPvlFZlFFawCrcaGr3TN3hdoGRAvisXpsLZ4X93RQ+FfKc
- FMxQ==
-X-Gm-Message-State: AOAM532XaCw2oPFSUGcHLGgp+ltP0f16N4TMson6mg+PdWZAp/QiqMW6
- pcWJtJ4QVYLdEmo0zjfTpYSgJQ==
-X-Google-Smtp-Source: ABdhPJzTeUwT5lTjJeqNtc/Vnuyz+cdz8j6lb2R9rH9Z7Ae4N0P6WxL+lS+AF39HONEWvZwP7VfhRQ==
-X-Received: by 2002:a17:90a:ce88:: with SMTP id
- g8mr2635720pju.107.1614333719701; 
- Fri, 26 Feb 2021 02:01:59 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=9HKwgQjpBZBqahiuhWRx8o5sg+XV5RnqZt2TafquTyg=;
+ b=hjhcOhVe1WfdFmPfjRnB0Jyq04iT7Xn8VgnWIzATzPNQeTJdAbRjdD6ZCvw4qZozWn
+ ZHk2GTkk6GJCj9m8961db7diVCVATw+am1CLiFtD/grCSBUvsVhtb55SsuHe9Nl4sB4R
+ IU6haMXQFjQ8eXHIoWm4eXlHsbjXuOFMiGZ8izUBPLQqLo3XjB1Vx3qBBPKGOL0u/8c9
+ GX76C0GPO/74gJQXhzE3Fj13CPSoTFdfcddbX46R+EMzkkeCNzkv7czXcSGRigK8NwUm
+ oxZo4/6WhkKIou74oPG/HTdBfmqmnD2CeOmNC29SEoqG4DgCQOzYInlRlzrfaN2eukzz
+ 1TEg==
+X-Gm-Message-State: AOAM531tHCtZ4BVYTU847DP6V8ox2V22F9OJngr6XKpHEJwCE8wSxiHC
+ EJ4V8O0t7Ve0TAMV/FfWimlBYA==
+X-Google-Smtp-Source: ABdhPJwobRiJ2aFwPq86fdXHedlHRL7QggtXl8HZQ/j5jgEcR7wLsVOYc6r3ECZ25MFn205pL7FvRA==
+X-Received: by 2002:a17:90a:4a84:: with SMTP id
+ f4mr2693897pjh.231.1614333725667; 
+ Fri, 26 Feb 2021 02:02:05 -0800 (PST)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:5c91:233c:dd5b:b1b0])
- by smtp.gmail.com with ESMTPSA id o23sm9201565pfp.89.2021.02.26.02.01.57
+ by smtp.gmail.com with ESMTPSA id o23sm9201565pfp.89.2021.02.26.02.02.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Feb 2021 02:01:59 -0800 (PST)
+ Fri, 26 Feb 2021 02:02:05 -0800 (PST)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>
-Subject: [PATCH v3 00/15] media: mtk-vcodec: support for MT8183 decoder
-Date: Fri, 26 Feb 2021 19:01:33 +0900
-Message-Id: <20210226100148.1663389-1-acourbot@chromium.org>
+Subject: [PATCH v3 02/15] media: mtk-vcodec: vdec: handle firmware version
+ field
+Date: Fri, 26 Feb 2021 19:01:35 +0900
+Message-Id: <20210226100148.1663389-3-acourbot@chromium.org>
 X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
+In-Reply-To: <20210226100148.1663389-1-acourbot@chromium.org>
+References: <20210226100148.1663389-1-acourbot@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210226_050202_587806_BC8DFE36 
-X-CRM114-Status: GOOD (  14.48  )
+X-CRM114-CacheID: sfid-20210226_050207_990753_FE8383DD 
+X-CRM114-Status: GOOD (  20.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,79 +101,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Please ignore the v2 of this series since I neglected a final check on
-it and realized later it did not compile. >_<
+Firmwares for decoders newer than MT8173 will include an ABI version
+number in their initialization ack message. Add the capacity to manage
+it and make initialization fail if the firmware ABI is of a version that
+we don't support.
 
-This series adds support for the stateless API into mtk-vcodec, by first
-separating the stateful ops into their own source file, and introducing
-a new set of ops suitable for stateless decoding. As such, support for
-stateful decoders should remain completely unaffected.
+For MT8173, this ABI version field does not exist ; thus ignore it on
+this chip. There should only be one firmware version available for it
+anyway.
 
-This series has been tested with both MT8183 and MT8173. Decoding was
-working for both chips, and in the case of MT8173 no regression has been
-spotted.
+Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+---
+ .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |  1 +
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  4 ++++
+ .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  5 +++++
+ .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 21 +++++++++++++++++--
+ 4 files changed, 29 insertions(+), 2 deletions(-)
 
-Patches 1-9 add MT8183 support to the decoder using the stateless API.
-MT8183 only support H.264 acceleration.
-
-Patches 10-15 are follow-ups that further improve compliance for the
-decoder and encoder, by fixing support for commands on both. Patch 11
-also makes sure that supported H.264 profiles are exported on MT8173.
-
-Changes since v2:
-* Actually compiles (duh),
-* Add follow-up patches fixing support for START/STOP commands for the
-  encoder, and stateful decoder.
-
-Alexandre Courbot (8):
-  media: mtk-vcodec: vdec: handle firmware version field
-  media: mtk-vcodec: support version 2 of decoder firmware ABI
-  media: add Mediatek's MM21 format
-  dt-bindings: media: document mediatek,mt8183-vcodec-dec
-  media: mtk-vcodec: vdec: use helpers in VIDIOC_(TRY_)DECODER_CMD
-  media: mtk-vcodec: vdec: clamp OUTPUT resolution to hardware limits
-  media: mtk-vcodec: make flush buffer reusable by encoder
-  media: mtk-vcodec: venc: support START and STOP commands
-
-Hirokazu Honda (1):
-  media: mtk-vcodec: vdec: Support H264 profile control
-
-Hsin-Yi Wang (1):
-  media: mtk-vcodec: venc: make sure buffer exists in list before
-    removing
-
-Yunfei Dong (5):
-  media: mtk-vcodec: vdec: move stateful ops into their own file
-  media: mtk-vcodec: vdec: support stateless API
-  media: mtk-vcodec: vdec: support stateless H.264 decoding
-  media: mtk-vcodec: vdec: add media device if using stateless api
-  media: mtk-vcodec: enable MT8183 decoder
-
- .../bindings/media/mediatek-vcodec.txt        |   1 +
- .../media/v4l/pixfmt-reserved.rst             |   7 +
- drivers/media/platform/Kconfig                |   2 +
- drivers/media/platform/mtk-vcodec/Makefile    |   3 +
- .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 800 +++--------------
- .../platform/mtk-vcodec/mtk_vcodec_dec.h      |  30 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  66 +-
- .../mtk-vcodec/mtk_vcodec_dec_stateful.c      | 647 ++++++++++++++
- .../mtk-vcodec/mtk_vcodec_dec_stateless.c     | 427 +++++++++
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  58 +-
- .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 135 ++-
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |   4 +
- .../mtk-vcodec/vdec/vdec_h264_req_if.c        | 807 ++++++++++++++++++
- .../media/platform/mtk-vcodec/vdec_drv_if.c   |   3 +
- .../media/platform/mtk-vcodec/vdec_drv_if.h   |   1 +
- .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  23 +-
- .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  43 +-
- .../media/platform/mtk-vcodec/vdec_vpu_if.h   |   5 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
- include/uapi/linux/videodev2.h                |   1 +
- 20 files changed, 2360 insertions(+), 704 deletions(-)
- create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
- create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
- create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
+index 48b7524bc8fb..f9db7ef19c28 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
+@@ -620,6 +620,7 @@ static struct vb2_ops mtk_vdec_frame_vb2_ops = {
+ };
+ 
+ const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata = {
++	.chip = MTK_MT8173,
+ 	.init_vdec_params = mtk_init_vdec_params,
+ 	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
+ 	.vdec_vb2_ops = &mtk_vdec_frame_vb2_ops,
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 9221c17a176b..60bc39efa20d 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -322,6 +322,8 @@ enum mtk_chip {
+  * @vdec_framesizes: supported video decoder frame sizes
+  * @num_framesizes: count of video decoder frame sizes
+  *
++ * @chip: chip this decoder is compatible with
++ *
+  * @uses_stateless_api: whether the decoder uses the stateless API with requests
+  */
+ 
+@@ -341,6 +343,8 @@ struct mtk_vcodec_dec_pdata {
+ 	const struct mtk_codec_framesizes *vdec_framesizes;
+ 	const int num_framesizes;
+ 
++	enum mtk_chip chip;
++
+ 	bool uses_stateless_api;
+ };
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+index 47a1c1c0fd04..eb66729fda63 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
++++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+@@ -83,12 +83,17 @@ struct vdec_ap_ipi_dec_start {
+  * @status	: VPU exeuction result
+  * @ap_inst_addr	: AP vcodec_vpu_inst instance address
+  * @vpu_inst_addr	: VPU decoder instance address
++ * @vdec_abi_version:	ABI version of the firmware. Kernel can use it to
++ *			ensure that it is compatible with the firmware.
++ *			This field is not valid for MT8173 and must not be
++ *			accessed for this chip.
+  */
+ struct vdec_vpu_ipi_init_ack {
+ 	uint32_t msg_id;
+ 	int32_t status;
+ 	uint64_t ap_inst_addr;
+ 	uint32_t vpu_inst_addr;
++	uint32_t vdec_abi_version;
+ };
+ 
+ #endif
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+index 58b0e6fa8fd2..203089213e67 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+@@ -24,6 +24,22 @@ static void handle_init_ack_msg(const struct vdec_vpu_ipi_init_ack *msg)
+ 	vpu->inst_addr = msg->vpu_inst_addr;
+ 
+ 	mtk_vcodec_debug(vpu, "- vpu_inst_addr = 0x%x", vpu->inst_addr);
++
++	/* Firmware version field does not exist on MT8173. */
++	if (vpu->ctx->dev->vdec_pdata->chip == MTK_MT8173)
++		return;
++
++	/* Check firmware version. */
++	mtk_vcodec_debug(vpu, "firmware version 0x%x\n", msg->vdec_abi_version);
++	switch (msg->vdec_abi_version) {
++	case 1:
++		break;
++	default:
++		mtk_vcodec_err(vpu, "unhandled firmware version 0x%x\n",
++			       msg->vdec_abi_version);
++		vpu->failure = 1;
++		break;
++	}
+ }
+ 
+ /*
+@@ -44,6 +60,9 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 
+ 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
+ 
++	vpu->failure = msg->status;
++	vpu->signaled = 1;
++
+ 	if (msg->status == 0) {
+ 		switch (msg->msg_id) {
+ 		case VPU_IPIMSG_DEC_INIT_ACK:
+@@ -63,8 +82,6 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 	}
+ 
+ 	mtk_vcodec_debug(vpu, "- id=%X", msg->msg_id);
+-	vpu->failure = msg->status;
+-	vpu->signaled = 1;
+ }
+ 
+ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
 -- 
 2.30.1.766.gb4fecdf3b7-goog
 
