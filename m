@@ -2,74 +2,74 @@ Return-Path: <SRS0=c7Bv=H4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AAF7C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 01:33:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3124C433E9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 08:24:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF51C64DFF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 01:33:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF51C64DFF
+	by mail.kernel.org (Postfix) with ESMTPS id 659B564EE7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 08:24:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 659B564EE7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NRwNpepGcurafhwIGo5iwv2O2NJnZ2aP7NkG9Z6vWH8=; b=CwPMTuNX7GjhcrY4ZFd2aLbMGI
-	125j91cRTNv+96SPx1N40TIyPRQg3q7pQEODT7T8kIo4koN7e+hEWmW2WD9kvRohy3jLc81B1JG2J
-	YfsyqJ0Lehx/tH29SLYNrB7u0QSw0WxGSUnFg7JEbO5Zms3Xgz7GvFzhoWg1aETtDuL86jjgZC1v0
-	mXre4Uv16aRpWv/WH+KKA5d3DYXZI0+M9d3hRM3DRKAWUBCqOzynmL3wZP9Fb8kWpmQk2bIVEcxXV
-	iOabE97QaJEbvEA5m37wLFl4VKPFf7Dng4iq5RtMZcZzxteA5womfgdKB4Yb/2tdV7shkcV4ohYoW
-	EczVtGOA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=DH6UJcD+7prfyd1xRAKlEDmrXNOjBy5TN4uf+zIpmbY=; b=2549mGC1/PXrrbvXpzIzL619c
+	ee7FeL28/080R/zm0d6+B9/XcXphwrPLyXaJkOwYFAhYSFtRwbvV6339iaJ0047Ymt+2mtQuAW/kk
+	a90qwSbp8Csm7ZjsRFGofP6VouFoNT8xhIr7Y98YQYkAWJXGYkQjUqR0M4n4+JAhT8xRmZFWG1MpK
+	TQGrmm/xUUMzFj/2g2WuiDewpfVc8LYE3kwNT2s9OKJjHEQ+mBFJ2w0oXEzTthDvi/+7ideoq4F5F
+	tNppdJdU8PLWXJkHXQguKSPXtjLPNmrZPtPKNxrQMEsLtAfFT6CtNKaD1kGdBr+i3Am7LQHzddUUp
+	K5V06DV4w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFS07-0004HI-QL; Fri, 26 Feb 2021 01:33:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lFYPv-0005hQ-K2; Fri, 26 Feb 2021 08:24:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFS02-0004Fw-F5; Fri, 26 Feb 2021 01:33:00 +0000
-X-UUID: dea870a386664b9f8b3b809f92fd2bc8-20210225
+ id 1lFYPn-0005cO-8l
+ for linux-mediatek@lists.infradead.org; Fri, 26 Feb 2021 08:24:02 +0000
+X-UUID: 821dacc786fd46f18897dc70cf4a5157-20210226
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=mjMC/EaqktGp0KGfVcXM3tTjxpDFMSTEuWbVjdeMqrA=; 
- b=RGxWbuBCHaT5F6Vqc+UQiMuc+1UISgan2SFNnGIHaaRrknDj+UFnYy4m+cTvzYL1FTciuNvyd9VVaer8rnVeqdm09YJEva6fBhru2PQY3ZYLNEs5OYxd98MOSns94ALD68s1cYBQl0LosKWOa0OXLgGq53QjMUICrb3JOuow1nM=;
-X-UUID: dea870a386664b9f8b3b809f92fd2bc8-20210225
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=g2D2w9vHQf2/mpYO/QEG1chRQd9TnHcyQ0PWCzy6Xqo=; 
+ b=k2enqPOhzyTbrVIqjL2CpIgF4sjql1ReZUv30sHMEBRFHgCtSJIAwIdHAxBu1VBbLIv/joqzWCbe4dmJ/8556ECI7KMtoEy3jLMU53GqdIg251loqyw63HnK3s3W0EAwijqFGJwqwQ8Aa7WbvTNQrD6XOeAfNhWywsaiwoKqYeo=;
+X-UUID: 821dacc786fd46f18897dc70cf4a5157-20210226
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 570805651; Thu, 25 Feb 2021 17:32:53 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 25 Feb 2021 17:25:33 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Feb 2021 09:25:32 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ with ESMTP id 2141857386; Fri, 26 Feb 2021 00:23:50 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 26 Feb 2021 00:23:32 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 26 Feb 2021 16:23:30 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 26 Feb 2021 09:25:32 +0800
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko
- <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Nathan Chancellor
- <natechancellor@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Andrey Konovalov
- <andreyknvl@google.com>
-Subject: [PATCH v4] kasan: remove redundant config option
-Date: Fri, 26 Feb 2021 09:25:31 +0800
-Message-ID: <20210226012531.29231-1-walter-zh.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Frontend Transport; Fri, 26 Feb 2021 16:23:30 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+Subject: [PATCH 2/2] mt76: mt7921: fix the base of the dynamic remap
+Date: Fri, 26 Feb 2021 16:23:27 +0800
+Message-ID: <93e133d30b727b1bf5fd7df397bc113d8ea1f108.1614327185.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <4ff45223ff7ecff8e20a722ffd2db77fe51fea00.1614327185.git.objelf@gmail.com>
+References: <4ff45223ff7ecff8e20a722ffd2db77fe51fea00.1614327185.git.objelf@gmail.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 9F1D6F8B1359B400F2310FEAD5BA557555E1D6D73C9965A5B0048A3673D6830B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210225_203259_320045_AFE733AF 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20210226_032359_637147_D658C7E1 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,216 +81,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Walter Wu <walter-zh.wu@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- linux-arm-kernel@lists.infradead.org
+Cc: robin.chiu@mediatek.com, ch.yeh@mediatek.com, Eric.Liang@mediatek.com,
+ sean.wang@mediatek.com, linux-wireless@vger.kernel.org, posh.sun@mediatek.com,
+ YN.Chen@mediatek.com, linux-mediatek@lists.infradead.org,
+ Soul.Huang@mediatek.com, Stella.Chang@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CONFIG_KASAN_STACK and CONFIG_KASAN_STACK_ENABLE both enable KASAN stack
-instrumentation, but we should only need one config, so that we remove
-CONFIG_KASAN_STACK_ENABLE and make CONFIG_KASAN_STACK workable.  see [1].
+From: Sean Wang <sean.wang@mediatek.com>
 
-When enable KASAN stack instrumentation, then for gcc we could do no
-prompt and default value y, and for clang prompt and default value n.
+We should change the base for the dynamic remap into another one, because
+the current base (0xe0000) have been the one used to operate the device
+ownership.
 
-[1]: https://bugzilla.kernel.org/show_bug.cgi?id=210221
-
-Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
-Acked-by: Arnd Bergmann <arnd@arndb.de>
-Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>
-Cc: Alexander Potapenko <glider@google.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>
+Fixes: 163f4d22c118 ("mt76: mt7921: add MAC support")
+Co-developed-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
+ drivers/net/wireless/mediatek/mt76/mt7921/regs.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-v4: After this patch sent, someone had modification about KASAN_STACK,
-    so I need to rebase codebase. Thank Andrey for your pointing.
-
----
- arch/arm64/kernel/sleep.S        |  2 +-
- arch/x86/kernel/acpi/wakeup_64.S |  2 +-
- include/linux/kasan.h            |  2 +-
- lib/Kconfig.kasan                |  8 ++------
- mm/kasan/common.c                |  2 +-
- mm/kasan/kasan.h                 |  2 +-
- mm/kasan/report_generic.c        |  2 +-
- scripts/Makefile.kasan           | 10 ++++++++--
- security/Kconfig.hardening       |  4 ++--
- 9 files changed, 18 insertions(+), 16 deletions(-)
-
-diff --git a/arch/arm64/kernel/sleep.S b/arch/arm64/kernel/sleep.S
-index 5bfd9b87f85d..4ea9392f86e0 100644
---- a/arch/arm64/kernel/sleep.S
-+++ b/arch/arm64/kernel/sleep.S
-@@ -134,7 +134,7 @@ SYM_FUNC_START(_cpu_resume)
- 	 */
- 	bl	cpu_do_resume
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+index c4bd31cc81cb..f45f05c794cd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+@@ -364,11 +364,11 @@
+ #define MT_INFRA_CFG_BASE		0xfe000
+ #define MT_INFRA(ofs)			(MT_INFRA_CFG_BASE + (ofs))
  
--#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
-+#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
- 	mov	x0, sp
- 	bl	kasan_unpoison_task_stack_below
- #endif
-diff --git a/arch/x86/kernel/acpi/wakeup_64.S b/arch/x86/kernel/acpi/wakeup_64.S
-index 56b6865afb2a..d5d8a352eafa 100644
---- a/arch/x86/kernel/acpi/wakeup_64.S
-+++ b/arch/x86/kernel/acpi/wakeup_64.S
-@@ -115,7 +115,7 @@ SYM_FUNC_START(do_suspend_lowlevel)
- 	movq	pt_regs_r14(%rax), %r14
- 	movq	pt_regs_r15(%rax), %r15
+-#define MT_HIF_REMAP_L1			MT_INFRA(0x260)
++#define MT_HIF_REMAP_L1			MT_INFRA(0x24c)
+ #define MT_HIF_REMAP_L1_MASK		GENMASK(15, 0)
+ #define MT_HIF_REMAP_L1_OFFSET		GENMASK(15, 0)
+ #define MT_HIF_REMAP_L1_BASE		GENMASK(31, 16)
+-#define MT_HIF_REMAP_BASE_L1		0xe0000
++#define MT_HIF_REMAP_BASE_L1		0x40000
  
--#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
-+#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
- 	/*
- 	 * The suspend path may have poisoned some areas deeper in the stack,
- 	 * which we now need to unpoison.
-diff --git a/include/linux/kasan.h b/include/linux/kasan.h
-index b91732bd05d7..14f72ec96492 100644
---- a/include/linux/kasan.h
-+++ b/include/linux/kasan.h
-@@ -330,7 +330,7 @@ static inline bool kasan_check_byte(const void *address)
- 
- #endif /* CONFIG_KASAN */
- 
--#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
-+#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
- void kasan_unpoison_task_stack(struct task_struct *task);
- #else
- static inline void kasan_unpoison_task_stack(struct task_struct *task) {}
-diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-index 624ae1df7984..cffc2ebbf185 100644
---- a/lib/Kconfig.kasan
-+++ b/lib/Kconfig.kasan
-@@ -138,9 +138,10 @@ config KASAN_INLINE
- 
- endchoice
- 
--config KASAN_STACK_ENABLE
-+config KASAN_STACK
- 	bool "Enable stack instrumentation (unsafe)" if CC_IS_CLANG && !COMPILE_TEST
- 	depends on KASAN_GENERIC || KASAN_SW_TAGS
-+	default y if CC_IS_GCC
- 	help
- 	  The LLVM stack address sanitizer has a know problem that
- 	  causes excessive stack usage in a lot of functions, see
-@@ -154,11 +155,6 @@ config KASAN_STACK_ENABLE
- 	  CONFIG_COMPILE_TEST.	On gcc it is assumed to always be safe
- 	  to use and enabled by default.
- 
--config KASAN_STACK
--	int
--	default 1 if KASAN_STACK_ENABLE || CC_IS_GCC
--	default 0
--
- config KASAN_SW_TAGS_IDENTIFY
- 	bool "Enable memory corruption identification"
- 	depends on KASAN_SW_TAGS
-diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-index b5e08d4cefec..7b53291dafa1 100644
---- a/mm/kasan/common.c
-+++ b/mm/kasan/common.c
-@@ -63,7 +63,7 @@ void __kasan_unpoison_range(const void *address, size_t size)
- 	kasan_unpoison(address, size);
- }
- 
--#if CONFIG_KASAN_STACK
-+#ifdef CONFIG_KASAN_STACK
- /* Unpoison the entire stack for a task. */
- void kasan_unpoison_task_stack(struct task_struct *task)
- {
-diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-index 8c55634d6edd..3436c6bf7c0c 100644
---- a/mm/kasan/kasan.h
-+++ b/mm/kasan/kasan.h
-@@ -231,7 +231,7 @@ void *kasan_find_first_bad_addr(void *addr, size_t size);
- const char *kasan_get_bug_type(struct kasan_access_info *info);
- void kasan_metadata_fetch_row(char *buffer, void *row);
- 
--#if defined(CONFIG_KASAN_GENERIC) && CONFIG_KASAN_STACK
-+#if defined(CONFIG_KASAN_GENERIC) && defined(CONFIG_KASAN_STACK)
- void kasan_print_address_stack_frame(const void *addr);
- #else
- static inline void kasan_print_address_stack_frame(const void *addr) { }
-diff --git a/mm/kasan/report_generic.c b/mm/kasan/report_generic.c
-index 41f374585144..de732bc341c5 100644
---- a/mm/kasan/report_generic.c
-+++ b/mm/kasan/report_generic.c
-@@ -128,7 +128,7 @@ void kasan_metadata_fetch_row(char *buffer, void *row)
- 	memcpy(buffer, kasan_mem_to_shadow(row), META_BYTES_PER_ROW);
- }
- 
--#if CONFIG_KASAN_STACK
-+#ifdef CONFIG_KASAN_STACK
- static bool __must_check tokenize_frame_descr(const char **frame_descr,
- 					      char *token, size_t max_tok_len,
- 					      unsigned long *value)
-diff --git a/scripts/Makefile.kasan b/scripts/Makefile.kasan
-index 1e000cc2e7b4..abf231d209b1 100644
---- a/scripts/Makefile.kasan
-+++ b/scripts/Makefile.kasan
-@@ -2,6 +2,12 @@
- CFLAGS_KASAN_NOSANITIZE := -fno-builtin
- KASAN_SHADOW_OFFSET ?= $(CONFIG_KASAN_SHADOW_OFFSET)
- 
-+ifdef CONFIG_KASAN_STACK
-+	stack_enable := 1
-+else
-+	stack_enable := 0
-+endif
-+
- ifdef CONFIG_KASAN_GENERIC
- 
- ifdef CONFIG_KASAN_INLINE
-@@ -27,7 +33,7 @@ else
- 	CFLAGS_KASAN := $(CFLAGS_KASAN_SHADOW) \
- 	 $(call cc-param,asan-globals=1) \
- 	 $(call cc-param,asan-instrumentation-with-call-threshold=$(call_threshold)) \
--	 $(call cc-param,asan-stack=$(CONFIG_KASAN_STACK)) \
-+	 $(call cc-param,asan-stack=$(stack_enable)) \
- 	 $(call cc-param,asan-instrument-allocas=1)
- endif
- 
-@@ -42,7 +48,7 @@ else
- endif
- 
- CFLAGS_KASAN := -fsanitize=kernel-hwaddress \
--		-mllvm -hwasan-instrument-stack=$(CONFIG_KASAN_STACK) \
-+		-mllvm -hwasan-instrument-stack=$(stack_enable) \
- 		-mllvm -hwasan-use-short-granules=0 \
- 		$(instrumentation_flags)
- 
-diff --git a/security/Kconfig.hardening b/security/Kconfig.hardening
-index 269967c4fc1b..a56c36470cb1 100644
---- a/security/Kconfig.hardening
-+++ b/security/Kconfig.hardening
-@@ -64,7 +64,7 @@ choice
- 	config GCC_PLUGIN_STRUCTLEAK_BYREF
- 		bool "zero-init structs passed by reference (strong)"
- 		depends on GCC_PLUGINS
--		depends on !(KASAN && KASAN_STACK=1)
-+		depends on !(KASAN && KASAN_STACK)
- 		select GCC_PLUGIN_STRUCTLEAK
- 		help
- 		  Zero-initialize any structures on the stack that may
-@@ -82,7 +82,7 @@ choice
- 	config GCC_PLUGIN_STRUCTLEAK_BYREF_ALL
- 		bool "zero-init anything passed by reference (very strong)"
- 		depends on GCC_PLUGINS
--		depends on !(KASAN && KASAN_STACK=1)
-+		depends on !(KASAN && KASAN_STACK)
- 		select GCC_PLUGIN_STRUCTLEAK
- 		help
- 		  Zero-initialize any stack variables that may be passed
+ #define MT_SWDEF_BASE			0x41f200
+ #define MT_SWDEF(ofs)			(MT_SWDEF_BASE + (ofs))
 -- 
-2.18.0
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
