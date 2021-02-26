@@ -2,71 +2,81 @@ Return-Path: <SRS0=c7Bv=H4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8174AC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 08:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E4CD8C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 09:22:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A3BC64EED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 08:24:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A3BC64EED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6556064F3E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Feb 2021 09:22:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6556064F3E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hf782C5aHwUE8A0xhnlG6NMXNPY/3GjLxtaKegoqeQQ=; b=nJFXdWMEfCVoX8oyTLxfuXptWs
-	Hp1W8kLUMPr7XqgOeDicGTMxqAL2xPZ4JlySeoP+YYIs2pOW+563YgHOIMhqVp79ih//NK0om4Bn0
-	fB7alotODm/2pVwxkwCq+InxzDZiiVvxGRucyksuoW1t+MGqo6xJQN9AkYiqNb0KvPa5OTf5ogt7b
-	6zXyTdyVskM+TiGxkevDQiaPYkoG3nwFY0cCletE2Vrt01P3OegvI/xXq0uQoWo0HAULOcbtfG5Iw
-	vKOiSvNz4JIGAqczjV95ePajcf/fHla8D1qcLrL29s+LUwKVxsuK+kXxsIzit2xnYeX46mh137NYw
-	/mAyR4CQ==;
+	List-Unsubscribe:List-Id:Date:Message-Id:To:References:In-Reply-To:From:
+	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=rVjwcyhpHW9gsZfXdlaSiqO2LUhK+G/+PM6KLxpIWME=; b=eI210clSOrI5ww+L0il41x+vC
+	raLmm7igkNwKXlKPWDTatoZUEAyfbQQsNQo5SzqjhhmYuvdG2KDgOVBKeP6ta5Sp1VLZEATTLrkZi
+	JSbwJ6gdBeRWBMYj3FjzLOBsRnPkBR4Y4d5FK4Ym4Tp/3SGdua4Aip8sfNXzYazNWEeeqBqzGjSJk
+	5UfrPX/WjoH1m1p2UWgGmh/bm3R0BkRWw+ZU1zesuSxntgPEcKYo40GBul+202vvthhr8t0pLlE70
+	MSs6ul2d79mCp9hD8ljMNvBIx7wYsNzn+lQ49U15q73xwqggoOyU4dYxZwOgwFSPF70k58uGj7zp6
+	s+6NPshpQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFYPw-0005iM-O5; Fri, 26 Feb 2021 08:24:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lFZKd-0003z4-47; Fri, 26 Feb 2021 09:22:43 +0000
+Received: from m42-2.mailgun.net ([69.72.42.2])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFYPm-0005cc-Mu
- for linux-mediatek@lists.infradead.org; Fri, 26 Feb 2021 08:24:02 +0000
-X-UUID: c52abe20abe1453aa124abb21c8bb8fc-20210226
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=0MXBxsQUQ6D3UTdh2s47uFVWAmMpZ8tsmDn/rJhU6bA=; 
- b=GIe6svZLKsigXm0pRLaq0fLtlTEaz+mHCqIqcLiO97usZhmje27JoeKI3BV9cnc/a7oNlyTAjT8zsyg79aRlJHRK92qkzGQFpHQ/eqGeYnI8ycYbXoaPppMlv3BYlDppa3k+LKdf2ebaC65R5+bN9uQFrzIs2LAqqrvNri8zRG0=;
-X-UUID: c52abe20abe1453aa124abb21c8bb8fc-20210226
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 541695632; Fri, 26 Feb 2021 00:23:50 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Feb 2021 00:23:37 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Feb 2021 16:23:29 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 26 Feb 2021 16:23:29 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 1/2] mt76: mt7921: fix the base of PCIe interrupt
-Date: Fri, 26 Feb 2021 16:23:26 +0800
-Message-ID: <4ff45223ff7ecff8e20a722ffd2db77fe51fea00.1614327185.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1lFZKa-0003yZ-N9
+ for linux-mediatek@lists.infradead.org; Fri, 26 Feb 2021 09:22:41 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1614331360; h=Date: Message-Id: Cc: To: References:
+ In-Reply-To: From: Subject: Content-Transfer-Encoding: MIME-Version:
+ Content-Type: Sender; bh=WZto6la1xMW9OPXhnH+0FY0I0nURZt4YBbd4cgmNF6k=;
+ b=p+2hdlQdbTZbT84KGlS5IIfRs/VMizdgVInoLU9Ko1kk6tNUvxplhRr5VU3bdwehPZ2jAYBh
+ kYND72tghyRPn0OKDoImrVx8/idf/47EB2h2Xm2PaLGdaNrKxvcv1O3BaAkSVevkT8LKMENw
+ MJMfef+e6Pa3tKzHsS4DNOfHK10=
+X-Mailgun-Sending-Ip: 69.72.42.2
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n02.prod.us-east-1.postgun.com with SMTP id
+ 6038bdde6ba9d8a92b937eea (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Fri, 26 Feb 2021 09:22:38
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 981D2C433ED; Fri, 26 Feb 2021 09:22:37 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id DCCB0C433CA;
+ Fri, 26 Feb 2021 09:22:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org DCCB0C433CA
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
 MIME-Version: 1.0
-X-MTK: N
+Subject: Re: [PATCH 2/2] mt76: mt7921: remove incorrect error handling
+From: Kalle Valo <kvalo@codeaurora.org>
+In-Reply-To: <20210225145953.404859-2-arnd@kernel.org>
+References: <20210225145953.404859-2-arnd@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+User-Agent: pwcli/0.1.0-git (https://github.com/kvalo/pwcli/) Python/3.5.2
+Message-Id: <20210226092237.981D2C433ED@smtp.codeaurora.org>
+Date: Fri, 26 Feb 2021 09:22:37 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210226_032359_589209_C6E3C0DF 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20210226_042240_865352_D6CC4E6B 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,66 +88,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robin.chiu@mediatek.com, ch.yeh@mediatek.com, Eric.Liang@mediatek.com,
- sean.wang@mediatek.com, linux-wireless@vger.kernel.org, posh.sun@mediatek.com,
- YN.Chen@mediatek.com, linux-mediatek@lists.infradead.org,
- Soul.Huang@mediatek.com, Stella.Chang@mediatek.com
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ clang-built-linux@googlegroups.com, linux-wireless@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-kernel@vger.kernel.org, Nathan Chancellor <nathan@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Soul Huang <Soul.Huang@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Arnd Bergmann <arnd@kernel.org> wrote:
 
-Should use 0x10000 as the base to operate PCIe interrupt according
-to the vendor reference driver.
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> Clang points out a mistake in the error handling in
+> mt7921_mcu_tx_rate_report(), which tries to dereference a pointer that
+> cannot be initialized because of the error that is being handled:
+> 
+> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:409:3: warning: variable 'stats' is uninitialized when used here [-Wuninitialized]
+>                 stats->tx_rate = rate;
+>                 ^~~~~
+> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:401:32: note: initialize the variable 'stats' to silence this warning
+>         struct mt7921_sta_stats *stats;
+>                                       ^
+> Just remove the obviously incorrect line.
+> 
+> Fixes: 1c099ab44727 ("mt76: mt7921: add MCU support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Reviewed-by: Nick Desaulniers <ndesaulniers@google.com>
 
-Fixes: ffa1bf97425b ("mt76: mt7921: introduce PM support")
-Co-developed-by: YN Chen <YN.Chen@mediatek.com>
-Signed-off-by: YN Chen <YN.Chen@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c  | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7921/regs.h | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+Patch applied to wireless-drivers.git, thanks.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 3e430c04c97e..def8b7816609 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -137,7 +137,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 
- 	mt76_wr(dev, MT_WFDMA0_HOST_INT_ENA, 0);
- 
--	mt7921_l1_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-+	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
- 
- 	ret = devm_request_irq(mdev->dev, pdev->irq, mt7921_irq_handler,
- 			       IRQF_SHARED, KBUILD_MODNAME, dev);
-@@ -248,7 +248,7 @@ static int mt7921_pci_resume(struct pci_dev *pdev)
- 		return 0;
- 
- 	/* enable interrupt */
--	mt7921_l1_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-+	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
- 	mt7921_irq_enable(dev, MT_INT_RX_DONE_ALL | MT_INT_TX_DONE_ALL |
- 			  MT_INT_MCU_CMD);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-index 419add751980..c4bd31cc81cb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-@@ -391,7 +391,7 @@
- #define MT_HW_CHIPID			0x70010200
- #define MT_HW_REV			0x70010204
- 
--#define MT_PCIE_MAC_BASE		0x74030000
-+#define MT_PCIE_MAC_BASE		0x10000
- #define MT_PCIE_MAC(ofs)		(MT_PCIE_MAC_BASE + (ofs))
- #define MT_PCIE_MAC_INT_ENABLE		MT_PCIE_MAC(0x188)
- 
+fb5fabb192b2 mt76: mt7921: remove incorrect error handling
+
 -- 
-2.25.1
+https://patchwork.kernel.org/project/linux-wireless/patch/20210225145953.404859-2-arnd@kernel.org/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
