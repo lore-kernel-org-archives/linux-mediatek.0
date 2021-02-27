@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A349AC433DB
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA6AAC433E0
 	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Feb 2021 07:50:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2820064EAF
+	by mail.kernel.org (Postfix) with ESMTPS id 1CF7764E86
 	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Feb 2021 07:50:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2820064EAF
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1CF7764E86
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PVbhk289kIsqL+v6RvLw4v9cc17zpCIuAD1VKWHn2Rg=; b=ZQ6YSAcy5KbYMK5O5r8cqaoF3
-	IIJiIvURDNPQJELSbN3XmYDHCkAy7vU7fT0r+PaL105+ADPUIOTwDH7CWcOOCR3Hiv5175BwN9KRg
-	xnYeNZ4bGj1cSSW1WeTh1KDQR+Bou3URwS8ow2GqwOqJg8mjy67R1v/IBWT72j/CKxfdTkXAg/zK2
-	MODHbhr4fR5wvbtQ+NSlJTayFNGzJpnM1D7hKM8xTBoZffODBgp8MoPdA5JvBDzIhzEXn9NMfVtWf
-	+ohhgQqDQbzqmznr5edrTDTH77qhvAOGZ4nFzeqeHP5S7nCl2yHYaLDwrFKDk1vNz1lqueCV5V2+8
-	mlqx+b4FA==;
+	 bh=Ym9zzquQCfb99/BHy6jigy0jAQnuNU04Lg2CboqEdm8=; b=CLEzwV4UqlMY4rk1aOwkgIpLL
+	Jsdv+DCmPw8X4xxAZF6Rqxf+4elG46Yifmr67rFRMnpDgg/8yGPKPdAxYGrf67/2u+HyG0yYVPK+S
+	GW8tSFmiCMdxBqg8CXrjgoMObWerB02yQOEgTZheZQISmC4g3W7AX0b5OEjYsBzn9T5gZr3Q65kdN
+	ShuCPf5OTlLVSQoclKA/WwmUGJ/QqDugskKYXTJj13UtV5IGPJD/Ztc9rW+RT/anIrRk+Ep2+YXf/
+	tweIpwAOtL4L370DxPtsM0v1a/nGLQx6F/10TKTwdss9j3IAhj3KR8ozLzuO63AsduGV4h3ZxmdPo
+	Tcp+k5CaQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFuNB-0007mp-KU; Sat, 27 Feb 2021 07:50:45 +0000
+	id 1lFuNC-0007mv-4Z; Sat, 27 Feb 2021 07:50:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFuN8-0007ly-Vf
+ id 1lFuN8-0007lx-Uz
  for linux-mediatek@lists.infradead.org; Sat, 27 Feb 2021 07:50:44 +0000
-X-UUID: d2ec94ec9d6f4a3395855fe0894556d2-20210226
+X-UUID: 9d0cf3dd3b564f428d06fcaa5d2e0e81-20210226
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=iFUViuBbqr/5ABxxqNE6TB6eV5MYWKd6zIDvGuKepH4=; 
- b=DRybXhaLgQbhkow46GKokyo4gj7VglXOo1qXaZ4z+ukl39V02lMiVXpLQ3wyRnAGXypDhOm/Qat1JQQdAOUb+uYilG2tK5SQPM6Yz9FtkprllzksJcMslKTC9g9CCcEAO2idlBjmwC6lN7hYhUCqXjI3A0mqG32C9AHxfMTbnZQ=;
-X-UUID: d2ec94ec9d6f4a3395855fe0894556d2-20210226
+ bh=CUN41HtUaVr3jlOGx6+XE1VTk588WCU8lMIzdAkvleI=; 
+ b=lWlOG0u7sGvmwDKfzlGNOKY3a9evg3oc/JQrFmfE4rIezw+sz+WK3Fu9UAMo5jydNJRUvkyVviALpuMyo9M4zb099MdS4+NkIwbLq45Cy7Vr+uotnyav0mFD/ZNuAFDpyXMG6uPDH65rdciRFXsM0NCM7DbbSU+MBP4cNaty/5E=;
+X-UUID: 9d0cf3dd3b564f428d06fcaa5d2e0e81-20210226
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1805709589; Fri, 26 Feb 2021 23:50:39 -0800
+ with ESMTP id 872664626; Fri, 26 Feb 2021 23:50:39 -0800
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Feb 2021 23:40:37 -0800
+ 15.0.1497.2; Fri, 26 Feb 2021 23:40:38 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 27 Feb 2021 15:40:23 +0800
+ 15.0.1497.2; Sat, 27 Feb 2021 15:40:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 27 Feb 2021 15:40:23 +0800
+ Frontend Transport; Sat, 27 Feb 2021 15:40:24 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 2/5] mt76: mt7615: stop ext_phy queue when mac reset happens
-Date: Sat, 27 Feb 2021 15:39:43 +0800
-Message-ID: <3794a3ffadc4a08548a1223e6955671977e78e49.1614411256.git.ryder.lee@mediatek.com>
+Subject: [PATCH 4/5] mt76: mt7915: stop ext_phy queue when mac reset happens
+Date: Sat, 27 Feb 2021 15:39:45 +0800
+Message-ID: <20a4b03ba4a347a76df67291680704dfdb7da5d6.1614411256.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <d6f2573790582538e8ba82f87a4c35329692ee32.1614411256.git.ryder.lee@mediatek.com>
 References: <d6f2573790582538e8ba82f87a4c35329692ee32.1614411256.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210227_025043_250908_8D585B9D 
-X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-CacheID: sfid-20210227_025043_251449_BEBDCA5E 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -93,22 +93,27 @@ Stop Tx burst for ext_phy after mac reset.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index df2dc77a323a..0f613063c1ff 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -2085,6 +2085,7 @@ void mt7615_mac_reset_work(struct work_struct *work)
- 	del_timer_sync(&dev->phy.roc_timer);
- 	cancel_work_sync(&dev->phy.roc_work);
- 	if (phy2) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 6b6ea33bd320..c653cd01b8d8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1607,9 +1607,10 @@ void mt7915_mac_reset_work(struct work_struct *work)
+ 	set_bit(MT76_MCU_RESET, &dev->mphy.state);
+ 	wake_up(&dev->mt76.mcu.wait);
+ 	cancel_delayed_work_sync(&dev->mphy.mac_work);
+-	if (phy2)
++	if (phy2) {
 +		set_bit(MT76_RESET, &phy2->mt76->state);
  		cancel_delayed_work_sync(&phy2->mt76->mac_work);
- 		del_timer_sync(&phy2->roc_timer);
- 		cancel_work_sync(&phy2->roc_work);
-@@ -2118,6 +2119,8 @@ void mt7615_mac_reset_work(struct work_struct *work)
+-
++	}
+ 	/* lock/unlock all queues to ensure that no tx is pending */
+ 	mt76_txq_schedule_all(&dev->mphy);
+ 	if (ext_phy)
+@@ -1637,6 +1638,8 @@ void mt7915_mac_reset_work(struct work_struct *work)
  
  	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
  	clear_bit(MT76_RESET, &dev->mphy.state);
