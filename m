@@ -2,87 +2,82 @@ Return-Path: <SRS0=HsXE=H7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B3DBC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 10:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB6FCC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 10:44:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A269064DBD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 10:23:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A269064DBD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id B4ADA64DB2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 10:44:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4ADA64DB2
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FkmQ0IwFMCQAFcPjcGaL+M42+PQDN9q5rYrzGaHcWsg=; b=PTM/BHWdq2GQYwFX5rPeUYbIT
-	iI6PsCviB2ZRhE20eV+sPO4/Q/uNM6QpzHDuviXjdQvUHbC0G2PZSIbe4AqLDLnBpZkAEX0/kLe/3
-	ZBiKELt/3HGU2swGfkXR8KPAp6i+v9+xORxPe8dZLFwA3XYGwyZfqyTQsYVnTEEdnBe4c8xBR/tbF
-	TmMvleovNtH9+3VNwFcahGcwGhTYuu5EZ1Dj4uZqvIOCek7/aq4raZkc9JyCgAxK9te7NgTeWsGqi
-	+JrY+9FOwqUHPK7fAoZhO0rrmz6sGccfIYFxKgaDJNN9YfwfMNH7GQISBodPp6zeWviifxhIFUwG4
-	k/7X6oI7A==;
+	 bh=GJ1GiV1/NOUA5bfWPJtVf1N+dkqq91nmtbIYLj6eeHo=; b=ajJDJPZEgwY8BdbacRyUdZLDr
+	bxoNH4vPaNEwg9saawAPRzvQCYXmsgp794jUaQo/jSRZngcK8e1kaRR3qIAmPry27uvtZkCYjq6ud
+	S9AaKAUiCvz69/wtYEjo1vkHH8fWjBl+mqnGmNfpekUIoSxdOwb/qovLa+xH5HszJebH6Q2U+27VA
+	6w1RU3BduO33OlnO6nIKlKjwzhNxUy/oGVyfr3VOfhPRjC1vQsKpe4LLBO1QxvMSP3/jtZfscfx+U
+	6kKDvDbOHpSQ181xMpexkoeFSyXoIbeiDGNDHJLMKDI6m9097OJT+zclga7E5OyNX/DtPR+XiW7h4
+	nCZErhOvA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGfiD-0008Pa-8f; Mon, 01 Mar 2021 10:23:37 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1lGg1v-0003lJ-Ab; Mon, 01 Mar 2021 10:43:59 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGfge-0007Ne-7d
- for linux-mediatek@lists.infradead.org; Mon, 01 Mar 2021 10:22:02 +0000
-Received: by mail-wr1-x432.google.com with SMTP id h98so15480700wrh.11
- for <linux-mediatek@lists.infradead.org>; Mon, 01 Mar 2021 02:21:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=fO30ApwIwTZ6ViBN1Ge+IoLrpzbpt+XR3EbBXQz0Ao4=;
- b=OCOdfFrla8ehIgwoRPFmxKWVA5obG0UC2lRwXNbMWzvuKfpxOkp5Bro5tWT0cE/w9w
- x+bA+Czlt57JU6a42SkfptvC3JuGPA6StIHjWCY+RTvYQTW026gTUD5O4rbJHxolcIvX
- 6oZ09xRd0HxZxSSov7dwBlVVhAQExMpyZNo1z/MlMXkzP1CodP7I6cY+mJeBwcH/Aw89
- 6BG7KC7nt66322RaxL+SjLPIeBY8BWEPKjxGKwxkSugDprrUBSDKLLls5QlL9n84JSga
- 6PvlPLDGTxOh21g88Zkz772Y4umW317CuFDEnDR9obAYTK2Mcgbf9/9ACljkOOJc9MRf
- iXMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=fO30ApwIwTZ6ViBN1Ge+IoLrpzbpt+XR3EbBXQz0Ao4=;
- b=jilUAVwON1T7Qaahk/zwAUx/jC30E1c6a1UHPsTV6/0PnOoV1TmsaNXPbmzuAR4eWs
- Z2MVGPby2SD4ZjRvQhky3y3H0AwcWSdHZy2U+MXoa9xia3bMmIdJpivnHI6MOHJLc0yL
- e6AY/w+IiDZ9wCJMw1RrrvrAM3q1PcgAOoTGc9TtXhbegwGGtr1Ts6xfZFa8RcDQsfnW
- HeXNPts7XfXK4JeCIoZ8bcwiSkhjkWcQw6o0A1lfTUhmmi6MjnjbLu+lvjXEvdT3ioip
- MmhFLtkThCtg70vVmmjHWMrxADhBax1m3NOI2zIPX4l0owCw0EwQu3fcguYGrSf4UNNs
- iT/A==
-X-Gm-Message-State: AOAM5331ILweo61R04RpK4aEX1u4J0hcgSu9CS+kp9tK4y57mqAmnBox
- FhOaNMjJcOwp+MdpTiRXORfaAA==
-X-Google-Smtp-Source: ABdhPJxAXiZUsHcR0Rc2xEpcKrMkbJ4gJn1n7JbYEm1p5PO/WxOTQnHJpHjB0WesA4oRThRvN58PLw==
-X-Received: by 2002:adf:d217:: with SMTP id j23mr2045527wrh.113.1614594118833; 
- Mon, 01 Mar 2021 02:21:58 -0800 (PST)
-Received: from dell ([91.110.221.155])
- by smtp.gmail.com with ESMTPSA id m3sm7999205wmc.48.2021.03.01.02.21.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Mar 2021 02:21:58 -0800 (PST)
-Date: Mon, 1 Mar 2021 10:21:56 +0000
-From: Lee Jones <lee.jones@linaro.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH RESEND v5 7/8] regulator: mt6359: Add support for MT6359P
- regulator
-Message-ID: <20210301102156.GJ641347@dell>
-References: <1611913781-23460-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1611913781-23460-8-git-send-email-hsin-hsiung.wang@mediatek.com>
+ id 1lGg1r-0003kR-57; Mon, 01 Mar 2021 10:43:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1614595396;
+ bh=3U6ft/tFjPbajRTHpMtsxkyeln1GHUnFs9tKVCL4wn4=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=lounEzaf4QP8hgD1g60pVYkIjry+whG5YO/kWMh6MJ3mYF1Gp5cfSrmCcg29h2yvG
+ BvJn/lwIf3vMmj/pgxm4Ob+zHU2OkNc8SLLPgLb1KQL5XOd6g+Tll+mnwFHMcSKvPg
+ fysr8OBqUFW7k6gdhUj5VPAxKKP+ZDi3SHtpL2zI=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.155.40] ([217.61.155.40]) by web-mail.gmx.net
+ (3c-app-gmx-bap67.server.lan [172.19.172.67]) (via HTTP); Mon, 1 Mar 2021
+ 11:43:16 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1611913781-23460-8-git-send-email-hsin-hsiung.wang@mediatek.com>
+Message-ID: <trinity-b7e2cf18-f0e6-4d88-8a80-de6758b5a91f-1614595396771@3c-app-gmx-bap67>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Marc Zyngier <maz@kernel.org>
+Subject: Aw: [PATCH 09/13] PCI: mediatek: Advertise lack of MSI handling
+Date: Mon, 1 Mar 2021 11:43:16 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20210225151023.3642391-10-maz@kernel.org>
+References: <20210225151023.3642391-1-maz@kernel.org>
+ <20210225151023.3642391-10-maz@kernel.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:j861k7kpUL0MUYZFFLW+xzpYTQvAFo+nVqIutJIlj6BO2OJFcQg7P/7gkl57sGk667CmF
+ 3gFxH+9xglC2hdYPkVuGvoyIwX7NK7Z/Q5IeEPJrjGrpj2L+YtCTX5SpRHy1RFeX+3nfuAnmJQa0
+ PKNHGo6hq+lUF1JEU08QHR+yXp/G0CXOcvA+yTOZnw682knlZRcLMti0XyKEckoMrAVeKF+9EyDd
+ hG7/izq22IvB6GUosWtOFIlxC3QJE1+bBATvZPb7xaGFceQzf6CnZgBCzDxeQI7O28PtObeD7gB8
+ 6I=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fSST4jC/Cuk=:rxBU1F/iol8XJ4ZzaI9eUc
+ /lUcepYYMTrwe0+SLaefhq+Q/f88wOXrKXiIo7tVepjzDjjBtbgbeFSi3Hi76E0Jqa3HazlrF
+ 27/OPneFO9NS+r9zIir/41mEfgXsvHvEGciCp8mlaArYHK7kyBwphu/SKmmheZr28JdkKkIw7
+ 67YZrzBjwbd8YqiwAdoPBBULXmAkL4PGYyrHAZvWLImEPcO0YF8/fSikZ5xMT1zIEmDYEpXaN
+ MnS6eKDDb27yIQiMy2GfxsbkOibK0LX2LkelPgwHL7UKIefHvIEP6Nr9BwrVxifRtkqLS6NWG
+ 4RA0IYjIxL50KIgamQGJHGyQyzu2XeLntYjVZd5ygwdanobTxQLqn+tRt9UqQLPelrAcTWiiq
+ 3fUOwVOIweT/PxXH04QIGTx3v8uDXhzpeYTdnhZhF10Jl8kG7T45milbh3nZl/z0Ly+ywGDh6
+ WZScu0ybzrotMdWe3q1eAGkbC11WLLEhtHAre6KD0/n0ziNFJ+ZKiJ31rjmakraLx0L86sx5I
+ fWGVh/dXztZ74u4z2sGbnWA47jX5Cldbgwe8+xMKoJj0XlzYVDTuAve9FnXYXcJemOqVLcbll
+ h9R2jJZ0+zvKE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210301_052200_473812_C6C294D3 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20210301_054355_416884_37E71483 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,37 +89,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream@mediatek.com,
- Fei Shao <fshao@chromium.org>, Ran Bi <ran.bi@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Eddie Huang <eddie.huang@mediatek.com>,
- Yuchen Huang <yuchen.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-hyperv@vger.kernel.org, linux-pci@vger.kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Thierry Reding <thierry.reding@gmail.com>,
+ "K. Y. Srinivasan" <kys@microsoft.com>, Will Deacon <will@kernel.org>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>, Rob Herring <robh@kernel.org>,
+ Wei Liu <wei.liu@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Thierry Reding <treding@nvidia.com>, Haiyang Zhang <haiyangz@microsoft.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-tegra@vger.kernel.org,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyOSBKYW4gMjAyMSwgSHNpbi1Ic2l1bmcgV2FuZyB3cm90ZToKCj4gVGhlIE1UNjM1
-OVAgaXMgYSBlY28gdmVyc2lvbiBmb3IgTVQ2MzU5IHJlZ3VsYXRvci4KPiBXZSBhZGQgc3VwcG9y
-dCBiYXNlZCBvbiBNVDYzNTkgcmVndWxhdG9yIGRyaXZlci4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBI
-c2luLUhzaXVuZyBXYW5nIDxoc2luLWhzaXVuZy53YW5nQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiBj
-aGFuZ2VzIHNpbmNlIHY0Ogo+IC0gYWRkIHRoZSByZWd1bGF0b3JzX25vZGUgc3VwcG9ydC4KPiAt
-LS0KPiAgZHJpdmVycy9yZWd1bGF0b3IvbXQ2MzU5LXJlZ3VsYXRvci5jICAgICAgIHwgMzc5ICsr
-KysrKysrKysrKysrKysrKysrLQoKPiAgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzU5cC9yZWdpc3Rl
-cnMuaCAgICAgIHwgMjQ5ICsrKysrKysrKysrKysrCgpBbHRob3VnaCB0aGUgY29kZSBpcyBmaW5l
-LCBqdXN0IGJlIGF3YXJlIHRoYXQgTGludXMgY2FuIGdldCBncnVtcHkKaGF2aW5nIDEwMHMgYW5k
-IDEwMHMgb2YgdW51c2VkIHJlZ2lzdGVyIGRlZmluZXMgaW4gdGhlIGtlcm5lbC4KCj4gIGluY2x1
-ZGUvbGludXgvcmVndWxhdG9yL210NjM1OS1yZWd1bGF0b3IuaCB8ICAgMSArCj4gIDMgZmlsZXMg
-Y2hhbmdlZCwgNjIzIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBpbmNsdWRlL2xpbnV4L21mZC9tdDYzNTlwL3JlZ2lzdGVycy5oCgotLSAKTGVlIEpv
-bmVzIFvmnY7nkLzmlq9dClNlbmlvciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBTZXJ2aWNl
-cwpMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKRm9sbG93
-IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Ckxp
-bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+tested full series on bananapi-r2 and r64
+
+r2 (with mt7615) looks good.
+
+on r64 (with atheros card WLE900VX) i see this while loading ath10k driver:
+
+[    6.525981] ath10k_pci 0000:01:00.0: enabling device (0000 -> 0002)
+[    6.537810] ath10k_pci 0000:01:00.0: enabling bus mastering
+[    6.543831] Unable to handle kernel paging request at virtual address ffffff4
+013be2a80
+[    6.551890] Mem abort info:
+[    6.554744]   ESR = 0x96000044
+[    6.557870]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    6.563267]   SET = 0, FnV = 0
+[    6.566396]   EA = 0, S1PTW = 0
+[    6.569611] Data abort info:
+[    6.572501]   ISV = 0, ISS = 0x00000044
+[    6.576411]   CM = 0, WnR = 1
+[    6.579450] [ffffff4013be2a80] address between user and kernel address ranges
+[    6.586659] Internal error: Oops: 96000044 [#1] PREEMPT SMP
+[    6.592248] Modules linked in: ath10k_pci(+) ath10k_core ath mac80211 libarc4
+ btmtkuart cfg80211 bluetooth ecdh_generic ecc rfkill libaes ip_tables x_tables
+[    6.606329] CPU: 1 PID: 114 Comm: systemd-udevd Not tainted 5.11.0-bpi-r64-pc
+i #3
+[    6.613819] Hardware name: Bananapi BPI-R64 (DT)
+[    6.618439] pstate: 80000005 (Nzcv daif -PAN -UAO -TCO BTYPE=--)
+[    6.624452] pc : queued_spin_lock_slowpath+0x1e8/0x31c
+[    6.629608] lr : queued_spin_lock_slowpath+0xac/0x31c
+[    6.634666] sp : ffffffc010f63550
+[    6.637982] x29: ffffffc010f63550 x28: 000000000000fc7e
+[    6.643306] x27: ffffffc010c67410 x26: 0000000000080000
+[    6.648629] x25: ffffffc010c67880 x24: ffffffc010f63810
+[    6.653950] x23: 0000000000000000 x22: ffffffc010ba8860
+[    6.659270] x21: ffffff803fdcc540 x20: ffffffc010a1c540
+[    6.664591] x19: ffffff80016a1708 x18: 0000000000000000
+[    6.669914] x17: 0000000000000000 x16: 0000000000000000
+[    6.675236] x15: 000000000000000a x14: 0000000000000092
+[    6.680560] x13: ffffff8006671004 x12: 0000000000000000
+[    6.685883] x11: 0101010101010101 x10: ffffff8001635568
+[    6.691206] x9 : 0000000000080000 x8 : ffffff8001635560
+[    6.696529] x7 : 0000000000000000 x6 : ffffff803fdcc540
+[    6.701849] x5 : 0000000000000002 x4 : 0000000000080000
+[    6.707170] x3 : ffffff80016a170a x2 : 000000000000016a
+[    6.712493] x1 : ffffff80031c6520 x0 : ffffffc010a1c560
+[    6.717818] Call trace:
+[    6.720276]  queued_spin_lock_slowpath+0x1e8/0x31c
+[    6.725086]  do_raw_spin_lock+0x2c/0x38
+[    6.728931]  _raw_spin_lock+0x24/0x34
+[    6.732606]  __mutex_lock.isra.0+0xc4/0x29c
+[    6.736799]  __mutex_lock_slowpath+0x14/0x20
+[    6.741078]  mutex_lock+0x28/0x34
+[    6.744402]  mtk_pcie_irq_domain_alloc+0x3c/0xd0
+[    6.749037]  irq_domain_alloc_irqs_hierarchy+0x50/0x54
+[    6.754187]  irq_domain_alloc_irqs_parent+0x18/0x2c
+[    6.759073]  msi_domain_alloc+0x8c/0x12c
+[    6.763007]  irq_domain_alloc_irqs_hierarchy+0x50/0x54
+[    6.768154]  __irq_domain_alloc_irqs+0x114/0x344
+[    6.772780]  __msi_domain_alloc_irqs+0x110/0x318
+[    6.777408]  msi_domain_alloc_irqs+0x1c/0x28
+[    6.781685]  pci_msi_setup_msi_irqs.isra.0+0x2c/0x44
+[    6.786662]  __pci_enable_msi_range+0x230/0x320
+[    6.791202]  pci_enable_msi+0x1c/0x30
+[    6.794874]  ath10k_pci_probe+0x480/0x748 [ath10k_pci]
+[    6.800058]  pci_device_probe+0xbc/0x14c
+[    6.804014]  really_probe+0x2a0/0x470
+[    6.807701]  driver_probe_device+0x12c/0x13c
+[    6.811981]  device_driver_attach+0x44/0x70
+[    6.816181]  __driver_attach+0x13c/0x140
+[    6.820126]  bus_for_each_dev+0x70/0xc0
+[    6.823971]  driver_attach+0x24/0x30
+[    6.827556]  bus_add_driver+0x1a4/0x1ec
+[    6.831401]  driver_register+0xb4/0xec
+[    6.835168]  __pci_register_driver+0x44/0x50
+[    6.839465]  ath10k_pci_init+0x28/0x1000 [ath10k_pci]
+[    6.844563]  do_one_initcall+0x6c/0x188
+[    6.848431]  do_init_module+0x5c/0x1e8
+[    6.852205]  load_module+0x1124/0x11c8
+[    6.855967]  __do_sys_finit_module+0xdc/0x100
+[    6.860335]  __arm64_sys_finit_module+0x1c/0x28
+[    6.864877]  el0_svc_common.constprop.0+0x124/0x198
+[    6.869766]  do_el0_svc+0x48/0x78
+[    6.873089]  el0_svc+0x14/0x20
+[    6.876158]  el0_sync_handler+0xcc/0x154
+[    6.880091]  el0_sync+0x174/0x180
+[    6.883425] Code: d37c0400 51000421 8b000280 f861dac1 (f8216806)
+[    6.889525] ---[ end trace 62498e1f489ea3ab ]---
+
+i guess it's a bug in ath10k driver or my r64 board (it is a v1.1 which has missing capacitors on tx lines).
+Tried with an mt7612e, this seems to work without any errors.
+
+so for mt7622/mt7623
+
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
+
+regards Frank
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
