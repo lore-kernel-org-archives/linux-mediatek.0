@@ -2,72 +2,64 @@ Return-Path: <SRS0=HsXE=H7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-19.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E190AC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 19:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CDBEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 23:54:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7829E64E05
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 19:13:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7829E64E05
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id EC34F60240
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 23:54:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC34F60240
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:In-Reply-To:References:Date:Message-Id:From:
+	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9ilclLMEcG7AQdxvGI3eBIna8jh4yQqSlZaGp82I7uI=; b=XuQ8V4ugaLjtCyQgNnTLVOiXz
-	8057tZ3co/9IrZgICwkMXMQ4oUdjNn83QQwRXY68MKyQKiUDh03G/J/y96+o9rgWunACuh2XY0LSG
-	OhYfvvwYtV82a7Du4bZejJqIqa0qCiov+sZeqQR+0DSiu86LHpquHyVEQ6Qwude42kYKZK6bp69mS
-	JuUaoFfFYWFV4nwdTEXKmBau0RbUYEDB9ZpGQUyHnzwZY8J6BWKxeecZdVzu8LFEcZYXTNEi0qhRW
-	V665lTT+IM9UghbkNuUAxhr7I2zEpkDtd7hiTUfoADS0THurOOzhVAfKI3pe8FtFjVZTHJ8SIjmkr
-	nV45d6R4g==;
+	 bh=yltRYM53ffLLIgDpteFoWJY5yDAMhT/uIWGF1xchv7Q=; b=XxQNp3L4NDHRPHM7A+sXmUwxT
+	duuvIf9lVvHROYNdsLPMILg3Y8qP1+EsNCQ1c9aLVoquqI3Rv+il1imPOD0AANVEwZVGlwxHkK3dH
+	TnyQLtopFG6cyytk00icr70yd4k3rbXaFRCf8R2MGRqcXiHXx+fwwpUCFatSkh5sRKY3DfiaZdcRG
+	+YvSTNSyoD4L9OVkhpxFHm+LSx9XPQjSJ1ZYJZPJb0kQ0MOEBfInn1KyWFFWHD8Jg1W5pU0q+W3WW
+	9EqhPovpWhiyxVqBVjKFA+SxMirOcWLhNRFenUJQKloxksULIX6JDOYwCHF8ogIgQNVxf975ztgZw
+	I0DVMn6MA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGnyP-0002up-Rn; Mon, 01 Mar 2021 19:12:53 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1lGsN7-0006uo-6I; Mon, 01 Mar 2021 23:54:41 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGnyM-0002tm-0a; Mon, 01 Mar 2021 19:12:50 +0000
-IronPort-SDR: gdhJZHHBsbKuvAMILbIiOtf003jvfhwrjkHKOfNkiB3hpon14loUONBOHYOs/OsL/XZki/Spn1
- iwhw/rt+LlYA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9910"; a="271571448"
-X-IronPort-AV: E=Sophos;i="5.81,215,1610438400"; d="scan'208";a="271571448"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2021 11:12:48 -0800
-IronPort-SDR: IZHeAmha3J9FNGeaDMx1ISJgDn1JHd6fmIBKO6IXMHwxa3XdT+30OgfhOr/VVZJb8UIdH4/w7G
- turhYFrDusDQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,215,1610438400"; d="scan'208";a="585603646"
-Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.76])
- ([10.237.72.76])
- by orsmga005.jf.intel.com with ESMTP; 01 Mar 2021 11:12:42 -0800
-Subject: Re: [PATCH v8 1/2] scsi: ufs: Enable power management for wlun
-To: Asutosh Das <asutoshd@codeaurora.org>
-References: <cover.1614295674.git.asutoshd@codeaurora.org>
- <c861385023f8592a63e3edf8119af89511741c9a.1614295674.git.asutoshd@codeaurora.org>
- <e10cd03d-12cd-3d73-b9ed-a542e0b2b83c@intel.com>
- <20210301181014.GF12147@stor-presley.qualcomm.com>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-Message-ID: <3b085cd7-529f-51b8-6a2f-6aa397e1acd3@intel.com>
-Date: Mon, 1 Mar 2021 21:12:55 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ id 1lGsN5-0006uU-Re
+ for linux-mediatek@lists.infradead.org; Mon, 01 Mar 2021 23:54:40 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPS id ACEC960241;
+ Mon,  1 Mar 2021 23:54:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614642877;
+ bh=4POY9hPulA7pZxJfhv2cwLhfelwQTch7J+hsYCBVSKc=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=NXca2sdpTJjfREDpYr9rsEjLGkOCvA7P4woZcX9IKbtA6Jb44ffp3GyrDPEcK9/mj
+ oCpqC7/ZbNmeuZa+11cJTg5rBEjuhB/RFOp7W9GgC/nUlqEhQa6qgWW3vGW5xEJJ5h
+ N90q3ur9CX+e/khFoByoIhnLhmoTCQ1quz86oGBX+pRbiNjyRHkfA4l8NCoBE5R+8V
+ kL6NNlIYAoYidpK6hwpCJTHhdLh+1iRe2GrzCqBRPiHA6S6LOQ4nqZ+nYyCwUrWoWQ
+ z6fpCj7YZXxqwhrE73OM7GyvCAzBmnbOccQ8TRobn5Y3ddzK2BZxdUlxxnR5Xk0cRF
+ aqVC15Xg7eHyg==
 MIME-Version: 1.0
-In-Reply-To: <20210301181014.GF12147@stor-presley.qualcomm.com>
-Content-Language: en-US
+Subject: Re: [PATCH net] net: dsa: tag_mtk: fix 802.1ad VLAN egress
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <161464287765.7970.7338802339733391563.git-patchwork-notify@kernel.org>
+Date: Mon, 01 Mar 2021 23:54:37 +0000
+References: <20210301160159.7622-1-dqfext@gmail.com>
+In-Reply-To: <20210301160159.7622-1-dqfext@gmail.com>
+To: DENG Qingfang <dqfext@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210301_141250_241452_34974811 
-X-CRM114-Status: GOOD (  20.75  )
+X-CRM114-CacheID: sfid-20210301_185439_968049_7495D2F2 
+X-CRM114-Status: UNSURE (   7.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,80 +71,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>, cang@codeaurora.org,
- Wei Yongjun <weiyongjun1@huawei.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- Kiwoong Kim <kwmad.kim@samsung.com>, Lee Jones <lee.jones@linaro.org>,
- Bean Huo <beanhuo@micron.com>, "open list:ARM/SAMSUNG S3C,
- S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>,
- linux-scsi@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- Satya Tangirala <satyat@google.com>, Andy Gross <agross@kernel.org>,
- Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-msm@vger.kernel.org,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Steven Rostedt <rostedt@goodmis.org>, Avri Altman <avri.altman@wdc.com>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Stanley Chu <stanley.chu@mediatek.com>, Ingo Molnar <mingo@redhat.com>,
- "moderated list:ARM/SAMSUNG S3C,
- S5P AND EXYNOS ARM ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>,
- martin.petersen@oracle.com, open list <linux-kernel@vger.kernel.org>,
- Pedro Sousa <pedrom.sousa@synopsys.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: andrew@lunn.ch, Landen.Chao@mediatek.com, f.fainelli@gmail.com,
+ netdev@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ davem@davemloft.net, iochesonome@gmail.com, linux-mediatek@lists.infradead.org,
+ kuba@kernel.org, olteanv@gmail.com, vivien.didelot@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMS8wMy8yMSA4OjEwIHBtLCBBc3V0b3NoIERhcyB3cm90ZToKPiBPbiBNb24sIE1hciAwMSAy
-MDIxIGF0IDA1OjIzIC0wODAwLCBBZHJpYW4gSHVudGVyIHdyb3RlOgo+PiBPbiAyNi8wMi8yMSAx
-OjM3IGFtLCBBc3V0b3NoIERhcyB3cm90ZToKPj4+IEBAIC04OTAxLDQzICs5MTI1LDE0IEBAIHN0
-YXRpYyBpbnQgdWZzaGNkX3Jlc3VtZShzdHJ1Y3QgdWZzX2hiYSAqaGJhLCBlbnVtIHVmc19wbV9v
-cCBwbV9vcCkKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBnb3RvIHZlbmRvcl9zdXNwZW5k
-Owo+Pj4gwqDCoMKgwqAgfQo+Pgo+PiBUaGUgdWZzaGNkX3Jlc2V0X2FuZF9yZXN0b3JlKCkgaW4g
-dWZzaGNkX3Jlc3VtZSgpIHdpbGwgYWxzbyBjaGFuZ2UgdGhlIHBvd2VyCj4+IG1vZGUgb2YgdGhl
-IFVGUyBkZXZpY2UgdG8gYWN0aXZlLsKgIFVudGlsIHRoZSBVRlMgZGV2aWNlIGlzIGFsc28gcmVz
-dW1lZCBhbmQKPj4gdGhlbiBzdXNwZW5kZWQsIGl0IHdpbGwgbm90IHJldHVybiB0byBhIGxvdyBw
-b3dlciBtb2RlLgo+Pgo+Pgo+IFVtbSwgc29ycnksIEkgZGlkbid0IHVuZGVyc3RhbmQgdGhpcyBj
-b21tZW50Lgo+IFNheSwgdGhlIFVGUyBkZXZpY2Ugd2FzIHJlc2V0IGluIHVmc2hjZF9yZXNldF9h
-bmRfcmVzdG9yZSgpIGl0J2QgYmUgYSBoYXJkd2FyZQo+IHJlc2V0IGFuZCB0aGUgVUZTIGRldmlj
-ZSB3b3VsZCBtb3ZlIHRvIFBvd2VyZWQgT24gbW9kZSBhbmQgdGhlbiB0byBBY3RpdmUgcG93ZXIK
-PiBtb2RlLCB3aGVuIGl0IGlzIHJlYWR5IHRvIGJlZ2luIGluaXRpYWxpemF0aW9uLiBBbmQgZnJv
-bSB0aGlzIHN0YXRlIGl0IHNob3VsZAo+IG1vdmUgdG8gYWxsIG90aGVyIGxlZ2FsIHN0YXRlcy4K
-PiBCZWZvcmUgZW50ZXJpbmcgc3lzdGVtIHN1c3BlbmQgdWZzaGNkX3N5c3RlbV9zdXNwZW5kKCks
-IHRoZSB1ZnMgZGV2aWNlIGlzCj4gcnVudGltZSByZXN1bWVkIGluIHVmc2hjZF9zdXNwZW5kX3By
-ZXBhcmUoKS4KPiAKPiBQbGVhc2UgY2FuIHlvdSBleHBsYWluIGEgYml0IG1vcmUgb24gdGhpcyBp
-c3N1ZSB0aGF0IHlvdSBzZWU/CgpTYXkgeW91IHJ1bnRpbWUgcmVzdW1lIHRoZSBob3N0IGNvbnRy
-b2xsZXIsIGFuZAp1ZnNoY2RfcmVzZXRfYW5kX3Jlc3RvcmUoKSBtYWtlcyB0aGUgVUZTIGRldmlj
-ZSBhY3RpdmUsCmJ1dCB0aGUgVUZTIGRldmljZSBpcyBzdGlsbCBydW50aW1lIHN1c3BlbmRlZC4K
-CgpFeGFtcGxlOgoKQWRkIGEgZGVidWdmcyBmaWxlIHRvIHNob3cgdGhlIGN1cnJlbnQgcG93ZXIg
-bW9kZToKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3Njc2kvdWZzL3Vmcy1kZWJ1Z2ZzLmMgYi9kcml2
-ZXJzL3Njc2kvdWZzL3Vmcy1kZWJ1Z2ZzLmMKaW5kZXggZGVlOThkYzcyZDI5Li43MDBiODhkZjA4
-NjYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc2NzaS91ZnMvdWZzLWRlYnVnZnMuYworKysgYi9kcml2
-ZXJzL3Njc2kvdWZzL3Vmcy1kZWJ1Z2ZzLmMKQEAgLTQ4LDYgKzQ4LDcgQEAgdm9pZCB1ZnNfZGVi
-dWdmc19oYmFfaW5pdChzdHJ1Y3QgdWZzX2hiYSAqaGJhKQogewogICAgICAgIGhiYS0+ZGVidWdm
-c19yb290ID0gZGVidWdmc19jcmVhdGVfZGlyKGRldl9uYW1lKGhiYS0+ZGV2KSwgdWZzX2RlYnVn
-ZnNfcm9vdCk7CiAgICAgICAgZGVidWdmc19jcmVhdGVfZmlsZSgic3RhdHMiLCAwNDAwLCBoYmEt
-PmRlYnVnZnNfcm9vdCwgaGJhLCAmdWZzX2RlYnVnZnNfc3RhdHNfZm9wcyk7CisgICAgICAgZGVi
-dWdmc19jcmVhdGVfdTMyKCJjdXJyX2Rldl9wd3JfbW9kZSIsIDA0MDAsIGhiYS0+ZGVidWdmc19y
-b290LCAodTMyICopJmhiYS0+Y3Vycl9kZXZfcHdyX21vZGUpOwogfQoKIHZvaWQgdWZzX2RlYnVn
-ZnNfaGJhX2V4aXQoc3RydWN0IHVmc19oYmEgKmhiYSkKCgojIGdyZXAgLUggLiAvc3lzL2J1cy9w
-Y2kvZHJpdmVycy91ZnNoY2QvMDAwMFw6MDBcOjEyLjUvcnBtKgovc3lzL2J1cy9wY2kvZHJpdmVy
-cy91ZnNoY2QvMDAwMDowMDoxMi41L3JwbV9sdmw6Ngovc3lzL2J1cy9wY2kvZHJpdmVycy91ZnNo
-Y2QvMDAwMDowMDoxMi41L3JwbV90YXJnZXRfZGV2X3N0YXRlOkRFRVBTTEVFUAovc3lzL2J1cy9w
-Y2kvZHJpdmVycy91ZnNoY2QvMDAwMDowMDoxMi41L3JwbV90YXJnZXRfbGlua19zdGF0ZTpPRkYK
-IyBjYXQgL3N5cy9rZXJuZWwvZGVidWcvdWZzaGNkLzAwMDBcOjAwXDoxMi41L2N1cnJfZGV2X3B3
-cl9tb2RlCjQKIyBlY2hvIG9uID4gL3N5cy9kZXZpY2VzL3BjaTAwMDA6MDAvMDAwMDowMDoxMi41
-L3Bvd2VyL2NvbnRyb2wKIyBjYXQgL3N5cy9rZXJuZWwvZGVidWcvdWZzaGNkLzAwMDBcOjAwXDox
-Mi41L2N1cnJfZGV2X3B3cl9tb2RlCjEKIyBncmVwIC1IIC4gL3N5cy9idXMvcGNpL2RyaXZlcnMv
-dWZzaGNkLzAwMDBcOjAwXDoxMi41L2hvc3QqL3RhcmdldCovKi9wb3dlci9ydW50aW1lX3N0YXR1
-cwovc3lzL2J1cy9wY2kvZHJpdmVycy91ZnNoY2QvMDAwMDowMDoxMi41L2hvc3QxL3RhcmdldDE6
-MDowLzE6MDowOjAvcG93ZXIvcnVudGltZV9zdGF0dXM6c3VzcGVuZGVkCi9zeXMvYnVzL3BjaS9k
-cml2ZXJzL3Vmc2hjZC8wMDAwOjAwOjEyLjUvaG9zdDEvdGFyZ2V0MTowOjAvMTowOjA6NDk0NTYv
-cG93ZXIvcnVudGltZV9zdGF0dXM6c3VzcGVuZGVkCi9zeXMvYnVzL3BjaS9kcml2ZXJzL3Vmc2hj
-ZC8wMDAwOjAwOjEyLjUvaG9zdDEvdGFyZ2V0MTowOjAvMTowOjA6NDk0NzYvcG93ZXIvcnVudGlt
-ZV9zdGF0dXM6c3VzcGVuZGVkCi9zeXMvYnVzL3BjaS9kcml2ZXJzL3Vmc2hjZC8wMDAwOjAwOjEy
-LjUvaG9zdDEvdGFyZ2V0MTowOjAvMTowOjA6NDk0ODgvcG93ZXIvcnVudGltZV9zdGF0dXM6c3Vz
-cGVuZGVkCgpTbyBVRlMgZGV2aWNlcyBpcyBydW50aW1lIHN1c3BlbmRlZCBhbmQgc2hvdWxkIGlu
-IERlZXBTbGVlcCwgYnV0IGl0IGlzIGFjdGl2ZS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hello:
+
+This patch was applied to netdev/net.git (refs/heads/master):
+
+On Tue,  2 Mar 2021 00:01:59 +0800 you wrote:
+> A different TPID bit is used for 802.1ad VLAN frames.
+> 
+> Reported-by: Ilario Gelmetti <iochesonome@gmail.com>
+> Fixes: f0af34317f4b ("net: dsa: mediatek: combine MediaTek tag with VLAN tag")
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+> ---
+>  net/dsa/tag_mtk.c | 19 +++++++++++++------
+>  1 file changed, 13 insertions(+), 6 deletions(-)
+
+Here is the summary with links:
+  - [net] net: dsa: tag_mtk: fix 802.1ad VLAN egress
+    https://git.kernel.org/netdev/net/c/9200f515c41f
+
+You are awesome, thank you!
+--
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
