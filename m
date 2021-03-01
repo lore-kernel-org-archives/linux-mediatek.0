@@ -2,78 +2,87 @@ Return-Path: <SRS0=HsXE=H7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AA9FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 09:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15180C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 10:23:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B0B164DF2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 09:00:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B0B164DF2
+	by mail.kernel.org (Postfix) with ESMTPS id 802ED64DBD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Mar 2021 10:23:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 802ED64DBD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oVpMAqa+NeP4kHT/nwWO+x/OhwK9a4BmEO2CaK5IC5U=; b=viKHHaQS0KjrVXF6s6vupLlfW
-	NAPx59AWq9QwJjzuALf/Iuemh71MZqgsPpfBEgg1U9AzMD9hQVY/9v9b+SQ/f690OiApZTWJJQpYe
-	WEzX1r4o95imgE/prh2zwFtYTHRj5kS7vqebqiTlCVQPWOkZRXJBAc8jSue6VRRld0bFSWFWhsBbo
-	su1zUonvPxAx4ByhPb2eFfz3B7C1D6O9O+TzkyBclxUhylxsqA057NjmC6TdzIj5+j+QBFpbpZ+7D
-	5s6cfau6ZpsGmnL/AoC5FQ57C1nPJnbyij12v8iY04aaKa8KikXIK2DiY8gUy79D+c95gbch5WRBq
-	qIbgegOKg==;
+	 bh=Oj3gfPUyobP1KTycT/+5klvP7UCH82kG0K0TSsZMiww=; b=SSrj1eN5kWr5YLUdqDpndpzwm
+	zn5qRmgCdOSYQe9sBnKBFgYICRwlbeVsBy7ctJ741UKpAjaXu33J8DIRgDHZ3OxtoUm1tb44w/Kro
+	1m4qVSPP0SIvnrmgbc74yWeY79pEet1XMmSNeUv/nWeeMPfeT6xmYVl1oixamPPFbTSuASjH8dmPV
+	MN6Aj2faNecXHcUczecpyZ0//7pCC7KflCLYsO6yfQQiJ3nIl2qv6iTeYTGSp4BVQR/R6E+Pbsxx6
+	vGIS5m2spv/7HqnG+rFKVWrotQ5kZnFC+QbKtv2g9YolyhYugV7nYl+ocBtPsQsHiV8BUPIVN2n01
+	8mIH9ajmg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGePE-0003QB-Fr; Mon, 01 Mar 2021 08:59:56 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1lGfi9-0008NV-Lj; Mon, 01 Mar 2021 10:23:33 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGeP8-0003Og-K4
- for linux-mediatek@lists.infradead.org; Mon, 01 Mar 2021 08:59:53 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id r25so17502536ljk.11
- for <linux-mediatek@lists.infradead.org>; Mon, 01 Mar 2021 00:59:48 -0800 (PST)
+ id 1lGfez-0006P4-1J
+ for linux-mediatek@lists.infradead.org; Mon, 01 Mar 2021 10:20:18 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id e23so2890133wmh.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 01 Mar 2021 02:20:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AYs79IPnRt3qtzNnShKWZ7vyowWc2VUelHvdooVHnZg=;
- b=kcf6kcitYZpg70CypoUp8KXILwBgfW62DpbNjWslqlp4qw62fI7tzmXjPZQCmQxMc8
- y7E4AtX2Fmm4bNLcfXcEPW4KygtdDIAQoh7/Gppn2wuQW/GKYs0Umn4Wm46XccGHSmBe
- jy7uA45XkN8GMGoDoJDciHZsVQhSFIR5XDAoh0rW972s2s04adtjid+35nHXnoln8MA8
- FxCO26S/5xLKeLnx947E7nXZn0Rnap1zKbmn2OkkQ+VOi8uxBgu0gE1sSxomW3gthjJM
- ufu7iyDDX3VZgWZtHNc17YGxcgin7Xk21+hnZeVkHrui+fqknKWQ+8YcQvAzXeWUB5vl
- a9WQ==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=2zLTscw7wOIHCKJsbv7EvXNjRvEZ5kz74UBnGjXVjTU=;
+ b=mFGrItjkvoJVrXpL5H/ZVBjEe7oWSGMKsJ1MYpIrrJJ5FnOb7ovdgJ1sSMRGqPrmy4
+ zbEx4RbJd/92AsEcVc5qnwnlIe2ggvgRv3CjU95bus8OkCh9b+ZXoc2dHJK+dUkqF3re
+ bVcZDKm75IGkVIbgk4aPThVgAWmVNUEH2PZ25GdTX/xOHloFP49SU1xlIRha1GuCLPDt
+ X9BzZnHOD2t1Tc/t1Rodhsg7TwwNV1nAzaw4OFM90nkwT+gAdLwKVCkRh0gqabAHwHIl
+ xxuNqHX/nsebxYm9ITkwxwIToKQD5ebSxv+jmTmV424wo2J/JZVYlxUJC/Hmk1lCSeo9
+ zpsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AYs79IPnRt3qtzNnShKWZ7vyowWc2VUelHvdooVHnZg=;
- b=q9VlUi4HZpIZD1tLGxEnodab6DS8DTza0k4mQ2SaJfMkXOTohmIOEJnbbLs3/BqKBQ
- oh5VpTaBbCukcchFTM3uzBRbwzc9Y3Pet88v10ZNhZIZtYX4yGPWCXf5lC0P9o4vcUiM
- KhU1iJYaFa3pLEymJSeiT/QdxSkapCQMq1ZPULZPUJ6wNd5Ks/qY7d/SjjHuUx2Gf/Ea
- hSZRscOeX5Q+ZXbR8VOjJ5WEWzidQwlcP/2C4ljvB9Ow3WzwT0YK5J4OF5jgMQ8uz+Kq
- ZOFQOB74AyG2LmWmbCq0G7/GJl5YsIrFBKh538I24jQq0q0dUme4e8Si+MG3ASLIMXqi
- hjbQ==
-X-Gm-Message-State: AOAM532o4EML3eymotuX8SSrwH+GnhGwz8cDzrSUvXpXIsLSpfEW0Ww7
- OWAA+e+FVH4u8EjA37pk0UT+q+0Mykp6pzYyd+lwAQ==
-X-Google-Smtp-Source: ABdhPJyj3pw+C0NXHPjoJdDWHXn0vLK/WBMS4zWE5j9GGEZHyMLzxq+OeogebxlDuBb2zgJuFq1OMvgpJB8dxst6o6c=
-X-Received: by 2002:a2e:9754:: with SMTP id f20mr6463797ljj.200.1614589186573; 
- Mon, 01 Mar 2021 00:59:46 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=2zLTscw7wOIHCKJsbv7EvXNjRvEZ5kz74UBnGjXVjTU=;
+ b=VWzdTdPFd9mFihZJKHdDsY+294mY/K+OmX17eqnkcA0sTFZvf2bs7uPBBcIncE0JTR
+ Hhrhi2NUCpZYtm19Xry1m3DBflCz/GFAFzndILowNSXIIOIUBJBJM33RixXs/6/mmvZZ
+ WAN9Xdwp0NMo+Xo4x4HQdSblejfR6d/jupACYo7TdYrw7Q/7zexSE8qBYMfO0iZm6z/j
+ wdu3OSQn0uGaElP5j6o1QB45rvuD9ffCnjynMC4Arl/4B+KARrNTH2zWyHcTAHOdDXEv
+ 4cc+bjxRI7AcRLmL0bUFjn3C8JFANM9EiHUb6bGcXlZB4iBdW7pwATMJ/TqwdxqD+6ke
+ jLAw==
+X-Gm-Message-State: AOAM533VPWhVGuoNx77zq+mDqxcq7uwVrn3HkHDpYsXn48FhYNb6ethK
+ zSpltxpArulype4pul9TGVYbng==
+X-Google-Smtp-Source: ABdhPJyhXqlY4O4GpeMZwaqlIPN28woGucyJtnjtzDIPSmpD7EdSB3oh3HNgXIRS1kknZvDUkQxMPA==
+X-Received: by 2002:a1c:ed1a:: with SMTP id l26mr15533330wmh.114.1614594013863; 
+ Mon, 01 Mar 2021 02:20:13 -0800 (PST)
+Received: from dell ([91.110.221.155])
+ by smtp.gmail.com with ESMTPSA id m17sm3837105wrx.92.2021.03.01.02.20.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Mar 2021 02:20:13 -0800 (PST)
+Date: Mon, 1 Mar 2021 10:20:11 +0000
+From: Lee Jones <lee.jones@linaro.org>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH RESEND v5 5/8] mfd: Add support for the MediaTek MT6359
+ PMIC
+Message-ID: <20210301102011.GI641347@dell>
+References: <1611913781-23460-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1611913781-23460-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20210211113309.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid>
-In-Reply-To: <20210211113309.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 1 Mar 2021 09:59:35 +0100
-Message-ID: <CACRpkdbQa3BZwgtp3=061cu+y+4qkMqtXQhXH_VuHB3KcLyDCA@mail.gmail.com>
-Subject: Re: [PATCH] drm/dsi: Add _NO_ to MIPI_DSI_* flags disabling features
-To: Nicolas Boichat <drinkcat@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <1611913781-23460-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210301_035951_034317_CE3F2B4E 
-X-CRM114-Status: GOOD (  20.76  )
+X-CRM114-CacheID: sfid-20210301_052017_218326_F9183E52 
+X-CRM114-Status: GOOD (  26.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,138 +94,130 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Sam Ravnborg <sam@ravnborg.org>, Emil Velikov <emil.velikov@collabora.com>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- Joonyoung Shim <jy0922.shim@samsung.com>, Rob Clark <robdclark@gmail.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
- MSM <linux-arm-msm@vger.kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Inki Dae <inki.dae@samsung.com>,
- Jordan Crouse <jcrouse@codeaurora.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Rikard Falkeborn <rikard.falkeborn@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>,
- Xin Ji <xji@analogixsemi.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Rajendra Nayak <rnayak@codeaurora.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Robert Foss <robert.foss@linaro.org>,
- Kyungmin Park <kyungmin.park@samsung.com>, Daniel Vetter <daniel@ffwll.ch>,
- freedreno <freedreno@lists.freedesktop.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream@mediatek.com,
+ Fei Shao <fshao@chromium.org>, Ran Bi <ran.bi@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ Yuchen Huang <yuchen.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 11, 2021 at 4:34 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
-
-> Many of the DSI flags have names opposite to their actual effects,
-> e.g. MIPI_DSI_MODE_EOT_PACKET means that EoT packets will actually
-> be disabled. Fix this by including _NO_ in the flag names, e.g.
-> MIPI_DSI_MODE_NO_EOT_PACKET.
-
-Unless someone like me interpreted it literally...
-
-Like in these:
-
->  drivers/gpu/drm/mcde/mcde_dsi.c                      | 2 +-
->  drivers/gpu/drm/panel/panel-novatek-nt35510.c        | 2 +-
->  drivers/gpu/drm/panel/panel-samsung-s6d16d0.c        | 2 +-
->  drivers/gpu/drm/panel/panel-sony-acx424akp.c         | 2 +-
-
-> diff --git a/drivers/gpu/drm/mcde/mcde_dsi.c b/drivers/gpu/drm/mcde/mcde_dsi.c
-> index 2314c8122992..f4cdc3cfd7d0 100644
-> --- a/drivers/gpu/drm/mcde/mcde_dsi.c
-> +++ b/drivers/gpu/drm/mcde/mcde_dsi.c
-> @@ -760,7 +760,7 @@ static void mcde_dsi_start(struct mcde_dsi *d)
->                 DSI_MCTL_MAIN_DATA_CTL_BTA_EN |
->                 DSI_MCTL_MAIN_DATA_CTL_READ_EN |
->                 DSI_MCTL_MAIN_DATA_CTL_REG_TE_EN;
-> -       if (d->mdsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET)
-> +       if (d->mdsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
->                 val |= DSI_MCTL_MAIN_DATA_CTL_HOST_EOT_GEN;
-
-If you read the code you can see that this is interpreted as inserting
-an EOT packet, so here you need to change the logic such:
-
-if (!d->mdsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
-    val |= DSI_MCTL_MAIN_DATA_CTL_HOST_EOT_GEN;
-
-This will make sure the host generates the EOT packet in HS mode
-*unless* the flag is set.
-
-(I checked the data sheet.)
-
-> diff --git a/drivers/gpu/drm/panel/panel-novatek-nt35510.c b/drivers/gpu/drm/panel/panel-novatek-nt35510.c
-> index b9a0e56f33e2..9d9334656803 100644
-> --- a/drivers/gpu/drm/panel/panel-novatek-nt35510.c
-> +++ b/drivers/gpu/drm/panel/panel-novatek-nt35510.c
-> @@ -899,7 +899,7 @@ static int nt35510_probe(struct mipi_dsi_device *dsi)
->         dsi->hs_rate = 349440000;
->         dsi->lp_rate = 9600000;
->         dsi->mode_flags = MIPI_DSI_CLOCK_NON_CONTINUOUS |
-> -               MIPI_DSI_MODE_EOT_PACKET;
-> +               MIPI_DSI_MODE_NO_EOT_PACKET;
-
-Here you should just delete the MIPI_DSI_MODE_EOT_PACKET
-flag because this was used with the MCDE driver which interpret the
-flag literally.
-
-> diff --git a/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c b/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
-> index 4aac0d1573dd..b04b9975e9b2 100644
-> --- a/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
-> +++ b/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
-> @@ -186,7 +186,7 @@ static int s6d16d0_probe(struct mipi_dsi_device *dsi)
->          */
->         dsi->mode_flags =
->                 MIPI_DSI_CLOCK_NON_CONTINUOUS |
-> -               MIPI_DSI_MODE_EOT_PACKET;
-> +               MIPI_DSI_MODE_NO_EOT_PACKET;
-
-Same, just delete the flag.
-
-> --- a/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c
-> +++ b/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c
-> @@ -97,7 +97,7 @@ static int s6e63m0_dsi_probe(struct mipi_dsi_device *dsi)
->         dsi->hs_rate = 349440000;
->         dsi->lp_rate = 9600000;
->         dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
-> -               MIPI_DSI_MODE_EOT_PACKET |
-> +               MIPI_DSI_MODE_NO_EOT_PACKET |
->                 MIPI_DSI_MODE_VIDEO_BURST;
-
-Same, just delete the flag.
-
-> diff --git a/drivers/gpu/drm/panel/panel-sony-acx424akp.c b/drivers/gpu/drm/panel/panel-sony-acx424akp.c
-> index 065efae213f5..6b706cbf2f9c 100644
-> --- a/drivers/gpu/drm/panel/panel-sony-acx424akp.c
-> +++ b/drivers/gpu/drm/panel/panel-sony-acx424akp.c
-> @@ -450,7 +450,7 @@ static int acx424akp_probe(struct mipi_dsi_device *dsi)
->         else
->                 dsi->mode_flags =
->                         MIPI_DSI_CLOCK_NON_CONTINUOUS |
-> -                       MIPI_DSI_MODE_EOT_PACKET;
-> +                       MIPI_DSI_MODE_NO_EOT_PACKET;
-
-Same, just delete the flag.
-
-These are all just semantic bugs due to the ambiguity of the flags, it is
-possible to provide a Fixes: flag for each file using this flag the wrong way
-but I dunno if it's worth it.
-
-Yours,
-Linus Walleij
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAyOSBKYW4gMjAyMSwgSHNpbi1Ic2l1bmcgV2FuZyB3cm90ZToKCj4gVGhpcyBhZGRz
+IHN1cHBvcnQgZm9yIHRoZSBNZWRpYVRlayBNVDYzNTkgUE1JQy4gVGhpcyBpcyBhCj4gbXVsdGlm
+dW5jdGlvbiBkZXZpY2Ugd2l0aCB0aGUgZm9sbG93aW5nIHN1YiBtb2R1bGVzOgo+IAo+IC0gQ29k
+ZWMKPiAtIEludGVycnVwdAo+IC0gUmVndWxhdG9yCj4gLSBSVEMKPiAKPiBJdCBpcyBpbnRlcmZh
+Y2VkIHRvIHRoZSBob3N0IGNvbnRyb2xsZXIgdXNpbmcgU1BJIGludGVyZmFjZQo+IGJ5IGEgcHJv
+cHJpZXRhcnkgaGFyZHdhcmUgY2FsbGVkIFBNSUMgd3JhcHBlciBvciBwd3JhcC4KPiBNVDYzNTkg
+TUZEIGlzIGEgY2hpbGQgZGV2aWNlIG9mIHRoZSBwd3JhcC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBI
+c2luLUhzaXVuZyBXYW5nIDxoc2luLWhzaXVuZy53YW5nQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiBj
+aGFuZ2VzIHNpbmNlIHY0Ogo+IC0gcmVtb3ZlIHVudXNlZCBjb21wYXRpYmxlIG5hbWUgaW4gdGhl
+IG10NjM1OSBtZmQgY2VsbHMuCj4gLS0tCj4gIGRyaXZlcnMvbWZkL210NjM1OC1pcnEuYyAgICAg
+ICAgICAgICB8ICAyNCArKwo+ICBkcml2ZXJzL21mZC9tdDYzOTctY29yZS5jICAgICAgICAgICAg
+fCAgMjYgKysKPiAgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzU5L2NvcmUuaCAgICAgIHwgMTMzICsr
+KysrKysKPiAgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzU5L3JlZ2lzdGVycy5oIHwgNTI5ICsrKysr
+KysrKysrKysrKysrKysrKysrKysrKwo+ICBpbmNsdWRlL2xpbnV4L21mZC9tdDYzOTcvY29yZS5o
+ICAgICAgfCAgIDEgKwo+ICA1IGZpbGVzIGNoYW5nZWQsIDcxMyBpbnNlcnRpb25zKCspCj4gIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4L21mZC9tdDYzNTkvY29yZS5oCj4gIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4L21mZC9tdDYzNTkvcmVnaXN0ZXJzLmgKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9tZmQvbXQ2MzU4LWlycS5jIGIvZHJpdmVycy9tZmQvbXQ2MzU4
+LWlycS5jCj4gaW5kZXggNGIwOTRlNWU1MWNjLi44M2YzZmZiZGJiNGMgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9tZmQvbXQ2MzU4LWlycS5jCj4gKysrIGIvZHJpdmVycy9tZmQvbXQ2MzU4LWlycS5j
+Cj4gQEAgLTUsNiArNSw4IEBACj4gICNpbmNsdWRlIDxsaW51eC9pbnRlcnJ1cHQuaD4KPiAgI2lu
+Y2x1ZGUgPGxpbnV4L21mZC9tdDYzNTgvY29yZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvbWZkL210
+NjM1OC9yZWdpc3RlcnMuaD4KPiArI2luY2x1ZGUgPGxpbnV4L21mZC9tdDYzNTkvY29yZS5oPgo+
+ICsjaW5jbHVkZSA8bGludXgvbWZkL210NjM1OS9yZWdpc3RlcnMuaD4KPiAgI2luY2x1ZGUgPGxp
+bnV4L21mZC9tdDYzOTcvY29yZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gICNp
+bmNsdWRlIDxsaW51eC9vZi5oPgo+IEBAIC0yNiw2ICsyOCwxNyBAQCBzdGF0aWMgY29uc3Qgc3Ry
+dWN0IGlycV90b3BfdCBtdDYzNThfaW50c1tdID0gewo+ICAJTVQ2MzU4X1RPUF9HRU4oTUlTQyks
+Cj4gIH07Cj4gIAo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGlycV90b3BfdCBtdDYzNTlfaW50c1td
+ID0gewo+ICsJTVQ2MzU5X1RPUF9HRU4oQlVDSyksCj4gKwlNVDYzNTlfVE9QX0dFTihMRE8pLAo+
+ICsJTVQ2MzU5X1RPUF9HRU4oUFNDKSwKPiArCU1UNjM1OV9UT1BfR0VOKFNDSyksCj4gKwlNVDYz
+NTlfVE9QX0dFTihCTSksCj4gKwlNVDYzNTlfVE9QX0dFTihISyksCj4gKwlNVDYzNTlfVE9QX0dF
+TihBVUQpLAo+ICsJTVQ2MzU5X1RPUF9HRU4oTUlTQyksCj4gK307Cj4gKwo+ICBzdGF0aWMgc3Ry
+dWN0IHBtaWNfaXJxX2RhdGEgbXQ2MzU4X2lycWQgPSB7Cj4gIAkubnVtX3RvcCA9IEFSUkFZX1NJ
+WkUobXQ2MzU4X2ludHMpLAo+ICAJLm51bV9wbWljX2lycXMgPSBNVDYzNThfSVJRX05SLAo+IEBA
+IC0zMyw2ICs0NiwxMyBAQCBzdGF0aWMgc3RydWN0IHBtaWNfaXJxX2RhdGEgbXQ2MzU4X2lycWQg
+PSB7Cj4gIAkucG1pY19pbnRzID0gbXQ2MzU4X2ludHMsCj4gIH07Cj4gIAo+ICtzdGF0aWMgc3Ry
+dWN0IHBtaWNfaXJxX2RhdGEgbXQ2MzU5X2lycWQgPSB7Cj4gKwkubnVtX3RvcCA9IEFSUkFZX1NJ
+WkUobXQ2MzU5X2ludHMpLAo+ICsJLm51bV9wbWljX2lycXMgPSBNVDYzNTlfSVJRX05SLAo+ICsJ
+LnRvcF9pbnRfc3RhdHVzX3JlZyA9IE1UNjM1OV9UT1BfSU5UX1NUQVRVUzAsCj4gKwkucG1pY19p
+bnRzID0gbXQ2MzU5X2ludHMsCj4gK307Cj4gKwo+ICBzdGF0aWMgdm9pZCBwbWljX2lycV9lbmFi
+bGUoc3RydWN0IGlycV9kYXRhICpkYXRhKQo+ICB7Cj4gIAl1bnNpZ25lZCBpbnQgaHdpcnEgPSBp
+cnFkX3RvX2h3aXJxKGRhdGEpOwo+IEBAIC0xOTUsNiArMjE1LDEwIEBAIGludCBtdDYzNThfaXJx
+X2luaXQoc3RydWN0IG10NjM5N19jaGlwICpjaGlwKQo+ICAJCWNoaXAtPmlycV9kYXRhID0gJm10
+NjM1OF9pcnFkOwo+ICAJCWJyZWFrOwo+ICAKPiArCWNhc2UgTVQ2MzU5X0NISVBfSUQ6Cj4gKwkJ
+Y2hpcC0+aXJxX2RhdGEgPSAmbXQ2MzU5X2lycWQ7Cj4gKwkJYnJlYWs7Cj4gKwo+ICAJZGVmYXVs
+dDoKPiAgCQlkZXZfZXJyKGNoaXAtPmRldiwgInVuc3VwcG9ydGVkIGNoaXA6IDB4JXhcbiIsIGNo
+aXAtPmNoaXBfaWQpOwo+ICAJCXJldHVybiAtRU5PREVWOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L21mZC9tdDYzOTctY29yZS5jIGIvZHJpdmVycy9tZmQvbXQ2Mzk3LWNvcmUuYwo+IGluZGV4IDc1
+MThkNzRjM2I0Yy4uNjE3ZTRlNGQ1ZGUwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWZkL210NjM5
+Ny1jb3JlLmMKPiArKysgYi9kcml2ZXJzL21mZC9tdDYzOTctY29yZS5jCj4gQEAgLTEzLDkgKzEz
+LDExIEBACj4gICNpbmNsdWRlIDxsaW51eC9tZmQvY29yZS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
+bWZkL210NjMyMy9jb3JlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tZmQvbXQ2MzU4L2NvcmUuaD4K
+PiArI2luY2x1ZGUgPGxpbnV4L21mZC9tdDYzNTkvY29yZS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
+bWZkL210NjM5Ny9jb3JlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tZmQvbXQ2MzIzL3JlZ2lzdGVy
+cy5oPgo+ICAjaW5jbHVkZSA8bGludXgvbWZkL210NjM1OC9yZWdpc3RlcnMuaD4KPiArI2luY2x1
+ZGUgPGxpbnV4L21mZC9tdDYzNTkvcmVnaXN0ZXJzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tZmQv
+bXQ2Mzk3L3JlZ2lzdGVycy5oPgo+ICAKPiAgI2RlZmluZSBNVDYzMjNfUlRDX0JBU0UJCTB4ODAw
+MAo+IEBAIC05OSw2ICsxMDEsMTkgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtZmRfY2VsbCBtdDYz
+NThfZGV2c1tdID0gewo+ICAJfSwKPiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbWZk
+X2NlbGwgbXQ2MzU5X2RldnNbXSA9IHsKPiArCXsKPiArCQkubmFtZSA9ICJtdDYzNTktcmVndWxh
+dG9yIiwKPiArCX0sIHsKPiArCQkubmFtZSA9ICJtdDYzNTktcnRjIiwKPiArCQkubnVtX3Jlc291
+cmNlcyA9IEFSUkFZX1NJWkUobXQ2MzU4X3J0Y19yZXNvdXJjZXMpLAo+ICsJCS5yZXNvdXJjZXMg
+PSBtdDYzNThfcnRjX3Jlc291cmNlcywKPiArCQkub2ZfY29tcGF0aWJsZSA9ICJtZWRpYXRlayxt
+dDYzNTgtcnRjIiwKPiArCX0sIHsKPiArCQkubmFtZSA9ICJtdDYzNTktc291bmQiLAo+ICsJfSwK
+PiArfTsKCk5pdDogUGxlYXNlIHB1dCB0aGUgc2luZ2xlLWxpbmUgZW50cmllcyBvbiBvbmUgbGlu
+ZS4KCkxpa2UgdGhpczoKCgl7IC5uYW1lID0gIm10NjM1OS1zb3VuZCIgfSwKCj4gIHN0YXRpYyBj
+b25zdCBzdHJ1Y3QgbWZkX2NlbGwgbXQ2Mzk3X2RldnNbXSA9IHsKPiAgCXsKPiAgCQkubmFtZSA9
+ICJtdDYzOTctcnRjIiwKPiBAQCAtMTQ5LDYgKzE2NCwxNCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0
+IGNoaXBfZGF0YSBtdDYzNThfY29yZSA9IHsKPiAgCS5pcnFfaW5pdCA9IG10NjM1OF9pcnFfaW5p
+dCwKPiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgY2hpcF9kYXRhIG10NjM1OV9jb3Jl
+ID0gewo+ICsJLmNpZF9hZGRyID0gTVQ2MzU5X1NXQ0lELAo+ICsJLmNpZF9zaGlmdCA9IDgsCj4g
+KwkuY2VsbHMgPSBtdDYzNTlfZGV2cywKPiArCS5jZWxsX3NpemUgPSBBUlJBWV9TSVpFKG10NjM1
+OV9kZXZzKSwKPiArCS5pcnFfaW5pdCA9IG10NjM1OF9pcnFfaW5pdCwKPiArfTsKPiArCj4gIHN0
+YXRpYyBjb25zdCBzdHJ1Y3QgY2hpcF9kYXRhIG10NjM5N19jb3JlID0gewo+ICAJLmNpZF9hZGRy
+ID0gTVQ2Mzk3X0NJRCwKPiAgCS5jaWRfc2hpZnQgPSAwLAo+IEBAIC0yMTgsNiArMjQxLDkgQEAg
+c3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXQ2Mzk3X29mX21hdGNoW10gPSB7Cj4g
+IAl9LCB7Cj4gIAkJLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ2MzU4IiwKPiAgCQkuZGF0YSA9
+ICZtdDYzNThfY29yZSwKPiArCX0sIHsKPiArCQkuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDYz
+NTkiLAo+ICsJCS5kYXRhID0gJm10NjM1OV9jb3JlLAo+ICAJfSwgewo+ICAJCS5jb21wYXRpYmxl
+ID0gIm1lZGlhdGVrLG10NjM5NyIsCj4gIAkJLmRhdGEgPSAmbXQ2Mzk3X2NvcmUsCj4gZGlmZiAt
+LWdpdCBhL2luY2x1ZGUvbGludXgvbWZkL210NjM1OS9jb3JlLmggYi9pbmNsdWRlL2xpbnV4L21m
+ZC9tdDYzNTkvY29yZS5oCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAw
+MDAuLjYxODcyZjFlY2JlNAo+IC0tLSAvZGV2L251bGwKPiArKysgYi9pbmNsdWRlL2xpbnV4L21m
+ZC9tdDYzNTkvY29yZS5oCj4gQEAgLTAsMCArMSwxMzMgQEAKPiArLyogU1BEWC1MaWNlbnNlLUlk
+ZW50aWZpZXI6IEdQTC0yLjAgKi8KPiArLyoKPiArICogQ29weXJpZ2h0IChjKSAyMDIwIE1lZGlh
+VGVrIEluYy4KClRoaXMgaXMgb3V0IG9mIGRhdGUuCgo+ICsgKi8KPiArCj4gKyNpZm5kZWYgX19N
+RkRfTVQ2MzU5X0NPUkVfSF9fCj4gKyNkZWZpbmUgX19NRkRfTVQ2MzU5X0NPUkVfSF9fCgpbLi4u
+XQoKPiArI2VuZGlmIC8qIF9fTUZEX01UNjM1OV9DT1JFX0hfXyAqLwo+IGRpZmYgLS1naXQgYS9p
+bmNsdWRlL2xpbnV4L21mZC9tdDYzNTkvcmVnaXN0ZXJzLmggYi9pbmNsdWRlL2xpbnV4L21mZC9t
+dDYzNTkvcmVnaXN0ZXJzLmgKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAw
+MDAwMC4uNGQ3MmYwYTdmMmIwCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2luY2x1ZGUvbGludXgv
+bWZkL210NjM1OS9yZWdpc3RlcnMuaAo+IEBAIC0wLDAgKzEsNTI5IEBACj4gKy8qIFNQRFgtTGlj
+ZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wICovCj4gKy8qCj4gKyAqIENvcHlyaWdodCAoYykgMjAy
+MCBNZWRpYVRlayBJbmMuCgpUaGlzIHRvby4KCj4gKyAqLwo+ICsKPiArI2lmbmRlZiBfX01GRF9N
+VDYzNTlfUkVHSVNURVJTX0hfXwo+ICsjZGVmaW5lIF9fTUZEX01UNjM1OV9SRUdJU1RFUlNfSF9f
+CgpbLi4uXQoKPiArI2VuZGlmIC8qIF9fTUZEX01UNjM1OV9SRUdJU1RFUlNfSF9fICovCj4gZGlm
+ZiAtLWdpdCBhL2luY2x1ZGUvbGludXgvbWZkL210NjM5Ny9jb3JlLmggYi9pbmNsdWRlL2xpbnV4
+L21mZC9tdDYzOTcvY29yZS5oCj4gaW5kZXggOTQ5MjY4NTgxYjM2Li41NmYyMTBlZWJjNTQgMTAw
+NjQ0Cj4gLS0tIGEvaW5jbHVkZS9saW51eC9tZmQvbXQ2Mzk3L2NvcmUuaAo+ICsrKyBiL2luY2x1
+ZGUvbGludXgvbWZkL210NjM5Ny9jb3JlLmgKPiBAQCAtMTMsNiArMTMsNyBAQAo+ICBlbnVtIGNo
+aXBfaWQgewo+ICAJTVQ2MzIzX0NISVBfSUQgPSAweDIzLAo+ICAJTVQ2MzU4X0NISVBfSUQgPSAw
+eDU4LAo+ICsJTVQ2MzU5X0NISVBfSUQgPSAweDU5LAo+ICAJTVQ2MzkxX0NISVBfSUQgPSAweDkx
+LAo+ICAJTVQ2Mzk3X0NISVBfSUQgPSAweDk3LAo+ICB9OwoKT25jZSB5b3UgZml4ZWQgdGhvc2Ug
+aXNzdWVzLCBmZWVsIGZyZWUgdG8gYWRkIG15OgoKRm9yIG15IG93biByZWZlcmVuY2UgKGFwcGx5
+IHRoaXMgYXMtaXMgdG8geW91ciBzaWduLW9mZiBibG9jayk6CgogIEFja2VkLWZvci1NRkQtYnk6
+IExlZSBKb25lcyA8bGVlLmpvbmVzQGxpbmFyby5vcmc+CgotLSAKTGVlIEpvbmVzIFvmnY7nkLzm
+lq9dClNlbmlvciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBTZXJ2aWNlcwpMaW5hcm8ub3Jn
+IOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKRm9sbG93IExpbmFybzogRmFj
+ZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1tZWRpYXRlawo=
