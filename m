@@ -2,77 +2,81 @@ Return-Path: <SRS0=N2rV=IA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D86EFC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 07:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3039CC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 08:42:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 51C1460240
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 07:33:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51C1460240
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 40BD761494
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 08:42:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40BD761494
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+DYzd65yYohBhEkaMwCaJ0ZKDQeWaDtTZHpkTKUwCLo=; b=El2tSIfBBbcMh3Itccu/HpEiE
-	npHAQaOI73U5Et0OAPZeY6LosNGdriUMNCeENaPyOZzclHgDm5toildJN8Y+4facw2Y+I+KLQYgXg
-	LLEyEQJSyKOw/nZ6zejzm/el1cqCgKpCFIQEhiyC2MoN+hg8UBATM/p6YjRxGw+f391XWV5K/gopp
-	T+3nyHDnVaODTS3Kv37UlHPUXBipGNgqvY4aTyFpcKUEjh2KQtEFEbb3c0qpBjhMUceSEwFEWt3C3
-	MQD23NUfnqC6OabEqt7ojocNmwcstszmP9luoyTtVN4vsjsmtmkyCE1+t1bpGELV0LpTyIs0PV8Y2
-	brhhdqWHw==;
+	 bh=GwMmHYopCKfXOI5iDRvy8ZXK44SihqgwXfJ8rIwS2+8=; b=jBx4sHhCh8ZVuPsxMbTByYYwa
+	kq28iTGvsdQzHi/bl43ow3+e02E2k+XIHZW9/yeK7UXIEEE+6JrDAn1laHMjbAD/8qBp2UZ3pzr5N
+	EEJvIXYxfvSP/SPuf5Y3pEG0WIjyKx1gkj67BAifs5MfFCFnYSDJIEz7n20PiMzQ495tY9eC+UtrO
+	IQyXfxmf1VCGcF8jRDSYBPdYXCqBfa3tSDPXWN4rHpujhV7OfEi+Gq282/uJg9E4gws8RYtykEMoG
+	L562qp1HVL0EWxCHrYBCs7F/MlSbJ3ojXF9AoQ9mhjsp1WCu36ckUmK2p/u52Fg+5m0YOvY1RA4bQ
+	rff03zsiw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGzWh-00064k-Sl; Tue, 02 Mar 2021 07:33:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lH0c7-0003ig-Fi; Tue, 02 Mar 2021 08:42:44 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGzWc-00062i-3y; Tue, 02 Mar 2021 07:32:59 +0000
-X-UUID: a86ebdd663fc4ad7acb76ee84795ed12-20210301
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=qBsh+qCJeFaaVUFsEnzMojxn589xljIGU6aFArByVhs=; 
- b=ViM2YIErPSfTOFzDskO/4mIYPjXc0xN9KWRDuJMCNIHFSGvyvQrp/UX3TJeQa5q20Pk+6XjTxfLf5YkQi8IUnp0u/Uam1euZ+qSI9XPRUm7PMoiruxC9Tx8R98mEMcrd8aNJYKQqV3KQOeK/6TgrLJStJTB/g0Us3azUzDfEKf4=;
-X-UUID: a86ebdd663fc4ad7acb76ee84795ed12-20210301
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <fengquan.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 857844676; Mon, 01 Mar 2021 23:28:38 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 1 Mar 2021 23:28:36 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Mar 2021 15:28:33 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 2 Mar 2021 15:28:32 +0800
-From: Fengquan Chen <Fengquan.Chen@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
- <tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] clocksource/drivers/timer-mediatek: optimize systimer irq
- clear flow on Mediatek Socs
-Date: Tue, 2 Mar 2021 15:28:05 +0800
-Message-ID: <1614670085-26229-2-git-send-email-Fengquan.Chen@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1614670085-26229-1-git-send-email-Fengquan.Chen@mediatek.com>
-References: <1614670085-26229-1-git-send-email-Fengquan.Chen@mediatek.com>
+ id 1lH0c3-0003hE-Uc
+ for linux-mediatek@lists.infradead.org; Tue, 02 Mar 2021 08:42:41 +0000
+Received: by mail-ej1-x635.google.com with SMTP id do6so33696151ejc.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 02 Mar 2021 00:42:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=agB1pi024Vr3XPHFnK8A8uxx+WSFW4Ss4wEt+UUGomA=;
+ b=J2KxhfvYp/C4dNeiEuJ9uuzNtGkOnSWtZXhIKfyFPrvIRJ6Uz0nzrFUHlf/AJVfTX/
+ pLADSL75J4ZVY+zeYfSOGPpkv9fP0XuJELCjv+CBzNjYyvbNqlvNEdO8o54dfEDtVYBf
+ B8f+aY0ITlqdbI9sz70TTv+y26cx4W3D683xiB7w6RgFMzqfamj5eb16BuAy55JtBSXb
+ dHUXhCpLl5GWmGLxuqBy+sAutKvDqQuvAKeG1lj97jpL5H7RzgzsMY62RMWRXHXy0Zc9
+ 6g2R/ewhXtTLFZtKya22iW6Hyt61B1lPKlWAWzZPyyeUvdmeh2YHExJZm3eape88OnIr
+ 0+Bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=agB1pi024Vr3XPHFnK8A8uxx+WSFW4Ss4wEt+UUGomA=;
+ b=kfihVb1PAxEhrw+p8d7dwzpReBzwOFdaTwYs0g19pfZNpDi5Oyxy/6UXFsRz+Ua1EB
+ 2I7XoXMeKdta3AOiT/almNs5Y+QC233BZ6o9k18AyiEs3aQzqWHbWpw7/oYnXr7r6Rxl
+ 2G7VgmT4Tblim60Lt5NYWYfb0sSTagUj+3Zisg+QQApRXBjYGTFIg+VpI0iwhXNXZn3s
+ mHuNn5we5Odgr0K1nuGU0W9viS+jkHFhjzfCXCtiXPdooXOrhTf61cto9v5kqRHAHGCB
+ Vvw1gHhbavobpiITtuOzCvHVeGYgayvhTSyejLKQRpjJP31QT3PsLtv7P2RHLiUgE0mq
+ KqdQ==
+X-Gm-Message-State: AOAM533frgaUa2gNj+SsXxuQCJS9BgPndJWRQjIXlLhzC3tND46cPQgr
+ FDl3UpdGVEL0Kng+1drcDDUi3DsGfQwI5PqhP4tAZol6SGxORg==
+X-Google-Smtp-Source: ABdhPJxrNudJeeR8IfVRpsk7slwS7VNf7SxzFv8Xp+r4FDzk4q5SXG33aC9jWsXdNCJ5zn9Z9QMi1b64BHGjO2kV73Q=
+X-Received: by 2002:a17:906:3105:: with SMTP id
+ 5mr20113035ejx.168.1614674557016; 
+ Tue, 02 Mar 2021 00:42:37 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C6A9DD39B665283DEC9F409682BFD9C5E80DCE98BCB2721AA6A68ACDD4DE829B2000:8
-X-MTK: N
+References: <20210302033323.25830-1-biao.huang@mediatek.com>
+In-Reply-To: <20210302033323.25830-1-biao.huang@mediatek.com>
+From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Date: Tue, 2 Mar 2021 09:42:26 +0100
+Message-ID: <CAMpxmJV_MmOrP1eKdcBsD2sjzC7p52vxBz+HE+yHDdr9RTujqQ@mail.gmail.com>
+Subject: Re: [PATCH] net: ethernet: mtk-star-emac: fix wrong unmap in RX
+ handling
+To: Biao Huang <biao.huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210302_023258_340773_BB7DE6B9 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20210302_034240_149822_6AE43BD1 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,48 +88,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Fengquan Chen <Fengquan.Chen@mediatek.com>, dehui.sun@mediatek.com
+Cc: srv_heupstream <srv_heupstream@mediatek.com>,
+ netdev <netdev@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ LKML <linux-kernel@vger.kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>, Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1)ensure systimer is enabled before clear and disable interrupt, which only
-for systimer in Mediatek Socs.
+On Tue, Mar 2, 2021 at 4:33 AM Biao Huang <biao.huang@mediatek.com> wrote:
+>
+> mtk_star_dma_unmap_rx() should unmap the dma_addr of old skb rather than
+> that of new skb.
+> Assign new_dma_addr to desc_data.dma_addr after all handling of old skb
+> ends to avoid unexpected receive side error.
+>
+> Fixes: f96e9641e92b ("net: ethernet: mtk-star-emac: fix error path in RX handling")
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_star_emac.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> index a8641a407c06..96d2891f1675 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> @@ -1225,8 +1225,6 @@ static int mtk_star_receive_packet(struct mtk_star_priv *priv)
+>                 goto push_new_skb;
+>         }
+>
+> -       desc_data.dma_addr = new_dma_addr;
+> -
+>         /* We can't fail anymore at this point: it's safe to unmap the skb. */
+>         mtk_star_dma_unmap_rx(priv, &desc_data);
+>
+> @@ -1236,6 +1234,9 @@ static int mtk_star_receive_packet(struct mtk_star_priv *priv)
+>         desc_data.skb->dev = ndev;
+>         netif_receive_skb(desc_data.skb);
+>
+> +       /* update dma_addr for new skb */
+> +       desc_data.dma_addr = new_dma_addr;
+> +
+>  push_new_skb:
+>         desc_data.len = skb_tailroom(new_skb);
+>         desc_data.skb = new_skb;
+> --
+> 2.18.0
+>
 
-2)clear any pending timer-irq when shutdown to keep suspend flow clean,
-when use systimer as tick-broadcast timer
+Thanks for spotting that. Maybe also update the commit so that it
+says: "it's safe to unmap the old skb"? Would make the thing clearer
+IMO.
 
-Change-Id: Ia3eda83324af2fdaf5cbb3569a9bf020a11f8009
-Signed-off-by: Fengquan Chen <fengquan.chen@mediatek.com>
----
- drivers/clocksource/timer-mediatek.c | 4 ++++
- 1 file changed, 4 insertions(+)
+In any case:
 
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 9318edc..9f1f095dc 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -75,6 +75,7 @@
- static void mtk_syst_ack_irq(struct timer_of *to)
- {
- 	/* Clear and disable interrupt */
-+	writel(SYST_CON_EN, SYST_CON_REG(to));
- 	writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
- }
- 
-@@ -111,6 +112,9 @@ static int mtk_syst_clkevt_next_event(unsigned long ticks,
- 
- static int mtk_syst_clkevt_shutdown(struct clock_event_device *clkevt)
- {
-+	/* Clear any irq */
-+	mtk_syst_ack_irq(to_timer_of(clkevt));
-+
- 	/* Disable timer */
- 	writel(0, SYST_CON_REG(to_timer_of(clkevt)));
- 
--- 
-1.8.1.1.dirty
+Acked-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+
+Bartosz
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
