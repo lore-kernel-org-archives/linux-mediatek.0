@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9631EC433E6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:58:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3844EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:58:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4EC8660240
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:58:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EC8660240
+	by mail.kernel.org (Postfix) with ESMTPS id D5ECF600EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:58:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5ECF600EF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rasUPn9qV1y5R5DtGs5ubjZXUq1d8+RCtNera3mfVB8=; b=J2/HC7FMzEigwYcv4mBJ2oHVO
-	KqCyeKtfU9R2ySaZvnmRYwL/dIhuifD/b6rBz40zP5P/dSzG8REFb8q1AcuYQ+yHbiBDa++eQIlYC
-	WX21N5Eu7knYjaJya+JimjhKoeR82qdDXoSGAz0VxEJ4hnjwffEO1e+r4uZgjUwjoNd134fHwBEg8
-	TCBRDyNfsXwOM5wJLownN78ufgid91bg3wxDzhF10yBNEJ3+C1AXVg5pNhAYGW/wr7UQNGCK+S7Yz
-	2WoxTMdqv8mdN2OXQAHYaXuFDFJ3AUbc4XYpoFrPOFzXTKvNFbnv7IdtJLI6y5K+cJQkdoCib1s2+
-	ZCrNzorlQ==;
+	 bh=F4Pd+ryw12pLYvtbtd3Xz2r2BUB6QERMGnrQMi++DAE=; b=1GpmyXD/+ds/dpIAQQ8SW6/Vu
+	ESWqcmcPOCz+nF4O4gYcZQz7e/CMOKXqiTsdO3EfHKjLmUJQJYSDDn5M2ggoYox81KvfERUXBTIPF
+	y/8pOHALz4mBBkqk9OEcbCsugCBj6oVn/8XD3r2SWYWQRC5C4kdutuCk23PsIbG1T6vFNNIlBrcPK
+	IYtsfOQ9u8WCLIlnAO/AUNy8qfdKid8uuSvn6SfuRVdZl16Kb7B42FmdY+p0sRzvKYRmswu3M5F7N
+	f3oBdzN2d6w5bbdlrOJ/uKxGe+bIcYcLnyDui4d6ByzOA8mKJstK+gZW0qc1rxCFNl0W3+lr5+dvV
+	tvicoTOiA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGwB5-0002tM-Vx; Tue, 02 Mar 2021 03:58:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lGwB7-0002u4-24; Tue, 02 Mar 2021 03:58:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGwAU-0002VZ-77; Tue, 02 Mar 2021 03:57:57 +0000
-X-UUID: bf373a71128c40398e512f0de964bb6b-20210301
+ id 1lGwAV-0002VY-8c; Tue, 02 Mar 2021 03:57:57 +0000
+X-UUID: 043e8795a8674bfd9d1103f62083266f-20210301
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1unrZPQMAfcMyUGqJ0NEbW0zCXoVksC8yD/s45yrY58=; 
- b=Url/upyCvm71kPxBreCBoJlSC50+YV8pb2nJey3aPbrQtjei7l2n9St5zNKKpm3ZG9Ab0gULPbOjJS30xT3Oy7F8c5UjMrsj6EOTejITfnHp3d7EZiYdiK+e747f+xMwvJ6Kqm5BGis/fJlMZEByqvDvUi4/V+tx4idA0bgcZfw=;
-X-UUID: bf373a71128c40398e512f0de964bb6b-20210301
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=8D6H8kEOPIeu6KKnYOsD6R1TcwMO1JsbDugImxBstB4=; 
+ b=c9tK88emOFAv7eJPRtqfS2oZ830aejlLujsJkx23mHtjhrtdvJF2jEP6mO0UX64LDnSIA1mw6NbI0SJ4O4avsguFqpP7ZH8Kx2q/k0OEZHC4nS/lo/8xNW1/vwfRd8QdJbpChhIQ7xUvUTKYLRArBFyjJ0UQ4OYl1Kl00u6N+iY=;
+X-UUID: 043e8795a8674bfd9d1103f62083266f-20210301
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 574509677; Mon, 01 Mar 2021 19:57:48 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 1 Mar 2021 19:47:52 -0800
+ with ESMTP id 208215744; Mon, 01 Mar 2021 19:57:50 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 1 Mar 2021 19:47:48 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Mar 2021 11:47:44 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Mar 2021 11:47:46 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 2 Mar 2021 11:47:44 +0800
+ Frontend Transport; Tue, 2 Mar 2021 11:47:46 +0800
 From: Henry Chen <henryc.chen@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>
-Subject: [PATCH V9 04/12] soc: mediatek: add support for mt6873
-Date: Tue, 2 Mar 2021 11:47:35 +0800
-Message-ID: <1614656863-8530-5-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V9 12/12] arm64: dts: mt8192: add dvfsrc regulator nodes
+Date: Tue, 2 Mar 2021 11:47:43 +0800
+Message-ID: <1614656863-8530-13-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1614656863-8530-1-git-send-email-henryc.chen@mediatek.com>
 References: <1614656863-8530-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 2905025C958521C455DD09DA957E2F3777EFAA99BCDEBFED13A6A2CDE58D1FD82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210301_225754_498983_60DE8F9B 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20210301_225755_555980_1B55D0C7 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,159 +94,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add support for mt6873
+Add dvfsrc regulator nodes which is for MT8192-based platforms
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-dvfsrc.c | 114 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 114 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
-index c0c6d91..a422680 100644
---- a/drivers/soc/mediatek/mtk-dvfsrc.c
-+++ b/drivers/soc/mediatek/mtk-dvfsrc.c
-@@ -102,6 +102,16 @@ enum dvfsrc_regs {
- 	[DVFSRC_SW_BW] =	0x160,
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 81d7d05..1cf91a4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -470,6 +470,12 @@
+ 				     "mediatek,mt6873-dvfsrc";
+ 			reg = <0 0x10012000 0 0x1000>;
+ 			#interconnect-cells = <1>;
++			dvfsrc_vcore: dvfsrc-vcore {
++				regulator-name = "dvfsrc-vcore";
++				regulator-min-microvolt = <575000>;
++				regulator-max-microvolt = <725000>;
++				regulator-always-on;
++			};
+ 		};
  
-+static const int mt6873_regs[] = {
-+	[DVFSRC_SW_REQ] =		0xC,
-+	[DVFSRC_LEVEL] =		0xD44,
-+	[DVFSRC_SW_PEAK_BW] =		0x278,
-+	[DVFSRC_SW_BW] =		0x26C,
-+	[DVFSRC_SW_HRT_BW] =		0x290,
-+	[DVFSRC_TARGET_LEVEL] =		0xD48,
-+	[DVFSRC_VCORE_REQUEST] =	0x6C,
-+};
-+
- static const struct dvfsrc_opp *get_current_opp(struct mtk_dvfsrc *dvfsrc)
- {
- 	int level;
-@@ -127,6 +137,78 @@ static int dvfsrc_wait_for_vcore_level(struct mtk_dvfsrc *dvfsrc, u32 level)
- 					 POLL_TIMEOUT);
- }
- 
-+static int mt6873_get_target_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	return dvfsrc_read(dvfsrc, DVFSRC_TARGET_LEVEL);
-+}
-+
-+static int mt6873_get_current_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	u32 curr_level;
-+
-+	/* HW level 0 is begin from 0x1, and max opp is 0x1*/
-+	curr_level = ffs(dvfsrc_read(dvfsrc, DVFSRC_LEVEL));
-+	if (curr_level > dvfsrc->curr_opps->num_opp)
-+		curr_level = 0;
-+	else
-+		curr_level = dvfsrc->curr_opps->num_opp - curr_level;
-+
-+	return curr_level;
-+}
-+
-+static int mt6873_wait_for_opp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
-+{
-+	const struct dvfsrc_opp *target, *curr;
-+
-+	target = &dvfsrc->curr_opps->opps[level];
-+	return readx_poll_timeout_atomic(get_current_opp, dvfsrc, curr,
-+		curr->dram_opp >= target->dram_opp,
-+		STARTUP_TIME, POLL_TIMEOUT);
-+}
-+
-+static u32 mt6873_get_vcore_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	return (dvfsrc_read(dvfsrc, DVFSRC_SW_REQ) >> 4) & 0x7;
-+}
-+
-+static u32 mt6873_get_vcp_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	return (dvfsrc_read(dvfsrc, DVFSRC_VCORE_REQUEST) >> 12) & 0x7;
-+}
-+
-+static void mt6873_set_dram_bw(struct mtk_dvfsrc *dvfsrc, u64 bw)
-+{
-+	bw = div_u64(kbps_to_mbps(bw), 100);
-+	bw = min_t(u64, bw, 0xFF);
-+	dvfsrc_write(dvfsrc, DVFSRC_SW_BW, bw);
-+}
-+
-+static void mt6873_set_dram_peak_bw(struct mtk_dvfsrc *dvfsrc, u64 bw)
-+{
-+	bw = div_u64(kbps_to_mbps(bw), 100);
-+	bw = min_t(u64, bw, 0xFF);
-+	dvfsrc_write(dvfsrc, DVFSRC_SW_PEAK_BW, bw);
-+}
-+
-+static void mt6873_set_dram_hrtbw(struct mtk_dvfsrc *dvfsrc, u64 bw)
-+{
-+	bw = div_u64((kbps_to_mbps(bw) + 29), 30);
-+	bw = min_t(u64, bw, 0x3FF);
-+	dvfsrc_write(dvfsrc, DVFSRC_SW_HRT_BW, bw);
-+}
-+
-+static void mt6873_set_vcore_level(struct mtk_dvfsrc *dvfsrc, u32 level)
-+{
-+	spin_lock(&dvfsrc->req_lock);
-+	dvfsrc_rmw(dvfsrc, DVFSRC_SW_REQ, level, 0x7, 4);
-+	spin_unlock(&dvfsrc->req_lock);
-+}
-+
-+static void mt6873_set_vscp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
-+{
-+	dvfsrc_rmw(dvfsrc, DVFSRC_VCORE_REQUEST, level, 0x7, 12);
-+}
-+
- static int mt8183_wait_for_opp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
- {
- 	const struct dvfsrc_opp *target, *curr;
-@@ -377,6 +459,35 @@ static int mtk_dvfsrc_probe(struct platform_device *pdev)
- 	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level,
- };
- 
-+static const struct dvfsrc_opp dvfsrc_opp_mt6873_lp4[] = {
-+	{0, 0}, {1, 0}, {2, 0}, {3, 0},
-+	{0, 1}, {1, 1}, {2, 1}, {3, 1},
-+	{0, 2}, {1, 2}, {2, 2}, {3, 2},
-+	{1, 3}, {2, 3}, {3, 3}, {1, 4},
-+	{2, 4}, {3, 4}, {2, 5}, {3, 5},
-+	{3, 6},
-+};
-+
-+static const struct dvfsrc_opp_desc dvfsrc_opp_mt6873_desc[] = {
-+	DVFSRC_OPP_DESC(dvfsrc_opp_mt6873_lp4),
-+};
-+
-+static const struct dvfsrc_soc_data mt6873_data = {
-+	.opps_desc = dvfsrc_opp_mt6873_desc,
-+	.regs = mt6873_regs,
-+	.get_target_level = mt6873_get_target_level,
-+	.get_current_level = mt6873_get_current_level,
-+	.get_vcore_level = mt6873_get_vcore_level,
-+	.get_vcp_level = mt6873_get_vcp_level,
-+	.set_dram_bw = mt6873_set_dram_bw,
-+	.set_dram_peak_bw = mt6873_set_dram_peak_bw,
-+	.set_dram_hrtbw = mt6873_set_dram_hrtbw,
-+	.set_vcore_level = mt6873_set_vcore_level,
-+	.set_vscp_level = mt6873_set_vscp_level,
-+	.wait_for_opp_level = mt6873_wait_for_opp_level,
-+	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level,
-+};
-+
- static int mtk_dvfsrc_remove(struct platform_device *pdev)
- {
- 	struct mtk_dvfsrc *dvfsrc = platform_get_drvdata(pdev);
-@@ -392,6 +503,9 @@ static int mtk_dvfsrc_remove(struct platform_device *pdev)
- 		.compatible = "mediatek,mt8183-dvfsrc",
- 		.data = &mt8183_data,
- 	}, {
-+		.compatible = "mediatek,mt6873-dvfsrc",
-+		.data = &mt6873_data,
-+	}, {
- 		/* sentinel */
- 	},
- };
+ 		systimer: timer@10017000 {
 -- 
 1.9.1
 _______________________________________________
