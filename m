@@ -2,76 +2,82 @@ Return-Path: <SRS0=N2rV=IA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3844EC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBEEEC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 06:08:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5ECF600EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:58:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5ECF600EF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2E4C161601
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 06:08:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E4C161601
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=F4Pd+ryw12pLYvtbtd3Xz2r2BUB6QERMGnrQMi++DAE=; b=1GpmyXD/+ds/dpIAQQ8SW6/Vu
-	ESWqcmcPOCz+nF4O4gYcZQz7e/CMOKXqiTsdO3EfHKjLmUJQJYSDDn5M2ggoYox81KvfERUXBTIPF
-	y/8pOHALz4mBBkqk9OEcbCsugCBj6oVn/8XD3r2SWYWQRC5C4kdutuCk23PsIbG1T6vFNNIlBrcPK
-	IYtsfOQ9u8WCLIlnAO/AUNy8qfdKid8uuSvn6SfuRVdZl16Kb7B42FmdY+p0sRzvKYRmswu3M5F7N
-	f3oBdzN2d6w5bbdlrOJ/uKxGe+bIcYcLnyDui4d6ByzOA8mKJstK+gZW0qc1rxCFNl0W3+lr5+dvV
-	tvicoTOiA==;
+	 bh=gP1qid7YFerNxiNvU7jDMFP2siafrTDypzNU3pDfpAo=; b=lvlJHzteTmKgMdr/eW9SdZW1v
+	iAOq18s3Y0u8IOKU3FBSom8lFEzJiZEqAII+0fkf4q6jM/ckZwAs149kSpQoLKCJ0rcDQVN7f8WVI
+	MXsfeeCZI0rQ2G8ZI8IYrRkep73w4o1oulf1dJiCXJL8t+kAdPMeGwzSOsbA8eB43HVIuW8Lh+Uk8
+	hTNpKGpY43L2quhgBqpxQTqDFf5UY37IhDVEQC/jfnlCUHK74WjNum0jeSiX1rTnOA+kMnI1NxdCr
+	EF/IHkZ/4FR21rtbGajvMFuFuA/oWxk9bLglkPegQRs2hYKrmf+9Jfejh7bMnLc35H6ifwyOOxNTY
+	P3UqmPCVA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGwB7-0002u4-24; Tue, 02 Mar 2021 03:58:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lGyCw-0000fO-CD; Tue, 02 Mar 2021 06:08:34 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGwAV-0002VY-8c; Tue, 02 Mar 2021 03:57:57 +0000
-X-UUID: 043e8795a8674bfd9d1103f62083266f-20210301
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=8D6H8kEOPIeu6KKnYOsD6R1TcwMO1JsbDugImxBstB4=; 
- b=c9tK88emOFAv7eJPRtqfS2oZ830aejlLujsJkx23mHtjhrtdvJF2jEP6mO0UX64LDnSIA1mw6NbI0SJ4O4avsguFqpP7ZH8Kx2q/k0OEZHC4nS/lo/8xNW1/vwfRd8QdJbpChhIQ7xUvUTKYLRArBFyjJ0UQ4OYl1Kl00u6N+iY=;
-X-UUID: 043e8795a8674bfd9d1103f62083266f-20210301
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <henryc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 208215744; Mon, 01 Mar 2021 19:57:50 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 1 Mar 2021 19:47:48 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Mar 2021 11:47:46 +0800
-Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 2 Mar 2021 11:47:46 +0800
-From: Henry Chen <henryc.chen@mediatek.com>
-To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>
-Subject: [PATCH V9 12/12] arm64: dts: mt8192: add dvfsrc regulator nodes
-Date: Tue, 2 Mar 2021 11:47:43 +0800
-Message-ID: <1614656863-8530-13-git-send-email-henryc.chen@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1614656863-8530-1-git-send-email-henryc.chen@mediatek.com>
-References: <1614656863-8530-1-git-send-email-henryc.chen@mediatek.com>
+ id 1lGyCs-0000el-US; Tue, 02 Mar 2021 06:08:32 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id o3so20864035oic.8;
+ Mon, 01 Mar 2021 22:08:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=C19cOmvXJnbprBsxYo6fNevVqPz+le4Pn/VUf3uem0I=;
+ b=Kf8td8+mDqzkq/7SM8w4qjPMc1KK311qIsXMdPIYdmOMgBC8UQY7XzByFqs70585hC
+ iowVQmK4mlLCr2eXf5FvDUk+calrVOUsmVzUvIGfZolYMfqRS2VW0oDTqaK7fG9hjGM8
+ hFwPoYRycK0XVZN76fiHHmuuN/ZUfqMrWzHYl/oVOCRY1gOeqBx2IfO2PeB4sT6T/kS3
+ 7eK27CO4mOLC0OAXXX6slJLssqTlr3MulWeYxeQVfmr97lDC4Hxwcpvdlj1SUYRvz8jH
+ 4wOoD091V6jKlkiTd9y82rxmHlT75iepJZIf0ZSJc3UYJ88H4pHdzC/l0+VcjYZwAVz0
+ sxwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=C19cOmvXJnbprBsxYo6fNevVqPz+le4Pn/VUf3uem0I=;
+ b=kp0f4L5oWvFDgz72SSqdfMJAbDCBp2Uwh13ucS6dfWFN8rn7kwBTN9/RK1VRsr0YId
+ 3AAb+ERuymAmx0+7vOhyO9rZGYDrYPWHzIbPe3CDV61mZXLEqasLZzit8cRVEG6AiGUg
+ ZjdZr8Mu1HLsqDn3PMHHLIrRgIOGB4RwMnqnMIC7gHUXsJG4uBoFUfjnrW+UCMghhEO1
+ eOClkYZtQ1kaVa2BPDwDPG1vWi7xzManseiJn+dg0Tbi/G8dlQ+ITSy2Ww4lbUNGmv7n
+ IxTS1ZPFUO4vmocmSHQjuoa3pdUC5DgyDu++bCj6HO6AeMYEglvkKysHZ6h8h5+dkrwW
+ gRdw==
+X-Gm-Message-State: AOAM530n6dFYqDLOrCCaotv+AdBPQNbgYB7ajvWL7FlrdjPPuKsfDDKN
+ Qcj91uRukpnbrAiGYPKmnnGtIAXCa/SbQBD2MYw=
+X-Google-Smtp-Source: ABdhPJy8wziwmYMPu/9/w+eXOxWojzCtW8JGO//mmOEQX/Ss1bf0j5WQzo4DDP/cRs89vYzM7K15EQqJuFgdnHDH40E=
+X-Received: by 2002:aca:4d55:: with SMTP id a82mr2086651oib.23.1614665307388; 
+ Mon, 01 Mar 2021 22:08:27 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2905025C958521C455DD09DA957E2F3777EFAA99BCDEBFED13A6A2CDE58D1FD82000:8
-X-MTK: N
+References: <1608547554-6602-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1608547554-6602-4-git-send-email-gene.chen.richtek@gmail.com>
+ <20210219104724.GC19207@duo.ucw.cz>
+In-Reply-To: <20210219104724.GC19207@duo.ucw.cz>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Date: Tue, 2 Mar 2021 14:08:18 +0800
+Message-ID: <CAE+NS36NvH-s_UOR8RUZA_gd+FUZ5oLqb=n0s41dSMYWDn9DnA@mail.gmail.com>
+Subject: Re: [PATCH v13 3/5] dt-bindings: leds: Add LED_FUNCTION_MOONLIGHT
+ definitions
+To: Pavel Machek <pavel@ucw.cz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210301_225755_555980_1B55D0C7 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210302_010831_088925_5135518D 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,44 +89,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
- devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>,
- Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
- Arvin Wang <arvin.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ devicetree <devicetree@vger.kernel.org>, ChiYuan Huang <cy_huang@richtek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, benjamin.chao@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, shufan_lee@richtek.com,
+ Wilma.Wu@mediatek.com, Linux LED Subsystem <linux-leds@vger.kernel.org>,
+ Dan Murphy <dmurphy@ti.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dvfsrc regulator nodes which is for MT8192-based platforms
-
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 81d7d05..1cf91a4 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -470,6 +470,12 @@
- 				     "mediatek,mt6873-dvfsrc";
- 			reg = <0 0x10012000 0 0x1000>;
- 			#interconnect-cells = <1>;
-+			dvfsrc_vcore: dvfsrc-vcore {
-+				regulator-name = "dvfsrc-vcore";
-+				regulator-min-microvolt = <575000>;
-+				regulator-max-microvolt = <725000>;
-+				regulator-always-on;
-+			};
- 		};
- 
- 		systimer: timer@10017000 {
--- 
-1.9.1
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+UGF2ZWwgTWFjaGVrIDxwYXZlbEB1Y3cuY3o+IOaWvCAyMDIx5bm0MuaciDE55pelIOmAseS6lCDk
+uIvljYg2OjQ35a+r6YGT77yaCj4KPiBIaSEKPgo+ID4gRnJvbTogR2VuZSBDaGVuIDxnZW5lX2No
+ZW5AcmljaHRlay5jb20+Cj4gPgo+ID4gQWRkIExFRF9GVU5DVElPTl9NT09OTElHSFQgZGVmaW5p
+dGlvbnMKPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVr
+LmNvbT4KPiA+IEFja2VkLWJ5OiBKYWNlayBBbmFzemV3c2tpIDxqYWNlay5hbmFzemV3c2tpQGdt
+YWlsLmNvbT4KPiA+IEFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+Cj4g
+Tm8sIHNvcnJ5LCBJIGRvbid0IGJlbGlldmUgd2UgbmVlZCBhbm90aGVyIGRlZmluZSBmb3IgZmxh
+c2gvdG9yY2guCj4KCkFzIHByZXZpb3VzIGRpc2N1c3MsCj4gV2UgdXNlIHRlcm0gIk1vb25saWdo
+dCIgYXMgcmVmZXJlbmNlIHNheXMKPiAiV2hlbiB5b3UgYXJlIHRyeWluZyB0byBpbWl0YXRlIG1v
+b25saWdodCB5b3UgbmVlZCB0byB1c2UgbG93IHZvbHRhZ2UsCj4gc29mdGVyIGxpZ2h0aW5nLiBZ
+b3UgZG9u4oCZdCB3YW50IHNvbWV0aGluZyB0aGF04oCZcyB0b28gYnJpZ2h0Igo+IHdoaWNoIGlz
+IGZvY3VzIG9uIGJyaWdodG5lc3MgaW5zdGVhZCBvZiBjb2xvci4KCklmIGFueSBjb25jZXJuIGFi
+b3V0IHRoaXMgY2hhbmdlLCBtYXliZSB3ZSB1c2UgTEVEX0ZVTkNUSU9OX0lORElDQVRPUiBpbnN0
+ZWFkPwoocmVmczogaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMjAvMTEvMjQvMTI2NykKCgo+IEJl
+c3QgcmVnYXJkcywKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgUGF2ZWwKPiAtLQo+IGh0dHA6Ly93d3cubGl2ZWpvdXJuYWwu
+Y29tL35wYXZlbG1hY2hlawoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1tZWRpYXRlawo=
