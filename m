@@ -2,84 +2,79 @@ Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5B09C433E6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 14:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8709EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 15:11:42 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AF5164E68
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 14:07:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AF5164E68
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id F0A7D64EEC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 15:11:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0A7D64EEC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=38GqWm9N+1uGDV0oH8vlJHOD3wkVhr29VRpjEplKuz4=; b=eGMGgNISxZ93nryHYmYbYiIJA
-	7a+RPhHurvyNHRS4P8OcG1N9fkrIu6XA6wVg93Zp8YdN2OJG9XXdlpT+hctMK9BpBwtDKFweTWBkN
-	f7r0fyAmh1lByF70BGB7Vj6A06OqHKMUMhxUi0Ox1Ru6SCJYOwsJiK1t25/66RFo1lfudvBgKhNA5
-	JxWLN2MmzZ6ztAi/QzUyxnmO7k6/ykDrvyKtQ10t3N1Mki2ucpS8T7NKP8AJgbceubnWsQs8MJI9+
-	lHE3SWlW/gAT+PCPbISC4haqJk317358MBZ57A/S9mo3wUm0NPqnObnogUDIwQgfH5uZa/oRhshvL
-	bmDBIfTpQ==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Hf3D32T5zoefXkYIcCoMnBFsG7DXOXqywDu+Daxfgc8=; b=XI47Mk0yMjKJSk0+qZKKBxfcJH
+	U6wgPNt22KkErO3WhWUY+PDVG0HNTgcjU2La+JBGItXllChvFf2T6czIspG7qGFi8+LDmGCkw/157
+	0pplPvaHOVLcSLwk7GZ7VnqSdQEOEvjwBbue6+Opdq4Q4txSZfWRwTAbM/7G+jhwnSO8V9yCn5MNu
+	tOmrNCv3Nt3HzCv+sBuCkg009UqViLoosSuKRVJ3Hn/zeDIwZltXGGggeEZRwFxsy+8c0yt3cYWYR
+	jEa4NcokI8ER9ITdCiEevtJUKkznx/S0gSnTJnhe1v927xQy67+YdTpv2Gx9rtw11Cm7kc5xIJN78
+	ZCzcrfAA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHSA0-0053pC-Sn; Wed, 03 Mar 2021 14:07:33 +0000
+	id 1lHT9s-005KN8-Sb; Wed, 03 Mar 2021 15:11:29 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHS4s-00523V-HB; Wed, 03 Mar 2021 14:02:16 +0000
+ id 1lHSCf-0054oI-GF; Wed, 03 Mar 2021 14:10:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=E3M/IArGPOkzwDddzOw/cHETJqlDeqQXEflqiDG56ws=; b=pI5TRng7NT/WBHFC8VYq07nSVR
- 1NkymPbXydeZDPZoYFSFE/73ev11gtBHIMnQcmmfA0osLeofIxneGf2YGKpxsZqw/GKQPb/VOsZ07
- 2sWfQv5KVM8sSFnL0Y6BplI5wWDWQiiZ6ES8Wm61pw8v8IOaRx5g38sOqmvUMkqehHHA5rDt5+G2s
- bkWAmkknS6GgXnieihIzXx7a25ppvNRJ5iBujuWiEIzDmL1qqNqlXRdkLm31WRlwZcGzKCUzxkNOv
- m0qwae05e5540zrI0cYwhVjYWSSFoF3YEOW7r6aK6o+752uNY6oJ8/I9GdIqzj0qGQUvVwW/BWMvY
- PBRx6VWA==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=casper.20170209; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=h16X0+DjBZSurBXF2aDZgFPmE0Kramd53m57jnSrguc=; b=vCsVeha8bWSv3J3s0YInsF1cdC
+ 5rF9cDetnPBdPgdbp+fnZyZUhpMmLNSElPhoQfl0nmshNuvEB7HVN+XobyNBzAL3d8WShc99dvKa0
+ TWTq7s5trqOHyv2/WMEDaSxjgN7dDn9meX4decPKg9sbRYTHZ0mYO7g5YTcSSpO2DX6Luau80tqgF
+ 4+xvbbHhsxBUTcI83u8dvhdKz9yKAMNtwsFSQg8k1gGu4UZEDYQaFpt49zGozgqDgUeqs4wF719Kd
+ VjIttObdbzwLX80sUylwFBnlE5e5Ppfp2giGGYp0V/aXgDer0Yktnkm3fii4lUcceXJFS/RkmWI1F
+ +5rfj1EQ==;
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lH3fo-00H3Oo-Lm; Tue, 02 Mar 2021 11:58:47 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D51DC64F99;
- Tue,  2 Mar 2021 11:58:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614686322;
- bh=t8QnT/aIpcXuRhRM9tNQFdbNjsC4v3IZvlSbKSH24fU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SlU3RyFeA4tgvBAlS6VZWaSH28VUjrDuIq6cE2MStPM/O2ftQU0UccJM+cEbeVO/Q
- +Z4rxVJLqed2s23jM0KvXihVWX74oaunwar4hmo6Wjww06I+hxTxXQFmBtMFcM45TL
- 4n6yPXsURd+yVXAC1geFydovwt+Jw+Nh1Mc8Ez5THTbfzo4fhb5MXTtX85N4yssiFu
- Zygx9LKUqHJjdE9JwuVnWdJkV9hxzZffHt+5Ang8b90df2kqk+xj/0MHBtHVprMQ/7
- 67fRic8CEEoN3xvOz4PwZ6bKrxR2N6is6cMQlrs3jbmRdM/cHcK3oKEH3GON4vG7DY
- yU+6iCWRTlLvg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Sasha Levin <sashal@kernel.org>,
- linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 05/21] mmc: mediatek: fix race condition between
- msdc_request_timeout and irq
-Date: Tue,  2 Mar 2021 06:58:19 -0500
-Message-Id: <20210302115835.63269-5-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210302115835.63269-1-sashal@kernel.org>
-References: <20210302115835.63269-1-sashal@kernel.org>
-MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+ id 1lHDtn-000Yfw-2f; Tue, 02 Mar 2021 22:53:53 +0000
+IronPort-SDR: Ku/2tvU1mziBv/wFkxKsgeyj/GnEr3N9oLa1lndvAmr0EEqwJjrsXHYomQUd5DGHLWsP4EHQhR
+ 5g9cymtHs4jxw0FXbP3f5FfaUbD4NMBpkh9V0ImMri709x4iRU/pFxVV47LjB5NhNDVMyvPi/q
+ rlce33zDqqKsEOSIt0r9swpNN/Ibb6Tb3llk8fB19RrxYdbBphEG1h4CiYqq4eSvd42bYgnjTB
+ J32ooCMzStc4xNzZjSyVoahbpVpIvOsr2PgiTeEgQJDiUBeyTYvthm5+xbIxlev28bKLbMFvmj
+ 7eA=
+X-IronPort-AV: E=Sophos;i="5.81,218,1610438400"; d="scan'208";a="29681797"
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+ by labrats.qualcomm.com with ESMTP; 02 Mar 2021 14:52:39 -0800
+X-QCInternal: smtphost
+Received: from stor-presley.qualcomm.com ([192.168.140.85])
+ by ironmsg04-sd.qualcomm.com with ESMTP; 02 Mar 2021 14:52:39 -0800
+Received: by stor-presley.qualcomm.com (Postfix, from userid 92687)
+ id 0A2AF21A50; Tue,  2 Mar 2021 14:52:39 -0800 (PST)
+From: Asutosh Das <asutoshd@codeaurora.org>
+To: cang@codeaurora.org, martin.petersen@oracle.com, adrian.hunter@intel.com,
+ linux-scsi@vger.kernel.org
+Cc: Asutosh Das <asutoshd@codeaurora.org>, linux-arm-msm@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v10 0/2] Enable power management for ufs wlun 
+Date: Tue,  2 Mar 2021 14:52:33 -0800
+Message-Id: <cover.1614725302.git.asutoshd@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210302_115847_973464_3662FBBB 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20210302_225353_109335_6ECA4592 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,89 +86,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chaotian Jing <chaotian.jing@mediatek.com>
+This patch attempts to fix a deadlock in ufs while sending SSU.
+Recently, blk_queue_enter() added a check to not process requests if the
+queue is suspended. That leads to a resume of the associated device which
+is suspended. In ufs, that device is ufs device wlun and it's parent is
+ufs_hba. This resume tries to resume ufs device wlun which in turn tries
+to resume ufs_hba, which is already in the process of suspending, thus
+causing a deadlock.
 
-[ Upstream commit 0354ca6edd464a2cf332f390581977b8699ed081 ]
+This patch takes care of:
+* Suspending the ufs device lun only after all other luns are suspended
+* Sending SSU during ufs device wlun suspend
+* Clearing uac for rpmb and ufs device wlun
+* Not sending commands to the device during host suspend
 
-when get request SW timeout, if CMD/DAT xfer done irq coming right now,
-then there is race between the msdc_request_timeout work and irq handler,
-and the host->cmd and host->data may set to NULL in irq handler. also,
-current flow ensure that only one path can go to msdc_request_done(), so
-no need check the return value of cancel_delayed_work().
+v9 -> v10:
+- Addressed Adrian's comments
+  * Moved suspend/resume vops to __ufshcd_wl_[suspend/resume]()
+  * Added correct resume in ufs_bsg
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-Link: https://lore.kernel.org/r/20201218071611.12276-1-chaotian.jing@mediatek.com
-Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/mmc/host/mtk-sd.c | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
+v8 -> v9:
+- Addressed Adrian's comments
+  * Moved link transition to __ufshcd_wl_[suspend/resume]()
+  * Fixed the other minor comments
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 9ecf86ba4bb0..967e47770af6 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -928,13 +928,13 @@ static void msdc_track_cmd_data(struct msdc_host *host,
- static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
- {
- 	unsigned long flags;
--	bool ret;
- 
--	ret = cancel_delayed_work(&host->req_timeout);
--	if (!ret) {
--		/* delay work already running */
--		return;
--	}
-+	/*
-+	 * No need check the return value of cancel_delayed_work, as only ONE
-+	 * path will go here!
-+	 */
-+	cancel_delayed_work(&host->req_timeout);
-+
- 	spin_lock_irqsave(&host->lock, flags);
- 	host->mrq = NULL;
- 	spin_unlock_irqrestore(&host->lock, flags);
-@@ -952,7 +952,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- 	bool done = false;
- 	bool sbc_error;
- 	unsigned long flags;
--	u32 *rsp = cmd->resp;
-+	u32 *rsp;
- 
- 	if (mrq->sbc && cmd == mrq->cmd &&
- 	    (events & (MSDC_INT_ACMDRDY | MSDC_INT_ACMDCRCERR
-@@ -973,6 +973,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- 
- 	if (done)
- 		return true;
-+	rsp = cmd->resp;
- 
- 	sdr_clr_bits(host->base + MSDC_INTEN, cmd_ints_mask);
- 
-@@ -1154,7 +1155,7 @@ static void msdc_data_xfer_next(struct msdc_host *host,
- static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
- 				struct mmc_request *mrq, struct mmc_data *data)
- {
--	struct mmc_command *stop = data->stop;
-+	struct mmc_command *stop;
- 	unsigned long flags;
- 	bool done;
- 	unsigned int check_data = events &
-@@ -1170,6 +1171,7 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
- 
- 	if (done)
- 		return true;
-+	stop = data->stop;
- 
- 	if (check_data || (stop && stop->error)) {
- 		dev_dbg(host->dev, "DMA status: 0x%8X\n",
+v7 -> v8:
+- Addressed Adrian's comments
+  * Removed separate autosuspend delay for ufs-device lun
+  * Fixed the ee handler getting scheduled during pm
+  * Always runtime resume in suspend_prepare()
+  * Added CONFIG_PM_SLEEP where needed
+  
+v6 -> v7:
+  * Resume the ufs device before shutting it down
+
+v5 -> v6:
+- Addressed Adrian's comments
+  * Added complete() cb
+  * Added suspend_prepare() and complete() to all drivers
+  * Moved suspend_prepare() and complete() to ufshcd
+  * .poweroff() uses ufhcd_wl_poweroff()
+  * Removed several forward declarations
+  * Moved scsi_register_driver() to ufshcd_core_init()
+
+v4 -> v5:
+- Addressed Adrian's comments
+  * Used the rpmb driver contributed by Adrian
+  * Runtime-resume the ufs device during suspend to honor spm-lvl
+  * Unregister the scsi_driver in ufshcd_remove()
+  * Currently shutdown() puts the ufs device to power-down mode
+    so, just removed ufshcd_pci_poweroff()
+  * Quiesce the scsi device during shutdown instead of remove
+
+v3 RFC -> v4:
+- Addressed Bart's comments
+  * Except that I didn't get any checkpatch failures
+- Addressed Avri's comments
+- Addressed Adrian's comments
+  * Added a check for deepsleep power mode
+  * Removed a couple of forward declarations
+  * Didn't separate the scsi drivers because in rpmb case it just sends uac
+    in resume and it seemed pretty neat to me.
+- Added sysfs changes to resume the devices before accessing
+
+Asutosh Das (2):
+  scsi: ufs: Enable power management for wlun
+  ufs: sysfs: Resume the proper scsi device
+
+ drivers/scsi/ufs/cdns-pltfrm.c     |   2 +
+ drivers/scsi/ufs/tc-dwc-g210-pci.c |   2 +
+ drivers/scsi/ufs/ufs-exynos.c      |   2 +
+ drivers/scsi/ufs/ufs-hisi.c        |   2 +
+ drivers/scsi/ufs/ufs-mediatek.c    |   2 +
+ drivers/scsi/ufs/ufs-qcom.c        |   2 +
+ drivers/scsi/ufs/ufs-sysfs.c       |  30 +-
+ drivers/scsi/ufs/ufs_bsg.c         |   6 +-
+ drivers/scsi/ufs/ufshcd-pci.c      |  32 +-
+ drivers/scsi/ufs/ufshcd.c          | 583 +++++++++++++++++++++++++++----------
+ drivers/scsi/ufs/ufshcd.h          |   7 +
+ include/trace/events/ufs.h         |  20 ++
+ 12 files changed, 495 insertions(+), 195 deletions(-)
+
 -- 
-2.30.1
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
 
 
 _______________________________________________
