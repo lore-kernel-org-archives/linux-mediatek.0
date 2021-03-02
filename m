@@ -2,71 +2,84 @@ Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BF36C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F36E9C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:16:34 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55C8564EE6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:14:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55C8564EE6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8465364ED7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:16:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8465364ED7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wvOAfaXyDUucdqJlihy6qNpJwbs6VRND4Y1iHQ+pcsY=; b=j8+QZH3kWmYo5iwNgkkaNQ0/11
-	BEhRIM/YXKUEQFgmuI70HuULz5QkqZqQNCNLxlpDX6wjRj5K9pqG0uXnJqexWaTx78xjR0Bzt44tZ
-	NN/mPJbot3gB5nugLL5mBAl/9EmAV4GxlRy2ZHGIyuWca3/49q2VC9f8QSXwNXAsi3Q5H47adGK8d
-	BPK0uDGygIpfTegWVnkvXPd6z5o5Ck7gTbBKqajfNJ4NXLohkfPn9mOx5wVr8Q3j6csHEx9SJ6IR/
-	vWYkPsNT1QD3/Z9gtk9EneFaI77ocd9WOIiJ+JrnO8obbN4Puuc47836J3F77xgYy7kz3vG56sv5p
-	rckxqe2g==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=M9Imio5eEGja7+TOcOXBYb87N98/ctaGTP6F0P+vPyo=; b=SDjxfIWYK1A4LHI6J/zG7JwfE
+	f0CQMGMgAn/a6w4Jc+Q6XHH8x3dDg1kAHdM7h1/iG5eYETIIY3XOtVfYYMAIKBcFrFMm8zmK8oJUp
+	C53OTXJ0MEQv8Jlro1f24K/xIdwQUfWl5z7sk5/VypXnYAzlSgJ+SY6mzWvYcaKlYrHrUqX2YZn8k
+	KDXZqD08c1KUoj7WvtpTFgXj4QMg1MvCfGhv7e/Jj12T4h/9X8S6kR/9Zk6HuG/lEJ51zKZEoDvsE
+	ZGmUbKwGBGS7xWqg81iuJRM+csAgMrUknexgM6QOzENrregOU+ujmD8n4jLBeYejMch3AG/KSvxa/
+	Vs11ZX5kg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHV4g-005kcq-IN; Wed, 03 Mar 2021 17:14:14 +0000
+	id 1lHV6h-005l8L-Fj; Wed, 03 Mar 2021 17:16:19 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHStP-005Ezf-As; Wed, 03 Mar 2021 14:54:28 +0000
+ id 1lHStV-005F1S-Da; Wed, 03 Mar 2021 14:54:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=E/VBV9B29/nC2d2O1RAQAC3lst7yYbwsDT3vsorERWE=; b=TG5K4eKuQjW0e/MaT1QxojC9Qs
- AoMNtqeRyh/fFt6SO0LCEBVl7fsMmq0r/M7xpsBYHSmtVEvW65+COECAjVZkb/QAb/rAv08UVrJ4y
- IUpQEAj+0sCFaC6WkB1BUjhK3wdG7AJlwHF0LAbezeOGmDVicPhhKn+p2UAVtDbWy/zdwhctBR0kx
- IG/P58Vj9JAPWML6vtpv8sZ21UPon/rSzATP7NyWxRcB5xFkxihYeIQdUtx+7BKM0xiEcgYJdsCYA
- vPf81P8ILruwpR1H5ZOK3tUW+wtbkK7MIchdqyl/pkle45Smo4hzZmpRosXm5UibE/cmCvRQ9oOJy
- totscaCA==;
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=xNemoV4TOaoZy3h7Va+HlVaDOsZnxfmFQRH1O3/7NAQ=; b=SAOpj9HqLBz0g2GlCliHbzkBIo
+ 54LzggV+9FrNAnKFdKXtXifxw/vTCm5loVGRHrBjHKImrK+aAhkudB6BBh6j7OHUTY2+IYA8DEHQ0
+ 7oSQlKUjfGnWgQfChAiCGZH0HyBVaQ+coIhAAfdev0o5xt2ATghBVgMMhKdKP3KamT19TmrvGiQAZ
+ pGhCZ8wUxr1A9wP/TWuZdK4Z477KgJu3zXJyZi5Ct84LdiX+xcn4TaYt/KvdrHwtLdpmXWK+mnWkC
+ CER6EAKPJsFpoKfwZsJrFPxL8T8JtPvE1FMop1DEGVq0cqUtJEAvIYeZ/RrozEERNvfliJy5QbtHI
+ EmvQgcPA==;
+Received: from mail.kernel.org ([198.145.29.99])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHNXA-001wxB-I8; Wed, 03 Mar 2021 09:11:09 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 9DD621F45983
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: matthias.bgg@gmail.com, drinkcat@chromium.org, hsinyi@chromium.org,
- weiyi.lu@mediatek.com, Collabora Kernel ML <kernel@collabora.com>,
- kernel test robot <lkp@intel.com>,
- Dan Carpenter <dan.carpenter@oracle.com>,
+ id 1lH3ea-00H3Ex-PE; Tue, 02 Mar 2021 11:57:31 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8FD2B64F67;
+ Tue,  2 Mar 2021 11:57:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614686244;
+ bh=CJV9PpAHviZMj39pAEuKP1GuYA+C66vTtIS8NgAL4GM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=LeLjfzf/Fjufw+gnUsMFywDYTRC4AHVl9SXWU2UBPjnO62n42anx8Ij27pHTkUmjm
+ 6Hk+Rmmu8FwBM60jXt+XaW7kB71U/1qiKBYuiUkkFnOqz9cl1RdQevUEp6rX+dOWlJ
+ CBnidYi/4i7ZjDUn2+F0pOVN0DqJl+PhER3NdnWwxK6Vr8O3l5/PCm7QV9mDrR8ttG
+ 9fgvlLRrASMKna29zFqLczSMYM26e2KPZ037tO9jQLkTLcLI6VIscIF3sGlnN6Zldu
+ 8tLo30L2scYRD2rj+ousSkDa8xz1WVdzc6sZdhKmAmagqU5JsfJUJl2aOPel3gHO7s
+ bdcLuvyg1pF7g==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] soc: mediatek: pm-domains: Fix missing error code in
- scpsys_add_subdomain()
-Date: Wed,  3 Mar 2021 10:10:54 +0100
-Message-Id: <20210303091054.796975-1-enric.balletbo@collabora.com>
+Subject: [PATCH AUTOSEL 5.10 30/47] PCI: mediatek: Add missing of_node_put()
+ to fix reference leak
+Date: Tue,  2 Mar 2021 06:56:29 -0500
+Message-Id: <20210302115646.62291-30-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.1
+In-Reply-To: <20210302115646.62291-1-sashal@kernel.org>
+References: <20210302115646.62291-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210303_091109_060734_786CEA7D 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210302_115731_429747_AD2A0322 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +91,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adding one power domain in scpsys_add_subdomain is missing to assign an
-error code when it fails. Fix that assigning an error code to 'ret',
-this also fixes the follwowing smatch warning.
-
-  drivers/soc/mediatek/mtk-pm-domains.c:492 scpsys_add_subdomain() warn: missing error code 'ret'
-
-Fixes: dd65030295e2 ("soc: mediatek: pm-domains: Don't print an error if child domain is deferred")
-Reported-by: kernel test robot <lkp@intel.com>
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-
- drivers/soc/mediatek/mtk-pm-domains.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index 694d6ea6de1d..0af00efa0ef8 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.c
-+++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -491,8 +491,9 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
- 
- 		child_pd = scpsys_add_one_domain(scpsys, child);
- 		if (IS_ERR(child_pd)) {
--			dev_err_probe(scpsys->dev, PTR_ERR(child_pd),
--				      "%pOF: failed to get child domain id\n", child);
-+			ret = PTR_ERR(child_pd);
-+			dev_err_probe(scpsys->dev, ret, "%pOF: failed to get child domain id\n",
-+				      child);
- 			goto err_put_node;
- 		}
- 
--- 
-2.30.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogS3J6eXN6dG9mIFdpbGN6ecWEc2tpIDxrd0BsaW51eC5jb20+CgpbIFVwc3RyZWFtIGNv
+bW1pdCA0MjgxNGM0MzhhYWM3OTc0NmQzMTBmNDEzYTI3ZDViMGI5NTljNWRlIF0KClRoZSBmb3Jf
+ZWFjaF9hdmFpbGFibGVfY2hpbGRfb2Zfbm9kZSBoZWxwZXIgaW50ZXJuYWxseSBtYWtlcyB1c2Ug
+b2YgdGhlCm9mX2dldF9uZXh0X2F2YWlsYWJsZV9jaGlsZCgpIHdoaWNoIHBlcmZvcm1zIGFuIG9m
+X25vZGVfZ2V0KCkgb24gZWFjaAppdGVyYXRpb24gd2hlbiBzZWFyY2hpbmcgZm9yIG5leHQgYXZh
+aWxhYmxlIGNoaWxkIG5vZGUuCgpTaG91bGQgYW4gYXZhaWxhYmxlIGNoaWxkIG5vZGUgYmUgZm91
+bmQsIHRoZW4gaXQgd291bGQgcmV0dXJuIGEgZGV2aWNlCm5vZGUgcG9pbnRlciB3aXRoIHJlZmVy
+ZW5jZSBjb3VudCBpbmNyZW1lbnRlZCwgdGh1cyBlYXJseSByZXR1cm4gZnJvbQp0aGUgbWlkZGxl
+IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIGV4cGxpY2l0IG9mX25vZGVfcHV0KCkgdG8gcHJldmVu
+dApyZWZlcmVuY2UgY291bnQgbGVhay4KClRvIHN0b3AgdGhlIHJlZmVyZW5jZSBsZWFrLCBleHBs
+aWNpdGx5IGNhbGwgb2Zfbm9kZV9wdXQoKSBiZWZvcmUKcmV0dXJuaW5nIGFmdGVyIGFuIGVycm9y
+IG9jY3VycmVkLgoKTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDIxMDEyMDE4NDgx
+MC4zMDY4Nzk0LTEta3dAbGludXguY29tClNpZ25lZC1vZmYtYnk6IEtyenlzenRvZiBXaWxjennF
+hHNraSA8a3dAbGludXguY29tPgpTaWduZWQtb2ZmLWJ5OiBMb3JlbnpvIFBpZXJhbGlzaSA8bG9y
+ZW56by5waWVyYWxpc2lAYXJtLmNvbT4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hh
+bEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
+IHwgNyArKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9u
+cygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
+IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMKaW5kZXggY2Y0YzE4ZjBj
+MjVhLi4yMzU0OGI1MTdlNGIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
+ZS1tZWRpYXRlay5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
+CkBAIC0xMDM1LDE0ICsxMDM1LDE0IEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc2V0dXAoc3RydWN0
+IG10a19wY2llICpwY2llKQogCQllcnIgPSBvZl9wY2lfZ2V0X2RldmZuKGNoaWxkKTsKIAkJaWYg
+KGVyciA8IDApIHsKIAkJCWRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIHBhcnNlIGRldmZuOiAlZFxu
+IiwgZXJyKTsKLQkJCXJldHVybiBlcnI7CisJCQlnb3RvIGVycm9yX3B1dF9ub2RlOwogCQl9CiAK
+IAkJc2xvdCA9IFBDSV9TTE9UKGVycik7CiAKIAkJZXJyID0gbXRrX3BjaWVfcGFyc2VfcG9ydChw
+Y2llLCBjaGlsZCwgc2xvdCk7CiAJCWlmIChlcnIpCi0JCQlyZXR1cm4gZXJyOworCQkJZ290byBl
+cnJvcl9wdXRfbm9kZTsKIAl9CiAKIAllcnIgPSBtdGtfcGNpZV9zdWJzeXNfcG93ZXJ1cChwY2ll
+KTsKQEAgLTEwNTgsNiArMTA1OCw5IEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc2V0dXAoc3RydWN0
+IG10a19wY2llICpwY2llKQogCQltdGtfcGNpZV9zdWJzeXNfcG93ZXJkb3duKHBjaWUpOwogCiAJ
+cmV0dXJuIDA7CitlcnJvcl9wdXRfbm9kZToKKwlvZl9ub2RlX3B1dChjaGlsZCk7CisJcmV0dXJu
+IGVycjsKIH0KIAogc3RhdGljIGludCBtdGtfcGNpZV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
+aWNlICpwZGV2KQotLSAKMi4zMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1tZWRpYXRlawo=
