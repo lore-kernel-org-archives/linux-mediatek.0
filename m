@@ -2,87 +2,84 @@ Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3293FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 18:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D842DC4332B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 19:11:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE84E64ECF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 18:42:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE84E64ECF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5B79864E90
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 19:11:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B79864E90
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IS/NY7swsefsQt206/wM20pjcii+2hfdyI4S75cN3J8=; b=DnbMRBUn8/DZoPVozyfSsAsc/p
-	2ugpVTtpND57K/ZVYarX5KwB7d09HcaXzMCvGJQ2/wQggf8Zx3S/KgEez0bkWjj+CC9BWAabdEj9/
-	/LUcQg2FCg/CPo992xmkOInJqnNwNOoYhGKc+ZnTT61fSHhPvW5+on5RcTZq/y+u0ZEgb2vjac9Bw
-	SpNJuGufoe/Vhkrh1aJ+bfLVnsSihge8qTtbgeNKMGv2RD+QpD1GuKUksGxyRNQ1OTFp7upNhox3B
-	CvTogL4odR7uGMxtxVHVcU+j2i4+FtSZD9XC908epLebFPK+3/t+iNl6uWLTy83qZ666D2KRKlXrx
-	eAQ+Ql/Q==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=AMm67EniBd1WtqkbMJf2rE/j3zhco39G7Q+ebRDMUjE=; b=naGDCCJMys2wvbt/l0c0Bwi/e
+	ne4z6fwCRvP3eELi6heOjtbNCi64XvtzkA/fPEAESutxhZABZr+IkVKEUqwMX4ftoBHvVccyoonDG
+	3RoQKJ3h8D3uvWuhE0fzVuhGTqLSPRnfDEtnbjvs9lgszh8WTfLPQJJZekzHYzOXSL9LmJ+VnrtIj
+	6+GFwf8YFOs7Z6D5MGvf/hvdu6oE5OCyEWnqvecZX0QKTC3T7c2RpztWsg8jP7GD84udPXL9Q6g26
+	FTZ3FvQoPbA3L3uxibuA3iRq+9D5EN+iWx02FMbZDAtQPjnjQTw/vEKlp5Uz0aseKtBkfIhaqp55T
+	107/uZ4hg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHWRr-00649u-E4; Wed, 03 Mar 2021 18:42:15 +0000
+	id 1lHWtp-0069hq-2u; Wed, 03 Mar 2021 19:11:09 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHT1C-005HGq-QL; Wed, 03 Mar 2021 15:02:31 +0000
+ id 1lHT2Y-005Hl6-7t; Wed, 03 Mar 2021 15:03:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=aS6Eu0HxJ5IATyvIgZsVEr8K1NWwHLbecPEJtee3MHg=; b=UGFijQtVOTWiVdvlvGvu73BXpH
- QnfLptYkq0/0JzXw/6MKQlWQ+yUQKmNDSiW5dbBFcP6dO0jo/2F4+mr50IVT8UJF5Bgg6ydH+u4M2
- SfDsBrZSOozETaFaWSoy+wRvDJQx75TW863hFDwSQXYZPMXh+Xdkwp5WDF+oWMuId5tS9ZFTzfWMP
- pPbH+tDob0sU8zZtIwjZgIJ8to7rwc+/zvUK4ja7DylHllP+M6bJTAlAr0hF8kmYveZ5QVjh7xTAj
- sJt3pK1LlQSB0Pdy5Pf8RvdAz0guFpD0fqmdwQoM1GhaV84sbUA3smc944cdcnem8JuIfaIxAO5/3
- ttkRmptg==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=1Xq7Xb2RviRkoVnCoHUsfwJvRjfSiTwEJYadS0RA2/Q=; b=oklTpqUr5jzwY7fezWY0uj82lf
+ vLrqBBSTEojfenAgd5Z42JGNWtJ+4d5jg1LnED7ViOyWcqYzHIHSVVPh46XXiQbu10zv0olEyZ/oX
+ Vx2V8woSgYKdtraNEjixzX8+dqRkGBmfs2eYB4oEV6SErs9Rn67LICwwP/sO+Brv5w+6JIYRsfoQz
+ jLobU6iv+5ulkGmPgMwzCj35B1HAzOteexFrkFbyX0vBxInzF/mv1W6yGJTQHMbLR63r2OkAWS0mg
+ T5x4JwbZ9olBe7NQKv5obTdMrHks6FaLeXJq/RfsJpmTbyj13MXkBsxyd7DvKAvDD53NRYEHRGjK7
+ bQ5n7pIA==;
+Received: from mail.kernel.org ([198.145.29.99])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHO09-0022I5-3z; Wed, 03 Mar 2021 09:41:06 +0000
-X-UUID: abcfef1e071245c08894abe9eb0c20cf-20210303
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=aS6Eu0HxJ5IATyvIgZsVEr8K1NWwHLbecPEJtee3MHg=; 
- b=H7qxjL6hxUvWUMObuWIeid9n3EPivyqA7qZ59YpzRTUEZeyvvhFaXbTJBvM5X4SAANFJk8ScXhHzfgIthm4hvWBeLvhi/Al+0TfWIRlPYl0uqO1c1VRSYAjFzW8wrlWFgo3/6H0/7ibHJ70VQkFHB25QRVMkkjCQ7bYP4JujiS0=;
-X-UUID: abcfef1e071245c08894abe9eb0c20cf-20210303
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <vic.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1382043565; Wed, 03 Mar 2021 01:40:54 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Mar 2021 01:40:52 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Mar 2021 17:40:48 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 3 Mar 2021 17:40:48 +0800
-From: Vic Wu <vic.wu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-CC: Ryder Lee <ryder.lee@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, Vic Wu <vic.wu@mediatek.com>
-Subject: [PATCH] crypto: mediatek - remove obsolete documentation
-Date: Wed, 3 Mar 2021 17:39:50 +0800
-Message-ID: <20210303093950.20309-1-vic.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lH3gl-00H3Xv-La; Tue, 02 Mar 2021 11:59:48 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 937C564FD2;
+ Tue,  2 Mar 2021 11:59:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614686379;
+ bh=Z5V6QxlYbSnVGsT/Zskji+exXNBQu9FvWIp6KdSxNg4=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=WN+TQSR8iCEBG9jWle9TwfWfHnKAk3Rcvyttxyez9JSD/msMSmyw++k+Pd0DGnA7I
+ w61hK4pvGc2HAR5oE3K55s+w+J/2uJKfb9aAx/+7/aT9e99xRjFWVI43+zz9z8EDhW
+ iMY0uodzNcCwJD4OL+i/rb33AmiehAL42H+28gsMDb2z/fxlizkQLcAFalayYE/Tui
+ Cftnet43GPQZrVV7i7ZHvsshDOM+vgRgcBQPnpQdfLuOT4jVWgnVc8aIoSmbCr+8mg
+ khA3htVcmxmKkkCOSVrMW+tRms22zPL4nAy8bnBZ0akHlnnwEhf2w08aAT9sde+ro9
+ gyvqdXuPDb0LA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Sasha Levin <sashal@kernel.org>,
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 4.4 2/8] mmc: mediatek: fix race condition between
+ msdc_request_timeout and irq
+Date: Tue,  2 Mar 2021 06:59:29 -0500
+Message-Id: <20210302115935.63777-2-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.1
+In-Reply-To: <20210302115935.63777-1-sashal@kernel.org>
+References: <20210302115935.63777-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-MTK: N
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210303_094106_277525_DC014B27 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20210302_115948_946302_B220CFAC 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,74 +96,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The crypto mediatek driver has been replaced by the inside-secure driver now.
-Remove DT bindings documentation and update crypto engine nodes to the mt7623.dtsi files.
+From: Chaotian Jing <chaotian.jing@mediatek.com>
 
-Signed-off-by: Vic Wu <vic.wu@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+[ Upstream commit 0354ca6edd464a2cf332f390581977b8699ed081 ]
+
+when get request SW timeout, if CMD/DAT xfer done irq coming right now,
+then there is race between the msdc_request_timeout work and irq handler,
+and the host->cmd and host->data may set to NULL in irq handler. also,
+current flow ensure that only one path can go to msdc_request_done(), so
+no need check the return value of cancel_delayed_work().
+
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+Link: https://lore.kernel.org/r/20201218071611.12276-1-chaotian.jing@mediatek.com
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- Documentation/devicetree/bindings/crypto/mediatek-crypto.txt       | 25 -------------------
- arch/arm/boot/dts/mt7623.dtsi                 |  8 +++---
- 2 files changed, 3 insertions(+), 30 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
+ drivers/mmc/host/mtk-sd.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt b/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
-deleted file mode 100644
-index 450da3661cad..000000000000
---- a/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
-+++ /dev/null
-@@ -1,25 +0,0 @@
--MediaTek cryptographic accelerators
--
--Required properties:
--- compatible: Should be "mediatek,eip97-crypto"
--- reg: Address and length of the register set for the device
--- interrupts: Should contain the five crypto engines interrupts in numeric
--	order. These are global system and four descriptor rings.
--- clocks: the clock used by the core
--- clock-names: Must contain "cryp".
--- power-domains: Must contain a reference to the PM domain.
--
--
--Example:
--	crypto: crypto@1b240000 {
--		compatible = "mediatek,eip97-crypto";
--		reg = <0 0x1b240000 0 0x20000>;
--		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&ethsys CLK_ETHSYS_CRYPTO>;
--		clock-names = "cryp";
--		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
--	};
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index aea6809500d7..25e3f3b04123 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -949,16 +949,14 @@
- 	};
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 5ef25463494f..1770c8df9d1b 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -720,13 +720,13 @@ static void msdc_track_cmd_data(struct msdc_host *host,
+ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+ {
+ 	unsigned long flags;
+-	bool ret;
  
- 	crypto: crypto@1b240000 {
--		compatible = "mediatek,eip97-crypto";
-+		compatible = "inside-secure,safexcel-eip97";
- 		reg = <0 0x1b240000 0 0x20000>;
- 		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>,
- 			     <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>,
- 			     <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>,
--			     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
-+			     <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-names = "ring0", "ring1", "ring2", "ring3";
- 		clocks = <&ethsys CLK_ETHSYS_CRYPTO>;
--		clock-names = "cryp";
--		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
- 		status = "disabled";
- 	};
+-	ret = cancel_delayed_work(&host->req_timeout);
+-	if (!ret) {
+-		/* delay work already running */
+-		return;
+-	}
++	/*
++	 * No need check the return value of cancel_delayed_work, as only ONE
++	 * path will go here!
++	 */
++	cancel_delayed_work(&host->req_timeout);
++
+ 	spin_lock_irqsave(&host->lock, flags);
+ 	host->mrq = NULL;
+ 	spin_unlock_irqrestore(&host->lock, flags);
+@@ -747,7 +747,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 	bool done = false;
+ 	bool sbc_error;
+ 	unsigned long flags;
+-	u32 *rsp = cmd->resp;
++	u32 *rsp;
  
+ 	if (mrq->sbc && cmd == mrq->cmd &&
+ 	    (events & (MSDC_INT_ACMDRDY | MSDC_INT_ACMDCRCERR
+@@ -768,6 +768,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 
+ 	if (done)
+ 		return true;
++	rsp = cmd->resp;
+ 
+ 	sdr_clr_bits(host->base + MSDC_INTEN, cmd_ints_mask);
+ 
+@@ -942,7 +943,7 @@ static void msdc_data_xfer_next(struct msdc_host *host,
+ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 				struct mmc_request *mrq, struct mmc_data *data)
+ {
+-	struct mmc_command *stop = data->stop;
++	struct mmc_command *stop;
+ 	unsigned long flags;
+ 	bool done;
+ 	unsigned int check_data = events &
+@@ -958,6 +959,7 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 
+ 	if (done)
+ 		return true;
++	stop = data->stop;
+ 
+ 	if (check_data || (stop && stop->error)) {
+ 		dev_dbg(host->dev, "DMA status: 0x%8X\n",
 -- 
-2.18.0
+2.30.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
