@@ -2,103 +2,84 @@ Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73EEAC433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B8A0C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 18:19:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0152B64EE9
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:55:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0152B64EE9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id C363864EF3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 18:19:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C363864EF3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A4nxIk/hnUi75O+WZwpFZimjBWU/rTJ8xpYRDtkg7Wg=; b=nPOQiZQyPcxzAB23/14O3lfRW
-	iKW05/AM6vBYXWVZLPnHVkz4suxg3h7fHDCPAL7CBkuUrAztXBD9mCkZFcYy1fb52QGJXuEVGsLo8
-	I2YQmah2iLzlH01EoZVpSyAcSEwYIwNubovZbr+Km9a2yMG7AkWUJ+7l4DCrgiQJay2v3jNCj6xZq
-	JwrWbDdo4IbvrnA2P6iIzEUOiofLaTAYpwgVbmua+nSwTne2nGB83ab7+WXyc2bxq0hmmqcq5Scn3
-	yJ2PPDHk+Lafms/eJv+OKW2dt8om3p/BaKY1ZTa0DeTl8DZ/tcgrmo/bsxt6JNMAFqTu+pg/u8o8V
-	mWxljeFbQ==;
+	 bh=A87ZoerXMESLvpwhBSUg5XCKyU2w1xEemHacF1kXE1s=; b=R6/OFz1IH7Lza+ZemSj2T+BvE
+	zWOJU9aBvZUB/Fp1c4fzNPLNxVdiBeKGzetPhEF6cu442tuXj3eFkixK1ko8do7dzC8Erlv8nt9eA
+	65t0Xc4enAUCwXq9RBNgVgoFH0NLiyMM1KMxIWmkEMSpVDZ1KDA1pK5kZhsQwe2If4TE4IMipgYF7
+	4f4GXDOjsoX5qyp9wNF47x8yFqBoctOmWxzXe1Vikh+kalinFCjNT+AZnq4IKPAdSjQqSiOCeSPaf
+	UPllPchQjasIAsJIC8liBW+q8a2J9YHuPnSvqpiKZR+k5x3K+h8AZgO49E6K0C6+GIQold++06sYB
+	lYwobsXvQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHViF-005tqc-MK; Wed, 03 Mar 2021 17:55:07 +0000
+	id 1lHW5s-005zOv-Sm; Wed, 03 Mar 2021 18:19:33 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHSwx-005FxW-Lc; Wed, 03 Mar 2021 14:58:08 +0000
+ id 1lHSzs-005Gpl-BR; Wed, 03 Mar 2021 15:01:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=uafthGO0eBeU1ZJtN8FFliWS6JCZkjYq6BkJ5HY1omI=; b=WZBYssyF3e3Mk2rNC5Lffdxbh4
- yXpgOdvScnMho9EheUwNPViTkukT+UEJVScQ98nuGmW48l1YB95P3gLVvNzhOCDTzZ06KBHEH8N11
- B3V3WA7g1VJQToWwNe/zZw0S5bLdqBjH59vTn9ushae4rB8MAbpBOo0uAUKP3Zx2hNJGL2jU5APlH
- c2rQdbtXEMXdS3VWXSau5UJeDc8xr//dbRcxHwRkw+G9OEmMv4wFqfLN2JOm25+b9pcJ2QkgFlWRQ
- GrMf9/25j7yDeOa808B0H6FdQfX03ktPVDhZ5vLq/zFqs3F3TWLlrGXB1jHAqKjGGQFrrc7g9DS4I
- dZhc0nBQ==;
-Received: from mga17.intel.com ([192.55.52.151])
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=XezwQx2F/92HywSiX1349dDZgvNEBRZ9H/v1e8WhbU0=; b=YkUlpZI/yWkkqz26Tu0HN7rhB+
+ aQv+aiuZfNglcyixThmad7dB6tJGOoCTrIrLLIz5YvYBDhpp1KP7gcM1jFAWdFN36BocZUSZFL1VA
+ yFYWymOLMuECAX7WJMKyBkrU+gPXYmn+eHyUmqNywA3xISFDk6QrONBmRpeAyxwXEGWv4GsMOJe2s
+ vDLjPrkee7XuDn06bzWMFKCMq1FxsfTgynk18qrSBCddymCEx1Cqi0NLtXLyKxQChKRFWjM3Lf4Sm
+ LhyxdYlOn57N6xkYvlzTNEPRpqg4nckDdtkfazNYQ6hAd+uPpriiX1ziSdxWZg4ODHh654h7z2mN4
+ dmPxL+xg==;
+Received: from mail.kernel.org ([198.145.29.99])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lH5oB-00HFNc-5p; Tue, 02 Mar 2021 14:15:39 +0000
-IronPort-SDR: b79136Hwb3FZoem3qkW3K50wa4awRJ8TR5PaNaj1tU1Vchr3nrpie513wsK8yE2av4ZelmsDlr
- TtPZakZWXtIw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9910"; a="166702921"
-X-IronPort-AV: E=Sophos;i="5.81,216,1610438400"; d="scan'208";a="166702921"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2021 06:14:19 -0800
-IronPort-SDR: XsTTl1bvinkrhr7HkvJW8Mx35RMJU4Z9LNHPZV1ptjWnpLJg2E517DX3NDo03/LbzpRIqg94RZ
- tEFORZFpH4ZA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,216,1610438400"; d="scan'208";a="399037378"
-Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.76])
- ([10.237.72.76])
- by fmsmga008.fm.intel.com with ESMTP; 02 Mar 2021 06:14:10 -0800
-Subject: Re: [PATCH v9 1/2] scsi: ufs: Enable power management for wlun
-To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
- martin.petersen@oracle.com, linux-scsi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
- <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kiwoong Kim <kwmad.kim@samsung.com>, Bean Huo <beanhuo@micron.com>,
- Wei Yongjun <weiyongjun1@huawei.com>,
- Dan Carpenter <dan.carpenter@oracle.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Satya Tangirala <satyat@google.com>, open list
- <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>
-References: <cover.1614655058.git.asutoshd@codeaurora.org>
- <b291bb65fadc9c828cbcb4ffb81cfa1ee47b82be.1614655058.git.asutoshd@codeaurora.org>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-Message-ID: <d17e52e0-cb50-50ee-accb-458b318014e5@intel.com>
-Date: Tue, 2 Mar 2021 16:14:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ id 1lH3gG-00H3Su-KD; Tue, 02 Mar 2021 11:59:16 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7317E64FB9;
+ Tue,  2 Mar 2021 11:59:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614686348;
+ bh=vplPV7EZZYdJ86Fwz8KtVDuVluunvX1Tp2mxcsWRerk=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=F3wCFPuyNXMDLSVs15nmFkOrmT2bsUhRCD6MjAj/aLcivj3JeYA1cu7IMtBZog0V3
+ WS4fLm+62a0dbShwwpHXZYp5DFzbI5EuXJBSlZUUguk5kP3zCoPKJnaLduRZWoK0Kf
+ /aiMDNHhshYC+ItgZsJVdyxTD+6UEJQdHIj2B6W+yX+h9YvNK6I4rOPRxAImVofpO2
+ 9Qgzzr4b0hJOBntgEDVALfbNNvwpeJko2XTWd+4xu6a4T/t6geWPKqJ1JhasPL5Wcz
+ F5XDXkfVD2sSqmpQsmxwXe8yqYwXtmb0hNCinstDKkg+XSozX8nZRHuOUlNkPxHaUY
+ +GLj3V0YMV0TQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Sasha Levin <sashal@kernel.org>,
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 4.14 03/13] mmc: mediatek: fix race condition between
+ msdc_request_timeout and irq
+Date: Tue,  2 Mar 2021 06:58:53 -0500
+Message-Id: <20210302115903.63458-3-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.1
+In-Reply-To: <20210302115903.63458-1-sashal@kernel.org>
+References: <20210302115903.63458-1-sashal@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <b291bb65fadc9c828cbcb4ffb81cfa1ee47b82be.1614655058.git.asutoshd@codeaurora.org>
-Content-Language: en-US
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210302_141539_778586_1423E50A 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20210302_115916_220131_F5FBC836 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,67 +96,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/03/21 5:21 am, Asutosh Das wrote:
-> During runtime-suspend of ufs host, the scsi devices are
-> already suspended and so are the queues associated with them.
-> But the ufs host sends SSU to wlun during its runtime-suspend.
-> During the process blk_queue_enter checks if the queue is not in
-> suspended state. If so, it waits for the queue to resume, and never
-> comes out of it.
-> The commit
-> (d55d15a33: scsi: block: Do not accept any requests while suspended)
-> adds the check if the queue is in suspended state in blk_queue_enter().
-> 
-> Call trace:
->  __switch_to+0x174/0x2c4
->  __schedule+0x478/0x764
->  schedule+0x9c/0xe0
->  blk_queue_enter+0x158/0x228
->  blk_mq_alloc_request+0x40/0xa4
->  blk_get_request+0x2c/0x70
->  __scsi_execute+0x60/0x1c4
->  ufshcd_set_dev_pwr_mode+0x124/0x1e4
->  ufshcd_suspend+0x208/0x83c
->  ufshcd_runtime_suspend+0x40/0x154
->  ufshcd_pltfrm_runtime_suspend+0x14/0x20
->  pm_generic_runtime_suspend+0x28/0x3c
->  __rpm_callback+0x80/0x2a4
->  rpm_suspend+0x308/0x614
->  rpm_idle+0x158/0x228
->  pm_runtime_work+0x84/0xac
->  process_one_work+0x1f0/0x470
->  worker_thread+0x26c/0x4c8
->  kthread+0x13c/0x320
->  ret_from_fork+0x10/0x18
-> 
-> Fix this by registering ufs device wlun as a scsi driver and
-> registering it for block runtime-pm. Also make this as a
-> supplier for all other luns. That way, this device wlun
-> suspends after all the consumers and resumes after
-> hba resumes.
-> 
-> Co-developed-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
-> ---
+From: Chaotian Jing <chaotian.jing@mediatek.com>
 
-Now we need either to move the suspend/resume vops from
-ufshcd_suspend/resume to __ufshcd_wl_suspend/resume, assuming that
-would work for existing implementations of those callbacks,
-or otherwise create new vops ->wl_suspend() / ->wl_resume(), and
-then split the existing implementations of those callbacks.
+[ Upstream commit 0354ca6edd464a2cf332f390581977b8699ed081 ]
 
-ufs_intel_resume() now needs to be invoked from __ufshcd_wl_resume().
-I am not sure about the others:
+when get request SW timeout, if CMD/DAT xfer done irq coming right now,
+then there is race between the msdc_request_timeout work and irq handler,
+and the host->cmd and host->data may set to NULL in irq handler. also,
+current flow ensure that only one path can go to msdc_request_done(), so
+no need check the return value of cancel_delayed_work().
 
-	exynos_ufs_suspend()
-	exynos_ufs_resume()
-	ufs_hisi_suspend()
-	ufs_hisi_resume()
-	ufs_mtk_suspend()
-	ufs_mtk_resume()
-	ufs_qcom_suspend()
-	ufs_qcom_resume()
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+Link: https://lore.kernel.org/r/20201218071611.12276-1-chaotian.jing@mediatek.com
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/mmc/host/mtk-sd.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 1a5d5c40324b..e51a62cff5ec 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -758,13 +758,13 @@ static void msdc_track_cmd_data(struct msdc_host *host,
+ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+ {
+ 	unsigned long flags;
+-	bool ret;
+ 
+-	ret = cancel_delayed_work(&host->req_timeout);
+-	if (!ret) {
+-		/* delay work already running */
+-		return;
+-	}
++	/*
++	 * No need check the return value of cancel_delayed_work, as only ONE
++	 * path will go here!
++	 */
++	cancel_delayed_work(&host->req_timeout);
++
+ 	spin_lock_irqsave(&host->lock, flags);
+ 	host->mrq = NULL;
+ 	spin_unlock_irqrestore(&host->lock, flags);
+@@ -782,7 +782,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 	bool done = false;
+ 	bool sbc_error;
+ 	unsigned long flags;
+-	u32 *rsp = cmd->resp;
++	u32 *rsp;
+ 
+ 	if (mrq->sbc && cmd == mrq->cmd &&
+ 	    (events & (MSDC_INT_ACMDRDY | MSDC_INT_ACMDCRCERR
+@@ -803,6 +803,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 
+ 	if (done)
+ 		return true;
++	rsp = cmd->resp;
+ 
+ 	sdr_clr_bits(host->base + MSDC_INTEN, cmd_ints_mask);
+ 
+@@ -984,7 +985,7 @@ static void msdc_data_xfer_next(struct msdc_host *host,
+ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 				struct mmc_request *mrq, struct mmc_data *data)
+ {
+-	struct mmc_command *stop = data->stop;
++	struct mmc_command *stop;
+ 	unsigned long flags;
+ 	bool done;
+ 	unsigned int check_data = events &
+@@ -1000,6 +1001,7 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 
+ 	if (done)
+ 		return true;
++	stop = data->stop;
+ 
+ 	if (check_data || (stop && stop->error)) {
+ 		dev_dbg(host->dev, "DMA status: 0x%8X\n",
+-- 
+2.30.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
