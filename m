@@ -2,84 +2,95 @@ Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F36E9C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:16:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7466FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:19:34 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8465364ED7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:16:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8465364ED7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id B016B64EDF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:19:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B016B64EDF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M9Imio5eEGja7+TOcOXBYb87N98/ctaGTP6F0P+vPyo=; b=SDjxfIWYK1A4LHI6J/zG7JwfE
-	f0CQMGMgAn/a6w4Jc+Q6XHH8x3dDg1kAHdM7h1/iG5eYETIIY3XOtVfYYMAIKBcFrFMm8zmK8oJUp
-	C53OTXJ0MEQv8Jlro1f24K/xIdwQUfWl5z7sk5/VypXnYAzlSgJ+SY6mzWvYcaKlYrHrUqX2YZn8k
-	KDXZqD08c1KUoj7WvtpTFgXj4QMg1MvCfGhv7e/Jj12T4h/9X8S6kR/9Zk6HuG/lEJ51zKZEoDvsE
-	ZGmUbKwGBGS7xWqg81iuJRM+csAgMrUknexgM6QOzENrregOU+ujmD8n4jLBeYejMch3AG/KSvxa/
-	Vs11ZX5kg==;
+	 bh=od/i2asIIikAQmL/opM0k0UvtBLpJV+24U4DqUyyMEM=; b=NouTlRxWqJJg3Eq9piCDfIisI
+	JHiZCe9aolkHTYLZy0dLALFvD68jkrUnSwIprgd/lRkXtv865aT4E6PNcxGXXkXLB0ZFacs83sDL8
+	Odg/k3oeLPCtHdlWJWzjZyVlE0xBwdpc7o8yvWqawyV1Rxo5SnMCa6dzr53sNpWiZPatsnVDSijMC
+	P6j0RchH7Ei18jR5M1jmcFYpNsd4+H3q/LyS8Ui+1NAOh+KNaaHYfBAlfDgczKBgytvIiCdPsPQWE
+	hWRF8b8ozphwsEI4uRVsc+bU7HDrwtLAbtYzMWCJyIS1GCr9AZAYq/47mXkNJymTMt1nKL+w8IOD1
+	Fl5dtQ73Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHV6h-005l8L-Fj; Wed, 03 Mar 2021 17:16:19 +0000
+	id 1lHV9Z-005lvv-Fo; Wed, 03 Mar 2021 17:19:17 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHStV-005F1S-Da; Wed, 03 Mar 2021 14:54:35 +0000
+ id 1lHSu2-005FA1-0q
+ for linux-mediatek@desiato.infradead.org; Wed, 03 Mar 2021 14:55:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=xNemoV4TOaoZy3h7Va+HlVaDOsZnxfmFQRH1O3/7NAQ=; b=SAOpj9HqLBz0g2GlCliHbzkBIo
- 54LzggV+9FrNAnKFdKXtXifxw/vTCm5loVGRHrBjHKImrK+aAhkudB6BBh6j7OHUTY2+IYA8DEHQ0
- 7oSQlKUjfGnWgQfChAiCGZH0HyBVaQ+coIhAAfdev0o5xt2ATghBVgMMhKdKP3KamT19TmrvGiQAZ
- pGhCZ8wUxr1A9wP/TWuZdK4Z477KgJu3zXJyZi5Ct84LdiX+xcn4TaYt/KvdrHwtLdpmXWK+mnWkC
- CER6EAKPJsFpoKfwZsJrFPxL8T8JtPvE1FMop1DEGVq0cqUtJEAvIYeZ/RrozEERNvfliJy5QbtHI
- EmvQgcPA==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=casper.20170209; h=Content-Type:Cc:To:Subject:Message-ID:
+ Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=TKcFkhM8Mf5DiRPH37Ng7ifpctLWMXPxIAc63q2YCdc=; b=lXmvQ99HvYaS5wdcteNyeO71ag
+ jONwJ9IVTUx5ZMf0mbWk0gmq/4TN5Osb5j0VddLLBSzyzdPfuzweARC8fo+4UIiCDM+jE+m5BZSnz
+ KIhsqPamPPvGHcPxUEodjC6tyWAI9xORgcTwIgZqr3yEvBa2ijbe8DBYAXZvA5F/50SIQJ8AJiLDT
+ APJB6ICJ9VTOFuMYeyvhz0egzZK5ZCpYoKZ4NhoQOocl7Z9NQw1UGeCTEKG3f9hcKR3cSB8QvM2Py
+ oEhzioYENHM9OURaqmZc8cYWMnC6B1Lwj/wjyYJkNfvdlDd0t0PR4pHjGGM74Jm1AvoLro7qlf66u
+ ilvj0HNQ==;
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lH3ea-00H3Ex-PE; Tue, 02 Mar 2021 11:57:31 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8FD2B64F67;
- Tue,  2 Mar 2021 11:57:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614686244;
- bh=CJV9PpAHviZMj39pAEuKP1GuYA+C66vTtIS8NgAL4GM=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LeLjfzf/Fjufw+gnUsMFywDYTRC4AHVl9SXWU2UBPjnO62n42anx8Ij27pHTkUmjm
- 6Hk+Rmmu8FwBM60jXt+XaW7kB71U/1qiKBYuiUkkFnOqz9cl1RdQevUEp6rX+dOWlJ
- CBnidYi/4i7ZjDUn2+F0pOVN0DqJl+PhER3NdnWwxK6Vr8O3l5/PCm7QV9mDrR8ttG
- 9fgvlLRrASMKna29zFqLczSMYM26e2KPZ037tO9jQLkTLcLI6VIscIF3sGlnN6Zldu
- 8tLo30L2scYRD2rj+ousSkDa8xz1WVdzc6sZdhKmAmagqU5JsfJUJl2aOPel3gHO7s
- bdcLuvyg1pF7g==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 30/47] PCI: mediatek: Add missing of_node_put()
- to fix reference leak
-Date: Tue,  2 Mar 2021 06:56:29 -0500
-Message-Id: <20210302115646.62291-30-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210302115646.62291-1-sashal@kernel.org>
-References: <20210302115646.62291-1-sashal@kernel.org>
+ id 1lH3FY-00H13D-9A
+ for linux-mediatek@lists.infradead.org; Tue, 02 Mar 2021 11:31:37 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id e6so13635198pgk.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 02 Mar 2021 03:31:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=TKcFkhM8Mf5DiRPH37Ng7ifpctLWMXPxIAc63q2YCdc=;
+ b=STh1OiHiN3RIX3HBgcV9cNh+gyrXDrSjs+yTS/x+kts2F/gPdGop3OxANQsWwz1PTv
+ JTnRE9eMpVVbVq9og+Q5gdkjwX+2PuRATcx+sYWgU5KIYCnXmtL52ehxz79ifFORxLgs
+ eYUjOtMlD8m+37T0fPp+NqB1Qcq07p8BTq5gI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TKcFkhM8Mf5DiRPH37Ng7ifpctLWMXPxIAc63q2YCdc=;
+ b=QIizxGXTvKbHFiOlkAVRWaN42N7W+1xnOBP3lMqaZ0mzgG1ai70ED/XoQHUafw8PKh
+ h2zDvV1OC4VA3uvfwEM3N+F2+TUOibsYrJZALJ3i3paUcZ8tg7ku+KPtwS4hyBmHSRtl
+ gcVu2f+UAj+r8d+rarNY3z+Uhz2CqbINAqjmPDtltIshyRMXpuiZ49RbJJhtYP+T3ZMy
+ 6EnSXzP9iaNj21zeoLTbgUHVSNLNnERULPi5yVb2RewUI8+K6xJd6LGJgZ1WBacNRsG9
+ IljTy3823Ssm4F7td+6W/MWET8D3qUBCztKn+e+fu55uOrMoyyRUY4thdF4Dmv/OubSL
+ gEqA==
+X-Gm-Message-State: AOAM532bAsbVaHAUSe70+2PlOEisYqRgVNq09gXQAb1bL6SCmlkp8x+r
+ Tle78mDV4wPg7S8tqQEIVNN+6PQ/cmXqwyT1dgNGXg==
+X-Google-Smtp-Source: ABdhPJwBgRaP7xzFKc8KjHOOHQlUJLofabevE4D9pSBMT3XRudmsTh+IeR6puUqZDyGDZajOd3aOQ/x6HgQHHW5CLqc=
+X-Received: by 2002:a63:515a:: with SMTP id r26mr17916655pgl.257.1614684632012; 
+ Tue, 02 Mar 2021 03:30:32 -0800 (PST)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+References: <1612348525-13364-1-git-send-email-qii.wang@mediatek.com>
+In-Reply-To: <1612348525-13364-1-git-send-email-qii.wang@mediatek.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Tue, 2 Mar 2021 19:30:21 +0800
+Message-ID: <CAATdQgCoLB-iOcxN2ptDmqD69FnyUen5XeRTq=LCCfXmWkBeWw@mail.gmail.com>
+Subject: Re: [PATCH] i2c: mediatek: Get device clock-stretch time via dts
+To: qii.wang@mediatek.com
+Cc: wsa@the-dreams.de, srv_heupstream <srv_heupstream@mediatek.com>,
+ leilk.liu@mediatek.com, open list <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210302_115731_429747_AD2A0322 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20210302_113137_565889_A398DE36 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,44 +102,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogS3J6eXN6dG9mIFdpbGN6ecWEc2tpIDxrd0BsaW51eC5jb20+CgpbIFVwc3RyZWFtIGNv
-bW1pdCA0MjgxNGM0MzhhYWM3OTc0NmQzMTBmNDEzYTI3ZDViMGI5NTljNWRlIF0KClRoZSBmb3Jf
-ZWFjaF9hdmFpbGFibGVfY2hpbGRfb2Zfbm9kZSBoZWxwZXIgaW50ZXJuYWxseSBtYWtlcyB1c2Ug
-b2YgdGhlCm9mX2dldF9uZXh0X2F2YWlsYWJsZV9jaGlsZCgpIHdoaWNoIHBlcmZvcm1zIGFuIG9m
-X25vZGVfZ2V0KCkgb24gZWFjaAppdGVyYXRpb24gd2hlbiBzZWFyY2hpbmcgZm9yIG5leHQgYXZh
-aWxhYmxlIGNoaWxkIG5vZGUuCgpTaG91bGQgYW4gYXZhaWxhYmxlIGNoaWxkIG5vZGUgYmUgZm91
-bmQsIHRoZW4gaXQgd291bGQgcmV0dXJuIGEgZGV2aWNlCm5vZGUgcG9pbnRlciB3aXRoIHJlZmVy
-ZW5jZSBjb3VudCBpbmNyZW1lbnRlZCwgdGh1cyBlYXJseSByZXR1cm4gZnJvbQp0aGUgbWlkZGxl
-IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIGV4cGxpY2l0IG9mX25vZGVfcHV0KCkgdG8gcHJldmVu
-dApyZWZlcmVuY2UgY291bnQgbGVhay4KClRvIHN0b3AgdGhlIHJlZmVyZW5jZSBsZWFrLCBleHBs
-aWNpdGx5IGNhbGwgb2Zfbm9kZV9wdXQoKSBiZWZvcmUKcmV0dXJuaW5nIGFmdGVyIGFuIGVycm9y
-IG9jY3VycmVkLgoKTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDIxMDEyMDE4NDgx
-MC4zMDY4Nzk0LTEta3dAbGludXguY29tClNpZ25lZC1vZmYtYnk6IEtyenlzenRvZiBXaWxjennF
-hHNraSA8a3dAbGludXguY29tPgpTaWduZWQtb2ZmLWJ5OiBMb3JlbnpvIFBpZXJhbGlzaSA8bG9y
-ZW56by5waWVyYWxpc2lAYXJtLmNvbT4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hh
-bEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-IHwgNyArKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9u
-cygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMKaW5kZXggY2Y0YzE4ZjBj
-MjVhLi4yMzU0OGI1MTdlNGIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
-ZS1tZWRpYXRlay5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-CkBAIC0xMDM1LDE0ICsxMDM1LDE0IEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc2V0dXAoc3RydWN0
-IG10a19wY2llICpwY2llKQogCQllcnIgPSBvZl9wY2lfZ2V0X2RldmZuKGNoaWxkKTsKIAkJaWYg
-KGVyciA8IDApIHsKIAkJCWRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIHBhcnNlIGRldmZuOiAlZFxu
-IiwgZXJyKTsKLQkJCXJldHVybiBlcnI7CisJCQlnb3RvIGVycm9yX3B1dF9ub2RlOwogCQl9CiAK
-IAkJc2xvdCA9IFBDSV9TTE9UKGVycik7CiAKIAkJZXJyID0gbXRrX3BjaWVfcGFyc2VfcG9ydChw
-Y2llLCBjaGlsZCwgc2xvdCk7CiAJCWlmIChlcnIpCi0JCQlyZXR1cm4gZXJyOworCQkJZ290byBl
-cnJvcl9wdXRfbm9kZTsKIAl9CiAKIAllcnIgPSBtdGtfcGNpZV9zdWJzeXNfcG93ZXJ1cChwY2ll
-KTsKQEAgLTEwNTgsNiArMTA1OCw5IEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc2V0dXAoc3RydWN0
-IG10a19wY2llICpwY2llKQogCQltdGtfcGNpZV9zdWJzeXNfcG93ZXJkb3duKHBjaWUpOwogCiAJ
-cmV0dXJuIDA7CitlcnJvcl9wdXRfbm9kZToKKwlvZl9ub2RlX3B1dChjaGlsZCk7CisJcmV0dXJu
-IGVycjsKIH0KIAogc3RhdGljIGludCBtdGtfcGNpZV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
-aWNlICpwZGV2KQotLSAKMi4zMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Qii,
+
+On Wed, Feb 3, 2021 at 6:43 PM <qii.wang@mediatek.com> wrote:
+>
+> From: Qii Wang <qii.wang@mediatek.com>
+>
+> tSU,STA/tHD,STA/tSU,STOP maybe out of spec due to device
+> clock-stretching or circuit loss, we could get device
+> clock-stretch time from dts to adjust these parameters
+> to meet the spec via EXT_CONF register.
+>
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 2ffd2f3..47c7255 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -245,6 +245,7 @@ struct mtk_i2c {
+>         u16 irq_stat;                   /* interrupt status */
+>         unsigned int clk_src_div;
+>         unsigned int speed_hz;          /* The speed in transfer */
+> +       unsigned int clock_stretch_ns;
+>         enum mtk_trans_op op;
+>         u16 timing_reg;
+>         u16 high_speed_reg;
+> @@ -607,7 +608,8 @@ static int mtk_i2c_check_ac_timing(struct mtk_i2c *i2c,
+>         else
+>                 clk_ns = sample_ns / 2;
+>
+> -       su_sta_cnt = DIV_ROUND_UP(spec->min_su_sta_ns, clk_ns);
+> +       su_sta_cnt = DIV_ROUND_UP(spec->min_su_sta_ns + i2c->clock_stretch_ns,
+> +                                 clk_ns);
+>         if (su_sta_cnt > max_sta_cnt)
+>                 return -1;
+>
+> @@ -1171,6 +1173,8 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
+>         if (i2c->clk_src_div == 0)
+>                 return -EINVAL;
+>
+> +       of_property_read_u32(np, "clock-stretch-ns", &i2c->clock_stretch_ns);
+> +
+
+I think this new property "clock-stretch-ns" is for the same purpose of
+"i2c-scl-falling-time-ns" + "i2c-scl-rising-time-ns" defined in
+Documentation/devicetree/bindings/i2c/i2c.txt?
+
+>         i2c->have_pmic = of_property_read_bool(np, "mediatek,have-pmic");
+>         i2c->use_push_pull =
+>                 of_property_read_bool(np, "mediatek,use-push-pull");
+> --
+> 1.9.1
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
