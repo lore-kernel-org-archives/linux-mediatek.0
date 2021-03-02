@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E50ADC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:30:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2279EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:31:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93FBE64DDD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:30:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93FBE64DDD
+	by mail.kernel.org (Postfix) with ESMTPS id BE6A364D74
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 03:31:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE6A364D74
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=p2EHSl68lkb1E+y7/htJRKhNNGP8MZViwrPCRTVN6IA=; b=w2a5wV+LQcZKvpmMNJCEjZH38
-	QKyCqlP3R+Bcd3cRCyTpcsmyHIw7L2LW44bbQoY5Z0YgV8A336ewz/b823Kq77Zr7QSSeXOSG7r/V
-	oTH/cIqlQqIlEHsCufyFmJlLhtK1Jn0Pz8wJgTyG+VH8i8kaqDhRNOk8sDlTtyKteEEXrBYyJcB1C
-	vym5OEs79uiFCHg8SmIBsQTSXFJ3oL0ulCO+u2m1V1jhQ0mKU1BfMwTQ0ZTs/Z4jwlaXXXFQi+UTa
-	Y9vygkouiCC5fg5byAnHQuNuLfWbNcGPZo1A3wNH66niVMKnV3lJ0RjLj8/+EUf3oN3xgKI13ZVTQ
-	biRnUgTyg==;
+	 bh=695kPqwLRorHyRu9/CooP6JlokU/pF6eDc9fqz4dWxk=; b=C17Dk0dAXUKB3IFa+dMLddI1i
+	MKYbmYjG8yHnQLO9Xf1HdTXQzdI0R5p/y6My8P6r2O4jybmQAeRkT9kl/Zu6kYQarvl5j48A9NLIL
+	nyH2FkOD+6Ql7ySDWIw4grrsPDtkpMkay0hIVghjDkY05j+HVnuoc7/L/5R0MiBLjWfLnAP83M8Fs
+	y2FPQWT+GITf06uJ4nEoDinbvg1mWV5G2Ndb3hqwgNxgFmS/JMGTKJajmMfFCb1oAw8pMM/3AaFTV
+	TAwE/LAnKow5ykHRqL4vVkTRCPZnHCQ1jJRlWvYrDZXCtHbXWzEctU6oUec3URNLF0mFWqxLv/cZu
+	7nX3HXgtQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGvjm-0007zi-Ie; Tue, 02 Mar 2021 03:30:18 +0000
-Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
+	id 1lGvkO-000860-FO; Tue, 02 Mar 2021 03:30:56 +0000
+Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGvjk-0007z0-AI
- for linux-mediatek@lists.infradead.org; Tue, 02 Mar 2021 03:30:17 +0000
-Received: by mail-il1-x136.google.com with SMTP id p10so4632802ils.9
- for <linux-mediatek@lists.infradead.org>; Mon, 01 Mar 2021 19:30:15 -0800 (PST)
+ id 1lGvkK-00083k-Ea
+ for linux-mediatek@lists.infradead.org; Tue, 02 Mar 2021 03:30:53 +0000
+Received: by mail-io1-xd2f.google.com with SMTP id a7so20209362iok.12
+ for <linux-mediatek@lists.infradead.org>; Mon, 01 Mar 2021 19:30:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/1310LhAR6MnrT/O/Yt5UUeWi1HhYafBrd4+nArNlgw=;
- b=oORDN8kwGDDkD57JEXaaNO17XicuCBiPIIlXjj85mcPUgFF4xqOAgvvAe4REOXlN7B
- pZb+ycb4Qhu45Izk0I/3QT8EkJmLYiICwNi40x/C1/rbAmbQPgNQ1LzP198fQ5yP+LQi
- JVoAfZzmhwpqc9t7J9Rp+95nQvmwVd0ZvTxm8=
+ :cc; bh=YmSGm0nXLfjFTCCCLeQ8emvB627JDPm5C2jL77IYa9o=;
+ b=PSnZV0BTXV3W9S5Q/tI968oLIXrLBcvrR8XlxMZ5Gm6iKDCTq1F7eMDMBiNeMQXES3
+ Bw9DACGzVBvAHSiusgPGtO8FmSZCUji7DrdBesYF7Q8gz1VThzMT27qIxx7Ktgj0xRZp
+ 7ZXWE6HN6UGRNJ7gHV1djoc2vV84YbZD7N6S8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=/1310LhAR6MnrT/O/Yt5UUeWi1HhYafBrd4+nArNlgw=;
- b=qvBfPSylslVzp9n3xbRW3yFYJ4fPdyfayDImJVf2Xd8Vh87cyCSqI9H5MeUFGASqc8
- kAh9j7xQvdHcps9iBeWpSvAo5JzNvl+8bL1PMRUABVG0LEIMug+rgY5F0iJ0MG8HQENL
- i+hDQR4p4Dinoz35EhXS8cbAbROdOKjZN7H+OZQh+mtQ+cbKd55RMJm+ywJlOKJT/Lx2
- 3JIdPqbmKfb1mdhhkpG81tkk9cpCUuvjA9PoH8c5LEQNWtTcsEMQNR4CVLgfm1vE2HR8
- 88oOF42+CMHY6R/OwmWvRmgP5lTmqwECWDzjAu9Om/KVymZ6C7av7q0zmgdncm8E5Ucn
- U3Nw==
-X-Gm-Message-State: AOAM533wP3HmdlL8JJ4qldRRZ/CUZwSrf5fC2w28WpcOROkrkNnLBxCI
- wAfe9QC70M+srunBkCjpYSK3QndqcTVmtD+mSS2V/w==
-X-Google-Smtp-Source: ABdhPJx98KwGY9AJYov4lSqnUWaDs/8YnCgc9IFwmj/NEJWhQ+0qs/fvogkdIMFspPacbO2hy+ISRn6XKiL6p1Vt0F8=
-X-Received: by 2002:a92:3f06:: with SMTP id m6mr15392709ila.283.1614655813987; 
- Mon, 01 Mar 2021 19:30:13 -0800 (PST)
+ bh=YmSGm0nXLfjFTCCCLeQ8emvB627JDPm5C2jL77IYa9o=;
+ b=YXYt5nM6IYGzdw9la3BdbeFWyELt8m+hXJTl1K4flIW4m8qgLAROycDwIdN57wJP7A
+ gXe4StVnoxKEY31KngOmkkaclERWgWgaXHbWd/wQY2ugbsofauKZ4rI+bwNXGGxFZcOg
+ u/e68g+0EGK97p4XeqUlp2ZPYAK5ZKLkvvMjYiywdQ8o4hmsFBxTzadE7kkXCKwgOHPL
+ TfMe6UHkjSfKSelCOvmun97y9ulrMUPUyzMS6eyqJKjSd4i5RjRditsixQbX3ePonfrY
+ ICS/pxPyc9Q20HcDwd08A449jjRcpmeiE6JJlvfATA1kNSeHxPfLgPg5j2yCW7SYPkkI
+ /c+g==
+X-Gm-Message-State: AOAM532X8VOGWusH4uBsbmxQ373qB92T8naXGQZrsKZ7frwTOfn1VQY1
+ 5UlzjgWI8b+Ae1T2PvwyA96o7bb8GJGIpRHzxZJxOw==
+X-Google-Smtp-Source: ABdhPJxocnnKq+tbJz4i1vOu2TsIQbAwEJ+AHy0WIR800BMC4iPI+Swbk3o4wbgmrTdjmu3Acdl1+cbKbJuTpMAr1C4=
+X-Received: by 2002:a5e:d61a:: with SMTP id w26mr7527304iom.40.1614655843956; 
+ Mon, 01 Mar 2021 19:30:43 -0800 (PST)
 MIME-Version: 1.0
 References: <20210225175000.824661-1-enric.balletbo@collabora.com>
- <20210225175000.824661-2-enric.balletbo@collabora.com>
-In-Reply-To: <20210225175000.824661-2-enric.balletbo@collabora.com>
+ <20210225175000.824661-3-enric.balletbo@collabora.com>
+In-Reply-To: <20210225175000.824661-3-enric.balletbo@collabora.com>
 From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Tue, 2 Mar 2021 11:29:48 +0800
-Message-ID: <CAJMQK-hheoKB-sYTvL+Wz-UEUJjQQDqShPOCKiJOVi6m=84zOQ@mail.gmail.com>
-Subject: Re: [PATCH 2/4] soc: mediatek: pm-domains: Add a power domain names
- for mt8183
+Date: Tue, 2 Mar 2021 11:30:18 +0800
+Message-ID: <CAJMQK-iPs8VXfRhq3Kt_sHfY4iyywh4QfkkNC0ABhHJDfjKKNA@mail.gmail.com>
+Subject: Re: [PATCH 3/4] soc: mediatek: pm-domains: Add a power domain names
+ for mt8192
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210301_223016_420614_37CD8F5B 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20210301_223052_507710_DF02910E 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,139 +99,179 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Fri, Feb 26, 2021 at 1:50 AM Enric Balletbo i Serra
 <enric.balletbo@collabora.com> wrote:
 >
-> Add the power domains names for the mt8183 SoC. This removes the debugfs
-> errors like the following:
+> Add the power domains names for the mt8192 SoC.
 >
->   debugfs: Directory 'power-domain' with parent 'pm_genpd' already present!
->
-> Fixes: eb9fa767fbe1 ("soc: mediatek: pm-domains: Add support for mt8183")
+> Fixes: a49d5e7a89d6 ("soc: mediatek: pm-domains: Add support for mt8192")
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
 >
->  drivers/soc/mediatek/mt8183-pm-domains.h | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+>  drivers/soc/mediatek/mt8192-pm-domains.h | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
 >
-> diff --git a/drivers/soc/mediatek/mt8183-pm-domains.h b/drivers/soc/mediatek/mt8183-pm-domains.h
-> index aa5230e6c12f..98a9940d05fb 100644
-> --- a/drivers/soc/mediatek/mt8183-pm-domains.h
-> +++ b/drivers/soc/mediatek/mt8183-pm-domains.h
-> @@ -12,12 +12,14 @@
+> diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/soc/mediatek/mt8192-pm-domains.h
+> index 0fdf6dc6231f..543dda70de01 100644
+> --- a/drivers/soc/mediatek/mt8192-pm-domains.h
+> +++ b/drivers/soc/mediatek/mt8192-pm-domains.h
+> @@ -12,6 +12,7 @@
 >
->  static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->         [MT8183_POWER_DOMAIN_AUDIO] = {
+>  static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+>         [MT8192_POWER_DOMAIN_AUDIO] = {
 > +               .name = "audio",
->                 .sta_mask = PWR_STATUS_AUDIO,
->                 .ctl_offs = 0x0314,
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(15, 12),
->         },
->         [MT8183_POWER_DOMAIN_CONN] = {
-> +               .name = "conn",
->                 .sta_mask = PWR_STATUS_CONN,
->                 .ctl_offs = 0x032c,
->                 .sram_pdn_bits = 0,
-> @@ -28,12 +30,14 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>                 .sta_mask = BIT(21),
+>                 .ctl_offs = 0x0354,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+> @@ -24,6 +25,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
 >                 },
 >         },
->         [MT8183_POWER_DOMAIN_MFG_ASYNC] = {
-> +               .name = "mfg_async",
->                 .sta_mask = PWR_STATUS_MFG_ASYNC,
->                 .ctl_offs = 0x0334,
+>         [MT8192_POWER_DOMAIN_CONN] = {
+> +               .name = "conn",
+>                 .sta_mask = PWR_STATUS_CONN,
+>                 .ctl_offs = 0x0304,
 >                 .sram_pdn_bits = 0,
->                 .sram_pdn_ack_bits = 0,
+> @@ -45,12 +47,14 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+>                 .caps = MTK_SCPD_KEEP_DEFAULT_OFF,
 >         },
->         [MT8183_POWER_DOMAIN_MFG] = {
-> +               .name = "mfg",
->                 .sta_mask = PWR_STATUS_MFG,
->                 .ctl_offs = 0x0338,
->                 .sram_pdn_bits = GENMASK(8, 8),
-> @@ -41,18 +45,21 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->                 .caps = MTK_SCPD_DOMAIN_SUPPLY,
->         },
->         [MT8183_POWER_DOMAIN_MFG_CORE0] = {
-> +               .name = "mfg_core0",
->                 .sta_mask = BIT(7),
->                 .ctl_offs = 0x034c,
+>         [MT8192_POWER_DOMAIN_MFG0] = {
+> +               .name = "mfg0",
+>                 .sta_mask = BIT(2),
+>                 .ctl_offs = 0x0308,
 >                 .sram_pdn_bits = GENMASK(8, 8),
 >                 .sram_pdn_ack_bits = GENMASK(12, 12),
 >         },
->         [MT8183_POWER_DOMAIN_MFG_CORE1] = {
-> +               .name = "mfg_core1",
->                 .sta_mask = BIT(20),
+>         [MT8192_POWER_DOMAIN_MFG1] = {
+> +               .name = "mfg1",
+>                 .sta_mask = BIT(3),
+>                 .ctl_offs = 0x030c,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+> @@ -75,36 +79,42 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+>                 },
+>         },
+>         [MT8192_POWER_DOMAIN_MFG2] = {
+> +               .name = "mfg2",
+>                 .sta_mask = BIT(4),
 >                 .ctl_offs = 0x0310,
 >                 .sram_pdn_bits = GENMASK(8, 8),
 >                 .sram_pdn_ack_bits = GENMASK(12, 12),
 >         },
->         [MT8183_POWER_DOMAIN_MFG_2D] = {
-> +               .name = "mfg_2d",
->                 .sta_mask = PWR_STATUS_MFG_2D,
->                 .ctl_offs = 0x0348,
+>         [MT8192_POWER_DOMAIN_MFG3] = {
+> +               .name = "mfg3",
+>                 .sta_mask = BIT(5),
+>                 .ctl_offs = 0x0314,
 >                 .sram_pdn_bits = GENMASK(8, 8),
-> @@ -65,6 +72,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->                 },
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
 >         },
->         [MT8183_POWER_DOMAIN_DISP] = {
+>         [MT8192_POWER_DOMAIN_MFG4] = {
+> +               .name = "mfg4",
+>                 .sta_mask = BIT(6),
+>                 .ctl_offs = 0x0318,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
+>         },
+>         [MT8192_POWER_DOMAIN_MFG5] = {
+> +               .name = "mfg5",
+>                 .sta_mask = BIT(7),
+>                 .ctl_offs = 0x031c,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
+>         },
+>         [MT8192_POWER_DOMAIN_MFG6] = {
+> +               .name = "mfg6",
+>                 .sta_mask = BIT(8),
+>                 .ctl_offs = 0x0320,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
+>         },
+>         [MT8192_POWER_DOMAIN_DISP] = {
 > +               .name = "disp",
->                 .sta_mask = PWR_STATUS_DISP,
->                 .ctl_offs = 0x030c,
+>                 .sta_mask = BIT(20),
+>                 .ctl_offs = 0x0350,
 >                 .sram_pdn_bits = GENMASK(8, 8),
-> @@ -83,6 +91,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+> @@ -133,6 +143,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
 >                 },
 >         },
->         [MT8183_POWER_DOMAIN_CAM] = {
-> +               .name = "cam",
->                 .sta_mask = BIT(25),
->                 .ctl_offs = 0x0344,
->                 .sram_pdn_bits = GENMASK(9, 8),
-> @@ -105,6 +114,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+>         [MT8192_POWER_DOMAIN_IPE] = {
+> +               .name = "ipe",
+>                 .sta_mask = BIT(14),
+>                 .ctl_offs = 0x0338,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+> @@ -149,6 +160,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
 >                 },
 >         },
->         [MT8183_POWER_DOMAIN_ISP] = {
+>         [MT8192_POWER_DOMAIN_ISP] = {
 > +               .name = "isp",
->                 .sta_mask = PWR_STATUS_ISP,
->                 .ctl_offs = 0x0308,
->                 .sram_pdn_bits = GENMASK(9, 8),
-> @@ -127,6 +137,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->                 },
->         },
->         [MT8183_POWER_DOMAIN_VDEC] = {
-> +               .name = "vdec",
->                 .sta_mask = BIT(31),
->                 .ctl_offs = 0x0300,
+>                 .sta_mask = BIT(12),
+>                 .ctl_offs = 0x0330,
 >                 .sram_pdn_bits = GENMASK(8, 8),
-> @@ -139,6 +150,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+> @@ -165,6 +177,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
 >                 },
 >         },
->         [MT8183_POWER_DOMAIN_VENC] = {
+>         [MT8192_POWER_DOMAIN_ISP2] = {
+> +               .name = "isp2",
+>                 .sta_mask = BIT(13),
+>                 .ctl_offs = 0x0334,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+> @@ -181,6 +194,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+>                 },
+>         },
+>         [MT8192_POWER_DOMAIN_MDP] = {
+> +               .name = "mdp",
+>                 .sta_mask = BIT(19),
+>                 .ctl_offs = 0x034c,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+> @@ -197,6 +211,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+>                 },
+>         },
+>         [MT8192_POWER_DOMAIN_VENC] = {
 > +               .name = "venc",
->                 .sta_mask = PWR_STATUS_VENC,
->                 .ctl_offs = 0x0304,
->                 .sram_pdn_bits = GENMASK(11, 8),
-> @@ -151,6 +163,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->                 },
->         },
->         [MT8183_POWER_DOMAIN_VPU_TOP] = {
-> +               .name = "vpu_top",
->                 .sta_mask = BIT(26),
->                 .ctl_offs = 0x0324,
+>                 .sta_mask = BIT(17),
+>                 .ctl_offs = 0x0344,
 >                 .sram_pdn_bits = GENMASK(8, 8),
-> @@ -177,6 +190,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+> @@ -213,6 +228,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
 >                 },
 >         },
->         [MT8183_POWER_DOMAIN_VPU_CORE0] = {
-> +               .name = "vpu_core0",
->                 .sta_mask = BIT(27),
->                 .ctl_offs = 0x33c,
->                 .sram_pdn_bits = GENMASK(11, 8),
-> @@ -194,6 +208,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->                 .caps = MTK_SCPD_SRAM_ISO,
+>         [MT8192_POWER_DOMAIN_VDEC] = {
+> +               .name = "vdec",
+>                 .sta_mask = BIT(15),
+>                 .ctl_offs = 0x033c,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+> @@ -229,12 +245,14 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+>                 },
 >         },
->         [MT8183_POWER_DOMAIN_VPU_CORE1] = {
-> +               .name = "vpu_core1",
->                 .sta_mask = BIT(28),
+>         [MT8192_POWER_DOMAIN_VDEC2] = {
+> +               .name = "vdec2",
+>                 .sta_mask = BIT(16),
 >                 .ctl_offs = 0x0340,
->                 .sram_pdn_bits = GENMASK(11, 8),
+>                 .sram_pdn_bits = GENMASK(8, 8),
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
+>         },
+>         [MT8192_POWER_DOMAIN_CAM] = {
+> +               .name = "cam",
+>                 .sta_mask = BIT(23),
+>                 .ctl_offs = 0x035c,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+> @@ -263,18 +281,21 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+>                 },
+>         },
+>         [MT8192_POWER_DOMAIN_CAM_RAWA] = {
+> +               .name = "cam_rawa",
+>                 .sta_mask = BIT(24),
+>                 .ctl_offs = 0x0360,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
+>         },
+>         [MT8192_POWER_DOMAIN_CAM_RAWB] = {
+> +               .name = "cam_rawb",
+>                 .sta_mask = BIT(25),
+>                 .ctl_offs = 0x0364,
+>                 .sram_pdn_bits = GENMASK(8, 8),
+>                 .sram_pdn_ack_bits = GENMASK(12, 12),
+>         },
+>         [MT8192_POWER_DOMAIN_CAM_RAWC] = {
+> +               .name = "cam_rawc",
+>                 .sta_mask = BIT(26),
+>                 .ctl_offs = 0x0368,
+>                 .sram_pdn_bits = GENMASK(8, 8),
 > --
 > 2.30.0
 >
