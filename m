@@ -2,87 +2,89 @@ Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ADBCBC433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 688A5C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:35:31 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDEF164E84
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:25:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDEF164E84
+	by mail.kernel.org (Postfix) with ESMTPS id E180464E60
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 17:35:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E180464E60
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=n8BDWXJnULOFBONnstBpUnOA+2K0qt+KxfOSPyskBHE=; b=pPzKCiTJdcNkubSS9YZWo4Jg+
-	J4FCSMcNmdaDR8o+xXSppaBj0/zxFcGBA1pcSpp20i9JbunKhrKFto+PmY4iIh+tWabYDaR1gfblr
-	8o5xoY2XRblCqFWOOHBWYjn0pyvy9AlPRAD/X7YzMguuZQA2rH44l7ZYaLK6Ps6NbGtaNKKYlPXzB
-	IOAgPVYwR3zV1W6JfWTjUTZu6OTun+75T3tFg3n6HxacCF0AzpZgMPss4aGSaMV+wL/T1e9FdDm9M
-	b9vu27aPfvpJOCLyqnSiKICkLALehAKddvxnhI3CsvNqKBs0839lI+P4qTel4MaCPMW3tlfb/MK3b
-	wLhmuaLYA==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=T0TT7nl4N8WwAd8jwCwd6JELfTi+f73akhMduAspMJM=; b=mZHEoUkNImdAeUnBkTg4Y4RYUu
+	6Q1Q7DtxZN2IvDSEjNdzLUatAF4RJKjx5T4AQFQV8ZMvYFYH1wU8GMUraoUt4UNvYcgdR/yAhVxxP
+	icKc/MPcvyFuaaaUPCFZv6YLl/tNQc1OHAclIEtoWywJ++t64z2+dZO4P12GII1eyBlGwTv5ka42P
+	qJxoMiTgLpLao1m8e1/9QaQEpcIazoDv+MyoYL7gowdZMv0hHHCgEcpxhz67HaWFnyJ/H3UMo7cJI
+	+9PcL4TdHLwU/NjbjuTqZtMhe0O+9HJ2vRexeyxc76jr5w5191TuplMnFpwP5zeHKUzc+B2WRDYIZ
+	3XGSE78A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHVFV-005nCp-TU; Wed, 03 Mar 2021 17:25:26 +0000
+	id 1lHVP5-005pRS-7l; Wed, 03 Mar 2021 17:35:19 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHSuk-005FNE-Gb; Wed, 03 Mar 2021 14:55:53 +0000
+ id 1lHSvf-005Fc6-7j
+ for linux-mediatek@desiato.infradead.org; Wed, 03 Mar 2021 14:56:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=grLmHzM1WTxLyFnetwt7OHqUMHVimT2ZQg79yw21waE=; b=AOhVsBy2LGRQ5G9LGYt4rYHF/B
- RDwpXjzIJbZh3hcyVe+UeUPBEgJhhnc14uHLRHO94T5aD7h83pk5uHf2zlOTK87catiWExDEgFYzr
- ezms2MnDdKdgc7xmO7Rs7sBlYXSPtkmJIIRwZhuQX6R6msaVnpFjzOsZNlYkNv/P6XalwaNhqiPF0
- NE5DD6MHQYNgrUwu0FXQXl1UVsw8fgZyKiCvNRx6MpGivcJz01uxOEtB17bgb4z7ys7wNxAGoQFXB
- jaRMMgJ8O6FgQjPQ2pNNUuVxnm82ueFYzvKTgpMfQubnJyzOKjq0awkFCvfqVjR5TMJ68NIW1jllr
- USFLow1g==;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=FPgVof0xVnAKdEHyLlmb0mOxZ6VIA76K9fTjIOtAuo4=; b=JqXcBYN9gw/VDHfAQk1tiUbsij
+ 7YvRdm1Rwg9+ohpFxEHqsT6XgsHAhW/ZdHcXDkaUJjfUZwW48elWB8bsFldmgazRhJbQ+2ixHjLq8
+ mBuLnTSN0Azk3B73/FW2AzrEoQ7fP0GpS2HOQ6hJxIko/MnCQvLzR+BQwkPziILmW//WP4H88rF+U
+ mzQcrg4elJLnQkHWfY1ax4Q5Pev66wDDbo6mIhSu3eoXY+shc/8htRcfJFnjppPg++OfuswC14vpi
+ q1y/23dQP2kmuy52rsvX27FrBN3yEn7tsmfMOy9c19gRUl0UpiEFo6lVrf/2V50wyMxeaV+u60iNJ
+ i6mS1UhA==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHNPh-001wUY-9d; Wed, 03 Mar 2021 09:03:26 +0000
-X-UUID: 3666326a35b64ba28c26a09e67788206-20210303
+ id 1lHOta-002Czn-Rc
+ for linux-mediatek@lists.infradead.org; Wed, 03 Mar 2021 10:38:24 +0000
+X-UUID: cbd5931340a240be931cfe9e564531cb-20210303
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=grLmHzM1WTxLyFnetwt7OHqUMHVimT2ZQg79yw21waE=; 
- b=GzRFRsptfSotdqbg/abyCO99qWyWAd+R1PY+sbqL0+RxWvswbgg1NUl/PvC5/GdMFzVy/P00CC6tDINz7ERx8w3cLt2YP4kDLD8htyFDUFgbXDp3IOAFXUMpJ8MRJdCvZPsqwYPBaVIjEeafFnF0rWBmXx4issfcbU529XCJpwE=;
-X-UUID: 3666326a35b64ba28c26a09e67788206-20210303
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=FPgVof0xVnAKdEHyLlmb0mOxZ6VIA76K9fTjIOtAuo4=; 
+ b=GvrxR5axKhFNGnux/4fNE5PNDZT4mvwlddIcqhIvCOPOU98S/Df03MZW07GNfoO5eBoMd0UY6l81w724hzyyvhbTncV9PCEUKkTJC+fOEFpnTy64gLR6QmbySHkF/IIlUTPk9kN6iVsyYq75bWBQ+KwxUXPv1dqDGm+5l+1DvK0=;
+X-UUID: cbd5931340a240be931cfe9e564531cb-20210303
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 236618161; Wed, 03 Mar 2021 01:03:13 -0800
-Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
+ with ESMTP id 864455014; Wed, 03 Mar 2021 02:38:08 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Mar 2021 01:02:44 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS32N1.mediatek.inc
- (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 3 Mar 2021 17:02:40 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 3 Mar 2021 17:02:39 +0800
-Message-ID: <1614762159.5898.9.camel@mhfsdcap03>
-Subject: Re: [PATCH] spi: mediatek: Re-license MTK SPI driver as Dual MIT/GPL
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Wed, 3 Mar 2021 17:02:39 +0800
-In-Reply-To: <YD84OKr4vNwA7vnz@kroah.com>
-References: <20210303025636.795-1-leilk.liu@mediatek.com>
- <YD84OKr4vNwA7vnz@kroah.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1497.2; Wed, 3 Mar 2021 02:38:07 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Mar 2021 18:38:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 3 Mar 2021 18:38:03 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/4] mt76: mt7915: fix rxrate reporting
+Date: Wed, 3 Mar 2021 18:37:59 +0800
+Message-ID: <a379bb8534b2b8c24e30313b97aa8cfdf79c315b.1614753100.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9A50E5966DFB3374904F9625230C65C0882547409960E6A6FB5287E07708BE842000:8
+X-TM-SNTS-SMTP: 43E5F3BEE6F3F98E75647AB33B32E3F3AE7269CA5AC11EC62DD68CEED2F3F8FE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210303_090326_018379_B2237A3A 
-X-CRM114-Status: GOOD (  23.01  )
+X-CRM114-CacheID: sfid-20210303_103824_470263_6AE0DFD5 
+X-CRM114-Status: GOOD (  11.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,59 +96,140 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, linux-mediatek@lists.infradead.org,
- Nicolas Boichat <drinkcat@chromium.org>, Wei Yongjun <weiyj.lk@gmail.com>,
- fparent@baylibre.com, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
- Stephen Boyd <swboyd@chromium.org>,
- Javier Martinez Canillas <javier@osg.samsung.com>,
- Mark Brown <broonie@kernel.org>, "luhua . xu" <luhua.xu@mediatek.com>,
- Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Axel Lin <axel.lin@ingics.com>, Thomas Gleixner <tglx@linutronix.de>,
- Fengguang Wu <fengguang.wu@intel.com>,
- Markus Elfring <elfring@users.sourceforge.net>,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-03-03 at 08:18 +0100, Greg Kroah-Hartman wrote:
-> On Wed, Mar 03, 2021 at 10:56:36AM +0800, Leilk Liu wrote:
-> > From: "leilk.liu" <leilk.liu@mediatek.com>
-> > 
-> > It is wanted to use MTK spi bus driver with GPL-2.0 or MIT license.
-> > But now it is only licensed as GPL-2.0, so re-license it as dual
-> > MIT/GPL.
-> > 
-> > Signed-off-by: leilk.liu <leilk.liu@mediatek.com>
-> 
-> Please use your name here, not an email alias for where your name goes.
-> 
-OK, I'll fix it, thanks!
-> 
-> > ---
-> >  drivers/spi/spi-mt65xx.c                 | 4 ++--
-> >  include/linux/platform_data/spi-mt65xx.h | 2 +-
-> 
-> Given that these files have been licensed under the GPL only since 2015,
-> all changes contributed to it have only been licensed under the GPL as
-> well, so have you gotten approval for all of the contributors for this
-> change?
-> 
-This is the reason that I sent this patch to ask for ACKs from all
-contributors (who are all in the To mail-list) for these files.
+Avoid directly updating sinfo->rxrate from firmware since rate_info might
+be overwritten by wrong results even mt7915_mcu_get_rx_rate() fails check.
 
-> Can you please get your lawyer to also sign off on this license change
-> patch, so that we know that you have their approval for this incase
-> there are questions about it in the future?
-> 
-I need to use the code in other projects that is not with GPL-2.0.
-Also, the license change is approved by Mediatek supervisor.
+Add more error handlings accordingly.
 
-> thanks,
-> 
-> greg k-h
+Fixes: 11553d88d0b9 ("mt76: mt7915: query station rx rate from firmware")
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  5 +-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 47 ++++++++++---------
+ 2 files changed, 30 insertions(+), 22 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index cacc9b6933ca..bb49ea9307e0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -839,9 +839,12 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
+ 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
+ 	struct mt7915_sta_stats *stats = &msta->stats;
++	struct rate_info rxrate = {};
+ 
+-	if (mt7915_mcu_get_rx_rate(phy, vif, sta, &sinfo->rxrate) == 0)
++	if (!mt7915_mcu_get_rx_rate(phy, vif, sta, &rxrate)) {
++		sinfo->rxrate = rxrate;
+ 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BITRATE);
++	}
+ 
+ 	if (!stats->tx_rate.legacy && !stats->tx_rate.flags)
+ 		return;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index e0c03b7f278d..b204c5dd7914 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3552,9 +3552,8 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 	struct ieee80211_supported_band *sband;
+ 	struct mt7915_mcu_phy_rx_info *res;
+ 	struct sk_buff *skb;
+-	u16 flags = 0;
+ 	int ret;
+-	int i;
++	bool cck = false;
+ 
+ 	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_CMD(PHY_STAT_INFO),
+ 					&req, sizeof(req), true, &skb);
+@@ -3568,48 +3567,53 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 
+ 	switch (res->mode) {
+ 	case MT_PHY_TYPE_CCK:
++		cck = true;
++		fallthrough;
+ 	case MT_PHY_TYPE_OFDM:
+ 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 			sband = &mphy->sband_5g.sband;
+ 		else
+ 			sband = &mphy->sband_2g.sband;
+ 
+-		for (i = 0; i < sband->n_bitrates; i++) {
+-			if (rate->mcs != (sband->bitrates[i].hw_value & 0xf))
+-				continue;
+-
+-			rate->legacy = sband->bitrates[i].bitrate;
+-			break;
+-		}
++		rate->mcs = mt76_get_rate(&dev->mt76, sband, rate->mcs, cck);
++		rate->legacy = sband->bitrates[rate->mcs].bitrate;
+ 		break;
+ 	case MT_PHY_TYPE_HT:
+ 	case MT_PHY_TYPE_HT_GF:
+-		if (rate->mcs > 31)
+-			return -EINVAL;
+-
+-		flags |= RATE_INFO_FLAGS_MCS;
++		if (rate->mcs > 31) {
++			ret = -EINVAL;
++			goto out;
++		}
+ 
++		rate->flags = RATE_INFO_FLAGS_MCS;
+ 		if (res->gi)
+-			flags |= RATE_INFO_FLAGS_SHORT_GI;
++			rate->flags |= RATE_INFO_FLAGS_SHORT_GI;
+ 		break;
+ 	case MT_PHY_TYPE_VHT:
+-		flags |= RATE_INFO_FLAGS_VHT_MCS;
++		if (rate->mcs > 9) {
++			ret = -EINVAL;
++			goto out;
++		}
+ 
++		rate->flags = RATE_INFO_FLAGS_VHT_MCS;
+ 		if (res->gi)
+-			flags |= RATE_INFO_FLAGS_SHORT_GI;
++			rate->flags |= RATE_INFO_FLAGS_SHORT_GI;
+ 		break;
+ 	case MT_PHY_TYPE_HE_SU:
+ 	case MT_PHY_TYPE_HE_EXT_SU:
+ 	case MT_PHY_TYPE_HE_TB:
+ 	case MT_PHY_TYPE_HE_MU:
++		if (res->gi > NL80211_RATE_INFO_HE_GI_3_2 || rate->mcs > 11) {
++			ret = -EINVAL;
++			goto out;
++		}
+ 		rate->he_gi = res->gi;
+-
+-		flags |= RATE_INFO_FLAGS_HE_MCS;
++		rate->flags = RATE_INFO_FLAGS_HE_MCS;
+ 		break;
+ 	default:
+-		break;
++		ret = -EINVAL;
++		goto out;
+ 	}
+-	rate->flags = flags;
+ 
+ 	switch (res->bw) {
+ 	case IEEE80211_STA_RX_BW_160:
+@@ -3626,7 +3630,8 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 		break;
+ 	}
+ 
++out:
+ 	dev_kfree_skb(skb);
+ 
+-	return 0;
++	return ret;
+ }
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
