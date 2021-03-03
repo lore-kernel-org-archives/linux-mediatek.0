@@ -1,70 +1,119 @@
-Return-Path: <SRS0=N2rV=IA=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E099DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 10:35:42 +0000 (UTC)
-Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A2C6C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 14:06:57 +0000 (UTC)
+Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 760B964F0F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Mar 2021 10:35:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 760B964F0F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id F326C64E68
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 14:06:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F326C64E68
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lDZbY7Pd9qKUCZ7BU2nry54Ef6/INV7+2DLT6x4rtZM=; b=Es5A1zhNj/s35ZB1qBaE9sO2W
-	/HyvOw7dYbY6jpPgs9gjL2uPhY2O/65WZms/sQVRa3rrkMzMC+WKsC/FNtZiKoGj7M9bVV5eGVboU
-	GzuCPKjJ/fMmcoDpaJcqQvqPYe4TZCqi5ORaZ3u47mwIze4JDaCkv17K4NxeOZaMTSFGTpfqBMlqs
-	OshlWFZL7WEaUxkyWow9ybrMCHXGis2b1OIJmQasvVOCn5GJNbdWNMaqiofBqFNQxJX+BsEdbhtgl
-	yx6ai97F/zAkFRd0POCWQPf5WcBoxn6dD6vphvMuD9znp7+Auz3BA1b40JPlY+oTvLAuY1wza+P9y
-	6iXgOfpoQ==;
-Received: from localhost ([::1] helo=merlin.infradead.org)
-	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lH2NI-0004pg-4v; Tue, 02 Mar 2021 10:35:32 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lH2NC-0004ly-DM; Tue, 02 Mar 2021 10:35:27 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8851AED1;
- Tue,  2 Mar 2021 02:35:24 -0800 (PST)
-Received: from [10.57.48.219] (unknown [10.57.48.219])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 25EFF3F73C;
- Tue,  2 Mar 2021 02:35:20 -0800 (PST)
-Subject: Re: Aw: Re: Re: [PATCH 09/13] PCI: mediatek: Advertise lack of MSI
- handling
-To: Frank Wunderlich <frank-w@public-files.de>, Marc Zyngier
- <maz@kernel.org>, Chuanjia Liu <chuanjia.liu@mediatek.com>
-References: <20210225151023.3642391-1-maz@kernel.org>
- <20210225151023.3642391-10-maz@kernel.org>
- <trinity-b7e2cf18-f0e6-4d88-8a80-de6758b5a91f-1614595396771@3c-app-gmx-bap67>
- <b7721e2ff751cc9565a662cb713819e3@kernel.org>
- <trinity-9fa6d24e-f9de-4741-bf44-86f6197b174d-1614600961297@3c-app-gmx-bap67>
- <5afd1d656299d87c43bdf31b8ced2d5f@kernel.org>
- <trinity-e6593a34-3e03-4154-a03c-f3aed01e33bf-1614607598428@3c-app-gmx-bap67>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <8b9c013a-b5d5-9b19-f28a-4af543e47fff@arm.com>
-Date: Tue, 2 Mar 2021 10:35:14 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+	 bh=kOI155f6yADcfwN6Ex5HipLCl2IGau90fXOu8BpEKlQ=; b=YxgJfPSb2Deen6FVIEcZAagI5
+	E8TtTswf9NzvnV6BdzCp5Sm85RWEG4Th8/hPl17ep3y3oa1ZEZxfz+otuOPq0ROjAEqw5DHq2P33w
+	wgmrYeyM4USF67Iq9M8pRoFjRRZ6eL1aWo94Y22lMLJ+1K/VhSHumiAcrUoH06QCsyo2riSUFTGRe
+	fTp38K1uwkaTtdQGC6e87VGzELRMIjwDIGE6aEQdazqWLZZZ745HiGXR9jGDkLkmXqtuohPk6BGsn
+	zHpI3WQp39tSErzI2WRLLe8JRawncHmh3BzFTFYIvXGBl/A+JhvIVuxvWKo5lRZMwWHY96fKfoUfD
+	fLmVFUzBQ==;
+Received: from localhost ([::1] helo=desiato.infradead.org)
+	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+	id 1lHS9B-0053Wi-Sl; Wed, 03 Mar 2021 14:06:42 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lHS4g-00520x-Ji
+ for linux-mediatek@desiato.infradead.org; Wed, 03 Mar 2021 14:02:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Type:Cc:To:Subject:Message-ID:
+ Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=ud8XCo4zETwyBcC5uBZYedvwqDLvaKNv5XeUnTbkcFs=; b=W5BzNOdrQXnvsyn84Z33Y4EMR4
+ SqEVqE6fCB++zYW2CKw9YXutYQj3ioGI1jFO0v6E9sDNo9WSxMBkWmGN+jalX4eHqNKfzNi/Y2f7j
+ TQbhp4Dq1+JgNhTfcahPt9yBpzfXQAxM2hI5cb5HhjdShKOKkEQokfp2tWLUL8b+QxKKkd21jBMiY
+ pZkHXwTUMw5DQpY7KcwWqVyC1THRRChf1IVI2Mki0A6exCzbE8EKK2/f07CK0kdjJzPyzyt0QpBJD
+ NOj34FUh+iNMLh1z5ImpL3yJ4J72Mm0l3eI8rdynPK87PGBTbGUjXnwh/HiyXRWVHamZvAJ0b0t83
+ 6Sy5H3MQ==;
+Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
+ by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lHOnt-002CdO-LY
+ for linux-mediatek@lists.infradead.org; Wed, 03 Mar 2021 10:32:34 +0000
+Received: by mail-vs1-xe2e.google.com with SMTP id l192so12296447vsd.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 03 Mar 2021 02:32:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ud8XCo4zETwyBcC5uBZYedvwqDLvaKNv5XeUnTbkcFs=;
+ b=MUXW0BLcopSj2WEivWF6kbF45NTv7iE6q4bdW0n64jAOThRVEwx0mwL70/W8QAcW22
+ kbp43yMWDe8/wr6M408sE0OwjffCirBG9ZLdfmUcFX2sgeaA6c0HU/locnDgty4g8tBY
+ P1x3TV2Q9JYZyg4RAnN+KCw0Zda/CC2Tbyeok=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ud8XCo4zETwyBcC5uBZYedvwqDLvaKNv5XeUnTbkcFs=;
+ b=E096j7oRhkon3ydlDzBXfg3SctH0b7VWIj4sOcKjvvqoSKCgqG5iKjLXzGTSCI213C
+ gMueytUBSRPiRwvXH8aU3Y5e+OSgsAWD1Mk6kc3UeFe3WGrButnq37rYksGbK0tZ61yC
+ X/xKZbIzUr5A7synUFphEEfuK46rPtviMg/lfTtLYlbTGytNE8XrUPirrNlHM+lK7q2P
+ oIgoK+sNDAmDaiHL6RB+a10otkzGgVO8N/TcI8fPQfdm47t8jT76Jknly1pUvLLFxgdo
+ Qj2B0VPLjTVnuYLh7KJbuxWPr7thL2d2Xybp7z2LqKgI4p6CQHBGbtvK7SAgKR3+cj8y
+ FbEQ==
+X-Gm-Message-State: AOAM533nMAhsh0GLJz9hJC1YfTy0Nxn1LjiUQAuAhMf/YX0n3IUUp7h7
+ kw+pp1ql/xKSG5dYEh5zppPqKN2MbJGqxIrZk6b2uw==
+X-Google-Smtp-Source: ABdhPJzM84ST5K0eaxhWuR85D0QFzIegAthMVmk/sn+EGXAtrfigTFMmmkIb7ZyoUsPiJw5uyoHo0rSSZNkvG9/REng=
+X-Received: by 2002:a67:1046:: with SMTP id 67mr5250935vsq.21.1614767475658;
+ Wed, 03 Mar 2021 02:31:15 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <trinity-e6593a34-3e03-4154-a03c-f3aed01e33bf-1614607598428@3c-app-gmx-bap67>
-Content-Language: en-GB
+References: <20210211113309.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid>
+ <CACRpkdbQa3BZwgtp3=061cu+y+4qkMqtXQhXH_VuHB3KcLyDCA@mail.gmail.com>
+In-Reply-To: <CACRpkdbQa3BZwgtp3=061cu+y+4qkMqtXQhXH_VuHB3KcLyDCA@mail.gmail.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Wed, 3 Mar 2021 18:31:04 +0800
+Message-ID: <CANMq1KAsvXZAjmYCMQsAUwpkzuA9-PRnNWkpsLuNbOkP6DixGA@mail.gmail.com>
+Subject: Re: [PATCH] drm/dsi: Add _NO_ to MIPI_DSI_* flags disabling features
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Andrzej Hajda <a.hajda@samsung.com>, Robert Foss <robert.foss@linaro.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, 
+ David Airlie <airlied@linux.ie>, Emil Velikov <emil.velikov@collabora.com>,
+ Inki Dae <inki.dae@samsung.com>, Jernej Skrabec <jernej.skrabec@siol.net>, 
+ Jonas Karlman <jonas@kwiboo.se>, Joonyoung Shim <jy0922.shim@samsung.com>, 
+ Jordan Crouse <jcrouse@codeaurora.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Rajendra Nayak <rnayak@codeaurora.org>,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>, 
+ Rob Clark <robdclark@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Sean Paul <sean@poorly.run>, Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Xin Ji <xji@analogixsemi.com>, 
+ "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>, 
+ freedreno <freedreno@lists.freedesktop.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ MSM <linux-arm-msm@vger.kernel.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-samsung-soc <linux-samsung-soc@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210302_053526_575850_70E84053 
-X-CRM114-Status: GOOD (  20.46  )
+X-CRM114-CacheID: sfid-20210303_103234_066530_0A998E48 
+X-CRM114-Status: GOOD (  26.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
-X-Mailman-Version: 2.1.29
+X-Mailman-Version: 2.1.34
 Precedence: list
 List-Id: <linux-mediatek.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>, 
@@ -74,83 +123,123 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, linux-pci@vger.kernel.org,
- Bjorn Helgaas <bhelgaas@google.com>, Thierry Reding <thierry.reding@gmail.com>,
- "K. Y. Srinivasan" <kys@microsoft.com>, Will Deacon <will@kernel.org>,
- Marek Vasut <marek.vasut+renesas@gmail.com>, Rob Herring <robh@kernel.org>,
- Wei Liu <wei.liu@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <treding@nvidia.com>, Haiyang Zhang <haiyangz@microsoft.com>,
- Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-tegra@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMS0wMy0wMSAxNDowNiwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPj4gR2VzZW5kZXQ6
-IE1vbnRhZywgMDEuIE3DpHJ6IDIwMjEgdW0gMTQ6MzEgVWhyCj4+IFZvbjogIk1hcmMgWnluZ2ll
-ciIgPG1hekBrZXJuZWwub3JnPgo+Pgo+PiBGcmFuaywKPj4KPj4+Pj4gaSBndWVzcyBpdCdzIGEg
-YnVnIGluIGF0aDEwayBkcml2ZXIgb3IgbXkgcjY0IGJvYXJkIChpdCBpcyBhIHYxLjEKPj4+Pj4g
-d2hpY2ggaGFzIG1pc3NpbmcgY2FwYWNpdG9ycyBvbiB0eCBsaW5lcykuCj4+Pj4KPj4+PiBObywg
-dGhpcyBkZWZpbml0ZWx5IGxvb2tzIGxpa2UgYSBidWcgaW4gdGhlIE1USyBQQ0llIGRyaXZlciwK
-Pj4+PiB3aGVyZSB0aGUgbXV0ZXggaXMgZWl0aGVyIG5vdCBwcm9wZXJseSBpbml0aWFsaXNlZCwg
-Y29ycnVwdGVkLAo+Pj4+IG9yIHRoZSB3cm9uZyBwb2ludGVyIGlzIHBhc3NlZC4KPj4+Cj4+PiBi
-dXQgd2h5IGRvZXMgaXQgaGFwcGVuIG9ubHkgd2l0aCB0aGUgYXRoMTBrLWNhcmQgYW5kIG5vdCB0
-aGUgbXQ3NjEyIGluCj4+PiBzYW1lIHNsb3Q/Cj4+Cj4+IERvZXMgbXQ3NjEyIHVzZSBNU0k/IFdo
-YXQgd2UgaGF2ZSBoZXJlIGlzIGEgYm9ndXMgbXV0ZXggaW4gdGhlCj4+IE1USyBQQ0llIGRyaXZl
-ciwgYW5kIHRoZSBvbmx5IHdheSBub3QgdG8gZ2V0IHRoZXJlIHdvdWxkIGJlCj4+IHRvIGF2b2lk
-IHVzaW5nIE1TSXMuCj4gCj4gaSBndWVzcyB0aGlzIGNhcmQvaXRzIGRyaXZlciBkb2VzIG5vdCB1
-c2UgTVNJLiBEaWQgbm90IGZvdW5kIGFueXRoaW5nIGluICJkYXRhc2hlZXQiIFsxXSBvciBkcml2
-ZXIgWzJdIGFib3V0IG1zaQoKRldJVywgbm8gbmVlZCB0byBndWVzcyAtIGBsc3BjaSAtdmAgKGFz
-IHJvb3QpIHNob3VsZCB0ZWxsIHlvdSB3aGV0aGVyIAp0aGUgY2FyZCBoYXMgTVNJIChhbmQvb3Ig
-TVNJLVgpIGNhcGFiaWxpdHksIGFuZCB3aGV0aGVyIGl0IGlzIGVuYWJsZWQgaWYgc28uCgpSb2Jp
-bi4KCj4+Pgo+Pj4+IFRoaXMgcjY0IG1hY2hpbmUgaXMgc3VwcG9zZWQgdG8gaGF2ZSB3b3JraW5n
-IE1TSXMsIHJpZ2h0Pwo+Pj4KPj4+IGltaG8gbXQ3NjIyIGhhdmUgd29ya2luZyBNU0kKPj4+Cj4+
-Pj4gRG8geW91IGdldCB0aGUgc2FtZSBpc3N1ZSB3aXRob3V0IHRoaXMgc2VyaWVzPwo+Pj4KPj4+
-IHRlc3RlZCA1LjExLjAgWzFdIHdpdGhvdXQgdGhpcyBzZXJpZXMgKGJ1dCB3aXRoIHlvdXIvdGhv
-bWFzJyBwYXRjaAo+Pj4gZnJvbSBkaXNjdXNzaW9uIGFib3V0IG15IG9sZCBwYXRjaCkgYW5kIGdv
-dCBzYW1lIHRyYWNlLiBzbyB0aGlzIHNlcmllcwo+Pj4gZG9lcyBub3QgYnJlYWsgYW55dGhpbmcg
-aGVyZS4KPj4KPj4gQ2FuIHlvdSByZXRlc3Qgd2l0aG91dCBhbnkgYWRkaXRpb25hbCBwYXRjaCBv
-biB0b3Agb2YgNS4xMT8KPj4gVGhlc2UgdHdvIHBhdGNoZXMgb25seSBhZmZlY3QgcGxhdGZvcm1z
-IHRoYXQgZG8gKm5vdCogaGF2ZSBNU0lzIGF0IGFsbC4KPiAKPiBpIGNhbiByZXZlcnQgdGhlc2Ug
-MiwgYnV0IHN0aWxsIG5lZWQgcGF0Y2hlcyBmb3IgbXQ3NjIyIHBjaWUtc3VwcG9ydCBbM10uLi5i
-dHcuIGkgc2VlIHRoYXQgaSBtaXNzIHRoZXNlIGluIDUuMTEtbWFpbi4uLmRvIG5vdCBzZWUgdHJh
-Y2ViYWNrIHdpdGggdGhlbSAoaGF2ZSBmaXJtd2FyZSBub3QgaW5zdGFsbGVkLi4uKQo+IAo+IHJv
-b3RAYnBpLXI2NDp+IyBkbWVzZyB8IGdyZXAgYXRoCj4gWyAgICA2LjQ1MDc2NV0gYXRoMTBrX3Bj
-aSAwMDAwOjAxOjAwLjA6IGFzc2lnbiBJUlE6IGdvdCAxNDYKPiBbICAgIDYuNjYxNzUyXSBhdGgx
-MGtfcGNpIDAwMDA6MDE6MDAuMDogZW5hYmxpbmcgZGV2aWNlICgwMDAwIC0+IDAwMDIpCj4gWyAg
-ICA2LjY5NzgxMV0gYXRoMTBrX3BjaSAwMDAwOjAxOjAwLjA6IGVuYWJsaW5nIGJ1cyBtYXN0ZXJp
-bmcKPiBbICAgIDYuNzIxMjkzXSBhdGgxMGtfcGNpIDAwMDA6MDE6MDAuMDogcGNpIGlycSBtc2kg
-b3Blcl9pcnFfbW9kZSAyIGlycV9tb2RlIDAgcgo+IGVzZXRfbW9kZSAwCj4gWyAgICA2LjkyMTAz
-MF0gYXRoMTBrX3BjaSAwMDAwOjAxOjAwLjA6IEZhaWxlZCB0byBmaW5kIGZpcm13YXJlLU4uYmlu
-IChOIGJldHdlZW4KPiAgIDIgYW5kIDYpIGZyb20gYXRoMTBrL1FDQTk4OFgvaHcyLjA6IC0yCj4g
-WyAgICA2LjkzMTY5OF0gYXRoMTBrX3BjaSAwMDAwOjAxOjAwLjA6IGNvdWxkIG5vdCBmZXRjaCBm
-aXJtd2FyZSBmaWxlcyAoLTIpCj4gWyAgICA2Ljk0MDQxN10gYXRoMTBrX3BjaSAwMDAwOjAxOjAw
-LjA6IGNvdWxkIG5vdCBwcm9iZSBmdyAoLTIpCj4gCj4gc28gdHJhY2ViYWNrIHdhcyBjYXVzZWQg
-YnkgbWlzc2luZyBjaGFuZ2VzIGluIG10ayBwY2llLWRyaXZlciBub3QgeWV0IHVwc3RyZWFtLCBh
-ZGRlZCBDaHVhbmppYSBMaXUKPiAKPj4+Cj4+Pj4+IFRyaWVkIHdpdGggYW4gbXQ3NjEyZSwgdGhp
-cyBzZWVtcyB0byB3b3JrIHdpdGhvdXQgYW55IGVycm9ycy4KPj4+Pj4KPj4+Pj4gc28gZm9yIG10
-NzYyMi9tdDc2MjMKPj4+Pj4KPj4+Pj4gVGVzdGVkLWJ5OiBGcmFuayBXdW5kZXJsaWNoIDxmcmFu
-ay13QHB1YmxpYy1maWxlcy5kZT4KPj4+Pgo+Pj4+IFdlIGRlZmluaXRlbHkgbmVlZCB0byB1bmRl
-cnN0YW5kIHRoZSBhYm92ZS4KPj4+Cj4+PiB0aGVyZSBpcyBhIGhhcmR3YXJlLWJ1ZyB3aGljaCBt
-YXkgY2F1c2UgdGhpcy4uLmFmYWlyIGkgc2F3IHRoaXMgd2l0aAo+Pj4gdGhlIGNhcmQgaW4gcjY0
-IHdpdGggZWFybGllciBLZXJuZWwtdmVyc2lvbnMgd2hlcmUgb3RoZXIgY2FyZHMgd29yawo+Pj4g
-KGxpa2UgdGhlIG10NzYxMmUpLgo+Pgo+PiBJIGRvbid0IHRoaW5rIGEgSFcgYnVnIGFmZmVjdGlu
-ZyBQQ0kgd291bGQgY2F1c2Ugd2hhdCB3ZSBhcmUgc2VlaW5nCj4+IGhlcmUsIHVubGVzcyBpdCBy
-ZXN1bHRzIGluIG1lbW9yeSBjb3JydXB0aW9uLgo+IAo+IAo+IFsxXSBodHRwczovL3d3dy5hc2lh
-cmYuY29tL3Nob3Avd2lmaS13bGFuL3dpZmlfbWluaV9wY2llL3dzMjQzMy13aWZpLTExYWMtbWlu
-aS1wY2llLW1vZHVsZS1tYW51ZmFjdHVyZXIvCj4gWzJdIGdyZXAgLVJuaSAnbXNpJyBkcml2ZXJz
-L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZ4Mi8KPiBbM10gaHR0cHM6Ly9wYXRjaHdv
-cmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhdGVrL2xpc3QvP3Nlcmllcz0zNzI4ODUK
-PiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGxp
-bnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cj4gbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
-YWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1hcm0ta2VybmVsCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Mon, Mar 1, 2021 at 4:59 PM Linus Walleij <linus.walleij@linaro.org> wrote:
+>
+> On Thu, Feb 11, 2021 at 4:34 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
+>
+> > Many of the DSI flags have names opposite to their actual effects,
+> > e.g. MIPI_DSI_MODE_EOT_PACKET means that EoT packets will actually
+> > be disabled. Fix this by including _NO_ in the flag names, e.g.
+> > MIPI_DSI_MODE_NO_EOT_PACKET.
+>
+> Unless someone like me interpreted it literally...
+>
+> Like in these:
+>
+> >  drivers/gpu/drm/mcde/mcde_dsi.c                      | 2 +-
+> >  drivers/gpu/drm/panel/panel-novatek-nt35510.c        | 2 +-
+> >  drivers/gpu/drm/panel/panel-samsung-s6d16d0.c        | 2 +-
+> >  drivers/gpu/drm/panel/panel-sony-acx424akp.c         | 2 +-
+>
+> > diff --git a/drivers/gpu/drm/mcde/mcde_dsi.c b/drivers/gpu/drm/mcde/mcde_dsi.c
+> > index 2314c8122992..f4cdc3cfd7d0 100644
+> > --- a/drivers/gpu/drm/mcde/mcde_dsi.c
+> > +++ b/drivers/gpu/drm/mcde/mcde_dsi.c
+> > @@ -760,7 +760,7 @@ static void mcde_dsi_start(struct mcde_dsi *d)
+> >                 DSI_MCTL_MAIN_DATA_CTL_BTA_EN |
+> >                 DSI_MCTL_MAIN_DATA_CTL_READ_EN |
+> >                 DSI_MCTL_MAIN_DATA_CTL_REG_TE_EN;
+> > -       if (d->mdsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET)
+> > +       if (d->mdsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
+> >                 val |= DSI_MCTL_MAIN_DATA_CTL_HOST_EOT_GEN;
+>
+> If you read the code you can see that this is interpreted as inserting
+> an EOT packet, so here you need to change the logic such:
+>
+> if (!d->mdsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
+>     val |= DSI_MCTL_MAIN_DATA_CTL_HOST_EOT_GEN;
+>
+> This will make sure the host generates the EOT packet in HS mode
+> *unless* the flag is set.
+>
+> (I checked the data sheet.)
+>
+> > diff --git a/drivers/gpu/drm/panel/panel-novatek-nt35510.c b/drivers/gpu/drm/panel/panel-novatek-nt35510.c
+> > index b9a0e56f33e2..9d9334656803 100644
+> > --- a/drivers/gpu/drm/panel/panel-novatek-nt35510.c
+> > +++ b/drivers/gpu/drm/panel/panel-novatek-nt35510.c
+> > @@ -899,7 +899,7 @@ static int nt35510_probe(struct mipi_dsi_device *dsi)
+> >         dsi->hs_rate = 349440000;
+> >         dsi->lp_rate = 9600000;
+> >         dsi->mode_flags = MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> > -               MIPI_DSI_MODE_EOT_PACKET;
+> > +               MIPI_DSI_MODE_NO_EOT_PACKET;
+>
+> Here you should just delete the MIPI_DSI_MODE_EOT_PACKET
+> flag because this was used with the MCDE driver which interpret the
+> flag literally.
+>
+> > diff --git a/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c b/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
+> > index 4aac0d1573dd..b04b9975e9b2 100644
+> > --- a/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
+> > +++ b/drivers/gpu/drm/panel/panel-samsung-s6d16d0.c
+> > @@ -186,7 +186,7 @@ static int s6d16d0_probe(struct mipi_dsi_device *dsi)
+> >          */
+> >         dsi->mode_flags =
+> >                 MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> > -               MIPI_DSI_MODE_EOT_PACKET;
+> > +               MIPI_DSI_MODE_NO_EOT_PACKET;
+>
+> Same, just delete the flag.
+>
+> > --- a/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c
+> > +++ b/drivers/gpu/drm/panel/panel-samsung-s6e63m0-dsi.c
+> > @@ -97,7 +97,7 @@ static int s6e63m0_dsi_probe(struct mipi_dsi_device *dsi)
+> >         dsi->hs_rate = 349440000;
+> >         dsi->lp_rate = 9600000;
+> >         dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
+> > -               MIPI_DSI_MODE_EOT_PACKET |
+> > +               MIPI_DSI_MODE_NO_EOT_PACKET |
+> >                 MIPI_DSI_MODE_VIDEO_BURST;
+>
+> Same, just delete the flag.
+>
+> > diff --git a/drivers/gpu/drm/panel/panel-sony-acx424akp.c b/drivers/gpu/drm/panel/panel-sony-acx424akp.c
+> > index 065efae213f5..6b706cbf2f9c 100644
+> > --- a/drivers/gpu/drm/panel/panel-sony-acx424akp.c
+> > +++ b/drivers/gpu/drm/panel/panel-sony-acx424akp.c
+> > @@ -450,7 +450,7 @@ static int acx424akp_probe(struct mipi_dsi_device *dsi)
+> >         else
+> >                 dsi->mode_flags =
+> >                         MIPI_DSI_CLOCK_NON_CONTINUOUS |
+> > -                       MIPI_DSI_MODE_EOT_PACKET;
+> > +                       MIPI_DSI_MODE_NO_EOT_PACKET;
+>
+> Same, just delete the flag.
+>
+> These are all just semantic bugs due to the ambiguity of the flags, it is
+> possible to provide a Fixes: flag for each file using this flag the wrong way
+> but I dunno if it's worth it.
+
+Wow nice catch.
+
+I think we should fix all of those _before_ my patch is applied, with
+proper Fixes tags so that this can be backported to stable branches,
+even if it's a no-op. I can look into it but that may take a bit of
+time.
+
+Thanks,
+
+>
+> Yours,
+> Linus Walleij
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
