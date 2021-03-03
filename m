@@ -2,84 +2,93 @@ Return-Path: <SRS0=dK9R=IB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71CA9C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 15:54:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D54FFC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 16:08:03 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E521064EE3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 15:54:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E521064EE3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2EF0964ED7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Mar 2021 16:08:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2EF0964ED7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sAhIgZm40WiPayR5oCgXyqAuxgSyg8dXu0+UcImQwYw=; b=ctbxooHkEfNqn+aWHdUVnUV/R
-	1VCZe2jriHdU1SaYquXJoyVnUuiFx84U8+8Mri6M+y637xWMfiN4nbekCJGXVeeTQebG8guql2JCP
-	zUbYTbM7lpl4ADFxdBeN6o+zp7Au/eh+Eb9SP2tHWFWox0YGcFRUlmkJONfwVpYfPAhRzjOHAK7v9
-	XO4IdyDrUEypKn1GiBy3hLlmdQM+xXMZPdInSA0XwCnge6Te7+i4DsV7HtggiIkthFae2UQriwXdk
-	oHcy9+/mEdYZsmlZvg9yjqBeNbEQr86u8rg9Kh/vJTXrSdcCsvLMqIFWkTLRRGV3SbX9zaxfBFErJ
-	mowXr1Clg==;
+	 bh=3xKB4enO5ac4FJJcHYRlZFzvKJqKepy+uPQ3yR6iHv0=; b=NAHmSWBEwcuVdLWiGLnGqFBHG
+	biNC4OhizaPHBBPRWpAQfQ/QzVtdJYslg48TyP0j/23R+5auVoTrju/8ZRMbJlwxv3gDaLMtB9NtB
+	Kl2NVDsi6JtGQd+X4YJvdZjMjISlxMlUxchwkavVwR2qAJ0ycdsejO32TamL9DMlS2Kw7dn/vFLrO
+	HeGFxweUxV7R+F7Z3NBi5Ko8qTus9AQgb2+40hzPxSkHFinL2DcJUQdQS+52Nko2xYb4Tz91H7X8U
+	Bi3U39BHTg2X1ITNrVPUi6XBjvJvEoRVOR+0g3wqQ4fFPkMPMSho9QdkeHZHV57gnWMj4Qutqbl5g
+	g5fK2Yk2A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHTpJ-005TrC-7C; Wed, 03 Mar 2021 15:54:17 +0000
+	id 1lHU2L-005X8u-Fy; Wed, 03 Mar 2021 16:07:45 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHSnM-005CRU-VI; Wed, 03 Mar 2021 14:48:13 +0000
+ id 1lHSoT-005Dbk-U3; Wed, 03 Mar 2021 14:49:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID:Sender
  :Reply-To:Content-ID:Content-Description;
- bh=XjZAUEaJ8Lk6KV/+KYlBc38rH8IcowsW85DULXoAymk=; b=tfo5Jdsk28DGZPbdBgGzVUsEXH
- B6HvV3rAp5j+gICxiMnHGQXsGLoa0t0TFcP8+sUq/ZYaRhBLEUQhf9fa7gLJwQYr7adMnvrSSjPLq
- NuxMK/ZXacnVZlZZi8NGTL7Bp4ZnoGgSH8FlZyn+EY3HRB5HoWCEuePgF9VQmmb6hX4bKxoY64hO2
- lkG/6I7hmJJ+fnD1NZH2Qbtgc+C7DQYp0vgLXM3tOqmgTMTJADhYcpRHfq14tAGOORWPI38GF2kAp
- B5tluYu6BHcCOSsSo+twEqeQIfiF6PdWhLQ3jQZHFzPr90cflu1eAOQAH5mZRERawg7ZoiJK68e3S
- gW5HtqQw==;
-Received: from mail.kernel.org ([198.145.29.99])
+ bh=AWzLvF5Mphj2LxOTWlI1vkLJVO/ce4uOqjBNnFlwD1A=; b=FiPd90PMMajOHj2MqlbpyXNXc4
+ /Og4mLDp7PcUwUQ1+TFSfB7ViOVdb1ExmXaNpT0uXXShPUVdnALz+jY88K5SncPgQHtGAzSGudl+J
+ 7GnRocAzKZkXub23LuxDdUdeUxMnZV1rx+/wdFZTbinnOjyQm8qhw1H2nyi/TrhJuObdTa3oLXhg8
+ ovr6q4w2HWw8NPc/RS2kLfrOPrA0yp+dEzLM0BRzJEQaGv6NGb23N1p+c/XvumakV8bLzlCnPKbEJ
+ 2P9P/zB6Sw9/kgEfq9Qzn1OdMbJbQB0Dp494QMAe9We9uqaLgoCkx6HnxRRdgW4sPXwNciqPif/Lj
+ 1CwUS0OQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lH3fT-00H3MA-45; Tue, 02 Mar 2021 11:58:29 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 59C3264F94;
- Tue,  2 Mar 2021 11:58:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614686300;
- bh=wZpW6HTnql2/6O3FZEJJqHicP9NtO9R0NZCbSqbg/K8=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=X+y7sF7rNuuQSQsxJHqjW1uDc39dsWJwcCOs4THN6ku1LHyVxEO0vB0Jgn572yVVH
- RTDPKDichE5A5q0S3r+BgReoCwjsesIE65S9lwzv0NRlzsXWxPP8oP/2GJjlYmu6y3
- G2WK4mvXx6NscC8r7WuzHD5j5xVeSIxzzd3onay0hcLKE05lJzL8OPxHl3NcNQj2Ef
- X80/3Wxdktkk2hlXDOY+J2/FHdrt2u6dPQQJHvR2xPc6jqnxBsEMUg/1izN1fNc/YU
- CwGf6h2I+7l5dvtnmimVOFHnilmKP3DPo1hVLbFNdWKxUXAYu9PidLGM00iEUJQ/D4
- mIP2pEMnTqyUg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 23/33] PCI: mediatek: Add missing of_node_put() to
- fix reference leak
-Date: Tue,  2 Mar 2021 06:57:39 -0500
-Message-Id: <20210302115749.62653-23-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210302115749.62653-1-sashal@kernel.org>
-References: <20210302115749.62653-1-sashal@kernel.org>
+ id 1lHPzZ-002Pnt-HI; Wed, 03 Mar 2021 11:48:39 +0000
+X-UUID: 1040ff172b8b42e88dc01e7eb0b05f52-20210303
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=AWzLvF5Mphj2LxOTWlI1vkLJVO/ce4uOqjBNnFlwD1A=; 
+ b=BbGfO3XYJn8WQGjuNe7KPQh7xrD6hCNEn2Kz9s75glO/Agr//PqawyeRZSod0+0LWZKYj1DQfdXiqJiqcSGThA1hVzH5TLCQWv2LqKFegL3/03jCmn7PtCs5XN+o1mI3oaUuam+SsabC4VoFb5nXg3/LvNR625OjtAAk6r5dKdk=;
+X-UUID: 1040ff172b8b42e88dc01e7eb0b05f52-20210303
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <walter-zh.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2098396463; Wed, 03 Mar 2021 03:48:22 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Mar 2021 03:48:21 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Mar 2021 19:48:19 +0800
+Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 3 Mar 2021 19:48:19 +0800
+Message-ID: <1614772099.26785.3.camel@mtksdccf07>
+Subject: Re: [PATCH v4] kasan: remove redundant config option
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+CC: Alexander Potapenko <glider@google.com>, Dmitry Vyukov
+ <dvyukov@google.com>, Nathan Chancellor <natechancellor@gmail.com>, "Arnd
+ Bergmann" <arnd@arndb.de>, Andrey Konovalov <andreyknvl@google.com>,
+ <kasan-dev@googlegroups.com>, <linux-mm@kvack.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>, Andrey Ryabinin
+ <ryabinin.a.a@gmail.com>
+Date: Wed, 3 Mar 2021 19:48:19 +0800
+In-Reply-To: <20210226012531.29231-1-walter-zh.wu@mediatek.com>
+References: <20210226012531.29231-1-walter-zh.wu@mediatek.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210302_115829_230648_636584E4 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20210303_114839_171129_C8904E81 
+X-CRM114-Status: GOOD (  27.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,44 +100,219 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogS3J6eXN6dG9mIFdpbGN6ecWEc2tpIDxrd0BsaW51eC5jb20+CgpbIFVwc3RyZWFtIGNv
-bW1pdCA0MjgxNGM0MzhhYWM3OTc0NmQzMTBmNDEzYTI3ZDViMGI5NTljNWRlIF0KClRoZSBmb3Jf
-ZWFjaF9hdmFpbGFibGVfY2hpbGRfb2Zfbm9kZSBoZWxwZXIgaW50ZXJuYWxseSBtYWtlcyB1c2Ug
-b2YgdGhlCm9mX2dldF9uZXh0X2F2YWlsYWJsZV9jaGlsZCgpIHdoaWNoIHBlcmZvcm1zIGFuIG9m
-X25vZGVfZ2V0KCkgb24gZWFjaAppdGVyYXRpb24gd2hlbiBzZWFyY2hpbmcgZm9yIG5leHQgYXZh
-aWxhYmxlIGNoaWxkIG5vZGUuCgpTaG91bGQgYW4gYXZhaWxhYmxlIGNoaWxkIG5vZGUgYmUgZm91
-bmQsIHRoZW4gaXQgd291bGQgcmV0dXJuIGEgZGV2aWNlCm5vZGUgcG9pbnRlciB3aXRoIHJlZmVy
-ZW5jZSBjb3VudCBpbmNyZW1lbnRlZCwgdGh1cyBlYXJseSByZXR1cm4gZnJvbQp0aGUgbWlkZGxl
-IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIGV4cGxpY2l0IG9mX25vZGVfcHV0KCkgdG8gcHJldmVu
-dApyZWZlcmVuY2UgY291bnQgbGVhay4KClRvIHN0b3AgdGhlIHJlZmVyZW5jZSBsZWFrLCBleHBs
-aWNpdGx5IGNhbGwgb2Zfbm9kZV9wdXQoKSBiZWZvcmUKcmV0dXJuaW5nIGFmdGVyIGFuIGVycm9y
-IG9jY3VycmVkLgoKTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDIxMDEyMDE4NDgx
-MC4zMDY4Nzk0LTEta3dAbGludXguY29tClNpZ25lZC1vZmYtYnk6IEtyenlzenRvZiBXaWxjennF
-hHNraSA8a3dAbGludXguY29tPgpTaWduZWQtb2ZmLWJ5OiBMb3JlbnpvIFBpZXJhbGlzaSA8bG9y
-ZW56by5waWVyYWxpc2lAYXJtLmNvbT4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hh
-bEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-IHwgNyArKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9u
-cygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMKaW5kZXggNjI2YTdjMzUy
-ZGZkLi43MjhhNTk2NTU4MjUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
-ZS1tZWRpYXRlay5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-CkBAIC0xMDYzLDE0ICsxMDYzLDE0IEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc2V0dXAoc3RydWN0
-IG10a19wY2llICpwY2llKQogCQllcnIgPSBvZl9wY2lfZ2V0X2RldmZuKGNoaWxkKTsKIAkJaWYg
-KGVyciA8IDApIHsKIAkJCWRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIHBhcnNlIGRldmZuOiAlZFxu
-IiwgZXJyKTsKLQkJCXJldHVybiBlcnI7CisJCQlnb3RvIGVycm9yX3B1dF9ub2RlOwogCQl9CiAK
-IAkJc2xvdCA9IFBDSV9TTE9UKGVycik7CiAKIAkJZXJyID0gbXRrX3BjaWVfcGFyc2VfcG9ydChw
-Y2llLCBjaGlsZCwgc2xvdCk7CiAJCWlmIChlcnIpCi0JCQlyZXR1cm4gZXJyOworCQkJZ290byBl
-cnJvcl9wdXRfbm9kZTsKIAl9CiAKIAllcnIgPSBtdGtfcGNpZV9zdWJzeXNfcG93ZXJ1cChwY2ll
-KTsKQEAgLTEwODYsNiArMTA4Niw5IEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc2V0dXAoc3RydWN0
-IG10a19wY2llICpwY2llKQogCQltdGtfcGNpZV9zdWJzeXNfcG93ZXJkb3duKHBjaWUpOwogCiAJ
-cmV0dXJuIDA7CitlcnJvcl9wdXRfbm9kZToKKwlvZl9ub2RlX3B1dChjaGlsZCk7CisJcmV0dXJu
-IGVycjsKIH0KIAogc3RhdGljIGludCBtdGtfcGNpZV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
-aWNlICpwZGV2KQotLSAKMi4zMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Fri, 2021-02-26 at 09:25 +0800, Walter Wu wrote:
+> CONFIG_KASAN_STACK and CONFIG_KASAN_STACK_ENABLE both enable KASAN stack
+> instrumentation, but we should only need one config, so that we remove
+> CONFIG_KASAN_STACK_ENABLE and make CONFIG_KASAN_STACK workable.  see [1].
+> 
+> When enable KASAN stack instrumentation, then for gcc we could do no
+> prompt and default value y, and for clang prompt and default value n.
+> 
+> [1]: https://bugzilla.kernel.org/show_bug.cgi?id=210221
+> 
+> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
+> Acked-by: Arnd Bergmann <arnd@arndb.de>
+> Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
+> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
+> Cc: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> ---
+> 
+> v4: After this patch sent, someone had modification about KASAN_STACK,
+>     so I need to rebase codebase. Thank Andrey for your pointing.
+> 
+Hi Andrew,
+
+Could you pick this v4 patch up into mm?
+Thanks.
+
+Walter
+
+> ---
+>  arch/arm64/kernel/sleep.S        |  2 +-
+>  arch/x86/kernel/acpi/wakeup_64.S |  2 +-
+>  include/linux/kasan.h            |  2 +-
+>  lib/Kconfig.kasan                |  8 ++------
+>  mm/kasan/common.c                |  2 +-
+>  mm/kasan/kasan.h                 |  2 +-
+>  mm/kasan/report_generic.c        |  2 +-
+>  scripts/Makefile.kasan           | 10 ++++++++--
+>  security/Kconfig.hardening       |  4 ++--
+>  9 files changed, 18 insertions(+), 16 deletions(-)
+> 
+> diff --git a/arch/arm64/kernel/sleep.S b/arch/arm64/kernel/sleep.S
+> index 5bfd9b87f85d..4ea9392f86e0 100644
+> --- a/arch/arm64/kernel/sleep.S
+> +++ b/arch/arm64/kernel/sleep.S
+> @@ -134,7 +134,7 @@ SYM_FUNC_START(_cpu_resume)
+>  	 */
+>  	bl	cpu_do_resume
+>  
+> -#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
+>  	mov	x0, sp
+>  	bl	kasan_unpoison_task_stack_below
+>  #endif
+> diff --git a/arch/x86/kernel/acpi/wakeup_64.S b/arch/x86/kernel/acpi/wakeup_64.S
+> index 56b6865afb2a..d5d8a352eafa 100644
+> --- a/arch/x86/kernel/acpi/wakeup_64.S
+> +++ b/arch/x86/kernel/acpi/wakeup_64.S
+> @@ -115,7 +115,7 @@ SYM_FUNC_START(do_suspend_lowlevel)
+>  	movq	pt_regs_r14(%rax), %r14
+>  	movq	pt_regs_r15(%rax), %r15
+>  
+> -#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
+>  	/*
+>  	 * The suspend path may have poisoned some areas deeper in the stack,
+>  	 * which we now need to unpoison.
+> diff --git a/include/linux/kasan.h b/include/linux/kasan.h
+> index b91732bd05d7..14f72ec96492 100644
+> --- a/include/linux/kasan.h
+> +++ b/include/linux/kasan.h
+> @@ -330,7 +330,7 @@ static inline bool kasan_check_byte(const void *address)
+>  
+>  #endif /* CONFIG_KASAN */
+>  
+> -#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
+>  void kasan_unpoison_task_stack(struct task_struct *task);
+>  #else
+>  static inline void kasan_unpoison_task_stack(struct task_struct *task) {}
+> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+> index 624ae1df7984..cffc2ebbf185 100644
+> --- a/lib/Kconfig.kasan
+> +++ b/lib/Kconfig.kasan
+> @@ -138,9 +138,10 @@ config KASAN_INLINE
+>  
+>  endchoice
+>  
+> -config KASAN_STACK_ENABLE
+> +config KASAN_STACK
+>  	bool "Enable stack instrumentation (unsafe)" if CC_IS_CLANG && !COMPILE_TEST
+>  	depends on KASAN_GENERIC || KASAN_SW_TAGS
+> +	default y if CC_IS_GCC
+>  	help
+>  	  The LLVM stack address sanitizer has a know problem that
+>  	  causes excessive stack usage in a lot of functions, see
+> @@ -154,11 +155,6 @@ config KASAN_STACK_ENABLE
+>  	  CONFIG_COMPILE_TEST.	On gcc it is assumed to always be safe
+>  	  to use and enabled by default.
+>  
+> -config KASAN_STACK
+> -	int
+> -	default 1 if KASAN_STACK_ENABLE || CC_IS_GCC
+> -	default 0
+> -
+>  config KASAN_SW_TAGS_IDENTIFY
+>  	bool "Enable memory corruption identification"
+>  	depends on KASAN_SW_TAGS
+> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> index b5e08d4cefec..7b53291dafa1 100644
+> --- a/mm/kasan/common.c
+> +++ b/mm/kasan/common.c
+> @@ -63,7 +63,7 @@ void __kasan_unpoison_range(const void *address, size_t size)
+>  	kasan_unpoison(address, size);
+>  }
+>  
+> -#if CONFIG_KASAN_STACK
+> +#ifdef CONFIG_KASAN_STACK
+>  /* Unpoison the entire stack for a task. */
+>  void kasan_unpoison_task_stack(struct task_struct *task)
+>  {
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 8c55634d6edd..3436c6bf7c0c 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -231,7 +231,7 @@ void *kasan_find_first_bad_addr(void *addr, size_t size);
+>  const char *kasan_get_bug_type(struct kasan_access_info *info);
+>  void kasan_metadata_fetch_row(char *buffer, void *row);
+>  
+> -#if defined(CONFIG_KASAN_GENERIC) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN_GENERIC) && defined(CONFIG_KASAN_STACK)
+>  void kasan_print_address_stack_frame(const void *addr);
+>  #else
+>  static inline void kasan_print_address_stack_frame(const void *addr) { }
+> diff --git a/mm/kasan/report_generic.c b/mm/kasan/report_generic.c
+> index 41f374585144..de732bc341c5 100644
+> --- a/mm/kasan/report_generic.c
+> +++ b/mm/kasan/report_generic.c
+> @@ -128,7 +128,7 @@ void kasan_metadata_fetch_row(char *buffer, void *row)
+>  	memcpy(buffer, kasan_mem_to_shadow(row), META_BYTES_PER_ROW);
+>  }
+>  
+> -#if CONFIG_KASAN_STACK
+> +#ifdef CONFIG_KASAN_STACK
+>  static bool __must_check tokenize_frame_descr(const char **frame_descr,
+>  					      char *token, size_t max_tok_len,
+>  					      unsigned long *value)
+> diff --git a/scripts/Makefile.kasan b/scripts/Makefile.kasan
+> index 1e000cc2e7b4..abf231d209b1 100644
+> --- a/scripts/Makefile.kasan
+> +++ b/scripts/Makefile.kasan
+> @@ -2,6 +2,12 @@
+>  CFLAGS_KASAN_NOSANITIZE := -fno-builtin
+>  KASAN_SHADOW_OFFSET ?= $(CONFIG_KASAN_SHADOW_OFFSET)
+>  
+> +ifdef CONFIG_KASAN_STACK
+> +	stack_enable := 1
+> +else
+> +	stack_enable := 0
+> +endif
+> +
+>  ifdef CONFIG_KASAN_GENERIC
+>  
+>  ifdef CONFIG_KASAN_INLINE
+> @@ -27,7 +33,7 @@ else
+>  	CFLAGS_KASAN := $(CFLAGS_KASAN_SHADOW) \
+>  	 $(call cc-param,asan-globals=1) \
+>  	 $(call cc-param,asan-instrumentation-with-call-threshold=$(call_threshold)) \
+> -	 $(call cc-param,asan-stack=$(CONFIG_KASAN_STACK)) \
+> +	 $(call cc-param,asan-stack=$(stack_enable)) \
+>  	 $(call cc-param,asan-instrument-allocas=1)
+>  endif
+>  
+> @@ -42,7 +48,7 @@ else
+>  endif
+>  
+>  CFLAGS_KASAN := -fsanitize=kernel-hwaddress \
+> -		-mllvm -hwasan-instrument-stack=$(CONFIG_KASAN_STACK) \
+> +		-mllvm -hwasan-instrument-stack=$(stack_enable) \
+>  		-mllvm -hwasan-use-short-granules=0 \
+>  		$(instrumentation_flags)
+>  
+> diff --git a/security/Kconfig.hardening b/security/Kconfig.hardening
+> index 269967c4fc1b..a56c36470cb1 100644
+> --- a/security/Kconfig.hardening
+> +++ b/security/Kconfig.hardening
+> @@ -64,7 +64,7 @@ choice
+>  	config GCC_PLUGIN_STRUCTLEAK_BYREF
+>  		bool "zero-init structs passed by reference (strong)"
+>  		depends on GCC_PLUGINS
+> -		depends on !(KASAN && KASAN_STACK=1)
+> +		depends on !(KASAN && KASAN_STACK)
+>  		select GCC_PLUGIN_STRUCTLEAK
+>  		help
+>  		  Zero-initialize any structures on the stack that may
+> @@ -82,7 +82,7 @@ choice
+>  	config GCC_PLUGIN_STRUCTLEAK_BYREF_ALL
+>  		bool "zero-init anything passed by reference (very strong)"
+>  		depends on GCC_PLUGINS
+> -		depends on !(KASAN && KASAN_STACK=1)
+> +		depends on !(KASAN && KASAN_STACK)
+>  		select GCC_PLUGIN_STRUCTLEAK
+>  		help
+>  		  Zero-initialize any stack variables that may be passed
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
