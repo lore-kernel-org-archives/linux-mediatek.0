@@ -2,85 +2,72 @@ Return-Path: <SRS0=K2BI=IC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D19FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 06:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A4D6C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 09:07:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3CD264EE3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 06:28:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3CD264EE3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gondor.apana.org.au
+	by mail.kernel.org (Postfix) with ESMTPS id 62DD664F20
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 09:07:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62DD664F20
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uM25fuy5q5PWBAsk0j+tQtB3x5piEwFE2T5nfIx5PW4=; b=BqjxzovZqiWi/QL9JdRNa1G9I
-	AtNKkHUjccVRKxTGVYrgGjQ/bXE4wOWQ49hB0tNxLygemTbJFkd6RzQRpsB49fGZJTR1mDOFFj70i
-	ZR8ckzlLCJYnmVaiSJXbyjEBMHExq/HTfoei/jXqpYs5JlVCe0GCd1WKTjadNZSkp04Xil/bYNup5
-	2UcZb9/Ia0arD7dYViIm8LY/TmQEygR5ZwkdTb4SPlYITPiOdWryaldLPJKwyxUbmhVLwqgTpKw94
-	4YM0Y/hLnHlqmIVLHgt3SdaWhhWIPJ+WWpysmOvul+MVM6FF4Jd1uY6y0PDTGOJKGIc9Wq/RuYybZ
-	JkN5sKzSA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IFYquzypJ6lFjISTzYICsqmkG+11UpuCs3kqfzV5anQ=; b=hMYWcwj7xHwvBYmXSqy3LHjmDe
+	WSGgC6AMT09Wo2ful+JGmkf5TvsvGr9u8yAAJcpf9di6Zk1KF6/L8whm7kEGXzz90//r5i8yyAE+y
+	ozgAuHxsNiKOBkk1xlNAtijgVUfY2xZOn15zxlzxH4OSDC02HEjGqTkA+Bj8D1//zhVMvhUqA+Yy+
+	KHe7fTAtdvYvmPXk5kLrghILYiRJe+nYHy6iPEaUmKTmIW+Hj7zt+y8U7Bc9MUlvxqepOQ7R1Hs6u
+	DcTTdu5SI55j8L4UorvEo886aTMBd8HoCqzm4TZlcnkVKrf7N6mvigZQgI8TZzIV4huYDIYAEJ4gJ
+	PWnOJv+A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHhSu-007vEB-I4; Thu, 04 Mar 2021 06:28:04 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1lHjxL-008ESu-Rd; Thu, 04 Mar 2021 09:07:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHhSp-007vDG-DF; Thu, 04 Mar 2021 06:28:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=qY+hpYBOveCI8Pg3WBMYKpJF2n9ALXSLFfXX/pdXvZM=; b=h4YEHEATKotM+sXZqQNteVnQ+q
- ewR5GlWY/uOxUnY7qQSXEN5FnHwOSi2hCYiY9hpogG31zAAAlrW1k3L17AvZNw5JoW/EBHXigIBBj
- 8YSQD/K20Wx0co5loJvckfqrPK0lTpxfv66q/IbcOb9BiqCcYDBis+d0Cuff4XJqfFwHpvKkJyXTl
- ULbsysPcnknXmw4I3dtev0THYI0tDOPwwuhbmtUK55Rx+rACm95bUbib/p5g0Rcfm5F9W5s8uZV42
- FgT3hxdOluzkGyIYZnwWBt3ddiSlyRm5Jz9AyL0P7kFBB+rIKThGIe2WXMBt04jNdPk52Yvn++kuG
- tvLI0Jgg==;
-Received: from helcar.hmeau.com ([216.24.177.18] helo=fornost.hmeau.com)
- by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHhSm-005rHq-Af; Thu, 04 Mar 2021 06:27:56 +0000
-Received: from gwarestrin.arnor.me.apana.org.au ([192.168.103.7])
- by fornost.hmeau.com with smtp (Exim 4.92 #5 (Debian))
- id 1lHhRd-0007I3-Am; Thu, 04 Mar 2021 17:26:46 +1100
-Received: by gwarestrin.arnor.me.apana.org.au (sSMTP sendmail emulation);
- Thu, 04 Mar 2021 17:26:44 +1100
-Date: Thu, 4 Mar 2021 17:26:44 +1100
-From: Herbert Xu <herbert@gondor.apana.org.au>
-To: Allen Pais <allen.lkml@gmail.com>
-Cc: davem@davemloft.net, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
- jesper.nilsson@axis.com, lars.persson@axis.com,
- horia.geanta@nxp.com, aymen.sghaier@nxp.com, gcherian@marvell.com,
- thomas.lendacky@amd.com, john.allen@amd.com, gilad@benyossef.com,
- bbrezillon@kernel.org, arno@natisbad.org, schalla@marvell.com,
- matthias.bgg@gmail.com, jamie@jamieiles.com,
- giovanni.cabiddu@intel.com, heiko@sntech.de, krzk@kernel.org,
- vz@mleia.com, k.konieczny@samsung.com, linux-crypto@vger.kernel.org,
- linux-mediatek@lists.infradead.org, qat-linux@intel.com,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Allen Pais <apais@linux.microsoft.com>,
- Romain Perier <romain.perier@gmail.com>
-Subject: Re: [PATCH v5 01/19] crypto: amcc: convert tasklets to use new
- tasklet_setup() API
-Message-ID: <20210304062644.GA5107@gondor.apana.org.au>
-References: <20210208094238.571015-1-allen.lkml@gmail.com>
- <20210208094238.571015-2-allen.lkml@gmail.com>
+ id 1lHjsz-008DNR-PJ
+ for linux-mediatek@lists.infradead.org; Thu, 04 Mar 2021 09:03:23 +0000
+X-UUID: 32d55987ba1a463c986be1c8061c2fde-20210304
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=pmQVdoqfTHq5RKLkZ1XLEzbStJFkEDy/FK4jg5xDjWk=; 
+ b=eqiXxk3mSykNVOGVNbpSwR1nbOlcqyA3MeG5g2ipqt+F0RNhC8QOyUgBAT1U2LKvYVijx7gyGwkZbu2jQwdFR5X233/12kE+8L5UG1+G0/FmYrNLbpWf0qZKnhg6BdNjZNjccJb0QcjFjBzWBHfy9UR0kBwccQ7os7N2XejnPJc=;
+X-UUID: 32d55987ba1a463c986be1c8061c2fde-20210304
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2077840375; Thu, 04 Mar 2021 01:02:48 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Mar 2021 01:02:47 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Mar 2021 17:02:44 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 4 Mar 2021 17:02:44 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v4] mt76: mt7615: add missing capabilities for DBDC
+Date: Thu, 4 Mar 2021 16:55:05 +0800
+Message-ID: <0573b06759c90309b5a6a6e2b6b95796e7db60c7.1614843966.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210208094238.571015-2-allen.lkml@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210304_062756_871822_4D432018 
-X-CRM114-Status: GOOD (  10.99  )
+X-TM-SNTS-SMTP: 963A089E76DA1727F5AD6D7B82587DDEB008139ED7B7D853073BDBB8C5E468822000:8
+X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,28 +84,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 08, 2021 at 03:12:20PM +0530, Allen Pais wrote:
-> From: Allen Pais <apais@linux.microsoft.com>
-> 
-> In preparation for unconditionally passing the
-> struct tasklet_struct pointer to all tasklet
-> callbacks, switch to using the new tasklet_setup()
-> and from_tasklet() to pass the tasklet pointer explicitly.
-> 
-> Signed-off-by: Romain Perier <romain.perier@gmail.com>
-> Signed-off-by: Allen Pais <apais@linux.microsoft.com>
-> ---
->  drivers/crypto/amcc/crypto4xx_core.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+This improves performance for second phy.
 
-This introduces a compiler warning with C=1 W=1.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+change since v4 - fix init order.
+change since v3 - none.
+change since v2 - adjust setup sequence.
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/init.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Cheers,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index 88a2ee7e7143..e70e852c1af8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -448,6 +448,9 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
+ 
+ 	/* second phy can only handle 5 GHz */
+ 	mphy->cap.has_5ghz = true;
++	mphy->sband_5g.sband.ht_cap.cap |= IEEE80211_HT_CAP_LDPC_CODING;
++	mphy->sband_5g.sband.vht_cap.cap |=
++			IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK;
+ 
+ 	/* mt7615 second phy shares the same hw queues with the primary one */
+ 	for (i = 0; i <= MT_TXQ_PSD ; i++)
 -- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
