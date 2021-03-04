@@ -7,60 +7,63 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 88BA8C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 13:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CDA7C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 13:26:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 03F6064F21
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 13:25:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03F6064F21
+	by mail.kernel.org (Postfix) with ESMTPS id B209E64F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Mar 2021 13:25:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B209E64F2B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=n226zKMYkGo+T8CitYM4WW2gz7qaLMNfz28a7T90E9s=; b=V7nHf00ilkJFQK3RU3LdUyT/Nu
-	Rc+WOvX3PRuzcYF5qtCpRKRWpiKVyWzwQY1XN2e3d/3uWGvmikLe2vnMguaD14D+nrgsS5rmbgige
-	OjldQsKCrtMHVQ8L3bQxaLrnJpNZsEdqZV0dEmUL8aF0HWlDvIy+SlrOb2VpNYu5yHEXsvn8cqVVq
-	yJOe1MxuHNOwW0ANbg24k8QuB2CFXsfxHMWIjG55P2O1dbL3/uzoSQF5eccCV0vs0r2/94ZHv08tr
-	jSI06hOp0he4yDcTZU80rZkSXNQQKfcTs9r4HRCkLn7huTBydAeEt7lMh05C9GfrLLEZntH3Byu5T
-	ngRyWMwg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1AYW7N3X7528VsO2UiWuTML2EDU4xMoxHyC9frB9eOc=; b=lXYwUnvqvSB+WRmYK2mWCpXlk
+	XwKliR4R5iSRAwDIZK3YjcjQb5Bmw+2fVOZJPDAVtckbsV+qFrHnWQNESgmJWpX8rRBPzdXNd63UW
+	5BehMVCNNY84hXXF5fl9KV1DzgGEftZX4TMauQx/T+MZrNWt4jmxrxokpRLBAFPNqv5tPGnojX2Yt
+	otaPuH8Mgdp1AxRPhc7aEaiwpuQdkHnS5b50OUvy9dFsJTWVVbhrOGN0+B2DUT7u9oSSBs6Fcayf8
+	RY15AiNX4t+1GzKqe8dSpDoyGpXZBnYLl7AvCrmDQhO/vWkXAT/XCJTz1634oLd/NVZgymOISmgxf
+	Q5vzqD+6g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHnz8-008js1-Sw; Thu, 04 Mar 2021 13:25:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lHnzA-008jsT-N5; Thu, 04 Mar 2021 13:25:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHnyz-008jpr-JJ
+ id 1lHnz0-008jqC-Qx
  for linux-mediatek@lists.infradead.org; Thu, 04 Mar 2021 13:25:43 +0000
-X-UUID: da2d24cb76164080bfec326157bb8651-20210304
+X-UUID: d92f81cf3e5045359395da695bb2deda-20210304
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=/bIZFIKuZhS1KaY00v9VcBNLL1ej0s7pxGvIPUKeREs=; 
- b=hESFubvQ9lSXs6bzUbF43s3qAX9mswJMDOcyGAtS7Z12e5ohN2jzMPu48+S6jffqfB0SK6nq6nwSVg633B6rXXFGKuJqfR2UviChWs/jUSzb9VtJjsd8T6iXXOeLoBTEys6WiAr7aR40ZuKXMvytmN4zCs01IcDrjAJuaBXI9nI=;
-X-UUID: da2d24cb76164080bfec326157bb8651-20210304
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=fRxxVM9hTCT8akBnptA/Vvb5Yp+hcTyvfgtIvrleoRA=; 
+ b=rp80SOUKBaNzJOFq0LaIQYTedTYLoyktRc6VnOCZeC14QyyQuJLr1XEtjVscKL4MAyxN8oNpwoChOalyEmxg6zzGvylMrYRT7tFcVTY2f9SqgYld6UDpr9D8Z5E6t70iN6rIH6GEXzbXpa9/verJJ7lWEIq0V5Caz56prNdhtP0=;
+X-UUID: d92f81cf3e5045359395da695bb2deda-20210304
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2081214907; Thu, 04 Mar 2021 05:25:27 -0800
+ with ESMTP id 1935348573; Thu, 04 Mar 2021 05:25:30 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 4 Mar 2021 05:25:25 -0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 4 Mar 2021 05:25:28 -0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 4 Mar 2021 21:25:24 +0800
+ Frontend Transport; Thu, 4 Mar 2021 21:25:28 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <linux-wireless@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/3] mt76: mt7663: fix when beacon filter is being applied
-Date: Thu, 4 Mar 2021 21:25:21 +0800
-Message-ID: <801a2aa986f5486a0e789065feef7b77c612ea7b.1614863741.git.objelf@gmail.com>
+Subject: [PATCH 3/3] mt76: mt7663s: fix the possible device hang in high
+ traffic
+Date: Thu, 4 Mar 2021 21:25:23 +0800
+Message-ID: <99976d786b85749243af3a3a32886d5fe94d11ac.1614863741.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <801a2aa986f5486a0e789065feef7b77c612ea7b.1614863741.git.objelf@gmail.com>
+References: <801a2aa986f5486a0e789065feef7b77c612ea7b.1614863741.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -81,46 +84,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-HW beacon filter command is being applied until we're in associated state
-because the command would rely on the associated access point's beacon
-interval and DTIM information.
+Use the additional memory barrier to ensure the skb list up-to-date
+between the skb producer and consumer to avoid the invalid skb content
+written into sdio controller and then cause device hang due to mcu assert
+caught by WR_TIMEOUT_INT.
 
-Fixes: 7124198ab1a4 ("mt76: mt7615: enable beacon filtering by default for offload fw")
+Fixes: 1522ff731f84 ("mt76: mt7663s: introduce sdio tx aggregation")
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/main.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7615/sdio_txrx.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/sdio.c             | 3 +++
+ 2 files changed, 5 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 1aa6928f88fc..1cb310bf01ee 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -217,8 +217,6 @@ static int mt7615_add_interface(struct ieee80211_hw *hw,
- 	ret = mt7615_mcu_add_dev_info(phy, vif, true);
- 	if (ret)
- 		goto out;
--
--	mt7615_mac_set_beacon_filter(phy, vif, true);
- out:
- 	mt7615_mutex_release(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio_txrx.c b/drivers/net/wireless/mediatek/mt76/mt7615/sdio_txrx.c
+index 2d3b7d1e2c92..29e510d263fc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio_txrx.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio_txrx.c
+@@ -225,6 +225,8 @@ static int mt7663s_tx_run_queue(struct mt76_dev *dev, struct mt76_queue *q)
+ 		struct mt76_queue_entry *e = &q->entry[q->first];
+ 		struct sk_buff *iter;
  
-@@ -244,7 +242,6 @@ static void mt7615_remove_interface(struct ieee80211_hw *hw,
- 
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, &msta->wcid);
- 
--	mt7615_mac_set_beacon_filter(phy, vif, false);
- 	mt7615_mcu_add_dev_info(phy, vif, false);
- 
- 	rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
-@@ -548,6 +545,9 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
- 	if (changed & BSS_CHANGED_ARP_FILTER)
- 		mt7615_mcu_update_arp_filter(hw, vif, info);
- 
-+	if (changed & BSS_CHANGED_ASSOC)
-+		mt7615_mac_set_beacon_filter(phy, vif, info->assoc);
++		smp_rmb();
 +
- 	mt7615_mutex_release(dev);
- }
+ 		if (!test_bit(MT76_STATE_MCU_RUNNING, &dev->phy.state)) {
+ 			__skb_put_zero(e->skb, 4);
+ 			err = __mt7663s_xmit_queue(dev, e->skb->data,
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
+index 0b6facb17ff7..a18d2896ee1f 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio.c
+@@ -256,6 +256,9 @@ mt76s_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
+ 
+ 	q->entry[q->head].skb = tx_info.skb;
+ 	q->entry[q->head].buf_sz = len;
++
++	smp_wmb();
++
+ 	q->head = (q->head + 1) % q->ndesc;
+ 	q->queued++;
  
 -- 
 2.25.1
