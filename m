@@ -2,86 +2,76 @@ Return-Path: <SRS0=DQN7=ID=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B290EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 10:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5451EC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 12:10:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 53BF364F6A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 10:21:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53BF364F6A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id A6AE264F09
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 12:10:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6AE264F09
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vY9yCm9av0Za05/8bC0RHRzYYhxvoB6ue4MvGR6JmO4=; b=j4zFdHduU7/+94JXahdoxLupFQ
-	nRnlUqaJ79mvx7hn9p1HOZfnOPwn8NDhtDzzdT0t+JJfxoraO5cJtW9AMH/Wx6S1kHkSYGvJnyrsD
-	MpsFbWfndmURozOq1AG3j9Ylr6t80G/M1xOXZdhUdsXhfKMNciW/h3RvJovS1mnYw+sIKgDzP9ISy
-	NDFubc8p5dhbtLkz77blN1gsnhx8A0gv3unjJ1tPFcGchUmPME3xgrlDNqhxVxcp4rSpXR6EJSszC
-	nqM89ObOuzwEMzId0DhzkoOqPTcN+KhESlTffMHjIy23v5iP+M6WGh7vzLs4qMxaossOu/Gka6fRF
-	HvwktscA==;
+	bh=u65O5VByj/+oCX5Qz/ph4d5Sf7sF152IbcEG6hLh4kg=; b=gXLr4StBLDeAFqux9W6C80YjhV
+	v5UNrCm8yl3xIUe/u3uLTJebKDWEFNg6iuRW4TrD6JT9Lt+BjocvSZT0wPhScTu2zGcHrjjvMSXuq
+	kH0UbK/EYogNM7ZKzv7Za3L6MRXTRHmBMe3sIQn4/WcxRgUfXfPrZhx/18mfxJHRUnUN94FGrjvC3
+	otE1xltcfiDOpAdI3/b57qLz9WtTxLbbnMCraTnnv8JeaA29/fcHCTFQWpNSVE/cw1yKqgKdSEafO
+	gsL+04CWTSWOD+WyVOANgKVjtUZSs44fkmF+YfeH0P4R4VyZXXwQH/4qdooW7vOzAV4w7JVwwzNa9
+	f6BhYPlQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lI7aF-00EWNK-Cd; Fri, 05 Mar 2021 10:21:23 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1lI9HJ-00EuMq-Nm; Fri, 05 Mar 2021 12:09:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lI7Z5-00EVwR-8F
- for linux-mediatek@lists.infradead.org; Fri, 05 Mar 2021 10:20:13 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id o6so1689163pjf.5
- for <linux-mediatek@lists.infradead.org>; Fri, 05 Mar 2021 02:20:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=EUACLrL4E5J+zKlEM3mMmLgSh+SjeWlUxfMZEcaS8n0=;
- b=Cu64HLf0HIdq0y7140t5Tlz3UVHd6eyis3sDus6y32di/8IKUdlokhzh9DfUSEVjpP
- SUSElAYITZcFx7+PxUEUS3+h4mipkfxyHKdWIkgJj3v3hGQoo5sTBDrty/vvikqV7rc5
- Pb2TLpAQodcHd7GwqYX/+Y6Gbuni3G9nxKCBA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=EUACLrL4E5J+zKlEM3mMmLgSh+SjeWlUxfMZEcaS8n0=;
- b=XTPF4ctOih+P+Y9oqyFoMYJqZQ2T66hfDB1PudSEwyoEvK4YUsFJzSinRpq1yaiR19
- NGeA7hp+Z/FTuj7qWmfe67Qzc91HdrcI/go8DekbK5/q5/j4L2gX7oOOVZWEfnelkX9Y
- NfcBTwThl9cz3PHLe6c//73OB47/JZnJMJm6u/adeni+ysNbXFN2MvJFm5LpTV0F/6aS
- miypSHZ/62j1BsBN0SPEnpxWfBpljxc4Bo35MOl9iD4IpmVfxA77+eCp6kKg9J81buaG
- /HNlzlsWlyWp8IbTtFUSAsmatHyFMtupq07GY51frjFtm91X//baM36OLvvSpnZJ0YPh
- n4+w==
-X-Gm-Message-State: AOAM5305r41BvdgNk3leX7cJ3kDHC+0+NXpxdLyRob7WhpZt6J0SR6Tu
- 9Crj8eZ2NKd8UQ7EgOyEREmh+A==
-X-Google-Smtp-Source: ABdhPJyxjguts9N9hJbIy+WBqBM4VkGt4dYdC45mzBbXhIJhRr6WiT2Rig05kbCicwVUCFTc/FOD0A==
-X-Received: by 2002:a17:902:8ec1:b029:dc:8ae1:7a22 with SMTP id
- x1-20020a1709028ec1b02900dc8ae17a22mr8029087plo.6.1614939608896; 
- Fri, 05 Mar 2021 02:20:08 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:5da1:da1b:5bcf:2d46])
- by smtp.gmail.com with ESMTPSA id c12sm2402672pfp.17.2021.03.05.02.20.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Mar 2021 02:20:08 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Wolfram Sang <wsa@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-i2c@vger.kernel.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Bibby Hsieh <bibby.hsieh@mediatek.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: [PATCH] i2c: core: support bus regulator controlling in adapter
-Date: Fri,  5 Mar 2021 18:20:04 +0800
-Message-Id: <20210305102004.191209-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
+ id 1lI9HC-00EuJQ-Et; Fri, 05 Mar 2021 12:09:56 +0000
+X-UUID: b9470b707ae44f20b5874892341922e3-20210305
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=OVcRasWmspiE2jB4XlZXdzlGkPqRbbnl2DkQTxzoMh0=; 
+ b=fPx4KdRnXedKA+ZmFi9cHYuDgfdxb/Jt6U9ePZhJKlO4R2+eXAwAam81FZuoqArJwowVvKzU+YUSRw3uFnVf66vcXHyLPIYGaZRqRiFniYqs+auQbAe+GXDPD7Z6sbStVF5LZ2AqDNCoQuBR/527YLNZ90G0WNO730vpo3VpgJk=;
+X-UUID: b9470b707ae44f20b5874892341922e3-20210305
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 232125976; Fri, 05 Mar 2021 04:09:41 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Mar 2021 04:09:39 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Mar 2021 20:09:33 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 5 Mar 2021 20:09:33 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: Marc Zyngier <maz@kernel.org>
+CC: Mark-PK Tsai <mark-pk.tsai@mediatek.com>, Daniel Palmer
+ <daniel@thingy.jp>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper
+ <jason@lakedaemon.net>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <yj.chiang@mediatek.com>
+Subject: [PATCH] irqchip/irq-mst: Support polarity configuration
+Date: Fri, 5 Mar 2021 20:09:30 +0800
+Message-ID: <20210305120930.14297-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_102011_617284_7B5450A2 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20210305_120951_182864_A88B4F3D 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,206 +88,155 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Support irq polarity configuration and save and restore the config
+when system suspend and resume.
 
-Although in the most platforms, the bus power of i2c
-are alway on, some platforms disable the i2c bus power
-in order to meet low power request.
-
-We get and enable bulk regulator in i2c adapter device.
-
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 ---
-This patch is squashed from following patch and tested on mt8183 device
-which has eeprom at24 client under i2c, so the fix in [2] is also
-verified.
-[1] https://patchwork.ozlabs.org/project/linux-i2c/cover/20200519072729.7268-1-bibby.hsieh@mediatek.com/
-[2] https://patchwork.ozlabs.org/project/linux-i2c/patch/20200522101327.13456-1-m.szyprowski@samsung.com/
----
- drivers/i2c/i2c-core-base.c | 93 +++++++++++++++++++++++++++++++++++++
- include/linux/i2c.h         |  2 +
- 2 files changed, 95 insertions(+)
+ drivers/irqchip/irq-mst-intc.c | 87 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 84 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/i2c/i2c-core-base.c b/drivers/i2c/i2c-core-base.c
-index 63ebf722a424..667f4a4de7cc 100644
---- a/drivers/i2c/i2c-core-base.c
-+++ b/drivers/i2c/i2c-core-base.c
-@@ -439,12 +439,14 @@ static int i2c_smbus_host_notify_to_irq(const struct i2c_client *client)
- static int i2c_device_probe(struct device *dev)
- {
- 	struct i2c_client	*client = i2c_verify_client(dev);
-+	struct i2c_adapter	*adap;
- 	struct i2c_driver	*driver;
- 	int status;
+diff --git a/drivers/irqchip/irq-mst-intc.c b/drivers/irqchip/irq-mst-intc.c
+index 143657b0cf28..979a4d55bcb1 100644
+--- a/drivers/irqchip/irq-mst-intc.c
++++ b/drivers/irqchip/irq-mst-intc.c
+@@ -13,15 +13,25 @@
+ #include <linux/of_irq.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
++#include <linux/syscore_ops.h>
  
- 	if (!client)
- 		return 0;
+-#define INTC_MASK	0x0
+-#define INTC_EOI	0x20
++#define INTC_MASK		0x0
++#define INTC_REV_POLARITY	0x10
++#define INTC_EOI		0x20
++
++#ifdef CONFIG_PM_SLEEP
++static LIST_HEAD(mst_intc_list);
++#endif
  
-+	adap = client->adapter;
- 	client->irq = client->init_irq;
+ struct mst_intc_chip_data {
+ 	raw_spinlock_t	lock;
+ 	unsigned int	irq_start, nr_irqs;
+ 	void __iomem	*base;
+ 	bool		no_eoi;
++#ifdef CONFIG_PM_SLEEP
++	struct list_head entry;
++	u16 saved_polarity_conf[DIV_ROUND_UP(64, 16)];
++#endif
+ };
  
- 	if (!client->irq) {
-@@ -510,6 +512,12 @@ static int i2c_device_probe(struct device *dev)
+ static void mst_set_irq(struct irq_data *d, u32 offset)
+@@ -78,6 +88,16 @@ static void mst_intc_eoi_irq(struct irq_data *d)
+ 	irq_chip_eoi_parent(d);
+ }
  
- 	dev_dbg(dev, "probe\n");
- 
-+	status = regulator_enable(adap->bus_regulator);
-+	if (status < 0) {
-+		dev_err(&adap->dev, "Failed to enable power regulator\n");
-+		goto err_clear_wakeup_irq;
++static int mst_irq_chip_set_type(struct irq_data *data, unsigned int type)
++{
++	if (type == IRQ_TYPE_LEVEL_LOW) {
++		mst_set_irq(data, INTC_REV_POLARITY);
++		type = IRQ_TYPE_LEVEL_HIGH;
 +	}
 +
- 	status = of_clk_set_defaults(dev->of_node, false);
- 	if (status < 0)
- 		goto err_clear_wakeup_irq;
-@@ -550,8 +558,10 @@ static int i2c_device_probe(struct device *dev)
- static int i2c_device_remove(struct device *dev)
- {
- 	struct i2c_client	*client = to_i2c_client(dev);
-+	struct i2c_adapter      *adap;
- 	struct i2c_driver	*driver;
++	return irq_chip_set_type_parent(data, type);
++}
++
+ static struct irq_chip mst_intc_chip = {
+ 	.name			= "mst-intc",
+ 	.irq_mask		= mst_intc_mask_irq,
+@@ -87,13 +107,62 @@ static struct irq_chip mst_intc_chip = {
+ 	.irq_set_irqchip_state	= irq_chip_set_parent_state,
+ 	.irq_set_affinity	= irq_chip_set_affinity_parent,
+ 	.irq_set_vcpu_affinity	= irq_chip_set_vcpu_affinity_parent,
+-	.irq_set_type		= irq_chip_set_type_parent,
++	.irq_set_type		= mst_irq_chip_set_type,
+ 	.irq_retrigger		= irq_chip_retrigger_hierarchy,
+ 	.flags			= IRQCHIP_SET_TYPE_MASKED |
+ 				  IRQCHIP_SKIP_SET_WAKE |
+ 				  IRQCHIP_MASK_ON_SUSPEND,
+ };
  
-+	adap = client->adapter;
- 	driver = to_i2c_driver(dev->driver);
- 	if (driver->remove) {
- 		int status;
-@@ -564,6 +574,8 @@ static int i2c_device_remove(struct device *dev)
++#ifdef CONFIG_PM_SLEEP
++static void mst_intc_polarity_save(struct mst_intc_chip_data *cd)
++{
++	int i;
++	void __iomem *addr = cd->base + INTC_REV_POLARITY;
++
++	for (i = 0; i < DIV_ROUND_UP(cd->nr_irqs, 16); i++)
++		cd->saved_polarity_conf[i] = readw_relaxed(addr + i * 4);
++}
++
++static void mst_intc_polarity_restore(struct mst_intc_chip_data *cd)
++{
++	int i;
++	void __iomem *addr = cd->base + INTC_REV_POLARITY;
++
++	for (i = 0; i < DIV_ROUND_UP(cd->nr_irqs, 16); i++)
++		writew_relaxed(cd->saved_polarity_conf[i], addr + i * 4);
++}
++
++static void mst_irq_resume(void)
++{
++	struct mst_intc_chip_data *cd;
++
++	list_for_each_entry(cd, &mst_intc_list, entry)
++		mst_intc_polarity_restore(cd);
++}
++
++static int mst_irq_suspend(void)
++{
++	struct mst_intc_chip_data *cd;
++
++	list_for_each_entry(cd, &mst_intc_list, entry)
++		mst_intc_polarity_save(cd);
++	return 0;
++}
++
++static struct syscore_ops mst_irq_syscore_ops = {
++	.suspend	= mst_irq_suspend,
++	.resume		= mst_irq_resume,
++};
++
++static int __init mst_irq_pm_init(void)
++{
++	register_syscore_ops(&mst_irq_syscore_ops);
++	return 0;
++}
++late_initcall(mst_irq_pm_init);
++#endif
++
+ static int mst_intc_domain_translate(struct irq_domain *d,
+ 				     struct irq_fwspec *fwspec,
+ 				     unsigned long *hwirq,
+@@ -145,6 +214,14 @@ static int mst_intc_domain_alloc(struct irq_domain *domain, unsigned int virq,
+ 	parent_fwspec = *fwspec;
+ 	parent_fwspec.fwnode = domain->parent->fwnode;
+ 	parent_fwspec.param[1] = cd->irq_start + hwirq;
++
++	/*
++	 * If the irq signal is active low, configure it to active high
++	 * to meet GIC SPI spec in mst_irq_chip_set_type via REV_POLARITY bit
++	 */
++	if (fwspec->param[2] == IRQ_TYPE_LEVEL_LOW)
++		parent_fwspec.param[2] = IRQ_TYPE_LEVEL_HIGH;
++
+ 	return irq_domain_alloc_irqs_parent(domain, virq, nr_irqs, &parent_fwspec);
+ }
+ 
+@@ -193,6 +270,10 @@ static int __init mst_intc_of_init(struct device_node *dn,
+ 		return -ENOMEM;
  	}
  
- 	dev_pm_domain_detach(&client->dev, true);
-+	if (!pm_runtime_status_suspended(&client->dev))
-+		regulator_disable(adap->bus_regulator);
- 
- 	dev_pm_clear_wake_irq(&client->dev);
- 	device_init_wakeup(&client->dev, false);
-@@ -576,6 +588,80 @@ static int i2c_device_remove(struct device *dev)
++#ifdef CONFIG_PM_SLEEP
++	INIT_LIST_HEAD(&cd->entry);
++	list_add_tail(&cd->entry, &mst_intc_list);
++#endif
  	return 0;
  }
  
-+#ifdef CONFIG_PM_SLEEP
-+static int i2c_resume_early(struct device *dev)
-+{
-+	struct i2c_client *client = i2c_verify_client(dev);
-+	int err;
-+
-+	if (!client)
-+		return 0;
-+
-+	if (!pm_runtime_status_suspended(&client->dev)) {
-+		err = regulator_enable(client->adapter->bus_regulator);
-+		if (err)
-+			return err;
-+	}
-+
-+	return pm_generic_resume_early(&client->dev);
-+}
-+
-+static int i2c_suspend_late(struct device *dev)
-+{
-+	struct i2c_client *client = i2c_verify_client(dev);
-+	int err;
-+
-+	if (!client)
-+		return 0;
-+
-+	err = pm_generic_suspend_late(&client->dev);
-+	if (err)
-+		return err;
-+
-+	if (!pm_runtime_status_suspended(&client->dev))
-+		return regulator_disable(client->adapter->bus_regulator);
-+
-+	return 0;
-+}
-+#endif
-+
-+#ifdef CONFIG_PM
-+static int i2c_runtime_resume(struct device *dev)
-+{
-+	struct i2c_client *client = i2c_verify_client(dev);
-+	int err;
-+
-+	if (!client)
-+		return 0;
-+
-+	err = regulator_enable(client->adapter->bus_regulator);
-+	if (err)
-+		return err;
-+
-+	return pm_generic_runtime_resume(&client->dev);
-+}
-+
-+static int i2c_runtime_suspend(struct device *dev)
-+{
-+	struct i2c_client *client = i2c_verify_client(dev);
-+	int err;
-+
-+	if (!client)
-+		return 0;
-+
-+	err = pm_generic_runtime_suspend(&client->dev);
-+	if (err)
-+		return err;
-+
-+	return regulator_disable(client->adapter->bus_regulator);
-+}
-+#endif
-+
-+static const struct dev_pm_ops i2c_device_pm = {
-+	SET_LATE_SYSTEM_SLEEP_PM_OPS(i2c_suspend_late, i2c_resume_early)
-+	SET_RUNTIME_PM_OPS(i2c_runtime_suspend, i2c_runtime_resume, NULL)
-+};
-+
- static void i2c_device_shutdown(struct device *dev)
- {
- 	struct i2c_client *client = i2c_verify_client(dev);
-@@ -633,6 +719,7 @@ struct bus_type i2c_bus_type = {
- 	.probe		= i2c_device_probe,
- 	.remove		= i2c_device_remove,
- 	.shutdown	= i2c_device_shutdown,
-+	.pm		= &i2c_device_pm,
- };
- EXPORT_SYMBOL_GPL(i2c_bus_type);
- 
-@@ -1446,6 +1533,12 @@ static int i2c_register_adapter(struct i2c_adapter *adap)
- 	if (res)
- 		goto out_reg;
- 
-+	adap->bus_regulator = devm_regulator_get(&adap->dev, "bus");
-+	if (IS_ERR(adap->bus_regulator)) {
-+		res = PTR_ERR(adap->bus_regulator);
-+		goto out_reg;
-+	}
-+
- 	pm_runtime_no_callbacks(&adap->dev);
- 	pm_suspend_ignore_children(&adap->dev, true);
- 	pm_runtime_enable(&adap->dev);
-diff --git a/include/linux/i2c.h b/include/linux/i2c.h
-index 56622658b215..ec87758d9f40 100644
---- a/include/linux/i2c.h
-+++ b/include/linux/i2c.h
-@@ -15,6 +15,7 @@
- #include <linux/device.h>	/* for struct device */
- #include <linux/sched.h>	/* for completion */
- #include <linux/mutex.h>
-+#include <linux/regulator/consumer.h>
- #include <linux/rtmutex.h>
- #include <linux/irqdomain.h>		/* for Host Notify IRQ */
- #include <linux/of.h>		/* for struct device_node */
-@@ -721,6 +722,7 @@ struct i2c_adapter {
- 	const struct i2c_adapter_quirks *quirks;
- 
- 	struct irq_domain *host_notify_domain;
-+	struct regulator *bus_regulator;
- };
- #define to_i2c_adapter(d) container_of(d, struct i2c_adapter, dev)
- 
 -- 
-2.30.1.766.gb4fecdf3b7-goog
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
