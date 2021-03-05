@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3707BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF9E2C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:04:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC17064F44
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:04:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC17064F44
+	by mail.kernel.org (Postfix) with ESMTPS id 3AF2764F44
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:04:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3AF2764F44
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oqyBrFYD1McWuQjkzDJMetFjCTTbNkvJ/0ANGCwlLME=; b=QY/QzKsHYH8Ty7N4hySeDJQ5z
-	7ki8vGQ329h31TQD1UQcNWdtUXGSPc0MmI5bwvOOeRanEFZmvQMagkn0pAmWb62qcXobj0kXwhieT
-	AE9kmhNUKq7VStd9DmxFGHsdAb0O0XZw4oWHEqBQjP9sLBb4fWSKPFADyN9pLEEQOU/YZdfYbZij6
-	SvTd61kmx3oHRwKJedrh9bq8YZzNFrhxMBRnynWyZIx5g1iHzSP2+M8aDX02sQsOx0XUvL/gy8ARv
-	85qQFKmsGwVCCJNmvGS2Ll4AfhbT6qTLhQaH+98+KaTLBJFn18bSd4H7ibViXoJXTBHynhxReOZbn
-	c3g5IkSfQ==;
+	 bh=Pqe5dj5jGD2O8iHYnjnPOSdOBxhjA1rhU3+/Rc7f4fI=; b=DoCRjTpVJCdPQelGGI2BOZK5M
+	6KjrJJU3RQIEGlKiwDSnBmIqnXDNMjVLOFuOaTHHO1n/AWoN8FPPVWUcI2I1UREat969MCvU4WSWc
+	504mKlD2HmKS7XRWd4VQZgOV4to3ms/WcisMdbA8jeB3s+TZGX+quR7pBmq1UKTllxXvE3z8cZpIl
+	dLo82eV2Ls8fch0ef78zayxXLd1sLhHHLT0fqSqVB3JHK+vHMMhPNY2g/UVh/AfUBlzHsTidG0vCd
+	vWyZWSriEoTSPSrtM68UlYzMhfobQNEGMFWTH3uzqjfhgxRk3mpHnR6zVLVrvkPg/nIQ4mkxMS8j8
+	aO6gMXvmA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lI6Nh-00E8lE-HT; Fri, 05 Mar 2021 09:04:21 +0000
+	id 1lI6Ns-00E8sX-MK; Fri, 05 Mar 2021 09:04:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lI6Mw-00E8QV-RD; Fri, 05 Mar 2021 09:03:36 +0000
-X-UUID: 12240d34de4b4ac7b3de8a5a978c2259-20210305
+ id 1lI6Mw-00E8QS-Qm; Fri, 05 Mar 2021 09:03:37 +0000
+X-UUID: 8f746f3e1f154f12930f3d8cb278dfd8-20210305
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=zW65n4kMKqmrnVM+uzj1XYs/zqeCI/44ONofcCruZq0=; 
- b=K+Pal8mtsCFPVYpmFUe0Pxf68e5uHChMhPCiUtssvOPspMh6aB0eT0jczaC2Jj9/JsJzEcsc3rChzwHXvblnLGikUI/M04OeXM+oZR25bGm6cwblwIDOU0hgXq2yMGNkEMIN/22iVqm2pzcTaMAnloooh19h9aJHRl2qasP/b0k=;
-X-UUID: 12240d34de4b4ac7b3de8a5a978c2259-20210305
+ bh=Yjjq6irZm1/fu4l4vB7W0DYv5E/TcUkgPqXDWcLdl0Y=; 
+ b=a5T4k8ttRx6cXlw18L8fL0McTO/nsohR9EKmFHb/mwB4CMrNmXFFgsvLgohC1hCQe1w/yFGhABYofykAg24U4/V7W2JYHfX8Ij3IfpFQ0DG1GnV9qCESWslBO/+buWf1ANVhVwDwQV849+YDy0P2N+43Sp95Zc4VP1mi5pT7URo=;
+X-UUID: 8f746f3e1f154f12930f3d8cb278dfd8-20210305
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 226577958; Fri, 05 Mar 2021 01:03:28 -0800
+ with ESMTP id 137159574; Fri, 05 Mar 2021 01:03:28 -0800
 Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 5 Mar 2021 01:03:27 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 5 Mar 2021 17:03:23 +0800
+ 15.0.1497.2; Fri, 5 Mar 2021 17:03:25 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 5 Mar 2021 17:03:22 +0800
+ Transport; Fri, 5 Mar 2021 17:03:25 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Ikjoon Jang <ikjn@chromium.org>
@@ -63,18 +64,18 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
  Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH 12/17] usb: xhci-mtk: rebuild the way to get bandwidth domain
-Date: Fri, 5 Mar 2021 17:02:50 +0800
-Message-ID: <1614934975-15188-12-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 15/17] usb: xhci-mtk: support to build xhci-mtk-hcd.ko
+Date: Fri, 5 Mar 2021 17:02:53 +0800
+Message-ID: <1614934975-15188-15-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E291AE8C989E540722F0104AF248C6C29FFEAEB071B5EE86D7544D0CD6519C202000:8
+X-TM-SNTS-SMTP: 9C292EBE09D8537CAF0853845E23AD8719008E9FC0E59984DDD795C3903495032000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_090335_313376_81056DEA 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20210305_090335_548198_13049F09 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,117 +92,374 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rebuild the function get_bw_index(), get the bandwidth domain
-directly instead its index of domain array.
+Currently xhci-hcd.ko building depends on USB_XHCI_MTK, this
+is not flexible for some cases. For example:
+USB_XHCI_HCD is y, and USB_XHCI_MTK is m, then we can't
+implement extended functions if only update xhci-mtk.ko
+This patch is used to remove the dependence.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/host/xhci-mtk-sch.c | 29 +++++++++++------------------
- 1 file changed, 11 insertions(+), 18 deletions(-)
+ drivers/usb/host/Makefile       |  6 ++---
+ drivers/usb/host/xhci-mem.c     |  2 +-
+ drivers/usb/host/xhci-mtk-sch.c | 48 +++++++++++++++++++++++----------
+ drivers/usb/host/xhci-mtk.c     |  2 ++
+ drivers/usb/host/xhci-mtk.h     | 33 +++--------------------
+ drivers/usb/host/xhci-ring.c    |  1 -
+ drivers/usb/host/xhci.c         | 30 +++++++++------------
+ drivers/usb/host/xhci.h         |  8 ++++++
+ 8 files changed, 64 insertions(+), 66 deletions(-)
 
+diff --git a/drivers/usb/host/Makefile b/drivers/usb/host/Makefile
+index 3e4d298d851f..171de4df50bd 100644
+--- a/drivers/usb/host/Makefile
++++ b/drivers/usb/host/Makefile
+@@ -19,9 +19,7 @@ ifneq ($(CONFIG_USB_XHCI_DBGCAP), )
+ 	xhci-hcd-y += xhci-dbgcap.o xhci-dbgtty.o
+ endif
+ 
+-ifneq ($(CONFIG_USB_XHCI_MTK), )
+-	xhci-hcd-y += xhci-mtk-sch.o
+-endif
++xhci-mtk-hcd-y := xhci-mtk.o xhci-mtk-sch.o
+ 
+ xhci-plat-hcd-y := xhci-plat.o
+ ifneq ($(CONFIG_USB_XHCI_MVEBU), )
+@@ -73,7 +71,7 @@ obj-$(CONFIG_USB_XHCI_PCI)	+= xhci-pci.o
+ obj-$(CONFIG_USB_XHCI_PCI_RENESAS)	+= xhci-pci-renesas.o
+ obj-$(CONFIG_USB_XHCI_PLATFORM) += xhci-plat-hcd.o
+ obj-$(CONFIG_USB_XHCI_HISTB)	+= xhci-histb.o
+-obj-$(CONFIG_USB_XHCI_MTK)	+= xhci-mtk.o
++obj-$(CONFIG_USB_XHCI_MTK)	+= xhci-mtk-hcd.o
+ obj-$(CONFIG_USB_XHCI_TEGRA)	+= xhci-tegra.o
+ obj-$(CONFIG_USB_SL811_HCD)	+= sl811-hcd.o
+ obj-$(CONFIG_USB_SL811_CS)	+= sl811_cs.o
+diff --git a/drivers/usb/host/xhci-mem.c b/drivers/usb/host/xhci-mem.c
+index f2c4ee7c4786..7eb8c07c8418 100644
+--- a/drivers/usb/host/xhci-mem.c
++++ b/drivers/usb/host/xhci-mem.c
+@@ -532,7 +532,7 @@ struct xhci_ep_ctx *xhci_get_ep_ctx(struct xhci_hcd *xhci,
+ 	return (struct xhci_ep_ctx *)
+ 		(ctx->bytes + (ep_index * CTX_SIZE(xhci->hcc_params)));
+ }
+-
++EXPORT_SYMBOL_GPL(xhci_get_ep_ctx);
+ 
+ /***************** Streams structures manipulation *************************/
+ 
 diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 1562875c04ab..d39545ade9a1 100644
+index deb918490b71..4f6b86131820 100644
 --- a/drivers/usb/host/xhci-mtk-sch.c
 +++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -57,7 +57,7 @@ static u32 get_bw_boundary(enum usb_device_speed speed)
- }
+@@ -691,25 +691,22 @@ int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk)
  
- /*
--* get the index of bandwidth domains array which @ep belongs to.
-+* get the bandwidth domain which @ep belongs to.
- *
- * the bandwidth domain array is saved to @sch_array of struct xhci_hcd_mtk,
- * each HS root port is treated as a single bandwidth domain,
-@@ -68,9 +68,11 @@ static u32 get_bw_boundary(enum usb_device_speed speed)
- * so the bandwidth domain array is organized as follow for simplification:
- * SSport0-OUT, SSport0-IN, ..., SSportX-OUT, SSportX-IN, HSport0, ..., HSportY
- */
--static int get_bw_index(struct xhci_hcd *xhci, struct usb_device *udev,
--	struct usb_host_endpoint *ep)
-+static struct mu3h_sch_bw_info *
-+get_bw_info(struct xhci_hcd_mtk *mtk, struct usb_device *udev,
-+	    struct usb_host_endpoint *ep)
+ 	return 0;
+ }
+-EXPORT_SYMBOL_GPL(xhci_mtk_sch_init);
+ 
+ void xhci_mtk_sch_exit(struct xhci_hcd_mtk *mtk)
  {
-+	struct xhci_hcd *xhci = hcd_to_xhci(mtk->hcd);
- 	struct xhci_virt_device *virt_dev;
- 	int bw_index;
- 
-@@ -86,7 +88,7 @@ static int get_bw_index(struct xhci_hcd *xhci, struct usb_device *udev,
- 		bw_index = virt_dev->real_port + xhci->usb3_rhub.num_ports - 1;
- 	}
- 
--	return bw_index;
-+	return &mtk->sch_array[bw_index];
+ 	kfree(mtk->sch_array);
  }
+-EXPORT_SYMBOL_GPL(xhci_mtk_sch_exit);
  
- static u32 get_esit(struct xhci_ep_ctx *ep_ctx)
-@@ -722,14 +724,11 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+-int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+-		struct usb_host_endpoint *ep)
++static int add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
++			struct usb_host_endpoint *ep)
+ {
  	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 	struct xhci_hcd *xhci;
+-	struct xhci_hcd *xhci;
++	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
+ 	struct xhci_ep_ctx *ep_ctx;
  	struct xhci_virt_device *virt_dev;
--	struct mu3h_sch_bw_info *sch_array;
+ 	struct mu3h_sch_ep_info *sch_ep;
+ 	unsigned int ep_index;
+ 
+-	xhci = hcd_to_xhci(hcd);
+ 	virt_dev = xhci->devs[udev->slot_id];
+ 	ep_index = xhci_get_endpoint_index(&ep->desc);
+ 	ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
+@@ -741,18 +738,16 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 
+ 	return 0;
+ }
+-EXPORT_SYMBOL_GPL(xhci_mtk_add_ep_quirk);
+ 
+-void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+-		struct usb_host_endpoint *ep)
++static void drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
++			  struct usb_host_endpoint *ep)
+ {
+ 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
+-	struct xhci_hcd *xhci;
++	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
+ 	struct xhci_virt_device *virt_dev;
  	struct mu3h_sch_bw_info *sch_bw;
  	struct mu3h_sch_ep_info *sch_ep, *tmp;
--	int bw_index;
  
- 	xhci = hcd_to_xhci(hcd);
+-	xhci = hcd_to_xhci(hcd);
  	virt_dev = xhci->devs[udev->slot_id];
--	sch_array = mtk->sch_array;
  
  	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpks:%d, dir:%d, ep:%p\n",
- 		__func__, usb_endpoint_type(&ep->desc), udev->speed,
-@@ -739,8 +738,7 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 	if (!need_bw_sch(ep, udev->speed, !!virt_dev->tt_info))
- 		return;
+@@ -772,7 +767,6 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 		}
+ 	}
+ }
+-EXPORT_SYMBOL_GPL(xhci_mtk_drop_ep_quirk);
  
--	bw_index = get_bw_index(xhci, udev, ep);
--	sch_bw = &sch_array[bw_index];
-+	sch_bw = get_bw_info(mtk, udev, ep);
+ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ {
+@@ -818,7 +812,6 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
  
- 	list_for_each_entry_safe(sch_ep, tmp, &sch_bw->bw_ep_list, endpoint) {
- 		if (sch_ep->ep == ep) {
-@@ -758,13 +756,12 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 	struct xhci_virt_device *virt_dev = xhci->devs[udev->slot_id];
- 	struct mu3h_sch_bw_info *sch_bw;
- 	struct mu3h_sch_ep_info *sch_ep, *tmp;
--	int bw_index, ret;
+ 	return xhci_check_bandwidth(hcd, udev);
+ }
+-EXPORT_SYMBOL_GPL(xhci_mtk_check_bandwidth);
+ 
+ void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ {
+@@ -836,4 +829,31 @@ void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ 
+ 	xhci_reset_bandwidth(hcd, udev);
+ }
+-EXPORT_SYMBOL_GPL(xhci_mtk_reset_bandwidth);
++
++int xhci_mtk_add_ep(struct usb_hcd *hcd, struct usb_device *udev,
++		    struct usb_host_endpoint *ep)
++{
 +	int ret;
++
++	ret = xhci_add_endpoint(hcd, udev, ep);
++	if (ret)
++		return ret;
++
++	if (ep->hcpriv)
++		ret = add_ep_quirk(hcd, udev, ep);
++
++	return ret;
++}
++
++int xhci_mtk_drop_ep(struct usb_hcd *hcd, struct usb_device *udev,
++		     struct usb_host_endpoint *ep)
++{
++	int ret;
++
++	ret = xhci_drop_endpoint(hcd, udev, ep);
++	if (ret)
++		return ret;
++
++	drop_ep_quirk(hcd, udev, ep);
++	return 0;
++}
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index fb4e56f6a6c3..57bcfdfa0465 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -417,6 +417,8 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
  
- 	xhci_dbg(xhci, "%s() udev %s\n", __func__, dev_name(&udev->dev));
+ static const struct xhci_driver_overrides xhci_mtk_overrides __initconst = {
+ 	.reset = xhci_mtk_setup,
++	.add_endpoint = xhci_mtk_add_ep,
++	.drop_endpoint = xhci_mtk_drop_ep,
+ 	.check_bandwidth = xhci_mtk_check_bandwidth,
+ 	.reset_bandwidth = xhci_mtk_reset_bandwidth,
+ };
+diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+index d25bf9e49136..621ec1a85009 100644
+--- a/drivers/usb/host/xhci-mtk.h
++++ b/drivers/usb/host/xhci-mtk.h
+@@ -161,38 +161,13 @@ static inline struct xhci_hcd_mtk *hcd_to_mtk(struct usb_hcd *hcd)
+ 	return dev_get_drvdata(hcd->self.controller);
+ }
  
- 	list_for_each_entry(sch_ep, &mtk->bw_ep_chk_list, endpoint) {
--		bw_index = get_bw_index(xhci, udev, sch_ep->ep);
--		sch_bw = &mtk->sch_array[bw_index];
-+		sch_bw = get_bw_info(mtk, udev, sch_ep->ep);
+-#if IS_ENABLED(CONFIG_USB_XHCI_MTK)
+ int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk);
+ void xhci_mtk_sch_exit(struct xhci_hcd_mtk *mtk);
+-int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+-		struct usb_host_endpoint *ep);
+-void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+-		struct usb_host_endpoint *ep);
++int xhci_mtk_add_ep(struct usb_hcd *hcd, struct usb_device *udev,
++		    struct usb_host_endpoint *ep);
++int xhci_mtk_drop_ep(struct usb_hcd *hcd, struct usb_device *udev,
++		     struct usb_host_endpoint *ep);
+ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev);
+ void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev);
  
- 		ret = check_sch_bw(sch_bw, sch_ep);
- 		if (ret) {
-@@ -778,9 +775,7 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 		struct usb_host_endpoint *ep = sch_ep->ep;
- 		unsigned int ep_index = xhci_get_endpoint_index(&ep->desc);
- 
--		bw_index = get_bw_index(xhci, udev, ep);
--		sch_bw = &mtk->sch_array[bw_index];
+-#else
+-static inline int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd,
+-	struct usb_device *udev, struct usb_host_endpoint *ep)
+-{
+-	return 0;
+-}
 -
-+		sch_bw = get_bw_info(mtk, udev, ep);
- 		list_move_tail(&sch_ep->endpoint, &sch_bw->bw_ep_list);
+-static inline void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd,
+-	struct usb_device *udev, struct usb_host_endpoint *ep)
+-{
+-}
+-
+-static inline int xhci_mtk_check_bandwidth(struct usb_hcd *hcd,
+-		struct usb_device *udev)
+-{
+-	return 0;
+-}
+-
+-static inline void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd,
+-		struct usb_device *udev)
+-{
+-}
+-#endif
+-
+ #endif		/* _XHCI_MTK_H_ */
+diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
+index 5e548a1c93ab..c8a880111435 100644
+--- a/drivers/usb/host/xhci-ring.c
++++ b/drivers/usb/host/xhci-ring.c
+@@ -57,7 +57,6 @@
+ #include <linux/dma-mapping.h>
+ #include "xhci.h"
+ #include "xhci-trace.h"
+-#include "xhci-mtk.h"
  
- 		ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
-@@ -805,13 +800,11 @@ void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
- 	struct mu3h_sch_bw_info *sch_bw;
- 	struct mu3h_sch_ep_info *sch_ep, *tmp;
--	int bw_index;
+ static int queue_command(struct xhci_hcd *xhci, struct xhci_command *cmd,
+ 			 u32 field1, u32 field2,
+diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+index bd27bd670104..13baeda927f0 100644
+--- a/drivers/usb/host/xhci.c
++++ b/drivers/usb/host/xhci.c
+@@ -20,7 +20,6 @@
  
- 	xhci_dbg(xhci, "%s() udev %s\n", __func__, dev_name(&udev->dev));
+ #include "xhci.h"
+ #include "xhci-trace.h"
+-#include "xhci-mtk.h"
+ #include "xhci-debugfs.h"
+ #include "xhci-dbgcap.h"
  
- 	list_for_each_entry_safe(sch_ep, tmp, &mtk->bw_ep_chk_list, endpoint) {
--		bw_index = get_bw_index(xhci, udev, sch_ep->ep);
--		sch_bw = &mtk->sch_array[bw_index];
-+		sch_bw = get_bw_info(mtk, udev, sch_ep->ep);
- 		destroy_sch_ep(udev, sch_bw, sch_ep);
+@@ -1420,6 +1419,7 @@ unsigned int xhci_get_endpoint_index(struct usb_endpoint_descriptor *desc)
+ 			(usb_endpoint_dir_in(desc) ? 1 : 0) - 1;
+ 	return index;
+ }
++EXPORT_SYMBOL_GPL(xhci_get_endpoint_index);
+ 
+ /* The reverse operation to xhci_get_endpoint_index. Calculate the USB endpoint
+  * address from the XHCI endpoint index.
+@@ -1852,8 +1852,8 @@ static int xhci_urb_dequeue(struct usb_hcd *hcd, struct urb *urb, int status)
+  * disabled, so there's no need for mutual exclusion to protect
+  * the xhci->devs[slot_id] structure.
+  */
+-static int xhci_drop_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
+-		struct usb_host_endpoint *ep)
++int xhci_drop_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
++		       struct usb_host_endpoint *ep)
+ {
+ 	struct xhci_hcd *xhci;
+ 	struct xhci_container_ctx *in_ctx, *out_ctx;
+@@ -1913,9 +1913,6 @@ static int xhci_drop_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
+ 
+ 	xhci_endpoint_zero(xhci, xhci->devs[udev->slot_id], ep);
+ 
+-	if (xhci->quirks & XHCI_MTK_HOST)
+-		xhci_mtk_drop_ep_quirk(hcd, udev, ep);
+-
+ 	xhci_dbg(xhci, "drop ep 0x%x, slot id %d, new drop flags = %#x, new add flags = %#x\n",
+ 			(unsigned int) ep->desc.bEndpointAddress,
+ 			udev->slot_id,
+@@ -1923,6 +1920,7 @@ static int xhci_drop_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
+ 			(unsigned int) new_add_flags);
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(xhci_drop_endpoint);
+ 
+ /* Add an endpoint to a new possible bandwidth configuration for this device.
+  * Only one call to this function is allowed per endpoint before
+@@ -1937,8 +1935,8 @@ static int xhci_drop_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
+  * configuration or alt setting is installed in the device, so there's no need
+  * for mutual exclusion to protect the xhci->devs[slot_id] structure.
+  */
+-static int xhci_add_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
+-		struct usb_host_endpoint *ep)
++int xhci_add_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
++		      struct usb_host_endpoint *ep)
+ {
+ 	struct xhci_hcd *xhci;
+ 	struct xhci_container_ctx *in_ctx;
+@@ -2012,15 +2010,6 @@ static int xhci_add_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
+ 		return -ENOMEM;
  	}
  
+-	if (xhci->quirks & XHCI_MTK_HOST) {
+-		ret = xhci_mtk_add_ep_quirk(hcd, udev, ep);
+-		if (ret < 0) {
+-			xhci_ring_free(xhci, virt_dev->eps[ep_index].new_ring);
+-			virt_dev->eps[ep_index].new_ring = NULL;
+-			return ret;
+-		}
+-	}
+-
+ 	ctrl_ctx->add_flags |= cpu_to_le32(added_ctxs);
+ 	new_add_flags = le32_to_cpu(ctrl_ctx->add_flags);
+ 
+@@ -2045,6 +2034,7 @@ static int xhci_add_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
+ 			(unsigned int) new_add_flags);
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(xhci_add_endpoint);
+ 
+ static void xhci_zero_in_ctx(struct xhci_hcd *xhci, struct xhci_virt_device *virt_dev)
+ {
+@@ -3078,6 +3068,7 @@ int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ 
+ 	return ret;
+ }
++EXPORT_SYMBOL_GPL(xhci_check_bandwidth);
+ 
+ void xhci_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ {
+@@ -3102,6 +3093,7 @@ void xhci_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ 	}
+ 	xhci_zero_in_ctx(xhci, virt_dev);
+ }
++EXPORT_SYMBOL_GPL(xhci_reset_bandwidth);
+ 
+ static void xhci_setup_input_ctx_for_config_ep(struct xhci_hcd *xhci,
+ 		struct xhci_container_ctx *in_ctx,
+@@ -5428,6 +5420,10 @@ void xhci_init_driver(struct hc_driver *drv,
+ 			drv->reset = over->reset;
+ 		if (over->start)
+ 			drv->start = over->start;
++		if (over->add_endpoint)
++			drv->add_endpoint = over->add_endpoint;
++		if (over->drop_endpoint)
++			drv->drop_endpoint = over->drop_endpoint;
+ 		if (over->check_bandwidth)
+ 			drv->check_bandwidth = over->check_bandwidth;
+ 		if (over->reset_bandwidth)
+diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
+index d41de5dc0452..5053c1adda1e 100644
+--- a/drivers/usb/host/xhci.h
++++ b/drivers/usb/host/xhci.h
+@@ -1928,6 +1928,10 @@ struct xhci_driver_overrides {
+ 	size_t extra_priv_size;
+ 	int (*reset)(struct usb_hcd *hcd);
+ 	int (*start)(struct usb_hcd *hcd);
++	int (*add_endpoint)(struct usb_hcd *hcd, struct usb_device *udev,
++			    struct usb_host_endpoint *ep);
++	int (*drop_endpoint)(struct usb_hcd *hcd, struct usb_device *udev,
++			     struct usb_host_endpoint *ep);
+ 	int (*check_bandwidth)(struct usb_hcd *, struct usb_device *);
+ 	void (*reset_bandwidth)(struct usb_hcd *, struct usb_device *);
+ };
+@@ -2080,6 +2084,10 @@ int xhci_gen_setup(struct usb_hcd *hcd, xhci_get_quirks_t get_quirks);
+ void xhci_shutdown(struct usb_hcd *hcd);
+ void xhci_init_driver(struct hc_driver *drv,
+ 		      const struct xhci_driver_overrides *over);
++int xhci_add_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
++		      struct usb_host_endpoint *ep);
++int xhci_drop_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
++		       struct usb_host_endpoint *ep);
+ int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev);
+ void xhci_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev);
+ int xhci_disable_slot(struct xhci_hcd *xhci, u32 slot_id);
 -- 
 2.18.0
 _______________________________________________
