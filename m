@@ -2,69 +2,86 @@ Return-Path: <SRS0=DQN7=ID=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29E98C433E0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B290EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 10:21:41 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B8A8264F53
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:17:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8A8264F53
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 53BF364F6A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 10:21:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53BF364F6A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ym9b7rb8gVUZN3MDn7f/QIUSlhvfBquHipFERgSRhnc=; b=gmp1dNEDgYfe+YH4e2S8yrbiT
-	AjdyVofyCzwom1UsNiJuuFxU8083uDNNcwc7Pv9RqsPXFwohFxXQMMFDUgmL1A3MO7VvWtt079+ep
-	Ts+vTJ7tjKG6pk6+bPEYJSrt5tbTHXJazUwfzKybXT4XJXwsuTwOlHbw5q4+2XXgfMRj3O6ZmQo+s
-	6UbLmOsW8Jbz7vdyRMNheKHJlu5iBUoAmQiGNHf2J+gDQ7lnJhs0Wd7VG1PINnwQNpvKHDsO5GzYx
-	pxARGdzpohetzQoPHq7izNnifGZ7KO+wo11ZebNo6hFjgRYqi8GskJdKKuR1yuCMAzOpqs3a5K2pL
-	ZZOblOBOg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vY9yCm9av0Za05/8bC0RHRzYYhxvoB6ue4MvGR6JmO4=; b=j4zFdHduU7/+94JXahdoxLupFQ
+	nRnlUqaJ79mvx7hn9p1HOZfnOPwn8NDhtDzzdT0t+JJfxoraO5cJtW9AMH/Wx6S1kHkSYGvJnyrsD
+	MpsFbWfndmURozOq1AG3j9Ylr6t80G/M1xOXZdhUdsXhfKMNciW/h3RvJovS1mnYw+sIKgDzP9ISy
+	NDFubc8p5dhbtLkz77blN1gsnhx8A0gv3unjJ1tPFcGchUmPME3xgrlDNqhxVxcp4rSpXR6EJSszC
+	nqM89ObOuzwEMzId0DhzkoOqPTcN+KhESlTffMHjIy23v5iP+M6WGh7vzLs4qMxaossOu/Gka6fRF
+	HvwktscA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lI6Zn-00EDdI-BQ; Fri, 05 Mar 2021 09:16:51 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lI7aF-00EWNK-Cd; Fri, 05 Mar 2021 10:21:23 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lI6ZS-00EDSx-B4; Fri, 05 Mar 2021 09:16:33 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 16E8864F45;
- Fri,  5 Mar 2021 09:16:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1614935788;
- bh=KEwMRCIZF4N4qvSPoe3DClNVeplmH4EkZWy7fg+Ty8M=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=a8ksPqQVEmCqAb+LBFF6xySukXRl2l7PWsjWkgGEnQkcfvNoAAJR9DY8Y4erLja8o
- 8jJ08I9P195p2aHynAEx+PlPZPgbn8S2g83bYnXGxOWy5vbzteVPvVOc+81YfsrDhY
- H2oeI/ngitJ8V5rEpt95rIJ5rX3lqMNP0MKHXuaI=
-Date: Fri, 5 Mar 2021 10:16:25 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Sergei Shtylyov <sergei.shtylyov@gmail.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>, Ikjoon Jang <ikjn@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>,
- Eddie Hung <eddie.hung@mediatek.com>
-Subject: Re: [PATCH 03/17] usb: xhci-mtk: get the microframe boundary for ESIT
-Message-ID: <YEH26UVlV/yWfk0S@kroah.com>
-References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
- <1614934975-15188-3-git-send-email-chunfeng.yun@mediatek.com>
- <cfa6dccb-d784-06fd-e5bc-0b53d105b7f6@gmail.com>
+ id 1lI7Z5-00EVwR-8F
+ for linux-mediatek@lists.infradead.org; Fri, 05 Mar 2021 10:20:13 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id o6so1689163pjf.5
+ for <linux-mediatek@lists.infradead.org>; Fri, 05 Mar 2021 02:20:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=EUACLrL4E5J+zKlEM3mMmLgSh+SjeWlUxfMZEcaS8n0=;
+ b=Cu64HLf0HIdq0y7140t5Tlz3UVHd6eyis3sDus6y32di/8IKUdlokhzh9DfUSEVjpP
+ SUSElAYITZcFx7+PxUEUS3+h4mipkfxyHKdWIkgJj3v3hGQoo5sTBDrty/vvikqV7rc5
+ Pb2TLpAQodcHd7GwqYX/+Y6Gbuni3G9nxKCBA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=EUACLrL4E5J+zKlEM3mMmLgSh+SjeWlUxfMZEcaS8n0=;
+ b=XTPF4ctOih+P+Y9oqyFoMYJqZQ2T66hfDB1PudSEwyoEvK4YUsFJzSinRpq1yaiR19
+ NGeA7hp+Z/FTuj7qWmfe67Qzc91HdrcI/go8DekbK5/q5/j4L2gX7oOOVZWEfnelkX9Y
+ NfcBTwThl9cz3PHLe6c//73OB47/JZnJMJm6u/adeni+ysNbXFN2MvJFm5LpTV0F/6aS
+ miypSHZ/62j1BsBN0SPEnpxWfBpljxc4Bo35MOl9iD4IpmVfxA77+eCp6kKg9J81buaG
+ /HNlzlsWlyWp8IbTtFUSAsmatHyFMtupq07GY51frjFtm91X//baM36OLvvSpnZJ0YPh
+ n4+w==
+X-Gm-Message-State: AOAM5305r41BvdgNk3leX7cJ3kDHC+0+NXpxdLyRob7WhpZt6J0SR6Tu
+ 9Crj8eZ2NKd8UQ7EgOyEREmh+A==
+X-Google-Smtp-Source: ABdhPJyxjguts9N9hJbIy+WBqBM4VkGt4dYdC45mzBbXhIJhRr6WiT2Rig05kbCicwVUCFTc/FOD0A==
+X-Received: by 2002:a17:902:8ec1:b029:dc:8ae1:7a22 with SMTP id
+ x1-20020a1709028ec1b02900dc8ae17a22mr8029087plo.6.1614939608896; 
+ Fri, 05 Mar 2021 02:20:08 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:5da1:da1b:5bcf:2d46])
+ by smtp.gmail.com with ESMTPSA id c12sm2402672pfp.17.2021.03.05.02.20.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Mar 2021 02:20:08 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Wolfram Sang <wsa@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-i2c@vger.kernel.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: [PATCH] i2c: core: support bus regulator controlling in adapter
+Date: Fri,  5 Mar 2021 18:20:04 +0800
+Message-Id: <20210305102004.191209-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cfa6dccb-d784-06fd-e5bc-0b53d105b7f6@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_091631_542775_081E0564 
-X-CRM114-Status: GOOD (  16.74  )
+X-CRM114-CacheID: sfid-20210305_102011_617284_7B5450A2 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,52 +98,205 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 05, 2021 at 12:13:33PM +0300, Sergei Shtylyov wrote:
-> Hello!
-> 
-> On 05.03.2021 12:02, Chunfeng Yun wrote:
-> 
-> > Tune the boundary for FS/LS ESIT due to CS:
-> > For ISOC out-ep, the controller starts transfer data after
-> > the first SS; for others, the data is already transfered
-> 
->    Transferred.
-> 
-> > before the last CS.
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >   drivers/usb/host/xhci-mtk-sch.c | 24 +++++++++++++++++++-----
-> >   1 file changed, 19 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-> > index 8950d1f10a7f..e3b18dfca874 100644
-> > --- a/drivers/usb/host/xhci-mtk-sch.c
-> > +++ b/drivers/usb/host/xhci-mtk-sch.c
-> > @@ -513,22 +513,35 @@ static void update_sch_tt(struct usb_device *udev,
-> >   		list_del(&sch_ep->tt_endpoint);
-> >   }
-> > +static u32 get_esit_boundary(struct mu3h_sch_ep_info *sch_ep)
-> > +{
-> > +	u32 boundary = sch_ep->esit;
-> > +
-> > +	if (sch_ep->sch_tt) { /* LS/FS with TT */
-> > +		/* tune for CS */
-> > +		if (sch_ep->ep_type != ISOC_OUT_EP)
-> > +			boundary += 1;
-> 
->    Why not:
-> 
-> 			boundary++;
-> 
-> > +		else if (boundary > 1) /* normally esit >= 8 for FS/LS */
-> > +			boundary -= 1;
-> 
-> 			boundary--;
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
 
-Doesn't matter either way, it's the author's choice.
+Although in the most platforms, the bus power of i2c
+are alway on, some platforms disable the i2c bus power
+in order to meet low power request.
 
-greg k-h
+We get and enable bulk regulator in i2c adapter device.
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+This patch is squashed from following patch and tested on mt8183 device
+which has eeprom at24 client under i2c, so the fix in [2] is also
+verified.
+[1] https://patchwork.ozlabs.org/project/linux-i2c/cover/20200519072729.7268-1-bibby.hsieh@mediatek.com/
+[2] https://patchwork.ozlabs.org/project/linux-i2c/patch/20200522101327.13456-1-m.szyprowski@samsung.com/
+---
+ drivers/i2c/i2c-core-base.c | 93 +++++++++++++++++++++++++++++++++++++
+ include/linux/i2c.h         |  2 +
+ 2 files changed, 95 insertions(+)
+
+diff --git a/drivers/i2c/i2c-core-base.c b/drivers/i2c/i2c-core-base.c
+index 63ebf722a424..667f4a4de7cc 100644
+--- a/drivers/i2c/i2c-core-base.c
++++ b/drivers/i2c/i2c-core-base.c
+@@ -439,12 +439,14 @@ static int i2c_smbus_host_notify_to_irq(const struct i2c_client *client)
+ static int i2c_device_probe(struct device *dev)
+ {
+ 	struct i2c_client	*client = i2c_verify_client(dev);
++	struct i2c_adapter	*adap;
+ 	struct i2c_driver	*driver;
+ 	int status;
+ 
+ 	if (!client)
+ 		return 0;
+ 
++	adap = client->adapter;
+ 	client->irq = client->init_irq;
+ 
+ 	if (!client->irq) {
+@@ -510,6 +512,12 @@ static int i2c_device_probe(struct device *dev)
+ 
+ 	dev_dbg(dev, "probe\n");
+ 
++	status = regulator_enable(adap->bus_regulator);
++	if (status < 0) {
++		dev_err(&adap->dev, "Failed to enable power regulator\n");
++		goto err_clear_wakeup_irq;
++	}
++
+ 	status = of_clk_set_defaults(dev->of_node, false);
+ 	if (status < 0)
+ 		goto err_clear_wakeup_irq;
+@@ -550,8 +558,10 @@ static int i2c_device_probe(struct device *dev)
+ static int i2c_device_remove(struct device *dev)
+ {
+ 	struct i2c_client	*client = to_i2c_client(dev);
++	struct i2c_adapter      *adap;
+ 	struct i2c_driver	*driver;
+ 
++	adap = client->adapter;
+ 	driver = to_i2c_driver(dev->driver);
+ 	if (driver->remove) {
+ 		int status;
+@@ -564,6 +574,8 @@ static int i2c_device_remove(struct device *dev)
+ 	}
+ 
+ 	dev_pm_domain_detach(&client->dev, true);
++	if (!pm_runtime_status_suspended(&client->dev))
++		regulator_disable(adap->bus_regulator);
+ 
+ 	dev_pm_clear_wake_irq(&client->dev);
+ 	device_init_wakeup(&client->dev, false);
+@@ -576,6 +588,80 @@ static int i2c_device_remove(struct device *dev)
+ 	return 0;
+ }
+ 
++#ifdef CONFIG_PM_SLEEP
++static int i2c_resume_early(struct device *dev)
++{
++	struct i2c_client *client = i2c_verify_client(dev);
++	int err;
++
++	if (!client)
++		return 0;
++
++	if (!pm_runtime_status_suspended(&client->dev)) {
++		err = regulator_enable(client->adapter->bus_regulator);
++		if (err)
++			return err;
++	}
++
++	return pm_generic_resume_early(&client->dev);
++}
++
++static int i2c_suspend_late(struct device *dev)
++{
++	struct i2c_client *client = i2c_verify_client(dev);
++	int err;
++
++	if (!client)
++		return 0;
++
++	err = pm_generic_suspend_late(&client->dev);
++	if (err)
++		return err;
++
++	if (!pm_runtime_status_suspended(&client->dev))
++		return regulator_disable(client->adapter->bus_regulator);
++
++	return 0;
++}
++#endif
++
++#ifdef CONFIG_PM
++static int i2c_runtime_resume(struct device *dev)
++{
++	struct i2c_client *client = i2c_verify_client(dev);
++	int err;
++
++	if (!client)
++		return 0;
++
++	err = regulator_enable(client->adapter->bus_regulator);
++	if (err)
++		return err;
++
++	return pm_generic_runtime_resume(&client->dev);
++}
++
++static int i2c_runtime_suspend(struct device *dev)
++{
++	struct i2c_client *client = i2c_verify_client(dev);
++	int err;
++
++	if (!client)
++		return 0;
++
++	err = pm_generic_runtime_suspend(&client->dev);
++	if (err)
++		return err;
++
++	return regulator_disable(client->adapter->bus_regulator);
++}
++#endif
++
++static const struct dev_pm_ops i2c_device_pm = {
++	SET_LATE_SYSTEM_SLEEP_PM_OPS(i2c_suspend_late, i2c_resume_early)
++	SET_RUNTIME_PM_OPS(i2c_runtime_suspend, i2c_runtime_resume, NULL)
++};
++
+ static void i2c_device_shutdown(struct device *dev)
+ {
+ 	struct i2c_client *client = i2c_verify_client(dev);
+@@ -633,6 +719,7 @@ struct bus_type i2c_bus_type = {
+ 	.probe		= i2c_device_probe,
+ 	.remove		= i2c_device_remove,
+ 	.shutdown	= i2c_device_shutdown,
++	.pm		= &i2c_device_pm,
+ };
+ EXPORT_SYMBOL_GPL(i2c_bus_type);
+ 
+@@ -1446,6 +1533,12 @@ static int i2c_register_adapter(struct i2c_adapter *adap)
+ 	if (res)
+ 		goto out_reg;
+ 
++	adap->bus_regulator = devm_regulator_get(&adap->dev, "bus");
++	if (IS_ERR(adap->bus_regulator)) {
++		res = PTR_ERR(adap->bus_regulator);
++		goto out_reg;
++	}
++
+ 	pm_runtime_no_callbacks(&adap->dev);
+ 	pm_suspend_ignore_children(&adap->dev, true);
+ 	pm_runtime_enable(&adap->dev);
+diff --git a/include/linux/i2c.h b/include/linux/i2c.h
+index 56622658b215..ec87758d9f40 100644
+--- a/include/linux/i2c.h
++++ b/include/linux/i2c.h
+@@ -15,6 +15,7 @@
+ #include <linux/device.h>	/* for struct device */
+ #include <linux/sched.h>	/* for completion */
+ #include <linux/mutex.h>
++#include <linux/regulator/consumer.h>
+ #include <linux/rtmutex.h>
+ #include <linux/irqdomain.h>		/* for Host Notify IRQ */
+ #include <linux/of.h>		/* for struct device_node */
+@@ -721,6 +722,7 @@ struct i2c_adapter {
+ 	const struct i2c_adapter_quirks *quirks;
+ 
+ 	struct irq_domain *host_notify_domain;
++	struct regulator *bus_regulator;
+ };
+ #define to_i2c_adapter(d) container_of(d, struct i2c_adapter, dev)
+ 
+-- 
+2.30.1.766.gb4fecdf3b7-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
