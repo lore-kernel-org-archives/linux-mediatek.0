@@ -2,70 +2,74 @@ Return-Path: <SRS0=DQN7=ID=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A3EDC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:48:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1325CC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:55:42 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 084566508D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:48:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 084566508D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 94A966507A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:55:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94A966507A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NRiWTkbHHVxmj4KR/fhEAGHDurpQf9CXTh+qbbmDzD8=; b=N9cDiaVupz4UXXfxEckAO9iMu
-	g3xAEFy5jzdPhWabXAHL9mC7k8ZVJlNwIxci9qmUxPwlLEGdfpkEgjFN16oYeNyXiGlPG8w/55S/G
-	lGF9GkqtGvFblEL5XFIguEX/58avcorMjZSclAvao4WFtLXYz63AdzEghDUSmZs83ECWRK4O7qvW6
-	MAZ5ztoXv+6eC1nIl1sXsohjbqRrs2mF8TagXBvkyPhehcPAPIV2bDyCJM6VlPB35VfhectHH8xzv
-	JGEDsZfnuwL7BYMb4jc80R86jr2rFV6jNvW3KlA19GOhnNO+yHjSA0sLcLUWNrED33LPo6g5oCvG6
-	PEcjSi6iw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sjjucEWISTFe0fW4SFBANcP87UzBS1SvXjr1VPNSHoY=; b=VnDyvQnzRO0+WLSSXC6iOggnA4
+	mhcOcVe1ntDNbMp9+ev5UrPLtlLlxNc2GppuEPuJtYysvx/aCZ98CWoXEu8/yXZgYBupPEXb7kTPy
+	dVagS7/G9l3kfXuxXlIP6/zU+pU3n9OQNQ2N16o5gUtGWLPxWV5SKd9qJHbefh5TuGRtQr24m4boB
+	vCcMTTYTdb1ljJVxjWk5GhJ52zNpuR1Pyz8LIgrp/hM9Us1W9zhPVM5GPQX1aT4KYVk7UYBK8REoM
+	mj0VXVVv3MAKbukz+YMcIssdDnZv4Z+7wRxQuDpJ/xysi8REtTGmr2VBqPJYVVnw9PBKMBlSTBIeN
+	udDRBlBw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lICgJ-00FVef-4n; Fri, 05 Mar 2021 15:47:59 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lICnU-00FWzB-8G; Fri, 05 Mar 2021 15:55:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lICfw-00FVYu-9x; Fri, 05 Mar 2021 15:47:43 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2287E65092;
- Fri,  5 Mar 2021 15:47:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1614959253;
- bh=LZDg8chHQnKxfnvQXDeCl73wwlxc/LGrLyawbsjqJf4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=omTvdzTY3BcKun81+mXyUYLEpAeBVUVnSBThuBapVwZCkNmXK4WW8PkqxFhfHDmmw
- 8roqNBSvRa44hJVXudK5M1B55J5S9eTdcfoGDzXutRfkK2DaY5PKEEpa4GN7NcgBeK
- HJlkUnOoh+cwHrsB/zOgohz9hpzvD0tCIbkaDUyM=
-Date: Fri, 5 Mar 2021 16:47:24 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Alan Stern <stern@rowland.harvard.edu>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>, Ikjoon Jang <ikjn@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>,
- Eddie Hung <eddie.hung@mediatek.com>
-Subject: Re: [PATCH 16/17] usb: common: add function to get interval
- expressed in us unit
-Message-ID: <YEJSjJnjXl7f/BP9@kroah.com>
-References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
- <1614934975-15188-16-git-send-email-chunfeng.yun@mediatek.com>
- <20210305153312.GA38200@rowland.harvard.edu>
+ id 1lICnG-00FWw1-Bb
+ for linux-mediatek@lists.infradead.org; Fri, 05 Mar 2021 15:55:17 +0000
+X-UUID: f1cea93ffb864768981e16a3d6078874-20210305
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=SUOowLGbH/rUetzohgGy7taA/ESA5H84D7Wzy/vBfOY=; 
+ b=NMeuxe94pgwOM1h7cVW2r0mJbiyliNiq9GMFgF7q6oe6MjwdwlFfF4MjqhHNVQamSs8CD+kTDPNXLPGvXyuZw/m0PUU2MiK2ZXUZLv40mW86qgfC3jOSbY5Bw0G7PDKbiueIy4VBsflUmQXlHoHCTSIF0QDlFQbCUSONPOpKl+w=;
+X-UUID: f1cea93ffb864768981e16a3d6078874-20210305
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 836695480; Fri, 05 Mar 2021 07:55:01 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Mar 2021 07:54:59 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 5 Mar 2021 23:54:45 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 5 Mar 2021 23:54:45 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2] mt76: mt7615: check mcu returned values in mt7615_ops
+Date: Fri, 5 Mar 2021 23:52:59 +0800
+Message-ID: <4f718052b030971f288ef6eb1b0d215200555ce5.1614959356.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210305153312.GA38200@rowland.harvard.edu>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_154739_550928_C3458314 
-X-CRM114-Status: GOOD (  20.21  )
+X-CRM114-CacheID: sfid-20210305_155512_424384_E5402DC7 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,84 +86,232 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 05, 2021 at 10:33:12AM -0500, Alan Stern wrote:
-> On Fri, Mar 05, 2021 at 05:02:54PM +0800, Chunfeng Yun wrote:
-> > Add a new function to convert bInterval into the time expressed
-> > in 1us unit.
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> 
-> > --- a/drivers/usb/common/common.c
-> > +++ b/drivers/usb/common/common.c
-> > @@ -165,6 +165,39 @@ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
-> >  }
-> >  EXPORT_SYMBOL_GPL(usb_get_dr_mode);
-> >  
-> > +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
-> > +				 enum usb_device_speed speed)
-> > +{
-> > +	unsigned int interval = 0;
-> > +
-> > +	switch (usb_endpoint_type(epd)) {
-> > +	case USB_ENDPOINT_XFER_CONTROL:
-> > +		/* uframes per NAK */
-> > +		if (speed == USB_SPEED_HIGH)
-> > +			interval = epd->bInterval;
-> > +		break;
-> > +	case USB_ENDPOINT_XFER_ISOC:
-> > +		interval = 1 << (epd->bInterval - 1);
-> > +		break;
-> > +	case USB_ENDPOINT_XFER_BULK:
-> > +		/* uframes per NAK */
-> > +		if (speed == USB_SPEED_HIGH && usb_endpoint_dir_out(epd))
-> > +			interval = epd->bInterval;
-> > +		break;
-> > +	case USB_ENDPOINT_XFER_INT:
-> > +		if (speed >= USB_SPEED_HIGH)
-> > +			interval = 1 << (epd->bInterval - 1);
-> > +		else
-> > +			interval = epd->bInterval;
-> > +		break;
-> > +	}
-> > +
-> > +	interval *= (speed >= USB_SPEED_HIGH) ? 125 : 1000;
-> > +
-> > +	return interval;
-> > +}
-> > +EXPORT_SYMBOL_GPL(usb_decode_interval);
-> 
-> > --- a/include/linux/usb/ch9.h
-> > +++ b/include/linux/usb/ch9.h
-> > @@ -90,6 +90,17 @@ extern enum usb_ssp_rate usb_get_maximum_ssp_rate(struct device *dev);
-> >   */
-> >  extern const char *usb_state_string(enum usb_device_state state);
-> >  
-> > +/**
-> > + * usb_decode_interval - Decode bInterval into the time expressed in 1us unit
-> > + * @epd: The descriptor of the endpoint
-> > + * @speed: The speed that the endpoint works as
-> > + *
-> > + * Function returns the interval expressed in 1us unit for servicing
-> > + * endpoint for data transfers.
-> > + */
-> > +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
-> > +				 enum usb_device_speed speed);
-> 
-> As a general rule, I believe people expect to find the kerneldoc for a 
-> function next to the function's definition, not next to the declaration 
-> in a header file.
+Properly check returned values from mcu utility routines in
+mt7615_ops.
 
-I was going to make the same review comment, but if you look above this
-in that file, there's other kernel doc information in the .h file, so
-this does match with the style of the file :(
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+changes since v2: check more returned values in non-void funcitons
+---
+ .../net/wireless/mediatek/mt76/mt7615/main.c  | 90 +++++++++++++------
+ 1 file changed, 64 insertions(+), 26 deletions(-)
 
-We can fix that all up later.
-
-thanks,
-
-greg k-h
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 68accb37ea28..0a83abf7315c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -29,6 +29,7 @@ static int mt7615_start(struct ieee80211_hw *hw)
+ 	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+ 	struct mt7615_phy *phy = mt7615_hw_phy(hw);
+ 	bool running;
++	int ret;
+ 
+ 	if (!mt7615_wait_for_mcu_init(dev))
+ 		return -EIO;
+@@ -38,21 +39,38 @@ static int mt7615_start(struct ieee80211_hw *hw)
+ 	running = mt7615_dev_running(dev);
+ 
+ 	if (!running) {
+-		mt7615_mcu_set_pm(dev, 0, 0);
+-		mt76_connac_mcu_set_mac_enable(&dev->mt76, 0, true, false);
++		ret = mt7615_mcu_set_pm(dev, 0, 0);
++		if (ret)
++			goto out;
++
++		ret = mt76_connac_mcu_set_mac_enable(&dev->mt76, 0, true, false);
++		if (ret)
++			goto out;
++
+ 		mt7615_mac_enable_nf(dev, 0);
+ 	}
+ 
+ 	if (phy != &dev->phy) {
+-		mt7615_mcu_set_pm(dev, 1, 0);
+-		mt76_connac_mcu_set_mac_enable(&dev->mt76, 1, true, false);
++		ret = mt7615_mcu_set_pm(dev, 1, 0);
++		if (ret)
++			goto out;
++
++		ret = mt76_connac_mcu_set_mac_enable(&dev->mt76, 1, true, false);
++		if (ret)
++			goto out;
++
+ 		mt7615_mac_enable_nf(dev, 1);
+ 	}
+ 
+-	if (mt7615_firmware_offload(dev))
+-		mt76_connac_mcu_set_channel_domain(phy->mt76);
++	if (mt7615_firmware_offload(dev)) {
++		ret = mt76_connac_mcu_set_channel_domain(phy->mt76);
++		if (ret)
++			goto out;
++	}
+ 
+-	mt7615_mcu_set_chan_info(phy, MCU_EXT_CMD_SET_RX_PATH);
++	ret = mt7615_mcu_set_chan_info(phy, MCU_EXT_CMD_SET_RX_PATH);
++	if (ret)
++		goto out;
+ 
+ 	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
+ 
+@@ -62,9 +80,10 @@ static int mt7615_start(struct ieee80211_hw *hw)
+ 	if (!running)
+ 		mt7615_mac_reset_counters(dev);
+ 
++out:
+ 	mt7615_mutex_release(dev);
+ 
+-	return 0;
++	return ret;
+ }
+ 
+ static void mt7615_stop(struct ieee80211_hw *hw)
+@@ -197,7 +216,9 @@ static int mt7615_add_interface(struct ieee80211_hw *hw,
+ 	dev->omac_mask |= BIT_ULL(mvif->mt76.omac_idx);
+ 	phy->omac_mask |= BIT_ULL(mvif->mt76.omac_idx);
+ 
+-	mt7615_mcu_set_dbdc(dev);
++	ret = mt7615_mcu_set_dbdc(dev);
++	if (ret)
++		goto out;
+ 
+ 	idx = MT7615_WTBL_RESERVED - mvif->mt76.idx;
+ 
+@@ -296,8 +317,13 @@ int mt7615_set_channel(struct mt7615_phy *phy)
+ 	mt76_set_channel(phy->mt76);
+ 
+ 	if (is_mt7615(&dev->mt76) && dev->flash_eeprom) {
+-		mt7615_mcu_apply_rx_dcoc(phy);
+-		mt7615_mcu_apply_tx_dpd(phy);
++		ret = mt7615_mcu_apply_rx_dcoc(phy);
++		if (ret)
++			goto out;
++
++		ret = mt7615_mcu_apply_tx_dpd(phy);
++		if (ret)
++			goto out;
+ 	}
+ 
+ 	ret = mt7615_mcu_set_chan_info(phy, MCU_EXT_CMD_CHANNEL_SWITCH);
+@@ -306,8 +332,13 @@ int mt7615_set_channel(struct mt7615_phy *phy)
+ 
+ 	mt7615_mac_set_timing(phy);
+ 	ret = mt7615_dfs_init_radar_detector(phy);
++	if (ret)
++		goto out;
++
+ 	mt7615_mac_cca_stats_reset(phy);
+-	mt7615_mcu_set_sku_en(phy, true);
++	ret = mt7615_mcu_set_sku_en(phy, true);
++	if (ret)
++		goto out;
+ 
+ 	mt7615_mac_reset_counters(dev);
+ 	phy->noise = 0;
+@@ -587,15 +618,21 @@ int mt7615_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	if (err)
+ 		return err;
+ 
+-	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls)
+-		mt7615_mcu_add_bss_info(phy, vif, sta, true);
++	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls) {
++		err = mt7615_mcu_add_bss_info(phy, vif, sta, true);
++		if (err)
++			return err;
++	}
++
+ 	mt7615_mac_wtbl_update(dev, idx,
+ 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+-	mt7615_mcu_sta_add(&dev->phy, vif, sta, true);
++	err = mt7615_mcu_sta_add(&dev->phy, vif, sta, true);
++	if (err)
++		return err;
+ 
+ 	mt76_connac_power_save_sched(phy->mt76, &dev->pm);
+ 
+-	return 0;
++	return err;
+ }
+ EXPORT_SYMBOL_GPL(mt7615_mac_sta_add);
+ 
+@@ -715,13 +752,13 @@ static int mt7615_set_rts_threshold(struct ieee80211_hw *hw, u32 val)
+ {
+ 	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+ 	struct mt7615_phy *phy = mt7615_hw_phy(hw);
+-	int band = phy != &dev->phy;
++	int err, band = phy != &dev->phy;
+ 
+ 	mt7615_mutex_acquire(dev);
+-	mt76_connac_mcu_set_rts_thresh(&dev->mt76, val, band);
++	err = mt76_connac_mcu_set_rts_thresh(&dev->mt76, val, band);
+ 	mt7615_mutex_release(dev);
+ 
+-	return 0;
++	return err;
+ }
+ 
+ static int
+@@ -749,16 +786,16 @@ mt7615_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	case IEEE80211_AMPDU_RX_START:
+ 		mt76_rx_aggr_start(&dev->mt76, &msta->wcid, tid, ssn,
+ 				   params->buf_size);
+-		mt7615_mcu_add_rx_ba(dev, params, true);
++		ret = mt7615_mcu_add_rx_ba(dev, params, true);
+ 		break;
+ 	case IEEE80211_AMPDU_RX_STOP:
+ 		mt76_rx_aggr_stop(&dev->mt76, &msta->wcid, tid);
+-		mt7615_mcu_add_rx_ba(dev, params, false);
++		ret = mt7615_mcu_add_rx_ba(dev, params, false);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_OPERATIONAL:
+ 		mtxq->aggr = true;
+ 		mtxq->send_bar = false;
+-		mt7615_mcu_add_tx_ba(dev, params, true);
++		ret = mt7615_mcu_add_tx_ba(dev, params, true);
+ 		ssn = mt7615_mac_get_sta_tid_sn(dev, msta->wcid.idx, tid);
+ 		ieee80211_send_bar(vif, sta->addr, tid,
+ 				   IEEE80211_SN_TO_SEQ(ssn));
+@@ -766,7 +803,7 @@ mt7615_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	case IEEE80211_AMPDU_TX_STOP_FLUSH:
+ 	case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:
+ 		mtxq->aggr = false;
+-		mt7615_mcu_add_tx_ba(dev, params, false);
++		ret = mt7615_mcu_add_tx_ba(dev, params, false);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_START:
+ 		ssn = mt7615_mac_get_sta_tid_sn(dev, msta->wcid.idx, tid);
+@@ -775,7 +812,7 @@ mt7615_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		break;
+ 	case IEEE80211_AMPDU_TX_STOP_CONT:
+ 		mtxq->aggr = false;
+-		mt7615_mcu_add_tx_ba(dev, params, false);
++		ret = mt7615_mcu_add_tx_ba(dev, params, false);
+ 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
+ 		break;
+ 	}
+@@ -1085,6 +1122,7 @@ static int mt7615_cancel_remain_on_channel(struct ieee80211_hw *hw,
+ 					   struct ieee80211_vif *vif)
+ {
+ 	struct mt7615_phy *phy = mt7615_hw_phy(hw);
++	int err;
+ 
+ 	if (!test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
+ 		return 0;
+@@ -1093,10 +1131,10 @@ static int mt7615_cancel_remain_on_channel(struct ieee80211_hw *hw,
+ 	cancel_work_sync(&phy->roc_work);
+ 
+ 	mt7615_mutex_acquire(phy->dev);
+-	mt7615_mcu_set_roc(phy, vif, NULL, 0);
++	err = mt7615_mcu_set_roc(phy, vif, NULL, 0);
+ 	mt7615_mutex_release(phy->dev);
+ 
+-	return 0;
++	return err;
+ }
+ 
+ static void mt7615_sta_set_decap_offload(struct ieee80211_hw *hw,
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
