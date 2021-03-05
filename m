@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E60D4C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:14:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9838BC433E6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:14:18 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C08D64F53
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:14:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C08D64F53
+	by mail.kernel.org (Postfix) with ESMTPS id 2E18364F53
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 09:14:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E18364F53
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hmEVfqLCL9Qi9BOUlg/2ZE3cOT0qpSeqqhv7RQKtZyY=; b=c8zDclanVequOn0463REzqsmF
-	zlod2Ge3ydXjjsOdAk6kTWopugEGJvud/p1KAoQyOgJP0AbYfR7PXbYhNAhpQwkXPHYefVrILC1rr
-	Eq9QgU0EvbQE4nBFu0kEPlNv+iEahB9xLedOUN5h7oKCTKKLOAHkrLpyy5weM916sSknYSCDgVtVC
-	UveZ9eFbX+Y2l5OzuCiQmZXvCZk7LlTmRSPdYekCNoL9x7hDmH47l559USjPqrHs1pS6CKQObSK7Q
-	VbT99FYNYNiWjmqg2siKRZGX7QUV4u09Oopo9bPJaoGEgHsL4otQRd5ifVcUwE9zy5y1yp+JfIeVe
-	HjXkLx1aw==;
+	 bh=XfxB2eshSOHa5AiWZU9LGm4G1yE2/r2ll0gJ8Q4liVc=; b=edPxG5cSdTwSLOz2Uc1EQstRv
+	+D0rz/kMERcu3GYSIyE0AmiA9zWw64guOG9kmnj7dYD84E7TMOlZIqg7vu+tffzcab5JSbdq3mAID
+	cUKBDnL89kAnrhdNf7tOx7CGIZ7rynQOAdq1tI9uoe7M0vQGyHv3YY37c262u1Vz2cgnlP2JCVUMY
+	j/xoCL2B/QACJR3EIt7q146mbT8D+4+yNvmxo0U5rCGneCeNCVODccobxyVdckftA5bN9s5d9adCz
+	Bcq3kkK7HWKZM5lbUbtEqFMmmMfm4mhLclEEW58bSzHBtanHF3xgfbl4P8d2LFUUJxn46sPMmUe45
+	EdhjVe2Vw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lI6XB-00EBx8-7R; Fri, 05 Mar 2021 09:14:09 +0000
+	id 1lI6XC-00EBxk-Ct; Fri, 05 Mar 2021 09:14:10 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lI6WX-00EBgM-O4; Fri, 05 Mar 2021 09:13:31 +0000
-X-UUID: 117623dfd1814d11a317b2c1cb669e29-20210305
+ id 1lI6WX-00EBgW-NW; Fri, 05 Mar 2021 09:13:31 +0000
+X-UUID: 3e6855ed54f440c7b19cdea836247c6b-20210305
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=dsNG3dCGLrHDrJIiisuOnkSvQXqjds7oXVSqZn9ta+k=; 
- b=pkelfA6tH1YxOVxXcAb9NymJZavJV/bZ6RKrLvr8a2/C+vOVW77b3Hk0tip2kBNGf3uoXNC6K2SEkiCMujs9JKtWH2KNO59+6Tf3FUV+L1PNL+rO+5/1Q7VS6+GgN1hV+86UryJuvdfPxf1prV/8K4LemxHBzJnjnyxI2LPxbBM=;
-X-UUID: 117623dfd1814d11a317b2c1cb669e29-20210305
+ bh=rPJQ6jCtgrXXg/QjopAEDo12tkOSxJm9MoiwNkHns0Y=; 
+ b=o8Zhb+0x5lkcQcLf3h6BwwaL6V6Y5W60bg2MXlCb5FTzZBh+Z8r6+zj5GvzbJqlzS3Jd9l/mPolcr0dGSLZSE4ErskG4LDMkmoFdOzReozyZe8SZeDTV5WSgLzPyyBoqXPIeOU2SP/URz0aAGhGXrkYHylpRUu+v6F/VcpLSRWM=;
+X-UUID: 3e6855ed54f440c7b19cdea836247c6b-20210305
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1605087725; Fri, 05 Mar 2021 01:13:20 -0800
+ with ESMTP id 2040166130; Fri, 05 Mar 2021 01:13:20 -0800
 Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 5 Mar 2021 01:03:19 -0800
+ 15.0.1497.2; Fri, 5 Mar 2021 01:03:18 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 5 Mar 2021 17:03:17 +0800
+ 15.0.1497.2; Fri, 5 Mar 2021 17:03:16 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 5 Mar 2021 17:03:17 +0800
+ Transport; Fri, 5 Mar 2021 17:03:15 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Ikjoon Jang <ikjn@chromium.org>
@@ -63,19 +64,18 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
  Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH 05/17] usb: xhci-mtk: use @sch_tt to check whether need do TT
- schedule
-Date: Fri, 5 Mar 2021 17:02:43 +0800
-Message-ID: <1614934975-15188-5-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 03/17] usb: xhci-mtk: get the microframe boundary for ESIT
+Date: Fri, 5 Mar 2021 17:02:41 +0800
+Message-ID: <1614934975-15188-3-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C8CA46DBE9EC354CE8400F4C949113AA506A2C98DBF3A7B081DE440F7DA555E22000:8
+X-TM-SNTS-SMTP: F037F6C908867B89B8E91ED5FD7323317E49810CA8B051728F0C5F89284DE6532000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_091330_221506_1B6CDC64 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20210305_091330_224178_4301D260 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,36 +92,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It's clearer to use @sch_tt to check whether need do TT schedule,
-no function is changed.
+Tune the boundary for FS/LS ESIT due to CS:
+For ISOC out-ep, the controller starts transfer data after
+the first SS; for others, the data is already transfered
+before the last CS.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/host/xhci-mtk-sch.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/usb/host/xhci-mtk-sch.c | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 817ef2815e67..9016188eee97 100644
+index 8950d1f10a7f..e3b18dfca874 100644
 --- a/drivers/usb/host/xhci-mtk-sch.c
 +++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -548,7 +548,7 @@ static int check_sch_bw(struct usb_device *udev,
+@@ -513,22 +513,35 @@ static void update_sch_tt(struct usb_device *udev,
+ 		list_del(&sch_ep->tt_endpoint);
+ }
+ 
++static u32 get_esit_boundary(struct mu3h_sch_ep_info *sch_ep)
++{
++	u32 boundary = sch_ep->esit;
++
++	if (sch_ep->sch_tt) { /* LS/FS with TT */
++		/* tune for CS */
++		if (sch_ep->ep_type != ISOC_OUT_EP)
++			boundary += 1;
++		else if (boundary > 1) /* normally esit >= 8 for FS/LS */
++			boundary -= 1;
++	}
++
++	return boundary;
++}
++
+ static int check_sch_bw(struct usb_device *udev,
+ 	struct mu3h_sch_bw_info *sch_bw, struct mu3h_sch_ep_info *sch_ep)
+ {
+ 	u32 offset;
+-	u32 esit;
+ 	u32 min_bw;
+ 	u32 min_index;
+ 	u32 worst_bw;
+ 	u32 bw_boundary;
++	u32 esit_boundary;
+ 	u32 min_num_budget;
+ 	u32 min_cs_count;
+ 	bool tt_offset_ok = false;
+ 	int ret;
+ 
+-	esit = sch_ep->esit;
+-
+ 	/*
+ 	 * Search through all possible schedule microframes.
+ 	 * and find a microframe where its worst bandwidth is minimum.
+@@ -537,7 +550,8 @@ static int check_sch_bw(struct usb_device *udev,
+ 	min_index = 0;
+ 	min_cs_count = sch_ep->cs_count;
  	min_num_budget = sch_ep->num_budget_microframes;
- 	esit_boundary = get_esit_boundary(sch_ep);
- 	for (offset = 0; offset < sch_ep->esit; offset++) {
--		if (is_fs_or_ls(udev->speed)) {
-+		if (sch_ep->sch_tt) {
+-	for (offset = 0; offset < esit; offset++) {
++	esit_boundary = get_esit_boundary(sch_ep);
++	for (offset = 0; offset < sch_ep->esit; offset++) {
+ 		if (is_fs_or_ls(udev->speed)) {
  			ret = check_sch_tt(udev, sch_ep, offset);
  			if (ret)
- 				continue;
-@@ -585,7 +585,7 @@ static int check_sch_bw(struct usb_device *udev,
- 	sch_ep->cs_count = min_cs_count;
- 	sch_ep->num_budget_microframes = min_num_budget;
+@@ -546,7 +560,7 @@ static int check_sch_bw(struct usb_device *udev,
+ 				tt_offset_ok = true;
+ 		}
  
--	if (is_fs_or_ls(udev->speed)) {
-+	if (sch_ep->sch_tt) {
- 		/* all offset for tt is not ok*/
- 		if (!tt_offset_ok)
- 			return -ERANGE;
+-		if ((offset + sch_ep->num_budget_microframes) > sch_ep->esit)
++		if ((offset + sch_ep->num_budget_microframes) > esit_boundary)
+ 			break;
+ 
+ 		worst_bw = get_max_bw(sch_bw, sch_ep, offset);
 -- 
 2.18.0
 _______________________________________________
