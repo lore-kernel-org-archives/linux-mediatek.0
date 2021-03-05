@@ -2,63 +2,68 @@ Return-Path: <SRS0=DQN7=ID=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B1EAC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:33:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF451C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:37:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 030C86507C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:33:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 030C86507C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rowland.harvard.edu
+	by mail.kernel.org (Postfix) with ESMTPS id 68FFB6508F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Mar 2021 15:37:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68FFB6508F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rTfaJLm2dUCNemcHZq/mFpFZ7AS3nXy54JDXMQOHeO8=; b=p7+kuCrei0eg+qwrSmNhe3mmS
-	BRZ478M35Qm72RVL4P5SR921QgkvA589hKV3v2xUuH0V2xkuAc3Ehoykb00fNcz7vNsh2aDaUPi3p
-	cHqV/7PyeJQ2nYzbqPbwkIWXNVLy+vCBlR052sZLXHWj8IMvCm8oeCe67YLfWZy1w7mpe8obSd34u
-	CqAXM0zYiueq8CTbRr9f3/onBVE18frlx6CUtL6bOds730GFfOkqPXff1LPI5hPiDpFmWm09tXEa/
-	AR4y2pLMYamo1iUk5H+V0ilGzhMpcsl01n2HKOsXO4xtYLQgwOHZIXHQlJ7dpINbR70vbIJUwutPZ
-	ZRwflAdqQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=kYLwfNHeNrz24uqsouN8kPBr4gpXRepz1wnl6skgQiQ=; b=BEpI6k/6DynQhBapawRFBt9FP
+	a2UC64ntd1oRdh5u7OLfid46dGHtJ+UzizfVzyqAJRuKHGL8HL8qR4sLtcxuSqxohEymfybmJRNiX
+	rI8Ydd4NirXjAKCQ8EWRTnSzzm6yifOr83iL07xgkk716dxZ2jJvDkxCKSpgWYxoTZwUhfjq/2F43
+	7wj5m4Uz23BrQtSB24tMDuJbCBupO6BS60YSWMGqJ481H/i53V8kT/BECOKJdk6uCxRiXFPINtrLO
+	2XayaH0SVjVvJn9o23EiJuUPONmftT3JskIMS3uEPby60XhWEccGCPV3Q4pqfh/EJO9BUv3gVqtCA
+	4gGceXKcQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lICSW-00FSoU-Mq; Fri, 05 Mar 2021 15:33:44 +0000
-Received: from netrider.rowland.org ([192.131.102.5])
- by desiato.infradead.org with smtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lICS3-00FSjU-SG
- for linux-mediatek@lists.infradead.org; Fri, 05 Mar 2021 15:33:24 +0000
-Received: (qmail 39139 invoked by uid 1000); 5 Mar 2021 10:33:12 -0500
-Date: Fri, 5 Mar 2021 10:33:12 -0500
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ikjoon Jang <ikjn@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>,
- Eddie Hung <eddie.hung@mediatek.com>
-Subject: Re: [PATCH 16/17] usb: common: add function to get interval
- expressed in us unit
-Message-ID: <20210305153312.GA38200@rowland.harvard.edu>
-References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
- <1614934975-15188-16-git-send-email-chunfeng.yun@mediatek.com>
+	id 1lICVm-00FTKu-Hh; Fri, 05 Mar 2021 15:37:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lICVi-00FTJi-4g
+ for linux-mediatek@lists.infradead.org; Fri, 05 Mar 2021 15:37:05 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5713265090;
+ Fri,  5 Mar 2021 15:37:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614958620;
+ bh=rbMzPDjT4HmtnkJbeXK9PYCr8n58NGk1TLIuSFpw8Eo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=m/gXkHAkJUvzGM2T9xnIEc8FAETryEb4epzy7G+Arv9SWZOoKErj66y8yuyM3xJHl
+ dPZyDkd2755T5pNKGi0XH6o8W3DVC7vfG9RNKg+6GNuYhHH4EmqXLNNC0UaVXu9oDF
+ BAztiUdwXX6k5FWomitWLlVA4kKzmmIXa4XFUtn6rQN0EKwVoSNM2HfuGbpfNuuOXc
+ +xdTE14BhKLfgqXsXG7nifm6J0fADs/BXqShOawJXr7Z0r96CmnUfv2PgbrTqmS8D7
+ qX75HFPQ1iyf98NfdP3KHZu1rrKgKfarWpKJqDhWDCUMYckyujMUlD8tAnkfGFPUxr
+ g/cVkZFYvw6mw==
+Date: Fri, 5 Mar 2021 09:36:59 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] PCI: mediatek: fix optional reset handling
+Message-ID: <20210305153659.GA1098921@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1614934975-15188-16-git-send-email-chunfeng.yun@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20210305091715.4319-1-p.zabel@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_153316_790672_03C01BD5 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20210305_153703_752142_288911A8 
+X-CRM114-Status: GOOD (  21.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,74 +80,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 05, 2021 at 05:02:54PM +0800, Chunfeng Yun wrote:
-> Add a new function to convert bInterval into the time expressed
-> in 1us unit.
+[+cc Ryder, Lorenzo, Rob, linux-mediatek (mediatek maintainers)]
+
+Capitalize first word of subject per convention:
+
+  PCI: mediatek: Fix optional reset handling
+
+But "Fix" is pretty non-specific; it doesn't give any information
+about what the change does.
+
+On Fri, Mar 05, 2021 at 10:17:15AM +0100, Philipp Zabel wrote:
+> As of commit bb475230b8e5 ("reset: make optional functions really
+> optional"), the reset framework API calls use NULL pointers to describe
+> optional, non-present reset controls.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> This allows to unconditionally return errors from
+> devm_reset_control_get_optional_exclusive.
+
+"devm_reset_control_get_optional_exclusive()"
+
+This basically restates the code change, but doesn't say *why* we want
+this change.
+
+> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 > ---
-
-> --- a/drivers/usb/common/common.c
-> +++ b/drivers/usb/common/common.c
-> @@ -165,6 +165,39 @@ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
->  }
->  EXPORT_SYMBOL_GPL(usb_get_dr_mode);
+>  drivers/pci/controller/pcie-mediatek.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 23548b517e4b..35c66fa770a6 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -954,7 +954,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
 >  
-> +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
-> +				 enum usb_device_speed speed)
-> +{
-> +	unsigned int interval = 0;
-> +
-> +	switch (usb_endpoint_type(epd)) {
-> +	case USB_ENDPOINT_XFER_CONTROL:
-> +		/* uframes per NAK */
-> +		if (speed == USB_SPEED_HIGH)
-> +			interval = epd->bInterval;
-> +		break;
-> +	case USB_ENDPOINT_XFER_ISOC:
-> +		interval = 1 << (epd->bInterval - 1);
-> +		break;
-> +	case USB_ENDPOINT_XFER_BULK:
-> +		/* uframes per NAK */
-> +		if (speed == USB_SPEED_HIGH && usb_endpoint_dir_out(epd))
-> +			interval = epd->bInterval;
-> +		break;
-> +	case USB_ENDPOINT_XFER_INT:
-> +		if (speed >= USB_SPEED_HIGH)
-> +			interval = 1 << (epd->bInterval - 1);
-> +		else
-> +			interval = epd->bInterval;
-> +		break;
-> +	}
-> +
-> +	interval *= (speed >= USB_SPEED_HIGH) ? 125 : 1000;
-> +
-> +	return interval;
-> +}
-> +EXPORT_SYMBOL_GPL(usb_decode_interval);
+>  	snprintf(name, sizeof(name), "pcie-rst%d", slot);
+>  	port->reset = devm_reset_control_get_optional_exclusive(dev, name);
+> -	if (PTR_ERR(port->reset) == -EPROBE_DEFER)
+> +	if (IS_ERR(port->reset))
+>  		return PTR_ERR(port->reset);
 
-> --- a/include/linux/usb/ch9.h
-> +++ b/include/linux/usb/ch9.h
-> @@ -90,6 +90,17 @@ extern enum usb_ssp_rate usb_get_maximum_ssp_rate(struct device *dev);
->   */
->  extern const char *usb_state_string(enum usb_device_state state);
->  
-> +/**
-> + * usb_decode_interval - Decode bInterval into the time expressed in 1us unit
-> + * @epd: The descriptor of the endpoint
-> + * @speed: The speed that the endpoint works as
-> + *
-> + * Function returns the interval expressed in 1us unit for servicing
-> + * endpoint for data transfers.
-> + */
-> +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
-> +				 enum usb_device_speed speed);
+Before this patch,
 
-As a general rule, I believe people expect to find the kerneldoc for a 
-function next to the function's definition, not next to the declaration 
-in a header file.
+  -EPROBE_DEFER:           abort probe, return -EPROBE_DEFER
+  other errors:            port->reset = -EINVAL, etc, continue probe
+                           future WARN_ON() from reset_control_assert()
+  NULL (no reset control): port->reset = NULL, continue probe
+  valid reset control:     port->reset = rstc, continue probe
 
-Alan Stern
+After this patch,
+
+  all errors:              abort probe, return err
+  NULL (no reset control): port->reset = NULL, continue probe
+  valid reset control:     port->reset = rstc, continue probe
+
+So IIUC, if devm_reset_control_get_optional_exclusive() returns an
+error other than -EPROBE_DEFER, e.g., -EINVAL, we used to continue.
+We would then get warnings from reset_control_assert() and
+reset_control_deassert() because "IS_ERR(port->reset)" was true.
+Since the reset control seems to be optional, I assume the port *may*
+still be usable even though we get warnings.
+
+But after this patch, if devm_reset_control_get_optional_exclusive()
+returns -EINVAL, we will fail the probe, rendering the port useless.
+
+If my understanding is correct, this seems like a difference we should
+mention in the commit log because it took me a while to untangle this
+and the subject line doesn't hint at it at all.
+
+>  	/* some platforms may use default PHY setting */
+> -- 
+> 2.29.2
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
