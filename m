@@ -2,81 +2,79 @@ Return-Path: <SRS0=D+wH=IE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1DE82C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 17:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB576C433DB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 18:28:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 911A765005
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 17:07:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 911A765005
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=0x0f.com
+	by mail.kernel.org (Postfix) with ESMTPS id 549A665005
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 18:28:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 549A665005
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
+	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1J1NzFyo/ktR9tDZxpFWhMAZ69KAyOnzqGTM0E6vETo=; b=GzyOZ3kBCSSAdiXlO4bzfs78V
-	2kBZTKJM3Nw78BqxynS29apeGuEqO4cv4S20C5ua1Uva4K31qIGj/YvvV+DM910F7jnljWt8ucRHv
-	JVs5TWI2N7i80QzBxRoKw+g0OhosdH216K8cu14DpR6X2wjmZAA4kGo5E7OkmPcW+DGfXXdhzLdrt
-	SFeQsxX/RO0DK6ZDc9sN8OuG4v22tBv6A1k/u0WN13p8dCV3fmKfRbvJq14n9kZWTW6U3MZyXQxhA
-	+SFYkl+kkd6/xc8qMf1BHhE+iapXW9eO4PbbQZJYS2U2rdIAe1CIPiL98pBJRzgetupmu4MEmLd2e
-	sEdEtEjew==;
+	 bh=22kHUUn+ldlv11Ob3Vn01MKG+9LHDcY34ckLlSUl3y0=; b=m5bXU8r4ScDYv/ROVHDBK1z9D
+	Hj7kpBDxyes1M8o5xUe+KtiivhagvEkFuN5yIKSF/JCEf4ZEl5HXqelVqKPSsPgiyZIgNPOMpnVYp
+	qa2YciBqAlvaL0aRLWNUgUmz/6Ov8gBTLgyQQOZlzpUG6rX8qKV4R1qz5tOVdongZ1O5xj26DtQj7
+	vQpVNLmmH+pEujgLyPnmk0iCX8Qr9jBYqWoFXJG/IVGE5JRrXNgMFx6rRDHqFAsohv6qlp2BYvXKL
+	ONxkgBBKtonoGRtsW0le+fBkOshh9lBjBCKbbl3BjBS6IRR6JQMeCjM737p7DSeWqdOo2/GUhKFky
+	RuRSLptWw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lIaOa-003oDo-9Q; Sat, 06 Mar 2021 17:07:16 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1lIbfM-004AjF-7e; Sat, 06 Mar 2021 18:28:40 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lIaOP-003o93-9E
- for linux-mediatek@lists.infradead.org; Sat, 06 Mar 2021 17:07:08 +0000
-Received: by mail-qt1-x834.google.com with SMTP id w6so4389628qti.6
- for <linux-mediatek@lists.infradead.org>; Sat, 06 Mar 2021 09:07:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0x0f.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YpqFU/WH93rAnDj1yFPOUMsML7kE15FG7OpMRmI6VOk=;
- b=lqUa3JgA7vwzlGmAnIReW+CDdgbpUq1hHgrXc7tsb3EAg5ZpHTuO59ZvYQ06oeoCmL
- NFKLBBs4hVllSFacz+T27+DzAV8eufHWwEwuEw6j4I4xAVQ/JXdXPqVeOY5dMjm3A5KS
- rOUoq/Z0GGiHgqFQjmoGzoE57zRpPiVqZCN3s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YpqFU/WH93rAnDj1yFPOUMsML7kE15FG7OpMRmI6VOk=;
- b=h63Z5OTJTQDGytFFTSJjVAG0+53oUqWEjrcXJkilbaJYUqA8klmgrmbeSUXD5WZYk1
- kkpS3W/vcppNq/duJvJn+uc0M3jdIEprMwK7jQjCyVKiZu6i1LeYCneUutXgwZZoQQK8
- tNzz18CAmv93g8kmOo1SGvFbUE+q/8jiO2xw5w8gJRZVFuAVurZtg4H6arcJ0o4IhThW
- yNW4gdnlC6NobHWnJPNbeDVq13TR/wuUEj/8LuAnoh3NleTUBCtu5fGWkqav6tVKEEwg
- Akbp9/43MhQ1o1Wd3remTM79dTlAmvAB8ElPSHKfJqqbbG32Ga7ZRwNcx0I23uFNskLa
- lW8A==
-X-Gm-Message-State: AOAM531NgfWUSaH51atW4ffuBmz5vVN7dOqZVaR3zxirXCbqRzrxRZGg
- 4MAuI+FmAzxs0k9FfhL+cMJzP0S7EXx094kYMiKDPA==
-X-Google-Smtp-Source: ABdhPJwJhKkiF/NoD+K9iea6Lhx4ktdxz5R3+GzHT8+pww/oN3UHClY2jcu37KlVeR9ufDL/9rQhi7Iy0vKl0v4zYDg=
-X-Received: by 2002:ac8:480e:: with SMTP id g14mr14104704qtq.249.1615050422018; 
- Sat, 06 Mar 2021 09:07:02 -0800 (PST)
-MIME-Version: 1.0
-References: <20210305120930.14297-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20210305120930.14297-1-mark-pk.tsai@mediatek.com>
-From: Daniel Palmer <daniel@0x0f.com>
-Date: Sun, 7 Mar 2021 02:06:51 +0900
-Message-ID: <CAFr9PXmDp7UwWnT+49Yciy-gvYiQOd3cus0W_QnGKm-LqziHCg@mail.gmail.com>
-Subject: Re: [PATCH] irqchip/irq-mst: Support polarity configuration
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Marc Zyngier <maz@kernel.org>, Daniel Palmer <daniel@thingy.jp>, 
- Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ id 1lIbf7-004Abw-Ne; Sat, 06 Mar 2021 18:28:28 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0561064F6E;
+ Sat,  6 Mar 2021 18:28:24 +0000 (UTC)
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=wait-a-minute.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
+ (envelope-from <maz@kernel.org>)
+ id 1lIbf3-0005iN-Qy; Sat, 06 Mar 2021 18:28:21 +0000
+Date: Sat, 06 Mar 2021 18:28:20 +0000
+Message-ID: <875z24rvaz.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Daniel Palmer <daniel@0x0f.com>
+Cc: Mark-PK Tsai <mark-pk.tsai@mediatek.com>, Daniel Palmer <daniel@thingy.jp>,
+ Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
  linux-mediatek@lists.infradead.org, yj.chiang@mediatek.com
+Subject: Re: [PATCH] irqchip/irq-mst: Support polarity configuration
+In-Reply-To: <CAFr9PXmDp7UwWnT+49Yciy-gvYiQOd3cus0W_QnGKm-LqziHCg@mail.gmail.com>
+References: <20210305120930.14297-1-mark-pk.tsai@mediatek.com>
+ <CAFr9PXmDp7UwWnT+49Yciy-gvYiQOd3cus0W_QnGKm-LqziHCg@mail.gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: daniel@0x0f.com, mark-pk.tsai@mediatek.com, daniel@thingy.jp,
+ tglx@linutronix.de, jason@lakedaemon.net, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, yj.chiang@mediatek.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210306_170705_710241_ED01BB21 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20210306_182827_043274_DA061D4D 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,25 +91,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark-PK,
+On Sat, 06 Mar 2021 17:06:51 +0000,
+Daniel Palmer <daniel@0x0f.com> wrote:
+> 
+> Hi Mark-PK,
+> 
+> I'm trying to understand the logic behind the changes.
+> It seems like the polarity of interrupts is always the same between
+> the MStar intc and the GIC? Low level interrupts are handled in the
+> mstar intc and become high level interrupts to the GIC?
 
-I'm trying to understand the logic behind the changes.
-It seems like the polarity of interrupts is always the same between
-the MStar intc and the GIC? Low level interrupts are handled in the
-mstar intc and become high level interrupts to the GIC?
-I think for the Mstar MSC313(e) and SigmaStar chips all of the
-internal interrupts are high level so I never noticed this behaviour.
-I can't remember seeing anything that handled this in the MStar kernel
-code I looked at.
-Is this specific to a certain chip or does it apply for everything
-with this intc?
-The register values being lost if the chip goes into suspend to memory
-makes sense for the MStar chips too I think as everything that is not
-in the "pmsleep" register group seems to be lost.
+That's because the GIC only supports level-high input interrupts when
+they are level triggered (and rising edge when edge triggered).
 
 Thanks,
 
-Daniel
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
