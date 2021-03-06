@@ -2,18 +2,19 @@ Return-Path: <SRS0=D+wH=IE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BB576C433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 18:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF5DFC433E0
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 18:37:04 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 549A665005
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 18:28:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 549A665005
+	by mail.kernel.org (Postfix) with ESMTPS id 578A765009
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 18:37:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 578A765009
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,50 +23,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
 	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=22kHUUn+ldlv11Ob3Vn01MKG+9LHDcY34ckLlSUl3y0=; b=m5bXU8r4ScDYv/ROVHDBK1z9D
-	Hj7kpBDxyes1M8o5xUe+KtiivhagvEkFuN5yIKSF/JCEf4ZEl5HXqelVqKPSsPgiyZIgNPOMpnVYp
-	qa2YciBqAlvaL0aRLWNUgUmz/6Ov8gBTLgyQQOZlzpUG6rX8qKV4R1qz5tOVdongZ1O5xj26DtQj7
-	vQpVNLmmH+pEujgLyPnmk0iCX8Qr9jBYqWoFXJG/IVGE5JRrXNgMFx6rRDHqFAsohv6qlp2BYvXKL
-	ONxkgBBKtonoGRtsW0le+fBkOshh9lBjBCKbbl3BjBS6IRR6JQMeCjM737p7DSeWqdOo2/GUhKFky
-	RuRSLptWw==;
+	 bh=SJMrKoozJq2ym9ai86By4+BZX4oLg7UMBBSIE3qIfjc=; b=nAnANepTzFPBSUd+e9HxgpzF5
+	a3bB9b6StcOBEpb40CyISMTOoNeP1M0L+5eiq/F35bGZxVNUKUkVbR1CQ3MtWL+fc9KSflsMJShKB
+	3fTqeWQipXHGDwg44xg/+/Bd6W468Qny9+S/B6Gc7t1zc4Qp5j0tOzlsUwO3Nt7cCc4roRzejAVgD
+	xRGiJvmi3verj+Fw65rc+GWpllwsXi05oZGR4KeRk9MMkhnywgifRoPht7gV5kSpxiLzLOYd9tOjf
+	ZKm2iDWp4sOd4+nKrUurBe1wQiU0hztJtBciWl7+ZT7CNoN2iwa8iohRKzhWZE/D6JhcT0AfZ+9Np
+	qfi/DauZg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lIbfM-004AjF-7e; Sat, 06 Mar 2021 18:28:40 +0000
+	id 1lIbnK-004EDi-Pd; Sat, 06 Mar 2021 18:36:54 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lIbf7-004Abw-Ne; Sat, 06 Mar 2021 18:28:28 +0000
+ id 1lIbn9-004EAO-La; Sat, 06 Mar 2021 18:36:45 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0561064F6E;
- Sat,  6 Mar 2021 18:28:24 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 424A464FE8;
+ Sat,  6 Mar 2021 18:36:38 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=wait-a-minute.misterjones.org)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lIbf3-0005iN-Qy; Sat, 06 Mar 2021 18:28:21 +0000
-Date: Sat, 06 Mar 2021 18:28:20 +0000
-Message-ID: <875z24rvaz.wl-maz@kernel.org>
+ id 1lIbn2-0005lT-5I; Sat, 06 Mar 2021 18:36:36 +0000
+Date: Sat, 06 Mar 2021 18:36:34 +0000
+Message-ID: <874khorux9.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
-To: Daniel Palmer <daniel@0x0f.com>
-Cc: Mark-PK Tsai <mark-pk.tsai@mediatek.com>, Daniel Palmer <daniel@thingy.jp>,
- Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org, yj.chiang@mediatek.com
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: Daniel Palmer <daniel@thingy.jp>, Thomas Gleixner <tglx@linutronix.de>,
+ Jason Cooper <jason@lakedaemon.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <yj.chiang@mediatek.com>
 Subject: Re: [PATCH] irqchip/irq-mst: Support polarity configuration
-In-Reply-To: <CAFr9PXmDp7UwWnT+49Yciy-gvYiQOd3cus0W_QnGKm-LqziHCg@mail.gmail.com>
+In-Reply-To: <20210305120930.14297-1-mark-pk.tsai@mediatek.com>
 References: <20210305120930.14297-1-mark-pk.tsai@mediatek.com>
- <CAFr9PXmDp7UwWnT+49Yciy-gvYiQOd3cus0W_QnGKm-LqziHCg@mail.gmail.com>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
  (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
 MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: daniel@0x0f.com, mark-pk.tsai@mediatek.com, daniel@thingy.jp,
+X-SA-Exim-Rcpt-To: mark-pk.tsai@mediatek.com, daniel@thingy.jp,
  tglx@linutronix.de, jason@lakedaemon.net, matthias.bgg@gmail.com,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, yj.chiang@mediatek.com
@@ -73,8 +72,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210306_182827_043274_DA061D4D 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20210306_183643_935907_FF0CA7D7 
+X-CRM114-Status: GOOD (  23.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,18 +90,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 06 Mar 2021 17:06:51 +0000,
-Daniel Palmer <daniel@0x0f.com> wrote:
+On Fri, 05 Mar 2021 12:09:30 +0000,
+Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
 > 
-> Hi Mark-PK,
+> Support irq polarity configuration and save and restore the config
+> when system suspend and resume.
 > 
-> I'm trying to understand the logic behind the changes.
-> It seems like the polarity of interrupts is always the same between
-> the MStar intc and the GIC? Low level interrupts are handled in the
-> mstar intc and become high level interrupts to the GIC?
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> ---
+>  drivers/irqchip/irq-mst-intc.c | 87 ++++++++++++++++++++++++++++++++--
+>  1 file changed, 84 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/irqchip/irq-mst-intc.c b/drivers/irqchip/irq-mst-intc.c
+> index 143657b0cf28..979a4d55bcb1 100644
+> --- a/drivers/irqchip/irq-mst-intc.c
+> +++ b/drivers/irqchip/irq-mst-intc.c
+> @@ -13,15 +13,25 @@
+>  #include <linux/of_irq.h>
+>  #include <linux/slab.h>
+>  #include <linux/spinlock.h>
+> +#include <linux/syscore_ops.h>
+>  
+> -#define INTC_MASK	0x0
+> -#define INTC_EOI	0x20
+> +#define INTC_MASK		0x0
+> +#define INTC_REV_POLARITY	0x10
+> +#define INTC_EOI		0x20
+> +
+> +#ifdef CONFIG_PM_SLEEP
+> +static LIST_HEAD(mst_intc_list);
+> +#endif
+>  
+>  struct mst_intc_chip_data {
+>  	raw_spinlock_t	lock;
+>  	unsigned int	irq_start, nr_irqs;
+>  	void __iomem	*base;
+>  	bool		no_eoi;
+> +#ifdef CONFIG_PM_SLEEP
+> +	struct list_head entry;
+> +	u16 saved_polarity_conf[DIV_ROUND_UP(64, 16)];
 
-That's because the GIC only supports level-high input interrupts when
-they are level triggered (and rising edge when edge triggered).
+Where is this 64 coming from?
+
+> +#endif
+>  };
+>  
+>  static void mst_set_irq(struct irq_data *d, u32 offset)
+> @@ -78,6 +88,16 @@ static void mst_intc_eoi_irq(struct irq_data *d)
+>  	irq_chip_eoi_parent(d);
+>  }
+>  
+> +static int mst_irq_chip_set_type(struct irq_data *data, unsigned int type)
+> +{
+> +	if (type == IRQ_TYPE_LEVEL_LOW) {
+> +		mst_set_irq(data, INTC_REV_POLARITY);
+> +		type = IRQ_TYPE_LEVEL_HIGH;
+> +	}
+
+If you are introducing a irq_set_type callback, you need to return an
+error for the settings you don't handle.
 
 Thanks,
 
