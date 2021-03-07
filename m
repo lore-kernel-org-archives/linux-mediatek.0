@@ -1,89 +1,83 @@
-Return-Path: <SRS0=D+wH=IE=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Dmy6=IF=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-19.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6ADCBC433E0
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 20:47:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0697FC433DB
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Mar 2021 00:29:40 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2E1C650AE
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Mar 2021 20:47:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2E1C650AE
+	by mail.kernel.org (Postfix) with ESMTPS id 5A3A4650AD
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Mar 2021 00:29:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A3A4650AD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/qG2asZ1F16iDpB621isyrmmbi2Bcj8u9ei/FMDmbKE=; b=mBcTZDoA77+HOSbX/BlNCG9uI
-	UJN/N74xAFpmTp2MhZFvwzwRs0nV9S8bnfjsZIK7+lF1SDuNiBhQfy2xEHvZThhm8E9h5JkooNWSO
-	IRiSud+Qq6lfC5BCZMFs/Z7bfwdZJ+glPCFhgmEVCgQi344j0S5DIjdmn9/HOBHc4KBp0yoY8v/2k
-	u/GT/3hsqE9LXHzCqwE4gdgid0syYCNCQTb3TY+3+39UwnwhvQxE/nhXjBq7EbVyd3FjUhA1POlFx
-	bOqTa1VVvsVGfU/q3BtBycGrFkNLi35AS0b33qqXRCKnTGy1wpKPg2LT1fQMGa6ZLUy0qm5Ub7flL
-	aYWHKfprg==;
+	 bh=Mvnc/K27a01ODpcHxoXtF4suV5WfccFnNPTpO1168Wg=; b=ItsLrpEkIzsKvxTdYmwcBSnHc
+	Wt7sNvPmu+LeNEyktKwXLfOUrPTA/mRiQeqtfbbY1sNANYViTN3EABXybkZqCas4FXj0VN9OVmt2N
+	LQNeftcjNeKfzav97GuAO6AVz192tm7p8VMyRs9Muy6+/StWCjAkov5Crej2V5pfWHK9TziSuEubq
+	wIXEbD4J+UqQbFEvFOFF6C9xpxLC9/+e/AwuykwPHQfxuTTV5KNxXK08VBnywK2i4n7z5dQdL6aa6
+	sCSTzEy27YecYKTxBT0oS6WLZhn8bbBppoEtekqkls5M2rdiqrZUK03BNPPMEaH+4LI3zEDsBHy0P
+	cXHjXxfqA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lIdpO-004pXk-5w; Sat, 06 Mar 2021 20:47:10 +0000
-Received: from mail-qv1-f53.google.com ([209.85.219.53])
+	id 1lIhIU-006LBZ-PN; Sun, 07 Mar 2021 00:29:26 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lIdpC-004pQZ-Cd; Sat, 06 Mar 2021 20:47:00 +0000
-Received: by mail-qv1-f53.google.com with SMTP id n4so2782123qvl.4;
- Sat, 06 Mar 2021 12:46:58 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Y/bwRZFE+81GxJ819/dzmZmbJ5VhND4GcsCvXIq1kmU=;
- b=snXQ47r9prlpKt2oDDrp4s+F4jIbu4GuV12qG0aXWPWxTXz5qgbztQ5Z6ncx6J+lks
- OAcjZuDyae7hmCr64PhAykYhdu1ndPhnvfqe437NTgxqzHMJvaCQtXcV+jMzO5klONEN
- 9ymQQVktjsdukBckNUz2AXE0qiqNAEiCKZqgdfC/x3XaTDdynKWjjaRRQRpMHh/eX7iu
- +Oe6uK7YC2i7RbP36jqQbL8Ykmk4uTPA4YrBX7Loi1XsC4B4Uel8l6yQYo3jYtvsFzp9
- F9gDBNWgQWmhV5/FLXJ9ooJpLNlFZReaPM1OagR6/xzJHJoGN4S1lmJL9wTDrIs4TTzV
- 4I3g==
-X-Gm-Message-State: AOAM531uCAeg4m/qYRczCMePNFYx1mIe1j/RVkeQx8PBsJ11Hhe0+vLr
- fC/cmHwbtX6NE5tBlcyfjA==
-X-Google-Smtp-Source: ABdhPJzkozUHpwvVJzF8cjeIVjY27mE83sREQIGN2MFZZWdBK+eZETiFMTsf8hZMF9Av6T7XR/Zk8g==
-X-Received: by 2002:a0c:b894:: with SMTP id y20mr14731003qvf.43.1615063617136; 
- Sat, 06 Mar 2021 12:46:57 -0800 (PST)
-Received: from robh.at.kernel.org ([172.58.27.98])
- by smtp.gmail.com with ESMTPSA id v135sm4603573qka.98.2021.03.06.12.46.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 Mar 2021 12:46:56 -0800 (PST)
-Received: (nullmailer pid 1186613 invoked by uid 1000);
- Sat, 06 Mar 2021 20:46:49 -0000
-Date: Sat, 6 Mar 2021 13:46:49 -0700
-From: Rob Herring <robh@kernel.org>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, yong.wu@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2,1/3] dt-bindings: media: mtk-vcodec: Separating mtk
- vcodec encoder node
-Message-ID: <20210306204649.GA1177075@robh.at.kernel.org>
-References: <20210225073603.5881-1-irui.wang@mediatek.com>
+ id 1lIhIJ-006L6Q-Gm; Sun, 07 Mar 2021 00:29:18 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 186DD650D7;
+ Sun,  7 Mar 2021 00:29:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1615076952;
+ bh=Qm+1G7d1VFcN2FM2tw3fh8YNKthWT/QzzdjeOnpB8Gg=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=fYMeKBDefy8adzWFmPEVaCn9JjNP53bOH8lHJtoCNmiKoEiooKcRTceDmFXuwjs1H
+ f1YukAC8x1Rt14Om2H8zVYovJtx0BCrz6K6phb2GVda1KqSLxforFLIKHW+yvK/DOZ
+ 4G9rrhLHxzxMUgHaVURus2sn8WS4GdLN9eQaM5L+iXdIMUElIJlKbLCWlNkOTPXDvo
+ 5s6gdqfNmTg4KSMs9G/MmI1Z3pvAiFSqnp1QmcVz+pDrLwq3qYCvo6u3v9Q34UHoqN
+ t63GfZXovqK7rhmkuLCuxJFHg1YbO6AwHdauu+eRCuILFKW2giOIzdf8WV4C9bOrQ1
+ HhOzh8lUyb+bA==
+Received: by mail-ej1-f42.google.com with SMTP id mj10so12375095ejb.5;
+ Sat, 06 Mar 2021 16:29:12 -0800 (PST)
+X-Gm-Message-State: AOAM533Pmb02OAXpYRUSRSXGGL1GkvqnE2LjlVVkRaaJV2mhoWZz9qlw
+ aaTMdAx3Xizbm/ChXdE6u9S2KcJis3j5ZJATiw==
+X-Google-Smtp-Source: ABdhPJx86dxHMYU804TmHhrl6hB/nQz8DTF31DqqLkgoli8x+pMuP9LbNuzOW5+hFr6RSCcgkkx4FdK+v0a/8wRS+bw=
+X-Received: by 2002:a17:906:b102:: with SMTP id
+ u2mr8671789ejy.303.1615076950598; 
+ Sat, 06 Mar 2021 16:29:10 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210225073603.5881-1-irui.wang@mediatek.com>
+References: <20210201033603.12616-1-jitao.shi@mediatek.com>
+ <20210201033603.12616-2-jitao.shi@mediatek.com>
+In-Reply-To: <20210201033603.12616-2-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 7 Mar 2021 08:28:59 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_99y=wqdspKbcx_kyRRQhzDtPvjrAdn4jzeyhADjnhZgw@mail.gmail.com>
+Message-ID: <CAAOTY_99y=wqdspKbcx_kyRRQhzDtPvjrAdn4jzeyhADjnhZgw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] drm/mediatek: dsi: Fix EoTp flag
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+ David Airlie <airlied@linux.ie>,
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, DTML <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, huijuan.xie@mediatek.com,
+ stonea168@163.com, cawa.cheng@mediatek.com, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ yingjoe.chen@mediatek.com, 
+ eddie.huang@mediatek.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210306_204658_546574_B6BE48C1 
-X-CRM114-Status: GOOD (  21.60  )
+X-CRM114-CacheID: sfid-20210307_002916_609145_AA2B3159 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,138 +89,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 25, 2021 at 03:36:01PM +0800, Irui Wang wrote:
-> Updates binding document since the avc and vp8 hardware encoder in
-> MT8173 are now separated. Separate "mediatek,mt8173-vcodec-enc" to
-> "mediatek,mt8173-vcodec-enc-vp8" and "mediatek,mt8173-vcodec-enc".
-
-This is not a compatible change. Please explain that here and why that's 
-okay (if it is).
-
-> 
-> This is a preparing patch for smi cleaning up "mediatek,larb".
-> 
-> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> ---
-> Change since v1:
-> - rename compatible and device node
-> ---
->  .../bindings/media/mediatek-vcodec.txt        | 55 ++++++++++---------
->  1 file changed, 29 insertions(+), 26 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> index 8217424fd4bd..03209cbd7540 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> @@ -4,7 +4,9 @@ Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
->  supports high resolution encoding and decoding functionalities.
->  
->  Required properties:
-> -- compatible : "mediatek,mt8173-vcodec-enc" for MT8173 encoder
-> +- compatible : must be one of the following string:
-> +  "mediatek,mt8173-vcodec-enc-vp8" for mt8173 vp8 encoder.
-> +  "mediatek,mt8173-vcodec-enc" for mt8173 avc encoder.
->    "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
->    "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
->  - reg : Physical base address of the video codec registers and length of
-> @@ -13,10 +15,10 @@ Required properties:
->  - mediatek,larb : must contain the local arbiters in the current Socs.
->  - clocks : list of clock specifiers, corresponding to entries in
->    the clock-names property.
-> -- clock-names: encoder must contain "venc_sel_src", "venc_sel",,
-> -  "venc_lt_sel_src", "venc_lt_sel", decoder must contain "vcodecpll",
-> -  "univpll_d2", "clk_cci400_sel", "vdec_sel", "vdecpll", "vencpll",
-> -  "venc_lt_sel", "vdec_bus_clk_src".
-> +- clock-names:
-> +   encoder must contain "venc_sel";
-
-What happened to the other clocks?
-
-Seems like you are dropping what are parent clocks? That seems unrelated 
-to the VP8 split? If so, that's a separate change.
-
-> +   decoder  must contain "vcodecpll", "univpll_d2", "clk_cci400_sel",
-> +   "vdec_sel", "vdecpll", "vencpll", "venc_lt_sel", "vdec_bus_clk_src".
->  - iommus : should point to the respective IOMMU block with master port as
->    argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
->    for details.
-> @@ -80,14 +82,10 @@ vcodec_dec: vcodec@16000000 {
->      assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
->    };
->  
-> -  vcodec_enc: vcodec@18002000 {
-> +vcodec_enc_avc: vcodec@18002000 {
->      compatible = "mediatek,mt8173-vcodec-enc";
-> -    reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
-> -          <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
-> -    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
-> -		 <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
-> -    mediatek,larb = <&larb3>,
-> -		    <&larb5>;
-> +    reg = <0 0x18002000 0 0x1000>;
-> +    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
->      iommus = <&iommu M4U_PORT_VENC_RCPU>,
->               <&iommu M4U_PORT_VENC_REC>,
->               <&iommu M4U_PORT_VENC_BSDMA>,
-> @@ -98,8 +96,20 @@ vcodec_dec: vcodec@16000000 {
->               <&iommu M4U_PORT_VENC_REF_LUMA>,
->               <&iommu M4U_PORT_VENC_REF_CHROMA>,
->               <&iommu M4U_PORT_VENC_NBM_RDMA>,
-> -             <&iommu M4U_PORT_VENC_NBM_WDMA>,
-> -             <&iommu M4U_PORT_VENC_RCPU_SET2>,
-> +             <&iommu M4U_PORT_VENC_NBM_WDMA>;
-> +    mediatek,larb = <&larb3>;
-> +    mediatek,vpu = <&vpu>;
-> +    clocks = <&topckgen CLK_TOP_VENC_SEL>;
-> +    clock-names = "venc_sel";
-> +    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
-> +    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
-> +  };
-> +
-> +vcodec_enc_vp8: vcodec@19002000 {
-> +    compatible = "mediatek,mt8173-vcodec-enc-vp8";
-> +    reg =  <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
-> +    interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
-> +    iommus = <&iommu M4U_PORT_VENC_RCPU_SET2>,
->               <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
->               <&iommu M4U_PORT_VENC_BSDMA_SET2>,
->               <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
-> @@ -108,17 +118,10 @@ vcodec_dec: vcodec@16000000 {
->               <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
->               <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
->               <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
-> +    mediatek,larb = <&larb5>;
->      mediatek,vpu = <&vpu>;
-> -    clocks = <&topckgen CLK_TOP_VENCPLL_D2>,
-> -             <&topckgen CLK_TOP_VENC_SEL>,
-> -             <&topckgen CLK_TOP_UNIVPLL1_D2>,
-> -             <&topckgen CLK_TOP_VENC_LT_SEL>;
-> -    clock-names = "venc_sel_src",
-> -                  "venc_sel",
-> -                  "venc_lt_sel_src",
-> -                  "venc_lt_sel";
-> -    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
-> -                      <&topckgen CLK_TOP_VENC_LT_SEL>;
-> -    assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
-> -                             <&topckgen CLK_TOP_UNIVPLL1_D2>;
-> +    clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-> +    clock-names = "venc_lt_sel";
-> +    assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-> +    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>;
->    };
-> -- 
-> 2.25.1
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
+tDLmnIgx5pelIOmAseS4gCDkuIrljYgxMTozNuWvq+mBk++8mgo+Cj4gU29DIHdpbGwgdHJhbnNt
+aXQgdGhlIEVvVHAgKEVuZCBvZiBUcmFuc21pc3Npb24gcGFja2V0KSB3aGVuCj4gTUlQSV9EU0lf
+TU9ERV9FT1RfUEFDS0VUIGZsYWcgaXMgc2V0LgoKSSd2ZSBtb2RpZmllZCB0aGUgdGl0bGUgYW5k
+IG1lc3NhZ2UgYXM6Cgpkcm0vbWVkaWF0ZWs6IGRzaTogVXNlIHN5bWJvbGl6ZWQgcmVnaXN0ZXIg
+ZGVmaW5pdGlvbgoKRm9yIEhTVFhfQ0tMUF9FTiBhbmQgRElTX0VPVCwgdXNlIHN5bWJvbGl6ZWQg
+cmVnaXN0ZXIKZGVmaW5pdGlvbiBpbnN0ZWFkIG9mIG1hZ2ljIG51bWJlci4KCgpBbmQgYXBwbGll
+ZCB0byBtZWRpYXRlay1kcm0tbmV4dCBbMV0sIHRoYW5rcy4KCmh0dHBzOi8vZ2l0Lmtlcm5lbC5v
+cmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9saW51eC5naXQvbG9nLz9o
+PW1lZGlhdGVrLWRybS1uZXh0CgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKCj4KPiBTaWduZWQtb2Zm
+LWJ5OiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA3ICsrKysrLS0KPiAgMSBmaWxlIGNoYW5nZWQs
+IDUgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kc2kuYwo+IGluZGV4IDY1ZmQ5OWM1MjhhZi4uMmJjNDZmMjM1MGYxIDEwMDY0NAo+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gQEAgLTQwMSw4ICs0MDEsMTEgQEAgc3RhdGljIHZvaWQg
+bXRrX2RzaV9yeHR4X2NvbnRyb2woc3RydWN0IG10a19kc2kgKmRzaSkKPiAgICAgICAgICAgICAg
+ICAgYnJlYWs7Cj4gICAgICAgICB9Cj4KPiAtICAgICAgIHRtcF9yZWcgfD0gKGRzaS0+bW9kZV9m
+bGFncyAmIE1JUElfRFNJX0NMT0NLX05PTl9DT05USU5VT1VTKSA8PCA2Owo+IC0gICAgICAgdG1w
+X3JlZyB8PSAoZHNpLT5tb2RlX2ZsYWdzICYgTUlQSV9EU0lfTU9ERV9FT1RfUEFDS0VUKSA+PiAz
+Owo+ICsgICAgICAgaWYgKGRzaS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX0NMT0NLX05PTl9DT05U
+SU5VT1VTKQo+ICsgICAgICAgICAgICAgICB0bXBfcmVnIHw9IEhTVFhfQ0tMUF9FTjsKPiArCj4g
+KyAgICAgICBpZiAoIShkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX0VPVF9QQUNLRVQp
+KQo+ICsgICAgICAgICAgICAgICB0bXBfcmVnIHw9IERJU19FT1Q7Cj4KPiAgICAgICAgIHdyaXRl
+bCh0bXBfcmVnLCBkc2ktPnJlZ3MgKyBEU0lfVFhSWF9DVFJMKTsKPiAgfQo+IC0tCj4gMi4xMi41
+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
+YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
