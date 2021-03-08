@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CF2AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:54:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B17AC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:54:20 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C80FB65151
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:54:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C80FB65151
+	by mail.kernel.org (Postfix) with ESMTPS id EEE326514D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:54:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EEE326514D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RFXlil/X64+fymoLqCVfN3EieGLhG7YylK/vtXfv6PY=; b=VtWbXXtqVciRXG8qe6tFNCLEu
-	WRjqvx4TU7+ufV0V7AHxUpDHbyibb+iqeZvyIjU5MItN13eFVWjiI37VKaqG1f2EfeIX9o3ztyVX8
-	/9SlHcqsLbiqRE9crTvB6mexsnKLxTkX1otp/VaMA2KM32tLWttZ6ajV2cFb8/1jsAHGKQXR5eZnc
-	6cxOIqTNfVO6LFVJnrOag0MTCegoczoUeHEezBFFbQunJYtAWnMQyLTGZx9M7h5hYlmVWzE3dpOzK
-	6OPAvJhyP7fTAHpoyEuNPx49SkjWXzgxqGBsHFcmALxUt/pAU6AVU7YaGr5aWEMB+LpJJHziIgmE+
-	ahYtvRRgg==;
+	 bh=9knBc5Vj3QltgxpQXvHsSBXZaFrk+LNPI3szFR6Ke4U=; b=TPyyEphrfUuRY58znbhGoERPb
+	wBPGaKEts6cOus/0Ux0hSNN6Cyb8u67subSoDCmFUzLyx+QIWRZL/tZ4iTDJGFoGIVLtOl+RxrWOk
+	mj5YQD1+yJ7apSxirnmNXUyo/5hyE79Ku2FKgpRIy3dml8i+kwc+gCEd4ArO7wHw3p5GXUnSgYSnV
+	7kyg04JCm1sScDkCb9v18oAFRaBr0xFK1jUG7dDqbQVPgWTXe1l0PA0LmVyseaBhaXTbkTGKDqyY5
+	+F+iiRx4S8Xo51ZPGE0/ILtAW4FdZLbCRZsLE1v6jJ18zjSX68xVqMnOqXqAh98zwTCnOqIhhDs3b
+	7wUv8DJ0w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJ61v-00Edpx-H6; Mon, 08 Mar 2021 02:53:59 +0000
+	id 1lJ621-00Edsc-Mc; Mon, 08 Mar 2021 02:54:05 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJ60r-00Ed9q-5l; Mon, 08 Mar 2021 02:52:55 +0000
-X-UUID: 30e52e2e67554f37902ef07aba679b51-20210307
+ id 1lJ60r-00Ed9c-8D; Mon, 08 Mar 2021 02:52:55 +0000
+X-UUID: af085011ea22453a885c02ec915a787d-20210307
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=uUlHa908y3eT8Wa+Mb+8BqzHgLTlusvG+8LA3QygEAY=; 
- b=sJhtC1qTiDArYOPwkqWJou9obJhm3FOf7S5aTWuLykNs1UVrAw8QDaw/1k5XLzsqo8ARva8wfH2ZndCntMQlm+9CnrXKL6ER+BIvQ5csVeOKHM7Xf0hcYZWWEdkgnoyjPg+x95GW+Pr7YfROZiN/QPuixVQ6yTdLZctY8i+ECA8=;
-X-UUID: 30e52e2e67554f37902ef07aba679b51-20210307
+ bh=xmi7jZ8W7zMae0NyFm/gOE50GWuoNjqHdUBUNng05N0=; 
+ b=VecwPPawBEWtZOL9ExwjbQEPzJjnlHV8M8Wiub6dMsw9Nwz1v8zIWMCmo8Svgitn3lymyMrx7cKLvrb5MA0eXF48Xeq2I+tKTMYv6KfO+HDtj0dyITwVnplQqnaHc3IhiEkR+L2N5XDv5mR7FpaRzSsda2udY7LXoU0AVksT1uc=;
+X-UUID: af085011ea22453a885c02ec915a787d-20210307
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 865246948; Sun, 07 Mar 2021 18:52:35 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ with ESMTP id 273759400; Sun, 07 Mar 2021 18:52:35 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 7 Mar 2021 18:52:25 -0800
+ 15.0.1497.2; Sun, 7 Mar 2021 18:52:26 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 8 Mar 2021 10:52:23 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 8 Mar 2021 10:52:25 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 8 Mar 2021 10:52:22 +0800
+ Transport; Mon, 8 Mar 2021 10:52:24 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Ikjoon Jang <ikjn@chromium.org>
@@ -65,19 +65,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-kernel@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
  Eddie Hung <eddie.hung@mediatek.com>, Sergei Shtylyov
  <sergei.shtylyov@gmail.com>, Alan Stern <stern@rowland.harvard.edu>
-Subject: [PATCH v2 11/18] usb: xhci-mtk: use @tt_info to check the FS/LS
- device is under a HS hub
-Date: Mon, 8 Mar 2021 10:52:00 +0800
-Message-ID: <8117df52f16bd03087e486d7d740a183b6dd634a.1615170625.git.chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 13/18] usb: xhci-mtk: add some schedule error number
+Date: Mon, 8 Mar 2021 10:52:02 +0800
+Message-ID: <9771f44093053b581e9c4be4b7fb68d9fcecad08.1615170625.git.chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
 References: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0F8DD7188C0E7076C65A018EB3856890FDB491C419BF02E25A4CF4F316D690C12000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_025254_322502_08326F85 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20210308_025254_193832_B1B89A65 
+X-CRM114-Status: GOOD (  18.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,72 +92,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the LS/FS device is connected to an external HS hub, the member
-@tt_info in xhci_virt_device struct in not NULL, use it to check
-whether a LS/FS device is under an exernal HS hub, then no need get
-the slot context of this device.
+This is used to provide more information about which case
+causes bandwidth schedule failure.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2: no changes
 ---
- drivers/usb/host/xhci-mtk-sch.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/usb/host/xhci-mtk-sch.c | 44 ++++++++++++++++++++++++++-------
+ 1 file changed, 35 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 3dc727b820aa..bad99580fb68 100644
+index 9e77bbd8e7f7..7b45441f2606 100644
 --- a/drivers/usb/host/xhci-mtk-sch.c
 +++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -678,7 +678,6 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 	struct xhci_hcd *xhci;
- 	struct xhci_ep_ctx *ep_ctx;
--	struct xhci_slot_ctx *slot_ctx;
- 	struct xhci_virt_device *virt_dev;
- 	struct mu3h_sch_ep_info *sch_ep;
- 	unsigned int ep_index;
-@@ -686,7 +685,6 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 	xhci = hcd_to_xhci(hcd);
- 	virt_dev = xhci->devs[udev->slot_id];
- 	ep_index = xhci_get_endpoint_index(&ep->desc);
--	slot_ctx = xhci_get_slot_ctx(xhci, virt_dev->in_ctx);
- 	ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
+@@ -25,6 +25,13 @@
+  */
+ #define TT_MICROFRAMES_MAX 9
  
- 	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpkt:%d, dir:%d, ep:%p\n",
-@@ -694,7 +692,7 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		usb_endpoint_maxp(&ep->desc),
- 		usb_endpoint_dir_in(&ep->desc), ep);
++/* schedule error type */
++#define ESCH_SS_Y6		1001
++#define ESCH_SS_OVERLAP		1002
++#define ESCH_CS_OVERFLOW	1003
++#define ESCH_BW_OVERFLOW	1004
++#define ESCH_FIXME		1005
++
+ /* mtk scheduler bitmasks */
+ #define EP_BPKTS(p)	((p) & 0x7f)
+ #define EP_BCSCOUNT(p)	(((p) & 0x7) << 8)
+@@ -32,6 +39,24 @@
+ #define EP_BOFFSET(p)	((p) & 0x3fff)
+ #define EP_BREPEAT(p)	(((p) & 0x7fff) << 16)
  
--	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT)) {
-+	if (!need_bw_sch(ep, udev->speed, !!virt_dev->tt_info)) {
- 		/*
- 		 * set @bpkts to 1 if it is LS or FS periodic endpoint, and its
- 		 * device does not connected through an external HS hub
-@@ -723,7 +721,6 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
++static char *sch_error_string(int err_num)
++{
++	switch (err_num) {
++	case ESCH_SS_Y6:
++		return "Can't schedule Start-Split in Y6";
++	case ESCH_SS_OVERLAP:
++		return "Can't find a suitable Start-Split location";
++	case ESCH_CS_OVERFLOW:
++		return "The last Complete-Split is greater than 7";
++	case ESCH_BW_OVERFLOW:
++		return "Bandwidth exceeds the maximum limit";
++	case ESCH_FIXME:
++		return "FIXME, to be resolved";
++	default:
++		return "Unknown";
++	}
++}
++
+ static int is_fs_or_ls(enum usb_device_speed speed)
  {
- 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 	struct xhci_hcd *xhci;
--	struct xhci_slot_ctx *slot_ctx;
- 	struct xhci_virt_device *virt_dev;
- 	struct mu3h_sch_bw_info *sch_array;
- 	struct mu3h_sch_bw_info *sch_bw;
-@@ -732,7 +729,6 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 	return speed == USB_SPEED_FULL || speed == USB_SPEED_LOW;
+@@ -412,7 +437,7 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
+ 		for (j = 0; j < sch_ep->cs_count; j++) {
+ 			tmp = tt->fs_bus_bw[base + j] + sch_ep->bw_cost_per_microframe;
+ 			if (tmp > FS_PAYLOAD_MAX)
+-				return -ERANGE;
++				return -ESCH_BW_OVERFLOW;
+ 		}
+ 	}
  
- 	xhci = hcd_to_xhci(hcd);
- 	virt_dev = xhci->devs[udev->slot_id];
--	slot_ctx = xhci_get_slot_ctx(xhci, virt_dev->in_ctx);
- 	sch_array = mtk->sch_array;
+@@ -437,11 +462,11 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
+ 		 * must never schedule Start-Split in Y6
+ 		 */
+ 		if (!(start_ss == 7 || last_ss < 6))
+-			return -ERANGE;
++			return -ESCH_SS_Y6;
  
- 	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpks:%d, dir:%d, ep:%p\n",
-@@ -740,7 +736,7 @@ void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		usb_endpoint_maxp(&ep->desc),
- 		usb_endpoint_dir_in(&ep->desc), ep);
+ 		for (i = 0; i < sch_ep->cs_count; i++)
+ 			if (test_bit(offset + i, tt->ss_bit_map))
+-				return -ERANGE;
++				return -ESCH_SS_OVERLAP;
  
--	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT))
-+	if (!need_bw_sch(ep, udev->speed, !!virt_dev->tt_info))
- 		return;
+ 	} else {
+ 		u32 cs_count = DIV_ROUND_UP(sch_ep->maxpkt, FS_PAYLOAD_MAX);
+@@ -451,14 +476,14 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
+ 		 * must never schedule Start-Split in Y6
+ 		 */
+ 		if (start_ss == 6)
+-			return -ERANGE;
++			return -ESCH_SS_Y6;
  
- 	bw_index = get_bw_index(xhci, udev, ep);
+ 		/* one uframe for ss + one uframe for idle */
+ 		start_cs = (start_ss + 2) % 8;
+ 		last_cs = start_cs + cs_count - 1;
+ 
+ 		if (last_cs > 7)
+-			return -ERANGE;
++			return -ESCH_CS_OVERFLOW;
+ 
+ 		if (sch_ep->ep_type == ISOC_IN_EP)
+ 			extra_cs_count = (last_cs == 7) ? 1 : 2;
+@@ -470,7 +495,7 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
+ 			cs_count = 7; /* HW limit */
+ 
+ 		if (test_bit(offset, tt->ss_bit_map))
+-			return -ERANGE;
++			return -ESCH_SS_OVERLAP;
+ 
+ 		sch_ep->cs_count = cs_count;
+ 		/* one for ss, the other for idle */
+@@ -562,7 +587,7 @@ static int check_sch_bw(struct mu3h_sch_bw_info *sch_bw,
+ 	u32 esit_boundary;
+ 	u32 min_num_budget;
+ 	u32 min_cs_count;
+-	int ret;
++	int ret = 0;
+ 
+ 	/*
+ 	 * Search through all possible schedule microframes.
+@@ -597,7 +622,7 @@ static int check_sch_bw(struct mu3h_sch_bw_info *sch_bw,
+ 	bw_boundary = get_bw_boundary(sch_ep->speed);
+ 	/* check bandwidth */
+ 	if (min_bw > bw_boundary)
+-		return -ERANGE;
++		return ret ? ret : -ESCH_BW_OVERFLOW;
+ 
+ 	sch_ep->offset = min_index;
+ 	sch_ep->cs_count = min_cs_count;
+@@ -765,7 +790,8 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ 
+ 		ret = check_sch_bw(sch_bw, sch_ep);
+ 		if (ret) {
+-			xhci_err(xhci, "Not enough bandwidth!\n");
++			xhci_err(xhci, "Not enough bandwidth! (%s)\n",
++				 sch_error_string(-ret));
+ 			return -ENOSPC;
+ 		}
+ 	}
 -- 
 2.18.0
 _______________________________________________
