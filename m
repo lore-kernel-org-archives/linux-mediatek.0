@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 35EDBC433E6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1EB2C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:03:03 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C44156514D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:01:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C44156514D
+	by mail.kernel.org (Postfix) with ESMTPS id 4E3B46513A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:03:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E3B46513A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,59 +23,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lLAL1dn6Z/FtfMmSQQVyX4aaKmAWOOihy0KiFpe68d8=; b=LUGpia8nQtIwgyqv7tlijLXEG
-	ILPoJ6jqCVsT0cKNZSIUyWnZER9YoW7DvhXhjhZa50UrJI1mDxcJGrIFRwiUjDBNBIjJj8HQ8B5lD
-	YUSmqj0mPNofhm3lcM+XzMfQeCUFk1SCdJJuwM1ajDT4YqXpjB/zNPP0o487MoyaD4O/MC8yzGe7m
-	qYMd4Tf+tDQPoOw88TeYS6pvzTjDf3w51Cgxa2KTrD/mAFK0LhptT1XzUh5fkTGBP1LqpD37NGmfO
-	7G3GfkNXvKJUZHIPGpqx9KLbcKtX7wagdXTrDbndRQvpisKmZLblpJpdSqnIgHvD6AYcf5hahtxAq
-	SPAyeRiZQ==;
+	 bh=MbAW3Q4ykmGNf36a1oAyCgHj0fs9HJw4z3MZ3AnsZvI=; b=ddjOhJ6QIhDMd79auj9/nXXo+
+	Ec/uYRgzzwPksZroVkMenlWaViwXL6WgEBkJpYmDsQ9eFJN22l11HnHY/AyPTNIK3/zmllgd1guVM
+	2xR7aiNskOtF8rqpsttId4gWCpD/860wehbbfKPW8swBhtn56l0/AAE7srcHPkY1R3oOUM+cSYpky
+	a//sNunE7czV+O/v42c6kKEhDKlDDDhH4lGQOU/ZmYg22Vk8CrI0wCeg2WNddSuoIMLA1rZNIOiWc
+	KemHQDQdKCF2KZytBRzu+E5yz9L2GuYOyxy/BmDS8Urrl2F7wywv30AmZ1q7zEXICCEjhcsbPsT/b
+	/YY1XEdeg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJ5Cj-00EUJr-BT; Mon, 08 Mar 2021 02:01:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lJ5ET-00EUp6-RH; Mon, 08 Mar 2021 02:02:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJ5CK-00EUC6-D1; Mon, 08 Mar 2021 02:00:44 +0000
-X-UUID: e48f1fa181a5407b80813a05e2f0a544-20210307
+ id 1lJ5E9-00EUj1-Pu; Mon, 08 Mar 2021 02:02:39 +0000
+X-UUID: caab08c26d424f15ae401fa15a01b606-20210307
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=cAEtYNvirduPPDmsHCYYxu63PGqbUKC1f0wMKO0QDrs=; 
- b=REl9V3YbBf/A4lRXnkgcZqm+QVDdesTHipweNyXp2EXxBxQmM6R0PEqwA2apt66PAJLfST7iSUURsBdJDEjgH5NVFej8gwkHYLOkOnfv50fVDMRlf2UNuRceWY//zmlEQmSzRVsoHAfllrBuDKkvuSO2uWAtkScsBL85+9Es7P0=;
-X-UUID: e48f1fa181a5407b80813a05e2f0a544-20210307
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=h9EFUsdAxVRzuiXK7xWjWP87blcUdQUpQQm0u2fICNw=; 
+ b=n491iP+jrdJnh4XyGzeRmrVX+IfLITLtfny/ydVs9HrILSLBFDWlqCK7A23M0cEleivwuUud5MMgbgmYfU5Cz5HxUTJlOA24qdIVw7kNeoifj9KbOICD5nFq2RsCWa/bBOF2Qc6fHx45czldN8cra/pgj1ildZXcSZdmNwjwbLo=;
+X-UUID: caab08c26d424f15ae401fa15a01b606-20210307
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2127080580; Sun, 07 Mar 2021 18:00:30 -0800
+ with ESMTP id 1452693021; Sun, 07 Mar 2021 18:02:26 -0800
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 7 Mar 2021 17:58:08 -0800
+ 15.0.1497.2; Sun, 7 Mar 2021 18:02:25 -0800
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs06n1.mediatek.inc
  (172.21.101.129) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 8 Mar 2021 09:57:46 +0800
+ Mon, 8 Mar 2021 10:02:23 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 8 Mar 2021 09:57:43 +0800
-Message-ID: <1615168663.32109.5.camel@mhfsdcap03>
-Subject: Re: [PATCH 03/17] usb: xhci-mtk: get the microframe boundary for ESIT
+ Transport; Mon, 8 Mar 2021 10:02:23 +0800
+Message-ID: <1615168943.32109.8.camel@mhfsdcap03>
+Subject: Re: [PATCH 16/17] usb: common: add function to get interval
+ expressed in us unit
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Sergei Shtylyov <sergei.shtylyov@gmail.com>
-CC: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Ikjoon Jang <ikjn@chromium.org>, "Matthias
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Alan Stern <stern@rowland.harvard.edu>, Mathias Nyman
+ <mathias.nyman@intel.com>, Ikjoon Jang <ikjn@chromium.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
  Eddie Hung <eddie.hung@mediatek.com>
-Date: Mon, 8 Mar 2021 09:57:43 +0800
-In-Reply-To: <cfa6dccb-d784-06fd-e5bc-0b53d105b7f6@gmail.com>
+Date: Mon, 8 Mar 2021 10:02:23 +0800
+In-Reply-To: <YEJSjJnjXl7f/BP9@kroah.com>
 References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
- <1614934975-15188-3-git-send-email-chunfeng.yun@mediatek.com>
- <cfa6dccb-d784-06fd-e5bc-0b53d105b7f6@gmail.com>
+ <1614934975-15188-16-git-send-email-chunfeng.yun@mediatek.com>
+ <20210305153312.GA38200@rowland.harvard.edu> <YEJSjJnjXl7f/BP9@kroah.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_020040_843972_ED3553AC 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20210308_020236_406953_4C55193F 
+X-CRM114-Status: GOOD (  25.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,57 +93,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-03-05 at 12:13 +0300, Sergei Shtylyov wrote:
-> Hello!
-> 
-> On 05.03.2021 12:02, Chunfeng Yun wrote:
-> 
-> > Tune the boundary for FS/LS ESIT due to CS:
-> > For ISOC out-ep, the controller starts transfer data after
-> > the first SS; for others, the data is already transfered
-> 
->     Transferred.
-Ok
-> 
-> > before the last CS.
+On Fri, 2021-03-05 at 16:47 +0100, Greg Kroah-Hartman wrote:
+> On Fri, Mar 05, 2021 at 10:33:12AM -0500, Alan Stern wrote:
+> > On Fri, Mar 05, 2021 at 05:02:54PM +0800, Chunfeng Yun wrote:
+> > > Add a new function to convert bInterval into the time expressed
+> > > in 1us unit.
+> > > 
+> > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > > ---
 > > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >   drivers/usb/host/xhci-mtk-sch.c | 24 +++++++++++++++++++-----
-> >   1 file changed, 19 insertions(+), 5 deletions(-)
+> > > --- a/drivers/usb/common/common.c
+> > > +++ b/drivers/usb/common/common.c
+> > > @@ -165,6 +165,39 @@ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
+> > >  }
+> > >  EXPORT_SYMBOL_GPL(usb_get_dr_mode);
+> > >  
+> > > +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
+> > > +				 enum usb_device_speed speed)
+> > > +{
+> > > +	unsigned int interval = 0;
+> > > +
+> > > +	switch (usb_endpoint_type(epd)) {
+> > > +	case USB_ENDPOINT_XFER_CONTROL:
+> > > +		/* uframes per NAK */
+> > > +		if (speed == USB_SPEED_HIGH)
+> > > +			interval = epd->bInterval;
+> > > +		break;
+> > > +	case USB_ENDPOINT_XFER_ISOC:
+> > > +		interval = 1 << (epd->bInterval - 1);
+> > > +		break;
+> > > +	case USB_ENDPOINT_XFER_BULK:
+> > > +		/* uframes per NAK */
+> > > +		if (speed == USB_SPEED_HIGH && usb_endpoint_dir_out(epd))
+> > > +			interval = epd->bInterval;
+> > > +		break;
+> > > +	case USB_ENDPOINT_XFER_INT:
+> > > +		if (speed >= USB_SPEED_HIGH)
+> > > +			interval = 1 << (epd->bInterval - 1);
+> > > +		else
+> > > +			interval = epd->bInterval;
+> > > +		break;
+> > > +	}
+> > > +
+> > > +	interval *= (speed >= USB_SPEED_HIGH) ? 125 : 1000;
+> > > +
+> > > +	return interval;
+> > > +}
+> > > +EXPORT_SYMBOL_GPL(usb_decode_interval);
 > > 
-> > diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-> > index 8950d1f10a7f..e3b18dfca874 100644
-> > --- a/drivers/usb/host/xhci-mtk-sch.c
-> > +++ b/drivers/usb/host/xhci-mtk-sch.c
-> > @@ -513,22 +513,35 @@ static void update_sch_tt(struct usb_device *udev,
-> >   		list_del(&sch_ep->tt_endpoint);
-> >   }
-> >   
-> > +static u32 get_esit_boundary(struct mu3h_sch_ep_info *sch_ep)
-> > +{
-> > +	u32 boundary = sch_ep->esit;
-> > +
-> > +	if (sch_ep->sch_tt) { /* LS/FS with TT */
-> > +		/* tune for CS */
-> > +		if (sch_ep->ep_type != ISOC_OUT_EP)
-> > +			boundary += 1;
+> > > --- a/include/linux/usb/ch9.h
+> > > +++ b/include/linux/usb/ch9.h
+> > > @@ -90,6 +90,17 @@ extern enum usb_ssp_rate usb_get_maximum_ssp_rate(struct device *dev);
+> > >   */
+> > >  extern const char *usb_state_string(enum usb_device_state state);
+> > >  
+> > > +/**
+> > > + * usb_decode_interval - Decode bInterval into the time expressed in 1us unit
+> > > + * @epd: The descriptor of the endpoint
+> > > + * @speed: The speed that the endpoint works as
+> > > + *
+> > > + * Function returns the interval expressed in 1us unit for servicing
+> > > + * endpoint for data transfers.
+> > > + */
+> > > +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
+> > > +				 enum usb_device_speed speed);
+> > 
+> > As a general rule, I believe people expect to find the kerneldoc for a 
+> > function next to the function's definition, not next to the declaration 
+> > in a header file.
 > 
->     Why not:
+> I was going to make the same review comment, but if you look above this
+> in that file, there's other kernel doc information in the .h file, so
+> this does match with the style of the file :(
 > 
-> 			boundary++;
-Forgot it, it's modified from "boundary = sch_ep->esit + 1;"
+> We can fix that all up later.
+I'll prepare a patch
 
-Thanks
+Thank you
 > 
-> > +		else if (boundary > 1) /* normally esit >= 8 for FS/LS */
-> > +			boundary -= 1;
+> thanks,
 > 
-> 			boundary--;
-> 
-> [...]
-> 
-> MBR, Sergei
+> greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
