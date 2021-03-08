@@ -1,89 +1,83 @@
-Return-Path: <SRS0=Dmy6=IF=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Z3i2=IG=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 933E2C433E0
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Mar 2021 19:08:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D97A7C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:01:20 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3238A64EF4
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Mar 2021 19:08:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3238A64EF4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 754FC6514A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 02:01:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 754FC6514A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=R38jP1A7gGbmQLYPzVjMTR0KoYPo9fL0hlHs1XIawyY=; b=LI3+dw0WE8llt1Es2PkFdK9TCE
-	UF1z1ErNuq8WTzyz1VZMnG9i9KcJQQMoR4iTVsV1CAubW88xgtXBCAiEhd6jH5BBjSXwZn5m0t4Qn
-	WAflRDNq90Uf/cbbBxFLYxDwXKcSabx2HewaXDC3mA1dXK6T0LfF4fGKwlPAetFSIzvzbYAPKaSqr
-	2zOi4Y8Qy7TAPJYbfbBKVg6YZAcVThWuIIwxAfOtEMUYUjV339wK1tAmYmhC3f+sAnPA5qHm/oPir
-	XwD4L+doa5tFXXfBd/X0S7J/jRo/7CaBuUcZbgrDhUZ/sXj9gs1avw6VT5J11wbR2XWaz9cFPVPan
-	GYJhdcJQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=WDVQqfkOQWCumUQSXc0XxwO+9smARpt/79xfNefMNy4=; b=ViLjIZBepp1c2GzrEwM2uFXQU
+	G/KTo1YLqc0WD+kiI3os2s4sc/V7KryTakxcsGaVHI5g4FQximZxkeSBNw1pxseTr/B2qpfV7AXr/
+	IvuL4YPuEhVyEDa1kl2ESbQa7akUg6wBuMFM8cf/XT9Xmr4B/fZhbMH+0ksqd4e9sosViZ4ag5xfd
+	K8ZfDyOKy+WsTWV5WbLP2J9HKLdyLBUokL9LQzYrE4cm8TOw3YkO7lOxkP9ZbTZuKRK9y05MgHqaX
+	kUFZYUXpLQCb0AcHfwuzP4/Y2u8GerCIjxJSRywAJ0r9VWM5YOBGGbb+MaXxDTqNSKdliP590TceP
+	yWYu/u9mQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lIylI-00BrW9-4h; Sun, 07 Mar 2021 19:08:20 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1lJ5Cg-00EUJC-TV; Mon, 08 Mar 2021 02:01:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lIylA-00BrUP-6g
- for linux-mediatek@lists.infradead.org; Sun, 07 Mar 2021 19:08:17 +0000
-Received: by mail-pf1-x429.google.com with SMTP id x7so2317523pfi.7
- for <linux-mediatek@lists.infradead.org>; Sun, 07 Mar 2021 11:08:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=GwMIYd2aV+XXRot1tFZrSh9m+xuglTUB/+BUvlkK3IE=;
- b=PosIdd0P9xOzXAH2spYx5P0uFH1CYzD8cR1Ef5KfZSig0LgtZ9vNNS+Sb1qVqnJCpz
- ds6aAZbcCNhJrgUAq6UsUODKfXNxqnYp13P7QGnXoWudzwG+PusG6IQTmpIfkqU7tRnH
- lWNaw8Wc7GgMvnRhRqwcIkij5oQaD7EOx/A1LoeGu1jI2Jr7Y6AxFFIR0tMzjWiZ1jny
- eGgSH28X/Mm4MTLALUwHYByF7q+WxfrsxzpzhFJq7WkrjWEohN2YemLSF5FtQJwLAYBq
- 0fnqVzC9gWxKm9tczVhG1Re2efdrjwEXXBg3csuKmbf6FEoKLbrt0KahNCqogqSMiZKn
- mhaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=GwMIYd2aV+XXRot1tFZrSh9m+xuglTUB/+BUvlkK3IE=;
- b=nh/CMMCsKijHYfiH6wnIftvIltfPsikiHQGi9WCsa23GuPK/WHGmrqDsYLbXQBheyI
- 8V/T7MtFLjscMwyVPWxS2F2/dj2zcIPRRnsM4ysfP+/+Bt0RyduaRrgGvbcb16U+xgQJ
- 2fDF+6eLysrIt8T0jzCAQp2UwjaB5MG8E0DDAh3pw3aiWKiG/C1EegL58DojtkSSm63V
- yTFPCyFT4VnLNU8Ptt8+s3UHMz3/ywYMl5KzpCyGy4MN2jqXmXXNbw31nKM++Jd7Ow/0
- TWMis9Xk4pSmpyYb4ogS7dyJTcxdTevxrbJEpIze+vMlr8i4tjI4vtEWz1y4Ym+qj9Mh
- 4/nA==
-X-Gm-Message-State: AOAM533Av+pLKZlBv6zJOEWFI7R++LLQYhO6DyGBJPTL/GnvPpGgBtCv
- qF41Fm+9iUsMldCEqEcW7WI=
-X-Google-Smtp-Source: ABdhPJySoqAvxLUXrLa3YBV7XlcOUT2CqkmnMeSZihLSaDXIXhJUDJKp5S66ABbDs0YY+CgaLG1d/A==
-X-Received: by 2002:a65:6209:: with SMTP id d9mr17256515pgv.206.1615144090625; 
- Sun, 07 Mar 2021 11:08:10 -0800 (PST)
-Received: from z640-arch.lan ([2602:3f:e6a6:5d00::678])
- by smtp.gmail.com with ESMTPSA id y63sm7499955pfy.68.2021.03.07.11.08.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Mar 2021 11:08:10 -0800 (PST)
-From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-To: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- John Crispin <john@phrozen.org>
-Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] MIPS: ralink: select WEAK_REORDERING_BEYOND_LLSC on MT7621
-Date: Sun,  7 Mar 2021 11:08:06 -0800
-Message-Id: <20210307190806.5211-1-ilya.lipnitskiy@gmail.com>
-X-Mailer: git-send-email 2.30.1
+ id 1lJ5CJ-00EUC9-CE; Mon, 08 Mar 2021 02:00:44 +0000
+X-UUID: 98f7d3afff8c415c86ed8798dcc1e105-20210307
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=6qYg+DJBSG1Du8y4MYkkOeqRrd9rwS5CN17jsGP6xzU=; 
+ b=WA6IpcBHguky+rMLAFcyeVeWfUfnqQYsRTb61ouCgT1I0ZyCZePG80OX9mfkEuH61webF2JR7kblsyqAwLYBVgnRR6TuJQkIfPfOXB4TsBGTJ/4vYovdhyD7mruRBO+S5rJJBhN+k4ZwSNlS88y6kVXiEGZMfT45EsTO46FcwVY=;
+X-UUID: 98f7d3afff8c415c86ed8798dcc1e105-20210307
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2017903374; Sun, 07 Mar 2021 18:00:30 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 7 Mar 2021 17:59:05 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs06n2.mediatek.inc
+ (172.21.101.130) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 8 Mar 2021 09:58:37 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 8 Mar 2021 09:58:36 +0800
+Message-ID: <1615168716.32109.6.camel@mhfsdcap03>
+Subject: Re: [PATCH 16/17] usb: common: add function to get interval
+ expressed in us unit
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Alan Stern <stern@rowland.harvard.edu>
+CC: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Ikjoon Jang <ikjn@chromium.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ Eddie Hung <eddie.hung@mediatek.com>
+Date: Mon, 8 Mar 2021 09:58:36 +0800
+In-Reply-To: <20210305153312.GA38200@rowland.harvard.edu>
+References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1614934975-15188-16-git-send-email-chunfeng.yun@mediatek.com>
+ <20210305153312.GA38200@rowland.harvard.edu>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: AA76056FEB5929E229E6F99F439BC3A0267241E9DCA4D6CBEACABBBCC2768C852000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210307_190815_787606_123DA7EB 
-X-CRM114-Status: UNSURE (   7.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210308_020040_653665_61FA62BD 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,35 +94,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Upstream a long-standing OpenWrt patch for RALINK MT7621 SoC. Selecting
-WEAK_REORDERING_BEYOND_LLSC fixes random kernel hangs. This bug and fix
-was reported by MediaTek WCN division [0].
+On Fri, 2021-03-05 at 10:33 -0500, Alan Stern wrote:
+> On Fri, Mar 05, 2021 at 05:02:54PM +0800, Chunfeng Yun wrote:
+> > Add a new function to convert bInterval into the time expressed
+> > in 1us unit.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> 
+> > --- a/drivers/usb/common/common.c
+> > +++ b/drivers/usb/common/common.c
+> > @@ -165,6 +165,39 @@ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
+> >  }
+> >  EXPORT_SYMBOL_GPL(usb_get_dr_mode);
+> >  
+> > +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
+> > +				 enum usb_device_speed speed)
+> > +{
+> > +	unsigned int interval = 0;
+> > +
+> > +	switch (usb_endpoint_type(epd)) {
+> > +	case USB_ENDPOINT_XFER_CONTROL:
+> > +		/* uframes per NAK */
+> > +		if (speed == USB_SPEED_HIGH)
+> > +			interval = epd->bInterval;
+> > +		break;
+> > +	case USB_ENDPOINT_XFER_ISOC:
+> > +		interval = 1 << (epd->bInterval - 1);
+> > +		break;
+> > +	case USB_ENDPOINT_XFER_BULK:
+> > +		/* uframes per NAK */
+> > +		if (speed == USB_SPEED_HIGH && usb_endpoint_dir_out(epd))
+> > +			interval = epd->bInterval;
+> > +		break;
+> > +	case USB_ENDPOINT_XFER_INT:
+> > +		if (speed >= USB_SPEED_HIGH)
+> > +			interval = 1 << (epd->bInterval - 1);
+> > +		else
+> > +			interval = epd->bInterval;
+> > +		break;
+> > +	}
+> > +
+> > +	interval *= (speed >= USB_SPEED_HIGH) ? 125 : 1000;
+> > +
+> > +	return interval;
+> > +}
+> > +EXPORT_SYMBOL_GPL(usb_decode_interval);
+> 
+> > --- a/include/linux/usb/ch9.h
+> > +++ b/include/linux/usb/ch9.h
+> > @@ -90,6 +90,17 @@ extern enum usb_ssp_rate usb_get_maximum_ssp_rate(struct device *dev);
+> >   */
+> >  extern const char *usb_state_string(enum usb_device_state state);
+> >  
+> > +/**
+> > + * usb_decode_interval - Decode bInterval into the time expressed in 1us unit
+> > + * @epd: The descriptor of the endpoint
+> > + * @speed: The speed that the endpoint works as
+> > + *
+> > + * Function returns the interval expressed in 1us unit for servicing
+> > + * endpoint for data transfers.
+> > + */
+> > +unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
+> > +				 enum usb_device_speed speed);
+> 
+> As a general rule, I believe people expect to find the kerneldoc for a 
+> function next to the function's definition, not next to the declaration 
+> in a header file.
+Got it, thanks
 
-[0]: https://lists.infradead.org/pipermail/lede-commits/2017-August/004537.html
-
-Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-mips@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
----
- arch/mips/ralink/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/mips/ralink/Kconfig b/arch/mips/ralink/Kconfig
-index c20c44788b62..31671bbf26ff 100644
---- a/arch/mips/ralink/Kconfig
-+++ b/arch/mips/ralink/Kconfig
-@@ -62,6 +62,7 @@ choice
- 		select CLKSRC_MIPS_GIC
- 		select HAVE_PCI if PCI_MT7621
- 		select SOC_BUS
-+		select WEAK_REORDERING_BEYOND_LLSC
- endchoice
- 
- choice
--- 
-2.30.1
-
+> 
+> Alan Stern
 
 _______________________________________________
 Linux-mediatek mailing list
