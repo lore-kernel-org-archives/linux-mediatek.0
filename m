@@ -2,19 +2,19 @@ Return-Path: <SRS0=Z3i2=IG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D554EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 11:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 60B0EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 11:13:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4FD63651CD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 11:06:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4FD63651CD
+	by mail.kernel.org (Postfix) with ESMTPS id E1E19651DC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 11:13:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1E19651DC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0tM7Wm0SjOSfKZyf6PB1415UepY9aCp3RM84ZkXWyr8=; b=YoKFRzeCuYC1t4VdtOdBJbPBm
-	BSqUyq7FHMZsKTRHkneFvNpiUuwG/snWt4WqO5GrZBQvUNTbhLNnYsEUPL5JuyZWGqRNX8eRQqLRM
-	WldJtE/0hQtoxQ/HF9syO3lHIqWpz7rqBeWH8zxfPsV+sFxzWrPjziKiiIxby41vrfS4H+rPsEqrW
-	LQZHSlV8RBdlyTpL4L95wHaxJAGoyvalM6nI57WMpn425q/IyJEbN15EEkZnQdDHUmp8/R1KwYA/M
-	TSQr8iP2pS4nptHyTNVAGZB8JB+PJWWE5Atsxj+u3bnASoQSRnKsBq1r6Y435geV/4bZrf+Zd7xyI
-	FfDdM2mjA==;
+	 bh=ON3rDm5r6EQxpyrd28iz+mBCV8QMOnVG7cOGdCaFpFc=; b=hyOE7IdzawBXFSGX0QEgad0oO
+	ZRErtOdQnxJ1/9xB2QOI6+aqR/WAzQm5k2RPY3Ri0+sy+LhqlieWU0qJoofivkpwaHoyu5WA5/2Jv
+	4CXYjJ/BU/UkP3J3lygShBMPZ91wCweEQpSiD40oGg27114grz6/0DvtDiYPGlxhXaZFabTbRxKR/
+	qub4DWoa69MQa1EIvB12NnnJSU+fp92d+r6HTVPxtu9971s5iec4NHUufVrEkAtySBue+3yS5K7Df
+	lg4ggeA1mLuPBYMpneNBluDEPTAa8cE/fn/QZtqEvg7PB/xgV4wrDZIwZ9SKChD7GMbCVT39mYz5g
+	6ErhcrfWQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJDio-00Gdhf-Fk; Mon, 08 Mar 2021 11:06:46 +0000
+	id 1lJDp1-00GfnV-46; Mon, 08 Mar 2021 11:13:11 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJDie-00GdfD-RO; Mon, 08 Mar 2021 11:06:36 +0000
+ id 1lJDom-00Gfhw-RL; Mon, 08 Mar 2021 11:12:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
  In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
  :Reply-To:Content-ID:Content-Description;
- bh=yyk62Wk1TRngyLeqEfHToQ78u0DYk8b6RuHNv28wuAk=; b=Yr50WtwijM41yQqhtevS6RYRX7
- H9TxlLjuX2PZOMc8PO8BhlHa3z3z4LflcFiR2KF2yatCkX3Hm0oq24ZRqKx824O6QmPk991JqxW6I
- vya7jLc69tgHf8B4MDBnPRxYYJzODQBBzr51Cn2XPNgsvFeICC1zOVS8WA3nj1c5qf/5yKZnPvqmg
- b+dKZjeIlILlVAgKv4EjsUVNKm621JKLdIC8/nc+uIOdosYgYvhVLI0x0g8ZsiT9mFTqoXTzHxYCz
- +iBqU8Oil8cBGkpAdsY631kszRftYGWabX8j2dpI2WlAfwR1NgDBP3UXOAUPkWttBAlEII+1T4VLo
- soZUGe8Q==;
-Received: from mga05.intel.com ([192.55.52.43])
+ bh=yqkKyUysVLOoAlfIAPFQlpiZ2MpU995P7mXfZ+UEjtA=; b=HmuLLjeP1WYR19c1mdotEsqHir
+ PS8KejlTETypVUbt1tRJDnHnxlGrrrrEMUILXus/BIXvHpmZNNH+y3JWLuKZw/o93ZHbp/+Fukrgt
+ LBP/n6G4HJn9XjoTkgCTHPX+TTvmdnwf72vZYct+j1xojbYPei6oKvtVHRgx7kBJeJhTXqmtm8dZ6
+ +Ty69oWk8N7/gw3lCo4EGHCQwWUpNCgONL8LCurFfg6VNJ7gq1Kia6OZyWrSp+1hYnoAlZBvub5xU
+ VabBuWmc04HtuKnZlacLVx8MVrHpTP6tq7FOr0CRPFI0HFZaaWViWUa3jW531kw7wY4VtXLMUNf28
+ DTMqt89A==;
+Received: from mga09.intel.com ([134.134.136.24])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJDiR-00FNfI-Qt; Mon, 08 Mar 2021 11:06:32 +0000
-IronPort-SDR: fFCy/PiadVQJFvhE8AJxnYoIBCdX9uF0dcC09wNsNIgI301WtFul9uiEBaLdIdtQWizGxrsPXG
- G6KtYiG8+EnA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9916"; a="273035040"
-X-IronPort-AV: E=Sophos;i="5.81,232,1610438400"; d="scan'208";a="273035040"
+ id 1lJDoO-00FNzK-5q; Mon, 08 Mar 2021 11:12:46 +0000
+IronPort-SDR: BvJZ/Gfn9bsLuovDz6F5xIg8d1sD+5DxK5QIPKDMWg2M3KAE2NKnmwEzhWXAqjSrcdy9DpzSwk
+ sDDTCtFI7rww==
+X-IronPort-AV: E=McAfee;i="6000,8403,9916"; a="188115777"
+X-IronPort-AV: E=Sophos;i="5.81,232,1610438400"; d="scan'208";a="188115777"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2021 03:05:14 -0800
-IronPort-SDR: i2X8XhwgsJcAg+nJru1HlkVr87ml+n+2W5uEPZVmr39LQtBDbGOw5lB4NsFcbPzSfarw8+seg3
- YNsgX4P0eDPg==
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2021 03:11:29 -0800
+IronPort-SDR: m47PT7iZpxIoRyxOSCbEpqMM4o/H1zm1nhEEPvIISZiMMvV/aRQ0GvAtISupTx8TB7PVH1H9yf
+ Mw5zX+hHttBQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,232,1610438400"; d="scan'208";a="385814129"
+X-IronPort-AV: E=Sophos;i="5.81,232,1610438400"; d="scan'208";a="385815280"
 Received: from mattu-haswell.fi.intel.com (HELO [10.237.72.170])
  ([10.237.72.170])
- by orsmga002.jf.intel.com with ESMTP; 08 Mar 2021 03:05:10 -0800
-Subject: Re: [PATCH v2 15/18] usb: xhci-mtk: support to build xhci-mtk-hcd.ko
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ikjoon Jang <ikjn@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
+ by orsmga002.jf.intel.com with ESMTP; 08 Mar 2021 03:11:27 -0800
+Subject: Re: [PATCH 15/17] usb: xhci-mtk: support to build xhci-mtk-hcd.ko
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Ikjoon Jang <ikjn@chromium.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
- Eddie Hung <eddie.hung@mediatek.com>,
- Sergei Shtylyov <sergei.shtylyov@gmail.com>,
- Alan Stern <stern@rowland.harvard.edu>
-References: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
- <0b62e21ddfacc1c2874726dd27ccab80c993f303.1615170625.git.chunfeng.yun@mediatek.com>
+ Eddie Hung <eddie.hung@mediatek.com>
+References: <1614934975-15188-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1614934975-15188-15-git-send-email-chunfeng.yun@mediatek.com>
+ <YET4p6rKSynLGEUv@kroah.com>
 From: Mathias Nyman <mathias.nyman@linux.intel.com>
 Autocrypt: addr=mathias.nyman@linux.intel.com; prefer-encrypt=mutual; keydata=
  mQINBFMB0ccBEADd+nZnZrFDsIjQtclVz6OsqFOQ6k0nQdveiDNeBuwyFYykkBpaGekoHZ6f
@@ -118,16 +116,16 @@ Autocrypt: addr=mathias.nyman@linux.intel.com; prefer-encrypt=mutual; keydata=
  Gjynb3sXforM/GVbr4mnuxTdLXQYlj2EJ4O4f0tkLlADT7podzKSlSuZsLi2D+ohKxtP3U/r
  42i8PBnX2oAV0UIkYk7Oel/3hr0+BP666SnTls9RJuoXc7R5XQVsomqXID6GmjwFQR5Wh/RE
  IJtkiDAsk37cfZ9d1kZ2gCQryTV9lmflSOB6AFZkOLuEVSC5qW8M/s6IGDfYXN12YJaZPptJ fiD/
-Message-ID: <39a2edfb-f761-fc13-ee20-20f15b00af5d@linux.intel.com>
-Date: Mon, 8 Mar 2021 13:06:53 +0200
+Message-ID: <58d87a5d-aee5-df37-6d58-bd5dd4948dee@linux.intel.com>
+Date: Mon, 8 Mar 2021 13:13:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <0b62e21ddfacc1c2874726dd27ccab80c993f303.1615170625.git.chunfeng.yun@mediatek.com>
+In-Reply-To: <YET4p6rKSynLGEUv@kroah.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_110625_982384_4CE37EA8 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20210308_111235_211752_C7253AEA 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,29 +142,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8.3.2021 4.52, Chunfeng Yun wrote:
-> Currently xhci-hcd.ko building depends on USB_XHCI_MTK, this
-> is not flexible for some cases. For example:
-> USB_XHCI_HCD is y, and USB_XHCI_MTK is m, then we can't
-> implement extended functions if only update xhci-mtk.ko
-> This patch is used to remove the dependence.
+On 7.3.2021 18.00, Greg Kroah-Hartman wrote:
+> On Fri, Mar 05, 2021 at 05:02:53PM +0800, Chunfeng Yun wrote:
+>> Currently xhci-hcd.ko building depends on USB_XHCI_MTK, this
+>> is not flexible for some cases. For example:
+>> USB_XHCI_HCD is y, and USB_XHCI_MTK is m, then we can't
+>> implement extended functions if only update xhci-mtk.ko
+>> This patch is used to remove the dependence.
+>>
+>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2: no changes
-> ---
->  drivers/usb/host/Makefile       |  6 ++---
->  drivers/usb/host/xhci-mem.c     |  2 +-
->  drivers/usb/host/xhci-mtk-sch.c | 48 +++++++++++++++++++++++----------
->  drivers/usb/host/xhci-mtk.c     |  2 ++
->  drivers/usb/host/xhci-mtk.h     | 33 +++--------------------
->  drivers/usb/host/xhci-ring.c    |  1 -
->  drivers/usb/host/xhci.c         | 30 +++++++++------------
->  drivers/usb/host/xhci.h         |  8 ++++++
->  8 files changed, 64 insertions(+), 66 deletions(-)
+> Oh nice, I tried to unwind this once, but did not succeed.
+> 
+> Mathias, any objection to this?  I think this is the only patch in this
+> series that touches the non-mtk code, want me to just queue it up in my
+> tree, or are you going to send it to me through your patches?
 > 
 
-Acked-by: Mathias Nyman <mathias.nyman@linux.intel.com>
+No objection, Chunfeng Yun sent v2 already, it looks good to me.
+Easier (for me) if you queue up the whole series directly
+
+Thanks
+- Mathias
+
 
 _______________________________________________
 Linux-mediatek mailing list
