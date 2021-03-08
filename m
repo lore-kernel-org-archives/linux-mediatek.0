@@ -7,71 +7,73 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1715C433E6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 09:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5DC08C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 10:52:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7EFAC651BC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 09:10:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EFAC651BC
+	by mail.kernel.org (Postfix) with ESMTPS id EF8DA651FD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 10:52:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF8DA651FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ePRsK+/f6HmHkBJot+4+bZgRNGMsItqfQqcjw7E2fF4=; b=Re+cVect4DPSsdMqLBXU9JBIJ
-	jou9JyFkN9yPiR+FQoe/v/l+ip/6pv3bW1pSltUHPgKR27Me9PDsR3LsbHOQsH8Y3S1mRdp+qPyeD
-	vPR2eRbh7DLm9cAn1+I6PtBWUOJ2YUFUQTU9ORkinOoulB86eOo7VtRuaf+wMj48XnVeA+UT37wz8
-	q/6jFbBZHp2PpLcupAi8uHQR2mnUOhBZPeAoSpgwtS+54qRXIhu+IeF9iz49dSlvfzUzsBQf9Ggeg
-	ODOdvxpicD3XfselwFSacH6OVXoJdkIfiAFJey05tI5trK3LPzgNPZOmEo3kPPkSBFV+4IJyS5TLT
-	kJSY68H5g==;
+	 bh=a4XwXpQ+TQ2aUcxTYB8+/EGBKUXRHkRuCAWtm2KHZ2I=; b=qKc0Ue0+5aeH2Gyu4LwP534LN
+	PvbWl8WSYvlxekTtA0GhBOPWJ4M4e/gMjN7PNo5fHg/9TezfVfHfw7yWmnFY7H/Nu+bMecMIUOtt3
+	9TjTMJZuK9OuVU5QHCG9xcLoyQ/gpx7W2U18Aj7J8U17WraqYK8H2Ak6SFNTYWIeUNd1c3Q+yywHO
+	fkWIR4Xfss3/C3xewbArA4I96we9HjY9XBmOU7UoMnxtqb/R/k2XgQ6SWJAzmTnIiP34+bZezuyR5
+	AwiMYVTjm5WeFPa8xaejAvm/J8hkxfd7QdlhMy3sfgIrA8+xRV2hY7n3fvlkXNFqm72tAocjq4cpn
+	6AdcT6P7A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJBty-00G6jL-Sp; Mon, 08 Mar 2021 09:10:10 +0000
+	id 1lJDVA-00GY4u-Vd; Mon, 08 Mar 2021 10:52:41 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJBtk-00G6eQ-1z; Mon, 08 Mar 2021 09:09:57 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 07720651B9;
- Mon,  8 Mar 2021 09:09:53 +0000 (UTC)
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1lJBtf-000IHt-0Y; Mon, 08 Mar 2021 09:09:51 +0000
+ id 1lJDV1-00GXzA-Bc; Mon, 08 Mar 2021 10:52:33 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B9883651FF;
+ Mon,  8 Mar 2021 10:52:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1615200747;
+ bh=pMZw1TDBbUwEEUX1lkSoLFf+kqIBxMbLfKVSPQF9aaQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Cq/00uHwzgIWa2KhCcr2lkUukJ6RAb7W8ZHe5c0F53BJVsTwVQfIh7wW0MgtqdSrP
+ 2Fhdzs40UVdWveB9g+5MsYy3Q7JxWL1qORCs/1qonr8lKj/v1zZ99uwvh6VNZSgbIf
+ KBuPyT6XPnWIu3pF+z64xNcEeyMBUG0pfZ839f3yxPUdNWVhDU3YBG9TihxLQfmJx3
+ wBcMQaAkYeOY9yyebMeZGiLX9hwZdQoIMlLNMokOpbBpOgIRB7Xa9G/S4Rsa/kNg9m
+ I22JRNGXbXB4Ki/nFerZAqxsFTRZ3pQOkv5i4BV0//HiJ3CCcdijtN0rVWMXJmiTlI
+ aU4x6/1455Ujg==
+Received: by mail-ed1-f50.google.com with SMTP id w9so13901257edt.13;
+ Mon, 08 Mar 2021 02:52:26 -0800 (PST)
+X-Gm-Message-State: AOAM530nt37LQmB0uOobYGqljDJjJMYJDLZgyzWBjP6vZR3UaVZ6LLHs
+ tt2kXQQnPJC6sy0jIcz7xoTBaXrozAydeqQVFQ==
+X-Google-Smtp-Source: ABdhPJwqrES4G6zQVHpgFQQXFeYCzz2BE4zfV+Kku+1yeWjOOp6BnRWpxzqG37t7y9Uurj0BLHKxt6C58JJCGy7Z2A4=
+X-Received: by 2002:aa7:cf14:: with SMTP id a20mr21354191edy.49.1615200745215; 
+ Mon, 08 Mar 2021 02:52:25 -0800 (PST)
 MIME-Version: 1.0
-Date: Mon, 08 Mar 2021 09:09:50 +0000
-From: Marc Zyngier <maz@kernel.org>
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: daniel@thingy.jp, jason@lakedaemon.net,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- tglx@linutronix.de, yj.chiang@mediatek.com
-Subject: Re: [PATCH] irqchip/irq-mst: Support polarity configuration
-In-Reply-To: <20210308030102.5161-1-mark-pk.tsai@mediatek.com>
-References: <874khorux9.wl-maz@kernel.org>
- <20210308030102.5161-1-mark-pk.tsai@mediatek.com>
-User-Agent: Roundcube Webmail/1.4.11
-Message-ID: <01b1c85119619c2418908a2fdabfb5dc@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: mark-pk.tsai@mediatek.com, daniel@thingy.jp,
- jason@lakedaemon.net, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, tglx@linutronix.de, yj.chiang@mediatek.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+References: <20210308070520.40429-1-chunfeng.yun@mediatek.com>
+In-Reply-To: <20210308070520.40429-1-chunfeng.yun@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 8 Mar 2021 18:52:13 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__rno0A_8WCWHiNv6tLyqDOVe+dVmbJbv7_pDse+BTpSQ@mail.gmail.com>
+Message-ID: <CAAOTY__rno0A_8WCWHiNv6tLyqDOVe+dVmbJbv7_pDse+BTpSQ@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8173: fix property typo of 'phys' in dsi
+ node
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Cawa Cheng <cawa.cheng@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Jie Qiu <jie.qiu@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, DTML <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, stable <stable@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_090956_379020_84F5DABC 
-X-CRM114-Status: GOOD (  19.03  )
+X-CRM114-CacheID: sfid-20210308_105231_590210_08C7C3B5 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,67 +85,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2021-03-08 03:01, Mark-PK Tsai wrote:
-> From: Marc Zyngier <maz@kernel.org>
-> 
->> >
->> > Support irq polarity configuration and save and restore the config
->> > when system suspend and resume.
->> >
->> > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
->> > ---
->> >  drivers/irqchip/irq-mst-intc.c | 87 ++++++++++++++++++++++++++++++++--
->> >  1 file changed, 84 insertions(+), 3 deletions(-)
->> >
->> > diff --git a/drivers/irqchip/irq-mst-intc.c b/drivers/irqchip/irq-mst-intc.c
->> > index 143657b0cf28..979a4d55bcb1 100644
->> > --- a/drivers/irqchip/irq-mst-intc.c
->> > +++ b/drivers/irqchip/irq-mst-intc.c
->> > @@ -13,15 +13,25 @@
->> >  #include <linux/of_irq.h>
->> >  #include <linux/slab.h>
->> >  #include <linux/spinlock.h>
->> > +#include <linux/syscore_ops.h>
->> >
->> > -#define INTC_MASK	0x0
->> > -#define INTC_EOI	0x20
->> > +#define INTC_MASK		0x0
->> > +#define INTC_REV_POLARITY	0x10
->> > +#define INTC_EOI		0x20
->> > +
->> > +#ifdef CONFIG_PM_SLEEP
->> > +static LIST_HEAD(mst_intc_list);
->> > +#endif
->> >
->> >  struct mst_intc_chip_data {
->> >  	raw_spinlock_t	lock;
->> >  	unsigned int	irq_start, nr_irqs;
->> >  	void __iomem	*base;
->> >  	bool		no_eoi;
->> > +#ifdef CONFIG_PM_SLEEP
->> > +	struct list_head entry;
->> > +	u16 saved_polarity_conf[DIV_ROUND_UP(64, 16)];
->> 
->> Where is this 64 coming from?
-> 
-> The maximum number of interrupts a mst-intc supports is 64 in
-> Mstar and Mediatek SoCs now.
-> So I just use the maximum number of interrupts here.
-
-Then please use a named constant instead of a magic number.
-
-Thanks,
-
-         M.
--- 
-Jazz is not dead. It just smells funny...
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIENodW5mZW5nOgoKQ2h1bmZlbmcgWXVuIDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29tPiDm
+lrwgMjAyMeW5tDPmnIg45pelIOmAseS4gCDkuIvljYgzOjA15a+r6YGT77yaCj4KPiBVc2UgJ3Bo
+eXMnIGluc3RlYWQgb2YgJ3BoeScuCgpSZXZpZXdlZC1ieTogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1
+YW5nLmh1QGtlcm5lbC5vcmc+Cgo+Cj4gRml4ZXM6IDgxYWQ0ZGJhZjdhZiAoImFybTY0OiBkdHM6
+IG10ODE3MzogQWRkIGRpc3BsYXkgc3Vic3lzdGVtIHJlbGF0ZWQgbm9kZXMiKQo+IENjOiBzdGFi
+bGUgPHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogQ2h1bmZlbmcgWXVu
+IDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRz
+L21lZGlhdGVrL210ODE3My5kdHNpIHwgMiArLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRp
+b24oKyksIDEgZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRz
+L21lZGlhdGVrL210ODE3My5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgx
+NzMuZHRzaQo+IGluZGV4IDc1MDQwYTgyMGYwZC4uMDAzYTU2NTNjNTA1IDEwMDY0NAo+IC0tLSBh
+L2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0c2kKPiArKysgYi9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My5kdHNpCj4gQEAgLTEyMzYsNyArMTIzNiw3IEBA
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZtbXN5cyBDTEtfTU1fRFNJMV9E
+SUdJVEFMPiwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8Jm1pcGlfdHgxPjsK
+PiAgICAgICAgICAgICAgICAgICAgICAgICBjbG9jay1uYW1lcyA9ICJlbmdpbmUiLCAiZGlnaXRh
+bCIsICJocyI7Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgcGh5ID0gPCZtaXBpX3R4MT47Cj4g
+KyAgICAgICAgICAgICAgICAgICAgICAgcGh5cyA9IDwmbWlwaV90eDE+Owo+ICAgICAgICAgICAg
+ICAgICAgICAgICAgIHBoeS1uYW1lcyA9ICJkcGh5IjsKPiAgICAgICAgICAgICAgICAgICAgICAg
+ICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICAgICAgICAgICAgICAgICB9Owo+IC0tCj4gMi4xOC4w
+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsK
