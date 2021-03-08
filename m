@@ -5,56 +5,57 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CAA79C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A6D1C433E6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:47 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6946865146
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6946865146
+	by mail.kernel.org (Postfix) with ESMTPS id 1EED365146
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EED365146
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CcM6pvm08qB4b+AbtyC+dLW/cy5fv8hRGeF/GMYAT08=; b=VPhwVzaWuR/GRtzQefwcK4pHRI
-	g19XT1n3s+D74uPZ1VrLKZPbB99uqLdZjwFGrAFn+vkPS/lcA1K/uiKITD48DKg2+AX/jQxm7qHp9
-	j1/AT05GqQCyle56kYu8GvNqM8pbJ93FhLppoxsogKoWpw8ydATf9VmsXFrL7uZPOS1UnFI6G0Zid
-	xZrTxB3TgErIxGhw2xl1cxqMb0WGAyZ0wQQolG+YpHUBFmzNiFKhSbuAQcWQy33ND3gtpZF0s3XNi
-	uD8dLxd1ne9ayHRYtLlsOS9bfmU3GPVMmffIN052ki8UkWNi75L212TU/UcoHWn1Vs6OoGENLOtIt
-	OIAGIwMQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=MSC7edOVlzx6RI+N60exE8UM1Of9eAOiLOArT8TNeY4=; b=eWvWq9K5fr4JpEUwA5Dzw5t0n
+	9vey3XGCb9y/UBPeZ+J/N057N5/qB0PDivAWkrVvZ5L8TV1sXT5Af2hKNq9HXb2Iak12cN/z9nSFw
+	M0wBQusL+F+ze2hiTPCFWsIuo3k7V30rtyYJzGlRK1X3mVo21byhCTD6bHsSGP7w6LuAWHcnf5kuQ
+	NmGqMO/yEiqbZgG1bT6EsOeJnS/FZmr1/3318cAAaE9MCeknK3IONcFmSYXWfZQQUUKgOWrVpZRk+
+	l97f+P3ZZli8MSlM8OuABH6NyQ357e84e6kppZG21xhiLPYW7MvQPEQ+Y5XEGdQeNfc+2P3RUvZBr
+	aJ5P8b6Fw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJ6C9-00Ei6P-Tw; Mon, 08 Mar 2021 03:04:34 +0000
+	id 1lJ6CB-00Ei7h-Vg; Mon, 08 Mar 2021 03:04:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJ6AW-00Eh75-5h; Mon, 08 Mar 2021 03:02:54 +0000
-X-UUID: 3710ff76e5ef47a280fe514e89c28397-20210307
+ id 1lJ6AW-00Eh6q-5c; Mon, 08 Mar 2021 03:02:54 +0000
+X-UUID: 4de1e0bd1ac44696858d8fdadc7815be-20210307
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=buJSlsDtfZZ3rIJE3AekXHFW3jZVcnrHEWel4Af12Ac=; 
- b=dY7qlKqbJhiuRp11JtIIqckBdRn5dKtriqnNjekDM1tZ+cSn8O6kXvFEwkkgR3jXs/dFyRwDRl6DR4AfbQIVd8dwEXZ3efB9QYSu032q3l18SLPU5dbPkW1USAJMtb4vTkZwyDhvFwm5tjoQyqFyyz2TH/xfA4aiKAsv5JEAxm8=;
-X-UUID: 3710ff76e5ef47a280fe514e89c28397-20210307
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=WDs6epwfiEkcKaYthtF0ZhyRXzuLIKReWAEmKVcSYN8=; 
+ b=Hqw4rCRFKiCSFL65YTdimPfBaDoFuqDM4Ou7nQnWV8YHcL6eGWyaNDApcrxjShpEhGhRvNrwPFOlEl16BNDPzTrezXPWMrWOtkZ8jhkCOrv/QHSqC0UHjzdeZGfl5p7HHAFxf53vETf3gqZKP8CB7iAkUJT6ZSeNZxlgY3mBkO0=;
+X-UUID: 4de1e0bd1ac44696858d8fdadc7815be-20210307
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1434455260; Sun, 07 Mar 2021 19:02:24 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ with ESMTP id 1296456892; Sun, 07 Mar 2021 19:02:24 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 7 Mar 2021 18:52:17 -0800
+ 15.0.1497.2; Sun, 7 Mar 2021 18:52:29 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 8 Mar 2021 10:52:14 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 8 Mar 2021 10:52:28 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 8 Mar 2021 10:52:13 +0800
+ Transport; Mon, 8 Mar 2021 10:52:27 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Ikjoon Jang <ikjn@chromium.org>
@@ -63,19 +64,18 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
  Eddie Hung <eddie.hung@mediatek.com>, Sergei Shtylyov
- <sergei.shtylyov@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, stable
- <stable@vger.kernel.org>
-Subject: [PATCH v2 01/18] usb: xhci-mtk: remove or operator for setting
- schedule parameters
-Date: Mon, 8 Mar 2021 10:51:50 +0800
-Message-ID: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
+ <sergei.shtylyov@gmail.com>, Alan Stern <stern@rowland.harvard.edu>
+Subject: [PATCH v2 17/18] usb: xhci-mtk: print debug info of endpoint interval
+Date: Mon, 8 Mar 2021 10:52:06 +0800
+Message-ID: <f7a9fa7a812296fcd6c603bfa9853076144018d6.1615170625.git.chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
+References: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B7FEDE61C5E0257C605BDFB5FFB6D6E4B57ABE7FFA305F1606D8A400FE2FB4BC2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_030252_783716_506714FE 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20210308_030252_814342_EE4881AB 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,45 +92,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Side effect may happen if use or operator to set schedule parameters
-when the parameters are already set before. Set them directly due to
-other bits are reserved.
+Print bInterval and convert it into the time expressed in
+us or ms unit, this is the key info when allocate bandwidth
+failed.
 
-Fixes: 54f6a8af3722 ("usb: xhci-mtk: skip dropping bandwidth of unchecked endpoints")
-Cc: stable <stable@vger.kernel.org>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2: no changes
 ---
- drivers/usb/host/xhci-mtk-sch.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/usb/host/xhci-mtk-sch.c | 37 ++++++++++++++++++++++++++-------
+ 1 file changed, 29 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index b45e5bf08997..5891f56c64da 100644
+index 046b7f1ebf94..a59d1f6d4744 100644
 --- a/drivers/usb/host/xhci-mtk-sch.c
 +++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -643,7 +643,7 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		 */
- 		if (usb_endpoint_xfer_int(&ep->desc)
- 			|| usb_endpoint_xfer_isoc(&ep->desc))
--			ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(1));
-+			ep_ctx->reserved[0] = cpu_to_le32(EP_BPKTS(1));
+@@ -25,6 +25,8 @@
+  */
+ #define TT_MICROFRAMES_MAX 9
  
- 		return 0;
- 	}
-@@ -730,10 +730,10 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 		list_move_tail(&sch_ep->endpoint, &sch_bw->bw_ep_list);
++#define DBG_BUF_EN	64
++
+ /* schedule error type */
+ #define ESCH_SS_Y6		1001
+ #define ESCH_SS_OVERLAP		1002
+@@ -62,6 +64,31 @@ static int is_fs_or_ls(enum usb_device_speed speed)
+ 	return speed == USB_SPEED_FULL || speed == USB_SPEED_LOW;
+ }
  
- 		ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
--		ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(sch_ep->pkts)
-+		ep_ctx->reserved[0] = cpu_to_le32(EP_BPKTS(sch_ep->pkts)
- 			| EP_BCSCOUNT(sch_ep->cs_count)
- 			| EP_BBM(sch_ep->burst_mode));
--		ep_ctx->reserved[1] |= cpu_to_le32(EP_BOFFSET(sch_ep->offset)
-+		ep_ctx->reserved[1] = cpu_to_le32(EP_BOFFSET(sch_ep->offset)
- 			| EP_BREPEAT(sch_ep->repeat));
++static const char *
++decode_ep(struct usb_host_endpoint *ep, enum usb_device_speed speed)
++{
++	static char buf[DBG_BUF_EN];
++	struct usb_endpoint_descriptor *epd = &ep->desc;
++	unsigned int interval;
++	const char *unit;
++
++	interval = usb_decode_interval(epd, speed);
++	if (interval % 1000) {
++		unit = "us";
++	} else {
++		unit = "ms";
++		interval /= 1000;
++	}
++
++	snprintf(buf, DBG_BUF_EN, "%s ep%d%s %s, mpkt:%d, interval:%d/%d%s\n",
++		 usb_speed_string(speed), usb_endpoint_num(epd),
++		 usb_endpoint_dir_in(epd) ? "in" : "out",
++		 usb_ep_type_string(usb_endpoint_type(epd)),
++		 usb_endpoint_maxp(epd), epd->bInterval, interval, unit);
++
++	return buf;
++}
++
+ static u32 get_bw_boundary(enum usb_device_speed speed)
+ {
+ 	u32 boundary;
+@@ -711,10 +738,7 @@ static int add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 	ep_index = xhci_get_endpoint_index(&ep->desc);
+ 	ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
  
- 		xhci_dbg(xhci, " PKTS:%x, CSCOUNT:%x, BM:%x, OFFSET:%x, REPEAT:%x\n",
+-	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpkt:%d, dir:%d, ep:%p\n",
+-		__func__, usb_endpoint_type(&ep->desc), udev->speed,
+-		usb_endpoint_maxp(&ep->desc),
+-		usb_endpoint_dir_in(&ep->desc), ep);
++	xhci_dbg(xhci, "%s %s\n", __func__, decode_ep(ep, udev->speed));
+ 
+ 	if (!need_bw_sch(ep, udev->speed, !!virt_dev->tt_info)) {
+ 		/*
+@@ -750,10 +774,7 @@ static void drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 
+ 	virt_dev = xhci->devs[udev->slot_id];
+ 
+-	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpks:%d, dir:%d, ep:%p\n",
+-		__func__, usb_endpoint_type(&ep->desc), udev->speed,
+-		usb_endpoint_maxp(&ep->desc),
+-		usb_endpoint_dir_in(&ep->desc), ep);
++	xhci_dbg(xhci, "%s %s\n", __func__, decode_ep(ep, udev->speed));
+ 
+ 	if (!need_bw_sch(ep, udev->speed, !!virt_dev->tt_info))
+ 		return;
 -- 
 2.18.0
 _______________________________________________
