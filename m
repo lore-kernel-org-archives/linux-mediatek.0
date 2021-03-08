@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 451E5C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D53AFC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BFC216514D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFC216514D
+	by mail.kernel.org (Postfix) with ESMTPS id 77EFC65151
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Mar 2021 03:04:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77EFC65151
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4LXAInjAVVD8aZcO+2ITA/qsso+gTjq6edrIORIBD7c=; b=ZZkqu4Eobb8NYxlv6DU58jbXi
-	lF6oIw64cHTLVFLITV2uSesyZ+/GJBe98J3bhmjGe3g0Q8SoZafKgZOq2rB5qy/xP01nvRnUPKezr
-	XpSQIqhmD0vI+VBCjoJkZdbE8A9FAQX7Q3+QIxdHqT4dx8nzSq+AKgDU4KMLymeg8+S6weBBj4uho
-	1+x4oyeLK1ozDhlNRPFSQBI16zVWs2JhXz+yd7ALzdkk5fItu+3UYwBKSq9XJBpqTq0a2+R7QidBb
-	monVTZETRAQF157VmYORrsBgMfRrOIj1GePmLTNY+0uxOUgD3ws8c83fPvXcs/7ti1rFLfn0Zec5c
-	QfYbrYA1Q==;
+	 bh=7sGL9JV3/9LO/8HyG/ein2odUW4Erw0XJUQdjNq69GA=; b=XOOwNYMTuZU6hpkdJt+1QvKxY
+	1cOtdhmKuLyz85Z1fy4kQ42pzaLhtlLktHVqhyEvH+rWh7ZWhDDqcg3H1ukogeTFKjaeUS5Mkrk9/
+	6HL3s7wf0tPZQ47/XORr9RrBLDLxmEvpCoxtLNLbEqyqyQ3Jhgvb7mCglcNzhEHukVcU5SRV0v69y
+	ZohDZCxrbyoA7rcB8wIS3nF3hyOdvtV+wSevF3Q6HNjqmYZHcLP1LzUfg3FhiAkIfE1gB7EeAADDI
+	WWiEE9WYnngQc+LQSdB1hA8af1UKJ/xhXqKb5B9aavNdMoBVdv8G0Gy8g3VgCgS5frutzDZwJtM5V
+	sJ2/3UHIQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJ6BZ-00EhnD-0i; Mon, 08 Mar 2021 03:03:57 +0000
+	id 1lJ6Bc-00Ehoy-4j; Mon, 08 Mar 2021 03:04:00 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJ6AS-00Eh6q-3q; Mon, 08 Mar 2021 03:02:50 +0000
-X-UUID: e1b8b79bde2d4208b67a3d8781150882-20210307
+ id 1lJ6AR-00Eh75-Rw; Mon, 08 Mar 2021 03:02:51 +0000
+X-UUID: 7d87453f52ff451aaba4098a4bab0317-20210307
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1ymi1e0wq8oCxU3/iinXdzNViWjScjnYbi7jxtlSE3o=; 
- b=pCr6EaA6u7CfbRbZaEhavwVpr4JRpMXoudd+kXzx8WWPjRa9St7wD00KsKkBPtmGHGIAtycXSdLiZmUq1nCbyYw9RDAbWOR41doN/SyBAL7jYnKYVg/fjIe6z3islH3oYwtqgDrLw0Mo6hUIDvI5MJeD7GPYMWi9A0xZ8APBU6o=;
-X-UUID: e1b8b79bde2d4208b67a3d8781150882-20210307
+ bh=cKctVNzwz5db0t5Ox/Ou2t+QUMl/nTES50MFPWl6ZKE=; 
+ b=fsU1B26d7GnZrYFcbBccuvqr6triTWPwjLPhWuh5jv/4Vv9JsMCsO4/T1NND6xuRvENX7w/JrdAGnCtVaCzHF+Fh1Y/KtM6IWCuaczbGX1/tMu5LJDVCgwuIkF/SfFB4mnrOXV5HIi2Rt4NtOEGii+Up+quAESVpBO8PHVClwaw=;
+X-UUID: 7d87453f52ff451aaba4098a4bab0317-20210307
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 921135716; Sun, 07 Mar 2021 19:02:24 -0800
+ with ESMTP id 527124186; Sun, 07 Mar 2021 19:02:24 -0800
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 7 Mar 2021 18:52:29 -0800
+ 15.0.1497.2; Sun, 7 Mar 2021 18:52:18 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 8 Mar 2021 10:52:27 +0800
+ 15.0.1497.2; Mon, 8 Mar 2021 10:52:17 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 8 Mar 2021 10:52:26 +0800
+ Transport; Mon, 8 Mar 2021 10:52:16 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Ikjoon Jang <ikjn@chromium.org>
@@ -65,18 +64,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-kernel@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
  Eddie Hung <eddie.hung@mediatek.com>, Sergei Shtylyov
  <sergei.shtylyov@gmail.com>, Alan Stern <stern@rowland.harvard.edu>
-Subject: [PATCH v2 16/18] usb: common: add function to get interval expressed
- in us unit
-Date: Mon, 8 Mar 2021 10:52:05 +0800
-Message-ID: <25c8a09b055f716c1e5bf11fea72c3418f844482.1615170625.git.chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 04/18] usb: xhci-mtk: add only one extra CS for FS/LS INTR
+Date: Mon, 8 Mar 2021 10:51:53 +0800
+Message-ID: <5b9ff09f53d23cf9e5c5437db4ffc18b798bf60c.1615170625.git.chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
 References: <d287899e6beb2fc1bfb8900c75a872f628ecde55.1615170625.git.chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_030248_936047_5094FFAC 
-X-CRM114-Status: GOOD (  18.55  )
+X-CRM114-CacheID: sfid-20210308_030248_738286_DDEE5F12 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,181 +91,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new function to convert bInterval into the time expressed
-in 1us unit.
+In USB2 Spec:
+"11.18.5 TT Response Generation
+In general, there will be two (or more) complete-split
+transactions scheduled for a periodic endpoint.
+However, for interrupt endpoints, the maximum size of
+the full-/low-speed transaction guarantees that it can
+never require more than two complete-split transactions.
+Two complete-split transactions are only required
+when the transaction spans a microframe boundary."
+
+Due to the maxp is 64, and less then 188 (at most in one
+microframe), seems never span boundary, so use only one CS
+for FS/LS interrupt transfer, this will save some bandwidth.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2: move kerneldoc next to function's definition suggested by Alan
+v2: no changes
 ---
- drivers/usb/common/common.c | 41 +++++++++++++++++++++++++++++++++++++
- drivers/usb/core/devices.c  | 21 ++++---------------
- drivers/usb/core/endpoint.c | 35 ++++---------------------------
- include/linux/usb/ch9.h     |  3 +++
- 4 files changed, 52 insertions(+), 48 deletions(-)
+ drivers/usb/host/xhci-mtk-sch.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-index fc21cf2d36f6..675e8a4e683a 100644
---- a/drivers/usb/common/common.c
-+++ b/drivers/usb/common/common.c
-@@ -165,6 +165,47 @@ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
- }
- EXPORT_SYMBOL_GPL(usb_get_dr_mode);
- 
-+/**
-+ * usb_decode_interval - Decode bInterval into the time expressed in 1us unit
-+ * @epd: The descriptor of the endpoint
-+ * @speed: The speed that the endpoint works as
-+ *
-+ * Function returns the interval expressed in 1us unit for servicing
-+ * endpoint for data transfers.
-+ */
-+unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
-+				 enum usb_device_speed speed)
-+{
-+	unsigned int interval = 0;
-+
-+	switch (usb_endpoint_type(epd)) {
-+	case USB_ENDPOINT_XFER_CONTROL:
-+		/* uframes per NAK */
-+		if (speed == USB_SPEED_HIGH)
-+			interval = epd->bInterval;
-+		break;
-+	case USB_ENDPOINT_XFER_ISOC:
-+		interval = 1 << (epd->bInterval - 1);
-+		break;
-+	case USB_ENDPOINT_XFER_BULK:
-+		/* uframes per NAK */
-+		if (speed == USB_SPEED_HIGH && usb_endpoint_dir_out(epd))
-+			interval = epd->bInterval;
-+		break;
-+	case USB_ENDPOINT_XFER_INT:
-+		if (speed >= USB_SPEED_HIGH)
-+			interval = 1 << (epd->bInterval - 1);
-+		else
-+			interval = epd->bInterval;
-+		break;
-+	}
-+
-+	interval *= (speed >= USB_SPEED_HIGH) ? 125 : 1000;
-+
-+	return interval;
-+}
-+EXPORT_SYMBOL_GPL(usb_decode_interval);
-+
- #ifdef CONFIG_OF
- /**
-  * of_usb_get_dr_mode_by_phy - Get dual role mode for the controller device
-diff --git a/drivers/usb/core/devices.c b/drivers/usb/core/devices.c
-index 1ef2de6e375a..d8b0041de612 100644
---- a/drivers/usb/core/devices.c
-+++ b/drivers/usb/core/devices.c
-@@ -157,38 +157,25 @@ static char *usb_dump_endpoint_descriptor(int speed, char *start, char *end,
- 	switch (usb_endpoint_type(desc)) {
- 	case USB_ENDPOINT_XFER_CONTROL:
- 		type = "Ctrl";
--		if (speed == USB_SPEED_HIGH)	/* uframes per NAK */
--			interval = desc->bInterval;
--		else
--			interval = 0;
- 		dir = 'B';			/* ctrl is bidirectional */
- 		break;
- 	case USB_ENDPOINT_XFER_ISOC:
- 		type = "Isoc";
--		interval = 1 << (desc->bInterval - 1);
- 		break;
- 	case USB_ENDPOINT_XFER_BULK:
- 		type = "Bulk";
--		if (speed == USB_SPEED_HIGH && dir == 'O') /* uframes per NAK */
--			interval = desc->bInterval;
--		else
--			interval = 0;
- 		break;
- 	case USB_ENDPOINT_XFER_INT:
- 		type = "Int.";
--		if (speed == USB_SPEED_HIGH || speed >= USB_SPEED_SUPER)
--			interval = 1 << (desc->bInterval - 1);
--		else
--			interval = desc->bInterval;
- 		break;
- 	default:	/* "can't happen" */
- 		return start;
- 	}
--	interval *= (speed == USB_SPEED_HIGH ||
--		     speed >= USB_SPEED_SUPER) ? 125 : 1000;
--	if (interval % 1000)
-+
-+	interval = usb_decode_interval(desc, speed);
-+	if (interval % 1000) {
- 		unit = 'u';
--	else {
-+	} else {
- 		unit = 'm';
- 		interval /= 1000;
- 	}
-diff --git a/drivers/usb/core/endpoint.c b/drivers/usb/core/endpoint.c
-index 903426b6d305..a2530811cf7d 100644
---- a/drivers/usb/core/endpoint.c
-+++ b/drivers/usb/core/endpoint.c
-@@ -84,40 +84,13 @@ static ssize_t interval_show(struct device *dev, struct device_attribute *attr,
- 			     char *buf)
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index 450fa22b7dc7..59ba25ca018d 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -408,13 +408,11 @@ static int check_sch_tt(struct usb_device *udev,
  {
- 	struct ep_device *ep = to_ep_device(dev);
-+	unsigned int interval;
- 	char unit;
--	unsigned interval = 0;
--	unsigned in;
+ 	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
+ 	u32 extra_cs_count;
+-	u32 fs_budget_start;
+ 	u32 start_ss, last_ss;
+ 	u32 start_cs, last_cs;
+ 	int i;
  
--	in = (ep->desc->bEndpointAddress & USB_DIR_IN);
--
--	switch (usb_endpoint_type(ep->desc)) {
--	case USB_ENDPOINT_XFER_CONTROL:
--		if (ep->udev->speed == USB_SPEED_HIGH)
--			/* uframes per NAK */
--			interval = ep->desc->bInterval;
--		break;
--
--	case USB_ENDPOINT_XFER_ISOC:
--		interval = 1 << (ep->desc->bInterval - 1);
--		break;
--
--	case USB_ENDPOINT_XFER_BULK:
--		if (ep->udev->speed == USB_SPEED_HIGH && !in)
--			/* uframes per NAK */
--			interval = ep->desc->bInterval;
--		break;
--
--	case USB_ENDPOINT_XFER_INT:
--		if (ep->udev->speed == USB_SPEED_HIGH)
--			interval = 1 << (ep->desc->bInterval - 1);
--		else
--			interval = ep->desc->bInterval;
--		break;
--	}
--	interval *= (ep->udev->speed == USB_SPEED_HIGH) ? 125 : 1000;
--	if (interval % 1000)
-+	interval = usb_decode_interval(ep->desc, ep->udev->speed);
-+	if (interval % 1000) {
- 		unit = 'u';
--	else {
-+	} else {
- 		unit = 'm';
- 		interval /= 1000;
- 	}
-diff --git a/include/linux/usb/ch9.h b/include/linux/usb/ch9.h
-index abdd310c77f0..74debc824645 100644
---- a/include/linux/usb/ch9.h
-+++ b/include/linux/usb/ch9.h
-@@ -90,6 +90,9 @@ extern enum usb_ssp_rate usb_get_maximum_ssp_rate(struct device *dev);
-  */
- extern const char *usb_state_string(enum usb_device_state state);
+ 	start_ss = offset % 8;
+-	fs_budget_start = (start_ss + 1) % 8;
  
-+unsigned int usb_decode_interval(const struct usb_endpoint_descriptor *epd,
-+				 enum usb_device_speed speed);
-+
- #ifdef CONFIG_TRACING
- /**
-  * usb_decode_ctrl - Returns human readable representation of control request.
+ 	if (sch_ep->ep_type == ISOC_OUT_EP) {
+ 		last_ss = start_ss + sch_ep->cs_count - 1;
+@@ -450,16 +448,14 @@ static int check_sch_tt(struct usb_device *udev,
+ 		if (sch_ep->ep_type == ISOC_IN_EP)
+ 			extra_cs_count = (last_cs == 7) ? 1 : 2;
+ 		else /*  ep_type : INTR IN / INTR OUT */
+-			extra_cs_count = (fs_budget_start == 6) ? 1 : 2;
++			extra_cs_count = 1;
+ 
+ 		cs_count += extra_cs_count;
+ 		if (cs_count > 7)
+ 			cs_count = 7; /* HW limit */
+ 
+-		for (i = 0; i < cs_count + 2; i++) {
+-			if (test_bit(offset + i, tt->ss_bit_map))
+-				return -ERANGE;
+-		}
++		if (test_bit(offset, tt->ss_bit_map))
++			return -ERANGE;
+ 
+ 		sch_ep->cs_count = cs_count;
+ 		/* one for ss, the other for idle */
 -- 
 2.18.0
 _______________________________________________
