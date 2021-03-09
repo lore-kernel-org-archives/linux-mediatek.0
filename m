@@ -2,78 +2,88 @@ Return-Path: <SRS0=uKpE=IH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13852C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 09:30:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81533C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 11:11:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 79651650DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 09:30:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79651650DF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.microsoft.com
+	by mail.kernel.org (Postfix) with ESMTPS id 062BD65258
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 11:11:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 062BD65258
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
+	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=j3a4UM4bYZ3BFPowah2eZVvuguG8PsaKOHLBxbSzGLg=; b=oCL33EFYuHbswNmnSjJoz3L7b
-	zNIEa23/TqbuNI1EVzDXVXbyi3MKAGef/0Foo2Vf5Kw24XuZmbOb95wzAaNpcEWdh0ImXwTiOqff7
-	SPWMroqxIYgk44jGFoVKWQ/NntVtsOKwuu0h6/Ys+Z55ZPjMkd9HHknj1A9l6gHljGMLI9uBpYDvv
-	Rzo6NpmKNzhki1XO+ob4PWParhn3eg0PY4OJ1TrjAgWdlnn87g3ugBIpGOgGRxF2gj5n8abtFI0NE
-	EGXEl1wsjwj7BARuENMv3rK2GJtD2OnbXxhgoJkqsn1XqhM04tErX0AMiwcN/oZgOPWbhppsjKawd
-	JkJvlL2kA==;
+	 bh=Ai4/diuFUPLpDgmMiC9Qgdj/XUqSQwNH6y8qnmF1FUA=; b=aACxD0mThKHIZXxQnuQcu2cbo
+	8SHvAdif4b11Qj0BhYd+ZkLXhn78W59+yVMWZ8cEvEpvHgg3e8ZiRlhzXcdc+02xDYa6aHMKtSD1t
+	pQk2mQ5asKNqVE6NgbWBDEPnJ6kMlGwsCBE1zhni8hdqiGXRB6Nrxmisiy7RkoITJ73adojes+/oC
+	Ibl1VrwLJ45jWe1hzKZienOn9XzmJ0ggKNnBRhD9DmdiLoNKsx242rTi1ZAp18v4dgAx4e2CoLBP1
+	B8+9tkDKiEaIu5tZ/G4ByetvP6crTutt2VjPjlPlSFlJCM+TUyH/n4xix3z2Hpk5wvV/hWxXPjpTr
+	hISjuP05g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJYgv-0048kV-2N; Tue, 09 Mar 2021 09:30:13 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lJYgo-0048jm-Ky; Tue, 09 Mar 2021 09:30:10 +0000
-Received: from [192.168.0.114] (unknown [49.207.210.77])
- by linux.microsoft.com (Postfix) with ESMTPSA id 0CE1B20B26C5;
- Tue,  9 Mar 2021 01:29:53 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 0CE1B20B26C5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1615282202;
- bh=CDYqG2GIuZVR5z0oqm1GZmaheRjDizkca+UJHZd+0GI=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=NVeEjgcK9BRcMfN+1DWoFPF7F0iWQG11DSKd1RS7RpOgd96fzaUGJsKVno8QnpaQh
- A/m2/byHvmbLabts1yxTAYtkMEDvIRO8cGdyLneaxrB82B6YrMMlcZwAuAVn2++s2j
- aD8AJWIqe1JXOP7k7Vxz9IhcBEcfAUYNFaPJZwbs=
-Subject: Re: [PATCH v5 01/19] crypto: amcc: convert tasklets to use new
- tasklet_setup() API
-To: Herbert Xu <herbert@gondor.apana.org.au>, Allen Pais <allen.lkml@gmail.com>
-Cc: davem@davemloft.net, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
- jesper.nilsson@axis.com, lars.persson@axis.com, horia.geanta@nxp.com,
- aymen.sghaier@nxp.com, gcherian@marvell.com, thomas.lendacky@amd.com,
- john.allen@amd.com, gilad@benyossef.com, bbrezillon@kernel.org,
- arno@natisbad.org, schalla@marvell.com, matthias.bgg@gmail.com,
- jamie@jamieiles.com, giovanni.cabiddu@intel.com, heiko@sntech.de,
- krzk@kernel.org, vz@mleia.com, k.konieczny@samsung.com,
- linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org,
- qat-linux@intel.com, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, Romain Perier <romain.perier@gmail.com>
-References: <20210208094238.571015-1-allen.lkml@gmail.com>
- <20210208094238.571015-2-allen.lkml@gmail.com>
- <20210304062644.GA5107@gondor.apana.org.au>
-From: Allen Pais <apais@linux.microsoft.com>
-Message-ID: <2e2604a3-b0b1-92f2-aa7b-f413fae4cb51@linux.microsoft.com>
-Date: Tue, 9 Mar 2021 14:59:51 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20210304062644.GA5107@gondor.apana.org.au>
-Content-Language: en-US
+	id 1lJaGN-004GPk-R5; Tue, 09 Mar 2021 11:10:55 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lJaG9-004GMU-Ts; Tue, 09 Mar 2021 11:10:44 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5098965256;
+ Tue,  9 Mar 2021 11:10:40 +0000 (UTC)
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
+ (envelope-from <maz@kernel.org>)
+ id 1lJaG6-000WSp-AM; Tue, 09 Mar 2021 11:10:38 +0000
+Date: Tue, 09 Mar 2021 11:10:37 +0000
+Message-ID: <87r1koy442.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Sj
+ Huang <sj.huang@mediatek.com>, <youlin.pei@mediatek.com>,
+ <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
+ <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
+ <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>
+Subject: Re: [v8,4/7] PCI: mediatek-gen3: Add INTx support
+In-Reply-To: <20210224061132.26526-5-jianjun.wang@mediatek.com>
+References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
+ <20210224061132.26526-5-jianjun.wang@mediatek.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: jianjun.wang@mediatek.com, bhelgaas@google.com,
+ robh+dt@kernel.org, lorenzo.pieralisi@arm.com, ryder.lee@mediatek.com,
+ p.zabel@pengutronix.de, matthias.bgg@gmail.com, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ sj.huang@mediatek.com, youlin.pei@mediatek.com, chuanjia.liu@mediatek.com,
+ qizhong.cheng@mediatek.com, sin_jieyang@mediatek.com, drinkcat@chromium.org,
+ Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210309_093008_895328_C9C479F3 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20210309_111042_499719_9FC63158 
+X-CRM114-Status: GOOD (  28.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +95,160 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
->>
->> In preparation for unconditionally passing the
->> struct tasklet_struct pointer to all tasklet
->> callbacks, switch to using the new tasklet_setup()
->> and from_tasklet() to pass the tasklet pointer explicitly.
->>
->> Signed-off-by: Romain Perier <romain.perier@gmail.com>
->> Signed-off-by: Allen Pais <apais@linux.microsoft.com>
->> ---
->>   drivers/crypto/amcc/crypto4xx_core.c | 10 +++++-----
->>   1 file changed, 5 insertions(+), 5 deletions(-)
+On Wed, 24 Feb 2021 06:11:29 +0000,
+Jianjun Wang <jianjun.wang@mediatek.com> wrote:
 > 
-> This introduces a compiler warning with C=1 W=1.
+> Add INTx support for MediaTek Gen3 PCIe controller.
+> 
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 176 ++++++++++++++++++++
+>  1 file changed, 176 insertions(+)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index c602beb9afec..8b3b5f838b69 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -9,6 +9,9 @@
+>  #include <linux/clk.h>
+>  #include <linux/delay.h>
+>  #include <linux/iopoll.h>
+> +#include <linux/irq.h>
+> +#include <linux/irqchip/chained_irq.h>
+> +#include <linux/irqdomain.h>
+>  #include <linux/kernel.h>
+>  #include <linux/module.h>
+>  #include <linux/pci.h>
+> @@ -45,6 +48,13 @@
+>  #define PCIE_LINK_STATUS_REG		0x154
+>  #define PCIE_PORT_LINKUP		BIT(8)
+>  
+> +#define PCIE_INT_ENABLE_REG		0x180
+> +#define PCIE_INTX_SHIFT			24
+> +#define PCIE_INTX_ENABLE \
+> +	GENMASK(PCIE_INTX_SHIFT + PCI_NUM_INTX - 1, PCIE_INTX_SHIFT)
+> +
+> +#define PCIE_INT_STATUS_REG		0x184
+> +
+>  #define PCIE_TRANS_TABLE_BASE_REG	0x800
+>  #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
+>  #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
+> @@ -73,6 +83,9 @@
+>   * @phy: PHY controller block
+>   * @clks: PCIe clocks
+>   * @num_clks: PCIe clocks count for this port
+> + * @irq: PCIe controller interrupt number
+> + * @irq_lock: lock protecting IRQ register access
+> + * @intx_domain: legacy INTx IRQ domain
+>   */
+>  struct mtk_pcie_port {
+>  	struct device *dev;
+> @@ -83,6 +96,10 @@ struct mtk_pcie_port {
+>  	struct phy *phy;
+>  	struct clk_bulk_data *clks;
+>  	int num_clks;
+> +
+> +	int irq;
+> +	raw_spinlock_t irq_lock;
+> +	struct irq_domain *intx_domain;
+>  };
+>  
+>  /**
+> @@ -199,6 +216,11 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+>  	val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
+>  	writel_relaxed(val, port->base + PCIE_PCI_IDS_1);
+>  
+> +	/* Mask all INTx interrupts */
+> +	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
+> +	val &= ~PCIE_INTX_ENABLE;
+> +	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
+> +
+>  	/* Assert all reset signals */
+>  	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
+>  	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> @@ -262,6 +284,154 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+>  	return 0;
+>  }
+>  
+> +static int mtk_pcie_set_affinity(struct irq_data *data,
+> +				 const struct cpumask *mask, bool force)
+> +{
+> +	return -EINVAL;
+> +}
+> +
+> +static void mtk_intx_mask(struct irq_data *data)
+> +{
+> +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> +	unsigned long flags;
+> +	u32 val;
+> +
+> +	raw_spin_lock_irqsave(&port->irq_lock, flags);
+> +	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
+> +	val &= ~BIT(data->hwirq + PCIE_INTX_SHIFT);
+> +	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
+> +	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
+> +}
+> +
+> +static void mtk_intx_unmask(struct irq_data *data)
+> +{
+> +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> +	unsigned long flags;
+> +	u32 val;
+> +
+> +	raw_spin_lock_irqsave(&port->irq_lock, flags);
+> +	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
+> +	val |= BIT(data->hwirq + PCIE_INTX_SHIFT);
+> +	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
+> +	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
+> +}
+> +
+> +/**
+> + * mtk_intx_eoi
+> + * @data: pointer to chip specific data
+> + *
+> + * As an emulated level IRQ, its interrupt status will remain
+> + * until the corresponding de-assert message is received; hence that
+> + * the status can only be cleared when the interrupt has been serviced.
+> + */
+> +static void mtk_intx_eoi(struct irq_data *data)
+> +{
+> +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> +	unsigned long hwirq;
+> +
+> +	hwirq = data->hwirq + PCIE_INTX_SHIFT;
+> +	writel_relaxed(BIT(hwirq), port->base + PCIE_INT_STATUS_REG);
+> +}
+> +
+> +static struct irq_chip mtk_intx_irq_chip = {
+> +	.irq_enable		= mtk_intx_unmask,
+> +	.irq_disable		= mtk_intx_mask,
 
-Okay. I will check and send out a fix.
+Please get rid of enable/disable. Given that you already have
+mask/unmask with the *same* implementation, this offers zero benefit.
 
-Thanks.
+> +	.irq_mask		= mtk_intx_mask,
+> +	.irq_unmask		= mtk_intx_unmask,
+> +	.irq_eoi		= mtk_intx_eoi,
+> +	.irq_set_affinity	= mtk_pcie_set_affinity,
+> +	.name			= "INTx",
+> +};
+
+[...]
+
+Other that that, this look good to me.
+
+Thanks,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
