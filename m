@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A98C1C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 07:06:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13852C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 09:30:25 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 38DFB652AB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 07:06:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 38DFB652AB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 79651650DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 09:30:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79651650DF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.microsoft.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jgzIW+Qy3Rdy63nMhmO8L306QDNZrpsJD5zeqBQfId4=; b=A7Mspg3ZMKlnECsvSsBLZzB23
-	7HNFv8JrCz863K1rm1vqJH4ZIt7GDAqEeBg5cJD2jB0w4FcYDW+u2+ssDMwSeyU+MnsBeRcwdSa9K
-	WVzwcLTWIBo7zVvWD3RbL1lmeKnnU/R3SIvRZP2rLgV/pvu4YKjwkXL61HhjujJmzhEk3OttJW9Or
-	0R9wczLZuRgl/yvfv0kagQ3U+03rK8GI63aR8bp6aa3PLMVGKv5Tzc1hh2p+Zavni7/6CiEKHclwB
-	hfZ7KNje7PFRc8/CtF+Q5R/CvroNliL+1RvNPWFW9xnmM0SsOXrDLWzci9ltMcNhcxcUP21nfHIPn
-	jlXJEMW/g==;
+	 bh=j3a4UM4bYZ3BFPowah2eZVvuguG8PsaKOHLBxbSzGLg=; b=oCL33EFYuHbswNmnSjJoz3L7b
+	zNIEa23/TqbuNI1EVzDXVXbyi3MKAGef/0Foo2Vf5Kw24XuZmbOb95wzAaNpcEWdh0ImXwTiOqff7
+	SPWMroqxIYgk44jGFoVKWQ/NntVtsOKwuu0h6/Ys+Z55ZPjMkd9HHknj1A9l6gHljGMLI9uBpYDvv
+	Rzo6NpmKNzhki1XO+ob4PWParhn3eg0PY4OJ1TrjAgWdlnn87g3ugBIpGOgGRxF2gj5n8abtFI0NE
+	EGXEl1wsjwj7BARuENMv3rK2GJtD2OnbXxhgoJkqsn1XqhM04tErX0AMiwcN/oZgOPWbhppsjKawd
+	JkJvlL2kA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJWRc-003wFu-5j; Tue, 09 Mar 2021 07:06:16 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
- by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJWRX-003wFT-Rt; Tue, 09 Mar 2021 07:06:14 +0000
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- (Authenticated sender: bbrezillon)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 2FB401F451E8;
- Tue,  9 Mar 2021 07:06:11 +0000 (GMT)
-Date: Tue, 9 Mar 2021 08:06:08 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Hauke Mehrtens <hauke@hauke-m.de>
-Cc: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
- matthias.bgg@gmail.com, linux-mtd@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mtd: rawnand: mtk: Fix WAITRDY break condition and timeout
-Message-ID: <20210309080608.63373f78@collabora.com>
-In-Reply-To: <20210309000107.1368404-1-hauke@hauke-m.de>
-References: <20210309000107.1368404-1-hauke@hauke-m.de>
-Organization: Collabora
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+	id 1lJYgv-0048kV-2N; Tue, 09 Mar 2021 09:30:13 +0000
+Received: from linux.microsoft.com ([13.77.154.182])
+ by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lJYgo-0048jm-Ky; Tue, 09 Mar 2021 09:30:10 +0000
+Received: from [192.168.0.114] (unknown [49.207.210.77])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 0CE1B20B26C5;
+ Tue,  9 Mar 2021 01:29:53 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 0CE1B20B26C5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1615282202;
+ bh=CDYqG2GIuZVR5z0oqm1GZmaheRjDizkca+UJHZd+0GI=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=NVeEjgcK9BRcMfN+1DWoFPF7F0iWQG11DSKd1RS7RpOgd96fzaUGJsKVno8QnpaQh
+ A/m2/byHvmbLabts1yxTAYtkMEDvIRO8cGdyLneaxrB82B6YrMMlcZwAuAVn2++s2j
+ aD8AJWIqe1JXOP7k7Vxz9IhcBEcfAUYNFaPJZwbs=
+Subject: Re: [PATCH v5 01/19] crypto: amcc: convert tasklets to use new
+ tasklet_setup() API
+To: Herbert Xu <herbert@gondor.apana.org.au>, Allen Pais <allen.lkml@gmail.com>
+Cc: davem@davemloft.net, nicolas.ferre@microchip.com,
+ alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
+ jesper.nilsson@axis.com, lars.persson@axis.com, horia.geanta@nxp.com,
+ aymen.sghaier@nxp.com, gcherian@marvell.com, thomas.lendacky@amd.com,
+ john.allen@amd.com, gilad@benyossef.com, bbrezillon@kernel.org,
+ arno@natisbad.org, schalla@marvell.com, matthias.bgg@gmail.com,
+ jamie@jamieiles.com, giovanni.cabiddu@intel.com, heiko@sntech.de,
+ krzk@kernel.org, vz@mleia.com, k.konieczny@samsung.com,
+ linux-crypto@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ qat-linux@intel.com, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, Romain Perier <romain.perier@gmail.com>
+References: <20210208094238.571015-1-allen.lkml@gmail.com>
+ <20210208094238.571015-2-allen.lkml@gmail.com>
+ <20210304062644.GA5107@gondor.apana.org.au>
+From: Allen Pais <apais@linux.microsoft.com>
+Message-ID: <2e2604a3-b0b1-92f2-aa7b-f413fae4cb51@linux.microsoft.com>
+Date: Tue, 9 Mar 2021 14:59:51 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20210304062644.GA5107@gondor.apana.org.au>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210309_070612_185964_352CD05C 
-X-CRM114-Status: GOOD (  20.98  )
+X-CRM114-CacheID: sfid-20210309_093008_895328_C9C479F3 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,51 +85,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  9 Mar 2021 01:01:07 +0100
-Hauke Mehrtens <hauke@hauke-m.de> wrote:
 
-> This fixes NAND_OP_WAITRDY_INSTR operation in the driver. Without this
-> change the driver waits till the system is busy, but we should wait till
-> the busy flag is cleared. The readl_poll_timeout() function gets a break
-> condition, not a wait condition.
+>>
+>> In preparation for unconditionally passing the
+>> struct tasklet_struct pointer to all tasklet
+>> callbacks, switch to using the new tasklet_setup()
+>> and from_tasklet() to pass the tasklet pointer explicitly.
+>>
+>> Signed-off-by: Romain Perier <romain.perier@gmail.com>
+>> Signed-off-by: Allen Pais <apais@linux.microsoft.com>
+>> ---
+>>   drivers/crypto/amcc/crypto4xx_core.c | 10 +++++-----
+>>   1 file changed, 5 insertions(+), 5 deletions(-)
 > 
-> In addition fix the timeout. The timeout_ms is given in ms, but the
-> readl_poll_timeout() function takes the timeout in us. Multiple the
-> given timeout by 1000 to convert it.
-> 
-> Without this change, the driver does not work at all, it doesn't even
-> identify the NAND chip.
-> 
-> Fixes: 5197360f9e09 ("mtd: rawnand: mtk: Convert the driver to exec_op()")
-> Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
+> This introduces a compiler warning with C=1 W=1.
 
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
+Okay. I will check and send out a fix.
 
-> ---
->  drivers/mtd/nand/raw/mtk_nand.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-> index 57f1f1708994..5c5c92132287 100644
-> --- a/drivers/mtd/nand/raw/mtk_nand.c
-> +++ b/drivers/mtd/nand/raw/mtk_nand.c
-> @@ -488,8 +488,8 @@ static int mtk_nfc_exec_instr(struct nand_chip *chip,
->  		return 0;
->  	case NAND_OP_WAITRDY_INSTR:
->  		return readl_poll_timeout(nfc->regs + NFI_STA, status,
-> -					  status & STA_BUSY, 20,
-> -					  instr->ctx.waitrdy.timeout_ms);
-> +					  !(status & STA_BUSY), 20,
-> +					  instr->ctx.waitrdy.timeout_ms * 1000);
->  	default:
->  		break;
->  	}
-
+Thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
