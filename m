@@ -2,89 +2,87 @@ Return-Path: <SRS0=uKpE=IH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2DE6C433E6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 12:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2A30C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 13:45:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37C9E6522B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 12:08:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37C9E6522B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7928064F69
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 13:45:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7928064F69
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QWKie3AKZ11+9YdnsFbTcJdnnSOTjBYtgnur5hqcziM=; b=gLgYdK5X3cT/AuH7WBlpcWSIK
-	NXh2AVvp+/TzemD9JR/T1XVGHW5t37x5PDiUIrnN0o4/QXDiS74wRqwe2eiplf5xflYvB4JT3GLZW
-	fY7Mahi5UojIEFojeYu44zxtd08eqKXJl0hLPTUT8bPplUcXtE0no0r9t+GGsPbckCtjQ7hdyv0dI
-	wzTrQavvoyGXHJbTAoj6ADZbl3BvdU+EH81knbUQqhGEEecRYhENnA8x9BD7BwiPb+Dz6MsUUD188
-	LJfK60XDR7seE22zkkmn8CdKp9u53mc1/q0PS8SBCMCyeVAKOzPNrBwT61FXTjmKrxByMNYRBXd7W
-	pLG8McwTw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AGHgqtDIOHN+vJKdqAepNlxVTiS8M1HQLwymLfxOG2E=; b=XL6LTZP4wSsZCXodUdmhyEoCLq
+	lr0HQPV0NKZHC1PtVBmpri7oQqIQI4lAfrHT4aL0YEVmSnYJnl+8dYByFJtWTl4GC+JKIvduT/1h6
+	VfNCwVE47DBqtPSjT30F1sVsolTCkdJoLLVQLnCUwOueuQG7LetSX1RsSy31TPeiOsWr+R5tguX8e
+	xK9vDSvS/qsypE8RdN6KiKcV1/dt8Cm3IrldJhOjJQSID982NUqrmUK4++9OqNvPFMBKh0MC9PnyZ
+	3b7hTsUpAxEUcVluaBPcmacY0+GA498mA9NrnkGiEj1RSG9BrKwhPBg+/Hem0d1iq4B4JsLjPgCz0
+	ErBsfspw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJbAE-004PTG-S0; Tue, 09 Mar 2021 12:08:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lJcfg-004jGt-SQ; Tue, 09 Mar 2021 13:45:12 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJb9E-004PC8-Rv; Tue, 09 Mar 2021 12:07:42 +0000
-X-UUID: 3bca22b0a3f54c6d8a8cdb4d32610103-20210309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=yIq1FN/GwgGUdNMsqR9DB360drVrGEP52ShtExyutgY=; 
- b=Tb5kt5UeE88UFRh05Tu34cyGQNiCJmRjUoVk5mEvODADGHaciyqTEHTP3TtL8q8rHkHTHZAuR8bwgmD7D0ldjdX2EHL6yailLMAA8sLmvPe/lpYmynQff3zXHyVufJsnwOoovkRpaCumiVJ6rXNDgawXmBqfQZmhAEDleGopKUg=;
-X-UUID: 3bca22b0a3f54c6d8a8cdb4d32610103-20210309
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 230003240; Tue, 09 Mar 2021 04:07:31 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Mar 2021 04:07:17 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Mar 2021 20:07:14 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 9 Mar 2021 20:07:14 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas
- <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Wendell Lin
- <Wendell.Lin@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, Sean Wang
- <Sean.Wang@mediatek.com>, Macpaul Lin <Macpaul.Lin@mediatek.com>, Owen Chen
- <owen.chen@mediatek.com>, Evan Green <evgreen@chromium.org>,
- <Yong.Wu@mediatek.com>, Joerg Roedel <jroedel@suse.de>, Shawn Guo
- <shawnguo@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee
- <Ryder.Lee@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>
-CC: Ainge Hsu <ainge.hsu@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>, 
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>, Macpaul Lin
- <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, CC Hwang
- <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>
-Subject: [PATCH v9 0/4] Add basic SoC support for mt6765
-Date: Tue, 9 Mar 2021 20:05:34 +0800
-Message-ID: <1615291538-9799-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
-References: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
+ id 1lJcSb-004ePM-7R
+ for linux-mediatek@lists.infradead.org; Tue, 09 Mar 2021 13:31:51 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id q22so746213pjd.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 09 Mar 2021 05:31:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DSrjiES35aCdYNr3Gs/Gbw7KzGhsarU4hlR/BQl68jc=;
+ b=Gjr822rUysls+DO/IaKW0guLXvpy74s0lzlVkhQNR18w9KPTpY85bKItJ9I4/bMcq4
+ uWcwrf41u6MwUn3deE9zmPecx2EKrNiOnvwkCBJgs1nZG7/MdWiVWmauS0JV3Hx5jk2U
+ OdYFzPJnVsBx7msp8h7qBr8j1gpPzrSRM0z0M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DSrjiES35aCdYNr3Gs/Gbw7KzGhsarU4hlR/BQl68jc=;
+ b=JIAC1Zsa2tSQFNIJzl0v9Fb6Be3PPU7garTNCtpS80wmX4SoGMFVCeHVCQyP1pOSvH
+ Qi2D/I8MzeFgeVLEfo9RpRz0ZbIvipGOZTTRe2ZooDJQYJ6QpozQul0xBndlbJeNYSEK
+ uUJiKWrOm5ac2YbFOAxZZVCRHmiBzNFjwdEHDtblO82qMAgiTZeNN28aZIlMOJZPq/kC
+ tfCNn9ImPgVW1bU3YQDT4ABztQJgekAl3Fa2pUqqmJ+l8Rbe9HIscuU4RHcokev3hjOG
+ 7xlA/lTTC2Fb0WCohV9nJL8ciM2e9e7Mryr64E3AvjBNWa/MH8DFRVOTYqX5AapraguT
+ LzHQ==
+X-Gm-Message-State: AOAM530P0DQ3wMLdBjBIZWxtAS0TXFwVnwltYbbqG4B5mVCxvoQYNjTq
+ IXJK+e6n7XZdBZb50aPbYXgFCg==
+X-Google-Smtp-Source: ABdhPJydsoZxe/mN+r6ufQMJip/FV7qBbuON5iAZf1A8uLG6pDr1rGK9h+vu/34KGvTXj/wqlOjYAg==
+X-Received: by 2002:a17:90a:fa0b:: with SMTP id
+ cm11mr4905696pjb.140.1615296697615; 
+ Tue, 09 Mar 2021 05:31:37 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:f936:57e5:154d:e0d9])
+ by smtp.gmail.com with ESMTPSA id 138sm13678649pfv.192.2021.03.09.05.31.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Mar 2021 05:31:37 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Wolfram Sang <wsa@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-i2c@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: [PATCH v17 0/3] add power control in i2c
+Date: Tue,  9 Mar 2021 21:31:28 +0800
+Message-Id: <20210309133131.1585838-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 39137A29FDBB1265CB4CEC99945BA23088741D7A29E572B09F27580A7F34DD562000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210309_120740_748224_9A2D7265 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20210309_133141_695821_3A877087 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,113 +99,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds basic SoC support for Mediatek's new 8-core SoC,
-MT6765, which is mainly for smartphone application.
+Although in the most platforms, the power of eeprom
+and i2c are alway on, some platforms disable the
+eeprom and i2c power in order to meet low power request.
 
-Changes in V9:
-1. Origin V8 patchset:
-   https://patchwork.kernel.org/cover/11396015/
-   [v9,1/4] dt-bindings: mediatek: Add smi dts binding for Mediatek
-            MT6765 SoC
-     - No Change.
-   [v9,2/4] soc: mediatek: add MT6765 scpsys and subdomain support
-     - Fix build error based on 5.11-rc1 because
-       - bp_table has been deprecated.
-       - basic_clk_id has been renamed to clk_id.
-       - correct the number order in marco GENMASK().
-   Note: mediatek is working on porting mt6765's scpsys to driver
-         "mtk-pm-domains", however we think supporting for "mtk-scpsys" is
-         required before new glue is available.
-   [v9,3/4] arm64: dts: mediatek: add mt6765 support
-     - No Change.
-   [v9,4/4] arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
-     - No Change.
+This patch add the pm_runtime ops to control power to
+support all platforms.
 
-Changes in V8:
-1. Origin V7 patchset:
-   https://patchwork.kernel.org/cover/11370105/
-   Split origin V7 patchset into 2 patchset,
-   keep remain patches #2, #5, #6, and #7 in the same order as this
-   V8 patchset.
-   [v7,2/7] dt-bindings: mediatek: Add smi dts binding for Mediatek
-            MT6765 SoC
-   [v7,5/7] soc: mediatek: add MT6765 scpsys and subdomain support
-   [v7,6/7] arm64: dts: mediatek: add mt6765 support
-   [v7,7/7] arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
+Changes since v16:
+ - request regulator in device instead of in the core.
+ - control regulator only if it's provided.
 
-Changes in V7:
-1. Adapt V6's patchset to latest kernel tree 5.5-rc1.
-   Origin V6 patchset:
-   https://patchwork.kernel.org/cover/11041963/
-2. Correct 2 clock-controller type in documentation:
-   mipi0 and venc_gcon.
-   [v7 1/7] dt-bindings: clock: mediatek: document clk bindings
-3. Remove V6's patch 03 because it has been taken into 5.5-next-soc
-   [v6, 03/08] dt-bindings: mediatek: add MT6765 power dt-bindings
-3. Update Reviewed-by: Rob Herring <robh@kernel.org> for
-   [v6, 04/08] clk: mediatek: add mt6765 clock IDs
-   --> [v7, 03/07] clk: mediatek: add mt6765 clock IDs
-4. Update SPDX tag for
-   [v6, 05/08] clk: mediatek: Add MT6765 clock support
-   --> [v7, 04/07] clk: mediatek: Add MT6765 clock support
+Changes since v15:
+ - Squash the fix[1] for v15.
+[1] https://patchwork.ozlabs.org/project/linux-i2c/patch/20200522101327.13456-1-m.szyprowski@samsung.com/
 
-Changes in V6:
-1. Adapt V5's patchset to latest kernel tree.
-   Origin V5 patchset.
-   https://lore.kernel.org/patchwork/cover/963612/
-2. Due to clk's common code has been submit by other platform,
-   this patch set will have dependencies with the following patchsets
-   as the following orders.
-   2.a. [v8,00/21] MT8183 IOMMU SUPPORT
-        https://patchwork.kernel.org/cover/11023585/
-   2.b. [v11,0/6] Add basic node support for Mediatek MT8183 SoC
-        https://patchwork.kernel.org/cover/10962385/
-   2.c. [v6,00/14] Mediatek MT8183 scpsys support
-        https://patchwork.kernel.org/cover/11005751/
-3. Correct power related patches into dt-binding patches.
-4. Re-order V5's 4/11, 6/11, and 7/11 due clk common code change
-   and make dependencies in order.
-5. Update some commit message in clk related patches.
+Changes since v14:
+ - change the return value in normal condition
+ - access the variable after NULL pointer checking
+ - add ack tag
 
-Changes in V5:
-1. add clk support
+Changes since v13:
+ - fixup some logic error
 
-Changes in V4:
-1. add gic's settings in reg properties
-2. remove some patches about dt-bindings since GKH already took them
+Changes since v12:
+ - rebase onto v5.7-rc1
+ - change the property description in binding
 
-Changes in V3:
-1. split dt-binding document patchs
-2. fix mt6765.dtsi warnings with W=12
-3. remove uncessary PPI affinity for timer
-4. add gicc base for gic dt node
+Changes since v11:
+ - use suspend_late/resume_early instead of suspend/resume
+ - rebase onto v5.6-rc1
 
-Changes in V2:
-1. fix clk properties in uart dts node
-2. fix typo in submit title
-3. add simple-bus in mt6765.dtsi
-4. use correct SPDX license format
+Changes since v10:
+ - fixup some worng codes
 
-Mars Cheng (3):
-  dt-bindings: mediatek: Add smi dts binding for Mediatek MT6765 SoC
-  soc: mediatek: add MT6765 scpsys and subdomain support
-  arm64: dts: mediatek: add mt6765 support
+Changes since v9:
+ - fixup build error
+ - remove redundant code
 
-Owen Chen (1):
-  arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
+Changes since v8:
+ - fixup some wrong code
+ - remove redundant message
 
- .../memory-controllers/mediatek,smi-common.txt     |    1 +
- arch/arm64/boot/dts/mediatek/Makefile              |    1 +
- arch/arm64/boot/dts/mediatek/mt6765-evb.dts        |   33 +++
- arch/arm64/boot/dts/mediatek/mt6765.dtsi           |  253 ++++++++++++++++++++
- arch/arm64/configs/defconfig                       |    6 +
- drivers/soc/mediatek/mtk-scpsys.c                  |  130 ++++++++++
- 6 files changed, 424 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+        [... snip ...]
+
+
+Bibby Hsieh (1):
+  i2c: core: support bus regulator controlling in adapter
+
+Hsin-Yi Wang (2):
+  dt-binding: i2c: mt65xx: add vbus-supply property
+  i2c: mediatek: mt65xx: add optional vbus-supply
+
+ .../devicetree/bindings/i2c/i2c-mt65xx.txt    |  1 +
+ drivers/i2c/busses/i2c-mt65xx.c               |  7 ++
+ drivers/i2c/i2c-core-base.c                   | 88 +++++++++++++++++++
+ include/linux/i2c.h                           |  2 +
+ 4 files changed, 98 insertions(+)
 
 -- 
-1.7.9.5
+2.30.1.766.gb4fecdf3b7-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
