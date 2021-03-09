@@ -2,90 +2,85 @@ Return-Path: <SRS0=uKpE=IH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC0C2C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 13:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C4A8C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 13:47:29 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C5A464F69
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 13:46:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C5A464F69
+	by mail.kernel.org (Postfix) with ESMTPS id EDE9B64F85
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Mar 2021 13:47:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDE9B64F85
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Wb+3ZIRCHKqsyazoDS+0UwLvR3ejbsK5FU+NURgiyOs=; b=erzvhXZzny1NNx4X6fHdNjmmH
-	Ydewwyer4YnTE4mKau9Kev3Geb65PFw3QiS3r6Lcoq9MEt9u3XOPikEbwWqkwLJ8Ar5S96vyLHCN+
-	a5nY9DF0cJw37vjj+LCq7DCax7Gk1IrACec6Q5Jvpz2B+XL580s2dZlpbxSrK11qM/50u704b1pHP
-	lm/C/3vSjLL1AiSleP7bCnpxGIhXTVjRNTN/WPkb8Wl/gEqd1LNnMsMd8w3uG7ccwktmt49Pq/Vay
-	HI0FSd/tzBDh8Yz1W8MQGEAgRdMaeeta4Zgy9CuDskTUmjcV6FWRDvjylJlnzjYZd26wYVQWBcPeg
-	wv9LQLUSg==;
+	 bh=AUiBSLoJIdhAdex2Ww4zBz9BH3j8t5zSW1xh1ACk0hc=; b=qTAGzYP4QPPyT+uFaBMa7FLVV
+	wyO99ahnWGFXUxzSj79S1LrRsdBhLOTQWVcI4XsH23uvjBQij/x/8LQ8L2U6e3f4XsVhcNskI9aEz
+	3IP/EObYzQ9ZqY/mG1SwR2DfCCILLlmMKpAqUgolTe+NuJzRvJsJm97ux48Wmv9MUy9a4ns/4+6i5
+	T5uLaj/CEJi5AqsyFo6dnhSQZcFKuGO1qjWWbwsU9jjtwRxvr21sxikLsvQ3viKg+NZFpcy11qvvy
+	LRiLSIxiIg59xdYVJPbHDV0Ndos6Eqgw6t5WzKbQmLJnpowyDDbbKx8vCrw562f/7MJ7teFifwOAF
+	T/gpOGeyg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJch0-004jkW-N3; Tue, 09 Mar 2021 13:46:34 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1lJchd-004k4a-AR; Tue, 09 Mar 2021 13:47:13 +0000
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJcSg-004eTr-MZ
- for linux-mediatek@lists.infradead.org; Tue, 09 Mar 2021 13:31:55 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- j6-20020a17090adc86b02900cbfe6f2c96so5206254pjv.1
- for <linux-mediatek@lists.infradead.org>; Tue, 09 Mar 2021 05:31:45 -0800 (PST)
+ id 1lJcVs-004fjp-Ju
+ for linux-mediatek@lists.infradead.org; Tue, 09 Mar 2021 13:35:08 +0000
+Received: by mail-io1-xd31.google.com with SMTP id z13so13888528iox.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 09 Mar 2021 05:35:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=sICRVh7f2CnaIXch/ljbyTh/YiC3SaJQVi2yY8F3cEI=;
- b=H12N7b5h918WXCPFRBD3eFjypWHlemJ2NEedlhsK4Y+jW/gPKmGoNQc/PuaNJZysRR
- O9rPB4lDgPsuLYfCGmP0oD9DK35lxHEK089L1VvuXMX7OjlJxtqglA1b6npGAoY+vCuG
- Iv4K2qLnYtfQP+whL2ahLwhq8K/2r4b0YX+HU=
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Ck/z2PY7/UU/12vnfcPHwdLBuV3dty8tKqz5xSr6NUI=;
+ b=FvbITe/rw5UXY8n2Lh+pG4r07ytXqmmOcTREfFBp01LINATnkkXntHCLudSH5T3Zya
+ IFCjDgAKS0cB6X36Q1MFdu8Tsv48vx3CatnzrI1690gOoba3wSEeRzbt169NnaLo9JaF
+ +NRC/RrkZGprF2QN8v2JzGhUSQVdo6skIS5R0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=sICRVh7f2CnaIXch/ljbyTh/YiC3SaJQVi2yY8F3cEI=;
- b=bZcWYKJslhDY9g0MMxoXPuUV6j6hByQntIBeXgeEmBkUZ9AXKTDG4UvNFD3pgxD3qn
- F3+QEnidX1xHv0GPsCPlG1JWRfmgqMkXu4V/xH0tiba5b67+mFgu3fwI5RI13dNHhqyD
- HEZpkt+hq7wnbESkQbGPP2DwcD3Dko3U4Okfj8xcoMCE8AnHiQL6m008E++VXVly3PkT
- SFRLM/hK76eCF9D5iX+GCxK4E26tB/cWvD6QP8K1cfoLOzmHFxn9zQyRvOeFtLketFQI
- /MY13EYMjPSjo0pMBD6AiM1QdNFu8F4ce0Qo5wL/cZUyRpBma8XOm7hHxYep2vEfq1w3
- QkfQ==
-X-Gm-Message-State: AOAM530YkiPNkwe/AyKNrzVUbWp7WfM3HAGEzOnAeuDDsMMuHEDJJ7Fz
- vmZFX8jYfwqiMqXqZlD2QuxYeA==
-X-Google-Smtp-Source: ABdhPJxYtfPzJ7zMOJQNlO3kd9jxglEEHuxGkZlj7HUcxp/hZAfpbUv7ryxiLwxa9+QzytyaAMsfJw==
-X-Received: by 2002:a17:90a:5413:: with SMTP id
- z19mr4622848pjh.137.1615296704224; 
- Tue, 09 Mar 2021 05:31:44 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:f936:57e5:154d:e0d9])
- by smtp.gmail.com with ESMTPSA id 138sm13678649pfv.192.2021.03.09.05.31.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Mar 2021 05:31:43 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Wolfram Sang <wsa@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-i2c@vger.kernel.org,
- Mark Brown <broonie@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: [PATCH v17 3/3] i2c: mediatek: mt65xx: add optional vbus-supply
-Date: Tue,  9 Mar 2021 21:31:31 +0800
-Message-Id: <20210309133131.1585838-4-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
-In-Reply-To: <20210309133131.1585838-1-hsinyi@chromium.org>
-References: <20210309133131.1585838-1-hsinyi@chromium.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Ck/z2PY7/UU/12vnfcPHwdLBuV3dty8tKqz5xSr6NUI=;
+ b=NlXHrqo2FZZsfYApIW5tUb/GGqWq1uqYOjuxuYSXKUZ9NqaYk6kP+cXVH8c4i2PZUG
+ 4StdskTXpikSyyimrq1a4lZVlXRGS2tNRZO80ZMWUbZxI3IuC0+RhN8SYNFI1O5LJ9rX
+ N5GK3+Uviv2da93IV/y36G9zeMjykhaCbLiJaToIpp5FoqltScNk47tDrF44O9qfBvx/
+ 9IMeKeKaKDBbI+Ga5skrSjCRjL4uOE5sGLT4Zma85N6hmgpOZ9y7+izNp4SNH+xU116R
+ u2Dnqnlw8WMllMfYnaZ+mafOBcqUTwG1O8tElJ2wNEd8G7PXJ+gp3Bf7D/xKKjFeEjvS
+ rTfg==
+X-Gm-Message-State: AOAM531OOtPFNLr5LV2jJED71XpbPZWF5N+2ogltqPlpwS8FqOMH5agh
+ aCd/VmSBOIueV+dSnC7sws27IEUZvukVkHljeXDVpQ==
+X-Google-Smtp-Source: ABdhPJwoQjXmYHuZH34QTV1eLRGy43Jol14I26e2wLS/nTH/45wMweeWOOE2mEMr7+tdkvvp21gXyu25ZcW8C7AYcNE=
+X-Received: by 2002:a5e:d61a:: with SMTP id w26mr23172366iom.40.1615296902992; 
+ Tue, 09 Mar 2021 05:35:02 -0800 (PST)
 MIME-Version: 1.0
+References: <20210308043607.957156-1-hsinyi@chromium.org>
+ <20210308043607.957156-3-hsinyi@chromium.org>
+ <20210308171644.GE4656@sirena.org.uk>
+In-Reply-To: <20210308171644.GE4656@sirena.org.uk>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Tue, 9 Mar 2021 21:34:37 +0800
+Message-ID: <CAJMQK-jZnQ1pt435Dz=xAbuU=wJcMJkSFSnTtuARTW_rGwRCFg@mail.gmail.com>
+Subject: Re: [PATCH v16 2/2] i2c: core: support bus regulator controlling in
+ adapter
+To: Mark Brown <broonie@kernel.org>
+Cc: Wolfram Sang <wsa@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-i2c@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, lkml <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210309_133147_248433_7D829174 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20210309_133505_354104_B42BFA4A 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +97,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add vbus-supply which provides power to SCL/SDA. Pass this regulator
-into core so it can be turned on/off for low power mode support.
+On Tue, Mar 9, 2021 at 1:17 AM Mark Brown <broonie@kernel.org> wrote:
+>
+> On Mon, Mar 08, 2021 at 12:36:07PM +0800, Hsin-Yi Wang wrote:
+>
+> > +     adap->bus_regulator = devm_regulator_get(&adap->dev, "bus");
+> > +     if (IS_ERR(adap->bus_regulator)) {
+> > +             res = PTR_ERR(adap->bus_regulator);
+> > +             goto out_reg;
+> > +     }
+>
+> Idiomatically supplies should be named as they are by the chip datasheet
+> rather than just a generic name like this, and I'm guessing that systems
+> that have supplies like this will often already have something
+> requesting the supply (eg, it's quite common for consumer drivers to do
+> this) under that name.  I can see this being a useful thing to factor
+> out into the core but it seems like it'd be better to have it enabled by
+> having the controllers (or devices) pass a supply name (or possibly
+> requested regulator) to the core rather than by just hard coding a name
+> in the core so bindings look as expected.
+>
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- drivers/i2c/busses/i2c-mt65xx.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+I'll move the regulator request into device instead of core in the
+next version. Thanks.
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 2ffd2f354d0a..82f2b6716005 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -1215,6 +1215,13 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 	i2c->adap.quirks = i2c->dev_comp->quirks;
- 	i2c->adap.timeout = 2 * HZ;
- 	i2c->adap.retries = 1;
-+	i2c->adap.bus_regulator = devm_regulator_get_optional(&pdev->dev, "vbus");
-+	if (IS_ERR(i2c->adap.bus_regulator)) {
-+		if (PTR_ERR(i2c->adap.bus_regulator) == -ENODEV)
-+			i2c->adap.bus_regulator = NULL;
-+		else
-+			return PTR_ERR(i2c->adap.bus_regulator);
-+	}
- 
- 	ret = mtk_i2c_parse_dt(pdev->dev.of_node, i2c);
- 	if (ret)
--- 
-2.30.1.766.gb4fecdf3b7-goog
-
+> I do also wonder if it's better to put the feature on the clients rather
+> than the controller, I don't think it makes much difference though.
 
 _______________________________________________
 Linux-mediatek mailing list
