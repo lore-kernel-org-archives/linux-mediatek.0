@@ -2,91 +2,91 @@ Return-Path: <SRS0=oSKo=II=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CFF61C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 06:06:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78F52C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 06:37:51 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6B14A64FE7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 06:06:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B14A64FE7
+	by mail.kernel.org (Postfix) with ESMTPS id 0295461554
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 06:37:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0295461554
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+3Nsps54FcM/s20HKt0e8yhsy7Ydkpb1Zehwst918Mo=; b=OyZOKqr0xdvQx7UXQ3xPSbCZG
-	+2jEEsATPJQ0sCX/AsQmGJCHDYvIGn/QDPxLcUzbgsO2/ecaDI253+w9F9zJw5s67BunET6K+NcvT
-	sAdWNhHOyderHtzgB8e53MObYnkSKA6e1pn+1qB2TKxr9cpjWK9mFMpl2ntxVHDdWTH4sPcssBZ0d
-	M2HQCNUXqIBBRAdPDclHlF1o1Lz/wQrq0qcoRGoVpvAbf4C9DR1W9n5mpehpNzFt/SW3v9KLQxfKz
-	xq7Pi9xfQ9bkjlOpAKksjZo7HdD4qcE9kKwJPwksNkm6iKgCxlfrzQNHR5xEVr4diiVGBMtfhQzW2
-	ZSNqypmfw==;
+	 bh=7jAWohgqDX+K1CpHZYMX/Xc9AsaLf1a+hmYmCUbzPAc=; b=PjymHl/8hx5CllYjg7MHWbXUo
+	kTVlMDsEtAS93XTdiK1pgDCAdgDK5+Lbxg+xp9qeNDKFU66HyNuq+lpWe4e9b42Z1OFXj238onJ6G
+	XiUNR0dyo+ISqqAdNyHHOTfLXg/mHrynumGPk4hW7GO+PW+mxGg9Uq0b9Fb8geS0W3iwqx0/ld+y3
+	KCMggvGho8653Hmb5btR22hCzXWpSQfasE0x0/9+6fktnKfETU241+w34GTbSJGKjQ0t89n+Ek+EW
+	OfK42Ync35vCeuJM1+9jwcN076krttlRByWNZdbBOvRDDOKc7J80nRdfeFwUs9OeXUMbF98J6z5vh
+	LbcOfCDJw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJrz8-0066vg-FR; Wed, 10 Mar 2021 06:06:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lJsTS-0068Mt-63; Wed, 10 Mar 2021 06:37:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJryM-0066sJ-Be; Wed, 10 Mar 2021 06:05:56 +0000
-X-UUID: 8c90a607311c4e54bf4b644ea7af83dd-20210309
+ id 1lJsT1-0068Ih-8n; Wed, 10 Mar 2021 06:37:14 +0000
+X-UUID: d68ae19f12cb4ad78b06efce5e236b60-20210309
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=TpSFMejpETm7dL5XOwTkRbiRAvyZRSD0cuBEgmPjSQA=; 
- b=hiNeI0VmnpRRwrs2mK1VuE1wP8QicN+8/80pEexahiiQj9+ml3a56dMmiVpsNp45BUU/2kJRXcFOtoLHM7XQOWgYR7BA17K0iAmVeYYUPkBiydzp14m6X0WavVj3AvwMynsqTPjUG66RUSd9nrWe5UuE5pr9EmJYdcS+EeCB2dc=;
-X-UUID: 8c90a607311c4e54bf4b644ea7af83dd-20210309
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=JIcMQYRcDv7SQhpYinYXY0QGj7QnIQrNoKQlscrJVOI=; 
+ b=AXaXnofvcFfXlW54NvRot9nsLQMY9Wdr8WLpRhj/qX8V0ZSOaqvFwyj2gP0sy1bTVcpYnu409Y0ryC8QElhWYBx3HGaDAMruI6wBL8ethoC+V09pTUUv45d+CUUFbuERqTYHp801sS9RWxsIJJqVVqpG830wqzEXVjRNdBsSI88=;
+X-UUID: d68ae19f12cb4ad78b06efce5e236b60-20210309
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <macpaul.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1579544552; Tue, 09 Mar 2021 22:05:21 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Mar 2021 22:05:20 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 10 Mar 2021 14:05:18 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 10 Mar 2021 14:05:18 +0800
-Message-ID: <1615356318.4818.5.camel@mtkswgap22>
-Subject: Re: [PATCH v8 3/4] arm64: dts: mediatek: add mt6765 support
+ with ESMTP id 500376564; Tue, 09 Mar 2021 22:37:04 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 9 Mar 2021 22:37:02 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Mar 2021 14:37:00 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 10 Mar 2021 14:37:00 +0800
 From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas
  <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, mtk01761
- <wendell.lin@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Weiyi Lu
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Wendell Lin
+ <Wendell.Lin@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Weiyi Lu
  <weiyi.lu@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, Sean Wang
- <Sean.Wang@mediatek.com>, Owen Chen <owen.chen@mediatek.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Evan Green <evgreen@chromium.org>, Yong Wu
- <yong.wu@mediatek.com>, Joerg Roedel <jroedel@suse.de>, Shawn Guo
+ <Sean.Wang@mediatek.com>, Macpaul Lin <Macpaul.Lin@mediatek.com>, Owen Chen
+ <owen.chen@mediatek.com>, Evan Green <evgreen@chromium.org>,
+ <Yong.Wu@mediatek.com>, Joerg Roedel <jroedel@suse.de>, Shawn Guo
  <shawnguo@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee
- <Ryder.Lee@mediatek.com>, DTML <devicetree@vger.kernel.org>, linux-kernel
- <linux-kernel@vger.kernel.org>, Linux ARM
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>
-Date: Wed, 10 Mar 2021 14:05:18 +0800
-In-Reply-To: <CAAOTY__kSW0ci9YJjSALOfRqKxxR3ysZUQ3Mxsab77hmCO0TyA@mail.gmail.com>
-References: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
- <1582279929-11535-4-git-send-email-macpaul.lin@mediatek.com>
- <CAAOTY__kSW0ci9YJjSALOfRqKxxR3ysZUQ3Mxsab77hmCO0TyA@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ <Ryder.Lee@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>
+CC: Ainge Hsu <ainge.hsu@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>, 
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>, Macpaul Lin
+ <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, CC Hwang
+ <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>
+Subject: [PATCH v10 1/4] dt-bindings: mediatek: Add smi dts binding for
+ Mediatek MT6765 SoC
+Date: Wed, 10 Mar 2021 14:36:55 +0800
+Message-ID: <1615358218-6540-2-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1615358218-6540-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1615291538-9799-1-git-send-email-macpaul.lin@mediatek.com>
+ <1615358218-6540-1-git-send-email-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: FAB197EE1B01A55809C9343ECD748E870B9E627A6B6FFE7075886AA15BD7EA8C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_060551_528879_447F73BB 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20210310_063711_738050_BAA73526 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,51 +98,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDIxLTAzLTEwIGF0IDAwOjA4ICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
-PiBIaSwgTWFjcGF1bDoNCj4gDQo+IE1hY3BhdWwgTGluIDxtYWNwYXVsLmxpbkBtZWRpYXRlay5j
-b20+IOaWvCAyMDIw5bm0MuaciDIx5pelIOmAseS6lCDkuIvljYg2OjIy5a+r6YGT77yaDQo+ID4N
-Cj4gPiBGcm9tOiBNYXJzIENoZW5nIDxtYXJzLmNoZW5nQG1lZGlhdGVrLmNvbT4NCj4gPg0KPiA+
-IEFkZCBiYXNpYyBjaGlwIHN1cHBvcnQgZm9yIE1lZGlhdGVrIDY3NjUsIGluY2x1ZGUNCj4gPiB1
-YXJ0IG5vZGUgd2l0aCBjb3JyZWN0IHVhcnQgY2xvY2tzLCBwd3JhcCBkZXZpY2UNCj4gPg0KPiA+
-IEFkZCBjbG9jayBjb250cm9sbGVyIG5vZGVzLCBpbmNsdWRlIHRvcGNrZ2VuLCBpbmZyYWNmZywN
-Cj4gPiBhcG1peGVkc3lzIGFuZCBzdWJzeXN0ZW0uDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBN
-YXJzIENoZW5nIDxtYXJzLmNoZW5nQG1lZGlhdGVrLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBP
-d2VuIENoZW4gPG93ZW4uY2hlbkBtZWRpYXRlay5jb20+DQo+ID4gU2lnbmVkLW9mZi1ieTogTWFj
-cGF1bCBMaW4gPG1hY3BhdWwubGluQG1lZGlhdGVrLmNvbT4NCj4gPiBBY2tlZC1ieTogTWFyYyBa
-eW5naWVyIDxtYXJjLnp5bmdpZXJAYXJtLmNvbT4NCj4gPiAtLS0NCj4gPiAgYXJjaC9hcm02NC9i
-b290L2R0cy9tZWRpYXRlay9NYWtlZmlsZSAgICAgICB8ICAgIDEgKw0KPiA+ICBhcmNoL2FybTY0
-L2Jvb3QvZHRzL21lZGlhdGVrL210Njc2NS1ldmIuZHRzIHwgICAzMyArKysrDQo+ID4gIGFyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ2NzY1LmR0c2kgICAgfCAgMjUzICsrKysrKysrKysr
-KysrKysrKysrKysrKysrKw0KPiA+ICAzIGZpbGVzIGNoYW5nZWQsIDI4NyBpbnNlcnRpb25zKCsp
-DQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210
-Njc2NS1ldmIuZHRzDQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRz
-L21lZGlhdGVrL210Njc2NS5kdHNpDQoNCltkZWxldGVkXQ0KDQo+ID4gKw0KPiA+ICsgICAgICAg
-ICAgICAgICBtbXN5c19jb25maWc6IHN5c2NvbkAxNDAwMDAwMCB7DQo+ID4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDY3NjUtbW1zeXMiLCAic3lzY29u
-IjsNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICByZWcgPSA8MCAweDE0MDAwMDAwIDAgMHgx
-MDAwPjsNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICBpbnRlcnJ1cHRzID0gPEdJQ19TUEkg
-MjI3IElSUV9UWVBFX0xFVkVMX0xPVz47DQo+IA0KPiBJIGRvZXMgbm90IHNlZSBpbnRlcnJ1cHRz
-IHByb3BlcnR5IGluIGJpbmRpbmcgZG9jdW1lbnQgWzFdLCBwbGVhc2UgYWRkDQo+IHRoaXMgaW4g
-YmluZGluZyBkb2N1bWVudCBmaXJzdC4NCj4gSSdtIGN1cmlvdXMgYWJvdXQgdGhpcyBpbnRlcnJ1
-cHQuIEluIHdoaWNoIGNvbmRpdGlvbiB3b3VsZCBpdCBiZSB0cmlnZ2VyZWQ/DQo+IA0KPiBbMV0g
-aHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMv
-bGludXguZ2l0L3RyZWUvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRp
-YXRlay9tZWRpYXRlayxtbXN5cy50eHQ/aD12NS4xMi1yYzINCj4gDQo+IFJlZ2FyZHMsDQo+IENo
-dW4tS3VhbmcuDQoNClRoYW5rcyBmb3IgcmVtaW5kaW5nLg0KSSdsbCByZW1vdmUgaW50ZXJydXB0
-cyBiaW5kaW5nIGluIG5leHQgdmVyc2lvbiBhbmQgbGVhdmUgaXQgZm9yIG1tc3lzDQpkcml2ZXIg
-b3duZXIgdG8gdXBkYXRlIHdoZW4gdGhlIGNvbmZpZ3VyYXRpb24gb2YgbW1zeXMgZHJpdmVyIGlz
-DQplbmFibGVkLg0KDQpbLi4uXQ0KDQoNCj4gPiArICAgICAgICAgICAgICAgc21pX2NvbW1vbjog
-c21pX2NvbW1vbkAxNDAwMjAwMCB7DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgY29tcGF0
-aWJsZSA9ICJtZWRpYXRlayxtdDY3NjUtc21pLWNvbW1vbiIsICJzeXNjb24iOw0KPiA+ICsgICAg
-ICAgICAgICAgICAgICAgICAgIHJlZyA9IDwwIDB4MTQwMDIwMDAgMCAweDEwMDA+Ow0KPiA+ICsg
-ICAgICAgICAgICAgICB9Ow0KPiA+ICsNCg0KQFlvbmcgV3UNClRoYW5rcyBmb3IgcmV2aWV3aW5n
-IGhlcmUsIEknbGwgcmVwbGFjZSBzbWlfY29tbW9uQDE0MDAyMDAwIHRvDQpzbWlAMTQwMDIwMDAN
-Cg0KUmVnYXJkcywNCk1hY3BhdWwgTGluDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
-ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+From: Mars Cheng <mars.cheng@mediatek.com>
+
+This patch adds MT6765 smi binding document
+
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/memory-controllers/mediatek,smi-common.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index a08a32340987..4a4f4377576f 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -31,6 +31,7 @@ properties:
+       - enum:
+           - mediatek,mt2701-smi-common
+           - mediatek,mt2712-smi-common
++          - mediatek,mt6765-smi-common
+           - mediatek,mt6779-smi-common
+           - mediatek,mt8167-smi-common
+           - mediatek,mt8173-smi-common
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
