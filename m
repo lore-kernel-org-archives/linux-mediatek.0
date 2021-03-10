@@ -2,18 +2,18 @@ Return-Path: <SRS0=oSKo=II=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A45B1C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 09:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 218D0C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 09:42:07 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1952D64F81
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 09:29:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1952D64F81
+	by mail.kernel.org (Postfix) with ESMTPS id 8AEE164F70
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 09:42:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8AEE164F70
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,32 +22,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
 	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=70nqcvAdXoIhgK7qgkRMe0myuJ+VXAZyBh30ZQDE50I=; b=esyDstuYtg1o71ysAIbt5BVND
-	O6IuOUXwe7e3m7TnFi7TAj1eZBIVDjooF1rDpvsbPgnlU1QgFGaE/FaqP6kXcSywEArKax2w0LxRA
-	ZEDp2y/TmIbf4heE6InyOoebzBtIj9bS6WyRvqom93avfi+6kb8mESsXemJKmMRBbvSKTmAgWPdPQ
-	l+2j8IXbXrHk+k3riTpDqjCudTLrofwb5eZE1srLjCCOkaBenbK5jm57xH2o8yzTlHU5JhpUuNVQW
-	qCrjsGRbKdh+kJylRZT7RdcZU4J22BRnfhloGhpozdYn09YLzFuxGBhTIxa8orDycbF1iBYevl0iP
-	OVaGoRNTg==;
+	 bh=BBEP0fdQrsoS7dwH0RUQPG1Dql0bssasit578RmjViU=; b=aPqk/n/2yTdSx669/gaw6AwLu
+	vhw8bwaYn5VdFOH9SMg3FooJvRTVoiejM3JZFentOm+hccMWa1eqLW/24eXuvdzPq5+E6ZjK2LoLw
+	kozbNWD6B/YDsdAf2alZC0JvPVNVjxp3xxmVpklLs/zEfltd20JsAZm1qIRfrXH7N2b6D4srdr82d
+	Ul32Dgmx34mYCBShuHBxMPyyS1dCmyOSOWP6J84MSPFM/nDCe3eIt750Ri4pigbClLoyNBTuRgVYi
+	VAn4c0VKDlKmvW9u9aytdrjaHrL2De4DbRAaqqj8p9IRV2iXdbn6bSUx/A0Ue7iImcF+YikUh+gfv
+	dt0qVCcbw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJv9c-006SrV-QD; Wed, 10 Mar 2021 09:29:20 +0000
+	id 1lJvLm-006TmH-08; Wed, 10 Mar 2021 09:41:54 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJv9R-006SqM-L3; Wed, 10 Mar 2021 09:29:11 +0000
+ id 1lJvLY-006TlL-Ei; Wed, 10 Mar 2021 09:41:44 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0664964F81;
- Wed, 10 Mar 2021 09:29:08 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id AF23D64F70;
+ Wed, 10 Mar 2021 09:41:38 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.misterjones.org)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lJv9N-000ipf-Lt; Wed, 10 Mar 2021 09:29:05 +0000
-Date: Wed, 10 Mar 2021 09:29:04 +0000
-Message-ID: <87czw7xspr.wl-maz@kernel.org>
+ id 1lJvLU-000j0K-BD; Wed, 10 Mar 2021 09:41:36 +0000
+Date: Wed, 10 Mar 2021 09:41:35 +0000
+Message-ID: <87a6rbxs4w.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
 To: Jianjun Wang <jianjun.wang@mediatek.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
@@ -60,12 +60,12 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
  <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
  <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>
-Subject: Re: [v8,4/7] PCI: mediatek-gen3: Add INTx support
-In-Reply-To: <1615345515.25662.12.camel@mhfsdcap03>
+Subject: Re: [v8,5/7] PCI: mediatek-gen3: Add MSI support
+In-Reply-To: <1615358929.25662.47.camel@mhfsdcap03>
 References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
- <20210224061132.26526-5-jianjun.wang@mediatek.com>
- <87r1koy442.wl-maz@kernel.org>
- <1615345515.25662.12.camel@mhfsdcap03>
+ <20210224061132.26526-6-jianjun.wang@mediatek.com>
+ <87pn08y3ja.wl-maz@kernel.org>
+ <1615358929.25662.47.camel@mhfsdcap03>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
  (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
@@ -83,8 +83,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_092909_980367_BA580B3E 
-X-CRM114-Status: GOOD (  23.84  )
+X-CRM114-CacheID: sfid-20210310_094143_015732_BC4ED300 
+X-CRM114-Status: GOOD (  36.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,35 +101,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 Mar 2021 03:05:15 +0000,
+On Wed, 10 Mar 2021 06:48:49 +0000,
 Jianjun Wang <jianjun.wang@mediatek.com> wrote:
-> 
-> On Tue, 2021-03-09 at 11:10 +0000, Marc Zyngier wrote:
-> > On Wed, 24 Feb 2021 06:11:29 +0000,
-> > Jianjun Wang <jianjun.wang@mediatek.com> wrote:
-> > > 
-> > > +static struct irq_chip mtk_intx_irq_chip = {
-> > > +	.irq_enable		= mtk_intx_unmask,
-> > > +	.irq_disable		= mtk_intx_mask,
+> > > +static struct irq_chip mtk_msi_irq_chip = {
+> > > +	.name = "MSI",
+> > > +	.irq_enable = mtk_pcie_irq_unmask,
+> > > +	.irq_disable = mtk_pcie_irq_mask,
 > > 
-> > Please get rid of enable/disable. Given that you already have
-> > mask/unmask with the *same* implementation, this offers zero benefit.
+> > Same comment as for the previous patch: enable/disable serve no
+> > purpose here.
 > 
-> Hi Marc,
-> 
-> Thanks for your review.
-> 
-> We need to support suspend/resume feature, the HW will be powered off
-> when the system is suspended, and its register value will be cleared. If
-> the enable/disable callback is not implemented, the unmask function will
-> not be called when the system resume, so INTx will remain disabled.
-> 
-> Can I keep the enable/disable callback? Or do we have any solutions to
-> restore the register value when the system resume?
+> Replied in the previous patch, the enable/disable callback is used when
+> the system suspend/resume.
 
-Isn't that the job of the suspend/resume support to save and restore
-the full state of the device? You shouldn't rely on the implicit
-behaviours of the irq subsystem across suspend/resume.
+As I said, your suspend/resume should be self contained, and not rely
+on the irq subsystem to restore a viable state.
+
+[...]
+
+> > > @@ -408,6 +677,14 @@ static void mtk_pcie_irq_handler(struct irq_desc *desc)
+> > >  		generic_handle_irq(virq);
+> > >  	}
+> > >  
+> > > +	irq_bit = PCIE_MSI_SHIFT;
+> > > +	for_each_set_bit_from(irq_bit, &status, PCIE_MSI_SET_NUM +
+> > > +			      PCIE_MSI_SHIFT) {
+> > > +		mtk_pcie_msi_handler(port, irq_bit - PCIE_MSI_SHIFT);
+> > > +
+> > > +		writel_relaxed(BIT(irq_bit), port->base + PCIE_INT_STATUS_REG);
+> > 
+> > Isn't this write the same thing you have for EOI in the INTx case?
+> > While I could understand your description in that case (this is a
+> > resampling operation), I don't get what this does here. Either this is
+> > also an EOI, but your initial description doesn't make sense, or it is
+> > an Ack, and it should be moved to the right place.
+> > 
+> > Which one is it?
+> 
+> I think it should be an EOI which used to clear the interrupt status of
+> a single set in the PCIe intc field, maybe I should move it to the end
+> of the mtk_pcie_msi_handler() function.
+
+I doubt this is an EOI. If, as I suspect, it instructs the HW to clear
+the bit so that new pending bits can be recorded, it must take place
+*before* the interrupt is handled, or you may lose MSIs in the
+interval between the handling of the interrupt and the clearing of the
+pending bit. To satisfy this requirement, this should be an ACK, which
+is consistent with the way most MSI controllers such as this one work.
+
+> 
+>                   +-----+
+>                   | GIC |
+>                   +-----+
+>                      ^
+>                      |
+>                  port->irq
+>                      |
+>              +-+-+-+-+-+-+-+-+
+>              |0|1|2|3|4|5|6|7| (PCIe intc)
+>              +-+-+-+-+-+-+-+-+
+>               ^ ^           ^
+>               | |    ...    |
+>       +-------+ +------+    +-----------+
+>       |                |                |
+> +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+> |0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31| (MSI sets)
+> +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+>  ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
+>  | |      |  |    | |      |  |    | |      |  |  (MSI vectors)
+>  | |      |  |    | |      |  |    | |      |  |
+> 
+>   (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
+> 
+> I would like to ask another question. In this interrupt architecture, we
+> cannot implement an affinity for PCIe interrupts, so we return a
+> negative value in the mtk_pcie_set_affinity callback as follows: 
+> 
+> +static int mtk_pcie_set_affinity(struct irq_data *data,
+> +                                const struct cpumask *mask, bool force)
+> +{
+> +       return -EINVAL;
+> +}
+> 
+> But there will always be error logs when hotplug a CPU:
+> 
+> ~ # echo 0 > /sys/devices/system/cpu/cpu1/online
+> [   93.633059] IRQ255: set affinity failed(-22).
+> [   93.633624] IRQ256: set affinity failed(-22).
+> [   93.634222] CPU1: shutdown
+> [   93.634586] psci: CPU1 killed (polled 0 ms)
+> 
+> Or when the system suspends:
+> 
+> ~ # echo mem > /sys/power/state
+> [   93.635145] cpuhp: cpu_off cluster=0, cpu=1
+> [  169.835653] PM: suspend entry (deep)
+> [  169.836717] Filesystems sync: 0.000 seconds
+> [  169.837924] Freezing user space processes ... (elapsed 0.001 seconds)
+> done.
+> [  169.839922] OOM killer disabled.
+> [  169.840336] Freezing remaining freezable tasks ... (elapsed 0.001
+> seconds) done.
+> [  169.844715] Disabling non-boot CPUs ...
+> [  169.846443] IRQ255: set affinity failed(-22).
+> [  169.847002] IRQ256: set affinity failed(-22).
+> [  169.847586] CPU2: shutdown
+> [  169.847943] psci: CPU2 killed (polled 0 ms)
+> [  169.848489] cpuhp: cpu_off cluster=0, cpu=2
+> [  169.850285] IRQ255: set affinity failed(-22).
+> [  169.851369] IRQ256: set affinity failed(-22).
+> ...
+> 
+> Sometimes this can cause misunderstandings to users, do we have a chance
+> to prevent this error log?
+
+No. This HW doesn't allow MSIs to be individually retargeted, and the
+kernel isn't happy about that. That's one of the many reasons why
+hiding MSIs behind a mux (or two in your case) is a *very bad idea*.
 
 Thanks,
 
