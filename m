@@ -2,96 +2,95 @@ Return-Path: <SRS0=oSKo=II=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C6A7C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 21:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81C69C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 23:10:48 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BE9C64FEF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 21:23:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BE9C64FEF
+	by mail.kernel.org (Postfix) with ESMTPS id 2A0A464FAE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 23:10:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A0A464FAE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kVosrOP7zKZXHIEsWZNa9ORaocTbvoJhF8tZUo7k5Mk=; b=oQc9IEqZ6VNH7H59ZKqj+HX/R
-	FidVIlfeZ8WDJp/EvO+CSpJrTPJ2QFsCg2ux/oxSSbucNcQNQygqhZB+7Amgyx36nZ/4CYfhGmFgA
-	nYL+1NyDpGdDXCWpw542J8pKPRkXS14pAH1cK/C5V6BJVLZDqj7C8lKnbbd9BZKq/AMAbiC9sauLi
-	ZF2b/i26dqKf+IYom3Yu8Z2kGsI4b0tOpP1sUWu7eJAUTZLyEQEDFz3he3lt5rGh8M/jeT/Ce3q4Y
-	s5eMIBFzLhQ5jO51Ecv/uP/7MJHZhlrnodcnfs9BkxJrcUbmPnvxK5BZMnqWf5l13U0KtJRCcg5rG
-	rGhiUgmUQ==;
+	 bh=PfXRIcBwp9QjTJsQMGapAjb5R0LwoX8t1M4m48ANYo0=; b=BhC7XhGTbPL1MuqvRdvPZcGfP
+	DAGU2f3Xa8qx8TKhha+Zp4r63Gx/XV+4uc5oH28z68TZxPrjH3Zcw1qvUkmAIaeDSGHB7wxPvAV46
+	9+HYFSRM0jNOYCbPphq25lpzzP3zcXQXBaeIef+uBg364ls586Snv/fG/yXfRBt5hrjl6vGuQfNiI
+	Epghybjb6Veau5kz12GAsOXAyrplQSeWrVBlNWeGB6pNLfm1o31+Ov3Fa17nzDLZ+YRdYFZXJPqif
+	Xi3zqEG+PVTLXmeBbo1JuFGqX/JKpeIqe6nXUQfY3iT6sWGmQNPZtiDhSJaIfwHJze25yOAOkuchI
+	V1e39hLPw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lK6IA-007muX-9D; Wed, 10 Mar 2021 21:22:55 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1lK7yR-007xkb-Uu; Wed, 10 Mar 2021 23:10:40 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lK6A2-007kSx-CG; Wed, 10 Mar 2021 21:14:36 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- q2-20020a17090a2e02b02900bee668844dso7941208pjd.3; 
- Wed, 10 Mar 2021 13:14:29 -0800 (PST)
+ id 1lK7yH-007xjq-8u; Wed, 10 Mar 2021 23:10:30 +0000
+Received: by mail-ej1-x634.google.com with SMTP id c10so42125672ejx.9;
+ Wed, 10 Mar 2021 15:10:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+v6qAt05GB3pyWDepiyyyWC9bZx8wHfiUnSye/9786g=;
- b=Bfqtm0qvVc7TNTh3q4/EWyuJxpXX1jie2lxkaJCEITbnbLyk0BhgBkeuSK8vlurR3I
- tHGC2RErjqD8Us9Bkr/Oy5IwY/9UbbTnbCJNyit/Z2EFVhC9DrB1yUtiZj8oN6U7R093
- RfQEKm6ske5N6nQN3d35cJcADPN2pmjnYHYQMxea6SB80bI5w1wTZGPvNaHHjOyW3TL4
- K29LwBcVT1BvpysQmbya22RNFNTMpAbOuwb6elDvr6QK4EuudQ6Y2nwpeDUC6rJ4kngV
- yMuvwW5/lxRwCHbHlceUYpFBgVTgH7xDbMAJi+D7Pybpef7uE42zewEDfeAX4MV93Wh9
- eSxg==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=+Y9MjRts8tJjHgCUb2Iq9KHOIcaGo0V2pW4Fp5XYQq0=;
+ b=t5WCXHDCAqWoOY8vvWjS/p98fmmrH0F+h6H5pURHoN8BEnzWfMl2aouEntq+FPFgI9
+ GDAzlnWeW+3+Ghn6KfC1qbH0xHIAJVanWaGJPS+mfIhc9LA0KDmrNf0JmmS6JkAIXfTn
+ /t+WKh1rgyDH/B0i4ehnaSTcLCxwlMf5TJNzPTY1W9s6J8jKgqKnU1CO3EwrJCdAJ4Vz
+ 49HDZntyJHHxlg4EH4m3n64MwXfiEkj09hIU+Bc0shA3TiMMVeIqzid6HY0euxrBoNh/
+ 5AcPlr1Ind4FFNh18T3wydqCHQcGlNoQWz5jwUYVMeWaY0xm6cjGMNJVoEf3n0ZNwu9C
+ fyIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+v6qAt05GB3pyWDepiyyyWC9bZx8wHfiUnSye/9786g=;
- b=a+0N8HXTbWda0NJSdROYPOCcCgAcdbXI2PUenWYsoVhwYXSd7893wX/MaEEF6ERwJx
- vF2dAznEe1qFFT1kqk4ojiVb5ljgK1MQJOdlw3AwuwtZJqFr7pY/EfWC5qkN5pu3awil
- 7mChGo7Qag2g/KMsyMmDIXEchKVhSoRN+AC4pcAspDTA4Wrd3rL8U/B5cTDl6cGEROyE
- ivy3X+WY3sAs1ScX6yq9XHvy/NCw9QPSNkpMbNCXzwaiDmXi/gWTIC2ODuh/IKqSR8VA
- 5qR2594lfOqGXeDjxj0v6h/vc8BGj1r7gPhe7fPACe8Obe3PzzSSEd1to1v7gG/vR671
- ZSkQ==
-X-Gm-Message-State: AOAM5313X705XD9FMO8j20iBxZRwLIKHSFadoyLAwlpuw25Z3419lfp0
- 648g65FflvJAM1Chyl1/L9g=
-X-Google-Smtp-Source: ABdhPJzQXy7sfY96AqR6uwF3anxp4aOhTVgA5r50zW/IN+aChTsFBaAEqBcwxyoybmQBG0s5wUTYQw==
-X-Received: by 2002:a17:90a:7182:: with SMTP id
- i2mr5360459pjk.111.1615410868697; 
- Wed, 10 Mar 2021 13:14:28 -0800 (PST)
-Received: from ilya-fury.lan ([2602:61:738f:1000::b87])
- by smtp.gmail.com with ESMTPSA id 35sm412090pgr.14.2021.03.10.13.14.27
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=+Y9MjRts8tJjHgCUb2Iq9KHOIcaGo0V2pW4Fp5XYQq0=;
+ b=qRYfykMjXTxlrZ3SLYHmObLPq4GPlyPbTMquBTIJv6RVcH0E9BYtjZCgxdLMvL/g5k
+ uiR4pUU8NdOEFtOdxUelKIdkkfTOvqLaTCsjAagK9zR/t3w9Yy/WTNeqJPtJi/6FLAGm
+ cs+HRzLQOpokn1TwEHml8I9fzOBTUfnbCPhOYiqYShz8n7F5FqjSmpqxfrRGPzkXHAbS
+ Ra5U4EYRQlyNumd2tmgyIqf0UKRzyRzT4Q8vSUBLFQPYy8Uj7cvAs5vwFt3mTQdKdQQS
+ 94GGr6fSDdsEO+ZQ26PDptyh1cQYxjdRv+w8Q9GW6HadnoA1xZR2YVXal1Tb34wD24XL
+ kAwA==
+X-Gm-Message-State: AOAM532tzlRofHcvlAAzvamvf060pKlFYY5zcW5QHl7IOhpGR1fXCH77
+ wT0YsCynYOoDNNHalegvUBM=
+X-Google-Smtp-Source: ABdhPJzpCw/su5dc23eER+GYr7msTlNS7+5Mn+Zm9/S1spB5ac9PVKV85UZGOsHF3uMOZxcT9C+f7A==
+X-Received: by 2002:a17:906:95d1:: with SMTP id
+ n17mr242829ejy.394.1615417828283; 
+ Wed, 10 Mar 2021 15:10:28 -0800 (PST)
+Received: from skbuf ([188.25.219.167])
+ by smtp.gmail.com with ESMTPSA id gq25sm387319ejb.85.2021.03.10.15.10.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Mar 2021 13:14:27 -0800 (PST)
-From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Wed, 10 Mar 2021 15:10:27 -0800 (PST)
+Date: Thu, 11 Mar 2021 01:10:26 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
  Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH 3/3] net: dsa: mt7530: setup core clock even in TRGMII mode
-Date: Wed, 10 Mar 2021 13:14:20 -0800
-Message-Id: <20210310211420.649985-3-ilya.lipnitskiy@gmail.com>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210310211420.649985-1-ilya.lipnitskiy@gmail.com>
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/3] net: dsa: mt7530: setup core clock even in TRGMII mode
+Message-ID: <20210310231026.lhxakeldngkr7prm@skbuf>
 References: <20210310211420.649985-1-ilya.lipnitskiy@gmail.com>
+ <20210310211420.649985-3-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210310211420.649985-3-ilya.lipnitskiy@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_211430_709566_C6775B7A 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20210310_231029_351751_F0C1D176 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,83 +107,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-3f9ef7785a9c ("MIPS: ralink: manage low reset lines") made it so mt7530
-actually resets the switch on platforms such as mt7621 (where bit 2 is
-the reset line for the switch). That exposed an issue where the switch
-would not function properly in TRGMII mode after a reset.
+Hello Ilya,
 
-Reconfigure core clock in TRGMII mode to fix the issue.
+On Wed, Mar 10, 2021 at 01:14:20PM -0800, Ilya Lipnitskiy wrote:
+> 3f9ef7785a9c ("MIPS: ralink: manage low reset lines") made it so mt7530
+> actually resets the switch on platforms such as mt7621 (where bit 2 is
+> the reset line for the switch). That exposed an issue where the switch
+> would not function properly in TRGMII mode after a reset.
+>
+> Reconfigure core clock in TRGMII mode to fix the issue.
+>
+> Also, disable both core and TRGMII Tx clocks prior to reconfiguring.
+> Previously, only the core clock was disabled, but not TRGMII Tx clock.
+>
+> Tested on Ubiquity ER-X (MT7621) with TRGMII mode enabled.
+>
+> Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+> ---
 
-Also, disable both core and TRGMII Tx clocks prior to reconfiguring.
-Previously, only the core clock was disabled, but not TRGMII Tx clock.
+For the networking subsystem there are two git trees, "net" for bugfixes
+and "net-next" for new features, and we specify the target tree using
+git send-email --subject-prefix="PATCH net-next".
 
-Tested on Ubiquity ER-X (MT7621) with TRGMII mode enabled.
+I assume you would like the v5.12 kernel to actually be functional on
+the Ubiquiti ER-X switch, so I would recommend keeping this patch
+minimal and splitting it out from the current series, and targeting it
+towards the "net" tree, which will eventually get merged into one of the
+v5.12 rc's and then into the final version. The other patches won't go
+into v5.12 but into v5.13, hence the "next" name.
 
-Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
----
- drivers/net/dsa/mt7530.c | 44 ++++++++++++++++++++--------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+Also add these lines in your .gitconfig:
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index b106ea816778..7ef5e7c23e05 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -435,30 +435,30 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
- 			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
- 
--	/* Setup core clock for MT7530 */
--	if (!trgint) {
--		/* Disable MT7530 core clock */
--		core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
--
--		/* Disable PLL, since phy_device has not yet been created
--		 * provided for phy_[read,write]_mmd_indirect is called, we
--		 * provide our own core_write_mmd_indirect to complete this
--		 * function.
--		 */
--		core_write(priv, CORE_GSWPLL_GRP1, 0);
--
--		/* Set core clock into 500Mhz */
--		core_write(priv, CORE_GSWPLL_GRP2,
--			   RG_GSWPLL_POSDIV_500M(1) |
--			   RG_GSWPLL_FBKDIV_500M(25));
-+	/* Since phy_device has not yet been created and
-+	 * phy_[read,write]_mmd_indirect is not available, we provide our own
-+	 * core_write_mmd_indirect with core_{clear,write,set} wrappers to
-+	 * complete this function.
-+	 */
- 
--		/* Enable PLL */
--		core_write(priv, CORE_GSWPLL_GRP1,
--			   RG_GSWPLL_EN_PRE |
--			   RG_GSWPLL_POSDIV_200M(2) |
--			   RG_GSWPLL_FBKDIV_200M(32));
-+	/* Disable MT7530 core and TRGMII Tx clocks */
-+	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
-+		   REG_GSWCK_EN | REG_TRGMIICK_EN);
- 
--	}
-+	/* Setup core clock for MT7530 */
-+	/* Disable PLL */
-+	core_write(priv, CORE_GSWPLL_GRP1, 0);
-+
-+	/* Set core clock into 500Mhz */
-+	core_write(priv, CORE_GSWPLL_GRP2,
-+		   RG_GSWPLL_POSDIV_500M(1) |
-+		   RG_GSWPLL_FBKDIV_500M(25));
-+
-+	/* Enable PLL */
-+	core_write(priv, CORE_GSWPLL_GRP1,
-+		   RG_GSWPLL_EN_PRE |
-+		   RG_GSWPLL_POSDIV_200M(2) |
-+		   RG_GSWPLL_FBKDIV_200M(32));
- 
- 	/* Setup the MT7530 TRGMII Tx Clock */
- 	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
--- 
-2.30.1
+[core]
+	abbrev = 12
+[pretty]
+	fixes = Fixes: %h (\"%s\")
 
+and run:
+
+git show 3f9ef7785a9c --pretty=fixes
+Fixes: 3f9ef7785a9c ("MIPS: ralink: manage low reset lines")
+
+and paste that "Fixes:" line in the commit message, right above your
+Signed-off-by: tag.
 
 _______________________________________________
 Linux-mediatek mailing list
