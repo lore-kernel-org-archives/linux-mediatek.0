@@ -2,83 +2,80 @@ Return-Path: <SRS0=oSKo=II=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55859C433E6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 10:19:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8085C433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 10:58:07 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AADC864DF3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 10:19:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AADC864DF3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=0x0f.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6092B64FBA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 10:58:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6092B64FBA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Xt0ciQyFBd9Q/drkS/0PjGSYYPvGHzF7EpAZnDH2lo4=; b=bYbogE/8/GlP4FkO+CdagJXuH
-	CKT0MGUc2FQkTJXXHrWqVTOg/SOqx5QTYc/ErjXMeDnjFK51zwgjU381pymkKM+PxssjtX7FIuXmk
-	OlP0YjO9WgdtZs2VLQWLPUODfiaDWNON4DQbP8Ia3uQRmtOJKJXjFojQsabzuhzwy0dVxpLlSMVui
-	OVujNSZuVOO336GQHd860WSrtElbRE/iQldsBJW5dRPz3bNWwCaxvygByzfGkt/ukIeml3NZERU1Y
-	zoJ8ovc/MNMmHptgnILsvjYaZHpuHE+vK1w5b0G+WJ+ePXW8IFT5Ug4zp9haSzEVx4U8anWn+lYaO
-	fpPgZ2iCA==;
+	 bh=1SpOfktquCF0MI+GhN3Ux7As/QskUURfCn+efy6a/eQ=; b=ZZwPPo/IGXYLQpfhHnsdndHw4
+	J/abo4o1ETc6XwUwjSrfxmnRLSdqdUdcOt5SqRusagVdF63Cac4KVkPrRIU29bn0p3oXvDsGAuSrr
+	mnxHsbR7n8jZAjS1+mdr3RWCWFBCM0SDyUaIk0xFsJFmga+2jLaaQi2Si8Y9DFAsNug0PXuvZo3NH
+	QaicXr/4YW3c4UxJoCNZvgDqz/byIGRr7rNK5PGaBPMPm+bxcQzxKZ9uLJDsJMj1V/NF2xaq6FN4Y
+	QVFNHnZVqY+gXI++Pmtunt1rZWbi3F9NhWlf9b6EDFIpRskjCYqLlmxPG4CmrBrcLUpB7zlwVYyX5
+	gcPspkSWA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJvwD-006ZTl-Az; Wed, 10 Mar 2021 10:19:33 +0000
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+	id 1lJwXH-006f2C-1D; Wed, 10 Mar 2021 10:57:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJvvn-006ZOt-5o
- for linux-mediatek@lists.infradead.org; Wed, 10 Mar 2021 10:19:15 +0000
-Received: by mail-qv1-xf2e.google.com with SMTP id 30so468637qva.9
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Mar 2021 02:19:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0x0f.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=edRCQjcETTP/TwhrCwOF/p03cqo8+OKWF6FKVjUQ7d4=;
- b=c3crVqzdqxMSrxomGmHwHFysts3ulWh8YjOvMWfaUXzm7Gydu3akwB2gOVltT7ubTS
- KxQsZrGwUaWV6Tn3Khh73cDc9/3JEReNpQ9I9e4qgpJhg97s1eOef5pkWzC+ez/Y68vk
- lMpUNacccaIXGt+4AIXQwLCOF3rqWFcaiFOiE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=edRCQjcETTP/TwhrCwOF/p03cqo8+OKWF6FKVjUQ7d4=;
- b=BU4jJLCKs3rj5U3gO4Mqb50lqWdoUEa56QP3CdtChchpmyTbtTbphCnTbEoVq1vdf7
- VSpZcni/eSoOcInQTT1xyW24GPzWKWnTxlSxOUxA6AZnX6187WTQRmFwgBUXUBvOJSVt
- pGe9/Y4Q+1CEJDQrkw1VDiXWOeLDA3nTrm9ovlpmFLouZ2RHSt8HeC+2INO5GWc1+b9Y
- uEUDZW14QId4c867mT8vR7jrJLkIS+vUWnU6qDkb99HDSqy0IBezj6G8oV6V/nxVA3Gt
- 7/3mU+c4VUceM4TCOVkQxbFXEowtVWrWXM9Doulv5mHr6bKkGwC3aPQZP8qZg6z9XtnA
- AIsQ==
-X-Gm-Message-State: AOAM530Cj2a6b4f934l9gCveSgJR4azmwG0PkhUC/q0PJriRvgtXF4bG
- JcO5p1Tbv75jzsYH1BubFVWPYBLAemjloZhSOBXlMg==
-X-Google-Smtp-Source: ABdhPJzdKOttsDe74X8zHeSQeexRf8gAvLRVRhYolkg8sTzVUlsHbPT/T4hahLzPkZIjg1z8jyCTdPc+JCADyDnyJSQ=
-X-Received: by 2002:a0c:9ac9:: with SMTP id k9mr2044505qvf.29.1615371543518;
- Wed, 10 Mar 2021 02:19:03 -0800 (PST)
+ id 1lJwWh-006eng-Hf; Wed, 10 Mar 2021 10:57:22 +0000
+X-UUID: da67ea808d1b4b3ab40ea6022f9e8712-20210310
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=HtTfMOe6pdHpeE/0ZrUpWVc3R06Gz/lqZ5ikEf4aM70=; 
+ b=ntV5IT3yyzcSDjYMO9NWqSnvMyZnq6yoA9sKWvkMziVcORE+nMJtt96R5po7yrpxXS7VfSNPHweRh54t12QBg5NwqD58Jy9P5RgENAawM+BBCsrQQe5chSTScorodBjjKg4npr9BJiOxA5c0ONQBo4aMaMcThdlhPUvSyLAy15U=;
+X-UUID: da67ea808d1b4b3ab40ea6022f9e8712-20210310
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1293088009; Wed, 10 Mar 2021 02:57:02 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Mar 2021 02:57:01 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Mar 2021 18:57:00 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 10 Mar 2021 18:56:59 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>
+CC: Jassi Brar <jassisinghbrar@gmail.com>, Bibby Hsieh
+ <bibby.hsieh@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>, 
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [RESEND PATCH v1 1/2] Revert "drm/mediatek: Make sure previous
+ message done or be aborted before send"
+Date: Wed, 10 Mar 2021 18:56:51 +0800
+Message-ID: <1615373812-16204-2-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1615373812-16204-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1615373812-16204-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
-References: <CAFr9PXmiR9Wo9HxhRLj-k6+O5qu-uLSTCvQRqW-Yqgkk8YK-Tw@mail.gmail.com>
- <20210308143011.24538-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20210308143011.24538-1-mark-pk.tsai@mediatek.com>
-From: Daniel Palmer <daniel@0x0f.com>
-Date: Wed, 10 Mar 2021 19:20:27 +0900
-Message-ID: <CAFr9PX=dz1kt_BphpWr250asLiHFQNeBgNPhuPje==hzkcHWhg@mail.gmail.com>
-Subject: Re: [PATCH v2] irqchip/irq-mst: Support polarity configuration
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Daniel Palmer <daniel@thingy.jp>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, 
- Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <maz@kernel.org>, 
- Thomas Gleixner <tglx@linutronix.de>,
- =?UTF-8?B?WUogQ2hpYW5nICjmsZ/oi7HmnbAp?= <yj.chiang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_101907_500796_C07F2158 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20210310_105716_417771_14DF7D21 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,37 +92,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark-PK,
+This reverts commit 839cbf0531428f3f9535077a461b8631359c1165.
 
-On Mon, 8 Mar 2021 at 23:30, Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
-> From: Daniel Palmer <daniel@0x0f.com>
-> >On Mon, 8 Mar 2021 at 15:05, Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
-> >> +static int mst_irq_chip_set_type(struct irq_data *data, unsigned int type)
-> >       > +{
-> >> +       if (type != IRQ_TYPE_LEVEL_LOW && type != IRQ_TYPE_LEVEL_HIGH)
-> >> +               return -EINVAL;
-> >> +
-> >
-> >Does this mean we can't do rising or falling edge interrupts?
->
-> Yes, the interrupt of mst-intc is either level high or level low.
-> Actually the input signal can be pulse, but it will be converted to level
-> by the latch in mst-intc.
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Are the GPIO connected interrupts meant to be configured as level
-interrupts then?
-For the MStar MSC313(e) there are 4 (that I know of) GPIO lines that
-are wired into the mst-intc that requires EOI.
-Until this patch with those lines configured as a rising edge a single
-interrupt came each time the GPIO was pulled up as far as I remember.
-
-I'm probably misunderstanding but a level interrupt doesn't seem to
-make sense for a GPIO as it can't be serviced to clear the interrupt.
-
-Thanks,
-
-Daniel
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 8b0de90..c76f446 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -463,7 +463,6 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+ 	}
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	if (mtk_crtc->cmdq_client) {
+-		mbox_flush(mtk_crtc->cmdq_client->chan, 2000);
+ 		cmdq_handle = cmdq_pkt_create(mtk_crtc->cmdq_client, PAGE_SIZE);
+ 		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
+ 		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
