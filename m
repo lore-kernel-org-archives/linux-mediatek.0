@@ -2,85 +2,88 @@ Return-Path: <SRS0=oSKo=II=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DDEA7C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 03:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD629C433E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 03:16:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 72C8A64DA3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 03:06:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 72C8A64DA3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 518B864F36
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Mar 2021 03:16:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 518B864F36
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rowland.harvard.edu
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MpXgxeHBJDtNbA2C7zXi0nnIcnwodBZxhyjZn6h5DW4=; b=W3rT7xsz9EY+Sm08S7t/DkoJW
-	9swsSHMwxnKdIj9X5NWBlxc17FimmVLW/qxlEfxxyJeh6f8t7TNz2rgeo1JLdLIRaFY6RXf/uurRE
-	HXMWxpMs/RM9SNShIYnTM2tHT0iSbqHvX9AweaxHJCY9KDznAC88B+1AM5YN6ZhTbNsw0SZGYTe3D
-	lJ/PWOKArIyPDfZP7jdVRCoGkQCluQvRKeox993gygWOfkZxt3lUj44PaeXDVS3Ik9Q8kHea+s8lw
-	zFe7sDWnxUW7EpmCsGWcPlm0/fwt1olW3ByzN811SYssFmBpe5rNb1coQJWmFB0JS+apLTXcJh1TR
-	f21HZopLg==;
+	 bh=VlCMbi25MHBXf0PSmA67jP29shyo/f+/ZvLZiov2CYk=; b=aAuZggttQLvFzNeHZyLreAT4m
+	XtcRZP9EZz9unmzzk5M/8ETC6ytou+cUrDs9e0nm3uYytzTXA3+gqESi0VV6GXrTepo4Lqquv7rX5
+	ZDscK6/Wy22FAdt/O9ZIa+1LswM5K/FzdONuaAjhhEAZXRGfZ2XXw8MON9BQMYfOYlNvtALsrLNUE
+	gXUGYr7KW8pI0aPPJtl08PBpup2DzW+wkiquIJsIbZTs5J8Z3p32H9dX9gXEU1N2YLfSBp2oPz2ka
+	3uWD57koXJ73lJyqOY/NH32NtyUeYSohTR+EA5ud8Ce5i42CrtMx90LlgWFBhZK4+BhmKSFR0O5cc
+	QAUXogfyw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJpAR-005sLa-Py; Wed, 10 Mar 2021 03:05:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJpAJ-005sHP-Lt; Wed, 10 Mar 2021 03:05:44 +0000
-X-UUID: cb370f486b2a4996be629f2a38386c2f-20210309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=lgYMPyfI/gWImJMYFgXEdeuYn+Gaj//HQfyXplO2nUg=; 
- b=eAHR7Z6RgBLPZpqeXzb9EruqMIo/qOlOo/6Y4ox0RMVLVYB5QvAVmWbyIFrVCxOWZlpK11cB6/arcTCeHY36cddYg6saHulGstBStMlO8J+03UFCKGzfkQNKqWaQRpTjHKJETQUGmFJZUZ+Od+ytLqLwSu3aZ2IjUkWTgxQqf9s=;
-X-UUID: cb370f486b2a4996be629f2a38386c2f-20210309
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 354837759; Tue, 09 Mar 2021 19:05:31 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Mar 2021 19:05:29 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 10 Mar 2021 11:05:22 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 10 Mar 2021 11:05:17 +0800
-Message-ID: <1615345515.25662.12.camel@mhfsdcap03>
-Subject: Re: [v8,4/7] PCI: mediatek-gen3: Add INTx support
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Marc Zyngier <maz@kernel.org>
-CC: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
- <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Sj
- Huang" <sj.huang@mediatek.com>, <youlin.pei@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
- <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>
-Date: Wed, 10 Mar 2021 11:05:15 +0800
-In-Reply-To: <87r1koy442.wl-maz@kernel.org>
-References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
- <20210224061132.26526-5-jianjun.wang@mediatek.com>
- <87r1koy442.wl-maz@kernel.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1lJpJz-005tkZ-9z; Wed, 10 Mar 2021 03:16:10 +0000
+Received: from netrider.rowland.org ([192.131.102.5])
+ by desiato.infradead.org with smtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lJpJ8-005tda-3M
+ for linux-mediatek@lists.infradead.org; Wed, 10 Mar 2021 03:14:52 +0000
+Received: (qmail 203946 invoked by uid 1000); 9 Mar 2021 22:14:38 -0500
+Date: Tue, 9 Mar 2021 22:14:38 -0500
+From: Alan Stern <stern@rowland.harvard.edu>
+To: "Asutosh Das \(asd\)" <asutoshd@codeaurora.org>
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, cang@codeaurora.org,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "open list:TARGET SUBSYSTEM" <linux-scsi@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Stanley Chu <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Bean Huo <beanhuo@micron.com>,
+ Lee Jones <lee.jones@linaro.org>, Wei Yongjun <weiyongjun1@huawei.com>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Tomas Winkler <tomas.winkler@intel.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Satya Tangirala <satyat@google.com>,
+ open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/SAMSUNG S3C,
+ S5P AND EXYNOS ARM ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/SAMSUNG S3C,
+ S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, 
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>, 
+ Linux-PM mailing list <linux-pm@vger.kernel.org>
+Subject: Re: [PATCH v10 1/2] scsi: ufs: Enable power management for wlun
+Message-ID: <20210310031438.GB203516@rowland.harvard.edu>
+References: <cover.1614725302.git.asutoshd@codeaurora.org>
+ <0576d6eae15486740c25767e2d8805f7e94eb79d.1614725302.git.asutoshd@codeaurora.org>
+ <85086647-7292-b0a2-d842-290818bd2858@intel.com>
+ <6e98724d-2e75-d1fe-188f-a7010f86c509@codeaurora.org>
+ <20210306161616.GC74411@rowland.harvard.edu>
+ <CAJZ5v0ihJe8rNjWRwNic_BQUvKbALNcjx8iiPAh5nxLhOV9duw@mail.gmail.com>
+ <CAJZ5v0iJ4yqRTt=mTCC930HULNFNTgvO4f9ToVO6pNz53kxFkw@mail.gmail.com>
+ <f1e9b21d-1722-d20b-4bae-df7e6ce50bbc@codeaurora.org>
+ <2bd90336-18a9-9acd-5abb-5b52b27fc535@codeaurora.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D305C0EB95B1E4DB84B071274B4E294D18232D4B3400CB35DD62537707EF37132000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <2bd90336-18a9-9acd-5abb-5b52b27fc535@codeaurora.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_030540_365133_F85142EB 
-X-CRM114-Status: GOOD (  29.09  )
+X-CRM114-CacheID: sfid-20210310_031451_120501_929A6329 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,168 +100,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-03-09 at 11:10 +0000, Marc Zyngier wrote:
-> On Wed, 24 Feb 2021 06:11:29 +0000,
-> Jianjun Wang <jianjun.wang@mediatek.com> wrote:
-> > 
-> > Add INTx support for MediaTek Gen3 PCIe controller.
-> > 
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek-gen3.c | 176 ++++++++++++++++++++
-> >  1 file changed, 176 insertions(+)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > index c602beb9afec..8b3b5f838b69 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -9,6 +9,9 @@
-> >  #include <linux/clk.h>
-> >  #include <linux/delay.h>
-> >  #include <linux/iopoll.h>
-> > +#include <linux/irq.h>
-> > +#include <linux/irqchip/chained_irq.h>
-> > +#include <linux/irqdomain.h>
-> >  #include <linux/kernel.h>
-> >  #include <linux/module.h>
-> >  #include <linux/pci.h>
-> > @@ -45,6 +48,13 @@
-> >  #define PCIE_LINK_STATUS_REG		0x154
-> >  #define PCIE_PORT_LINKUP		BIT(8)
-> >  
-> > +#define PCIE_INT_ENABLE_REG		0x180
-> > +#define PCIE_INTX_SHIFT			24
-> > +#define PCIE_INTX_ENABLE \
-> > +	GENMASK(PCIE_INTX_SHIFT + PCI_NUM_INTX - 1, PCIE_INTX_SHIFT)
-> > +
-> > +#define PCIE_INT_STATUS_REG		0x184
-> > +
-> >  #define PCIE_TRANS_TABLE_BASE_REG	0x800
-> >  #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
-> >  #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
-> > @@ -73,6 +83,9 @@
-> >   * @phy: PHY controller block
-> >   * @clks: PCIe clocks
-> >   * @num_clks: PCIe clocks count for this port
-> > + * @irq: PCIe controller interrupt number
-> > + * @irq_lock: lock protecting IRQ register access
-> > + * @intx_domain: legacy INTx IRQ domain
-> >   */
-> >  struct mtk_pcie_port {
-> >  	struct device *dev;
-> > @@ -83,6 +96,10 @@ struct mtk_pcie_port {
-> >  	struct phy *phy;
-> >  	struct clk_bulk_data *clks;
-> >  	int num_clks;
-> > +
-> > +	int irq;
-> > +	raw_spinlock_t irq_lock;
-> > +	struct irq_domain *intx_domain;
-> >  };
-> >  
-> >  /**
-> > @@ -199,6 +216,11 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
-> >  	val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
-> >  	writel_relaxed(val, port->base + PCIE_PCI_IDS_1);
-> >  
-> > +	/* Mask all INTx interrupts */
-> > +	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
-> > +	val &= ~PCIE_INTX_ENABLE;
-> > +	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
-> > +
-> >  	/* Assert all reset signals */
-> >  	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
-> >  	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> > @@ -262,6 +284,154 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
-> >  	return 0;
-> >  }
-> >  
-> > +static int mtk_pcie_set_affinity(struct irq_data *data,
-> > +				 const struct cpumask *mask, bool force)
-> > +{
-> > +	return -EINVAL;
-> > +}
-> > +
-> > +static void mtk_intx_mask(struct irq_data *data)
-> > +{
-> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-> > +	unsigned long flags;
-> > +	u32 val;
-> > +
-> > +	raw_spin_lock_irqsave(&port->irq_lock, flags);
-> > +	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
-> > +	val &= ~BIT(data->hwirq + PCIE_INTX_SHIFT);
-> > +	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
-> > +	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
-> > +}
-> > +
-> > +static void mtk_intx_unmask(struct irq_data *data)
-> > +{
-> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-> > +	unsigned long flags;
-> > +	u32 val;
-> > +
-> > +	raw_spin_lock_irqsave(&port->irq_lock, flags);
-> > +	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
-> > +	val |= BIT(data->hwirq + PCIE_INTX_SHIFT);
-> > +	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
-> > +	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
-> > +}
-> > +
-> > +/**
-> > + * mtk_intx_eoi
-> > + * @data: pointer to chip specific data
-> > + *
-> > + * As an emulated level IRQ, its interrupt status will remain
-> > + * until the corresponding de-assert message is received; hence that
-> > + * the status can only be cleared when the interrupt has been serviced.
-> > + */
-> > +static void mtk_intx_eoi(struct irq_data *data)
-> > +{
-> > +	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-> > +	unsigned long hwirq;
-> > +
-> > +	hwirq = data->hwirq + PCIE_INTX_SHIFT;
-> > +	writel_relaxed(BIT(hwirq), port->base + PCIE_INT_STATUS_REG);
-> > +}
-> > +
-> > +static struct irq_chip mtk_intx_irq_chip = {
-> > +	.irq_enable		= mtk_intx_unmask,
-> > +	.irq_disable		= mtk_intx_mask,
+On Tue, Mar 09, 2021 at 07:04:34PM -0800, Asutosh Das (asd) wrote:
+> Hello
+> I & Can (thanks CanG) debugged this further:
 > 
-> Please get rid of enable/disable. Given that you already have
-> mask/unmask with the *same* implementation, this offers zero benefit.
+> Looks like this issue can occur if the sd probe is asynchronous.
+> 
+> Essentially, the sd_probe() is done asynchronously and driver_probe_device()
+> invokes pm_runtime_get_suppliers() before invoking sd_probe().
+> 
+> But scsi_probe_and_add_lun() runs in a separate context.
+> So the scsi_autopm_put_device() invoked from scsi_scan_host() context
+> reduces the link->rpm_active to 1. And sd_probe() invokes
+> scsi_autopm_put_device() and starts a timer. And then driver_probe_device()
+> invoked from __device_attach_async_helper context reduces the
+> link->rpm_active to 1 thus enabling the supplier to suspend before the
+> consumer suspends.
 
-Hi Marc,
+> I don't see a way around this. Please let me know if you
+> (@Alan/@Bart/@Adrian) have any thoughts on this.
 
-Thanks for your review.
+How about changing the SCSI core so that it does a runtime_get before
+starting an async probe, and the async probe routine does a
+runtime_put when it is finished?  In other words, don't allow a device
+to go into runtime suspend while it is waiting to be probed.
 
-We need to support suspend/resume feature, the HW will be powered off
-when the system is suspended, and its register value will be cleared. If
-the enable/disable callback is not implemented, the unmask function will
-not be called when the system resume, so INTx will remain disabled.
+I don't think that would be too intrusive.
 
-Can I keep the enable/disable callback? Or do we have any solutions to
-restore the register value when the system resume?
-
-Thanks.
-> 
-> > +	.irq_mask		= mtk_intx_mask,
-> > +	.irq_unmask		= mtk_intx_unmask,
-> > +	.irq_eoi		= mtk_intx_eoi,
-> > +	.irq_set_affinity	= mtk_pcie_set_affinity,
-> > +	.name			= "INTx",
-> > +};
-> 
-> [...]
-> 
-> Other that that, this look good to me.
-> 
-> Thanks,
-> 
-> 	M.
-> 
+Alan Stern
 
 _______________________________________________
 Linux-mediatek mailing list
