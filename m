@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBE52C4321A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 02:12:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23D15C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 02:12:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6EABA64FD8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 02:12:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EABA64FD8
+	by mail.kernel.org (Postfix) with ESMTPS id B016664FBF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 02:12:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B016664FBF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=P8LcSjEKB7HVvxY2sQ4MvxCIWxlgRSWtk9CXMjRdD5M=; b=BLOV3nMzC0+I7F+5iOxHNoGOX
-	bXWCqNgysNOQwXFzw4B6c3xgIJoouF0JqrwHQGI3BCGA6UHAAL73MF+Y3k+qvtOw4xKBdDTg4mYI1
-	NYuM2OFhB3US71UIIqcWy9zHxFW7vK4/fcAeY9aZSdzbRVx6e41LkDiteECA7N01ncTg0p1ajTz9j
-	j5A3jWk41Vv8NVxgRZrd6HrLTeVXc+EBtXB0rf01xww8eOanqOBscnQ0INuFfhigAiz+zZvPhnHky
-	HmbnJXqZOQZKz4oF7sRiWF52Rrp9FKcH9ShrbPwYHeepeIm/5PW2hzD21QXLquVzf2TCIWsEPpzzE
-	pVofri1gg==;
+	 bh=qnAXh4kiHs+0Xz12EHIt4wC5TI6l4mZ8kdXVs4Aq0ZQ=; b=FEZ1rvyFEtWEr5DKE6r+LgvGd
+	hhIeu6YBimtrPHAp23C79H/WzyAvB+Pc56/x94JeP4GxK7jmivQp88XSCL/u7IQvlW8S8bBQc7PhC
+	4Q9jys3FUpSuAv6N8u+JC87tEjVr4gAJSu/lN4LmD5V7xlfXl/5wRozezQ/9kCHDJixyUH3iUZ/Tx
+	HD3TVa4GZndMQsxoMMcc/fuobepAzTnP0hk1thOrhNXEyKF1k/wvND60gOkgs12EOltP5s3mOrXcH
+	Ah7rpey3fXMBZTR6ncx8rZGfrWlMQbLHAte+tTxTqfwNtQ8B6wKbcN67jCVgvfxFk2WfLT/EArPR6
+	3N1gu7ZrA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKAnu-008EQO-MF; Thu, 11 Mar 2021 02:11:58 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1lKAo3-008ESb-QC; Thu, 11 Mar 2021 02:12:07 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKAnd-008EOA-GL; Thu, 11 Mar 2021 02:11:43 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id
- lr1-20020a17090b4b81b02900ea0a3f38c1so952458pjb.0; 
+ id 1lKAnd-008EOO-WC; Thu, 11 Mar 2021 02:11:44 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id
+ x7-20020a17090a2b07b02900c0ea793940so8296660pjc.2; 
  Wed, 10 Mar 2021 18:11:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=B3NvjxFQkBW7qiD7WXidQCqOgaMtOHmNc5t+RjW8jYs=;
- b=Ag4U2H/cx+7yWjZGqdF8jnN9Ftc1pFYjhKg1Qw/pfE+4UNlElJXTGt+DRYq5/fLFcf
- 4ihweh8lj8HfxiisnOoSxxoIio7jJX9I2f3X9SVyKbILLCPRzbVGzxDXjcZsbELf4xVB
- lRvDAbE6Z12HPMYC1h+p2qvPAU1vTXFHbRn2mVkkm+WI2Q7lS45WcUQ6YwhofEtXKGkB
- ZSrUAj8Jk2C12+mZyhZHZF4oRkdrc7rHgRDmG0+Qge+kCeou2tb+ZuzUgAUz+Xc6ejHW
- T+IU2eBT8bjy+9cpBIgrxWSXPM5bkWXaQ4vZppl58LNITAeZvnWoAeWuCW3QDMtNP4ex
- p77A==
+ bh=4eB/nkDB8WywIt0l6dz2tHl2O8kDpGdV2lwOJHNqcUc=;
+ b=b4fS6+abyBz8ouSM5tHvmYgX9bb8z6+u9VUhLMiMV9jrTiyC2A4gEf4pIffMxuJhZ7
+ xlU9OT2EWfcs9T5AH+7h6LCr6oOqOOReMeVdkgI2YNQmnFSxmzJPrL0l3gIaPYC/X1Cf
+ aFCC5yhhkEckVapXl5kPVaH2moliSCMNX8lOSBD2RSsdA6zmp8CnCQAikmxyr7Mmr5VX
+ rUij/JW2eOIS5j59Ywgd3jHJl+uYlkKqgguKDnrS/mDQOFXco2QIlW7iJPHpJKDvP7Ib
+ TNxh4jFHeCltbWILufmG8SbzXyC3JAyo/jimfC+7wOj/E3AvXXWWUiFE11t68tcjUJ5y
+ mllw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=B3NvjxFQkBW7qiD7WXidQCqOgaMtOHmNc5t+RjW8jYs=;
- b=uWrjyJJT7+b0SV9ZToaJ1KIFPyJCG87sDEZnQ/4uPLjvE+Gv4J9PhejmeZN350vFZy
- IpifP6imOeUL05Fzyuc3PXkXWq9muDUEq/6KKi0wevhzT4gq2DcLGCi3nyoNVvSw27Ys
- PcUL3JfnwFGzTF/JTxv/2HIeTC5zvLiErTEdRAemqgIhqRMG3H0MAz4cC1VNi0GdsgkT
- aNGWTBoGqeMGK727L9pc0NszrzaIMFRFvvWRHI1sXoLP9mYznw1sv0aVpoRTMUkTTgRV
- RW0tWtLGeQ9RLvhkNb3gt0hHE3qMt81oh97HW5jkeYmP0xxr2EZWvKoLTp227cwxgMoB
- AMzw==
-X-Gm-Message-State: AOAM5309j1LJ+Vhf+BiCKqbaMI6awsMoCI7eaufGtdFUN6JiFW7LpB5q
- BrNAybH4nu3fhynAYwzw4tI=
-X-Google-Smtp-Source: ABdhPJypqyrbNio+ygSelexHSUtxznF8mzVzEBNNmvXV5kFlJJk14K7c2oLyfeZUSoVWv9YhxHNb/Q==
-X-Received: by 2002:a17:90a:c84:: with SMTP id
- v4mr6627560pja.228.1615428699863; 
- Wed, 10 Mar 2021 18:11:39 -0800 (PST)
+ bh=4eB/nkDB8WywIt0l6dz2tHl2O8kDpGdV2lwOJHNqcUc=;
+ b=AFcBnt2yy5HByANBQ4P0SciN7/wzqmx8TobK4ns2neFKNvVAEyqreoB9W/NiaZRnnL
+ NLh6ckN+0dREJVaOklvgmqKKBHsgWQ5p49aDhOJTbRQm7wgCpJETeF42qQqg1HtLS1bx
+ aBcoQ5mK7N8O7AdVjfG0O8M7GZrKnkmc6UBkBX21A/BHMQS5GHTWSvcNWF+GC2EjxTI2
+ 0HNggVzia7xiaMvSpOuiIfN2XkGBYaXz1V+oSiwm0UIReMpdwslOhZmPuBjfzxZ3Db2b
+ VUL9VDVFfSIUEbGQM1Aguxppx/752oO69N52uuExfRY0fnl92hjaZ+Cc2V0Uce1Z7BZ8
+ 45ow==
+X-Gm-Message-State: AOAM533sHaq15GFcCxTzdofaMu/sLliF4J4i64mAFQFU/vm6jRtNgwB8
+ iyYX/nyBjFirWmR5XhQyAeo=
+X-Google-Smtp-Source: ABdhPJwpHtrc/BuEVZnFuQctlYwyq5FgZvAVXrzXzQNwkqcADujjyNsApngDaYJlHkujwOA1RmiubQ==
+X-Received: by 2002:a17:902:b942:b029:e4:87be:be8c with SMTP id
+ h2-20020a170902b942b02900e487bebe8cmr5525396pls.81.1615428700577; 
+ Wed, 10 Mar 2021 18:11:40 -0800 (PST)
 Received: from z640-arch.lan ([2602:61:738f:1000::678])
  by smtp.gmail.com with ESMTPSA id p190sm672603pga.78.2021.03.10.18.11.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Mar 2021 18:11:39 -0800 (PST)
+ Wed, 10 Mar 2021 18:11:40 -0800 (PST)
 From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -83,16 +83,16 @@ To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  linux-kernel@vger.kernel.org
 Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 Subject: [PATCH net-next,
- v2 2/3] net: dsa: mt7530: clean up redundant clock enables
-Date: Wed, 10 Mar 2021 18:09:53 -0800
-Message-Id: <20210311020954.842341-2-ilya.lipnitskiy@gmail.com>
+ v2 3/3] net: dsa: mt7530: disable TRGMII clock at reconfigure
+Date: Wed, 10 Mar 2021 18:09:54 -0800
+Message-Id: <20210311020954.842341-3-ilya.lipnitskiy@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210311020954.842341-1-ilya.lipnitskiy@gmail.com>
 References: <20210311020954.842341-1-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_021141_688004_59C47B9C 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20210311_021142_493160_7088D08B 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,59 +109,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Two minor changes:
+Disable both core and TRGMII Tx clocks prior to reconfiguring.
+Previously, only the core clock was disabled, but not TRGMII Tx clock.
+So disable both, then configure them, then re-enable both, for
+consistency.
 
-- In RGMII mode, the REG_GSWCK_EN bit of CORE_TRGMII_GSW_CLK_CG gets
-  set three times in a row. In TRGMII mode, two times. Simplify the code
-  and only set it once for both modes.
+Reword the comment about core_write_mmd_indirect for clarity.
 
-- When disabling PLL, there is no need to call core_write_mmd_indirect
-  directly, use the core_write wrapper instead like the rest of the code
-  in the function does. This change helps with consistency and
-  readability.
+Tested on Ubiquiti ER-X running the GMAC and MT7530 in TRGMII mode.
 
 Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 ---
- drivers/net/dsa/mt7530.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/net/dsa/mt7530.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 9871d7cff93a..80a35caf920e 100644
+index 80a35caf920e..7ef5e7c23e05 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -444,10 +444,7 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 	 * provide our own core_write_mmd_indirect to complete this
- 	 * function.
+@@ -435,15 +435,18 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 		mt7530_write(priv, MT7530_TRGMII_TD_ODT(i),
+ 			     TD_DM_DRVP(8) | TD_DM_DRVN(8));
+ 
+-	/* Setup core clock for MT7530 */
+-	/* Disable MT7530 core clock */
+-	core_clear(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
+-
+-	/* Disable PLL, since phy_device has not yet been created
+-	 * provided for phy_[read,write]_mmd_indirect is called, we
+-	 * provide our own core_write_mmd_indirect to complete this
+-	 * function.
++	/* Since phy_device has not yet been created and
++	 * phy_[read,write]_mmd_indirect is not available, we provide our own
++	 * core_write_mmd_indirect with core_{clear,write,set} wrappers to
++	 * complete this function.
  	 */
--	core_write_mmd_indirect(priv,
--				CORE_GSWPLL_GRP1,
--				MDIO_MMD_VEND2,
--				0);
-+	core_write(priv, CORE_GSWPLL_GRP1, 0);
++
++	/* Disable MT7530 core and TRGMII Tx clocks */
++	core_clear(priv, CORE_TRGMII_GSW_CLK_CG,
++		   REG_GSWCK_EN | REG_TRGMIICK_EN);
++
++	/* Setup core clock for MT7530 */
++	/* Disable PLL */
+ 	core_write(priv, CORE_GSWPLL_GRP1, 0);
  
  	/* Set core clock into 500Mhz */
- 	core_write(priv, CORE_GSWPLL_GRP2,
-@@ -460,11 +457,7 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 		   RG_GSWPLL_POSDIV_200M(2) |
- 		   RG_GSWPLL_FBKDIV_200M(32));
- 
--	/* Enable MT7530 core clock */
--	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
--
- 	/* Setup the MT7530 TRGMII Tx Clock */
--	core_set(priv, CORE_TRGMII_GSW_CLK_CG, REG_GSWCK_EN);
- 	core_write(priv, CORE_PLL_GROUP5, RG_LCDDS_PCW_NCPO1(ncpo1));
- 	core_write(priv, CORE_PLL_GROUP6, RG_LCDDS_PCW_NCPO0(0));
- 	core_write(priv, CORE_PLL_GROUP10, RG_LCDDS_SSC_DELTA(ssc_delta));
-@@ -478,6 +471,8 @@ mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t interface)
- 	core_write(priv, CORE_PLL_GROUP7,
- 		   RG_LCDDS_PCW_NCPO_CHG | RG_LCCDS_C(3) |
- 		   RG_LCDDS_PWDB | RG_LCDDS_ISO_EN);
-+
-+	/* Enable MT7530 core and TRGMII Tx clocks */
- 	core_set(priv, CORE_TRGMII_GSW_CLK_CG,
- 		 REG_GSWCK_EN | REG_TRGMIICK_EN);
- 
 -- 
 2.30.2
 
