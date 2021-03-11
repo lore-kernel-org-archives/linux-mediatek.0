@@ -2,67 +2,60 @@ Return-Path: <SRS0=BnLp=IJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F66FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 10:52:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B9A5C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 11:44:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9ABC64EFD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 10:52:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9ABC64EFD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6E4E664E45
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 11:44:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E4E664E45
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=U462imvwBmSj82fNhjZpGj4wLHynmBNmSM+5OUMBs/Y=; b=LDGx8S9L76YluRsQGK+hxkRQW
-	OPi5QWG7VyyLobxMoIF4qQpujuH+m1SOvGHPEm7CWwyg+wxXA783tgO0V7XxZFQKwNuguzvdvKGrx
-	iDd7Yn2QDXjfcxFuTlUjSp7eSSxoLtALa+7hn8a2ibWfK14Hpv42NxuDxYOYjbro2ikx8XJCN3nOp
-	rAVfKNVnsXZ0/UDS+3fxQ7SX7Hocoux5Mk2oh3BUc8nCMwe5bWnnYNEQWpd/+sHHV78JB2eoiXLqX
-	oPT+q1GX0e5TbbRW1EatgdAvRhhzbiUqvNnRnRt4NDcmErSFTHrfXcurXeNm4j6V+CzTD9EY5J4dg
-	WmqXz8eYA==;
+	 bh=Yz8usWoXWsWikSF6AH0G7sKYpcpkfOAXmbAe4uOheC4=; b=Z2SnzbK+AqGvFEEpSX8y8YXur
+	foJ5hIiFVAIxh4V6Qupk191eaL5wJMELFif5eTxKOccQ0Wr5pa2gCI7yVavs/saE9IjseNZ9F0V78
+	vAwq0Lw5UlOp/eN5BMG8KcYqAggzSM6Zx8P7+n9kzYKfqAUMVVjhtmkszMR6qO0/mGisypVM3NfSd
+	af26l+OpRfQHz1fGE1kh6EezRtBdxHYXKowfCWPUmLLXZnS6N7GeKSR6zUGJVAW3hBH/ZaQu2NHdy
+	JAtYDaQJ6PvFSdusOQWpvDyfsJYb29Z1rSGI1Buwqu21IumDmsBczuJnSXS8MuWEVrdF/p9SwlR4m
+	+wMwqOH9Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKIvn-008sqf-MG; Thu, 11 Mar 2021 10:52:39 +0000
-Received: from youngberry.canonical.com ([91.189.89.112])
+	id 1lKJjh-008y7P-Hd; Thu, 11 Mar 2021 11:44:13 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKIvZ-008soY-TE; Thu, 11 Mar 2021 10:52:30 +0000
-Received: from [179.93.213.27] (helo=mussarela)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <cascardo@canonical.com>)
- id 1lKIvR-0008VO-Pm; Thu, 11 Mar 2021 10:52:18 +0000
-Date: Thu, 11 Mar 2021 07:52:10 -0300
-From: Thadeu Lima de Souza Cascardo <cascardo@canonical.com>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Jim Lin <jilin@nvidia.com>, Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Ainge Hsu <ainge.hsu@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>,
- Kuohong Wang <kuohong.wang@mediatek.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, stable@vger.kernel.org
-Subject: Re: [PATCH v4] usb: gadget: configfs: Fix KASAN use-after-free
-Message-ID: <20210311105210.GS10958@mussarela>
-References: <1484647168-30135-1-git-send-email-jilin@nvidia.com>
- <1615444961-13376-1-git-send-email-macpaul.lin@mediatek.com>
- <1615445632.13420.2.camel@mtkswgap22>
+ id 1lKJfA-008xDp-3M; Thu, 11 Mar 2021 11:39:35 +0000
+X-Originating-IP: 90.89.138.59
+Received: from xps13 (lfbn-tou-1-1325-59.w90-89.abo.wanadoo.fr [90.89.138.59])
+ (Authenticated sender: miquel.raynal@bootlin.com)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 0AEA620002;
+ Thu, 11 Mar 2021 11:39:30 +0000 (UTC)
+Date: Thu, 11 Mar 2021 12:39:30 +0100
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Hauke Mehrtens <hauke@hauke-m.de>
+Cc: richard@nod.at, boris.brezillon@collabora.com, vigneshr@ti.com,
+ matthias.bgg@gmail.com, linux-mtd@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] mtd: rawnand: mtk: Fix WAITRDY break condition and timeout
+Message-ID: <20210311123930.0c41ec78@xps13>
+In-Reply-To: <20210309000107.1368404-1-hauke@hauke-m.de>
+References: <20210309000107.1368404-1-hauke@hauke-m.de>
+Organization: Bootlin
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1615445632.13420.2.camel@mtkswgap22>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_105226_955032_52126F5D 
-X-CRM114-Status: GOOD (  28.74  )
+X-CRM114-CacheID: sfid-20210311_113932_524291_0DA1F677 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,121 +67,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 11, 2021 at 02:53:52PM +0800, Macpaul Lin wrote:
-> On Thu, 2021-03-11 at 14:42 +0800, Macpaul Lin wrote:
-> > From: Jim Lin <jilin@nvidia.com>
-> > 
-> > When gadget is disconnected, running sequence is like this.
-> > . composite_disconnect
-> > . Call trace:
-> >   usb_string_copy+0xd0/0x128
-> >   gadget_config_name_configuration_store+0x4
-> >   gadget_config_name_attr_store+0x40/0x50
-> >   configfs_write_file+0x198/0x1f4
-> >   vfs_write+0x100/0x220
-> >   SyS_write+0x58/0xa8
-> > . configfs_composite_unbind
-> > . configfs_composite_bind
-> > 
-> > In configfs_composite_bind, it has
-> > "cn->strings.s = cn->configuration;"
-> > 
-> > When usb_string_copy is invoked. it would
-> > allocate memory, copy input string, release previous pointed memory space,
-> > and use new allocated memory.
-> > 
-> > When gadget is connected, host sends down request to get information.
-> > Call trace:
-> >   usb_gadget_get_string+0xec/0x168
-> >   lookup_string+0x64/0x98
-> >   composite_setup+0xa34/0x1ee8
-> > 
-> > If gadget is disconnected and connected quickly, in the failed case,
-> > cn->configuration memory has been released by usb_string_copy kfree but
-> > configfs_composite_bind hasn't been run in time to assign new allocated
-> > "cn->configuration" pointer to "cn->strings.s".
-> > 
-> > When "strlen(s->s) of usb_gadget_get_string is being executed, the dangling
-> > memory is accessed, "BUG: KASAN: use-after-free" error occurs.
-> > 
-> > Signed-off-by: Jim Lin <jilin@nvidia.com>
-> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> > Cc: stable@vger.kernel.org
-> > ---
-> > Changes in v2:
-> > Changes in v3:
-> >  - Change commit description
-> > Changes in v4:
-> >  - Fix build error and adapt patch to kernel-5.12-rc1.
-> >    Replace definition "MAX_USB_STRING_WITH_NULL_LEN" with
-> >    "USB_MAX_STRING_WITH_NULL_LEN".
-> >  - Note: The patch v2 and v3 has been verified by
-> >    Thadeu Lima de Souza Cascardo <cascardo@canonical.com>
-> >    http://spinics.net/lists/kernel/msg3840792.html
-> 
-> Dear Cascardo,
-> 
-> Would you please help to confirm if you've tested it on Linux PC,
-> Chrome OS, or an Android OS?
-
-I tested v3 on Ubuntu GNU/Linux. I will test v4.
-
-Cascardo.
-
-> 
-> Thanks!
-> Macpaul Lin
-> 
-> >    and
-> >    Macpaul Lin <macpaul.lin@mediatek.com> on Android kernels.
-> >    http://lkml.org/lkml/2020/6/11/8
-> >  - The patch is suggested to be applied to LTS versions.
-> > 
-> >  drivers/usb/gadget/configfs.c |   14 ++++++++++----
-> >  1 file changed, 10 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/usb/gadget/configfs.c b/drivers/usb/gadget/configfs.c
-> > index 0d56f33..15a607c 100644
-> > --- a/drivers/usb/gadget/configfs.c
-> > +++ b/drivers/usb/gadget/configfs.c
-> > @@ -97,6 +97,8 @@ struct gadget_config_name {
-> >  	struct list_head list;
-> >  };
-> >  
-> > +#define USB_MAX_STRING_WITH_NULL_LEN	(USB_MAX_STRING_LEN+1)
-> > +
-> >  static int usb_string_copy(const char *s, char **s_copy)
-> >  {
-> >  	int ret;
-> > @@ -106,12 +108,16 @@ static int usb_string_copy(const char *s, char **s_copy)
-> >  	if (ret > USB_MAX_STRING_LEN)
-> >  		return -EOVERFLOW;
-> >  
-> > -	str = kstrdup(s, GFP_KERNEL);
-> > -	if (!str)
-> > -		return -ENOMEM;
-> > +	if (copy) {
-> > +		str = copy;
-> > +	} else {
-> > +		str = kmalloc(USB_MAX_STRING_WITH_NULL_LEN, GFP_KERNEL);
-> > +		if (!str)
-> > +			return -ENOMEM;
-> > +	}
-> > +	strcpy(str, s);
-> >  	if (str[ret - 1] == '\n')
-> >  		str[ret - 1] = '\0';
-> > -	kfree(copy);
-> >  	*s_copy = str;
-> >  	return 0;
-> >  }
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgSGF1a2UsCgpIYXVrZSBNZWhydGVucyA8aGF1a2VAaGF1a2UtbS5kZT4gd3JvdGUgb24gVHVl
+LCAgOSBNYXIgMjAyMSAwMTowMTowNworMDEwMDoKCj4gVGhpcyBmaXhlcyBOQU5EX09QX1dBSVRS
+RFlfSU5TVFIgb3BlcmF0aW9uIGluIHRoZSBkcml2ZXIuIFdpdGhvdXQgdGhpcwo+IGNoYW5nZSB0
+aGUgZHJpdmVyIHdhaXRzIHRpbGwgdGhlIHN5c3RlbSBpcyBidXN5LCBidXQgd2Ugc2hvdWxkIHdh
+aXQgdGlsbAo+IHRoZSBidXN5IGZsYWcgaXMgY2xlYXJlZC4gVGhlIHJlYWRsX3BvbGxfdGltZW91
+dCgpIGZ1bmN0aW9uIGdldHMgYSBicmVhawo+IGNvbmRpdGlvbiwgbm90IGEgd2FpdCBjb25kaXRp
+b24uCj4gCj4gSW4gYWRkaXRpb24gZml4IHRoZSB0aW1lb3V0LiBUaGUgdGltZW91dF9tcyBpcyBn
+aXZlbiBpbiBtcywgYnV0IHRoZQo+IHJlYWRsX3BvbGxfdGltZW91dCgpIGZ1bmN0aW9uIHRha2Vz
+IHRoZSB0aW1lb3V0IGluIHVzLiBNdWx0aXBsZSB0aGUKPiBnaXZlbiB0aW1lb3V0IGJ5IDEwMDAg
+dG8gY29udmVydCBpdC4KPiAKPiBXaXRob3V0IHRoaXMgY2hhbmdlLCB0aGUgZHJpdmVyIGRvZXMg
+bm90IHdvcmsgYXQgYWxsLCBpdCBkb2Vzbid0IGV2ZW4KPiBpZGVudGlmeSB0aGUgTkFORCBjaGlw
+Lgo+IAo+IEZpeGVzOiA1MTk3MzYwZjllMDkgKCJtdGQ6IHJhd25hbmQ6IG10azogQ29udmVydCB0
+aGUgZHJpdmVyIHRvIGV4ZWNfb3AoKSIpCj4gU2lnbmVkLW9mZi1ieTogSGF1a2UgTWVocnRlbnMg
+PGhhdWtlQGhhdWtlLW0uZGU+Cj4gLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5k
+LmMgfCA0ICsrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
+bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25hbmQuYyBi
+L2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMKPiBpbmRleCA1N2YxZjE3MDg5OTQuLjVj
+NWM5MjEzMjI4NyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5j
+Cj4gKysrIGIvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25hbmQuYwo+IEBAIC00ODgsOCArNDg4
+LDggQEAgc3RhdGljIGludCBtdGtfbmZjX2V4ZWNfaW5zdHIoc3RydWN0IG5hbmRfY2hpcCAqY2hp
+cCwKPiAgCQlyZXR1cm4gMDsKPiAgCWNhc2UgTkFORF9PUF9XQUlUUkRZX0lOU1RSOgo+ICAJCXJl
+dHVybiByZWFkbF9wb2xsX3RpbWVvdXQobmZjLT5yZWdzICsgTkZJX1NUQSwgc3RhdHVzLAo+IC0J
+CQkJCSAgc3RhdHVzICYgU1RBX0JVU1ksIDIwLAo+IC0JCQkJCSAgaW5zdHItPmN0eC53YWl0cmR5
+LnRpbWVvdXRfbXMpOwo+ICsJCQkJCSAgIShzdGF0dXMgJiBTVEFfQlVTWSksIDIwLAo+ICsJCQkJ
+CSAgaW5zdHItPmN0eC53YWl0cmR5LnRpbWVvdXRfbXMgKiAxMDAwKTsKPiAgCWRlZmF1bHQ6Cj4g
+IAkJYnJlYWs7Cj4gIAl9CgpBcHBsaWVkIHRvIG10ZC9maXhlcy4KClRoYW5rcywKTWlxdcOobAoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
