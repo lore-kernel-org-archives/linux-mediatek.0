@@ -2,87 +2,67 @@ Return-Path: <SRS0=BnLp=IJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75B47C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 09:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F66FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 10:52:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EE14964E04
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 09:50:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE14964E04
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id D9ABC64EFD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 10:52:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9ABC64EFD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EGQBS0gnpEi2wNxW5AGVCL/UPc5ctAtzi2o4KHtrm6g=; b=K/fvsLoIg24qniajvdDHmEmTU
-	9gBf3g6rB1mkbweBti+QWbQh32S5W2Dc1R80Xywwjv2KK94SQS9IfacrZrpUYx6zQx0YSmkKz38dJ
-	tSsYp316/VAwiQZJKtmI4UarAdk9w1xbDS/aS8RL72mr8DQBML3Mrl+Oo6iP+CiOCcA3wlJ4koaxR
-	9WhQAhMz0hwxFDZDmL8HKSTUPtz76pOhvKn2MnP6oATsEmgt+7w8rJXrCYKPPk3hU8X4hwPtw6IBj
-	hcd/gU49BUcitp/4W3IpPRo8B3LlMgA34lpcARo41WI/kMosBepXYBWfwjdduuKwbidwHzTqwEVyU
-	3HdcC6K9g==;
+	 bh=U462imvwBmSj82fNhjZpGj4wLHynmBNmSM+5OUMBs/Y=; b=LDGx8S9L76YluRsQGK+hxkRQW
+	OPi5QWG7VyyLobxMoIF4qQpujuH+m1SOvGHPEm7CWwyg+wxXA783tgO0V7XxZFQKwNuguzvdvKGrx
+	iDd7Yn2QDXjfcxFuTlUjSp7eSSxoLtALa+7hn8a2ibWfK14Hpv42NxuDxYOYjbro2ikx8XJCN3nOp
+	rAVfKNVnsXZ0/UDS+3fxQ7SX7Hocoux5Mk2oh3BUc8nCMwe5bWnnYNEQWpd/+sHHV78JB2eoiXLqX
+	oPT+q1GX0e5TbbRW1EatgdAvRhhzbiUqvNnRnRt4NDcmErSFTHrfXcurXeNm4j6V+CzTD9EY5J4dg
+	WmqXz8eYA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKHxc-008mcC-G3; Thu, 11 Mar 2021 09:50:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lKIvn-008sqf-MG; Thu, 11 Mar 2021 10:52:39 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKHxZ-008maq-4V; Thu, 11 Mar 2021 09:50:27 +0000
-X-UUID: 1bc6547081dc44429cf8a81bca977b77-20210311
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=a9ej59heEilQzTKWC4HbE25Ht5GD9Ct0059vCNX/I/s=; 
- b=b/fiesXnCh7ySSCfvoHnSxpK/D4VYjfKySMm1KzuavvUqrRLcZl0zuryJ9ZuWVp0dbATFvwLXEC1/GFGdB7hg5cijeMlJ38lux1g+R/ZkJgyHWNftPczFTIyhV4czctrYw9SvggcuJEMSXuoCIhSlnMBZiGNIhg9W1/aXCLoFV4=;
-X-UUID: 1bc6547081dc44429cf8a81bca977b77-20210311
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 37611026; Thu, 11 Mar 2021 01:50:19 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Mar 2021 01:50:18 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 11 Mar 2021 17:50:15 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 11 Mar 2021 17:50:14 +0800
-Message-ID: <1615456214.25662.62.camel@mhfsdcap03>
-Subject: Re: [v8,5/7] PCI: mediatek-gen3: Add MSI support
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Marc Zyngier <maz@kernel.org>, Pali =?ISO-8859-1?Q?Roh=E1r?=
- <pali@kernel.org>
-CC: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
- <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Sj
- Huang" <sj.huang@mediatek.com>, <youlin.pei@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
- <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>
-Date: Thu, 11 Mar 2021 17:50:14 +0800
-In-Reply-To: <e6c53aa3863c3f5b0560ed65282fc5e2@kernel.org>
-References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
- <20210224061132.26526-6-jianjun.wang@mediatek.com>
- <20210311000555.epypouwxdbql2aqx@pali>
- <e6c53aa3863c3f5b0560ed65282fc5e2@kernel.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lKIvZ-008soY-TE; Thu, 11 Mar 2021 10:52:30 +0000
+Received: from [179.93.213.27] (helo=mussarela)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <cascardo@canonical.com>)
+ id 1lKIvR-0008VO-Pm; Thu, 11 Mar 2021 10:52:18 +0000
+Date: Thu, 11 Mar 2021 07:52:10 -0300
+From: Thadeu Lima de Souza Cascardo <cascardo@canonical.com>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Jim Lin <jilin@nvidia.com>, Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Ainge Hsu <ainge.hsu@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>,
+ Kuohong Wang <kuohong.wang@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, stable@vger.kernel.org
+Subject: Re: [PATCH v4] usb: gadget: configfs: Fix KASAN use-after-free
+Message-ID: <20210311105210.GS10958@mussarela>
+References: <1484647168-30135-1-git-send-email-jilin@nvidia.com>
+ <1615444961-13376-1-git-send-email-macpaul.lin@mediatek.com>
+ <1615445632.13420.2.camel@mtkswgap22>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F9A112B6DED8DAAFAF6E68A112F27E84405F5EF3E9F86C2A91FF46CE880EBB382000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1615445632.13420.2.camel@mtkswgap22>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_095025_533122_5B03D618 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20210311_105226_955032_52126F5D 
+X-CRM114-Status: GOOD (  28.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,44 +74,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIxLTAzLTExIGF0IDA4OjE5ICswMDAwLCBNYXJjIFp5bmdpZXIgd3JvdGU6DQo+
-IE9uIDIwMjEtMDMtMTEgMDA6MDUsIFBhbGkgUm9ow6FyIHdyb3RlOg0KPiA+IE9uIFdlZG5lc2Rh
-eSAyNCBGZWJydWFyeSAyMDIxIDE0OjExOjMwIEppYW5qdW4gV2FuZyB3cm90ZToNCj4gPj4gK3N0
-YXRpYyBpbnQgbXRrX21zaV9ib3R0b21fZG9tYWluX2FsbG9jKHN0cnVjdCBpcnFfZG9tYWluICpk
-b21haW4sDQo+ID4+ICsJCQkJICAgICAgIHVuc2lnbmVkIGludCB2aXJxLCB1bnNpZ25lZCBpbnQg
-bnJfaXJxcywNCj4gPj4gKwkJCQkgICAgICAgdm9pZCAqYXJnKQ0KPiA+PiArew0KPiA+PiArCXN0
-cnVjdCBtdGtfcGNpZV9wb3J0ICpwb3J0ID0gZG9tYWluLT5ob3N0X2RhdGE7DQo+ID4+ICsJc3Ry
-dWN0IG10a19tc2lfc2V0ICptc2lfc2V0Ow0KPiA+PiArCWludCBpLCBod2lycSwgc2V0X2lkeDsN
-Cj4gPj4gKw0KPiA+PiArCW11dGV4X2xvY2soJnBvcnQtPmxvY2spOw0KPiA+PiArDQo+ID4+ICsJ
-aHdpcnEgPSBiaXRtYXBfZmluZF9mcmVlX3JlZ2lvbihwb3J0LT5tc2lfaXJxX2luX3VzZSwgDQo+
-ID4+IFBDSUVfTVNJX0lSUVNfTlVNLA0KPiA+PiArCQkJCQlvcmRlcl9iYXNlXzIobnJfaXJxcykp
-Ow0KPiA+PiArDQo+ID4+ICsJbXV0ZXhfdW5sb2NrKCZwb3J0LT5sb2NrKTsNCj4gPj4gKw0KPiA+
-PiArCWlmIChod2lycSA8IDApDQo+ID4+ICsJCXJldHVybiAtRU5PU1BDOw0KPiA+PiArDQo+ID4+
-ICsJc2V0X2lkeCA9IGh3aXJxIC8gUENJRV9NU0lfSVJRU19QRVJfU0VUOw0KPiA+PiArCW1zaV9z
-ZXQgPSAmcG9ydC0+bXNpX3NldHNbc2V0X2lkeF07DQo+ID4+ICsNCj4gPj4gKwlmb3IgKGkgPSAw
-OyBpIDwgbnJfaXJxczsgaSsrKQ0KPiA+PiArCQlpcnFfZG9tYWluX3NldF9pbmZvKGRvbWFpbiwg
-dmlycSArIGksIGh3aXJxICsgaSwNCj4gPj4gKwkJCQkgICAgJm10a19tc2lfYm90dG9tX2lycV9j
-aGlwLCBtc2lfc2V0LA0KPiA+PiArCQkJCSAgICBoYW5kbGVfZWRnZV9pcnEsIE5VTEwsIE5VTEwp
-Ow0KPiA+PiArDQo+ID4+ICsJcmV0dXJuIDA7DQo+ID4+ICt9DQo+ID4+ICsNCj4gPj4gK3N0YXRp
-YyB2b2lkIG10a19tc2lfYm90dG9tX2RvbWFpbl9mcmVlKHN0cnVjdCBpcnFfZG9tYWluICpkb21h
-aW4sDQo+ID4+ICsJCQkJICAgICAgIHVuc2lnbmVkIGludCB2aXJxLCB1bnNpZ25lZCBpbnQgbnJf
-aXJxcykNCj4gPj4gK3sNCj4gPj4gKwlzdHJ1Y3QgbXRrX3BjaWVfcG9ydCAqcG9ydCA9IGRvbWFp
-bi0+aG9zdF9kYXRhOw0KPiA+PiArCXN0cnVjdCBpcnFfZGF0YSAqZGF0YSA9IGlycV9kb21haW5f
-Z2V0X2lycV9kYXRhKGRvbWFpbiwgdmlycSk7DQo+ID4+ICsNCj4gPj4gKwltdXRleF9sb2NrKCZw
-b3J0LT5sb2NrKTsNCj4gPj4gKw0KPiA+PiArCWJpdG1hcF9jbGVhcihwb3J0LT5tc2lfaXJxX2lu
-X3VzZSwgZGF0YS0+aHdpcnEsIG5yX2lycXMpOw0KPiA+IA0KPiA+IE1hcmMsIHNob3VsZCBub3Qg
-YmUgdGhlcmUgYml0bWFwX3JlbGVhc2VfcmVnaW9uKCkgd2l0aCBvcmRlcl9iYXNlXzIoKT8NCj4g
-PiANCj4gPiBiaXRtYXBfcmVsZWFzZV9yZWdpb24ocG9ydC0+bXNpX2lycV9pbl91c2UsIGRhdGEt
-Pmh3aXJxLCANCj4gPiBvcmRlcl9iYXNlXzIobnJfaXJxcykpOw0KPiA+IA0KPiA+IEJlY2F1c2Ug
-bXRrX21zaV9ib3R0b21fZG9tYWluX2FsbG9jKCkgaXMgYWxsb2NhdGluZw0KPiA+IG9yZGVyX2Jh
-c2VfMihucl9pcnFzKSBpbnRlcnJ1cHRzLCBub3Qgb25seSBucl9pcnFzLg0KPiANCj4gSW5kZWVk
-LCBnb29kIGNhdGNoLg0KDQpJIHdpbGwgZml4IGl0IGluIHRoZSBuZXh0IHZlcnNpb24sIHRoYW5r
-cyBmb3IgeW91ciByZXZpZXcuDQoNCj4gDQo+IFRoYW5rcywNCj4gDQo+ICAgICAgICAgIE0uDQoN
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
-ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Thu, Mar 11, 2021 at 02:53:52PM +0800, Macpaul Lin wrote:
+> On Thu, 2021-03-11 at 14:42 +0800, Macpaul Lin wrote:
+> > From: Jim Lin <jilin@nvidia.com>
+> > 
+> > When gadget is disconnected, running sequence is like this.
+> > . composite_disconnect
+> > . Call trace:
+> >   usb_string_copy+0xd0/0x128
+> >   gadget_config_name_configuration_store+0x4
+> >   gadget_config_name_attr_store+0x40/0x50
+> >   configfs_write_file+0x198/0x1f4
+> >   vfs_write+0x100/0x220
+> >   SyS_write+0x58/0xa8
+> > . configfs_composite_unbind
+> > . configfs_composite_bind
+> > 
+> > In configfs_composite_bind, it has
+> > "cn->strings.s = cn->configuration;"
+> > 
+> > When usb_string_copy is invoked. it would
+> > allocate memory, copy input string, release previous pointed memory space,
+> > and use new allocated memory.
+> > 
+> > When gadget is connected, host sends down request to get information.
+> > Call trace:
+> >   usb_gadget_get_string+0xec/0x168
+> >   lookup_string+0x64/0x98
+> >   composite_setup+0xa34/0x1ee8
+> > 
+> > If gadget is disconnected and connected quickly, in the failed case,
+> > cn->configuration memory has been released by usb_string_copy kfree but
+> > configfs_composite_bind hasn't been run in time to assign new allocated
+> > "cn->configuration" pointer to "cn->strings.s".
+> > 
+> > When "strlen(s->s) of usb_gadget_get_string is being executed, the dangling
+> > memory is accessed, "BUG: KASAN: use-after-free" error occurs.
+> > 
+> > Signed-off-by: Jim Lin <jilin@nvidia.com>
+> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> > Cc: stable@vger.kernel.org
+> > ---
+> > Changes in v2:
+> > Changes in v3:
+> >  - Change commit description
+> > Changes in v4:
+> >  - Fix build error and adapt patch to kernel-5.12-rc1.
+> >    Replace definition "MAX_USB_STRING_WITH_NULL_LEN" with
+> >    "USB_MAX_STRING_WITH_NULL_LEN".
+> >  - Note: The patch v2 and v3 has been verified by
+> >    Thadeu Lima de Souza Cascardo <cascardo@canonical.com>
+> >    http://spinics.net/lists/kernel/msg3840792.html
+> 
+> Dear Cascardo,
+> 
+> Would you please help to confirm if you've tested it on Linux PC,
+> Chrome OS, or an Android OS?
+
+I tested v3 on Ubuntu GNU/Linux. I will test v4.
+
+Cascardo.
+
+> 
+> Thanks!
+> Macpaul Lin
+> 
+> >    and
+> >    Macpaul Lin <macpaul.lin@mediatek.com> on Android kernels.
+> >    http://lkml.org/lkml/2020/6/11/8
+> >  - The patch is suggested to be applied to LTS versions.
+> > 
+> >  drivers/usb/gadget/configfs.c |   14 ++++++++++----
+> >  1 file changed, 10 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/usb/gadget/configfs.c b/drivers/usb/gadget/configfs.c
+> > index 0d56f33..15a607c 100644
+> > --- a/drivers/usb/gadget/configfs.c
+> > +++ b/drivers/usb/gadget/configfs.c
+> > @@ -97,6 +97,8 @@ struct gadget_config_name {
+> >  	struct list_head list;
+> >  };
+> >  
+> > +#define USB_MAX_STRING_WITH_NULL_LEN	(USB_MAX_STRING_LEN+1)
+> > +
+> >  static int usb_string_copy(const char *s, char **s_copy)
+> >  {
+> >  	int ret;
+> > @@ -106,12 +108,16 @@ static int usb_string_copy(const char *s, char **s_copy)
+> >  	if (ret > USB_MAX_STRING_LEN)
+> >  		return -EOVERFLOW;
+> >  
+> > -	str = kstrdup(s, GFP_KERNEL);
+> > -	if (!str)
+> > -		return -ENOMEM;
+> > +	if (copy) {
+> > +		str = copy;
+> > +	} else {
+> > +		str = kmalloc(USB_MAX_STRING_WITH_NULL_LEN, GFP_KERNEL);
+> > +		if (!str)
+> > +			return -ENOMEM;
+> > +	}
+> > +	strcpy(str, s);
+> >  	if (str[ret - 1] == '\n')
+> >  		str[ret - 1] = '\0';
+> > -	kfree(copy);
+> >  	*s_copy = str;
+> >  	return 0;
+> >  }
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
