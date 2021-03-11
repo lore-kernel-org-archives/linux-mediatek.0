@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9F61C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 00:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2ABAAC433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 00:49:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29D1D64F7B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 00:49:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29D1D64F7B
+	by mail.kernel.org (Postfix) with ESMTPS id A639164FBA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 00:49:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A639164FBA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,51 +23,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YW4XggfAzithLsecrFGCeaeylX0DxJBTudiBiwN+KA4=; b=oSAcPbNEkVYU8ZUH2zDiSDIP9
-	6pTXzedzyEA4TTU0UvYE2Cv3VmPlByJJiAUK2FEG9Un0ryl/BnwrwfeB2+Oks8VJvriyuWdnazOVJ
-	cKCCiXzs6Nkn/FMt5PWbxvINOghp4VEtQ+vdnj/0hVOGuDGrTu3xxW6DgCKjYRmLpSL53SLeoWVBm
-	IfU2Z9YzzAcFybBH5lg6xHGfUq8/zwaqjnaU2vGCncFZtoW6+HbNTeJtcwArJWE8h3y0PlmTN4sir
-	vk6HwTnzxgG3jzmV1v5gk5qzIvKjdV1kOkzAugX9J68iehewifBvDMWDA+x6qVzbpQh0iMI9eXfBq
-	a9Od7LRpQ==;
+	 bh=0n9AxtMLmWEQb5uf3KPxfaoWIiUWWnIrZPF9Ibj3VKA=; b=hcervzHYQS9k+iVRn0XFdgbNS
+	Dmy7xo8Z6ZXeDa1WqxVldG3SzYr6Mznmd1K/t9OxypYt3NeS2oeOnyv/Ds5bcUgXRHim1JHfnLAwv
+	clcVXjVoBYJ++XX8nXgUHpoh8x6bXiGGmFNDU2+ocvgRie67s2jM6xGjUIeuOZ17nOY2pN9yOcBRV
+	Tpkkt3ySFr1rzVnJ3T6vm24xIJ3ic10di8bEWhpPyweCUACJr5lQji8hK/Dns9rFs2sLV4W/GxSJv
+	+ZtHPkWoADQt9ngEX11qreUjlGr5OK/83Ow4LZdHflweRX9fLIVox9EsmM6ELVNJ+K35rCONYbYQP
+	lxpB0FFUg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lK9WE-0087D2-BS; Thu, 11 Mar 2021 00:49:38 +0000
+	id 1lK9WO-0087FB-3i; Thu, 11 Mar 2021 00:49:48 +0000
 Received: from mga12.intel.com ([192.55.52.136])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lK9Vv-00878h-Pe; Thu, 11 Mar 2021 00:49:21 +0000
-IronPort-SDR: kNTZ/cwbWIpLdV+WyxuhEQrL8KMFmAbCTk2Ziav+53YZy1GaFcBodKcLTDpaSR0+jiTeP40pQE
- GQjSkIydd68Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9919"; a="167865532"
-X-IronPort-AV: E=Sophos;i="5.81,238,1610438400"; d="scan'208";a="167865532"
+ id 1lK9Vx-00878H-Vv; Thu, 11 Mar 2021 00:49:24 +0000
+IronPort-SDR: hvS+OGeJOUzfxpfFIhzxXzB+QH7mMywNlw3ODHnOwAk0MUE9zkG8blNVOP5KR+2eENgimwfG5I
+ TPtP8+A6JP1Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9919"; a="167865535"
+X-IronPort-AV: E=Sophos;i="5.81,238,1610438400"; d="scan'208";a="167865535"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2021 16:49:18 -0800
-IronPort-SDR: J9Y1cPxBOqkMSqBlXVxAyMKHdXz3bOTZ6QWhFCYOJFXIkotC51XUhFBTXSIS5uELwiYy1VkrGk
- BC79uQFsu+/g==
-X-IronPort-AV: E=Sophos;i="5.81,238,1610438400"; d="scan'208";a="370386789"
+ 10 Mar 2021 16:49:20 -0800
+IronPort-SDR: xjT+db+56M2a0C/cPl5xYfXekIHi8yIzUHQwULkIFBPhKHTd24Xgjn/qDofhFvrXFpATuknXLX
+ 0aArc4iM1VTQ==
+X-IronPort-AV: E=Sophos;i="5.81,238,1610438400"; d="scan'208";a="370386798"
 Received: from theer-mobl2.amr.corp.intel.com (HELO pbossart-mobl3.intel.com)
  ([10.212.101.109])
  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2021 16:49:16 -0800
+ 10 Mar 2021 16:49:18 -0800
 From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 To: alsa-devel@alsa-project.org
 Cc: tiwai@suse.de, broonie@kernel.org, linux-kernel@vger.kernel.org,
  Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
  Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Lumi Lee <lumi.lee@mediatek.com>,
  linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
  linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH 1/4] ASoC: mediatek: mtk-btcvsd: remove useless assignment
-Date: Wed, 10 Mar 2021 18:49:01 -0600
-Message-Id: <20210311004904.121205-2-pierre-louis.bossart@linux.intel.com>
+Subject: [PATCH 2/4] ASoC: mediatek: mt2701: align function prototype
+Date: Wed, 10 Mar 2021 18:49:02 -0600
+Message-Id: <20210311004904.121205-3-pierre-louis.bossart@linux.intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210311004904.121205-1-pierre-louis.bossart@linux.intel.com>
 References: <20210311004904.121205-1-pierre-louis.bossart@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_004920_267933_518BE41E 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20210311_004922_513745_1BB73D2C 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,31 +84,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-cppcheck warning:
+cppcheck warnings:
 
-sound/soc/mediatek/common/mtk-btcvsd.c:783:34: style: Variable 'avail'
-is assigned a value that is never used. [unreadVariable]
- int written_size = count, avail = 0, cur_write_idx, write_size, cont;
-                                 ^
+sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c:102:30:
+style:inconclusive: Function 'mt2701_afe_enable_i2s' argument 2 names
+different: declaration 'path' definition
+'i2s_path'. [funcArgNamesDifferent]
+     struct mt2701_i2s_path *i2s_path,
+                             ^
+sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h:21:30: note:
+Function 'mt2701_afe_enable_i2s' argument 2 names different:
+declaration 'path' definition 'i2s_path'.
+     struct mt2701_i2s_path *path,
+                             ^
+sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c:102:30: note:
+Function 'mt2701_afe_enable_i2s' argument 2 names different:
+declaration 'path' definition 'i2s_path'.
+
+     struct mt2701_i2s_path *i2s_path,
+                             ^
+sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c:128:32:
+style:inconclusive: Function 'mt2701_afe_disable_i2s' argument 2 names
+different: declaration 'path' definition
+'i2s_path'. [funcArgNamesDifferent]
+       struct mt2701_i2s_path *i2s_path,
+                               ^
+sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h:24:32: note:
+Function 'mt2701_afe_disable_i2s' argument 2 names different:
+declaration 'path' definition 'i2s_path'.
+       struct mt2701_i2s_path *path,
+                               ^
+sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c:128:32: note:
+Function 'mt2701_afe_disable_i2s' argument 2 names different:
+declaration 'path' definition 'i2s_path'.
+       struct mt2701_i2s_path *i2s_path,
+                               ^
 
 Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 ---
- sound/soc/mediatek/common/mtk-btcvsd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
-index a554c57b6460..f85b5ea180ec 100644
---- a/sound/soc/mediatek/common/mtk-btcvsd.c
-+++ b/sound/soc/mediatek/common/mtk-btcvsd.c
-@@ -780,7 +780,7 @@ static ssize_t mtk_btcvsd_snd_write(struct mtk_btcvsd_snd *bt,
- 				    char __user *buf,
- 				    size_t count)
- {
--	int written_size = count, avail = 0, cur_write_idx, write_size, cont;
-+	int written_size = count, avail, cur_write_idx, write_size, cont;
- 	unsigned int cur_buf_ofs = 0;
- 	unsigned long flags;
- 	unsigned int packet_size = bt->tx->packet_size;
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h
+index 580fead2ab05..0bd82fbda176 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h
+@@ -18,10 +18,10 @@ int mt2701_afe_enable_clock(struct mtk_base_afe *afe);
+ int mt2701_afe_disable_clock(struct mtk_base_afe *afe);
+ 
+ int mt2701_afe_enable_i2s(struct mtk_base_afe *afe,
+-			  struct mt2701_i2s_path *path,
++			  struct mt2701_i2s_path *i2s_path,
+ 			  int dir);
+ void mt2701_afe_disable_i2s(struct mtk_base_afe *afe,
+-			    struct mt2701_i2s_path *path,
++			    struct mt2701_i2s_path *i2s_path,
+ 			    int dir);
+ int mt2701_afe_enable_mclk(struct mtk_base_afe *afe, int id);
+ void mt2701_afe_disable_mclk(struct mtk_base_afe *afe, int id);
 -- 
 2.25.1
 
