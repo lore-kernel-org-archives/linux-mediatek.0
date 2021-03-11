@@ -2,77 +2,77 @@ Return-Path: <SRS0=BnLp=IJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16D51C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 12:39:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A397C433E6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 16:22:22 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 80613601FC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 12:39:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80613601FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id D451164F97
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 16:22:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D451164F97
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/17ObC59LBCWt3GOu4A4aC9oW0ut3tX0RF+WkQrzGOs=; b=JOrtAD3g+28c0GzzISEqFP2mP
-	hVkQVnKBybEQhLn43R7joG29+SxSvjVGM075LOSbFSLnQe0M9YYsHdWizc7QATdZROsc79qalCcSj
-	SSw9gHugIm5oWFi0mXIVWlHsPc5Xi4Az3u0v+dtgcMF53kaQH7ru3fNBd2mG1eJfOsch98HAngsyY
-	ZXMSxvagp7hoJ7jJGqAFXZfsgf3qvGD4a63qrU7eolbMZIrptz/9FUc7A6Ww7b2CQKg3vXLu+/AoE
-	BINE8jKa/k3aUOw7H+Tn9yyRJsbCGRzYNcb/LlqJJAnctOSHelOUqei+hPt+ioFmEYsZWvHqARZvn
-	jti7boQNA==;
+	 bh=D2s4Xf8aZQHLenIr2cPwAb1hkz/GWMaeeD7bQ3ras6s=; b=ialdu1Qbg3gtmGT/UhDlSdCFC
+	4Hycr4N7InItdsXfm2KvLmenZboRfuqze+4t5G62dtRcV25VU7xqBXWZkSmLAb1mvueDqtbIMsMxW
+	slauEi9f062+w+MvWj0044IbvKVhnXzh+BCOgxbxCk2WwzD0Y0SkJUh8yQ20XAamw/Pqis4KK8J9m
+	7sD/R5yKeFATavQc9uvMx57OiiEhwMruLTx3dAiEKEUtYHW2/Cob2INwSSOXN9ZqAPK4O3i6h3Kz9
+	W5XsqggWmNL7Ycj6Fbxh/JHelE3pfqxIvwbToaXd1T0Kl6mI9kejHFLHa6ovfoJHp9sf+oxWohIsW
+	qRhCdWYcg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKKaq-00986w-LR; Thu, 11 Mar 2021 12:39:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lKO4d-009Yqc-8r; Thu, 11 Mar 2021 16:22:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKKaX-00982c-PE; Thu, 11 Mar 2021 12:38:52 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E1801601FC;
- Thu, 11 Mar 2021 12:38:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615466328;
- bh=kiZx6X2u4fkLyNZRYPGNjVsvCuNlk6cl7UlHxmmB1sE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jJgsZKR1DIU5WZLHXgEhCqhcLpQQggquOzflc2nNlTmlTmFe+BkFxqUww+070b3wi
- j+z0snIPYD2fqtslQ8Xqh69Bsbhy2VdKjKDbYg3I+FeWIrhBzE+REU9ujYj8VLzAh+
- hEQbnLNv19tSPP1NcRrClSze0OI8yifmVNc4GfjUKlGc3Mub2axAY0fEVpr4lrfZiG
- 4FxqF5g/duMRu8+oaSC7+lPoraPURFQjQp5RxQ/qKsB/Ve5DnB4BcfikdP4jsXNzC7
- zDk+Fr4WJxIU0bY040HiylXA0evyqD5L0guCEiIIbzise6wtDY/WCwPKCnW7r38KCA
- XdRVIIQBOl69w==
-Received: by pali.im (Postfix)
- id 0C4E18A7; Thu, 11 Mar 2021 13:38:44 +0100 (CET)
-Date: Thu, 11 Mar 2021 13:38:44 +0100
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- maz@kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Sj Huang <sj.huang@mediatek.com>, youlin.pei@mediatek.com,
- chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com,
- sin_jieyang@mediatek.com, drinkcat@chromium.org,
- Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com
-Subject: Re: [v8,3/7] PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
-Message-ID: <20210311123844.qzl264ungtk7b6xz@pali>
-References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
- <20210224061132.26526-4-jianjun.wang@mediatek.com>
+ id 1lKO4W-009YpE-2P; Thu, 11 Mar 2021 16:22:05 +0000
+X-UUID: db09bb93ef894b3fbce150beeaf87571-20210311
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=yOWz7EcUFXukHlQeneozmQanXXbAS3lida/J9lse/KM=; 
+ b=YwdYtuSXDo92iEDEpdEYBNBFRfie/g+/NVpoPncA9L40vFAJLyRhSsOBusjP2n7GhLaXKqRa9KmN6rZIfER9nwj0EE0U2bs/sqIHwEKON8VTROkW/3sR7Y+dnXoEWkR82URZhnwKX2CxRqjhgzX0s9nHsFm726m51v4bJHSxzUQ=;
+X-UUID: db09bb93ef894b3fbce150beeaf87571-20210311
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 961682649; Thu, 11 Mar 2021 08:21:53 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 11 Mar 2021 08:11:50 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Mar 2021 00:11:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 12 Mar 2021 00:11:43 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <daniel@0x0f.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+CC: <daniel@thingy.jp>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <maz@kernel.org>, <tglx@linutronix.de>,
+ <yj.chiang@mediatek.com>
+Subject: Re: [PATCH v2] irqchip/irq-mst: Support polarity configuration
+Date: Fri, 12 Mar 2021 00:11:40 +0800
+Message-ID: <20210311161140.32678-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <CAFr9PXmHhB=PT1kRoYYowf2dw2fqa1-LGCD5S52hW9jJtq5Q4w@mail.gmail.com>
+References: <CAFr9PXmHhB=PT1kRoYYowf2dw2fqa1-LGCD5S52hW9jJtq5Q4w@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210224061132.26526-4-jianjun.wang@mediatek.com>
-User-Agent: NeoMutt/20180716
+X-TM-SNTS-SMTP: F57B12502744B967590C3F5378BE9D0A449D426B3AD3C6D8362E0B0796EBA2102000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_123850_203389_DF01088F 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20210311_162200_720599_76096F1C 
+X-CRM114-Status: GOOD (  31.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,47 +89,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday 24 February 2021 14:11:28 Jianjun Wang wrote:
-> +static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
-> +{
-...
-> +
-> +	/* Delay 100ms to wait the reference clocks become stable */
-> +	msleep(100);
-> +
-> +	/* De-assert PERST# signal */
-> +	val &= ~PCIE_PE_RSTB;
-> +	writel_relaxed(val, port->base + PCIE_RST_CTRL_REG);
+From: Daniel Palmer <daniel@0x0f.com>
 
-Hello! This is a new driver which introduce yet another custom timeout
-prior PERST# signal for PCIe card is de-asserted. Timeouts for other
-drivers I collected in older email [2].
+> On Thu, 11 Mar 2021 at 12:12, Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
+> > For a fiq controller, the input edge signal will be convert to level and
+> > keep the interrupt status until we do EOI operation.
+> > That means if a rising edge input if trigger the ouput line will keep high
+> > until we clear the interrupt status.
+> 
+> I think maybe the fiq is always edge triggered?
+> It seems like it latches on an edge and holds it's output to the GIC
+> high until it is reset by eoi and then only triggers again on another
+> edge.
+> I can experiment to confirm that's what it actually does for the chips I have.
+> 
+> Then it seems like the irq version is almost just a configurable
+> inverter that passes either the input signal or the inverted input
+> signal to the GIC.
+> 
+> So maybe fiq should only accept edge type interrupts and irq could
+> accept either?
 
-Please look at my email [1] about PCIe Warm Reset if you have any clue
-about it. Lorenzo and Rob already expressed that this timeout should not
-be driver specific. But nobody was able to "decode" and "understand"
-PCIe spec yet about these timeouts.
+Why irq could accept either?
+And if it's a fiq controller, we can just remove 'mstar,intc-no-eoi' from the
+device node.
+Whether the controller is fiq or irq, the interrupt request from mst-intc to
+parent GIC is level sensitive. Because if the source is edge triggered, mst-intc
+always latch it.
 
-> +
-> +	/* Check if the link is up or not */
-> +	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_REG, val,
-> +				 !!(val & PCIE_PORT_LINKUP), 20,
-> +				 50 * USEC_PER_MSEC);
+> 
+> >  static int mst_irq_chip_set_type(struct irq_data *data, unsigned int type)
+> >  {
+> > -       if (type != IRQ_TYPE_LEVEL_LOW && type != IRQ_TYPE_LEVEL_HIGH)
+> > -               return -EINVAL;
+> > -
+> > -       if (type == IRQ_TYPE_LEVEL_LOW) {
+> > +       if (type == IRQ_TYPE_EDGE_FALLING) {
+> > +               mst_set_irq(data, INTC_REV_POLARITY);
+> > +               type = IRQ_TYPE_EDGE_RISING;
 
-IIRC, you need to wait at least 100ms after de-asserting PERST# signal
-as it is required by PCIe specs and also because experiments proved that
-some Compex wifi cards (e.g. WLE900VX) are not detected if you do not
-wait this minimal time.
+The interrupt triggered type of the parent GIC should be active high,
+I will modify it.
 
-> +	if (err) {
-> +		val = readl_relaxed(port->base + PCIE_LTSSM_STATUS_REG);
-> +		dev_err(port->dev, "PCIe link down, ltssm reg val: %#x\n", val);
-> +		return err;
-> +	}
+> > +       } else if (type == IRQ_TYPE_LEVEL_LOW) {
+> >                 mst_set_irq(data, INTC_REV_POLARITY);
+> >                 type = IRQ_TYPE_LEVEL_HIGH;
+> >         }
+> 
+> I think this still needs the logic to check that type is something we
+> can handle (not IRQ_TYPE_EDGE_BOTH) and maybe if the fiq controller
 
-[1] - https://lore.kernel.org/linux-pci/20210310110535.zh4pnn4vpmvzwl5q@pali/
-[2] - https://lore.kernel.org/linux-pci/20200424092546.25p3hdtkehohe3xw@pali/
+Agree.
 
+> can only do edge interrupts level types should return -EINVAL?
+
+No matter what triggered type of an irq we write in dts is edge or level triggered,
+the init and handling flow is the same except we need to do eoi if the
+controller doesn't have the property 'mstar,intc-no-eoi'.
+So maybe we don't need to do extra work to check the type for an fiq or irq controller?
+
+And I will update the patch as following:
+
+diff --git a/drivers/irqchip/irq-mst-intc.c b/drivers/irqchip/irq-mst-intc.c
+index 841b9b1c2699..f46ade7b1775 100644
+--- a/drivers/irqchip/irq-mst-intc.c
++++ b/drivers/irqchip/irq-mst-intc.c
+@@ -90,13 +90,14 @@ static void mst_intc_eoi_irq(struct irq_data *d)
+ 
+ static int mst_irq_chip_set_type(struct irq_data *data, unsigned int type)
+ {
+-	if (type != IRQ_TYPE_LEVEL_LOW && type != IRQ_TYPE_LEVEL_HIGH)
++	if (type != IRQ_TYPE_EDGE_RISING && type != IRQ_TYPE_EDGE_FALLING &&
++	    type != IRQ_TYPE_LEVEL_HIGH && type != IRQ_TYPE_LEVEL_LOW)
+ 		return -EINVAL;
+ 
+-	if (type == IRQ_TYPE_LEVEL_LOW) {
++	if (type == IRQ_TYPE_LEVEL_LOW || type == IRQ_TYPE_EDGE_FALLING)
+ 		mst_set_irq(data, INTC_REV_POLARITY);
+-		type = IRQ_TYPE_LEVEL_HIGH;
+-	}
++
++	type = IRQ_TYPE_LEVEL_HIGH;
+ 
+ 	return irq_chip_set_type_parent(data, type);
+ }
+@@ -219,11 +220,12 @@ static int mst_intc_domain_alloc(struct irq_domain *domain, unsigned int virq,
+ 	parent_fwspec.param[1] = cd->irq_start + hwirq;
+ 
+ 	/*
+-	 * If the irq signal is active low, configure it to active high
+-	 * to meet GIC SPI spec in mst_irq_chip_set_type via REV_POLARITY bit
++	 * mst-intc latch the interrupt request if it's edge triggered,
++	 * so the output signal to parent GIC is always level sensitive.
++	 * And if the irq signal is active low, configure it to active high
++	 * to meet GIC SPI spec in mst_irq_chip_set_type via REV_POLARITY bit.
+ 	 */
+-	if (fwspec->param[2] == IRQ_TYPE_LEVEL_LOW)
+-		parent_fwspec.param[2] = IRQ_TYPE_LEVEL_HIGH;
++	parent_fwspec.param[2] = IRQ_TYPE_LEVEL_HIGH;
+ 
+ 	return irq_domain_alloc_irqs_parent(domain, virq, nr_irqs, &parent_fwspec);
+ }
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
