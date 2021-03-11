@@ -2,83 +2,77 @@ Return-Path: <SRS0=BnLp=IJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8D2DC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 12:33:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16D51C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 12:39:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43E4764FDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 12:33:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43E4764FDF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=0x0f.com
+	by mail.kernel.org (Postfix) with ESMTPS id 80613601FC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Mar 2021 12:39:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80613601FC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uBd7aM3nIXdBykF4W+eAS6TcDVh5h+Gdk4t2zgLp6Bk=; b=q7DywdavqZ5ypO9n0VMuz1zZy
-	kpKiHy7KwGvR03V6qc0zK381uR7mr1Iar4ZnZx6s1kB2SIPEURugz6CeZsc/d7E07t6vUo0OvoJBX
-	YVlujR4vzDlcHrYHN+KNwZSdmc394jZnqresFt296+sAC6Ly2goitBb6mLbsCeauUWzteWnd1Dz3A
-	z2JYwHwmXHOyX+DHb2EqttEyK8CuQWqQNiQ0Uo4TbxKfpguEjRvMoQPEs9W+dIY4Mf74bZKpH1i8p
-	YC5LQSqF2tdg4Uv12l5oe5xbF9qBdc/DDohMmVlo8Zv78HQMNcJNuFfRvMVeSFqqZ+aPy4UOdBsGJ
-	9fUfEAFVQ==;
+	 bh=/17ObC59LBCWt3GOu4A4aC9oW0ut3tX0RF+WkQrzGOs=; b=JOrtAD3g+28c0GzzISEqFP2mP
+	hVkQVnKBybEQhLn43R7joG29+SxSvjVGM075LOSbFSLnQe0M9YYsHdWizc7QATdZROsc79qalCcSj
+	SSw9gHugIm5oWFi0mXIVWlHsPc5Xi4Az3u0v+dtgcMF53kaQH7ru3fNBd2mG1eJfOsch98HAngsyY
+	ZXMSxvagp7hoJ7jJGqAFXZfsgf3qvGD4a63qrU7eolbMZIrptz/9FUc7A6Ww7b2CQKg3vXLu+/AoE
+	BINE8jKa/k3aUOw7H+Tn9yyRJsbCGRzYNcb/LlqJJAnctOSHelOUqei+hPt+ioFmEYsZWvHqARZvn
+	jti7boQNA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKKUl-0096DI-2s; Thu, 11 Mar 2021 12:32:51 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1lKKaq-00986w-LR; Thu, 11 Mar 2021 12:39:10 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKKUA-009632-T1
- for linux-mediatek@lists.infradead.org; Thu, 11 Mar 2021 12:32:19 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id l132so20343588qke.7
- for <linux-mediatek@lists.infradead.org>; Thu, 11 Mar 2021 04:32:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0x0f.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=E7/MPGIZ4WfmL4CRUvFWlovc/8lRT5Q/WOgdo9DvGsk=;
- b=q1H/SxQD3WDk3KLYZMwT6Gf63+upJzj5dCh1F/YNzNXw5uyBTozuGVXrxupcAsUfIz
- 7j+gAgISYDyG2F5C7PkLQszFIFP9Mg1Pk84HaCQLRkMKJyxa2LY1Rn5Lpp6aLd0aEyw0
- pBr8pscVWyZww9IlPVkBnPHRacGB6Zu17GRrU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=E7/MPGIZ4WfmL4CRUvFWlovc/8lRT5Q/WOgdo9DvGsk=;
- b=S56I0MI/QJ3kbck9PwVPYhd48hQJYnHDWhi7utQP4XVsPBH9eNi3T6AGT/HE8l3oJN
- naAmlOpfBvwdKNhYcKwz9kS/9PamGl+MKxsZy44n+/yE5+fLFrMaqg1dNm8TEarZbWHu
- uvcB79KQVbfGMjv1g/PNSRbggs36GTOUcdAfcb6t10B9TT/Dlh1BdMYQ3pM19GESxN5E
- FKtO4tRpAGsUmXfuqz0XjOsK40kLpGQSQr3ldouVOlvj8F0lFwGFcO/fMWNkrtYQ3WqO
- vCTXj3wk0sMJtP5Bqd4qHZ4Hyy79z6yWTwyNyZPNduYILJ3IeX6avR69ltznUSHHcn1e
- rJWQ==
-X-Gm-Message-State: AOAM533Iw2tGG2MIhqD4eHys6Y6eG0ebo0SGOElqgnwb4M7N5m0ArGlo
- 44nJxKVGXjkGQkMmitq5ZbyUbHHrRKVrTTdszmnkxw==
-X-Google-Smtp-Source: ABdhPJyqzMhTize0o3im7e/84suA7f3v+q1shYGatAI+5T5rjPbXSF2InfyTmTybfE7igSCyXptOIKTj8WO8ntrhm/s=
-X-Received: by 2002:a37:ef09:: with SMTP id j9mr7386300qkk.390.1615465931646; 
- Thu, 11 Mar 2021 04:32:11 -0800 (PST)
+ id 1lKKaX-00982c-PE; Thu, 11 Mar 2021 12:38:52 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E1801601FC;
+ Thu, 11 Mar 2021 12:38:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1615466328;
+ bh=kiZx6X2u4fkLyNZRYPGNjVsvCuNlk6cl7UlHxmmB1sE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jJgsZKR1DIU5WZLHXgEhCqhcLpQQggquOzflc2nNlTmlTmFe+BkFxqUww+070b3wi
+ j+z0snIPYD2fqtslQ8Xqh69Bsbhy2VdKjKDbYg3I+FeWIrhBzE+REU9ujYj8VLzAh+
+ hEQbnLNv19tSPP1NcRrClSze0OI8yifmVNc4GfjUKlGc3Mub2axAY0fEVpr4lrfZiG
+ 4FxqF5g/duMRu8+oaSC7+lPoraPURFQjQp5RxQ/qKsB/Ve5DnB4BcfikdP4jsXNzC7
+ zDk+Fr4WJxIU0bY040HiylXA0evyqD5L0guCEiIIbzise6wtDY/WCwPKCnW7r38KCA
+ XdRVIIQBOl69w==
+Received: by pali.im (Postfix)
+ id 0C4E18A7; Thu, 11 Mar 2021 13:38:44 +0100 (CET)
+Date: Thu, 11 Mar 2021 13:38:44 +0100
+From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ maz@kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Sj Huang <sj.huang@mediatek.com>, youlin.pei@mediatek.com,
+ chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com,
+ sin_jieyang@mediatek.com, drinkcat@chromium.org,
+ Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com
+Subject: Re: [v8,3/7] PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
+Message-ID: <20210311123844.qzl264ungtk7b6xz@pali>
+References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
+ <20210224061132.26526-4-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-References: <CAFr9PX=dz1kt_BphpWr250asLiHFQNeBgNPhuPje==hzkcHWhg@mail.gmail.com>
- <20210311031242.24232-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20210311031242.24232-1-mark-pk.tsai@mediatek.com>
-From: Daniel Palmer <daniel@0x0f.com>
-Date: Thu, 11 Mar 2021 21:33:35 +0900
-Message-ID: <CAFr9PXmHhB=PT1kRoYYowf2dw2fqa1-LGCD5S52hW9jJtq5Q4w@mail.gmail.com>
-Subject: Re: [PATCH v2] irqchip/irq-mst: Support polarity configuration
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Daniel Palmer <daniel@thingy.jp>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, 
- Matthias Brugger <matthias.bgg@gmail.com>, Marc Zyngier <maz@kernel.org>, 
- Thomas Gleixner <tglx@linutronix.de>,
- =?UTF-8?B?WUogQ2hpYW5nICjmsZ/oi7HmnbAp?= <yj.chiang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20210224061132.26526-4-jianjun.wang@mediatek.com>
+User-Agent: NeoMutt/20180716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_123215_518871_977C807A 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20210311_123850_203389_DF01088F 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,48 +89,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark-PK.
+On Wednesday 24 February 2021 14:11:28 Jianjun Wang wrote:
+> +static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+> +{
+...
+> +
+> +	/* Delay 100ms to wait the reference clocks become stable */
+> +	msleep(100);
+> +
+> +	/* De-assert PERST# signal */
+> +	val &= ~PCIE_PE_RSTB;
+> +	writel_relaxed(val, port->base + PCIE_RST_CTRL_REG);
 
-On Thu, 11 Mar 2021 at 12:12, Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
-> For a fiq controller, the input edge signal will be convert to level and
-> keep the interrupt status until we do EOI operation.
-> That means if a rising edge input if trigger the ouput line will keep high
-> until we clear the interrupt status.
+Hello! This is a new driver which introduce yet another custom timeout
+prior PERST# signal for PCIe card is de-asserted. Timeouts for other
+drivers I collected in older email [2].
 
-I think maybe the fiq is always edge triggered?
-It seems like it latches on an edge and holds it's output to the GIC
-high until it is reset by eoi and then only triggers again on another
-edge.
-I can experiment to confirm that's what it actually does for the chips I have.
+Please look at my email [1] about PCIe Warm Reset if you have any clue
+about it. Lorenzo and Rob already expressed that this timeout should not
+be driver specific. But nobody was able to "decode" and "understand"
+PCIe spec yet about these timeouts.
 
-Then it seems like the irq version is almost just a configurable
-inverter that passes either the input signal or the inverted input
-signal to the GIC.
+> +
+> +	/* Check if the link is up or not */
+> +	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_REG, val,
+> +				 !!(val & PCIE_PORT_LINKUP), 20,
+> +				 50 * USEC_PER_MSEC);
 
-So maybe fiq should only accept edge type interrupts and irq could
-accept either?
+IIRC, you need to wait at least 100ms after de-asserting PERST# signal
+as it is required by PCIe specs and also because experiments proved that
+some Compex wifi cards (e.g. WLE900VX) are not detected if you do not
+wait this minimal time.
 
->  static int mst_irq_chip_set_type(struct irq_data *data, unsigned int type)
->  {
-> -       if (type != IRQ_TYPE_LEVEL_LOW && type != IRQ_TYPE_LEVEL_HIGH)
-> -               return -EINVAL;
-> -
-> -       if (type == IRQ_TYPE_LEVEL_LOW) {
-> +       if (type == IRQ_TYPE_EDGE_FALLING) {
-> +               mst_set_irq(data, INTC_REV_POLARITY);
-> +               type = IRQ_TYPE_EDGE_RISING;
-> +       } else if (type == IRQ_TYPE_LEVEL_LOW) {
->                 mst_set_irq(data, INTC_REV_POLARITY);
->                 type = IRQ_TYPE_LEVEL_HIGH;
->         }
+> +	if (err) {
+> +		val = readl_relaxed(port->base + PCIE_LTSSM_STATUS_REG);
+> +		dev_err(port->dev, "PCIe link down, ltssm reg val: %#x\n", val);
+> +		return err;
+> +	}
 
-I think this still needs the logic to check that type is something we
-can handle (not IRQ_TYPE_EDGE_BOTH) and maybe if the fiq controller
-can only do edge interrupts level types should return -EINVAL?
-
-Thanks,
-
-Daniel
+[1] - https://lore.kernel.org/linux-pci/20210310110535.zh4pnn4vpmvzwl5q@pali/
+[2] - https://lore.kernel.org/linux-pci/20200424092546.25p3hdtkehohe3xw@pali/
 
 _______________________________________________
 Linux-mediatek mailing list
