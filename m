@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EC92C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 08:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 480FDC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 08:06:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F1CE64F81
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 08:06:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F1CE64F81
+	by mail.kernel.org (Postfix) with ESMTPS id E16A964F83
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 08:06:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E16A964F83
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZmbTxG4z7zylcNquka3/WDvq5Mjc63sidcXl9exNRC0=; b=kZOJgwtfBQjEIe1JjoblGenKJ
-	30VHFzoo8ajmK3R292jSAV8xR/PiXXyViUp6gd5r9iwG9MUVYIaiK3fEajni9R3bDO96PUOHSc1xR
-	bHolWJsYuKaFyPveyFVuHgblpFuESLOOgAh1boGJqzkTgAFPLzVxGpChPLeQ+mZcN5PwY5ywJmdfM
-	lMEowBLcmLTeGx3WX8cDR2QctkKGujOvf3c+/6pCU/uliRF5mKxMtkkhuIOzoKXFYraefa2Gfjx1P
-	nNrJ+kcXPDmbbdutVgk+d2jiOEY29xub32ns+JK7mwhgNko6AbWpud299ia1zNRyeINmt17GwlG3b
-	Q8VXlfCsw==;
+	 bh=8xZqzf/k8vggrX3A6dxBwZFbPHgTVt3BIAXm/1n0pXk=; b=Oa8YQ8p6WnDjjQDbfM/1QN5Md
+	5maOfoCzGyR/toaH8A6HXNwSedwg/Th44q6Cs7xHXXbPtUth/tfju/N0B9lIyazpdDWEA4Rj5AU+x
+	s/W5tJSvkV0aVR+rGsMCfKsWGXholoAVS4RG+aCufGtVjeP0eEj8mS8SHwMmPw6h61LqiB53/9V+H
+	4Y/6WxnGOLSLkJgbEHsL+T8z2r+lJKS+2jdtKhuZXMIlKZioDrRLOadDGC/QtFTXHs+F/jpffrcf4
+	ucyxnv9QkQPQSCLNuV3gjQUjp+9Wg8npgDas53RR5CYnIWPAZQz09mxVpKj+9gz6LVIlD64sEKsFU
+	WSIbfBCrQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKcoA-00AqS5-Qn; Fri, 12 Mar 2021 08:06:07 +0000
+	id 1lKcoL-00AqV4-DT; Fri, 12 Mar 2021 08:06:17 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKco4-00AqQJ-IF; Fri, 12 Mar 2021 08:06:03 +0000
-X-UUID: d0cc0eeeae434179a401f5d30d32062c-20210312
+ id 1lKco8-00AqQJ-DB; Fri, 12 Mar 2021 08:06:07 +0000
+X-UUID: edeb3e5378984083be6246290a51da59-20210312
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=KSpY0oNfEsG9vSYDyyAp2sWtGAsy+0HLjbNZ90NYpJI=; 
- b=bvZg7qzzcnZ8a3USP4eZB4LP1zJS4BxghnjLgk+7tL4j4Ol7Kr9shHSKPvBDzP5OGp6Br/MM/pC1HhAxZfBfAMQWv1Eo1AKKLTIFLulUVeOro1e8omV8Ghti5Whwkx/GSVVnL5y53oMR5ngTKkoPBpK/OliL3CZScU7PhEj1kLs=;
-X-UUID: d0cc0eeeae434179a401f5d30d32062c-20210312
+ bh=IBbRfEXyWE+nM4XfwOyiejTkW1/1toxcj4fFiT+VP2A=; 
+ b=aPvt3hzKSaCU5PaWA76U5NQMuDpAdEXyEtbUroR/UNW+9dcWvO1zZfMcFZ5qbiOqL5IF5Zw3k3HaPUhmWKADv4pWkgogOvL8xupZ5n9GpY5cmRxQA/8rwluSS9ByjUanjcm0Hmq4rnvV26ooKVm2PeYqpNcCWHTYk1Pe+iix5hQ=;
+X-UUID: edeb3e5378984083be6246290a51da59-20210312
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 156811379; Fri, 12 Mar 2021 00:05:57 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 1646064183; Fri, 12 Mar 2021 00:05:57 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Mar 2021 23:55:55 -0800
+ 15.0.1497.2; Thu, 11 Mar 2021 23:55:57 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Mar 2021 15:55:53 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Mar 2021 15:55:55 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Mar 2021 15:55:52 +0800
+ Transport; Fri, 12 Mar 2021 15:55:54 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
  <hverkuil-cisco@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -68,19 +68,17 @@ CC: Irui Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2,
- 3/5] dt-bindings: media: mtk-vcodec: Add binding for MT8192 VENC
-Date: Fri, 12 Mar 2021 15:55:40 +0800
-Message-ID: <20210312075542.5503-4-irui.wang@mediatek.com>
+Subject: [PATCH v2,4/5] media: mtk-vcodec: Add MT8192 H264 venc driver
+Date: Fri, 12 Mar 2021 15:55:41 +0800
+Message-ID: <20210312075542.5503-5-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210312075542.5503-1-irui.wang@mediatek.com>
 References: <20210312075542.5503-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D41D085FA0B30DEA316384025812D65F37495F5E63EFFB251549EDF2FDCE21672000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210312_080601_102374_FC30D071 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20210312_080606_109551_71C7C04F 
+X-CRM114-Status: GOOD (  12.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,25 +95,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Updates binding document for mt8192 encoder driver.
+Add MT8192 venc driver's compatible and device private data.
 
 Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 ---
- Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 1 +
- 1 file changed, 1 insertion(+)
+ .../media/platform/mtk-vcodec/mtk_vcodec_drv.h    |  1 +
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c      | 15 +++++++++++++++
+ 2 files changed, 16 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-index d852683d3e6f..8f196f2d6905 100644
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-@@ -9,6 +9,7 @@ Required properties:
-   "mediatek,mt8173-vcodec-enc" for mt8173 avc encoder.
-   "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
-   "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
-+  "mediatek,mt8192-vcodec-enc" for MT8192 encoder.
- - reg : Physical base address of the video codec registers and length of
-   memory mapped region.
- - interrupts : interrupt number to the cpu.
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 869d958d2b99..39e78aa670a3 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -302,6 +302,7 @@ struct mtk_vcodec_ctx {
+ enum mtk_chip {
+ 	MTK_MT8173,
+ 	MTK_MT8183,
++	MTK_MT8192,
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index 26b089e81213..981299a44c4a 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -425,12 +425,27 @@ static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
+ 	.core_id = VENC_SYS,
+ };
+ 
++static const struct mtk_vcodec_enc_pdata mt8192_pdata = {
++	.chip = MTK_MT8192,
++	.uses_ext = true,
++	/* MT8192 supports the same capture formats as MT8183*/
++	.capture_formats = mtk_video_formats_capture_mt8183,
++	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_mt8183),
++	/* MT8192 supports the same output formats as MT8173 */
++	.output_formats = mtk_video_formats_output_mt8173,
++	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
++	.min_bitrate = 64,
++	.max_bitrate = 100000000,
++	.core_id = VENC_SYS,
++};
++
+ static const struct of_device_id mtk_vcodec_enc_match[] = {
+ 	{.compatible = "mediatek,mt8173-vcodec-enc",
+ 			.data = &mt8173_avc_pdata},
+ 	{.compatible = "mediatek,mt8173-vcodec-enc-vp8",
+ 			.data = &mt8173_vp8_pdata},
+ 	{.compatible = "mediatek,mt8183-vcodec-enc", .data = &mt8183_pdata},
++	{.compatible = "mediatek,mt8192-vcodec-enc", .data = &mt8192_pdata},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
 -- 
 2.18.0
 _______________________________________________
