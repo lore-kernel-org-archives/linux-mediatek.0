@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49611C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 14:56:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6505C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 14:56:55 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E4BEE64FB3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 14:56:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E4BEE64FB3
+	by mail.kernel.org (Postfix) with ESMTPS id 62BA664FB3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 14:56:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62BA664FB3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,46 +23,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=B4IMoJppjANrVGqbWz99xHK8sW+mmk1W2KSDSoN7vzA=; b=AoFyrQdBYM17VoP2iL8snUVaD
-	B5d5LnAw4AYjrw+JiRiVIvr5Z8Fc0zaLiyctiDPz9i6sm2veky7stq/ecdon6gGWWuUyQTv9VIsfc
-	mmSvB7gF6gsTDXOrb/QTN9bEXLqHVwK/hhJ56HHgqXGt3NVVOiQMaPPMIzzIEHseOhxrzUWhaFlVK
-	+4u5JxYND1Xhm9vvhbGUklsEnq0/KZDTPqXjQ1PlSNfiDj0gS7i128UZfgd5Zes8Nq6eF7OEngLsY
-	mAtj6BdODjLRIAL6zBp774lQ3Nu3Pah6qewy/+U8cFzex7RGjJEzSjbTpoVzAQejeBDBELa5evtFa
-	0oLqMEPwA==;
+	 bh=K1k2Z5oLpx6+gVS5E0MzG0WwMrIdECUiej4oYmYMtW8=; b=MbJDJWCKpqLOob1MazdjYklmV
+	QqZFlZPTfW/+Rh5kBhPCy2KCLVRHlnYJoY+VLO/soEtjW2LMVVhAakJrGq8XWhzHtIOJyYxUxa9km
+	ySpFnAkEH1XthvJUMfYrFQz66Zd9EgNgr1nmbpwM0oRCgnJOsZ/NaDAUmmyP3vAROwvXXXkxEd02Z
+	vHq4B0HHU6w8VmBp+mjqnlD8N/FW290tO5AeU7q/gNARVfscwPnDSUvVxw3exSB3/dWdO+qTtIanY
+	fkuCgc0x8610QhlOg3+ipqAtEMZdQ9nSafS0WZ/fObwz0H9MNQPLBtkomHZZnxjYPcwl2fvUJCVu+
+	zqfbkN4BA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKjDP-00Bgk8-A4; Fri, 12 Mar 2021 14:56:35 +0000
+	id 1lKjDZ-00Bgms-Ml; Fri, 12 Mar 2021 14:56:45 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKjCy-00Bgeg-VZ; Fri, 12 Mar 2021 14:56:11 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 49D3364FD6;
- Fri, 12 Mar 2021 14:56:04 +0000 (UTC)
+ id 1lKjD0-00Bgf5-IJ; Fri, 12 Mar 2021 14:56:12 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0A9DE64FF3;
+ Fri, 12 Mar 2021 14:56:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615560966;
- bh=dYV6M61tO7CKph2cwEeRsM8DUMu4Jp31AOjuDQyUfZs=;
+ s=k20201202; t=1615560969;
+ bh=Ywd2fbIlwdEKuoislyKBKy60FlzB2Pp3hQxuP2yVuMs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lr0i8NnqRRjht4xrRkUfmgtkN6fA8zTuv4k7uOpDhwIvioPQoNvQD+pJo4V4SnDr8
- 29hFbI9yMzqK9So0vqDqYRy4A5fqEivoG6Rd1v0MW7xisNOB4Qym3z0wz+wixCdTpY
- oL6gZyl9Ki2huURi27QwpbpNdhpnJMVVHMFNnk0Pxy+/grf1GZiVOs4JJ9lg4KVxNO
- v9O7u5zb8YRXHPBswo1U6GwjRA/jTimHt8Z7IJuWfQoG065vT/2DSum3fre/zhFc3n
- ORUC9iUM/1GTjrSonSj3oZF/pSnVIIaj1RwSX+uc6JK0IaTbr3Tu8dKfMO2TC7i3mc
- A4BLJ1tOfVQjA==
+ b=WaDs2NOneOopLzjjXKp+V7QkdvG+dKYTsqW2+f6U4FrswBtMZ/Fs6EMTWOwIh9RLN
+ KB09cZ+LOOee+GnsafGTvSdMZ6iJFs6TMGRF7tguuwPZ4AKW9j3ERIXF2VbsnkCKut
+ jqclKst7d4ITY/+wIhrhmA1eJIGthFDH46ztVXlq6GqnEwBU2Fi/WFFujtmKzcN/BQ
+ sJ6+1ykH7jrtAg1KaZqHEPpt5tLtGUGl+8X/ES/bgmweOQ7GIXJUfXAjjHjdcLzEBQ
+ t+p6C7D45BgL5d7e1p1EThv+GQlR1erqkJC1TEsprZYGztHA0cfsrP3LGkIrxeylkz
+ VpOw3RoKFLeZA==
 From: matthias.bgg@kernel.org
 To: lee.jones@linaro.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
  lgirdwood@gmail.com, broonie@kernel.org
 Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Matthias Brugger <mbrugger@suse.com>
-Subject: [PATCH 2/7] dt-bindigns: regulator: mtk: Drop unneeded compatible
-Date: Fri, 12 Mar 2021 15:55:40 +0100
-Message-Id: <20210312145545.26050-2-matthias.bgg@kernel.org>
+Subject: [PATCH 3/7] mfd: mt6397: Drop of_compatible for regulator
+Date: Fri, 12 Mar 2021 15:55:41 +0100
+Message-Id: <20210312145545.26050-3-matthias.bgg@kernel.org>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210312145545.26050-1-matthias.bgg@kernel.org>
 References: <20210312145545.26050-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210312_145609_688980_5CBD9186 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20210312_145610_858282_90C47969 
+X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,76 +82,41 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Matthias Brugger <mbrugger@suse.com>
 
-The regulator does not need to have a device tree compatible, if it's
-part of an MFD. We leave the node name to the SoC specific name (e.g.
-mt6323regulator) to allow older kernels to work with the new binding.
+For regulators a compatible string is superfluous. Drop the string.
 
 Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 ---
- .../bindings/regulator/mt6323-regulator.txt        |  2 +-
- .../bindings/regulator/mt6358-regulator.txt        |  4 +---
- .../bindings/regulator/mt6397-regulator.txt        | 14 +++++---------
- 3 files changed, 7 insertions(+), 13 deletions(-)
+ drivers/mfd/mt6397-core.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-index a48749db4df36..69f32e1a6702e 100644
---- a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-+++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-@@ -19,7 +19,7 @@ LDO:
- Example:
- 
- 	pmic: mt6323 {
--		mt6323regulator: regulators {
-+		mt6323regulator {
- 			mt6323_vproc_reg: buck_vproc{
- 				regulator-name = "vproc";
- 				regulator-min-microvolt = < 700000>;
-diff --git a/Documentation/devicetree/bindings/regulator/mt6358-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
-index 9a90a92f2d7e1..ba1214da5bf7c 100644
---- a/Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
-+++ b/Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
-@@ -23,9 +23,7 @@ Example:
- 	pmic {
- 		compatible = "mediatek,mt6358";
- 
--		mt6358regulator: mt6358regulator {
--			compatible = "mediatek,mt6358-regulator";
--
-+		mt6358regulator {
- 			mt6358_vdram1_reg: buck_vdram1 {
- 				regulator-compatible = "buck_vdram1";
- 				regulator-name = "vdram1";
-diff --git a/Documentation/devicetree/bindings/regulator/mt6397-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
-index c080086d3e629..2b14362ac56e1 100644
---- a/Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
-+++ b/Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
-@@ -1,11 +1,9 @@
- Mediatek MT6397 Regulator
- 
--Required properties:
--- compatible: "mediatek,mt6397-regulator"
--- mt6397regulator: List of regulators provided by this controller. It is named
--  according to its regulator type, buck_<name> and ldo_<name>.
--  The definition for each of these nodes is defined using the standard binding
--  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
-+List of regulators provided by this controller. It is named
-+according to its regulator type, buck_<name> and ldo_<name>.
-+The definition for each of these nodes is defined using the standard binding
-+for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
- 
- The valid names for regulators are::
- BUCK:
-@@ -23,9 +21,7 @@ Example:
- 	pmic {
- 		compatible = "mediatek,mt6397";
- 
--		mt6397regulator: mt6397regulator {
--			compatible = "mediatek,mt6397-regulator";
--
-+		mt6397regulator {
- 			mt6397_vpca15_reg: buck_vpca15 {
- 				regulator-compatible = "buck_vpca15";
- 				regulator-name = "vpca15";
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 7518d74c3b4c3..13037f4bc54e7 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -67,7 +67,6 @@ static const struct mfd_cell mt6323_devs[] = {
+ 		.of_compatible = "mediatek,mt6323-rtc",
+ 	}, {
+ 		.name = "mt6323-regulator",
+-		.of_compatible = "mediatek,mt6323-regulator"
+ 	}, {
+ 		.name = "mt6323-led",
+ 		.of_compatible = "mediatek,mt6323-led"
+@@ -87,7 +86,6 @@ static const struct mfd_cell mt6323_devs[] = {
+ static const struct mfd_cell mt6358_devs[] = {
+ 	{
+ 		.name = "mt6358-regulator",
+-		.of_compatible = "mediatek,mt6358-regulator"
+ 	}, {
+ 		.name = "mt6358-rtc",
+ 		.num_resources = ARRAY_SIZE(mt6358_rtc_resources),
+@@ -107,7 +105,6 @@ static const struct mfd_cell mt6397_devs[] = {
+ 		.of_compatible = "mediatek,mt6397-rtc",
+ 	}, {
+ 		.name = "mt6397-regulator",
+-		.of_compatible = "mediatek,mt6397-regulator",
+ 	}, {
+ 		.name = "mt6397-codec",
+ 		.of_compatible = "mediatek,mt6397-codec",
 -- 
 2.30.1
 
