@@ -2,20 +2,19 @@ Return-Path: <SRS0=zPgu=IK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6921BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 02:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF45BC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 03:41:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DDB7C64F87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 02:27:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDB7C64F87
+	by mail.kernel.org (Postfix) with ESMTPS id 7B55864F95
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 03:41:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B55864F95
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,54 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KC2Z7I+mhpogsqCY4u81r/09YQXh2JXboAH1HPDgxPo=; b=XOGv+40Pmk7X2nuLR/AA2sLN3c
-	JYXu0uouwi6Xe4II5dPJh4Ef/Kht/K4hXuxRv3HLhCIpqLa8fw7fjkiEJkbMwX0uoptsytAOV+bJn
-	Tx1oSrH4vOIQ87+ZZXidioGH2FrcQ+bkebiRd0RgD0vQLcG8HP2uNtd9N8Phk7AtC8A/0txDYyB7F
-	/emv2fBVSDOO6q7OppdJHyIVIAIYqLm2ijAwjXusnTJYQ69ry+oL+4kGWLBiCjFSQwVcc4Mf8oUMS
-	R6oWkBnogN+CtU7bm5K4+Yw11ww3txkT0T+8LPCPZrdFDauqy+L1UPHF/LQ5taijyMkBW6y7DGwmj
-	quPs/Fxg==;
+	bh=1BofiqzlH1xfGmAssEjZeTpcUsO7lUcPgP3ItMLjleI=; b=hpxAurZ1xYgq7ASfSZfJTfLOsL
+	OUs4suaD/OZqAhNV505V3aKZifLs7vGZ5My1p1OmoJ5f7geS2+OUyKq0bxc6UtYYsY/hjPnQn23Ki
+	7bIP9Om1RmqDDg5hWdNxHd+qnYm3o5UDJxKBpHnujs9IbNOALqe3QR3V0d4F3LHfKUlkzqWOrKLp5
+	tbkjkNidWQI12apxQinLdK7oCy9KLElGcG5K0ALmcJMD8BZhicMTFvFSfpEMzCrd7SbBP+8Nx6dzQ
+	MppJNiM2ZduDKos/2MjK6HjhNr68R8pxd3WmTmMcFPHDTDKiMzmgrM45hbM3snpWROJk41SWYIBFD
+	8rjt2SYQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKXWY-00ATQ8-6o; Fri, 12 Mar 2021 02:27:34 +0000
+	id 1lKYfY-00Aa0v-R5; Fri, 12 Mar 2021 03:40:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKXWF-00ATOc-Vu; Fri, 12 Mar 2021 02:27:20 +0000
-X-UUID: 470f77047edc4a95a12d472c9233fbba-20210311
+ id 1lKYf9-00AZyD-UD; Fri, 12 Mar 2021 03:40:37 +0000
+X-UUID: ef4c4e6f304e4e3489a8e0ba8de7c0f0-20210311
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=ugmFOwz402BNUsiMeJgTzZWvAgEn68jwjjfO6i5Ce74=; 
- b=R7AgboNQcnZdYNto+rIaMTzFKwqPnslLD/lNpjIowF/QVQsykb+iw7YGTndiPSa3CYK8uJH4aF73NQ6pj/Y9nxyZg21Ljh7Ir4CZJQlfuo9mxDoDsKFzB34L9D23SFKRT3LwxpTF25qJczPEtiUcY4gCKX2tdE/n0IIP3IHxgY4=;
-X-UUID: 470f77047edc4a95a12d472c9233fbba-20210311
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
+ bh=8XHHmghha2HDXoTi/XEcNYToIBZTFtIIlIABGi2FkN8=; 
+ b=TAofKTU1wWQ2BXCG1eJd+4NnWX/+YgjO9Pp+FUt1vhlM39kyUGORJPk5fvrZH7WF3uLQ2frKnfH2eClPxvRC29FUZcNUOO74yCsoEVp5ziPJrWFESajjQG/GGD8oUCik7A2wxzf8pdYfA+BmI46a/QCQ/4uZ3dHekoMvi1VYumY=;
+X-UUID: ef4c4e6f304e4e3489a8e0ba8de7c0f0-20210311
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <michael.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1900393435; Thu, 11 Mar 2021 18:27:04 -0800
+ with ESMTP id 68112679; Thu, 11 Mar 2021 19:40:21 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Mar 2021 18:26:49 -0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 11 Mar 2021 19:40:19 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Mar 2021 10:26:48 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Mar 2021 10:26:47 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <tzungbi@google.com>, <broonie@kernel.org>, <matthias.bgg@gmail.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <alsa-devel@alsa-project.org>
-CC: <shane.chien@mediatek.com>, <Trevor.Wu@mediatek.com>, Jiaxin Yu
- <jiaxin.yu@mediatek.com>
-Subject: [PATCH] ASoC: mediatek: mt8192: fix tdm out data is valid on rising
- edge
-Date: Fri, 12 Mar 2021 10:26:45 +0800
-Message-ID: <1615516005-781-1-git-send-email-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ 15.0.1497.2; Fri, 12 Mar 2021 11:40:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 12 Mar 2021 11:40:17 +0800
+From: Michael Kao <michael.kao@mediatek.com>
+To: <michael.kao@mediatek.com>, Zhang Rui <rui.zhang@intel.com>, "Daniel
+ Lezcano" <daniel.lezcano@linaro.org>, <linux-pm@vger.kernel.org>,
+ <srv_heupstream@mediatek.com>
+CC: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [v3,0/3] thermal: mediatek: Add LVTS architecture thermal controller
+Date: Fri, 12 Mar 2021 11:40:15 +0800
+Message-ID: <20210312034018.17437-1-michael.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210312_022717_403384_885AAABA 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20210312_034032_730684_39925FB0 
+X-CRM114-Status: GOOD (  15.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,55 +89,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch correct tdm out bck inverse register to AUDIO_TOP_CON3[3].
+This patch move thermal files related to Mediatek to the mediatek folder.
+And introduce the new architecture LVTS (low pressure thermal sensor) driver to report
+the highest temperature in the SoC and record the highest temperature sensor,
+each sensor as a hot zone.
+The LVTS body is divided into two parts, the LVTS controller and the LVTS device.
+The LVTS controller can connect up to 4 LVTS devices, and each LVTS device
+can connect up to 7 TSMCUs.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- sound/soc/mediatek/mt8192/mt8192-dai-tdm.c | 4 +++-
- sound/soc/mediatek/mt8192/mt8192-reg.h     | 8 +++++---
- 2 files changed, 8 insertions(+), 4 deletions(-)
+The architecture will be the first to be used on mt6873 and mt8192.
 
-diff --git a/sound/soc/mediatek/mt8192/mt8192-dai-tdm.c b/sound/soc/mediatek/mt8192/mt8192-dai-tdm.c
-index f5de1d769679..f3bebed2428a 100644
---- a/sound/soc/mediatek/mt8192/mt8192-dai-tdm.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-dai-tdm.c
-@@ -555,7 +555,9 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
- 
- 	/* set tdm */
- 	if (tdm_priv->bck_invert)
--		tdm_con |= 1 << BCK_INVERSE_SFT;
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON3,
-+				   BCK_INVERSE_MASK_SFT,
-+				   0x1 << BCK_INVERSE_SFT);
- 
- 	if (tdm_priv->lck_invert)
- 		tdm_con |= 1 << LRCK_INVERSE_SFT;
-diff --git a/sound/soc/mediatek/mt8192/mt8192-reg.h b/sound/soc/mediatek/mt8192/mt8192-reg.h
-index 562f25c79c34..b9fb80d4afec 100644
---- a/sound/soc/mediatek/mt8192/mt8192-reg.h
-+++ b/sound/soc/mediatek/mt8192/mt8192-reg.h
-@@ -21,6 +21,11 @@ enum {
- /*****************************************************************************
-  *                  R E G I S T E R       D E F I N I T I O N
-  *****************************************************************************/
-+/* AUDIO_TOP_CON3 */
-+#define BCK_INVERSE_SFT                              3
-+#define BCK_INVERSE_MASK                             0x1
-+#define BCK_INVERSE_MASK_SFT                         (0x1 << 3)
-+
- /* AFE_DAC_CON0 */
- #define VUL12_ON_SFT                                   31
- #define VUL12_ON_MASK                                  0x1
-@@ -2079,9 +2084,6 @@ enum {
- #define TDM_EN_SFT                                     0
- #define TDM_EN_MASK                                    0x1
- #define TDM_EN_MASK_SFT                                (0x1 << 0)
--#define BCK_INVERSE_SFT                                1
--#define BCK_INVERSE_MASK                               0x1
--#define BCK_INVERSE_MASK_SFT                           (0x1 << 1)
- #define LRCK_INVERSE_SFT                               2
- #define LRCK_INVERSE_MASK                              0x1
- #define LRCK_INVERSE_MASK_SFT                          (0x1 << 2)
+Change in v3:
+        - [2/3]
+          - change the expression in the lvts_temp_to_raw to dev_s64.
+
+Change in v2:
+	- Rebase to kernel-5.11-rc1.
+	- [2/3]
+	  - sort headers
+	  - remove initial value 0 of msr_raw in the lvts_temp_to_raw.
+	  - disconstruct the api of lvts_read_tc_msr_raw.
+	  - add the initial value max_temp = 0 and compare e.q.
+	    in the lvts_read_all_tc_temperature.
+	  - add the return with invalid number in the lvts_init.
+
+This patch depends on [1].
+
+[1]https://patchwork.kernel.org/project/linux-mediatek/cover/1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com/
+
+Michael Kao (3):
+  thermal: mediatek: Relocate driver to mediatek folder
+  thermal: mediatek: Add LVTS drivers for SoC theraml zones
+  dt-bindings: thermal: Add binding document for mt6873 thermal
+    controller
+
+ .../thermal/mediatek-thermal-lvts.yaml        |   81 ++
+ drivers/thermal/Kconfig                       |   14 +-
+ drivers/thermal/Makefile                      |    2 +-
+ drivers/thermal/mediatek/Kconfig              |   33 +
+ drivers/thermal/mediatek/Makefile             |    2 +
+ .../{mtk_thermal.c => mediatek/soc_temp.c}    |    0
+ drivers/thermal/mediatek/soc_temp_lvts.c      | 1287 +++++++++++++++++
+ drivers/thermal/mediatek/soc_temp_lvts.h      |  312 ++++
+ 8 files changed, 1720 insertions(+), 11 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
+ create mode 100644 drivers/thermal/mediatek/Kconfig
+ create mode 100644 drivers/thermal/mediatek/Makefile
+ rename drivers/thermal/{mtk_thermal.c => mediatek/soc_temp.c} (100%)
+ create mode 100644 drivers/thermal/mediatek/soc_temp_lvts.c
+ create mode 100644 drivers/thermal/mediatek/soc_temp_lvts.h
+
 -- 
 2.18.0
 _______________________________________________
