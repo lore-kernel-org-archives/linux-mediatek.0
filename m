@@ -2,91 +2,60 @@ Return-Path: <SRS0=zPgu=IK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C6C6C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 09:15:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59A49C43331
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 10:35:20 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B90C264FD9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 09:15:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B90C264FD9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id D6B3165039
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 10:35:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6B3165039
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=alpha.franken.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
-	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1aOnR9HPUDwc/A5UvSe3aHbukmxIyztXRm6QGZQZnrY=; b=h56a1O4EWp6m70zkIznXgBWZn
-	LAkyDKtQXj3ptg76sqpT3FM8J2NLZUk4qj+8lsQZe3NtmFi20W0peDQQ7Z5DwDzl+cb+5KA/EvNtI
-	X15Ij/hRGCS2AI/U/i0JYdKCdjkG3zFvOZfE/SDRmXtOjee4D43DFbhTZ3Fz0i51DtZbNYIcESLnp
-	1LrgsrWh+yG+QX886W7h5YIjf9RpY0NeOI9/Vm0rwpujD0ckFYjvj2BwdsS7KCY2zuSkdxyf4Kb0d
-	wH6ov//N+zGjVpzhKpiptDQvWkQajoLC0mh3dW9ZF+0e/FEN4czOXQJVMKLqhdMpCd6xwGMGQtDtD
-	N0YoeluSg==;
+	 bh=xl20b4YzghUSIp8+g+heQRXVB9Ey/N/0i2Unt3GZBnM=; b=iqxU37a5vplteqOCsubB/wCCe
+	eSXYjFC+BsxGzQN/CS4pTL2qf+hfjHLVu4vGLHMz6JMTz0ieyY+0slxpHX8UOlURMav60+CERsJuL
+	4zvyd1I7+Eif/LFpNiNajfWHYUpIKZ3PZjqc9DZyYK7axjCwqhoeuLuU/l0jNBadXHVkuRwhSi7Ul
+	NbY+hOYY2dRa4DHcmxY43nrdEqKEml/Xna010ppMn4JRCLH/zWcsM5ewg+wkjywzmDouCbne7gUrl
+	otOxASq6MazoqRWUane8dq+ldhmKdo9sg3jKKd6ooU02HD3t1FYEKWDIgziA7AhU+BBPZFafxEgca
+	1yBK05wig==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKdtH-00AyvM-9S; Fri, 12 Mar 2021 09:15:29 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKdsk-00AypV-F2; Fri, 12 Mar 2021 09:14:57 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9B67B64FD6;
- Fri, 12 Mar 2021 09:14:52 +0000 (UTC)
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1lKdsg-001Ajr-NA; Fri, 12 Mar 2021 09:14:50 +0000
-Date: Fri, 12 Mar 2021 09:14:49 +0000
-Message-ID: <87im5wg2d2.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
- <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- "Matthias\ Brugger" <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- "Sj\ Huang" <sj.huang@mediatek.com>, <youlin.pei@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
- <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>
-Subject: Re: [v8,5/7] PCI: mediatek-gen3: Add MSI support
-In-Reply-To: <1615456065.25662.60.camel@mhfsdcap03>
-References: <20210224061132.26526-1-jianjun.wang@mediatek.com>
- <20210224061132.26526-6-jianjun.wang@mediatek.com>
- <87pn08y3ja.wl-maz@kernel.org>
- <1615358929.25662.47.camel@mhfsdcap03>
- <87a6rbxs4w.wl-maz@kernel.org>
- <1615456065.25662.60.camel@mhfsdcap03>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: jianjun.wang@mediatek.com, bhelgaas@google.com,
- robh+dt@kernel.org, lorenzo.pieralisi@arm.com, ryder.lee@mediatek.com,
- p.zabel@pengutronix.de, matthias.bgg@gmail.com, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- sj.huang@mediatek.com, youlin.pei@mediatek.com, chuanjia.liu@mediatek.com,
- qizhong.cheng@mediatek.com, sin_jieyang@mediatek.com, drinkcat@chromium.org,
- Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+	id 1lKf8Q-00BBk1-9n; Fri, 12 Mar 2021 10:35:10 +0000
+Received: from elvis.franken.de ([193.175.24.41])
+ by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lKf8I-00BBez-Mi
+ for linux-mediatek@lists.infradead.org; Fri, 12 Mar 2021 10:35:04 +0000
+Received: from uucp (helo=alpha)
+ by elvis.franken.de with local-bsmtp (Exim 3.36 #1)
+ id 1lKf7u-0007WV-06; Fri, 12 Mar 2021 11:34:38 +0100
+Received: by alpha.franken.de (Postfix, from userid 1000)
+ id 01657C1E4A; Fri, 12 Mar 2021 11:33:41 +0100 (CET)
+Date: Fri, 12 Mar 2021 11:33:41 +0100
+From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Cc: John Crispin <john@phrozen.org>, linux-mediatek@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] MIPS: ralink: select WEAK_REORDERING_BEYOND_LLSC on MT7621
+Message-ID: <20210312103341.GG7027@alpha.franken.de>
+References: <20210307190806.5211-1-ilya.lipnitskiy@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210307190806.5211-1-ilya.lipnitskiy@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210312_091455_210792_EC2DB01E 
-X-CRM114-Status: GOOD (  34.04  )
+X-CRM114-CacheID: sfid-20210312_103503_060597_D03DEB69 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,62 +72,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 11 Mar 2021 09:47:45 +0000,
-Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+On Sun, Mar 07, 2021 at 11:08:06AM -0800, Ilya Lipnitskiy wrote:
+> Upstream a long-standing OpenWrt patch for RALINK MT7621 SoC. Selecting
+> WEAK_REORDERING_BEYOND_LLSC fixes random kernel hangs. This bug and fix
+> was reported by MediaTek WCN division [0].
 > 
-> On Wed, 2021-03-10 at 09:41 +0000, Marc Zyngier wrote:
-> > On Wed, 10 Mar 2021 06:48:49 +0000,
-> > Jianjun Wang <jianjun.wang@mediatek.com> wrote:
-> > > > > @@ -408,6 +677,14 @@ static void mtk_pcie_irq_handler(struct irq_desc *desc)
-> > > > >  		generic_handle_irq(virq);
-> > > > >  	}
-> > > > >  
-> > > > > +	irq_bit = PCIE_MSI_SHIFT;
-> > > > > +	for_each_set_bit_from(irq_bit, &status, PCIE_MSI_SET_NUM +
-> > > > > +			      PCIE_MSI_SHIFT) {
-> > > > > +		mtk_pcie_msi_handler(port, irq_bit - PCIE_MSI_SHIFT);
-> > > > > +
-> > > > > +		writel_relaxed(BIT(irq_bit), port->base + PCIE_INT_STATUS_REG);
-> > > > 
-> > > > Isn't this write the same thing you have for EOI in the INTx case?
-> > > > While I could understand your description in that case (this is a
-> > > > resampling operation), I don't get what this does here. Either this is
-> > > > also an EOI, but your initial description doesn't make sense, or it is
-> > > > an Ack, and it should be moved to the right place.
-> > > > 
-> > > > Which one is it?
-> > > 
-> > > I think it should be an EOI which used to clear the interrupt status of
-> > > a single set in the PCIe intc field, maybe I should move it to the end
-> > > of the mtk_pcie_msi_handler() function.
-> > 
-> > I doubt this is an EOI. If, as I suspect, it instructs the HW to clear
-> > the bit so that new pending bits can be recorded, it must take place
-> > *before* the interrupt is handled, or you may lose MSIs in the
-> > interval between the handling of the interrupt and the clearing of the
-> > pending bit. To satisfy this requirement, this should be an ACK, which
-> > is consistent with the way most MSI controllers such as this one work.
-> 
-> These bits are similar with the interrupt status of INTx, and the
-> interrupt status will remain until all the status of the corresponding
-> set are cleared. There is a while loop in mtk_pcie_msi_handler() which
-> is used to continuously polling and ACK the status of the MSI set, I
-> think the MSI may not be lose in this case.
+> [0]: https://lists.infradead.org/pipermail/lede-commits/2017-August/004537.html
 
-Ah, is that the write to PCIE_MSI_SET_STATUS_OFFSET that you are
-referring to? In that case, yes, I agree.
+I don't see the Mediatek WCN reporting there. Looking at the 1004K user
+manual I couldn't find a notice about such behaviour. So this looks
+more like a fix for papering over the real bug by just introducing
+a few more syncs. Could you please point me to where this is
+really documented ?
 
-However, this write to PCIE_INT_STATUS_REG is more a property of the
-mux interrupt and not one of the MSI interrupt. Given that you do not
-represent that level as another level of chained controller, you might
-as well leave it where it is...
-
-Thanks,
-
-	M.
+Thomas.
 
 -- 
-Without deviation from the norm, progress is not possible.
+Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
+good idea.                                                [ RFC1925, 2.3 ]
 
 _______________________________________________
 Linux-mediatek mailing list
