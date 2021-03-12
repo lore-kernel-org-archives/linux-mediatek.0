@@ -2,79 +2,84 @@ Return-Path: <SRS0=zPgu=IK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22944C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 06:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 17E75C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 07:36:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9BB4564F86
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 06:35:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BB4564F86
+	by mail.kernel.org (Postfix) with ESMTPS id 82F8F64F81
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 07:36:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82F8F64F81
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9ZKrxIVJNf/VeCDjFLm4bkwt3rgCV0uTUPpRTnMrGGE=; b=JmuFXTsyp5SPdjTICsqxXq2Tkm
-	Q10yL5z9WDOoSqJCGLBx1ud7hy0uHW9MrSjhglhnya8F7ECMJpqKs9v6/zuzmZ3SpKdh6831Oz3mW
-	+8sUGa+1eDHKuiTedErqwCmLk6rAnvbtxAGTcUKv9enu2ZtN9imdBvnYFRf5i8PlycBTlJV2+i82w
-	ggcc6huPbQU5wSTmAG0OTUh4+cQlh2AeNENyPIBqAOl1lyznu5RultK4OApZARuKXBptez7k1o0t3
-	xa16BeOt7dwPPIvTy8D83dRT0smuZpjJciaL14FHGvFmuoDEATrcpjf4yvogYzIdL7VGIV+wMB5HS
-	Vwao8QIQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0b8WNZPOzOBv+MUXCai1wnW75Wnc/y2VZQ+epCr+bd4=; b=ct3lxtM6vgjUByYozOfMt+Grw
+	r2vmKCoTR6VOjaUbRpaDGLgOZ/mSvWNgBqngqDurYR6mieiVHFp5Y6gWYtySxvW/W5ztqufi/y1B8
+	6obSEcPYhKKEoIIc2NRFgban6iBruBftqbSLkLrQ5GY08GpUGSCMeqo20EnmtanhfCB5wTsOcMB2p
+	RNv6Hc6Iks2jVKCp3wFgvtCySiQt+Aiz1y8WLDxYLvvH1fWmxiRyPR6y4mZ70Gd6fdAfib5wSQQ4Y
+	eqcP5vl6x5ShsFiEg+QPzoJ92b2RzTK51OOo84mw4tIBnsNH5W12tCzNDhN14sWSvbOyPyt912r/X
+	MDUzWx8kQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKbOV-00Ajrk-Fh; Fri, 12 Mar 2021 06:35:31 +0000
+	id 1lKcLC-00AnQG-MH; Fri, 12 Mar 2021 07:36:10 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKbOJ-00Ajmi-Ca; Fri, 12 Mar 2021 06:35:23 +0000
-X-UUID: 04d89ee1eaff44ed917a2e013facb6cf-20210311
+ id 1lKcL5-00AnNd-G8; Fri, 12 Mar 2021 07:36:09 +0000
+X-UUID: cabb5b5c22404d1485bbe028f4d8e501-20210311
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=PfFZxJRlOZXlS2uPFGliGZm/Mqjp+Lcu7p5/SzoEdmw=; 
- b=nYx9eXeDIny/UmQfo1WDvME3MsfnWtp3t2BRAt8OEdti+joMU6CRMdE+sX5iefv8FInNNWctZh6zI0/tEsKWcEk7AD/3ouz3ii+zgYzzr5mCE3KiQWuzp+b81a6pJsdNqd8HT2jHghCJMxHJMnd7ZELHdgmtGvEmvchFp0uEHPY=;
-X-UUID: 04d89ee1eaff44ed917a2e013facb6cf-20210311
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=AaTbC3pw/M6HUM2urjiyI4R0Y75igHWl57EFUdBgYg4=; 
+ b=ZViU795Bq9w+k3j89KxBj5ndzbly9VOtE+LJQqKawmTca7JSCQ98cErTr7wLpfdz8PmOYhLf/HxkkaQuBL5SSQRZ7EkfRjDXSwfdROSc2ZxNmDXDNKUJY2pg2QU23I29W4ufoVrie6BmfCKSrjyhATkJotiS0NXFjWRsrp9muks=;
+X-UUID: cabb5b5c22404d1485bbe028f4d8e501-20210311
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1406739848; Thu, 11 Mar 2021 22:35:08 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Mar 2021 22:35:06 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Mar 2021 14:35:05 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ with ESMTP id 1526809573; Thu, 11 Mar 2021 23:35:56 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 11 Mar 2021 23:35:54 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Mar 2021 15:35:53 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Mar 2021 14:35:04 +0800
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
- <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
-CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
- <hui.liu@mediatek.com>, <eddie.huang@mediatek.com>, <jg_poxu@mediatek.com>,
- <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
- <erin.lo@mediatek.com>, <sean.wang@mediatek.com>, <seiya.wang@mediatek.com>,
- <sj.huang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>
-Subject: [PATCH 0/1] Mediatek pinctrl patch 
-Date: Fri, 12 Mar 2021 14:35:01 +0800
-Message-ID: <20210312063502.3685-1-zhiyong.tao@mediatek.com>
+ Transport; Fri, 12 Mar 2021 15:35:51 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ "Andrew-CT Chen" <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>, Maoguang Meng <maoguang.meng@mediatek.com>, "Longfei
+ Wang" <longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
+ <yong.wu@mediatek.com>
+CC: Irui Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [v3,
+ PATCH 2/3] arm64: dts: mt8173: Separating mtk-vcodec-enc device node
+Date: Fri, 12 Mar 2021 15:35:39 +0800
+Message-ID: <20210312073540.4922-2-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210312073540.4922-1-irui.wang@mediatek.com>
+References: <20210312073540.4922-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210312_063520_267158_06385464 
-X-CRM114-Status: UNSURE (   6.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210312_073605_791938_FEC2D1F1 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,20 +96,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series includes 1 patches:
-1.add lock in mtk_rmw function.
+There are two separate hardware encoder blocks inside MT8173.
+Split the current mtk-vcodec-enc node to match the hardware architecture.
 
-Zhiyong Tao (1):
-  pinctrl: add lock in mtk_rmw function.
+Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 60 ++++++++++++------------
+ 1 file changed, 31 insertions(+), 29 deletions(-)
 
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 4 ++++
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h | 2 ++
- drivers/pinctrl/mediatek/pinctrl-paris.c         | 2 ++
- 3 files changed, 8 insertions(+)
-
---
-2.25.1
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 7fa870e4386a..f5950e9fc51d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1458,14 +1458,11 @@
+ 			clock-names = "apb", "smi";
+ 		};
+ 
+-		vcodec_enc: vcodec@18002000 {
++		vcodec_enc_avc: vcodec@18002000 {
+ 			compatible = "mediatek,mt8173-vcodec-enc";
+-			reg = <0 0x18002000 0 0x1000>,	/* VENC_SYS */
+-			      <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
+-			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
+-				     <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
+-			mediatek,larb = <&larb3>,
+-					<&larb5>;
++			reg = <0 0x18002000 0 0x1000>;	/* VENC_SYS */
++			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
++			mediatek,larb = <&larb3>;
+ 			iommus = <&iommu M4U_PORT_VENC_RCPU>,
+ 				 <&iommu M4U_PORT_VENC_REC>,
+ 				 <&iommu M4U_PORT_VENC_BSDMA>,
+@@ -1476,29 +1473,12 @@
+ 				 <&iommu M4U_PORT_VENC_REF_LUMA>,
+ 				 <&iommu M4U_PORT_VENC_REF_CHROMA>,
+ 				 <&iommu M4U_PORT_VENC_NBM_RDMA>,
+-				 <&iommu M4U_PORT_VENC_NBM_WDMA>,
+-				 <&iommu M4U_PORT_VENC_RCPU_SET2>,
+-				 <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
+-				 <&iommu M4U_PORT_VENC_BSDMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
+-				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
++				 <&iommu M4U_PORT_VENC_NBM_WDMA>;
+ 			mediatek,vpu = <&vpu>;
+-			clocks = <&topckgen CLK_TOP_VENCPLL_D2>,
+-				 <&topckgen CLK_TOP_VENC_SEL>,
+-				 <&topckgen CLK_TOP_UNIVPLL1_D2>,
+-				 <&topckgen CLK_TOP_VENC_LT_SEL>;
+-			clock-names = "venc_sel_src",
+-				      "venc_sel",
+-				      "venc_lt_sel_src",
+-				      "venc_lt_sel";
+-			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
+-					  <&topckgen CLK_TOP_VENC_LT_SEL>;
+-			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>,
+-						 <&topckgen CLK_TOP_VCODECPLL_370P5>;
++			clocks = <&topckgen CLK_TOP_VENC_SEL>;
++			clock-names = "venc_sel";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
+ 		};
+ 
+ 		jpegdec: jpegdec@18004000 {
+@@ -1530,5 +1510,27 @@
+ 				 <&vencltsys CLK_VENCLT_CKE0>;
+ 			clock-names = "apb", "smi";
+ 		};
++
++		vcodec_enc_vp8: vcodec@19002000 {
++			compatible = "mediatek,mt8173-vcodec-enc-vp8";
++			reg =  <0 0x19002000 0 0x1000>; /* VENC_LT_SYS */
++			interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
++			iommus = <&iommu M4U_PORT_VENC_RCPU_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
++				 <&iommu M4U_PORT_VENC_BSDMA_SET2>,
++				 <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
++			mediatek,larb = <&larb5>;
++			mediatek,vpu = <&vpu>;
++			clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
++			clock-names = "venc_lt_sel";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
++			assigned-clock-parents =
++				 <&topckgen CLK_TOP_VCODECPLL_370P5>;
++		};
+ 	};
+ };
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
