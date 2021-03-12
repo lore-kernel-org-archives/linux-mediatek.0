@@ -2,86 +2,63 @@ Return-Path: <SRS0=zPgu=IK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DEB4C43381
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 16:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0E51C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 17:30:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4135864F80
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 16:21:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4135864F80
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 68E0E64F0B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Mar 2021 17:30:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68E0E64F0B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ymfo9stGlPUORbJdHGWpCZLwq+hLazIG8og2qr9Qnqg=; b=ZZR4g836/fOLcetceo2Dozqcu
-	xBOXZ8AbRY6Q7RbpL3R8sxGC1ONcd68lf+DRKxwrY4hLlqg73QK30Rnt4oO5RHq43XXIGdK3wRxmr
-	DF13v016iWw0zcc4to+/wOaSvuz+WSzZI7MBtk11SwjVm2Vjy5acyRX9MWPAkQahHFZq4awqSIQFa
-	zFvzE8KqSYfwPCyXXIqarVYSulJbrpoQ0SPBuRP8gysxswfTBLSnzhlXoSdconSas0cCKw5vicnIG
-	JfIAHLmhx7DJzmOrNp8e3owW3DokgyyUMpnmmOHQu5BfhAeqbuYrhMngsvZiJpq0cY3ypXekm6w23
-	Fo5OSfENg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bckEV8Y8GxSHWg996Ajlv06snsgpinJlLWq/m2OSnzg=; b=a4J9lHwKHdifU7OkSVGe1ftOsb
+	9iX37GjIWcxsQh1SpbHxTS/ySuvQ3JrCtbc0bWJapeA3PgOtMV8iwB81o9pPymehK+auDIwEMWxnl
+	QsViTItMhHgkvttU0/ecf4Vu7JDJPFyVe4VdvzFopTGTYnjoOUYt0EjXf6ePDQlr8FmXyoAnTbuXt
+	6Pwd0KiYDj4lv63ZfODskUaVOjtvIab0K9sk9bdvPjY+ZCjNQSXYUXkUPgQwi3dB60a61Q72i9Lwm
+	LvlyhwsGnsZW7d4FaaFyecvaUsN/CHLPukDAVyWU4Mt92dhk9mYa8I4CZC0nu9Q6uZTQhI6uZEtpj
+	fDVAMiQA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKkX8-00Bvwx-HU; Fri, 12 Mar 2021 16:21:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lKlc1-00C5oR-Vt; Fri, 12 Mar 2021 17:30:10 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKkWo-00BvrY-Lm; Fri, 12 Mar 2021 16:20:46 +0000
-X-UUID: 1ce02ee69f034c6995f3682f6c7656f8-20210312
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=63lLgyhShcz7hBrpoA+jQ3pPfygS4j51tNuMwt/5+Hk=; 
- b=R/+d07dxKnfShHwEMfyGFND/Q4EzY2Kb+4zGeLRJ4BcrCrk5/gWTVp3uWnmjG1IZuFICN4obx14YNvZbtdqzv3qrQoFcAmgJnx8iwg4LiI91HSl07hzKyarhOvOm/e4rPZprGNQvxv8VQSorjQoPzEj9PsjwbdzgXK1a+3+OQh4=;
-X-UUID: 1ce02ee69f034c6995f3682f6c7656f8-20210312
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1564603254; Fri, 12 Mar 2021 08:20:38 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Mar 2021 08:20:36 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 13 Mar 2021 00:20:34 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 13 Mar 2021 00:20:34 +0800
-Message-ID: <1615566034.27101.5.camel@mtksdaap41>
-Subject: Re: [PATCH RESEND v5 7/8] regulator: mt6359: Add support for
- MT6359P regulator
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Lee Jones <lee.jones@linaro.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
- <broonie@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, "Alexandre
- Belloni" <alexandre.belloni@bootlin.com>, Fei Shao <fshao@chromium.org>,
- Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Yuchen Huang <yuchen.huang@mediatek.com>, Ran Bi <ran.bi@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-rtc@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Sat, 13 Mar 2021 00:20:34 +0800
-In-Reply-To: <20210301102156.GJ641347@dell>
-References: <1611913781-23460-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1611913781-23460-8-git-send-email-hsin-hsiung.wang@mediatek.com>
- <20210301102156.GJ641347@dell>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lKlbq-00C5mg-DL; Fri, 12 Mar 2021 17:30:00 +0000
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1lKlbi-0001et-6K; Fri, 12 Mar 2021 17:29:50 +0000
+From: Colin King <colin.king@canonical.com>
+To: Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Kalle Valo <kvalo@codeaurora.org>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] mt76: mt7921: remove redundant check on type
+Date: Fri, 12 Mar 2021 17:29:49 +0000
+Message-Id: <20210312172949.153418-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 720C1621FB1260E7C53FD91671EB4931ED0AA89ED611D0A41887A4B6E089299B2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210312_162043_211484_D1D82FE4 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20210312_172958_557936_612DB75D 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,31 +75,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-03-01 at 10:21 +0000, Lee Jones wrote:
-> On Fri, 29 Jan 2021, Hsin-Hsiung Wang wrote:
-> 
-> > The MT6359P is a eco version for MT6359 regulator.
-> > We add support based on MT6359 regulator driver.
-> > 
-> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> > ---
-> > changes since v4:
-> > - add the regulators_node support.
-> > ---
-> >  drivers/regulator/mt6359-regulator.c       | 379 ++++++++++++++++++++-
-> 
-> >  include/linux/mfd/mt6359p/registers.h      | 249 ++++++++++++++
-> 
-> Although the code is fine, just be aware that Linus can get grumpy
-> having 100s and 100s of unused register defines in the kernel.
-> 
+From: Colin Ian King <colin.king@canonical.com>
 
-Thanks for the comment. We will mull it over.
+Currently in the switch statement case where type is
+NL80211_IFTYPE_STATION there is a check to see if type
+is not NL80211_IFTYPE_STATION.  This check is always false
+and is redundant dead code that can be removed.
 
-> >  include/linux/regulator/mt6359-regulator.h |   1 +
-> >  3 files changed, 623 insertions(+), 6 deletions(-)
-> >  create mode 100644 include/linux/mfd/mt6359p/registers.h
-> 
+Addresses-Coverity: ("Logically dead code")
+Fixes: e0f9fdda81bd ("mt76: mt7921: add ieee80211_ops")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 729f6c42cdde..c8975f372cf2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -224,9 +224,6 @@ static int get_omac_idx(enum nl80211_iftype type, u64 mask)
+ 		if (i)
+ 			return i - 1;
+ 
+-		if (type != NL80211_IFTYPE_STATION)
+-			break;
+-
+ 		/* next, try to find a free repeater entry for the sta */
+ 		i = get_free_idx(mask >> REPEATER_BSSID_START, 0,
+ 				 REPEATER_BSSID_MAX - REPEATER_BSSID_START);
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
