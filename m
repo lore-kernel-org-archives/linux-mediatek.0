@@ -2,64 +2,80 @@ Return-Path: <SRS0=A4vX=IL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D753C433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 09:45:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50C3DC433DB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 17:25:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC9BC64D73
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 09:45:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC9BC64D73
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 36B7164F16
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 17:25:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36B7164F16
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=O5aq9PqU843TW4r43KcZpQE9jIk3xvkKvULP1qtb/VI=; b=rGdkevMGd660+I7CoXPPVx5T/z
-	AhD7ppAXCFzRWy0P0rF9cDzETjsAd8XmGXXyaMV4rq11URYPb0QGyYV3Zo4ulsxs7QxEvkgL+8X7a
-	pNkEj2OwrwC5E78rbZ+x9v1DQJm2bVYM4NWw5SQ837NmTSkCGjyzMVOhNKHbkJrxzSEUuqr04AKX0
-	FpIcdq6r0vWfMuT9Xdid/fsh8FyRRrTfop5hI33jPKuPEBMOF2HAguVoU9aE7SFPOl/o0QOoghv7R
-	RjvYiwAxPWaFMJz1x1kDJCE2YQSySHHgu446+xUSQpGvpidHkouRDW/0qkxR0ufM0X9hx1uNGgZvK
-	2D3cLn2g==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=GXKZOGQnM+gFqPiUZrKjrOzWzBT2vLjTUkKskAiJHAI=; b=PGEEszNS1mXsoSTzIEOoKTIQU
+	bdFB4dq/MaaPjW1OqFuToPMsWQoCvGnM/Np4DQ5iZeoDAhd23yuNVvaTaKscbRoHpILE/Fi/Q+Mhh
+	0riS4i5yvoZhN17VIpD4CbK9Thl63Gv2MtNL6Xl8MKKSjHTlWqx67eWAQ7WDcHkWQz/3eUEZEOlM+
+	L+42bT19MDdaot04SoCEVzW5it5PlPuNU5oBuUtt/KFbO4+6ECCFHasDx71MTHnGhAKg2k/Xb3tnG
+	X96irHASCHDNc+UzIN/3ykrjqvPUhcHqLiCPaTS6fPbSjp0+kaXcnsSF1APjXGJy1yBiOX2zrWdkj
+	/PKWGi3Yg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lL0oZ-00D5M4-FA; Sat, 13 Mar 2021 09:44:07 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lL810-00DPla-3J; Sat, 13 Mar 2021 17:25:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lL0oT-00D5Kb-4b
- for linux-mediatek@lists.infradead.org; Sat, 13 Mar 2021 09:44:04 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B397164F14;
- Sat, 13 Mar 2021 09:43:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615628635;
- bh=ymSvKKXkySAaTw1aQJH2nwYOEfn49ej0hD436KOzGgI=;
- h=From:To:Cc:Subject:Date:From;
- b=SpKwZx/ivwzE7HQSnOwj8SeoRatPxhdPr1nx2eUwahvYS4f2DYeKZnO+Ab4W6TLhO
- vSl7Vufuuj8vFSdi9MVYZosTRUvH7xDO5fsQn3l4wHt55E4QVQ9OUD/JWQ7GyzDkN7
- /EH/uYfVJhfpIdmHn+SWWYdKgdBm1kvgZtDk7vI8awzLBFITpts/K1G7ME+psbXPCU
- BsXxDc1ViTiBas6bdMJ/ZwlF+51ZyxPZ9BhrG06s3jZ50JWbXKuJ0ya/nqsxMGVTWI
- 6pHnQLpjC7GdQObrJamifYaKhNsmEM1Zw7Z82dVmh+6qiErGIYRuEa2Kk8t0vukNWn
- YLmbec9AeLltA==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH] drm/mediatek: crtc: Make config-updating atomic
-Date: Sat, 13 Mar 2021 17:43:31 +0800
-Message-Id: <20210313094331.26374-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.17.1
+ id 1lL80g-00DPjv-Gx; Sat, 13 Mar 2021 17:25:15 +0000
+X-UUID: 86c8374a8e6d45e7b7bc8ea212ee6c29-20210313
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=SxuXt1F/ehD6M4cG723ulEtbno9vV8BuZ5DXrB18OPk=; 
+ b=JJXbkXP+mXxgVmW/JllXfcK+CgWzie+k5sec4gyeVbyAZ+6pqweCPqDBt5kUsdkLxehRre/R5njI0MVksYAdKJ2HF0VGT9iGl8WRZb7Vg3pKqxuY9YZl59gZ+dijYh/kYEHso459E9haR1xtsY0bFp9vBhxPYfnQkaiFl/n4BzY=;
+X-UUID: 86c8374a8e6d45e7b7bc8ea212ee6c29-20210313
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <hsin-hsiung.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 339159291; Sat, 13 Mar 2021 09:24:52 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 13 Mar 2021 09:24:50 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 14 Mar 2021 01:24:48 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 14 Mar 2021 01:24:48 +0800
+Message-ID: <1615656288.1253.2.camel@mtksdaap41>
+Subject: Re: [PATCH v6 3/4] spmi: mediatek: Add support for MT6873/8192
+From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
+To: Stephen Boyd <sboyd@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, <drinkcat@chromium.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Sun, 14 Mar 2021 01:24:48 +0800
+In-Reply-To: <161282286152.4172033.2089037988542209363@swboyd.mtv.corp.google.com>
+References: <1612675154-2747-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1612675154-2747-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <161282286152.4172033.2089037988542209363@swboyd.mtv.corp.google.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210313_094402_254249_254D75D4 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20210313_172508_089598_5017B8ED 
+X-CRM114-Status: GOOD (  29.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,106 +87,455 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-While updating config, the irq would occur and get the partial
-config, so use variable config_updating to make updating atomic.
 
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
+Hi,
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 8b0de90156c6..870f66210848 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -61,6 +61,7 @@ struct mtk_drm_crtc {
- 
- 	/* lock for display hardware access */
- 	struct mutex			hw_lock;
-+	bool				config_updating;
- };
- 
- struct mtk_crtc_state {
-@@ -97,7 +98,7 @@ static void mtk_drm_crtc_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
- static void mtk_drm_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
- {
- 	drm_crtc_handle_vblank(&mtk_crtc->base);
--	if (mtk_crtc->pending_needs_vblank) {
-+	if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
- 		mtk_drm_crtc_finish_page_flip(mtk_crtc);
- 		mtk_crtc->pending_needs_vblank = false;
- 	}
-@@ -425,7 +426,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc,
- 	}
- }
- 
--static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
-+static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
-+				       bool needs_vblank)
- {
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
- 	struct cmdq_pkt *cmdq_handle;
-@@ -436,6 +438,10 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
- 	int i;
- 
- 	mutex_lock(&mtk_crtc->hw_lock);
-+	mtk_crtc->config_updating = true;
-+	if (needs_vblank)
-+		mtk_crtc->pending_needs_vblank = true;
-+
- 	for (i = 0; i < mtk_crtc->layer_nr; i++) {
- 		struct drm_plane *plane = &mtk_crtc->planes[i];
- 		struct mtk_plane_state *plane_state;
-@@ -472,6 +478,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
- 		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
- 	}
- #endif
-+	mtk_crtc->config_updating = false;
- 	mutex_unlock(&mtk_crtc->hw_lock);
- }
- 
-@@ -532,7 +539,7 @@ void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
- 		return;
- 
- 	plane_helper_funcs->atomic_update(plane, new_state);
--	mtk_drm_crtc_hw_config(mtk_crtc);
-+	mtk_drm_crtc_update_config(mtk_crtc, false);
- }
- 
- static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
-@@ -582,7 +589,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
- 	}
- 	mtk_crtc->pending_planes = true;
- 
--	mtk_drm_crtc_hw_config(mtk_crtc);
-+	mtk_drm_crtc_update_config(mtk_crtc, false);
- 	/* Wait for planes to be disabled */
- 	drm_crtc_wait_one_vblank(crtc);
- 
-@@ -618,14 +625,12 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
- 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	int i;
- 
--	if (mtk_crtc->event)
--		mtk_crtc->pending_needs_vblank = true;
- 	if (crtc->state->color_mgmt_changed)
- 		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
- 			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i], crtc->state);
- 			mtk_ddp_ctm_set(mtk_crtc->ddp_comp[i], crtc->state);
- 		}
--	mtk_drm_crtc_hw_config(mtk_crtc);
-+	mtk_drm_crtc_update_config(mtk_crtc, !!mtk_crtc->event);
- }
- 
- static const struct drm_crtc_funcs mtk_crtc_funcs = {
--- 
-2.17.1
+On Mon, 2021-02-08 at 14:21 -0800, Stephen Boyd wrote:
+> Quoting Hsin-Hsiung Wang (2021-02-06 21:19:13)
+> > diff --git a/drivers/spmi/Kconfig b/drivers/spmi/Kconfig
+> > index a53bad541f1a..418848840999 100644
+> > --- a/drivers/spmi/Kconfig
+> > +++ b/drivers/spmi/Kconfig
+> > @@ -25,4 +25,13 @@ config SPMI_MSM_PMIC_ARB
+> >           This is required for communicating with Qualcomm PMICs and
+> >           other devices that have the SPMI interface.
+> >  
+> > +config SPMI_MTK_PMIF
+> > +       tristate "Mediatek SPMI Controller (PMIC Arbiter)"
+> > +       help
+> > +         If you say yes to this option, support will be included for the
+> > +         built-in SPMI PMIC Arbiter interface on Mediatek family
+> > +         processors.
+> > +
+> > +         This is required for communicating with Mediatek PMICs and
+> > +         other devices that have the SPMI interface.
+> 
+> Preferably add another newline here to unstick the 'endif'
+> 
+
+Thanks. I will update it in the next patch.
+
+> >  endif
+> > diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+> > new file mode 100644
+> > index 000000000000..4ac4643f89f3
+> > --- /dev/null
+> > +++ b/drivers/spmi/spmi-mtk-pmif.c
+> > @@ -0,0 +1,488 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +//
+> > +// Copyright (c) 2021 MediaTek Inc.
+> > +
+> > +#include <linux/clk.h>
+> > +#include <linux/iopoll.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/spmi.h>
+> > +
+> > +#define SWINF_IDLE     0x00
+> > +#define SWINF_WFVLDCLR 0x06
+> > +
+> > +#define GET_SWINF(x)   (((x) >> 1) & 0x7)
+> > +
+> > +#define PMIF_CMD_REG_0         0
+> > +#define PMIF_CMD_REG           1
+> > +#define PMIF_CMD_EXT_REG       2
+> > +#define PMIF_CMD_EXT_REG_LONG  3
+> > +
+> > +#define PMIF_DELAY_US   10
+> > +#define PMIF_TIMEOUT_US (10 * 1000)
+> > +
+> > +#define PMIF_CHAN_OFFSET 0x5
+> > +
+> > +#define PMIF_MAX_CLKS  3
+> > +
+> > +#define SPMI_OP_ST_BUSY 1
+> > +
+> > +struct ch_reg {
+> > +       u32 ch_sta;
+> > +       u32 wdata;
+> > +       u32 rdata;
+> > +       u32 ch_send;
+> > +       u32 ch_rdy;
+> > +};
+> > +
+> > +struct pmif_data {
+> > +       const u32       *regs;
+> > +       const u32       *spmimst_regs;
+> > +       u32     soc_chan;
+> 
+> Is this used?
+> 
+
+Yes.
+
+> > +};
+> > +
+> > +struct pmif {
+> > +       void __iomem    *base;
+> > +       void __iomem    *spmimst_base;
+> > +       raw_spinlock_t  lock;
+> 
+> Why is the spinlock raw? Is it used in hard irq handling?
+> 
+
+Thanks for the comment. After reviewing the code, I will remove it and
+update it in the next patch.
+
+> > +       struct ch_reg   chan;
+> > +       struct clk_bulk_data clks[PMIF_MAX_CLKS];
+> > +       u32 nclks;
+> > +       const struct pmif_data *data;
+> > +};
+> > +
+> > +static const char * const pmif_clock_names[] = {
+> > +       "pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
+> > +};
+> > +
+> > +enum pmif_regs {
+> > +       PMIF_INIT_DONE,
+> > +       PMIF_INF_EN,
+> > +       PMIF_ARB_EN,
+> > +       PMIF_CMDISSUE_EN,
+> > +       PMIF_TIMER_CTRL,
+> > +       PMIF_SPI_MODE_CTRL,
+> > +       PMIF_IRQ_EVENT_EN_0,
+> > +       PMIF_IRQ_FLAG_0,
+> > +       PMIF_IRQ_CLR_0,
+> > +       PMIF_IRQ_EVENT_EN_1,
+> > +       PMIF_IRQ_FLAG_1,
+> > +       PMIF_IRQ_CLR_1,
+> > +       PMIF_IRQ_EVENT_EN_2,
+> > +       PMIF_IRQ_FLAG_2,
+> > +       PMIF_IRQ_CLR_2,
+> > +       PMIF_IRQ_EVENT_EN_3,
+> > +       PMIF_IRQ_FLAG_3,
+> > +       PMIF_IRQ_CLR_3,
+> > +       PMIF_IRQ_EVENT_EN_4,
+> > +       PMIF_IRQ_FLAG_4,
+> > +       PMIF_IRQ_CLR_4,
+> > +       PMIF_WDT_EVENT_EN_0,
+> > +       PMIF_WDT_FLAG_0,
+> > +       PMIF_WDT_EVENT_EN_1,
+> > +       PMIF_WDT_FLAG_1,
+> > +       PMIF_SWINF_0_STA,
+> > +       PMIF_SWINF_0_WDATA_31_0,
+> > +       PMIF_SWINF_0_RDATA_31_0,
+> > +       PMIF_SWINF_0_ACC,
+> > +       PMIF_SWINF_0_VLD_CLR,
+> > +       PMIF_SWINF_1_STA,
+> > +       PMIF_SWINF_1_WDATA_31_0,
+> > +       PMIF_SWINF_1_RDATA_31_0,
+> > +       PMIF_SWINF_1_ACC,
+> > +       PMIF_SWINF_1_VLD_CLR,
+> > +       PMIF_SWINF_2_STA,
+> > +       PMIF_SWINF_2_WDATA_31_0,
+> > +       PMIF_SWINF_2_RDATA_31_0,
+> > +       PMIF_SWINF_2_ACC,
+> > +       PMIF_SWINF_2_VLD_CLR,
+> > +       PMIF_SWINF_3_STA,
+> > +       PMIF_SWINF_3_WDATA_31_0,
+> > +       PMIF_SWINF_3_RDATA_31_0,
+> > +       PMIF_SWINF_3_ACC,
+> > +       PMIF_SWINF_3_VLD_CLR,
+> > +};
+> > +
+> > +static const u32 mt6873_regs[] = {
+> > +       [PMIF_INIT_DONE] =      0x0000,
+> > +       [PMIF_INF_EN] =         0x0024,
+> > +       [PMIF_ARB_EN] =         0x0150,
+> > +       [PMIF_CMDISSUE_EN] =    0x03B4,
+> > +       [PMIF_TIMER_CTRL] =     0x03E0,
+> > +       [PMIF_SPI_MODE_CTRL] =  0x0400,
+> > +       [PMIF_IRQ_EVENT_EN_0] = 0x0418,
+> > +       [PMIF_IRQ_FLAG_0] =     0x0420,
+> > +       [PMIF_IRQ_CLR_0] =      0x0424,
+> > +       [PMIF_IRQ_EVENT_EN_1] = 0x0428,
+> > +       [PMIF_IRQ_FLAG_1] =     0x0430,
+> > +       [PMIF_IRQ_CLR_1] =      0x0434,
+> > +       [PMIF_IRQ_EVENT_EN_2] = 0x0438,
+> > +       [PMIF_IRQ_FLAG_2] =     0x0440,
+> > +       [PMIF_IRQ_CLR_2] =      0x0444,
+> > +       [PMIF_IRQ_EVENT_EN_3] = 0x0448,
+> > +       [PMIF_IRQ_FLAG_3] =     0x0450,
+> > +       [PMIF_IRQ_CLR_3] =      0x0454,
+> > +       [PMIF_IRQ_EVENT_EN_4] = 0x0458,
+> > +       [PMIF_IRQ_FLAG_4] =     0x0460,
+> > +       [PMIF_IRQ_CLR_4] =      0x0464,
+> > +       [PMIF_WDT_EVENT_EN_0] = 0x046C,
+> > +       [PMIF_WDT_FLAG_0] =     0x0470,
+> > +       [PMIF_WDT_EVENT_EN_1] = 0x0474,
+> > +       [PMIF_WDT_FLAG_1] =     0x0478,
+> > +       [PMIF_SWINF_0_ACC] =    0x0C00,
+> > +       [PMIF_SWINF_0_WDATA_31_0] =     0x0C04,
+> > +       [PMIF_SWINF_0_RDATA_31_0] =     0x0C14,
+> > +       [PMIF_SWINF_0_VLD_CLR] =        0x0C24,
+> > +       [PMIF_SWINF_0_STA] =    0x0C28,
+> > +       [PMIF_SWINF_1_ACC] =    0x0C40,
+> > +       [PMIF_SWINF_1_WDATA_31_0] =     0x0C44,
+> > +       [PMIF_SWINF_1_RDATA_31_0] =     0x0C54,
+> > +       [PMIF_SWINF_1_VLD_CLR] =        0x0C64,
+> > +       [PMIF_SWINF_1_STA] =    0x0C68,
+> > +       [PMIF_SWINF_2_ACC] =    0x0C80,
+> > +       [PMIF_SWINF_2_WDATA_31_0] =     0x0C84,
+> > +       [PMIF_SWINF_2_RDATA_31_0] =     0x0C94,
+> > +       [PMIF_SWINF_2_VLD_CLR] =        0x0CA4,
+> > +       [PMIF_SWINF_2_STA] =    0x0CA8,
+> > +       [PMIF_SWINF_3_ACC] =    0x0CC0,
+> > +       [PMIF_SWINF_3_WDATA_31_0] =     0x0CC4,
+> > +       [PMIF_SWINF_3_RDATA_31_0] =     0x0CD4,
+> > +       [PMIF_SWINF_3_VLD_CLR] =        0x0CE4,
+> > +       [PMIF_SWINF_3_STA] =    0x0CE8,
+> > +};
+> > +
+> > +enum spmi_regs {
+> > +       SPMI_OP_ST_CTRL,
+> > +       SPMI_GRP_ID_EN,
+> > +       SPMI_OP_ST_STA,
+> > +       SPMI_MST_SAMPL,
+> > +       SPMI_MST_REQ_EN,
+> > +       SPMI_REC_CTRL,
+> > +       SPMI_REC0,
+> > +       SPMI_REC1,
+> > +       SPMI_REC2,
+> > +       SPMI_REC3,
+> > +       SPMI_REC4,
+> > +       SPMI_MST_DBG,
+> > +};
+> > +
+> > +static const u32 mt6873_spmi_regs[] = {
+> 
+> There's only one of these so far. Is there going to be a different
+> register layout in the future? If we can avoid the indirection it would
+> be ideal.
+> 
+
+Yes, we have other chips with different registers for spmi driver in the
+feature.
+
+> > +       [SPMI_OP_ST_CTRL] =     0x0000,
+> > +       [SPMI_GRP_ID_EN] =      0x0004,
+> > +       [SPMI_OP_ST_STA] =      0x0008,
+> > +       [SPMI_MST_SAMPL] =      0x000c,
+> > +       [SPMI_MST_REQ_EN] =     0x0010,
+> > +       [SPMI_REC_CTRL] =       0x0040,
+> > +       [SPMI_REC0] =           0x0044,
+> > +       [SPMI_REC1] =           0x0048,
+> > +       [SPMI_REC2] =           0x004c,
+> > +       [SPMI_REC3] =           0x0050,
+> > +       [SPMI_REC4] =           0x0054,
+> > +       [SPMI_MST_DBG] =        0x00fc,
+> > +};
+> > +
+> > +static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
+> > +{
+> > +       return readl(arb->base + arb->data->regs[reg]);
+> > +}
+> > +
+> > +static void pmif_writel(struct pmif *arb, u32 val, enum pmif_regs reg)
+> > +{
+> > +       writel(val, arb->base + arb->data->regs[reg]);
+> > +}
+> > +
+> > +static void mtk_spmi_writel(struct pmif *arb, u32 val, enum spmi_regs reg)
+> > +{
+> > +       writel(val, arb->spmimst_base + arb->data->spmimst_regs[reg]);
+> > +}
+> > +
+> > +static bool pmif_is_fsm_vldclr(struct pmif *arb)
+> > +{
+> > +       u32 reg_rdata;
+> > +
+> > +       reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
+> > +       return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
+> > +}
+> > +
+> > +static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
+> > +{
+> > +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> > +       u32 rdata, cmd;
+> > +       int ret;
+> > +
+> > +       /* Check for argument validation. */
+> > +       if (sid & ~0xf) {
+> > +               dev_err(&ctrl->dev, "exceed the max slv id\n");
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       /* Check the opcode */
+> > +       if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
+> > +               return -EINVAL;
+> > +
+> > +       cmd = opc - SPMI_CMD_RESET;
+> > +
+> > +       mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
+> > +       ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
+> > +                                       rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
+> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> > +       if (ret < 0)
+> > +               dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> > +                             u16 addr, u8 *buf, size_t len)
+> > +{
+> > +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> > +       struct ch_reg *inf_reg;
+> > +       int ret;
+> > +       u32 data, cmd;
+> > +       unsigned long flags;
+> > +
+> > +       /* Check for argument validation. */
+> > +       if (sid & ~0xf) {
+> > +               dev_err(&ctrl->dev, "exceed the max slv id\n");
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       if (len > 4) {
+> > +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       if (opc >= 0x60 && opc <= 0x7f)
+> > +               opc = PMIF_CMD_REG;
+> > +       else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
+> > +               opc = PMIF_CMD_EXT_REG_LONG;
+> > +       else
+> > +               return -EINVAL;
+> > +
+> > +       raw_spin_lock_irqsave(&arb->lock, flags);
+> > +
+> > +       /* Wait for Software Interface FSM state to be IDLE. */
+> > +       inf_reg = &arb->chan;
+> > +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> > +                                       data, GET_SWINF(data) == SWINF_IDLE,
+> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> > +       if (ret < 0) {
+> > +               /* set channel ready if the data has transferred */
+> > +               if (pmif_is_fsm_vldclr(arb))
+> > +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
+> > +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> > +               goto out;
+> > +       }
+> > +
+> > +       /* Send the command. */
+> > +       cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
+> > +       pmif_writel(arb, cmd, inf_reg->ch_send);
+> > +
+> > +       /*
+> > +        * Wait for Software Interface FSM state to be WFVLDCLR,
+> > +        * read the data and clear the valid flag.
+> > +        */
+> > +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> > +                                       data, GET_SWINF(data) == SWINF_WFVLDCLR,
+> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> > +       if (ret < 0) {
+> > +               dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
+> > +               goto out;
+> > +       }
+> > +
+> > +       data = pmif_readl(arb, inf_reg->rdata);
+> > +       memcpy(buf, &data, len);
+> > +       pmif_writel(arb, 1, inf_reg->ch_rdy);
+> > +
+> > +out:
+> > +       raw_spin_unlock_irqrestore(&arb->lock, flags);
+> > +       if (ret < 0)
+> > +               return ret;
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> > +                              u16 addr, const u8 *buf, size_t len)
+> > +{
+> > +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> > +       struct ch_reg *inf_reg;
+> > +       int ret;
+> > +       u32 data, cmd;
+> > +       unsigned long flags;
+> > +
+> > +       /* Check for argument validation. */
+> > +       if (sid & ~0xf) {
+> > +               dev_err(&ctrl->dev, "exceed the max slv id\n");
+> 
+> Feels like something we should push up into the core framework instead
+> of having each driver figure out.
+> 
+
+Thanks for the review.
+After checking the framework, it already has the same check, so I will remove it in the next patch.
+
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       if (len > 4) {
+> > +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+> 
+> Feels like something we should push up into the core framework instead
+> of having each driver figure out.
+> 
+
+Thanks for the comment, it's our hw design, not for common driver. 
+
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       /* Check the opcode */
+> > +       if (opc >= 0x40 && opc <= 0x5F)
+> > +               opc = PMIF_CMD_REG;
+> > +       else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
+> > +               opc = PMIF_CMD_EXT_REG_LONG;
+> > +       else if (opc >= 0x80)
+> > +               opc = PMIF_CMD_REG_0;
+> > +       else
+> > +               return -EINVAL;
+> > +
+> > +       raw_spin_lock_irqsave(&arb->lock, flags);
+> > +
+> > +       /* Wait for Software Interface FSM state to be IDLE. */
+> > +       inf_reg = &arb->chan;
+> > +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> > +                                       data, GET_SWINF(data) == SWINF_IDLE,
+> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> > +       if (ret < 0) {
+> > +               /* set channel ready if the data has transferred */
+> > +               if (pmif_is_fsm_vldclr(arb))
+> > +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
+> > +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> > +               goto out;
+> > +       }
+> > +
+> > +       /* Set the write data. */
+> > +       memcpy(&data, buf, len);
+> > +       pmif_writel(arb, data, inf_reg->wdata);
+> > +
+> > +       /* Send the command. */
+> > +       cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
+> > +       pmif_writel(arb, cmd, inf_reg->ch_send);
+> 
+> What is BIT 29? Is that special somehow?
+> 
+
+Bit 29 means write or read cmd.
+1 for write and 0 for read. 
+
+> > +
+> > +out:
+> > +       raw_spin_unlock_irqrestore(&arb->lock, flags);
+> > +       if (ret < 0)
+> > +               return ret;
+> > +
+> > +       return 0;
+> > +}
+> > +
 
 
 _______________________________________________
