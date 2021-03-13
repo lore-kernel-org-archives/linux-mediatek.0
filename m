@@ -2,76 +2,64 @@ Return-Path: <SRS0=A4vX=IL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5A15C433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 08:17:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D753C433DB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 09:45:07 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5601B64EF2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 08:17:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5601B64EF2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AC9BC64D73
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Mar 2021 09:45:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC9BC64D73
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=e/D6K0CLK2c/0qkWv8Wy3rKfeixjXsdDy1cBFpEYqXk=; b=EtyCN3leEhPln2DEpuWQpJWCky
-	E9yqM6bSD2wk86Q2TV4aEUd44BOaBW+ZGhaPzIEzTHgFWhllYWRDdu4KdNHeo+OB1DAH+cFl1RJmu
-	h5YwgMVZOTPuq3Ji+VPlVm5VpxYDY4003+G79OLs5CfpDZX7Zor6dUU5v7qQnx+0wiS/qLra92SC2
-	tHA1nLO3mzZ6tE/zc9c53D9L6/0ssVPyOy7xXJhjrG7nhhj5VDPs/LulEAruOL1sfCttCbl2LZcsZ
-	EVsfOEKvDNWoFEr4EaOm3BOwXXd+IVqQtsRxvxIfbqV3vW0ehdXsbz2hb5Vgp3rmy3OCyCaGB7wzi
-	VRS71Tjg==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=O5aq9PqU843TW4r43KcZpQE9jIk3xvkKvULP1qtb/VI=; b=rGdkevMGd660+I7CoXPPVx5T/z
+	AhD7ppAXCFzRWy0P0rF9cDzETjsAd8XmGXXyaMV4rq11URYPb0QGyYV3Zo4ulsxs7QxEvkgL+8X7a
+	pNkEj2OwrwC5E78rbZ+x9v1DQJm2bVYM4NWw5SQ837NmTSkCGjyzMVOhNKHbkJrxzSEUuqr04AKX0
+	FpIcdq6r0vWfMuT9Xdid/fsh8FyRRrTfop5hI33jPKuPEBMOF2HAguVoU9aE7SFPOl/o0QOoghv7R
+	RjvYiwAxPWaFMJz1x1kDJCE2YQSySHHgu446+xUSQpGvpidHkouRDW/0qkxR0ufM0X9hx1uNGgZvK
+	2D3cLn2g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKzT2-00D0CH-5T; Sat, 13 Mar 2021 08:17:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lL0oZ-00D5M4-FA; Sat, 13 Mar 2021 09:44:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKzSe-00D0Az-CL; Sat, 13 Mar 2021 08:17:29 +0000
-X-UUID: 841a315bae0f4022b2fd3fe746ce0c76-20210313
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=GtI2vYYB9CAiabJltqxFldhVldGiKnjQFrb6s7EPY3Y=; 
- b=ffZ59rKVfPM69iyPEt4eVJbHIi+xHG4WFDB+Tigp9n01WKjrTpPaLiA9avdPu+i1bDzjIDxP/JsCNe5CfKt6E98MaI9aHFc+PXQVt/ybq4S6C5onf5FNpblkPEf5tH2FKcGk4WAyDRD+y2/gOjwGrNeELali4/RmYhtAphnBkfM=;
-X-UUID: 841a315bae0f4022b2fd3fe746ce0c76-20210313
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <qii.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1993541750; Sat, 13 Mar 2021 00:17:19 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 13 Mar 2021 00:07:17 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 13 Mar 2021 16:07:15 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 13 Mar 2021 16:07:14 +0800
-From: <qii.wang@mediatek.com>
-To: <robh+dt@kernel.org>
-CC: <matthias.bgg@gmail.com>, <wsa@the-dreams.de>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>,
- <qii.wang@mediatek.com>
-Subject: [PATCH] dt-bindings: i2c: Add device clock-stretch time via dts
-Date: Sat, 13 Mar 2021 16:07:09 +0800
-Message-ID: <1615622829-15167-1-git-send-email-qii.wang@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-MIME-Version: 1.0
-X-MTK: N
+ id 1lL0oT-00D5Kb-4b
+ for linux-mediatek@lists.infradead.org; Sat, 13 Mar 2021 09:44:04 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B397164F14;
+ Sat, 13 Mar 2021 09:43:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1615628635;
+ bh=ymSvKKXkySAaTw1aQJH2nwYOEfn49ej0hD436KOzGgI=;
+ h=From:To:Cc:Subject:Date:From;
+ b=SpKwZx/ivwzE7HQSnOwj8SeoRatPxhdPr1nx2eUwahvYS4f2DYeKZnO+Ab4W6TLhO
+ vSl7Vufuuj8vFSdi9MVYZosTRUvH7xDO5fsQn3l4wHt55E4QVQ9OUD/JWQ7GyzDkN7
+ /EH/uYfVJhfpIdmHn+SWWYdKgdBm1kvgZtDk7vI8awzLBFITpts/K1G7ME+psbXPCU
+ BsXxDc1ViTiBas6bdMJ/ZwlF+51ZyxPZ9BhrG06s3jZ50JWbXKuJ0ya/nqsxMGVTWI
+ 6pHnQLpjC7GdQObrJamifYaKhNsmEM1Zw7Z82dVmh+6qiErGIYRuEa2Kk8t0vukNWn
+ YLmbec9AeLltA==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH] drm/mediatek: crtc: Make config-updating atomic
+Date: Sat, 13 Mar 2021 17:43:31 +0800
+Message-Id: <20210313094331.26374-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210313_081727_142935_6845D8B7 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210313_094402_254249_254D75D4 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +71,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Qii Wang <qii.wang@mediatek.com>
+While updating config, the irq would occur and get the partial
+config, so use variable config_updating to make updating atomic.
 
-tSU,STA/tHD,STA/tSU,STOP maybe out of spec due to device
-clock-stretching or circuit loss, we could get device
-clock-stretch time from dts to adjust these parameters
-to meet the spec via EXT_CONF register.
-
-Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-index 7f0194f..97f66f0 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-@@ -32,6 +32,7 @@ Optional properties:
-   - mediatek,have-pmic: platform can control i2c form special pmic side.
-     Only mt6589 and mt8135 support this feature.
-   - mediatek,use-push-pull: IO config use push-pull mode.
-+  - clock-stretch-ns: Slave device clock-stretch time.
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 8b0de90156c6..870f66210848 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -61,6 +61,7 @@ struct mtk_drm_crtc {
  
- Example:
+ 	/* lock for display hardware access */
+ 	struct mutex			hw_lock;
++	bool				config_updating;
+ };
  
+ struct mtk_crtc_state {
+@@ -97,7 +98,7 @@ static void mtk_drm_crtc_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
+ static void mtk_drm_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
+ {
+ 	drm_crtc_handle_vblank(&mtk_crtc->base);
+-	if (mtk_crtc->pending_needs_vblank) {
++	if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
+ 		mtk_drm_crtc_finish_page_flip(mtk_crtc);
+ 		mtk_crtc->pending_needs_vblank = false;
+ 	}
+@@ -425,7 +426,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc,
+ 	}
+ }
+ 
+-static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
++static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
++				       bool needs_vblank)
+ {
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	struct cmdq_pkt *cmdq_handle;
+@@ -436,6 +438,10 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+ 	int i;
+ 
+ 	mutex_lock(&mtk_crtc->hw_lock);
++	mtk_crtc->config_updating = true;
++	if (needs_vblank)
++		mtk_crtc->pending_needs_vblank = true;
++
+ 	for (i = 0; i < mtk_crtc->layer_nr; i++) {
+ 		struct drm_plane *plane = &mtk_crtc->planes[i];
+ 		struct mtk_plane_state *plane_state;
+@@ -472,6 +478,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+ 		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
+ 	}
+ #endif
++	mtk_crtc->config_updating = false;
+ 	mutex_unlock(&mtk_crtc->hw_lock);
+ }
+ 
+@@ -532,7 +539,7 @@ void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+ 		return;
+ 
+ 	plane_helper_funcs->atomic_update(plane, new_state);
+-	mtk_drm_crtc_hw_config(mtk_crtc);
++	mtk_drm_crtc_update_config(mtk_crtc, false);
+ }
+ 
+ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
+@@ -582,7 +589,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
+ 	}
+ 	mtk_crtc->pending_planes = true;
+ 
+-	mtk_drm_crtc_hw_config(mtk_crtc);
++	mtk_drm_crtc_update_config(mtk_crtc, false);
+ 	/* Wait for planes to be disabled */
+ 	drm_crtc_wait_one_vblank(crtc);
+ 
+@@ -618,14 +625,12 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+ 	int i;
+ 
+-	if (mtk_crtc->event)
+-		mtk_crtc->pending_needs_vblank = true;
+ 	if (crtc->state->color_mgmt_changed)
+ 		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+ 			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i], crtc->state);
+ 			mtk_ddp_ctm_set(mtk_crtc->ddp_comp[i], crtc->state);
+ 		}
+-	mtk_drm_crtc_hw_config(mtk_crtc);
++	mtk_drm_crtc_update_config(mtk_crtc, !!mtk_crtc->event);
+ }
+ 
+ static const struct drm_crtc_funcs mtk_crtc_funcs = {
 -- 
-1.9.1
+2.17.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
