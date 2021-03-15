@@ -2,82 +2,82 @@ Return-Path: <SRS0=+2NV=IN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_RED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F28EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 09:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DEB5C433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 09:39:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 98A22614A5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 09:03:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 98A22614A5
+	by mail.kernel.org (Postfix) with ESMTPS id F3C4D64E77
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 09:39:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3C4D64E77
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HPs+AnRzJlXD8xJn6SptGVWLB2cUQ1BaHcv4vlaQFE4=; b=hMHzXc+14WMGANAr58BYZm9CIr
-	+NUQVkSvhkwGfMENPfKRPHuD6rGTKPniRnoGiJ4eImA0JQCywPPsdi1rcTXjH63ctGeB1GUBnzvIH
-	ptXAo5efvkzHA/fs0FbOFSzlUmE2yaA4Hj717ZD2DDusCj+z08hFhwkRo5KkNzPkIlvRXd/DQciqF
-	DG6nHzY7QB/de3jcZL0tx+GJcOxZ2nFd9UJHjctqYDDnQxVRVf2GGGsUs9N7VbLPXiAPY/KjLT0Nx
-	4LmUY/+UA3nB3TYKOVDoQjWJY346GRI6mrJUtGlJ0IXftrxPonEUE6RiC2/69VHfesBXmwJM8+2o8
-	42EWb4FA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=JjNzStPXY268L00O2SKWnP3eKs0XUyG0QLddZUgAIFA=; b=PpbzgMhSnUUfbq1gBJYHNtwhh
+	sWADVWSl6MxZ3vKv1GH22Eu2K4uy08vCcPsZ1Kq4O70hV98avGwLeclLV17EYM5OO7Bn3/dImO+7K
+	lZ0uHsKDaAr+irw29DOllQhqZFpdFqGhdDkECb5VWFJOQX81HAQ0CoRK9D28hWH8oXnOhWlEeMWn/
+	2WKI79Tfw1Xku/g+J1n7RXY1oarGAq1zj5K9W1T/kytKHdQJCU7t5hcwByuKJNQ+jD7oNl/6Radzq
+	o1Xqf/8D7F75hkmV5L+9moZ8ufybMCXOQLjgpjVsG38tal2QJ3o3uB6nFWPH+UWx1wggYHNS7jot5
+	nK3TakVZg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLj8H-00FKrn-NF; Mon, 15 Mar 2021 09:03:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lLjgc-00FPGE-Sa; Mon, 15 Mar 2021 09:38:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLj87-00FKpY-Fi; Mon, 15 Mar 2021 09:03:18 +0000
-X-UUID: 1104e8aca5d14b4fa569aad7a48e48c9-20210315
+ id 1lLjgH-00FPD6-Tu; Mon, 15 Mar 2021 09:38:39 +0000
+X-UUID: 5f1ce4a78776489891acfc18e63c99b6-20210315
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=VNPq4SkBXF4ea/y3apMJF08Xld/DRgU5bgj/b4cxEGA=; 
- b=Cf9oyB6l/C9fn5MqOx/HQvwzE9xnRGDix22h1m7CC2Pcv0NklxviwVSEkeOG3ZymTwbWOd+2v0uVuuRFkv8zPovOeVc+8DIubI5uOUO9VMszLRNWPndRd2NP3n5vRqVGbakyIV/v2tBtll5RT5f7BvYtRb+p2IF9KlNWOo37biQ=;
-X-UUID: 1104e8aca5d14b4fa569aad7a48e48c9-20210315
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <roger.lu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=bPuVjFo6Jbk+asJxO6pPeVmiKh3ForgwpqM3f8bjyIU=; 
+ b=D8SU/ZVBdKxsZkYa6Cqe2YcW+4ELDG5XNzRf0RbQqll10KC5b8y70nYffihvYjhqqYG7AvoruoKnAMRmnOQ1IyJjs4OvvnRN7VwTqSjhpm7IAOPhQKW++ov88gX1N4yNnoNObIDQzHUkoQR1gpgN6wLKQXtC3r/vfzD098FSqJo=;
+X-UUID: 5f1ce4a78776489891acfc18e63c99b6-20210315
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2054771892; Mon, 15 Mar 2021 01:03:07 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Mar 2021 01:53:05 -0700
+ with ESMTP id 458074598; Mon, 15 Mar 2021 01:38:26 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Mar 2021 02:38:24 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Mar 2021 16:53:03 +0800
-Received: from mtksdaap41.mediatek.inc (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 15 Mar 2021 16:52:57 +0800
-From: Roger Lu <roger.lu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
- <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
- <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
- Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Roger Lu
- <roger.lu@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>
-Subject: [PATCH v12 0/7] soc: mediatek: SVS: introduce MTK SVS
-Date: Mon, 15 Mar 2021 16:52:38 +0800
-Message-ID: <20210315085244.6365-1-roger.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Mar 2021 17:38:22 +0800
+Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 15 Mar 2021 17:38:22 +0800
+Message-ID: <1615801102.24887.4.camel@mtksdccf07>
+Subject: Re: [PATCH] task_work: kasan: record task_work_add() call stack
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Dmitry Vyukov <dvyukov@google.com>
+CC: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko
+ <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Andrey
+ Konovalov" <andreyknvl@google.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Jens Axboe <axboe@kernel.dk>, Oleg Nesterov
+ <oleg@redhat.com>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM
+ <linux-mm@kvack.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM
+ <linux-arm-kernel@lists.infradead.org>, wsd_upstream
+ <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>
+Date: Mon, 15 Mar 2021 17:38:22 +0800
+In-Reply-To: <CACT4Y+YrFeRQkw+M8rpOF5169LFn9+puL3Dh1Kk1AOoKV-nyrQ@mail.gmail.com>
+References: <20210315015940.11788-1-walter-zh.wu@mediatek.com>
+ <CACT4Y+YrFeRQkw+M8rpOF5169LFn9+puL3Dh1Kk1AOoKV-nyrQ@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 3B89127E2864DD5DFFD3E95D33CE31C96FF11CB243C9301855A3735564F8F2002000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_090316_098743_7C6F56D7 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210315_093836_000055_BDE0F7D7 
+X-CRM114-Status: GOOD (  32.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,44 +94,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
-2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by
-get_cpu_device(). After retrieving subsys device, SVS driver does
-device_link_add() to make sure probe/suspend callback priority.
-3. SVS dts refers to reset controller [4] to help reset SVS HW.
+On Mon, 2021-03-15 at 07:58 +0100, 'Dmitry Vyukov' via kasan-dev wrote:
+> On Mon, Mar 15, 2021 at 3:00 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> >
+> > Why record task_work_add() call stack?
+> > Syzbot reports many use-after-free issues for task_work, see [1].
+> > After see the free stack and the current auxiliary stack, we think
+> > they are useless, we don't know where register the work, this work
+> > may be the free call stack, so that we miss the root cause and
+> > don't solve the use-after-free.
+> >
+> > Add task_work_add() call stack into KASAN auxiliary stack in
+> > order to improve KASAN report. It is useful for programmers
+> > to solve use-after-free issues.
+> >
+> > [1]: https://groups.google.com/g/syzkaller-bugs/search?q=kasan%20use-after-free%20task_work_run
+> >
+> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> > Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
+> > Cc: Dmitry Vyukov <dvyukov@google.com>
+> > Cc: Andrey Konovalov <andreyknvl@google.com>
+> > Cc: Alexander Potapenko <glider@google.com>
+> > Cc: Andrew Morton <akpm@linux-foundation.org>
+> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > Cc: Jens Axboe <axboe@kernel.dk>
+> > Cc: Oleg Nesterov <oleg@redhat.com>
+> > ---
+> >  kernel/task_work.c | 3 +++
+> >  mm/kasan/kasan.h   | 2 +-
+> >  2 files changed, 4 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/kernel/task_work.c b/kernel/task_work.c
+> > index 9cde961875c0..f255294377da 100644
+> > --- a/kernel/task_work.c
+> > +++ b/kernel/task_work.c
+> > @@ -55,6 +55,9 @@ int task_work_add(struct task_struct *task, struct callback_head *work,
+> >                 break;
+> >         }
+> >
+> > +       /* record the work call stack in order to print it in KASAN reports */
+> > +       kasan_record_aux_stack(work);
+> 
+> I think this call should be done _before_ we actually queue the work,
+> because this function may operate on non-current task.
+> Consider, we queue the work, the other task already executes it and
+> triggers use-after-free, now only now we record the stack.
 
-#mt8183 SVS related patches
-[1] https://patchwork.kernel.org/patch/11193513/
-[2] https://patchwork.kernel.org/project/linux-mediatek/patch/20201013102358.22588-2-michael.kao@mediatek.com/
-[3] https://patchwork.kernel.org/project/linux-mediatek/patch/20200306041345.259332-3-drinkcat@chromium.org/
+agree, what do you think below change?
 
-#mt8192 SVS related patches
-[1] https://patchwork.kernel.org/patch/11193513/
-[2] https://patchwork.kernel.org/project/linux-mediatek/patch/20201223074944.2061-1-michael.kao@mediatek.com/
-[3] https://lore.kernel.org/patchwork/patch/1360551/
-[4] https://patchwork.kernel.org/project/linux-mediatek/patch/20200817030324.5690-5-crystal.guo@mediatek.com/
+--- a/kernel/task_work.c
++++ b/kernel/task_work.c
+@@ -34,6 +34,9 @@ int task_work_add(struct task_struct *task, struct
+callback_head *work,
+ {
+    struct callback_head *head;
 
-changes since v11:
-- update mtk svs dt-bindings only.
++   /* record the work call stack in order to print it in KASAN reports
+*/
++   kasan_record_aux_stack(work);
++
+    do {
+        head = READ_ONCE(task->task_works);
+        if (unlikely(head == &work_exited))
+@@ -55,9 +58,6 @@ int task_work_add(struct task_struct *task, struct
+callback_head *work,
+        break;
+    }
 
-Roger Lu (7):
-  [v12,1/7]: dt-bindings: soc: mediatek: add mtk svs dt-bindings
-  [v12,2/7]: arm64: dts: mt8183: add svs device information
-  [v12,3/7]: soc: mediatek: SVS: introduce MTK SVS engine
-  [v12,4/7]: soc: mediatek: SVS: add debug commands
-  [v12,5/7]: dt-bindings: soc: mediatek: add mt8192 svs dt-bindings
-  [v12,6/7]: arm64: dts: mt8192: add svs device information
-  [v12,7/7]: soc: mediatek: SVS: add mt8192 SVS GPU driver
+-   /* record the work call stack in order to print it in KASAN reports
+*/
+-   kasan_record_aux_stack(work);
+-
+    return 0;
+ }
 
- .../bindings/soc/mediatek/mtk-svs.yaml        |   89 +
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   18 +
- arch/arm64/boot/dts/mediatek/mt8192.dtsi      |   34 +
- drivers/soc/mediatek/Kconfig                  |   10 +
- drivers/soc/mediatek/Makefile                 |    1 +
- drivers/soc/mediatek/mtk-svs.c                | 2492 +++++++++++++++++
- 6 files changed, 2644 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
- create mode 100644 drivers/soc/mediatek/mtk-svs.c
+> Moreover, I think we can trigger use-after-free here ourselves while
+> recording the aux stack. We queued the work, and the work can cause
+> own free, so it's not necessary live by now.
+
+Sorry, I don't fully know your meaning, do you mean we should add an
+abort when detect use-after-free?
+
+> 
+> >         return 0;
+> >  }
+> >
+> > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> > index 3436c6bf7c0c..d300fe9415bd 100644
+> > --- a/mm/kasan/kasan.h
+> > +++ b/mm/kasan/kasan.h
+> > @@ -146,7 +146,7 @@ struct kasan_alloc_meta {
+> >         struct kasan_track alloc_track;
+> >  #ifdef CONFIG_KASAN_GENERIC
+> >         /*
+> > -        * call_rcu() call stack is stored into struct kasan_alloc_meta.
+> > +        * Auxiliary stack is stored into struct kasan_alloc_meta.
+> >          * The free stack is stored into struct kasan_free_meta.
+> >          */
+> >         depot_stack_handle_t aux_stack[2];
+> > --
+> > 2.18.0
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
