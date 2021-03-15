@@ -2,90 +2,96 @@ Return-Path: <SRS0=+2NV=IN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8401AC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 10:54:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 635F4C433E9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 11:28:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B841364E6B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 10:54:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B841364E6B
+	by mail.kernel.org (Postfix) with ESMTPS id B80E964D5D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 11:28:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B80E964D5D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aue5zqWMVA68hyZE7Lngu2Ohq9tuykfuMf2WkiQPAVE=; b=YbhU6a8mRzE3IPUvNnbnocBFV
-	H7E+u8utixQ3DJT6T6Fdq8NN7nM6gL2LK1nIbIUeuCxwyyOaAIOB8CxApyOSNupCVRXehd5pxO+da
-	tQVywZU5/uQVnTYiI9HAUHeYRJgM293b6IB9Mc/RDQCuQgXqchbL03aYytOwAbjjilzv5aekGiDfz
-	6LX66ve+2G2NmpaCsFSdPWHVZ0DiVC6LnfR2UZhivuIaGC2GTQINng+C/VNdlm7eT6Jfzz7AuAym2
-	tsBt5KhaokWPiSMpF45twHYeKC7MXUw5WX/K9bD04BSXucELAA8huvc/KO8zlQHdg6RReYg2kcK92
-	Bs+2xde2Q==;
+	 bh=94DGeaXhfl9eqtDpeH64OnoyAmTWhi85P1Ghj1Re5zA=; b=Ud3zEFO+2rakKarkZTuhPGi+b
+	nbq+QCCak8DU+X2dwHLT1xIidPo6BYuaKrCU/9HTm/tfnBVxzQrPiQK3bxw0OW2mt3RA6a49WSZKH
+	Eutx8ZmGYMBUVmZQB1Fu7E9/7yAmnZAQevguHMXNtt03PBpTyLjBrkKahPXkgCNikajB0nergwj4X
+	lSmrfV//dKicAmpBc0I5f5cz16R0sLy5BizNFbgKh3lqAbj9nvPejRUK5NlO9fj3mgfb6dh7A0QZT
+	ZNLWoxuNuqlSe1N8it1nERrnDrQ9yGblZu/SBP7EQWs2mdeVsTjPuPzcF9eM1SIbReKrEwJ2N1ORL
+	SUJ8sJDoA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLkr2-00FZp1-1i; Mon, 15 Mar 2021 10:53:44 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1lLlOh-00FfFr-1e; Mon, 15 Mar 2021 11:28:31 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLkn5-00FYmr-5O
- for linux-mediatek@lists.infradead.org; Mon, 15 Mar 2021 10:49:43 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d21so266624pfn.1
- for <linux-mediatek@lists.infradead.org>; Mon, 15 Mar 2021 03:49:38 -0700 (PDT)
+ id 1lLlOZ-00FfDc-6Q
+ for linux-mediatek@lists.infradead.org; Mon, 15 Mar 2021 11:28:28 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id a1so15732431ljp.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 15 Mar 2021 04:28:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=NHWbpSbeEU/u/5K7gBBa6SF51Eq0qcQsRKUtsXf/iec=;
- b=hPdqPSO2nNJghl+hN4IhsWaQrfCEi52MdY2vhVdtdMknpANn/O3kBNePp1yez3e383
- XV0+BwF6ICPjhAHWXUr98PWaHSm2cGsYaGRWm0WNJH6HP/DfO3N5pVFsjryOHTLzTu3Z
- oYZ3b97JYxAby6TjZEKgkRTMxu9SWNFCrpYwA=
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=u3V1DFub44eNQFxbnE4MGptI5jsnGcIBb0xuwQAEP/Y=;
+ b=MxomkiU4AQi4131kZ2zngrzKnd+pmMCPib2zYRvI9XBE5LCMiqZAbGDL95pCXUA34n
+ waFSuOiQeN2o0lxvVEjAHQq7RZjkU48JDdKEdpjemxEypZprRHlvV+vZGIl1fLkktQzg
+ hCyIvKhQz/gEPAVdH84z2PUJ6Ml4CEHoYNF+U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=NHWbpSbeEU/u/5K7gBBa6SF51Eq0qcQsRKUtsXf/iec=;
- b=sFC6XONOVh1gjlxNc087TNYIZ7R1UB/3iU+uBaIjXlEdn5JqvMB039WXztuwtJmJXC
- 6WjN3dBD+vYssrOASnRdbDmk/ckGBpnNyxl+nkCLv40+hKHTF/dZgk3eaq7WHHIZW/UK
- zxDh29cqgxlX2W/v47dtPbAdkNbOSLvNuWXzbYDx4zDahhVe/aVbVGdnED7s8DltECfy
- c6Cx1ZAov1lCFQ4s2EFbCv/P4xD8PALNtpA41JqhHjE0IKnQ7RU43wqbcqnshWxeOymZ
- QxDDMqys7DldBtjzVpn5aIAaPKhx46w5lZDMGTWfiYjYVMddFWakMQ5ZYkpo67KfTeGb
- x93w==
-X-Gm-Message-State: AOAM5300BdiAXK1aXxKMvxJBOWWZv5OY8jARiL+qJe2oqNac9K2Gqf6k
- NMBC15LwJ3XqTifEOLS2MlOqOA==
-X-Google-Smtp-Source: ABdhPJzYxmQ/peUmSdW6ybeKPJqKtNhtcMgoHkwsFKszVFilK79PIx3G/s/xwkUZCNqsJe8lXFMAlA==
-X-Received: by 2002:aa7:9192:0:b029:202:cf06:dba3 with SMTP id
- x18-20020aa791920000b0290202cf06dba3mr9732607pfa.16.1615805377274; 
- Mon, 15 Mar 2021 03:49:37 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:89b7:339b:c097:5ebb])
- by smtp.gmail.com with ESMTPSA id s19sm12906201pfh.168.2021.03.15.03.49.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 03:49:36 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, Sean Wang <sean.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Ben Ho <Ben.Ho@mediatek.com>
-Subject: [PATCH 2/2] arm64: dts: mt8183: Add kukui-jacuzzi-damu board
-Date: Mon, 15 Mar 2021 18:49:30 +0800
-Message-Id: <20210315104930.1087142-2-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.31.0.rc2.261.g7f71774620-goog
-In-Reply-To: <20210315104930.1087142-1-hsinyi@chromium.org>
-References: <20210315104930.1087142-1-hsinyi@chromium.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=u3V1DFub44eNQFxbnE4MGptI5jsnGcIBb0xuwQAEP/Y=;
+ b=GmuHxcmUb7mUMRXTYv5v8KaEhdVTD3U5a0oYAfpgZDKfbUBvoq2boX1ia4c6qo5ZyL
+ Ufk1L4M0g3sK2E++37KsgHtLbwsoI+++G3Sh0oC343ChX9mqaVpQUWJ+OC78AGYxVOuC
+ pcr/JlbE4MRQodN/wRXJ8nlbzLpcah+ym/FxJpMtV8vznXMC+Lh2Z/RLIzd0wMviopgv
+ EnfDm6Hyo3yhQ14ntoJ6VXoejG6Q2UJ3Z0XpKvaWRgtKCQIGYXUjq0GiKNYZ694W2xVV
+ Z0lZfZREkXexRGItfyNh1L1fSUU5otEb50qQMenuDxpgSAUVHbghnPMfIL6mCr3DrkOl
+ v9gg==
+X-Gm-Message-State: AOAM533J7uUwxqvkU208taTOnTvaZ/vhLEbSe3g7LNUnh4kOmzcpI0Fw
+ apaZIvxDpu4RhdzxtJTpNwiT231tZWoPNg==
+X-Google-Smtp-Source: ABdhPJzXTIoBsPa+PAv/oWyFm+5ngzvU8McXZNUbEUo60LxFFCQap1kE5NG9Q9zG72Gz14WjLlbEvg==
+X-Received: by 2002:a2e:581a:: with SMTP id m26mr10647746ljb.33.1615807695932; 
+ Mon, 15 Mar 2021 04:28:15 -0700 (PDT)
+Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com.
+ [209.85.167.51])
+ by smtp.gmail.com with ESMTPSA id y24sm2637846lfj.54.2021.03.15.04.28.14
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Mar 2021 04:28:14 -0700 (PDT)
+Received: by mail-lf1-f51.google.com with SMTP id 18so56199943lff.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 15 Mar 2021 04:28:14 -0700 (PDT)
+X-Received: by 2002:a19:712:: with SMTP id 18mr7480358lfh.591.1615807694060;
+ Mon, 15 Mar 2021 04:28:14 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210226100148.1663389-1-acourbot@chromium.org>
+ <20210226100148.1663389-6-acourbot@chromium.org>
+ <CAAEAJfDyHYGf+J6WDHchVATOvj5AJpO8dkAStiNGNobJ9Uz8Yw@mail.gmail.com>
+In-Reply-To: <CAAEAJfDyHYGf+J6WDHchVATOvj5AJpO8dkAStiNGNobJ9Uz8Yw@mail.gmail.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Mon, 15 Mar 2021 20:28:02 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MWtPuBNLpMK6U1-rfvTcPRnOEjJ06zTawxyD+pMSJ=uGQ@mail.gmail.com>
+Message-ID: <CAPBb6MWtPuBNLpMK6U1-rfvTcPRnOEjJ06zTawxyD+pMSJ=uGQ@mail.gmail.com>
+Subject: Re: [PATCH v3 05/15] media: mtk-vcodec: vdec: support stateless API
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Rob Herring <robh+dt@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ linux-media <linux-media@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_104940_715481_3FC22755 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20210315_112825_721369_16704D59 
+X-CRM114-Status: GOOD (  36.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,560 +108,479 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Damu is known as ASUS Chromebook Flip CM3.
+Hi Ezequiel, thanks for the feedback!
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- .../mediatek/mt8183-kukui-jacuzzi-damu.dts    |  35 ++
- .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    | 481 ++++++++++++++++++
- 3 files changed, 517 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+On Thu, Mar 4, 2021 at 6:30 AM Ezequiel Garcia
+<ezequiel@vanguardiasur.com.ar> wrote:
+>
+> Hello Alex,
+>
+> Thanks for the patch.
+>
+> On Fri, 26 Feb 2021 at 07:06, Alexandre Courbot <acourbot@chromium.org> wrote:
+> >
+> > From: Yunfei Dong <yunfei.dong@mediatek.com>
+> >
+> > Support the stateless codec API that will be used by MT8183.
+> >
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > [acourbot: refactor, cleanup and split]
+> > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
+> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > ---
+> >  drivers/media/platform/mtk-vcodec/Makefile    |   1 +
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec.c      |  66 ++-
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   9 +-
+> >  .../mtk-vcodec/mtk_vcodec_dec_stateless.c     | 427 ++++++++++++++++++
+> >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   3 +
+> >  5 files changed, 503 insertions(+), 3 deletions(-)
+> >  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+> >
+> [..]
+>
+> > +
+> > +static const struct mtk_stateless_control mtk_stateless_controls[] = {
+> > +       {
+> > +               .cfg = {
+> > +                       .id = V4L2_CID_STATELESS_H264_SPS,
+> > +               },
+> > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > +               .needed_in_request = true,
+>
+> This "needed_in_request" is not really required, as controls
+> are not volatile, and their value is stored per-context (per-fd).
+>
+> It's perfectly valid for an application to pass the SPS control
+> at the beginning of the sequence, and then omit it
+> in further requests.
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index deba27ab7657..554105d2c389 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -13,6 +13,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana-rev7.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-damu.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-new file mode 100644
-index 000000000000..d697336440d1
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-@@ -0,0 +1,35 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8183-kukui-jacuzzi.dtsi"
-+
-+/ {
-+	model = "Google damu board";
-+	compatible = "google,damu", "mediatek,mt8183";
-+};
-+
-+&cpu_thermal {
-+	sustainable-power = <4500>; /* milliwatts */
-+};
-+
-+&touchscreen {
-+	status = "okay";
-+
-+	compatible = "hid-over-i2c";
-+	reg = <0x10>;
-+	interrupt-parent = <&pio>;
-+	interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&touchscreen_pins>;
-+
-+	post-power-on-delay-ms = <10>;
-+	hid-descr-addr = <0x0001>;
-+};
-+
-+&qca_wifi {
-+	qcom,ath10k-calibration-variant = "GO_DAMU";
-+};
-+
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-new file mode 100644
-index 000000000000..673f3b9a49ea
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-@@ -0,0 +1,481 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+
-+#include "mt8183-kukui.dtsi"
-+
-+/ {
-+	panel: panel {
-+		compatible = "auo,b116xw03";
-+		power-supply = <&pp3300_panel>;
-+		ddc-i2c-bus = <&i2c4>;
-+		backlight = <&backlight_lcd0>;
-+
-+		port {
-+			panel_in: endpoint {
-+				remote-endpoint = <&anx7625_out>;
-+			};
-+		};
-+	};
-+
-+	pp1200_mipibrdg: pp1200-mipibrdg {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp1200_mipibrdg";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pp1200_mipibrdg_en>;
-+
-+		enable-active-high;
-+		regulator-boot-on;
-+
-+		gpio = <&pio 54 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	pp1800_mipibrdg: pp1800-mipibrdg {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp1800_mipibrdg";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pp1800_lcd_en>;
-+
-+		enable-active-high;
-+		regulator-boot-on;
-+
-+		gpio = <&pio 36 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	pp3300_panel: pp3300-panel {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp3300_panel";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pp3300_panel_pins>;
-+
-+		enable-active-high;
-+
-+		gpio = <&pio 35 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	vddio_mipibrdg: vddio-mipibrdg {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vddio_mipibrdg";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vddio_mipibrdg_en>;
-+
-+		enable-active-high;
-+		regulator-boot-on;
-+
-+		gpio = <&pio 37 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	volume_buttons: volume-buttons {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&volume_button_pins>;
-+
-+		volume_down {
-+			label = "Volume Down";
-+			linux,code = <KEY_VOLUMEDOWN>;
-+			debounce-interval = <100>;
-+
-+			gpios = <&pio 6 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		volume_up {
-+			label = "Volume Up";
-+			linux,code = <KEY_VOLUMEUP>;
-+			debounce-interval = <100>;
-+
-+			gpios = <&pio 5 GPIO_ACTIVE_LOW>;
-+		};
-+	};
-+};
-+
-+&cros_ec {
-+	cros_ec_pwm: ec-pwm {
-+		compatible = "google,cros-ec-pwm";
-+		#pwm-cells = <1>;
-+		status = "disabled";
-+	};
-+};
-+
-+&dsi0 {
-+	status = "okay";
-+	/delete-node/panel@0;
-+	ports {
-+		port {
-+			dsi_out: endpoint {
-+				remote-endpoint = <&anx7625_in>;
-+			};
-+		};
-+	};
-+};
-+
-+&i2c0 {
-+	status = "okay";
-+
-+	touchscreen: touchscreen@10 {
-+		compatible = "elan,ekth3500";
-+		reg = <0x10>;
-+
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touchscreen_pins>;
-+
-+		interrupts-extended = <&pio 155 IRQ_TYPE_LEVEL_LOW>;
-+
-+		reset-gpios = <&pio 156 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&i2c2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c2_pins>;
-+	status = "okay";
-+	clock-frequency = <400000>;
-+
-+	trackpad@15 {
-+		compatible = "elan,ekth3000";
-+		reg = <0x15>;
-+
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_pins>;
-+
-+		interrupts-extended = <&pio 7 IRQ_TYPE_LEVEL_LOW>;
-+
-+		wakeup-source;
-+	};
-+};
-+
-+&i2c4 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c4_pins>;
-+	status = "okay";
-+	clock-frequency = <100000>;
-+
-+	anx_bridge: anx7625@58 {
-+		compatible = "analogix,anx7625";
-+		reg = <0x58>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&anx7625_pins>;
-+		panel_flags = <1>;
-+		enable-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 73 GPIO_ACTIVE_HIGH>;
-+		vdd10-supply = <&pp1200_mipibrdg>;
-+		vdd18-supply = <&pp1800_mipibrdg>;
-+		vdd33-supply = <&vddio_mipibrdg>;
-+
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		port@0 {
-+			reg = <0>;
-+
-+			anx7625_in: endpoint {
-+				remote-endpoint = <&dsi_out>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+
-+			anx7625_out: endpoint {
-+				remote-endpoint = <&panel_in>;
-+			};
-+		};
-+	};
-+};
-+
-+&i2c_tunnel {
-+	google,remote-bus = <2>;
-+};
-+
-+&pio {
-+	/* 192 lines */
-+	gpio-line-names =
-+		"SPI_AP_EC_CS_L",
-+		"SPI_AP_EC_MOSI",
-+		"SPI_AP_EC_CLK",
-+		"I2S3_DO",
-+		"USB_PD_INT_ODL",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"IT6505_HPD_L",
-+		"I2S3_TDM_D3",
-+		"SOC_I2C6_1V8_SCL",
-+		"SOC_I2C6_1V8_SDA",
-+		"DPI_D0",
-+		"DPI_D1",
-+		"DPI_D2",
-+		"DPI_D3",
-+		"DPI_D4",
-+		"DPI_D5",
-+		"DPI_D6",
-+		"DPI_D7",
-+		"DPI_D8",
-+		"DPI_D9",
-+		"DPI_D10",
-+		"DPI_D11",
-+		"DPI_HSYNC",
-+		"DPI_VSYNC",
-+		"DPI_DE",
-+		"DPI_CK",
-+		"AP_MSDC1_CLK",
-+		"AP_MSDC1_DAT3",
-+		"AP_MSDC1_CMD",
-+		"AP_MSDC1_DAT0",
-+		"AP_MSDC1_DAT2",
-+		"AP_MSDC1_DAT1",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"OTG_EN",
-+		"DRVBUS",
-+		"DISP_PWM",
-+		"DSI_TE",
-+		"LCM_RST_1V8",
-+		"AP_CTS_WIFI_RTS",
-+		"AP_RTS_WIFI_CTS",
-+		"SOC_I2C5_1V8_SCL",
-+		"SOC_I2C5_1V8_SDA",
-+		"SOC_I2C3_1V8_SCL",
-+		"SOC_I2C3_1V8_SDA",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"SOC_I2C1_1V8_SDA",
-+		"SOC_I2C0_1V8_SDA",
-+		"SOC_I2C0_1V8_SCL",
-+		"SOC_I2C1_1V8_SCL",
-+		"AP_SPI_H1_MISO",
-+		"AP_SPI_H1_CS_L",
-+		"AP_SPI_H1_MOSI",
-+		"AP_SPI_H1_CLK",
-+		"I2S5_BCK",
-+		"I2S5_LRCK",
-+		"I2S5_DO",
-+		"BOOTBLOCK_EN_L",
-+		"MT8183_KPCOL0",
-+		"SPI_AP_EC_MISO",
-+		"UART_DBG_TX_AP_RX",
-+		"UART_AP_TX_DBG_RX",
-+		"I2S2_MCK",
-+		"I2S2_BCK",
-+		"CLK_5M_WCAM",
-+		"CLK_2M_UCAM",
-+		"I2S2_LRCK",
-+		"I2S2_DI",
-+		"SOC_I2C2_1V8_SCL",
-+		"SOC_I2C2_1V8_SDA",
-+		"SOC_I2C4_1V8_SCL",
-+		"SOC_I2C4_1V8_SDA",
-+		"",
-+		"SCL8",
-+		"SDA8",
-+		"FCAM_PWDN_L",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"I2S_PMIC",
-+		"I2S_PMIC",
-+		"I2S_PMIC",
-+		"I2S_PMIC",
-+		"I2S_PMIC",
-+		"I2S_PMIC",
-+		"I2S_PMIC",
-+		"I2S_PMIC",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		/*
-+		 * AP_FLASH_WP_L is crossystem ABI. Rev1 schematics
-+		 * call it BIOS_FLASH_WP_R_L.
-+		 */
-+		"AP_FLASH_WP_L",
-+		"EC_AP_INT_ODL",
-+		"IT6505_INT_ODL",
-+		"H1_INT_OD_L",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"AP_SPI_FLASH_MISO",
-+		"AP_SPI_FLASH_CS_L",
-+		"AP_SPI_FLASH_MOSI",
-+		"AP_SPI_FLASH_CLK",
-+		"DA7219_IRQ",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"",
-+		"";
-+
-+	pp1200_mipibrdg_en: pp1200-mipibrdg-en {
-+		pins1 {
-+			pinmux = <PINMUX_GPIO54__FUNC_GPIO54>;
-+			output-low;
-+		};
-+	};
-+
-+	pp1800_lcd_en: pp1800-lcd-en {
-+		pins1 {
-+			pinmux = <PINMUX_GPIO36__FUNC_GPIO36>;
-+			output-low;
-+		};
-+	};
-+
-+	pp3300_panel_pins: pp3300-panel-pins {
-+		panel_3v3_enable: panel-3v3-enable {
-+			pinmux = <PINMUX_GPIO35__FUNC_GPIO35>;
-+			output-low;
-+		};
-+	};
-+
-+	ppvarp_lcd_en: ppvarp-lcd-en {
-+		pins1 {
-+			pinmux = <PINMUX_GPIO66__FUNC_GPIO66>;
-+			output-low;
-+		};
-+	};
-+
-+	ppvarn_lcd_en: ppvarn-lcd-en {
-+		pins1 {
-+			pinmux = <PINMUX_GPIO166__FUNC_GPIO166>;
-+			output-low;
-+		};
-+	};
-+
-+	anx7625_pins: anx7625-pins {
-+		pins1 {
-+			pinmux = <PINMUX_GPIO45__FUNC_GPIO45>,
-+				 <PINMUX_GPIO73__FUNC_GPIO73>;
-+			output-low;
-+		};
-+		pins2 {
-+			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	touchscreen_pins: touchscreen-pins {
-+		touch_int_odl {
-+			pinmux = <PINMUX_GPIO155__FUNC_GPIO155>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		touch_rst_l {
-+			pinmux = <PINMUX_GPIO156__FUNC_GPIO156>;
-+			output-high;
-+		};
-+	};
-+
-+	trackpad_pins: trackpad-pins {
-+		trackpad_int {
-+			pinmux = <PINMUX_GPIO7__FUNC_GPIO7>;
-+			input-enable;
-+			bias-disable; /* pulled externally */
-+		};
-+	};
-+
-+	vddio_mipibrdg_en: vddio-mipibrdg-en {
-+		pins1 {
-+			pinmux = <PINMUX_GPIO37__FUNC_GPIO37>;
-+			output-low;
-+		};
-+	};
-+
-+	volume_button_pins: volume-button-pins {
-+		voldn-btn-odl {
-+			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		volup-btn-odl {
-+			pinmux = <PINMUX_GPIO5__FUNC_GPIO5>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+	};
-+};
-+
--- 
-2.31.0.rc2.261.g7f71774620-goog
+If I understand how v4l2_ctrl_request_hdl_ctrl_find() works with
+requests, this boolean only checks that the control has been provided
+at least once, and not that it is provided with every request. Without
+it we could send a frame to the firmware without e.g. setting an SPS,
+which would be a problem.
 
+>
+> > +       },
+> > +       {
+> > +               .cfg = {
+> > +                       .id = V4L2_CID_STATELESS_H264_PPS,
+> > +               },
+> > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > +               .needed_in_request = true,
+> > +       },
+> > +       {
+> > +               .cfg = {
+> > +                       .id = V4L2_CID_STATELESS_H264_SCALING_MATRIX,
+> > +               },
+> > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > +               .needed_in_request = true,
+> > +       },
+> > +       {
+> > +               .cfg = {
+> > +                       .id = V4L2_CID_STATELESS_H264_DECODE_PARAMS,
+> > +               },
+> > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > +               .needed_in_request = true,
+> > +       },
+> > +       {
+> > +               .cfg = {
+> > +                       .id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+> > +                       .def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
+> > +                       .max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
+> > +                       .menu_skip_mask =
+> > +                               BIT(V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE) |
+> > +                               BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
+> > +               },
+> > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > +       },
+> > +       {
+> > +               .cfg = {
+> > +                       .id = V4L2_CID_STATELESS_H264_DECODE_MODE,
+> > +                       .min = V4L2_STATELESS_H264_DECODE_MODE_FRAME_BASED,
+> > +                       .def = V4L2_STATELESS_H264_DECODE_MODE_FRAME_BASED,
+> > +                       .max = V4L2_STATELESS_H264_DECODE_MODE_FRAME_BASED,
+> > +               },
+> > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > +       },
+> > +};
+>
+> Applications also need to know which V4L2_CID_STATELESS_H264_START_CODE
+> the driver supports. From a next patch, this case seems to be
+> V4L2_STATELESS_H264_START_CODE_ANNEX_B.
+
+Indeed - I've added the control, thanks for catching this!
+
+>
+> > +#define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
+> > +
+> > +static const struct mtk_video_fmt mtk_video_formats[] = {
+> > +       {
+> > +               .fourcc = V4L2_PIX_FMT_H264_SLICE,
+> > +               .type = MTK_FMT_DEC,
+> > +               .num_planes = 1,
+> > +       },
+> > +       {
+> > +               .fourcc = V4L2_PIX_FMT_MM21,
+> > +               .type = MTK_FMT_FRAME,
+> > +               .num_planes = 2,
+> > +       },
+> > +};
+> > +#define NUM_FORMATS ARRAY_SIZE(mtk_video_formats)
+> > +#define DEFAULT_OUT_FMT_IDX    0
+> > +#define DEFAULT_CAP_FMT_IDX    1
+> > +
+> > +static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
+> > +       {
+> > +               .fourcc = V4L2_PIX_FMT_H264_SLICE,
+> > +               .stepwise = {
+> > +                       MTK_VDEC_MIN_W, MTK_VDEC_MAX_W, 16,
+> > +                       MTK_VDEC_MIN_H, MTK_VDEC_MAX_H, 16,
+> > +               },
+> > +       },
+> > +};
+> > +
+> > +#define NUM_SUPPORTED_FRAMESIZE ARRAY_SIZE(mtk_vdec_framesizes)
+> > +
+> > +static void mtk_vdec_stateless_set_dst_payload(struct mtk_vcodec_ctx *ctx,
+> > +                                              struct vdec_fb *fb)
+> > +{
+> > +       struct mtk_video_dec_buf *vdec_frame_buf =
+> > +               container_of(fb, struct mtk_video_dec_buf, frame_buffer);
+> > +       struct vb2_v4l2_buffer *vb = &vdec_frame_buf->m2m_buf.vb;
+> > +       unsigned int cap_y_size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[0];
+> > +
+> > +       vb2_set_plane_payload(&vb->vb2_buf, 0, cap_y_size);
+> > +       if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2) {
+> > +               unsigned int cap_c_size =
+> > +                       ctx->q_data[MTK_Q_DATA_DST].sizeimage[1];
+> > +
+> > +               vb2_set_plane_payload(&vb->vb2_buf, 1, cap_c_size);
+> > +       }
+> > +}
+> > +
+> > +static struct vdec_fb *vdec_get_cap_buffer(struct mtk_vcodec_ctx *ctx,
+> > +                                          struct vb2_v4l2_buffer *vb2_v4l2)
+> > +{
+> > +       struct mtk_video_dec_buf *framebuf =
+> > +               container_of(vb2_v4l2, struct mtk_video_dec_buf, m2m_buf.vb);
+> > +       struct vdec_fb *pfb = &framebuf->frame_buffer;
+> > +       struct vb2_buffer *dst_buf = &vb2_v4l2->vb2_buf;
+> > +
+> > +       pfb = &framebuf->frame_buffer;
+> > +       pfb->base_y.va = vb2_plane_vaddr(dst_buf, 0);
+>
+> Are you sure you need a CPU mapping? It seems strange.
+> I'll comment some more on the next patch(es).
+
+I'll answer on the next patch since this is where that mapping is being used.
+
+>
+> > +       pfb->base_y.dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
+> > +       pfb->base_y.size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[0];
+> > +
+> > +       if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2) {
+> > +               pfb->base_c.va = vb2_plane_vaddr(dst_buf, 1);
+> > +               pfb->base_c.dma_addr =
+> > +                       vb2_dma_contig_plane_dma_addr(dst_buf, 1);
+> > +               pfb->base_c.size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[1];
+> > +       }
+> > +       mtk_v4l2_debug(1,
+> > +               "id=%d Framebuf  pfb=%p VA=%p Y_DMA=%pad C_DMA=%pad Size=%zx frame_count = %d",
+> > +               dst_buf->index, pfb,
+> > +               pfb->base_y.va, &pfb->base_y.dma_addr,
+> > +               &pfb->base_c.dma_addr, pfb->base_y.size,
+> > +               ctx->decoded_frame_cnt);
+> > +
+> > +       return pfb;
+> > +}
+> > +
+> > +static void vb2ops_vdec_buf_request_complete(struct vb2_buffer *vb)
+> > +{
+> > +       struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > +
+> > +       v4l2_ctrl_request_complete(vb->req_obj.req, &ctx->ctrl_hdl);
+> > +}
+> > +
+> > +static int fops_media_request_validate(struct media_request *mreq)
+> > +{
+> > +       const unsigned int buffer_cnt = vb2_request_buffer_cnt(mreq);
+> > +       struct mtk_vcodec_ctx *ctx = NULL;
+> > +       struct media_request_object *req_obj;
+> > +       struct v4l2_ctrl_handler *parent_hdl, *hdl;
+> > +       struct v4l2_ctrl *ctrl;
+> > +       unsigned int i;
+> > +
+> > +       switch (buffer_cnt) {
+> > +       case 1:
+> > +               /* We expect exactly one buffer with the request */
+> > +               break;
+> > +       case 0:
+> > +               mtk_v4l2_err("No buffer provided with the request");
+> > +               return -ENOENT;
+> > +       default:
+> > +               mtk_v4l2_err("Too many buffers (%d) provided with the request",
+> > +                            buffer_cnt);
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       list_for_each_entry(req_obj, &mreq->objects, list) {
+> > +               struct vb2_buffer *vb;
+> > +
+> > +               if (vb2_request_object_is_buffer(req_obj)) {
+> > +                       vb = container_of(req_obj, struct vb2_buffer, req_obj);
+> > +                       ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > +                       break;
+> > +               }
+> > +       }
+> > +
+> > +       if (!ctx) {
+> > +               mtk_v4l2_err("Cannot find buffer for request");
+> > +               return -ENOENT;
+> > +       }
+> > +
+> > +       parent_hdl = &ctx->ctrl_hdl;
+> > +
+> > +       hdl = v4l2_ctrl_request_hdl_find(mreq, parent_hdl);
+> > +       if (!hdl) {
+> > +               mtk_v4l2_err("Cannot find control handler for request\n");
+> > +               return -ENOENT;
+> > +       }
+> > +
+> > +       for (i = 0; i < NUM_CTRLS; i++) {
+> > +               if (mtk_stateless_controls[i].codec_type != ctx->current_codec)
+> > +                       continue;
+> > +               if (!mtk_stateless_controls[i].needed_in_request)
+> > +                       continue;
+> > +
+> > +               ctrl = v4l2_ctrl_request_hdl_ctrl_find(hdl,
+> > +                                         mtk_stateless_controls[i].cfg.id);
+> > +               if (!ctrl) {
+> > +                       mtk_v4l2_err("Missing required codec control\n");
+> > +                       return -ENOENT;
+> > +               }
+> > +       }
+> > +
+> > +       v4l2_ctrl_request_hdl_put(hdl);
+> > +
+> > +       return vb2_request_validate(mreq);
+> > +}
+> > +
+> > +static void mtk_vdec_worker(struct work_struct *work)
+> > +{
+> > +       struct mtk_vcodec_ctx *ctx =
+> > +               container_of(work, struct mtk_vcodec_ctx, decode_work);
+> > +       struct mtk_vcodec_dev *dev = ctx->dev;
+> > +       struct vb2_v4l2_buffer *vb2_v4l2_src, *vb2_v4l2_dst;
+> > +       struct vb2_buffer *vb2_src;
+> > +       struct mtk_vcodec_mem *bs_src;
+> > +       struct mtk_video_dec_buf *dec_buf_src;
+> > +       struct media_request *src_buf_req;
+> > +       struct vdec_fb *dst_buf;
+> > +       bool res_chg = false;
+> > +       int ret;
+> > +
+> > +       vb2_v4l2_src = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+> > +       if (vb2_v4l2_src == NULL) {
+> > +               v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> > +               mtk_v4l2_debug(1, "[%d] no available source buffer", ctx->id);
+> > +               return;
+> > +       }
+> > +
+> > +       vb2_v4l2_dst = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
+> > +       if (vb2_v4l2_dst == NULL) {
+> > +               v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> > +               mtk_v4l2_debug(1, "[%d] no available destination buffer", ctx->id);
+> > +               return;
+> > +       }
+> > +
+> > +       vb2_src = &vb2_v4l2_src->vb2_buf;
+> > +       dec_buf_src = container_of(vb2_v4l2_src, struct mtk_video_dec_buf,
+> > +                                  m2m_buf.vb);
+> > +       bs_src = &dec_buf_src->bs_buffer;
+> > +
+> > +       mtk_v4l2_debug(3, "[%d] (%d) id=%d, vb=%p buf_info = %p",
+> > +                       ctx->id, src_buf->vb2_queue->type,
+> > +                       src_buf->index, src_buf, src_buf_info);
+> > +
+> > +       bs_src->va = vb2_plane_vaddr(vb2_src, 0);
+> > +       bs_src->dma_addr = vb2_dma_contig_plane_dma_addr(vb2_src, 0);
+> > +       bs_src->size = (size_t)vb2_src->planes[0].bytesused;
+> > +       if (!bs_src->va) {
+> > +               v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> > +               mtk_v4l2_err("[%d] id=%d source buffer is NULL", ctx->id,
+> > +                            vb2_src->index);
+> > +               return;
+> > +       }
+> > +
+> > +       mtk_v4l2_debug(3, "[%d] Bitstream VA=%p DMA=%pad Size=%zx vb=%p",
+> > +                       ctx->id, buf->va, &buf->dma_addr, buf->size, src_buf);
+> > +       /* Apply request controls. */
+> > +       src_buf_req = vb2_src->req_obj.req;
+> > +       if (src_buf_req)
+> > +               v4l2_ctrl_request_setup(src_buf_req, &ctx->ctrl_hdl);
+> > +       else
+> > +               mtk_v4l2_err("vb2 buffer media request is NULL");
+> > +
+> > +       dst_buf = vdec_get_cap_buffer(ctx, vb2_v4l2_dst);
+> > +       v4l2_m2m_buf_copy_metadata(vb2_v4l2_src, vb2_v4l2_dst, true);
+> > +       ret = vdec_if_decode(ctx, bs_src, dst_buf, &res_chg);
+> > +       if (ret) {
+> > +               mtk_v4l2_err(
+> > +                       " <===[%d], src_buf[%d] sz=0x%zx pts=%llu vdec_if_decode() ret=%d res_chg=%d===>",
+> > +                       ctx->id, vb2_src->index, bs_src->size,
+> > +                       vb2_src->timestamp, ret, res_chg);
+> > +               if (ret == -EIO) {
+> > +                       mutex_lock(&ctx->lock);
+> > +                       dec_buf_src->error = true;
+> > +                       mutex_unlock(&ctx->lock);
+> > +               }
+> > +       }
+> > +
+> > +       mtk_vdec_stateless_set_dst_payload(ctx, dst_buf);
+> > +
+> > +       v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx,
+> > +               ret ? VB2_BUF_STATE_ERROR : VB2_BUF_STATE_DONE);
+> > +
+> > +       v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+> > +}
+> > +
+> > +static void vb2ops_vdec_stateless_buf_queue(struct vb2_buffer *vb)
+> > +{
+> > +       struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > +       struct vb2_v4l2_buffer *vb2_v4l2 = to_vb2_v4l2_buffer(vb);
+> > +
+> > +       mtk_v4l2_debug(3, "[%d] (%d) id=%d, vb=%p",
+> > +                       ctx->id, vb->vb2_queue->type,
+> > +                       vb->index, vb);
+> > +
+> > +       mutex_lock(&ctx->lock);
+> > +       v4l2_m2m_buf_queue(ctx->m2m_ctx, vb2_v4l2);
+> > +       mutex_unlock(&ctx->lock);
+> > +       if (vb->vb2_queue->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+> > +               return;
+> > +
+> > +       mtk_v4l2_debug(3, "(%d) id=%d, bs=%p",
+> > +               vb->vb2_queue->type, vb->index, src_buf);
+> > +
+> > +       /* If an OUTPUT buffer, we may need to update the state */
+> > +       if (ctx->state == MTK_STATE_INIT) {
+> > +               ctx->state = MTK_STATE_HEADER;
+> > +               mtk_v4l2_debug(1, "Init driver from init to header.");
+>
+> This state thing seems just something to make the rest
+> of the stateful-based driver happy, right?
+
+Correct - if anything we should either use more of the state here
+(i.e. set the error state when relevant) or move the state entirely in
+the stateful part of the driver.
+
+>
+> Makes me wonder a bit if just splitting the stateless part to its
+> own driver, wouldn't make your maintenance easier.
+>
+> What's the motivation for sharing the driver?
+
+Technically you could do it both ways. Separating the driver would
+result in some boilerplate code and buffer-management structs
+duplication (unless we keep the shared part under another module - but
+in this case we are basically in the same situation as now). Also
+despite using different userspace-facing ABIs, MT8173 and MT8183
+follow a similar architecture and a similar firmware interface.
+Considering these similarities it seems simpler from an architectural
+point of view to have all the Mediatek codec support under the same
+driver. It also probably results in less code.
+
+That being said, the split can probably be improved as you pointed out
+with this state variable. But the current split is not too bad IMHO,
+at least not worse than how the code was originally.
+
+>
+> > +       } else {
+> > +               mtk_v4l2_debug(3, "[%d] already init driver %d",
+> > +                               ctx->id, ctx->state);
+> > +       }
+> > +}
+> > +
+> > +static int mtk_vdec_flush_decoder(struct mtk_vcodec_ctx *ctx)
+> > +{
+> > +       bool res_chg;
+> > +
+> > +       return vdec_if_decode(ctx, NULL, NULL, &res_chg);
+> > +}
+> > +
+> > +static const struct v4l2_ctrl_ops mtk_vcodec_dec_ctrl_ops = {
+> > +       .g_volatile_ctrl = mtk_vdec_g_v_ctrl,
+> > +};
+> > +
+> > +static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
+> > +{
+> > +       struct v4l2_ctrl *ctrl;
+> > +       unsigned int i;
+> > +
+> > +       v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS);
+> > +       if (ctx->ctrl_hdl.error) {
+> > +               mtk_v4l2_err("v4l2_ctrl_handler_init failed\n");
+> > +               return ctx->ctrl_hdl.error;
+> > +       }
+> > +
+> > +       ctrl = v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+> > +                               &mtk_vcodec_dec_ctrl_ops,
+> > +                               V4L2_CID_MIN_BUFFERS_FOR_CAPTURE,
+> > +                               0, 32, 1, 1);
+> > +       ctrl->flags |= V4L2_CTRL_FLAG_VOLATILE;
+>
+> Hm, this volatile control for MIN_BUFFERS_FOR_CAPTURE seems
+> to return the DPB size. However, isn't this something userspace already knows?
+
+True, but that's also a control the driver is supposed to provide per
+the spec IIUC.
+
+>
+> > +
+> > +       for (i = 0; i < NUM_CTRLS; i++) {
+> > +               struct v4l2_ctrl_config cfg = mtk_stateless_controls[i].cfg;
+> > +
+> > +               v4l2_ctrl_new_custom(&ctx->ctrl_hdl, &cfg, NULL);
+> > +               if (ctx->ctrl_hdl.error) {
+> > +                       mtk_v4l2_err("Adding control %d failed %d",
+> > +                                       i, ctx->ctrl_hdl.error);
+> > +                       return ctx->ctrl_hdl.error;
+> > +               }
+> > +       }
+> > +
+> > +       v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +const struct media_device_ops mtk_vcodec_media_ops = {
+> > +       .req_validate   = fops_media_request_validate,
+> > +       .req_queue      = v4l2_m2m_request_queue,
+> > +};
+> > +
+> > +static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
+> > +{
+> > +       struct vb2_queue *src_vq;
+> > +
+> > +       src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
+> > +                                V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
+> > +
+> > +       /* Support request api for output plane */
+> > +       src_vq->supports_requests = true;
+> > +       src_vq->requires_requests = true;
+> > +}
+> > +
+> > +static int vb2ops_vdec_out_buf_validate(struct vb2_buffer *vb)
+> > +{
+>
+> I have to admit I do not remember exactly the reason,
+> but this should set the buffer field to V4L2_FIELD_NONE.
+
+Right, I see all other drivers are doing this. Done.
+
+Cheers,
+Alex.
 
 _______________________________________________
 Linux-mediatek mailing list
