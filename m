@@ -2,90 +2,98 @@ Return-Path: <SRS0=+2NV=IN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 044EDC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 14:30:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81F1AC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 15:16:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5AC6864F21
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 14:30:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AC6864F21
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id F075B64E20
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 15:16:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F075B64E20
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ndufresne.ca
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Cc:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=x3+ewu3IEQ0anlIw95HUPt/rp61PFfnkPENZFXM54NU=; b=LHK0x6gakUFuva44Af2obzHfQ
-	yzc1LvhP6j+rIeONHW0+kJ5gBG8M1kAN3CXU7vMHisTEWjqGjwpWNov/bMycsOX+zF1zqEwRHGrqG
-	mHRjlqtD93bty2vX2LvbK5sQlZZ7WAHlV1/ThAAcEOd0gq91qyYW2S8TQJUbWKai0HYMIxpIchilR
-	x5zRG2U8IPA1vJRj19hZmdZQ12i6BvEboVh5E0p0dglBmEfmIt884IaELtmN40WGEBx2MDp1qqhb/
-	OzNr7xTxy/Joqo1Dm0tR2x1wfu3oYBHSg3p37a8530hpCqk0edNTTCNQ7mJrw3KOJ1d7552RMDjyw
-	0G93IWarA==;
+	 bh=cZGYIPwpSd8VokZy5zF/h8wc/3hwE/jaqLMI53VWytk=; b=qubmaJYkl4qqeGPZFIaPtdW8b
+	MLEPOBDr5FmRWh0MqQpjJEUkxUreAmuqOLHqlP+lMN1xDyBlWBMzn4OHep5icJdUT9oOkUuj5wbfZ
+	SKNYmQh7XPgW6eakoiMbxCtcF3gzB6FS3KdbutQQCr0PcUQ4RHBZcgCbZgDAjeACc9fuM/anT6GTq
+	yMK+dNHgm4uBjSnfJnZDu2HU0H2Wgz0xqrW3P51zBgcXAa5GrJFSx0W7YPXkQsv5MwXy1c5/U+xY7
+	a96keObdin9+7P7fQS1kqIAhWtLtmyJViFhQqEFjcz/CNLbk93Z6HjZZtxAUhcKRlS7yAFc5azx5h
+	KSMU7OkWg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLoE4-00G527-M4; Mon, 15 Mar 2021 14:29:44 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1lLoxQ-00GG8A-Rn; Mon, 15 Mar 2021 15:16:36 +0000
+Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLoDs-00G516-6k; Mon, 15 Mar 2021 14:29:36 +0000
-IronPort-SDR: C/ZyN8HE8utQcspbpKwZA5cMmzAJW0SWSvbU5R1JHbQOLbZ0N36ZS90EpB/5eXJTICPvqfAlTU
- YCQ0KEdWqBjw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9923"; a="188455318"
-X-IronPort-AV: E=Sophos;i="5.81,249,1610438400"; d="scan'208";a="188455318"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Mar 2021 07:29:26 -0700
-IronPort-SDR: 4ZABDdkdHO6SSjEtXySDeLIPDD/AC5Z+hk7ApmYpaVDCMc4TrTRGjc8wRuUo4zvqskidjazRdW
- aN1ff7MDimiw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,249,1610438400"; d="scan'208";a="590330985"
-Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.76])
- ([10.237.72.76])
- by orsmga005.jf.intel.com with ESMTP; 15 Mar 2021 07:29:19 -0700
-Subject: Re: [PATCH v11 1/2] scsi: ufs: Enable power management for wlun
-To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
- martin.petersen@oracle.com, linux-scsi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
- <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
- Kiwoong Kim <kwmad.kim@samsung.com>, Wei Yongjun <weiyongjun1@huawei.com>,
- Lee Jones <lee.jones@linaro.org>, "Gustavo A. R. Silva"
- <gustavoars@kernel.org>, Dinghao Liu <dinghao.liu@zju.edu.cn>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Satya Tangirala <satyat@google.com>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ id 1lLoxL-00GG7C-JA
+ for linux-mediatek@lists.infradead.org; Mon, 15 Mar 2021 15:16:34 +0000
+Received: by mail-qv1-xf36.google.com with SMTP id t16so7918108qvr.12
+ for <linux-mediatek@lists.infradead.org>; Mon, 15 Mar 2021 08:16:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20150623.gappssmtp.com; s=20150623;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=0L4C6qTB1jCYwJtXSfudb2f3Xvpl6gykBdO+g+pJgI0=;
+ b=snbufEojBIV0g5QiOZ+D6MMOLRVf42l8ZpY5VpEF/r2KmItfGdYOavfr4WUFM2WMtW
+ ghJVgqT1KV95TAMFhHqsEC4djaJNWye6rcSI79hTt8VD/dAwiOM2U7fOx9wWLmohjvWO
+ +x8OWmizatnfSFKkhOBQAAsPy5I9tVPm4t4WPrEKKHJwtB3eFRa2nGi+cWO0TRNVXHU9
+ FTHeWobHaJNSS+DMEqum/OCLrNQHtCGl7v9Pbc3fGoBh2U9oWnvjJ7sGBzuFTo4r11IM
+ MlBtQlVL9f28zfJwlCec2NjnpykTW0zUWumyKgu/TLSd0XmTEYClV1RcE5zh3Xdfe139
+ yzBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=0L4C6qTB1jCYwJtXSfudb2f3Xvpl6gykBdO+g+pJgI0=;
+ b=kB7GEyiCJcKCc/+4ACqiMRDlkS/JiriMox+6YQL7YCe6V9soyMi6QrpmT2z2Er5QH2
+ 7Go0TW4719Etwwwfv5cAIAENaA79pGVdQtqyRXiI0rcrQzn4lt/fNDS/uKQqBzJSlFt0
+ fqfJlsF6BgmT9J3Z7pnT+X1aX0K2yHRU7c6mekwHjZfZbjUwTujodOkSXgP0ZBt+/u/y
+ R+atxyEYRi0vuiTrUA+d5G8SS+XQwNsSzqCRbPzhlZQPBtDeJgaJG3FztVyMX1kSSWvR
+ vS/EA4whwhX+WgN8J6tpwYBBIWua/d0b2A0Q5YZQX9miHG0KxHXF56uPxi3UhQfTBsKS
+ ORvw==
+X-Gm-Message-State: AOAM532HVfZZKx23Ns4zBBjoR1S0nurKQ/6ogLaQto1aZU5bQeoThL29
+ xy4/j8Ew0k8Ech2Paowm1o4bSDjmAEvijtO4
+X-Google-Smtp-Source: ABdhPJyI2CEGU2P3+M7mIFUXqRfrQwbGUmo6cYCSPxjLEFT0C6UYQ7KAFBwzxq2GbP51DQWvs2OToA==
+X-Received: by 2002:a05:6214:13b3:: with SMTP id
+ h19mr11372504qvz.31.1615821388631; 
+ Mon, 15 Mar 2021 08:16:28 -0700 (PDT)
+Received: from nicolas-tpx395.localdomain (173-246-12-168.qc.cable.ebox.net.
+ [173.246.12.168])
+ by smtp.gmail.com with ESMTPSA id v7sm12787519qkv.86.2021.03.15.08.16.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Mar 2021 08:16:27 -0700 (PDT)
+Message-ID: <3d7275bc1c0ae871010db34927681d648c1676e0.camel@ndufresne.ca>
+Subject: Re: [PATCH v3 05/15] media: mtk-vcodec: vdec: support stateless API
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Alexandre Courbot <acourbot@chromium.org>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media
+ <linux-media@vger.kernel.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
  <linux-mediatek@lists.infradead.org>
-References: <cover.1615500685.git.asutoshd@codeaurora.org>
- <f79c325ef4fd9a7dc2261dde5207ad11e81c4fcd.1615500685.git.asutoshd@codeaurora.org>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-Message-ID: <daaa9f6c-cfc4-e93e-46d3-26b9b92a4fe6@intel.com>
-Date: Mon, 15 Mar 2021 16:29:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+Date: Mon, 15 Mar 2021 11:16:26 -0400
+In-Reply-To: <CAPBb6MWtPuBNLpMK6U1-rfvTcPRnOEjJ06zTawxyD+pMSJ=uGQ@mail.gmail.com>
+References: <20210226100148.1663389-1-acourbot@chromium.org>
+ <20210226100148.1663389-6-acourbot@chromium.org>
+ <CAAEAJfDyHYGf+J6WDHchVATOvj5AJpO8dkAStiNGNobJ9Uz8Yw@mail.gmail.com>
+ <CAPBb6MWtPuBNLpMK6U1-rfvTcPRnOEjJ06zTawxyD+pMSJ=uGQ@mail.gmail.com>
+User-Agent: Evolution 3.38.3 (3.38.3-1.fc33) 
 MIME-Version: 1.0
-In-Reply-To: <f79c325ef4fd9a7dc2261dde5207ad11e81c4fcd.1615500685.git.asutoshd@codeaurora.org>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_142933_002128_5BBC9B1B 
-X-CRM114-Status: GOOD (  34.91  )
+X-CRM114-CacheID: sfid-20210315_151631_866473_21976EBB 
+X-CRM114-Status: GOOD (  39.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,1355 +105,425 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/03/21 12:19 am, Asutosh Das wrote:
-> During runtime-suspend of ufs host, the scsi devices are
-> already suspended and so are the queues associated with them.
-> But the ufs host sends SSU to wlun during its runtime-suspend.
-> During the process blk_queue_enter checks if the queue is not in
-> suspended state. If so, it waits for the queue to resume, and never
-> comes out of it.
-> The commit
-> (d55d15a33: scsi: block: Do not accept any requests while suspended)
-> adds the check if the queue is in suspended state in blk_queue_enter().
-> 
-> Call trace:
->  __switch_to+0x174/0x2c4
->  __schedule+0x478/0x764
->  schedule+0x9c/0xe0
->  blk_queue_enter+0x158/0x228
->  blk_mq_alloc_request+0x40/0xa4
->  blk_get_request+0x2c/0x70
->  __scsi_execute+0x60/0x1c4
->  ufshcd_set_dev_pwr_mode+0x124/0x1e4
->  ufshcd_suspend+0x208/0x83c
->  ufshcd_runtime_suspend+0x40/0x154
->  ufshcd_pltfrm_runtime_suspend+0x14/0x20
->  pm_generic_runtime_suspend+0x28/0x3c
->  __rpm_callback+0x80/0x2a4
->  rpm_suspend+0x308/0x614
->  rpm_idle+0x158/0x228
->  pm_runtime_work+0x84/0xac
->  process_one_work+0x1f0/0x470
->  worker_thread+0x26c/0x4c8
->  kthread+0x13c/0x320
->  ret_from_fork+0x10/0x18
-> 
-> Fix this by registering ufs device wlun as a scsi driver and
-> registering it for block runtime-pm. Also make this as a
-> supplier for all other luns. That way, this device wlun
-> suspends after all the consumers and resumes after
-> hba resumes.
-
-I haven't had time to try to reproduce the device-links issue, but
-there are a couple of comments below, in addition to the suggestions
-here:
-
-https://lore.kernel.org/linux-scsi/b13086f3-eea1-51a7-2117-579d520f21fc@intel.com/
-
-Also, there are still ufshcd_err_handling_prepare()/unprepare()
-and ufshcd_recover_pm_error(), that look like they need attention
-e.g. to use scsi_autopm_get/put_device(hba->sdev_ufs_device)
-
-
-> 
-> Co-developed-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
-> ---
->  drivers/scsi/ufs/cdns-pltfrm.c     |   2 +
->  drivers/scsi/ufs/tc-dwc-g210-pci.c |   2 +
->  drivers/scsi/ufs/ufs-debugfs.c     |   5 +
->  drivers/scsi/ufs/ufs-debugfs.h     |   2 +
->  drivers/scsi/ufs/ufs-exynos.c      |   2 +
->  drivers/scsi/ufs/ufs-hisi.c        |   2 +
->  drivers/scsi/ufs/ufs-mediatek.c    |   2 +
->  drivers/scsi/ufs/ufs-qcom.c        |   2 +
->  drivers/scsi/ufs/ufs_bsg.c         |   6 +-
->  drivers/scsi/ufs/ufshcd-pci.c      |  36 +--
->  drivers/scsi/ufs/ufshcd.c          | 616 ++++++++++++++++++++++++++-----------
->  drivers/scsi/ufs/ufshcd.h          |   7 +
->  include/trace/events/ufs.h         |  20 ++
->  13 files changed, 498 insertions(+), 206 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/cdns-pltfrm.c b/drivers/scsi/ufs/cdns-pltfrm.c
-> index 149391f..3e70c23 100644
-> --- a/drivers/scsi/ufs/cdns-pltfrm.c
-> +++ b/drivers/scsi/ufs/cdns-pltfrm.c
-> @@ -319,6 +319,8 @@ static const struct dev_pm_ops cdns_ufs_dev_pm_ops = {
->  	.runtime_suspend = ufshcd_pltfrm_runtime_suspend,
->  	.runtime_resume  = ufshcd_pltfrm_runtime_resume,
->  	.runtime_idle    = ufshcd_pltfrm_runtime_idle,
-> +	.prepare	 = ufshcd_suspend_prepare,
-> +	.complete	= ufshcd_resume_complete,
->  };
->  
->  static struct platform_driver cdns_ufs_pltfrm_driver = {
-> diff --git a/drivers/scsi/ufs/tc-dwc-g210-pci.c b/drivers/scsi/ufs/tc-dwc-g210-pci.c
-> index 67a6a61..b01db12 100644
-> --- a/drivers/scsi/ufs/tc-dwc-g210-pci.c
-> +++ b/drivers/scsi/ufs/tc-dwc-g210-pci.c
-> @@ -148,6 +148,8 @@ static const struct dev_pm_ops tc_dwc_g210_pci_pm_ops = {
->  	.runtime_suspend = tc_dwc_g210_pci_runtime_suspend,
->  	.runtime_resume  = tc_dwc_g210_pci_runtime_resume,
->  	.runtime_idle    = tc_dwc_g210_pci_runtime_idle,
-> +	.prepare	 = ufshcd_suspend_prepare,
-> +	.complete	= ufshcd_resume_complete,
->  };
->  
->  static const struct pci_device_id tc_dwc_g210_pci_tbl[] = {
-> diff --git a/drivers/scsi/ufs/ufs-debugfs.c b/drivers/scsi/ufs/ufs-debugfs.c
-> index dee98dc..f8ce2eb 100644
-> --- a/drivers/scsi/ufs/ufs-debugfs.c
-> +++ b/drivers/scsi/ufs/ufs-debugfs.c
-> @@ -54,3 +54,8 @@ void ufs_debugfs_hba_exit(struct ufs_hba *hba)
->  {
->  	debugfs_remove_recursive(hba->debugfs_root);
->  }
-> +
-> +void ufs_debugfs_eh_exit(void)
-> +{
-> +	debugfs_remove_recursive(ufs_debugfs_root);
-> +}
-
-This is the same as ufs_debugfs_exit() without __exit so why not
-remove __exit from ufs_debugfs_exit() and use that instead?
-
-> diff --git a/drivers/scsi/ufs/ufs-debugfs.h b/drivers/scsi/ufs/ufs-debugfs.h
-> index f35b39c..3fce5a0 100644
-> --- a/drivers/scsi/ufs/ufs-debugfs.h
-> +++ b/drivers/scsi/ufs/ufs-debugfs.h
-> @@ -12,11 +12,13 @@ void __init ufs_debugfs_init(void);
->  void __exit ufs_debugfs_exit(void);
->  void ufs_debugfs_hba_init(struct ufs_hba *hba);
->  void ufs_debugfs_hba_exit(struct ufs_hba *hba);
-> +void ufs_debugfs_eh_exit(void);
->  #else
->  static inline void ufs_debugfs_init(void) {}
->  static inline void ufs_debugfs_exit(void) {}
->  static inline void ufs_debugfs_hba_init(struct ufs_hba *hba) {}
->  static inline void ufs_debugfs_hba_exit(struct ufs_hba *hba) {}
-> +static inline void ufs_debugfs_eh_exit(void) {}
->  #endif
->  
->  #endif
-> diff --git a/drivers/scsi/ufs/ufs-exynos.c b/drivers/scsi/ufs/ufs-exynos.c
-> index 267943a1..45c0b02 100644
-> --- a/drivers/scsi/ufs/ufs-exynos.c
-> +++ b/drivers/scsi/ufs/ufs-exynos.c
-> @@ -1268,6 +1268,8 @@ static const struct dev_pm_ops exynos_ufs_pm_ops = {
->  	.runtime_suspend = ufshcd_pltfrm_runtime_suspend,
->  	.runtime_resume  = ufshcd_pltfrm_runtime_resume,
->  	.runtime_idle    = ufshcd_pltfrm_runtime_idle,
-> +	.prepare	 = ufshcd_suspend_prepare,
-> +	.complete	= ufshcd_resume_complete,
->  };
->  
->  static struct platform_driver exynos_ufs_pltform = {
-> diff --git a/drivers/scsi/ufs/ufs-hisi.c b/drivers/scsi/ufs/ufs-hisi.c
-> index 0aa5813..d463b44 100644
-> --- a/drivers/scsi/ufs/ufs-hisi.c
-> +++ b/drivers/scsi/ufs/ufs-hisi.c
-> @@ -574,6 +574,8 @@ static const struct dev_pm_ops ufs_hisi_pm_ops = {
->  	.runtime_suspend = ufshcd_pltfrm_runtime_suspend,
->  	.runtime_resume  = ufshcd_pltfrm_runtime_resume,
->  	.runtime_idle    = ufshcd_pltfrm_runtime_idle,
-> +	.prepare	 = ufshcd_suspend_prepare,
-> +	.complete	= ufshcd_resume_complete,
->  };
->  
->  static struct platform_driver ufs_hisi_pltform = {
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-> index c55202b..df1eabb 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.c
-> +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -1097,6 +1097,8 @@ static const struct dev_pm_ops ufs_mtk_pm_ops = {
->  	.runtime_suspend = ufshcd_pltfrm_runtime_suspend,
->  	.runtime_resume  = ufshcd_pltfrm_runtime_resume,
->  	.runtime_idle    = ufshcd_pltfrm_runtime_idle,
-> +	.prepare	 = ufshcd_suspend_prepare,
-> +	.complete	= ufshcd_resume_complete,
->  };
->  
->  static struct platform_driver ufs_mtk_pltform = {
-> diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
-> index f97d7b0..9aa098a 100644
-> --- a/drivers/scsi/ufs/ufs-qcom.c
-> +++ b/drivers/scsi/ufs/ufs-qcom.c
-> @@ -1546,6 +1546,8 @@ static const struct dev_pm_ops ufs_qcom_pm_ops = {
->  	.runtime_suspend = ufshcd_pltfrm_runtime_suspend,
->  	.runtime_resume  = ufshcd_pltfrm_runtime_resume,
->  	.runtime_idle    = ufshcd_pltfrm_runtime_idle,
-> +	.prepare	 = ufshcd_suspend_prepare,
-> +	.complete	= ufshcd_resume_complete,
->  };
->  
->  static struct platform_driver ufs_qcom_pltform = {
-> diff --git a/drivers/scsi/ufs/ufs_bsg.c b/drivers/scsi/ufs/ufs_bsg.c
-> index 5b2bc1a..cbb5a90 100644
-> --- a/drivers/scsi/ufs/ufs_bsg.c
-> +++ b/drivers/scsi/ufs/ufs_bsg.c
-> @@ -97,7 +97,7 @@ static int ufs_bsg_request(struct bsg_job *job)
->  
->  	bsg_reply->reply_payload_rcv_len = 0;
->  
-> -	pm_runtime_get_sync(hba->dev);
-> +	scsi_autopm_get_device(hba->sdev_ufs_device);
->  
->  	msgcode = bsg_request->msgcode;
->  	switch (msgcode) {
-> @@ -106,7 +106,7 @@ static int ufs_bsg_request(struct bsg_job *job)
->  		ret = ufs_bsg_alloc_desc_buffer(hba, job, &desc_buff,
->  						&desc_len, desc_op);
->  		if (ret) {
-> -			pm_runtime_put_sync(hba->dev);
-> +			scsi_autopm_put_device(hba->sdev_ufs_device);
->  			goto out;
->  		}
->  
-> @@ -138,7 +138,7 @@ static int ufs_bsg_request(struct bsg_job *job)
->  		break;
->  	}
->  
-> -	pm_runtime_put_sync(hba->dev);
-> +	scsi_autopm_put_device(hba->sdev_ufs_device);
->  
->  	if (!desc_buff)
->  		goto out;
-> diff --git a/drivers/scsi/ufs/ufshcd-pci.c b/drivers/scsi/ufs/ufshcd-pci.c
-> index fadd566..5d4ffd2 100644
-> --- a/drivers/scsi/ufs/ufshcd-pci.c
-> +++ b/drivers/scsi/ufs/ufshcd-pci.c
-> @@ -247,29 +247,6 @@ static int ufshcd_pci_resume(struct device *dev)
->  	return ufshcd_system_resume(dev_get_drvdata(dev));
->  }
->  
-> -/**
-> - * ufshcd_pci_poweroff - suspend-to-disk poweroff function
-> - * @dev: pointer to PCI device handle
-> - *
-> - * Returns 0 if successful
-> - * Returns non-zero otherwise
-> - */
-> -static int ufshcd_pci_poweroff(struct device *dev)
-> -{
-> -	struct ufs_hba *hba = dev_get_drvdata(dev);
-> -	int spm_lvl = hba->spm_lvl;
-> -	int ret;
-> -
-> -	/*
-> -	 * For poweroff we need to set the UFS device to PowerDown mode.
-> -	 * Force spm_lvl to ensure that.
-> -	 */
-> -	hba->spm_lvl = 5;
-> -	ret = ufshcd_system_suspend(hba);
-> -	hba->spm_lvl = spm_lvl;
-> -	return ret;
-> -}
-> -
->  #endif /* !CONFIG_PM_SLEEP */
->  
->  #ifdef CONFIG_PM
-> @@ -365,17 +342,14 @@ ufshcd_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  }
->  
->  static const struct dev_pm_ops ufshcd_pci_pm_ops = {
-> -#ifdef CONFIG_PM_SLEEP
-> -	.suspend	= ufshcd_pci_suspend,
-> -	.resume		= ufshcd_pci_resume,
-> -	.freeze		= ufshcd_pci_suspend,
-> -	.thaw		= ufshcd_pci_resume,
-> -	.poweroff	= ufshcd_pci_poweroff,
-> -	.restore	= ufshcd_pci_resume,
-> -#endif
->  	SET_RUNTIME_PM_OPS(ufshcd_pci_runtime_suspend,
->  			   ufshcd_pci_runtime_resume,
->  			   ufshcd_pci_runtime_idle)
-> +	SET_SYSTEM_SLEEP_PM_OPS(ufshcd_pci_suspend, ufshcd_pci_resume)
-> +#ifdef CONFIG_PM_SLEEP
-> +	.prepare	= ufshcd_suspend_prepare,
-> +	.complete	= ufshcd_resume_complete,
-> +#endif
->  };
->  
->  static const struct pci_device_id ufshcd_pci_tbl[] = {
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 45624c7..254f952 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -16,6 +16,7 @@
->  #include <linux/bitfield.h>
->  #include <linux/blk-pm.h>
->  #include <linux/blkdev.h>
-> +#include <scsi/scsi_driver.h>
->  #include "ufshcd.h"
->  #include "ufs_quirks.h"
->  #include "unipro.h"
-> @@ -78,6 +79,8 @@
->  /* Polling time to wait for fDeviceInit */
->  #define FDEVICEINIT_COMPL_TIMEOUT 1500 /* millisecs */
->  
-> +#define wlun_dev_to_hba(dv) shost_priv(to_scsi_device(dv)->host)
-> +
->  #define ufshcd_toggle_vreg(_dev, _vreg, _on)				\
->  	({                                                              \
->  		int _ret;                                               \
-> @@ -1556,7 +1559,7 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
->  	if (value == hba->clk_scaling.is_enabled)
->  		goto out;
->  
-> -	pm_runtime_get_sync(hba->dev);
-> +	scsi_autopm_get_device(hba->sdev_ufs_device);
->  	ufshcd_hold(hba, false);
->  
->  	hba->clk_scaling.is_enabled = value;
-> @@ -1572,7 +1575,7 @@ static ssize_t ufshcd_clkscale_enable_store(struct device *dev,
->  	}
->  
->  	ufshcd_release(hba);
-> -	pm_runtime_put_sync(hba->dev);
-> +	scsi_autopm_put_device(hba->sdev_ufs_device);
->  out:
->  	up(&hba->host_sem);
->  	return err ? err : count;
-> @@ -2572,6 +2575,17 @@ static inline u16 ufshcd_upiu_wlun_to_scsi_wlun(u8 upiu_wlun_id)
->  	return (upiu_wlun_id & ~UFS_UPIU_WLUN_ID) | SCSI_W_LUN_BASE;
->  }
->  
-> +static inline bool is_rpmb_wlun(struct scsi_device *sdev)
-> +{
-> +	return (sdev->lun == ufshcd_upiu_wlun_to_scsi_wlun(UFS_UPIU_RPMB_WLUN));
-> +}
-> +
-> +static inline bool is_device_wlun(struct scsi_device *sdev)
-> +{
-> +	return (sdev->lun ==
-> +		ufshcd_upiu_wlun_to_scsi_wlun(UFS_UPIU_UFS_DEVICE_WLUN));
-> +}
-> +
->  static void ufshcd_init_lrb(struct ufs_hba *hba, struct ufshcd_lrb *lrb, int i)
->  {
->  	struct utp_transfer_cmd_desc *cmd_descp = hba->ucdl_base_addr;
-> @@ -4106,11 +4120,11 @@ void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit)
->  	spin_unlock_irqrestore(hba->host->host_lock, flags);
->  
->  	if (update && !pm_runtime_suspended(hba->dev)) {
-> -		pm_runtime_get_sync(hba->dev);
-> +		scsi_autopm_get_device(hba->sdev_ufs_device);
-
-ufs-mediatek.c calls ufshcd_auto_hibern8_update() at link startup when
-hba->sdev_ufs_device can be NULL.
-
-
->  		ufshcd_hold(hba, false);
->  		ufshcd_auto_hibern8_enable(hba);
->  		ufshcd_release(hba);
-> -		pm_runtime_put(hba->dev);
-> +		scsi_autopm_put_device(hba->sdev_ufs_device);
->  	}
->  }
->  EXPORT_SYMBOL_GPL(ufshcd_auto_hibern8_update);
-> @@ -4808,6 +4822,38 @@ static inline void ufshcd_get_lu_power_on_wp_status(struct ufs_hba *hba,
->  }
->  
->  /**
-> + * ufshcd_setup_links - associate link b/w device wlun and other luns
-> + * @sdev: pointer to SCSI device
-> + * @hba: pointer to ufs hba
-> + */
-> +static void ufshcd_setup_links(struct ufs_hba *hba, struct scsi_device *sdev)
-> +{
-> +	struct device_link *link;
-> +
-> +	/*
-> +	 * device wlun is the supplier & rest of the luns are consumers
-> +	 * This ensures that device wlun suspends after all other luns.
-> +	 */
-> +	if (hba->sdev_ufs_device) {
-> +		link = device_link_add(&sdev->sdev_gendev,
-> +				       &hba->sdev_ufs_device->sdev_gendev,
-> +				       DL_FLAG_PM_RUNTIME|DL_FLAG_RPM_ACTIVE);
-> +		if (!link) {
-> +			dev_err(&sdev->sdev_gendev, "Failed establishing link - %s\n",
-> +				dev_name(&hba->sdev_ufs_device->sdev_gendev));
-> +			return;
-> +		}
-> +		hba->luns_avail--;
-> +		/* Ignore REPORT_LUN wlun probing */
-> +		if (hba->luns_avail != 1)
-> +			return;
-> +	} else {
-> +		/* device wlun is probed */
-> +		hba->luns_avail--;
-> +	}
-> +}
-> +
-> +/**
->   * ufshcd_slave_alloc - handle initial SCSI device configurations
->   * @sdev: pointer to SCSI device
->   *
-> @@ -4838,6 +4884,8 @@ static int ufshcd_slave_alloc(struct scsi_device *sdev)
->  
->  	ufshcd_get_lu_power_on_wp_status(hba, sdev);
->  
-> +	ufshcd_setup_links(hba, sdev);
-> +
->  	return 0;
->  }
->  
-> @@ -4875,6 +4923,17 @@ static int ufshcd_slave_configure(struct scsi_device *sdev)
->  
->  	ufshcd_crypto_setup_rq_keyslot_manager(hba, q);
->  
-> +	/*
-> +	 * sd_probe() runs asynchronously with scsi_sysfs_add_sdev().
-> +	 * Say, scsi_sysfs_add_sdev() suspends just before sd_probe()
-> +	 * it'd reset the link's rpm_active to 1.
-> +	 * That may cause the supplier to suspend before the consumer,
-> +	 * which is bad.
-> +	 * So block runtime-pm until all devices are probed.
-> +	 * Refer ufshcd_scsi_sync_probe().
-> +	 */
-> +	pm_runtime_forbid(&sdev->sdev_gendev);
-> +
->  	return 0;
->  }
->  
-> @@ -4985,15 +5044,9 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
->  			 * UFS device needs urgent BKOPs.
->  			 */
->  			if (!hba->pm_op_in_progress &&
-> -			    ufshcd_is_exception_event(lrbp->ucd_rsp_ptr) &&
-> -			    schedule_work(&hba->eeh_work)) {
-> -				/*
-> -				 * Prevent suspend once eeh_work is scheduled
-> -				 * to avoid deadlock between ufshcd_suspend
-> -				 * and exception event handler.
-> -				 */
-> -				pm_runtime_get_noresume(hba->dev);
-> -			}
-> +			    ufshcd_is_exception_event(lrbp->ucd_rsp_ptr))
-> +				/* Flushed in suspend */
-> +				schedule_work(&hba->eeh_work);
->  			break;
->  		case UPIU_TRANSACTION_REJECT_UPIU:
->  			/* TODO: handle Reject UPIU Response */
-> @@ -5589,8 +5642,8 @@ static void ufshcd_rpm_dev_flush_recheck_work(struct work_struct *work)
->  	 * after a certain delay to recheck the threshold by next runtime
->  	 * suspend.
->  	 */
-> -	pm_runtime_get_sync(hba->dev);
-> -	pm_runtime_put_sync(hba->dev);
-> +	scsi_autopm_get_device(hba->sdev_ufs_device);
-> +	scsi_autopm_put_device(hba->sdev_ufs_device);
->  }
->  
->  /**
-> @@ -5607,7 +5660,6 @@ static void ufshcd_exception_event_handler(struct work_struct *work)
->  	u32 status = 0;
->  	hba = container_of(work, struct ufs_hba, eeh_work);
->  
-> -	pm_runtime_get_sync(hba->dev);
->  	ufshcd_scsi_block_requests(hba);
->  	err = ufshcd_get_ee_status(hba, &status);
->  	if (err) {
-> @@ -5623,14 +5675,6 @@ static void ufshcd_exception_event_handler(struct work_struct *work)
->  
->  out:
->  	ufshcd_scsi_unblock_requests(hba);
-> -	/*
-> -	 * pm_runtime_get_noresume is called while scheduling
-> -	 * eeh_work to avoid suspend racing with exception work.
-> -	 * Hence decrement usage counter using pm_runtime_put_noidle
-> -	 * to allow suspend on completion of exception event handler.
-> -	 */
-> -	pm_runtime_put_noidle(hba->dev);
-> -	pm_runtime_put(hba->dev);
->  	return;
->  }
->  
-> @@ -7207,11 +7251,12 @@ static void ufshcd_set_active_icc_lvl(struct ufs_hba *hba)
->  
->  static inline void ufshcd_blk_pm_runtime_init(struct scsi_device *sdev)
->  {
-> +	int dly = is_device_wlun(sdev) ? 0:RPM_AUTOSUSPEND_DELAY_MS;
-> +
->  	scsi_autopm_get_device(sdev);
->  	blk_pm_runtime_init(sdev->request_queue, &sdev->sdev_gendev);
->  	if (sdev->rpm_autosuspend)
-> -		pm_runtime_set_autosuspend_delay(&sdev->sdev_gendev,
-> -						 RPM_AUTOSUSPEND_DELAY_MS);
-> +		pm_runtime_set_autosuspend_delay(&sdev->sdev_gendev, dly);
->  	scsi_autopm_put_device(sdev);
->  }
->  
-> @@ -7417,6 +7462,9 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
->  		goto out;
->  	}
->  
-> +	hba->luns_avail = desc_buf[DEVICE_DESC_PARAM_NUM_LU] +
-> +		desc_buf[DEVICE_DESC_PARAM_NUM_WLU];
-> +
->  	ufs_fixup_device_setup(hba);
->  
->  	ufshcd_wb_probe(hba, desc_buf);
-> @@ -7892,6 +7940,7 @@ static int ufshcd_probe_hba(struct ufs_hba *hba, bool async)
->  	ufshcd_set_ufs_dev_active(hba);
->  	ufshcd_force_reset_auto_bkops(hba);
->  	hba->wlun_dev_clr_ua = true;
-> +	hba->wlun_rpmb_clr_ua = true;
->  
->  	/* Gear up to HS gear if supported */
->  	if (hba->max_pwr_info.is_valid) {
-> @@ -8475,7 +8524,8 @@ static int ufshcd_set_dev_pwr_mode(struct ufs_hba *hba,
->  	 * handling context.
->  	 */
->  	hba->host->eh_noresume = 1;
-> -	ufshcd_clear_ua_wluns(hba);
-> +	if (hba->wlun_dev_clr_ua)
-> +		ufshcd_clear_ua_wlun(hba, UFS_UPIU_UFS_DEVICE_WLUN);
->  
->  	cmd[4] = pwr_mode << 4;
->  
-> @@ -8650,23 +8700,7 @@ static void ufshcd_hba_vreg_set_hpm(struct ufs_hba *hba)
->  		ufshcd_setup_hba_vreg(hba, true);
->  }
->  
-> -/**
-> - * ufshcd_suspend - helper function for suspend operations
-> - * @hba: per adapter instance
-> - * @pm_op: desired low power operation type
-> - *
-> - * This function will try to put the UFS device and link into low power
-> - * mode based on the "rpm_lvl" (Runtime PM level) or "spm_lvl"
-> - * (System PM level).
-> - *
-> - * If this function is called during shutdown, it will make sure that
-> - * both UFS device and UFS link is powered off.
-> - *
-> - * NOTE: UFS device & link must be active before we enter in this function.
-> - *
-> - * Returns 0 for success and non-zero for failure
-> - */
-> -static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> +static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  {
->  	int ret = 0;
->  	int check_for_bkops;
-> @@ -8674,7 +8708,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	enum ufs_dev_pwr_mode req_dev_pwr_mode;
->  	enum uic_link_state req_link_state;
->  
-> -	hba->pm_op_in_progress = 1;
-> +	hba->pm_op_in_progress = true;
->  	if (!ufshcd_is_shutdown_pm(pm_op)) {
->  		pm_lvl = ufshcd_is_runtime_pm(pm_op) ?
->  			 hba->rpm_lvl : hba->spm_lvl;
-> @@ -8697,17 +8731,17 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  
->  	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
->  			req_link_state == UIC_LINK_ACTIVE_STATE) {
-> -		goto disable_clks;
-> +		goto enable_scaling;
->  	}
->  
->  	if ((req_dev_pwr_mode == hba->curr_dev_pwr_mode) &&
->  	    (req_link_state == hba->uic_link_state))
-> -		goto enable_gating;
-> +		goto enable_scaling;
->  
->  	/* UFS device & link must be active before we enter in this function */
->  	if (!ufshcd_is_ufs_dev_active(hba) || !ufshcd_is_link_active(hba)) {
->  		ret = -EINVAL;
-> -		goto enable_gating;
-> +		goto enable_scaling;
->  	}
->  
->  	if (ufshcd_is_runtime_pm(pm_op)) {
-> @@ -8719,7 +8753,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  			 */
->  			ret = ufshcd_urgent_bkops(hba);
->  			if (ret)
-> -				goto enable_gating;
-> +				goto enable_scaling;
->  		} else {
->  			/* make sure that auto bkops is disabled */
->  			ufshcd_disable_auto_bkops(hba);
-> @@ -8747,7 +8781,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  		if (!hba->dev_info.b_rpm_dev_flush_capable) {
->  			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
->  			if (ret)
-> -				goto enable_gating;
-> +				goto enable_scaling;
->  		}
->  	}
->  
-> @@ -8760,7 +8794,6 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	if (ret)
->  		goto set_dev_active;
->  
-> -disable_clks:
->  	/*
->  	 * Call vendor specific suspend callback. As these callbacks may access
->  	 * vendor specific host controller register space call them before the
-> @@ -8769,28 +8802,9 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	ret = ufshcd_vops_suspend(hba, pm_op);
->  	if (ret)
->  		goto set_link_active;
-> -	/*
-> -	 * Disable the host irq as host controller as there won't be any
-> -	 * host controller transaction expected till resume.
-> -	 */
-> -	ufshcd_disable_irq(hba);
-> -
-> -	ufshcd_setup_clocks(hba, false);
-> -
-> -	if (ufshcd_is_clkgating_allowed(hba)) {
-> -		hba->clk_gating.state = CLKS_OFF;
-> -		trace_ufshcd_clk_gating(dev_name(hba->dev),
-> -					hba->clk_gating.state);
-> -	}
-> -
-> -	ufshcd_vreg_set_lpm(hba);
-> -
-> -	/* Put the host controller in low power mode if possible */
-> -	ufshcd_hba_vreg_set_lpm(hba);
->  	goto out;
->  
->  set_link_active:
-> -	ufshcd_vreg_set_hpm(hba);
->  	/*
->  	 * Device hardware reset is required to exit DeepSleep. Also, for
->  	 * DeepSleep, the link is off so host reset and restore will be done
-> @@ -8812,57 +8826,32 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	}
->  	if (!ufshcd_set_dev_pwr_mode(hba, UFS_ACTIVE_PWR_MODE))
->  		ufshcd_disable_auto_bkops(hba);
-> -enable_gating:
-> +enable_scaling:
->  	if (ufshcd_is_clkscaling_supported(hba))
->  		ufshcd_clk_scaling_suspend(hba, false);
->  
-> -	hba->clk_gating.is_suspended = false;
->  	hba->dev_info.b_rpm_dev_flush_capable = false;
-> -	ufshcd_clear_ua_wluns(hba);
-> -	ufshcd_release(hba);
->  out:
->  	if (hba->dev_info.b_rpm_dev_flush_capable) {
->  		schedule_delayed_work(&hba->rpm_dev_flush_recheck_work,
->  			msecs_to_jiffies(RPM_DEV_FLUSH_RECHECK_WORK_DELAY_MS));
->  	}
->  
-> -	hba->pm_op_in_progress = 0;
-> -
-> -	if (ret)
-> -		ufshcd_update_evt_hist(hba, UFS_EVT_SUSPEND_ERR, (u32)ret);
-> +	if (ret) {
-> +		ufshcd_update_evt_hist(hba, UFS_EVT_WL_SUSP_ERR, (u32)ret);
-> +		hba->clk_gating.is_suspended = false;
-> +		ufshcd_release(hba);
-> +	}
-> +	hba->pm_op_in_progress = false;
->  	return ret;
->  }
->  
-> -/**
-> - * ufshcd_resume - helper function for resume operations
-> - * @hba: per adapter instance
-> - * @pm_op: runtime PM or system PM
-> - *
-> - * This function basically brings the UFS device, UniPro link and controller
-> - * to active state.
-> - *
-> - * Returns 0 for success and non-zero for failure
-> - */
-> -static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> +static int __ufshcd_wl_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  {
->  	int ret;
-> -	enum uic_link_state old_link_state;
-> +	enum uic_link_state old_link_state = hba->uic_link_state;
->  
-> -	hba->pm_op_in_progress = 1;
-> -	old_link_state = hba->uic_link_state;
-> -
-> -	ufshcd_hba_vreg_set_hpm(hba);
-> -	ret = ufshcd_vreg_set_hpm(hba);
-> -	if (ret)
-> -		goto out;
-> -
-> -	/* Make sure clocks are enabled before accessing controller */
-> -	ret = ufshcd_setup_clocks(hba, true);
-> -	if (ret)
-> -		goto disable_vreg;
-> -
-> -	/* enable the host irq as host controller would be active soon */
-> -	ufshcd_enable_irq(hba);
-> +	hba->pm_op_in_progress = true;
->  
->  	/*
->  	 * Call vendor specific resume callback. As these callbacks may access
-> @@ -8871,7 +8860,7 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  	 */
->  	ret = ufshcd_vops_resume(hba, pm_op);
->  	if (ret)
-> -		goto disable_irq_and_vops_clks;
-> +		goto out;
->  
->  	/* For DeepSleep, the only supported option is to have the link off */
->  	WARN_ON(ufshcd_is_ufs_dev_deepsleep(hba) && !ufshcd_is_link_off(hba));
-> @@ -8916,31 +8905,147 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  		 */
->  		ufshcd_urgent_bkops(hba);
->  
-> -	hba->clk_gating.is_suspended = false;
-> -
-> -	if (ufshcd_is_clkscaling_supported(hba))
-> -		ufshcd_clk_scaling_suspend(hba, false);
-> -
-> -	/* Enable Auto-Hibernate if configured */
-> -	ufshcd_auto_hibern8_enable(hba);
-> +	if (hba->clk_scaling.is_allowed)
-> +		ufshcd_resume_clkscaling(hba);
->  
->  	if (hba->dev_info.b_rpm_dev_flush_capable) {
->  		hba->dev_info.b_rpm_dev_flush_capable = false;
->  		cancel_delayed_work(&hba->rpm_dev_flush_recheck_work);
->  	}
->  
-> -	ufshcd_clear_ua_wluns(hba);
-> -
-> -	/* Schedule clock gating in case of no access to UFS device yet */
-> -	ufshcd_release(hba);
-> -
-> +	/* Enable Auto-Hibernate if configured */
-> +	ufshcd_auto_hibern8_enable(hba);
->  	goto out;
->  
->  set_old_link_state:
->  	ufshcd_link_state_transition(hba, old_link_state, 0);
->  vendor_suspend:
->  	ufshcd_vops_suspend(hba, pm_op);
-> -disable_irq_and_vops_clks:
-> +out:
-> +	if (ret)
-> +		ufshcd_update_evt_hist(hba, UFS_EVT_WL_RES_ERR, (u32)ret);
-> +	hba->clk_gating.is_suspended = false;
-> +	ufshcd_release(hba);
-> +	hba->pm_op_in_progress = false;
-> +	return ret;
-> +}
-> +
-> +static int ufshcd_wl_runtime_suspend(struct device *dev)
-> +{
-> +	struct scsi_device *sdev = to_scsi_device(dev);
-> +	struct ufs_hba *hba;
-> +	int ret;
-> +	ktime_t start = ktime_get();
-> +
-> +	hba = shost_priv(sdev->host);
-> +
-> +	ret = __ufshcd_wl_suspend(hba, UFS_RUNTIME_PM);
-> +	if (ret)
-> +		dev_err(&sdev->sdev_gendev, "%s failed: %d\n", __func__, ret);
-> +
-> +	trace_ufshcd_wl_runtime_suspend(dev_name(dev), ret,
-> +		ktime_to_us(ktime_sub(ktime_get(), start)),
-> +		hba->curr_dev_pwr_mode, hba->uic_link_state);
-> +
-> +	return ret;
-> +}
-> +
-> +static int ufshcd_wl_runtime_resume(struct device *dev)
-> +{
-> +	struct scsi_device *sdev = to_scsi_device(dev);
-> +	struct ufs_hba *hba;
-> +	int ret = 0;
-> +	ktime_t start = ktime_get();
-> +
-> +	hba = shost_priv(sdev->host);
-> +
-> +	ret = __ufshcd_wl_resume(hba, UFS_RUNTIME_PM);
-> +	if (ret)
-> +		dev_err(&sdev->sdev_gendev, "%s failed: %d\n", __func__, ret);
-> +
-> +	trace_ufshcd_wl_runtime_resume(dev_name(dev), ret,
-> +		ktime_to_us(ktime_sub(ktime_get(), start)),
-> +		hba->curr_dev_pwr_mode, hba->uic_link_state);
-> +
-> +	return ret;
-> +}
-> +
-> +#ifdef CONFIG_PM_SLEEP
-> +static int ufshcd_wl_suspend(struct device *dev)
-> +{
-> +	struct scsi_device *sdev = to_scsi_device(dev);
-> +	struct ufs_hba *hba;
-> +	int ret;
-> +	ktime_t start = ktime_get();
-> +
-> +	hba = shost_priv(sdev->host);
-> +	ret = __ufshcd_wl_suspend(hba, UFS_SYSTEM_PM);
-> +	if (ret)
-> +		dev_err(&sdev->sdev_gendev, "%s failed: %d\n", __func__,  ret);
-> +
-> +	trace_ufshcd_wl_suspend(dev_name(dev), ret,
-> +		ktime_to_us(ktime_sub(ktime_get(), start)),
-> +		hba->curr_dev_pwr_mode, hba->uic_link_state);
-> +
-> +	return ret;
-> +}
-> +
-> +static int ufshcd_wl_resume(struct device *dev)
-> +{
-> +	struct scsi_device *sdev = to_scsi_device(dev);
-> +	struct ufs_hba *hba;
-> +	int ret = 0;
-> +	ktime_t start = ktime_get();
-> +
-> +	if (pm_runtime_suspended(dev))
-> +		return 0;
-> +	hba = shost_priv(sdev->host);
-> +
-> +	ret = __ufshcd_wl_resume(hba, UFS_SYSTEM_PM);
-> +	if (ret)
-> +		dev_err(&sdev->sdev_gendev, "%s failed: %d\n", __func__, ret);
-> +
-> +	trace_ufshcd_wl_resume(dev_name(dev), ret,
-> +		ktime_to_us(ktime_sub(ktime_get(), start)),
-> +		hba->curr_dev_pwr_mode, hba->uic_link_state);
-> +
-> +	return ret;
-> +}
-> +#endif
-> +
-> +static void ufshcd_wl_shutdown(struct device *dev)
-> +{
-> +	struct scsi_device *sdev = to_scsi_device(dev);
-> +	struct ufs_hba *hba;
-> +
-> +	hba = shost_priv(sdev->host);
-> +	/* Turn on everything while shutting down */
-> +	scsi_autopm_get_device(sdev);
-> +	scsi_device_quiesce(sdev);
-> +	shost_for_each_device(sdev, hba->host) {
-> +		if (sdev == hba->sdev_ufs_device)
-> +			continue;
-> +		scsi_device_quiesce(sdev);
-> +	}
-> +	__ufshcd_wl_suspend(hba, UFS_SHUTDOWN_PM);
-> +}
-> +
-> +/**
-> + * ufshcd_suspend - helper function for suspend operations
-> + * @hba: per adapter instance
-> + *
-> + * This function will put disable irqs, turn off clocks
-> + * and set vreg and hba-vreg in lpm mode.
-> + * Also check the description of __ufshcd_wl_suspend().
-> + */
-> +static void ufshcd_suspend(struct ufs_hba *hba)
-> +{
-> +	hba->pm_op_in_progress = 1;
-> +
-> +	/*
-> +	 * Disable the host irq as host controller as there won't be any
-> +	 * host controller transaction expected till resume.
-> +	 */
->  	ufshcd_disable_irq(hba);
->  	ufshcd_setup_clocks(hba, false);
->  	if (ufshcd_is_clkgating_allowed(hba)) {
-> @@ -8948,6 +9053,43 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  		trace_ufshcd_clk_gating(dev_name(hba->dev),
->  					hba->clk_gating.state);
->  	}
-> +
-> +	ufshcd_vreg_set_lpm(hba);
-> +	/* Put the host controller in low power mode if possible */
-> +	ufshcd_hba_vreg_set_lpm(hba);
-> +	hba->pm_op_in_progress = 0;
-> +}
-> +
-> +/**
-> + * ufshcd_resume - helper function for resume operations
-> + * @hba: per adapter instance
-> + *
-> + * This function basically turns on the regulators, clocks and
-> + * irqs of the hba.
-> + * Also check the description of __ufshcd_wl_resume().
-> + *
-> + * Returns 0 for success and non-zero for failure
-> + */
-> +static int ufshcd_resume(struct ufs_hba *hba)
-> +{
-> +	int ret;
-> +
-> +	hba->pm_op_in_progress = 1;
-> +
-> +	ufshcd_hba_vreg_set_hpm(hba);
-> +	ret = ufshcd_vreg_set_hpm(hba);
-> +	if (ret)
-> +		goto out;
-> +
-> +	/* Make sure clocks are enabled before accessing controller */
-> +	ret = ufshcd_setup_clocks(hba, true);
-> +	if (ret)
-> +		goto disable_vreg;
-> +
-> +	/* enable the host irq as host controller would be active soon */
-> +	ufshcd_enable_irq(hba);
-> +	goto out;
-> +
->  disable_vreg:
->  	ufshcd_vreg_set_lpm(hba);
->  out:
-> @@ -8962,6 +9104,7 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   * @hba: per adapter instance
->   *
->   * Check the description of ufshcd_suspend() function for more details.
-> + * Also check the description of __ufshcd_wl_suspend().
->   *
->   * Returns 0 for success and non-zero for failure
->   */
-> @@ -8987,21 +9130,7 @@ int ufshcd_system_suspend(struct ufs_hba *hba)
->  	     !hba->dev_info.b_rpm_dev_flush_capable)
->  		goto out;
->  
-> -	if (pm_runtime_suspended(hba->dev)) {
-> -		/*
-> -		 * UFS device and/or UFS link low power states during runtime
-> -		 * suspend seems to be different than what is expected during
-> -		 * system suspend. Hence runtime resume the devic & link and
-> -		 * let the system suspend low power states to take effect.
-> -		 * TODO: If resume takes longer time, we might have optimize
-> -		 * it in future by not resuming everything if possible.
-> -		 */
-> -		ret = ufshcd_runtime_resume(hba);
-> -		if (ret)
-> -			goto out;
-> -	}
-> -
-> -	ret = ufshcd_suspend(hba, UFS_SYSTEM_PM);
-> +	ufshcd_suspend(hba);
->  out:
->  	trace_ufshcd_system_suspend(dev_name(hba->dev), ret,
->  		ktime_to_us(ktime_sub(ktime_get(), start)),
-> @@ -9023,7 +9152,6 @@ EXPORT_SYMBOL(ufshcd_system_suspend);
->  
->  int ufshcd_system_resume(struct ufs_hba *hba)
->  {
-> -	int ret = 0;
->  	ktime_t start = ktime_get();
->  
->  	if (!hba)
-> @@ -9034,22 +9162,18 @@ int ufshcd_system_resume(struct ufs_hba *hba)
->  		down(&hba->host_sem);
->  	}
->  
-> -	if (!hba->is_powered || pm_runtime_suspended(hba->dev))
-> -		/*
-> -		 * Let the runtime resume take care of resuming
-> -		 * if runtime suspended.
-> -		 */
-> +	if (!hba->is_powered)
->  		goto out;
->  	else
-> -		ret = ufshcd_resume(hba, UFS_SYSTEM_PM);
-> +		ufshcd_resume(hba);
->  out:
-> -	trace_ufshcd_system_resume(dev_name(hba->dev), ret,
-> +	trace_ufshcd_system_resume(dev_name(hba->dev), 0,
->  		ktime_to_us(ktime_sub(ktime_get(), start)),
->  		hba->curr_dev_pwr_mode, hba->uic_link_state);
-> -	if (!ret)
-> -		hba->is_sys_suspended = false;
-> +
-> +	hba->is_sys_suspended = false;
->  	up(&hba->host_sem);
-> -	return ret;
-> +	return 0;
->  }
->  EXPORT_SYMBOL(ufshcd_system_resume);
->  
-> @@ -9058,12 +9182,12 @@ EXPORT_SYMBOL(ufshcd_system_resume);
->   * @hba: per adapter instance
->   *
->   * Check the description of ufshcd_suspend() function for more details.
-> + * Also check the description of __ufshcd_wl_suspend().
->   *
->   * Returns 0 for success and non-zero for failure
->   */
->  int ufshcd_runtime_suspend(struct ufs_hba *hba)
->  {
-> -	int ret = 0;
->  	ktime_t start = ktime_get();
->  
->  	if (!hba)
-> @@ -9072,12 +9196,12 @@ int ufshcd_runtime_suspend(struct ufs_hba *hba)
->  	if (!hba->is_powered)
->  		goto out;
->  	else
-> -		ret = ufshcd_suspend(hba, UFS_RUNTIME_PM);
-> +		ufshcd_suspend(hba);
->  out:
-> -	trace_ufshcd_runtime_suspend(dev_name(hba->dev), ret,
-> +	trace_ufshcd_runtime_suspend(dev_name(hba->dev), 0,
->  		ktime_to_us(ktime_sub(ktime_get(), start)),
->  		hba->curr_dev_pwr_mode, hba->uic_link_state);
-> -	return ret;
-> +	return 0;
->  }
->  EXPORT_SYMBOL(ufshcd_runtime_suspend);
->  
-> @@ -9085,26 +9209,14 @@ EXPORT_SYMBOL(ufshcd_runtime_suspend);
->   * ufshcd_runtime_resume - runtime resume routine
->   * @hba: per adapter instance
->   *
-> - * This function basically brings the UFS device, UniPro link and controller
-> + * This function basically brings controller
->   * to active state. Following operations are done in this function:
->   *
->   * 1. Turn on all the controller related clocks
-> - * 2. Bring the UniPro link out of Hibernate state
-> - * 3. If UFS device is in sleep state, turn ON VCC rail and bring the UFS device
-> - *    to active state.
-> - * 4. If auto-bkops is enabled on the device, disable it.
-> - *
-> - * So following would be the possible power state after this function return
-> - * successfully:
-> - *	S1: UFS device in Active state with VCC rail ON
-> - *	    UniPro link in Active state
-> - *	    All the UFS/UniPro controller clocks are ON
-> - *
-> - * Returns 0 for success and non-zero for failure
-> + * 2. Turn ON VCC rail
->   */
->  int ufshcd_runtime_resume(struct ufs_hba *hba)
->  {
-> -	int ret = 0;
->  	ktime_t start = ktime_get();
->  
->  	if (!hba)
-> @@ -9113,12 +9225,12 @@ int ufshcd_runtime_resume(struct ufs_hba *hba)
->  	if (!hba->is_powered)
->  		goto out;
->  	else
-> -		ret = ufshcd_resume(hba, UFS_RUNTIME_PM);
-> +		ufshcd_resume(hba);
->  out:
-> -	trace_ufshcd_runtime_resume(dev_name(hba->dev), ret,
-> +	trace_ufshcd_runtime_resume(dev_name(hba->dev), 0,
->  		ktime_to_us(ktime_sub(ktime_get(), start)),
->  		hba->curr_dev_pwr_mode, hba->uic_link_state);
-> -	return ret;
-> +	return 0;
->  }
->  EXPORT_SYMBOL(ufshcd_runtime_resume);
->  
-> @@ -9132,14 +9244,13 @@ EXPORT_SYMBOL(ufshcd_runtime_idle);
->   * ufshcd_shutdown - shutdown routine
->   * @hba: per adapter instance
->   *
-> - * This function would power off both UFS device and UFS link.
-> + * This function would turn off both UFS device and UFS hba
-> + * regulators. It would also disable clocks.
->   *
->   * Returns 0 always to allow force shutdown even in case of errors.
->   */
->  int ufshcd_shutdown(struct ufs_hba *hba)
->  {
-> -	int ret = 0;
-> -
->  	down(&hba->host_sem);
->  	hba->shutting_down = true;
->  	up(&hba->host_sem);
-> @@ -9152,10 +9263,8 @@ int ufshcd_shutdown(struct ufs_hba *hba)
->  
->  	pm_runtime_get_sync(hba->dev);
->  
-> -	ret = ufshcd_suspend(hba, UFS_SHUTDOWN_PM);
-> +	ufshcd_suspend(hba);
->  out:
-> -	if (ret)
-> -		dev_err(hba->dev, "%s failed, err %d\n", __func__, ret);
->  	hba->is_powered = false;
->  	/* allow force shutdown even in case of errors */
->  	return 0;
-> @@ -9260,6 +9369,20 @@ static const struct blk_mq_ops ufshcd_tmf_ops = {
->  	.queue_rq = ufshcd_queue_tmf,
->  };
->  
-> +static void ufshcd_scsi_sync_probe(struct work_struct *work)
-> +{
-> +	struct ufs_hba *hba;
-> +	struct scsi_device *sdev;
-> +
-> +	hba = container_of(work, struct ufs_hba, sync_probe_work);
-> +	wait_for_device_probe();
-> +
-> +	shost_for_each_device(sdev, hba->host) {
-> +		if (pm_runtime_enabled(&sdev->sdev_gendev))
-> +			pm_runtime_allow(&sdev->sdev_gendev);
-> +	}
-> +}
-> +
->  /**
->   * ufshcd_init - Driver initialization routine
->   * @hba: per-adapter instance
-> @@ -9456,6 +9579,8 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
->  	 */
->  	ufshcd_set_ufs_dev_active(hba);
->  
-> +	INIT_WORK(&hba->sync_probe_work, ufshcd_scsi_sync_probe);
-> +	schedule_work(&hba->sync_probe_work);
-
-I think we still need to confirm whether or not this is needed, and whether
-it is something the UFS driver should be responsible for.
-
->  	async_schedule(ufshcd_async_scan, hba);
->  	ufs_sysfs_add_nodes(hba->dev);
->  
-> @@ -9477,15 +9602,162 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
->  }
->  EXPORT_SYMBOL_GPL(ufshcd_init);
->  
-> +void ufshcd_resume_complete(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +
-> +	pm_runtime_put_noidle(&hba->sdev_ufs_device->sdev_gendev);
-> +}
-> +EXPORT_SYMBOL_GPL(ufshcd_resume_complete);
-> +
-> +int ufshcd_suspend_prepare(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +
-> +	/*
-> +	 * SCSI assumes that runtime-pm and system-pm for scsi drivers
-> +	 * are same. And it doesn't wake up the device for system-suspend
-> +	 * if it's runtime suspended. But ufs doesn't follow that.
-> +	 * The rpm-lvl and spm-lvl can be different in ufs.
-> +	 * Force it to honor system-suspend.
-> +	 */
-> +	scsi_autopm_get_device(hba->sdev_ufs_device);
-> +	/* Refer ufshcd_resume_complete() */
-> +	pm_runtime_get_noresume(&hba->sdev_ufs_device->sdev_gendev);
-> +	scsi_autopm_put_device(hba->sdev_ufs_device);
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(ufshcd_suspend_prepare);
-> +
-> +#ifdef CONFIG_PM_SLEEP
-> +static int ufshcd_wl_poweroff(struct device *dev)
-> +{
-> +	ufshcd_wl_shutdown(dev);
-> +	return 0;
-> +}
-> +#endif
-> +
-> +static int ufshcd_wl_probe(struct device *dev)
-> +{
-> +	return is_device_wlun(to_scsi_device(dev)) ? 0 : -ENODEV;
-> +}
-> +
-> +static int ufshcd_wl_remove(struct device *dev)
-> +{
-> +	return 0;
-> +}
-> +
-> +static const struct dev_pm_ops ufshcd_wl_pm_ops = {
-> +#ifdef CONFIG_PM_SLEEP
-> +	.suspend = ufshcd_wl_suspend,
-> +	.resume = ufshcd_wl_resume,
-> +	.freeze = ufshcd_wl_suspend,
-> +	.thaw = ufshcd_wl_resume,
-> +	.poweroff = ufshcd_wl_poweroff,
-> +	.restore = ufshcd_wl_resume,
-> +#endif
-> +	SET_RUNTIME_PM_OPS(ufshcd_wl_runtime_suspend, ufshcd_wl_runtime_resume, NULL)
-> +};
-> +
-> +/**
-> + * ufs_dev_wlun_template - describes ufs device wlun
-> + * ufs-device wlun - used to send pm commands
-> + * All luns are consumers of ufs-device wlun.
-> + *
-> + * Currently, no sd driver is present for wluns.
-> + * Hence the no specific pm operations are performed.
-> + * With ufs design, SSU should be sent to ufs-device wlun.
-> + * Hence register a scsi driver for ufs wluns only.
-> + */
-> +static struct scsi_driver ufs_dev_wlun_template = {
-> +	.gendrv = {
-> +		.name = "ufs_device_wlun",
-> +		.owner = THIS_MODULE,
-> +		.probe = ufshcd_wl_probe,
-> +		.remove = ufshcd_wl_remove,
-> +		.pm = &ufshcd_wl_pm_ops,
-> +		.shutdown = ufshcd_wl_shutdown,
-> +	},
-> +};
-> +
-> +static int ufshcd_rpmb_probe(struct device *dev)
-> +{
-> +	return is_rpmb_wlun(to_scsi_device(dev)) ? 0 : -ENODEV;
-> +}
-> +
-> +static inline int ufshcd_clear_rpmb_uac(struct ufs_hba *hba)
-> +{
-> +	int ret = 0;
-> +
-> +	if (!hba->wlun_rpmb_clr_ua)
-> +		return 0;
-> +	ret = ufshcd_clear_ua_wlun(hba, UFS_UPIU_RPMB_WLUN);
-> +	if (!ret)
-> +		hba->wlun_rpmb_clr_ua = 0;
-> +	return ret;
-> +}
-> +
-> +static int ufshcd_rpmb_runtime_resume(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = wlun_dev_to_hba(dev);
-> +
-> +	if (hba->sdev_rpmb)
-> +		return ufshcd_clear_rpmb_uac(hba);
-> +	return 0;
-> +}
-> +
-> +static int ufshcd_rpmb_resume(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = wlun_dev_to_hba(dev);
-> +
-> +	if (hba->sdev_rpmb && !pm_runtime_suspended(dev))
-> +		return ufshcd_clear_rpmb_uac(hba);
-> +	return 0;
-> +}
-> +
-> +static const struct dev_pm_ops ufs_rpmb_pm_ops = {
-> +	SET_RUNTIME_PM_OPS(NULL, ufshcd_rpmb_runtime_resume, NULL)
-> +	SET_SYSTEM_SLEEP_PM_OPS(NULL, ufshcd_rpmb_resume)
-> +};
-> +
-> +/**
-> + * Describes the ufs rpmb wlun.
-> + * Used only to send uac.
-> + */
-> +static struct scsi_driver ufs_rpmb_wlun_template = {
-> +	.gendrv = {
-> +		.name = "ufs_rpmb_wlun",
-> +		.owner = THIS_MODULE,
-> +		.probe = ufshcd_rpmb_probe,
-> +		.pm = &ufs_rpmb_pm_ops,
-> +	},
-> +};
-> +
->  static int __init ufshcd_core_init(void)
->  {
-> +	int ret;
-> +
->  	ufs_debugfs_init();
-> +
-> +	ret = scsi_register_driver(&ufs_dev_wlun_template.gendrv);
-> +	if (ret) {
-> +		ufs_debugfs_eh_exit();
-> +		return ret;
-> +	}
-> +	ret = scsi_register_driver(&ufs_rpmb_wlun_template.gendrv);
-> +	if (ret) {
-> +		ufs_debugfs_eh_exit();
-> +		scsi_unregister_driver(&ufs_dev_wlun_template.gendrv);
-> +		return ret;
-> +	}
->  	return 0;
->  }
->  
->  static void __exit ufshcd_core_exit(void)
->  {
->  	ufs_debugfs_exit();
-> +	scsi_unregister_driver(&ufs_dev_wlun_template.gendrv);
-> +	scsi_unregister_driver(&ufs_rpmb_wlun_template.gendrv);
->  }
->  
->  module_init(ufshcd_core_init);
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index ee61f82..c5f7335 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -72,6 +72,8 @@ enum ufs_event_type {
->  	UFS_EVT_LINK_STARTUP_FAIL,
->  	UFS_EVT_RESUME_ERR,
->  	UFS_EVT_SUSPEND_ERR,
-> +	UFS_EVT_WL_SUSP_ERR,
-> +	UFS_EVT_WL_RES_ERR,
->  
->  	/* abnormal events */
->  	UFS_EVT_DEV_RESET,
-> @@ -804,6 +806,7 @@ struct ufs_hba {
->  	struct list_head clk_list_head;
->  
->  	bool wlun_dev_clr_ua;
-> +	bool wlun_rpmb_clr_ua;
->  
->  	/* Number of requests aborts */
->  	int req_abort_count;
-> @@ -841,6 +844,8 @@ struct ufs_hba {
->  #ifdef CONFIG_DEBUG_FS
->  	struct dentry *debugfs_root;
->  #endif
-> +	struct work_struct sync_probe_work;
-> +	u32 luns_avail;
->  };
->  
->  /* Returns true if clocks can be gated. Otherwise false */
-> @@ -1100,6 +1105,8 @@ int ufshcd_exec_raw_upiu_cmd(struct ufs_hba *hba,
->  			     enum query_opcode desc_op);
->  
->  int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable);
-> +int ufshcd_suspend_prepare(struct device *dev);
-> +void ufshcd_resume_complete(struct device *dev);
->  
->  /* Wrapper functions for safely calling variant operations */
->  static inline const char *ufshcd_get_var_name(struct ufs_hba *hba)
-> diff --git a/include/trace/events/ufs.h b/include/trace/events/ufs.h
-> index e151477..d9d233b 100644
-> --- a/include/trace/events/ufs.h
-> +++ b/include/trace/events/ufs.h
-> @@ -246,6 +246,26 @@ DEFINE_EVENT(ufshcd_template, ufshcd_init,
->  		      int dev_state, int link_state),
->  	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
->  
-> +DEFINE_EVENT(ufshcd_template, ufshcd_wl_suspend,
-> +	     TP_PROTO(const char *dev_name, int err, s64 usecs,
-> +		      int dev_state, int link_state),
-> +	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
-> +
-> +DEFINE_EVENT(ufshcd_template, ufshcd_wl_resume,
-> +	     TP_PROTO(const char *dev_name, int err, s64 usecs,
-> +		      int dev_state, int link_state),
-> +	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
-> +
-> +DEFINE_EVENT(ufshcd_template, ufshcd_wl_runtime_suspend,
-> +	     TP_PROTO(const char *dev_name, int err, s64 usecs,
-> +		      int dev_state, int link_state),
-> +	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
-> +
-> +DEFINE_EVENT(ufshcd_template, ufshcd_wl_runtime_resume,
-> +	     TP_PROTO(const char *dev_name, int err, s64 usecs,
-> +		      int dev_state, int link_state),
-> +	     TP_ARGS(dev_name, err, usecs, dev_state, link_state));
-> +
->  TRACE_EVENT(ufshcd_command,
->  	TP_PROTO(const char *dev_name, enum ufs_trace_str_t str_t,
->  		 unsigned int tag, u32 doorbell, int transfer_len, u32 intr,
-> 
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGUgbHVuZGkgMTUgbWFycyAyMDIxIMOgIDIwOjI4ICswOTAwLCBBbGV4YW5kcmUgQ291cmJvdCBh
+IMOpY3JpdMKgOgo+IEhpIEV6ZXF1aWVsLCB0aGFua3MgZm9yIHRoZSBmZWVkYmFjayEKPiAKPiBP
+biBUaHUsIE1hciA0LCAyMDIxIGF0IDY6MzAgQU0gRXplcXVpZWwgR2FyY2lhCj4gPGV6ZXF1aWVs
+QHZhbmd1YXJkaWFzdXIuY29tLmFyPiB3cm90ZToKPiA+IAo+ID4gSGVsbG8gQWxleCwKPiA+IAo+
+ID4gVGhhbmtzIGZvciB0aGUgcGF0Y2guCj4gPiAKPiA+IE9uIEZyaSwgMjYgRmViIDIwMjEgYXQg
+MDc6MDYsIEFsZXhhbmRyZSBDb3VyYm90IDxhY291cmJvdEBjaHJvbWl1bS5vcmc+Cj4gPiB3cm90
+ZToKPiA+ID4gCj4gPiA+IEZyb206IFl1bmZlaSBEb25nIDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5j
+b20+Cj4gPiA+IAo+ID4gPiBTdXBwb3J0IHRoZSBzdGF0ZWxlc3MgY29kZWMgQVBJIHRoYXQgd2ls
+bCBiZSB1c2VkIGJ5IE1UODE4My4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IFl1bmZlaSBE
+b25nIDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5jb20+Cj4gPiA+IFthY291cmJvdDogcmVmYWN0b3Is
+IGNsZWFudXAgYW5kIHNwbGl0XQo+ID4gPiBDby1kZXZlbG9wZWQtYnk6IEFsZXhhbmRyZSBDb3Vy
+Ym90IDxhY291cmJvdEBjaHJvbWl1bS5vcmc+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IEFsZXhhbmRy
+ZSBDb3VyYm90IDxhY291cmJvdEBjaHJvbWl1bS5vcmc+Cj4gPiA+IC0tLQo+ID4gPiDCoGRyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy9NYWtlZmlsZcKgwqDCoCB8wqDCoCAxICsKPiA+
+ID4gwqAuLi4vcGxhdGZvcm0vbXRrLXZjb2RlYy9tdGtfdmNvZGVjX2RlYy5jwqDCoMKgwqDCoCB8
+wqAgNjYgKystCj4gPiA+IMKgLi4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kZWMu
+aMKgwqDCoMKgwqAgfMKgwqAgOSArLQo+ID4gPiDCoC4uLi9tdGstdmNvZGVjL210a192Y29kZWNf
+ZGVjX3N0YXRlbGVzcy5jwqDCoMKgwqAgfCA0MjcgKysrKysrKysrKysrKysrKysrCj4gPiA+IMKg
+Li4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kcnYuaMKgwqDCoMKgwqAgfMKgwqAg
+MyArCj4gPiA+IMKgNSBmaWxlcyBjaGFuZ2VkLCA1MDMgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlv
+bnMoLSkKPiA+ID4gwqBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9t
+dGstCj4gPiA+IHZjb2RlYy9tdGtfdmNvZGVjX2RlY19zdGF0ZWxlc3MuYwo+ID4gPiAKPiA+IFsu
+Ll0KPiA+IAo+ID4gPiArCj4gPiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10a19zdGF0ZWxlc3Nf
+Y29udHJvbCBtdGtfc3RhdGVsZXNzX2NvbnRyb2xzW10gPSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqAg
+ewo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAuY2ZnID0gewo+ID4gPiArwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmlkID0gVjRMMl9DSURf
+U1RBVEVMRVNTX0gyNjRfU1BTLAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9
+LAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAuY29kZWNfdHlwZSA9IFY0TDJf
+UElYX0ZNVF9IMjY0X1NMSUNFLAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAu
+bmVlZGVkX2luX3JlcXVlc3QgPSB0cnVlLAo+ID4gCj4gPiBUaGlzICJuZWVkZWRfaW5fcmVxdWVz
+dCIgaXMgbm90IHJlYWxseSByZXF1aXJlZCwgYXMgY29udHJvbHMKPiA+IGFyZSBub3Qgdm9sYXRp
+bGUsIGFuZCB0aGVpciB2YWx1ZSBpcyBzdG9yZWQgcGVyLWNvbnRleHQgKHBlci1mZCkuCj4gPiAK
+PiA+IEl0J3MgcGVyZmVjdGx5IHZhbGlkIGZvciBhbiBhcHBsaWNhdGlvbiB0byBwYXNzIHRoZSBT
+UFMgY29udHJvbAo+ID4gYXQgdGhlIGJlZ2lubmluZyBvZiB0aGUgc2VxdWVuY2UsIGFuZCB0aGVu
+IG9taXQgaXQKPiA+IGluIGZ1cnRoZXIgcmVxdWVzdHMuCj4gCj4gSWYgSSB1bmRlcnN0YW5kIGhv
+dyB2NGwyX2N0cmxfcmVxdWVzdF9oZGxfY3RybF9maW5kKCkgd29ya3Mgd2l0aAo+IHJlcXVlc3Rz
+LCB0aGlzIGJvb2xlYW4gb25seSBjaGVja3MgdGhhdCB0aGUgY29udHJvbCBoYXMgYmVlbiBwcm92
+aWRlZAo+IGF0IGxlYXN0IG9uY2UsIGFuZCBub3QgdGhhdCBpdCBpcyBwcm92aWRlZCB3aXRoIGV2
+ZXJ5IHJlcXVlc3QuIFdpdGhvdXQKPiBpdCB3ZSBjb3VsZCBzZW5kIGEgZnJhbWUgdG8gdGhlIGZp
+cm13YXJlIHdpdGhvdXQgZS5nLiBzZXR0aW5nIGFuIFNQUywKPiB3aGljaCB3b3VsZCBiZSBhIHBy
+b2JsZW0uCgpJbiBvdGhlciBkcml2ZXJzIChDZWRydXMgYW5kIFJLVkRFQykgdGhpcyB3YXMgYWN0
+dWFsbHkgY2hlY2tpbmcgaWYgdGhlIGNvbnRyb2wKd2FzIHBhcnQgb2YgdGhlIHJlcXVlc3QsIEkg
+ZG91YnQgdGhlIGZyYW1ld29yayBoYXZlIGEgc3RhdGUgZm9yICJiZWluZyBzZXQKb25jZSIsIGFz
+IGNvbnRyb2wgaGF2ZSBubyBzZXQvdW5zZXQgc3RhdGUuIERpZCB5b3Ugd3JvdGUgdGhpcyBjb2Rl
+IGFuZCB0ZXN0ZWQKdGhpcyBpbnRlbmRlZCBiZWhhdmlvdXIgb3IgYm9ycmVkIHRoYXQgY29kZSBm
+cm9tIHNvbWV3aGVyZSBlbHNlID8KCj4gCj4gPiAKPiA+ID4gK8KgwqDCoMKgwqDCoCB9LAo+ID4g
+PiArwqDCoMKgwqDCoMKgIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNm
+ZyA9IHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IC5pZCA9IFY0TDJfQ0lEX1NUQVRFTEVTU19IMjY0X1BQUywKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgfSwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNv
+ZGVjX3R5cGUgPSBWNEwyX1BJWF9GTVRfSDI2NF9TTElDRSwKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgLm5lZWRlZF9pbl9yZXF1ZXN0ID0gdHJ1ZSwKPiA+ID4gK8KgwqDCoMKg
+wqDCoCB9LAo+ID4gPiArwqDCoMKgwqDCoMKgIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgLmNmZyA9IHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIC5pZCA9IFY0TDJfQ0lEX1NUQVRFTEVTU19IMjY0X1NDQUxJTkdfTUFUUklY
+LAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9LAo+ID4gPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCAuY29kZWNfdHlwZSA9IFY0TDJfUElYX0ZNVF9IMjY0X1NMSUNF
+LAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAubmVlZGVkX2luX3JlcXVlc3Qg
+PSB0cnVlLAo+ID4gPiArwqDCoMKgwqDCoMKgIH0sCj4gPiA+ICvCoMKgwqDCoMKgwqAgewo+ID4g
+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAuY2ZnID0gewo+ID4gPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmlkID0gVjRMMl9DSURfU1RBVEVM
+RVNTX0gyNjRfREVDT0RFX1BBUkFNUywKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgfSwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNvZGVjX3R5cGUgPSBW
+NEwyX1BJWF9GTVRfSDI2NF9TTElDRSwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgLm5lZWRlZF9pbl9yZXF1ZXN0ID0gdHJ1ZSwKPiA+ID4gK8KgwqDCoMKgwqDCoCB9LAo+ID4g
+PiArwqDCoMKgwqDCoMKgIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmNm
+ZyA9IHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IC5pZCA9IFY0TDJfQ0lEX01QRUdfVklERU9fSDI2NF9QUk9GSUxFLAo+ID4gPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmRlZiA9IFY0TDJfTVBFR19WSURF
+T19IMjY0X1BST0ZJTEVfTUFJTiwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIC5tYXggPSBWNEwyX01QRUdfVklERU9fSDI2NF9QUk9GSUxFX0hJR0gs
+Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAubWVu
+dV9za2lwX21hc2sgPQo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIEJJVChWNEwyX01QRUdfVklERU9fSDI2NF9QUk9GSUxF
+X0JBU0VMSU5FKQo+ID4gPiB8Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+ID4gQklUKFY0TDJfTVBFR19WSURFT19I
+MjY0X1BST0ZJTEVfRVhURU5ERUQpLAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCB9LAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAuY29kZWNfdHlwZSA9IFY0
+TDJfUElYX0ZNVF9IMjY0X1NMSUNFLAo+ID4gPiArwqDCoMKgwqDCoMKgIH0sCj4gPiA+ICvCoMKg
+wqDCoMKgwqAgewo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAuY2ZnID0gewo+
+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmlkID0g
+VjRMMl9DSURfU1RBVEVMRVNTX0gyNjRfREVDT0RFX01PREUsCj4gPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAubWluID0KPiA+ID4gVjRMMl9TVEFURUxF
+U1NfSDI2NF9ERUNPREVfTU9ERV9GUkFNRV9CQVNFRCwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5kZWYgPQo+ID4gPiBWNEwyX1NUQVRFTEVTU19I
+MjY0X0RFQ09ERV9NT0RFX0ZSQU1FX0JBU0VELAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLm1heCA9Cj4gPiA+IFY0TDJfU1RBVEVMRVNTX0gyNjRf
+REVDT0RFX01PREVfRlJBTUVfQkFTRUQsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIH0sCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5jb2RlY190eXBlID0g
+VjRMMl9QSVhfRk1UX0gyNjRfU0xJQ0UsCj4gPiA+ICvCoMKgwqDCoMKgwqAgfSwKPiA+ID4gK307
+Cj4gPiAKPiA+IEFwcGxpY2F0aW9ucyBhbHNvIG5lZWQgdG8ga25vdyB3aGljaCBWNEwyX0NJRF9T
+VEFURUxFU1NfSDI2NF9TVEFSVF9DT0RFCj4gPiB0aGUgZHJpdmVyIHN1cHBvcnRzLiBGcm9tIGEg
+bmV4dCBwYXRjaCwgdGhpcyBjYXNlIHNlZW1zIHRvIGJlCj4gPiBWNEwyX1NUQVRFTEVTU19IMjY0
+X1NUQVJUX0NPREVfQU5ORVhfQi4KPiAKPiBJbmRlZWQgLSBJJ3ZlIGFkZGVkIHRoZSBjb250cm9s
+LCB0aGFua3MgZm9yIGNhdGNoaW5nIHRoaXMhCj4gCj4gPiAKPiA+ID4gKyNkZWZpbmUgTlVNX0NU
+UkxTIEFSUkFZX1NJWkUobXRrX3N0YXRlbGVzc19jb250cm9scykKPiA+ID4gKwo+ID4gPiArc3Rh
+dGljIGNvbnN0IHN0cnVjdCBtdGtfdmlkZW9fZm10IG10a192aWRlb19mb3JtYXRzW10gPSB7Cj4g
+PiA+ICvCoMKgwqDCoMKgwqAgewo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAu
+Zm91cmNjID0gVjRMMl9QSVhfRk1UX0gyNjRfU0xJQ0UsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIC50eXBlID0gTVRLX0ZNVF9ERUMsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIC5udW1fcGxhbmVzID0gMSwKPiA+ID4gK8KgwqDCoMKgwqDCoCB9LAo+ID4g
+PiArwqDCoMKgwqDCoMKgIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLmZv
+dXJjYyA9IFY0TDJfUElYX0ZNVF9NTTIxLAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCAudHlwZSA9IE1US19GTVRfRlJBTUUsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIC5udW1fcGxhbmVzID0gMiwKPiA+ID4gK8KgwqDCoMKgwqDCoCB9LAo+ID4gPiArfTsK
+PiA+ID4gKyNkZWZpbmUgTlVNX0ZPUk1BVFMgQVJSQVlfU0laRShtdGtfdmlkZW9fZm9ybWF0cykK
+PiA+ID4gKyNkZWZpbmUgREVGQVVMVF9PVVRfRk1UX0lEWMKgwqDCoCAwCj4gPiA+ICsjZGVmaW5l
+IERFRkFVTFRfQ0FQX0ZNVF9JRFjCoMKgwqAgMQo+ID4gPiArCj4gPiA+ICtzdGF0aWMgY29uc3Qg
+c3RydWN0IG10a19jb2RlY19mcmFtZXNpemVzIG10a192ZGVjX2ZyYW1lc2l6ZXNbXSA9IHsKPiA+
+ID4gK8KgwqDCoMKgwqDCoCB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5m
+b3VyY2MgPSBWNEwyX1BJWF9GTVRfSDI2NF9TTElDRSwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgLnN0ZXB3aXNlID0gewo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgTVRLX1ZERUNfTUlOX1csIE1US19WREVDX01BWF9XLCAxNiwK
+PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIE1US19W
+REVDX01JTl9ILCBNVEtfVkRFQ19NQVhfSCwgMTYsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIH0sCj4gPiA+ICvCoMKgwqDCoMKgwqAgfSwKPiA+ID4gK307Cj4gPiA+ICsKPiA+
+ID4gKyNkZWZpbmUgTlVNX1NVUFBPUlRFRF9GUkFNRVNJWkUgQVJSQVlfU0laRShtdGtfdmRlY19m
+cmFtZXNpemVzKQo+ID4gPiArCj4gPiA+ICtzdGF0aWMgdm9pZCBtdGtfdmRlY19zdGF0ZWxlc3Nf
+c2V0X2RzdF9wYXlsb2FkKHN0cnVjdCBtdGtfdmNvZGVjX2N0eAo+ID4gPiAqY3R4LAo+ID4gPiAr
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCB2ZGVjX2ZiICpmYikKPiA+
+ID4gK3sKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgbXRrX3ZpZGVvX2RlY19idWYgKnZkZWNf
+ZnJhbWVfYnVmID0KPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29udGFpbmVy
+X29mKGZiLCBzdHJ1Y3QgbXRrX3ZpZGVvX2RlY19idWYsIGZyYW1lX2J1ZmZlcik7Cj4gPiA+ICvC
+oMKgwqDCoMKgwqAgc3RydWN0IHZiMl92NGwyX2J1ZmZlciAqdmIgPSAmdmRlY19mcmFtZV9idWYt
+Pm0ybV9idWYudmI7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgdW5zaWduZWQgaW50IGNhcF95X3NpemUg
+PSBjdHgtCj4gPiA+ID5xX2RhdGFbTVRLX1FfREFUQV9EU1RdLnNpemVpbWFnZVswXTsKPiA+ID4g
+Kwo+ID4gPiArwqDCoMKgwqDCoMKgIHZiMl9zZXRfcGxhbmVfcGF5bG9hZCgmdmItPnZiMl9idWYs
+IDAsIGNhcF95X3NpemUpOwo+ID4gPiArwqDCoMKgwqDCoMKgIGlmIChjdHgtPnFfZGF0YVtNVEtf
+UV9EQVRBX0RTVF0uZm10LT5udW1fcGxhbmVzID09IDIpIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgdW5zaWduZWQgaW50IGNhcF9jX3NpemUgPQo+ID4gPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY3R4LT5xX2RhdGFbTVRLX1FfREFU
+QV9EU1RdLnNpemVpbWFnZVsxXTsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCB2YjJfc2V0X3BsYW5lX3BheWxvYWQoJnZiLT52YjJfYnVmLCAxLCBjYXBfY19zaXpl
+KTsKPiA+ID4gK8KgwqDCoMKgwqDCoCB9Cj4gPiA+ICt9Cj4gPiA+ICsKPiA+ID4gK3N0YXRpYyBz
+dHJ1Y3QgdmRlY19mYiAqdmRlY19nZXRfY2FwX2J1ZmZlcihzdHJ1Y3QgbXRrX3Zjb2RlY19jdHgg
+KmN0eCwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IHZiMl92NGwyX2J1
+ZmZlcgo+ID4gPiAqdmIyX3Y0bDIpCj4gPiA+ICt7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgc3RydWN0
+IG10a192aWRlb19kZWNfYnVmICpmcmFtZWJ1ZiA9Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIGNvbnRhaW5lcl9vZih2YjJfdjRsMiwgc3RydWN0IG10a192aWRlb19kZWNfYnVm
+LAo+ID4gPiBtMm1fYnVmLnZiKTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgdmRlY19mYiAq
+cGZiID0gJmZyYW1lYnVmLT5mcmFtZV9idWZmZXI7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgc3RydWN0
+IHZiMl9idWZmZXIgKmRzdF9idWYgPSAmdmIyX3Y0bDItPnZiMl9idWY7Cj4gPiA+ICsKPiA+ID4g
+K8KgwqDCoMKgwqDCoCBwZmIgPSAmZnJhbWVidWYtPmZyYW1lX2J1ZmZlcjsKPiA+ID4gK8KgwqDC
+oMKgwqDCoCBwZmItPmJhc2VfeS52YSA9IHZiMl9wbGFuZV92YWRkcihkc3RfYnVmLCAwKTsKPiA+
+IAo+ID4gQXJlIHlvdSBzdXJlIHlvdSBuZWVkIGEgQ1BVIG1hcHBpbmc/IEl0IHNlZW1zIHN0cmFu
+Z2UuCj4gPiBJJ2xsIGNvbW1lbnQgc29tZSBtb3JlIG9uIHRoZSBuZXh0IHBhdGNoKGVzKS4KPiAK
+PiBJJ2xsIGFuc3dlciBvbiB0aGUgbmV4dCBwYXRjaCBzaW5jZSB0aGlzIGlzIHdoZXJlIHRoYXQg
+bWFwcGluZyBpcyBiZWluZyB1c2VkLgo+IAo+ID4gCj4gPiA+ICvCoMKgwqDCoMKgwqAgcGZiLT5i
+YXNlX3kuZG1hX2FkZHIgPSB2YjJfZG1hX2NvbnRpZ19wbGFuZV9kbWFfYWRkcihkc3RfYnVmLCAw
+KTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBwZmItPmJhc2VfeS5zaXplID0gY3R4LT5xX2RhdGFbTVRL
+X1FfREFUQV9EU1RdLnNpemVpbWFnZVswXTsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgIGlm
+IChjdHgtPnFfZGF0YVtNVEtfUV9EQVRBX0RTVF0uZm10LT5udW1fcGxhbmVzID09IDIpIHsKPiA+
+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcGZiLT5iYXNlX2MudmEgPSB2YjJfcGxh
+bmVfdmFkZHIoZHN0X2J1ZiwgMSk7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IHBmYi0+YmFzZV9jLmRtYV9hZGRyID0KPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIHZiMl9kbWFfY29udGlnX3BsYW5lX2RtYV9hZGRyKGRzdF9idWYs
+IDEpOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwZmItPmJhc2VfYy5zaXpl
+ID0gY3R4LQo+ID4gPiA+cV9kYXRhW01US19RX0RBVEFfRFNUXS5zaXplaW1hZ2VbMV07Cj4gPiA+
+ICvCoMKgwqDCoMKgwqAgfQo+ID4gPiArwqDCoMKgwqDCoMKgIG10a192NGwyX2RlYnVnKDEsCj4g
+PiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICJpZD0lZCBGcmFtZWJ1ZsKgIHBmYj0l
+cCBWQT0lcCBZX0RNQT0lcGFkIENfRE1BPSVwYWQKPiA+ID4gU2l6ZT0lenggZnJhbWVfY291bnQg
+PSAlZCIsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRzdF9idWYtPmluZGV4
+LCBwZmIsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBmYi0+YmFzZV95LnZh
+LCAmcGZiLT5iYXNlX3kuZG1hX2FkZHIsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgICZwZmItPmJhc2VfYy5kbWFfYWRkciwgcGZiLT5iYXNlX3kuc2l6ZSwKPiA+ID4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY3R4LT5kZWNvZGVkX2ZyYW1lX2NudCk7Cj4gPiA+ICsK
+PiA+ID4gK8KgwqDCoMKgwqDCoCByZXR1cm4gcGZiOwo+ID4gPiArfQo+ID4gPiArCj4gPiA+ICtz
+dGF0aWMgdm9pZCB2YjJvcHNfdmRlY19idWZfcmVxdWVzdF9jb21wbGV0ZShzdHJ1Y3QgdmIyX2J1
+ZmZlciAqdmIpCj4gPiA+ICt7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgc3RydWN0IG10a192Y29kZWNf
+Y3R4ICpjdHggPSB2YjJfZ2V0X2Rydl9wcml2KHZiLT52YjJfcXVldWUpOwo+ID4gPiArCj4gPiA+
+ICvCoMKgwqDCoMKgwqAgdjRsMl9jdHJsX3JlcXVlc3RfY29tcGxldGUodmItPnJlcV9vYmoucmVx
+LCAmY3R4LT5jdHJsX2hkbCk7Cj4gPiA+ICt9Cj4gPiA+ICsKPiA+ID4gK3N0YXRpYyBpbnQgZm9w
+c19tZWRpYV9yZXF1ZXN0X3ZhbGlkYXRlKHN0cnVjdCBtZWRpYV9yZXF1ZXN0ICptcmVxKQo+ID4g
+PiArewo+ID4gPiArwqDCoMKgwqDCoMKgIGNvbnN0IHVuc2lnbmVkIGludCBidWZmZXJfY250ID0g
+dmIyX3JlcXVlc3RfYnVmZmVyX2NudChtcmVxKTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3Qg
+bXRrX3Zjb2RlY19jdHggKmN0eCA9IE5VTEw7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgc3RydWN0IG1l
+ZGlhX3JlcXVlc3Rfb2JqZWN0ICpyZXFfb2JqOwo+ID4gPiArwqDCoMKgwqDCoMKgIHN0cnVjdCB2
+NGwyX2N0cmxfaGFuZGxlciAqcGFyZW50X2hkbCwgKmhkbDsKPiA+ID4gK8KgwqDCoMKgwqDCoCBz
+dHJ1Y3QgdjRsMl9jdHJsICpjdHJsOwo+ID4gPiArwqDCoMKgwqDCoMKgIHVuc2lnbmVkIGludCBp
+Owo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgc3dpdGNoIChidWZmZXJfY250KSB7Cj4gPiA+
+ICvCoMKgwqDCoMKgwqAgY2FzZSAxOgo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCAvKiBXZSBleHBlY3QgZXhhY3RseSBvbmUgYnVmZmVyIHdpdGggdGhlIHJlcXVlc3QgKi8KPiA+
+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gPiA+ICvCoMKgwqDCoMKg
+wqAgY2FzZSAwOgo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdGtfdjRsMl9l
+cnIoIk5vIGJ1ZmZlciBwcm92aWRlZCB3aXRoIHRoZSByZXF1ZXN0Iik7Cj4gPiA+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiAtRU5PRU5UOwo+ID4gPiArwqDCoMKgwqDCoMKg
+IGRlZmF1bHQ6Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG10a192NGwyX2Vy
+cigiVG9vIG1hbnkgYnVmZmVycyAoJWQpIHByb3ZpZGVkIHdpdGggdGhlCj4gPiA+IHJlcXVlc3Qi
+LAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIGJ1ZmZlcl9jbnQpOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBy
+ZXR1cm4gLUVJTlZBTDsKPiA+ID4gK8KgwqDCoMKgwqDCoCB9Cj4gPiA+ICsKPiA+ID4gK8KgwqDC
+oMKgwqDCoCBsaXN0X2Zvcl9lYWNoX2VudHJ5KHJlcV9vYmosICZtcmVxLT5vYmplY3RzLCBsaXN0
+KSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCB2YjJfYnVmZmVy
+ICp2YjsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAodmIy
+X3JlcXVlc3Rfb2JqZWN0X2lzX2J1ZmZlcihyZXFfb2JqKSkgewo+ID4gPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdmIgPSBjb250YWluZXJfb2YocmVxX29i
+aiwgc3RydWN0IHZiMl9idWZmZXIsCj4gPiA+IHJlcV9vYmopOwo+ID4gPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY3R4ID0gdmIyX2dldF9kcnZfcHJpdih2
+Yi0+dmIyX3F1ZXVlKTsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIGJyZWFrOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9Cj4g
+PiA+ICvCoMKgwqDCoMKgwqAgfQo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgaWYgKCFjdHgp
+IHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXRrX3Y0bDJfZXJyKCJDYW5u
+b3QgZmluZCBidWZmZXIgZm9yIHJlcXVlc3QiKTsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgcmV0dXJuIC1FTk9FTlQ7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgfQo+ID4gPiArCj4g
+PiA+ICvCoMKgwqDCoMKgwqAgcGFyZW50X2hkbCA9ICZjdHgtPmN0cmxfaGRsOwo+ID4gPiArCj4g
+PiA+ICvCoMKgwqDCoMKgwqAgaGRsID0gdjRsMl9jdHJsX3JlcXVlc3RfaGRsX2ZpbmQobXJlcSwg
+cGFyZW50X2hkbCk7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgaWYgKCFoZGwpIHsKPiA+ID4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXRrX3Y0bDJfZXJyKCJDYW5ub3QgZmluZCBjb250cm9s
+IGhhbmRsZXIgZm9yIHJlcXVlc3RcbiIpOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCByZXR1cm4gLUVOT0VOVDsKPiA+ID4gK8KgwqDCoMKgwqDCoCB9Cj4gPiA+ICsKPiA+ID4g
+K8KgwqDCoMKgwqDCoCBmb3IgKGkgPSAwOyBpIDwgTlVNX0NUUkxTOyBpKyspIHsKPiA+ID4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKG10a19zdGF0ZWxlc3NfY29udHJvbHNbaV0u
+Y29kZWNfdHlwZSAhPSBjdHgtCj4gPiA+ID5jdXJyZW50X2NvZGVjKQo+ID4gPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29udGludWU7Cj4gPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGlmICghbXRrX3N0YXRlbGVzc19jb250cm9sc1tpXS5u
+ZWVkZWRfaW5fcmVxdWVzdCkKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIGNvbnRpbnVlOwo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIGN0cmwgPSB2NGwyX2N0cmxfcmVxdWVzdF9oZGxfY3RybF9maW5kKGhkbCwKPiA+
+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgCj4gPiA+IG10a19zdGF0ZWxlc3NfY29udHJvbHNb
+aV0uY2ZnLmlkKTsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKCFjdHJs
+KSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBt
+dGtfdjRsMl9lcnIoIk1pc3NpbmcgcmVxdWlyZWQgY29kZWMgY29udHJvbFxuIik7Cj4gPiA+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gLUVOT0VO
+VDsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+ID4gPiArwqDCoMKgwqDC
+oMKgIH0KPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgIHY0bDJfY3RybF9yZXF1ZXN0X2hkbF9w
+dXQoaGRsKTsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgIHJldHVybiB2YjJfcmVxdWVzdF92
+YWxpZGF0ZShtcmVxKTsKPiA+ID4gK30KPiA+ID4gKwo+ID4gPiArc3RhdGljIHZvaWQgbXRrX3Zk
+ZWNfd29ya2VyKHN0cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKPiA+ID4gK3sKPiA+ID4gK8KgwqDC
+oMKgwqDCoCBzdHJ1Y3QgbXRrX3Zjb2RlY19jdHggKmN0eCA9Cj4gPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIGNvbnRhaW5lcl9vZih3b3JrLCBzdHJ1Y3QgbXRrX3Zjb2RlY19jdHgs
+IGRlY29kZV93b3JrKTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgbXRrX3Zjb2RlY19kZXYg
+KmRldiA9IGN0eC0+ZGV2Owo+ID4gPiArwqDCoMKgwqDCoMKgIHN0cnVjdCB2YjJfdjRsMl9idWZm
+ZXIgKnZiMl92NGwyX3NyYywgKnZiMl92NGwyX2RzdDsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1
+Y3QgdmIyX2J1ZmZlciAqdmIyX3NyYzsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgbXRrX3Zj
+b2RlY19tZW0gKmJzX3NyYzsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgbXRrX3ZpZGVvX2Rl
+Y19idWYgKmRlY19idWZfc3JjOwo+ID4gPiArwqDCoMKgwqDCoMKgIHN0cnVjdCBtZWRpYV9yZXF1
+ZXN0ICpzcmNfYnVmX3JlcTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgdmRlY19mYiAqZHN0
+X2J1ZjsKPiA+ID4gK8KgwqDCoMKgwqDCoCBib29sIHJlc19jaGcgPSBmYWxzZTsKPiA+ID4gK8Kg
+wqDCoMKgwqDCoCBpbnQgcmV0Owo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgdmIyX3Y0bDJf
+c3JjID0gdjRsMl9tMm1fbmV4dF9zcmNfYnVmKGN0eC0+bTJtX2N0eCk7Cj4gPiA+ICvCoMKgwqDC
+oMKgwqAgaWYgKHZiMl92NGwyX3NyYyA9PSBOVUxMKSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIHY0bDJfbTJtX2pvYl9maW5pc2goZGV2LT5tMm1fZGV2X2RlYywgY3R4LT5t
+Mm1fY3R4KTsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXRrX3Y0bDJfZGVi
+dWcoMSwgIlslZF0gbm8gYXZhaWxhYmxlIHNvdXJjZSBidWZmZXIiLCBjdHgtCj4gPiA+ID5pZCk7
+Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybjsKPiA+ID4gK8KgwqDC
+oMKgwqDCoCB9Cj4gPiA+ICsKPiA+ID4gK8KgwqDCoMKgwqDCoCB2YjJfdjRsMl9kc3QgPSB2NGwy
+X20ybV9uZXh0X2RzdF9idWYoY3R4LT5tMm1fY3R4KTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBpZiAo
+dmIyX3Y0bDJfZHN0ID09IE5VTEwpIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgdjRsMl9tMm1fam9iX2ZpbmlzaChkZXYtPm0ybV9kZXZfZGVjLCBjdHgtPm0ybV9jdHgpOwo+
+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdGtfdjRsMl9kZWJ1ZygxLCAiWyVk
+XSBubyBhdmFpbGFibGUgZGVzdGluYXRpb24gYnVmZmVyIiwKPiA+ID4gY3R4LT5pZCk7Cj4gPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybjsKPiA+ID4gK8KgwqDCoMKgwqDC
+oCB9Cj4gPiA+ICsKPiA+ID4gK8KgwqDCoMKgwqDCoCB2YjJfc3JjID0gJnZiMl92NGwyX3NyYy0+
+dmIyX2J1ZjsKPiA+ID4gK8KgwqDCoMKgwqDCoCBkZWNfYnVmX3NyYyA9IGNvbnRhaW5lcl9vZih2
+YjJfdjRsMl9zcmMsIHN0cnVjdCBtdGtfdmlkZW9fZGVjX2J1ZiwKPiA+ID4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBt
+Mm1fYnVmLnZiKTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBic19zcmMgPSAmZGVjX2J1Zl9zcmMtPmJz
+X2J1ZmZlcjsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgIG10a192NGwyX2RlYnVnKDMsICJb
+JWRdICglZCkgaWQ9JWQsIHZiPSVwIGJ1Zl9pbmZvID0gJXAiLAo+ID4gPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY3R4LT5pZCwgc3JjX2J1Zi0+dmIyX3F1
+ZXVlLT50eXBlLAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgc3JjX2J1Zi0+aW5kZXgsIHNyY19idWYsIHNyY19idWZfaW5mbyk7Cj4gPiA+ICsKPiA+
+ID4gK8KgwqDCoMKgwqDCoCBic19zcmMtPnZhID0gdmIyX3BsYW5lX3ZhZGRyKHZiMl9zcmMsIDAp
+Owo+ID4gPiArwqDCoMKgwqDCoMKgIGJzX3NyYy0+ZG1hX2FkZHIgPSB2YjJfZG1hX2NvbnRpZ19w
+bGFuZV9kbWFfYWRkcih2YjJfc3JjLCAwKTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBic19zcmMtPnNp
+emUgPSAoc2l6ZV90KXZiMl9zcmMtPnBsYW5lc1swXS5ieXRlc3VzZWQ7Cj4gPiA+ICvCoMKgwqDC
+oMKgwqAgaWYgKCFic19zcmMtPnZhKSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIHY0bDJfbTJtX2pvYl9maW5pc2goZGV2LT5tMm1fZGV2X2RlYywgY3R4LT5tMm1fY3R4KTsK
+PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXRrX3Y0bDJfZXJyKCJbJWRdIGlk
+PSVkIHNvdXJjZSBidWZmZXIgaXMgTlVMTCIsIGN0eC0+aWQsCj4gPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdmIyX3NyYy0+aW5kZXgp
+Owo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm47Cj4gPiA+ICvCoMKg
+wqDCoMKgwqAgfQo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgbXRrX3Y0bDJfZGVidWcoMywg
+IlslZF0gQml0c3RyZWFtIFZBPSVwIERNQT0lcGFkIFNpemU9JXp4IHZiPSVwIiwKPiA+ID4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGN0eC0+aWQsIGJ1Zi0+
+dmEsICZidWYtPmRtYV9hZGRyLCBidWYtPnNpemUsCj4gPiA+IHNyY19idWYpOwo+ID4gPiArwqDC
+oMKgwqDCoMKgIC8qIEFwcGx5IHJlcXVlc3QgY29udHJvbHMuICovCj4gPiA+ICvCoMKgwqDCoMKg
+wqAgc3JjX2J1Zl9yZXEgPSB2YjJfc3JjLT5yZXFfb2JqLnJlcTsKPiA+ID4gK8KgwqDCoMKgwqDC
+oCBpZiAoc3JjX2J1Zl9yZXEpCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHY0
+bDJfY3RybF9yZXF1ZXN0X3NldHVwKHNyY19idWZfcmVxLCAmY3R4LT5jdHJsX2hkbCk7Cj4gPiA+
+ICvCoMKgwqDCoMKgwqAgZWxzZQo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBt
+dGtfdjRsMl9lcnIoInZiMiBidWZmZXIgbWVkaWEgcmVxdWVzdCBpcyBOVUxMIik7Cj4gPiA+ICsK
+PiA+ID4gK8KgwqDCoMKgwqDCoCBkc3RfYnVmID0gdmRlY19nZXRfY2FwX2J1ZmZlcihjdHgsIHZi
+Ml92NGwyX2RzdCk7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgdjRsMl9tMm1fYnVmX2NvcHlfbWV0YWRh
+dGEodmIyX3Y0bDJfc3JjLCB2YjJfdjRsMl9kc3QsIHRydWUpOwo+ID4gPiArwqDCoMKgwqDCoMKg
+IHJldCA9IHZkZWNfaWZfZGVjb2RlKGN0eCwgYnNfc3JjLCBkc3RfYnVmLCAmcmVzX2NoZyk7Cj4g
+PiA+ICvCoMKgwqDCoMKgwqAgaWYgKHJldCkgewo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCBtdGtfdjRsMl9lcnIoCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCAiIDw9PT1bJWRdLCBzcmNfYnVmWyVkXSBzej0weCV6eCBwdHM9JWxs
+dQo+ID4gPiB2ZGVjX2lmX2RlY29kZSgpIHJldD0lZCByZXNfY2hnPSVkPT09PiIsCj4gPiA+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjdHgtPmlkLCB2YjJf
+c3JjLT5pbmRleCwgYnNfc3JjLT5zaXplLAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgdmIyX3NyYy0+dGltZXN0YW1wLCByZXQsIHJlc19jaGcpOwo+
+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAocmV0ID09IC1FSU8pIHsKPiA+
+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG11dGV4X2xv
+Y2soJmN0eC0+bG9jayk7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoCBkZWNfYnVmX3NyYy0+ZXJyb3IgPSB0cnVlOwo+ID4gPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXV0ZXhfdW5sb2NrKCZjdHgtPmxvY2sp
+Owo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9Cj4gPiA+ICvCoMKgwqDCoMKg
+wqAgfQo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgbXRrX3ZkZWNfc3RhdGVsZXNzX3NldF9k
+c3RfcGF5bG9hZChjdHgsIGRzdF9idWYpOwo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgdjRs
+Ml9tMm1fYnVmX2RvbmVfYW5kX2pvYl9maW5pc2goZGV2LT5tMm1fZGV2X2RlYywgY3R4LT5tMm1f
+Y3R4LAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXQgPyBWQjJfQlVGX1NU
+QVRFX0VSUk9SIDogVkIyX0JVRl9TVEFURV9ET05FKTsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDC
+oMKgIHY0bDJfY3RybF9yZXF1ZXN0X2NvbXBsZXRlKHNyY19idWZfcmVxLCAmY3R4LT5jdHJsX2hk
+bCk7Cj4gPiA+ICt9Cj4gPiA+ICsKPiA+ID4gK3N0YXRpYyB2b2lkIHZiMm9wc192ZGVjX3N0YXRl
+bGVzc19idWZfcXVldWUoc3RydWN0IHZiMl9idWZmZXIgKnZiKQo+ID4gPiArewo+ID4gPiArwqDC
+oMKgwqDCoMKgIHN0cnVjdCBtdGtfdmNvZGVjX2N0eCAqY3R4ID0gdmIyX2dldF9kcnZfcHJpdih2
+Yi0+dmIyX3F1ZXVlKTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzdHJ1Y3QgdmIyX3Y0bDJfYnVmZmVy
+ICp2YjJfdjRsMiA9IHRvX3ZiMl92NGwyX2J1ZmZlcih2Yik7Cj4gPiA+ICsKPiA+ID4gK8KgwqDC
+oMKgwqDCoCBtdGtfdjRsMl9kZWJ1ZygzLCAiWyVkXSAoJWQpIGlkPSVkLCB2Yj0lcCIsCj4gPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjdHgtPmlkLCB2
+Yi0+dmIyX3F1ZXVlLT50eXBlLAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgdmItPmluZGV4LCB2Yik7Cj4gPiA+ICsKPiA+ID4gK8KgwqDCoMKgwqDC
+oCBtdXRleF9sb2NrKCZjdHgtPmxvY2spOwo+ID4gPiArwqDCoMKgwqDCoMKgIHY0bDJfbTJtX2J1
+Zl9xdWV1ZShjdHgtPm0ybV9jdHgsIHZiMl92NGwyKTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBtdXRl
+eF91bmxvY2soJmN0eC0+bG9jayk7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgaWYgKHZiLT52YjJfcXVl
+dWUtPnR5cGUgIT0gVjRMMl9CVUZfVFlQRV9WSURFT19PVVRQVVRfTVBMQU5FKQo+ID4gPiArwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm47Cj4gPiA+ICsKPiA+ID4gK8KgwqDCoMKg
+wqDCoCBtdGtfdjRsMl9kZWJ1ZygzLCAiKCVkKSBpZD0lZCwgYnM9JXAiLAo+ID4gPiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB2Yi0+dmIyX3F1ZXVlLT50eXBlLCB2Yi0+aW5kZXgsIHNy
+Y19idWYpOwo+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgLyogSWYgYW4gT1VUUFVUIGJ1ZmZl
+ciwgd2UgbWF5IG5lZWQgdG8gdXBkYXRlIHRoZSBzdGF0ZSAqLwo+ID4gPiArwqDCoMKgwqDCoMKg
+IGlmIChjdHgtPnN0YXRlID09IE1US19TVEFURV9JTklUKSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIGN0eC0+c3RhdGUgPSBNVEtfU1RBVEVfSEVBREVSOwo+ID4gPiArwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdGtfdjRsMl9kZWJ1ZygxLCAiSW5pdCBkcml2ZXIg
+ZnJvbSBpbml0IHRvIGhlYWRlci4iKTsKPiA+IAo+ID4gVGhpcyBzdGF0ZSB0aGluZyBzZWVtcyBq
+dXN0IHNvbWV0aGluZyB0byBtYWtlIHRoZSByZXN0Cj4gPiBvZiB0aGUgc3RhdGVmdWwtYmFzZWQg
+ZHJpdmVyIGhhcHB5LCByaWdodD8KPiAKPiBDb3JyZWN0IC0gaWYgYW55dGhpbmcgd2Ugc2hvdWxk
+IGVpdGhlciB1c2UgbW9yZSBvZiB0aGUgc3RhdGUgaGVyZQo+IChpLmUuIHNldCB0aGUgZXJyb3Ig
+c3RhdGUgd2hlbiByZWxldmFudCkgb3IgbW92ZSB0aGUgc3RhdGUgZW50aXJlbHkgaW4KPiB0aGUg
+c3RhdGVmdWwgcGFydCBvZiB0aGUgZHJpdmVyLgo+IAo+ID4gCj4gPiBNYWtlcyBtZSB3b25kZXIg
+YSBiaXQgaWYganVzdCBzcGxpdHRpbmcgdGhlIHN0YXRlbGVzcyBwYXJ0IHRvIGl0cwo+ID4gb3du
+IGRyaXZlciwgd291bGRuJ3QgbWFrZSB5b3VyIG1haW50ZW5hbmNlIGVhc2llci4KPiA+IAo+ID4g
+V2hhdCdzIHRoZSBtb3RpdmF0aW9uIGZvciBzaGFyaW5nIHRoZSBkcml2ZXI/Cj4gCj4gVGVjaG5p
+Y2FsbHkgeW91IGNvdWxkIGRvIGl0IGJvdGggd2F5cy4gU2VwYXJhdGluZyB0aGUgZHJpdmVyIHdv
+dWxkCj4gcmVzdWx0IGluIHNvbWUgYm9pbGVycGxhdGUgY29kZSBhbmQgYnVmZmVyLW1hbmFnZW1l
+bnQgc3RydWN0cwo+IGR1cGxpY2F0aW9uICh1bmxlc3Mgd2Uga2VlcCB0aGUgc2hhcmVkIHBhcnQg
+dW5kZXIgYW5vdGhlciBtb2R1bGUgLSBidXQKPiBpbiB0aGlzIGNhc2Ugd2UgYXJlIGJhc2ljYWxs
+eSBpbiB0aGUgc2FtZSBzaXR1YXRpb24gYXMgbm93KS4gQWxzbwo+IGRlc3BpdGUgdXNpbmcgZGlm
+ZmVyZW50IHVzZXJzcGFjZS1mYWNpbmcgQUJJcywgTVQ4MTczIGFuZCBNVDgxODMKPiBmb2xsb3cg
+YSBzaW1pbGFyIGFyY2hpdGVjdHVyZSBhbmQgYSBzaW1pbGFyIGZpcm13YXJlIGludGVyZmFjZS4K
+PiBDb25zaWRlcmluZyB0aGVzZSBzaW1pbGFyaXRpZXMgaXQgc2VlbXMgc2ltcGxlciBmcm9tIGFu
+IGFyY2hpdGVjdHVyYWwKPiBwb2ludCBvZiB2aWV3IHRvIGhhdmUgYWxsIHRoZSBNZWRpYXRlayBj
+b2RlYyBzdXBwb3J0IHVuZGVyIHRoZSBzYW1lCj4gZHJpdmVyLiBJdCBhbHNvIHByb2JhYmx5IHJl
+c3VsdHMgaW4gbGVzcyBjb2RlLgo+IAo+IFRoYXQgYmVpbmcgc2FpZCwgdGhlIHNwbGl0IGNhbiBw
+cm9iYWJseSBiZSBpbXByb3ZlZCBhcyB5b3UgcG9pbnRlZCBvdXQKPiB3aXRoIHRoaXMgc3RhdGUg
+dmFyaWFibGUuIEJ1dCB0aGUgY3VycmVudCBzcGxpdCBpcyBub3QgdG9vIGJhZCBJTUhPLAo+IGF0
+IGxlYXN0IG5vdCB3b3JzZSB0aGFuIGhvdyB0aGUgY29kZSB3YXMgb3JpZ2luYWxseS4KPiAKPiA+
+IAo+ID4gPiArwqDCoMKgwqDCoMKgIH0gZWxzZSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIG10a192NGwyX2RlYnVnKDMsICJbJWRdIGFscmVhZHkgaW5pdCBkcml2ZXIgJWQi
+LAo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIGN0eC0+aWQsIGN0eC0+c3RhdGUpOwo+ID4gPiArwqDCoMKgwqDCoMKgIH0K
+PiA+ID4gK30KPiA+ID4gKwo+ID4gPiArc3RhdGljIGludCBtdGtfdmRlY19mbHVzaF9kZWNvZGVy
+KHN0cnVjdCBtdGtfdmNvZGVjX2N0eCAqY3R4KQo+ID4gPiArewo+ID4gPiArwqDCoMKgwqDCoMKg
+IGJvb2wgcmVzX2NoZzsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgIHJldHVybiB2ZGVjX2lm
+X2RlY29kZShjdHgsIE5VTEwsIE5VTEwsICZyZXNfY2hnKTsKPiA+ID4gK30KPiA+ID4gKwo+ID4g
+PiArc3RhdGljIGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfb3BzIG10a192Y29kZWNfZGVjX2N0cmxf
+b3BzID0gewo+ID4gPiArwqDCoMKgwqDCoMKgIC5nX3ZvbGF0aWxlX2N0cmwgPSBtdGtfdmRlY19n
+X3ZfY3RybCwKPiA+ID4gK307Cj4gPiA+ICsKPiA+ID4gK3N0YXRpYyBpbnQgbXRrX3Zjb2RlY19k
+ZWNfY3RybHNfc2V0dXAoc3RydWN0IG10a192Y29kZWNfY3R4ICpjdHgpCj4gPiA+ICt7Cj4gPiA+
+ICvCoMKgwqDCoMKgwqAgc3RydWN0IHY0bDJfY3RybCAqY3RybDsKPiA+ID4gK8KgwqDCoMKgwqDC
+oCB1bnNpZ25lZCBpbnQgaTsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgIHY0bDJfY3RybF9o
+YW5kbGVyX2luaXQoJmN0eC0+Y3RybF9oZGwsIE5VTV9DVFJMUyk7Cj4gPiA+ICvCoMKgwqDCoMKg
+wqAgaWYgKGN0eC0+Y3RybF9oZGwuZXJyb3IpIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgbXRrX3Y0bDJfZXJyKCJ2NGwyX2N0cmxfaGFuZGxlcl9pbml0IGZhaWxlZFxuIik7
+Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiBjdHgtPmN0cmxfaGRs
+LmVycm9yOwo+ID4gPiArwqDCoMKgwqDCoMKgIH0KPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKg
+IGN0cmwgPSB2NGwyX2N0cmxfbmV3X3N0ZCgmY3R4LT5jdHJsX2hkbCwKPiA+ID4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAmbXRr
+X3Zjb2RlY19kZWNfY3RybF9vcHMsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgVjRMMl9DSURfTUlOX0JVRkZFUlNfRk9S
+X0NBUFRVUkUsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgMCwgMzIsIDEsIDEpOwo+ID4gPiArwqDCoMKgwqDCoMKgIGN0
+cmwtPmZsYWdzIHw9IFY0TDJfQ1RSTF9GTEFHX1ZPTEFUSUxFOwo+ID4gCj4gPiBIbSwgdGhpcyB2
+b2xhdGlsZSBjb250cm9sIGZvciBNSU5fQlVGRkVSU19GT1JfQ0FQVFVSRSBzZWVtcwo+ID4gdG8g
+cmV0dXJuIHRoZSBEUEIgc2l6ZS4gSG93ZXZlciwgaXNuJ3QgdGhpcyBzb21ldGhpbmcgdXNlcnNw
+YWNlIGFscmVhZHkKPiA+IGtub3dzPwo+IAo+IFRydWUsIGJ1dCB0aGF0J3MgYWxzbyBhIGNvbnRy
+b2wgdGhlIGRyaXZlciBpcyBzdXBwb3NlZCB0byBwcm92aWRlIHBlcgo+IHRoZSBzcGVjIElJVUMu
+Cj4gCj4gPiAKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgIGZvciAoaSA9IDA7IGkgPCBOVU1f
+Q1RSTFM7IGkrKykgewo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3Qg
+djRsMl9jdHJsX2NvbmZpZyBjZmcgPQo+ID4gPiBtdGtfc3RhdGVsZXNzX2NvbnRyb2xzW2ldLmNm
+ZzsKPiA+ID4gKwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB2NGwyX2N0cmxf
+bmV3X2N1c3RvbSgmY3R4LT5jdHJsX2hkbCwgJmNmZywgTlVMTCk7Cj4gPiA+ICvCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIGlmIChjdHgtPmN0cmxfaGRsLmVycm9yKSB7Cj4gPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdGtfdjRsMl9lcnIoIkFk
+ZGluZyBjb250cm9sICVkIGZhaWxlZCAlZCIsCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGks
+IGN0eC0+Y3RybF9oZGwuZXJyb3IpOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIGN0eC0+Y3RybF9oZGwuZXJyb3I7Cj4gPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIH0KPiA+ID4gK8KgwqDCoMKgwqDCoCB9Cj4gPiA+ICsK
+PiA+ID4gK8KgwqDCoMKgwqDCoCB2NGwyX2N0cmxfaGFuZGxlcl9zZXR1cCgmY3R4LT5jdHJsX2hk
+bCk7Cj4gPiA+ICsKPiA+ID4gK8KgwqDCoMKgwqDCoCByZXR1cm4gMDsKPiA+ID4gK30KPiA+ID4g
+Kwo+ID4gPiArY29uc3Qgc3RydWN0IG1lZGlhX2RldmljZV9vcHMgbXRrX3Zjb2RlY19tZWRpYV9v
+cHMgPSB7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgLnJlcV92YWxpZGF0ZcKgwqAgPSBmb3BzX21lZGlh
+X3JlcXVlc3RfdmFsaWRhdGUsCj4gPiA+ICvCoMKgwqDCoMKgwqAgLnJlcV9xdWV1ZcKgwqDCoMKg
+wqAgPSB2NGwyX20ybV9yZXF1ZXN0X3F1ZXVlLAo+ID4gPiArfTsKPiA+ID4gKwo+ID4gPiArc3Rh
+dGljIHZvaWQgbXRrX2luaXRfdmRlY19wYXJhbXMoc3RydWN0IG10a192Y29kZWNfY3R4ICpjdHgp
+Cj4gPiA+ICt7Cj4gPiA+ICvCoMKgwqDCoMKgwqAgc3RydWN0IHZiMl9xdWV1ZSAqc3JjX3ZxOwo+
+ID4gPiArCj4gPiA+ICvCoMKgwqDCoMKgwqAgc3JjX3ZxID0gdjRsMl9tMm1fZ2V0X3ZxKGN0eC0+
+bTJtX2N0eCwKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIFY0TDJfQlVGX1RZUEVfVklERU9fT1VUUFVUX01QTEFORSk7
+Cj4gPiA+ICsKPiA+ID4gK8KgwqDCoMKgwqDCoCAvKiBTdXBwb3J0IHJlcXVlc3QgYXBpIGZvciBv
+dXRwdXQgcGxhbmUgKi8KPiA+ID4gK8KgwqDCoMKgwqDCoCBzcmNfdnEtPnN1cHBvcnRzX3JlcXVl
+c3RzID0gdHJ1ZTsKPiA+ID4gK8KgwqDCoMKgwqDCoCBzcmNfdnEtPnJlcXVpcmVzX3JlcXVlc3Rz
+ID0gdHJ1ZTsKPiA+ID4gK30KPiA+ID4gKwo+ID4gPiArc3RhdGljIGludCB2YjJvcHNfdmRlY19v
+dXRfYnVmX3ZhbGlkYXRlKHN0cnVjdCB2YjJfYnVmZmVyICp2YikKPiA+ID4gK3sKPiA+IAo+ID4g
+SSBoYXZlIHRvIGFkbWl0IEkgZG8gbm90IHJlbWVtYmVyIGV4YWN0bHkgdGhlIHJlYXNvbiwKPiA+
+IGJ1dCB0aGlzIHNob3VsZCBzZXQgdGhlIGJ1ZmZlciBmaWVsZCB0byBWNEwyX0ZJRUxEX05PTkUu
+Cj4gCj4gUmlnaHQsIEkgc2VlIGFsbCBvdGhlciBkcml2ZXJzIGFyZSBkb2luZyB0aGlzLiBEb25l
+Lgo+IAo+IENoZWVycywKPiBBbGV4LgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
