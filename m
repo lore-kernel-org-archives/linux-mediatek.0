@@ -2,100 +2,91 @@ Return-Path: <SRS0=+2NV=IN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9EBF3C433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 21:16:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F35DC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 21:46:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C86D64F26
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 21:16:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C86D64F26
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2640764F51
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 21:46:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2640764F51
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bzF1H6XZy5NP8bIlDjy12U2Hv0uLcJOVsTxNmOmIyYQ=; b=TQ2xacxN1UoKiRJYZ9SGey8NM
-	VGYbiFljiaFXYaIxQaIVMXw9bCb0VSH5yLKw7CowOeBWXzmoj067UTBruOUKMCQmbFtaMs9Rxy9lN
-	6nbYjUUoVQOSWm3c3RXtRcbKy3rhzFgfxtGayXdbqrX8I/JN644lMVV7PqRstzZGPMiIeV8RzVOG7
-	Ii35pNqSIfOTldTf92FVvUfQAuxNKdFgDLDQkqKye3tggRBkUNH5sVzm7mHYNzV9pIdtIHRsQ2XiT
-	kppAeO5VMw5GHnJkQr/5+lsBUWPF1hrh+8XUenfooHaJWHldD5dxIkgZyroYyj5XZJHOPJapcqY7o
-	m/Y35H94g==;
+	 bh=GlHKkyovjPdCkT7H0AG0NaFlgpPgypPUEbqscGUoSEc=; b=RzqfTJdLf+A3nx5DEkhOr3K04
+	+2WNIitz9mMh6Nr3iDCDyWyl9MHPqrRnW5GDq0+tzomuxJpieMjaLq7RW8J6TZHSyhFBlR0diKtSB
+	6ICxYvVWphiIRtyFTjRxjggTR9LAA6npqVFO5ZiH8rjL7ND1iVA37q/SdfS078iqDKBNTGtFB1exR
+	gX15u8lhHmNPckNINOIP7ITqy6GEnZYdKHfRjBqd+KAm86iofoJoVpKEmUBOARvX5RlZ+Cz3PzR8v
+	fuxwxkRQxhYfkJrRiH1qKmSHwH+/X6p1TnwceHePaWqh3GJ2Y3rl85Ns4xPaZSqeFtGj+JwbehC0s
+	BSgOhtgAA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLuZH-00GuzY-7o; Mon, 15 Mar 2021 21:16:03 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1lLv2B-00GyGt-AN; Mon, 15 Mar 2021 21:45:56 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLuYy-00Guwj-C7; Mon, 15 Mar 2021 21:15:47 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id dm8so19045612edb.2;
- Mon, 15 Mar 2021 14:15:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=qwnbwanU2MY7jCvFVBwRSp3WXlaw+EiV14zRrhqaSu0=;
- b=Lt+eVhbnXOgmfLt8THwaBgDraGpxApiQbIVUYLqclrwyuCKUwMl3PC4uUCe43Q7780
- fOZ+p0IkmU5Rdb3qF+uru0em7rgkNck6zDK4Tuigl3wFKLElfOTARmrZiMpADAxyx5Gd
- mKSAVjgtlOQ2N9FTAdGxknLLlbbRNkNDtlqbIi23JTermQIYCq7Jz60Xa8yL6txZRJUI
- 1zqBb9hnwlOnX+UhD7Bi5OGNF2yxC+avG/DdUOizyrbqAixk+9kOKEO/qGLSfhspDrb1
- AZ0DZULmbOORr12r2AZ9bFq/8L6N22UeIngoLQKgtboWt+YGljxUwjvrzxQnuIdr4F37
- 5XOQ==
+ id 1lLv21-00GyFb-59
+ for linux-mediatek@lists.infradead.org; Mon, 15 Mar 2021 21:45:52 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id p7so57487628eju.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 15 Mar 2021 14:45:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2JRLaCDuicznN0kIsb/In9EpT8JY44kJm8E3yJ5RCnE=;
+ b=sXHUXF0yCbIn74ll4pSuHdq33CDzGnApYjzc4K7PB/wAnZwn8UZbpawWjLH2S6MO6B
+ /V3mRvlTSuuGI6c5zYSt0ARYmTlEM7Rolta2NfCiApAtpfTi9bMG2Xp1mjvFW8YNwii2
+ kC27oKEMxsOgzdYM8MP4KRs5Aha8PJeF/HdU+02BHc9Z6fWAtZtf6ddwSz4r9uzPLXJU
+ EYSNjGbp6/pVQCfHB+sXVhEPPpiZITpk1/1+XugcMRcIpHcnDeq5C5rkbRvHqDWoW5G9
+ vCf6VVaecoXEC1guVwrf+SMq3Qvz/CBBTGw+/qs1mGAv5AbZk14LM1lWakTqRQ45NdLd
+ urBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=qwnbwanU2MY7jCvFVBwRSp3WXlaw+EiV14zRrhqaSu0=;
- b=pRyL14rWAFxO++neYHa01hMZFy1Rlb0LvjxuLVRmnZumxWOpiY0twlkTFxhomHHkTA
- c3I270JITUF5/ZzKTaZm7F491LKSbAXTJv7XOJT72E5/DBeseaoUmXDAtogTGFPnvnQF
- 0b3DEj2dpvzqjjYVE9YjwVftPFIRBJqnpiRvsOtH3rcykSAaUkODHbVYVnUI/2C/pOZy
- I21N8wvEpnIatd5ztiQiTocKhT8eHPtHI6Eg6vRAqk4hFBXDyryGSM7ozf1FX/vXbCge
- bQNHgFtxj8BcP1kAWjjQQAYFOT8QePionsS6n0Azw81APWtMbD0RxSmc5PVm7HFP5rvJ
- Gy1g==
-X-Gm-Message-State: AOAM530AlrHRt6/ehX86ipz5fJ2n2R1FTVSSCzXmuFybmQo0BCv7270a
- N62DhP15FGqSG1aFgjkZsjIA3Z/wSoA=
-X-Google-Smtp-Source: ABdhPJyxFmzPQdIpHLDHNyRn+rWF8FayJG6KOvHNVBAgNs2PIula+AmyaWzcw2zv5Ouksj3jqtc24g==
-X-Received: by 2002:a05:6402:1283:: with SMTP id
- w3mr31971754edv.340.1615842943862; 
- Mon, 15 Mar 2021 14:15:43 -0700 (PDT)
-Received: from skbuf ([188.25.219.167])
- by smtp.gmail.com with ESMTPSA id j14sm8800785eds.78.2021.03.15.14.15.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Mar 2021 14:15:43 -0700 (PDT)
-Date: Mon, 15 Mar 2021 23:15:41 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Frank Wunderlich <frank-w@public-files.de>,
- =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>
-Subject: Re: [PATCH net-next] net: dsa: mt7530: support MDB and bridge flag
- operations
-Message-ID: <20210315211541.pj5mpy2foi3wlhbe@skbuf>
-References: <20210315170940.2414854-1-dqfext@gmail.com>
- <892918f1-bee6-7603-b8e1-3efb93104f6f@gmail.com>
- <20210315200939.irwyiru6m62g4a7f@skbuf>
- <84bb93da-cc3b-d2a5-dda8-a8fb973c3bae@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2JRLaCDuicznN0kIsb/In9EpT8JY44kJm8E3yJ5RCnE=;
+ b=jQSfpAYLp5+tyCeCgjn1dzziiv1QcTq9Q8/HnFHhPD0IE47/qQw7P3uWlKlC9IyQKq
+ zv4C5ShcH3P7L4huVReFHIvvvB2Jou5PwMv05D/eWJ75ifXSt3/mfy/XinpulQnVaEsr
+ H1lU8KGC3QVcY2PCuD/jWbCk7Mz2xMcH+NMF39OA1Hi6RRHElgxPrEijULA/1Udu/Yzf
+ fCjEW8GKo1KE73Dp8PvaV7NOHv6tFqNvgecwEbTZczq+CSzwYpaNP6XfadrGGj7NhtDh
+ Mt/NnsHvsGpTYvAyYomasrxvkGV8mYA+bqh/H1VLkbLI5rnMpYl5xoc3+UJwS1Au45YZ
+ f5LQ==
+X-Gm-Message-State: AOAM5316eMqgO0hWjm0ZuiMFeQA+mmzu/dSTza9IXdvrGtj1V65Di7ZL
+ gJj9RwYHOt+9IhPvJj3NTbNnBxeMYnMOyfsoG7fBMA==
+X-Google-Smtp-Source: ABdhPJxFp7CFOGDcA6xknPgwabp5gSPr5eZWUG4S7vNZcPVKmzBZnVJdiUE9/tGmxENUUd2o4beTJOQRqFFKpkM2qVc=
+X-Received: by 2002:a17:906:1c98:: with SMTP id
+ g24mr26036431ejh.51.1615844743819; 
+ Mon, 15 Mar 2021 14:45:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <84bb93da-cc3b-d2a5-dda8-a8fb973c3bae@gmail.com>
+References: <20210226100148.1663389-1-acourbot@chromium.org>
+ <20210226100148.1663389-6-acourbot@chromium.org>
+ <CAAEAJfDyHYGf+J6WDHchVATOvj5AJpO8dkAStiNGNobJ9Uz8Yw@mail.gmail.com>
+ <CAPBb6MWtPuBNLpMK6U1-rfvTcPRnOEjJ06zTawxyD+pMSJ=uGQ@mail.gmail.com>
+In-Reply-To: <CAPBb6MWtPuBNLpMK6U1-rfvTcPRnOEjJ06zTawxyD+pMSJ=uGQ@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Mon, 15 Mar 2021 18:45:32 -0300
+Message-ID: <CAAEAJfDkS3E0YeXniBB9MuQJUnEruxGJGsLN3toVVd=7wLXGmQ@mail.gmail.com>
+Subject: Re: [PATCH v3 05/15] media: mtk-vcodec: vdec: support stateless API
+To: Alexandre Courbot <acourbot@chromium.org>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Rob Herring <robh+dt@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ linux-media <linux-media@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_211545_059846_134AD28A 
-X-CRM114-Status: GOOD (  23.70  )
+X-CRM114-CacheID: sfid-20210315_214550_116344_2ACA4755 
+X-CRM114-Status: GOOD (  40.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,58 +103,459 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 15, 2021 at 01:44:02PM -0700, Florian Fainelli wrote:
-> On 3/15/2021 1:09 PM, Vladimir Oltean wrote:
-> > On Mon, Mar 15, 2021 at 01:03:10PM -0700, Florian Fainelli wrote:
-> >>
-> >>
-> >> On 3/15/2021 10:09 AM, DENG Qingfang wrote:
-> >>> Support port MDB and bridge flag operations.
-> >>>
-> >>> As the hardware can manage multicast forwarding itself, offload_fwd_mark
-> >>> can be unconditionally set to true.
-> >>>
-> >>> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> >>> ---
-> >>> Changes since RFC:
-> >>>   Replaced BR_AUTO_MASK with BR_FLOOD | BR_LEARNING
-> >>>
-> >>>  drivers/net/dsa/mt7530.c | 124 +++++++++++++++++++++++++++++++++++++--
-> >>>  drivers/net/dsa/mt7530.h |   1 +
-> >>>  net/dsa/tag_mtk.c        |  14 +----
-> >>>  3 files changed, 122 insertions(+), 17 deletions(-)
-> >>>
-> >>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> >>> index 2342d4528b4c..f765984330c9 100644
-> >>> --- a/drivers/net/dsa/mt7530.c
-> >>> +++ b/drivers/net/dsa/mt7530.c
-> >>> @@ -1000,8 +1000,9 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
-> >>>  	mt7530_write(priv, MT7530_PVC_P(port),
-> >>>  		     PORT_SPEC_TAG);
-> >>>  
-> >>> -	/* Unknown multicast frame forwarding to the cpu port */
-> >>> -	mt7530_rmw(priv, MT7530_MFC, UNM_FFP_MASK, UNM_FFP(BIT(port)));
-> >>> +	/* Disable flooding by default */
-> >>> +	mt7530_rmw(priv, MT7530_MFC, BC_FFP_MASK | UNM_FFP_MASK | UNU_FFP_MASK,
-> >>> +		   BC_FFP(BIT(port)) | UNM_FFP(BIT(port)) | UNU_FFP(BIT(port)));
-> >>
-> >> It's not clear to me why this is appropriate especially when the ports
-> >> operated in standalone mode, can you expand a bit more on this?
-> > 
-> > We are in the function called "mt753x_cpu_port_enable" here. It's ok to
-> > apply this config for the CPU port.
-> 
-> Because the user ports will flood unknown traffic and we have mediatek
-> tags enabled presumably, so all traffic is copied to the CPU port, OK.
+Hi Alexandre,
 
-Actually this is just how Qingfang explained it:
-https://patchwork.kernel.org/project/netdevbpf/patch/20210224081018.24719-1-dqfext@gmail.com/
+On Mon, 15 Mar 2021 at 08:28, Alexandre Courbot <acourbot@chromium.org> wrote:
+>
+> Hi Ezequiel, thanks for the feedback!
+>
+> On Thu, Mar 4, 2021 at 6:30 AM Ezequiel Garcia
+> <ezequiel@vanguardiasur.com.ar> wrote:
+> >
+> > Hello Alex,
+> >
+> > Thanks for the patch.
+> >
+> > On Fri, 26 Feb 2021 at 07:06, Alexandre Courbot <acourbot@chromium.org> wrote:
+> > >
+> > > From: Yunfei Dong <yunfei.dong@mediatek.com>
+> > >
+> > > Support the stateless codec API that will be used by MT8183.
+> > >
+> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > [acourbot: refactor, cleanup and split]
+> > > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
+> > > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > > ---
+> > >  drivers/media/platform/mtk-vcodec/Makefile    |   1 +
+> > >  .../platform/mtk-vcodec/mtk_vcodec_dec.c      |  66 ++-
+> > >  .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   9 +-
+> > >  .../mtk-vcodec/mtk_vcodec_dec_stateless.c     | 427 ++++++++++++++++++
+> > >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   3 +
+> > >  5 files changed, 503 insertions(+), 3 deletions(-)
+> > >  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+> > >
+> > [..]
+> >
+> > > +
+> > > +static const struct mtk_stateless_control mtk_stateless_controls[] = {
+> > > +       {
+> > > +               .cfg = {
+> > > +                       .id = V4L2_CID_STATELESS_H264_SPS,
+> > > +               },
+> > > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > > +               .needed_in_request = true,
+> >
+> > This "needed_in_request" is not really required, as controls
+> > are not volatile, and their value is stored per-context (per-fd).
+> >
+> > It's perfectly valid for an application to pass the SPS control
+> > at the beginning of the sequence, and then omit it
+> > in further requests.
+>
+> If I understand how v4l2_ctrl_request_hdl_ctrl_find() works with
+> requests, this boolean only checks that the control has been provided
+> at least once, and not that it is provided with every request. Without
+> it we could send a frame to the firmware without e.g. setting an SPS,
+> which would be a problem.
+>
 
-I just assume that MT7530/7531 switches don't need to enable flooding on
-user ports when the only possible traffic source is the CPU port - the
-CPU port can inject traffic into any port regardless of egress flooding
-setting. If that's not true, I don't see how traffic in standalone ports
-mode would work after this patch.
+As Nicolas points out, in V4L2 controls have an initial value,
+so no control can be unset.
+
+> >
+> > > +       },
+> > > +       {
+> > > +               .cfg = {
+> > > +                       .id = V4L2_CID_STATELESS_H264_PPS,
+> > > +               },
+> > > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > > +               .needed_in_request = true,
+> > > +       },
+> > > +       {
+> > > +               .cfg = {
+> > > +                       .id = V4L2_CID_STATELESS_H264_SCALING_MATRIX,
+> > > +               },
+> > > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > > +               .needed_in_request = true,
+> > > +       },
+> > > +       {
+> > > +               .cfg = {
+> > > +                       .id = V4L2_CID_STATELESS_H264_DECODE_PARAMS,
+> > > +               },
+> > > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > > +               .needed_in_request = true,
+> > > +       },
+> > > +       {
+> > > +               .cfg = {
+> > > +                       .id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+> > > +                       .def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
+> > > +                       .max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
+> > > +                       .menu_skip_mask =
+> > > +                               BIT(V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE) |
+> > > +                               BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
+> > > +               },
+> > > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > > +       },
+> > > +       {
+> > > +               .cfg = {
+> > > +                       .id = V4L2_CID_STATELESS_H264_DECODE_MODE,
+> > > +                       .min = V4L2_STATELESS_H264_DECODE_MODE_FRAME_BASED,
+> > > +                       .def = V4L2_STATELESS_H264_DECODE_MODE_FRAME_BASED,
+> > > +                       .max = V4L2_STATELESS_H264_DECODE_MODE_FRAME_BASED,
+> > > +               },
+> > > +               .codec_type = V4L2_PIX_FMT_H264_SLICE,
+> > > +       },
+> > > +};
+> >
+> > Applications also need to know which V4L2_CID_STATELESS_H264_START_CODE
+> > the driver supports. From a next patch, this case seems to be
+> > V4L2_STATELESS_H264_START_CODE_ANNEX_B.
+>
+> Indeed - I've added the control, thanks for catching this!
+>
+> >
+> > > +#define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
+> > > +
+> > > +static const struct mtk_video_fmt mtk_video_formats[] = {
+> > > +       {
+> > > +               .fourcc = V4L2_PIX_FMT_H264_SLICE,
+> > > +               .type = MTK_FMT_DEC,
+> > > +               .num_planes = 1,
+> > > +       },
+> > > +       {
+> > > +               .fourcc = V4L2_PIX_FMT_MM21,
+> > > +               .type = MTK_FMT_FRAME,
+> > > +               .num_planes = 2,
+> > > +       },
+> > > +};
+> > > +#define NUM_FORMATS ARRAY_SIZE(mtk_video_formats)
+> > > +#define DEFAULT_OUT_FMT_IDX    0
+> > > +#define DEFAULT_CAP_FMT_IDX    1
+> > > +
+> > > +static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
+> > > +       {
+> > > +               .fourcc = V4L2_PIX_FMT_H264_SLICE,
+> > > +               .stepwise = {
+> > > +                       MTK_VDEC_MIN_W, MTK_VDEC_MAX_W, 16,
+> > > +                       MTK_VDEC_MIN_H, MTK_VDEC_MAX_H, 16,
+> > > +               },
+> > > +       },
+> > > +};
+> > > +
+> > > +#define NUM_SUPPORTED_FRAMESIZE ARRAY_SIZE(mtk_vdec_framesizes)
+> > > +
+> > > +static void mtk_vdec_stateless_set_dst_payload(struct mtk_vcodec_ctx *ctx,
+> > > +                                              struct vdec_fb *fb)
+> > > +{
+> > > +       struct mtk_video_dec_buf *vdec_frame_buf =
+> > > +               container_of(fb, struct mtk_video_dec_buf, frame_buffer);
+> > > +       struct vb2_v4l2_buffer *vb = &vdec_frame_buf->m2m_buf.vb;
+> > > +       unsigned int cap_y_size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[0];
+> > > +
+> > > +       vb2_set_plane_payload(&vb->vb2_buf, 0, cap_y_size);
+> > > +       if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2) {
+> > > +               unsigned int cap_c_size =
+> > > +                       ctx->q_data[MTK_Q_DATA_DST].sizeimage[1];
+> > > +
+> > > +               vb2_set_plane_payload(&vb->vb2_buf, 1, cap_c_size);
+> > > +       }
+> > > +}
+> > > +
+> > > +static struct vdec_fb *vdec_get_cap_buffer(struct mtk_vcodec_ctx *ctx,
+> > > +                                          struct vb2_v4l2_buffer *vb2_v4l2)
+> > > +{
+> > > +       struct mtk_video_dec_buf *framebuf =
+> > > +               container_of(vb2_v4l2, struct mtk_video_dec_buf, m2m_buf.vb);
+> > > +       struct vdec_fb *pfb = &framebuf->frame_buffer;
+> > > +       struct vb2_buffer *dst_buf = &vb2_v4l2->vb2_buf;
+> > > +
+> > > +       pfb = &framebuf->frame_buffer;
+> > > +       pfb->base_y.va = vb2_plane_vaddr(dst_buf, 0);
+> >
+> > Are you sure you need a CPU mapping? It seems strange.
+> > I'll comment some more on the next patch(es).
+>
+> I'll answer on the next patch since this is where that mapping is being used.
+>
+> >
+> > > +       pfb->base_y.dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
+> > > +       pfb->base_y.size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[0];
+> > > +
+> > > +       if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2) {
+> > > +               pfb->base_c.va = vb2_plane_vaddr(dst_buf, 1);
+> > > +               pfb->base_c.dma_addr =
+> > > +                       vb2_dma_contig_plane_dma_addr(dst_buf, 1);
+> > > +               pfb->base_c.size = ctx->q_data[MTK_Q_DATA_DST].sizeimage[1];
+> > > +       }
+> > > +       mtk_v4l2_debug(1,
+> > > +               "id=%d Framebuf  pfb=%p VA=%p Y_DMA=%pad C_DMA=%pad Size=%zx frame_count = %d",
+> > > +               dst_buf->index, pfb,
+> > > +               pfb->base_y.va, &pfb->base_y.dma_addr,
+> > > +               &pfb->base_c.dma_addr, pfb->base_y.size,
+> > > +               ctx->decoded_frame_cnt);
+> > > +
+> > > +       return pfb;
+> > > +}
+> > > +
+> > > +static void vb2ops_vdec_buf_request_complete(struct vb2_buffer *vb)
+> > > +{
+> > > +       struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > > +
+> > > +       v4l2_ctrl_request_complete(vb->req_obj.req, &ctx->ctrl_hdl);
+> > > +}
+> > > +
+> > > +static int fops_media_request_validate(struct media_request *mreq)
+> > > +{
+> > > +       const unsigned int buffer_cnt = vb2_request_buffer_cnt(mreq);
+> > > +       struct mtk_vcodec_ctx *ctx = NULL;
+> > > +       struct media_request_object *req_obj;
+> > > +       struct v4l2_ctrl_handler *parent_hdl, *hdl;
+> > > +       struct v4l2_ctrl *ctrl;
+> > > +       unsigned int i;
+> > > +
+> > > +       switch (buffer_cnt) {
+> > > +       case 1:
+> > > +               /* We expect exactly one buffer with the request */
+> > > +               break;
+> > > +       case 0:
+> > > +               mtk_v4l2_err("No buffer provided with the request");
+> > > +               return -ENOENT;
+> > > +       default:
+> > > +               mtk_v4l2_err("Too many buffers (%d) provided with the request",
+> > > +                            buffer_cnt);
+> > > +               return -EINVAL;
+> > > +       }
+> > > +
+> > > +       list_for_each_entry(req_obj, &mreq->objects, list) {
+> > > +               struct vb2_buffer *vb;
+> > > +
+> > > +               if (vb2_request_object_is_buffer(req_obj)) {
+> > > +                       vb = container_of(req_obj, struct vb2_buffer, req_obj);
+> > > +                       ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > > +                       break;
+> > > +               }
+> > > +       }
+> > > +
+> > > +       if (!ctx) {
+> > > +               mtk_v4l2_err("Cannot find buffer for request");
+> > > +               return -ENOENT;
+> > > +       }
+> > > +
+> > > +       parent_hdl = &ctx->ctrl_hdl;
+> > > +
+> > > +       hdl = v4l2_ctrl_request_hdl_find(mreq, parent_hdl);
+> > > +       if (!hdl) {
+> > > +               mtk_v4l2_err("Cannot find control handler for request\n");
+> > > +               return -ENOENT;
+> > > +       }
+> > > +
+> > > +       for (i = 0; i < NUM_CTRLS; i++) {
+> > > +               if (mtk_stateless_controls[i].codec_type != ctx->current_codec)
+> > > +                       continue;
+> > > +               if (!mtk_stateless_controls[i].needed_in_request)
+> > > +                       continue;
+> > > +
+> > > +               ctrl = v4l2_ctrl_request_hdl_ctrl_find(hdl,
+> > > +                                         mtk_stateless_controls[i].cfg.id);
+> > > +               if (!ctrl) {
+> > > +                       mtk_v4l2_err("Missing required codec control\n");
+> > > +                       return -ENOENT;
+> > > +               }
+> > > +       }
+> > > +
+> > > +       v4l2_ctrl_request_hdl_put(hdl);
+> > > +
+> > > +       return vb2_request_validate(mreq);
+> > > +}
+> > > +
+> > > +static void mtk_vdec_worker(struct work_struct *work)
+> > > +{
+> > > +       struct mtk_vcodec_ctx *ctx =
+> > > +               container_of(work, struct mtk_vcodec_ctx, decode_work);
+> > > +       struct mtk_vcodec_dev *dev = ctx->dev;
+> > > +       struct vb2_v4l2_buffer *vb2_v4l2_src, *vb2_v4l2_dst;
+> > > +       struct vb2_buffer *vb2_src;
+> > > +       struct mtk_vcodec_mem *bs_src;
+> > > +       struct mtk_video_dec_buf *dec_buf_src;
+> > > +       struct media_request *src_buf_req;
+> > > +       struct vdec_fb *dst_buf;
+> > > +       bool res_chg = false;
+> > > +       int ret;
+> > > +
+> > > +       vb2_v4l2_src = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+> > > +       if (vb2_v4l2_src == NULL) {
+> > > +               v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> > > +               mtk_v4l2_debug(1, "[%d] no available source buffer", ctx->id);
+> > > +               return;
+> > > +       }
+> > > +
+> > > +       vb2_v4l2_dst = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
+> > > +       if (vb2_v4l2_dst == NULL) {
+> > > +               v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> > > +               mtk_v4l2_debug(1, "[%d] no available destination buffer", ctx->id);
+> > > +               return;
+> > > +       }
+> > > +
+> > > +       vb2_src = &vb2_v4l2_src->vb2_buf;
+> > > +       dec_buf_src = container_of(vb2_v4l2_src, struct mtk_video_dec_buf,
+> > > +                                  m2m_buf.vb);
+> > > +       bs_src = &dec_buf_src->bs_buffer;
+> > > +
+> > > +       mtk_v4l2_debug(3, "[%d] (%d) id=%d, vb=%p buf_info = %p",
+> > > +                       ctx->id, src_buf->vb2_queue->type,
+> > > +                       src_buf->index, src_buf, src_buf_info);
+> > > +
+> > > +       bs_src->va = vb2_plane_vaddr(vb2_src, 0);
+> > > +       bs_src->dma_addr = vb2_dma_contig_plane_dma_addr(vb2_src, 0);
+> > > +       bs_src->size = (size_t)vb2_src->planes[0].bytesused;
+> > > +       if (!bs_src->va) {
+> > > +               v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> > > +               mtk_v4l2_err("[%d] id=%d source buffer is NULL", ctx->id,
+> > > +                            vb2_src->index);
+> > > +               return;
+> > > +       }
+> > > +
+> > > +       mtk_v4l2_debug(3, "[%d] Bitstream VA=%p DMA=%pad Size=%zx vb=%p",
+> > > +                       ctx->id, buf->va, &buf->dma_addr, buf->size, src_buf);
+> > > +       /* Apply request controls. */
+> > > +       src_buf_req = vb2_src->req_obj.req;
+> > > +       if (src_buf_req)
+> > > +               v4l2_ctrl_request_setup(src_buf_req, &ctx->ctrl_hdl);
+> > > +       else
+> > > +               mtk_v4l2_err("vb2 buffer media request is NULL");
+> > > +
+> > > +       dst_buf = vdec_get_cap_buffer(ctx, vb2_v4l2_dst);
+> > > +       v4l2_m2m_buf_copy_metadata(vb2_v4l2_src, vb2_v4l2_dst, true);
+> > > +       ret = vdec_if_decode(ctx, bs_src, dst_buf, &res_chg);
+> > > +       if (ret) {
+> > > +               mtk_v4l2_err(
+> > > +                       " <===[%d], src_buf[%d] sz=0x%zx pts=%llu vdec_if_decode() ret=%d res_chg=%d===>",
+> > > +                       ctx->id, vb2_src->index, bs_src->size,
+> > > +                       vb2_src->timestamp, ret, res_chg);
+> > > +               if (ret == -EIO) {
+> > > +                       mutex_lock(&ctx->lock);
+> > > +                       dec_buf_src->error = true;
+> > > +                       mutex_unlock(&ctx->lock);
+> > > +               }
+> > > +       }
+> > > +
+> > > +       mtk_vdec_stateless_set_dst_payload(ctx, dst_buf);
+> > > +
+> > > +       v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx,
+> > > +               ret ? VB2_BUF_STATE_ERROR : VB2_BUF_STATE_DONE);
+> > > +
+> > > +       v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+> > > +}
+> > > +
+> > > +static void vb2ops_vdec_stateless_buf_queue(struct vb2_buffer *vb)
+> > > +{
+> > > +       struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > > +       struct vb2_v4l2_buffer *vb2_v4l2 = to_vb2_v4l2_buffer(vb);
+> > > +
+> > > +       mtk_v4l2_debug(3, "[%d] (%d) id=%d, vb=%p",
+> > > +                       ctx->id, vb->vb2_queue->type,
+> > > +                       vb->index, vb);
+> > > +
+> > > +       mutex_lock(&ctx->lock);
+> > > +       v4l2_m2m_buf_queue(ctx->m2m_ctx, vb2_v4l2);
+> > > +       mutex_unlock(&ctx->lock);
+> > > +       if (vb->vb2_queue->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+> > > +               return;
+> > > +
+> > > +       mtk_v4l2_debug(3, "(%d) id=%d, bs=%p",
+> > > +               vb->vb2_queue->type, vb->index, src_buf);
+> > > +
+> > > +       /* If an OUTPUT buffer, we may need to update the state */
+> > > +       if (ctx->state == MTK_STATE_INIT) {
+> > > +               ctx->state = MTK_STATE_HEADER;
+> > > +               mtk_v4l2_debug(1, "Init driver from init to header.");
+> >
+> > This state thing seems just something to make the rest
+> > of the stateful-based driver happy, right?
+>
+> Correct - if anything we should either use more of the state here
+> (i.e. set the error state when relevant) or move the state entirely in
+> the stateful part of the driver.
+>
+> >
+> > Makes me wonder a bit if just splitting the stateless part to its
+> > own driver, wouldn't make your maintenance easier.
+> >
+> > What's the motivation for sharing the driver?
+>
+> Technically you could do it both ways. Separating the driver would
+> result in some boilerplate code and buffer-management structs
+> duplication (unless we keep the shared part under another module - but
+> in this case we are basically in the same situation as now). Also
+> despite using different userspace-facing ABIs, MT8173 and MT8183
+> follow a similar architecture and a similar firmware interface.
+> Considering these similarities it seems simpler from an architectural
+> point of view to have all the Mediatek codec support under the same
+> driver. It also probably results in less code.
+>
+> That being said, the split can probably be improved as you pointed out
+> with this state variable. But the current split is not too bad IMHO,
+> at least not worse than how the code was originally.
+>
+> >
+> > > +       } else {
+> > > +               mtk_v4l2_debug(3, "[%d] already init driver %d",
+> > > +                               ctx->id, ctx->state);
+> > > +       }
+> > > +}
+> > > +
+> > > +static int mtk_vdec_flush_decoder(struct mtk_vcodec_ctx *ctx)
+> > > +{
+> > > +       bool res_chg;
+> > > +
+> > > +       return vdec_if_decode(ctx, NULL, NULL, &res_chg);
+> > > +}
+> > > +
+> > > +static const struct v4l2_ctrl_ops mtk_vcodec_dec_ctrl_ops = {
+> > > +       .g_volatile_ctrl = mtk_vdec_g_v_ctrl,
+> > > +};
+> > > +
+> > > +static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
+> > > +{
+> > > +       struct v4l2_ctrl *ctrl;
+> > > +       unsigned int i;
+> > > +
+> > > +       v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS);
+> > > +       if (ctx->ctrl_hdl.error) {
+> > > +               mtk_v4l2_err("v4l2_ctrl_handler_init failed\n");
+> > > +               return ctx->ctrl_hdl.error;
+> > > +       }
+> > > +
+> > > +       ctrl = v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+> > > +                               &mtk_vcodec_dec_ctrl_ops,
+> > > +                               V4L2_CID_MIN_BUFFERS_FOR_CAPTURE,
+> > > +                               0, 32, 1, 1);
+> > > +       ctrl->flags |= V4L2_CTRL_FLAG_VOLATILE;
+> >
+> > Hm, this volatile control for MIN_BUFFERS_FOR_CAPTURE seems
+> > to return the DPB size. However, isn't this something userspace already knows?
+>
+> True, but that's also a control the driver is supposed to provide per
+> the spec IIUC.
+>
+
+I don't see the specification requiring this control. TBH, I'd just drop it
+and if needed fix the application to support this as an optional
+control.
+
+In any case, stateless devices should just need 1 output and 1 capture buffer.
+
+You might dislike this redundancy, note that you can also get the minimum
+required buffers through VIDIOC_REQBUFS, where the count
+v4l2_requestbuffers.field is returned back to userspace with the
+number of allocated buffers.
+
+If you request just 1 buffer, and your driver needed 3, you should
+get a 3 there (vb2_ops.queue_setup takes care of that).
+
+Thanks,
+Ezequiel
 
 _______________________________________________
 Linux-mediatek mailing list
