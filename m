@@ -2,55 +2,55 @@ Return-Path: <SRS0=+2NV=IN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A56EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 17:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B89FC433E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 17:38:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E9BB64F04
+	by mail.kernel.org (Postfix) with ESMTPS id 9E57764E07
 	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 17:38:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E9BB64F04
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E57764E07
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jmgLR2FrxHS1CUx2rzpNuMghqNZEjuCWpx7uM/NdiR4=; b=W0kv+cWp2tQp00DcmhBMURymJ
-	nRyc+r9gf0+F0j0FUZFUuo1ATilkq1AypATb3kFWDL0iWxfHtuMpk1YfTS3KolMtpK1TSXc0Nmmsv
-	NPyk4/8q2O0ozxUkQxJByTgCda86I+34ievr+PGiikrNqEOHiE7jFA2Gpe4joINF8SN6jKKi3vlwL
-	hxUhNiDQSBK2NGFpeb9Wn/ch2ndkoM2hICkIrlhAq3nTBmoM2VAstfTAxUvQ4WUKC0awD2w+j5oAJ
-	4RX9dNzBiC/a2UYDkV5bdq7ABWi7H3s0ZGG79BUoCNjkKHUUHJNZ9J6eCOhAZEEPwEJ8IDkZ0/3dr
-	hWPAmQlDg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OMLrDwQWhSroCVUFV5SWn3L4emNyO/uv1y2CNJiYy/U=; b=RAsDHCT4eTixsnRLG+vSoBQxPe
+	TZPY+WhDTzw8IeklqgFASYoEWGnlcnXWYlUFaEYtstQEWCK+KQDyCEKiPNrlq0rzsDzdXKdGHmnIS
+	9mTqUOHNGYb8VHnUiHxXi9yUyBF+Cl25eU0XySs2Jx1ufuVA3CuV9uwJHeuicxXqJXYPz0M73ahsJ
+	tvec3zUhxy1JNcIddsTF8TY27DDvNr+abG4JxsDwzJVg5V7HXSHZNr42hHlJOztQ4KSrnvnEVlq8Y
+	2525ztU1D4kKnk/D0IVCOa0kjQMva572UoK/7N80/wVqiSka4SSMj89ZwV0iikmkvg9y/PSd0HyyF
+	BlEpiY5w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLrA4-00GXUj-27; Mon, 15 Mar 2021 17:37:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lLrA7-00GXVf-N3; Mon, 15 Mar 2021 17:37:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLr9C-00GXHX-9h; Mon, 15 Mar 2021 17:37:01 +0000
-X-UUID: 7c07b7550d2448c382ce26821e9be85f-20210315
+ id 1lLr9B-00GXHE-Ll; Mon, 15 Mar 2021 17:37:01 +0000
+X-UUID: c5bb6d4e4fc2406e8e9567c8a2edb278-20210315
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ss3Leta/CQ0+95I506nqRTXK+f0b2xHxizn9D15KYvk=; 
- b=T4pzkpR9sisUEYLzRgZEJCo99VbFfSw2rcjQpryOuiZXK7pgZNcJFa7y78PiEpGo5r3s1vTkW+ouHWmiAN4UnfMH6/s28pkrZThPC6U4d9n4PRmbK3tQW8O3bXoXJ11MRNNcdHE7+nCYsdcRGlvINqhpUSg68DHUYn5KZWgTzjI=;
-X-UUID: 7c07b7550d2448c382ce26821e9be85f-20210315
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=BQ6J0pVhhECrtXgtxEEhZ7QbVz6NCntFW9z2q5ecrQo=; 
+ b=JU3wrrwHhvbLlilwV1K9SbIrZmHJX6gpRVCA8PC6PIEpsmG310K5P/zFzeWf3eWMc7lDMy81DKfG60qmUUne1m7AnDC4TH2cu/81GgnaggXbcDEJv/md2hVvHQJagIdMXMWw1QiueclcJxIkD+sjOCaSLth7KUMXqFitIvrfP88=;
+X-UUID: c5bb6d4e4fc2406e8e9567c8a2edb278-20210315
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1983829508; Mon, 15 Mar 2021 09:36:48 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Mar 2021 10:36:47 -0700
+ with ESMTP id 1655628526; Mon, 15 Mar 2021 09:36:48 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Mar 2021 10:36:46 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 16 Mar 2021 01:36:45 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -69,18 +69,15 @@ CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Yingjoe Chen
  <linux-kernel@vger.kernel.org>, <linux-rtc@vger.kernel.org>,
  <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v6 3/8] dt-bindings: mfd: Add compatible for the MediaTek
- MT6359 PMIC
-Date: Tue, 16 Mar 2021 01:35:52 +0800
-Message-ID: <1615829757-3223-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH v6 0/8] Add Support for MediaTek PMIC MT6359
+Date: Tue, 16 Mar 2021 01:35:49 +0800
+Message-ID: <1615829757-3223-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1615829757-3223-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1615829757-3223-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_173657_368840_759688BE 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20210315_173654_562215_6EC4DD25 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,29 +94,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds compatible for the MediaTek MT6359 PMIC.
+This patchset includes refactoring interrupt and adding support to MT6359 PMIC.
+MT6359 is the primary PMIC for MT6779 and probably other SOCs.
+The series[1] sent by Wen will continue to upstream in this patchset afterwards.
 
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=306579
+
 changes since v5:
-- no change.
----
- Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
- 1 file changed, 1 insertion(+)
+- rebase to Linux 5.12.
+- refine the code structure.
+- update the file date.
 
-diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-index 2661775a3825..99a84b69a29f 100644
---- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-+++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-@@ -21,6 +21,7 @@ Required properties:
- compatible:
- 	"mediatek,mt6323" for PMIC MT6323
- 	"mediatek,mt6358" for PMIC MT6358
-+	"mediatek,mt6359" for PMIC MT6359
- 	"mediatek,mt6397" for PMIC MT6397
- 
- Optional subnodes:
+Hsin-Hsiung Wang (6):
+  mfd: mt6358: refine interrupt code
+  rtc: mt6397: refine RTC_TC_MTH
+  dt-bindings: mfd: Add compatible for the MediaTek MT6359 PMIC
+  dt-bindings: regulator: Add document for MT6359 regulator
+  mfd: Add support for the MediaTek MT6359 PMIC
+  regulator: mt6359: Add support for MT6359P regulator
+
+Wen Su (2):
+  regulator: mt6359: Add support for MT6359 regulator
+  arm64: dts: mt6359: add PMIC MT6359 related nodes
+
+ .../devicetree/bindings/mfd/mt6397.txt        |    1 +
+ .../bindings/regulator/mt6359-regulator.yaml  |  169 +++
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi      |  298 +++++
+ arch/arm64/boot/dts/mediatek/mt8192-evb.dts   |    1 +
+ drivers/mfd/mt6358-irq.c                      |   89 +-
+ drivers/mfd/mt6397-core.c                     |   24 +
+ drivers/regulator/Kconfig                     |    9 +
+ drivers/regulator/Makefile                    |    1 +
+ drivers/regulator/mt6359-regulator.c          | 1036 +++++++++++++++++
+ drivers/rtc/rtc-mt6397.c                      |    2 +-
+ include/linux/mfd/mt6358/core.h               |    8 +-
+ include/linux/mfd/mt6359/core.h               |  133 +++
+ include/linux/mfd/mt6359/registers.h          |  529 +++++++++
+ include/linux/mfd/mt6359p/registers.h         |  249 ++++
+ include/linux/mfd/mt6397/core.h               |    1 +
+ include/linux/mfd/mt6397/rtc.h                |    1 +
+ include/linux/regulator/mt6359-regulator.h    |   59 +
+ 17 files changed, 2577 insertions(+), 33 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6359.dtsi
+ create mode 100644 drivers/regulator/mt6359-regulator.c
+ create mode 100644 include/linux/mfd/mt6359/core.h
+ create mode 100644 include/linux/mfd/mt6359/registers.h
+ create mode 100644 include/linux/mfd/mt6359p/registers.h
+ create mode 100644 include/linux/regulator/mt6359-regulator.h
+
 -- 
 2.18.0
 _______________________________________________
