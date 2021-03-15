@@ -2,92 +2,117 @@ Return-Path: <SRS0=+2NV=IN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04176C433E9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 22:09:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AC13C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 22:23:10 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E25964F56
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 22:09:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E25964F56
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	by mail.kernel.org (Postfix) with ESMTPS id B6ABA64F07
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Mar 2021 22:23:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6ABA64F07
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=reZ2IjQosArNymBZHtAoj67fRrFTk20EIwIJTVblIgU=; b=a+WGRyj3CDZ4kPRVVT2lHXqz1
-	P/8MQ6/n4y3XosXMyGQV1rfG9l0SfHc9d824RloWKPZ3EBPWbRH1ufvoEd4tvX/o4c1EBKUjnaW2o
-	a0TIkpQlN/FQEVyblbV+ZHnWIyKFwabVCy5x4JcZM7yM1zwaZypL7Bvh9UPPLFEpFLtDNYID+6kHI
-	DYqitjWtIMyPu/yB1DRrkhSYgXrU7cqWAC+3VUewn3h3Pjkybp4rAN4UPVwy1qgzHedSbpzAgZr8w
-	ZTOSWYjBVzudapGntMefU4yngw7nktyC9qKGjoXAJURK9ryEuZ1DfKSFgytDC4uxkRPEsBl59tkQ9
-	HKhCJG/rg==;
+	 bh=3JDILameKMkRa5MxiAdahhxsarR6cCWE7AgyKUaq6P8=; b=F7OAQa7CJrd8IYVQMmE2VT8ns
+	t6lz6Rc+HHz2IZz9WF++2QR4Bu8vOmhJawBMcHAz1gKN5XSw1P92xJH+yffzbByvEaS9UnzgeJCYK
+	LMBXcLEwUHFFubK32+xKa4OKAydW5OXIU3JI0N9NGUzPQUGpeXxQTq+yu3Gi3ya/0a5YI1pwWxl8k
+	8FLw7jac4O4cu92Wt3FmRNwBRjihXe2Qk1ExVcI+d4irqhBWPPFo9bLDdTylYP11Z2ySD7yIZX5BD
+	IquMrPkOKh5v0RmUQETuQ0D4wGl5p3rmYQ5TQUp1P/z1J6AE6dAbZOZlyMd8YxL/P2Slg2C+g+ayy
+	I7HrQStIg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLvOB-00H0EH-KF; Mon, 15 Mar 2021 22:08:39 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1lLvbn-00H1Yb-FB; Mon, 15 Mar 2021 22:22:43 +0000
+Received: from z11.mailgun.us ([104.130.96.11])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLvO5-00H0DT-4O
- for linux-mediatek@lists.infradead.org; Mon, 15 Mar 2021 22:08:37 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id mj10so68892118ejb.5
- for <linux-mediatek@lists.infradead.org>; Mon, 15 Mar 2021 15:08:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=01OEFNmW7DlaFR5Z23kG9JY1zl6AKGs9WYVKu/CbR9c=;
- b=HN0kHC6OjxuI18t0WJ/Dv8AdpNKw7VAHhF8SQn4iDLEnB/4FGtKiOxUmlDjBnuO1Qb
- HJGSABR5YPR2gTWShcjtHEAkdQZ9fKUskNOLBLCemJT5wJrsxjK+KT18JChID+2IP8k3
- uyRR7+uyaantPpS/zzJ61LdPe4sQ89meMPdp9VILyt5cvr1wMw+i7d3FhIuPeldX1z67
- xnueglq8LbnrIt794KkcrUWZ8GXkx/i7lRhqnt9lgt++CvZJc+l8VgfQw093Cf6RBYK6
- Gcpz9/AfJbk6Ps/acQUiVo4igKDMq4w7z3CNHJZLDTONJzI0bzg7HmK++hwQyqTO2YQI
- laiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=01OEFNmW7DlaFR5Z23kG9JY1zl6AKGs9WYVKu/CbR9c=;
- b=ajji0OpMGlffAu9b0tfkP6TBCHEjKHtthCjFDg3tOaW0X9WD6Rq6ITUCugHp6yBPzv
- Zk/TwqvWEONFuX8zA7mJs0a0jejfXIvTkMav39ZXY7vtKdb6pQvOOmh95tfLzCTLQ8k6
- ikdr/DQEEqOLWa4JkI5DoPHRremU/4amMkz4zOBfSiBVrsIsQG0oUUvxH9RtYDxevUNV
- jJr7JtnOU90foleNeaFNTansXVOcUqIjAYvX9pGfisxbUpf/xwYtyS+MMiD4klVKOMZU
- x5zx1XAD5qhRJPr3IM3KehfrUpX/uXlmukQql5jXZbDvevhVqyaXneRYwILdWvfEBdup
- Abzw==
-X-Gm-Message-State: AOAM532yZnkBNMwugH/v5BKtCKfHYT+UXy3gOd7AXEI4a0DZ+/GtBYpO
- fKplJ/nanJwRqlR59WdTRvwXTj6jBYG7bhBiM1fKeg==
-X-Google-Smtp-Source: ABdhPJxH5OZHXJe8NtLth3a5Y1quOfKOWY3mQ6RqAePrt80HYAkV9RCOG8DJpi5fTHRI/ESOGseNi7/AkQKX1fYL9TE=
-X-Received: by 2002:a17:906:29c3:: with SMTP id
- y3mr25070380eje.430.1615846109365; 
- Mon, 15 Mar 2021 15:08:29 -0700 (PDT)
+ id 1lLvba-00H1X0-8f
+ for linux-mediatek@lists.infradead.org; Mon, 15 Mar 2021 22:22:41 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1615846949; h=Content-Transfer-Encoding: Content-Type:
+ In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
+ Subject: Sender; bh=/eTc1f8KRlT9esAEG1OWbWJsVv7TpznbM2XNZDL0FtA=;
+ b=ZWFKrXaX5zdQSyUqKgbc80tXdcFJ+ctiCnR+HIMKsSJNJmIUaTBaQSlBUGiEZbVh+518h7D4
+ 06foi4aJBxxM2W1ry6eebArYWfp2t0FhTurkvM5rMduOHTv+vYha/+Doy6h5kTxvfCoKRwWx
+ AieV2z+Lp48OgABBi95Q6WzKeEk=
+X-Mailgun-Sending-Ip: 104.130.96.11
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n07.prod.us-east-1.postgun.com with SMTP id
+ 604fde181de5dd7b99920d74 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 15 Mar 2021 22:22:16
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id C5890C43467; Mon, 15 Mar 2021 22:22:15 +0000 (UTC)
+Received: from [192.168.8.168] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: asutoshd)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 5F7D3C433C6;
+ Mon, 15 Mar 2021 22:22:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 5F7D3C433C6
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=asutoshd@codeaurora.org
+Subject: Re: [PATCH v10 1/2] scsi: ufs: Enable power management for wlun
+To: Adrian Hunter <adrian.hunter@intel.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Bart Van Assche <bvanassche@acm.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, cang@codeaurora.org,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "open list:TARGET SUBSYSTEM" <linux-scsi@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Bean Huo <beanhuo@micron.com>,
+ Lee Jones <lee.jones@linaro.org>, Wei Yongjun <weiyongjun1@huawei.com>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Tomas Winkler <tomas.winkler@intel.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Satya Tangirala <satyat@google.com>, open list
+ <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>,
+ Linux-PM mailing list <linux-pm@vger.kernel.org>
+References: <cover.1614725302.git.asutoshd@codeaurora.org>
+ <0576d6eae15486740c25767e2d8805f7e94eb79d.1614725302.git.asutoshd@codeaurora.org>
+ <85086647-7292-b0a2-d842-290818bd2858@intel.com>
+ <6e98724d-2e75-d1fe-188f-a7010f86c509@codeaurora.org>
+ <20210306161616.GC74411@rowland.harvard.edu>
+ <CAJZ5v0ihJe8rNjWRwNic_BQUvKbALNcjx8iiPAh5nxLhOV9duw@mail.gmail.com>
+ <CAJZ5v0iJ4yqRTt=mTCC930HULNFNTgvO4f9ToVO6pNz53kxFkw@mail.gmail.com>
+ <f1e9b21d-1722-d20b-4bae-df7e6ce50bbc@codeaurora.org>
+ <2bd90336-18a9-9acd-5abb-5b52b27fc535@codeaurora.org>
+ <b13086f3-eea1-51a7-2117-579d520f21fc@intel.com>
+From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
+Message-ID: <20cbd52d-7254-3e1c-06a3-712326c99f75@codeaurora.org>
+Date: Mon, 15 Mar 2021 15:22:09 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-References: <20210226100148.1663389-1-acourbot@chromium.org>
- <20210226100148.1663389-7-acourbot@chromium.org>
- <CAAEAJfBRoOgT9waWjfK7uxFF+QCO+Cv0H22Z4V1p86G1wTt_Hw@mail.gmail.com>
- <CAPBb6MWrbzQMuNNYgjwcEg4_oapMHtjDvAtKkTtAvDqr3AVO9w@mail.gmail.com>
-In-Reply-To: <CAPBb6MWrbzQMuNNYgjwcEg4_oapMHtjDvAtKkTtAvDqr3AVO9w@mail.gmail.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Mon, 15 Mar 2021 19:08:17 -0300
-Message-ID: <CAAEAJfAOWzswYCwGfwAKQ91_xYAoWPPhDSMAqQ9L17RJPizXpw@mail.gmail.com>
-Subject: Re: [PATCH v3 06/15] media: mtk-vcodec: vdec: support stateless H.264
- decoding
-To: Alexandre Courbot <acourbot@chromium.org>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- linux-media <linux-media@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+In-Reply-To: <b13086f3-eea1-51a7-2117-579d520f21fc@intel.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_220833_822803_4E3798E1 
-X-CRM114-Status: GOOD (  38.04  )
+X-CRM114-CacheID: sfid-20210315_222239_535170_3F7175E6 
+X-CRM114-Status: GOOD (  31.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,934 +124,228 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
-
-On Mon, 15 Mar 2021 at 08:28, Alexandre Courbot <acourbot@chromium.org> wrote:
->
-> Hi Ezequiel,
->
-> On Thu, Mar 4, 2021 at 6:47 AM Ezequiel Garcia
-> <ezequiel@vanguardiasur.com.ar> wrote:
-> >
-> >  Hi Alex,
-> >
-> > Thanks for the patch.
-> >
-> > On Fri, 26 Feb 2021 at 07:06, Alexandre Courbot <acourbot@chromium.org> wrote:
-> > >
-> > > From: Yunfei Dong <yunfei.dong@mediatek.com>
-> > >
-> > > Add support for H.264 decoding using the stateless API, as supported by
-> > > MT8183. This support takes advantage of the V4L2 H.264 reference list
-> > > builders.
-> > >
-> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > [acourbot: refactor, cleanup and split]
-> > > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
-> > > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> > > ---
-> > >  drivers/media/platform/Kconfig                |   1 +
-> > >  drivers/media/platform/mtk-vcodec/Makefile    |   1 +
-> > >  .../mtk-vcodec/vdec/vdec_h264_req_if.c        | 807 ++++++++++++++++++
-> > >  .../media/platform/mtk-vcodec/vdec_drv_if.c   |   3 +
-> > >  .../media/platform/mtk-vcodec/vdec_drv_if.h   |   1 +
-> > >  5 files changed, 813 insertions(+)
-> > >  create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> > >
-> > > diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-> > > index fd1831e97b22..c27db5643712 100644
-> > > --- a/drivers/media/platform/Kconfig
-> > > +++ b/drivers/media/platform/Kconfig
-> > > @@ -295,6 +295,7 @@ config VIDEO_MEDIATEK_VCODEC
-> > >         select V4L2_MEM2MEM_DEV
-> > >         select VIDEO_MEDIATEK_VCODEC_VPU if VIDEO_MEDIATEK_VPU
-> > >         select VIDEO_MEDIATEK_VCODEC_SCP if MTK_SCP
-> > > +       select V4L2_H264
-> > >         help
-> > >           Mediatek video codec driver provides HW capability to
-> > >           encode and decode in a range of video formats on MT8173
-> > > diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
-> > > index 4ba93d838ab6..ca8e9e7a9c4e 100644
-> > > --- a/drivers/media/platform/mtk-vcodec/Makefile
-> > > +++ b/drivers/media/platform/mtk-vcodec/Makefile
-> > > @@ -7,6 +7,7 @@ obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dec.o \
-> > >  mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
-> > >                 vdec/vdec_vp8_if.o \
-> > >                 vdec/vdec_vp9_if.o \
-> > > +               vdec/vdec_h264_req_if.o \
-> > >                 mtk_vcodec_dec_drv.o \
-> > >                 vdec_drv_if.o \
-> > >                 vdec_vpu_if.o \
-> > > diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> > > new file mode 100644
-> > > index 000000000000..2fbbfbbcfbec
-> > > --- /dev/null
-> > > +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> > > @@ -0,0 +1,807 @@
-> > > +// SPDX-License-Identifier: GPL-2.0
-> > > +
-> > > +#include <linux/module.h>
-> > > +#include <linux/slab.h>
-> > > +#include <media/v4l2-mem2mem.h>
-> > > +#include <media/v4l2-h264.h>
-> > > +#include <media/videobuf2-dma-contig.h>
-> > > +
-> > > +#include "../vdec_drv_if.h"
-> > > +#include "../mtk_vcodec_util.h"
-> > > +#include "../mtk_vcodec_dec.h"
-> > > +#include "../mtk_vcodec_intr.h"
-> > > +#include "../vdec_vpu_if.h"
-> > > +#include "../vdec_drv_base.h"
-> > > +
-> > > +#define NAL_NON_IDR_SLICE                      0x01
-> > > +#define NAL_IDR_SLICE                          0x05
-> > > +#define NAL_H264_PPS                           0x08
-> >
-> > Not used?
-> >
-> > > +#define NAL_TYPE(value)                                ((value) & 0x1F)
-> > > +
-> >
-> > I believe you may not need the NAL type.
->
-> True, removed this block of defines.
->
-> >
-> > > +#define BUF_PREDICTION_SZ                      (64 * 4096)
-> > > +#define MB_UNIT_LEN                            16
-> > > +
-> > > +/* get used parameters for sps/pps */
-> > > +#define GET_MTK_VDEC_FLAG(cond, flag) \
-> > > +       { dst_param->cond = ((src_param->flags & flag) ? (1) : (0)); }
-> > > +#define GET_MTK_VDEC_PARAM(param) \
-> > > +       { dst_param->param = src_param->param; }
-> > > +/* motion vector size (bytes) for every macro block */
-> > > +#define HW_MB_STORE_SZ                         64
-> > > +
-> > > +#define H264_MAX_FB_NUM                                17
-> > > +#define H264_MAX_MV_NUM                                32
-> > > +#define HDR_PARSING_BUF_SZ                     1024
-> > > +
-> > > +/**
-> > > + * struct mtk_h264_dpb_info  - h264 dpb information
-> > > + * @y_dma_addr: Y bitstream physical address
-> > > + * @c_dma_addr: CbCr bitstream physical address
-> > > + * @reference_flag: reference picture flag (short/long term reference picture)
-> > > + * @field: field picture flag
-> > > + */
-> > > +struct mtk_h264_dpb_info {
-> > > +       dma_addr_t y_dma_addr;
-> > > +       dma_addr_t c_dma_addr;
-> > > +       int reference_flag;
-> > > +       int field;
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct mtk_h264_sps_param  - parameters for sps
-> > > + */
-> > > +struct mtk_h264_sps_param {
-> > > +       unsigned char chroma_format_idc;
-> > > +       unsigned char bit_depth_luma_minus8;
-> > > +       unsigned char bit_depth_chroma_minus8;
-> > > +       unsigned char log2_max_frame_num_minus4;
-> > > +       unsigned char pic_order_cnt_type;
-> > > +       unsigned char log2_max_pic_order_cnt_lsb_minus4;
-> > > +       unsigned char max_num_ref_frames;
-> > > +       unsigned char separate_colour_plane_flag;
-> > > +       unsigned short pic_width_in_mbs_minus1;
-> > > +       unsigned short pic_height_in_map_units_minus1;
-> > > +       unsigned int max_frame_nums;
-> > > +       unsigned char qpprime_y_zero_transform_bypass_flag;
-> > > +       unsigned char delta_pic_order_always_zero_flag;
-> > > +       unsigned char frame_mbs_only_flag;
-> > > +       unsigned char mb_adaptive_frame_field_flag;
-> > > +       unsigned char direct_8x8_inference_flag;
-> > > +       unsigned char reserved[3];
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct mtk_h264_pps_param  - parameters for pps
-> > > + */
-> > > +struct mtk_h264_pps_param {
-> > > +       unsigned char num_ref_idx_l0_default_active_minus1;
-> > > +       unsigned char num_ref_idx_l1_default_active_minus1;
-> > > +       unsigned char weighted_bipred_idc;
-> > > +       char pic_init_qp_minus26;
-> > > +       char chroma_qp_index_offset;
-> > > +       char second_chroma_qp_index_offset;
-> > > +       unsigned char entropy_coding_mode_flag;
-> > > +       unsigned char pic_order_present_flag;
-> > > +       unsigned char deblocking_filter_control_present_flag;
-> > > +       unsigned char constrained_intra_pred_flag;
-> > > +       unsigned char weighted_pred_flag;
-> > > +       unsigned char redundant_pic_cnt_present_flag;
-> > > +       unsigned char transform_8x8_mode_flag;
-> > > +       unsigned char scaling_matrix_present_flag;
-> > > +       unsigned char reserved[2];
-> > > +};
-> > > +
-> > > +struct slice_api_h264_scaling_matrix {
-> >
-> > Equal to v4l2_ctrl_h264_scaling_matrix ?
-> > Well I guess you don't want to mix a hardware-specific
-> > thing with the V4L2 API maybe.
->
-> That's the idea. Although the layout match and the ABI is now stable,
-> I think this communicates better the fact that this is a firmware
-> structure.
->
-> >
-> > > +       unsigned char scaling_list_4x4[6][16];
-> > > +       unsigned char scaling_list_8x8[6][64];
-> > > +};
-> > > +
-> > > +struct slice_h264_dpb_entry {
-> > > +       unsigned long long reference_ts;
-> > > +       unsigned short frame_num;
-> > > +       unsigned short pic_num;
-> > > +       /* Note that field is indicated by v4l2_buffer.field */
-> > > +       int top_field_order_cnt;
-> > > +       int bottom_field_order_cnt;
-> > > +       unsigned int flags; /* V4L2_H264_DPB_ENTRY_FLAG_* */
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct slice_api_h264_decode_param - parameters for decode.
-> > > + */
-> > > +struct slice_api_h264_decode_param {
-> > > +       struct slice_h264_dpb_entry dpb[16];
-> >
-> > V4L2_H264_NUM_DPB_ENTRIES?
->
-> For the same reason as above (this being a firmware structure), I
-> think it is clearer to not use the kernel definitions here.
->
-> >
-> > > +       unsigned short num_slices;
-> > > +       unsigned short nal_ref_idc;
-> > > +       unsigned char ref_pic_list_p0[32];
-> > > +       unsigned char ref_pic_list_b0[32];
-> > > +       unsigned char ref_pic_list_b1[32];
-> >
-> > V4L2_H264_REF_LIST_LEN?
->
-> Ditto.
->
-> >
-> > > +       int top_field_order_cnt;
-> > > +       int bottom_field_order_cnt;
-> > > +       unsigned int flags; /* V4L2_H264_DECODE_PARAM_FLAG_* */
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct mtk_h264_dec_slice_param  - parameters for decode current frame
-> > > + */
-> > > +struct mtk_h264_dec_slice_param {
-> > > +       struct mtk_h264_sps_param                       sps;
-> > > +       struct mtk_h264_pps_param                       pps;
-> > > +       struct slice_api_h264_scaling_matrix            scaling_matrix;
-> > > +       struct slice_api_h264_decode_param              decode_params;
-> > > +       struct mtk_h264_dpb_info h264_dpb_info[16];
-> >
-> > V4L2_H264_NUM_DPB_ENTRIES?
->
-> Ditto.
->
-> >
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct h264_fb - h264 decode frame buffer information
-> > > + * @vdec_fb_va  : virtual address of struct vdec_fb
-> > > + * @y_fb_dma    : dma address of Y frame buffer (luma)
-> > > + * @c_fb_dma    : dma address of C frame buffer (chroma)
-> > > + * @poc         : picture order count of frame buffer
-> > > + * @reserved    : for 8 bytes alignment
-> > > + */
-> > > +struct h264_fb {
-> > > +       uint64_t vdec_fb_va;
-> > > +       uint64_t y_fb_dma;
-> > > +       uint64_t c_fb_dma;
-> > > +       int32_t poc;
-> > > +       uint32_t reserved;
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct vdec_h264_dec_info - decode information
-> > > + * @dpb_sz             : decoding picture buffer size
-> > > + * @resolution_changed  : resoltion change happen
-> > > + * @realloc_mv_buf     : flag to notify driver to re-allocate mv buffer
-> > > + * @cap_num_planes     : number planes of capture buffer
-> > > + * @bs_dma             : Input bit-stream buffer dma address
-> > > + * @y_fb_dma           : Y frame buffer dma address
-> > > + * @c_fb_dma           : C frame buffer dma address
-> > > + * @vdec_fb_va         : VDEC frame buffer struct virtual address
-> > > + */
-> > > +struct vdec_h264_dec_info {
-> > > +       uint32_t dpb_sz;
-> > > +       uint32_t resolution_changed;
-> > > +       uint32_t realloc_mv_buf;
-> > > +       uint32_t cap_num_planes;
-> > > +       uint64_t bs_dma;
-> > > +       uint64_t y_fb_dma;
-> > > +       uint64_t c_fb_dma;
-> > > +       uint64_t vdec_fb_va;
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct vdec_h264_vsi - shared memory for decode information exchange
-> > > + *                        between VPU and Host.
-> > > + *                        The memory is allocated by VPU then mapping to Host
-> > > + *                        in vpu_dec_init() and freed in vpu_dec_deinit()
-> > > + *                        by VPU.
-> > > + *                        AP-W/R : AP is writer/reader on this item
-> > > + *                        VPU-W/R: VPU is write/reader on this item
-> > > + * @pred_buf_dma : HW working predication buffer dma address (AP-W, VPU-R)
-> > > + * @mv_buf_dma   : HW working motion vector buffer dma address (AP-W, VPU-R)
-> > > + * @dec          : decode information (AP-R, VPU-W)
-> > > + * @pic          : picture information (AP-R, VPU-W)
-> > > + * @crop         : crop information (AP-R, VPU-W)
-> > > + */
-> > > +struct vdec_h264_vsi {
-> > > +       uint64_t pred_buf_dma;
-> > > +       uint64_t mv_buf_dma[H264_MAX_MV_NUM];
-> > > +       struct vdec_h264_dec_info dec;
-> > > +       struct vdec_pic_info pic;
-> > > +       struct v4l2_rect crop;
-> > > +       struct mtk_h264_dec_slice_param h264_slice_params;
-> > > +};
-> > > +
-> > > +/**
-> > > + * struct vdec_h264_slice_inst - h264 decoder instance
-> > > + * @num_nalu : how many nalus be decoded
-> > > + * @ctx      : point to mtk_vcodec_ctx
-> > > + * @pred_buf : HW working predication buffer
-> > > + * @mv_buf   : HW working motion vector buffer
-> > > + * @vpu      : VPU instance
-> > > + * @vsi_ctx  : Local VSI data for this decoding context
-> > > + */
-> > > +struct vdec_h264_slice_inst {
-> > > +       unsigned int num_nalu;
-> > > +       struct mtk_vcodec_ctx *ctx;
-> > > +       struct mtk_vcodec_mem pred_buf;
-> > > +       struct mtk_vcodec_mem mv_buf[H264_MAX_MV_NUM];
-> > > +       struct vdec_vpu_inst vpu;
-> > > +       struct vdec_h264_vsi vsi_ctx;
-> > > +       struct mtk_h264_dec_slice_param h264_slice_param;
-> > > +
-> > > +       struct v4l2_h264_dpb_entry dpb[16];
-> > > +};
-> > > +
-> > > +static void *get_ctrl_ptr(struct mtk_vcodec_ctx *ctx,
-> > > +                                int id)
-> > > +{
-> > > +       struct v4l2_ctrl *ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl, id);
-> > > +
-> > > +       return ctrl->p_cur.p;
-> > > +}
-> > > +
-> > > +static void get_h264_dpb_list(struct vdec_h264_slice_inst *inst,
-> > > +                             struct mtk_h264_dec_slice_param *slice_param)
-> > > +{
-> > > +       struct vb2_queue *vq;
-> > > +       struct vb2_buffer *vb;
-> > > +       struct vb2_v4l2_buffer *vb2_v4l2;
-> > > +       u64 index;
-> > > +
-> > > +       vq = v4l2_m2m_get_vq(inst->ctx->m2m_ctx,
-> > > +               V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> > > +
-> > > +       for (index = 0; index < 16; index++) {
-> >
-> > Ditto, some macro instead of 16.
->
-> Changed this to use ARRAY_SIZE() which is appropriate here.
->
-> >
-> > > +               const struct slice_h264_dpb_entry *dpb;
-> > > +               int vb2_index;
-> > > +
-> > > +               dpb = &slice_param->decode_params.dpb[index];
-> > > +               if (!(dpb->flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)) {
-> > > +                       slice_param->h264_dpb_info[index].reference_flag = 0;
-> > > +                       continue;
-> > > +               }
-> > > +
-> > > +               vb2_index = vb2_find_timestamp(vq, dpb->reference_ts, 0);
-> > > +               if (vb2_index < 0) {
-> > > +                       mtk_vcodec_err(inst, "Reference invalid: dpb_index(%lld) reference_ts(%lld)",
-> > > +                               index, dpb->reference_ts);
-> > > +                       continue;
-> > > +               }
-> > > +               /* 1 for short term reference, 2 for long term reference */
-> > > +               if (!(dpb->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
-> > > +                       slice_param->h264_dpb_info[index].reference_flag = 1;
-> > > +               else
-> > > +                       slice_param->h264_dpb_info[index].reference_flag = 2;
-> > > +
-> > > +               vb = vq->bufs[vb2_index];
-> > > +               vb2_v4l2 = container_of(vb, struct vb2_v4l2_buffer, vb2_buf);
-> > > +               slice_param->h264_dpb_info[index].field = vb2_v4l2->field;
-> > > +
-> > > +               slice_param->h264_dpb_info[index].y_dma_addr =
-> > > +                       vb2_dma_contig_plane_dma_addr(vb, 0);
-> > > +               if (inst->ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2) {
-> > > +                       slice_param->h264_dpb_info[index].c_dma_addr =
-> > > +                               vb2_dma_contig_plane_dma_addr(vb, 1);
-> > > +               }
-> > > +       }
-> > > +}
-> > > +
-> > > +static void get_h264_sps_parameters(struct mtk_h264_sps_param *dst_param,
-> > > +       const struct v4l2_ctrl_h264_sps *src_param)
-> > > +{
-> > > +       GET_MTK_VDEC_PARAM(chroma_format_idc);
-> > > +       GET_MTK_VDEC_PARAM(bit_depth_luma_minus8);
-> > > +       GET_MTK_VDEC_PARAM(bit_depth_chroma_minus8);
-> > > +       GET_MTK_VDEC_PARAM(log2_max_frame_num_minus4);
-> > > +       GET_MTK_VDEC_PARAM(pic_order_cnt_type);
-> > > +       GET_MTK_VDEC_PARAM(log2_max_pic_order_cnt_lsb_minus4);
-> > > +       GET_MTK_VDEC_PARAM(max_num_ref_frames);
-> > > +       GET_MTK_VDEC_PARAM(pic_width_in_mbs_minus1);
-> > > +       GET_MTK_VDEC_PARAM(pic_height_in_map_units_minus1);
-> > > +
-> > > +       GET_MTK_VDEC_FLAG(separate_colour_plane_flag,
-> > > +               V4L2_H264_SPS_FLAG_SEPARATE_COLOUR_PLANE);
-> > > +       GET_MTK_VDEC_FLAG(qpprime_y_zero_transform_bypass_flag,
-> > > +               V4L2_H264_SPS_FLAG_QPPRIME_Y_ZERO_TRANSFORM_BYPASS);
-> > > +       GET_MTK_VDEC_FLAG(delta_pic_order_always_zero_flag,
-> > > +               V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO);
-> > > +       GET_MTK_VDEC_FLAG(frame_mbs_only_flag,
-> > > +               V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY);
-> > > +       GET_MTK_VDEC_FLAG(mb_adaptive_frame_field_flag,
-> > > +               V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD);
-> > > +       GET_MTK_VDEC_FLAG(direct_8x8_inference_flag,
-> > > +               V4L2_H264_SPS_FLAG_DIRECT_8X8_INFERENCE);
-> > > +}
-> > > +
-> > > +static void get_h264_pps_parameters(struct mtk_h264_pps_param *dst_param,
-> > > +       const struct v4l2_ctrl_h264_pps *src_param)
-> > > +{
-> > > +       GET_MTK_VDEC_PARAM(num_ref_idx_l0_default_active_minus1);
-> > > +       GET_MTK_VDEC_PARAM(num_ref_idx_l1_default_active_minus1);
-> > > +       GET_MTK_VDEC_PARAM(weighted_bipred_idc);
-> > > +       GET_MTK_VDEC_PARAM(pic_init_qp_minus26);
-> > > +       GET_MTK_VDEC_PARAM(chroma_qp_index_offset);
-> > > +       GET_MTK_VDEC_PARAM(second_chroma_qp_index_offset);
-> > > +
-> > > +       GET_MTK_VDEC_FLAG(entropy_coding_mode_flag,
-> > > +               V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE);
-> > > +       GET_MTK_VDEC_FLAG(pic_order_present_flag,
-> > > +               V4L2_H264_PPS_FLAG_BOTTOM_FIELD_PIC_ORDER_IN_FRAME_PRESENT);
-> > > +       GET_MTK_VDEC_FLAG(weighted_pred_flag,
-> > > +               V4L2_H264_PPS_FLAG_WEIGHTED_PRED);
-> > > +       GET_MTK_VDEC_FLAG(deblocking_filter_control_present_flag,
-> > > +               V4L2_H264_PPS_FLAG_DEBLOCKING_FILTER_CONTROL_PRESENT);
-> > > +       GET_MTK_VDEC_FLAG(constrained_intra_pred_flag,
-> > > +               V4L2_H264_PPS_FLAG_CONSTRAINED_INTRA_PRED);
-> > > +       GET_MTK_VDEC_FLAG(redundant_pic_cnt_present_flag,
-> > > +               V4L2_H264_PPS_FLAG_REDUNDANT_PIC_CNT_PRESENT);
-> > > +       GET_MTK_VDEC_FLAG(transform_8x8_mode_flag,
-> > > +               V4L2_H264_PPS_FLAG_TRANSFORM_8X8_MODE);
-> > > +       GET_MTK_VDEC_FLAG(scaling_matrix_present_flag,
-> > > +               V4L2_H264_PPS_FLAG_SCALING_MATRIX_PRESENT);
-> > > +}
-> > > +
-> > > +static void
-> > > +get_h264_scaling_matrix(struct slice_api_h264_scaling_matrix *dst_matrix,
-> > > +                       const struct v4l2_ctrl_h264_scaling_matrix *src_matrix)
-> > > +{
-> > > +       memcpy(dst_matrix->scaling_list_4x4, src_matrix->scaling_list_4x4,
-> > > +              sizeof(dst_matrix->scaling_list_4x4));
-> > > +
-> > > +       memcpy(dst_matrix->scaling_list_8x8, src_matrix->scaling_list_8x8,
-> > > +              sizeof(dst_matrix->scaling_list_8x8));
-> > > +}
-> > > +
-> > > +static void get_h264_decode_parameters(
-> > > +       struct slice_api_h264_decode_param *dst_params,
-> > > +       const struct v4l2_ctrl_h264_decode_params *src_params,
-> > > +       const struct v4l2_h264_dpb_entry dpb[V4L2_H264_NUM_DPB_ENTRIES])
-> > > +{
-> > > +       int i;
-> > > +
-> > > +       for (i = 0; i < ARRAY_SIZE(dst_params->dpb); i++) {
-> > > +               struct slice_h264_dpb_entry *dst_entry = &dst_params->dpb[i];
-> > > +               const struct v4l2_h264_dpb_entry *src_entry = &dpb[i];
-> > > +
-> > > +               dst_entry->reference_ts = src_entry->reference_ts;
-> > > +               dst_entry->frame_num = src_entry->frame_num;
-> > > +               dst_entry->pic_num = src_entry->pic_num;
-> > > +               dst_entry->top_field_order_cnt = src_entry->top_field_order_cnt;
-> > > +               dst_entry->bottom_field_order_cnt =
-> > > +                       src_entry->bottom_field_order_cnt;
-> > > +               dst_entry->flags = src_entry->flags;
-> > > +       }
-> > > +
-> > > +       // num_slices is a leftover from the old H.264 support and is ignored
-> > > +       // by the firmware.
-> > > +       dst_params->num_slices = 0;
-> > > +       dst_params->nal_ref_idc = src_params->nal_ref_idc;
-> > > +       dst_params->top_field_order_cnt = src_params->top_field_order_cnt;
-> > > +       dst_params->bottom_field_order_cnt = src_params->bottom_field_order_cnt;
-> > > +       dst_params->flags = src_params->flags;
-> > > +}
-> > > +
-> > > +static bool dpb_entry_match(const struct v4l2_h264_dpb_entry *a,
-> > > +                           const struct v4l2_h264_dpb_entry *b)
-> > > +{
-> > > +       return a->top_field_order_cnt == b->top_field_order_cnt &&
-> > > +              a->bottom_field_order_cnt == b->bottom_field_order_cnt;
-> > > +}
-> > > +
-> > > +/*
-> > > + * Move DPB entries of dec_param that refer to a frame already existing in dpb
-> > > + * into the already existing slot in dpb, and move other entries into new slots.
-> > > + *
-> > > + * This function is an adaptation of the similarly-named function in
-> > > + * hantro_h264.c.
-> > > + */
-> > > +static void update_dpb(const struct v4l2_ctrl_h264_decode_params *dec_param,
-> > > +                      struct v4l2_h264_dpb_entry *dpb)
-> > > +{
-> > > +       DECLARE_BITMAP(new, ARRAY_SIZE(dec_param->dpb)) = { 0, };
-> > > +       DECLARE_BITMAP(in_use, ARRAY_SIZE(dec_param->dpb)) = { 0, };
-> > > +       DECLARE_BITMAP(used, ARRAY_SIZE(dec_param->dpb)) = { 0, };
-> > > +       unsigned int i, j;
-> > > +
-> > > +       /* Disable all entries by default, and mark the ones in use. */
-> > > +       for (i = 0; i < ARRAY_SIZE(dec_param->dpb); i++) {
-> > > +               if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
-> > > +                       set_bit(i, in_use);
-> > > +               dpb[i].flags &= ~V4L2_H264_DPB_ENTRY_FLAG_ACTIVE;
-> > > +       }
-> > > +
-> > > +       /* Try to match new DPB entries with existing ones by their POCs. */
-> > > +       for (i = 0; i < ARRAY_SIZE(dec_param->dpb); i++) {
-> > > +               const struct v4l2_h264_dpb_entry *ndpb = &dec_param->dpb[i];
-> > > +
-> > > +               if (!(ndpb->flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
-> > > +                       continue;
-> > > +
-> > > +               /*
-> > > +                * To cut off some comparisons, iterate only on target DPB
-> > > +                * entries were already used.
-> > > +                */
-> > > +               for_each_set_bit(j, in_use, ARRAY_SIZE(dec_param->dpb)) {
-> > > +                       struct v4l2_h264_dpb_entry *cdpb;
-> > > +
-> > > +                       cdpb = &dpb[j];
-> > > +                       if (!dpb_entry_match(cdpb, ndpb))
-> > > +                               continue;
-> > > +
-> > > +                       *cdpb = *ndpb;
-> > > +                       set_bit(j, used);
-> > > +                       /* Don't reiterate on this one. */
-> > > +                       clear_bit(j, in_use);
-> > > +                       break;
-> > > +               }
-> > > +
-> > > +               if (j == ARRAY_SIZE(dec_param->dpb))
-> > > +                       set_bit(i, new);
-> > > +       }
-> > > +
-> > > +       /* For entries that could not be matched, use remaining free slots. */
-> > > +       for_each_set_bit(i, new, ARRAY_SIZE(dec_param->dpb)) {
-> > > +               const struct v4l2_h264_dpb_entry *ndpb = &dec_param->dpb[i];
-> > > +               struct v4l2_h264_dpb_entry *cdpb;
-> > > +
-> > > +               /*
-> > > +                * Both arrays are of the same sizes, so there is no way
-> > > +                * we can end up with no space in target array, unless
-> > > +                * something is buggy.
-> > > +                */
-> > > +               j = find_first_zero_bit(used, ARRAY_SIZE(dec_param->dpb));
-> > > +               if (WARN_ON(j >= ARRAY_SIZE(dec_param->dpb)))
-> > > +                       return;
-> > > +
-> > > +               cdpb = &dpb[j];
-> > > +               *cdpb = *ndpb;
-> > > +               set_bit(j, used);
-> > > +       }
-> > > +}
-> > > +
-> > > +/*
-> > > + * The firmware expects unused reflist entries to have the value 0x20.
-> > > + */
-> > > +static void fixup_ref_list(u8 *ref_list, size_t num_valid)
-> > > +{
-> > > +       memset(&ref_list[num_valid], 0x20, 32 - num_valid);
-> > > +}
-> > > +
-> > > +static void get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
-> > > +{
-> > > +       const struct v4l2_ctrl_h264_decode_params *dec_params =
-> > > +               get_ctrl_ptr(inst->ctx, V4L2_CID_STATELESS_H264_DECODE_PARAMS);
-> > > +       const struct v4l2_ctrl_h264_sps *sps =
-> > > +               get_ctrl_ptr(inst->ctx, V4L2_CID_STATELESS_H264_SPS);
-> > > +       const struct v4l2_ctrl_h264_pps *pps =
-> > > +               get_ctrl_ptr(inst->ctx, V4L2_CID_STATELESS_H264_PPS);
-> > > +       const struct v4l2_ctrl_h264_scaling_matrix *scaling_matrix =
-> > > +               get_ctrl_ptr(inst->ctx, V4L2_CID_STATELESS_H264_SCALING_MATRIX);
-> > > +       struct mtk_h264_dec_slice_param *slice_param = &inst->h264_slice_param;
-> > > +       struct v4l2_h264_reflist_builder reflist_builder;
-> > > +       enum v4l2_field dpb_fields[V4L2_H264_NUM_DPB_ENTRIES];
-> > > +       u8 *p0_reflist = slice_param->decode_params.ref_pic_list_p0;
-> > > +       u8 *b0_reflist = slice_param->decode_params.ref_pic_list_b0;
-> > > +       u8 *b1_reflist = slice_param->decode_params.ref_pic_list_b1;
-> > > +       int i;
-> > > +
-> > > +       update_dpb(dec_params, inst->dpb);
-> > > +
-> > > +       get_h264_sps_parameters(&slice_param->sps, sps);
-> > > +       get_h264_pps_parameters(&slice_param->pps, pps);
-> > > +       get_h264_scaling_matrix(&slice_param->scaling_matrix, scaling_matrix);
-> > > +       get_h264_decode_parameters(&slice_param->decode_params, dec_params,
-> > > +                                  inst->dpb);
-> > > +       get_h264_dpb_list(inst, slice_param);
-> > > +
-> > > +       /* Prepare the fields for our reference lists */
-> > > +       for (i = 0; i < V4L2_H264_NUM_DPB_ENTRIES; i++)
-> > > +               dpb_fields[i] = slice_param->h264_dpb_info[i].field;
-> > > +       /* Build the reference lists */
-> > > +       v4l2_h264_init_reflist_builder(&reflist_builder, dec_params, sps,
-> > > +                                      inst->dpb);
-> > > +       v4l2_h264_build_p_ref_list(&reflist_builder, p0_reflist);
-> > > +       v4l2_h264_build_b_ref_lists(&reflist_builder, b0_reflist, b1_reflist);
-> > > +       /* Adapt the built lists to the firmware's expectations */
-> > > +       fixup_ref_list(p0_reflist, reflist_builder.num_valid);
-> > > +       fixup_ref_list(b0_reflist, reflist_builder.num_valid);
-> > > +       fixup_ref_list(b1_reflist, reflist_builder.num_valid);
-> > > +
-> > > +       memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
-> > > +              sizeof(inst->vsi_ctx.h264_slice_params));
-> > > +}
-> > > +
-> > > +static unsigned int get_mv_buf_size(unsigned int width, unsigned int height)
-> > > +{
-> > > +       int unit_size = (width / MB_UNIT_LEN) * (height / MB_UNIT_LEN) + 8;
-> > > +
-> > > +       return HW_MB_STORE_SZ * unit_size;
-> > > +}
-> > > +
-> > > +static int allocate_predication_buf(struct vdec_h264_slice_inst *inst)
-> > > +{
-> > > +       int err = 0;
-> > > +
-> > > +       inst->pred_buf.size = BUF_PREDICTION_SZ;
-> > > +       err = mtk_vcodec_mem_alloc(inst->ctx, &inst->pred_buf);
-> > > +       if (err) {
-> > > +               mtk_vcodec_err(inst, "failed to allocate ppl buf");
-> > > +               return err;
-> > > +       }
-> > > +
-> > > +       inst->vsi_ctx.pred_buf_dma = inst->pred_buf.dma_addr;
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static void free_predication_buf(struct vdec_h264_slice_inst *inst)
-> > > +{
-> > > +       struct mtk_vcodec_mem *mem = NULL;
-> > > +
-> > > +       mtk_vcodec_debug_enter(inst);
-> > > +
-> > > +       inst->vsi_ctx.pred_buf_dma = 0;
-> > > +       mem = &inst->pred_buf;
-> > > +       if (mem->va)
-> > > +               mtk_vcodec_mem_free(inst->ctx, mem);
-> > > +}
-> > > +
-> > > +static int alloc_mv_buf(struct vdec_h264_slice_inst *inst,
-> > > +       struct vdec_pic_info *pic)
-> > > +{
-> > > +       int i;
-> > > +       int err;
-> > > +       struct mtk_vcodec_mem *mem = NULL;
-> > > +       unsigned int buf_sz = get_mv_buf_size(pic->buf_w, pic->buf_h);
-> > > +
-> > > +       mtk_v4l2_debug(3, "size = 0x%lx", buf_sz);
-> > > +       for (i = 0; i < H264_MAX_MV_NUM; i++) {
-> > > +               mem = &inst->mv_buf[i];
-> > > +               if (mem->va)
-> > > +                       mtk_vcodec_mem_free(inst->ctx, mem);
-> > > +               mem->size = buf_sz;
-> > > +               err = mtk_vcodec_mem_alloc(inst->ctx, mem);
-> > > +               if (err) {
-> > > +                       mtk_vcodec_err(inst, "failed to allocate mv buf");
-> > > +                       return err;
-> > > +               }
-> > > +               inst->vsi_ctx.mv_buf_dma[i] = mem->dma_addr;
-> > > +       }
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static void free_mv_buf(struct vdec_h264_slice_inst *inst)
-> > > +{
-> > > +       int i;
-> > > +       struct mtk_vcodec_mem *mem = NULL;
-> > > +
-> > > +       for (i = 0; i < H264_MAX_MV_NUM; i++) {
-> > > +               inst->vsi_ctx.mv_buf_dma[i] = 0;
-> > > +               mem = &inst->mv_buf[i];
-> > > +               if (mem->va)
-> > > +                       mtk_vcodec_mem_free(inst->ctx, mem);
-> > > +       }
-> > > +}
-> > > +
-> > > +static void get_pic_info(struct vdec_h264_slice_inst *inst,
-> > > +                        struct vdec_pic_info *pic)
-> > > +{
-> > > +       struct mtk_vcodec_ctx *ctx = inst->ctx;
-> > > +
-> > > +       ctx->picinfo.buf_w = (ctx->picinfo.pic_w + 15) & 0xFFFFFFF0;
-> > > +       ctx->picinfo.buf_h = (ctx->picinfo.pic_h + 31) & 0xFFFFFFE0;
-> > > +       ctx->picinfo.fb_sz[0] = ctx->picinfo.buf_w * ctx->picinfo.buf_h;
-> > > +       ctx->picinfo.fb_sz[1] = ctx->picinfo.fb_sz[0] >> 1;
-> > > +       inst->vsi_ctx.dec.cap_num_planes =
-> > > +               ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes;
-> > > +
-> > > +       pic = &ctx->picinfo;
-> > > +       mtk_vcodec_debug(inst, "pic(%d, %d), buf(%d, %d)",
-> > > +                        ctx->picinfo.pic_w, ctx->picinfo.pic_h,
-> > > +                        ctx->picinfo.buf_w, ctx->picinfo.buf_h);
-> > > +       mtk_vcodec_debug(inst, "Y/C(%d, %d)", ctx->picinfo.fb_sz[0],
-> > > +               ctx->picinfo.fb_sz[1]);
-> > > +
-> > > +       if ((ctx->last_decoded_picinfo.pic_w != ctx->picinfo.pic_w) ||
-> > > +               (ctx->last_decoded_picinfo.pic_h != ctx->picinfo.pic_h)) {
-> > > +               inst->vsi_ctx.dec.resolution_changed = true;
-> > > +               if ((ctx->last_decoded_picinfo.buf_w != ctx->picinfo.buf_w) ||
-> > > +                       (ctx->last_decoded_picinfo.buf_h != ctx->picinfo.buf_h))
-> > > +                       inst->vsi_ctx.dec.realloc_mv_buf = true;
-> > > +
-> > > +               mtk_v4l2_debug(1, "ResChg: (%d %d) : old(%d, %d) -> new(%d, %d)",
-> > > +                       inst->vsi_ctx.dec.resolution_changed,
-> > > +                       inst->vsi_ctx.dec.realloc_mv_buf,
-> > > +                       ctx->last_decoded_picinfo.pic_w,
-> > > +                       ctx->last_decoded_picinfo.pic_h,
-> > > +                       ctx->picinfo.pic_w, ctx->picinfo.pic_h);
-> > > +       }
-> > > +}
-> > > +
-> > > +static void get_crop_info(struct vdec_h264_slice_inst *inst,
-> > > +       struct v4l2_rect *cr)
-> > > +{
-> > > +       cr->left = inst->vsi_ctx.crop.left;
-> > > +       cr->top = inst->vsi_ctx.crop.top;
-> > > +       cr->width = inst->vsi_ctx.crop.width;
-> > > +       cr->height = inst->vsi_ctx.crop.height;
-> > > +
-> > > +       mtk_vcodec_debug(inst, "l=%d, t=%d, w=%d, h=%d",
-> > > +                        cr->left, cr->top, cr->width, cr->height);
-> > > +}
-> > > +
-> > > +static void get_dpb_size(struct vdec_h264_slice_inst *inst,
-> > > +       unsigned int *dpb_sz)
-> > > +{
-> > > +       *dpb_sz = inst->vsi_ctx.dec.dpb_sz;
-> > > +       mtk_vcodec_debug(inst, "sz=%d", *dpb_sz);
-> > > +}
-> > > +
-> > > +static int vdec_h264_slice_init(struct mtk_vcodec_ctx *ctx)
-> > > +{
-> > > +       struct vdec_h264_slice_inst *inst = NULL;
-> > > +       int err;
-> > > +
-> > > +       inst = kzalloc(sizeof(*inst), GFP_KERNEL);
-> > > +       if (!inst)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       inst->ctx = ctx;
-> > > +
-> > > +       inst->vpu.id = SCP_IPI_VDEC_H264;
-> > > +       inst->vpu.ctx = ctx;
-> > > +
-> > > +       err = vpu_dec_init(&inst->vpu);
-> > > +       if (err) {
-> > > +               mtk_vcodec_err(inst, "vdec_h264 init err=%d", err);
-> > > +               goto error_free_inst;
-> > > +       }
-> > > +
-> > > +       memcpy(&inst->vsi_ctx, inst->vpu.vsi, sizeof(inst->vsi_ctx));
-> > > +       inst->vsi_ctx.dec.resolution_changed = true;
-> > > +       inst->vsi_ctx.dec.realloc_mv_buf = true;
-> > > +
-> > > +       err = allocate_predication_buf(inst);
-> > > +       if (err)
-> > > +               goto error_deinit;
-> > > +
-> > > +       mtk_vcodec_debug(inst, "struct size = %d,%d,%d,%d\n",
-> > > +               sizeof(struct mtk_h264_sps_param),
-> > > +               sizeof(struct mtk_h264_pps_param),
-> > > +               sizeof(struct mtk_h264_dec_slice_param),
-> > > +               sizeof(struct mtk_h264_dpb_info));
-> > > +
-> > > +       mtk_vcodec_debug(inst, "H264 Instance >> %p", inst);
-> > > +
-> > > +       ctx->drv_handle = inst;
-> > > +       return 0;
-> > > +
-> > > +error_deinit:
-> > > +       vpu_dec_deinit(&inst->vpu);
-> > > +
-> > > +error_free_inst:
-> > > +       kfree(inst);
-> > > +       return err;
-> > > +}
-> > > +
-> > > +static void vdec_h264_slice_deinit(void *h_vdec)
-> > > +{
-> > > +       struct vdec_h264_slice_inst *inst =
-> > > +               (struct vdec_h264_slice_inst *)h_vdec;
-> > > +
-> > > +       mtk_vcodec_debug_enter(inst);
-> > > +
-> > > +       vpu_dec_deinit(&inst->vpu);
-> > > +       free_predication_buf(inst);
-> > > +       free_mv_buf(inst);
-> > > +
-> > > +       kfree(inst);
-> > > +}
-> > > +
-> > > +static int find_start_code(unsigned char *data, unsigned int data_sz)
-> > > +{
-> > > +       if (data_sz > 3 && data[0] == 0 && data[1] == 0 && data[2] == 1)
-> > > +               return 3;
-> > > +
-> > > +       if (data_sz > 4 && data[0] == 0 && data[1] == 0 && data[2] == 0 &&
-> > > +           data[3] == 1)
-> > > +               return 4;
-> > > +
-> > > +       return -1;
-> > > +}
-> > > +
-> > > +static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
-> > > +                                 struct vdec_fb *fb, bool *res_chg)
-> > > +{
-> > > +       struct vdec_h264_slice_inst *inst =
-> > > +               (struct vdec_h264_slice_inst *)h_vdec;
-> > > +       struct vdec_vpu_inst *vpu = &inst->vpu;
-> > > +       struct mtk_video_dec_buf *src_buf_info;
-> > > +       int nal_start_idx = 0, err = 0;
-> > > +       uint32_t nal_type, data[2];
-> > > +       unsigned char *buf;
-> > > +       uint64_t y_fb_dma;
-> > > +       uint64_t c_fb_dma;
-> > > +
-> > > +       mtk_vcodec_debug(inst, "+ [%d] FB y_dma=%llx c_dma=%llx va=%p",
-> > > +                        ++inst->num_nalu, y_fb_dma, c_fb_dma, fb);
-> > > +
-> > > +       /* bs NULL means flush decoder */
-> > > +       if (bs == NULL)
-> > > +               return vpu_dec_reset(vpu);
-> > > +
-> > > +       src_buf_info = container_of(bs, struct mtk_video_dec_buf, bs_buffer);
-> > > +
-> > > +       y_fb_dma = fb ? (u64)fb->base_y.dma_addr : 0;
-> > > +       c_fb_dma = fb ? (u64)fb->base_c.dma_addr : 0;
-> > > +
-> > > +       buf = (unsigned char *)bs->va;
-> >
-> > I can be completely wrong, but it would seem here
-> > is where the CPU mapping is used.
->
-> I think you're right. :)
->
-> >
-> > > +       nal_start_idx = find_start_code(buf, bs->size);
-> > > +       if (nal_start_idx < 0)
-> > > +               goto err_free_fb_out;
-> > > +
-> > > +       data[0] = bs->size;
-> > > +       data[1] = buf[nal_start_idx];
-> > > +       nal_type = NAL_TYPE(buf[nal_start_idx]);
-> >
-> > Which seems to be used to parse the NAL type. But shouldn't
-> > you expect here VLC NALUs only?
-> >
-> > I.e. you only get IDR or non-IDR frames, marked with
-> > V4L2_H264_DECODE_PARAM_FLAG_IDR_PIC.
->
-> Yep, that's true. And as a matter of fact I can remove `nal_type` (and
-> the test using it below) and the driver is just as happy.
->
-> >
-> > > +       mtk_vcodec_debug(inst, "\n + NALU[%d] type %d +\n", inst->num_nalu,
-> > > +                        nal_type);
-> > > +
-> > > +       inst->vsi_ctx.dec.bs_dma = (uint64_t)bs->dma_addr;
-> > > +       inst->vsi_ctx.dec.y_fb_dma = y_fb_dma;
-> > > +       inst->vsi_ctx.dec.c_fb_dma = c_fb_dma;
-> > > +       inst->vsi_ctx.dec.vdec_fb_va = (u64)(uintptr_t)fb;
-> > > +
-> > > +       get_vdec_decode_parameters(inst);
-> > > +       *res_chg = inst->vsi_ctx.dec.resolution_changed;
-> > > +       if (*res_chg) {
-> > > +               mtk_vcodec_debug(inst, "- resolution changed -");
-> > > +               if (inst->vsi_ctx.dec.realloc_mv_buf) {
-> > > +                       err = alloc_mv_buf(inst, &(inst->ctx->picinfo));
-> > > +                       inst->vsi_ctx.dec.realloc_mv_buf = false;
-> > > +                       if (err)
-> > > +                               goto err_free_fb_out;
-> > > +               }
-> > > +               *res_chg = false;
-> > > +       }
-> > > +
-> > > +       memcpy(inst->vpu.vsi, &inst->vsi_ctx, sizeof(inst->vsi_ctx));
-> > > +       err = vpu_dec_start(vpu, data, 2);
-> >
-> > Then it seems this 2-bytes are passed to the firmware. Maybe you
-> > could test if that can be derived without the CPU mapping.
-> > That would allow you to set DMA_ATTR_NO_KERNEL_MAPPING.
->
-> This one is a bit trickier. It seems the NAL type is passed as part of
-> the decode request to the firmware. Which should be absolutely not
-> needed since the firmware can check this from the buffer itself. Just
-> for fun I have tried setting this parameter unconditionally to 0x1
-> (non-IDR picture) and all I get is green frames with seemingly random
-> garbage. If I set it to 0x5 (IDR picture) I also get green frames with
-> a different kind of garbage, and once every while a properly rendered
-> frame (presumably when it is *really* an IDR frame).
->
-> So, mmm, I'm afraid we cannot decode properly without this information
-> and thus without the mapping, unless Yunfei can tell us of a way to
-> achieve this. Yunfei, do you have any idea?
->
-
-Sorry, I wasn't clear with my suggestion. I didn't want to imply to avoid
-passing the firmware the information, just to stop deriving it from the buffers.
-
-Along these lines:
-
-        data[0] = bs->size;
--       data[1] = buf[nal_start_idx];
--       nal_type = NAL_TYPE(buf[nal_start_idx]);
-+       data[1] = nal_type = (dec_param->flags &
-V4L2_H264_DECODE_PARAM_FLAG_IDR_PIC) ?
-+               NAL_IDR_SLICE : NAL_NON_IDR_SLICE;
-
-(or slice type as Nicolas was suggesting)
-
-This should allow you to not allocate your buffers coherently,
-as you are doing now (i.e. not requiring a CPU mapping).
-
-I don't know what would be the performance gains in your platform,
-but they might be worth it (note that this depends on the platform
-support for non-coherent DMA mappings).
-
-In any case, this is just a suggestion, mostly because a CPU mapping
-means the kernel is parsing the buffers, which is a bit unexpected.
-
-Regards,
-Ezequiel
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMy8xNC8yMDIxIDE6MTEgQU0sIEFkcmlhbiBIdW50ZXIgd3JvdGU6Cj4gT24gMTAvMDMvMjEg
+NTowNCBhbSwgQXN1dG9zaCBEYXMgKGFzZCkgd3JvdGU6Cj4+IE9uIDMvOS8yMDIxIDc6NTYgQU0s
+IEFzdXRvc2ggRGFzIChhc2QpIHdyb3RlOgo+Pj4gT24gMy84LzIwMjEgOToxNyBBTSwgUmFmYWVs
+IEouIFd5c29ja2kgd3JvdGU6Cj4+Pj4gT24gTW9uLCBNYXIgOCwgMjAyMSBhdCA1OjIxIFBNIFJh
+ZmFlbCBKLiBXeXNvY2tpIDxyYWZhZWxAa2VybmVsLm9yZz4gd3JvdGU6Cj4+Pj4+Cj4+Pj4+IE9u
+IFNhdCwgTWFyIDYsIDIwMjEgYXQgNToxNyBQTSBBbGFuIFN0ZXJuIDxzdGVybkByb3dsYW5kLmhh
+cnZhcmQuZWR1PiB3cm90ZToKPj4+Pj4+Cj4+Pj4+PiBPbiBGcmksIE1hciAwNSwgMjAyMSBhdCAw
+Njo1NDoyNFBNIC0wODAwLCBBc3V0b3NoIERhcyAoYXNkKSB3cm90ZToKPj4+Pj4+Cj4+Pj4+Pj4g
+Tm93IGR1cmluZyBteSB0ZXN0aW5nIEkgc2VlIGEgd2VpcmQgaXNzdWUgc29tZXRpbWVzICgxIGlu
+IDcpLgo+Pj4+Pj4+IFNjZW5hcmlvIC0gYm9vdHVwcwo+Pj4+Pj4+Cj4+Pj4+Pj4gSXNzdWU6Cj4+
+Pj4+Pj4gVGhlIHN1cHBsaWVyICd1ZnNfZGV2aWNlX3dsdW4gMDowOjA6NDk0ODgnIGdvZXMgaW50
+byBydW50aW1lIHN1c3BlbmQgZXZlbgo+Pj4+Pj4+IHdoZW4gb25lL21vcmUgb2YgaXRzIGNvbnN1
+bWVycyBhcmUgaW4gUlBNX0FDVElWRSBzdGF0ZS4KPj4+Pj4+Pgo+Pj4+Pj4+ICpMb2c6Cj4+Pj4+
+Pj4gW8KgwqAgMTAuMDU2Mzc5XVvCoCBUMjA2XSBzZCAwOjA6MDoxOiBbc2RiXSBTeW5jaHJvbml6
+aW5nIFNDU0kgY2FjaGUKPj4+Pj4+PiBbwqDCoCAxMC4wNjI0OTddW8KgIFQxMTNdIHNkIDA6MDow
+OjU6IFtzZGZdIFN5bmNocm9uaXppbmcgU0NTSSBjYWNoZQo+Pj4+Pj4+IFvCoMKgIDEwLjM1NjYw
+MF1bwqDCoCBUMzJdIHNkIDA6MDowOjc6IFtzZGhdIFN5bmNocm9uaXppbmcgU0NTSSBjYWNoZQo+
+Pj4+Pj4+IFvCoMKgIDEwLjM2Mjk0NF1bwqAgVDE3NF0gc2QgMDowOjA6MzogW3NkZF0gU3luY2hy
+b25pemluZyBTQ1NJIGNhY2hlCj4+Pj4+Pj4gW8KgwqAgMTAuNjk2NjI3XVvCoMKgIFQ4M10gc2Qg
+MDowOjA6MjogW3NkY10gU3luY2hyb25pemluZyBTQ1NJIGNhY2hlCj4+Pj4+Pj4gW8KgwqAgMTAu
+NzA0NTYyXVvCoCBUMTcwXSBzZCAwOjA6MDo2OiBbc2RnXSBTeW5jaHJvbml6aW5nIFNDU0kgY2Fj
+aGUKPj4+Pj4+PiBbwqDCoCAxMC45ODA2MDJdW8KgwqDCoCBUNV0gc2QgMDowOjA6MDogW3NkYV0g
+U3luY2hyb25pemluZyBTQ1NJIGNhY2hlCj4+Pj4+Pj4KPj4+Pj4+PiAvKiogUHJpbnRpbmcgYWxs
+IHRoZSBjb25zdW1lciBub2RlcyBvZiBzdXBwbGllciAqKi8KPj4+Pj4+PiBbwqDCoCAxMC45ODcz
+MjddW8KgwqDCoCBUNV0gdWZzX2RldmljZV93bHVuIDA6MDowOjQ5NDg4OiB1c2FnZS1jb3VudCBA
+IHN1c3BlbmQ6IDAKPj4+Pj4+PiA8LS0gdGhpcyBpcyB0aGUgdXNhZ2VfY291bnQKPj4+Pj4+PiBb
+wqDCoCAxMC45OTQ0NDBdW8KgwqDCoCBUNV0gdWZzX3JwbWJfd2x1biAwOjA6MDo0OTQ3NjogUE0g
+c3RhdGUgLSAyCj4+Pj4+Pj4gW8KgwqAgMTEuMDAwNDAyXVvCoMKgwqAgVDVdIHNjc2kgMDowOjA6
+NDk0NTY6IFBNIHN0YXRlIC0gMgo+Pj4+Pj4+IFvCoMKgIDExLjAwNTQ1M11bwqDCoMKgIFQ1XSBz
+ZCAwOjA6MDowOiBQTSBzdGF0ZSAtIDIKPj4+Pj4+PiBbwqDCoCAxMS4wMDk5NThdW8KgwqDCoCBU
+NV0gc2QgMDowOjA6MTogUE0gc3RhdGUgLSAyCj4+Pj4+Pj4gW8KgwqAgMTEuMDE0NDY5XVvCoMKg
+wqAgVDVdIHNkIDA6MDowOjI6IFBNIHN0YXRlIC0gMgo+Pj4+Pj4+IFvCoMKgIDExLjAxOTA3Ml1b
+wqDCoMKgIFQ1XSBzZCAwOjA6MDozOiBQTSBzdGF0ZSAtIDIKPj4+Pj4+PiBbwqDCoCAxMS4wMjM1
+OTVdW8KgwqDCoCBUNV0gc2QgMDowOjA6NDogUE0gc3RhdGUgLSAwIDw8IFJQTV9BQ1RJVkUKPj4+
+Pj4+PiBbwqDCoCAxMS4zNTMyOThdW8KgwqDCoCBUNV0gc2QgMDowOjA6NTogUE0gc3RhdGUgLSAy
+Cj4+Pj4+Pj4gW8KgwqAgMTEuMzU3NzI2XVvCoMKgwqAgVDVdIHNkIDA6MDowOjY6IFBNIHN0YXRl
+IC0gMgo+Pj4+Pj4+IFvCoMKgIDExLjM2MjE1NV1bwqDCoMKgIFQ1XSBzZCAwOjA6MDo3OiBQTSBz
+dGF0ZSAtIDIKPj4+Pj4+PiBbwqDCoCAxMS4zNjY1ODRdW8KgwqDCoCBUNV0gdWZzaGNkLXFjb20g
+MWQ4NDAwMC51ZnNoYzogX191ZnNoY2Rfd2xfc3VzcGVuZCAtIDg3MDkKPj4+Pj4+PiBbwqDCoCAx
+MS4zNzQzNjZdW8KgwqDCoCBUNV0gdWZzX2RldmljZV93bHVuIDA6MDowOjQ5NDg4OiBfX3Vmc2hj
+ZF93bF9zdXNwZW5kIC0KPj4+Pj4+PiAoMCkgaGFzIHJwbV9hY3RpdmUgZmxhZ3MKPj4+Pj4KPj4+
+Pj4gRG8geW91IG1lYW4gdGhhdCBycG1fYWN0aXZlIG9mIHRoZSBsaW5rIGJldHdlZW4gdGhlIGNv
+bnN1bWVyIGFuZCB0aGUKPj4+Pj4gc3VwcGxpZXIgaXMgZ3JlYXRlciB0aGFuIDAgYXQgdGhpcyBw
+b2ludCBhbmQgdGhlIGNvbnN1bWVyIGlzCj4+Pj4KPj4+PiBJIG1lYW4gaXMgcnBtX2FjdGl2ZSBv
+ZiB0aGUgbGluayBncmVhdGVyIHRoYW4gMSAoYmVjYXVzZSAxIG1lYW5zICJubwo+Pj4+IGFjdGl2
+ZSByZWZlcmVuY2VzIHRvIHRoZSBzdXBwbGllciIpPwo+Pj4gSGkgUmFmYWVsOgo+Pj4gTm8gLSBp
+dCBpcyBub3QgZ3JlYXRlciB0aGFuIDEuCj4+Pgo+Pj4gSSdtIHRyeWluZyB0byB1bmRlcnN0YW5k
+IHdoYXQncyBnb2luZyBvbiBpbiBpdDsgd2lsbCB1cGRhdGUgd2hlbiBJJ3ZlIHNvbWV0aGluZy4K
+Pj4+Cj4+Pj4KPj4+Pj4gUlBNX0FDVElWRSwgYnV0IHRoZSBzdXBwbGllciBzdXNwZW5kcyBzdWNj
+ZXNzZnVsbHkgbmV2ZXJ0aGVsZXNzPwo+Pj4+Pgo+Pj4+Pj4+IFvCoMKgIDExLjM4MzM3Nl1bwqDC
+oMKgIFQ1XSB1ZnNfZGV2aWNlX3dsdW4gMDowOjA6NDk0ODg6Cj4+Pj4+Pj4gdWZzaGNkX3dsX3J1
+bnRpbWVfc3VzcGVuZCA8LS0gU3VwcGxpZXIgc3VzcGVuZHMgZmluZS4KPj4+Pj4+PiBbwqDCoCAx
+Mi45NzczMThdW8KgIFQxNzRdIHNkIDA6MDowOjQ6IFtzZGVdIFN5bmNocm9uaXppbmcgU0NTSSBj
+YWNoZQo+Pj4+Pj4+Cj4+Pj4+Pj4gQW5kIHRoZSB0aGUgc3VzcGVuZCBvZiBzZGUgaXMgc3R1Y2sg
+bm93Ogo+Pj4+Pj4+IHNjaGVkdWxlKzB4OWMvMHhlMAo+Pj4+Pj4+IHNjaGVkdWxlX3RpbWVvdXQr
+MHg0MC8weDEyOAo+Pj4+Pj4+IGlvX3NjaGVkdWxlX3RpbWVvdXQrMHg0NC8weDY4Cj4+Pj4+Pj4g
+d2FpdF9mb3JfY29tbW9uX2lvKzB4N2MvMHgxMDAKPj4+Pj4+PiB3YWl0X2Zvcl9jb21wbGV0aW9u
+X2lvKzB4MTQvMHgyMAo+Pj4+Pj4+IGJsa19leGVjdXRlX3JxKzB4OTAvMHhjYwo+Pj4+Pj4+IF9f
+c2NzaV9leGVjdXRlKzB4MTA0LzB4MWM0Cj4+Pj4+Pj4gc2Rfc3luY19jYWNoZSsweGY4LzB4MmEw
+Cj4+Pj4+Pj4gc2Rfc3VzcGVuZF9jb21tb24rMHg3NC8weDExYwo+Pj4+Pj4+IHNkX3N1c3BlbmRf
+cnVudGltZSsweDE0LzB4MjAKPj4+Pj4+PiBzY3NpX3J1bnRpbWVfc3VzcGVuZCsweDY0LzB4OTQK
+Pj4+Pj4+PiBfX3JwbV9jYWxsYmFjaysweDgwLzB4MmE0Cj4+Pj4+Pj4gcnBtX3N1c3BlbmQrMHgz
+MDgvMHg2MTQKPj4+Pj4+PiBwbV9ydW50aW1lX3dvcmsrMHg5OC8weGE4Cj4+Pj4+Pj4KPj4+Pj4+
+PiBJIGFkZGVkICdETF9GTEFHX1JQTV9BQ1RJVkUnIHdoaWxlIGNyZWF0aW5nIGxpbmtzLgo+Pj4+
+Pj4+ICDCoMKgwqDCoMKgwqAgaWYgKGhiYS0+c2Rldl91ZnNfZGV2aWNlKSB7Cj4+Pj4+Pj4gIMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbGluayA9IGRldmljZV9saW5rX2FkZCgmc2Rldi0+
+c2Rldl9nZW5kZXYsCj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICZoYmEtPnNkZXZfdWZzX2RldmljZS0+
+c2Rldl9nZW5kZXYsCj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBETF9GTEFHX1BNX1JVTlRJTUV8RExfRkxB
+R19SUE1fQUNUSVZFKTsKPj4+Pj4+PiBJIGRpZG4ndCBleHBlY3QgdGhpcyB0byByZXNvbHZlIHRo
+ZSBpc3N1ZSBhbnl3YXkgYW5kIGl0IGRpZG4ndC4KPj4+Pj4+Pgo+Pj4+Pj4+IEFub3RoZXIgaW50
+ZXJlc3RpbmcgcG9pbnQgaGVyZSBpcyB3aGVuIEkgcmVzdW1lIGFueSBvZiB0aGUgYWJvdmUgc3Vz
+cGVuZGVkCj4+Pj4+Pj4gY29uc3VtZXJzLCBpdCBhbGwgZ29lcyBiYWNrIHRvIG5vcm1hbCwgd2hp
+Y2ggaXMga2luZCBvZiBleHBlY3RlZC4gSSB0cmllZAo+Pj4+Pj4+IHJlc3VtaW5nIHRoZSBjb25z
+dW1lciBhbmQgdGhlIHN1cHBsaWVyIGlzIHJlc3VtZWQgYW5kIHRoZSBzdXBwbGllciBpcwo+Pj4+
+Pj4+IHN1c3BlbmRlZCB3aGVuIGFsbCB0aGUgY29uc3VtZXJzIGFyZSBzdXNwZW5kZWQuCj4+Pj4+
+Pj4KPj4+Pj4+PiBBbnkgcG9pbnRlcnMgb24gdGhpcyBpc3N1ZSBwbGVhc2U/Cj4+Pj4+Pj4KPj4+
+Pj4+PiBAQmFydC9AQWxhbiAtIERvIHlvdSd2ZSBhbnkgcG9pbnRlcnMgcGxlYXNlPwo+Pj4+Pj4K
+Pj4+Pj4+IEl0J3MgdmVyeSBub3RpY2VhYmxlIHRoYXQgYWx0aG91Z2ggeW91IHNlZW0gdG8gaGF2
+ZSBpc29sYXRlZCBhIGJ1ZyBpbgo+Pj4+Pj4gdGhlIHBvd2VyIG1hbmFnZW1lbnQgc3Vic3lzdGVt
+IChzdXBwbGllciBnb2VzIGludG8gcnVudGltZSBzdXNwZW5kCj4+Pj4+PiBldmVuIHdoZW4gb25l
+IG9mIGl0cyBjb25zdW1lcnMgaXMgc3RpbGwgYWN0aXZlKSwgeW91IGRpZCBub3QgQ0MgdGhlCj4+
+Pj4+PiBwb3dlciBtYW5hZ2VtZW50IG1haW50YWluZXIgb3IgbWFpbGluZyBsaXN0Lgo+Pj4+Pj4K
+Pj4+Pj4+IEkgaGF2ZSBhZGRlZCB0aGUgYXBwcm9wcmlhdGUgQ0Mncy4KPj4+Pj4KPj4+Pj4gVGhh
+bmtzIEFsYW4hCj4+Pgo+Pj4KPj4KPj4gSGVsbG8KPj4gSSAmIENhbiAodGhhbmtzIENhbkcpIGRl
+YnVnZ2VkIHRoaXMgZnVydGhlcjoKPj4KPj4gTG9va3MgbGlrZSB0aGlzIGlzc3VlIGNhbiBvY2N1
+ciBpZiB0aGUgc2QgcHJvYmUgaXMgYXN5bmNocm9ub3VzLgo+Pgo+PiBFc3NlbnRpYWxseSwgdGhl
+IHNkX3Byb2JlKCkgaXMgZG9uZSBhc3luY2hyb25vdXNseSBhbmQgZHJpdmVyX3Byb2JlX2Rldmlj
+ZSgpIGludm9rZXMgcG1fcnVudGltZV9nZXRfc3VwcGxpZXJzKCkgYmVmb3JlIGludm9raW5nIHNk
+X3Byb2JlKCkuCj4+Cj4+IEJ1dCBzY3NpX3Byb2JlX2FuZF9hZGRfbHVuKCkgcnVucyBpbiBhIHNl
+cGFyYXRlIGNvbnRleHQuCj4+IFNvIHRoZSBzY3NpX2F1dG9wbV9wdXRfZGV2aWNlKCkgaW52b2tl
+ZCBmcm9tIHNjc2lfc2Nhbl9ob3N0KCkgY29udGV4dCByZWR1Y2VzIHRoZSBsaW5rLT5ycG1fYWN0
+aXZlIHRvIDEuIEFuZCBzZF9wcm9iZSgpIGludm9rZXMgc2NzaV9hdXRvcG1fcHV0X2RldmljZSgp
+IGFuZCBzdGFydHMgYSB0aW1lci4gQW5kIHRoZW4gZHJpdmVyX3Byb2JlX2RldmljZSgpIGludm9r
+ZWQgZnJvbSBfX2RldmljZV9hdHRhY2hfYXN5bmNfaGVscGVyIGNvbnRleHQgcmVkdWNlcyB0aGUg
+bGluay0+cnBtX2FjdGl2ZSB0byAxIHRodXMgZW5hYmxpbmcgdGhlIHN1cHBsaWVyIHRvIHN1c3Bl
+bmQgYmVmb3JlIHRoZSBjb25zdW1lciBzdXNwZW5kcy4KPj4KPj4gU28gaWY6Cj4+IENvbnRleHQg
+VDE6Cj4+IFsxXSBzY3NpX3Byb2JlX2FuZF9hZGRfbHVuKCkKPj4gWzJdwqDCoMKgIHwtIHNjc2lf
+YXV0b3BtX3B1dF9kZXZpY2UoKSAtIHJlZHVjZSB0aGUgbGluay0+cnBtX2FjdGl2ZSB0byAxCj4+
+Cj4+IENvbnRleHQgVDI6Cj4+IF9fZGV2aWNlX2F0dGFjaF9hc3luY19oZWxwZXIoKQo+PiAgwqDC
+oMKgwqB8LSBkcml2ZXJfcHJvYmVfZGV2aWNlKCkKPj4gIMKgwqDCoMKgwqDCoMKgIHwtIHNkX3By
+b2JlKCkKPj4gSW4gYmV0d2VlbiBbMV0gYW5kIFsyXSBzYXksIGRyaXZlcl9wcm9iZV9kZXZpY2Uo
+KSAtPiBzZF9wcm9iZSgpIGlzIGludm9rZWQgaW4gYSBzZXBhcmF0ZSBjb250ZXh0IGZyb20gX19k
+ZXZpY2VfYXR0YWNoX2FzeW5jX2hlbHBlcigpLgo+PiBUaGUgZHJpdmVyX3Byb2JlX2RldmljZSgp
+IC0+IHBtX3J1bnRpbWVfZ2V0X3N1cHBsaWVycygpIGJ1dCBbMl0gd291bGQgcmVkdWNlIGxpbmst
+PnJwbV9hY3RpdmUgdG8gMS4KPj4gVGhlbiBzZF9wcm9iZSgpIHdvdWxkIGludm9rZSBycG1fcmVz
+dW1lKCkgYW5kIHByb2NlZWQgYXMgaXMuCj4+IFdoZW4gc2RfcHJvYmUoKSBpbnZva2VzIHNjc2lf
+YXV0b3BtX3B1dF9kZXZpY2UoKSBpdCdkIHN0YXJ0IGEgdGltZXIsIGRldi0+cG93ZXIudGltZXJf
+YXV0b3N1c3BlbmRzID0gMS4KPj4KPj4gTm93IHRoZW4sIHBtX3J1bnRpbWVfcHV0X3N1cHBsaWVy
+cygpIGlzIGludm9rZWQgZnJvbSBkcml2ZXJfcHJvYmVfZGV2aWNlKCkgYW5kIHRoYXQgbWFrZXMg
+dGhlIGxpbmstPnJwbV9hY3RpdmUgPSAxLgo+PiBCdXQgYnkgbm93LCB0aGUgY29ycmVzcG9uZGlu
+ZyAnc2QgZGV2JyAoY29uc3VtZXIpIHVzYWdlX2NvdW50ID0gMCwgc3RhdGUgPSBSUE1fQUNUSVZF
+IGFuZCBsaW5rLT5ycG1fYWN0aXZlID0gMS4KPj4gQXQgdGhpcyBwb2ludCBvZiB0aW1lLCBhbGwg
+b3RoZXIgJ3NkIGRldicgKGNvbnN1bWVycykgX21heV8gYmUgc3VzcGVuZGVkIG9yIGFjdGl2ZSBi
+dXQgd291bGQgaGF2ZSB0aGUgbGluay0+cnBtX2FjdGl2ZSA9IDEuCj4gCj4gSXMgdGhpcyB3aXRo
+IERMX0ZMQUdfUlBNX0FDVElWRT8gIEluIHRoYXQgY2FzZSwgd291bGRuJ3QgYWN0aXZlCj4gY29u
+c3VtZXJzIGhhdmUgbGluay0+cnBtX2FjdGl2ZSA9IDIgYW5kIGFsc28gaGF2ZSBpbmNyZW1lbnRl
+ZAo+IHRoZSBzdXBwbGllcidzIHVzYWdlX2NvdW50Pwo+IAo+IEFub3RoZXIgb3V0c3RhbmRpbmcg
+aXNzdWUgdGhhdCBjb21lcyB0byBtaW5kLCBpcyB0byBlbnN1cmUKPiBoYmEtPnNkZXZfdWZzX2Rl
+dmljZSBkb2VzIG5vdCBydW50aW1lIHN1c3BlbmQgYmVmb3JlIGl0IGlzIHByb2JlZC4KPiBJIHN1
+Z2dlc3QgY2hhbmdpbmcgdWZzaGNkX3NsYXZlX2NvbmZpZ3VyZSgpIHNvIGl0IGRvZXMgbm90IHNl
+dAo+IHNkZXYtPnJwbV9hdXRvc3VzcGVuZCBmb3IgaGJhLT5zZGV2X3Vmc19kZXZpY2UsIGFuZCBp
+bnN0ZWFkIGRvCj4gcG1fcnVudGltZV9hbGxvdyAvIHBtX3J1bnRpbWVfZm9yYmlkKCkgaW4gdWZz
+aGNkX3dsX3Byb2JlKCkgLwo+IHVmc2hjZF93bF9yZW1vdmUoKSByZXNwZWN0aXZlbHkuCj4gCj4g
+SG93ZXZlciB3ZSBzdGlsbCB3YW50IHRvIHN0b3AgaGJhLT5zZGV2X3Vmc19kZXZpY2UgcnVudGlt
+ZQo+IHN1c3BlbmRpbmcgd2hpbGUgY29uc3VtZXJzIGFyZSBiZWluZyBhZGRlZC4gIFdpdGggdGhh
+dCBpbiBtaW5kLAo+IEkgd291bGQgZXhwZWN0IHBtX3J1bnRpbWVfZ2V0X25vcmVzdW1lKCZoYmEt
+PnNkZXZfdWZzX2RldmljZS0+c2Rldl9nZW5kZXYpCj4gaW4gdWZzaGNkX3Njc2lfYWRkX3dsdXMo
+KSB0byBjb21lICpiZWZvcmUqCj4gdWZzaGNkX2Jsa19wbV9ydW50aW1lX2luaXQoaGJhLT5zZGV2
+X3Vmc19kZXZpY2UpLiAgSW4gZmFjdCwgaXQgd291bGQKPiBiZSBtb3JlIGxvZ2ljYWwgdG8gbWFr
+ZSBpdCwgcG1fcnVudGltZV9nZXRfc3luYygpIHNpbmNlIHdlIHJlcXVpcmUKPiBoYmEtPnNkZXZf
+dWZzX2RldmljZSB0byBiZSBhY3RpdmUgYXQgdGhhdCBwb2ludC4KPiAKPiAKCkhpIEFkcmlhbiwK
+SSB0aGluayB0aGUgdjExIHRoYXQgSSBwdXNoZWQgY2FuIGhhbmRsZSB0aGlzLgpydW50aW1lLXN1
+c3BlbmQgaXMgZm9yYmlkZGVuIGF0IHByb2JlIGFuZCBpcyByZS1lbmFibGVkIGFmdGVyIHByb2Jl
+IGlzIApkb25lLiBQbGVhc2UgdGFrZSBhIGxvb2sgYW5kIGxldCBtZSBrbm93IGlmIEknbSBtaXNz
+aW5nIHNvbWV0aGluZy4KCj4+Cj4+IFNpbmNlIHRoZSBzdXBwbGllciBoYXMgMCBhdXRvLXN1c3Bl
+bmQgZGVsYXksIGl0IG5vdyBzdXNwZW5kcyEKPj4KPj4KPj4gQ29udGV4dCBbVDFdCj4+IENhbGwg
+dHJhY2U6Cj4+IGR1bXBfYmFja3RyYWNlKzB4MC8weDFkNAo+PiBzaG93X3N0YWNrKzB4MTgvMHgy
+NAo+PiBkdW1wX3N0YWNrKzB4YzQvMHgxNDQKPj4gX19wbV9ydW50aW1lX2lkbGUrMHhiNC8weDE4
+NAo+PiBzY3NpX2F1dG9wbV9wdXRfZGV2aWNlKzB4MTgvMHgyNAo+PiBzY3NpX3N5c2ZzX2FkZF9z
+ZGV2KzB4MjZjLzB4Mjc4Cj4+IHNjc2lfcHJvYmVfYW5kX2FkZF9sdW4rMHhiYWMvMHhkNDgKPj4g
+X19zY3NpX3NjYW5fdGFyZ2V0KzB4MzhjLzB4NTEwCj4+IHNjc2lfc2Nhbl9ob3N0X3NlbGVjdGVk
+KzB4MTRjLzB4MWU0Cj4+IHNjc2lfc2Nhbl9ob3N0KzB4MWUwLzB4MjI4Cj4+IHVmc2hjZF9hc3lu
+Y19zY2FuKzB4MzljLzB4NDA4Cj4+IGFzeW5jX3J1bl9lbnRyeV9mbisweDQ4LzB4MTI4Cj4+IHBy
+b2Nlc3Nfb25lX3dvcmsrMHgxZjAvMHg0NzAKPj4gd29ya2VyX3RocmVhZCsweDI2Yy8weDRjOAo+
+PiBrdGhyZWFkKzB4MTNjLzB4MzIwCj4+IHJldF9mcm9tX2ZvcmsrMHgxMC8weDE4Cj4+Cj4+Cj4+
+IENvbnRleHQgW1QyXQo+PiBDYWxsIHRyYWNlOgo+PiBkdW1wX2JhY2t0cmFjZSsweDAvMHgxZDQK
+Pj4gc2hvd19zdGFjaysweDE4LzB4MjQKPj4gZHVtcF9zdGFjaysweGM0LzB4MTQ0Cj4+IHJwbV9n
+ZXRfc3VwcGxpZXJzKzB4NDgvMHgxYWMKPj4gX19ycG1fY2FsbGJhY2srMHg1OC8weDEyYwo+PiBy
+cG1fcmVzdW1lKzB4M2E0LzB4NjE4Cj4+IF9fcG1fcnVudGltZV9yZXN1bWUrMHg1MC8weDgwCj4+
+IHNjc2lfYXV0b3BtX2dldF9kZXZpY2UrMHgyMC8weDU0Cj4+IHNkX3Byb2JlKzB4NDAvMHgzZDAK
+Pj4gcmVhbGx5X3Byb2JlKzB4MWJjLzB4NGEwCj4+IGRyaXZlcl9wcm9iZV9kZXZpY2UrMHg4NC8w
+eGYwCj4+IF9fZGV2aWNlX2F0dGFjaF9kcml2ZXIrMHgxMTQvMHgxMzgKPj4gYnVzX2Zvcl9lYWNo
+X2RydisweDg0LzB4ZDAKPj4gX19kZXZpY2VfYXR0YWNoX2FzeW5jX2hlbHBlcisweDdjLzB4ZjAK
+Pj4gYXN5bmNfcnVuX2VudHJ5X2ZuKzB4NDgvMHgxMjgKPj4gcHJvY2Vzc19vbmVfd29yaysweDFm
+MC8weDQ3MAo+PiB3b3JrZXJfdGhyZWFkKzB4MjZjLzB4NGM4Cj4+IGt0aHJlYWQrMHgxM2MvMHgz
+MjAKPj4gcmV0X2Zyb21fZm9yaysweDEwLzB4MTgKPj4KPj4gQmVsb3cgcHJpbnRzIHNob3cgaG93
+IGxpbmstPnJwbV9hY3RpdmUgYmVjb21lcyAxIGZvciBzZCAwOjA6MDo0Cj4+IFvCoMKgwqAgNy41
+NzQ2NTRdW8KgIFQyMTJdIENhbGwgdHJhY2U6Cj4+IFvCoMKgwqAgNy41NzQ2NTddW8KgIFQyMTJd
+wqAgZHVtcF9iYWNrdHJhY2UrMHgwLzB4MWQ0Cj4+IFvCoMKgwqAgNy41NzQ2NjFdW8KgIFQyMTJd
+wqAgc2hvd19zdGFjaysweDE4LzB4MjQKPj4gW8KgwqDCoCA3LjU3NDY2NV1bwqAgVDIxMl3CoCBk
+dW1wX3N0YWNrKzB4YzQvMHgxNDQKPj4gW8KgwqDCoCA3LjU3NDY2OF1bwqAgVDIxMl3CoCBfX3Bt
+X3J1bnRpbWVfaWRsZSsweGI0LzB4MTg0Cj4+IFvCoMKgwqAgNy41NzQ2NzFdW8KgIFQyMTJdwqAg
+c2NzaV9hdXRvcG1fcHV0X2RldmljZSsweDE4LzB4MjQKPj4gW8KgwqDCoCA3LjU3NDY3NV1bwqAg
+VDIxMl3CoCBzZF9wcm9iZSsweDMxNC8weDNkMAo+PiBbwqDCoMKgIDcuNTc0Njc3XVvCoCBUMjEy
+XcKgIHJlYWxseV9wcm9iZSsweDFiYy8weDRhMAo+PiBbwqDCoMKgIDcuNTc0NjgwXVvCoCBUMjEy
+XcKgIGRyaXZlcl9wcm9iZV9kZXZpY2UrMHg4NC8weGYwCj4+IFvCoMKgwqAgNy41NzQ2ODNdW8Kg
+IFQyMTJdwqAgX19kZXZpY2VfYXR0YWNoX2RyaXZlcisweDExNC8weDEzOAo+PiBbwqDCoMKgIDcu
+NTc0Njg2XVvCoCBUMjEyXcKgIGJ1c19mb3JfZWFjaF9kcnYrMHg4NC8weGQwCj4+IFvCoMKgwqAg
+Ny41NzQ2ODldW8KgIFQyMTJdwqAgX19kZXZpY2VfYXR0YWNoX2FzeW5jX2hlbHBlcisweDdjLzB4
+ZjAKPj4gW8KgwqDCoCA3LjU3NDY5Ml1bwqAgVDIxMl3CoCBhc3luY19ydW5fZW50cnlfZm4rMHg0
+OC8weDEyOAo+PiBbwqDCoMKgIDcuNTc0Njk1XVvCoCBUMjEyXcKgIHByb2Nlc3Nfb25lX3dvcmsr
+MHgxZjAvMHg0NzAKPj4gW8KgwqDCoCA3LjU3NDY5OF1bwqAgVDIxMl3CoCB3b3JrZXJfdGhyZWFk
+KzB4MjZjLzB4NGM4Cj4+IFvCoMKgwqAgNy41NzQ3MDBdW8KgIFQyMTJdwqAga3RocmVhZCsweDEz
+Yy8weDMyMAo+PiBbwqDCoMKgIDcuNTc0NzAzXVvCoCBUMjEyXcKgIHJldF9mcm9tX2ZvcmsrMHgx
+MC8weDE4Cj4+IFvCoMKgwqAgNy41NzQ3MDZdW8KgIFQyMTJdIHNkIDA6MDowOjQ6IHNjc2lfcnVu
+dGltZV9pZGxlCj4+IFvCoMKgwqAgNy41NzQ3MTJdW8KgIFQyMTJdIHNkIDA6MDowOjQ6IF9fcG1f
+cnVudGltZV9pZGxlOiBhZnQ6IFtVRlNEQkddOiBwd3IudGltZXJfYXV0b3N1c3BlbmRzOiAxIHB3
+ci5yZXF1ZXN0X3BlbmRpbmc6IDAgcmV0dmFsOiAtMTYgcHdyLnJlcXVlc3Q6IDAgdXNhZ2VfY291
+bnQ6IDAgcnBtX3N0YXR1czogMCBsaW5rLXJwbV9hY3RpdmU6Mgo+PiBbwqDCoMKgIDcuNTc0NzE1
+XVvCoCBUMjEyXSBzZCAwOjA6MDo0OiBzZF9wcm9iZTogW1VGU0RCR106IEV4aXQKPj4gW8KgwqDC
+oCA3LjU3NDczOF1bwqAgVDIxMl0gc2QgMDowOjA6NDogX19wbV9ydW50aW1lX2lkbGU6IGI0OiBb
+VUZTREJHXTogcHdyLnJlcXVlc3Q6IDAgdXNhZ2VfY291bnQ6IDAgcnBtX3N0YXR1czogMCBsaW5r
+LXJwbV9hY3RpdmU6Mgo+Pgo+PiBbwqDCoMKgIDcuNTc0NzUyXVvCoCBUMjEyXSBXb3JrcXVldWU6
+IGV2ZW50c191bmJvdW5kIGFzeW5jX3J1bl9lbnRyeV9mbgo+PiBbwqDCoMKgIDcuNTc0NzU0XVvC
+oCBUMjEyXSBDYWxsIHRyYWNlOgo+PiBbwqDCoMKgIDcuNTc0NzU4XVvCoCBUMjEyXcKgIGR1bXBf
+YmFja3RyYWNlKzB4MC8weDFkNAo+PiBbwqDCoMKgIDcuNTc0NzYxXVvCoCBUMjEyXcKgIHNob3df
+c3RhY2srMHgxOC8weDI0Cj4+IFvCoMKgwqAgNy41NzQ3NjVdW8KgIFQyMTJdwqAgZHVtcF9zdGFj
+aysweGM0LzB4MTQ0Cj4+IFvCoMKgwqAgNy41NzQ3NjddW8KgIFQyMTJdwqAgX19wbV9ydW50aW1l
+X2lkbGUrMHhiNC8weDE4NAo+PiBbwqDCoMKgIDcuNTc0NzcwXVvCoCBUMjEyXcKgIGRyaXZlcl9w
+cm9iZV9kZXZpY2UrMHg5NC8weGYwCj4+IFvCoMKgwqAgNy41NzQ3NzNdW8KgIFQyMTJdwqAgX19k
+ZXZpY2VfYXR0YWNoX2RyaXZlcisweDExNC8weDEzOAo+PiBbwqDCoMKgIDcuNTc0Nzc1XVvCoCBU
+MjEyXcKgIGJ1c19mb3JfZWFjaF9kcnYrMHg4NC8weGQwCj4+IFvCoMKgwqAgNy41NzQ3NzhdW8Kg
+IFQyMTJdwqAgX19kZXZpY2VfYXR0YWNoX2FzeW5jX2hlbHBlcisweDdjLzB4ZjAKPj4gW8KgwqDC
+oCA3LjU3NDc4MV1bwqAgVDIxMl3CoCBhc3luY19ydW5fZW50cnlfZm4rMHg0OC8weDEyOAo+PiBb
+wqDCoMKgIDcuNTc0NzgzXVvCoCBUMjEyXcKgIHByb2Nlc3Nfb25lX3dvcmsrMHgxZjAvMHg0NzAK
+Pj4gW8KgwqDCoCA3LjU3NDc4Nl1bwqAgVDIxMl3CoCB3b3JrZXJfdGhyZWFkKzB4MjZjLzB4NGM4
+Cj4+IFvCoMKgwqAgNy41NzQ3ODhdW8KgIFQyMTJdwqAga3RocmVhZCsweDEzYy8weDMyMAo+PiBb
+wqDCoMKgIDcuNTc0NzkxXVvCoCBUMjEyXcKgIHJldF9mcm9tX2ZvcmsrMHgxMC8weDE4Cj4+IFvC
+oMKgwqAgNy41NzQ4NDhdW8KgwqAgVDgwXSBzZCAwOjA6MDo0OiBzY3NpX3J1bnRpbWVfaWRsZQo+
+PiBbwqDCoMKgIDcuNTc0ODU4XVvCoCBUMjEyXSBzZCAwOjA6MDo0OiBfX3BtX3J1bnRpbWVfaWRs
+ZTogYWZ0OiBbVUZTREJHXTogcHdyLnRpbWVyX2F1dG9zdXNwZW5kczogMSBwd3IucmVxdWVzdF9w
+ZW5kaW5nOiAwIHJldHZhbDogMCBwd3IucmVxdWVzdDogMCB1c2FnZV9jb3VudDogMCBycG1fc3Rh
+dHVzOiAwIGxpbmstcnBtX2FjdGl2ZToyCj4+IFvCoMKgwqAgNy41NzQ4NjNdW8KgIFQyMTJdIHNk
+IDA6MDowOjQ6IHBtX3J1bnRpbWVfcHV0X3N1cHBsaWVyczogW1VGU0RCR106IHJwbV9zdGF0dXM6
+IDAgbGluay1ycG1fYWN0aXZlOjEKPj4gW8KgwqDCoCA3LjU3NDg2Nl1bwqAgVDIxMl0gc2QgMDow
+OjA6NDogYXN5bmMgcHJvYmUgY29tcGxldGVkCj4+IFvCoMKgwqAgNy41NzQ4NzBdW8KgIFQyMTJd
+IHNkIDA6MDowOjQ6IF9fcG1fcnVudGltZV9pZGxlOiBiNDogW1VGU0RCR106IHB3ci5yZXF1ZXN0
+OiAwIHVzYWdlX2NvdW50OiAwIHJwbV9zdGF0dXM6IDAgbGluay1ycG1fYWN0aXZlOjEKPj4KPj4K
+Pj4gU28sIGZyb20gdGhlIGFib3ZlIGl0IGxvb2tzIGxpa2Ugd2hlbiBhc3luYyBwcm9iZSBpcyBl
+bmFibGVkIHRoaXMgaXMgYSBwb3NzaWJpbGl0eS4KPj4KPj4gSSBkb24ndCBzZWUgYSB3YXkgYXJv
+dW5kIHRoaXMuIFBsZWFzZSBsZXQgbWUga25vdyBpZiB5b3UgKEBBbGFuL0BCYXJ0L0BBZHJpYW4p
+IGhhdmUgYW55IHRob3VnaHRzIG9uIHRoaXMuCj4+Cj4+IFRoYW5rcywKPj4gLWFzZAo+Pgo+IAoK
+Ci0tIApUaGUgUXVhbGNvbW0gSW5ub3ZhdGlvbiBDZW50ZXIsIEluYy4gaXMgYSBtZW1iZXIgb2Yg
+dGhlIENvZGUgQXVyb3JhIEZvcnVtLApMaW51eCBGb3VuZGF0aW9uIENvbGxhYm9yYXRpdmUgUHJv
+amVjdAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
+YXRlawo=
