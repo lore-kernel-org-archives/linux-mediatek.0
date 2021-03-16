@@ -2,87 +2,77 @@ Return-Path: <SRS0=yOeO=IO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F688C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 06:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CFFF0C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 07:02:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9390E650E3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 06:35:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9390E650E3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5B27C64FC0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 07:02:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B27C64FC0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7FHSBxN8GxUtt8R1/11fHRzWpIpNN6Y09X4tX39okec=; b=NpqCQBVNAq1JQbZxdrYjzYWwk
-	QgNJEi0dWlkGG9oEVZ+B+9jd+0EO1TVWIlxmn6b6TUgIZfx+Wf1Sy0qo/Vydn4ZMl1PY9p2YZIA6+
-	7NF+PBKWWmYl5E3lFk++BE7j4uFiZfF2OXYPPRQALraM4lRl3x9C9XzC0w8kLaPNsPJevTCkaKSHf
-	gTv7B+DWxT+4bo2ES2EwGungS12WjTQfnAI4UaaeRyapPxCpCyG3L0qryiy5P3qVZti5ckEfRU7Pl
-	8BYKdgBGSvsbfeK+2mnKJelFsDUb7wWejfzhMuSKZCPY5kO/+2bp7ScTg/OzYh4GeQdIP/99u+vtb
-	BWYieUoCA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sFZPRqwWbQ8HHQd+yzstXRllKK5qjMl5mtyd4alvpqE=; b=aAvl46v5UNJK1+l51jGzvufR8A
+	lMIoNj3g538TmyrhDV6zIk8nPPnn9TPpn7mn5lCSlqZKiYZWb1p1jllXAjvc5/bnK1EyX407+kEFQ
+	edNxbOhfOKpH7dlVaNGL5SgoC4DwRToqdpb19FPDDpeLoV9S0Z+S84QwmysBnmt02Tk1HjakyScj1
+	30bpxqSfJubq7+rNLFQOXeeppSnLsATTNJi5lfuujjIqIszp3mB9sYs0zN3jo48OaYiGtMtwsKPpy
+	PaSCp8YrhB2mnnUGAEqtEGzbSVK2vmcZrWBelc2MS8TRhfqokT8LA75AyS2IXMDl1foDuJl6vUvag
+	B9ZnNfqg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lM3IH-00HXUE-Mq; Tue, 16 Mar 2021 06:35:05 +0000
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+	id 1lM3iQ-00HZpZ-Fp; Tue, 16 Mar 2021 07:02:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lM3I4-00HXSC-K9
- for linux-mediatek@lists.infradead.org; Tue, 16 Mar 2021 06:34:55 +0000
-Received: by mail-qv1-xf35.google.com with SMTP id x27so9008876qvd.2
- for <linux-mediatek@lists.infradead.org>; Mon, 15 Mar 2021 23:34:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SByyMFSlLntBAm8fHgqN+CmCCGC2J92yQYTbduz/8F4=;
- b=s+uLqyFrjkMmW5YeJaqvGeFwM5DpyLE4ZA0G18plRKW6nkBDny7Y1Hg1jB6l1VviZs
- iVQoYuy06c2imtqXONxNojwDzI11L8Qa06mrjwRw6EcTYvUlMhR+8Lp+oxxpVoz2r6MV
- HCP6FzftAUKiF/AxuYU1jXZbpbdmmwlN9PG7xFbZmfgZdYL+bi74iBxGEJEqwnRK4pu9
- Fe9EJOMXK2UxSnubdPd0khIQUofJ3iqj6+JDqsiJeis2fVUrcTajpg9ImNlmjB0Trox9
- sLfwQf7pNCciXu7qXbTOgcWM9gefBhaZEvrcyCTLdK787ft3FfHDgyoYYOzozCIKWYfd
- QtFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SByyMFSlLntBAm8fHgqN+CmCCGC2J92yQYTbduz/8F4=;
- b=L360IQqovptAQomr0D0dYBchFhmT8YDbQ3XZWsf54wUsnB0+lWHTbd0pfuidCpjEh9
- fuC8zRAn9OG/JGVoV9klNTQEdboJfQj18LQQvekKOI7sxyozhjBoY2HmtybazJWcdBMl
- yb5aVy8i4MvvflPaSHv1clWwr/g3kWW0Hgxt9GuTreJ60pvI+HKH+/5qFcu8mt8OfxQi
- +m7qcxmYmZU09CcLgr1yljr6Ia1Raeqd1ORSNsQMwGr9Q4tu1Y0TSGVgv4dECrB4xvCn
- 1u5044YRSkW205m8EBBfqcoFS2nE5y4ES1rhjaAdmws7Rxj7L2snuelSq9QuZRzscIT7
- hTAQ==
-X-Gm-Message-State: AOAM533JRV/PFCRfh5DyldvBN5HnNOjYKEbdeXLDKRk2ax9TdK/vvC97
- nQS6aVw8IdL10IzxmsHktJCWT++I1WpsssT5XPvy3g==
-X-Google-Smtp-Source: ABdhPJwCeQcT66aWyysAq/F0mnL+lIXNOvkkdqOLUYYKOZSFIJs9a705sEfwv8vZeNPeivpqwej8TWOU/YNOMe3w00c=
-X-Received: by 2002:a0c:8304:: with SMTP id j4mr14226424qva.18.1615876491060; 
- Mon, 15 Mar 2021 23:34:51 -0700 (PDT)
+ id 1lM3iL-00HZnT-5R; Tue, 16 Mar 2021 07:02:04 +0000
+X-UUID: 9b4fd115309646eca7a9d49cb2d5817f-20210315
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=PyTwZuMwZ6NvTp1uGuBdhy4YkYpbehZbfdzyJOIhssc=; 
+ b=P/P5Z52KDDfUwNRqyOQP86EpRJGMhWYluDoKNAsF5rpf4jL+F8GADX5Tlw2ZQKmjF5RmtdGC1CR9TVRIoTKWCRBWT5hIbva+4JKhOCGbUJNrnvzXoN6pDCNPPo/8PuEbdbfxnmo4GMoDR3CTtk+YSmU5SyRz0oRXPTLpDCFsSLc=;
+X-UUID: 9b4fd115309646eca7a9d49cb2d5817f-20210315
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <michael.kao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 217496459; Mon, 15 Mar 2021 23:01:47 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Mar 2021 00:01:45 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Mar 2021 15:01:44 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 16 Mar 2021 15:01:43 +0800
+From: Michael Kao <michael.kao@mediatek.com>
+To: <michael.kao@mediatek.com>, <fan.chen@mediatek.com>, Zhang Rui
+ <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ <linux-pm@vger.kernel.org>, <srv_heupstream@mediatek.com>
+CC: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [v7,0/3] mt8183: Add Mediatek thermal driver and dtsi
+Date: Tue, 16 Mar 2021 15:01:41 +0800
+Message-ID: <20210316070144.28440-1-michael.kao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20210316024410.19967-1-walter-zh.wu@mediatek.com>
-In-Reply-To: <20210316024410.19967-1-walter-zh.wu@mediatek.com>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Tue, 16 Mar 2021 07:34:39 +0100
-Message-ID: <CACT4Y+aMKH24F6DO=iKX0jDmxm4MCuJkA-OTkmgbfDm73LLKhQ@mail.gmail.com>
-Subject: Re: [PATCH v2] task_work: kasan: record task_work_add() call stack
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
- Alexander Potapenko <glider@google.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Konovalov <andreyknvl@google.com>, 
- Andrew Morton <akpm@linux-foundation.org>, Jens Axboe <axboe@kernel.dk>, 
- Oleg Nesterov <oleg@redhat.com>, kasan-dev <kasan-dev@googlegroups.com>, 
- Linux-MM <linux-mm@kvack.org>, LKML <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210316_063453_468086_FFDC86EB 
-X-CRM114-Status: GOOD (  27.71  )
+X-CRM114-CacheID: sfid-20210316_070201_695797_2D730B99 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,78 +89,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 16, 2021 at 3:44 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> Why record task_work_add() call stack?
-> Syzbot reports many use-after-free issues for task_work, see [1].
-> After see the free stack and the current auxiliary stack, we think
-> they are useless, we don't know where register the work, this work
-> may be the free call stack, so that we miss the root cause and
-> don't solve the use-after-free.
->
-> Add task_work_add() call stack into KASAN auxiliary stack in
-> order to improve KASAN report. It is useful for programmers
-> to solve use-after-free issues.
->
-> [1]: https://groups.google.com/g/syzkaller-bugs/search?q=kasan%20use-after-free%20task_work_run
->
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Andrey Konovalov <andreyknvl@google.com>
-> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
-> Cc: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Jens Axboe <axboe@kernel.dk>
-> Cc: Oleg Nesterov <oleg@redhat.com>
-> ---
->
-> v2: Fix kasan_record_aux_stack() calling sequence issue.
->     Thanks for Dmitry's suggestion
+This patchset supports for MT8183 chip to mtk_thermal.c.
+Add thermal zone of all the thermal sensor in SoC for
+another get temperatrue. They don't need to thermal throttle.
+And we bind coolers for thermal zone nodes of cpu_thermal.
 
-Reviewed-by: Dmitry Vyukov <dvyukov@google.com>
+Changes in v7:  
+    - Fix build error in v6. 
 
-> ---
->  kernel/task_work.c | 3 +++
->  mm/kasan/kasan.h   | 2 +-
->  2 files changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/kernel/task_work.c b/kernel/task_work.c
-> index 9cde961875c0..3d4852891fa8 100644
-> --- a/kernel/task_work.c
-> +++ b/kernel/task_work.c
-> @@ -34,6 +34,9 @@ int task_work_add(struct task_struct *task, struct callback_head *work,
->  {
->         struct callback_head *head;
->
-> +       /* record the work call stack in order to print it in KASAN reports */
-> +       kasan_record_aux_stack(work);
-> +
->         do {
->                 head = READ_ONCE(task->task_works);
->                 if (unlikely(head == &work_exited))
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index 3436c6bf7c0c..e4629a971a3c 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -146,7 +146,7 @@ struct kasan_alloc_meta {
->         struct kasan_track alloc_track;
->  #ifdef CONFIG_KASAN_GENERIC
->         /*
-> -        * call_rcu() call stack is stored into struct kasan_alloc_meta.
-> +        * The auxiliary stack is stored into struct kasan_alloc_meta.
->          * The free stack is stored into struct kasan_free_meta.
->          */
->         depot_stack_handle_t aux_stack[2];
-> --
-> 2.18.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20210316024410.19967-1-walter-zh.wu%40mediatek.com.
+Changes in v6:
+    - Rebase to kernel-5.11-rc1.
+    - [1/3]
+	- add interrupts property.
+    - [2/3]
+	- add the Tested-by in the commit message.
+    - [3/3]
+	- use the mt->conf->msr[id] instead of conf->msr[id] in the
+	  _get_sensor_temp and mtk_thermal_bank_temperature.
+	- remove the redundant space in _get_sensor_temp and
+	  mtk_read_sensor_temp.
+	- change kmalloc to dev_kmalloc in mtk_thermal_probe.
 
+Changes in v5:
+    - Rebase to kernel-5.9-rc1.
+    - Revise the title of cover letter.
+    - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
+    - [2/2]
+        -  Add the judgement to the version of raw_to_mcelsius.
+
+Changes in v4:
+    - Rebase to kernel-5.6-rc1.
+    - [1/7]
+        - Squash thermal zone settings in the dtsi from [v3,5/8]
+          arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
+        - Remove the property of interrupts and mediatek,hw-reset-temp.
+    - [2/7]
+        - Correct commit message.
+    - [4/7]
+        - Change the target temperature to the 80C and change the commit message.
+    - [6/7]
+        - Adjust newline alignment.
+        - Fix the judgement on the return value of registering thermal zone.
+
+Changes in v3:
+    - Rebase to kernel-5.5-rc1.
+    - [1/8]
+        - Update sustainable power of cpu, tzts1~5 and tztsABB.
+    - [7/8]
+        - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
+          in dts, which is normal for mt8173, so prompt a warning here instead of
+          failing.
+
+        Return -EAGAIN instead of -EACCESS on the first read of sensor that
+        often are bogus values. This can avoid following warning on boot:
+
+          thermal thermal_zone6: failed to read out thermal zone (-13)
+
+Changes in v2:
+    - [1/8]
+        - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
+    - [4/8]
+        - Add the min opp of cpu throttle.
+
+Matthias Kaehlcke (1):
+  arm64: dts: mt8183: Configure CPU cooling
+
+Michael Kao (2):
+  thermal: mediatek: add another get_temp ops for thermal sensors
+  arm64: dts: mt8183: add thermal zone node
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 141 +++++++++++++++++++++++
+ drivers/thermal/mtk_thermal.c            | 100 ++++++++++++----
+ 2 files changed, 216 insertions(+), 25 deletions(-)
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
