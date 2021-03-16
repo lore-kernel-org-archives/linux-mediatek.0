@@ -2,98 +2,92 @@ Return-Path: <SRS0=yOeO=IO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 24E5EC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4929FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 11:15:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B59F365018
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:56:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B59F365018
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id DFDC665023
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 11:15:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFDC665023
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1DGElbA3FfzahkbxOigwXAxOUawdyZMajyFGrtBU4so=; b=g6j9+qp1ffdtxtMzTp9YxI+OA
-	nI65znd1g5Ijr7GgfcB/wTt06KpONVbut+hDtVIayckg9TqPegV97Aju0qV50C0BBYBhJ2GzFTjRN
-	ZWcjw1C8aewjY4/35625oJ0JCuIff7fS4acQsw5vIMrdGNrWyQop3KSCuzpAijAMkAkn9DNzIrMzM
-	AfcHvpT5WoLMvYQ5LTzojC7ciCy7oDuN94I6fKK0XxbWtlWwPXneDLXsq9N7/OZlCrq/wUbnLMeHh
-	3hY4HAVrqNpoDgedopPoXcE8WI3RkCx/dZPogJLinO/XtYOmRnHjfHL5bqJeKtMtY6fhag21uvxvi
-	5GFapGtTQ==;
+	 bh=tENT26M40QdUXksXXbIdFc9qBwd6C6R0hnpLRB/qtTI=; b=GlzwN9DSnjMz+T1Vdihof0ppw
+	+qSdMDucj++rY/HCmyVP2G4qSZicHVXUMByximYEPe7AXpjveZTnML+9k0XGveHLHZAu+VVzF2YQE
+	DhuPDtk/3trfO4KRJsCVhNLpeGwHEfVEc7bEDi+tmTXkZvGXCFY62eQv0yCQz5VIgsFq7BM+cRcr7
+	aIOghIHuQxWiFbyXQw1TowaoVKd8bAQCP15yxcDxwvPuo+UypAp5L7XKzynsw2BuEIT1QmWuBM+m1
+	6FtCOw+trSWChZSinoOGsBboYKdZc0IIdtPzOjex65eFA1TRFUHYzh1e+fzert1/7USdphYxzmeK5
+	H6qkFnjjQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lM6Qx-000KWf-1k; Tue, 16 Mar 2021 09:56:15 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1lM7fi-000Wnd-7n; Tue, 16 Mar 2021 11:15:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lM6Qo-000KUw-7o; Tue, 16 Mar 2021 09:56:07 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id si25so15360243ejb.1;
- Tue, 16 Mar 2021 02:56:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=QYNfh3jaX3N1CtGg7NED72HcSFgmcITNomBhZBJqE/Y=;
- b=uGMvRB1D0xw70y+CqywgeVFN8O2H8SGeov523gtjUoa3d4JflrPmx1ryXrBFlUdjpF
- hacp04N79LXlDGf/LQEJQKlgRado5Q5fS8vPFPDhPT8Ug6WXSqpAOyTVaaVc3bIOk0cX
- ldw1XneeXXuYuimA5flZYweCUnMr6Z36zoHhlsKNvNR4QMUngnYJnU1oqx6/kxLL3vSW
- 64cS96xu3+n9VfJB74iIYUjthP83UwHCV6OE6MiAtUSCH91mdEdkT4jFl+QFOlfizyMk
- nk3a7yFivK9qkNFyZlCaN9Hj6kXDEsRgvMH7VbLgwClPp6fhx/HL2O1avjXcAuhjYbCV
- xlgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=QYNfh3jaX3N1CtGg7NED72HcSFgmcITNomBhZBJqE/Y=;
- b=ZLicaS6pQuqAXRINy82LbE7YTl/fAY31fbyEXIxIGwGyQXqLKw90kOYaIti5V+I0TJ
- paGmm3wV4V1OJRHyoiHpgV/cGpWM8BeN1HjkQ77/LE4+azXf1TeJffhjmVrIcQMwSpuD
- 9e4esuTJXK2jvfg/k+GPqLbyT8fh7iWV0fqKFxXXwrZiR+yhRJaNWbyIfWBKeEmekZV7
- 2CgLSAuSCoj+RoSwOWVlj2UfobabBV2xfI4dgxGY4sbyeFR4OirySFUMW1suBGtFg8XJ
- C77VWXxxvE5AMLKqQFLHQ0xwB2//zvdlLtu0lfZHMlvZHgK5VCXZ98dwsPA6lDps0PsS
- tHIw==
-X-Gm-Message-State: AOAM530nOpQDbPgdnaf/TLSnPJ97U1VK7JgJnoARH4SzuEvz7+Ofv0VN
- Yfncu/PAHHPnXqZGgSHXMT0=
-X-Google-Smtp-Source: ABdhPJzw1VKhJ6YtiLJyj67J0yZSTlZtQfHt+vO+1cr3OxFeMOB954HHMAFSoDcehWnH6I6ZeWT1iw==
-X-Received: by 2002:a17:906:5e50:: with SMTP id
- b16mr29207175eju.272.1615888565730; 
- Tue, 16 Mar 2021 02:56:05 -0700 (PDT)
-Received: from skbuf (5-12-16-165.residential.rdsnet.ro. [5.12.16.165])
- by smtp.gmail.com with ESMTPSA id a26sm10649008edm.15.2021.03.16.02.56.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 02:56:05 -0700 (PDT)
-Date: Tue, 16 Mar 2021 11:56:04 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Frank Wunderlich <frank-w@public-files.de>,
- =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>
-Subject: Re: [PATCH net-next] net: dsa: mt7530: support MDB and bridge flag
- operations
-Message-ID: <20210316095604.dvg32ia5pfdtpenw@skbuf>
-References: <20210315170940.2414854-1-dqfext@gmail.com>
+ id 1lM7fY-000Wlh-Lq; Tue, 16 Mar 2021 11:15:28 +0000
+X-UUID: f650f5fe16e44463be197b5a652470b3-20210316
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=pTOYFrKrrCYz7dQKoS9KI7eetpxrROlm3louC2B/8GE=; 
+ b=WNRwPcfVZDZf6nEFhhkXUK9AjgZLwyWqGdArUefv703s497nUyYkajtq/mnsZqH8fsZuwEo72LgFjONFQyq4ENcHbCQqpYBOapSLa0pKE6/vR2/pdoDZfwzelGpEBk/k0fawK7lldYak9e/dgQ2RA1RCbHGuPG9OGKLu6HxkRcc=;
+X-UUID: f650f5fe16e44463be197b5a652470b3-20210316
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <seiya.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 840197360; Tue, 16 Mar 2021 03:15:17 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Mar 2021 04:15:16 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Mar 2021 19:15:13 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 16 Mar 2021 19:15:14 +0800
+From: Seiya Wang <seiya.wang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, 
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
+ Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, Mark Brown <broonie@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
+ <tglx@linutronix.de>, Wim Van Sebroeck <wim@linux-watchdog.org>, "Guenter
+ Roeck" <linux@roeck-us.net>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Seiya
+ Wang" <seiya.wang@mediatek.com>, Fabien Parent <fparent@baylibre.com>, "Sean
+ Wang" <sean.wang@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, Wenbin Mei
+ <wenbin.mei@mediatek.com>, Stanley Chu <stanley.chu@mediatek.com>, Bayi Cheng
+ <bayi.cheng@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-iio@vger.kernel.org>, <linux-mmc@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-serial@vger.kernel.org>, <linux-spi@vger.kernel.org>,
+ <linux-watchdog@vger.kernel.org>, <srv_heupstream@mediatek.com>
+Subject: [PATCH 01/10] dt-bindings: timer: Add compatible for Mediatek MT8195
+Date: Tue, 16 Mar 2021 19:14:34 +0800
+Message-ID: <20210316111443.3332-2-seiya.wang@mediatek.com>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20210316111443.3332-1-seiya.wang@mediatek.com>
+References: <20210316111443.3332-1-seiya.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210315170940.2414854-1-dqfext@gmail.com>
+X-TM-SNTS-SMTP: 7DBB21F2AB5E02307627BB7A18E5EFF7B6C6C158DF453B6D49922F794F81B9BC2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210316_095606_423875_BB1D3D2E 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210316_111525_295545_6B519058 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,17 +104,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 16, 2021 at 01:09:40AM +0800, DENG Qingfang wrote:
-> Support port MDB and bridge flag operations.
-> 
-> As the hardware can manage multicast forwarding itself, offload_fwd_mark
-> can be unconditionally set to true.
-> 
-> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> ---
+This commit adds dt-binding documentation of timer for Mediatek MT8195 SoC
+Platform.
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+---
+ Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+index 690a9c0966ac..e5c57d6e0186 100644
+--- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
++++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+@@ -23,6 +23,7 @@ Required properties:
+ 	For those SoCs that use SYST
+ 	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
+ 	* "mediatek,mt8192-timer" for MT8192 compatible timers (SYST)
++	* "mediatek,mt8195-timer" for MT8195 compatible timers (SYST)
+ 	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
+ 	* "mediatek,mt6765-timer" for MT6765 and all above compatible timers (SYST)
+ 
+-- 
+2.14.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
