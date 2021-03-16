@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4929FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 11:15:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05FBDC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 11:15:48 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DFDC665023
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 11:15:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFDC665023
+	by mail.kernel.org (Postfix) with ESMTPS id A00FE65023
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 11:15:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A00FE65023
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tENT26M40QdUXksXXbIdFc9qBwd6C6R0hnpLRB/qtTI=; b=GlzwN9DSnjMz+T1Vdihof0ppw
-	+qSdMDucj++rY/HCmyVP2G4qSZicHVXUMByximYEPe7AXpjveZTnML+9k0XGveHLHZAu+VVzF2YQE
-	DhuPDtk/3trfO4KRJsCVhNLpeGwHEfVEc7bEDi+tmTXkZvGXCFY62eQv0yCQz5VIgsFq7BM+cRcr7
-	aIOghIHuQxWiFbyXQw1TowaoVKd8bAQCP15yxcDxwvPuo+UypAp5L7XKzynsw2BuEIT1QmWuBM+m1
-	6FtCOw+trSWChZSinoOGsBboYKdZc0IIdtPzOjex65eFA1TRFUHYzh1e+fzert1/7USdphYxzmeK5
-	H6qkFnjjQ==;
+	 bh=mkh3sgRvZzF8xB9ugZRyaSBOL3N6UitI/aKl+BWbzwo=; b=CejrhSgVBRDsVUr12t3RTZpQ/
+	QvukF7GmQQ4jGua+33A8+sXzxbl2hSE5ppAkoWF1t80E5MJM+EZ8dxPnUakCloic+wnRqmcf+9H8F
+	Udj9OcBgmrLTR1/wr7SllzPTl2CgVoqnrwmRpA78MPEGnUeYC6UkGPY878+ugqHzhd/tEXlThCEbj
+	s1HNLufYGEDM8wd0/nX0U7kHeWmBM0wSbGNy7+jWZ37H56Xajvl794jPCvulghHt9VhbuE2C346y/
+	VAGFFL2n31peZZKR39D5QV+LYa5OpB0gXEHo8pLp/r2xNioDQK1322lUlhQRue376pxOA+97gWdMc
+	1+o/ipCrQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lM7fi-000Wnd-7n; Tue, 16 Mar 2021 11:15:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lM7fp-000Wp5-EN; Tue, 16 Mar 2021 11:15:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lM7fY-000Wlh-Lq; Tue, 16 Mar 2021 11:15:28 +0000
-X-UUID: f650f5fe16e44463be197b5a652470b3-20210316
+ id 1lM7fa-000Wm6-4u; Tue, 16 Mar 2021 11:15:28 +0000
+X-UUID: e9da83cfdf8d4c80930fb17c623699ce-20210316
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=pTOYFrKrrCYz7dQKoS9KI7eetpxrROlm3louC2B/8GE=; 
- b=WNRwPcfVZDZf6nEFhhkXUK9AjgZLwyWqGdArUefv703s497nUyYkajtq/mnsZqH8fsZuwEo72LgFjONFQyq4ENcHbCQqpYBOapSLa0pKE6/vR2/pdoDZfwzelGpEBk/k0fawK7lldYak9e/dgQ2RA1RCbHGuPG9OGKLu6HxkRcc=;
-X-UUID: f650f5fe16e44463be197b5a652470b3-20210316
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=TPywVyVM07bg4NfW3WaoV7LBQTHfjGbHGXbJQ5oYAUs=; 
+ b=CdOsFWCGouNS8fkOiatV7YSUJdJBbP7QfyauATERjAeKq3RH0a5vl0t4NedDdrcHxJsOqiczcIGHLToqzJfcRhRwigEq9gQnIhpB3Nl+Vn/P6evT/OXeM2UDUZhdJiZg/EiUz6gkS4cCe718AaaQtiF56USzexkAwdh7NXD29S4=;
+X-UUID: e9da83cfdf8d4c80930fb17c623699ce-20210316
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <seiya.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 840197360; Tue, 16 Mar 2021 03:15:17 -0800
+ with ESMTP id 1047232183; Tue, 16 Mar 2021 03:15:22 -0800
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Mar 2021 04:15:16 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Mar 2021 04:15:21 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Mar 2021 19:15:13 +0800
+ 15.0.1497.2; Tue, 16 Mar 2021 19:15:19 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 16 Mar 2021 19:15:14 +0800
+ Frontend Transport; Tue, 16 Mar 2021 19:15:19 +0800
 From: Seiya Wang <seiya.wang@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 CC: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, 
@@ -76,18 +76,18 @@ CC: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-serial@vger.kernel.org>, <linux-spi@vger.kernel.org>,
  <linux-watchdog@vger.kernel.org>, <srv_heupstream@mediatek.com>
-Subject: [PATCH 01/10] dt-bindings: timer: Add compatible for Mediatek MT8195
-Date: Tue, 16 Mar 2021 19:14:34 +0800
-Message-ID: <20210316111443.3332-2-seiya.wang@mediatek.com>
+Subject: [PATCH 02/10] dt-bindings: serial: Add compatible for Mediatek MT8195
+Date: Tue, 16 Mar 2021 19:14:35 +0800
+Message-ID: <20210316111443.3332-3-seiya.wang@mediatek.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20210316111443.3332-1-seiya.wang@mediatek.com>
 References: <20210316111443.3332-1-seiya.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 7DBB21F2AB5E02307627BB7A18E5EFF7B6C6C158DF453B6D49922F794F81B9BC2000:8
+X-TM-SNTS-SMTP: 710D83FF007C2822D4FF14E9AA594A7B428033586ACDF8B86D3933F89E6055C62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210316_111525_295545_6B519058 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20210316_111526_776144_CFEC48D6 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,25 +104,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This commit adds dt-binding documentation of timer for Mediatek MT8195 SoC
+This commit adds dt-binding documentation of uart for Mediatek MT8195 SoC
 Platform.
 
 Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
 ---
- Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
+ Documentation/devicetree/bindings/serial/mtk-uart.txt | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-index 690a9c0966ac..e5c57d6e0186 100644
---- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-+++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-@@ -23,6 +23,7 @@ Required properties:
- 	For those SoCs that use SYST
- 	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
- 	* "mediatek,mt8192-timer" for MT8192 compatible timers (SYST)
-+	* "mediatek,mt8195-timer" for MT8195 compatible timers (SYST)
- 	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
- 	* "mediatek,mt6765-timer" for MT6765 and all above compatible timers (SYST)
+diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+index 647b5aee86f3..64c4fb59acd1 100644
+--- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
++++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+@@ -20,6 +20,7 @@ Required properties:
+   * "mediatek,mt8173-uart" for MT8173 compatible UARTS
+   * "mediatek,mt8183-uart", "mediatek,mt6577-uart" for MT8183 compatible UARTS
+   * "mediatek,mt8192-uart", "mediatek,mt6577-uart" for MT8192 compatible UARTS
++  * "mediatek,mt8195-uart", "mediatek,mt6577-uart" for MT8195 compatible UARTS
+   * "mediatek,mt8516-uart" for MT8516 compatible UARTS
+   * "mediatek,mt6577-uart" for MT6577 and all of the above
  
 -- 
 2.14.1
