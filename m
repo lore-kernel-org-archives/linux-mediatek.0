@@ -2,79 +2,88 @@ Return-Path: <SRS0=yOeO=IO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06322C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 17:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BF09C433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 17:55:31 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7FA0564DE7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 17:53:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FA0564DE7
+	by mail.kernel.org (Postfix) with ESMTPS id E881D650DE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 17:55:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E881D650DE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=l4bR9w3MqaO2N8Z25Euwza+5kfYIBynll9J3FjDCB6I=; b=Jljo2an3Gzek/lUlNMQZoBrwY
-	X/7l7fxeS0Q0Aae7UrwwPwHmvhiVX8HUW4eh8KF8BIuqe6V2QBKE268Qhn6reM6PZRmHFj8Q7qjes
-	ct6vMFOWBWSuyUiJ49Aprh3mq8aHvaycEoT2QbBLCe7vKF/1lIX0TP9OFaltmTZjdPlKalW5qSMlb
-	x9GVRlEA4s6mvDTqmdIX93QWMXLuKz4AnFkONrjMRu75RWjqGI1zWkM4JoSQNPc0eTXQHgYcW72ni
-	UcNOkgDwhzA1oZNBWw8STFn0QuJ6ONmfOsyfVhCk6JEiiPJ5JpUgigg0x8wf1Zg09j/+yykjLJ1So
-	oySFMi/Lg==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:References:In-Reply-To:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mmlnrCQtuKxZ1bPkaqlR6SoXcjrygyXZRZmj7wGR5Jg=; b=oZz7OTT6DKVAYerwSgXNtVnpdH
+	1KYlr9uYw7ZnmD0+xT3gdlo7zMIvD7APy/KdlNy2STtp+lpwIl91njEhLaWugc3BVIozRH3BMR28w
+	fzr1p01cdTGGgM1pilH1YMPhvCnzrouLKUTCecO8h6GD2olOUMKo6IIUS7e/WYJAHYjEsVDhGTuw3
+	ubdwWMayypoRpvAOEbmsqajoJEUrYXspgdR0Zr6azkB9IvDZBl8GRU7syNNlii2+O8/5kYGN5JPlK
+	yEGF+WKfC/y226jXqrF6exdfm/6RwJLZFbFPwXtRqKsETpbncq5OG1zO2sfV/4LzXKMNHBVfnh5eI
+	ut28ouUg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lMDt4-001TKE-IH; Tue, 16 Mar 2021 17:53:46 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lMDuZ-001Trt-TN; Tue, 16 Mar 2021 17:55:20 +0000
+Received: from mail-io1-f42.google.com ([209.85.166.42])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMDrp-001SzI-Pa; Tue, 16 Mar 2021 17:52:36 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6B57765120;
- Tue, 16 Mar 2021 17:52:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615917148;
- bh=AzDNWIakpV6kbVyD7mjxNrEJxc3kYf5SEm43UCNUWF4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=rFYiJR/9X5zpZaiPy4Jjpf724cR4XAh94ugE3KkSc3qHUKTZWMJ8hMT67XayFNWpc
- nJJaorFHkN8umklWYKxY0lppxEqqjTxb8aftsIldEvAVsWZyV5DNKeJTFUA8n14Hzo
- 2m7wmdBKNqOvfFt1hUIHMkotK26e2X4v4+2aMiL82hJWDa26DTZfLr4W2IhuHrdo+m
- bBrvucRxFrUcuuy6ix1EcPLXXhTUr5KlxH0zAABC6dDp+S7Cm5V7X6i/7hZKTR6dET
- uaIil5JMPAOVXnrXdYQZ34g2JJEcDEfV/Fge5AVj5zgSXw5DusSmK86zAgsD1OZxeU
- AiF0uMtV1FfCg==
-Date: Tue, 16 Mar 2021 17:52:25 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Fei Shao <fshao@chromium.org>, Ran Bi <ran.bi@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 7/8] regulator: mt6359: Add support for MT6359P
- regulator
-Message-ID: <20210316175225.GD4309@sirena.org.uk>
-References: <1615829757-3223-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1615829757-3223-8-git-send-email-hsin-hsiung.wang@mediatek.com>
-MIME-Version: 1.0
-In-Reply-To: <1615829757-3223-8-git-send-email-hsin-hsiung.wang@mediatek.com>
-X-Cookie: Results vary by individual.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1lMDtW-001TSK-3D; Tue, 16 Mar 2021 17:54:18 +0000
+Received: by mail-io1-f42.google.com with SMTP id n14so38170758iog.3;
+ Tue, 16 Mar 2021 10:54:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=Z93rlUj9sdWeq37uZfM03RuUP74yX70Y9MLTGZ1xQjw=;
+ b=BuCyy4p+taq1r4f0gpgKcP42VXxayg5lxaYBSeTwNRah6sICD3VMEAbGpZWOumVfgK
+ NOAnbDFNapRog1raoEJQ5vahyEFOkiNY5NVdZ2ukgldM5JCVFkshlBExgGRqaqCBR96R
+ nwCeogoAMHgKMNc4xI28ZGKhYj4MCgR12diqDacSUbOyPo55nRMH/biazc3paZjJxjoh
+ kmiIcPP33xoK0TMHqgqH4AwebR3ElSL1Av/eSHpjZ8su6g8lfq9ziPvwd+MdEdeUmcpM
+ n2dpxri+kfKrO8Rv3iImBE4/7FeHVtl+sc4y9hyA47InS9jxGHQ8zb6cbTjHGPLmdp/c
+ yz1Q==
+X-Gm-Message-State: AOAM532KLaFdZf51dQYgKXXfZ+ZRJIChVHq/EdaEKCYIx3VPlPnsODkO
+ L33ONn926wQPDTTc5cvt+Q==
+X-Google-Smtp-Source: ABdhPJx9NqGassAFyEjEetsnxzPc4LiCv5OZO+q67dVfM9IFfAuk7yGqkR/agnODdaVp/QC2A1v/ig==
+X-Received: by 2002:a05:6602:26cb:: with SMTP id
+ g11mr4090124ioo.180.1615917252062; 
+ Tue, 16 Mar 2021 10:54:12 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id l16sm9795688ils.11.2021.03.16.10.54.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Mar 2021 10:54:11 -0700 (PDT)
+Received: (nullmailer pid 3326118 invoked by uid 1000);
+ Tue, 16 Mar 2021 17:54:09 -0000
+From: Rob Herring <robh@kernel.org>
+To: Roger Lu <roger.lu@mediatek.com>
+Cc: Kevin Hilman <khilman@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ HenryC Chen <HenryC.Chen@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>,
+ Nicolas Boichat <drinkcat@google.com>, YT Lee <yt.lee@mediatek.com>,
+ Stephen Boyd <sboyd@kernel.org>, Charles Yang <Charles.Yang@mediatek.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Mark Rutland <mark.rutland@arm.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Nishanth Menon <nm@ti.com>, linux-pm@vger.kernel.org
+In-Reply-To: <20210315133018.4976-2-roger.lu@mediatek.com>
+References: <20210315133018.4976-1-roger.lu@mediatek.com>
+ <20210315133018.4976-2-roger.lu@mediatek.com>
+Subject: Re: [PATCH v12 1/7] dt-bindings: soc: mediatek: add mtk svs
+ dt-bindings
+Date: Tue, 16 Mar 2021 11:54:09 -0600
+Message-Id: <1615917249.208932.3326117.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210316_175231_260999_C185B04B 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20210316_175414_590356_CECC0486 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +95,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1648753039650033978=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 15 Mar 2021 21:30:12 +0800, Roger Lu wrote:
+> Document the binding for enabling mtk svs on MediaTek SoC.
+> 
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> ---
+>  .../bindings/soc/mediatek/mtk-svs.yaml        | 81 +++++++++++++++++++
+>  1 file changed, 81 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+> 
 
---===============1648753039650033978==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="SFyWQ0h3ruR435lw"
-Content-Disposition: inline
+My bot found errors running 'make dt_binding_check' on your patch:
 
+yamllint warnings/errors:
 
---SFyWQ0h3ruR435lw
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml: properties:nvmem-cells:maxItems: False schema does not allow 2
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml: ignoring, error in schema: properties: nvmem-cells: maxItems
+warning: no schema found in file: ./Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
 
-On Tue, Mar 16, 2021 at 01:35:56AM +0800, Hsin-Hsiung Wang wrote:
-> The MT6359P is a eco version for MT6359 regulator.
-> We add support based on MT6359 regulator driver.
+See https://patchwork.ozlabs.org/patch/1453275
 
-Acked-by: Mark Brown <broonie@kernel.org>
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
---SFyWQ0h3ruR435lw
-Content-Type: application/pgp-signature; name="signature.asc"
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
------BEGIN PGP SIGNATURE-----
+pip3 install dtschema --upgrade
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmBQ8FgACgkQJNaLcl1U
-h9CdkAf9Hbz0m/xv65ZqrW8tLgUxjCTjcWpw/fLlr0NuMnmtYANHKy9Pjs76Vl2W
-2kyXSeAcDdKV4/j8aEK8fd8JOMZTqUuN5OmJDoUvIN7DSDd0E3BFeT5bvBvUTnWN
-BbP8WBJPBF9pIHsv9D2xT/QlaXVvGjohZHFG41XSfllNGw1DjPFAjkAhTOyXzT1t
-s+tuHrpLJxzxyvK07WJnt9LfFMz80mgKT7PEhalXP1KRbkLM2wXuSEBgoy4bm5ZZ
-XF7thh112bug+30SXTGVBzutbHJr3o4YSRNbHOysnpalWONxfVoZjrRoTgeW5SeK
-bbowgAEaY7/4sEMAKWFqF25+fW8QCA==
-=C2bz
------END PGP SIGNATURE-----
+Please check and re-submit.
 
---SFyWQ0h3ruR435lw--
-
-
---===============1648753039650033978==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1648753039650033978==--
-
