@@ -2,19 +2,20 @@ Return-Path: <SRS0=yOeO=IO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51265C433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24E5EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:56:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D6F7065014
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:55:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6F7065014
+	by mail.kernel.org (Postfix) with ESMTPS id B59F365018
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:56:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B59F365018
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,80 +24,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9jxu0vygrssOVr40MKuFU09eBgW+dP5egkDmW+ALj74=; b=p50+uf4bQtHZjwbtPgtZACNTP
-	aecvu+uYCMQNhZWLdGDOACFdLw+zC9kzml5wBjgzxCMA9YrUza8pFX+nPJD9IImxzklLTLDkpqczk
-	Oxjoqcm1YlIZVmYD9pCOuCCMnvqCya8A4bryjvYJmyxgnv3xpJhkWjANkR7qMdDOl3h/I1q3Pfa/Y
-	ShlE3nnnpWM7DYIk/n8qRY03nNe7EJ8x8tfi9Tw9EKur84o6IrYEAlmld5TyY8yH0Pe+n/7gkMVhx
-	GjlZWilFTexP5KBJ1BDYFk6H/hOWHMA7jfkztJuGG78Ahc8E3do74YT6vjfRIquIrpaiKmMTVjBWt
-	e+0k62S3A==;
+	 bh=1DGElbA3FfzahkbxOigwXAxOUawdyZMajyFGrtBU4so=; b=g6j9+qp1ffdtxtMzTp9YxI+OA
+	nI65znd1g5Ijr7GgfcB/wTt06KpONVbut+hDtVIayckg9TqPegV97Aju0qV50C0BBYBhJ2GzFTjRN
+	ZWcjw1C8aewjY4/35625oJ0JCuIff7fS4acQsw5vIMrdGNrWyQop3KSCuzpAijAMkAkn9DNzIrMzM
+	AfcHvpT5WoLMvYQ5LTzojC7ciCy7oDuN94I6fKK0XxbWtlWwPXneDLXsq9N7/OZlCrq/wUbnLMeHh
+	3hY4HAVrqNpoDgedopPoXcE8WI3RkCx/dZPogJLinO/XtYOmRnHjfHL5bqJeKtMtY6fhag21uvxvi
+	5GFapGtTQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lM6QR-000KQ1-OP; Tue, 16 Mar 2021 09:55:43 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1lM6Qx-000KWf-1k; Tue, 16 Mar 2021 09:56:15 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lM6QH-000KOs-H3; Tue, 16 Mar 2021 09:55:35 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id dx17so71105815ejb.2;
- Tue, 16 Mar 2021 02:55:30 -0700 (PDT)
+ id 1lM6Qo-000KUw-7o; Tue, 16 Mar 2021 09:56:07 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id si25so15360243ejb.1;
+ Tue, 16 Mar 2021 02:56:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=D8pE+gAt6ykTk6iu18Gsykjh2e+iH3BpnPTvA4JqlAY=;
- b=XiFI45IJLFKHVOizWJznMDvgItTaoT+GMKNp70BMoRkEIlCLDvWGkTnZL3tkyyR4FM
- ZhWdpdE5Hmk8vJfqBqgEhOle9ghmPvNAeA7n55zWcfvjMSmei1GV/x4WqAz3c2emWGkk
- QrGZBBRcQffol+xQTy6MuOKTudSL2zukXg8A38i8xu4jmQ/ALPC+9nJ+fuGBzRTsuPlM
- PGZyVuX7N3RXkvlXxvR7kw5DT1murOweNYyB+DmjEpYjYVSaSVEu5pRPG05fNkswD+/l
- +7SYcx2HAiEAheJRqAKckE7v4fa2vT9jISSOpgG8YK4TTbIjkT52UcsydJLXrBljQQvw
- KFVA==
+ bh=QYNfh3jaX3N1CtGg7NED72HcSFgmcITNomBhZBJqE/Y=;
+ b=uGMvRB1D0xw70y+CqywgeVFN8O2H8SGeov523gtjUoa3d4JflrPmx1ryXrBFlUdjpF
+ hacp04N79LXlDGf/LQEJQKlgRado5Q5fS8vPFPDhPT8Ug6WXSqpAOyTVaaVc3bIOk0cX
+ ldw1XneeXXuYuimA5flZYweCUnMr6Z36zoHhlsKNvNR4QMUngnYJnU1oqx6/kxLL3vSW
+ 64cS96xu3+n9VfJB74iIYUjthP83UwHCV6OE6MiAtUSCH91mdEdkT4jFl+QFOlfizyMk
+ nk3a7yFivK9qkNFyZlCaN9Hj6kXDEsRgvMH7VbLgwClPp6fhx/HL2O1avjXcAuhjYbCV
+ xlgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=D8pE+gAt6ykTk6iu18Gsykjh2e+iH3BpnPTvA4JqlAY=;
- b=S6tup6mvljVjkW65zVtdKv5UzvFt0vutOzUPYsIa58gOAKoZyo4yKVtOOmWQdKxMCb
- oTJAIIqPsQOVfujNLeP+CfM5YFE5A6sQwRqkx0+3qjhMp2X0sC64PesBXM98ENvNLXDP
- E94hterSco907mu8L3tNYEB3Jaoo0g45Fo7cUDry1CA32dI9i276vuWEQmAZY8zxvZZb
- nLWTBX+J1lQo4rqTuvfxX1I8Es/VA+ZJoPB52d6lxnPeATHgFG7BlfpjXD8Eqs2fipGm
- uSQjEYYveY5jombgCt/LjtZDer6+xK0IGWW50x/A+s7QicfKNr8z1rg56Z2pVzdvl3hi
- VTIw==
-X-Gm-Message-State: AOAM530oNm+C01tKTNPVrARjxjrAMT7qt/cXhvQq2DQCPWKGHFI42pNc
- HWoOGuB9y/1cLGVEohQWFiw=
-X-Google-Smtp-Source: ABdhPJwlSzu63hjHYO/dHln4WJdHEkcor0oiJEgjcMH7GmLuqXTnl+VEpGHjveeFrFCE9UX1a5Vj/w==
-X-Received: by 2002:a17:906:4d85:: with SMTP id
- s5mr26962757eju.43.1615888530393; 
- Tue, 16 Mar 2021 02:55:30 -0700 (PDT)
+ bh=QYNfh3jaX3N1CtGg7NED72HcSFgmcITNomBhZBJqE/Y=;
+ b=ZLicaS6pQuqAXRINy82LbE7YTl/fAY31fbyEXIxIGwGyQXqLKw90kOYaIti5V+I0TJ
+ paGmm3wV4V1OJRHyoiHpgV/cGpWM8BeN1HjkQ77/LE4+azXf1TeJffhjmVrIcQMwSpuD
+ 9e4esuTJXK2jvfg/k+GPqLbyT8fh7iWV0fqKFxXXwrZiR+yhRJaNWbyIfWBKeEmekZV7
+ 2CgLSAuSCoj+RoSwOWVlj2UfobabBV2xfI4dgxGY4sbyeFR4OirySFUMW1suBGtFg8XJ
+ C77VWXxxvE5AMLKqQFLHQ0xwB2//zvdlLtu0lfZHMlvZHgK5VCXZ98dwsPA6lDps0PsS
+ tHIw==
+X-Gm-Message-State: AOAM530nOpQDbPgdnaf/TLSnPJ97U1VK7JgJnoARH4SzuEvz7+Ofv0VN
+ Yfncu/PAHHPnXqZGgSHXMT0=
+X-Google-Smtp-Source: ABdhPJzw1VKhJ6YtiLJyj67J0yZSTlZtQfHt+vO+1cr3OxFeMOB954HHMAFSoDcehWnH6I6ZeWT1iw==
+X-Received: by 2002:a17:906:5e50:: with SMTP id
+ b16mr29207175eju.272.1615888565730; 
+ Tue, 16 Mar 2021 02:56:05 -0700 (PDT)
 Received: from skbuf (5-12-16-165.residential.rdsnet.ro. [5.12.16.165])
- by smtp.gmail.com with ESMTPSA id u14sm8986535ejx.60.2021.03.16.02.55.29
+ by smtp.gmail.com with ESMTPSA id a26sm10649008edm.15.2021.03.16.02.56.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 02:55:30 -0700 (PDT)
-Date: Tue, 16 Mar 2021 11:55:28 +0200
+ Tue, 16 Mar 2021 02:56:05 -0700 (PDT)
+Date: Tue, 16 Mar 2021 11:56:04 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
 To: DENG Qingfang <dqfext@gmail.com>
-Cc: Florian Fainelli <f.fainelli@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
- Russell King <linux@armlinux.org.uk>, netdev <netdev@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>,
+ Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Frank Wunderlich <frank-w@public-files.de>,
  =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>
 Subject: Re: [PATCH net-next] net: dsa: mt7530: support MDB and bridge flag
  operations
-Message-ID: <20210316095528.kl37helfv5jblsih@skbuf>
+Message-ID: <20210316095604.dvg32ia5pfdtpenw@skbuf>
 References: <20210315170940.2414854-1-dqfext@gmail.com>
- <892918f1-bee6-7603-b8e1-3efb93104f6f@gmail.com>
- <20210315200939.irwyiru6m62g4a7f@skbuf>
- <84bb93da-cc3b-d2a5-dda8-a8fb973c3bae@gmail.com>
- <20210315211541.pj5mpy2foi3wlhbe@skbuf>
- <CALW65jbZ1_A-HwzKwKfavQQUBfNZuBSdL8xTGuRrS5qDqi6j3A@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CALW65jbZ1_A-HwzKwKfavQQUBfNZuBSdL8xTGuRrS5qDqi6j3A@mail.gmail.com>
+In-Reply-To: <20210315170940.2414854-1-dqfext@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210316_095533_726537_03CE44ED 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20210316_095606_423875_BB1D3D2E 
+X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,24 +110,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 16, 2021 at 12:36:24PM +0800, DENG Qingfang wrote:
-> On Tue, Mar 16, 2021 at 5:15 AM Vladimir Oltean <olteanv@gmail.com> wrote:
-> >
-> > Actually this is just how Qingfang explained it:
-> > https://patchwork.kernel.org/project/netdevbpf/patch/20210224081018.24719-1-dqfext@gmail.com/
-> >
-> > I just assume that MT7530/7531 switches don't need to enable flooding on
-> > user ports when the only possible traffic source is the CPU port - the
-> > CPU port can inject traffic into any port regardless of egress flooding
-> > setting. If that's not true, I don't see how traffic in standalone ports
-> > mode would work after this patch.
+On Tue, Mar 16, 2021 at 01:09:40AM +0800, DENG Qingfang wrote:
+> Support port MDB and bridge flag operations.
 > 
-> Correct. Don't forget the earlier version of this driver (before my
-> attempt to fix roaming) disabled unknown unicast flooding (trapped to
-> CPU) in the same way.
+> As the hardware can manage multicast forwarding itself, offload_fwd_mark
+> can be unconditionally set to true.
+> 
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+> ---
 
-Ok, so in practice you don't really need to touch this register if it's
-already all ones.
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
 _______________________________________________
 Linux-mediatek mailing list
