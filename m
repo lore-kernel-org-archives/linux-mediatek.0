@@ -7,72 +7,74 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EFF2FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 08:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3843EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:23:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 80EF465007
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 08:53:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80EF465007
+	by mail.kernel.org (Postfix) with ESMTPS id BC8856500F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Mar 2021 09:23:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC8856500F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=E0sXHMvr8W6PU5/JQv16/HCbf8nj+amILAMhX4XXGeg=; b=Zy13QbQrUc+o8KNeS/PNpjI1q
-	tcBVWKjwD/e0za7D0O2o3cow8k4IdIzSEzGGQDw3pg8M8vAtgBkoZY4kOJvDdDnc2tLs0AdlBRdrQ
-	YwwlYSmJr5YiamE/XQ+jCyfFqaTL7TLF7Wu3CpeqoJt8ABLW7EfgklfpV1dGgtRFbwrQPM/tx0Wbt
-	PD1YNQr0X03s+RT0D81tWkoJZvBvMBn0+SN8ZREQfOLZj3dB90n8ADMpLwUFZNgqUstA15yM68E6M
-	lgYeCkzky7g2mwTaPDU2aflBmuOITYJgybi4Tpo4+Znx3+xuFKTdY/Vx4IF/n80k6duc/Xt5egM1h
-	gCj2Vc/cQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8iKWOxMwlX3ypnE6jjnKx5DwLDp6Z07Y85oJcFQMs7s=; b=bivzigWpUQXSDsc7Ezgsld1sbX
+	a7dQ7+J4o8HBu8y/gGxL9eKY6ROsonKssPKgUbydcyfX9OHLHxxZz1Gv79rsz7tPsrDuiKqDLNa9M
+	Q+RUke4EaDfvHAZ6ibmh4U48QnNYE2GdlSCuCIgg5aivnPTMNv+AT3xYgOJn2eZx9t56tosivM8ry
+	Fyn9jc/a/o85TSVsXVRviCIqhZI6pw9IUGcEmX/uxEJcNUqKaHN3YzUkwEY6VyZA/1dRDpblPtyWr
+	qJaQAicf3OSMtpp5sL88a5kCYel/C434YSt1avuH24qkfkMAN1C2nlaHJKUaQ0a2+fWkicGjqY6JE
+	RpLsbicA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lM5Ra-000AEz-Or; Tue, 16 Mar 2021 08:52:50 +0000
+	id 1lM5un-000Eoj-Gm; Tue, 16 Mar 2021 09:23:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lM5RJ-000ACv-Cy; Tue, 16 Mar 2021 08:52:37 +0000
-X-UUID: 944148dc4e04401c8b9ebf3774fe233d-20210316
+ id 1lM5uV-000EiS-C3; Tue, 16 Mar 2021 09:22:46 +0000
+X-UUID: e6d22631ed5b4c6c9e1d4e09735001a7-20210316
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=5twma9nZUqzFNTrgL8ss8uTYHUYGExcxhLK1aMu7FfY=; 
- b=QneUGezdweL/mrSVlhhDExRB8BNSQQg841yUIaro5zsL45D1YCaYXc3Ico0INFmqNgx1APHYJ5euFY7iTH7HiKDS9U3ivBlJ8PkR2Kqtz5JD+ZSeuOX33FKiY6wTWysmg3Xchx9JB5at9Hl7iThgbYqTedmer50LG8B6GuPx82M=;
-X-UUID: 944148dc4e04401c8b9ebf3774fe233d-20210316
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <guochun.mao@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=mS3/+mgwcEQDDrc3NvxQOfz/l+VaGpvCGWON4YxcmkY=; 
+ b=ipp+FwsCRLdTUAry8ySlGDrFm+AfEeup7Zt2h0+Zf8A9uOysMgkiI3S9dlQIqoPY3xNDzyfPs44QDpeQoRtO2xcrS6xNsRyJzGQvOWUp9XdXakWU2gEcjnikytkUJui9JUMUh/qxZe3TjD82SciLJ/EyepmQGSfHh3a2iOC9KZI=;
+X-UUID: e6d22631ed5b4c6c9e1d4e09735001a7-20210316
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1324742831; Tue, 16 Mar 2021 00:52:20 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Mar 2021 01:52:19 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Mar 2021 16:52:17 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 16 Mar 2021 16:52:17 +0800
-From: <guochun.mao@mediatek.com>
-To: Richard Weinberger <richard@nod.at>
-CC: Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <srv_heupstream@mediatek.com>, Guochun Mao <guochun.mao@mediatek.com>
-Subject: [PATCH v1 1/1] ubifs: only check replay with inode type to judge if
- inode linked
-Date: Tue, 16 Mar 2021 16:52:14 +0800
-Message-ID: <20210316085214.25024-2-guochun.mao@mediatek.com>
+ with ESMTP id 128955476; Tue, 16 Mar 2021 01:22:36 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Mar 2021 02:22:35 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Mar 2021 17:22:33 +0800
+Received: from mtkslt301.mediatek.inc (10.21.14.114) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 16 Mar 2021 17:22:33 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+ <kishon@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Chun-Kuang
+ Hu" <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Jie
+ Qiu <jie.qiu@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Cawa Cheng
+ <cawa.cheng@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-usb@vger.kernel.org>
+Subject: [PATCH v5 01/13] dt-bindings: usb: fix yamllint check warning
+Date: Tue, 16 Mar 2021 17:22:20 +0800
+Message-ID: <20210316092232.9806-1-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210316085214.25024-1-guochun.mao@mediatek.com>
-References: <20210316085214.25024-1-guochun.mao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210316_085234_355323_AD481CB5 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20210316_092244_255753_84442119 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +91,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guochun Mao <guochun.mao@mediatek.com>
+Fix warning: "missing starting space in comment"
 
-Conside the following case, it just write a big file into flash,
-when complete writing, delete the file, and then power off promptly.
-Next time power on, we'll get a replay list like:
-...
-LEB 1105:211344 len 4144 deletion 0 sqnum 428783 key type 1 inode 80
-LEB 15:233544 len 160 deletion 1 sqnum 428785 key type 0 inode 80
-LEB 1105:215488 len 4144 deletion 0 sqnum 428787 key type 1 inode 80
-...
-In the replay list, data nodes' deletion are 0, and the inode node's
-deletion is 1. In current logic, the file's dentry will be removed,
-but inode and the flash space it occupied will be reserved.
-User will see that much free space been disappeared.
-
-We only need to check the deletion value of the following inode type
-node of the replay entry.
-
-Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+Fixes: 23bf6fc7046c ("dt-bindings: usb: convert usb-device.txt to YAML schema")
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- fs/ubifs/replay.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+v5: add Fixes tag suggested by Greg
+v2~v4: no changes
+---
+ Documentation/devicetree/bindings/usb/usb-device.yaml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/fs/ubifs/replay.c b/fs/ubifs/replay.c
-index 0f8a6a16421b..1929ec63a0cb 100644
---- a/fs/ubifs/replay.c
-+++ b/fs/ubifs/replay.c
-@@ -223,7 +223,8 @@ static bool inode_still_linked(struct ubifs_info *c, struct replay_entry *rino)
- 	 */
- 	list_for_each_entry_reverse(r, &c->replay_list, list) {
- 		ubifs_assert(c, r->sqnum >= rino->sqnum);
--		if (key_inum(c, &r->key) == key_inum(c, &rino->key))
-+		if (key_inum(c, &r->key) == key_inum(c, &rino->key) &&
-+		    key_type(c, &r->key) == UBIFS_INO_KEY)
- 			return r->deletion == 0;
+diff --git a/Documentation/devicetree/bindings/usb/usb-device.yaml b/Documentation/devicetree/bindings/usb/usb-device.yaml
+index d4c99809ee9a..b77960a7a37b 100644
+--- a/Documentation/devicetree/bindings/usb/usb-device.yaml
++++ b/Documentation/devicetree/bindings/usb/usb-device.yaml
+@@ -82,9 +82,9 @@ required:
+ additionalProperties: true
  
- 	}
+ examples:
+-  #hub connected to port 1
+-  #device connected to port 2
+-  #device connected to port 3
++  # hub connected to port 1
++  # device connected to port 2
++  # device connected to port 3
+   #    interface 0 of configuration 1
+   #    interface 0 of configuration 2
+   - |
 -- 
 2.18.0
 _______________________________________________
