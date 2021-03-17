@@ -7,46 +7,46 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 118D0C433E6
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 108BDC433E0
 	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Mar 2021 00:56:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 773FC64FB9
+	by mail.kernel.org (Postfix) with ESMTPS id A59A164FBC
 	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Mar 2021 00:56:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 773FC64FB9
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A59A164FBC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LhA351IwqSf89WTZi2FciSQnfBtxqUZV4fKyWE6qcE4=; b=nHyIGaWcHLSC112GAxics03Xd0
-	GJzbMyBG6N3P5fiHfU3iWuwLcBoM89LWT4NK5D2/OcbeaUsV/JhwCchnLtpgpmzktT3eJjm9eyhSn
-	LHosxnOx8nvUkBYSxMGa6qOP4i5Ejz+lJd6yXk7PVVy2cbs6gJqArJeJSAgJ0QVMSe4ui5d+buaw4
-	TvAdFY7raqDc75r9/D3HLWkJddi7VPSqwyUn03l/AIBRbR/ZtzKh699WPcjaLo3zbeonL+6bYus4e
-	CKfgEh1Rzf7CX6Z1LJLnPXCfGrYyMlbILq+HV8WaGQ6BnLSnIvKsCm5tITJUi+/SweiSYT9/SrSmz
-	4KyOYGVQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=W3bi4aKzfCb8ZfDmTpZvBsjUxu9BjFXP3hLnrsJyOlw=; b=E/LscHgl7FjKUXw/1t0J+AQNO
+	nxXnExba8AVofRYe6H/9GXDBzL2BvVPUcf78pwQouVNw0bu/9hw4L2ZFRmYDiEAktyujjb/WLuOvC
+	x+ya9LZJiKGwxzOtpo1L+ZMe3N/h7BL+g6WcXNrgV3Zb04P2VgbeD6BWcUSuF/q6Qm+bW2kvshMgI
+	t60aHFH+NZi3QobEnvC//cmlskpp9tOKwFOAuPa9fgicY7lLq+v+VYn4JLwltxu/47m39M36ZBLrP
+	9cKHhUIzhtY8cFscg4h4P/T8z+AjG+HjmiPs9dZgTRV9TMDeuRTn2VJhdxz/Pwb4fN1nRHtckWqLI
+	5nJRUYr5Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lMKTm-0026XR-9f; Wed, 17 Mar 2021 00:56:06 +0000
+	id 1lMKTn-0026XW-9p; Wed, 17 Mar 2021 00:56:07 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMKTQ-0026UR-7e; Wed, 17 Mar 2021 00:55:46 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 4308764F8C;
- Wed, 17 Mar 2021 00:55:37 +0000 (UTC)
+ id 1lMKTQ-0026UT-Md; Wed, 17 Mar 2021 00:55:46 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 98EEC64F96;
+ Wed, 17 Mar 2021 00:55:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615942538;
- bh=ogm/cRjZMwqqmZU1ZzdX0tSSKIkx2756zP3cr0KdFQo=;
- h=From:To:Cc:Subject:Date:From;
- b=EuUbbAwe7YpXyoeHfP9zIdXQLLJ8og2djlKhhc18kLNNNdA1Kh03Y3GRkdY25j0Eq
- fTp8KnwPKD0INuvJpVIG+yvvK8SOFzRyL5yEOOAd1OfZnPdizB6XaCsbH7V+xo5CFE
- 5d3/S5HAznpqjl9BxTucU735FrM1MTzsLOZ2Ujy+g0lNqQvW3habrRaeH1kFH5cScJ
- VlqGU8icXuLyoIA8DmwqV99Va3va6g9/NEezl3RjhyvAB427jXPbcVRbRokXHOGT3S
- K+8XDXKg+j9WPqrS01a38mFmUtINj2HPEoLK4wJjCqLu+ag2orpO1TdZHGWXs8Qt6l
- +c73yMk0S9FGg==
+ s=k20201202; t=1615942539;
+ bh=eA7/9pe2sz93Lf4T19BPa+kc4xC7T19g9c4E0cRbi8s=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=cuo+uFgP2+plQlzAeYBolHZjH5Gx3DWlEdCyWT+Y2zOPeb07hOzWSsvYMZ44Mw+fX
+ LpoRWlS575KPCrA22pamHZAJQkdBKts3MOIyBB+Pha7/uWtmaaAZ3SgIrLJoVVkIk1
+ nkphnKNbakg1aZK3PiO91MXX2Vw1HEclOIJX3GmoikbDGJqwyfpcQ9oSOPK5W0U7Ih
+ 6NeVEAJ2G5uy6zZRLhs5M3IRnRYDxtXtQUX+lTlaOpGzdqJaTat9vAwAXoUQtm01P8
+ DVa18BMMUoArIMI6DsyDckvez9C1mBgWuJbOl5BHCO/L622t//oqPzvrEaj6pFykSC
+ 6uOqTUMurbS7g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,17 +54,20 @@ Cc: Felix Fietkau <nbd@nbd.name>, Kalle Valo <kvalo@codeaurora.org>,
  Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
  netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.11 01/61] mt76: fix tx skb error handling in
- mt76_dma_tx_queue_skb
-Date: Tue, 16 Mar 2021 20:54:35 -0400
-Message-Id: <20210317005536.724046-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.11 02/61] mt76: mt7915: only modify tx buffer list
+ after allocating tx token id
+Date: Tue, 16 Mar 2021 20:54:36 -0400
+Message-Id: <20210317005536.724046-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.1
+In-Reply-To: <20210317005536.724046-1-sashal@kernel.org>
+References: <20210317005536.724046-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210317_005544_818073_5882FD66 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20210317_005544_996523_8AEBA2F3 
+X-CRM114-Status: UNSURE (   8.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,72 +86,46 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit ae064fc0e32a4d28389086d9f4b260a0c157cfee ]
+[ Upstream commit 94f0e6256c2ab6803c935634aa1f653174c94879 ]
 
-When running out of room in the tx queue after calling drv->tx_prepare_skb,
-the buffer list will already have been modified on MT7615 and newer drivers.
-This can leak a DMA mapping and will show up as swiotlb allocation failures
-on x86.
-
-Fix this by moving the queue length check further up. This is less accurate,
-since it can overestimate the needed room in the queue on MT7615 and newer,
-but the difference is small enough to not matter in practice.
+Modifying the tx buffer list too early can leak DMA mappings
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Kalle Valo <kvalo@codeaurora.org>
-Link: https://lore.kernel.org/r/20210216135119.23809-1-nbd@nbd.name
+Link: https://lore.kernel.org/r/20210216135119.23809-2-nbd@nbd.name
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
-index e81dfaf99bcb..372f27687f2d 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -345,7 +345,6 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
- 	};
- 	struct ieee80211_hw *hw;
- 	int len, n = 0, ret = -ENOMEM;
--	struct mt76_queue_entry e;
- 	struct mt76_txwi_cache *t;
- 	struct sk_buff *iter;
- 	dma_addr_t addr;
-@@ -387,6 +386,11 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 1b4d65310b88..c9dd6867e125 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -957,11 +957,6 @@ int mt7915_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
  	}
- 	tx_info.nbuf = n;
+ 	txp->nbuf = nbuf;
  
-+	if (q->queued + (tx_info.nbuf + 1) / 2 >= q->ndesc - 1) {
-+		ret = -ENOMEM;
-+		goto unmap;
-+	}
-+
- 	dma_sync_single_for_cpu(dev->dev, t->dma_addr, dev->drv->txwi_size,
- 				DMA_TO_DEVICE);
- 	ret = dev->drv->tx_prepare_skb(dev, txwi, q->qid, wcid, sta, &tx_info);
-@@ -395,11 +399,6 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
- 	if (ret < 0)
- 		goto unmap;
- 
--	if (q->queued + (tx_info.nbuf + 1) / 2 >= q->ndesc - 1) {
--		ret = -ENOMEM;
--		goto unmap;
--	}
+-	/* pass partial skb header to fw */
+-	tx_info->buf[1].len = MT_CT_PARSE_LEN;
+-	tx_info->buf[1].skip_unmap = true;
+-	tx_info->nbuf = MT_CT_DMA_BUF_NUM;
 -
- 	return mt76_dma_add_buf(dev, q, tx_info.buf, tx_info.nbuf,
- 				tx_info.info, tx_info.skb, t);
+ 	txp->flags = cpu_to_le16(MT_CT_INFO_APPLY_TXD | MT_CT_INFO_FROM_HOST);
  
-@@ -415,9 +414,7 @@ mt76_dma_tx_queue_skb(struct mt76_dev *dev, struct mt76_queue *q,
- 		dev->test.tx_done--;
- #endif
+ 	if (!key)
+@@ -999,6 +994,11 @@ int mt7915_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 		txp->rept_wds_wcid = cpu_to_le16(0x3ff);
+ 	tx_info->skb = DMA_DUMMY_DATA;
  
--	e.skb = tx_info.skb;
--	e.txwi = t;
--	dev->drv->tx_complete_skb(dev, &e);
-+	dev_kfree_skb(tx_info.skb);
- 	mt76_put_txwi(dev, t);
- 	return ret;
++	/* pass partial skb header to fw */
++	tx_info->buf[1].len = MT_CT_PARSE_LEN;
++	tx_info->buf[1].skip_unmap = true;
++	tx_info->nbuf = MT_CT_DMA_BUF_NUM;
++
+ 	return 0;
  }
+ 
 -- 
 2.30.1
 
