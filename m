@@ -2,20 +2,20 @@ Return-Path: <SRS0=MDpP=IQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8623BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 00:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1DF83C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 00:32:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F37B464E74
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 00:31:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F37B464E74
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8ABF064F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 00:32:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8ABF064F2B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,68 +23,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nMwV58ceRolewbGO77VsYVHZu0nYFK1yqiS8v5yUiSI=; b=TBGjUiCxWkh4G+1Sk5k4Ek+E7
-	bT+aZnja+lkAQgn6gb1ODI6tOVGIyuN+d9qYjDCAflRCtgkGsIPnZ7hM3bq+LQge2qFy1HqO3gwcT
-	J27DnoFTluR5ZZJOs1q9+InjIWZ4LzSGd/UgtT/enhgo9gKVJ7RNfLvmAk3fs+7RJIzIGl9eHghDZ
-	vx/PRkP1zLwL4ks6erj14Qz/TviKYkbQQsDER4tiZrhS5C/l88oG1LZHoxYENpVVGBlYovywgmzCH
-	0WRD+hh17lcwA9+xNFHjn8fWwy+C7AY3SyqGVaAafEK/6TnRwd4vXa7GBriILQKXVJPNcmSUk3zYb
-	MK/Qow3Qw==;
+	 bh=z9KoCWIom8hOVLxhDpJD/EP47MKO731XmblqCt2MXJw=; b=XkztewclZdbxCzVidncgUM449
+	bj6ooOLJZ2yKSWfaa4WARwqEbD1sNVPY+m9mfM2a/LU8YNeffzcc5SW+WmWiWKaHb2PQYMrsL3RkN
+	Si+prd9IduTak+xH8ZyIn7rYVdNibkLbZAjj7VWuptsnbWbirY4up00Wsjta/yGCIpbqDhgU4Fcpy
+	RzHOtB9Shut6zPqO3ElOfbFzEbChmspNWsFEkw558hBPdbRWKlI7GVI9rB5ljLZStOde4Mw04l604
+	TJpPK9cR2OG9DmOyxyEMBNzKkMQNR6rMwxOQkLXjN89hcgYJvZAw4XbykCKsI/C0cj4KJ7hq4mUoJ
+	k+UXdLrQg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lMgZO-004AJ0-AF; Thu, 18 Mar 2021 00:31:22 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1lMga2-004AQk-B4; Thu, 18 Mar 2021 00:32:02 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMgZ3-004AFi-Sp
- for linux-mediatek@lists.infradead.org; Thu, 18 Mar 2021 00:31:13 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id ha17so2007287pjb.2
- for <linux-mediatek@lists.infradead.org>; Wed, 17 Mar 2021 17:31:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GkuRWpW9bExkYFxOTvvebzKRarhbJmzTDiFRajMJb68=;
- b=Tw1JOhx9WMaxj2zgL2+u0rROy7M24TONLFY0jAeGeUZ8wvui68EopwXxn0qUW0MLd0
- 7wDivc0uuetGtGIEBWlrqWFTBrilHFV2627ljgT263GE3RoDzgfyK5e5EBpYudqtz3dd
- /GlEBbuxEmry+CKUqSgiqaef06Dd3YyED+Uy8aI1BWqYM3LFXERUI3TDN2+wCbHzSCrC
- kocqgtsBmdIspMmdXpz5DCNo6LQRcOt+khcnBdBCVCCRtYuHidggrt5eRg0wTtuaDlgX
- W3kktFufFg0ZZSamAU5eWzJAmxbxOAlnl292ZmodwTRQBmd9GRSUIOVk5WemXVV5R2pn
- lMmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GkuRWpW9bExkYFxOTvvebzKRarhbJmzTDiFRajMJb68=;
- b=VPCcTq2O8c73zyrVQZ2F4UMtG7G1o2GC21qrQl0AH9biIOV68SsgyDzRiL2w3pCxVl
- N7/rKTgIV4H9RFBiD4mHpqCX6bGxNEi1j6pJDeNfdddkBPROlPRD8MA/QkNwo06Mq6RF
- T+AfwG511I2mlW2/BdYlQcrHsraoXRJbLWs9P1xUU5FVE+yKmea/AlLY1cdy5AyZKlQW
- XLYkia6nQYvWV7BAgm6Cs4DmUkrLkU209KY8XJVlgb3ae3Qn+RFfigDznVfG1tVdtI1h
- qW79fSPL/6LWDWp0D6WvenMq1hNVAF8P4nzo0IfCukAodn3xX8/Frlx+/Jp+MLa6FpiK
- /nNA==
-X-Gm-Message-State: AOAM532t9tn1PE0iYf+gBY3bDV+ndV3MsmjxS0w2vHT9o0wHSrjZyaF3
- pI8TRNR68L+zk8/XKrA0dlVgwHez9kLLs6BKqcymrg==
-X-Google-Smtp-Source: ABdhPJzesTshIrJdKNHCDmlj2OR3e0xSraSKUZZ3Bj14Xck17fx++XRNX8MVNVTQU2DyspV0entCrOLh4c3wfRmf7Lw=
-X-Received: by 2002:a17:90a:a10c:: with SMTP id
- s12mr1413387pjp.166.1616027458725; 
- Wed, 17 Mar 2021 17:30:58 -0700 (PDT)
+ id 1lMgZJ-004AIE-TD; Thu, 18 Mar 2021 00:31:22 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A9B8364F41;
+ Thu, 18 Mar 2021 00:31:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1616027476;
+ bh=kE5pzJREcMtcsKe3XXovC6KJw1unQTOB5zOB90M91cY=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=mgEdWsITi62mNieWrt3tt4Ns/P9SkqyfMc4vReldRwLoUMBhwCeLpKFrGitrVwO59
+ i8j6PIp2pGqzOw5zBDDYh3FCyiHGnYDTzzv7DimOmXrbnxyjT58J57rttyeT+gXRsP
+ hhSHuapQuAoYMuAcVFjcxOre4h3RyYrNXlp7nyqvWEmrJg+JzhxnEjufjYuF+IrqwD
+ KV3tZDwKhJQqOrVs4NIvcq74tTGCKgKBWMklbZUvKI1x9hTDejZ6eeWdeN7HAW4ZYj
+ ZCLrQaO51S3FceqzACjNEjRZ0JxLaAh4HaExjt9IK1Jj+R/12M0fAGa4t+Ok2UMDs3
+ /gMmCT9ZWHEpQ==
+Received: by mail-ej1-f54.google.com with SMTP id b9so1189296ejc.11;
+ Wed, 17 Mar 2021 17:31:15 -0700 (PDT)
+X-Gm-Message-State: AOAM531pqEnP/WJ6wZGMzy3+ZcIrsMhAvudO0POIpo2zWVoGcn14VUVB
+ BSv30txjJei8hCFHsfjaMWS85FHuQVgeFMmCnw==
+X-Google-Smtp-Source: ABdhPJyRt0/BHVBbK/+kJchk+xOcRQnGlNm6MFZSoVqqh6s/25AE46ySni1iQzV9dfexmdF4fKF39m+xGj/DSl/FVys=
+X-Received: by 2002:a17:907:3e8a:: with SMTP id
+ hs10mr38674530ejc.267.1616027473977; 
+ Wed, 17 Mar 2021 17:31:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210316024410.19967-1-walter-zh.wu@mediatek.com>
-In-Reply-To: <20210316024410.19967-1-walter-zh.wu@mediatek.com>
-From: Andrey Konovalov <andreyknvl@google.com>
-Date: Thu, 18 Mar 2021 01:30:47 +0100
-Message-ID: <CAAeHK+xiNywqQOzB=FUYOBJdSSNXbO4p2SdOvk4WKfhp_jiKGQ@mail.gmail.com>
-Subject: Re: [PATCH v2] task_work: kasan: record task_work_add() call stack
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
- Alexander Potapenko <glider@google.com>, 
- Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Andrew Morton <akpm@linux-foundation.org>, Jens Axboe <axboe@kernel.dk>, 
- Oleg Nesterov <oleg@redhat.com>, kasan-dev <kasan-dev@googlegroups.com>, 
- Linux Memory Management List <linux-mm@kvack.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- wsd_upstream <wsd_upstream@mediatek.com>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+References: <20210201034755.15793-1-jitao.shi@mediatek.com>
+In-Reply-To: <20210201034755.15793-1-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 18 Mar 2021 08:31:02 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_--LQxwvnmWws23OkShBiQdxumoULoLTuHeXXMqZ6aW7g@mail.gmail.com>
+Message-ID: <CAAOTY_--LQxwvnmWws23OkShBiQdxumoULoLTuHeXXMqZ6aW7g@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: fine tune the data lane trail by project dts
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+ David Airlie <airlied@linux.ie>,
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, DTML <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, huijuan.xie@mediatek.com,
+ stonea168@163.com, 
+ Cawa Cheng <cawa.cheng@mediatek.com>, shuijing.li@mediatek.com, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ yingjoe.chen@mediatek.com, 
+ eddie.huang@mediatek.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210318_003111_251141_58A9015F 
-X-CRM114-Status: GOOD (  23.70  )
+X-CRM114-CacheID: sfid-20210318_003120_866710_5BCA8999 
+X-CRM114-Status: GOOD (  22.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,78 +89,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 16, 2021 at 3:44 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> Why record task_work_add() call stack?
-> Syzbot reports many use-after-free issues for task_work, see [1].
-> After see the free stack and the current auxiliary stack, we think
-> they are useless, we don't know where register the work, this work
-> may be the free call stack, so that we miss the root cause and
-> don't solve the use-after-free.
->
-> Add task_work_add() call stack into KASAN auxiliary stack in
-> order to improve KASAN report. It is useful for programmers
-> to solve use-after-free issues.
->
-> [1]: https://groups.google.com/g/syzkaller-bugs/search?q=kasan%20use-after-free%20task_work_run
->
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Andrey Konovalov <andreyknvl@google.com>
-> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
-> Cc: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Jens Axboe <axboe@kernel.dk>
-> Cc: Oleg Nesterov <oleg@redhat.com>
-> ---
->
-> v2: Fix kasan_record_aux_stack() calling sequence issue.
->     Thanks for Dmitry's suggestion
->
-> ---
->  kernel/task_work.c | 3 +++
->  mm/kasan/kasan.h   | 2 +-
->  2 files changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/kernel/task_work.c b/kernel/task_work.c
-> index 9cde961875c0..3d4852891fa8 100644
-> --- a/kernel/task_work.c
-> +++ b/kernel/task_work.c
-> @@ -34,6 +34,9 @@ int task_work_add(struct task_struct *task, struct callback_head *work,
->  {
->         struct callback_head *head;
->
-> +       /* record the work call stack in order to print it in KASAN reports */
-> +       kasan_record_aux_stack(work);
-> +
->         do {
->                 head = READ_ONCE(task->task_works);
->                 if (unlikely(head == &work_exited))
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index 3436c6bf7c0c..e4629a971a3c 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -146,7 +146,7 @@ struct kasan_alloc_meta {
->         struct kasan_track alloc_track;
->  #ifdef CONFIG_KASAN_GENERIC
->         /*
-> -        * call_rcu() call stack is stored into struct kasan_alloc_meta.
-> +        * The auxiliary stack is stored into struct kasan_alloc_meta.
->          * The free stack is stored into struct kasan_free_meta.
->          */
->         depot_stack_handle_t aux_stack[2];
-> --
-
-Acked-by: Andrey Konovalov <andreyknvl@google.com>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
+tDLmnIgx5pelIOmAseS4gCDkuIrljYgxMTo0OOWvq+mBk++8mgo+Cj4gU29tZSBwYW5lbHMgb3Ig
+YnJpZGdlcyByZXF1aXJlIGN1c3RvbWl6ZWQgaHNfZGFfdHJhaWwgdGltZS4KPiBTbyBhZGQgYSBw
+cm9wZXJ0eSBpbiBkZXZpY2V0cmVlIGZvciB0aGlzIHBhbmVscyBhbmQgYnJpZGdlcy4KPgo+IFNp
+Z25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDEwICsrKysrKysrKy0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggOGM3MGVjMzliZmUxLi42ZTcwOTJmYTJmZWUgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBAQCAtMTk0LDYgKzE5NCw3IEBAIHN0
+cnVjdCBtdGtfZHNpIHsKPiAgICAgICAgIHN0cnVjdCBjbGsgKmhzX2NsazsKPgo+ICAgICAgICAg
+dTMyIGRhdGFfcmF0ZTsKPiArICAgICAgIHUzMiBkYV90cmFpbF9kZWx0YTsKPgo+ICAgICAgICAg
+dW5zaWduZWQgbG9uZyBtb2RlX2ZsYWdzOwo+ICAgICAgICAgZW51bSBtaXBpX2RzaV9waXhlbF9m
+b3JtYXQgZm9ybWF0Owo+IEBAIC0yMzQsNyArMjM1LDcgQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9w
+aHlfdGltY29uZmlnKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gICAgICAgICB0aW1pbmctPmRhX2hz
+X3ByZXBhcmUgPSAoODAgKiBkYXRhX3JhdGVfbWh6ICsgNCAqIDEwMDApIC8gODAwMDsKPiAgICAg
+ICAgIHRpbWluZy0+ZGFfaHNfemVybyA9ICgxNzAgKiBkYXRhX3JhdGVfbWh6ICsgMTAgKiAxMDAw
+KSAvIDgwMDAgKyAxIC0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRpbWluZy0+ZGFf
+aHNfcHJlcGFyZTsKPiAtICAgICAgIHRpbWluZy0+ZGFfaHNfdHJhaWwgPSB0aW1pbmctPmRhX2hz
+X3ByZXBhcmUgKyAxOwo+ICsgICAgICAgdGltaW5nLT5kYV9oc190cmFpbCA9IHRpbWluZy0+ZGFf
+aHNfcHJlcGFyZSArIDEgKyBkc2ktPmRhX3RyYWlsX2RlbHRhOwo+Cj4gICAgICAgICB0aW1pbmct
+PnRhX2dvID0gNCAqIHRpbWluZy0+bHB4IC0gMjsKPiAgICAgICAgIHRpbWluZy0+dGFfc3VyZSA9
+IHRpbWluZy0+bHB4ICsgMjsKPiBAQCAtMTA5NCw2ICsxMDk1LDEzIEBAIHN0YXRpYyBpbnQgbXRr
+X2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAgICAgICAgICAgICAg
+ICBnb3RvIGVycl91bnJlZ2lzdGVyX2hvc3Q7Cj4gICAgICAgICB9Cj4KPiArICAgICAgIHJldCA9
+IG9mX3Byb3BlcnR5X3JlYWRfdTMyX2luZGV4KGRldi0+b2Zfbm9kZSwgImRhX3RyYWlsX2RlbHRh
+IiwgMCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZkc2ktPmRh
+X3RyYWlsX2RlbHRhKTsKClRoaXMgdmFsdWUgZGVwZW5kcyBvbiBwYW5lbCwgc28gSSB0aGluayB3
+ZSBzaG91bGQgZ2V0IHNvbWUgdmFsdWUgZnJvbQpwYW5lbCdzIGRldmljZSBub2RlIHRvIGNhbGN1
+bGF0ZSB0aGlzIHZhbHVlLgoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4gKyAgICAgICBpZiAocmV0
+KSB7Cj4gKyAgICAgICAgICAgICAgIGRldl9pbmZvKGRldiwgIkNhbid0IGdldCBkYV90cmFpbF9k
+ZWx0YSwga2VlcCBpdCBhcyAwOiAlZFxuIiwgcmV0KTsKPiArICAgICAgICAgICAgICAgZHNpLT5k
+YV90cmFpbF9kZWx0YSA9IDA7Cj4gKyAgICAgICB9Cj4gKwo+ICAgICAgICAgY29tcF9pZCA9IG10
+a19kZHBfY29tcF9nZXRfaWQoZGV2LT5vZl9ub2RlLCBNVEtfRFNJKTsKPiAgICAgICAgIGlmIChj
+b21wX2lkIDwgMCkgewo+ICAgICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBp
+ZGVudGlmeSBieSBhbGlhczogJWRcbiIsIGNvbXBfaWQpOwo+IC0tCj4gMi4xMi41Cj4gX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
