@@ -2,58 +2,97 @@ Return-Path: <SRS0=MDpP=IQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13731C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 17:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C606FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 17:58:55 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E41C64EB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 17:55:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E41C64EB9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3B6F664EF9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Mar 2021 17:58:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B6F664EF9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=48gksdrHQIlB5o7a+xY74HFN97xFSFbU7ajEd//+8P0=; b=d6PKgL8wY4B0/WEz8OzknwRkY
-	kQr7okYEywliOozDpFCKgQKbF5Yq0WuyxN3bZI2ryJU4pQYBf3vHkGumL3Up7S8ex67JWxz2PSNA8
-	r/2gxM0m+pKDu0CqADrX3FvvztY9M33fBdgxSzpwvYYjVPESX4FhAzq2OTiMzV6RU04y6Av0FgpKf
-	Z9TKUz/z5YFcvbpLN9gIgfnOgI9brXEAd8Ld+AL/Gg7AjOW/0Uug6uMs+bhaRmQmndM/yCQEW7cTl
-	xqorbVdmXPSZckK9zccax7gL1MIdJKUTJZbQJl4viVJkPqw9af62VSFSX7Li8oJLTTetsPxVBlG/F
-	OdXzc17mQ==;
+	 bh=4CRGuSvtFONE+QeJ2BYHy96Xm4U1Eb9A8mXib+U3Fps=; b=OXoTdvoRwWbbC/Rq9IIEWOm/2
+	UyXApBaTWwvCBGpfefABN1PbreDfOqKeY71tzAD1MxvyilOdqCRAV/5AE0rQGbviCTl8E4sgIt4eP
+	mskx8/lLT6NzxAK9zne27fTq356RmfDiVkzGoJjTMRu8bc45p/UCIFejL9zG/MuSB4sx2zdKMeray
+	UHjpf3JpEVOsGKeGEHzqWp5iJurpc1Uig9T9S8kynlMtYhSnWVhKE9NJo5cEQs7tCJbyPXd6sic2o
+	5Q+R+VxpSMGTOJ9IIJLqOfHCKPQ1R6U/eo1edOZ082Rki87vV6TDoA3i7t5MaHS3cpDs/mOfuHhw6
+	yRKWbLTDw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lMwrO-005ml6-FF; Thu, 18 Mar 2021 17:55:02 +0000
-Received: from mail-oi1-f177.google.com ([209.85.167.177])
+	id 1lMwuw-005nEJ-Lg; Thu, 18 Mar 2021 17:58:43 +0000
+Received: from so254-9.mailgun.net ([198.61.254.9])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMwrC-005mih-AY; Thu, 18 Mar 2021 17:54:52 +0000
-Received: by mail-oi1-f177.google.com with SMTP id i3so1829791oik.7;
- Thu, 18 Mar 2021 10:54:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=OHr/+2ALvwiEmKmMVP0VZKlYqV1cr2HVLdEDlLzZZec=;
- b=Uvifp2F/qZbSeyiEjl/f1oQkUXYjTkHkua1qlMFVI/XYxsfT7g7bGmBFyDMMpe2mbC
- rIDFxaKSJvyT/svz238vi5bOuV+PWY8489/fnzBTN+HYoh1oyLz+7fGUak9WDxN8DXYo
- I4JBSLfOk7KxvBJSQ8RAmBORkCkd3jYh3+dhs3t3gwDLi+Ojlh7M0/jjv6237B95eC1r
- cgVVvWjM0oXg9hSOZYlISEyKyUp/QVEvEiWSQHewPYjQwTl1tqkqIJn5IN14G7j49SaL
- Fa6KaMgy0NloduufaNTB5W1+QaxGYQn5YLN/xmNeAxYxV4d3l52dxmRDsgqj0/zc2K2R
- E5FQ==
-X-Gm-Message-State: AOAM531MBB5kypn/98HIzqhHKejgmhCqM4Ny5b6In2B86sIktf4B6/X5
- BFrseaBc5EzBiX1lcSr3wuML769X2KOw6F1BY7g=
-X-Google-Smtp-Source: ABdhPJzn5E8knSPFiYT1SYIgAmsfmzKR0EFMU0o+jnJYNKtlWw6Wk3pxUdlkfMQN4L2KTqCskjrjxJmOIUZgW5aV1hA=
-X-Received: by 2002:a05:6808:24b:: with SMTP id
- m11mr4043933oie.157.1616090089131; 
- Thu, 18 Mar 2021 10:54:49 -0700 (PDT)
-MIME-Version: 1.0
+ id 1lMwur-005nDc-BL
+ for linux-mediatek@lists.infradead.org; Thu, 18 Mar 2021 17:58:41 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1616090318; h=Content-Transfer-Encoding: Content-Type:
+ In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
+ Subject: Sender; bh=rzYUzgs5rRc+lWNL1VxCk1h/gpQ1nKDzoc0iKGBWUAg=;
+ b=jaqREmRqossbFjNlLTO7tYGa8WdrEaZ59yrbwK/IobCnY//PmsmZbhaTBX4oTSNU/fubnvVN
+ 2RSkABpBuv19VbsQgh87zangqje44znYuc0x7TTYjyr58KFmRoTttzw9IxpQmGpaCRTZRPbY
+ 7GbsiXh4AXpODNFN1NsjuBXAfmQ=
+X-Mailgun-Sending-Ip: 198.61.254.9
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n02.prod.us-east-1.postgun.com with SMTP id
+ 605394c2e3fca7d0a6cca0b5 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Thu, 18 Mar 2021 17:58:26
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 4F69DC43463; Thu, 18 Mar 2021 17:58:25 +0000 (UTC)
+Received: from [192.168.8.168] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: asutoshd)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id EFAE3C433C6;
+ Thu, 18 Mar 2021 17:58:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org EFAE3C433C6
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=asutoshd@codeaurora.org
+Subject: Re: [PATCH v10 1/2] scsi: ufs: Enable power management for wlun
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Bart Van Assche
+ <bvanassche@acm.org>, cang@codeaurora.org,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "open list:TARGET SUBSYSTEM" <linux-scsi@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Bean Huo <beanhuo@micron.com>,
+ Lee Jones <lee.jones@linaro.org>, Wei Yongjun <weiyongjun1@huawei.com>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Tomas Winkler <tomas.winkler@intel.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Satya Tangirala <satyat@google.com>, open list
+ <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>,
+ Linux-PM mailing list <linux-pm@vger.kernel.org>
 References: <cover.1614725302.git.asutoshd@codeaurora.org>
  <0576d6eae15486740c25767e2d8805f7e94eb79d.1614725302.git.asutoshd@codeaurora.org>
  <85086647-7292-b0a2-d842-290818bd2858@intel.com>
@@ -70,41 +109,18 @@ References: <cover.1614725302.git.asutoshd@codeaurora.org>
  <24dfb6fc-5d54-6ee2-9195-26428b7ecf8a@intel.com>
  <CAJZ5v0iOT4oi8Ez5xgN9LE0E7J=_Vb7G8a-9etmu+QTvQ1j9ew@mail.gmail.com>
  <d9ea43fd-b065-0e6e-07cb-d6ec6ef97bae@codeaurora.org>
-In-Reply-To: <d9ea43fd-b065-0e6e-07cb-d6ec6ef97bae@codeaurora.org>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Thu, 18 Mar 2021 18:54:37 +0100
-Message-ID: <CAJZ5v0iTymqf0yRrfvHoxejzKiZ7hnGH+xXYTZhbDait5ULzTQ@mail.gmail.com>
-Subject: Re: [PATCH v10 1/2] scsi: ufs: Enable power management for wlun
-To: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
- Adrian Hunter <adrian.hunter@intel.com>, 
- Alan Stern <stern@rowland.harvard.edu>, Bart Van Assche <bvanassche@acm.org>,
- cang@codeaurora.org, "Martin K. Petersen" <martin.petersen@oracle.com>, 
- "open list:TARGET SUBSYSTEM" <linux-scsi@vger.kernel.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, 
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Stanley Chu <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>, 
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, 
- Ingo Molnar <mingo@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Kiwoong Kim <kwmad.kim@samsung.com>, Bean Huo <beanhuo@micron.com>, 
- Lee Jones <lee.jones@linaro.org>, Wei Yongjun <weiyongjun1@huawei.com>, 
- Dinghao Liu <dinghao.liu@zju.edu.cn>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
- Tomas Winkler <tomas.winkler@intel.com>, Jaegeuk Kim <jaegeuk@kernel.org>, 
- Satya Tangirala <satyat@google.com>, open list <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/SAMSUNG S3C,
- S5P AND EXYNOS ARM ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/SAMSUNG S3C,
- S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, 
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>, 
- Linux-PM mailing list <linux-pm@vger.kernel.org>
+ <CAJZ5v0iTymqf0yRrfvHoxejzKiZ7hnGH+xXYTZhbDait5ULzTQ@mail.gmail.com>
+From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
+Message-ID: <36864099-e9a0-83bf-8c9d-d821bb102a72@codeaurora.org>
+Date: Thu, 18 Mar 2021 10:58:19 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
+MIME-Version: 1.0
+In-Reply-To: <CAJZ5v0iTymqf0yRrfvHoxejzKiZ7hnGH+xXYTZhbDait5ULzTQ@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210318_175450_459524_5288EEAD 
-X-CRM114-Status: GOOD (  40.33  )
+X-CRM114-CacheID: sfid-20210318_175839_134134_B44EF330 
+X-CRM114-Status: GOOD (  22.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,228 +132,240 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 18, 2021 at 6:33 PM Asutosh Das (asd)
-<asutoshd@codeaurora.org> wrote:
->
-> On 3/18/2021 7:00 AM, Rafael J. Wysocki wrote:
-> > On Wed, Mar 17, 2021 at 7:37 AM Adrian Hunter <adrian.hunter@intel.com> wrote:
-> >>
-> >> On 16/03/21 10:35 pm, Asutosh Das (asd) wrote:
-> >>> On 3/16/2021 12:48 AM, Adrian Hunter wrote:
-> >>>> On 16/03/21 12:22 am, Asutosh Das (asd) wrote:
-> >>>>> On 3/14/2021 1:11 AM, Adrian Hunter wrote:
-> >>>>>> On 10/03/21 5:04 am, Asutosh Das (asd) wrote:
-> >>>>>>> On 3/9/2021 7:56 AM, Asutosh Das (asd) wrote:
-> >>>>>>>> On 3/8/2021 9:17 AM, Rafael J. Wysocki wrote:
-> >>>>>>>>> On Mon, Mar 8, 2021 at 5:21 PM Rafael J. Wysocki <rafael@kernel.org> wrote:
-> >>>>>>>>>>
-> >>>>>>>>>> On Sat, Mar 6, 2021 at 5:17 PM Alan Stern <stern@rowland.harvard.edu> wrote:
-> >>>>>>>>>>>
-> >>>>>>>>>>> On Fri, Mar 05, 2021 at 06:54:24PM -0800, Asutosh Das (asd) wrote:
-> >>>>>>>>>>>
-> >>>>>>>>>>>> Now during my testing I see a weird issue sometimes (1 in 7).
-> >>>>>>>>>>>> Scenario - bootups
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> Issue:
-> >>>>>>>>>>>> The supplier 'ufs_device_wlun 0:0:0:49488' goes into runtime suspend even
-> >>>>>>>>>>>> when one/more of its consumers are in RPM_ACTIVE state.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> *Log:
-> >>>>>>>>>>>> [   10.056379][  T206] sd 0:0:0:1: [sdb] Synchronizing SCSI cache
-> >>>>>>>>>>>> [   10.062497][  T113] sd 0:0:0:5: [sdf] Synchronizing SCSI cache
-> >>>>>>>>>>>> [   10.356600][   T32] sd 0:0:0:7: [sdh] Synchronizing SCSI cache
-> >>>>>>>>>>>> [   10.362944][  T174] sd 0:0:0:3: [sdd] Synchronizing SCSI cache
-> >>>>>>>>>>>> [   10.696627][   T83] sd 0:0:0:2: [sdc] Synchronizing SCSI cache
-> >>>>>>>>>>>> [   10.704562][  T170] sd 0:0:0:6: [sdg] Synchronizing SCSI cache
-> >>>>>>>>>>>> [   10.980602][    T5] sd 0:0:0:0: [sda] Synchronizing SCSI cache
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> /** Printing all the consumer nodes of supplier **/
-> >>>>>>>>>>>> [   10.987327][    T5] ufs_device_wlun 0:0:0:49488: usage-count @ suspend: 0
-> >>>>>>>>>>>> <-- this is the usage_count
-> >>>>>>>>>>>> [   10.994440][    T5] ufs_rpmb_wlun 0:0:0:49476: PM state - 2
-> >>>>>>>>>>>> [   11.000402][    T5] scsi 0:0:0:49456: PM state - 2
-> >>>>>>>>>>>> [   11.005453][    T5] sd 0:0:0:0: PM state - 2
-> >>>>>>>>>>>> [   11.009958][    T5] sd 0:0:0:1: PM state - 2
-> >>>>>>>>>>>> [   11.014469][    T5] sd 0:0:0:2: PM state - 2
-> >>>>>>>>>>>> [   11.019072][    T5] sd 0:0:0:3: PM state - 2
-> >>>>>>>>>>>> [   11.023595][    T5] sd 0:0:0:4: PM state - 0 << RPM_ACTIVE
-> >>>>>>>>>>>> [   11.353298][    T5] sd 0:0:0:5: PM state - 2
-> >>>>>>>>>>>> [   11.357726][    T5] sd 0:0:0:6: PM state - 2
-> >>>>>>>>>>>> [   11.362155][    T5] sd 0:0:0:7: PM state - 2
-> >>>>>>>>>>>> [   11.366584][    T5] ufshcd-qcom 1d84000.ufshc: __ufshcd_wl_suspend - 8709
-> >>>>>>>>>>>> [   11.374366][    T5] ufs_device_wlun 0:0:0:49488: __ufshcd_wl_suspend -
-> >>>>>>>>>>>> (0) has rpm_active flags
-> >>>>>>>>>>
-> >>>>>>>>>> Do you mean that rpm_active of the link between the consumer and the
-> >>>>>>>>>> supplier is greater than 0 at this point and the consumer is
-> >>>>>>>>>
-> >>>>>>>>> I mean is rpm_active of the link greater than 1 (because 1 means "no
-> >>>>>>>>> active references to the supplier")?
-> >>>>>>>> Hi Rafael:
-> >>>>>>>> No - it is not greater than 1.
-> >>>>>>>>
-> >>>>>>>> I'm trying to understand what's going on in it; will update when I've something.
-> >>>>>>>>
-> >>>>>>>>>
-> >>>>>>>>>> RPM_ACTIVE, but the supplier suspends successfully nevertheless?
-> >>>>>>>>>>
-> >>>>>>>>>>>> [   11.383376][    T5] ufs_device_wlun 0:0:0:49488:
-> >>>>>>>>>>>> ufshcd_wl_runtime_suspend <-- Supplier suspends fine.
-> >>>>>>>>>>>> [   12.977318][  T174] sd 0:0:0:4: [sde] Synchronizing SCSI cache
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> And the the suspend of sde is stuck now:
-> >>>>>>>>>>>> schedule+0x9c/0xe0
-> >>>>>>>>>>>> schedule_timeout+0x40/0x128
-> >>>>>>>>>>>> io_schedule_timeout+0x44/0x68
-> >>>>>>>>>>>> wait_for_common_io+0x7c/0x100
-> >>>>>>>>>>>> wait_for_completion_io+0x14/0x20
-> >>>>>>>>>>>> blk_execute_rq+0x90/0xcc
-> >>>>>>>>>>>> __scsi_execute+0x104/0x1c4
-> >>>>>>>>>>>> sd_sync_cache+0xf8/0x2a0
-> >>>>>>>>>>>> sd_suspend_common+0x74/0x11c
-> >>>>>>>>>>>> sd_suspend_runtime+0x14/0x20
-> >>>>>>>>>>>> scsi_runtime_suspend+0x64/0x94
-> >>>>>>>>>>>> __rpm_callback+0x80/0x2a4
-> >>>>>>>>>>>> rpm_suspend+0x308/0x614
-> >>>>>>>>>>>> pm_runtime_work+0x98/0xa8
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> I added 'DL_FLAG_RPM_ACTIVE' while creating links.
-> >>>>>>>>>>>>           if (hba->sdev_ufs_device) {
-> >>>>>>>>>>>>                   link = device_link_add(&sdev->sdev_gendev,
-> >>>>>>>>>>>>                                       &hba->sdev_ufs_device->sdev_gendev,
-> >>>>>>>>>>>>                                      DL_FLAG_PM_RUNTIME|DL_FLAG_RPM_ACTIVE);
-> >>>>>>>>>>>> I didn't expect this to resolve the issue anyway and it didn't.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> Another interesting point here is when I resume any of the above suspended
-> >>>>>>>>>>>> consumers, it all goes back to normal, which is kind of expected. I tried
-> >>>>>>>>>>>> resuming the consumer and the supplier is resumed and the supplier is
-> >>>>>>>>>>>> suspended when all the consumers are suspended.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> Any pointers on this issue please?
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> @Bart/@Alan - Do you've any pointers please?
-> >>>>>>>>>>>
-> >>>>>>>>>>> It's very noticeable that although you seem to have isolated a bug in
-> >>>>>>>>>>> the power management subsystem (supplier goes into runtime suspend
-> >>>>>>>>>>> even when one of its consumers is still active), you did not CC the
-> >>>>>>>>>>> power management maintainer or mailing list.
-> >>>>>>>>>>>
-> >>>>>>>>>>> I have added the appropriate CC's.
-> >>>>>>>>>>
-> >>>>>>>>>> Thanks Alan!
-> >>>>>>>>
-> >>>>>>>>
-> >>>>>>>
-> >>>>>>> Hello
-> >>>>>>> I & Can (thanks CanG) debugged this further:
-> >>>>>>>
-> >>>>>>> Looks like this issue can occur if the sd probe is asynchronous.
-> >>>>>>>
-> >>>>>>> Essentially, the sd_probe() is done asynchronously and driver_probe_device() invokes pm_runtime_get_suppliers() before invoking sd_probe().
-> >>>>>>>
-> >>>>>>> But scsi_probe_and_add_lun() runs in a separate context.
-> >>>>>>> So the scsi_autopm_put_device() invoked from scsi_scan_host() context reduces the link->rpm_active to 1. And sd_probe() invokes scsi_autopm_put_device() and starts a timer. And then driver_probe_device() invoked from __device_attach_async_helper context reduces the link->rpm_active to 1 thus enabling the supplier to suspend before the consumer suspends.
-> >>>>>>>
-> >>>>>>> So if:
-> >>>>>>> Context T1:
-> >>>>>>> [1] scsi_probe_and_add_lun()
-> >>>>>>> [2]    |- scsi_autopm_put_device() - reduce the link->rpm_active to 1
-> >>>>>>>
-> >>>>>>> Context T2:
-> >>>>>>> __device_attach_async_helper()
-> >>>>>>>        |- driver_probe_device()
-> >>>>>>>            |- sd_probe()
-> >>>>>>> In between [1] and [2] say, driver_probe_device() -> sd_probe() is invoked in a separate context from __device_attach_async_helper().
-> >>>>>>> The driver_probe_device() -> pm_runtime_get_suppliers() but [2] would reduce link->rpm_active to 1.
-> >>>>>>> Then sd_probe() would invoke rpm_resume() and proceed as is.
-> >>>>>>> When sd_probe() invokes scsi_autopm_put_device() it'd start a timer, dev->power.timer_autosuspends = 1.
-> >>>>>>>
-> >>>>>>> Now then, pm_runtime_put_suppliers() is invoked from driver_probe_device() and that makes the link->rpm_active = 1.
-> >>>>>>> But by now, the corresponding 'sd dev' (consumer) usage_count = 0, state = RPM_ACTIVE and link->rpm_active = 1.
-> >>>>>>> At this point of time, all other 'sd dev' (consumers) _may_ be suspended or active but would have the link->rpm_active = 1.
-> >>>>>>
-> >>>>>> Is this with DL_FLAG_RPM_ACTIVE?  In that case, wouldn't active
-> >>>>>> consumers have link->rpm_active = 2 and also have incremented
-> >>>>>> the supplier's usage_count?
-> >>>
-> >>> Yes this is with DL_FLAG_RPM_ACTIVE.
-> >>>
-> >>> Please let me share a log here:
-> >>> BEF means - Before, AFT means After.
-> >>>
-> >>> [    6.843445][    T7] scsi 0:0:0:4: [UFSDBG]: ufshcd_setup_links:4779:  supp: usage_cnt: 3 Link - 0:0:0:49488 link-rpm_active: 2 avail_luns: 5
-> >>> [    6.892545][    T7] scsi 0:0:0:4: pm_runtime_get_suppliers: (0:0:0:49488): supp: usage_count: 5 rpm_active: 4
-> >>>
-> >>> In the above log, T7 is the context in which this scsi device is being added - scsi_sysfs_add_sdev()
-> >>>
-> >>> [    6.931846][    T7] ufs_rpmb_wlun 0:0:0:4: [UFSDBG]: ufshcd_rpmb_probe:9692: invoked
-> >>> [    6.941246][    T7] scsi 0:0:0:4: pm_runtime_put_suppliers: rpm_active: 4
-> >>>
-> >>> [    6.941246][    T7] scsi 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [BEF] usage_count: 5
-> >>> [    6.941247][    T7] scsi 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [AFT] usage_count: 4 rpm_active: 3
-> >>>
-> >>> [    6.941267][    T7] scsi 0:0:0:4: rpm_put_suppliers: [BEF] Supp (0:0:0:49488) usage_count: 4 rpm_active: 3
-> >>>
-> >>> ------ T196 Context comes in while T7 is running ----------
-> >>> [    6.941466][  T196] scsi 0:0:0:4: pm_runtime_get_suppliers: (0:0:0:49488): supp: usage_count: 5 rpm_active: 4
-> >>> --------------------------------------------------------------
-> >>>
-> >>> [    7.788397][    T7] scsi 0:0:0:4: rpm_put_suppliers: [AFT] Supp (0:0:0:49488) usage_count: 2 rpm_active: 1
-> >>
-> >>
-> >>
-> >>>
-> >>> --
-> >>>
-> >>> T196 is the context in which sd_probe() is invoked for this scsi device.
-> >>>
-> >>> [    7.974410][  T196] sd 0:0:0:4: [sde] Attached SCSI disk
-> >>> [    7.984188][  T196] sd 0:0:0:4: pm_runtime_put_suppliers: rpm_active: 2
-> >>> [    7.998424][  T196] sd 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [BEF] usage_count: 4
-> >>> [    8.017320][  T196] sd 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [AFT] usage_count: 1 rpm_active: 1
-> >>>
-> >>> The reference to the link is released after sd_probe() is completed.
-> >>> At this point, the rpm_active should be 2. And the rpm_active should become 1 when sd 0:0:0:4 actually suspends. But at the end of sd_probe() the suspend is only scheduled. However the supplier is now free to suspend.
-> >>>
-> >>> In this log, the usage_count of supplier becomes 0 here:
-> >>> [   11.963885][  T117] sd 0:0:0:7: rpm_put_suppliers: [BEF] Supp (0:0:0:49488) usage_count: 1 rpm_active: 2
-> >>> [   11.973821][  T117] sd 0:0:0:7: rpm_put_suppliers: [AFT] Supp (0:0:0:49488) usage_count: 0 rpm_active: 1
-> >>>
-> >>> However, the consumer sd 0:0:0:4 is still active but has released the reference to the supplier:
-> >>
-> >> If that is the case, then it is an error in PM not UFS.
-> >>
-> >> A second look at the code around rpm_put_suppliers() does look
-> >> potentially racy, since there does not appear to be anything
-> >> stopping the runtime_status changing between
-> >> spin_unlock_irq(&dev->power.lock) and device_links_read_lock().
-> >>
-> >> Rafael, can you comment?
-> >
-> > Indeed, if the device is suspending, changing its PM-runtime status to
-> > RPM_SUSPENDED and dropping its power.lock allows a concurrent
-> > rpm_resume() to run and resume the device before the suppliers can be
-> > suspended.
-> >
-> > That's incorrect and has been introduced by commit 44cc89f76464 ("PM:
-> > runtime: Update device status before letting suppliers suspend").
-> >
-> > It is probably better to revert that commit and address the original
-> > issue in a different way.
-> >
-> Hello,
-> One approach to address the original issue could be to prevent the scsi
-> devices from suspending until the probe is completed, perhaps?
+On 3/18/2021 10:54 AM, Rafael J. Wysocki wrote:
+> On Thu, Mar 18, 2021 at 6:33 PM Asutosh Das (asd)
+> <asutoshd@codeaurora.org> wrote:
+>>
+>> On 3/18/2021 7:00 AM, Rafael J. Wysocki wrote:
+>>> On Wed, Mar 17, 2021 at 7:37 AM Adrian Hunter <adrian.hunter@intel.com> wrote:
+>>>>
+>>>> On 16/03/21 10:35 pm, Asutosh Das (asd) wrote:
+>>>>> On 3/16/2021 12:48 AM, Adrian Hunter wrote:
+>>>>>> On 16/03/21 12:22 am, Asutosh Das (asd) wrote:
+>>>>>>> On 3/14/2021 1:11 AM, Adrian Hunter wrote:
+>>>>>>>> On 10/03/21 5:04 am, Asutosh Das (asd) wrote:
+>>>>>>>>> On 3/9/2021 7:56 AM, Asutosh Das (asd) wrote:
+>>>>>>>>>> On 3/8/2021 9:17 AM, Rafael J. Wysocki wrote:
+>>>>>>>>>>> On Mon, Mar 8, 2021 at 5:21 PM Rafael J. Wysocki <rafael@kernel.org> wrote:
+>>>>>>>>>>>>
+>>>>>>>>>>>> On Sat, Mar 6, 2021 at 5:17 PM Alan Stern <stern@rowland.harvard.edu> wrote:
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> On Fri, Mar 05, 2021 at 06:54:24PM -0800, Asutosh Das (asd) wrote:
+>>>>>>>>>>>>>
+>>>>>>>>>>>>>> Now during my testing I see a weird issue sometimes (1 in 7).
+>>>>>>>>>>>>>> Scenario - bootups
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> Issue:
+>>>>>>>>>>>>>> The supplier 'ufs_device_wlun 0:0:0:49488' goes into runtime suspend even
+>>>>>>>>>>>>>> when one/more of its consumers are in RPM_ACTIVE state.
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> *Log:
+>>>>>>>>>>>>>> [   10.056379][  T206] sd 0:0:0:1: [sdb] Synchronizing SCSI cache
+>>>>>>>>>>>>>> [   10.062497][  T113] sd 0:0:0:5: [sdf] Synchronizing SCSI cache
+>>>>>>>>>>>>>> [   10.356600][   T32] sd 0:0:0:7: [sdh] Synchronizing SCSI cache
+>>>>>>>>>>>>>> [   10.362944][  T174] sd 0:0:0:3: [sdd] Synchronizing SCSI cache
+>>>>>>>>>>>>>> [   10.696627][   T83] sd 0:0:0:2: [sdc] Synchronizing SCSI cache
+>>>>>>>>>>>>>> [   10.704562][  T170] sd 0:0:0:6: [sdg] Synchronizing SCSI cache
+>>>>>>>>>>>>>> [   10.980602][    T5] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> /** Printing all the consumer nodes of supplier **/
+>>>>>>>>>>>>>> [   10.987327][    T5] ufs_device_wlun 0:0:0:49488: usage-count @ suspend: 0
+>>>>>>>>>>>>>> <-- this is the usage_count
+>>>>>>>>>>>>>> [   10.994440][    T5] ufs_rpmb_wlun 0:0:0:49476: PM state - 2
+>>>>>>>>>>>>>> [   11.000402][    T5] scsi 0:0:0:49456: PM state - 2
+>>>>>>>>>>>>>> [   11.005453][    T5] sd 0:0:0:0: PM state - 2
+>>>>>>>>>>>>>> [   11.009958][    T5] sd 0:0:0:1: PM state - 2
+>>>>>>>>>>>>>> [   11.014469][    T5] sd 0:0:0:2: PM state - 2
+>>>>>>>>>>>>>> [   11.019072][    T5] sd 0:0:0:3: PM state - 2
+>>>>>>>>>>>>>> [   11.023595][    T5] sd 0:0:0:4: PM state - 0 << RPM_ACTIVE
+>>>>>>>>>>>>>> [   11.353298][    T5] sd 0:0:0:5: PM state - 2
+>>>>>>>>>>>>>> [   11.357726][    T5] sd 0:0:0:6: PM state - 2
+>>>>>>>>>>>>>> [   11.362155][    T5] sd 0:0:0:7: PM state - 2
+>>>>>>>>>>>>>> [   11.366584][    T5] ufshcd-qcom 1d84000.ufshc: __ufshcd_wl_suspend - 8709
+>>>>>>>>>>>>>> [   11.374366][    T5] ufs_device_wlun 0:0:0:49488: __ufshcd_wl_suspend -
+>>>>>>>>>>>>>> (0) has rpm_active flags
+>>>>>>>>>>>>
+>>>>>>>>>>>> Do you mean that rpm_active of the link between the consumer and the
+>>>>>>>>>>>> supplier is greater than 0 at this point and the consumer is
+>>>>>>>>>>>
+>>>>>>>>>>> I mean is rpm_active of the link greater than 1 (because 1 means "no
+>>>>>>>>>>> active references to the supplier")?
+>>>>>>>>>> Hi Rafael:
+>>>>>>>>>> No - it is not greater than 1.
+>>>>>>>>>>
+>>>>>>>>>> I'm trying to understand what's going on in it; will update when I've something.
+>>>>>>>>>>
+>>>>>>>>>>>
+>>>>>>>>>>>> RPM_ACTIVE, but the supplier suspends successfully nevertheless?
+>>>>>>>>>>>>
+>>>>>>>>>>>>>> [   11.383376][    T5] ufs_device_wlun 0:0:0:49488:
+>>>>>>>>>>>>>> ufshcd_wl_runtime_suspend <-- Supplier suspends fine.
+>>>>>>>>>>>>>> [   12.977318][  T174] sd 0:0:0:4: [sde] Synchronizing SCSI cache
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> And the the suspend of sde is stuck now:
+>>>>>>>>>>>>>> schedule+0x9c/0xe0
+>>>>>>>>>>>>>> schedule_timeout+0x40/0x128
+>>>>>>>>>>>>>> io_schedule_timeout+0x44/0x68
+>>>>>>>>>>>>>> wait_for_common_io+0x7c/0x100
+>>>>>>>>>>>>>> wait_for_completion_io+0x14/0x20
+>>>>>>>>>>>>>> blk_execute_rq+0x90/0xcc
+>>>>>>>>>>>>>> __scsi_execute+0x104/0x1c4
+>>>>>>>>>>>>>> sd_sync_cache+0xf8/0x2a0
+>>>>>>>>>>>>>> sd_suspend_common+0x74/0x11c
+>>>>>>>>>>>>>> sd_suspend_runtime+0x14/0x20
+>>>>>>>>>>>>>> scsi_runtime_suspend+0x64/0x94
+>>>>>>>>>>>>>> __rpm_callback+0x80/0x2a4
+>>>>>>>>>>>>>> rpm_suspend+0x308/0x614
+>>>>>>>>>>>>>> pm_runtime_work+0x98/0xa8
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> I added 'DL_FLAG_RPM_ACTIVE' while creating links.
+>>>>>>>>>>>>>>            if (hba->sdev_ufs_device) {
+>>>>>>>>>>>>>>                    link = device_link_add(&sdev->sdev_gendev,
+>>>>>>>>>>>>>>                                        &hba->sdev_ufs_device->sdev_gendev,
+>>>>>>>>>>>>>>                                       DL_FLAG_PM_RUNTIME|DL_FLAG_RPM_ACTIVE);
+>>>>>>>>>>>>>> I didn't expect this to resolve the issue anyway and it didn't.
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> Another interesting point here is when I resume any of the above suspended
+>>>>>>>>>>>>>> consumers, it all goes back to normal, which is kind of expected. I tried
+>>>>>>>>>>>>>> resuming the consumer and the supplier is resumed and the supplier is
+>>>>>>>>>>>>>> suspended when all the consumers are suspended.
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> Any pointers on this issue please?
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> @Bart/@Alan - Do you've any pointers please?
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> It's very noticeable that although you seem to have isolated a bug in
+>>>>>>>>>>>>> the power management subsystem (supplier goes into runtime suspend
+>>>>>>>>>>>>> even when one of its consumers is still active), you did not CC the
+>>>>>>>>>>>>> power management maintainer or mailing list.
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> I have added the appropriate CC's.
+>>>>>>>>>>>>
+>>>>>>>>>>>> Thanks Alan!
+>>>>>>>>>>
+>>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> Hello
+>>>>>>>>> I & Can (thanks CanG) debugged this further:
+>>>>>>>>>
+>>>>>>>>> Looks like this issue can occur if the sd probe is asynchronous.
+>>>>>>>>>
+>>>>>>>>> Essentially, the sd_probe() is done asynchronously and driver_probe_device() invokes pm_runtime_get_suppliers() before invoking sd_probe().
+>>>>>>>>>
+>>>>>>>>> But scsi_probe_and_add_lun() runs in a separate context.
+>>>>>>>>> So the scsi_autopm_put_device() invoked from scsi_scan_host() context reduces the link->rpm_active to 1. And sd_probe() invokes scsi_autopm_put_device() and starts a timer. And then driver_probe_device() invoked from __device_attach_async_helper context reduces the link->rpm_active to 1 thus enabling the supplier to suspend before the consumer suspends.
+>>>>>>>>>
+>>>>>>>>> So if:
+>>>>>>>>> Context T1:
+>>>>>>>>> [1] scsi_probe_and_add_lun()
+>>>>>>>>> [2]    |- scsi_autopm_put_device() - reduce the link->rpm_active to 1
+>>>>>>>>>
+>>>>>>>>> Context T2:
+>>>>>>>>> __device_attach_async_helper()
+>>>>>>>>>         |- driver_probe_device()
+>>>>>>>>>             |- sd_probe()
+>>>>>>>>> In between [1] and [2] say, driver_probe_device() -> sd_probe() is invoked in a separate context from __device_attach_async_helper().
+>>>>>>>>> The driver_probe_device() -> pm_runtime_get_suppliers() but [2] would reduce link->rpm_active to 1.
+>>>>>>>>> Then sd_probe() would invoke rpm_resume() and proceed as is.
+>>>>>>>>> When sd_probe() invokes scsi_autopm_put_device() it'd start a timer, dev->power.timer_autosuspends = 1.
+>>>>>>>>>
+>>>>>>>>> Now then, pm_runtime_put_suppliers() is invoked from driver_probe_device() and that makes the link->rpm_active = 1.
+>>>>>>>>> But by now, the corresponding 'sd dev' (consumer) usage_count = 0, state = RPM_ACTIVE and link->rpm_active = 1.
+>>>>>>>>> At this point of time, all other 'sd dev' (consumers) _may_ be suspended or active but would have the link->rpm_active = 1.
+>>>>>>>>
+>>>>>>>> Is this with DL_FLAG_RPM_ACTIVE?  In that case, wouldn't active
+>>>>>>>> consumers have link->rpm_active = 2 and also have incremented
+>>>>>>>> the supplier's usage_count?
+>>>>>
+>>>>> Yes this is with DL_FLAG_RPM_ACTIVE.
+>>>>>
+>>>>> Please let me share a log here:
+>>>>> BEF means - Before, AFT means After.
+>>>>>
+>>>>> [    6.843445][    T7] scsi 0:0:0:4: [UFSDBG]: ufshcd_setup_links:4779:  supp: usage_cnt: 3 Link - 0:0:0:49488 link-rpm_active: 2 avail_luns: 5
+>>>>> [    6.892545][    T7] scsi 0:0:0:4: pm_runtime_get_suppliers: (0:0:0:49488): supp: usage_count: 5 rpm_active: 4
+>>>>>
+>>>>> In the above log, T7 is the context in which this scsi device is being added - scsi_sysfs_add_sdev()
+>>>>>
+>>>>> [    6.931846][    T7] ufs_rpmb_wlun 0:0:0:4: [UFSDBG]: ufshcd_rpmb_probe:9692: invoked
+>>>>> [    6.941246][    T7] scsi 0:0:0:4: pm_runtime_put_suppliers: rpm_active: 4
+>>>>>
+>>>>> [    6.941246][    T7] scsi 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [BEF] usage_count: 5
+>>>>> [    6.941247][    T7] scsi 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [AFT] usage_count: 4 rpm_active: 3
+>>>>>
+>>>>> [    6.941267][    T7] scsi 0:0:0:4: rpm_put_suppliers: [BEF] Supp (0:0:0:49488) usage_count: 4 rpm_active: 3
+>>>>>
+>>>>> ------ T196 Context comes in while T7 is running ----------
+>>>>> [    6.941466][  T196] scsi 0:0:0:4: pm_runtime_get_suppliers: (0:0:0:49488): supp: usage_count: 5 rpm_active: 4
+>>>>> --------------------------------------------------------------
+>>>>>
+>>>>> [    7.788397][    T7] scsi 0:0:0:4: rpm_put_suppliers: [AFT] Supp (0:0:0:49488) usage_count: 2 rpm_active: 1
+>>>>
+>>>>
+>>>>
+>>>>>
+>>>>> --
+>>>>>
+>>>>> T196 is the context in which sd_probe() is invoked for this scsi device.
+>>>>>
+>>>>> [    7.974410][  T196] sd 0:0:0:4: [sde] Attached SCSI disk
+>>>>> [    7.984188][  T196] sd 0:0:0:4: pm_runtime_put_suppliers: rpm_active: 2
+>>>>> [    7.998424][  T196] sd 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [BEF] usage_count: 4
+>>>>> [    8.017320][  T196] sd 0:0:0:4: pm_runtime_put_suppliers: (0:0:0:49488) [AFT] usage_count: 1 rpm_active: 1
+>>>>>
+>>>>> The reference to the link is released after sd_probe() is completed.
+>>>>> At this point, the rpm_active should be 2. And the rpm_active should become 1 when sd 0:0:0:4 actually suspends. But at the end of sd_probe() the suspend is only scheduled. However the supplier is now free to suspend.
+>>>>>
+>>>>> In this log, the usage_count of supplier becomes 0 here:
+>>>>> [   11.963885][  T117] sd 0:0:0:7: rpm_put_suppliers: [BEF] Supp (0:0:0:49488) usage_count: 1 rpm_active: 2
+>>>>> [   11.973821][  T117] sd 0:0:0:7: rpm_put_suppliers: [AFT] Supp (0:0:0:49488) usage_count: 0 rpm_active: 1
+>>>>>
+>>>>> However, the consumer sd 0:0:0:4 is still active but has released the reference to the supplier:
+>>>>
+>>>> If that is the case, then it is an error in PM not UFS.
+>>>>
+>>>> A second look at the code around rpm_put_suppliers() does look
+>>>> potentially racy, since there does not appear to be anything
+>>>> stopping the runtime_status changing between
+>>>> spin_unlock_irq(&dev->power.lock) and device_links_read_lock().
+>>>>
+>>>> Rafael, can you comment?
+>>>
+>>> Indeed, if the device is suspending, changing its PM-runtime status to
+>>> RPM_SUSPENDED and dropping its power.lock allows a concurrent
+>>> rpm_resume() to run and resume the device before the suppliers can be
+>>> suspended.
+>>>
+>>> That's incorrect and has been introduced by commit 44cc89f76464 ("PM:
+>>> runtime: Update device status before letting suppliers suspend").
+>>>
+>>> It is probably better to revert that commit and address the original
+>>> issue in a different way.
+>>>
+>> Hello,
+>> One approach to address the original issue could be to prevent the scsi
+>> devices from suspending until the probe is completed, perhaps?
+> 
+> I was talking about the original issue that commit 44cc89f76464
+> attempted to address.
+> 
+> I'm not sure if and how it is related to the issue you have been debugging.
+> 
+Hi Rafael
+Thanks for clarifying that.
+Understood.
+I was referring to the issue that I've been discussing with Adrian.
 
-I was talking about the original issue that commit 44cc89f76464
-attempted to address.
+-asd
 
-I'm not sure if and how it is related to the issue you have been debugging.
+-- 
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+Linux Foundation Collaborative Project
 
 _______________________________________________
 Linux-mediatek mailing list
