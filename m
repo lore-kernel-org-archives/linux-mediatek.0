@@ -2,92 +2,101 @@ Return-Path: <SRS0=VEyR=IR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C0E25C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 02:46:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5ADA3C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 03:12:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35D2C64E38
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 02:46:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35D2C64E38
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0401A64EB3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 03:12:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0401A64EB3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Sh+wo4umiJ9qnYYUm1pBTMLlkvYTRN6ckO41cJX6/BE=; b=fHtq9ZfQ0/QZicmnj5QO7tev6
-	Z1D63cWDgB39EQz746zfDnwgF+pbIVnXZyIrxwiXy+40TxM1xF8aUBJdGJRdLmFOqIFGvld7exMsg
-	jGLdfaltO0++yB8DZ64o2MHUjefy33KkJa3aDb/Tw2G/3Gi49s8HjQuNGtdIhG1xnGWjBgPYXPZBX
-	nXJ8yJ0cr+8A7mQl8dhhi2ZzYhM/LRVJGa9vJIxNgeE42HmbEG+MWxmiuiawZmFrjM2rRSgZiqNKQ
-	nxfxv4PP/bej3mvxXdGaEQVXVUc1DHhRW6gJxFTRTyDpCxoD7dGXRYyBCroc+7VD3Gr21JUQwcvHO
-	COtrpDUCQ==;
+	 bh=FiAIONLd9/JUNdvXBcZiLSNpTjRWafME+gH4ffW1nOE=; b=MfYfVEN7du7kBfjwH56180SbQ
+	Cohx10102HifI+PvM3Z4k9Gp52N+ShfTpeCP9irtO4B9VXCRu37Qf/ulXxtY4RZkM0qeyAT6quuof
+	xQR3/sP1k0TZYavfzJWxaXv+DovnwvceCfLMR7Xa4Pl8YSzvJbgjFHgziVX3Llxr7La8OwsQDnldy
+	+QNBahIjHruLDCWUoFxvBEjKbZhBZPbuJbnEwbXqxZyYIN+s3QswZvx3XOHa45pFc9yZmgg8gpbGI
+	qwvd8pHuoSt0aLbbrzD2b1pW7/MF+VVLa3ONPBMhA82eKlkge/Zf4pmJ+5D/vXfg2QnVJLDgb5UUU
+	LyfKziQsw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lN5A2-006MDD-QJ; Fri, 19 Mar 2021 02:46:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lN5Yu-006NpO-Jc; Fri, 19 Mar 2021 03:12:32 +0000
+Received: from mail-pg1-f181.google.com ([209.85.215.181])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lN59r-006MB9-Ot; Fri, 19 Mar 2021 02:46:42 +0000
-X-UUID: 8a5983ca3ec7477fa9d2dff146f05153-20210318
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=fZzZQxaQKzHNtpTD42lLuc7XK7v2982PO+dAP2KB84g=; 
- b=RfpgbkP9veIazm/TkP0I5wUk85Yr6p9NO3oRl2buUO3ZGw1IMK5ly67uwuI6UcAjmrlA8zJ86+KF5Rn4OI9WiDYvC55dMyRetNASFpZKG4T1g1aty4Y6ZztScUdiA1wYX+uGznTYynxr6jMr+07UiSh58tFSF9Ad8Tv0uG0m65I=;
-X-UUID: 8a5983ca3ec7477fa9d2dff146f05153-20210318
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <seiya.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1799423265; Thu, 18 Mar 2021 18:46:26 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Mar 2021 19:37:04 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 19 Mar 2021 10:37:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 19 Mar 2021 10:37:02 +0800
-From: Seiya Wang <seiya.wang@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, 
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Ulf Hansson
- <ulf.hansson@linaro.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, "Wim Van
- Sebroeck" <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>,
- "Enric Balletbo i Serra" <enric.balletbo@collabora.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Seiya Wang <seiya.wang@mediatek.com>, Fabien Parent
- <fparent@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, Zhiyong Tao
- <zhiyong.tao@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>, Stanley Chu <stanley.chu@mediatek.com>, 
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-iio@vger.kernel.org>, <linux-mmc@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-serial@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
- <srv_heupstream@mediatek.com>
-Subject: [PATCH v2 8/8] arm64: dts: Add Mediatek SoC MT8195 and evaluation
- board dts and Makefile
-Date: Fri, 19 Mar 2021 10:34:27 +0800
-Message-ID: <20210319023427.16711-10-seiya.wang@mediatek.com>
-X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20210319023427.16711-1-seiya.wang@mediatek.com>
-References: <20210319023427.16711-1-seiya.wang@mediatek.com>
+ id 1lN5Yp-006Nnf-IZ; Fri, 19 Mar 2021 03:12:29 +0000
+Received: by mail-pg1-f181.google.com with SMTP id k24so2743998pgl.6;
+ Thu, 18 Mar 2021 20:12:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=QPnNt2Q5gwIGxq8YNJSmsWgPXb6d+RK8/YXCxxPJffM=;
+ b=tAl6nhP1bAX+xHcFO4DIFDOqJn7laZmEzvI1u8XKmOPvPUbWm1MbYbmipwK1xg62/b
+ UaVzQ6S9MQNyB8Yok5Dr9BfIA+BUsHb4LbHS77hejGn3oywKPEszdNChXH4I/VODv2s3
+ PoIA7uzbcJDlNrGr0KplrzduzmYBAUFJmXctSlk7QZvhEhKsa6fCScINQQzVPH5SGL2p
+ Zx+uNphzcGk2j8+LtiJC+ZS6o6mrWio2Gu9uwFanuLrtz4qiuHIgbRhWRr4tkJEbi24d
+ NC/ANeSQgn31pf/X25Ub7AaIoyrPGxSGu/TurcscJlgG9crE0gojqsoBcZFzr8nkXw8g
+ BCRg==
+X-Gm-Message-State: AOAM533PWRQqsz30j0+VSFKhfaYcmGFFHRD38okQOfFfElF406Sc4wII
+ A+ACH14wGfS1arwKV+TVzOKqB4rPkRO25Q==
+X-Google-Smtp-Source: ABdhPJwfFHQEQwnjE1zKW9cAw1O9qK8JUiS4pOAOpm6vvbl1t/JC568LJtBSzb7hPf2kaVpgpisIZw==
+X-Received: by 2002:aa7:96c9:0:b029:200:503d:19df with SMTP id
+ h9-20020aa796c90000b0290200503d19dfmr7208817pfq.46.1616123544961; 
+ Thu, 18 Mar 2021 20:12:24 -0700 (PDT)
+Received: from ?IPv6:2601:647:4000:d7:14ae:768b:f663:b4db?
+ ([2601:647:4000:d7:14ae:768b:f663:b4db])
+ by smtp.gmail.com with ESMTPSA id s194sm3752836pfs.57.2021.03.18.20.12.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 Mar 2021 20:12:24 -0700 (PDT)
+Subject: Re: [PATCH v12 1/2] scsi: ufs: Enable power management for wlun
+To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
+ martin.petersen@oracle.com, adrian.hunter@intel.com,
+ linux-scsi@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Wei Yongjun <weiyongjun1@huawei.com>,
+ Lee Jones <lee.jones@linaro.org>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Satya Tangirala <satyat@google.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>
+References: <cover.1616113283.git.asutoshd@codeaurora.org>
+ <56662082b6a17b448f40d87df7e52b45a5998c2a.1616113283.git.asutoshd@codeaurora.org>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <e9dc046d-3a88-9802-df58-60209ea8484f@acm.org>
+Date: Thu, 18 Mar 2021 20:12:21 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 040A019FC7C77B8079E45CDE7A23135F10EEE3FF9EA2BEB0565EF3195F5DD24E2000:8
-X-MTK: N
+In-Reply-To: <56662082b6a17b448f40d87df7e52b45a5998c2a.1616113283.git.asutoshd@codeaurora.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_024640_626252_8911B013 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20210319_031227_795470_04447420 
+X-CRM114-Status: GOOD (  29.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,534 +113,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic chip support for Mediatek MT8195
+On 3/18/21 5:35 PM, Asutosh Das wrote:
+> During runtime-suspend of ufs host, the scsi devices are
+> already suspended and so are the queues associated with them.
+> But the ufs host sends SSU to wlun during its runtime-suspend.
+> During the process blk_queue_enter checks if the queue is not in
+> suspended state. If so, it waits for the queue to resume, and never
+> comes out of it.
+> The commit
+> (d55d15a33: scsi: block: Do not accept any requests while suspended)
+> adds the check if the queue is in suspended state in blk_queue_enter().
 
-Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/Makefile       |   1 +
- arch/arm64/boot/dts/mediatek/mt8195-evb.dts |  29 ++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 464 ++++++++++++++++++++++++++++
- 3 files changed, 494 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+What is the role of the WLUN during runtime suspend and why does a
+command need to be sent to the WLUN during runtime suspend? Although it
+is possible to derive this from the source code, please explain this in
+the patch description.
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index deba27ab7657..aee4b9715d2f 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -16,4 +16,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-new file mode 100644
-index 000000000000..82bb10e9a531
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-@@ -0,0 +1,29 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Author: Seiya Wang <seiya.wang@mediatek.com>
-+ */
-+/dts-v1/;
-+#include "mt8195.dtsi"
-+
-+/ {
-+	model = "MediaTek MT8195 evaluation board";
-+	compatible = "mediatek,mt8195-evb", "mediatek,mt8195";
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:921600n8";
-+	};
-+
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x80000000>;
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-new file mode 100644
-index 000000000000..629cd883facf
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -0,0 +1,464 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Author: Seiya Wang <seiya.wang@mediatek.com>
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+
-+/ {
-+	compatible = "mediatek,mt8195";
-+	interrupt-parent = <&gic>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+
-+	clocks {
-+		clk26m: oscillator0 {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <26000000>;
-+			clock-output-names = "clk26m";
-+		};
-+
-+		clk32k: oscillator1 {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <32768>;
-+			clock-output-names = "clk32k";
-+		};
-+	};
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu0: cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55", "arm,armv8";
-+			reg = <0x000>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			capacity-dmips-mhz = <578>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-+			next-level-cache = <&l2_0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu1: cpu@100 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55", "arm,armv8";
-+			reg = <0x100>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			capacity-dmips-mhz = <578>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-+			next-level-cache = <&l2_0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu2: cpu@200 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55", "arm,armv8";
-+			reg = <0x200>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			capacity-dmips-mhz = <578>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-+			next-level-cache = <&l2_0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu3: cpu@300 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55", "arm,armv8";
-+			reg = <0x300>;
-+			enable-method = "psci";
-+			clock-frequency = <1701000000>;
-+			capacity-dmips-mhz = <578>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-+			next-level-cache = <&l2_0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu4: cpu@400 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78", "arm,armv8";
-+			reg = <0x400>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			capacity-dmips-mhz = <1024>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-+			next-level-cache = <&l2_1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu5: cpu@500 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78", "arm,armv8";
-+			reg = <0x500>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			capacity-dmips-mhz = <1024>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-+			next-level-cache = <&l2_1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu6: cpu@600 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78", "arm,armv8";
-+			reg = <0x600>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			capacity-dmips-mhz = <1024>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-+			next-level-cache = <&l2_1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu7: cpu@700 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78", "arm,armv8";
-+			reg = <0x700>;
-+			enable-method = "psci";
-+			clock-frequency = <2171000000>;
-+			capacity-dmips-mhz = <1024>;
-+			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-+			next-level-cache = <&l2_1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu-map {
-+			cluster0 {
-+				core0 {
-+					cpu = <&cpu0>;
-+				};
-+				core1 {
-+					cpu = <&cpu1>;
-+				};
-+				core2 {
-+					cpu = <&cpu2>;
-+				};
-+				core3 {
-+					cpu = <&cpu3>;
-+				};
-+			};
-+			cluster1 {
-+				core0 {
-+					cpu = <&cpu4>;
-+				};
-+				core1 {
-+					cpu = <&cpu5>;
-+				};
-+				core2 {
-+					cpu = <&cpu6>;
-+				};
-+				core3 {
-+					cpu = <&cpu7>;
-+				};
-+			};
-+		};
-+
-+		idle-states {
-+			entry-method = "arm,psci";
-+			cpuoff_l: cpuoff_l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010001>;
-+				local-timer-stop;
-+				entry-latency-us = <50>;
-+				exit-latency-us = <95>;
-+				min-residency-us = <580>;
-+			};
-+			cpuoff_b: cpuoff_b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010001>;
-+				local-timer-stop;
-+				entry-latency-us = <45>;
-+				exit-latency-us = <140>;
-+				min-residency-us = <740>;
-+			};
-+			clusteroff_l: clusteroff_l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010002>;
-+				local-timer-stop;
-+				entry-latency-us = <55>;
-+				exit-latency-us = <155>;
-+				min-residency-us = <840>;
-+			};
-+			clusteroff_b: clusteroff_b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010002>;
-+				local-timer-stop;
-+				entry-latency-us = <50>;
-+				exit-latency-us = <200>;
-+				min-residency-us = <1000>;
-+			};
-+		};
-+
-+		l2_0: l2-cache0 {
-+			compatible = "cache";
-+			next-level-cache = <&l3_0>;
-+		};
-+
-+		l2_1: l2-cache1 {
-+			compatible = "cache";
-+			next-level-cache = <&l3_0>;
-+		};
-+
-+		l3_0: l3-cache {
-+			compatible = "cache";
-+		};
-+	};
-+
-+	dsu-pmu {
-+		compatible = "arm,dsu-pmu";
-+		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH 0>;
-+		cpus = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>,
-+		       <&cpu4>, <&cpu5>, <&cpu6>, <&cpu7>;
-+	};
-+
-+	pmu-a55 {
-+		compatible = "arm,cortex-a55-pmu";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster0>;
-+	};
-+
-+	pmu-a78 {
-+		compatible = "arm,cortex-a78-pmu";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster1>;
-+	};
-+
-+	psci {
-+		compatible = "arm,psci-1.0";
-+		method = "smc";
-+	};
-+
-+	timer: timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clock-frequency = <13000000>;
-+	};
-+
-+	soc {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		gic: interrupt-controller@c000000 {
-+			compatible = "arm,gic-v3";
-+			#interrupt-cells = <4>;
-+			#redistributor-regions = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0x0c000000 0 0x40000>,
-+			      <0 0x0c040000 0 0x200000>;
-+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-+
-+			ppi-partitions {
-+				ppi_cluster0: interrupt-partition-0 {
-+					affinity = <&cpu0 &cpu1 &cpu2 &cpu3>;
-+				};
-+				ppi_cluster1: interrupt-partition-1 {
-+					affinity = <&cpu4 &cpu5 &cpu6 &cpu7>;
-+				};
-+			};
-+		};
-+
-+		watchdog: watchdog@10007000 {
-+			compatible = "mediatek,mt8195-wdt", "mediatek,mt6589-wdt";
-+			reg = <0 0x10007000 0 0x100>;
-+		};
-+
-+		systimer: timer@10017000 {
-+			compatible = "mediatek,mt8195-timer", "mediatek,mt6765-timer";
-+			reg = <0 0x10017000 0 0x1000>;
-+			interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>;
-+		};
-+
-+		uart0: serial@11001100 {
-+			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11001100 0 0x100>;
-+			interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		uart1: serial@11001200 {
-+			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11001200 0 0x100>;
-+			interrupts = <GIC_SPI 142 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+		};
-+
-+		uart2: serial@11001300 {
-+			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11001300 0 0x100>;
-+			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		uart3: serial@11001400 {
-+			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11001400 0 0x100>;
-+			interrupts = <GIC_SPI 723 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		uart4: serial@11001500 {
-+			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11001500 0 0x100>;
-+			interrupts = <GIC_SPI 724 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		uart5: serial@11001600 {
-+			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11001600 0 0x100>;
-+			interrupts = <GIC_SPI 725 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+
-+		auxadc: auxadc@11002000 {
-+			compatible = "mediatek,mt8195-auxadc", "mediatek,mt8173-auxadc";
-+			reg = <0 0x11002000 0 0x1000>;
-+			clocks = <&clk26m>;
-+			clock-names = "main";
-+			#io-channel-cells = <1>;
-+			status = "disabled";
-+		};
-+
-+		mmc0: mmc@11230000 {
-+			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
-+			reg = <0 0x11230000 0 0x10000>,
-+			      <0 0x11f50000 0 0x1000>;
-+			interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
-+			clock-names = "source", "hclk", "source_cg";
-+			status = "disabled";
-+		};
-+
-+		mmc1: mmc@11240000 {
-+			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
-+			reg = <0 0x11240000 0 0x1000>,
-+			      <0 0x11c70000 0 0x1000>;
-+			interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
-+			clock-names = "source", "hclk", "source_cg";
-+			status = "disabled";
-+		};
-+
-+		nor_flash: nor@1132c000 {
-+			compatible = "mediatek,mt8195-nor", "mediatek,mt8173-nor";
-+			reg = <0 0x1132c000 0 0x1000>;
-+			interrupts = <GIC_SPI 825 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "spi", "sf";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		u3phy2: t-phy@11c40000 {
-+			compatible = "mediatek,mt8195-tphy", "mediatek,generic-tphy-v2";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x11c40000 0x700>;
-+			status = "disabled";
-+
-+			u2port2: usb-phy@0 {
-+				reg = <0x0 0x700>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+		};
-+
-+		u3phy3: t-phy@11c50000 {
-+			compatible = "mediatek,mt8195-tphy", "mediatek,generic-tphy-v2";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x11c50000 0x700>;
-+			status = "disabled";
-+
-+			u2port3: usb-phy@0 {
-+				reg = <0x0 0x700>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+		};
-+
-+		u3phy1: t-phy@11e30000 {
-+			compatible = "mediatek,mt8195-tphy", "mediatek,generic-tphy-v2";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x11e30000 0xe00>;
-+			status = "disabled";
-+
-+			u2port1: usb-phy@0 {
-+				reg = <0x0 0x700>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+
-+			u3port1: usb-phy@700 {
-+				reg = <0x700 0x700>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+		};
-+
-+		u3phy0: t-phy@11e40000 {
-+			compatible = "mediatek,mt8195-tphy", "mediatek,generic-tphy-v2";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x11e40000 0xe00>;
-+			status = "disabled";
-+
-+			u2port0: usb-phy@0 {
-+				reg = <0x0 0x700>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+
-+			u3port0: usb-phy@700 {
-+				reg = <0x700 0x700>;
-+				clocks = <&clk26m>;
-+				clock-names = "ref";
-+				#phy-cells = <1>;
-+			};
-+		};
-+
-+		ufsphy: phy@11fa0000 {
-+			compatible = "mediatek,mt8195-ufsphy", "mediatek,mt8183-ufsphy";
-+			reg = <0 0x11fa0000 0 0xc000>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "unipro", "mp";
-+			#phy-cells = <0>;
-+			status = "disabled";
-+		};
-+	};
-+};
--- 
-2.14.1
+What does the acronym SSU stand for? This doesn't seem like a commonly
+used kernel acronym to me so please expand that acronym.
+
+> Fix this by registering ufs device wlun as a scsi driver and
+> registering it for block runtime-pm. Also make this as a
+> supplier for all other luns. That way, this device wlun
+> suspends after all the consumers and resumes after
+> hba resumes.
+
+That's an interesting solution.
+
+> -void __exit ufs_debugfs_exit(void)
+> +void ufs_debugfs_exit(void)
+
+Is the above change related to the rest of this patch?
+
+>  static struct platform_driver ufs_qcom_pltform = {
+> diff --git a/drivers/scsi/ufs/ufs_bsg.c b/drivers/scsi/ufs/ufs_bsg.c
+> index 5b2bc1a..cbb5a90 100644
+> --- a/drivers/scsi/ufs/ufs_bsg.c
+> +++ b/drivers/scsi/ufs/ufs_bsg.c
+> @@ -97,7 +97,7 @@ static int ufs_bsg_request(struct bsg_job *job)
+>  
+>  	bsg_reply->reply_payload_rcv_len = 0;
+>  
+> -	pm_runtime_get_sync(hba->dev);
+> +	scsi_autopm_get_device(hba->sdev_ufs_device);
+
+Can the pm_runtime_get_sync() to scsi_autopm_get_device() changes be
+moved into a separate patch?
+
+> +static inline bool is_rpmb_wlun(struct scsi_device *sdev)
+> +{
+> +	return (sdev->lun == ufshcd_upiu_wlun_to_scsi_wlun(UFS_UPIU_RPMB_WLUN));
+> +}
+
+Has this patch been verified with checkpatch? Checkpatch should have
+reported the following for the above code:
+
+	return is not a function, parentheses are not required
+
+> +static inline bool is_device_wlun(struct scsi_device *sdev)
+> +{
+> +	return (sdev->lun ==
+> +		ufshcd_upiu_wlun_to_scsi_wlun(UFS_UPIU_UFS_DEVICE_WLUN));
+> +}
+
+Same comment here.
+
+>  		/*
+> -		 * Don't assume anything of pm_runtime_get_sync(), if
+> +		 * Don't assume anything of resume, if
+>  		 * resume fails, irq and clocks can be OFF, and powers
+>  		 * can be OFF or in LPM.
+>  		 */
+
+Please make better use of the horizontal space in the above comment by
+making comment lines longer.
+
+Thanks,
+
+Bart.
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
