@@ -2,101 +2,91 @@ Return-Path: <SRS0=VEyR=IR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5ADA3C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 03:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80077C433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 03:53:12 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0401A64EB3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 03:12:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0401A64EB3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	by mail.kernel.org (Postfix) with ESMTPS id 15FB064E07
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Mar 2021 03:53:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15FB064E07
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FiAIONLd9/JUNdvXBcZiLSNpTjRWafME+gH4ffW1nOE=; b=MfYfVEN7du7kBfjwH56180SbQ
-	Cohx10102HifI+PvM3Z4k9Gp52N+ShfTpeCP9irtO4B9VXCRu37Qf/ulXxtY4RZkM0qeyAT6quuof
-	xQR3/sP1k0TZYavfzJWxaXv+DovnwvceCfLMR7Xa4Pl8YSzvJbgjFHgziVX3Llxr7La8OwsQDnldy
-	+QNBahIjHruLDCWUoFxvBEjKbZhBZPbuJbnEwbXqxZyYIN+s3QswZvx3XOHa45pFc9yZmgg8gpbGI
-	qwvd8pHuoSt0aLbbrzD2b1pW7/MF+VVLa3ONPBMhA82eKlkge/Zf4pmJ+5D/vXfg2QnVJLDgb5UUU
-	LyfKziQsw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TZJNNjyfwGG229WjzOCWVOvLrNZODkUXQw6x/62e2+E=; b=BBYTTGE42HiZYd56Yh/l5nigqi
+	2ySoLYM8kNASyM4T0/PaUgSDc+u+4dn+TMjlS/maqivMrTSICCgO5uXp1rUQ2jMd5PhEBdr1v8vO5
+	VQ+nf+U0YWB3mCFpzTLhfOxwD/E20rbTWtYDXxjoEbcHi0fPn3E3n1j320MRRvjXfVngnNXI54HNj
+	+vivv2Ja1DcB/biBd5tH8Eta46Efwjb4NqLf2utXp3FjheHZbf3aBkIRmlsoqdatq/yZUOHkqAZb9
+	MqiyljVXLZn+UCfqnPifMHsZydA9pMS50gVk/TfIdFvBM8OMvyj5l5QSZIJFE/RiT6H8ymkjsAhkl
+	vWJN67FA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lN5Yu-006NpO-Jc; Fri, 19 Mar 2021 03:12:32 +0000
-Received: from mail-pg1-f181.google.com ([209.85.215.181])
+	id 1lN6C2-006Qas-AQ; Fri, 19 Mar 2021 03:52:58 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lN5Yp-006Nnf-IZ; Fri, 19 Mar 2021 03:12:29 +0000
-Received: by mail-pg1-f181.google.com with SMTP id k24so2743998pgl.6;
- Thu, 18 Mar 2021 20:12:26 -0700 (PDT)
+ id 1lN6Bw-006QZL-9v
+ for linux-mediatek@lists.infradead.org; Fri, 19 Mar 2021 03:52:54 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id
+ q6-20020a17090a4306b02900c42a012202so4177702pjg.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 18 Mar 2021 20:52:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Wu0UN0qTxD7NQTRZi1+qshriPs2sSwGOFj55/TJrhfs=;
+ b=fqqvH2c7HgMSttFHhPrVseaYGYI7ND17sa4mOG9uxCnTyKNZoYpah+jzIMyTWsQtVi
+ cFHQa6VIMlMw0oO9A//gedyeB84lyFm9tYX2HqoJw3TnRchhRUgaoeRvuHLtJDK8xRZD
+ UhV+9UZ6BYweMxfHNxIw6wIEauX5a/w0sb/vw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=QPnNt2Q5gwIGxq8YNJSmsWgPXb6d+RK8/YXCxxPJffM=;
- b=tAl6nhP1bAX+xHcFO4DIFDOqJn7laZmEzvI1u8XKmOPvPUbWm1MbYbmipwK1xg62/b
- UaVzQ6S9MQNyB8Yok5Dr9BfIA+BUsHb4LbHS77hejGn3oywKPEszdNChXH4I/VODv2s3
- PoIA7uzbcJDlNrGr0KplrzduzmYBAUFJmXctSlk7QZvhEhKsa6fCScINQQzVPH5SGL2p
- Zx+uNphzcGk2j8+LtiJC+ZS6o6mrWio2Gu9uwFanuLrtz4qiuHIgbRhWRr4tkJEbi24d
- NC/ANeSQgn31pf/X25Ub7AaIoyrPGxSGu/TurcscJlgG9crE0gojqsoBcZFzr8nkXw8g
- BCRg==
-X-Gm-Message-State: AOAM533PWRQqsz30j0+VSFKhfaYcmGFFHRD38okQOfFfElF406Sc4wII
- A+ACH14wGfS1arwKV+TVzOKqB4rPkRO25Q==
-X-Google-Smtp-Source: ABdhPJwfFHQEQwnjE1zKW9cAw1O9qK8JUiS4pOAOpm6vvbl1t/JC568LJtBSzb7hPf2kaVpgpisIZw==
-X-Received: by 2002:aa7:96c9:0:b029:200:503d:19df with SMTP id
- h9-20020aa796c90000b0290200503d19dfmr7208817pfq.46.1616123544961; 
- Thu, 18 Mar 2021 20:12:24 -0700 (PDT)
-Received: from ?IPv6:2601:647:4000:d7:14ae:768b:f663:b4db?
- ([2601:647:4000:d7:14ae:768b:f663:b4db])
- by smtp.gmail.com with ESMTPSA id s194sm3752836pfs.57.2021.03.18.20.12.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Mar 2021 20:12:24 -0700 (PDT)
-Subject: Re: [PATCH v12 1/2] scsi: ufs: Enable power management for wlun
-To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
- martin.petersen@oracle.com, adrian.hunter@intel.com,
- linux-scsi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
- <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
- Kiwoong Kim <kwmad.kim@samsung.com>, Wei Yongjun <weiyongjun1@huawei.com>,
- Lee Jones <lee.jones@linaro.org>, Dan Carpenter <dan.carpenter@oracle.com>,
- Dinghao Liu <dinghao.liu@zju.edu.cn>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Satya Tangirala <satyat@google.com>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>
-References: <cover.1616113283.git.asutoshd@codeaurora.org>
- <56662082b6a17b448f40d87df7e52b45a5998c2a.1616113283.git.asutoshd@codeaurora.org>
-From: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <e9dc046d-3a88-9802-df58-60209ea8484f@acm.org>
-Date: Thu, 18 Mar 2021 20:12:21 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ bh=Wu0UN0qTxD7NQTRZi1+qshriPs2sSwGOFj55/TJrhfs=;
+ b=n4VbBNNe6+H+AnoLj4Z0rCqKIejAC045bd8WU9dU0vBPvjxbqrU4rSrjPDdCdgprm5
+ 5qwKlS5bWF9BkiCfDHNzCZzML69M3bHpABpv8Xjm5vXCB8q9SmhX5jl82MqxPTa0qpot
+ U+HVXG00DPKf8xAmc7kjkKRfpltTy1NRlixiOvRt0qVpLQUceVUZme5hwD5RV12UfiYc
+ mDMdaDFzz0qd8KSzjDeoGbHdNXrkNh5FVPyiDGdObV4o68SogfVKOV/8yir38J5CgVfr
+ HacVqPrg0MfFNOtHG6uwdXvhSiewU/SkvzVHci+XT5tjlMjCxiAdFxwRmyTiVvIqOb3t
+ Pxhw==
+X-Gm-Message-State: AOAM532/zWNxk49QjQkuI/yJQL/n82SrOTL9g6cKmVwCFknAZJzjGpte
+ GyduaGB7zjssLQsA7CjxorasAg==
+X-Google-Smtp-Source: ABdhPJwtstJdF7ulIAFEh2bGsL+qpO3Qj+dYWl2OUYKZAv1QwvYbJBHLwVcpzF2cMuew4wQ5OLgG8A==
+X-Received: by 2002:a17:902:ecc4:b029:e6:1a9f:3397 with SMTP id
+ a4-20020a170902ecc4b02900e61a9f3397mr12844270plh.9.1616125970722; 
+ Thu, 18 Mar 2021 20:52:50 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:e12f:5c36:14f:bbf5])
+ by smtp.gmail.com with ESMTPSA id u66sm3442180pfu.186.2021.03.18.20.52.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Mar 2021 20:52:50 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, Sean Wang <sean.wang@mediatek.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Ben Ho <Ben.Ho@mediatek.com>
+Subject: [PATCH v4 1/4] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-damu
+Date: Fri, 19 Mar 2021 11:52:42 +0800
+Message-Id: <20210319035245.2751911-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.31.0.rc2.261.g7f71774620-goog
 MIME-Version: 1.0
-In-Reply-To: <56662082b6a17b448f40d87df7e52b45a5998c2a.1616113283.git.asutoshd@codeaurora.org>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_031227_795470_04447420 
-X-CRM114-Status: GOOD (  29.11  )
+X-CRM114-CacheID: sfid-20210319_035252_700622_85B1ECA5 
+X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,84 +103,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/18/21 5:35 PM, Asutosh Das wrote:
-> During runtime-suspend of ufs host, the scsi devices are
-> already suspended and so are the queues associated with them.
-> But the ufs host sends SSU to wlun during its runtime-suspend.
-> During the process blk_queue_enter checks if the queue is not in
-> suspended state. If so, it waits for the queue to resume, and never
-> comes out of it.
-> The commit
-> (d55d15a33: scsi: block: Do not accept any requests while suspended)
-> adds the check if the queue is in suspended state in blk_queue_enter().
+mt8183-kukui-jacuzzi-damu board also known as ASUS Chromebook Flip CM3,
+using mediatek mt8183 SoC.
 
-What is the role of the WLUN during runtime suspend and why does a
-command need to be sent to the WLUN during runtime suspend? Although it
-is possible to derive this from the source code, please explain this in
-the patch description.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-What does the acronym SSU stand for? This doesn't seem like a commonly
-used kernel acronym to me so please expand that acronym.
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 93b3bdf6eaeb..a86716cdd408 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -125,6 +125,10 @@ properties:
+               - google,krane-sku176
+           - const: google,krane
+           - const: mediatek,mt8183
++      - description: Google Damu (ASUS Chromebook Flip CM3)
++        items:
++          - const: google,damu
++          - const: mediatek,mt8183
+ 
+ additionalProperties: true
+ 
+-- 
+2.31.0.rc2.261.g7f71774620-goog
 
-> Fix this by registering ufs device wlun as a scsi driver and
-> registering it for block runtime-pm. Also make this as a
-> supplier for all other luns. That way, this device wlun
-> suspends after all the consumers and resumes after
-> hba resumes.
-
-That's an interesting solution.
-
-> -void __exit ufs_debugfs_exit(void)
-> +void ufs_debugfs_exit(void)
-
-Is the above change related to the rest of this patch?
-
->  static struct platform_driver ufs_qcom_pltform = {
-> diff --git a/drivers/scsi/ufs/ufs_bsg.c b/drivers/scsi/ufs/ufs_bsg.c
-> index 5b2bc1a..cbb5a90 100644
-> --- a/drivers/scsi/ufs/ufs_bsg.c
-> +++ b/drivers/scsi/ufs/ufs_bsg.c
-> @@ -97,7 +97,7 @@ static int ufs_bsg_request(struct bsg_job *job)
->  
->  	bsg_reply->reply_payload_rcv_len = 0;
->  
-> -	pm_runtime_get_sync(hba->dev);
-> +	scsi_autopm_get_device(hba->sdev_ufs_device);
-
-Can the pm_runtime_get_sync() to scsi_autopm_get_device() changes be
-moved into a separate patch?
-
-> +static inline bool is_rpmb_wlun(struct scsi_device *sdev)
-> +{
-> +	return (sdev->lun == ufshcd_upiu_wlun_to_scsi_wlun(UFS_UPIU_RPMB_WLUN));
-> +}
-
-Has this patch been verified with checkpatch? Checkpatch should have
-reported the following for the above code:
-
-	return is not a function, parentheses are not required
-
-> +static inline bool is_device_wlun(struct scsi_device *sdev)
-> +{
-> +	return (sdev->lun ==
-> +		ufshcd_upiu_wlun_to_scsi_wlun(UFS_UPIU_UFS_DEVICE_WLUN));
-> +}
-
-Same comment here.
-
->  		/*
-> -		 * Don't assume anything of pm_runtime_get_sync(), if
-> +		 * Don't assume anything of resume, if
->  		 * resume fails, irq and clocks can be OFF, and powers
->  		 * can be OFF or in LPM.
->  		 */
-
-Please make better use of the horizontal space in the above comment by
-making comment lines longer.
-
-Thanks,
-
-Bart.
 
 _______________________________________________
 Linux-mediatek mailing list
