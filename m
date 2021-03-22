@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F375FC433C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4AA9C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:47:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9532D61984
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:47:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9532D61984
+	by mail.kernel.org (Postfix) with ESMTPS id 6AE18619A3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:47:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AE18619A3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cT5mBjcfQme6Hzck/6yhlsZXXsYZpeRU5LbRLmiQmUQ=; b=cWWoIO2OhJf+NIBYTZ+4KwcVb
-	gB29gh8E2oVAdwLkyFgnH2NdDtREDJwQklKG+FOP4YePKIo1x8izlea9gAItsv8NFbjJM3UMZf6kl
-	YC2h3NAUoY20O2ok+us21TboshyUYTKlTW3IZ7R0uJk5IxqKArpal8yOwzLXsxUTrhRImAVXukoNs
-	DQQE5a3OnAZeeXuWr1qqeQZQ1bR/+VsrAxe9/QCfs1Wz0HalfUAAmF4LN6QErFBYKnDZZH4GNVb3z
-	NrNlaDThdNW8hWl45NZuXaCrsNEKfKMfKEOwZBEpx9PBAJIb8XAez8Xu9o4j7A9e2UrybTHKEswNv
-	inuSO241Q==;
+	 bh=928NATSSIgIQJ3jPL2+f/bCkX9YU5doUI8jGxqckYLw=; b=YUe3S9ouunuomtbhvy2LCa8s5
+	qIOZiwS5YL+g6wB31jnReD+rscbxKZ2lUS5WVrYow2JdHhTR91ZiX0JyrW3WKZ65xzymXLf1l23ra
+	dJqVww/dK6U8gfP1rKYxOOuj/gLsP8pIh7oqpvPQ8tNVUcV3PPurJ4E213HuDH2vGOLliKnoJCOeX
+	5Hehnt3w0UVCbSqTpLTDuKHr6GMbfDsbofse6HlAFpEs/ViiuFSOwLfgR3y9HkkwBhZc5viDXQUwY
+	c5+RrjGtMQuW3Agi50NqsN/WZhtNIV8aE34trHJxL7/zoeBrqFdMM5WIVn8MJZ2/fiMChtGWqmqRa
+	JDt2F0RLA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOPa7-00CINB-Bn; Mon, 22 Mar 2021 18:47:15 +0000
+	id 1lOPab-00CIUF-1w; Mon, 22 Mar 2021 18:47:45 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOPZM-00CIBb-HE; Mon, 22 Mar 2021 18:46:32 +0000
+ id 1lOPZO-00CICR-CD; Mon, 22 Mar 2021 18:46:32 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2A7DE619A7;
- Mon, 22 Mar 2021 18:46:27 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0FCAE61984;
+ Mon, 22 Mar 2021 18:46:29 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lOPZJ-0038p5-E2; Mon, 22 Mar 2021 18:46:25 +0000
+ id 1lOPZL-0038p5-ED; Mon, 22 Mar 2021 18:46:27 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
@@ -66,10 +66,10 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  kernel-team@android.com
-Subject: [PATCH v2 02/15] PCI: rcar: Don't allocate extra memory for the MSI
+Subject: [PATCH v2 04/15] PCI: xilinx: Don't allocate extra memory for the MSI
  capture address
-Date: Mon, 22 Mar 2021 18:46:01 +0000
-Message-Id: <20210322184614.802565-3-maz@kernel.org>
+Date: Mon, 22 Mar 2021 18:46:03 +0000
+Message-Id: <20210322184614.802565-5-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210322184614.802565-1-maz@kernel.org>
 References: <20210322184614.802565-1-maz@kernel.org>
@@ -90,8 +90,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_184628_915060_57313198 
-X-CRM114-Status: GOOD (  18.86  )
+X-CRM114-CacheID: sfid-20210322_184630_709229_19119719 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,74 +116,65 @@ But there is no actual requirement for this address to be RAM.
 All it needs to be is a suitable aligned address that will
 *not* be DMA'd to.
 
-Since the rcar platform already has a requirement that this
-address should be in the first 4GB of the physical address space,
-use the controller's own base address as the capture address.
+Use the physical address of the 'port' data structure as the MSI
+capture address.
 
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/controller/pcie-rcar-host.c | 18 +++++++-----------
- 1 file changed, 7 insertions(+), 11 deletions(-)
+ drivers/pci/controller/pcie-xilinx.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rcar-host.c b/drivers/pci/controller/pcie-rcar-host.c
-index a728e8f9ad3c..ce952403e22c 100644
---- a/drivers/pci/controller/pcie-rcar-host.c
-+++ b/drivers/pci/controller/pcie-rcar-host.c
-@@ -36,7 +36,6 @@ struct rcar_msi {
- 	DECLARE_BITMAP(used, INT_PCI_MSI_NR);
- 	struct irq_domain *domain;
- 	struct msi_controller chip;
--	unsigned long pages;
- 	struct mutex lock;
- 	int irq1;
- 	int irq2;
-@@ -680,14 +679,15 @@ static void rcar_pcie_unmap_msi(struct rcar_pcie_host *host)
- static void rcar_pcie_hw_enable_msi(struct rcar_pcie_host *host)
+diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
+index fa5baeb82653..3a762ffb0cef 100644
+--- a/drivers/pci/controller/pcie-xilinx.c
++++ b/drivers/pci/controller/pcie-xilinx.c
+@@ -94,7 +94,6 @@
+  * struct xilinx_pcie_port - PCIe port information
+  * @reg_base: IO Mapped Register Base
+  * @irq: Interrupt number
+- * @msi_pages: MSI pages
+  * @dev: Device pointer
+  * @msi_domain: MSI IRQ domain pointer
+  * @leg_domain: Legacy IRQ domain pointer
+@@ -103,7 +102,6 @@
+ struct xilinx_pcie_port {
+ 	void __iomem *reg_base;
+ 	u32 irq;
+-	unsigned long msi_pages;
+ 	struct device *dev;
+ 	struct irq_domain *msi_domain;
+ 	struct irq_domain *leg_domain;
+@@ -274,10 +272,10 @@ static int xilinx_pcie_msi_setup_irq(struct msi_controller *chip,
+ 
+ 	irq_set_msi_desc(irq, desc);
+ 
+-	msg_addr = virt_to_phys((void *)port->msi_pages);
++	msg_addr = virt_to_phys(port);
+ 
+-	msg.address_hi = 0;
+-	msg.address_lo = msg_addr;
++	msg.address_hi = upper_32_bits(msg_addr);
++	msg.address_lo = lower_32_bits(msg_addr);
+ 	msg.data = irq;
+ 
+ 	pci_write_msi_msg(irq, &msg);
+@@ -330,13 +328,9 @@ static int xilinx_pcie_enable_msi(struct xilinx_pcie_port *port)
  {
- 	struct rcar_pcie *pcie = &host->pcie;
--	struct rcar_msi *msi = &host->msi;
--	unsigned long base;
-+	struct device *dev = pcie->dev;
-+	struct resource res;
+ 	phys_addr_t msg_addr;
  
--	/* setup MSI data target */
--	base = virt_to_phys((void *)msi->pages);
-+	if (WARN_ON(of_address_to_resource(dev->of_node, 0, &res)))
-+		return;
- 
--	rcar_pci_write_reg(pcie, lower_32_bits(base) | MSIFE, PCIEMSIALR);
--	rcar_pci_write_reg(pcie, upper_32_bits(base), PCIEMSIAUR);
-+	/* setup MSI data target */
-+	rcar_pci_write_reg(pcie, lower_32_bits(res.start) | MSIFE, PCIEMSIALR);
-+	rcar_pci_write_reg(pcie, upper_32_bits(res.start), PCIEMSIAUR);
- 
- 	/* enable all MSI interrupts */
- 	rcar_pci_write_reg(pcie, 0xffffffff, PCIEMSIIER);
-@@ -735,7 +735,6 @@ static int rcar_pcie_enable_msi(struct rcar_pcie_host *host)
- 	}
- 
- 	/* setup MSI data target */
--	msi->pages = __get_free_pages(GFP_KERNEL | GFP_DMA32, 0);
- 	rcar_pcie_hw_enable_msi(host);
+-	port->msi_pages = __get_free_pages(GFP_KERNEL, 0);
+-	if (!port->msi_pages)
+-		return -ENOMEM;
+-
+-	msg_addr = virt_to_phys((void *)port->msi_pages);
+-	pcie_write(port, 0x0, XILINX_PCIE_REG_MSIBASE1);
+-	pcie_write(port, msg_addr, XILINX_PCIE_REG_MSIBASE2);
++	msg_addr = virt_to_phys(port);
++	pcie_write(port, upper_32_bit(msg_addr), XILINX_PCIE_REG_MSIBASE1);
++	pcie_write(port, lower_32_bits(msg_addr), XILINX_PCIE_REG_MSIBASE2);
  
  	return 0;
-@@ -748,7 +747,6 @@ static int rcar_pcie_enable_msi(struct rcar_pcie_host *host)
- static void rcar_pcie_teardown_msi(struct rcar_pcie_host *host)
- {
- 	struct rcar_pcie *pcie = &host->pcie;
--	struct rcar_msi *msi = &host->msi;
- 
- 	/* Disable all MSI interrupts */
- 	rcar_pci_write_reg(pcie, 0, PCIEMSIIER);
-@@ -756,8 +754,6 @@ static void rcar_pcie_teardown_msi(struct rcar_pcie_host *host)
- 	/* Disable address decoding of the MSI interrupt, MSIFE */
- 	rcar_pci_write_reg(pcie, 0, PCIEMSIALR);
- 
--	free_pages(msi->pages, 0);
--
- 	rcar_pcie_unmap_msi(host);
  }
- 
 -- 
 2.29.2
 
