@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 198EAC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:26:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B9BB2C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:26:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD0B76192C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:26:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD0B76192C
+	by mail.kernel.org (Postfix) with ESMTPS id 5A85061946
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:26:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A85061946
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wip0hcTpmUdSyf9WGuE4QwtD2sptzb8t1OYQ5u6wH1c=; b=C36AWBJTl3vbBOs4ZVJafom5x
-	/lDsEpwErFHqCebRrz6mlO4atwNIVyY9ozOJ5XY5asXufp3OuyEfeYu32kZk7tTF3vzVABvbOgewn
-	OpM/ges+B8QB6YLa8MttzSuQtgUUvJ1d1l44wp/A5Bbpbjzgfom0E7FBx5VX5d6yUd8gX4mt+q2DO
-	w4G3iqVE4BCH3MfxPbg76b5cVpm33R0ZEUhieMZ4tNER9UrfmemG7nb6a8F2OutmZ71BqAbTj0gYI
-	0bpJXG/1i18nQuMq2l2f7JYZPSG9rHe6DfCbqlV6Svph8faHkgdEcLsAdNEW3AkR6iKrMKvMmyZ06
-	n5fVULrow==;
+	 bh=rZNQ3nKe5yIR4CF7fWfr2SHxuda4fI8K2aYXUZt80fA=; b=ga+TgzQAaawSDqBwe6q3GTSkN
+	YhzOX/IvrfrtTpKfmrRHwrgPv+fiukCjrTeFnSpfdlV5fFIzc31yrnlKVImvXjwboE0t3Y3AlXsYo
+	cFGzNoU5ePhHosmXrbfAI+kzlpjs00iPT3yC8hvJskGyOWj9sYwBcX7zz7ZH9fvuTJfELQV0/pRiL
+	VWGvlLc7l/zqAGGxlKigqyXoyNMpJyiy5V57n+CaqJSTf0euNb4GySc958JOuUITJ9ss6KDqThrNa
+	pTg2l3vQiPQv/M15oCbVzPxj1WbONlf0EaTtFA8vfjsNB1aeG2ysZfLesdyOUS3mku00mGbTC3Oam
+	f+wOkgDLA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOBCU-00AmPx-TO; Mon, 22 Mar 2021 03:25:54 +0000
+	id 1lOBCY-00AmRI-6p; Mon, 22 Mar 2021 03:25:58 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOBAr-00Alyy-4h; Mon, 22 Mar 2021 03:24:31 +0000
-X-UUID: c116819262954a988140554b1215c855-20210321
+ id 1lOBAq-00Alyv-Px; Mon, 22 Mar 2021 03:24:31 +0000
+X-UUID: ecb527c49bbb4b28a13fd2b05356376e-20210321
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jCvODiagQU5RQrcFmwurF6qcuEIkuaTz6crPnhmimUw=; 
- b=s+o4INNBHSXZxqLrANAY4SZBlSNL9igluuyjXu/1u099Euf1d3covAPJl4Grwz0qvlMfUscINe7j96rW8NYRG/QMAMQJa221Up4jgg9Bea80kk93iajNb6l28AcJDLqY/yWr6G83iQ30mQDmT3XCSCYtgCCpzLgb1pw31+CnDZk=;
-X-UUID: c116819262954a988140554b1215c855-20210321
+ bh=J1kcxJMf3PsGnvSwnIjbueoTi0zB8lT/v9bUFddBLks=; 
+ b=pAurQasEtEaJEI8mTfF03kqZB9EQ/7oK7hxz9RJ9Z8WOmDxYgDpKgDfJFN6wCZjam/XGAEu4E6A1KuQChK3YOFBUakB0f91isDLEYLoT2kl2DC6cAmDxtML3WQ2jyHHijp4rnuezYwkLXzq40W7dWtQ68xyf/42SPqHIOBpia0s=;
+X-UUID: ecb527c49bbb4b28a13fd2b05356376e-20210321
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 467519639; Sun, 21 Mar 2021 19:24:00 -0800
+ with ESMTP id 1999307664; Sun, 21 Mar 2021 19:24:00 -0800
 Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 21 Mar 2021 20:13:58 -0700
+ 15.0.1497.2; Sun, 21 Mar 2021 20:13:59 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Mar 2021 11:13:57 +0800
+ 15.0.1497.2; Mon, 22 Mar 2021 11:13:58 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 22 Mar 2021 11:13:56 +0800
+ Transport; Mon, 22 Mar 2021 11:13:57 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
  <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
@@ -63,18 +63,18 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
  <eddie.hung@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 05/13] usb: xhci-mtk: support quirk to disable usb2 lpm
-Date: Mon, 22 Mar 2021 11:13:44 +0800
-Message-ID: <1616382832-28450-5-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 06/13] usb: xhci-mtk: support ip-sleep wakeup for MT8183
+Date: Mon, 22 Mar 2021 11:13:45 +0800
+Message-ID: <1616382832-28450-6-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1616382832-28450-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1616382832-28450-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2CB57E9ACFCCB4B097C478130F42E0491A86FC2A697D0352FA5832B486FFF1E22000:8
+X-TM-SNTS-SMTP: 6EF3D7988EB64D1FF9FB50FC423859349FBBCE5198CE49F5DF494E4A7A419C3C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_032418_884768_C0F693D6 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20210322_032418_892319_0835E249 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,49 +91,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The xHCI driver support usb2 HW LPM by default, here add support
-XHCI_HW_LPM_DISABLE quirk, then we can disable usb2 lpm when
-need it.
+Add support ip-sleep wakeup for MT8183, it's similar to MT8173,
+and it's also a specific one, but not follow IPM rule.
+Due to the index 2 already used by many DTS, it's better to keep
+it unchanged for backward compatible, treat specific ones without
+following IPM rule as revision 1.x, meanwhile reserve 3~10 for
+later revision that follows the IPM rule.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/host/xhci-mtk.c | 3 +++
- drivers/usb/host/xhci-mtk.h | 1 +
- 2 files changed, 4 insertions(+)
+ drivers/usb/host/xhci-mtk.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
 diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 1b9f10048fe0..09f2ddbfe8b9 100644
+index 09f2ddbfe8b9..8ba1f914cb75 100644
 --- a/drivers/usb/host/xhci-mtk.c
 +++ b/drivers/usb/host/xhci-mtk.c
-@@ -388,6 +388,8 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
- 	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
- 	if (mtk->lpm_support)
- 		xhci->quirks |= XHCI_LPM_SUPPORT;
-+	if (mtk->u2_lpm_disable)
-+		xhci->quirks |= XHCI_HW_LPM_DISABLE;
+@@ -57,12 +57,19 @@
+ #define CTRL_U2_FORCE_PLL_STB	BIT(28)
  
- 	/*
- 	 * MTK xHCI 0.96: PSA is 1 by default even if doesn't support stream,
-@@ -470,6 +472,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 		return ret;
+ /* usb remote wakeup registers in syscon */
++
+ /* mt8173 etc */
+ #define PERI_WK_CTRL1	0x4
+ #define WC1_IS_C(x)	(((x) & 0xf) << 26)  /* cycle debounce */
+ #define WC1_IS_EN	BIT(25)
+ #define WC1_IS_P	BIT(6)  /* polarity for ip sleep */
  
- 	mtk->lpm_support = of_property_read_bool(node, "usb3-lpm-capable");
-+	mtk->u2_lpm_disable = of_property_read_bool(node, "usb2-lpm-disable");
- 	/* optional property, ignore the error if it does not exist */
- 	of_property_read_u32(node, "mediatek,u3p-dis-msk",
- 			     &mtk->u3p_dis_msk);
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 621ec1a85009..4ccd08e20a15 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -149,6 +149,7 @@ struct xhci_hcd_mtk {
- 	struct phy **phys;
- 	int num_phys;
- 	bool lpm_support;
-+	bool u2_lpm_disable;
- 	/* usb remote wakeup */
- 	bool uwk_en;
- 	struct regmap *uwk;
++/* mt8183 */
++#define PERI_WK_CTRL0	0x0
++#define WC0_IS_C(x)	(((x) & 0xf) << 28)  /* cycle debounce */
++#define WC0_IS_P	BIT(12)	/* polarity */
++#define WC0_IS_EN	BIT(6)
++
+ /* mt2712 etc */
+ #define PERI_SSUSB_SPM_CTRL	0x0
+ #define SSC_IP_SLEEP_EN	BIT(4)
+@@ -71,6 +78,7 @@
+ enum ssusb_uwk_vers {
+ 	SSUSB_UWK_V1 = 1,
+ 	SSUSB_UWK_V2,
++	SSUSB_UWK_V11 = 11,	/* specific revision 1.1 */
+ };
+ 
+ static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
+@@ -300,6 +308,11 @@ static void usb_wakeup_ip_sleep_set(struct xhci_hcd_mtk *mtk, bool enable)
+ 		msk = WC1_IS_EN | WC1_IS_C(0xf) | WC1_IS_P;
+ 		val = enable ? (WC1_IS_EN | WC1_IS_C(0x8)) : 0;
+ 		break;
++	case SSUSB_UWK_V11:
++		reg = mtk->uwk_reg_base + PERI_WK_CTRL0;
++		msk = WC0_IS_EN | WC0_IS_C(0xf) | WC0_IS_P;
++		val = enable ? (WC0_IS_EN | WC0_IS_C(0x8)) : 0;
++		break;
+ 	case SSUSB_UWK_V2:
+ 		reg = mtk->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
+ 		msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
 -- 
 2.18.0
 _______________________________________________
