@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9E7DC433E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 12:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 881FBC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 12:23:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29E3761931
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 12:21:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29E3761931
+	by mail.kernel.org (Postfix) with ESMTPS id 10E3061931
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 12:23:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10E3061931
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,28 +23,28 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mbkb8uo8TBcHUHFsDDwTWLwAWQVLa28llp89VKvv5g0=; b=jCBzAEJjxejhV80FogduQHBXZ
-	t59d2P09AYxLiEXM7xRPjq/xTT0xBHKFJTYpWhh7JJ7I8Wn1Ee0xBwVLqPVKUtHraQ80zASDW1vFF
-	F2nK996HwmAEdaPt/4LKq2QuwLgYATyiq5jqaw26LFM0fsBPzLjWCSha+h6tBDrUKw4o8HW6xEe4C
-	d7k5SWpT4Yql+q8dYwWPLvh9oLw/b5Qve9N49pKKUT6Dg6q5hAEhpQOr8Tch3XV+bQt79w7FYEcrN
-	ZsxiRDb9xXQnHOPHF5YPqeOf4Z3HlhE2OjCME9gfjV2y63s/qs0uBfNzYZGJEeMsTwJvpHffXxcNK
-	LzBiVzCLQ==;
+	 bh=oiUAOCfUEX19XEO/PWY2KQ7ICdO3mBWJlAitUPSAjg4=; b=R/FtwNQLuZxBPSgXrUrM6gc+e
+	uXTvaq9vwzza2K7YXRCE487qrag5L1ZSE4lpJaQhB89lYTBy1DiesCQ93WHcLHFAsz743iBxfbTDz
+	vVmpdKrsqS311dz89JXdwsnQpLxJ7YzCOBekQvUtR0GB2ldV3hYyNE/MzITcZIg5AiAXFCLm/c16M
+	VE+96oHHQbazFTR/HnzJsQR2hOWomEYOwJp8SntFc9rPvzX8P5dLlRZIB0L4stZ7YV8ruwcyxn34x
+	xHWEVM5wAbBgn0dBAfJfIGDeoegBZDGCjsjcTnJbriHhkLSVp/qabOMlfxR2yM6DUV8+b3UxrT9Cl
+	nvXrM4eIg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOJYi-00BYyG-L8; Mon, 22 Mar 2021 12:21:25 +0000
+	id 1lOJas-00BZPp-PB; Mon, 22 Mar 2021 12:23:38 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lOJYV-00BYuu-4H; Mon, 22 Mar 2021 12:21:14 +0000
+ id 1lOJab-00BZMJ-V9; Mon, 22 Mar 2021 12:23:24 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D2B881063;
- Mon, 22 Mar 2021 05:21:09 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 827931063;
+ Mon, 22 Mar 2021 05:23:20 -0700 (PDT)
 Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com
  [10.1.196.255])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CD5103F718;
- Mon, 22 Mar 2021 05:21:06 -0700 (PDT)
-Date: Mon, 22 Mar 2021 12:21:00 +0000
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 812573F718;
+ Mon, 22 Mar 2021 05:23:17 -0700 (PDT)
+Date: Mon, 22 Mar 2021 12:23:15 +0000
 From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Marc Zyngier <maz@kernel.org>, michal.simek@xilinx.com
+To: Marc Zyngier <maz@kernel.org>
 Cc: Bjorn Helgaas <bhelgaas@google.com>,
  Frank Wunderlich <frank-w@public-files.de>,
  Thierry Reding <treding@nvidia.com>,
@@ -56,12 +56,13 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>,
  Marek Vasut <marek.vasut+renesas@gmail.com>,
  Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Michal Simek <michal.simek@xilinx.com>,
  Paul Walmsley <paul.walmsley@sifive.com>, linux-pci@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 Subject: Re: [PATCH 03/13] PCI: xilinx: Convert to MSI domains
-Message-ID: <20210322122100.GA11469@e121166-lin.cambridge.arm.com>
+Message-ID: <20210322122315.GB11469@e121166-lin.cambridge.arm.com>
 References: <20210225151023.3642391-1-maz@kernel.org>
  <20210225151023.3642391-4-maz@kernel.org>
 MIME-Version: 1.0
@@ -69,8 +70,8 @@ Content-Disposition: inline
 In-Reply-To: <20210225151023.3642391-4-maz@kernel.org>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_122111_758341_649FA1AE 
-X-CRM114-Status: GOOD (  42.77  )
+X-CRM114-CacheID: sfid-20210322_122322_672812_2AE75123 
+X-CRM114-Status: GOOD (  41.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,23 +106,19 @@ On Thu, Feb 25, 2021 at 03:10:13PM +0000, Marc Zyngier wrote:
 > for the MSI capture address. *ANY* sufficiently aligned address should
 > be good enough, so use the physical address of the xilinx_pcie_host
 > structure instead.
+
+I'd agree with Bjorn that the MSI doorbell change is better split into
+a separate patch, I can do it myself at merge if you agree.
+
+Thanks,
+Lorenzo
+
 > 
 > Signed-off-by: Marc Zyngier <maz@kernel.org>
 > ---
 >  drivers/pci/controller/Kconfig       |   2 +-
 >  drivers/pci/controller/pcie-xilinx.c | 238 +++++++++++----------------
 >  2 files changed, 96 insertions(+), 144 deletions(-)
-
-Michal,
-
-can you please test these changes or make sure someone does and report
-back on the mailing list please ?
-
-I would like to merge this series for v5.13.
-
-Thanks,
-Lorenzo
-
 > 
 > diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
 > index ccbf034512d6..049c60016904 100644
