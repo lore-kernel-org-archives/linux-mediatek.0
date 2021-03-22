@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF964C433C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1AFEC433C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:25:29 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FE0561939
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:25:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FE0561939
+	by mail.kernel.org (Postfix) with ESMTPS id 7E93761939
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:25:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E93761939
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nX1iXhAv7acAd9uvS/l7EU4Y5TXKfd/pNswVddAKKIw=; b=OcxA36YMbOJYMXQPHjairhZxu
-	WxSRNk3YURgOOFXp9QY7rLk4Yp0Dcv0DkYJnCSvURgjJjv9Yy6nNQ42OoiXhfOVhj7E91jWThBsvf
-	ITpGL/C4xSqEqivHQwtz86zgpYJ6mvDIG4LtSFsOnJI4+P23L9QFQ7QbDB9+rs5R9JN1Sy+SDQrpk
-	2vVJW1OM42ILIqnrmnH/TRIqEVP9yqBATpbOthFYNn2DP2i+Wy6aYP0oynWZ2JWBTo1C/6buufL96
-	m2v29yJufNOQcH/369I/1sZi/Txx1OHxNNDWNYXzjasm/fzIKDCUdDh1JPoqGNIfz26ptctJkVgeC
-	sytSOhQ8w==;
+	 bh=JEy3dHaZxhdbNUWUPAoT96nJI1YN7hwZPcDnZf8evmo=; b=k88vAUDQTRiYUA5xtSZINWoj3
+	8yOj98QqmKYKKqpv31BdMARdTXZkCcHmpiA0uGRK+DTCaugqw+2gO5dBWVQtlXBZuskD6n5renhZN
+	DiK+uBhar4OrgFFkFMxXeYJSKd3W0lLJGfFSGbZh1DxKug22fgFxWGNVuL++GIPUa5nVuljazn8z9
+	GkyuRAIV9Hmip2kT9an/6EpKk1nkGWtiQj2xniGT71fxCAOmSbwNQekmQdzezuAuZ2dp7uLT8BFiJ
+	G+d7U4+SqUlDJF9nZmm2vvNLEmg/60+C+Npj/m7c2VABwMmM16R4eiUTmrryFWm4WE6J9QauN1/wK
+	3+uYv0IIQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOBBh-00AmBe-Ts; Mon, 22 Mar 2021 03:25:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lOBBv-00AmFN-FF; Mon, 22 Mar 2021 03:25:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOBAi-00Alyy-Or; Mon, 22 Mar 2021 03:24:12 +0000
-X-UUID: 8d521ca4f292495cb38f81292f9c5d50-20210321
+ id 1lOBAl-00Alz8-UQ; Mon, 22 Mar 2021 03:24:13 +0000
+X-UUID: 25edfe8753244783b8cdc50eb4220b5d-20210321
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=DzqTjM0jd5F//YULfIlrkKYKvIN+/WhonxmaIo1eliM=; 
- b=mQyPCEY+xsOSxgrjLpxMd6jLXk9axCjHQx2ZwVtIHwnP1aN9XZAyH5x5BjJ4Fi5xQYm37HU0rCFafFmZ90fd7nY7hRCR16STB68gmJfr2C8eZ3o7q6oWDDJAx3lWsCaCJkK8zDAxiw4T4nQdOYxloM9LgoWyHvYrCtJ97yBaVPM=;
-X-UUID: 8d521ca4f292495cb38f81292f9c5d50-20210321
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=dv+jTmEya00wRvd35254spBRm+XatlAuvRSShjVTxtY=; 
+ b=TOF4wuV2ndej0VB50Tni8Mh/5hugA8jvYkRu1jRQURMvgYZfFCcKORs30J8rYVCnHCWYxRIzMy00gA/kv95Qb983xPNlZwg1ETVVF7cUvOGZF4ANLKLkEDH0CBZgrlvIW3tivdyXBuLcG1shEpLcRuWwQ0S8vhRq1BMzHRovYgA=;
+X-UUID: 25edfe8753244783b8cdc50eb4220b5d-20210321
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1885327437; Sun, 21 Mar 2021 19:24:00 -0800
+ with ESMTP id 2137843052; Sun, 21 Mar 2021 19:24:02 -0800
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 21 Mar 2021 20:14:04 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 21 Mar 2021 20:14:00 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Mar 2021 11:14:04 +0800
+ 15.0.1497.2; Mon, 22 Mar 2021 11:13:59 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 22 Mar 2021 11:14:03 +0800
+ Transport; Mon, 22 Mar 2021 11:13:58 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
  <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
@@ -63,17 +63,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
  <eddie.hung@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 13/13] arm64: dts: mt8183: update wakeup register offset
-Date: Mon, 22 Mar 2021 11:13:52 +0800
-Message-ID: <1616382832-28450-13-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 07/13] usb: xhci-mtk: add support ip-sleep wakeup for mT8192
+Date: Mon, 22 Mar 2021 11:13:46 +0800
+Message-ID: <1616382832-28450-7-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1616382832-28450-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1616382832-28450-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_032407_819483_0AB5FC5E 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20210322_032411_921561_AFB9C3A6 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,27 +90,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use wakeup control register offset exactly, and update revision
-number
+Add support ip-sleep wakeup for mT8192, it's a specific revision,
+and not follow IPM rule.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/usb/host/xhci-mtk.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 80519a145f13..9d18a938150c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -874,7 +874,7 @@
- 			clocks = <&infracfg CLK_INFRA_UNIPRO_SCK>,
- 				 <&infracfg CLK_INFRA_USB>;
- 			clock-names = "sys_ck", "ref_ck";
--			mediatek,syscon-wakeup = <&pericfg 0x400 0>;
-+			mediatek,syscon-wakeup = <&pericfg 0x420 11>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
- 			ranges;
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 8ba1f914cb75..1bfa28c9b5a2 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -70,6 +70,10 @@
+ #define WC0_IS_P	BIT(12)	/* polarity */
+ #define WC0_IS_EN	BIT(6)
+ 
++/* mt8192 */
++#define WC0_SSUSB0_CDEN		BIT(6)
++#define WC0_IS_SPM_EN		BIT(1)
++
+ /* mt2712 etc */
+ #define PERI_SSUSB_SPM_CTRL	0x0
+ #define SSC_IP_SLEEP_EN	BIT(4)
+@@ -79,6 +83,7 @@ enum ssusb_uwk_vers {
+ 	SSUSB_UWK_V1 = 1,
+ 	SSUSB_UWK_V2,
+ 	SSUSB_UWK_V11 = 11,	/* specific revision 1.1 */
++	SSUSB_UWK_V12,		/* specific revision 1.2 */
+ };
+ 
+ static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
+@@ -313,6 +318,11 @@ static void usb_wakeup_ip_sleep_set(struct xhci_hcd_mtk *mtk, bool enable)
+ 		msk = WC0_IS_EN | WC0_IS_C(0xf) | WC0_IS_P;
+ 		val = enable ? (WC0_IS_EN | WC0_IS_C(0x8)) : 0;
+ 		break;
++	case SSUSB_UWK_V12:
++		reg = mtk->uwk_reg_base + PERI_WK_CTRL0;
++		msk = WC0_SSUSB0_CDEN | WC0_IS_SPM_EN;
++		val = enable ? msk : 0;
++		break;
+ 	case SSUSB_UWK_V2:
+ 		reg = mtk->uwk_reg_base + PERI_SSUSB_SPM_CTRL;
+ 		msk = SSC_IP_SLEEP_EN | SSC_SPM_INT_EN;
 -- 
 2.18.0
 _______________________________________________
