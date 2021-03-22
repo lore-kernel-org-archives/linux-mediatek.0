@@ -2,18 +2,19 @@ Return-Path: <SRS0=pLce=IU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AA40CC433C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 14:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEB3CC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 14:05:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 424076196C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 14:04:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 424076196C
+	by mail.kernel.org (Postfix) with ESMTPS id 77D566196C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 14:05:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77D566196C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,35 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
 	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uesZA7Rvswa2ie6JkHFpIEhcqMq7Z3kYERsQBc4fT/E=; b=g6bo91TL6T58frHFHQkTlOq3v
-	iZTe/FS3nD2Sc2W/LuGU/PQl38fO57+JwWGBbN4+7ObJxW79TXj4VkTFuZpR2kti8/J2C3mnrGUKe
-	Ud2Sqq/mDxz72tSICrcAiYGRJmM/yAUpXoN1CLirkzgS+6OVuOVkf5OcfIHaJ4AkuIN8jt0XqSOzb
-	7LIfS9YDLYcuLRLStGQbuGRIH3J/LljjcNcjuX0qTFr6fVxRzwdCHfSU/ImyZ88dYiJphav7feC9Z
-	AFmAXc0bkB27w/Yu+Xt166/fw98B1u0GyPSuEyDh7YRUTTV9RcZX8dSTIJ2N81nmguEGDDIiEUpgL
-	J4tKnLq3A==;
+	 bh=taAWx2vVWE+7C4rGnW99nlGBWmBYN4jzXHJOfSxpov4=; b=nRhKwP4wqgUkeGYeVlxNTN8Dn
+	EdAyLvgxR0SlrqNOOv0Iu4M41Pj2F+T+OF9RVurxG+ehPOamNkeEVcAWyrs9PZ24Sk5ziTvkyL2cp
+	JfPzVWhstnCxby7is0+EnGLt3d6HeJzrR3dq51Mq7fNMNxXRVPe2u3qvZuJZDN7WmUCWujYORGIxR
+	kWpjUOymhvZpe7R7hDOJ3dSeh9J9XTNH7sQW6PA8KT8R4V+ugzmINZQPY7Up8Ekz60O9msgkPcurY
+	j9c7n+lb84PmAh1aq94+EaO6q0GVbiHxYpa7gViwzHhcjWrZNadYK/aw8k47GUvdSLFPYaPkoBcq3
+	29p4ZfbwA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOLAS-00Bl44-CH; Mon, 22 Mar 2021 14:04:28 +0000
+	id 1lOLBT-00BlQC-TB; Mon, 22 Mar 2021 14:05:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOLAB-00Bkz4-K3; Mon, 22 Mar 2021 14:04:13 +0000
+ id 1lOLAq-00BlCy-Vj; Mon, 22 Mar 2021 14:04:57 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EAD966196C;
- Mon, 22 Mar 2021 14:04:09 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6109E6198E;
+ Mon, 22 Mar 2021 14:04:51 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.misterjones.org)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lOLA7-00351E-P3; Mon, 22 Mar 2021 14:04:07 +0000
-Date: Mon, 22 Mar 2021 14:04:06 +0000
-Message-ID: <87mtuvgu95.wl-maz@kernel.org>
+ id 1lOLAn-00351e-8A; Mon, 22 Mar 2021 14:04:49 +0000
+Date: Mon, 22 Mar 2021 14:04:48 +0000
+Message-ID: <87lfafgu7z.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
+To: Michal Simek <monstr@monstr.eu>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, michal.simek@xilinx.com,
+ Bjorn Helgaas <bhelgaas@google.com>,
  Frank Wunderlich <frank-w@public-files.de>,
  Thierry Reding <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>,
  Rob Herring <robh@kernel.org>, Will Deacon <will@kernel.org>,
@@ -61,37 +63,38 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>,
  Marek Vasut <marek.vasut+renesas@gmail.com>,
  Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Michal Simek <michal.simek@xilinx.com>,
  Paul Walmsley <paul.walmsley@sifive.com>, linux-pci@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 Subject: Re: [PATCH 03/13] PCI: xilinx: Convert to MSI domains
-In-Reply-To: <20210322122315.GB11469@e121166-lin.cambridge.arm.com>
+In-Reply-To: <74cffc38-df12-7d92-1bfe-20eed4b60e86@monstr.eu>
 References: <20210225151023.3642391-1-maz@kernel.org>
  <20210225151023.3642391-4-maz@kernel.org>
- <20210322122315.GB11469@e121166-lin.cambridge.arm.com>
+ <20210322122100.GA11469@e121166-lin.cambridge.arm.com>
+ <74cffc38-df12-7d92-1bfe-20eed4b60e86@monstr.eu>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
  (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
 MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com,
- frank-w@public-files.de, treding@nvidia.com, tglx@linutronix.de,
- robh@kernel.org, will@kernel.org, kys@microsoft.com, haiyangz@microsoft.com,
- sthemmin@microsoft.com, wei.liu@kernel.org, thierry.reding@gmail.com,
- jonathanh@nvidia.com, ryder.lee@mediatek.com, marek.vasut+renesas@gmail.com,
- yoshihiro.shimoda.uh@renesas.com, michal.simek@xilinx.com,
- paul.walmsley@sifive.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+X-SA-Exim-Rcpt-To: monstr@monstr.eu, lorenzo.pieralisi@arm.com,
+ michal.simek@xilinx.com, bhelgaas@google.com, frank-w@public-files.de,
+ treding@nvidia.com, tglx@linutronix.de, robh@kernel.org, will@kernel.org,
+ kys@microsoft.com, haiyangz@microsoft.com, sthemmin@microsoft.com,
+ wei.liu@kernel.org, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ ryder.lee@mediatek.com, marek.vasut+renesas@gmail.com,
+ yoshihiro.shimoda.uh@renesas.com, paul.walmsley@sifive.com,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org
 X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_140412_132578_96851DB6 
-X-CRM114-Status: GOOD (  24.63  )
+X-CRM114-CacheID: sfid-20210322_140456_057567_12D608EB 
+X-CRM114-Status: GOOD (  31.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,37 +111,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
-
-On Mon, 22 Mar 2021 12:23:15 +0000,
-Lorenzo Pieralisi <lorenzo.pieralisi@arm.com> wrote:
+On Mon, 22 Mar 2021 12:33:10 +0000,
+Michal Simek <monstr@monstr.eu> wrote:
 > 
-> On Thu, Feb 25, 2021 at 03:10:13PM +0000, Marc Zyngier wrote:
-> > In anticipation of the removal of the msi_controller structure, convert
-> > the ancient xilinx host controller driver to MSI domains.
-> > 
-> > We end-up with the usual two domain structure, the top one being a
-> > generic PCI/MSI domain, the bottom one being xilinx-specific and handling
-> > the actual HW interrupt allocation.
-> > 
-> > This allows us to fix some of the most appaling MSI programming, where
-> > the message programmed in the device is the virtual IRQ number instead
-> > of the allocated vector number. The allocator is also made safe with
-> > a mutex. This should allow support for MultiMSI, but I decided not to
-> > even try, since I cannot test it.
-> > 
-> > Also take the opportunity to get rid of the cargo-culted memory allocation
-> > for the MSI capture address. *ANY* sufficiently aligned address should
-> > be good enough, so use the physical address of the xilinx_pcie_host
-> > structure instead.
+> Hi,
 > 
-> I'd agree with Bjorn that the MSI doorbell change is better split into
-> a separate patch, I can do it myself at merge if you agree.
+> On 3/22/21 1:21 PM, Lorenzo Pieralisi wrote:
+> > On Thu, Feb 25, 2021 at 03:10:13PM +0000, Marc Zyngier wrote:
+> >> In anticipation of the removal of the msi_controller structure, convert
+> >> the ancient xilinx host controller driver to MSI domains.
+> >>
+> >> We end-up with the usual two domain structure, the top one being a
+> >> generic PCI/MSI domain, the bottom one being xilinx-specific and handling
+> >> the actual HW interrupt allocation.
+> >>
+> >> This allows us to fix some of the most appaling MSI programming, where
+> >> the message programmed in the device is the virtual IRQ number instead
+> >> of the allocated vector number. The allocator is also made safe with
+> >> a mutex. This should allow support for MultiMSI, but I decided not to
+> >> even try, since I cannot test it.
+> >>
+> >> Also take the opportunity to get rid of the cargo-culted memory allocation
+> >> for the MSI capture address. *ANY* sufficiently aligned address should
+> >> be good enough, so use the physical address of the xilinx_pcie_host
+> >> structure instead.
+> >>
+> >> Signed-off-by: Marc Zyngier <maz@kernel.org>
+> >> ---
+> >>  drivers/pci/controller/Kconfig       |   2 +-
+> >>  drivers/pci/controller/pcie-xilinx.c | 238 +++++++++++----------------
+> >>  2 files changed, 96 insertions(+), 144 deletions(-)
+> > 
+> > Michal,
+> > 
+> > can you please test these changes or make sure someone does and report
+> > back on the mailing list please ?
+> > 
+> > I would like to merge this series for v5.13.
+> 
+> I got just private response (not sure why) from Bharat March 5 that
+> changes are fine.
+> It means go ahead with it.
 
-I need to respin the series as it now conflicts badly with the current
-state of the tree (rcar has introduced one subtle change that needs
-addressing). I'll post that later this week (hopefully tomorrow) with
-rcar and xilinx having the doorbell fix in separate patches.
+Can I take this as a full Tested-by tag?
 
 Thanks,
 
