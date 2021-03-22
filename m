@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EBF28C433C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:14:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 38FF7C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:14:41 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CD356192D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:14:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CD356192D
+	by mail.kernel.org (Postfix) with ESMTPS id D45216192D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 03:14:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D45216192D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TCFwsSjqVsFGKVIXUEUTYuUHYHpNS16CGZOwQG/ICTw=; b=cLBPtWI8BdPYLasUjfwU23zZH
-	AlXI/m5BKZuDbuT1cjgbwTpmE2CZFjSONoWtPGtop0sixnHRdTykUAeFxDGnfLDntepPCpng3wxkQ
-	0a0MxqJ1wCuUmvjxj4q1CEyD+jUHf9YZHmwnHUaYBUJQhANdu0EW+Ss218r22U3hAvtB15wZXs8jU
-	CtA8cQaSF2TROo6EbnkMQdTwJ6t6aw7TD4aVMSh2OnIZs8z5OIjChMtKrNzD7zY9W26nlP3Hmobwk
-	TLsvmLkdJMTw7Ljih7dgjFTX3K8YhnjFR7MNWmQHkZhxYwwA25iDifIot/iYQb3x+batL6x7tb6Je
-	CHEaFF+Tg==;
+	 bh=YoQrgiyJ/mRWkuUP7yensltyETA1Ii5CKVMd6tNi148=; b=oi+Z8ujONdCpFIvrICzz5mVrc
+	3Dqhv+58KpEqOELWbO02bVLuT6PzNLHhI8wJD80gAKRdTl7qeMEA4yIoWPIaY4bGZtgM4PKEHa5dA
+	hjm3YUH0EGe7WVgMuR19lMUeuox27h85bE67qZelm5zoNcME4YnkILjhqLXYlCgX8AnzrsIHXvg/5
+	OTuxag5XH01zrnNC0hIJKaJ5/U/an2v4jKuadPt/6pXS4rCYlbs1Ix/wUcdQ6iyRuTEn54uS96nHn
+	AF/KiGBGDrj/V7NqzJrBK8S6NT+5r12NJGO80xTnPEKivtlH6DcsG1w1/tJregoIRagObQfC48Laz
+	ShVNVPizQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOB1H-00Akaa-9G; Mon, 22 Mar 2021 03:14:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lOB1L-00AkbS-7K; Mon, 22 Mar 2021 03:14:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOB15-00AkXa-2r; Mon, 22 Mar 2021 03:14:13 +0000
-X-UUID: dccca15c4ba74eb585a4e63c7a1476b1-20210321
+ id 1lOB13-00AkXd-AG; Mon, 22 Mar 2021 03:14:13 +0000
+X-UUID: 17cbd16c7f95477994a7fa8c658a4371-20210321
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ZjrrsVAKzhAELZIOi8MnbKRTkIo1m87F+okUcuji600=; 
- b=r13v1JqTnyRZid/FfwC1M8zYALFl4u6sTTO9IuXyPl/W0gFafOHMImP+HIWRo/HpdcqSZmDoXPqO/y9AxbPaEdPdfe2o306L/DvD/iKfbYaPSX21HQIggqXtQaoBxGbDbxJYd3kRPqbqYXoXsSH0UVs5uxIt1pBxK6RR0vc+cMM=;
-X-UUID: dccca15c4ba74eb585a4e63c7a1476b1-20210321
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=PM6ffA9rJSNBPTqMRSPiW5HAfx6GY3S83MINucbO0aE=; 
+ b=fF7gdNcycNYcrXFBzSek6V5VHw1l5mfxRzsKjt5QeLSCMs3pSacEPTDrW+77dU6GapcngZfMSFkpjzB4syp6ULXumQMT2fO7WHTvSepuPKgOOxN3V/GwdsKF4d1g/f2XA8RWj4itzk+BEgWRFBIKaiZ7opsC+VTNW7Tqa+eKQrU=;
+X-UUID: 17cbd16c7f95477994a7fa8c658a4371-20210321
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 332330281; Sun, 21 Mar 2021 19:13:58 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 21 Mar 2021 20:13:57 -0700
+ with ESMTP id 381949705; Sun, 21 Mar 2021 19:13:59 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 21 Mar 2021 20:13:58 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Mar 2021 11:13:55 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 22 Mar 2021 11:13:56 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Mon, 22 Mar 2021 11:13:55 +0800
@@ -63,18 +63,18 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
  <eddie.hung@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 03/13] dt-bindings: usb: mtu3: support wakeup for mt8183 and
- mt8192
-Date: Mon, 22 Mar 2021 11:13:42 +0800
-Message-ID: <1616382832-28450-3-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 04/13] usb: xhci-mtk: fix broken streams issue on 0.96 xHCI
+Date: Mon, 22 Mar 2021 11:13:43 +0800
+Message-ID: <1616382832-28450-4-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1616382832-28450-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1616382832-28450-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: D69EAA82582E84A9CD899921A88B2874FCAE6411F0836EDFDC7E436E854C83932000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_031409_165557_CFB610B8 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20210322_031408_123329_818EC6CC 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,48 +91,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These two HW of wakeup don't follow MediaTek internal IPM rule,
-and both use a specific way, like as early revision of mt8173.
+The MediaTek 0.96 xHCI controller on some platforms does not
+support bulk stream even HCCPARAMS says supporting, due to MaxPSASize
+is set a default value 1 by mistake, here use XHCI_BROKEN_STREAMS
+quirk to fix it.
 
-Due to the index 2 already used by many DTS, it's better to keep
-it unchanged for backward compatible, treat specific ones without
-following IPM rule as revision 1.x, meanwhile reserve 3~10 for
-later revision that following the IPM rule.
-
+Fixes: 94a631d91ad3 ("usb: xhci-mtk: check hcc_params after adding primary hcd")
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- .../devicetree/bindings/usb/mediatek,mtu3.yaml         | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ drivers/usb/host/xhci-mtk.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-index f5c04b9d2de9..918f9d6447c6 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-@@ -24,6 +24,7 @@ properties:
-           - mediatek,mt2712-mtu3
-           - mediatek,mt8173-mtu3
-           - mediatek,mt8183-mtu3
-+          - mediatek,mt8192-mtu3
-       - const: mediatek,mtu3
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 57bcfdfa0465..1b9f10048fe0 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -388,6 +388,13 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+ 	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
+ 	if (mtk->lpm_support)
+ 		xhci->quirks |= XHCI_LPM_SUPPORT;
++
++	/*
++	 * MTK xHCI 0.96: PSA is 1 by default even if doesn't support stream,
++	 * and it's 3 when support it.
++	 */
++	if (xhci->hci_version < 0x100 && HCC_MAX_PSA(xhci->hcc_params) == 4)
++		xhci->quirks |= XHCI_BROKEN_STREAMS;
+ }
  
-   reg:
-@@ -152,10 +153,13 @@ properties:
-         - description:
-             The second cell represents the register base address of the glue
-             layer in syscon
--        - description:
-+        - description: |
-             The third cell represents the hardware version of the glue layer,
--            1 is used by mt8173 etc, 2 is used by mt2712 etc
--          enum: [1, 2]
-+            1 - used by mt8173 etc, revision 1 without following IPM rule;
-+            2 - used by mt2712 etc, revision 2 with following IPM rule;
-+            11 - used by mt8183, specific 1.1;
-+            12 - used by mt8192, specific 1.2;
-+          enum: [1, 2, 11, 12]
+ /* called during probe() after chip reset completes */
+@@ -549,7 +556,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto put_usb3_hcd;
  
-   mediatek,u3p-dis-msk:
-     $ref: /schemas/types.yaml#/definitions/uint32
+-	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
++	if (HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
++	    !(xhci->quirks & XHCI_BROKEN_STREAMS))
+ 		xhci->shared_hcd->can_do_streams = 1;
+ 
+ 	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
 -- 
 2.18.0
 _______________________________________________
