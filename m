@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C78D2C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CF09C433C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:55:42 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3EB4B619A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:55:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3EB4B619A0
+	by mail.kernel.org (Postfix) with ESMTPS id 94B456199F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:55:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94B456199F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hCmKjQxj4ayUdxc0RVt3n6S8Fa/fkQVgGNjdrS+ROTM=; b=bWPaLhSymxBniVumZtHROVbOv
-	fzUYvM0cd0JicoXLbpLwnRRIp1UDUDoGpT2NcEU+sZ9eESpe2Tyz3JrXPlC0+lVnZizJRc+taCVFv
-	k+5oMw+gkox9A7srWBVAG7GZ3iDCl+FRd8jPAosiGNpUB75tdTgq+MUm0Y9ynmzMM2jSPow8HQuup
-	8WBpT12IOxPAr69I6bDr+tOwL8j+dqyK0lzGrmAqoKcz8/V6/p4oSQ4JLTR8TbqHZiw57UqjmVUay
-	Yip4wBJGkaK0937r87PCvMyP/XNWeTp4XRDUQ35U+D4AOGLU+OLfA3KeZdsmNcfo6ByvTid/5nXM5
-	P+deMK9YQ==;
+	 bh=GitcCLpOy47QFZ5hGni6P54CGqgEPOmo5CVdcYlRbQs=; b=RU2i2rwQPAssUiOHmoigsB7ym
+	uRBeSMxn957AUo5RUlQnKf/LIFZJBvDJEYLFPDBBZdZBKbZtiVDgFq61r2wtypLK9+PyDLMEH6ei8
+	DePA+ppstxz5Cl1QK641JOer6GpLGOlxBslsF7LLmzbsuAef3TTgG7YR6KJ5dMcy3RUbsGFF01VLu
+	N6LnQvJQnO9jkZGtMbY3Cvx136KWG1/YeZ+8nvjva48z73VT0Q0fBfcwoyIbY8pZGSTwZxlYIf2+W
+	N/v/erR+krJbQVOYHQEd/uHqtSaVmZWkLns7YZIGqazQH2dZl9ujj8r1toZkEEriJlDUgtwrAfXyl
+	z2mqia35A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOPhg-00CLMe-Rv; Mon, 22 Mar 2021 18:55:05 +0000
+	id 1lOPi4-00CLX0-61; Mon, 22 Mar 2021 18:55:28 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOPgR-00CKuV-EL; Mon, 22 Mar 2021 18:53:50 +0000
+ id 1lOPgT-00CKut-DK; Mon, 22 Mar 2021 18:53:51 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1C6B161998;
- Mon, 22 Mar 2021 18:53:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 046736199F;
+ Mon, 22 Mar 2021 18:53:48 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lOPZR-0038p5-66; Mon, 22 Mar 2021 18:46:33 +0000
+ id 1lOPZU-0038p5-2Z; Mon, 22 Mar 2021 18:46:36 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
@@ -66,10 +66,10 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  kernel-team@android.com
-Subject: [PATCH v2 10/15] PCI/MSI: Let PCI host bridges declare their lack of
- MSI handling
-Date: Mon, 22 Mar 2021 18:46:09 +0000
-Message-Id: <20210322184614.802565-11-maz@kernel.org>
+Subject: [PATCH v2 13/15] PCI/MSI: Make pci_host_common_probe() declare its
+ reliance on MSI domains
+Date: Mon, 22 Mar 2021 18:46:12 +0000
+Message-Id: <20210322184614.802565-14-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210322184614.802565-1-maz@kernel.org>
 References: <20210322184614.802565-1-maz@kernel.org>
@@ -90,8 +90,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_185348_472175_D3F5FB96 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20210322_185349_809365_77918155 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,49 +108,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Thomas Gleixner <tglx@linutronix.de>
+The generic PCI host driver relies on MSI domains for MSIs to
+be provided to its end-points. Make this dependency explicit.
 
-Some PCI host bridges cannot deal with MSIs at all. This has
-the unfortunate effect of triggering ugly warnings when an end-point
-driver requests MSIs.
+This cures the warnings occuring on arm/arm64 VMs when booted
+with PCI virtio devices and no MSI controller (no GICv3 ITS,
+for example).
 
-Instead, let the bridge advertise such lack of MSIs, so that it
-can be flagged correctly by the core code.
+It is likely that other drivers will need to express the same
+dependency.
 
 Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-[maz: commit message]
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/probe.c | 2 ++
- include/linux/pci.h | 1 +
- 2 files changed, 3 insertions(+)
+ drivers/pci/controller/pci-host-common.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index fb04fc81a8bd..146bd85c037e 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -925,6 +925,8 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
- 	device_enable_async_suspend(bus->bridge);
- 	pci_set_bus_of_node(bus);
- 	pci_set_bus_msi_domain(bus);
-+	if (bridge->no_msi)
-+		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
+diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
+index 6ab694f8d283..d3924a44db02 100644
+--- a/drivers/pci/controller/pci-host-common.c
++++ b/drivers/pci/controller/pci-host-common.c
+@@ -79,6 +79,7 @@ int pci_host_common_probe(struct platform_device *pdev)
  
- 	if (!parent)
- 		set_dev_node(bus->bridge, pcibus_to_node(bus));
-diff --git a/include/linux/pci.h b/include/linux/pci.h
-index ebf557e59d87..48605cca82ae 100644
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -550,6 +550,7 @@ struct pci_host_bridge {
- 	unsigned int	native_dpc:1;		/* OS may use PCIe DPC */
- 	unsigned int	preserve_config:1;	/* Preserve FW resource setup */
- 	unsigned int	size_windows:1;		/* Enable root bus sizing */
-+	unsigned int	no_msi:1;		/* Bridge has no MSI support */
+ 	bridge->sysdata = cfg;
+ 	bridge->ops = (struct pci_ops *)&ops->pci_ops;
++	bridge->msi_domain = true;
  
- 	/* Resource alignment requirements */
- 	resource_size_t (*align_resource)(struct pci_dev *dev,
+ 	return pci_host_probe(bridge);
+ }
 -- 
 2.29.2
 
