@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18062C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82790C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:54:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8E0161930
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:49:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8E0161930
+	by mail.kernel.org (Postfix) with ESMTPS id 0EB6061990
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 18:54:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EB6061990
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Db71nXTKaWxto8kB6XtQwKs3jcTcIuEPviXMncD8/sg=; b=mrOtP8RFaoPTrZ8eeTLeg+kyL
-	bNmSDHlLwtvyACYrrN2npj6jFSrLZrLcoU/40Jc5tPDg8plTGcJrgx4fcNyzqbO9GmtLQn473LpAR
-	pSKaR0lH9lKTg5+4FhNveoLzzvsFgL3m0MKOCQ/cC6/tIttbQvruzpluoesbn6MHOqhC3fCbSJfUl
-	1rSayjIkCz+xl4ie+ki81tmF54/F4YBDCb/dsYsayUIdUku5c54MQQH2UiNEE81NngQ1eh8BABL4s
-	FjRwCPiShlrsYVrvjxil7fvyjpHSEZPDidnvycyr5WVPGmfs11TuCj4Nzyn/DNR+JqIfXdogfUMXR
-	LccxnmQng==;
+	 bh=sImcCOc/rmZZW1NXmQ5dJAoVSy3IYPbwiMphk6wX1Go=; b=HhTxAu5VH+qymc1QjDojVk3f1
+	KdGfN4YROCg/57Yr7kWo6xrO0sqTWvXJiF4KvNABm3+x/M7IK9zQjlPNv+vE1jJv5Ji7yu4CvXSIm
+	X3c0AXTUxgm2rowguNkqODZ89IkwbmIttXGCIAxBO0YCn2m0dBy0Sieq/CAhddMM1AfsiDNbIV/Ya
+	iLnhfiBuG1Ulii3o5R4BPz5cs2nMiDrhTqShTcN5/UfsdvsNMbBqwHX8bVYVJ4WuvBCd8b3AmNdXv
+	BH74JsRpnf4ogC6Qj778UsXoNBxkMac9akwj2SJGTubciKJNkO8R1VTA8WW8aL/9v6ny9c2Xak0Va
+	Q63R8Tp0w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOPcI-00CJJP-AS; Mon, 22 Mar 2021 18:49:30 +0000
+	id 1lOPgf-00CKzE-Eq; Mon, 22 Mar 2021 18:54:01 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOPZT-00CIEV-A6; Mon, 22 Mar 2021 18:46:37 +0000
+ id 1lOPgJ-00CKrS-Jw; Mon, 22 Mar 2021 18:53:43 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E9919619A1;
- Mon, 22 Mar 2021 18:46:33 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1A77361992;
+ Mon, 22 Mar 2021 18:53:38 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lOPZQ-0038p5-5r; Mon, 22 Mar 2021 18:46:32 +0000
+ id 1lOPZU-0038p5-VF; Mon, 22 Mar 2021 18:46:37 +0000
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
@@ -66,9 +66,10 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  kernel-team@android.com
-Subject: [PATCH v2 09/15] PCI/MSI: Kill default_teardown_msi_irqs()
-Date: Mon, 22 Mar 2021 18:46:08 +0000
-Message-Id: <20210322184614.802565-10-maz@kernel.org>
+Subject: [PATCH v2 14/15] PCI/MSI: Document the various ways of ending up with
+ NO_MSI
+Date: Mon, 22 Mar 2021 18:46:13 +0000
+Message-Id: <20210322184614.802565-15-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210322184614.802565-1-maz@kernel.org>
 References: <20210322184614.802565-1-maz@kernel.org>
@@ -89,8 +90,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_184635_703158_89E41AA8 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20210322_185340_053055_4D27DB11 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,56 +108,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It doesn't have any caller left.
+We have now 4 ways of ending up with NO_MSI being set.
+Document them.
 
 Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/msi.c   | 11 +----------
- include/linux/msi.h |  1 -
- 2 files changed, 1 insertion(+), 11 deletions(-)
+ drivers/pci/msi.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
-index 79b5a995bd02..d9c73c173c14 100644
+index d9c73c173c14..425abcdfcaca 100644
 --- a/drivers/pci/msi.c
 +++ b/drivers/pci/msi.c
-@@ -94,11 +94,7 @@ int __weak arch_setup_msi_irqs(struct pci_dev *dev, int nvec, int type)
- 	return 0;
- }
- 
--/*
-- * We have a default implementation available as a separate non-weak
-- * function, as it is used by the Xen x86 PCI code
-- */
--void default_teardown_msi_irqs(struct pci_dev *dev)
-+void __weak arch_teardown_msi_irqs(struct pci_dev *dev)
- {
- 	int i;
- 	struct msi_desc *entry;
-@@ -108,11 +104,6 @@ void default_teardown_msi_irqs(struct pci_dev *dev)
- 			for (i = 0; i < entry->nvec_used; i++)
- 				arch_teardown_msi_irq(entry->irq + i);
- }
--
--void __weak arch_teardown_msi_irqs(struct pci_dev *dev)
--{
--	return default_teardown_msi_irqs(dev);
--}
- #endif /* CONFIG_PCI_MSI_ARCH_FALLBACKS */
- 
- static void default_restore_msi_irq(struct pci_dev *dev, int irq)
-diff --git a/include/linux/msi.h b/include/linux/msi.h
-index 3f21e77b57b7..6aff469e511d 100644
---- a/include/linux/msi.h
-+++ b/include/linux/msi.h
-@@ -250,7 +250,6 @@ int arch_setup_msi_irq(struct pci_dev *dev, struct msi_desc *desc);
- void arch_teardown_msi_irq(unsigned int irq);
- int arch_setup_msi_irqs(struct pci_dev *dev, int nvec, int type);
- void arch_teardown_msi_irqs(struct pci_dev *dev);
--void default_teardown_msi_irqs(struct pci_dev *dev);
- #else
- static inline int arch_setup_msi_irqs(struct pci_dev *dev, int nvec, int type)
- {
+@@ -871,8 +871,16 @@ static int pci_msi_supported(struct pci_dev *dev, int nvec)
+ 	 * Any bridge which does NOT route MSI transactions from its
+ 	 * secondary bus to its primary bus must set NO_MSI flag on
+ 	 * the secondary pci_bus.
+-	 * We expect only arch-specific PCI host bus controller driver
+-	 * or quirks for specific PCI bridges to be setting NO_MSI.
++	 *
++	 * The NO_MSI flag can either be set directly by:
++	 * - arch-specific PCI host bus controller drivers (deprecated)
++	 * - quirks for specific PCI bridges
++	 *
++	 * or indirectly by platform-specific PCI host bridge drivers by:
++	 * - unconditionally advertising the 'no_msi' property
++	 * - advertising the 'msi_domain' property, which results in
++	 *   the NO_MSI flag when no MSI domain is found for this bridge
++	 *   at probe time.
+ 	 */
+ 	for (bus = dev->bus; bus; bus = bus->parent)
+ 		if (bus->bus_flags & PCI_BUS_FLAGS_NO_MSI)
 -- 
 2.29.2
 
