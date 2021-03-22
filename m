@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03166C433C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 11:36:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9E7DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 12:21:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F6826198B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 11:36:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F6826198B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 29E3761931
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Mar 2021 12:21:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29E3761931
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EKGLtm9EXc8vVzWX0v+x4HNIFujn3d0n7Rf6Wj/KWSs=; b=K4TOJXN6FvMFiEGGWW50pcF0T
-	pHB4sTaPktOXd6BSpBnnwHF4ttIqdVfYmO3NWbv2pOoQxsBk5VlVZbGCztz+J8KOIQRSkSCgjSlcV
-	I5CCMUOfcaNpSWmjTV071nT1nBXgloG0qRgIG/sinYD6MnVtVBhSUq3xHMo9dUdiOZ2gl8d0F53aR
-	prsa+XXh36FWNItWsSzeP0GqI16CyuZZH1H/iAD/avVRLvRWKuoQNhB0v4gCRftgsuULEALUasFWD
-	Wl+E/NxmRx8gSlvjOw5A/QtWT1oltzyzlCmusFiU8fjwT5Vn2jNqc+UoOVEcTL586uAA0bNFKyn0Z
-	DwbBxL+2A==;
+	 bh=Mbkb8uo8TBcHUHFsDDwTWLwAWQVLa28llp89VKvv5g0=; b=jCBzAEJjxejhV80FogduQHBXZ
+	t59d2P09AYxLiEXM7xRPjq/xTT0xBHKFJTYpWhh7JJ7I8Wn1Ee0xBwVLqPVKUtHraQ80zASDW1vFF
+	F2nK996HwmAEdaPt/4LKq2QuwLgYATyiq5jqaw26LFM0fsBPzLjWCSha+h6tBDrUKw4o8HW6xEe4C
+	d7k5SWpT4Yql+q8dYwWPLvh9oLw/b5Qve9N49pKKUT6Dg6q5hAEhpQOr8Tch3XV+bQt79w7FYEcrN
+	ZsxiRDb9xXQnHOPHF5YPqeOf4Z3HlhE2OjCME9gfjV2y63s/qs0uBfNzYZGJEeMsTwJvpHffXxcNK
+	LzBiVzCLQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOIr5-00BTn3-8l; Mon, 22 Mar 2021 11:36:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOIqb-00BTfX-Bp; Mon, 22 Mar 2021 11:35:53 +0000
-X-UUID: ee5f4ac56c4e45c6b374ea56b7208fa0-20210322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=o/ibMgnOkwc8v8Tm24Jgcxmdto8SnS/iodaRr3RJRgc=; 
- b=A0pkuLUdezlwHLtpmBMHC3G73XbUTdSMt7dnRL7+9H1X9UDDhBGOnGpokHJ3XF1FyVrjSsGo2xod+h5KpCHnxONW26DncCYUwYgh3cdrHnVDoeDI/pEOplpeH2LtHW5mMfUkTVOmOChQzU0Ru3wJJXLyDKxkQWQIOJgvcK65ISY=;
-X-UUID: ee5f4ac56c4e45c6b374ea56b7208fa0-20210322
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mason.zhang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1976554898; Mon, 22 Mar 2021 03:35:39 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Mar 2021 04:35:37 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Mar 2021 19:35:29 +0800
-Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 22 Mar 2021 19:35:29 +0800
-Message-ID: <1616412481.25260.1.camel@mbjsdccf07>
-Subject: Re: [PATCH 1/2] arm64: dts: mediatek: add MT6779 spi master dts node
-From: Mason Zhang <mason.zhang@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: <devicetree@vger.kernel.org>, <wsd_upstream@mediatek.com>,
- <hanks.chen@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
-Date: Mon, 22 Mar 2021 19:28:01 +0800
-In-Reply-To: <20210226105918.3057-1-Mason.Zhang@mediatek.com>
-References: <20210226105918.3057-1-Mason.Zhang@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1lOJYi-00BYyG-L8; Mon, 22 Mar 2021 12:21:25 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lOJYV-00BYuu-4H; Mon, 22 Mar 2021 12:21:14 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D2B881063;
+ Mon, 22 Mar 2021 05:21:09 -0700 (PDT)
+Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com
+ [10.1.196.255])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CD5103F718;
+ Mon, 22 Mar 2021 05:21:06 -0700 (PDT)
+Date: Mon, 22 Mar 2021 12:21:00 +0000
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Marc Zyngier <maz@kernel.org>, michal.simek@xilinx.com
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Thierry Reding <treding@nvidia.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh@kernel.org>,
+ Will Deacon <will@kernel.org>, "K. Y. Srinivasan" <kys@microsoft.com>,
+ Haiyang Zhang <haiyangz@microsoft.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH 03/13] PCI: xilinx: Convert to MSI domains
+Message-ID: <20210322122100.GA11469@e121166-lin.cambridge.arm.com>
+References: <20210225151023.3642391-1-maz@kernel.org>
+ <20210225151023.3642391-4-maz@kernel.org>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210225151023.3642391-4-maz@kernel.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_113550_404693_153C7EAF 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20210322_122111_758341_649FA1AE 
+X-CRM114-Status: GOOD (  42.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,133 +87,435 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark Brown and Rob Herring:
-
-	Gentle ping on this patch.
-
-Thanks
-Mason
-
-On Fri, 2021-02-26 at 18:59 +0800, Mason Zhang wrote:
-> this patch add spi master dts node for mt6779 SOC.
+On Thu, Feb 25, 2021 at 03:10:13PM +0000, Marc Zyngier wrote:
+> In anticipation of the removal of the msi_controller structure, convert
+> the ancient xilinx host controller driver to MSI domains.
 > 
-> Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
+> We end-up with the usual two domain structure, the top one being a
+> generic PCI/MSI domain, the bottom one being xilinx-specific and handling
+> the actual HW interrupt allocation.
+> 
+> This allows us to fix some of the most appaling MSI programming, where
+> the message programmed in the device is the virtual IRQ number instead
+> of the allocated vector number. The allocator is also made safe with
+> a mutex. This should allow support for MultiMSI, but I decided not to
+> even try, since I cannot test it.
+> 
+> Also take the opportunity to get rid of the cargo-culted memory allocation
+> for the MSI capture address. *ANY* sufficiently aligned address should
+> be good enough, so use the physical address of the xilinx_pcie_host
+> structure instead.
+> 
+> Signed-off-by: Marc Zyngier <maz@kernel.org>
 > ---
->  arch/arm64/boot/dts/mediatek/mt6779.dtsi | 96 ++++++++++++++++++++++++
->  1 file changed, 96 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-> index 370f309d32de..ca72eb09cff9 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-> @@ -219,6 +219,102 @@
->  			status = "disabled";
->  		};
->  
-> +		spi0: spi0@1100a000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x1100a000 0 0x1000>;
-> +			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				<&topckgen CLK_TOP_SPI>,
-> +				<&infracfg_ao CLK_INFRA_SPI0>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
-> +		spi1: spi1@11010000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x11010000 0 0x1000>;
-> +			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				<&topckgen CLK_TOP_SPI>,
-> +				<&infracfg_ao CLK_INFRA_SPI1>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
-> +		spi2: spi2@11012000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x11012000 0 0x1000>;
-> +			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				 <&topckgen CLK_TOP_SPI>,
-> +				<&infracfg_ao CLK_INFRA_SPI2>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
-> +		spi3: spi3@11013000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x11013000 0 0x1000>;
-> +			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				 <&topckgen CLK_TOP_SPI>,
-> +				 <&infracfg_ao CLK_INFRA_SPI3>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
-> +		spi4: spi4@11018000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x11018000 0 0x1000>;
-> +			interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				 <&topckgen CLK_TOP_SPI>,
-> +				 <&infracfg_ao CLK_INFRA_SPI4>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
-> +		spi5: spi5@11019000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x11019000 0 0x1000>;
-> +			interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				<&topckgen CLK_TOP_SPI>,
-> +				<&infracfg_ao CLK_INFRA_SPI5>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
-> +		spi6: spi6@1101d000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x1101d000 0 0x1000>;
-> +			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				 <&topckgen CLK_TOP_SPI>,
-> +				 <&infracfg_ao CLK_INFRA_SPI6>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
-> +		spi7: spi7@1101e000 {
-> +			compatible = "mediatek,mt6779-spi",
-> +				     "mediatek,mt6765-spi";
-> +			mediatek,pad-select = <0>;
-> +			reg = <0 0x1101e000 0 0x1000>;
-> +			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW 0>;
-> +			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
-> +				 <&topckgen CLK_TOP_SPI>,
-> +				 <&infracfg_ao CLK_INFRA_SPI7>;
-> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
-> +		};
-> +
->  		audio: clock-controller@11210000 {
->  			compatible = "mediatek,mt6779-audio", "syscon";
->  			reg = <0 0x11210000 0 0x1000>;
+>  drivers/pci/controller/Kconfig       |   2 +-
+>  drivers/pci/controller/pcie-xilinx.c | 238 +++++++++++----------------
+>  2 files changed, 96 insertions(+), 144 deletions(-)
 
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+Michal,
+
+can you please test these changes or make sure someone does and report
+back on the mailing list please ?
+
+I would like to merge this series for v5.13.
+
+Thanks,
+Lorenzo
+
+> 
+> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+> index ccbf034512d6..049c60016904 100644
+> --- a/drivers/pci/controller/Kconfig
+> +++ b/drivers/pci/controller/Kconfig
+> @@ -95,7 +95,7 @@ config PCI_HOST_GENERIC
+>  config PCIE_XILINX
+>  	bool "Xilinx AXI PCIe host bridge support"
+>  	depends on OF || COMPILE_TEST
+> -	select PCI_MSI_ARCH_FALLBACKS
+> +	depends on PCI_MSI_IRQ_DOMAIN
+>  	help
+>  	  Say 'Y' here if you want kernel to support the Xilinx AXI PCIe
+>  	  Host Bridge driver.
+> diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
+> index fa5baeb82653..ad9abf405167 100644
+> --- a/drivers/pci/controller/pcie-xilinx.c
+> +++ b/drivers/pci/controller/pcie-xilinx.c
+> @@ -93,25 +93,23 @@
+>  /**
+>   * struct xilinx_pcie_port - PCIe port information
+>   * @reg_base: IO Mapped Register Base
+> - * @irq: Interrupt number
+> - * @msi_pages: MSI pages
+>   * @dev: Device pointer
+> + * @msi_map: Bitmap of allocated MSIs
+> + * @map_lock: Mutex protecting the MSI allocation
+>   * @msi_domain: MSI IRQ domain pointer
+>   * @leg_domain: Legacy IRQ domain pointer
+>   * @resources: Bus Resources
+>   */
+>  struct xilinx_pcie_port {
+>  	void __iomem *reg_base;
+> -	u32 irq;
+> -	unsigned long msi_pages;
+>  	struct device *dev;
+> +	unsigned long msi_map[BITS_TO_LONGS(XILINX_NUM_MSI_IRQS)];
+> +	struct mutex map_lock;
+>  	struct irq_domain *msi_domain;
+>  	struct irq_domain *leg_domain;
+>  	struct list_head resources;
+>  };
+>  
+> -static DECLARE_BITMAP(msi_irq_in_use, XILINX_NUM_MSI_IRQS);
+> -
+>  static inline u32 pcie_read(struct xilinx_pcie_port *port, u32 reg)
+>  {
+>  	return readl(port->reg_base + reg);
+> @@ -196,151 +194,108 @@ static struct pci_ops xilinx_pcie_ops = {
+>  
+>  /* MSI functions */
+>  
+> -/**
+> - * xilinx_pcie_destroy_msi - Free MSI number
+> - * @irq: IRQ to be freed
+> - */
+> -static void xilinx_pcie_destroy_msi(unsigned int irq)
+> +static struct irq_chip xilinx_msi_top_chip = {
+> +	.name		= "PCIe MSI",
+> +};
+> +
+> +static int xilinx_msi_set_affinity(struct irq_data *d, const struct cpumask *mask, bool force)
+>  {
+> -	struct msi_desc *msi;
+> -	struct xilinx_pcie_port *port;
+> -	struct irq_data *d = irq_get_irq_data(irq);
+> -	irq_hw_number_t hwirq = irqd_to_hwirq(d);
+> -
+> -	if (!test_bit(hwirq, msi_irq_in_use)) {
+> -		msi = irq_get_msi_desc(irq);
+> -		port = msi_desc_to_pci_sysdata(msi);
+> -		dev_err(port->dev, "Trying to free unused MSI#%d\n", irq);
+> -	} else {
+> -		clear_bit(hwirq, msi_irq_in_use);
+> -	}
+> +	return -EINVAL;
+>  }
+>  
+> -/**
+> - * xilinx_pcie_assign_msi - Allocate MSI number
+> - *
+> - * Return: A valid IRQ on success and error value on failure.
+> - */
+> -static int xilinx_pcie_assign_msi(void)
+> +static void xilinx_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+>  {
+> -	int pos;
+> +	struct xilinx_pcie_port *pcie = irq_data_get_irq_chip_data(data);
+> +	phys_addr_t pa = virt_to_phys(pcie);
+>  
+> -	pos = find_first_zero_bit(msi_irq_in_use, XILINX_NUM_MSI_IRQS);
+> -	if (pos < XILINX_NUM_MSI_IRQS)
+> -		set_bit(pos, msi_irq_in_use);
+> -	else
+> -		return -ENOSPC;
+> -
+> -	return pos;
+> +	msg->address_lo = lower_32_bits(pa);
+> +	msg->address_hi = upper_32_bits(pa);
+> +	msg->data = data->hwirq;
+>  }
+>  
+> -/**
+> - * xilinx_msi_teardown_irq - Destroy the MSI
+> - * @chip: MSI Chip descriptor
+> - * @irq: MSI IRQ to destroy
+> - */
+> -static void xilinx_msi_teardown_irq(struct msi_controller *chip,
+> -				    unsigned int irq)
+> -{
+> -	xilinx_pcie_destroy_msi(irq);
+> -	irq_dispose_mapping(irq);
+> -}
+> +static struct irq_chip xilinx_msi_bottom_chip = {
+> +	.name			= "Xilinx MSI",
+> +	.irq_set_affinity 	= xilinx_msi_set_affinity,
+> +	.irq_compose_msi_msg	= xilinx_compose_msi_msg,
+> +};
+>  
+> -/**
+> - * xilinx_pcie_msi_setup_irq - Setup MSI request
+> - * @chip: MSI chip pointer
+> - * @pdev: PCIe device pointer
+> - * @desc: MSI descriptor pointer
+> - *
+> - * Return: '0' on success and error value on failure
+> - */
+> -static int xilinx_pcie_msi_setup_irq(struct msi_controller *chip,
+> -				     struct pci_dev *pdev,
+> -				     struct msi_desc *desc)
+> +static int xilinx_msi_domain_alloc(struct irq_domain *domain, unsigned int virq,
+> +				  unsigned int nr_irqs, void *args)
+>  {
+> -	struct xilinx_pcie_port *port = pdev->bus->sysdata;
+> -	unsigned int irq;
+> -	int hwirq;
+> -	struct msi_msg msg;
+> -	phys_addr_t msg_addr;
+> +	struct xilinx_pcie_port *port = domain->host_data;
+> +	int hwirq, i;
+>  
+> -	hwirq = xilinx_pcie_assign_msi();
+> -	if (hwirq < 0)
+> -		return hwirq;
+> -
+> -	irq = irq_create_mapping(port->msi_domain, hwirq);
+> -	if (!irq)
+> -		return -EINVAL;
+> +	mutex_lock(&port->map_lock);
+>  
+> -	irq_set_msi_desc(irq, desc);
+> +	hwirq = bitmap_find_free_region(port->msi_map, XILINX_NUM_MSI_IRQS, order_base_2(nr_irqs));
+>  
+> -	msg_addr = virt_to_phys((void *)port->msi_pages);
+> +	mutex_unlock(&port->map_lock);
+>  
+> -	msg.address_hi = 0;
+> -	msg.address_lo = msg_addr;
+> -	msg.data = irq;
+> +	if (hwirq < 0)
+> +		return -ENOSPC;
+>  
+> -	pci_write_msi_msg(irq, &msg);
+> +	for (i = 0; i < nr_irqs; i++)
+> +		irq_domain_set_info(domain, virq + i, hwirq + i,
+> +				    &xilinx_msi_bottom_chip, domain->host_data,
+> +				    handle_edge_irq, NULL, NULL);
+>  
+>  	return 0;
+>  }
+>  
+> -/* MSI Chip Descriptor */
+> -static struct msi_controller xilinx_pcie_msi_chip = {
+> -	.setup_irq = xilinx_pcie_msi_setup_irq,
+> -	.teardown_irq = xilinx_msi_teardown_irq,
+> -};
+> +static void xilinx_msi_domain_free(struct irq_domain *domain, unsigned int virq,
+> +				  unsigned int nr_irqs)
+> +{
+> +	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
+> +	struct xilinx_pcie_port *port = domain->host_data;
+>  
+> -/* HW Interrupt Chip Descriptor */
+> -static struct irq_chip xilinx_msi_irq_chip = {
+> -	.name = "Xilinx PCIe MSI",
+> -	.irq_enable = pci_msi_unmask_irq,
+> -	.irq_disable = pci_msi_mask_irq,
+> -	.irq_mask = pci_msi_mask_irq,
+> -	.irq_unmask = pci_msi_unmask_irq,
+> -};
+> +	mutex_lock(&port->map_lock);
+>  
+> -/**
+> - * xilinx_pcie_msi_map - Set the handler for the MSI and mark IRQ as valid
+> - * @domain: IRQ domain
+> - * @irq: Virtual IRQ number
+> - * @hwirq: HW interrupt number
+> - *
+> - * Return: Always returns 0.
+> - */
+> -static int xilinx_pcie_msi_map(struct irq_domain *domain, unsigned int irq,
+> -			       irq_hw_number_t hwirq)
+> -{
+> -	irq_set_chip_and_handler(irq, &xilinx_msi_irq_chip, handle_simple_irq);
+> -	irq_set_chip_data(irq, domain->host_data);
+> +	bitmap_release_region(port->msi_map, d->hwirq, order_base_2(nr_irqs));
+>  
+> -	return 0;
+> +	mutex_unlock(&port->map_lock);
+>  }
+>  
+> -/* IRQ Domain operations */
+> -static const struct irq_domain_ops msi_domain_ops = {
+> -	.map = xilinx_pcie_msi_map,
+> +static const struct irq_domain_ops xilinx_msi_domain_ops = {
+> +	.alloc	= xilinx_msi_domain_alloc,
+> +	.free	= xilinx_msi_domain_free,
+>  };
+>  
+> -/**
+> - * xilinx_pcie_enable_msi - Enable MSI support
+> - * @port: PCIe port information
+> - */
+> -static int xilinx_pcie_enable_msi(struct xilinx_pcie_port *port)
+> +static struct msi_domain_info xilinx_msi_info = {
+> +	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS),
+> +	.chip	= &xilinx_msi_top_chip,
+> +};
+> +
+> +static int xilinx_allocate_msi_domains(struct xilinx_pcie_port *pcie)
+>  {
+> -	phys_addr_t msg_addr;
+> +	struct fwnode_handle *fwnode = dev_fwnode(pcie->dev);
+> +	struct irq_domain *parent;
+>  
+> -	port->msi_pages = __get_free_pages(GFP_KERNEL, 0);
+> -	if (!port->msi_pages)
+> +	parent = irq_domain_create_linear(fwnode, XILINX_NUM_MSI_IRQS,
+> +					  &xilinx_msi_domain_ops, pcie);
+> +	if (!parent) {
+> +		dev_err(pcie->dev, "failed to create IRQ domain\n");
+>  		return -ENOMEM;
+> +	}
+> +	irq_domain_update_bus_token(parent, DOMAIN_BUS_NEXUS);
+>  
+> -	msg_addr = virt_to_phys((void *)port->msi_pages);
+> -	pcie_write(port, 0x0, XILINX_PCIE_REG_MSIBASE1);
+> -	pcie_write(port, msg_addr, XILINX_PCIE_REG_MSIBASE2);
+> +	pcie->msi_domain = pci_msi_create_irq_domain(fwnode, &xilinx_msi_info, parent);
+> +	if (!pcie->msi_domain) {
+> +		dev_err(pcie->dev, "failed to create MSI domain\n");
+> +		irq_domain_remove(parent);
+> +		return -ENOMEM;
+> +	}
+>  
+>  	return 0;
+>  }
+>  
+> +static void xilinx_free_msi_domains(struct xilinx_pcie_port *pcie)
+> +{
+> +	struct irq_domain *parent = pcie->msi_domain->parent;
+> +
+> +	irq_domain_remove(pcie->msi_domain);
+> +	irq_domain_remove(parent);
+> +}
+> +
+>  /* INTx Functions */
+>  
+>  /**
+> @@ -420,6 +375,8 @@ static irqreturn_t xilinx_pcie_intr_handler(int irq, void *data)
+>  	}
+>  
+>  	if (status & (XILINX_PCIE_INTR_INTX | XILINX_PCIE_INTR_MSI)) {
+> +		unsigned int irq;
+> +
+>  		val = pcie_read(port, XILINX_PCIE_REG_RPIFR1);
+>  
+>  		/* Check whether interrupt valid */
+> @@ -432,20 +389,19 @@ static irqreturn_t xilinx_pcie_intr_handler(int irq, void *data)
+>  		if (val & XILINX_PCIE_RPIFR1_MSI_INTR) {
+>  			val = pcie_read(port, XILINX_PCIE_REG_RPIFR2) &
+>  				XILINX_PCIE_RPIFR2_MSG_DATA;
+> +			irq = irq_find_mapping(port->msi_domain->parent, val);
+>  		} else {
+>  			val = (val & XILINX_PCIE_RPIFR1_INTR_MASK) >>
+>  				XILINX_PCIE_RPIFR1_INTR_SHIFT;
+> -			val = irq_find_mapping(port->leg_domain, val);
+> +			irq = irq_find_mapping(port->leg_domain, val);
+>  		}
+>  
+>  		/* Clear interrupt FIFO register 1 */
+>  		pcie_write(port, XILINX_PCIE_RPIFR1_ALL_MASK,
+>  			   XILINX_PCIE_REG_RPIFR1);
+>  
+> -		/* Handle the interrupt */
+> -		if (IS_ENABLED(CONFIG_PCI_MSI) ||
+> -		    !(val & XILINX_PCIE_RPIFR1_MSI_INTR))
+> -			generic_handle_irq(val);
+> +		if (irq)
+> +			generic_handle_irq(irq);
+>  	}
+>  
+>  	if (status & XILINX_PCIE_INTR_SLV_UNSUPP)
+> @@ -491,12 +447,11 @@ static irqreturn_t xilinx_pcie_intr_handler(int irq, void *data)
+>  static int xilinx_pcie_init_irq_domain(struct xilinx_pcie_port *port)
+>  {
+>  	struct device *dev = port->dev;
+> -	struct device_node *node = dev->of_node;
+>  	struct device_node *pcie_intc_node;
+>  	int ret;
+>  
+>  	/* Setup INTx */
+> -	pcie_intc_node = of_get_next_child(node, NULL);
+> +	pcie_intc_node = of_get_next_child(dev->of_node, NULL);
+>  	if (!pcie_intc_node) {
+>  		dev_err(dev, "No PCIe Intc node found\n");
+>  		return -ENODEV;
+> @@ -513,18 +468,14 @@ static int xilinx_pcie_init_irq_domain(struct xilinx_pcie_port *port)
+>  
+>  	/* Setup MSI */
+>  	if (IS_ENABLED(CONFIG_PCI_MSI)) {
+> -		port->msi_domain = irq_domain_add_linear(node,
+> -							 XILINX_NUM_MSI_IRQS,
+> -							 &msi_domain_ops,
+> -							 &xilinx_pcie_msi_chip);
+> -		if (!port->msi_domain) {
+> -			dev_err(dev, "Failed to get a MSI IRQ domain\n");
+> -			return -ENODEV;
+> -		}
+> +		phys_addr_t pa = virt_to_phys(port);
+>  
+> -		ret = xilinx_pcie_enable_msi(port);
+> +		ret = xilinx_allocate_msi_domains(port);
+>  		if (ret)
+>  			return ret;
+> +
+> +		pcie_write(port, upper_32_bits(pa), XILINX_PCIE_REG_MSIBASE1);
+> +		pcie_write(port, lower_32_bits(pa), XILINX_PCIE_REG_MSIBASE2);
+>  	}
+>  
+>  	return 0;
+> @@ -572,6 +523,7 @@ static int xilinx_pcie_parse_dt(struct xilinx_pcie_port *port)
+>  	struct device *dev = port->dev;
+>  	struct device_node *node = dev->of_node;
+>  	struct resource regs;
+> +	unsigned int irq;
+>  	int err;
+>  
+>  	err = of_address_to_resource(node, 0, &regs);
+> @@ -584,12 +536,12 @@ static int xilinx_pcie_parse_dt(struct xilinx_pcie_port *port)
+>  	if (IS_ERR(port->reg_base))
+>  		return PTR_ERR(port->reg_base);
+>  
+> -	port->irq = irq_of_parse_and_map(node, 0);
+> -	err = devm_request_irq(dev, port->irq, xilinx_pcie_intr_handler,
+> +	irq = irq_of_parse_and_map(node, 0);
+> +	err = devm_request_irq(dev, irq, xilinx_pcie_intr_handler,
+>  			       IRQF_SHARED | IRQF_NO_THREAD,
+>  			       "xilinx-pcie", port);
+>  	if (err) {
+> -		dev_err(dev, "unable to request irq %d\n", port->irq);
+> +		dev_err(dev, "unable to request irq %d\n", irq);
+>  		return err;
+>  	}
+>  
+> @@ -617,7 +569,7 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+>  		return -ENODEV;
+>  
+>  	port = pci_host_bridge_priv(bridge);
+> -
+> +	mutex_init(&port->map_lock);
+>  	port->dev = dev;
+>  
+>  	err = xilinx_pcie_parse_dt(port);
+> @@ -637,11 +589,11 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+>  	bridge->sysdata = port;
+>  	bridge->ops = &xilinx_pcie_ops;
+>  
+> -#ifdef CONFIG_PCI_MSI
+> -	xilinx_pcie_msi_chip.dev = dev;
+> -	bridge->msi = &xilinx_pcie_msi_chip;
+> -#endif
+> -	return pci_host_probe(bridge);
+> +	err = pci_host_probe(bridge);
+> +	if (err)
+> +		xilinx_free_msi_domains(port);
+> +
+> +	return err;
+>  }
+>  
+>  static const struct of_device_id xilinx_pcie_of_match[] = {
+> -- 
+> 2.29.2
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
