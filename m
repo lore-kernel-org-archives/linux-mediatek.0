@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6145DC433C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:34:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB1A7C433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:34:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA1C0619A9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:34:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA1C0619A9
+	by mail.kernel.org (Postfix) with ESMTPS id 9641E619A9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:34:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9641E619A9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JRL3oj8xYUV0bk3tKr+vAHjjj89M4dpLMgps5K1GVX4=; b=qBcetosiJpEFDQPbP5DsgnqLF
-	exDEpgyBwUlIwEYB/mro70+G2QfnxoErCcchLGXxIWFhFc+7SEjlY0CKma7Qst7jdwvjI0KlnG+y9
-	1fj09Bn5RacRrgoMLFMWKK51FrHKRwxDcpsDbXxprg0dbP+rtazs79afxv6ax69BdpoyQ8JsV9qrf
-	cndVcauL3r0Awe/CKzI7bFd1S4d1bReAx+ZbPXezKz9h/fbSg6D3Vtj4sV4rqtyzVJ5zsypcPWXl3
-	qe7wtKKIWl+YEqo0uOihrrCcTKnkF+t5xdYeo+gxicZcjigiuz2yVe0rZa9GG/5W57mu6axlbbZhf
-	qJVrnTtYQ==;
+	 bh=G1X8Tr0WFCicjFYcr5ctgzYG5rOefK8cN/91DfXNYX0=; b=V7LOdxiZrAsJoK/+xgw7hOyIK
+	BcwYQXvCdQQJIcuzhuGRawLMHBYX9mHKBHyla+Mc/oxCZlqELjvfVjxFZrr061TP4u+j27/DQCwO7
+	7lkYGDFWYQygfQ956ogBl8St0UvpSgWVSUMxiqOIxAdZBFBXRRUSKRRYeCm0uJ291RBZjvzmRq2hF
+	e3sCtAyVYDvtapXNPG5jIky/JRQOjKomwYMndnQuHMdmdOZVcqzo0C8ikqo/WATHWA7b82KYjirUt
+	dM7zsAkIwVDdVxnOSKJNNtMPzDr/bpXMT4bWNuoZYai5lBUnMQ4m9aYoKD+6nfpnBFl2+WK1kfrlb
+	zGyXchHWg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOfIl-00Eiau-MQ; Tue, 23 Mar 2021 11:34:23 +0000
+	id 1lOfJ1-00Eicq-77; Tue, 23 Mar 2021 11:34:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOfId-00EiXm-Kr; Tue, 23 Mar 2021 11:34:19 +0000
-X-UUID: 8648e9a103ae4d65a854e06d24fcf66d-20210323
+ id 1lOfIe-00EiXq-J6; Tue, 23 Mar 2021 11:34:20 +0000
+X-UUID: fcbfb90bbcb64be69b94607b9c94a5ba-20210323
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=VUjEKEUOSLh//gC0dXPpk/7IKS2KMuv+5PyRzSyK4Ts=; 
- b=fnOc3fWb6EWxa5XEtJEU/rJ1ugh4hAn51fxnkjrOzUAN4NPx23exci147WWJ6ZQ0DwiP9FTDRnjMjfX2AuRlyusXQQWGhbmig/FhLyyjQyXIkx1fvFRhKqeHo7fNTlWCgvT/+3zeaBoLoZbJLkIR7flG+XyNW2/xCdVmEjgSAZw=;
-X-UUID: 8648e9a103ae4d65a854e06d24fcf66d-20210323
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=AuoaHK1PMa2zBC+B0f02W8kOHMuTehvjHgckn3qNV2k=; 
+ b=lMWb2jv9nayQN9BCxPasARqPAQM6YKmDd5g035QKnCX+JiTdPY6tBEqpAyNOBFack2SzoJOVRwcZ5TIi5ZXbtrPnvxm8X48fYG4L8GsEXJCWLQXTNpqbLPy1WjOR/4SUwZGY3TEaADr9B8Irj/XGsZSBNKoSxJvbF1QjRjfuQOc=;
+X-UUID: fcbfb90bbcb64be69b94607b9c94a5ba-20210323
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <andrew-sh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 804033606; Tue, 23 Mar 2021 03:34:07 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 04:34:06 -0700
+ with ESMTP id 1006455352; Tue, 23 Mar 2021 03:34:08 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Mar 2021 04:34:07 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 19:34:04 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Mar 2021 19:34:05 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 23 Mar 2021 19:34:04 +0800
+ Frontend Transport; Tue, 23 Mar 2021 19:34:05 +0800
 From: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
  <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, "Rob
@@ -67,17 +67,18 @@ CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-Subject: [PATCH V8 2/8] cpufreq: mediatek: Enable clock and regulator
-Date: Tue, 23 Mar 2021 19:33:55 +0800
-Message-ID: <1616499241-4906-3-git-send-email-andrew-sh.cheng@mediatek.com>
+Subject: [PATCH V8 3/8] dt-bindings: devfreq: add compatible for mt8183 cci
+ devfreq
+Date: Tue, 23 Mar 2021 19:33:56 +0800
+Message-ID: <1616499241-4906-4-git-send-email-andrew-sh.cheng@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
 References: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210323_113416_229909_8DA97D61 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20210323_113417_246169_89E38DDF 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,94 +97,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 
-Need to enable regulator,
-so that the max/min requested value will be recorded
-even it is not applied right away.
-
-Intermediate clock is not always enabled by ccf in different projects,
-so cpufreq should enable it by itself.
+This adds dt-binding documentation of cci devfreq
+for Mediatek MT8183 SoC platform.
 
 Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 ---
- drivers/cpufreq/mediatek-cpufreq.c | 33 +++++++++++++++++++++++++++++----
- 1 file changed, 29 insertions(+), 4 deletions(-)
+ .../devicetree/bindings/devfreq/mt8183-cci.yaml    | 51 ++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/devfreq/mt8183-cci.yaml
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index f2e491b25b07..432368707ea6 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -350,6 +350,11 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 		ret = PTR_ERR(proc_reg);
- 		goto out_free_resources;
- 	}
-+	ret = regulator_enable(proc_reg);
-+	if (ret) {
-+		pr_warn("enable vproc for cpu%d fail\n", cpu);
-+		goto out_free_resources;
-+	}
- 
- 	/* Both presence and absence of sram regulator are valid cases. */
- 	sram_reg = regulator_get_exclusive(cpu_dev, "sram");
-@@ -368,13 +373,21 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 		goto out_free_resources;
- 	}
- 
-+	ret = clk_prepare_enable(cpu_clk);
-+	if (ret)
-+		goto out_free_opp_table;
+diff --git a/Documentation/devicetree/bindings/devfreq/mt8183-cci.yaml b/Documentation/devicetree/bindings/devfreq/mt8183-cci.yaml
+new file mode 100644
+index 000000000000..a7341fd94097
+--- /dev/null
++++ b/Documentation/devicetree/bindings/devfreq/mt8183-cci.yaml
+@@ -0,0 +1,51 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/devfreq/mt8183-cci.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	ret = clk_prepare_enable(inter_clk);
-+	if (ret)
-+		goto out_disable_mux_clock;
++title: CCI_DEVFREQ driver for MT8183.
 +
- 	/* Search a safe voltage for intermediate frequency. */
- 	rate = clk_get_rate(inter_clk);
- 	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &rate);
- 	if (IS_ERR(opp)) {
- 		pr_err("failed to get intermediate opp for cpu%d\n", cpu);
- 		ret = PTR_ERR(opp);
--		goto out_free_opp_table;
-+		goto out_disable_inter_clock;
- 	}
- 	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
-@@ -393,6 +406,12 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 
- 	return 0;
- 
-+out_disable_inter_clock:
-+	clk_disable_unprepare(inter_clk);
++maintainers:
++  - Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 +
-+out_disable_mux_clock:
-+	clk_disable_unprepare(cpu_clk);
++description: |
++  This module is used to create CCI DEVFREQ.
++  The performance will depend on both CCI frequency and CPU frequency.
++  For MT8183, CCI co-buck with Little core.
++  Contain CCI opp table for voltage and frequency scaling.
 +
- out_free_opp_table:
- 	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
- 
-@@ -411,14 +430,20 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 
- static void mtk_cpu_dvfs_info_release(struct mtk_cpu_dvfs_info *info)
- {
--	if (!IS_ERR(info->proc_reg))
-+	if (!IS_ERR(info->proc_reg)) {
-+		regulator_disable(info->proc_reg);
- 		regulator_put(info->proc_reg);
-+	}
- 	if (!IS_ERR(info->sram_reg))
- 		regulator_put(info->sram_reg);
--	if (!IS_ERR(info->cpu_clk))
-+	if (!IS_ERR(info->cpu_clk)) {
-+		clk_disable_unprepare(info->cpu_clk);
- 		clk_put(info->cpu_clk);
--	if (!IS_ERR(info->inter_clk))
-+	}
-+	if (!IS_ERR(info->inter_clk)) {
-+		clk_disable_unprepare(info->inter_clk);
- 		clk_put(info->inter_clk);
-+	}
- 
- 	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
- }
++properties:
++  compatible:
++    const: "mediatek,mt8183-cci"
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: "cci"
++
++  operating-points-v2: true
++  opp-table: true
++
++  proc-supply:
++    description:
++      Phandle of the regulator that provides the supply voltage.
++
++required:
++  - compatible
++  - clocks
++  - clock-names
++  - proc-supply
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    cci: cci {
++      compatible = "mediatek,mt8183-cci";
++      clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
++      clock-names = "cci";
++      operating-points-v2 = <&cci_opp>;
++      proc-supply = <&mt6358_vproc12_reg>;
++    };
++
 -- 
 2.12.5
 _______________________________________________
