@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73169C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 07:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 46621C433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 07:06:18 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF187619AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 07:05:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF187619AB
+	by mail.kernel.org (Postfix) with ESMTPS id D4EB7619AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 07:06:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4EB7619AB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Nhqp3VqdXr19ymMPYixn6VhzUCIjMPqLGyaOnouNt0o=; b=eRMPnZHECGRtIDvmDqzmzrwKS
-	u26LBYDJSJ7JeCd2AsE4iHAOSk+zHaHISAlXadT4pzysIecXs4TYbQ8OeUNTBXaOtSwx39ytbEIKl
-	m30hj2mQJRepVkY80ZyLMxq69ngtLsDu37/M9FfSKeHaeakELTG586CJtif+rKkE25E2K+B7B5oMA
-	s6L4fcRnslaSkdbLG6vmGCpFz6Ru1YocKg1uPFryeGV0xXOk3WKlGz4DA2oezwh4ysfv1/l0NrjQN
-	DR5VlLyiw3swxfo2pEsa6C+qFM8WlrI0+/sO1B7EcS9hVCoLE0lIJW+v/hkr77olgaQmkPymGKEB1
-	dtreXv25w==;
+	 bh=t6g6v5qXCybvGvtWcGuPEOjg2B2uBir4OVQ+3efZUvQ=; b=dZ9M9OuHo7OAETrHyqVZQVrUu
+	6Wyv8G+NkpeUsZiqp3sY/uDQ9wqYxXTJaBuEaPPRy0qrvVFv+b4M+cumZ3A/TsRRioYglLyART8wq
+	yUXGqHR/DPjt9glyqyRilNUE7WhufdzWHnf06kUr6/cEX4SNkDnISbKlLEj2ai2tvfUuoS3tKZRZ6
+	Pu8+kjsRMj3+6LM7AdmKFnMca5wlqiHMlJZT8BDt/5NgqJI7Vs0KaqZreMPjVS+4KLrGqSA5lWvsZ
+	q0QvuDM1cT1NApL7nWDJ/Lljs0zDrPAOahh5UbZoiavt6iDzRoGkpKf1p7ceWtCDu0SQ7gkWZCwes
+	vNyi+e82w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOb6n-00E3m0-PT; Tue, 23 Mar 2021 07:05:45 +0000
+	id 1lOb74-00E3vf-QL; Tue, 23 Mar 2021 07:06:04 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOb6i-00E3iB-LF; Tue, 23 Mar 2021 07:05:43 +0000
-X-UUID: c2edadb779f8446cba45bb8eee2fea7c-20210322
+ id 1lOb6j-00E3ig-Os; Tue, 23 Mar 2021 07:05:44 +0000
+X-UUID: b3850319d2414fe794119965f92a3841-20210322
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ALchlATRPARxSITTMFGl5eNvLwmwPAYtrZiDu9Nu7YY=; 
- b=Tn3No1blHq+O/2MPexcie+2jOZS0JNHThDfM8zS7o8OroKf+s+UJ1jCtbBJsKBd7bQ/3ODpkVJHSmVwwt04wTcTvwoGTgcVVBpwfBeB6vddjTjsoSZ8ryb2u46mnCNyRONVTXLyf98xMfMhKDBjsVvwIEfEV9QSSdLC40VhAQiY=;
-X-UUID: c2edadb779f8446cba45bb8eee2fea7c-20210322
+ bh=s4ZddC2S+dlliGCnvHoikIrc+TPN23rnYvceuM8Qq8U=; 
+ b=SdcZqQaCl+gkAaAMcfwUnEGdNndmaEzJzBdGgUoy5ftaindVYsCzymF2S/k/S4tp9vEnKLN5/NjihB2BrvVL3MkbcK6naorsM75YNQG4aBYuRlam6yvyfNxdoDuK+XsRHVbOCNlmrfc1ftakO155EJeAyikCzxseVecRiYGhbFk=;
+X-UUID: b3850319d2414fe794119965f92a3841-20210322
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1467850370; Mon, 22 Mar 2021 23:05:38 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ with ESMTP id 248481818; Mon, 22 Mar 2021 23:05:38 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 00:03:15 -0700
+ 15.0.1497.2; Tue, 23 Mar 2021 00:03:17 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 15:03:13 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Mar 2021 15:03:15 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 23 Mar 2021 15:03:12 +0800
+ Transport; Tue, 23 Mar 2021 15:03:14 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
  <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
@@ -64,18 +64,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Sergei Shtylyov
  <sergei.shtylyov@gmail.com>, Eddie Hung <eddie.hung@mediatek.com>, "Nicolas
  Boichat" <drinkcat@chromium.org>
-Subject: [PATCH v2 05/13] usb: xhci-mtk: support quirk to disable usb2 lpm
-Date: Tue, 23 Mar 2021 15:02:47 +0800
-Message-ID: <1616482975-17841-5-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 08/13] usb: xhci-mtk: drop CONFIG_OF
+Date: Tue, 23 Mar 2021 15:02:50 +0800
+Message-ID: <1616482975-17841-8-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1616482975-17841-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1616482975-17841-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DD9F8651991F2219FCB74CE67B4205BC3BD452D60A0A435A8210568683BACF6F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210323_070541_085516_FD53A17E 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20210323_070543_346406_B64690B8 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,51 +91,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The xHCI driver support usb2 HW LPM by default, here add support
-XHCI_HW_LPM_DISABLE quirk, then we can disable usb2 lpm when
-need it.
+The driver can match only the devices created by the OF core
+via the DT table, so the table should be always used.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2: no changes
 ---
- drivers/usb/host/xhci-mtk.c | 3 +++
- drivers/usb/host/xhci-mtk.h | 1 +
- 2 files changed, 4 insertions(+)
+ drivers/usb/host/xhci-mtk.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 1b9f10048fe0..09f2ddbfe8b9 100644
+index 24342112cd1d..832c5b8bb8a8 100644
 --- a/drivers/usb/host/xhci-mtk.c
 +++ b/drivers/usb/host/xhci-mtk.c
-@@ -388,6 +388,8 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
- 	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
- 	if (mtk->lpm_support)
- 		xhci->quirks |= XHCI_LPM_SUPPORT;
-+	if (mtk->u2_lpm_disable)
-+		xhci->quirks |= XHCI_HW_LPM_DISABLE;
+@@ -689,14 +689,12 @@ static const struct dev_pm_ops xhci_mtk_pm_ops = {
+ };
+ #define DEV_PM_OPS IS_ENABLED(CONFIG_PM) ? &xhci_mtk_pm_ops : NULL
  
- 	/*
- 	 * MTK xHCI 0.96: PSA is 1 by default even if doesn't support stream,
-@@ -470,6 +472,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 		return ret;
+-#ifdef CONFIG_OF
+ static const struct of_device_id mtk_xhci_of_match[] = {
+ 	{ .compatible = "mediatek,mt8173-xhci"},
+ 	{ .compatible = "mediatek,mtk-xhci"},
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_xhci_of_match);
+-#endif
  
- 	mtk->lpm_support = of_property_read_bool(node, "usb3-lpm-capable");
-+	mtk->u2_lpm_disable = of_property_read_bool(node, "usb2-lpm-disable");
- 	/* optional property, ignore the error if it does not exist */
- 	of_property_read_u32(node, "mediatek,u3p-dis-msk",
- 			     &mtk->u3p_dis_msk);
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 621ec1a85009..4ccd08e20a15 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -149,6 +149,7 @@ struct xhci_hcd_mtk {
- 	struct phy **phys;
- 	int num_phys;
- 	bool lpm_support;
-+	bool u2_lpm_disable;
- 	/* usb remote wakeup */
- 	bool uwk_en;
- 	struct regmap *uwk;
+ static struct platform_driver mtk_xhci_driver = {
+ 	.probe	= xhci_mtk_probe,
+@@ -704,7 +702,7 @@ static struct platform_driver mtk_xhci_driver = {
+ 	.driver	= {
+ 		.name = "xhci-mtk",
+ 		.pm = DEV_PM_OPS,
+-		.of_match_table = of_match_ptr(mtk_xhci_of_match),
++		.of_match_table = mtk_xhci_of_match,
+ 	},
+ };
+ MODULE_ALIAS("platform:xhci-mtk");
 -- 
 2.18.0
 _______________________________________________
