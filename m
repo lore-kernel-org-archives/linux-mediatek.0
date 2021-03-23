@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CD80C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 04:46:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D66B1C433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 05:52:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9A9466199F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 04:46:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A9466199F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 64E9C619B3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 05:52:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64E9C619B3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7LRZyYTlNHPM3fDsdhEU7+ZX+JMSXkMgdz0sAWJwRok=; b=qdK+boY4/9uQ/szsRCnLF+DiS
-	hiAae05jJlmELrzvI8gEU6cb40JD0/uSUIUjRxDBUHHR/JoMbRbyT9oV9SeRSL2QKohQ1MTSknYb6
-	1VTqJBwXaM6NhG0VnJ24zAK1tvZdMae6Sfr8Cw3NplBulSlvf55FdBiTyT6guiu/bbdzQN6FGXmaK
-	T98b7GVc5UZTeDpmvnodwbO/0ig5uDdEbgdIrJrReyQWMeXd50RmYmCYm8TMGpxNlfaYTg5Djstuj
-	VzU1SaXH63cmv+p2g1LA5FX8vKzxLG4y88dD81g6ZyKakyrpgV4zwyv1+gf9sqEIPjyPkETBKfKWn
-	TxdZ96Alg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QtfWAdZaCBeOnuv6PcyhsQJ/1ayRmDLQQc2GK+KcInw=; b=VDNeYlctDuXe+nttAac+PFkXQO
+	0Bg7YDyM+m1rHTfUEkFXRIfZvuH/2LP0fbMsDt5cT1d30oaCwp4S9ekgEH9wNpy9RyacfCUnP3gBk
+	8bH/7UUQpGRtO5I/bquBvEj0KRG45/h7YLBHiu08YTpDrZxAvvIisPYzVe4Mnw6trfFfiXfcl1dJP
+	5K+zvWWuPWwuIo50tpNxvPi6U/aegjVHiULDIvXtW64B+porXoZzlv5akKUke4100MJVVTuKE5mzk
+	vYIJKF6sIzr/KU4mr66WEn8Ypwckq1SmCS6oyJPaOmFaC3rC53BdtQZPT/c8m4AV+blq+BkWlEOWi
+	DCWYJEfg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOYwD-00DlX0-IL; Tue, 23 Mar 2021 04:46:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lOZxM-00Dt8L-JR; Tue, 23 Mar 2021 05:51:57 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOXtc-00DcUQ-RM; Tue, 23 Mar 2021 03:40:01 +0000
-X-UUID: edfc30e69a044ca6bf4f05462fa9ceda-20210322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=5VGGhTYnqiKJlsMmUNBZC1ehw/BOiqHQNTSZyTu2hrQ=; 
- b=UEw01BoTdNE3GYMWhEucEzYSDBB7TKfMEX9NzldA5qFGiH2GdjsOU57hmdJWH1K3PIy6rXmPxovSqEjupkJqnVdp7yESybC1BEnKKeOxvMn8cOTaYcMCdECMZNLGU0IEUzMkpPRVpSkTIuC/mKSMyVwCiR+1/wbskF8oU41ZXBE=;
-X-UUID: edfc30e69a044ca6bf4f05462fa9ceda-20210322
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chuanjia.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 590208366; Mon, 22 Mar 2021 19:39:46 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Mar 2021 20:39:44 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 11:39:36 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 23 Mar 2021 11:39:35 +0800
-From: Chuanjia Liu <chuanjia.liu@mediatek.com>
-To: <robh+dt@kernel.org>, <bhelgaas@google.com>, <matthias.bgg@gmail.com>
-CC: <ryder.lee@mediatek.com>, <lorenzo.pieralisi@arm.com>,
- <jianjun.wang@mediatek.com>, <chuanjia.liu@mediatek.com>,
- <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <yong.wu@mediatek.com>, <frank-w@public-files.de>
-Subject: [PATCH v8 2/4] PCI: mediatek: Add new method to get shared pcie-cfg
- base address and parse node
-Date: Tue, 23 Mar 2021 11:38:31 +0800
-Message-ID: <20210323033833.14954-3-chuanjia.liu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210323033833.14954-1-chuanjia.liu@mediatek.com>
-References: <20210323033833.14954-1-chuanjia.liu@mediatek.com>
+ id 1lOZxG-00Dt6V-Gn
+ for linux-mediatek@lists.infradead.org; Tue, 23 Mar 2021 05:51:53 +0000
+Received: by mail-pf1-x432.google.com with SMTP id g15so13158862pfq.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 22 Mar 2021 22:51:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FtIC9ocJ4+NOnMRBa7jQB43OlZx1SC3ik3qdbBBdMIA=;
+ b=X/5/uuwrxFYcF8Awxi1cwtq18Vl4EymKBcOaK9VmY+oiNsIsueGIxRe1utA/39s1qG
+ 7FbBz+ekJlBjND28eTk8IF0Ah/P72WMDBm6F0UtBW+rUSBRpCuQmI6L9F4AWAjn/S2Le
+ 9960srFiKAxVa69Tps1YeIwAqpv/24hSuXRKo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FtIC9ocJ4+NOnMRBa7jQB43OlZx1SC3ik3qdbBBdMIA=;
+ b=MizIo4eK3GNC5D0qtITz98/+gD4vfMia3bB9l0w9MzIAJwfWSvP+uMwpUfFKW/XNnK
+ UsAdtWSnziMVx+/VJf4lRPfni1mBWUEdnq5YbI0pmJ2yWjVE3Ph3ARQpAVog5xZj+kJU
+ k2Dq4V87583awc89IaggUUutcF8tVscjZHYx1t7s2wIIX+YDVjdNcO3a2ySbyQMOtkUZ
+ m9OGypDWxgXp36icJCP7/CSPSg5mXStdzmlUPHNFOF2Jn99elnnR425UTN1z1wSZcK1D
+ unqZjT/F48ua3RitGqSf3YmbWEmnj6owL56Gzwwwy1pzfXiPdJrVk93TqG9LSTcox4mF
+ 6ZGQ==
+X-Gm-Message-State: AOAM530kuAwHnmOPa8PqE5g4LD08giN0aM5e5y0morb9xkgyb7erP0+D
+ ZqS26pLl5VuMkj/KhEo9onwIUw==
+X-Google-Smtp-Source: ABdhPJwmGyPV1d4xdJ5P70Yke6owQpM9u/Z2Pscxia8QZ1e+ryjZ+XQiEohTES5v5I74LSSlE1mXbQ==
+X-Received: by 2002:a17:902:834a:b029:e6:b6bc:f58c with SMTP id
+ z10-20020a170902834ab02900e6b6bcf58cmr3622329pln.85.1616478708902; 
+ Mon, 22 Mar 2021 22:51:48 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:c8d1:279a:cb3a:39cd])
+ by smtp.gmail.com with ESMTPSA id k11sm7621837pgc.38.2021.03.22.22.51.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Mar 2021 22:51:48 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-kernel@vger.kernel.org
+Cc: matthias.bgg@gmail.com, drinkcat@chromium.org, weiyi.lu@mediatek.com,
+ ck.hu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, enric.balletbo@collabora.com
+Subject: [PATCH] soc: mediatek: mmsys: Add mt8183 mmsys routing table
+Date: Tue, 23 Mar 2021 13:51:43 +0800
+Message-Id: <20210323055143.607529-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.31.0.rc2.261.g7f71774620-goog
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2E36C7F3901E0ECAF56480B004CEDB4ED3374B43F66849B606AAFD2AC10FA9D32000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210323_033958_184096_C4D6CC1E 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20210323_055151_150327_A8A84113 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,137 +96,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the new dts format, add a new method to get
-shared pcie-cfg base address and parse node.
+mt8183 has different routing registers than mt8173.
 
-Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- drivers/pci/controller/pcie-mediatek.c | 50 +++++++++++++++++++-------
- 1 file changed, 38 insertions(+), 12 deletions(-)
+This patch is based on series ("soc: mediatek: Prepare MMSYS for DDP routing using tables")[1]
+and tested with mt8183 krand and mt8183 juniper device.
+The register value is referenced from [2].
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 23548b517e4b..c40d933d2c06 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -14,6 +14,7 @@
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/msi.h>
- #include <linux/module.h>
- #include <linux/of_address.h>
-@@ -23,6 +24,7 @@
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
- #include <linux/reset.h>
+[1] https://patchwork.kernel.org/project/linux-mediatek/cover/20210317181711.795245-1-enric.balletbo@collabora.com/
+[2] https://patchwork.kernel.org/project/linux-mediatek/patch/1609815993-22744-6-git-send-email-yongqiang.niu@mediatek.com/
+---
+ drivers/soc/mediatek/mtk-mmsys.c |  2 ++
+ drivers/soc/mediatek/mtk-mmsys.h | 47 ++++++++++++++++++++++++++++++++
+ 2 files changed, 49 insertions(+)
+
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index c46d8ab8b0c2..16bb55b0463a 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -40,6 +40,8 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
  
- #include "../pci.h"
-@@ -205,6 +207,7 @@ struct mtk_pcie_port {
-  * struct mtk_pcie - PCIe host information
-  * @dev: pointer to PCIe device
-  * @base: IO mapped register base
-+ * @cfg: IO mapped register map for PCIe config
-  * @free_ck: free-run reference clock
-  * @mem: non-prefetchable memory resource
-  * @ports: pointer to PCIe port information
-@@ -213,6 +216,7 @@ struct mtk_pcie_port {
- struct mtk_pcie {
- 	struct device *dev;
- 	void __iomem *base;
-+	struct regmap *cfg;
- 	struct clk *free_ck;
+ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt8183-mm",
++	.routes = mmsys_mt8183_routing_table,
++	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+ };
  
- 	struct list_head ports;
-@@ -648,7 +652,11 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
- 		return err;
- 	}
+ struct mtk_mmsys {
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index a760a34e6eca..c55baf5932b8 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -66,6 +66,28 @@
+ #define DPI_SEL_IN_BLS				0x0
+ #define DSI_SEL_IN_RDMA				0x1
  
--	port->irq = platform_get_irq(pdev, port->slot);
-+	if (of_find_property(dev->of_node, "interrupt-names", NULL))
-+		port->irq = platform_get_irq_byname(pdev, "pcie_irq");
-+	else
-+		port->irq = platform_get_irq(pdev, port->slot);
++#define MT8183_DISP_OVL0_MOUT_EN		0xf00
++#define MT8183_DISP_OVL0_2L_MOUT_EN		0xf04
++#define MT8183_DISP_OVL1_2L_MOUT_EN		0xf08
++#define MT8183_DISP_DITHER0_MOUT_EN		0xf0c
++#define MT8183_DISP_PATH0_SEL_IN		0xf24
++#define MT8183_DISP_DSI0_SEL_IN			0xf2c
++#define MT8183_DISP_DPI0_SEL_IN			0xf30
++#define MT8183_DISP_RDMA0_SOUT_SEL_IN		0xf50
++#define MT8183_DISP_RDMA1_SOUT_SEL_IN		0xf54
 +
- 	if (port->irq < 0)
- 		return port->irq;
- 
-@@ -680,6 +688,10 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 		val |= PCIE_CSR_LTSSM_EN(port->slot) |
- 		       PCIE_CSR_ASPM_L1_EN(port->slot);
- 		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-+	} else if (pcie->cfg) {
-+		val = PCIE_CSR_LTSSM_EN(port->slot) |
-+		      PCIE_CSR_ASPM_L1_EN(port->slot);
-+		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
++#define MT8183_OVL0_MOUT_EN_OVL0_2L		BIT(4)
++#define MT8183_OVL0_2L_MOUT_EN_DISP_PATH0	BIT(0)
++#define MT8183_OVL1_2L_MOUT_EN_RDMA1		BIT(4)
++#define MT8183_DITHER0_MOUT_IN_DSI0		BIT(0)
++#define MT8183_DISP_PATH0_SEL_IN_OVL0_2L	0x1
++#define MT8183_DSI0_SEL_IN_RDMA0		0x1
++#define MT8183_DSI0_SEL_IN_RDMA1		0x3
++#define MT8183_DPI0_SEL_IN_RDMA0		0x1
++#define MT8183_DPI0_SEL_IN_RDMA1		0x2
++#define MT8183_RDMA0_SOUT_COLOR0		0x1
++#define MT8183_RDMA1_SOUT_DSI0			0x1
++
+ struct mtk_mmsys_routes {
+ 	u32 from_comp;
+ 	u32 to_comp;
+@@ -212,4 +234,29 @@ static const struct mtk_mmsys_routes mmsys_default_routing_table[] = {
  	}
+ };
  
- 	/* Assert all reset signals */
-@@ -983,6 +995,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct resource *regs;
-+	struct device_node *cfg_node;
- 	int err;
- 
- 	/* get shared registers, which are optional */
-@@ -995,6 +1008,14 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
- 		}
- 	}
- 
-+	cfg_node = of_find_compatible_node(NULL, NULL,
-+					   "mediatek,generic-pciecfg");
-+	if (cfg_node) {
-+		pcie->cfg = syscon_node_to_regmap(cfg_node);
-+		if (IS_ERR(pcie->cfg))
-+			return PTR_ERR(pcie->cfg);
++static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
++	{
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
++		MT8183_DISP_OVL0_MOUT_EN, MT8183_OVL0_MOUT_EN_OVL0_2L
++	}, {
++		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
++		MT8183_DISP_OVL0_2L_MOUT_EN, MT8183_OVL0_2L_MOUT_EN_DISP_PATH0
++	}, {
++		DDP_COMPONENT_OVL_2L1, DDP_COMPONENT_RDMA1,
++		MT8183_DISP_OVL1_2L_MOUT_EN, MT8183_OVL1_2L_MOUT_EN_RDMA1
++	}, {
++		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
++		MT8183_DISP_DITHER0_MOUT_EN, MT8183_DITHER0_MOUT_IN_DSI0
++	}, {
++		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
++		MT8183_DISP_PATH0_SEL_IN, MT8183_DISP_PATH0_SEL_IN_OVL0_2L
++	}, {
++		DDP_COMPONENT_RDMA1, DDP_COMPONENT_DPI0,
++		MT8183_DISP_DPI0_SEL_IN, MT8183_DPI0_SEL_IN_RDMA1
++	}, {
++		DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
++		MT8183_DISP_RDMA0_SOUT_SEL_IN, MT8183_RDMA0_SOUT_COLOR0
 +	}
++};
 +
- 	pcie->free_ck = devm_clk_get(dev, "free_ck");
- 	if (IS_ERR(pcie->free_ck)) {
- 		if (PTR_ERR(pcie->free_ck) == -EPROBE_DEFER)
-@@ -1027,20 +1048,25 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
- 	struct device *dev = pcie->dev;
- 	struct device_node *node = dev->of_node, *child;
- 	struct mtk_pcie_port *port, *tmp;
--	int err;
-+	int err, slot;
-+
-+	slot = of_get_pci_domain_nr(dev->of_node);
-+	if (slot < 0) {
-+		for_each_available_child_of_node(node, child) {
-+			err = of_pci_get_devfn(child);
-+			if (err < 0) {
-+				dev_err(dev, "failed to get devfn: %d\n", err);
-+				goto error_put_node;
-+			}
- 
--	for_each_available_child_of_node(node, child) {
--		int slot;
-+			slot = PCI_SLOT(err);
- 
--		err = of_pci_get_devfn(child);
--		if (err < 0) {
--			dev_err(dev, "failed to parse devfn: %d\n", err);
--			goto error_put_node;
-+			err = mtk_pcie_parse_port(pcie, child, slot);
-+			if (err)
-+				goto error_put_node;
- 		}
--
--		slot = PCI_SLOT(err);
--
--		err = mtk_pcie_parse_port(pcie, child, slot);
-+	} else {
-+		err = mtk_pcie_parse_port(pcie, node, slot);
- 		if (err)
- 			goto error_put_node;
- 	}
+ #endif /* __SOC_MEDIATEK_MTK_MMSYS_H */
 -- 
-2.18.0
+2.31.0.rc2.261.g7f71774620-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
