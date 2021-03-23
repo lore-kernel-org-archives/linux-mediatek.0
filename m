@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FE35C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:35:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 044E7C433E8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:35:41 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F2CBE619B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:35:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F2CBE619B2
+	by mail.kernel.org (Postfix) with ESMTPS id 87901619D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:35:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87901619D7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yuBEaI6HvZgp2b3j4Cis0c75IRM+wdF46zx6da+qZD4=; b=jjcET7voX1FKgBV6B/6+5FWF1
-	y+rDKVBXmN0dzIIRbwmrX91B6JWQrdDaCRzBhopIjww+nhqrYL2KPVJgi0dp3uqgKfrymDvlgExgY
-	D3Ej7V0ydtbLexVGKL+tZNl5Bjn1g/TXbf/tjozIcM1TZcQQLySRhEBrM9jF1daiKVA/oFRyxePP8
-	zBrwnenjV0TJJJ6dsDIz1Arj4QEfaaGhah0Tpu226p6ff+Mhd9UNGjHLIgBKFJlfui0P6EKSKvsYD
-	AH+VzOHSvpddXHAwbKaeoczoHtV/A61Bobjjxp6ZVW7tj54FbvcC4Miy0u3PaxeA4V8xAnNexjjvL
-	jaG41cQXg==;
+	 bh=VnX0LGn3ZwJz5LFUqz3sptOIQZqocm6zzsAiiDG7fYo=; b=YWHKqnsvr0IgWG6pEjKWON/8w
+	kFL7s9cP2zjmetqQNhxVcbGjyBJobtLKLhf9VzFoOR9xKbOdiH/D+xFhRJD/9jztrdOoSN7tg3faF
+	fpIg6NXIo+6Kv0r+VMYdyQmf3l1XMh9XvcwLI31dhoHBg27Jx6e2WjdvybnNXofkEgeQV+uQZTVFl
+	WZKU0Fc8PWjlacXKpirao+PDsfARVfRGGmfTvjn+aMcy4oOwikpUbvKFy4LFQC3MQa53FxOKEbhjb
+	j0HD9OAZNEa/kvEOGDPdL8RvixV2fuv3u6LKx8wWx+CUI1Yt5Rz5S6Qahnozc7WVQAKCCtsOcj2Lw
+	xbhWS6fwA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOfJd-00EikK-Oo; Tue, 23 Mar 2021 11:35:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lOfJm-00Eimw-M3; Tue, 23 Mar 2021 11:35:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOfIj-00EiXn-Vf; Tue, 23 Mar 2021 11:34:24 +0000
-X-UUID: 997ec7916e15482fb160ba137911a7ec-20210323
+ id 1lOfIj-00EiXq-M1; Tue, 23 Mar 2021 11:34:24 +0000
+X-UUID: 6a86d5f25a284c4aa288a9557bce4af9-20210323
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=C3VRWP0x8G7Bh5yQ0pb8KALO2hKXleEmYouJJ8WHVSw=; 
- b=E/RZxaGpAvwPJMLNI/VmzqMEsCwqKSOynpBBwqON4+q6rB3Zpo+Yz24MSN1svdmAz/GbhZBAtc3CA039dY6eGkcFUwhGFTO4ey5Z5hhI2mIDfzi2xqbUFntsxj4UfOx2oBSgHGTPzRdlTTYpNwO47GfMZZN9eMjnfhAgZJ1oshE=;
-X-UUID: 997ec7916e15482fb160ba137911a7ec-20210323
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=7nRolbf/uE7+oGndsQgM2sfn5f8F5sGAlhCF9LTA76M=; 
+ b=ZnpmXrugJsT9fqmekbPmURG4i9ttf/F3+neyXk0PUFEDO7UzT5ptaIB5rN8AdyDmAB8DM0He3XRrsOo4+tMsYyQR4ZURacs7g0M3WU1TymUGO5788xqkr4UhyyAKBRwkBseNgEj42H1K944WkT5TZKkPnS5uBzt8aqe+/5tAF+Y=;
+X-UUID: 6a86d5f25a284c4aa288a9557bce4af9-20210323
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <andrew-sh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 873975660; Tue, 23 Mar 2021 03:34:10 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 04:34:09 -0700
+ with ESMTP id 379055333; Tue, 23 Mar 2021 03:34:11 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Mar 2021 04:34:10 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 19:34:07 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Mar 2021 19:34:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 23 Mar 2021 19:34:07 +0800
+ Frontend Transport; Tue, 23 Mar 2021 19:34:09 +0800
 From: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
  <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, "Rob
@@ -67,17 +67,18 @@ CC: <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-Subject: [PATCH V8 6/8] cpufreq: mediatek: add opp notification for SVS support
-Date: Tue, 23 Mar 2021 19:33:59 +0800
-Message-ID: <1616499241-4906-7-git-send-email-andrew-sh.cheng@mediatek.com>
+Subject: [PATCH V8 8/8] arm64: dts: mediatek: add cpufreq and cci devfreq
+ nodes for mt8183
+Date: Tue, 23 Mar 2021 19:34:01 +0800
+Message-ID: <1616499241-4906-9-git-send-email-andrew-sh.cheng@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
 References: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210323_113422_866557_7CEE15D6 
-X-CRM114-Status: GOOD (  18.35  )
+X-CRM114-CacheID: sfid-20210323_113422_805825_E7B224F9 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,162 +97,425 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 
-cpufreq should listen opp notification and do proper actions
-when receiving disable and voltage adjustment events,
-which are triggered when SVS is enabled.
+add cpufreq and cci devfreq nodes for mt8183
+
+base on regulator node
+https://patchwork.kernel.org/patch/11500339/
+Now queued for v5.7-next/dts64
 
 Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 ---
- drivers/cpufreq/mediatek-cpufreq.c | 73 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 73 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts    |  36 ++++
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   4 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 277 +++++++++++++++++++++++++
+ 3 files changed, 317 insertions(+)
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 2a82c36aec21..1747b03e3059 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -43,6 +43,10 @@ struct mtk_cpu_dvfs_info {
- 	int intermediate_voltage;
- 	bool need_voltage_tracking;
- 	int old_vproc;
-+	struct mutex lock; /* avoid notify and policy race condition */
-+	struct notifier_block opp_nb;
-+	int opp_cpu;
-+	unsigned long opp_freq;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+index 3249c959f76f..77a591cc09a6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+@@ -395,6 +395,42 @@
+ 
  };
  
- static LIST_HEAD(dvfs_info_list);
-@@ -239,6 +243,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	vproc = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
- 
-+	mutex_lock(&info->lock);
- 	/*
- 	 * If the new voltage or the intermediate voltage is higher than the
- 	 * current voltage, scale up voltage first.
-@@ -250,6 +255,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 			pr_err("cpu%d: failed to scale up voltage!\n",
- 			       policy->cpu);
- 			mtk_cpufreq_set_voltage(info, old_vproc);
-+			mutex_unlock(&info->lock);
- 			return ret;
- 		}
- 	}
-@@ -261,6 +267,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
- 		WARN_ON(1);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -271,6 +278,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		clk_set_parent(cpu_clk, armpll);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -281,6 +289,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		mtk_cpufreq_set_voltage(info, inter_vproc);
- 		WARN_ON(1);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -296,15 +305,69 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 			clk_set_parent(cpu_clk, info->inter_clk);
- 			clk_set_rate(armpll, old_freq_hz);
- 			clk_set_parent(cpu_clk, armpll);
-+			mutex_unlock(&info->lock);
- 			return ret;
- 		}
- 	}
- 
-+	info->opp_freq = freq_hz;
-+	mutex_unlock(&info->lock);
++&cci {
++	proc-supply = <&mt6358_vproc12_reg>;
++};
 +
- 	return 0;
- }
++&cpu0 {
++	proc-supply = <&mt6358_vproc12_reg>;
++};
++
++&cpu1 {
++	proc-supply = <&mt6358_vproc12_reg>;
++};
++
++&cpu2 {
++	proc-supply = <&mt6358_vproc12_reg>;
++};
++
++&cpu3 {
++	proc-supply = <&mt6358_vproc12_reg>;
++};
++
++&cpu4 {
++	proc-supply = <&mt6358_vproc11_reg>;
++};
++
++&cpu5 {
++	proc-supply = <&mt6358_vproc11_reg>;
++};
++
++&cpu6 {
++	proc-supply = <&mt6358_vproc11_reg>;
++};
++
++&cpu7 {
++	proc-supply = <&mt6358_vproc11_reg>;
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index ff56bcfa3370..b1c3b88c4ac4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -217,6 +217,10 @@
+ 	status = "okay";
+ };
  
- #define DYNAMIC_POWER "dynamic-power-coefficient"
++&cci {
++	proc-supply = <&mt6358_vproc12_reg>;
++};
++
+ &cpu0 {
+ 	proc-supply = <&mt6358_vproc12_reg>;
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 80519a145f13..c3dc87b01067 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -41,6 +41,251 @@
+ 		rdma1 = &rdma1;
+ 	};
  
-+static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-+				    unsigned long event, void *data)
-+{
-+	struct dev_pm_opp *opp = data;
-+	struct dev_pm_opp *new_opp;
-+	struct mtk_cpu_dvfs_info *info;
-+	unsigned long freq, volt;
-+	struct cpufreq_policy *policy;
-+	int ret = 0;
++	cluster0_opp: opp_table0 {
++		compatible = "operating-points-v2";
++		opp-shared;
++		opp0_00 {
++			opp-hz = /bits/ 64 <793000000>;
++			opp-microvolt = <650000>;
++			required-opps = <&opp2_00>;
++		};
++		opp0_01 {
++			opp-hz = /bits/ 64 <910000000>;
++			opp-microvolt = <687500>;
++			required-opps = <&opp2_01>;
++		};
++		opp0_02 {
++			opp-hz = /bits/ 64 <1014000000>;
++			opp-microvolt = <718750>;
++			required-opps = <&opp2_02>;
++		};
++		opp0_03 {
++			opp-hz = /bits/ 64 <1131000000>;
++			opp-microvolt = <756250>;
++			required-opps = <&opp2_03>;
++		};
++		opp0_04 {
++			opp-hz = /bits/ 64 <1248000000>;
++			opp-microvolt = <800000>;
++			required-opps = <&opp2_04>;
++		};
++		opp0_05 {
++			opp-hz = /bits/ 64 <1326000000>;
++			opp-microvolt = <818750>;
++			required-opps = <&opp2_05>;
++		};
++		opp0_06 {
++			opp-hz = /bits/ 64 <1417000000>;
++			opp-microvolt = <850000>;
++			required-opps = <&opp2_06>;
++		};
++		opp0_07 {
++			opp-hz = /bits/ 64 <1508000000>;
++			opp-microvolt = <868750>;
++			required-opps = <&opp2_07>;
++		};
++		opp0_08 {
++			opp-hz = /bits/ 64 <1586000000>;
++			opp-microvolt = <893750>;
++			required-opps = <&opp2_08>;
++		};
++		opp0_09 {
++			opp-hz = /bits/ 64 <1625000000>;
++			opp-microvolt = <906250>;
++			required-opps = <&opp2_09>;
++		};
++		opp0_10 {
++			opp-hz = /bits/ 64 <1677000000>;
++			opp-microvolt = <931250>;
++			required-opps = <&opp2_10>;
++		};
++		opp0_11 {
++			opp-hz = /bits/ 64 <1716000000>;
++			opp-microvolt = <943750>;
++			required-opps = <&opp2_11>;
++		};
++		opp0_12 {
++			opp-hz = /bits/ 64 <1781000000>;
++			opp-microvolt = <975000>;
++			required-opps = <&opp2_12>;
++		};
++		opp0_13 {
++			opp-hz = /bits/ 64 <1846000000>;
++			opp-microvolt = <1000000>;
++			required-opps = <&opp2_13>;
++		};
++		opp0_14 {
++			opp-hz = /bits/ 64 <1924000000>;
++			opp-microvolt = <1025000>;
++			required-opps = <&opp2_14>;
++		};
++		opp0_15 {
++			opp-hz = /bits/ 64 <1989000000>;
++			opp-microvolt = <1050000>;
++			required-opps = <&opp2_15>;
++		};	};
 +
-+	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
++	cluster1_opp: opp_table1 {
++		compatible = "operating-points-v2";
++		opp-shared;
++		opp1_00 {
++			opp-hz = /bits/ 64 <793000000>;
++			opp-microvolt = <700000>;
++			required-opps = <&opp2_00>;
++		};
++		opp1_01 {
++			opp-hz = /bits/ 64 <910000000>;
++			opp-microvolt = <725000>;
++			required-opps = <&opp2_01>;
++		};
++		opp1_02 {
++			opp-hz = /bits/ 64 <1014000000>;
++			opp-microvolt = <750000>;
++			required-opps = <&opp2_02>;
++		};
++		opp1_03 {
++			opp-hz = /bits/ 64 <1131000000>;
++			opp-microvolt = <775000>;
++			required-opps = <&opp2_03>;
++		};
++		opp1_04 {
++			opp-hz = /bits/ 64 <1248000000>;
++			opp-microvolt = <800000>;
++			required-opps = <&opp2_04>;
++		};
++		opp1_05 {
++			opp-hz = /bits/ 64 <1326000000>;
++			opp-microvolt = <825000>;
++			required-opps = <&opp2_05>;
++		};
++		opp1_06 {
++			opp-hz = /bits/ 64 <1417000000>;
++			opp-microvolt = <850000>;
++			required-opps = <&opp2_06>;
++		};
++		opp1_07 {
++			opp-hz = /bits/ 64 <1508000000>;
++			opp-microvolt = <875000>;
++			required-opps = <&opp2_07>;
++		};
++		opp1_08 {
++			opp-hz = /bits/ 64 <1586000000>;
++			opp-microvolt = <900000>;
++			required-opps = <&opp2_08>;
++		};
++		opp1_09 {
++			opp-hz = /bits/ 64 <1625000000>;
++			opp-microvolt = <912500>;
++			required-opps = <&opp2_09>;
++		};
++		opp1_10 {
++			opp-hz = /bits/ 64 <1677000000>;
++			opp-microvolt = <931250>;
++			required-opps = <&opp2_10>;
++		};
++		opp1_11 {
++			opp-hz = /bits/ 64 <1716000000>;
++			opp-microvolt = <950000>;
++			required-opps = <&opp2_11>;
++		};
++		opp1_12 {
++			opp-hz = /bits/ 64 <1781000000>;
++			opp-microvolt = <975000>;
++			required-opps = <&opp2_12>;
++		};
++		opp1_13 {
++			opp-hz = /bits/ 64 <1846000000>;
++			opp-microvolt = <1000000>;
++			required-opps = <&opp2_13>;
++		};
++		opp1_14 {
++			opp-hz = /bits/ 64 <1924000000>;
++			opp-microvolt = <1025000>;
++			required-opps = <&opp2_14>;
++		};
++		opp1_15 {
++			opp-hz = /bits/ 64 <1989000000>;
++			opp-microvolt = <1050000>;
++			required-opps = <&opp2_15>;
++		};
++	};
 +
-+	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
-+		freq = dev_pm_opp_get_freq(opp);
++	cci_opp: opp_table2 {
++		compatible = "operating-points-v2";
++		opp-shared;
++		opp2_00: opp-273000000 {
++			opp-hz = /bits/ 64 <273000000>;
++			opp-microvolt = <650000>;
++		};
++		opp2_01: opp-338000000 {
++			opp-hz = /bits/ 64 <338000000>;
++			opp-microvolt = <687500>;
++		};
++		opp2_02: opp-403000000 {
++			opp-hz = /bits/ 64 <403000000>;
++			opp-microvolt = <718750>;
++		};
++		opp2_03: opp-463000000 {
++			opp-hz = /bits/ 64 <463000000>;
++			opp-microvolt = <756250>;
++		};
++		opp2_04: opp-546000000 {
++			opp-hz = /bits/ 64 <546000000>;
++			opp-microvolt = <800000>;
++		};
++		opp2_05: opp-624000000 {
++			opp-hz = /bits/ 64 <624000000>;
++			opp-microvolt = <818750>;
++		};
++		opp2_06: opp-689000000 {
++			opp-hz = /bits/ 64 <689000000>;
++			opp-microvolt = <850000>;
++		};
++		opp2_07: opp-767000000 {
++			opp-hz = /bits/ 64 <767000000>;
++			opp-microvolt = <868750>;
++		};
++		opp2_08: opp-845000000 {
++			opp-hz = /bits/ 64 <845000000>;
++			opp-microvolt = <893750>;
++		};
++		opp2_09: opp-871000000 {
++			opp-hz = /bits/ 64 <871000000>;
++			opp-microvolt = <906250>;
++		};
++		opp2_10: opp-923000000 {
++			opp-hz = /bits/ 64 <923000000>;
++			opp-microvolt = <931250>;
++		};
++		opp2_11: opp-962000000 {
++			opp-hz = /bits/ 64 <962000000>;
++			opp-microvolt = <943750>;
++		};
++		opp2_12: opp-1027000000 {
++			opp-hz = /bits/ 64 <1027000000>;
++			opp-microvolt = <975000>;
++		};
++		opp2_13: opp-1092000000 {
++			opp-hz = /bits/ 64 <1092000000>;
++			opp-microvolt = <1000000>;
++		};
++		opp2_14: opp-1144000000 {
++			opp-hz = /bits/ 64 <1144000000>;
++			opp-microvolt = <1025000>;
++		};
++		opp2_15: opp-1196000000 {
++			opp-hz = /bits/ 64 <1196000000>;
++			opp-microvolt = <1050000>;
++		};
++	};
 +
-+		mutex_lock(&info->lock);
-+		if (info->opp_freq == freq) {
-+			volt = dev_pm_opp_get_voltage(opp);
-+			ret = mtk_cpufreq_set_voltage(info, volt);
-+			if (ret)
-+				dev_err(info->cpu_dev, "failed to scale voltage: %d\n",
-+					ret);
-+		}
-+		mutex_unlock(&info->lock);
-+	} else if (event == OPP_EVENT_DISABLE) {
-+		freq = dev_pm_opp_get_freq(opp);
-+		/* case of current opp item is disabled */
-+		if (info->opp_freq == freq) {
-+			freq = 1;
-+			new_opp = dev_pm_opp_find_freq_ceil(info->cpu_dev,
-+							    &freq);
-+			if (!IS_ERR(new_opp)) {
-+				dev_pm_opp_put(new_opp);
-+				policy = cpufreq_cpu_get(info->opp_cpu);
-+				if (policy) {
-+					cpufreq_driver_target(policy,
-+							      freq / 1000,
-+							      CPUFREQ_RELATION_L);
-+					cpufreq_cpu_put(policy);
-+				}
-+			} else {
-+				pr_err("%s: all opp items are disabled\n",
-+				       __func__);
-+			}
-+		}
-+	}
++	cci: cci {
++		compatible = "mediatek,mt8183-cci";
++		clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
++		clock-names = "cci_clock";
++		operating-points-v2 = <&cci_opp>;
++	};
 +
-+	return notifier_from_errno(ret);
-+}
-+
- static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- {
- 	struct device *cpu_dev;
-@@ -400,11 +463,21 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
- 
-+	info->opp_cpu = cpu;
-+	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
-+	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
-+	if (ret) {
-+		pr_warn("cannot register opp notification\n");
-+		goto out_disable_inter_clock;
-+	}
-+
-+	mutex_init(&info->lock);
- 	info->cpu_dev = cpu_dev;
- 	info->proc_reg = proc_reg;
- 	info->sram_reg = IS_ERR(sram_reg) ? NULL : sram_reg;
- 	info->cpu_clk = cpu_clk;
- 	info->inter_clk = inter_clk;
-+	info->opp_freq = clk_get_rate(cpu_clk);
- 
- 	/*
- 	 * If SRAM regulator is present, software "voltage tracking" is needed
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -84,6 +329,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <741>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
++			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster0_opp>;
+ 			dynamic-power-coefficient = <84>;
+ 			#cooling-cells = <2>;
+ 		};
+@@ -95,6 +344,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <741>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
++			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster0_opp>;
+ 			dynamic-power-coefficient = <84>;
+ 			#cooling-cells = <2>;
+ 		};
+@@ -106,6 +359,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <741>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
++			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster0_opp>;
+ 			dynamic-power-coefficient = <84>;
+ 			#cooling-cells = <2>;
+ 		};
+@@ -117,6 +374,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <741>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
++			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster0_opp>;
+ 			dynamic-power-coefficient = <84>;
+ 			#cooling-cells = <2>;
+ 		};
+@@ -128,6 +389,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
++			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster1_opp>;
+ 			dynamic-power-coefficient = <211>;
+ 			#cooling-cells = <2>;
+ 		};
+@@ -139,6 +404,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
++			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster1_opp>;
+ 			dynamic-power-coefficient = <211>;
+ 			#cooling-cells = <2>;
+ 		};
+@@ -150,6 +419,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
++			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster1_opp>;
+ 			dynamic-power-coefficient = <211>;
+ 			#cooling-cells = <2>;
+ 		};
+@@ -161,6 +434,10 @@
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
++			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
++				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
++			clock-names = "cpu", "intermediate";
++			operating-points-v2 = <&cluster1_opp>;
+ 			dynamic-power-coefficient = <211>;
+ 			#cooling-cells = <2>;
+ 		};
 -- 
 2.12.5
 _______________________________________________
