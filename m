@@ -6,81 +6,79 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20763C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 20:17:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B85B5C433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 20:20:49 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B4F4E619CB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 20:17:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4F4E619CB
+	by mail.kernel.org (Postfix) with ESMTPS id 51E7D61864
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 20:20:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51E7D61864
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:References:In-Reply-To:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CeB9PbtUbSgsZ8uU2wlZtebcV9B80VV4I6PVy8guwGw=; b=LbAko3tCc9pdAGKeggl7hXoaic
-	enUZwkr/b8ySWyxUD1iOHHqeCGpy/mQQGyQKuZdpEz93BoX9ST13mk2G1kEoLA6HW4MC7Sg/pt6ek
-	BQ/juorECD91z4Il39cpx+7a+oy90JQT1vs4RXFj15K5pBSPsxO+383GKovkhAqcdiO8W8lyqN2+k
-	6UYgRM8Q19DzgG5z/iqu4gZUF0AjT7H67ffPl5LuY9G0DzhFUkhLrzC7uVCGDM4sVn/KcaeRGxNdI
-	kW4dgQKS/NxhgBOY5gIFbzhfMFT/uXy9av2LPycqXXyfOzPU90XlVMcQQ++xsFBsqDHRCHilASSJv
-	oU/HDkgw==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=2BN2PVsoX8gCfBkQ9oniKn5z8y+CULKMAmGIelGCLnk=; b=ffsJhHno0qH9TKZQ8AEsIovay
+	Z/MwrJErfsgeZJ/eZDCBC0MStnbWPIS/DciTv/jRfA0li4QYp5n9JpslKNZnkhKscHlJNvXlV9LWK
+	KOxioqzybvZnY0RlzaramPePbTyFTnRLxM7wUsz+MByOYOGgQR9vI88Ns/evSN/lPR57I2Na/ATmX
+	rxamfcYv0AMpOfyRU19HrukZJZrQ6CPE4bqUjCgtEkqLErP7thPvPbB6OVRqJRsIPqGG/l7LnSgDf
+	aB2tbl3dKtXBlHxWy/6FEPh/VyWagP1Tb1Ukmi0T4EJGTyAxmhfwc9VyosIFNH1FTflzfglksvU+0
+	iIibVDi/w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOnSl-00FdqX-KK; Tue, 23 Mar 2021 20:17:15 +0000
-Received: from mail-io1-f45.google.com ([209.85.166.45])
+	id 1lOnW0-00FeOr-7a; Tue, 23 Mar 2021 20:20:36 +0000
+Received: from mail-io1-f54.google.com ([209.85.166.54])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOnSW-00Fdnm-VK; Tue, 23 Mar 2021 20:17:03 +0000
-Received: by mail-io1-f45.google.com with SMTP id k25so6979633iob.6;
- Tue, 23 Mar 2021 13:17:00 -0700 (PDT)
+ id 1lOnVo-00FeNJ-UH; Tue, 23 Mar 2021 20:20:27 +0000
+Received: by mail-io1-f54.google.com with SMTP id f19so19088161ion.3;
+ Tue, 23 Mar 2021 13:20:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=20xlh8LGB3xwHBaeVz4zoEufs7vqABRi50X0pBG/dOI=;
- b=i0xqMZdzyCvLSmmQ4yYVWmbKjEocN70OK1+SFpuRlZwDn9Rc6d7BtwLp3KoHPrCCcB
- 0y2T68cODiduu5TtVhG4LXkp9THeaIh9V/jd3+IcSoS0qt2371gZoZaIoSRWSEqCoqQr
- CtNodTlRJlvtgTc/ezLSOn/zxw9OOyY0ngA4gvRh3LHsORTzJ8RBd0LhLeaxe38sPb89
- cY+z9LKic0NqAWSgw9AFFG2cVtcWLh/FeetmX8mYOKz04bsZalK05SggjndYM7SJ4um1
- +Xalvwte98wWdJ5pctYpX7oYnqfRCiPGpBM1mAKTULcAu0hXlPRGnyt+IWBYl7SMHxCf
- xZ0w==
-X-Gm-Message-State: AOAM532Df9zvu8Bn3YJ2Bx/PKAKDQNg5zLqxVSofsKGyy5IJs9xyghrQ
- +49Px45B8ncavzERxu+JCx8Zy0n5NA==
-X-Google-Smtp-Source: ABdhPJwm5asRgRsRfOt9jGTSe8CCVpgMEZSzeTd8NVMQZp1yHuSHEBoVyGY9b1E8x2PRYMY5cFm2sA==
-X-Received: by 2002:a05:6602:82:: with SMTP id h2mr5993265iob.20.1616530619907; 
- Tue, 23 Mar 2021 13:16:59 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=9Tp80gy+0OkNwU5Jvc6Bj62i4jpwSRXTDIXhxrL5nq0=;
+ b=R6OxJ+yW6WQ0i0TA4lthxlXQf0Ml2ICR7ruhAgSrjnbSMgJD/M2z6oaWUnfmwBVNGA
+ K0/UGBmxpi49qgPTk0ww5WYUNYanNvNW+BXUW1SJcsMV73DoZhE4Dg6T01FtzEuEznX+
+ M4ZhKjhvTtCMajobe9KQl33YiGhh7Huzgc5jAQHgJT8zDQEQXauMHoShvBV0+fl+37PQ
+ crLAgRAVTjIVNSu0gvtYVCcJ1iWHmWZKOWqnreW7V2h47vmjYsKvUZS26buB6PrvlmUv
+ +xwFi3EmECLw/ttSwJ2ivcbK+Wp9toWPRlElBNUt6diyrYop9IGxkOA6CYBM6rQ2rqgV
+ FVhQ==
+X-Gm-Message-State: AOAM532l/H6vNWcPx5ZDyryAHDuEd2sAQDH1ywXLDm3whAvL/cZ/TSkn
+ 7e/fcTYpux/fZKqw4o5m4EmQLpL/hw==
+X-Google-Smtp-Source: ABdhPJwiamQiJEfKQT0y+jbtus3lBMMGGCM3cCXWnYFJsj5T/y8a7/HZNP8JHP80rewyR1hKdB3KaQ==
+X-Received: by 2002:a5e:d901:: with SMTP id n1mr5947919iop.84.1616530823835;
+ Tue, 23 Mar 2021 13:20:23 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id r5sm9700408ilb.75.2021.03.23.13.16.56
+ by smtp.gmail.com with ESMTPSA id f13sm9614313ila.51.2021.03.23.13.20.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Mar 2021 13:16:59 -0700 (PDT)
-Received: (nullmailer pid 1244769 invoked by uid 1000);
- Tue, 23 Mar 2021 20:16:47 -0000
+ Tue, 23 Mar 2021 13:20:23 -0700 (PDT)
+Received: (nullmailer pid 1250413 invoked by uid 1000);
+ Tue, 23 Mar 2021 20:20:20 -0000
+Date: Tue, 23 Mar 2021 14:20:20 -0600
 From: Rob Herring <robh@kernel.org>
-To: Roger Lu <roger.lu@mediatek.com>
-Cc: HenryC Chen <HenryC.Chen@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Stephen Boyd <sboyd@kernel.org>,
- YT Lee <yt.lee@mediatek.com>, Kevin Hilman <khilman@kernel.org>,
- Nicolas Boichat <drinkcat@google.com>, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Nishanth Menon <nm@ti.com>, Charles Yang <Charles.Yang@mediatek.com>,
- linux-kernel@vger.kernel.org, Enric Balletbo Serra <eballetbo@gmail.com>,
- Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Angus Lin <Angus.Lin@mediatek.com>,
- linux-pm@vger.kernel.org, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>
-In-Reply-To: <20210323135657.2701-2-roger.lu@mediatek.com>
-References: <20210323135657.2701-1-roger.lu@mediatek.com>
- <20210323135657.2701-2-roger.lu@mediatek.com>
-Subject: Re: [PATCH v13 1/7] dt-bindings: soc: mediatek: add mtk svs
- dt-bindings
-Date: Tue, 23 Mar 2021 14:16:47 -0600
-Message-Id: <1616530607.423782.1244768.nullmailer@robh.at.kernel.org>
+To: Michael Kao <michael.kao@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@chromium.org,
+ Zhang Rui <rui.zhang@intel.com>, devicetree@vger.kernel.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Eduardo Valentin <edubezval@gmail.com>, linux-pm@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, srv_heupstream@mediatek.com
+Subject: Re: [v3, 3/3] dt-bindings: thermal: Add binding document for mt6873
+ thermal controller
+Message-ID: <20210323202020.GA1250358@robh.at.kernel.org>
+References: <20210312034018.17437-1-michael.kao@mediatek.com>
+ <20210312034018.17437-4-michael.kao@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210312034018.17437-4-michael.kao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210323_201701_337511_03893E11 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20210323_202025_170127_369E9B14 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +90,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 23 Mar 2021 21:56:51 +0800, Roger Lu wrote:
-> Document the binding for enabling mtk svs on MediaTek SoC.
+On Fri, 12 Mar 2021 11:40:18 +0800, Michael Kao wrote:
+> This patch adds binding document for mt6873 thermal controller.
 > 
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
 > ---
->  .../bindings/soc/mediatek/mtk-svs.yaml        | 81 +++++++++++++++++++
+> This patch depends on [1].
+> 
+> [1]https://patchwork.kernel.org/project/linux-mediatek/cover/1608642587-15634-1-git-send-email-weiyi.lu@mediatek.com/
+> ---
+>  .../thermal/mediatek-thermal-lvts.yaml        | 81 +++++++++++++++++++
 >  1 file changed, 81 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+>  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
 > 
 
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml: properties:nvmem-cells:maxItems: False schema does not allow 2
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml: ignoring, error in schema: properties: nvmem-cells: maxItems
-warning: no schema found in file: ./Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
-
-See https://patchwork.ozlabs.org/patch/1457219
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
