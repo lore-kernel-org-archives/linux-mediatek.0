@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 281A1C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:49:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D0F9C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:50:07 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEAA361920
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:49:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEAA361920
+	by mail.kernel.org (Postfix) with ESMTPS id A6A88619B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Mar 2021 11:50:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6A88619B2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5DxwFiBCo/9MZIr1ASxX6lsFaVexJk3livcw9HhSSWA=; b=c7BERjC3xBLB4DU2hQzfw/fQU
-	iKBPclQRUUZaBDvBoJ71423hnPRRn0Hkl5W0T9Gfo7b2GTQt06GFq2F38YprMC4KVGKrLclFDOcGA
-	TPciUhxSc3PebFCItMKfHMnU75Qsbw0iwYwKpP7ZoduyzeSZ31Bz/r83qhk15vwSKSaqin54dQt86
-	WMudVR7L5fk6qRIMxmYtO48WbFJQV3/5Pr9Ru9Btwqm09r69bcdVSGVYtv672pDcr1ANS1QoCfzj4
-	mMEJLxU3EnL67RSohzt5kuGq7LRcnMOUTPtIooJ9KFGPVJQ/boPdhTHUKetes8lqOLSImcmgCKqlc
-	6wkW1DG2A==;
+	 bh=a/rEvVa7FpsnBqW+ma01bK0XBpNGqNCppt9Mv6NXKPg=; b=pgjqPHBUiolQu3gXZx96s4kvv
+	MVQGPommhc+spbuqV9MFUjCCPBohtV0rkYdYsTicPWz7rrl/4lS/DjhKXa935Wte1g4EtsJWb77RT
+	w2Pes5J3/QkGppQTpLIHNnhGSF0pDR0jFhFcG/ddYhZuL+vA3/BT5roRAVLI5by7GyB1sF8eFQd+X
+	EmvuUYzcaqIeMUXPJdn8UGHEWcqHP4tECmZ0/c5Gq3HB2oZkaKVC1CPoZa05re6Y9dHnx+Pq3hh1S
+	OBCPn1Ya85hUPpqiSfktaMdEc1bPdpzOjLuIzMfy985xjZvSSoWj5NucToH0vgkYWv9gX21dcSIQQ
+	2ZgsMqV6A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOfXN-00Eo1p-2i; Tue, 23 Mar 2021 11:49:29 +0000
+	id 1lOfXk-00EoET-2J; Tue, 23 Mar 2021 11:49:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOfUS-00EmG4-GM; Tue, 23 Mar 2021 11:46:31 +0000
-X-UUID: 39fba80a16ec4942a05cdb142d1b642c-20210323
+ id 1lOfUV-00EmW8-Al; Tue, 23 Mar 2021 11:46:33 +0000
+X-UUID: 6cc7401486954aa5b5f7c83e87b1573b-20210323
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=k9ftKhJdNJ6rED33qCHOwn6r2jmcm0kLhLo7D3asDzo=; 
- b=qwzgiPNyvZii9gDmXzq9PIrEAUsD8Z5JEwYH/l4/P51/vEaCWALMK7LLd9mPcl8ohlXn2EPlgxRC5PyK2cMFLeYiNdrj9UCwQj8DzrGUIaIjYaBK2fLw63nOY2f5A7LV32drBakSkF4nEyKhalgLO396oXVJNb2x/Q3cwnVRLQQ=;
-X-UUID: 39fba80a16ec4942a05cdb142d1b642c-20210323
+ bh=GCgc0QRnGGGxn+Iymq6+YK30QBuDSzaYJ+9YS9Ic2Ps=; 
+ b=jtDqiIpPevVIhNmR5/GnH6rN/5UZB9y48JhHSB1QedQGnSOQ6nv/8nw+FzbXUpsZPRvUA5HDCUQllmLHA16x7iXCoauFYPy0m0dZ61LELU4aNq9iBjyysZLGzCXpgV4NO55V2/XgBs1yk4dCzRoKtac1k7hOj/7y4dxZNe97Cus=;
+X-UUID: 6cc7401486954aa5b5f7c83e87b1573b-20210323
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1927842517; Tue, 23 Mar 2021 03:45:37 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 04:35:35 -0700
+ with ESMTP id 63432418; Tue, 23 Mar 2021 03:45:39 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Mar 2021 04:35:38 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 19:35:34 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Mar 2021 19:35:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 23 Mar 2021 19:35:34 +0800
+ Frontend Transport; Tue, 23 Mar 2021 19:35:36 +0800
 From: chun-jie.chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
  Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
@@ -63,18 +63,17 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, chun-jie.chen
  <chun-jie.chen@mediatek.com>
-Subject: [PATCH v7 04/22] dt-bindings: ARM: Mediatek: Add new document
- bindings of scp adsp controller
-Date: Tue, 23 Mar 2021 19:34:54 +0800
-Message-ID: <20210323113512.4980-5-chun-jie.chen@mediatek.com>
+Subject: [PATCH v7 19/22] clk: mediatek: Add MT8192 msdc clock support
+Date: Tue, 23 Mar 2021 19:35:09 +0800
+Message-ID: <20210323113512.4980-20-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210323113512.4980-1-chun-jie.chen@mediatek.com>
 References: <20210323113512.4980-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210323_114628_932865_727500E6 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20210323_114631_892480_071CEE96 
+X-CRM114-Status: GOOD (  16.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,61 +90,135 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the new binding documentation of scp adsp controller
-for Mediatek MT8192.
+Add MT8192 msdc and msdc top clock providers
 
 Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
 ---
- .../arm/mediatek/mediatek,scp-adsp.yaml       | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+ drivers/clk/mediatek/Kconfig           |  6 ++
+ drivers/clk/mediatek/Makefile          |  1 +
+ drivers/clk/mediatek/clk-mt8192-msdc.c | 85 ++++++++++++++++++++++++++
+ 3 files changed, 92 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-msdc.c
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 5b89a4dbe2b9..88b24f74aff2 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -556,6 +556,12 @@ config COMMON_CLK_MT8192_MMSYS
+ 	help
+ 	  This driver supports MediaTek MT8192 mmsys clocks.
+ 
++config COMMON_CLK_MT8192_MSDC
++	bool "Clock driver for MediaTek MT8192 msdc"
++	depends on COMMON_CLK_MT8192
++	help
++	  This driver supports MediaTek MT8192 msdc and msdc_top clocks.
++
+ config COMMON_CLK_MT8516
+ 	bool "Clock driver for MediaTek MT8516"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 838bb0131c97..8e4e343d4af4 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -76,5 +76,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_IPESYS) += clk-mt8192-ipe.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_MDPSYS) += clk-mt8192-mdp.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_MFGCFG) += clk-mt8192-mfg.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_MMSYS) += clk-mt8192-mm.o
++obj-$(CONFIG_COMMON_CLK_MT8192_MSDC) += clk-mt8192-msdc.o
+ obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+ obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+diff --git a/drivers/clk/mediatek/clk-mt8192-msdc.c b/drivers/clk/mediatek/clk-mt8192-msdc.c
 new file mode 100644
-index 000000000000..1b4335c054f9
+index 000000000000..0fb8d01ffbf3
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
-@@ -0,0 +1,40 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,scp-adsp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/drivers/clk/mediatek/clk-mt8192-msdc.c
+@@ -0,0 +1,85 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2020 MediaTek Inc.
++// Author: Weiyi Lu <weiyi.lu@mediatek.com>
 +
-+title: MediaTek SCP ADSP Controller
++#include <linux/clk-provider.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
 +
-+maintainers:
-+  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
++#include "clk-mtk.h"
++#include "clk-gate.h"
 +
-+description:
-+  The Mediatek scp adsp controller provides functional configurations and clocks to the system.
++#include <dt-bindings/clock/mt8192-clk.h>
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-scp_adsp
-+      - const: syscon
++static const struct mtk_gate_regs msdc_cg_regs = {
++	.set_ofs = 0xb4,
++	.clr_ofs = 0xb4,
++	.sta_ofs = 0xb4,
++};
 +
-+  reg:
-+    maxItems: 1
++static const struct mtk_gate_regs msdc_top_cg_regs = {
++	.set_ofs = 0x0,
++	.clr_ofs = 0x0,
++	.sta_ofs = 0x0,
++};
 +
-+  '#clock-cells':
-+    const: 1
++#define GATE_MSDC(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &msdc_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
 +
-+required:
-+  - compatible
-+  - reg
++#define GATE_MSDC_TOP(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &msdc_top_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
 +
-+additionalProperties: false
++static const struct mtk_gate msdc_clks[] = {
++	GATE_MSDC(CLK_MSDC_AXI_WRAP, "msdc_axi_wrap", "axi_sel", 22),
++};
 +
-+examples:
-+  - |
-+    scp_adsp: syscon@10720000 {
-+        compatible = "mediatek,mt8192-scp_adsp", "syscon";
-+        reg = <0x10720000 0x1000>;
-+        #clock-cells = <1>;
-+    };
++static const struct mtk_gate msdc_top_clks[] = {
++	GATE_MSDC_TOP(CLK_MSDC_TOP_AES_0P, "msdc_top_aes_0p", "aes_msdcfde_sel", 0),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_SRC_0P, "msdc_top_src_0p", "infra_msdc0_src", 1),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_SRC_1P, "msdc_top_src_1p", "infra_msdc1_src", 2),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_SRC_2P, "msdc_top_src_2p", "infra_msdc2_src", 3),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_P_MSDC0, "msdc_top_p_msdc0", "axi_sel", 4),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_P_MSDC1, "msdc_top_p_msdc1", "axi_sel", 5),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_P_MSDC2, "msdc_top_p_msdc2", "axi_sel", 6),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_P_CFG, "msdc_top_p_cfg", "axi_sel", 7),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_AXI, "msdc_top_axi", "axi_sel", 8),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_H_MST_0P, "msdc_top_h_mst_0p", "infra_msdc0", 9),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_H_MST_1P, "msdc_top_h_mst_1p", "infra_msdc1", 10),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_H_MST_2P, "msdc_top_h_mst_2p", "infra_msdc2", 11),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_MEM_OFF_DLY_26M, "msdc_top_mem_off_dly_26m", "clk26m", 12),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_32K, "msdc_top_32k", "clk32k", 13),
++	GATE_MSDC_TOP(CLK_MSDC_TOP_AHB2AXI_BRG_AXI, "msdc_top_ahb2axi_brg_axi", "axi_sel", 14),
++};
++
++static const struct mtk_clk_desc msdc_desc = {
++	.clks = msdc_clks,
++	.num_clks = ARRAY_SIZE(msdc_clks),
++};
++
++static const struct mtk_clk_desc msdc_top_desc = {
++	.clks = msdc_top_clks,
++	.num_clks = ARRAY_SIZE(msdc_top_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8192_msdc[] = {
++	{
++		.compatible = "mediatek,mt8192-msdc",
++		.data = &msdc_desc,
++	}, {
++		.compatible = "mediatek,mt8192-msdc_top",
++		.data = &msdc_top_desc,
++	}, {
++		/* sentinel */
++	}
++};
++
++static struct platform_driver clk_mt8192_msdc_drv = {
++	.probe = mtk_clk_simple_probe,
++	.driver = {
++		.name = "clk-mt8192-msdc",
++		.of_match_table = of_match_clk_mt8192_msdc,
++	},
++};
++
++builtin_platform_driver(clk_mt8192_msdc_drv);
 -- 
 2.18.0
 _______________________________________________
