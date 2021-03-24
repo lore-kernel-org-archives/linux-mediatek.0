@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60C06C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 23:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 404D8C433E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 23:40:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D21E761A24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 23:40:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D21E761A24
+	by mail.kernel.org (Postfix) with ESMTPS id B02DD619F8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 23:40:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B02DD619F8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,47 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7N5VAMmDetx6lnAzBKvCk9LjO98U9LbzltUczMm8xkU=; b=HdqW5niLijUMXjWRpe2Hca1/f
-	k+QSzrT4e+GXntdDBErXArn0qxmO6S+rGUPnLp0lmBf6XywZ2SZS+m5f/j7I7aB5xHwo6W9AWOfPT
-	+JfgNV8qQsSsdrnMScDdgWRmpXw5adCEq8nzJxCZag2Un2RNWDcKRSVdqSeJJ9n2Wrib/BLfqYDhd
-	T5nY/cJg/7XdBqc3xH43gvHrF5X5nbdbwWpR7KOmeXHkKcVoRNXOHs9GTNdIt0Yt/n+o6xFh26Tk7
-	gKf1/xhNOHXmVrsXdG+9mNOCrLvk5Vy25hWYmbsH1h6sPRbYZI3xuQuaLKB2hormYhXKTWMkwOJFk
-	Lrd8G+EwA==;
+	 bh=VxYrs/oXbedOvkNxb1MuVsK6jG3rQNoJr5PR4RZ6Nig=; b=jlqQr4IjkW1HVRvWRpxoT0JuC
+	CaBIldfjuGDk91jqK661N3DXKFIOCPspBrY3+GQziPZfjbg7jOxqbDkBkbgw31YWLb1QAcADgOXMK
+	oJjwwSnK7AH0woXoEsq+I/Bj+1jwjQ0ciNUDOx02g17awGmVYckt5oI0Agirya0KWCUBkTjF0nyfE
+	H+wYI995KiTugZunr44A8uy3vJJTA3E46t7Bo4009psUmDoijv1rnD8eAreXnt+EWQQHwrRhRCcrg
+	co8cKokZbIYfPyfGQlZsUwXlfp+XSF/6/oneznsbSq2RpLhLwA+orsJRr94dwgfsLoa2YJ1ohTWVH
+	jpj9neVAQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPD6e-000M4C-UF; Wed, 24 Mar 2021 23:40:09 +0000
+	id 1lPD6o-000M5W-MI; Wed, 24 Mar 2021 23:40:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPD6R-000M2d-BY; Wed, 24 Mar 2021 23:39:57 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A329B61A24;
- Wed, 24 Mar 2021 23:39:49 +0000 (UTC)
+ id 1lPD6R-000M2e-Uu; Wed, 24 Mar 2021 23:39:57 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9144761A1E;
+ Wed, 24 Mar 2021 23:39:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1616629190;
- bh=+Z8C+j0TdduvvSulNrUQPT2AQDJdVz8j1Ft++3bdBZc=;
+ s=k20201202; t=1616629193;
+ bh=9lwrwwc9qJrB0wTRE+czgDoYiVYuRYxt5dOIbqbFoSQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hwEYWRL7bMbG7lJthj4/dkq02c/xEBwD4W9wtC1kZ/4WntwkHjSQfPmg38SAgKecT
- ljmfDuI9LoC8adoWCay2zsDcI8tAG6E0u8HB7yVvNzhAq7CW4Mq+sRqKgUebQUHjPO
- uhtO+LMlvTBJzLOOLi65305RVUpaoCbpL0VSQrmkb2r020eq1kh4zcWU+Xh7gfk+rJ
- VRD6cFtKRLQVZ7WCFiXvxz7Snqq9KgBrnM4SfL6zjkIWywaFmf0oNIZGDJrpp83t9L
- CV8TadSG/aXntrkoeGCSKUQ2yzcr3taC2q9DbJjv8PjCDXaiL9UZw0QpE+O/XOaN1X
- QUhGvh0NG8ujQ==
+ b=kRn9ALkDuR8tUvyUPZN/iR3wI4Ajh49CzxoCYqplQHhqRxNue8foyow+8f2XSgyKM
+ naL4FrjqqOVybVbnXYFg3L6UOhMo/mRVVbCCt6RphuJOayoj9aYiIzGOPOnVHi+S1h
+ pe0w3N+kLcqb8JJafCdLTVnGzfu3ZTGfu+W0TN9SWqKPdvrwlbYf38M4Ns90Zem5Oz
+ j8sbNeMdg82fLgV00i8joZDi2T/0m/stAKjKWSs07fWC0vdCVXu7zzlt8wBFcsHuG6
+ EIvxGZpE07J+hqG94e3XU2+qn0F1i2RmJK7nqI2TxRBcowBvKoMs1Sa8p+CJvcG96L
+ f5fa15HHIrwDQ==
 From: Mark Brown <broonie@kernel.org>
 To: Jian Dong <dj0227@163.com>,
-	matthias.bgg@gmail.com,
-	lgirdwood@gmail.com
+	matthias.bgg@gmail.com
 Cc: Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
  Jian Dong <dongjian@yulong.com>, linux-arm-kernel@lists.infradead.org,
  huyue2@yulong.com, linux-mediatek@lists.infradead.org
-Subject: Re: [RESEND] regulator: mt6360: remove redundant error print
-Date: Wed, 24 Mar 2021 23:39:34 +0000
-Message-Id: <161662879864.51682.2135998403460828210.b4-ty@kernel.org>
+Subject: Re: [PATCH] regulator: mt6360: remove redundant error print
+Date: Wed, 24 Mar 2021 23:39:35 +0000
+Message-Id: <161662879863.51682.14978085151752352194.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <1616555474-158789-1-git-send-email-dj0227@163.com>
-References: <1616555474-158789-1-git-send-email-dj0227@163.com>
+In-Reply-To: <1616502161-125407-1-git-send-email-dj0227@163.com>
+References: <1616502161-125407-1-git-send-email-dj0227@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_233955_804004_FC45E8B1 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20210324_233956_185054_6858EA42 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,13 +79,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 24 Mar 2021 11:11:14 +0800, Jian Dong wrote:
+On Tue, 23 Mar 2021 20:22:41 +0800, Jian Dong wrote:
 > fixes coccicheck warning:
 > 
 > drivers/regulator/mt6360-regulator.c:384:3-10: line 384 is
 > redundant because platform_get_irq() already prints an error
 > 
-> in fact it is not platform_get_irq but platform_get_irq_byname print error
+> in fact, it is not platform_get_irq but platform_get_irq_byname print error
 
 Applied to
 
