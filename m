@@ -2,73 +2,64 @@ Return-Path: <SRS0=Ntwg=IW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD1E7C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 12:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E41EEC433DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 12:56:12 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9654B61A06
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 12:42:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9654B61A06
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=xilinx.com
+	by mail.kernel.org (Postfix) with ESMTPS id 77D1E61A0E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 12:56:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77D1E61A0E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
+	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UaO9ps1+mQqMyuuNzi/9KkKukw8VTIw6cXrtFnaHEhM=; b=i7u+dCU5jeNu3P9uLSwA6WFI9
-	/5Z6NXww1VhXGm85jb2hshtQpocJxQ2dbcX/lb6R7hebe3RTOPC+PMZZjXrN9nLE9wSB7C85AxF4/
-	vWIE0TGzSAxXYNMWHYvKZW5I1qaUW+Zj9RGF3DtakLk5RJSABcf51iuN7hu0TAaqUkhf/khHKpC4h
-	V8se7iHseaE0yCx/Jh7o4AqN5FQ58lzgZomPqc4Jo1qa1cGmQ6klKnXkK/IEp/5CzkMBkcOvoVqOn
-	vNV9pw0h1NZ/ej6s+GJN2lLR751+Aleh2MqQdKBdTamM9GFKOuCPAJOUh+Cv1U9QJd0i2a9jRcKMA
-	Hlv+zcSeg==;
+	 bh=eYx25/KEkv4Fhy8CELcbprd6sUIDVtlE50V4azCMFuk=; b=qjUdqpQXu56B4LumKcixUnTIh
+	VzaSbhnYDqTMkSKobAi2Xh3e+xRuWlyKtb/+7ySeLw9Q5oxeoBoQR/qaEuN9/tktv8Nwdi2cJzLzx
+	ISvWDFvs7WES5qkUPfZQkloM7m+9ApFisOMwW2+rF0tO368orxG33GC549jwYydVU2GdVzJKMvgRR
+	eV7ANQBWzQvUsfeL14l9csi26rwsLdXGESlswFL4/tQX4c6xfETFSZybA7QTtgHMZZt+O3d0OQa8Y
+	Wf1L08NgnTMMW1VsBBSkWIR52slZDs5V5rw4SLTBnTTzLBdD3F1UrfPBJxcmzqs7cTpVdyx7F2Anx
+	mkFfVdKFA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lP2qP-00H6xJ-Tf; Wed, 24 Mar 2021 12:42:42 +0000
-Received: from mail-mw2nam10on2071.outbound.protection.outlook.com
- ([40.107.94.71] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1lP33G-00H7c6-5P; Wed, 24 Mar 2021 12:55:58 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lP2qD-00H6wS-O2; Wed, 24 Mar 2021 12:42:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DvghRojWpYl4kI4PsDvugQ2AuGNbsDRtwxyiIh2yQ4YyrJIVy/ycoOq7IhiCzuRGmaDRdY1MRnZnkKb9H3kAmGD4Ysm+6DZSYTj6za+wcM0NvqE/rwBugOjzz7DVGgAaOvbFciMBi3ObNPdLQF9e+XIb4CwgOzaCigvpW07B6dwSkLKPwd5wAuc1qtMsqo6dxuIuMJI6iV7gFmjJjWnsOMs/CVyAi2hG/9h5tsYtm4e/mDjZaTlLWkredLzgl+u/6P31dBdQpq3XtCmLN36xFHMNiu8lhQDnwtDZDcxd6NvW3yFPzBjbKJpmpxCMPY8GZcs+idtzOD1aVRFxs0Hyeg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Wa7rI1KExabqxewULxi7oredlsfCGLp0VRXUCfJ12fs=;
- b=Eto7ZML5wiqDPp/mC+64SaPavInF71PFJnrsUrK+WsfYBfSShr0ZV7cuXmiIOlYAH3XBfdB08rBRVdYKMPjFxQWLMzkw8MxjLBeUTJTT+zKx09coXyBd7/o/ZZSw3vEFsDKjGKsZjOQcC0Oew1T0GYUUkBhgGFwxMEsVUIp7gznjFVzpAeTckRlpwTJHRgFPjBSmrBDIw+xcesnzmzNxT1GNDzYu9hqum3qB2V4VuBBMZc6xG9ieJ63qP7ny92cqzktPETDaicf7us7tLkpezlYE6K5sS3U1H5xde31wr1tAwmZX/ETQ3WTTS0kB02cB8rXPWF5xvJOfG8+wSTr/bQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
- dkim=pass header.d=xilinx.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Wa7rI1KExabqxewULxi7oredlsfCGLp0VRXUCfJ12fs=;
- b=RewXu+tHENxocGk9hh4f7EyIwAPBhYAhA+NchPI9g4xWYJ0h2/anPDcXlnvA2399YsNjAOgwfxVIdXPlzegxloKKQQo/NgWjtJ4cbx+BT5tAvaREkFO3crPf6v3BdUZYjh5+HWtOoh+F25OCycEUiPoyIveRrZfmQnHe20UAyK0=
-Received: from BYAPR02MB5559.namprd02.prod.outlook.com (2603:10b6:a03:a1::18)
- by BY5PR02MB6419.namprd02.prod.outlook.com (2603:10b6:a03:1f8::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3955.18; Wed, 24 Mar
- 2021 12:42:25 +0000
-Received: from BYAPR02MB5559.namprd02.prod.outlook.com
- ([fe80::2418:b7d2:cbb:27f]) by BYAPR02MB5559.namprd02.prod.outlook.com
- ([fe80::2418:b7d2:cbb:27f%5]) with mapi id 15.20.3955.027; Wed, 24 Mar 2021
- 12:42:25 +0000
-From: Bharat Kumar Gogada <bharatku@xilinx.com>
-To: Marc Zyngier <maz@kernel.org>, "lorenzo.pieralisi@arm.com"
- <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>
-CC: Frank Wunderlich <frank-w@public-files.de>, Thierry Reding
+ id 1lP334-00H7b2-0J; Wed, 24 Mar 2021 12:55:49 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1A9A461A06;
+ Wed, 24 Mar 2021 12:55:44 +0000 (UTC)
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
+ (envelope-from <maz@kernel.org>)
+ id 1lP32z-003WS0-VE; Wed, 24 Mar 2021 12:55:42 +0000
+Date: Wed, 24 Mar 2021 12:55:40 +0000
+Message-ID: <878s6ck8xf.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Bharat Kumar Gogada <bharatku@xilinx.com>
+Cc: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Frank Wunderlich <frank-w@public-files.de>, Thierry Reding
  <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring
  <robh@kernel.org>, Will Deacon <will@kernel.org>, "K. Y. Srinivasan"
  <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Stephen
- Hemminger <sthemmin@microsoft.com>, Michael Kelley <mikelley@microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Hemminger <sthemmin@microsoft.com>,
+ Michael Kelley <mikelley@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>,
  Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
  <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michals@xilinx.com>, Paul
@@ -81,74 +72,34 @@ CC: Frank Wunderlich <frank-w@public-files.de>, Thierry Reding
  <linux-mediatek@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org"
  <linux-renesas-soc@vger.kernel.org>, "kernel-team@android.com"
  <kernel-team@android.com>
-Subject: RE: [PATCH v2 05/15] PCI: xilinx: Convert to MSI domains
-Thread-Topic: [PATCH v2 05/15] PCI: xilinx: Convert to MSI domains
-Thread-Index: AQHXH0vIUXC892kDXkW3zUak9HM8+aqTE3EQ
-Date: Wed, 24 Mar 2021 12:42:24 +0000
-Message-ID: <BYAPR02MB5559A0B0DA88866EDC7BDFE5A5639@BYAPR02MB5559.namprd02.prod.outlook.com>
+Subject: Re: [PATCH v2 04/15] PCI: xilinx: Don't allocate extra memory for the
+ MSI capture address
+In-Reply-To: <BYAPR02MB5559D4117C9096D70C5FFE76A5639@BYAPR02MB5559.namprd02.prod.outlook.com>
 References: <20210322184614.802565-1-maz@kernel.org>
- <20210322184614.802565-6-maz@kernel.org>
-In-Reply-To: <20210322184614.802565-6-maz@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-TNEF-Correlator: 
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=xilinx.com;
-x-originating-ip: [149.199.50.129]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 2594ff9b-4419-44ef-03d1-08d8eec246c5
-x-ms-traffictypediagnostic: BY5PR02MB6419:
-x-ld-processed: 657af505-d5df-48d0-8300-c31994686c5c,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BY5PR02MB641923AE808606816E1375A3A5639@BY5PR02MB6419.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 3e351za1hXq0K1JLY2vTfLReX0Uuwb+klTcgUzpvMRIeJDwLL/6YvZSz5ZEk1wIEQ5JemoaOBpQQAjBYdyCtWgU2nMIr8SaOtgCtyOfyu3iyDhRTVYpS1yjj5VcCTYLkS158/C2NtGQKogm8hKzN4tlrdq0BTrDqzAPG2UBvlIF9eULNHrB5oW7yZ/MQQ56nYLqM7ECU6U8Ca4+Nu9F2HZth/fX8qBs97Xg5Y3mMumoAUbJcbXf7/04J8fcv6cnAi8SLDY68pHLC1yHPIEyAwUBKwgFQ7Omvami1IuK0CkNsXv5pyjWCQEE1ClE0ZMEmO082FicZ5h3x0jvC7/Xcbj3TW92tfcjDs5ffs1Gj0btUerQKSv2blRc9ns6cTPNvMTCWHQ62WgHw33FhnpcudNIWB4edGdyl7oCmnF29lySud8IPz1s+F+V2Ag4kROv21SXzmqZgLAtvOO9NLihxBhU3GE4WFelZd2dD4VR2uprVKHDvXc13laoaO3tu0DrdOpBhb/ONHPsiczW7DMwjK9xAEGMGOVpLOvU93+mhjiMTaoXA77lhvlgUZX7zNLTb6Gc3iGlPtAuvQSU6pQ4o3NhLV45Z/SIFAIE3fypkxA+MvIZl15eUq+W82BeXumDQjAxIKfP4K7tmxpvLexTSUttzlU3KvVf+zFRvTtDNvOI=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR02MB5559.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(346002)(136003)(376002)(366004)(396003)(83380400001)(7416002)(8936002)(186003)(4326008)(110136005)(54906003)(26005)(8676002)(71200400001)(33656002)(5660300002)(7696005)(64756008)(52536014)(66556008)(2906002)(66446008)(66476007)(38100700001)(66946007)(86362001)(76116006)(55016002)(316002)(9686003)(478600001)(6506007);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?HQdovewaKhqmcNXou3OMpFnE3shsxdt0u320c+hiiSWg0DSC8I3bB0e69Kgd?=
- =?us-ascii?Q?W2u5v7JQh8h+mzmmiOBQjatnwrFpgIdRFAKJB0KXyM/prurM4+I7KW2IMV6i?=
- =?us-ascii?Q?LCghfxTMcCnq4QzdIgpUKtbdNh9WzFqzs/8o1ncGisjrjg5HEsKZXwvhVh/U?=
- =?us-ascii?Q?voZTUmwCQ2hSHSJbFZIKU04cSp9pkqRZ1klDY40hjDkeeyNEzhBwVdZTk7B6?=
- =?us-ascii?Q?UoeXvu86NeNteSKtAH0RC4BEqQHSwisbAPtXpSC09FELRqigwhgcFylfDkU6?=
- =?us-ascii?Q?vldHG4Hf7hwNalBOpqK/7wFU23u7vILLVH8qxGb49XqnuwTO/psSrcynEcrk?=
- =?us-ascii?Q?lidPzCWP9BO87kbtA75Q0WRwX3V8Kr1lc2r/d18x9xhaZOchRIAT6W0up9AG?=
- =?us-ascii?Q?Qk3rS3s9inIWB4AfKxY3Du1DwhTgyzzUo8evS8uNOopk2c6/Tl5pnJb20z3l?=
- =?us-ascii?Q?fb9qjLIAg55vr3ECwPtmcwzngu0I4/F50fKMnX8s2ikkNrZ6AQTrjNGl3r6y?=
- =?us-ascii?Q?BSewaCQFSukLs4vKYidqi39JMp2IfChxDzUCpVIi034zka/vjc96lUaastE9?=
- =?us-ascii?Q?tjcGrK1xLHbGrruCrNHjU72cga6twqtfGSOVfLSXUa846TFRgI4tv867ybq+?=
- =?us-ascii?Q?pOHguFds5OY1wgzzJb4YmjhWbKLmKYaiPkzblncSCrp7Au0SV82eSSOU7k8H?=
- =?us-ascii?Q?k3hz7XkUPSz4tEwrCKmTWin04i3tS7JIAMFfx9m4PWpbcI/pTBAapWvBZXC6?=
- =?us-ascii?Q?VlrS449SfihUJwjxm9Oc3ySQ+Uop1wBIFoOy2aPv8Y+WjR4la+f2zD6KYfhe?=
- =?us-ascii?Q?zeI0KKP3toKJ1OCisxTAi0zb3Vebnk+lEX16Yuw0PnX4JI7Psbx1QYaQ9i62?=
- =?us-ascii?Q?c/hC9t4TB4DgRYhA2JrAfMnsSNscjfCE4Kp5sWiuETNPw8WuNG4RgKB19fJh?=
- =?us-ascii?Q?yo5Y3WugmvbEOuNjMEp897qfjPnIYYW7On9pkaRruHmw2eqFWnPop7VWtwU8?=
- =?us-ascii?Q?T+QBpPWdY0AE25sdmbndVEH3pDcTCE3GhjhXFI4Kyn+OD6+OTBRGrktYHzFr?=
- =?us-ascii?Q?iCxGs0WD1SaHqZSg0PQdgL+WDsfIdZgt+PWSjqgNQM7f8WeWKyBThD2DsJk7?=
- =?us-ascii?Q?ZTqIfRhOYnHjbMampVOlyspfA1WSOZkeuEtWvcnT28LGvFBpOrPBNxrFmmfL?=
- =?us-ascii?Q?q+wmTHvXmVrHvNPunfybc4smKyApl0Jmv0T+tmk6r+qEA0M5Tsx2DBErN8FE?=
- =?us-ascii?Q?g3SozEFUazLktE4gg5usIPkxnpZu7fvpCqEX53WAmqIhuz6Vx5JXaNZKHQwV?=
- =?us-ascii?Q?yGT8tR1YyDXKQPZLY4mDFfXe?=
-MIME-Version: 1.0
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR02MB5559.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2594ff9b-4419-44ef-03d1-08d8eec246c5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Mar 2021 12:42:24.8759 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CVrrKU6jxdP540Y8lOK3my9rbhFLFELgCtmpNzKU3jOcisQo3pizXC/Yt09ZuymLYdWSf9w8z5KugnjguTMn6Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB6419
+ <20210322184614.802565-5-maz@kernel.org>
+ <BYAPR02MB5559D4117C9096D70C5FFE76A5639@BYAPR02MB5559.namprd02.prod.outlook.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: bharatku@xilinx.com, lorenzo.pieralisi@arm.com,
+ bhelgaas@google.com, frank-w@public-files.de, treding@nvidia.com,
+ tglx@linutronix.de, robh@kernel.org, will@kernel.org, kys@microsoft.com,
+ haiyangz@microsoft.com, sthemmin@microsoft.com, mikelley@microsoft.com,
+ wei.liu@kernel.org, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ ryder.lee@mediatek.com, marek.vasut+renesas@gmail.com,
+ yoshihiro.shimoda.uh@renesas.com, michals@xilinx.com, paul.walmsley@sifive.com,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, kernel-team@android.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_124229_979700_0BDA1E2F 
-X-CRM114-Status: GOOD (  25.06  )
+X-CRM114-CacheID: sfid-20210324_125546_698875_0CC37380 
+X-CRM114-Status: GOOD (  26.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,112 +116,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Marc,
+On Wed, 24 Mar 2021 12:35:58 +0000,
+Bharat Kumar Gogada <bharatku@xilinx.com> wrote:
+> 
+> Thanks Marc for the patch.
+> > Subject: [PATCH v2 04/15] PCI: xilinx: Don't allocate extra memory for the
+> > MSI capture address
+> > 
+> > A long cargo-culted behaviour of PCI drivers is to allocate memory to obtain
+> > an address that is fed to the controller as the MSI capture address (i.e. the
+> > MSI doorbell).
+> > 
+> > But there is no actual requirement for this address to be RAM.
+> > All it needs to be is a suitable aligned address that will
+> > *not* be DMA'd to.
+> > 
+> > Use the physical address of the 'port' data structure as the MSI capture
+> > address.
+> > 
+> > Signed-off-by: Marc Zyngier <maz@kernel.org>
+> > ---
+> >  drivers/pci/controller/pcie-xilinx.c | 18 ++++++------------
+> >  1 file changed, 6 insertions(+), 12 deletions(-)
+> 
+> ...
+> > -	msg.address_hi = 0;
+> > -	msg.address_lo = msg_addr;
+> > +	msg.address_hi = upper_32_bits(msg_addr);
+> > +	msg.address_lo = lower_32_bits(msg_addr);
+> 
+> The XILINX_PCIE_REG_MSIBASE2 register expects 4KB aligned address.
+> The lower 12-bits are always set to 0 in this register. So we need
+> to mask the address while programming address to
 
-Thanks for the patch. 
+Thanks for the heads up, I'll fix this up. Does it work correctly once
+the address is aligned?
 
-> Subject: [PATCH v2 05/15] PCI: xilinx: Convert to MSI domains
-> 
-> In anticipation of the removal of the msi_controller structure, convert the
-> ancient xilinx host controller driver to MSI domains.
-> 
-> We end-up with the usual two domain structure, the top one being a generic
-> PCI/MSI domain, the bottom one being xilinx-specific and handling the
-> actual HW interrupt allocation.
-> 
-> This allows us to fix some of the most appalling MSI programming, where the
-> message programmed in the device is the virtual IRQ number instead of the
-> allocated vector number. The allocator is also made safe with a mutex. This
-> should allow support for MultiMSI, but I decided not to even try, since I
-> cannot test it.
-> 
-> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-> Signed-off-by: Marc Zyngier <maz@kernel.org>
-> ---
->  drivers/pci/controller/Kconfig       |   2 +-
->  drivers/pci/controller/pcie-xilinx.c | 234 +++++++++++----------------
->  2 files changed, 97 insertions(+), 139 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-> index 5cc07d28a3a0..60045f7aafc5 100644
-...
+	M.
 
-
-> +static struct irq_chip xilinx_msi_bottom_chip = {
-> +	.name			= "Xilinx MSI",
-> +	.irq_set_affinity 	= xilinx_msi_set_affinity,
-> +	.irq_compose_msi_msg	= xilinx_compose_msi_msg,
-> +};
-> 
-I see a crash while testing MSI in handle_edge_irq
-[<c015bdd4>] (handle_edge_irq) from [<c0157164>] (generic_handle_irq+0x28/0x38)
-[<c0157164>] (generic_handle_irq) from [<c03a9714>] (xilinx_pcie_intr_handler+0x17c/0x2b0)
-[<c03a9714>] (xilinx_pcie_intr_handler) from [<c0157d94>] (__handle_irq_event_percpu+0x3c/0xc0)
-[<c0157d94>] (__handle_irq_event_percpu) from [<c0157e44>] (handle_irq_event_percpu+0x2c/0x7c)
-[<c0157e44>] (handle_irq_event_percpu) from [<c0157ecc>] (handle_irq_event+0x38/0x5c)
-[<c0157ecc>] (handle_irq_event) from [<c015bc8c>] (handle_fasteoi_irq+0x9c/0x114)
-
-void handle_edge_irq(struct irq_desc *desc) {
-...
-        kstat_incr_irqs_this_cpu(desc);
-
-        /* Start handling the irq */
-        desc->irq_data.chip->irq_ack(&desc->irq_data);	//There is no check here for ack function is registered for chip
-..
-}
-
-> -/**
-> - * xilinx_pcie_msi_setup_irq - Setup MSI request
-> - * @chip: MSI chip pointer
-> - * @pdev: PCIe device pointer
-> - * @desc: MSI descriptor pointer
-> - *
-> - * Return: '0' on success and error value on failure
-> - */
-> -static int xilinx_pcie_msi_setup_irq(struct msi_controller *chip,
-> -				     struct pci_dev *pdev,
-> -				     struct msi_desc *desc)
-> +static int xilinx_msi_domain_alloc(struct irq_domain *domain, unsigned int
-> virq,
-> +				  unsigned int nr_irqs, void *args)
->  {
-> -	struct xilinx_pcie_port *port = pdev->bus->sysdata;
-> -	unsigned int irq;
-> -	int hwirq;
-> -	struct msi_msg msg;
-> -	phys_addr_t msg_addr;
-> +	struct xilinx_pcie_port *port = domain->host_data;
-> +	int hwirq, i;
-> +
-> +	mutex_lock(&port->map_lock);
-> +
-> +	hwirq = bitmap_find_free_region(port->msi_map,
-> XILINX_NUM_MSI_IRQS,
-> +order_base_2(nr_irqs));
-> +
-> +	mutex_unlock(&port->map_lock);
-> 
-> -	hwirq = xilinx_pcie_assign_msi();
->  	if (hwirq < 0)
-> -		return hwirq;
-> +		return -ENOSPC;
-> 
-> -	irq = irq_create_mapping(port->msi_domain, hwirq);
-> -	if (!irq)
-> -		return -EINVAL;
-> +	for (i = 0; i < nr_irqs; i++)
-> +		irq_domain_set_info(domain, virq + i, hwirq + i,
-> +				    &xilinx_msi_bottom_chip, domain-
-> >host_data,
-> +				    handle_edge_irq, NULL, NULL);
-> 
-> -	irq_set_msi_desc(irq, desc);
-> +	return 0;
-> +}
->
-
-Regards,
-Bharat 
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
