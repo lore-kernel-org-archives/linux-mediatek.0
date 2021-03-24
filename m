@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D7B5C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 17C0AC433C1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:18:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E3DC61A0F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:18:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E3DC61A0F
+	by mail.kernel.org (Postfix) with ESMTPS id B2B91619EC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:18:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2B91619EC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,32 +22,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
 	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rmcfuY6z7ZuGorl/ypWhh6ZxkyS8Rj5IHUfVVhF4Acs=; b=D46e5acQIEKUggORZshPdYZo1
-	6AD65qKYyIepAHYMjVUHOMk3eZVvtrrkeXtgD+FEdhOavn+V+D93cUQ8O6hNRYXyY3sS3bvWNY3pu
-	MCEVSq8Y1y5SeRzD/Qko+dFnSevc8fD3uvDjZdU22mSQvC9uJobcQbs3KA0ZVurwwDCgx82lmGa8/
-	+I+VSl2Pdrp2o29/Hp3PMB2kMQGJR55uA1jBPcLefyW2ES9oRqTkjkJvuIKnZidypmuRgVVuspwF0
-	3wc7DquX0Cvxd1rwrW+dUe+cVHR6xVCRVkJ+MGYxIsWUOtLzb7lOMphUg7CKLq4XZR2lHvD2UUwWP
-	Y0gvCGZ1w==;
+	 bh=wO5Vzbc2YyWl5oIhEXoIPCDTFwgme6XMefGGPLuiMVE=; b=Fi9emu7vHg4rV6WonUP44+XjQ
+	nV6dGtUZ2V9SwJBooahHWffD7YvPzAaYVLamTrQi6yU6iiw113YhgFxu6d+rEsInjivVZbKfpjzRk
+	GsrEJIywu7TS6LWZZ5FJ+BORmyRNA9qgDStiVOo4V/AKVi6rp/FRL0CBYrsKt7Guj55JhbmkOb2mo
+	EvwSZW72I71K5CsLh2F6lExug2WFipCfg9/jsUdSoasKDDAAvfOERtx4rRqbeG24nm5rVlM3D+0aJ
+	9vn2o5CEyNeEEDxYbNMbNTzcr5yaIJXsGA52a1J7rvqlqN6ghzdiI+HwbAFrLms0qWz8HnSo2SZ74
+	Xn8E7P/Dg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lP6D3-00HN9l-Qi; Wed, 24 Mar 2021 16:18:17 +0000
+	id 1lP6DP-00HNFI-8Q; Wed, 24 Mar 2021 16:18:39 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lP6Cq-00HN5d-KO; Wed, 24 Mar 2021 16:18:06 +0000
+ id 1lP6DB-00HNBA-RQ; Wed, 24 Mar 2021 16:18:28 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EF85061878;
- Wed, 24 Mar 2021 16:18:02 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6800061A0E;
+ Wed, 24 Mar 2021 16:18:24 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.misterjones.org)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lP6Cm-003YU9-Td; Wed, 24 Mar 2021 16:18:01 +0000
-Date: Wed, 24 Mar 2021 16:17:59 +0000
-Message-ID: <87y2ecikzs.wl-maz@kernel.org>
+ id 1lP6D8-003YUT-Ox; Wed, 24 Mar 2021 16:18:22 +0000
+Date: Wed, 24 Mar 2021 16:18:21 +0000
+Message-ID: <87wntwikz6.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
 To: Jianjun Wang <jianjun.wang@mediatek.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>,	Rob Herring <robh+dt@kernel.org>,
@@ -61,10 +61,10 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,	Rob Herring <robh+dt@kernel.org>,
  <drinkcat@chromium.org>,<Rex-BC.Chen@mediatek.com>,
  <anson.chuang@mediatek.com>,	Krzysztof Wilczyski <kw@linux.com>,	Pali
  =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>
-Subject: Re: [v9,4/7] PCI: mediatek-gen3: Add INTx support
-In-Reply-To: <20210324030510.29177-5-jianjun.wang@mediatek.com>
+Subject: Re: [v9,5/7] PCI: mediatek-gen3: Add MSI support
+In-Reply-To: <20210324030510.29177-6-jianjun.wang@mediatek.com>
 References: <20210324030510.29177-1-jianjun.wang@mediatek.com>
- <20210324030510.29177-5-jianjun.wang@mediatek.com>
+ <20210324030510.29177-6-jianjun.wang@mediatek.com>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
  (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
@@ -82,8 +82,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_161804_970461_E6AA780E 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20210324_161826_357458_ABE915A1 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,10 +100,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 24 Mar 2021 03:05:07 +0000,
+On Wed, 24 Mar 2021 03:05:08 +0000,
 Jianjun Wang <jianjun.wang@mediatek.com> wrote:
 > 
-> Add INTx support for MediaTek Gen3 PCIe controller.
+> Add MSI support for MediaTek Gen3 PCIe controller.
+> 
+> This PCIe controller supports up to 256 MSI vectors, the MSI hardware
+> block diagram is as follows:
+> 
+>                   +-----+
+>                   | GIC |
+>                   +-----+
+>                      ^
+>                      |
+>                  port->irq
+>                      |
+>              +-+-+-+-+-+-+-+-+
+>              |0|1|2|3|4|5|6|7| (PCIe intc)
+>              +-+-+-+-+-+-+-+-+
+>               ^ ^           ^
+>               | |    ...    |
+>       +-------+ +------+    +-----------+
+>       |                |                |
+> +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+> |0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31| (MSI sets)
+> +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+>  ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
+>  | |      |  |    | |      |  |    | |      |  |  (MSI vectors)
+>  | |      |  |    | |      |  |    | |      |  |
+> 
+>   (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
+> 
+> With 256 MSI vectors supported, the MSI vectors are composed of 8 sets,
+> each set has its own address for MSI message, and supports 32 MSI vectors
+> to generate interrupt.
 > 
 > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
