@@ -2,84 +2,70 @@ Return-Path: <SRS0=Ntwg=IW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 67C04C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 03:06:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 115E3C433C1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 03:12:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC3EC619BA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 03:06:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC3EC619BA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AA026619D5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 03:12:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA026619D5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=163.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8Ua8PX8nYRwaeX+qGduldMTXGDya1ERqCwuSPu/RQvA=; b=SPFihkBGQzbvjtfm8SPQnFKeQ
-	eRjPit7+g6aSkGqJqag6OFIXjgJ1s8BJHvXhj/OlcJnrn58Nxn2YbhGjoSipFm0m9a0VTu8rMC/3b
-	p2EViG2PPwmbplzG5HhTYXzwvHw5/GB8EagWXclHqr7zmQKqH9KstS8L70R4Lbqp8Vg72IeCjAMjO
-	iPpYI5fAgaan/3u36dxiHZXef6+33rac/RkyQSOsqxQe807J6cweR2QCTocG15lR+RNW0GdEWZHQ4
-	kK3Cvq3iNGtPKWPBvh5qlSSK9Wul0vQI4zTE0jZYeRJilXDvQMTY3SBNM4wXvXCTlQCh7lmyHodw8
-	ky3cK1NRw==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6QSvT+ohZY4ewijKlzBAgW68zrr60YsOrU2fcWMe70E=; b=MAXndbl8NX/j0UrkNJL9IotvkP
+	yghwX4bK2BjgFa1PTai4abw7ffafaMYrooTD+CZYMQsI+mCyGtVMMdl/Vv7Z8g3PkYvD5Mf+y5r8b
+	yKUj5dlKZtg7rw54Y0G3LD1x6Ure9HhpTfH9hSOz1WnqEZkCjsFnOwn/gugOzONGOzHE/Tn/5Note
+	x9ZYYemB0xbinjGpBDFKktGEnkOwcN8LVhmcbCQxlf/ZmNEhJsS8Z1iFMaYhU+nNznU5MkfQibuI6
+	eTrCq/7CuYat9ObBskCxLSNC0JFCXlxfxqXC5294LKrI3tg8/SeXPoZyCW09Mz28wROqR59Lpv8gQ
+	6eGzDxbg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOtqs-00GBzN-Ox; Wed, 24 Mar 2021 03:06:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lOtwN-00GDR1-PO; Wed, 24 Mar 2021 03:12:15 +0000
+Received: from m12-16.163.com ([220.181.12.16])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOtqL-00GBqg-Cd; Wed, 24 Mar 2021 03:06:04 +0000
-X-UUID: 1e01b21daec747e6b23562fdd927fd11-20210323
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=vYJwp8Sm2u70bfgSSAOidiWbZEfrSIkUufmZDRsTxjQ=; 
- b=qjfI0QqLYZCEEIBMCfNi8I3dlW29e3WRoqCYqkmhHPgDKLSYKHXUHHHduUYsSuX2syOsLKuCiXcQUcJD/8m3pQpSJVc3OfpXTPMokkFHb91ymfQKBlErCMhb+Ih2xwpKwWNpdVsxjydvp41Fw26s3iPt7E+XFDiKEoaK2w4wU8s=;
-X-UUID: 1e01b21daec747e6b23562fdd927fd11-20210323
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 455228702; Tue, 23 Mar 2021 19:05:53 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Mar 2021 20:05:51 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 24 Mar 2021 11:05:49 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 24 Mar 2021 11:05:48 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
- Ryder Lee <ryder.lee@mediatek.com>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- Jianjun Wang <jianjun.wang@mediatek.com>, <youlin.pei@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
- <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>, Krzysztof Wilczyski
- <kw@linux.com>, =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>
-Subject: [v9,5/7] PCI: mediatek-gen3: Add MSI support
-Date: Wed, 24 Mar 2021 11:05:08 +0800
-Message-ID: <20210324030510.29177-6-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210324030510.29177-1-jianjun.wang@mediatek.com>
-References: <20210324030510.29177-1-jianjun.wang@mediatek.com>
-MIME-Version: 1.0
-X-MTK: N
+ id 1lOtwB-00GDOE-Pu; Wed, 24 Mar 2021 03:12:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id; bh=0IDwd8zGV3tXRIuwLd
+ IoAMYQ18gg+J7ylD3fRmJ6cgI=; b=aoPLh2Q5m4vehoKJojuS3LhDKRWPlvWi+J
+ YyeMriKMoaeXewcbK3ILqsU0F5cYM51pxYbIHLvdfDdNmQWTO8+tvJZ+KntnNdLj
+ dmIlj8G37sF79apXO4k6y1a/xj3clB5tVSX6pDAuK6ABIDAMSU+uqeCaCPK6i7Ln
+ RhNtQoqQk=
+Received: from bf-rmnj-02.ccdomain.com (unknown [218.94.48.178])
+ by smtp12 (Coremail) with SMTP id EMCowAAHcUPxrVpgUqWOiA--.18703S2;
+ Wed, 24 Mar 2021 11:11:51 +0800 (CST)
+From: Jian Dong <dj0227@163.com>
+To: broonie@kernel.org,
+	lgirdwood@gmail.com,
+	matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, huyue2@yulong.com,
+ Jian Dong <dongjian@yulong.com>
+Subject: [RESEND] regulator: mt6360: remove redundant error print
+Date: Wed, 24 Mar 2021 11:11:14 +0800
+Message-Id: <1616555474-158789-1-git-send-email-dj0227@163.com>
+X-Mailer: git-send-email 1.9.1
+X-CM-TRANSID: EMCowAAHcUPxrVpgUqWOiA--.18703S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Xr4rWr17AryxKFyDWryUJrb_yoWkGFXEkr
+ 18Aa1xWrs7Zr4akr4IqFsIvr9IyFn2ga17WrsrKFyaqry5A3WDC347GFW7Zr4UW3y8KF9x
+ Ww1rWr4xZr13ujkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8LmRUUUUUU==
+X-Originating-IP: [218.94.48.178]
+X-CM-SenderInfo: dgmqjjqx6rljoofrz/xtbB0hdf3VUMa9XS3QAAsv
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_030601_975689_69A728FF 
-X-CRM114-Status: GOOD (  21.97  )
+X-CRM114-CacheID: sfid-20210324_031204_386412_3EDAA576 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,425 +77,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MSI support for MediaTek Gen3 PCIe controller.
+From: Jian Dong <dongjian@yulong.com>
 
-This PCIe controller supports up to 256 MSI vectors, the MSI hardware
-block diagram is as follows:
+fixes coccicheck warning:
 
-                  +-----+
-                  | GIC |
-                  +-----+
-                     ^
-                     |
-                 port->irq
-                     |
-             +-+-+-+-+-+-+-+-+
-             |0|1|2|3|4|5|6|7| (PCIe intc)
-             +-+-+-+-+-+-+-+-+
-              ^ ^           ^
-              | |    ...    |
-      +-------+ +------+    +-----------+
-      |                |                |
-+-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
-|0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31| (MSI sets)
-+-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
- ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
- | |      |  |    | |      |  |    | |      |  |  (MSI vectors)
- | |      |  |    | |      |  |    | |      |  |
+drivers/regulator/mt6360-regulator.c:384:3-10: line 384 is
+redundant because platform_get_irq() already prints an error
 
-  (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
+in fact it is not platform_get_irq but platform_get_irq_byname print error
 
-With 256 MSI vectors supported, the MSI vectors are composed of 8 sets,
-each set has its own address for MSI message, and supports 32 MSI vectors
-to generate interrupt.
-
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Jian Dong <dongjian@yulong.com>
 ---
- drivers/pci/controller/pcie-mediatek-gen3.c | 276 ++++++++++++++++++++
- 1 file changed, 276 insertions(+)
+ drivers/regulator/mt6360-regulator.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index ff91ad587461..ee1b51207d11 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -14,6 +14,7 @@
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
-+#include <linux/msi.h>
- #include <linux/pci.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -48,12 +49,29 @@
- #define PCIE_LINK_STATUS_REG		0x154
- #define PCIE_PORT_LINKUP		BIT(8)
+diff --git a/drivers/regulator/mt6360-regulator.c b/drivers/regulator/mt6360-regulator.c
+index 15308ee..4d34be9 100644
+--- a/drivers/regulator/mt6360-regulator.c
++++ b/drivers/regulator/mt6360-regulator.c
+@@ -380,10 +380,8 @@ static int mt6360_regulator_irq_register(struct platform_device *pdev,
+ 		const struct mt6360_irq_mapping *irq_desc = tbls + i;
  
-+#define PCIE_MSI_SET_NUM		8
-+#define PCIE_MSI_IRQS_PER_SET		32
-+#define PCIE_MSI_IRQS_NUM \
-+	(PCIE_MSI_IRQS_PER_SET * PCIE_MSI_SET_NUM)
-+
- #define PCIE_INT_ENABLE_REG		0x180
-+#define PCIE_MSI_ENABLE			GENMASK(PCIE_MSI_SET_NUM + 8 - 1, 8)
-+#define PCIE_MSI_SHIFT			8
- #define PCIE_INTX_SHIFT			24
- #define PCIE_INTX_ENABLE \
- 	GENMASK(PCIE_INTX_SHIFT + PCI_NUM_INTX - 1, PCIE_INTX_SHIFT)
+ 		irq = platform_get_irq_byname(pdev, irq_desc->name);
+-		if (irq < 0) {
+-			dev_err(&pdev->dev, "Fail to get %s irq\n", irq_desc->name);
++		if (irq < 0)
+ 			return irq;
+-		}
  
- #define PCIE_INT_STATUS_REG		0x184
-+#define PCIE_MSI_SET_ENABLE_REG		0x190
-+#define PCIE_MSI_SET_ENABLE		GENMASK(PCIE_MSI_SET_NUM - 1, 0)
-+
-+#define PCIE_MSI_SET_BASE_REG		0xc00
-+#define PCIE_MSI_SET_OFFSET		0x10
-+#define PCIE_MSI_SET_STATUS_OFFSET	0x04
-+#define PCIE_MSI_SET_ENABLE_OFFSET	0x08
-+
-+#define PCIE_MSI_SET_ADDR_HI_BASE	0xc80
-+#define PCIE_MSI_SET_ADDR_HI_OFFSET	0x04
- 
- #define PCIE_TRANS_TABLE_BASE_REG	0x800
- #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
-@@ -73,6 +91,16 @@
- #define PCIE_ATR_TLP_TYPE_MEM		PCIE_ATR_TLP_TYPE(0)
- #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
- 
-+/**
-+ * struct mtk_msi_set - MSI information for each set
-+ * @base: IO mapped register base
-+ * @msg_addr: MSI message address
-+ */
-+struct mtk_msi_set {
-+	void __iomem *base;
-+	phys_addr_t msg_addr;
-+};
-+
- /**
-  * struct mtk_pcie_port - PCIe port information
-  * @dev: pointer to PCIe device
-@@ -86,6 +114,11 @@
-  * @irq: PCIe controller interrupt number
-  * @irq_lock: lock protecting IRQ register access
-  * @intx_domain: legacy INTx IRQ domain
-+ * @msi_domain: MSI IRQ domain
-+ * @msi_bottom_domain: MSI IRQ bottom domain
-+ * @msi_sets: MSI sets information
-+ * @lock: lock protecting IRQ bit map
-+ * @msi_irq_in_use: bit map for assigned MSI IRQ
-  */
- struct mtk_pcie_port {
- 	struct device *dev;
-@@ -100,6 +133,11 @@ struct mtk_pcie_port {
- 	int irq;
- 	raw_spinlock_t irq_lock;
- 	struct irq_domain *intx_domain;
-+	struct irq_domain *msi_domain;
-+	struct irq_domain *msi_bottom_domain;
-+	struct mtk_msi_set msi_sets[PCIE_MSI_SET_NUM];
-+	struct mutex lock;
-+	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
- };
- 
- /**
-@@ -196,6 +234,35 @@ static int mtk_pcie_set_trans_table(struct mtk_pcie_port *port,
- 	return 0;
- }
- 
-+static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
-+{
-+	int i;
-+	u32 val;
-+
-+	for (i = 0; i < PCIE_MSI_SET_NUM; i++) {
-+		struct mtk_msi_set *msi_set = &port->msi_sets[i];
-+
-+		msi_set->base = port->base + PCIE_MSI_SET_BASE_REG +
-+				i * PCIE_MSI_SET_OFFSET;
-+		msi_set->msg_addr = port->reg_base + PCIE_MSI_SET_BASE_REG +
-+				    i * PCIE_MSI_SET_OFFSET;
-+
-+		/* Configure the MSI capture address */
-+		writel_relaxed(lower_32_bits(msi_set->msg_addr), msi_set->base);
-+		writel_relaxed(upper_32_bits(msi_set->msg_addr),
-+			       port->base + PCIE_MSI_SET_ADDR_HI_BASE +
-+			       i * PCIE_MSI_SET_ADDR_HI_OFFSET);
-+	}
-+
-+	val = readl_relaxed(port->base + PCIE_MSI_SET_ENABLE_REG);
-+	val |= PCIE_MSI_SET_ENABLE;
-+	writel_relaxed(val, port->base + PCIE_MSI_SET_ENABLE_REG);
-+
-+	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
-+	val |= PCIE_MSI_ENABLE;
-+	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
-+}
-+
- static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
- {
- 	struct resource_entry *entry;
-@@ -247,6 +314,8 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
- 		return err;
- 	}
- 
-+	mtk_pcie_enable_msi(port);
-+
- 	/* Set PCIe translation windows */
- 	resource_list_for_each_entry(entry, &host->windows) {
- 		struct resource *res = entry->res;
-@@ -289,6 +358,147 @@ static int mtk_pcie_set_affinity(struct irq_data *data,
- 	return -EINVAL;
- }
- 
-+static void mtk_pcie_msi_irq_mask(struct irq_data *data)
-+{
-+	pci_msi_mask_irq(data);
-+	irq_chip_mask_parent(data);
-+}
-+
-+static void mtk_pcie_msi_irq_unmask(struct irq_data *data)
-+{
-+	pci_msi_unmask_irq(data);
-+	irq_chip_unmask_parent(data);
-+}
-+
-+static struct irq_chip mtk_msi_irq_chip = {
-+	.irq_ack = irq_chip_ack_parent,
-+	.irq_mask = mtk_pcie_msi_irq_mask,
-+	.irq_unmask = mtk_pcie_msi_irq_unmask,
-+	.name = "MSI",
-+};
-+
-+static struct msi_domain_info mtk_msi_domain_info = {
-+	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-+		   MSI_FLAG_PCI_MSIX | MSI_FLAG_MULTI_PCI_MSI),
-+	.chip	= &mtk_msi_irq_chip,
-+};
-+
-+static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
-+{
-+	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
-+	struct mtk_pcie_port *port = data->domain->host_data;
-+	unsigned long hwirq;
-+
-+	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
-+
-+	msg->address_hi = upper_32_bits(msi_set->msg_addr);
-+	msg->address_lo = lower_32_bits(msi_set->msg_addr);
-+	msg->data = hwirq;
-+	dev_dbg(port->dev, "msi#%#lx address_hi %#x address_lo %#x data %d\n",
-+		hwirq, msg->address_hi, msg->address_lo, msg->data);
-+}
-+
-+static void mtk_msi_bottom_irq_ack(struct irq_data *data)
-+{
-+	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
-+	unsigned long hwirq;
-+
-+	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
-+
-+	writel_relaxed(BIT(hwirq), msi_set->base + PCIE_MSI_SET_STATUS_OFFSET);
-+}
-+
-+static void mtk_msi_bottom_irq_mask(struct irq_data *data)
-+{
-+	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
-+	struct mtk_pcie_port *port = data->domain->host_data;
-+	unsigned long hwirq, flags;
-+	u32 val;
-+
-+	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
-+
-+	raw_spin_lock_irqsave(&port->irq_lock, flags);
-+	val = readl_relaxed(msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
-+	val &= ~BIT(hwirq);
-+	writel_relaxed(val, msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
-+	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
-+}
-+
-+static void mtk_msi_bottom_irq_unmask(struct irq_data *data)
-+{
-+	struct mtk_msi_set *msi_set = irq_data_get_irq_chip_data(data);
-+	struct mtk_pcie_port *port = data->domain->host_data;
-+	unsigned long hwirq, flags;
-+	u32 val;
-+
-+	hwirq =	data->hwirq % PCIE_MSI_IRQS_PER_SET;
-+
-+	raw_spin_lock_irqsave(&port->irq_lock, flags);
-+	val = readl_relaxed(msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
-+	val |= BIT(hwirq);
-+	writel_relaxed(val, msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
-+	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
-+}
-+
-+static struct irq_chip mtk_msi_bottom_irq_chip = {
-+	.irq_ack		= mtk_msi_bottom_irq_ack,
-+	.irq_mask		= mtk_msi_bottom_irq_mask,
-+	.irq_unmask		= mtk_msi_bottom_irq_unmask,
-+	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-+	.irq_set_affinity	= mtk_pcie_set_affinity,
-+	.name			= "MSI",
-+};
-+
-+static int mtk_msi_bottom_domain_alloc(struct irq_domain *domain,
-+				       unsigned int virq, unsigned int nr_irqs,
-+				       void *arg)
-+{
-+	struct mtk_pcie_port *port = domain->host_data;
-+	struct mtk_msi_set *msi_set;
-+	int i, hwirq, set_idx;
-+
-+	mutex_lock(&port->lock);
-+
-+	hwirq = bitmap_find_free_region(port->msi_irq_in_use, PCIE_MSI_IRQS_NUM,
-+					order_base_2(nr_irqs));
-+
-+	mutex_unlock(&port->lock);
-+
-+	if (hwirq < 0)
-+		return -ENOSPC;
-+
-+	set_idx = hwirq / PCIE_MSI_IRQS_PER_SET;
-+	msi_set = &port->msi_sets[set_idx];
-+
-+	for (i = 0; i < nr_irqs; i++)
-+		irq_domain_set_info(domain, virq + i, hwirq + i,
-+				    &mtk_msi_bottom_irq_chip, msi_set,
-+				    handle_edge_irq, NULL, NULL);
-+
-+	return 0;
-+}
-+
-+static void mtk_msi_bottom_domain_free(struct irq_domain *domain,
-+				       unsigned int virq, unsigned int nr_irqs)
-+{
-+	struct mtk_pcie_port *port = domain->host_data;
-+	struct irq_data *data = irq_domain_get_irq_data(domain, virq);
-+
-+	mutex_lock(&port->lock);
-+
-+	bitmap_release_region(port->msi_irq_in_use, data->hwirq,
-+			      order_base_2(nr_irqs));
-+
-+	mutex_unlock(&port->lock);
-+
-+	irq_domain_free_irqs_common(domain, virq, nr_irqs);
-+}
-+
-+static const struct irq_domain_ops mtk_msi_bottom_domain_ops = {
-+	.alloc = mtk_msi_bottom_domain_alloc,
-+	.free = mtk_msi_bottom_domain_free,
-+};
-+
- static void mtk_intx_mask(struct irq_data *data)
- {
- 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-@@ -357,6 +567,7 @@ static int mtk_pcie_init_irq_domains(struct mtk_pcie_port *port)
- {
- 	struct device *dev = port->dev;
- 	struct device_node *intc_node, *node = dev->of_node;
-+	int ret;
- 
- 	raw_spin_lock_init(&port->irq_lock);
- 
-@@ -374,7 +585,34 @@ static int mtk_pcie_init_irq_domains(struct mtk_pcie_port *port)
- 		return -ENODEV;
- 	}
- 
-+	/* Setup MSI */
-+	mutex_init(&port->lock);
-+
-+	port->msi_bottom_domain = irq_domain_add_linear(node, PCIE_MSI_IRQS_NUM,
-+				  &mtk_msi_bottom_domain_ops, port);
-+	if (!port->msi_bottom_domain) {
-+		dev_err(dev, "failed to create MSI bottom domain\n");
-+		ret = -ENODEV;
-+		goto err_msi_bottom_domain;
-+	}
-+
-+	port->msi_domain = pci_msi_create_irq_domain(dev->fwnode,
-+						     &mtk_msi_domain_info,
-+						     port->msi_bottom_domain);
-+	if (!port->msi_domain) {
-+		dev_err(dev, "failed to create MSI domain\n");
-+		ret = -ENODEV;
-+		goto err_msi_domain;
-+	}
-+
- 	return 0;
-+
-+err_msi_domain:
-+	irq_domain_remove(port->msi_bottom_domain);
-+err_msi_bottom_domain:
-+	irq_domain_remove(port->intx_domain);
-+
-+	return ret;
- }
- 
- static void mtk_pcie_irq_teardown(struct mtk_pcie_port *port)
-@@ -384,9 +622,39 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie_port *port)
- 	if (port->intx_domain)
- 		irq_domain_remove(port->intx_domain);
- 
-+	if (port->msi_domain)
-+		irq_domain_remove(port->msi_domain);
-+
-+	if (port->msi_bottom_domain)
-+		irq_domain_remove(port->msi_bottom_domain);
-+
- 	irq_dispose_mapping(port->irq);
- }
- 
-+static void mtk_pcie_msi_handler(struct mtk_pcie_port *port, int set_idx)
-+{
-+	struct mtk_msi_set *msi_set = &port->msi_sets[set_idx];
-+	unsigned long msi_enable, msi_status;
-+	unsigned int virq;
-+	irq_hw_number_t bit, hwirq;
-+
-+	msi_enable = readl_relaxed(msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
-+
-+	do {
-+		msi_status = readl_relaxed(msi_set->base +
-+					   PCIE_MSI_SET_STATUS_OFFSET);
-+		msi_status &= msi_enable;
-+		if (!msi_status)
-+			break;
-+
-+		for_each_set_bit(bit, &msi_status, PCIE_MSI_IRQS_PER_SET) {
-+			hwirq = bit + set_idx * PCIE_MSI_IRQS_PER_SET;
-+			virq = irq_find_mapping(port->msi_bottom_domain, hwirq);
-+			generic_handle_irq(virq);
-+		}
-+	} while (true);
-+}
-+
- static void mtk_pcie_irq_handler(struct irq_desc *desc)
- {
- 	struct mtk_pcie_port *port = irq_desc_get_handler_data(desc);
-@@ -405,6 +673,14 @@ static void mtk_pcie_irq_handler(struct irq_desc *desc)
- 		generic_handle_irq(virq);
- 	}
- 
-+	irq_bit = PCIE_MSI_SHIFT;
-+	for_each_set_bit_from(irq_bit, &status, PCIE_MSI_SET_NUM +
-+			      PCIE_MSI_SHIFT) {
-+		mtk_pcie_msi_handler(port, irq_bit - PCIE_MSI_SHIFT);
-+
-+		writel_relaxed(BIT(irq_bit), port->base + PCIE_INT_STATUS_REG);
-+	}
-+
- 	chained_irq_exit(irqchip, desc);
- }
- 
+ 		ret = devm_request_threaded_irq(&pdev->dev, irq, NULL, irq_desc->handler, 0,
+ 						irq_desc->name, rdev);
 -- 
-2.25.1
+1.9.1
+
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
