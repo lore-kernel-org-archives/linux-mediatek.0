@@ -2,81 +2,155 @@ Return-Path: <SRS0=Ntwg=IW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55110C433C1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 13:20:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BFB54C433C1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 13:56:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC9FD61A0A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 13:20:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC9FD61A0A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3107561A05
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 13:56:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3107561A05
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=xilinx.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2WL1ZFVpLaZeeRiQXYMSEkToAYCRfPWMZhoqGmDRx1I=; b=F8fiuNm8SGK3oNlweCPhmm4QX
-	SM/I/ncuCDLbS/vS38raPUaK0DohXVfRnyUcKay3or5hwe/nIlxtxTSFhIKLx4QbHUWNe2+0Tonlr
-	8Jxx9/hnGxxyDMA37Ie3YQ7ULHnq33G0Fvj7rBLRsO5duFdKC3GZxkxcIj0BxxwShT61kt7Ywunq2
-	Af9jB+6rpz6H2LC4HrSPv43cg5aEtV1AI5h11LOr48VayfsnuRNErqs+1O8qNR/WCL3+Y/wCpNnBW
-	rknLEf7TzOf6mC/HJFWRB2Q+kJqRn8B53xYmxePVoZx0yvnphIeN9ETCOHRX9bO6wJVj43d/ybUaf
-	JVIkOUQTA==;
+	 bh=ZXs0vDIZ1RIrJBsaJ9pYpIpnIaR3b/bkvYBF/0OGwIs=; b=HyVMwBqFu3VYEoJMKN6ASKn6q
+	qN8d6Gt4upKNgM05QOlngzsoOJcOjoZQKulTNc1bW8r2oxiEiee/ZT+nwROy1Bk6j1GwsUgv1Jibp
+	1cb2aAeOZFfaN9S+G/KcxvVLeMbLcFY3ubuPsK2kHzr/Zm3ZLaAI91tv7ZOC4inLMlS4U2zei0tqS
+	VRsmUIixoc5bnKQTrD++7PIkibt0VwDvFBNBIa9pFx7NS865rRHS34d2TxptyuQeceHNNHaZH84wj
+	lBGaGZQS8AH/Z4c9nCDdlqWKi9JPbXf74ot9sTCpOJ7c5yux5h1hTAREjL4AwFSo57FgeCG9Rn1/W
+	BiJBIgJGA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lP3QZ-00H8zp-Qz; Wed, 24 Mar 2021 13:20:03 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lP3QL-00H8yo-Fm; Wed, 24 Mar 2021 13:19:52 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id EFA5D1FB;
- Wed, 24 Mar 2021 06:19:46 -0700 (PDT)
-Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com
- [10.1.196.255])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A55263F718;
- Wed, 24 Mar 2021 06:19:43 -0700 (PDT)
-Date: Wed, 24 Mar 2021 13:19:38 +0000
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+	id 1lP3zu-00HB4b-4D; Wed, 24 Mar 2021 13:56:34 +0000
+Received: from mail-eopbgr770087.outbound.protection.outlook.com
+ ([40.107.77.87] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lP3zi-00HB3s-Mk; Wed, 24 Mar 2021 13:56:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UllG1U6PCB15oD7uRc49V7sBJMcZQxQiUU+6W6D/N1M/pKg3P+eRfzgmkiZ9G04MbqeXpNdicmdQtaTx+L//trkTwxsnT4TFohEXNwChw5/9tmvxja074PK10V1aSPAvaGH2o4RHEWze813i44+JTfvc86UtibRWpTWFhaPByh+2zKRFxS99+PVEtceBZYUImWvwDHpIPoTj67TfQBX1lXWFsdQlba8FuejzWXYDtW9Gai5ToRFrdoCBruYiepXM6D42Exd1q+UNz9LvybJ30CZk+x5K30fS6YA9jnWd8vRmaPwPGdwfAdHfkxT0C3182pAjsQDTbemPoatWSysz7A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ma9VBPHSJAXFz8V/7f6vlUdnTsmXhusqfeS8VBf/+F8=;
+ b=WTFegcHr7dmqi5LZrw5wdfqdRlAd/7+gOhWykokZ9ZuQPNSJNTSiXxfmSUhKL78fEoIEJfSFdmHHtpJ1FCYfX8K6hU4jcWw9aIR/4Atx2ts7YvY3HscIVA1zvEHphTeIfOi2ROhON/jlr+lnnAtstu8GltyX+UEu3E5BUAq1CyLJBjLJacmZA0HeCw02tPey8LsDoNydgSaHOytUkiw5Vciujpa8YLflARwYLmpwpqkeqe/QHPyCjbe3w1CwOCdZga4iKlmU+ippXFe5RaucmkhmdK0v9FJDM/JsuALNgvSl6oys7QfSWHSQN2VDFm7Yxf54rflhasx7CaLVIExDKw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
+ dkim=pass header.d=xilinx.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ma9VBPHSJAXFz8V/7f6vlUdnTsmXhusqfeS8VBf/+F8=;
+ b=mPVPVpnt242CMk7u5TsK81fEABamInPBxZM9ujWOaGT1KzXriaZsyHwirC7i5b9Tggcx7IYYwr4/R8nM1iQhy7KTxaCipCRBSquUa1FB5sFYeCar5mt79RAEHkGHAkFmGLfiqeNoX7RUIKbvlmzqfrICs3T5HP6kWwRe6fT0r8A=
+Received: from BYAPR02MB5559.namprd02.prod.outlook.com (2603:10b6:a03:a1::18)
+ by BYAPR02MB5429.namprd02.prod.outlook.com (2603:10b6:a03:99::31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3955.18; Wed, 24 Mar
+ 2021 13:56:16 +0000
+Received: from BYAPR02MB5559.namprd02.prod.outlook.com
+ ([fe80::2418:b7d2:cbb:27f]) by BYAPR02MB5559.namprd02.prod.outlook.com
+ ([fe80::2418:b7d2:cbb:27f%5]) with mapi id 15.20.3955.027; Wed, 24 Mar 2021
+ 13:56:16 +0000
+From: Bharat Kumar Gogada <bharatku@xilinx.com>
 To: Marc Zyngier <maz@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Thierry Reding <treding@nvidia.com>,
- Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh@kernel.org>,
- Will Deacon <will@kernel.org>, "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Michael Kelley <mikelley@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
+CC: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Frank Wunderlich <frank-w@public-files.de>, Thierry
+ Reding <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>, Rob
+ Herring <robh@kernel.org>, Will Deacon <will@kernel.org>, "K. Y. Srinivasan"
+ <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Stephen
+ Hemminger <sthemmin@microsoft.com>, Michael Kelley <mikelley@microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, kernel-team@android.com
-Subject: Re: [PATCH v2 12/15] PCI/MSI: Let PCI host bridges declare their
- reliance on MSI domains
-Message-ID: <20210324131938.GA16722@e121166-lin.cambridge.arm.com>
+ Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michals@xilinx.com>, Paul
+ Walmsley <paul.walmsley@sifive.com>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-hyperv@vger.kernel.org"
+ <linux-hyperv@vger.kernel.org>, "linux-tegra@vger.kernel.org"
+ <linux-tegra@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org"
+ <linux-renesas-soc@vger.kernel.org>, "kernel-team@android.com"
+ <kernel-team@android.com>
+Subject: RE: [PATCH v2 05/15] PCI: xilinx: Convert to MSI domains
+Thread-Topic: [PATCH v2 05/15] PCI: xilinx: Convert to MSI domains
+Thread-Index: AQHXH0vIUXC892kDXkW3zUak9HM8+aqTE3EQgAANhwCAAArBcA==
+Date: Wed, 24 Mar 2021 13:56:16 +0000
+Message-ID: <BYAPR02MB5559590C1395C15205582976A5639@BYAPR02MB5559.namprd02.prod.outlook.com>
 References: <20210322184614.802565-1-maz@kernel.org>
- <20210322184614.802565-13-maz@kernel.org>
- <6a2eaa5d-1d83-159f-69e5-c9e0a00a7b50@arm.com>
- <87im5hkahr.wl-maz@kernel.org>
+ <20210322184614.802565-6-maz@kernel.org>
+ <BYAPR02MB5559A0B0DA88866EDC7BDFE5A5639@BYAPR02MB5559.namprd02.prod.outlook.com>
+ <877dlwk805.wl-maz@kernel.org>
+In-Reply-To: <877dlwk805.wl-maz@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-TNEF-Correlator: 
+authentication-results: kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=none action=none header.from=xilinx.com;
+x-originating-ip: [149.199.50.129]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: a388b3a0-3cba-402d-98ce-08d8eecc983e
+x-ms-traffictypediagnostic: BYAPR02MB5429:
+x-ld-processed: 657af505-d5df-48d0-8300-c31994686c5c,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR02MB5429BAB4DD62B44DA18CCE72A5639@BYAPR02MB5429.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: WdJg/UkTD7+8URxl0VsYK0Y03V+knyrmOmTNRONz/qBAgPabt+aY3KrUrw0BNkxNOaEUeZzHKjjRQaVpd7x2uOcptVipZQI8/zraYxtbXNzJu5tygid98dReUEkSHk5N/pG61jKXaLdfGvIEM6vECRLGgtR9TvXbVxCV+w2NUGxIxzPp7v5boWC2lujQwK+fy5U/EZdyQ7HrX0jE/oGVy/SkhpqTYBzL7c602j0uqOmTzONt+QN3h2BNxIESvSEIT0OGYUUgj2BYu8xtSTVC5BCjljvpA9hW7pusiAWfclTR4jLzHbHcG3fl+e2or5n19UD4qp9Blgspry4mBRGBMZadW3r7+2ze6JZeP9vtXBGc3c/s3QTmRYoo+ngW8kgsrsgYiJPgYVx74ghb7JmXQi+45d8E2KIeW47N/QZU7rWmDSyzOCpBOJ4m/uYc+6MONSsgBtyDO6dln8PmxtZhu6Z/1RK5/Rl7K+Serp1/fvDIAztzb5nXO3KsnN+OdjtfILl8g1SMVmwrEmqo6wwNX64PyLDQCM+6ZpG2pK3S8rSnnA9MpDLFJeAio45gp1vHOknWw+vHCBPiFerdEGna4gQsN0jsoQhTVHp37KGAIfiYS2WuzHpt8wTmbl53vAiSt1IVYT4HR6K0BVqQw6OHyWJZND2GOkcVv2k2J6P3Brw=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR02MB5559.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(366004)(39860400002)(346002)(136003)(396003)(6916009)(4326008)(478600001)(66946007)(64756008)(76116006)(54906003)(66446008)(7696005)(38100700001)(8936002)(86362001)(66556008)(52536014)(5660300002)(55016002)(2906002)(83380400001)(71200400001)(316002)(33656002)(9686003)(186003)(8676002)(7416002)(66476007)(6506007)(26005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: =?us-ascii?Q?CwCz9iBx19ly093Y32ZCmxPnp5bUFISqk6soD9jZRlhaMCE0dTKDnc9F7qyr?=
+ =?us-ascii?Q?4NwH72Xshat9crKQVTFWqTtX5Ugfy19hmM5Zs0YrPzahML32G1GOIRPp4Jmo?=
+ =?us-ascii?Q?fCUSPkYTxg31hFohiG92aPo5nE/Jp5m23KJyxLH9RP+0dSetzpigSi66Bdbl?=
+ =?us-ascii?Q?dzfxSI5fVtdgKJiQHYKPoHaraX1SJ4uKIYqdqM8FQmhPxQMxqap+S2hasJ4l?=
+ =?us-ascii?Q?bMCDWvaGnKDvjxX3MWt6kD79N31Q71nXAUMJDFzpAAYp8JjybPkqnNqUAbx0?=
+ =?us-ascii?Q?58RW8pkV7MgTe01CtgZJiK96acbymmBeoWaNDk6PekCLu2WsS+ZDPEb5zcJR?=
+ =?us-ascii?Q?B7XyIixW+Ef8xd+XDJojVczdD/TiXNOT9almZAS3SSI0wmIw/YwYVqOjoNZw?=
+ =?us-ascii?Q?0bttGHFvdP90Tt5cq3eaKPeZYKoWgrTdAdlNBdypKwIUBcqhJiKPAf3XAggN?=
+ =?us-ascii?Q?k1TGDT/O8YJPFeQWIq7Wgpn+li77RGB6ohujsirASHxHRbkCLAcrwZK7Mamz?=
+ =?us-ascii?Q?V3SQ/DohD2hqvyh/B+Bm3pgZWj6KohOl9oFgTrQ2juX0XmSxbSErEJ8BYdzL?=
+ =?us-ascii?Q?eI0S/nNu/xLx+2VVzbyO2ycps896RKZ8gu4IQpMFQO+SSftGL3qaqCn1Qa/i?=
+ =?us-ascii?Q?kNPBxIJtBTJKCgphQTbE74qwzzcI2Sj74D4j+GnPNq0jJfnHTwlvV+UxylZL?=
+ =?us-ascii?Q?y8kxO1aTEpaklB6YJ+xdo1czdRa2W+rdz4sQarHCYjaOnVYnYcHnEMVcuvfx?=
+ =?us-ascii?Q?t6M0yQyIy4WizHvNeuR3EJco9awTsqvzOJ0CP8GnlQICJph2/FEeKnd2J6K8?=
+ =?us-ascii?Q?qk4rUZglhFeKbtdZVVM2stXhLrKbd5ZdldC0obdDl+FKpIr+e1bjquy7dyXF?=
+ =?us-ascii?Q?n4OkWS19kntodaZM5wrJRQPQHq04MMUcNNPjq6lQ3ub0y+pSDJoAHvAj52qj?=
+ =?us-ascii?Q?9P097yJsTpZOC/8jn2UY8Za/TcXQ3KuQCWMU5HV1RRfbGAbhUI3ADFwd80bQ?=
+ =?us-ascii?Q?Xj4ejVQpCMVk1lnBojvGsVc799L7gy739JFMg/L238C+I4wSdKVZLQB6Mhsi?=
+ =?us-ascii?Q?zVmQSRrbVmG/relfKuRwPvh9H/wCB2T26zE5wSB4M2KQ4N2qNld0jGrG6lyC?=
+ =?us-ascii?Q?gORCNN/dM1IE4xocFkbbgj8xGueRCgpnVeUAb/s208bBkgjxVJk5rGaUOfyl?=
+ =?us-ascii?Q?jwTOTDpfjojIzkkim09eK/fsba516LJCO/hvEGJLvb8OStR34rkM0R/KvQyL?=
+ =?us-ascii?Q?7Q/cJA/jbbfRIlDBstsAK0iYZRl+yYDzZFABgu+bFx8vnq1fPV69V9fd2q1o?=
+ =?us-ascii?Q?og5qiPX0vJhOBpoJgq03IjE8?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87im5hkahr.wl-maz@kernel.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR02MB5559.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a388b3a0-3cba-402d-98ce-08d8eecc983e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Mar 2021 13:56:16.5814 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: sF6iO+SVrS+nD9WueX/IqrzeK3Jd+fsj7QFytRUl1raTRGI2hNDQoJME87yOa6BQ+hP9a2SeKxYNyAAt5LqSsw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB5429
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_131949_889973_34D5F89E 
-X-CRM114-Status: GOOD (  36.10  )
+X-CRM114-CacheID: sfid-20210324_135622_864508_1C8ADBCD 
+X-CRM114-Status: GOOD (  35.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,96 +167,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 23, 2021 at 06:09:36PM +0000, Marc Zyngier wrote:
-> Hi Robin,
-> 
-> On Tue, 23 Mar 2021 11:45:02 +0000,
-> Robin Murphy <robin.murphy@arm.com> wrote:
-> > 
-> > On 2021-03-22 18:46, Marc Zyngier wrote:
-> > > The new 'no_msi' attribute solves the problem of advertising the lack
-> > > of MSI capability for host bridges that know for sure that there will
-> > > be no MSI for their end-points.
-> > > 
-> > > However, there is a whole class of host bridges that cannot know
-> > > whether MSIs will be provided or not, as they rely on other blocks
-> > > to provide the MSI functionnality, using MSI domains.  This is
-> > > the case for example on systems that use the ARM GIC architecture.
-> > > 
-> > > Introduce a new attribute ('msi_domain') indicating that implicit
-> > > dependency, and use this property to set the NO_MSI flag when
-> > > no MSI domain is found at probe time.
-> > > 
+> > Hi Marc,
+> >
+> > Thanks for the patch.
+> >
+> > > Subject: [PATCH v2 05/15] PCI: xilinx: Convert to MSI domains
+> > >
+> > > In anticipation of the removal of the msi_controller structure,
+> > > convert the ancient xilinx host controller driver to MSI domains.
+> > >
+> > > We end-up with the usual two domain structure, the top one being a
+> > > generic PCI/MSI domain, the bottom one being xilinx-specific and
+> > > handling the actual HW interrupt allocation.
+> > >
+> > > This allows us to fix some of the most appalling MSI programming,
+> > > where the message programmed in the device is the virtual IRQ number
+> > > instead of the allocated vector number. The allocator is also made
+> > > safe with a mutex. This should allow support for MultiMSI, but I
+> > > decided not to even try, since I cannot test it.
+> > >
 > > > Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 > > > Signed-off-by: Marc Zyngier <maz@kernel.org>
 > > > ---
-> > >   drivers/pci/probe.c | 2 +-
-> > >   include/linux/pci.h | 1 +
-> > >   2 files changed, 2 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> > > index 146bd85c037e..bac9f69a06a8 100644
-> > > --- a/drivers/pci/probe.c
-> > > +++ b/drivers/pci/probe.c
-> > > @@ -925,7 +925,7 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
-> > >   	device_enable_async_suspend(bus->bridge);
-> > >   	pci_set_bus_of_node(bus);
-> > >   	pci_set_bus_msi_domain(bus);
-> > > -	if (bridge->no_msi)
-> > > +	if (bridge->no_msi || (bridge->msi_domain && !bus->dev.msi_domain))
-> > >   		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
-> > >     	if (!parent)
-> > > diff --git a/include/linux/pci.h b/include/linux/pci.h
-> > > index 48605cca82ae..d322d00db432 100644
-> > > --- a/include/linux/pci.h
-> > > +++ b/include/linux/pci.h
-> > > @@ -551,6 +551,7 @@ struct pci_host_bridge {
-> > >   	unsigned int	preserve_config:1;	/* Preserve FW resource setup */
-> > >   	unsigned int	size_windows:1;		/* Enable root bus sizing */
-> > >   	unsigned int	no_msi:1;		/* Bridge has no MSI support */
-> > > +	unsigned int	msi_domain:1;		/* Bridge wants MSI domain */
-> > 
-> > Aren't these really the same thing? Either way we're saying the bridge
-> > itself doesn't handle MSIs, it's just in one case we're effectively
-> > encoding a platform-specific assumption that an external domain won't
-> > be provided. I can't help wondering whether that distinction is really
-> > necessary...
+> > >  drivers/pci/controller/Kconfig       |   2 +-
+> > >  drivers/pci/controller/pcie-xilinx.c | 234
+> > > +++++++++++----------------
+> > >  2 files changed, 97 insertions(+), 139 deletions(-)
+> > >
+> > > diff --git a/drivers/pci/controller/Kconfig
+> > > b/drivers/pci/controller/Kconfig index 5cc07d28a3a0..60045f7aafc5
+> > > 100644
+> > ...
+> >
+> >
+> > > +static struct irq_chip xilinx_msi_bottom_chip = {
+> > > +	.name			= "Xilinx MSI",
+> > > +	.irq_set_affinity 	= xilinx_msi_set_affinity,
+> > > +	.irq_compose_msi_msg	= xilinx_compose_msi_msg,
+> > > +};
+> > >
+> > I see a crash while testing MSI in handle_edge_irq [<c015bdd4>]
+> > (handle_edge_irq) from [<c0157164>] (generic_handle_irq+0x28/0x38)
+> > [<c0157164>] (generic_handle_irq) from [<c03a9714>]
+> > (xilinx_pcie_intr_handler+0x17c/0x2b0)
+> > [<c03a9714>] (xilinx_pcie_intr_handler) from [<c0157d94>]
+> > (__handle_irq_event_percpu+0x3c/0xc0)
+> > [<c0157d94>] (__handle_irq_event_percpu) from [<c0157e44>]
+> > (handle_irq_event_percpu+0x2c/0x7c)
+> > [<c0157e44>] (handle_irq_event_percpu) from [<c0157ecc>]
+> > (handle_irq_event+0x38/0x5c) [<c0157ecc>] (handle_irq_event) from
+> > [<c015bc8c>] (handle_fasteoi_irq+0x9c/0x114)
 > 
-> There is a subtle difference: no_msi indicates that there is no way
-> *any* MSI can be dealt with whatsoever (maybe because the RC doesn't
-> forward the corresponding TLPs?). msi_domain says "no MSI unless...".
+> Thanks for that. Can you please try the following patch and let me know if it
+> helps?
 > 
-> We could implement the former with the latter, but I have the feeling
-> that's not totally bullet proof. Happy to revisit this if you think it
-> really matters.
-
-IIUC msi_domain == 1 means: this host bridge needs an msi_domain to enable
-MSIs, which in turn means that there are bridges that do _not_ require
-an msi_domain to enable MSIs. I don't know how other arches handle the 
-msi_domain pointer but I am asking whether making:
-
-if (bridge->no_msi || !bus->dev.msi_domain))
-	bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
-
-is a possibility (removing the need for the msi_domain flag).
-
-At least this looks more like an arch property than a host bridge
-specific property (eg patch [13] pci_host_common_probe() may be used on
-arches other than ARM where it is not necessary true that it requires an
-msi_domain to enable MSIs).
-
-I agree that's complicated to untangle - just asking if there is way
-to simplify it.
-
-Thanks,
-Lorenzo
-
 > Thanks,
 > 
 > 	M.
 > 
-> -- 
-> Without deviation from the norm, progress is not possible.
+> diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-
+> xilinx.c
+> index ad9abf405167..14001febf59a 100644
+> --- a/drivers/pci/controller/pcie-xilinx.c
+> +++ b/drivers/pci/controller/pcie-xilinx.c
+> @@ -194,8 +194,18 @@ static struct pci_ops xilinx_pcie_ops = {
+> 
+>  /* MSI functions */
+> 
+> +static void xilinx_msi_top_irq_ack(struct irq_data *d) {
+> +	/*
+> +	 * xilinx_pcie_intr_handler() will have performed the Ack.
+> +	 * Eventually, this should be fixed and the Ack be moved in
+> +	 * the respective callbacks for INTx and MSI.
+> +	 */
+> +}
+> +
+>  static struct irq_chip xilinx_msi_top_chip = {
+>  	.name		= "PCIe MSI",
+> +	.irq_ack	= xilinx_msi_top_irq_ack,
+>  };
+> 
+>  static int xilinx_msi_set_affinity(struct irq_data *d, const struct cpumask
+> *mask, bool force) @@ -206,7 +216,7 @@ static int
+> xilinx_msi_set_affinity(struct irq_data *d, const struct cpumask *mas  static
+> void xilinx_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)  {
+>  	struct xilinx_pcie_port *pcie = irq_data_get_irq_chip_data(data);
+> -	phys_addr_t pa = virt_to_phys(pcie);
+> +	phys_addr_t pa = ALIGN_DOWN(virt_to_phys(pcie), SZ_4K);
+> 
+>  	msg->address_lo = lower_32_bits(pa);
+>  	msg->address_hi = upper_32_bits(pa);
+> @@ -468,7 +478,7 @@ static int xilinx_pcie_init_irq_domain(struct
+> xilinx_pcie_port *port)
+> 
+>  	/* Setup MSI */
+>  	if (IS_ENABLED(CONFIG_PCI_MSI)) {
+> -		phys_addr_t pa = virt_to_phys(port);
+> +		phys_addr_t pa = ALIGN_DOWN(virt_to_phys(port), SZ_4K);
+> 
+>  		ret = xilinx_allocate_msi_domains(port);
+>  		if (ret)
+> 
+Thanks Marc.
+With above patch now everything works fine, tested a Samsung NVMe SSD. 
+tst~# lspci
+00:00.0 PCI bridge: Xilinx Corporation Device 0706
+01:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller 172Xa/172Xb (rev 01)
+
+Regards,
+Bharat
 
 _______________________________________________
 Linux-mediatek mailing list
