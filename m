@@ -7,99 +7,77 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5113C433C1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 634EBC433C1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:13:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 964BA61A07
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:12:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 964BA61A07
+	by mail.kernel.org (Postfix) with ESMTPS id 1245C61A10
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Mar 2021 16:13:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1245C61A10
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
-	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CrSHgp6KQsp3udiMK7XxY9Z1nHyIdS7vQVxrHy3tjVA=; b=NI65qnsqg+jwaPFQ7MNrjhgxn
-	HbKVfeYB1RdgftyAQkb7QcvSC1l9fx8nT3/oX7ntsT8UMQYdYP8In6FCKXgL+yCJYNMQM2Xpq4qLd
-	+tI7hRKelvkI+xlorGBkxILaMGpCkKeZgeZLCUg+vMlJmWTb8koCi61OIqZo773TM/dNlHOAJNOYr
-	PHoj+aki7IzsRqEiYaMCPTYfEy54zjxjG3OjiMX1A4oKMgFAKZogX6nDU89SCUG1pJQI3fsXUSswv
-	j+8807bmMniRsB7OXmHFzQyXbhlhPL0c/MaDnJIYmoEy/V0898iP2OQVXIlDa6CETT5P7rlASsDLN
-	laGJUQAhA==;
+	 bh=zfmi2EFFgMnL86lAaJR/IUefZHXvftBktUoMPGRWbCE=; b=ChCsZZRXhFH3A4H1CVYv9z4Oj
+	GdYe547Z3NlGfPTKpBES2mibCR3sgesaohRGL/OejPCVuu9R0W+NFhw8x3Kb+c+AqIN3xndRHzkBV
+	Xa7o9X1Jv2XsDbh9CFO2I3d4pPNELN7+J3nNLxmTaxbiXVwg7VxSlgWNTfUFRMrLPRyEzNxjvpiOR
+	Ia+rpVI+vhwe1msNmI9pDJUhsLvFaDpy5+TDN+TgM2I2ohDXlaV1rSOnejVKEUwO6pbdnrvV2SAt0
+	ICAmJPY73flOvdDg1RQcLTvipJzGgXF4cDZdH2UvgFK0MmpA2IYSEpu11/UODSjRC/ixiAbdbM8gT
+	tUs3RFRRg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lP67G-00HM40-LW; Wed, 24 Mar 2021 16:12:18 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lP67n-00HM9w-9T; Wed, 24 Mar 2021 16:12:51 +0000
+Received: from mail-io1-f50.google.com ([209.85.166.50])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lP671-00HM0N-1a; Wed, 24 Mar 2021 16:12:05 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 95F0061A01;
- Wed, 24 Mar 2021 16:11:59 +0000 (UTC)
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1lP66v-003YPB-O4; Wed, 24 Mar 2021 16:11:57 +0000
-Date: Wed, 24 Mar 2021 16:11:56 +0000
-Message-ID: <8735wkjzub.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Thierry Reding <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>,
- Rob Herring <robh@kernel.org>, Will Deacon <will@kernel.org>,
- "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Michael Kelley <mikelley@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- kernel-team@android.com
-Subject: Re: [PATCH v2 12/15] PCI/MSI: Let PCI host bridges declare their
- reliance on MSI domains
-In-Reply-To: <20210324131938.GA16722@e121166-lin.cambridge.arm.com>
-References: <20210322184614.802565-1-maz@kernel.org>
- <20210322184614.802565-13-maz@kernel.org>
- <6a2eaa5d-1d83-159f-69e5-c9e0a00a7b50@arm.com>
- <87im5hkahr.wl-maz@kernel.org>
- <20210324131938.GA16722@e121166-lin.cambridge.arm.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: lorenzo.pieralisi@arm.com, robin.murphy@arm.com,
- bhelgaas@google.com, frank-w@public-files.de, treding@nvidia.com,
- tglx@linutronix.de, robh@kernel.org, will@kernel.org, kys@microsoft.com,
- haiyangz@microsoft.com, sthemmin@microsoft.com, mikelley@microsoft.com,
- wei.liu@kernel.org, thierry.reding@gmail.com, jonathanh@nvidia.com,
- ryder.lee@mediatek.com, marek.vasut+renesas@gmail.com,
- yoshihiro.shimoda.uh@renesas.com, michal.simek@xilinx.com,
- paul.walmsley@sifive.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- kernel-team@android.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ id 1lP67b-00HM7p-EN; Wed, 24 Mar 2021 16:12:41 +0000
+Received: by mail-io1-f50.google.com with SMTP id k8so22070639iop.12;
+ Wed, 24 Mar 2021 09:12:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=LQe8mB4Zgg4XFKf9gTgpkrZrwD2w0XrO12e5gW6IipQ=;
+ b=CWzM+dINNrm2pGMsoSZjQYz9mv9CaU0t8EokFj1j4P+iTptZQEshuJyhCe5Rf5tmQJ
+ uwz2RLMgjxr+Zv7DBH5nVk3FIVssxG007vLD4+3P2qoUXT/m7TqudvCaVqbuu39jR28B
+ KJ+38Ray2OjVXVoaSfaHJxiOfQiS2bTIbz6QJoluAaHQzaxgphJyF4kuO0WP+3/xzInc
+ 8+wlT5Q4t+ea47/3YXuKuT0DOeRgNWdIWNTRYUvu9yngW0Zoh4P9yuI63dz1ixaMreph
+ mbdW9JttgPRF+2eQsjZa5rcIlFxXRX5ItEiSWGEqFGga+Ngbl645BKuzdqtQ952R4Ln1
+ KSiw==
+X-Gm-Message-State: AOAM533PplcJmY4PkNpwv3szFPy6pZ8NfgQ1NbuereJpSqJIyKtDnFuQ
+ gEf++i7zYkDT3S4QBltd+g==
+X-Google-Smtp-Source: ABdhPJwX4gV2lhVI6+HX3+Erc3mPYuI2WdlwXzBahI+PyLQt9TmCbprlf42MQp8SkKsbMlZQFVt6Sg==
+X-Received: by 2002:a05:6602:80d:: with SMTP id
+ z13mr2999536iow.17.1616602358385; 
+ Wed, 24 Mar 2021 09:12:38 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id i12sm1250140ila.1.2021.03.24.09.12.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Mar 2021 09:12:37 -0700 (PDT)
+Received: (nullmailer pid 3170148 invoked by uid 1000);
+ Wed, 24 Mar 2021 16:12:35 -0000
+Date: Wed, 24 Mar 2021 10:12:35 -0600
+From: Rob Herring <robh@kernel.org>
+To: matthias.bgg@kernel.org
+Cc: lee.jones@linaro.org, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ lgirdwood@gmail.com, matthias.bgg@gmail.com, broonie@kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Matthias Brugger <mbrugger@suse.com>
+Subject: Re: [PATCH 1/7] dt-bindings: mfd: mediatek: Fix regulator description
+Message-ID: <20210324161235.GA3170092@robh.at.kernel.org>
+References: <20210312145545.26050-1-matthias.bgg@kernel.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210312145545.26050-1-matthias.bgg@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_161203_563047_157F2DEB 
-X-CRM114-Status: GOOD (  48.44  )
+X-CRM114-CacheID: sfid-20210324_161239_780549_1B9584AC 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,110 +94,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 24 Mar 2021 13:19:38 +0000,
-Lorenzo Pieralisi <lorenzo.pieralisi@arm.com> wrote:
+On Fri, 12 Mar 2021 15:55:39 +0100, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <mbrugger@suse.com>
 > 
-> On Tue, Mar 23, 2021 at 06:09:36PM +0000, Marc Zyngier wrote:
-> > Hi Robin,
-> > 
-> > On Tue, 23 Mar 2021 11:45:02 +0000,
-> > Robin Murphy <robin.murphy@arm.com> wrote:
-> > > 
-> > > On 2021-03-22 18:46, Marc Zyngier wrote:
-> > > > The new 'no_msi' attribute solves the problem of advertising the lack
-> > > > of MSI capability for host bridges that know for sure that there will
-> > > > be no MSI for their end-points.
-> > > > 
-> > > > However, there is a whole class of host bridges that cannot know
-> > > > whether MSIs will be provided or not, as they rely on other blocks
-> > > > to provide the MSI functionnality, using MSI domains.  This is
-> > > > the case for example on systems that use the ARM GIC architecture.
-> > > > 
-> > > > Introduce a new attribute ('msi_domain') indicating that implicit
-> > > > dependency, and use this property to set the NO_MSI flag when
-> > > > no MSI domain is found at probe time.
-> > > > 
-> > > > Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-> > > > Signed-off-by: Marc Zyngier <maz@kernel.org>
-> > > > ---
-> > > >   drivers/pci/probe.c | 2 +-
-> > > >   include/linux/pci.h | 1 +
-> > > >   2 files changed, 2 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> > > > index 146bd85c037e..bac9f69a06a8 100644
-> > > > --- a/drivers/pci/probe.c
-> > > > +++ b/drivers/pci/probe.c
-> > > > @@ -925,7 +925,7 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
-> > > >   	device_enable_async_suspend(bus->bridge);
-> > > >   	pci_set_bus_of_node(bus);
-> > > >   	pci_set_bus_msi_domain(bus);
-> > > > -	if (bridge->no_msi)
-> > > > +	if (bridge->no_msi || (bridge->msi_domain && !bus->dev.msi_domain))
-> > > >   		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
-> > > >     	if (!parent)
-> > > > diff --git a/include/linux/pci.h b/include/linux/pci.h
-> > > > index 48605cca82ae..d322d00db432 100644
-> > > > --- a/include/linux/pci.h
-> > > > +++ b/include/linux/pci.h
-> > > > @@ -551,6 +551,7 @@ struct pci_host_bridge {
-> > > >   	unsigned int	preserve_config:1;	/* Preserve FW resource setup */
-> > > >   	unsigned int	size_windows:1;		/* Enable root bus sizing */
-> > > >   	unsigned int	no_msi:1;		/* Bridge has no MSI support */
-> > > > +	unsigned int	msi_domain:1;		/* Bridge wants MSI domain */
-> > > 
-> > > Aren't these really the same thing? Either way we're saying the bridge
-> > > itself doesn't handle MSIs, it's just in one case we're effectively
-> > > encoding a platform-specific assumption that an external domain won't
-> > > be provided. I can't help wondering whether that distinction is really
-> > > necessary...
-> > 
-> > There is a subtle difference: no_msi indicates that there is no way
-> > *any* MSI can be dealt with whatsoever (maybe because the RC doesn't
-> > forward the corresponding TLPs?). msi_domain says "no MSI unless...".
-> > 
-> > We could implement the former with the latter, but I have the feeling
-> > that's not totally bullet proof. Happy to revisit this if you think it
-> > really matters.
+> Having a separate compatible for the regulator node is redundant and not
+> needed. Delete the corresponding requierement.
 > 
-> IIUC msi_domain == 1 means: this host bridge needs an msi_domain to enable
-> MSIs, which in turn means that there are bridges that do _not_ require
-> an msi_domain to enable MSIs. I don't know how other arches handle the 
-> msi_domain pointer but I am asking whether making:
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> ---
 > 
-> if (bridge->no_msi || !bus->dev.msi_domain))
-> 	bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 3 ---
+>  1 file changed, 3 deletions(-)
 > 
-> is a possibility (removing the need for the msi_domain flag).
-> 
-> At least this looks more like an arch property than a host bridge
-> specific property (eg patch [13] pci_host_common_probe() may be used on
-> arches other than ARM where it is not necessary true that it requires an
-> msi_domain to enable MSIs).
-> 
-> I agree that's complicated to untangle - just asking if there is way
-> to simplify it.
 
-I tried to simplify that in the past (see the original discussion at
-[1]), and tglx reported some breakages on systems that do not use MSI
-domains, which is why we ended up with an explicit flag.
-
-What I have done for now is to go with Robin's proposal of dropping
-'no_msi' and rely on solely on 'msi_domain' to set
-PCI_BUS_FLAGS_NO_MSI when no domain is found.
-
-Note that if we indeed have a host bridge that uses
-pci_host_common_probe() that doesn't use MSI domains, we may indeed
-run into problems. I don't have a good way around that, unfortunately.
-
-Thanks,
-
-	M.
-
-[1] https://lore.kernel.org/r/20201031140330.83768-1-linux@fw-web.de
-
--- 
-Without deviation from the norm, progress is not possible.
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
