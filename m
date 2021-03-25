@@ -2,97 +2,79 @@ Return-Path: <SRS0=z/aX=IX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 670B7C433DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FA48C433DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:09:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F19D36198C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:08:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F19D36198C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7805061A16
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:09:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7805061A16
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xebXWQ8qjJMEH58HVAvcyrzYSoFjucK+WdIZn3T8fpc=; b=KlqAZzp7P0yYVIMqsUEQy0223
-	vhfcS2bxNWJEpdAsrGVBmvFIhiNDryWgUVrlYzqmU967RuBmWeGTQHfwvucE699QgBgtDzVWEcRa7
-	bX6MCFb8gNK7Ce/2kZlDqctR/aTrnFk1gSMrzsl8qLYFaqTZLr8FZbPXA32cLupBe8E0gdzjZU1bb
-	XDPcG9mRnMM2YvAJeSFeoxjrTdrcWI7liuLRF2sw+/sj46XuaDVbZx3V+qUPaOWobTcecG6dQfRpZ
-	09zIYKB0qpTj/TFzV1yehpygBla7UFXrWDIzBxfg86zDpTR4I/cXlNSrTlPtO/kwoiwfHt5z/nsmc
-	x1f6shnIA==;
+	 bh=dDyug4USwt3VhZXakAdYRT6OxAfrtBjCFFJ8zArE7BA=; b=iHeIGnWeGMZwo9GB1WQfnyW6w
+	5OLYqLbGQ/DmTNINEUKK34tsbjw+PeRERben9vdMbMNx1/pAD/kX3fcgJYg/YHzi+y023nHfeimlj
+	cbsdDV6wtB4tyAlftlpQjB/tr7y4IfHFVxFxKVpTM2nt89AZQKjJ0mp+EnRh++gVI2y520mKADjl3
+	J77ZNaLnlo0S2OXED/sIUDkfK0Ug9p3SY0cbItD8QUqxrUd5hxZbtfZ7HLNWxwbk6qq3zupF9kvQq
+	5WyR2x9YPH5uMDg4HcBh8cmFCqBnOmPZBaAPezTeZpEJ0lKWffd1v5pmJ8csLlka371WKR2FSvE+B
+	o9t0BcNvQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPL2c-000uDc-77; Thu, 25 Mar 2021 08:08:30 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1lPL2x-000uJP-BP; Thu, 25 Mar 2021 08:08:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPL22-000u5J-Un
- for linux-mediatek@lists.infradead.org; Thu, 25 Mar 2021 08:07:58 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id x16so1307912wrn.4
- for <linux-mediatek@lists.infradead.org>; Thu, 25 Mar 2021 01:07:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ItQynOcBUmT2daeIzClvyDiamObFHlZM+po2il7NGQQ=;
- b=F337VBkF8MjeFbPXLUVv+p3BwEBcTQLsElNSRK3KIpxKKh2MJlV3PGaDi23VQ6SLSV
- Qt/0FoW4k/1BwSq4St1ORrlUVQSJEdeq97DRDhd3Wf8avGT+6LGLpAgygewSVN8n91Pq
- 2kQXMHHL7zMF+cv/uIDik/ZZ5YPmAgkiMAEkGU+nvJ5Sb+RxxcQ7Z/phG2VRYWUuGXYP
- RAAGee5Reidw+pYMPTP2iUJ1DV1re7jNG45joK19qTHl1IAEocDq5JTr4QZCQuZh3rXg
- 6vZeTRIauG1uXhJaZuJbW7yWTngb8nfvn44H2sh9D2lqlnBKo9ela2OmJg81zpY0IQtj
- jmwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ItQynOcBUmT2daeIzClvyDiamObFHlZM+po2il7NGQQ=;
- b=puZjITdeicWJYzcryKDgsUp+FoKHTO2lYGDN0F1FXXFo9/MPuKAVKKk1by6Ds1WR7U
- Tw+YHkNHdksiBMByB/D23yT0iHsPnKVoFovkPaZ+bQOSpAQOlu74PpqdX6SJtYT+wIgw
- T/qwYlx/upHDNa4dgNYe1aQV+Al0XIA/+b5tlg4QtWJ5ASp8wTl2iA8aJko0RsnXtrUn
- Mm2NeyAabrnjM/BsNmoQa5Oc7sBvsdUk56kFzl8enabKeAupgA4LSFCZ4iIQ+silqqmj
- QGHQp/qvFVCxealaR+TWC7hIxrM8/tZXKczC/JUu+pxed+MmMHdn3aZdF1fXhkLsaPHl
- LhkA==
-X-Gm-Message-State: AOAM5320TvtvQvGqcyi0eHkaSrMDTV0FQAe3Abw26n+L6jt3rFf6nPk7
- DKpvLSw/G7r3npZRVdJ2G5DzJA==
-X-Google-Smtp-Source: ABdhPJwdML/QxUKT+3QoJa23+qO8dGO9h3U44vmooj0OX1w4rKyzII4PY323pukeymEh6+h1e9kMDQ==
-X-Received: by 2002:adf:de92:: with SMTP id w18mr7373772wrl.217.1616659670443; 
- Thu, 25 Mar 2021 01:07:50 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:d8c1:335e:f39f:249c?
- ([2a01:e34:ed2f:f020:d8c1:335e:f39f:249c])
- by smtp.googlemail.com with ESMTPSA id 81sm5431289wmc.11.2021.03.25.01.07.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 Mar 2021 01:07:49 -0700 (PDT)
-Subject: Re: [PATCH v2] drivers/clocksource/mediatek: Ack and disable
- interrupts on shutdown
-To: Evan Benn <evanbenn@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Stanley Chu <stanley.chu@mediatek.com>,
- Alexey Klimov <alexey.klimov@linaro.org>, Julia Lawall
- <Julia.Lawall@lip6.fr>, Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Viresh Kumar
- <viresh.kumar@linaro.org>, LKML <linux-kernel@vger.kernel.org>,
- Fabien Parent <fparent@baylibre.com>
-References: <20210325123446.v2.1.I1d9917047de06715da16e1620759f703fcfdcbcb@changeid>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Message-ID: <049946ac-5263-21ee-9651-7295f0bcf387@linaro.org>
-Date: Thu, 25 Mar 2021 09:07:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lPL28-000u5L-E7
+ for linux-mediatek@lists.infradead.org; Thu, 25 Mar 2021 08:08:07 +0000
+X-UUID: 8f9c42e347934bdc95d3297da3b719bd-20210325
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=2VMr/khulRzPahN4HWmR+FPurRLgluDqIK4/XsUQ4TI=; 
+ b=fzbM1p2XZ8wogZclsaWClAIp17pFUEF58pcR/DBRtygVJsbUXSRwUZHAWL2JrhVyNpVyZSIvDA244a92A8flE1+C/LxayKxggV9R1OJ7b6y/loJJZbuCsJtWdf2R7u/8FoxiRteCClRaN1aIxOWu8KXTlgycv1WrRBZV9Jh4oN0=;
+X-UUID: 8f9c42e347934bdc95d3297da3b719bd-20210325
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 687008034; Thu, 25 Mar 2021 00:07:44 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Mar 2021 01:06:10 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Mar 2021 16:06:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 25 Mar 2021 16:06:08 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 3/5] mt76: mt7622: trigger hif interrupt for system reset
+Date: Thu, 25 Mar 2021 16:06:03 +0800
+Message-ID: <fdf1a87df05dd4edfda3652fbb2ff3a4a14ccc83.1616657048.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20744fae1cbe0dcc098b3112b0a5ccb0b6254587.1616657048.git.ryder.lee@mediatek.com>
+References: <20744fae1cbe0dcc098b3112b0a5ccb0b6254587.1616657048.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20210325123446.v2.1.I1d9917047de06715da16e1620759f703fcfdcbcb@changeid>
-Content-Language: en-US
+X-TM-SNTS-SMTP: 83C2051780332E87DCD936F4975CBF7E14F2C82AE2C05767D9379E12B5C73B222000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210325_080755_351739_15EBF3F5 
-X-CRM114-Status: GOOD (  27.63  )
+X-CRM114-CacheID: sfid-20210325_080801_543475_C3C0D8AB 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,87 +86,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjUvMDMvMjAyMSAwMjozNSwgRXZhbiBCZW5uIHdyb3RlOgo+IHNldF9zdGF0ZV9zaHV0ZG93
-biBpcyBjYWxsZWQgZHVyaW5nIHN5c3RlbSBzdXNwZW5kIGFmdGVyIGludGVycnVwdHMgaGF2ZQo+
-IGJlZW4gZGlzYWJsZWQuIElmIHRoZSB0aW1lciBoYXMgZmlyZWQgaW4gdGhlIG1lYW50aW1lLCB0
-aGVyZSB3aWxsIGJlCj4gYSBwZW5kaW5nIElSUS4gU28gd2UgYWNrIHRoYXQgbm93IGFuZCBkaXNh
-YmxlIHRoZSB0aW1lci4gV2l0aG91dCB0aGlzCj4gQVJNIHRydXN0ZWQgZmlybXdhcmUgd2lsbCBh
-Ym9ydCB0aGUgc3VzcGVuZCBkdWUgdG8gdGhlIHBlbmRpbmcKPiBpbnRlcnJ1cHQuCj4gCj4gTm93
-IGFsd2F5cyBkaXNhYmxlIHRoZSBJUlEgaW4gc3RhdGUgdHJhbnNpdGlvbnMsIGFuZCByZS1lbmFi
-bGUgaW4KPiBzZXRfcGVyaW9kaWMgYW5kIG5leHRfZXZlbnQuCgpXaHkgbm90IHB1dCBhZGQgdGhl
-IHN1c3BlbmQvcmVzdW1lIGNhbGxiYWNrcyBhbmQgcHV0IHRoZXJlIHRoZSBzcGVjaWZpYwpjb2Rl
-IGFuZCBsZXQgdGhlIGlycSB1bnRvdWNoZWQgaW4gdGhlIG5vcm1hbCBmbG93ID8KCj4gU2lnbmVk
-LW9mZi1ieTogRXZhbiBCZW5uIDxldmFuYmVubkBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gCj4gQ2hh
-bmdlcyBpbiB2MjoKPiBSZW1vdmUgdGhlIHBhdGNoIHRoYXQgc3BsaXRzIHRoZSBkcml2ZXJzIGlu
-dG8gMiBmaWxlcy4KPiAKPiAgZHJpdmVycy9jbG9ja3NvdXJjZS90aW1lci1tZWRpYXRlay5jIHwg
-NDkgKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMzAgaW5z
-ZXJ0aW9ucygrKSwgMTkgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xv
-Y2tzb3VyY2UvdGltZXItbWVkaWF0ZWsuYyBiL2RyaXZlcnMvY2xvY2tzb3VyY2UvdGltZXItbWVk
-aWF0ZWsuYwo+IGluZGV4IDkzMThlZGNkODk2My4uZmJhMmY5NDk0ZDkwIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvY2xvY2tzb3VyY2UvdGltZXItbWVkaWF0ZWsuYwo+ICsrKyBiL2RyaXZlcnMvY2xv
-Y2tzb3VyY2UvdGltZXItbWVkaWF0ZWsuYwo+IEBAIC0xMzIsMTMgKzEzMiwzMyBAQCBzdGF0aWMg
-dTY0IG5vdHJhY2UgbXRrX2dwdF9yZWFkX3NjaGVkX2Nsb2NrKHZvaWQpCj4gIAlyZXR1cm4gcmVh
-ZGxfcmVsYXhlZChncHRfc2NoZWRfcmVnKTsKPiAgfQo+ICAKPiArc3RhdGljIHZvaWQgbXRrX2dw
-dF9kaXNhYmxlX2Fja19pbnRlcnJ1cHRzKHN0cnVjdCB0aW1lcl9vZiAqdG8sIHU4IHRpbWVyKQo+
-ICt7Cj4gKwl1MzIgdmFsOwo+ICsKPiArCS8qIERpc2FibGUgaW50ZXJydXB0cyAqLwo+ICsJdmFs
-ID0gcmVhZGwodGltZXJfb2ZfYmFzZSh0bykgKyBHUFRfSVJRX0VOX1JFRyk7Cj4gKwl3cml0ZWwo
-dmFsICYgfkdQVF9JUlFfRU5BQkxFKHRpbWVyKSwgdGltZXJfb2ZfYmFzZSh0bykgKwo+ICsJICAg
-ICAgIEdQVF9JUlFfRU5fUkVHKTsKPiArCj4gKwkvKiBBY2sgaW50ZXJydXB0cyAqLwo+ICsJd3Jp
-dGVsKEdQVF9JUlFfQUNLKHRpbWVyKSwgdGltZXJfb2ZfYmFzZSh0bykgKyBHUFRfSVJRX0FDS19S
-RUcpOwo+ICt9Cj4gKwo+ICBzdGF0aWMgdm9pZCBtdGtfZ3B0X2Nsa2V2dF90aW1lX3N0b3Aoc3Ry
-dWN0IHRpbWVyX29mICp0bywgdTggdGltZXIpCj4gIHsKPiAgCXUzMiB2YWw7Cj4gIAo+ICsJLyog
-RGlzYWJsZSB0aW1lciAqLwo+ICAJdmFsID0gcmVhZGwodGltZXJfb2ZfYmFzZSh0bykgKyBHUFRf
-Q1RSTF9SRUcodGltZXIpKTsKPiAgCXdyaXRlbCh2YWwgJiB+R1BUX0NUUkxfRU5BQkxFLCB0aW1l
-cl9vZl9iYXNlKHRvKSArCj4gIAkgICAgICAgR1BUX0NUUkxfUkVHKHRpbWVyKSk7Cj4gKwo+ICsJ
-LyogVGhpcyBtYXkgYmUgY2FsbGVkIHdpdGggaW50ZXJydXB0cyBkaXNhYmxlZCwKPiArCSAqIHNv
-IHdlIG5lZWQgdG8gYWNrIGFueSBpbnRlcnJ1cHQgdGhhdCBpcyBwZW5kaW5nCj4gKwkgKiBPciBm
-b3IgZXhhbXBsZSBBVEYgd2lsbCBwcmV2ZW50IGEgc3VzcGVuZCBmcm9tIGNvbXBsZXRpbmcuCj4g
-KwkgKi8KPiArCW10a19ncHRfZGlzYWJsZV9hY2tfaW50ZXJydXB0cyh0bywgdGltZXIpOwo+ICB9
-Cj4gIAo+ICBzdGF0aWMgdm9pZCBtdGtfZ3B0X2Nsa2V2dF90aW1lX3NldHVwKHN0cnVjdCB0aW1l
-cl9vZiAqdG8sCj4gQEAgLTE1Miw4ICsxNzIsMTAgQEAgc3RhdGljIHZvaWQgbXRrX2dwdF9jbGtl
-dnRfdGltZV9zdGFydChzdHJ1Y3QgdGltZXJfb2YgKnRvLAo+ICB7Cj4gIAl1MzIgdmFsOwo+ICAK
-PiAtCS8qIEFja25vd2xlZGdlIGludGVycnVwdCAqLwo+IC0Jd3JpdGVsKEdQVF9JUlFfQUNLKHRp
-bWVyKSwgdGltZXJfb2ZfYmFzZSh0bykgKyBHUFRfSVJRX0FDS19SRUcpOwo+ICsJLyogRW5hYmxl
-IGludGVycnVwdHMgKi8KPiArCXZhbCA9IHJlYWRsKHRpbWVyX29mX2Jhc2UodG8pICsgR1BUX0lS
-UV9FTl9SRUcpOwo+ICsJd3JpdGVsKHZhbCB8IEdQVF9JUlFfRU5BQkxFKHRpbWVyKSwKPiArCSAg
-ICAgICB0aW1lcl9vZl9iYXNlKHRvKSArIEdQVF9JUlFfRU5fUkVHKTsKPiAgCj4gIAl2YWwgPSBy
-ZWFkbCh0aW1lcl9vZl9iYXNlKHRvKSArIEdQVF9DVFJMX1JFRyh0aW1lcikpOwo+ICAKPiBAQCAt
-MjI2LDIxICsyNDgsNiBAQCBfX2luaXQgbXRrX2dwdF9zZXR1cChzdHJ1Y3QgdGltZXJfb2YgKnRv
-LCB1OCB0aW1lciwgdTggb3B0aW9uKQo+ICAJICAgICAgIHRpbWVyX29mX2Jhc2UodG8pICsgR1BU
-X0NUUkxfUkVHKHRpbWVyKSk7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIG10a19ncHRfZW5hYmxl
-X2lycShzdHJ1Y3QgdGltZXJfb2YgKnRvLCB1OCB0aW1lcikKPiAtewo+IC0JdTMyIHZhbDsKPiAt
-Cj4gLQkvKiBEaXNhYmxlIGFsbCBpbnRlcnJ1cHRzICovCj4gLQl3cml0ZWwoMHgwLCB0aW1lcl9v
-Zl9iYXNlKHRvKSArIEdQVF9JUlFfRU5fUkVHKTsKPiAtCj4gLQkvKiBBY2tub3dsZWRnZSBhbGwg
-c3B1cmlvdXMgcGVuZGluZyBpbnRlcnJ1cHRzICovCj4gLQl3cml0ZWwoMHgzZiwgdGltZXJfb2Zf
-YmFzZSh0bykgKyBHUFRfSVJRX0FDS19SRUcpOwo+IC0KPiAtCXZhbCA9IHJlYWRsKHRpbWVyX29m
-X2Jhc2UodG8pICsgR1BUX0lSUV9FTl9SRUcpOwo+IC0Jd3JpdGVsKHZhbCB8IEdQVF9JUlFfRU5B
-QkxFKHRpbWVyKSwKPiAtCSAgICAgICB0aW1lcl9vZl9iYXNlKHRvKSArIEdQVF9JUlFfRU5fUkVH
-KTsKPiAtfQo+IC0KPiAgc3RhdGljIHN0cnVjdCB0aW1lcl9vZiB0byA9IHsKPiAgCS5mbGFncyA9
-IFRJTUVSX09GX0lSUSB8IFRJTUVSX09GX0JBU0UgfCBUSU1FUl9PRl9DTE9DSywKPiAgCj4gQEAg
-LTI5Miw2ICsyOTksMTIgQEAgc3RhdGljIGludCBfX2luaXQgbXRrX2dwdF9pbml0KHN0cnVjdCBk
-ZXZpY2Vfbm9kZSAqbm9kZSkKPiAgCWlmIChyZXQpCj4gIAkJcmV0dXJuIHJldDsKPiAgCj4gKwkv
-KiBJbiBjYXNlIHRoZSBmaXJtd2FyZSBsZWZ0IHRoZSBpbnRlcnJ1cHRzIGVuYWJsZWQKPiArCSAq
-IGRpc2FibGUgYW5kIGFjayB0aG9zZSBub3cKPiArCSAqLwo+ICsJbXRrX2dwdF9kaXNhYmxlX2Fj
-a19pbnRlcnJ1cHRzKCZ0bywgVElNRVJfQ0xLX1NSQyk7Cj4gKwltdGtfZ3B0X2Rpc2FibGVfYWNr
-X2ludGVycnVwdHMoJnRvLCBUSU1FUl9DTEtfRVZUKTsKPiArCj4gIAkvKiBDb25maWd1cmUgY2xv
-Y2sgc291cmNlICovCj4gIAltdGtfZ3B0X3NldHVwKCZ0bywgVElNRVJfQ0xLX1NSQywgR1BUX0NU
-UkxfT1BfRlJFRVJVTik7Cj4gIAljbG9ja3NvdXJjZV9tbWlvX2luaXQodGltZXJfb2ZfYmFzZSgm
-dG8pICsgR1BUX0NOVF9SRUcoVElNRVJfQ0xLX1NSQyksCj4gQEAgLTMwNSw4ICszMTgsNiBAQCBz
-dGF0aWMgaW50IF9faW5pdCBtdGtfZ3B0X2luaXQoc3RydWN0IGRldmljZV9ub2RlICpub2RlKQo+
-ICAJY2xvY2tldmVudHNfY29uZmlnX2FuZF9yZWdpc3RlcigmdG8uY2xrZXZ0LCB0aW1lcl9vZl9y
-YXRlKCZ0byksCj4gIAkJCQkJVElNRVJfU1lOQ19USUNLUywgMHhmZmZmZmZmZik7Cj4gIAo+IC0J
-bXRrX2dwdF9lbmFibGVfaXJxKCZ0bywgVElNRVJfQ0xLX0VWVCk7Cj4gLQo+ICAJcmV0dXJuIDA7
-Cj4gIH0KPiAgVElNRVJfT0ZfREVDTEFSRShtdGtfbXQ2NTc3LCAibWVkaWF0ZWssbXQ2NTc3LXRp
-bWVyIiwgbXRrX2dwdF9pbml0KTsKPiAKCgotLSAKPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExp
-bmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExp
-bmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwK
-PGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5s
-aW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1l
-ZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+hif interrupt needs to be triggered after MT_MCU_INT_EVENT.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c   | 15 ++++++++++++---
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c   |  2 +-
+ .../net/wireless/mediatek/mt76/mt7615/mt7615.h    |  2 ++
+ 3 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 17aa3e4d67ca..3d9d893dbac5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -2053,6 +2053,15 @@ void mt7615_tx_token_put(struct mt7615_dev *dev)
+ }
+ EXPORT_SYMBOL_GPL(mt7615_tx_token_put);
+ 
++static void
++mt7615_hif_int_event_trigger(struct mt7615_dev *dev, u8 event)
++{
++	mt76_wr(dev, MT_MCU_INT_EVENT, event);
++
++	mt7622_trigger_hif_int(dev, true);
++	mt7622_trigger_hif_int(dev, false);
++}
++
+ void mt7615_mac_reset_work(struct work_struct *work)
+ {
+ 	struct mt7615_phy *phy2;
+@@ -2095,7 +2104,7 @@ void mt7615_mac_reset_work(struct work_struct *work)
+ 
+ 	mt7615_mutex_acquire(dev);
+ 
+-	mt76_wr(dev, MT_MCU_INT_EVENT, MT_MCU_INT_EVENT_PDMA_STOPPED);
++	mt7615_hif_int_event_trigger(dev, MT_MCU_INT_EVENT_PDMA_STOPPED);
+ 
+ 	mt7615_tx_token_put(dev);
+ 	idr_init(&dev->token);
+@@ -2105,7 +2114,7 @@ void mt7615_mac_reset_work(struct work_struct *work)
+ 
+ 		mt76_wr(dev, MT_WPDMA_MEM_RNG_ERR, 0);
+ 
+-		mt76_wr(dev, MT_MCU_INT_EVENT, MT_MCU_INT_EVENT_PDMA_INIT);
++		mt7615_hif_int_event_trigger(dev, MT_MCU_INT_EVENT_PDMA_INIT);
+ 		mt7615_wait_reset_state(dev, MT_MCU_CMD_RECOVERY_DONE);
+ 	}
+ 
+@@ -2128,7 +2137,7 @@ void mt7615_mac_reset_work(struct work_struct *work)
+ 	if (ext_phy)
+ 		ieee80211_wake_queues(ext_phy->hw);
+ 
+-	mt76_wr(dev, MT_MCU_INT_EVENT, MT_MCU_INT_EVENT_RESET_DONE);
++	mt7615_hif_int_event_trigger(dev, MT_MCU_INT_EVENT_RESET_DONE);
+ 	mt7615_wait_reset_state(dev, MT_MCU_CMD_NORMAL_STATE);
+ 
+ 	mt7615_update_beacons(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index 4ca0d8d4c536..99c1676c9f0f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -274,7 +274,7 @@ int mt7615_rf_wr(struct mt7615_dev *dev, u32 wf, u32 reg, u32 val)
+ 				 sizeof(req), false);
+ }
+ 
+-static void mt7622_trigger_hif_int(struct mt7615_dev *dev, bool en)
++void mt7622_trigger_hif_int(struct mt7615_dev *dev, bool en)
+ {
+ 	if (!is_mt7622(&dev->mt76))
+ 		return;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 84d06f2b41d4..484fc16f0c11 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -556,6 +556,8 @@ u32 mt7615_mcu_reg_rr(struct mt76_dev *dev, u32 offset);
+ void mt7615_mcu_reg_wr(struct mt76_dev *dev, u32 offset, u32 val);
+ void mt7615_coredump_work(struct work_struct *work);
+ 
++void mt7622_trigger_hif_int(struct mt7615_dev *dev, bool en);
++
+ /* usb */
+ int mt7663_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 				   enum mt76_txq_id qid, struct mt76_wcid *wcid,
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
