@@ -7,72 +7,71 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A057DC433C1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:09:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9559AC433E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:13:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30C816198C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:09:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30C816198C
+	by mail.kernel.org (Postfix) with ESMTPS id 124D3619FB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Mar 2021 08:13:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 124D3619FB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SL0r4F0QT/1PTWUvVndig0gm02Nwuc9ZwavLNNg6tVc=; b=gYdrMphrLzPrz2Djwx9vsodeP
-	LS51JZrTYoxEPqkoqYtM+K/01+liuRX3BAJ1ARj1YaRiKQe5GY8JsNdWDdFhiELkbu3w6Z7ot6AoD
-	3R410R7YGaMX/dTYMfRJx8lDfKi1tYBZx85YhfFr1i7XpsKA+xCOQcLE2WMWb9lKRUAmhraofxu4S
-	67m8LhyJqe51/CNX0sn+ZgrI0r9dw6jMp1cogz9FEF5HB4TII8sX7cxUr/7hMknkMsfJleQY82f1n
-	LwjkxeujNDfjEcBZaLYtecDQ2nf+Is7QSU3DWxgDOSEpbORhK5gpBB8ke4e/C8fcbw1qVYrhtKB6i
-	3UWO1YbuQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BQyK8nwy3FdipJGLIYpBccmSzmouOG9tOjiM+eE5CeY=; b=ZROVL6WKkozvbqUyNETHcmwGYR
+	Xj8PW2Y3sjCyAED4NznQBifQy/Fk7Pl/Dxm/a0YzM/cNzKNTN22O5tEam6lcjRTuMGJBz6rmfNk5p
+	Yqk7dR7bXBVKQjNj89HYj6broj3S35s75jczclYhMTzcHXYNoqh6pBsEa/Oqa7QU0MT8drWuCig+8
+	CbS52XxUCfk3vxQs1Zc9U4Em61nQwDOhetomEmImcP3C+PAa9EwjPzSPac81tYF0d3TJbJOUiTuZm
+	I9vn8BgclvcGf2JOUJTkDr+r1/Ext1d9xoz1IYAnleyEB4obr9UG/HYTUgKEMRPQIoweMcgV6wIrS
+	lye4x6bg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPL3M-000uQW-9v; Thu, 25 Mar 2021 08:09:16 +0000
+	id 1lPL79-000vNf-EA; Thu, 25 Mar 2021 08:13:11 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPL2d-000u9r-8I
- for linux-mediatek@lists.infradead.org; Thu, 25 Mar 2021 08:08:34 +0000
-X-UUID: a89a01d246bf4a64bbf0cf7d031dd9ba-20210325
+ id 1lPL6s-000vJN-Vy
+ for linux-mediatek@lists.infradead.org; Thu, 25 Mar 2021 08:13:09 +0000
+X-UUID: 6a02b19cf6cc4c37a2351a84b291571c-20210325
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=RYbpDkxjPcuGEsvJutW81MSsnM3lNLnQLx6bjyAeqg8=; 
- b=HfOiHj5CFRvf8elo2HBaMoH1E2x7QR/VBOQVd55HnWyUuOpunUB2FZqxHwWjr7faK6XKCpv/qb4B0m6MaCmRcuK8/1R+I4qC/Mh95XncNWu7ESK+lUePBumB0aLFG0LNXRoRkvuCkx0foUWGKtAQ9OekEXGmepEe9hzpfAVj4PE=;
-X-UUID: a89a01d246bf4a64bbf0cf7d031dd9ba-20210325
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=orj72jAEdVE/Bxwy+jlAMp/XOi3chbAp4VnwYkUtAko=; 
+ b=ZMNIXfNVe5SCDG+Iq/DsGT9Ub4vWyN/MrTWbZwK8hx0uuL1sILPAX6ZExWQL7lPz8BDIf8FfZ0hYQleYHvUUpRuAgqz4fRVqMPlUe1BoNmIXqGTNX7mUGNe1dCljcq38HCvQ2FKy3H6JF974BWrjB+rBmkbeOIDwL68WRXMe8RE=;
+X-UUID: 6a02b19cf6cc4c37a2351a84b291571c-20210325
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1408857046; Thu, 25 Mar 2021 00:08:08 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 25 Mar 2021 01:06:17 -0700
+ with ESMTP id 751448576; Thu, 25 Mar 2021 00:12:11 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Mar 2021 01:06:10 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 25 Mar 2021 16:06:09 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Mar 2021 16:06:07 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 25 Mar 2021 16:06:09 +0800
+ Frontend Transport; Thu, 25 Mar 2021 16:06:07 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
 CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
  <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 4/5] mt76: mt7615: keep mcu_add_bss_info enabled till
- interface removal
-Date: Thu, 25 Mar 2021 16:06:04 +0800
-Message-ID: <02d52818307a85b66e59ca11e36a9da47e2fe4df.1616657048.git.ryder.lee@mediatek.com>
+Subject: [PATCH 1/5] mt76: mt7615: only enable DFS test knobs for mt7615
+Date: Thu, 25 Mar 2021 16:06:01 +0800
+Message-ID: <20744fae1cbe0dcc098b3112b0a5ccb0b6254587.1616657048.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20744fae1cbe0dcc098b3112b0a5ccb0b6254587.1616657048.git.ryder.lee@mediatek.com>
-References: <20744fae1cbe0dcc098b3112b0a5ccb0b6254587.1616657048.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E78712D97A52E628E3E6A02C6AA7D2A28D243A51270B44D3489959BDF49FF3602000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210325_080832_030908_504B5E97 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20210325_081305_987000_32FA9F41 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,51 +88,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-BSS_INFO_BASIC is never called alone with inactive state, which always
-follows beacon offload disable, so keep it enabled throughout interfaces
-life cycle. Inactive state also removes sta record of all connected
-stations, thurs causes connection lost which defeats the purpose of CSA.
-
-Lastly, this is especially an unexpected behavior that keeping mt7622
-failing beacon buffer recyled when scanning channels.
-
-bss_conf change is updated with active state only, so just overwrite it.
+DFS knobs should not be visible to non-DFS devices.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/main.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ .../wireless/mediatek/mt76/mt7615/debugfs.c   | 29 +++++++++++--------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 342e2c5d9766..ef879d71faa2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -253,7 +253,8 @@ static void mt7615_remove_interface(struct ieee80211_hw *hw,
- 	struct mt7615_phy *phy = mt7615_hw_phy(hw);
- 	int idx = msta->wcid.idx;
- 
--	/* TODO: disable beacon for the bss */
-+	mt7615_mcu_add_bss_info(phy, vif, NULL, false);
-+	mt7615_mcu_sta_add(phy, vif, NULL, false);
- 
- 	mt7615_mutex_acquire(dev);
- 
-@@ -558,11 +559,11 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
- 		}
- 	}
- 
--	if (changed & BSS_CHANGED_BEACON_ENABLED) {
--		mt7615_mcu_add_bss_info(phy, vif, NULL, info->enable_beacon);
--		mt7615_mcu_sta_add(phy, vif, NULL, info->enable_beacon);
-+	if (changed & BSS_CHANGED_BEACON_ENABLED && info->enable_beacon) {
-+		mt7615_mcu_add_bss_info(phy, vif, NULL, true);
-+		mt7615_mcu_sta_add(phy, vif, NULL, true);
- 
--		if (vif->p2p && info->enable_beacon)
-+		if (vif->p2p)
- 			mt7615_mcu_set_p2p_oppps(hw, vif);
- 	}
- 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+index 7ae48b4fa564..1b414220521a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+@@ -517,18 +517,23 @@ int mt7615_init_debugfs(struct mt7615_dev *dev)
+ 			    &fops_pm_idle_timeout);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "radio", dir,
+ 				    mt7615_radio_read);
+-	debugfs_create_u32("dfs_hw_pattern", 0400, dir, &dev->hw_pattern);
+-	/* test pattern knobs */
+-	debugfs_create_u8("pattern_len", 0600, dir,
+-			  &dev->radar_pattern.n_pulses);
+-	debugfs_create_u32("pulse_period", 0600, dir,
+-			   &dev->radar_pattern.period);
+-	debugfs_create_u16("pulse_width", 0600, dir,
+-			   &dev->radar_pattern.width);
+-	debugfs_create_u16("pulse_power", 0600, dir,
+-			   &dev->radar_pattern.power);
+-	debugfs_create_file("radar_trigger", 0200, dir, dev,
+-			    &fops_radar_pattern);
++
++	if (is_mt7615(&dev->mt76)) {
++		debugfs_create_u32("dfs_hw_pattern", 0400, dir,
++				   &dev->hw_pattern);
++		/* test pattern knobs */
++		debugfs_create_u8("pattern_len", 0600, dir,
++				  &dev->radar_pattern.n_pulses);
++		debugfs_create_u32("pulse_period", 0600, dir,
++				   &dev->radar_pattern.period);
++		debugfs_create_u16("pulse_width", 0600, dir,
++				   &dev->radar_pattern.width);
++		debugfs_create_u16("pulse_power", 0600, dir,
++				   &dev->radar_pattern.power);
++		debugfs_create_file("radar_trigger", 0200, dir, dev,
++				    &fops_radar_pattern);
++	}
++
+ 	debugfs_create_file("reset_test", 0200, dir, dev,
+ 			    &fops_reset_test);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "temperature", dir,
 -- 
 2.18.0
 _______________________________________________
